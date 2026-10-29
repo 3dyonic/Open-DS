@@ -19,7 +19,8 @@ def _print(result: dict) -> int:
 
 
 FIX_BY_ID = {
-    "missing-question": "run open-ds build and pick an option.",
+    "missing-question": "pick an answer on /build, then run open-ds init <recipe.json>.",
+    "uv-missing": "install uv (https://docs.astral.sh/uv/), then rerun open-ds check.",
     "missing-purpose": "run open-ds build and answer a Purpose question.",
     "recipe-schema": "correct the recipe JSON so it matches the recipe schema.",
     "fingerprint-mismatch": "run open-ds init again so open-ds.json matches the recipe.",
@@ -70,7 +71,7 @@ def format_check_failure(item: dict) -> list[str]:
     severity = "error" if not raw or raw == "error" else raw
     message = item.get("message") or ""
     if item.get("id") == "missing-question":
-        message = f"{item.get('scheme')}/{item.get('question')} has no answer yet."
+        message = f"{item.get('question')} has no answer yet."
     else:
         scheme = item.get("scheme") or ""
         question = item.get("question") or ""

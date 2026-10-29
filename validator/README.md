@@ -34,7 +34,7 @@ An option may carry `fragment`: a path relative to the repo root. A missing file
 - Every clause's question is answered, but the AND fails: a `recommends` entry discourages its option instead (the same `discourage` warning if that option is selected). No prefill.
 - Any clause's question has no answer: the rule is quiet. No finding and no prefill, even when the option it would recommend is already selected.
 
-Example: recommend `density=compact` when `work-rhythm=batch` and `data-type=numbers`. One of those answers alone does nothing.
+Example: recommend `density=compact` only when `usage-data=tables`. Numbers, and batch work with no tables, do not prefill and do not raise a finding. Long text does not recommend comfortable density. That choice is the reader's own pick.
 
 ## Floors
 

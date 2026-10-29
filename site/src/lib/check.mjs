@@ -1,4 +1,9 @@
-/** Recipe checks for the browser. Python in validator/ is the reference. */
+/**
+ * Browser mirror of the Python validator in validator/.
+ * Python is the single source of truth.
+ * site/src/lib/fixtures.test.mjs runs the shared fixtures against this file
+ * and against validator/tests/test_fixtures.py. A mismatch fails the node CI job.
+ */
 
 const SEVERITY = { error: 0, warning: 1, info: 2 };
 

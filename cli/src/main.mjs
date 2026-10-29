@@ -6,7 +6,8 @@ import { createHash } from "node:crypto";
 import { fileURLToPath } from "node:url";
 
 const FIX_BY_ID = {
-  "missing-question": "run open-ds build and pick an option.",
+  "missing-question": "pick an answer on /build, then run open-ds init <recipe.json>.",
+  "uv-missing": "install uv (https://docs.astral.sh/uv/), then rerun open-ds check.",
   "missing-purpose": "run open-ds build and answer a Purpose question.",
   "recipe-schema": "correct the recipe JSON so it matches the recipe schema.",
   "fingerprint-mismatch": "run open-ds init again so open-ds.json matches the recipe.",
@@ -54,15 +55,29 @@ const FIX_BY_ID = {
 
 // Recipe rules, pack fields, and floors live in the Python validator.
 // `open-ds check` keeps drift and installed-file checks and asks open-ds-validate for the rest.
-function checkRecipeWithPython(recipe, root) {
+function uvMissing() {
+  return {
+    ok: false,
+    findings: [
+      {
+        id: "uv-missing",
+        severity: "error",
+        message: "open-ds check needs uv to run recipe rules.",
+      },
+    ],
+  };
+}
+
+function checkRecipeWithPython(recipe, root, uvBin = "uv") {
   const dir = mkdtempSync(join(tmpdir(), "open-ds-recipe-"));
   const recipePath = join(dir, "recipe.json");
   try {
     writeFileSync(recipePath, JSON.stringify(recipe));
-    const result = spawnSync("uv", ["run", "--frozen", "open-ds-validate", "--json", recipePath], {
+    const result = spawnSync(uvBin, ["run", "--frozen", "open-ds-validate", "--json", recipePath], {
       cwd: root,
       encoding: "utf8",
     });
+    if (result.error && result.error.code === "ENOENT") return uvMissing();
     if (result.error) throw new Error(`Could not run the Python validator: ${result.error.message}`);
     const stdout = (result.stdout || "").trim();
     if (!stdout) throw new Error((result.stderr || "The Python validator produced no output.").trim());
@@ -76,7 +91,7 @@ export function formatCheckFailure(item) {
   const severity = item.severity === "error" || !item.severity ? "error" : item.severity;
   let message = item.message || "";
   if (item.id === "missing-question") {
-    message = `${item.scheme}/${item.question} has no answer yet.`;
+    message = `${item.question} has no answer yet.`;
   } else {
     const name = item.scheme && item.question ? `${item.scheme}/${item.question}` : item.question || "";
     if (name && !message.includes(name)) message = `${name}: ${message}`;
@@ -183,7 +198,7 @@ export async function init(arg, outDir, root = repoRoot()) {
   return installed;
 }
 
-export async function check(dir, root = repoRoot()) {
+export async function check(dir, root = repoRoot(), options = {}) {
   const file = join(dir, "open-ds.json");
   if (!existsSync(file)) {
     return {
@@ -198,7 +213,7 @@ export async function check(dir, root = repoRoot()) {
     };
   }
   const installed = readJson(file);
-  const result = checkRecipeWithPython(installed.recipe, root);
+  const result = checkRecipeWithPython(installed.recipe, root, options.uvBin);
   if (!result.ok) return result;
   if (result.fingerprint !== installed.fingerprint) {
     return {
@@ -232,7 +247,7 @@ export async function check(dir, root = repoRoot()) {
   return result;
 }
 
-export async function run(argv) {
+export async function run(argv, options = {}) {
   const [cmd, ...rest] = argv;
   if (!cmd || cmd === "--help" || cmd === "-h") {
     console.log("open-ds init <fingerprint|recipe.json> --out <dir>");
@@ -264,7 +279,7 @@ export async function run(argv) {
     if (cmd === "check") {
       const dirFlag = rest.indexOf("--dir");
       const dir = dirFlag >= 0 ? rest[dirFlag + 1] : ".";
-      const result = await check(resolve(dir));
+      const result = await check(resolve(dir), repoRoot(), options);
       if (!result.ok) {
         for (const item of result.findings) {
           for (const line of formatCheckFailure(item)) console.log(line);

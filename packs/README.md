@@ -19,6 +19,7 @@ Option ids:
 - `platforms`: `web`, `native`, `web-and-native`
 - `team`: `solo-starting`, `small-team`, `large-team`
 - `brand-variance`: `single-brand`, `multi-brand`
+- `usage-data`: `text`, `numbers`, `media`, `mixed`, `tables`
 - `density`: `compact`, `comfortable`, `spacious`
 - `voice`: `plain`, `warm`, `precise`
 
