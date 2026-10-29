@@ -16,28 +16,34 @@
           "id": "dense-data",
           "label": "Dense data",
           "summary": "Tables, tools, and other high-information screens.",
-          "why": "A dense tool needs tight space, small type, and compact color steps.",
-          "when_to_choose": "Choose this if people scan many rows and stay in the product.",
+          "why": "Tables, tools and other screens that carry a lot of information. You get compact rows and tight space.",
+          "when_to_choose": "Choose this if people scan many rows and stay in the product for long stretches.",
           "trade_offs": [
-            "Long reading becomes harder."
+            "Alerts and messages can be harder to notice and read",
+            "Touch targets must still be at least 48 px"
           ],
           "sources": [
             {
+              "name": "Carbon",
+              "title": "Data table guidelines",
+              "url": "https://www.carbondesignsystem.com/building-blocks/core/components/data-table/guidelines"
+            },
+            {
               "name": "Material",
-              "title": "Color roles",
-              "url": "https://m3.material.io/styles/color/roles"
+              "title": "Using Material density on the web",
+              "url": "https://m3.material.io/blog/material-density-web"
             }
           ],
           "recommends": [
             {
               "question": "density",
               "option": "compact",
-              "reason": "A dense product needs compact space so more data stays in view."
+              "reason": "A dense product keeps more data in view when space is compact."
             },
             {
               "question": "spacing-base",
               "option": "base-4",
-              "reason": "A fine 4-point base keeps dense screens aligned."
+              "reason": "A fine 4 px base keeps dense screens aligned."
             }
           ]
         },
@@ -45,10 +51,10 @@
           "id": "content",
           "label": "Content",
           "summary": "Pages people read.",
-          "why": "A content product needs comfortable type, clear contrast, and room to read.",
+          "why": "Pages people come to read. You get comfortable type, clear contrast and room around the text.",
           "when_to_choose": "Choose this if people come to read pages, not to run a tool.",
           "trade_offs": [
-            "Dense screens can feel sparse."
+            "Dense screens can feel sparse"
           ],
           "sources": [
             {
@@ -61,12 +67,12 @@
             {
               "question": "density",
               "option": "comfortable",
-              "reason": "Reading pages need room around the text."
+              "reason": "Pages people read need room around the text."
             },
             {
               "question": "line-height",
               "option": "normal",
-              "reason": "Body copy needs a 1.5 line height."
+              "reason": "Body copy gets room to breathe with a 1.5 line height."
             }
           ]
         },
@@ -74,16 +80,21 @@
           "id": "commerce",
           "label": "Commerce",
           "summary": "A shop or other purchase flow.",
-          "why": "A shop needs clear actions, readable prices, and a brand color that stays known.",
-          "when_to_choose": "Choose this if people compare products and complete a purchase.",
+          "why": "A shop or other purchase flow. You get clear actions, readable prices and a brand color people can recognize.",
+          "when_to_choose": "Choose this if people compare products and then buy.",
           "trade_offs": [
-            "A loud brand color can tire a long read."
+            "A lot of color can distract from the task"
           ],
           "sources": [
             {
-              "name": "Polaris",
-              "title": "Voice and tone",
-              "url": "https://polaris.shopify.com/content/voice-and-tone"
+              "name": "Shopify",
+              "title": "Checkout UX guidelines",
+              "url": "https://shopify.dev/docs/apps/build/checkout/ux-for-checkout"
+            },
+            {
+              "name": "Shopify Help",
+              "title": "Customizing the style of your checkout",
+              "url": "https://help.shopify.com/en/manual/checkout-settings/customize-checkout-configurations/checkout-style"
             }
           ]
         },
@@ -91,10 +102,10 @@
           "id": "calm",
           "label": "Calm",
           "summary": "A low-pressure product.",
-          "why": "A calm product uses fewer accents, more space, and a quiet voice.",
+          "why": "A low-pressure product. You get fewer accents, more space and a quiet voice.",
           "when_to_choose": "Choose this if the product should feel slow and low pressure.",
           "trade_offs": [
-            "Urgent tasks can look understated."
+            "Urgent tasks can look understated"
           ],
           "sources": [
             {
@@ -107,7 +118,7 @@
             {
               "question": "density",
               "option": "compact",
-              "reason": "Compact density works against a calm, low-pressure page."
+              "reason": "Compact density leaves less room, which works against a calm, low-pressure page."
             }
           ]
         },
@@ -115,10 +126,10 @@
           "id": "consumer",
           "label": "Consumer",
           "summary": "Short sessions for a broad audience.",
-          "why": "A consumer product is used in short sessions by people who did not ask for a tool.",
-          "when_to_choose": "Choose this if the audience is broad and the sessions are short.",
+          "why": "A product used in short sessions by a broad audience that did not come looking for a tool.",
+          "when_to_choose": "Choose this if the audience is broad and sessions are short.",
           "trade_offs": [
-            "Expert users may want more density."
+            "Expert users may want more density"
           ],
           "sources": [
             {
@@ -140,10 +151,10 @@
           "id": "public",
           "label": "Public visitors",
           "summary": "People who arrive without training.",
-          "why": "Public visitors decide quickly. The first screen must make sense without training.",
+          "why": "People arrive without training and decide fast. The first screen has to make sense on its own.",
           "when_to_choose": "Choose this if most people are not signed in.",
           "trade_offs": [
-            "You explain more on every page."
+            "You explain more on every page"
           ],
           "sources": [
             {
@@ -157,10 +168,10 @@
           "id": "operators",
           "label": "Operators",
           "summary": "People who use the product often.",
-          "why": "Operators use the product often and learn its patterns.",
+          "why": "People who use the product often and learn its patterns. You can lean on that familiarity.",
           "when_to_choose": "Choose this if trained people use it most days.",
           "trade_offs": [
-            "New visitors get less explanation."
+            "New visitors get less explanation"
           ],
           "sources": [
             {
@@ -174,10 +185,10 @@
           "id": "mixed",
           "label": "Mixed",
           "summary": "Both visitors and operators.",
-          "why": "Some people visit once and some people work in the product every day.",
-          "when_to_choose": "Choose this if the public and operators share one system.",
+          "why": "Some people visit once and others work in the product every day. One system serves both.",
+          "when_to_choose": "Choose this if visitors and operators share one system.",
           "trade_offs": [
-            "One density will not fit both groups."
+            "One density will not fit both groups well"
           ],
           "sources": [
             {
@@ -199,10 +210,11 @@
           "id": "wcag-22-aa",
           "label": "WCAG 2.2 AA",
           "summary": "The common target for text and UI parts.",
-          "why": "WCAG 2.2 AA is the common target for public text and interface parts.",
-          "when_to_choose": "Choose this if you must meet AA and AAA is not required yet.",
+          "why": "WCAG 2.2 level AA is a common target for text and interface parts. You get clear targets, such as 4.5:1 contrast for body text.",
+          "when_to_choose": "Choose this if you need to meet AA and AAA is not required yet.",
           "trade_offs": [
-            "Some large text can still be hard to read."
+            "Some large text can still be hard to read",
+            "Very light brand colors may not pass"
           ],
           "sources": [
             {
@@ -215,12 +227,12 @@
             {
               "question": "contrast-metric",
               "option": "wcag22",
-              "reason": "The AA target names WCAG, so the metric should match."
+              "reason": "A target that names WCAG 2.2 pairs with the WCAG contrast metric."
             },
             {
               "question": "contrast-check",
               "option": "checked-afterwards",
-              "reason": "AA can be reviewed after the values are written."
+              "reason": "Level AA can be reviewed once the color values are written."
             }
           ]
         },
@@ -228,10 +240,10 @@
           "id": "wcag-22-aaa",
           "label": "WCAG 2.2 AAA",
           "summary": "The stricter contrast target.",
-          "why": "WCAG 2.2 AAA asks for stronger contrast and is harder to meet across a brand.",
-          "when_to_choose": "Choose this if the audience needs the stricter contrast target.",
+          "why": "Level AAA asks for stronger contrast than AA, such as 7:1 for body text. You get a stricter target.",
+          "when_to_choose": "Choose this if your audience needs the stricter contrast target.",
           "trade_offs": [
-            "Brand colors become harder to keep."
+            "Brand colors get harder to keep"
           ],
           "sources": [
             {
@@ -249,7 +261,7 @@
             {
               "question": "contrast-check",
               "option": "guaranteed-by-scale",
-              "reason": "AAA is easier to keep when the scale promises contrast."
+              "reason": "Level AAA is easier to keep when the scale itself promises contrast."
             }
           ]
         }
@@ -265,10 +277,10 @@
           "id": "web",
           "label": "Web",
           "summary": "A website or web app.",
-          "why": "The web is the first surface. Rem lets type follow the reader settings.",
+          "why": "A website or web app. With rem units, type follows the reader's own font settings.",
           "when_to_choose": "Choose this if the system ships in a browser first.",
           "trade_offs": [
-            "Native apps will need a later pass."
+            "Native apps need a later pass"
           ],
           "sources": [
             {
@@ -281,7 +293,7 @@
             {
               "question": "css-unit",
               "option": "rem",
-              "reason": "Web type should follow the reader's font size."
+              "reason": "On the web, rem lets type follow the reader's own font size."
             }
           ]
         },
@@ -289,16 +301,16 @@
           "id": "native",
           "label": "Native",
           "summary": "iOS, Android, or desktop apps.",
-          "why": "Native screens use platform type and a fixed density.",
+          "why": "iOS, Android or desktop apps. On Apple platforms, screens use the San Francisco system font and the recommended text sizes.",
           "when_to_choose": "Choose this if there is no website in this version.",
           "trade_offs": [
-            "Web visitors are out of scope."
+            "Web visitors are out of scope"
           ],
           "sources": [
             {
-              "name": "Material",
-              "title": "Color roles",
-              "url": "https://m3.material.io/styles/color/roles"
+              "name": "Apple",
+              "title": "Typography",
+              "url": "https://developer.apple.com/design/human-interface-guidelines/typography"
             }
           ]
         },
@@ -306,10 +318,10 @@
           "id": "web-and-native",
           "label": "Web and native",
           "summary": "Both surfaces share decisions.",
-          "why": "One system serves a website and native apps. Share tokens and keep structure stable.",
+          "why": "One system serves a website and native apps. You share tokens in DTCG format and keep the structure steady.",
           "when_to_choose": "Choose this if both surfaces ship from the same decisions.",
           "trade_offs": [
-            "You keep two sets of components."
+            "You keep two sets of components"
           ],
           "sources": [
             {
@@ -331,10 +343,10 @@
           "id": "solo-starting",
           "label": "Solo, starting",
           "summary": "One person is setting the system up.",
-          "why": "One person is starting. Fewer choices are easier to keep true.",
+          "why": "One person is starting the system. Fewer choices are easier to keep true.",
           "when_to_choose": "Choose this if one person maintains the system.",
           "trade_offs": [
-            "Later teams may need more written rules."
+            "Later teams may need more written rules"
           ],
           "sources": [
             {
@@ -348,10 +360,10 @@
           "id": "small-team",
           "label": "Small practiced team",
           "summary": "A few people edit the system.",
-          "why": "A small team can share a short list of decisions and review them together.",
+          "why": "A few people edit the system and can review a short list of decisions together.",
           "when_to_choose": "Choose this if a few people edit the system each week.",
           "trade_offs": [
-            "A large program will outgrow the list."
+            "A larger program will outgrow the short list"
           ],
           "sources": [
             {
@@ -365,10 +377,10 @@
           "id": "large-team",
           "label": "Large established team",
           "summary": "Many people ship from the system.",
-          "why": "A large team needs named owners and locked choices so files do not drift.",
+          "why": "Many people ship from the system. Named owners and locked choices help files stay in step.",
           "when_to_choose": "Choose this if many people ship UI from this system.",
           "trade_offs": [
-            "A change takes longer to agree."
+            "A change takes longer to agree"
           ],
           "sources": [
             {
@@ -381,7 +393,7 @@
             {
               "question": "locked-at-init",
               "option": "lock-core",
-              "reason": "A large team needs core names locked after setup."
+              "reason": "When many people ship from one system, locking core names after setup keeps files in step."
             }
           ]
         }
@@ -397,10 +409,10 @@
           "id": "single-brand",
           "label": "Single brand",
           "summary": "One brand and one theme.",
-          "why": "One brand means one theme. Components can still keep structure apart from values.",
+          "why": "One brand and one theme. Components can still keep structure apart from values.",
           "when_to_choose": "Choose this if you will not ship a second brand soon.",
           "trade_offs": [
-            "A later brand means a new theme pass."
+            "A second brand later means a new theme pass"
           ],
           "sources": [
             {
@@ -414,10 +426,10 @@
           "id": "multi-brand",
           "label": "Multi-brand",
           "summary": "Two or more brands share components.",
-          "why": "More than one brand must share components. Only the theme values should change.",
+          "why": "Two or more brands share components, and only the theme values change.",
           "when_to_choose": "Choose this if two brands must use the same components.",
           "trade_offs": [
-            "You cannot put color inside a component."
+            "Components cannot hold color values themselves"
           ],
           "sources": [
             {
@@ -430,7 +442,7 @@
             {
               "question": "structure-theme-separation",
               "option": "separate",
-              "reason": "Two brands can share components only when theme values stay outside them."
+              "reason": "Two brands can share components only when theme values stay outside the components."
             }
           ]
         }
@@ -449,7 +461,7 @@
           "why": "Compact density fits more on a screen. It suits tools and tables.",
           "when_to_choose": "Choose this if people need many controls in view.",
           "trade_offs": [
-            "Long reading becomes tiring."
+            "Long reading gets tiring"
           ],
           "sources": [
             {
@@ -462,7 +474,7 @@
             {
               "question": "spacing-base",
               "option": "base-4",
-              "reason": "Compact screens need the finer 4-point grid."
+              "reason": "A fine 4 px grid fits the tighter spacing of compact screens."
             }
           ]
         },
@@ -470,10 +482,10 @@
           "id": "comfortable",
           "label": "Comfortable",
           "summary": "Room to read, still practical.",
-          "why": "Comfortable density leaves room for reading and for a clear focus state.",
+          "why": "Comfortable density leaves room to read and room for a clear focus state.",
           "when_to_choose": "Choose this if pages are read more than they are scanned.",
           "trade_offs": [
-            "Tables show fewer rows."
+            "Tables show fewer rows"
           ],
           "sources": [
             {
@@ -486,7 +498,7 @@
             {
               "question": "line-height",
               "option": "normal",
-              "reason": "Comfortable reading uses a 1.5 line height."
+              "reason": "Comfortable reading goes with a 1.5 line height for body text."
             }
           ]
         },
@@ -494,10 +506,10 @@
           "id": "spacious",
           "label": "Spacious",
           "summary": "Large gaps and a quiet page.",
-          "why": "Spacious density uses large gaps. It suits a calm or marketing page.",
+          "why": "Spacious density uses large gaps and a quiet page. It suits calm or marketing pages.",
           "when_to_choose": "Choose this if the page should feel open and quiet.",
           "trade_offs": [
-            "Tools need more scrolling."
+            "Tools need more scrolling"
           ],
           "sources": [
             {
@@ -510,7 +522,7 @@
             {
               "question": "spacing-base",
               "option": "base-8",
-              "reason": "Spacious pages grow from a larger base."
+              "reason": "Large gaps grow from a larger 8 px base."
             }
           ]
         }
@@ -526,10 +538,10 @@
           "id": "plain",
           "label": "Plain",
           "summary": "Clear words, little personality.",
-          "why": "Plain words help more people. Say the action and stop.",
+          "why": "Clear words and little personality. Say the action and stop.",
           "when_to_choose": "Choose this if clarity matters more than personality.",
           "trade_offs": [
-            "The brand can sound flat."
+            "The brand can sound flat"
           ],
           "sources": [
             {
@@ -543,10 +555,10 @@
           "id": "warm",
           "label": "Warm",
           "summary": "Human and direct, not cute.",
-          "why": "A warm voice is human and direct. It does not joke about the task.",
+          "why": "Human and direct, without slang. It does not joke about the task.",
           "when_to_choose": "Choose this if you want a human tone without slang.",
           "trade_offs": [
-            "Serious errors can sound too soft."
+            "Serious errors can sound too soft"
           ],
           "sources": [
             {
@@ -559,7 +571,7 @@
             {
               "question": "chroma-hue-shift",
               "option": "hue-warm",
-              "reason": "A warm voice pairs with a warm shift in darker color steps."
+              "reason": "A warm voice pairs with darker color steps that shift a little warmer."
             }
           ]
         },
@@ -567,10 +579,10 @@
           "id": "precise",
           "label": "Precise",
           "summary": "Exact names and next steps.",
-          "why": "A precise voice names the thing and the next step. It avoids filler.",
+          "why": "Exact names and clear next steps, with no filler.",
           "when_to_choose": "Choose this if experts need exact labels.",
           "trade_offs": [
-            "New people may find it cold."
+            "New people may find it cold"
           ],
           "sources": [
             {

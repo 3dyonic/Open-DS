@@ -43,7 +43,18 @@ export default async function QuestionPage({
             <h2 className="text-lg font-semibold">{option.label}</h2>
             <p className="mt-2">{option.why}</p>
             <p className="mt-2 text-sm">{option.when_to_choose}</p>
-            <p className="mt-2 text-sm text-muted">Cost: {option.trade_offs[0]}</p>
+            <ul className="mt-2 text-sm text-muted">
+              {option.trade_offs.map((cost) => (
+                <li key={cost}>Cost: {cost}</li>
+              ))}
+            </ul>
+            {option.evidence_limited ? (
+              <p className="mt-2">
+                <span className="rounded-control border border-line px-2 py-1 text-sm text-muted">
+                  Evidence is limited
+                </span>
+              </p>
+            ) : null}
             {option.formula ? <p className="mt-2 text-sm">Scheme: {option.formula}</p> : null}
             <ul className="mt-3 text-sm">
               {option.sources.map((source) => (
