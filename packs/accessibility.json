@@ -1,0 +1,54 @@
+{
+  "id": "accessibility",
+  "title": "Accessibility",
+  "summary": "How contrast is promised. This pack does not measure contrast.",
+  "version": "0.1.0",
+  "scope": "scoped",
+  "order": 4,
+  "questions": [
+    {
+      "id": "contrast-check",
+      "prompt": "Is contrast guaranteed by the scale, or checked afterwards?",
+      "summary": "Pick when the contrast promise is made.",
+      "required": true,
+      "options": [
+        {
+          "id": "guaranteed-by-scale",
+          "label": "Guaranteed by the scale",
+          "summary": "The scale itself promises the contrast.",
+          "why": "The scale itself promises the contrast. You do not run a separate check later.",
+          "when_to_choose": "Choose this if every step must meet contrast by construction.",
+          "trade_offs": [
+            "Brand freedom gets smaller."
+          ],
+          "sources": [
+            {
+              "name": "Radix",
+              "title": "Palette composition",
+              "url": "https://www.radix-ui.com/colors/docs/palette-composition"
+            }
+          ],
+          "formula": "Contrast is a property of the scale, not a later test."
+        },
+        {
+          "id": "checked-afterwards",
+          "label": "Checked afterwards",
+          "summary": "A person checks contrast after values exist.",
+          "why": "You pick the scale first. A person checks contrast after the values exist.",
+          "when_to_choose": "Choose this if contrast is a review step, not a scale rule.",
+          "trade_offs": [
+            "A pretty scale can fail the review."
+          ],
+          "sources": [
+            {
+              "name": "W3C WAI",
+              "title": "WCAG 2.2 contrast minimum",
+              "url": "https://www.w3.org/WAI/WCAG22/Understanding/contrast-minimum.html"
+            }
+          ],
+          "formula": "Contrast is reviewed after the values are written."
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,10 @@
+{
+  "name": "Open DS",
+  "slug": "open-ds",
+  "tagline": "Choose your design system on purpose.",
+  "taglineAlternate": "Design system decisions, cited and checked.",
+  "subhead": "Open DS is a cited dictionary of design system decisions. Pick your answers, see the source for each, and start from a boilerplate that follows them, by hand or through your AI agent.",
+  "ctaPrimary": "Start picking",
+  "ctaSecondary": "Use it with your AI agent",
+  "nameNote": "The product name is pending. Change it only in this file."
+}

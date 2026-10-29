@@ -1,0 +1,274 @@
+{
+  "id": "typography",
+  "title": "Typography",
+  "summary": "Starter decisions for type. Schemes are described, not computed.",
+  "version": "0.1.0",
+  "scope": "scoped",
+  "order": 5,
+  "questions": [
+    {
+      "id": "font-family",
+      "prompt": "Which font family group do you use?",
+      "summary": "A group, not a licensed font file.",
+      "required": true,
+      "options": [
+        {
+          "id": "system-sans",
+          "label": "System sans",
+          "summary": "The device sans-serif.",
+          "why": "A system sans font loads fast and matches the device.",
+          "when_to_choose": "Choose this if you do not ship a custom font yet.",
+          "trade_offs": [
+            "The look changes by platform."
+          ],
+          "sources": [
+            {
+              "name": "GOV.UK",
+              "title": "Typography",
+              "url": "https://design-system.service.gov.uk/styles/typography/"
+            }
+          ]
+        },
+        {
+          "id": "system-serif",
+          "label": "System serif",
+          "summary": "The device serif.",
+          "why": "A system serif can make long text feel like a document.",
+          "when_to_choose": "Choose this if long reading is the main job.",
+          "trade_offs": [
+            "UI controls can look old-fashioned."
+          ],
+          "sources": [
+            {
+              "name": "GOV.UK",
+              "title": "Typography",
+              "url": "https://design-system.service.gov.uk/styles/typography/"
+            }
+          ]
+        },
+        {
+          "id": "system-mono",
+          "label": "System mono",
+          "summary": "The device monospace.",
+          "why": "A mono font suits code and data that must align.",
+          "when_to_choose": "Choose this if the product is mostly code or figures.",
+          "trade_offs": [
+            "Long prose is harder to read."
+          ],
+          "sources": [
+            {
+              "name": "GOV.UK",
+              "title": "Typography",
+              "url": "https://design-system.service.gov.uk/styles/typography/"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "type-scale-ratio",
+      "prompt": "Which type scale ratio do you use?",
+      "summary": "The ratio is a named scheme.",
+      "required": true,
+      "options": [
+        {
+          "id": "major-second",
+          "label": "1.125 major second",
+          "summary": "Small steps.",
+          "why": "A 1.125 ratio keeps heading steps close to body text.",
+          "when_to_choose": "Choose this if headings should stay quiet.",
+          "trade_offs": [
+            "Hierarchy can be hard to see."
+          ],
+          "sources": [
+            {
+              "name": "GOV.UK",
+              "title": "Typography",
+              "url": "https://design-system.service.gov.uk/styles/typography/"
+            }
+          ],
+          "formula": "Multiply the base size by 1.125 each step."
+        },
+        {
+          "id": "minor-third",
+          "label": "1.2 minor third",
+          "summary": "A clear step up.",
+          "why": "A 1.2 ratio gives headings a clear step without a huge jump.",
+          "when_to_choose": "Choose this if headings should be obvious but not huge.",
+          "trade_offs": [
+            "Small screens may feel loud."
+          ],
+          "sources": [
+            {
+              "name": "GOV.UK",
+              "title": "Typography",
+              "url": "https://design-system.service.gov.uk/styles/typography/"
+            }
+          ],
+          "formula": "Multiply the base size by 1.2 each step."
+        },
+        {
+          "id": "major-third",
+          "label": "1.25 major third",
+          "summary": "A common product scale.",
+          "why": "A 1.25 ratio is a major third. Steps are clear and not huge.",
+          "when_to_choose": "Choose this if you want obvious heading steps.",
+          "trade_offs": [
+            "Small screens may need fewer steps."
+          ],
+          "sources": [
+            {
+              "name": "GOV.UK",
+              "title": "Typography",
+              "url": "https://design-system.service.gov.uk/styles/typography/"
+            }
+          ],
+          "formula": "Multiply the base size by 1.25 each step."
+        },
+        {
+          "id": "perfect-fourth",
+          "label": "1.333 perfect fourth",
+          "summary": "Large steps.",
+          "why": "A perfect fourth makes display type much larger than body text.",
+          "when_to_choose": "Choose this if you need a strong display size.",
+          "trade_offs": [
+            "You may not need every step."
+          ],
+          "sources": [
+            {
+              "name": "GOV.UK",
+              "title": "Typography",
+              "url": "https://design-system.service.gov.uk/styles/typography/"
+            }
+          ],
+          "formula": "Multiply the base size by 1.333 each step."
+        }
+      ]
+    },
+    {
+      "id": "base-font-size",
+      "prompt": "What is the base font size?",
+      "summary": "The size of body text before the ratio is applied.",
+      "required": true,
+      "options": [
+        {
+          "id": "size-14",
+          "label": "14",
+          "summary": "A smaller body size.",
+          "why": "Fourteen pixels suits dense tools and tight labels.",
+          "when_to_choose": "Choose this if the product is a dense tool.",
+          "trade_offs": [
+            "Long reading is harder."
+          ],
+          "sources": [
+            {
+              "name": "GOV.UK",
+              "title": "Typography",
+              "url": "https://design-system.service.gov.uk/styles/typography/"
+            }
+          ]
+        },
+        {
+          "id": "size-16",
+          "label": "16",
+          "summary": "The common browser default.",
+          "why": "Sixteen pixels is the common browser default for body text.",
+          "when_to_choose": "Choose this if body text should match the browser default.",
+          "trade_offs": [
+            "Dense tools often want smaller text."
+          ],
+          "sources": [
+            {
+              "name": "GOV.UK",
+              "title": "Typography",
+              "url": "https://design-system.service.gov.uk/styles/typography/"
+            }
+          ]
+        },
+        {
+          "id": "size-18",
+          "label": "18",
+          "summary": "A larger body size.",
+          "why": "Eighteen pixels gives body text more presence.",
+          "when_to_choose": "Choose this if readers need a larger body size.",
+          "trade_offs": [
+            "Fewer words fit on a line."
+          ],
+          "sources": [
+            {
+              "name": "GOV.UK",
+              "title": "Typography",
+              "url": "https://design-system.service.gov.uk/styles/typography/"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "line-height",
+      "prompt": "What line height do you use for body text?",
+      "summary": "Line height is a ratio, not a calculated layout.",
+      "required": true,
+      "options": [
+        {
+          "id": "tight",
+          "label": "1.3 tight",
+          "summary": "Shorter lines for UI labels.",
+          "why": "A tight line height keeps labels compact.",
+          "when_to_choose": "Choose this if most text is short labels.",
+          "trade_offs": [
+            "Paragraphs feel cramped."
+          ],
+          "sources": [
+            {
+              "name": "GOV.UK",
+              "title": "Typography",
+              "url": "https://design-system.service.gov.uk/styles/typography/"
+            }
+          ]
+        },
+        {
+          "id": "normal",
+          "label": "1.5 normal",
+          "summary": "A comfortable body line height.",
+          "why": "A line height of 1.5 gives body text room without looking loose.",
+          "when_to_choose": "Choose this if body copy is the main content.",
+          "trade_offs": [
+            "Tight UI labels can look tall."
+          ],
+          "sources": [
+            {
+              "name": "GOV.UK",
+              "title": "Typography",
+              "url": "https://design-system.service.gov.uk/styles/typography/"
+            }
+          ]
+        },
+        {
+          "id": "loose",
+          "label": "1.7 loose",
+          "summary": "More air between lines.",
+          "why": "A loose line height gives long text more air.",
+          "when_to_choose": "Choose this if people read long passages.",
+          "trade_offs": [
+            "Short labels look sparse."
+          ],
+          "sources": [
+            {
+              "name": "GOV.UK",
+              "title": "Typography",
+              "url": "https://design-system.service.gov.uk/styles/typography/"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "css-unit",
+      "prompt": "Which unit does type use?",
+      "summary": "References the global unit. Type does not copy the options.",
+      "required": true,
+      "ref": "global:css-unit"
+    }
+  ]
+}

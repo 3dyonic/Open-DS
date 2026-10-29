@@ -1,0 +1,586 @@
+{
+  "id": "purpose",
+  "title": "Purpose",
+  "summary": "Who this design system serves. Answer this scope first.",
+  "version": "0.1.0",
+  "scope": "scoped",
+  "order": 1,
+  "questions": [
+    {
+      "id": "product-type",
+      "prompt": "What kind of product is this system for?",
+      "summary": "Product type changes density, type, and color later.",
+      "required": true,
+      "options": [
+        {
+          "id": "dense-data",
+          "label": "Dense data",
+          "summary": "Tables, tools, and other high-information screens.",
+          "why": "A dense tool needs tight space, small type, and compact color steps.",
+          "when_to_choose": "Choose this if people scan many rows and stay in the product.",
+          "trade_offs": [
+            "Long reading becomes harder."
+          ],
+          "sources": [
+            {
+              "name": "Material",
+              "title": "Color roles",
+              "url": "https://m3.material.io/styles/color/roles"
+            }
+          ],
+          "recommends": [
+            {
+              "question": "density",
+              "option": "compact",
+              "reason": "A dense product needs compact space so more data stays in view."
+            },
+            {
+              "question": "spacing-base",
+              "option": "base-4",
+              "reason": "A fine 4-point base keeps dense screens aligned."
+            }
+          ]
+        },
+        {
+          "id": "content",
+          "label": "Content",
+          "summary": "Pages people read.",
+          "why": "A content product needs comfortable type, clear contrast, and room to read.",
+          "when_to_choose": "Choose this if people come to read pages, not to run a tool.",
+          "trade_offs": [
+            "Dense screens can feel sparse."
+          ],
+          "sources": [
+            {
+              "name": "GOV.UK",
+              "title": "Typography",
+              "url": "https://design-system.service.gov.uk/styles/typography/"
+            }
+          ],
+          "recommends": [
+            {
+              "question": "density",
+              "option": "comfortable",
+              "reason": "Reading pages need room around the text."
+            },
+            {
+              "question": "line-height",
+              "option": "normal",
+              "reason": "Body copy needs a 1.5 line height."
+            }
+          ]
+        },
+        {
+          "id": "commerce",
+          "label": "Commerce",
+          "summary": "A shop or other purchase flow.",
+          "why": "A shop needs clear actions, readable prices, and a brand color that stays known.",
+          "when_to_choose": "Choose this if people compare products and complete a purchase.",
+          "trade_offs": [
+            "A loud brand color can tire a long read."
+          ],
+          "sources": [
+            {
+              "name": "Polaris",
+              "title": "Voice and tone",
+              "url": "https://polaris.shopify.com/content/voice-and-tone"
+            }
+          ]
+        },
+        {
+          "id": "calm",
+          "label": "Calm",
+          "summary": "A low-pressure product.",
+          "why": "A calm product uses fewer accents, more space, and a quiet voice.",
+          "when_to_choose": "Choose this if the product should feel slow and low pressure.",
+          "trade_offs": [
+            "Urgent tasks can look understated."
+          ],
+          "sources": [
+            {
+              "name": "Nielsen Norman Group",
+              "title": "Tone of voice",
+              "url": "https://www.nngroup.com/articles/tone-of-voice-dimensions/"
+            }
+          ],
+          "discourages": [
+            {
+              "question": "density",
+              "option": "compact",
+              "reason": "Compact density works against a calm, low-pressure page."
+            }
+          ]
+        },
+        {
+          "id": "consumer",
+          "label": "Consumer",
+          "summary": "Short sessions for a broad audience.",
+          "why": "A consumer product is used in short sessions by people who did not ask for a tool.",
+          "when_to_choose": "Choose this if the audience is broad and the sessions are short.",
+          "trade_offs": [
+            "Expert users may want more density."
+          ],
+          "sources": [
+            {
+              "name": "Nielsen Norman Group",
+              "title": "Tone of voice",
+              "url": "https://www.nngroup.com/articles/tone-of-voice-dimensions/"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "users-and-context",
+      "prompt": "Who is the primary user, and what is the context?",
+      "summary": "Say who uses the system and in what situation.",
+      "required": true,
+      "options": [
+        {
+          "id": "public",
+          "label": "Public visitors",
+          "summary": "People who arrive without training.",
+          "why": "Public visitors decide quickly. The first screen must make sense without training.",
+          "when_to_choose": "Choose this if most people are not signed in.",
+          "trade_offs": [
+            "You explain more on every page."
+          ],
+          "sources": [
+            {
+              "name": "GOV.UK",
+              "title": "Style guide",
+              "url": "https://www.gov.uk/guidance/style-guide/a-to-z-of-gov-uk-style"
+            }
+          ]
+        },
+        {
+          "id": "operators",
+          "label": "Operators",
+          "summary": "People who use the product often.",
+          "why": "Operators use the product often and learn its patterns.",
+          "when_to_choose": "Choose this if trained people use it most days.",
+          "trade_offs": [
+            "New visitors get less explanation."
+          ],
+          "sources": [
+            {
+              "name": "Carbon",
+              "title": "Content overview",
+              "url": "https://carbondesignsystem.com/guidelines/content/overview/"
+            }
+          ]
+        },
+        {
+          "id": "mixed",
+          "label": "Mixed",
+          "summary": "Both visitors and operators.",
+          "why": "Some people visit once and some people work in the product every day.",
+          "when_to_choose": "Choose this if the public and operators share one system.",
+          "trade_offs": [
+            "One density will not fit both groups."
+          ],
+          "sources": [
+            {
+              "name": "Nielsen Norman Group",
+              "title": "Tone of voice",
+              "url": "https://www.nngroup.com/articles/tone-of-voice-dimensions/"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "accessibility-target",
+      "prompt": "What accessibility target do you commit to?",
+      "summary": "The target is a commitment. It does not calculate contrast.",
+      "required": true,
+      "options": [
+        {
+          "id": "wcag-22-aa",
+          "label": "WCAG 2.2 AA",
+          "summary": "The common target for text and UI parts.",
+          "why": "WCAG 2.2 AA is the common target for public text and interface parts.",
+          "when_to_choose": "Choose this if you must meet AA and AAA is not required yet.",
+          "trade_offs": [
+            "Some large text can still be hard to read."
+          ],
+          "sources": [
+            {
+              "name": "W3C WAI",
+              "title": "WCAG 2.2 contrast minimum",
+              "url": "https://www.w3.org/WAI/WCAG22/Understanding/contrast-minimum.html"
+            }
+          ],
+          "recommends": [
+            {
+              "question": "contrast-metric",
+              "option": "wcag22",
+              "reason": "The AA target names WCAG, so the metric should match."
+            },
+            {
+              "question": "contrast-check",
+              "option": "checked-afterwards",
+              "reason": "AA can be reviewed after the values are written."
+            }
+          ]
+        },
+        {
+          "id": "wcag-22-aaa",
+          "label": "WCAG 2.2 AAA",
+          "summary": "The stricter contrast target.",
+          "why": "WCAG 2.2 AAA asks for stronger contrast and is harder to meet across a brand.",
+          "when_to_choose": "Choose this if the audience needs the stricter contrast target.",
+          "trade_offs": [
+            "Brand colors become harder to keep."
+          ],
+          "sources": [
+            {
+              "name": "W3C WAI",
+              "title": "WCAG 2.2 contrast enhanced",
+              "url": "https://www.w3.org/WAI/WCAG22/Understanding/contrast-enhanced.html"
+            }
+          ],
+          "recommends": [
+            {
+              "question": "contrast-metric",
+              "option": "wcag22",
+              "reason": "The stricter target still uses the WCAG contrast metric."
+            },
+            {
+              "question": "contrast-check",
+              "option": "guaranteed-by-scale",
+              "reason": "AAA is easier to keep when the scale promises contrast."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "platforms",
+      "prompt": "Which platforms does this system serve?",
+      "summary": "The platform changes units and components.",
+      "required": true,
+      "options": [
+        {
+          "id": "web",
+          "label": "Web",
+          "summary": "A website or web app.",
+          "why": "The web is the first surface. Rem lets type follow the reader settings.",
+          "when_to_choose": "Choose this if the system ships in a browser first.",
+          "trade_offs": [
+            "Native apps will need a later pass."
+          ],
+          "sources": [
+            {
+              "name": "CSS Values",
+              "title": "rem units",
+              "url": "https://www.w3.org/TR/css-values-4/#rem"
+            }
+          ],
+          "recommends": [
+            {
+              "question": "css-unit",
+              "option": "rem",
+              "reason": "Web type should follow the reader's font size."
+            }
+          ]
+        },
+        {
+          "id": "native",
+          "label": "Native",
+          "summary": "iOS, Android, or desktop apps.",
+          "why": "Native screens use platform type and a fixed density.",
+          "when_to_choose": "Choose this if there is no website in this version.",
+          "trade_offs": [
+            "Web visitors are out of scope."
+          ],
+          "sources": [
+            {
+              "name": "Material",
+              "title": "Color roles",
+              "url": "https://m3.material.io/styles/color/roles"
+            }
+          ]
+        },
+        {
+          "id": "web-and-native",
+          "label": "Web and native",
+          "summary": "Both surfaces share decisions.",
+          "why": "One system serves a website and native apps. Share tokens and keep structure stable.",
+          "when_to_choose": "Choose this if both surfaces ship from the same decisions.",
+          "trade_offs": [
+            "You keep two sets of components."
+          ],
+          "sources": [
+            {
+              "name": "DTCG",
+              "title": "Design Tokens format",
+              "url": "https://www.designtokens.org/tr/drafts/format/"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "team",
+      "prompt": "What is the team size and maturity?",
+      "summary": "How many people maintain the system, and how established is the practice.",
+      "required": true,
+      "options": [
+        {
+          "id": "solo-starting",
+          "label": "Solo, starting",
+          "summary": "One person is setting the system up.",
+          "why": "One person is starting. Fewer choices are easier to keep true.",
+          "when_to_choose": "Choose this if one person maintains the system.",
+          "trade_offs": [
+            "Later teams may need more written rules."
+          ],
+          "sources": [
+            {
+              "name": "GOV.UK",
+              "title": "Style guide",
+              "url": "https://www.gov.uk/guidance/style-guide/a-to-z-of-gov-uk-style"
+            }
+          ]
+        },
+        {
+          "id": "small-team",
+          "label": "Small practiced team",
+          "summary": "A few people edit the system.",
+          "why": "A small team can share a short list of decisions and review them together.",
+          "when_to_choose": "Choose this if a few people edit the system each week.",
+          "trade_offs": [
+            "A large program will outgrow the list."
+          ],
+          "sources": [
+            {
+              "name": "Carbon",
+              "title": "Content overview",
+              "url": "https://carbondesignsystem.com/guidelines/content/overview/"
+            }
+          ]
+        },
+        {
+          "id": "large-team",
+          "label": "Large established team",
+          "summary": "Many people ship from the system.",
+          "why": "A large team needs named owners and locked choices so files do not drift.",
+          "when_to_choose": "Choose this if many people ship UI from this system.",
+          "trade_offs": [
+            "A change takes longer to agree."
+          ],
+          "sources": [
+            {
+              "name": "shadcn/ui",
+              "title": "components.json",
+              "url": "https://ui.shadcn.com/docs/components-json"
+            }
+          ],
+          "recommends": [
+            {
+              "question": "locked-at-init",
+              "option": "lock-core",
+              "reason": "A large team needs core names locked after setup."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "brand-variance",
+      "prompt": "Is this a single brand or more than one?",
+      "summary": "Multi-brand needs structure and theme to stay apart.",
+      "required": true,
+      "options": [
+        {
+          "id": "single-brand",
+          "label": "Single brand",
+          "summary": "One brand and one theme.",
+          "why": "One brand means one theme. Components can still keep structure apart from values.",
+          "when_to_choose": "Choose this if you will not ship a second brand soon.",
+          "trade_offs": [
+            "A later brand means a new theme pass."
+          ],
+          "sources": [
+            {
+              "name": "Material",
+              "title": "Color tokens",
+              "url": "https://m3.material.io/styles/color/the-color-system/tokens"
+            }
+          ]
+        },
+        {
+          "id": "multi-brand",
+          "label": "Multi-brand",
+          "summary": "Two or more brands share components.",
+          "why": "More than one brand must share components. Only the theme values should change.",
+          "when_to_choose": "Choose this if two brands must use the same components.",
+          "trade_offs": [
+            "You cannot put color inside a component."
+          ],
+          "sources": [
+            {
+              "name": "Material",
+              "title": "Color roles",
+              "url": "https://m3.material.io/styles/color/roles"
+            }
+          ],
+          "requires": [
+            {
+              "question": "structure-theme-separation",
+              "option": "separate",
+              "reason": "Two brands can share components only when theme values stay outside them."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "density",
+      "prompt": "How dense should the interface feel?",
+      "summary": "Density is the amount of space around controls and text.",
+      "required": true,
+      "options": [
+        {
+          "id": "compact",
+          "label": "Compact",
+          "summary": "More on screen, less space.",
+          "why": "Compact density fits more on a screen. It suits tools and tables.",
+          "when_to_choose": "Choose this if people need many controls in view.",
+          "trade_offs": [
+            "Long reading becomes tiring."
+          ],
+          "sources": [
+            {
+              "name": "Material",
+              "title": "Spacing",
+              "url": "https://m3.material.io/foundations/layout/understanding-layout/spacing"
+            }
+          ],
+          "recommends": [
+            {
+              "question": "spacing-base",
+              "option": "base-4",
+              "reason": "Compact screens need the finer 4-point grid."
+            }
+          ]
+        },
+        {
+          "id": "comfortable",
+          "label": "Comfortable",
+          "summary": "Room to read, still practical.",
+          "why": "Comfortable density leaves room for reading and for a clear focus state.",
+          "when_to_choose": "Choose this if pages are read more than they are scanned.",
+          "trade_offs": [
+            "Tables show fewer rows."
+          ],
+          "sources": [
+            {
+              "name": "GOV.UK",
+              "title": "Typography",
+              "url": "https://design-system.service.gov.uk/styles/typography/"
+            }
+          ],
+          "recommends": [
+            {
+              "question": "line-height",
+              "option": "normal",
+              "reason": "Comfortable reading uses a 1.5 line height."
+            }
+          ]
+        },
+        {
+          "id": "spacious",
+          "label": "Spacious",
+          "summary": "Large gaps and a quiet page.",
+          "why": "Spacious density uses large gaps. It suits a calm or marketing page.",
+          "when_to_choose": "Choose this if the page should feel open and quiet.",
+          "trade_offs": [
+            "Tools need more scrolling."
+          ],
+          "sources": [
+            {
+              "name": "Material",
+              "title": "Spacing",
+              "url": "https://m3.material.io/foundations/layout/understanding-layout/spacing"
+            }
+          ],
+          "recommends": [
+            {
+              "question": "spacing-base",
+              "option": "base-8",
+              "reason": "Spacious pages grow from a larger base."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "voice",
+      "prompt": "What voice and personality should the words have?",
+      "summary": "Voice is how the interface speaks. It is not a color.",
+      "required": true,
+      "options": [
+        {
+          "id": "plain",
+          "label": "Plain",
+          "summary": "Clear words, little personality.",
+          "why": "Plain words help more people. Say the action and stop.",
+          "when_to_choose": "Choose this if clarity matters more than personality.",
+          "trade_offs": [
+            "The brand can sound flat."
+          ],
+          "sources": [
+            {
+              "name": "GOV.UK",
+              "title": "Style guide",
+              "url": "https://www.gov.uk/guidance/style-guide/a-to-z-of-gov-uk-style"
+            }
+          ]
+        },
+        {
+          "id": "warm",
+          "label": "Warm",
+          "summary": "Human and direct, not cute.",
+          "why": "A warm voice is human and direct. It does not joke about the task.",
+          "when_to_choose": "Choose this if you want a human tone without slang.",
+          "trade_offs": [
+            "Serious errors can sound too soft."
+          ],
+          "sources": [
+            {
+              "name": "Nielsen Norman Group",
+              "title": "Tone of voice",
+              "url": "https://www.nngroup.com/articles/tone-of-voice-dimensions/"
+            }
+          ],
+          "recommends": [
+            {
+              "question": "chroma-hue-shift",
+              "option": "hue-warm",
+              "reason": "A warm voice pairs with a warm shift in darker color steps."
+            }
+          ]
+        },
+        {
+          "id": "precise",
+          "label": "Precise",
+          "summary": "Exact names and next steps.",
+          "why": "A precise voice names the thing and the next step. It avoids filler.",
+          "when_to_choose": "Choose this if experts need exact labels.",
+          "trade_offs": [
+            "New people may find it cold."
+          ],
+          "sources": [
+            {
+              "name": "Carbon",
+              "title": "Content overview",
+              "url": "https://carbondesignsystem.com/guidelines/content/overview/"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
