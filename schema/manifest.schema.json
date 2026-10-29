@@ -1,0 +1,56 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/3dyonic/Open-DS/schema/manifest.schema.json",
+  "title": "Open DS boilerplate manifest",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["recipeId", "fingerprint", "serves", "lockedAtInit", "decisions", "items"],
+  "properties": {
+    "recipeId": { "type": "string" },
+    "recipePath": { "type": "string" },
+    "fingerprint": { "type": "string", "pattern": "^[0-9a-f]{64}$" },
+    "serves": { "type": "string", "minLength": 1 },
+    "lockedAtInit": { "type": "array", "items": { "type": "string" } },
+    "decisions": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["id", "option", "rationale"],
+        "properties": {
+          "id": { "type": "string" },
+          "option": { "type": "string" },
+          "rationale": { "type": "string" }
+        }
+      }
+    },
+    "items": {
+      "type": "array",
+      "minItems": 1,
+      "items": { "$ref": "#/$defs/item" }
+    }
+  },
+  "$defs": {
+    "item": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["name", "role", "files", "deps", "cssVars", "lockedAtInit"],
+      "properties": {
+        "name": { "type": "string" },
+        "role": { "enum": ["tokens", "css", "components", "tailwind"] },
+        "files": { "type": "array", "minItems": 1, "items": { "type": "string" } },
+        "deps": { "type": "array", "items": { "type": "string" } },
+        "cssVars": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["light", "dark"],
+          "properties": {
+            "light": { "type": "object" },
+            "dark": { "type": "object" }
+          }
+        },
+        "lockedAtInit": { "type": "array", "items": { "type": "string" } }
+      }
+    }
+  }
+}
