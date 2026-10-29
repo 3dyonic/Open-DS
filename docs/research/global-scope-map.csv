@@ -1,0 +1,818 @@
+option id,option,classification,reason,proposed->jira key/question,match note,scope,question,status
+D001,OKLCH,Global,"Color space or color format is reused by semantic color, theming, shadow tint and output.",,,color-primitives,Which color space are the swatches built in?,In OD story
+D002,HSL,Global,"Color space or color format is reused by semantic color, theming, shadow tint and output.",,,color-primitives,Which color space are the swatches built in?,In OD story
+D003,LAB,Global,"Color space or color format is reused by semantic color, theming, shadow tint and output.",,,color-primitives,Which color space are the swatches built in?,In OD story
+D004,HCT,Global,"Color space or color format is reused by semantic color, theming, shadow tint and output.",,,color-primitives,Which color space are the swatches built in?,In OD story
+D005,deltaE 2000,Scoped,Perceptual distance formula is only used to space color steps.,,,color-primitives,How is the distance between steps measured?,In OD story
+D006,OK delta,Scoped,Perceptual distance formula is only used to space color steps.,,,color-primitives,How is the distance between steps measured?,In OD story
+D007,CAM16,Scoped,Perceptual distance formula is only used to space color steps.,,,color-primitives,How is the distance between steps measured?,In OD story
+D008,contrast ratio (WCAG 2),Global,Contrast metric is shared with semantic color and accessibility.,,,color-primitives,How is the distance between steps measured?,In OD story
+D009,APCA,Global,Contrast metric is shared with semantic color and accessibility.,,,color-primitives,How is the distance between steps measured?,In OD story
+D010,50 to 1000,Global,One numbering direction and range (for example 100-0) can be reused by other step scales.,,,color-primitives,Which scale direction and range?,In OD story
+D011,100 to 900,Global,One numbering direction and range (for example 100-0) can be reused by other step scales.,,,color-primitives,Which scale direction and range?,In OD story
+D012,100 to 0 (light to dark),Global,One numbering direction and range (for example 100-0) can be reused by other step scales.,,,color-primitives,Which scale direction and range?,In OD story
+D013,0 to 100 (tone),Global,One numbering direction and range (for example 100-0) can be reused by other step scales.,,,color-primitives,Which scale direction and range?,In OD story
+D014,9,Scoped,Answer only has meaning for the color primitive scales.,,,color-primitives,How many steps per hue?,In OD story
+D015,11,Scoped,Answer only has meaning for the color primitive scales.,,,color-primitives,How many steps per hue?,In OD story
+D016,12,Scoped,Answer only has meaning for the color primitive scales.,,,color-primitives,How many steps per hue?,In OD story
+D017,13,Scoped,Answer only has meaning for the color primitive scales.,,,color-primitives,How many steps per hue?,In OD story
+D018,Linear,Scoped,Answer only has meaning for the color primitive scales.,,,color-primitives,"How do lightness, chroma and hue change across the steps?",In OD story
+D019,eased curve,Scoped,Answer only has meaning for the color primitive scales.,,,color-primitives,"How do lightness, chroma and hue change across the steps?",In OD story
+D020,fixed value per step,Scoped,Answer only has meaning for the color primitive scales.,,,color-primitives,"How do lightness, chroma and hue change across the steps?",In OD story
+D021,hue shift toward warm in light steps,Scoped,Answer only has meaning for the color primitive scales.,,,color-primitives,"How do lightness, chroma and hue change across the steps?",In OD story
+D022,Pure gray,Scoped,Answer only has meaning for the color primitive scales.,,,color-primitives,How is the neutral ramp made?,In OD story
+D023,gray tinted by brand hue,Scoped,Answer only has meaning for the color primitive scales.,,,color-primitives,How is the neutral ramp made?,In OD story
+D024,one neutral per hue,Scoped,Answer only has meaning for the color primitive scales.,,,color-primitives,How is the neutral ramp made?,In OD story
+D025,"Fixed set (red, orange, yellow, green, blue, purple)",Scoped,Answer only has meaning for the color primitive scales.,,,color-primitives,How are the base hues chosen?,In OD story
+D026,evenly spaced angles,Scoped,Answer only has meaning for the color primitive scales.,,,color-primitives,How are the base hues chosen?,In OD story
+D027,brand hue plus derived hues,Scoped,Answer only has meaning for the color primitive scales.,,,color-primitives,How are the base hues chosen?,In OD story
+D028,Clip,Global,"One gamut and fallback rule reads the same word for word for primitive, semantic and shadow colors.",,,color-primitives,What happens to colors outside the screen gamut?,In OD story
+D029,reduce chroma,Global,"One gamut and fallback rule reads the same word for word for primitive, semantic and shadow colors.",,,color-primitives,What happens to colors outside the screen gamut?,In OD story
+D030,allow wide gamut (P3) with sRGB fallback,Global,"One gamut and fallback rule reads the same word for word for primitive, semantic and shadow colors.",,,color-primitives,What happens to colors outside the screen gamut?,In OD story
+D031,"By use (text, surface, border)",Scoped,"Role names (text, surface, border; primary) only make sense for semantic color roles.",,,semantic-color,How are roles named?,In OD story
+D032,"by emphasis (primary, secondary)",Scoped,"Role names (text, surface, border; primary) only make sense for semantic color roles.",,,semantic-color,How are roles named?,In OD story
+D033,by both (text-primary),Scoped,"Role names (text, surface, border; primary) only make sense for semantic color roles.",,,semantic-color,How are roles named?,In OD story
+D034,"Text, surface, border, icon",Scoped,Answer only has meaning for semantic color roles.,,,semantic-color,Which role groups exist?,In OD story
+D035,plus action and feedback,Scoped,Answer only has meaning for semantic color roles.,,,semantic-color,Which role groups exist?,In OD story
+D036,plus data visualization,Scoped,Answer only has meaning for semantic color roles.,,,semantic-color,Which role groups exist?,In OD story
+D037,Fixed step number,Scoped,Answer only has meaning for semantic color roles.,,,semantic-color,How does a role pick its swatch?,In OD story
+D038,step found by target contrast,Scoped,Answer only has meaning for semantic color roles.,,,semantic-color,How does a role pick its swatch?,In OD story
+D039,step found by distance from the surface,Scoped,Answer only has meaning for semantic color roles.,,,semantic-color,How does a role pick its swatch?,In OD story
+D040,2,Scoped,Answer only has meaning for semantic color roles.,,,semantic-color,How many surface levels are there?,In OD story
+D041,3,Scoped,Answer only has meaning for semantic color roles.,,,semantic-color,How many surface levels are there?,In OD story
+D042,5,Scoped,Answer only has meaning for semantic color roles.,,,semantic-color,How many surface levels are there?,In OD story
+D043,"Fixed hues (green, amber, red, blue)",Scoped,Answer only has meaning for semantic color roles.,,,semantic-color,How are status colors made?,In OD story
+D044,hues derived from brand hue,Scoped,Answer only has meaning for semantic color roles.,,,semantic-color,How are status colors made?,In OD story
+D045,user-defined,Scoped,Answer only has meaning for semantic color roles.,,,semantic-color,How are status colors made?,In OD story
+D046,Next step on the scale,Scoped,"State derivation (next step, overlay, mix with surface) only makes sense for color swatches.",,,semantic-color,"How do hover, pressed and disabled states derive?",In OD story
+D047,overlay with opacity,Scoped,"State derivation (next step, overlay, mix with surface) only makes sense for color swatches.",,,semantic-color,"How do hover, pressed and disabled states derive?",In OD story
+D048,mixed with surface,Scoped,"State derivation (next step, overlay, mix with surface) only makes sense for color swatches.",,,semantic-color,"How do hover, pressed and disabled states derive?",In OD story
+D049,3:1,Global,"Contrast threshold or level is shared with accessibility, borders and focus.",,,semantic-color,What is the minimum contrast between paired roles?,In OD story
+D050,4.5:1,Global,"Contrast threshold or level is shared with accessibility, borders and focus.",,,semantic-color,What is the minimum contrast between paired roles?,In OD story
+D051,7:1,Global,"Contrast threshold or level is shared with accessibility, borders and focus.",,,semantic-color,What is the minimum contrast between paired roles?,In OD story
+D052,APCA Lc target,Global,"Contrast threshold or level is shared with accessibility, borders and focus.",,,semantic-color,What is the minimum contrast between paired roles?,In OD story
+D053,One accent role,Scoped,Answer only has meaning for semantic color roles.,,,semantic-color,How is an accent or brand color applied?,In OD story
+D054,accent per component type,Scoped,Answer only has meaning for semantic color roles.,,,semantic-color,How is an accent or brand color applied?,In OD story
+D055,accent only on actions,Scoped,Answer only has meaning for semantic color roles.,,,semantic-color,How is an accent or brand color applied?,In OD story
+D056,14 px,Scoped,Answer only has meaning for type tokens.,,,typography,What is the base font size?,In OD story
+D057,16 px,Scoped,Answer only has meaning for type tokens.,,,typography,What is the base font size?,In OD story
+D058,18 px,Scoped,Answer only has meaning for type tokens.,,,typography,What is the base font size?,In OD story
+D059,Minor third (1.2),Global,"Growth rule (ratio or hand-picked) can be reused by spacing, radius and motion scales.",,,typography,Which scale ratio sets the sizes?,In OD story
+D060,major third (1.25),Global,"Growth rule (ratio or hand-picked) can be reused by spacing, radius and motion scales.",,,typography,Which scale ratio sets the sizes?,In OD story
+D061,perfect fourth (1.333),Global,"Growth rule (ratio or hand-picked) can be reused by spacing, radius and motion scales.",,,typography,Which scale ratio sets the sizes?,In OD story
+D062,fixed hand-picked sizes,Global,"Growth rule (ratio or hand-picked) can be reused by spacing, radius and motion scales.",,,typography,Which scale ratio sets the sizes?,In OD story
+D063,6,Scoped,Answer only has meaning for type tokens.,,,typography,How many type steps are there?,In OD story
+D064,8,Scoped,Answer only has meaning for type tokens.,,,typography,How many type steps are there?,In OD story
+D065,10,Scoped,Answer only has meaning for type tokens.,,,typography,How many type steps are there?,In OD story
+D066,One family,Scoped,Answer only has meaning for type tokens.,,,typography,Which font families are used?,In OD story
+D067,two (heading and body),Scoped,Answer only has meaning for type tokens.,,,typography,Which font families are used?,In OD story
+D068,three (plus mono),Scoped,Answer only has meaning for type tokens.,,,typography,Which font families are used?,In OD story
+D069,system fonts only,Scoped,Answer only has meaning for type tokens.,,,typography,Which font families are used?,In OD story
+D070,One value,Scoped,Answer only has meaning for type tokens.,,,typography,How is line height set?,In OD story
+D071,per step (tighter for large text),Scoped,Answer only has meaning for type tokens.,,,typography,How is line height set?,In OD story
+D072,on a 4 px grid,Global,Uses the shared base grid unit.,,,typography,How is line height set?,In OD story
+D073,400 and 700,Scoped,Answer only has meaning for type tokens.,,,typography,Which weights are available?,In OD story
+D074,"400, 500 and 700",Scoped,Answer only has meaning for type tokens.,,,typography,Which weights are available?,In OD story
+D075,variable font with a range,Scoped,Answer only has meaning for type tokens.,,,typography,Which weights are available?,In OD story
+D076,None,Scoped,Answer only has meaning for type tokens.,,,typography,How is letter spacing set?,In OD story
+D077,tighter for large sizes,Scoped,Answer only has meaning for type tokens.,,,typography,How is letter spacing set?,In OD story
+D078,wider for small caps,Scoped,Answer only has meaning for type tokens.,,,typography,How is letter spacing set?,In OD story
+D079,Fixed per breakpoint,Global,Fluid or fixed response is one rule shared with spacing and layout.,,,typography,How does text size scale with screen width?,In OD story
+D080,fluid with clamp,Global,Fluid or fixed response is one rule shared with spacing and layout.,,,typography,How does text size scale with screen width?,In OD story
+D081,user setting only,Global,Fluid or fixed response is one rule shared with spacing and layout.,,,typography,How does text size scale with screen width?,In OD story
+D082,"Display, heading, body, label, code",Scoped,Answer only has meaning for type tokens.,,,typography,Which named text styles exist?,In OD story
+D083,"or only heading, body, caption",Scoped,Answer only has meaning for type tokens.,,,typography,Which named text styles exist?,In OD story
+D084,4 px,Global,"Base grid unit is reused by radius, control size, line height and icons.",,,spacing,What is the base unit?,In OD story
+D085,8 px,Global,"Base grid unit is reused by radius, control size, line height and icons.",,,spacing,What is the base unit?,In OD story
+D086,0.25 rem,Global,"Base grid unit is reused by radius, control size, line height and icons.",,,spacing,What is the base unit?,In OD story
+D087,0.5 rem,Global,"Base grid unit is reused by radius, control size, line height and icons.",,,spacing,What is the base unit?,In OD story
+D088,"Linear multiples (1x, 2x, 3x)",Global,"Growth rule (linear, doubling, ratio) can be reused by other step scales.",,,spacing,How does the spacing scale grow?,In OD story
+D089,doubling,Global,"Growth rule (linear, doubling, ratio) can be reused by other step scales.",,,spacing,How does the spacing scale grow?,In OD story
+D090,modular ratio,Global,"Growth rule (linear, doubling, ratio) can be reused by other step scales.",,,spacing,How does the spacing scale grow?,In OD story
+D091,hand-picked steps,Global,"Growth rule (linear, doubling, ratio) can be reused by other step scales.",,,spacing,How does the spacing scale grow?,In OD story
+D092,8,Scoped,Answer only has meaning for spacing and sizing tokens.,,,spacing,How many spacing steps are there?,In OD story
+D093,10,Scoped,Answer only has meaning for spacing and sizing tokens.,,,spacing,How many spacing steps are there?,In OD story
+D094,12,Scoped,Answer only has meaning for spacing and sizing tokens.,,,spacing,How many spacing steps are there?,In OD story
+D095,16,Scoped,Answer only has meaning for spacing and sizing tokens.,,,spacing,How many spacing steps are there?,In OD story
+D096,Small and medium,Scoped,Answer only has meaning for spacing and sizing tokens.,,,spacing,Which control sizes exist?,In OD story
+D097,"small, medium and large",Scoped,Answer only has meaning for spacing and sizing tokens.,,,spacing,Which control sizes exist?,In OD story
+D098,five sizes,Scoped,Answer only has meaning for spacing and sizing tokens.,,,spacing,Which control sizes exist?,In OD story
+D099,Fixed values,Scoped,Answer only has meaning for spacing and sizing tokens.,,,spacing,How is control height set?,In OD story
+D100,from line height plus padding,Scoped,Answer only has meaning for spacing and sizing tokens.,,,spacing,How is control height set?,In OD story
+D101,from the spacing scale,Scoped,Answer only has meaning for spacing and sizing tokens.,,,spacing,How is control height set?,In OD story
+D102,One,Global,"Density mode is one switch that radius, type and spacing follow.",,,spacing,Which density modes exist?,In OD story
+D103,compact and default,Global,"Density mode is one switch that radius, type and spacing follow.",,,spacing,Which density modes exist?,In OD story
+D104,"compact, default and comfortable",Global,"Density mode is one switch that radius, type and spacing follow.",,,spacing,Which density modes exist?,In OD story
+D105,24 px,Global,Minimum target size is shared with accessibility and controls.,,,spacing,What is the minimum touch target?,In OD story
+D106,32 px,Global,Minimum target size is shared with accessibility and controls.,,,spacing,What is the minimum touch target?,In OD story
+D107,44 px,Global,Minimum target size is shared with accessibility and controls.,,,spacing,What is the minimum touch target?,In OD story
+D108,48 px,Global,Minimum target size is shared with accessibility and controls.,,,spacing,What is the minimum touch target?,In OD story
+D109,px only,Global,Unit choice (px or rem) is shared with typography and breakpoints.,,,spacing,"Are spacing values in px, rem or both?",In OD story
+D110,rem only,Global,Unit choice (px or rem) is shared with typography and breakpoints.,,,spacing,"Are spacing values in px, rem or both?",In OD story
+D111,rem with px fallback,Global,Unit choice (px or rem) is shared with typography and breakpoints.,,,spacing,"Are spacing values in px, rem or both?",In OD story
+D112,"Fixed list (0, 2, 4, 8, 16)",Scoped,Fixed value list is only meaningful for radius.,,,radius,How does the radius scale grow?,In OD story
+D113,doubling,Global,Growth rule (doubling or base times multiplier) can be reused by other step scales.,,,radius,How does the radius scale grow?,In OD story
+D114,one base value with multipliers,Global,Growth rule (doubling or base times multiplier) can be reused by other step scales.,,,radius,How does the radius scale grow?,In OD story
+D115,4,Scoped,Answer only has meaning for radius tokens.,,,radius,How many radius steps are there?,In OD story
+D116,6,Scoped,Answer only has meaning for radius tokens.,,,radius,How many radius steps are there?,In OD story
+D117,8,Scoped,Answer only has meaning for radius tokens.,,,radius,How many radius steps are there?,In OD story
+D118,Round,Scoped,Answer only has meaning for radius tokens.,,,radius,Which corner style is used?,In OD story
+D119,squircle (smooth corners),Scoped,Answer only has meaning for radius tokens.,,,radius,Which corner style is used?,In OD story
+D120,cut corners,Scoped,Answer only has meaning for radius tokens.,,,radius,Which corner style is used?,In OD story
+D121,square,Scoped,Answer only has meaning for radius tokens.,,,radius,Which corner style is used?,In OD story
+D122,One radius for all,Scoped,Answer only has meaning for radius tokens.,,,radius,Which radius does each component type use?,In OD story
+D123,"by size (small for inputs, large for cards)",Scoped,Answer only has meaning for radius tokens.,,,radius,Which radius does each component type use?,In OD story
+D124,"by role (actions round, containers square)",Scoped,Answer only has meaning for radius tokens.,,,radius,Which radius does each component type use?,In OD story
+D125,Same as parent,Scoped,Answer only has meaning for radius tokens.,,,radius,How is the radius of a nested element set?,In OD story
+D126,parent radius minus padding,Scoped,Answer only has meaning for radius tokens.,,,radius,How is the radius of a nested element set?,In OD story
+D127,separate value,Scoped,Answer only has meaning for radius tokens.,,,radius,How is the radius of a nested element set?,In OD story
+D128,A very large radius value,Scoped,Answer only has meaning for radius tokens.,,,radius,How are pill and circle shapes made?,In OD story
+D129,50% radius,Scoped,Answer only has meaning for radius tokens.,,,radius,How are pill and circle shapes made?,In OD story
+D130,none,Scoped,Answer only has meaning for radius tokens.,,,radius,How are pill and circle shapes made?,In OD story
+D131,No,Scoped,Answer only has meaning for radius tokens.,,,radius,Does the radius change with density?,In OD story
+D132,smaller in compact mode,Scoped,Answer only has meaning for radius tokens.,,,radius,Does the radius change with density?,In OD story
+D133,per control size,Scoped,Answer only has meaning for radius tokens.,,,radius,Does the radius change with density?,In OD story
+D134,By shadow,Scoped,Answer only has meaning for elevation and shadow tokens.,,,elevation,How is depth shown?,In OD story
+D135,by lighter surface color,Scoped,Answer only has meaning for elevation and shadow tokens.,,,elevation,How is depth shown?,In OD story
+D136,by border,Scoped,Answer only has meaning for elevation and shadow tokens.,,,elevation,How is depth shown?,In OD story
+D137,by a mix,Scoped,Answer only has meaning for elevation and shadow tokens.,,,elevation,How is depth shown?,In OD story
+D138,3,Scoped,Answer only has meaning for elevation and shadow tokens.,,,elevation,How many elevation levels are there?,In OD story
+D139,5,Scoped,Answer only has meaning for elevation and shadow tokens.,,,elevation,How many elevation levels are there?,In OD story
+D140,6,Scoped,Answer only has meaning for elevation and shadow tokens.,,,elevation,How many elevation levels are there?,In OD story
+D141,One soft shadow,Scoped,Answer only has meaning for elevation and shadow tokens.,,,elevation,What is the shadow recipe?,In OD story
+D142,two layers (key and ambient),Scoped,Answer only has meaning for elevation and shadow tokens.,,,elevation,What is the shadow recipe?,In OD story
+D143,layered stack of 3 or more,Scoped,Answer only has meaning for elevation and shadow tokens.,,,elevation,What is the shadow recipe?,In OD story
+D144,Black with opacity,Scoped,Answer only has meaning for elevation and shadow tokens.,,,elevation,How is shadow color set?,In OD story
+D145,tinted by surface hue,Scoped,Answer only has meaning for elevation and shadow tokens.,,,elevation,How is shadow color set?,In OD story
+D146,tinted by brand hue,Scoped,Answer only has meaning for elevation and shadow tokens.,,,elevation,How is shadow color set?,In OD story
+D147,Linear,Scoped,"Shadow growth (doubling blur, per-level picks) only makes sense for elevation.",,,elevation,How does the shadow grow with level?,In OD story
+D148,doubling blur,Scoped,"Shadow growth (doubling blur, per-level picks) only makes sense for elevation.",,,elevation,How does the shadow grow with level?,In OD story
+D149,hand-picked per level,Scoped,"Shadow growth (doubling blur, per-level picks) only makes sense for elevation.",,,elevation,How does the shadow grow with level?,In OD story
+D150,Same shadows,Scoped,Shadow handling in dark mode only makes sense for elevation.,,,elevation,How are shadows handled in dark mode?,In OD story
+D151,stronger shadows,Scoped,Shadow handling in dark mode only makes sense for elevation.,,,elevation,How are shadows handled in dark mode?,In OD story
+D152,"no shadows, lighter surfaces instead",Scoped,Shadow handling in dark mode only makes sense for elevation.,,,elevation,How are shadows handled in dark mode?,In OD story
+D153,"Named layers (base, dropdown, modal, toast)",Scoped,Answer only has meaning for elevation and shadow tokens.,,,elevation,How is layer order (z-index) set?,In OD story
+D154,numeric steps of 10,Scoped,Answer only has meaning for elevation and shadow tokens.,,,elevation,How is layer order (z-index) set?,In OD story
+D155,none,Scoped,Answer only has meaning for elevation and shadow tokens.,,,elevation,How is layer order (z-index) set?,In OD story
+D156,1 px only,Scoped,Answer only has meaning for border tokens.,,,borders,Which border widths exist?,In OD story
+D157,1 px and 2 px,Scoped,Answer only has meaning for border tokens.,,,borders,Which border widths exist?,In OD story
+D158,"1, 2 and 4 px",Scoped,Answer only has meaning for border tokens.,,,borders,Which border widths exist?,In OD story
+D159,Solid only,Scoped,Answer only has meaning for border tokens.,,,borders,Which border styles are used?,In OD story
+D160,solid and dashed,Scoped,Answer only has meaning for border tokens.,,,borders,Which border styles are used?,In OD story
+D161,"solid, dashed and dotted",Scoped,Answer only has meaning for border tokens.,,,borders,Which border styles are used?,In OD story
+D162,Always,Scoped,Answer only has meaning for border tokens.,,,borders,Are borders used to separate content?,In OD story
+D163,only where surfaces are the same color,Scoped,Answer only has meaning for border tokens.,,,borders,Are borders used to separate content?,In OD story
+D164,never (use space or color),Scoped,Answer only has meaning for border tokens.,,,borders,Are borders used to separate content?,In OD story
+D165,1 px hairline,Scoped,Answer only has meaning for border tokens.,,,borders,How wide is a divider?,In OD story
+D166,1 px at stronger color,Scoped,Answer only has meaning for border tokens.,,,borders,How wide is a divider?,In OD story
+D167,2 px,Scoped,Answer only has meaning for border tokens.,,,borders,How wide is a divider?,In OD story
+D168,2 px solid,Global,One focus indicator spec is shared with accessibility.,,,borders,What does the focus ring look like?,In OD story
+D169,2 px with offset,Global,One focus indicator spec is shared with accessibility.,,,borders,What does the focus ring look like?,In OD story
+D170,double ring (light and dark),Global,One focus indicator spec is shared with accessibility.,,,borders,What does the focus ring look like?,In OD story
+D171,0 px,Global,One focus indicator spec is shared with accessibility.,,,borders,What is the focus ring offset?,In OD story
+D172,2 px,Global,One focus indicator spec is shared with accessibility.,,,borders,What is the focus ring offset?,In OD story
+D173,4 px,Global,One focus indicator spec is shared with accessibility.,,,borders,What is the focus ring offset?,In OD story
+D174,1 px,Global,"One stroke width is shared by icons, charts and borders.",,,borders,What stroke width do icons and charts use?,In OD story
+D175,1.5 px,Global,"One stroke width is shared by icons, charts and borders.",,,borders,What stroke width do icons and charts use?,In OD story
+D176,2 px,Global,"One stroke width is shared by icons, charts and borders.",,,borders,What stroke width do icons and charts use?,In OD story
+D177,No,Global,User contrast preference is shared with theming and accessibility.,,,borders,Can the user make borders stronger?,In OD story
+D178,high contrast mode only,Global,User contrast preference is shared with theming and accessibility.,,,borders,Can the user make borders stronger?,In OD story
+D179,a setting,Global,User contrast preference is shared with theming and accessibility.,,,borders,Can the user make borders stronger?,In OD story
+D180,"100, 200, 300 ms",Scoped,Answer only has meaning for motion tokens.,,,motion,Which durations exist?,In OD story
+D181,75 to 500 ms in 6 steps,Scoped,Answer only has meaning for motion tokens.,,,motion,Which durations exist?,In OD story
+D182,by distance moved,Scoped,Answer only has meaning for motion tokens.,,,motion,Which durations exist?,In OD story
+D183,"Standard, enter, exit",Scoped,Answer only has meaning for motion tokens.,,,motion,Which easing curves exist?,In OD story
+D184,CSS keywords only,Scoped,Answer only has meaning for motion tokens.,,,motion,Which easing curves exist?,In OD story
+D185,spring,Scoped,Answer only has meaning for motion tokens.,,,motion,Which easing curves exist?,In OD story
+D186,Cubic bezier,Scoped,Answer only has meaning for motion tokens.,,,motion,How are curves written?,In OD story
+D187,named presets,Scoped,Answer only has meaning for motion tokens.,,,motion,How are curves written?,In OD story
+D188,"spring values (stiffness, damping)",Scoped,Answer only has meaning for motion tokens.,,,motion,How are curves written?,In OD story
+D189,One for all,Scoped,Answer only has meaning for motion tokens.,,,motion,Which duration does each interaction use?,In OD story
+D190,by size of the change,Scoped,Answer only has meaning for motion tokens.,,,motion,Which duration does each interaction use?,In OD story
+D191,"by type (hover, open, page)",Scoped,Answer only has meaning for motion tokens.,,,motion,Which duration does each interaction use?,In OD story
+D192,No motion,Global,Reduced-motion policy is shared with accessibility and theming.,,,motion,What happens with reduced motion?,In OD story
+D193,shorter fades only,Global,Reduced-motion policy is shared with accessibility and theming.,,,motion,What happens with reduced motion?,In OD story
+D194,same motion at lower distance,Global,Reduced-motion policy is shared with accessibility and theming.,,,motion,What happens with reduced motion?,In OD story
+D195,None,Scoped,Answer only has meaning for motion tokens.,,,motion,How is delay and stagger set?,In OD story
+D196,fixed 30 ms steps,Scoped,Answer only has meaning for motion tokens.,,,motion,How is delay and stagger set?,In OD story
+D197,scaled by item count with a cap,Scoped,Answer only has meaning for motion tokens.,,,motion,How is delay and stagger set?,In OD story
+D198,"Yes (spinner, skeleton)",Scoped,Answer only has meaning for motion tokens.,,,motion,Is motion allowed on loading states?,In OD story
+D199,only fade,Scoped,Answer only has meaning for motion tokens.,,,motion,Is motion allowed on loading states?,In OD story
+D200,none,Scoped,Answer only has meaning for motion tokens.,,,motion,Is motion allowed on loading states?,In OD story
+D201,"3 (phone, tablet, desktop)",Scoped,Answer only has meaning for layout tokens.,,,layout,Which breakpoints exist?,In OD story
+D202,5 (adds small and wide),Scoped,Answer only has meaning for layout tokens.,,,layout,Which breakpoints exist?,In OD story
+D203,device-neutral by content,Scoped,Answer only has meaning for layout tokens.,,,layout,Which breakpoints exist?,In OD story
+D204,"640, 768, 1024, 1280",Scoped,Answer only has meaning for layout tokens.,,,layout,What are the breakpoint values?,In OD story
+D205,"600, 840, 1200",Scoped,Answer only has meaning for layout tokens.,,,layout,What are the breakpoint values?,In OD story
+D206,user-defined,Scoped,Answer only has meaning for layout tokens.,,,layout,What are the breakpoint values?,In OD story
+D207,"4, 8, 12",Scoped,Answer only has meaning for layout tokens.,,,layout,How many grid columns are there?,In OD story
+D208,12 only,Scoped,Answer only has meaning for layout tokens.,,,layout,How many grid columns are there?,In OD story
+D209,12 and 16,Scoped,Answer only has meaning for layout tokens.,,,layout,How many grid columns are there?,In OD story
+D210,Fixed per breakpoint,Scoped,Answer only has meaning for layout tokens.,,,layout,How are gutters and margins set?,In OD story
+D211,from the spacing scale,Scoped,Answer only has meaning for layout tokens.,,,layout,How are gutters and margins set?,In OD story
+D212,fluid,Scoped,Answer only has meaning for layout tokens.,,,layout,How are gutters and margins set?,In OD story
+D213,1100 px,Scoped,Answer only has meaning for layout tokens.,,,layout,What is the maximum content width?,In OD story
+D214,1280 px,Scoped,Answer only has meaning for layout tokens.,,,layout,What is the maximum content width?,In OD story
+D215,1440 px,Scoped,Answer only has meaning for layout tokens.,,,layout,What is the maximum content width?,In OD story
+D216,none,Scoped,Answer only has meaning for layout tokens.,,,layout,What is the maximum content width?,In OD story
+D217,Media queries,Global,Responsive method is shared with type and spacing rules.,,,layout,Which responsive method is used?,In OD story
+D218,container queries,Global,Responsive method is shared with type and spacing rules.,,,layout,Which responsive method is used?,In OD story
+D219,both,Global,Responsive method is shared with type and spacing rules.,,,layout,Which responsive method is used?,In OD story
+D220,Fluid,Global,Responsive method is shared with type and spacing rules.,,,layout,Is layout fluid or fixed?,In OD story
+D221,fixed steps,Global,Responsive method is shared with type and spacing rules.,,,layout,Is layout fluid or fixed?,In OD story
+D222,fluid inside a fixed maximum,Global,Responsive method is shared with type and spacing rules.,,,layout,Is layout fluid or fixed?,In OD story
+D223,45 to 75 characters,Scoped,Answer only has meaning for layout tokens.,,,layout,What is the maximum line length for text?,In OD story
+D224,80 characters,Scoped,Answer only has meaning for layout tokens.,,,layout,What is the maximum line length for text?,In OD story
+D225,none,Scoped,Answer only has meaning for layout tokens.,,,layout,What is the maximum line length for text?,In OD story
+D226,Outline,Scoped,Answer only has meaning for icons.,,,iconography,Which icon style is used?,In OD story
+D227,filled,Scoped,Answer only has meaning for icons.,,,iconography,Which icon style is used?,In OD story
+D228,duotone,Scoped,Answer only has meaning for icons.,,,iconography,Which icon style is used?,In OD story
+D229,outline with filled active state,Scoped,Answer only has meaning for icons.,,,iconography,Which icon style is used?,In OD story
+D230,"16, 24",Scoped,Answer only has meaning for icons.,,,iconography,Which icon sizes exist?,In OD story
+D231,"16, 20, 24",Scoped,Answer only has meaning for icons.,,,iconography,Which icon sizes exist?,In OD story
+D232,12 to 48 in 6 steps,Scoped,Answer only has meaning for icons.,,,iconography,Which icon sizes exist?,In OD story
+D233,24 px with 2 px padding,Scoped,Answer only has meaning for icons.,,,iconography,What is the icon grid?,In OD story
+D234,20 px with 2 px padding,Scoped,Answer only has meaning for icons.,,,iconography,What is the icon grid?,In OD story
+D235,none,Scoped,Answer only has meaning for icons.,,,iconography,What is the icon grid?,In OD story
+D236,1.5 px,Global,"One stroke width is shared by icons, charts and borders.",,,iconography,What stroke width do icons use?,In OD story
+D237,2 px,Global,"One stroke width is shared by icons, charts and borders.",,,iconography,What stroke width do icons use?,In OD story
+D238,scales with size,Global,"One stroke width is shared by icons, charts and borders.",,,iconography,What stroke width do icons use?,In OD story
+D239,Round caps and joins,Scoped,Answer only has meaning for icons.,,,iconography,What corner style do icons use?,In OD story
+D240,square,Scoped,Answer only has meaning for icons.,,,iconography,What corner style do icons use?,In OD story
+D241,match the radius scheme,Scoped,Answer only has meaning for icons.,,,iconography,What corner style do icons use?,In OD story
+D242,"An open set (Lucide, Phosphor)",Scoped,Answer only has meaning for icons.,,,iconography,Where do the icons come from?,In OD story
+D243,a custom set,Scoped,Answer only has meaning for icons.,,,iconography,Where do the icons come from?,In OD story
+D244,a mix,Scoped,Answer only has meaning for icons.,,,iconography,Where do the icons come from?,In OD story
+D245,SVG files,Scoped,Answer only has meaning for icons.,,,iconography,How are icons delivered?,In OD story
+D246,SVG sprite,Scoped,Answer only has meaning for icons.,,,iconography,How are icons delivered?,In OD story
+D247,icon font,Scoped,Answer only has meaning for icons.,,,iconography,How are icons delivered?,In OD story
+D248,components,Scoped,Answer only has meaning for icons.,,,iconography,How are icons delivered?,In OD story
+D249,Inherit text color,Scoped,Answer only has meaning for icons.,,,iconography,How are icons colored?,In OD story
+D250,role color,Scoped,Answer only has meaning for icons.,,,iconography,How are icons colored?,In OD story
+D251,fixed per icon,Scoped,Answer only has meaning for icons.,,,iconography,How are icons colored?,In OD story
+D252,Light only,Global,"Mode or theme mechanism is one rule that color, shadow, border and motion scopes all follow.",,,theming,Which modes exist?,In OD story
+D253,light and dark,Global,"Mode or theme mechanism is one rule that color, shadow, border and motion scopes all follow.",,,theming,Which modes exist?,In OD story
+D254,"light, dark and high contrast",Global,"Mode or theme mechanism is one rule that color, shadow, border and motion scopes all follow.",,,theming,Which modes exist?,In OD story
+D255,plus brand themes,Global,"Mode or theme mechanism is one rule that color, shadow, border and motion scopes all follow.",,,theming,Which modes exist?,In OD story
+D256,By system setting,Global,"Mode or theme mechanism is one rule that color, shadow, border and motion scopes all follow.",,,theming,How is the mode chosen?,In OD story
+D257,by user choice,Global,"Mode or theme mechanism is one rule that color, shadow, border and motion scopes all follow.",,,theming,How is the mode chosen?,In OD story
+D258,"both, with user choice winning",Global,"Mode or theme mechanism is one rule that color, shadow, border and motion scopes all follow.",,,theming,How is the mode chosen?,In OD story
+D259,Designed by hand,Scoped,Answer only has meaning for color scales.,,,theming,How is the dark palette made?,In OD story
+D260,inverted scale,Scoped,Answer only has meaning for color scales.,,,theming,How is the dark palette made?,In OD story
+D261,"derived by tone (same hue, new lightness)",Scoped,Answer only has meaning for color scales.,,,theming,How is the dark palette made?,In OD story
+D262,Colors only,Global,"Mode or theme mechanism is one rule that color, shadow, border and motion scopes all follow.",,,theming,What changes between modes?,In OD story
+D263,colors and shadows,Global,"Mode or theme mechanism is one rule that color, shadow, border and motion scopes all follow.",,,theming,What changes between modes?,In OD story
+D264,"colors, shadows and borders",Global,"Mode or theme mechanism is one rule that color, shadow, border and motion scopes all follow.",,,theming,What changes between modes?,In OD story
+D265,Swap the brand hue only,Global,"Mode or theme mechanism is one rule that color, shadow, border and motion scopes all follow.",,,theming,How are brand themes made?,In OD story
+D266,swap hue and neutrals,Global,"Mode or theme mechanism is one rule that color, shadow, border and motion scopes all follow.",,,theming,How are brand themes made?,In OD story
+D267,full custom token set,Global,"Mode or theme mechanism is one rule that color, shadow, border and motion scopes all follow.",,,theming,How are brand themes made?,In OD story
+D268,One,Global,"Mode or theme mechanism is one rule that color, shadow, border and motion scopes all follow.",,,theming,How many brand themes can run at once?,In OD story
+D269,several on one page (scoped),Global,"Mode or theme mechanism is one rule that color, shadow, border and motion scopes all follow.",,,theming,How many brand themes can run at once?,In OD story
+D270,unlimited,Global,"Mode or theme mechanism is one rule that color, shadow, border and motion scopes all follow.",,,theming,How many brand themes can run at once?,In OD story
+D271,CSS media query,Global,"Mode or theme mechanism is one rule that color, shadow, border and motion scopes all follow.",,,theming,How is a mode switched in code?,In OD story
+D272,a class or attribute on the root,Global,"Mode or theme mechanism is one rule that color, shadow, border and motion scopes all follow.",,,theming,How is a mode switched in code?,In OD story
+D273,both,Global,"Mode or theme mechanism is one rule that color, shadow, border and motion scopes all follow.",,,theming,How is a mode switched in code?,In OD story
+D274,Stronger borders only,Global,"Mode or theme mechanism is one rule that color, shadow, border and motion scopes all follow.",,,theming,What does high contrast change?,In OD story
+D275,stronger borders and text,Global,"Mode or theme mechanism is one rule that color, shadow, border and motion scopes all follow.",,,theming,What does high contrast change?,In OD story
+D276,a separate palette,Global,"Mode or theme mechanism is one rule that color, shadow, border and motion scopes all follow.",,,theming,What does high contrast change?,In OD story
+D277,"Two (reference, semantic)",Global,"Token structure, format or naming rule applies to every scope.",,,token-architecture,How many token layers are there?,In OD story
+D278,"three (reference, semantic, component)",Global,"Token structure, format or naming rule applies to every scope.",,,token-architecture,How many token layers are there?,In OD story
+D279,one flat layer,Global,"Token structure, format or naming rule applies to every scope.",,,token-architecture,How many token layers are there?,In OD story
+D280,W3C DTCG JSON,Global,"Token structure, format or naming rule applies to every scope.",,,token-architecture,Which file format holds the tokens?,In OD story
+D281,Style Dictionary JSON,Global,"Token structure, format or naming rule applies to every scope.",,,token-architecture,Which file format holds the tokens?,In OD story
+D282,Tokens Studio JSON,Global,"Token structure, format or naming rule applies to every scope.",,,token-architecture,Which file format holds the tokens?,In OD story
+D283,CSS variables only,Global,"Token structure, format or naming rule applies to every scope.",,,token-architecture,Which file format holds the tokens?,In OD story
+D284,Dot path (color.text.primary),Global,"Token structure, format or naming rule applies to every scope.",,,token-architecture,How are tokens named?,In OD story
+D285,kebab-case (color-text-primary),Global,"Token structure, format or naming rule applies to every scope.",,,token-architecture,How are tokens named?,In OD story
+D286,camelCase,Global,"Token structure, format or naming rule applies to every scope.",,,token-architecture,How are tokens named?,In OD story
+D287,"Category, role, state (color.text.hover)",Global,"Token structure, format or naming rule applies to every scope.",,,token-architecture,What is the order of name parts?,In OD story
+D288,role first,Global,"Token structure, format or naming rule applies to every scope.",,,token-architecture,What is the order of name parts?,In OD story
+D289,user-defined,Global,"Token structure, format or naming rule applies to every scope.",,,token-architecture,What is the order of name parts?,In OD story
+D290,Alias with curly braces,Global,"Token structure, format or naming rule applies to every scope.",,,token-architecture,How do tokens refer to each other?,In OD story
+D291,direct value copy,Global,"Token structure, format or naming rule applies to every scope.",,,token-architecture,How do tokens refer to each other?,In OD story
+D292,both,Global,"Token structure, format or naming rule applies to every scope.",,,token-architecture,How do tokens refer to each other?,In OD story
+D293,None,Global,"Token structure, format or naming rule applies to every scope.",,,token-architecture,Is there a prefix?,In OD story
+D294,one project prefix,Global,"Token structure, format or naming rule applies to every scope.",,,token-architecture,Is there a prefix?,In OD story
+D295,a prefix per layer,Global,"Token structure, format or naming rule applies to every scope.",,,token-architecture,Is there a prefix?,In OD story
+D296,DTCG standard types only,Global,"Token structure, format or naming rule applies to every scope.",,,token-architecture,Which token types are used?,In OD story
+D297,standard plus custom types,Global,"Token structure, format or naming rule applies to every scope.",,,token-architecture,Which token types are used?,In OD story
+D298,free-form,Global,"Token structure, format or naming rule applies to every scope.",,,token-architecture,Which token types are used?,In OD story
+D299,Semantic version of the whole set,Global,"Token structure, format or naming rule applies to every scope.",,,token-architecture,How are changes versioned?,In OD story
+D300,version per token group,Global,"Token structure, format or naming rule applies to every scope.",,,token-architecture,How are changes versioned?,In OD story
+D301,date stamps,Global,"Token structure, format or naming rule applies to every scope.",,,token-architecture,How are changes versioned?,In OD story
+D302,Deprecation flag with a message,Global,"Token structure, format or naming rule applies to every scope.",,,token-architecture,How are old tokens retired?,In OD story
+D303,alias to the new token,Global,"Token structure, format or naming rule applies to every scope.",,,token-architecture,How are old tokens retired?,In OD story
+D304,removal in a major version,Global,"Token structure, format or naming rule applies to every scope.",,,token-architecture,How are old tokens retired?,In OD story
+D305,WCAG 2.2 AA,Global,Accessibility rule is checked in many scopes.,,,accessibility,Which conformance level is the target?,In OD story
+D306,WCAG 2.2 AAA,Global,Accessibility rule is checked in many scopes.,,,accessibility,Which conformance level is the target?,In OD story
+D307,WCAG 3 draft (APCA),Global,Accessibility rule is checked in many scopes.,,,accessibility,Which conformance level is the target?,In OD story
+D308,WCAG 2 contrast ratio,Global,Accessibility rule is checked in many scopes.,,,accessibility,Which contrast metric is used?,In OD story
+D309,APCA Lc,Global,Accessibility rule is checked in many scopes.,,,accessibility,Which contrast metric is used?,In OD story
+D310,both must pass,Global,Accessibility rule is checked in many scopes.,,,accessibility,Which contrast metric is used?,In OD story
+D311,Text 4.5:1 and borders 3:1,Global,Accessibility rule is checked in many scopes.,,,accessibility,What are the contrast minimums?,In OD story
+D312,text 7:1 and borders 4.5:1,Global,Accessibility rule is checked in many scopes.,,,accessibility,What are the contrast minimums?,In OD story
+D313,APCA Lc 60 and Lc 45,Global,Accessibility rule is checked in many scopes.,,,accessibility,What are the contrast minimums?,In OD story
+D314,12 px,Scoped,Minimum text size only makes sense for type tokens.,,,accessibility,What is the minimum text size?,In OD story
+D315,14 px,Scoped,Minimum text size only makes sense for type tokens.,,,accessibility,What is the minimum text size?,In OD story
+D316,16 px,Scoped,Minimum text size only makes sense for type tokens.,,,accessibility,What is the minimum text size?,In OD story
+D317,24 px,Global,Accessibility rule is checked in many scopes.,,,accessibility,What is the minimum target size?,In OD story
+D318,44 px,Global,Accessibility rule is checked in many scopes.,,,accessibility,What is the minimum target size?,In OD story
+D319,48 px,Global,Accessibility rule is checked in many scopes.,,,accessibility,What is the minimum target size?,In OD story
+D320,Visible at 3:1,Global,Accessibility rule is checked in many scopes.,,,accessibility,What must a focus indicator meet?,In OD story
+D321,visible at 3:1 and at least 2 px,Global,Accessibility rule is checked in many scopes.,,,accessibility,What must a focus indicator meet?,In OD story
+D322,double ring on any background,Global,Accessibility rule is checked in many scopes.,,,accessibility,What must a focus indicator meet?,In OD story
+D323,Reduced motion only,Global,Accessibility rule is checked in many scopes.,,,accessibility,How are user preferences handled?,In OD story
+D324,reduced motion and contrast,Global,Accessibility rule is checked in many scopes.,,,accessibility,How are user preferences handled?,In OD story
+D325,also color scheme and text size,Global,Accessibility rule is checked in many scopes.,,,accessibility,How are user preferences handled?,In OD story
+D326,Block the output,Global,Accessibility rule is checked in many scopes.,,,accessibility,What happens when a choice fails a rule?,In OD story
+D327,warn and allow,Global,Accessibility rule is checked in many scopes.,,,accessibility,What happens when a choice fails a rule?,In OD story
+D328,auto-adjust to the nearest passing value,Global,Accessibility rule is checked in many scopes.,,,accessibility,What happens when a choice fails a rule?,In OD story
+D329,Never (add icon or text),Global,Accessibility rule is checked in many scopes.,,,accessibility,Is color the only way to show meaning?,In OD story
+D330,allowed for decoration only,Global,Accessibility rule is checked in many scopes.,,,accessibility,Is color the only way to show meaning?,In OD story
+D331,no rule,Global,Accessibility rule is checked in many scopes.,,,accessibility,Is color the only way to show meaning?,In OD story
+D332,Copy-in CLI (files go into the repo),Global,"Delivery choice applies to the whole pack, not one scope.",,,delivery,How does the user get the design system?,In OD story
+D333,CDN URL (served),Global,"Delivery choice applies to the whole pack, not one scope.",,,delivery,How does the user get the design system?,In OD story
+D334,UI picker (download),Global,"Delivery choice applies to the whole pack, not one scope.",,,delivery,How does the user get the design system?,In OD story
+D335,all three,Global,"Delivery choice applies to the whole pack, not one scope.",,,delivery,How does the user get the design system?,In OD story
+D336,CSS variables,Global,"Delivery choice applies to the whole pack, not one scope.",,,delivery,Which output formats are offered?,In OD story
+D337,JSON (DTCG),Global,"Delivery choice applies to the whole pack, not one scope.",,,delivery,Which output formats are offered?,In OD story
+D338,Tailwind config,Global,"Delivery choice applies to the whole pack, not one scope.",,,delivery,Which output formats are offered?,In OD story
+D339,Swift or Kotlin files,Global,"Delivery choice applies to the whole pack, not one scope.",,,delivery,Which output formats are offered?,In OD story
+D340,A name,Global,"Delivery choice applies to the whole pack, not one scope.",,,delivery,How is a set of choices identified?,In OD story
+D341,a hash of the choices,Global,"Delivery choice applies to the whole pack, not one scope.",,,delivery,How is a set of choices identified?,In OD story
+D342,a shareable link,Global,"Delivery choice applies to the whole pack, not one scope.",,,delivery,How is a set of choices identified?,In OD story
+D343,Exact version,Global,"Delivery choice applies to the whole pack, not one scope.",,,delivery,How is a set of choices pinned?,In OD story
+D344,version range,Global,"Delivery choice applies to the whole pack, not one scope.",,,delivery,How is a set of choices pinned?,In OD story
+D345,latest,Global,"Delivery choice applies to the whole pack, not one scope.",,,delivery,How is a set of choices pinned?,In OD story
+D346,User pulls when ready,Global,"Delivery choice applies to the whole pack, not one scope.",,,delivery,How are updates handled?,In OD story
+D347,CLI shows a diff first,Global,"Delivery choice applies to the whole pack, not one scope.",,,delivery,How are updates handled?,In OD story
+D348,automatic,Global,"Delivery choice applies to the whole pack, not one scope.",,,delivery,How are updates handled?,In OD story
+D349,A config file,Global,"Delivery choice applies to the whole pack, not one scope.",,,delivery,How are choices entered?,In OD story
+D350,command-line questions,Global,"Delivery choice applies to the whole pack, not one scope.",,,delivery,How are choices entered?,In OD story
+D351,a web page with live preview,Global,"Delivery choice applies to the whole pack, not one scope.",,,delivery,How are choices entered?,In OD story
+D352,No,Global,"Delivery choice applies to the whole pack, not one scope.",,,delivery,Can the user mix a base preset with their own picks?,In OD story
+D353,"yes, with overrides",Global,"Delivery choice applies to the whole pack, not one scope.",,,delivery,Can the user mix a base preset with their own picks?,In OD story
+D354,"yes, with a fork",Global,"Delivery choice applies to the whole pack, not one scope.",,,delivery,Can the user mix a base preset with their own picks?,In OD story
+D355,One CSS file per set of choices,Global,"Delivery choice applies to the whole pack, not one scope.",,,delivery,What does the CDN serve?,In OD story
+D356,separate files per scope,Global,"Delivery choice applies to the whole pack, not one scope.",,,delivery,What does the CDN serve?,In OD story
+D357,JSON for runtime use,Global,"Delivery choice applies to the whole pack, not one scope.",,,delivery,What does the CDN serve?,In OD story
+D358,Accessibility gates only,Global,"Delivery choice applies to the whole pack, not one scope.",,,delivery,What checks run before output?,In OD story
+D359,all scheme rules,Global,"Delivery choice applies to the whole pack, not one scope.",,,delivery,What checks run before output?,In OD story
+D360,none,Global,"Delivery choice applies to the whole pack, not one scope.",,,delivery,What checks run before output?,In OD story
+D361,marketing site,Scoped,"Purpose answer steers other scopes through effects, not through a shared answer.",,,purpose,Product type: What does the design system serve?,In OD story
+D362,web app or dashboard,Scoped,"Purpose answer steers other scopes through effects, not through a shared answer.",,,purpose,Product type: What does the design system serve?,In OD story
+D363,mobile app,Scoped,"Purpose answer steers other scopes through effects, not through a shared answer.",,,purpose,Product type: What does the design system serve?,In OD story
+D364,internal tool,Scoped,"Purpose answer steers other scopes through effects, not through a shared answer.",,,purpose,Product type: What does the design system serve?,In OD story
+D365,multi-product platform,Scoped,"Purpose answer steers other scopes through effects, not through a shared answer.",,,purpose,Product type: What does the design system serve?,In OD story
+D366,general public on mixed devices,Scoped,"Purpose answer steers other scopes through effects, not through a shared answer.",,,purpose,"Users and context: Who uses the product, and where?",In OD story
+D367,expert users at a desk,Scoped,"Purpose answer steers other scopes through effects, not through a shared answer.",,,purpose,"Users and context: Who uses the product, and where?",In OD story
+D368,field use in bright light,Scoped,"Purpose answer steers other scopes through effects, not through a shared answer.",,,purpose,"Users and context: Who uses the product, and where?",In OD story
+D369,older adults or children,Scoped,"Purpose answer steers other scopes through effects, not through a shared answer.",,,purpose,"Users and context: Who uses the product, and where?",In OD story
+D370,internal staff,Scoped,"Purpose answer steers other scopes through effects, not through a shared answer.",,,purpose,"Users and context: Who uses the product, and where?",In OD story
+D371,WCAG 2.2 level AA,Scoped,"Purpose answer steers other scopes through effects, not through a shared answer.",,,purpose,Accessibility target: Which level must the product meet?,In OD story
+D372,level AA with AAA for body text,Scoped,"Purpose answer steers other scopes through effects, not through a shared answer.",,,purpose,Accessibility target: Which level must the product meet?,In OD story
+D373,a legal standard (for example EN 301 549 or Section 508),Scoped,"Purpose answer steers other scopes through effects, not through a shared answer.",,,purpose,Accessibility target: Which level must the product meet?,In OD story
+D374,web only,Scoped,"Purpose answer steers other scopes through effects, not through a shared answer.",,,purpose,Platforms: Where does the product run?,In OD story
+D375,web and native mobile,Scoped,"Purpose answer steers other scopes through effects, not through a shared answer.",,,purpose,Platforms: Where does the product run?,In OD story
+D376,cross-platform app,Scoped,"Purpose answer steers other scopes through effects, not through a shared answer.",,,purpose,Platforms: Where does the product run?,In OD story
+D377,web plus email,Scoped,"Purpose answer steers other scopes through effects, not through a shared answer.",,,purpose,Platforms: Where does the product run?,In OD story
+D378,one person,Scoped,"Purpose answer steers other scopes through effects, not through a shared answer.",,,purpose,Team size and maturity: Who builds and keeps the DS?,In OD story
+D379,"small team, first DS",Scoped,"Purpose answer steers other scopes through effects, not through a shared answer.",,,purpose,Team size and maturity: Who builds and keeps the DS?,In OD story
+D380,several squads,Scoped,"Purpose answer steers other scopes through effects, not through a shared answer.",,,purpose,Team size and maturity: Who builds and keeps the DS?,In OD story
+D381,a large group with many brands,Scoped,"Purpose answer steers other scopes through effects, not through a shared answer.",,,purpose,Team size and maturity: Who builds and keeps the DS?,In OD story
+D382,one brand,Scoped,"Purpose answer steers other scopes through effects, not through a shared answer.",,,purpose,Brand variance: How much can the look change?,In OD story
+D383,light and dark only,Scoped,"Purpose answer steers other scopes through effects, not through a shared answer.",,,purpose,Brand variance: How much can the look change?,In OD story
+D384,several themes on one structure,Scoped,"Purpose answer steers other scopes through effects, not through a shared answer.",,,purpose,Brand variance: How much can the look change?,In OD story
+D385,white-label for many brands,Scoped,"Purpose answer steers other scopes through effects, not through a shared answer.",,,purpose,Brand variance: How much can the look change?,In OD story
+D386,compact,Scoped,"Purpose answer steers other scopes through effects, not through a shared answer.",,,purpose,Density: How much content fits on a screen?,In OD story
+D387,comfortable,Scoped,"Purpose answer steers other scopes through effects, not through a shared answer.",,,purpose,Density: How much content fits on a screen?,In OD story
+D388,spacious,Scoped,"Purpose answer steers other scopes through effects, not through a shared answer.",,,purpose,Density: How much content fits on a screen?,In OD story
+D389,the user switches,Scoped,"Purpose answer steers other scopes through effects, not through a shared answer.",,,purpose,Density: How much content fits on a screen?,In OD story
+D390,neutral and plain,Scoped,"Purpose answer steers other scopes through effects, not through a shared answer.",,,purpose,Voice and personality: How does the product feel?,In OD story
+D391,friendly,Scoped,"Purpose answer steers other scopes through effects, not through a shared answer.",,,purpose,Voice and personality: How does the product feel?,In OD story
+D392,bold and expressive,Scoped,"Purpose answer steers other scopes through effects, not through a shared answer.",,,purpose,Voice and personality: How does the product feel?,In OD story
+D393,formal and trusted,Scoped,"Purpose answer steers other scopes through effects, not through a shared answer.",,,purpose,Voice and personality: How does the product feel?,In OD story
+D394,"HCT (hue, chroma, tone; tone 0-100 gives same perceived brightness)",Global,"Color space or color format is reused by semantic color, theming, shadow tint and output.",,,color-primitives,Which color space defines the scale?,In OD story
+D395,OKLCH (palette values copied as OKLCH; daisyUI themes in oklch),Global,"Color space or color format is reused by semantic color, theming, shadow tint and output.",,,color-primitives,Which color space defines the scale?,In OD story
+D396,"CIELAB LCH (Accessible Palette starting colors set as L, C, H)",Global,"Color space or color format is reused by semantic color, theming, shadow tint and output.",,,color-primitives,Which color space defines the scale?,In OD story
+D397,"Leonardo interpolation space: LCH, LAB, CAM02, HSL, HSLuv, HSV, RGB",Global,"Color space or color format is reused by semantic color, theming, shadow tint and output.",,,color-primitives,Which color space defines the scale?,In OD story
+D398,HSL / HWB / sRGB / Display P3 and 10 more listed as storage spaces in DTCG,Global,"Color space or color format is reused by semantic color, theming, shadow tint and output.",,,color-primitives,Which color space defines the scale?,In OD story
+D399,12 steps (Radix Colors),Scoped,Answer only has meaning for the color primitive scales.,,,color-primitives,How many steps does one hue scale have?,In OD story
+D400,11 steps 50-950 (Tailwind; ColorBox default steps 11),Scoped,Answer only has meaning for the color primitive scales.,,,color-primitives,How many steps does one hue scale have?,In OD story
+D401,10 steps 50-900 (Accessible Palette),Scoped,Answer only has meaning for the color primitive scales.,,,color-primitives,How many steps does one hue scale have?,In OD story
+D402,"tonal palette 0-100 in steps of 10 plus 95, 98, 99 (Material)",Scoped,Answer only has meaning for the color primitive scales.,,,color-primitives,How many steps does one hue scale have?,In OD story
+D403,13 values 0-12 for gray (Open Props),Scoped,Answer only has meaning for the color primitive scales.,,,color-primitives,How many steps does one hue scale have?,In OD story
+D404,"free list of target ratios, e.g. 4 or 2 values (Leonardo)",Scoped,Answer only has meaning for the color primitive scales.,,,color-primitives,How many steps does one hue scale have?,In OD story
+D405,1-12 (Radix),Global,Step numbering style is one rule that reads the same in every scale scope.,OD-15 Q3: Which scale direction and range?,clear: same topic (step numbering and range); some option values are new to the Jira list,color-primitives,How do step names look?,Proposed
+D406,"50,100...900,950 (Tailwind)",Global,Step numbering style is one rule that reads the same in every scale scope.,OD-15 Q3: Which scale direction and range?,clear: same topic (step numbering and range); some option values are new to the Jira list,color-primitives,How do step names look?,Proposed
+D407,tone numbers 0-100 (Material),Global,Step numbering style is one rule that reads the same in every scale scope.,OD-15 Q3: Which scale direction and range?,clear: same topic (step numbering and range); some option values are new to the Jira list,color-primitives,How do step names look?,Proposed
+D408,"100,200,300... from target contrast order; values below 100 for negative ratios; or named keys such as blue--largeText (Leonardo)",Global,Step numbering style is one rule that reads the same in every scale scope.,,no clear match; nearest OD-15 Q3 (names built by rule or by tool are not in Q3),color-primitives,How do step names look?,Proposed
+D409,0-12 (Open Props),Global,Step numbering style is one rule that reads the same in every scale scope.,OD-15 Q3: Which scale direction and range?,clear: same topic (step numbering and range); some option values are new to the Jira list,color-primitives,How do step names look?,Proposed
+D410,generated numeric names by the tool from a user base name (DTCG example),Global,Step numbering style is one rule that reads the same in every scale scope.,,no clear match; nearest OD-15 Q3 (names built by rule or by tool are not in Q3),color-primitives,How do step names look?,Proposed
+D411,"Fixed use case per step (Radix: 1 app bg, 3-5 component bg, 6-8 borders, 9-10 solid, 11-12 text)",Scoped,Answer only has meaning for the color primitive scales.,,,color-primitives,What rule sets the lightness of each step?,In OD story
+D412,target contrast ratio per step against a background (Leonardo ratios),Scoped,Answer only has meaning for the color primitive scales.,,,color-primitives,What rule sets the lightness of each step?,In OD story
+D413,predictable contrast between steps (Huetone),Scoped,Answer only has meaning for the color primitive scales.,,,color-primitives,What rule sets the lightness of each step?,In OD story
+D414,consistent lightness plus WCAG 2 and WCAG 3 contrast shown per step (Accessible Palette),Scoped,Answer only has meaning for the color primitive scales.,,,color-primitives,What rule sets the lightness of each step?,In OD story
+D415,"easing curves for hue, saturation and brightness over N steps (ColorBox: easeOutQuad, easeInQuart seen)",Scoped,Answer only has meaning for the color primitive scales.,,,color-primitives,What rule sets the lightness of each step?,In OD story
+D416,"tone pairs: tone 50 vs 98 gives 3:1, tone 30 vs 98 gives 7:1 (Material)",Scoped,Answer only has meaning for the color primitive scales.,,,color-primitives,What rule sets the lightness of each step?,In OD story
+D417,WCAG 2 ratio (Leonardo ratios; Prism WCAG 2.1 with AA/AAA grade; Accessible Palette),Global,Contrast metric is shared with semantic color and accessibility.,OD-27 Q2: Which contrast metric is used?,clear: same topic (contrast metric); OD-15 Q2 lists the same two metrics for step distance,color-primitives,Which contrast formula checks the scale?,Proposed
+D418,"APCA (Huetone; Radix steps 11 and 12 reach APCA Lc 60 and Lc 90 on step 2; Accessible Palette shows it as ""WCAG 3"")",Global,Contrast metric is shared with semantic color and accessibility.,OD-27 Q2: Which contrast metric is used?,clear: same topic (contrast metric); OD-15 Q2 lists the same two metrics for step distance,color-primitives,Which contrast formula checks the scale?,Proposed
+D419,"Material tone distance (3:1 medium, 7:1 high contrast)",Global,Contrast metric is shared with semantic color and accessibility.,OD-27 Q2: Which contrast metric is used?,clear: same topic (contrast metric); OD-15 Q2 lists the same two metrics for step distance,color-primitives,Which contrast formula checks the scale?,Proposed
+D420,"Yes: light, dark and alpha variant per scale (Radix Themes)",Scoped,Answer only has meaning for the color primitive scales.,,,color-primitives,Does the scale ship an alpha (transparent) twin?,Gap
+D421,Tailwind --alpha() function on a variable,Scoped,Answer only has meaning for the color primitive scales.,,,color-primitives,Does the scale ship an alpha (transparent) twin?,Gap
+D422,Open Props optional -hsl variables for opacity,Scoped,Answer only has meaning for the color primitive scales.,,,color-primitives,Does the scale ship an alpha (transparent) twin?,Gap
+D423,DTCG alpha field 0-1 on the color value,Scoped,Answer only has meaning for the color primitive scales.,,,color-primitives,Does the scale ship an alpha (transparent) twin?,Gap
+D424,tool-made opacity steps 10..100 as a scale (DTCG example),Scoped,Answer only has meaning for the color primitive scales.,,,color-primitives,Does the scale ship an alpha (transparent) twin?,Gap
+D425,Radix: 25 accent scales (20 for white text: bronze gold brown orange tomato red ruby crimson pink plum purple violet iris indigo blue cyan teal jade green grass; 5 for dark text: sky mint lime yellow amber) plus 6 grays,Scoped,Answer only has meaning for the color primitive scales.,,,color-primitives,Which hues are in the base set?,In OD story
+D426,Tailwind: 17 hues (red orange amber yellow lime green emerald teal cyan sky blue indigo violet purple fuchsia pink rose) plus 9 neutrals,Scoped,Answer only has meaning for the color primitive scales.,,,color-primitives,Which hues are in the base set?,In OD story
+D427,"Material: 5 key colors from one source (primary, secondary, tertiary, neutral, neutral variant)",Scoped,Answer only has meaning for the color primitive scales.,,,color-primitives,Which hues are in the base set?,In OD story
+D428,Pure gray,Scoped,Answer only has meaning for the color primitive scales.,,,color-primitives,Which neutral (gray) family?,In OD story
+D429,"tinted grays: Radix mauve (purple), slate (blue), sage (green), olive (lime), sand (yellow)",Scoped,Answer only has meaning for the color primitive scales.,,,color-primitives,Which neutral (gray) family?,In OD story
+D430,"Tailwind slate, gray, zinc, neutral, stone, taupe, mauve, mist, olive",Scoped,Answer only has meaning for the color primitive scales.,,,color-primitives,Which neutral (gray) family?,In OD story
+D431,"shadcn baseColor: neutral, stone, zinc, mauve, olive, mist, taupe",Scoped,Answer only has meaning for the color primitive scales.,,,color-primitives,Which neutral (gray) family?,In OD story
+D432,Material neutral + neutral variant. Radix pairing rule: neutral pairing = gray; natural pairing = gray closest to accent hue,Scoped,Answer only has meaning for the color primitive scales.,,,color-primitives,Which neutral (gray) family?,In OD story
+D433,Do not edit Radix scales; add custom scales next to them,Scoped,Answer only has meaning for the color primitive scales.,,no clear match; nearest OD-15 Q7 (base hues),color-primitives,"Is the brand color changed to fit the scale, or added next to it?",Proposed
+D434,Material turns one source color into five key colors by an algorithm,Scoped,Answer only has meaning for the color primitive scales.,,no clear match; nearest OD-15 Q7 (base hues),color-primitives,"Is the brand color changed to fit the scale, or added next to it?",Proposed
+D435,Leonardo takes color keys and interpolates a full lightness scale,Scoped,Answer only has meaning for the color primitive scales.,,no clear match; nearest OD-15 Q7 (base hues),color-primitives,"Is the brand color changed to fit the scale, or added next to it?",Proposed
+D436,daisyUI and shadcn let the author set each token by hand,Scoped,Answer only has meaning for the color primitive scales.,,no clear match; nearest OD-15 Q7 (base hues),color-primitives,"Is the brand color changed to fit the scale, or added next to it?",Proposed
+D437,Wallpaper (quantized to one color),Scoped,Answer only has meaning for the color primitive scales.,,no clear match; nearest OD-15 Q7 (base hues),color-primitives,How is the source color chosen?,Proposed
+D438,in-app content such as an image or logo (quantized),Scoped,Answer only has meaning for the color primitive scales.,,no clear match; nearest OD-15 Q7 (base hues),color-primitives,How is the source color chosen?,Proposed
+D439,picked by hand by a designer (baseline scheme),Scoped,Answer only has meaning for the color primitive scales.,,no clear match; nearest OD-15 Q7 (base hues),color-primitives,How is the source color chosen?,Proposed
+D440,"Radix groups scales: designed for white foreground text vs designed for dark foreground text (sky, mint, lime, yellow, amber)",Scoped,Answer only has meaning for the color primitive scales.,,no clear match,color-primitives,Is the brand scale made for white text or dark text?,Proposed
+D441,"HEX default, RGB, HSL, HSV, HSLuv, LAB, LCH, CAM02, CAM02p (Leonardo)",Global,"Color space or color format is reused by semantic color, theming, shadow tint and output.",,,color-primitives,In what format does the tool give colors out?,Gap
+D442,"Tailwind CSS, OKLCH, Swift (ColorBox export)",Global,"Color space or color format is reused by semantic color, theming, shadow tint and output.",,,color-primitives,In what format does the tool give colors out?,Gap
+D443,rgba() (Polaris),Global,"Color space or color format is reused by semantic color, theming, shadow tint and output.",,,color-primitives,In what format does the tool give colors out?,Gap
+D444,oklch() (daisyUI),Global,"Color space or color format is reused by semantic color, theming, shadow tint and output.",,,color-primitives,In what format does the tool give colors out?,Gap
+D445,"color object {colorSpace, components, alpha, hex fallback} (DTCG)",Global,"Color space or color format is reused by semantic color, theming, shadow tint and output.",,,color-primitives,In what format does the tool give colors out?,Gap
+D446,"P3 fallback picker in oklch.com (""closest fallback (by chroma) in sRGB"")",Global,"One gamut and fallback rule reads the same word for word for primitive, semantic and shadow colors.",,,color-primitives,Does the scale need a P3 or sRGB fallback?,In OD story
+D447,DTCG optional 6-digit hex fallback beside any color space,Global,"One gamut and fallback rule reads the same word for word for primitive, semantic and shadow colors.",,,color-primitives,Does the scale need a P3 or sRGB fallback?,In OD story
+D448,Display P3 listed as a storage space in DTCG,Global,"One gamut and fallback rule reads the same word for word for primitive, semantic and shadow colors.",,,color-primitives,Does the scale need a P3 or sRGB fallback?,In OD story
+D449,"Lighten, darken, alpha, mix, each with amount 0 to 1, in LCH, sRGB, P3 or HSL space (Tokens Studio color modifier)",Scoped,Answer only has meaning for the color primitive scales.,,no clear match,color-primitives,Which color-change operations does the system allow on a base color?,Proposed
+D450,"contrast-ratio theme knobs: lightness 0-100 of background, contrast multiplier (default 1), saturation 0-100 (default 100) (Leonardo)",Scoped,Answer only has meaning for the color primitive scales.,,no clear match,color-primitives,Which color-change operations does the system allow on a base color?,Proposed
+D451,Leonardo smooth option (default false),Scoped,Answer only has meaning for the color primitive scales.,,,color-primitives,Is bezier smoothing used between color keys?,Gap
+D452,"ColorBox curve per channel (hue, saturation, brightness)",Scoped,Answer only has meaning for the color primitive scales.,,,color-primitives,Is bezier smoothing used between color keys?,Gap
+D453,Six harmony schemes from a base color (names not listed on the fetched page),Scoped,Answer only has meaning for the color primitive scales.,,,color-primitives,Which harmony rule picks extra hues?,Gap
+D454,Material temperature utilities for analogous and complementary colors,Scoped,Answer only has meaning for the color primitive scales.,,,color-primitives,Which harmony rule picks extra hues?,Gap
+D455,"Radix aliases: accent, primary, neutral, brand, success, warning, danger, info, valid, pending",Scoped,Answer only has meaning for semantic color roles.,,,semantic-color,Which semantic roles exist?,In OD story
+D456,"MUI: primary, secondary, error, warning, info, success",Scoped,Answer only has meaning for semantic color roles.,,,semantic-color,Which semantic roles exist?,In OD story
+D457,"daisyUI: base-100/200/300, base-content, primary, secondary, accent, neutral, info, success, warning, error",Scoped,Answer only has meaning for semantic color roles.,,,semantic-color,Which semantic roles exist?,In OD story
+D458,"Atlassian roles: neutral, accent colors (blue, yellow, orange, teal, purple, magenta, lime), inverse, input; roles also differ buttons as primary, secondary, warning, dangerous",Scoped,Answer only has meaning for semantic color roles.,,,semantic-color,Which semantic roles exist?,In OD story
+D459,"Material: 26 color roles (primary, on primary, primary container...)",Scoped,Answer only has meaning for semantic color roles.,,,semantic-color,Which semantic roles exist?,In OD story
+D460,"Polaris surfaces: surface, secondary, tertiary, brand, info, success, caution, warning, critical, emphasis, magic, inverse",Scoped,Answer only has meaning for semantic color roles.,,,semantic-color,Which semantic roles exist?,In OD story
+D461,"name + -foreground (shadcn: primary / primary-foreground; ""background"" suffix omitted on the surface token)",Scoped,Answer only has meaning for semantic color roles.,,,semantic-color,How do text colors pair with their surface?,Gap
+D462,name + -content (daisyUI),Scoped,Answer only has meaning for semantic color roles.,,,semantic-color,How do text colors pair with their surface?,Gap
+D463,contrastText (MUI),Scoped,Answer only has meaning for semantic color roles.,,,semantic-color,How do text colors pair with their surface?,Gap
+D464,on- prefix (Material: primary / on primary),Scoped,Answer only has meaning for semantic color roles.,,,semantic-color,How do text colors pair with their surface?,Gap
+D465,inverse tokens for bold backgrounds (Atlassian; warning.inverse passes WCAG AA),Scoped,Answer only has meaning for semantic color roles.,,,semantic-color,How do text colors pair with their surface?,Gap
+D466,steps 11 and 12 of the same scale (Radix),Scoped,Answer only has meaning for semantic color roles.,,,semantic-color,How do text colors pair with their surface?,Gap
+D467,"role x emphasis (subtlest to boldest) x interaction state (hovered, pressed, selected, focused, disabled) (Atlassian)",Scoped,Answer only has meaning for semantic color roles.,,no clear match; nearest OD-16 Q6 (states) and OD-16 Q1 (role names),semantic-color,Which dimensions does one color token have?,Proposed
+D468,"surface x variant suffix -hover, -active, -selected, -disabled (Polaris)",Scoped,Answer only has meaning for semantic color roles.,,no clear match; nearest OD-16 Q6 (states) and OD-16 Q1 (role names),semantic-color,Which dimensions does one color token have?,Proposed
+D469,"use-case aliases per step: base, bg-subtle, bg, bg-hover, bg-active, line, border, border-hover, solid, solid-hover, text, text-contrast (Radix example)",Scoped,Answer only has meaning for semantic color roles.,,no clear match; nearest OD-16 Q6 (states) and OD-16 Q1 (role names),semantic-color,Which dimensions does one color token have?,Proposed
+D470,"main, light, dark, contrastText (MUI)",Scoped,Answer only has meaning for semantic color roles.,,no clear match; nearest OD-16 Q6 (states) and OD-16 Q1 (role names),semantic-color,Which dimensions does one color token have?,Proposed
+D471,Yes: map several aliases to one scale (accent and info to blue; success and valid to green; warning and pending to yellow; danger/error/rejected to red) or use the raw scale name when no alias fits (Radix),Scoped,Answer only has meaning for semantic color roles.,,,semantic-color,May one scale serve two meanings?,Gap
+D472,Atlassian: do not use an accent color when the color has semantic meaning,Scoped,Answer only has meaning for semantic color roles.,,,semantic-color,May one scale serve two meanings?,Gap
+D473,"Error: red, ruby, tomato, crimson",Scoped,Answer only has meaning for semantic color roles.,OD-16 Q5: How are status colors made?,clear: same topic (status color hues),semantic-color,Which scale for each status?,Proposed
+D474,"Success: green, teal, jade, grass, mint",Scoped,Answer only has meaning for semantic color roles.,OD-16 Q5: How are status colors made?,clear: same topic (status color hues),semantic-color,Which scale for each status?,Proposed
+D475,"Warning: yellow, amber, orange",Scoped,Answer only has meaning for semantic color roles.,OD-16 Q5: How are status colors made?,clear: same topic (status color hues),semantic-color,Which scale for each status?,Proposed
+D476,"Info: blue, indigo, sky, cyan (Radix, ""common pairings that work well in Western culture"")",Scoped,Answer only has meaning for semantic color roles.,OD-16 Q5: How are status colors made?,clear: same topic (status color hues),semantic-color,Which scale for each status?,Proposed
+D477,Polaris keeps both caution and warning surfaces,Scoped,Answer only has meaning for semantic color roles.,,no clear match; nearest OD-16 Q2 (role groups),semantic-color,Which scale for each status?,Proposed
+D478,"4 surfaces surface-1..4 plus text-1, text-2 and brand (Open Props adaptive pattern)",Scoped,Answer only has meaning for semantic color roles.,,,semantic-color,How many surface layers does the system define?,In OD story
+D479,"3 surfaces: surface, secondary, tertiary (Polaris)",Scoped,Answer only has meaning for semantic color roles.,,,semantic-color,How many surface layers does the system define?,In OD story
+D480,Carbon layering model: light themes alternate White and Gray 10 per layer; dark themes get one step lighter per layer,Scoped,Answer only has meaning for semantic color roles.,,,semantic-color,How many surface layers does the system define?,In OD story
+D481,"base-100, base-200, base-300 (daisyUI)",Scoped,Answer only has meaning for semantic color roles.,,,semantic-color,How many surface layers does the system define?,In OD story
+D482,Atlassian elevation surfaces,Scoped,Answer only has meaning for semantic color roles.,,,semantic-color,How many surface layers does the system define?,In OD story
+D483,"Accent scale step 11/12 for a colorful feel; gray scale step 11/12 for a functional feel; try accent text on marketing, gray text in apps (Radix)",Scoped,Answer only has meaning for semantic color roles.,,no clear match; nearest OD-16 Q8,semantic-color,Is text color taken from accent or gray?,Proposed
+D484,"Standard, medium (3:1 minimum) and high (7:1) contrast per color role, in light and dark (Material 3)",Global,"Contrast threshold or level is shared with accessibility, borders and focus.",,,semantic-color,How many contrast levels does a semantic color have?,Gap
+D485,"Semantic tokens over values ""whenever possible"" (Spectrum)",Global,Token layer split applies to every scope.,OD-26 Q1: How many token layers are there?,clear: same topic (token layers),semantic-color,Are semantic tokens a separate layer from palette tokens?,Proposed
+D486,base tokens map to raw value and are used only as reference by functional tokens (Primer),Global,Token layer split applies to every scope.,OD-26 Q1: How many token layers are there?,clear: same topic (token layers),semantic-color,Are semantic tokens a separate layer from palette tokens?,Proposed
+D487,"alias tokens group by category + property, e.g. color.background.error (DTCG)",Global,Token layer split applies to every scope.,OD-26 Q4: What is the order of name parts?,ambiguous: the option is about name parts (category + property); the question itself maps to OD-26 Q1,semantic-color,Are semantic tokens a separate layer from palette tokens?,Proposed
+D488,"Utopia/Typescale list: 1.067, 1.125, 1.2, 1.25, 1.333, 1.414, 1.5, 1.618 (Typescale shows golden as Pro)",Global,"Growth rule (ratio or hand-picked) can be reused by spacing, radius and motion scales.",,,typography,Which type scale ratio?,In OD story
+D489,"Utopia adds 1.667, 1.778, 1.875, 2 and custom",Global,"Growth rule (ratio or hand-picked) can be reused by spacing, radius and motion scales.",,,typography,Which type scale ratio?,In OD story
+D490,Modular Scale names ratios from minor second 15:16 to double octave 1:4,Global,"Growth rule (ratio or hand-picked) can be reused by spacing, radius and motion scales.",,,typography,Which type scale ratio?,In OD story
+D491,Every Layout default --ratio 1.5,Global,"Growth rule (ratio or hand-picked) can be reused by spacing, radius and motion scales.",,,typography,Which type scale ratio?,In OD story
+D492,Material: Major Second 1.125,Global,"Growth rule (ratio or hand-picked) can be reused by spacing, radius and motion scales.",,,typography,Which type scale ratio?,In OD story
+D493,"Prism: golden ratio, perfect fourth and others",Global,"Growth rule (ratio or hand-picked) can be reused by spacing, radius and motion scales.",,,typography,Which type scale ratio?,In OD story
+D494,"14 (Material key base size, anchors body text)",Scoped,Answer only has meaning for type tokens.,,,typography,What is the base font size?,In OD story
+D495,16 / 1rem (Radix font-size-3 default; Every Layout --s0 1rem; Tokens Studio base font size = value of 1rem),Scoped,Answer only has meaning for type tokens.,,,typography,What is the base font size?,In OD story
+D496,author picks min and max font size (Utopia),Scoped,Answer only has meaning for type tokens.,,,typography,What is the base font size?,In OD story
+D497,"""body text size"" or font metrics such as x-height as base (Modular Scale advice)",Scoped,Answer only has meaning for type tokens.,,,typography,What is the base font size?,In OD story
+D498,"Fluid: define small-screen scale and large-screen scale, browser interpolates by viewport width (Utopia)",Global,Fluid or fixed response is one rule shared with spacing and layout.,OD-17 Q8: How does text size scale with screen width?,clear: same topic (fixed or fluid text size),typography,Fixed steps or fluid steps?,Proposed
+D499,"fixed list of sizes (Radix, Polaris, Primer, Material)",Global,Fluid or fixed response is one rule shared with spacing and layout.,OD-17 Q8: How does text size scale with screen width?,clear: same topic (fixed or fluid text size),typography,Fixed steps or fluid steps?,Proposed
+D500,Open Props --size-fluid-1..10 with clamp() for space,Global,Fluid or fixed response is one rule shared with spacing and layout.,OD-17 Q8: How does text size scale with screen width?,clear: same topic (fixed or fluid text size),typography,Fixed steps or fluid steps?,Proposed
+D501,"Number 1-9 (Radix: 12,14,16,18,20,24,28,35,60px x scaling)",Global,Step naming style is one rule that reads the same in every scale scope.,,,typography,How are sizes named?,Gap
+D502,"Polaris 275, 300, 325, 350, 400 ... 1000 (rem)",Global,Step naming style is one rule that reads the same in every scale scope.,,,typography,How are sizes named?,Gap
+D503,"Open Props 00, 0, 1, 2...",Global,Step naming style is one rule that reads the same in every scale scope.,,,typography,How are sizes named?,Gap
+D504,Every Layout s-5...s0...s5,Global,Step naming style is one rule that reads the same in every scale scope.,,,typography,How are sizes named?,Gap
+D505,"Primer xs, sm, md (base-text-size-*)",Global,Step naming style is one rule that reads the same in every scale scope.,,,typography,How are sizes named?,Gap
+D506,"Material role names display, headline, title, body, label x large/medium/small",Global,Step naming style is one rule that reads the same in every scale scope.,,,typography,How are sizes named?,Gap
+D507,"Named styles: Material 15 baseline + 15 emphasized (30 tokens, one token per style; also tokens per axis)",Scoped,Answer only has meaning for type tokens.,,no clear match; nearest OD-17 Q9 (named text styles),typography,Are styles or raw sizes the main unit?,Proposed
+D508,"Carbon productive set (dense, product) and expressive set (editorial, marketing)",Scoped,Answer only has meaning for type tokens.,,no clear match; nearest OD-17 Q9 (named text styles),typography,Are styles or raw sizes the main unit?,Proposed
+D509,"Primer groups body, caption, code, display with size, lineHeight, weight",Scoped,Answer only has meaning for type tokens.,,no clear match; nearest OD-17 Q9 (named text styles),typography,Are styles or raw sizes the main unit?,Proposed
+D510,Tokens Studio typography composite token,Scoped,Answer only has meaning for type tokens.,,no clear match; nearest OD-17 Q9 (named text styles),typography,Are styles or raw sizes the main unit?,Proposed
+D511,DTCG composite typography,Scoped,Answer only has meaning for type tokens.,,no clear match; nearest OD-17 Q9 (named text styles),typography,Are styles or raw sizes the main unit?,Proposed
+D512,Brand + plain typeface; Roboto default for both (Material),Scoped,Answer only has meaning for type tokens.,,,typography,How many font families?,In OD story
+D513,"sans-serif, monospace, sans display, system (Primer; default ""Mona Sans VF"" stack)",Scoped,Answer only has meaning for type tokens.,,,typography,How many font families?,In OD story
+D514,sans + mono (Polaris; Inter first),Scoped,Answer only has meaning for type tokens.,,,typography,How many font families?,In OD story
+D515,IBM Plex (Carbon),Scoped,Answer only has meaning for type tokens.,,,typography,How many font families?,In OD story
+D516,"400, 500, 700 (Material normal, medium, bold)",Scoped,Answer only has meaning for type tokens.,,,typography,Which weights?,In OD story
+D517,"450, 550, 650, 700 (Polaris regular, medium, semibold, bold)",Scoped,Answer only has meaning for type tokens.,,,typography,Which weights?,In OD story
+D518,100-900 in 9 steps (Open Props),Scoped,Answer only has meaning for type tokens.,,,typography,Which weights?,In OD story
+D519,named regular default (Radix),Scoped,Answer only has meaning for type tokens.,,,typography,Which weights?,In OD story
+D520,"Open Props: .95, 1.1, 1.25, 1.375, 1.5, 1.75, 2",Scoped,Answer only has meaning for type tokens.,,,typography,Which line-height values?,In OD story
+D521,Polaris: rem steps 300..1200 (0.75rem..3rem),Scoped,Answer only has meaning for type tokens.,,,typography,Which line-height values?,In OD story
+D522,"Primer: unitless, varies per style (tight, normal, relaxed)",Scoped,Answer only has meaning for type tokens.,,,typography,Which line-height values?,In OD story
+D523,"Material: line height adapts to language script height: small (base), medium (~7% taller), large (~30%), extra large (~100%)",Scoped,Answer only has meaning for type tokens.,,,typography,Which line-height values?,In OD story
+D524,"Open Props -0.05em, .025em, .05em, .075em, .15em, .5em, .75em, 1em",Scoped,Answer only has meaning for type tokens.,,,typography,Which letter-spacing values?,In OD story
+D525,Material: tracking value / font size,Scoped,Answer only has meaning for type tokens.,,,typography,Which letter-spacing values?,In OD story
+D526,"rem (Primer, Material web, Polaris, Open Props; Primer says rem gives better browser zoom)",Global,Unit choice (px or rem) is shared with spacing and breakpoints.,,,typography,Which unit holds sizes?,Gap
+D527,sp on Android = rem x 16 (Material),Global,Unit choice (px or rem) is shared with spacing and breakpoints.,,,typography,Which unit holds sizes?,Gap
+D528,px (Radix source values multiplied by --scaling),Global,Unit choice (px or rem) is shared with spacing and breakpoints.,,,typography,Which unit holds sizes?,Gap
+D529,Material baseline vs emphasized set: swap token md.sys.typescale.display-large for md.sys.typescale.emphasized.display-large; components do not use emphasized by default,Scoped,Answer only has meaning for type tokens.,,,typography,Is there an emphasized style set?,Gap
+D530,Material: avoid changing type size; adjust line height and letter spacing; custom type scale may stop token updates from Material,Scoped,Answer only has meaning for type tokens.,,,typography,May authors change type sizes?,Gap
+D531,"size-content-1..3 = 20ch, 45ch, 60ch; size-header-1..3 = 20ch, 25ch, 35ch (Open Props)",Scoped,Answer only has meaning for type tokens.,OD-23 Q8: What is the maximum line length for text?,clear: same topic (line length),typography,Which line length (measure)?,Proposed
+D532,"4px (Radix space-1, Polaris space-100 = 0.25rem, Chakra 1 = 0.25rem, Open Props size-1 = .25rem, Primer base-size-4)",Global,"Base grid unit is reused by radius, control size, line height and icons.",,,spacing,Which base unit?,In OD story
+D533,8px (Atlassian space.100 = 8px; MUI default factor; Carbon mini unit 8px),Global,"Base grid unit is reused by radius, control size, line height and icons.",,,spacing,Which base unit?,In OD story
+D534,"author sets base through a number, function or array (MUI)",Global,"Base grid unit is reused by radius, control size, line height and icons.",,,spacing,Which base unit?,In OD story
+D535,Linear multiples of base (Atlassian 0.25x..10x; MUI theme.spacing(n) = base x n),Global,"Growth rule (linear, doubling, ratio) can be reused by other step scales.",,,spacing,Which growth rule?,In OD story
+D536,"hand-picked ramp: Radix 4,8,12,16,24,32,40,48,64; Carbon 2,4,8,12,16,24,32,40,48,64,80,96,160",Global,"Growth rule (linear, doubling, ratio) can be reused by other step scales.",,,spacing,Which growth rule?,In OD story
+D537,modular ratio (Every Layout ratio 1.5 for white space),Global,"Growth rule (linear, doubling, ratio) can be reused by other step scales.",,,spacing,Which growth rule?,In OD story
+D538,"linear, geometric or fibonacci (Prism options)",Global,"Growth rule (linear, doubling, ratio) can be reused by other step scales.",,,spacing,Which growth rule?,In OD story
+D539,9 steps named 1-9 (Radix),Scoped,Answer only has meaning for spacing and sizing tokens.,,,spacing,How many steps and which names?,In OD story
+D540,13 steps $spacing-01..13 (Carbon),Scoped,Answer only has meaning for spacing and sizing tokens.,,,spacing,How many steps and which names?,In OD story
+D541,"space.0, 025, 050, 075, 100, 150, 200, 250, 300, 400, 500, 600, 800, 1000 (Atlassian; number = percent of base)",Scoped,Answer only has meaning for spacing and sizing tokens.,,,spacing,How many steps and which names?,In OD story
+D542,"space-0, 025, 050, 100, 150, 200, 300 ... 3200 (Polaris)",Scoped,Answer only has meaning for spacing and sizing tokens.,,,spacing,How many steps and which names?,In OD story
+D543,size-1..15 plus 000 and 00 negative (Open Props),Scoped,Answer only has meaning for spacing and sizing tokens.,,,spacing,How many steps and which names?,In OD story
+D544,rem with px shown beside it (Carbon table; Atlassian table; Polaris rem),Global,Unit choice (px or rem) is shared with typography and breakpoints.,,,spacing,Which unit?,In OD story
+D545,both rem and px variable sets (Open Props size-* and size-px-*),Global,Unit choice (px or rem) is shared with typography and breakpoints.,,,spacing,Which unit?,In OD story
+D546,CSS calc with a global scaling factor (Radix),Global,Unit choice (px or rem) is shared with typography and breakpoints.,,,spacing,Which unit?,In OD story
+D547,"Radix theme scaling 90%, 95%, 100%, 105%, 110% multiplies space and font size",Global,"Density mode is one switch that radius, type and spacing follow.",,,spacing,Is there a density switch?,In OD story
+D548,Atlassian says it plans density options,Global,"Density mode is one switch that radius, type and spacing follow.",,,spacing,Is there a density switch?,In OD story
+D549,Yes: Primer base-size-negative-2..-48; Atlassian space.negative.025..400; Open Props size-000 and size-00,Scoped,Answer only has meaning for spacing and sizing tokens.,,,spacing,Are there negative space tokens?,Gap
+D550,Utopia space scale from min and max viewport,Global,Fluid or fixed response is one rule shared with type and layout.,,,spacing,Is there a fluid spacing scale?,Gap
+D551,Open Props size-fluid-1..10 using clamp(),Global,Fluid or fixed response is one rule shared with type and layout.,,,spacing,Is there a fluid spacing scale?,Gap
+D552,"Spectrum: distinct spacing scales, each tuned to the elements they serve (proportional principle)",Scoped,Answer only has meaning for spacing and sizing tokens.,,no clear match; nearest OD-18 Q2,spacing,One scale or several?,Proposed
+D553,Carbon: one spacing scale used inside all components; applied to margin or padding on any edge,Scoped,Answer only has meaning for spacing and sizing tokens.,,no clear match; nearest OD-18 Q2,spacing,One scale or several?,Proposed
+D554,"Polaris 025 = 0.0625rem (1px), 050 = 0.125rem (2px)",Scoped,Answer only has meaning for spacing and sizing tokens.,,,spacing,Which small steps below the base unit?,Gap
+D555,"Atlassian 025 = 2px, 050 = 4px, 075 = 6px",Scoped,Answer only has meaning for spacing and sizing tokens.,,,spacing,Which small steps below the base unit?,Gap
+D556,Carbon spacing-01 = 2px,Scoped,Answer only has meaning for spacing and sizing tokens.,,,spacing,Which small steps below the base unit?,Gap
+D557,DTCG has no spacing type; use dimension. Tokens Studio keeps a Spacing type; user decides whether to align to the spec,Global,Token type rule (own type or dimension) applies to every scope.,OD-26 Q7: Which token types are used?,clear: same topic (which token types are used),spacing,Is the spacing token type separate from dimension?,Proposed
+D558,"Radix radius-1..6 = 3,4,6,8,12,16px",Scoped,Answer only has meaning for radius tokens.,,,radius,Which radius steps?,In OD story
+D559,"Chakra none, 2xs 0.0625rem, xs, sm, md, lg, xl, 2xl, 3xl, 4xl 2rem, full 9999px",Scoped,Answer only has meaning for radius tokens.,,,radius,Which radius steps?,In OD story
+D560,"Polaris 0, 050, 100, 150, 200, 300, 400, 500, 750, full",Scoped,Answer only has meaning for radius tokens.,,,radius,Which radius steps?,In OD story
+D561,"Material corner none, extra-small, small, medium, large, extra-large, full",Scoped,Answer only has meaning for radius tokens.,,,radius,Which radius steps?,In OD story
+D562,"Open Props radius-1..6 = 2px, 5px, 1rem, 2rem, 4rem, 8rem + round",Scoped,Answer only has meaning for radius tokens.,,,radius,Which radius steps?,In OD story
+D563,"daisyUI 3 radii: selector 0.5rem, field 0.25rem, box 0.5rem",Scoped,Answer only has meaning for radius tokens.,,,radius,Which radius steps?,In OD story
+D564,"Radix theme radius: none, small, medium, large, full; factor 0, 0.75, 1 (default), 1.5, 1.5 (full also makes round thumbs pill-shaped) applied to all radius-1..6",Scoped,One knob for radius tokens only; the word-for-word answer does not fit other scopes.,,,radius,Is there one global radius knob?,Gap
+D565,daisyUI three variables by component class,Scoped,One knob for radius tokens only; the word-for-word answer does not fit other scopes.,,,radius,Is there one global radius knob?,Gap
+D566,shadcn single --radius token,Scoped,One knob for radius tokens only; the word-for-word answer does not fit other scopes.,,,radius,Is there one global radius knob?,Gap
+D567,"No: result is contextual per component; with ""full"" a Button becomes pill but a Checkbox never becomes fully rounded (Radix)",Scoped,Answer only has meaning for radius tokens.,OD-19 Q4: Which radius does each component type use?,clear: same topic (one radius for all vs per component),radius,Does a global radius apply to every component the same way?,Proposed
+D568,Open Props drawn and blob radii,Scoped,Answer only has meaning for radius tokens.,,,radius,Are shapes other than round corners allowed?,Gap
+D569,Material: cut corners not supported; shape morph in expressive update (not on web),Scoped,Answer only has meaning for radius tokens.,,,radius,Are shapes other than round corners allowed?,Gap
+D570,"t-shirt sizes (Chakra, Material)",Global,Step naming style is one rule that reads the same in every scale scope.,,,radius,How are radius steps named?,Gap
+D571,"numbers 1-6 (Radix, Open Props)",Global,Step naming style is one rule that reads the same in every scale scope.,,,radius,How are radius steps named?,Gap
+D572,number codes (Polaris),Global,Step naming style is one rule that reads the same in every scale scope.,,,radius,How are radius steps named?,Gap
+D573,"role names (daisyUI selector, field, box)",Global,Step naming style is one rule that reads the same in every scale scope.,,,radius,How are radius steps named?,Gap
+D574,"Both allowed; tokens hold distance on z-axis, no shadow or color; platform picks (Material)",Scoped,Answer only has meaning for elevation and shadow tokens.,,,elevation,"Shadows, tonal surface color, or both?",In OD story
+D575,"surfaces + shadows; only top two levels (raised, overlay) get shadows; dark theme leans on surface colors (Atlassian)",Scoped,Answer only has meaning for elevation and shadow tokens.,,,elevation,"Shadows, tonal surface color, or both?",In OD story
+D576,layering by color alone (Carbon layers),Scoped,Answer only has meaning for elevation and shadow tokens.,,,elevation,"Shadows, tonal surface color, or both?",In OD story
+D577,6 numeric shadows 1-6 (Open Props),Scoped,Answer only has meaning for elevation and shadow tokens.,,,elevation,How many levels?,In OD story
+D578,6 shadows 100-600 plus 0 / none (Polaris),Scoped,Answer only has meaning for elevation and shadow tokens.,,,elevation,How many levels?,In OD story
+D579,"""stick to a small number of levels"" (Material)",Scoped,Answer only has meaning for elevation and shadow tokens.,,,elevation,How many levels?,In OD story
+D580,Layered CSS shadow with negative spread and growing alpha .07 to .28 (Polaris),Scoped,Answer only has meaning for elevation and shadow tokens.,,,elevation,What does one shadow token contain?,In OD story
+D581,"extra tokens for bevel, inset and per-button states (Polaris)",Scoped,Answer only has meaning for elevation and shadow tokens.,,,elevation,What does one shadow token contain?,In OD story
+D582,DTCG composite shadow token: color + offsets + blur + spread,Scoped,Answer only has meaning for elevation and shadow tokens.,,,elevation,What does one shadow token contain?,In OD story
+D583,"Prism shadow sets: subtle, medium, sharp",Scoped,Answer only has meaning for elevation and shadow tokens.,,,elevation,What does one shadow token contain?,In OD story
+D584,Raise by 1 level on hover (FAB level 3 to 4; all buttons +1); change must be the same for similar elements; do not change a component default elevation (Material),Scoped,Answer only has meaning for elevation and shadow tokens.,,,elevation,How does elevation change on hover?,Gap
+D585,Chakra Z-Index tokens,Scoped,Answer only has meaning for elevation and shadow tokens.,,,elevation,Is there a z-index scale?,In OD story
+D586,Open Props zindex.css file,Scoped,Answer only has meaning for elevation and shadow tokens.,,,elevation,Is there a z-index scale?,In OD story
+D587,"thin 1px, thick 2px, thicker 4px; semantic default = thin (Primer)",Scoped,Answer only has meaning for border tokens.,,,borders,Which border widths?,In OD story
+D588,"border-size-1..5 = 1, 2, 5, 10, 25px (Open Props)",Scoped,Answer only has meaning for border tokens.,,,borders,Which border widths?,In OD story
+D589,--border 1px per theme (daisyUI),Scoped,Answer only has meaning for border tokens.,,,borders,Which border widths?,In OD story
+D590,"Outline width 2px, offset -2px (inset) to meet WCAG 2.4.7 (Primer)",Global,One focus indicator spec is shared with accessibility.,,,borders,Focus ring size and place?,In OD story
+D591,"color step 7 is ""UI element border and focus rings"" (Radix)",Global,One focus indicator spec is shared with accessibility.,,,borders,Focus ring size and place?,In OD story
+D592,"Radix: 6 subtle borders and separators, 7 element border and focus ring, 8 hover border",Scoped,Answer only has meaning for border tokens.,,no clear match; nearest OD-16 Q3 (swatch pick per role),borders,Which color steps draw borders?,Proposed
+D593,"Polaris: border drawn as inset shadow rgba(0,0,0,.08) (shadow-border-inset)",Scoped,Answer only has meaning for border tokens.,,no clear match; nearest OD-16 Q3 (swatch pick per role),borders,Which color steps draw borders?,Proposed
+D594,Tokens Studio has Border and Box Shadow token types; DTCG defines composite types,Scoped,Border as one composite token only makes sense for border tokens.,,,borders,Is border a composite token?,Gap
+D595,"Material: short1-4 = 50, 100, 150, 200ms; medium1-4 = 250-400; long1-4 = 450-600; extra-long1-4 = 700-1000",Scoped,Answer only has meaning for motion tokens.,,,motion,Which duration set?,In OD story
+D596,"Polaris numeric 0, 50, 100 ... in 50ms steps",Scoped,Answer only has meaning for motion tokens.,,,motion,Which duration set?,In OD story
+D597,"Primer micro, short, medium, long = base-duration 100, 200, 300, 500",Scoped,Answer only has meaning for motion tokens.,,,motion,Which duration set?,In OD story
+D598,"Atlassian ranges: interactions 50-150ms, transitions 150-400ms; examples dropdown 150ms, modal 250ms",Scoped,Answer only has meaning for motion tokens.,,,motion,Which duration set?,In OD story
+D599,"Material standard cubic-bezier(0.2,0,0,1) with decelerate and accelerate; emphasized decelerate (0.05,0.7,0.1,1) and accelerate (0.3,0,0.8,0.15); emphasized has no CSS curve",Scoped,Answer only has meaning for motion tokens.,,,motion,Which easing curves?,In OD story
+D600,"Carbon standard productive (0.2,0,0.38,0.9) and expressive (0.4,0.14,0.3,1), plus entrance and exit",Scoped,Answer only has meaning for motion tokens.,,,motion,Which easing curves?,In OD story
+D601,"Atlassian ease-out bold (0,0.4,0,1), ease-in-out bold (0.4,0,0,1)",Scoped,Answer only has meaning for motion tokens.,,,motion,Which easing curves?,In OD story
+D602,"Polaris ease, in, out, in-out",Scoped,Answer only has meaning for motion tokens.,,,motion,Which easing curves?,In OD story
+D603,"Open Props ease-1..5, ease-in-1..5, ease-out-1..5",Scoped,Answer only has meaning for motion tokens.,,,motion,Which easing curves?,In OD story
+D604,"Productive (efficient, subtle) vs expressive (rare, important moments) (Carbon)",Scoped,Answer only has meaning for motion tokens.,,no clear match,motion,Which motion personality?,Proposed
+D605,"standard vs expressive spring physics scheme; old easing and duration ""no longer maintained"" (Material expressive update)",Scoped,Answer only has meaning for motion tokens.,,no clear match,motion,Which motion personality?,Proposed
+D606,"Scale: short1, medium2 (Material), 100, 200 (Polaris)",Global,Scale-or-role naming style is one rule that reads the same in every scale scope.,,no clear match; nearest OD-22 Q4 (duration by type),motion,Named by scale or by role?,Proposed
+D607,"role: enter, exit, hover easing; micro, short, medium, long durations (Primer)",Global,Scale-or-role naming style is one rule that reads the same in every scale scope.,,no clear match; nearest OD-22 Q4 (duration by type),motion,Named by scale or by role?,Proposed
+D608,"purpose: interactions, transitions (Atlassian)",Global,Scale-or-role naming style is one rule that reads the same in every scale scope.,,no clear match; nearest OD-22 Q4 (duration by type),motion,Named by scale or by role?,Proposed
+D609,Atlassian: system honors reduced-motion settings with low or no-motion options,Global,Reduced-motion policy is shared with accessibility and theming.,,,motion,Reduced motion?,In OD story
+D610,Open Props shows a --motionOK media alias for animations,Global,Reduced-motion policy is shared with accessibility and theming.,,,motion,Reduced motion?,In OD story
+D611,"Every motion event has duration, easing curve and property (Atlassian)",Scoped,Answer only has meaning for motion tokens.,,no clear match,motion,Which properties animate?,Proposed
+D612,"MUI xs 0, sm 600, md 900, lg 1200, xl 1536 px (custom allowed)",Scoped,Answer only has meaning for layout tokens.,,,layout,Which breakpoints?,In OD story
+D613,"Polaris xs 0, sm 30.625rem, md 48rem, lg 65rem, xl 90rem",Scoped,Answer only has meaning for layout tokens.,,,layout,Which breakpoints?,In OD story
+D614,"Open Props size-xxs..xxl = 240, 360, 480, 768, 1024, 1440, 1920px",Scoped,Answer only has meaning for layout tokens.,,,layout,Which breakpoints?,In OD story
+D615,"Prism presets: Tailwind, Bootstrap, Material",Scoped,Answer only has meaning for layout tokens.,,,layout,Which breakpoints?,In OD story
+D616,"Utopia: no breakpoints, fluid",Scoped,Answer only has meaning for layout tokens.,,,layout,Which breakpoints?,In OD story
+D617,"Atlassian: 12 columns, gutters, margins; content spans 12, 6 or 4",Scoped,Answer only has meaning for layout tokens.,,,layout,Which grid?,In OD story
+D618,"Carbon 2x grid: 8px mini unit; fluid grid by division, fixed grid by multiplication; column count starts at one and divides by two",Scoped,Answer only has meaning for layout tokens.,,,layout,Which grid?,In OD story
+D619,"px (MUI, Open Props)",Global,Unit choice (px or rem) is shared with spacing and typography.,,no clear match; nearest OD-23 Q2 and OD-18 Q8,layout,What unit are breakpoints in?,Proposed
+D620,rem (Polaris),Global,Unit choice (px or rem) is shared with spacing and typography.,,no clear match; nearest OD-23 Q2 and OD-18 Q8,layout,What unit are breakpoints in?,Proposed
+D621,"Content size tokens in ch (20ch, 45ch, 60ch)",Scoped,Answer only has meaning for layout tokens.,,,layout,Which content widths?,In OD story
+D622,named viewport sizes xxs..xxl (Open Props),Scoped,Answer only has meaning for layout tokens.,,,layout,Which content widths?,In OD story
+D623,"16px default artboard, 20, 24, 32 allowed; 16 and 20 pair with 14px and 16px IBM Plex; keep one size per product (Carbon)",Scoped,Answer only has meaning for icons.,,,iconography,Which icon sizes?,In OD story
+D624,15x15 grid set (Radix Icons),Scoped,Answer only has meaning for icons.,,,iconography,Which icon sizes?,In OD story
+D625,Outline style in Spectrum 2 (changed from filled) with rounder corners,Scoped,Answer only has meaning for icons.,,,iconography,Icon style?,In OD story
+D626,"Octicons set handcrafted by GitHub with fill variants (alert, alert-fill)",Scoped,Answer only has meaning for icons.,,,iconography,Icon style?,In OD story
+D627,Light + dark across nine themes (Primer),Global,"Mode or theme mechanism is one rule that color, shadow, border and motion scopes all follow.",,,theming,How many modes and themes?,In OD story
+D628,"White, Gray 10, Gray 90 and Gray 100 themes with a layering model (Carbon)",Global,"Mode or theme mechanism is one rule that color, shadow, border and motion scopes all follow.",,,theming,How many modes and themes?,In OD story
+D629,light default and dark themes plus built-in named themes such as cupcake (daisyUI),Global,"Mode or theme mechanism is one rule that color, shadow, border and motion scopes all follow.",,,theming,How many modes and themes?,In OD story
+D630,"Radix appearance: light default, dark, or inherit system",Global,"Mode or theme mechanism is one rule that color, shadow, border and motion scopes all follow.",,,theming,How many modes and themes?,In OD story
+D631,Class .dark overrides same tokens (shadcn),Global,"Mode or theme mechanism is one rule that color, shadow, border and motion scopes all follow.",,,theming,How is a theme switched?,In OD story
+D632,data-theme attribute on html or any section (daisyUI),Global,"Mode or theme mechanism is one rule that color, shadow, border and motion scopes all follow.",,,theming,How is a theme switched?,In OD story
+D633,appearance prop on Theme (Radix),Global,"Mode or theme mechanism is one rule that color, shadow, border and motion scopes all follow.",,,theming,How is a theme switched?,In OD story
+D634,prefers-color-scheme media query and custom media --OSdark (Open Props),Global,"Mode or theme mechanism is one rule that color, shadow, border and motion scopes all follow.",,,theming,How is a theme switched?,In OD story
+D635,daisyUI flags --default and --prefersdark per theme; themes: false removes all,Global,"Mode or theme mechanism is one rule that color, shadow, border and motion scopes all follow.",,,theming,How is a theme switched?,In OD story
+D636,"Combine token sets: a theme = set of sets, shared as config file (Tokens Studio)",Global,"Mode or theme mechanism is one rule that color, shadow, border and motion scopes all follow.",,,theming,How are themes made?,In OD story
+D637,"DTCG resolver: sets + modifiers (e.g. theme light/dark, brand A/B); modifiers should be orthogonal; one permutation = one output",Global,"Mode or theme mechanism is one rule that color, shadow, border and motion scopes all follow.",,,theming,How are themes made?,In OD story
+D638,derive from one source color (Material dynamic color),Global,"Mode or theme mechanism is one rule that color, shadow, border and motion scopes all follow.",,,theming,How are themes made?,In OD story
+D639,recompute from background lightness (Leonardo Theme lightness),Global,"Mode or theme mechanism is one rule that color, shadow, border and motion scopes all follow.",,,theming,How are themes made?,In OD story
+D640,Yes: data-theme on a section (daisyUI),Global,"Mode or theme mechanism is one rule that color, shadow, border and motion scopes all follow.",OD-25 Q6: How many brand themes can run at once?,"clear: same topic (several themes on one page, scoped)",theming,Is a theme scoped to part of a page?,Proposed
+D641,Hand-made dark variant per scale (Radix),Scoped,Answer only has meaning for color scales.,,,theming,Is the dark scale hand-made or computed?,In OD story
+D642,computed by tone from same roles (Material),Scoped,Answer only has meaning for color scales.,,,theming,Is the dark scale hand-made or computed?,In OD story
+D643,dark = same roles remapped to one-step-lighter layers (Carbon),Scoped,Answer only has meaning for color scales.,,,theming,Is the dark scale hand-made or computed?,In OD story
+D644,Careful: saturated gray app background can clash with colorful badges in dark mode (Radix),Scoped,Answer only has meaning for color scales.,,no clear match; nearest OD-15 Q6 (neutral ramp),theming,May the app background be a tinted gray?,Proposed
+D645,Wallpaper or image color (Material dynamic),Global,"Mode or theme mechanism is one rule that color, shadow, border and motion scopes all follow.",,,theming,How are brand or user colors injected at runtime?,Gap
+D646,accent color prop (Radix Themes accentColor),Global,"Mode or theme mechanism is one rule that color, shadow, border and motion scopes all follow.",,,theming,How are brand or user colors injected at runtime?,Gap
+D647,custom theme block with oklch values (daisyUI),Global,"Mode or theme mechanism is one rule that color, shadow, border and motion scopes all follow.",,,theming,How are brand or user colors injected at runtime?,Gap
+D648,"3: base, alias, component (DTCG naming guide)",Global,"Token structure, format or naming rule applies to every scope.",,,token-architecture,How many tiers?,In OD story
+D649,"3: base, functional, component/pattern (Primer)",Global,"Token structure, format or naming rule applies to every scope.",,,token-architecture,How many tiers?,In OD story
+D650,"3: reference, system, component (Material)",Global,"Token structure, format or naming rule applies to every scope.",,,token-architecture,How many tiers?,In OD story
+D651,scale -> semantic alias -> use-case alias (Radix Colors),Global,"Token structure, format or naming rule applies to every scope.",,,token-architecture,How many tiers?,In OD story
+D652,"category + property first: color.background.error; avoid abbreviations, ""background"" not ""bg"" (DTCG)",Global,"Token structure, format or naming rule applies to every scope.",,,token-architecture,What name pattern?,In OD story
+D653,md.sys.motion.duration.short1; css --md-sys-shape-corner-small (Material),Global,"Token structure, format or naming rule applies to every scope.",,,token-architecture,What name pattern?,In OD story
+D654,--p- prefix + kebab (Polaris),Global,"Token structure, format or naming rule applies to every scope.",,,token-architecture,What name pattern?,In OD story
+D655,$spacing-01 (Carbon),Global,"Token structure, format or naming rule applies to every scope.",,,token-architecture,What name pattern?,In OD story
+D656,space.100 with dots (Atlassian),Global,"Token structure, format or naming rule applies to every scope.",,,token-architecture,What name pattern?,In OD story
+D657,camelCase groups --borderWidth-thin (Primer),Global,"Token structure, format or naming rule applies to every scope.",,,token-architecture,What name pattern?,In OD story
+D658,"DTCG with $value, $type, $description (stable 2025.10)",Global,"Token structure, format or naming rule applies to every scope.",,,token-architecture,Which file format?,In OD story
+D659,"Style Dictionary classic value, type, comment; v4 reads either, not both in one run",Global,"Token structure, format or naming rule applies to every scope.",,,token-architecture,Which file format?,In OD story
+D660,Tokens Studio JSON token sets,Global,"Token structure, format or naming rule applies to every scope.",,,token-architecture,Which file format?,In OD story
+D661,Curly braces {color.red.600} (DTCG),Global,"Token structure, format or naming rule applies to every scope.",,,token-architecture,How are references written?,In OD story
+D662,reference tokens and math inside values (Tokens Studio),Global,"Token structure, format or naming rule applies to every scope.",,,token-architecture,How are references written?,In OD story
+D663,"Object {value: 3, unit: ""rem""} in DTCG; names that differ only by case are valid but not advised",Global,"Token structure, format or naming rule applies to every scope.",,,token-architecture,How are dimensions stored?,Gap
+D664,"Style Dictionary name transforms: camel, kebab, snake, constant, human, with an optional platform prefix",Global,"Token structure, format or naming rule applies to every scope.",,,token-architecture,Which name case for output?,Gap
+D665,tailwind.prefix (shadcn),Global,"Token structure, format or naming rule applies to every scope.",,,token-architecture,Is a prefix used to avoid clashes?,In OD story
+D666,prefix (daisyUI),Global,"Token structure, format or naming rule applies to every scope.",,,token-architecture,Is a prefix used to avoid clashes?,In OD story
+D667,cssVarsPrefix (Chakra),Global,"Token structure, format or naming rule applies to every scope.",,,token-architecture,Is a prefix used to avoid clashes?,In OD story
+D668,--p- (Polaris),Global,"Token structure, format or naming rule applies to every scope.",,,token-architecture,Is a prefix used to avoid clashes?,In OD story
+D669,Close to the component code; they refer to alias tokens (DTCG),Global,"Token structure, format or naming rule applies to every scope.",OD-26 Q1: How many token layers are there?,clear: same topic (component layer in the token layers),token-architecture,Where do component tokens live?,Proposed
+D670,each component token maps to a system token (Material),Global,"Token structure, format or naming rule applies to every scope.",OD-26 Q1: How many token layers are there?,clear: same topic (component layer in the token layers),token-architecture,Where do component tokens live?,Proposed
+D671,"Math in token values for scales of type, spacing, size (Tokens Studio)",Global,"Token structure, format or naming rule applies to every scope.",,,token-architecture,Are numbers calculated in tokens?,Gap
+D672,"calc() from a base and a factor (Radix, Every Layout)",Global,"Token structure, format or naming rule applies to every scope.",,,token-architecture,Are numbers calculated in tokens?,Gap
+D673,Unique name per set; flat or folder names; no spaces or special characters advised (Tokens Studio),Global,"Token structure, format or naming rule applies to every scope.",,,token-architecture,How are token sets named and grouped?,Gap
+D674,Bounded scale numbers: tokens 100-400 pair with 500-900 for accessible combinations (DTCG naming guide pro; con: less memorable),Global,"Token structure, format or naming rule applies to every scope.",,,token-architecture,What scale naming helps contrast pairing?,Gap
+D675,"WCAG ratios 3 and 4.5 (Leonardo example, named largeText/normalText)",Global,Accessibility rule is checked in many scopes.,,,accessibility,Which contrast targets?,In OD story
+D676,Material 3:1 and 7:1,Global,Accessibility rule is checked in many scopes.,,,accessibility,Which contrast targets?,In OD story
+D677,APCA Lc 60 / Lc 90 (Radix),Global,Accessibility rule is checked in many scopes.,,,accessibility,Which contrast targets?,In OD story
+D678,AA/AAA grading (Prism),Global,Accessibility rule is checked in many scopes.,,,accessibility,Which contrast targets?,In OD story
+D679,"Standard, medium, high for each theme (Material)",Global,Accessibility rule is checked in many scopes.,,,accessibility,Does the system offer user contrast levels?,Gap
+D680,"2px width, -2px offset (Primer; WCAG 2.4.7)",Global,Accessibility rule is checked in many scopes.,,,accessibility,Which focus indicator?,In OD story
+D681,"rem units for zoom (Primer, Tokens Studio base font size)",Global,Unit rule (rem for zoom) is shared with typography and spacing.,,no clear match; nearest OD-27 Q7 and OD-18 Q8,accessibility,Which zoom and text rules?,Proposed
+D682,language-height categories for tall scripts (Material),Scoped,Language-based line height rule only affects type tokens.,,no clear match; nearest OD-27 Q7 and OD-18 Q8,accessibility,Which zoom and text rules?,Proposed
+D683,Token contrast conflicts (Prism design_get_conflicts),Global,Accessibility rule is checked in many scopes.,,no clear match; nearest OD-28 Q9,accessibility,Is a check tool in the loop?,Proposed
+D684,disliked-color fix and contrast helpers (Material Color Utilities),Global,Accessibility rule is checked in many scopes.,,no clear match; nearest OD-28 Q9,accessibility,Is a check tool in the loop?,Proposed
+D685,Primer supports two color modes across nine themes (names not listed on the fetched page),Global,Accessibility rule is checked in many scopes.,OD-25 Q1: Which modes exist?,clear: same topic (which modes and themes exist),accessibility,Which accessibility theme variants exist?,Proposed
+D686,"Copy source into the app: CLI + registry (shadcn), ""open code"" (Park UI)",Global,"Delivery choice applies to the whole pack, not one scope.",,,delivery,How is the system delivered?,In OD story
+D687,"npm package + provider (Chakra createSystem, MUI, Radix Themes)",Global,"Delivery choice applies to the whole pack, not one scope.",,,delivery,How is the system delivered?,In OD story
+D688,"CSS-only import of variables (Open Props; Radix Colors CDN, ""not recommended in production"")",Global,"Delivery choice applies to the whole pack, not one scope.",,,delivery,How is the system delivered?,In OD story
+D689,Tailwind v4 plugin with options (daisyUI),Global,"Delivery choice applies to the whole pack, not one scope.",,,delivery,How is the system delivered?,In OD story
+D690,style (e.g. new-york) and tailwind.baseColor and cssVariables cannot change after init (shadcn components.json),Global,"Delivery choice applies to the whole pack, not one scope.",,,delivery,Which config choices lock at init?,Gap
+D691,"shadcn: style, rsc, tsx, tailwind.{css, baseColor, cssVariables, prefix}, aliases",Global,"Delivery choice applies to the whole pack, not one scope.",,,delivery,Which config fields exist?,Gap
+D692,"daisyUI: themes, root, include, exclude, prefix, logs",Global,"Delivery choice applies to the whole pack, not one scope.",,,delivery,Which config fields exist?,Gap
+D693,"Chakra: cssVarsRoot (default "":where(:root, :host)""), cssVarsPrefix",Global,"Delivery choice applies to the whole pack, not one scope.",,,delivery,Which config fields exist?,Gap
+D694,"CSS custom properties, DTCG, Style Dictionary, Figma Tokens, Tailwind v4 @theme, DESIGN.md (Prism)",Global,"Delivery choice applies to the whole pack, not one scope.",,,delivery,Which output formats?,In OD story
+D695,"HTML, React, Vue, React-TS, Svelte, CSS, Flutter, SwiftUI export (Prism)",Global,"Delivery choice applies to the whole pack, not one scope.",,,delivery,Which output formats?,In OD story
+D696,"Android, CSS, Flutter, iOS values side by side (Material motion table)",Global,"Delivery choice applies to the whole pack, not one scope.",,,delivery,Which output formats?,In OD story
+D697,"name, type (registry:block, registry:component, registry:hook), dependencies, devDependencies, registryDependencies, files[path,type], cssVars{theme, light, dark}",Global,"Delivery choice applies to the whole pack, not one scope.",,,delivery,What does a shareable registry item hold?,Gap
+D698,llms.txt + .md page copies (Knapsack docs),Global,"Delivery choice applies to the whole pack, not one scope.",,,delivery,Is the system readable for AI agents?,Gap
+D699,"shadcn nav lists Skills, llms.txt and an MCP server",Global,"Delivery choice applies to the whole pack, not one scope.",,,delivery,Is the system readable for AI agents?,Gap
+D700,"Chakra ""Agent Skills""",Global,"Delivery choice applies to the whole pack, not one scope.",,,delivery,Is the system readable for AI agents?,Gap
+D701,MCP that reads tokens and writes them back (Supernova),Global,"Delivery choice applies to the whole pack, not one scope.",,,delivery,Is the system readable for AI agents?,Gap
+D702,:root (daisyUI default),Global,"Delivery choice applies to the whole pack, not one scope.",,,delivery,Where do CSS variables sit in the DOM?,Gap
+D703,":where(:root, :host) (Chakra default)",Global,"Delivery choice applies to the whole pack, not one scope.",,,delivery,Where do CSS variables sit in the DOM?,Gap
+D704,:where(html) (Open Props),Global,"Delivery choice applies to the whole pack, not one scope.",,,delivery,Where do CSS variables sit in the DOM?,Gap
+D705,tweakcn visual theme editor for Tailwind + shadcn/ui with presets,Global,"Delivery choice applies to the whole pack, not one scope.",,,delivery,Is a visual editor part of delivery?,Gap
+D706,Material Theme Builder Figma plugin,Global,"Delivery choice applies to the whole pack, not one scope.",,,delivery,Is a visual editor part of delivery?,Gap
+D707,Tokens Studio Figma plugin,Global,"Delivery choice applies to the whole pack, not one scope.",,,delivery,Is a visual editor part of delivery?,Gap
+D708,"Knapsack: ingest the design system as-is, measure design fidelity and drift of AI output against it",Global,"Delivery choice applies to the whole pack, not one scope.",,,delivery,Which AI check measures drift from the system?,Gap
+D709,"Editor JS holds a fixed OKLab lightness ladder by step 0 .995, 50 .978, 100 .958, 200 .912, 300 .845, 400 .745, 500 .632, 600 .522, 700 .432, 800 .34, 900 .246, 1000 .135 and a chroma factor by step (0 .09, 50 .16, 100 .2, 200 .4, 300 .62, 400 .86, 500 1, 600 .98, 700 .88, 800 .74, 900 .58, 1000 .38). Unverified: whether this ladder drives generation or only editor tools. (site JS bundle; shipped editor code, not documentation: use as observed behavior)",Scoped,Answer only has meaning for the color primitive scales.,"OD-15 Q5: How do lightness, chroma and hue change across the steps?",clear: same topic (lightness across steps); FlashDSM add-on row,color-primitives,What rule sets the lightness of each step? (FlashDSM implicit),Proposed
+D710,"Glossary: ten steps 50-900 is ""the common default""; eleven with 950 for dark themes. Editor JS ladder has 13 stops (0, 50-1000). The two sources disagree; the generated count is not stated.",Scoped,Answer only has meaning for the color primitive scales.,OD-15 Q4: How many steps per hue?,clear: same topic (steps per hue); FlashDSM add-on row,color-primitives,How many steps does one hue scale have? (FlashDSM implicit),Proposed
+D711,"primary, secondary, neutral (grey, ""slight hue in the greys"" advised) and semantic scales for success, warning, error, information; light and dark variants; ""perceptually uniform space"" (OKLCH named as example)",Scoped,Answer only has meaning for the color primitive scales.,,no clear match; nearest OD-16 Q2,color-primitives,Which scales does a generated system hold?,Proposed
+D712,"Both modes generated together from the same scales and bound to the same semantic names; dark is not an inversion (glossary reasons: no pure black, desaturate and lighten, elevation reverses, recheck contrast); a history option ""light and dark under one name"" exists",Scoped,Answer only has meaning for color scales.,OD-25 Q3: How is the dark palette made?,clear: same topic (how the dark palette is made); FlashDSM add-on row,theming,How are light and dark made? (FlashDSM implicit),Proposed
+D713,Component checks (editor JS labels): text contrast meets WCAG AA; focus is visibly indicated; role defined; role matches structure; target size at least 24x24,Global,Accessibility rule is checked in many scopes.,OD-28 Q9: What checks run before output?,clear: same topic (checks that run on output); FlashDSM add-on row,accessibility,Which checks run on a generated system? (FlashDSM implicit),Proposed
+D714,"typography warnings: text under 12px, weight under 400 at small sizes",Scoped,Minimum text size and weight only limit type tokens.,OD-28 Q9: What checks run before output?,clear: same topic (checks that run on output); FlashDSM add-on row,accessibility,Which checks run on a generated system? (FlashDSM implicit),Proposed
+D715,"free contrast tool: WCAG 2.x AA 4.5:1, AA large 3:1, AAA 7:1 or APCA Lc 15-90; protanopia, deuteranopia, tritanopia simulation",Global,Accessibility rule is checked in many scopes.,OD-28 Q9: What checks run before output?,clear: same topic (checks that run on output); FlashDSM add-on row,accessibility,Which checks run on a generated system? (FlashDSM implicit),Proposed
+D716,"Base scale space-2, 4, 8, 12, 16, 24, 32, 40, 48, 64 (name = px value)",Scoped,Answer only has meaning for spacing and sizing tokens.,OD-18 Q3: How many spacing steps are there?,clear: same topic (spacing steps); FlashDSM add-on row,spacing,Which spacing scale does a generated system ship? (FlashDSM implicit),Proposed
+D717,"component spacing tokens: button-x 24, button-y 12, input-x 16, input-y 12, gap 16, card 24, stack 12, section 64, page-x 32, grid-gutter 24 (px) (site JS bundle; shipped editor code, not documentation: use as observed behavior)",Scoped,Answer only has meaning for spacing and sizing tokens.,,no clear match; nearest OD-18 Q5 (control size),spacing,Which spacing scale does a generated system ship? (FlashDSM implicit),Proposed
+D718,"radius-none, radius-sm, md, lg, xl, 2xl, 3xl, radius-full; any value of 999px or more counts as full (9999). Default pixel values not found. (site JS bundle; shipped editor code, not documentation: use as observed behavior)",Scoped,Answer only has meaning for radius tokens.,OD-19 Q2: How many radius steps are there?,clear: same topic (radius steps); FlashDSM add-on row,radius,Which radius steps does a generated system ship? (FlashDSM implicit),Proposed
+D719,"Shadow tokens exist (shadow-md, shadow-lg seen in editor code; full list not found). Glossary: in dark themes raised surfaces get lighter because shadows are nearly invisible.",Scoped,Answer only has meaning for elevation and shadow tokens.,OD-20 Q1: How is depth shown?,clear: same topic (shadow depth); FlashDSM add-on row; dark-mode part also touches OD-20 Q6,elevation,How does elevation work? (FlashDSM implicit),Proposed
+D720,"Editor offers a border picker with width, style and color parts, each bound to a token or a literal (site JS bundle; shipped editor code, not documentation: use as observed behavior)",Scoped,Border as one composite token only makes sense for border tokens.,,,borders,Is a border one composite token? (FlashDSM implicit),Gap
+D721,"Duration instant 100, fast 200, normal 300, slow 500, deliberate 700 ms",Scoped,Answer only has meaning for motion tokens.,OD-22 Q1: Which durations exist?,clear: same topic (durations); FlashDSM add-on row,motion,Which motion tokens does a generated system ship? (FlashDSM implicit),Proposed
+D722,"easing linear, in (0.4,0,1,1), out (0,0,0.2,1), in-out (0.4,0,0.2,1), spring (0.34,1.56,0.64,1), emphasized (0.2,0,0,1), emphasized-decelerate (0.05,0.7,0.1,1), emphasized-accelerate (0.3,0,0.8,0.15)",Scoped,Answer only has meaning for motion tokens.,OD-22 Q2: Which easing curves exist?,"clear: same topic (easing curves, springs); FlashDSM add-on row",motion,Which motion tokens does a generated system ship? (FlashDSM implicit),Proposed
+D723,"springs snappy, bouncy, gentle, anticipate (linear() with cubic-bezier fallback) (site JS bundle; shipped editor code, not documentation: use as observed behavior)",Scoped,Answer only has meaning for motion tokens.,OD-22 Q2: Which easing curves exist?,"clear: same topic (easing curves, springs); FlashDSM add-on row",motion,Which motion tokens does a generated system ship? (FlashDSM implicit),Proposed
+D724,"Both: scale tokens plus role aliases motion-enter (normal + decelerate), motion-exit (fast + accelerate), motion-transition (fast + in-out, default for hover, focus, colour), motion-press (instant + spring-snappy), motion-emphasis (slow + spring-bouncy), motion-loading (scene duration + in-out) (site JS bundle; shipped editor code, not documentation: use as observed behavior)",Global,Scale-or-role naming style is one rule that reads the same in every scale scope.,,no clear match; nearest OD-22 Q4 (duration by type),motion,Named by scale or by role? (FlashDSM implicit),Proposed
+D725,"Generated animation CSS can add a prefers-reduced-motion block with three modes: unchanged, none, or a faded variant (site JS bundle; shipped editor code, not documentation: use as observed behavior)",Global,Reduced-motion policy is shared with accessibility and theming.,OD-22 Q5: What happens with reduced motion?,clear: same topic (reduced motion); FlashDSM add-on row,motion,Reduced motion? (FlashDSM implicit),Proposed
+D726,"Editor has a base size (changing it rescales all font tokens) and a unit choice: px (default export) or rem (relative to a 16px root; CSS, SCSS and tokens.json export in rem). Scale ratio and default base value not found. (site JS bundle; shipped editor code, not documentation: use as observed behavior)",Scoped,Answer only has meaning for type tokens.,OD-17 Q1: What is the base font size?,clear: same topic (base font size); unit part also touches OD-18 Q8,typography,What is the base font size and unit? (FlashDSM implicit),Proposed
+D727,"Icon settings object: weight 400, grade 0, optical size auto, fill off (variable-icon-font style axes; the named icon set is not stated) (site JS bundle; shipped editor code, not documentation: use as observed behavior)",Scoped,Answer only has meaning for icons.,,no clear match; nearest OD-24 Q4,iconography,Which icon settings exist? (FlashDSM implicit),Proposed
+D728,"Only spacing-page-x 32px and spacing-grid-gutter 24px found. Breakpoints, columns and max width: not found. (site JS bundle; shipped editor code, not documentation: use as observed behavior)",Scoped,Answer only has meaning for layout tokens.,,no clear match; nearest OD-23 Q4,layout,Which layout tokens exist? (FlashDSM implicit),Proposed
+D729,"Document model ""FlashAtomicDocument v2"": foundations, semantics, components (with bindings to tokens), modules, relations",Global,"Token structure, format or naming rule applies to every scope.",OD-26 Q1: How many token layers are there?,clear: same topic (token layers); FlashDSM add-on row,token-architecture,How many tiers and how are tokens named? (FlashDSM implicit),Proposed
+D730,alias layer flag on tokens,Global,"Token structure, format or naming rule applies to every scope.",OD-26 Q1: How many token layers are there?,clear: same topic (token layers); FlashDSM add-on row,token-architecture,How many tiers and how are tokens named? (FlashDSM implicit),Proposed
+D731,"kebab names such as space-8, motion-enter, spacing-button-x",Global,"Token structure, format or naming rule applies to every scope.",OD-26 Q3: How are tokens named?,clear: same topic (token name style),token-architecture,How many tiers and how are tokens named? (FlashDSM implicit),Proposed
+D732,"each token holds type, category, status, description, usedBy",Global,"Token structure, format or naming rule applies to every scope.",,no clear match; nearest OD-26 Q7 and OD-26 Q9,token-architecture,How many tiers and how are tokens named? (FlashDSM implicit),Proposed
+D733,DTCG file tokens.dtcg.json offered,Global,"Token structure, format or naming rule applies to every scope.",OD-26 Q2: Which file format holds the tokens?,clear: same topic (file format),token-architecture,How many tiers and how are tokens named? (FlashDSM implicit),Proposed
+D734,"per-token one-line usage text (example: ""Playful overshoot - toggles, popovers"")",Global,"Token structure, format or naming rule applies to every scope.",,no clear match; nearest OD-26 Q7 and OD-26 Q9,token-architecture,How many tiers and how are tokens named? (FlashDSM implicit),Proposed
+D735,"Home page: structure (what a card is built from, spacing of a button label, which states exist) is kept apart from a theme (color, type, radius, motion) that swaps without touching structure",Global,"Token structure, format or naming rule applies to every scope.",,no clear match; nearest OD-26 Q1,token-architecture,Is there a structure layer apart from the theme layer? (FlashDSM claim),Proposed
+D736,"Exports: CSS custom properties, SCSS, Tailwind config, Tokens Studio JSON, Figma variables via plugin, Cursor rules with MCP config, ZIP, GitHub push as pull request",Global,"Delivery choice applies to the whole pack, not one scope.",OD-28 Q2: Which output formats are offered?,clear: same topic (output formats),delivery,Which exports and agent surfaces ship? (FlashDSM),Proposed
+D737,"MCP server https://flashdsm.com/api/v1/mcp with OAuth and read-only or read + propose scopes; tools include get_tokens, get_kit (markdown reference), get_component, get_relations, get_impact, get_agent_rules, check_violations, suggest_token, propose_token",Global,"Delivery choice applies to the whole pack, not one scope.",,"no clear match; agent surfaces are on the missing list (M61), not in OD-15..28",delivery,Which exports and agent surfaces ship? (FlashDSM),Proposed
+D738,agents read only the published version,Global,"Delivery choice applies to the whole pack, not one scope.",,"no clear match; agent surfaces are on the missing list (M61), not in OD-15..28",delivery,Which exports and agent surfaces ship? (FlashDSM),Proposed
+D739,writes only file proposals for human review,Global,"Delivery choice applies to the whole pack, not one scope.",,"no clear match; agent surfaces are on the missing list (M61), not in OD-15..28",delivery,Which exports and agent surfaces ship? (FlashDSM),Proposed
+D740,free plan exports carry an attribution comment,Global,"Delivery choice applies to the whole pack, not one scope.",,"no clear match; agent surfaces are on the missing list (M61), not in OD-15..28",delivery,Which exports and agent surfaces ship? (FlashDSM),Proposed
+D741,"propose_token files a proposal with a reason into a review queue; nothing changes until a person accepts; check_violations lints CSS, JSX or HTML for hardcoded colors and spacing and names the token to use",Global,"Delivery choice applies to the whole pack, not one scope.",,"no clear match; agent surfaces are on the missing list (M61), not in OD-15..28",delivery,What does an agent do when a token is missing? (FlashDSM),Proposed
+D742,No meaning per step,Scoped,Answer only has meaning for the color primitive scales.,,,color-primitives,"Is each step documented with a fixed use (background, border, solid, text)?",Gap
+D743,"use per step (Radix: 1-2 backgrounds, 3-5 component states, 6-8 borders, 9-10 solid, 11-12 text)",Scoped,Answer only has meaning for the color primitive scales.,,,color-primitives,"Is each step documented with a fixed use (background, border, solid, text)?",Gap
+D744,Target contrast ratios on a background (Leonardo),Scoped,Answer only has meaning for the color primitive scales.,,,color-primitives,Does the scale pick its steps by target contrast or by fixed lightness?,Gap
+D745,fixed lightness per step (Accessible Palette: same CIELAB lightness per step),Scoped,Answer only has meaning for the color primitive scales.,,,color-primitives,Does the scale pick its steps by target contrast or by fixed lightness?,Gap
+D746,hand-tuned (Radix),Scoped,Answer only has meaning for the color primitive scales.,,,color-primitives,Does the scale pick its steps by target contrast or by fixed lightness?,Gap
+D747,"One source color (Material: 1 source, 5 key colors)",Scoped,Answer only has meaning for the color primitive scales.,,,color-primitives,"Does one source color make the whole palette, or several key colors?",Gap
+D748,several color keys interpolated (Leonardo),Scoped,Answer only has meaning for the color primitive scales.,,,color-primitives,"Does one source color make the whole palette, or several key colors?",Gap
+D749,"pick closest of fixed scales (Radix, shadcn baseColor)",Scoped,Answer only has meaning for the color primitive scales.,,,color-primitives,"Does one source color make the whole palette, or several key colors?",Gap
+D750,Always white,Scoped,Answer only has meaning for the color primitive scales.,,,color-primitives,Which text color goes on a solid step (white or dark) for each hue?,Gap
+D751,"per hue (Radix: sky, mint, lime, yellow, amber use dark text on the solid step)",Scoped,Answer only has meaning for the color primitive scales.,,,color-primitives,Which text color goes on a solid step (white or dark) for each hue?,Gap
+D752,"One of 14 DTCG color spaces (srgb, display-p3, oklch, oklab, lab, lch, hsl, hwb, rec2020 and others) with alpha 0-1",Global,"Color space or color format is reused by semantic color, theming, shadow tint and output.",,,color-primitives,Which color space tag does the token carry?,Gap
+D753,One,Scoped,Answer only has meaning for semantic color roles.,,,semantic-color,How many emphasis levels does a role have?,Gap
+D754,role x emphasis x state in Atlassian (names of the emphasis levels not read on the fetched page),Scoped,Answer only has meaning for semantic color roles.,,,semantic-color,How many emphasis levels does a role have?,Gap
+D755,"Each layer one step lighter in dark themes, layer-01..03 tokens (Carbon)",Scoped,Answer only has meaning for semantic color roles.,,,semantic-color,How does a nested surface change color (layering rule)?,Gap
+D756,fixed surface levels (Material containers),Scoped,Answer only has meaning for semantic color roles.,,,semantic-color,How does a nested surface change color (layering rule)?,Gap
+D757,One set,Scoped,Answer only has meaning for type tokens.,,,typography,Are there separate type sets for product and editorial use?,Gap
+D758,productive and expressive sets (Carbon),Scoped,Answer only has meaning for type tokens.,,,typography,Are there separate type sets for product and editorial use?,Gap
+D759,No,Scoped,Answer only has meaning for type tokens.,,,typography,Does line height change with the script of the language?,Gap
+D760,"categories by script height (Material: small base, medium about 7% taller, large about 30%, extra large about 100%)",Scoped,Answer only has meaning for type tokens.,,,typography,Does line height change with the script of the language?,Gap
+D761,No,Global,"One global size factor can scale type, spacing and radius together.",,,typography,Is one global size factor allowed (change all sizes together)?,Gap
+D762,one factor (Radix scaling 90%-110%),Global,"One global size factor can scale type, spacing and radius together.",,,typography,Is one global size factor allowed (change all sizes together)?,Gap
+D763,base font size field (Tokens Studio),Global,"One global size factor can scale type, spacing and radius together.",,,typography,Is one global size factor allowed (change all sizes together)?,Gap
+D764,One ratio,Global,Fluid or fixed response is one rule shared with spacing and layout.,,,typography,"If sizes are fluid, which min and max viewport and which ratio at each end?",Gap
+D765,"two ratios (Utopia: min ratio and max ratio, min and max viewport, ratio list 1.067-2)",Global,Fluid or fixed response is one rule shared with spacing and layout.,,,typography,"If sizes are fluid, which min and max viewport and which ratio at each end?",Gap
+D766,1..9,Global,Step naming style is one rule that reads the same in every scale scope.,,,spacing,How are space steps named?,Gap
+D767,025..3200 (value-based),Global,Step naming style is one rule that reads the same in every scale scope.,,,spacing,How are space steps named?,Gap
+D768,0.5..N,Global,Step naming style is one rule that reads the same in every scale scope.,,,spacing,How are space steps named?,Gap
+D769,01..13,Global,Step naming style is one rule that reads the same in every scale scope.,,,spacing,How are space steps named?,Gap
+D770,space.100 (percent of base),Global,Step naming style is one rule that reads the same in every scale scope.,,,spacing,How are space steps named?,Gap
+D771,t-shirt,Global,Step naming style is one rule that reads the same in every scale scope.,,,spacing,How are space steps named?,Gap
+D772,Number factor (MUI default 8),Scoped,Answer only has meaning for spacing and sizing tokens.,,,spacing,"Is the spacing value a number, a function or a table?",Gap
+D773,function,Scoped,Answer only has meaning for spacing and sizing tokens.,,,spacing,"Is the spacing value a number, a function or a table?",Gap
+D774,array,Scoped,Answer only has meaning for spacing and sizing tokens.,,,spacing,"Is the spacing value a number, a function or a table?",Gap
+D775,named steps,Scoped,Answer only has meaning for spacing and sizing tokens.,,,spacing,"Is the spacing value a number, a function or a table?",Gap
+D776,One,Scoped,Answer only has meaning for radius tokens.,,,radius,"Which radius families exist for selectors, fields and boxes?",Gap
+D777,"three families by component group (daisyUI radius-selector, radius-field, radius-box)",Scoped,Answer only has meaning for radius tokens.,,,radius,"Which radius families exist for selectors, fields and boxes?",Gap
+D778,Every surface,Scoped,Answer only has meaning for elevation and shadow tokens.,,,elevation,Which surfaces may carry a shadow?,Gap
+D779,only raised and overlay surfaces (Atlassian),Scoped,Answer only has meaning for elevation and shadow tokens.,,,elevation,Which surfaces may carry a shadow?,Gap
+D780,No,Scoped,Answer only has meaning for elevation and shadow tokens.,,,elevation,Is there a global depth and noise setting?,Gap
+D781,"depth and noise numbers per theme (daisyUI light: depth 1, noise 0)",Scoped,Answer only has meaning for elevation and shadow tokens.,,,elevation,Is there a global depth and noise setting?,Gap
+D782,"thin, thick, thicker (Primer 1, 2, 4 px)",Global,Step naming style is one rule that reads the same in every scale scope.,,,borders,How are border widths named?,Gap
+D783,numeric,Global,Step naming style is one rule that reads the same in every scale scope.,,,borders,How are border widths named?,Gap
+D784,t-shirt,Global,Step naming style is one rule that reads the same in every scale scope.,,,borders,How are border widths named?,Gap
+D785,short1..extra-long4 (Material 50-1000ms),Global,Scale-or-role naming style is one rule that reads the same in every scale scope.,,,motion,How are durations named?,Gap
+D786,"micro, short, medium, long (Primer)",Global,Scale-or-role naming style is one rule that reads the same in every scale scope.,,,motion,How are durations named?,Gap
+D787,050..N in 50ms steps (Polaris),Global,Scale-or-role naming style is one rule that reads the same in every scale scope.,,,motion,How are durations named?,Gap
+D788,t-shirt,Global,Scale-or-role naming style is one rule that reads the same in every scale scope.,,,motion,How are durations named?,Gap
+D789,One set,Scoped,Answer only has meaning for motion tokens.,,,motion,Are there standard and emphasized variants of easing?,Gap
+D790,standard + emphasized (Material),Scoped,Answer only has meaning for motion tokens.,,,motion,Are there standard and emphasized variants of easing?,Gap
+D791,productive + expressive (Carbon),Scoped,Answer only has meaning for motion tokens.,,,motion,Are there standard and emphasized variants of easing?,Gap
+D792,None,Global,Reduced-motion policy is shared with accessibility and theming.,,,motion,Is there a named alias for the reduced-motion query?,Gap
+D793,custom media --motionOK and --OSdark (Open Props),Global,Reduced-motion policy is shared with accessibility and theming.,,,motion,Is there a named alias for the reduced-motion query?,Gap
+D794,px,Global,Unit choice (px or rem) is shared with spacing and typography.,,,layout,Which unit holds breakpoints?,Gap
+D795,"rem (Polaris 30.625rem, 48rem, 65rem, 90rem)",Global,Unit choice (px or rem) is shared with spacing and typography.,,,layout,Which unit holds breakpoints?,Gap
+D796,"xs, sm, md, lg, xl",Global,Step naming style is one rule that reads the same in every scale scope.,,,layout,How are breakpoints named?,Gap
+D797,device names,Global,Step naming style is one rule that reads the same in every scale scope.,,,layout,How are breakpoints named?,Gap
+D798,numeric,Global,Step naming style is one rule that reads the same in every scale scope.,,,layout,How are breakpoints named?,Gap
+D799,"12, 6 or 4 (Atlassian)",Scoped,Answer only has meaning for layout tokens.,,,layout,How many columns does content span at each size?,Gap
+D800,2x grid with mini unit 8px (Carbon),Scoped,Answer only has meaning for layout tokens.,,,layout,How many columns does content span at each size?,Gap
+D801,Free,Scoped,Link from icon size to text size only makes sense for icons.,,,iconography,Is icon size linked to text size?,Gap
+D802,"fixed ladder (Carbon 16 default, 20, 24, 32)",Scoped,Link from icon size to text size only makes sense for icons.,,,iconography,Is icon size linked to text size?,Gap
+D803,grid size (Radix Icons 15x15),Scoped,Link from icon size to text size only makes sense for icons.,,,iconography,Is icon size linked to text size?,Gap
+D804,One file per theme,Global,"Mode or theme mechanism is one rule that color, shadow, border and motion scopes all follow.",,,theming,Is a theme a set of token sets or one file?,Gap
+D805,combination of token sets (Tokens Studio),Global,"Mode or theme mechanism is one rule that color, shadow, border and motion scopes all follow.",,,theming,Is a theme a set of token sets or one file?,Gap
+D806,resolver with sets and orthogonal modifiers (DTCG),Global,"Mode or theme mechanism is one rule that color, shadow, border and motion scopes all follow.",,,theming,Is a theme a set of token sets or one file?,Gap
+D807,Flags per theme: default,Global,"Mode or theme mechanism is one rule that color, shadow, border and motion scopes all follow.",,,theming,Which theme is the default and which follows the OS?,Gap
+D808,prefers-dark (daisyUI),Global,"Mode or theme mechanism is one rule that color, shadow, border and motion scopes all follow.",,,theming,Which theme is the default and which follows the OS?,Gap
+D809,"Yes, no abbreviations (""background"" not ""bg"") (DTCG)",Global,"Token structure, format or naming rule applies to every scope.",,,token-architecture,Is the token name built as category + property?,Gap
+D810,by role first,Global,"Token structure, format or naming rule applies to every scope.",,,token-architecture,Is the token name built as category + property?,Gap
+D811,"DTCG stable 2025.10 ($value, $type)",Global,"Token structure, format or naming rule applies to every scope.",,,token-architecture,Which format version does the file carry?,Gap
+D812,"classic Style Dictionary (value, type). The two cannot mix in one run",Global,"Token structure, format or naming rule applies to every scope.",,,token-architecture,Which format version does the file carry?,Gap
+D813,Guaranteed by design (Radix: steps 11 and 12 reach APCA Lc 60 and Lc 90 on step 2),Global,Accessibility rule is checked in many scopes.,,,accessibility,Is contrast guaranteed by the scale itself or checked after?,Gap
+D814,checked by tool (Prism conflicts),Global,Accessibility rule is checked in many scopes.,,,accessibility,Is contrast guaranteed by the scale itself or checked after?,Gap
+D815,2px width and -2px offset (inset) (Primer),Global,Accessibility rule is checked in many scopes.,,,accessibility,How does the focus ring meet WCAG 2.4.7?,Gap
+D816,"HTML, React, Vue, Svelte, CSS, Flutter, SwiftUI export (Prism)",Global,"Delivery choice applies to the whole pack, not one scope.",,,delivery,Which boilerplate outputs ship besides tokens?,Gap
+D817,"Android, CSS, Flutter, iOS side-by-side values (Material motion)",Global,"Delivery choice applies to the whole pack, not one scope.",,,delivery,Which boilerplate outputs ship besides tokens?,Gap

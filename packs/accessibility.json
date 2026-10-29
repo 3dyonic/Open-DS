@@ -16,10 +16,10 @@
           "id": "guaranteed-by-scale",
           "label": "Guaranteed by the scale",
           "summary": "The scale itself promises the contrast.",
-          "why": "The scale itself promises the contrast. You do not run a separate check later.",
+          "why": "The scale itself promises contrast, so you do not run a separate check later.",
           "when_to_choose": "Choose this if every step must meet contrast by construction.",
           "trade_offs": [
-            "Brand freedom gets smaller."
+            "Brand freedom gets smaller"
           ],
           "sources": [
             {
@@ -34,10 +34,10 @@
           "id": "checked-afterwards",
           "label": "Checked afterwards",
           "summary": "A person checks contrast after values exist.",
-          "why": "You pick the scale first. A person checks contrast after the values exist.",
+          "why": "You pick the scale first, and a person checks contrast once the values exist.",
           "when_to_choose": "Choose this if contrast is a review step, not a scale rule.",
           "trade_offs": [
-            "A pretty scale can fail the review."
+            "A good-looking scale can fail the review"
           ],
           "sources": [
             {

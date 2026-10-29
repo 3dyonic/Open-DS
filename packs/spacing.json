@@ -16,10 +16,10 @@
           "id": "base-4",
           "label": "4",
           "summary": "A four-pixel base.",
-          "why": "A 4 pixel base builds a simple grid. Most steps are multiples of 4.",
+          "why": "A 4 px base builds a fine grid, and most steps are multiples of 4.",
           "when_to_choose": "Choose this if you want a fine grid.",
           "trade_offs": [
-            "The scale has more steps to name."
+            "The scale has more steps to name"
           ],
           "sources": [
             {
@@ -34,10 +34,10 @@
           "id": "base-8",
           "label": "8",
           "summary": "An eight-pixel base.",
-          "why": "An 8 pixel base keeps the scale short and coarse.",
+          "why": "An 8 px base keeps the scale short and coarse.",
           "when_to_choose": "Choose this if you want fewer space tokens.",
           "trade_offs": [
-            "Fine adjustments are harder."
+            "Fine adjustments are harder"
           ],
           "sources": [
             {
@@ -60,10 +60,10 @@
           "id": "linear",
           "label": "Linear",
           "summary": "Add the base each step.",
-          "why": "Linear space adds the same base each step.",
-          "when_to_choose": "Choose this if gaps should be easy to predict.",
+          "why": "Linear space adds the same base amount each step.",
+          "when_to_choose": "Choose this if gaps should be predictable.",
           "trade_offs": [
-            "Large gaps grow slowly."
+            "Large gaps grow slowly"
           ],
           "sources": [
             {
@@ -78,10 +78,10 @@
           "id": "geometric",
           "label": "Geometric",
           "summary": "Multiply the base each step.",
-          "why": "Geometric space multiplies the base, so large gaps grow fast.",
+          "why": "Geometric space multiplies the base each step, so large gaps grow fast.",
           "when_to_choose": "Choose this if page gaps should jump in size.",
           "trade_offs": [
-            "Middle steps can feel missing."
+            "Middle steps can feel missing"
           ],
           "sources": [
             {

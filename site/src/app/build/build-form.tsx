@@ -269,6 +269,11 @@ function OptionRow({
         <span>
           <span className="font-medium">{option.label}</span>
           <span className="mt-1 block text-sm text-muted">{option.when_to_choose}</span>
+          {option.evidence_limited ? (
+            <span className="mt-1 inline-block rounded-control border border-line px-2 py-1 text-sm text-muted">
+              Evidence is limited
+            </span>
+          ) : null}
         </span>
       </label>
       {badges.map((badge) => (
