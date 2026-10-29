@@ -220,11 +220,20 @@ def test_catalog_uses_pack_reasons_and_is_deterministic(tmp_path: Path) -> None:
     assert again["after"]["$extensions"]["openDs"]["basis"] == "sourced"
     assert again["after"]["$extensions"]["openDs"]["context"] == ["density/comfortable"]
     spacious = first["density"]["density/spacious"]["tokens"]["reading-text"][0]
-    assert spacious["state"] == "unchanged"
+    assert spacious["state"] == "set"
     assert spacious["before"]["$value"] == 1.5
-    assert spacious["after"]["$extensions"]["openDs"]["basis"] == "your-pick"
-    assert spacious["after"]["$extensions"]["openDs"]["sources"] == []
-    assert "why" not in spacious["after"]["$extensions"]["openDs"]
+    assert spacious["after"]["$value"] == 1.75
+    spacious_ext = spacious["after"]["$extensions"]["openDs"]
+    assert spacious_ext["basis"] == "your-pick"
+    assert "why" not in spacious_ext
+    assert spacious_ext["cautions"][0]["url"] == "https://www.w3.org/TR/coga-usable/"
+    assert spacious_ext["cautions"][0]["checked"] == "2026-10-29"
+    assert "above the scroll" in spacious_ext["cautions"][0]["quote"]
+    coga = next(row for row in first["density"]["density/spacious"]["links"] if "Dense text" in row["reason"])
+    assert coga["type"] == "recommends"
+    assert coga["basis"] == "sourced"
+    assert coga["sources"][0]["url"] == "https://www.w3.org/TR/coga-usable/"
+    assert coga["sources"][0]["checked"] == "2026-10-29"
     for density in ("comfortable", "spacious"):
         tokens = first["density"][f"density/{density}"]["tokens"]
         assert tokens["card"][0]["after"]["$extensions"]["openDs"]["basis"] == "your-pick"
