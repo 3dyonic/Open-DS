@@ -100,6 +100,20 @@
   {
     "basis": "sourced",
     "from": "density/compact",
+    "id": "density/compact|recommends|usage-data/tables",
+    "sources": [
+      {
+        "checked": "2026-10-29",
+        "quote": "Button spacing depends on the surrounding UI. Default spacing is used for most use cases, compact for tables.",
+        "url": "https://atlassian.design/components/button/examples"
+      }
+    ],
+    "to": "usage-data/tables",
+    "type": "recommends"
+  },
+  {
+    "basis": "sourced",
+    "from": "density/compact",
     "id": "density/compact|requires|spacing-base/base-4",
     "sources": [
       {
