@@ -28,10 +28,10 @@
           "id": "wcag22",
           "label": "WCAG 2.2 contrast",
           "summary": "Relative luminance contrast, as WCAG 2.2 describes it.",
-          "why": "WCAG contrast matches a target that names WCAG 2.2.",
+          "why": "WCAG 2.2 contrast is the ratio of relative luminance between two colors. It matches a target that names WCAG 2.2.",
           "when_to_choose": "Choose this if your target is WCAG 2.2 AA or AAA.",
           "trade_offs": [
-            "The number is not a full reading test."
+            "The ratio is not a full reading test"
           ],
           "sources": [
             {
@@ -46,10 +46,10 @@
           "id": "apca",
           "label": "APCA",
           "summary": "Accessible Perceptual Contrast Algorithm.",
-          "why": "APCA is a newer contrast model. It judges lightness with a different formula.",
-          "when_to_choose": "Choose this if you have agreed to use APCA instead of WCAG.",
+          "why": "APCA is a different contrast model. It judges lightness with its own formula.",
+          "when_to_choose": "Choose this if your team has agreed to use APCA instead of WCAG.",
           "trade_offs": [
-            "Many audits still ask for WCAG."
+            "A WCAG target and APCA numbers can disagree"
           ],
           "sources": [
             {
@@ -72,10 +72,10 @@
           "id": "low-is-light",
           "label": "50 to 1000",
           "summary": "A low number is a light color.",
-          "why": "People know 50 as light and 900 as dark from common product scales.",
-          "when_to_choose": "Choose this if your team already says 50 for the light step.",
+          "why": "Step names run from 50 to 1000, and a low number is a light color, like the names in Tailwind.",
+          "when_to_choose": "Choose this if your team already says 50 for the lightest step.",
           "trade_offs": [
-            "The numbers are not lightness percents."
+            "The numbers are not lightness percents"
           ],
           "sources": [
             {
@@ -90,16 +90,26 @@
           "id": "high-is-light",
           "label": "100 to 0",
           "summary": "A high number is a light color.",
-          "why": "A high number means a light color, like a percent of lightness from 100 to 0.",
+          "why": "Step names run from 100 down to 0, and a high number is a light color, like a lightness percent.",
           "when_to_choose": "Choose this if 100 should mean the lightest step.",
           "trade_offs": [
-            "It fights the 50 to 900 habit."
+            "It goes against the common 50 to 900 habit"
           ],
           "sources": [
             {
-              "name": "Radix",
-              "title": "Palette composition",
-              "url": "https://www.radix-ui.com/colors/docs/palette-composition"
+              "name": "Material",
+              "title": "Color system",
+              "url": "https://m3.material.io/styles/color/system/how-the-system-works"
+            },
+            {
+              "name": "MDN",
+              "title": "hsl()",
+              "url": "https://developer.mozilla.org/en-US/docs/Web/CSS/color_value/hsl"
+            },
+            {
+              "name": "Tailwind",
+              "title": "Colors",
+              "url": "https://tailwindcss.com/docs/colors"
             }
           ],
           "formula": "Named stops from 100 down to 0."
@@ -116,10 +126,10 @@
           "id": "rem",
           "label": "rem",
           "summary": "Relative to the root font size.",
-          "why": "Rem follows the reader font size. Zoom and settings keep the layout in step.",
+          "why": "Rem follows the reader's font size, so zoom and settings keep the layout in step.",
           "when_to_choose": "Choose this if the product is on the web.",
           "trade_offs": [
-            "A pixel-perfect mock is harder."
+            "Matching a pixel-exact mock takes more work"
           ],
           "sources": [
             {
@@ -133,10 +143,10 @@
           "id": "px",
           "label": "px",
           "summary": "CSS pixels.",
-          "why": "Pixels match a fixed layout. They do not follow the reader font size.",
+          "why": "Pixels are fixed. They match a fixed layout and do not follow the reader's font size.",
           "when_to_choose": "Choose this if you need exact pixels on a native screen.",
           "trade_offs": [
-            "Browser zoom can feel uneven."
+            "Browser zoom can feel uneven"
           ],
           "sources": [
             {
@@ -158,10 +168,10 @@
           "id": "separate",
           "label": "Separate",
           "summary": "Components do not hold theme values.",
-          "why": "Components hold anatomy and states. Theme files hold color, type, radius, and motion.",
-          "when_to_choose": "Choose this if a new theme must not edit the components.",
+          "why": "Components hold anatomy and states. Theme files hold color, type, radius and motion.",
+          "when_to_choose": "Choose this if a new theme must not change the components.",
           "trade_offs": [
-            "You keep two layers in the repo."
+            "You keep two layers in the repo"
           ],
           "sources": [
             {
@@ -175,10 +185,10 @@
           "id": "combined",
           "label": "Combined",
           "summary": "Theme values live in the components.",
-          "why": "Values live in the component files. One folder holds the whole look.",
+          "why": "Theme values live in the component files, so one folder holds the whole look.",
           "when_to_choose": "Choose this if you have one brand and want fewer files.",
           "trade_offs": [
-            "A second brand means editing components."
+            "A second brand means editing components"
           ],
           "sources": [
             {
