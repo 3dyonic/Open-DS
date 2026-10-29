@@ -17,7 +17,7 @@
   "scripts": {
     "dev": "next dev",
     "build": "next build",
-    "test": "node --test src/lib/check.test.mjs",
+    "test": "node --test src/lib/*.test.mjs",
     "lint": "eslint . && prettier --check .",
     "typecheck": "tsc --noEmit"
   },
