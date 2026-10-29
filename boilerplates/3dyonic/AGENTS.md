@@ -1,6 +1,6 @@
 # Agent rules
 
-The recipe fingerprint is 63c5e4fc0baf6c9648d40ea117a9b4882a6b913b88271df3df2a5c7fd4227a4d.
+The recipe fingerprint is d33bd40a8e9668a372bc2c60724635ca4b1596c62a84135fb0192c6deeb7c17b.
 
 Do use the theme tokens for color, type, radius, and motion.
 Do not put raw colors, font sizes, or radii in component files.
@@ -40,6 +40,10 @@ Do not change locked fields after init.
 - decision: css-unit
   Do follow option `rem`.
   Do not drop the reason: Type and space should follow the reader's font size.
+
+- decision: default-theme
+  Do follow option `light`.
+  Do not drop the reason: The page opens on the light set. Dark is a modifier.
 
 - decision: density
   Do follow option `comfortable`.
@@ -120,6 +124,10 @@ Do not change locked fields after init.
 - decision: theme-shape
   Do follow option `sets-and-modifiers`.
   Do not drop the reason: Light and dark are modifiers on one theme, not two products.
+
+- decision: token-tiers
+  Do follow option `three-tier`.
+  Do not drop the reason: The starter keeps primitive, semantic, and component tiers.
 
 - decision: type-scale-ratio
   Do follow option `major-third`.

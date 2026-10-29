@@ -89,6 +89,91 @@
           ]
         }
       ]
+    },
+    {
+      "id": "token-tiers",
+      "prompt": "How many token tiers do you use?",
+      "summary": "Tiers are primitive, semantic, and component. This pack does not build them.",
+      "required": true,
+      "why_care": "Tiers decide whether components point at raw values or at named roles.",
+      "affects": [
+        "theme/tokens.json",
+        "README.md",
+        "AGENTS.md"
+      ],
+      "feeds_into": [],
+      "options": [
+        {
+          "id": "flat",
+          "label": "One flat layer",
+          "summary": "One layer of tokens, with no aliases between them.",
+          "why": "One layer holds every token, with no alias from a role name to a raw value.",
+          "when_to_choose": "Choose this if you will not need role names that point at raw values.",
+          "trade_offs": [
+            "A brand change edits the same layer"
+          ],
+          "sources": [
+            {
+              "name": "DTCG",
+              "title": "Design Tokens format",
+              "url": "https://www.designtokens.org/tr/drafts/format/"
+            },
+            {
+              "name": "Material",
+              "title": "Design tokens overview",
+              "url": "https://m3.material.io/foundations/design-tokens/overview"
+            }
+          ],
+          "fragment": "fragments/tiers/flat.css"
+        },
+        {
+          "id": "two-tier",
+          "label": "Primitive and semantic",
+          "summary": "Raw values, plus role names that point at them.",
+          "why": "Raw values sit under role names, and components do not have their own tokens.",
+          "when_to_choose": "Choose this if role names are enough and components can use them directly.",
+          "trade_offs": [
+            "Component tokens are not a separate layer"
+          ],
+          "sources": [
+            {
+              "name": "DTCG",
+              "title": "Design Tokens format",
+              "url": "https://www.designtokens.org/tr/drafts/format/"
+            },
+            {
+              "name": "Material",
+              "title": "Design tokens overview",
+              "url": "https://m3.material.io/foundations/design-tokens/overview"
+            }
+          ],
+          "fragment": "fragments/tiers/two-tier.css"
+        },
+        {
+          "id": "three-tier",
+          "label": "Primitive, semantic, component",
+          "summary": "Raw values, role names, then component tokens that point at the roles.",
+          "why": "Raw values, role names, and component tokens stay in three layers.",
+          "when_to_choose": "Choose this if a brand change should not edit component files.",
+          "trade_offs": [
+            "You name and keep three layers"
+          ],
+          "sources": [
+            {
+              "name": "DTCG",
+              "title": "Design Tokens format",
+              "url": "https://www.designtokens.org/tr/drafts/format/"
+            },
+            {
+              "name": "Material",
+              "title": "Design tokens overview",
+              "url": "https://m3.material.io/foundations/design-tokens/overview"
+            }
+          ],
+          "formula": "primitive, semantic, and component.",
+          "fragment": "fragments/tiers/three-tier.css"
+        }
+      ]
     }
   ]
 }

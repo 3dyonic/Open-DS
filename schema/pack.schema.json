@@ -272,6 +272,24 @@
         "required": {
           "type": "boolean"
         },
+        "why_care": {
+          "type": "string",
+          "minLength": 1
+        },
+        "affects": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "minLength": 1
+          }
+        },
+        "feeds_into": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "pattern": "^[a-z0-9-]+$"
+          }
+        },
         "ref": {
           "type": "string",
           "pattern": "^global:[a-z0-9-]+$"

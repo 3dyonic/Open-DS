@@ -32,7 +32,8 @@
               "title": "Shape tokens",
               "url": "https://raw.githubusercontent.com/material-components/material-web/main/tokens/versions/v0_192/_md-sys-shape.scss"
             }
-          ]
+          ],
+          "fragment": "fragments/radius/sharp.css"
         },
         {
           "id": "radius-4",
@@ -54,7 +55,8 @@
               "title": "Shape tokens",
               "url": "https://raw.githubusercontent.com/material-components/material-web/main/tokens/versions/v0_192/_md-sys-shape.scss"
             }
-          ]
+          ],
+          "fragment": "fragments/radius/radius-4.css"
         },
         {
           "id": "radius-8",
@@ -76,7 +78,8 @@
               "title": "Shape tokens",
               "url": "https://raw.githubusercontent.com/material-components/material-web/main/tokens/versions/v0_192/_md-sys-shape.scss"
             }
-          ]
+          ],
+          "fragment": "fragments/radius/radius-8.css"
         },
         {
           "id": "radius-12",
@@ -103,7 +106,8 @@
               "title": "Size primitives",
               "url": "https://primer.style/foundations/primitives/size"
             }
-          ]
+          ],
+          "fragment": "fragments/radius/radius-12.css"
         },
         {
           "id": "pill",
@@ -127,7 +131,16 @@
             }
           ]
         }
-      ]
+      ],
+      "why_care": "Corner shape is a big part of how a product feels, from sharp and exact to soft and round.",
+      "affects": [
+        "theme/tokens.css",
+        "theme/tokens.json",
+        "theme/tailwind.preset.cjs",
+        "README.md",
+        "AGENTS.md"
+      ],
+      "feeds_into": []
     },
     {
       "id": "radius-progression",
@@ -190,14 +203,28 @@
           "formula": "Each step multiplies the base radius.",
           "evidence_limited": true
         }
-      ]
+      ],
+      "why_care": "It decides whether cards and inputs share one corner or get their own, rounder ones.",
+      "affects": [
+        "README.md",
+        "AGENTS.md"
+      ],
+      "feeds_into": []
     },
     {
       "id": "css-unit",
       "prompt": "Which unit does radius use?",
       "summary": "References the global unit.",
       "required": true,
-      "ref": "global:css-unit"
+      "ref": "global:css-unit",
+      "why_care": "One answer covers type, spacing and radius, and it decides whether layout follows the reader's font size.",
+      "affects": [
+        "theme/tokens.css",
+        "theme/tokens.json",
+        "README.md",
+        "AGENTS.md"
+      ],
+      "feeds_into": []
     }
   ]
 }

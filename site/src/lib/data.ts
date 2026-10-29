@@ -10,6 +10,11 @@ import theming from "../../../packs/theming.json";
 import typography from "../../../packs/typography.json";
 import manifest from "../../../boilerplates/3dyonic/manifest.json";
 import recipe from "../../../recipes/3dyonic.json";
+import accessibleFirst from "../../../recipes/accessible-first.json";
+import brandExpressive from "../../../recipes/brand-expressive.json";
+import contentFirst from "../../../recipes/content-first.json";
+import denseData from "../../../recipes/dense-data.json";
+import multiBrand from "../../../recipes/multi-brand.json";
 
 export type Pack = {
   id: string;
@@ -69,6 +74,13 @@ export const packs: Record<string, Pack> = {
 
 export const packList = Object.values(packs).sort((a, b) => a.order - b.order);
 export const showcase = { recipe, manifest };
+export const stanceRecipes = [
+  accessibleFirst,
+  denseData,
+  multiBrand,
+  contentFirst,
+  brandExpressive,
+];
 
 export function packById(id: string) {
   return packs[id];
