@@ -85,5 +85,8 @@ jobs:
           test -f ./my-ds/theme/tokens.json
           test -f ./my-ds/AGENTS.md
           test -f ./my-ds/links.json
-          bash examples/run-dense-data.sh /tmp/dense-data-regen
-          diff -ru examples/dense-data /tmp/dense-data-regen
+          regen="$(mktemp -d)"
+          for stance in accessible-first dense-data multi-brand content-first brand-expressive; do
+            bash examples/run-preset.sh "$stance" "$regen/$stance"
+            diff -ru "examples/$stance" "$regen/$stance"
+          done

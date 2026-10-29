@@ -1,0 +1,317 @@
+[
+  {
+    "basis": "sourced",
+    "from": "accessibility-target/wcag-22-aaa",
+    "id": "accessibility-target/wcag-22-aaa|recommends|contrast-check/guaranteed-by-scale",
+    "sources": [
+      {
+        "url": "https://www.w3.org/WAI/WCAG22/Understanding/contrast-enhanced.html"
+      }
+    ],
+    "to": "contrast-check/guaranteed-by-scale",
+    "type": "recommends"
+  },
+  {
+    "basis": "sourced",
+    "from": "accessibility-target/wcag-22-aaa",
+    "id": "accessibility-target/wcag-22-aaa|recommends|contrast-metric/wcag22",
+    "sources": [
+      {
+        "url": "https://www.w3.org/WAI/WCAG22/Understanding/contrast-enhanced.html"
+      }
+    ],
+    "to": "contrast-metric/wcag22",
+    "type": "recommends"
+  },
+  {
+    "basis": "sourced",
+    "from": "accessibility-target/wcag-22-aa",
+    "id": "accessibility-target/wcag-22-aa|recommends|contrast-check/checked-afterwards",
+    "sources": [
+      {
+        "url": "https://www.w3.org/WAI/WCAG22/Understanding/contrast-minimum.html"
+      }
+    ],
+    "to": "contrast-check/checked-afterwards",
+    "type": "recommends"
+  },
+  {
+    "basis": "sourced",
+    "from": "accessibility-target/wcag-22-aa",
+    "id": "accessibility-target/wcag-22-aa|recommends|contrast-metric/wcag22",
+    "sources": [
+      {
+        "url": "https://www.w3.org/WAI/WCAG22/Understanding/contrast-minimum.html"
+      }
+    ],
+    "to": "contrast-metric/wcag22",
+    "type": "recommends"
+  },
+  {
+    "basis": "sourced",
+    "from": "brand-variance/multi-brand",
+    "id": "brand-variance/multi-brand|recommends|structure-theme-separation/separate",
+    "sources": [
+      {
+        "url": "https://m3.material.io/styles/color/roles"
+      }
+    ],
+    "to": "structure-theme-separation/separate",
+    "type": "recommends"
+  },
+  {
+    "basis": "sourced",
+    "from": "contrast-metric/apca",
+    "id": "contrast-metric/apca|requires|accessibility-target/wcag-22-aa",
+    "sources": [
+      {
+        "url": "https://apcacontrast.com/"
+      },
+      {
+        "url": "https://www.w3.org/WAI/standards-guidelines/wcag/wcag3-intro/"
+      },
+      {
+        "url": "https://www.w3.org/WAI/WCAG22/Understanding/contrast-minimum.html"
+      }
+    ],
+    "to": "accessibility-target/wcag-22-aa",
+    "type": "requires"
+  },
+  {
+    "basis": "sourced",
+    "from": "density/comfortable",
+    "id": "density/comfortable|recommends|line-height/normal",
+    "sources": [
+      {
+        "url": "https://design-system.service.gov.uk/styles/typography/"
+      }
+    ],
+    "to": "line-height/normal",
+    "type": "recommends"
+  },
+  {
+    "basis": "sourced",
+    "from": "density/comfortable",
+    "id": "density/comfortable|recommends|target-size/material-48",
+    "sources": [
+      {
+        "checked": "2026-10-29",
+        "quote": "No matter the density, all touch targets should be at least 48px in size.",
+        "url": "https://m3.material.io/blog/material-density-web"
+      }
+    ],
+    "to": "target-size/material-48",
+    "type": "recommends"
+  },
+  {
+    "basis": "sourced",
+    "from": "density/compact",
+    "id": "density/compact|recommends|spacing-base/base-4",
+    "sources": [
+      {
+        "url": "https://m3.material.io/foundations/layout/understanding-layout/spacing"
+      }
+    ],
+    "to": "spacing-base/base-4",
+    "type": "recommends"
+  },
+  {
+    "basis": "sourced",
+    "from": "density/compact",
+    "id": "density/compact|recommends|target-size/material-48",
+    "sources": [
+      {
+        "checked": "2026-10-29",
+        "quote": "No matter the density, all touch targets should be at least 48px in size.",
+        "url": "https://m3.material.io/blog/material-density-web"
+      }
+    ],
+    "to": "target-size/material-48",
+    "type": "recommends"
+  },
+  {
+    "basis": "sourced",
+    "from": "density/compact",
+    "id": "density/compact|requires|spacing-base/base-4",
+    "sources": [
+      {
+        "url": "https://m3.material.io/foundations/layout/understanding-layout/spacing"
+      }
+    ],
+    "to": "spacing-base/base-4",
+    "type": "requires"
+  },
+  {
+    "basis": "sourced",
+    "from": "density/spacious",
+    "id": "density/spacious|recommends|spacing-base/base-8",
+    "sources": [
+      {
+        "url": "https://m3.material.io/foundations/layout/understanding-layout/spacing"
+      }
+    ],
+    "to": "spacing-base/base-8",
+    "type": "recommends"
+  },
+  {
+    "basis": "sourced",
+    "from": "density/spacious",
+    "id": "density/spacious|recommends|target-size/material-48",
+    "sources": [
+      {
+        "checked": "2026-10-29",
+        "quote": "No matter the density, all touch targets should be at least 48px in size.",
+        "url": "https://m3.material.io/blog/material-density-web"
+      }
+    ],
+    "to": "target-size/material-48",
+    "type": "recommends"
+  },
+  {
+    "basis": "sourced",
+    "from": "density/spacious",
+    "id": "density/spacious|requires|spacing-base/base-8",
+    "sources": [
+      {
+        "url": "https://m3.material.io/foundations/layout/understanding-layout/spacing"
+      }
+    ],
+    "to": "spacing-base/base-8",
+    "type": "requires"
+  },
+  {
+    "basis": "sourced",
+    "from": "on-color-pairing/surface-pair",
+    "id": "on-color-pairing/surface-pair|requires|theme-shape/sets-and-modifiers",
+    "sources": [
+      {
+        "url": "https://m3.material.io/styles/color/roles"
+      }
+    ],
+    "to": "theme-shape/sets-and-modifiers",
+    "type": "requires"
+  },
+  {
+    "basis": "sourced",
+    "from": "platforms/web",
+    "id": "platforms/web|recommends|css-unit/rem",
+    "sources": [
+      {
+        "url": "https://www.w3.org/TR/css-values-4/#rem"
+      }
+    ],
+    "to": "css-unit/rem",
+    "type": "recommends"
+  },
+  {
+    "basis": "sourced",
+    "from": "product-type/calm",
+    "id": "product-type/calm|discourages|density/compact",
+    "sources": [
+      {
+        "url": "https://www.nngroup.com/articles/tone-of-voice-dimensions/"
+      }
+    ],
+    "to": "density/compact",
+    "type": "discourages"
+  },
+  {
+    "basis": "sourced",
+    "from": "product-type/content",
+    "id": "product-type/content|discourages|density/compact",
+    "sources": [
+      {
+        "url": "https://design-system.service.gov.uk/styles/typography/"
+      }
+    ],
+    "to": "density/compact",
+    "type": "discourages"
+  },
+  {
+    "basis": "sourced",
+    "from": "product-type/content",
+    "id": "product-type/content|recommends|line-height/normal",
+    "sources": [
+      {
+        "url": "https://design-system.service.gov.uk/styles/typography/"
+      }
+    ],
+    "to": "line-height/normal",
+    "type": "recommends"
+  },
+  {
+    "basis": "sourced",
+    "from": "product-type/dense-data",
+    "id": "product-type/dense-data|recommends|spacing-base/base-4",
+    "sources": [
+      {
+        "url": "https://www.carbondesignsystem.com/building-blocks/core/components/data-table/guidelines"
+      },
+      {
+        "url": "https://m3.material.io/blog/material-density-web"
+      }
+    ],
+    "to": "spacing-base/base-4",
+    "type": "recommends"
+  },
+  {
+    "basis": "sourced",
+    "from": "team/large-team",
+    "id": "team/large-team|recommends|locked-at-init/lock-core",
+    "sources": [
+      {
+        "url": "https://ui.shadcn.com/docs/components-json"
+      }
+    ],
+    "to": "locked-at-init/lock-core",
+    "type": "recommends"
+  },
+  {
+    "basis": "sourced",
+    "from": "theme-shape/sets-and-modifiers",
+    "id": "theme-shape/sets-and-modifiers|recommends|default-theme/dark",
+    "sources": [
+      {
+        "url": "https://m3.material.io/styles/color/the-color-system/tokens"
+      }
+    ],
+    "to": "default-theme/dark",
+    "type": "recommends"
+  },
+  {
+    "basis": "sourced",
+    "from": "theme-shape/sets-and-modifiers",
+    "id": "theme-shape/sets-and-modifiers|recommends|default-theme/light",
+    "sources": [
+      {
+        "url": "https://m3.material.io/styles/color/the-color-system/tokens"
+      }
+    ],
+    "to": "default-theme/light",
+    "type": "recommends"
+  },
+  {
+    "basis": "sourced",
+    "from": "usage-data/tables",
+    "id": "usage-data/tables|recommends|density/compact",
+    "sources": [
+      {
+        "url": "https://carbondesignsystem.com/components/data-table/style/"
+      }
+    ],
+    "to": "density/compact",
+    "type": "recommends"
+  },
+  {
+    "basis": "sourced",
+    "from": "voice/warm",
+    "id": "voice/warm|recommends|chroma-hue-shift/hue-warm",
+    "sources": [
+      {
+        "url": "https://www.nngroup.com/articles/tone-of-voice-dimensions/"
+      }
+    ],
+    "to": "chroma-hue-shift/hue-warm",
+    "type": "recommends"
+  }
+]
