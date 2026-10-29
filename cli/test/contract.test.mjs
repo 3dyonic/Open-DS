@@ -68,6 +68,15 @@ test("init is byte-stable, and downloads match a local init", async () => {
       false,
     );
 
+    const catalogA = join(first, "catalog.json");
+    const catalogB = join(second, "catalog.json");
+    await exec(process.execPath, [bin, "catalog", "--out", catalogA], { cwd: root });
+    await exec(process.execPath, [bin, "catalog", "--out", catalogB], { cwd: root });
+    assert.deepEqual(readFileSync(catalogA), readFileSync(catalogB));
+    const catalog = JSON.parse(readFileSync(catalogA, "utf8"));
+    assert.equal(catalog.density["density/compact"].tokens["table-row"][0].name, "space/table-row/density");
+    assert.equal("scope" in catalog.density["density/compact"].tokens["table-row"][0], false);
+
     publishDownloads(root, published);
     const fresh = mkdtempSync(join(tmpdir(), "open-ds-fresh-"));
     try {

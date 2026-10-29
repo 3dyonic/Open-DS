@@ -1,0 +1,13 @@
+{
+  "css": {
+    "both": {
+      "--density": "compact"
+    }
+  },
+  "tokens": {
+    "space/table-row/density": {
+      "$type": "other",
+      "$value": "compact"
+    }
+  }
+}
