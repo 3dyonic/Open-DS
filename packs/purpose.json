@@ -741,17 +741,24 @@
                   "checked": "2026-10-29"
                 }
               ]
-            }
-          ],
-          "fragment": "fragments/density/spacious.css",
-          "requires": [
+            },
             {
-              "question": "spacing-base",
-              "option": "base-8",
-              "reason": "Large gaps grow from a larger 8 px base."
+              "question": "line-height",
+              "option": "loose",
+              "reason": "Avoid: Dense text, with little white space.",
+              "sources": [
+                {
+                  "name": "COGA",
+                  "title": "Usable 4.3.3.5",
+                  "url": "https://www.w3.org/TR/coga-usable/",
+                  "quote": "Avoid: Dense text, with little white space.",
+                  "checked": "2026-10-29"
+                }
+              ]
             }
           ],
-          "fragment": "fragments/density/spacious.css",
+          "fragment": "fragments/density/spacious.json",
+          "scopes": ["reading-text"],
           "requires": [
             {
               "question": "spacing-base",
