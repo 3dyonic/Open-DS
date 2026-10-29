@@ -68,7 +68,7 @@ export function BuildForm() {
   );
   const blocked = (result?.findings || []).some((item) => item.id === "required-option");
   const copyLocked = blocked || !result?.ok;
-  const missingQuestions: { summary: string; lines: string[] } | null = result
+  const missingQuestions: { summary: string; lines: string[]; fix: string } | null = result
     ? missingQuestionReport(result.findings)
     : null;
   const otherFindings = (result?.findings || []).filter((item) => item.id !== "missing-question");
@@ -210,6 +210,7 @@ export function BuildForm() {
               <p className="break-all text-sm">Fingerprint {result.fingerprint}</p>
             ) : null}
             {missingQuestions?.summary ? <p>{missingQuestions.summary}</p> : null}
+            {missingQuestions?.fix ? <p>{missingQuestions.fix}</p> : null}
             <ul className="grid gap-2">
               {missingQuestions?.lines.map((line: string) => (
                 <li key={line} className="text-sm">
