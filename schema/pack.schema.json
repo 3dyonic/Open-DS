@@ -354,6 +354,11 @@
         "why_care": {
           "description": "One sentence, 25 words or fewer.",
           "type": "string"
+        },
+        "axis": {
+          "description": "Catalog group for this question. Read from the pack. Falls back to the question id.",
+          "type": "string",
+          "pattern": "^[a-z0-9-]+$"
         }
       }
     },
