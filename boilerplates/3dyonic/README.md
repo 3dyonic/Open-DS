@@ -13,7 +13,7 @@ This boilerplate is an authored starter. Open DS did not calculate the token val
 - Option: `wcag-22-aa`
 - Reason: AA is the commitment for this public site. AAA is a later choice.
 - Source: W3C WAI, WCAG 2.2 contrast minimum
-- Cost: Some large text can still be hard to read.
+- Cost: Some large text can still be hard to read
 
 ### base-font-size
 
@@ -21,7 +21,7 @@ This boilerplate is an authored starter. Open DS did not calculate the token val
 - Option: `size-16`
 - Reason: Body text should start at the common 16 pixel browser default.
 - Source: GOV.UK, Typography
-- Cost: Dense tools often want smaller text.
+- Cost: Dense tools often want smaller text
 
 ### brand-variance
 
@@ -29,7 +29,7 @@ This boilerplate is an authored starter. Open DS did not calculate the token val
 - Option: `single-brand`
 - Reason: This starter is one brand. A second brand is out of this recipe.
 - Source: Material, Color tokens
-- Cost: A later brand means a new theme pass.
+- Cost: A second brand later means a new theme pass
 
 ### chroma-hue-shift
 
@@ -37,7 +37,7 @@ This boilerplate is an authored starter. Open DS did not calculate the token val
 - Option: `hue-warm`
 - Reason: The provisional brand is warm, so darker steps may shift warmer.
 - Source: Radix, Palette composition
-- Cost: A cool brand will look muddy.
+- Cost: A cool brand can look muddy
 
 ### color-space
 
@@ -45,7 +45,7 @@ This boilerplate is an authored starter. Open DS did not calculate the token val
 - Option: `oklch`
 - Reason: The ramp scheme is described in OKLCH so lightness can stay even.
 - Source: CSS Color, CSS Color Module Level 4
-- Cost: Older tools may not show OKLCH.
+- Cost: Older tools may not read oklch()
 
 ### contrast-check
 
@@ -53,7 +53,7 @@ This boilerplate is an authored starter. Open DS did not calculate the token val
 - Option: `checked-afterwards`
 - Reason: Contrast is a review step. This dictionary does not measure it.
 - Source: W3C WAI, WCAG 2.2 contrast minimum
-- Cost: A pretty scale can fail the review.
+- Cost: A good-looking scale can fail the review
 
 ### contrast-metric
 
@@ -61,7 +61,7 @@ This boilerplate is an authored starter. Open DS did not calculate the token val
 - Option: `wcag22`
 - Reason: The accessibility target names WCAG 2.2, so the metric should match it.
 - Source: W3C WAI, WCAG 2.2 contrast minimum
-- Cost: The number is not a full reading test.
+- Cost: The ratio is not a full reading test
 
 ### css-unit
 
@@ -69,7 +69,7 @@ This boilerplate is an authored starter. Open DS did not calculate the token val
 - Option: `rem`
 - Reason: Type and space should follow the reader's font size.
 - Source: CSS Values, rem units
-- Cost: A pixel-perfect mock is harder.
+- Cost: Matching a pixel-exact mock takes more work
 
 ### density
 
@@ -77,7 +77,7 @@ This boilerplate is an authored starter. Open DS did not calculate the token val
 - Option: `comfortable`
 - Reason: Reading pages need room. Compact density is for tools.
 - Source: GOV.UK, Typography
-- Cost: Tables show fewer rows.
+- Cost: Tables show fewer rows
 
 ### font-family
 
@@ -85,7 +85,7 @@ This boilerplate is an authored starter. Open DS did not calculate the token val
 - Option: `system-sans`
 - Reason: A system sans font is enough until a custom font is chosen.
 - Source: GOV.UK, Typography
-- Cost: The look changes by platform.
+- Cost: The look changes by platform
 
 ### lightness-curve
 
@@ -93,7 +93,7 @@ This boilerplate is an authored starter. Open DS did not calculate the token val
 - Option: `perceptual`
 - Reason: Most interface color sits in the middle of the ramp.
 - Source: Radix, Palette composition
-- Cost: The ends move faster.
+- Cost: The ends move faster
 
 ### line-height
 
@@ -101,7 +101,7 @@ This boilerplate is an authored starter. Open DS did not calculate the token val
 - Option: `normal`
 - Reason: Body copy needs a 1.5 line height so lines do not collide.
 - Source: GOV.UK, Typography
-- Cost: Tight UI labels can look tall.
+- Cost: Tight UI labels can look tall
 
 ### locked-at-init
 
@@ -109,7 +109,7 @@ This boilerplate is an authored starter. Open DS did not calculate the token val
 - Option: `lock-core`
 - Reason: Tiers, the on-color pair, and CSS variable names stay fixed after init.
 - Source: shadcn/ui, components.json
-- Cost: A later rename is a breaking change.
+- Cost: A later rename is a breaking change
 
 ### on-color-pairing
 
@@ -117,7 +117,7 @@ This boilerplate is an authored starter. Open DS did not calculate the token val
 - Option: `surface-pair`
 - Reason: Text and its surface should use one pair: surface and on-surface.
 - Source: Material, Color roles
-- Cost: You do not get a second naming scheme.
+- Cost: You use one naming scheme only
 
 ### platforms
 
@@ -125,7 +125,7 @@ This boilerplate is an authored starter. Open DS did not calculate the token val
 - Option: `web`
 - Reason: The first surface is the website.
 - Source: CSS Values, rem units
-- Cost: Native apps will need a later pass.
+- Cost: Native apps need a later pass
 
 ### product-type
 
@@ -133,15 +133,15 @@ This boilerplate is an authored starter. Open DS did not calculate the token val
 - Option: `content`
 - Reason: People come to read pages, not to operate a dense tool.
 - Source: GOV.UK, Typography
-- Cost: Dense screens can feel sparse.
+- Cost: Dense screens can feel sparse
 
 ### radius-base
 
 - decision: radius-base
 - Option: `radius-8`
 - Reason: Controls should feel soft but still look like controls.
-- Source: Tailwind, Customizing colors
-- Cost: A sharp brand will look too round.
+- Source: Tailwind, Border radius
+- Cost: It does not match a brand with square corners
 
 ### radius-progression
 
@@ -149,7 +149,7 @@ This boilerplate is an authored starter. Open DS did not calculate the token val
 - Option: `geometric`
 - Reason: Cards can be rounder than inputs without a long list of steps.
 - Source: Tailwind, Customizing colors
-- Cost: The steps are harder to remember.
+- Cost: The steps are harder to remember
 
 ### scale-direction
 
@@ -157,7 +157,7 @@ This boilerplate is an authored starter. Open DS did not calculate the token val
 - Option: `low-is-light`
 - Reason: The step names should run from 50 light toward 1000 dark.
 - Source: Tailwind, Customizing colors
-- Cost: You give up a 100 to 0 lightness name.
+- Cost: You give up a 100 to 0 lightness name
 
 ### seed-input
 
@@ -165,7 +165,7 @@ This boilerplate is an authored starter. Open DS did not calculate the token val
 - Option: `hex`
 - Reason: One provisional hex is enough to name the terracotta seed.
 - Source: CSS Color, CSS Color Module Level 4
-- Cost: Hex hides the lightness and chroma.
+- Cost: Hex hides lightness and chroma
 
 ### shareable-item
 
@@ -173,7 +173,7 @@ This boilerplate is an authored starter. Open DS did not calculate the token val
 - Option: `full-boilerplate`
 - Reason: A team should get tokens, CSS, and components together.
 - Source: shadcn/ui, Registry item
-- Cost: The package is heavier than tokens alone.
+- Cost: The package is heavier than tokens alone
 
 ### spacing-base
 
@@ -181,7 +181,7 @@ This boilerplate is an authored starter. Open DS did not calculate the token val
 - Option: `base-4`
 - Reason: A 4 pixel base is fine enough for a reading layout.
 - Source: Material, Spacing
-- Cost: The scale has more steps to name.
+- Cost: The scale has more steps to name
 
 ### spacing-scale
 
@@ -189,7 +189,7 @@ This boilerplate is an authored starter. Open DS did not calculate the token val
 - Option: `linear`
 - Reason: Even space steps are easier to remember in a small system.
 - Source: Material, Spacing
-- Cost: Large gaps grow slowly.
+- Cost: Large gaps grow slowly
 
 ### step-count
 
@@ -197,7 +197,7 @@ This boilerplate is an authored starter. Open DS did not calculate the token val
 - Option: `eleven`
 - Reason: Eleven names match the 50 to 950 set people already expect.
 - Source: Tailwind, Customizing colors
-- Cost: You have more tokens to name.
+- Cost: You have more tokens to name
 
 ### step-distance
 
@@ -205,7 +205,7 @@ This boilerplate is an authored starter. Open DS did not calculate the token val
 - Option: `lightness-delta`
 - Reason: Equal lightness steps are easier to explain than deltaE2000.
 - Source: Leonardo, Color theory
-- Cost: Perceived gaps can still vary.
+- Cost: Perceived gaps can still vary
 
 ### structure-theme-separation
 
@@ -213,7 +213,7 @@ This boilerplate is an authored starter. Open DS did not calculate the token val
 - Option: `separate`
 - Reason: A theme change must not require edits inside the components.
 - Source: DTCG, Design Tokens format
-- Cost: You keep two layers in the repo.
+- Cost: You keep two layers in the repo
 
 ### team
 
@@ -221,7 +221,7 @@ This boilerplate is an authored starter. Open DS did not calculate the token val
 - Option: `solo-starting`
 - Reason: One person maintains this starter, so the list stays short.
 - Source: GOV.UK, Style guide
-- Cost: Later teams may need more written rules.
+- Cost: Later teams may need more written rules
 
 ### theme-shape
 
@@ -229,7 +229,7 @@ This boilerplate is an authored starter. Open DS did not calculate the token val
 - Option: `sets-and-modifiers`
 - Reason: Light and dark are modifiers on one theme, not two products.
 - Source: Material, Color tokens
-- Cost: You maintain more than one set.
+- Cost: You maintain more than one set
 
 ### type-scale-ratio
 
@@ -237,7 +237,7 @@ This boilerplate is an authored starter. Open DS did not calculate the token val
 - Option: `major-third`
 - Reason: A 1.25 ratio keeps headings clear without a huge jump.
 - Source: GOV.UK, Typography
-- Cost: Small screens may need fewer steps.
+- Cost: Small screens may need fewer steps
 
 ### users-and-context
 
@@ -245,7 +245,7 @@ This boilerplate is an authored starter. Open DS did not calculate the token val
 - Option: `public`
 - Reason: Most people arrive without an account and without training.
 - Source: GOV.UK, Style guide
-- Cost: You explain more on every page.
+- Cost: You explain more on every page
 
 ### voice
 
@@ -253,7 +253,7 @@ This boilerplate is an authored starter. Open DS did not calculate the token val
 - Option: `warm`
 - Reason: The words should sound human and direct, not cute.
 - Source: Nielsen Norman Group, Tone of voice
-- Cost: Serious errors can sound too soft.
+- Cost: Serious errors can sound too soft
 
 <!-- decisions:end -->
 
