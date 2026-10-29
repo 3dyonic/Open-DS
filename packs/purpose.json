@@ -573,6 +573,7 @@
     },
     {
       "id": "density",
+      "axis": "density",
       "prompt": "How dense should the interface feel?",
       "summary": "Density is the amount of space around controls and text.",
       "required": true,
