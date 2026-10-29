@@ -11,6 +11,7 @@ import pytest
 from open_ds_validator.contract import (
     ContractError,
     apply_fragment_tokens,
+    apply_mappings,
     apply_output,
     build_catalog,
     collect_links,
@@ -21,6 +22,7 @@ from open_ds_validator.contract import (
     force_target_floor,
     links_document,
     load_token_paths,
+    missing_basis_names,
     stamp_tokens,
     validate_tokens,
     write_catalog,
@@ -158,14 +160,24 @@ def test_catalog_uses_pack_reasons_and_is_deterministic(tmp_path: Path) -> None:
     first = build_catalog(PACKS, ROOT)
     second = build_catalog(PACKS, ROOT)
     assert dump(first) == dump(second)
-    compact = first["density/compact"]
+    compact = first["density"]["density/compact"]
     reasons = [row["reason"] for row in compact["links"]]
     assert "No matter the density, all touch targets should be at least 48 px." in reasons
     assert "A fine 4 px grid fits the tighter spacing of compact screens." in reasons
-    assert compact["tokens"]
-    assert compact["tokens"][0]["path"] == "primitive.density.ui"
-    assert "components" in compact
-    space = first["spacing-base/base-4"]
+    table = compact["tokens"]["table-row"][0]
+    assert table["name"] == "space/table-row/density"
+    assert table["after"]["$value"] == "compact"
+    assert "scope" not in table
+    assert table["after"]["$extensions"]["openDs"]["basis"] == "sourced"
+    urls = [item["url"] for item in table["after"]["$extensions"]["openDs"]["sources"]]
+    assert "https://carbondesignsystem.com/components/data-table/style/" in urls
+    for scope in ("form-control", "card", "reading-text"):
+        held = compact["tokens"][scope][0]
+        assert held["before"] is None
+        assert held["after"] is None
+        assert held["name"].split("/")[1] == scope
+        assert "scope" not in held
+    space = first["spacing-base"]["spacing-base/base-4"]
     assert "button" in space["components"]
     assert "input" in space["components"]
     one = tmp_path / "a.json"
@@ -194,18 +206,40 @@ def test_zip_bytes_are_stable(tmp_path: Path) -> None:
     assert first.read_bytes() == second.read_bytes()
 
 
+def test_your_pick_mapping_ships_without_why_and_a_blank_basis_fails() -> None:
+    packs = {
+        "global": {
+            "id": "global",
+            "order": 2,
+            "tokenScopes": ["card"],
+            "scopeMappings": [
+                {"name": "space/card/density", "basis": "your-pick", "value": "base"},
+                {"name": "space/card/padding-y"},
+            ],
+        }
+    }
+    assert missing_basis_names(packs) == ["space/card/padding-y"]
+    tokens: dict = {}
+    apply_mappings(tokens, packs)
+    written = tokens["semantic"]["space/card/density"]
+    assert written["$extensions"]["openDs"]["basis"] == "your-pick"
+    assert "why" not in written["$extensions"]["openDs"]
+    assert "space/card/padding-y" not in tokens["semantic"]
+    assert "Proposed" not in dump(tokens)
+
+
 def test_density_fragments_have_no_placeholder_row_heights() -> None:
-    found = {}
-    for name in ("compact", "comfortable", "spacious"):
-        text = (ROOT / "fragments" / "density" / f"{name}.css").read_text(encoding="utf-8").strip()
-        found[name] = text
+    compact = json.loads((ROOT / "fragments" / "density" / "compact.json").read_text(encoding="utf-8"))
+    assert compact["tokens"]["space/table-row/density"]["$value"] == "compact"
+    assert list(compact["tokens"]) == ["space/table-row/density"]
+    for name in ("comfortable", "spacious"):
+        text = (ROOT / "fragments" / "density" / f"{name}.css").read_text(encoding="utf-8")
+        assert f"--density: {name};" in text
         for placeholder in ("36", "52", "64"):
             assert placeholder not in text
-    assert found == {
-        "compact": "--density: compact;",
-        "comfortable": "--density: comfortable;",
-        "spacious": "--density: spacious;",
-    }
+    blob = json.dumps(compact)
+    for placeholder in ("36", "52", "64"):
+        assert placeholder not in blob
 
 
 def test_apply_output_is_deterministic(tmp_path: Path) -> None:
@@ -227,6 +261,11 @@ def test_apply_output_is_deterministic(tmp_path: Path) -> None:
     assert (one / "AGENTS.md").read_text(encoding="utf-8").startswith("Status: provisional\n")
     tokens = json.loads((one / "theme" / "tokens.json").read_text(encoding="utf-8"))
     assert tokens["primitive"]["target"]["min"]["$value"]["value"] == 24
+    for scope in ("table-row", "form-control", "card", "reading-text"):
+        floor = tokens["semantic"][f"size/{scope}/min-target"]
+        assert floor["$value"] == {"unit": "px", "value": 24}
+        assert floor["$extensions"]["openDs"]["basis"] == "floor"
+    assert "Proposed" not in (one / "theme" / "tokens.json").read_text(encoding="utf-8")
     assert "--target-min: 24px;" in (one / "theme" / "tokens.css").read_text(encoding="utf-8")
     links = json.loads((one / "links.json").read_text(encoding="utf-8"))
     assert all(set(row) == {"basis", "from", "id", "sources", "to", "type"} for row in links)

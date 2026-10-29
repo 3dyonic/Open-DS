@@ -7,6 +7,7 @@ from pathlib import Path
 
 import jsonschema
 
+from open_ds_validator.contract import incomplete_caution_rows, missing_basis_names, unknown_scope_rows
 from open_ds_validator.fingerprint import fingerprint_recipe
 from open_ds_validator.floors import base_pack_floor_findings, floor_findings, fragment_path, read_fragment_floors
 from open_ds_validator.load import load_schema, read_json, repo_root, validator_for
@@ -306,6 +307,28 @@ def validate_packs(packs: dict[str, dict], root: Path | None = None) -> dict:
                             scheme=pack["id"],
                         )
                     )
+    for name, question_id, option_id in unknown_scope_rows(packs, root_path):
+        findings.append(
+            finding(
+                "unknown-scope",
+                "error",
+                f"{name} uses a scope that is not on the pack allowlist.",
+                question_id,
+                option_id,
+            )
+        )
+    for name in missing_basis_names(packs):
+        findings.append(finding("missing-basis", "error", f"{name} has no basis."))
+    for question_id, option_id in incomplete_caution_rows(packs, root_path):
+        findings.append(
+            finding(
+                "incomplete-caution",
+                "error",
+                "A caution needs a url, a quote, and a checked date.",
+                question_id,
+                option_id,
+            )
+        )
     findings.extend(base_pack_floor_findings(packs))
     return _result(findings)
 
