@@ -16,16 +16,21 @@
           "id": "sharp",
           "label": "0",
           "summary": "Square corners.",
-          "why": "Square corners keep a strict, technical look.",
+          "why": "Square corners use a radius of 0. You get hard edges on every control and surface.",
           "when_to_choose": "Choose this if the brand should feel sharp.",
           "trade_offs": [
-            "Controls can feel harsh."
+            "You give up rounded corners on controls and cards"
           ],
           "sources": [
             {
-              "name": "Material",
-              "title": "Color roles",
-              "url": "https://m3.material.io/styles/color/roles"
+              "name": "Tailwind",
+              "title": "Border radius",
+              "url": "https://tailwindcss.com/docs/border-radius"
+            },
+            {
+              "name": "Material Web",
+              "title": "Shape tokens",
+              "url": "https://raw.githubusercontent.com/material-components/material-web/main/tokens/versions/v0_192/_md-sys-shape.scss"
             }
           ]
         },
@@ -33,16 +38,21 @@
           "id": "radius-4",
           "label": "4",
           "summary": "A small radius.",
-          "why": "A small radius softens a corner without looking round.",
-          "when_to_choose": "Choose this if you want a slight soften only.",
+          "why": "A 4 px radius softens a corner without looking round.",
+          "when_to_choose": "Choose this if you want only a slight softening.",
           "trade_offs": [
-            "The change is easy to miss."
+            "The change can be missed at a glance"
           ],
           "sources": [
             {
-              "name": "Material",
-              "title": "Color roles",
-              "url": "https://m3.material.io/styles/color/roles"
+              "name": "Tailwind",
+              "title": "Border radius",
+              "url": "https://tailwindcss.com/docs/border-radius"
+            },
+            {
+              "name": "Material Web",
+              "title": "Shape tokens",
+              "url": "https://raw.githubusercontent.com/material-components/material-web/main/tokens/versions/v0_192/_md-sys-shape.scss"
             }
           ]
         },
@@ -50,16 +60,21 @@
           "id": "radius-8",
           "label": "8",
           "summary": "A medium radius.",
-          "why": "Eight pixels is a soft corner that still looks like a control.",
-          "when_to_choose": "Choose this if controls should feel soft but firm.",
+          "why": "An 8 px radius is the `lg` step in Tailwind and the small step in Material.",
+          "when_to_choose": "Choose this if you want a radius that Tailwind and Material both offer.",
           "trade_offs": [
-            "A sharp brand will look too round."
+            "It does not match a brand with square corners"
           ],
           "sources": [
             {
               "name": "Tailwind",
-              "title": "Customizing colors",
-              "url": "https://tailwindcss.com/docs/colors"
+              "title": "Border radius",
+              "url": "https://tailwindcss.com/docs/border-radius"
+            },
+            {
+              "name": "Material Web",
+              "title": "Shape tokens",
+              "url": "https://raw.githubusercontent.com/material-components/material-web/main/tokens/versions/v0_192/_md-sys-shape.scss"
             }
           ]
         },
@@ -67,16 +82,26 @@
           "id": "radius-12",
           "label": "12",
           "summary": "A large radius.",
-          "why": "A large radius makes cards and buttons look soft.",
-          "when_to_choose": "Choose this if the brand should feel soft.",
+          "why": "A 12 px radius is the medium step in Material and the `xl` step in Tailwind. Primer calls it `large`.",
+          "when_to_choose": "Choose this if you want clearly rounded corners on cards and controls.",
           "trade_offs": [
-            "Dense tools can look toy-like."
+            "It does not match a brand with square or slightly rounded corners"
           ],
           "sources": [
             {
+              "name": "Material Web",
+              "title": "Shape tokens",
+              "url": "https://raw.githubusercontent.com/material-components/material-web/main/tokens/versions/v0_192/_md-sys-shape.scss"
+            },
+            {
               "name": "Tailwind",
-              "title": "Customizing colors",
-              "url": "https://tailwindcss.com/docs/colors"
+              "title": "Border radius",
+              "url": "https://tailwindcss.com/docs/border-radius"
+            },
+            {
+              "name": "Primer",
+              "title": "Size primitives",
+              "url": "https://primer.style/foundations/primitives/size"
             }
           ]
         },
@@ -84,16 +109,21 @@
           "id": "pill",
           "label": "Pill",
           "summary": "Fully rounded ends.",
-          "why": "A pill radius makes short controls fully round.",
+          "why": "A pill radius rounds short controls fully.",
           "when_to_choose": "Choose this if buttons should look like pills.",
           "trade_offs": [
-            "Large cards become circles."
+            "Large surfaces can turn into circles"
           ],
           "sources": [
             {
               "name": "Tailwind",
-              "title": "Customizing colors",
-              "url": "https://tailwindcss.com/docs/colors"
+              "title": "Border radius",
+              "url": "https://tailwindcss.com/docs/border-radius"
+            },
+            {
+              "name": "Material Web",
+              "title": "Shape tokens",
+              "url": "https://raw.githubusercontent.com/material-components/material-web/main/tokens/versions/v0_192/_md-sys-shape.scss"
             }
           ]
         }
@@ -112,13 +142,13 @@
           "why": "One radius keeps every corner the same.",
           "when_to_choose": "Choose this if you do not want a radius scale.",
           "trade_offs": [
-            "Cards and inputs look identical."
+            "Cards and inputs look identical"
           ],
           "sources": [
             {
-              "name": "Material",
-              "title": "Color roles",
-              "url": "https://m3.material.io/styles/color/roles"
+              "name": "Pico CSS",
+              "title": "CSS variables",
+              "url": "https://picocss.com/docs/css-variables"
             }
           ],
           "formula": "A single radius value."
@@ -127,16 +157,16 @@
           "id": "linear",
           "label": "Linear",
           "summary": "Add a fixed amount each step.",
-          "why": "Linear radius adds a fixed amount for each larger surface.",
+          "why": "Linear radius adds a fixed amount per step, for example 4, 8, 12, 16. The Material scale starts this way.",
           "when_to_choose": "Choose this if the steps should be even.",
           "trade_offs": [
-            "Large surfaces may not look round enough."
+            "Large steps grow no faster than small ones"
           ],
           "sources": [
             {
-              "name": "Material",
-              "title": "Color roles",
-              "url": "https://m3.material.io/styles/color/roles"
+              "name": "Material Web",
+              "title": "Shape tokens",
+              "url": "https://raw.githubusercontent.com/material-components/material-web/main/tokens/versions/v0_192/_md-sys-shape.scss"
             }
           ],
           "formula": "Each step adds a fixed radius."
@@ -146,9 +176,9 @@
           "label": "Geometric",
           "summary": "Multiply the base each step.",
           "why": "Each radius step multiplies the base, so large corners grow quickly.",
-          "when_to_choose": "Choose this if cards are much rounder than inputs.",
+          "when_to_choose": "Choose this if cards should be much rounder than inputs.",
           "trade_offs": [
-            "The steps are harder to remember."
+            "The steps are harder to remember"
           ],
           "sources": [
             {
@@ -157,7 +187,8 @@
               "url": "https://tailwindcss.com/docs/colors"
             }
           ],
-          "formula": "Each step multiplies the base radius."
+          "formula": "Each step multiplies the base radius.",
+          "evidence_limited": true
         }
       ]
     },
