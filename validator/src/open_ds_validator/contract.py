@@ -622,6 +622,36 @@ def components_for(paths: list[str], tokens: dict, css: str, var_by_path: dict[s
     return sorted(names)
 
 
+def _catalog_base(name: str, packs: dict[str, dict], base_tokens: dict) -> dict | None:
+    """The pack's base token for this name, when it has one."""
+    for pack in packs.values():
+        for mapping in pack.get("scopeMappings") or []:
+            if str(mapping.get("name") or "") != name or "value" not in mapping:
+                continue
+            if mapping.get("basis") not in BASIS:
+                continue
+            ext = {
+                "basis": mapping["basis"],
+                "context": [],
+                "decision": "scope-mapping",
+                "link": "",
+                "sources": [],
+                "when": "",
+            }
+            if mapping["basis"] != "your-pick" and mapping.get("why"):
+                ext["why"] = mapping["why"]
+            return {
+                "$extensions": {"openDs": ext},
+                "$type": "other",
+                "$value": copy.deepcopy(mapping["value"]),
+            }
+    semantic = base_tokens.get("semantic") if isinstance(base_tokens, dict) else None
+    node = semantic.get(name) if isinstance(semantic, dict) else None
+    if isinstance(node, dict) and "$value" in node:
+        return copy.deepcopy(node)
+    return None
+
+
 def build_catalog(packs: dict[str, dict], root: Path | None = None) -> dict:
     root = repo_root(root)
     rows, errors = collect_links(packs)
@@ -688,12 +718,28 @@ def build_catalog(packs: dict[str, dict], root: Path | None = None) -> dict:
                 if isinstance(after, dict):
                     after.pop("cautions", None)
                     after["$extensions"] = {"openDs": ext}
-                grouped.setdefault(scope, []).append({"after": after, "before": None, "name": name})
+                entry = {"after": after, "name": name, "state": "set"}
+                before = _catalog_base(name, packs, base)
+                if before is not None:
+                    entry["before"] = before
+                grouped.setdefault(scope, []).append(entry)
             if "scopes" in option:
                 for scope in allowed:
                     if grouped.get(scope):
                         continue
-                    grouped[scope] = [{"after": None, "before": None, "name": f"space/{scope}/density"}]
+                    placeholder = f"space/{scope}/density"
+                    before = _catalog_base(placeholder, packs, base)
+                    if before is None:
+                        grouped[scope] = [{"name": placeholder, "state": "no-source-yet"}]
+                    else:
+                        grouped[scope] = [
+                            {
+                                "after": copy.deepcopy(before),
+                                "before": before,
+                                "name": placeholder,
+                                "state": "unchanged",
+                            }
+                        ]
             axis = question.get("axis") or question["id"]
             catalog.setdefault(axis, {})[key] = {
                 "components": components_for(used_paths, base, css, var_by_path),
