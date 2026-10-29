@@ -3,6 +3,7 @@
   "name": "Accessible-first",
   "version": "0.1.0",
   "provisional": true,
+  "status": "provisional",
   "summary": "APCA first, with WCAG 2.2 AA as the floor, and roomier sizing.",
   "serves": "Everyone can read and use it.",
   "packs": [

@@ -3,6 +3,7 @@
   "name": "Brand-expressive",
   "version": "0.1.0",
   "provisional": true,
+  "status": "provisional",
   "summary": "OKLCH, a bold accent, a larger radius, and dark as the default theme.",
   "serves": "A brand that wants to be seen.",
   "packs": [

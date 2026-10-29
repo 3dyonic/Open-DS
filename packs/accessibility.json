@@ -55,6 +55,32 @@
         "AGENTS.md"
       ],
       "feeds_into": []
+    },
+    {
+      "id": "target-size",
+      "prompt": "How large is a touch target beyond the floor?",
+      "summary": "The floor is 24 px. Material recommends 48 px at every density.",
+      "required": false,
+      "why_care": "It keeps the 24 px floor and records the 48 px recommendation.",
+      "options": [
+        {
+          "id": "material-48",
+          "label": "48 px recommendation",
+          "summary": "Material asks for 48 px targets at every density.",
+          "why": "Material says every touch target should be at least 48 px, at any density. The WCAG floor stays 24 px.",
+          "when_to_choose": "Choose this if you follow Material's 48 px target on top of the floor.",
+          "trade_offs": ["Dense screens give up a little space."],
+          "sources": [
+            {
+              "name": "Material",
+              "title": "Using Material density on the web",
+              "url": "https://m3.material.io/blog/material-density-web",
+              "quote": "No matter the density, all touch targets should be at least 48px in size.",
+              "checked": "2026-10-29"
+            }
+          ]
+        }
+      ]
     }
   ]
 }

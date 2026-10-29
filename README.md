@@ -74,6 +74,6 @@ An error rejects the recipe. There is no fingerprint. A warning or an info note 
 - A missing requirement is an error. The website blocks the build step.
 - A discouraged pick is a warning.
 - A recommendation does not raise a finding. A conditional recommendation prefills only when every `when` answer matches. If those answers are present but do not match, that option is discouraged instead. One answer of an AND list does nothing.
-- Floors on the global pack always apply: contrast, resize, text spacing, target size, and confirmation for destructive, payment, and legal-commitment actions. A critical component hidden behind hover or an accordion is an error.
+- Floors on the global pack always apply: contrast, resize, text spacing, and a 24px target. Payments, deletes and legal steps can be undone, checked or confirmed. A critical component hidden behind hover or an accordion is an error. Material's 48px target is a recommendation at every density. It does not replace the 24px floor.
 
 Badges in the builder: **Fits your purpose**, **Worth a second look**, **Your purpose needs this**. The tooltip says `Because you chose X: reason`.

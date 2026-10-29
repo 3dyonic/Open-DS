@@ -1,20 +1,12 @@
 import { cpSync, existsSync, mkdirSync, readFileSync, writeFileSync } from "node:fs";
-import { join } from "node:path";
+import { dirname, join } from "node:path";
+import { fileURLToPath } from "node:url";
 import { questionsFor } from "../../site/src/lib/check.mjs";
 
 export const SHARED_BASE = "3dyonic";
 
-const TOKEN_PATH = {
-  "--space-1": ["primitive", "space", "1"],
-  "--space-2": ["primitive", "space", "2"],
-  "--space-3": ["primitive", "space", "3"],
-  "--space-4": ["primitive", "space", "4"],
-  "--font-size-body": ["primitive", "font", "size", "body"],
-  "--line-height-body": ["primitive", "font", "lineHeight", "body"],
-  "--radius-control": ["primitive", "radius", "control"],
-  "--density": ["primitive", "density", "ui"],
-  "--type-scale-ratio": ["primitive", "font", "ratio"],
-};
+const here = dirname(fileURLToPath(import.meta.url));
+const TOKEN_PATH = JSON.parse(readFileSync(join(here, "../../schema/token-paths.json"), "utf8"));
 
 function readJson(path) {
   return JSON.parse(readFileSync(path, "utf8"));

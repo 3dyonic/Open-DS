@@ -54,8 +54,10 @@ FIX_BY_ID = {
     "floor-contrast": "declare text contrast of at least 4.5:1 and non-text contrast of at least 3:1.",
     "floor-resize": "declare that text can resize to 200% without losing content.",
     "floor-text-spacing": ("declare line height 1.5, paragraph spacing 2, letter spacing 0.12, and word spacing 0.16."),
-    "floor-target-size": "declare a 24px target or sufficient spacing.",
-    "floor-confirm-destructive": "require a confirmation for destructive, payment, and legal-commitment actions.",
+    "floor-target-size": (
+        "declare a 24px target or sufficient spacing. A 48px recommendation does not replace this floor."
+    ),
+    "floor-error-prevention": "make the step reversible, checked, or confirmed.",
     "coga.critical-not-hidden": "keep a critical component out of hover and accordions.",
     "voice-why": "shorten why to 35 words or fewer.",
     "voice-when": "start when_to_choose with Choose this if or Choose this when, in 25 words or fewer.",
