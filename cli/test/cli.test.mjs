@@ -143,7 +143,7 @@ test("check prints each failure with the question and a fix", async () => {
     const { code, text } = await capture(["check", "--dir", dir]);
     assert.equal(code, 1);
     assert.match(text, /error missing-question: purpose\/voice has no answer yet\./);
-    assert.match(text, /Fix: run open-ds build and pick an option\./);
+    assert.match(text, /Fix: pick an answer on \/build, then run open-ds init <recipe\.json>\./);
     assert.match(text, /error missing-rationale: purpose\/density: Write a rationale in your own words\./);
     assert.match(text, /Fix: write a rationale in your own words\./);
     const lines = text.split("\n").filter(Boolean);
@@ -193,6 +193,49 @@ test("listed failures print a reason and a fix", () => {
     const [line, fixLine] = formatCheckFailure({ id, severity: "error", message });
     assert.equal(line, `error ${id}: ${message}`);
     assert.equal(fixLine, fix);
+  }
+});
+
+test("check ignores edits to user-owned files outside manifest items", async () => {
+  const { appendFileSync } = await import("node:fs");
+  const dir = await installed();
+  try {
+    appendFileSync(join(dir, "README.md"), "\nNotes the team added.\n");
+    appendFileSync(join(dir, "AGENTS.md"), "\nLocal agent notes.\n");
+    appendFileSync(join(dir, "CHANGELOG.md"), "\nLocal changelog.\n");
+    const result = await check(dir, root);
+    assert.equal(result.ok, true);
+    assert.equal(result.fingerprint, manifest.fingerprint);
+  } finally {
+    rmSync(dir, { recursive: true, force: true });
+  }
+});
+
+test("required-option names the missing option and the pack reason", async () => {
+  const { writeFileSync } = await import("node:fs");
+  const dir = await installed();
+  try {
+    const installedFile = JSON.parse(readFileSync(join(dir, "open-ds.json"), "utf8"));
+    for (const pick of installedFile.recipe.picks) {
+      if (pick.question === "brand-variance") {
+        pick.option = "multi-brand";
+        pick.rationale = "Two brands share this starter.";
+      }
+      if (pick.question === "structure-theme-separation") {
+        pick.option = "combined";
+        pick.rationale = "Keep the values in the components.";
+      }
+    }
+    writeFileSync(join(dir, "open-ds.json"), JSON.stringify(installedFile));
+    const { code, text } = await capture(["check", "--dir", dir]);
+    assert.equal(code, 1);
+    assert.match(
+      text,
+      /error required-option: Multi-brand needs Separate \(structure-theme-separation\)\. Two brands can share components only when theme values stay outside them\./,
+    );
+    assert.match(text, /Fix: Add Separate to finish your recipe, then run open-ds check again\./);
+  } finally {
+    rmSync(dir, { recursive: true, force: true });
   }
 });
 

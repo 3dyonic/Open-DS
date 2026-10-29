@@ -155,6 +155,15 @@ def test_multi_brand_requires_separation() -> None:
     result = check_recipe(recipe, PACKS, ROOT)
     assert "required-option" in _ids(result, "error")
     assert "fingerprint" not in result
+    required = next(item for item in result["findings"] if item["id"] == "required-option")
+    assert required["because"] == "Multi-brand"
+    assert required["targetLabel"] == "Separate"
+    assert required["targetOption"] == "separate"
+    assert required["reason"] == "Two brands can share components only when theme values stay outside them."
+    assert required["message"] == (
+        "Multi-brand needs Separate (structure-theme-separation). "
+        "Two brands can share components only when theme values stay outside them."
+    )
 
 
 def test_discouraged_pick_is_a_warning_and_still_ok() -> None:
