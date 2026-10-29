@@ -227,11 +227,19 @@ test("required-option names the missing option and the pack reason", async () =>
       }
     }
     writeFileSync(join(dir, "open-ds.json"), JSON.stringify(installedFile));
+    const purpose = JSON.parse(readFileSync(join(root, "packs", "purpose.json"), "utf8"));
+    const brand = purpose.questions.find((item) => item.id === "brand-variance");
+    const multi = brand.options.find((item) => item.id === "multi-brand");
+    const effect = multi.requires.find(
+      (item) => item.question === "structure-theme-separation" && item.option === "separate",
+    );
     const { code, text } = await capture(["check", "--dir", dir]);
     assert.equal(code, 1);
-    assert.match(
-      text,
-      /error required-option: Multi-brand needs Separate \(structure-theme-separation\)\. Two brands can share components only when theme values stay outside them\./,
+    assert.match(text, /error required-option: Multi-brand needs Separate \(structure-theme-separation\)\. /);
+    assert.ok(
+      text.includes(
+        `error required-option: Multi-brand needs Separate (structure-theme-separation). ${effect.reason}`,
+      ),
     );
     assert.match(text, /Fix: Add Separate to finish your recipe, then run open-ds check again\./);
   } finally {

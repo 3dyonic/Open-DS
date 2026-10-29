@@ -149,6 +149,17 @@ def test_missing_dependency_rejects() -> None:
     assert result["ok"] is False
 
 
+def _requires_reason(pack_id: str, question_id: str, option_id: str, target_question: str, target_option: str) -> str:
+    question = next(item for item in PACKS[pack_id]["questions"] if item["id"] == question_id)
+    option = next(item for item in question["options"] if item["id"] == option_id)
+    effect = next(
+        item
+        for item in option["requires"]
+        if item["question"] == target_question and item.get("option") == target_option
+    )
+    return effect["reason"]
+
+
 def test_multi_brand_requires_separation() -> None:
     recipe = _set("brand-variance", "multi-brand")
     recipe = _set_on(recipe, "structure-theme-separation", "combined", "Keep values in the components.")
@@ -156,14 +167,12 @@ def test_multi_brand_requires_separation() -> None:
     assert "required-option" in _ids(result, "error")
     assert "fingerprint" not in result
     required = next(item for item in result["findings"] if item["id"] == "required-option")
+    reason = _requires_reason("purpose", "brand-variance", "multi-brand", "structure-theme-separation", "separate")
     assert required["because"] == "Multi-brand"
     assert required["targetLabel"] == "Separate"
     assert required["targetOption"] == "separate"
-    assert required["reason"] == "Two brands can share components only when theme values stay outside them."
-    assert required["message"] == (
-        "Multi-brand needs Separate (structure-theme-separation). "
-        "Two brands can share components only when theme values stay outside them."
-    )
+    assert required["reason"] == reason
+    assert required["message"] == f"Multi-brand needs Separate (structure-theme-separation). {reason}"
 
 
 def test_discouraged_pick_is_a_warning_and_still_ok() -> None:
