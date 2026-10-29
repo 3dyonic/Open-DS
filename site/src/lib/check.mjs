@@ -128,6 +128,236 @@ function effectTargets(effect) {
   return [];
 }
 
+const TEXT_RATIO = 4.5;
+const NON_TEXT_RATIO = 3;
+const RESIZE_PERCENT = 200;
+const SPACING_FLOORS = [
+  ["lineHeight", 1.5],
+  ["paragraphSpacing", 2],
+  ["letterSpacing", 0.12],
+  ["wordSpacing", 0.16],
+];
+const TARGET_PX = 24;
+const CONFIRM_FLAGS = new Set(["destructive", "payment", "legal-commitment"]);
+const HIDDEN_BY = new Set(["hover", "accordion"]);
+const MSG_RESIZE = "Text must resize to 200% without loss of content (WCAG 2.2 1.4.4).";
+const MSG_SPACING =
+  "Text spacing must allow line height 1.5, paragraph spacing 2, letter spacing 0.12, and word spacing 0.16 (WCAG 2.2 1.4.12).";
+const MSG_TARGET = "Targets must be at least 24px or have sufficient spacing (WCAG 2.2 2.5.8).";
+
+function wordCount(text) {
+  return String(text).trim().split(/\s+/).filter(Boolean).length;
+}
+
+function declaredNumber(block, key) {
+  if (!block || typeof block !== "object" || !(key in block)) return undefined;
+  const value = block[key];
+  if (typeof value !== "number" || !Number.isFinite(value)) return null;
+  return value;
+}
+
+function belowFloor(value, minimum) {
+  return value === undefined || value === null || value < minimum;
+}
+
+function floorSection(floors, key, requireComplete) {
+  if (!floors || typeof floors !== "object" || !(key in floors)) return requireComplete ? {} : null;
+  const block = floors[key];
+  return block && typeof block === "object" ? block : {};
+}
+
+function floorBlockFindings(floors, requireComplete) {
+  const source = floors && typeof floors === "object" ? floors : requireComplete ? {} : null;
+  if (!source) return [];
+  const findings = [];
+  const contrast = floorSection(source, "contrast", requireComplete);
+  if (contrast) {
+    const problems = [];
+    if (belowFloor(declaredNumber(contrast, "text"), TEXT_RATIO)) {
+      problems.push("text contrast is below 4.5:1");
+    }
+    if (belowFloor(declaredNumber(contrast, "nonText"), NON_TEXT_RATIO)) {
+      problems.push("non-text contrast is below 3:1");
+    }
+    if (problems.length) {
+      findings.push(
+        finding("floor-contrast", "error", `${problems.join("; ")} (WCAG 2.2 1.4.3 and 1.4.11).`),
+      );
+    }
+  }
+  const resize = floorSection(source, "resize", requireComplete);
+  if (
+    resize &&
+    (belowFloor(declaredNumber(resize, "textResizePercent"), RESIZE_PERCENT) ||
+      resize.contentLost === true)
+  ) {
+    findings.push(finding("floor-resize", "error", MSG_RESIZE));
+  }
+  const spacing = floorSection(source, "textSpacing", requireComplete);
+  if (
+    spacing &&
+    SPACING_FLOORS.some(([key, minimum]) => belowFloor(declaredNumber(spacing, key), minimum))
+  ) {
+    findings.push(finding("floor-text-spacing", "error", MSG_SPACING));
+  }
+  const target = floorSection(source, "targetSize", requireComplete);
+  if (target) {
+    const minPx = declaredNumber(target, "minPx");
+    const sizeOk = typeof minPx === "number" && minPx >= TARGET_PX;
+    if (!sizeOk && target.sufficientSpacing !== true) {
+      findings.push(finding("floor-target-size", "error", MSG_TARGET));
+    }
+  }
+  for (const component of Array.isArray(source.components) ? source.components : []) {
+    const cid = component.id || "component";
+    const flagged = (component.flags || []).filter((flag) => CONFIRM_FLAGS.has(flag));
+    if (flagged.length && component.confirms !== true) {
+      findings.push(
+        finding(
+          "floor-confirm-destructive",
+          "error",
+          `${cid} is marked ${flagged.join(", ")} and has no confirmation (WCAG 2.2 3.3.4).`,
+        ),
+      );
+    }
+    if (component.critical === true && HIDDEN_BY.has(component.hiddenBy)) {
+      findings.push(
+        finding(
+          "coga.critical-not-hidden",
+          "error",
+          `${cid} is critical and hidden behind ${component.hiddenBy}.`,
+        ),
+      );
+    }
+  }
+  return findings;
+}
+
+function baseFloorFindings(packs) {
+  if (!packs?.global) return [];
+  return floorBlockFindings(packs.global.floors, true);
+}
+
+function resolvedOptions(question, packs) {
+  if (question.ref && packs.global) return materialize(question, packs).options || [];
+  return [...(question.options || []), ...(question.overrides || [])];
+}
+
+function backingTargets(question, packs) {
+  const targets = new Set();
+  for (const option of resolvedOptions(question, packs)) {
+    for (const key of ["requires", "discourages", "recommends"]) {
+      for (const effect of option[key] || []) {
+        if (effect.question) targets.add(effect.question);
+      }
+    }
+  }
+  return targets;
+}
+
+function validatePackFields(packs, options = {}) {
+  const findings = [];
+  const known = new Set();
+  for (const pack of Object.values(packs || {})) {
+    for (const question of pack.questions || []) known.add(question.id);
+  }
+  const fragmentExists = options.fragmentExists;
+  for (const pack of Object.values(packs || {})) {
+    for (const question of pack.questions || []) {
+      if (Array.isArray(question.affects) && question.affects.length === 0) {
+        findings.push(
+          finding("empty-affects", "warning", "affects is empty.", question.id, "", {
+            scheme: pack.id,
+          }),
+        );
+      }
+      if (typeof question.why_care === "string" && wordCount(question.why_care) > 25) {
+        findings.push(
+          finding(
+            "why-care-length",
+            "error",
+            "why_care is longer than 25 words.",
+            question.id,
+            "",
+            { scheme: pack.id },
+          ),
+        );
+      }
+      const backed = backingTargets(question, packs);
+      for (const target of question.feeds_into || []) {
+        if (!known.has(target)) {
+          findings.push(
+            finding(
+              "unknown-feeds-into",
+              "error",
+              "feeds_into points at an unknown question.",
+              question.id,
+              "",
+              { scheme: pack.id },
+            ),
+          );
+          continue;
+        }
+        if (!backed.has(target)) {
+          findings.push(
+            finding(
+              "unbacked-feeds-into",
+              "error",
+              "feeds_into has no requires, discourages, or recommends rule.",
+              question.id,
+              "",
+              { scheme: pack.id },
+            ),
+          );
+        }
+      }
+      if (typeof fragmentExists !== "function") continue;
+      for (const option of resolvedOptions(question, packs)) {
+        if (!option.fragment || fragmentExists(option.fragment)) continue;
+        findings.push(
+          finding(
+            "missing-fragment",
+            "error",
+            "The fragment file does not exist.",
+            question.id,
+            option.id,
+            { scheme: pack.id },
+          ),
+        );
+      }
+    }
+  }
+  return findings;
+}
+
+function whenState(picks, effect) {
+  const clauses = effect.when;
+  if (!clauses || (Array.isArray(clauses) && clauses.length === 0)) return "always";
+  const list = Array.isArray(clauses) ? clauses : [clauses];
+  let missing = false;
+  let mismatched = false;
+  for (const clause of list) {
+    const pick = picks[clause.question];
+    if (!pick) {
+      missing = true;
+      continue;
+    }
+    if (pick.option !== clause.option) mismatched = true;
+  }
+  if (missing) return "partial";
+  if (mismatched) return "miss";
+  return "match";
+}
+
+function prefillRows(effect, option) {
+  return effectTargets(effect).map((target) => ({
+    question: effect.question || "",
+    option: target,
+    reason: effect.reason || "",
+    ...(option.label ? { because: option.label } : {}),
+  }));
+}
+
 function selected(picks, effect) {
   const pick = picks[effect.question];
   if (!pick) return false;
@@ -217,7 +447,7 @@ export function missingQuestionReport(findings) {
   };
 }
 
-export async function checkRecipe(recipe, packs) {
+export async function checkRecipe(recipe, packs, options = {}) {
   const findings = [];
   if (
     !recipe ||
@@ -255,6 +485,10 @@ export async function checkRecipe(recipe, packs) {
     }
   }
   if (findings.length) return fail(findings, packs);
+
+  const early = [...validatePackFields(packs, options), ...baseFloorFindings(packs)];
+  if (early.some((item) => item.severity === "error")) return fail(early, packs);
+  findings.push(...early);
 
   for (const pid of recipe.packs) {
     if (!packs[pid]) findings.push(finding("unknown-pack", "error", `Unknown pack ${pid}.`));
@@ -295,6 +529,8 @@ export async function checkRecipe(recipe, packs) {
       );
     }
   }
+  const prefills = [];
+  const selectedFragments = [];
   for (const [qid, pick] of Object.entries(picks)) {
     const question = byId[qid];
     if (!question) {
@@ -310,6 +546,7 @@ export async function checkRecipe(recipe, packs) {
       );
       continue;
     }
+    if (option.fragment) selectedFragments.push(option.fragment);
     const rationale = String(pick.rationale || "").trim();
     if (!rationale)
       findings.push(
@@ -388,12 +625,14 @@ export async function checkRecipe(recipe, packs) {
       }
     }
     for (const effect of option.recommends || []) {
-      if (!selected(picks, effect)) {
+      const state = whenState(picks, effect);
+      if (state === "match") prefills.push(...prefillRows(effect, option));
+      else if (state === "miss" && selected(picks, effect)) {
         findings.push(
           finding(
-            "recommend",
-            "info",
-            "A recommended option was not selected.",
+            "discourage",
+            "warning",
+            "A discouraged option was selected.",
             qid,
             option.id,
             link(effect),
@@ -402,6 +641,8 @@ export async function checkRecipe(recipe, packs) {
       }
     }
     for (const effect of option.discourages || []) {
+      const state = whenState(picks, effect);
+      if (state === "partial" || state === "miss") continue;
       if (selected(picks, effect)) {
         findings.push(
           finding(
@@ -416,9 +657,28 @@ export async function checkRecipe(recipe, packs) {
       }
     }
   }
+  if (typeof options.readFragment === "function") {
+    for (const fragment of selectedFragments) {
+      const data = options.readFragment(fragment);
+      if (!data || typeof data !== "object" || !data.floors) continue;
+      findings.push(...floorBlockFindings(data.floors, false));
+    }
+  }
+  prefills.sort((a, b) => {
+    const left = `${a.question}\0${a.option}\0${a.reason}`;
+    const right = `${b.question}\0${b.option}\0${b.reason}`;
+    if (left < right) return -1;
+    if (left > right) return 1;
+    return 0;
+  });
   const done = finish(findings, recipe, packs, questions);
-  if (!done.ok) return { ok: false, findings: done.findings };
-  return { ok: true, findings: done.findings, fingerprint: await fingerprintRecipe(recipe) };
+  const withPrefills = (result) => (prefills.length ? { ...result, prefills } : result);
+  if (!done.ok) return withPrefills({ ok: false, findings: done.findings });
+  return withPrefills({
+    ok: true,
+    findings: done.findings,
+    fingerprint: await fingerprintRecipe(recipe),
+  });
 }
 
 export { effectTargets, questionsFor };

@@ -45,6 +45,10 @@
       "items": {
         "$ref": "#/$defs/question"
       }
+    },
+    "floors": {
+      "$ref": "#/$defs/floors",
+      "description": "Accessibility floors. Only the pack with id global is enforced on every recipe. See validator/README.md."
     }
   },
   "$defs": {
@@ -97,7 +101,21 @@
           "items": { "type": "string" },
           "minItems": 1
         },
-        "reason": { "type": "string", "minLength": 1, "maxLength": 280 }
+        "reason": { "type": "string", "minLength": 1, "maxLength": 280 },
+        "when": {
+          "description": "AND list. The effect applies only when every clause matches a picked answer. Honored on recommends and discourages.",
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": ["question", "option"],
+            "properties": {
+              "question": { "type": "string" },
+              "option": { "type": "string" }
+            }
+          }
+        }
       }
     },
     "parameter": {
@@ -220,6 +238,11 @@
           "items": {
             "$ref": "#/$defs/effect"
           }
+        },
+        "fragment": {
+          "description": "Repo-relative path to a hand-written file. A JSON file may carry a floors object.",
+          "type": "string",
+          "minLength": 1
         }
       }
     },
@@ -262,6 +285,80 @@
           "items": {
             "$ref": "#/$defs/option"
           }
+        },
+        "affects": {
+          "description": "What this question changes. Omit until known. An empty list warns.",
+          "type": "array",
+          "items": { "type": "string", "minLength": 1 }
+        },
+        "feeds_into": {
+          "description": "Question ids this question feeds. Each id must exist and be backed by requires, discourages, or recommends.",
+          "type": "array",
+          "items": { "type": "string", "pattern": "^[a-z0-9-]+$" }
+        },
+        "why_care": {
+          "description": "One sentence, 25 words or fewer.",
+          "type": "string"
+        }
+      }
+    },
+    "componentClaim": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["id"],
+      "properties": {
+        "id": { "type": "string", "pattern": "^[a-z0-9-]+$" },
+        "flags": {
+          "type": "array",
+          "items": { "enum": ["destructive", "payment", "legal-commitment"] }
+        },
+        "confirms": { "type": "boolean" },
+        "critical": { "type": "boolean" },
+        "hiddenBy": { "enum": ["hover", "accordion", "visible"] }
+      }
+    },
+    "floors": {
+      "type": "object",
+      "additionalProperties": false,
+      "description": "Declared floor claims. The validator compares these numbers to WCAG 2.2. It does not measure pixels or contrast.",
+      "properties": {
+        "contrast": {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "text": { "type": "number", "description": "Declared text contrast ratio. Floor is 4.5 (WCAG 2.2 1.4.3)." },
+            "nonText": { "type": "number", "description": "Declared non-text contrast ratio. Floor is 3 (WCAG 2.2 1.4.11)." }
+          }
+        },
+        "resize": {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "textResizePercent": { "type": "number", "description": "Declared resize percent. Floor is 200 (WCAG 2.2 1.4.4)." },
+            "contentLost": { "type": "boolean", "description": "True when content or functionality is lost at that size." }
+          }
+        },
+        "textSpacing": {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "lineHeight": { "type": "number", "description": "Supported line height as a multiple of font size. Floor is 1.5 (WCAG 2.2 1.4.12)." },
+            "paragraphSpacing": { "type": "number", "description": "Supported paragraph spacing as a multiple of font size. Floor is 2." },
+            "letterSpacing": { "type": "number", "description": "Supported letter spacing as a multiple of font size. Floor is 0.12." },
+            "wordSpacing": { "type": "number", "description": "Supported word spacing as a multiple of font size. Floor is 0.16." }
+          }
+        },
+        "targetSize": {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "minPx": { "type": "number", "description": "Declared minimum target size in CSS pixels. Floor is 24 (WCAG 2.2 2.5.8)." },
+            "sufficientSpacing": { "type": "boolean", "description": "True when a smaller target has the 2.5.8 spacing exception." }
+          }
+        },
+        "components": {
+          "type": "array",
+          "items": { "$ref": "#/$defs/componentClaim" }
         }
       }
     }

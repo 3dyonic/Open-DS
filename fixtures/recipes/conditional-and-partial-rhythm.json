@@ -1,0 +1,232 @@
+{
+  "expected_errors": [],
+  "recipe": {
+    "id": "fixture",
+    "name": "Fixture",
+    "version": "0.1.0",
+    "serves": "A fixture recipe.",
+    "packs": [
+      "purpose"
+    ],
+    "picks": [
+      {
+        "question": "work-style",
+        "option": "focused",
+        "rationale": "Needed for the fixture."
+      },
+      {
+        "question": "work-rhythm",
+        "option": "batch",
+        "rationale": "Needed for the fixture."
+      },
+      {
+        "question": "density",
+        "option": "compact",
+        "rationale": "Needed for the fixture."
+      }
+    ]
+  },
+  "packs": {
+    "purpose": {
+      "id": "purpose",
+      "title": "Purpose",
+      "summary": "Fixture pack purpose.",
+      "version": "0.1.0",
+      "scope": "scoped",
+      "order": 1,
+      "questions": [
+        {
+          "id": "work-style",
+          "prompt": "What is work-style?",
+          "summary": "Fixture question work-style.",
+          "required": true,
+          "options": [
+            {
+              "id": "focused",
+              "label": "Focused",
+              "summary": "Focused for the fixture.",
+              "why": "A short reason for this answer.",
+              "when_to_choose": "Choose this if the fixture needs it.",
+              "trade_offs": [
+                "A short cost."
+              ],
+              "sources": [
+                {
+                  "name": "Open DS",
+                  "title": "Fixture note",
+                  "url": "https://example.com/open-ds"
+                }
+              ],
+              "recommends": [
+                {
+                  "question": "density",
+                  "option": "compact",
+                  "reason": "Batch work on numbers needs compact density.",
+                  "when": [
+                    {
+                      "question": "work-rhythm",
+                      "option": "batch"
+                    },
+                    {
+                      "question": "data-type",
+                      "option": "numbers"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "id": "casual",
+              "label": "Casual",
+              "summary": "Casual for the fixture.",
+              "why": "A short reason for this answer.",
+              "when_to_choose": "Choose this if the fixture needs it.",
+              "trade_offs": [
+                "A short cost."
+              ],
+              "sources": [
+                {
+                  "name": "Open DS",
+                  "title": "Fixture note",
+                  "url": "https://example.com/open-ds"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "work-rhythm",
+          "prompt": "What is work-rhythm?",
+          "summary": "Fixture question work-rhythm.",
+          "required": false,
+          "options": [
+            {
+              "id": "batch",
+              "label": "Batch",
+              "summary": "Batch for the fixture.",
+              "why": "A short reason for this answer.",
+              "when_to_choose": "Choose this if the fixture needs it.",
+              "trade_offs": [
+                "A short cost."
+              ],
+              "sources": [
+                {
+                  "name": "Open DS",
+                  "title": "Fixture note",
+                  "url": "https://example.com/open-ds"
+                }
+              ]
+            },
+            {
+              "id": "stream",
+              "label": "Stream",
+              "summary": "Stream for the fixture.",
+              "why": "A short reason for this answer.",
+              "when_to_choose": "Choose this if the fixture needs it.",
+              "trade_offs": [
+                "A short cost."
+              ],
+              "sources": [
+                {
+                  "name": "Open DS",
+                  "title": "Fixture note",
+                  "url": "https://example.com/open-ds"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "data-type",
+          "prompt": "What is data-type?",
+          "summary": "Fixture question data-type.",
+          "required": false,
+          "options": [
+            {
+              "id": "numbers",
+              "label": "Numbers",
+              "summary": "Numbers for the fixture.",
+              "why": "A short reason for this answer.",
+              "when_to_choose": "Choose this if the fixture needs it.",
+              "trade_offs": [
+                "A short cost."
+              ],
+              "sources": [
+                {
+                  "name": "Open DS",
+                  "title": "Fixture note",
+                  "url": "https://example.com/open-ds"
+                }
+              ]
+            },
+            {
+              "id": "prose",
+              "label": "Prose",
+              "summary": "Prose for the fixture.",
+              "why": "A short reason for this answer.",
+              "when_to_choose": "Choose this if the fixture needs it.",
+              "trade_offs": [
+                "A short cost."
+              ],
+              "sources": [
+                {
+                  "name": "Open DS",
+                  "title": "Fixture note",
+                  "url": "https://example.com/open-ds"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "density",
+          "prompt": "What is density?",
+          "summary": "Fixture question density.",
+          "required": false,
+          "options": [
+            {
+              "id": "compact",
+              "label": "Compact",
+              "summary": "Compact for the fixture.",
+              "why": "A short reason for this answer.",
+              "when_to_choose": "Choose this if the fixture needs it.",
+              "trade_offs": [
+                "A short cost."
+              ],
+              "sources": [
+                {
+                  "name": "Open DS",
+                  "title": "Fixture note",
+                  "url": "https://example.com/open-ds"
+                }
+              ]
+            },
+            {
+              "id": "comfortable",
+              "label": "Comfortable",
+              "summary": "Comfortable for the fixture.",
+              "why": "A short reason for this answer.",
+              "when_to_choose": "Choose this if the fixture needs it.",
+              "trade_offs": [
+                "A short cost."
+              ],
+              "sources": [
+                {
+                  "name": "Open DS",
+                  "title": "Fixture note",
+                  "url": "https://example.com/open-ds"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  },
+  "expected_warnings": [],
+  "expected_prefills": [],
+  "absent": [
+    "recommend",
+    "discourage"
+  ]
+}

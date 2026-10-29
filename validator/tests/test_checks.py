@@ -166,10 +166,33 @@ def test_discouraged_pick_is_a_warning_and_still_ok() -> None:
     assert "fingerprint" in result
 
 
-def test_missed_recommendation_is_info() -> None:
+def test_open_ds_validate_matches_the_node_lines(tmp_path: Path, capsys: pytest.CaptureFixture[str]) -> None:
+    from open_ds_validator.cli import validate_main
+
+    recipe = copy.deepcopy(RECIPE)
+    recipe["picks"] = [pick for pick in recipe["picks"] if pick["question"] != "voice"]
+    path = tmp_path / "recipe.json"
+    path.write_text(json.dumps(recipe), encoding="utf-8")
+    code = validate_main([str(path)])
+    text = capsys.readouterr().out
+    assert code == 1
+    assert "error missing-question: purpose/voice has no answer yet." in text
+    assert "Fix: run open-ds build and pick an option." in text
+
+
+def test_open_ds_validate_prints_the_fingerprint(capsys: pytest.CaptureFixture[str]) -> None:
+    from open_ds_validator.cli import validate_main
+
+    code = validate_main([str(ROOT / "recipes" / "3dyonic.json")])
+    assert code == 0
+    assert capsys.readouterr().out.strip() == fingerprint_recipe(RECIPE)
+
+
+def test_missed_recommendation_is_silent() -> None:
     result = check_recipe(_set("line-height", "tight"), PACKS, ROOT)
     assert result["ok"], result["findings"]
-    assert "recommend" in _ids(result, "info")
+    assert "recommend" not in _ids(result)
+    assert "prefills" not in result
 
 
 def test_duplicate_question_rejects() -> None:

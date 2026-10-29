@@ -5,6 +5,18 @@
   "version": "0.1.0",
   "scope": "global",
   "order": 2,
+  "floors": {
+    "contrast": { "text": 4.5, "nonText": 3 },
+    "resize": { "textResizePercent": 200, "contentLost": false },
+    "textSpacing": {
+      "lineHeight": 1.5,
+      "paragraphSpacing": 2,
+      "letterSpacing": 0.12,
+      "wordSpacing": 0.16
+    },
+    "targetSize": { "minPx": 24, "sufficientSpacing": true },
+    "components": []
+  },
   "questions": [
     {
       "id": "contrast-metric",
