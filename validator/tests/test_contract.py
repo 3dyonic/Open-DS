@@ -13,8 +13,10 @@ from open_ds_validator.contract import (
     apply_fragment_tokens,
     apply_mappings,
     apply_output,
+    build_catalog,
     collect_links,
     deterministic_zip,
+    dump,
     extension_for,
     force_css_target,
     force_target_floor,
@@ -24,9 +26,11 @@ from open_ds_validator.contract import (
     missing_basis_names,
     stamp_tokens,
     validate_tokens,
+    write_catalog,
 )
 from open_ds_validator.floors import MSG_ERROR_PREVENTION, floor_findings
 from open_ds_validator.load import load_packs, read_json, repo_root
+from open_ds_validator.resolve import all_questions
 
 ROOT = repo_root(Path(__file__))
 PACKS = load_packs(ROOT)
@@ -91,6 +95,8 @@ def test_question_targets_are_left_out_and_a_sourceless_row_fails(tmp_path: Path
     assert errors == ["goal/yes|recommends|other/no"]
     with pytest.raises(ContractError, match="no source"):
         apply_output(tmp_path, {"picks": []}, packs, ROOT)
+    with pytest.raises(ContractError, match="no source"):
+        build_catalog(packs, ROOT)
 
 
 def test_material_48_is_sourced_at_every_density_and_does_not_replace_24() -> None:
@@ -152,6 +158,44 @@ def test_missing_fields_and_context_order() -> None:
     broken = copy.deepcopy(tokens)
     del broken["primitive"]["density"]["ui"]["$extensions"]["openDs"]["basis"]
     assert any("basis" in item for item in validate_tokens(broken))
+
+
+def test_catalog_uses_pack_reasons_and_is_deterministic(tmp_path: Path) -> None:
+    first = build_catalog(PACKS, ROOT)
+    second = build_catalog(PACKS, ROOT)
+    assert dump(first) == dump(second)
+    expected = []
+    for question in all_questions(PACKS):
+        axis = question.get("axis") or question["id"]
+        for option in question.get("options") or []:
+            expected.append((axis, f"{question['id']}/{option['id']}"))
+    found = [(axis, key) for axis, rows in first.items() for key in rows]
+    assert sorted(found) == sorted(expected)
+    compact = first["density"]["density/compact"]
+    reasons = [row["reason"] for row in compact["links"]]
+    assert "No matter the density, all touch targets should be at least 48 px." in reasons
+    assert "A fine 4 px grid fits the tighter spacing of compact screens." in reasons
+    table = compact["tokens"]["table-row"][0]
+    assert table["name"] == "space/table-row/density"
+    assert table["after"]["$value"] == "compact"
+    assert "scope" not in table
+    assert table["after"]["$extensions"]["openDs"]["basis"] == "sourced"
+    urls = [item["url"] for item in table["after"]["$extensions"]["openDs"]["sources"]]
+    assert "https://carbondesignsystem.com/components/data-table/style/" in urls
+    for scope in ("form-control", "card", "reading-text"):
+        held = compact["tokens"][scope][0]
+        assert held["before"] is None
+        assert held["after"] is None
+        assert held["name"].split("/")[1] == scope
+        assert "scope" not in held
+    space = first["spacing-base"]["spacing-base/base-4"]
+    assert "button" in space["components"]
+    assert "input" in space["components"]
+    one = tmp_path / "a.json"
+    two = tmp_path / "b.json"
+    write_catalog(one, PACKS, ROOT)
+    write_catalog(two, PACKS, ROOT)
+    assert one.read_bytes() == two.read_bytes()
 
 
 def test_fragment_cannot_override_the_target_floor() -> None:

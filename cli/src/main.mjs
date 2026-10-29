@@ -300,6 +300,7 @@ export async function run(argv, options = {}) {
   if (!cmd || cmd === "--help" || cmd === "-h") {
     console.log("open-ds init <fingerprint|recipe.json> --out <dir>");
     console.log("open-ds check --dir <dir>");
+    console.log("open-ds catalog --out <catalog.json>");
     console.log("open-ds add <item>");
     console.log("open-ds diff");
     return 0;
@@ -312,6 +313,14 @@ export async function run(argv, options = {}) {
     }
     if (cmd === "diff") {
       console.log("diff is not ready in this preview. It will compare your locked choices with a newer pack version. Nothing was compared.");
+      return 0;
+    }
+    if (cmd === "catalog") {
+      const outFlag = rest.indexOf("--out");
+      const out = outFlag >= 0 ? rest[outFlag + 1] : "catalog.json";
+      if (outFlag >= 0 && !rest[outFlag + 1]) throw new Error("catalog needs a path after --out.");
+      runContract(["catalog", "--out", resolve(out)], repoRoot());
+      console.log(resolve(out));
       return 0;
     }
     if (cmd === "init") {
