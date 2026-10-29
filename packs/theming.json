@@ -1,0 +1,53 @@
+{
+  "id": "theming",
+  "title": "Theming",
+  "summary": "What a theme is. Modifiers such as light and dark are data, not generated colors.",
+  "version": "0.1.0",
+  "scope": "scoped",
+  "order": 8,
+  "questions": [
+    {
+      "id": "theme-shape",
+      "prompt": "What is a theme?",
+      "summary": "A theme can be one token set, or token sets plus modifiers.",
+      "required": true,
+      "options": [
+        {
+          "id": "sets-and-modifiers",
+          "label": "Token sets plus modifiers",
+          "summary": "Light and dark are modifiers.",
+          "why": "A theme is a set of token sets plus modifiers such as light and dark.",
+          "when_to_choose": "Choose this if light and dark are modifiers on one theme.",
+          "trade_offs": [
+            "You maintain more than one set."
+          ],
+          "sources": [
+            {
+              "name": "Material",
+              "title": "Color tokens",
+              "url": "https://m3.material.io/styles/color/the-color-system/tokens"
+            }
+          ],
+          "formula": "Theme = token sets + modifiers."
+        },
+        {
+          "id": "single-set",
+          "label": "Single token set",
+          "summary": "One appearance only.",
+          "why": "One token set is the whole theme. There is no light or dark modifier.",
+          "when_to_choose": "Choose this if you ship a single appearance.",
+          "trade_offs": [
+            "Dark mode is a new theme later."
+          ],
+          "sources": [
+            {
+              "name": "DTCG",
+              "title": "Design Tokens format",
+              "url": "https://www.designtokens.org/tr/drafts/format/"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

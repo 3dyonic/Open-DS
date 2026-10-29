@@ -1,0 +1,94 @@
+{
+  "id": "delivery",
+  "title": "Delivery",
+  "summary": "What you share, and what is locked after init.",
+  "version": "0.1.0",
+  "scope": "scoped",
+  "order": 9,
+  "questions": [
+    {
+      "id": "shareable-item",
+      "prompt": "What is the one shareable item?",
+      "summary": "The item a team installs to start.",
+      "required": true,
+      "options": [
+        {
+          "id": "full-boilerplate",
+          "label": "Full boilerplate",
+          "summary": "Tokens, CSS, and components.",
+          "why": "The shareable item is the full system: tokens, CSS, and components.",
+          "when_to_choose": "Choose this if a team should start from a full boilerplate.",
+          "trade_offs": [
+            "The package is heavier than tokens alone."
+          ],
+          "sources": [
+            {
+              "name": "shadcn/ui",
+              "title": "Registry item",
+              "url": "https://ui.shadcn.com/docs/registry/registry-item-json"
+            }
+          ]
+        },
+        {
+          "id": "tokens-only",
+          "label": "Tokens only",
+          "summary": "The token file, without components.",
+          "why": "The shareable item is the token file only. Components stay in the app.",
+          "when_to_choose": "Choose this if each app owns its components.",
+          "trade_offs": [
+            "Teams rebuild the same components."
+          ],
+          "sources": [
+            {
+              "name": "DTCG",
+              "title": "Design Tokens format",
+              "url": "https://www.designtokens.org/tr/drafts/format/"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "locked-at-init",
+      "prompt": "Which choices are locked after init?",
+      "summary": "Locked fields must not drift after the boilerplate is installed.",
+      "required": true,
+      "options": [
+        {
+          "id": "lock-core",
+          "label": "Lock tiers, pairing, and CSS variables",
+          "summary": "Core names stay put.",
+          "why": "Token tiers, the on-color pair, and CSS variables are locked after init.",
+          "when_to_choose": "Choose this if those choices must not drift after setup.",
+          "trade_offs": [
+            "A later rename is a breaking change."
+          ],
+          "sources": [
+            {
+              "name": "shadcn/ui",
+              "title": "components.json",
+              "url": "https://ui.shadcn.com/docs/components-json"
+            }
+          ]
+        },
+        {
+          "id": "lock-nothing",
+          "label": "Lock nothing",
+          "summary": "Every choice can still change.",
+          "why": "Nothing is locked. Any choice can change after init.",
+          "when_to_choose": "Choose this if you are still exploring the system.",
+          "trade_offs": [
+            "Installed files can drift apart."
+          ],
+          "sources": [
+            {
+              "name": "shadcn/ui",
+              "title": "components.json",
+              "url": "https://ui.shadcn.com/docs/components-json"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
