@@ -3,7 +3,7 @@
     "purpose": {
       "id": "purpose",
       "order": 1,
-      "tokenScopes": ["table-row", "form-control", "card", "reading-text"],
+      "tokenScopes": ["table-row", "form-control", "card", "reading-text", "marker"],
       "scopeMappings": [
         {"name": "space/card/density", "basis": "your-pick", "value": "roomy"}
       ],

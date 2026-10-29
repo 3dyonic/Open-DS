@@ -615,6 +615,23 @@
                   "checked": "2026-10-29"
                 }
               ]
+            },
+            {
+              "question": "usage-data",
+              "option": "tables",
+              "reason": "Button spacing depends on the surrounding UI. Default spacing is used for most use cases, compact for tables.",
+              "when": [
+                {"question": "usage-data", "option": "tables"}
+              ],
+              "sources": [
+                {
+                  "name": "Atlassian",
+                  "title": "Button examples",
+                  "url": "https://atlassian.design/components/button/examples",
+                  "quote": "Button spacing depends on the surrounding UI. Default spacing is used for most use cases, compact for tables.",
+                  "checked": "2026-10-29"
+                }
+              ]
             }
           ],
           "fragment": "fragments/density/compact.json",
