@@ -88,7 +88,7 @@
             }
           ],
           "formula": "Multiply the base size by 1.125 each step.",
-          "fragment": "type/major-second.css"
+          "fragment": "fragments/type/major-second.css"
         },
         {
           "id": "minor-third",
@@ -107,7 +107,7 @@
             }
           ],
           "formula": "Multiply the base size by 1.2 each step.",
-          "fragment": "type/minor-third.css"
+          "fragment": "fragments/type/minor-third.css"
         },
         {
           "id": "major-third",
@@ -126,7 +126,7 @@
             }
           ],
           "formula": "Multiply the base size by 1.25 each step.",
-          "fragment": "type/major-third.css"
+          "fragment": "fragments/type/major-third.css"
         },
         {
           "id": "perfect-fourth",
@@ -145,7 +145,7 @@
             }
           ],
           "formula": "Multiply the base size by 1.333 each step.",
-          "fragment": "type/perfect-fourth.css"
+          "fragment": "fragments/type/perfect-fourth.css"
         }
       ],
       "why_care": "The ratio sets how far headings step up from body text, so it shapes how loud your hierarchy feels.",
@@ -180,7 +180,7 @@
               "url": "https://design-system.service.gov.uk/styles/typography/"
             }
           ],
-          "fragment": "type/size-14.css"
+          "fragment": "fragments/type/size-14.css"
         },
         {
           "id": "size-16",
@@ -198,7 +198,7 @@
               "url": "https://design-system.service.gov.uk/styles/typography/"
             }
           ],
-          "fragment": "type/size-16.css"
+          "fragment": "fragments/type/size-16.css"
         },
         {
           "id": "size-18",
@@ -216,7 +216,7 @@
               "url": "https://design-system.service.gov.uk/styles/typography/"
             }
           ],
-          "fragment": "type/size-18.css"
+          "fragment": "fragments/type/size-18.css"
         }
       ],
       "why_care": "Body text is where people spend most of their time, so this size sets how easy it is to read.",
@@ -251,7 +251,7 @@
               "url": "https://design-system.service.gov.uk/styles/typography/"
             }
           ],
-          "fragment": "type/line-tight.css"
+          "fragment": "fragments/type/line-tight.css"
         },
         {
           "id": "normal",
@@ -269,7 +269,7 @@
               "url": "https://design-system.service.gov.uk/styles/typography/"
             }
           ],
-          "fragment": "type/line-normal.css"
+          "fragment": "fragments/type/line-normal.css"
         },
         {
           "id": "loose",
@@ -287,7 +287,7 @@
               "url": "https://design-system.service.gov.uk/styles/typography/"
             }
           ],
-          "fragment": "type/line-loose.css"
+          "fragment": "fragments/type/line-loose.css"
         }
       ]
     },

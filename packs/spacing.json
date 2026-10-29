@@ -29,7 +29,7 @@
             }
           ],
           "formula": "Multiples of 4 pixels, recorded in the chosen unit.",
-          "fragment": "spacing/base-4.css"
+          "fragment": "fragments/spacing/base-4.css"
         },
         {
           "id": "base-8",
@@ -48,7 +48,7 @@
             }
           ],
           "formula": "Multiples of 8 pixels, recorded in the chosen unit.",
-          "fragment": "spacing/base-8.css"
+          "fragment": "fragments/spacing/base-8.css"
         }
       ],
       "why_care": "Every gap is a multiple of this number, so it sets how fine your layout grid is.",

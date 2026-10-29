@@ -124,7 +124,7 @@
               "url": "https://m3.material.io/foundations/design-tokens/overview"
             }
           ],
-          "fragment": "tiers/flat.css"
+          "fragment": "fragments/tiers/flat.css"
         },
         {
           "id": "two-tier",
@@ -147,7 +147,7 @@
               "url": "https://m3.material.io/foundations/design-tokens/overview"
             }
           ],
-          "fragment": "tiers/two-tier.css"
+          "fragment": "fragments/tiers/two-tier.css"
         },
         {
           "id": "three-tier",
@@ -171,7 +171,7 @@
             }
           ],
           "formula": "primitive, semantic, and component.",
-          "fragment": "tiers/three-tier.css"
+          "fragment": "fragments/tiers/three-tier.css"
         }
       ]
     }

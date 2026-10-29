@@ -126,7 +126,7 @@
               "url": "https://m3.material.io/styles/color/roles"
             }
           ],
-          "fragment": "theme/dark-default.json"
+          "fragment": "fragments/theme/dark-default.json"
         }
       ]
     }

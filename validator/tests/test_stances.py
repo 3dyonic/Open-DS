@@ -15,7 +15,6 @@ STANCES = ("accessible-first", "dense-data", "multi-brand", "content-first", "br
 EXPECTED_FAIL = {
     "accessible-first": "required-option",
     "dense-data": "required-option",
-    "multi-brand": "required-option",
     "content-first": "conflict",
     "brand-expressive": "required-option",
 }
@@ -36,19 +35,20 @@ def test_each_stance_recipe_passes() -> None:
 
 def test_each_stance_fail_fixture_has_its_error() -> None:
     for name, error_id in EXPECTED_FAIL.items():
-        recipe = read_json(ROOT / "fixtures" / "recipes" / f"{name}-fail.json")
+        recipe = read_json(ROOT / "fixtures" / "stances" / f"{name}-fail.json")
         result = check_recipe(recipe, PACKS, ROOT)
         assert result["ok"] is False
         assert error_id in _ids(result, "error")
         assert "fingerprint" not in result
 
 
-def test_multi_brand_without_separate_is_blocked() -> None:
-    recipe = read_json(ROOT / "fixtures" / "recipes" / "multi-brand-fail.json")
+def test_multi_brand_without_separate_is_not_blocked() -> None:
+    recipe = read_json(ROOT / "fixtures" / "stances" / "multi-brand-fail.json")
     separation = next(pick for pick in recipe["picks"] if pick["question"] == "structure-theme-separation")
     assert separation["option"] == "combined"
     result = check_recipe(recipe, PACKS, ROOT)
-    assert "required-option" in _ids(result, "error")
+    assert result["ok"], result["findings"]
+    assert "required-option" not in _ids(result)
 
 
 def test_brand_expressive_chain_has_no_radius_link() -> None:
@@ -64,14 +64,14 @@ def test_unknown_feed_and_unbacked_feed_and_empty_affects() -> None:
     color = next(question for question in packs["color-primitives"]["questions"] if question["id"] == "color-space")
     color["feeds_into"] = ["not-a-real-question"]
     missing = validate_packs(packs, ROOT)
-    assert "unknown-feed" in _ids(missing, "error")
+    assert "unknown-feeds-into" in _ids(missing, "error")
     assert missing["ok"] is False
 
     packs = copy.deepcopy(PACKS)
     color = next(question for question in packs["color-primitives"]["questions"] if question["id"] == "color-space")
     color["feeds_into"] = ["density"]
     unbacked = validate_packs(packs, ROOT)
-    assert "unbacked-feed" in _ids(unbacked, "error")
+    assert "unbacked-feeds-into" in _ids(unbacked, "error")
 
     packs = copy.deepcopy(PACKS)
     color = next(question for question in packs["color-primitives"]["questions"] if question["id"] == "color-space")
@@ -96,7 +96,7 @@ def test_missing_fragment_and_long_why_care() -> None:
     assert "why-care-length" in _ids(long, "error")
 
 
-def test_chain_with_only_recommends_is_rejected() -> None:
+def test_recommends_only_chain_stays_valid() -> None:
     recipe = read_json(ROOT / "recipes" / "dense-data.json")
     recipe["chain"] = [
         {
@@ -107,5 +107,6 @@ def test_chain_with_only_recommends_is_rejected() -> None:
         }
     ]
     result = check_recipe(recipe, PACKS, ROOT)
-    assert result["ok"] is False
-    assert "chain-strength" in _ids(result, "error")
+    assert result["ok"], result["findings"]
+    assert "chain-strength" not in _ids(result)
+    assert "chain-rule" not in _ids(result)

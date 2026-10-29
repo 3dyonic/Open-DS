@@ -1,0 +1,14 @@
+{
+  "floors": {
+    "components": [
+      {
+        "id": "accept-terms",
+        "flags": [
+          "legal-commitment"
+        ],
+        "confirms": false,
+        "critical": false
+      }
+    ]
+  }
+}

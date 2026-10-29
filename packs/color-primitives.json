@@ -30,7 +30,7 @@
             }
           ],
           "formula": "OKLCH lightness steps.",
-          "fragment": "color/oklch.css"
+          "fragment": "fragments/color/oklch.css"
         },
         {
           "id": "hsl",

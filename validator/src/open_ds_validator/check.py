@@ -8,8 +8,9 @@ from pathlib import Path
 import jsonschema
 
 from open_ds_validator.fingerprint import fingerprint_recipe
+from open_ds_validator.floors import base_pack_floor_findings, floor_findings, fragment_path, read_fragment_floors
 from open_ds_validator.load import load_schema, read_json, repo_root, validator_for
-from open_ds_validator.resolve import all_questions, questions_for
+from open_ds_validator.resolve import all_questions, materialize, questions_for
 
 SEVERITY_ORDER = {"error": 0, "warning": 1, "info": 2}
 
@@ -38,13 +39,21 @@ def _sort(findings: list[dict]) -> list[dict]:
     )
 
 
-def _result(findings: list[dict], recipe: dict | None = None) -> dict:
+def _result(
+    findings: list[dict],
+    recipe: dict | None = None,
+    prefills: list[dict] | None = None,
+) -> dict:
     ordered = _sort(findings)
     if any(item["severity"] == "error" for item in ordered):
-        return {"ok": False, "findings": ordered}
-    if recipe is None:
-        return {"ok": True, "findings": ordered}
-    return {"ok": True, "findings": ordered, "fingerprint": fingerprint_recipe(recipe)}
+        result: dict = {"ok": False, "findings": ordered}
+    elif recipe is None:
+        result = {"ok": True, "findings": ordered}
+    else:
+        result = {"ok": True, "findings": ordered, "fingerprint": fingerprint_recipe(recipe)}
+    if prefills:
+        result["prefills"] = prefills
+    return result
 
 
 def _words(text: str) -> int:
@@ -64,6 +73,97 @@ def _option_index(questions: list[dict]) -> dict[str, dict[str, dict]]:
     for question in questions:
         index[question["id"]] = {option["id"]: option for option in question.get("options", [])}
     return index
+
+
+def _resolved_options(question: dict, packs: dict[str, dict]) -> list[dict]:
+    if "ref" in question and "global" in packs:
+        return list(materialize(question, packs).get("options") or [])
+    return list(question.get("options") or []) + list(question.get("overrides") or [])
+
+
+def _backing_targets(question: dict, packs: dict[str, dict]) -> set[str]:
+    targets: set[str] = set()
+    for option in _resolved_options(question, packs):
+        for key in ("requires", "discourages", "recommends"):
+            for effect in option.get(key, []):
+                target = effect.get("question")
+                if target:
+                    targets.add(target)
+    return targets
+
+
+def _when_state(picks: dict[str, dict], effect: dict) -> str:
+    """always, match, miss, or partial.
+
+    A list of when-clauses is AND. Partial means at least one clause's question
+    has no answer, so the rule stays quiet: no finding and no prefill.
+    """
+    clauses = effect.get("when")
+    if not clauses:
+        return "always"
+    if isinstance(clauses, dict):
+        clauses = [clauses]
+    if not isinstance(clauses, list):
+        return "always"
+    missing = False
+    mismatched = False
+    for clause in clauses:
+        if not isinstance(clause, dict):
+            missing = True
+            continue
+        pick = picks.get(clause.get("question", ""))
+        if not pick:
+            missing = True
+            continue
+        if pick.get("option") != clause.get("option"):
+            mismatched = True
+    if missing:
+        return "partial"
+    if mismatched:
+        return "miss"
+    return "match"
+
+
+def _prefills_for(effect: dict, option: dict) -> list[dict]:
+    rows: list[dict] = []
+    label = option.get("label", "")
+    for target in _effect_targets(effect):
+        row = {
+            "question": effect.get("question", ""),
+            "option": target,
+            "reason": effect.get("reason", ""),
+        }
+        if label:
+            row["because"] = label
+        rows.append(row)
+    return rows
+
+
+def _linked(fid: str, severity: str, message: str, qid: str, option: dict, effect: dict) -> dict:
+    return finding(
+        fid,
+        severity,
+        message,
+        qid,
+        option["id"],
+        targetQuestion=effect.get("question", ""),
+        targetOption=effect.get("option", ""),
+        reason=effect.get("reason", ""),
+        because=option.get("label", ""),
+    )
+
+
+def _stamp_scheme(findings: list[dict], questions: list[dict]) -> list[dict]:
+    by_id = {question["id"]: question.get("pack", "") for question in questions}
+    stamped: list[dict] = []
+    for item in findings:
+        row = dict(item)
+        if not row.get("scheme") and row.get("question"):
+            scheme = by_id.get(row["question"], "")
+            if scheme:
+                row["scheme"] = scheme
+        stamped.append(row)
+    return stamped
 
 
 def validate_packs(packs: dict[str, dict], root: Path | None = None) -> dict:
@@ -148,56 +248,66 @@ def validate_packs(packs: dict[str, dict], root: Path | None = None) -> dict:
                             findings.append(
                                 finding("broken-effect", "error", f"{key} has no option.", question["id"], option["id"])
                             )
-    _check_question_meta(questions, index, root, findings)
+    known_ids = {question["id"] for pack in packs.values() for question in pack["questions"]}
+    root_path = repo_root(root)
+    for pack in packs.values():
+        for question in pack["questions"]:
+            if "affects" in question and not question.get("affects"):
+                findings.append(
+                    finding("empty-affects", "warning", "affects is empty.", question["id"], scheme=pack["id"])
+                )
+            why_care = question.get("why_care")
+            if isinstance(why_care, str) and _words(why_care) > 25:
+                findings.append(
+                    finding(
+                        "why-care-length",
+                        "error",
+                        "why_care is longer than 25 words.",
+                        question["id"],
+                        scheme=pack["id"],
+                    )
+                )
+            backed = _backing_targets(question, packs)
+            for target in question.get("feeds_into") or []:
+                if target not in known_ids:
+                    findings.append(
+                        finding(
+                            "unknown-feeds-into",
+                            "error",
+                            "feeds_into points at an unknown question.",
+                            question["id"],
+                            scheme=pack["id"],
+                        )
+                    )
+                    continue
+                if target not in backed:
+                    findings.append(
+                        finding(
+                            "unbacked-feeds-into",
+                            "error",
+                            "feeds_into has no requires, discourages, or recommends rule.",
+                            question["id"],
+                            scheme=pack["id"],
+                        )
+                    )
+            for option in _resolved_options(question, packs):
+                fragment = option.get("fragment")
+                if not fragment:
+                    continue
+                path = fragment_path(root_path, fragment)
+                if path is None or not path.is_file():
+                    findings.append(
+                        finding(
+                            "missing-fragment",
+                            "error",
+                            "The fragment file does not exist.",
+                            question["id"],
+                            option.get("id", ""),
+                            scheme=pack["id"],
+                        )
+                    )
+    findings.extend(base_pack_floor_findings(packs))
     return _result(findings)
-
-
-def _feed_backed(question: dict, target: str) -> bool:
-    for option in question.get("options", []):
-        for key in ("requires", "discourages", "recommends"):
-            for effect in option.get(key, []):
-                if effect.get("question") == target:
-                    return True
-    return False
-
-
-def _check_question_meta(
-    questions: list[dict], index: dict[str, dict], root: Path | None, findings: list[dict]
-) -> None:
-    fragment_root = repo_root(root) / "fragments"
-    for question in questions:
-        why_care = question.get("why_care")
-        if isinstance(why_care, str) and _words(why_care) > 25:
-            findings.append(finding("why-care-length", "error", "why_care is longer than 25 words.", question["id"]))
-        if "affects" in question and not question.get("affects"):
-            findings.append(finding("empty-affects", "warning", "affects is empty.", question["id"]))
-        for target in question.get("feeds_into") or []:
-            if target not in index:
-                findings.append(
-                    finding("unknown-feed", "error", "feeds_into names an unknown question.", question["id"])
-                )
-                continue
-            if not _feed_backed(question, target):
-                findings.append(
-                    finding(
-                        "unbacked-feed",
-                        "error",
-                        "feeds_into is not backed by a requires, discourages, or recommends rule.",
-                        question["id"],
-                    )
-                )
-        for option in question.get("options", []):
-            fragment = option.get("fragment")
-            if fragment and not (fragment_root / fragment).is_file():
-                findings.append(
-                    finding(
-                        "missing-fragment",
-                        "error",
-                        f"Fragment file {fragment} does not exist.",
-                        question["id"],
-                        option["id"],
-                    )
-                )
 
 
 def _selected(picks: dict[str, dict], effect: dict) -> bool:
@@ -246,6 +356,7 @@ def check_recipe(recipe: dict, packs: dict[str, dict], root: Path | None = None)
     pack_findings = validate_packs(packs, root)
     if not pack_findings["ok"]:
         return pack_findings
+    findings.extend(pack_findings["findings"])
 
     missing_packs = [pid for pid in recipe["packs"] if pid not in packs]
     for pid in missing_packs:
@@ -276,6 +387,8 @@ def check_recipe(recipe: dict, packs: dict[str, dict], root: Path | None = None)
                 finding("missing-question", "error", "This required question has no answer.", question["id"])
             )
 
+    prefills: list[dict] = []
+    selected_fragments: list[str] = []
     for qid, pick in picks.items():
         question = by_id.get(qid)
         if question is None:
@@ -288,6 +401,8 @@ def check_recipe(recipe: dict, packs: dict[str, dict], root: Path | None = None)
                 finding("unknown-option", "error", "This option is not a cited answer.", qid, pick["option"])
             )
             continue
+        if option.get("fragment"):
+            selected_fragments.append(option["fragment"])
         rationale = str(pick.get("rationale", "")).strip()
         if not rationale:
             findings.append(
@@ -335,81 +450,44 @@ def check_recipe(recipe: dict, packs: dict[str, dict], root: Path | None = None)
                     )
                 )
         for effect in option.get("recommends", []):
-            if not _selected(picks, effect):
+            # recommends never raises a finding. A when-clause can prefill, or discourage when it misses.
+            state = _when_state(picks, effect)
+            if state == "match":
+                prefills.extend(_prefills_for(effect, option))
+            elif state == "miss" and _selected(picks, effect):
                 findings.append(
-                    finding(
-                        "recommend",
-                        "info",
-                        "A recommended option was not selected.",
-                        qid,
-                        option["id"],
-                        targetQuestion=effect.get("question", ""),
-                        targetOption=effect.get("option", ""),
-                        reason=effect.get("reason", ""),
-                        because=option["label"],
-                    )
-                )
-        for effect in option.get("discourages", []):
-            if _selected(picks, effect):
-                findings.append(
-                    finding(
+                    _linked(
                         "discourage",
                         "warning",
                         "A discouraged option was selected.",
                         qid,
-                        option["id"],
-                        targetQuestion=effect.get("question", ""),
-                        targetOption=effect.get("option", ""),
-                        reason=effect.get("reason", ""),
-                        because=option["label"],
+                        option,
+                        effect,
+                    )
+                )
+        for effect in option.get("discourages", []):
+            state = _when_state(picks, effect)
+            if state in {"partial", "miss"}:
+                continue
+            if _selected(picks, effect):
+                findings.append(
+                    _linked(
+                        "discourage",
+                        "warning",
+                        "A discouraged option was selected.",
+                        qid,
+                        option,
+                        effect,
                     )
                 )
 
-    _check_chain(recipe, picks, by_id, findings)
-    return _result(findings, recipe)
-
-
-def _check_chain(recipe: dict, picks: dict[str, dict], by_id: dict[str, dict], findings: list[dict]) -> None:
-    chain = recipe.get("chain") or []
-    if not chain:
-        return
-    strong = False
-    for link in chain:
-        rule = link.get("rule", "")
-        source = link.get("from", "")
-        if rule in ("requires", "discourages"):
-            strong = True
-        if rule == "states":
-            continue
-        if rule not in ("requires", "discourages", "recommends"):
-            findings.append(finding("chain-rule", "error", "A chain link has an unknown rule.", source))
-            continue
-        pick = picks.get(source)
-        question = by_id.get(source)
-        if not pick or not question:
-            findings.append(
-                finding(
-                    "chain-rule", "error", "A chain link starts from a question this recipe does not answer.", source
-                )
-            )
-            continue
-        option = next((item for item in question.get("options", []) if item["id"] == pick["option"]), None)
-        effects = (option or {}).get(rule, [])
-        backed = any(effect.get("question") == link.get("to") for effect in effects)
-        if not backed:
-            findings.append(
-                finding(
-                    "chain-rule",
-                    "error",
-                    "This chain link is not backed by that rule on the picked option.",
-                    source,
-                    pick["option"],
-                )
-            )
-    if not strong:
-        findings.append(
-            finding("chain-strength", "error", "A demo chain needs at least one requires or discourages link.")
-        )
+    base = repo_root(root)
+    for fragment in selected_fragments:
+        meta = read_fragment_floors(base, fragment)
+        if meta is not None:
+            findings.extend(floor_findings(meta, require_complete=False))
+    prefills.sort(key=lambda item: (item.get("question", ""), item.get("option", ""), item.get("reason", "")))
+    return _result(_stamp_scheme(findings, questions), recipe, prefills)
 
 
 def decision_ids(text: str) -> list[str]:

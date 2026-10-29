@@ -99,12 +99,12 @@ test("check fails when an installed file is deleted", async () => {
   }
 });
 
-async function capture(argv) {
+async function capture(argv, options) {
   const logs = [];
   const original = console.log;
   console.log = (line) => logs.push(String(line));
   try {
-    const code = await run(argv);
+    const code = await run(argv, options);
     return { code, text: logs.join("\n") };
   } finally {
     console.log = original;
@@ -142,8 +142,8 @@ test("check prints each failure with the question and a fix", async () => {
     assert.equal(rationale.scheme, "purpose");
     const { code, text } = await capture(["check", "--dir", dir]);
     assert.equal(code, 1);
-    assert.match(text, /error missing-question: purpose\/voice has no answer yet\./);
-    assert.match(text, /Fix: run open-ds build and pick an option\./);
+    assert.ok(text.includes("error missing-question: voice has no answer yet."));
+    assert.ok(text.includes("Fix: pick an answer on /build, then run open-ds init <recipe.json>."));
     assert.match(text, /error missing-rationale: purpose\/density: Write a rationale in your own words\./);
     assert.match(text, /Fix: write a rationale in your own words\./);
     const lines = text.split("\n").filter(Boolean);
@@ -193,6 +193,29 @@ test("listed failures print a reason and a fix", () => {
     const [line, fixLine] = formatCheckFailure({ id, severity: "error", message });
     assert.equal(line, `error ${id}: ${message}`);
     assert.equal(fixLine, fix);
+  }
+});
+
+test("check reports a missing uv binary in the error format", async () => {
+  const dir = await installed();
+  try {
+    const result = await check(dir, root, { uvBin: "open-ds-uv-not-installed" });
+    assert.equal(result.ok, false);
+    assert.deepEqual(
+      result.findings.map((item) => item.id),
+      ["uv-missing"],
+    );
+    assert.equal(result.findings[0].message, "open-ds check needs uv to run recipe rules.");
+    const { code, text } = await capture(["check", "--dir", dir], {
+      uvBin: "open-ds-uv-not-installed",
+    });
+    assert.equal(code, 1);
+    assert.ok(text.includes("error uv-missing: open-ds check needs uv to run recipe rules."));
+    assert.ok(
+      text.includes("Fix: install uv (https://docs.astral.sh/uv/), then rerun open-ds check."),
+    );
+  } finally {
+    rmSync(dir, { recursive: true, force: true });
   }
 });
 
