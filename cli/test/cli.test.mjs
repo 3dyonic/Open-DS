@@ -99,12 +99,12 @@ test("check fails when an installed file is deleted", async () => {
   }
 });
 
-async function capture(argv) {
+async function capture(argv, options) {
   const logs = [];
   const original = console.log;
   console.log = (line) => logs.push(String(line));
   try {
-    const code = await run(argv);
+    const code = await run(argv, options);
     return { code, text: logs.join("\n") };
   } finally {
     console.log = original;
@@ -142,8 +142,8 @@ test("check prints each failure with the question and a fix", async () => {
     assert.equal(rationale.scheme, "purpose");
     const { code, text } = await capture(["check", "--dir", dir]);
     assert.equal(code, 1);
-    assert.match(text, /error missing-question: purpose\/voice has no answer yet\./);
-    assert.match(text, /Fix: pick an answer on \/build, then run open-ds init <recipe\.json>\./);
+    assert.ok(text.includes("error missing-question: voice has no answer yet."));
+    assert.ok(text.includes("Fix: pick an answer on /build, then run open-ds init <recipe.json>."));
     assert.match(text, /error missing-rationale: purpose\/density: Write a rationale in your own words\./);
     assert.match(text, /Fix: write a rationale in your own words\./);
     const lines = text.split("\n").filter(Boolean);
@@ -211,37 +211,35 @@ test("check ignores edits to user-owned files outside manifest items", async () 
   }
 });
 
-test("required-option names the missing option and the pack reason", async () => {
-  const { writeFileSync } = await import("node:fs");
+test("required-option names the missing option and the pack reason", () => {
+  const [line, fixLine] = formatCheckFailure({
+    id: "required-option",
+    severity: "error",
+    message: "Ship needs Calm (tone). This fixture requires a calm tone.",
+    targetLabel: "Calm",
+  });
+  assert.equal(line, "error required-option: Ship needs Calm (tone). This fixture requires a calm tone.");
+  assert.equal(fixLine, "Fix: Add Calm to finish your recipe, then run open-ds check again.");
+});
+
+test("check reports a missing uv binary in the error format", async () => {
   const dir = await installed();
   try {
-    const installedFile = JSON.parse(readFileSync(join(dir, "open-ds.json"), "utf8"));
-    for (const pick of installedFile.recipe.picks) {
-      if (pick.question === "brand-variance") {
-        pick.option = "multi-brand";
-        pick.rationale = "Two brands share this starter.";
-      }
-      if (pick.question === "structure-theme-separation") {
-        pick.option = "combined";
-        pick.rationale = "Keep the values in the components.";
-      }
-    }
-    writeFileSync(join(dir, "open-ds.json"), JSON.stringify(installedFile));
-    const purpose = JSON.parse(readFileSync(join(root, "packs", "purpose.json"), "utf8"));
-    const brand = purpose.questions.find((item) => item.id === "brand-variance");
-    const multi = brand.options.find((item) => item.id === "multi-brand");
-    const effect = multi.requires.find(
-      (item) => item.question === "structure-theme-separation" && item.option === "separate",
+    const result = await check(dir, root, { uvBin: "open-ds-uv-not-installed" });
+    assert.equal(result.ok, false);
+    assert.deepEqual(
+      result.findings.map((item) => item.id),
+      ["uv-missing"],
     );
-    const { code, text } = await capture(["check", "--dir", dir]);
+    assert.equal(result.findings[0].message, "open-ds check needs uv to run recipe rules.");
+    const { code, text } = await capture(["check", "--dir", dir], {
+      uvBin: "open-ds-uv-not-installed",
+    });
     assert.equal(code, 1);
-    assert.match(text, /error required-option: Multi-brand needs Separate \(structure-theme-separation\)\. /);
+    assert.ok(text.includes("error uv-missing: open-ds check needs uv to run recipe rules."));
     assert.ok(
-      text.includes(
-        `error required-option: Multi-brand needs Separate (structure-theme-separation). ${effect.reason}`,
-      ),
+      text.includes("Fix: install uv (https://docs.astral.sh/uv/), then rerun open-ds check."),
     );
-    assert.match(text, /Fix: Add Separate to finish your recipe, then run open-ds check again\./);
   } finally {
     rmSync(dir, { recursive: true, force: true });
   }

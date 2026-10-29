@@ -1,0 +1,141 @@
+{
+  "expected_errors": [],
+  "recipe": {
+    "id": "fixture",
+    "name": "Fixture",
+    "version": "0.1.0",
+    "serves": "A fixture recipe.",
+    "packs": [
+      "purpose"
+    ],
+    "picks": [
+      {
+        "question": "goal",
+        "option": "ship",
+        "rationale": "Needed for the fixture."
+      },
+      {
+        "question": "tone",
+        "option": "calm",
+        "rationale": "Needed for the fixture."
+      }
+    ]
+  },
+  "packs": {
+    "purpose": {
+      "id": "purpose",
+      "title": "Purpose",
+      "summary": "Fixture pack purpose.",
+      "version": "0.1.0",
+      "scope": "scoped",
+      "order": 1,
+      "questions": [
+        {
+          "id": "goal",
+          "prompt": "What is goal?",
+          "summary": "Fixture question goal.",
+          "required": true,
+          "options": [
+            {
+              "id": "ship",
+              "label": "Ship",
+              "summary": "Ship for the fixture.",
+              "why": "A short reason for this answer.",
+              "when_to_choose": "Choose this if the fixture needs it.",
+              "trade_offs": [
+                "A short cost."
+              ],
+              "sources": [
+                {
+                  "name": "Open DS",
+                  "title": "Fixture note",
+                  "url": "https://example.com/open-ds"
+                }
+              ],
+              "recommends": [
+                {
+                  "question": "tone",
+                  "option": "calm",
+                  "reason": "A shipped fixture prefers a calm tone."
+                }
+              ],
+              "discourages": [
+                {
+                  "question": "tone",
+                  "option": "loud",
+                  "reason": "A loud tone fights this fixture."
+                }
+              ],
+              "requires": [
+                {
+                  "question": "tone",
+                  "option": "calm",
+                  "reason": "This fixture requires a calm tone."
+                }
+              ],
+              "fragment": "fixtures/fragments/hand-written.md"
+            }
+          ],
+          "affects": [
+            "tone"
+          ],
+          "feeds_into": [
+            "tone"
+          ],
+          "why_care": "This choice changes the rest of the system."
+        },
+        {
+          "id": "tone",
+          "prompt": "What is tone?",
+          "summary": "Fixture question tone.",
+          "required": true,
+          "options": [
+            {
+              "id": "calm",
+              "label": "Calm",
+              "summary": "Calm for the fixture.",
+              "why": "A short reason for this answer.",
+              "when_to_choose": "Choose this if the fixture needs it.",
+              "trade_offs": [
+                "A short cost."
+              ],
+              "sources": [
+                {
+                  "name": "Open DS",
+                  "title": "Fixture note",
+                  "url": "https://example.com/open-ds"
+                }
+              ]
+            },
+            {
+              "id": "loud",
+              "label": "Loud",
+              "summary": "Loud for the fixture.",
+              "why": "A short reason for this answer.",
+              "when_to_choose": "Choose this if the fixture needs it.",
+              "trade_offs": [
+                "A short cost."
+              ],
+              "sources": [
+                {
+                  "name": "Open DS",
+                  "title": "Fixture note",
+                  "url": "https://example.com/open-ds"
+                }
+              ]
+            }
+          ],
+          "affects": [
+            "voice"
+          ],
+          "why_care": "Tone is the voice of the system."
+        }
+      ]
+    }
+  },
+  "expected_warnings": [],
+  "expected_prefills": [],
+  "absent": [
+    "recommend"
+  ]
+}

@@ -36,6 +36,7 @@ From a checkout of this repo.
 ```bash
 uv sync --all-packages --group dev
 uv run open-ds-validator check recipes/3dyonic.json
+uv run open-ds-validate recipes/3dyonic.json
 ```
 
 **MCP**
@@ -72,6 +73,7 @@ An error rejects the recipe. There is no fingerprint. A warning or an info note 
 
 - A missing requirement is an error. The website blocks the build step.
 - A discouraged pick is a warning.
-- A recommendation is info.
+- A recommendation does not raise a finding. A conditional recommendation prefills only when every `when` answer matches. If those answers are present but do not match, that option is discouraged instead. One answer of an AND list does nothing.
+- Floors on the global pack always apply: contrast, resize, text spacing, target size, and confirmation for destructive, payment, and legal-commitment actions. A critical component hidden behind hover or an accordion is an error.
 
 Badges in the builder: **Fits your purpose**, **Worth a second look**, **Your purpose needs this**. The tooltip says `Because you chose X: reason`.
