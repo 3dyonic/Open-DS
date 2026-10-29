@@ -573,6 +573,7 @@
     },
     {
       "id": "density",
+      "axis": "density",
       "prompt": "How dense should the interface feel?",
       "summary": "Density is the amount of space around controls and text.",
       "required": true,
@@ -591,6 +592,11 @@
               "name": "Material",
               "title": "Spacing",
               "url": "https://m3.material.io/foundations/layout/understanding-layout/spacing"
+            },
+            {
+              "name": "Carbon",
+              "title": "Data table row height",
+              "url": "https://carbondesignsystem.com/components/data-table/style/"
             }
           ],
           "recommends": [
@@ -614,7 +620,8 @@
               ]
             }
           ],
-          "fragment": "fragments/density/compact.css",
+          "fragment": "fragments/density/compact.json",
+          "scopes": ["table-row"],
           "requires": [
             {
               "question": "spacing-base",
