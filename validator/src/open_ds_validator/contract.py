@@ -1,4 +1,4 @@
-"""AI-ready init output and catalog. Pack data is copied. Nothing is stamped at run time."""
+"""AI-ready init output. Pack data is copied. Nothing is stamped at run time."""
 
 from __future__ import annotations
 
@@ -367,121 +367,6 @@ def apply_fragment_tokens(tokens: dict, text: str, paths: dict[str, list[str]]) 
     return changed
 
 
-def _base_tokens(root: Path) -> dict:
-    tokens = read_json(root / "boilerplates" / "3dyonic" / "theme" / "tokens.json")
-    force_target_floor(tokens)
-    return tokens
-
-
-def _component_names(css: str, props: set[str]) -> list[str]:
-    if not props:
-        return []
-    names: set[str] = set()
-    for match in re.finditer(r"([^{}]+)\{([^{}]*)\}", css):
-        body = match.group(2)
-        if not any(f"var({prop})" in body for prop in props):
-            continue
-        for sel in match.group(1).split(","):
-            found = re.search(r"\.ods-([a-z0-9-]+)", sel)
-            if found:
-                names.add(found.group(1))
-    return sorted(names)
-
-
-def _reference_graph(tokens: dict) -> dict[str, set[str]]:
-    """token path -> paths whose $value references it, one step."""
-    incoming: dict[str, set[str]] = {}
-    for path, node in _walk_values(tokens):
-        value = node.get("$value")
-        if isinstance(value, str) and value.startswith("{") and value.endswith("}"):
-            target = value[1:-1]
-            incoming.setdefault(target, set()).add(".".join(path))
-    return incoming
-
-
-def components_for(paths: list[str], tokens: dict, css: str, var_by_path: dict[str, str]) -> list[str]:
-    graph = _reference_graph(tokens)
-    seen = set(paths)
-    queue = list(paths)
-    while queue:
-        current = queue.pop()
-        for nxt in graph.get(current, ()):
-            if nxt in seen:
-                continue
-            seen.add(nxt)
-            queue.append(nxt)
-    names: set[str] = set()
-    for path in seen:
-        parts = path.split(".")
-        if len(parts) >= 2 and parts[0] == "component":
-            names.add(parts[1])
-    props = {var_by_path[path] for path in seen if path in var_by_path}
-    names.update(_component_names(css, props))
-    return sorted(names)
-
-
-def build_catalog(packs: dict[str, dict], root: Path | None = None) -> dict:
-    root = repo_root(root)
-    rows, errors = collect_links(packs)
-    if errors:
-        raise ContractError("links with no source: " + ", ".join(errors))
-    by_from: dict[str, list[dict]] = {}
-    for row in rows:
-        by_from.setdefault(row["from"], []).append(row)
-    paths = load_token_paths(root)
-    var_by_path = {".".join(parts): prop for prop, parts in paths.items()}
-    base = _base_tokens(root)
-    css_path = root / "boilerplates" / "3dyonic" / "structure" / "components.css"
-    css = css_path.read_text(encoding="utf-8") if css_path.is_file() else ""
-    catalog: dict[str, dict] = {}
-    for question in all_questions(packs):
-        for option in question.get("options") or []:
-            key = answer_id(question["id"], option["id"])
-            link_rows = []
-            for row in by_from.get(key, []):
-                link_rows.append(
-                    {
-                        "basis": row["basis"],
-                        "from": row["from"],
-                        "id": row["id"],
-                        "reason": row["reason"],
-                        "sources": row["sources"],
-                        "to": row["to"],
-                        "type": row["type"],
-                    }
-                )
-            token_rows = []
-            fragment = option.get("fragment") or ""
-            fragment_path = root / fragment if fragment else None
-            if fragment_path is not None and fragment_path.is_file() and ".." not in Path(fragment).parts:
-                text = fragment_path.read_text(encoding="utf-8")
-                before_doc = copy.deepcopy(base)
-                after_doc = copy.deepcopy(base)
-                changed = apply_fragment_tokens(after_doc, text, paths)
-                force_target_floor(after_doc)
-                context = [key]
-                link = _link_for(rows, key, {key})
-                sources = [output_source(item) for item in option.get("sources") or [] if item.get("url")]
-                ext = extension_for(option, question["id"], context, link, sources)
-                for dotted in sorted(set(changed)):
-                    parts = dotted.split(".")
-                    before = _get_path(before_doc, parts)
-                    after = _get_path(after_doc, parts)
-                    if dotted == ".".join(TARGET_PARTS):
-                        after = copy.deepcopy(after) if isinstance(after, dict) else after
-                    elif isinstance(after, dict) and "$value" in after:
-                        after = copy.deepcopy(after)
-                        after["$extensions"] = {"openDs": ext}
-                    token_rows.append({"after": after, "before": before, "path": dotted})
-            used_paths = [item["path"] for item in token_rows]
-            catalog[key] = {
-                "components": components_for(used_paths, base, css, var_by_path),
-                "links": link_rows,
-                "tokens": token_rows,
-            }
-    return catalog
-
-
 def agents_with_status(text: str, recipe: dict) -> str:
     status = recipe.get("status")
     if not status:
@@ -517,12 +402,6 @@ def apply_output(out_dir: Path, recipe: dict, packs: dict[str, dict] | None = No
         agents_path.write_text(agents_with_status(agents_path.read_text(encoding="utf-8"), recipe), encoding="utf-8")
 
 
-def write_catalog(path: Path, packs: dict[str, dict] | None = None, root: Path | None = None) -> None:
-    root = repo_root(root)
-    packs = packs if packs is not None else load_packs(root)
-    path.write_text(dump(build_catalog(packs, root)), encoding="utf-8")
-
-
 def deterministic_zip(path: Path, members: dict[str, bytes]) -> None:
     path.parent.mkdir(parents=True, exist_ok=True)
     with zipfile.ZipFile(path, "w") as archive:
@@ -541,8 +420,6 @@ def main(argv: list[str] | None = None) -> int:
     apply = sub.add_parser("apply")
     apply.add_argument("--out", required=True)
     apply.add_argument("--recipe", required=True)
-    catalog = sub.add_parser("catalog")
-    catalog.add_argument("--out", required=True)
     zipper = sub.add_parser("zip")
     zipper.add_argument("--out", required=True)
     zipper.add_argument("--recipe", required=True)
@@ -553,9 +430,6 @@ def main(argv: list[str] | None = None) -> int:
     try:
         if args.cmd == "apply":
             apply_output(Path(args.out), read_json(Path(args.recipe)))
-            return 0
-        if args.cmd == "catalog":
-            write_catalog(Path(args.out))
             return 0
         members = {
             "AGENTS.md": Path(args.agents).read_bytes(),

@@ -5,7 +5,7 @@ import { join } from "node:path";
 import test from "node:test";
 import assert from "node:assert/strict";
 import { promisify } from "node:util";
-import { repoRoot, run } from "../src/main.mjs";
+import { repoRoot } from "../src/main.mjs";
 import { publishDownloads } from "../../scripts/publish-downloads.mjs";
 
 const exec = promisify(execFile);
@@ -30,11 +30,9 @@ async function initTo(name, dir) {
   await exec(process.execPath, [bin, "init", recipe, "--out", dir], { cwd: root });
 }
 
-test("init and catalog are byte-stable, and downloads match a local init", async () => {
+test("init is byte-stable, and downloads match a local init", async () => {
   const first = mkdtempSync(join(tmpdir(), "open-ds-contract-a-"));
   const second = mkdtempSync(join(tmpdir(), "open-ds-contract-b-"));
-  const catalogA = join(first, "catalog.json");
-  const catalogB = join(second, "catalog.json");
   const published = mkdtempSync(join(tmpdir(), "open-ds-downloads-"));
   try {
     await initTo("dense-data", first);
@@ -69,10 +67,6 @@ test("init and catalog are byte-stable, and downloads match a local init", async
       JSON.stringify(tokens).includes('"value":48') || JSON.stringify(tokens).includes('"value": 48'),
       false,
     );
-
-    assert.equal(await run(["catalog", "--out", catalogA]), 0);
-    assert.equal(await run(["catalog", "--out", catalogB]), 0);
-    assert.deepEqual(readFileSync(catalogA), readFileSync(catalogB));
 
     publishDownloads(root, published);
     const fresh = mkdtempSync(join(tmpdir(), "open-ds-fresh-"));
