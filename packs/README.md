@@ -5,6 +5,10 @@ Open DS does not calculate colors or tokens from these files.
 
 Copy limits: why is at most 35 words. when_to_choose starts with "Choose this if" or "Choose this when" and is at most 25 words. trade_offs has 1 to 3 costs, at most 15 words each.
 
+A question may add `affects` (strings; an empty list warns), `feeds_into` (question ids that exist and are backed by `requires`, `discourages`, or `recommends`), and `why_care` (one sentence, at most 25 words). An option may add `fragment`, a path relative to the repo root.
+
+`global` is the base pack. Its `floors` block always applies. The shape is documented in `validator/README.md`. The checker reads declared numbers. It does not measure contrast or pixels.
+
 Option ids:
 
 ## purpose

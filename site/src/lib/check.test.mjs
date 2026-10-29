@@ -47,7 +47,7 @@ test("a missing rationale is rejected with no fingerprint", async () => {
   assert.equal(result.fingerprint, undefined);
 });
 
-test("an unmet requirement is an error and a missed recommendation is info", async () => {
+test("an unmet requirement is an error and a missed recommendation is silent", async () => {
   const bad = structuredClone(recipe);
   for (const pick of bad.picks) {
     if (pick.question === "brand-variance") {
@@ -66,6 +66,7 @@ test("an unmet requirement is an error and a missed recommendation is info", asy
   const result = await checkRecipe(bad, packs);
   assert.equal(result.ok, false);
   assert.ok(ids(result, "error").includes("required-option"));
+  assert.equal(ids(result).includes("recommend"), false);
   assert.equal(result.fingerprint, undefined);
   const required = result.findings.find((item) => item.id === "required-option");
   assert.match(required.reason, /theme values/);

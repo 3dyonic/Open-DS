@@ -28,6 +28,9 @@ export type Question = {
   ref?: string;
   options?: Option[];
   overrides?: Option[];
+  affects?: string[];
+  feeds_into?: string[];
+  why_care?: string;
 };
 
 export type Effect = { question: string; option?: string; reason: string };
@@ -45,6 +48,7 @@ export type Option = {
   recommends?: Effect[];
   discourages?: Effect[];
   requires?: Effect[];
+  fragment?: string;
 };
 
 export const brandName = brand.name;

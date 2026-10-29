@@ -1,8 +1,9 @@
-import { cpSync, mkdirSync, readFileSync, readdirSync, writeFileSync, existsSync } from "node:fs";
+import { spawnSync } from "node:child_process";
+import { cpSync, existsSync, mkdirSync, mkdtempSync, readFileSync, readdirSync, rmSync, writeFileSync } from "node:fs";
+import { tmpdir } from "node:os";
 import { dirname, join, relative, resolve } from "node:path";
 import { createHash } from "node:crypto";
 import { fileURLToPath } from "node:url";
-import { checkRecipe } from "../../site/src/lib/check.mjs";
 
 const FIX_BY_ID = {
   "missing-question": "run open-ds build and pick an option.",
@@ -31,7 +32,45 @@ const FIX_BY_ID = {
   "required-option": "select the option your purpose needs.",
   recommend: "consider the recommended option.",
   discourage: "reconsider this pick. It is worth a second look.",
+  "unknown-feeds-into": "point feeds_into at a question id that exists.",
+  "unbacked-feeds-into": "add a requires, discourages, or recommends rule that points at that question.",
+  "missing-fragment": "add the fragment file or remove the fragment path.",
+  "why-care-length": "keep why_care to 25 words or fewer.",
+  "empty-affects": "list what this question affects, or remove the empty list.",
+  "floor-contrast": "declare text contrast of at least 4.5:1 and non-text contrast of at least 3:1.",
+  "floor-resize": "declare that text can resize to 200% without losing content.",
+  "floor-text-spacing":
+    "declare line height 1.5, paragraph spacing 2, letter spacing 0.12, and word spacing 0.16.",
+  "floor-target-size": "declare a 24px target or sufficient spacing.",
+  "floor-confirm-destructive":
+    "require a confirmation for destructive, payment, and legal-commitment actions.",
+  "coga.critical-not-hidden": "keep a critical component out of hover and accordions.",
+  "voice-why": "shorten why to 35 words or fewer.",
+  "voice-when": "start when_to_choose with Choose this if or Choose this when, in 25 words or fewer.",
+  "voice-cost": "shorten the trade-off to 15 words or fewer.",
+  "broken-effect": "point the effect at a question and an option that exist.",
+  "pack-schema": "correct the pack JSON so it matches the pack schema.",
 };
+
+// Recipe rules, pack fields, and floors live in the Python validator.
+// `open-ds check` keeps drift and installed-file checks and asks open-ds-validate for the rest.
+function checkRecipeWithPython(recipe, root) {
+  const dir = mkdtempSync(join(tmpdir(), "open-ds-recipe-"));
+  const recipePath = join(dir, "recipe.json");
+  try {
+    writeFileSync(recipePath, JSON.stringify(recipe));
+    const result = spawnSync("uv", ["run", "--frozen", "open-ds-validate", "--json", recipePath], {
+      cwd: root,
+      encoding: "utf8",
+    });
+    if (result.error) throw new Error(`Could not run the Python validator: ${result.error.message}`);
+    const stdout = (result.stdout || "").trim();
+    if (!stdout) throw new Error((result.stderr || "The Python validator produced no output.").trim());
+    return JSON.parse(stdout);
+  } finally {
+    rmSync(dir, { recursive: true, force: true });
+  }
+}
 
 export function formatCheckFailure(item) {
   const severity = item.severity === "error" || !item.severity ? "error" : item.severity;
@@ -82,7 +121,7 @@ function findBoilerplate(root, recipe) {
   return null;
 }
 
-async function findByFingerprint(root, fingerprint, packs) {
+async function findByFingerprint(root, fingerprint) {
   const base = join(root, "boilerplates");
   for (const name of readdirSync(base)) {
     const manifestPath = join(base, name, "manifest.json");
@@ -90,7 +129,7 @@ async function findByFingerprint(root, fingerprint, packs) {
     const manifest = readJson(manifestPath);
     if (manifest.fingerprint !== fingerprint) continue;
     const recipe = readJson(join(root, manifest.recipePath));
-    const checked = await checkRecipe(recipe, packs);
+    const checked = checkRecipeWithPython(recipe, root);
     if (!checked.ok || checked.fingerprint !== fingerprint) {
       throw new Error("The boilerplate manifest does not match its recipe.");
     }
@@ -115,16 +154,15 @@ export function hashTree(dir, skip = new Set(["open-ds.json"])) {
 }
 
 export async function init(arg, outDir, root = repoRoot()) {
-  const packs = loadPacks(root);
   let recipe;
   if (arg.endsWith(".json")) {
     recipe = readJson(resolve(arg));
   } else {
-    const found = await findByFingerprint(root, arg, packs);
+    const found = await findByFingerprint(root, arg);
     if (!found) throw new Error("No authored boilerplate matches that fingerprint.");
     recipe = found.recipe;
   }
-  const checked = await checkRecipe(recipe, packs);
+  const checked = checkRecipeWithPython(recipe, root);
   if (!checked.ok) {
     const lines = checked.findings.filter((item) => item.severity === "error").map((item) => item.id);
     throw new Error(`The recipe was rejected: ${lines.join(", ")}`);
@@ -160,8 +198,7 @@ export async function check(dir, root = repoRoot()) {
     };
   }
   const installed = readJson(file);
-  const packs = loadPacks(root);
-  const result = await checkRecipe(installed.recipe, packs);
+  const result = checkRecipeWithPython(installed.recipe, root);
   if (!result.ok) return result;
   if (result.fingerprint !== installed.fingerprint) {
     return {
