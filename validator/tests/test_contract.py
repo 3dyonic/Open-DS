@@ -213,13 +213,20 @@ def test_catalog_uses_pack_reasons_and_is_deterministic(tmp_path: Path) -> None:
     assert reading_ext["sources"][0]["checked"] == "2026-10-29"
     assert "medium density" in reading_ext["sources"][0]["quote"]
     assert card["after"]["$extensions"]["openDs"]["basis"] == "your-pick"
+    comfortable = first["density"]["density/comfortable"]["tokens"]
+    again = comfortable["reading-text"][0]
+    assert again["state"] == "unchanged"
+    assert again["before"]["$value"] == 1.5
+    assert again["after"]["$extensions"]["openDs"]["basis"] == "sourced"
+    assert again["after"]["$extensions"]["openDs"]["context"] == ["density/comfortable"]
+    spacious = first["density"]["density/spacious"]["tokens"]["reading-text"][0]
+    assert spacious["state"] == "unchanged"
+    assert spacious["before"]["$value"] == 1.5
+    assert spacious["after"]["$extensions"]["openDs"]["basis"] == "your-pick"
+    assert spacious["after"]["$extensions"]["openDs"]["sources"] == []
+    assert "why" not in spacious["after"]["$extensions"]["openDs"]
     for density in ("comfortable", "spacious"):
         tokens = first["density"][f"density/{density}"]["tokens"]
-        again = tokens["reading-text"][0]
-        assert again["state"] == "unchanged"
-        assert again["before"]["$value"] == 1.5
-        assert again["after"]["$extensions"]["openDs"]["basis"] == "sourced"
-        assert again["after"]["$extensions"]["openDs"]["context"] == [f"density/{density}"]
         assert tokens["card"][0]["after"]["$extensions"]["openDs"]["basis"] == "your-pick"
         assert tokens["table-row"][0]["state"] == "no-source-yet"
         assert "before" not in tokens["table-row"][0]

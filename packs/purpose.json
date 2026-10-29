@@ -741,20 +741,6 @@
                   "checked": "2026-10-29"
                 }
               ]
-            },
-            {
-              "question": "line-height",
-              "option": "normal",
-              "reason": "Readable text has a medium density. Strive for text that appears neither very dense nor loose.",
-              "sources": [
-                {
-                  "name": "USWDS",
-                  "title": "Typography",
-                  "url": "https://designsystem.digital.gov/components/typography/",
-                  "quote": "Readable text has a medium density. Strive for text that appears neither very dense nor loose.",
-                  "checked": "2026-10-29"
-                }
-              ]
             }
           ],
           "fragment": "fragments/density/spacious.css",
