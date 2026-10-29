@@ -29,7 +29,8 @@
               "url": "https://www.w3.org/TR/css-color-4/"
             }
           ],
-          "formula": "OKLCH lightness steps."
+          "formula": "OKLCH lightness steps.",
+          "fragment": "fragments/color/oklch.css"
         },
         {
           "id": "hsl",
@@ -85,7 +86,14 @@
           ],
           "formula": "sRGB channel steps."
         }
-      ]
+      ],
+      "why_care": "It decides how your color steps are described, and it unlocks even steps and hue shifts in OKLCH.",
+      "affects": [
+        "theme/tokens.css",
+        "README.md",
+        "AGENTS.md"
+      ],
+      "feeds_into": []
     },
     {
       "id": "step-distance",
@@ -190,7 +198,13 @@
           ],
           "formula": "Color stops from 50 through 1000. Lightness falls as the number rises."
         }
-      ]
+      ],
+      "why_care": "It decides whether a low number means light or dark, so the names match what your team already says.",
+      "affects": [
+        "README.md",
+        "AGENTS.md"
+      ],
+      "feeds_into": []
     },
     {
       "id": "step-count",
@@ -303,7 +317,13 @@
             }
           ]
         }
-      ]
+      ],
+      "why_care": "The count sets how finely you can name light-to-dark colors, and how many tokens you keep tidy.",
+      "affects": [
+        "README.md",
+        "AGENTS.md"
+      ],
+      "feeds_into": []
     },
     {
       "id": "lightness-curve",
@@ -568,7 +588,14 @@
               "url": "https://m3.material.io/styles/color/roles"
             }
           ],
-          "formula": "Pair {name} with on-{name}. The required pair is surface and on-surface."
+          "formula": "Pair {name} with on-{name}. The required pair is surface and on-surface.",
+          "requires": [
+            {
+              "question": "theme-shape",
+              "option": "sets-and-modifiers",
+              "reason": "Surface and on-surface stay paired in light and dark, so those are modifiers on one theme."
+            }
+          ]
         },
         {
           "id": "unrelated-names",
@@ -597,6 +624,16 @@
             }
           ]
         }
+      ],
+      "why_care": "Naming pairs together makes it obvious which text color belongs on which background.",
+      "affects": [
+        "theme/tokens.css",
+        "theme/tokens.json",
+        "README.md",
+        "AGENTS.md"
+      ],
+      "feeds_into": [
+        "theme-shape"
       ]
     }
   ]

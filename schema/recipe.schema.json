@@ -20,6 +20,10 @@
     "picks": {
       "type": "array",
       "items": { "$ref": "#/$defs/pick" }
+    },
+    "chain": {
+      "type": "array",
+      "items": { "$ref": "#/$defs/link" }
     }
   },
   "$defs": {
@@ -32,6 +36,17 @@
         "option": { "type": "string" },
         "rationale": { "type": "string", "minLength": 1, "maxLength": 280 },
         "params": { "type": "object" }
+      }
+    },
+    "link": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["from", "to", "rule", "line"],
+      "properties": {
+        "from": { "type": "string", "minLength": 1 },
+        "to": { "type": "string", "minLength": 1 },
+        "rule": { "enum": ["requires", "discourages", "recommends", "states"] },
+        "line": { "type": "string", "minLength": 1, "maxLength": 280 }
       }
     }
   }

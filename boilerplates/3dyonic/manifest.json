@@ -1,7 +1,7 @@
 {
   "recipeId": "3dyonic",
   "recipePath": "recipes/3dyonic.json",
-  "fingerprint": "63c5e4fc0baf6c9648d40ea117a9b4882a6b913b88271df3df2a5c7fd4227a4d",
+  "fingerprint": "d33bd40a8e9668a372bc2c60724635ca4b1596c62a84135fb0192c6deeb7c17b",
   "serves": "A public content site with one warm brand. The values are provisional.",
   "lockedAtInit": [
     "tokenTiers",
@@ -10,74 +10,19 @@
   ],
   "decisions": [
     {
+      "id": "product-type",
+      "option": "content",
+      "rationale": "People come to read pages, not to operate a dense tool."
+    },
+    {
+      "id": "users-and-context",
+      "option": "public",
+      "rationale": "Most people arrive without an account and without training."
+    },
+    {
       "id": "accessibility-target",
       "option": "wcag-22-aa",
       "rationale": "AA is the commitment for this public site. AAA is a later choice."
-    },
-    {
-      "id": "base-font-size",
-      "option": "size-16",
-      "rationale": "Body text should start at the common 16 pixel browser default."
-    },
-    {
-      "id": "brand-variance",
-      "option": "single-brand",
-      "rationale": "This starter is one brand. A second brand is out of this recipe."
-    },
-    {
-      "id": "chroma-hue-shift",
-      "option": "hue-warm",
-      "rationale": "The provisional brand is warm, so darker steps may shift warmer."
-    },
-    {
-      "id": "color-space",
-      "option": "oklch",
-      "rationale": "The ramp scheme is described in OKLCH so lightness can stay even."
-    },
-    {
-      "id": "contrast-check",
-      "option": "checked-afterwards",
-      "rationale": "Contrast is a review step. This dictionary does not measure it."
-    },
-    {
-      "id": "contrast-metric",
-      "option": "wcag22",
-      "rationale": "The accessibility target names WCAG 2.2, so the metric should match it."
-    },
-    {
-      "id": "css-unit",
-      "option": "rem",
-      "rationale": "Type and space should follow the reader's font size."
-    },
-    {
-      "id": "density",
-      "option": "comfortable",
-      "rationale": "Reading pages need room. Compact density is for tools."
-    },
-    {
-      "id": "font-family",
-      "option": "system-sans",
-      "rationale": "A system sans font is enough until a custom font is chosen."
-    },
-    {
-      "id": "lightness-curve",
-      "option": "perceptual",
-      "rationale": "Most interface color sits in the middle of the ramp."
-    },
-    {
-      "id": "line-height",
-      "option": "normal",
-      "rationale": "Body copy needs a 1.5 line height so lines do not collide."
-    },
-    {
-      "id": "locked-at-init",
-      "option": "lock-core",
-      "rationale": "Tiers, the on-color pair, and CSS variable names stay fixed after init."
-    },
-    {
-      "id": "on-color-pairing",
-      "option": "surface-pair",
-      "rationale": "Text and its surface should use one pair: surface and on-surface."
     },
     {
       "id": "platforms",
@@ -85,19 +30,29 @@
       "rationale": "The first surface is the website."
     },
     {
-      "id": "product-type",
-      "option": "content",
-      "rationale": "People come to read pages, not to operate a dense tool."
+      "id": "team",
+      "option": "solo-starting",
+      "rationale": "One person maintains this starter, so the list stays short."
     },
     {
-      "id": "radius-base",
-      "option": "radius-8",
-      "rationale": "Controls should feel soft but still look like controls."
+      "id": "brand-variance",
+      "option": "single-brand",
+      "rationale": "This starter is one brand. A second brand is out of this recipe."
     },
     {
-      "id": "radius-progression",
-      "option": "geometric",
-      "rationale": "Cards can be rounder than inputs without a long list of steps."
+      "id": "density",
+      "option": "comfortable",
+      "rationale": "Reading pages need room. Compact density is for tools."
+    },
+    {
+      "id": "voice",
+      "option": "warm",
+      "rationale": "The words should sound human and direct, not cute."
+    },
+    {
+      "id": "contrast-metric",
+      "option": "wcag22",
+      "rationale": "The accessibility target names WCAG 2.2, so the metric should match it."
     },
     {
       "id": "scale-direction",
@@ -105,14 +60,74 @@
       "rationale": "The step names should run from 50 light toward 1000 dark."
     },
     {
+      "id": "css-unit",
+      "option": "rem",
+      "rationale": "Type and space should follow the reader's font size."
+    },
+    {
+      "id": "structure-theme-separation",
+      "option": "separate",
+      "rationale": "A theme change must not require edits inside the components."
+    },
+    {
+      "id": "color-space",
+      "option": "oklch",
+      "rationale": "The ramp scheme is described in OKLCH so lightness can stay even."
+    },
+    {
+      "id": "step-distance",
+      "option": "lightness-delta",
+      "rationale": "Equal lightness steps are easier to explain than deltaE2000."
+    },
+    {
+      "id": "step-count",
+      "option": "eleven",
+      "rationale": "Eleven names match the 50 to 950 set people already expect."
+    },
+    {
+      "id": "lightness-curve",
+      "option": "perceptual",
+      "rationale": "Most interface color sits in the middle of the ramp."
+    },
+    {
+      "id": "chroma-hue-shift",
+      "option": "hue-warm",
+      "rationale": "The provisional brand is warm, so darker steps may shift warmer."
+    },
+    {
       "id": "seed-input",
       "option": "hex",
       "rationale": "One provisional hex is enough to name the terracotta seed."
     },
     {
-      "id": "shareable-item",
-      "option": "full-boilerplate",
-      "rationale": "A team should get tokens, CSS, and components together."
+      "id": "on-color-pairing",
+      "option": "surface-pair",
+      "rationale": "Text and its surface should use one pair: surface and on-surface."
+    },
+    {
+      "id": "contrast-check",
+      "option": "checked-afterwards",
+      "rationale": "Contrast is a review step. This dictionary does not measure it."
+    },
+    {
+      "id": "font-family",
+      "option": "system-sans",
+      "rationale": "A system sans font is enough until a custom font is chosen."
+    },
+    {
+      "id": "type-scale-ratio",
+      "option": "major-third",
+      "rationale": "A 1.25 ratio keeps headings clear without a huge jump."
+    },
+    {
+      "id": "base-font-size",
+      "option": "size-16",
+      "rationale": "Body text should start at the common 16 pixel browser default."
+    },
+    {
+      "id": "line-height",
+      "option": "normal",
+      "rationale": "Body copy needs a 1.5 line height so lines do not collide."
     },
     {
       "id": "spacing-base",
@@ -125,24 +140,14 @@
       "rationale": "Even space steps are easier to remember in a small system."
     },
     {
-      "id": "step-count",
-      "option": "eleven",
-      "rationale": "Eleven names match the 50 to 950 set people already expect."
+      "id": "radius-base",
+      "option": "radius-8",
+      "rationale": "Controls should feel soft but still look like controls."
     },
     {
-      "id": "step-distance",
-      "option": "lightness-delta",
-      "rationale": "Equal lightness steps are easier to explain than deltaE2000."
-    },
-    {
-      "id": "structure-theme-separation",
-      "option": "separate",
-      "rationale": "A theme change must not require edits inside the components."
-    },
-    {
-      "id": "team",
-      "option": "solo-starting",
-      "rationale": "One person maintains this starter, so the list stays short."
+      "id": "radius-progression",
+      "option": "geometric",
+      "rationale": "Cards can be rounder than inputs without a long list of steps."
     },
     {
       "id": "theme-shape",
@@ -150,19 +155,24 @@
       "rationale": "Light and dark are modifiers on one theme, not two products."
     },
     {
-      "id": "type-scale-ratio",
-      "option": "major-third",
-      "rationale": "A 1.25 ratio keeps headings clear without a huge jump."
+      "id": "shareable-item",
+      "option": "full-boilerplate",
+      "rationale": "A team should get tokens, CSS, and components together."
     },
     {
-      "id": "users-and-context",
-      "option": "public",
-      "rationale": "Most people arrive without an account and without training."
+      "id": "locked-at-init",
+      "option": "lock-core",
+      "rationale": "Tiers, the on-color pair, and CSS variable names stay fixed after init."
     },
     {
-      "id": "voice",
-      "option": "warm",
-      "rationale": "The words should sound human and direct, not cute."
+      "id": "token-tiers",
+      "option": "three-tier",
+      "rationale": "The starter keeps primitive, semantic, and component tiers."
+    },
+    {
+      "id": "default-theme",
+      "option": "light",
+      "rationale": "The page opens on the light set. Dark is a modifier."
     }
   ],
   "items": [
