@@ -1,0 +1,204 @@
+{
+  "chain": [
+    {
+      "from": "contrast-metric",
+      "line": "The contrast method is APCA, with WCAG 2.2 AA (4.5:1) as the floor. APCA is the WCAG 3 draft, not a compliance standard.",
+      "rule": "requires",
+      "to": "accessibility-target"
+    },
+    {
+      "from": "density",
+      "line": "Roomier sizing follows, so targets and text stay easy to hit and read.",
+      "rule": "requires",
+      "to": "spacing-base"
+    }
+  ],
+  "id": "accessible-first",
+  "name": "Accessible-first",
+  "packs": [
+    "purpose",
+    "global",
+    "color-primitives",
+    "accessibility",
+    "typography",
+    "spacing",
+    "radius",
+    "theming",
+    "delivery"
+  ],
+  "picks": [
+    {
+      "option": "content",
+      "question": "product-type",
+      "rationale": "People come to read pages, not to operate a dense tool."
+    },
+    {
+      "option": "public",
+      "question": "users-and-context",
+      "rationale": "Most people arrive without an account and without training."
+    },
+    {
+      "option": "wcag-22-aa",
+      "question": "accessibility-target",
+      "rationale": "AA is the commitment for this public site. AAA is a later choice."
+    },
+    {
+      "option": "web",
+      "question": "platforms",
+      "rationale": "The first surface is the website."
+    },
+    {
+      "option": "solo-starting",
+      "question": "team",
+      "rationale": "One person maintains this starter, so the list stays short."
+    },
+    {
+      "option": "single-brand",
+      "question": "brand-variance",
+      "rationale": "This starter is one brand. A second brand is out of this recipe."
+    },
+    {
+      "option": "spacious",
+      "question": "density",
+      "rationale": "Roomier sizing leaves space so targets and text stay easy to hit and read."
+    },
+    {
+      "option": "warm",
+      "question": "voice",
+      "rationale": "The words should sound human and direct, not cute."
+    },
+    {
+      "option": "apca",
+      "question": "contrast-metric",
+      "rationale": "APCA is checked first. WCAG 2.2 AA at 4.5:1 stays the floor, because APCA is not a compliance standard."
+    },
+    {
+      "option": "low-is-light",
+      "question": "scale-direction",
+      "rationale": "The step names should run from 50 light toward 1000 dark."
+    },
+    {
+      "option": "rem",
+      "question": "css-unit",
+      "rationale": "Type and space should follow the reader's font size."
+    },
+    {
+      "option": "separate",
+      "question": "structure-theme-separation",
+      "rationale": "A theme change must not require edits inside the components."
+    },
+    {
+      "option": "oklch",
+      "question": "color-space",
+      "rationale": "The ramp scheme is described in OKLCH so lightness can stay even."
+    },
+    {
+      "option": "lightness-delta",
+      "question": "step-distance",
+      "rationale": "Equal lightness steps are easier to explain than deltaE2000."
+    },
+    {
+      "option": "eleven",
+      "question": "step-count",
+      "rationale": "Eleven names match the 50 to 950 set people already expect."
+    },
+    {
+      "option": "perceptual",
+      "question": "lightness-curve",
+      "rationale": "Most interface color sits in the middle of the ramp."
+    },
+    {
+      "option": "hue-warm",
+      "question": "chroma-hue-shift",
+      "rationale": "The provisional brand is warm, so darker steps may shift warmer."
+    },
+    {
+      "option": "hex",
+      "params": {
+        "seed": "#C4622D"
+      },
+      "question": "seed-input",
+      "rationale": "One provisional hex is enough to name the terracotta seed."
+    },
+    {
+      "option": "surface-pair",
+      "question": "on-color-pairing",
+      "rationale": "Text and its surface should use one pair: surface and on-surface."
+    },
+    {
+      "option": "checked-afterwards",
+      "question": "contrast-check",
+      "rationale": "Contrast is a review step. This dictionary does not measure it."
+    },
+    {
+      "option": "system-sans",
+      "question": "font-family",
+      "rationale": "A system sans font is enough until a custom font is chosen."
+    },
+    {
+      "option": "major-third",
+      "question": "type-scale-ratio",
+      "rationale": "A 1.25 ratio keeps headings clear without a huge jump."
+    },
+    {
+      "option": "size-18",
+      "question": "base-font-size",
+      "rationale": "Roomier sizing starts with a larger body so text is easier to read."
+    },
+    {
+      "option": "normal",
+      "question": "line-height",
+      "rationale": "Body copy needs a 1.5 line height so lines do not collide."
+    },
+    {
+      "option": "base-8",
+      "question": "spacing-base",
+      "rationale": "Spacious density needs the larger 8-point base."
+    },
+    {
+      "option": "linear",
+      "question": "spacing-scale",
+      "rationale": "Even space steps are easier to remember in a small system."
+    },
+    {
+      "option": "radius-8",
+      "question": "radius-base",
+      "rationale": "Controls should feel soft but still look like controls."
+    },
+    {
+      "option": "geometric",
+      "question": "radius-progression",
+      "rationale": "Cards can be rounder than inputs without a long list of steps."
+    },
+    {
+      "option": "sets-and-modifiers",
+      "question": "theme-shape",
+      "rationale": "Light and dark are modifiers on one theme, not two products."
+    },
+    {
+      "option": "full-boilerplate",
+      "question": "shareable-item",
+      "rationale": "A team should get tokens, CSS, and components together."
+    },
+    {
+      "option": "lock-core",
+      "question": "locked-at-init",
+      "rationale": "Tiers, the on-color pair, and CSS variable names stay fixed after init."
+    },
+    {
+      "option": "three-tier",
+      "question": "token-tiers",
+      "rationale": "The starter keeps primitive, semantic, and component tiers."
+    },
+    {
+      "option": "light",
+      "question": "default-theme",
+      "rationale": "The page opens on the light set. Dark is a modifier."
+    }
+  ],
+  "provisional": true,
+  "serves": "Everyone can read and use it.",
+  "status": "provisional",
+  "summary": "APCA first, with WCAG 2.2 AA as the floor, and roomier sizing.",
+  "version": "0.1.0"
+}

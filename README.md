@@ -65,13 +65,14 @@ Check the install:
 node cli/bin/open-ds.js check --dir ./my-ds
 ```
 
-Committed example for the dense-data preset:
+Committed examples for all five presets:
 
 ```bash
-bash examples/run-dense-data.sh
+bash examples/run-preset.sh dense-data
+bash examples/run-preset.sh --all
 ```
 
-That writes `recipe.json`, `tokens.json`, `links.json`, and `AGENTS.md` into `examples/dense-data/`. CI fails if a fresh run does not match those files.
+Each `examples/<stance>/` folder holds `recipe.json`, `tokens.json`, `links.json`, and `AGENTS.md`. The stances are `accessible-first`, `dense-data`, `multi-brand`, `content-first`, and `brand-expressive`. CI regenerates all five and fails if any file differs.
 
 ## Website
 
