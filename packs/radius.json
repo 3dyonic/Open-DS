@@ -33,7 +33,7 @@
               "url": "https://raw.githubusercontent.com/material-components/material-web/main/tokens/versions/v0_192/_md-sys-shape.scss"
             }
           ],
-          "fragment": "radius/sharp.css"
+          "fragment": "fragments/radius/sharp.css"
         },
         {
           "id": "radius-4",
@@ -56,7 +56,7 @@
               "url": "https://raw.githubusercontent.com/material-components/material-web/main/tokens/versions/v0_192/_md-sys-shape.scss"
             }
           ],
-          "fragment": "radius/radius-4.css"
+          "fragment": "fragments/radius/radius-4.css"
         },
         {
           "id": "radius-8",
@@ -79,7 +79,7 @@
               "url": "https://raw.githubusercontent.com/material-components/material-web/main/tokens/versions/v0_192/_md-sys-shape.scss"
             }
           ],
-          "fragment": "radius/radius-8.css"
+          "fragment": "fragments/radius/radius-8.css"
         },
         {
           "id": "radius-12",
@@ -107,7 +107,7 @@
               "url": "https://primer.style/foundations/primitives/size"
             }
           ],
-          "fragment": "radius/radius-12.css"
+          "fragment": "fragments/radius/radius-12.css"
         },
         {
           "id": "pill",

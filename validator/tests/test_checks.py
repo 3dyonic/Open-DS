@@ -149,12 +149,18 @@ def test_missing_dependency_rejects() -> None:
     assert result["ok"] is False
 
 
-def test_multi_brand_requires_separation() -> None:
+def test_multi_brand_recommends_separation_without_blocking() -> None:
+    brand = next(question for question in PACKS["purpose"]["questions"] if question["id"] == "brand-variance")
+    multi = next(option for option in brand["options"] if option["id"] == "multi-brand")
+    assert "requires" not in multi
+    assert multi["recommends"][0]["question"] == "structure-theme-separation"
     recipe = _set("brand-variance", "multi-brand")
     recipe = _set_on(recipe, "structure-theme-separation", "combined", "Keep values in the components.")
     result = check_recipe(recipe, PACKS, ROOT)
-    assert "required-option" in _ids(result, "error")
-    assert "fingerprint" not in result
+    assert result["ok"], result["findings"]
+    assert "required-option" not in _ids(result)
+    assert "recommend" not in _ids(result)
+    assert "fingerprint" in result
 
 
 def test_discouraged_pick_is_a_warning_and_still_ok() -> None:
@@ -166,10 +172,33 @@ def test_discouraged_pick_is_a_warning_and_still_ok() -> None:
     assert "fingerprint" in result
 
 
-def test_missed_recommendation_is_info() -> None:
+def test_open_ds_validate_matches_the_node_lines(tmp_path: Path, capsys: pytest.CaptureFixture[str]) -> None:
+    from open_ds_validator.cli import validate_main
+
+    recipe = copy.deepcopy(RECIPE)
+    recipe["picks"] = [pick for pick in recipe["picks"] if pick["question"] != "voice"]
+    path = tmp_path / "recipe.json"
+    path.write_text(json.dumps(recipe), encoding="utf-8")
+    code = validate_main([str(path)])
+    text = capsys.readouterr().out
+    assert code == 1
+    assert "error missing-question: voice has no answer yet." in text
+    assert "Fix: pick an answer on /build, then run open-ds init <recipe.json>." in text
+
+
+def test_open_ds_validate_prints_the_fingerprint(capsys: pytest.CaptureFixture[str]) -> None:
+    from open_ds_validator.cli import validate_main
+
+    code = validate_main([str(ROOT / "recipes" / "3dyonic.json")])
+    assert code == 0
+    assert capsys.readouterr().out.strip() == fingerprint_recipe(RECIPE)
+
+
+def test_missed_recommendation_is_silent() -> None:
     result = check_recipe(_set("line-height", "tight"), PACKS, ROOT)
     assert result["ok"], result["findings"]
-    assert "recommend" in _ids(result, "info")
+    assert "recommend" not in _ids(result)
+    assert "prefills" not in result
 
 
 def test_duplicate_question_rejects() -> None:

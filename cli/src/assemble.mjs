@@ -275,8 +275,8 @@ export function assemble({ recipe, packs, root, outDir, fingerprint }) {
   const applied = [];
   for (const pick of recipe.picks) {
     const option = (byId[pick.question]?.options || []).find((item) => item.id === pick.option);
-    if (!option?.fragment) continue;
-    const file = join(root, "fragments", option.fragment);
+    if (!option?.fragment || option.fragment.split(/[\\/]/).includes("..")) continue;
+    const file = join(root, option.fragment);
     if (!existsSync(file)) {
       const error = new Error(`missing-fragment: ${option.fragment}`);
       error.code = "missing-fragment";
