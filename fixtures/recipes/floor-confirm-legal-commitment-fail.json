@@ -1,6 +1,6 @@
 {
   "expected_errors": [
-    "floor-confirm-destructive"
+    "floor-error-prevention"
   ],
   "recipe": {
     "id": "fixture",

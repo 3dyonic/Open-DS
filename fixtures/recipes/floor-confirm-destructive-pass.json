@@ -111,7 +111,8 @@
             "flags": [
               "destructive"
             ],
-            "confirms": true,
+            "reversible": true,
+            "prevention": "reversible",
             "critical": false
           },
           {
@@ -119,7 +120,8 @@
             "flags": [
               "payment"
             ],
-            "confirms": true,
+            "checked": true,
+            "prevention": "checked",
             "critical": false
           },
           {
@@ -127,7 +129,8 @@
             "flags": [
               "legal-commitment"
             ],
-            "confirms": true,
+            "confirmed": true,
+            "prevention": "confirmed",
             "critical": true,
             "hiddenBy": "visible"
           }

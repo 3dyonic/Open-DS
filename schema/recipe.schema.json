@@ -10,6 +10,7 @@
     "name": { "type": "string", "minLength": 1 },
     "version": { "type": "string" },
     "provisional": { "type": "boolean" },
+    "status": { "enum": ["provisional"] },
     "summary": { "type": "string" },
     "serves": { "type": "string", "minLength": 1 },
     "packs": {

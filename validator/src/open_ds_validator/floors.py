@@ -6,6 +6,7 @@ import json
 from pathlib import Path
 
 CONFIRM_FLAGS = ("destructive", "payment", "legal-commitment")
+PREVENTION = ("reversible", "checked", "confirmed")
 HIDDEN_BY = frozenset({"hover", "accordion"})
 
 TEXT_RATIO = 4.5
@@ -23,12 +24,19 @@ MSG_SPACING = (
     "letter spacing 0.12, and word spacing 0.16 (WCAG 2.2 1.4.12)."
 )
 MSG_TARGET = "Targets must be at least 24px or have sufficient spacing (WCAG 2.2 2.5.8)."
+MSG_ERROR_PREVENTION = "Payments, deletes and legal steps can be undone, checked or confirmed."
+ERROR_PREVENTION_SOURCE = {
+    "criterion": "WCAG 2.2 3.3.4",
+    "url": "https://www.w3.org/WAI/WCAG22/Understanding/error-prevention-legal-financial-data.html",
+}
 
 _MISSING = object()
 
 
-def _finding(fid: str, message: str) -> dict:
-    return {"id": fid, "severity": "error", "message": message}
+def _finding(fid: str, message: str, **extra: object) -> dict:
+    row: dict = {"id": fid, "severity": "error", "message": message}
+    row.update(extra)
+    return row
 
 
 def _number(block: dict | None, key: str) -> object:
@@ -135,12 +143,13 @@ def _components(floors: dict, findings: list[dict]) -> None:
         cid = str(component.get("id") or "component")
         flags = component.get("flags") or []
         flagged = [flag for flag in flags if flag in allowed]
-        if flagged and component.get("confirms") is not True:
-            names = ", ".join(flagged)
+        # `prevention` is the component's own default. The floor does not read it.
+        if flagged and not any(component.get(key) is True for key in PREVENTION):
             findings.append(
                 _finding(
-                    "floor-confirm-destructive",
-                    f"{cid} is marked {names} and has no confirmation (WCAG 2.2 3.3.4).",
+                    "floor-error-prevention",
+                    MSG_ERROR_PREVENTION,
+                    source=ERROR_PREVENTION_SOURCE,
                 )
             )
         hidden = component.get("hiddenBy")

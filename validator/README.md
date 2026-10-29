@@ -63,12 +63,15 @@ On the global pack, a missing contrast, resize, text spacing, or target-size blo
 {
   "id": "accept-terms",
   "flags": ["legal-commitment"],
-  "confirms": true,
+  "confirmed": true,
+  "prevention": "confirmed",
   "critical": true,
   "hiddenBy": "visible"
 }
 ```
 
-`flags` may include `destructive`, `payment`, and `legal-commitment`. If any of those is set and `confirms` is not true, the error is `floor-confirm-destructive` (WCAG 2.2 3.3.4). If `critical` is true and `hiddenBy` is `hover` or `accordion`, the error is `coga.critical-not-hidden`. `hiddenBy` may also be `visible`.
+`flags` may include `destructive`, `payment`, and `legal-commitment`. The floor passes when any one of `reversible`, `checked`, or `confirmed` is true. Which of the three a component uses is that component's default (`prevention`). The floor does not read `prevention`. If a flagged component has none of the three, the error is `floor-error-prevention` (WCAG 2.2 3.3.4, https://www.w3.org/WAI/WCAG22/Understanding/error-prevention-legal-financial-data.html). The message is `Payments, deletes and legal steps can be undone, checked or confirmed.` If `critical` is true and `hiddenBy` is `hover` or `accordion`, the error is `coga.critical-not-hidden`. `hiddenBy` may also be `visible`.
+
+The target-size floor is 24px (WCAG 2.2 2.5.8). Material's 48px size is a `recommends` link with basis `sourced` on every density. It does not replace the floor.
 
 Shared cases live in `fixtures/recipes/*.json`. Each file has `expected_errors`. Python and Node both run them.

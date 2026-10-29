@@ -3,6 +3,7 @@
   "name": "Multi-brand",
   "version": "0.1.0",
   "provisional": true,
+  "status": "provisional",
   "summary": "Several brands share components, with theme values kept separate.",
   "serves": "Several brands on one set of components.",
   "packs": [
