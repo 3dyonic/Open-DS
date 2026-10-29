@@ -94,6 +94,9 @@ function materialize(raw, packs) {
   merged.summary = raw.summary || base.summary;
   merged.required = raw.required ?? base.required ?? true;
   merged.ref = raw.ref;
+  if ("why_care" in raw) merged.why_care = raw.why_care;
+  if ("affects" in raw) merged.affects = structuredClone(raw.affects);
+  if ("feeds_into" in raw) merged.feeds_into = structuredClone(raw.feeds_into);
   const options = Object.fromEntries(merged.options.map((item) => [item.id, item]));
   const order = merged.options.map((item) => item.id);
   for (const override of raw.overrides || []) {
@@ -162,11 +165,18 @@ const SPACING_FLOORS = [
 ];
 const TARGET_PX = 24;
 const CONFIRM_FLAGS = new Set(["destructive", "payment", "legal-commitment"]);
+const PREVENTION = ["reversible", "checked", "confirmed"];
 const HIDDEN_BY = new Set(["hover", "accordion"]);
 const MSG_RESIZE = "Text must resize to 200% without loss of content (WCAG 2.2 1.4.4).";
 const MSG_SPACING =
   "Text spacing must allow line height 1.5, paragraph spacing 2, letter spacing 0.12, and word spacing 0.16 (WCAG 2.2 1.4.12).";
 const MSG_TARGET = "Targets must be at least 24px or have sufficient spacing (WCAG 2.2 2.5.8).";
+const MSG_ERROR_PREVENTION =
+  "Payments, deletes and legal steps can be undone, checked or confirmed.";
+const ERROR_PREVENTION_SOURCE = {
+  criterion: "WCAG 2.2 3.3.4",
+  url: "https://www.w3.org/WAI/WCAG22/Understanding/error-prevention-legal-financial-data.html",
+};
 
 function wordCount(text) {
   return String(text).trim().split(/\s+/).filter(Boolean).length;
@@ -234,13 +244,12 @@ function floorBlockFindings(floors, requireComplete) {
   for (const component of Array.isArray(source.components) ? source.components : []) {
     const cid = component.id || "component";
     const flagged = (component.flags || []).filter((flag) => CONFIRM_FLAGS.has(flag));
-    if (flagged.length && component.confirms !== true) {
+    const prevented = PREVENTION.some((key) => component[key] === true);
+    if (flagged.length && !prevented) {
       findings.push(
-        finding(
-          "floor-confirm-destructive",
-          "error",
-          `${cid} is marked ${flagged.join(", ")} and has no confirmation (WCAG 2.2 3.3.4).`,
-        ),
+        finding("floor-error-prevention", "error", MSG_ERROR_PREVENTION, "", "", {
+          source: ERROR_PREVENTION_SOURCE,
+        }),
       );
     }
     if (component.critical === true && HIDDEN_BY.has(component.hiddenBy)) {

@@ -1,10 +1,10 @@
 # Open DS
 
+Open DS is a cited dictionary of design-system decisions. `open-ds init` turns a stance recipe into files a person or an agent can start from.
+
 The display name is the `name` field in [brand.json](brand.json). Today that name is Open DS.
 
 **Choose your design system on purpose.**
-
-Open DS is a cited dictionary of design system decisions. Pick your answers, see the source for each, and start from a boilerplate that follows them, by hand or through your AI agent.
 
 Think of it as a recipe book.
 
@@ -27,14 +27,65 @@ The license file is MIT until the owner decides.
 
 There is also a validator, and a local CLI that copies a boilerplate onto your machine. The CLI package name `open-ds` is a placeholder. It is not published.
 
-## Quick start
+## Prerequisites
 
-From a checkout of this repo.
+- Node.js 22 (`engines` asks for `>=22`. CI uses 22.)
+- pnpm 10.33.4
+- Python 3.12 (`requires-python` is `>=3.11`. CI uses 3.12.)
+- uv 0.12.15
 
-**Validator**
+## Clone, install, and run
 
 ```bash
-uv sync --all-packages --group dev
+git clone https://github.com/3dyonic/Open-DS.git
+cd Open-DS
+pnpm install
+uv sync --all-packages
+node cli/bin/open-ds.js init recipes/dense-data.json --out ./my-ds
+```
+
+`uv sync` on its own does not install the validator. Init then fails with `Failed to spawn: open-ds-validate`. Use `uv sync --all-packages`.
+
+The same init works for `recipes/accessible-first.json`, `recipes/multi-brand.json`, `recipes/content-first.json`, and `recipes/brand-expressive.json`.
+
+`./my-ds` is the bundle:
+
+| File | What it is for |
+| --- | --- |
+| `recipe.json` | The answers in the recipe. Stance recipes include `"status": "provisional"`. |
+| `theme/tokens.json` | DTCG tokens. Each value carries `$extensions.openDs`. |
+| `links.json` | One row per pack link: id, from, to, type, basis, and sources. |
+| `AGENTS.md` | Rules for an agent. The first line is the recipe status. |
+
+The folder also contains the shared boilerplate (CSS, components, and `open-ds.json`).
+
+Check the install:
+
+```bash
+node cli/bin/open-ds.js check --dir ./my-ds
+```
+
+Committed example for the dense-data preset:
+
+```bash
+bash examples/run-dense-data.sh
+```
+
+That writes `recipe.json`, `tokens.json`, `links.json`, and `AGENTS.md` into `examples/dense-data/`. CI fails if a fresh run does not match those files.
+
+## Website
+
+`pnpm --dir site dev` starts the site and keeps running, so it holds this terminal. Use a second terminal for anything else. CI does not start the dev server.
+
+```bash
+pnpm --dir site dev
+```
+
+## Other commands
+
+**Validator** (after `uv sync --all-packages`):
+
+```bash
 uv run open-ds-validator check recipes/3dyonic.json
 uv run open-ds-validate recipes/3dyonic.json
 ```
@@ -46,20 +97,6 @@ uv run open-ds-mcp
 ```
 
 Add `--http` for a local streamable HTTP server on port 8765.
-
-**Website**
-
-```bash
-pnpm install
-pnpm --dir site dev
-```
-
-**CLI**
-
-```bash
-node cli/bin/open-ds.js init recipes/3dyonic.json --out ./my-ds
-node cli/bin/open-ds.js check --dir ./my-ds
-```
 
 `add` and `diff` print a clear message. They do not change files in this preview.
 
@@ -74,6 +111,6 @@ An error rejects the recipe. There is no fingerprint. A warning or an info note 
 - A missing requirement is an error. The website blocks the build step.
 - A discouraged pick is a warning.
 - A recommendation does not raise a finding. A conditional recommendation prefills only when every `when` answer matches. If those answers are present but do not match, that option is discouraged instead. One answer of an AND list does nothing.
-- Floors on the global pack always apply: contrast, resize, text spacing, target size, and confirmation for destructive, payment, and legal-commitment actions. A critical component hidden behind hover or an accordion is an error.
+- Floors on the global pack always apply: contrast, resize, text spacing, and a 24px target. Payments, deletes and legal steps can be undone, checked or confirmed. A critical component hidden behind hover or an accordion is an error. Material's 48px target is a recommendation at every density. It does not replace the 24px floor.
 
 Badges in the builder: **Fits your purpose**, **Worth a second look**, **Your purpose needs this**. The tooltip says `Because you chose X: reason`.

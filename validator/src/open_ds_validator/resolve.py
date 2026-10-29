@@ -22,6 +22,9 @@ def materialize(raw: dict, packs: dict[str, dict]) -> dict:
     merged["required"] = raw.get("required", base.get("required", True))
     merged["ref"] = raw["ref"]
     merged["packScope"] = "scoped"
+    for key in ("why_care", "affects", "feeds_into"):
+        if key in raw:
+            merged[key] = copy.deepcopy(raw[key])
     options = {item["id"]: item for item in merged["options"]}
     order = [item["id"] for item in merged["options"]]
     for override in raw.get("overrides", []):

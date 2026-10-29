@@ -43,9 +43,8 @@ const FIX_BY_ID = {
   "floor-resize": "declare that text can resize to 200% without losing content.",
   "floor-text-spacing":
     "declare line height 1.5, paragraph spacing 2, letter spacing 0.12, and word spacing 0.16.",
-  "floor-target-size": "declare a 24px target or sufficient spacing.",
-  "floor-confirm-destructive":
-    "require a confirmation for destructive, payment, and legal-commitment actions.",
+  "floor-target-size": "declare a 24px target or sufficient spacing. A 48px recommendation does not replace this floor.",
+  "floor-error-prevention": "make the step reversible, checked, or confirmed.",
   "coga.critical-not-hidden": "keep a critical component out of hover and accordions.",
   "voice-why": "shorten why to 35 words or fewer.",
   "voice-when": "start when_to_choose with Choose this if or Choose this when, in 25 words or fewer.",
@@ -165,6 +164,29 @@ function hashFile(dir, rel) {
   return createHash("sha256").update(readFileSync(full)).digest("hex");
 }
 
+function runContract(args, root) {
+  const result = spawnSync("uv", ["run", "--frozen", "python", "-m", "open_ds_validator.contract", ...args], {
+    cwd: root,
+    encoding: "utf8",
+  });
+  if (result.error && result.error.code === "ENOENT") {
+    throw new Error("open-ds needs uv to write the output contract.");
+  }
+  if (result.status !== 0) {
+    throw new Error((result.stderr || result.stdout || "The output contract failed.").trim());
+  }
+}
+
+function applyContract(outDir, recipe, root) {
+  const recipePath = join(outDir, ".recipe-src.json");
+  writeFileSync(recipePath, JSON.stringify(recipe));
+  try {
+    runContract(["apply", "--out", outDir, "--recipe", recipePath], root);
+  } finally {
+    rmSync(recipePath, { force: true });
+  }
+}
+
 export async function init(arg, outDir, root = repoRoot()) {
   const packs = loadPacks(root);
   let recipe;
@@ -189,6 +211,7 @@ export async function init(arg, outDir, root = repoRoot()) {
     }
     throw error;
   }
+  applyContract(outDir, recipe, root);
   const installed = {
     recipe,
     fingerprint: checked.fingerprint,
@@ -240,6 +263,7 @@ export async function check(dir, root = repoRoot(), options = {}) {
       }
       throw error;
     }
+    applyContract(temp, installed.recipe, root);
     const locked = [...installed.locked].sort().join(",");
     const expectedLocked = [...manifest.lockedAtInit].sort().join(",");
     if (locked !== expectedLocked) {

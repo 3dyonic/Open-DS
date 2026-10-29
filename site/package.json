@@ -16,7 +16,7 @@
   },
   "scripts": {
     "dev": "next dev",
-    "build": "next build",
+    "build": "node ../scripts/publish-downloads.mjs && next build",
     "test": "node --test src/lib/*.test.mjs",
     "lint": "eslint . && prettier --check .",
     "typecheck": "tsc --noEmit"

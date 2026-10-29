@@ -3,6 +3,7 @@
   "name": "Dense data",
   "version": "0.1.0",
   "provisional": true,
+  "status": "provisional",
   "summary": "Compact density, a 4-point spacing base, and a tight type scale.",
   "serves": "Lots of data on one screen.",
   "packs": [
