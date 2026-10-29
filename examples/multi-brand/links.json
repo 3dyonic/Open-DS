@@ -146,20 +146,6 @@
     "type": "requires"
   },
   {
-    "basis": "sourced",
-    "from": "density/spacious",
-    "id": "density/spacious|recommends|line-height/normal",
-    "sources": [
-      {
-        "checked": "2026-10-29",
-        "quote": "Readable text has a medium density. Strive for text that appears neither very dense nor loose.",
-        "url": "https://designsystem.digital.gov/components/typography/"
-      }
-    ],
-    "to": "line-height/normal",
-    "type": "recommends"
-  },
-  {
     "basis": "your-pick",
     "from": "density/spacious",
     "id": "density/spacious|recommends|spacing-base/base-8",
