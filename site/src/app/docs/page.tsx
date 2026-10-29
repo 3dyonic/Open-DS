@@ -19,6 +19,10 @@ uv run open-ds-mcp --http`}</pre>
       <p>The package name open-ds is a placeholder and is not published.</p>
       <pre className="overflow-auto rounded-control border border-line p-3 text-sm">{`node cli/bin/open-ds.js init recipes/3dyonic.json --out ./my-ds
 node cli/bin/open-ds.js check --dir ./my-ds`}</pre>
+      <p>
+        A missing question prints{" "}
+        <code>Fix: pick an answer on /build, then run open-ds init &lt;recipe.json&gt;.</code>
+      </p>
       <h2 className="text-xl font-semibold">Site</h2>
       <pre className="overflow-auto rounded-control border border-line p-3 text-sm">{`pnpm --dir site dev
 pnpm --dir site build`}</pre>
