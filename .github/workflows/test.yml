@@ -23,8 +23,10 @@ jobs:
         run: |
           uv run ruff check validator mcp
           uv run ruff format --check validator mcp
-      - name: Test
-        run: uv run pytest -q
+      - name: Test validator and MCP
+        run: |
+          uv run pytest -q validator/tests
+          uv run pytest -q mcp/tests
 
   node:
     runs-on: ubuntu-latest
