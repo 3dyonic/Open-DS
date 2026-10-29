@@ -16,10 +16,10 @@
           "id": "sets-and-modifiers",
           "label": "Token sets plus modifiers",
           "summary": "Light and dark are modifiers.",
-          "why": "A theme is a set of token sets plus modifiers such as light and dark.",
+          "why": "A theme is a set of token sets plus modifiers, such as light and dark.",
           "when_to_choose": "Choose this if light and dark are modifiers on one theme.",
           "trade_offs": [
-            "You maintain more than one set."
+            "You maintain more than one set"
           ],
           "sources": [
             {
@@ -34,10 +34,10 @@
           "id": "single-set",
           "label": "Single token set",
           "summary": "One appearance only.",
-          "why": "One token set is the whole theme. There is no light or dark modifier.",
+          "why": "One token set is the whole theme, with no light or dark modifier.",
           "when_to_choose": "Choose this if you ship a single appearance.",
           "trade_offs": [
-            "Dark mode is a new theme later."
+            "Dark mode later means a new theme"
           ],
           "sources": [
             {

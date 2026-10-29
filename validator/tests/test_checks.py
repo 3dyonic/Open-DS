@@ -282,6 +282,28 @@ def test_gap_questions_stay_in_the_packs() -> None:
     assert "locked-at-init" in delivery_ids
 
 
+def test_geometric_radius_keeps_limited_evidence() -> None:
+    question = next(item for item in PACKS["radius"]["questions"] if item["id"] == "radius-progression")
+    option = next(item for item in question["options"] if item["id"] == "geometric")
+    assert option["evidence_limited"] is True
+    assert all(cost != "Evidence is limited" for cost in option["trade_offs"])
+    result = validate_packs(PACKS, ROOT)
+    assert result["ok"], result["findings"]
+
+
+def test_high_is_light_cites_material_tone_and_mdn() -> None:
+    question = next(item for item in PACKS["global"]["questions"] if item["id"] == "scale-direction")
+    option = next(item for item in question["options"] if item["id"] == "high-is-light")
+    names = [source["name"] for source in option["sources"]]
+    titles = [source["title"] for source in option["sources"]]
+    assert "Radix" not in names
+    assert "Material" in names
+    assert "MDN" in names
+    assert "hsl()" in titles
+    assert any("m3.material.io/styles/color/system" in source["url"] for source in option["sources"])
+    assert any("developer.mozilla.org" in source["url"] and source["title"] == "hsl()" for source in option["sources"])
+
+
 def test_option_without_source_fails_schema() -> None:
     packs = copy.deepcopy(PACKS)
     del packs["global"]["questions"][0]["options"][0]["sources"]
