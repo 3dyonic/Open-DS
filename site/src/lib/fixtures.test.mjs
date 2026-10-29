@@ -1,3 +1,5 @@
+// Shared fixtures. Python in validator/tests/test_fixtures.py is the source of truth.
+// This file runs in the node CI job. A mismatch fails that job.
 import assert from "node:assert/strict";
 import { existsSync, readFileSync, readdirSync, statSync } from "node:fs";
 import { dirname, isAbsolute, join, relative, resolve } from "node:path";
