@@ -1,1 +1,1 @@
-"""FastMCP server. It serves the dictionary and the checker. It runs no model."""
+"""FastMCP server. It lists the core questions and checks recipes. It runs no model."""
