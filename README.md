@@ -2,7 +2,7 @@
 
 Open DS is a cited dictionary of design-system decisions. `open-ds init` turns a stance recipe into files a person or an agent can start from.
 
-The display name is the `name` field in [brand.json](brand.json). Today that name is Open DS.
+The display name is the `name` field in [brand.json](brand.json).
 
 **Choose your design system on purpose.**
 
@@ -10,7 +10,7 @@ Think of it as a recipe book.
 
 - A **pack** is a chapter. Purpose, color, type, space, and radius are chapters.
 - A **scheme** is one question in that chapter, with allowed answers.
-- A **recipe** is the set of answers you picked, each with your reason.
+- A **recipe** is the set of answers you picked, each with its source or 'Your pick'.
 - A **boilerplate** is a starter someone wrote so the recipe can be used. The book does not cook the dish.
 
 Open DS does not calculate colors or tokens. A calculation scheme is stored as data: a name, a plain description, a formula reference, parameters, sources, and trade-offs. Token files in a boilerplate use the DTCG format.
@@ -65,13 +65,14 @@ Check the install:
 node cli/bin/open-ds.js check --dir ./my-ds
 ```
 
-Committed example for the dense-data preset:
+Committed examples for all five presets:
 
 ```bash
-bash examples/run-dense-data.sh
+bash examples/run-preset.sh dense-data
+bash examples/run-preset.sh --all
 ```
 
-That writes `recipe.json`, `tokens.json`, `links.json`, and `AGENTS.md` into `examples/dense-data/`. CI fails if a fresh run does not match those files.
+Each `examples/<stance>/` folder holds `recipe.json`, `tokens.json`, `links.json`, and `AGENTS.md`. The stances are `accessible-first`, `dense-data`, `multi-brand`, `content-first`, and `brand-expressive`. CI regenerates all five and fails if any file differs.
 
 ## Website
 
@@ -102,15 +103,15 @@ Add `--http` for a local streamable HTTP server on port 8765.
 
 ## The 3dyonic recipe
 
-`recipes/3dyonic.json` is a provisional example. `boilerplates/3dyonic/` is the starter written to follow it: DTCG tokens, CSS variables for light and dark, a Tailwind preset, and Button, Input, Card, and Badge. Structure stays apart from theme.
+`recipes/3dyonic.json` is a provisional example. `boilerplates/3dyonic/` is the starter written to follow it: DTCG tokens, CSS variables for light and dark, a Tailwind preset, and Button, Input, Card, and Badge. Structure stays apart from theme. Components don't hard-code values. They read them from the theme.
 
 ## Checks
 
-An error rejects the recipe. There is no fingerprint. A warning or an info note does not reject it.
+An error rejects the recipe. A warning or an info note does not reject it.
 
 - A missing requirement is an error. The website blocks the build step.
 - A discouraged pick is a warning.
 - A recommendation does not raise a finding. A conditional recommendation prefills only when every `when` answer matches. If those answers are present but do not match, that option is discouraged instead. One answer of an AND list does nothing.
 - Floors on the global pack always apply: contrast, resize, text spacing, and a 24px target. Payments, deletes and legal steps can be undone, checked or confirmed. A critical component hidden behind hover or an accordion is an error. Material's 48px target is a recommendation at every density. It does not replace the 24px floor.
 
-Badges in the builder: **Fits your purpose**, **Worth a second look**, **Your purpose needs this**. The tooltip says `Because you chose X: reason`.
+Badges in the builder: **Fits your purpose**, **Worth a second look**, **Your purpose needs this**. The tooltip quotes the reason from its source. Picks with no source show 'Your pick', and floors show 'Always on, for accessibility'.

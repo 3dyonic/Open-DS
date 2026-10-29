@@ -1,0 +1,204 @@
+{
+  "chain": [
+    {
+      "from": "brand-variance",
+      "line": "Multi-brand needs separate theme tiers. Add Separate to finish your recipe.",
+      "rule": "requires",
+      "to": "structure-theme-separation"
+    },
+    {
+      "from": "token-tiers",
+      "line": "The recipe picks three token tiers so a brand change needs no component edits.",
+      "rule": "states",
+      "to": "token-tiers"
+    }
+  ],
+  "id": "multi-brand",
+  "name": "Multi-brand",
+  "packs": [
+    "purpose",
+    "global",
+    "color-primitives",
+    "accessibility",
+    "typography",
+    "spacing",
+    "radius",
+    "theming",
+    "delivery"
+  ],
+  "picks": [
+    {
+      "option": "content",
+      "question": "product-type",
+      "rationale": "People come to read pages, not to operate a dense tool."
+    },
+    {
+      "option": "public",
+      "question": "users-and-context",
+      "rationale": "Most people arrive without an account and without training."
+    },
+    {
+      "option": "wcag-22-aa",
+      "question": "accessibility-target",
+      "rationale": "AA is the commitment for this public site. AAA is a later choice."
+    },
+    {
+      "option": "web",
+      "question": "platforms",
+      "rationale": "The first surface is the website."
+    },
+    {
+      "option": "large-team",
+      "question": "team",
+      "rationale": "A large team keeps core names locked after setup."
+    },
+    {
+      "option": "multi-brand",
+      "question": "brand-variance",
+      "rationale": "Several brands share one set of components."
+    },
+    {
+      "option": "comfortable",
+      "question": "density",
+      "rationale": "Reading pages need room. Compact density is for tools."
+    },
+    {
+      "option": "warm",
+      "question": "voice",
+      "rationale": "The words should sound human and direct, not cute."
+    },
+    {
+      "option": "wcag22",
+      "question": "contrast-metric",
+      "rationale": "The accessibility target names WCAG 2.2, so the metric should match it."
+    },
+    {
+      "option": "low-is-light",
+      "question": "scale-direction",
+      "rationale": "The step names should run from 50 light toward 1000 dark."
+    },
+    {
+      "option": "rem",
+      "question": "css-unit",
+      "rationale": "Type and space should follow the reader's font size."
+    },
+    {
+      "option": "separate",
+      "question": "structure-theme-separation",
+      "rationale": "Two brands can share components only when theme values stay outside the components."
+    },
+    {
+      "option": "oklch",
+      "question": "color-space",
+      "rationale": "The ramp scheme is described in OKLCH so lightness can stay even."
+    },
+    {
+      "option": "lightness-delta",
+      "question": "step-distance",
+      "rationale": "Equal lightness steps are easier to explain than deltaE2000."
+    },
+    {
+      "option": "eleven",
+      "question": "step-count",
+      "rationale": "Eleven names match the 50 to 950 set people already expect."
+    },
+    {
+      "option": "perceptual",
+      "question": "lightness-curve",
+      "rationale": "Most interface color sits in the middle of the ramp."
+    },
+    {
+      "option": "hue-warm",
+      "question": "chroma-hue-shift",
+      "rationale": "The provisional brand is warm, so darker steps may shift warmer."
+    },
+    {
+      "option": "hex",
+      "params": {
+        "seed": "#C4622D"
+      },
+      "question": "seed-input",
+      "rationale": "One provisional hex is enough to name the terracotta seed."
+    },
+    {
+      "option": "surface-pair",
+      "question": "on-color-pairing",
+      "rationale": "Each brand keeps its own surface and on-surface pair."
+    },
+    {
+      "option": "checked-afterwards",
+      "question": "contrast-check",
+      "rationale": "Contrast is a review step. This dictionary does not measure it."
+    },
+    {
+      "option": "system-sans",
+      "question": "font-family",
+      "rationale": "A system sans font is enough until a custom font is chosen."
+    },
+    {
+      "option": "major-third",
+      "question": "type-scale-ratio",
+      "rationale": "A 1.25 ratio keeps headings clear without a huge jump."
+    },
+    {
+      "option": "size-16",
+      "question": "base-font-size",
+      "rationale": "Body text should start at the common 16 pixel browser default."
+    },
+    {
+      "option": "normal",
+      "question": "line-height",
+      "rationale": "Body copy needs a 1.5 line height so lines do not collide."
+    },
+    {
+      "option": "base-4",
+      "question": "spacing-base",
+      "rationale": "A 4 pixel base is fine enough for a reading layout."
+    },
+    {
+      "option": "linear",
+      "question": "spacing-scale",
+      "rationale": "Even space steps are easier to remember in a small system."
+    },
+    {
+      "option": "radius-8",
+      "question": "radius-base",
+      "rationale": "Controls should feel soft but still look like controls."
+    },
+    {
+      "option": "geometric",
+      "question": "radius-progression",
+      "rationale": "Cards can be rounder than inputs without a long list of steps."
+    },
+    {
+      "option": "sets-and-modifiers",
+      "question": "theme-shape",
+      "rationale": "Brands are modifiers on one theme."
+    },
+    {
+      "option": "full-boilerplate",
+      "question": "shareable-item",
+      "rationale": "A team should get tokens, CSS, and components together."
+    },
+    {
+      "option": "lock-core",
+      "question": "locked-at-init",
+      "rationale": "Tiers, the on-color pair, and CSS variable names stay fixed after init."
+    },
+    {
+      "option": "three-tier",
+      "question": "token-tiers",
+      "rationale": "Three tiers keep brand values outside the components."
+    },
+    {
+      "option": "light",
+      "question": "default-theme",
+      "rationale": "The page opens on the light set. Dark is a modifier."
+    }
+  ],
+  "provisional": true,
+  "serves": "Several brands on one set of components.",
+  "status": "provisional",
+  "summary": "Several brands share components, with theme values kept separate.",
+  "version": "0.1.0"
+}
