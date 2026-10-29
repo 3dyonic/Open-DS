@@ -3,7 +3,7 @@ import { readFileSync, readdirSync } from "node:fs";
 import { dirname, join } from "node:path";
 import test from "node:test";
 import { fileURLToPath } from "node:url";
-import { checkRecipe, fingerprintRecipe } from "./check.mjs";
+import { checkRecipe, fingerprintRecipe, missingQuestionReport } from "./check.mjs";
 
 const root = join(dirname(fileURLToPath(import.meta.url)), "../../..");
 
@@ -70,6 +70,27 @@ test("an unmet requirement is an error and a missed recommendation is info", asy
   const required = result.findings.find((item) => item.id === "required-option");
   assert.match(required.reason, /theme values/);
   assert.equal(required.because, "Multi-brand");
+});
+
+test("missing questions are named and summarized", async () => {
+  const bad = structuredClone(recipe);
+  bad.picks = bad.picks.filter((pick) => pick.question !== "voice" && pick.question !== "density");
+  const result = await checkRecipe(bad, packs);
+  const voice = result.findings.find(
+    (item) => item.id === "missing-question" && item.question === "voice",
+  );
+  assert.equal(voice.scheme, "purpose");
+  assert.equal(voice.question, "voice");
+  const report = missingQuestionReport(result.findings);
+  assert.equal(report.summary, "2 questions still need an answer.");
+  assert.deepEqual(report.lines, [
+    "density has no answer yet. Pick one to finish your recipe.",
+    "voice has no answer yet. Pick one to finish your recipe.",
+  ]);
+  assert.equal(
+    report.lines.filter((line) => line === "This required question has no answer.").length,
+    0,
+  );
 });
 
 test("gap questions remain", () => {

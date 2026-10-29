@@ -4,7 +4,7 @@ import { useMemo, useState } from "react";
 import { useSearchParams } from "next/navigation";
 import { packList, packs, type Option, type Question } from "@/lib/data";
 import { questionsIn } from "@/lib/resolve";
-import { canonicalRecipe, checkRecipe, shareCode } from "@/lib/check.mjs";
+import { canonicalRecipe, checkRecipe, missingQuestionReport, shareCode } from "@/lib/check.mjs";
 
 type Pick = { option: string; rationale: string; params: Record<string, string> };
 type Badge = { label: string; because: string; reason: string };
@@ -57,7 +57,7 @@ export function BuildForm() {
   });
   const [result, setResult] = useState<{
     ok: boolean;
-    findings: { id: string; severity: string; message: string }[];
+    findings: { id: string; severity: string; message: string; question?: string }[];
     fingerprint?: string;
   } | null>(null);
   const [copied, setCopied] = useState("");
@@ -67,6 +67,11 @@ export function BuildForm() {
     (question) => picks[question.id]?.option && picks[question.id]?.rationale.trim(),
   );
   const blocked = (result?.findings || []).some((item) => item.id === "required-option");
+  const copyLocked = blocked || !result?.ok;
+  const missingQuestions: { summary: string; lines: string[] } | null = result
+    ? missingQuestionReport(result.findings)
+    : null;
+  const otherFindings = (result?.findings || []).filter((item) => item.id !== "missing-question");
 
   function recipe() {
     return {
@@ -96,14 +101,14 @@ export function BuildForm() {
   async function onCopy() {
     if (blocked || !result?.ok) return;
     await navigator.clipboard.writeText(canonicalRecipe(recipe()));
-    setCopied("Recipe JSON copied.");
+    setCopied("Copied to clipboard.");
   }
 
   async function onShare() {
     if (blocked || !result?.ok || !result.fingerprint) return;
     const url = `${window.location.origin}/recipe/${result.fingerprint}/#${shareCode(recipe())}`;
     await navigator.clipboard.writeText(url);
-    setCopied("Share link copied.");
+    setCopied("Copied to clipboard.");
   }
 
   return (
@@ -164,7 +169,8 @@ export function BuildForm() {
           <button
             className="rounded-control border border-ink px-4 py-2 disabled:opacity-40"
             type="button"
-            disabled={blocked || !result?.ok}
+            disabled={copyLocked}
+            aria-describedby={copyLocked ? "finish-recipe-reason" : undefined}
             onClick={() => void onCopy()}
           >
             Copy recipe JSON
@@ -172,11 +178,13 @@ export function BuildForm() {
           <button
             className="rounded-control border border-ink px-4 py-2 disabled:opacity-40"
             type="button"
-            disabled={blocked || !result?.ok}
+            disabled={copyLocked}
+            aria-describedby={copyLocked ? "finish-recipe-reason" : undefined}
             onClick={() => void onShare()}
           >
             Copy share link
           </button>
+          {copyLocked ? <p id="finish-recipe-reason">Finish your recipe to copy it.</p> : null}
         </div>
       </form>
       {blocked ? (
@@ -184,35 +192,50 @@ export function BuildForm() {
           Your purpose needs this. The build step stays blocked until that option is selected.
         </p>
       ) : null}
-      {copied ? <p>{copied}</p> : null}
-      {result ? (
-        <section aria-label="Check results" className="grid gap-2">
-          <h2 className="text-xl font-semibold">
-            {result.ok ? "Check passed" : "Check did not pass"}
-          </h2>
-          {result.fingerprint && !blocked ? (
-            <p className="break-all text-sm">Fingerprint {result.fingerprint}</p>
-          ) : null}
-          <ul className="grid gap-2">
-            {result.findings.map((item, index) => (
-              <li key={`${item.id}-${index}`} className="text-sm">
-                <span
-                  className={
-                    item.severity === "error"
-                      ? "text-bad"
-                      : item.severity === "warning"
-                        ? "text-warn"
-                        : "text-info"
-                  }
-                >
-                  {item.severity}
-                </span>{" "}
-                {item.message}
-              </li>
-            ))}
-          </ul>
-        </section>
-      ) : null}
+      <div aria-live="polite" className={copied ? undefined : "sr-only"}>
+        {copied ? <p>{copied}</p> : null}
+      </div>
+      <section
+        aria-live="polite"
+        aria-atomic="true"
+        aria-label="Check results"
+        className={result ? "grid gap-2" : "sr-only"}
+      >
+        {result ? (
+          <>
+            <h2 className="text-xl font-semibold">
+              {result.ok ? "Check passed" : "Check did not pass"}
+            </h2>
+            {result.fingerprint && !blocked ? (
+              <p className="break-all text-sm">Fingerprint {result.fingerprint}</p>
+            ) : null}
+            {missingQuestions?.summary ? <p>{missingQuestions.summary}</p> : null}
+            <ul className="grid gap-2">
+              {missingQuestions?.lines.map((line: string) => (
+                <li key={line} className="text-sm">
+                  {line}
+                </li>
+              ))}
+              {otherFindings.map((item, index) => (
+                <li key={`${item.id}-${index}`} className="text-sm">
+                  <span
+                    className={
+                      item.severity === "error"
+                        ? "text-bad"
+                        : item.severity === "warning"
+                          ? "text-warn"
+                          : "text-info"
+                    }
+                  >
+                    {item.severity}
+                  </span>{" "}
+                  {item.message}
+                </li>
+              ))}
+            </ul>
+          </>
+        ) : null}
+      </section>
     </div>
   );
 }

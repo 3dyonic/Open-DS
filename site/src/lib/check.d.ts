@@ -3,6 +3,7 @@ export type Finding = {
   severity: string;
   message: string;
   question?: string;
+  scheme?: string;
   option?: string;
   targetQuestion?: string;
   targetOption?: string;
@@ -19,4 +20,5 @@ export type CheckResult = {
 export function canonicalRecipe(recipe: object): string;
 export function shareCode(recipe: object): string;
 export function checkRecipe(recipe: object, packs: object): Promise<CheckResult>;
+export function missingQuestionReport(findings: Finding[]): { summary: string; lines: string[] };
 export function fingerprintRecipe(recipe: object): Promise<string>;

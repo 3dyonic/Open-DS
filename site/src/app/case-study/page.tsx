@@ -1,6 +1,8 @@
 import Link from "next/link";
 import { showcase } from "@/lib/data";
 
+export const metadata = { title: "Case study" };
+
 export default function CaseStudyPage() {
   return (
     <div className="grid max-w-3xl gap-6">

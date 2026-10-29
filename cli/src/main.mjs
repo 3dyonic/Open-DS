@@ -4,6 +4,48 @@ import { createHash } from "node:crypto";
 import { fileURLToPath } from "node:url";
 import { checkRecipe } from "../../site/src/lib/check.mjs";
 
+const FIX_BY_ID = {
+  "missing-question": "run open-ds build and pick an option.",
+  "missing-purpose": "run open-ds build and answer a Purpose question.",
+  "recipe-schema": "correct the recipe JSON so it matches the recipe schema.",
+  "fingerprint-mismatch": "run open-ds init again so open-ds.json matches the recipe.",
+  "drift-changed": "restore the changed file so it matches the boilerplate.",
+  "drift-missing": "restore the missing file from the boilerplate.",
+  "locked-mismatch": "restore the locked fields so they match the manifest.",
+  "missing-item": "run open-ds init again so the missing item is installed.",
+  "missing-boilerplate": "use a recipe that has an authored boilerplate. Open DS does not generate one.",
+  "no-install": "run open-ds init, or pass --dir <folder init created>.",
+  "missing-rationale": "write a rationale in your own words.",
+  "rationale-length": "keep the rationale between 1 and 280 characters.",
+  "unknown-question": "remove the question that is not in the selected packs.",
+  "unknown-option": "pick an option that the question cites.",
+  "unknown-pack": "use a pack id that exists in packs/.",
+  "duplicate-question": "keep one answer for that question.",
+  "missing-param": "set the required parameter.",
+  "unknown-param": "remove the unknown parameter.",
+  "param-type": "use the parameter type the question asks for.",
+  "param-pattern": "make the parameter match the expected pattern.",
+  "param-range": "keep the parameter inside the allowed range.",
+  "missing-dependency": "select the required dependency.",
+  "conflict": "change one of the conflicting answers.",
+  "required-option": "select the option your purpose needs.",
+  recommend: "consider the recommended option.",
+  discourage: "reconsider this pick. It is worth a second look.",
+};
+
+export function formatCheckFailure(item) {
+  const severity = item.severity === "error" || !item.severity ? "error" : item.severity;
+  let message = item.message || "";
+  if (item.id === "missing-question") {
+    message = `${item.scheme}/${item.question} has no answer yet.`;
+  } else {
+    const name = item.scheme && item.question ? `${item.scheme}/${item.question}` : item.question || "";
+    if (name && !message.includes(name)) message = `${name}: ${message}`;
+  }
+  const fix = FIX_BY_ID[item.id] || "fix the reported problem and run open-ds check again.";
+  return [`${severity} ${item.id}: ${message}`, `Fix: ${fix}`];
+}
+
 const here = dirname(fileURLToPath(import.meta.url));
 
 export function repoRoot(start = here) {
@@ -105,7 +147,18 @@ export async function init(arg, outDir, root = repoRoot()) {
 
 export async function check(dir, root = repoRoot()) {
   const file = join(dir, "open-ds.json");
-  if (!existsSync(file)) throw new Error(`open-ds.json is missing in ${dir}. Run init first, or pass --dir <folder init created>.`);
+  if (!existsSync(file)) {
+    return {
+      ok: false,
+      findings: [
+        {
+          id: "no-install",
+          severity: "error",
+          message: `open-ds.json is missing in ${dir}.`,
+        },
+      ],
+    };
+  }
   const installed = readJson(file);
   const packs = loadPacks(root);
   const result = await checkRecipe(installed.recipe, packs);
@@ -176,7 +229,9 @@ export async function run(argv) {
       const dir = dirFlag >= 0 ? rest[dirFlag + 1] : ".";
       const result = await check(resolve(dir));
       if (!result.ok) {
-        for (const item of result.findings) console.log(`${item.severity} ${item.id}${item.message ? `: ${item.message}` : ""}`);
+        for (const item of result.findings) {
+          for (const line of formatCheckFailure(item)) console.log(line);
+        }
         return 1;
       }
       console.log(result.fingerprint);

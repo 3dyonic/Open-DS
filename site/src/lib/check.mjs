@@ -177,11 +177,44 @@ function checkParam(spec, value, question, option) {
   return findings;
 }
 
-function finish(findings, recipe) {
-  const ordered = sortFindings(findings);
+function schemeFor(packs, questionId, questions) {
+  if (!questionId) return "";
+  const resolved = (questions || []).find((item) => item.id === questionId);
+  if (resolved?.pack) return resolved.pack;
+  if (!packs) return "";
+  for (const pack of Object.values(packs)) {
+    if ((pack.questions || []).some((item) => item.id === questionId)) return pack.id;
+  }
+  return "";
+}
+
+function stampScheme(findings, packs, questions) {
+  return findings.map((item) => {
+    if (item.scheme || !item.question) return item;
+    const scheme = schemeFor(packs, item.question, questions);
+    return scheme ? { ...item, scheme } : item;
+  });
+}
+
+function fail(findings, packs, questions) {
+  return { ok: false, findings: sortFindings(stampScheme(findings, packs, questions)) };
+}
+
+function finish(findings, recipe, packs, questions) {
+  const ordered = sortFindings(stampScheme(findings, packs, questions));
   if (ordered.some((item) => item.severity === "error")) return { ok: false, findings: ordered };
   if (!recipe) return { ok: true, findings: ordered };
   return { ok: true, findings: ordered, recipe };
+}
+
+export function missingQuestionReport(findings) {
+  const missing = findings.filter((item) => item.id === "missing-question");
+  return {
+    summary: missing.length ? `${missing.length} questions still need an answer.` : "",
+    lines: missing.map(
+      (item) => `${item.question} has no answer yet. Pick one to finish your recipe.`,
+    ),
+  };
 }
 
 export async function checkRecipe(recipe, packs) {
@@ -192,18 +225,16 @@ export async function checkRecipe(recipe, packs) {
     !Array.isArray(recipe.picks) ||
     !Array.isArray(recipe.packs)
   ) {
-    return {
-      ok: false,
-      findings: [finding("recipe-schema", "error", "The recipe is missing packs or picks.")],
-    };
+    return fail(
+      [finding("recipe-schema", "error", "The recipe is missing packs or picks.")],
+      packs,
+    );
   }
   if (!String(recipe.serves || "").trim() || !recipe.id || !recipe.name || !recipe.version) {
-    return {
-      ok: false,
-      findings: [
-        finding("recipe-schema", "error", "The recipe is missing an id, name, version, or serves."),
-      ],
-    };
+    return fail(
+      [finding("recipe-schema", "error", "The recipe is missing an id, name, version, or serves.")],
+      packs,
+    );
   }
   for (const pick of recipe.picks) {
     if (
@@ -223,12 +254,12 @@ export async function checkRecipe(recipe, packs) {
       );
     }
   }
-  if (findings.length) return { ok: false, findings: sortFindings(findings) };
+  if (findings.length) return fail(findings, packs);
 
   for (const pid of recipe.packs) {
     if (!packs[pid]) findings.push(finding("unknown-pack", "error", `Unknown pack ${pid}.`));
   }
-  if (findings.length) return { ok: false, findings: sortFindings(findings) };
+  if (findings.length) return fail(findings, packs);
 
   const questions = questionsFor(packs, recipe.packs);
   const byId = Object.fromEntries(questions.map((question) => [question.id, question]));
@@ -247,7 +278,14 @@ export async function checkRecipe(recipe, packs) {
   }
   if (![...Object.keys(picks)].some((id) => purposeIds.has(id))) {
     findings.push(
-      finding("missing-purpose", "error", "A recipe with no Purpose picks is not accepted."),
+      finding(
+        "missing-purpose",
+        "error",
+        "A recipe with no Purpose picks is not accepted.",
+        "",
+        "",
+        { scheme: "purpose" },
+      ),
     );
   }
   for (const question of questions) {
@@ -378,7 +416,7 @@ export async function checkRecipe(recipe, packs) {
       }
     }
   }
-  const done = finish(findings, recipe);
+  const done = finish(findings, recipe, packs, questions);
   if (!done.ok) return { ok: false, findings: done.findings };
   return { ok: true, findings: done.findings, fingerprint: await fingerprintRecipe(recipe) };
 }

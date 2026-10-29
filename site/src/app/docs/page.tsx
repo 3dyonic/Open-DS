@@ -1,3 +1,5 @@
+export const metadata = { title: "Docs" };
+
 export default function DocsPage() {
   return (
     <div className="grid max-w-3xl gap-6">

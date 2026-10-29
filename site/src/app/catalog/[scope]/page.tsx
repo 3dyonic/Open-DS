@@ -1,9 +1,20 @@
+import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { packById, packList } from "@/lib/data";
 
 export function generateStaticParams() {
   return packList.map((pack) => ({ scope: pack.id }));
+}
+
+export async function generateMetadata({
+  params,
+}: {
+  params: Promise<{ scope: string }>;
+}): Promise<Metadata> {
+  const { scope } = await params;
+  const pack = packById(scope);
+  return { title: pack?.title ?? "Catalog" };
 }
 
 export default async function ScopePage({ params }: { params: Promise<{ scope: string }> }) {
