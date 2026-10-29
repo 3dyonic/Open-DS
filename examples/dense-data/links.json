@@ -146,6 +146,20 @@
     "type": "requires"
   },
   {
+    "basis": "sourced",
+    "from": "density/spacious",
+    "id": "density/spacious|recommends|line-height/loose",
+    "sources": [
+      {
+        "checked": "2026-10-29",
+        "quote": "Avoid: Dense text, with little white space.",
+        "url": "https://www.w3.org/TR/coga-usable/"
+      }
+    ],
+    "to": "line-height/loose",
+    "type": "recommends"
+  },
+  {
     "basis": "your-pick",
     "from": "density/spacious",
     "id": "density/spacious|recommends|spacing-base/base-8",
