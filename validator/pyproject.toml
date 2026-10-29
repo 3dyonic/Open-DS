@@ -15,6 +15,7 @@ Issues = "https://github.com/3dyonic/Open-DS/issues"
 
 [project.scripts]
 open-ds-validator = "open_ds_validator.cli:main"
+open-ds-validate = "open_ds_validator.cli:validate_main"
 
 [build-system]
 requires = ["hatchling"]
