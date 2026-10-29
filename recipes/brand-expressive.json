@@ -1,0 +1,203 @@
+{
+  "id": "brand-expressive",
+  "name": "Brand-expressive",
+  "version": "0.1.0",
+  "provisional": true,
+  "summary": "OKLCH, a bold accent, a larger radius, and dark as the default theme.",
+  "serves": "A brand that wants to be seen.",
+  "packs": [
+    "purpose",
+    "global",
+    "color-primitives",
+    "accessibility",
+    "typography",
+    "spacing",
+    "radius",
+    "theming",
+    "delivery"
+  ],
+  "picks": [
+    {
+      "question": "product-type",
+      "option": "content",
+      "rationale": "People come to read pages, not to operate a dense tool."
+    },
+    {
+      "question": "users-and-context",
+      "option": "public",
+      "rationale": "Most people arrive without an account and without training."
+    },
+    {
+      "question": "accessibility-target",
+      "option": "wcag-22-aa",
+      "rationale": "AA is the commitment for this public site. AAA is a later choice."
+    },
+    {
+      "question": "platforms",
+      "option": "web",
+      "rationale": "The first surface is the website."
+    },
+    {
+      "question": "team",
+      "option": "solo-starting",
+      "rationale": "One person maintains this starter, so the list stays short."
+    },
+    {
+      "question": "brand-variance",
+      "option": "single-brand",
+      "rationale": "This starter is one brand. A second brand is out of this recipe."
+    },
+    {
+      "question": "density",
+      "option": "comfortable",
+      "rationale": "Reading pages need room. Compact density is for tools."
+    },
+    {
+      "question": "voice",
+      "option": "warm",
+      "rationale": "The brand should feel warm, so darker steps may shift warmer."
+    },
+    {
+      "question": "contrast-metric",
+      "option": "wcag22",
+      "rationale": "The accessibility target names WCAG 2.2, so the metric should match it."
+    },
+    {
+      "question": "scale-direction",
+      "option": "low-is-light",
+      "rationale": "The step names should run from 50 light toward 1000 dark."
+    },
+    {
+      "question": "css-unit",
+      "option": "rem",
+      "rationale": "Type and space should follow the reader's font size."
+    },
+    {
+      "question": "structure-theme-separation",
+      "option": "separate",
+      "rationale": "A theme change must not require edits inside the components."
+    },
+    {
+      "question": "color-space",
+      "option": "oklch",
+      "rationale": "OKLCH keeps the accent steps even. Delivered colors stay sRGB hex."
+    },
+    {
+      "question": "step-distance",
+      "option": "lightness-delta",
+      "rationale": "Equal lightness steps are easier to explain than deltaE2000."
+    },
+    {
+      "question": "step-count",
+      "option": "eleven",
+      "rationale": "Eleven names match the 50 to 950 set people already expect."
+    },
+    {
+      "question": "lightness-curve",
+      "option": "perceptual",
+      "rationale": "Most interface color sits in the middle of the ramp."
+    },
+    {
+      "question": "chroma-hue-shift",
+      "option": "hue-warm",
+      "rationale": "The provisional brand is warm, so darker steps may shift warmer."
+    },
+    {
+      "question": "seed-input",
+      "option": "hex",
+      "rationale": "One provisional hex is enough to name the terracotta seed.",
+      "params": {
+        "seed": "#C4622D"
+      }
+    },
+    {
+      "question": "on-color-pairing",
+      "option": "surface-pair",
+      "rationale": "A strong accent needs a strict on-color pair so text on it stays readable."
+    },
+    {
+      "question": "contrast-check",
+      "option": "checked-afterwards",
+      "rationale": "Contrast is a review step. This dictionary does not measure it."
+    },
+    {
+      "question": "font-family",
+      "option": "system-sans",
+      "rationale": "A system sans font is enough until a custom font is chosen."
+    },
+    {
+      "question": "type-scale-ratio",
+      "option": "major-third",
+      "rationale": "A 1.25 ratio keeps headings clear without a huge jump."
+    },
+    {
+      "question": "base-font-size",
+      "option": "size-16",
+      "rationale": "Body text should start at the common 16 pixel browser default."
+    },
+    {
+      "question": "line-height",
+      "option": "normal",
+      "rationale": "Body copy needs a 1.5 line height so lines do not collide."
+    },
+    {
+      "question": "spacing-base",
+      "option": "base-4",
+      "rationale": "A 4 pixel base is fine enough for a reading layout."
+    },
+    {
+      "question": "spacing-scale",
+      "option": "linear",
+      "rationale": "Even space steps are easier to remember in a small system."
+    },
+    {
+      "question": "radius-base",
+      "option": "radius-12",
+      "rationale": "Corners are rounder. No pack rule links radius to this chain."
+    },
+    {
+      "question": "radius-progression",
+      "option": "geometric",
+      "rationale": "Cards can be rounder than inputs without a long list of steps."
+    },
+    {
+      "question": "theme-shape",
+      "option": "sets-and-modifiers",
+      "rationale": "Strict pairing shapes the theme, so light and dark keep their pairs."
+    },
+    {
+      "question": "shareable-item",
+      "option": "full-boilerplate",
+      "rationale": "A team should get tokens, CSS, and components together."
+    },
+    {
+      "question": "locked-at-init",
+      "option": "lock-core",
+      "rationale": "Tiers, the on-color pair, and CSS variable names stay fixed after init."
+    },
+    {
+      "question": "token-tiers",
+      "option": "three-tier",
+      "rationale": "The starter keeps primitive, semantic, and component tiers."
+    },
+    {
+      "question": "default-theme",
+      "option": "dark",
+      "rationale": "The dark token set is the default, so the accent and its pairs hold in dark mode."
+    }
+  ],
+  "chain": [
+    {
+      "from": "on-color-pairing",
+      "to": "theme-shape",
+      "rule": "requires",
+      "line": "A strong accent needs strict on-color pairing, so every theme keeps its pairs."
+    },
+    {
+      "from": "theme-shape",
+      "to": "default-theme",
+      "rule": "recommends",
+      "line": "The theme model sets the dark-mode token set, so the accent and its pairs hold in dark mode."
+    }
+  ]
+}

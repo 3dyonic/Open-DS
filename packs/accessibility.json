@@ -48,7 +48,13 @@
           ],
           "formula": "Contrast is reviewed after the values are written."
         }
-      ]
+      ],
+      "why_care": "It decides whether contrast is built into the color steps or reviewed once the values exist.",
+      "affects": [
+        "README.md",
+        "AGENTS.md"
+      ],
+      "feeds_into": []
     }
   ]
 }

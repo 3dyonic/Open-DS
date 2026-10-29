@@ -34,8 +34,8 @@
           "id": "apca",
           "label": "APCA",
           "summary": "Accessible Perceptual Contrast Algorithm.",
-          "why": "APCA is a different contrast model. It judges lightness with its own formula.",
-          "when_to_choose": "Choose this if your team has agreed to use APCA instead of WCAG.",
+          "why": "APCA is the WCAG 3 draft, not a compliance standard. Audits still test WCAG 2.2, so AA stays the floor.",
+          "when_to_choose": "Choose this if you check APCA first and keep WCAG 2.2 AA as the floor.",
           "trade_offs": [
             "A WCAG target and APCA numbers can disagree"
           ],
@@ -44,10 +44,35 @@
               "name": "APCA",
               "title": "APCA contrast",
               "url": "https://apcacontrast.com/"
+            },
+            {
+              "name": "W3C WAI",
+              "title": "WCAG 3 introduction",
+              "url": "https://www.w3.org/WAI/standards-guidelines/wcag/wcag3-intro/"
+            },
+            {
+              "name": "W3C WAI",
+              "title": "WCAG 2.2 contrast minimum",
+              "url": "https://www.w3.org/WAI/WCAG22/Understanding/contrast-minimum.html"
             }
           ],
-          "formula": "APCA lightness contrast, reviewed after values exist."
+          "formula": "APCA lightness contrast, reviewed after values exist.",
+          "requires": [
+            {
+              "question": "accessibility-target",
+              "option": "wcag-22-aa",
+              "reason": "APCA is the WCAG 3 draft, not a compliance standard. Audits still test WCAG 2.2 AA (4.5:1) as the floor."
+            }
+          ]
         }
+      ],
+      "why_care": "It names the yardstick for readable enough, so your team and your audits measure the same thing.",
+      "affects": [
+        "README.md",
+        "AGENTS.md"
+      ],
+      "feeds_into": [
+        "accessibility-target"
       ]
     },
     {
@@ -102,7 +127,13 @@
           ],
           "formula": "Named stops from 100 down to 0."
         }
-      ]
+      ],
+      "why_care": "It decides whether a low number means light or dark, so the names match what your team already says.",
+      "affects": [
+        "README.md",
+        "AGENTS.md"
+      ],
+      "feeds_into": []
     },
     {
       "id": "css-unit",
@@ -144,7 +175,15 @@
             }
           ]
         }
-      ]
+      ],
+      "why_care": "One answer covers type, spacing and radius, and it decides whether layout follows the reader's font size.",
+      "affects": [
+        "theme/tokens.css",
+        "theme/tokens.json",
+        "README.md",
+        "AGENTS.md"
+      ],
+      "feeds_into": []
     },
     {
       "id": "structure-theme-separation",
@@ -186,7 +225,15 @@
             }
           ]
         }
-      ]
+      ],
+      "why_care": "It decides whether a new theme can change the look without anyone editing components.",
+      "affects": [
+        "structure/",
+        "theme/",
+        "README.md",
+        "AGENTS.md"
+      ],
+      "feeds_into": []
     }
   ]
 }

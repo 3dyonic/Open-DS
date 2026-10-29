@@ -1,8 +1,10 @@
-import { cpSync, mkdirSync, readFileSync, readdirSync, writeFileSync, existsSync } from "node:fs";
+import { mkdtempSync, readFileSync, readdirSync, rmSync, writeFileSync, existsSync } from "node:fs";
+import { tmpdir } from "node:os";
 import { dirname, join, relative, resolve } from "node:path";
 import { createHash } from "node:crypto";
 import { fileURLToPath } from "node:url";
 import { checkRecipe } from "../../site/src/lib/check.mjs";
+import { assemble } from "./assemble.mjs";
 
 const FIX_BY_ID = {
   "missing-question": "run open-ds build and pick an option.",
@@ -71,30 +73,13 @@ export function loadPacks(root) {
   return packs;
 }
 
-function findBoilerplate(root, recipe) {
-  const base = join(root, "boilerplates");
-  for (const name of readdirSync(base)) {
-    const manifestPath = join(base, name, "manifest.json");
-    if (!existsSync(manifestPath)) continue;
-    const manifest = readJson(manifestPath);
-    if (manifest.recipeId === recipe.id) return { dir: join(base, name), manifest };
-  }
-  return null;
-}
-
 async function findByFingerprint(root, fingerprint, packs) {
-  const base = join(root, "boilerplates");
-  for (const name of readdirSync(base)) {
-    const manifestPath = join(base, name, "manifest.json");
-    if (!existsSync(manifestPath)) continue;
-    const manifest = readJson(manifestPath);
-    if (manifest.fingerprint !== fingerprint) continue;
-    const recipe = readJson(join(root, manifest.recipePath));
+  const dir = join(root, "recipes");
+  for (const name of readdirSync(dir)) {
+    if (!name.endsWith(".json")) continue;
+    const recipe = readJson(join(dir, name));
     const checked = await checkRecipe(recipe, packs);
-    if (!checked.ok || checked.fingerprint !== fingerprint) {
-      throw new Error("The boilerplate manifest does not match its recipe.");
-    }
-    return { dir: join(base, name), manifest, recipe, checked };
+    if (checked.ok && checked.fingerprint === fingerprint) return { recipe, checked };
   }
   return null;
 }
@@ -129,17 +114,20 @@ export async function init(arg, outDir, root = repoRoot()) {
     const lines = checked.findings.filter((item) => item.severity === "error").map((item) => item.id);
     throw new Error(`The recipe was rejected: ${lines.join(", ")}`);
   }
-  const kit = findBoilerplate(root, recipe);
-  if (!kit || kit.manifest.fingerprint !== checked.fingerprint) {
-    throw new Error("No authored boilerplate matches this recipe. Open DS does not generate one.");
+  let manifest;
+  try {
+    manifest = assemble({ recipe, packs, root, outDir, fingerprint: checked.fingerprint });
+  } catch (error) {
+    if (error.code === "missing-boilerplate") {
+      throw new Error("No authored boilerplate matches this recipe. Open DS does not generate one.");
+    }
+    throw error;
   }
-  mkdirSync(outDir, { recursive: true });
-  cpSync(kit.dir, outDir, { recursive: true });
   const installed = {
     recipe,
     fingerprint: checked.fingerprint,
-    locked: kit.manifest.lockedAtInit,
-    items: kit.manifest.items.map((item) => item.name),
+    locked: manifest.lockedAtInit,
+    items: manifest.items.map((item) => item.name),
   };
   writeFileSync(join(outDir, "open-ds.json"), `${JSON.stringify(installed, null, 2)}\n`);
   return installed;
@@ -169,23 +157,38 @@ export async function check(dir, root = repoRoot()) {
       findings: [{ id: "fingerprint-mismatch", severity: "error", message: "open-ds.json does not match the recipe." }],
     };
   }
-  const kit = findBoilerplate(root, installed.recipe);
-  if (!kit) {
-    return { ok: false, findings: [{ id: "missing-boilerplate", severity: "error", message: "No boilerplate for this recipe." }] };
+  const temp = mkdtempSync(join(tmpdir(), "open-ds-expect-"));
+  let manifest;
+  try {
+    manifest = assemble({
+      recipe: installed.recipe,
+      packs,
+      root,
+      outDir: temp,
+      fingerprint: result.fingerprint,
+    });
+  } catch (error) {
+    if (error.code === "missing-boilerplate") {
+      return { ok: false, findings: [{ id: "missing-boilerplate", severity: "error", message: "No boilerplate for this recipe." }] };
+    }
+    throw error;
   }
   const locked = [...installed.locked].sort().join(",");
-  const expected = [...kit.manifest.lockedAtInit].sort().join(",");
-  if (locked !== expected) {
+  const expectedLocked = [...manifest.lockedAtInit].sort().join(",");
+  if (locked !== expectedLocked) {
+    rmSync(temp, { recursive: true, force: true });
     return { ok: false, findings: [{ id: "locked-mismatch", severity: "error", message: "Locked fields do not match the manifest." }] };
   }
   const items = new Set(installed.items);
-  for (const name of kit.manifest.items.map((item) => item.name)) {
+  for (const name of manifest.items.map((item) => item.name)) {
     if (!items.has(name)) {
+      rmSync(temp, { recursive: true, force: true });
       return { ok: false, findings: [{ id: "missing-item", severity: "error", message: `Installed items are missing ${name}.` }] };
     }
   }
-  const expectedFiles = hashTree(kit.dir);
+  const expectedFiles = hashTree(temp);
   const actualFiles = hashTree(dir);
+  rmSync(temp, { recursive: true, force: true });
   const drift = [];
   for (const [rel, hash] of Object.entries(expectedFiles)) {
     if (!(rel in actualFiles)) drift.push({ id: "drift-missing", severity: "error", message: `${rel} is missing.` });

@@ -28,7 +28,17 @@
               "url": "https://m3.material.io/styles/color/the-color-system/tokens"
             }
           ],
-          "formula": "Theme = token sets + modifiers."
+          "formula": "Theme = token sets + modifiers.",
+          "recommends": [
+            {
+              "question": "default-theme",
+              "options": [
+                "light",
+                "dark"
+              ],
+              "reason": "Token sets plus modifiers need a default set so one theme is in effect before a switch."
+            }
+          ]
         },
         {
           "id": "single-set",
@@ -46,6 +56,77 @@
               "url": "https://www.designtokens.org/tr/drafts/format/"
             }
           ]
+        }
+      ],
+      "why_care": "It decides whether light and dark are modifiers on one theme, or whether you ship one look.",
+      "affects": [
+        "theme/tokens.css",
+        "README.md",
+        "AGENTS.md"
+      ],
+      "feeds_into": [
+        "default-theme"
+      ]
+    },
+    {
+      "id": "default-theme",
+      "prompt": "Which token set is in effect before a modifier?",
+      "summary": "One set is the default. The other is a modifier.",
+      "required": true,
+      "why_care": "It decides whether light or dark is the set people see before they switch.",
+      "affects": [
+        "theme/tokens.css",
+        "theme/tokens.json",
+        "theme/tailwind.preset.cjs",
+        "README.md",
+        "AGENTS.md"
+      ],
+      "feeds_into": [],
+      "options": [
+        {
+          "id": "light",
+          "label": "Light",
+          "summary": "Light is the default token set.",
+          "why": "Light is the set in effect before someone switches to dark.",
+          "when_to_choose": "Choose this if the page should open on the light set.",
+          "trade_offs": [
+            "Dark is a switch away"
+          ],
+          "sources": [
+            {
+              "name": "MDN",
+              "title": "prefers-color-scheme",
+              "url": "https://developer.mozilla.org/en-US/docs/Web/CSS/@media/prefers-color-scheme"
+            },
+            {
+              "name": "Material",
+              "title": "Color roles",
+              "url": "https://m3.material.io/styles/color/roles"
+            }
+          ]
+        },
+        {
+          "id": "dark",
+          "label": "Dark",
+          "summary": "Dark is the default token set.",
+          "why": "Dark is the set in effect before someone switches to light.",
+          "when_to_choose": "Choose this if the page should open on the dark set.",
+          "trade_offs": [
+            "Light is a switch away"
+          ],
+          "sources": [
+            {
+              "name": "MDN",
+              "title": "prefers-color-scheme",
+              "url": "https://developer.mozilla.org/en-US/docs/Web/CSS/@media/prefers-color-scheme"
+            },
+            {
+              "name": "Material",
+              "title": "Color roles",
+              "url": "https://m3.material.io/styles/color/roles"
+            }
+          ],
+          "fragment": "theme/dark-default.json"
         }
       ]
     }
