@@ -60,6 +60,7 @@ FIX_BY_ID = {
     "floor-error-prevention": "make the step reversible, checked, or confirmed.",
     "unknown-scope": "use a scope from the pack allowlist, or add the scope to the pack.",
     "incomplete-caution": "give the caution a url, a quote, and a checked date copied from the pack.",
+    "incomplete-source": "give the source a url, a quote, and a checked date copied from the pack.",
     "missing-basis": "set basis to sourced, floor, or your-pick. Do not leave it blank.",
     "coga.critical-not-hidden": "keep a critical component out of hover and accordions.",
     "voice-why": "shorten why to 35 words or fewer.",
