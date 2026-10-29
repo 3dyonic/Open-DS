@@ -17,6 +17,12 @@
     "targetSize": { "minPx": 24, "sufficientSpacing": true },
     "components": []
   },
+  "tokenScopes": ["table-row", "form-control", "card", "reading-text"],
+  "scopeMappings": [
+    { "name": "space/form-control/density", "basis": "your-pick" },
+    { "name": "space/card/density", "basis": "your-pick" },
+    { "name": "space/reading-text/density", "basis": "your-pick" }
+  ],
   "questions": [
     {
       "id": "contrast-metric",
