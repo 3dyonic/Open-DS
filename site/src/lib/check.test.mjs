@@ -70,6 +70,12 @@ test("an unmet requirement is an error and a missed recommendation is info", asy
   const required = result.findings.find((item) => item.id === "required-option");
   assert.match(required.reason, /theme values/);
   assert.equal(required.because, "Multi-brand");
+  assert.equal(required.targetLabel, "Separate");
+  assert.equal(required.targetOption, "separate");
+  assert.equal(
+    required.message,
+    "Multi-brand needs Separate (structure-theme-separation). Two brands can share components only when theme values stay outside them.",
+  );
 });
 
 test("missing questions are named and summarized", async () => {
@@ -83,6 +89,7 @@ test("missing questions are named and summarized", async () => {
   assert.equal(voice.question, "voice");
   const report = missingQuestionReport(result.findings);
   assert.equal(report.summary, "2 questions still need an answer.");
+  assert.equal(report.fix, "Fix: pick an answer on /build, then run open-ds init <recipe.json>.");
   assert.deepEqual(report.lines, [
     "density has no answer yet. Pick one to finish your recipe.",
     "voice has no answer yet. Pick one to finish your recipe.",

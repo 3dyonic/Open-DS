@@ -1,11 +1,11 @@
-import { cpSync, mkdirSync, readFileSync, readdirSync, writeFileSync, existsSync } from "node:fs";
-import { dirname, join, relative, resolve } from "node:path";
+import { cpSync, existsSync, mkdirSync, readFileSync, readdirSync, statSync, writeFileSync } from "node:fs";
+import { dirname, join, resolve } from "node:path";
 import { createHash } from "node:crypto";
 import { fileURLToPath } from "node:url";
 import { checkRecipe } from "../../site/src/lib/check.mjs";
 
 const FIX_BY_ID = {
-  "missing-question": "run open-ds build and pick an option.",
+  "missing-question": "pick an answer on /build, then run open-ds init <recipe.json>.",
   "missing-purpose": "run open-ds build and answer a Purpose question.",
   "recipe-schema": "correct the recipe JSON so it matches the recipe schema.",
   "fingerprint-mismatch": "run open-ds init again so open-ds.json matches the recipe.",
@@ -35,6 +35,13 @@ const FIX_BY_ID = {
 
 export function formatCheckFailure(item) {
   const severity = item.severity === "error" || !item.severity ? "error" : item.severity;
+  if (item.id === "required-option") {
+    const label = item.targetLabel || "the required option";
+    return [
+      `${severity} required-option: ${item.message}`,
+      `Fix: Add ${label} to finish your recipe, then run open-ds check again.`,
+    ];
+  }
   let message = item.message || "";
   if (item.id === "missing-question") {
     message = `${item.scheme}/${item.question} has no answer yet.`;
@@ -99,19 +106,25 @@ async function findByFingerprint(root, fingerprint, packs) {
   return null;
 }
 
-export function hashTree(dir, skip = new Set(["open-ds.json"])) {
-  const out = {};
-  const walk = (d) => {
-    for (const entry of readdirSync(d, { withFileTypes: true })) {
-      const full = join(d, entry.name);
-      const rel = relative(dir, full).split("\\").join("/");
-      if (skip.has(rel)) continue;
-      if (entry.isDirectory()) walk(full);
-      else if (entry.isFile()) out[rel] = createHash("sha256").update(readFileSync(full)).digest("hex");
+export function manifestItemPaths(manifest) {
+  const paths = [];
+  const seen = new Set();
+  for (const item of manifest?.items || []) {
+    const listed = Array.isArray(item.files) && item.files.length ? item.files : item.paths || [];
+    for (const rel of listed) {
+      const normalized = String(rel).split("\\").join("/");
+      if (!normalized || seen.has(normalized)) continue;
+      seen.add(normalized);
+      paths.push(normalized);
     }
-  };
-  walk(dir);
-  return out;
+  }
+  return paths;
+}
+
+function hashFile(dir, rel) {
+  const full = join(dir, rel);
+  if (!existsSync(full) || !statSync(full).isFile()) return null;
+  return createHash("sha256").update(readFileSync(full)).digest("hex");
 }
 
 export async function init(arg, outDir, root = repoRoot()) {
@@ -184,12 +197,15 @@ export async function check(dir, root = repoRoot()) {
       return { ok: false, findings: [{ id: "missing-item", severity: "error", message: `Installed items are missing ${name}.` }] };
     }
   }
-  const expectedFiles = hashTree(kit.dir);
-  const actualFiles = hashTree(dir);
+  const tracked = manifestItemPaths(kit.manifest);
   const drift = [];
-  for (const [rel, hash] of Object.entries(expectedFiles)) {
-    if (!(rel in actualFiles)) drift.push({ id: "drift-missing", severity: "error", message: `${rel} is missing.` });
-    else if (actualFiles[rel] !== hash) drift.push({ id: "drift-changed", severity: "error", message: `${rel} differs from the boilerplate.` });
+  for (const rel of tracked) {
+    const expected = hashFile(kit.dir, rel);
+    const actual = hashFile(dir, rel);
+    if (actual === null) drift.push({ id: "drift-missing", severity: "error", message: `${rel} is missing.` });
+    else if (expected !== null && actual !== expected) {
+      drift.push({ id: "drift-changed", severity: "error", message: `${rel} differs from the boilerplate.` });
+    }
   }
   if (drift.length) return { ok: false, findings: drift };
   return result;

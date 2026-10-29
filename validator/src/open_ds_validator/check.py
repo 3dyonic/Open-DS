@@ -151,6 +151,27 @@ def validate_packs(packs: dict[str, dict], root: Path | None = None) -> dict:
     return _result(findings)
 
 
+def _option_label(by_id: dict[str, dict], question_id: str, option_id: str) -> str:
+    question = by_id.get(question_id) or {}
+    for choice in question.get("options", []):
+        if choice.get("id") == option_id:
+            return str(choice.get("label") or option_id)
+    return option_id
+
+
+def _required_option_detail(because: str, effect: dict, by_id: dict[str, dict]) -> tuple[str, str, str]:
+    question_id = effect.get("question", "")
+    option_ids = _effect_targets(effect)
+    option_id = option_ids[0] if option_ids else ""
+    label = _option_label(by_id, question_id, option_id)
+    cited = question_id or option_id
+    reason = effect.get("reason", "")
+    message = f"{because} needs {label} ({cited})."
+    if reason:
+        message = f"{message} {reason}"
+    return message, label, option_id
+
+
 def _selected(picks: dict[str, dict], effect: dict) -> bool:
     pick = picks.get(effect.get("question", ""))
     if not pick:
@@ -272,15 +293,17 @@ def check_recipe(recipe: dict, packs: dict[str, dict], root: Path | None = None)
                 )
         for effect in option.get("requires", []):
             if not _selected(picks, effect):
+                message, target_label, target_option = _required_option_detail(option["label"], effect, by_id)
                 findings.append(
                     finding(
                         "required-option",
                         "error",
-                        "This answer requires another option.",
+                        message,
                         qid,
                         option["id"],
                         targetQuestion=effect.get("question", ""),
-                        targetOption=effect.get("option", ""),
+                        targetOption=target_option or effect.get("option", ""),
+                        targetLabel=target_label,
                         reason=effect.get("reason", ""),
                         because=option["label"],
                     )
