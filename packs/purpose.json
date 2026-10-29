@@ -31,11 +31,13 @@
           "recommends": [
             {
               "question": "density",
-              "option": "compact"
+              "option": "compact",
+              "reason": "A dense product needs compact space so more data stays in view."
             },
             {
               "question": "spacing-base",
-              "option": "base-4"
+              "option": "base-4",
+              "reason": "A fine 4-point base keeps dense screens aligned."
             }
           ]
         },
@@ -58,11 +60,13 @@
           "recommends": [
             {
               "question": "density",
-              "option": "comfortable"
+              "option": "comfortable",
+              "reason": "Reading pages need room around the text."
             },
             {
               "question": "line-height",
-              "option": "normal"
+              "option": "normal",
+              "reason": "Body copy needs a 1.5 line height."
             }
           ]
         },
@@ -102,7 +106,8 @@
           "discourages": [
             {
               "question": "density",
-              "option": "compact"
+              "option": "compact",
+              "reason": "Compact density works against a calm, low-pressure page."
             }
           ]
         },
@@ -209,11 +214,13 @@
           "recommends": [
             {
               "question": "contrast-metric",
-              "option": "wcag22"
+              "option": "wcag22",
+              "reason": "The AA target names WCAG, so the metric should match."
             },
             {
               "question": "contrast-check",
-              "option": "checked-afterwards"
+              "option": "checked-afterwards",
+              "reason": "AA can be reviewed after the values are written."
             }
           ]
         },
@@ -236,11 +243,13 @@
           "recommends": [
             {
               "question": "contrast-metric",
-              "option": "wcag22"
+              "option": "wcag22",
+              "reason": "The stricter target still uses the WCAG contrast metric."
             },
             {
               "question": "contrast-check",
-              "option": "guaranteed-by-scale"
+              "option": "guaranteed-by-scale",
+              "reason": "AAA is easier to keep when the scale promises contrast."
             }
           ]
         }
@@ -271,7 +280,8 @@
           "recommends": [
             {
               "question": "css-unit",
-              "option": "rem"
+              "option": "rem",
+              "reason": "Web type should follow the reader's font size."
             }
           ]
         },
@@ -370,7 +380,8 @@
           "recommends": [
             {
               "question": "locked-at-init",
-              "option": "lock-core"
+              "option": "lock-core",
+              "reason": "A large team needs core names locked after setup."
             }
           ]
         }
@@ -418,7 +429,8 @@
           "requires": [
             {
               "question": "structure-theme-separation",
-              "option": "separate"
+              "option": "separate",
+              "reason": "Two brands can share components only when theme values stay outside them."
             }
           ]
         }
@@ -449,7 +461,8 @@
           "recommends": [
             {
               "question": "spacing-base",
-              "option": "base-4"
+              "option": "base-4",
+              "reason": "Compact screens need the finer 4-point grid."
             }
           ]
         },
@@ -472,7 +485,8 @@
           "recommends": [
             {
               "question": "line-height",
-              "option": "normal"
+              "option": "normal",
+              "reason": "Comfortable reading uses a 1.5 line height."
             }
           ]
         },
@@ -495,7 +509,8 @@
           "recommends": [
             {
               "question": "spacing-base",
-              "option": "base-8"
+              "option": "base-8",
+              "reason": "Spacious pages grow from a larger base."
             }
           ]
         }
@@ -543,7 +558,8 @@
           "recommends": [
             {
               "question": "chroma-hue-shift",
-              "option": "hue-warm"
+              "option": "hue-warm",
+              "reason": "A warm voice pairs with a warm shift in darker color steps."
             }
           ]
         },

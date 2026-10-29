@@ -71,26 +71,33 @@
         }
       }
     },
+    "link": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["question"],
+      "properties": {
+        "question": { "type": "string" },
+        "option": { "type": "string" },
+        "options": {
+          "type": "array",
+          "items": { "type": "string" },
+          "minItems": 1
+        }
+      }
+    },
     "effect": {
       "type": "object",
       "additionalProperties": false,
-      "required": [
-        "question"
-      ],
+      "required": ["question", "reason"],
       "properties": {
-        "question": {
-          "type": "string"
-        },
-        "option": {
-          "type": "string"
-        },
+        "question": { "type": "string" },
+        "option": { "type": "string" },
         "options": {
           "type": "array",
-          "items": {
-            "type": "string"
-          },
+          "items": { "type": "string" },
           "minItems": 1
-        }
+        },
+        "reason": { "type": "string", "minLength": 1, "maxLength": 280 }
       }
     },
     "parameter": {
@@ -187,13 +194,13 @@
         "depends_on": {
           "type": "array",
           "items": {
-            "$ref": "#/$defs/effect"
+            "$ref": "#/$defs/link"
           }
         },
         "conflicts_with": {
           "type": "array",
           "items": {
-            "$ref": "#/$defs/effect"
+            "$ref": "#/$defs/link"
           }
         },
         "recommends": {
