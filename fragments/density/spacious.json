@@ -1,0 +1,20 @@
+{
+  "css": {
+    "both": {
+      "--density": "spacious"
+    }
+  },
+  "tokens": {
+    "space/reading-text/density": {
+      "$type": "number",
+      "$value": 1.75,
+      "cautions": [
+        {
+          "url": "https://www.w3.org/TR/coga-usable/",
+          "quote": "Do not add so much white space that important content cannot be seen above the scroll.",
+          "checked": "2026-10-29"
+        }
+      ]
+    }
+  }
+}
