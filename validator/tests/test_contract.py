@@ -11,14 +11,17 @@ import pytest
 from open_ds_validator.contract import (
     ContractError,
     apply_fragment_tokens,
+    apply_mappings,
     apply_output,
     collect_links,
     deterministic_zip,
     extension_for,
     force_css_target,
     force_target_floor,
+    form_control_keep_base,
     links_document,
     load_token_paths,
+    missing_basis_names,
     stamp_tokens,
     validate_tokens,
 )
@@ -170,18 +173,67 @@ def test_zip_bytes_are_stable(tmp_path: Path) -> None:
     assert first.read_bytes() == second.read_bytes()
 
 
+def test_your_pick_mapping_ships_without_why_and_a_blank_basis_fails() -> None:
+    packs = {
+        "global": {
+            "id": "global",
+            "order": 2,
+            "tokenScopes": ["card"],
+            "scopeMappings": [
+                {"name": "space/card/density", "basis": "your-pick", "value": "base"},
+                {"name": "space/card/padding-y"},
+            ],
+        }
+    }
+    assert missing_basis_names(packs) == ["space/card/padding-y"]
+    tokens: dict = {}
+    apply_mappings(tokens, packs)
+    written = tokens["semantic"]["space/card/density"]
+    assert written["$extensions"]["openDs"]["basis"] == "your-pick"
+    assert "why" not in written["$extensions"]["openDs"]
+    assert "space/card/padding-y" not in tokens["semantic"]
+    assert "Proposed" not in json.dumps(tokens)
+
+
+def test_form_control_keeps_base_only_when_the_pack_says_so() -> None:
+    assert form_control_keep_base(PACKS) is None
+
+
+def test_caution_is_copied_and_does_not_change_basis() -> None:
+    option = {
+        "why": "Compact density fits more on a screen. It suits tools and tables.",
+        "when_to_choose": "Choose this if people need many controls in view.",
+        "sources": [{"url": "https://carbondesignsystem.com/components/data-table/style/"}],
+    }
+    cautions = [
+        {
+            "url": "https://carbondesignsystem.com/components/data-table/style/",
+            "quote": "Use consistent component sizes throughout a layout.",
+            "checked": "2026-10-29",
+        }
+    ]
+    ext = extension_for(option, "density", ["density/compact"], "", cautions=cautions)
+    assert ext["basis"] == "sourced"
+    assert ext["why"] == option["why"]
+    assert ext["cautions"] == cautions
+    bare = extension_for(option, "density", ["density/compact"], "")
+    assert "cautions" not in bare
+    assert bare["basis"] == ext["basis"]
+    assert bare["why"] == ext["why"]
+
+
 def test_density_fragments_have_no_placeholder_row_heights() -> None:
-    found = {}
-    for name in ("compact", "comfortable", "spacious"):
-        text = (ROOT / "fragments" / "density" / f"{name}.css").read_text(encoding="utf-8").strip()
-        found[name] = text
+    compact = json.loads((ROOT / "fragments" / "density" / "compact.json").read_text(encoding="utf-8"))
+    assert compact["tokens"]["space/table-row/density"]["$value"] == "compact"
+    assert list(compact["tokens"]) == ["space/table-row/density"]
+    for name in ("comfortable", "spacious"):
+        text = (ROOT / "fragments" / "density" / f"{name}.css").read_text(encoding="utf-8")
+        assert f"--density: {name};" in text
         for placeholder in ("36", "52", "64"):
             assert placeholder not in text
-    assert found == {
-        "compact": "--density: compact;",
-        "comfortable": "--density: comfortable;",
-        "spacious": "--density: spacious;",
-    }
+    blob = json.dumps(compact)
+    for placeholder in ("36", "52", "64"):
+        assert placeholder not in blob
 
 
 def test_apply_output_is_deterministic(tmp_path: Path) -> None:
@@ -203,6 +255,12 @@ def test_apply_output_is_deterministic(tmp_path: Path) -> None:
     assert (one / "AGENTS.md").read_text(encoding="utf-8").startswith("Status: provisional\n")
     tokens = json.loads((one / "theme" / "tokens.json").read_text(encoding="utf-8"))
     assert tokens["primitive"]["target"]["min"]["$value"]["value"] == 24
+    semantic = tokens["semantic"]
+    for scope in ("table-row", "form-control", "card", "reading-text"):
+        floor = semantic[f"size/{scope}/min-target"]
+        assert floor["$value"] == {"unit": "px", "value": 24}
+        assert floor["$extensions"]["openDs"]["basis"] == "floor"
+    assert "space/form-control/density" not in semantic
     assert "--target-min: 24px;" in (one / "theme" / "tokens.css").read_text(encoding="utf-8")
     links = json.loads((one / "links.json").read_text(encoding="utf-8"))
     assert all(set(row) == {"basis", "from", "id", "sources", "to", "type"} for row in links)

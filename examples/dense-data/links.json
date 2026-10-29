@@ -110,6 +110,9 @@
     "sources": [
       {
         "url": "https://m3.material.io/foundations/layout/understanding-layout/spacing"
+      },
+      {
+        "url": "https://carbondesignsystem.com/components/data-table/style/"
       }
     ],
     "to": "spacing-base/base-4",
@@ -136,6 +139,9 @@
     "sources": [
       {
         "url": "https://m3.material.io/foundations/layout/understanding-layout/spacing"
+      },
+      {
+        "url": "https://carbondesignsystem.com/components/data-table/style/"
       }
     ],
     "to": "spacing-base/base-4",

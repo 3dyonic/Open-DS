@@ -49,6 +49,16 @@
     "floors": {
       "$ref": "#/$defs/floors",
       "description": "Accessibility floors. Only the pack with id global is enforced on every recipe. See validator/README.md."
+    },
+    "tokenScopes": {
+      "description": "Semantic token scopes for this release. Adding a scope is a pack change.",
+      "type": "array",
+      "items": { "type": "string", "pattern": "^[a-z0-9-]+$" }
+    },
+    "scopeMappings": {
+      "description": "Locked scope mappings. Each one needs a basis. There is no Proposed value.",
+      "type": "array",
+      "items": { "$ref": "#/$defs/scopeMapping" }
     }
   },
   "$defs": {
@@ -260,6 +270,16 @@
           "description": "Repo-relative path to a hand-written file. A JSON file may carry a floors object.",
           "type": "string",
           "minLength": 1
+        },
+        "scopes": {
+          "description": "Semantic scopes this answer's fragment may set. Other scopes keep their base value.",
+          "type": "array",
+          "items": { "type": "string", "pattern": "^[a-z0-9-]+$" }
+        },
+        "cautions": {
+          "description": "Optional notes copied onto token $extensions.openDs. They do not change basis or the reason line.",
+          "type": "array",
+          "items": { "$ref": "#/$defs/caution" }
         }
       }
     },
@@ -335,6 +355,25 @@
           "description": "One sentence, 25 words or fewer.",
           "type": "string"
         }
+      }
+    },
+    "caution": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "url": { "type": "string" },
+        "quote": { "type": "string" },
+        "checked": { "type": "string" }
+      }
+    },
+    "scopeMapping": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["name", "basis"],
+      "properties": {
+        "name": { "type": "string", "pattern": "^[a-z0-9-]+/[a-z0-9-]+/[a-z0-9-]+$" },
+        "basis": { "enum": ["sourced", "floor", "your-pick"] },
+        "value": {}
       }
     },
     "componentClaim": {

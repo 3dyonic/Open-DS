@@ -287,6 +287,53 @@ function backingTargets(question, packs) {
   return targets;
 }
 
+const TOKEN_NAME = /^[a-z0-9-]+\/[a-z0-9-]+\/[a-z0-9-]+$/;
+const BASIS = new Set(["sourced", "floor", "your-pick"]);
+
+function tokenScopes(packs) {
+  const found = [];
+  const ordered = Object.values(packs || {}).sort(
+    (a, b) => (a.order || 0) - (b.order || 0) || (a.id < b.id ? -1 : 1),
+  );
+  for (const pack of ordered) {
+    for (const name of pack.tokenScopes || []) {
+      if (!found.includes(name)) found.push(name);
+    }
+  }
+  return found;
+}
+
+function cautionComplete(item) {
+  return (
+    item &&
+    typeof item.url === "string" &&
+    item.url.trim() &&
+    typeof item.quote === "string" &&
+    item.quote.trim() &&
+    typeof item.checked === "string" &&
+    /^\d{4}-\d{2}-\d{2}$/.test(item.checked)
+  );
+}
+
+function cautionRows(data) {
+  const rows = [];
+  if (!data || typeof data !== "object") return rows;
+  if (Array.isArray(data.cautions)) rows.push(...data.cautions);
+  if (data.tokens && typeof data.tokens === "object") {
+    for (const node of Object.values(data.tokens)) {
+      if (node && typeof node === "object" && Array.isArray(node.cautions))
+        rows.push(...node.cautions);
+    }
+  }
+  return rows;
+}
+
+function semanticNames(data) {
+  if (!data || typeof data !== "object" || !data.tokens || typeof data.tokens !== "object")
+    return [];
+  return Object.keys(data.tokens).filter((key) => TOKEN_NAME.test(key));
+}
+
 function validatePackFields(packs, options = {}) {
   const findings = [];
   const known = new Set();
@@ -356,6 +403,75 @@ function validatePackFields(packs, options = {}) {
             { scheme: pack.id },
           ),
         );
+      }
+    }
+  }
+  const scopes = new Set(tokenScopes(packs));
+  const readFragment = options.readFragment;
+  for (const pack of Object.values(packs || {})) {
+    for (const question of pack.questions || []) {
+      for (const option of resolvedOptions(question, packs)) {
+        const names = semanticNames(option.tokens ? { tokens: option.tokens } : null);
+        const rows = [...(option.cautions || [])];
+        if (option.fragment && typeof readFragment === "function") {
+          const data = readFragment(option.fragment);
+          names.push(...semanticNames(data));
+          rows.push(...cautionRows(data));
+        }
+        if (scopes.size) {
+          for (const name of names) {
+            if (!scopes.has(name.split("/")[1])) {
+              findings.push(
+                finding(
+                  "unknown-scope",
+                  "error",
+                  `${name} uses a scope that is not on the pack allowlist.`,
+                  question.id,
+                  option.id,
+                  { scheme: pack.id },
+                ),
+              );
+            }
+          }
+        }
+        if (rows.some((item) => !cautionComplete(item))) {
+          findings.push(
+            finding(
+              "incomplete-caution",
+              "error",
+              "A caution needs a url, a quote, and a checked date.",
+              question.id,
+              option.id,
+              { scheme: pack.id },
+            ),
+          );
+        }
+      }
+      if (scopes.size) {
+        for (const mapping of pack.scopeMappings || []) {
+          const name = String(mapping.name || "");
+          if (TOKEN_NAME.test(name) && !scopes.has(name.split("/")[1])) {
+            findings.push(
+              finding(
+                "unknown-scope",
+                "error",
+                `${name} uses a scope that is not on the pack allowlist.`,
+                pack.id,
+                "",
+                { scheme: pack.id },
+              ),
+            );
+          }
+        }
+      }
+      for (const mapping of pack.scopeMappings || []) {
+        if (!BASIS.has(mapping.basis)) {
+          findings.push(
+            finding("missing-basis", "error", `${mapping.name || "token"} has no basis.`, "", "", {
+              scheme: pack.id,
+            }),
+          );
+        }
       }
     }
   }
