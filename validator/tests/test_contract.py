@@ -186,13 +186,34 @@ def test_catalog_uses_pack_reasons_and_is_deterministic(tmp_path: Path) -> None:
     assert source["url"] == "https://carbondesignsystem.com/components/data-table/usage/"
     assert source["quote"].startswith("Use for compact interfaces")
     assert source["checked"] == "2026-10-29"
-    for scope in ("form-control", "card", "reading-text"):
-        held = compact["tokens"][scope][0]
-        assert held["state"] == "no-source-yet"
-        assert "before" not in held
-        assert "after" not in held
-        assert held["name"].split("/")[1] == scope
-        assert "scope" not in held
+    form = compact["tokens"]["form-control"][0]
+    card = compact["tokens"]["card"][0]
+    reading = compact["tokens"]["reading-text"][0]
+    assert form["state"] == "unchanged"
+    assert form["before"] == form["after"]
+    assert form["before"]["$value"] == {"unit": "rem", "value": 0.5}
+    form_ext = form["after"]["$extensions"]["openDs"]
+    assert form_ext["basis"] == "sourced"
+    assert form_ext["context"] == ["usage-data/tables"]
+    assert form_ext["sources"][0]["url"] == "https://atlassian.design/components/button/examples"
+    assert form_ext["sources"][0]["checked"] == "2026-10-29"
+    assert "compact for tables" in form_ext["sources"][0]["quote"]
+    assert card["state"] == "unchanged"
+    assert card["before"] == card["after"]
+    assert card["before"]["$value"] == {"unit": "rem", "value": 1}
+    assert card["after"]["$extensions"]["openDs"]["basis"] == "your-pick"
+    assert "why" not in card["after"]["$extensions"]["openDs"]
+    assert reading["state"] == "unchanged"
+    assert reading["before"] == reading["after"]
+    assert reading["before"]["$value"] == 1.5
+    assert reading["after"]["$extensions"]["openDs"]["sources"] == []
+    assert "why" not in reading["after"]["$extensions"]["openDs"]
+    for density in ("comfortable", "spacious"):
+        tokens = first["density"][f"density/{density}"]["tokens"]
+        assert tokens["reading-text"][0]["state"] == "unchanged"
+        assert tokens["reading-text"][0]["before"]["$value"] == 1.5
+        assert tokens["table-row"][0]["state"] == "no-source-yet"
+        assert "before" not in tokens["table-row"][0]
     space = first["spacing-base"]["spacing-base/base-4"]
     assert "button" in space["components"]
     assert "input" in space["components"]
@@ -212,7 +233,10 @@ def test_catalog_scope_states() -> None:
     assert unchanged["before"] == unchanged["after"]
     assert unchanged["before"]["$value"] == "roomy"
     assert "null" not in json.dumps(unchanged)
-    missing = row["form-control"][0]
+    form = row["form-control"][0]
+    assert form["state"] == "unchanged"
+    assert form["before"]["$value"] == {"unit": "rem", "value": 0.5}
+    missing = row["marker"][0]
     assert missing["state"] == "no-source-yet"
     assert "before" not in missing
     assert "after" not in missing
@@ -319,7 +343,19 @@ def test_output_rejects_a_source_without_quote_or_checked() -> None:
 
 
 def test_form_control_keeps_base_only_when_the_pack_says_so() -> None:
-    assert form_control_keep_base(PACKS) is None
+    found = form_control_keep_base(PACKS)
+    assert found is not None
+    assert found["from"] == "density/compact"
+    source = found["effect"]["sources"][0]
+    assert source["url"] == "https://atlassian.design/components/button/examples"
+    assert source["checked"] == "2026-10-29"
+    assert source["quote"] == found["effect"]["reason"]
+    rows, errors = collect_links(PACKS)
+    assert errors == []
+    link = next(row for row in rows if row["id"] == "density/compact|recommends|usage-data/tables")
+    assert link["type"] == "recommends"
+    assert link["basis"] == "sourced"
+    assert link["sources"][0]["quote"] == source["quote"]
 
 
 def test_caution_is_copied_and_does_not_change_basis() -> None:
