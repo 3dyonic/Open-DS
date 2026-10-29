@@ -206,12 +206,21 @@ def test_catalog_uses_pack_reasons_and_is_deterministic(tmp_path: Path) -> None:
     assert reading["state"] == "unchanged"
     assert reading["before"] == reading["after"]
     assert reading["before"]["$value"] == 1.5
-    assert reading["after"]["$extensions"]["openDs"]["sources"] == []
-    assert "why" not in reading["after"]["$extensions"]["openDs"]
+    reading_ext = reading["after"]["$extensions"]["openDs"]
+    assert reading_ext["basis"] == "sourced"
+    assert reading_ext["context"] == ["density/compact"]
+    assert reading_ext["sources"][0]["url"] == "https://designsystem.digital.gov/components/typography/"
+    assert reading_ext["sources"][0]["checked"] == "2026-10-29"
+    assert "medium density" in reading_ext["sources"][0]["quote"]
+    assert card["after"]["$extensions"]["openDs"]["basis"] == "your-pick"
     for density in ("comfortable", "spacious"):
         tokens = first["density"][f"density/{density}"]["tokens"]
-        assert tokens["reading-text"][0]["state"] == "unchanged"
-        assert tokens["reading-text"][0]["before"]["$value"] == 1.5
+        again = tokens["reading-text"][0]
+        assert again["state"] == "unchanged"
+        assert again["before"]["$value"] == 1.5
+        assert again["after"]["$extensions"]["openDs"]["basis"] == "sourced"
+        assert again["after"]["$extensions"]["openDs"]["context"] == [f"density/{density}"]
+        assert tokens["card"][0]["after"]["$extensions"]["openDs"]["basis"] == "your-pick"
         assert tokens["table-row"][0]["state"] == "no-source-yet"
         assert "before" not in tokens["table-row"][0]
     space = first["spacing-base"]["spacing-base/base-4"]

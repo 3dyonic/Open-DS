@@ -48,10 +48,16 @@
     "type": "requires"
   },
   {
-    "basis": "your-pick",
+    "basis": "sourced",
     "from": "density/comfortable",
     "id": "density/comfortable|recommends|line-height/normal",
-    "sources": [],
+    "sources": [
+      {
+        "checked": "2026-10-29",
+        "quote": "Readable text has a medium density. Strive for text that appears neither very dense nor loose.",
+        "url": "https://designsystem.digital.gov/components/typography/"
+      }
+    ],
     "to": "line-height/normal",
     "type": "recommends"
   },
@@ -67,6 +73,20 @@
       }
     ],
     "to": "target-size/material-48",
+    "type": "recommends"
+  },
+  {
+    "basis": "sourced",
+    "from": "density/compact",
+    "id": "density/compact|recommends|line-height/normal",
+    "sources": [
+      {
+        "checked": "2026-10-29",
+        "quote": "Readable text has a medium density. Strive for text that appears neither very dense nor loose.",
+        "url": "https://designsystem.digital.gov/components/typography/"
+      }
+    ],
+    "to": "line-height/normal",
     "type": "recommends"
   },
   {
@@ -124,6 +144,20 @@
     ],
     "to": "spacing-base/base-4",
     "type": "requires"
+  },
+  {
+    "basis": "sourced",
+    "from": "density/spacious",
+    "id": "density/spacious|recommends|line-height/normal",
+    "sources": [
+      {
+        "checked": "2026-10-29",
+        "quote": "Readable text has a medium density. Strive for text that appears neither very dense nor loose.",
+        "url": "https://designsystem.digital.gov/components/typography/"
+      }
+    ],
+    "to": "line-height/normal",
+    "type": "recommends"
   },
   {
     "basis": "your-pick",

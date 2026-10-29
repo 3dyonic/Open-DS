@@ -632,6 +632,20 @@
                   "checked": "2026-10-29"
                 }
               ]
+            },
+            {
+              "question": "line-height",
+              "option": "normal",
+              "reason": "Readable text has a medium density. Strive for text that appears neither very dense nor loose.",
+              "sources": [
+                {
+                  "name": "USWDS",
+                  "title": "Typography",
+                  "url": "https://designsystem.digital.gov/components/typography/",
+                  "quote": "Readable text has a medium density. Strive for text that appears neither very dense nor loose.",
+                  "checked": "2026-10-29"
+                }
+              ]
             }
           ],
           "fragment": "fragments/density/compact.json",
@@ -664,7 +678,16 @@
             {
               "question": "line-height",
               "option": "normal",
-              "reason": "Comfortable reading goes with a 1.5 line height for body text."
+              "reason": "Comfortable reading goes with a 1.5 line height for body text.",
+              "sources": [
+                {
+                  "name": "USWDS",
+                  "title": "Typography",
+                  "url": "https://designsystem.digital.gov/components/typography/",
+                  "quote": "Readable text has a medium density. Strive for text that appears neither very dense nor loose.",
+                  "checked": "2026-10-29"
+                }
+              ]
             },
             {
               "question": "target-size",
@@ -715,6 +738,20 @@
                   "title": "Using Material density on the web",
                   "url": "https://m3.material.io/blog/material-density-web",
                   "quote": "No matter the density, all touch targets should be at least 48px in size.",
+                  "checked": "2026-10-29"
+                }
+              ]
+            },
+            {
+              "question": "line-height",
+              "option": "normal",
+              "reason": "Readable text has a medium density. Strive for text that appears neither very dense nor loose.",
+              "sources": [
+                {
+                  "name": "USWDS",
+                  "title": "Typography",
+                  "url": "https://designsystem.digital.gov/components/typography/",
+                  "quote": "Readable text has a medium density. Strive for text that appears neither very dense nor loose.",
                   "checked": "2026-10-29"
                 }
               ]

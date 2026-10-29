@@ -21,6 +21,7 @@ ZIP_TIME = (1980, 1, 1, 0, 0, 0)
 CHECKED = re.compile(r"^\d{4}-\d{2}-\d{2}$")
 TOKEN_NAME = re.compile(r"^[a-z0-9-]+/[a-z0-9-]+/[a-z0-9-]+$")
 FORM_CONTROL_KEEP_BASE = "Default spacing is used for most use cases, compact for tables."
+USWDS_READING = "Readable text has a medium density. Strive for text that appears neither very dense nor loose."
 
 
 class ContractError(RuntimeError):
@@ -679,37 +680,69 @@ def _when_for_answer(packs: dict[str, dict], answer: str) -> str:
     return ""
 
 
+def _row_mentions(row: dict, origin: str, marker: str) -> bool:
+    if row.get("from") != origin:
+        return False
+    if marker in str(row.get("reason") or ""):
+        return True
+    for source in row.get("sources") or []:
+        if isinstance(source, dict) and marker in str(source.get("quote") or ""):
+            return True
+    return False
+
+
+def _effect_with_text(option: dict, text: str) -> dict | None:
+    for effect in option.get("recommends") or []:
+        blob = [str(effect.get("reason") or "")]
+        for source in effect.get("sources") or []:
+            if isinstance(source, dict):
+                blob.append(str(source.get("quote") or ""))
+        if any(text in item for item in blob):
+            return effect
+    return None
+
+
+def _sourced_from_effect(
+    question: dict, option: dict, effect: dict, packs: dict[str, dict], rows: list[dict], marker: str
+) -> dict:
+    origin = answer_id(question["id"], option["id"])
+    context = sorted(
+        {
+            answer_id(clause["question"], clause["option"])
+            for clause in effect.get("when") or []
+            if clause.get("question") and clause.get("option")
+        }
+    )
+    if not context:
+        context = [origin]
+    link_id = next((row["id"] for row in rows if _row_mentions(row, origin, marker)), "")
+    when = _when_for_answer(packs, context[0]) if context else ""
+    why = str(effect.get("reason") or "")
+    if marker not in why:
+        for source in effect.get("sources") or []:
+            if isinstance(source, dict) and marker in str(source.get("quote") or ""):
+                why = str(source["quote"])
+                break
+    return {
+        "basis": "sourced",
+        "context": context,
+        "decision": question["id"],
+        "link": link_id,
+        "sources": [output_source(item) for item in effect.get("sources") or [] if source_complete(item)],
+        "when": when,
+        "why": why,
+    }
+
+
 def _unchanged_extension(question: dict, option: dict, scope: str, packs: dict[str, dict], rows: list[dict]) -> dict:
     origin = answer_id(question["id"], option["id"])
     found = form_control_keep_base(packs)
     if scope == "form-control" and found and found["from"] == origin:
-        effect = found["effect"]
-        context = sorted(
-            {
-                answer_id(clause["question"], clause["option"])
-                for clause in effect.get("when") or []
-                if clause.get("question") and clause.get("option")
-            }
-        )
-        link_id = next(
-            (
-                row["id"]
-                for row in rows
-                if row["from"] == origin and FORM_CONTROL_KEEP_BASE in str(row.get("reason") or "")
-            ),
-            "",
-        )
-        why = str(effect.get("reason") or "")
-        when = _when_for_answer(packs, context[0]) if context else ""
-        return {
-            "basis": "sourced",
-            "context": context,
-            "decision": question["id"],
-            "link": link_id,
-            "sources": _link_sources(effect, found["option"]),
-            "when": when,
-            "why": why,
-        }
+        return _sourced_from_effect(question, option, found["effect"], packs, rows, FORM_CONTROL_KEEP_BASE)
+    if scope == "reading-text":
+        effect = _effect_with_text(option, USWDS_READING)
+        if effect:
+            return _sourced_from_effect(question, option, effect, packs, rows, USWDS_READING)
     return {
         "basis": "your-pick",
         "context": [],
