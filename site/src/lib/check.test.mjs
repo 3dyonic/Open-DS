@@ -74,6 +74,20 @@ test("multi-brand recommends separation and a missed recommendation stays silent
   assert.equal(typeof result.fingerprint, "string");
 });
 
+test("required-option names the missing option and the pack reason", async () => {
+  const fixture = JSON.parse(
+    readFileSync(join(root, "fixtures", "recipes", "required-option.json"), "utf8"),
+  );
+  const result = await checkRecipe(fixture.recipe, fixture.packs);
+  const required = result.findings.find((item) => item.id === "required-option");
+  assert.equal(required.because, "Ship");
+  assert.equal(required.targetLabel, "Calm");
+  assert.equal(required.targetOption, "calm");
+  assert.equal(required.targetQuestion, "tone");
+  assert.equal(required.reason, "This fixture requires a calm tone.");
+  assert.equal(required.message, "Ship needs Calm (tone). This fixture requires a calm tone.");
+});
+
 test("missing questions are named and summarized", async () => {
   const bad = structuredClone(recipe);
   bad.picks = bad.picks.filter((pick) => pick.question !== "voice" && pick.question !== "density");
@@ -85,6 +99,7 @@ test("missing questions are named and summarized", async () => {
   assert.equal(voice.question, "voice");
   const report = missingQuestionReport(result.findings);
   assert.equal(report.summary, "2 questions still need an answer.");
+  assert.equal(report.fix, "Fix: pick an answer on /build, then run open-ds init <recipe.json>.");
   assert.deepEqual(report.lines, [
     "density has no answer yet. Pick one to finish your recipe.",
     "voice has no answer yet. Pick one to finish your recipe.",

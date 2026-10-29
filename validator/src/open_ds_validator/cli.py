@@ -69,6 +69,13 @@ def format_check_failure(item: dict) -> list[str]:
     """Same lines as the Node CLI: `error <id>: ...` and `Fix: ...`."""
     raw = item.get("severity")
     severity = "error" if not raw or raw == "error" else raw
+    if item.get("id") == "required-option":
+        label = item.get("targetLabel") or "the required option"
+        message = item.get("message") or ""
+        return [
+            f"{severity} required-option: {message}",
+            f"Fix: Add {label} to finish your recipe, then run open-ds check again.",
+        ]
     message = item.get("message") or ""
     if item.get("id") == "missing-question":
         message = f"{item.get('question')} has no answer yet."

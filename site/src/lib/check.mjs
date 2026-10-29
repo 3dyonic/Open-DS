@@ -94,9 +94,6 @@ function materialize(raw, packs) {
   merged.summary = raw.summary || base.summary;
   merged.required = raw.required ?? base.required ?? true;
   merged.ref = raw.ref;
-  if ("why_care" in raw) merged.why_care = raw.why_care;
-  if ("affects" in raw) merged.affects = structuredClone(raw.affects);
-  if ("feeds_into" in raw) merged.feeds_into = structuredClone(raw.feeds_into);
   const options = Object.fromEntries(merged.options.map((item) => [item.id, item]));
   const order = merged.options.map((item) => item.id);
   for (const override of raw.overrides || []) {
@@ -134,6 +131,24 @@ function effectTargets(effect) {
   if (effect.options) return effect.options;
   if (effect.option) return [effect.option];
   return [];
+}
+
+function optionLabel(byId, questionId, optionId) {
+  const question = byId[questionId];
+  const option = (question?.options || []).find((item) => item.id === optionId);
+  return option?.label || optionId;
+}
+
+function requiredOptionDetail(because, effect, byId) {
+  const questionId = effect.question || "";
+  const optionId = effectTargets(effect)[0] || "";
+  const label = optionLabel(byId, questionId, optionId);
+  const cited = questionId || optionId;
+  const reason = effect.reason || "";
+  const message = reason
+    ? `${because} needs ${label} (${cited}). ${reason}`
+    : `${because} needs ${label} (${cited}).`;
+  return { questionId, optionId, label, reason, message };
 }
 
 const TEXT_RATIO = 4.5;
@@ -445,6 +460,9 @@ function finish(findings, recipe, packs, questions) {
   return { ok: true, findings: ordered, recipe };
 }
 
+export const MISSING_QUESTION_FIX =
+  "Fix: pick an answer on /build, then run open-ds init <recipe.json>.";
+
 export function missingQuestionReport(findings) {
   const missing = findings.filter((item) => item.id === "missing-question");
   return {
@@ -452,6 +470,7 @@ export function missingQuestionReport(findings) {
     lines: missing.map(
       (item) => `${item.question} has no answer yet. Pick one to finish your recipe.`,
     ),
+    fix: missing.length ? MISSING_QUESTION_FIX : "",
   };
 }
 
@@ -620,15 +639,13 @@ export async function checkRecipe(recipe, packs, options = {}) {
     });
     for (const effect of option.requires || []) {
       if (!selected(picks, effect)) {
+        const required = requiredOptionDetail(option.label, effect, byId);
         findings.push(
-          finding(
-            "required-option",
-            "error",
-            "This answer requires another option.",
-            qid,
-            option.id,
-            link(effect),
-          ),
+          finding("required-option", "error", required.message, qid, option.id, {
+            ...link(effect),
+            targetOption: required.optionId,
+            targetLabel: required.label,
+          }),
         );
       }
     }
