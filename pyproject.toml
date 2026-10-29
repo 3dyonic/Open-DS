@@ -1,0 +1,27 @@
+[project]
+name = "open-ds-workspace"
+version = "0.1.0"
+description = "Workspace for the Open DS dictionary, validator, and MCP server."
+requires-python = ">=3.11"
+dependencies = []
+
+[tool.uv]
+package = false
+
+[tool.uv.workspace]
+members = ["validator", "mcp"]
+
+[dependency-groups]
+dev = ["pytest>=8", "ruff==0.16.8"]
+
+[tool.pytest.ini_options]
+testpaths = ["validator/tests", "mcp/tests"]
+pythonpath = ["validator/src", "mcp/src"]
+
+[tool.ruff]
+line-length = 120
+target-version = "py312"
+src = ["validator/src", "mcp/src", "validator/tests", "mcp/tests"]
+
+[tool.ruff.lint]
+select = ["E", "F", "I", "UP", "B"]
