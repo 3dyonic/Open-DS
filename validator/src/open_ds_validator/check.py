@@ -7,7 +7,12 @@ from pathlib import Path
 
 import jsonschema
 
-from open_ds_validator.contract import incomplete_caution_rows, missing_basis_names, unknown_scope_rows
+from open_ds_validator.contract import (
+    incomplete_caution_rows,
+    incomplete_source_rows,
+    missing_basis_names,
+    unknown_scope_rows,
+)
 from open_ds_validator.fingerprint import fingerprint_recipe
 from open_ds_validator.floors import base_pack_floor_findings, floor_findings, fragment_path, read_fragment_floors
 from open_ds_validator.load import load_schema, read_json, repo_root, validator_for
@@ -323,6 +328,16 @@ def validate_packs(packs: dict[str, dict], root: Path | None = None) -> dict:
                 "incomplete-caution",
                 "error",
                 "A caution needs a url, a quote, and a checked date.",
+                question_id,
+                option_id,
+            )
+        )
+    for question_id, option_id in incomplete_source_rows(packs, root_path):
+        findings.append(
+            finding(
+                "incomplete-source",
+                "error",
+                "A source needs a url, a quote, and a checked date.",
                 question_id,
                 option_id,
             )
