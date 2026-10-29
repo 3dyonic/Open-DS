@@ -43,6 +43,7 @@ export type Option = {
   when_to_choose: string;
   trade_offs: string[];
   sources: { name: string; title: string; url: string }[];
+  evidence_limited?: boolean;
   formula?: string;
   parameters?: { id: string; type: string; required: boolean; summary: string; pattern?: string }[];
   recommends?: Effect[];
