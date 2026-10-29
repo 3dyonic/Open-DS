@@ -1,0 +1,28 @@
+{
+  "packs": {
+    "purpose": {
+      "id": "purpose",
+      "order": 1,
+      "tokenScopes": ["table-row", "form-control", "card", "reading-text"],
+      "scopeMappings": [
+        {"name": "space/card/density", "basis": "your-pick", "value": "roomy"}
+      ],
+      "questions": [
+        {
+          "id": "density",
+          "axis": "density",
+          "options": [
+            {
+              "id": "compact",
+              "why": "Compact density fits more on a screen. It suits tools and tables.",
+              "when_to_choose": "Choose this if people need many controls in view.",
+              "sources": [],
+              "scopes": ["table-row"],
+              "fragment": "fragments/density/compact.json"
+            }
+          ]
+        }
+      ]
+    }
+  }
+}
