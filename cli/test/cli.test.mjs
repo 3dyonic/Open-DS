@@ -65,3 +65,50 @@ test("add and diff are stubs", async () => {
     console.log = original;
   }
 });
+
+async function installed() {
+  const dir = mkdtempSync(join(tmpdir(), "open-ds-"));
+  await init(recipePath, dir, root);
+  return dir;
+}
+
+test("check fails when an installed file is changed", async () => {
+  const { appendFileSync, readdirSync } = await import("node:fs");
+  const dir = await installed();
+  try {
+    assert.equal((await check(dir, root)).ok, true);
+    appendFileSync(join(dir, "theme", "tokens.css"), "/* drift */\n");
+    const result = await check(dir, root);
+    assert.equal(result.ok, false);
+    assert.equal(result.fingerprint, undefined);
+    assert.ok(result.findings.some((f) => f.id === "drift-changed" && f.message.includes("theme/tokens.css")));
+  } finally {
+    rmSync(dir, { recursive: true, force: true });
+  }
+});
+
+test("check fails when an installed file is deleted", async () => {
+  const dir = await installed();
+  try {
+    rmSync(join(dir, "theme", "tokens.css"));
+    const result = await check(dir, root);
+    assert.equal(result.ok, false);
+    assert.ok(result.findings.some((f) => f.id === "drift-missing"));
+  } finally {
+    rmSync(dir, { recursive: true, force: true });
+  }
+});
+
+test("check --dir says where it looked", async () => {
+  const dir = mkdtempSync(join(tmpdir(), "open-ds-empty-"));
+  const logs = [];
+  const original = console.log;
+  console.log = (line) => logs.push(String(line));
+  try {
+    assert.equal(await run(["check", "--dir", dir]), 1);
+    assert.ok(logs.join("\n").includes(dir));
+  } finally {
+    console.log = original;
+    rmSync(dir, { recursive: true, force: true });
+  }
+});

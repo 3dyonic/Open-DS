@@ -1,5 +1,6 @@
 import { cpSync, mkdirSync, readFileSync, readdirSync, writeFileSync, existsSync } from "node:fs";
-import { dirname, join, resolve } from "node:path";
+import { dirname, join, relative, resolve } from "node:path";
+import { createHash } from "node:crypto";
 import { fileURLToPath } from "node:url";
 import { checkRecipe } from "../../site/src/lib/check.mjs";
 
@@ -56,6 +57,21 @@ async function findByFingerprint(root, fingerprint, packs) {
   return null;
 }
 
+export function hashTree(dir, skip = new Set(["open-ds.json"])) {
+  const out = {};
+  const walk = (d) => {
+    for (const entry of readdirSync(d, { withFileTypes: true })) {
+      const full = join(d, entry.name);
+      const rel = relative(dir, full).split("\\").join("/");
+      if (skip.has(rel)) continue;
+      if (entry.isDirectory()) walk(full);
+      else if (entry.isFile()) out[rel] = createHash("sha256").update(readFileSync(full)).digest("hex");
+    }
+  };
+  walk(dir);
+  return out;
+}
+
 export async function init(arg, outDir, root = repoRoot()) {
   const packs = loadPacks(root);
   let recipe;
@@ -89,7 +105,7 @@ export async function init(arg, outDir, root = repoRoot()) {
 
 export async function check(dir, root = repoRoot()) {
   const file = join(dir, "open-ds.json");
-  if (!existsSync(file)) throw new Error("open-ds.json is missing. Run init first.");
+  if (!existsSync(file)) throw new Error(`open-ds.json is missing in ${dir}. Run init first, or pass --dir <folder init created>.`);
   const installed = readJson(file);
   const packs = loadPacks(root);
   const result = await checkRecipe(installed.recipe, packs);
@@ -115,6 +131,14 @@ export async function check(dir, root = repoRoot()) {
       return { ok: false, findings: [{ id: "missing-item", severity: "error", message: `Installed items are missing ${name}.` }] };
     }
   }
+  const expectedFiles = hashTree(kit.dir);
+  const actualFiles = hashTree(dir);
+  const drift = [];
+  for (const [rel, hash] of Object.entries(expectedFiles)) {
+    if (!(rel in actualFiles)) drift.push({ id: "drift-missing", severity: "error", message: `${rel} is missing.` });
+    else if (actualFiles[rel] !== hash) drift.push({ id: "drift-changed", severity: "error", message: `${rel} differs from the boilerplate.` });
+  }
+  if (drift.length) return { ok: false, findings: drift };
   return result;
 }
 
@@ -152,7 +176,7 @@ export async function run(argv) {
       const dir = dirFlag >= 0 ? rest[dirFlag + 1] : ".";
       const result = await check(resolve(dir));
       if (!result.ok) {
-        for (const item of result.findings) console.log(`${item.severity} ${item.id}`);
+        for (const item of result.findings) console.log(`${item.severity} ${item.id}${item.message ? `: ${item.message}` : ""}`);
         return 1;
       }
       console.log(result.fingerprint);
