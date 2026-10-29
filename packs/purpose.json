@@ -621,6 +621,14 @@
               "option": "base-4",
               "reason": "A fine 4 px grid fits the tighter spacing of compact screens."
             }
+          ],
+          "fragment": "fragments/density/compact.css",
+          "requires": [
+            {
+              "question": "spacing-base",
+              "option": "base-4",
+              "reason": "A fine 4 px grid fits the tighter spacing of compact screens."
+            }
           ]
         },
         {
@@ -697,6 +705,14 @@
                   "checked": "2026-10-29"
                 }
               ]
+            }
+          ],
+          "fragment": "fragments/density/spacious.css",
+          "requires": [
+            {
+              "question": "spacing-base",
+              "option": "base-8",
+              "reason": "Large gaps grow from a larger 8 px base."
             }
           ],
           "fragment": "fragments/density/spacious.css",

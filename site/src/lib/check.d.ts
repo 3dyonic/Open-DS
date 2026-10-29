@@ -7,6 +7,7 @@ export type Finding = {
   option?: string;
   targetQuestion?: string;
   targetOption?: string;
+  targetLabel?: string;
   reason?: string;
   because?: string;
 };
@@ -28,5 +29,9 @@ export function checkRecipe(
     readFragment?: (fragment: string) => { floors?: object } | null;
   },
 ): Promise<CheckResult>;
-export function missingQuestionReport(findings: Finding[]): { summary: string; lines: string[] };
+export function missingQuestionReport(findings: Finding[]): {
+  summary: string;
+  lines: string[];
+  fix: string;
+};
 export function fingerprintRecipe(recipe: object): Promise<string>;
