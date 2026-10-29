@@ -1,0 +1,210 @@
+{
+  "chain": [
+    {
+      "from": "product-type",
+      "line": "A dense product keeps more data in view when space is compact.",
+      "rule": "recommends",
+      "to": "density"
+    },
+    {
+      "from": "density",
+      "line": "Compact density sets a small spacing base.",
+      "rule": "requires",
+      "to": "spacing-base"
+    },
+    {
+      "from": "type-scale-ratio",
+      "line": "The tight type scale is a plain recipe pick. No pack rule links it to the spacing base.",
+      "rule": "states",
+      "to": "type-scale-ratio"
+    }
+  ],
+  "id": "dense-data",
+  "name": "Dense data",
+  "packs": [
+    "purpose",
+    "global",
+    "color-primitives",
+    "accessibility",
+    "typography",
+    "spacing",
+    "radius",
+    "theming",
+    "delivery"
+  ],
+  "picks": [
+    {
+      "option": "dense-data",
+      "question": "product-type",
+      "rationale": "People scan lots of data on one screen."
+    },
+    {
+      "option": "public",
+      "question": "users-and-context",
+      "rationale": "Most people arrive without an account and without training."
+    },
+    {
+      "option": "wcag-22-aa",
+      "question": "accessibility-target",
+      "rationale": "AA is the commitment for this public site. AAA is a later choice."
+    },
+    {
+      "option": "web",
+      "question": "platforms",
+      "rationale": "The first surface is the website."
+    },
+    {
+      "option": "solo-starting",
+      "question": "team",
+      "rationale": "One person maintains this starter, so the list stays short."
+    },
+    {
+      "option": "single-brand",
+      "question": "brand-variance",
+      "rationale": "This starter is one brand. A second brand is out of this recipe."
+    },
+    {
+      "option": "compact",
+      "question": "density",
+      "rationale": "A dense product needs compact space so more data stays in view."
+    },
+    {
+      "option": "warm",
+      "question": "voice",
+      "rationale": "The words should sound human and direct, not cute."
+    },
+    {
+      "option": "wcag22",
+      "question": "contrast-metric",
+      "rationale": "The accessibility target names WCAG 2.2, so the metric should match it."
+    },
+    {
+      "option": "low-is-light",
+      "question": "scale-direction",
+      "rationale": "The step names should run from 50 light toward 1000 dark."
+    },
+    {
+      "option": "rem",
+      "question": "css-unit",
+      "rationale": "Type and space should follow the reader's font size."
+    },
+    {
+      "option": "separate",
+      "question": "structure-theme-separation",
+      "rationale": "A theme change must not require edits inside the components."
+    },
+    {
+      "option": "oklch",
+      "question": "color-space",
+      "rationale": "The ramp scheme is described in OKLCH so lightness can stay even."
+    },
+    {
+      "option": "lightness-delta",
+      "question": "step-distance",
+      "rationale": "Equal lightness steps are easier to explain than deltaE2000."
+    },
+    {
+      "option": "eleven",
+      "question": "step-count",
+      "rationale": "Eleven names match the 50 to 950 set people already expect."
+    },
+    {
+      "option": "perceptual",
+      "question": "lightness-curve",
+      "rationale": "Most interface color sits in the middle of the ramp."
+    },
+    {
+      "option": "hue-warm",
+      "question": "chroma-hue-shift",
+      "rationale": "The provisional brand is warm, so darker steps may shift warmer."
+    },
+    {
+      "option": "hex",
+      "params": {
+        "seed": "#C4622D"
+      },
+      "question": "seed-input",
+      "rationale": "One provisional hex is enough to name the terracotta seed."
+    },
+    {
+      "option": "surface-pair",
+      "question": "on-color-pairing",
+      "rationale": "Text and its surface should use one pair: surface and on-surface."
+    },
+    {
+      "option": "checked-afterwards",
+      "question": "contrast-check",
+      "rationale": "Contrast is a review step. This dictionary does not measure it."
+    },
+    {
+      "option": "system-sans",
+      "question": "font-family",
+      "rationale": "A system sans font is enough until a custom font is chosen."
+    },
+    {
+      "option": "major-second",
+      "question": "type-scale-ratio",
+      "rationale": "The tight type scale is a recipe pick. No pack rule links it to spacing."
+    },
+    {
+      "option": "size-14",
+      "question": "base-font-size",
+      "rationale": "Dense labels use a 14 pixel body."
+    },
+    {
+      "option": "tight",
+      "question": "line-height",
+      "rationale": "Short labels use a 1.3 line height."
+    },
+    {
+      "option": "base-4",
+      "question": "spacing-base",
+      "rationale": "Compact screens stay aligned on a 4-point base."
+    },
+    {
+      "option": "linear",
+      "question": "spacing-scale",
+      "rationale": "Even space steps are easier to remember in a small system."
+    },
+    {
+      "option": "radius-4",
+      "question": "radius-base",
+      "rationale": "Corners stay slight. Density does not set the radius."
+    },
+    {
+      "option": "linear",
+      "question": "radius-progression",
+      "rationale": "Radius steps add a fixed amount. This is a recipe pick."
+    },
+    {
+      "option": "sets-and-modifiers",
+      "question": "theme-shape",
+      "rationale": "Light and dark are modifiers on one theme, not two products."
+    },
+    {
+      "option": "full-boilerplate",
+      "question": "shareable-item",
+      "rationale": "A team should get tokens, CSS, and components together."
+    },
+    {
+      "option": "lock-core",
+      "question": "locked-at-init",
+      "rationale": "Tiers, the on-color pair, and CSS variable names stay fixed after init."
+    },
+    {
+      "option": "three-tier",
+      "question": "token-tiers",
+      "rationale": "The starter keeps primitive, semantic, and component tiers."
+    },
+    {
+      "option": "light",
+      "question": "default-theme",
+      "rationale": "The page opens on the light set. Dark is a modifier."
+    }
+  ],
+  "provisional": true,
+  "serves": "Lots of data on one screen.",
+  "status": "provisional",
+  "summary": "Compact density, a 4-point spacing base, and a tight type scale.",
+  "version": "0.1.0"
+}
