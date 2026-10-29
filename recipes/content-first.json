@@ -3,6 +3,7 @@
   "name": "Content-first",
   "version": "0.1.0",
   "provisional": true,
+  "status": "provisional",
   "summary": "A large type scale and generous spacing for people who come to read.",
   "serves": "People come to read.",
   "packs": [

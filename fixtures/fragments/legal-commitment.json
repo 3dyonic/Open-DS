@@ -6,7 +6,7 @@
         "flags": [
           "legal-commitment"
         ],
-        "confirms": false,
+        "prevention": "reversible",
         "critical": false
       }
     ]

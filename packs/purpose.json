@@ -598,6 +598,28 @@
               "question": "spacing-base",
               "option": "base-4",
               "reason": "A fine 4 px grid fits the tighter spacing of compact screens."
+            },
+            {
+              "question": "target-size",
+              "option": "material-48",
+              "reason": "No matter the density, all touch targets should be at least 48 px.",
+              "sources": [
+                {
+                  "name": "Material",
+                  "title": "Using Material density on the web",
+                  "url": "https://m3.material.io/blog/material-density-web",
+                  "quote": "No matter the density, all touch targets should be at least 48px in size.",
+                  "checked": "2026-10-29"
+                }
+              ]
+            }
+          ],
+          "fragment": "fragments/density/compact.css",
+          "requires": [
+            {
+              "question": "spacing-base",
+              "option": "base-4",
+              "reason": "A fine 4 px grid fits the tighter spacing of compact screens."
             }
           ],
           "fragment": "fragments/density/compact.css",
@@ -630,6 +652,20 @@
               "question": "line-height",
               "option": "normal",
               "reason": "Comfortable reading goes with a 1.5 line height for body text."
+            },
+            {
+              "question": "target-size",
+              "option": "material-48",
+              "reason": "No matter the density, all touch targets should be at least 48 px.",
+              "sources": [
+                {
+                  "name": "Material",
+                  "title": "Using Material density on the web",
+                  "url": "https://m3.material.io/blog/material-density-web",
+                  "quote": "No matter the density, all touch targets should be at least 48px in size.",
+                  "checked": "2026-10-29"
+                }
+              ]
             }
           ],
           "fragment": "fragments/density/comfortable.css"
@@ -651,6 +687,28 @@
             }
           ],
           "recommends": [
+            {
+              "question": "spacing-base",
+              "option": "base-8",
+              "reason": "Large gaps grow from a larger 8 px base."
+            },
+            {
+              "question": "target-size",
+              "option": "material-48",
+              "reason": "No matter the density, all touch targets should be at least 48 px.",
+              "sources": [
+                {
+                  "name": "Material",
+                  "title": "Using Material density on the web",
+                  "url": "https://m3.material.io/blog/material-density-web",
+                  "quote": "No matter the density, all touch targets should be at least 48px in size.",
+                  "checked": "2026-10-29"
+                }
+              ]
+            }
+          ],
+          "fragment": "fragments/density/spacious.css",
+          "requires": [
             {
               "question": "spacing-base",
               "option": "base-8",
