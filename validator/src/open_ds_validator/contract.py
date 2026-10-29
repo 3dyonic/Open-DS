@@ -622,34 +622,102 @@ def components_for(paths: list[str], tokens: dict, css: str, var_by_path: dict[s
     return sorted(names)
 
 
+# Values already in the base theme. form-control is the button and input
+# block padding (--space-2). card is the card padding (--space-4).
+# reading-text is the body line height. table-row has no theme value.
+SCOPE_BASE_PATH = {
+    "form-control": ("primitive", "space", "2"),
+    "card": ("primitive", "space", "4"),
+    "reading-text": ("primitive", "font", "lineHeight", "body"),
+}
+
+
+def _theme_scope_token(scope: str, base_tokens: dict) -> dict | None:
+    parts = SCOPE_BASE_PATH.get(scope)
+    if not parts:
+        return None
+    node: object = base_tokens
+    for part in parts:
+        if not isinstance(node, dict) or part not in node:
+            return None
+        node = node[part]
+    if not isinstance(node, dict) or "$value" not in node:
+        return None
+    return {"$type": node.get("$type", "other"), "$value": copy.deepcopy(node["$value"])}
+
+
 def _catalog_base(name: str, packs: dict[str, dict], base_tokens: dict) -> dict | None:
-    """The pack's base token for this name, when it has one."""
+    """The pack's base token for this name, when it has one. No new numbers."""
     for pack in packs.values():
         for mapping in pack.get("scopeMappings") or []:
             if str(mapping.get("name") or "") != name or "value" not in mapping:
                 continue
             if mapping.get("basis") not in BASIS:
                 continue
-            ext = {
-                "basis": mapping["basis"],
-                "context": [],
-                "decision": "scope-mapping",
-                "link": "",
-                "sources": [],
-                "when": "",
-            }
-            if mapping["basis"] != "your-pick" and mapping.get("why"):
-                ext["why"] = mapping["why"]
-            return {
-                "$extensions": {"openDs": ext},
-                "$type": "other",
-                "$value": copy.deepcopy(mapping["value"]),
-            }
+            return {"$type": "other", "$value": copy.deepcopy(mapping["value"])}
+    if TOKEN_NAME.fullmatch(name):
+        theme = _theme_scope_token(scope_of(name), base_tokens)
+        if theme is not None:
+            return theme
     semantic = base_tokens.get("semantic") if isinstance(base_tokens, dict) else None
     node = semantic.get(name) if isinstance(semantic, dict) else None
     if isinstance(node, dict) and "$value" in node:
-        return copy.deepcopy(node)
+        return {"$type": node.get("$type", "other"), "$value": copy.deepcopy(node["$value"])}
     return None
+
+
+def _when_for_answer(packs: dict[str, dict], answer: str) -> str:
+    if "/" not in answer:
+        return ""
+    question_id, option_id = answer.split("/", 1)
+    for question in all_questions(packs):
+        if question.get("id") != question_id:
+            continue
+        for option in question.get("options") or []:
+            if option.get("id") == option_id:
+                return str(option.get("when_to_choose") or "")
+    return ""
+
+
+def _unchanged_extension(question: dict, option: dict, scope: str, packs: dict[str, dict], rows: list[dict]) -> dict:
+    origin = answer_id(question["id"], option["id"])
+    found = form_control_keep_base(packs)
+    if scope == "form-control" and found and found["from"] == origin:
+        effect = found["effect"]
+        context = sorted(
+            {
+                answer_id(clause["question"], clause["option"])
+                for clause in effect.get("when") or []
+                if clause.get("question") and clause.get("option")
+            }
+        )
+        link_id = next(
+            (
+                row["id"]
+                for row in rows
+                if row["from"] == origin and FORM_CONTROL_KEEP_BASE in str(row.get("reason") or "")
+            ),
+            "",
+        )
+        why = str(effect.get("reason") or "")
+        when = _when_for_answer(packs, context[0]) if context else ""
+        return {
+            "basis": "sourced",
+            "context": context,
+            "decision": question["id"],
+            "link": link_id,
+            "sources": _link_sources(effect, found["option"]),
+            "when": when,
+            "why": why,
+        }
+    return {
+        "basis": "your-pick",
+        "context": [],
+        "decision": "scope-mapping",
+        "link": "",
+        "sources": [],
+        "when": "",
+    }
 
 
 def build_catalog(packs: dict[str, dict], root: Path | None = None) -> dict:
@@ -703,7 +771,8 @@ def build_catalog(packs: dict[str, dict], root: Path | None = None) -> dict:
             sources = [output_source(item) for item in option.get("sources") or [] if source_complete(item)]
             option_cautions = complete_cautions(option.get("cautions"))
             allowed = token_scopes(packs)
-            if "scopes" in option:
+            cover_scopes = "scopes" in option or question.get("axis") == "density" or question.get("id") == "density"
+            if cover_scopes:
                 for scope in allowed:
                     grouped.setdefault(scope, [])
             for name in names:
@@ -723,7 +792,7 @@ def build_catalog(packs: dict[str, dict], root: Path | None = None) -> dict:
                 if before is not None:
                     entry["before"] = before
                 grouped.setdefault(scope, []).append(entry)
-            if "scopes" in option:
+            if cover_scopes:
                 for scope in allowed:
                     if grouped.get(scope):
                         continue
@@ -731,15 +800,17 @@ def build_catalog(packs: dict[str, dict], root: Path | None = None) -> dict:
                     before = _catalog_base(placeholder, packs, base)
                     if before is None:
                         grouped[scope] = [{"name": placeholder, "state": "no-source-yet"}]
-                    else:
-                        grouped[scope] = [
-                            {
-                                "after": copy.deepcopy(before),
-                                "before": before,
-                                "name": placeholder,
-                                "state": "unchanged",
-                            }
-                        ]
+                        continue
+                    token = copy.deepcopy(before)
+                    token["$extensions"] = {"openDs": _unchanged_extension(question, option, scope, packs, rows)}
+                    grouped[scope] = [
+                        {
+                            "after": copy.deepcopy(token),
+                            "before": token,
+                            "name": placeholder,
+                            "state": "unchanged",
+                        }
+                    ]
             axis = question.get("axis") or question["id"]
             catalog.setdefault(axis, {})[key] = {
                 "components": components_for(used_paths, base, css, var_by_path),
