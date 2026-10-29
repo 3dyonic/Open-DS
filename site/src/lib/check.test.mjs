@@ -68,13 +68,18 @@ test("an unmet requirement is an error and a missed recommendation is info", asy
   assert.ok(ids(result, "error").includes("required-option"));
   assert.equal(result.fingerprint, undefined);
   const required = result.findings.find((item) => item.id === "required-option");
-  assert.match(required.reason, /theme values/);
+  const brand = packs.purpose.questions.find((item) => item.id === "brand-variance");
+  const multi = brand.options.find((item) => item.id === "multi-brand");
+  const effect = multi.requires.find(
+    (item) => item.question === "structure-theme-separation" && item.option === "separate",
+  );
+  assert.equal(required.reason, effect.reason);
   assert.equal(required.because, "Multi-brand");
   assert.equal(required.targetLabel, "Separate");
   assert.equal(required.targetOption, "separate");
   assert.equal(
     required.message,
-    "Multi-brand needs Separate (structure-theme-separation). Two brands can share components only when theme values stay outside them.",
+    `Multi-brand needs Separate (structure-theme-separation). ${effect.reason}`,
   );
 });
 
