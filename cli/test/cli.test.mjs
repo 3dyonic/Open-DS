@@ -196,6 +196,32 @@ test("listed failures print a reason and a fix", () => {
   }
 });
 
+test("check ignores edits to user-owned files outside manifest items", async () => {
+  const { appendFileSync } = await import("node:fs");
+  const dir = await installed();
+  try {
+    appendFileSync(join(dir, "README.md"), "\nNotes the team added.\n");
+    appendFileSync(join(dir, "AGENTS.md"), "\nLocal agent notes.\n");
+    appendFileSync(join(dir, "CHANGELOG.md"), "\nLocal changelog.\n");
+    const result = await check(dir, root);
+    assert.equal(result.ok, true);
+    assert.equal(result.fingerprint, manifest.fingerprint);
+  } finally {
+    rmSync(dir, { recursive: true, force: true });
+  }
+});
+
+test("required-option names the missing option and the pack reason", () => {
+  const [line, fixLine] = formatCheckFailure({
+    id: "required-option",
+    severity: "error",
+    message: "Ship needs Calm (tone). This fixture requires a calm tone.",
+    targetLabel: "Calm",
+  });
+  assert.equal(line, "error required-option: Ship needs Calm (tone). This fixture requires a calm tone.");
+  assert.equal(fixLine, "Fix: Add Calm to finish your recipe, then run open-ds check again.");
+});
+
 test("check reports a missing uv binary in the error format", async () => {
   const dir = await installed();
   try {

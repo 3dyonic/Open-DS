@@ -163,6 +163,18 @@ def test_multi_brand_recommends_separation_without_blocking() -> None:
     assert "fingerprint" in result
 
 
+def test_required_option_names_the_missing_option_and_the_pack_reason() -> None:
+    case = json.loads((ROOT / "fixtures" / "recipes" / "required-option.json").read_text(encoding="utf-8"))
+    result = check_recipe(case["recipe"], case["packs"], ROOT)
+    required = next(item for item in result["findings"] if item["id"] == "required-option")
+    assert required["because"] == "Ship"
+    assert required["targetLabel"] == "Calm"
+    assert required["targetOption"] == "calm"
+    assert required["targetQuestion"] == "tone"
+    assert required["reason"] == "This fixture requires a calm tone."
+    assert required["message"] == "Ship needs Calm (tone). This fixture requires a calm tone."
+
+
 def test_discouraged_pick_is_a_warning_and_still_ok() -> None:
     recipe = _set("product-type", "calm", rationale="The product should feel quiet.")
     recipe = _set_on(recipe, "density", "compact", "Still compact for the test.")
