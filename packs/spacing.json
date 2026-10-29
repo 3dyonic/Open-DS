@@ -1,0 +1,105 @@
+{
+  "id": "spacing",
+  "title": "Spacing",
+  "summary": "Starter decisions for space.",
+  "version": "0.1.0",
+  "scope": "scoped",
+  "order": 6,
+  "questions": [
+    {
+      "id": "spacing-base",
+      "prompt": "What is the spacing base?",
+      "summary": "The smallest step the scale builds on.",
+      "required": true,
+      "options": [
+        {
+          "id": "base-4",
+          "label": "4",
+          "summary": "A four-pixel base.",
+          "why": "A 4 pixel base builds a simple grid. Most steps are multiples of 4.",
+          "when_to_choose": "Choose this if you want a fine grid.",
+          "trade_offs": [
+            "The scale has more steps to name."
+          ],
+          "sources": [
+            {
+              "name": "Material",
+              "title": "Spacing",
+              "url": "https://m3.material.io/foundations/layout/understanding-layout/spacing"
+            }
+          ],
+          "formula": "Multiples of 4 pixels, recorded in the chosen unit."
+        },
+        {
+          "id": "base-8",
+          "label": "8",
+          "summary": "An eight-pixel base.",
+          "why": "An 8 pixel base keeps the scale short and coarse.",
+          "when_to_choose": "Choose this if you want fewer space tokens.",
+          "trade_offs": [
+            "Fine adjustments are harder."
+          ],
+          "sources": [
+            {
+              "name": "Material",
+              "title": "Spacing",
+              "url": "https://m3.material.io/foundations/layout/understanding-layout/spacing"
+            }
+          ],
+          "formula": "Multiples of 8 pixels, recorded in the chosen unit."
+        }
+      ]
+    },
+    {
+      "id": "spacing-scale",
+      "prompt": "How does the spacing scale grow?",
+      "summary": "Linear adds the base. Geometric multiplies it.",
+      "required": true,
+      "options": [
+        {
+          "id": "linear",
+          "label": "Linear",
+          "summary": "Add the base each step.",
+          "why": "Linear space adds the same base each step.",
+          "when_to_choose": "Choose this if gaps should be easy to predict.",
+          "trade_offs": [
+            "Large gaps grow slowly."
+          ],
+          "sources": [
+            {
+              "name": "Material",
+              "title": "Spacing",
+              "url": "https://m3.material.io/foundations/layout/understanding-layout/spacing"
+            }
+          ],
+          "formula": "Each step adds the base."
+        },
+        {
+          "id": "geometric",
+          "label": "Geometric",
+          "summary": "Multiply the base each step.",
+          "why": "Geometric space multiplies the base, so large gaps grow fast.",
+          "when_to_choose": "Choose this if page gaps should jump in size.",
+          "trade_offs": [
+            "Middle steps can feel missing."
+          ],
+          "sources": [
+            {
+              "name": "Material",
+              "title": "Spacing",
+              "url": "https://m3.material.io/foundations/layout/understanding-layout/spacing"
+            }
+          ],
+          "formula": "Each step multiplies the base."
+        }
+      ]
+    },
+    {
+      "id": "css-unit",
+      "prompt": "Which unit does space use?",
+      "summary": "References the global unit.",
+      "required": true,
+      "ref": "global:css-unit"
+    }
+  ]
+}
