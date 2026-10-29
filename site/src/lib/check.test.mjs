@@ -47,9 +47,13 @@ test("a missing rationale is rejected with no fingerprint", async () => {
   assert.equal(result.fingerprint, undefined);
 });
 
-test("an unmet requirement is an error and a missed recommendation is info", async () => {
-  const bad = structuredClone(recipe);
-  for (const pick of bad.picks) {
+test("multi-brand recommends separation and a missed recommendation stays silent", async () => {
+  const brand = packs.purpose.questions.find((item) => item.id === "brand-variance");
+  const multi = brand.options.find((item) => item.id === "multi-brand");
+  assert.equal(multi.requires, undefined);
+  assert.match(multi.recommends[0].reason, /theme values/);
+  const draft = structuredClone(recipe);
+  for (const pick of draft.picks) {
     if (pick.question === "brand-variance") {
       pick.option = "multi-brand";
       pick.rationale = "Two brands share this starter.";
@@ -63,24 +67,25 @@ test("an unmet requirement is an error and a missed recommendation is info", asy
       pick.rationale = "Try a tighter line height.";
     }
   }
-  const result = await checkRecipe(bad, packs);
-  assert.equal(result.ok, false);
-  assert.ok(ids(result, "error").includes("required-option"));
-  assert.equal(result.fingerprint, undefined);
+  const result = await checkRecipe(draft, packs);
+  assert.equal(result.ok, true, JSON.stringify(result.findings));
+  assert.equal(ids(result).includes("required-option"), false);
+  assert.equal(ids(result).includes("recommend"), false);
+  assert.equal(typeof result.fingerprint, "string");
+});
+
+test("required-option names the missing option and the pack reason", async () => {
+  const fixture = JSON.parse(
+    readFileSync(join(root, "fixtures", "recipes", "required-option.json"), "utf8"),
+  );
+  const result = await checkRecipe(fixture.recipe, fixture.packs);
   const required = result.findings.find((item) => item.id === "required-option");
-  const brand = packs.purpose.questions.find((item) => item.id === "brand-variance");
-  const multi = brand.options.find((item) => item.id === "multi-brand");
-  const effect = multi.requires.find(
-    (item) => item.question === "structure-theme-separation" && item.option === "separate",
-  );
-  assert.equal(required.reason, effect.reason);
-  assert.equal(required.because, "Multi-brand");
-  assert.equal(required.targetLabel, "Separate");
-  assert.equal(required.targetOption, "separate");
-  assert.equal(
-    required.message,
-    `Multi-brand needs Separate (structure-theme-separation). ${effect.reason}`,
-  );
+  assert.equal(required.because, "Ship");
+  assert.equal(required.targetLabel, "Calm");
+  assert.equal(required.targetOption, "calm");
+  assert.equal(required.targetQuestion, "tone");
+  assert.equal(required.reason, "This fixture requires a calm tone.");
+  assert.equal(required.message, "Ship needs Calm (tone). This fixture requires a calm tone.");
 });
 
 test("missing questions are named and summarized", async () => {

@@ -31,6 +31,7 @@ pnpm install
 3. A purpose effect (`recommends`, `discourages`, `requires`) needs a `reason` of 1 to 280 characters.
 4. If the answer is global, put it in `packs/global.json`. A scoped pack references it with `ref` instead of copying the options. An `overrides` entry replaces one global option.
 5. Run `uv run open-ds-validator check` on a recipe that uses the new answer.
+6. Optional question fields are `affects`, `feeds_into`, and `why_care` (25 words or fewer). A `feeds_into` id must exist and be backed by `requires`, `discourages`, or `recommends`. An option may point `fragment` at a file in the repo. Floors live on `packs/global.json`. See `validator/README.md`.
 
 Do not calculate colors in the validator. Do not cite Specify. Say "DTCG format" for token files. Do not claim another tool can load them unless a test proves it.
 
