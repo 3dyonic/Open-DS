@@ -4,7 +4,10 @@ import { brandCopy, brandName } from "@/lib/data";
 import "./globals.css";
 
 export const metadata: Metadata = {
-  title: brandName,
+  title: {
+    default: `Home · ${brandName}`,
+    template: `%s · ${brandName}`,
+  },
   description: brandCopy.tagline,
 };
 
@@ -32,7 +35,9 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
               <ul className="flex flex-wrap gap-4 text-sm">
                 {links.map(([label, href]) => (
                   <li key={href}>
-                    <Link href={href}>{label}</Link>
+                    <Link className="inline-flex min-h-6 items-center" href={href}>
+                      {label}
+                    </Link>
                   </li>
                 ))}
               </ul>

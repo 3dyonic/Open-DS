@@ -1,6 +1,8 @@
 import Link from "next/link";
 import { packList } from "@/lib/data";
 
+export const metadata = { title: "Catalog" };
+
 export default function CatalogPage() {
   return (
     <div className="grid gap-6">

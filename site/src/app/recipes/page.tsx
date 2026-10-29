@@ -1,6 +1,8 @@
 import Link from "next/link";
 import { showcase } from "@/lib/data";
 
+export const metadata = { title: "Recipes" };
+
 export default function RecipesPage() {
   return (
     <div className="grid gap-6">

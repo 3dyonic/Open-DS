@@ -1,3 +1,4 @@
+import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { packById, packList } from "@/lib/data";
@@ -7,6 +8,17 @@ export function generateStaticParams() {
   return packList.flatMap((pack) =>
     pack.questions.map((question) => ({ scope: pack.id, question: question.id })),
   );
+}
+
+export async function generateMetadata({
+  params,
+}: {
+  params: Promise<{ scope: string; question: string }>;
+}): Promise<Metadata> {
+  const { scope, question: questionId } = await params;
+  const pack = packById(scope);
+  const question = pack ? questionsIn(pack).find((item) => item.id === questionId) : undefined;
+  return { title: question?.prompt ?? pack?.title ?? "Catalog" };
 }
 
 export default async function QuestionPage({

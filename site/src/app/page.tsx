@@ -28,7 +28,7 @@ export default function HomePage() {
         <article className="rounded-control border border-line p-4">
           <h2 className="font-semibold">A check</h2>
           <p className="mt-2 text-sm">
-            A missing requirement is an error. A discouraged pick is a warning.
+            A missing requirement is an error. A Worth a second look pick is a warning.
           </p>
         </article>
         <article className="rounded-control border border-line p-4">
