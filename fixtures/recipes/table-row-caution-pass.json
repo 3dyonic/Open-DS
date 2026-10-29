@@ -1,0 +1,63 @@
+{
+  "expected_errors": [],
+  "recipe": {
+    "id": "fixture",
+    "name": "Fixture",
+    "version": "0.1.0",
+    "serves": "A fixture recipe.",
+    "packs": [
+      "purpose"
+    ],
+    "picks": [
+      {
+        "question": "goal",
+        "option": "yes",
+        "rationale": "Needed for the fixture."
+      }
+    ]
+  },
+  "packs": {
+    "purpose": {
+      "id": "purpose",
+      "title": "Purpose",
+      "summary": "Fixture pack purpose.",
+      "version": "0.1.0",
+      "scope": "scoped",
+      "order": 1,
+      "tokenScopes": [
+        "table-row",
+        "form-control",
+        "card",
+        "reading-text"
+      ],
+      "questions": [
+        {
+          "id": "goal",
+          "prompt": "What is goal?",
+          "summary": "Fixture question goal.",
+          "required": true,
+          "options": [
+            {
+              "id": "yes",
+              "label": "Yes",
+              "summary": "Yes for the fixture.",
+              "why": "A short reason for this answer.",
+              "when_to_choose": "Choose this if the fixture needs it.",
+              "trade_offs": [
+                "A short cost."
+              ],
+              "sources": [
+                {
+                  "name": "Open DS",
+                  "title": "Fixture note",
+                  "url": "https://example.com/open-ds"
+                }
+              ],
+              "fragment": "fixtures/fragments/table-row-caution.json"
+            }
+          ]
+        }
+      ]
+    }
+  }
+}
