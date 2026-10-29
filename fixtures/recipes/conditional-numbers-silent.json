@@ -10,13 +10,8 @@
     ],
     "picks": [
       {
-        "question": "work-style",
-        "option": "focused",
-        "rationale": "Needed for the fixture."
-      },
-      {
-        "question": "work-rhythm",
-        "option": "stream",
+        "question": "usage-data",
+        "option": "numbers",
         "rationale": "Needed for the fixture."
       },
       {
@@ -36,15 +31,22 @@
       "order": 1,
       "questions": [
         {
-          "id": "work-style",
-          "prompt": "What is work-style?",
-          "summary": "Fixture question work-style.",
-          "required": true,
+          "id": "usage-data",
+          "prompt": "What data does the interface mostly show?",
+          "summary": "Fixture question usage-data.",
+          "required": false,
+          "affects": [
+            "density"
+          ],
+          "feeds_into": [
+            "density"
+          ],
+          "why_care": "The kind of data decides how much fits on a screen.",
           "options": [
             {
-              "id": "focused",
-              "label": "Focused",
-              "summary": "Focused for the fixture.",
+              "id": "text",
+              "label": "Text",
+              "summary": "Text for the fixture.",
               "why": "A short reason for this answer.",
               "when_to_choose": "Choose this if the fixture needs it.",
               "trade_offs": [
@@ -55,36 +57,87 @@
                   "name": "Open DS",
                   "title": "Fixture note",
                   "url": "https://example.com/open-ds"
+                }
+              ]
+            },
+            {
+              "id": "numbers",
+              "label": "Metrics, prices and charts",
+              "summary": "Metrics, prices and charts for the fixture.",
+              "why": "A short reason for this answer.",
+              "when_to_choose": "Choose this if the fixture needs it.",
+              "trade_offs": [
+                "A short cost."
+              ],
+              "sources": [
+                {
+                  "name": "Open DS",
+                  "title": "Fixture note",
+                  "url": "https://example.com/open-ds"
+                }
+              ]
+            },
+            {
+              "id": "media",
+              "label": "Media",
+              "summary": "Media for the fixture.",
+              "why": "A short reason for this answer.",
+              "when_to_choose": "Choose this if the fixture needs it.",
+              "trade_offs": [
+                "A short cost."
+              ],
+              "sources": [
+                {
+                  "name": "Open DS",
+                  "title": "Fixture note",
+                  "url": "https://example.com/open-ds"
+                }
+              ]
+            },
+            {
+              "id": "mixed",
+              "label": "Mixed",
+              "summary": "Mixed for the fixture.",
+              "why": "A short reason for this answer.",
+              "when_to_choose": "Choose this if the fixture needs it.",
+              "trade_offs": [
+                "A short cost."
+              ],
+              "sources": [
+                {
+                  "name": "Open DS",
+                  "title": "Fixture note",
+                  "url": "https://example.com/open-ds"
+                }
+              ]
+            },
+            {
+              "id": "tables",
+              "label": "Tables and lists of records",
+              "summary": "Tables and lists of records for the fixture.",
+              "why": "A short reason for this answer.",
+              "when_to_choose": "Choose this if the fixture needs it.",
+              "trade_offs": [
+                "A short cost."
+              ],
+              "sources": [
+                {
+                  "name": "Carbon",
+                  "title": "Data table row height",
+                  "url": "https://carbondesignsystem.com/components/data-table/style/"
                 }
               ],
               "recommends": [
                 {
                   "question": "density",
                   "option": "compact",
-                  "reason": "Batch work on numbers needs compact density.",
+                  "reason": "Data-dense tables need many rows in view in order to show the most information in limited space, so your system will use compact density.",
                   "when": [
                     {
-                      "question": "work-rhythm",
-                      "option": "batch"
+                      "question": "usage-data",
+                      "option": "tables"
                     }
                   ]
-                }
-              ]
-            },
-            {
-              "id": "casual",
-              "label": "Casual",
-              "summary": "Casual for the fixture.",
-              "why": "A short reason for this answer.",
-              "when_to_choose": "Choose this if the fixture needs it.",
-              "trade_offs": [
-                "A short cost."
-              ],
-              "sources": [
-                {
-                  "name": "Open DS",
-                  "title": "Fixture note",
-                  "url": "https://example.com/open-ds"
                 }
               ]
             }
@@ -117,48 +170,6 @@
               "id": "stream",
               "label": "Stream",
               "summary": "Stream for the fixture.",
-              "why": "A short reason for this answer.",
-              "when_to_choose": "Choose this if the fixture needs it.",
-              "trade_offs": [
-                "A short cost."
-              ],
-              "sources": [
-                {
-                  "name": "Open DS",
-                  "title": "Fixture note",
-                  "url": "https://example.com/open-ds"
-                }
-              ]
-            }
-          ]
-        },
-        {
-          "id": "data-type",
-          "prompt": "What is data-type?",
-          "summary": "Fixture question data-type.",
-          "required": false,
-          "options": [
-            {
-              "id": "numbers",
-              "label": "Numbers",
-              "summary": "Numbers for the fixture.",
-              "why": "A short reason for this answer.",
-              "when_to_choose": "Choose this if the fixture needs it.",
-              "trade_offs": [
-                "A short cost."
-              ],
-              "sources": [
-                {
-                  "name": "Open DS",
-                  "title": "Fixture note",
-                  "url": "https://example.com/open-ds"
-                }
-              ]
-            },
-            {
-              "id": "prose",
-              "label": "Prose",
-              "summary": "Prose for the fixture.",
               "why": "A short reason for this answer.",
               "when_to_choose": "Choose this if the fixture needs it.",
               "trade_offs": [
@@ -219,11 +230,10 @@
       ]
     }
   },
-  "expected_warnings": [
-    "discourage"
-  ],
+  "expected_warnings": [],
   "expected_prefills": [],
   "absent": [
-    "recommend"
+    "recommend",
+    "discourage"
   ]
 }

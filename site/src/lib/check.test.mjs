@@ -47,9 +47,13 @@ test("a missing rationale is rejected with no fingerprint", async () => {
   assert.equal(result.fingerprint, undefined);
 });
 
-test("an unmet requirement is an error and a missed recommendation is silent", async () => {
-  const bad = structuredClone(recipe);
-  for (const pick of bad.picks) {
+test("multi-brand recommends separation and a missed recommendation stays silent", async () => {
+  const brand = packs.purpose.questions.find((item) => item.id === "brand-variance");
+  const multi = brand.options.find((item) => item.id === "multi-brand");
+  assert.equal(multi.requires, undefined);
+  assert.match(multi.recommends[0].reason, /theme values/);
+  const draft = structuredClone(recipe);
+  for (const pick of draft.picks) {
     if (pick.question === "brand-variance") {
       pick.option = "multi-brand";
       pick.rationale = "Two brands share this starter.";
@@ -63,14 +67,11 @@ test("an unmet requirement is an error and a missed recommendation is silent", a
       pick.rationale = "Try a tighter line height.";
     }
   }
-  const result = await checkRecipe(bad, packs);
-  assert.equal(result.ok, false);
-  assert.ok(ids(result, "error").includes("required-option"));
+  const result = await checkRecipe(draft, packs);
+  assert.equal(result.ok, true, JSON.stringify(result.findings));
+  assert.equal(ids(result).includes("required-option"), false);
   assert.equal(ids(result).includes("recommend"), false);
-  assert.equal(result.fingerprint, undefined);
-  const required = result.findings.find((item) => item.id === "required-option");
-  assert.match(required.reason, /theme values/);
-  assert.equal(required.because, "Multi-brand");
+  assert.equal(typeof result.fingerprint, "string");
 });
 
 test("missing questions are named and summarized", async () => {

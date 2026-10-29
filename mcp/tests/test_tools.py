@@ -20,7 +20,7 @@ def test_tool_names_are_the_four_dictionary_tools() -> None:
 def test_list_scopes_starts_with_purpose() -> None:
     rows = list_scopes()
     assert rows[0]["id"] == "purpose"
-    assert len(rows[0]["questions"]) == 8
+    assert len(rows[0]["questions"]) == 9
 
 
 def test_get_option_includes_sources() -> None:
