@@ -589,14 +589,11 @@
           ],
           "sources": [
             {
-              "name": "Material",
-              "title": "Spacing",
-              "url": "https://m3.material.io/foundations/layout/understanding-layout/spacing"
-            },
-            {
               "name": "Carbon",
-              "title": "Data table row height",
-              "url": "https://carbondesignsystem.com/components/data-table/style/"
+              "title": "Data table usage",
+              "url": "https://carbondesignsystem.com/components/data-table/usage/",
+              "quote": "Use for compact interfaces that require reduced component height while maintaining comfortable readability and interaction.",
+              "checked": "2026-10-29"
             }
           ],
           "recommends": [
