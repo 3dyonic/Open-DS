@@ -19,7 +19,7 @@
           "why": "A system sans font loads fast and matches the device.",
           "when_to_choose": "Choose this if you do not ship a custom font yet.",
           "trade_offs": [
-            "The look changes by platform."
+            "The look changes by platform"
           ],
           "sources": [
             {
@@ -36,7 +36,7 @@
           "why": "A system serif can make long text feel like a document.",
           "when_to_choose": "Choose this if long reading is the main job.",
           "trade_offs": [
-            "UI controls can look old-fashioned."
+            "UI controls can look dated"
           ],
           "sources": [
             {
@@ -50,10 +50,10 @@
           "id": "system-mono",
           "label": "System mono",
           "summary": "The device monospace.",
-          "why": "A mono font suits code and data that must align.",
+          "why": "A mono font suits code and data that must line up.",
           "when_to_choose": "Choose this if the product is mostly code or figures.",
           "trade_offs": [
-            "Long prose is harder to read."
+            "Long prose is harder to read"
           ],
           "sources": [
             {
@@ -78,7 +78,7 @@
           "why": "A 1.125 ratio keeps heading steps close to body text.",
           "when_to_choose": "Choose this if headings should stay quiet.",
           "trade_offs": [
-            "Hierarchy can be hard to see."
+            "Hierarchy can be hard to see"
           ],
           "sources": [
             {
@@ -93,10 +93,10 @@
           "id": "minor-third",
           "label": "1.2 minor third",
           "summary": "A clear step up.",
-          "why": "A 1.2 ratio gives headings a clear step without a huge jump.",
-          "when_to_choose": "Choose this if headings should be obvious but not huge.",
+          "why": "A 1.2 ratio gives headings a clear step without a big jump.",
+          "when_to_choose": "Choose this if headings should be clear but not large.",
           "trade_offs": [
-            "Small screens may feel loud."
+            "Small screens may feel loud"
           ],
           "sources": [
             {
@@ -111,10 +111,10 @@
           "id": "major-third",
           "label": "1.25 major third",
           "summary": "A common product scale.",
-          "why": "A 1.25 ratio is a major third. Steps are clear and not huge.",
-          "when_to_choose": "Choose this if you want obvious heading steps.",
+          "why": "A 1.25 ratio gives clear heading steps that stay moderate.",
+          "when_to_choose": "Choose this if you want clear heading steps.",
           "trade_offs": [
-            "Small screens may need fewer steps."
+            "Small screens may need fewer steps"
           ],
           "sources": [
             {
@@ -129,10 +129,10 @@
           "id": "perfect-fourth",
           "label": "1.333 perfect fourth",
           "summary": "Large steps.",
-          "why": "A perfect fourth makes display type much larger than body text.",
+          "why": "A 1.333 ratio makes display type much larger than body text.",
           "when_to_choose": "Choose this if you need a strong display size.",
           "trade_offs": [
-            "You may not need every step."
+            "You may not need every step"
           ],
           "sources": [
             {
@@ -155,10 +155,10 @@
           "id": "size-14",
           "label": "14",
           "summary": "A smaller body size.",
-          "why": "Fourteen pixels suits dense tools and tight labels.",
+          "why": "A 14 px body size suits dense tools and tight labels.",
           "when_to_choose": "Choose this if the product is a dense tool.",
           "trade_offs": [
-            "Long reading is harder."
+            "Long reading is harder"
           ],
           "sources": [
             {
@@ -172,10 +172,10 @@
           "id": "size-16",
           "label": "16",
           "summary": "The common browser default.",
-          "why": "Sixteen pixels is the common browser default for body text.",
+          "why": "16 px is the usual browser default for body text.",
           "when_to_choose": "Choose this if body text should match the browser default.",
           "trade_offs": [
-            "Dense tools often want smaller text."
+            "Dense tools often want smaller text"
           ],
           "sources": [
             {
@@ -189,10 +189,10 @@
           "id": "size-18",
           "label": "18",
           "summary": "A larger body size.",
-          "why": "Eighteen pixels gives body text more presence.",
+          "why": "An 18 px body size gives text more presence.",
           "when_to_choose": "Choose this if readers need a larger body size.",
           "trade_offs": [
-            "Fewer words fit on a line."
+            "Fewer words fit on a line"
           ],
           "sources": [
             {
@@ -214,10 +214,10 @@
           "id": "tight",
           "label": "1.3 tight",
           "summary": "Shorter lines for UI labels.",
-          "why": "A tight line height keeps labels compact.",
+          "why": "A 1.3 line height keeps labels compact.",
           "when_to_choose": "Choose this if most text is short labels.",
           "trade_offs": [
-            "Paragraphs feel cramped."
+            "Paragraphs feel cramped"
           ],
           "sources": [
             {
@@ -231,10 +231,10 @@
           "id": "normal",
           "label": "1.5 normal",
           "summary": "A comfortable body line height.",
-          "why": "A line height of 1.5 gives body text room without looking loose.",
+          "why": "A 1.5 line height gives body text room without looking loose.",
           "when_to_choose": "Choose this if body copy is the main content.",
           "trade_offs": [
-            "Tight UI labels can look tall."
+            "Tight UI labels can look tall"
           ],
           "sources": [
             {
@@ -248,10 +248,10 @@
           "id": "loose",
           "label": "1.7 loose",
           "summary": "More air between lines.",
-          "why": "A loose line height gives long text more air.",
+          "why": "A 1.7 line height gives long passages more air.",
           "when_to_choose": "Choose this if people read long passages.",
           "trade_offs": [
-            "Short labels look sparse."
+            "Short labels look sparse"
           ],
           "sources": [
             {

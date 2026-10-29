@@ -16,10 +16,10 @@
           "id": "full-boilerplate",
           "label": "Full boilerplate",
           "summary": "Tokens, CSS, and components.",
-          "why": "The shareable item is the full system: tokens, CSS, and components.",
+          "why": "The shareable item is the full system: tokens, CSS and components.",
           "when_to_choose": "Choose this if a team should start from a full boilerplate.",
           "trade_offs": [
-            "The package is heavier than tokens alone."
+            "The package is heavier than tokens alone"
           ],
           "sources": [
             {
@@ -33,10 +33,10 @@
           "id": "tokens-only",
           "label": "Tokens only",
           "summary": "The token file, without components.",
-          "why": "The shareable item is the token file only. Components stay in the app.",
+          "why": "The shareable item is the token file only, and components stay in the app.",
           "when_to_choose": "Choose this if each app owns its components.",
           "trade_offs": [
-            "Teams rebuild the same components."
+            "Teams rebuild the same components"
           ],
           "sources": [
             {
@@ -58,10 +58,10 @@
           "id": "lock-core",
           "label": "Lock tiers, pairing, and CSS variables",
           "summary": "Core names stay put.",
-          "why": "Token tiers, the on-color pair, and CSS variables are locked after init.",
+          "why": "Token tiers, the on-color pair and CSS variable names are locked after init.",
           "when_to_choose": "Choose this if those choices must not drift after setup.",
           "trade_offs": [
-            "A later rename is a breaking change."
+            "A later rename is a breaking change"
           ],
           "sources": [
             {
@@ -75,10 +75,10 @@
           "id": "lock-nothing",
           "label": "Lock nothing",
           "summary": "Every choice can still change.",
-          "why": "Nothing is locked. Any choice can change after init.",
+          "why": "Nothing is locked, so any choice can change after init.",
           "when_to_choose": "Choose this if you are still exploring the system.",
           "trade_offs": [
-            "Installed files can drift apart."
+            "Installed files can drift apart"
           ],
           "sources": [
             {

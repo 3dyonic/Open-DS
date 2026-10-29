@@ -3,7 +3,7 @@
 These files are the dictionary. A question is one decision. An option is one cited answer.
 Open DS does not calculate colors or tokens from these files.
 
-Copy limits: why is at most 35 words. when_to_choose starts with "Choose this if" or "Choose this when" and is at most 25 words. trade_offs has 1 to 3 costs, at most 15 words each.
+Copy limits: why is at most 35 words. when_to_choose starts with "Choose this if" or "Choose this when" and is at most 25 words. trade_offs has 1 to 3 costs, at most 15 words each. A purpose effect reason is 1 to 280 characters. Set `evidence_limited` to true when no source backs the claim. The site shows that as the neutral tag Evidence is limited.
 
 Option ids:
 
