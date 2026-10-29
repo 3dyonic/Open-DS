@@ -303,6 +303,24 @@ function tokenScopes(packs) {
   return found;
 }
 
+function bibliographyOnly(item) {
+  if (!item || typeof item !== "object") return false;
+  if (
+    (typeof item.quote === "string" && item.quote.trim()) ||
+    (typeof item.checked === "string" && item.checked.trim())
+  ) {
+    return false;
+  }
+  return (
+    typeof item.name === "string" &&
+    item.name.trim() &&
+    typeof item.title === "string" &&
+    item.title.trim() &&
+    typeof item.url === "string" &&
+    item.url.trim()
+  );
+}
+
 function cautionComplete(item) {
   return (
     item &&
@@ -440,6 +458,38 @@ function validatePackFields(packs, options = {}) {
               "incomplete-caution",
               "error",
               "A caution needs a url, a quote, and a checked date.",
+              question.id,
+              option.id,
+              { scheme: pack.id },
+            ),
+          );
+        }
+        const sourceRows = [...(option.sources || [])];
+        for (const key of ["requires", "discourages", "recommends"]) {
+          for (const effect of option[key] || []) sourceRows.push(...(effect.sources || []));
+        }
+        const fragmentData =
+          option.fragment && typeof readFragment === "function"
+            ? readFragment(option.fragment)
+            : null;
+        if (fragmentData && fragmentData.tokens && typeof fragmentData.tokens === "object") {
+          for (const node of Object.values(fragmentData.tokens)) {
+            if (node && typeof node === "object" && Array.isArray(node.sources)) {
+              sourceRows.push(...node.sources);
+            }
+          }
+        }
+        if (
+          sourceRows.some(
+            (item) =>
+              item && typeof item === "object" && !cautionComplete(item) && !bibliographyOnly(item),
+          )
+        ) {
+          findings.push(
+            finding(
+              "incomplete-source",
+              "error",
+              "A source needs a url, a quote, and a checked date.",
               question.id,
               option.id,
               { scheme: pack.id },

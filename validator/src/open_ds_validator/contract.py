@@ -175,14 +175,65 @@ def form_control_keep_base(packs: dict[str, dict]) -> dict | None:
     return None
 
 
+def source_complete(item: object) -> bool:
+    return caution_complete(item)
+
+
+def bibliography_only(item: object) -> bool:
+    """A name, title, and url with no quote and no checked date. Not a contract source."""
+    if not isinstance(item, dict):
+        return False
+    if item.get("quote") or item.get("checked"):
+        return False
+    name = item.get("name")
+    title = item.get("title")
+    url = item.get("url")
+    return (
+        isinstance(name, str)
+        and bool(name.strip())
+        and isinstance(title, str)
+        and bool(title.strip())
+        and isinstance(url, str)
+        and bool(url.strip())
+    )
+
+
 def output_source(source: dict) -> dict:
-    """Copy url, and quote/checked when the pack has them. Do not invent either."""
-    row = {"url": source["url"]}
-    if source.get("quote"):
-        row["quote"] = source["quote"]
-    if source.get("checked"):
-        row["checked"] = source["checked"]
-    return row
+    """Copy url, quote, and checked from a complete pack source. Do not invent any of them."""
+    return {"checked": source["checked"], "quote": source["quote"], "url": source["url"]}
+
+
+def _raw_sources(effect: dict, option: dict) -> list:
+    raw = effect.get("sources") or option.get("sources") or []
+    return raw if isinstance(raw, list) else []
+
+
+def incomplete_source_rows(packs: dict[str, dict], root: Path | None = None) -> list[tuple[str, str]]:
+    base = repo_root(root)
+    found: list[tuple[str, str]] = []
+    for pack in packs.values():
+        for question in pack.get("questions") or []:
+            options = list(question.get("options") or []) + list(question.get("overrides") or [])
+            for option in options:
+                rows = list(option.get("sources") or [])
+                for kind in LINK_TYPES:
+                    for effect in option.get(kind) or []:
+                        rows.extend(effect.get("sources") or [])
+                fragment = option.get("fragment")
+                if fragment:
+                    data = read_fragment_data(base, fragment)
+                    if isinstance(data, dict) and isinstance(data.get("tokens"), dict):
+                        for node in data["tokens"].values():
+                            if isinstance(node, dict) and isinstance(node.get("sources"), list):
+                                rows.extend(node["sources"])
+                broken = [
+                    item
+                    for item in rows
+                    if isinstance(item, dict) and not source_complete(item) and not bibliography_only(item)
+                ]
+                if broken:
+                    found.append((question.get("id", ""), option.get("id", "")))
+    return found
 
 
 def _effect_options(effect: dict) -> list[str]:
@@ -194,8 +245,7 @@ def _effect_options(effect: dict) -> list[str]:
 
 
 def _link_sources(effect: dict, option: dict) -> list[dict]:
-    raw = effect.get("sources") or option.get("sources") or []
-    return [output_source(item) for item in raw if isinstance(item, dict) and item.get("url")]
+    return [output_source(item) for item in _raw_sources(effect, option) if source_complete(item)]
 
 
 def _link_basis(effect: dict, option: dict, sources: list[dict]) -> str:
@@ -225,15 +275,17 @@ def collect_links(packs: dict[str, dict]) -> tuple[list[dict], list[str]]:
                     targets = _effect_options(effect)
                     if not targets:
                         continue
+                    raw = _raw_sources(effect, option)
                     sources = _link_sources(effect, option)
                     basis = _link_basis(effect, option, sources)
+                    has_url = any(isinstance(item, dict) and item.get("url") for item in raw)
                     for target in targets:
                         to = answer_id(str(effect.get("question") or ""), target)
                         row_id = f"{origin}|{kind}|{to}"
                         if row_id in seen:
                             continue
                         seen.add(row_id)
-                        if not sources:
+                        if not has_url:
                             errors.append(row_id)
                             continue
                         rows.append(
@@ -270,8 +322,11 @@ def extension_for(
     sources: list[dict] | None = None,
     cautions: list[dict] | None = None,
 ) -> dict:
-    owned = [output_source(item) for item in option.get("sources") or [] if item.get("url")]
-    used = sources if sources is not None else owned
+    owned = [output_source(item) for item in option.get("sources") or [] if source_complete(item)]
+    if sources is None:
+        used = owned
+    else:
+        used = [item for item in sources if source_complete(item)]
     if option.get("evidence_limited") is True or not used:
         basis = "your-pick"
     else:
@@ -449,12 +504,8 @@ def validate_tokens(tokens: dict) -> list[str]:
             errors.append(f"{label} sources must be a list")
             continue
         for source in sources:
-            if not isinstance(source, dict) or not source.get("url"):
-                errors.append(f"{label} has a source with no url")
-                continue
-            checked = source.get("checked")
-            if checked is not None and (not isinstance(checked, str) or CHECKED.fullmatch(checked) is None):
-                errors.append(f"{label} has a checked date that is not YYYY-MM-DD")
+            if not source_complete(source):
+                errors.append(f"{label} has a source with no url, quote, or checked date")
     return errors
 
 
@@ -619,7 +670,7 @@ def build_catalog(packs: dict[str, dict], root: Path | None = None) -> dict:
                 names = [name for name in names if scope_of(name) in set(option.get("scopes") or [])]
             context = [key]
             link = _link_for(rows, key, {key})
-            sources = [output_source(item) for item in option.get("sources") or [] if item.get("url")]
+            sources = [output_source(item) for item in option.get("sources") or [] if source_complete(item)]
             option_cautions = complete_cautions(option.get("cautions"))
             allowed = token_scopes(packs)
             if "scopes" in option:

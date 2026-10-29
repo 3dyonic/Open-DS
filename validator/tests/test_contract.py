@@ -180,8 +180,10 @@ def test_catalog_uses_pack_reasons_and_is_deterministic(tmp_path: Path) -> None:
     assert table["after"]["$value"] == "compact"
     assert "scope" not in table
     assert table["after"]["$extensions"]["openDs"]["basis"] == "sourced"
-    urls = [item["url"] for item in table["after"]["$extensions"]["openDs"]["sources"]]
-    assert "https://carbondesignsystem.com/components/data-table/style/" in urls
+    source = table["after"]["$extensions"]["openDs"]["sources"][0]
+    assert source["url"] == "https://carbondesignsystem.com/components/data-table/usage/"
+    assert source["quote"].startswith("Use for compact interfaces")
+    assert source["checked"] == "2026-10-29"
     for scope in ("form-control", "card", "reading-text"):
         held = compact["tokens"][scope][0]
         assert held["before"] is None
@@ -239,6 +241,64 @@ def test_your_pick_mapping_ships_without_why_and_a_blank_basis_fails() -> None:
     assert "Proposed" not in json.dumps(tokens)
 
 
+def test_output_rejects_a_source_without_quote_or_checked() -> None:
+    tokens = {
+        "semantic": {
+            "space/table-row/density": {
+                "$extensions": {
+                    "openDs": {
+                        "basis": "sourced",
+                        "context": ["density/compact"],
+                        "decision": "density",
+                        "link": "",
+                        "sources": [{"url": "https://example.com/note"}],
+                        "when": "Choose this if people need many controls in view.",
+                        "why": "Because the fixture says so.",
+                    }
+                },
+                "$type": "other",
+                "$value": "compact",
+            }
+        }
+    }
+    assert any("source" in item for item in validate_tokens(tokens))
+    packs = {
+        "purpose": {
+            "id": "purpose",
+            "order": 1,
+            "questions": [
+                {
+                    "id": "density",
+                    "options": [
+                        {
+                            "id": "compact",
+                            "sources": [
+                                {
+                                    "name": "Material",
+                                    "title": "Spacing",
+                                    "url": "https://m3.material.io/foundations/layout/understanding-layout/spacing",
+                                }
+                            ],
+                            "recommends": [
+                                {
+                                    "question": "spacing-base",
+                                    "option": "base-4",
+                                    "reason": "A fine 4 px grid fits the tighter spacing of compact screens.",
+                                }
+                            ],
+                        }
+                    ],
+                },
+                {"id": "spacing-base", "options": [{"id": "base-4", "sources": []}]},
+            ],
+        }
+    }
+    rows, errors = collect_links(packs)
+    assert errors == []
+    assert rows[0]["sources"] == []
+    assert rows[0]["basis"] == "your-pick"
+
+
 def test_form_control_keeps_base_only_when_the_pack_says_so() -> None:
     assert form_control_keep_base(PACKS) is None
 
@@ -247,7 +307,13 @@ def test_caution_is_copied_and_does_not_change_basis() -> None:
     option = {
         "why": "Compact density fits more on a screen. It suits tools and tables.",
         "when_to_choose": "Choose this if people need many controls in view.",
-        "sources": [{"url": "https://carbondesignsystem.com/components/data-table/style/"}],
+        "sources": [
+            {
+                "url": "https://carbondesignsystem.com/components/data-table/usage/",
+                "quote": "A cited line.",
+                "checked": "2026-10-29",
+            }
+        ],
     }
     cautions = [
         {
