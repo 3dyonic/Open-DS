@@ -179,6 +179,8 @@ def test_catalog_uses_pack_reasons_and_is_deterministic(tmp_path: Path) -> None:
     assert table["name"] == "space/table-row/density"
     assert table["after"]["$value"] == "compact"
     assert "scope" not in table
+    assert table["state"] == "set"
+    assert "before" not in table
     assert table["after"]["$extensions"]["openDs"]["basis"] == "sourced"
     source = table["after"]["$extensions"]["openDs"]["sources"][0]
     assert source["url"] == "https://carbondesignsystem.com/components/data-table/usage/"
@@ -186,8 +188,9 @@ def test_catalog_uses_pack_reasons_and_is_deterministic(tmp_path: Path) -> None:
     assert source["checked"] == "2026-10-29"
     for scope in ("form-control", "card", "reading-text"):
         held = compact["tokens"][scope][0]
-        assert held["before"] is None
-        assert held["after"] is None
+        assert held["state"] == "no-source-yet"
+        assert "before" not in held
+        assert "after" not in held
         assert held["name"].split("/")[1] == scope
         assert "scope" not in held
     space = first["spacing-base"]["spacing-base/base-4"]
@@ -198,6 +201,22 @@ def test_catalog_uses_pack_reasons_and_is_deterministic(tmp_path: Path) -> None:
     write_catalog(one, PACKS, ROOT)
     write_catalog(two, PACKS, ROOT)
     assert one.read_bytes() == two.read_bytes()
+
+
+def test_catalog_scope_states() -> None:
+    case = json.loads((ROOT / "fixtures" / "catalog" / "scope-states.json").read_text(encoding="utf-8"))
+    catalog = build_catalog(case["packs"], ROOT)
+    row = catalog["density"]["density/compact"]["tokens"]
+    unchanged = row["card"][0]
+    assert unchanged["state"] == "unchanged"
+    assert unchanged["before"] == unchanged["after"]
+    assert unchanged["before"]["$value"] == "roomy"
+    assert "null" not in json.dumps(unchanged)
+    missing = row["form-control"][0]
+    assert missing["state"] == "no-source-yet"
+    assert "before" not in missing
+    assert "after" not in missing
+    assert "scope" not in missing
 
 
 def test_fragment_cannot_override_the_target_floor() -> None:
