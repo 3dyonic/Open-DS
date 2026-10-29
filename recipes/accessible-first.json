@@ -1,0 +1,203 @@
+{
+  "id": "accessible-first",
+  "name": "Accessible-first",
+  "version": "0.1.0",
+  "provisional": true,
+  "summary": "APCA first, with WCAG 2.2 AA as the floor, and roomier sizing.",
+  "serves": "Everyone can read and use it.",
+  "packs": [
+    "purpose",
+    "global",
+    "color-primitives",
+    "accessibility",
+    "typography",
+    "spacing",
+    "radius",
+    "theming",
+    "delivery"
+  ],
+  "picks": [
+    {
+      "question": "product-type",
+      "option": "content",
+      "rationale": "People come to read pages, not to operate a dense tool."
+    },
+    {
+      "question": "users-and-context",
+      "option": "public",
+      "rationale": "Most people arrive without an account and without training."
+    },
+    {
+      "question": "accessibility-target",
+      "option": "wcag-22-aa",
+      "rationale": "AA is the commitment for this public site. AAA is a later choice."
+    },
+    {
+      "question": "platforms",
+      "option": "web",
+      "rationale": "The first surface is the website."
+    },
+    {
+      "question": "team",
+      "option": "solo-starting",
+      "rationale": "One person maintains this starter, so the list stays short."
+    },
+    {
+      "question": "brand-variance",
+      "option": "single-brand",
+      "rationale": "This starter is one brand. A second brand is out of this recipe."
+    },
+    {
+      "question": "density",
+      "option": "spacious",
+      "rationale": "Roomier sizing leaves space so targets and text stay easy to hit and read."
+    },
+    {
+      "question": "voice",
+      "option": "warm",
+      "rationale": "The words should sound human and direct, not cute."
+    },
+    {
+      "question": "contrast-metric",
+      "option": "apca",
+      "rationale": "APCA is checked first. WCAG 2.2 AA at 4.5:1 stays the floor, because APCA is not a compliance standard."
+    },
+    {
+      "question": "scale-direction",
+      "option": "low-is-light",
+      "rationale": "The step names should run from 50 light toward 1000 dark."
+    },
+    {
+      "question": "css-unit",
+      "option": "rem",
+      "rationale": "Type and space should follow the reader's font size."
+    },
+    {
+      "question": "structure-theme-separation",
+      "option": "separate",
+      "rationale": "A theme change must not require edits inside the components."
+    },
+    {
+      "question": "color-space",
+      "option": "oklch",
+      "rationale": "The ramp scheme is described in OKLCH so lightness can stay even."
+    },
+    {
+      "question": "step-distance",
+      "option": "lightness-delta",
+      "rationale": "Equal lightness steps are easier to explain than deltaE2000."
+    },
+    {
+      "question": "step-count",
+      "option": "eleven",
+      "rationale": "Eleven names match the 50 to 950 set people already expect."
+    },
+    {
+      "question": "lightness-curve",
+      "option": "perceptual",
+      "rationale": "Most interface color sits in the middle of the ramp."
+    },
+    {
+      "question": "chroma-hue-shift",
+      "option": "hue-warm",
+      "rationale": "The provisional brand is warm, so darker steps may shift warmer."
+    },
+    {
+      "question": "seed-input",
+      "option": "hex",
+      "rationale": "One provisional hex is enough to name the terracotta seed.",
+      "params": {
+        "seed": "#C4622D"
+      }
+    },
+    {
+      "question": "on-color-pairing",
+      "option": "surface-pair",
+      "rationale": "Text and its surface should use one pair: surface and on-surface."
+    },
+    {
+      "question": "contrast-check",
+      "option": "checked-afterwards",
+      "rationale": "Contrast is a review step. This dictionary does not measure it."
+    },
+    {
+      "question": "font-family",
+      "option": "system-sans",
+      "rationale": "A system sans font is enough until a custom font is chosen."
+    },
+    {
+      "question": "type-scale-ratio",
+      "option": "major-third",
+      "rationale": "A 1.25 ratio keeps headings clear without a huge jump."
+    },
+    {
+      "question": "base-font-size",
+      "option": "size-18",
+      "rationale": "Roomier sizing starts with a larger body so text is easier to read."
+    },
+    {
+      "question": "line-height",
+      "option": "normal",
+      "rationale": "Body copy needs a 1.5 line height so lines do not collide."
+    },
+    {
+      "question": "spacing-base",
+      "option": "base-8",
+      "rationale": "Spacious density needs the larger 8-point base."
+    },
+    {
+      "question": "spacing-scale",
+      "option": "linear",
+      "rationale": "Even space steps are easier to remember in a small system."
+    },
+    {
+      "question": "radius-base",
+      "option": "radius-8",
+      "rationale": "Controls should feel soft but still look like controls."
+    },
+    {
+      "question": "radius-progression",
+      "option": "geometric",
+      "rationale": "Cards can be rounder than inputs without a long list of steps."
+    },
+    {
+      "question": "theme-shape",
+      "option": "sets-and-modifiers",
+      "rationale": "Light and dark are modifiers on one theme, not two products."
+    },
+    {
+      "question": "shareable-item",
+      "option": "full-boilerplate",
+      "rationale": "A team should get tokens, CSS, and components together."
+    },
+    {
+      "question": "locked-at-init",
+      "option": "lock-core",
+      "rationale": "Tiers, the on-color pair, and CSS variable names stay fixed after init."
+    },
+    {
+      "question": "token-tiers",
+      "option": "three-tier",
+      "rationale": "The starter keeps primitive, semantic, and component tiers."
+    },
+    {
+      "question": "default-theme",
+      "option": "light",
+      "rationale": "The page opens on the light set. Dark is a modifier."
+    }
+  ],
+  "chain": [
+    {
+      "from": "contrast-metric",
+      "to": "accessibility-target",
+      "rule": "requires",
+      "line": "The contrast method is APCA, with WCAG 2.2 AA (4.5:1) as the floor. APCA is the WCAG 3 draft, not a compliance standard."
+    },
+    {
+      "from": "density",
+      "to": "spacing-base",
+      "rule": "requires",
+      "line": "Roomier sizing follows, so targets and text stay easy to hit and read."
+    }
+  ]
+}

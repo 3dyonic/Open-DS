@@ -148,7 +148,56 @@ def validate_packs(packs: dict[str, dict], root: Path | None = None) -> dict:
                             findings.append(
                                 finding("broken-effect", "error", f"{key} has no option.", question["id"], option["id"])
                             )
+    _check_question_meta(questions, index, root, findings)
     return _result(findings)
+
+
+def _feed_backed(question: dict, target: str) -> bool:
+    for option in question.get("options", []):
+        for key in ("requires", "discourages", "recommends"):
+            for effect in option.get(key, []):
+                if effect.get("question") == target:
+                    return True
+    return False
+
+
+def _check_question_meta(
+    questions: list[dict], index: dict[str, dict], root: Path | None, findings: list[dict]
+) -> None:
+    fragment_root = repo_root(root) / "fragments"
+    for question in questions:
+        why_care = question.get("why_care")
+        if isinstance(why_care, str) and _words(why_care) > 25:
+            findings.append(finding("why-care-length", "error", "why_care is longer than 25 words.", question["id"]))
+        if "affects" in question and not question.get("affects"):
+            findings.append(finding("empty-affects", "warning", "affects is empty.", question["id"]))
+        for target in question.get("feeds_into") or []:
+            if target not in index:
+                findings.append(
+                    finding("unknown-feed", "error", "feeds_into names an unknown question.", question["id"])
+                )
+                continue
+            if not _feed_backed(question, target):
+                findings.append(
+                    finding(
+                        "unbacked-feed",
+                        "error",
+                        "feeds_into is not backed by a requires, discourages, or recommends rule.",
+                        question["id"],
+                    )
+                )
+        for option in question.get("options", []):
+            fragment = option.get("fragment")
+            if fragment and not (fragment_root / fragment).is_file():
+                findings.append(
+                    finding(
+                        "missing-fragment",
+                        "error",
+                        f"Fragment file {fragment} does not exist.",
+                        question["id"],
+                        option["id"],
+                    )
+                )
 
 
 def _selected(picks: dict[str, dict], effect: dict) -> bool:
@@ -316,7 +365,51 @@ def check_recipe(recipe: dict, packs: dict[str, dict], root: Path | None = None)
                     )
                 )
 
+    _check_chain(recipe, picks, by_id, findings)
     return _result(findings, recipe)
+
+
+def _check_chain(recipe: dict, picks: dict[str, dict], by_id: dict[str, dict], findings: list[dict]) -> None:
+    chain = recipe.get("chain") or []
+    if not chain:
+        return
+    strong = False
+    for link in chain:
+        rule = link.get("rule", "")
+        source = link.get("from", "")
+        if rule in ("requires", "discourages"):
+            strong = True
+        if rule == "states":
+            continue
+        if rule not in ("requires", "discourages", "recommends"):
+            findings.append(finding("chain-rule", "error", "A chain link has an unknown rule.", source))
+            continue
+        pick = picks.get(source)
+        question = by_id.get(source)
+        if not pick or not question:
+            findings.append(
+                finding(
+                    "chain-rule", "error", "A chain link starts from a question this recipe does not answer.", source
+                )
+            )
+            continue
+        option = next((item for item in question.get("options", []) if item["id"] == pick["option"]), None)
+        effects = (option or {}).get(rule, [])
+        backed = any(effect.get("question") == link.get("to") for effect in effects)
+        if not backed:
+            findings.append(
+                finding(
+                    "chain-rule",
+                    "error",
+                    "This chain link is not backed by that rule on the picked option.",
+                    source,
+                    pick["option"],
+                )
+            )
+    if not strong:
+        findings.append(
+            finding("chain-strength", "error", "A demo chain needs at least one requires or discourages link.")
+        )
 
 
 def decision_ids(text: str) -> list[str]:

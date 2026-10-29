@@ -71,6 +71,14 @@ This boilerplate is an authored starter. Open DS did not calculate the token val
 - Source: CSS Values, rem units
 - Cost: Matching a pixel-exact mock takes more work
 
+### default-theme
+
+- decision: default-theme
+- Option: `light`
+- Reason: The page opens on the light set. Dark is a modifier.
+- Source: MDN, prefers-color-scheme
+- Cost: Dark is a switch away
+
 ### density
 
 - decision: density
@@ -230,6 +238,14 @@ This boilerplate is an authored starter. Open DS did not calculate the token val
 - Reason: Light and dark are modifiers on one theme, not two products.
 - Source: Material, Color tokens
 - Cost: You maintain more than one set
+
+### token-tiers
+
+- decision: token-tiers
+- Option: `three-tier`
+- Reason: The starter keeps primitive, semantic, and component tiers.
+- Source: DTCG, Design Tokens format
+- Cost: You name and keep three layers
 
 ### type-scale-ratio
 

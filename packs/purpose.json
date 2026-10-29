@@ -74,6 +74,13 @@
               "option": "normal",
               "reason": "Body copy gets room to breathe with a 1.5 line height."
             }
+          ],
+          "discourages": [
+            {
+              "question": "density",
+              "option": "compact",
+              "reason": "Pages people read need room around the text, so compact density works against that."
+            }
           ]
         },
         {
@@ -139,6 +146,17 @@
             }
           ]
         }
+      ],
+      "why_care": "It says what the system is for, and it points at density, space, and line height.",
+      "affects": [
+        "README.md",
+        "AGENTS.md",
+        "theme/tokens.css"
+      ],
+      "feeds_into": [
+        "density",
+        "spacing-base",
+        "line-height"
       ]
     },
     {
@@ -265,6 +283,15 @@
             }
           ]
         }
+      ],
+      "why_care": "It sets the WCAG 2.2 floor your contrast checks have to meet.",
+      "affects": [
+        "README.md",
+        "AGENTS.md"
+      ],
+      "feeds_into": [
+        "contrast-metric",
+        "contrast-check"
       ]
     },
     {
@@ -446,6 +473,16 @@
             }
           ]
         }
+      ],
+      "why_care": "It decides whether one brand owns the theme or several brands share the components.",
+      "affects": [
+        "structure/",
+        "theme/",
+        "README.md",
+        "AGENTS.md"
+      ],
+      "feeds_into": [
+        "structure-theme-separation"
       ]
     },
     {
@@ -476,6 +513,14 @@
               "option": "base-4",
               "reason": "A fine 4 px grid fits the tighter spacing of compact screens."
             }
+          ],
+          "fragment": "density/compact.css",
+          "requires": [
+            {
+              "question": "spacing-base",
+              "option": "base-4",
+              "reason": "A fine 4 px grid fits the tighter spacing of compact screens."
+            }
           ]
         },
         {
@@ -500,7 +545,8 @@
               "option": "normal",
               "reason": "Comfortable reading goes with a 1.5 line height for body text."
             }
-          ]
+          ],
+          "fragment": "density/comfortable.css"
         },
         {
           "id": "spacious",
@@ -524,8 +570,28 @@
               "option": "base-8",
               "reason": "Large gaps grow from a larger 8 px base."
             }
+          ],
+          "fragment": "density/spacious.css",
+          "requires": [
+            {
+              "question": "spacing-base",
+              "option": "base-8",
+              "reason": "Large gaps grow from a larger 8 px base."
+            }
           ]
         }
+      ],
+      "why_care": "It sets how much fits on a screen against how much room people get to read and click.",
+      "affects": [
+        "theme/tokens.css",
+        "theme/tokens.json",
+        "theme/tailwind.preset.cjs",
+        "README.md",
+        "AGENTS.md"
+      ],
+      "feeds_into": [
+        "spacing-base",
+        "line-height"
       ]
     },
     {

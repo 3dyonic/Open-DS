@@ -89,6 +89,9 @@ function materialize(raw, packs) {
   merged.summary = raw.summary || base.summary;
   merged.required = raw.required ?? base.required ?? true;
   merged.ref = raw.ref;
+  if (raw.why_care) merged.why_care = raw.why_care;
+  if (raw.affects) merged.affects = structuredClone(raw.affects);
+  if (raw.feeds_into) merged.feeds_into = structuredClone(raw.feeds_into);
   const options = Object.fromEntries(merged.options.map((item) => [item.id, item]));
   const order = merged.options.map((item) => item.id);
   for (const override of raw.overrides || []) {
@@ -217,6 +220,111 @@ export function missingQuestionReport(findings) {
   };
 }
 
+function words(text) {
+  return String(text || "")
+    .split(/\s+/)
+    .filter(Boolean).length;
+}
+
+function feedBacked(question, target) {
+  for (const option of question.options || []) {
+    for (const key of ["requires", "discourages", "recommends"]) {
+      for (const effect of option[key] || []) {
+        if (effect.question === target) return true;
+      }
+    }
+  }
+  return false;
+}
+
+function packFieldFindings(packs) {
+  const findings = [];
+  const questions = questionsFor(packs, Object.keys(packs));
+  const byId = Object.fromEntries(questions.map((question) => [question.id, question]));
+  for (const question of questions) {
+    if (typeof question.why_care === "string" && words(question.why_care) > 25) {
+      findings.push(
+        finding("why-care-length", "error", "why_care is longer than 25 words.", question.id),
+      );
+    }
+    if (Array.isArray(question.affects) && question.affects.length === 0) {
+      findings.push(finding("empty-affects", "warning", "affects is empty.", question.id));
+    }
+    for (const target of question.feeds_into || []) {
+      if (!byId[target]) {
+        findings.push(
+          finding("unknown-feed", "error", "feeds_into names an unknown question.", question.id),
+        );
+        continue;
+      }
+      if (!feedBacked(question, target)) {
+        findings.push(
+          finding(
+            "unbacked-feed",
+            "error",
+            "feeds_into is not backed by a requires, discourages, or recommends rule.",
+            question.id,
+          ),
+        );
+      }
+    }
+  }
+  return findings;
+}
+
+function chainFindings(recipe, picks, byId) {
+  const chain = recipe.chain || [];
+  if (!chain.length) return [];
+  const findings = [];
+  let strong = false;
+  for (const link of chain) {
+    const rule = link.rule || "";
+    const source = link.from || "";
+    if (rule === "requires" || rule === "discourages") strong = true;
+    if (rule === "states") continue;
+    if (!["requires", "discourages", "recommends"].includes(rule)) {
+      findings.push(finding("chain-rule", "error", "A chain link has an unknown rule.", source));
+      continue;
+    }
+    const pick = picks[source];
+    const question = byId[source];
+    if (!pick || !question) {
+      findings.push(
+        finding(
+          "chain-rule",
+          "error",
+          "A chain link starts from a question this recipe does not answer.",
+          source,
+        ),
+      );
+      continue;
+    }
+    const option = (question.options || []).find((item) => item.id === pick.option);
+    const backed = (option?.[rule] || []).some((effect) => effect.question === link.to);
+    if (!backed) {
+      findings.push(
+        finding(
+          "chain-rule",
+          "error",
+          "This chain link is not backed by that rule on the picked option.",
+          source,
+          pick.option,
+        ),
+      );
+    }
+  }
+  if (!strong) {
+    findings.push(
+      finding(
+        "chain-strength",
+        "error",
+        "A demo chain needs at least one requires or discourages link.",
+      ),
+    );
+  }
+  return findings;
+}
+
 export async function checkRecipe(recipe, packs) {
   const findings = [];
   if (
@@ -255,11 +363,13 @@ export async function checkRecipe(recipe, packs) {
     }
   }
   if (findings.length) return fail(findings, packs);
+  findings.push(...packFieldFindings(packs));
+  if (findings.some((item) => item.severity === "error")) return fail(findings, packs);
 
   for (const pid of recipe.packs) {
     if (!packs[pid]) findings.push(finding("unknown-pack", "error", `Unknown pack ${pid}.`));
   }
-  if (findings.length) return fail(findings, packs);
+  if (findings.some((item) => item.severity === "error")) return fail(findings, packs);
 
   const questions = questionsFor(packs, recipe.packs);
   const byId = Object.fromEntries(questions.map((question) => [question.id, question]));
@@ -416,6 +526,7 @@ export async function checkRecipe(recipe, packs) {
       }
     }
   }
+  findings.push(...chainFindings(recipe, picks, byId));
   const done = finish(findings, recipe, packs, questions);
   if (!done.ok) return { ok: false, findings: done.findings };
   return { ok: true, findings: done.findings, fingerprint: await fingerprintRecipe(recipe) };

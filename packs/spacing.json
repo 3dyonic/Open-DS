@@ -28,7 +28,8 @@
               "url": "https://m3.material.io/foundations/layout/understanding-layout/spacing"
             }
           ],
-          "formula": "Multiples of 4 pixels, recorded in the chosen unit."
+          "formula": "Multiples of 4 pixels, recorded in the chosen unit.",
+          "fragment": "spacing/base-4.css"
         },
         {
           "id": "base-8",
@@ -46,9 +47,19 @@
               "url": "https://m3.material.io/foundations/layout/understanding-layout/spacing"
             }
           ],
-          "formula": "Multiples of 8 pixels, recorded in the chosen unit."
+          "formula": "Multiples of 8 pixels, recorded in the chosen unit.",
+          "fragment": "spacing/base-8.css"
         }
-      ]
+      ],
+      "why_care": "Every gap is a multiple of this number, so it sets how fine your layout grid is.",
+      "affects": [
+        "theme/tokens.css",
+        "theme/tokens.json",
+        "theme/tailwind.preset.cjs",
+        "README.md",
+        "AGENTS.md"
+      ],
+      "feeds_into": []
     },
     {
       "id": "spacing-scale",
@@ -92,14 +103,28 @@
           ],
           "formula": "Each step multiplies the base."
         }
-      ]
+      ],
+      "why_care": "It decides whether gaps grow in even steps or jump in size as they get larger.",
+      "affects": [
+        "README.md",
+        "AGENTS.md"
+      ],
+      "feeds_into": []
     },
     {
       "id": "css-unit",
       "prompt": "Which unit does space use?",
       "summary": "References the global unit.",
       "required": true,
-      "ref": "global:css-unit"
+      "ref": "global:css-unit",
+      "why_care": "One answer covers type, spacing and radius, and it decides whether layout follows the reader's font size.",
+      "affects": [
+        "theme/tokens.css",
+        "theme/tokens.json",
+        "README.md",
+        "AGENTS.md"
+      ],
+      "feeds_into": []
     }
   ]
 }
