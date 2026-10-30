@@ -22,3 +22,5 @@ harness/report.json
 r/
 cli/assets/
 storybook/storybook-static/
+docs/build/
+docs/.docusaurus/

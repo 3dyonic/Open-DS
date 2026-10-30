@@ -1,0 +1,25 @@
+/* Open DS brand route B: cream paper, ink, one orange accent. */
+@import url("https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@400;600;800&family=DM+Mono:wght@400;500&display=swap");
+
+:root {
+  --ifm-font-family-base: "Bricolage Grotesque", system-ui, sans-serif;
+  --ifm-font-family-monospace: "DM Mono", ui-monospace, monospace;
+  --ifm-color-primary: #b93a00;
+  --ifm-color-primary-dark: #a33300;
+  --ifm-color-primary-darker: #992f00;
+  --ifm-color-primary-darkest: #7e2700;
+  --ifm-color-primary-light: #cf4100;
+  --ifm-color-primary-lighter: #d94400;
+  --ifm-color-primary-lightest: #ff5a1f;
+  --ifm-background-color: #f6f2e9;
+  --ifm-navbar-background-color: #f6f2e9;
+  --ifm-font-color-base: #16140f;
+  --ifm-heading-font-weight: 800;
+}
+
+[data-theme="dark"] {
+  --ifm-color-primary: #ff8a5c;
+  --ifm-background-color: #16140f;
+  --ifm-navbar-background-color: #16140f;
+  --ifm-font-color-base: #f6f2e9;
+}

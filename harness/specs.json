@@ -87,13 +87,13 @@
       "id": "OD-110",
       "title": "Website",
       "in": ["Next.js static SPA", "home, schemes, scheme scopes, usage, take"],
-      "checks": ["site-stack", "site-static-export", "site-routes", "site-build"]
+      "checks": ["site-stack", "site-static-export", "site-routes", "site-build", "content-no-real-names"]
     },
     {
       "id": "OD-120",
       "title": "Docusaurus docs",
       "in": ["docs/ site", "product, business, brand, grammar, schemes, CLI, MCP, agents, contributing"],
-      "checks": ["docs-docusaurus", "docs-sections", "llm-docs-frontmatter", "docs-build"]
+      "checks": ["docs-docusaurus", "docs-sections", "llm-docs-frontmatter", "docs-build", "content-no-real-names"]
     },
     {
       "id": "OD-121",
