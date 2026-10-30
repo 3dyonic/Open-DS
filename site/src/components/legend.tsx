@@ -1,6 +1,6 @@
 "use client";
 // The colour key: a small trigger that opens the key as a tooltip.
-import { useId, useState } from "react";
+import { useEffect, useId, useState } from "react";
 
 /**
  * The colour key for a section: one small trigger on its own line. The key opens as a tooltip
@@ -9,6 +9,14 @@ import { useId, useState } from "react";
 export function Legend({ items }: { items: [React.ReactNode, string][] }) {
   const id = useId();
   const [dismissed, setDismissed] = useState(false);
+  const [hovered, setHovered] = useState(false);
+  // While the pointer is over the key, Escape closes it even if focus is elsewhere.
+  useEffect(() => {
+    if (!hovered) return;
+    const onKey = (e: KeyboardEvent) => e.key === "Escape" && setDismissed(true);
+    document.addEventListener("keydown", onKey);
+    return () => document.removeEventListener("keydown", onKey);
+  }, [hovered]);
   const show = dismissed
     ? ""
     : "group-focus-within:visible group-focus-within:opacity-100 group-hover:visible group-hover:opacity-100";
@@ -16,7 +24,11 @@ export function Legend({ items }: { items: [React.ReactNode, string][] }) {
     <div
       className="group relative self-start"
       onKeyDown={(e) => e.key === "Escape" && setDismissed(true)}
-      onMouseLeave={() => setDismissed(false)}
+      onMouseEnter={() => setHovered(true)}
+      onMouseLeave={() => {
+        setHovered(false);
+        setDismissed(false);
+      }}
       onBlur={() => setDismissed(false)}
     >
       <button
