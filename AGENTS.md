@@ -37,6 +37,7 @@ Open DS models a design system as a finite grammar of questions. A scheme answer
 
 ```bash
 pnpm install && uv sync --all-packages --group dev
+pnpm --dir tokens build   # the CLI, site and Storybook read tokens/dist
 pnpm harness          # fast checks
 pnpm harness:full     # with builds and test suites
 pnpm e2e              # the local end-to-end run

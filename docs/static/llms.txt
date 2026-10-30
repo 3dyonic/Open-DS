@@ -6,25 +6,25 @@ Pick a scheme by its use_when and avoid_when. Deploy it with the CLI (`open-ds i
 
 ## Schemes
 
-- [Accessible first](https://github.com/3dyonic/Open-DS/blob/RC1/schemes/accessible-first.json) (accessible-first): Large text, large targets and AAA contrast, so everyone can finish the task. Use when: Public services, health, government and any product that must work for everyone.
-- [Brand expressive](https://github.com/3dyonic/Open-DS/blob/RC1/schemes/brand-expressive.json) (brand-expressive): Big display type, vivid color and springy motion, for launches that must be remembered. Use when: Launch sites, campaigns, marketing pages and consumer brands that lead with personality.
-- [Content first](https://github.com/3dyonic/Open-DS/blob/RC1/schemes/content-first.json) (content-first): Large, calm type and generous space, for people who come to read. Use when: Publications, documentation, blogs, guides and help centers.
-- [Dense data](https://github.com/3dyonic/Open-DS/blob/RC1/schemes/dense-data.json) (dense-data): Compact, exact and quiet, for experts who scan and compare numbers all day. Use when: Operations tools, admin panels, finance and analytics: many records, daily expert users, mouse and keyboard.
-- [Multi-brand](https://github.com/3dyonic/Open-DS/blob/RC1/schemes/multi-brand.json) (multi-brand): One shared system with three brands as themes. Components never change; brand primitives do. Use when: Companies with several brands or white-label products on one component library.
+- [Accessible first](https://raw.githubusercontent.com/3dyonic/Open-DS/RC1/schemes/accessible-first.json): id accessible-first. Large text, large targets and AAA contrast, so everyone can finish the task. Use when: Public services, health, government and any product that must work for everyone.
+- [Brand expressive](https://raw.githubusercontent.com/3dyonic/Open-DS/RC1/schemes/brand-expressive.json): id brand-expressive. Big display type, vivid color and springy motion, for launches that must be remembered. Use when: Launch sites, campaigns, marketing pages and consumer brands that lead with personality.
+- [Content first](https://raw.githubusercontent.com/3dyonic/Open-DS/RC1/schemes/content-first.json): id content-first. Large, calm type and generous space, for people who come to read. Use when: Publications, documentation, blogs, guides and help centers.
+- [Dense data](https://raw.githubusercontent.com/3dyonic/Open-DS/RC1/schemes/dense-data.json): id dense-data. Compact, exact and quiet, for experts who scan and compare numbers all day. Use when: Operations tools, admin panels, finance and analytics: many records, daily expert users, mouse and keyboard.
+- [Multi-brand](https://raw.githubusercontent.com/3dyonic/Open-DS/RC1/schemes/multi-brand.json): id multi-brand. One shared system with three brands as themes. Components never change; brand primitives do. Use when: Companies with several brands or white-label products on one component library.
 
 ## Grammar and formats
 
-- [Grammar](https://github.com/3dyonic/Open-DS/blob/RC1/schemes/grammar.json): 9 reason groups, 10 scope groups, 48 questions, 25 situations, 62 component keys
-- [Scheme JSON Schema](https://github.com/3dyonic/Open-DS/blob/RC1/schema/scheme.schema.json): the scheme format, every property described
-- [Grammar JSON Schema](https://github.com/3dyonic/Open-DS/blob/RC1/schema/grammar.schema.json): the grammar format
+- [Grammar](https://raw.githubusercontent.com/3dyonic/Open-DS/RC1/schemes/grammar.json): 9 reason groups, 10 scope groups, 48 questions, 25 situations, 62 component keys
+- [Scheme JSON Schema](https://raw.githubusercontent.com/3dyonic/Open-DS/RC1/schema/scheme.schema.json): the scheme format, every property described
+- [Grammar JSON Schema](https://raw.githubusercontent.com/3dyonic/Open-DS/RC1/schema/grammar.schema.json): the grammar format
 
 ## Tools
 
-- [CLI](https://github.com/3dyonic/Open-DS/blob/RC1/cli/README.md): list, show, why, when, init, add
-- [MCP server](https://github.com/3dyonic/Open-DS/blob/RC1/mcp/README.md): list_schemes, get_scheme, get_answer, why, when_to_use, deploy
-- [Agent skill](https://github.com/3dyonic/Open-DS/blob/RC1/skills/open-ds/SKILL.md): how an agent picks, deploys and follows a scheme
-- [AGENTS.md](https://github.com/3dyonic/Open-DS/blob/RC1/AGENTS.md): how to work on this repository
+- [CLI](https://raw.githubusercontent.com/3dyonic/Open-DS/RC1/cli/README.md): list, show, why, when, init, add
+- [MCP server](https://raw.githubusercontent.com/3dyonic/Open-DS/RC1/mcp/README.md): list_schemes, get_scheme, get_answer, why, when_to_use, deploy
+- [Agent skill](https://raw.githubusercontent.com/3dyonic/Open-DS/RC1/skills/open-ds/SKILL.md): how an agent picks, deploys and follows a scheme
+- [AGENTS.md](https://raw.githubusercontent.com/3dyonic/Open-DS/RC1/AGENTS.md): how to work on this repository
 
 ## Optional
 
-- [llms-full.txt](https://github.com/3dyonic/Open-DS/blob/RC1/llms-full.txt): every scheme in one file: answers with reasons, usage rules, voice
+- [llms-full.txt](https://raw.githubusercontent.com/3dyonic/Open-DS/RC1/llms-full.txt): every scheme in one file: answers with reasons, usage rules, voice

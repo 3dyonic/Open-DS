@@ -19,7 +19,13 @@ const ids = readdirSync(join(repo, "schemes"))
 const schemes = ids.map((id) => read(`schemes/${id}.json`));
 const qs = Object.fromEntries([...g.reasons, ...g.scopes].flatMap((x) => x.questions.map((q) => [q.id, q])));
 const sits = Object.fromEntries(g.situations.map((s) => [s.id, s]));
-const esc = (s) => String(s).replaceAll("|", "\\|");
+const esc = (s) =>
+  String(s)
+    .replaceAll("|", "\\|")
+    .replaceAll("\n", " ")
+    .replaceAll("<", "&lt;")
+    .replaceAll("{", "&#123;")
+    .replaceAll("}", "&#125;");
 const fm = (o) =>
   `---\n${Object.entries(o)
     .map(([k, v]) => `${k}: ${JSON.stringify(v)}`)

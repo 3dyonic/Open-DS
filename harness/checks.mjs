@@ -561,6 +561,8 @@ export const CHECKS = {
   "cli-init-temp": {
     requires: ["cli/src/schemes.mjs", "tokens/package.json", "ui/src/components"],
     run: (c) => {
+      const err = ensureTokens(c);
+      if (err) return bad(tail(err));
       const dir = mkdtempSync(join(tmpdir(), "ods-harness-"));
       try {
         const r = c.sh("node", ["cli/bin/open-ds.js", "init", "dense-data", "--dir", dir, "--yes"]);
@@ -727,7 +729,8 @@ export const CHECKS = {
     requires: ["cli/test"],
     slow: true,
     run: (c) => {
-      const r = c.sh("pnpm", ["-r", "--if-present", "test"]);
+      // One package at a time: the tokens tests rebuild tokens/dist, which other tests read.
+      const r = c.sh("pnpm", ["-r", "--workspace-concurrency=1", "--if-present", "test"]);
       return r.code === 0 ? ok("node tests pass") : bad(tail(r.out));
     },
   },
@@ -802,7 +805,9 @@ export const CHECKS = {
     requires: ["TESTING.md"],
     run: (c) => {
       const t = c.read("TESTING.md");
-      const missing = ["open-ds init", "mcp", "storybook", "docs", "site"].filter((w) => !t.toLowerCase().includes(w));
+      const missing = ["open-ds.js init", "open-ds-mcp", "storybook", "docs", "site", "pnpm e2e"].filter(
+        (w) => !t.toLowerCase().includes(w),
+      );
       return missing.length
         ? bad(`TESTING.md does not cover: ${missing.join(", ")}`)
         : ok("guide covers CLI, MCP, Storybook, docs and site");
