@@ -6,7 +6,7 @@ description: "Connect your AI to Open DS over MCP \u2014 list schemes, read answ
 # MCP server
 
 ```bash
-claude mcp add open-ds -- uv run --directory /path/to/Open-DS open-ds-mcp
+claude mcp add --scope user open-ds -- uv run --directory /path/to/Open-DS open-ds-mcp
 ```
 
 | Tool           | What it does                                                                   |
