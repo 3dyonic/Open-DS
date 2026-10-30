@@ -1,0 +1,699 @@
+// Named checks for the definition-of-done harness.
+// Each check says what it needs to exist (`requires`). If that is missing, the layer is
+// "not built" yet, which is different from "fail". Slow checks (full builds) run with --full.
+
+import { spawnSync } from "node:child_process";
+import { existsSync, mkdtempSync, readFileSync, readdirSync, rmSync, statSync } from "node:fs";
+import { tmpdir } from "node:os";
+import { join, relative } from "node:path";
+import Ajv2020 from "ajv/dist/2020.js";
+import addFormats from "ajv-formats";
+
+export const SCHEMES = ["dense-data", "content-first", "accessible-first", "multi-brand", "brand-expressive"];
+export const COMPONENTS = [
+  "button",
+  "input",
+  "label",
+  "select",
+  "checkbox",
+  "switch",
+  "badge",
+  "card",
+  "table",
+  "tabs",
+  "tooltip",
+  "dialog",
+  "dropdown-menu",
+  "toast",
+];
+export const LAYOUT = [
+  "schemes",
+  "schema",
+  "tokens",
+  "ui",
+  "cli",
+  "mcp",
+  "storybook",
+  "site",
+  "docs",
+  "skills",
+  "harness",
+];
+const SHADCN_VARS = [
+  "--background",
+  "--foreground",
+  "--primary",
+  "--primary-foreground",
+  "--border",
+  "--ring",
+  "--radius",
+];
+const SKIP_DIRS = new Set([
+  "node_modules",
+  ".next",
+  "out",
+  "dist",
+  "build",
+  ".docusaurus",
+  "storybook-static",
+  ".venv",
+]);
+
+// ---------- helpers ----------
+
+export function makeContext(root) {
+  const p = (...parts) => join(root, ...parts);
+  const has = (...parts) => existsSync(p(...parts));
+  const read = (...parts) => readFileSync(p(...parts), "utf8");
+  const json = (...parts) => JSON.parse(read(...parts));
+  const walk = (dir, filter) => {
+    const out = [];
+    const start = p(dir);
+    if (!existsSync(start)) return out;
+    const stack = [start];
+    while (stack.length) {
+      const d = stack.pop();
+      for (const name of readdirSync(d)) {
+        if (SKIP_DIRS.has(name)) continue;
+        const full = join(d, name);
+        if (statSync(full).isDirectory()) stack.push(full);
+        else if (!filter || filter(full)) out.push(relative(root, full));
+      }
+    }
+    return out.sort();
+  };
+  const sh = (cmd, args, opts = {}) => {
+    const r = spawnSync(cmd, args, {
+      cwd: opts.cwd ?? root,
+      encoding: "utf8",
+      timeout: opts.timeout ?? 600_000,
+      env: { ...process.env, ...opts.env },
+    });
+    return { code: r.status ?? 1, out: `${r.stdout ?? ""}${r.stderr ?? ""}`.trim() };
+  };
+  return { root, p, has, read, json, walk, sh };
+}
+
+const ok = (detail = "") => ({ ok: true, detail });
+const bad = (detail) => ({ ok: false, detail });
+// Not a failure: the work this check proves has not happened yet.
+const pending = (detail) => ({ ok: false, pending: true, detail });
+const tail = (s) => s.split("\n").slice(-6).join("\n");
+
+function ajv() {
+  const a = new Ajv2020({ allErrors: true, strict: false });
+  addFormats(a);
+  return a;
+}
+
+// Walk every object in a JSON value, with its path.
+function* objects(value, path = "$") {
+  if (Array.isArray(value)) {
+    for (let i = 0; i < value.length; i++) yield* objects(value[i], `${path}[${i}]`);
+  } else if (value && typeof value === "object") {
+    yield [path, value];
+    for (const [k, v] of Object.entries(value)) yield* objects(v, `${path}.${k}`);
+  }
+}
+
+function frontMatter(text) {
+  const m = text.match(/^---\n([\s\S]*?)\n---/);
+  return m ? m[1] : null;
+}
+
+// ---------- checks ----------
+
+export const CHECKS = {
+  // Harness
+  "harness-covers-instructions": {
+    requires: ["harness/instructions.json"],
+    run: (c) => {
+      const items = c.json("harness/instructions.json").items;
+      const missing = items.flatMap((i) => i.checks).filter((n) => !CHECKS[n]);
+      return missing.length ? bad(`unknown checks: ${missing.join(", ")}`) : ok(`${items.length} instructions mapped`);
+    },
+  },
+  "harness-covers-specs": {
+    requires: ["harness/specs.json"],
+    run: (c) => {
+      const items = c.json("harness/specs.json").items;
+      const missing = items.flatMap((i) => i.checks).filter((n) => !CHECKS[n]);
+      const noIn = items.filter((i) => !i.in?.length).map((i) => i.id);
+      if (missing.length) return bad(`unknown checks: ${missing.join(", ")}`);
+      if (noIn.length) return bad(`specs without In: ${noIn.join(", ")}`);
+      return ok(`${items.length} specs mapped`);
+    },
+  },
+  "harness-self-test": {
+    requires: ["harness/test"],
+    slow: true,
+    run: (c) => {
+      const r = c.sh("node", ["--test"], { cwd: c.p("harness") });
+      return r.code === 0 ? ok("harness tests pass") : bad(tail(r.out));
+    },
+  },
+
+  // Schemes
+  "schemes-five": {
+    requires: ["schemes/grammar.json"],
+    run: (c) => {
+      const missing = SCHEMES.filter((s) => !c.has("schemes", `${s}.json`));
+      return missing.length ? bad(`missing: ${missing.join(", ")}`) : ok("5 schemes");
+    },
+  },
+  "schemes-answer-every-question": {
+    requires: ["schemes/grammar.json", ...SCHEMES.map((s) => `schemes/${s}.json`)],
+    run: (c) => {
+      const g = c.json("schemes/grammar.json");
+      const qids = [...g.reasons, ...g.scopes].flatMap((x) => x.questions.map((q) => q.id));
+      const gaps = [];
+      for (const s of SCHEMES) {
+        const answered = new Set(c.json("schemes", `${s}.json`).answers.map((a) => a.question));
+        const miss = qids.filter((q) => !answered.has(q));
+        if (miss.length) gaps.push(`${s}: ${miss.length} unanswered (${miss.slice(0, 3).join(", ")}…)`);
+      }
+      return gaps.length ? bad(gaps.join("; ")) : ok(`${qids.length} questions answered by every scheme`);
+    },
+  },
+  "schemes-because-resolves": {
+    requires: ["schemes/grammar.json", ...SCHEMES.map((s) => `schemes/${s}.json`)],
+    run: (c) => {
+      const g = c.json("schemes/grammar.json");
+      const qids = new Set([...g.reasons, ...g.scopes].flatMap((x) => x.questions.map((q) => q.id)));
+      const broken = [];
+      for (const s of SCHEMES) {
+        const sch = c.json("schemes", `${s}.json`);
+        for (const a of sch.answers)
+          for (const b of a.because ?? []) if (!qids.has(b)) broken.push(`${s}:${a.question}→${b}`);
+        for (const u of sch.usage ?? [])
+          for (const b of u.because ?? []) if (!qids.has(b)) broken.push(`${s}:${u.situation}→${b}`);
+      }
+      return broken.length
+        ? bad(`broken because links: ${broken.slice(0, 5).join(", ")}`)
+        : ok("every because link resolves");
+    },
+  },
+  "schemes-usage-rules": {
+    requires: ["schemes/grammar.json", ...SCHEMES.map((s) => `schemes/${s}.json`)],
+    run: (c) => {
+      const sits = c.json("schemes/grammar.json").situations.map((s) => s.id);
+      const gaps = [];
+      for (const s of SCHEMES) {
+        const have = new Set((c.json("schemes", `${s}.json`).usage ?? []).filter((u) => u.why).map((u) => u.situation));
+        const miss = sits.filter((x) => !have.has(x));
+        if (miss.length) gaps.push(`${s}: ${miss.length} situations without a rule and a why`);
+      }
+      return gaps.length ? bad(gaps.join("; ")) : ok(`${sits.length} situations answered with a why by every scheme`);
+    },
+  },
+
+  // JSON standards
+  "json-schemas-2020-12": {
+    requires: ["schema/scheme.schema.json"],
+    run: (c) => {
+      const files = c.walk("schema", (f) => f.endsWith(".schema.json")).concat(["harness/harness.schema.json"]);
+      const wrong = files.filter((f) => c.json(f).$schema !== "https://json-schema.org/draft/2020-12/schema");
+      return wrong.length
+        ? bad(`not draft 2020-12: ${wrong.join(", ")}`)
+        : ok(`${files.length} schemas on draft 2020-12`);
+    },
+  },
+  "json-files-validate": {
+    requires: ["schema/scheme.schema.json", "schemes/grammar.json"],
+    run: (c) => {
+      const a = ajv();
+      const targets = [
+        ["schemes/grammar.json", "schema/grammar.schema.json"],
+        ...SCHEMES.filter((s) => c.has("schemes", `${s}.json`)).map((s) => [
+          `schemes/${s}.json`,
+          "schema/scheme.schema.json",
+        ]),
+        ["harness/instructions.json", "harness/harness.schema.json"],
+        ["harness/specs.json", "harness/harness.schema.json"],
+      ];
+      const errs = [];
+      for (const [file, schema] of targets) {
+        const validate = a.compile(c.json(schema));
+        if (!validate(c.json(file))) errs.push(`${file}: ${a.errorsText(validate.errors).slice(0, 200)}`);
+        a.removeSchema();
+      }
+      return errs.length ? bad(errs.join(" | ")) : ok(`${targets.length} files valid`);
+    },
+  },
+
+  // LLM context
+  "llm-schema-descriptions": {
+    requires: ["schema/scheme.schema.json"],
+    run: (c) => {
+      const missing = [];
+      for (const f of ["schema/scheme.schema.json", "schema/grammar.schema.json"]) {
+        if (!c.has(f)) continue;
+        for (const [path, o] of objects(c.json(f))) {
+          const isProp = /\.properties\.[^.]+$/.test(path) || /\.\$defs\.[^.]+$/.test(path);
+          if (isProp && !o.description) missing.push(`${f} ${path}`);
+        }
+      }
+      return missing.length
+        ? bad(`${missing.length} schema properties without description: ${missing.slice(0, 4).join(", ")}`)
+        : ok("every schema property has a description");
+    },
+  },
+  "llm-scheme-descriptions": {
+    requires: ["schemes/grammar.json", ...SCHEMES.map((s) => `schemes/${s}.json`)],
+    run: (c) => {
+      const missing = [];
+      const g = c.json("schemes/grammar.json");
+      for (const layer of [...g.reasons, ...g.scopes]) {
+        if (!layer.description) missing.push(`grammar ${layer.id}`);
+        for (const q of layer.questions) if (!q.description) missing.push(`grammar ${q.id}`);
+      }
+      for (const s of g.situations) if (!s.description) missing.push(`grammar ${s.id}`);
+      for (const s of SCHEMES) {
+        const sch = c.json("schemes", `${s}.json`);
+        if (!sch.description || !sch.ai?.use_when) missing.push(`${s} root`);
+        for (const a of sch.answers) if (!a.why) missing.push(`${s} ${a.question}`);
+      }
+      return missing.length
+        ? bad(`${missing.length} objects without agent context: ${missing.slice(0, 5).join(", ")}`)
+        : ok("every grammar and scheme object has agent context");
+    },
+  },
+  "llm-files": {
+    requires: ["schemes/grammar.json"],
+    run: (c) => {
+      const need = ["llms.txt", "llms-full.txt", "AGENTS.md"];
+      const missing = need.filter((f) => !c.has(f));
+      if (missing.length) return bad(`missing: ${missing.join(", ")}`);
+      const llms = c.read("llms.txt");
+      if (!llms.startsWith("# ")) return bad("llms.txt must start with an H1 (llmstxt.org format)");
+      const stale = SCHEMES.filter((s) => !llms.includes(s));
+      return stale.length
+        ? bad(`llms.txt does not list: ${stale.join(", ")}`)
+        : ok("llms.txt, llms-full.txt and AGENTS.md present and current");
+    },
+  },
+  "llm-skill": {
+    requires: ["skills"],
+    run: (c) => {
+      const f = "skills/open-ds/SKILL.md";
+      if (!c.has(f)) return bad(`missing ${f}`);
+      const fm = frontMatter(c.read(f));
+      if (!fm || !/^name:\s*\S+/m.test(fm) || !/^description:\s*\S+/m.test(fm))
+        return bad("SKILL.md needs front matter with name and description");
+      return ok("agent skill has name and description");
+    },
+  },
+  "llm-mcp-docstrings": {
+    requires: ["mcp/src/open_ds_mcp/server.py"],
+    run: (c) => {
+      const src = c.read("mcp/src/open_ds_mcp/server.py");
+      const tools = [...src.matchAll(/@mcp\.tool[^\n]*\n(?:async\s+)?def\s+(\w+)\([^)]*\)[^:]*:\n\s+("""|''')/g)].map(
+        (m) => m[1],
+      );
+      const all = [...src.matchAll(/@mcp\.tool[^\n]*\n(?:async\s+)?def\s+(\w+)/g)].map((m) => m[1]);
+      const missing = all.filter((t) => !tools.includes(t));
+      return missing.length
+        ? bad(`tools without docstring: ${missing.join(", ")}`)
+        : ok(`${all.length} MCP tools documented`);
+    },
+  },
+  "llm-docs-frontmatter": {
+    requires: ["docs/docusaurus.config.ts"],
+    run: (c) => {
+      const pages = c.walk("docs/docs", (f) => /\.mdx?$/.test(f));
+      if (!pages.length) return bad("no docs pages");
+      const missing = pages.filter((f) => !/^description:\s*\S+/m.test(frontMatter(c.read(f)) ?? ""));
+      return missing.length
+        ? bad(`${missing.length} pages without a description: ${missing.slice(0, 4).join(", ")}`)
+        : ok(`${pages.length} pages with descriptions`);
+    },
+  },
+
+  // Tokens
+  "tokens-style-dictionary": {
+    requires: ["tokens/package.json"],
+    run: (c) => {
+      const pkg = c.json("tokens/package.json");
+      return pkg.dependencies?.["style-dictionary"] || pkg.devDependencies?.["style-dictionary"]
+        ? ok("style-dictionary is a dependency")
+        : bad("tokens/ does not use style-dictionary");
+    },
+  },
+  "tokens-built-all-schemes": {
+    requires: ["tokens/package.json"],
+    run: (c) => {
+      const r = c.sh("pnpm", ["--dir", "tokens", "build"]);
+      if (r.code !== 0) return bad(tail(r.out));
+      const missing = SCHEMES.flatMap((s) =>
+        ["tokens.css", "theme.css", "tokens.json"].map((f) => `tokens/dist/${s}/${f}`),
+      ).filter((f) => !c.has(f));
+      return missing.length ? bad(`missing outputs: ${missing.join(", ")}`) : ok("all 5 schemes built");
+    },
+  },
+  "tokens-light-dark": {
+    requires: ["tokens/dist/dense-data/tokens.css"],
+    run: (c) => {
+      const bad1 = SCHEMES.filter((s) => {
+        const css = c.has("tokens", "dist", s, "tokens.css") ? c.read("tokens", "dist", s, "tokens.css") : "";
+        return !css.includes(":root") || !css.includes(".dark");
+      });
+      return bad1.length ? bad(`no light and dark blocks: ${bad1.join(", ")}`) : ok("light and dark in every scheme");
+    },
+  },
+  "tokens-shadcn-mapping": {
+    requires: ["tokens/dist/dense-data/theme.css"],
+    run: (c) => {
+      const gaps = [];
+      for (const s of SCHEMES) {
+        const css = c.has("tokens", "dist", s, "theme.css") ? c.read("tokens", "dist", s, "theme.css") : "";
+        const miss = SHADCN_VARS.filter((v) => !css.includes(`${v}:`));
+        if (miss.length) gaps.push(`${s}: ${miss.join(" ")}`);
+      }
+      return gaps.length ? bad(gaps.join("; ")) : ok("shadcn variables mapped in every scheme");
+    },
+  },
+  "tokens-component-keys-resolve": {
+    requires: ["tokens/dist/dense-data/theme.css", "schemes/grammar.json"],
+    run: (c) => {
+      const keys = c.json("schemes/grammar.json").component_keys.map((k) => `--${k.id.replaceAll("/", "-")}`);
+      const gaps = [];
+      for (const s of SCHEMES) {
+        const css = c.has("tokens", "dist", s, "theme.css") ? c.read("tokens", "dist", s, "theme.css") : "";
+        const miss = keys.filter((k) => !css.includes(`${k}:`));
+        if (miss.length) gaps.push(`${s}: ${miss.length} keys missing`);
+      }
+      return gaps.length ? bad(gaps.join("; ")) : ok(`${keys.length} component keys defined in every scheme`);
+    },
+  },
+
+  // Components
+  "ui-components": {
+    requires: ["ui/package.json"],
+    run: (c) => {
+      const missing = COMPONENTS.filter((n) => !c.has("ui", "src", "components", `${n}.tsx`));
+      return missing.length ? bad(`missing: ${missing.join(", ")}`) : ok(`${COMPONENTS.length} components`);
+    },
+  },
+  "ui-component-keys-only": {
+    requires: ["ui/src/components"],
+    run: (c) => {
+      const offenders = [];
+      for (const f of c.walk("ui/src/components", (x) => x.endsWith(".tsx"))) {
+        const src = c.read(f);
+        if (/#[0-9a-fA-F]{3,8}\b|rgb\(|hsl\(|oklch\(/.test(src)) offenders.push(`${f}: raw colour`);
+        if (/\b(bg|text|border)-(red|blue|gray|slate|zinc|neutral|green|amber)-\d/.test(src))
+          offenders.push(`${f}: palette class`);
+      }
+      return offenders.length ? bad(offenders.slice(0, 5).join("; ")) : ok("components read tokens only");
+    },
+  },
+  "ui-registry": {
+    requires: ["ui/registry.json"],
+    run: (c) => {
+      const reg = c.json("ui/registry.json");
+      const names = new Set(reg.items?.map((i) => i.name));
+      const missing = [...COMPONENTS, ...SCHEMES.map((s) => `theme-${s}`)].filter((n) => !names.has(n));
+      if (!reg.$schema?.includes("shadcn")) return bad("registry.json must point at the shadcn registry schema");
+      return missing.length
+        ? bad(`registry missing: ${missing.join(", ")}`)
+        : ok("registry lists every component and scheme theme");
+    },
+  },
+
+  // CLI
+  "cli-package": {
+    requires: ["cli/package.json"],
+    run: (c) => {
+      const pkg = c.json("cli/package.json");
+      return pkg.bin?.["open-ds"] ? ok("cli has the open-ds bin") : bad("cli/package.json has no open-ds bin");
+    },
+  },
+  "cli-commands": {
+    requires: ["cli/package.json", "schemes/grammar.json"],
+    run: (c) => {
+      const r = c.sh("node", ["cli/bin/open-ds.js", "--help"]);
+      const missing = ["list", "show", "why", "when", "init", "add"].filter(
+        (cmd) => !new RegExp(`\\b${cmd}\\b`).test(r.out),
+      );
+      return missing.length ? bad(`help does not list: ${missing.join(", ")}`) : ok("list, show, why, when, init, add");
+    },
+  },
+  "cli-init-temp": {
+    requires: ["cli/package.json", "tokens/dist/dense-data/theme.css", "ui/src/components"],
+    run: (c) => {
+      const dir = mkdtempSync(join(tmpdir(), "ods-harness-"));
+      try {
+        const r = c.sh("node", ["cli/bin/open-ds.js", "init", "dense-data", "--dir", dir, "--yes"]);
+        if (r.code !== 0) return bad(tail(r.out));
+        const need = [
+          "AGENTS.md",
+          ".claude/skills/open-ds/SKILL.md",
+          "open-ds.json",
+          "src/styles/open-ds.css",
+          "src/components/ui/button.tsx",
+        ];
+        const missing = need.filter((f) => !existsSync(join(dir, f)));
+        return missing.length
+          ? bad(`init did not write: ${missing.join(", ")}`)
+          : ok("init wrote tokens, components, AGENTS.md and the skill");
+      } finally {
+        rmSync(dir, { recursive: true, force: true });
+      }
+    },
+  },
+
+  // MCP
+  "mcp-fastmcp": {
+    requires: ["mcp/pyproject.toml"],
+    run: (c) =>
+      /fastmcp/.test(c.read("mcp/pyproject.toml")) ? ok("FastMCP dependency") : bad("mcp does not depend on fastmcp"),
+  },
+  "mcp-tools": {
+    requires: ["mcp/src/open_ds_mcp/server.py", "schemes/grammar.json"],
+    run: (c) => {
+      const src = c.read("mcp/src/open_ds_mcp/server.py");
+      const missing = ["list_schemes", "get_scheme", "get_answer", "why", "when_to_use", "deploy"].filter(
+        (t) => !new RegExp(`def ${t}\\(`).test(src),
+      );
+      return missing.length ? bad(`missing tools: ${missing.join(", ")}`) : ok("6 MCP tools");
+    },
+  },
+  "mcp-deploy-uses-cli": {
+    requires: ["mcp/src/open_ds_mcp/server.py", "schemes/grammar.json"],
+    run: (c) =>
+      /open-ds\.js|"open-ds"/.test(c.read("mcp/src/open_ds_mcp/server.py"))
+        ? ok("deploy calls the CLI")
+        : bad("deploy does not call the CLI"),
+  },
+  "mcp-tests": {
+    requires: ["mcp/tests"],
+    slow: true,
+    run: (c) => {
+      const r = c.sh("uv", ["run", "pytest", "-q", "mcp/tests"]);
+      return r.code === 0 ? ok(tail(r.out).split("\n").pop()) : bad(tail(r.out));
+    },
+  },
+
+  // Storybook
+  "storybook-stories": {
+    requires: ["storybook/package.json"],
+    run: (c) => {
+      const missing = COMPONENTS.filter((n) => !c.has("storybook", "stories", `${n}.stories.tsx`));
+      return missing.length ? bad(`no story for: ${missing.join(", ")}`) : ok(`${COMPONENTS.length} stories`);
+    },
+  },
+  "storybook-switches": {
+    requires: ["storybook/.storybook/preview.tsx"],
+    run: (c) => {
+      const src = c.read("storybook/.storybook/preview.tsx");
+      return /scheme/.test(src) && /mode|dark/.test(src)
+        ? ok("scheme and mode switches")
+        : bad("preview has no scheme and mode switches");
+    },
+  },
+  "storybook-build": {
+    requires: ["storybook/package.json"],
+    slow: true,
+    run: (c) => {
+      const r = c.sh("pnpm", ["--dir", "storybook", "build"]);
+      return r.code === 0 ? ok("storybook builds") : bad(tail(r.out));
+    },
+  },
+
+  // Site
+  "site-stack": {
+    requires: ["site/package.json"],
+    run: (c) => {
+      const pkg = c.json("site/package.json");
+      const deps = { ...pkg.dependencies, ...pkg.devDependencies };
+      const missing = ["next", "react", "tailwindcss"].filter((d) => !deps[d]);
+      return missing.length ? bad(`missing: ${missing.join(", ")}`) : ok("Next.js, React, Tailwind");
+    },
+  },
+  "site-static-export": {
+    requires: ["site/next.config.ts"],
+    run: (c) =>
+      /output:\s*"export"/.test(c.read("site/next.config.ts"))
+        ? ok("static export (SPA)")
+        : bad("next.config is not a static export"),
+  },
+  "site-routes": {
+    requires: ["site/src/app/schemes"],
+    run: (c) => {
+      const need = [
+        "site/src/app/page.tsx",
+        "site/src/app/schemes/page.tsx",
+        "site/src/app/schemes/[id]/page.tsx",
+        "site/src/app/take/page.tsx",
+      ];
+      const missing = need.filter((f) => !c.has(f));
+      return missing.length ? bad(`missing routes: ${missing.join(", ")}`) : ok("home, schemes, scheme, take");
+    },
+  },
+  "site-build": {
+    requires: ["site/package.json"],
+    slow: true,
+    run: (c) => {
+      const r = c.sh("pnpm", ["--dir", "site", "build"]);
+      return r.code === 0 ? ok("site builds") : bad(tail(r.out));
+    },
+  },
+
+  // Docs
+  "docs-docusaurus": {
+    requires: ["docs/package.json"],
+    run: (c) =>
+      c.json("docs/package.json").dependencies?.["@docusaurus/core"]
+        ? ok("Docusaurus in docs/")
+        : bad("docs/ is not Docusaurus"),
+  },
+  "docs-sections": {
+    requires: ["docs/docusaurus.config.ts"],
+    run: (c) => {
+      const need = ["product", "business", "brand", "grammar", "schemes", "cli", "mcp", "agents", "contributing"];
+      const missing = need.filter(
+        (s) => !c.has("docs", "docs", s) && !c.has("docs", "docs", `${s}.md`) && !c.has("docs", "docs", `${s}.mdx`),
+      );
+      return missing.length ? bad(`missing sections: ${missing.join(", ")}`) : ok("all sections present");
+    },
+  },
+  "docs-build": {
+    requires: ["docs/package.json"],
+    slow: true,
+    run: (c) => {
+      const r = c.sh("pnpm", ["--dir", "docs", "build"]);
+      return r.code === 0 ? ok("docs build") : bad(tail(r.out));
+    },
+  },
+
+  // Structure and standards
+  "structure-layout": {
+    requires: [],
+    run: (c) => {
+      const missing = LAYOUT.filter((d) => !c.has(d));
+      return missing.length ? pending(`not built yet: ${missing.join(", ")}`) : ok("layout matches the plan");
+    },
+  },
+  "standards-python": {
+    requires: ["mcp"],
+    slow: true,
+    run: (c) => {
+      const a = c.sh("uv", ["run", "ruff", "check", "validator", "mcp"]);
+      const b = c.sh("uv", ["run", "ruff", "format", "--check", "validator", "mcp"]);
+      return a.code === 0 && b.code === 0 ? ok("ruff check and format pass") : bad(tail(a.out + "\n" + b.out));
+    },
+  },
+  "standards-node-tests": {
+    requires: ["cli/test"],
+    slow: true,
+    run: (c) => {
+      const r = c.sh("pnpm", ["-r", "--if-present", "test"]);
+      return r.code === 0 ? ok("node tests pass") : bad(tail(r.out));
+    },
+  },
+  "standards-site-lint": {
+    requires: ["site/package.json"],
+    slow: true,
+    run: (c) => {
+      const r = c.sh("pnpm", ["--dir", "site", "lint"]);
+      return r.code === 0 ? ok("eslint and prettier pass") : bad(tail(r.out));
+    },
+  },
+
+  // Git
+  "git-rc1-from-master": {
+    requires: [],
+    run: (c) => {
+      const r = c.sh("git", ["merge-base", "--is-ancestor", "origin/master", "origin/RC1"]);
+      return r.code === 0 ? ok("RC1 contains master") : bad("origin/RC1 missing or not based on master");
+    },
+  },
+  "git-feature-merges": {
+    requires: [],
+    run: (c) => {
+      const r = c.sh("git", ["log", "origin/RC1", "--merges", "--format=%s", "--first-parent"]);
+      const merges = r.out.split("\n").filter((l) => /feat\/OD-\d+/.test(l));
+      return merges.length
+        ? ok(`${merges.length} feature merges into RC1`)
+        : pending("no feature branch merged into RC1 yet");
+    },
+  },
+
+  // Process evidence (kept in harness/evidence.json, one entry per merged feature)
+  "evidence-subagent-merges": {
+    requires: ["harness/evidence.json"],
+    run: (c) => {
+      const e = c.json("harness/evidence.json").merges ?? [];
+      const missing = e.filter((m) => !m.pr || !m.merged_by_subagent || !m.sha);
+      return !e.length
+        ? pending("no merges recorded yet")
+        : missing.length
+          ? bad(`${missing.length} merges without PR, sub-agent or SHA`)
+          : ok(`${e.length} PRs merged by a sub-agent`);
+    },
+  },
+  "evidence-orchestra-skills": {
+    requires: ["harness/evidence.json"],
+    run: (c) => {
+      const e = c.json("harness/evidence.json").merges ?? [];
+      const missing = e.filter((m) => !m.skills?.length);
+      return !e.length
+        ? pending("no merges recorded yet")
+        : missing.length
+          ? bad(`${missing.length} merges without an Orchestra skill`)
+          : ok("every merge used Orchestra skills");
+    },
+  },
+  "evidence-jira-orchestra": {
+    requires: ["harness/evidence.json"],
+    run: (c) => {
+      const e = c.json("harness/evidence.json").merges ?? [];
+      const missing = e.filter((m) => !m.jira || !m.orchestra);
+      return !e.length
+        ? pending("no merges recorded yet")
+        : missing.length
+          ? bad(`${missing.length} merges without a Jira update and an Orchestra record`)
+          : ok("every merge updated Jira and Orchestra");
+    },
+  },
+
+  // End to end
+  "e2e-guide": {
+    requires: ["TESTING.md"],
+    run: (c) => {
+      const t = c.read("TESTING.md");
+      const missing = ["open-ds init", "mcp", "storybook", "docs", "site"].filter((w) => !t.toLowerCase().includes(w));
+      return missing.length
+        ? bad(`TESTING.md does not cover: ${missing.join(", ")}`)
+        : ok("guide covers CLI, MCP, Storybook, docs and site");
+    },
+  },
+  "e2e-run": {
+    requires: ["scripts/e2e.mjs"],
+    slow: true,
+    run: (c) => {
+      const r = c.sh("node", ["scripts/e2e.mjs"]);
+      return r.code === 0 ? ok("end to end passes") : bad(tail(r.out));
+    },
+  },
+};
