@@ -67,7 +67,7 @@ export function ScopeMini({
         return ["radius-control", "radius-badge", "radius-container"].map((r) => (
           <span
             key={r}
-            className="size-11 border-[length:var(--border-width-default)] border-[var(--color-border-strong)] bg-white"
+            className="size-11 border-[length:var(--border-width-default)] border-[var(--color-border-strong)] bg-[var(--color-surface-default)]"
             style={{ borderRadius: v(r) }}
           />
         ));
@@ -75,7 +75,7 @@ export function ScopeMini({
         return ["elevation-card", "elevation-overlay"].map((e) => (
           <span
             key={e}
-            className="h-10 w-16 rounded-[var(--radius-container)] bg-white"
+            className="h-10 w-16 rounded-[var(--radius-container)] bg-[var(--color-surface-default)]"
             style={{ boxShadow: v(e) }}
           />
         ));

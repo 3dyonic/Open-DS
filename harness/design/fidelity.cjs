@@ -73,7 +73,7 @@ async function compareImages([a, b, offset]) {
   for (let i = 0; i < fa.length; i += 4)
     diff += (Math.abs(fa[i] - fb[i]) + Math.abs(fa[i + 1] - fb[i + 1]) + Math.abs(fa[i + 2] - fb[i + 2])) / 3;
   const fold = 1 - diff / (255 * (fa.length / 4));
-  // Palette: 4-bit-per-channel histograms of the whole page at 96px wide.
+  // Palette: 3-bit-per-channel histograms of the whole page at 96px wide.
   const hist = (img) => {
     const h = Math.max(1, Math.round((img.height / img.width) * 96));
     const d = pixels(img, 0, img.height, 96, h);
