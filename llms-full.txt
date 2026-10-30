@@ -1,0 +1,523 @@
+# Open DS: every scheme in full
+
+> Generated from schemes/*.json. Each scheme lists its answers (question: answer. why), its usage rules (situation: use; not; why) and its voice.
+
+## Accessible first (accessible-first)
+
+Accessible first is an Open DS scheme: a full set of answers to the Open DS grammar, with the reasons behind each, usage rules, voice and tone, and the tokens that follow. Large text, large targets and AAA contrast, so everyone can finish the task.
+
+Use when: Public services, health, government and any product that must work for everyone.
+Avoid when: Dense expert tools where screen space matters more than size.
+Themes: light, dark
+
+### Answers
+
+- business.q1 What does the product do for the business? Serves the public. A public service everyone must be able to use.
+- business.q2 How many brands or products share the system? One. One service, one brand.
+- people.q1 Who uses it most? Everyone, including people with disabilities. Everyone, including people with low vision, motor and cognitive needs. (because business.q1)
+- people.q2 What accessibility level do we commit to? AAA. AAA where it applies; nobody is left out. (because people.q1)
+- content.q1 What is the main content? Forms and tasks. Most screens are forms and steps. (because business.q1)
+- content.q2 How much is on one screen? One idea at a time. One question per screen lowers effort. (because people.q1)
+- tasks.q1 What is the main task? Complete a form. People must finish the form. (because content.q1)
+- tasks.q2 How often do people repeat actions? Rarely. People do this once or twice a year. (because business.q1)
+- human.q1 What must the interface protect? Low effort to understand. Low effort to understand each step. (because people.q1)
+- human.q2 How do people recall the interface? They see it fresh each time. Nobody remembers the interface from last time. (because tasks.q2)
+- outcomes.q1 Which outcome matters most? Completion without errors. Completion without errors is the measure. (because tasks.q1)
+- outcomes.q2 What is a costly mistake? A task that fails. A failed form can cost someone a benefit. (because tasks.q1)
+- brand.q1 What should the brand feel like? Calm and clear. Calm and clear, never clever. (because human.q1)
+- brand.q2 How visible is the brand in the interface? Quiet. The brand stays out of the way. (because human.q1)
+- voice.q1 How does the product speak? Plain and direct. Plain and direct words. (because people.q1)
+- voice.q2 How formal is it? Neutral. Neutral, respectful formality.
+- team.q1 Who maintains the system? A platform team. A platform team serves many services.
+- team.q2 How fast does it change? Rarely. Changes are rare and tested.
+- typography.q1 Which text roles does the product need? Core: heading, body, label. Few roles keep pages predictable. (because human.q1)
+- typography.q2 How large is body text? Large. Large text is readable for more people. (because people.q1)
+- typography.q3 How does line height scale? In proportion to text size. Line height grows with text size for zoom users. (because people.q2)
+- color.q1 How many emphasis levels do actions need? Two. Primary and secondary only; fewer choices, fewer errors. (because human.q1)
+- color.q2 What carries meaning? Color, icon and word. Never color alone. (because people.q2)
+- color.q3 How saturated is the palette? Balanced. Strong but not loud color. (because brand.q1)
+- spacing.q1 How dense is the layout? Spacious. Space lowers effort and mis-taps. (because human.q1)
+- spacing.q2 How many densities exist? One. One density, always generous. (because people.q1)
+- spacing.q3 What separates groups? Space. Space separates groups. (because human.q1)
+- shape.q1 What should control corners say? Slightly rounded. Clear, slightly rounded controls. (because brand.q1)
+- shape.q2 How heavy are borders? Strong. Strong borders show where a field is. (because people.q2)
+- shape.q3 What shape is a status label? Rectangle. Clear rectangles with a word inside. (because human.q1)
+- elevation.q1 When does something get a shadow? Never. Flat surfaces with strong borders; shadows are hard to see. (because people.q2)
+- elevation.q2 How soft are shadows? Subtle. If used, subtle. (because elevation.q1)
+- elevation.q3 How is a dialog separated from the page? Dim the page. Dimming makes the dialog obvious. (because human.q1)
+- motion.q1 What is motion for? Feedback. Motion only confirms an action. (because people.q1)
+- motion.q2 How fast does feedback feel? Moderate. Moderate speed is easy to follow. (because people.q1)
+- motion.q3 What happens when someone asks for less motion? Nothing moves. When asked, nothing moves. (because people.q2)
+- iconography.q1 When do icons appear? Next to labels. Always a word next to an icon. (because human.q2)
+- iconography.q2 What icon style? Filled. Filled icons are easier to see. (because people.q1)
+- iconography.q3 How big are icons next to text? Larger than the text. Icons a little larger than text. (because people.q1)
+- theming.q1 Which modes ship? Light, dark and high contrast. Light, dark and high contrast. (because people.q2)
+- theming.q2 How are brands handled? One brand. One service, one brand. (because business.q2)
+- theming.q3 Who can change the theme? The user. People pick the mode they need. (because people.q1)
+- accessibility.q1 What contrast floor do we hold? AAA for text. AAA contrast for text. (because people.q2)
+- accessibility.q2 What is the smallest target? Large. Large targets for motor needs. (because people.q1)
+- accessibility.q3 Which states get their own visible value? All, including loading. Every state is visible, loading too. (because people.q2)
+- naming.q1 How are decisions named? By role. Role names are easy to audit. (because team.q1)
+- naming.q2 How many token tiers? Three. Three tiers for a platform team. (because team.q1)
+- naming.q3 Do components get their own keys? Yes, a component API. Component keys let services adapt safely. (because team.q1)
+
+### Usage rules
+
+- Page title (page-title): use type.title; not type.display; A clear, consistent title on every page.
+- A number in a table (number-in-table): use type.body; not A small or mono font; Every number must be readable at large size.
+- Paragraph or help text (paragraph): use type.body, short sentences; not type.caption; Large text and short lines lower effort.
+- Field label or column header (field-label): use type.label, above the field, always visible; not A placeholder as the label; Labels must stay visible while typing.
+- A selected row or item (selected-row): use color.surface.selected and a check icon; not Color alone; Selection never relies on color alone.
+- An error message (error-message): use color.status.danger, an icon and a sentence next to the field; not Color alone; People must know what went wrong and where.
+- A link (link): use color.text.link, underlined; not Color only; Underline works without color perception.
+- A status (status-label): use Badge with an icon and a word; not Color alone; Status must survive no color and a screen reader.
+- Items that belong together (related-items): use space.gap.default; not space.gap.tight; Generous space lowers mis-taps.
+- Between page sections (between-sections): use space.gap.section; not A thin line; Space is easy to see; thin lines are not.
+- Table row height (table-row): use size.row (large); not A compact row; Large rows are easy to read and tap.
+- Corners of buttons and inputs (control-corner): use radius.control; not A pill; Clear rectangles read as fields and buttons.
+- Shape of a status badge (status-shape): use radius.badge (rectangle); not A pill; Clear shapes with a word inside.
+- A card on the page (card): use A strong border, no shadow; not A shadow; Shadows are hard to see; borders are not.
+- A menu or dialog (menu-or-dialog): use A strong border and a dimmed page; not A shadow only; The dimmed page makes the dialog obvious.
+- Hover and press feedback (hover-feedback): use motion.duration.feedback (moderate); not Fast flicker; Moderate speed is easy to follow.
+- Someone asked for less motion (reduced-motion): use No motion; not Reduced motion; When people ask for less motion, nothing moves.
+- An icon with no label (icon-alone): use Not used: always add a word; not An icon button; Icons alone are guesswork.
+- Someone switches to dark (dark-mode): use The dark semantic mode, or high contrast; not One mode only; People pick the mode they can read.
+- Keyboard focus (keyboard-focus): use button/focus-ring at border-width.focus, with an offset; not A thin or faint outline; Focus must be seen by everyone.
+- The smallest clickable thing (smallest-target): use size.control.default (large); not Touch-minimum size; Large targets help people with motor needs.
+- The action that completes the task (commit-action): use Button primary, one per page; not Two primaries; One clear next step.
+- An alternative or cancel (alternative-action): use Button secondary; not A text link; Every action looks like a button people can find.
+- Delete or remove (destructive-action): use Button secondary, then a confirm page; not Button primary; A confirm step prevents a costly error.
+- An action on one row or item (row-action): use Button secondary with a word; not An icon on its own; A word says what will happen.
+
+### Voice and tone
+
+Plain and direct. Every sentence is easy to read on the first try.
+- Use common words. Explain any term you must use.
+- One idea per sentence. Put the action first.
+- Never blame the person.
+- error: Say what is wrong, where, and exactly how to fix it.
+- success: Confirm what happened and what comes next.
+- empty: Explain what will appear here and how to start.
+- confirm: Say what will happen in plain words, and offer a way back.
+- onboarding: Say how many steps there are and how long it takes.
+- Example (button): "Continue"
+- Example (error): "Enter your date of birth. For example, 27 3 1980."
+- Example (success): "We have your application. We will email you within 5 working days."
+- Example (empty): "You have no saved applications. Start a new one below."
+- Example (confirm): "Do you want to cancel your application? Your answers will be deleted."
+
+## Brand expressive (brand-expressive)
+
+Brand expressive is an Open DS scheme: a full set of answers to the Open DS grammar, with the reasons behind each, usage rules, voice and tone, and the tokens that follow. Big display type, vivid color and springy motion, for launches that must be remembered.
+
+Use when: Launch sites, campaigns, marketing pages and consumer brands that lead with personality.
+Avoid when: Tools people use for hours, or forms where calm matters more than character.
+Themes: light, dark
+
+### Answers
+
+- business.q1 What does the product do for the business? Sells and converts. A launch site that must win attention and sign-ups.
+- business.q2 How many brands or products share the system? One. One brand, loudly.
+- people.q1 Who uses it most? Customers who choose us. New customers deciding if they care. (because business.q1)
+- people.q2 What accessibility level do we commit to? AA. AA, even when loud. (because people.q1)
+- content.q1 What is the main content? Images and campaigns. Images, campaigns and short punchy copy. (because business.q1)
+- content.q2 How much is on one screen? One idea at a time. One big idea per section. (because content.q1)
+- tasks.q1 What is the main task? Browse and explore. People browse and explore the story. (because content.q1)
+- tasks.q2 How often do people repeat actions? Rarely. One action: sign up. (because business.q1)
+- human.q1 What must the interface protect? Delight. Delight is the point. (because business.q1)
+- human.q2 How do people recall the interface? They see it fresh each time. Every visit should feel fresh. (because people.q1)
+- outcomes.q1 Which outcome matters most? Engagement. Engagement and sign-ups. (because business.q1)
+- outcomes.q2 What is a costly mistake? Looking off-brand. A bland page is the costly mistake. (because business.q1)
+- brand.q1 What should the brand feel like? Bold. Bold and confident. (because business.q1)
+- brand.q2 How visible is the brand in the interface? Loud. The brand is loud everywhere. (because brand.q1)
+- voice.q1 How does the product speak? Playful. Playful and short. (because brand.q1)
+- voice.q2 How formal is it? Casual. Casual. (because brand.q1)
+- team.q1 Who maintains the system? An agency. An agency runs campaigns.
+- team.q2 How fast does it change? Every campaign. Every campaign changes the look a little. (because team.q1)
+- typography.q1 Which text roles does the product need? Core and expressive display. A big expressive display role carries the brand. (because brand.q2)
+- typography.q2 How large is body text? Regular. Regular body; the display does the shouting. (because content.q2)
+- typography.q3 How does line height scale? In proportion to text size. Ratios suit the big display sizes. (because typography.q1)
+- color.q1 How many emphasis levels do actions need? Three. Primary, secondary, ghost. (because tasks.q2)
+- color.q2 What carries meaning? Color and word. Color and word. (because people.q2)
+- color.q3 How saturated is the palette? Vivid. Vivid color is the brand. (because brand.q2)
+- spacing.q1 How dense is the layout? Spacious. Big space makes big moments. (because content.q2)
+- spacing.q2 How many densities exist? One. One density. (because content.q2)
+- spacing.q3 What separates groups? Space. Space and color blocks separate sections. (because brand.q1)
+- shape.q1 What should control corners say? Pill. Pill controls feel playful. (because voice.q1)
+- shape.q2 How heavy are borders? Strong. Strong borders read as graphic. (because brand.q1)
+- shape.q3 What shape is a status label? Pill. Pill badges. (because shape.q1)
+- elevation.q1 When does something get a shadow? Cards too. Cards float to feel tactile. (because human.q1)
+- elevation.q2 How soft are shadows? Pronounced. Pronounced shadows add depth. (because brand.q1)
+- elevation.q3 How is a dialog separated from the page? Dim the page. Dim the page. (because human.q1)
+- motion.q1 What is motion for? Expression. Motion expresses the brand. (because brand.q2)
+- motion.q2 How fast does feedback feel? Relaxed. Relaxed, springy motion. (because human.q1)
+- motion.q3 What happens when someone asks for less motion? Motion is reduced. Motion is reduced when asked. (because people.q2)
+- iconography.q1 When do icons appear? Rarely. Few icons; type and image carry the page. (because content.q1)
+- iconography.q2 What icon style? Two-tone. Two-tone icons in brand colors. (because brand.q2)
+- iconography.q3 How big are icons next to text? Larger than the text. Larger icons as graphic elements. (because brand.q2)
+- theming.q1 Which modes ship? Light and dark. Light and dark ship as standard; dark is a campaign favourite. (because brand.q2)
+- theming.q2 How are brands handled? One brand. One brand. (because business.q2)
+- theming.q3 Who can change the theme? The product. The campaign picks the mode; users can switch. (because team.q2)
+- accessibility.q1 What contrast floor do we hold? AA. AA, checked on vivid color. (because people.q2)
+- accessibility.q2 What is the smallest target? Touch size. Phones first. (because people.q1)
+- accessibility.q3 Which states get their own visible value? Those and pressed. Pressed for touch. (because accessibility.q2)
+- naming.q1 How are decisions named? By role. Role names let campaigns change values. (because team.q2)
+- naming.q2 How many token tiers? Three. Three tiers. (because team.q2)
+- naming.q3 Do components get their own keys? Yes, a component API. Keys keep components stable across campaigns. (because team.q2)
+
+### Usage rules
+
+- Page title (page-title): use type.display; not type.title; The display role carries the brand in every hero.
+- A number in a table (number-in-table): use type.body; not A mono font; Tables are rare; keep the brand voice.
+- Paragraph or help text (paragraph): use type.body, short; not Long paragraphs; Short copy keeps the energy.
+- Field label or column header (field-label): use type.label; not type.caption; Labels stay readable on vivid color.
+- A selected row or item (selected-row): use color.surface.selected (brand tint); not Grey; Selection carries the brand.
+- An error message (error-message): use color.status.danger and a short sentence; not The brand magenta; Errors must not look like the brand.
+- A link (link): use color.text.link, underlined; not Color only; Underline keeps links clear on vivid color.
+- A status (status-label): use Badge pill with a word; not Color alone; A word keeps meaning on vivid backgrounds.
+- Items that belong together (related-items): use space.gap.default; not space.gap.tight; Air keeps big type readable.
+- Between page sections (between-sections): use space.gap.section and a color block; not A thin line; Big space and color make each section a moment.
+- Table row height (table-row): use size.row (comfortable); not A compact row; Rare tables stay airy.
+- Corners of buttons and inputs (control-corner): use radius.control (pill); not Sharp corners; Pills feel playful.
+- Shape of a status badge (status-shape): use radius.badge (pill); not A rectangle; Pills match the controls.
+- A card on the page (card): use elevation.card (pronounced); not A flat card; Cards float to feel tactile.
+- A menu or dialog (menu-or-dialog): use elevation.overlay and a dimmed page; not No shadow; Strong depth for floating things.
+- Hover and press feedback (hover-feedback): use motion.duration.feedback (relaxed); not An instant change; Springy motion is part of the brand.
+- Someone asked for less motion (reduced-motion): use Reduced motion; not Full motion; Motion is reduced when asked.
+- An icon with no label (icon-alone): use Rarely, with a tooltip; not Many bare icons; Type and image carry the page.
+- Someone switches to dark (dark-mode): use The dark semantic mode; not A separate campaign palette; Dark ships as standard; campaigns change values, not structure.
+- Keyboard focus (keyboard-focus): use button/focus-ring at border-width.focus; not Removing the outline; Focus must show on vivid color.
+- The smallest clickable thing (smallest-target): use size.control.default (touch); not A compact control; Phones first.
+- The action that completes the task (commit-action): use Button primary, large, one per section; not Two primaries; One loud call to action per section.
+- An alternative or cancel (alternative-action): use Button ghost; not A second primary; The alternative must not compete.
+- Delete or remove (destructive-action): use Button secondary, then confirm; not Button primary; Confirm before destroying data.
+- An action on one row or item (row-action): use Button ghost with a word; not An icon alone; A word keeps it clear.
+
+### Voice and tone
+
+Playful and short. Big words, few of them.
+- Headlines are short and bold. Three to six words.
+- Verbs that move: Join, Try, Go.
+- Playful in headlines, plain in errors.
+- error: Plain first, a light touch after.
+- success: Celebrate, briefly.
+- empty: Playful, with a clear next step.
+- confirm: Plain. No jokes when something is lost.
+- onboarding: One bold line and one button.
+- Example (button): "Join the drop"
+- Example (error): "That email doesn't look right. Check it and try again."
+- Example (success): "You're on the list. See you at launch."
+- Example (empty): "Nothing here yet. Go find something you love."
+- Example (confirm): "Remove this from your list? You can add it back later."
+
+## Content first (content-first)
+
+Content first is an Open DS scheme: a full set of answers to the Open DS grammar, with the reasons behind each, usage rules, voice and tone, and the tokens that follow. Large, calm type and generous space, for people who come to read.
+
+Use when: Publications, documentation, blogs, guides and help centers.
+Avoid when: Data-heavy tools or screens with many actions.
+Themes: light, dark
+
+### Answers
+
+- business.q1 What does the product do for the business? Informs and publishes. The product publishes articles and guides.
+- business.q2 How many brands or products share the system? One. One publication, one brand.
+- people.q1 Who uses it most? Occasional visitors. Most readers arrive from search and visit now and then. (because business.q1)
+- people.q2 What accessibility level do we commit to? AA. AA is the commitment for a public site. (because people.q1)
+- content.q1 What is the main content? Long-form text. The content is long-form text. (because business.q1)
+- content.q2 How much is on one screen? One idea at a time. One idea per screen keeps reading calm. (because content.q1)
+- tasks.q1 What is the main task? Read start to end. People read from start to end. (because content.q1)
+- tasks.q2 How often do people repeat actions? Rarely. Actions are rare: subscribe, share, save. (because tasks.q1)
+- human.q1 What must the interface protect? Attention on the content. Attention belongs to the text. (because tasks.q1)
+- human.q2 How do people recall the interface? They see it fresh each time. Visitors see the interface fresh each time. (because people.q1)
+- outcomes.q1 Which outcome matters most? Reading comfort. Comfortable reading is the measure. (because tasks.q1)
+- outcomes.q2 What is a costly mistake? Losing your place. Losing your place in an article breaks the read. (because tasks.q1)
+- brand.q1 What should the brand feel like? Warm. Warm and considered, like a good magazine. (because business.q1)
+- brand.q2 How visible is the brand in the interface? Present. The brand shows in type, not in color. (because brand.q1)
+- voice.q1 How does the product speak? Conversational. The voice talks to one reader. (because people.q1)
+- voice.q2 How formal is it? Neutral. Neutral formality suits every topic.
+- team.q1 Who maintains the system? A small team. A small editorial team.
+- team.q2 How fast does it change? Rarely. The design changes rarely.
+- typography.q1 Which text roles does the product need? Core and editorial display. A lead and a display role open articles. (because content.q1)
+- typography.q2 How large is body text? Large. Large body text is easy on the eyes. (because outcomes.q1)
+- typography.q3 How does line height scale? In proportion to text size. Line height is a ratio, so it grows with the text. (because tasks.q1, people.q2)
+- color.q1 How many emphasis levels do actions need? Three. Primary, secondary and a text link. (because tasks.q2)
+- color.q2 What carries meaning? Color and word. Status is rare; color and a word are enough. (because people.q2)
+- color.q3 How saturated is the palette? Balanced. A calm, balanced palette. (because brand.q1)
+- spacing.q1 How dense is the layout? Spacious. Room around the text helps reading. (because outcomes.q1)
+- spacing.q2 How many densities exist? One. One density everywhere. (because content.q2)
+- spacing.q3 What separates groups? Space. Space separates sections; lines add noise. (because human.q1)
+- shape.q1 What should control corners say? Rounded. Rounded corners feel friendly. (because brand.q1)
+- shape.q2 How heavy are borders? Regular. Regular borders read clearly on warm paper. (because brand.q1)
+- shape.q3 What shape is a status label? Pill. Pills feel softer next to text. (because brand.q1)
+- elevation.q1 When does something get a shadow? Only when it floats. Only menus and dialogs float. (because human.q1)
+- elevation.q2 How soft are shadows? Soft. Soft shadows match the warm brand. (because brand.q1)
+- elevation.q3 How is a dialog separated from the page? Dim the page. Dimming focuses the reader on the dialog. (because human.q1)
+- motion.q1 What is motion for? Guidance. Motion guides from one part to the next. (because human.q2)
+- motion.q2 How fast does feedback feel? Moderate. Moderate speed feels calm. (because brand.q1)
+- motion.q3 What happens when someone asks for less motion? Nothing moves. When asked, nothing moves. (because people.q2)
+- iconography.q1 When do icons appear? Next to labels. Occasional visitors need a word next to each icon. (because human.q2)
+- iconography.q2 What icon style? Outline. Outline icons stay quiet next to text. (because human.q1)
+- iconography.q3 How big are icons next to text? Match the text. Icons match the text size. (because human.q1)
+- theming.q1 Which modes ship? Light and dark. Light and dark ship as standard for night readers. (because people.q1)
+- theming.q2 How are brands handled? One brand. One publication, one brand. (because business.q2)
+- theming.q3 Who can change the theme? The user. Readers pick light or dark. (because people.q1)
+- accessibility.q1 What contrast floor do we hold? AA. AA contrast for all text. (because people.q2)
+- accessibility.q2 What is the smallest target? Touch size. Many readers are on phones. (because people.q1)
+- accessibility.q3 Which states get their own visible value? Those and pressed. Pressed gets its own value for touch. (because accessibility.q2)
+- naming.q1 How are decisions named? By role. Role names survive a redesign. (because team.q1)
+- naming.q2 How many token tiers? Three. Primitives, semantics and component keys. (because team.q1)
+- naming.q3 Do components get their own keys? Yes, a component API. A component API keeps changes local. (because team.q1)
+
+### Usage rules
+
+- Page title (page-title): use type.title; not type.display (landing only); Display is kept for the landing moment; article titles stay calm.
+- A number in a table (number-in-table): use type.body; not A mono font; Tables are rare and read row by row.
+- Paragraph or help text (paragraph): use type.body, at most 65 characters a line; not type.caption; A large size and short lines make long text easy on the eyes.
+- Field label or column header (field-label): use type.label; not type.caption; Caption is too faint for a label people must read.
+- A selected row or item (selected-row): use color.surface.selected; not Bold text only; A tint shows the choice clearly on warm paper.
+- An error message (error-message): use color.status.danger and a plain sentence; not Color alone; The sentence says what to fix; color only draws the eye.
+- A link (link): use color.text.link, underlined; not Color without underline; Readers expect links to be underlined inside text.
+- A status (status-label): use Badge pill with a word; not An icon alone; Status is rare; a word is clear.
+- Items that belong together (related-items): use space.gap.default; not space.gap.tight; Text needs air even inside a group.
+- Between page sections (between-sections): use space.gap.section, no line; not A divider line; Space alone separates sections; lines add noise.
+- Table row height (table-row): use size.row (comfortable); not A compact row; Rows are read, not scanned.
+- Corners of buttons and inputs (control-corner): use radius.control (rounded); not Sharp corners; Rounded corners feel friendly.
+- Shape of a status badge (status-shape): use radius.badge (pill); not A rectangle; Pills sit softly next to text.
+- A card on the page (card): use A border, no shadow; not A strong shadow; Cards stay flat on the page; shadows are for floating things.
+- A menu or dialog (menu-or-dialog): use elevation.overlay and a dimmed page; not No shadow; The dimmed page focuses the reader on the dialog.
+- Hover and press feedback (hover-feedback): use motion.duration.feedback (moderate); not A fast flash; Moderate speed feels calm.
+- Someone asked for less motion (reduced-motion): use No motion; not Reduced motion; When people ask for less motion, nothing moves.
+- An icon with no label (icon-alone): use Not used: always add a word; not An icon button; Occasional visitors do not know icons.
+- Someone switches to dark (dark-mode): use The dark semantic mode; not Inverting images; Only semantic colors change; the reading layout stays.
+- Keyboard focus (keyboard-focus): use button/focus-ring at border-width.focus; not Removing the outline; Keyboard users must always see where they are.
+- The smallest clickable thing (smallest-target): use size.control.default (touch); not A compact control; Many readers are on phones.
+- The action that completes the task (commit-action): use Button primary, one per section; not Two primaries side by side; One clear action per section.
+- An alternative or cancel (alternative-action): use Button ghost as a text link; not A second boxed button; A link feels lighter and does not compete.
+- Delete or remove (destructive-action): use Button secondary with the full verb, then confirm; not Button primary; Naming the verb and confirming prevents a mistake.
+- An action on one row or item (row-action): use Button ghost with a word; not An icon on its own; Occasional visitors need the word.
+
+### Voice and tone
+
+Conversational and warm. Talk to one reader, like a good editor would.
+- Write to one person: "you", not "users".
+- Short sentences with room to breathe.
+- Explain why before asking for anything.
+- error: Calm and helpful. Take the blame, offer the way forward.
+- success: Warm and brief.
+- empty: An invitation, not a dead end.
+- confirm: Gentle and clear about what changes.
+- onboarding: One sentence on what is here and why it is worth reading.
+- Example (button): "Subscribe"
+- Example (error): "We could not save your email. Check it and try again."
+- Example (success): "You're in. The next issue arrives on Friday."
+- Example (empty): "Nothing saved yet. Tap Save on any article to read it later."
+- Example (confirm): "Unsubscribe from the weekly letter? You can come back any time."
+
+## Dense data (dense-data)
+
+Dense data is an Open DS scheme: a full set of answers to the Open DS grammar, with the reasons behind each, usage rules, voice and tone, and the tokens that follow. Compact, exact and quiet, for experts who scan and compare numbers all day.
+
+Use when: Operations tools, admin panels, finance and analytics: many records, daily expert users, mouse and keyboard.
+Avoid when: Public sites, reading products, or first-time visitors on phones.
+Themes: light, dark
+
+### Answers
+
+- business.q1 What does the product do for the business? Runs daily operations. The product runs daily operations: orders, stock, money.
+- business.q2 How many brands or products share the system? One. One internal product, one brand.
+- people.q1 Who uses it most? Daily experts. The same people use it all day, every day. (because business.q1)
+- people.q2 What accessibility level do we commit to? AA. AA is the floor for an internal tool used by trained staff. (because people.q1)
+- content.q1 What is the main content? Numbers and records. Most of the screen is numbers and records. (because business.q1)
+- content.q2 How much is on one screen? A lot. Experts want many records on one screen. (because people.q1, content.q1)
+- tasks.q1 What is the main task? Scan and compare. People scan rows and compare values. (because content.q1)
+- tasks.q2 How often do people repeat actions? Constantly. The same actions repeat many times an hour. (because people.q1)
+- human.q1 What must the interface protect? People keep their place. Losing your place in a long table costs time and errors. (because tasks.q1)
+- human.q2 How do people recall the interface? They learn it and recognise it. Daily users learn the interface and recognise it. (because people.q1)
+- outcomes.q1 Which outcome matters most? Time on task. Speed on repeated tasks is the measure. (because tasks.q2)
+- outcomes.q2 What is a costly mistake? Acting on the wrong record. Acting on the wrong row is the costly error. (because tasks.q1)
+- brand.q1 What should the brand feel like? Precise. The interface must feel exact and trustworthy. (because content.q1)
+- brand.q2 How visible is the brand in the interface? Quiet. The data is the hero; the brand steps back. (because content.q2)
+- voice.q1 How does the product speak? Terse. Experts want short labels and short messages. (because people.q1)
+- voice.q2 How formal is it? Neutral. Neutral copy reads the same on every screen.
+- team.q1 Who maintains the system? A small team. A small team keeps the system right.
+- team.q2 How fast does it change? Every month. Features ship every month; the system must keep up.
+- typography.q1 Which text roles does the product need? Core and data. A data role keeps numbers in aligned columns. (because content.q1, tasks.q1)
+- typography.q2 How large is body text? Small. Small body text fits more rows on the screen. (because content.q2)
+- typography.q3 How does line height scale? On the grid, with the user's text size. Lines stay on the grid so rows align, and grow with the user's text size. (because tasks.q1, people.q2)
+- color.q1 How many emphasis levels do actions need? Three. One primary per view; the rest step back. (because tasks.q2)
+- color.q2 What carries meaning? Color, icon and word. Many statuses share one table; color alone is not enough. (because people.q2, content.q1)
+- color.q3 How saturated is the palette? Muted. Muted color keeps attention on the data. (because brand.q2)
+- spacing.q1 How dense is the layout? Compact. Compact spacing shows more records. (because content.q2)
+- spacing.q2 How many densities exist? Two. A second, denser size serves tables and toolbars. (because tasks.q1)
+- spacing.q3 What separates groups? Lines. Thin lines guide the eye along rows. (because human.q1)
+- shape.q1 What should control corners say? Slightly rounded. Small corners keep dense rows straight. (because brand.q1)
+- shape.q2 How heavy are borders? Hairline. Hairlines separate without adding weight. (because content.q2)
+- shape.q3 What shape is a status label? Rectangle. Rectangular badges align in a column. (because tasks.q1)
+- elevation.q1 When does something get a shadow? Only when it floats. Only menus and dialogs float; cards use lines. (because spacing.q3)
+- elevation.q2 How soft are shadows? Subtle. Subtle shadows keep the grid crisp. (because brand.q1)
+- elevation.q3 How is a dialog separated from the page? Dim the page. Dimming says: deal with this first. (because outcomes.q2)
+- motion.q1 What is motion for? Feedback. Motion confirms an action; nothing else moves. (because human.q1)
+- motion.q2 How fast does feedback feel? Fast. Fast feedback keeps up with experts. (because outcomes.q1)
+- motion.q3 What happens when someone asks for less motion? Nothing moves. When asked, nothing moves. (because people.q2)
+- iconography.q1 When do icons appear? On their own too. Experts learn icons; a tooltip covers the first uses. (because human.q2)
+- iconography.q2 What icon style? Outline. Outline icons stay light next to dense text. (because content.q2)
+- iconography.q3 How big are icons next to text? Match the text. Icons match the label so they do not outweigh it. (because content.q2)
+- theming.q1 Which modes ship? Light and dark. Light and dark ship as standard; long shifts favour dark. (because people.q1)
+- theming.q2 How are brands handled? One brand. One product, one brand. (because business.q2)
+- theming.q3 Who can change the theme? The user. Each person picks light or dark. (because people.q1)
+- accessibility.q1 What contrast floor do we hold? AA. AA contrast for every text. (because people.q2)
+- accessibility.q2 What is the smallest target? Compact, for a pointer. Mouse and keyboard; compact targets are enough. (because people.q1)
+- accessibility.q3 Which states get their own visible value? Hover, focus, disabled. Pressed reuses hover; experts do not need more. (because people.q1)
+- naming.q1 How are decisions named? By role. Role names survive a redesign. (because team.q1)
+- naming.q2 How many token tiers? Three. Primitives, semantics and component keys. (because team.q2)
+- naming.q3 Do components get their own keys? Yes, a component API. A component API keeps changes local. (because team.q2)
+
+### Usage rules
+
+- Page title (page-title): use type.title; not type.display; Titles stay small so the table starts higher on the screen.
+- A number in a table (number-in-table): use type.data; not type.body; Mono digits line up in columns, so values compare at a glance.
+- Paragraph or help text (paragraph): use type.body; not type.label; Help text is read in passing; body size keeps it quick.
+- Field label or column header (field-label): use type.label; not type.heading; Headers repeat on every column; a heavy style would compete with the data.
+- A selected row or item (selected-row): use color.surface.selected; not color.action.primary as a fill; A light tint shows selection without hiding the data.
+- An error message (error-message): use color.status.danger with an icon; not color.status.warning; Red always means fix this, and the icon says it without color.
+- A link (link): use color.text.link; not color.action.primary; Links and buttons look different, so people know which one navigates.
+- A status (status-label): use Badge with a subtle fill, an icon and a word; not A full-strength fill; Subtle fills let many statuses share one table.
+- Items that belong together (related-items): use space.gap.tight; not space.gap.group; Things that belong together sit close.
+- Between page sections (between-sections): use space.gap.section and a hairline; not A card around every section; Lines separate without taking room from the data.
+- Table row height (table-row): use size.row (compact); not The comfortable row; Compact rows show more records without scrolling.
+- Corners of buttons and inputs (control-corner): use radius.control; not radius.round; Small corners keep dense rows straight.
+- Shape of a status badge (status-shape): use radius.badge (rectangle); not A pill; Rectangles line up in a column.
+- A card on the page (card): use A hairline border, no shadow; not A shadow; On a busy grid, lines separate. Shadows blur the edges.
+- A menu or dialog (menu-or-dialog): use elevation.overlay and a dimmed page for dialogs; not A border only; Floating things need a shadow so they read as on top.
+- Hover and press feedback (hover-feedback): use motion.duration.feedback (fast); not No transition; Fast feedback confirms the pointer without slowing experts.
+- Someone asked for less motion (reduced-motion): use No motion; not A shorter version of the motion; When people ask for less motion, nothing moves.
+- An icon with no label (icon-alone): use Icon button with a tooltip; not A bare icon; Experts learn icons; the tooltip covers the first uses.
+- Someone switches to dark (dark-mode): use The dark semantic mode; not A second palette in components; Only semantic colors change, so layout never moves.
+- Keyboard focus (keyboard-focus): use button/focus-ring at border-width.focus; not Removing the outline; Keyboard users must always see where they are.
+- The smallest clickable thing (smallest-target): use size.control.compact; not Anything smaller; Compact still fits a mouse. Touch is not this product's input.
+- The action that completes the task (commit-action): use Button primary, one per view; not Two primaries side by side; One primary makes the committing action obvious.
+- An alternative or cancel (alternative-action): use Button secondary; not Button ghost; Cancel must be easy to find next to the primary.
+- Delete or remove (destructive-action): use Button secondary, then confirm in a dialog; not Button primary as the first step; Deleting is rare and costly; a confirm step catches mistakes.
+- An action on one row or item (row-action): use Icon button, ghost, compact; not Button secondary in every row; Rows repeat dozens of times; a quiet icon keeps the table readable.
+
+### Voice and tone
+
+Terse and exact. Say what happened and what to do, in as few words as possible.
+- Lead with the object, then the state: "Order 1042 shipped."
+- Use numbers, not words for numbers.
+- One verb per button. No "please", no exclamation marks.
+- error: Flat and specific. Name the record and the fix.
+- success: A short confirmation, then get out of the way.
+- empty: Say why it is empty and the one action that fills it.
+- confirm: Name the exact object and the consequence.
+- onboarding: Skip it. Show the data; add a tooltip where needed.
+- Example (button): "Export"
+- Example (error): "Order 1042 not saved. Quantity must be 1 or more."
+- Example (success): "12 orders exported."
+- Example (empty): "No late orders. Change the date range to see older ones."
+- Example (confirm): "Delete 3 orders? This cannot be undone."
+
+## Multi-brand (multi-brand)
+
+Multi-brand is an Open DS scheme: a full set of answers to the Open DS grammar, with the reasons behind each, usage rules, voice and tone, and the tokens that follow. One shared system with three brands as themes. Components never change; brand primitives do.
+
+Use when: Companies with several brands or white-label products on one component library.
+Avoid when: A single product with one brand: the brand layer is cost with no user.
+Themes: aster-light, aster-dark, birch-light, birch-dark, coral-light, coral-dark
+
+### Answers
+
+- business.q1 What does the product do for the business? Sells and converts. A company sells several products under several brands.
+- business.q2 How many brands or products share the system? Many. Three brands share one system today, more tomorrow. (because business.q1)
+- people.q1 Who uses it most? Customers who choose us. Customers who chose one of our brands. (because business.q1)
+- people.q2 What accessibility level do we commit to? AA. AA in every brand. (because people.q1)
+- content.q1 What is the main content? Forms and tasks. Product pages, sign-up and account forms. (because business.q1)
+- content.q2 How much is on one screen? A moderate amount. A moderate amount per screen. (because content.q1)
+- tasks.q1 What is the main task? Complete a form. Customers sign up and buy. (because business.q1)
+- tasks.q2 How often do people repeat actions? Sometimes. Customers return now and then. (because people.q1)
+- human.q1 What must the interface protect? Low effort to understand. Low effort, whichever brand they see. (because people.q1)
+- human.q2 How do people recall the interface? They see it fresh each time. Customers see it fresh each time. (because tasks.q2)
+- outcomes.q1 Which outcome matters most? Completion without errors. Finished sign-ups and orders. (because tasks.q1)
+- outcomes.q2 What is a costly mistake? Looking off-brand. A page that looks like the wrong brand loses trust. (because business.q2)
+- brand.q1 What should the brand feel like? Neutral and adaptable. A neutral base each brand can colour. (because business.q2)
+- brand.q2 How visible is the brand in the interface? Present. Each brand is clearly present. (because business.q2)
+- voice.q1 How does the product speak? Plain and direct. Plain voice; each brand adds its own tone in copy. (because business.q2)
+- voice.q2 How formal is it? Neutral. Neutral formality across brands.
+- team.q1 Who maintains the system? A platform team. A platform team serves three product teams. (because business.q2)
+- team.q2 How fast does it change? Every month. Brands ship every month. (because business.q2)
+- typography.q1 Which text roles does the product need? Core: heading, body, label. One set of roles across brands. (because business.q2)
+- typography.q2 How large is body text? Regular. Regular body size suits all brands. (because brand.q1)
+- typography.q3 How does line height scale? In proportion to text size. Ratios work with every brand font. (because business.q2)
+- color.q1 How many emphasis levels do actions need? Three. Primary, secondary and ghost in every brand. (because tasks.q1)
+- color.q2 What carries meaning? Color and word. Brand colors vary, so meaning needs a word. (because business.q2)
+- color.q3 How saturated is the palette? Balanced. Balanced, so any brand hue works. (because brand.q1)
+- spacing.q1 How dense is the layout? Comfortable. Comfortable spacing in every brand. (because content.q2)
+- spacing.q2 How many densities exist? One. One density keeps brands consistent. (because team.q1)
+- spacing.q3 What separates groups? Cards. Cards group products and offers. (because content.q1)
+- shape.q1 What should control corners say? Rounded. Rounded by default; each brand sets its own corner. (because business.q2)
+- shape.q2 How heavy are borders? Regular. Regular borders. (because brand.q1)
+- shape.q3 What shape is a status label? Pill. Pills by default. (because brand.q1)
+- elevation.q1 When does something get a shadow? Cards too. Cards lift slightly to group offers. (because spacing.q3)
+- elevation.q2 How soft are shadows? Soft. Soft shadows suit every brand. (because brand.q1)
+- elevation.q3 How is a dialog separated from the page? Dim the page. Dim the page behind a dialog. (because human.q1)
+- motion.q1 What is motion for? Guidance. Motion guides through sign-up steps. (because tasks.q1)
+- motion.q2 How fast does feedback feel? Moderate. Moderate speed across brands. (because brand.q1)
+- motion.q3 What happens when someone asks for less motion? Motion is reduced. Motion is reduced, not removed. (because people.q2)
+- iconography.q1 When do icons appear? Next to labels. Icons next to labels. (because human.q2)
+- iconography.q2 What icon style? Outline. Outline icons work with any brand. (because brand.q1)
+- iconography.q3 How big are icons next to text? Match the text. Icons match the text. (because brand.q1)
+- theming.q1 Which modes ship? Light and dark. Light and dark ship as standard in every brand. (because people.q1)
+- theming.q2 How are brands handled? Brands as modes. Each brand is a theme on the same semantic layer. (because business.q2)
+- theming.q3 Who can change the theme? The product. The product picks the brand; the user picks light or dark. (because business.q2)
+- accessibility.q1 What contrast floor do we hold? AA. AA in every brand and mode. (because people.q2)
+- accessibility.q2 What is the smallest target? Touch size. Customers are often on phones. (because people.q1)
+- accessibility.q3 Which states get their own visible value? Those and pressed. Pressed for touch. (because accessibility.q2)
+- naming.q1 How are decisions named? By role. Role names let brands swap values safely. (because business.q2)
+- naming.q2 How many token tiers? Three. Brand primitives, shared semantics, component keys. (because business.q2)
+- naming.q3 Do components get their own keys? Yes, a component API. Components never change between brands. (because business.q2)
+
+### Usage rules
+
+- Page title (page-title): use type.title in the brand font; not A brand-specific style; Roles stay shared; only the brand font changes.
+- A number in a table (number-in-table): use type.body; not A mono font; Numbers read like text in every brand.
+- Paragraph or help text (paragraph): use type.body; not type.caption; Regular body size suits every brand.
+- Field label or column header (field-label): use type.label; not type.caption; Labels stay readable in every brand.
+- A selected row or item (selected-row): use color.surface.selected (from the brand); not A fixed blue; Selection follows the brand color.
+- An error message (error-message): use color.status.danger and a sentence; not The brand color; Status colors are shared, never branded.
+- A link (link): use color.text.link (from the brand); not A fixed blue; Links follow the brand.
+- A status (status-label): use Badge with a word; not A brand color as status; Brand hues vary, so meaning needs a word.
+- Items that belong together (related-items): use space.gap.default; not Brand-specific spacing; Spacing is shared across brands.
+- Between page sections (between-sections): use space.gap.section and cards; not Lines; Cards group offers in every brand.
+- Table row height (table-row): use size.row (comfortable); not A compact row; Comfortable rows in every brand.
+- Corners of buttons and inputs (control-corner): use radius.control (set by the brand); not A hard-coded radius; Each brand sets its own corner through the theme.
+- Shape of a status badge (status-shape): use radius.badge (set by the brand); not A hard-coded shape; The brand sets the badge shape.
+- A card on the page (card): use elevation.card; not A border only; Cards lift slightly to group offers.
+- A menu or dialog (menu-or-dialog): use elevation.overlay and a dimmed page; not No shadow; Same overlay in every brand.
+- Hover and press feedback (hover-feedback): use motion.duration.feedback (moderate); not Brand-specific motion; Motion is shared across brands.
+- Someone asked for less motion (reduced-motion): use Reduced motion; not Full motion; Motion is reduced, not removed.
+- An icon with no label (icon-alone): use Icon button with a tooltip, rarely; not A bare icon; Customers need a hint.
+- Someone switches to dark (dark-mode): use The dark mode of the active brand; not One dark theme for all brands; Every brand ships light and dark.
+- Keyboard focus (keyboard-focus): use button/focus-ring (from the brand); not Removing the outline; Focus follows the brand but always shows.
+- The smallest clickable thing (smallest-target): use size.control.default (touch); not A compact control; Customers are often on phones.
+- The action that completes the task (commit-action): use Button primary, one per view; not Two primaries; One clear action per view.
+- An alternative or cancel (alternative-action): use Button secondary; not A second primary; The alternative steps back.
+- Delete or remove (destructive-action): use Button secondary, then confirm; not Button primary; Confirm before destroying data.
+- An action on one row or item (row-action): use Button ghost with a word; not An icon alone; A word says what will happen.
+
+### Voice and tone
+
+A plain shared voice. Each brand adds its own tone on top, never its own structure.
+- Shared structure: object, state, next step.
+- Brand tone lives in headlines and marketing copy, not in errors.
+- Errors and confirmations read the same in every brand.
+- error: Shared across brands: plain and specific.
+- success: Brand tone allowed: Aster calm, Birch friendly, Coral upbeat.
+- empty: Shared structure, brand words.
+- confirm: Shared across brands: plain and specific.
+- onboarding: Brand tone allowed in the first headline only.
+- Example (button): "Get started"
+- Example (error): "Your card was declined. Try another card or contact your bank."
+- Example (success): "Aster: Your plan is active. · Birch: You're all set! · Coral: Let's go — your plan is live."
+- Example (empty): "No orders yet. Your first order will appear here."
+- Example (confirm): "Cancel your plan? It stays active until 30 November."

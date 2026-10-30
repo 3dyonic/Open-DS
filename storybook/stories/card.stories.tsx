@@ -12,7 +12,7 @@ export const Default: Story = {
       <Card>
         <CardHeader>
           <CardTitle>Order 1042</CardTitle>
-          <CardDescription>Northwind warehouse · due in 3 days</CardDescription>
+          <CardDescription>North depot warehouse · due in 3 days</CardDescription>
         </CardHeader>
         <CardContent>
           <Badge tone="warning">Late</Badge>

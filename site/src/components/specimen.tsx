@@ -109,7 +109,7 @@ export function FullSpecimen({
         </div>
         <Card>
           <CardHeader>
-            <CardTitle>Northwind</CardTitle>
+            <CardTitle>North depot</CardTitle>
             <CardDescription>12 open orders</CardDescription>
           </CardHeader>
         </Card>
@@ -126,7 +126,7 @@ export function FullSpecimen({
         <TableBody>
           <TableRow>
             <TableCell>#1042</TableCell>
-            <TableCell>Northwind</TableCell>
+            <TableCell>North depot</TableCell>
             <TableCell numeric>1,240.00</TableCell>
             <TableCell>
               <Badge tone="warning">Late</Badge>
@@ -134,7 +134,7 @@ export function FullSpecimen({
           </TableRow>
           <TableRow data-state="selected">
             <TableCell>#1043</TableCell>
-            <TableCell>Fabrikam</TableCell>
+            <TableCell>East depot</TableCell>
             <TableCell numeric>860.50</TableCell>
             <TableCell>
               <Badge tone="success">Paid</Badge>
