@@ -1,27 +1,35 @@
 @import "tailwindcss";
+@import "../../../tokens/dist/dense-data/tokens.scoped.css";
+@import "../../../tokens/dist/content-first/tokens.scoped.css";
+@import "../../../tokens/dist/accessible-first/tokens.scoped.css";
+@import "../../../tokens/dist/multi-brand/tokens.scoped.css";
+@import "../../../tokens/dist/brand-expressive/tokens.scoped.css";
+@import "../../../tokens/dist/dense-data/theme.css";
 
+@source "../../../ui/src";
+
+/* The site's own look (brand route B). Scheme specimens use their own tokens. */
 @theme {
-  --color-paper: #f7f4ef;
-  --color-ink: #1c1917;
-  --color-muted: #57534e;
-  --color-line: #e7e5e4;
-  --color-accent: #9a3412;
-  --color-accent-fg: #fffaf5;
-  --color-info: #1e3a8a;
-  --color-warn: #92400e;
-  --color-bad: #991b1b;
-  --radius-control: 6px;
-  --font-sans: ui-sans-serif, system-ui, sans-serif;
+  --color-paper: #f6f2e9;
+  --color-ink: #16140f;
+  --color-muted: #645e50;
+  --color-line: #cfc6b4;
+  --color-tag: #ede7da;
+  --color-accent: #ff5a1f;
+  --color-accent-text: #b93a00;
+  --color-accent-soft: #ffe3d6;
+  --font-sans: "Bricolage Grotesque", ui-sans-serif, system-ui, sans-serif;
+  --font-mono: "DM Mono", ui-monospace, monospace;
 }
 
-body {
+html {
   background: var(--color-paper);
   color: var(--color-ink);
   font-family: var(--font-sans);
 }
 
 :focus-visible {
-  outline: 2px solid var(--color-info);
+  outline: 2px solid var(--color-accent-text);
   outline-offset: 2px;
 }
 
