@@ -16,7 +16,7 @@
   },
   "scripts": {
     "dev": "next dev",
-    "build": "node ../scripts/publish-downloads.mjs && next build",
+    "build": "pnpm --dir ../tokens build && next build",
     "test": "node --test src/lib/*.test.mjs",
     "lint": "eslint . && prettier --check .",
     "typecheck": "tsc --noEmit"
@@ -24,7 +24,9 @@
   "dependencies": {
     "next": "^15.5.4",
     "react": "^19.1.1",
-    "react-dom": "^19.1.1"
+    "react-dom": "^19.1.1",
+    "@open-ds/ui": "workspace:*",
+    "lucide-react": "^1.65.0"
   },
   "devDependencies": {
     "@eslint/eslintrc": "^3.3.1",
@@ -37,5 +39,6 @@
     "prettier": "^3.6.2",
     "tailwindcss": "^4.1.13",
     "typescript": "^5.9.2"
-  }
+  },
+  "description": "The Open DS website: a static single-page Next.js app that shows the five schemes, their reasons and decisions, and how to deploy one."
 }
