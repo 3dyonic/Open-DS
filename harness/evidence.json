@@ -81,6 +81,16 @@
       "skills": ["build-brief", "pr-review-private-repo", "correctness-review", "scope-review", "test-integrity"],
       "jira": "OD-110 comment after merge",
       "orchestra": "7f95199f"
+    },
+    {
+      "feature": "OD-120 docs and LLM files",
+      "pr": "https://github.com/3dyonic/Open-DS/pull/24",
+      "reviewed_sha": "ab1f935",
+      "sha": "4f53a3d",
+      "merged_by_subagent": true,
+      "skills": ["build-brief", "pr-review-private-repo", "correctness-review", "scope-review", "test-integrity"],
+      "jira": "OD-120 comment after merge",
+      "orchestra": "7f95199f"
     }
   ]
 }
