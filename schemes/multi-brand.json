@@ -884,6 +884,11 @@
           "$type": "dimension",
           "$value": "0rem"
         },
+        "full": {
+          "$type": "dimension",
+          "$value": "9999px",
+          "$description": "Fully round."
+        },
         "4": {
           "$type": "dimension",
           "$value": "0.25rem"
@@ -1324,7 +1329,7 @@
           },
           "round": {
             "$type": "dimension",
-            "$value": "9999px",
+            "$value": "{radius.full}",
             "$description": "Fully round: avatars and dots."
           }
         },
@@ -2079,7 +2084,7 @@
           "$description": "Tooltip text."
         }
       },
-      "motion": {
+      "transition": {
         "duration": {
           "$value": "{motion.duration.feedback}",
           "$description": "Duration of feedback transitions."
