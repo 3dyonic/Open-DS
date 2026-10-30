@@ -1,5 +1,10 @@
 # Open DS
 
+<p align="center">
+  <img src=".github/assets/hero.png" alt="Open DS: every design system is a set of answers. A question, its answer and the answers it follows from, next to five schemes (Dense data, Content first, Accessible first, Multi-brand, Brand expressive) built from the same components." width="100%" />
+</p>
+
+
 Open DS is a cited dictionary of design-system decisions. `open-ds init` turns a stance recipe into files a person or an agent can start from.
 
 The display name is the `name` field in [brand.json](brand.json).
