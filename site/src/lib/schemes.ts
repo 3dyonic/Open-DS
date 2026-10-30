@@ -48,7 +48,7 @@ export interface Grammar {
   reasons: Group[];
   scopes: Group[];
   situations: Situation[];
-  component_keys: { id: string; description: string; default: string }[];
+  component_keys: { id: string; component: string; description: string; default: string }[];
 }
 export interface Answer {
   question: string;
@@ -94,6 +94,12 @@ export const schemeIds = (): string[] =>
     .filter((f) => f.endsWith(".json") && f !== "grammar.json")
     .map((f) => f.replace(/\.json$/, ""))
     .sort();
+
+/** The components every scheme ships, from ui/src/components. */
+export const uiComponents = (): string[] =>
+  readdirSync(join(process.cwd(), "..", "ui", "src", "components"))
+    .filter((f) => f.endsWith(".tsx"))
+    .map((f) => f.replace(/\.tsx$/, ""));
 
 export const scheme = (id: string): Scheme => read<Scheme>(`${id}.json`);
 
