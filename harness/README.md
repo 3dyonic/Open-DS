@@ -2,12 +2,12 @@
 
 The harness proves the MVP is done the way Yonatan asked. It reads two lists and runs a check for every line.
 
-| File                | What it holds                                                                                  |
-| ------------------- | ---------------------------------------------------------------------------------------------- |
-| `instructions.json` | Yonatan's instructions, in his words.                                                          |
-| `specs.json`        | The ticket specs (OD-109 to OD-121): what each delivers and how it is checked.                 |
-| `checks.mjs`        | One named check per proof.                                                                     |
-| `evidence.json`     | Process proof: one entry per feature merged into RC1 (PR, sub-agent, skills, Jira, Orchestra). |
+| File                | What it holds                                                                                                                 |
+| ------------------- | ----------------------------------------------------------------------------------------------------------------------------- |
+| `instructions.json` | Yonatan's instructions, in his words.                                                                                         |
+| `specs.json`        | The ticket specs (OD-109 to OD-121, without OD-113 and OD-114, which are not code): what each delivers and how it is checked. |
+| `checks.mjs`        | One named check per proof.                                                                                                    |
+| `evidence.json`     | Process proof: one entry per feature merged into RC1 (PR, sub-agent, skills, Jira, Orchestra).                                |
 
 ## Run it
 
