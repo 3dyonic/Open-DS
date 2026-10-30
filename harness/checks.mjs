@@ -287,7 +287,11 @@ export const CHECKS = {
       for (const s of SCHEMES) {
         const sch = c.json("schemes", `${s}.json`);
         const v = sch.voice;
-        if (!v || !(v.examples?.length >= 5) || !v.tone?.error) gaps.push(`${s}: voice and tone incomplete`);
+        const g = c.json("schemes", "grammar.json");
+        const voiceSits = g.situations.filter((x) => x.scope === "voice").map((x) => x.id);
+        const withExample = sch.usage.filter((u) => voiceSits.includes(u.situation) && u.example);
+        if (!v?.summary?.text || voiceSits.length < 5 || withExample.length !== voiceSits.length)
+          gaps.push(`${s}: voice and tone incomplete (every voice situation needs a rule with an example)`);
         for (const b of Object.keys(sch.tokens.brands)) {
           for (const m of ["light", "dark"])
             if (!sch.themes.some((t) => t.brand === b && t.mode === m)) gaps.push(`${s}: ${b} has no ${m}`);
@@ -298,6 +302,98 @@ export const CHECKS = {
       return gaps.length
         ? bad(gaps.join("; "))
         : ok("voice and tone in every scheme; light and dark for every brand; multi-brand has 3 brands");
+    },
+  },
+
+  "scopes-uniform-template": {
+    requires: ["schemes/grammar.json", ...SCHEMES.map((s) => `schemes/${s}.json`)],
+    run: (c) => {
+      const g = c.json("schemes", "grammar.json");
+      const gaps = [];
+      const methods = (g.methods ?? []).map((m) => m.id);
+      if (methods.join() !== "roles,count,definition,values,lands")
+        gaps.push(`methods are ${methods.join() || "missing"}`);
+      if (g.reasons.some((r) => r.id === "voice")) gaps.push("voice is a reason; it must be a scope");
+      if (!g.scopes.some((x) => x.id === "voice")) gaps.push("voice and tone is not a scope");
+      const comps = new Map(g.components.map((x) => [x.id, x]));
+      const keyDefault = new Map(g.component_keys.map((k) => [k.id, k.default]));
+      const schemes = SCHEMES.map((id) => c.json("schemes", `${id}.json`));
+      const has = (tree, path) =>
+        path.split(".").reduce((n, p) => (n && typeof n === "object" ? n[p] : undefined), tree) !== undefined;
+      const semantic = (sch) => mergeTrees(sch.tokens.semantic.base, sch.tokens.semantic.light);
+      for (const sc of g.scopes) {
+        const got = sc.questions.map((q) => q.method).join();
+        if (got !== methods.join()) gaps.push(`${sc.id}: methods ${got}`);
+        for (const q of sc.questions) if (q.id !== `${sc.id}.${q.method}`) gaps.push(`${sc.id}: question id ${q.id}`);
+        if (!sc.owns?.length) gaps.push(`${sc.id}: owns no tokens`);
+        if (!sc.lands_in?.length) gaps.push(`${sc.id}: lands in no component`);
+        const sits = g.situations.filter((x) => x.scope === sc.id).map((x) => x.id);
+        if (!sits.length) gaps.push(`${sc.id}: has no situation`);
+        if ((sc.situations ?? []).join() !== sits.join()) gaps.push(`${sc.id}: situations list is out of date`);
+        for (const sch of schemes) {
+          const trees = [
+            sch.tokens.primitive,
+            ...Object.values(sch.tokens.brands).map((b) => b.primitive),
+            semantic(sch),
+            sch.tokens.semantic.dark,
+            { component: sch.tokens.component },
+            { content: sch.tokens.content },
+          ];
+          for (const o of sc.owns ?? [])
+            if (!trees.some((t) => has(t, o))) gaps.push(`${sch.id}: ${sc.id} owns ${o}, which is not a token`);
+        }
+        const semanticOwns = (sc.owns ?? []).filter(
+          (o) => has(semantic(schemes[0]), o) || has(schemes[0].tokens.semantic.dark, o),
+        );
+        for (const cid of sc.lands_in ?? []) {
+          if (!comps.has(cid)) {
+            gaps.push(`${sc.id}: lands in ${cid}, which is not a component`);
+            continue;
+          }
+          if (
+            semanticOwns.length &&
+            !comps.get(cid).keys.some((k) => semanticOwns.some((o) => keyDefault.get(k).startsWith(o)))
+          )
+            gaps.push(`${sc.id}: lands in ${cid}, but no ${cid} key reads ${semanticOwns.join(" or ")}`);
+        }
+      }
+      for (const x of g.situations)
+        if (!g.scopes.some((sc) => sc.id === x.scope)) gaps.push(`situation ${x.id} has no scope`);
+      return gaps.length
+        ? bad(gaps.slice(0, 12).join("; "))
+        : ok(`${g.scopes.length} scopes, each with the 5 method questions, owned tokens, components and situations`);
+    },
+  },
+
+  "outputs-follow-answers": {
+    requires: ["schemes/grammar.json", ...SCHEMES.map((s) => `schemes/${s}.json`)],
+    run: (c) => {
+      const g = c.json("schemes", "grammar.json");
+      const qids = new Set([...g.reasons, ...g.scopes].flatMap((x) => x.questions.map((q) => q.id)));
+      const gaps = [];
+      if (!g.reasons.some((r) => r.id === "scenarios")) gaps.push("no use scenario questions");
+      let n = 0;
+      for (const id of SCHEMES) {
+        const s = c.json("schemes", `${id}.json`);
+        const extra = Object.keys(s.voice).filter((k) => !["summary", "principles", "words", "brands"].includes(k));
+        if (extra.length) gaps.push(`${id}: free voice text outside the outputs: ${extra.join(", ")}`);
+        const outputs = [
+          ["voice summary", s.voice.summary],
+          ...s.voice.principles.map((p) => ["voice principle", p]),
+          ["voice words", s.voice.words],
+          ...Object.entries(s.voice.brands ?? {}).map(([b, v]) => [`voice brand ${b}`, v]),
+          ...s.scenarios.map((x) => ["scenario", x]),
+        ];
+        for (const [what, o] of outputs) {
+          n++;
+          if (!o?.follows?.length) gaps.push(`${id}: ${what} follows no answer`);
+          for (const f of o?.follows ?? [])
+            if (!qids.has(f)) gaps.push(`${id}: ${what} follows ${f}, which is not a question`);
+        }
+        if (!s.scenarios.some((x) => x.follows?.some((f) => f.startsWith("scenarios."))))
+          gaps.push(`${id}: no scenario follows the use scenario questions`);
+      }
+      return gaps.length ? bad(gaps.slice(0, 12).join("; ")) : ok(`${n} written outputs, each following real answers`);
     },
   },
 

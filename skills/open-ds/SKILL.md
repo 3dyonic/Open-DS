@@ -25,7 +25,7 @@ An Open DS scheme is a full design system as data. It answers a fixed set of que
 2. Before you choose a token, a component or a variant, find the situation: `open-ds when <scheme> <words>` or the MCP tool `when_to_use`. Do what the rule says. Do not do what its "not" says.
 3. Use only the components in `src/components/ui` and the CSS variables in `src/styles/open-ds.css`. Do not write raw colors, sizes or spacing.
 4. To change how a component looks, change a component key (for example `--button-radius`). Do not edit the component.
-5. Write copy in the scheme's voice. Read `voice.tone` for errors, success, empty states and confirmations.
+5. Write copy in the scheme's voice. Read the usage rules of the voice situations (button-label, error-words, success-words, empty-words, confirm-words, first-visit): each gives the tone, a rule and an example.
 6. To explain a decision, run `open-ds why <scheme> <question-id>` or call `why`. Quote the answer and its reasons.
 
 ## Do not

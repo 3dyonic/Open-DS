@@ -1,6 +1,6 @@
 /**
  * Toast. A short confirmation that something happened ("12 orders exported."). It stays long
- * enough to read; write it in the scheme's voice (voice.tone.success).
+ * enough to read; write it in the scheme's voice (the success-words usage rule).
  *
  * Tones: neutral, success, danger. Reads only component keys: --overlay-*.
  */

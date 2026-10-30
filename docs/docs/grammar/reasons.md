@@ -59,12 +59,12 @@ How the brand should feel in the interface.
 - **What should the brand feel like?** The feeling the interface carries. Answers: Precise · Warm · Calm and clear · Neutral and adaptable · Bold. `brand.q1`
 - **How visible is the brand in the interface?** How much brand expression the product carries. Answers: Quiet · Present · Loud. `brand.q2`
 
-## Voice and tone
+## Use scenarios
 
-How the product speaks.
+Where and for how long people use the product. Written scenarios follow from these answers.
 
-- **How does the product speak?** The voice of labels, messages and help. Answers: Terse · Plain and direct · Conversational · Playful. `voice.q1`
-- **How formal is it?** Formality of the copy. Answers: Formal · Neutral · Casual. `voice.q2`
+- **Where do people use it?** The place and device. A desk with a mouse, a phone on the move, or anything at all. Answers: At a desk · On the move · Anywhere, on any device. `scenarios.q1`
+- **How long is one visit?** Session length. All-day use rewards learning; short visits must work at first sight. Answers: All day · One sitting · A few minutes. `scenarios.q2`
 
 ## Team and delivery
 

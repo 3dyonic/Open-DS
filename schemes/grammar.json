@@ -3,19 +3,19 @@
   "id": "open-ds-grammar",
   "version": "0.1.0",
   "status": "draft",
-  "description": "The Open DS grammar: a finite set of questions a design system must answer. Reasons come first (business, people, content, tasks, human factors, outcomes, brand, voice and tone, team). Scopes follow (typography to naming). Each scheme answers every question, and each answer says why and which earlier answers it follows from. Situations are the moments where people need to know what to use; each scheme answers them too. Component keys are the shared component API every scheme fills.",
+  "description": "The Open DS grammar: a finite set of questions a design system must answer. Reasons come first (business, people, content, tasks, human factors, outcomes, brand, use scenarios, team). Scopes follow, from typography to voice and tone. Every scope answers the same five method questions (roles, how many, how defined, values, lands in) and has the same parts: the tokens it owns, the components it lands in and its situations. Each scheme answers every question, and each answer says why and which earlier answers it follows from. Situations are the moments where people need to know what to use; each scheme answers them too. Component keys are the shared component API every scheme fills.",
   "ai": {
-    "use_when": "You need the list of questions behind a design system, or the meaning of a question id such as typography.q3 or a situation id such as number-in-table.",
-    "how_to_read": "Reasons are answered first. A scope answer lists in 'because' the reason answers that pulled it. Tokens follow from the answers. Components read only component keys."
+    "use_when": "You need the list of questions behind a design system, or the meaning of a question id such as typography.definition or a situation id such as number-in-table.",
+    "how_to_read": "Reasons are answered first. A scope answer lists in 'because' the answers that pulled it. Scope question ids are <scope>.<method>, so typography.values and voice.values answer the same kind of question. Tokens follow from the answers. Components read only component keys. Written text in a scheme (voice, scenarios) lists in 'follows' the answers it was written from."
   },
   "layers": [
     {
       "id": "reasons",
-      "description": "Why the system exists: product, people, content, tasks, human factors, outcomes, brand, voice and tone, team."
+      "description": "Why the system exists: product, people, content, tasks, human factors, outcomes, brand, use scenarios, team."
     },
     {
       "id": "scopes",
-      "description": "The design decisions: typography, color, spacing, shape, elevation, motion, iconography, theming, accessibility, naming."
+      "description": "The design decisions: typography, color, spacing, shape, elevation, motion, iconography, theming, accessibility, naming, voice and tone. Each answers the five method questions."
     },
     {
       "id": "tokens",
@@ -24,6 +24,33 @@
     {
       "id": "component-api",
       "description": "One key per component element, variant and state. Every scheme fills every key."
+    }
+  ],
+  "methods": [
+    {
+      "id": "roles",
+      "title": "Roles",
+      "description": "Which roles the scope needs. Each role becomes a group of decisions."
+    },
+    {
+      "id": "count",
+      "title": "How many",
+      "description": "How many steps, levels or variants each role gets."
+    },
+    {
+      "id": "definition",
+      "title": "How defined",
+      "description": "The rule that produces the values: a scale, a base unit, a style or a policy."
+    },
+    {
+      "id": "values",
+      "title": "Values",
+      "description": "Where the values sit, as a word. The exact values live in the tokens."
+    },
+    {
+      "id": "lands",
+      "title": "Lands in",
+      "description": "Where the scope does its most visible work in the product."
     }
   ],
   "reasons": [
@@ -382,50 +409,46 @@
       ]
     },
     {
-      "id": "voice",
+      "id": "scenarios",
       "kind": "reason",
-      "title": "Voice and tone",
-      "description": "How the product speaks.",
+      "title": "Use scenarios",
+      "description": "Where and for how long people use the product. Written scenarios follow from these answers.",
       "questions": [
         {
-          "id": "voice.q1",
-          "text": "How does the product speak?",
-          "description": "The voice of labels, messages and help.",
+          "id": "scenarios.q1",
+          "text": "Where do people use it?",
+          "description": "The place and device. A desk with a mouse, a phone on the move, or anything at all.",
           "options": [
             {
-              "id": "terse",
-              "label": "Terse"
+              "id": "desk",
+              "label": "At a desk"
             },
             {
-              "id": "plain",
-              "label": "Plain and direct"
+              "id": "on-the-move",
+              "label": "On the move"
             },
             {
-              "id": "conversational",
-              "label": "Conversational"
-            },
-            {
-              "id": "playful",
-              "label": "Playful"
+              "id": "anywhere",
+              "label": "Anywhere, on any device"
             }
           ]
         },
         {
-          "id": "voice.q2",
-          "text": "How formal is it?",
-          "description": "Formality of the copy.",
+          "id": "scenarios.q2",
+          "text": "How long is one visit?",
+          "description": "Session length. All-day use rewards learning; short visits must work at first sight.",
           "options": [
             {
-              "id": "formal",
-              "label": "Formal"
+              "id": "all-day",
+              "label": "All day"
             },
             {
-              "id": "neutral",
-              "label": "Neutral"
+              "id": "one-sitting",
+              "label": "One sitting"
             },
             {
-              "id": "casual",
-              "label": "Casual"
+              "id": "short",
+              "label": "A few minutes"
             }
           ]
         }
@@ -483,11 +506,27 @@
       "id": "typography",
       "kind": "scope",
       "title": "Typography",
-      "description": "How text is set: roles, size, line height.",
+      "description": "How text is set: roles, sizes and line height.",
+      "owns": [
+        "type"
+      ],
+      "lands_in": [
+        "button",
+        "input",
+        "badge",
+        "table"
+      ],
+      "situations": [
+        "page-title",
+        "number-in-table",
+        "paragraph",
+        "field-label"
+      ],
       "questions": [
         {
-          "id": "typography.q1",
-          "text": "Which text roles does the product need?",
+          "id": "typography.roles",
+          "method": "roles",
+          "text": "Which text roles does it need?",
           "description": "The set of text roles. Each role becomes a type decision.",
           "options": [
             {
@@ -509,7 +548,48 @@
           ]
         },
         {
-          "id": "typography.q2",
+          "id": "typography.count",
+          "method": "count",
+          "text": "How many sizes does the scale have?",
+          "description": "Few sizes keep a dense screen calm. More sizes give long pages a clear hierarchy.",
+          "options": [
+            {
+              "id": "few",
+              "label": "Few"
+            },
+            {
+              "id": "some",
+              "label": "Some"
+            },
+            {
+              "id": "many",
+              "label": "Many"
+            }
+          ]
+        },
+        {
+          "id": "typography.definition",
+          "method": "definition",
+          "text": "How are sizes and line heights defined?",
+          "description": "A ratio scale with line heights on the grid, a ratio scale with proportional line heights, or fixed steps.",
+          "options": [
+            {
+              "id": "ratio-grid",
+              "label": "A ratio, line heights on the grid"
+            },
+            {
+              "id": "ratio-proportional",
+              "label": "A ratio, line heights in proportion"
+            },
+            {
+              "id": "fixed",
+              "label": "Fixed steps"
+            }
+          ]
+        },
+        {
+          "id": "typography.values",
+          "method": "values",
           "text": "How large is body text?",
           "description": "Body size relative to the usual default.",
           "options": [
@@ -528,21 +608,26 @@
           ]
         },
         {
-          "id": "typography.q3",
-          "text": "How does line height scale?",
-          "description": "Whether line height is fixed, a ratio of the text size, or on a grid that grows with the user's text size.",
+          "id": "typography.lands",
+          "method": "lands",
+          "text": "Where does type do the most work?",
+          "description": "The place where type decisions matter most.",
           "options": [
             {
-              "id": "fixed",
-              "label": "Fixed: stays put"
+              "id": "tables-inputs",
+              "label": "Tables and inputs"
             },
             {
-              "id": "proportional",
-              "label": "In proportion to text size"
+              "id": "articles",
+              "label": "Articles and long text"
             },
             {
-              "id": "grid",
-              "label": "On the grid, with the user's text size"
+              "id": "forms",
+              "label": "Forms and labels"
+            },
+            {
+              "id": "headlines",
+              "label": "Headlines and hero"
             }
           ]
         }
@@ -553,9 +638,48 @@
       "kind": "scope",
       "title": "Color",
       "description": "How color carries action, state and brand.",
+      "owns": [
+        "color"
+      ],
+      "lands_in": [
+        "button",
+        "input",
+        "control",
+        "badge",
+        "card",
+        "table",
+        "tabs",
+        "overlay"
+      ],
+      "situations": [
+        "selected-row",
+        "error-message",
+        "link",
+        "status-label",
+        "commit-action",
+        "alternative-action",
+        "destructive-action"
+      ],
       "questions": [
         {
-          "id": "color.q1",
+          "id": "color.roles",
+          "method": "roles",
+          "text": "Which color roles does it need?",
+          "description": "The groups of color decisions.",
+          "options": [
+            {
+              "id": "core",
+              "label": "Surface, text, action and status"
+            },
+            {
+              "id": "core-brand",
+              "label": "Those and brand accents"
+            }
+          ]
+        },
+        {
+          "id": "color.count",
+          "method": "count",
           "text": "How many emphasis levels do actions need?",
           "description": "The number of action styles, from primary to quiet.",
           "options": [
@@ -574,26 +698,24 @@
           ]
         },
         {
-          "id": "color.q2",
-          "text": "What carries meaning?",
-          "description": "Whether status relies on color alone or also on icons and words.",
+          "id": "color.definition",
+          "method": "definition",
+          "text": "How is the palette defined?",
+          "description": "Neutrals and one brand ramp, or a shared base with a ramp per brand.",
           "options": [
             {
-              "id": "color-icon-word",
-              "label": "Color, icon and word"
+              "id": "neutral-brand",
+              "label": "Neutrals and one brand ramp"
             },
             {
-              "id": "color-word",
-              "label": "Color and word"
-            },
-            {
-              "id": "color-alone",
-              "label": "Color alone"
+              "id": "ramp-per-brand",
+              "label": "Shared neutrals, a ramp per brand"
             }
           ]
         },
         {
-          "id": "color.q3",
+          "id": "color.values",
+          "method": "values",
           "text": "How saturated is the palette?",
           "description": "Overall color intensity.",
           "options": [
@@ -610,6 +732,26 @@
               "label": "Vivid"
             }
           ]
+        },
+        {
+          "id": "color.lands",
+          "method": "lands",
+          "text": "Where does color carry meaning first?",
+          "description": "The place where color does its most important job.",
+          "options": [
+            {
+              "id": "status",
+              "label": "Status in tables"
+            },
+            {
+              "id": "links-actions",
+              "label": "Links and actions"
+            },
+            {
+              "id": "brand-moments",
+              "label": "Brand moments"
+            }
+          ]
         }
       ]
     },
@@ -618,9 +760,74 @@
       "kind": "scope",
       "title": "Spacing",
       "description": "How space shows what belongs together.",
+      "owns": [
+        "space",
+        "size.row"
+      ],
+      "lands_in": [
+        "button",
+        "input",
+        "badge",
+        "card",
+        "table"
+      ],
+      "situations": [
+        "related-items",
+        "between-sections",
+        "table-row"
+      ],
       "questions": [
         {
-          "id": "spacing.q1",
+          "id": "spacing.roles",
+          "method": "roles",
+          "text": "Which spacing roles does it need?",
+          "description": "The groups of space decisions.",
+          "options": [
+            {
+              "id": "gap-inset",
+              "label": "Gaps and insets"
+            },
+            {
+              "id": "gap-inset-row",
+              "label": "Gaps, insets and row heights"
+            }
+          ]
+        },
+        {
+          "id": "spacing.count",
+          "method": "count",
+          "text": "How many densities exist?",
+          "description": "One density for everything, or a second for dense views.",
+          "options": [
+            {
+              "id": "one",
+              "label": "One"
+            },
+            {
+              "id": "two",
+              "label": "Two"
+            }
+          ]
+        },
+        {
+          "id": "spacing.definition",
+          "method": "definition",
+          "text": "How are spacing steps defined?",
+          "description": "A fine base unit gives small steps for dense screens; a coarse one gives big, even steps.",
+          "options": [
+            {
+              "id": "fine",
+              "label": "A fine base unit"
+            },
+            {
+              "id": "coarse",
+              "label": "A coarse base unit"
+            }
+          ]
+        },
+        {
+          "id": "spacing.values",
+          "method": "values",
           "text": "How dense is the layout?",
           "description": "The base density.",
           "options": [
@@ -639,36 +846,26 @@
           ]
         },
         {
-          "id": "spacing.q2",
-          "text": "How many densities exist?",
-          "description": "One density for everything, or a second for dense views.",
+          "id": "spacing.lands",
+          "method": "lands",
+          "text": "Where does spacing matter most?",
+          "description": "The place where space does its most visible work.",
           "options": [
             {
-              "id": "one",
-              "label": "One"
+              "id": "rows-cells",
+              "label": "Rows and cells"
             },
             {
-              "id": "two",
-              "label": "Two"
-            }
-          ]
-        },
-        {
-          "id": "spacing.q3",
-          "text": "What separates groups?",
-          "description": "The device that tells the eye a new group starts.",
-          "options": [
-            {
-              "id": "space",
-              "label": "Space"
+              "id": "reading",
+              "label": "Between paragraphs"
             },
             {
-              "id": "lines",
-              "label": "Lines"
+              "id": "fields",
+              "label": "Between fields"
             },
             {
-              "id": "cards",
-              "label": "Cards"
+              "id": "sections",
+              "label": "Between big sections"
             }
           ]
         }
@@ -679,9 +876,74 @@
       "kind": "scope",
       "title": "Shape",
       "description": "Corners and borders.",
+      "owns": [
+        "radius",
+        "border-width"
+      ],
+      "lands_in": [
+        "button",
+        "input",
+        "control",
+        "badge",
+        "card",
+        "overlay"
+      ],
+      "situations": [
+        "control-corner",
+        "status-shape"
+      ],
       "questions": [
         {
-          "id": "shape.q1",
+          "id": "shape.roles",
+          "method": "roles",
+          "text": "Which shape roles does it need?",
+          "description": "The elements that get their own corner.",
+          "options": [
+            {
+              "id": "control-container",
+              "label": "Controls and containers"
+            },
+            {
+              "id": "control-badge-container",
+              "label": "Controls, badges and containers"
+            }
+          ]
+        },
+        {
+          "id": "shape.count",
+          "method": "count",
+          "text": "How many corner sizes exist?",
+          "description": "How many different corners appear.",
+          "options": [
+            {
+              "id": "two",
+              "label": "Two"
+            },
+            {
+              "id": "three",
+              "label": "Three"
+            }
+          ]
+        },
+        {
+          "id": "shape.definition",
+          "method": "definition",
+          "text": "How are corners set?",
+          "description": "One fixed set for the product, or a set per brand.",
+          "options": [
+            {
+              "id": "fixed",
+              "label": "Fixed for the product"
+            },
+            {
+              "id": "per-brand",
+              "label": "Set by each brand"
+            }
+          ]
+        },
+        {
+          "id": "shape.values",
+          "method": "values",
           "text": "What should control corners say?",
           "description": "The corner of buttons and inputs.",
           "options": [
@@ -704,36 +966,22 @@
           ]
         },
         {
-          "id": "shape.q2",
-          "text": "How heavy are borders?",
-          "description": "Border weight.",
+          "id": "shape.lands",
+          "method": "lands",
+          "text": "Where does shape show most?",
+          "description": "The place where corners are seen most.",
           "options": [
             {
-              "id": "hairline",
-              "label": "Hairline"
+              "id": "controls",
+              "label": "Controls in dense rows"
             },
             {
-              "id": "regular",
-              "label": "Regular"
+              "id": "controls-cards",
+              "label": "Controls and cards"
             },
             {
-              "id": "strong",
-              "label": "Strong"
-            }
-          ]
-        },
-        {
-          "id": "shape.q3",
-          "text": "What shape is a status label?",
-          "description": "Badges as rectangles align in columns; pills feel friendlier.",
-          "options": [
-            {
-              "id": "rectangle",
-              "label": "Rectangle"
-            },
-            {
-              "id": "pill",
-              "label": "Pill"
+              "id": "buttons-badges",
+              "label": "Buttons and badges"
             }
           ]
         }
@@ -743,32 +991,89 @@
       "id": "elevation",
       "kind": "scope",
       "title": "Elevation",
-      "description": "When something rises above the page.",
+      "description": "When something rises above the page, and what separates groups.",
+      "owns": [
+        "elevation"
+      ],
+      "lands_in": [
+        "card",
+        "overlay"
+      ],
+      "situations": [
+        "card",
+        "menu-or-dialog"
+      ],
       "questions": [
         {
-          "id": "elevation.q1",
-          "text": "When does something get a shadow?",
-          "description": "The rule for shadows.",
+          "id": "elevation.roles",
+          "method": "roles",
+          "text": "What rises above the page?",
+          "description": "The layers that get a shadow.",
           "options": [
             {
               "id": "floating-only",
-              "label": "Only when it floats"
+              "label": "Only what floats"
             },
             {
               "id": "cards-too",
               "label": "Cards too"
             },
             {
-              "id": "never",
-              "label": "Never"
+              "id": "nothing",
+              "label": "Nothing"
             }
           ]
         },
         {
-          "id": "elevation.q2",
+          "id": "elevation.count",
+          "method": "count",
+          "text": "How many shadow levels exist?",
+          "description": "The number of distinct shadows.",
+          "options": [
+            {
+              "id": "none",
+              "label": "None"
+            },
+            {
+              "id": "one",
+              "label": "One"
+            },
+            {
+              "id": "two",
+              "label": "Two"
+            }
+          ]
+        },
+        {
+          "id": "elevation.definition",
+          "method": "definition",
+          "text": "What separates groups on the page?",
+          "description": "The device that tells the eye a new group starts.",
+          "options": [
+            {
+              "id": "space",
+              "label": "Space"
+            },
+            {
+              "id": "lines",
+              "label": "Lines"
+            },
+            {
+              "id": "cards",
+              "label": "Cards"
+            }
+          ]
+        },
+        {
+          "id": "elevation.values",
+          "method": "values",
           "text": "How soft are shadows?",
           "description": "Shadow character.",
           "options": [
+            {
+              "id": "none",
+              "label": "No shadows"
+            },
             {
               "id": "subtle",
               "label": "Subtle"
@@ -784,17 +1089,22 @@
           ]
         },
         {
-          "id": "elevation.q3",
-          "text": "How is a dialog separated from the page?",
-          "description": "Dimming versus shadow only.",
+          "id": "elevation.lands",
+          "method": "lands",
+          "text": "Where does elevation show?",
+          "description": "The place where layering is seen.",
           "options": [
             {
-              "id": "dim",
-              "label": "Dim the page"
+              "id": "menus-dialogs",
+              "label": "Menus and dialogs"
             },
             {
-              "id": "shadow-only",
-              "label": "Shadow only"
+              "id": "cards-menus",
+              "label": "Cards, menus and dialogs"
+            },
+            {
+              "id": "dialogs-only",
+              "label": "Dialogs only"
             }
           ]
         }
@@ -805,28 +1115,76 @@
       "kind": "scope",
       "title": "Motion",
       "description": "What moves, why and how fast.",
+      "owns": [
+        "motion"
+      ],
+      "lands_in": [
+        "transition"
+      ],
+      "situations": [
+        "hover-feedback",
+        "reduced-motion"
+      ],
       "questions": [
         {
-          "id": "motion.q1",
+          "id": "motion.roles",
+          "method": "roles",
           "text": "What is motion for?",
-          "description": "The job motion does.",
+          "description": "The jobs motion does.",
           "options": [
             {
               "id": "feedback",
-              "label": "Feedback"
+              "label": "Feedback only"
             },
             {
-              "id": "guidance",
-              "label": "Guidance"
+              "id": "feedback-guidance",
+              "label": "Feedback and guidance"
             },
             {
               "id": "expression",
-              "label": "Expression"
+              "label": "Feedback and expression"
             }
           ]
         },
         {
-          "id": "motion.q2",
+          "id": "motion.count",
+          "method": "count",
+          "text": "How many speeds exist?",
+          "description": "The number of distinct durations.",
+          "options": [
+            {
+              "id": "one",
+              "label": "One"
+            },
+            {
+              "id": "two",
+              "label": "Two"
+            },
+            {
+              "id": "three",
+              "label": "Three"
+            }
+          ]
+        },
+        {
+          "id": "motion.definition",
+          "method": "definition",
+          "text": "How is easing defined?",
+          "description": "A standard ease-out, or a spring that overshoots.",
+          "options": [
+            {
+              "id": "standard",
+              "label": "Standard ease-out"
+            },
+            {
+              "id": "spring",
+              "label": "A spring"
+            }
+          ]
+        },
+        {
+          "id": "motion.values",
+          "method": "values",
           "text": "How fast does feedback feel?",
           "description": "Speed as a word. The convention behind each word is in the primitives.",
           "options": [
@@ -845,17 +1203,22 @@
           ]
         },
         {
-          "id": "motion.q3",
-          "text": "What happens when someone asks for less motion?",
-          "description": "Reduced-motion behaviour.",
+          "id": "motion.lands",
+          "method": "lands",
+          "text": "Where does motion show?",
+          "description": "The place where motion is seen.",
           "options": [
             {
-              "id": "none",
-              "label": "Nothing moves"
+              "id": "state-only",
+              "label": "State changes only"
             },
             {
-              "id": "reduced",
-              "label": "Motion is reduced"
+              "id": "state-panels",
+              "label": "State changes and panels"
+            },
+            {
+              "id": "hero",
+              "label": "Hero and launch moments"
             }
           ]
         }
@@ -866,28 +1229,56 @@
       "kind": "scope",
       "title": "Iconography",
       "description": "When icons appear and how they look.",
+      "owns": [
+        "size.icon"
+      ],
+      "lands_in": [
+        "button"
+      ],
+      "situations": [
+        "icon-alone",
+        "row-action"
+      ],
       "questions": [
         {
-          "id": "iconography.q1",
-          "text": "When do icons appear?",
-          "description": "Icon policy.",
+          "id": "iconography.roles",
+          "method": "roles",
+          "text": "What do icons do?",
+          "description": "The jobs icons carry.",
           "options": [
             {
-              "id": "with-labels",
-              "label": "Next to labels"
+              "id": "actions-status",
+              "label": "Actions and status"
             },
             {
-              "id": "standalone-ok",
-              "label": "On their own too"
+              "id": "actions-status-nav",
+              "label": "Actions, status and navigation"
             },
             {
-              "id": "rare",
-              "label": "Rarely"
+              "id": "decoration-too",
+              "label": "Those and decoration"
             }
           ]
         },
         {
-          "id": "iconography.q2",
+          "id": "iconography.count",
+          "method": "count",
+          "text": "How many icon sizes exist?",
+          "description": "The number of icon sizes.",
+          "options": [
+            {
+              "id": "one",
+              "label": "One"
+            },
+            {
+              "id": "two",
+              "label": "Two"
+            }
+          ]
+        },
+        {
+          "id": "iconography.definition",
+          "method": "definition",
           "text": "What icon style?",
           "description": "Stroke or fill.",
           "options": [
@@ -906,7 +1297,8 @@
           ]
         },
         {
-          "id": "iconography.q3",
+          "id": "iconography.values",
+          "method": "values",
           "text": "How big are icons next to text?",
           "description": "Icon size relative to text.",
           "options": [
@@ -919,6 +1311,30 @@
               "label": "Larger than the text"
             }
           ]
+        },
+        {
+          "id": "iconography.lands",
+          "method": "lands",
+          "text": "Where do icons work hardest?",
+          "description": "The place where icons are seen most.",
+          "options": [
+            {
+              "id": "toolbars-rows",
+              "label": "Toolbars and rows"
+            },
+            {
+              "id": "status",
+              "label": "Status and messages"
+            },
+            {
+              "id": "navigation",
+              "label": "Navigation"
+            },
+            {
+              "id": "buttons",
+              "label": "Buttons and calls to action"
+            }
+          ]
         }
       ]
     },
@@ -927,30 +1343,61 @@
       "kind": "scope",
       "title": "Theming",
       "description": "Modes and brands.",
+      "owns": [
+        "color.brand",
+        "font.family",
+        "radius.brand"
+      ],
+      "lands_in": [
+        "button",
+        "card",
+        "overlay"
+      ],
+      "situations": [
+        "dark-mode"
+      ],
       "questions": [
         {
-          "id": "theming.q1",
-          "text": "Which modes ship?",
-          "description": "The modes the semantic layer carries.",
+          "id": "theming.roles",
+          "method": "roles",
+          "text": "What can a theme change?",
+          "description": "The axes a theme varies along.",
           "options": [
             {
-              "id": "light-dark",
-              "label": "Light and dark"
+              "id": "mode",
+              "label": "Mode only"
             },
             {
-              "id": "light-only",
-              "label": "Light only"
+              "id": "mode-brand",
+              "label": "Mode and brand"
             },
             {
-              "id": "light-dark-contrast",
-              "label": "Light, dark and high contrast"
+              "id": "mode-contrast",
+              "label": "Mode and contrast"
             }
           ]
         },
         {
-          "id": "theming.q2",
+          "id": "theming.count",
+          "method": "count",
+          "text": "How many themes ship?",
+          "description": "Brands times modes.",
+          "options": [
+            {
+              "id": "two",
+              "label": "Two"
+            },
+            {
+              "id": "several",
+              "label": "Several"
+            }
+          ]
+        },
+        {
+          "id": "theming.definition",
+          "method": "definition",
           "text": "How are brands handled?",
-          "description": "Single brand or brands as theme modes.",
+          "description": "Single brand, or brands as theme modes over shared semantics.",
           "options": [
             {
               "id": "single",
@@ -963,17 +1410,34 @@
           ]
         },
         {
-          "id": "theming.q3",
-          "text": "Who can change the theme?",
-          "description": "Product-controlled or user-controlled.",
+          "id": "theming.values",
+          "method": "values",
+          "text": "Which modes ship?",
+          "description": "The modes the semantic layer carries. Light and dark are standard.",
           "options": [
             {
-              "id": "product",
-              "label": "The product"
+              "id": "light-dark",
+              "label": "Light and dark"
             },
             {
-              "id": "user",
-              "label": "The user"
+              "id": "light-dark-contrast",
+              "label": "Light, dark and high contrast"
+            }
+          ]
+        },
+        {
+          "id": "theming.lands",
+          "method": "lands",
+          "text": "What changes when the theme changes?",
+          "description": "The decisions a theme switch touches.",
+          "options": [
+            {
+              "id": "colors",
+              "label": "Colors only"
+            },
+            {
+              "id": "colors-type-shape",
+              "label": "Colors, type and shape"
             }
           ]
         }
@@ -984,9 +1448,60 @@
       "kind": "scope",
       "title": "Accessibility",
       "description": "Floors the system must hold.",
+      "owns": [
+        "size.control",
+        "opacity",
+        "color.border.focus"
+      ],
+      "lands_in": [
+        "button",
+        "input",
+        "overlay"
+      ],
+      "situations": [
+        "keyboard-focus",
+        "smallest-target"
+      ],
       "questions": [
         {
-          "id": "accessibility.q1",
+          "id": "accessibility.roles",
+          "method": "roles",
+          "text": "Which states get their own visible value?",
+          "description": "States with a distinct look.",
+          "options": [
+            {
+              "id": "hover-focus-disabled",
+              "label": "Hover, focus, disabled"
+            },
+            {
+              "id": "plus-pressed",
+              "label": "Those and pressed"
+            },
+            {
+              "id": "all",
+              "label": "All, including loading"
+            }
+          ]
+        },
+        {
+          "id": "accessibility.count",
+          "method": "count",
+          "text": "How many signals carry each meaning?",
+          "description": "Whether status relies on color alone or also on icons and words.",
+          "options": [
+            {
+              "id": "color-word",
+              "label": "Two: color and word"
+            },
+            {
+              "id": "color-icon-word",
+              "label": "Three: color, icon and word"
+            }
+          ]
+        },
+        {
+          "id": "accessibility.definition",
+          "method": "definition",
           "text": "What contrast floor do we hold?",
           "description": "Contrast commitment for text.",
           "options": [
@@ -1001,7 +1516,8 @@
           ]
         },
         {
-          "id": "accessibility.q2",
+          "id": "accessibility.values",
+          "method": "values",
           "text": "What is the smallest target?",
           "description": "The smallest clickable size.",
           "options": [
@@ -1020,21 +1536,26 @@
           ]
         },
         {
-          "id": "accessibility.q3",
-          "text": "Which states get their own visible value?",
-          "description": "States with a distinct look.",
+          "id": "accessibility.lands",
+          "method": "lands",
+          "text": "Where are the floors hardest to hold?",
+          "description": "The place where accessibility needs the most care.",
           "options": [
             {
-              "id": "hover-focus-disabled",
-              "label": "Hover, focus, disabled"
+              "id": "dense-tables",
+              "label": "Dense tables"
             },
             {
-              "id": "plus-pressed",
-              "label": "Those and pressed"
+              "id": "long-text",
+              "label": "Long text"
             },
             {
-              "id": "all",
-              "label": "All, including loading"
+              "id": "forms",
+              "label": "Forms"
+            },
+            {
+              "id": "brand-color",
+              "label": "Brand color"
             }
           ]
         }
@@ -1045,24 +1566,43 @@
       "kind": "scope",
       "title": "Naming",
       "description": "How tokens and keys are named.",
+      "owns": [
+        "component"
+      ],
+      "lands_in": [
+        "button",
+        "input",
+        "control",
+        "badge",
+        "card",
+        "table",
+        "tabs",
+        "overlay",
+        "transition"
+      ],
+      "situations": [
+        "missing-token"
+      ],
       "questions": [
         {
-          "id": "naming.q1",
-          "text": "How are decisions named?",
-          "description": "Role names survive change; component names are local.",
+          "id": "naming.roles",
+          "method": "roles",
+          "text": "What gets a name?",
+          "description": "Tokens only, or tokens and a component API.",
           "options": [
             {
-              "id": "by-role",
-              "label": "By role"
+              "id": "tokens",
+              "label": "Tokens"
             },
             {
-              "id": "by-component",
-              "label": "By component"
+              "id": "tokens-keys",
+              "label": "Tokens and component keys"
             }
           ]
         },
         {
-          "id": "naming.q2",
+          "id": "naming.count",
+          "method": "count",
           "text": "How many token tiers?",
           "description": "Primitives and semantics, or also component keys.",
           "options": [
@@ -1077,17 +1617,187 @@
           ]
         },
         {
-          "id": "naming.q3",
-          "text": "Do components get their own keys?",
+          "id": "naming.definition",
+          "method": "definition",
+          "text": "How are decisions named?",
+          "description": "Role names survive change; component names are local.",
+          "options": [
+            {
+              "id": "by-role",
+              "label": "By role"
+            },
+            {
+              "id": "by-component",
+              "label": "By component"
+            }
+          ]
+        },
+        {
+          "id": "naming.values",
+          "method": "values",
+          "text": "How are names written?",
+          "description": "The spelling of every name.",
+          "options": [
+            {
+              "id": "kebab-paths",
+              "label": "Lowercase words in paths"
+            },
+            {
+              "id": "camel",
+              "label": "camelCase"
+            }
+          ]
+        },
+        {
+          "id": "naming.lands",
+          "method": "lands",
+          "text": "What do components read?",
           "description": "A component API: one key per element, variant and state.",
           "options": [
             {
               "id": "keys",
-              "label": "Yes, a component API"
+              "label": "Component keys"
             },
             {
               "id": "semantic",
-              "label": "No, components read semantics"
+              "label": "Semantic tokens"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "voice",
+      "kind": "scope",
+      "title": "Voice and tone",
+      "description": "How the product speaks: the words in every component.",
+      "owns": [
+        "content"
+      ],
+      "lands_in": [
+        "button",
+        "input",
+        "overlay",
+        "table"
+      ],
+      "situations": [
+        "button-label",
+        "error-words",
+        "success-words",
+        "empty-words",
+        "confirm-words",
+        "first-visit"
+      ],
+      "questions": [
+        {
+          "id": "voice.roles",
+          "method": "roles",
+          "text": "Which kinds of copy does it need?",
+          "description": "The groups of words the product writes.",
+          "options": [
+            {
+              "id": "ui",
+              "label": "Labels and messages"
+            },
+            {
+              "id": "ui-help",
+              "label": "Labels, messages and help"
+            },
+            {
+              "id": "ui-editorial",
+              "label": "Labels, messages and articles"
+            },
+            {
+              "id": "ui-marketing",
+              "label": "Labels, messages and headlines"
+            }
+          ]
+        },
+        {
+          "id": "voice.count",
+          "method": "count",
+          "text": "How many tones does it use?",
+          "description": "One tone everywhere, a tone per moment, or a shared core with a tone per brand.",
+          "options": [
+            {
+              "id": "one",
+              "label": "One"
+            },
+            {
+              "id": "per-moment",
+              "label": "One per moment"
+            },
+            {
+              "id": "per-brand",
+              "label": "One per brand"
+            }
+          ]
+        },
+        {
+          "id": "voice.definition",
+          "method": "definition",
+          "text": "How is the voice defined?",
+          "description": "The rule that keeps copy consistent.",
+          "options": [
+            {
+              "id": "word-list",
+              "label": "Rules and a word list"
+            },
+            {
+              "id": "principles",
+              "label": "Principles and examples"
+            },
+            {
+              "id": "shared-core",
+              "label": "A shared core, brand tone on top"
+            }
+          ]
+        },
+        {
+          "id": "voice.values",
+          "method": "values",
+          "text": "How does it sound?",
+          "description": "The voice as a word.",
+          "options": [
+            {
+              "id": "terse",
+              "label": "Terse"
+            },
+            {
+              "id": "plain",
+              "label": "Plain and direct"
+            },
+            {
+              "id": "conversational",
+              "label": "Conversational"
+            },
+            {
+              "id": "playful",
+              "label": "Playful"
+            }
+          ]
+        },
+        {
+          "id": "voice.lands",
+          "method": "lands",
+          "text": "Where do the words matter most?",
+          "description": "The place where copy does its most important job.",
+          "options": [
+            {
+              "id": "errors-empty",
+              "label": "Errors and empty states"
+            },
+            {
+              "id": "articles",
+              "label": "Articles and guides"
+            },
+            {
+              "id": "forms",
+              "label": "Form steps and errors"
+            },
+            {
+              "id": "headlines",
+              "label": "Headlines and buttons"
             }
           ]
         }
@@ -1223,27 +1933,69 @@
     },
     {
       "id": "commit-action",
-      "scope": "button",
+      "scope": "color",
       "title": "The action that completes the task",
       "description": "Save, submit, pay: the step that finishes the job."
     },
     {
       "id": "alternative-action",
-      "scope": "button",
+      "scope": "color",
       "title": "An alternative or cancel",
       "description": "The other way out next to the main action."
     },
     {
       "id": "destructive-action",
-      "scope": "button",
+      "scope": "color",
       "title": "Delete or remove",
       "description": "An action that destroys data."
     },
     {
       "id": "row-action",
-      "scope": "button",
+      "scope": "iconography",
       "title": "An action on one row or item",
       "description": "An action repeated on every row of a list."
+    },
+    {
+      "id": "missing-token",
+      "scope": "naming",
+      "title": "A value with no token",
+      "description": "You need a color, size or space that no token names."
+    },
+    {
+      "id": "button-label",
+      "scope": "voice",
+      "title": "A button label",
+      "description": "The words on a button."
+    },
+    {
+      "id": "error-words",
+      "scope": "voice",
+      "title": "The words of an error",
+      "description": "What an error message says, not how it looks."
+    },
+    {
+      "id": "success-words",
+      "scope": "voice",
+      "title": "A success message",
+      "description": "The confirmation after an action works."
+    },
+    {
+      "id": "empty-words",
+      "scope": "voice",
+      "title": "An empty state",
+      "description": "What a list or page says when it has nothing yet."
+    },
+    {
+      "id": "confirm-words",
+      "scope": "voice",
+      "title": "A confirmation question",
+      "description": "The question before something hard to undo."
+    },
+    {
+      "id": "first-visit",
+      "scope": "voice",
+      "title": "A first visit",
+      "description": "What the product says to someone new."
     }
   ],
   "components": [
@@ -1265,7 +2017,8 @@
         "button/radius",
         "button/font-size",
         "button/font-weight",
-        "button/focus-ring"
+        "button/focus-ring",
+        "button/icon-size"
       ]
     },
     {
@@ -1454,6 +2207,12 @@
       "component": "button",
       "description": "Focus ring color on any button.",
       "default": "color.border.focus"
+    },
+    {
+      "id": "button/icon-size",
+      "component": "button",
+      "description": "Size of an icon inside a button.",
+      "default": "size.icon"
     },
     {
       "id": "input/background",

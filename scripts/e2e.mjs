@@ -54,7 +54,7 @@ step("Tokens build (Style Dictionary)", () => {
 step("CLI: list, why, when", () => {
   const list = JSON.parse(run("node", [cli, "list", "--json"]));
   must(list.length === 5, `expected 5 schemes, got ${list.length}`);
-  const why = JSON.parse(run("node", [cli, "why", "dense-data", "typography.q3", "--json"]));
+  const why = JSON.parse(run("node", [cli, "why", "dense-data", "typography.definition", "--json"]));
   must(why.because.length > 0, "why has no because chain");
   const when = JSON.parse(run("node", [cli, "when", "content-first", "a number in a table", "--json"]));
   must(when.situation === "number-in-table", "when matched the wrong situation");
