@@ -117,6 +117,18 @@
       "title": "A harness that checks the DoD against the instructions and the specs",
       "words": "Build an Harness layer and testing suite to confirm you DoD aligns with my instructions ... Alos make the harness work with the specs you defined as well",
       "checks": ["harness-covers-instructions", "harness-covers-specs"]
+    },
+    {
+      "id": "I19",
+      "title": "Voice and tone and use scenarios are defined with questions",
+      "words": "please create questions as we do for other areas for voice and tone, use scenarios",
+      "checks": ["outputs-follow-answers", "schemes-voice-and-themes"]
+    },
+    {
+      "id": "I20",
+      "title": "Every scope behaves the same, with the same methods",
+      "words": "voice and tone shoudbe like any other scope , all scope should behave the same and wrok the same and be consited of simiar methods",
+      "checks": ["scopes-uniform-template"]
     }
   ]
 }

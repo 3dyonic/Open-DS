@@ -24,8 +24,8 @@ test("help names every scheme command", () => {
 });
 
 test("why follows the because chain back to the reasons", () => {
-  const w = why(loadScheme("dense-data"), "typography.q3");
-  assert.equal(w.answer, "On the grid, with the user's text size");
+  const w = why(loadScheme("dense-data"), "typography.definition");
+  assert.equal(w.answer, "A ratio, line heights on the grid");
   assert.ok(w.because.length > 0);
   assert.ok(w.because.some((b) => b.question.startsWith("tasks.") || b.question.startsWith("people.")));
 });
@@ -68,6 +68,9 @@ test("init deploys tokens, components, AGENTS.md and the skill", () => {
     const agents = readFileSync(join(dir, "AGENTS.md"), "utf8");
     assert.match(agents, /\| Situation \| Use \| Not \| Why \|/);
     assert.match(agents, /## Voice and tone/);
+    assert.match(agents, /Tone per moment, with an example:\n\n- A button label: .+ Example: "Export"/);
+    assert.match(agents, /## Use scenarios\n\n- An operations lead/);
+    assert.ok(readFileSync(join(dir, ".open-ds/content.json"), "utf8").includes('"commit"'));
     assert.equal(agents.match(/^\| (?!Situation|---)/gm).length, grammar().situations.length);
     assert.match(readFileSync(join(dir, ".claude/skills/open-ds/SKILL.md"), "utf8"), /^---\nname: open-ds\ndescription: /);
     assert.equal(record.components.length, 14);

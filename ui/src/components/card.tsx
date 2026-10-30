@@ -1,6 +1,6 @@
 /**
  * Card. Groups content inside a page. Whether it has a shadow is a scheme decision
- * (elevation.q1): --card-shadow is "no shadow" in schemes that separate with lines.
+ * (elevation.roles, elevation.definition): --card-shadow is "no shadow" in schemes that separate with lines.
  *
  * Reads only component keys: --card-*.
  */

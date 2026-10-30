@@ -178,7 +178,8 @@ def get_scheme(
     summary: name, description, ai guidance, scenarios, themes and voice summary.
     answers: every grammar question answered, with why and because.
     usage: the rule for every situation (use, not, why).
-    voice: voice and tone with real copy. tokens: the DTCG tokens. all: everything.
+    voice: the voice outputs (summary, principles, words), each with the answers it follows.
+    The tone per moment is in usage, under the voice situations. tokens: the DTCG tokens. all: everything.
     """
     s = sch.load_scheme(scheme_id)
     if part == "all":
@@ -199,7 +200,9 @@ def get_scheme(
 @mcp.tool
 def get_answer(
     scheme_id: SchemeId,
-    question_id: Annotated[str, Field(description="Grammar question id, for example typography.q3 or people.q1.")],
+    question_id: Annotated[
+        str, Field(description="Grammar question id, for example typography.definition or people.q1.")
+    ],
 ) -> dict:
     """Return how a scheme answers one grammar question.
 
@@ -209,7 +212,7 @@ def get_answer(
     s = sch.load_scheme(scheme_id)
     qs = sch.questions()
     if question_id not in qs:
-        raise ValueError(f"Unknown question id '{question_id}'. Ids look like typography.q3.")
+        raise ValueError(f"Unknown question id '{question_id}'. Ids look like typography.definition.")
     answers = {a["question"]: a for a in s["answers"]}
 
     def describe(qid: str) -> dict:
@@ -225,7 +228,7 @@ def why(
     scheme_id: SchemeId,
     target: Annotated[
         str,
-        Field(description="A question id (typography.q3) or a component key (button/primary/background)."),
+        Field(description="A question id (typography.definition) or a component key (button/primary/background)."),
     ],
 ) -> dict:
     """Explain a decision with its full chain of reasons.

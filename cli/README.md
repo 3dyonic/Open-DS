@@ -5,7 +5,7 @@ The `open-ds` command. It lists the schemes, explains their decisions, and deplo
 ```bash
 node cli/bin/open-ds.js list
 node cli/bin/open-ds.js show dense-data
-node cli/bin/open-ds.js why dense-data typography.q3
+node cli/bin/open-ds.js why dense-data typography.definition
 node cli/bin/open-ds.js why multi-brand button/radius
 node cli/bin/open-ds.js when content-first "a number in a table"
 node cli/bin/open-ds.js init multi-brand --dir ../my-app --brand birch

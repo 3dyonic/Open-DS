@@ -17,43 +17,48 @@
     ]
   },
   "scenarios": [
-    "A visitor lands on a launch page from a social post and joins the waiting list.",
-    "An agency swaps the campaign colors for the next drop without changing the components."
+    {
+      "text": "A visitor lands on a launch page from a social post and joins the waiting list.",
+      "follows": [
+        "scenarios.q1",
+        "scenarios.q2",
+        "outcomes.q1"
+      ]
+    },
+    {
+      "text": "An agency swaps the campaign colors for the next drop without changing the components.",
+      "follows": [
+        "team.q1",
+        "team.q2"
+      ]
+    }
   ],
   "voice": {
-    "summary": "Playful and short. Big words, few of them.",
-    "principles": [
-      "Headlines are short and bold. Three to six words.",
-      "Verbs that move: Join, Try, Go.",
-      "Playful in headlines, plain in errors."
-    ],
-    "tone": {
-      "error": "Plain first, a light touch after.",
-      "success": "Celebrate, briefly.",
-      "empty": "Playful, with a clear next step.",
-      "confirm": "Plain. No jokes when something is lost.",
-      "onboarding": "One bold line and one button."
+    "summary": {
+      "text": "Playful and short. Big words, few of them.",
+      "follows": [
+        "voice.values"
+      ]
     },
-    "examples": [
+    "principles": [
       {
-        "context": "button",
-        "text": "Join the drop"
+        "text": "Headlines are short and bold. Three to six words.",
+        "follows": [
+          "voice.lands",
+          "typography.roles"
+        ]
       },
       {
-        "context": "error",
-        "text": "That email doesn't look right. Check it and try again."
+        "text": "Verbs that move: Join, Try, Go.",
+        "follows": [
+          "voice.values"
+        ]
       },
       {
-        "context": "success",
-        "text": "You're on the list. See you at launch."
-      },
-      {
-        "context": "empty",
-        "text": "Nothing here yet. Go find something you love."
-      },
-      {
-        "context": "confirm",
-        "text": "Remove this from your list? You can add it back later."
+        "text": "Playful in headlines, plain in errors.",
+        "follows": [
+          "voice.count"
+        ]
       }
     ],
     "words": {
@@ -67,6 +72,9 @@
         "Synergy",
         "Leverage",
         "Kindly"
+      ],
+      "follows": [
+        "voice.values"
       ]
     }
   },
@@ -192,19 +200,19 @@
       ]
     },
     {
-      "question": "voice.q1",
-      "option": "playful",
-      "why": "Playful and short.",
+      "question": "scenarios.q1",
+      "option": "on-the-move",
+      "why": "Visitors come from social posts on their phones.",
       "because": [
-        "brand.q1"
+        "people.q1"
       ]
     },
     {
-      "question": "voice.q2",
-      "option": "casual",
-      "why": "Casual.",
+      "question": "scenarios.q2",
+      "option": "short",
+      "why": "A visit lasts a few minutes at most.",
       "because": [
-        "brand.q1"
+        "outcomes.q1"
       ]
     },
     {
@@ -222,7 +230,7 @@
       ]
     },
     {
-      "question": "typography.q1",
+      "question": "typography.roles",
       "option": "core-expressive",
       "why": "A big expressive display role carries the brand.",
       "because": [
@@ -230,7 +238,23 @@
       ]
     },
     {
-      "question": "typography.q2",
+      "question": "typography.count",
+      "option": "many",
+      "why": "A wide scale gives big moments room.",
+      "because": [
+        "brand.q2"
+      ]
+    },
+    {
+      "question": "typography.definition",
+      "option": "ratio-proportional",
+      "why": "Ratios suit the big display sizes.",
+      "because": [
+        "typography.roles"
+      ]
+    },
+    {
+      "question": "typography.values",
       "option": "regular",
       "why": "Regular body; the display does the shouting.",
       "because": [
@@ -238,15 +262,23 @@
       ]
     },
     {
-      "question": "typography.q3",
-      "option": "proportional",
-      "why": "Ratios suit the big display sizes.",
+      "question": "typography.lands",
+      "option": "headlines",
+      "why": "Type does its work in headlines.",
       "because": [
-        "typography.q1"
+        "brand.q2"
       ]
     },
     {
-      "question": "color.q1",
+      "question": "color.roles",
+      "option": "core-brand",
+      "why": "Brand accents are part of the message.",
+      "because": [
+        "brand.q2"
+      ]
+    },
+    {
+      "question": "color.count",
       "option": "three",
       "why": "Primary, secondary, ghost.",
       "because": [
@@ -254,15 +286,15 @@
       ]
     },
     {
-      "question": "color.q2",
-      "option": "color-word",
-      "why": "Color and word.",
+      "question": "color.definition",
+      "option": "neutral-brand",
+      "why": "Warm neutrals and one vivid ramp.",
       "because": [
-        "people.q2"
+        "brand.q1"
       ]
     },
     {
-      "question": "color.q3",
+      "question": "color.values",
       "option": "vivid",
       "why": "Vivid color is the brand.",
       "because": [
@@ -270,7 +302,39 @@
       ]
     },
     {
-      "question": "spacing.q1",
+      "question": "color.lands",
+      "option": "brand-moments",
+      "why": "Color makes the launch moment.",
+      "because": [
+        "outcomes.q1"
+      ]
+    },
+    {
+      "question": "spacing.roles",
+      "option": "gap-inset",
+      "why": "Few tables; no row role needed.",
+      "because": [
+        "content.q1"
+      ]
+    },
+    {
+      "question": "spacing.count",
+      "option": "one",
+      "why": "One generous density.",
+      "because": [
+        "content.q2"
+      ]
+    },
+    {
+      "question": "spacing.definition",
+      "option": "coarse",
+      "why": "Big, even steps make big moments.",
+      "because": [
+        "brand.q2"
+      ]
+    },
+    {
+      "question": "spacing.values",
       "option": "spacious",
       "why": "Big space makes big moments.",
       "because": [
@@ -278,79 +342,119 @@
       ]
     },
     {
-      "question": "spacing.q2",
-      "option": "one",
-      "why": "One density.",
+      "question": "spacing.lands",
+      "option": "sections",
+      "why": "Space works between big sections.",
       "because": [
-        "content.q2"
+        "content.q1"
       ]
     },
     {
-      "question": "spacing.q3",
-      "option": "space",
-      "why": "Space and color blocks separate sections.",
+      "question": "shape.roles",
+      "option": "control-container",
+      "why": "Pills everywhere; badges share the control corner.",
       "because": [
         "brand.q1"
       ]
     },
     {
-      "question": "shape.q1",
+      "question": "shape.count",
+      "option": "two",
+      "why": "Pill controls and large container corners.",
+      "because": [
+        "shape.roles"
+      ]
+    },
+    {
+      "question": "shape.definition",
+      "option": "fixed",
+      "why": "One brand, one set of corners.",
+      "because": [
+        "business.q2"
+      ]
+    },
+    {
+      "question": "shape.values",
       "option": "pill",
       "why": "Pill controls feel playful.",
       "because": [
-        "voice.q1"
-      ]
-    },
-    {
-      "question": "shape.q2",
-      "option": "strong",
-      "why": "Strong borders read as graphic.",
-      "because": [
         "brand.q1"
       ]
     },
     {
-      "question": "shape.q3",
-      "option": "pill",
-      "why": "Pill badges.",
-      "because": [
-        "shape.q1"
-      ]
-    },
-    {
-      "question": "elevation.q1",
-      "option": "cards-too",
-      "why": "Cards float to feel tactile.",
-      "because": [
-        "human.q1"
-      ]
-    },
-    {
-      "question": "elevation.q2",
-      "option": "pronounced",
-      "why": "Pronounced shadows add depth.",
-      "because": [
-        "brand.q1"
-      ]
-    },
-    {
-      "question": "elevation.q3",
-      "option": "dim",
-      "why": "Dim the page.",
-      "because": [
-        "human.q1"
-      ]
-    },
-    {
-      "question": "motion.q1",
-      "option": "expression",
-      "why": "Motion expresses the brand.",
+      "question": "shape.lands",
+      "option": "buttons-badges",
+      "why": "Pill buttons are the signature shape.",
       "because": [
         "brand.q2"
       ]
     },
     {
-      "question": "motion.q2",
+      "question": "elevation.roles",
+      "option": "cards-too",
+      "why": "Cards lift to feel like objects.",
+      "because": [
+        "brand.q2"
+      ]
+    },
+    {
+      "question": "elevation.count",
+      "option": "two",
+      "why": "One shadow for cards, one for overlays.",
+      "because": [
+        "elevation.roles"
+      ]
+    },
+    {
+      "question": "elevation.definition",
+      "option": "cards",
+      "why": "Cards hold each offer.",
+      "because": [
+        "content.q1"
+      ]
+    },
+    {
+      "question": "elevation.values",
+      "option": "pronounced",
+      "why": "Pronounced shadows add depth.",
+      "because": [
+        "brand.q2"
+      ]
+    },
+    {
+      "question": "elevation.lands",
+      "option": "cards-menus",
+      "why": "Cards, menus and dialogs rise.",
+      "because": [
+        "elevation.roles"
+      ]
+    },
+    {
+      "question": "motion.roles",
+      "option": "expression",
+      "why": "Motion carries personality.",
+      "because": [
+        "brand.q2"
+      ]
+    },
+    {
+      "question": "motion.count",
+      "option": "three",
+      "why": "Fast feedback, moderate panels, relaxed hero.",
+      "because": [
+        "motion.roles"
+      ]
+    },
+    {
+      "question": "motion.definition",
+      "option": "spring",
+      "why": "A spring that overshoots feels alive.",
+      "because": [
+        "brand.q1"
+      ]
+    },
+    {
+      "question": "motion.values",
       "option": "relaxed",
       "why": "Relaxed, springy motion.",
       "because": [
@@ -358,107 +462,212 @@
       ]
     },
     {
-      "question": "motion.q3",
-      "option": "reduced",
-      "why": "Motion is reduced when asked.",
+      "question": "motion.lands",
+      "option": "hero",
+      "why": "Motion shows in hero and launch moments.",
       "because": [
-        "people.q2"
+        "outcomes.q1"
       ]
     },
     {
-      "question": "iconography.q1",
-      "option": "rare",
-      "why": "Few icons; type and image carry the page.",
+      "question": "iconography.roles",
+      "option": "decoration-too",
+      "why": "Icons also decorate campaign pages.",
       "because": [
-        "content.q1"
+        "brand.q2"
       ]
     },
     {
-      "question": "iconography.q2",
+      "question": "iconography.count",
+      "option": "two",
+      "why": "One size next to text, one for decoration.",
+      "because": [
+        "iconography.roles"
+      ]
+    },
+    {
+      "question": "iconography.definition",
       "option": "duotone",
-      "why": "Two-tone icons in brand colors.",
+      "why": "Two-tone icons carry the brand color.",
       "because": [
-        "brand.q2"
+        "color.values"
       ]
     },
     {
-      "question": "iconography.q3",
+      "question": "iconography.values",
       "option": "larger",
-      "why": "Larger icons as graphic elements.",
+      "why": "Larger icons hold their own next to big type.",
       "because": [
-        "brand.q2"
+        "typography.roles"
       ]
     },
     {
-      "question": "theming.q1",
-      "option": "light-dark",
-      "why": "Light and dark ship as standard; dark is a campaign favourite.",
+      "question": "iconography.lands",
+      "option": "buttons",
+      "why": "Icons sit in calls to action.",
       "because": [
-        "brand.q2"
+        "outcomes.q1"
       ]
     },
     {
-      "question": "theming.q2",
-      "option": "single",
-      "why": "One brand.",
+      "question": "theming.roles",
+      "option": "mode",
+      "why": "One brand, so only the mode changes.",
       "because": [
         "business.q2"
       ]
     },
     {
-      "question": "theming.q3",
-      "option": "product",
-      "why": "The campaign picks the mode; users can switch.",
+      "question": "theming.count",
+      "option": "two",
+      "why": "Light and dark.",
       "because": [
-        "team.q2"
+        "theming.values"
       ]
     },
     {
-      "question": "accessibility.q1",
-      "option": "aa",
-      "why": "AA, checked on vivid color.",
+      "question": "theming.definition",
+      "option": "single",
+      "why": "One brand per campaign.",
       "because": [
-        "people.q2"
+        "business.q2"
       ]
     },
     {
-      "question": "accessibility.q2",
-      "option": "touch",
-      "why": "Phones first.",
+      "question": "theming.values",
+      "option": "light-dark",
+      "why": "Light and dark ship as standard.",
       "because": [
         "people.q1"
       ]
     },
     {
-      "question": "accessibility.q3",
+      "question": "theming.lands",
+      "option": "colors",
+      "why": "Only colors change.",
+      "because": [
+        "theming.roles"
+      ]
+    },
+    {
+      "question": "accessibility.roles",
       "option": "plus-pressed",
       "why": "Pressed for touch.",
       "because": [
-        "accessibility.q2"
+        "accessibility.values"
       ]
     },
     {
-      "question": "naming.q1",
-      "option": "by-role",
-      "why": "Role names let campaigns change values.",
+      "question": "accessibility.count",
+      "option": "color-word",
+      "why": "Color and word.",
+      "because": [
+        "people.q2"
+      ]
+    },
+    {
+      "question": "accessibility.definition",
+      "option": "aa",
+      "why": "AA, checked on every vivid color.",
+      "because": [
+        "people.q2"
+      ]
+    },
+    {
+      "question": "accessibility.values",
+      "option": "touch",
+      "why": "Visitors come from social posts on phones.",
+      "because": [
+        "scenarios.q1"
+      ]
+    },
+    {
+      "question": "accessibility.lands",
+      "option": "brand-color",
+      "why": "Vivid brand color is the hardest to keep readable.",
+      "because": [
+        "color.values"
+      ]
+    },
+    {
+      "question": "naming.roles",
+      "option": "tokens-keys",
+      "why": "Components get their own keys.",
       "because": [
         "team.q2"
       ]
     },
     {
-      "question": "naming.q2",
+      "question": "naming.count",
       "option": "three",
-      "why": "Three tiers.",
+      "why": "Primitives, semantics and component keys.",
       "because": [
         "team.q2"
       ]
     },
     {
-      "question": "naming.q3",
-      "option": "keys",
-      "why": "Keys keep components stable across campaigns.",
+      "question": "naming.definition",
+      "option": "by-role",
+      "why": "Role names survive each campaign.",
       "because": [
         "team.q2"
+      ]
+    },
+    {
+      "question": "naming.values",
+      "option": "kebab-paths",
+      "why": "Lowercase paths read the same everywhere.",
+      "because": [
+        "team.q1"
+      ]
+    },
+    {
+      "question": "naming.lands",
+      "option": "keys",
+      "why": "Campaigns change primitives, never components.",
+      "because": [
+        "team.q2"
+      ]
+    },
+    {
+      "question": "voice.roles",
+      "option": "ui-marketing",
+      "why": "Headlines carry the campaign.",
+      "because": [
+        "business.q1"
+      ]
+    },
+    {
+      "question": "voice.count",
+      "option": "per-moment",
+      "why": "Playful in headlines, plain in errors.",
+      "because": [
+        "outcomes.q2"
+      ]
+    },
+    {
+      "question": "voice.definition",
+      "option": "principles",
+      "why": "Principles and examples guide each campaign's writers.",
+      "because": [
+        "team.q1"
+      ]
+    },
+    {
+      "question": "voice.values",
+      "option": "playful",
+      "why": "Big words, few of them.",
+      "because": [
+        "brand.q1",
+        "brand.q2"
+      ]
+    },
+    {
+      "question": "voice.lands",
+      "option": "headlines",
+      "why": "Words work hardest in headlines and buttons.",
+      "because": [
+        "outcomes.q1"
       ]
     }
   ],
@@ -469,7 +678,7 @@
       "not": "type.title",
       "why": "The display role carries the brand in every hero.",
       "because": [
-        "typography.q1",
+        "typography.roles",
         "brand.q2"
       ]
     },
@@ -488,7 +697,7 @@
       "not": "Long paragraphs",
       "why": "Short copy keeps the energy.",
       "because": [
-        "voice.q1"
+        "voice.values"
       ]
     },
     {
@@ -506,7 +715,7 @@
       "not": "Grey",
       "why": "Selection carries the brand.",
       "because": [
-        "color.q3"
+        "color.values"
       ]
     },
     {
@@ -516,7 +725,7 @@
       "why": "Errors must not look like the brand.",
       "because": [
         "outcomes.q2",
-        "color.q2"
+        "accessibility.count"
       ]
     },
     {
@@ -534,7 +743,7 @@
       "not": "Color alone",
       "why": "A word keeps meaning on vivid backgrounds.",
       "because": [
-        "color.q2"
+        "accessibility.count"
       ]
     },
     {
@@ -543,7 +752,7 @@
       "not": "space.gap.tight",
       "why": "Air keeps big type readable.",
       "because": [
-        "spacing.q1"
+        "spacing.values"
       ]
     },
     {
@@ -552,7 +761,7 @@
       "not": "A thin line",
       "why": "Big space and color make each section a moment.",
       "because": [
-        "spacing.q3"
+        "elevation.definition"
       ]
     },
     {
@@ -561,7 +770,7 @@
       "not": "A compact row",
       "why": "Rare tables stay airy.",
       "because": [
-        "spacing.q1"
+        "spacing.values"
       ]
     },
     {
@@ -570,7 +779,7 @@
       "not": "Sharp corners",
       "why": "Pills feel playful.",
       "because": [
-        "shape.q1"
+        "shape.values"
       ]
     },
     {
@@ -579,7 +788,7 @@
       "not": "A rectangle",
       "why": "Pills match the controls.",
       "because": [
-        "shape.q3"
+        "shape.roles"
       ]
     },
     {
@@ -588,8 +797,8 @@
       "not": "A flat card",
       "why": "Cards float to feel tactile.",
       "because": [
-        "elevation.q1",
-        "elevation.q2"
+        "elevation.roles",
+        "elevation.values"
       ]
     },
     {
@@ -598,7 +807,7 @@
       "not": "No shadow",
       "why": "Strong depth for floating things.",
       "because": [
-        "elevation.q2"
+        "elevation.values"
       ]
     },
     {
@@ -607,8 +816,8 @@
       "not": "An instant change",
       "why": "Springy motion is part of the brand.",
       "because": [
-        "motion.q1",
-        "motion.q2"
+        "motion.roles",
+        "motion.values"
       ]
     },
     {
@@ -617,7 +826,7 @@
       "not": "Full motion",
       "why": "Motion is reduced when asked.",
       "because": [
-        "motion.q3"
+        "motion.roles"
       ]
     },
     {
@@ -626,7 +835,7 @@
       "not": "Many bare icons",
       "why": "Type and image carry the page.",
       "because": [
-        "iconography.q1"
+        "iconography.roles"
       ]
     },
     {
@@ -635,7 +844,7 @@
       "not": "A separate campaign palette",
       "why": "Dark ships as standard; campaigns change values, not structure.",
       "because": [
-        "theming.q1"
+        "theming.values"
       ]
     },
     {
@@ -653,7 +862,7 @@
       "not": "A compact control",
       "why": "Phones first.",
       "because": [
-        "accessibility.q2"
+        "accessibility.values"
       ]
     },
     {
@@ -671,7 +880,7 @@
       "not": "A second primary",
       "why": "The alternative must not compete.",
       "because": [
-        "color.q1"
+        "color.count"
       ]
     },
     {
@@ -689,8 +898,80 @@
       "not": "An icon alone",
       "why": "A word keeps it clear.",
       "because": [
-        "iconography.q1"
+        "iconography.roles"
       ]
+    },
+    {
+      "situation": "missing-token",
+      "use": "The closest semantic token, then ask for a new one",
+      "not": "A raw value in the component",
+      "why": "The next campaign changes primitives; raw values would stay behind.",
+      "because": [
+        "naming.lands"
+      ]
+    },
+    {
+      "situation": "button-label",
+      "use": "A short verb that moves: Join, Try, Go",
+      "not": "\"Learn more\"",
+      "why": "Big moments need verbs with energy.",
+      "because": [
+        "voice.values",
+        "voice.lands"
+      ],
+      "example": "Join the drop"
+    },
+    {
+      "situation": "error-words",
+      "use": "Plain first, a light touch after",
+      "not": "A joke before the fix",
+      "why": "Playful copy must never hide what went wrong.",
+      "because": [
+        "voice.count"
+      ],
+      "example": "That email doesn't look right. Check it and try again."
+    },
+    {
+      "situation": "success-words",
+      "use": "Celebrate, briefly",
+      "not": "A long thank-you",
+      "why": "A short celebration is remembered.",
+      "because": [
+        "voice.values",
+        "outcomes.q1"
+      ],
+      "example": "You're on the list. See you at launch."
+    },
+    {
+      "situation": "empty-words",
+      "use": "Playful, with a clear next step",
+      "not": "A dead end",
+      "why": "Playful words still need a way forward.",
+      "because": [
+        "voice.values"
+      ],
+      "example": "Nothing here yet. Go find something you love."
+    },
+    {
+      "situation": "confirm-words",
+      "use": "Plain. No jokes when something is lost.",
+      "not": "Playful copy",
+      "why": "Loss is never the moment for a joke.",
+      "because": [
+        "voice.count"
+      ],
+      "example": "Remove this from your list? You can add it back later."
+    },
+    {
+      "situation": "first-visit",
+      "use": "One bold line and one button",
+      "not": "A paragraph of copy",
+      "why": "Visitors from a social post give a few seconds.",
+      "because": [
+        "scenarios.q2",
+        "voice.values"
+      ],
+      "example": "The drop is coming. Be first."
     }
   ],
   "tokens": {
@@ -1703,6 +1984,10 @@
         "focus-ring": {
           "$value": "{color.border.focus}",
           "$description": "Focus ring color on any button."
+        },
+        "icon-size": {
+          "$value": "{size.icon}",
+          "$description": "Size of an icon inside a button."
         }
       },
       "input": {
@@ -1917,6 +2202,36 @@
         "easing": {
           "$value": "{motion.easing.standard}",
           "$description": "Easing of feedback transitions."
+        }
+      }
+    },
+    "content": {
+      "$description": "Voice tokens: the words components use for common actions. Text, not CSS.",
+      "action": {
+        "commit": {
+          "$type": "string",
+          "$value": "Go",
+          "$description": "The label of the action that completes a task."
+        },
+        "cancel": {
+          "$type": "string",
+          "$value": "Not now",
+          "$description": "The label of the way out next to the main action."
+        },
+        "destroy": {
+          "$type": "string",
+          "$value": "Remove",
+          "$description": "The label of an action that deletes data."
+        },
+        "retry": {
+          "$type": "string",
+          "$value": "Try again",
+          "$description": "The label that repeats a failed action."
+        },
+        "empty-action": {
+          "$type": "string",
+          "$value": "Explore the drop",
+          "$description": "The label of the action in an empty state."
         }
       }
     }

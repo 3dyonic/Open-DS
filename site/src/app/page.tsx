@@ -7,7 +7,7 @@ export default function Home() {
   const g = grammar();
   const all = schemes();
   const dense = all.find((s) => s.id === "dense-data")!;
-  const proof = ["content.q1", "tasks.q1", "typography.q1"].map((id) => answerOf(dense, g, id));
+  const proof = ["content.q1", "tasks.q1", "typography.roles"].map((id) => answerOf(dense, g, id));
   return (
     <div className="grid gap-20">
       <section className="grid gap-6">
@@ -97,7 +97,7 @@ export default function Home() {
           {[
             [
               "Reasons",
-              `${g.reasons.length} groups: business, people, content, tasks, human factors, outcomes, brand, voice and tone, team.`,
+              `${g.reasons.length} groups: business, people, content, tasks, human factors, outcomes, brand, use scenarios, team.`,
             ],
             [
               "Scopes",

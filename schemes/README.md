@@ -4,7 +4,7 @@ A scheme is a full design system as data. It answers every question in the gramm
 
 | File | What it holds |
 | --- | --- |
-| `grammar.json` | The questions (9 reasons, 10 scopes, 48 questions), the 25 situations, and the 62 component keys. |
+| `grammar.json` | The questions (9 reasons, 11 scopes, 73 questions; every scope answers the same five method questions), the 32 situations, and the 63 component keys. |
 | `dense-data.json` | Compact and exact, for experts who compare numbers. |
 | `content-first.json` | Large calm type, for people who come to read. |
 | `accessible-first.json` | Large text and targets, AAA contrast, for everyone. |

@@ -21,7 +21,7 @@ export const buttonVariants = cva(
     "transition-colors duration-[var(--transition-duration)] ease-[var(--transition-easing)]",
     "outline-none focus-visible:ring-[length:var(--border-width-focus)] focus-visible:ring-[color:var(--button-focus-ring)] focus-visible:ring-offset-2 focus-visible:ring-offset-[color:var(--color-surface-canvas)]",
     "disabled:pointer-events-none disabled:opacity-[var(--opacity-disabled)]",
-    "[&_svg]:size-[var(--size-icon)] [&_svg]:shrink-0",
+    "[&_svg]:size-[var(--button-icon-size)] [&_svg]:shrink-0",
   ],
   {
     variants: {

@@ -14,8 +14,8 @@ The question → answer → because mapping **is** the product. Tokens follow fr
 
 ## The layers
 
-1. **Reasons**: business, people and work context, content and data, tasks and flows, human factors, outcomes, brand, voice and tone, team.
-2. **Scopes**: typography, color, spacing, shape, elevation, motion, iconography, theming, accessibility, naming.
+1. **Reasons**: business, people and work context, content and data, tasks and flows, human factors, outcomes, brand, use scenarios, team. Voice and tone is a scope, like typography or color.
+2. **Scopes**: typography, color, spacing, shape, elevation, motion, iconography, theming, accessibility, naming, voice and tone. Each answers the same five questions: roles, how many, how defined, values, lands in.
 3. **Tokens**: primitives are the options, semantics are the decisions, themes are brands and modes.
 4. **Component API**: one key per component element, variant and state. Every scheme fills every key.
 
