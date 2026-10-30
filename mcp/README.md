@@ -12,7 +12,7 @@ uv run open-ds-mcp --http
 Connect it to Claude Code from a checkout of this repository:
 
 ```bash
-claude mcp add open-ds -- uv run --directory /path/to/Open-DS open-ds-mcp
+claude mcp add --scope user open-ds -- uv run --directory /path/to/Open-DS open-ds-mcp
 ```
 
 Scheme tools:

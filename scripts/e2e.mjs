@@ -41,6 +41,13 @@ const must = (cond, msg) => {
 
 step("Tokens build (Style Dictionary)", () => {
   run("pnpm", ["--dir", "tokens", "build"]);
+  const index = JSON.parse(readFileSync(join(root, "tokens", "dist", "index.json"), "utf8"));
+  must(index.schemes.length === 5, `expected 5 built schemes, got ${index.schemes.length}`);
+  for (const s of index.schemes) {
+    for (const b of s.brands) {
+      for (const m of ["light", "dark"]) must(s.themes.some((t) => t.brand === b.id && t.mode === m), `${s.id} ${b.id} has no ${m}`);
+    }
+  }
   return "5 schemes, every brand in light and dark";
 });
 
@@ -59,10 +66,11 @@ step("CLI: deploy Dense data into a Vite app and build it", () => {
   for (const f of ["AGENTS.md", ".claude/skills/open-ds/SKILL.md", "src/styles/open-ds.css", "src/components/ui/button.tsx"]) {
     must(existsSync(join(app, f)), `init did not write ${f}`);
   }
+  run("pnpm", ["--dir", app, "typecheck"]);
   run("pnpm", ["--dir", app, "build"]);
   const css = readFileSync(join(app, "dist", "assets", run("ls", [join(app, "dist", "assets")]).split("\n").find((f) => f.endsWith(".css"))), "utf8");
   must(css.includes("--button-primary-background"), "built CSS has no component keys");
-  return "deployed files compile; the built CSS carries the scheme";
+  return "deployed files typecheck and build; the built CSS carries the scheme";
 });
 
 step("MCP over stdio: tools, schemes, when_to_use, deploy", () => {

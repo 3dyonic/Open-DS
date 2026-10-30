@@ -16,7 +16,7 @@ export default function Take() {
       <section className="grid gap-4">
         <h2 className="text-2xl font-extrabold">Connect your AI (MCP)</h2>
         <Command>
-          {"claude mcp add open-ds -- uv run --directory /path/to/Open-DS open-ds-mcp"}
+          {"claude mcp add --scope user open-ds -- uv run --directory /path/to/Open-DS open-ds-mcp"}
         </Command>
         <p>
           Then ask: “Which Open DS scheme fits an order management tool? Deploy it into this

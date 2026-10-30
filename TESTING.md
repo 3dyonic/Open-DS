@@ -23,6 +23,8 @@ cd Open-DS && git checkout RC1
 pnpm install && uv sync --all-packages --group dev
 ```
 
+pnpm may print a warning about ignored build scripts ("approve-builds"). It is safe to ignore; nothing in Open DS needs them.
+
 ## 3. Run everything at once
 
 ```bash
@@ -56,18 +58,18 @@ node cli/bin/open-ds.js when content-first "a number in a table"
 ```
 
 ```bash
-node cli/bin/open-ds.js init multi-brand --dir /tmp/my-app --brand birch
+node cli/bin/open-ds.js init multi-brand --dir /tmp/my-app --brand birch --yes
 ```
 
-Then open `/tmp/my-app/AGENTS.md` to see what an agent gets.
+Then open `/tmp/my-app/AGENTS.md` to see what an agent gets. `--yes` lets you run it again over the same folder.
 
 ### MCP server with Claude Code
 
 ```bash
-claude mcp add open-ds -- uv run --directory "$(pwd)" open-ds-mcp
+claude mcp add --scope user open-ds -- uv run --directory "$(pwd)" open-ds-mcp
 ```
 
-Open Claude Code in any empty project folder and ask:
+`--scope user` makes the server available in every folder, not only in Open-DS. Check it with `claude mcp list`. Then open Claude Code in any empty project folder and ask:
 
 - "Which Open DS scheme fits an order management tool, and why?"
 - "Deploy it into this project."
@@ -96,7 +98,7 @@ Open http://localhost:6006. Use the Scheme and Mode switches in the toolbar.
 pnpm --dir docs start
 ```
 
-Open http://localhost:3000 (stop the site first, or Docusaurus picks the next free port). `/llms.txt` is the index for agents.
+Open http://localhost:3000. If the site is still running on that port, Docusaurus asks whether to use another port: answer y. `/llms.txt` is the index for agents.
 
 ### The deployed app
 
