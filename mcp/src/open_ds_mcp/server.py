@@ -259,6 +259,10 @@ def deploy(
         str | None,
         Field(description="Brand id for a multi-brand scheme (aster, birch or coral). Leave empty otherwise."),
     ] = None,
+    overwrite: Annotated[
+        bool,
+        Field(description="Set true to replace the files of a project that already has a scheme."),
+    ] = False,
 ) -> dict:
     """Deploy a scheme into a project by running the open-ds CLI.
 
@@ -269,6 +273,8 @@ def deploy(
     args = ["init", scheme_id, "--dir", project_dir]
     if brand:
         args += ["--brand", brand]
+    if overwrite:
+        args.append("--yes")
     record = sch.run_cli(*args)
     return {
         **record,

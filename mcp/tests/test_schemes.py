@@ -98,3 +98,10 @@ def test_client_can_deploy(tmp_path: Path) -> None:
     payload = asyncio.run(run())
     assert payload["scheme"] == "dense-data"
     assert (tmp_path / "src" / "styles" / "open-ds.css").exists()
+
+
+def test_deploy_refuses_to_overwrite_unless_asked(tmp_path: Path) -> None:
+    deploy("dense-data", str(tmp_path))
+    with pytest.raises(ValueError, match="--yes to overwrite"):
+        deploy("dense-data", str(tmp_path))
+    assert deploy("content-first", str(tmp_path), overwrite=True)["scheme"] == "content-first"

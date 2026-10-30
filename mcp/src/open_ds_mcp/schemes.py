@@ -63,5 +63,9 @@ def run_cli(*args: str) -> dict:
         check=False,
     )
     if result.returncode != 0:
-        raise ValueError(result.stdout.strip() or result.stderr.strip())
+        try:
+            message = json.loads(result.stdout)["error"]
+        except (ValueError, KeyError):
+            message = result.stdout.strip() or result.stderr.strip()
+        raise ValueError(message)
     return json.loads(result.stdout)
