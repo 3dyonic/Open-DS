@@ -1,0 +1,111 @@
+# Test Open DS locally
+
+This guide takes you from a clean checkout to every part running on your machine: the CLI, the MCP server with your AI, the site, Storybook and the docs.
+
+## 1. What you need
+
+- Node.js 22 or later
+- pnpm 10 (`corepack enable` gives it to you)
+- uv (Python tool): https://docs.astral.sh/uv/
+- Claude Code, to try the MCP server with an AI
+
+## 2. Get the code
+
+```bash
+git clone https://github.com/3dyonic/Open-DS.git
+```
+
+```bash
+cd Open-DS && git checkout RC1
+```
+
+```bash
+pnpm install && uv sync --all-packages --group dev
+```
+
+## 3. Run everything at once
+
+```bash
+pnpm e2e
+```
+
+It builds the tokens, uses the CLI, deploys Dense data into a real Vite app and builds that app, deploys Multi-brand through the MCP server over stdio, then builds the site, Storybook and the docs. Each step prints ✓ or ✗. `pnpm e2e:quick` skips the three builds.
+
+To see every layer checked against your instructions and the ticket specs:
+
+```bash
+pnpm harness:full
+```
+
+The report is in `harness/report.md`.
+
+## 4. Try each part by hand
+
+### CLI
+
+```bash
+node cli/bin/open-ds.js list
+```
+
+```bash
+node cli/bin/open-ds.js why dense-data typography.q3
+```
+
+```bash
+node cli/bin/open-ds.js when content-first "a number in a table"
+```
+
+```bash
+node cli/bin/open-ds.js init multi-brand --dir /tmp/my-app --brand birch
+```
+
+Then open `/tmp/my-app/AGENTS.md` to see what an agent gets.
+
+### MCP server with Claude Code
+
+```bash
+claude mcp add open-ds -- uv run --directory "$(pwd)" open-ds-mcp
+```
+
+Open Claude Code in any empty project folder and ask:
+
+- "Which Open DS scheme fits an order management tool, and why?"
+- "Deploy it into this project."
+- "In this scheme, what do I use for a number in a table?"
+- "Why does this scheme set line height that way?"
+
+### Website
+
+```bash
+pnpm --dir site dev
+```
+
+Open http://localhost:3000. Start at a scheme page, for example Multi-brand, and switch the brand and the mode.
+
+### Storybook
+
+```bash
+pnpm --dir storybook dev
+```
+
+Open http://localhost:6006. Use the Scheme and Mode switches in the toolbar.
+
+### Docs
+
+```bash
+pnpm --dir docs start
+```
+
+Open http://localhost:3000 (stop the site first, or Docusaurus picks the next free port). `/llms.txt` is the index for agents.
+
+### The deployed app
+
+```bash
+pnpm --dir e2e/app dev
+```
+
+After `pnpm e2e`, this app runs with the Dense data scheme that the CLI deployed into it.
+
+## 5. What is still a draft
+
+All answers in the five schemes are drafts until you curate them. Nothing is published: no npm package and no public site.

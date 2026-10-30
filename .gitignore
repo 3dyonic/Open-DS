@@ -24,3 +24,12 @@ cli/assets/
 storybook/storybook-static/
 docs/build/
 docs/.docusaurus/
+# Written by open-ds init during the end-to-end run
+e2e/app/src/components/
+e2e/app/src/lib/
+e2e/app/src/styles/
+e2e/app/AGENTS.md
+e2e/app/open-ds.json
+e2e/app/.open-ds/
+e2e/app/.claude/
+e2e/app/dist/
