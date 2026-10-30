@@ -19,7 +19,7 @@ export const buttonVariants = cva(
     "h-[var(--button-height)] px-[var(--button-padding-x)] rounded-[var(--button-radius)]",
     "text-[length:var(--button-font-size)] [font-weight:var(--button-font-weight)] [font-family:var(--type-label-font-family)]",
     "transition-colors duration-[var(--transition-duration)] ease-[var(--transition-easing)]",
-    "outline-none focus-visible:ring-[length:var(--border-width-focus)] focus-visible:ring-[color:var(--button-focus-ring)] focus-visible:ring-offset-2",
+    "outline-none focus-visible:ring-[length:var(--border-width-focus)] focus-visible:ring-[color:var(--button-focus-ring)] focus-visible:ring-offset-2 focus-visible:ring-offset-[color:var(--color-surface-canvas)]",
     "disabled:pointer-events-none disabled:opacity-[var(--opacity-disabled)]",
     "[&_svg]:size-[var(--size-icon)] [&_svg]:shrink-0",
   ],

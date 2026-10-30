@@ -81,7 +81,11 @@ export function buildRegistry() {
     const built = {
       $schema: "https://ui.shadcn.com/schema/registry-item.json",
       ...item,
-      files: item.files?.map((f) => ({ ...f, content: read(join(here, f.path)) })),
+      // shadcn rewrites @/ imports to the project's aliases, so components find lib/utils.
+      files: item.files?.map((f) => ({
+        ...f,
+        content: read(join(here, f.path)).replace(`from "../lib/utils"`, `from "@/lib/utils"`),
+      })),
     };
     writeFileSync(join(here, "r", `${item.name}.json`), JSON.stringify(built, null, 2) + "\n");
   }
