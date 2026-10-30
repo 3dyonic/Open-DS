@@ -7,7 +7,7 @@ import { renderToStaticMarkup } from "react-dom/server";
 import * as UI from "../src/index";
 
 const here = join(import.meta.dirname, "..");
-const files: string[] = readdirSync(join(here, "src", "components")).filter((f) => f.endsWith(".tsx"));
+const files: string[] = readdirSync(join(here, "src", "components")).filter((f: string) => f.endsWith(".tsx"));
 const keys = JSON.parse(readFileSync(join(here, "..", "schemes", "grammar.json"), "utf8")).component_keys.map(
   (k: { id: string }) => `--${k.id.replaceAll("/", "-")}`,
 );
