@@ -1,4 +1,4 @@
-.PHONY: install install-pip test lint site-test site-build cli-test
+.PHONY: install install-pip test lint site-test site-build cli-test harness harness-full
 
 install:
 	uv sync --frozen --all-packages --group dev
@@ -21,3 +21,9 @@ site-build:
 
 cli-test:
 	pnpm --dir cli test
+
+harness:
+	node harness/run.mjs
+
+harness-full:
+	node harness/run.mjs --full

@@ -1,0 +1,24 @@
+{
+  "name": "open-ds-harness",
+  "version": "0.1.0",
+  "private": true,
+  "description": "Definition-of-done harness. Checks every layer against Yonatan's instructions and the ticket specs.",
+  "license": "MIT",
+  "type": "module",
+  "engines": {
+    "node": ">=22"
+  },
+  "scripts": {
+    "check": "node run.mjs",
+    "full": "node run.mjs --full",
+    "test": "node --test",
+    "lint": "prettier --check ."
+  },
+  "dependencies": {
+    "ajv": "^8.17.1",
+    "ajv-formats": "^3.0.1"
+  },
+  "devDependencies": {
+    "prettier": "^3.6.2"
+  }
+}
