@@ -7,7 +7,7 @@
       "id": "I01",
       "title": "Website as a Next.js, React and Tailwind single-page app",
       "words": "buit in with Tailwind and React Next as a SPA",
-      "checks": ["site-stack", "site-static-export", "site-build"]
+      "checks": ["site-stack", "site-static-export", "site-build", "site-design-fidelity"]
     },
     {
       "id": "I02",
@@ -129,6 +129,12 @@
       "title": "Every scope behaves the same, with the same methods",
       "words": "voice and tone shoudbe like any other scope , all scope should behave the same and wrok the same and be consited of simiar methods",
       "checks": ["scopes-uniform-template"]
+    },
+    {
+      "id": "I21",
+      "title": "The website resembles the Figma design",
+      "words": "deliverable does not resemble the design, at alll, regarding the website ... so harness did not work and we failed. please try again.",
+      "checks": ["site-routes", "site-design-fidelity"]
     }
   ]
 }
