@@ -1,0 +1,30 @@
+# Open DS
+
+> Open DS is a finite grammar for design systems. A scheme is one full set of answers to it, each with a reason. A scheme deploys as a full design system: Style Dictionary tokens (light and dark), shadcn-style components on component keys, Storybook, docs, AGENTS.md, an agent skill and an MCP server.
+
+Pick a scheme by its use_when and avoid_when. Deploy it with the CLI (`open-ds init <scheme>`) or the MCP tool `deploy`. While building UI, follow the scheme's usage rules (`when_to_use`) and voice; explain decisions with `why`.
+
+## Schemes
+
+- [Accessible first](https://github.com/3dyonic/Open-DS/blob/RC1/schemes/accessible-first.json) (accessible-first): Large text, large targets and AAA contrast, so everyone can finish the task. Use when: Public services, health, government and any product that must work for everyone.
+- [Brand expressive](https://github.com/3dyonic/Open-DS/blob/RC1/schemes/brand-expressive.json) (brand-expressive): Big display type, vivid color and springy motion, for launches that must be remembered. Use when: Launch sites, campaigns, marketing pages and consumer brands that lead with personality.
+- [Content first](https://github.com/3dyonic/Open-DS/blob/RC1/schemes/content-first.json) (content-first): Large, calm type and generous space, for people who come to read. Use when: Publications, documentation, blogs, guides and help centers.
+- [Dense data](https://github.com/3dyonic/Open-DS/blob/RC1/schemes/dense-data.json) (dense-data): Compact, exact and quiet, for experts who scan and compare numbers all day. Use when: Operations tools, admin panels, finance and analytics: many records, daily expert users, mouse and keyboard.
+- [Multi-brand](https://github.com/3dyonic/Open-DS/blob/RC1/schemes/multi-brand.json) (multi-brand): One shared system with three brands as themes. Components never change; brand primitives do. Use when: Companies with several brands or white-label products on one component library.
+
+## Grammar and formats
+
+- [Grammar](https://github.com/3dyonic/Open-DS/blob/RC1/schemes/grammar.json): 9 reason groups, 10 scope groups, 48 questions, 25 situations, 62 component keys
+- [Scheme JSON Schema](https://github.com/3dyonic/Open-DS/blob/RC1/schema/scheme.schema.json): the scheme format, every property described
+- [Grammar JSON Schema](https://github.com/3dyonic/Open-DS/blob/RC1/schema/grammar.schema.json): the grammar format
+
+## Tools
+
+- [CLI](https://github.com/3dyonic/Open-DS/blob/RC1/cli/README.md): list, show, why, when, init, add
+- [MCP server](https://github.com/3dyonic/Open-DS/blob/RC1/mcp/README.md): list_schemes, get_scheme, get_answer, why, when_to_use, deploy
+- [Agent skill](https://github.com/3dyonic/Open-DS/blob/RC1/skills/open-ds/SKILL.md): how an agent picks, deploys and follows a scheme
+- [AGENTS.md](https://github.com/3dyonic/Open-DS/blob/RC1/AGENTS.md): how to work on this repository
+
+## Optional
+
+- [llms-full.txt](https://github.com/3dyonic/Open-DS/blob/RC1/llms-full.txt): every scheme in one file: answers with reasons, usage rules, voice

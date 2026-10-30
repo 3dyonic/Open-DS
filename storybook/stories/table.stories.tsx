@@ -4,9 +4,9 @@ import { MoreHorizontal } from "lucide-react";
 import { Usage } from "../src/usage";
 
 const rows = [
-  { id: "1042", customer: "Northwind", total: "1,240.00", status: ["warning", "Late"] },
-  { id: "1043", customer: "Fabrikam", total: "860.50", status: ["success", "Paid"] },
-  { id: "1044", customer: "Contoso", total: "3,015.75", status: ["danger", "Failed"] },
+  { id: "1042", customer: "North depot", total: "1,240.00", status: ["warning", "Late"] },
+  { id: "1043", customer: "East depot", total: "860.50", status: ["success", "Paid"] },
+  { id: "1044", customer: "City shop", total: "3,015.75", status: ["danger", "Failed"] },
 ] as const;
 
 const meta = { title: "Components/Table", component: Table } satisfies Meta<typeof Table>;

@@ -1,0 +1,7 @@
+build
+.docusaurus
+docs/contributing/research
+docs/contributing/copy
+docs/grammar
+docs/schemes
+static

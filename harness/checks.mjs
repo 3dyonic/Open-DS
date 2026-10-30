@@ -301,6 +301,20 @@ export const CHECKS = {
     },
   },
 
+  "content-no-real-names": {
+    requires: [],
+    run: (c) => {
+      const NAMES = /\b(Northwind|Contoso|Fabrikam|Adventure Works|Initech|Globex|Acme Corp)\b/;
+      const roots = ["schemes", "site/src", "storybook/stories", "docs/docs", "ui/src", "skills", "cli/src"];
+      const hits = roots
+        .flatMap((r) => c.walk(r, (f) => /\.(json|tsx?|mdx?|mjs)$/.test(f)))
+        .filter((f) => NAMES.test(c.read(f)));
+      return hits.length
+        ? bad(`well-known sample names in: ${hits.join(", ")}`)
+        : ok("no well-known sample company names");
+    },
+  },
+
   // JSON standards
   "json-schemas-2020-12": {
     requires: ["schema/scheme.schema.json"],
@@ -381,6 +395,8 @@ export const CHECKS = {
       const llms = c.read("llms.txt");
       if (!llms.startsWith("# ")) return bad("llms.txt must start with an H1 (llmstxt.org format)");
       const stale = SCHEMES.filter((s) => !llms.includes(s));
+      const fresh = c.sh("node", ["scripts/build-llms.mjs", "--check"]);
+      if (fresh.code !== 0) return bad(fresh.out);
       return stale.length
         ? bad(`llms.txt does not list: ${stale.join(", ")}`)
         : ok("llms.txt, llms-full.txt and AGENTS.md present and current");
