@@ -1,12 +1,25 @@
 // Every story renders inside a scheme, a brand and a mode chosen in the toolbar.
 // The switches set data-scheme, data-brand and the dark class; the tokens do the rest.
 import type { Decorator, Preview } from "@storybook/react-vite";
+import { useEffect } from "react";
 import { SchemeContext, THEMES } from "../src/scheme-context";
 import "../src/storybook.css";
 
+const KNOWN = new Set(THEMES.map((t) => t.value.split("--")[0]));
+
 const withScheme: Decorator = (Story, context) => {
-  const [scheme, brand] = String(context.globals.scheme ?? "dense-data").split("--");
+  const [chosen, brand] = String(context.globals.scheme ?? "dense-data").split("--");
+  const scheme = KNOWN.has(chosen) ? chosen : "dense-data";
   const mode = context.globals.mode === "dark" ? "dark" : "light";
+  // Dialogs, menus, selects and tooltips render in a portal on <body>, outside the wrapper.
+  // Setting the scheme on <html> as well gives them the same tokens.
+  useEffect(() => {
+    const html = document.documentElement;
+    html.dataset.scheme = scheme;
+    if (brand) html.dataset.brand = brand;
+    else delete html.dataset.brand;
+    html.classList.toggle("dark", mode === "dark");
+  }, [scheme, brand, mode]);
   return (
     <SchemeContext.Provider value={{ scheme, brand, mode }}>
       <div

@@ -9,9 +9,9 @@ type Story = StoryObj<typeof meta>;
 export const Default: Story = {
   render: () => (
     <div className="grid max-w-sm gap-[var(--space-gap-tight)]">
-      <Label>Status</Label>
+      <Label htmlFor="status">Status</Label>
       <Select defaultValue="late">
-        <SelectTrigger aria-label="Status">
+        <SelectTrigger id="status">
           <SelectValue placeholder="Pick a status" />
         </SelectTrigger>
         <SelectContent>

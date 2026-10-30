@@ -19,7 +19,7 @@ const TITLES = Object.fromEntries(grammar.situations.map((s) => [s.id, s.title])
 
 export function Usage({ situations }: { situations: string[] }) {
   const { scheme } = useScheme();
-  const s = SCHEMES[scheme];
+  const s = SCHEMES[scheme] ?? SCHEMES["dense-data"];
   const rules = s.usage.filter((u) => situations.includes(u.situation));
   if (!rules.length) return null;
   return (

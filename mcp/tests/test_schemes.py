@@ -110,3 +110,21 @@ def test_deploy_refuses_to_overwrite_unless_asked(tmp_path: Path) -> None:
 def test_deploy_needs_an_absolute_path() -> None:
     with pytest.raises(ValueError, match="absolute path"):
         deploy("dense-data", "relative/folder")
+
+
+def test_run_cli_reports_a_timeout_and_bad_output(monkeypatch: pytest.MonkeyPatch) -> None:
+    def slow(*args: object, **kwargs: object) -> None:
+        raise subprocess.TimeoutExpired(cmd="open-ds", timeout=120)
+
+    monkeypatch.setattr(sch.subprocess, "run", slow)
+    with pytest.raises(RuntimeError, match="did not finish"):
+        sch.run_cli("list")
+
+    class Done:
+        returncode = 0
+        stdout = "not json"
+        stderr = ""
+
+    monkeypatch.setattr(sch.subprocess, "run", lambda *a, **k: Done())
+    with pytest.raises(RuntimeError, match="not JSON"):
+        sch.run_cli("list")
