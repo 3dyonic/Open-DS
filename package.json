@@ -19,7 +19,7 @@
   "scripts": {
     "lint": "pnpm --dir site lint",
     "typecheck": "pnpm --dir site typecheck",
-    "test": "pnpm --dir site test && pnpm --dir cli test && pnpm --dir harness test",
+    "test": "pnpm --dir tokens build && pnpm --dir site test && pnpm --dir cli test && pnpm --dir harness test",
     "build": "pnpm --dir site build",
     "harness": "node harness/run.mjs",
     "harness:full": "node harness/run.mjs --full",
