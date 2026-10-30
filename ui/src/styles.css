@@ -1,0 +1,27 @@
+/* Base styles for an Open DS app. Import after Tailwind and after a scheme's tokens.css and theme.css. */
+@layer base {
+  html {
+    background: var(--color-surface-canvas);
+    color: var(--color-text-primary);
+    font-family: var(--type-body-font-family);
+    font-size: 100%;
+  }
+  body {
+    font-size: var(--type-body-font-size);
+    line-height: var(--type-body-line-height);
+  }
+  a {
+    color: var(--color-text-link);
+  }
+  :focus-visible {
+    outline-color: var(--color-border-focus);
+  }
+  @media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+      transition-duration: 0.01ms !important;
+      animation-duration: 0.01ms !important;
+    }
+  }
+}
