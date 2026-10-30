@@ -2,6 +2,7 @@
 // questions and the same parts for every scope, voice included.
 import Link from "next/link";
 import type { ScopePage } from "@/lib/scope";
+import { Legend, Swatch } from "./chrome";
 
 const cssVar = (path: string) => `var(--${path.replaceAll(".", "-")})`;
 const isColor = (v: string) => /^#[0-9a-f]{3,8}$/i.test(v) || v.startsWith("rgb");
@@ -97,9 +98,12 @@ export function ScopeView({ p }: { p: ScopePage }) {
           <span className="text-[22px] font-extrabold">{r.count}</span>
         </div>
       ))}
-      <p className="font-mono text-[12px] text-muted">
-        Lit cells are this scheme’s answer. Grey cells are what other schemes may choose.
-      </p>
+      <Legend
+        items={[
+          [Swatch.countOn, `${p.scheme.name}’s answer`],
+          [Swatch.countOff, "More that other schemes use"],
+        ]}
+      />
     </Panel>,
     // How defined
     <Panel key="definition">

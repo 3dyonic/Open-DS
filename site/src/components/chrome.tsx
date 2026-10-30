@@ -100,3 +100,28 @@ export function Label({ children, size = 11 }: { children: React.ReactNode; size
     </p>
   );
 }
+
+/** Swatches for legends. Each matches what it explains on the page. */
+export const Swatch = {
+  // A reason card that matters most: dark border, orange square.
+  reasonTop: (
+    <span className="flex size-[18px] items-center justify-center rounded-[3px] border border-ink bg-white">
+      <span className="size-[8px] bg-accent" />
+    </span>
+  ),
+  // Any other reason card: light border, grey square.
+  reasonOther: (
+    <span className="flex size-[18px] items-center justify-center rounded-[3px] border border-line bg-white">
+      <span className="size-[8px] bg-tag" />
+    </span>
+  ),
+  // An answer cell only this scheme gives.
+  answerOwn: <span className="block size-[18px] rounded-[3px] border border-accent bg-accent" />,
+  // An answer cell other schemes share.
+  answerShared: <span className="block size-[18px] rounded-[3px] border border-line bg-paper" />,
+  // A count cell: this scheme, or room other schemes use.
+  countOn: <span className="block size-[18px] bg-accent" />,
+  countOff: <span className="block size-[18px] bg-tag" />,
+};
+
+export { Legend } from "./legend";

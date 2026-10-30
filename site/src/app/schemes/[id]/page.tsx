@@ -2,7 +2,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { Applied } from "@/components/applied";
-import { Eyebrow } from "@/components/chrome";
+import { Eyebrow, Legend, Swatch } from "@/components/chrome";
 import { ScopeMini } from "@/components/scope-mini";
 import { cardMark, REASON_LABEL } from "@/lib/home";
 import { ownedTokens } from "@/lib/scope";
@@ -103,14 +103,15 @@ export default async function SchemePage({ params }: { params: Promise<{ id: str
 
       <section className="flex flex-col gap-5" aria-labelledby="reasons">
         <Eyebrow>Why this scheme exists</Eyebrow>
-        <div className="flex flex-wrap items-end gap-4">
-          <h2 id="reasons" className="text-[36px] font-extrabold">
-            Its answers to the reasons
-          </h2>
-          <p className="flex items-center gap-2 pb-1 font-mono text-[12px] text-muted">
-            <span aria-hidden className="size-[10px] bg-accent" /> Lit = weighs most in this scheme
-          </p>
-        </div>
+        <h2 id="reasons" className="text-[36px] font-extrabold">
+          Its answers to the reasons
+        </h2>
+        <Legend
+          items={[
+            [Swatch.reasonTop, "Matters most for this scheme"],
+            [Swatch.reasonOther, "Other reasons"],
+          ]}
+        />
         <ul className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
           {g.reasons.map((r) => (
             <li

@@ -3,7 +3,7 @@
 // questions, and a live specimen built with that scheme's tokens.
 import { Button } from "@open-ds/ui";
 import { useState } from "react";
-import { Label } from "./chrome";
+import { Label, Legend, Swatch } from "./chrome";
 import type { ProofData } from "@/lib/home";
 
 function Square({ lit, size = 10 }: { lit: boolean; size?: 8 | 10 }) {
@@ -110,12 +110,13 @@ export function Proof({ data }: { data: ProofData[] }) {
       </div>
 
       <div className="flex flex-col gap-[14px]">
-        <div className="flex flex-wrap items-center gap-4">
-          <Step n={1} title="Reasons" note="why this scheme exists" />
-          <p className="ml-auto flex items-center gap-2 font-mono text-[12px] text-muted">
-            <Square lit /> Lit = weighs most in this scheme
-          </p>
-        </div>
+        <Step n={1} title="Reasons" note="why this scheme exists" />
+        <Legend
+          items={[
+            [Swatch.reasonTop, "Matters most for this scheme"],
+            [Swatch.reasonOther, "Other reasons"],
+          ]}
+        />
         <ul className="grid grid-cols-1 gap-3 sm:grid-cols-2 lg:grid-cols-4">
           {p.reasons.map((r) => (
             <li
@@ -238,13 +239,12 @@ export function Proof({ data }: { data: ProofData[] }) {
               </tbody>
             </table>
           </div>
-          <p className="flex items-start gap-2 pt-1 font-mono text-[12px] text-muted">
-            <span className="mt-[3px]">
-              <Square lit />
-            </span>
-            Lit = where {p.name} answers differently from the other schemes. That is what makes it
-            this design system.
-          </p>
+          <Legend
+            items={[
+              [Swatch.answerOwn, `Only ${p.name} answers this way`],
+              [Swatch.answerShared, "Other schemes give the same answer"],
+            ]}
+          />
         </div>
         <Specimen p={p} />
       </div>
