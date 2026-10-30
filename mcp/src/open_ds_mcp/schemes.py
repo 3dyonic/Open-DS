@@ -55,17 +55,23 @@ def run_cli(*args: str) -> dict:
     node = shutil.which("node")
     if not node:
         raise RuntimeError("Node.js 22 or later is needed to run the open-ds CLI.")
-    result = subprocess.run(
-        [node, str(cli_bin()), *args, "--json"],
-        capture_output=True,
-        text=True,
-        timeout=120,
-        check=False,
-    )
+    try:
+        result = subprocess.run(
+            [node, str(cli_bin()), *args, "--json"],
+            capture_output=True,
+            text=True,
+            timeout=120,
+            check=False,
+        )
+    except subprocess.TimeoutExpired as error:
+        raise RuntimeError("The open-ds CLI did not finish within 120 seconds.") from error
     if result.returncode != 0:
         try:
             message = json.loads(result.stdout)["error"]
         except (ValueError, KeyError):
             message = result.stdout.strip() or result.stderr.strip()
         raise ValueError(message)
-    return json.loads(result.stdout)
+    try:
+        return json.loads(result.stdout)
+    except ValueError as error:
+        raise RuntimeError(f"The open-ds CLI returned output that is not JSON: {result.stdout[:200]}") from error
