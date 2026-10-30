@@ -1,0 +1,122 @@
+{
+  "$schema": "./harness.schema.json",
+  "description": "Yonatan's instructions for the MVP, in his words, each mapped to the checks that prove it. The harness runs every check and reports pass, fail, not built, skipped or manual.",
+  "source": "Chat with Yonatan, 2026-10-30. Recorded in Orchestra (582fc1fe) and Jira OD-115.",
+  "items": [
+    {
+      "id": "I01",
+      "title": "Website as a Next.js, React and Tailwind single-page app",
+      "words": "buit in with Tailwind and React Next as a SPA",
+      "checks": ["site-stack", "site-static-export", "site-build"]
+    },
+    {
+      "id": "I02",
+      "title": "CLI tool package",
+      "words": "the CLI tool package",
+      "checks": ["cli-package", "cli-commands", "cli-init-temp"]
+    },
+    {
+      "id": "I03",
+      "title": "Style Dictionary builds the tokens",
+      "words": "including style dictionary",
+      "checks": ["tokens-style-dictionary", "tokens-built-all-schemes", "tokens-light-dark"]
+    },
+    {
+      "id": "I04",
+      "title": "Storybook",
+      "words": "storybook",
+      "checks": ["storybook-stories", "storybook-build"]
+    },
+    {
+      "id": "I05",
+      "title": "shadcn components with scheme theme overrides as the component layer",
+      "words": "using shadeCDN with theme overrides as our component later",
+      "checks": ["ui-components", "ui-component-keys-only", "ui-registry", "tokens-shadcn-mapping"]
+    },
+    {
+      "id": "I06",
+      "title": "MCP with FastMCP",
+      "words": "i forgot the MCP, include it ... use Fast MCP and Python or Node / TS what you prefer",
+      "checks": ["mcp-fastmcp", "mcp-tools", "mcp-deploy-uses-cli", "mcp-tests"]
+    },
+    {
+      "id": "I07",
+      "title": "Docusaurus docs in docs/ as a product, business and brand artifact",
+      "words": "include docusaourus for documentation aside to story book as a porduct , buissnes , brand level artifact ... lets call the folder docs",
+      "checks": ["docs-docusaurus", "docs-sections", "docs-build"]
+    },
+    {
+      "id": "I08",
+      "title": "Use the draft questions, for all 5 schemes",
+      "words": "go with your draft questions",
+      "checks": ["schemes-five", "schemes-answer-every-question", "schemes-usage-rules"]
+    },
+    {
+      "id": "I09",
+      "title": "Mind the folder structure",
+      "words": "mind folder structure",
+      "checks": ["structure-layout"]
+    },
+    {
+      "id": "I10",
+      "title": "JSON standards",
+      "words": "json standards",
+      "checks": ["json-schemas-2020-12", "json-files-validate"]
+    },
+    {
+      "id": "I11",
+      "title": "Our code standards",
+      "words": "use our code standards",
+      "checks": ["standards-python", "standards-node-tests", "standards-site-lint"]
+    },
+    {
+      "id": "I12",
+      "title": "RC1 branch from master, features branch from it and merge into it",
+      "words": "checkout out a new MVP branch from master call it RC1, checkout each feature you do from it and merge to it",
+      "checks": ["git-rc1-from-master", "git-feature-merges"]
+    },
+    {
+      "id": "I13",
+      "title": "PR and merge with a sub-agent",
+      "words": "Pr and merge yourself using a sub agent",
+      "checks": ["evidence-subagent-merges"]
+    },
+    {
+      "id": "I14",
+      "title": "Use Orchestra skills",
+      "words": "Use ORchestra SKills",
+      "checks": ["evidence-orchestra-skills"]
+    },
+    {
+      "id": "I15",
+      "title": "Update Jira and Orchestra as you go, with decisions",
+      "words": "update Jira and Orchestra as you go ... document decisions in Jira and Orchestra",
+      "checks": ["evidence-jira-orchestra"]
+    },
+    {
+      "id": "I16",
+      "title": "LLM and agent context on every suitable object, tested as we go",
+      "words": "add context to any suiteablle object in docs or Json's so LLM's will be able to understand our solutions in an optimized way and use it to their needs with ease",
+      "checks": [
+        "llm-schema-descriptions",
+        "llm-scheme-descriptions",
+        "llm-files",
+        "llm-skill",
+        "llm-mcp-docstrings",
+        "llm-docs-frontmatter"
+      ]
+    },
+    {
+      "id": "I17",
+      "title": "Testable locally end to end, including MCP and CLI",
+      "words": "Ping me when i can test it in a local env. end to end (including MCP and CLI)",
+      "checks": ["e2e-guide", "e2e-run"]
+    },
+    {
+      "id": "I18",
+      "title": "A harness that checks the DoD against the instructions and the specs",
+      "words": "Build an Harness layer and testing suite to confirm you DoD aligns with my instructions ... Alos make the harness work with the specs you defined as well",
+      "checks": ["harness-covers-instructions", "harness-covers-specs"]
+    }
+  ]
+}

@@ -1,0 +1,103 @@
+{
+  "$schema": "./harness.schema.json",
+  "description": "Claude's specs for the MVP: one item per Jira ticket, each listing what it delivers (In) and the checks that prove it. The harness runs these next to Yonatan's instructions.",
+  "source": "Jira OD-109 to OD-121, created 2026-10-30.",
+  "items": [
+    {
+      "id": "OD-115",
+      "title": "Harness: DoD test suite for every layer",
+      "in": ["instructions.json", "specs.json", "runner and report", "harness tests"],
+      "checks": ["harness-covers-instructions", "harness-covers-specs", "harness-self-test"]
+    },
+    {
+      "id": "OD-109",
+      "title": "All 5 schemes as data, with because links",
+      "in": [
+        "schema/scheme.schema.json and schema/grammar.schema.json",
+        "schemes/grammar.json: reasons, scopes, questions, situations",
+        "one file per scheme: answers with why and because, usage rules, DTCG tokens"
+      ],
+      "checks": [
+        "schemes-five",
+        "schemes-answer-every-question",
+        "schemes-because-resolves",
+        "schemes-usage-rules",
+        "json-files-validate"
+      ]
+    },
+    {
+      "id": "OD-116",
+      "title": "LLM and agent context layer",
+      "in": [
+        "descriptions on every scheme object",
+        "title, description and examples in every schema property",
+        "llms.txt, llms-full.txt, AGENTS.md",
+        "agent skill",
+        "MCP docstrings",
+        "docs front matter"
+      ],
+      "checks": [
+        "llm-schema-descriptions",
+        "llm-scheme-descriptions",
+        "llm-files",
+        "llm-skill",
+        "llm-mcp-docstrings",
+        "llm-docs-frontmatter"
+      ]
+    },
+    {
+      "id": "OD-117",
+      "title": "Tokens with Style Dictionary",
+      "in": ["tokens/ package", "CSS light and dark per scheme", "shadcn variable mapping", "DTCG JSON"],
+      "checks": [
+        "tokens-style-dictionary",
+        "tokens-built-all-schemes",
+        "tokens-light-dark",
+        "tokens-shadcn-mapping",
+        "tokens-component-keys-resolve"
+      ]
+    },
+    {
+      "id": "OD-118",
+      "title": "Components on the component API, themed per scheme",
+      "in": ["ui/ components", "component keys only", "shadcn registry"],
+      "checks": ["ui-components", "ui-component-keys-only", "ui-registry"]
+    },
+    {
+      "id": "OD-111",
+      "title": "CLI deploys any scheme",
+      "in": ["list, show, why, when, init, add", "init writes tokens, components, AGENTS.md and the skill"],
+      "checks": ["cli-package", "cli-commands", "cli-init-temp"]
+    },
+    {
+      "id": "OD-112",
+      "title": "Local MCP",
+      "in": ["FastMCP server", "list, get answer, why, when to use, deploy", "deploy runs the CLI"],
+      "checks": ["mcp-fastmcp", "mcp-tools", "mcp-deploy-uses-cli", "mcp-tests"]
+    },
+    {
+      "id": "OD-119",
+      "title": "Storybook",
+      "in": ["a story per component", "scheme and mode switches"],
+      "checks": ["storybook-stories", "storybook-switches", "storybook-build"]
+    },
+    {
+      "id": "OD-110",
+      "title": "Website",
+      "in": ["Next.js static SPA", "home, schemes, scheme scopes, usage, take"],
+      "checks": ["site-stack", "site-static-export", "site-routes", "site-build"]
+    },
+    {
+      "id": "OD-120",
+      "title": "Docusaurus docs",
+      "in": ["docs/ site", "product, business, brand, grammar, schemes, CLI, MCP, agents, contributing"],
+      "checks": ["docs-docusaurus", "docs-sections", "llm-docs-frontmatter", "docs-build"]
+    },
+    {
+      "id": "OD-121",
+      "title": "Local end to end",
+      "in": ["TESTING.md", "pnpm e2e"],
+      "checks": ["e2e-guide", "e2e-run"]
+    }
+  ]
+}

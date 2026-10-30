@@ -17,3 +17,5 @@ coverage/
 .env.*
 open-ds.json
 .codex/
+harness/report.md
+harness/report.json

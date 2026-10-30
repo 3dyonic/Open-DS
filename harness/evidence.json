@@ -1,0 +1,4 @@
+{
+  "description": "Process evidence the harness reads: one entry per feature merged into RC1, with the PR, the sub-agent that reviewed and merged it, the Orchestra skills used, and the Jira and Orchestra updates.",
+  "merges": []
+}
