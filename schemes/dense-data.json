@@ -643,7 +643,7 @@
     },
     {
       "situation": "keyboard-focus",
-      "use": "button/focus-ring, 2px",
+      "use": "button/focus-ring at border-width.focus",
       "not": "Removing the outline",
       "why": "Keyboard users must always see where they are.",
       "because": [
@@ -855,6 +855,11 @@
         "0": {
           "$type": "dimension",
           "$value": "0rem"
+        },
+        "full": {
+          "$type": "dimension",
+          "$value": "9999px",
+          "$description": "Fully round."
         },
         "4": {
           "$type": "dimension",
@@ -1139,7 +1144,7 @@
           },
           "round": {
             "$type": "dimension",
-            "$value": "9999px",
+            "$value": "{radius.full}",
             "$description": "Fully round: avatars and dots."
           }
         },
@@ -1896,7 +1901,7 @@
           "$description": "Tooltip text."
         }
       },
-      "motion": {
+      "transition": {
         "duration": {
           "$value": "{motion.duration.feedback}",
           "$description": "Duration of feedback transitions."

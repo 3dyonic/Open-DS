@@ -1,0 +1,88 @@
+import assert from "node:assert/strict";
+import { readFileSync } from "node:fs";
+import { join } from "node:path";
+import { test } from "node:test";
+import { SHADCN } from "../build.mjs";
+
+const here = join(import.meta.dirname, "..");
+const root = join(here, "..");
+const read = (...p) => readFileSync(join(here, "dist", ...p), "utf8");
+const index = JSON.parse(read("index.json"));
+const keys = JSON.parse(readFileSync(join(root, "schemes", "grammar.json"), "utf8")).component_keys.map(
+  (k) => `--${k.id.replaceAll("/", "-")}:`,
+);
+
+test("all five schemes are built", () => {
+  assert.deepEqual(index.schemes.map((s) => s.id).sort(), [
+    "accessible-first",
+    "brand-expressive",
+    "content-first",
+    "dense-data",
+    "multi-brand",
+  ]);
+});
+
+test("every scheme ships light and dark for every brand", () => {
+  for (const s of index.schemes) {
+    for (const b of s.brands) {
+      for (const m of ["light", "dark"])
+        assert.ok(
+          s.themes.some((t) => t.brand === b.id && t.mode === m),
+          `${s.id} ${b.id} ${m}`,
+        );
+    }
+    const css = read(s.id, "tokens.css");
+    assert.match(css, /:root/);
+    assert.match(css, /\.dark/);
+  }
+});
+
+test("every theme block defines every component key", () => {
+  for (const s of index.schemes) {
+    const blocks = read(s.id, "tokens.css")
+      .split(/\n}\n/)
+      .filter((b) => b.includes("{"));
+    assert.equal(blocks.length, s.themes.length, `${s.id} has one block per theme`);
+    for (const block of blocks) for (const k of keys) assert.ok(block.includes(k), `${s.id} misses ${k}`);
+  }
+});
+
+test("theme.css maps every shadcn variable onto a semantic", () => {
+  for (const s of index.schemes) {
+    const css = read(s.id, "theme.css");
+    for (const [k, v] of Object.entries(SHADCN)) assert.ok(css.includes(`--${k}: var(--${v});`), `${s.id} ${k}`);
+    assert.match(css, /@theme inline/);
+  }
+});
+
+test("multi-brand is a real multi-brand setup", () => {
+  const s = index.schemes.find((x) => x.id === "multi-brand");
+  assert.deepEqual(
+    s.brands.map((b) => b.id),
+    ["aster", "birch", "coral"],
+  );
+  const css = read("multi-brand", "tokens.css");
+  for (const b of ["aster", "birch", "coral"]) {
+    assert.ok(css.includes(`[data-brand="${b}"]`), `${b} light selector`);
+    assert.ok(css.includes(`.dark[data-brand="${b}"]`), `${b} dark selector`);
+  }
+  const brandColor = (theme) => JSON.parse(read("multi-brand", `${theme}.tokens.json`)).color.brand["600"];
+  assert.notEqual(brandColor("aster-light"), brandColor("birch-light"));
+  assert.notEqual(brandColor("birch-light"), brandColor("coral-light"));
+});
+
+test("dark changes color decisions and keeps layout decisions", () => {
+  const light = JSON.parse(read("dense-data", "light.tokens.json"));
+  const dark = JSON.parse(read("dense-data", "dark.tokens.json"));
+  assert.notEqual(light.color.surface.canvas, dark.color.surface.canvas);
+  assert.equal(light.space.gap.default, dark.space.gap.default);
+  assert.equal(light.type.body["font-size"], dark.type.body["font-size"]);
+});
+
+test("scoped CSS is scoped to the scheme", () => {
+  for (const s of index.schemes) {
+    const css = read(s.id, "tokens.scoped.css");
+    assert.ok(css.includes(`[data-scheme="${s.id}"]`));
+    assert.ok(!/^:root/m.test(css), `${s.id} scoped css must not set :root`);
+  }
+});

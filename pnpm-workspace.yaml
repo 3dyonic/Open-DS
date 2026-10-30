@@ -2,3 +2,4 @@ packages:
   - site
   - cli
   - harness
+  - tokens
