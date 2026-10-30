@@ -22,7 +22,7 @@ Scheme tools:
 - `get_answer`: how a scheme answers one question, with why and the answers it follows from.
 - `why`: the full chain of reasons for a question, or a component key's value in every brand and mode.
 - `when_to_use`: what to use, what not to use, and why, for a situation id or plain words.
-- `deploy`: copies tokens, components, `AGENTS.md` and the agent skill into a project. Returns the next steps.
+- `deploy`: copies tokens, components, `AGENTS.md` and the agent skill into a project. It will not overwrite an existing scheme unless `overwrite` is true. Returns the next steps.
 
 Set `OPEN_DS_ROOT` to use another checkout, or `OPEN_DS_CLI` to use another CLI file.
 
