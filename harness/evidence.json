@@ -50,6 +50,16 @@
       "skills": ["build-brief", "pr-review-private-repo", "correctness-review", "scope-review", "test-integrity"],
       "jira": "OD-111 comment after merge",
       "orchestra": "8d5d4c1c"
+    },
+    {
+      "feature": "OD-112 MCP",
+      "pr": "https://github.com/3dyonic/Open-DS/pull/21",
+      "reviewed_sha": "b322783",
+      "sha": "7a04f47",
+      "merged_by_subagent": true,
+      "skills": ["build-brief", "pr-review-private-repo", "correctness-review", "scope-review", "test-integrity"],
+      "jira": "OD-112 comment after merge",
+      "orchestra": "see OD-112 note"
     }
   ]
 }

@@ -102,6 +102,11 @@ def test_client_can_deploy(tmp_path: Path) -> None:
 
 def test_deploy_refuses_to_overwrite_unless_asked(tmp_path: Path) -> None:
     deploy("dense-data", str(tmp_path))
-    with pytest.raises(ValueError, match="--yes to overwrite"):
+    with pytest.raises(ValueError, match="overwrite=true"):
         deploy("dense-data", str(tmp_path))
     assert deploy("content-first", str(tmp_path), overwrite=True)["scheme"] == "content-first"
+
+
+def test_deploy_needs_an_absolute_path() -> None:
+    with pytest.raises(ValueError, match="absolute path"):
+        deploy("dense-data", "relative/folder")

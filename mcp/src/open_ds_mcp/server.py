@@ -11,6 +11,7 @@ check_recipe. Their option text is copied from the packs.
 from __future__ import annotations
 
 import copy
+from pathlib import Path
 from typing import Annotated, Literal
 
 from fastmcp import FastMCP
@@ -270,12 +271,19 @@ def deploy(
     src/components/ui, AGENTS.md, the agent skill and open-ds.json. Returns the
     record and the next steps (packages to install, the CSS import).
     """
+    if not Path(project_dir).is_absolute():
+        raise ValueError(f"project_dir must be an absolute path. Got '{project_dir}'.")
     args = ["init", scheme_id, "--dir", project_dir]
     if brand:
         args += ["--brand", brand]
     if overwrite:
         args.append("--yes")
-    record = sch.run_cli(*args)
+    try:
+        record = sch.run_cli(*args)
+    except ValueError as error:
+        raise ValueError(
+            str(error).replace("Run init again with --yes", "Call deploy again with overwrite=true")
+        ) from error
     return {
         **record,
         "next_steps": [
