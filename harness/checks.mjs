@@ -401,9 +401,9 @@ export const CHECKS = {
     requires: ["mcp/src/open_ds_mcp/server.py"],
     run: (c) => {
       const src = c.read("mcp/src/open_ds_mcp/server.py");
-      const tools = [...src.matchAll(/@mcp\.tool[^\n]*\n(?:async\s+)?def\s+(\w+)\([^)]*\)[^:]*:\n\s+("""|''')/g)].map(
-        (m) => m[1],
-      );
+      const tools = [
+        ...src.matchAll(/@mcp\.tool[^\n]*\n(?:async\s+)?def\s+(\w+)\([\s\S]*?\)\s*(?:->[^:]+)?:\s*\n\s+("""|''')/g),
+      ].map((m) => m[1]);
       const all = [...src.matchAll(/@mcp\.tool[^\n]*\n(?:async\s+)?def\s+(\w+)/g)].map((m) => m[1]);
       const missing = all.filter((t) => !tools.includes(t));
       return missing.length
