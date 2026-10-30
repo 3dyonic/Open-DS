@@ -1,49 +1,23 @@
+// The schemes index: the Home scheme cards on their own page.
 import type { Metadata } from "next";
-import Link from "next/link";
-import { MiniSpecimen } from "@/components/specimen";
-import { Eyebrow } from "@/components/ui-bits";
-import { schemes } from "@/lib/schemes";
+import { Eyebrow } from "@/components/chrome";
+import { SchemeCards } from "@/components/scheme-cards";
 
-export const metadata: Metadata = { title: "Schemes" };
+export const metadata: Metadata = {
+  title: "Schemes",
+  description: "Every Open DS scheme: the same questions, different answers.",
+};
 
-export default function Schemes() {
+export default function SchemesPage() {
   return (
-    <div className="grid gap-8">
-      <div className="grid gap-3">
-        <Eyebrow>Schemes</Eyebrow>
-        <h1 className="text-4xl font-extrabold">Pick the scheme that fits your product.</h1>
-        <p className="max-w-2xl text-muted">
-          Each one answers every question in the grammar and says why.
-        </p>
-      </div>
-      <ul className="grid gap-6">
-        {schemes().map((s) => (
-          <li
-            key={s.id}
-            className="grid gap-5 rounded-xl border border-line bg-white p-5 md:grid-cols-[1fr_1.2fr]"
-          >
-            <div className="grid content-start gap-2">
-              <Link
-                href={`/schemes/${s.id}/`}
-                className="text-2xl font-extrabold hover:text-accent-text"
-              >
-                {s.name}
-              </Link>
-              <p>{s.summary}</p>
-              <p className="text-sm">
-                <span className="font-semibold">Use when:</span> {s.ai.use_when}
-              </p>
-              <p className="text-sm text-muted">
-                <span className="font-semibold">Avoid when:</span> {s.ai.avoid_when}
-              </p>
-            </div>
-            <MiniSpecimen
-              scheme={s.id}
-              brand={Object.keys(s.tokens.brands).length > 1 ? "aster" : undefined}
-            />
-          </li>
-        ))}
-      </ul>
+    <div className="flex flex-col gap-8 px-5 pb-20 lg:px-20">
+      <Eyebrow>Schemes</Eyebrow>
+      <h1 className="text-[44px] leading-[1.05] font-extrabold md:text-[56px]">Pick a scheme.</h1>
+      <p className="max-w-[820px] text-[19px] leading-[1.45] text-[#3e3a31]">
+        Each scheme answers every question in the grammar and says why. Open one to see its reasons,
+        its answers and the screen they build.
+      </p>
+      <SchemeCards />
     </div>
   );
 }

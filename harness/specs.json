@@ -1,7 +1,7 @@
 {
   "$schema": "./harness.schema.json",
   "description": "Claude's specs for the MVP: one item per Jira ticket, each listing what it delivers (In) and the checks that prove it. The harness runs these next to Yonatan's instructions.",
-  "source": "Jira OD-109 to OD-123, created 2026-10-30.",
+  "source": "Jira OD-109 to OD-124, created 2026-10-30.",
   "items": [
     {
       "id": "OD-115",
@@ -112,6 +112,17 @@
         "voice tokens (content)"
       ],
       "checks": ["scopes-uniform-template", "outputs-follow-answers", "schemes-voice-and-themes", "json-files-validate"]
+    },
+    {
+      "id": "OD-124",
+      "title": "Website rebuilt from the Figma frames",
+      "in": [
+        "home, scheme, scope, what moves, compare, take, contribute, questions pages from frames 115:900 to 130:900",
+        "one scope page template for all 11 scopes, voice included",
+        "reference screenshots in harness/design",
+        "design check: texts in order, fold, palette, height"
+      ],
+      "checks": ["site-routes", "site-design-fidelity", "site-build", "content-no-real-names"]
     }
   ]
 }

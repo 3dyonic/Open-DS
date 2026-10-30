@@ -762,10 +762,17 @@ export const CHECKS = {
         "site/src/app/page.tsx",
         "site/src/app/schemes/page.tsx",
         "site/src/app/schemes/[id]/page.tsx",
+        "site/src/app/schemes/[id]/[scope]/page.tsx",
+        "site/src/app/schemes/[id]/moves/page.tsx",
+        "site/src/app/compare/page.tsx",
         "site/src/app/take/page.tsx",
+        "site/src/app/contribute/page.tsx",
+        "site/src/app/questions/page.tsx",
       ];
       const missing = need.filter((f) => !c.has(f));
-      return missing.length ? bad(`missing routes: ${missing.join(", ")}`) : ok("home, schemes, scheme, take");
+      return missing.length
+        ? bad(`missing routes: ${missing.join(", ")}`)
+        : ok("home, schemes, scheme, scope, what moves, compare, take, contribute, questions");
     },
   },
   "site-build": {
@@ -774,6 +781,30 @@ export const CHECKS = {
     run: (c) => {
       const r = c.sh("pnpm", ["--dir", "site", "build"]);
       return r.code === 0 ? ok("site builds") : bad(tail(r.out));
+    },
+  },
+
+  "site-design-fidelity": {
+    requires: ["site/package.json", "harness/design/pages.json"],
+    slow: true,
+    run: (c) => {
+      // Build every time, so the check never reads a stale site/out.
+      const b = c.sh("pnpm", ["--dir", "site", "build"]);
+      if (b.code !== 0) return bad(tail(b.out));
+      const r = c.sh("node", ["harness/design/fidelity.cjs"]);
+      let res;
+      try {
+        res = JSON.parse(r.out.trim().split("\n").pop());
+      } catch {
+        return bad(tail(r.out));
+      }
+      if (res.missing)
+        return pending("Playwright is not installed: npm i -g playwright && npx playwright install chromium");
+      if (res.error) return bad(res.error);
+      const failed = res.pages.filter((p) => !p.ok);
+      return failed.length
+        ? bad(failed.map((p) => `${p.route} (${p.frame}): ${p.problems.slice(0, 3).join("; ")}`).join(" | "))
+        : ok(`${res.pages.length} pages match their Figma frames: texts in order, fold, palette and height`);
     },
   },
 
