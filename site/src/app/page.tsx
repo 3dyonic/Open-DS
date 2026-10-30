@@ -13,7 +13,7 @@ const STEPS = [
   },
   {
     title: "2 · Deploy it",
-    text: "Connect your AI through MCP and it deploys the scheme, keeping every answer and its reason, so it builds the way the system would. Or install the package and do it yourself.",
+    text: "Connect your AI through MCP and it deploys the scheme, keeping every answer and its reason, so it builds the way the system would. Or run the CLI and do it yourself.",
     chips: ["“Deploy Dense data”", "open-ds init", "get_answer(id)"],
   },
   {
