@@ -635,7 +635,7 @@
     },
     {
       "situation": "keyboard-focus",
-      "use": "button/focus-ring, 3px with offset",
+      "use": "button/focus-ring at border-width.focus, with an offset",
       "not": "A thin or faint outline",
       "why": "Focus must be seen by everyone.",
       "because": [
@@ -854,6 +854,11 @@
         "0": {
           "$type": "dimension",
           "$value": "0rem"
+        },
+        "full": {
+          "$type": "dimension",
+          "$value": "9999px",
+          "$description": "Fully round."
         },
         "6": {
           "$type": "dimension",
@@ -1144,7 +1149,7 @@
           },
           "round": {
             "$type": "dimension",
-            "$value": "9999px",
+            "$value": "{radius.full}",
             "$description": "Fully round: avatars and dots."
           }
         },
@@ -1903,7 +1908,7 @@
           "$description": "Tooltip text."
         }
       },
-      "motion": {
+      "transition": {
         "duration": {
           "$value": "{motion.duration.feedback}",
           "$description": "Duration of feedback transitions."

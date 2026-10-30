@@ -128,6 +128,18 @@ export function flatten(group, prefix = "") {
   return out;
 }
 
+// Merge DTCG trees the way Style Dictionary does: a token replaces a group with the same path.
+export function mergeTrees(...trees) {
+  const out = {};
+  for (const tree of trees) {
+    for (const [k, v] of Object.entries(tree ?? {})) {
+      const isGroup = (x) => x && typeof x === "object" && !("$value" in x);
+      out[k] = isGroup(v) && isGroup(out[k]) ? mergeTrees(out[k], v) : v;
+    }
+  }
+  return out;
+}
+
 // Follow {references} to a literal value.
 export function resolve(all, path, seen = new Set()) {
   if (seen.has(path)) return { error: "is part of a reference cycle" };
@@ -143,6 +155,16 @@ export function resolve(all, path, seen = new Set()) {
 function frontMatter(text) {
   const m = text.match(/^---\n([\s\S]*?)\n---/);
   return m ? m[1] : null;
+}
+
+// Build the tokens once per run if a check needs the output.
+let tokensBuilt = false;
+function ensureTokens(c) {
+  if (tokensBuilt) return null;
+  const r = c.sh("pnpm", ["--dir", "tokens", "build"]);
+  if (r.code !== 0) return r.out;
+  tokensBuilt = true;
+  return null;
 }
 
 // ---------- checks ----------
@@ -242,13 +264,9 @@ export const CHECKS = {
           problems.push(`${s}: light and dark differ`);
         for (const brand of Object.keys(t.brands)) {
           for (const mode of ["light", "dark"]) {
-            const all = {
-              ...flatten(t.primitive),
-              ...flatten(t.brands[brand].primitive),
-              ...flatten(t.semantic.base),
-              ...flatten(t.semantic[mode]),
-              ...flatten(t.component),
-            };
+            const all = flatten(
+              mergeTrees(t.primitive, t.brands[brand].primitive, t.semantic.base, t.semantic[mode], t.component),
+            );
             for (const path of Object.keys(all)) {
               const r = resolve(all, path);
               if (r.error) problems.push(`${s}/${brand}/${mode}: ${path} ${r.error}`);
@@ -269,7 +287,7 @@ export const CHECKS = {
       for (const s of SCHEMES) {
         const sch = c.json("schemes", `${s}.json`);
         const v = sch.voice;
-        if (!v || v.examples?.length < 5 || !v.tone?.error) gaps.push(`${s}: voice and tone incomplete`);
+        if (!v || !(v.examples?.length >= 5) || !v.tone?.error) gaps.push(`${s}: voice and tone incomplete`);
         for (const b of Object.keys(sch.tokens.brands)) {
           for (const m of ["light", "dark"])
             if (!sch.themes.some((t) => t.brand === b && t.mode === m)) gaps.push(`${s}: ${b} has no ${m}`);
@@ -419,8 +437,8 @@ export const CHECKS = {
     requires: ["tokens/package.json"],
     slow: true,
     run: (c) => {
-      const r = c.sh("pnpm", ["--dir", "tokens", "build"]);
-      if (r.code !== 0) return bad(tail(r.out));
+      const err = ensureTokens(c);
+      if (err) return bad(tail(err));
       const missing = SCHEMES.flatMap((s) =>
         ["tokens.css", "theme.css", "tokens.json"].map((f) => `tokens/dist/${s}/${f}`),
       ).filter((f) => !c.has(f));
@@ -428,8 +446,11 @@ export const CHECKS = {
     },
   },
   "tokens-light-dark": {
-    requires: ["tokens/dist/dense-data/tokens.css"],
+    requires: ["tokens/package.json"],
+    slow: true,
     run: (c) => {
+      const err = ensureTokens(c);
+      if (err) return bad(tail(err));
       const bad1 = SCHEMES.filter((s) => {
         const css = c.has("tokens", "dist", s, "tokens.css") ? c.read("tokens", "dist", s, "tokens.css") : "";
         return !css.includes(":root") || !css.includes(".dark");
@@ -438,8 +459,11 @@ export const CHECKS = {
     },
   },
   "tokens-shadcn-mapping": {
-    requires: ["tokens/dist/dense-data/theme.css"],
+    requires: ["tokens/package.json"],
+    slow: true,
     run: (c) => {
+      const err = ensureTokens(c);
+      if (err) return bad(tail(err));
       const gaps = [];
       for (const s of SCHEMES) {
         const css = c.has("tokens", "dist", s, "theme.css") ? c.read("tokens", "dist", s, "theme.css") : "";
@@ -450,12 +474,15 @@ export const CHECKS = {
     },
   },
   "tokens-component-keys-resolve": {
-    requires: ["tokens/dist/dense-data/theme.css", "schemes/grammar.json"],
+    requires: ["tokens/package.json"],
+    slow: true,
     run: (c) => {
+      const err = ensureTokens(c);
+      if (err) return bad(tail(err));
       const keys = c.json("schemes/grammar.json").component_keys.map((k) => `--${k.id.replaceAll("/", "-")}`);
       const gaps = [];
       for (const s of SCHEMES) {
-        const css = c.has("tokens", "dist", s, "theme.css") ? c.read("tokens", "dist", s, "theme.css") : "";
+        const css = c.has("tokens", "dist", s, "tokens.css") ? c.read("tokens", "dist", s, "tokens.css") : "";
         const miss = keys.filter((k) => !css.includes(`${k}:`));
         if (miss.length) gaps.push(`${s}: ${miss.length} keys missing`);
       }
