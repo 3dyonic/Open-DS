@@ -52,9 +52,10 @@ function serve() {
 // Runs in the browser: compares two PNG data URLs.
 async function compareImages([a, b, offset]) {
   const load = (src) =>
-    new Promise((r) => {
+    new Promise((resolve, reject) => {
       const i = new Image();
-      i.onload = () => r(i);
+      i.onload = () => resolve(i);
+      i.onerror = () => reject(new Error("an image did not load"));
       i.src = src;
     });
   const [A, B] = await Promise.all([load(a), load(b)]);

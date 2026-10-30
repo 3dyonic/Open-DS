@@ -123,6 +123,17 @@
       "jira": "OD-123 comment 11784",
       "orchestra": "4b6d0cf5",
       "note": "Reviewer fixed one stale comment id (f4e1dfd) before merging."
+    },
+    {
+      "feature": "OD-124 website from Figma",
+      "pr": "https://github.com/3dyonic/Open-DS/pull/28",
+      "reviewed_sha": "fb284ed",
+      "sha": "686b034",
+      "merged_by_subagent": true,
+      "skills": ["build-brief", "pr-review-private-repo", "correctness-review", "scope-review", "test-integrity"],
+      "jira": "OD-124",
+      "orchestra": "bc66a3f7",
+      "note": "Reviewer fixed a stale answer on What moves (fb284ed) before merging."
     }
   ]
 }
