@@ -82,7 +82,15 @@ claude mcp add --scope user open-ds -- uv run --directory "$(pwd)" open-ds-mcp
 pnpm --dir site dev
 ```
 
-Open http://localhost:3000. Start at a scheme page, for example Multi-brand, and switch the brand and the mode.
+Open http://localhost:3000. The pages follow the Figma frames:
+
+- Home: pick a scheme in the panel and watch the reasons, the answers matrix and the live specimen change.
+- A scheme page, for example /schemes/multi-brand/: switch the brand and the mode on the applied screen.
+- A scope page, for example /schemes/dense-data/voice/: the same five questions as every other scope.
+- /schemes/dense-data/moves/: change one answer and see what moves.
+- /compare/, /take/, /contribute/ and /questions/.
+
+`pnpm harness:full` also runs the design check (`harness/design/fidelity.cjs`). It compares each page with the Figma reference images in `harness/design/`. It needs Playwright with Chromium.
 
 ### Storybook
 

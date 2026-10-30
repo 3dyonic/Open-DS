@@ -1,15 +1,12 @@
+// One scheme, built from the Figma frame S02 Scheme (117:900).
 import type { Metadata } from "next";
-import { ThemeSwitch } from "@/components/theme-switch";
-import { Chip, Command, Eyebrow } from "@/components/ui-bits";
-import {
-  answerOf,
-  grammar,
-  scheme,
-  schemeIds,
-  tokenRows,
-  type Group,
-  type Scheme,
-} from "@/lib/schemes";
+import Link from "next/link";
+import { Applied } from "@/components/applied";
+import { Eyebrow } from "@/components/chrome";
+import { ScopeMini } from "@/components/scope-mini";
+import { cardMark, REASON_LABEL } from "@/lib/home";
+import { ownedTokens } from "@/lib/scope";
+import { answerOf, grammar, scheme, schemeIds, uiComponents } from "@/lib/schemes";
 
 export function generateStaticParams() {
   return schemeIds().map((id) => ({ id }));
@@ -25,227 +22,194 @@ export async function generateMetadata({
   return { title: s.name, description: s.summary };
 }
 
-function Decisions({ s, groups }: { s: Scheme; groups: Group[] }) {
-  const g = grammar();
-  return (
-    <div className="grid gap-4">
-      {groups.map((group) => (
-        <details
-          key={group.id}
-          className="rounded-lg border border-line bg-white p-4"
-          open={group.kind === "scope" && group.id === "typography"}
-        >
-          <summary className="cursor-pointer text-lg font-extrabold">
-            {group.title} <span className="font-normal text-muted">· {group.description}</span>
-          </summary>
-          <ul className="mt-4 grid gap-4">
-            {group.questions.map((q) => {
-              const { option, answer } = answerOf(s, g, q.id);
-              return (
-                <li key={q.id} className="grid gap-2 border-t border-line pt-4">
-                  <p className="font-semibold">{q.text}</p>
-                  <div className="flex flex-wrap gap-2">
-                    {q.options.map((o) => (
-                      <Chip key={o.id} tone={o.id === option.id ? "ink" : "plain"}>
-                        {o.label}
-                      </Chip>
-                    ))}
-                  </div>
-                  <p className="text-sm">{answer.why}</p>
-                  {answer.because.length > 0 && (
-                    <p className="flex flex-wrap items-center gap-2 text-sm text-muted">
-                      <span className="font-mono text-xs">because</span>
-                      {answer.because.map((b) => {
-                        const r = answerOf(s, g, b);
-                        return (
-                          <Chip key={b} tone="accent">
-                            {r.question.text} {r.option.label}
-                          </Chip>
-                        );
-                      })}
-                    </p>
-                  )}
-                </li>
-              );
-            })}
-          </ul>
-        </details>
-      ))}
-    </div>
-  );
-}
+const lower = (t: string) => (/^[A-Z]{2}/.test(t) ? t : t.charAt(0).toLowerCase() + t.slice(1));
 
 export default async function SchemePage({ params }: { params: Promise<{ id: string }> }) {
   const { id } = await params;
   const s = scheme(id);
   const g = grammar();
-  const sit = Object.fromEntries(g.situations.map((x) => [x.id, x]));
-  const sitTitle = (id: string) => sit[id].title;
-  const voiceRules = s.usage.filter((u) => sit[u.situation].scope === "voice");
+  const label = (q: string) => answerOf(s, g, q).option.label;
+  const scopeIds = new Set(g.scopes.flatMap((x) => x.questions.map((q) => q.id)));
+  const cites = new Map<string, number>();
+  for (const a of s.answers)
+    if (scopeIds.has(a.question))
+      for (const b of a.because)
+        if (!scopeIds.has(b)) cites.set(b.split(".")[0], (cites.get(b.split(".")[0]) ?? 0) + 1);
+  const top = [...cites.entries()]
+    .sort((a, b) => b[1] - a[1])
+    .slice(0, 4)
+    .map(([k]) => k);
+  const tokenCount = g.scopes.reduce((n, sc) => n + ownedTokens(s, sc.owns ?? []).length, 0);
   const brands = Object.entries(s.tokens.brands).map(([bid, b]) => ({ id: bid, label: b.label }));
-  const semantic = s.tokens.semantic as { light: unknown; base: unknown };
+  const rule = (sit: string) => s.usage.find((u) => u.situation === sit)!;
+  const meta = [
+    `${g.scopes.length} scopes`,
+    `${s.answers.length} answers`,
+    `${tokenCount} tokens`,
+    `${uiComponents().length} components`,
+  ];
   return (
-    <article className="grid gap-16">
-      <header className="grid gap-4">
-        <Eyebrow>Scheme · {s.status}</Eyebrow>
-        <h1 className="text-5xl font-extrabold">{s.name}</h1>
-        <p className="max-w-3xl text-lg">{s.summary}</p>
-        <div className="grid gap-2 text-sm md:grid-cols-2">
-          <p>
-            <span className="font-semibold">Use when:</span> {s.ai.use_when}
-          </p>
-          <p className="text-muted">
-            <span className="font-semibold">Avoid when:</span> {s.ai.avoid_when}
-          </p>
+    <article className="flex flex-col gap-14 px-5 pb-20 lg:px-20">
+      <header className="flex flex-col gap-6 lg:flex-row lg:items-end">
+        <div className="flex flex-col gap-4">
+          <nav
+            aria-label="Breadcrumb"
+            className="flex gap-[10px] font-mono text-[12px] font-medium uppercase tracking-[0.48px]"
+          >
+            <Link href="/schemes/" className="text-muted">
+              Schemes
+            </Link>
+            <span className="text-muted">/</span>
+            <span className="text-accent-text">{s.name}</span>
+          </nav>
+          <span aria-hidden className="flex flex-col gap-[4px]">
+            {cardMark(s).map((row, r) => (
+              <span key={r} className="flex gap-[4px]">
+                {row.map((l, i) => (
+                  <span key={i} className={`size-[16px] ${l ? "bg-accent" : "bg-tag"}`} />
+                ))}
+              </span>
+            ))}
+          </span>
+          <h1 className="text-[44px] leading-[1.05] font-extrabold md:text-[56px]">{s.name}</h1>
+          <p className="text-[22px] text-[#3e3a31]">{s.summary}</p>
+          <ul className="flex flex-wrap gap-2">
+            {meta.map((m) => (
+              <li
+                key={m}
+                className="rounded-[3px] border border-line bg-white px-[9px] py-[5px] font-mono text-[12px]"
+              >
+                {m}
+              </li>
+            ))}
+          </ul>
+        </div>
+        <div className="flex flex-col gap-[10px] lg:ml-auto">
+          <Link
+            href={`/take/?scheme=${s.id}`}
+            className="flex items-center gap-[10px] self-start rounded-[4px] bg-ink px-5 py-[14px] text-[17px] font-semibold text-paper"
+          >
+            <span aria-hidden className="size-[8px] bg-accent" />
+            Take this scheme
+          </Link>
+          <Link
+            href="/compare/"
+            className="rounded-[4px] border border-ink px-5 py-[14px] text-[17px] font-semibold"
+          >
+            Compare with another scheme
+          </Link>
         </div>
       </header>
 
-      <section className="grid gap-4" aria-labelledby="live">
-        <Eyebrow>Live components</Eyebrow>
-        <h2 id="live" className="text-3xl font-extrabold">
-          {brands.length > 1 ? `${brands.length} brands, light and dark` : "Light and dark"}
-        </h2>
-        <ThemeSwitch scheme={s.id} brands={brands} />
-      </section>
-
-      <section className="grid gap-4" aria-labelledby="before">
-        <Eyebrow>Before any token</Eyebrow>
-        <h2 id="before" className="text-3xl font-extrabold">
-          The work it serves
-        </h2>
-        <ul className="grid gap-3 md:grid-cols-2">
-          {s.scenarios.map((x) => (
-            <li key={x.text} className="rounded-lg border border-line bg-white p-4">
-              {x.text}
+      <section className="flex flex-col gap-5" aria-labelledby="reasons">
+        <Eyebrow>Why this scheme exists</Eyebrow>
+        <div className="flex flex-wrap items-end gap-4">
+          <h2 id="reasons" className="text-[36px] font-extrabold">
+            Its answers to the reasons
+          </h2>
+          <p className="flex items-center gap-2 pb-1 font-mono text-[12px] text-muted">
+            <span aria-hidden className="size-[10px] bg-accent" /> Lit = weighs most in this scheme
+          </p>
+        </div>
+        <ul className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
+          {g.reasons.map((r) => (
+            <li
+              key={r.id}
+              className={`flex flex-col gap-[10px] rounded-[6px] border bg-white p-5 ${top.includes(r.id) ? "border-ink" : "border-line"}`}
+            >
+              <span className="flex items-center gap-2">
+                <span
+                  aria-hidden
+                  className={`size-[10px] ${top.includes(r.id) ? "bg-accent" : "bg-tag"}`}
+                />
+                <span className="font-mono text-[11px] font-medium uppercase tracking-[0.44px] text-muted">
+                  {REASON_LABEL[r.id]}
+                </span>
+              </span>
+              <span className="text-[17px] font-semibold leading-[1.35]">
+                {r.questions.map((q, i) => (i ? lower(label(q.id)) : label(q.id))).join(", ")}
+              </span>
             </li>
           ))}
         </ul>
       </section>
 
-      <section className="grid gap-4" aria-labelledby="voice">
-        <Eyebrow>Voice and tone</Eyebrow>
-        <h2 id="voice" className="text-3xl font-extrabold">
-          {s.voice.summary.text}
+      <section className="flex flex-col gap-5" aria-labelledby="applied">
+        <Eyebrow>This scheme, applied</Eyebrow>
+        <h2 id="applied" className="text-[36px] font-extrabold">
+          One screen built only from its answers
         </h2>
-        <div className="grid gap-6 md:grid-cols-2">
-          <div className="grid content-start gap-3">
-            <ul className="grid gap-2">
-              {s.voice.principles.map((p) => (
-                <li key={p.text}>— {p.text}</li>
-              ))}
-            </ul>
-            <dl className="grid gap-2 text-sm">
-              {voiceRules.map((u) => (
-                <div key={u.situation} className="grid grid-cols-[7rem_1fr] gap-2">
-                  <dt className="font-mono text-xs uppercase text-muted">
-                    {sitTitle(u.situation)}
-                  </dt>
-                  <dd>{u.use}</dd>
-                </div>
-              ))}
-            </dl>
-            {s.voice.brands && (
-              <p className="text-sm">
-                {Object.entries(s.voice.brands)
-                  .map(([b, t]) => `${b[0].toUpperCase() + b.slice(1)}: ${t.text}`)
-                  .join(" · ")}
-              </p>
-            )}
-          </div>
-          <ul className="grid content-start gap-2">
-            {voiceRules.map((u) => (
-              <li key={u.situation} className="rounded-lg border border-line bg-white p-3">
-                <span className="font-mono text-xs uppercase text-muted">
-                  {sitTitle(u.situation)}
-                </span>
-                <p className="mt-1 text-lg">“{u.example}”</p>
-              </li>
-            ))}
-            <li className="text-sm text-muted">
-              Use: {s.voice.words.use.join(", ")}. Avoid: {s.voice.words.avoid.join(", ")}.
-            </li>
-          </ul>
-        </div>
+        <Applied scheme={s.id} brands={brands} toast={rule("success-words").example ?? ""} />
       </section>
 
-      <section className="grid gap-4" aria-labelledby="reasons">
-        <Eyebrow>1 · Reasons</Eyebrow>
-        <h2 id="reasons" className="text-3xl font-extrabold">
-          Why this system exists
+      <section className="flex flex-col gap-4" aria-labelledby="scopes">
+        <Eyebrow>Scopes</Eyebrow>
+        <h2 id="scopes" className="text-[36px] font-extrabold">
+          {g.scopes.length} scopes, each answered for this scheme
         </h2>
-        <Decisions s={s} groups={g.reasons} />
-      </section>
-
-      <section className="grid gap-4" aria-labelledby="scopes">
-        <Eyebrow>2 · Scopes</Eyebrow>
-        <h2 id="scopes" className="text-3xl font-extrabold">
-          The design decisions, and what pulled them
-        </h2>
-        <Decisions s={s} groups={g.scopes} />
-      </section>
-
-      <section className="grid gap-4" aria-labelledby="usage">
-        <Eyebrow>3 · When to use</Eyebrow>
-        <h2 id="usage" className="text-3xl font-extrabold">
-          What to use, what not to use, and why
-        </h2>
-        <div className="overflow-x-auto rounded-lg border border-line bg-white">
-          <table className="w-full text-left text-sm">
-            <thead className="font-mono text-xs uppercase text-muted">
-              <tr>
-                <th className="p-3">Situation</th>
-                <th className="p-3">Use</th>
-                <th className="p-3">Not</th>
-                <th className="p-3">Why</th>
-              </tr>
-            </thead>
-            <tbody>
-              {s.usage.map((u) => (
-                <tr key={u.situation} className="border-t border-line align-top">
-                  <td className="p-3 font-semibold">{sit[u.situation].title}</td>
-                  <td className="p-3 font-mono text-xs">{u.use}</td>
-                  <td className="p-3 font-mono text-xs text-muted">{u.not}</td>
-                  <td className="p-3">{u.why}</td>
-                </tr>
-              ))}
-            </tbody>
-          </table>
-        </div>
-      </section>
-
-      <section className="grid gap-4" aria-labelledby="tokens">
-        <Eyebrow>4 · Tokens, for reference</Eyebrow>
-        <h2 id="tokens" className="text-3xl font-extrabold">
-          The decisions as tokens
-        </h2>
-        <details className="rounded-lg border border-line bg-white p-4">
-          <summary className="cursor-pointer font-semibold">
-            Semantic decisions (light mode and layout)
-          </summary>
-          <table className="mt-3 w-full text-left font-mono text-xs">
-            <tbody>
-              {[...tokenRows(semantic.base), ...tokenRows(semantic.light)].map((r) => (
-                <tr key={r.name} className="border-t border-line align-top">
-                  <td className="p-2">{r.name}</td>
-                  <td className="p-2 text-accent-text">{r.value}</td>
-                  <td className="p-2 font-sans text-muted">{r.description}</td>
-                </tr>
-              ))}
-            </tbody>
-          </table>
-        </details>
-      </section>
-
-      <section className="grid gap-4" aria-labelledby="take">
-        <Eyebrow>Take it</Eyebrow>
-        <h2 id="take" className="text-3xl font-extrabold">
-          Deploy {s.name}
-        </h2>
-        <Command>{`node cli/bin/open-ds.js init ${s.id} --dir ./my-app${brands.length > 1 ? ` --brand ${brands[0].id}` : ""}`}</Command>
-        <p className="text-muted">
-          Or ask your AI: “Deploy the {s.name} scheme into this project.” The MCP tool{" "}
-          <code>deploy</code> runs the same command.
+        <p className="max-w-[860px] text-[16px] leading-[1.45] text-[#3e3a31]">
+          Every scope answers the same five questions:{" "}
+          {g.methods.map((m) => m.title.toLowerCase()).join(", ")}.
         </p>
+        <ul className="flex flex-col gap-4">
+          {g.scopes.map((sc) => {
+            const a = (m: number) => s.answers.find((x) => x.question === sc.questions[m].id)!;
+            return (
+              <li key={sc.id}>
+                <Link
+                  href={`/schemes/${s.id}/${sc.id}/`}
+                  className="flex flex-col gap-6 rounded-[8px] border border-line bg-white p-6 hover:border-ink md:flex-row md:items-center"
+                >
+                  <ScopeMini scheme={s} scope={sc.id} toast={rule("success-words").example ?? ""} />
+                  <span className="flex min-w-0 flex-1 flex-col gap-2">
+                    <span className="text-[24px] font-extrabold">{sc.title}</span>
+                    <span className="text-[16px] leading-[1.45] text-[#3e3a31]">
+                      {a(3).why} {a(4).why}
+                    </span>
+                    <span className="flex flex-wrap gap-[6px]">
+                      {sc.questions.map((q) => (
+                        <span
+                          key={q.id}
+                          title={q.text}
+                          className="rounded-[3px] border border-line bg-paper px-[9px] py-[5px] font-mono text-[12px]"
+                        >
+                          {lower(label(q.id))}
+                        </span>
+                      ))}
+                    </span>
+                  </span>
+                  <span className="text-[16px] font-semibold">Open →</span>
+                </Link>
+              </li>
+            );
+          })}
+        </ul>
+      </section>
+
+      <section className="flex flex-col gap-8 rounded-[8px] bg-ink p-10 text-paper lg:flex-row">
+        <div className="flex flex-col gap-3 lg:w-[640px]">
+          <Eyebrow tone="accent">Take this scheme</Eyebrow>
+          <h2 className="text-[36px] font-extrabold">Start from {s.name}.</h2>
+          <p className="text-[16px] leading-[1.45] text-line">
+            You get {tokenCount} tokens, the variants of {uiComponents().length} components, and all{" "}
+            {s.answers.length} answers with their reasons. Change any answer later, and see what it
+            moves.
+          </p>
+        </div>
+        <ul className="flex flex-1 flex-col gap-[10px]">
+          {[
+            ["CLI", `open-ds init ${s.id}`],
+            ["Link", `/schemes/${s.id}`],
+            ["Agent", `MCP · get_scheme("${s.id}")`],
+          ].map(([k, v]) => (
+            <li key={k} className="flex gap-4 rounded-[4px] border border-muted px-4 py-3">
+              <span className="w-[60px] shrink-0 font-mono text-[11px] font-medium uppercase tracking-[0.44px] text-line">
+                {k}
+              </span>
+              <code className="font-mono text-[15px]">{v}</code>
+            </li>
+          ))}
+        </ul>
       </section>
     </article>
   );

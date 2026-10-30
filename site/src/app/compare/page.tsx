@@ -1,42 +1,38 @@
+// Compare, built from the Figma frame S07 Compare (128:900).
 import type { Metadata } from "next";
-import { Eyebrow } from "@/components/ui-bits";
-import { grammar, schemes } from "@/lib/schemes";
+import Link from "next/link";
+import { CompareView } from "@/components/compare-view";
+import { answerBook } from "@/lib/answers";
 
-export const metadata: Metadata = { title: "Compare" };
+export const metadata: Metadata = {
+  title: "Compare schemes",
+  description:
+    "Two schemes answer the same grammar. Every question where they differ, and why each answered the way it did.",
+};
 
-export default function Compare() {
-  const g = grammar();
-  const all = schemes();
+export default function ComparePage() {
   return (
-    <div className="grid gap-8">
-      <div className="grid gap-3">
-        <Eyebrow>Compare</Eyebrow>
-        <h1 className="text-4xl font-extrabold">The same situation. Five answers.</h1>
-        <p className="max-w-2xl text-muted">
-          Every scheme answers the same situations. Different products need different answers, and
-          each one says why.
+    <div className="flex flex-col gap-8 px-5 pb-20 lg:px-20">
+      <header className="flex flex-col gap-4">
+        <nav
+          aria-label="Breadcrumb"
+          className="flex gap-[10px] font-mono text-[12px] font-medium uppercase tracking-[0.48px]"
+        >
+          <Link href="/schemes/" className="text-muted">
+            Schemes
+          </Link>
+          <span className="text-muted">/</span>
+          <span className="text-accent-text">Compare</span>
+        </nav>
+        <h1 className="text-[44px] leading-[1.05] font-extrabold md:text-[56px]">
+          Same questions. Different answers.
+        </h1>
+        <p className="max-w-[900px] text-[19px] leading-[1.45] text-[#3e3a31]">
+          Two schemes answer the same grammar. Here is every question where they differ, and why
+          each one answered the way it did. The tokens follow, so they are not shown.
         </p>
-      </div>
-      {g.situations.map((sit) => (
-        <section key={sit.id} className="grid gap-3" aria-labelledby={`s-${sit.id}`}>
-          <h2 id={`s-${sit.id}`} className="text-xl font-extrabold">
-            {sit.title}{" "}
-            <span className="text-base font-normal text-muted">· {sit.description}</span>
-          </h2>
-          <ul className="grid gap-3 md:grid-cols-5">
-            {all.map((s) => {
-              const r = s.usage.find((u) => u.situation === sit.id)!;
-              return (
-                <li key={s.id} className="rounded-lg border border-line bg-white p-3 text-sm">
-                  <p className="font-mono text-xs uppercase text-muted">{s.name}</p>
-                  <p className="mt-1 font-semibold">{r.use}</p>
-                  <p className="mt-1 text-muted">{r.why}</p>
-                </li>
-              );
-            })}
-          </ul>
-        </section>
-      ))}
+      </header>
+      <CompareView book={answerBook()} />
     </div>
   );
 }

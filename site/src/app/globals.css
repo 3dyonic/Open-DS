@@ -26,6 +26,7 @@ html {
   background: var(--color-paper);
   color: var(--color-ink);
   font-family: var(--font-sans);
+  font-variation-settings: "opsz" 14;
 }
 
 :focus-visible {
