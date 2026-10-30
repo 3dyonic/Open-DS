@@ -21,7 +21,9 @@ export function MovesView({
   const qv = book.questions.find((q) => q.id === question)!;
   const firstOther = Object.keys(qv.options).find((o) => o !== me.answers[question].option)!;
   const [option, setOption] = useState(start.question === question ? start.option : firstOther);
-  const chosen = option === me.answers[question].option ? firstOther : option;
+  // The option state can belong to the previous question; fall back to a valid other answer.
+  const chosen =
+    option in qv.options && option !== me.answers[question].option ? option : firstOther;
   const q = Object.fromEntries(book.questions.map((x) => [x.id, x]));
 
   const result = useMemo(() => {
