@@ -2,13 +2,16 @@
   "name": "open-ds",
   "version": "0.1.0",
   "private": true,
-  "description": "Local helper that installs an Open DS boilerplate and checks it. Not published.",
+  "description": "The open-ds command: list the Open DS schemes, explain their decisions, and deploy one into a project (tokens, components, AGENTS.md, agent skill). Private until the name is final.",
   "license": "MIT",
   "repository": {
     "type": "git",
     "url": "https://github.com/3dyonic/Open-DS"
   },
-  "keywords": ["design-system", "dtcg"],
+  "keywords": [
+    "design-system",
+    "dtcg"
+  ],
   "engines": {
     "node": ">=22"
   },
@@ -17,6 +20,13 @@
     "open-ds": "./bin/open-ds.js"
   },
   "scripts": {
-    "test": "node --test"
-  }
+    "bundle": "node scripts/bundle.mjs",
+    "test": "node --test",
+    "pack": "node scripts/bundle.mjs && npm pack --dry-run"
+  },
+  "files": [
+    "bin",
+    "src",
+    "assets"
+  ]
 }
