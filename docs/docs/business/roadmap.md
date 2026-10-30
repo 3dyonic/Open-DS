@@ -8,7 +8,7 @@ description: "What ships in the first release candidate (RC1) and what comes nex
 
 ## RC1 (this release candidate)
 
-- The grammar: 48 questions, 25 situations, 62 component keys.
+- The grammar: 73 questions, 32 situations, 63 component keys. Every scope, voice and tone included, answers the same five method questions.
 - Five schemes, drafts until curated: Dense data, Content first, Accessible first, Multi-brand (three brands), Brand expressive.
 - Tokens with Style Dictionary, components, Storybook, website, these docs.
 - CLI and MCP server, run locally.

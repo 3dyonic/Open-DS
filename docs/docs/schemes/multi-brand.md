@@ -16,7 +16,7 @@ Multi-brand is an Open DS scheme: a full set of answers to the Open DS grammar, 
 - **Themes:** aster-light, aster-dark, birch-light, birch-dark, coral-light, coral-dark
 - **Status:** draft
 
-## The work it serves
+## Use scenarios
 
 - A customer signs up for a plan on the Birch site, then manages it in the shared account area.
 - A product team launches a fourth brand by adding brand primitives, without touching components.
@@ -29,15 +29,20 @@ A plain shared voice. Each brand adds its own tone on top, never its own structu
 - Brand tone lives in headlines and marketing copy, not in errors.
 - Errors and confirmations read the same in every brand.
 
-| Context | Tone | Example |
-| --- | --- | --- |
-| error | Shared across brands: plain and specific. | Your card was declined. Try another card or contact your bank. |
-| success | Brand tone allowed: Aster calm, Birch friendly, Coral upbeat. | Aster: Your plan is active. · Birch: You're all set! · Coral: Let's go — your plan is live. |
-| empty | Shared structure, brand words. | No orders yet. Your first order will appear here. |
-| confirm | Shared across brands: plain and specific. | Cancel your plan? It stays active until 30 November. |
-| onboarding | Brand tone allowed in the first headline only. |  |
+- **aster:** Calm and precise.
+- **birch:** Friendly and helpful.
+- **coral:** Upbeat and energetic.
 
 Use: Get started, Plan, Order. Avoid: Brand-specific words in errors, Jargon.
+
+| Moment | Tone | Example |
+| --- | --- | --- |
+| A button label | A shared verb; the brand may choose the headline verb | Get started |
+| The words of an error | Shared across brands: plain and specific | Your card was declined. Try another card or contact your bank. |
+| A success message | Brand tone allowed: Aster calm, Birch friendly, Coral upbeat | Aster: Your plan is active. · Birch: You're all set! · Coral: Let's go, your plan is live. |
+| An empty state | Shared structure, brand words | No orders yet. Your first order will appear here. |
+| A confirmation question | Shared across brands: plain and specific | Cancel your plan? It stays active until the end of the month. |
+| A first visit | Brand tone in the first headline only | Birch: Hi! Let's set up your plan. |
 
 ## Reasons
 
@@ -55,43 +60,84 @@ Use: Get started, Plan, Order. Avoid: Brand-specific words in errors, Jargon.
 - **What is a costly mistake?** Looking off-brand. A page that looks like the wrong brand loses trust. Because: How many brands or products share the system? Many.
 - **What should the brand feel like?** Neutral and adaptable. A neutral base each brand can colour. Because: How many brands or products share the system? Many.
 - **How visible is the brand in the interface?** Present. Each brand is clearly present. Because: How many brands or products share the system? Many.
-- **How does the product speak?** Plain and direct. Plain voice; each brand adds its own tone in copy. Because: How many brands or products share the system? Many.
-- **How formal is it?** Neutral. Neutral formality across brands.
+- **Where do people use it?** Anywhere, on any device. Customers sign up on phones and manage plans on laptops. Because: Who uses it most? Customers who choose us.
+- **How long is one visit?** A few minutes. Most visits are a few minutes: sign up, check, change. Because: What is the main task? Complete a form.
 - **Who maintains the system?** A platform team. A platform team serves three product teams. Because: How many brands or products share the system? Many.
 - **How fast does it change?** Every month. Brands ship every month. Because: How many brands or products share the system? Many.
 
 ## Design decisions
 
-- **Which text roles does the product need?** Core: heading, body, label. One set of roles across brands. Because: How many brands or products share the system? Many.
+Every scope answers the same five questions.
+
+| Scope | Roles | How many | How defined | Values | Lands in |
+| --- | --- | --- | --- | --- | --- |
+| Typography | Core: heading, body, label | Some | A ratio, line heights in proportion | Regular | Forms and labels |
+| Color | Those and brand accents | Three | Shared neutrals, a ramp per brand | Balanced | Brand moments |
+| Spacing | Gaps, insets and row heights | One | A fine base unit | Comfortable | Between fields |
+| Shape | Controls, badges and containers | Three | Set by each brand | Rounded | Buttons and badges |
+| Elevation | Cards too | Two | Cards | Soft | Cards, menus and dialogs |
+| Motion | Feedback and guidance | Two | Standard ease-out | Moderate | State changes and panels |
+| Iconography | Actions, status and navigation | One | Outline | Match the text | Navigation |
+| Theming | Mode and brand | Several | Brands as modes | Light and dark | Colors, type and shape |
+| Accessibility | Those and pressed | Two: color and word | AA | Touch size | Brand color |
+| Naming | Tokens and component keys | Three | By role | Lowercase words in paths | Component keys |
+| Voice and tone | Labels, messages and headlines | One per brand | A shared core, brand tone on top | Plain and direct | Headlines and buttons |
+
+- **Which text roles does it need?** Core: heading, body, label. One set of roles across brands. Because: How many brands or products share the system? Many.
+- **How many sizes does the scale have?** Some. A middle-sized scale suits every brand font. Because: How many brands or products share the system? Many.
+- **How are sizes and line heights defined?** A ratio, line heights in proportion. Ratios work with every brand font. Because: How many brands or products share the system? Many.
 - **How large is body text?** Regular. Regular body size suits all brands. Because: What should the brand feel like? Neutral and adaptable.
-- **How does line height scale?** In proportion to text size. Ratios work with every brand font. Because: How many brands or products share the system? Many.
+- **Where does type do the most work?** Forms and labels. Sign-up and account forms carry most text. Because: What is the main task? Complete a form.
+- **Which color roles does it need?** Those and brand accents. Each brand brings its own accent ramp. Because: How many brands or products share the system? Many.
 - **How many emphasis levels do actions need?** Three. Primary, secondary and ghost in every brand. Because: What is the main task? Complete a form.
-- **What carries meaning?** Color and word. Brand colors vary, so meaning needs a word. Because: How many brands or products share the system? Many.
+- **How is the palette defined?** Shared neutrals, a ramp per brand. Shared neutrals; each brand sets its own ramp. Because: How many brands or products share the system? Many.
 - **How saturated is the palette?** Balanced. Balanced, so any brand hue works. Because: What should the brand feel like? Neutral and adaptable.
+- **Where does color carry meaning first?** Brand moments. Brand color shows on actions and headlines. Because: How visible is the brand in the interface? Present.
+- **Which spacing roles does it need?** Gaps, insets and row heights. Account tables need a row height. Because: What is the main content? Forms and tasks.
+- **How many densities exist?** One. One density across brands. Because: How many brands or products share the system? Many.
+- **How are spacing steps defined?** A fine base unit. A fine base unit fits every brand. Because: How many brands or products share the system? Many.
 - **How dense is the layout?** Comfortable. Comfortable spacing in every brand. Because: How much is on one screen? A moderate amount.
-- **How many densities exist?** One. One density keeps brands consistent. Because: Who maintains the system? A platform team.
-- **What separates groups?** Cards. Cards group products and offers. Because: What is the main content? Forms and tasks.
+- **Where does spacing matter most?** Between fields. Space matters most between form fields. Because: What is the main task? Complete a form.
+- **Which shape roles does it need?** Controls, badges and containers. Each brand sets three corners. Because: How many brands or products share the system? Many.
+- **How many corner sizes exist?** Three. Control, badge and container. Because: Which shape roles does it need? Controls, badges and containers.
+- **How are corners set?** Set by each brand. Each brand sets its own corners. Because: How many brands or products share the system? Many.
 - **What should control corners say?** Rounded. Rounded by default; each brand sets its own corner. Because: How many brands or products share the system? Many.
-- **How heavy are borders?** Regular. Regular borders. Because: What should the brand feel like? Neutral and adaptable.
-- **What shape is a status label?** Pill. Pills by default. Because: What should the brand feel like? Neutral and adaptable.
-- **When does something get a shadow?** Cards too. Cards lift slightly to group offers. Because: What separates groups? Cards.
-- **How soft are shadows?** Soft. Soft shadows suit every brand. Because: What should the brand feel like? Neutral and adaptable.
-- **How is a dialog separated from the page?** Dim the page. Dim the page behind a dialog. Because: What must the interface protect? Low effort to understand.
-- **What is motion for?** Guidance. Motion guides through sign-up steps. Because: What is the main task? Complete a form.
+- **Where does shape show most?** Buttons and badges. Corners are the most visible brand difference. Because: How visible is the brand in the interface? Present.
+- **What rises above the page?** Cards too. Cards lift slightly to group offers. Because: What separates groups on the page? Cards.
+- **How many shadow levels exist?** Two. One shadow for cards, one for overlays. Because: What rises above the page? Cards too.
+- **What separates groups on the page?** Cards. Cards group plans and offers. Because: What is the main content? Forms and tasks.
+- **How soft are shadows?** Soft. Soft shadows fit every brand. Because: What should the brand feel like? Neutral and adaptable.
+- **Where does elevation show?** Cards, menus and dialogs. Cards, menus and dialogs rise. Because: What rises above the page? Cards too.
+- **What is motion for?** Feedback and guidance. Feedback and guidance through sign-up. Because: What is the main task? Complete a form.
+- **How many speeds exist?** Two. One speed for feedback, one for panels. Because: What is motion for? Feedback and guidance.
+- **How is easing defined?** Standard ease-out. A standard ease-out across brands. Because: How many brands or products share the system? Many.
 - **How fast does feedback feel?** Moderate. Moderate speed across brands. Because: What should the brand feel like? Neutral and adaptable.
-- **What happens when someone asks for less motion?** Motion is reduced. Motion is reduced, not removed. Because: What accessibility level do we commit to? AA.
-- **When do icons appear?** Next to labels. Icons next to labels. Because: How do people recall the interface? They see it fresh each time.
-- **What icon style?** Outline. Outline icons work with any brand. Because: What should the brand feel like? Neutral and adaptable.
-- **How big are icons next to text?** Match the text. Icons match the text. Because: What should the brand feel like? Neutral and adaptable.
-- **Which modes ship?** Light and dark. Light and dark ship as standard in every brand. Because: Who uses it most? Customers who choose us.
-- **How are brands handled?** Brands as modes. Each brand is a theme on the same semantic layer. Because: How many brands or products share the system? Many.
-- **Who can change the theme?** The product. The product picks the brand; the user picks light or dark. Because: How many brands or products share the system? Many.
-- **What contrast floor do we hold?** AA. AA in every brand and mode. Because: What accessibility level do we commit to? AA.
-- **What is the smallest target?** Touch size. Customers are often on phones. Because: Who uses it most? Customers who choose us.
+- **Where does motion show?** State changes and panels. State changes and panels move. Because: What is motion for? Feedback and guidance.
+- **What do icons do?** Actions, status and navigation. Icons for actions, status and navigation. Because: Who uses it most? Customers who choose us.
+- **How many icon sizes exist?** One. One size next to text. Because: How big are icons next to text? Match the text.
+- **What icon style?** Outline. One outline set for every brand. Because: How many brands or products share the system? Many.
+- **How big are icons next to text?** Match the text. Icons match the text. Because: How many brands or products share the system? Many.
+- **Where do icons work hardest?** Navigation. Icons help most in navigation. Because: Who uses it most? Customers who choose us.
+- **What can a theme change?** Mode and brand. Brand and mode both change. Because: How many brands or products share the system? Many.
+- **How many themes ship?** Several. Three brands in light and dark: six themes. Because: How many brands or products share the system? Many; Which modes ship? Light and dark.
+- **How are brands handled?** Brands as modes. Brands are theme modes over shared semantics. Because: How many brands or products share the system? Many.
+- **Which modes ship?** Light and dark. Light and dark ship for every brand. Because: How many brands or products share the system? Many.
+- **What changes when the theme changes?** Colors, type and shape. A brand switch changes colors, fonts and corners. Because: What can a theme change? Mode and brand.
 - **Which states get their own visible value?** Those and pressed. Pressed for touch. Because: What is the smallest target? Touch size.
-- **How are decisions named?** By role. Role names let brands swap values safely. Because: How many brands or products share the system? Many.
-- **How many token tiers?** Three. Brand primitives, shared semantics, component keys. Because: How many brands or products share the system? Many.
-- **Do components get their own keys?** Yes, a component API. Components never change between brands. Because: How many brands or products share the system? Many.
+- **How many signals carry each meaning?** Two: color and word. Brand colors vary, so meaning needs a word. Because: How many brands or products share the system? Many.
+- **What contrast floor do we hold?** AA. AA in every brand and mode. Because: What accessibility level do we commit to? AA.
+- **What is the smallest target?** Touch size. Customers sign up on phones. Because: Where do people use it? Anywhere, on any device.
+- **Where are the floors hardest to hold?** Brand color. Brand colors must pass in every mode. Because: How many brands or products share the system? Many.
+- **What gets a name?** Tokens and component keys. Components get their own keys, shared by every brand. Because: How many brands or products share the system? Many.
+- **How many token tiers?** Three. Primitives, semantics and component keys. Because: How fast does it change? Every month.
+- **How are decisions named?** By role. Role names stay the same in every brand. Because: How many brands or products share the system? Many.
+- **How are names written?** Lowercase words in paths. Lowercase paths read the same everywhere. Because: Who maintains the system? A platform team.
+- **What do components read?** Component keys. Components never change; brand primitives do. Because: How many brands or products share the system? Many.
+- **Which kinds of copy does it need?** Labels, messages and headlines. Each brand has headlines on top of shared UI copy. Because: How many brands or products share the system? Many.
+- **How many tones does it use?** One per brand. A shared core, with a tone per brand. Because: How many brands or products share the system? Many.
+- **How is the voice defined?** A shared core, brand tone on top. Errors and confirmations are shared; brand tone sits on top. Because: How many brands or products share the system? Many; Who maintains the system? A platform team.
+- **How does it sound?** Plain and direct. The shared core is plain and direct. Because: What should the brand feel like? Neutral and adaptable.
+- **Where do the words matter most?** Headlines and buttons. Brand tone shows in headlines and buttons. Because: How visible is the brand in the interface? Present.
 
 ## When to use
 
@@ -122,6 +168,13 @@ Use: Get started, Plan, Order. Avoid: Brand-specific words in errors, Jargon.
 | An alternative or cancel | Button secondary | A second primary | The alternative steps back. |
 | Delete or remove | Button secondary, then confirm | Button primary | Confirm before destroying data. |
 | An action on one row or item | Button ghost with a word | An icon alone | A word says what will happen. |
+| A value with no token | The closest semantic token, then ask for a new one | A raw value or a brand primitive in the component | A raw value shows the same in every brand, so it breaks the theme. |
+| A button label | A shared verb; the brand may choose the headline verb | Brand slang on account actions | Shared labels keep the account area the same in every brand. |
+| The words of an error | Shared across brands: plain and specific | Brand tone in errors | Errors read the same in every brand, so support can help anyone. |
+| A success message | Brand tone allowed: Aster calm, Birch friendly, Coral upbeat | The same flat line in every brand | Success is a safe moment for brand tone. |
+| An empty state | Shared structure, brand words | A different structure per brand | The structure is the shared core; words carry the brand. |
+| A confirmation question | Shared across brands: plain and specific | Brand tone when something is lost | Loss is never the moment for personality. |
+| A first visit | Brand tone in the first headline only | Brand tone in every line | One headline carries the brand; the rest stays shared. |
 
 ## Deploy it
 

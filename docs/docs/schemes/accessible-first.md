@@ -16,7 +16,7 @@ Accessible first is an Open DS scheme: a full set of answers to the Open DS gram
 - **Themes:** light, dark
 - **Status:** draft
 
-## The work it serves
+## Use scenarios
 
 - A person with low vision zooms to 200% and applies for a benefit with a screen magnifier.
 - A person with a tremor completes a form on a tablet.
@@ -29,15 +29,16 @@ Plain and direct. Every sentence is easy to read on the first try.
 - One idea per sentence. Put the action first.
 - Never blame the person.
 
-| Context | Tone | Example |
-| --- | --- | --- |
-| error | Say what is wrong, where, and exactly how to fix it. | Enter your date of birth. For example, 27 3 1980. |
-| success | Confirm what happened and what comes next. | We have your application. We will email you within 5 working days. |
-| empty | Explain what will appear here and how to start. | You have no saved applications. Start a new one below. |
-| confirm | Say what will happen in plain words, and offer a way back. | Do you want to cancel your application? Your answers will be deleted. |
-| onboarding | Say how many steps there are and how long it takes. |  |
-
 Use: Continue, Change, Start, You. Avoid: Invalid, Utilise, Submit, Error code.
+
+| Moment | Tone | Example |
+| --- | --- | --- |
+| A button label | A common verb that says what happens next | Continue |
+| The words of an error | Say what is wrong, where, and exactly how to fix it | Enter your date of birth. For example, 27 3 1980. |
+| A success message | Confirm what happened and what comes next | We have your application. We will email you within 5 working days. |
+| An empty state | Explain what will appear here and how to start | You have no saved applications. Start a new one below. |
+| A confirmation question | Say what will happen in plain words, and offer a way back | Do you want to cancel your application? Your answers will be deleted. |
+| A first visit | Say how many steps there are and how long it takes | This takes about 10 minutes. There are 4 steps. |
 
 ## Reasons
 
@@ -55,43 +56,84 @@ Use: Continue, Change, Start, You. Avoid: Invalid, Utilise, Submit, Error code.
 - **What is a costly mistake?** A task that fails. A failed form can cost someone a benefit. Because: What is the main task? Complete a form.
 - **What should the brand feel like?** Calm and clear. Calm and clear, never clever. Because: What must the interface protect? Low effort to understand.
 - **How visible is the brand in the interface?** Quiet. The brand stays out of the way. Because: What must the interface protect? Low effort to understand.
-- **How does the product speak?** Plain and direct. Plain and direct words. Because: Who uses it most? Everyone, including people with disabilities.
-- **How formal is it?** Neutral. Neutral, respectful formality.
+- **Where do people use it?** Anywhere, on any device. Public services are used on any device, with any assistive technology. Because: Who uses it most? Everyone, including people with disabilities.
+- **How long is one visit?** One sitting. An application is finished in one sitting, or saved and resumed. Because: What is the main task? Complete a form.
 - **Who maintains the system?** A platform team. A platform team serves many services.
 - **How fast does it change?** Rarely. Changes are rare and tested.
 
 ## Design decisions
 
-- **Which text roles does the product need?** Core: heading, body, label. Few roles keep pages predictable. Because: What must the interface protect? Low effort to understand.
+Every scope answers the same five questions.
+
+| Scope | Roles | How many | How defined | Values | Lands in |
+| --- | --- | --- | --- | --- | --- |
+| Typography | Core: heading, body, label | Few | A ratio, line heights in proportion | Large | Forms and labels |
+| Color | Surface, text, action and status | Two | Neutrals and one brand ramp | Balanced | Links and actions |
+| Spacing | Gaps, insets and row heights | One | A coarse base unit | Spacious | Between fields |
+| Shape | Controls, badges and containers | Three | Fixed for the product | Slightly rounded | Controls and cards |
+| Elevation | Nothing | None | Lines | No shadows | Dialogs only |
+| Motion | Feedback only | One | Standard ease-out | Moderate | State changes only |
+| Iconography | Actions and status | One | Filled | Larger than the text | Status and messages |
+| Theming | Mode only | Two | One brand | Light and dark | Colors only |
+| Accessibility | All, including loading | Three: color, icon and word | AAA for text | Large | Forms |
+| Naming | Tokens and component keys | Three | By role | Lowercase words in paths | Component keys |
+| Voice and tone | Labels, messages and help | One | Rules and a word list | Plain and direct | Form steps and errors |
+
+- **Which text roles does it need?** Core: heading, body, label. Few roles keep pages predictable. Because: What must the interface protect? Low effort to understand.
+- **How many sizes does the scale have?** Few. Few sizes, each clearly different. Because: What must the interface protect? Low effort to understand.
+- **How are sizes and line heights defined?** A ratio, line heights in proportion. Line height grows with text size for zoom users. Because: What accessibility level do we commit to? AAA.
 - **How large is body text?** Large. Large text is readable for more people. Because: Who uses it most? Everyone, including people with disabilities.
-- **How does line height scale?** In proportion to text size. Line height grows with text size for zoom users. Because: What accessibility level do we commit to? AAA.
+- **Where does type do the most work?** Forms and labels. Type matters most in form labels and hints. Because: What is the main content? Forms and tasks.
+- **Which color roles does it need?** Surface, text, action and status. Few color roles, each with one clear meaning. Because: What must the interface protect? Low effort to understand.
 - **How many emphasis levels do actions need?** Two. Primary and secondary only; fewer choices, fewer errors. Because: What must the interface protect? Low effort to understand.
-- **What carries meaning?** Color, icon and word. Never color alone. Because: What accessibility level do we commit to? AAA.
+- **How is the palette defined?** Neutrals and one brand ramp. True neutrals and one strong blue, checked for contrast. Because: What accessibility level do we commit to? AAA.
 - **How saturated is the palette?** Balanced. Strong but not loud color. Because: What should the brand feel like? Calm and clear.
+- **Where does color carry meaning first?** Links and actions. Links and actions must be found by everyone. Because: Which outcome matters most? Completion without errors.
+- **Which spacing roles does it need?** Gaps, insets and row heights. Large rows matter for touch and zoom. Because: Who uses it most? Everyone, including people with disabilities.
+- **How many densities exist?** One. One density; no compact mode to fail people. Because: Who uses it most? Everyone, including people with disabilities.
+- **How are spacing steps defined?** A coarse base unit. Big, even steps lower effort. Because: What must the interface protect? Low effort to understand.
 - **How dense is the layout?** Spacious. Space lowers effort and mis-taps. Because: What must the interface protect? Low effort to understand.
-- **How many densities exist?** One. One density, always generous. Because: Who uses it most? Everyone, including people with disabilities.
-- **What separates groups?** Space. Space separates groups. Because: What must the interface protect? Low effort to understand.
+- **Where does spacing matter most?** Between fields. Space between fields prevents mis-taps. Because: What is the main content? Forms and tasks.
+- **Which shape roles does it need?** Controls, badges and containers. Badges keep a clear rectangle. Because: What must the interface protect? Low effort to understand.
+- **How many corner sizes exist?** Three. Control, badge and container corners differ. Because: Which shape roles does it need? Controls, badges and containers.
+- **How are corners set?** Fixed for the product. One brand, one set of corners. Because: How many brands or products share the system? One.
 - **What should control corners say?** Slightly rounded. Clear, slightly rounded controls. Because: What should the brand feel like? Calm and clear.
-- **How heavy are borders?** Strong. Strong borders show where a field is. Because: What accessibility level do we commit to? AAA.
-- **What shape is a status label?** Rectangle. Clear rectangles with a word inside. Because: What must the interface protect? Low effort to understand.
-- **When does something get a shadow?** Never. Flat surfaces with strong borders; shadows are hard to see. Because: What accessibility level do we commit to? AAA.
-- **How soft are shadows?** Subtle. If used, subtle. Because: When does something get a shadow? Never.
-- **How is a dialog separated from the page?** Dim the page. Dimming makes the dialog obvious. Because: What must the interface protect? Low effort to understand.
-- **What is motion for?** Feedback. Motion only confirms an action. Because: Who uses it most? Everyone, including people with disabilities.
+- **Where does shape show most?** Controls and cards. Corners show on controls and step cards. Because: What is the main content? Forms and tasks.
+- **What rises above the page?** Nothing. Flat is easier to read at high zoom. Because: What accessibility level do we commit to? AAA.
+- **How many shadow levels exist?** None. No shadows. Because: What rises above the page? Nothing.
+- **What separates groups on the page?** Lines. Strong borders separate groups at any zoom. Because: What accessibility level do we commit to? AAA.
+- **How soft are shadows?** No shadows. No shadows; borders do the work. Because: What rises above the page? Nothing.
+- **Where does elevation show?** Dialogs only. Only dialogs separate, with a dimmed page and a border. Because: What rises above the page? Nothing.
+- **What is motion for?** Feedback only. Motion only confirms an action. Because: Who uses it most? Everyone, including people with disabilities.
+- **How many speeds exist?** One. One speed. Because: What is motion for? Feedback only.
+- **How is easing defined?** Standard ease-out. A standard ease-out is easy to follow. Because: Who uses it most? Everyone, including people with disabilities.
 - **How fast does feedback feel?** Moderate. Moderate speed is easy to follow. Because: Who uses it most? Everyone, including people with disabilities.
-- **What happens when someone asks for less motion?** Nothing moves. When asked, nothing moves. Because: What accessibility level do we commit to? AAA.
-- **When do icons appear?** Next to labels. Always a word next to an icon. Because: How do people recall the interface? They see it fresh each time.
-- **What icon style?** Filled. Filled icons are easier to see. Because: Who uses it most? Everyone, including people with disabilities.
-- **How big are icons next to text?** Larger than the text. Icons a little larger than text. Because: Who uses it most? Everyone, including people with disabilities.
-- **Which modes ship?** Light, dark and high contrast. Light, dark and high contrast. Because: What accessibility level do we commit to? AAA.
+- **Where does motion show?** State changes only. Only state changes move. Because: What is motion for? Feedback only.
+- **What do icons do?** Actions and status. Icons support words; they never replace them. Because: How do people recall the interface? They see it fresh each time.
+- **How many icon sizes exist?** One. One size, larger than the text. Because: How big are icons next to text? Larger than the text.
+- **What icon style?** Filled. Filled icons stay visible at low vision. Because: Who uses it most? Everyone, including people with disabilities.
+- **How big are icons next to text?** Larger than the text. Larger icons are easier to see. Because: Who uses it most? Everyone, including people with disabilities.
+- **Where do icons work hardest?** Status and messages. Icons work hardest beside status words and errors. Because: How many signals carry each meaning? Three: color, icon and word.
+- **What can a theme change?** Mode only. One brand, so only the mode changes. Because: How many brands or products share the system? One.
+- **How many themes ship?** Two. Light and dark. Because: Which modes ship? Light and dark.
 - **How are brands handled?** One brand. One service, one brand. Because: How many brands or products share the system? One.
-- **Who can change the theme?** The user. People pick the mode they need. Because: Who uses it most? Everyone, including people with disabilities.
+- **Which modes ship?** Light and dark. Light and dark ship as standard; both hold AAA text. Because: What accessibility level do we commit to? AAA.
+- **What changes when the theme changes?** Colors only. Only colors change. Because: What can a theme change? Mode only.
+- **Which states get their own visible value?** All, including loading. Every state, including loading, gets its own value. Because: What accessibility level do we commit to? AAA.
+- **How many signals carry each meaning?** Three: color, icon and word. Never color alone. Because: What accessibility level do we commit to? AAA.
 - **What contrast floor do we hold?** AAA for text. AAA contrast for text. Because: What accessibility level do we commit to? AAA.
-- **What is the smallest target?** Large. Large targets for motor needs. Because: Who uses it most? Everyone, including people with disabilities.
-- **Which states get their own visible value?** All, including loading. Every state is visible, loading too. Because: What accessibility level do we commit to? AAA.
-- **How are decisions named?** By role. Role names are easy to audit. Because: Who maintains the system? A platform team.
-- **How many token tiers?** Three. Three tiers for a platform team. Because: Who maintains the system? A platform team.
-- **Do components get their own keys?** Yes, a component API. Component keys let services adapt safely. Because: Who maintains the system? A platform team.
+- **What is the smallest target?** Large. Large targets for tremor and touch. Because: Who uses it most? Everyone, including people with disabilities.
+- **Where are the floors hardest to hold?** Forms. Forms are where people are blocked. Because: What is the main content? Forms and tasks.
+- **What gets a name?** Tokens and component keys. Components get their own keys. Because: How fast does it change? Rarely.
+- **How many token tiers?** Three. Primitives, semantics and component keys. Because: How fast does it change? Rarely.
+- **How are decisions named?** By role. Role names survive a redesign. Because: Who maintains the system? A platform team.
+- **How are names written?** Lowercase words in paths. Lowercase paths read the same everywhere. Because: Who maintains the system? A platform team.
+- **What do components read?** Component keys. A component API keeps changes local. Because: How fast does it change? Rarely.
+- **Which kinds of copy does it need?** Labels, messages and help. Hints and help text carry people through each step. Because: What is the main content? Forms and tasks.
+- **How many tones does it use?** One. One plain tone everywhere; no surprises. Because: What must the interface protect? Low effort to understand.
+- **How is the voice defined?** Rules and a word list. A word list of common words, with terms to avoid. Because: Who uses it most? Everyone, including people with disabilities.
+- **How does it sound?** Plain and direct. Every sentence is easy to read on the first try. Because: Who uses it most? Everyone, including people with disabilities; What should the brand feel like? Calm and clear.
+- **Where do the words matter most?** Form steps and errors. Words decide whether a form gets finished. Because: Which outcome matters most? Completion without errors.
 
 ## When to use
 
@@ -122,6 +164,13 @@ Use: Continue, Change, Start, You. Avoid: Invalid, Utilise, Submit, Error code.
 | An alternative or cancel | Button secondary | A text link | Every action looks like a button people can find. |
 | Delete or remove | Button secondary, then a confirm page | Button primary | A confirm step prevents a costly error. |
 | An action on one row or item | Button secondary with a word | An icon on its own | A word says what will happen. |
+| A value with no token | The closest semantic token, then ask for a new one | A raw value in the component | A raw value skips the contrast checks every token passed. |
+| A button label | A common verb that says what happens next | "Submit" or "Proceed" | Common words are understood by the most people. |
+| The words of an error | Say what is wrong, where, and exactly how to fix it | "Invalid input" | People must be able to fix the error without help. |
+| A success message | Confirm what happened and what comes next | A confirmation with no next step | People need to know the task is finished and what happens now. |
+| An empty state | Explain what will appear here and how to start | A blank page | A blank page leaves people unsure if something failed. |
+| A confirmation question | Say what will happen in plain words, and offer a way back | A double negative | Plain words prevent a choice people did not mean. |
+| A first visit | Say how many steps there are and how long it takes | Marketing copy | Knowing the length lowers effort and anxiety. |
 
 ## Deploy it
 

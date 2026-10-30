@@ -31,7 +31,7 @@ export default function Take() {
         <Command>{`node cli/bin/open-ds.js list
 node cli/bin/open-ds.js init dense-data --dir ./my-app
 node cli/bin/open-ds.js when dense-data "a number in a table"
-node cli/bin/open-ds.js why dense-data typography.q3`}</Command>
+node cli/bin/open-ds.js why dense-data typography.definition`}</Command>
       </section>
       <section className="grid gap-4">
         <h2 className="text-2xl font-extrabold">What you get</h2>

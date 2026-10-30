@@ -95,3 +95,11 @@ test("scoped CSS is scoped to the scheme", () => {
     assert.ok(!/^:root/m.test(css), `${s.id} scoped css must not set :root`);
   }
 });
+
+test("voice tokens ship as content.json and stay out of the CSS", () => {
+  for (const s of index.schemes) {
+    const content = JSON.parse(read(s.id, "content.json")).content;
+    assert.equal(content.action.commit.$type, "string");
+    assert.ok(!read(s.id, "tokens.css").includes("--content-"));
+  }
+});

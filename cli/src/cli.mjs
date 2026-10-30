@@ -13,7 +13,7 @@ const HELP = `open-ds: deploy an Open DS scheme as a full design system.
   open-ds list                         the schemes, one line each
   open-ds show <scheme>                what a scheme is for, its themes and its voice
   open-ds why <scheme> <id>            the answer and its reasons, for a question id
-                                       (typography.q3) or a component key (button/primary/background)
+                                       (typography.definition) or a component key (button/primary/background)
   open-ds when <scheme> <situation>    what to use and why, for a situation id or plain words
   open-ds init <scheme> [--dir .] [--brand <id>]
                                        copy tokens, components, AGENTS.md and the agent skill
@@ -81,6 +81,7 @@ export function deploy(schemeId, dir, { brand, overwrite = false, roots = assetR
   for (const t of scheme.themes) {
     write(dir, `.open-ds/tokens/${t.id}.tokens.json`, readFileSync(join(tokenDir, `${t.id}.tokens.json`), "utf8"), files);
   }
+  write(dir, ".open-ds/content.json", readFileSync(join(tokenDir, "content.json"), "utf8"), files);
   write(dir, "AGENTS.md", agentsMd(scheme, g, { brand: brand ?? (brands.length > 1 ? brands[0] : null), components }), files);
   const skill = readFileSync(join(roots.skills, "open-ds", "SKILL.md"), "utf8") + skillSection(scheme);
   write(dir, ".claude/skills/open-ds/SKILL.md", skill, files);
@@ -140,15 +141,15 @@ export async function run(argv) {
         console.log(`${s.name} (${s.id} ${s.version}, ${s.status})\n${s.summary}\n`);
         console.log(`Use when: ${s.ai.use_when}\nAvoid when: ${s.ai.avoid_when}\n`);
         console.log(`Themes: ${s.themes.map((t) => t.id).join(", ")}`);
-        console.log(`Voice: ${s.voice.summary}`);
-        console.log(`Scenarios:\n${s.scenarios.map((x) => `  - ${x}`).join("\n")}`);
+        console.log(`Voice: ${s.voice.summary.text}`);
+        console.log(`Scenarios:\n${s.scenarios.map((x) => `  - ${x.text}`).join("\n")}`);
       });
       return 0;
     }
     if (cmd === "why") {
       const [id, target] = args;
       const s = loadScheme(id ?? "");
-      if (!target) throw new Error("why needs a question id (typography.q3) or a component key (button/primary/background).");
+      if (!target) throw new Error("why needs a question id (typography.definition) or a component key (button/primary/background).");
       const answer = why(s, target);
       if (answer) {
         out(answer, () => printWhy(answer));

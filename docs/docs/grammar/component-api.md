@@ -27,6 +27,7 @@ Components read only these keys. A scheme changes how they look by pointing a ke
 | `button/font-size` | Button label size. | `type.label.font-size` |
 | `button/font-weight` | Button label weight. | `type.label.font-weight` |
 | `button/focus-ring` | Focus ring color on any button. | `color.border.focus` |
+| `button/icon-size` | Size of an icon inside a button. | `size.icon` |
 | `input/background` | Input fill. | `color.surface.default` |
 | `input/border` | Input border at rest. | `color.border.strong` |
 | `input/border-focus` | Input border when focused. | `color.border.focus` |

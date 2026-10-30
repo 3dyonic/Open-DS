@@ -1,7 +1,7 @@
 {
   "$schema": "./harness.schema.json",
   "description": "Claude's specs for the MVP: one item per Jira ticket, each listing what it delivers (In) and the checks that prove it. The harness runs these next to Yonatan's instructions.",
-  "source": "Jira OD-109 to OD-121, created 2026-10-30.",
+  "source": "Jira OD-109 to OD-123, created 2026-10-30.",
   "items": [
     {
       "id": "OD-115",
@@ -100,6 +100,18 @@
       "title": "Local end to end",
       "in": ["TESTING.md", "pnpm e2e"],
       "checks": ["e2e-guide", "e2e-run"]
+    },
+    {
+      "id": "OD-123",
+      "title": "One template for every scope; voice and scenarios as questions",
+      "in": [
+        "five method questions for every scope, voice included",
+        "owned tokens, landing components and situations per scope",
+        "use scenario questions",
+        "voice and scenario text as outputs with follows",
+        "voice tokens (content)"
+      ],
+      "checks": ["scopes-uniform-template", "outputs-follow-answers", "schemes-voice-and-themes", "json-files-validate"]
     }
   ]
 }

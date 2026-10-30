@@ -1,6 +1,6 @@
 /**
  * Dialog. Interrupts to ask for a decision, such as confirming a delete. The scrim dims the
- * page where the scheme answers elevation.q3 with "dim".
+ * page where the scheme answers the menu-or-dialog situation with a dimmed page.
  *
  * Reads only component keys: --overlay-*.
  */

@@ -50,7 +50,7 @@ node cli/bin/open-ds.js list
 ```
 
 ```bash
-node cli/bin/open-ds.js why dense-data typography.q3
+node cli/bin/open-ds.js why dense-data typography.definition
 ```
 
 ```bash

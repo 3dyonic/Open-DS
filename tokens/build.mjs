@@ -7,6 +7,7 @@
 //   theme.css          shadcn's variables and a Tailwind v4 @theme, mapped onto our semantics
 //   <theme>.tokens.json  the resolved DTCG tokens for one brand and mode
 //   tokens.json        the default theme (first brand, light) as DTCG
+//   content.json       the voice scope's tokens: words for common actions, as DTCG strings
 // and tokens/dist/index.json, a list of schemes, brands and themes.
 
 import { mkdirSync, readFileSync, readdirSync, rmSync, writeFileSync } from "node:fs";
@@ -146,6 +147,7 @@ export async function buildScheme(scheme) {
   writeFileSync(join(out, "theme.css"), themeCss(scheme));
   const first = scheme.themes[0];
   writeFileSync(join(out, "tokens.json"), JSON.stringify(themeTokens(scheme, first.brand, first.mode), null, 2) + "\n");
+  writeFileSync(join(out, "content.json"), JSON.stringify({ content: scheme.tokens.content }, null, 2) + "\n");
   return {
     id: scheme.id,
     name: scheme.name,
