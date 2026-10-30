@@ -80,6 +80,8 @@ export default async function SchemePage({ params }: { params: Promise<{ id: str
   const s = scheme(id);
   const g = grammar();
   const sit = Object.fromEntries(g.situations.map((x) => [x.id, x]));
+  const sitTitle = (id: string) => sit[id].title;
+  const voiceRules = s.usage.filter((u) => sit[u.situation].scope === "voice");
   const brands = Object.entries(s.tokens.brands).map(([bid, b]) => ({ id: bid, label: b.label }));
   const semantic = s.tokens.semantic as { light: unknown; base: unknown };
   return (
@@ -113,8 +115,8 @@ export default async function SchemePage({ params }: { params: Promise<{ id: str
         </h2>
         <ul className="grid gap-3 md:grid-cols-2">
           {s.scenarios.map((x) => (
-            <li key={x} className="rounded-lg border border-line bg-white p-4">
-              {x}
+            <li key={x.text} className="rounded-lg border border-line bg-white p-4">
+              {x.text}
             </li>
           ))}
         </ul>
@@ -123,36 +125,40 @@ export default async function SchemePage({ params }: { params: Promise<{ id: str
       <section className="grid gap-4" aria-labelledby="voice">
         <Eyebrow>Voice and tone</Eyebrow>
         <h2 id="voice" className="text-3xl font-extrabold">
-          {s.voice.summary}
+          {s.voice.summary.text}
         </h2>
         <div className="grid gap-6 md:grid-cols-2">
           <div className="grid content-start gap-3">
             <ul className="grid gap-2">
               {s.voice.principles.map((p) => (
-                <li key={p}>— {p}</li>
+                <li key={p.text}>— {p.text}</li>
               ))}
             </ul>
             <dl className="grid gap-2 text-sm">
-              {Object.entries(s.voice.tone).map(([k, v]) => (
-                <div key={k} className="grid grid-cols-[7rem_1fr] gap-2">
-                  <dt className="font-mono text-xs uppercase text-muted">{k}</dt>
-                  <dd>{v}</dd>
+              {voiceRules.map((u) => (
+                <div key={u.situation} className="grid grid-cols-[7rem_1fr] gap-2">
+                  <dt className="font-mono text-xs uppercase text-muted">
+                    {sitTitle(u.situation)}
+                  </dt>
+                  <dd>{u.use}</dd>
                 </div>
               ))}
             </dl>
             {s.voice.brands && (
               <p className="text-sm">
                 {Object.entries(s.voice.brands)
-                  .map(([b, t]) => `${b[0].toUpperCase() + b.slice(1)}: ${t}`)
+                  .map(([b, t]) => `${b[0].toUpperCase() + b.slice(1)}: ${t.text}`)
                   .join(" · ")}
               </p>
             )}
           </div>
           <ul className="grid content-start gap-2">
-            {s.voice.examples.map((e) => (
-              <li key={e.context} className="rounded-lg border border-line bg-white p-3">
-                <span className="font-mono text-xs uppercase text-muted">{e.context}</span>
-                <p className="mt-1 text-lg">“{e.text}”</p>
+            {voiceRules.map((u) => (
+              <li key={u.situation} className="rounded-lg border border-line bg-white p-3">
+                <span className="font-mono text-xs uppercase text-muted">
+                  {sitTitle(u.situation)}
+                </span>
+                <p className="mt-1 text-lg">“{u.example}”</p>
               </li>
             ))}
             <li className="text-sm text-muted">

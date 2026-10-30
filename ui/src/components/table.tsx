@@ -1,7 +1,7 @@
 /**
  * Table. Rows of data. Row height is a scheme decision (situation table-row): compact in
  * Dense data, comfortable or large elsewhere. Numbers use the data text role so columns align
- * where the scheme answers typography.q1 with a data role.
+ * where the scheme answers typography.roles with a data role.
  *
  * Reads only component keys: --table-*.
  */

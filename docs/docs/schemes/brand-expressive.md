@@ -16,7 +16,7 @@ Brand expressive is an Open DS scheme: a full set of answers to the Open DS gram
 - **Themes:** light, dark
 - **Status:** draft
 
-## The work it serves
+## Use scenarios
 
 - A visitor lands on a launch page from a social post and joins the waiting list.
 - An agency swaps the campaign colors for the next drop without changing the components.
@@ -29,15 +29,16 @@ Playful and short. Big words, few of them.
 - Verbs that move: Join, Try, Go.
 - Playful in headlines, plain in errors.
 
-| Context | Tone | Example |
-| --- | --- | --- |
-| error | Plain first, a light touch after. | That email doesn't look right. Check it and try again. |
-| success | Celebrate, briefly. | You're on the list. See you at launch. |
-| empty | Playful, with a clear next step. | Nothing here yet. Go find something you love. |
-| confirm | Plain. No jokes when something is lost. | Remove this from your list? You can add it back later. |
-| onboarding | One bold line and one button. |  |
-
 Use: Join, Drop, Go, Love. Avoid: Synergy, Leverage, Kindly.
+
+| Moment | Tone | Example |
+| --- | --- | --- |
+| A button label | A short verb that moves: Join, Try, Go | Join the drop |
+| The words of an error | Plain first, a light touch after | That email doesn't look right. Check it and try again. |
+| A success message | Celebrate, briefly | You're on the list. See you at launch. |
+| An empty state | Playful, with a clear next step | Nothing here yet. Go find something you love. |
+| A confirmation question | Plain. No jokes when something is lost. | Remove this from your list? You can add it back later. |
+| A first visit | One bold line and one button | The drop is coming. Be first. |
 
 ## Reasons
 
@@ -55,43 +56,84 @@ Use: Join, Drop, Go, Love. Avoid: Synergy, Leverage, Kindly.
 - **What is a costly mistake?** Looking off-brand. A bland page is the costly mistake. Because: What does the product do for the business? Sells and converts.
 - **What should the brand feel like?** Bold. Bold and confident. Because: What does the product do for the business? Sells and converts.
 - **How visible is the brand in the interface?** Loud. The brand is loud everywhere. Because: What should the brand feel like? Bold.
-- **How does the product speak?** Playful. Playful and short. Because: What should the brand feel like? Bold.
-- **How formal is it?** Casual. Casual. Because: What should the brand feel like? Bold.
+- **Where do people use it?** On the move. Visitors come from social posts on their phones. Because: Who uses it most? Customers who choose us.
+- **How long is one visit?** A few minutes. A visit lasts a few minutes at most. Because: Which outcome matters most? Engagement.
 - **Who maintains the system?** An agency. An agency runs campaigns.
 - **How fast does it change?** Every campaign. Every campaign changes the look a little. Because: Who maintains the system? An agency.
 
 ## Design decisions
 
-- **Which text roles does the product need?** Core and expressive display. A big expressive display role carries the brand. Because: How visible is the brand in the interface? Loud.
+Every scope answers the same five questions.
+
+| Scope | Roles | How many | How defined | Values | Lands in |
+| --- | --- | --- | --- | --- | --- |
+| Typography | Core and expressive display | Many | A ratio, line heights in proportion | Regular | Headlines and hero |
+| Color | Those and brand accents | Three | Neutrals and one brand ramp | Vivid | Brand moments |
+| Spacing | Gaps and insets | One | A coarse base unit | Spacious | Between big sections |
+| Shape | Controls and containers | Two | Fixed for the product | Pill | Buttons and badges |
+| Elevation | Cards too | Two | Cards | Pronounced | Cards, menus and dialogs |
+| Motion | Feedback and expression | Three | A spring | Relaxed | Hero and launch moments |
+| Iconography | Those and decoration | Two | Two-tone | Larger than the text | Buttons and calls to action |
+| Theming | Mode only | Two | One brand | Light and dark | Colors only |
+| Accessibility | Those and pressed | Two: color and word | AA | Touch size | Brand color |
+| Naming | Tokens and component keys | Three | By role | Lowercase words in paths | Component keys |
+| Voice and tone | Labels, messages and headlines | One per moment | Principles and examples | Playful | Headlines and buttons |
+
+- **Which text roles does it need?** Core and expressive display. A big expressive display role carries the brand. Because: How visible is the brand in the interface? Loud.
+- **How many sizes does the scale have?** Many. A wide scale gives big moments room. Because: How visible is the brand in the interface? Loud.
+- **How are sizes and line heights defined?** A ratio, line heights in proportion. Ratios suit the big display sizes. Because: Which text roles does it need? Core and expressive display.
 - **How large is body text?** Regular. Regular body; the display does the shouting. Because: How much is on one screen? One idea at a time.
-- **How does line height scale?** In proportion to text size. Ratios suit the big display sizes. Because: Which text roles does the product need? Core and expressive display.
+- **Where does type do the most work?** Headlines and hero. Type does its work in headlines. Because: How visible is the brand in the interface? Loud.
+- **Which color roles does it need?** Those and brand accents. Brand accents are part of the message. Because: How visible is the brand in the interface? Loud.
 - **How many emphasis levels do actions need?** Three. Primary, secondary, ghost. Because: How often do people repeat actions? Rarely.
-- **What carries meaning?** Color and word. Color and word. Because: What accessibility level do we commit to? AA.
+- **How is the palette defined?** Neutrals and one brand ramp. Warm neutrals and one vivid ramp. Because: What should the brand feel like? Bold.
 - **How saturated is the palette?** Vivid. Vivid color is the brand. Because: How visible is the brand in the interface? Loud.
+- **Where does color carry meaning first?** Brand moments. Color makes the launch moment. Because: Which outcome matters most? Engagement.
+- **Which spacing roles does it need?** Gaps and insets. Few tables; no row role needed. Because: What is the main content? Images and campaigns.
+- **How many densities exist?** One. One generous density. Because: How much is on one screen? One idea at a time.
+- **How are spacing steps defined?** A coarse base unit. Big, even steps make big moments. Because: How visible is the brand in the interface? Loud.
 - **How dense is the layout?** Spacious. Big space makes big moments. Because: How much is on one screen? One idea at a time.
-- **How many densities exist?** One. One density. Because: How much is on one screen? One idea at a time.
-- **What separates groups?** Space. Space and color blocks separate sections. Because: What should the brand feel like? Bold.
-- **What should control corners say?** Pill. Pill controls feel playful. Because: How does the product speak? Playful.
-- **How heavy are borders?** Strong. Strong borders read as graphic. Because: What should the brand feel like? Bold.
-- **What shape is a status label?** Pill. Pill badges. Because: What should control corners say? Pill.
-- **When does something get a shadow?** Cards too. Cards float to feel tactile. Because: What must the interface protect? Delight.
-- **How soft are shadows?** Pronounced. Pronounced shadows add depth. Because: What should the brand feel like? Bold.
-- **How is a dialog separated from the page?** Dim the page. Dim the page. Because: What must the interface protect? Delight.
-- **What is motion for?** Expression. Motion expresses the brand. Because: How visible is the brand in the interface? Loud.
+- **Where does spacing matter most?** Between big sections. Space works between big sections. Because: What is the main content? Images and campaigns.
+- **Which shape roles does it need?** Controls and containers. Pills everywhere; badges share the control corner. Because: What should the brand feel like? Bold.
+- **How many corner sizes exist?** Two. Pill controls and large container corners. Because: Which shape roles does it need? Controls and containers.
+- **How are corners set?** Fixed for the product. One brand, one set of corners. Because: How many brands or products share the system? One.
+- **What should control corners say?** Pill. Pill controls feel playful. Because: What should the brand feel like? Bold.
+- **Where does shape show most?** Buttons and badges. Pill buttons are the signature shape. Because: How visible is the brand in the interface? Loud.
+- **What rises above the page?** Cards too. Cards lift to feel like objects. Because: How visible is the brand in the interface? Loud.
+- **How many shadow levels exist?** Two. One shadow for cards, one for overlays. Because: What rises above the page? Cards too.
+- **What separates groups on the page?** Cards. Cards hold each offer. Because: What is the main content? Images and campaigns.
+- **How soft are shadows?** Pronounced. Pronounced shadows add depth. Because: How visible is the brand in the interface? Loud.
+- **Where does elevation show?** Cards, menus and dialogs. Cards, menus and dialogs rise. Because: What rises above the page? Cards too.
+- **What is motion for?** Feedback and expression. Motion carries personality. Because: How visible is the brand in the interface? Loud.
+- **How many speeds exist?** Three. Fast feedback, moderate panels, relaxed hero. Because: What is motion for? Feedback and expression.
+- **How is easing defined?** A spring. A spring that overshoots feels alive. Because: What should the brand feel like? Bold.
 - **How fast does feedback feel?** Relaxed. Relaxed, springy motion. Because: What must the interface protect? Delight.
-- **What happens when someone asks for less motion?** Motion is reduced. Motion is reduced when asked. Because: What accessibility level do we commit to? AA.
-- **When do icons appear?** Rarely. Few icons; type and image carry the page. Because: What is the main content? Images and campaigns.
-- **What icon style?** Two-tone. Two-tone icons in brand colors. Because: How visible is the brand in the interface? Loud.
-- **How big are icons next to text?** Larger than the text. Larger icons as graphic elements. Because: How visible is the brand in the interface? Loud.
-- **Which modes ship?** Light and dark. Light and dark ship as standard; dark is a campaign favourite. Because: How visible is the brand in the interface? Loud.
-- **How are brands handled?** One brand. One brand. Because: How many brands or products share the system? One.
-- **Who can change the theme?** The product. The campaign picks the mode; users can switch. Because: How fast does it change? Every campaign.
-- **What contrast floor do we hold?** AA. AA, checked on vivid color. Because: What accessibility level do we commit to? AA.
-- **What is the smallest target?** Touch size. Phones first. Because: Who uses it most? Customers who choose us.
+- **Where does motion show?** Hero and launch moments. Motion shows in hero and launch moments. Because: Which outcome matters most? Engagement.
+- **What do icons do?** Those and decoration. Icons also decorate campaign pages. Because: How visible is the brand in the interface? Loud.
+- **How many icon sizes exist?** Two. One size next to text, one for decoration. Because: What do icons do? Those and decoration.
+- **What icon style?** Two-tone. Two-tone icons carry the brand color. Because: How saturated is the palette? Vivid.
+- **How big are icons next to text?** Larger than the text. Larger icons hold their own next to big type. Because: Which text roles does it need? Core and expressive display.
+- **Where do icons work hardest?** Buttons and calls to action. Icons sit in calls to action. Because: Which outcome matters most? Engagement.
+- **What can a theme change?** Mode only. One brand, so only the mode changes. Because: How many brands or products share the system? One.
+- **How many themes ship?** Two. Light and dark. Because: Which modes ship? Light and dark.
+- **How are brands handled?** One brand. One brand per campaign. Because: How many brands or products share the system? One.
+- **Which modes ship?** Light and dark. Light and dark ship as standard. Because: Who uses it most? Customers who choose us.
+- **What changes when the theme changes?** Colors only. Only colors change. Because: What can a theme change? Mode only.
 - **Which states get their own visible value?** Those and pressed. Pressed for touch. Because: What is the smallest target? Touch size.
-- **How are decisions named?** By role. Role names let campaigns change values. Because: How fast does it change? Every campaign.
-- **How many token tiers?** Three. Three tiers. Because: How fast does it change? Every campaign.
-- **Do components get their own keys?** Yes, a component API. Keys keep components stable across campaigns. Because: How fast does it change? Every campaign.
+- **How many signals carry each meaning?** Two: color and word. Color and word. Because: What accessibility level do we commit to? AA.
+- **What contrast floor do we hold?** AA. AA, checked on every vivid color. Because: What accessibility level do we commit to? AA.
+- **What is the smallest target?** Touch size. Visitors come from social posts on phones. Because: Where do people use it? On the move.
+- **Where are the floors hardest to hold?** Brand color. Vivid brand color is the hardest to keep readable. Because: How saturated is the palette? Vivid.
+- **What gets a name?** Tokens and component keys. Components get their own keys. Because: How fast does it change? Every campaign.
+- **How many token tiers?** Three. Primitives, semantics and component keys. Because: How fast does it change? Every campaign.
+- **How are decisions named?** By role. Role names survive each campaign. Because: How fast does it change? Every campaign.
+- **How are names written?** Lowercase words in paths. Lowercase paths read the same everywhere. Because: Who maintains the system? An agency.
+- **What do components read?** Component keys. Campaigns change primitives, never components. Because: How fast does it change? Every campaign.
+- **Which kinds of copy does it need?** Labels, messages and headlines. Headlines carry the campaign. Because: What does the product do for the business? Sells and converts.
+- **How many tones does it use?** One per moment. Playful in headlines, plain in errors. Because: What is a costly mistake? Looking off-brand.
+- **How is the voice defined?** Principles and examples. Principles and examples guide each campaign's writers. Because: Who maintains the system? An agency.
+- **How does it sound?** Playful. Big words, few of them. Because: What should the brand feel like? Bold; How visible is the brand in the interface? Loud.
+- **Where do the words matter most?** Headlines and buttons. Words work hardest in headlines and buttons. Because: Which outcome matters most? Engagement.
 
 ## When to use
 
@@ -122,6 +164,13 @@ Use: Join, Drop, Go, Love. Avoid: Synergy, Leverage, Kindly.
 | An alternative or cancel | Button ghost | A second primary | The alternative must not compete. |
 | Delete or remove | Button secondary, then confirm | Button primary | Confirm before destroying data. |
 | An action on one row or item | Button ghost with a word | An icon alone | A word keeps it clear. |
+| A value with no token | The closest semantic token, then ask for a new one | A raw value in the component | The next campaign changes primitives; raw values would stay behind. |
+| A button label | A short verb that moves: Join, Try, Go | "Learn more" | Big moments need verbs with energy. |
+| The words of an error | Plain first, a light touch after | A joke before the fix | Playful copy must never hide what went wrong. |
+| A success message | Celebrate, briefly | A long thank-you | A short celebration is remembered. |
+| An empty state | Playful, with a clear next step | A dead end | Playful words still need a way forward. |
+| A confirmation question | Plain. No jokes when something is lost. | Playful copy | Loss is never the moment for a joke. |
+| A first visit | One bold line and one button | A paragraph of copy | Visitors from a social post give a few seconds. |
 
 ## Deploy it
 

@@ -16,7 +16,7 @@ Content first is an Open DS scheme: a full set of answers to the Open DS grammar
 - **Themes:** light, dark
 - **Status:** draft
 
-## The work it serves
+## Use scenarios
 
 - A reader arrives from search on a phone and reads a long guide in one sitting.
 - A returning reader saves an article to finish on the train.
@@ -29,15 +29,16 @@ Conversational and warm. Talk to one reader, like a good editor would.
 - Short sentences with room to breathe.
 - Explain why before asking for anything.
 
-| Context | Tone | Example |
-| --- | --- | --- |
-| error | Calm and helpful. Take the blame, offer the way forward. | We could not save your email. Check it and try again. |
-| success | Warm and brief. | You're in. The next issue arrives on Friday. |
-| empty | An invitation, not a dead end. | Nothing saved yet. Tap Save on any article to read it later. |
-| confirm | Gentle and clear about what changes. | Unsubscribe from the weekly letter? You can come back any time. |
-| onboarding | One sentence on what is here and why it is worth reading. |  |
-
 Use: Read, Save for later, You, Next issue. Avoid: Click here, Submit, Users, Content.
+
+| Moment | Tone | Example |
+| --- | --- | --- |
+| A button label | A warm verb a reader would say | Subscribe |
+| The words of an error | Calm and helpful. Take the blame, offer the way forward. | We could not save your email. Check it and try again. |
+| A success message | Warm and brief, with what happens next | You're in. The next issue arrives on Friday. |
+| An empty state | An invitation, not a dead end | Nothing saved yet. Tap Save on any article to read it later. |
+| A confirmation question | Gentle and clear about what changes | Unsubscribe from the weekly letter? You can come back any time. |
+| A first visit | One sentence on what is here and why it is worth reading | Practical guides, one a week. Start with the most read. |
 
 ## Reasons
 
@@ -55,43 +56,84 @@ Use: Read, Save for later, You, Next issue. Avoid: Click here, Submit, Users, Co
 - **What is a costly mistake?** Losing your place. Losing your place in an article breaks the read. Because: What is the main task? Read start to end.
 - **What should the brand feel like?** Warm. Warm and considered, like a good magazine. Because: What does the product do for the business? Informs and publishes.
 - **How visible is the brand in the interface?** Present. The brand shows in type, not in color. Because: What should the brand feel like? Warm.
-- **How does the product speak?** Conversational. The voice talks to one reader. Because: Who uses it most? Occasional visitors.
-- **How formal is it?** Neutral. Neutral formality suits every topic.
+- **Where do people use it?** Anywhere, on any device. Readers arrive on phones and laptops alike. Because: Who uses it most? Occasional visitors.
+- **How long is one visit?** One sitting. A guide is read in one sitting. Because: What is the main content? Long-form text.
 - **Who maintains the system?** A small team. A small editorial team.
 - **How fast does it change?** Rarely. The design changes rarely.
 
 ## Design decisions
 
-- **Which text roles does the product need?** Core and editorial display. A lead and a display role open articles. Because: What is the main content? Long-form text.
+Every scope answers the same five questions.
+
+| Scope | Roles | How many | How defined | Values | Lands in |
+| --- | --- | --- | --- | --- | --- |
+| Typography | Core and editorial display | Many | A ratio, line heights in proportion | Large | Articles and long text |
+| Color | Surface, text, action and status | Three | Neutrals and one brand ramp | Balanced | Links and actions |
+| Spacing | Gaps and insets | One | A coarse base unit | Spacious | Between paragraphs |
+| Shape | Controls, badges and containers | Three | Fixed for the product | Rounded | Controls and cards |
+| Elevation | Only what floats | One | Space | Soft | Menus and dialogs |
+| Motion | Feedback and guidance | Two | Standard ease-out | Moderate | State changes and panels |
+| Iconography | Actions, status and navigation | One | Outline | Match the text | Navigation |
+| Theming | Mode only | Two | One brand | Light and dark | Colors only |
+| Accessibility | Those and pressed | Two: color and word | AA | Touch size | Long text |
+| Naming | Tokens and component keys | Three | By role | Lowercase words in paths | Component keys |
+| Voice and tone | Labels, messages and articles | One per moment | Principles and examples | Conversational | Articles and guides |
+
+- **Which text roles does it need?** Core and editorial display. A lead and a display role open articles. Because: What is the main content? Long-form text.
+- **How many sizes does the scale have?** Many. Long pages need a clear hierarchy of headings. Because: What is the main content? Long-form text.
+- **How are sizes and line heights defined?** A ratio, line heights in proportion. Line height is a ratio, so it grows with the text. Because: What is the main task? Read start to end; What accessibility level do we commit to? AA.
 - **How large is body text?** Large. Large body text is easy on the eyes. Because: Which outcome matters most? Reading comfort.
-- **How does line height scale?** In proportion to text size. Line height is a ratio, so it grows with the text. Because: What is the main task? Read start to end; What accessibility level do we commit to? AA.
+- **Where does type do the most work?** Articles and long text. Type does its work in articles. Because: What is the main content? Long-form text.
+- **Which color roles does it need?** Surface, text, action and status. Reading needs few color roles. Because: What must the interface protect? Attention on the content.
 - **How many emphasis levels do actions need?** Three. Primary, secondary and a text link. Because: How often do people repeat actions? Rarely.
-- **What carries meaning?** Color and word. Status is rare; color and a word are enough. Because: What accessibility level do we commit to? AA.
+- **How is the palette defined?** Neutrals and one brand ramp. Warm paper neutrals and one ink ramp. Because: What should the brand feel like? Warm.
 - **How saturated is the palette?** Balanced. A calm, balanced palette. Because: What should the brand feel like? Warm.
+- **Where does color carry meaning first?** Links and actions. Color marks links inside the text. Because: What is the main task? Read start to end.
+- **Which spacing roles does it need?** Gaps and insets. No dense tables, so no row role. Because: What is the main content? Long-form text.
+- **How many densities exist?** One. One calm density. Because: How much is on one screen? One idea at a time.
+- **How are spacing steps defined?** A coarse base unit. Big, even steps suit long reading. Because: Which outcome matters most? Reading comfort.
 - **How dense is the layout?** Spacious. Room around the text helps reading. Because: Which outcome matters most? Reading comfort.
-- **How many densities exist?** One. One density everywhere. Because: How much is on one screen? One idea at a time.
-- **What separates groups?** Space. Space separates sections; lines add noise. Because: What must the interface protect? Attention on the content.
+- **Where does spacing matter most?** Between paragraphs. Space is spent between paragraphs and sections. Because: What is the main content? Long-form text.
+- **Which shape roles does it need?** Controls, badges and containers. Pill badges differ from controls. Because: What should the brand feel like? Warm.
+- **How many corner sizes exist?** Three. Control, badge and container corners differ. Because: Which shape roles does it need? Controls, badges and containers.
+- **How are corners set?** Fixed for the product. One brand, one set of corners. Because: How many brands or products share the system? One.
 - **What should control corners say?** Rounded. Rounded corners feel friendly. Because: What should the brand feel like? Warm.
-- **How heavy are borders?** Regular. Regular borders read clearly on warm paper. Because: What should the brand feel like? Warm.
-- **What shape is a status label?** Pill. Pills feel softer next to text. Because: What should the brand feel like? Warm.
-- **When does something get a shadow?** Only when it floats. Only menus and dialogs float. Because: What must the interface protect? Attention on the content.
-- **How soft are shadows?** Soft. Soft shadows match the warm brand. Because: What should the brand feel like? Warm.
-- **How is a dialog separated from the page?** Dim the page. Dimming focuses the reader on the dialog. Because: What must the interface protect? Attention on the content.
-- **What is motion for?** Guidance. Motion guides from one part to the next. Because: How do people recall the interface? They see it fresh each time.
+- **Where does shape show most?** Controls and cards. Corners show on buttons and article cards. Because: What is the main content? Long-form text.
+- **What rises above the page?** Only what floats. Only menus and dialogs float. Because: What must the interface protect? Attention on the content.
+- **How many shadow levels exist?** One. One shadow for floating things. Because: What rises above the page? Only what floats.
+- **What separates groups on the page?** Space. Space separates groups; lines would interrupt reading. Because: Which outcome matters most? Reading comfort.
+- **How soft are shadows?** Soft. Soft shadows suit warm paper. Because: What should the brand feel like? Warm.
+- **Where does elevation show?** Menus and dialogs. Menus and dialogs are the only layers. Because: What rises above the page? Only what floats.
+- **What is motion for?** Feedback and guidance. Motion confirms actions and guides between pages. Because: Who uses it most? Occasional visitors.
+- **How many speeds exist?** Two. One speed for feedback, one for panels. Because: What is motion for? Feedback and guidance.
+- **How is easing defined?** Standard ease-out. A standard ease-out is calm. Because: What should the brand feel like? Warm.
 - **How fast does feedback feel?** Moderate. Moderate speed feels calm. Because: What should the brand feel like? Warm.
-- **What happens when someone asks for less motion?** Nothing moves. When asked, nothing moves. Because: What accessibility level do we commit to? AA.
-- **When do icons appear?** Next to labels. Occasional visitors need a word next to each icon. Because: How do people recall the interface? They see it fresh each time.
-- **What icon style?** Outline. Outline icons stay quiet next to text. Because: What must the interface protect? Attention on the content.
+- **Where does motion show?** State changes and panels. State changes and opening panels move. Because: What is motion for? Feedback and guidance.
+- **What do icons do?** Actions, status and navigation. Occasional readers need icons for save, share and navigation. Because: Who uses it most? Occasional visitors.
+- **How many icon sizes exist?** One. One size next to text. Because: How big are icons next to text? Match the text.
+- **What icon style?** Outline. Outline icons stay quiet beside text. Because: What must the interface protect? Attention on the content.
 - **How big are icons next to text?** Match the text. Icons match the text size. Because: What must the interface protect? Attention on the content.
-- **Which modes ship?** Light and dark. Light and dark ship as standard for night readers. Because: Who uses it most? Occasional visitors.
+- **Where do icons work hardest?** Navigation. Icons help most in navigation. Because: Who uses it most? Occasional visitors.
+- **What can a theme change?** Mode only. One brand, so only the mode changes. Because: How many brands or products share the system? One.
+- **How many themes ship?** Two. Light and dark. Because: Which modes ship? Light and dark.
 - **How are brands handled?** One brand. One publication, one brand. Because: How many brands or products share the system? One.
-- **Who can change the theme?** The user. Readers pick light or dark. Because: Who uses it most? Occasional visitors.
-- **What contrast floor do we hold?** AA. AA contrast for all text. Because: What accessibility level do we commit to? AA.
-- **What is the smallest target?** Touch size. Many readers are on phones. Because: Who uses it most? Occasional visitors.
+- **Which modes ship?** Light and dark. Light and dark ship as standard; dark helps night reading. Because: Where do people use it? Anywhere, on any device.
+- **What changes when the theme changes?** Colors only. Only colors change. Because: What can a theme change? Mode only.
 - **Which states get their own visible value?** Those and pressed. Pressed gets its own value for touch. Because: What is the smallest target? Touch size.
+- **How many signals carry each meaning?** Two: color and word. Status is rare; color and a word are enough. Because: What accessibility level do we commit to? AA.
+- **What contrast floor do we hold?** AA. AA contrast, with large text helping further. Because: What accessibility level do we commit to? AA.
+- **What is the smallest target?** Touch size. Readers are often on phones. Because: Where do people use it? Anywhere, on any device.
+- **Where are the floors hardest to hold?** Long text. Long text needs steady contrast and line length. Because: What is the main content? Long-form text.
+- **What gets a name?** Tokens and component keys. Components get their own keys. Because: How fast does it change? Rarely.
+- **How many token tiers?** Three. Primitives, semantics and component keys. Because: How fast does it change? Rarely.
 - **How are decisions named?** By role. Role names survive a redesign. Because: Who maintains the system? A small team.
-- **How many token tiers?** Three. Primitives, semantics and component keys. Because: Who maintains the system? A small team.
-- **Do components get their own keys?** Yes, a component API. A component API keeps changes local. Because: Who maintains the system? A small team.
+- **How are names written?** Lowercase words in paths. Lowercase paths read the same everywhere. Because: Who maintains the system? A small team.
+- **What do components read?** Component keys. A component API keeps changes local. Because: How fast does it change? Rarely.
+- **Which kinds of copy does it need?** Labels, messages and articles. Articles are the product; the UI copy must match them. Because: What is the main content? Long-form text.
+- **How many tones does it use?** One per moment. Warm by default, calmer for errors. Because: What must the interface protect? Attention on the content.
+- **How is the voice defined?** Principles and examples. Editors work from principles and examples, not word lists. Because: Who maintains the system? A small team; What is the main content? Long-form text.
+- **How does it sound?** Conversational. Talk to one reader, like a good editor. Because: Who uses it most? Occasional visitors; What should the brand feel like? Warm.
+- **Where do the words matter most?** Articles and guides. Most words are in articles and guides. Because: What is the main content? Long-form text.
 
 ## When to use
 
@@ -122,6 +164,13 @@ Use: Read, Save for later, You, Next issue. Avoid: Click here, Submit, Users, Co
 | An alternative or cancel | Button ghost as a text link | A second boxed button | A link feels lighter and does not compete. |
 | Delete or remove | Button secondary with the full verb, then confirm | Button primary | Naming the verb and confirming prevents a mistake. |
 | An action on one row or item | Button ghost with a word | An icon on its own | Occasional visitors need the word. |
+| A value with no token | The closest semantic token, then ask for a new one | A raw value in the component | Raw values break dark mode and the next redesign. |
+| A button label | A warm verb a reader would say | "Submit" or "Click here" | Buttons are part of the reading voice. |
+| The words of an error | Calm and helpful. Take the blame, offer the way forward. | Blaming the reader | A calm error keeps the reader's trust. |
+| A success message | Warm and brief, with what happens next | A bare "Done" | A warm close invites the reader back. |
+| An empty state | An invitation, not a dead end | "No items" | An empty list is a chance to show what the product offers. |
+| A confirmation question | Gentle and clear about what changes | Guilt or pressure | Readers come back when leaving felt respectful. |
+| A first visit | One sentence on what is here and why it is worth reading | A sign-up wall | Occasional readers decide in seconds whether to stay. |
 
 ## Deploy it
 

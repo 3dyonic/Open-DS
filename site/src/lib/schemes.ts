@@ -11,6 +11,7 @@ export interface Option {
 }
 export interface Question {
   id: string;
+  method?: "roles" | "count" | "definition" | "values" | "lands";
   text: string;
   description: string;
   options: Option[];
@@ -20,7 +21,20 @@ export interface Group {
   kind: "reason" | "scope";
   title: string;
   description: string;
+  owns?: string[];
+  lands_in?: string[];
+  situations?: string[];
   questions: Question[];
+}
+export interface Method {
+  id: string;
+  title: string;
+  description: string;
+}
+/** Text written from answers. follows lists the question ids it comes from. */
+export interface Output {
+  text: string;
+  follows: string[];
 }
 export interface Situation {
   id: string;
@@ -30,6 +44,7 @@ export interface Situation {
 }
 export interface Grammar {
   description: string;
+  methods: Method[];
   reasons: Group[];
   scopes: Group[];
   situations: Situation[];
@@ -47,6 +62,7 @@ export interface Rule {
   not: string;
   why: string;
   because: string[];
+  example?: string;
 }
 export interface Scheme {
   id: string;
@@ -55,14 +71,12 @@ export interface Scheme {
   summary: string;
   description: string;
   ai: { use_when: string; avoid_when: string; example_products: string[] };
-  scenarios: string[];
+  scenarios: Output[];
   voice: {
-    summary: string;
-    principles: string[];
-    tone: Record<string, string>;
-    examples: { context: string; text: string }[];
-    words: { use: string[]; avoid: string[] };
-    brands?: Record<string, string>;
+    summary: Output;
+    principles: Output[];
+    words: { use: string[]; avoid: string[]; follows: string[] };
+    brands?: Record<string, Output>;
   };
   themes: { id: string; brand: string; mode: "light" | "dark" }[];
   answers: Answer[];

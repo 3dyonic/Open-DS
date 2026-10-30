@@ -8,14 +8,14 @@ description: "The Open DS grammar: reasons, scopes, tokens and the component API
 
 # The grammar
 
-The Open DS grammar: a finite set of questions a design system must answer. Reasons come first (business, people, content, tasks, human factors, outcomes, brand, voice and tone, team). Scopes follow (typography to naming). Each scheme answers every question, and each answer says why and which earlier answers it follows from. Situations are the moments where people need to know what to use; each scheme answers them too. Component keys are the shared component API every scheme fills.
+The Open DS grammar: a finite set of questions a design system must answer. Reasons come first (business, people, content, tasks, human factors, outcomes, brand, use scenarios, team). Scopes follow, from typography to voice and tone. Every scope answers the same five method questions (roles, how many, how defined, values, lands in) and has the same parts: the tokens it owns, the components it lands in and its situations. Each scheme answers every question, and each answer says why and which earlier answers it follows from. Situations are the moments where people need to know what to use; each scheme answers them too. Component keys are the shared component API every scheme fills.
 
-1. **reasons**: Why the system exists: product, people, content, tasks, human factors, outcomes, brand, voice and tone, team.
-2. **scopes**: The design decisions: typography, color, spacing, shape, elevation, motion, iconography, theming, accessibility, naming.
+1. **reasons**: Why the system exists: product, people, content, tasks, human factors, outcomes, brand, use scenarios, team.
+2. **scopes**: The design decisions: typography, color, spacing, shape, elevation, motion, iconography, theming, accessibility, naming, voice and tone. Each answers the five method questions.
 3. **tokens**: Primitives are the options. Semantics are the decisions, in light and dark. Brands and modes are themes.
 4. **component-api**: One key per component element, variant and state. Every scheme fills every key.
 
 - [Reasons](reasons.md): 9 groups
-- [Scopes](scopes.md): 10 groups
-- [Situations](situations.md): 25
-- [Component API](component-api.md): 62 keys
+- [Scopes](scopes.md): 11 groups
+- [Situations](situations.md): 32
+- [Component API](component-api.md): 63 keys

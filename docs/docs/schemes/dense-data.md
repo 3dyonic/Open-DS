@@ -16,7 +16,7 @@ Dense data is an Open DS scheme: a full set of answers to the Open DS grammar, w
 - **Themes:** light, dark
 - **Status:** draft
 
-## The work it serves
+## Use scenarios
 
 - An operations lead opens the orders table at 8:00 and scans 200 rows for late shipments.
 - A finance clerk compares this month's totals with last month's, column by column.
@@ -29,15 +29,16 @@ Terse and exact. Say what happened and what to do, in as few words as possible.
 - Use numbers, not words for numbers.
 - One verb per button. No "please", no exclamation marks.
 
-| Context | Tone | Example |
-| --- | --- | --- |
-| error | Flat and specific. Name the record and the fix. | Order 1042 not saved. Quantity must be 1 or more. |
-| success | A short confirmation, then get out of the way. | 12 orders exported. |
-| empty | Say why it is empty and the one action that fills it. | No late orders. Change the date range to see older ones. |
-| confirm | Name the exact object and the consequence. | Delete 3 orders? This cannot be undone. |
-| onboarding | Skip it. Show the data; add a tooltip where needed. |  |
-
 Use: Export, Filter, Save, Late, Paid. Avoid: Oops, Awesome, Please, Simply.
+
+| Moment | Tone | Example |
+| --- | --- | --- |
+| A button label | One verb from the word list | Export |
+| The words of an error | Name the record, then the fix. Flat and specific. | Order 1042 not saved. Quantity must be 1 or more. |
+| A success message | A short confirmation with the count | 12 orders exported. |
+| An empty state | Why it is empty and the one action that fills it | No late orders. Change the date range to see older ones. |
+| A confirmation question | Name the exact object and the consequence | Delete 3 orders? This cannot be undone. |
+| A first visit | No tour. Show the data, with a tooltip where needed. | Hover any column header to see what it counts. |
 
 ## Reasons
 
@@ -55,43 +56,84 @@ Use: Export, Filter, Save, Late, Paid. Avoid: Oops, Awesome, Please, Simply.
 - **What is a costly mistake?** Acting on the wrong record. Acting on the wrong row is the costly error. Because: What is the main task? Scan and compare.
 - **What should the brand feel like?** Precise. The interface must feel exact and trustworthy. Because: What is the main content? Numbers and records.
 - **How visible is the brand in the interface?** Quiet. The data is the hero; the brand steps back. Because: How much is on one screen? A lot.
-- **How does the product speak?** Terse. Experts want short labels and short messages. Because: Who uses it most? Daily experts.
-- **How formal is it?** Neutral. Neutral copy reads the same on every screen.
+- **Where do people use it?** At a desk. Experts work at a desk with a mouse and keyboard. Because: Who uses it most? Daily experts.
+- **How long is one visit?** All day. The tool stays open for the whole shift. Because: How often do people repeat actions? Constantly.
 - **Who maintains the system?** A small team. A small team keeps the system right.
 - **How fast does it change?** Every month. Features ship every month; the system must keep up.
 
 ## Design decisions
 
-- **Which text roles does the product need?** Core and data. A data role keeps numbers in aligned columns. Because: What is the main content? Numbers and records; What is the main task? Scan and compare.
+Every scope answers the same five questions.
+
+| Scope | Roles | How many | How defined | Values | Lands in |
+| --- | --- | --- | --- | --- | --- |
+| Typography | Core and data | Few | A ratio, line heights on the grid | Small | Tables and inputs |
+| Color | Surface, text, action and status | Three | Neutrals and one brand ramp | Muted | Status in tables |
+| Spacing | Gaps, insets and row heights | Two | A fine base unit | Compact | Rows and cells |
+| Shape | Controls, badges and containers | Three | Fixed for the product | Slightly rounded | Controls in dense rows |
+| Elevation | Only what floats | One | Lines | Subtle | Menus and dialogs |
+| Motion | Feedback only | One | Standard ease-out | Fast | State changes only |
+| Iconography | Actions and status | One | Outline | Match the text | Toolbars and rows |
+| Theming | Mode only | Two | One brand | Light and dark | Colors only |
+| Accessibility | Hover, focus, disabled | Three: color, icon and word | AA | Compact, for a pointer | Dense tables |
+| Naming | Tokens and component keys | Three | By role | Lowercase words in paths | Component keys |
+| Voice and tone | Labels and messages | One | Rules and a word list | Terse | Errors and empty states |
+
+- **Which text roles does it need?** Core and data. A data role keeps numbers in aligned columns. Because: What is the main content? Numbers and records; What is the main task? Scan and compare.
+- **How many sizes does the scale have?** Few. Few sizes keep a screen full of records calm. Because: How much is on one screen? A lot.
+- **How are sizes and line heights defined?** A ratio, line heights on the grid. Lines stay on the grid so rows align, and grow with the user's text size. Because: What is the main task? Scan and compare; What accessibility level do we commit to? AA.
 - **How large is body text?** Small. Small body text fits more rows on the screen. Because: How much is on one screen? A lot.
-- **How does line height scale?** On the grid, with the user's text size. Lines stay on the grid so rows align, and grow with the user's text size. Because: What is the main task? Scan and compare; What accessibility level do we commit to? AA.
+- **Where does type do the most work?** Tables and inputs. Most text sits in table cells and inputs. Because: What is the main content? Numbers and records.
+- **Which color roles does it need?** Surface, text, action and status. Surface, text, action and status cover an operations tool. Because: How visible is the brand in the interface? Quiet.
 - **How many emphasis levels do actions need?** Three. One primary per view; the rest step back. Because: How often do people repeat actions? Constantly.
-- **What carries meaning?** Color, icon and word. Many statuses share one table; color alone is not enough. Because: What accessibility level do we commit to? AA; What is the main content? Numbers and records.
+- **How is the palette defined?** Neutrals and one brand ramp. One product, one brand ramp on cool neutrals. Because: How many brands or products share the system? One.
 - **How saturated is the palette?** Muted. Muted color keeps attention on the data. Because: How visible is the brand in the interface? Quiet.
-- **How dense is the layout?** Compact. Compact spacing shows more records. Because: How much is on one screen? A lot.
+- **Where does color carry meaning first?** Status in tables. Color earns its place by marking late and failed records. Because: What is a costly mistake? Acting on the wrong record.
+- **Which spacing roles does it need?** Gaps, insets and row heights. Row height is a decision of its own in a table product. Because: What is the main content? Numbers and records.
 - **How many densities exist?** Two. A second, denser size serves tables and toolbars. Because: What is the main task? Scan and compare.
-- **What separates groups?** Lines. Thin lines guide the eye along rows. Because: What must the interface protect? People keep their place.
+- **How are spacing steps defined?** A fine base unit. A fine base unit gives the small steps dense screens need. Because: How much is on one screen? A lot.
+- **How dense is the layout?** Compact. Compact spacing shows more records. Because: How much is on one screen? A lot.
+- **Where does spacing matter most?** Rows and cells. Space is spent inside rows and cells. Because: What is the main task? Scan and compare.
+- **Which shape roles does it need?** Controls, badges and containers. Badges sit in columns and need their own corner. Because: What is the main task? Scan and compare.
+- **How many corner sizes exist?** Three. Control, badge and container corners differ. Because: Which shape roles does it need? Controls, badges and containers.
+- **How are corners set?** Fixed for the product. One brand, one fixed set of corners. Because: How many brands or products share the system? One.
 - **What should control corners say?** Slightly rounded. Small corners keep dense rows straight. Because: What should the brand feel like? Precise.
-- **How heavy are borders?** Hairline. Hairlines separate without adding weight. Because: How much is on one screen? A lot.
-- **What shape is a status label?** Rectangle. Rectangular badges align in a column. Because: What is the main task? Scan and compare.
-- **When does something get a shadow?** Only when it floats. Only menus and dialogs float; cards use lines. Because: What separates groups? Lines.
+- **Where does shape show most?** Controls in dense rows. Corners show most on controls in dense rows. Because: How much is on one screen? A lot.
+- **What rises above the page?** Only what floats. Only menus and dialogs float; cards use lines. Because: What separates groups on the page? Lines.
+- **How many shadow levels exist?** One. One shadow for everything that floats. Because: What rises above the page? Only what floats.
+- **What separates groups on the page?** Lines. Thin lines guide the eye along rows. Because: What must the interface protect? People keep their place.
 - **How soft are shadows?** Subtle. Subtle shadows keep the grid crisp. Because: What should the brand feel like? Precise.
-- **How is a dialog separated from the page?** Dim the page. Dimming says: deal with this first. Because: What is a costly mistake? Acting on the wrong record.
-- **What is motion for?** Feedback. Motion confirms an action; nothing else moves. Because: What must the interface protect? People keep their place.
+- **Where does elevation show?** Menus and dialogs. Menus and dialogs are the only layers. Because: What rises above the page? Only what floats.
+- **What is motion for?** Feedback only. Motion confirms an action; nothing else moves. Because: What must the interface protect? People keep their place.
+- **How many speeds exist?** One. One speed is enough for feedback. Because: What is motion for? Feedback only.
+- **How is easing defined?** Standard ease-out. A standard ease-out never draws attention. Because: What should the brand feel like? Precise.
 - **How fast does feedback feel?** Fast. Fast feedback keeps up with experts. Because: Which outcome matters most? Time on task.
-- **What happens when someone asks for less motion?** Nothing moves. When asked, nothing moves. Because: What accessibility level do we commit to? AA.
-- **When do icons appear?** On their own too. Experts learn icons; a tooltip covers the first uses. Because: How do people recall the interface? They learn it and recognise it.
+- **Where does motion show?** State changes only. Only state changes move. Because: What is motion for? Feedback only.
+- **What do icons do?** Actions and status. Icons mark row actions and status. Because: How often do people repeat actions? Constantly.
+- **How many icon sizes exist?** One. One size, matched to the small text. Because: How large is body text? Small.
 - **What icon style?** Outline. Outline icons stay light next to dense text. Because: How much is on one screen? A lot.
 - **How big are icons next to text?** Match the text. Icons match the label so they do not outweigh it. Because: How much is on one screen? A lot.
-- **Which modes ship?** Light and dark. Light and dark ship as standard; long shifts favour dark. Because: Who uses it most? Daily experts.
+- **Where do icons work hardest?** Toolbars and rows. Icons work hardest in toolbars and row actions. Because: How often do people repeat actions? Constantly.
+- **What can a theme change?** Mode only. One brand, so only the mode changes. Because: How many brands or products share the system? One.
+- **How many themes ship?** Two. Light and dark. Because: Which modes ship? Light and dark.
 - **How are brands handled?** One brand. One product, one brand. Because: How many brands or products share the system? One.
-- **Who can change the theme?** The user. Each person picks light or dark. Because: Who uses it most? Daily experts.
-- **What contrast floor do we hold?** AA. AA contrast for every text. Because: What accessibility level do we commit to? AA.
-- **What is the smallest target?** Compact, for a pointer. Mouse and keyboard; compact targets are enough. Because: Who uses it most? Daily experts.
+- **Which modes ship?** Light and dark. Light and dark ship as standard; long shifts favour dark. Because: How long is one visit? All day.
+- **What changes when the theme changes?** Colors only. A mode switch changes colors only, so layout never moves. Because: What must the interface protect? People keep their place.
 - **Which states get their own visible value?** Hover, focus, disabled. Pressed reuses hover; experts do not need more. Because: Who uses it most? Daily experts.
-- **How are decisions named?** By role. Role names survive a redesign. Because: Who maintains the system? A small team.
+- **How many signals carry each meaning?** Three: color, icon and word. Many statuses share one table; color alone is not enough. Because: What accessibility level do we commit to? AA; What is the main content? Numbers and records.
+- **What contrast floor do we hold?** AA. AA contrast for every text. Because: What accessibility level do we commit to? AA.
+- **What is the smallest target?** Compact, for a pointer. Mouse and keyboard; compact targets are enough. Because: Where do people use it? At a desk.
+- **Where are the floors hardest to hold?** Dense tables. Small text and thin lines in tables need the most care. Because: How much is on one screen? A lot.
+- **What gets a name?** Tokens and component keys. Components get their own keys. Because: How fast does it change? Every month.
 - **How many token tiers?** Three. Primitives, semantics and component keys. Because: How fast does it change? Every month.
-- **Do components get their own keys?** Yes, a component API. A component API keeps changes local. Because: How fast does it change? Every month.
+- **How are decisions named?** By role. Role names survive a redesign. Because: Who maintains the system? A small team.
+- **How are names written?** Lowercase words in paths. Lowercase paths read the same in CSS, JSON and Figma. Because: Who maintains the system? A small team.
+- **What do components read?** Component keys. A component API keeps changes local. Because: How fast does it change? Every month.
+- **Which kinds of copy does it need?** Labels and messages. Labels and messages are all the copy an operations tool needs. Because: What does the product do for the business? Runs daily operations.
+- **How many tones does it use?** One. One flat tone everywhere; experts want no surprises. Because: Who uses it most? Daily experts.
+- **How is the voice defined?** Rules and a word list. A word list keeps labels identical across screens. Because: Who maintains the system? A small team; How often do people repeat actions? Constantly.
+- **How does it sound?** Terse. Experts want short labels and short messages. Because: Who uses it most? Daily experts; What should the brand feel like? Precise.
+- **Where do the words matter most?** Errors and empty states. Errors and empty tables are where words decide the next action. Because: What is a costly mistake? Acting on the wrong record.
 
 ## When to use
 
@@ -122,6 +164,13 @@ Use: Export, Filter, Save, Late, Paid. Avoid: Oops, Awesome, Please, Simply.
 | An alternative or cancel | Button secondary | Button ghost | Cancel must be easy to find next to the primary. |
 | Delete or remove | Button secondary, then confirm in a dialog | Button primary as the first step | Deleting is rare and costly; a confirm step catches mistakes. |
 | An action on one row or item | Icon button, ghost, compact | Button secondary in every row | Rows repeat dozens of times; a quiet icon keeps the table readable. |
+| A value with no token | The closest semantic token, then ask for a new one | A raw value in the component | Raw values break dark mode and the next redesign. |
+| A button label | One verb from the word list | A sentence or "Please" | Labels repeat on every screen; one verb reads fastest. |
+| The words of an error | Name the record, then the fix. Flat and specific. | "Oops" or a vague apology | Experts act on the message; the record and the fix are all they need. |
+| A success message | A short confirmation with the count | Celebration | Confirm and get out of the way; the next task is waiting. |
+| An empty state | Why it is empty and the one action that fills it | A blank table | An empty table with no words looks like an error. |
+| A confirmation question | Name the exact object and the consequence | "Are you sure?" | Acting on the wrong record is the costly mistake. |
+| A first visit | No tour. Show the data, with a tooltip where needed. | A welcome tour | Daily experts skip tours; tooltips cover the first uses. |
 
 ## Deploy it
 

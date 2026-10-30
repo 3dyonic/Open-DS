@@ -44,7 +44,7 @@ def test_get_scheme_parts() -> None:
 
 
 def test_get_answer_has_why_and_because() -> None:
-    a = get_answer("dense-data", "typography.q1")
+    a = get_answer("dense-data", "typography.roles")
     assert a["answer"] == "Core and data"
     assert a["why"]
     assert {b["question"] for b in a["because"]} == {"content.q1", "tasks.q1"}
@@ -53,7 +53,7 @@ def test_get_answer_has_why_and_because() -> None:
 
 
 def test_why_runs_the_cli_and_follows_the_chain() -> None:
-    chain = why("dense-data", "typography.q3")
+    chain = why("dense-data", "typography.definition")
     assert chain["because"]
     key = why("multi-brand", "button/radius")
     assert key["semantic"] == "radius.control"

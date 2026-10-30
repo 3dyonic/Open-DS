@@ -33,7 +33,14 @@ Every scheme answers each situation with what to use, what not to use, and why.
 | Someone switches to dark | theming | The user or the system turns dark mode on. |
 | Keyboard focus | accessibility | The control that keyboard input goes to. |
 | The smallest clickable thing | accessibility | The minimum size of anything people can click or tap. |
-| The action that completes the task | button | Save, submit, pay: the step that finishes the job. |
-| An alternative or cancel | button | The other way out next to the main action. |
-| Delete or remove | button | An action that destroys data. |
-| An action on one row or item | button | An action repeated on every row of a list. |
+| The action that completes the task | color | Save, submit, pay: the step that finishes the job. |
+| An alternative or cancel | color | The other way out next to the main action. |
+| Delete or remove | color | An action that destroys data. |
+| An action on one row or item | iconography | An action repeated on every row of a list. |
+| A value with no token | naming | You need a color, size or space that no token names. |
+| A button label | voice | The words on a button. |
+| The words of an error | voice | What an error message says, not how it looks. |
+| A success message | voice | The confirmation after an action works. |
+| An empty state | voice | What a list or page says when it has nothing yet. |
+| A confirmation question | voice | The question before something hard to undo. |
+| A first visit | voice | What the product says to someone new. |

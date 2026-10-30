@@ -69,12 +69,29 @@ files["docs/grammar/reasons.md"] = groupPage(
   g.reasons,
   2,
 );
-files["docs/grammar/scopes.md"] = groupPage(
-  "Scopes",
-  "The design decisions. Each answer points back to the reasons that pulled it.",
-  g.scopes,
-  3,
-);
+files["docs/grammar/scopes.md"] =
+  fm({
+    sidebar_position: 3,
+    title: "Scopes",
+    description: "The design decisions. Every scope, voice included, answers the same five method questions.",
+  }) +
+  NOTE +
+  "# Scopes\n\nThe design decisions. Every scope answers the same five method questions, and has the same parts: the tokens it owns, the components it lands in and its situations. Each answer points back to the answers that pulled it.\n\n## The five methods\n\n| Method | What it asks |\n| --- | --- |\n" +
+  g.methods.map((m) => `| ${m.title} | ${esc(m.description)} |`).join("\n") +
+  "\n\n" +
+  g.scopes
+    .map(
+      (grp) =>
+        `## ${grp.title}\n\n${grp.description}\n\n- **Owns tokens:** ${grp.owns.map((o) => `\`${o}\``).join(", ")}\n- **Lands in:** ${grp.lands_in.join(", ")}\n- **Situations:** ${grp.situations.map((x) => sits[x].title).join(", ")}\n\n| Method | Question | Answers | Id |\n| --- | --- | --- | --- |\n` +
+        grp.questions
+          .map(
+            (q) =>
+              `| ${g.methods.find((m) => m.id === q.method).title} | ${esc(q.text)} | ${esc(q.options.map((o) => o.label).join(" · "))} | \`${q.id}\` |`,
+          )
+          .join("\n"),
+    )
+    .join("\n\n") +
+  "\n";
 files["docs/grammar/situations.md"] =
   fm({
     sidebar_position: 4,
@@ -125,13 +142,26 @@ schemes.forEach((s, i) => {
     fm({ sidebar_position: i + 1, title: s.name, description: s.summary }) +
     NOTE +
     `# ${s.name}\n\n${s.description}\n\n- **Use when:** ${s.ai.use_when}\n- **Avoid when:** ${s.ai.avoid_when}\n- **Examples:** ${s.ai.example_products.join(", ")}\n- **Themes:** ${s.themes.map((t) => t.id).join(", ")}\n- **Status:** ${s.status}\n\n` +
-    `## The work it serves\n\n${s.scenarios.map((x) => `- ${x}`).join("\n")}\n\n` +
-    `## Voice and tone\n\n${s.voice.summary}\n\n${s.voice.principles.map((p) => `- ${p}`).join("\n")}\n\n| Context | Tone | Example |\n| --- | --- | --- |\n` +
-    Object.entries(s.voice.tone)
-      .map(([k, v]) => `| ${k} | ${esc(v)} | ${esc(s.voice.examples.find((e) => e.context === k)?.text ?? "")} |`)
+    `## Use scenarios\n\n${s.scenarios.map((x) => `- ${x.text}`).join("\n")}\n\n` +
+    `## Voice and tone\n\n${s.voice.summary.text}\n\n${s.voice.principles.map((p) => `- ${p.text}`).join("\n")}\n\n` +
+    (s.voice.brands
+      ? `${Object.entries(s.voice.brands)
+          .map(([b, v]) => `- **${b}:** ${v.text}`)
+          .join("\n")}\n\n`
+      : "") +
+    `Use: ${s.voice.words.use.join(", ")}. Avoid: ${s.voice.words.avoid.join(", ")}.\n\n| Moment | Tone | Example |\n| --- | --- | --- |\n` +
+    s.usage
+      .filter((u) => sits[u.situation].scope === "voice")
+      .map((u) => `| ${sits[u.situation].title} | ${esc(u.use)} | ${esc(u.example ?? "")} |`)
       .join("\n") +
-    `\n\nUse: ${s.voice.words.use.join(", ")}. Avoid: ${s.voice.words.avoid.join(", ")}.\n\n` +
-    `## Reasons\n\n${section("reason")}\n\n## Design decisions\n\n${section("scope")}\n\n` +
+    `\n\n## Reasons\n\n${section("reason")}\n\n## Design decisions\n\nEvery scope answers the same five questions.\n\n| Scope | ${g.methods.map((m) => m.title).join(" | ")} |\n| --- | ${g.methods.map(() => "---").join(" | ")} |\n` +
+    g.scopes
+      .map(
+        (sc) =>
+          `| ${sc.title} | ${sc.questions.map((q) => esc(answer(s.answers.find((a) => a.question === q.id)))).join(" | ")} |`,
+      )
+      .join("\n") +
+    `\n\n${section("scope")}\n\n` +
     `## When to use\n\n| Situation | Use | Not | Why |\n| --- | --- | --- | --- |\n${s.usage.map((u) => `| ${sits[u.situation].title} | ${esc(u.use)} | ${esc(u.not)} | ${esc(u.why)} |`).join("\n")}\n\n` +
     `## Deploy it\n\n\`\`\`bash\nnode cli/bin/open-ds.js init ${s.id} --dir ./my-app\n\`\`\`\n`;
 });

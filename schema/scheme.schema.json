@@ -22,17 +22,36 @@
     "tokens"
   ],
   "properties": {
-    "$schema": { "type": "string", "description": "Relative path to this schema." },
+    "$schema": {
+      "type": "string",
+      "description": "Relative path to this schema."
+    },
     "id": {
       "type": "string",
       "pattern": "^[a-z0-9-]+$",
       "description": "Scheme id; also the CLI argument and the file name.",
       "examples": ["dense-data"]
     },
-    "name": { "type": "string", "minLength": 1, "description": "Scheme name as shown to people." },
-    "version": { "type": "string", "pattern": "^\\d+\\.\\d+\\.\\d+$", "description": "Semantic version of the scheme." },
-    "status": { "enum": ["draft", "curated"], "description": "draft until Yonatan curates the answers." },
-    "summary": { "type": "string", "minLength": 1, "maxLength": 140, "description": "One sentence: what the scheme is for." },
+    "name": {
+      "type": "string",
+      "minLength": 1,
+      "description": "Scheme name as shown to people."
+    },
+    "version": {
+      "type": "string",
+      "pattern": "^\\d+\\.\\d+\\.\\d+$",
+      "description": "Semantic version of the scheme."
+    },
+    "status": {
+      "enum": ["draft", "curated"],
+      "description": "draft until Yonatan curates the answers."
+    },
+    "summary": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 140,
+      "description": "One sentence: what the scheme is for."
+    },
     "description": {
       "type": "string",
       "minLength": 40,
@@ -44,12 +63,22 @@
       "additionalProperties": false,
       "required": ["use_when", "avoid_when", "example_products"],
       "properties": {
-        "use_when": { "type": "string", "minLength": 1, "description": "Products and contexts this scheme fits." },
-        "avoid_when": { "type": "string", "minLength": 1, "description": "Products and contexts this scheme does not fit." },
+        "use_when": {
+          "type": "string",
+          "minLength": 1,
+          "description": "Products and contexts this scheme fits."
+        },
+        "avoid_when": {
+          "type": "string",
+          "minLength": 1,
+          "description": "Products and contexts this scheme does not fit."
+        },
         "example_products": {
           "type": "array",
           "minItems": 1,
-          "items": { "type": "string" },
+          "items": {
+            "type": "string"
+          },
           "description": "Kinds of products that would pick this scheme."
         }
       }
@@ -57,66 +86,66 @@
     "scenarios": {
       "type": "array",
       "minItems": 1,
-      "items": { "type": "string", "minLength": 1 },
-      "description": "Real work scenarios that the reasons answer. They come before any token."
+      "items": {
+        "$ref": "#/$defs/output"
+      },
+      "description": "Use scenarios: real work, written from the answers to the use scenario questions (scenarios.q1, scenarios.q2) and other reasons."
     },
     "voice": {
       "type": "object",
-      "description": "Voice and tone: how the product speaks, with real copy.",
-      "required": ["summary", "principles", "tone", "examples", "words"],
+      "description": "The written outputs of the voice and tone scope. Each lists the answers it follows. The tone per moment lives in usage, under the voice situations.",
+      "required": ["summary", "principles", "words"],
       "additionalProperties": false,
       "properties": {
-        "summary": { "type": "string", "minLength": 1, "description": "The voice in one sentence." },
+        "summary": {
+          "$ref": "#/$defs/output",
+          "description": "The voice in one sentence."
+        },
         "principles": {
           "type": "array",
           "minItems": 1,
-          "items": { "type": "string" },
-          "description": "Rules a writer or an agent follows."
-        },
-        "tone": {
-          "type": "object",
-          "description": "How the voice shifts by context.",
-          "additionalProperties": false,
-          "required": ["error", "success", "empty", "confirm", "onboarding"],
-          "properties": {
-            "error": { "type": "string", "description": "Tone of error messages." },
-            "success": { "type": "string", "description": "Tone of confirmations of success." },
-            "empty": { "type": "string", "description": "Tone of empty states." },
-            "confirm": { "type": "string", "description": "Tone of confirmation dialogs." },
-            "onboarding": { "type": "string", "description": "Tone of first-run guidance." }
-          }
-        },
-        "examples": {
-          "type": "array",
-          "minItems": 1,
-          "description": "Real copy in this voice.",
           "items": {
-            "type": "object",
-            "additionalProperties": false,
-            "required": ["context", "text"],
-            "properties": {
-              "context": {
-                "enum": ["button", "error", "success", "empty", "confirm", "onboarding"],
-                "description": "Where the copy appears."
-              },
-              "text": { "type": "string", "minLength": 1, "description": "The copy itself." }
-            }
-          }
+            "$ref": "#/$defs/output"
+          },
+          "description": "Rules a writer or an agent follows."
         },
         "words": {
           "type": "object",
           "description": "Words to use and words to avoid.",
           "additionalProperties": false,
-          "required": ["use", "avoid"],
+          "required": ["use", "avoid", "follows"],
           "properties": {
-            "use": { "type": "array", "items": { "type": "string" }, "description": "Preferred words." },
-            "avoid": { "type": "array", "items": { "type": "string" }, "description": "Words to avoid." }
+            "use": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              },
+              "description": "Preferred words."
+            },
+            "avoid": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              },
+              "description": "Words to avoid."
+            },
+            "follows": {
+              "type": "array",
+              "minItems": 1,
+              "items": {
+                "type": "string",
+                "pattern": "^[a-z]+\\.(q\\d+|roles|count|definition|values|lands)$"
+              },
+              "description": "Question ids whose answers this text was written from."
+            }
           }
         },
         "brands": {
           "type": "object",
           "description": "Per-brand tone, for multi-brand schemes. Keys are brand ids.",
-          "additionalProperties": { "type": "string" }
+          "additionalProperties": {
+            "$ref": "#/$defs/output"
+          }
         }
       }
     },
@@ -129,9 +158,21 @@
         "additionalProperties": false,
         "required": ["id", "brand", "mode"],
         "properties": {
-          "id": { "type": "string", "pattern": "^[a-z0-9-]+$", "description": "Theme id.", "examples": ["light", "birch-dark"] },
-          "brand": { "type": "string", "pattern": "^[a-z0-9-]+$", "description": "Brand id from tokens.brands." },
-          "mode": { "enum": ["light", "dark"], "description": "Color mode." }
+          "id": {
+            "type": "string",
+            "pattern": "^[a-z0-9-]+$",
+            "description": "Theme id.",
+            "examples": ["light", "birch-dark"]
+          },
+          "brand": {
+            "type": "string",
+            "pattern": "^[a-z0-9-]+$",
+            "description": "Brand id from tokens.brands."
+          },
+          "mode": {
+            "enum": ["light", "dark"],
+            "description": "Color mode."
+          }
         }
       }
     },
@@ -144,12 +185,28 @@
         "additionalProperties": false,
         "required": ["question", "option", "why", "because"],
         "properties": {
-          "question": { "type": "string", "pattern": "^[a-z]+\\.q\\d+$", "description": "Grammar question id." },
-          "option": { "type": "string", "pattern": "^[a-z0-9-]+$", "description": "Chosen option id." },
-          "why": { "type": "string", "minLength": 1, "maxLength": 200, "description": "The reason in plain words." },
+          "question": {
+            "type": "string",
+            "pattern": "^[a-z]+\\.(q\\d+|roles|count|definition|values|lands)$",
+            "description": "Grammar question id."
+          },
+          "option": {
+            "type": "string",
+            "pattern": "^[a-z0-9-]+$",
+            "description": "Chosen option id."
+          },
+          "why": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 200,
+            "description": "The reason in plain words."
+          },
           "because": {
             "type": "array",
-            "items": { "type": "string", "pattern": "^[a-z]+\\.q\\d+$" },
+            "items": {
+              "type": "string",
+              "pattern": "^[a-z]+\\.(q\\d+|roles|count|definition|values|lands)$"
+            },
             "description": "Earlier question ids whose answers pulled this one."
           }
         }
@@ -164,25 +221,53 @@
         "additionalProperties": false,
         "required": ["situation", "use", "not", "why", "because"],
         "properties": {
-          "situation": { "type": "string", "pattern": "^[a-z0-9-]+$", "description": "Grammar situation id." },
-          "use": { "type": "string", "minLength": 1, "description": "The token, component or variant to use." },
-          "not": { "type": "string", "minLength": 1, "description": "The tempting wrong choice." },
-          "why": { "type": "string", "minLength": 1, "maxLength": 200, "description": "The reason in plain words." },
+          "situation": {
+            "type": "string",
+            "pattern": "^[a-z0-9-]+$",
+            "description": "Grammar situation id."
+          },
+          "use": {
+            "type": "string",
+            "minLength": 1,
+            "description": "The token, component, variant or tone to use."
+          },
+          "not": {
+            "type": "string",
+            "minLength": 1,
+            "description": "The tempting wrong choice."
+          },
+          "why": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 200,
+            "description": "The reason in plain words."
+          },
           "because": {
             "type": "array",
-            "items": { "type": "string", "pattern": "^[a-z]+\\.q\\d+$" },
+            "items": {
+              "type": "string",
+              "pattern": "^[a-z]+\\.(q\\d+|roles|count|definition|values|lands)$"
+            },
             "description": "Question ids whose answers this rule follows from."
+          },
+          "example": {
+            "type": "string",
+            "minLength": 1,
+            "description": "Real copy that follows the rule. Voice situations always have one."
           }
         }
       }
     },
     "tokens": {
       "type": "object",
-      "description": "DTCG tokens in three tiers. Primitives are the options; brands add brand primitives; semantics are the decisions (base, light, dark); component keys point to semantics.",
+      "description": "DTCG tokens in three tiers. Primitives are the options; brands add brand primitives; semantics are the decisions (base, light, dark); component keys point to semantics. content holds the voice scope's tokens: the words components use.",
       "additionalProperties": false,
-      "required": ["primitive", "brands", "semantic", "component"],
+      "required": ["primitive", "brands", "semantic", "component", "content"],
       "properties": {
-        "primitive": { "$ref": "#/$defs/group", "description": "Shared options. Components never read them." },
+        "primitive": {
+          "$ref": "#/$defs/group",
+          "description": "Shared options. Components never read them."
+        },
         "brands": {
           "type": "object",
           "minProperties": 1,
@@ -192,9 +277,18 @@
             "additionalProperties": false,
             "required": ["label", "description", "primitive"],
             "properties": {
-              "label": { "type": "string", "description": "Brand name." },
-              "description": { "type": "string", "description": "The brand in one sentence." },
-              "primitive": { "$ref": "#/$defs/group", "description": "Brand color ramp, font families and corner picks." }
+              "label": {
+                "type": "string",
+                "description": "Brand name."
+              },
+              "description": {
+                "type": "string",
+                "description": "The brand in one sentence."
+              },
+              "primitive": {
+                "$ref": "#/$defs/group",
+                "description": "Brand color ramp, font families and corner picks."
+              }
             }
           }
         },
@@ -204,12 +298,28 @@
           "additionalProperties": false,
           "required": ["base", "light", "dark"],
           "properties": {
-            "base": { "$ref": "#/$defs/group", "description": "Mode-independent decisions: space, size, radius, type, motion." },
-            "light": { "$ref": "#/$defs/group", "description": "Light mode color and elevation decisions." },
-            "dark": { "$ref": "#/$defs/group", "description": "Dark mode color and elevation decisions; same paths as light." }
+            "base": {
+              "$ref": "#/$defs/group",
+              "description": "Mode-independent decisions: space, size, radius, type, motion."
+            },
+            "light": {
+              "$ref": "#/$defs/group",
+              "description": "Light mode color and elevation decisions."
+            },
+            "dark": {
+              "$ref": "#/$defs/group",
+              "description": "Dark mode color and elevation decisions; same paths as light."
+            }
           }
         },
-        "component": { "$ref": "#/$defs/group", "description": "The component API: one key per grammar component key." }
+        "component": {
+          "$ref": "#/$defs/group",
+          "description": "The component API: one key per grammar component key."
+        },
+        "content": {
+          "$ref": "#/$defs/group",
+          "description": "Voice tokens: words for common actions, $type string. Not written to CSS."
+        }
       }
     }
   },
@@ -218,12 +328,22 @@
       "type": "object",
       "description": "A DTCG group: tokens and nested groups, with an optional $description.",
       "properties": {
-        "$description": { "type": "string", "description": "What the group holds." }
+        "$description": {
+          "type": "string",
+          "description": "What the group holds."
+        }
       },
       "patternProperties": {
         "^[a-z0-9_-]+$": {
           "description": "A token or a nested group.",
-          "anyOf": [{ "$ref": "#/$defs/token" }, { "$ref": "#/$defs/group" }]
+          "anyOf": [
+            {
+              "$ref": "#/$defs/token"
+            },
+            {
+              "$ref": "#/$defs/group"
+            }
+          ]
         }
       },
       "additionalProperties": false
@@ -234,12 +354,49 @@
       "required": ["$value"],
       "additionalProperties": false,
       "properties": {
-        "$value": { "description": "The value, or a reference such as {color.brand.600}." },
+        "$value": {
+          "description": "The value, or a reference such as {color.brand.600}."
+        },
         "$type": {
-          "enum": ["color", "dimension", "fontFamily", "fontWeight", "number", "duration", "cubicBezier", "shadow"],
+          "enum": [
+            "color",
+            "dimension",
+            "fontFamily",
+            "fontWeight",
+            "number",
+            "duration",
+            "cubicBezier",
+            "shadow",
+            "string"
+          ],
           "description": "DTCG token type."
         },
-        "$description": { "type": "string", "description": "What the token is for." }
+        "$description": {
+          "type": "string",
+          "description": "What the token is for."
+        }
+      }
+    },
+    "output": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["text", "follows"],
+      "description": "Written text that is an output of answers, never an input.",
+      "properties": {
+        "text": {
+          "type": "string",
+          "minLength": 1,
+          "description": "The text itself."
+        },
+        "follows": {
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "type": "string",
+            "pattern": "^[a-z]+\\.(q\\d+|roles|count|definition|values|lands)$"
+          },
+          "description": "Question ids whose answers this text was written from."
+        }
       }
     }
   }
