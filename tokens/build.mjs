@@ -72,7 +72,7 @@ function selectors(schemeId, brands, brand, mode, scoped) {
   }
   const dark = scoped ? [`.dark ${base}`, `${base}.dark`, `${base} .dark`] : [".dark"];
   if (!multi) return dark;
-  const withBrand = dark.flatMap((d) => [`${d}${b}`, `${d} ${b}`]);
+  const withBrand = dark.flatMap((d) => [`${d}${b}`, `${d} ${b}`, `${b} ${d}`]);
   return first ? [...dark, ...withBrand] : withBrand;
 }
 
@@ -98,7 +98,7 @@ async function resolvedJson(tokens) {
     usesDtcg: true,
     log: { verbosity: "silent", warnings: "disabled" },
     platforms: {
-      json: { transforms: ["attribute/cti", "name/kebab"], files: [{ destination: "x.json", format: "json/nested" }] },
+      json: { transforms: TRANSFORMS, files: [{ destination: "x.json", format: "json/nested" }] },
     },
   });
   const [file] = await sd.formatPlatform("json");
@@ -108,7 +108,8 @@ async function resolvedJson(tokens) {
 function themeCss(scheme) {
   const lines = [
     `/* ${scheme.name}: shadcn variables and a Tailwind v4 theme, mapped onto Open DS semantics. Generated. */`,
-    ":root {",
+    "/* Set on every element that can change brand, mode or scheme, so var() resolves there. */",
+    ":root,\n[data-scheme],\n[data-brand],\n.dark {",
     ...Object.entries(SHADCN).map(([k, v]) => `  --${k}: var(--${v});`),
     "}",
     "",
@@ -116,9 +117,6 @@ function themeCss(scheme) {
     ...Object.keys(SHADCN)
       .filter((k) => k !== "radius")
       .map((k) => `  --color-${k}: var(--${k});`),
-    "  --radius-control: var(--radius-control);",
-    "  --radius-container: var(--radius-container);",
-    "  --radius-badge: var(--radius-badge);",
     ...["display", "title", "heading", "body", "label", "caption", "data"].map(
       (r) =>
         `  --font-${r}: var(--type-${r}-font-family);\n  --text-${r}: var(--type-${r}-font-size);\n  --text-${r}--line-height: var(--type-${r}-line-height);\n  --text-${r}--font-weight: var(--type-${r}-font-weight);`,
@@ -165,6 +163,7 @@ export async function buildAll() {
   const index = [];
   for (const id of ids)
     index.push(await buildScheme(JSON.parse(readFileSync(join(root, "schemes", `${id}.json`), "utf8"))));
+  writeFileSync(join(dist, "shadcn-map.json"), JSON.stringify(SHADCN, null, 2) + "\n");
   writeFileSync(
     join(dist, "index.json"),
     JSON.stringify(
