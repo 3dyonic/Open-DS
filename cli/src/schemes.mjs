@@ -10,7 +10,9 @@ const here = dirname(fileURLToPath(import.meta.url));
 /** Where schemes, built tokens, components and skills live. */
 export function assetRoots() {
   const packed = join(here, "..", "assets");
-  if (existsSync(join(packed, "schemes", "grammar.json"))) {
+  const inRepo = existsSync(join(here, "..", "..", "schemes", "grammar.json"));
+  // In a checkout the repository always wins, so a leftover cli/assets bundle is never read.
+  if (!inRepo && existsSync(join(packed, "schemes", "grammar.json"))) {
     return {
       schemes: join(packed, "schemes"),
       tokens: join(packed, "tokens"),
@@ -78,7 +80,11 @@ export function when(scheme, query, g = grammar()) {
   const sits = g.situations;
   let sit = sits.find((s) => s.id === query);
   if (!sit) {
-    const words = query.toLowerCase().split(/\W+/).filter(Boolean);
+    const STOP = new Set(["a", "an", "the", "on", "in", "of", "or", "and", "to", "for", "with", "is", "it"]);
+    const words = query
+      .toLowerCase()
+      .split(/\W+/)
+      .filter((w) => w.length > 1 && !STOP.has(w));
     const score = (s) => words.filter((w) => `${s.id} ${s.title} ${s.description}`.toLowerCase().includes(w)).length;
     sit = [...sits].sort((x, y) => score(y) - score(x))[0];
     if (!sit || score(sit) === 0) return null;
