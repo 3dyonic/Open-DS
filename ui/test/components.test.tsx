@@ -95,6 +95,11 @@ test("components render", () => {
   assert.match(html, /role="status"/);
 });
 
+test("built registry items import the cn helper through the @/ alias", () => {
+  const item = JSON.parse(readFileSync(join(here, "r", "button.json"), "utf8"));
+  assert.match(item.files[0].content, /from "@\/lib\/utils"/);
+});
+
 test("the registry lists every component, the helper and a theme per scheme and brand", () => {
   const reg = JSON.parse(readFileSync(join(here, "registry.json"), "utf8"));
   const names = reg.items.map((i: { name: string }) => i.name);
