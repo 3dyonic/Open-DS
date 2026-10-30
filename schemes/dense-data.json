@@ -1,0 +1,1911 @@
+{
+  "$schema": "../schema/scheme.schema.json",
+  "id": "dense-data",
+  "name": "Dense data",
+  "version": "0.1.0",
+  "status": "draft",
+  "summary": "Compact, exact and quiet, for experts who scan and compare numbers all day.",
+  "description": "Dense data is an Open DS scheme: a full set of answers to the Open DS grammar, with the reasons behind each, usage rules, voice and tone, and the tokens that follow. Compact, exact and quiet, for experts who scan and compare numbers all day.",
+  "ai": {
+    "use_when": "Operations tools, admin panels, finance and analytics: many records, daily expert users, mouse and keyboard.",
+    "avoid_when": "Public sites, reading products, or first-time visitors on phones.",
+    "example_products": [
+      "Order management",
+      "Inventory",
+      "Finance back office",
+      "Analytics dashboard"
+    ]
+  },
+  "scenarios": [
+    "An operations lead opens the orders table at 8:00 and scans 200 rows for late shipments.",
+    "A finance clerk compares this month's totals with last month's, column by column."
+  ],
+  "voice": {
+    "summary": "Terse and exact. Say what happened and what to do, in as few words as possible.",
+    "principles": [
+      "Lead with the object, then the state: \"Order 1042 shipped.\"",
+      "Use numbers, not words for numbers.",
+      "One verb per button. No \"please\", no exclamation marks."
+    ],
+    "tone": {
+      "error": "Flat and specific. Name the record and the fix.",
+      "success": "A short confirmation, then get out of the way.",
+      "empty": "Say why it is empty and the one action that fills it.",
+      "confirm": "Name the exact object and the consequence.",
+      "onboarding": "Skip it. Show the data; add a tooltip where needed."
+    },
+    "examples": [
+      {
+        "context": "button",
+        "text": "Export"
+      },
+      {
+        "context": "error",
+        "text": "Order 1042 not saved. Quantity must be 1 or more."
+      },
+      {
+        "context": "success",
+        "text": "12 orders exported."
+      },
+      {
+        "context": "empty",
+        "text": "No late orders. Change the date range to see older ones."
+      },
+      {
+        "context": "confirm",
+        "text": "Delete 3 orders? This cannot be undone."
+      }
+    ],
+    "words": {
+      "use": [
+        "Export",
+        "Filter",
+        "Save",
+        "Late",
+        "Paid"
+      ],
+      "avoid": [
+        "Oops",
+        "Awesome",
+        "Please",
+        "Simply"
+      ]
+    }
+  },
+  "themes": [
+    {
+      "id": "light",
+      "brand": "default",
+      "mode": "light"
+    },
+    {
+      "id": "dark",
+      "brand": "default",
+      "mode": "dark"
+    }
+  ],
+  "answers": [
+    {
+      "question": "business.q1",
+      "option": "operate",
+      "why": "The product runs daily operations: orders, stock, money.",
+      "because": []
+    },
+    {
+      "question": "business.q2",
+      "option": "one",
+      "why": "One internal product, one brand.",
+      "because": []
+    },
+    {
+      "question": "people.q1",
+      "option": "experts",
+      "why": "The same people use it all day, every day.",
+      "because": [
+        "business.q1"
+      ]
+    },
+    {
+      "question": "people.q2",
+      "option": "aa",
+      "why": "AA is the floor for an internal tool used by trained staff.",
+      "because": [
+        "people.q1"
+      ]
+    },
+    {
+      "question": "content.q1",
+      "option": "numbers",
+      "why": "Most of the screen is numbers and records.",
+      "because": [
+        "business.q1"
+      ]
+    },
+    {
+      "question": "content.q2",
+      "option": "a-lot",
+      "why": "Experts want many records on one screen.",
+      "because": [
+        "people.q1",
+        "content.q1"
+      ]
+    },
+    {
+      "question": "tasks.q1",
+      "option": "compare",
+      "why": "People scan rows and compare values.",
+      "because": [
+        "content.q1"
+      ]
+    },
+    {
+      "question": "tasks.q2",
+      "option": "constantly",
+      "why": "The same actions repeat many times an hour.",
+      "because": [
+        "people.q1"
+      ]
+    },
+    {
+      "question": "human.q1",
+      "option": "place",
+      "why": "Losing your place in a long table costs time and errors.",
+      "because": [
+        "tasks.q1"
+      ]
+    },
+    {
+      "question": "human.q2",
+      "option": "learned",
+      "why": "Daily users learn the interface and recognise it.",
+      "because": [
+        "people.q1"
+      ]
+    },
+    {
+      "question": "outcomes.q1",
+      "option": "time-on-task",
+      "why": "Speed on repeated tasks is the measure.",
+      "because": [
+        "tasks.q2"
+      ]
+    },
+    {
+      "question": "outcomes.q2",
+      "option": "wrong-record",
+      "why": "Acting on the wrong row is the costly error.",
+      "because": [
+        "tasks.q1"
+      ]
+    },
+    {
+      "question": "brand.q1",
+      "option": "precise",
+      "why": "The interface must feel exact and trustworthy.",
+      "because": [
+        "content.q1"
+      ]
+    },
+    {
+      "question": "brand.q2",
+      "option": "quiet",
+      "why": "The data is the hero; the brand steps back.",
+      "because": [
+        "content.q2"
+      ]
+    },
+    {
+      "question": "voice.q1",
+      "option": "terse",
+      "why": "Experts want short labels and short messages.",
+      "because": [
+        "people.q1"
+      ]
+    },
+    {
+      "question": "voice.q2",
+      "option": "neutral",
+      "why": "Neutral copy reads the same on every screen.",
+      "because": []
+    },
+    {
+      "question": "team.q1",
+      "option": "small",
+      "why": "A small team keeps the system right.",
+      "because": []
+    },
+    {
+      "question": "team.q2",
+      "option": "monthly",
+      "why": "Features ship every month; the system must keep up.",
+      "because": []
+    },
+    {
+      "question": "typography.q1",
+      "option": "core-data",
+      "why": "A data role keeps numbers in aligned columns.",
+      "because": [
+        "content.q1",
+        "tasks.q1"
+      ]
+    },
+    {
+      "question": "typography.q2",
+      "option": "small",
+      "why": "Small body text fits more rows on the screen.",
+      "because": [
+        "content.q2"
+      ]
+    },
+    {
+      "question": "typography.q3",
+      "option": "grid",
+      "why": "Lines stay on the grid so rows align, and grow with the user's text size.",
+      "because": [
+        "tasks.q1",
+        "people.q2"
+      ]
+    },
+    {
+      "question": "color.q1",
+      "option": "three",
+      "why": "One primary per view; the rest step back.",
+      "because": [
+        "tasks.q2"
+      ]
+    },
+    {
+      "question": "color.q2",
+      "option": "color-icon-word",
+      "why": "Many statuses share one table; color alone is not enough.",
+      "because": [
+        "people.q2",
+        "content.q1"
+      ]
+    },
+    {
+      "question": "color.q3",
+      "option": "muted",
+      "why": "Muted color keeps attention on the data.",
+      "because": [
+        "brand.q2"
+      ]
+    },
+    {
+      "question": "spacing.q1",
+      "option": "compact",
+      "why": "Compact spacing shows more records.",
+      "because": [
+        "content.q2"
+      ]
+    },
+    {
+      "question": "spacing.q2",
+      "option": "two",
+      "why": "A second, denser size serves tables and toolbars.",
+      "because": [
+        "tasks.q1"
+      ]
+    },
+    {
+      "question": "spacing.q3",
+      "option": "lines",
+      "why": "Thin lines guide the eye along rows.",
+      "because": [
+        "human.q1"
+      ]
+    },
+    {
+      "question": "shape.q1",
+      "option": "slightly-rounded",
+      "why": "Small corners keep dense rows straight.",
+      "because": [
+        "brand.q1"
+      ]
+    },
+    {
+      "question": "shape.q2",
+      "option": "hairline",
+      "why": "Hairlines separate without adding weight.",
+      "because": [
+        "content.q2"
+      ]
+    },
+    {
+      "question": "shape.q3",
+      "option": "rectangle",
+      "why": "Rectangular badges align in a column.",
+      "because": [
+        "tasks.q1"
+      ]
+    },
+    {
+      "question": "elevation.q1",
+      "option": "floating-only",
+      "why": "Only menus and dialogs float; cards use lines.",
+      "because": [
+        "spacing.q3"
+      ]
+    },
+    {
+      "question": "elevation.q2",
+      "option": "subtle",
+      "why": "Subtle shadows keep the grid crisp.",
+      "because": [
+        "brand.q1"
+      ]
+    },
+    {
+      "question": "elevation.q3",
+      "option": "dim",
+      "why": "Dimming says: deal with this first.",
+      "because": [
+        "outcomes.q2"
+      ]
+    },
+    {
+      "question": "motion.q1",
+      "option": "feedback",
+      "why": "Motion confirms an action; nothing else moves.",
+      "because": [
+        "human.q1"
+      ]
+    },
+    {
+      "question": "motion.q2",
+      "option": "fast",
+      "why": "Fast feedback keeps up with experts.",
+      "because": [
+        "outcomes.q1"
+      ]
+    },
+    {
+      "question": "motion.q3",
+      "option": "none",
+      "why": "When asked, nothing moves.",
+      "because": [
+        "people.q2"
+      ]
+    },
+    {
+      "question": "iconography.q1",
+      "option": "standalone-ok",
+      "why": "Experts learn icons; a tooltip covers the first uses.",
+      "because": [
+        "human.q2"
+      ]
+    },
+    {
+      "question": "iconography.q2",
+      "option": "outline",
+      "why": "Outline icons stay light next to dense text.",
+      "because": [
+        "content.q2"
+      ]
+    },
+    {
+      "question": "iconography.q3",
+      "option": "match-text",
+      "why": "Icons match the label so they do not outweigh it.",
+      "because": [
+        "content.q2"
+      ]
+    },
+    {
+      "question": "theming.q1",
+      "option": "light-dark",
+      "why": "Light and dark ship as standard; long shifts favour dark.",
+      "because": [
+        "people.q1"
+      ]
+    },
+    {
+      "question": "theming.q2",
+      "option": "single",
+      "why": "One product, one brand.",
+      "because": [
+        "business.q2"
+      ]
+    },
+    {
+      "question": "theming.q3",
+      "option": "user",
+      "why": "Each person picks light or dark.",
+      "because": [
+        "people.q1"
+      ]
+    },
+    {
+      "question": "accessibility.q1",
+      "option": "aa",
+      "why": "AA contrast for every text.",
+      "because": [
+        "people.q2"
+      ]
+    },
+    {
+      "question": "accessibility.q2",
+      "option": "pointer",
+      "why": "Mouse and keyboard; compact targets are enough.",
+      "because": [
+        "people.q1"
+      ]
+    },
+    {
+      "question": "accessibility.q3",
+      "option": "hover-focus-disabled",
+      "why": "Pressed reuses hover; experts do not need more.",
+      "because": [
+        "people.q1"
+      ]
+    },
+    {
+      "question": "naming.q1",
+      "option": "by-role",
+      "why": "Role names survive a redesign.",
+      "because": [
+        "team.q1"
+      ]
+    },
+    {
+      "question": "naming.q2",
+      "option": "three",
+      "why": "Primitives, semantics and component keys.",
+      "because": [
+        "team.q2"
+      ]
+    },
+    {
+      "question": "naming.q3",
+      "option": "keys",
+      "why": "A component API keeps changes local.",
+      "because": [
+        "team.q2"
+      ]
+    }
+  ],
+  "usage": [
+    {
+      "situation": "page-title",
+      "use": "type.title",
+      "not": "type.display",
+      "why": "Titles stay small so the table starts higher on the screen.",
+      "because": [
+        "content.q2"
+      ]
+    },
+    {
+      "situation": "number-in-table",
+      "use": "type.data",
+      "not": "type.body",
+      "why": "Mono digits line up in columns, so values compare at a glance.",
+      "because": [
+        "typography.q1",
+        "tasks.q1"
+      ]
+    },
+    {
+      "situation": "paragraph",
+      "use": "type.body",
+      "not": "type.label",
+      "why": "Help text is read in passing; body size keeps it quick.",
+      "because": [
+        "outcomes.q1"
+      ]
+    },
+    {
+      "situation": "field-label",
+      "use": "type.label",
+      "not": "type.heading",
+      "why": "Headers repeat on every column; a heavy style would compete with the data.",
+      "because": [
+        "tasks.q1"
+      ]
+    },
+    {
+      "situation": "selected-row",
+      "use": "color.surface.selected",
+      "not": "color.action.primary as a fill",
+      "why": "A light tint shows selection without hiding the data.",
+      "because": [
+        "tasks.q1"
+      ]
+    },
+    {
+      "situation": "error-message",
+      "use": "color.status.danger with an icon",
+      "not": "color.status.warning",
+      "why": "Red always means fix this, and the icon says it without color.",
+      "because": [
+        "color.q2",
+        "outcomes.q2"
+      ]
+    },
+    {
+      "situation": "link",
+      "use": "color.text.link",
+      "not": "color.action.primary",
+      "why": "Links and buttons look different, so people know which one navigates.",
+      "because": [
+        "human.q2"
+      ]
+    },
+    {
+      "situation": "status-label",
+      "use": "Badge with a subtle fill, an icon and a word",
+      "not": "A full-strength fill",
+      "why": "Subtle fills let many statuses share one table.",
+      "because": [
+        "color.q2",
+        "content.q1"
+      ]
+    },
+    {
+      "situation": "related-items",
+      "use": "space.gap.tight",
+      "not": "space.gap.group",
+      "why": "Things that belong together sit close.",
+      "because": [
+        "human.q2"
+      ]
+    },
+    {
+      "situation": "between-sections",
+      "use": "space.gap.section and a hairline",
+      "not": "A card around every section",
+      "why": "Lines separate without taking room from the data.",
+      "because": [
+        "spacing.q3",
+        "content.q2"
+      ]
+    },
+    {
+      "situation": "table-row",
+      "use": "size.row (compact)",
+      "not": "The comfortable row",
+      "why": "Compact rows show more records without scrolling.",
+      "because": [
+        "content.q2",
+        "spacing.q2"
+      ]
+    },
+    {
+      "situation": "control-corner",
+      "use": "radius.control",
+      "not": "radius.round",
+      "why": "Small corners keep dense rows straight.",
+      "because": [
+        "shape.q1"
+      ]
+    },
+    {
+      "situation": "status-shape",
+      "use": "radius.badge (rectangle)",
+      "not": "A pill",
+      "why": "Rectangles line up in a column.",
+      "because": [
+        "shape.q3"
+      ]
+    },
+    {
+      "situation": "card",
+      "use": "A hairline border, no shadow",
+      "not": "A shadow",
+      "why": "On a busy grid, lines separate. Shadows blur the edges.",
+      "because": [
+        "elevation.q1"
+      ]
+    },
+    {
+      "situation": "menu-or-dialog",
+      "use": "elevation.overlay and a dimmed page for dialogs",
+      "not": "A border only",
+      "why": "Floating things need a shadow so they read as on top.",
+      "because": [
+        "elevation.q3"
+      ]
+    },
+    {
+      "situation": "hover-feedback",
+      "use": "motion.duration.feedback (fast)",
+      "not": "No transition",
+      "why": "Fast feedback confirms the pointer without slowing experts.",
+      "because": [
+        "motion.q2"
+      ]
+    },
+    {
+      "situation": "reduced-motion",
+      "use": "No motion",
+      "not": "A shorter version of the motion",
+      "why": "When people ask for less motion, nothing moves.",
+      "because": [
+        "motion.q3"
+      ]
+    },
+    {
+      "situation": "icon-alone",
+      "use": "Icon button with a tooltip",
+      "not": "A bare icon",
+      "why": "Experts learn icons; the tooltip covers the first uses.",
+      "because": [
+        "iconography.q1"
+      ]
+    },
+    {
+      "situation": "dark-mode",
+      "use": "The dark semantic mode",
+      "not": "A second palette in components",
+      "why": "Only semantic colors change, so layout never moves.",
+      "because": [
+        "theming.q1"
+      ]
+    },
+    {
+      "situation": "keyboard-focus",
+      "use": "button/focus-ring, 2px",
+      "not": "Removing the outline",
+      "why": "Keyboard users must always see where they are.",
+      "because": [
+        "people.q2"
+      ]
+    },
+    {
+      "situation": "smallest-target",
+      "use": "size.control.compact",
+      "not": "Anything smaller",
+      "why": "Compact still fits a mouse. Touch is not this product's input.",
+      "because": [
+        "accessibility.q2"
+      ]
+    },
+    {
+      "situation": "commit-action",
+      "use": "Button primary, one per view",
+      "not": "Two primaries side by side",
+      "why": "One primary makes the committing action obvious.",
+      "because": [
+        "color.q1",
+        "outcomes.q2"
+      ]
+    },
+    {
+      "situation": "alternative-action",
+      "use": "Button secondary",
+      "not": "Button ghost",
+      "why": "Cancel must be easy to find next to the primary.",
+      "because": [
+        "human.q2"
+      ]
+    },
+    {
+      "situation": "destructive-action",
+      "use": "Button secondary, then confirm in a dialog",
+      "not": "Button primary as the first step",
+      "why": "Deleting is rare and costly; a confirm step catches mistakes.",
+      "because": [
+        "outcomes.q2"
+      ]
+    },
+    {
+      "situation": "row-action",
+      "use": "Icon button, ghost, compact",
+      "not": "Button secondary in every row",
+      "why": "Rows repeat dozens of times; a quiet icon keeps the table readable.",
+      "because": [
+        "tasks.q2"
+      ]
+    }
+  ],
+  "tokens": {
+    "primitive": {
+      "color": {
+        "$description": "The color options. Semantics pick from these; components never read them.",
+        "neutral": {
+          "0": {
+            "$type": "color",
+            "$value": "#FFFFFF"
+          },
+          "50": {
+            "$type": "color",
+            "$value": "#F7F8FA"
+          },
+          "100": {
+            "$type": "color",
+            "$value": "#EEF1F5"
+          },
+          "200": {
+            "$type": "color",
+            "$value": "#DDE2EA"
+          },
+          "300": {
+            "$type": "color",
+            "$value": "#C4CBD6"
+          },
+          "500": {
+            "$type": "color",
+            "$value": "#6B7585"
+          },
+          "700": {
+            "$type": "color",
+            "$value": "#3D4655"
+          },
+          "800": {
+            "$type": "color",
+            "$value": "#262D38"
+          },
+          "900": {
+            "$type": "color",
+            "$value": "#161B23"
+          },
+          "950": {
+            "$type": "color",
+            "$value": "#0D1117"
+          }
+        },
+        "success": {
+          "strong": {
+            "$type": "color",
+            "$value": "#1F7A3A"
+          },
+          "subtle": {
+            "$type": "color",
+            "$value": "#E3F4EA"
+          },
+          "strong-dark": {
+            "$type": "color",
+            "$value": "#5CC283"
+          },
+          "subtle-dark": {
+            "$type": "color",
+            "$value": "#123322"
+          }
+        },
+        "warning": {
+          "strong": {
+            "$type": "color",
+            "$value": "#8A5600"
+          },
+          "subtle": {
+            "$type": "color",
+            "$value": "#FFF3D6"
+          },
+          "strong-dark": {
+            "$type": "color",
+            "$value": "#F2B84B"
+          },
+          "subtle-dark": {
+            "$type": "color",
+            "$value": "#3A2A05"
+          }
+        },
+        "danger": {
+          "strong": {
+            "$type": "color",
+            "$value": "#C42B2B"
+          },
+          "subtle": {
+            "$type": "color",
+            "$value": "#FDE7E7"
+          },
+          "strong-dark": {
+            "$type": "color",
+            "$value": "#F28B8B"
+          },
+          "subtle-dark": {
+            "$type": "color",
+            "$value": "#3D1414"
+          }
+        },
+        "black-alpha": {
+          "scrim": {
+            "$type": "color",
+            "$value": "#0000008C"
+          },
+          "scrim-dark": {
+            "$type": "color",
+            "$value": "#000000B3"
+          }
+        }
+      },
+      "space": {
+        "$description": "Space options. Names give the size in pixels at the default text size; values are rem.",
+        "4": {
+          "$type": "dimension",
+          "$value": "0.25rem"
+        },
+        "8": {
+          "$type": "dimension",
+          "$value": "0.5rem"
+        },
+        "12": {
+          "$type": "dimension",
+          "$value": "0.75rem"
+        },
+        "16": {
+          "$type": "dimension",
+          "$value": "1rem"
+        },
+        "24": {
+          "$type": "dimension",
+          "$value": "1.5rem"
+        }
+      },
+      "size": {
+        "$description": "Size options for controls, rows and icons.",
+        "16": {
+          "$type": "dimension",
+          "$value": "1rem"
+        },
+        "20": {
+          "$type": "dimension",
+          "$value": "1.25rem"
+        },
+        "24": {
+          "$type": "dimension",
+          "$value": "1.5rem"
+        },
+        "32": {
+          "$type": "dimension",
+          "$value": "2rem"
+        }
+      },
+      "radius": {
+        "$description": "Corner options.",
+        "0": {
+          "$type": "dimension",
+          "$value": "0rem"
+        },
+        "4": {
+          "$type": "dimension",
+          "$value": "0.25rem"
+        },
+        "2": {
+          "$type": "dimension",
+          "$value": "0.125rem"
+        },
+        "6": {
+          "$type": "dimension",
+          "$value": "0.375rem"
+        }
+      },
+      "border-width": {
+        "$description": "Border width options.",
+        "1": {
+          "$type": "dimension",
+          "$value": "1px"
+        },
+        "2": {
+          "$type": "dimension",
+          "$value": "2px"
+        }
+      },
+      "font": {
+        "size": {
+          "$description": "Type size options. Names are pixels at the default text size; values are rem, so text grows with the user's setting.",
+          "12": {
+            "$type": "dimension",
+            "$value": "0.75rem"
+          },
+          "13": {
+            "$type": "dimension",
+            "$value": "0.8125rem"
+          },
+          "14": {
+            "$type": "dimension",
+            "$value": "0.875rem"
+          },
+          "16": {
+            "$type": "dimension",
+            "$value": "1rem"
+          },
+          "20": {
+            "$type": "dimension",
+            "$value": "1.25rem"
+          },
+          "24": {
+            "$type": "dimension",
+            "$value": "1.5rem"
+          }
+        },
+        "weight": {
+          "400": {
+            "$type": "fontWeight",
+            "$value": 400
+          },
+          "500": {
+            "$type": "fontWeight",
+            "$value": 500
+          },
+          "600": {
+            "$type": "fontWeight",
+            "$value": 600
+          }
+        },
+        "line-height": {
+          "16": {
+            "$type": "dimension",
+            "$value": "1rem",
+            "$description": "On the 4px grid, in rem so it grows with the user's text size."
+          },
+          "20": {
+            "$type": "dimension",
+            "$value": "1.25rem",
+            "$description": "On the 4px grid, in rem so it grows with the user's text size."
+          },
+          "24": {
+            "$type": "dimension",
+            "$value": "1.5rem",
+            "$description": "On the 4px grid, in rem so it grows with the user's text size."
+          },
+          "28": {
+            "$type": "dimension",
+            "$value": "1.75rem",
+            "$description": "On the 4px grid, in rem so it grows with the user's text size."
+          }
+        }
+      },
+      "duration": {
+        "fast": {
+          "$type": "duration",
+          "$value": "120ms",
+          "$description": "Fast: the usual convention for feedback, about 120ms."
+        },
+        "moderate": {
+          "$type": "duration",
+          "$value": "200ms",
+          "$description": "Moderate: a calm, easy-to-follow speed, about 200ms."
+        },
+        "relaxed": {
+          "$type": "duration",
+          "$value": "320ms",
+          "$description": "Relaxed: a slower, springy speed for expressive motion, about 320ms."
+        }
+      },
+      "easing": {
+        "standard": {
+          "$type": "cubicBezier",
+          "$value": [
+            0.2,
+            0,
+            0,
+            1
+          ],
+          "$description": "The easing for feedback transitions."
+        }
+      },
+      "opacity": {
+        "40": {
+          "$type": "number",
+          "$value": 0.4,
+          "$description": "An opacity option."
+        }
+      }
+    },
+    "brands": {
+      "default": {
+        "label": "Dense data",
+        "description": "The single brand: precise blue on cool grey.",
+        "primitive": {
+          "color": {
+            "brand": {
+              "100": {
+                "$type": "color",
+                "$value": "#E6EDFC"
+              },
+              "300": {
+                "$type": "color",
+                "$value": "#8EA9EC"
+              },
+              "500": {
+                "$type": "color",
+                "$value": "#3B6BE0"
+              },
+              "600": {
+                "$type": "color",
+                "$value": "#2457D6"
+              },
+              "700": {
+                "$type": "color",
+                "$value": "#1C45AB"
+              },
+              "800": {
+                "$type": "color",
+                "$value": "#163784"
+              }
+            }
+          },
+          "font": {
+            "family": {
+              "display": {
+                "$type": "fontFamily",
+                "$value": "\"IBM Plex Sans\", system-ui, sans-serif"
+              },
+              "body": {
+                "$type": "fontFamily",
+                "$value": "\"IBM Plex Sans\", system-ui, sans-serif"
+              },
+              "ui": {
+                "$type": "fontFamily",
+                "$value": "\"IBM Plex Sans\", system-ui, sans-serif"
+              },
+              "mono": {
+                "$type": "fontFamily",
+                "$value": "\"IBM Plex Mono\", ui-monospace, monospace"
+              }
+            }
+          },
+          "radius": {
+            "brand": {
+              "control": {
+                "$type": "dimension",
+                "$value": "{radius.4}"
+              },
+              "badge": {
+                "$type": "dimension",
+                "$value": "{radius.2}"
+              },
+              "container": {
+                "$type": "dimension",
+                "$value": "{radius.6}"
+              }
+            }
+          }
+        }
+      }
+    },
+    "semantic": {
+      "base": {
+        "space": {
+          "gap": {
+            "tight": {
+              "$type": "dimension",
+              "$value": "{space.4}",
+              "$description": "Between things that belong together."
+            },
+            "default": {
+              "$type": "dimension",
+              "$value": "{space.8}",
+              "$description": "Between items in one group."
+            },
+            "group": {
+              "$type": "dimension",
+              "$value": "{space.16}",
+              "$description": "Between groups."
+            },
+            "section": {
+              "$type": "dimension",
+              "$value": "{space.24}",
+              "$description": "Between page sections."
+            }
+          },
+          "inset": {
+            "control-x": {
+              "$type": "dimension",
+              "$value": "{space.12}",
+              "$description": "Horizontal padding inside controls."
+            },
+            "container": {
+              "$type": "dimension",
+              "$value": "{space.16}",
+              "$description": "Padding inside cards and dialogs."
+            },
+            "cell-x": {
+              "$type": "dimension",
+              "$value": "{space.12}",
+              "$description": "Horizontal padding inside table cells."
+            }
+          }
+        },
+        "size": {
+          "control": {
+            "default": {
+              "$type": "dimension",
+              "$value": "{size.32}",
+              "$description": "Height of buttons and inputs, and the smallest target."
+            },
+            "compact": {
+              "$type": "dimension",
+              "$value": "{size.24}",
+              "$description": "Height of compact controls."
+            }
+          },
+          "row": {
+            "$type": "dimension",
+            "$value": "{size.32}",
+            "$description": "Height of one table row."
+          },
+          "icon": {
+            "$type": "dimension",
+            "$value": "{size.16}",
+            "$description": "Icon size next to text."
+          }
+        },
+        "radius": {
+          "control": {
+            "$type": "dimension",
+            "$value": "{radius.brand.control}",
+            "$description": "Corner of buttons and inputs."
+          },
+          "badge": {
+            "$type": "dimension",
+            "$value": "{radius.brand.badge}",
+            "$description": "Corner of badges and checkboxes."
+          },
+          "container": {
+            "$type": "dimension",
+            "$value": "{radius.brand.container}",
+            "$description": "Corner of cards, menus and dialogs."
+          },
+          "round": {
+            "$type": "dimension",
+            "$value": "9999px",
+            "$description": "Fully round: avatars and dots."
+          }
+        },
+        "border-width": {
+          "default": {
+            "$type": "dimension",
+            "$value": "{border-width.1}",
+            "$description": "Every border."
+          },
+          "focus": {
+            "$type": "dimension",
+            "$value": "{border-width.2}",
+            "$description": "The focus ring."
+          }
+        },
+        "type": {
+          "display": {
+            "font-family": {
+              "$type": "fontFamily",
+              "$value": "{font.family.display}"
+            },
+            "font-size": {
+              "$type": "dimension",
+              "$value": "{font.size.24}"
+            },
+            "line-height": {
+              "$type": "dimension",
+              "$value": "{font.line-height.28}"
+            },
+            "font-weight": {
+              "$type": "fontWeight",
+              "$value": "{font.weight.600}"
+            },
+            "$description": "The display text role."
+          },
+          "title": {
+            "font-family": {
+              "$type": "fontFamily",
+              "$value": "{font.family.display}"
+            },
+            "font-size": {
+              "$type": "dimension",
+              "$value": "{font.size.20}"
+            },
+            "line-height": {
+              "$type": "dimension",
+              "$value": "{font.line-height.24}"
+            },
+            "font-weight": {
+              "$type": "fontWeight",
+              "$value": "{font.weight.600}"
+            },
+            "$description": "The title text role."
+          },
+          "heading": {
+            "font-family": {
+              "$type": "fontFamily",
+              "$value": "{font.family.display}"
+            },
+            "font-size": {
+              "$type": "dimension",
+              "$value": "{font.size.16}"
+            },
+            "line-height": {
+              "$type": "dimension",
+              "$value": "{font.line-height.20}"
+            },
+            "font-weight": {
+              "$type": "fontWeight",
+              "$value": "{font.weight.600}"
+            },
+            "$description": "The heading text role."
+          },
+          "body": {
+            "font-family": {
+              "$type": "fontFamily",
+              "$value": "{font.family.body}"
+            },
+            "font-size": {
+              "$type": "dimension",
+              "$value": "{font.size.14}"
+            },
+            "line-height": {
+              "$type": "dimension",
+              "$value": "{font.line-height.20}"
+            },
+            "font-weight": {
+              "$type": "fontWeight",
+              "$value": "{font.weight.400}"
+            },
+            "$description": "The body text role."
+          },
+          "label": {
+            "font-family": {
+              "$type": "fontFamily",
+              "$value": "{font.family.ui}"
+            },
+            "font-size": {
+              "$type": "dimension",
+              "$value": "{font.size.12}"
+            },
+            "line-height": {
+              "$type": "dimension",
+              "$value": "{font.line-height.16}"
+            },
+            "font-weight": {
+              "$type": "fontWeight",
+              "$value": "{font.weight.500}"
+            },
+            "$description": "The label text role."
+          },
+          "caption": {
+            "font-family": {
+              "$type": "fontFamily",
+              "$value": "{font.family.ui}"
+            },
+            "font-size": {
+              "$type": "dimension",
+              "$value": "{font.size.12}"
+            },
+            "line-height": {
+              "$type": "dimension",
+              "$value": "{font.line-height.16}"
+            },
+            "font-weight": {
+              "$type": "fontWeight",
+              "$value": "{font.weight.400}"
+            },
+            "$description": "The caption text role."
+          },
+          "data": {
+            "font-family": {
+              "$type": "fontFamily",
+              "$value": "{font.family.mono}"
+            },
+            "font-size": {
+              "$type": "dimension",
+              "$value": "{font.size.13}"
+            },
+            "line-height": {
+              "$type": "dimension",
+              "$value": "{font.line-height.16}"
+            },
+            "font-weight": {
+              "$type": "fontWeight",
+              "$value": "{font.weight.400}"
+            },
+            "$description": "The data text role."
+          }
+        },
+        "motion": {
+          "duration": {
+            "feedback": {
+              "$type": "duration",
+              "$value": "{duration.fast}",
+              "$description": "Feedback speed: fast."
+            }
+          },
+          "easing": {
+            "standard": {
+              "$type": "cubicBezier",
+              "$value": "{easing.standard}",
+              "$description": "Feedback easing."
+            }
+          }
+        },
+        "opacity": {
+          "disabled": {
+            "$type": "number",
+            "$value": "{opacity.40}",
+            "$description": "Disabled controls."
+          }
+        }
+      },
+      "light": {
+        "color": {
+          "surface": {
+            "canvas": {
+              "$type": "color",
+              "$value": "{color.neutral.50}",
+              "$description": "The page background."
+            },
+            "default": {
+              "$type": "color",
+              "$value": "{color.neutral.0}",
+              "$description": "Cards, inputs and tables."
+            },
+            "raised": {
+              "$type": "color",
+              "$value": "{color.neutral.0}",
+              "$description": "Menus, dialogs, toasts."
+            },
+            "sunken": {
+              "$type": "color",
+              "$value": "{color.neutral.100}",
+              "$description": "Table headers and wells."
+            },
+            "selected": {
+              "$type": "color",
+              "$value": "{color.brand.100}",
+              "$description": "A selected row or item."
+            },
+            "inverse": {
+              "$type": "color",
+              "$value": "{color.neutral.900}",
+              "$description": "Tooltips."
+            },
+            "scrim": {
+              "$type": "color",
+              "$value": "{color.black-alpha.scrim}",
+              "$description": "Dims the page behind a dialog."
+            }
+          },
+          "text": {
+            "primary": {
+              "$type": "color",
+              "$value": "{color.neutral.900}",
+              "$description": "Main text."
+            },
+            "secondary": {
+              "$type": "color",
+              "$value": "{color.neutral.700}",
+              "$description": "Supporting text; passes AA."
+            },
+            "muted": {
+              "$type": "color",
+              "$value": "{color.neutral.500}",
+              "$description": "Hints and placeholders."
+            },
+            "inverse": {
+              "$type": "color",
+              "$value": "{color.neutral.0}",
+              "$description": "Text on inverse surfaces."
+            },
+            "on-action": {
+              "$type": "color",
+              "$value": "{color.neutral.0}",
+              "$description": "Text on the primary action."
+            },
+            "link": {
+              "$type": "color",
+              "$value": "{color.brand.700}",
+              "$description": "Links."
+            }
+          },
+          "border": {
+            "default": {
+              "$type": "color",
+              "$value": "{color.neutral.200}",
+              "$description": "Row lines and card borders."
+            },
+            "strong": {
+              "$type": "color",
+              "$value": "{color.neutral.300}",
+              "$description": "Input and secondary button borders."
+            },
+            "focus": {
+              "$type": "color",
+              "$value": "{color.brand.600}",
+              "$description": "The keyboard focus ring."
+            }
+          },
+          "action": {
+            "primary": {
+              "$type": "color",
+              "$value": "{color.brand.600}",
+              "$description": "The primary action."
+            },
+            "primary-hover": {
+              "$type": "color",
+              "$value": "{color.brand.700}",
+              "$description": "Primary action on hover."
+            },
+            "secondary": {
+              "$type": "color",
+              "$value": "{color.neutral.0}",
+              "$description": "Secondary action fill."
+            },
+            "secondary-hover": {
+              "$type": "color",
+              "$value": "{color.neutral.100}",
+              "$description": "Secondary action on hover."
+            }
+          },
+          "status": {
+            "success": {
+              "$type": "color",
+              "$value": "{color.success.strong}",
+              "$description": "Success text and icons."
+            },
+            "warning": {
+              "$type": "color",
+              "$value": "{color.warning.strong}",
+              "$description": "Warning text and icons."
+            },
+            "danger": {
+              "$type": "color",
+              "$value": "{color.danger.strong}",
+              "$description": "Danger text and icons."
+            },
+            "success-subtle": {
+              "$type": "color",
+              "$value": "{color.success.subtle}",
+              "$description": "Success badge fill."
+            },
+            "warning-subtle": {
+              "$type": "color",
+              "$value": "{color.warning.subtle}",
+              "$description": "Warning badge fill."
+            },
+            "danger-subtle": {
+              "$type": "color",
+              "$value": "{color.danger.subtle}",
+              "$description": "Danger badge fill."
+            }
+          }
+        },
+        "elevation": {
+          "card": {
+            "$type": "shadow",
+            "$value": {
+              "color": "#00000000",
+              "offsetX": "0px",
+              "offsetY": "0px",
+              "blur": "0px",
+              "spread": "0px"
+            },
+            "$description": "No shadow in this scheme."
+          },
+          "overlay": {
+            "$type": "shadow",
+            "$value": {
+              "color": "#0D111729",
+              "offsetX": "0px",
+              "offsetY": "8px",
+              "blur": "24px",
+              "spread": "0px"
+            }
+          }
+        }
+      },
+      "dark": {
+        "color": {
+          "surface": {
+            "canvas": {
+              "$type": "color",
+              "$value": "{color.neutral.950}"
+            },
+            "default": {
+              "$type": "color",
+              "$value": "{color.neutral.900}"
+            },
+            "raised": {
+              "$type": "color",
+              "$value": "{color.neutral.800}"
+            },
+            "sunken": {
+              "$type": "color",
+              "$value": "{color.neutral.800}"
+            },
+            "selected": {
+              "$type": "color",
+              "$value": "{color.brand.800}"
+            },
+            "inverse": {
+              "$type": "color",
+              "$value": "{color.neutral.50}"
+            },
+            "scrim": {
+              "$type": "color",
+              "$value": "{color.black-alpha.scrim-dark}"
+            }
+          },
+          "text": {
+            "primary": {
+              "$type": "color",
+              "$value": "{color.neutral.50}"
+            },
+            "secondary": {
+              "$type": "color",
+              "$value": "{color.neutral.300}"
+            },
+            "muted": {
+              "$type": "color",
+              "$value": "{color.neutral.500}"
+            },
+            "inverse": {
+              "$type": "color",
+              "$value": "{color.neutral.900}"
+            },
+            "on-action": {
+              "$type": "color",
+              "$value": "{color.neutral.950}"
+            },
+            "link": {
+              "$type": "color",
+              "$value": "{color.brand.300}"
+            }
+          },
+          "border": {
+            "default": {
+              "$type": "color",
+              "$value": "{color.neutral.800}"
+            },
+            "strong": {
+              "$type": "color",
+              "$value": "{color.neutral.700}"
+            },
+            "focus": {
+              "$type": "color",
+              "$value": "{color.brand.300}"
+            }
+          },
+          "action": {
+            "primary": {
+              "$type": "color",
+              "$value": "{color.brand.300}"
+            },
+            "primary-hover": {
+              "$type": "color",
+              "$value": "{color.brand.100}"
+            },
+            "secondary": {
+              "$type": "color",
+              "$value": "{color.neutral.900}"
+            },
+            "secondary-hover": {
+              "$type": "color",
+              "$value": "{color.neutral.800}"
+            }
+          },
+          "status": {
+            "success": {
+              "$type": "color",
+              "$value": "{color.success.strong-dark}"
+            },
+            "warning": {
+              "$type": "color",
+              "$value": "{color.warning.strong-dark}"
+            },
+            "danger": {
+              "$type": "color",
+              "$value": "{color.danger.strong-dark}"
+            },
+            "success-subtle": {
+              "$type": "color",
+              "$value": "{color.success.subtle-dark}"
+            },
+            "warning-subtle": {
+              "$type": "color",
+              "$value": "{color.warning.subtle-dark}"
+            },
+            "danger-subtle": {
+              "$type": "color",
+              "$value": "{color.danger.subtle-dark}"
+            }
+          }
+        },
+        "elevation": {
+          "card": {
+            "$type": "shadow",
+            "$value": {
+              "color": "#00000000",
+              "offsetX": "0px",
+              "offsetY": "0px",
+              "blur": "0px",
+              "spread": "0px"
+            },
+            "$description": "No shadow in this scheme."
+          },
+          "overlay": {
+            "$type": "shadow",
+            "$value": {
+              "color": "#00000080",
+              "offsetX": "0px",
+              "offsetY": "8px",
+              "blur": "24px",
+              "spread": "0px"
+            }
+          }
+        }
+      }
+    },
+    "component": {
+      "button": {
+        "primary": {
+          "background": {
+            "$value": "{color.action.primary}",
+            "$description": "Primary button fill."
+          },
+          "background-hover": {
+            "$value": "{color.action.primary-hover}",
+            "$description": "Primary button fill on hover."
+          },
+          "label": {
+            "$value": "{color.text.on-action}",
+            "$description": "Primary button label color."
+          }
+        },
+        "secondary": {
+          "background": {
+            "$value": "{color.action.secondary}",
+            "$description": "Secondary button fill."
+          },
+          "background-hover": {
+            "$value": "{color.action.secondary-hover}",
+            "$description": "Secondary button fill on hover."
+          },
+          "label": {
+            "$value": "{color.text.primary}",
+            "$description": "Secondary button label color."
+          },
+          "border": {
+            "$value": "{color.border.strong}",
+            "$description": "Secondary button border."
+          }
+        },
+        "ghost": {
+          "background-hover": {
+            "$value": "{color.surface.sunken}",
+            "$description": "Ghost button fill on hover."
+          },
+          "label": {
+            "$value": "{color.text.link}",
+            "$description": "Ghost button label color."
+          }
+        },
+        "height": {
+          "$value": "{size.control.default}",
+          "$description": "Button height."
+        },
+        "padding-x": {
+          "$value": "{space.inset.control-x}",
+          "$description": "Horizontal padding inside a button."
+        },
+        "radius": {
+          "$value": "{radius.control}",
+          "$description": "Button corner radius."
+        },
+        "font-size": {
+          "$value": "{type.label.font-size}",
+          "$description": "Button label size."
+        },
+        "font-weight": {
+          "$value": "{type.label.font-weight}",
+          "$description": "Button label weight."
+        },
+        "focus-ring": {
+          "$value": "{color.border.focus}",
+          "$description": "Focus ring color on any button."
+        }
+      },
+      "input": {
+        "background": {
+          "$value": "{color.surface.default}",
+          "$description": "Input fill."
+        },
+        "border": {
+          "$value": "{color.border.strong}",
+          "$description": "Input border at rest."
+        },
+        "border-focus": {
+          "$value": "{color.border.focus}",
+          "$description": "Input border when focused."
+        },
+        "text": {
+          "$value": "{color.text.primary}",
+          "$description": "Typed text color."
+        },
+        "placeholder": {
+          "$value": "{color.text.muted}",
+          "$description": "Placeholder text color."
+        },
+        "height": {
+          "$value": "{size.control.default}",
+          "$description": "Input height."
+        },
+        "padding-x": {
+          "$value": "{space.inset.control-x}",
+          "$description": "Horizontal padding inside an input."
+        },
+        "radius": {
+          "$value": "{radius.control}",
+          "$description": "Input corner radius."
+        },
+        "font-size": {
+          "$value": "{type.body.font-size}",
+          "$description": "Typed text size."
+        }
+      },
+      "control": {
+        "checked": {
+          "$value": "{color.action.primary}",
+          "$description": "Fill of a checked checkbox or an on switch."
+        },
+        "track": {
+          "$value": "{color.border.strong}",
+          "$description": "Track of an off switch."
+        },
+        "thumb": {
+          "$value": "{color.surface.default}",
+          "$description": "Switch thumb and checkmark color."
+        },
+        "radius": {
+          "$value": "{radius.badge}",
+          "$description": "Checkbox corner radius."
+        }
+      },
+      "badge": {
+        "radius": {
+          "$value": "{radius.badge}",
+          "$description": "Badge corner radius."
+        },
+        "padding-x": {
+          "$value": "{space.gap.tight}",
+          "$description": "Horizontal padding inside a badge."
+        },
+        "font-size": {
+          "$value": "{type.caption.font-size}",
+          "$description": "Badge label size."
+        },
+        "neutral": {
+          "background": {
+            "$value": "{color.surface.sunken}",
+            "$description": "Neutral badge fill."
+          },
+          "label": {
+            "$value": "{color.text.secondary}",
+            "$description": "Neutral badge label."
+          }
+        },
+        "success": {
+          "background": {
+            "$value": "{color.status.success-subtle}",
+            "$description": "Success badge fill."
+          },
+          "label": {
+            "$value": "{color.status.success}",
+            "$description": "Success badge label."
+          }
+        },
+        "warning": {
+          "background": {
+            "$value": "{color.status.warning-subtle}",
+            "$description": "Warning badge fill."
+          },
+          "label": {
+            "$value": "{color.status.warning}",
+            "$description": "Warning badge label."
+          }
+        },
+        "danger": {
+          "background": {
+            "$value": "{color.status.danger-subtle}",
+            "$description": "Danger badge fill."
+          },
+          "label": {
+            "$value": "{color.status.danger}",
+            "$description": "Danger badge label."
+          }
+        }
+      },
+      "card": {
+        "background": {
+          "$value": "{color.surface.default}",
+          "$description": "Card fill."
+        },
+        "border": {
+          "$value": "{color.border.default}",
+          "$description": "Card border."
+        },
+        "radius": {
+          "$value": "{radius.container}",
+          "$description": "Card corner radius."
+        },
+        "padding": {
+          "$value": "{space.inset.container}",
+          "$description": "Padding inside a card."
+        },
+        "shadow": {
+          "$value": "{elevation.card}",
+          "$description": "Card shadow."
+        }
+      },
+      "table": {
+        "header-background": {
+          "$value": "{color.surface.sunken}",
+          "$description": "Header row fill."
+        },
+        "row-height": {
+          "$value": "{size.row}",
+          "$description": "Height of one data row."
+        },
+        "cell-padding-x": {
+          "$value": "{space.inset.cell-x}",
+          "$description": "Horizontal padding inside a cell."
+        },
+        "row-border": {
+          "$value": "{color.border.default}",
+          "$description": "Line between rows."
+        },
+        "row-selected": {
+          "$value": "{color.surface.selected}",
+          "$description": "Fill of a selected row."
+        },
+        "font-size": {
+          "$value": "{type.data.font-size}",
+          "$description": "Cell text size."
+        }
+      },
+      "tabs": {
+        "indicator": {
+          "$value": "{color.action.primary}",
+          "$description": "Active tab indicator."
+        },
+        "label": {
+          "$value": "{color.text.secondary}",
+          "$description": "Inactive tab label."
+        },
+        "label-active": {
+          "$value": "{color.text.primary}",
+          "$description": "Active tab label."
+        }
+      },
+      "overlay": {
+        "background": {
+          "$value": "{color.surface.raised}",
+          "$description": "Fill of a dialog, menu or toast."
+        },
+        "radius": {
+          "$value": "{radius.container}",
+          "$description": "Corner radius of overlays."
+        },
+        "shadow": {
+          "$value": "{elevation.overlay}",
+          "$description": "Shadow of overlays."
+        },
+        "scrim": {
+          "$value": "{color.surface.scrim}",
+          "$description": "Color that dims the page behind a dialog."
+        },
+        "item-height": {
+          "$value": "{size.control.default}",
+          "$description": "Height of a menu item."
+        }
+      },
+      "tooltip": {
+        "background": {
+          "$value": "{color.surface.inverse}",
+          "$description": "Tooltip fill."
+        },
+        "label": {
+          "$value": "{color.text.inverse}",
+          "$description": "Tooltip text."
+        }
+      },
+      "motion": {
+        "duration": {
+          "$value": "{motion.duration.feedback}",
+          "$description": "Duration of feedback transitions."
+        },
+        "easing": {
+          "$value": "{motion.easing.standard}",
+          "$description": "Easing of feedback transitions."
+        }
+      }
+    }
+  }
+}

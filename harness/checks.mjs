@@ -116,6 +116,30 @@ function* objects(value, path = "$") {
   }
 }
 
+// Flatten a DTCG group into { "a.b.c": token }.
+export function flatten(group, prefix = "") {
+  const out = {};
+  for (const [k, v] of Object.entries(group ?? {})) {
+    if (k.startsWith("$")) continue;
+    const path = prefix ? `${prefix}.${k}` : k;
+    if (v && typeof v === "object" && "$value" in v) out[path] = v;
+    else if (v && typeof v === "object") Object.assign(out, flatten(v, path));
+  }
+  return out;
+}
+
+// Follow {references} to a literal value.
+export function resolve(all, path, seen = new Set()) {
+  if (seen.has(path)) return { error: "is part of a reference cycle" };
+  const t = all[path];
+  if (!t) return { error: "does not exist" };
+  const m = typeof t.$value === "string" && t.$value.match(/^\{([^}]+)\}$/);
+  if (!m) return { value: t.$value };
+  seen.add(path);
+  const r = resolve(all, m[1], seen);
+  return r.error ? { error: `→ ${m[1]} ${r.error}` } : r;
+}
+
 function frontMatter(text) {
   const m = text.match(/^---\n([\s\S]*?)\n---/);
   return m ? m[1] : null;
@@ -207,6 +231,58 @@ export const CHECKS = {
     },
   },
 
+  "schemes-tokens-resolve": {
+    requires: ["schemes/grammar.json", ...SCHEMES.map((s) => `schemes/${s}.json`)],
+    run: (c) => {
+      const problems = [];
+      for (const s of SCHEMES) {
+        const t = c.json("schemes", `${s}.json`).tokens;
+        const lightPaths = Object.keys(flatten(t.semantic.light)).sort().join();
+        if (lightPaths !== Object.keys(flatten(t.semantic.dark)).sort().join())
+          problems.push(`${s}: light and dark differ`);
+        for (const brand of Object.keys(t.brands)) {
+          for (const mode of ["light", "dark"]) {
+            const all = {
+              ...flatten(t.primitive),
+              ...flatten(t.brands[brand].primitive),
+              ...flatten(t.semantic.base),
+              ...flatten(t.semantic[mode]),
+              ...flatten(t.component),
+            };
+            for (const path of Object.keys(all)) {
+              const r = resolve(all, path);
+              if (r.error) problems.push(`${s}/${brand}/${mode}: ${path} ${r.error}`);
+            }
+          }
+        }
+      }
+      return problems.length
+        ? bad(`${problems.length} problems: ${problems.slice(0, 4).join("; ")}`)
+        : ok("every token resolves in every brand and mode");
+    },
+  },
+
+  "schemes-voice-and-themes": {
+    requires: [...SCHEMES.map((s) => `schemes/${s}.json`)],
+    run: (c) => {
+      const gaps = [];
+      for (const s of SCHEMES) {
+        const sch = c.json("schemes", `${s}.json`);
+        const v = sch.voice;
+        if (!v || v.examples?.length < 5 || !v.tone?.error) gaps.push(`${s}: voice and tone incomplete`);
+        for (const b of Object.keys(sch.tokens.brands)) {
+          for (const m of ["light", "dark"])
+            if (!sch.themes.some((t) => t.brand === b && t.mode === m)) gaps.push(`${s}: ${b} has no ${m}`);
+        }
+      }
+      const brands = Object.keys(c.json("schemes", "multi-brand.json").tokens.brands);
+      if (brands.length < 3) gaps.push(`multi-brand has ${brands.length} brands; a real setup needs at least 3`);
+      return gaps.length
+        ? bad(gaps.join("; "))
+        : ok("voice and tone in every scheme; light and dark for every brand; multi-brand has 3 brands");
+    },
+  },
+
   // JSON standards
   "json-schemas-2020-12": {
     requires: ["schema/scheme.schema.json"],
@@ -279,7 +355,7 @@ export const CHECKS = {
     },
   },
   "llm-files": {
-    requires: ["schemes/grammar.json"],
+    requires: ["scripts/build-llms.mjs"],
     run: (c) => {
       const need = ["llms.txt", "llms-full.txt", "AGENTS.md"];
       const missing = need.filter((f) => !c.has(f));
@@ -341,6 +417,7 @@ export const CHECKS = {
   },
   "tokens-built-all-schemes": {
     requires: ["tokens/package.json"],
+    slow: true,
     run: (c) => {
       const r = c.sh("pnpm", ["--dir", "tokens", "build"]);
       if (r.code !== 0) return bad(tail(r.out));
@@ -429,7 +506,7 @@ export const CHECKS = {
     },
   },
   "cli-commands": {
-    requires: ["cli/package.json", "schemes/grammar.json"],
+    requires: ["cli/src/schemes.mjs"],
     run: (c) => {
       const r = c.sh("node", ["cli/bin/open-ds.js", "--help"]);
       const missing = ["list", "show", "why", "when", "init", "add"].filter(
@@ -469,7 +546,7 @@ export const CHECKS = {
       /fastmcp/.test(c.read("mcp/pyproject.toml")) ? ok("FastMCP dependency") : bad("mcp does not depend on fastmcp"),
   },
   "mcp-tools": {
-    requires: ["mcp/src/open_ds_mcp/server.py", "schemes/grammar.json"],
+    requires: ["mcp/src/open_ds_mcp/schemes.py"],
     run: (c) => {
       const src = c.read("mcp/src/open_ds_mcp/server.py");
       const missing = ["list_schemes", "get_scheme", "get_answer", "why", "when_to_use", "deploy"].filter(
@@ -479,7 +556,7 @@ export const CHECKS = {
     },
   },
   "mcp-deploy-uses-cli": {
-    requires: ["mcp/src/open_ds_mcp/server.py", "schemes/grammar.json"],
+    requires: ["mcp/src/open_ds_mcp/schemes.py"],
     run: (c) =>
       /open-ds\.js|"open-ds"/.test(c.read("mcp/src/open_ds_mcp/server.py"))
         ? ok("deploy calls the CLI")

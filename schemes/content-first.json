@@ -1,0 +1,1906 @@
+{
+  "$schema": "../schema/scheme.schema.json",
+  "id": "content-first",
+  "name": "Content first",
+  "version": "0.1.0",
+  "status": "draft",
+  "summary": "Large, calm type and generous space, for people who come to read.",
+  "description": "Content first is an Open DS scheme: a full set of answers to the Open DS grammar, with the reasons behind each, usage rules, voice and tone, and the tokens that follow. Large, calm type and generous space, for people who come to read.",
+  "ai": {
+    "use_when": "Publications, documentation, blogs, guides and help centers.",
+    "avoid_when": "Data-heavy tools or screens with many actions.",
+    "example_products": [
+      "Magazine",
+      "Documentation site",
+      "Help center",
+      "Long-form guide"
+    ]
+  },
+  "scenarios": [
+    "A reader arrives from search on a phone and reads a long guide in one sitting.",
+    "A returning reader saves an article to finish on the train."
+  ],
+  "voice": {
+    "summary": "Conversational and warm. Talk to one reader, like a good editor would.",
+    "principles": [
+      "Write to one person: \"you\", not \"users\".",
+      "Short sentences with room to breathe.",
+      "Explain why before asking for anything."
+    ],
+    "tone": {
+      "error": "Calm and helpful. Take the blame, offer the way forward.",
+      "success": "Warm and brief.",
+      "empty": "An invitation, not a dead end.",
+      "confirm": "Gentle and clear about what changes.",
+      "onboarding": "One sentence on what is here and why it is worth reading."
+    },
+    "examples": [
+      {
+        "context": "button",
+        "text": "Subscribe"
+      },
+      {
+        "context": "error",
+        "text": "We could not save your email. Check it and try again."
+      },
+      {
+        "context": "success",
+        "text": "You're in. The next issue arrives on Friday."
+      },
+      {
+        "context": "empty",
+        "text": "Nothing saved yet. Tap Save on any article to read it later."
+      },
+      {
+        "context": "confirm",
+        "text": "Unsubscribe from the weekly letter? You can come back any time."
+      }
+    ],
+    "words": {
+      "use": [
+        "Read",
+        "Save for later",
+        "You",
+        "Next issue"
+      ],
+      "avoid": [
+        "Click here",
+        "Submit",
+        "Users",
+        "Content"
+      ]
+    }
+  },
+  "themes": [
+    {
+      "id": "light",
+      "brand": "default",
+      "mode": "light"
+    },
+    {
+      "id": "dark",
+      "brand": "default",
+      "mode": "dark"
+    }
+  ],
+  "answers": [
+    {
+      "question": "business.q1",
+      "option": "inform",
+      "why": "The product publishes articles and guides.",
+      "because": []
+    },
+    {
+      "question": "business.q2",
+      "option": "one",
+      "why": "One publication, one brand.",
+      "because": []
+    },
+    {
+      "question": "people.q1",
+      "option": "occasional",
+      "why": "Most readers arrive from search and visit now and then.",
+      "because": [
+        "business.q1"
+      ]
+    },
+    {
+      "question": "people.q2",
+      "option": "aa",
+      "why": "AA is the commitment for a public site.",
+      "because": [
+        "people.q1"
+      ]
+    },
+    {
+      "question": "content.q1",
+      "option": "long-text",
+      "why": "The content is long-form text.",
+      "because": [
+        "business.q1"
+      ]
+    },
+    {
+      "question": "content.q2",
+      "option": "one-idea",
+      "why": "One idea per screen keeps reading calm.",
+      "because": [
+        "content.q1"
+      ]
+    },
+    {
+      "question": "tasks.q1",
+      "option": "read",
+      "why": "People read from start to end.",
+      "because": [
+        "content.q1"
+      ]
+    },
+    {
+      "question": "tasks.q2",
+      "option": "rarely",
+      "why": "Actions are rare: subscribe, share, save.",
+      "because": [
+        "tasks.q1"
+      ]
+    },
+    {
+      "question": "human.q1",
+      "option": "attention",
+      "why": "Attention belongs to the text.",
+      "because": [
+        "tasks.q1"
+      ]
+    },
+    {
+      "question": "human.q2",
+      "option": "fresh",
+      "why": "Visitors see the interface fresh each time.",
+      "because": [
+        "people.q1"
+      ]
+    },
+    {
+      "question": "outcomes.q1",
+      "option": "reading-comfort",
+      "why": "Comfortable reading is the measure.",
+      "because": [
+        "tasks.q1"
+      ]
+    },
+    {
+      "question": "outcomes.q2",
+      "option": "lost-place",
+      "why": "Losing your place in an article breaks the read.",
+      "because": [
+        "tasks.q1"
+      ]
+    },
+    {
+      "question": "brand.q1",
+      "option": "warm",
+      "why": "Warm and considered, like a good magazine.",
+      "because": [
+        "business.q1"
+      ]
+    },
+    {
+      "question": "brand.q2",
+      "option": "present",
+      "why": "The brand shows in type, not in color.",
+      "because": [
+        "brand.q1"
+      ]
+    },
+    {
+      "question": "voice.q1",
+      "option": "conversational",
+      "why": "The voice talks to one reader.",
+      "because": [
+        "people.q1"
+      ]
+    },
+    {
+      "question": "voice.q2",
+      "option": "neutral",
+      "why": "Neutral formality suits every topic.",
+      "because": []
+    },
+    {
+      "question": "team.q1",
+      "option": "small",
+      "why": "A small editorial team.",
+      "because": []
+    },
+    {
+      "question": "team.q2",
+      "option": "stable",
+      "why": "The design changes rarely.",
+      "because": []
+    },
+    {
+      "question": "typography.q1",
+      "option": "core-editorial",
+      "why": "A lead and a display role open articles.",
+      "because": [
+        "content.q1"
+      ]
+    },
+    {
+      "question": "typography.q2",
+      "option": "large",
+      "why": "Large body text is easy on the eyes.",
+      "because": [
+        "outcomes.q1"
+      ]
+    },
+    {
+      "question": "typography.q3",
+      "option": "proportional",
+      "why": "Line height is a ratio, so it grows with the text.",
+      "because": [
+        "tasks.q1",
+        "people.q2"
+      ]
+    },
+    {
+      "question": "color.q1",
+      "option": "three",
+      "why": "Primary, secondary and a text link.",
+      "because": [
+        "tasks.q2"
+      ]
+    },
+    {
+      "question": "color.q2",
+      "option": "color-word",
+      "why": "Status is rare; color and a word are enough.",
+      "because": [
+        "people.q2"
+      ]
+    },
+    {
+      "question": "color.q3",
+      "option": "balanced",
+      "why": "A calm, balanced palette.",
+      "because": [
+        "brand.q1"
+      ]
+    },
+    {
+      "question": "spacing.q1",
+      "option": "spacious",
+      "why": "Room around the text helps reading.",
+      "because": [
+        "outcomes.q1"
+      ]
+    },
+    {
+      "question": "spacing.q2",
+      "option": "one",
+      "why": "One density everywhere.",
+      "because": [
+        "content.q2"
+      ]
+    },
+    {
+      "question": "spacing.q3",
+      "option": "space",
+      "why": "Space separates sections; lines add noise.",
+      "because": [
+        "human.q1"
+      ]
+    },
+    {
+      "question": "shape.q1",
+      "option": "rounded",
+      "why": "Rounded corners feel friendly.",
+      "because": [
+        "brand.q1"
+      ]
+    },
+    {
+      "question": "shape.q2",
+      "option": "regular",
+      "why": "Regular borders read clearly on warm paper.",
+      "because": [
+        "brand.q1"
+      ]
+    },
+    {
+      "question": "shape.q3",
+      "option": "pill",
+      "why": "Pills feel softer next to text.",
+      "because": [
+        "brand.q1"
+      ]
+    },
+    {
+      "question": "elevation.q1",
+      "option": "floating-only",
+      "why": "Only menus and dialogs float.",
+      "because": [
+        "human.q1"
+      ]
+    },
+    {
+      "question": "elevation.q2",
+      "option": "soft",
+      "why": "Soft shadows match the warm brand.",
+      "because": [
+        "brand.q1"
+      ]
+    },
+    {
+      "question": "elevation.q3",
+      "option": "dim",
+      "why": "Dimming focuses the reader on the dialog.",
+      "because": [
+        "human.q1"
+      ]
+    },
+    {
+      "question": "motion.q1",
+      "option": "guidance",
+      "why": "Motion guides from one part to the next.",
+      "because": [
+        "human.q2"
+      ]
+    },
+    {
+      "question": "motion.q2",
+      "option": "moderate",
+      "why": "Moderate speed feels calm.",
+      "because": [
+        "brand.q1"
+      ]
+    },
+    {
+      "question": "motion.q3",
+      "option": "none",
+      "why": "When asked, nothing moves.",
+      "because": [
+        "people.q2"
+      ]
+    },
+    {
+      "question": "iconography.q1",
+      "option": "with-labels",
+      "why": "Occasional visitors need a word next to each icon.",
+      "because": [
+        "human.q2"
+      ]
+    },
+    {
+      "question": "iconography.q2",
+      "option": "outline",
+      "why": "Outline icons stay quiet next to text.",
+      "because": [
+        "human.q1"
+      ]
+    },
+    {
+      "question": "iconography.q3",
+      "option": "match-text",
+      "why": "Icons match the text size.",
+      "because": [
+        "human.q1"
+      ]
+    },
+    {
+      "question": "theming.q1",
+      "option": "light-dark",
+      "why": "Light and dark ship as standard for night readers.",
+      "because": [
+        "people.q1"
+      ]
+    },
+    {
+      "question": "theming.q2",
+      "option": "single",
+      "why": "One publication, one brand.",
+      "because": [
+        "business.q2"
+      ]
+    },
+    {
+      "question": "theming.q3",
+      "option": "user",
+      "why": "Readers pick light or dark.",
+      "because": [
+        "people.q1"
+      ]
+    },
+    {
+      "question": "accessibility.q1",
+      "option": "aa",
+      "why": "AA contrast for all text.",
+      "because": [
+        "people.q2"
+      ]
+    },
+    {
+      "question": "accessibility.q2",
+      "option": "touch",
+      "why": "Many readers are on phones.",
+      "because": [
+        "people.q1"
+      ]
+    },
+    {
+      "question": "accessibility.q3",
+      "option": "plus-pressed",
+      "why": "Pressed gets its own value for touch.",
+      "because": [
+        "accessibility.q2"
+      ]
+    },
+    {
+      "question": "naming.q1",
+      "option": "by-role",
+      "why": "Role names survive a redesign.",
+      "because": [
+        "team.q1"
+      ]
+    },
+    {
+      "question": "naming.q2",
+      "option": "three",
+      "why": "Primitives, semantics and component keys.",
+      "because": [
+        "team.q1"
+      ]
+    },
+    {
+      "question": "naming.q3",
+      "option": "keys",
+      "why": "A component API keeps changes local.",
+      "because": [
+        "team.q1"
+      ]
+    }
+  ],
+  "usage": [
+    {
+      "situation": "page-title",
+      "use": "type.title",
+      "not": "type.display (landing only)",
+      "why": "Display is kept for the landing moment; article titles stay calm.",
+      "because": [
+        "typography.q1"
+      ]
+    },
+    {
+      "situation": "number-in-table",
+      "use": "type.body",
+      "not": "A mono font",
+      "why": "Tables are rare and read row by row.",
+      "because": [
+        "tasks.q1"
+      ]
+    },
+    {
+      "situation": "paragraph",
+      "use": "type.body, at most 65 characters a line",
+      "not": "type.caption",
+      "why": "A large size and short lines make long text easy on the eyes.",
+      "because": [
+        "outcomes.q1"
+      ]
+    },
+    {
+      "situation": "field-label",
+      "use": "type.label",
+      "not": "type.caption",
+      "why": "Caption is too faint for a label people must read.",
+      "because": [
+        "people.q2"
+      ]
+    },
+    {
+      "situation": "selected-row",
+      "use": "color.surface.selected",
+      "not": "Bold text only",
+      "why": "A tint shows the choice clearly on warm paper.",
+      "because": [
+        "human.q2"
+      ]
+    },
+    {
+      "situation": "error-message",
+      "use": "color.status.danger and a plain sentence",
+      "not": "Color alone",
+      "why": "The sentence says what to fix; color only draws the eye.",
+      "because": [
+        "color.q2"
+      ]
+    },
+    {
+      "situation": "link",
+      "use": "color.text.link, underlined",
+      "not": "Color without underline",
+      "why": "Readers expect links to be underlined inside text.",
+      "because": [
+        "human.q2"
+      ]
+    },
+    {
+      "situation": "status-label",
+      "use": "Badge pill with a word",
+      "not": "An icon alone",
+      "why": "Status is rare; a word is clear.",
+      "because": [
+        "color.q2"
+      ]
+    },
+    {
+      "situation": "related-items",
+      "use": "space.gap.default",
+      "not": "space.gap.tight",
+      "why": "Text needs air even inside a group.",
+      "because": [
+        "spacing.q1"
+      ]
+    },
+    {
+      "situation": "between-sections",
+      "use": "space.gap.section, no line",
+      "not": "A divider line",
+      "why": "Space alone separates sections; lines add noise.",
+      "because": [
+        "spacing.q3"
+      ]
+    },
+    {
+      "situation": "table-row",
+      "use": "size.row (comfortable)",
+      "not": "A compact row",
+      "why": "Rows are read, not scanned.",
+      "because": [
+        "tasks.q1"
+      ]
+    },
+    {
+      "situation": "control-corner",
+      "use": "radius.control (rounded)",
+      "not": "Sharp corners",
+      "why": "Rounded corners feel friendly.",
+      "because": [
+        "shape.q1"
+      ]
+    },
+    {
+      "situation": "status-shape",
+      "use": "radius.badge (pill)",
+      "not": "A rectangle",
+      "why": "Pills sit softly next to text.",
+      "because": [
+        "shape.q3"
+      ]
+    },
+    {
+      "situation": "card",
+      "use": "A border, no shadow",
+      "not": "A strong shadow",
+      "why": "Cards stay flat on the page; shadows are for floating things.",
+      "because": [
+        "elevation.q1"
+      ]
+    },
+    {
+      "situation": "menu-or-dialog",
+      "use": "elevation.overlay and a dimmed page",
+      "not": "No shadow",
+      "why": "The dimmed page focuses the reader on the dialog.",
+      "because": [
+        "elevation.q3"
+      ]
+    },
+    {
+      "situation": "hover-feedback",
+      "use": "motion.duration.feedback (moderate)",
+      "not": "A fast flash",
+      "why": "Moderate speed feels calm.",
+      "because": [
+        "motion.q2"
+      ]
+    },
+    {
+      "situation": "reduced-motion",
+      "use": "No motion",
+      "not": "Reduced motion",
+      "why": "When people ask for less motion, nothing moves.",
+      "because": [
+        "motion.q3"
+      ]
+    },
+    {
+      "situation": "icon-alone",
+      "use": "Not used: always add a word",
+      "not": "An icon button",
+      "why": "Occasional visitors do not know icons.",
+      "because": [
+        "iconography.q1",
+        "human.q2"
+      ]
+    },
+    {
+      "situation": "dark-mode",
+      "use": "The dark semantic mode",
+      "not": "Inverting images",
+      "why": "Only semantic colors change; the reading layout stays.",
+      "because": [
+        "theming.q1"
+      ]
+    },
+    {
+      "situation": "keyboard-focus",
+      "use": "button/focus-ring, 2px",
+      "not": "Removing the outline",
+      "why": "Keyboard users must always see where they are.",
+      "because": [
+        "people.q2"
+      ]
+    },
+    {
+      "situation": "smallest-target",
+      "use": "size.control.default (touch)",
+      "not": "A compact control",
+      "why": "Many readers are on phones.",
+      "because": [
+        "accessibility.q2"
+      ]
+    },
+    {
+      "situation": "commit-action",
+      "use": "Button primary, one per section",
+      "not": "Two primaries side by side",
+      "why": "One clear action per section.",
+      "because": [
+        "tasks.q2"
+      ]
+    },
+    {
+      "situation": "alternative-action",
+      "use": "Button ghost as a text link",
+      "not": "A second boxed button",
+      "why": "A link feels lighter and does not compete.",
+      "because": [
+        "brand.q1"
+      ]
+    },
+    {
+      "situation": "destructive-action",
+      "use": "Button secondary with the full verb, then confirm",
+      "not": "Button primary",
+      "why": "Naming the verb and confirming prevents a mistake.",
+      "because": [
+        "outcomes.q2"
+      ]
+    },
+    {
+      "situation": "row-action",
+      "use": "Button ghost with a word",
+      "not": "An icon on its own",
+      "why": "Occasional visitors need the word.",
+      "because": [
+        "human.q2"
+      ]
+    }
+  ],
+  "tokens": {
+    "primitive": {
+      "color": {
+        "$description": "The color options. Semantics pick from these; components never read them.",
+        "neutral": {
+          "0": {
+            "$type": "color",
+            "$value": "#FFFFFF"
+          },
+          "50": {
+            "$type": "color",
+            "$value": "#FFFDF8"
+          },
+          "100": {
+            "$type": "color",
+            "$value": "#F6F2EA"
+          },
+          "200": {
+            "$type": "color",
+            "$value": "#E4DDD0"
+          },
+          "300": {
+            "$type": "color",
+            "$value": "#CFC6B6"
+          },
+          "500": {
+            "$type": "color",
+            "$value": "#7A7062"
+          },
+          "700": {
+            "$type": "color",
+            "$value": "#4A4339"
+          },
+          "800": {
+            "$type": "color",
+            "$value": "#2E2A24"
+          },
+          "900": {
+            "$type": "color",
+            "$value": "#1F1B16"
+          },
+          "950": {
+            "$type": "color",
+            "$value": "#14110D"
+          }
+        },
+        "success": {
+          "strong": {
+            "$type": "color",
+            "$value": "#1F7A3A"
+          },
+          "subtle": {
+            "$type": "color",
+            "$value": "#E3F4EA"
+          },
+          "strong-dark": {
+            "$type": "color",
+            "$value": "#5CC283"
+          },
+          "subtle-dark": {
+            "$type": "color",
+            "$value": "#123322"
+          }
+        },
+        "warning": {
+          "strong": {
+            "$type": "color",
+            "$value": "#8A5600"
+          },
+          "subtle": {
+            "$type": "color",
+            "$value": "#FFF3D6"
+          },
+          "strong-dark": {
+            "$type": "color",
+            "$value": "#F2B84B"
+          },
+          "subtle-dark": {
+            "$type": "color",
+            "$value": "#3A2A05"
+          }
+        },
+        "danger": {
+          "strong": {
+            "$type": "color",
+            "$value": "#C42B2B"
+          },
+          "subtle": {
+            "$type": "color",
+            "$value": "#FDE7E7"
+          },
+          "strong-dark": {
+            "$type": "color",
+            "$value": "#F28B8B"
+          },
+          "subtle-dark": {
+            "$type": "color",
+            "$value": "#3D1414"
+          }
+        },
+        "black-alpha": {
+          "scrim": {
+            "$type": "color",
+            "$value": "#0000008C"
+          },
+          "scrim-dark": {
+            "$type": "color",
+            "$value": "#000000B3"
+          }
+        }
+      },
+      "space": {
+        "$description": "Space options. Names give the size in pixels at the default text size; values are rem.",
+        "8": {
+          "$type": "dimension",
+          "$value": "0.5rem"
+        },
+        "16": {
+          "$type": "dimension",
+          "$value": "1rem"
+        },
+        "20": {
+          "$type": "dimension",
+          "$value": "1.25rem"
+        },
+        "24": {
+          "$type": "dimension",
+          "$value": "1.5rem"
+        },
+        "32": {
+          "$type": "dimension",
+          "$value": "2rem"
+        },
+        "64": {
+          "$type": "dimension",
+          "$value": "4rem"
+        }
+      },
+      "size": {
+        "$description": "Size options for controls, rows and icons.",
+        "16": {
+          "$type": "dimension",
+          "$value": "1rem"
+        },
+        "20": {
+          "$type": "dimension",
+          "$value": "1.25rem"
+        },
+        "24": {
+          "$type": "dimension",
+          "$value": "1.5rem"
+        },
+        "40": {
+          "$type": "dimension",
+          "$value": "2.5rem"
+        },
+        "48": {
+          "$type": "dimension",
+          "$value": "3rem"
+        }
+      },
+      "radius": {
+        "$description": "Corner options.",
+        "0": {
+          "$type": "dimension",
+          "$value": "0rem"
+        },
+        "8": {
+          "$type": "dimension",
+          "$value": "0.5rem"
+        },
+        "999": {
+          "$type": "dimension",
+          "$value": "9999px"
+        },
+        "12": {
+          "$type": "dimension",
+          "$value": "0.75rem"
+        }
+      },
+      "border-width": {
+        "$description": "Border width options.",
+        "1": {
+          "$type": "dimension",
+          "$value": "1px"
+        },
+        "2": {
+          "$type": "dimension",
+          "$value": "2px"
+        }
+      },
+      "font": {
+        "size": {
+          "$description": "Type size options. Names are pixels at the default text size; values are rem, so text grows with the user's setting.",
+          "14": {
+            "$type": "dimension",
+            "$value": "0.875rem"
+          },
+          "16": {
+            "$type": "dimension",
+            "$value": "1rem"
+          },
+          "18": {
+            "$type": "dimension",
+            "$value": "1.125rem"
+          },
+          "28": {
+            "$type": "dimension",
+            "$value": "1.75rem"
+          },
+          "36": {
+            "$type": "dimension",
+            "$value": "2.25rem"
+          },
+          "44": {
+            "$type": "dimension",
+            "$value": "2.75rem"
+          }
+        },
+        "weight": {
+          "400": {
+            "$type": "fontWeight",
+            "$value": 400
+          },
+          "600": {
+            "$type": "fontWeight",
+            "$value": 600
+          }
+        },
+        "line-height": {
+          "1_15": {
+            "$type": "number",
+            "$value": 1.15,
+            "$description": "A ratio of the text size."
+          },
+          "1_3": {
+            "$type": "number",
+            "$value": 1.3,
+            "$description": "A ratio of the text size."
+          },
+          "1_45": {
+            "$type": "number",
+            "$value": 1.45,
+            "$description": "A ratio of the text size."
+          },
+          "1_65": {
+            "$type": "number",
+            "$value": 1.65,
+            "$description": "A ratio of the text size."
+          }
+        }
+      },
+      "duration": {
+        "fast": {
+          "$type": "duration",
+          "$value": "120ms",
+          "$description": "Fast: the usual convention for feedback, about 120ms."
+        },
+        "moderate": {
+          "$type": "duration",
+          "$value": "200ms",
+          "$description": "Moderate: a calm, easy-to-follow speed, about 200ms."
+        },
+        "relaxed": {
+          "$type": "duration",
+          "$value": "320ms",
+          "$description": "Relaxed: a slower, springy speed for expressive motion, about 320ms."
+        }
+      },
+      "easing": {
+        "standard": {
+          "$type": "cubicBezier",
+          "$value": [
+            0.2,
+            0,
+            0,
+            1
+          ],
+          "$description": "The easing for feedback transitions."
+        }
+      },
+      "opacity": {
+        "40": {
+          "$type": "number",
+          "$value": 0.4,
+          "$description": "An opacity option."
+        }
+      }
+    },
+    "brands": {
+      "default": {
+        "label": "Content first",
+        "description": "The single brand: deep navy ink on warm paper, a serif for reading.",
+        "primitive": {
+          "color": {
+            "brand": {
+              "100": {
+                "$type": "color",
+                "$value": "#E3EAF3"
+              },
+              "300": {
+                "$type": "color",
+                "$value": "#8FA6C4"
+              },
+              "500": {
+                "$type": "color",
+                "$value": "#2E5283"
+              },
+              "600": {
+                "$type": "color",
+                "$value": "#1E3A5F"
+              },
+              "700": {
+                "$type": "color",
+                "$value": "#162C49"
+              },
+              "800": {
+                "$type": "color",
+                "$value": "#0F2036"
+              }
+            }
+          },
+          "font": {
+            "family": {
+              "display": {
+                "$type": "fontFamily",
+                "$value": "\"Source Serif 4\", Georgia, serif"
+              },
+              "body": {
+                "$type": "fontFamily",
+                "$value": "\"Source Serif 4\", Georgia, serif"
+              },
+              "ui": {
+                "$type": "fontFamily",
+                "$value": "Inter, system-ui, sans-serif"
+              },
+              "mono": {
+                "$type": "fontFamily",
+                "$value": "\"IBM Plex Mono\", ui-monospace, monospace"
+              }
+            }
+          },
+          "radius": {
+            "brand": {
+              "control": {
+                "$type": "dimension",
+                "$value": "{radius.8}"
+              },
+              "badge": {
+                "$type": "dimension",
+                "$value": "{radius.999}"
+              },
+              "container": {
+                "$type": "dimension",
+                "$value": "{radius.12}"
+              }
+            }
+          }
+        }
+      }
+    },
+    "semantic": {
+      "base": {
+        "space": {
+          "gap": {
+            "tight": {
+              "$type": "dimension",
+              "$value": "{space.8}",
+              "$description": "Between things that belong together."
+            },
+            "default": {
+              "$type": "dimension",
+              "$value": "{space.16}",
+              "$description": "Between items in one group."
+            },
+            "group": {
+              "$type": "dimension",
+              "$value": "{space.32}",
+              "$description": "Between groups."
+            },
+            "section": {
+              "$type": "dimension",
+              "$value": "{space.64}",
+              "$description": "Between page sections."
+            }
+          },
+          "inset": {
+            "control-x": {
+              "$type": "dimension",
+              "$value": "{space.20}",
+              "$description": "Horizontal padding inside controls."
+            },
+            "container": {
+              "$type": "dimension",
+              "$value": "{space.24}",
+              "$description": "Padding inside cards and dialogs."
+            },
+            "cell-x": {
+              "$type": "dimension",
+              "$value": "{space.16}",
+              "$description": "Horizontal padding inside table cells."
+            }
+          }
+        },
+        "size": {
+          "control": {
+            "default": {
+              "$type": "dimension",
+              "$value": "{size.48}",
+              "$description": "Height of buttons and inputs, and the smallest target."
+            },
+            "compact": {
+              "$type": "dimension",
+              "$value": "{size.40}",
+              "$description": "Height of compact controls."
+            }
+          },
+          "row": {
+            "$type": "dimension",
+            "$value": "{size.48}",
+            "$description": "Height of one table row."
+          },
+          "icon": {
+            "$type": "dimension",
+            "$value": "{size.16}",
+            "$description": "Icon size next to text."
+          }
+        },
+        "radius": {
+          "control": {
+            "$type": "dimension",
+            "$value": "{radius.brand.control}",
+            "$description": "Corner of buttons and inputs."
+          },
+          "badge": {
+            "$type": "dimension",
+            "$value": "{radius.brand.badge}",
+            "$description": "Corner of badges and checkboxes."
+          },
+          "container": {
+            "$type": "dimension",
+            "$value": "{radius.brand.container}",
+            "$description": "Corner of cards, menus and dialogs."
+          },
+          "round": {
+            "$type": "dimension",
+            "$value": "9999px",
+            "$description": "Fully round: avatars and dots."
+          }
+        },
+        "border-width": {
+          "default": {
+            "$type": "dimension",
+            "$value": "{border-width.1}",
+            "$description": "Every border."
+          },
+          "focus": {
+            "$type": "dimension",
+            "$value": "{border-width.2}",
+            "$description": "The focus ring."
+          }
+        },
+        "type": {
+          "display": {
+            "font-family": {
+              "$type": "fontFamily",
+              "$value": "{font.family.display}"
+            },
+            "font-size": {
+              "$type": "dimension",
+              "$value": "{font.size.44}"
+            },
+            "line-height": {
+              "$type": "number",
+              "$value": "{font.line-height.1_15}"
+            },
+            "font-weight": {
+              "$type": "fontWeight",
+              "$value": "{font.weight.600}"
+            },
+            "$description": "The display text role."
+          },
+          "title": {
+            "font-family": {
+              "$type": "fontFamily",
+              "$value": "{font.family.display}"
+            },
+            "font-size": {
+              "$type": "dimension",
+              "$value": "{font.size.36}"
+            },
+            "line-height": {
+              "$type": "number",
+              "$value": "{font.line-height.1_15}"
+            },
+            "font-weight": {
+              "$type": "fontWeight",
+              "$value": "{font.weight.600}"
+            },
+            "$description": "The title text role."
+          },
+          "heading": {
+            "font-family": {
+              "$type": "fontFamily",
+              "$value": "{font.family.display}"
+            },
+            "font-size": {
+              "$type": "dimension",
+              "$value": "{font.size.28}"
+            },
+            "line-height": {
+              "$type": "number",
+              "$value": "{font.line-height.1_3}"
+            },
+            "font-weight": {
+              "$type": "fontWeight",
+              "$value": "{font.weight.600}"
+            },
+            "$description": "The heading text role."
+          },
+          "body": {
+            "font-family": {
+              "$type": "fontFamily",
+              "$value": "{font.family.body}"
+            },
+            "font-size": {
+              "$type": "dimension",
+              "$value": "{font.size.18}"
+            },
+            "line-height": {
+              "$type": "number",
+              "$value": "{font.line-height.1_65}"
+            },
+            "font-weight": {
+              "$type": "fontWeight",
+              "$value": "{font.weight.400}"
+            },
+            "$description": "The body text role."
+          },
+          "label": {
+            "font-family": {
+              "$type": "fontFamily",
+              "$value": "{font.family.ui}"
+            },
+            "font-size": {
+              "$type": "dimension",
+              "$value": "{font.size.16}"
+            },
+            "line-height": {
+              "$type": "number",
+              "$value": "{font.line-height.1_3}"
+            },
+            "font-weight": {
+              "$type": "fontWeight",
+              "$value": "{font.weight.600}"
+            },
+            "$description": "The label text role."
+          },
+          "caption": {
+            "font-family": {
+              "$type": "fontFamily",
+              "$value": "{font.family.ui}"
+            },
+            "font-size": {
+              "$type": "dimension",
+              "$value": "{font.size.14}"
+            },
+            "line-height": {
+              "$type": "number",
+              "$value": "{font.line-height.1_45}"
+            },
+            "font-weight": {
+              "$type": "fontWeight",
+              "$value": "{font.weight.400}"
+            },
+            "$description": "The caption text role."
+          },
+          "data": {
+            "font-family": {
+              "$type": "fontFamily",
+              "$value": "{font.family.body}"
+            },
+            "font-size": {
+              "$type": "dimension",
+              "$value": "{font.size.18}"
+            },
+            "line-height": {
+              "$type": "number",
+              "$value": "{font.line-height.1_65}"
+            },
+            "font-weight": {
+              "$type": "fontWeight",
+              "$value": "{font.weight.400}"
+            },
+            "$description": "The data text role."
+          }
+        },
+        "motion": {
+          "duration": {
+            "feedback": {
+              "$type": "duration",
+              "$value": "{duration.moderate}",
+              "$description": "Feedback speed: moderate."
+            }
+          },
+          "easing": {
+            "standard": {
+              "$type": "cubicBezier",
+              "$value": "{easing.standard}",
+              "$description": "Feedback easing."
+            }
+          }
+        },
+        "opacity": {
+          "disabled": {
+            "$type": "number",
+            "$value": "{opacity.40}",
+            "$description": "Disabled controls."
+          }
+        }
+      },
+      "light": {
+        "color": {
+          "surface": {
+            "canvas": {
+              "$type": "color",
+              "$value": "{color.neutral.50}",
+              "$description": "The page background."
+            },
+            "default": {
+              "$type": "color",
+              "$value": "{color.neutral.0}",
+              "$description": "Cards, inputs and tables."
+            },
+            "raised": {
+              "$type": "color",
+              "$value": "{color.neutral.0}",
+              "$description": "Menus, dialogs, toasts."
+            },
+            "sunken": {
+              "$type": "color",
+              "$value": "{color.neutral.100}",
+              "$description": "Table headers and wells."
+            },
+            "selected": {
+              "$type": "color",
+              "$value": "{color.brand.100}",
+              "$description": "A selected row or item."
+            },
+            "inverse": {
+              "$type": "color",
+              "$value": "{color.neutral.900}",
+              "$description": "Tooltips."
+            },
+            "scrim": {
+              "$type": "color",
+              "$value": "{color.black-alpha.scrim}",
+              "$description": "Dims the page behind a dialog."
+            }
+          },
+          "text": {
+            "primary": {
+              "$type": "color",
+              "$value": "{color.neutral.900}",
+              "$description": "Main text."
+            },
+            "secondary": {
+              "$type": "color",
+              "$value": "{color.neutral.700}",
+              "$description": "Supporting text; passes AA."
+            },
+            "muted": {
+              "$type": "color",
+              "$value": "{color.neutral.500}",
+              "$description": "Hints and placeholders."
+            },
+            "inverse": {
+              "$type": "color",
+              "$value": "{color.neutral.0}",
+              "$description": "Text on inverse surfaces."
+            },
+            "on-action": {
+              "$type": "color",
+              "$value": "{color.neutral.0}",
+              "$description": "Text on the primary action."
+            },
+            "link": {
+              "$type": "color",
+              "$value": "{color.brand.700}",
+              "$description": "Links."
+            }
+          },
+          "border": {
+            "default": {
+              "$type": "color",
+              "$value": "{color.neutral.200}",
+              "$description": "Row lines and card borders."
+            },
+            "strong": {
+              "$type": "color",
+              "$value": "{color.neutral.300}",
+              "$description": "Input and secondary button borders."
+            },
+            "focus": {
+              "$type": "color",
+              "$value": "{color.brand.600}",
+              "$description": "The keyboard focus ring."
+            }
+          },
+          "action": {
+            "primary": {
+              "$type": "color",
+              "$value": "{color.brand.600}",
+              "$description": "The primary action."
+            },
+            "primary-hover": {
+              "$type": "color",
+              "$value": "{color.brand.700}",
+              "$description": "Primary action on hover."
+            },
+            "secondary": {
+              "$type": "color",
+              "$value": "{color.neutral.0}",
+              "$description": "Secondary action fill."
+            },
+            "secondary-hover": {
+              "$type": "color",
+              "$value": "{color.neutral.100}",
+              "$description": "Secondary action on hover."
+            }
+          },
+          "status": {
+            "success": {
+              "$type": "color",
+              "$value": "{color.success.strong}",
+              "$description": "Success text and icons."
+            },
+            "warning": {
+              "$type": "color",
+              "$value": "{color.warning.strong}",
+              "$description": "Warning text and icons."
+            },
+            "danger": {
+              "$type": "color",
+              "$value": "{color.danger.strong}",
+              "$description": "Danger text and icons."
+            },
+            "success-subtle": {
+              "$type": "color",
+              "$value": "{color.success.subtle}",
+              "$description": "Success badge fill."
+            },
+            "warning-subtle": {
+              "$type": "color",
+              "$value": "{color.warning.subtle}",
+              "$description": "Warning badge fill."
+            },
+            "danger-subtle": {
+              "$type": "color",
+              "$value": "{color.danger.subtle}",
+              "$description": "Danger badge fill."
+            }
+          }
+        },
+        "elevation": {
+          "card": {
+            "$type": "shadow",
+            "$value": {
+              "color": "#00000000",
+              "offsetX": "0px",
+              "offsetY": "0px",
+              "blur": "0px",
+              "spread": "0px"
+            },
+            "$description": "No shadow in this scheme."
+          },
+          "overlay": {
+            "$type": "shadow",
+            "$value": {
+              "color": "#1F1B1629",
+              "offsetX": "0px",
+              "offsetY": "12px",
+              "blur": "32px",
+              "spread": "0px"
+            }
+          }
+        }
+      },
+      "dark": {
+        "color": {
+          "surface": {
+            "canvas": {
+              "$type": "color",
+              "$value": "{color.neutral.950}"
+            },
+            "default": {
+              "$type": "color",
+              "$value": "{color.neutral.900}"
+            },
+            "raised": {
+              "$type": "color",
+              "$value": "{color.neutral.800}"
+            },
+            "sunken": {
+              "$type": "color",
+              "$value": "{color.neutral.800}"
+            },
+            "selected": {
+              "$type": "color",
+              "$value": "{color.brand.800}"
+            },
+            "inverse": {
+              "$type": "color",
+              "$value": "{color.neutral.50}"
+            },
+            "scrim": {
+              "$type": "color",
+              "$value": "{color.black-alpha.scrim-dark}"
+            }
+          },
+          "text": {
+            "primary": {
+              "$type": "color",
+              "$value": "{color.neutral.50}"
+            },
+            "secondary": {
+              "$type": "color",
+              "$value": "{color.neutral.300}"
+            },
+            "muted": {
+              "$type": "color",
+              "$value": "{color.neutral.500}"
+            },
+            "inverse": {
+              "$type": "color",
+              "$value": "{color.neutral.900}"
+            },
+            "on-action": {
+              "$type": "color",
+              "$value": "{color.neutral.950}"
+            },
+            "link": {
+              "$type": "color",
+              "$value": "{color.brand.300}"
+            }
+          },
+          "border": {
+            "default": {
+              "$type": "color",
+              "$value": "{color.neutral.800}"
+            },
+            "strong": {
+              "$type": "color",
+              "$value": "{color.neutral.700}"
+            },
+            "focus": {
+              "$type": "color",
+              "$value": "{color.brand.300}"
+            }
+          },
+          "action": {
+            "primary": {
+              "$type": "color",
+              "$value": "{color.brand.300}"
+            },
+            "primary-hover": {
+              "$type": "color",
+              "$value": "{color.brand.100}"
+            },
+            "secondary": {
+              "$type": "color",
+              "$value": "{color.neutral.900}"
+            },
+            "secondary-hover": {
+              "$type": "color",
+              "$value": "{color.neutral.800}"
+            }
+          },
+          "status": {
+            "success": {
+              "$type": "color",
+              "$value": "{color.success.strong-dark}"
+            },
+            "warning": {
+              "$type": "color",
+              "$value": "{color.warning.strong-dark}"
+            },
+            "danger": {
+              "$type": "color",
+              "$value": "{color.danger.strong-dark}"
+            },
+            "success-subtle": {
+              "$type": "color",
+              "$value": "{color.success.subtle-dark}"
+            },
+            "warning-subtle": {
+              "$type": "color",
+              "$value": "{color.warning.subtle-dark}"
+            },
+            "danger-subtle": {
+              "$type": "color",
+              "$value": "{color.danger.subtle-dark}"
+            }
+          }
+        },
+        "elevation": {
+          "card": {
+            "$type": "shadow",
+            "$value": {
+              "color": "#00000000",
+              "offsetX": "0px",
+              "offsetY": "0px",
+              "blur": "0px",
+              "spread": "0px"
+            },
+            "$description": "No shadow in this scheme."
+          },
+          "overlay": {
+            "$type": "shadow",
+            "$value": {
+              "color": "#00000080",
+              "offsetX": "0px",
+              "offsetY": "12px",
+              "blur": "32px",
+              "spread": "0px"
+            }
+          }
+        }
+      }
+    },
+    "component": {
+      "button": {
+        "primary": {
+          "background": {
+            "$value": "{color.action.primary}",
+            "$description": "Primary button fill."
+          },
+          "background-hover": {
+            "$value": "{color.action.primary-hover}",
+            "$description": "Primary button fill on hover."
+          },
+          "label": {
+            "$value": "{color.text.on-action}",
+            "$description": "Primary button label color."
+          }
+        },
+        "secondary": {
+          "background": {
+            "$value": "{color.action.secondary}",
+            "$description": "Secondary button fill."
+          },
+          "background-hover": {
+            "$value": "{color.action.secondary-hover}",
+            "$description": "Secondary button fill on hover."
+          },
+          "label": {
+            "$value": "{color.text.primary}",
+            "$description": "Secondary button label color."
+          },
+          "border": {
+            "$value": "{color.border.strong}",
+            "$description": "Secondary button border."
+          }
+        },
+        "ghost": {
+          "background-hover": {
+            "$value": "{color.surface.sunken}",
+            "$description": "Ghost button fill on hover."
+          },
+          "label": {
+            "$value": "{color.text.link}",
+            "$description": "Ghost button label color."
+          }
+        },
+        "height": {
+          "$value": "{size.control.default}",
+          "$description": "Button height."
+        },
+        "padding-x": {
+          "$value": "{space.inset.control-x}",
+          "$description": "Horizontal padding inside a button."
+        },
+        "radius": {
+          "$value": "{radius.control}",
+          "$description": "Button corner radius."
+        },
+        "font-size": {
+          "$value": "{type.label.font-size}",
+          "$description": "Button label size."
+        },
+        "font-weight": {
+          "$value": "{type.label.font-weight}",
+          "$description": "Button label weight."
+        },
+        "focus-ring": {
+          "$value": "{color.border.focus}",
+          "$description": "Focus ring color on any button."
+        }
+      },
+      "input": {
+        "background": {
+          "$value": "{color.surface.default}",
+          "$description": "Input fill."
+        },
+        "border": {
+          "$value": "{color.border.strong}",
+          "$description": "Input border at rest."
+        },
+        "border-focus": {
+          "$value": "{color.border.focus}",
+          "$description": "Input border when focused."
+        },
+        "text": {
+          "$value": "{color.text.primary}",
+          "$description": "Typed text color."
+        },
+        "placeholder": {
+          "$value": "{color.text.muted}",
+          "$description": "Placeholder text color."
+        },
+        "height": {
+          "$value": "{size.control.default}",
+          "$description": "Input height."
+        },
+        "padding-x": {
+          "$value": "{space.inset.control-x}",
+          "$description": "Horizontal padding inside an input."
+        },
+        "radius": {
+          "$value": "{radius.control}",
+          "$description": "Input corner radius."
+        },
+        "font-size": {
+          "$value": "{type.body.font-size}",
+          "$description": "Typed text size."
+        }
+      },
+      "control": {
+        "checked": {
+          "$value": "{color.action.primary}",
+          "$description": "Fill of a checked checkbox or an on switch."
+        },
+        "track": {
+          "$value": "{color.border.strong}",
+          "$description": "Track of an off switch."
+        },
+        "thumb": {
+          "$value": "{color.surface.default}",
+          "$description": "Switch thumb and checkmark color."
+        },
+        "radius": {
+          "$value": "{radius.badge}",
+          "$description": "Checkbox corner radius."
+        }
+      },
+      "badge": {
+        "radius": {
+          "$value": "{radius.badge}",
+          "$description": "Badge corner radius."
+        },
+        "padding-x": {
+          "$value": "{space.gap.tight}",
+          "$description": "Horizontal padding inside a badge."
+        },
+        "font-size": {
+          "$value": "{type.caption.font-size}",
+          "$description": "Badge label size."
+        },
+        "neutral": {
+          "background": {
+            "$value": "{color.surface.sunken}",
+            "$description": "Neutral badge fill."
+          },
+          "label": {
+            "$value": "{color.text.secondary}",
+            "$description": "Neutral badge label."
+          }
+        },
+        "success": {
+          "background": {
+            "$value": "{color.status.success-subtle}",
+            "$description": "Success badge fill."
+          },
+          "label": {
+            "$value": "{color.status.success}",
+            "$description": "Success badge label."
+          }
+        },
+        "warning": {
+          "background": {
+            "$value": "{color.status.warning-subtle}",
+            "$description": "Warning badge fill."
+          },
+          "label": {
+            "$value": "{color.status.warning}",
+            "$description": "Warning badge label."
+          }
+        },
+        "danger": {
+          "background": {
+            "$value": "{color.status.danger-subtle}",
+            "$description": "Danger badge fill."
+          },
+          "label": {
+            "$value": "{color.status.danger}",
+            "$description": "Danger badge label."
+          }
+        }
+      },
+      "card": {
+        "background": {
+          "$value": "{color.surface.default}",
+          "$description": "Card fill."
+        },
+        "border": {
+          "$value": "{color.border.default}",
+          "$description": "Card border."
+        },
+        "radius": {
+          "$value": "{radius.container}",
+          "$description": "Card corner radius."
+        },
+        "padding": {
+          "$value": "{space.inset.container}",
+          "$description": "Padding inside a card."
+        },
+        "shadow": {
+          "$value": "{elevation.card}",
+          "$description": "Card shadow."
+        }
+      },
+      "table": {
+        "header-background": {
+          "$value": "{color.surface.sunken}",
+          "$description": "Header row fill."
+        },
+        "row-height": {
+          "$value": "{size.row}",
+          "$description": "Height of one data row."
+        },
+        "cell-padding-x": {
+          "$value": "{space.inset.cell-x}",
+          "$description": "Horizontal padding inside a cell."
+        },
+        "row-border": {
+          "$value": "{color.border.default}",
+          "$description": "Line between rows."
+        },
+        "row-selected": {
+          "$value": "{color.surface.selected}",
+          "$description": "Fill of a selected row."
+        },
+        "font-size": {
+          "$value": "{type.data.font-size}",
+          "$description": "Cell text size."
+        }
+      },
+      "tabs": {
+        "indicator": {
+          "$value": "{color.action.primary}",
+          "$description": "Active tab indicator."
+        },
+        "label": {
+          "$value": "{color.text.secondary}",
+          "$description": "Inactive tab label."
+        },
+        "label-active": {
+          "$value": "{color.text.primary}",
+          "$description": "Active tab label."
+        }
+      },
+      "overlay": {
+        "background": {
+          "$value": "{color.surface.raised}",
+          "$description": "Fill of a dialog, menu or toast."
+        },
+        "radius": {
+          "$value": "{radius.container}",
+          "$description": "Corner radius of overlays."
+        },
+        "shadow": {
+          "$value": "{elevation.overlay}",
+          "$description": "Shadow of overlays."
+        },
+        "scrim": {
+          "$value": "{color.surface.scrim}",
+          "$description": "Color that dims the page behind a dialog."
+        },
+        "item-height": {
+          "$value": "{size.control.default}",
+          "$description": "Height of a menu item."
+        }
+      },
+      "tooltip": {
+        "background": {
+          "$value": "{color.surface.inverse}",
+          "$description": "Tooltip fill."
+        },
+        "label": {
+          "$value": "{color.text.inverse}",
+          "$description": "Tooltip text."
+        }
+      },
+      "motion": {
+        "duration": {
+          "$value": "{motion.duration.feedback}",
+          "$description": "Duration of feedback transitions."
+        },
+        "easing": {
+          "$value": "{motion.easing.standard}",
+          "$description": "Easing of feedback transitions."
+        }
+      }
+    }
+  }
+}

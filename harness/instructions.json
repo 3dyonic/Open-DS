@@ -49,7 +49,7 @@
       "id": "I08",
       "title": "Use the draft questions, for all 5 schemes",
       "words": "go with your draft questions",
-      "checks": ["schemes-five", "schemes-answer-every-question", "schemes-usage-rules"]
+      "checks": ["schemes-five", "schemes-answer-every-question", "schemes-usage-rules", "schemes-voice-and-themes"]
     },
     {
       "id": "I09",
