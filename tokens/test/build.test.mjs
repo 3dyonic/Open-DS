@@ -50,7 +50,15 @@ test("every theme block defines every component key", () => {
 test("theme.css maps every shadcn variable onto a semantic", () => {
   for (const s of index.schemes) {
     const css = read(s.id, "theme.css");
-    for (const [k, v] of Object.entries(SHADCN)) assert.ok(css.includes(`--${k}: var(--${v});`), `${s.id} ${k}`);
+    const tokens = read(s.id, "tokens.css");
+    for (const [k, v] of Object.entries(SHADCN)) {
+      assert.ok(css.includes(`--${k}: var(--${v});`), `${s.id} ${k}`);
+      assert.ok(tokens.includes(`--${v}:`), `${s.id}: --${k} points at --${v}, which tokens.css does not define`);
+    }
+    for (const [, name] of css.matchAll(/var\((--[a-z0-9-]+)\)/g)) {
+      const own = css.includes(`${name}:`) && !css.includes(`${name}: var(${name})`);
+      assert.ok(own || tokens.includes(`${name}:`), `${s.id}: theme.css reads undefined ${name}`);
+    }
     assert.match(css, /@theme inline/);
   }
 });
@@ -65,6 +73,7 @@ test("multi-brand is a real multi-brand setup", () => {
   for (const b of ["aster", "birch", "coral"]) {
     assert.ok(css.includes(`[data-brand="${b}"]`), `${b} light selector`);
     assert.ok(css.includes(`.dark[data-brand="${b}"]`), `${b} dark selector`);
+    assert.ok(css.includes(`[data-brand="${b}"] .dark`), `${b} brand above dark`);
   }
   const brandColor = (theme) => JSON.parse(read("multi-brand", `${theme}.tokens.json`)).color.brand["600"];
   assert.notEqual(brandColor("aster-light"), brandColor("birch-light"));

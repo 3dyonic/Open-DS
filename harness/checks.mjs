@@ -543,7 +543,7 @@ export const CHECKS = {
     },
   },
   "cli-init-temp": {
-    requires: ["cli/package.json", "tokens/dist/dense-data/theme.css", "ui/src/components"],
+    requires: ["cli/src/schemes.mjs", "tokens/package.json", "ui/src/components"],
     run: (c) => {
       const dir = mkdtempSync(join(tmpdir(), "ods-harness-"));
       try {

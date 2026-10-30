@@ -20,6 +20,16 @@
       "skills": ["build-brief", "pr-review-private-repo", "correctness-review", "scope-review", "test-integrity"],
       "jira": "OD-109 comment after merge",
       "orchestra": "see Orchestra note for PR-17"
+    },
+    {
+      "feature": "OD-117 tokens",
+      "pr": "https://github.com/3dyonic/Open-DS/pull/18",
+      "reviewed_sha": "5ec26f8",
+      "sha": "bcae48f",
+      "merged_by_subagent": true,
+      "skills": ["build-brief", "pr-review-private-repo", "correctness-review", "scope-review", "test-integrity"],
+      "jira": "OD-117 comment after merge",
+      "orchestra": "68ddc9f8"
     }
   ]
 }

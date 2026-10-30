@@ -3,3 +3,4 @@ packages:
   - cli
   - harness
   - tokens
+  - ui
