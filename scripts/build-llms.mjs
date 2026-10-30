@@ -6,7 +6,7 @@ import { existsSync, readFileSync, readdirSync, writeFileSync } from "node:fs";
 import { dirname, join } from "node:path";
 import { fileURLToPath } from "node:url";
 
-const REPO_URL = "https://github.com/3dyonic/Open-DS/blob/RC1";
+const REPO_URL = "https://raw.githubusercontent.com/3dyonic/Open-DS/RC1";
 
 export function buildLlms(repo) {
   const read = (p) => JSON.parse(readFileSync(join(repo, p), "utf8"));
@@ -28,7 +28,7 @@ export function buildLlms(repo) {
     "",
     "## Schemes",
     "",
-    ...schemes.map((s) => `- [${s.name}](${REPO_URL}/schemes/${s.id}.json) (${s.id}): ${s.summary} Use when: ${s.ai.use_when}`),
+    ...schemes.map((s) => `- [${s.name}](${REPO_URL}/schemes/${s.id}.json): id ${s.id}. ${s.summary} Use when: ${s.ai.use_when}`),
     "",
     "## Grammar and formats",
     "",

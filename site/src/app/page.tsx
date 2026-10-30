@@ -124,7 +124,11 @@ export default function Home() {
         <Eyebrow>Take it</Eyebrow>
         <h2 className="text-3xl font-extrabold">Connect your AI, or use the package yourself.</h2>
         <div className="grid gap-4 md:grid-cols-2">
-          <Command>{"claude mcp add open-ds -- uv run --directory ./Open-DS open-ds-mcp"}</Command>
+          <Command>
+            {
+              "claude mcp add --scope user open-ds -- uv run --directory /path/to/Open-DS open-ds-mcp"
+            }
+          </Command>
           <Command>{"node cli/bin/open-ds.js init dense-data --dir ./my-app"}</Command>
         </div>
       </section>
