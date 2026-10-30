@@ -1356,11 +1356,11 @@
       ]
     },
     {
-      "id": "motion",
-      "description": "Shared motion keys.",
+      "id": "transition",
+      "description": "Shared transition keys for hover and press feedback.",
       "keys": [
-        "motion/duration",
-        "motion/easing"
+        "transition/duration",
+        "transition/easing"
       ]
     }
   ],
@@ -1726,14 +1726,14 @@
       "default": "color.text.inverse"
     },
     {
-      "id": "motion/duration",
-      "component": "motion",
+      "id": "transition/duration",
+      "component": "transition",
       "description": "Duration of feedback transitions.",
       "default": "motion.duration.feedback"
     },
     {
-      "id": "motion/easing",
-      "component": "motion",
+      "id": "transition/easing",
+      "component": "transition",
       "description": "Easing of feedback transitions.",
       "default": "motion.easing.standard"
     }
