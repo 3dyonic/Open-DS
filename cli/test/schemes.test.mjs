@@ -41,6 +41,7 @@ test("when finds a rule by id and by plain words", () => {
   assert.equal(when(s, "number-in-table").use, "type.data");
   assert.equal(when(s, "a number in a table").situation, "number-in-table");
   assert.equal(when(s, "zzzz"), null);
+  assert.equal(when(s, "a xyzzy"), null);
 });
 
 test("init deploys tokens, components, AGENTS.md and the skill", () => {
@@ -113,4 +114,35 @@ test("init through the binary prints the next steps", () => {
   } finally {
     rmSync(dir, { recursive: true, force: true });
   }
+});
+
+test("init refuses to overwrite a project unless asked", () => {
+  const dir = temp();
+  try {
+    deploy("dense-data", dir);
+    assert.throws(() => deploy("dense-data", dir), /--yes to overwrite/);
+    deploy("content-first", dir, { overwrite: true });
+    assert.equal(JSON.parse(readFileSync(join(dir, "open-ds.json"), "utf8")).scheme, "content-first");
+  } finally {
+    rmSync(dir, { recursive: true, force: true });
+  }
+});
+
+test("errors are clear, and JSON when --json is set", () => {
+  const fail = (...args) => {
+    try {
+      execFileSync("node", [bin, ...args], { encoding: "utf8", stdio: "pipe" });
+      return null;
+    } catch (e) {
+      return e;
+    }
+  };
+  assert.match(fail("init", "dense-dta", "--dir", temp()).stderr, /No scheme called "dense-dta"/);
+  assert.match(fail("init", "dense-data", "--dir").stderr, /--dir needs a value/);
+  assert.deepEqual(Object.keys(JSON.parse(fail("show", "nope", "--json").stdout)), ["error"]);
+});
+
+test("recipe commands from the first preview still run through the new entry point", () => {
+  const out = cli("diff");
+  assert.match(out, /diff is not ready/);
 });

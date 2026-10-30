@@ -26,7 +26,10 @@ const NPM = ["radix-ui", "lucide-react", "class-variance-authority", "clsx", "ta
 
 function flag(args, name, fallback) {
   const i = args.indexOf(name);
-  return i >= 0 ? args[i + 1] : fallback;
+  if (i < 0) return fallback;
+  const value = args[i + 1];
+  if (!value || value.startsWith("--")) throw new Error(`${name} needs a value.`);
+  return value;
 }
 
 const sha = (text) => createHash("sha256").update(text).digest("hex").slice(0, 16);
@@ -52,11 +55,15 @@ function componentSource(roots, name) {
 }
 
 /** Copies a scheme into a project. Returns what it wrote. */
-export function deploy(schemeId, dir, { brand, roots = assetRoots() } = {}) {
+export function deploy(schemeId, dir, { brand, overwrite = false, roots = assetRoots() } = {}) {
   const scheme = loadScheme(schemeId, roots);
   const g = grammar(roots);
   const brands = Object.keys(scheme.tokens.brands);
   if (brand && !brands.includes(brand)) throw new Error(`${scheme.name} has no brand "${brand}". Brands: ${brands.join(", ")}.`);
+  const existing = ["open-ds.json", "AGENTS.md", "src/styles/open-ds.css"].filter((f) => existsSync(join(dir, f)));
+  if (existing.length && !overwrite) {
+    throw new Error(`${dir} already has ${existing.join(", ")}. Run init again with --yes to overwrite them.`);
+  }
   const tokenDir = join(roots.tokens, schemeId);
   if (!existsSync(join(tokenDir, "tokens.css"))) throw new Error(`Tokens for ${schemeId} are not built. Run: pnpm --dir tokens build`);
   const files = {};
@@ -111,6 +118,7 @@ function printWhy(node, depth = 0) {
 export async function run(argv) {
   const [cmd, ...rest] = argv;
   const json = rest.includes("--json");
+  const yes = rest.includes("--yes");
   const args = rest.filter((a) => a !== "--json" && a !== "--yes");
   const out = (data, text) => (json ? console.log(JSON.stringify(data, null, 2)) : text());
   try {
@@ -164,9 +172,10 @@ export async function run(argv) {
       out(rule, () => console.log(`${rule.title}\n  Use: ${rule.use}\n  Not: ${rule.not}\n  Why: ${rule.why}`));
       return 0;
     }
-    if (cmd === "init" && args[0] && schemeIds().includes(args[0])) {
+    const looksLikeRecipe = (a) => a.endsWith(".json") || /^[0-9a-f]{12,}$/.test(a);
+    if (cmd === "init" && args[0] && !looksLikeRecipe(args[0])) {
       const dir = resolve(flag(args, "--dir", "."));
-      const record = deploy(args[0], dir, { brand: flag(args, "--brand") });
+      const record = deploy(args[0], dir, { brand: flag(args, "--brand"), overwrite: yes });
       out(record, () => {
         console.log(`Deployed ${record.scheme}${record.brand ? ` (${record.brand})` : ""} into ${dir}.`);
         console.log(`Wrote ${Object.keys(record.files).length} files: tokens, ${record.components.length} components, AGENTS.md and the agent skill.`);
@@ -183,7 +192,8 @@ export async function run(argv) {
     }
     return runRecipe(argv);
   } catch (error) {
-    console.log(error.message);
+    if (json) console.log(JSON.stringify({ error: error.message }));
+    else console.error(error.message);
     return 1;
   }
 }

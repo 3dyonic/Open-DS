@@ -1,4 +1,4 @@
-"""The three MCP tools: core questions, pack text, and the shared validator."""
+"""The recipe tools from the first preview: core questions, pack text, and the shared validator."""
 
 from __future__ import annotations
 
@@ -23,10 +23,20 @@ def _error_ids(result: dict) -> set[str]:
     return {item["id"] for item in result.get("findings", []) if item.get("severity") == "error"}
 
 
-def test_tool_names_are_the_three_core_tools() -> None:
+def test_tool_names_are_the_recipe_and_scheme_tools() -> None:
     tools = asyncio.run(mcp.list_tools())
     names = {tool.name for tool in tools}
-    assert names == {"list_questions", "get_question", "check_recipe"}
+    assert names == {
+        "list_questions",
+        "get_question",
+        "check_recipe",
+        "list_schemes",
+        "get_scheme",
+        "get_answer",
+        "why",
+        "when_to_use",
+        "deploy",
+    }
 
 
 def test_list_questions_returns_id_title_and_affects() -> None:
@@ -138,7 +148,7 @@ def test_dense_data_answers_from_the_tools_pass_check() -> None:
     assert all(item["why"] for item in explanations)
 
 
-def test_client_lists_the_three_tools_and_checks_dense_data() -> None:
+def test_client_lists_the_recipe_tools_and_checks_dense_data() -> None:
     from fastmcp import Client
 
     recipe = read_json(ROOT / "recipes" / "dense-data.json")
@@ -147,7 +157,7 @@ def test_client_lists_the_three_tools_and_checks_dense_data() -> None:
         async with Client(mcp) as client:
             tools = await client.list_tools()
             names = {tool.name for tool in tools}
-            assert names == {"list_questions", "get_question", "check_recipe"}
+            assert {"list_questions", "get_question", "check_recipe"} <= names
             listed = await client.call_tool("list_questions", {})
             question = await client.call_tool("get_question", {"question_id": "not-a-question"})
             checked = await client.call_tool("check_recipe", {"recipe": recipe})
