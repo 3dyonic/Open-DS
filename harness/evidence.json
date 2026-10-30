@@ -1,4 +1,15 @@
 {
   "description": "Process evidence the harness reads: one entry per feature merged into RC1, with the PR, the sub-agent that reviewed and merged it, the Orchestra skills used, and the Jira and Orchestra updates.",
-  "merges": []
+  "merges": [
+    {
+      "feature": "OD-115 harness",
+      "pr": "https://github.com/3dyonic/Open-DS/pull/16",
+      "reviewed_sha": "98c0f10",
+      "sha": "6f89f74",
+      "merged_by_subagent": true,
+      "skills": ["build-brief", "pr-review-private-repo", "correctness-review", "scope-review", "test-integrity"],
+      "jira": "OD-115 moved to In Progress, requirements comment 11775",
+      "orchestra": "5779f1e6"
+    }
+  ]
 }

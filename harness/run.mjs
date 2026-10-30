@@ -96,6 +96,10 @@ if (process.argv[1] === fileURLToPath(import.meta.url)) {
   const args = process.argv.slice(2);
   const onlyAt = args.indexOf("--only");
   const report = await runHarness({ full: args.includes("--full"), only: onlyAt >= 0 ? args[onlyAt + 1] : null });
+  if (onlyAt >= 0 && !report.sections.some((sec) => sec.rows.length)) {
+    console.error(`No instruction or spec with id ${args[onlyAt + 1]}.`);
+    process.exit(1);
+  }
   const md = toMarkdown(report);
   writeFileSync(join(here, "report.md"), md);
   writeFileSync(join(here, "report.json"), JSON.stringify(report, null, 2));

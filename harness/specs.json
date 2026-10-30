@@ -21,8 +21,10 @@
         "schemes-five",
         "schemes-answer-every-question",
         "schemes-because-resolves",
+        "schemes-tokens-resolve",
         "schemes-usage-rules",
-        "json-files-validate"
+        "json-files-validate",
+        "llm-scheme-descriptions"
       ]
     },
     {
