@@ -60,6 +60,17 @@
       "skills": ["build-brief", "pr-review-private-repo", "correctness-review", "scope-review", "test-integrity"],
       "jira": "OD-112 comment after merge",
       "orchestra": "3e2d0b80"
+    },
+    {
+      "feature": "OD-119 Storybook",
+      "pr": "https://github.com/3dyonic/Open-DS/pull/22",
+      "reviewed_sha": "0a3a0f0",
+      "sha": "b71bc31",
+      "merged_by_subagent": true,
+      "skills": ["build-brief", "pr-review-private-repo", "correctness-review", "scope-review", "test-integrity"],
+      "jira": "OD-119 comment after merge",
+      "orchestra": "3e2d0b80",
+      "note": "First review blocked on a high finding (portalled overlays unthemed); fixed and re-reviewed."
     }
   ]
 }

@@ -9,3 +9,9 @@
 @source "../../ui/src";
 @source "../stories";
 @source "./";
+
+/* Portalled overlays sit on body, so body carries the scheme font too. */
+body {
+  font-family: var(--type-body-font-family);
+  color: var(--color-text-primary);
+}
