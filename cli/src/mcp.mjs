@@ -16,7 +16,12 @@ import { StdioServerTransport } from "@modelcontextprotocol/sdk/server/stdio.js"
 import { StreamableHTTPServerTransport } from "@modelcontextprotocol/sdk/server/streamableHttp.js";
 import { z } from "zod";
 import { deploy } from "./cli.mjs";
-import { componentsFor, packagesFor, withImports } from "./components.mjs";
+import {
+  builtComponents,
+  componentsFor,
+  packagesFor,
+  withImports,
+} from "./components.mjs";
 import { createProject } from "./create.mjs";
 import {
   assetRoots,
@@ -51,6 +56,17 @@ const frontmatter = (text) => {
     body: m ? text.slice(m[0].length) : text,
   };
 };
+
+// A folder or component name that is safe to put in a shell command: letters, digits, dot, dash,
+// underscore and slash, not starting with a dash. Anything else is refused, never quoted.
+const SAFE = /^(?!-)[A-Za-z0-9._/-]+$/;
+function safeName(value, what) {
+  if (!SAFE.test(value))
+    throw new Error(
+      `${what} "${value}" is not allowed. Use letters, digits, dot, dash, underscore and slash only.`,
+    );
+  return value;
+}
 
 /** The files a CLI command would write, found by running it in a throwaway folder on the server. */
 function filesOf(run) {
@@ -126,7 +142,10 @@ export function createMcpServer({ roots = assetRoots() } = {}) {
             "tokens",
             "all",
           ])
-          .default("summary"),
+          .default("summary")
+          .describe(
+            "Which part to return. summary is small; tokens and all are large (all is the whole scheme file).",
+          ),
       },
       annotations: { readOnlyHint: true },
     },
@@ -213,7 +232,10 @@ export function createMcpServer({ roots = assetRoots() } = {}) {
       const out = target.includes("/")
         ? keyInfo(scheme_id, target, roots, g)
         : why(s, target, g);
-      if (!out) throw new Error(`Nothing called "${target}" in ${s.name}.`);
+      if (!out)
+        throw new Error(
+          `Nothing called "${target}" in ${s.name}. Give a question id (typography.definition) or a full component key (button/primary/background).`,
+        );
       return json(out);
     },
   );
@@ -240,7 +262,13 @@ export function createMcpServer({ roots = assetRoots() } = {}) {
         throw new Error(
           `No situation matches "${situation}". Situations: ${g.situations.map((x) => x.id).join(", ")}.`,
         );
-      return json(out);
+      return json({
+        match: out.situation === situation ? "exact" : "best guess",
+        ...(out.situation !== situation && {
+          note: `Matched "${situation}" to the situation "${out.situation}". If that is not what you meant, call again with one of: ${g.situations.map((x) => x.id).join(", ")}.`,
+        }),
+        ...out,
+      });
     },
   );
 
@@ -253,7 +281,12 @@ export function createMcpServer({ roots = assetRoots() } = {}) {
       inputSchema: {
         a: SchemeId,
         b: SchemeId,
-        only_differences: z.boolean().default(true),
+        only_differences: z
+          .boolean()
+          .default(true)
+          .describe(
+            "true returns only the questions the two schemes answer differently; false returns every question.",
+          ),
       },
       annotations: { readOnlyHint: true },
     },
@@ -267,13 +300,13 @@ export function createMcpServer({ roots = assetRoots() } = {}) {
           question: q,
           text: qs[q].text,
           same: x?.option === y?.option,
-          [a]: { answer: label(sa, q), why: x?.why },
-          [b]: { answer: label(sb, q), why: y?.why },
+          a: { answer: label(sa, q), why: x?.why },
+          b: { answer: label(sb, q), why: y?.why },
         };
       });
       return json({
-        a: sa.name,
-        b: sb.name,
+        a: { id: sa.id, name: sa.name },
+        b: { id: sb.id, name: sb.name },
         same: rows.filter((r) => r.same).length,
         different: rows.filter((r) => !r.same).length,
         answers: only_differences ? rows.filter((r) => !r.same) : rows,
@@ -393,6 +426,7 @@ export function createMcpServer({ roots = assetRoots() } = {}) {
     },
     async ({ scheme_id, dir, brand }) => {
       scheme(scheme_id);
+      safeName(dir, "Folder");
       const record = filesOf((d) =>
         createProject(scheme_id, d, { brand, roots }),
       );
@@ -400,7 +434,7 @@ export function createMcpServer({ roots = assetRoots() } = {}) {
         command: `npx open-ds create ${dir} --scheme ${scheme_id}${brand ? ` --brand ${brand}` : ""}`,
         then: [`cd ${dir}`, "npm install", "npm run storybook", "npm run docs"],
         components: record.components,
-        files: record.files,
+        files: [...record.files, "open-ds.json"].sort(),
       });
     },
   );
@@ -431,6 +465,9 @@ export function createMcpServer({ roots = assetRoots() } = {}) {
       );
       return json({
         command: `npx open-ds init ${scheme_id} --dir .${brand ? ` --brand ${brand}` : ""}${docs ? " --docs" : ""}`,
+        components: record.components,
+        packages: record.dependencies,
+        files: [...Object.keys(record.files ?? {}), "open-ds.json"].sort(),
         record,
       });
     },
@@ -446,15 +483,33 @@ export function createMcpServer({ roots = assetRoots() } = {}) {
         component: z
           .string()
           .describe("A component id, for example dialog or data-table."),
+        scheme_id: SchemeId.optional().describe(
+          "The project's scheme. When given, the result says whether the component is in its inventory.",
+        ),
       },
       annotations: { readOnlyHint: true },
     },
-    async ({ component }) => {
+    async ({ component, scheme_id }) => {
+      safeName(component, "Component");
+      const built = builtComponents(roots);
+      if (!built.includes(component))
+        throw new Error(
+          `No component called "${component}". Components: ${built.join(", ")}.`,
+        );
       const brings = withImports([component], roots);
+      const inInventory = scheme_id
+        ? scheme(scheme_id).inventory.in.some((i) => i.id === component)
+        : undefined;
       return json({
         command: `npx open-ds add ${component} --dir .`,
         components: brings,
         packages: packagesFor(brings, roots),
+        ...(scheme_id && {
+          in_inventory: inInventory,
+          note: inInventory
+            ? undefined
+            : `${component} is not in ${scheme_id}'s inventory; say why before adding it.`,
+        }),
       });
     },
   );
@@ -513,7 +568,12 @@ export function runHttp({ port = 8787, host = "127.0.0.1", roots } = {}) {
     let body;
     try {
       const chunks = [];
-      for await (const c of req) chunks.push(c);
+      let size = 0;
+      for await (const c of req) {
+        size += c.length;
+        if (size > 1_000_000) throw new Error("too large");
+        chunks.push(c);
+      }
       body = JSON.parse(Buffer.concat(chunks).toString("utf8") || "null");
     } catch {
       res.writeHead(400, { "content-type": "application/json" });
@@ -521,6 +581,20 @@ export function runHttp({ port = 8787, host = "127.0.0.1", roots } = {}) {
         JSON.stringify({
           jsonrpc: "2.0",
           error: { code: -32700, message: "Parse error." },
+          id: null,
+        }),
+      );
+    }
+    if (
+      body === null ||
+      (Array.isArray(body) && body.length === 0) ||
+      typeof body !== "object"
+    ) {
+      res.writeHead(400, { "content-type": "application/json" });
+      return res.end(
+        JSON.stringify({
+          jsonrpc: "2.0",
+          error: { code: -32600, message: "Invalid Request." },
           id: null,
         }),
       );
@@ -537,6 +611,14 @@ export function runHttp({ port = 8787, host = "127.0.0.1", roots } = {}) {
     });
     await server.connect(transport);
     await transport.handleRequest(req, res, body);
+  });
+  http.on("error", (e) => {
+    console.error(
+      e.code === "EADDRINUSE"
+        ? `Port ${port} is already in use. Pick another with --port.`
+        : e.message,
+    );
+    process.exitCode = 1;
   });
   return http.listen(port, host);
 }
