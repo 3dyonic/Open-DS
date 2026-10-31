@@ -1,13 +1,18 @@
 import type { Meta, StoryObj } from "@storybook/react-vite";
 import { Label, Switch } from "@open-ds/ui";
-import { Usage } from "../src/usage";
 import { Show, toneOf } from "../src/samples";
 
-const meta = { title: "Components/Switch", component: Switch } satisfies Meta<typeof Switch>;
+const meta = {
+  parameters: { openDs: { component: "switch", situations: ["hover-feedback", "reduced-motion", "dark-mode"] } },
+  title: "Components/Switch",
+  component: Switch,
+} satisfies Meta<typeof Switch>;
 export default meta;
 type Story = StoryObj<typeof meta>;
 
-export const States: Story = {
+export const Playground: Story = { args: { defaultChecked: true, disabled: false } };
+
+export const Examples: Story = {
   render: () => (
     <Show component="switch">
       {(s) => (
@@ -17,7 +22,6 @@ export const States: Story = {
               <Switch defaultChecked={i === 0} /> {label}
             </Label>
           ))}
-          <Usage situations={["hover-feedback", "reduced-motion", "dark-mode"]} />
         </div>
       )}
     </Show>

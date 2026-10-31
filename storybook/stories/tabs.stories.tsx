@@ -1,13 +1,35 @@
 import type { Meta, StoryObj } from "@storybook/react-vite";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@open-ds/ui";
-import { Usage } from "../src/usage";
 import { Show, toneOf } from "../src/samples";
 
-const meta = { title: "Components/Tabs", component: Tabs } satisfies Meta<typeof Tabs>;
+const meta = {
+  parameters: { openDs: { component: "tabs", situations: ["keyboard-focus"] } },
+  title: "Components/Tabs",
+  component: Tabs,
+} satisfies Meta<typeof Tabs>;
 export default meta;
 type Story = StoryObj<typeof meta>;
 
-export const Default: Story = {
+export const Playground: Story = {
+  args: { orientation: "horizontal" },
+  render: (args) => (
+    <Show component="tabs">
+      {(s) => (
+        <Tabs {...args} defaultValue={s.tabs![0].label}>
+          <TabsList>
+            {s.tabs!.map((t) => (
+              <TabsTrigger key={t.label} value={t.label}>
+                {t.label}
+              </TabsTrigger>
+            ))}
+          </TabsList>
+        </Tabs>
+      )}
+    </Show>
+  ),
+};
+
+export const Examples: Story = {
   render: () => (
     <Show component="tabs">
       {(s) => (
@@ -26,7 +48,6 @@ export const Default: Story = {
               </TabsContent>
             ))}
           </Tabs>
-          <Usage situations={["keyboard-focus"]} />
         </div>
       )}
     </Show>
