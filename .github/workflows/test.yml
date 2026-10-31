@@ -1,11 +1,19 @@
+# Every test suite, on every pull request and on every push to RC1 and master (OD-161).
+# One job per suite, so a red check says where the failure is.
 name: test
 
 on:
   push:
-    branches: [master]
+    branches: [master, RC1]
   pull_request:
+  workflow_dispatch:
+
+concurrency:
+  group: test-${{ github.ref }}
+  cancel-in-progress: true
 
 jobs:
+  # Lint, typecheck, the token build, the CLI and harness tests, the MCP host and the site build.
   node:
     runs-on: ubuntu-latest
     steps:
@@ -29,6 +37,53 @@ jobs:
         run: pnpm --dir mcp test
       - name: Build
         run: pnpm build
+
+  # The token and component suites, and the fast harness: every layer against the instructions.
+  suites:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v5
+        with:
+          # The harness checks the branch history (RC1 from master, feature merges), so it needs every branch.
+          fetch-depth: 0
+      - uses: pnpm/action-setup@v4
+        with:
+          version: 10.33.4
+      - uses: actions/setup-node@v5
+        with:
+          node-version: "22"
+          cache: pnpm
+      - name: Install
+        run: pnpm install --frozen-lockfile
+      - name: Tokens
+        run: |
+          pnpm --dir tokens build
+          pnpm --dir tokens test
+      - name: Components and the shadcn registry
+        run: pnpm --dir ui test
+      - name: Harness
+        run: pnpm harness
+
+  # Storybook and the Docusaurus docs build.
+  builds:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v5
+      - uses: pnpm/action-setup@v4
+        with:
+          version: 10.33.4
+      - uses: actions/setup-node@v5
+        with:
+          node-version: "22"
+          cache: pnpm
+      - name: Install
+        run: pnpm install --frozen-lockfile
+      - name: Tokens
+        run: pnpm --dir tokens build
+      - name: Storybook
+        run: pnpm --dir storybook build
+      - name: Docs
+        run: pnpm --dir docs build
 
   # The CLI as a user gets it: packed with npm pack and run from the packed file in a fresh app.
   package:
