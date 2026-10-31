@@ -1,0 +1,139 @@
+{
+  "description": "Process evidence the harness reads: one entry per feature merged into RC1, with the PR, the sub-agent that reviewed and merged it, the Orchestra skills used, and the Jira and Orchestra updates.",
+  "merges": [
+    {
+      "feature": "OD-115 harness",
+      "pr": "https://github.com/3dyonic/Open-DS/pull/16",
+      "reviewed_sha": "98c0f10",
+      "sha": "6f89f74",
+      "merged_by_subagent": true,
+      "skills": ["build-brief", "pr-review-private-repo", "correctness-review", "scope-review", "test-integrity"],
+      "jira": "OD-115 moved to In Progress, requirements comment 11775",
+      "orchestra": "5779f1e6"
+    },
+    {
+      "feature": "OD-109 schemes",
+      "pr": "https://github.com/3dyonic/Open-DS/pull/17",
+      "reviewed_sha": "0e9eaf1",
+      "sha": "92f8298",
+      "merged_by_subagent": true,
+      "skills": ["build-brief", "pr-review-private-repo", "correctness-review", "scope-review", "test-integrity"],
+      "jira": "OD-109 comment after merge",
+      "orchestra": "68ddc9f8"
+    },
+    {
+      "feature": "OD-117 tokens",
+      "pr": "https://github.com/3dyonic/Open-DS/pull/18",
+      "reviewed_sha": "5ec26f8",
+      "sha": "bcae48f",
+      "merged_by_subagent": true,
+      "skills": ["build-brief", "pr-review-private-repo", "correctness-review", "scope-review", "test-integrity"],
+      "jira": "OD-117 comment after merge",
+      "orchestra": "68ddc9f8"
+    },
+    {
+      "feature": "OD-118 components",
+      "pr": "https://github.com/3dyonic/Open-DS/pull/19",
+      "reviewed_sha": "e60517c",
+      "sha": "0b4f802",
+      "merged_by_subagent": true,
+      "skills": ["build-brief", "pr-review-private-repo", "correctness-review", "scope-review", "test-integrity"],
+      "jira": "OD-118 comment after merge",
+      "orchestra": "8d5d4c1c"
+    },
+    {
+      "feature": "OD-111 CLI",
+      "pr": "https://github.com/3dyonic/Open-DS/pull/20",
+      "reviewed_sha": "8db80e7",
+      "sha": "1132e3f",
+      "merged_by_subagent": true,
+      "skills": ["build-brief", "pr-review-private-repo", "correctness-review", "scope-review", "test-integrity"],
+      "jira": "OD-111 comment after merge",
+      "orchestra": "8d5d4c1c"
+    },
+    {
+      "feature": "OD-112 MCP",
+      "pr": "https://github.com/3dyonic/Open-DS/pull/21",
+      "reviewed_sha": "b322783",
+      "sha": "7a04f47",
+      "merged_by_subagent": true,
+      "skills": ["build-brief", "pr-review-private-repo", "correctness-review", "scope-review", "test-integrity"],
+      "jira": "OD-112 comment after merge",
+      "orchestra": "3e2d0b80"
+    },
+    {
+      "feature": "OD-119 Storybook",
+      "pr": "https://github.com/3dyonic/Open-DS/pull/22",
+      "reviewed_sha": "0a3a0f0",
+      "sha": "b71bc31",
+      "merged_by_subagent": true,
+      "skills": ["build-brief", "pr-review-private-repo", "correctness-review", "scope-review", "test-integrity"],
+      "jira": "OD-119 comment after merge",
+      "orchestra": "3e2d0b80",
+      "note": "First review blocked on a high finding (portalled overlays unthemed); fixed and re-reviewed."
+    },
+    {
+      "feature": "OD-110 website",
+      "pr": "https://github.com/3dyonic/Open-DS/pull/23",
+      "reviewed_sha": "a580ebd",
+      "sha": "5bf4416",
+      "merged_by_subagent": true,
+      "skills": ["build-brief", "pr-review-private-repo", "correctness-review", "scope-review", "test-integrity"],
+      "jira": "OD-110 comment after merge",
+      "orchestra": "7f95199f"
+    },
+    {
+      "feature": "OD-120 docs and LLM files",
+      "pr": "https://github.com/3dyonic/Open-DS/pull/24",
+      "reviewed_sha": "ab1f935",
+      "sha": "4f53a3d",
+      "merged_by_subagent": true,
+      "skills": ["build-brief", "pr-review-private-repo", "correctness-review", "scope-review", "test-integrity"],
+      "jira": "OD-120 comment after merge",
+      "orchestra": "7f95199f"
+    },
+    {
+      "feature": "OD-121 local end to end",
+      "pr": "https://github.com/3dyonic/Open-DS/pull/25",
+      "reviewed_sha": "b41a19f",
+      "sha": "7d47741",
+      "merged_by_subagent": true,
+      "skills": ["build-brief", "pr-review-private-repo", "correctness-review", "scope-review", "test-integrity"],
+      "jira": "OD-121 comment after merge",
+      "orchestra": "7f95199f",
+      "note": "First review blocked on a high finding (claude mcp add needed --scope user); fixed and re-reviewed."
+    },
+    {
+      "feature": "OD-122 README hero",
+      "pr": "https://github.com/3dyonic/Open-DS/pull/26",
+      "reviewed_sha": "54f5618",
+      "sha": "af2f922",
+      "merged_by_subagent": true,
+      "skills": ["build-brief", "pr-review-private-repo", "correctness-review", "scope-review", "test-integrity"],
+      "jira": "OD-122 comment after merge",
+      "orchestra": "7f95199f"
+    },
+    {
+      "feature": "OD-123 one template for every scope",
+      "pr": "https://github.com/3dyonic/Open-DS/pull/27",
+      "reviewed_sha": "f4e1dfd",
+      "sha": "cef15fd",
+      "merged_by_subagent": true,
+      "skills": ["build-brief", "pr-review-private-repo", "correctness-review", "scope-review", "test-integrity"],
+      "jira": "OD-123 comment 11784",
+      "orchestra": "4b6d0cf5",
+      "note": "Reviewer fixed one stale comment id (f4e1dfd) before merging."
+    },
+    {
+      "feature": "OD-124 website from Figma",
+      "pr": "https://github.com/3dyonic/Open-DS/pull/28",
+      "reviewed_sha": "fb284ed",
+      "sha": "686b034",
+      "merged_by_subagent": true,
+      "skills": ["build-brief", "pr-review-private-repo", "correctness-review", "scope-review", "test-integrity"],
+      "jira": "OD-124",
+      "orchestra": "bc66a3f7",
+      "note": "Reviewer fixed a stale answer on What moves (fb284ed) before merging."
+    }
+  ]
+}

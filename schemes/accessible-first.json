@@ -1,0 +1,3093 @@
+{
+  "$schema": "../schema/scheme.schema.json",
+  "id": "accessible-first",
+  "name": "Accessible first",
+  "version": "0.1.0",
+  "status": "draft",
+  "summary": "Large text, large targets and AAA contrast, so everyone can finish the task.",
+  "description": "Accessible first is an Open DS scheme: a full set of answers to the Open DS grammar, with the reasons behind each, usage rules, voice and tone, and the tokens that follow. Large text, large targets and AAA contrast, so everyone can finish the task.",
+  "ai": {
+    "use_when": "Public services, health, government and any product that must work for everyone.",
+    "avoid_when": "Dense expert tools where screen space matters more than size.",
+    "example_products": [
+      "Benefits application",
+      "Health booking",
+      "Public form",
+      "Council services"
+    ]
+  },
+  "scenarios": [
+    {
+      "text": "A person with low vision zooms to 200% and applies for a benefit with a screen magnifier.",
+      "follows": [
+        "scenarios.q1",
+        "people.q1",
+        "people.q2"
+      ]
+    },
+    {
+      "text": "A person with a tremor completes a form on a tablet.",
+      "follows": [
+        "scenarios.q1",
+        "scenarios.q2",
+        "tasks.q1"
+      ]
+    }
+  ],
+  "voice": {
+    "summary": {
+      "text": "Plain and direct. Every sentence is easy to read on the first try.",
+      "follows": [
+        "voice.values",
+        "people.q1"
+      ]
+    },
+    "principles": [
+      {
+        "text": "Use common words. Explain any term you must use.",
+        "follows": [
+          "voice.definition",
+          "people.q1"
+        ]
+      },
+      {
+        "text": "One idea per sentence. Put the action first.",
+        "follows": [
+          "human.q1"
+        ]
+      },
+      {
+        "text": "Never blame the person.",
+        "follows": [
+          "voice.values"
+        ]
+      }
+    ],
+    "words": {
+      "use": [
+        "Continue",
+        "Change",
+        "Start",
+        "You"
+      ],
+      "avoid": [
+        "Invalid",
+        "Utilise",
+        "Submit",
+        "Error code"
+      ],
+      "follows": [
+        "voice.definition"
+      ]
+    }
+  },
+  "inventory": {
+    "description": "The components this system carries, picked from the grammar catalogue by the components answers. Anything not listed is out.",
+    "follows": [
+      "components.roles",
+      "components.count",
+      "components.definition"
+    ],
+    "in": [
+      {
+        "id": "button",
+        "why": "Every action, with a large target."
+      },
+      {
+        "id": "input",
+        "why": "Text answers."
+      },
+      {
+        "id": "textarea",
+        "why": "Longer answers."
+      },
+      {
+        "id": "label",
+        "why": "Names every control."
+      },
+      {
+        "id": "field",
+        "why": "Label, hint and error in the same place on every question."
+      },
+      {
+        "id": "checkbox",
+        "why": "Many choices, each with a large target."
+      },
+      {
+        "id": "radio-group",
+        "why": "One choice from a short, visible list."
+      },
+      {
+        "id": "native-select",
+        "why": "A browser select that every assistive technology understands."
+      },
+      {
+        "id": "alert",
+        "why": "Errors and important notes that stay on the page."
+      },
+      {
+        "id": "progress",
+        "why": "Shows how far through the steps a person is."
+      },
+      {
+        "id": "breadcrumb",
+        "why": "Shows where a person is in the service."
+      },
+      {
+        "id": "card",
+        "why": "Groups a summary before submitting."
+      },
+      {
+        "id": "separator",
+        "why": "Breaks between groups of questions."
+      },
+      {
+        "id": "dialog",
+        "why": "Only to confirm leaving with unsaved answers."
+      },
+      {
+        "id": "collapsible",
+        "why": "Optional help a person can open."
+      },
+      {
+        "id": "spinner",
+        "why": "Says that the page is working."
+      }
+    ],
+    "out": [
+      {
+        "id": "tooltip",
+        "why": "Hover-only hints fail touch, magnifier and keyboard users."
+      },
+      {
+        "id": "select",
+        "why": "A custom listbox is harder for screen readers than the native select."
+      },
+      {
+        "id": "slider",
+        "why": "Dragging is hard with a tremor; a text field is exact."
+      },
+      {
+        "id": "toast",
+        "why": "Messages that disappear can be missed; alerts stay."
+      },
+      {
+        "id": "switch",
+        "why": "A checkbox is clearer about what on and off mean."
+      }
+    ]
+  },
+  "samples": {
+    "description": "Sample content for showing this system: written from its use scenarios, in its voice, with every status mapped to a meaning. Storybook, the site and the docs read it; it is never shared between schemes.",
+    "follows": [
+      "scenarios.q1",
+      "content.q1",
+      "tasks.q1",
+      "voice.values"
+    ],
+    "screen": "Apply for support with housing costs",
+    "actions": {
+      "primary": "Continue",
+      "secondary": "Save and come back later"
+    },
+    "statuses": [
+      {
+        "label": "Not started",
+        "meaning": "neutral",
+        "why": "Nothing has happened yet."
+      },
+      {
+        "label": "Completed",
+        "meaning": "success",
+        "why": "This step is done."
+      },
+      {
+        "label": "Check your answers",
+        "meaning": "warning",
+        "why": "Something needs a second look before you continue."
+      },
+      {
+        "label": "Upload failed",
+        "meaning": "danger",
+        "why": "The file did not reach us and must be sent again."
+      }
+    ],
+    "metrics": [
+      {
+        "label": "Steps done",
+        "value": "2 of 4"
+      },
+      {
+        "label": "Documents sent",
+        "value": "3"
+      },
+      {
+        "label": "Time left to apply",
+        "value": "12 days"
+      },
+      {
+        "label": "Time this takes",
+        "value": "About 10 minutes"
+      }
+    ],
+    "field": {
+      "label": "Date of birth",
+      "placeholder": "",
+      "hint": "For example, 27 3 1980.",
+      "error": "Enter your date of birth. For example, 27 3 1980.",
+      "invalid": "27/3"
+    },
+    "checkbox": [
+      "I have read the guidance",
+      "Someone is helping me fill in this form",
+      "Contact me by text message"
+    ],
+    "confirm": {
+      "trigger": "Cancel application",
+      "title": "Do you want to cancel your application?",
+      "body": "Your answers will be deleted.",
+      "confirm": "Yes, cancel it",
+      "cancel": "No, go back"
+    },
+    "card": {
+      "title": "Step 2 of 4: Your home",
+      "description": "About 3 minutes. You will need your rent agreement.",
+      "status": "Not started",
+      "primary": "Start this step",
+      "secondary": "Change earlier answers"
+    }
+  },
+  "themes": [
+    {
+      "id": "light",
+      "brand": "default",
+      "mode": "light"
+    },
+    {
+      "id": "dark",
+      "brand": "default",
+      "mode": "dark"
+    }
+  ],
+  "answers": [
+    {
+      "question": "business.q1",
+      "option": "serve-public",
+      "why": "A public service everyone must be able to use.",
+      "because": []
+    },
+    {
+      "question": "business.q2",
+      "option": "one",
+      "why": "One service, one brand.",
+      "because": []
+    },
+    {
+      "question": "people.q1",
+      "option": "everyone",
+      "why": "Everyone, including people with low vision, motor and cognitive needs.",
+      "because": [
+        "business.q1"
+      ]
+    },
+    {
+      "question": "people.q2",
+      "option": "aaa",
+      "why": "AAA where it applies; nobody is left out.",
+      "because": [
+        "people.q1"
+      ]
+    },
+    {
+      "question": "content.q1",
+      "option": "forms",
+      "why": "Most screens are forms and steps.",
+      "because": [
+        "business.q1"
+      ]
+    },
+    {
+      "question": "content.q2",
+      "option": "one-idea",
+      "why": "One question per screen lowers effort.",
+      "because": [
+        "people.q1"
+      ]
+    },
+    {
+      "question": "tasks.q1",
+      "option": "complete",
+      "why": "People must finish the form.",
+      "because": [
+        "content.q1"
+      ]
+    },
+    {
+      "question": "tasks.q2",
+      "option": "rarely",
+      "why": "People do this once or twice a year.",
+      "because": [
+        "business.q1"
+      ]
+    },
+    {
+      "question": "human.q1",
+      "option": "effort",
+      "why": "Low effort to understand each step.",
+      "because": [
+        "people.q1"
+      ]
+    },
+    {
+      "question": "human.q2",
+      "option": "fresh",
+      "why": "Nobody remembers the interface from last time.",
+      "because": [
+        "tasks.q2"
+      ]
+    },
+    {
+      "question": "outcomes.q1",
+      "option": "completion",
+      "why": "Completion without errors is the measure.",
+      "because": [
+        "tasks.q1"
+      ]
+    },
+    {
+      "question": "outcomes.q2",
+      "option": "failed-task",
+      "why": "A failed form can cost someone a benefit.",
+      "because": [
+        "tasks.q1"
+      ]
+    },
+    {
+      "question": "brand.q1",
+      "option": "calm-clear",
+      "why": "Calm and clear, never clever.",
+      "because": [
+        "human.q1"
+      ]
+    },
+    {
+      "question": "brand.q2",
+      "option": "quiet",
+      "why": "The brand stays out of the way.",
+      "because": [
+        "human.q1"
+      ]
+    },
+    {
+      "question": "scenarios.q1",
+      "option": "anywhere",
+      "why": "Public services are used on any device, with any assistive technology.",
+      "because": [
+        "people.q1"
+      ]
+    },
+    {
+      "question": "scenarios.q2",
+      "option": "one-sitting",
+      "why": "An application is finished in one sitting, or saved and resumed.",
+      "because": [
+        "tasks.q1"
+      ]
+    },
+    {
+      "question": "team.q1",
+      "option": "platform",
+      "why": "A platform team serves many services.",
+      "because": []
+    },
+    {
+      "question": "team.q2",
+      "option": "stable",
+      "why": "Changes are rare and tested.",
+      "because": []
+    },
+    {
+      "question": "typography.roles",
+      "option": "core",
+      "why": "Few roles keep pages predictable.",
+      "because": [
+        "human.q1"
+      ]
+    },
+    {
+      "question": "typography.count",
+      "option": "few",
+      "why": "Only the sizes the screens need, each clearly different.",
+      "because": [
+        "human.q1"
+      ]
+    },
+    {
+      "question": "typography.definition",
+      "option": "ratio-proportional",
+      "why": "Line height grows with text size for zoom users.",
+      "because": [
+        "people.q2"
+      ]
+    },
+    {
+      "question": "typography.values",
+      "option": "large",
+      "why": "Large text is readable for more people.",
+      "because": [
+        "people.q1"
+      ]
+    },
+    {
+      "question": "typography.lands",
+      "option": "forms",
+      "why": "Type matters most in form labels and hints.",
+      "because": [
+        "content.q1"
+      ]
+    },
+    {
+      "question": "color.roles",
+      "option": "core",
+      "why": "Few color roles, each with one clear meaning.",
+      "because": [
+        "human.q1"
+      ]
+    },
+    {
+      "question": "color.count",
+      "option": "two",
+      "why": "Primary and secondary only; fewer choices, fewer errors.",
+      "because": [
+        "human.q1"
+      ]
+    },
+    {
+      "question": "color.definition",
+      "option": "neutral-brand",
+      "why": "True neutrals and one strong blue, checked for contrast.",
+      "because": [
+        "people.q2"
+      ]
+    },
+    {
+      "question": "color.values",
+      "option": "balanced",
+      "why": "Strong but not loud color.",
+      "because": [
+        "brand.q1"
+      ]
+    },
+    {
+      "question": "color.lands",
+      "option": "links-actions",
+      "why": "Links and actions must be found by everyone.",
+      "because": [
+        "outcomes.q1"
+      ]
+    },
+    {
+      "question": "spacing.roles",
+      "option": "gap-inset-row",
+      "why": "Large rows matter for touch and zoom.",
+      "because": [
+        "people.q1"
+      ]
+    },
+    {
+      "question": "spacing.count",
+      "option": "one",
+      "why": "One density; no compact mode to fail people.",
+      "because": [
+        "people.q1"
+      ]
+    },
+    {
+      "question": "spacing.definition",
+      "option": "coarse",
+      "why": "Big, even steps lower effort.",
+      "because": [
+        "human.q1"
+      ]
+    },
+    {
+      "question": "spacing.values",
+      "option": "spacious",
+      "why": "Space lowers effort and mis-taps.",
+      "because": [
+        "human.q1"
+      ]
+    },
+    {
+      "question": "spacing.lands",
+      "option": "fields",
+      "why": "Space between fields prevents mis-taps.",
+      "because": [
+        "content.q1"
+      ]
+    },
+    {
+      "question": "shape.roles",
+      "option": "control-badge-container",
+      "why": "Badges keep a clear rectangle.",
+      "because": [
+        "human.q1"
+      ]
+    },
+    {
+      "question": "shape.count",
+      "option": "three",
+      "why": "Control, badge and container corners differ.",
+      "because": [
+        "shape.roles"
+      ]
+    },
+    {
+      "question": "shape.definition",
+      "option": "fixed",
+      "why": "One brand, one set of corners.",
+      "because": [
+        "business.q2"
+      ]
+    },
+    {
+      "question": "shape.values",
+      "option": "slightly-rounded",
+      "why": "Clear, slightly rounded controls.",
+      "because": [
+        "brand.q1"
+      ]
+    },
+    {
+      "question": "shape.lands",
+      "option": "controls-cards",
+      "why": "Corners show on controls and step cards.",
+      "because": [
+        "content.q1"
+      ]
+    },
+    {
+      "question": "elevation.roles",
+      "option": "nothing",
+      "why": "Flat is easier to read at high zoom.",
+      "because": [
+        "people.q2"
+      ]
+    },
+    {
+      "question": "elevation.count",
+      "option": "none",
+      "why": "No shadows.",
+      "because": [
+        "elevation.roles"
+      ]
+    },
+    {
+      "question": "elevation.definition",
+      "option": "lines",
+      "why": "Strong borders separate groups at any zoom.",
+      "because": [
+        "people.q2"
+      ]
+    },
+    {
+      "question": "elevation.values",
+      "option": "none",
+      "why": "No shadows; borders do the work.",
+      "because": [
+        "elevation.roles"
+      ]
+    },
+    {
+      "question": "elevation.lands",
+      "option": "dialogs-only",
+      "why": "Only dialogs separate, with a dimmed page and a border.",
+      "because": [
+        "elevation.roles"
+      ]
+    },
+    {
+      "question": "motion.roles",
+      "option": "feedback",
+      "why": "Motion only confirms an action.",
+      "because": [
+        "people.q1"
+      ]
+    },
+    {
+      "question": "motion.count",
+      "option": "one",
+      "why": "One speed.",
+      "because": [
+        "motion.roles"
+      ]
+    },
+    {
+      "question": "motion.definition",
+      "option": "standard",
+      "why": "A standard ease-out is easy to follow.",
+      "because": [
+        "people.q1"
+      ]
+    },
+    {
+      "question": "motion.values",
+      "option": "moderate",
+      "why": "Moderate speed is easy to follow.",
+      "because": [
+        "people.q1"
+      ]
+    },
+    {
+      "question": "motion.lands",
+      "option": "state-only",
+      "why": "Only state changes move.",
+      "because": [
+        "motion.roles"
+      ]
+    },
+    {
+      "question": "iconography.roles",
+      "option": "actions-status",
+      "why": "Icons support words; they never replace them.",
+      "because": [
+        "human.q2"
+      ]
+    },
+    {
+      "question": "iconography.count",
+      "option": "one",
+      "why": "One size, larger than the text.",
+      "because": [
+        "iconography.values"
+      ]
+    },
+    {
+      "question": "iconography.definition",
+      "option": "filled",
+      "why": "Filled icons stay visible at low vision.",
+      "because": [
+        "people.q1"
+      ]
+    },
+    {
+      "question": "iconography.values",
+      "option": "larger",
+      "why": "Larger icons are easier to see.",
+      "because": [
+        "people.q1"
+      ]
+    },
+    {
+      "question": "iconography.lands",
+      "option": "status",
+      "why": "Icons work hardest beside status words and errors.",
+      "because": [
+        "accessibility.count"
+      ]
+    },
+    {
+      "question": "theming.roles",
+      "option": "mode",
+      "why": "One brand, so only the mode changes.",
+      "because": [
+        "business.q2"
+      ]
+    },
+    {
+      "question": "theming.count",
+      "option": "two",
+      "why": "Light and dark.",
+      "because": [
+        "theming.values"
+      ]
+    },
+    {
+      "question": "theming.definition",
+      "option": "single",
+      "why": "One service, one brand.",
+      "because": [
+        "business.q2"
+      ]
+    },
+    {
+      "question": "theming.values",
+      "option": "light-dark",
+      "why": "Light and dark ship as standard; both hold AAA text.",
+      "because": [
+        "people.q2"
+      ]
+    },
+    {
+      "question": "theming.lands",
+      "option": "colors",
+      "why": "Only colors change.",
+      "because": [
+        "theming.roles"
+      ]
+    },
+    {
+      "question": "accessibility.roles",
+      "option": "all",
+      "why": "Every state, including loading, gets its own value.",
+      "because": [
+        "people.q2"
+      ]
+    },
+    {
+      "question": "accessibility.count",
+      "option": "color-icon-word",
+      "why": "Never color alone.",
+      "because": [
+        "people.q2"
+      ]
+    },
+    {
+      "question": "accessibility.definition",
+      "option": "aaa-text",
+      "why": "AAA contrast for text.",
+      "because": [
+        "people.q2"
+      ]
+    },
+    {
+      "question": "accessibility.values",
+      "option": "large",
+      "why": "Large targets for tremor and touch.",
+      "because": [
+        "people.q1"
+      ]
+    },
+    {
+      "question": "accessibility.lands",
+      "option": "forms",
+      "why": "Forms are where people are blocked.",
+      "because": [
+        "content.q1"
+      ]
+    },
+    {
+      "question": "naming.roles",
+      "option": "tokens-keys",
+      "why": "Components get their own keys.",
+      "because": [
+        "team.q2"
+      ]
+    },
+    {
+      "question": "naming.count",
+      "option": "three",
+      "why": "Primitives, semantics and component keys.",
+      "because": [
+        "team.q2"
+      ]
+    },
+    {
+      "question": "naming.definition",
+      "option": "by-role",
+      "why": "Role names survive a redesign.",
+      "because": [
+        "team.q1"
+      ]
+    },
+    {
+      "question": "naming.values",
+      "option": "kebab-paths",
+      "why": "Lowercase paths read the same everywhere.",
+      "because": [
+        "team.q1"
+      ]
+    },
+    {
+      "question": "naming.lands",
+      "option": "keys",
+      "why": "A component API keeps changes local.",
+      "because": [
+        "team.q2"
+      ]
+    },
+    {
+      "question": "voice.roles",
+      "option": "ui-help",
+      "why": "Hints and help text carry people through each step.",
+      "because": [
+        "content.q1"
+      ]
+    },
+    {
+      "question": "voice.count",
+      "option": "one",
+      "why": "One plain tone everywhere; no surprises.",
+      "because": [
+        "human.q1"
+      ]
+    },
+    {
+      "question": "voice.definition",
+      "option": "word-list",
+      "why": "A word list of common words, with terms to avoid.",
+      "because": [
+        "people.q1"
+      ]
+    },
+    {
+      "question": "voice.values",
+      "option": "plain",
+      "why": "Every sentence is easy to read on the first try.",
+      "because": [
+        "people.q1",
+        "brand.q1"
+      ]
+    },
+    {
+      "question": "voice.lands",
+      "option": "forms",
+      "why": "Words decide whether a form gets finished.",
+      "because": [
+        "outcomes.q1"
+      ]
+    },
+    {
+      "question": "components.roles",
+      "option": "core",
+      "why": "Forms, steps and feedback are all a public service needs.",
+      "because": [
+        "content.q1",
+        "people.q1"
+      ]
+    },
+    {
+      "question": "components.count",
+      "option": "few",
+      "why": "Only the parts in use, each tested with assistive technology.",
+      "because": [
+        "people.q2",
+        "team.q2"
+      ]
+    },
+    {
+      "question": "components.definition",
+      "option": "inclusive",
+      "why": "A component joins only when it works with any device and assistive technology.",
+      "because": [
+        "people.q1",
+        "people.q2"
+      ]
+    },
+    {
+      "question": "components.values",
+      "option": "few",
+      "why": "One clear way to do each thing.",
+      "because": [
+        "people.q1",
+        "brand.q1"
+      ]
+    },
+    {
+      "question": "components.lands",
+      "option": "forms",
+      "why": "Components do their work in forms and steps.",
+      "because": [
+        "content.q1",
+        "tasks.q1"
+      ]
+    }
+  ],
+  "usage": [
+    {
+      "situation": "page-title",
+      "use": "type.title",
+      "not": "type.display",
+      "why": "A clear, consistent title on every page.",
+      "because": [
+        "human.q1"
+      ]
+    },
+    {
+      "situation": "number-in-table",
+      "use": "type.body",
+      "not": "A small or mono font",
+      "why": "Every number must be readable at large size.",
+      "because": [
+        "people.q1"
+      ]
+    },
+    {
+      "situation": "paragraph",
+      "use": "type.body, short sentences",
+      "not": "type.caption",
+      "why": "Large text and short lines lower effort.",
+      "because": [
+        "human.q1"
+      ]
+    },
+    {
+      "situation": "field-label",
+      "use": "type.label, above the field, always visible",
+      "not": "A placeholder as the label",
+      "why": "Labels must stay visible while typing.",
+      "because": [
+        "people.q2",
+        "tasks.q1"
+      ]
+    },
+    {
+      "situation": "selected-row",
+      "use": "color.surface.selected and a check icon",
+      "not": "Color alone",
+      "why": "Selection never relies on color alone.",
+      "because": [
+        "accessibility.count"
+      ]
+    },
+    {
+      "situation": "error-message",
+      "use": "color.status.danger, an icon and a sentence next to the field",
+      "not": "Color alone",
+      "why": "People must know what went wrong and where.",
+      "because": [
+        "accessibility.count",
+        "outcomes.q2"
+      ]
+    },
+    {
+      "situation": "link",
+      "use": "color.text.link, underlined",
+      "not": "Color only",
+      "why": "Underline works without color perception.",
+      "because": [
+        "people.q2"
+      ]
+    },
+    {
+      "situation": "status-label",
+      "use": "Badge with an icon and a word",
+      "not": "Color alone",
+      "why": "Status must survive no color and a screen reader.",
+      "because": [
+        "accessibility.count"
+      ]
+    },
+    {
+      "situation": "related-items",
+      "use": "space.gap.default",
+      "not": "space.gap.tight",
+      "why": "Generous space lowers mis-taps.",
+      "because": [
+        "spacing.values"
+      ]
+    },
+    {
+      "situation": "between-sections",
+      "use": "space.gap.section",
+      "not": "A thin line",
+      "why": "Space is easy to see; thin lines are not.",
+      "because": [
+        "elevation.definition"
+      ]
+    },
+    {
+      "situation": "table-row",
+      "use": "size.row (large)",
+      "not": "A compact row",
+      "why": "Large rows are easy to read and tap.",
+      "because": [
+        "accessibility.values"
+      ]
+    },
+    {
+      "situation": "control-corner",
+      "use": "radius.control",
+      "not": "A pill",
+      "why": "Clear rectangles read as fields and buttons.",
+      "because": [
+        "shape.values"
+      ]
+    },
+    {
+      "situation": "status-shape",
+      "use": "radius.badge (rectangle)",
+      "not": "A pill",
+      "why": "Clear shapes with a word inside.",
+      "because": [
+        "shape.roles"
+      ]
+    },
+    {
+      "situation": "card",
+      "use": "A strong border, no shadow",
+      "not": "A shadow",
+      "why": "Shadows are hard to see; borders are not.",
+      "because": [
+        "elevation.roles"
+      ]
+    },
+    {
+      "situation": "menu-or-dialog",
+      "use": "A strong border and a dimmed page",
+      "not": "A shadow only",
+      "why": "The dimmed page makes the dialog obvious.",
+      "because": [
+        "elevation.lands"
+      ]
+    },
+    {
+      "situation": "hover-feedback",
+      "use": "motion.duration.feedback (moderate)",
+      "not": "Fast flicker",
+      "why": "Moderate speed is easy to follow.",
+      "because": [
+        "motion.values"
+      ]
+    },
+    {
+      "situation": "reduced-motion",
+      "use": "No motion",
+      "not": "Reduced motion",
+      "why": "When people ask for less motion, nothing moves.",
+      "because": [
+        "motion.roles"
+      ]
+    },
+    {
+      "situation": "icon-alone",
+      "use": "Not used: always add a word",
+      "not": "An icon button",
+      "why": "Icons alone are guesswork.",
+      "because": [
+        "iconography.roles"
+      ]
+    },
+    {
+      "situation": "dark-mode",
+      "use": "The dark semantic mode, or high contrast",
+      "not": "One mode only",
+      "why": "People pick the mode they can read.",
+      "because": [
+        "theming.values"
+      ]
+    },
+    {
+      "situation": "keyboard-focus",
+      "use": "button/focus-ring at border-width.focus, with an offset",
+      "not": "A thin or faint outline",
+      "why": "Focus must be seen by everyone.",
+      "because": [
+        "people.q2"
+      ]
+    },
+    {
+      "situation": "smallest-target",
+      "use": "size.control.default (large)",
+      "not": "Touch-minimum size",
+      "why": "Large targets help people with motor needs.",
+      "because": [
+        "accessibility.values"
+      ]
+    },
+    {
+      "situation": "commit-action",
+      "use": "Button primary, one per page",
+      "not": "Two primaries",
+      "why": "One clear next step.",
+      "because": [
+        "color.count"
+      ]
+    },
+    {
+      "situation": "alternative-action",
+      "use": "Button secondary",
+      "not": "A text link",
+      "why": "Every action looks like a button people can find.",
+      "because": [
+        "human.q2"
+      ]
+    },
+    {
+      "situation": "destructive-action",
+      "use": "Button secondary, then a confirm page",
+      "not": "Button primary",
+      "why": "A confirm step prevents a costly error.",
+      "because": [
+        "outcomes.q2"
+      ]
+    },
+    {
+      "situation": "row-action",
+      "use": "Button secondary with a word",
+      "not": "An icon on its own",
+      "why": "A word says what will happen.",
+      "because": [
+        "human.q2"
+      ]
+    },
+    {
+      "situation": "missing-token",
+      "use": "The closest semantic token, then ask for a new one",
+      "not": "A raw value in the component",
+      "why": "A raw value skips the contrast checks every token passed.",
+      "because": [
+        "naming.lands",
+        "accessibility.definition"
+      ]
+    },
+    {
+      "situation": "button-label",
+      "use": "A common verb that says what happens next",
+      "not": "\"Submit\" or \"Proceed\"",
+      "why": "Common words are understood by the most people.",
+      "because": [
+        "voice.definition",
+        "voice.values"
+      ],
+      "example": "Continue"
+    },
+    {
+      "situation": "error-words",
+      "use": "Say what is wrong, where, and exactly how to fix it",
+      "not": "\"Invalid input\"",
+      "why": "People must be able to fix the error without help.",
+      "because": [
+        "voice.values",
+        "voice.lands"
+      ],
+      "example": "Enter your date of birth. For example, 27 3 1980."
+    },
+    {
+      "situation": "success-words",
+      "use": "Confirm what happened and what comes next",
+      "not": "A confirmation with no next step",
+      "why": "People need to know the task is finished and what happens now.",
+      "because": [
+        "voice.values",
+        "outcomes.q1"
+      ],
+      "example": "We have your application. We will email you within 5 working days."
+    },
+    {
+      "situation": "empty-words",
+      "use": "Explain what will appear here and how to start",
+      "not": "A blank page",
+      "why": "A blank page leaves people unsure if something failed.",
+      "because": [
+        "voice.values"
+      ],
+      "example": "You have no saved applications. Start a new one below."
+    },
+    {
+      "situation": "confirm-words",
+      "use": "Say what will happen in plain words, and offer a way back",
+      "not": "A double negative",
+      "why": "Plain words prevent a choice people did not mean.",
+      "because": [
+        "voice.values",
+        "outcomes.q2"
+      ],
+      "example": "Do you want to cancel your application? Your answers will be deleted."
+    },
+    {
+      "situation": "first-visit",
+      "use": "Say how many steps there are and how long it takes",
+      "not": "Marketing copy",
+      "why": "Knowing the length lowers effort and anxiety.",
+      "because": [
+        "human.q1",
+        "scenarios.q2"
+      ],
+      "example": "This takes about 10 minutes. There are 4 steps."
+    },
+    {
+      "situation": "missing-component",
+      "use": "a native HTML element with a label and a hint",
+      "not": "a custom widget that needs hover, drag or precise pointing",
+      "why": "Native elements work with every assistive technology without extra work.",
+      "because": [
+        "people.q1",
+        "components.definition"
+      ]
+    }
+  ],
+  "tokens": {
+    "primitive": {
+      "color": {
+        "$description": "Colour options: raw hue ramps. Each hue has a light ramp and a dark ramp (the same steps tuned for dark backgrounds). Steps only: each theme decides its own base (@). Themes pick from these; components never read them.",
+        "gray": {
+          "$type": "color",
+          "$description": "The gray hue: a light ramp, a dark ramp and its base value.",
+          "light": {
+            "0": {
+              "$value": "#FFFFFF"
+            },
+            "50": {
+              "$value": "#F7F7F7"
+            },
+            "100": {
+              "$value": "#EDEDED"
+            },
+            "200": {
+              "$value": "#D6D6D6"
+            },
+            "300": {
+              "$value": "#949494"
+            },
+            "400": {
+              "$value": "#767676",
+              "$description": "Derived: the OKLab midpoint of 300 and 500. Added so muted text can pass 4.5:1 and stay quieter than secondary."
+            },
+            "500": {
+              "$value": "#595959"
+            },
+            "600": {
+              "$value": "#464646",
+              "$description": "Derived: the OKLab midpoint of 500 and 700. Added so muted text can pass 4.5:1 and stay quieter than secondary."
+            },
+            "700": {
+              "$value": "#333333"
+            },
+            "800": {
+              "$value": "#222222"
+            },
+            "900": {
+              "$value": "#141414"
+            },
+            "950": {
+              "$value": "#0A0A0A"
+            }
+          },
+          "dark": {
+            "0": {
+              "$value": "#0A0A0A"
+            },
+            "50": {
+              "$value": "#141414"
+            },
+            "100": {
+              "$value": "#222222"
+            },
+            "200": {
+              "$value": "#333333"
+            },
+            "300": {
+              "$value": "#595959"
+            },
+            "400": {
+              "$value": "#767676",
+              "$description": "Derived: the OKLab midpoint of 300 and 500. Added so muted text can pass 4.5:1 and stay quieter than secondary."
+            },
+            "500": {
+              "$value": "#949494"
+            },
+            "600": {
+              "$value": "#B4B4B4",
+              "$description": "Derived: the OKLab midpoint of 500 and 700. Added so muted text can pass 4.5:1 and stay quieter than secondary."
+            },
+            "700": {
+              "$value": "#D6D6D6"
+            },
+            "800": {
+              "$value": "#EDEDED"
+            },
+            "900": {
+              "$value": "#F7F7F7"
+            },
+            "950": {
+              "$value": "#FFFFFF"
+            }
+          }
+        },
+        "blue": {
+          "$type": "color",
+          "$description": "The blue hue: a light ramp, a dark ramp and its base value.",
+          "light": {
+            "100": {
+              "$value": "#E1ECFF"
+            },
+            "300": {
+              "$value": "#8AB4F8"
+            },
+            "500": {
+              "$value": "#1A5DD0"
+            },
+            "600": {
+              "$value": "#0B4FC0"
+            },
+            "700": {
+              "$value": "#083C93"
+            },
+            "800": {
+              "$value": "#062C6E"
+            }
+          },
+          "dark": {
+            "100": {
+              "$value": "#062C6E"
+            },
+            "300": {
+              "$value": "#083C93"
+            },
+            "500": {
+              "$value": "#0B4FC0"
+            },
+            "600": {
+              "$value": "#1A5DD0"
+            },
+            "700": {
+              "$value": "#8AB4F8"
+            },
+            "800": {
+              "$value": "#E1ECFF"
+            }
+          }
+        },
+        "green": {
+          "$type": "color",
+          "$description": "The green hue: a light ramp, a dark ramp and its base value.",
+          "light": {
+            "100": {
+              "$value": "#E3F4EA"
+            },
+            "300": {
+              "$value": "#5CC283"
+            },
+            "700": {
+              "$value": "#1F7A3A"
+            },
+            "900": {
+              "$value": "#123322"
+            }
+          },
+          "dark": {
+            "100": {
+              "$value": "#123322"
+            },
+            "300": {
+              "$value": "#1F7A3A"
+            },
+            "700": {
+              "$value": "#5CC283"
+            },
+            "900": {
+              "$value": "#E3F4EA"
+            }
+          }
+        },
+        "amber": {
+          "$type": "color",
+          "$description": "The amber hue: a light ramp, a dark ramp and its base value.",
+          "light": {
+            "100": {
+              "$value": "#FFF3D6"
+            },
+            "300": {
+              "$value": "#F2B84B"
+            },
+            "700": {
+              "$value": "#8A5600"
+            },
+            "900": {
+              "$value": "#3A2A05"
+            }
+          },
+          "dark": {
+            "100": {
+              "$value": "#3A2A05"
+            },
+            "300": {
+              "$value": "#8A5600"
+            },
+            "700": {
+              "$value": "#F2B84B"
+            },
+            "900": {
+              "$value": "#FFF3D6"
+            }
+          }
+        },
+        "red": {
+          "$type": "color",
+          "$description": "The red hue: a light ramp, a dark ramp and its base value.",
+          "light": {
+            "100": {
+              "$value": "#FDE7E7"
+            },
+            "300": {
+              "$value": "#F28B8B"
+            },
+            "700": {
+              "$value": "#C42B2B"
+            },
+            "900": {
+              "$value": "#3D1414"
+            }
+          },
+          "dark": {
+            "100": {
+              "$value": "#3D1414"
+            },
+            "300": {
+              "$value": "#C42B2B"
+            },
+            "700": {
+              "$value": "#F28B8B"
+            },
+            "900": {
+              "$value": "#FDE7E7"
+            }
+          }
+        },
+        "black": {
+          "$type": "color",
+          "$description": "See-through black for scrims behind dialogs, light and dark.",
+          "light": {
+            "scrim": {
+              "$value": "#0000008C"
+            }
+          },
+          "dark": {
+            "scrim": {
+              "$value": "#000000B3"
+            }
+          }
+        },
+        "teal": {
+          "$type": "color",
+          "$description": "Teal ramp for the info status and categories. Same values as the multi-brand teal ramp: borrowed, not invented.",
+          "light": {
+            "100": {
+              "$value": "#E0F2F1"
+            },
+            "300": {
+              "$value": "#7FCFC6"
+            },
+            "500": {
+              "$value": "#14918A"
+            },
+            "600": {
+              "$value": "#0F766E"
+            },
+            "700": {
+              "$value": "#0B5B55"
+            },
+            "800": {
+              "$value": "#08423E"
+            }
+          },
+          "dark": {
+            "100": {
+              "$value": "#08423E"
+            },
+            "300": {
+              "$value": "#0B5B55"
+            },
+            "500": {
+              "$value": "#0F766E"
+            },
+            "600": {
+              "$value": "#14918A"
+            },
+            "700": {
+              "$value": "#7FCFC6"
+            },
+            "800": {
+              "$value": "#E0F2F1"
+            }
+          }
+        }
+      },
+      "space": {
+        "12": {
+          "$type": "dimension",
+          "$value": "0.75rem"
+        },
+        "16": {
+          "$type": "dimension",
+          "$value": "1rem"
+        },
+        "24": {
+          "$type": "dimension",
+          "$value": "1.5rem"
+        },
+        "32": {
+          "$type": "dimension",
+          "$value": "2rem"
+        },
+        "48": {
+          "$type": "dimension",
+          "$value": "3rem"
+        },
+        "$description": "Space options. Names give the size in pixels at the default text size; values are rem."
+      },
+      "size": {
+        "16": {
+          "$type": "dimension",
+          "$value": "1rem"
+        },
+        "20": {
+          "$type": "dimension",
+          "$value": "1.25rem"
+        },
+        "24": {
+          "$type": "dimension",
+          "$value": "1.5rem"
+        },
+        "48": {
+          "$type": "dimension",
+          "$value": "3rem"
+        },
+        "52": {
+          "$type": "dimension",
+          "$value": "3.25rem"
+        },
+        "56": {
+          "$type": "dimension",
+          "$value": "3.5rem"
+        },
+        "$description": "Size options for controls, rows and icons."
+      },
+      "radius": {
+        "0": {
+          "$type": "dimension",
+          "$value": "0rem"
+        },
+        "4": {
+          "$type": "dimension",
+          "$value": "0.25rem"
+        },
+        "6": {
+          "$type": "dimension",
+          "$value": "0.375rem"
+        },
+        "8": {
+          "$type": "dimension",
+          "$value": "0.5rem"
+        },
+        "$description": "Corner options.",
+        "full": {
+          "$type": "dimension",
+          "$value": "9999px",
+          "$description": "Fully round."
+        }
+      },
+      "border-width": {
+        "2": {
+          "$type": "dimension",
+          "$value": "2px"
+        },
+        "3": {
+          "$type": "dimension",
+          "$value": "3px"
+        },
+        "$description": "Border width options."
+      },
+      "font": {
+        "size": {
+          "16": {
+            "$type": "dimension",
+            "$value": "1rem"
+          },
+          "18": {
+            "$type": "dimension",
+            "$value": "1.125rem"
+          },
+          "19": {
+            "$type": "dimension",
+            "$value": "1.1875rem"
+          },
+          "22": {
+            "$type": "dimension",
+            "$value": "1.375rem"
+          },
+          "28": {
+            "$type": "dimension",
+            "$value": "1.75rem"
+          },
+          "36": {
+            "$type": "dimension",
+            "$value": "2.25rem"
+          },
+          "$description": "Type size options. Names are pixels at the default text size; values are rem, so text grows with the user's setting."
+        },
+        "weight": {
+          "400": {
+            "$type": "fontWeight",
+            "$value": 400
+          },
+          "700": {
+            "$type": "fontWeight",
+            "$value": 700
+          }
+        },
+        "line-height": {
+          "1_2": {
+            "$type": "number",
+            "$value": 1.2,
+            "$description": "A ratio of the text size."
+          },
+          "1_25": {
+            "$type": "number",
+            "$value": 1.25,
+            "$description": "A ratio of the text size."
+          },
+          "1_3": {
+            "$type": "number",
+            "$value": 1.3,
+            "$description": "A ratio of the text size."
+          },
+          "1_4": {
+            "$type": "number",
+            "$value": 1.4,
+            "$description": "A ratio of the text size."
+          },
+          "1_5": {
+            "$type": "number",
+            "$value": 1.5,
+            "$description": "A ratio of the text size."
+          },
+          "1_6": {
+            "$type": "number",
+            "$value": 1.6,
+            "$description": "A ratio of the text size."
+          }
+        },
+        "family": {
+          "$description": "Font family options. Each brand's theme picks its display, body, interface and data fonts from these.",
+          "atkinson-hyperlegible": {
+            "$type": "fontFamily",
+            "$value": "\"Atkinson Hyperlegible\", Verdana, sans-serif"
+          },
+          "ibm-plex-mono": {
+            "$type": "fontFamily",
+            "$value": "\"IBM Plex Mono\", ui-monospace, monospace"
+          }
+        }
+      },
+      "duration": {
+        "fast": {
+          "$type": "duration",
+          "$value": "120ms",
+          "$description": "Fast: the usual convention for feedback, about 120ms."
+        },
+        "moderate": {
+          "$type": "duration",
+          "$value": "200ms",
+          "$description": "Moderate: a calm, easy-to-follow speed, about 200ms."
+        },
+        "relaxed": {
+          "$type": "duration",
+          "$value": "320ms",
+          "$description": "Relaxed: a slower, springy speed for expressive motion, about 320ms."
+        }
+      },
+      "easing": {
+        "standard": {
+          "$type": "cubicBezier",
+          "$value": [
+            0.2,
+            0,
+            0,
+            1
+          ],
+          "$description": "The easing for feedback transitions."
+        }
+      },
+      "opacity": {
+        "50": {
+          "$type": "number",
+          "$value": 0.5,
+          "$description": "An opacity option."
+        }
+      },
+      "shadow": {
+        "$description": "Raw shadows. Elevation semantics point at these.",
+        "none": {
+          "$type": "shadow",
+          "$value": {
+            "color": "#00000000",
+            "offsetX": "0px",
+            "offsetY": "0px",
+            "blur": "0px",
+            "spread": "0px"
+          },
+          "$description": "No shadow: flat surfaces."
+        }
+      }
+    },
+    "brands": {
+      "default": {
+        "label": "Accessible first",
+        "description": "The single brand: strong blue on true neutral, high contrast everywhere.",
+        "theme": {
+          "$description": "The Accessible first theme: what each brand-dependent semantic key picks, in light and dark, plus mode-free picks (fonts, corners) in base. Info uses teal, kept apart from the brand colour so it never reads as an action. Categories 1 to 5 are blue, teal, green, amber, gray: distinct hues for tags and chart series, with no meaning. Disabled uses the neutral gray.",
+          "base": {
+            "radius": {
+              "control": {
+                "$type": "dimension",
+                "$value": "{radius.6}"
+              },
+              "badge": {
+                "$type": "dimension",
+                "$value": "{radius.4}"
+              },
+              "container": {
+                "$type": "dimension",
+                "$value": "{radius.8}"
+              }
+            },
+            "type": {
+              "display": {
+                "font-family": {
+                  "$type": "fontFamily",
+                  "$value": "{font.family.atkinson-hyperlegible}"
+                }
+              },
+              "title": {
+                "font-family": {
+                  "$type": "fontFamily",
+                  "$value": "{font.family.atkinson-hyperlegible}"
+                }
+              },
+              "heading": {
+                "font-family": {
+                  "$type": "fontFamily",
+                  "$value": "{font.family.atkinson-hyperlegible}"
+                }
+              },
+              "body": {
+                "font-family": {
+                  "$type": "fontFamily",
+                  "$value": "{font.family.atkinson-hyperlegible}"
+                }
+              },
+              "label": {
+                "font-family": {
+                  "$type": "fontFamily",
+                  "$value": "{font.family.atkinson-hyperlegible}"
+                }
+              },
+              "caption": {
+                "font-family": {
+                  "$type": "fontFamily",
+                  "$value": "{font.family.atkinson-hyperlegible}"
+                }
+              },
+              "data": {
+                "font-family": {
+                  "$type": "fontFamily",
+                  "$value": "{font.family.atkinson-hyperlegible}"
+                }
+              }
+            }
+          },
+          "light": {
+            "color": {
+              "surface": {
+                "canvas": {
+                  "$type": "color",
+                  "$value": "{color.gray.light.50}"
+                },
+                "default": {
+                  "$type": "color",
+                  "$value": "{color.gray.light.0}"
+                },
+                "raised": {
+                  "$type": "color",
+                  "$value": "{color.gray.light.0}"
+                },
+                "sunken": {
+                  "$type": "color",
+                  "$value": "{color.gray.light.100}"
+                },
+                "selected": {
+                  "$type": "color",
+                  "$value": "{color.blue.light.100}"
+                },
+                "inverse": {
+                  "$type": "color",
+                  "$value": "{color.gray.light.900}"
+                },
+                "scrim": {
+                  "$type": "color",
+                  "$value": "{color.black.light.scrim}"
+                }
+              },
+              "text": {
+                "primary": {
+                  "$type": "color",
+                  "$value": "{color.gray.light.900}"
+                },
+                "secondary": {
+                  "$type": "color",
+                  "$value": "{color.gray.light.700}"
+                },
+                "muted": {
+                  "$type": "color",
+                  "$value": "{color.gray.light.500}"
+                },
+                "inverse": {
+                  "$type": "color",
+                  "$value": "{color.gray.light.0}"
+                },
+                "on-action": {
+                  "$type": "color",
+                  "$value": "{color.gray.light.0}"
+                },
+                "link": {
+                  "$type": "color",
+                  "$value": "{color.blue.light.700}"
+                }
+              },
+              "border": {
+                "default": {
+                  "$type": "color",
+                  "$value": "{color.gray.light.200}"
+                },
+                "strong": {
+                  "$type": "color",
+                  "$value": "{color.gray.light.500}"
+                },
+                "focus": {
+                  "$type": "color",
+                  "$value": "{color.blue.light.600}"
+                }
+              },
+              "action": {
+                "primary": {
+                  "@": {
+                    "$type": "color",
+                    "$value": "{color.blue.light.600}"
+                  },
+                  "hover": {
+                    "$type": "color",
+                    "$value": "{color.blue.light.700}"
+                  }
+                },
+                "secondary": {
+                  "@": {
+                    "$type": "color",
+                    "$value": "{color.gray.light.0}"
+                  },
+                  "hover": {
+                    "$type": "color",
+                    "$value": "{color.gray.light.100}"
+                  }
+                }
+              },
+              "status": {
+                "info": {
+                  "@": {
+                    "$type": "color",
+                    "$value": "{color.teal.light.700}"
+                  },
+                  "subtle": {
+                    "$type": "color",
+                    "$value": "{color.teal.light.100}"
+                  }
+                },
+                "success": {
+                  "@": {
+                    "$type": "color",
+                    "$value": "{color.green.light.700}"
+                  },
+                  "subtle": {
+                    "$type": "color",
+                    "$value": "{color.green.light.100}"
+                  }
+                },
+                "warning": {
+                  "@": {
+                    "$type": "color",
+                    "$value": "{color.amber.light.700}"
+                  },
+                  "subtle": {
+                    "$type": "color",
+                    "$value": "{color.amber.light.100}"
+                  }
+                },
+                "danger": {
+                  "@": {
+                    "$type": "color",
+                    "$value": "{color.red.light.700}"
+                  },
+                  "subtle": {
+                    "$type": "color",
+                    "$value": "{color.red.light.100}"
+                  }
+                }
+              },
+              "category": {
+                "1": {
+                  "@": {
+                    "$type": "color",
+                    "$value": "{color.blue.light.600}"
+                  },
+                  "subtle": {
+                    "$type": "color",
+                    "$value": "{color.blue.light.100}"
+                  }
+                },
+                "2": {
+                  "@": {
+                    "$type": "color",
+                    "$value": "{color.teal.light.600}"
+                  },
+                  "subtle": {
+                    "$type": "color",
+                    "$value": "{color.teal.light.100}"
+                  }
+                },
+                "3": {
+                  "@": {
+                    "$type": "color",
+                    "$value": "{color.green.light.700}"
+                  },
+                  "subtle": {
+                    "$type": "color",
+                    "$value": "{color.green.light.100}"
+                  }
+                },
+                "4": {
+                  "@": {
+                    "$type": "color",
+                    "$value": "{color.amber.light.700}"
+                  },
+                  "subtle": {
+                    "$type": "color",
+                    "$value": "{color.amber.light.100}"
+                  }
+                },
+                "5": {
+                  "@": {
+                    "$type": "color",
+                    "$value": "{color.gray.light.500}"
+                  },
+                  "subtle": {
+                    "$type": "color",
+                    "$value": "{color.gray.light.100}"
+                  }
+                }
+              },
+              "disabled": {
+                "text": {
+                  "$type": "color",
+                  "$value": "{color.gray.light.500}"
+                },
+                "surface": {
+                  "$type": "color",
+                  "$value": "{color.gray.light.100}"
+                },
+                "border": {
+                  "$type": "color",
+                  "$value": "{color.gray.light.200}"
+                }
+              }
+            },
+            "elevation": {
+              "card": {
+                "$type": "shadow",
+                "$value": "{shadow.none}"
+              },
+              "overlay": {
+                "$type": "shadow",
+                "$value": "{shadow.none}"
+              }
+            }
+          },
+          "dark": {
+            "color": {
+              "surface": {
+                "canvas": {
+                  "$type": "color",
+                  "$value": "{color.gray.dark.0}"
+                },
+                "default": {
+                  "$type": "color",
+                  "$value": "{color.gray.dark.50}"
+                },
+                "raised": {
+                  "$type": "color",
+                  "$value": "{color.gray.dark.100}"
+                },
+                "sunken": {
+                  "$type": "color",
+                  "$value": "{color.gray.dark.100}"
+                },
+                "selected": {
+                  "$type": "color",
+                  "$value": "{color.blue.dark.100}"
+                },
+                "inverse": {
+                  "$type": "color",
+                  "$value": "{color.gray.dark.900}"
+                },
+                "scrim": {
+                  "$type": "color",
+                  "$value": "{color.black.dark.scrim}"
+                }
+              },
+              "text": {
+                "primary": {
+                  "$type": "color",
+                  "$value": "{color.gray.dark.900}"
+                },
+                "secondary": {
+                  "$type": "color",
+                  "$value": "{color.gray.dark.600}"
+                },
+                "muted": {
+                  "$type": "color",
+                  "$value": "{color.gray.dark.500}"
+                },
+                "inverse": {
+                  "$type": "color",
+                  "$value": "{color.gray.dark.50}"
+                },
+                "on-action": {
+                  "$type": "color",
+                  "$value": "{color.gray.dark.0}"
+                },
+                "link": {
+                  "$type": "color",
+                  "$value": "{color.blue.dark.700}"
+                }
+              },
+              "border": {
+                "default": {
+                  "$type": "color",
+                  "$value": "{color.gray.dark.100}"
+                },
+                "strong": {
+                  "$type": "color",
+                  "$value": "{color.gray.dark.400}"
+                },
+                "focus": {
+                  "$type": "color",
+                  "$value": "{color.blue.dark.700}"
+                }
+              },
+              "action": {
+                "primary": {
+                  "@": {
+                    "$type": "color",
+                    "$value": "{color.blue.dark.700}"
+                  },
+                  "hover": {
+                    "$type": "color",
+                    "$value": "{color.blue.dark.800}"
+                  }
+                },
+                "secondary": {
+                  "@": {
+                    "$type": "color",
+                    "$value": "{color.gray.dark.50}"
+                  },
+                  "hover": {
+                    "$type": "color",
+                    "$value": "{color.gray.dark.100}"
+                  }
+                }
+              },
+              "status": {
+                "info": {
+                  "@": {
+                    "$type": "color",
+                    "$value": "{color.teal.dark.700}"
+                  },
+                  "subtle": {
+                    "$type": "color",
+                    "$value": "{color.teal.dark.100}"
+                  }
+                },
+                "success": {
+                  "@": {
+                    "$type": "color",
+                    "$value": "{color.green.dark.700}"
+                  },
+                  "subtle": {
+                    "$type": "color",
+                    "$value": "{color.green.dark.100}"
+                  }
+                },
+                "warning": {
+                  "@": {
+                    "$type": "color",
+                    "$value": "{color.amber.dark.700}"
+                  },
+                  "subtle": {
+                    "$type": "color",
+                    "$value": "{color.amber.dark.100}"
+                  }
+                },
+                "danger": {
+                  "@": {
+                    "$type": "color",
+                    "$value": "{color.red.dark.700}"
+                  },
+                  "subtle": {
+                    "$type": "color",
+                    "$value": "{color.red.dark.100}"
+                  }
+                }
+              },
+              "category": {
+                "1": {
+                  "@": {
+                    "$type": "color",
+                    "$value": "{color.blue.dark.700}"
+                  },
+                  "subtle": {
+                    "$type": "color",
+                    "$value": "{color.blue.dark.100}"
+                  }
+                },
+                "2": {
+                  "@": {
+                    "$type": "color",
+                    "$value": "{color.teal.dark.700}"
+                  },
+                  "subtle": {
+                    "$type": "color",
+                    "$value": "{color.teal.dark.100}"
+                  }
+                },
+                "3": {
+                  "@": {
+                    "$type": "color",
+                    "$value": "{color.green.dark.700}"
+                  },
+                  "subtle": {
+                    "$type": "color",
+                    "$value": "{color.green.dark.100}"
+                  }
+                },
+                "4": {
+                  "@": {
+                    "$type": "color",
+                    "$value": "{color.amber.dark.700}"
+                  },
+                  "subtle": {
+                    "$type": "color",
+                    "$value": "{color.amber.dark.100}"
+                  }
+                },
+                "5": {
+                  "@": {
+                    "$type": "color",
+                    "$value": "{color.gray.dark.700}"
+                  },
+                  "subtle": {
+                    "$type": "color",
+                    "$value": "{color.gray.dark.100}"
+                  }
+                }
+              },
+              "disabled": {
+                "text": {
+                  "$type": "color",
+                  "$value": "{color.gray.dark.500}"
+                },
+                "surface": {
+                  "$type": "color",
+                  "$value": "{color.gray.dark.100}"
+                },
+                "border": {
+                  "$type": "color",
+                  "$value": "{color.gray.dark.200}"
+                }
+              }
+            },
+            "elevation": {
+              "card": {
+                "$type": "shadow",
+                "$value": "{shadow.none}"
+              },
+              "overlay": {
+                "$type": "shadow",
+                "$value": "{shadow.none}"
+              }
+            }
+          }
+        }
+      }
+    },
+    "semantic": {
+      "space": {
+        "gap": {
+          "tight": {
+            "$type": "dimension",
+            "$value": "{space.12}",
+            "$description": "Between things that belong together."
+          },
+          "default": {
+            "$type": "dimension",
+            "$value": "{space.16}",
+            "$description": "Between items in one group."
+          },
+          "group": {
+            "$type": "dimension",
+            "$value": "{space.32}",
+            "$description": "Between groups."
+          },
+          "section": {
+            "$type": "dimension",
+            "$value": "{space.48}",
+            "$description": "Between page sections."
+          }
+        },
+        "inset": {
+          "control-x": {
+            "$type": "dimension",
+            "$value": "{space.24}",
+            "$description": "Horizontal padding inside controls."
+          },
+          "container": {
+            "$type": "dimension",
+            "$value": "{space.24}",
+            "$description": "Padding inside cards and dialogs."
+          },
+          "cell-x": {
+            "$type": "dimension",
+            "$value": "{space.16}",
+            "$description": "Horizontal padding inside table cells."
+          }
+        }
+      },
+      "size": {
+        "control": {
+          "default": {
+            "$type": "dimension",
+            "$value": "{size.52}",
+            "$description": "Height of buttons and inputs, and the smallest target."
+          },
+          "compact": {
+            "$type": "dimension",
+            "$value": "{size.48}",
+            "$description": "Height of compact controls."
+          }
+        },
+        "row": {
+          "$type": "dimension",
+          "$value": "{size.56}",
+          "$description": "Height of one table row."
+        },
+        "icon": {
+          "$type": "dimension",
+          "$value": "{size.20}",
+          "$description": "Icon size next to text."
+        }
+      },
+      "radius": {
+        "control": {
+          "$type": "dimension",
+          "$value": "{theme.radius.control}",
+          "$description": "Corner of buttons and inputs."
+        },
+        "badge": {
+          "$type": "dimension",
+          "$value": "{theme.radius.badge}",
+          "$description": "Corner of badges and checkboxes."
+        },
+        "container": {
+          "$type": "dimension",
+          "$value": "{theme.radius.container}",
+          "$description": "Corner of cards, menus and dialogs."
+        },
+        "round": {
+          "$type": "dimension",
+          "$value": "{radius.full}",
+          "$description": "Fully round: avatars and dots."
+        }
+      },
+      "border-width": {
+        "default": {
+          "$type": "dimension",
+          "$value": "{border-width.2}",
+          "$description": "Every border."
+        },
+        "focus": {
+          "$type": "dimension",
+          "$value": "{border-width.3}",
+          "$description": "The focus ring."
+        }
+      },
+      "type": {
+        "display": {
+          "font-family": {
+            "$type": "fontFamily",
+            "$value": "{theme.type.display.font-family}"
+          },
+          "font-size": {
+            "$type": "dimension",
+            "$value": "{font.size.36}"
+          },
+          "line-height": {
+            "$type": "number",
+            "$value": "{font.line-height.1_2}"
+          },
+          "font-weight": {
+            "$type": "fontWeight",
+            "$value": "{font.weight.700}"
+          },
+          "$description": "The display text role."
+        },
+        "title": {
+          "font-family": {
+            "$type": "fontFamily",
+            "$value": "{theme.type.title.font-family}"
+          },
+          "font-size": {
+            "$type": "dimension",
+            "$value": "{font.size.28}"
+          },
+          "line-height": {
+            "$type": "number",
+            "$value": "{font.line-height.1_25}"
+          },
+          "font-weight": {
+            "$type": "fontWeight",
+            "$value": "{font.weight.700}"
+          },
+          "$description": "The title text role."
+        },
+        "heading": {
+          "font-family": {
+            "$type": "fontFamily",
+            "$value": "{theme.type.heading.font-family}"
+          },
+          "font-size": {
+            "$type": "dimension",
+            "$value": "{font.size.22}"
+          },
+          "line-height": {
+            "$type": "number",
+            "$value": "{font.line-height.1_3}"
+          },
+          "font-weight": {
+            "$type": "fontWeight",
+            "$value": "{font.weight.700}"
+          },
+          "$description": "The heading text role."
+        },
+        "body": {
+          "font-family": {
+            "$type": "fontFamily",
+            "$value": "{theme.type.body.font-family}"
+          },
+          "font-size": {
+            "$type": "dimension",
+            "$value": "{font.size.19}"
+          },
+          "line-height": {
+            "$type": "number",
+            "$value": "{font.line-height.1_6}"
+          },
+          "font-weight": {
+            "$type": "fontWeight",
+            "$value": "{font.weight.400}"
+          },
+          "$description": "The body text role."
+        },
+        "label": {
+          "font-family": {
+            "$type": "fontFamily",
+            "$value": "{theme.type.label.font-family}"
+          },
+          "font-size": {
+            "$type": "dimension",
+            "$value": "{font.size.18}"
+          },
+          "line-height": {
+            "$type": "number",
+            "$value": "{font.line-height.1_4}"
+          },
+          "font-weight": {
+            "$type": "fontWeight",
+            "$value": "{font.weight.700}"
+          },
+          "$description": "The label text role."
+        },
+        "caption": {
+          "font-family": {
+            "$type": "fontFamily",
+            "$value": "{theme.type.caption.font-family}"
+          },
+          "font-size": {
+            "$type": "dimension",
+            "$value": "{font.size.16}"
+          },
+          "line-height": {
+            "$type": "number",
+            "$value": "{font.line-height.1_5}"
+          },
+          "font-weight": {
+            "$type": "fontWeight",
+            "$value": "{font.weight.400}"
+          },
+          "$description": "The caption text role."
+        },
+        "data": {
+          "font-family": {
+            "$type": "fontFamily",
+            "$value": "{theme.type.data.font-family}"
+          },
+          "font-size": {
+            "$type": "dimension",
+            "$value": "{font.size.19}"
+          },
+          "line-height": {
+            "$type": "number",
+            "$value": "{font.line-height.1_6}"
+          },
+          "font-weight": {
+            "$type": "fontWeight",
+            "$value": "{font.weight.400}"
+          },
+          "$description": "The data text role."
+        }
+      },
+      "motion": {
+        "duration": {
+          "feedback": {
+            "$type": "duration",
+            "$value": "{duration.moderate}",
+            "$description": "Feedback speed: moderate."
+          }
+        },
+        "easing": {
+          "standard": {
+            "$type": "cubicBezier",
+            "$value": "{easing.standard}",
+            "$description": "Feedback easing."
+          }
+        }
+      },
+      "opacity": {
+        "disabled": {
+          "$type": "number",
+          "$value": "{opacity.50}",
+          "$description": "Disabled controls."
+        }
+      },
+      "color": {
+        "surface": {
+          "canvas": {
+            "$type": "color",
+            "$description": "The page background.",
+            "$value": "{theme.color.surface.canvas}"
+          },
+          "default": {
+            "$type": "color",
+            "$description": "Cards, inputs and tables.",
+            "$value": "{theme.color.surface.default}"
+          },
+          "raised": {
+            "$type": "color",
+            "$description": "Menus, dialogs, toasts.",
+            "$value": "{theme.color.surface.raised}"
+          },
+          "sunken": {
+            "$type": "color",
+            "$description": "Table headers and wells.",
+            "$value": "{theme.color.surface.sunken}"
+          },
+          "selected": {
+            "$type": "color",
+            "$description": "A selected row or item.",
+            "$value": "{theme.color.surface.selected}"
+          },
+          "inverse": {
+            "$type": "color",
+            "$description": "Tooltips.",
+            "$value": "{theme.color.surface.inverse}"
+          },
+          "scrim": {
+            "$type": "color",
+            "$description": "Dims the page behind a dialog.",
+            "$value": "{theme.color.surface.scrim}"
+          }
+        },
+        "text": {
+          "primary": {
+            "$type": "color",
+            "$description": "Main text.",
+            "$value": "{theme.color.text.primary}"
+          },
+          "secondary": {
+            "$type": "color",
+            "$description": "Supporting text; passes AA.",
+            "$value": "{theme.color.text.secondary}"
+          },
+          "muted": {
+            "$type": "color",
+            "$description": "Hints and placeholders.",
+            "$value": "{theme.color.text.muted}"
+          },
+          "inverse": {
+            "$type": "color",
+            "$description": "Text on inverse surfaces.",
+            "$value": "{theme.color.text.inverse}"
+          },
+          "on-action": {
+            "$type": "color",
+            "$description": "Text on the primary action.",
+            "$value": "{theme.color.text.on-action}"
+          },
+          "link": {
+            "$type": "color",
+            "$description": "Links.",
+            "$value": "{theme.color.text.link}"
+          }
+        },
+        "border": {
+          "default": {
+            "$type": "color",
+            "$description": "Row lines and card borders.",
+            "$value": "{theme.color.border.default}"
+          },
+          "strong": {
+            "$type": "color",
+            "$description": "Input and secondary button borders.",
+            "$value": "{theme.color.border.strong}"
+          },
+          "focus": {
+            "$type": "color",
+            "$description": "The keyboard focus ring.",
+            "$value": "{theme.color.border.focus}"
+          }
+        },
+        "action": {
+          "primary": {
+            "@": {
+              "$type": "color",
+              "$description": "The primary action.",
+              "$value": "{theme.color.action.primary.@}"
+            },
+            "hover": {
+              "$type": "color",
+              "$description": "Primary action on hover.",
+              "$value": "{theme.color.action.primary.hover}"
+            }
+          },
+          "secondary": {
+            "@": {
+              "$type": "color",
+              "$description": "Secondary action fill.",
+              "$value": "{theme.color.action.secondary.@}"
+            },
+            "hover": {
+              "$type": "color",
+              "$description": "Secondary action on hover.",
+              "$value": "{theme.color.action.secondary.hover}"
+            }
+          }
+        },
+        "status": {
+          "info": {
+            "@": {
+              "$type": "color",
+              "$description": "Info text and icons: neutral news, no action needed.",
+              "$value": "{theme.color.status.info.@}"
+            },
+            "subtle": {
+              "$type": "color",
+              "$description": "Info badge and banner fill.",
+              "$value": "{theme.color.status.info.subtle}"
+            }
+          },
+          "success": {
+            "@": {
+              "$type": "color",
+              "$description": "Success text and icons.",
+              "$value": "{theme.color.status.success.@}"
+            },
+            "subtle": {
+              "$type": "color",
+              "$description": "Success badge fill.",
+              "$value": "{theme.color.status.success.subtle}"
+            }
+          },
+          "warning": {
+            "@": {
+              "$type": "color",
+              "$description": "Warning text and icons.",
+              "$value": "{theme.color.status.warning.@}"
+            },
+            "subtle": {
+              "$type": "color",
+              "$description": "Warning badge fill.",
+              "$value": "{theme.color.status.warning.subtle}"
+            }
+          },
+          "danger": {
+            "@": {
+              "$type": "color",
+              "$description": "Danger text and icons.",
+              "$value": "{theme.color.status.danger.@}"
+            },
+            "subtle": {
+              "$type": "color",
+              "$description": "Danger badge fill.",
+              "$value": "{theme.color.status.danger.subtle}"
+            }
+          }
+        },
+        "category": {
+          "$description": "Identity colours for tags, labels and chart series. They tell items apart and carry no meaning.",
+          "1": {
+            "@": {
+              "$type": "color",
+              "$description": "Category 1: chart series, tag dots and icons. Tag text uses color.text.primary.",
+              "$value": "{theme.color.category.1.@}"
+            },
+            "subtle": {
+              "$type": "color",
+              "$description": "Category 1: tag fill.",
+              "$value": "{theme.color.category.1.subtle}"
+            }
+          },
+          "2": {
+            "@": {
+              "$type": "color",
+              "$description": "Category 2: chart series, tag dots and icons. Tag text uses color.text.primary.",
+              "$value": "{theme.color.category.2.@}"
+            },
+            "subtle": {
+              "$type": "color",
+              "$description": "Category 2: tag fill.",
+              "$value": "{theme.color.category.2.subtle}"
+            }
+          },
+          "3": {
+            "@": {
+              "$type": "color",
+              "$description": "Category 3: chart series, tag dots and icons. Tag text uses color.text.primary.",
+              "$value": "{theme.color.category.3.@}"
+            },
+            "subtle": {
+              "$type": "color",
+              "$description": "Category 3: tag fill.",
+              "$value": "{theme.color.category.3.subtle}"
+            }
+          },
+          "4": {
+            "@": {
+              "$type": "color",
+              "$description": "Category 4: chart series, tag dots and icons. Tag text uses color.text.primary.",
+              "$value": "{theme.color.category.4.@}"
+            },
+            "subtle": {
+              "$type": "color",
+              "$description": "Category 4: tag fill.",
+              "$value": "{theme.color.category.4.subtle}"
+            }
+          },
+          "5": {
+            "@": {
+              "$type": "color",
+              "$description": "Category 5: chart series, tag dots and icons. Tag text uses color.text.primary.",
+              "$value": "{theme.color.category.5.@}"
+            },
+            "subtle": {
+              "$type": "color",
+              "$description": "Category 5: tag fill.",
+              "$value": "{theme.color.category.5.subtle}"
+            }
+          }
+        },
+        "disabled": {
+          "$description": "The shared look of controls that cannot be used right now.",
+          "text": {
+            "$type": "color",
+            "$description": "Text and icons of a disabled control.",
+            "$value": "{theme.color.disabled.text}"
+          },
+          "surface": {
+            "$type": "color",
+            "$description": "Fill of a disabled control.",
+            "$value": "{theme.color.disabled.surface}"
+          },
+          "border": {
+            "$type": "color",
+            "$description": "Border of a disabled control.",
+            "$value": "{theme.color.disabled.border}"
+          }
+        }
+      },
+      "elevation": {
+        "card": {
+          "$type": "shadow",
+          "$description": "No shadow in this scheme.",
+          "$value": "{theme.elevation.card}"
+        },
+        "overlay": {
+          "$type": "shadow",
+          "$description": "No shadow in this scheme.",
+          "$value": "{theme.elevation.overlay}"
+        }
+      }
+    },
+    "component": {
+      "button": {
+        "primary": {
+          "background": {
+            "@": {
+              "$value": "{color.action.primary.@}",
+              "$description": "Primary button fill."
+            },
+            "hover": {
+              "$value": "{color.action.primary.hover}",
+              "$description": "Primary button fill on hover."
+            }
+          },
+          "label": {
+            "$value": "{color.text.on-action}",
+            "$description": "Primary button label color."
+          }
+        },
+        "secondary": {
+          "background": {
+            "@": {
+              "$value": "{color.action.secondary.@}",
+              "$description": "Secondary button fill."
+            },
+            "hover": {
+              "$value": "{color.action.secondary.hover}",
+              "$description": "Secondary button fill on hover."
+            }
+          },
+          "label": {
+            "$value": "{color.text.primary}",
+            "$description": "Secondary button label color."
+          },
+          "border": {
+            "$value": "{color.border.strong}",
+            "$description": "Secondary button border."
+          }
+        },
+        "ghost": {
+          "background-hover": {
+            "$value": "{color.surface.sunken}",
+            "$description": "Ghost button fill on hover."
+          },
+          "label": {
+            "$value": "{color.text.link}",
+            "$description": "Ghost button label color."
+          }
+        },
+        "height": {
+          "$value": "{size.control.default}",
+          "$description": "Button height."
+        },
+        "padding-x": {
+          "$value": "{space.inset.control-x}",
+          "$description": "Horizontal padding inside a button."
+        },
+        "radius": {
+          "$value": "{radius.control}",
+          "$description": "Button corner radius."
+        },
+        "font-size": {
+          "$value": "{type.label.font-size}",
+          "$description": "Button label size."
+        },
+        "font-weight": {
+          "$value": "{type.label.font-weight}",
+          "$description": "Button label weight."
+        },
+        "focus-ring": {
+          "$value": "{color.border.focus}",
+          "$description": "Focus ring color on any button."
+        },
+        "icon-size": {
+          "$value": "{size.icon}",
+          "$description": "Size of an icon inside a button."
+        },
+        "disabled": {
+          "background": {
+            "$value": "{color.disabled.surface}",
+            "$description": "Fill of a disabled button."
+          },
+          "label": {
+            "$value": "{color.disabled.text}",
+            "$description": "Label of a disabled button."
+          },
+          "border": {
+            "$value": "{color.disabled.border}",
+            "$description": "Border of a disabled secondary button."
+          }
+        }
+      },
+      "input": {
+        "background": {
+          "$value": "{color.surface.default}",
+          "$description": "Input fill."
+        },
+        "border": {
+          "@": {
+            "$value": "{color.border.strong}",
+            "$description": "Input border at rest."
+          },
+          "focus": {
+            "$value": "{color.border.focus}",
+            "$description": "Input border when focused."
+          }
+        },
+        "text": {
+          "$value": "{color.text.primary}",
+          "$description": "Typed text color."
+        },
+        "placeholder": {
+          "$value": "{color.text.muted}",
+          "$description": "Placeholder text color."
+        },
+        "height": {
+          "$value": "{size.control.default}",
+          "$description": "Input height."
+        },
+        "padding-x": {
+          "$value": "{space.inset.control-x}",
+          "$description": "Horizontal padding inside an input."
+        },
+        "radius": {
+          "$value": "{radius.control}",
+          "$description": "Input corner radius."
+        },
+        "font-size": {
+          "$value": "{type.body.font-size}",
+          "$description": "Typed text size."
+        },
+        "disabled": {
+          "background": {
+            "$value": "{color.disabled.surface}",
+            "$description": "Fill of a disabled input."
+          },
+          "border": {
+            "$value": "{color.disabled.border}",
+            "$description": "Border of a disabled input."
+          },
+          "text": {
+            "$value": "{color.disabled.text}",
+            "$description": "Text in a disabled input."
+          }
+        }
+      },
+      "control": {
+        "checked": {
+          "$value": "{color.action.primary.@}",
+          "$description": "Fill of a checked checkbox or an on switch."
+        },
+        "track": {
+          "$value": "{color.border.strong}",
+          "$description": "Track of an off switch."
+        },
+        "thumb": {
+          "$value": "{color.surface.default}",
+          "$description": "Switch thumb and checkmark color."
+        },
+        "radius": {
+          "$value": "{radius.badge}",
+          "$description": "Checkbox corner radius."
+        }
+      },
+      "badge": {
+        "radius": {
+          "$value": "{radius.badge}",
+          "$description": "Badge corner radius."
+        },
+        "padding-x": {
+          "$value": "{space.gap.tight}",
+          "$description": "Horizontal padding inside a badge."
+        },
+        "font-size": {
+          "$value": "{type.caption.font-size}",
+          "$description": "Badge label size."
+        },
+        "neutral": {
+          "background": {
+            "$value": "{color.surface.sunken}",
+            "$description": "Neutral badge fill."
+          },
+          "label": {
+            "$value": "{color.text.secondary}",
+            "$description": "Neutral badge label."
+          }
+        },
+        "success": {
+          "background": {
+            "$value": "{color.status.success.subtle}",
+            "$description": "Success badge fill."
+          },
+          "label": {
+            "$value": "{color.status.success.@}",
+            "$description": "Success badge label."
+          }
+        },
+        "warning": {
+          "background": {
+            "$value": "{color.status.warning.subtle}",
+            "$description": "Warning badge fill."
+          },
+          "label": {
+            "$value": "{color.status.warning.@}",
+            "$description": "Warning badge label."
+          }
+        },
+        "danger": {
+          "background": {
+            "$value": "{color.status.danger.subtle}",
+            "$description": "Danger badge fill."
+          },
+          "label": {
+            "$value": "{color.status.danger.@}",
+            "$description": "Danger badge label."
+          }
+        },
+        "info": {
+          "background": {
+            "$value": "{color.status.info.subtle}",
+            "$description": "Info badge fill."
+          },
+          "label": {
+            "$value": "{color.status.info.@}",
+            "$description": "Info badge label."
+          }
+        }
+      },
+      "card": {
+        "background": {
+          "$value": "{color.surface.default}",
+          "$description": "Card fill."
+        },
+        "border": {
+          "$value": "{color.border.default}",
+          "$description": "Card border."
+        },
+        "radius": {
+          "$value": "{radius.container}",
+          "$description": "Card corner radius."
+        },
+        "padding": {
+          "$value": "{space.inset.container}",
+          "$description": "Padding inside a card."
+        },
+        "shadow": {
+          "$value": "{elevation.card}",
+          "$description": "Card shadow."
+        }
+      },
+      "table": {
+        "header-background": {
+          "$value": "{color.surface.sunken}",
+          "$description": "Header row fill."
+        },
+        "row-height": {
+          "$value": "{size.row}",
+          "$description": "Height of one data row."
+        },
+        "cell-padding-x": {
+          "$value": "{space.inset.cell-x}",
+          "$description": "Horizontal padding inside a cell."
+        },
+        "row-border": {
+          "$value": "{color.border.default}",
+          "$description": "Line between rows."
+        },
+        "row-selected": {
+          "$value": "{color.surface.selected}",
+          "$description": "Fill of a selected row."
+        },
+        "font-size": {
+          "$value": "{type.data.font-size}",
+          "$description": "Cell text size."
+        }
+      },
+      "tabs": {
+        "indicator": {
+          "$value": "{color.action.primary.@}",
+          "$description": "Active tab indicator."
+        },
+        "label": {
+          "@": {
+            "$value": "{color.text.secondary}",
+            "$description": "Inactive tab label."
+          },
+          "active": {
+            "$value": "{color.text.primary}",
+            "$description": "Active tab label."
+          }
+        }
+      },
+      "overlay": {
+        "background": {
+          "$value": "{color.surface.raised}",
+          "$description": "Fill of a dialog, menu or toast."
+        },
+        "radius": {
+          "$value": "{radius.container}",
+          "$description": "Corner radius of overlays."
+        },
+        "shadow": {
+          "$value": "{elevation.overlay}",
+          "$description": "Shadow of overlays."
+        },
+        "scrim": {
+          "$value": "{color.surface.scrim}",
+          "$description": "Color that dims the page behind a dialog."
+        },
+        "item-height": {
+          "$value": "{size.control.default}",
+          "$description": "Height of a menu item."
+        }
+      },
+      "tooltip": {
+        "background": {
+          "$value": "{color.surface.inverse}",
+          "$description": "Tooltip fill."
+        },
+        "label": {
+          "$value": "{color.text.inverse}",
+          "$description": "Tooltip text."
+        }
+      },
+      "transition": {
+        "duration": {
+          "$value": "{motion.duration.feedback}",
+          "$description": "Duration of feedback transitions."
+        },
+        "easing": {
+          "$value": "{motion.easing.standard}",
+          "$description": "Easing of feedback transitions."
+        }
+      }
+    },
+    "content": {
+      "$description": "Voice tokens: the words components use for common actions. Text, not CSS.",
+      "action": {
+        "commit": {
+          "$type": "string",
+          "$value": "Continue",
+          "$description": "The label of the action that completes a task."
+        },
+        "cancel": {
+          "$type": "string",
+          "$value": "Go back",
+          "$description": "The label of the way out next to the main action."
+        },
+        "destroy": {
+          "$type": "string",
+          "$value": "Delete",
+          "$description": "The label of an action that deletes data."
+        },
+        "retry": {
+          "$type": "string",
+          "$value": "Try again",
+          "$description": "The label that repeats a failed action."
+        },
+        "empty-action": {
+          "$type": "string",
+          "$value": "Start a new application",
+          "$description": "The label of the action in an empty state."
+        }
+      }
+    }
+  }
+}

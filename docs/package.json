@@ -1,0 +1,34 @@
+{
+  "name": "@open-ds/docs",
+  "version": "0.1.0",
+  "private": true,
+  "description": "The docs of a delivered design system (Docusaurus), generated from one Open DS scheme: its reasons, voice and tone, foundations per scope, components, themes and agent layer. Set OPEN_DS_SCHEME to pick the scheme.",
+  "license": "MIT",
+  "engines": {
+    "node": ">=22"
+  },
+  "scripts": {
+    "generate": "node scripts/generate.mjs",
+    "start": "node scripts/generate.mjs && docusaurus start",
+    "build": "node scripts/generate.mjs && docusaurus build",
+    "serve": "docusaurus serve",
+    "test": "node scripts/generate.mjs --check",
+    "lint": "prettier --check ."
+  },
+  "dependencies": {
+    "@docusaurus/core": "^3.10.2",
+    "@docusaurus/preset-classic": "^3.10.2",
+    "@mdx-js/react": "^3.1.0",
+    "clsx": "^2.1.1",
+    "prism-react-renderer": "^2.4.1",
+    "react": "^19.1.1",
+    "react-dom": "^19.1.1"
+  },
+  "devDependencies": {
+    "@docusaurus/module-type-aliases": "^3.10.2",
+    "@docusaurus/tsconfig": "^3.10.2",
+    "@docusaurus/types": "^3.10.2",
+    "prettier": "^3.6.2",
+    "typescript": "^5.9.2"
+  }
+}

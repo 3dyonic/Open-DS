@@ -1,0 +1,32 @@
+@import "tailwindcss";
+@import "../../tokens/dist/dense-data/tokens.scoped.css";
+@import "../../tokens/dist/content-first/tokens.scoped.css";
+@import "../../tokens/dist/accessible-first/tokens.scoped.css";
+@import "../../tokens/dist/multi-brand/tokens.scoped.css";
+@import "../../tokens/dist/brand-expressive/tokens.scoped.css";
+@import "../../tokens/dist/dense-data/theme.css";
+@import "../../tokens/dist/dense-data/shadcn.css";
+
+@source "../../ui/src";
+@source "../stories";
+@source "./";
+
+/* Portalled overlays sit on body, so body carries the scheme font too. */
+body {
+  font-family: var(--type-body-font-family);
+  color: var(--color-text-primary);
+}
+
+/* Docs pages: plain tables for the usage rules and component keys. */
+.ods-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 14px;
+}
+.ods-table th,
+.ods-table td {
+  text-align: left;
+  padding: 6px 8px;
+  border-bottom: 1px solid var(--color-border-default, #e3e6eb);
+  vertical-align: top;
+}

@@ -1,0 +1,7 @@
+build
+.docusaurus
+static
+# Generated from the scheme by scripts/generate.mjs
+docs
+src/css/scheme.css
+scheme.json

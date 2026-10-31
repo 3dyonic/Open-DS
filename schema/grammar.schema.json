@@ -1,0 +1,636 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/3dyonic/Open-DS/schema/grammar.schema.json",
+  "title": "Open DS grammar",
+  "description": "The finite set of questions every Open DS scheme answers: reasons first, then scopes, plus the situations that usage rules answer and the shared component API. Written so an agent can read it cold.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "$schema",
+    "id",
+    "version",
+    "status",
+    "description",
+    "ai",
+    "layers",
+    "methods",
+    "reasons",
+    "scopes",
+    "situations",
+    "components",
+    "component_keys",
+    "catalogue",
+    "semantics"
+  ],
+  "properties": {
+    "$schema": {
+      "type": "string",
+      "description": "Relative path to this schema."
+    },
+    "id": {
+      "const": "open-ds-grammar",
+      "description": "Fixed id of the grammar."
+    },
+    "version": {
+      "type": "string",
+      "pattern": "^\\d+\\.\\d+\\.\\d+$",
+      "description": "Semantic version of the grammar.",
+      "examples": ["0.1.0"]
+    },
+    "status": {
+      "enum": ["draft", "curated"],
+      "description": "draft until Yonatan curates the questions; curated after."
+    },
+    "description": {
+      "type": "string",
+      "minLength": 40,
+      "description": "What the grammar is and how its parts relate."
+    },
+    "ai": {
+      "type": "object",
+      "description": "Guidance for an agent that reads this file.",
+      "additionalProperties": false,
+      "required": ["use_when", "how_to_read"],
+      "properties": {
+        "use_when": {
+          "type": "string",
+          "minLength": 1,
+          "description": "When an agent should read the grammar."
+        },
+        "how_to_read": {
+          "type": "string",
+          "minLength": 1,
+          "description": "How to follow answers, because links and tokens."
+        }
+      }
+    },
+    "layers": {
+      "type": "array",
+      "description": "The four layers of the grammar, in order.",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["id", "description"],
+        "properties": {
+          "id": {
+            "enum": ["reasons", "scopes", "tokens", "component-api"],
+            "description": "Layer id."
+          },
+          "description": {
+            "type": "string",
+            "minLength": 1,
+            "description": "What the layer holds."
+          }
+        }
+      }
+    },
+    "methods": {
+      "type": "array",
+      "minItems": 5,
+      "maxItems": 5,
+      "description": "The five method questions every scope answers, in order: roles, how many, how defined, values, lands in.",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["id", "title", "description"],
+        "properties": {
+          "id": {
+            "enum": ["roles", "count", "definition", "values", "lands"],
+            "description": "Method id. Scope question ids end with it, for example typography.values."
+          },
+          "title": {
+            "type": "string",
+            "minLength": 1,
+            "description": "The method as shown to people, for example How many."
+          },
+          "description": {
+            "type": "string",
+            "minLength": 1,
+            "description": "What the method asks of every scope."
+          }
+        }
+      }
+    },
+    "reasons": {
+      "type": "array",
+      "minItems": 1,
+      "description": "Reason groups: why the system exists. Answered before any scope.",
+      "items": {
+        "$ref": "#/$defs/reason"
+      }
+    },
+    "scopes": {
+      "type": "array",
+      "minItems": 1,
+      "description": "Scopes: the design decisions, voice and tone included. Every scope answers the five method questions and lists the tokens it owns, the components it lands in and its situations.",
+      "items": {
+        "$ref": "#/$defs/scope"
+      }
+    },
+    "situations": {
+      "type": "array",
+      "minItems": 1,
+      "description": "Moments where people need to know which decision or component to use. Every scheme answers each one.",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["id", "scope", "title", "description"],
+        "properties": {
+          "id": {
+            "type": "string",
+            "pattern": "^[a-z0-9-]+$",
+            "description": "Stable situation id. Machine use only; pages show the title.",
+            "examples": ["number-in-table"]
+          },
+          "scope": {
+            "type": "string",
+            "pattern": "^[a-z-]+$",
+            "description": "The scope the situation belongs to. Every situation belongs to exactly one scope."
+          },
+          "title": {
+            "type": "string",
+            "minLength": 1,
+            "description": "The situation in plain words, as shown to people."
+          },
+          "description": {
+            "type": "string",
+            "minLength": 1,
+            "description": "One sentence that defines the situation for an agent."
+          }
+        }
+      }
+    },
+    "components": {
+      "type": "array",
+      "description": "Components and the keys each one reads.",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["id", "description", "keys"],
+        "properties": {
+          "id": {
+            "type": "string",
+            "pattern": "^[a-z-]+$",
+            "description": "Component group id."
+          },
+          "description": {
+            "type": "string",
+            "minLength": 1,
+            "description": "What the component does."
+          },
+          "keys": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "description": "Component key ids the component reads."
+          }
+        }
+      }
+    },
+    "component_keys": {
+      "type": "array",
+      "description": "The shared component API. Every scheme defines a value for every key.",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["id", "component", "description", "default"],
+        "properties": {
+          "id": {
+            "type": "string",
+            "pattern": "^[a-z-]+(/([a-z-]+|@))+$",
+            "description": "Key id: component / part / property, and the key's token path. A part with variants has a base, @, beside them (button/primary/background/@ and button/primary/background/hover). Becomes the CSS variable --component-part-property, with the @ dropped: --button-primary-background.",
+            "examples": [
+              "button/primary/background/@",
+              "button/primary/background/hover",
+              "button/height"
+            ]
+          },
+          "component": {
+            "type": "string",
+            "description": "The component group that owns the key."
+          },
+          "description": {
+            "type": "string",
+            "minLength": 1,
+            "description": "What the key controls."
+          },
+          "default": {
+            "type": "string",
+            "description": "The semantic token path the key points to by default.",
+            "examples": ["color.action.primary"]
+          }
+        }
+      }
+    },
+    "semantics": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["description", "urgency", "keys"],
+      "description": "What each semantic key is for, written once for every scheme: intent, use, misuse with what to use instead, and the fills it may sit on with the contrast it must keep. Words only; values come from each scheme. The harness checks every rule.",
+      "properties": {
+        "description": {
+          "type": "string",
+          "minLength": 1,
+          "description": "What this list is and how to read it."
+        },
+        "urgency": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["description", "order"],
+          "description": "The order of status colours from least to most urgent.",
+          "properties": {
+            "description": {
+              "type": "string",
+              "minLength": 1,
+              "description": "The rule, for an agent: pick the level that matches the real risk."
+            },
+            "order": {
+              "type": "array",
+              "minItems": 2,
+              "items": {
+                "type": "string",
+                "pattern": "^color(\\.[a-z0-9-]+)+(\\.@)?$",
+                "description": "A semantic token path, for example color.status.danger.@."
+              },
+              "description": "Status keys from least to most urgent."
+            }
+          }
+        },
+        "keys": {
+          "type": "array",
+          "minItems": 1,
+          "description": "One entry per semantic key.",
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": ["id", "intent", "use_for", "not_for"],
+            "description": "Guidance for one semantic key.",
+            "properties": {
+              "id": {
+                "type": "string",
+                "pattern": "^color(\\.[a-z0-9-]+)+(\\.@)?$",
+                "description": "A semantic token path, for example color.status.danger.@."
+              },
+              "intent": {
+                "type": "string",
+                "minLength": 1,
+                "description": "What the key is for, in one or two plain sentences."
+              },
+              "use_for": {
+                "type": "array",
+                "minItems": 1,
+                "items": {
+                  "type": "string",
+                  "minLength": 1
+                },
+                "description": "Concrete uses, for example 'Error text and icons'."
+              },
+              "not_for": {
+                "type": "array",
+                "items": {
+                  "type": "object",
+                  "additionalProperties": false,
+                  "required": ["when", "use"],
+                  "description": "A misuse and the key to use instead.",
+                  "properties": {
+                    "when": {
+                      "type": "string",
+                      "minLength": 1,
+                      "description": "The situation this key is wrong for."
+                    },
+                    "use": {
+                      "type": "string",
+                      "pattern": "^color(\\.[a-z0-9-]+)+(\\.@)?$",
+                      "description": "The semantic key to use instead. It must exist."
+                    }
+                  }
+                },
+                "description": "Misuses, each with the key to use instead."
+              },
+              "pairs": {
+                "type": "object",
+                "additionalProperties": false,
+                "required": ["on", "contrast"],
+                "description": "The fills this key may sit on, and the contrast it must keep on each in every brand and mode.",
+                "properties": {
+                  "on": {
+                    "type": "array",
+                    "minItems": 1,
+                    "items": {
+                      "type": "string",
+                      "pattern": "^color(\\.[a-z0-9-]+)+(\\.@)?$",
+                      "description": "A semantic token path, for example color.status.danger.@."
+                    },
+                    "description": "Fill keys this key may sit on."
+                  },
+                  "contrast": {
+                    "type": ["number", "null"],
+                    "description": "The WCAG minimum: 4.5 for text, 3 for graphics and control edges, null when exempt."
+                  }
+                }
+              },
+              "order": {
+                "type": "integer",
+                "minimum": 1,
+                "description": "Place on the urgency order, for status keys."
+              },
+              "exempt": {
+                "type": "string",
+                "minLength": 1,
+                "description": "Why this key has no contrast minimum, when contrast is null."
+              }
+            }
+          }
+        }
+      }
+    },
+    "catalogue": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["description", "source", "families", "roles", "items"],
+      "description": "Every component a design system can carry. Each scheme picks its inventory from these items through the components scope.",
+      "properties": {
+        "description": {
+          "type": "string",
+          "minLength": 1,
+          "description": "What the catalogue is and where it comes from."
+        },
+        "source": {
+          "type": "string",
+          "format": "uri",
+          "description": "Where the component sources live."
+        },
+        "families": {
+          "type": "array",
+          "minItems": 1,
+          "description": "Component families. The components.roles options name them.",
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": ["id", "description"],
+            "properties": {
+              "id": {
+                "type": "string",
+                "pattern": "^[a-z-]+$",
+                "description": "Family id."
+              },
+              "description": {
+                "type": "string",
+                "minLength": 1,
+                "description": "What components in the family do."
+              }
+            }
+          }
+        },
+        "roles": {
+          "type": "object",
+          "description": "For each components.roles option id, the family ids it admits, plus a description.",
+          "properties": {
+            "description": {
+              "type": "string",
+              "minLength": 1,
+              "description": "What the map is."
+            }
+          },
+          "additionalProperties": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "pattern": "^[a-z-]+$"
+            },
+            "description": "Family ids the option admits."
+          }
+        },
+        "items": {
+          "type": "array",
+          "minItems": 1,
+          "description": "One entry per component.",
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": ["id", "family", "description"],
+            "properties": {
+              "id": {
+                "type": "string",
+                "pattern": "^[a-z-]+$",
+                "description": "Component id, as in the source registry."
+              },
+              "family": {
+                "type": "string",
+                "pattern": "^[a-z-]+$",
+                "description": "One of the family ids."
+              },
+              "description": {
+                "type": "string",
+                "minLength": 1,
+                "description": "What the component is for, in one sentence."
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "$defs": {
+    "question": {
+      "type": "object",
+      "description": "A reason question with its possible answers.",
+      "additionalProperties": false,
+      "required": ["id", "text", "description", "options"],
+      "properties": {
+        "id": {
+          "type": "string",
+          "pattern": "^[a-z]+\\.q\\d+$",
+          "description": "Stable question id.",
+          "examples": ["people.q1"]
+        },
+        "text": {
+          "type": "string",
+          "minLength": 1,
+          "description": "The question as asked."
+        },
+        "description": {
+          "type": "string",
+          "minLength": 1,
+          "description": "What the question decides, for a person or an agent."
+        },
+        "options": {
+          "type": "array",
+          "minItems": 2,
+          "items": {
+            "$ref": "#/$defs/option"
+          },
+          "description": "The possible answers. Answers are semantic words, never raw values."
+        }
+      }
+    },
+    "option": {
+      "type": "object",
+      "description": "One possible answer.",
+      "additionalProperties": false,
+      "required": ["id", "label"],
+      "properties": {
+        "id": {
+          "type": "string",
+          "pattern": "^[a-z0-9-]+$",
+          "description": "Stable option id."
+        },
+        "label": {
+          "type": "string",
+          "minLength": 1,
+          "description": "The answer in plain words."
+        },
+        "description": {
+          "type": "string",
+          "minLength": 1,
+          "description": "What the option means when the label alone is not enough, for example the range a count word stands for."
+        }
+      }
+    },
+    "reason": {
+      "type": "object",
+      "description": "A reason group with its questions. Reason question ids look like people.q1.",
+      "additionalProperties": false,
+      "required": ["id", "kind", "title", "description", "questions"],
+      "properties": {
+        "id": {
+          "type": "string",
+          "pattern": "^[a-z]+$",
+          "description": "Group id; prefixes its question ids."
+        },
+        "kind": {
+          "const": "reason",
+          "description": "Always reason."
+        },
+        "title": {
+          "type": "string",
+          "minLength": 1,
+          "description": "Group name in plain words."
+        },
+        "description": {
+          "type": "string",
+          "minLength": 1,
+          "description": "What the group decides."
+        },
+        "questions": {
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "$ref": "#/$defs/question"
+          },
+          "description": "The questions."
+        }
+      }
+    },
+    "scope": {
+      "type": "object",
+      "description": "A scope: five method questions and the same parts as every other scope.",
+      "additionalProperties": false,
+      "required": [
+        "id",
+        "kind",
+        "title",
+        "description",
+        "owns",
+        "lands_in",
+        "situations",
+        "questions"
+      ],
+      "properties": {
+        "id": {
+          "type": "string",
+          "pattern": "^[a-z]+$",
+          "description": "Group id; prefixes its question ids."
+        },
+        "kind": {
+          "const": "scope",
+          "description": "Always scope."
+        },
+        "title": {
+          "type": "string",
+          "minLength": 1,
+          "description": "Group name in plain words."
+        },
+        "description": {
+          "type": "string",
+          "minLength": 1,
+          "description": "What the group decides."
+        },
+        "questions": {
+          "type": "array",
+          "minItems": 5,
+          "maxItems": 5,
+          "items": {
+            "$ref": "#/$defs/scope-question"
+          },
+          "description": "Exactly one question per method, in method order."
+        },
+        "owns": {
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "type": "string",
+            "pattern": "^[a-z-]+(\\.[a-z-]+)*$"
+          },
+          "description": "Token paths this scope decides, for example type or size.icon. Every path exists in each scheme's tokens.",
+          "examples": [["type"], ["content"]]
+        },
+        "lands_in": {
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "type": "string",
+            "pattern": "^[a-z-]+$"
+          },
+          "description": "Grammar component ids whose keys or words this scope sets."
+        },
+        "situations": {
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "type": "string",
+            "pattern": "^[a-z0-9-]+$"
+          },
+          "description": "Situation ids that belong to this scope. Each scheme answers them with a usage rule."
+        }
+      }
+    },
+    "scope-question": {
+      "type": "object",
+      "description": "A scope question: one of the five methods.",
+      "additionalProperties": false,
+      "required": ["id", "method", "text", "description", "options"],
+      "properties": {
+        "id": {
+          "type": "string",
+          "pattern": "^[a-z]+\\.(roles|count|definition|values|lands)$",
+          "description": "Scope question id: <scope>.<method>.",
+          "examples": ["typography.values"]
+        },
+        "text": {
+          "type": "string",
+          "minLength": 1,
+          "description": "The question as asked."
+        },
+        "description": {
+          "type": "string",
+          "minLength": 1,
+          "description": "What the question decides, for a person or an agent."
+        },
+        "options": {
+          "type": "array",
+          "minItems": 2,
+          "items": {
+            "$ref": "#/$defs/option"
+          },
+          "description": "The possible answers. Answers are semantic words, never raw values."
+        },
+        "method": {
+          "enum": ["roles", "count", "definition", "values", "lands"],
+          "description": "Which of the five methods this question answers."
+        }
+      }
+    }
+  }
+}
