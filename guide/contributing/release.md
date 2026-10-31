@@ -12,7 +12,30 @@ description: "The GitHub Actions that test every change, publish the CLI on a re
 2. `test` runs on the PR. Merge only when it is green.
 3. When `RC1` is ready, open a PR from `RC1` into `master` and merge it the same way.
 4. A push to `master` runs `test` again. When it passes, `deploy` ships open-ds.dev.
-5. To publish the CLI, publish a GitHub release tagged `v<version>`. `publish` sends it to npmjs and GitHub Packages.
+5. To publish the CLI, run `pnpm release <patch|minor|major>` in a release PR, merge it to master, then publish a GitHub release tagged `v<version>`. `publish` sends it to npmjs and GitHub Packages.
+
+## Versions
+
+The version follows the public surface: what users and agents can notice.
+
+- **Public surface:** each scheme's CSS variables, the component key ids, the scheme and brand ids, the CLI commands and the MCP tool names.
+- **Major:** something is removed or renamed. While the major is 0, this is a minor.
+- **Minor:** something is added and nothing breaks. While the major is 0, this is a patch.
+- **Patch:** the same surface, with better behaviour: fixes, values, docs.
+
+`cli/surface.json` holds the surface of the last release. Never change the version by hand:
+
+```bash
+pnpm release status
+```
+
+This shows what changed and the smallest bump it needs.
+
+```bash
+pnpm release patch
+```
+
+This bumps `cli/package.json` and updates the snapshot together; use `minor` or `major` the same way. It refuses a bump that is too small. Commit both files in one release PR. The harness (`release-surface`) and `publish` fail if they disagree.
 
 ## Workflows
 
