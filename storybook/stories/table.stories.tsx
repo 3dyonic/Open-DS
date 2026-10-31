@@ -2,51 +2,66 @@ import type { Meta, StoryObj } from "@storybook/react-vite";
 import { Badge, Button, Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@open-ds/ui";
 import { MoreHorizontal } from "lucide-react";
 import { Usage } from "../src/usage";
-
-const rows = [
-  { id: "1042", customer: "North depot", total: "1,240.00", status: ["warning", "Late"] },
-  { id: "1043", customer: "East depot", total: "860.50", status: ["success", "Paid"] },
-  { id: "1044", customer: "City shop", total: "3,015.75", status: ["danger", "Failed"] },
-] as const;
+import { Show, toneOf } from "../src/samples";
 
 const meta = { title: "Components/Table", component: Table } satisfies Meta<typeof Table>;
 export default meta;
 type Story = StoryObj<typeof meta>;
 
-export const Orders: Story = {
+export const Rows: Story = {
   render: () => (
-    <div>
-      <Table>
-        <TableHeader>
-          <TableRow>
-            <TableHead>Order</TableHead>
-            <TableHead>Customer</TableHead>
-            <TableHead className="text-right">Total</TableHead>
-            <TableHead>Status</TableHead>
-            <TableHead>
-              <span className="sr-only">Actions</span>
-            </TableHead>
-          </TableRow>
-        </TableHeader>
-        <TableBody>
-          {rows.map((r, i) => (
-            <TableRow key={r.id} data-state={i === 1 ? "selected" : undefined}>
-              <TableCell className="[font-family:var(--type-data-font-family)]">#{r.id}</TableCell>
-              <TableCell>{r.customer}</TableCell>
-              <TableCell numeric>{r.total}</TableCell>
-              <TableCell>
-                <Badge tone={r.status[0]}>{r.status[1]}</Badge>
-              </TableCell>
-              <TableCell className="w-0">
-                <Button variant="ghost" size="icon" aria-label={`Actions for order ${r.id}`}>
-                  <MoreHorizontal />
-                </Button>
-              </TableCell>
-            </TableRow>
-          ))}
-        </TableBody>
-      </Table>
-      <Usage situations={["number-in-table", "table-row", "selected-row", "row-action"]} />
-    </div>
+    <Show component="table">
+      {(s) => {
+        const t = s.table!;
+        return (
+          <div>
+            <p className="mb-[var(--space-gap-default)] [font-weight:var(--type-heading-font-weight)]">{t.caption}</p>
+            <Table aria-label={t.caption}>
+              <TableHeader>
+                <TableRow>
+                  {t.columns.map((c) => (
+                    <TableHead key={c.label} className={c.numeric ? "text-right" : undefined}>
+                      {c.label}
+                    </TableHead>
+                  ))}
+                  <TableHead>
+                    <span className="sr-only">Actions</span>
+                  </TableHead>
+                </TableRow>
+              </TableHeader>
+              <TableBody>
+                {t.rows.map((r, i) => (
+                  <TableRow key={r.cells[0]} data-state={i === 1 ? "selected" : undefined}>
+                    {r.cells.map((cell, j) =>
+                      t.columns[j].numeric ? (
+                        <TableCell key={j} numeric>
+                          {cell}
+                        </TableCell>
+                      ) : (
+                        <TableCell
+                          key={j}
+                          className={j === 0 ? "[font-family:var(--type-data-font-family)]" : undefined}
+                        >
+                          {cell}
+                        </TableCell>
+                      ),
+                    )}
+                    <TableCell>
+                      <Badge tone={toneOf(s, r.status)}>{r.status}</Badge>
+                    </TableCell>
+                    <TableCell className="w-0">
+                      <Button variant="ghost" size="icon" aria-label={`${s.menu?.trigger ?? "Actions"}: ${r.cells[0]}`}>
+                        <MoreHorizontal />
+                      </Button>
+                    </TableCell>
+                  </TableRow>
+                ))}
+              </TableBody>
+            </Table>
+            <Usage situations={["number-in-table", "table-row", "selected-row", "row-action"]} />
+          </div>
+        );
+      }}
+    </Show>
   ),
 };

@@ -158,7 +158,7 @@ export function createProject(schemeId, dir, { brand, openDs = `^${VERSION}`, ov
   for (const f of readdirSync(roots.stories).filter((x) => x.endsWith(".stories.tsx"))) {
     write(
       `stories/${f}`,
-      readFileSync(join(roots.stories, f), "utf8").replaceAll(`from "@open-ds/ui"`, `from "../src"`).replace(`from "../src/usage"`, `from "./usage"`),
+      readFileSync(join(roots.stories, f), "utf8").replaceAll(`from "@open-ds/ui"`, `from "../src"`).replace(`from "../src/usage"`, `from "./usage"`).replace(`from "../src/samples"`, `from "./samples"`),
     );
   }
 

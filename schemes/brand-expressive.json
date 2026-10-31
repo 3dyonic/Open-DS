@@ -174,6 +174,84 @@
       }
     ]
   },
+  "samples": {
+    "description": "Sample content for showing this system: written from its use scenarios, in its voice, with every status mapped to a meaning. Storybook, the site and the docs read it; it is never shared between schemes.",
+    "follows": [
+      "scenarios.q1",
+      "content.q1",
+      "tasks.q1",
+      "voice.values"
+    ],
+    "screen": "The drop is coming",
+    "actions": {
+      "primary": "Join the drop",
+      "secondary": "See the line-up"
+    },
+    "statuses": [
+      {
+        "label": "New",
+        "meaning": "neutral",
+        "why": "Just added; a label, not a state to fix."
+      },
+      {
+        "label": "On the list",
+        "meaning": "success",
+        "why": "You joined and your place is saved."
+      },
+      {
+        "label": "Almost gone",
+        "meaning": "warning",
+        "why": "Few left; act soon."
+      }
+    ],
+    "metrics": [
+      {
+        "label": "Days to launch",
+        "value": "6"
+      },
+      {
+        "label": "On the list",
+        "value": "2,400"
+      },
+      {
+        "label": "Pieces in the drop",
+        "value": "12"
+      },
+      {
+        "label": "Colours",
+        "value": "4"
+      }
+    ],
+    "field": {
+      "label": "Email",
+      "placeholder": "you@example.com",
+      "hint": "One email at launch. No spam.",
+      "error": "That email doesn't look right. Check it and try again.",
+      "invalid": "hello@"
+    },
+    "messages": {
+      "success": "You're on the list. See you at launch.",
+      "error": {
+        "title": "That didn't go through.",
+        "description": "Try again in a moment."
+      },
+      "neutral": "Nothing here yet. Go find something you love."
+    },
+    "confirm": {
+      "trigger": "Leave the list",
+      "title": "Leave the list?",
+      "body": "You can join again later.",
+      "confirm": "Leave",
+      "cancel": "Stay on it"
+    },
+    "card": {
+      "title": "Night runner jacket",
+      "description": "Drop 03 · four colours",
+      "status": "Almost gone",
+      "primary": "Join the drop",
+      "secondary": "Save"
+    }
+  },
   "themes": [
     {
       "id": "light",

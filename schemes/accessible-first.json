@@ -177,6 +177,86 @@
       }
     ]
   },
+  "samples": {
+    "description": "Sample content for showing this system: written from its use scenarios, in its voice, with every status mapped to a meaning. Storybook, the site and the docs read it; it is never shared between schemes.",
+    "follows": [
+      "scenarios.q1",
+      "content.q1",
+      "tasks.q1",
+      "voice.values"
+    ],
+    "screen": "Apply for support with housing costs",
+    "actions": {
+      "primary": "Continue",
+      "secondary": "Save and come back later"
+    },
+    "statuses": [
+      {
+        "label": "Not started",
+        "meaning": "neutral",
+        "why": "Nothing has happened yet."
+      },
+      {
+        "label": "Completed",
+        "meaning": "success",
+        "why": "This step is done."
+      },
+      {
+        "label": "Check your answers",
+        "meaning": "warning",
+        "why": "Something needs a second look before you continue."
+      },
+      {
+        "label": "Upload failed",
+        "meaning": "danger",
+        "why": "The file did not reach us and must be sent again."
+      }
+    ],
+    "metrics": [
+      {
+        "label": "Steps done",
+        "value": "2 of 4"
+      },
+      {
+        "label": "Documents sent",
+        "value": "3"
+      },
+      {
+        "label": "Time left to apply",
+        "value": "12 days"
+      },
+      {
+        "label": "Time this takes",
+        "value": "About 10 minutes"
+      }
+    ],
+    "field": {
+      "label": "Date of birth",
+      "placeholder": "",
+      "hint": "For example, 27 3 1980.",
+      "error": "Enter your date of birth. For example, 27 3 1980.",
+      "invalid": "27/3"
+    },
+    "checkbox": [
+      "I have read the guidance",
+      "Someone is helping me fill in this form",
+      "Contact me by text message"
+    ],
+    "confirm": {
+      "trigger": "Cancel application",
+      "title": "Do you want to cancel your application?",
+      "body": "Your answers will be deleted.",
+      "confirm": "Yes, cancel it",
+      "cancel": "No, go back"
+    },
+    "card": {
+      "title": "Step 2 of 4: Your home",
+      "description": "About 3 minutes. You will need your rent agreement.",
+      "status": "Not started",
+      "primary": "Start this step",
+      "secondary": "Change earlier answers"
+    }
+  },
   "themes": [
     {
       "id": "light",

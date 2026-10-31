@@ -184,6 +184,84 @@
       }
     ]
   },
+  "samples": {
+    "description": "Sample content for showing this system: written from its use scenarios, in its voice, with every status mapped to a meaning. Storybook, the site and the docs read it; it is never shared between schemes.",
+    "follows": [
+      "scenarios.q1",
+      "scenarios.q2",
+      "content.q1",
+      "voice.values"
+    ],
+    "screen": "Your reading list",
+    "actions": {
+      "primary": "Keep reading",
+      "secondary": "Save for later"
+    },
+    "statuses": [
+      {
+        "label": "Saved",
+        "meaning": "neutral",
+        "why": "Waiting for you; nothing is wrong."
+      },
+      {
+        "label": "Finished",
+        "meaning": "success",
+        "why": "You read it to the end."
+      },
+      {
+        "label": "Out of date",
+        "meaning": "warning",
+        "why": "The facts may have changed since it was written."
+      }
+    ],
+    "metrics": [
+      {
+        "label": "Guides saved",
+        "value": "4"
+      },
+      {
+        "label": "Finished this month",
+        "value": "11"
+      },
+      {
+        "label": "Minutes read",
+        "value": "186"
+      },
+      {
+        "label": "Next issue",
+        "value": "Friday"
+      }
+    ],
+    "field": {
+      "label": "Email address",
+      "placeholder": "you@example.com",
+      "hint": "One letter a week. Leave any time.",
+      "error": "We could not save your email. Check it and try again.",
+      "invalid": "reader-at-home"
+    },
+    "messages": {
+      "success": "You're in. The next issue arrives on Friday.",
+      "error": {
+        "title": "We could not save that guide.",
+        "description": "Check your connection and try again."
+      },
+      "neutral": "You're all caught up."
+    },
+    "confirm": {
+      "trigger": "Unsubscribe",
+      "title": "Unsubscribe from the weekly letter?",
+      "body": "You can come back any time.",
+      "confirm": "Unsubscribe",
+      "cancel": "Stay subscribed"
+    },
+    "card": {
+      "title": "Planting a winter garden",
+      "description": "Home and garden · 12 min read",
+      "status": "Saved",
+      "primary": "Keep reading",
+      "secondary": "Share"
+    }
+  },
   "themes": [
     {
       "id": "light",

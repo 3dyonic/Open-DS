@@ -5,6 +5,25 @@ import { MovesView } from "@/components/moves-view";
 import { answerBook, bestStart } from "@/lib/answers";
 import { scheme, schemeIds } from "@/lib/schemes";
 
+// Two rows of the scheme's own content: table rows when it has a table, otherwise its figures.
+function movesSample(s: ReturnType<typeof scheme>) {
+  const smp = (
+    s as unknown as {
+      samples: {
+        actions: { primary: string };
+        metrics: { label: string; value: string }[];
+        table?: { columns: { numeric?: boolean }[]; rows: { cells: string[] }[] };
+      };
+    }
+  ).samples;
+  const num = smp.table?.columns.findIndex((c) => c.numeric) ?? -1;
+  const rows: [string, string][] =
+    smp.table && num > 0
+      ? smp.table.rows.slice(0, 2).map((r) => [r.cells[0], r.cells[num]])
+      : smp.metrics.slice(0, 2).map((m) => [m.label, m.value]);
+  return { action: smp.actions.primary, rows };
+}
+
 export function generateStaticParams() {
   return schemeIds().map((id) => ({ id }));
 }
@@ -50,7 +69,7 @@ export default async function MovesPage({ params }: { params: Promise<{ id: stri
           why changes. Pick an answer and a new option.
         </p>
       </header>
-      <MovesView book={book} schemeId={id} start={start} />
+      <MovesView book={book} schemeId={id} start={start} sample={movesSample(s)} />
       <div className="flex flex-wrap gap-3">
         <Link
           href={`/schemes/${id}/`}
