@@ -15,3 +15,17 @@ body {
   font-family: var(--type-body-font-family);
   color: var(--color-text-primary);
 }
+
+/* Docs pages: plain tables for the usage rules and component keys. */
+.ods-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 14px;
+}
+.ods-table th,
+.ods-table td {
+  text-align: left;
+  padding: 6px 8px;
+  border-bottom: 1px solid #e3e6eb;
+  vertical-align: top;
+}

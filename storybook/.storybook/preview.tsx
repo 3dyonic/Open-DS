@@ -4,6 +4,7 @@ import type { Decorator, Preview } from "@storybook/react-vite";
 import { useEffect } from "react";
 import { SchemeContext, THEMES } from "../src/scheme-context";
 import "../src/storybook.css";
+import ComponentDocs from "./component-docs.mdx";
 
 const KNOWN = new Set(THEMES.map((t) => t.value.split("--")[0]));
 
@@ -54,7 +55,9 @@ const preview: Preview = {
     },
   },
   initialGlobals: { scheme: "dense-data", mode: "light" },
-  parameters: { layout: "fullscreen", controls: { expanded: true } },
+  // Every component's docs page uses the same template; the stories only show the component.
+  tags: ["autodocs"],
+  parameters: { layout: "fullscreen", controls: { expanded: true }, docs: { page: ComponentDocs } },
 };
 
 export default preview;
