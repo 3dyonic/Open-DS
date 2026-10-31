@@ -18,21 +18,21 @@ The CSS variable is the key with `/` replaced by `-`. Each key points to a token
 
 | Key | What it controls | Points to, light | Points to, dark |
 | --- | --- | --- | --- |
-| `button/primary/background` | Primary button fill. | `color.action.primary` → `color.brand.600` | `color.action.primary` → `color.brand.300` |
-| `button/primary/background-hover` | Primary button fill on hover. | `color.action.primary-hover` → `color.brand.700` | `color.action.primary-hover` → `color.brand.100` |
-| `button/primary/label` | Primary button label color. | `color.text.on-action` → `color.neutral.0` | `color.text.on-action` → `color.neutral.950` |
-| `button/secondary/background` | Secondary button fill. | `color.action.secondary` → `color.neutral.0` | `color.action.secondary` → `color.neutral.900` |
-| `button/secondary/background-hover` | Secondary button fill on hover. | `color.action.secondary-hover` → `color.neutral.100` | `color.action.secondary-hover` → `color.neutral.800` |
-| `button/secondary/label` | Secondary button label color. | `color.text.primary` → `color.neutral.900` | `color.text.primary` → `color.neutral.50` |
-| `button/secondary/border` | Secondary button border. | `color.border.strong` → `color.neutral.300` | `color.border.strong` → `color.neutral.700` |
-| `button/ghost/background-hover` | Ghost button fill on hover. | `color.surface.sunken` → `color.neutral.100` | `color.surface.sunken` → `color.neutral.800` |
-| `button/ghost/label` | Ghost button label color. | `color.text.link` → `color.brand.700` | `color.text.link` → `color.brand.300` |
+| `button/primary/background` | Primary button fill. | `color.action.primary` → `color.brand.600` → `color.violet.600` | `color.action.primary` → `color.brand.300` → `color.violet.300` |
+| `button/primary/background-hover` | Primary button fill on hover. | `color.action.primary-hover` → `color.brand.700` → `color.violet.700` | `color.action.primary-hover` → `color.brand.100` → `color.violet.100` |
+| `button/primary/label` | Primary button label color. | `color.text.on-action` → `color.neutral.0` → `color.slate.0` | `color.text.on-action` → `color.neutral.950` → `color.slate.950` |
+| `button/secondary/background` | Secondary button fill. | `color.action.secondary` → `color.neutral.0` → `color.slate.0` | `color.action.secondary` → `color.neutral.900` → `color.slate.900` |
+| `button/secondary/background-hover` | Secondary button fill on hover. | `color.action.secondary-hover` → `color.neutral.100` → `color.slate.100` | `color.action.secondary-hover` → `color.neutral.800` → `color.slate.800` |
+| `button/secondary/label` | Secondary button label color. | `color.text.primary` → `color.neutral.900` → `color.slate.900` | `color.text.primary` → `color.neutral.50` → `color.slate.50` |
+| `button/secondary/border` | Secondary button border. | `color.border.strong` → `color.neutral.300` → `color.slate.300` | `color.border.strong` → `color.neutral.700` → `color.slate.700` |
+| `button/ghost/background-hover` | Ghost button fill on hover. | `color.surface.sunken` → `color.neutral.100` → `color.slate.100` | `color.surface.sunken` → `color.neutral.800` → `color.slate.800` |
+| `button/ghost/label` | Ghost button label color. | `color.text.link` → `color.brand.700` → `color.violet.700` | `color.text.link` → `color.brand.300` → `color.violet.300` |
 | `button/height` | Button height. | `size.control.default` → `size.32` | same |
 | `button/padding-x` | Horizontal padding inside a button. | `space.inset.control-x` → `space.12` | same |
 | `button/radius` | Button corner radius. | `radius.control` → `radius.brand.control` → `radius.2` | same |
 | `button/font-size` | Button label size. | `type.label.font-size` → `font.size.12` | same |
 | `button/font-weight` | Button label weight. | `type.label.font-weight` → `font.weight.500` | same |
-| `button/focus-ring` | Focus ring color on any button. | `color.border.focus` → `color.brand.600` | `color.border.focus` → `color.brand.300` |
+| `button/focus-ring` | Focus ring color on any button. | `color.border.focus` → `color.brand.600` → `color.violet.600` | `color.border.focus` → `color.brand.300` → `color.violet.300` |
 | `button/icon-size` | Size of an icon inside a button. | `size.icon` → `size.16` | same |
 
 ## When to use it

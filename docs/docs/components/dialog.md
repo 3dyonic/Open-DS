@@ -18,13 +18,13 @@ The CSS variable is the key with `/` replaced by `-`. Each key points to a token
 
 | Key | What it controls | Points to, light | Points to, dark |
 | --- | --- | --- | --- |
-| `overlay/background` | Fill of a dialog, menu or toast. | `color.surface.raised` → `color.neutral.0` | `color.surface.raised` → `color.neutral.800` |
+| `overlay/background` | Fill of a dialog, menu or toast. | `color.surface.raised` → `color.neutral.0` → `color.slate.0` | `color.surface.raised` → `color.neutral.800` → `color.slate.800` |
 | `overlay/radius` | Corner radius of overlays. | `radius.container` → `radius.brand.container` → `radius.4` | same |
 | `overlay/shadow` | Shadow of overlays. | `elevation.overlay` → `shadow.overlay` | `elevation.overlay` → `shadow.overlay-dark` |
 | `overlay/scrim` | Color that dims the page behind a dialog. | `color.surface.scrim` → `color.black-alpha.scrim` | `color.surface.scrim` → `color.black-alpha.scrim-dark` |
 | `overlay/item-height` | Height of a menu item. | `size.control.default` → `size.32` | same |
-| `tooltip/background` | Tooltip fill. | `color.surface.inverse` → `color.neutral.900` | `color.surface.inverse` → `color.neutral.50` |
-| `tooltip/label` | Tooltip text. | `color.text.inverse` → `color.neutral.0` | `color.text.inverse` → `color.neutral.900` |
+| `tooltip/background` | Tooltip fill. | `color.surface.inverse` → `color.neutral.900` → `color.slate.900` | `color.surface.inverse` → `color.neutral.50` → `color.slate.50` |
+| `tooltip/label` | Tooltip text. | `color.text.inverse` → `color.neutral.0` → `color.slate.0` | `color.text.inverse` → `color.neutral.900` → `color.slate.900` |
 
 ## When to use it
 

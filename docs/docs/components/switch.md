@@ -18,7 +18,7 @@ The CSS variable is the key with `/` replaced by `-`. Each key points to a token
 
 | Key | What it controls | Points to, light | Points to, dark |
 | --- | --- | --- | --- |
-| `control/checked` | Fill of a checked checkbox or an on switch. | `color.action.primary` → `color.brand.600` | `color.action.primary` → `color.brand.300` |
-| `control/track` | Track of an off switch. | `color.border.strong` → `color.neutral.300` | `color.border.strong` → `color.neutral.700` |
-| `control/thumb` | Switch thumb and checkmark color. | `color.surface.default` → `color.neutral.0` | `color.surface.default` → `color.neutral.900` |
+| `control/checked` | Fill of a checked checkbox or an on switch. | `color.action.primary` → `color.brand.600` → `color.violet.600` | `color.action.primary` → `color.brand.300` → `color.violet.300` |
+| `control/track` | Track of an off switch. | `color.border.strong` → `color.neutral.300` → `color.slate.300` | `color.border.strong` → `color.neutral.700` → `color.slate.700` |
+| `control/thumb` | Switch thumb and checkmark color. | `color.surface.default` → `color.neutral.0` → `color.slate.0` | `color.surface.default` → `color.neutral.900` → `color.slate.900` |
 | `control/radius` | Checkbox corner radius. | `radius.badge` → `radius.brand.badge` → `radius.0` | same |
