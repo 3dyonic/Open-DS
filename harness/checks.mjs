@@ -280,6 +280,28 @@ export const CHECKS = {
     },
   },
 
+  "release-surface": {
+    requires: ["cli/package.json", "cli/surface.json", "scripts/release.mjs"],
+    run: async (c) => {
+      // The CLI's version and the snapshot of its public surface move together (OD-165).
+      const err = ensureTokens(c);
+      if (err) return bad(tail(err));
+      const { surface, diff } = await import(pathToFileURL(c.p("scripts/release.mjs")).href);
+      const pkg = c.json("cli/package.json");
+      const snap = c.json("cli/surface.json");
+      if (pkg.version !== snap.version)
+        return bad(
+          `cli/package.json is ${pkg.version}, cli/surface.json is ${snap.version}: release with node scripts/release.mjs`,
+        );
+      const d = diff(snap.surface, surface(), snap.version);
+      return ok(
+        d.changed
+          ? `${pkg.version}: unreleased surface changes; the next release needs at least a ${d.needs} bump`
+          : `${pkg.version}: the public surface matches the last release`,
+      );
+    },
+  },
+
   "semantics-guidance": {
     requires: ["schemes/grammar.json", ...SCHEMES.map((s) => `schemes/${s}.json`)],
     run: (c) => {
