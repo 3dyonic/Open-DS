@@ -1,8 +1,0 @@
-{
-  "tokens": {
-    "space/widget/padding-y": {
-      "$type": "dimension",
-      "$value": { "value": 4, "unit": "px" }
-    }
-  }
-}

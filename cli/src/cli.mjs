@@ -1,12 +1,10 @@
-// The open-ds command. Scheme commands live here. Recipe commands from the first preview
-// (check, catalog, diff, init <recipe.json | fingerprint>) still run through main.mjs.
+// The open-ds command: list the schemes, explain their decisions, and deploy one into a project.
 
 import { createHash } from "node:crypto";
 import { existsSync, mkdirSync, readFileSync, readdirSync, writeFileSync } from "node:fs";
 import { dirname, join, resolve } from "node:path";
 import { agentsMd, skillSection } from "./agents.mjs";
 import { docsLlms, docsPages } from "./docs.mjs";
-import { run as runRecipe } from "./main.mjs";
 import { assetRoots, grammar, keyInfo, loadScheme, schemeIds, when, why } from "./schemes.mjs";
 
 const HELP = `open-ds: deploy an Open DS scheme as a full design system.
@@ -21,8 +19,7 @@ const HELP = `open-ds: deploy an Open DS scheme as a full design system.
                                        --docs also writes the design system's docs pages to docs/
   open-ds add <component> [--dir .]    copy one more component into an initialised project
 
-Add --json to list, show, why and when for machine-readable output.
-Recipe commands from the first preview still work: check, catalog, diff, init <recipe.json>.`;
+Add --json to list, show, why and when for machine-readable output.`;
 
 const NPM = ["radix-ui", "lucide-react", "class-variance-authority", "clsx", "tailwind-merge"];
 
@@ -110,7 +107,7 @@ export function addComponent(name, dir, roots = assetRoots()) {
   const recordPath = join(dir, "open-ds.json");
   if (!existsSync(recordPath)) throw new Error(`No open-ds.json in ${dir}. Run "open-ds init <scheme>" first.`);
   const record = JSON.parse(readFileSync(recordPath, "utf8"));
-  if (!record.scheme) throw new Error(`${recordPath} was written by a recipe init. Run "open-ds init <scheme>".`);
+  if (!record.scheme) throw new Error(`${recordPath} has no scheme. Run "open-ds init <scheme>" first.`);
   const text = componentSource(roots, name);
   write(dir, `src/components/ui/${name}.tsx`, text, record.files);
   if (!record.components.includes(name)) record.components = [...record.components, name].sort();
@@ -182,8 +179,8 @@ export async function run(argv) {
       out(rule, () => console.log(`${rule.title}\n  Use: ${rule.use}\n  Not: ${rule.not}\n  Why: ${rule.why}`));
       return 0;
     }
-    const looksLikeRecipe = (a) => a.endsWith(".json") || /^[0-9a-f]{12,}$/.test(a);
-    if (cmd === "init" && args[0] && !looksLikeRecipe(args[0])) {
+    if (cmd === "init") {
+      if (!args[0]) throw new Error('init needs a scheme. Run "open-ds list" to see them.');
       const dir = resolve(flag(args, "--dir", "."));
       const record = deploy(args[0], dir, { brand: flag(args, "--brand"), overwrite: yes, docs: withDocs });
       out(record, () => {
@@ -200,7 +197,7 @@ export async function run(argv) {
       out(record, () => console.log(`Added ${args[0]} to ${dir}.`));
       return 0;
     }
-    return runRecipe(argv);
+    throw new Error(`Unknown command "${cmd}". Run "open-ds help".`);
   } catch (error) {
     if (json) console.log(JSON.stringify({ error: error.message }));
     else console.error(error.message);

@@ -13,12 +13,11 @@ import shutil
 import subprocess
 from pathlib import Path
 
-from open_ds_validator.load import repo_root
-
 
 def root() -> Path:
     env = os.environ.get("OPEN_DS_ROOT")
-    return Path(env).resolve() if env else repo_root()
+    # mcp/src/open_ds_mcp/schemes.py sits three folders below the repository root.
+    return Path(env).resolve() if env else Path(__file__).resolve().parents[3]
 
 
 def cli_bin() -> Path:
