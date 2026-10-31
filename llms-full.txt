@@ -2,6 +2,53 @@
 
 > Generated from schemes/*.json. Each scheme lists its answers (question: answer. why), its usage rules (situation: use; not; why) and its voice.
 
+## Colour guidance, for every scheme
+
+Status colours go up in urgency: info, then warning, then danger. Pick the level that matches the real risk. Never go up a level to get attention. Success sits outside the order.
+Urgency order: color.status.info.@ → color.status.warning.@ → color.status.danger.@
+
+- color.surface.canvas: The page background behind everything. Use for: Page and app background. Not for: Cards and panels on the page (use color.surface.default).
+- color.surface.default: The base fill for content. Use for: Cards, Panels, Inputs, Table body. Not for: The page behind content (use color.surface.canvas); Menus and popovers above content (use color.surface.raised).
+- color.surface.raised: Fills that float above content. Use for: Menus, Popovers, Dialogs. Not for: Cards in the page flow (use color.surface.default).
+- color.surface.sunken: A recessed fill, a step below content. Use for: Table headers, Wells, Hover rows. Not for: A selected item (use color.surface.selected).
+- color.surface.selected: The fill of a selected or current item. Use for: Selected rows, Current menu item. Not for: Hover (use color.surface.sunken); The main action (use color.action.primary.@).
+- color.surface.inverse: A reversed fill for small, short-lived messages. Use for: Tooltips, Toasts. Not for: Large areas (use color.surface.default).
+- color.surface.scrim: The see-through layer behind a modal. Use for: Behind dialogs and sheets. Not for: A solid fill (use color.surface.raised).
+- color.text.primary: Body text and headings. Use for: Body text, Headings, Tag labels. Not for: Text on the main action (use color.text.on-action); Text on an inverse fill (use color.text.inverse). Sits on: color.surface.canvas, color.surface.default, color.surface.raised, color.surface.sunken, color.surface.selected, color.action.secondary.@, color.action.secondary.hover, color.category.1.subtle, color.category.2.subtle, color.category.3.subtle, color.category.4.subtle, color.category.5.subtle at 4.5:1 or more.
+- color.text.secondary: Supporting text. Use for: Labels, Descriptions, Metadata. Not for: The main content (use color.text.primary). Sits on: color.surface.canvas, color.surface.default, color.surface.raised, color.surface.sunken at 4.5:1 or more.
+- color.text.muted: The quietest text. Use for: Placeholders, Hints, Timestamps. Not for: Anything people must read to act (use color.text.secondary); A disabled control (use color.disabled.text). Sits on: color.surface.canvas, color.surface.default, color.surface.sunken at 4.5:1 or more.
+- color.text.inverse: Text on an inverse fill. Use for: Tooltip and toast text. Not for: Text on the page (use color.text.primary). Sits on: color.surface.inverse at 4.5:1 or more.
+- color.text.on-action: Text and icons on the main action's fill. Use for: Primary button labels. Not for: Text on the page (use color.text.primary). Sits on: color.action.primary.@, color.action.primary.hover at 4.5:1 or more.
+- color.text.link: Links in running text. Use for: Inline links. Not for: Buttons (use color.action.primary.@). Sits on: color.surface.canvas, color.surface.default at 4.5:1 or more.
+- color.border.default: Quiet edges and dividers. Decorative, so it has no contrast minimum. Use for: Card edges, Dividers, Table rules. Not for: The edge of a control people must find (use color.border.strong).
+- color.border.strong: The edge of a control people must find. Use for: Input borders, Checkbox borders, Secondary button borders. Not for: A divider (use color.border.default). Sits on: color.surface.canvas, color.surface.default at 3:1 or more.
+- color.border.focus: The focus ring. Use for: Keyboard focus on any control. Not for: A selected item (use color.surface.selected). Sits on: color.surface.canvas, color.surface.default at 3:1 or more.
+- color.action.primary.@: The one main action in a view. Use for: Primary button fill, Checked controls, Active tab indicator. Not for: A second action in the same view (use color.action.secondary.@); Links in text (use color.text.link); News or status (use color.status.info.@). Sits on: color.surface.canvas, color.surface.default at 3:1 or more.
+- color.action.primary.hover: The main action under the pointer. Use for: Primary button hover. Not for: The resting state (use color.action.primary.@).
+- color.action.secondary.@: The fill of other actions. Use for: Secondary buttons. Not for: The main action (use color.action.primary.@).
+- color.action.secondary.hover: Other actions under the pointer. Use for: Secondary button hover. Not for: The resting state (use color.action.secondary.@).
+- color.status.info.@: Neutral news: something changed and no action is needed. The lowest level of the urgency order. Use for: Status text and icons, Badge labels. Not for: Something needs a check (use color.status.warning.@); The main action (use color.action.primary.@). Sits on: color.surface.canvas, color.surface.default, color.status.info.subtle at 4.5:1 or more.
+- color.status.info.subtle: The fill behind info status. Use for: Info badges, Banners. Not for: Large page areas (use color.surface.default).
+- color.status.warning.@: Caution: something may go wrong or needs a check, and it can be fixed. Use for: Status text and icons, Badge labels. Not for: An error, or an action that cannot be undone (use color.status.danger.@); News that needs no action (use color.status.info.@). Sits on: color.surface.canvas, color.surface.default, color.status.warning.subtle at 4.5:1 or more.
+- color.status.warning.subtle: The fill behind warning status. Use for: Warning badges, Banners. Not for: Large page areas (use color.surface.default).
+- color.status.danger.@: Real risk: errors, failed checks, actions that cannot be undone. The top of the urgency order. Overuse wears it out. Use for: Status text and icons, Badge labels. Not for: Caution or advice (use color.status.warning.@); Getting attention (use color.status.info.@). Sits on: color.surface.canvas, color.surface.default, color.status.danger.subtle at 4.5:1 or more.
+- color.status.danger.subtle: The fill behind danger status. Use for: Danger badges, Banners. Not for: Large page areas (use color.surface.default).
+- color.status.success.@: Confirmation that something worked. It sits outside the urgency order. Use for: Status text and icons, Badge labels. Not for: The main action (use color.action.primary.@); Brand colour (use color.action.primary.@). Sits on: color.surface.canvas, color.surface.default, color.status.success.subtle at 4.5:1 or more.
+- color.status.success.subtle: The fill behind success status. Use for: Success badges, Banners. Not for: Large page areas (use color.surface.default).
+- color.category.1.@: Category 1: tells one item or series from another. It carries no meaning. Use for: Chart series, Tag dots and icons. Not for: Status or risk (use color.status.warning.@); Tag text (use color.text.primary). Sits on: color.surface.canvas, color.surface.default at 3:1 or more.
+- color.category.1.subtle: Category 1: the fill of a tag. Use for: Tag and label fills. Not for: A status badge (use color.status.info.subtle).
+- color.category.2.@: Category 2: tells one item or series from another. It carries no meaning. Use for: Chart series, Tag dots and icons. Not for: Status or risk (use color.status.warning.@); Tag text (use color.text.primary). Sits on: color.surface.canvas, color.surface.default at 3:1 or more.
+- color.category.2.subtle: Category 2: the fill of a tag. Use for: Tag and label fills. Not for: A status badge (use color.status.info.subtle).
+- color.category.3.@: Category 3: tells one item or series from another. It carries no meaning. Use for: Chart series, Tag dots and icons. Not for: Status or risk (use color.status.warning.@); Tag text (use color.text.primary). Sits on: color.surface.canvas, color.surface.default at 3:1 or more.
+- color.category.3.subtle: Category 3: the fill of a tag. Use for: Tag and label fills. Not for: A status badge (use color.status.info.subtle).
+- color.category.4.@: Category 4: tells one item or series from another. It carries no meaning. Use for: Chart series, Tag dots and icons. Not for: Status or risk (use color.status.warning.@); Tag text (use color.text.primary). Sits on: color.surface.canvas, color.surface.default at 3:1 or more.
+- color.category.4.subtle: Category 4: the fill of a tag. Use for: Tag and label fills. Not for: A status badge (use color.status.info.subtle).
+- color.category.5.@: Category 5: tells one item or series from another. It carries no meaning. Use for: Chart series, Tag dots and icons. Not for: Status or risk (use color.status.warning.@); Tag text (use color.text.primary). Sits on: color.surface.canvas, color.surface.default at 3:1 or more.
+- color.category.5.subtle: Category 5: the fill of a tag. Use for: Tag and label fills. Not for: A status badge (use color.status.info.subtle).
+- color.disabled.text: Text and icons of a control that cannot be used right now. Use for: Disabled labels and icons. Not for: Quiet text that still works (use color.text.muted). Sits on: color.disabled.surface.
+- color.disabled.surface: The fill of a control that cannot be used right now. Use for: Disabled buttons and inputs. Not for: A quiet fill that still works (use color.surface.sunken).
+- color.disabled.border: The edge of a control that cannot be used right now. Use for: Disabled inputs and checkboxes. Not for: An enabled control (use color.border.strong).
+
 ## Accessible first (accessible-first)
 
 Accessible first is an Open DS scheme: a full set of answers to the Open DS grammar, with the reasons behind each, usage rules, voice and tone, and the tokens that follow. Large text, large targets and AAA contrast, so everyone can finish the task.

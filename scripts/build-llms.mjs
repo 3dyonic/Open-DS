@@ -61,6 +61,16 @@ export function buildLlms(repo) {
     "",
     "> Generated from schemes/*.json. Each scheme lists its answers (question: answer. why), its usage rules (situation: use; not; why) and its voice.",
     "",
+    "## Colour guidance, for every scheme",
+    "",
+    g.semantics.urgency.description,
+    `Urgency order: ${g.semantics.urgency.order.join(" → ")}`,
+    "",
+    ...g.semantics.keys.map(
+      (k) =>
+        `- ${k.id}: ${k.intent} Use for: ${k.use_for.join(", ")}.${k.not_for.length ? ` Not for: ${k.not_for.map((n) => `${n.when} (use ${n.use})`).join("; ")}.` : ""}${k.pairs ? ` Sits on: ${k.pairs.on.join(", ")}${k.pairs.contrast ? ` at ${k.pairs.contrast}:1 or more` : ""}.` : ""}`,
+    ),
+    "",
     ...schemes.flatMap((s) => {
       const answer = (a) =>
         qs[a.question].options.find((o) => o.id === a.option).label;

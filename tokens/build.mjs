@@ -17,6 +17,7 @@ import { dirname, join } from "node:path";
 import { fileURLToPath } from "node:url";
 import StyleDictionary from "style-dictionary";
 import { outputReferencesFilter } from "style-dictionary/utils";
+import { withGuidance } from "../cli/src/guidance.mjs";
 import { publicPaths, themeTokens } from "../cli/src/tokens.mjs";
 
 const here = dirname(fileURLToPath(import.meta.url));
@@ -56,12 +57,12 @@ export const SHADCN = {
   "sidebar-accent-foreground": "color-text-primary",
   "sidebar-border": "color-border-default",
   "sidebar-ring": "color-border-focus",
-  // Chart series use action and status colours by their meaning: no danger for an ordinary series.
-  "chart-1": "color-action-primary",
-  "chart-2": "color-status-success",
-  "chart-3": "color-status-warning",
-  "chart-4": "color-text-secondary",
-  "chart-5": "color-text-muted",
+  // Chart series use the category colours: distinct hues that carry no meaning, so no series reads as an error.
+  "chart-1": "color-category-1",
+  "chart-2": "color-category-2",
+  "chart-3": "color-category-3",
+  "chart-4": "color-category-4",
+  "chart-5": "color-category-5",
 };
 
 // shadcn's radius, shadow and text classes, mapped onto the scheme's tokens. Written to shadcn.css,
@@ -211,8 +212,12 @@ export async function buildAll() {
     .map((f) => f.replace(/\.json$/, ""))
     .sort();
   const index = [];
+  // Semantic descriptions come from the grammar's guidance, written once for every scheme.
+  const grammar = JSON.parse(readFileSync(join(root, "schemes", "grammar.json"), "utf8"));
   for (const id of ids)
-    index.push(await buildScheme(JSON.parse(readFileSync(join(root, "schemes", `${id}.json`), "utf8"))));
+    index.push(
+      await buildScheme(withGuidance(JSON.parse(readFileSync(join(root, "schemes", `${id}.json`), "utf8")), grammar)),
+    );
   writeFileSync(join(dist, "shadcn-map.json"), JSON.stringify(SHADCN, null, 2) + "\n");
   writeFileSync(
     join(dist, "index.json"),
