@@ -414,6 +414,13 @@ export const CHECKS = {
         const [lo, hi] = COUNT[answer("components.count")] ?? [0, -1];
         if (ids.length < lo || ids.length > hi)
           gaps.push(`${id}: ${ids.length} components, but the count answer is ${answer("components.count")}`);
+        const patterns = Object.fromEntries((g.catalogue?.patterns ?? []).map((p) => [p.id, p]));
+        for (const p of inv.patterns ?? []) {
+          if (!patterns[p.id]) gaps.push(`${id}: pattern ${p.id} is not in the catalogue`);
+          else
+            for (const part of patterns[p.id].built_from)
+              if (!ids.includes(part)) gaps.push(`${id}: pattern ${p.id} needs ${part}, which is not in the inventory`);
+        }
         if (!inv.follows?.some((f) => f.startsWith("components.")))
           gaps.push(`${id}: the inventory follows no components answer`);
       }

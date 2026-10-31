@@ -73,3 +73,11 @@ description: "The components Dense data carries."
 | Sonner | feedback | Out | Not yet |  |
 | Spinner | feedback | Out | Yes |  |
 | Toggle | action | Out | Yes |  |
+
+## Patterns
+
+Larger parts built from the components above. They do not count toward the 35.
+
+| Pattern | Built from | Why |
+| --- | --- | --- |
+| Data table | Table, Input, Button, Checkbox, Popover, Toggle group | Experts scan hundreds of orders, filter by status and depot, sort by due time and act on many rows at once. |

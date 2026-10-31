@@ -17,7 +17,7 @@ export const Examples: Story = {
     <Show component="skeleton">
       {(s) => (
         <div className="grid max-w-md gap-[var(--space-gap-default)]" aria-label={`${s.screen}: loading`}>
-          {(s.table?.rows ?? s.metrics).map((_, i) => (
+          {(s.table?.rows ?? s.metrics).slice(0, 6).map((_, i) => (
             <Skeleton key={i} className="h-[var(--size-row,1rem)] w-full" />
           ))}
         </div>

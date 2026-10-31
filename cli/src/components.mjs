@@ -7,6 +7,7 @@ import { join } from "node:path";
 // The npm packages components may import, with the versions Open DS tests against.
 export const PACKAGES = {
   "@base-ui/react": "^1.9.0",
+  "@tanstack/react-table": "^8.21.3",
   "class-variance-authority": "^0.7.1",
   clsx: "^2.1.1",
   cmdk: "^1.1.1",
@@ -48,7 +49,9 @@ export function withImports(names, roots) {
 /** The scheme's inventory that is built, plus every component those import. */
 export function componentsFor(scheme, roots) {
   const built = builtComponents(roots);
-  const wanted = scheme.inventory ? scheme.inventory.in.map((i) => i.id).filter((id) => built.includes(id)) : built;
+  // Patterns (a data table) are built from inventory components and installed like them.
+  const picked = scheme.inventory ? [...scheme.inventory.in, ...(scheme.inventory.patterns ?? [])].map((i) => i.id) : built;
+  const wanted = picked.filter((id) => built.includes(id));
   return withImports(wanted, roots);
 }
 

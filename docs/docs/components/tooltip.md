@@ -1,5 +1,5 @@
 ---
-sidebar_position: 35
+sidebar_position: 36
 title: "Tooltip"
 description: "Tooltip in Dense data."
 ---
