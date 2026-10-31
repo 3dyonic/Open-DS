@@ -8,6 +8,7 @@ const read = <T>(file: string): T => JSON.parse(readFileSync(join(dir, file), "u
 export interface Option {
   id: string;
   label: string;
+  description?: string;
 }
 export interface Question {
   id: string;
@@ -133,4 +134,14 @@ export function tokenRows(
     } else rows.push(...tokenRows(v, name));
   }
   return rows;
+}
+
+/** For one question, the names of the schemes that pick each option, by option id. */
+export function pickedBy(questionId: string): Record<string, string[]> {
+  const out: Record<string, string[]> = {};
+  for (const s of schemes()) {
+    const a = s.answers.find((x) => x.question === questionId);
+    if (a) (out[a.option] ??= []).push(s.name);
+  }
+  return out;
 }

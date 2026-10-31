@@ -1,7 +1,8 @@
 // The grammar index, built from the Figma frame G Grammar index (130:900).
 import type { Metadata } from "next";
 import { Eyebrow } from "@/components/chrome";
-import { grammar, type Group } from "@/lib/schemes";
+import { Options } from "@/components/options";
+import { grammar, pickedBy, type Group } from "@/lib/schemes";
 
 export const metadata: Metadata = {
   title: "Every question, once",
@@ -9,7 +10,7 @@ export const metadata: Metadata = {
     "The master list every scheme answers: reason questions and scope questions, each with a stable id.",
 };
 
-function GroupCard({ grp, methods }: { grp: Group; methods: Record<string, string> }) {
+function GroupCard({ grp }: { grp: Group }) {
   return (
     <li className="flex flex-col gap-3 rounded-[8px] border border-line bg-white p-5">
       <h3 className="text-[20px] font-extrabold">
@@ -17,17 +18,21 @@ function GroupCard({ grp, methods }: { grp: Group; methods: Record<string, strin
         <span className="font-mono text-[12px] font-normal text-muted">{grp.questions.length}</span>
       </h3>
       <ul className="flex flex-col">
-        {grp.questions.map((q) => (
-          <li key={q.id} className="flex flex-col gap-[2px] border-t border-tag py-[10px]">
-            <span className="font-mono text-[11px]">
-              <span className="text-accent-text">{q.id}</span>
-              <span className="text-muted">
-                {" "}
-                {q.method ? `${methods[q.method]} · ` : ""}
-                {q.options.length} options
-              </span>
+        {grp.questions.map((q, i) => (
+          <li
+            key={q.id}
+            id={q.id}
+            className="flex flex-col gap-[8px] border-t border-tag py-[12px]"
+          >
+            <span className="text-[13px] text-muted">
+              Question {i + 1} of {grp.questions.length} · {q.options.length} possible answers
             </span>
-            <span className="text-[15px]">{q.text}</span>
+            <span className="text-[16px] font-semibold">{q.text}</span>
+            <Options
+              options={q.options}
+              pickedBy={pickedBy(q.id)}
+              label={`The options for: ${q.text}`}
+            />
           </li>
         ))}
       </ul>
@@ -37,7 +42,6 @@ function GroupCard({ grp, methods }: { grp: Group; methods: Record<string, strin
 
 export default function QuestionsPage() {
   const g = grammar();
-  const methods = Object.fromEntries(g.methods.map((m) => [m.id, m.title]));
   const reasonCount = g.reasons.reduce((n, r) => n + r.questions.length, 0);
   const scopeCount = g.scopes.reduce((n, r) => n + r.questions.length, 0);
   const layers: [string, string, boolean][] = [
@@ -83,7 +87,7 @@ export default function QuestionsPage() {
         </Eyebrow>
         <ul className="grid gap-4 md:grid-cols-2 lg:grid-cols-3">
           {g.reasons.map((r) => (
-            <GroupCard key={r.id} grp={r} methods={methods} />
+            <GroupCard key={r.id} grp={r} />
           ))}
         </ul>
       </section>
@@ -93,7 +97,7 @@ export default function QuestionsPage() {
         </Eyebrow>
         <ul className="grid gap-4 md:grid-cols-2 lg:grid-cols-3">
           {g.scopes.map((r) => (
-            <GroupCard key={r.id} grp={r} methods={methods} />
+            <GroupCard key={r.id} grp={r} />
           ))}
         </ul>
       </section>
