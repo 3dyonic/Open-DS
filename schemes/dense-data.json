@@ -1599,8 +1599,9 @@
   "tokens": {
     "primitive": {
       "color": {
-        "$description": "The color options. Semantics pick from these; components never read them.",
-        "neutral": {
+        "$description": "Colour options in two steps. The palette holds raw hues, step by step. Roles (neutral, brand, success, warning, danger) point at the palette. Semantics pick from the roles; components never read either.",
+        "slate": {
+          "$description": "Palette: the raw slate ramp.",
           "0": {
             "$type": "color",
             "$value": "#FFFFFF"
@@ -1642,58 +1643,184 @@
             "$value": "#0D1117"
           }
         },
-        "success": {
-          "strong": {
+        "violet": {
+          "$description": "Palette: the raw violet ramp.",
+          "100": {
             "$type": "color",
-            "$value": "#1F7A3A"
+            "$value": "#EEEDFE"
           },
-          "subtle": {
+          "300": {
+            "$type": "color",
+            "$value": "#A9A3F6"
+          },
+          "500": {
+            "$type": "color",
+            "$value": "#5B4FE8"
+          },
+          "600": {
+            "$type": "color",
+            "$value": "#4B3FD9"
+          },
+          "700": {
+            "$type": "color",
+            "$value": "#3B31B0"
+          },
+          "800": {
+            "$type": "color",
+            "$value": "#2C2588"
+          }
+        },
+        "green": {
+          "$description": "Palette: the raw green ramp.",
+          "100": {
             "$type": "color",
             "$value": "#E3F4EA"
           },
-          "strong-dark": {
+          "300": {
             "$type": "color",
             "$value": "#5CC283"
           },
-          "subtle-dark": {
+          "700": {
+            "$type": "color",
+            "$value": "#1F7A3A"
+          },
+          "900": {
             "$type": "color",
             "$value": "#123322"
+          }
+        },
+        "amber": {
+          "$description": "Palette: the raw amber ramp.",
+          "100": {
+            "$type": "color",
+            "$value": "#FFF3D6"
+          },
+          "300": {
+            "$type": "color",
+            "$value": "#F2B84B"
+          },
+          "700": {
+            "$type": "color",
+            "$value": "#8A5600"
+          },
+          "900": {
+            "$type": "color",
+            "$value": "#3A2A05"
+          }
+        },
+        "red": {
+          "$description": "Palette: the raw red ramp.",
+          "100": {
+            "$type": "color",
+            "$value": "#FDE7E7"
+          },
+          "300": {
+            "$type": "color",
+            "$value": "#F28B8B"
+          },
+          "700": {
+            "$type": "color",
+            "$value": "#C42B2B"
+          },
+          "900": {
+            "$type": "color",
+            "$value": "#3D1414"
+          }
+        },
+        "neutral": {
+          "0": {
+            "$type": "color",
+            "$value": "{color.slate.0}"
+          },
+          "50": {
+            "$type": "color",
+            "$value": "{color.slate.50}"
+          },
+          "100": {
+            "$type": "color",
+            "$value": "{color.slate.100}"
+          },
+          "200": {
+            "$type": "color",
+            "$value": "{color.slate.200}"
+          },
+          "300": {
+            "$type": "color",
+            "$value": "{color.slate.300}"
+          },
+          "500": {
+            "$type": "color",
+            "$value": "{color.slate.500}"
+          },
+          "700": {
+            "$type": "color",
+            "$value": "{color.slate.700}"
+          },
+          "800": {
+            "$type": "color",
+            "$value": "{color.slate.800}"
+          },
+          "900": {
+            "$type": "color",
+            "$value": "{color.slate.900}"
+          },
+          "950": {
+            "$type": "color",
+            "$value": "{color.slate.950}"
+          }
+        },
+        "success": {
+          "strong": {
+            "$type": "color",
+            "$value": "{color.green.700}"
+          },
+          "subtle": {
+            "$type": "color",
+            "$value": "{color.green.100}"
+          },
+          "strong-dark": {
+            "$type": "color",
+            "$value": "{color.green.300}"
+          },
+          "subtle-dark": {
+            "$type": "color",
+            "$value": "{color.green.900}"
           }
         },
         "warning": {
           "strong": {
             "$type": "color",
-            "$value": "#8A5600"
+            "$value": "{color.amber.700}"
           },
           "subtle": {
             "$type": "color",
-            "$value": "#FFF3D6"
+            "$value": "{color.amber.100}"
           },
           "strong-dark": {
             "$type": "color",
-            "$value": "#F2B84B"
+            "$value": "{color.amber.300}"
           },
           "subtle-dark": {
             "$type": "color",
-            "$value": "#3A2A05"
+            "$value": "{color.amber.900}"
           }
         },
         "danger": {
           "strong": {
             "$type": "color",
-            "$value": "#C42B2B"
+            "$value": "{color.red.700}"
           },
           "subtle": {
             "$type": "color",
-            "$value": "#FDE7E7"
+            "$value": "{color.red.100}"
           },
           "strong-dark": {
             "$type": "color",
-            "$value": "#F28B8B"
+            "$value": "{color.red.300}"
           },
           "subtle-dark": {
             "$type": "color",
-            "$value": "#3D1414"
+            "$value": "{color.red.900}"
           }
         },
         "black-alpha": {
@@ -1931,27 +2058,27 @@
             "brand": {
               "100": {
                 "$type": "color",
-                "$value": "#EEEDFE"
+                "$value": "{color.violet.100}"
               },
               "300": {
                 "$type": "color",
-                "$value": "#A9A3F6"
+                "$value": "{color.violet.300}"
               },
               "500": {
                 "$type": "color",
-                "$value": "#5B4FE8"
+                "$value": "{color.violet.500}"
               },
               "600": {
                 "$type": "color",
-                "$value": "#4B3FD9"
+                "$value": "{color.violet.600}"
               },
               "700": {
                 "$type": "color",
-                "$value": "#3B31B0"
+                "$value": "{color.violet.700}"
               },
               "800": {
                 "$type": "color",
-                "$value": "#2C2588"
+                "$value": "{color.violet.800}"
               }
             }
           },
