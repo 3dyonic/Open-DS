@@ -5,7 +5,8 @@ import { runHttp } from "open-ds/mcp";
 
 const port = Number(process.env.PORT ?? 8787);
 const host = process.env.HOST ?? "0.0.0.0";
-runHttp({ port, host });
-console.error(
-  `Open DS MCP server on http://${host}:${port}/mcp (no authentication).`,
+runHttp({ port, host }).once("listening", () =>
+  console.error(
+    `Open DS MCP server on http://${host}:${port}/mcp (no authentication).`,
+  ),
 );

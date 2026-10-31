@@ -193,3 +193,72 @@ test("Streamable HTTP: health, then initialize and list tools at /mcp", async ()
     http.close();
   }
 });
+
+// Regressions from the MVP QA cycle (OD-158).
+test("plan tools refuse shell text and unknown or empty names", async () => {
+  const c = await connect();
+  for (const [name, args] of [
+    ["plan_create", { scheme_id: "dense-data", dir: "x; rm -rf ~" }],
+    ["plan_create", { scheme_id: "dense-data", dir: "my design system" }],
+    ["plan_create", { scheme_id: "dense-data", dir: "" }],
+    ["plan_create", { scheme_id: "dense-data", dir: "--yes" }],
+    ["plan_add", { component: "dialog; rm -rf ~" }],
+    ["plan_add", { component: "nope-widget" }],
+    ["plan_add", { component: "" }],
+  ]) {
+    const r = await c.callTool({ name, arguments: args });
+    assert.ok(r.isError, `${name} ${JSON.stringify(args)} should fail`);
+  }
+  const add = await call(c, "plan_add", {
+    component: "carousel",
+    scheme_id: "dense-data",
+  });
+  assert.equal(add.in_inventory, false);
+});
+
+test("names Object already has are unknown questions, not crashes", async () => {
+  const c = await connect();
+  for (const name of ["get_answer", "what_moves", "why"])
+    for (const q of ["constructor", "toString", "__proto__"]) {
+      const args =
+        name === "why"
+          ? { scheme_id: "dense-data", target: q }
+          : { scheme_id: "dense-data", question_id: q };
+      const r = await c.callTool({ name, arguments: args });
+      assert.ok(
+        r.isError && /Unknown question|Nothing called/.test(r.content[0].text),
+        `${name}(${q}): ${r.content[0].text}`,
+      );
+    }
+});
+
+test("plans list open-ds.json, and when_to_use says how it matched", async () => {
+  const c = await connect();
+  assert.ok(
+    (await call(c, "plan_create", { scheme_id: "dense-data" })).files.includes(
+      "open-ds.json",
+    ),
+  );
+  const init = await call(c, "plan_init", { scheme_id: "dense-data" });
+  assert.ok(
+    init.files.includes("open-ds.json") && init.files.includes("AGENTS.md"),
+  );
+  assert.equal(
+    (
+      await call(c, "when_to_use", {
+        scheme_id: "dense-data",
+        situation: "number-in-table",
+      })
+    ).match,
+    "exact",
+  );
+  assert.equal(
+    (
+      await call(c, "when_to_use", {
+        scheme_id: "dense-data",
+        situation: "a number in a table",
+      })
+    ).match,
+    "best guess",
+  );
+});

@@ -92,7 +92,7 @@ export function MovesView({
               id="mv-o"
               value={chosen}
               onChange={(e) => setOption(e.target.value)}
-              className="rounded-[4px] bg-accent px-3 py-2 text-[20px] font-semibold text-ink"
+              className="max-w-full rounded-[4px] bg-accent px-3 py-2 text-[20px] font-semibold text-ink"
             >
               {Object.entries(qv.options)
                 .filter(([id]) => id !== me.answers[question].option)
