@@ -29,7 +29,7 @@ The CSS variable is the key with `/` replaced by `-`. Each key points to a token
 | `button/ghost/label` | Ghost button label color. | `color.text.link` → `color.brand.700` | `color.text.link` → `color.brand.300` |
 | `button/height` | Button height. | `size.control.default` → `size.32` | same |
 | `button/padding-x` | Horizontal padding inside a button. | `space.inset.control-x` → `space.12` | same |
-| `button/radius` | Button corner radius. | `radius.control` → `radius.brand.control` → `radius.4` | same |
+| `button/radius` | Button corner radius. | `radius.control` → `radius.brand.control` → `radius.2` | same |
 | `button/font-size` | Button label size. | `type.label.font-size` → `font.size.12` | same |
 | `button/font-weight` | Button label weight. | `type.label.font-weight` → `font.weight.500` | same |
 | `button/focus-ring` | Focus ring color on any button. | `color.border.focus` → `color.brand.600` | `color.border.focus` → `color.brand.300` |

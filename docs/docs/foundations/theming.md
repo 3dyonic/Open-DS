@@ -33,7 +33,7 @@ Modes and brands.
 | What can a theme change? | Mode only | One brand, so only the mode changes. |
 | How many themes ship? | Two | Light and dark. |
 | How are brands handled? | One brand | One product, one brand. |
-| Which modes ship? | Light and dark | Light and dark ship as standard; long shifts favour dark. |
+| Which modes ship? | Light and dark | Light first, always; dark ships as standard for night shifts. |
 | What changes when the theme changes? | Colors only | A mode switch changes colors only, so layout never moves. |
 
 ## Tokens
@@ -46,19 +46,19 @@ The raw values the tokens above end at.
 
 | Primitive | Value | Sample |
 | --- | --- | --- |
-| `color.brand.100` | #E6EDFC | <span class="ods-swatch" style="background:var(--color-brand-100)"></span> |
-| `color.brand.300` | #8EA9EC | <span class="ods-swatch" style="background:var(--color-brand-300)"></span> |
-| `color.brand.500` | #3B6BE0 | <span class="ods-swatch" style="background:var(--color-brand-500)"></span> |
-| `color.brand.600` | #2457D6 | <span class="ods-swatch" style="background:var(--color-brand-600)"></span> |
-| `color.brand.700` | #1C45AB | <span class="ods-swatch" style="background:var(--color-brand-700)"></span> |
-| `color.brand.800` | #163784 | <span class="ods-swatch" style="background:var(--color-brand-800)"></span> |
+| `color.brand.100` | #EEEDFE | <span class="ods-swatch" style="background:var(--color-brand-100)"></span> |
+| `color.brand.300` | #A9A3F6 | <span class="ods-swatch" style="background:var(--color-brand-300)"></span> |
+| `color.brand.500` | #5B4FE8 | <span class="ods-swatch" style="background:var(--color-brand-500)"></span> |
+| `color.brand.600` | #4B3FD9 | <span class="ods-swatch" style="background:var(--color-brand-600)"></span> |
+| `color.brand.700` | #3B31B0 | <span class="ods-swatch" style="background:var(--color-brand-700)"></span> |
+| `color.brand.800` | #2C2588 | <span class="ods-swatch" style="background:var(--color-brand-800)"></span> |
 | `font.family.body` | "IBM Plex Sans", system-ui, sans-serif | <span class="ods-font" style="font-family:var(--font-family-body)">Aa 123</span> |
 | `font.family.display` | "IBM Plex Sans", system-ui, sans-serif | <span class="ods-font" style="font-family:var(--font-family-display)">Aa 123</span> |
 | `font.family.mono` | "IBM Plex Mono", ui-monospace, monospace | <span class="ods-font" style="font-family:var(--font-family-mono)">Aa 123</span> |
 | `font.family.ui` | "IBM Plex Sans", system-ui, sans-serif | <span class="ods-font" style="font-family:var(--font-family-ui)">Aa 123</span> |
-| `radius.brand.badge` | 0.125rem (2px) | <span class="ods-tile" style="border-radius:var(--radius-brand-badge)"></span> |
-| `radius.brand.container` | 0.375rem (6px) | <span class="ods-tile" style="border-radius:var(--radius-brand-container)"></span> |
-| `radius.brand.control` | 0.25rem (4px) | <span class="ods-tile" style="border-radius:var(--radius-brand-control)"></span> |
+| `radius.brand.badge` | 0rem (0px) | <span class="ods-tile" style="border-radius:var(--radius-brand-badge)"></span> |
+| `radius.brand.container` | 0.25rem (4px) | <span class="ods-tile" style="border-radius:var(--radius-brand-container)"></span> |
+| `radius.brand.control` | 0.125rem (2px) | <span class="ods-tile" style="border-radius:var(--radius-brand-control)"></span> |
 
 ## Where it lands
 

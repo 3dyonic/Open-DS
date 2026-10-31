@@ -14,16 +14,16 @@ description: "The components Dense data carries."
 | --- | --- | --- | --- | --- |
 | Alert | feedback | In | Yes | A problem that stays on the page. |
 | Alert dialog | overlay | In | Yes | Confirms a delete. |
-| Badge | feedback | In | Yes | Order and payment status in rows. |
+| Badge | feedback | In | Yes | Alert status in rows. |
 | Button | action | In | Yes | Every action. |
 | Calendar | form | In | Yes | Date ranges for reports. |
 | Card | layout | In | Yes | Dashboard figures. |
 | Chart | data | In | Yes | Totals over time on dashboards. |
 | Checkbox | form | In | Yes | Selects rows and filter values. |
-| Combobox | form | In | Yes | Picks a customer or product from thousands. |
+| Combobox | form | In | Yes | Picks an asset or a user from thousands. |
 | Command | navigation | In | Yes | Keyboard-first jump to any record or action. |
 | Context menu | navigation | In | Yes | Right-click on a row, for experts. |
-| Data table | data | In | Yes | Experts scan hundreds of orders, filter by status and depot, sort by due time and act on many rows at once. |
+| Data table | data | In | Yes | Analysts scan hundreds of alerts, filter by status and asset group, sort by risk and act on many rows at once. |
 | Date picker | form | In | Yes | Picks a date range for reports and filters from a button in the toolbar. |
 | Dialog | overlay | In | Yes | Edit one record without leaving the table. |
 | Dropdown menu | navigation | In | Yes | Row actions. |
@@ -44,11 +44,11 @@ description: "The components Dense data carries."
 | Sheet | overlay | In | Yes | Record details beside the table. |
 | Sidebar | navigation | In | Yes | App navigation that stays open all shift. |
 | Skeleton | feedback | In | Yes | Rows while a table loads. |
-| Slider | form | In | Yes | Narrows a filter to a range of totals by dragging. |
+| Slider | form | In | Yes | Narrows a filter to a range of risk scores by dragging. |
 | Switch | form | In | Yes | Settings that apply at once. |
 | Table | data | In | Yes | The heart of the product: rows of records. |
 | Tabs | navigation | In | Yes | Views of one record. |
-| Textarea | form | In | Yes | Notes on an order. |
+| Textarea | form | In | Yes | Notes on an alert, for the next analyst. |
 | Toast | feedback | In | Yes | Confirms a saved change. |
 | Toggle group | action | In | Yes | Switches a table between views and densities. |
 | Tooltip | overlay | In | Yes | Explains an icon button. |
