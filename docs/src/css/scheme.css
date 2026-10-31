@@ -134,14 +134,11 @@
   --dense-data-theme-light-color-surface-scrim: var(--color-black-light-scrim);
   --dense-data-theme-light-color-text-primary: var(--color-slate-light-900);
   --dense-data-theme-light-color-text-secondary: var(--color-slate-light-700);
-  --dense-data-theme-light-color-text-muted: var(--color-slate-light-500);
   --dense-data-theme-light-color-text-inverse: var(--color-slate-light-0);
   --dense-data-theme-light-color-text-on-action: var(--color-slate-light-0);
   --dense-data-theme-light-color-text-link: var(--color-violet-light-700);
   --dense-data-theme-light-color-border-default: var(--color-slate-light-200);
   --dense-data-theme-light-color-border-strong: var(--color-slate-light-300);
-  --dense-data-theme-light-color-border-focus: var(--color-violet-light-600);
-  --dense-data-theme-light-color-action-primary: var(--color-violet-light-600);
   --dense-data-theme-light-color-action-primary-hover: var(--color-violet-light-700);
   --dense-data-theme-light-color-action-secondary: var(--color-slate-light-0);
   --dense-data-theme-light-color-action-secondary-hover: var(--color-slate-light-100);
@@ -185,14 +182,11 @@
   --color-surface-scrim: var(--dense-data-theme-light-color-surface-scrim); /** Dims the page behind a dialog. */
   --color-text-primary: var(--dense-data-theme-light-color-text-primary); /** Main text. */
   --color-text-secondary: var(--dense-data-theme-light-color-text-secondary); /** Supporting text; passes AA. */
-  --color-text-muted: var(--dense-data-theme-light-color-text-muted); /** Hints and placeholders. */
   --color-text-inverse: var(--dense-data-theme-light-color-text-inverse); /** Text on inverse surfaces. */
   --color-text-on-action: var(--dense-data-theme-light-color-text-on-action); /** Text on the primary action. */
   --color-text-link: var(--dense-data-theme-light-color-text-link); /** Links. */
   --color-border-default: var(--dense-data-theme-light-color-border-default); /** Row lines and card borders. */
   --color-border-strong: var(--dense-data-theme-light-color-border-strong); /** Input and secondary button borders. */
-  --color-border-focus: var(--dense-data-theme-light-color-border-focus); /** The keyboard focus ring. */
-  --color-action-primary: var(--dense-data-theme-light-color-action-primary); /** The primary action. */
   --color-action-primary-hover: var(--dense-data-theme-light-color-action-primary-hover); /** Primary action on hover. */
   --color-action-secondary: var(--dense-data-theme-light-color-action-secondary); /** Secondary action fill. */
   --color-action-secondary-hover: var(--dense-data-theme-light-color-action-secondary-hover); /** Secondary action on hover. */
@@ -205,6 +199,9 @@
   --radius-control: var(--dense-data-theme-base-radius-control); /** Corner of buttons and inputs. */
   --radius-badge: var(--dense-data-theme-base-radius-badge); /** Corner of badges and checkboxes. */
   --radius-container: var(--dense-data-theme-base-radius-container); /** Corner of cards, menus and dialogs. */
+  --dense-data-theme-light-color-text-muted: var(--color-slate);
+  --dense-data-theme-light-color-border-focus: var(--color-violet);
+  --dense-data-theme-light-color-action-primary: var(--color-violet);
   --type-display-font-family: var(--dense-data-theme-base-type-display-font-family);
   --type-title-font-family: var(--dense-data-theme-base-type-title-font-family);
   --type-heading-font-family: var(--dense-data-theme-base-type-heading-font-family);
@@ -231,7 +228,9 @@
   --overlay-item-height: var(--size-control-default); /** Height of a menu item. */
   --transition-duration: var(--motion-duration-feedback); /** Duration of feedback transitions. */
   --transition-easing: var(--motion-easing-standard); /** Easing of feedback transitions. */
-  --button-primary-background: var(--color-action-primary); /** Primary button fill. */
+  --color-text-muted: var(--dense-data-theme-light-color-text-muted); /** Hints and placeholders. */
+  --color-border-focus: var(--dense-data-theme-light-color-border-focus); /** The keyboard focus ring. */
+  --color-action-primary: var(--dense-data-theme-light-color-action-primary); /** The primary action. */
   --button-primary-background-hover: var(--color-action-primary-hover); /** Primary button fill on hover. */
   --button-primary-label: var(--color-text-on-action); /** Primary button label color. */
   --button-secondary-background: var(--color-action-secondary); /** Secondary button fill. */
@@ -241,14 +240,10 @@
   --button-ghost-background-hover: var(--color-surface-sunken); /** Ghost button fill on hover. */
   --button-ghost-label: var(--color-text-link); /** Ghost button label color. */
   --button-radius: var(--radius-control); /** Button corner radius. */
-  --button-focus-ring: var(--color-border-focus); /** Focus ring color on any button. */
   --input-background: var(--color-surface-default); /** Input fill. */
   --input-border: var(--color-border-strong); /** Input border at rest. */
-  --input-border-focus: var(--color-border-focus); /** Input border when focused. */
   --input-text: var(--color-text-primary); /** Typed text color. */
-  --input-placeholder: var(--color-text-muted); /** Placeholder text color. */
   --input-radius: var(--radius-control); /** Input corner radius. */
-  --control-checked: var(--color-action-primary); /** Fill of a checked checkbox or an on switch. */
   --control-track: var(--color-border-strong); /** Track of an off switch. */
   --control-thumb: var(--color-surface-default); /** Switch thumb and checkmark color. */
   --control-radius: var(--radius-badge); /** Checkbox corner radius. */
@@ -268,7 +263,6 @@
   --table-header-background: var(--color-surface-sunken); /** Header row fill. */
   --table-row-border: var(--color-border-default); /** Line between rows. */
   --table-row-selected: var(--color-surface-selected); /** Fill of a selected row. */
-  --tabs-indicator: var(--color-action-primary); /** Active tab indicator. */
   --tabs-label: var(--color-text-secondary); /** Inactive tab label. */
   --tabs-label-active: var(--color-text-primary); /** Active tab label. */
   --overlay-background: var(--color-surface-raised); /** Fill of a dialog, menu or toast. */
@@ -277,6 +271,12 @@
   --overlay-scrim: var(--color-surface-scrim); /** Color that dims the page behind a dialog. */
   --tooltip-background: var(--color-surface-inverse); /** Tooltip fill. */
   --tooltip-label: var(--color-text-inverse); /** Tooltip text. */
+  --button-primary-background: var(--color-action-primary); /** Primary button fill. */
+  --button-focus-ring: var(--color-border-focus); /** Focus ring color on any button. */
+  --input-border-focus: var(--color-border-focus); /** Input border when focused. */
+  --input-placeholder: var(--color-text-muted); /** Placeholder text color. */
+  --control-checked: var(--color-action-primary); /** Fill of a checked checkbox or an on switch. */
+  --tabs-indicator: var(--color-action-primary); /** Active tab indicator. */
 }
 
 html[data-theme="dark"] {

@@ -1747,7 +1747,7 @@
             },
             "color-text-muted": {
               "$type": "color",
-              "$value": "{color.gray.light.500}"
+              "$value": "{color.gray.@}"
             },
             "color-text-inverse": {
               "$type": "color",
@@ -1767,15 +1767,15 @@
             },
             "color-border-strong": {
               "$type": "color",
-              "$value": "{color.gray.light.500}"
+              "$value": "{color.gray.@}"
             },
             "color-border-focus": {
               "$type": "color",
-              "$value": "{color.blue.light.600}"
+              "$value": "{color.blue.@}"
             },
             "color-action-primary": {
               "$type": "color",
-              "$value": "{color.blue.light.600}"
+              "$value": "{color.blue.@}"
             },
             "color-action-primary-hover": {
               "$type": "color",

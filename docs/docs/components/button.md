@@ -18,7 +18,7 @@ The CSS variable is the key with `/` replaced by `-`. Each key points to a token
 
 | Key | What it controls | Points to, light | Points to, dark |
 | --- | --- | --- | --- |
-| `button/primary/background` | Primary button fill. | `color.action.primary` → `dense-data.theme.light.color-action-primary` → `color.violet.light.600` | `color.action.primary` → `dense-data.theme.dark.color-action-primary` → `color.violet.dark.700` |
+| `button/primary/background` | Primary button fill. | `color.action.primary` → `dense-data.theme.light.color-action-primary` → `color.violet.@` → `color.violet.light.600` | `color.action.primary` → `dense-data.theme.dark.color-action-primary` → `color.violet.dark.700` |
 | `button/primary/background-hover` | Primary button fill on hover. | `color.action.primary-hover` → `dense-data.theme.light.color-action-primary-hover` → `color.violet.light.700` | `color.action.primary-hover` → `dense-data.theme.dark.color-action-primary-hover` → `color.violet.dark.800` |
 | `button/primary/label` | Primary button label color. | `color.text.on-action` → `dense-data.theme.light.color-text-on-action` → `color.slate.light.0` | `color.text.on-action` → `dense-data.theme.dark.color-text-on-action` → `color.slate.dark.0` |
 | `button/secondary/background` | Secondary button fill. | `color.action.secondary` → `dense-data.theme.light.color-action-secondary` → `color.slate.light.0` | `color.action.secondary` → `dense-data.theme.dark.color-action-secondary` → `color.slate.dark.50` |
@@ -32,7 +32,7 @@ The CSS variable is the key with `/` replaced by `-`. Each key points to a token
 | `button/radius` | Button corner radius. | `radius.control` → `dense-data.theme.base.radius-control` → `radius.2` | same |
 | `button/font-size` | Button label size. | `type.label.font-size` → `font.size.12` | same |
 | `button/font-weight` | Button label weight. | `type.label.font-weight` → `font.weight.500` | same |
-| `button/focus-ring` | Focus ring color on any button. | `color.border.focus` → `dense-data.theme.light.color-border-focus` → `color.violet.light.600` | `color.border.focus` → `dense-data.theme.dark.color-border-focus` → `color.violet.dark.700` |
+| `button/focus-ring` | Focus ring color on any button. | `color.border.focus` → `dense-data.theme.light.color-border-focus` → `color.violet.@` → `color.violet.light.600` | `color.border.focus` → `dense-data.theme.dark.color-border-focus` → `color.violet.dark.700` |
 | `button/icon-size` | Size of an icon inside a button. | `size.icon` → `size.16` | same |
 
 ## When to use it

@@ -2144,7 +2144,7 @@
             },
             "color-text-muted": {
               "$type": "color",
-              "$value": "{color.slate.light.500}"
+              "$value": "{color.slate.@}"
             },
             "color-text-inverse": {
               "$type": "color",
@@ -2168,11 +2168,11 @@
             },
             "color-border-focus": {
               "$type": "color",
-              "$value": "{color.violet.light.600}"
+              "$value": "{color.violet.@}"
             },
             "color-action-primary": {
               "$type": "color",
-              "$value": "{color.violet.light.600}"
+              "$value": "{color.violet.@}"
             },
             "color-action-primary-hover": {
               "$type": "color",
