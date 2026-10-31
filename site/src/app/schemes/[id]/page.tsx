@@ -173,7 +173,12 @@ export default async function SchemePage({ params }: { params: Promise<{ id: str
         </h2>
         <p className="max-w-[860px] text-[16px] leading-[1.45] text-[#3e3a31]">
           Every scope answers the same five questions:{" "}
-          {g.methods.map((m) => m.title.toLowerCase()).join(", ")}.
+          {g.methods.map((m) => m.title.toLowerCase()).join(", ")}. The raw options they pick from
+          live on one page:{" "}
+          <Link href={`/schemes/${s.id}/primitives/`} className="font-semibold text-ink underline">
+            Primitives
+          </Link>
+          .
         </p>
         <ul className="flex flex-col gap-4">
           {g.scopes.map((sc) => {

@@ -14,6 +14,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     pages.push(
       `/schemes/${id}/`,
       `/schemes/${id}/moves/`,
+      `/schemes/${id}/primitives/`,
       ...scopes.map((s) => `/schemes/${id}/${s}/`),
     );
   }
