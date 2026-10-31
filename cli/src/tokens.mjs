@@ -1,6 +1,6 @@
 // How a scheme's tokens fit together, shared by the token build, the CLI, the docs and the site.
 //
-//   primitive   raw options: color.<hue>.light.<step>, color.<hue>.dark.<step>, color.<hue>.$root,
+//   primitive   raw options: color.<hue>.light.<step>, color.<hue>.dark.<step>, color.<hue>.@ (built as color.<hue>),
 //               then space, size, radius, border-width, font, shadow, duration, easing, opacity
 //   theme       per brand: base (mode-free picks such as fonts and corners), light and dark.
 //               Each key picks a primitive. Built as <theme>.theme.<mode>.<key>,

@@ -32,7 +32,7 @@ export function agentsMd(scheme, g, { brand, components, project = false }) {
     "",
     ...(project
       ? [
-          "- `tokens/src/`: the DTCG token source, one file per group. `primitive/` holds the raw options (colour by hue: `color.<hue>.light.<step>`, `color.<hue>.dark.<step>` and the base `$root`). `theme/<brand>` picks primitives for each brand in light and dark. `semantic/` holds the plain keys; a brand-dependent one says `{theme.<key>}`. Edit a token, then run `npm run tokens`. Style Dictionary (`tokens/build.mjs`) writes `build/`.",
+          "- `tokens/src/`: the DTCG token source, one file per group. `primitive/` holds the raw options (colour by hue: `color.<hue>.light.<step>`, `color.<hue>.dark.<step>` and the base `@`, built as `color.<hue>`). `theme/<brand>` picks primitives for each brand in light and dark. `semantic/` holds the plain keys; a brand-dependent one says `{theme.<key>}`. Edit a token, then run `npm run tokens`. Style Dictionary (`tokens/build.mjs`) writes `build/`.",
           "- `src/styles/index.css`: Tailwind, the built tokens (light and dark; add the class `dark` for dark mode), the shadcn and Tailwind theme and the base styles.",
           "- `stories/`: Storybook (`npm run storybook`). `docs/`: the Docusaurus docs (`npm run docs`).",
         ]

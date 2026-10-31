@@ -2,8 +2,8 @@
 import Link from "next/link";
 import type { Primitive, PrimitiveGroup, PrimitivesPage } from "@/lib/primitives";
 
-// A hue's base value is the group's own token: named after the group (color.violet), written $root in the source.
-const name = (path: string) => (path.endsWith(".$root") ? path.slice(0, -6) : path);
+// A hue's base value is the group's own token: named after the group (color.violet), written @ in the source.
+const name = (path: string) => (path.endsWith(".@") ? path.slice(0, -2) : path);
 
 function Specimen({ p, brand }: { p: Primitive; brand?: string }) {
   const v = p.value;
@@ -82,7 +82,7 @@ function Group({ g, brand, anchor }: { g: PrimitiveGroup; brand?: string; anchor
             <div className="flex min-w-0 flex-col gap-1">
               <code className="font-mono text-[13px] font-semibold break-all">
                 {name(p.path)}
-                {p.path.endsWith(".$root") && (
+                {p.path.endsWith(".@") && (
                   <span className="ml-2 rounded-[3px] bg-paper px-[6px] py-[1px] font-sans text-[11px] font-medium text-muted">
                     base
                   </span>
@@ -183,7 +183,7 @@ export function PrimitivesView({ p }: { p: PrimitivesPage }) {
             &ldquo;a card corner&rdquo;. In between, each brand&rsquo;s theme picks a primitive for
             every brand-dependent decision, in light and dark. Colours come by hue, then mode, then
             step (color.violet.light.600), and each hue has a base value named after the hue itself
-            (color.violet, written $root in the token source). Each primitive below lists the
+            (color.violet, written @ in the token source). Each primitive below lists the
             decisions that reach it. Change a primitive, and every decision that points at it
             changes too.
           </p>

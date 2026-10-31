@@ -1210,7 +1210,7 @@
   "tokens": {
     "primitive": {
       "color": {
-        "$description": "Colour options: raw hue ramps. Each hue has a light ramp, a dark ramp (the same steps tuned for dark backgrounds) and its base value ($root). Themes pick from these; components never read them.",
+        "$description": "Colour options: raw hue ramps. Each hue has a light ramp, a dark ramp (the same steps tuned for dark backgrounds) and its base value (@, built as color.<hue>). Themes pick from these; components never read them.",
         "gray": {
           "$type": "color",
           "$description": "The gray hue: a light ramp, a dark ramp and its base value.",
@@ -1278,7 +1278,7 @@
               "$value": "#FFFFFF"
             }
           },
-          "$root": {
+          "@": {
             "$value": "{color.gray.light.500}",
             "$description": "The base gray."
           }
@@ -1326,7 +1326,7 @@
               "$value": "#E1ECFF"
             }
           },
-          "$root": {
+          "@": {
             "$value": "{color.blue.light.600}",
             "$description": "The base blue."
           }

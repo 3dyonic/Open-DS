@@ -731,13 +731,13 @@
     },
     "tokens": {
       "type": "object",
-      "description": "DTCG tokens in four tiers. Primitives are the raw options (colour by hue, mode and step: color.<hue>.light.<step>, color.<hue>.dark.<step>, color.<hue>.$root). Each brand's theme picks from them, per mode. Semantics are the plain keys components read; a brand-dependent one points at {theme.<key>}, which the build resolves to the active brand and mode. Component keys point to semantics. content holds the voice scope's words.",
+      "description": "DTCG tokens in four tiers. Primitives are the raw options (colour by hue, mode and step: color.<hue>.light.<step>, color.<hue>.dark.<step>, color.<hue>.@). Each brand's theme picks from them, per mode. Semantics are the plain keys components read; a brand-dependent one points at {theme.<key>}, which the build resolves to the active brand and mode. Component keys point to semantics. content holds the voice scope's words.",
       "additionalProperties": false,
       "required": ["primitive", "brands", "semantic", "component", "content"],
       "properties": {
         "primitive": {
           "$ref": "#/$defs/group",
-          "description": "Raw options shared by every brand: colour hues (light ramp, dark ramp, $root), space, size, radius, border width, font families, sizes, weights and line heights, shadows, durations, easing and opacity. Components never read them."
+          "description": "Raw options shared by every brand: colour hues (light ramp, dark ramp, @ base), space, size, radius, border width, font families, sizes, weights and line heights, shadows, durations, easing and opacity. Components never read them."
         },
         "brands": {
           "type": "object",
@@ -801,7 +801,7 @@
   "$defs": {
     "group": {
       "type": "object",
-      "description": "A DTCG group: tokens and nested groups, with an optional $description and $type (inherited by its tokens). $root is the group's own base value (DTCG 2025.10).",
+      "description": "A DTCG group: tokens and nested groups, with an optional $description and $type (inherited by its tokens). @ is the group's own base value.",
       "properties": {
         "$description": {
           "type": "string",
@@ -811,9 +811,9 @@
           "$ref": "#/$defs/token/properties/$type",
           "description": "Type inherited by every token in the group."
         },
-        "$root": {
+        "@": {
           "$ref": "#/$defs/token",
-          "description": "The group's own base value, for example a hue's base colour. Built without the $root segment: color.blue.$root becomes --color-blue."
+          "description": "The group's own base value, for example a hue's base colour. The build drops the @ from the name: color.blue.@ becomes --color-blue. A reference names it: {color.blue.@}."
         }
       },
       "patternProperties": {
