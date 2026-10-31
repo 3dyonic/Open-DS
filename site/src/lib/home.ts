@@ -65,6 +65,24 @@ const sentence = (text: string) => text.split(/(?<=\.)\s/)[0].replace(/\.$/, "")
 const lower = (t: string) => (/^[A-Z]{2}/.test(t) ? t : t.charAt(0).toLowerCase() + t.slice(1));
 const family = (stack: string) => stack.split(",")[0].replaceAll('"', "").trim();
 
+interface Samples {
+  screen: string;
+  actions: { primary: string; secondary: string };
+  metrics: { label: string; value: string }[];
+  table?: {
+    caption?: string;
+    columns: { label: string; numeric?: boolean }[];
+    rows: { cells: string[]; status?: string }[];
+  };
+  card?: {
+    title: string;
+    description: string;
+    status?: string;
+    primary?: string;
+    secondary?: string;
+  };
+}
+
 export function proofData(id: string) {
   const g = grammar();
   const all = schemes();
@@ -141,6 +159,30 @@ export function proofData(id: string) {
         })),
       };
     }),
+    // The scheme's own sample content, so the specimen changes with the scheme.
+    sample: (() => {
+      const sm = (s as unknown as { samples: Samples }).samples;
+      const t = sm.table;
+      const pick = t ? [0, 1, t.columns.length - 1].filter((i, k, a) => a.indexOf(i) === k) : [];
+      return {
+        screen: t?.caption ?? sm.screen,
+        primary: sm.card?.primary ?? sm.actions.primary,
+        secondary: sm.card?.secondary ?? sm.actions.secondary,
+        metrics: sm.metrics.slice(0, 3),
+        // A data scheme shows rows; the others show their card.
+        table: t
+          ? {
+              numeric: pick.map((i) => !!t.columns[i].numeric),
+              rows: t.rows
+                .slice(0, 4)
+                .map((r) => pick.map((i) => (i < r.cells.length ? r.cells[i] : (r.status ?? "")))),
+            }
+          : null,
+        card: sm.card
+          ? { title: sm.card.title, description: sm.card.description, status: sm.card.status }
+          : null,
+      };
+    })(),
     because: `Because: ${lower(s.answers.find((a) => a.question === "tasks.q1")!.why)} ${s.answers.find((a) => a.question === "outcomes.q1")!.why}`,
   };
 }
