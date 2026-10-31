@@ -2,7 +2,9 @@
 import scheme from "../scheme.json";
 import situations from "../.open-ds/situations.json";
 
-const TITLES: Record<string, string> = Object.fromEntries(situations.map((s) => [s.id, s.title]));
+const TITLES: Record<string, string> = Object.fromEntries(
+  situations.map((s) => [s.id, s.title]),
+);
 
 export function Usage({ situations: ids }: { situations: string[] }) {
   const rules = scheme.usage.filter((u) => ids.includes(u.situation));
@@ -15,7 +17,9 @@ export function Usage({ situations: ids }: { situations: string[] }) {
       <dl className="grid gap-[var(--space-gap-group)]">
         {rules.map((r) => (
           <div key={r.situation}>
-            <dt className="[font-weight:var(--type-label-font-weight)]">{TITLES[r.situation]}</dt>
+            <dt className="[font-weight:var(--type-label-font-weight)]">
+              {TITLES[r.situation]}
+            </dt>
             <dd className="text-[var(--color-text-secondary)]">
               Use {r.use}. Avoid: {r.not}. {r.why}
             </dd>

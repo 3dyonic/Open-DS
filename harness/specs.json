@@ -304,6 +304,21 @@
         "storybook-build",
         "site-build"
       ]
+    },
+    {
+      "id": "OD-138",
+      "title": "Storybook: the canvas shows the component, one MDX docs template explains it, every component's stories built the same way",
+      "in": [
+        "one MDX docs page template for every component: what it is, in or out of the inventory and why, examples, playground and controls, when to use it, component keys as links",
+        "stories files: parameters.openDs, Playground, Examples; no usage text in the canvas",
+        "the docs page follows the scheme chosen in the toolbar",
+        "created projects get the same template"
+      ],
+      "checks": [
+        "storybook-stories-uniform",
+        "storybook-build",
+        "cli-create-works"
+      ]
     }
   ]
 }
