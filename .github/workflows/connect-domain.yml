@@ -1,0 +1,43 @@
+# Connects open-ds.dev and www.open-ds.dev to the Fly app through Cloudflare. Run once, by hand (OD-164).
+# Needs the repository secrets FLY_API_TOKEN, CLOUDFLARE_API_TOKEN (Zone DNS edit) and CLOUDFLARE_ZONE_ID.
+# The records are DNS only (not proxied), so Fly can issue and renew the TLS certificates.
+name: connect-domain
+
+on:
+  workflow_dispatch:
+
+jobs:
+  dns:
+    runs-on: ubuntu-latest
+    env:
+      FLY_API_TOKEN: ${{ secrets.FLY_API_TOKEN }}
+      CF_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+      CF_ZONE: ${{ secrets.CLOUDFLARE_ZONE_ID }}
+      APP: open-ds
+    steps:
+      - name: Every secret is set
+        run: |
+          for s in FLY_API_TOKEN CF_TOKEN CF_ZONE; do
+            [ -n "${!s}" ] || { echo "::error::Missing secret for $s."; exit 1; }
+          done
+      - uses: superfly/flyctl-actions/setup-flyctl@master
+      - name: Certificates on Fly
+        run: |
+          for host in open-ds.dev www.open-ds.dev; do
+            flyctl certs show "$host" --app "$APP" >/dev/null 2>&1 || flyctl certs add "$host" --app "$APP"
+          done
+      - name: CNAME records in Cloudflare
+        run: |
+          api="https://api.cloudflare.com/client/v4/zones/$CF_ZONE/dns_records"
+          for host in open-ds.dev www.open-ds.dev; do
+            body=$(jq -n --arg n "$host" --arg c "$APP.fly.dev" '{type:"CNAME",name:$n,content:$c,proxied:false,ttl:1,comment:"Fly app open-ds"}')
+            id=$(curl -fsS -H "Authorization: Bearer $CF_TOKEN" "$api?type=CNAME&name=$host" | jq -r '.result[0].id // empty')
+            if [ -n "$id" ]; then
+              curl -fsS -X PUT -H "Authorization: Bearer $CF_TOKEN" -H "content-type: application/json" "$api/$id" -d "$body" | jq -r '"updated \(.result.name) → \(.result.content)"'
+            else
+              curl -fsS -X POST -H "Authorization: Bearer $CF_TOKEN" -H "content-type: application/json" "$api" -d "$body" | jq -r '"created \(.result.name) → \(.result.content)"'
+            fi
+          done
+      - name: Certificate status
+        run: |
+          for host in open-ds.dev www.open-ds.dev; do flyctl certs check "$host" --app "$APP" || true; done
