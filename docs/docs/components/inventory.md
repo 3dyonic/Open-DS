@@ -8,7 +8,7 @@ description: "The components Dense data carries."
 
 # Inventory
 
-**35 of 61** catalogue components are in Dense data. The components answers picked them (see [Components](../foundations/components.md)). Anything not in is out.
+**36 of 62** catalogue components are in Dense data. The components answers picked them (see [Components](../foundations/components.md)). Anything not in is out.
 
 | Component | Family | In | Built | Why |
 | --- | --- | --- | --- | --- |
@@ -23,6 +23,7 @@ description: "The components Dense data carries."
 | Combobox | form | In | Yes | Picks a customer or product from thousands. |
 | Command | navigation | In | Yes | Keyboard-first jump to any record or action. |
 | Context menu | navigation | In | Yes | Right-click on a row, for experts. |
+| Data table | data | In | Yes | Experts scan hundreds of orders, filter by status and depot, sort by due time and act on many rows at once. |
 | Dialog | overlay | In | Yes | Edit one record without leaving the table. |
 | Dropdown menu | navigation | In | Yes | Row actions. |
 | Empty | feedback | In | Yes | An empty table says what to do next. |
@@ -73,11 +74,3 @@ description: "The components Dense data carries."
 | Sonner | feedback | Out | Not yet |  |
 | Spinner | feedback | Out | Yes |  |
 | Toggle | action | Out | Yes |  |
-
-## Patterns
-
-Larger parts built from the components above. They do not count toward the 35.
-
-| Pattern | Built from | Why |
-| --- | --- | --- |
-| Data table | Table, Input, Button, Checkbox, Popover, Toggle group | Experts scan hundreds of orders, filter by status and depot, sort by due time and act on many rows at once. |
