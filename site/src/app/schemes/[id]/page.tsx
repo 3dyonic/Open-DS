@@ -1,4 +1,5 @@
 // One scheme, built from the Figma frame S02 Scheme (117:900).
+import { primitivesPage } from "@/lib/primitives";
 import { DemoNote } from "@/components/demo-note";
 import { Options } from "@/components/options";
 import type { Metadata } from "next";
@@ -53,6 +54,10 @@ export default async function SchemePage({ params }: { params: Promise<{ id: str
     (Object.keys(s.tokens.brands).length - 1) *
       (leaves(s.tokens.semantic) + leaves((s.tokens as Record<string, unknown>).component));
   const componentCount = (s as unknown as { inventory: { in: unknown[] } }).inventory.in.length;
+  const prim = primitivesPage(id);
+  const primitiveCount =
+    prim.shared.reduce((n, x) => n + x.items.length, 0) +
+    prim.brands.reduce((n, b) => n + b.groups.reduce((m, x) => m + x.items.length, 0), 0);
   const brands = Object.entries(s.tokens.brands).map(([bid, b]) => ({ id: bid, label: b.label }));
   const rule = (sit: string) => s.usage.find((u) => u.situation === sit)!;
   const meta = [
@@ -173,12 +178,7 @@ export default async function SchemePage({ params }: { params: Promise<{ id: str
         </h2>
         <p className="max-w-[860px] text-[16px] leading-[1.45] text-[#3e3a31]">
           Every scope answers the same five questions:{" "}
-          {g.methods.map((m) => m.title.toLowerCase()).join(", ")}. The raw options they pick from
-          live on one page:{" "}
-          <Link href={`/schemes/${s.id}/primitives/`} className="font-semibold text-ink underline">
-            Primitives
-          </Link>
-          .
+          {g.methods.map((m) => m.title.toLowerCase()).join(", ")}.
         </p>
         <ul className="flex flex-col gap-4">
           {g.scopes.map((sc) => {
@@ -229,6 +229,26 @@ export default async function SchemePage({ params }: { params: Promise<{ id: str
             );
           })}
         </ul>
+        <Link
+          href={`/schemes/${s.id}/primitives/`}
+          className="flex flex-col gap-3 rounded-[8px] bg-ink p-6 text-paper hover:bg-[#2c2821] md:flex-row md:items-center md:gap-6"
+        >
+          <span className="flex flex-1 flex-col gap-1">
+            <span className="font-mono text-[11px] font-medium uppercase tracking-[0.44px] text-accent">
+              Primitives · {primitiveCount}
+            </span>
+            <span className="text-[20px] font-extrabold">
+              The raw options every answer picks from
+            </span>
+            <span className="text-[15px] leading-[1.45] text-line">
+              The palette, type, space, corners, shadows and motion steps of {s.name}: each value,
+              and the decisions that use it.
+            </span>
+          </span>
+          <span className="self-start rounded-[4px] bg-accent px-4 py-[10px] text-[16px] font-semibold text-ink md:self-center">
+            Open primitives →
+          </span>
+        </Link>
       </section>
 
       <section className="flex flex-col gap-8 rounded-[8px] bg-ink p-10 text-paper lg:flex-row">
