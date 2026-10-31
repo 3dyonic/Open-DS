@@ -87,7 +87,7 @@ function Specimen({ p }: { p: ProofData }) {
             )}
           </div>
         )}
-        <div className="flex gap-2">
+        <div className="flex flex-wrap gap-2">
           <Button size="compact">{p.sample.primary}</Button>
           <Button size="compact" variant="secondary">
             {p.sample.secondary}
