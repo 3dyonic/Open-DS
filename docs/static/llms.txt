@@ -17,6 +17,8 @@
 - [Accessibility](/foundations/accessibility)
 - [Naming](/foundations/naming)
 - [Voice and tone](/foundations/voice)
+- [Components](/foundations/components)
+- [Inventory](/components/inventory)
 - [Badge](/components/badge)
 - [Button](/components/button)
 - [Card](/components/card)

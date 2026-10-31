@@ -78,6 +78,102 @@
       ]
     }
   },
+  "inventory": {
+    "description": "The components this system carries, picked from the grammar catalogue by the components answers. Anything not listed is out.",
+    "follows": [
+      "components.roles",
+      "components.count",
+      "components.definition"
+    ],
+    "in": [
+      {
+        "id": "button",
+        "why": "The one action: sign up."
+      },
+      {
+        "id": "input",
+        "why": "The sign-up email."
+      },
+      {
+        "id": "label",
+        "why": "Names the field."
+      },
+      {
+        "id": "field",
+        "why": "Lays out the sign-up form."
+      },
+      {
+        "id": "carousel",
+        "why": "Moves through campaign images."
+      },
+      {
+        "id": "aspect-ratio",
+        "why": "Keeps campaign images in shape."
+      },
+      {
+        "id": "avatar",
+        "why": "Faces in quotes from customers."
+      },
+      {
+        "id": "badge",
+        "why": "New and limited labels."
+      },
+      {
+        "id": "card",
+        "why": "Products and features."
+      },
+      {
+        "id": "dialog",
+        "why": "The waitlist form over the page."
+      },
+      {
+        "id": "popover",
+        "why": "A product preview that opens on tap."
+      },
+      {
+        "id": "drawer",
+        "why": "The menu on a phone."
+      },
+      {
+        "id": "toast",
+        "why": "Confirms a place on the waitlist."
+      },
+      {
+        "id": "navigation-menu",
+        "why": "The site sections."
+      },
+      {
+        "id": "separator",
+        "why": "Breaks between sections."
+      },
+      {
+        "id": "skeleton",
+        "why": "Images while they load."
+      }
+    ],
+    "out": [
+      {
+        "id": "table",
+        "why": "Campaign pages tell a story; they do not list records."
+      },
+      {
+        "id": "sidebar",
+        "why": "Launch sites have no app navigation."
+      },
+      {
+        "id": "command",
+        "why": "Visitors on phones do not use keyboard menus."
+      },
+      {
+        "id": "accordion",
+        "why": "Campaign sections show everything; nothing worth saying is hidden."
+      },
+      {
+        "id": "hover-card",
+        "why": "Hover never happens on a phone, where most visitors arrive."
+      }
+    ]
+  },
   "themes": [
     {
       "id": "light",
@@ -669,6 +765,51 @@
       "because": [
         "outcomes.q1"
       ]
+    },
+    {
+      "question": "components.roles",
+      "option": "core-media",
+      "why": "Campaigns lead with media and big sections.",
+      "because": [
+        "content.q1",
+        "brand.q2"
+      ]
+    },
+    {
+      "question": "components.count",
+      "option": "few",
+      "why": "One action and a story need few parts; an agency keeps them fresh.",
+      "because": [
+        "tasks.q2",
+        "team.q1"
+      ]
+    },
+    {
+      "question": "components.definition",
+      "option": "brand-moment",
+      "why": "A component joins when it gives the campaign a moment.",
+      "because": [
+        "brand.q1",
+        "outcomes.q1"
+      ]
+    },
+    {
+      "question": "components.values",
+      "option": "some",
+      "why": "Some variants let each campaign look a little different.",
+      "because": [
+        "team.q2",
+        "brand.q2"
+      ]
+    },
+    {
+      "question": "components.lands",
+      "option": "campaign-sections",
+      "why": "Components sit inside big campaign sections.",
+      "because": [
+        "content.q1",
+        "tasks.q1"
+      ]
     }
   ],
   "usage": [
@@ -972,6 +1113,16 @@
         "voice.values"
       ],
       "example": "The drop is coming. Be first."
+    },
+    {
+      "situation": "missing-component",
+      "use": "a section built from the inventory with campaign tokens",
+      "not": "a new component for one campaign",
+      "why": "Campaigns change the look through tokens; new parts every drop are hard to keep working.",
+      "because": [
+        "team.q2",
+        "components.definition"
+      ]
     }
   ],
   "tokens": {

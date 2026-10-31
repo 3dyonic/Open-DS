@@ -148,7 +148,10 @@ test("errors are clear, and JSON when --json is set", () => {
 test("unknown commands and init without a scheme fail with a clear message", () => {
   const fail = (...args) => {
     try {
-      execFileSync(process.execPath, [bin, ...args], { encoding: "utf8", stdio: "pipe" });
+      execFileSync(process.execPath, [bin, ...args], {
+        encoding: "utf8",
+        stdio: "pipe",
+      });
       return null;
     } catch (e) {
       return e.stderr;
@@ -167,7 +170,17 @@ test("docs pages cover every scope and component, for every scheme", async () =>
     const pages = docsPages(loadScheme(id, roots), g, roots);
     for (const p of ["index.md", "voice.md", "themes.md", "agents.md"]) assert.ok(pages[p], `${id}: ${p}`);
     for (const sc of g.scopes) assert.match(pages[`foundations/${sc.id}.md`], /## The five answers/);
-    assert.equal(Object.keys(pages).filter((p) => p.startsWith("components/") && p.endsWith(".md")).length, components.length);
+    // An inventory page, then one page per built component that is in the inventory.
+    const scheme = loadScheme(id, roots);
+    const inv = scheme.inventory.in.map((i) => i.id);
+    const expected = components.map((f) => f.replace(/\.tsx$/, "")).filter((c) => inv.includes(c));
+    assert.match(pages["components/inventory.md"], new RegExp(`\\*\\*${inv.length} of ${g.catalogue.items.length}\\*\\*`));
+    assert.deepEqual(
+      Object.keys(pages)
+        .filter((p) => p.startsWith("components/") && p.endsWith(".md") && p !== "components/inventory.md")
+        .sort(),
+      expected.map((c) => `components/${c}.md`).sort(),
+    );
     assert.match(docsLlms(loadScheme(id, roots), pages), /- \[Voice and tone\]\(\/voice\)/);
   }
 });
@@ -186,10 +199,22 @@ test("init --docs writes the design system's docs", () => {
 test("create writes a full design system project", async () => {
   const { createProject } = await import("../src/create.mjs");
   const dir = join(temp(), "ds");
-  const record = createProject("multi-brand", dir, { brand: "coral", openDs: "file:../open-ds.tgz" });
+  const record = createProject("multi-brand", dir, {
+    brand: "coral",
+    openDs: "file:../open-ds.tgz",
+  });
   assert.equal(record.kind, "project");
   assert.equal(record.brand, "coral");
-  for (const f of [".gitignore", "tokens/build.mjs", "tokens/src/brands/aster.tokens.json", ".storybook/preview.tsx", "stories/button.stories.tsx", "docs/docs/index.md", "scheme.json", "AGENTS.md"])
+  for (const f of [
+    ".gitignore",
+    "tokens/build.mjs",
+    "tokens/src/brands/aster.tokens.json",
+    ".storybook/preview.tsx",
+    "stories/button.stories.tsx",
+    "docs/docs/index.md",
+    "scheme.json",
+    "AGENTS.md",
+  ])
     assert.ok(existsSync(join(dir, f)), f);
   const themes = JSON.parse(readFileSync(join(dir, "tokens/themes.json"), "utf8"));
   assert.equal(themes.brands[0].id, "coral");

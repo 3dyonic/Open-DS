@@ -18,7 +18,8 @@
     "scopes",
     "situations",
     "components",
-    "component_keys"
+    "component_keys",
+    "catalogue"
   ],
   "properties": {
     "$schema": {
@@ -216,6 +217,73 @@
           }
         }
       }
+    },
+    "catalogue": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["description", "source", "families", "items"],
+      "description": "Every component a design system can carry. Each scheme picks its inventory from these items through the components scope.",
+      "properties": {
+        "description": {
+          "type": "string",
+          "minLength": 1,
+          "description": "What the catalogue is and where it comes from."
+        },
+        "source": {
+          "type": "string",
+          "format": "uri",
+          "description": "Where the component sources live."
+        },
+        "families": {
+          "type": "array",
+          "minItems": 1,
+          "description": "Component families. The components.roles options name them.",
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": ["id", "description"],
+            "properties": {
+              "id": {
+                "type": "string",
+                "pattern": "^[a-z-]+$",
+                "description": "Family id."
+              },
+              "description": {
+                "type": "string",
+                "minLength": 1,
+                "description": "What components in the family do."
+              }
+            }
+          }
+        },
+        "items": {
+          "type": "array",
+          "minItems": 1,
+          "description": "One entry per component.",
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": ["id", "family", "description"],
+            "properties": {
+              "id": {
+                "type": "string",
+                "pattern": "^[a-z-]+$",
+                "description": "Component id, as in the source registry."
+              },
+              "family": {
+                "type": "string",
+                "pattern": "^[a-z-]+$",
+                "description": "One of the family ids."
+              },
+              "description": {
+                "type": "string",
+                "minLength": 1,
+                "description": "What the component is for, in one sentence."
+              }
+            }
+          }
+        }
+      }
     }
   },
   "$defs": {
@@ -266,6 +334,11 @@
           "type": "string",
           "minLength": 1,
           "description": "The answer in plain words."
+        },
+        "description": {
+          "type": "string",
+          "minLength": 1,
+          "description": "What the option means when the label alone is not enough, for example the range a count word stands for."
         }
       }
     },
