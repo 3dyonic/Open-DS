@@ -1,7 +1,7 @@
 // The Open DS robots (OD-157): a family of tin robots, each doing one design-system job.
 // Painted with Google Stitch in two editions: a daytime one on paper (<name>.webp) and a nocturnal
 // one (<name>-dark.webp). Both are cut out to transparent WebP in public/robots/, with the ground
-// separated out so shadows and glows stay translucent. The site theme picks the edition (CSS
+// separated out so shadows and glows stay translucent; the nocturnal ones keep their ground shadow. The site theme picks the edition (CSS
 // .robot-light and .robot-dark in globals.css); the hidden one is lazy and never downloads.
 import type { ReactNode } from "react";
 
@@ -9,32 +9,32 @@ export const ROBOTS = {
   swatch: {
     alt: "Swatch, a tall tin robot, holds up an orange colour card and a fan of paint swatches.",
     light: [352, 720],
-    dark: [352, 720],
+    dark: [347, 720],
   },
   measure: {
     alt: "Measure, a tin robot with a loupe eye, measures the gap between two blocks with a folding ruler.",
     light: [498, 720],
-    dark: [504, 720],
+    dark: [496, 720],
   },
   enquire: {
     alt: "Enquire, a round tin robot, holds up a sign with a question mark and taps its chin.",
     light: [520, 720],
-    dark: [523, 720],
+    dark: [517, 720],
   },
   parcel: {
     alt: "Parcel, a sturdy tin robot, walks forward holding out a paper parcel with an orange wax seal.",
     light: [444, 720],
-    dark: [449, 720],
+    dark: [438, 720],
   },
   slumber: {
     alt: "Slumber, a tin robot, sits curled up asleep with its wind-up key run down.",
     light: [628, 688],
-    dark: [466, 720],
+    dark: [478, 720],
   },
   scroll: {
     alt: "Scroll, a tin robot in round glasses, reads a long paper scroll that coils at its feet.",
     light: [466, 720],
-    dark: [475, 720],
+    dark: [473, 720],
   },
 } as const;
 
