@@ -35,9 +35,9 @@ Each token points to another token. Values live only on primitives, below.
 
 | Token | Points to |
 | --- | --- |
-| `radius.control` | `dense-data.theme.base.radius-control` → `radius.2` |
-| `radius.badge` | `dense-data.theme.base.radius-badge` → `radius.0` |
-| `radius.container` | `dense-data.theme.base.radius-container` → `radius.4` |
+| `radius.control` | `dense-data.theme.base.radius.control` → `radius.2` |
+| `radius.badge` | `dense-data.theme.base.radius.badge` → `radius.0` |
+| `radius.container` | `dense-data.theme.base.radius.container` → `radius.4` |
 | `radius.round` | `radius.full` |
 | `border-width.default` | `border-width.1` |
 | `border-width.focus` | `border-width.2` |

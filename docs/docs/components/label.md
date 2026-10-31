@@ -14,18 +14,18 @@ See it in [Storybook](http://localhost:6006) under Components / Label, in every 
 
 ## Component keys
 
-The CSS variable is the key with `/` replaced by `-`. Each key points to a token; values live only on primitives.
+The CSS variable is the key with `/` replaced by `-` and the base `@` dropped. Each key points to a token; values live only on primitives.
 
 | Key | What it controls | Points to, light | Points to, dark |
 | --- | --- | --- | --- |
-| `input/background` | Input fill. | `color.surface.default` → `dense-data.theme.light.color-surface-default` → `color.slate.light.0` | `color.surface.default` → `dense-data.theme.dark.color-surface-default` → `color.slate.dark.50` |
-| `input/border` | Input border at rest. | `color.border.strong` → `dense-data.theme.light.color-border-strong` → `color.slate.light.300` | `color.border.strong` → `dense-data.theme.dark.color-border-strong` → `color.slate.dark.200` |
-| `input/border-focus` | Input border when focused. | `color.border.focus` → `dense-data.theme.light.color-border-focus` → `color.violet.@` → `color.violet.light.600` | `color.border.focus` → `dense-data.theme.dark.color-border-focus` → `color.violet.dark.700` |
-| `input/text` | Typed text color. | `color.text.primary` → `dense-data.theme.light.color-text-primary` → `color.slate.light.900` | `color.text.primary` → `dense-data.theme.dark.color-text-primary` → `color.slate.dark.900` |
-| `input/placeholder` | Placeholder text color. | `color.text.muted` → `dense-data.theme.light.color-text-muted` → `color.slate.@` → `color.slate.light.500` | `color.text.muted` → `dense-data.theme.dark.color-text-muted` → `color.slate.dark.300` |
+| `input/background` | Input fill. | `color.surface.default` → `dense-data.theme.light.color.surface.default` → `color.slate.light.0` | `color.surface.default` → `dense-data.theme.dark.color.surface.default` → `color.slate.dark.50` |
+| `input/border/@` | Input border at rest. | `color.border.strong` → `dense-data.theme.light.color.border.strong` → `color.slate.light.300` | `color.border.strong` → `dense-data.theme.dark.color.border.strong` → `color.slate.dark.200` |
+| `input/border/focus` | Input border when focused. | `color.border.focus` → `dense-data.theme.light.color.border.focus` → `color.violet.light.600` | `color.border.focus` → `dense-data.theme.dark.color.border.focus` → `color.violet.dark.700` |
+| `input/text` | Typed text color. | `color.text.primary` → `dense-data.theme.light.color.text.primary` → `color.slate.light.900` | `color.text.primary` → `dense-data.theme.dark.color.text.primary` → `color.slate.dark.900` |
+| `input/placeholder` | Placeholder text color. | `color.text.muted` → `dense-data.theme.light.color.text.muted` → `color.slate.light.500` | `color.text.muted` → `dense-data.theme.dark.color.text.muted` → `color.slate.dark.300` |
 | `input/height` | Input height. | `size.control.default` → `size.32` | same |
 | `input/padding-x` | Horizontal padding inside an input. | `space.inset.control-x` → `space.12` | same |
-| `input/radius` | Input corner radius. | `radius.control` → `dense-data.theme.base.radius-control` → `radius.2` | same |
+| `input/radius` | Input corner radius. | `radius.control` → `dense-data.theme.base.radius.control` → `radius.2` | same |
 | `input/font-size` | Typed text size. | `type.body.font-size` → `font.size.14` | same |
 
 ## When to use it

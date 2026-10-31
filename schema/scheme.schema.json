@@ -731,13 +731,13 @@
     },
     "tokens": {
       "type": "object",
-      "description": "DTCG tokens in four tiers. Primitives are the raw options (colour by hue, mode and step: color.<hue>.light.<step>, color.<hue>.dark.<step>, color.<hue>.@). Each brand's theme picks from them, per mode. Semantics are the plain keys components read; a brand-dependent one points at {theme.<key>}, which the build resolves to the active brand and mode. Component keys point to semantics. content holds the voice scope's words.",
+      "description": "DTCG tokens in four tiers. Primitives are the raw options, steps only (colour by hue, mode and step: color.<hue>.light.<step>, color.<hue>.dark.<step>). Each brand's theme picks from them, per mode, and decides each concept's base (@). Semantics are the plain keys components read, on the same paths as the theme; a brand-dependent one points at {theme.<path>}, which the build resolves to the active brand and mode. Only semantic and component keys ship as CSS variables. Component keys point to semantics. content holds the voice scope's words.",
       "additionalProperties": false,
       "required": ["primitive", "brands", "semantic", "component", "content"],
       "properties": {
         "primitive": {
           "$ref": "#/$defs/group",
-          "description": "Raw options shared by every brand: colour hues (light ramp, dark ramp, @ base), space, size, radius, border width, font families, sizes, weights and line heights, shadows, durations, easing and opacity. Components never read them."
+          "description": "Raw options shared by every brand: colour hues (light ramp and dark ramp, steps only), space, size, radius, border width, font families, sizes, weights and line heights, shadows, durations, easing and opacity. Components never read them."
         },
         "brands": {
           "type": "object",
@@ -760,7 +760,7 @@
                 "type": "object",
                 "additionalProperties": false,
                 "required": ["light", "dark"],
-                "description": "The brand's theme. Each key is a semantic path with dashes (color-action-primary) and picks a primitive. Built as <theme>.theme.<part>.<key>, for example --aster-theme-light-color-action-primary.",
+                "description": "The brand's theme: the decision layer. Its tree has the same paths as the semantic keys it serves (color.action.primary.@, color.action.primary.hover), and each token picks a primitive. A concept with variants has a base, @, which each mode decides for itself. Build-time only: semantics resolve through it and it never ships as CSS variables.",
                 "properties": {
                   "$description": {
                     "type": "string",
@@ -785,7 +785,7 @@
         },
         "semantic": {
           "$ref": "#/$defs/group",
-          "description": "The plain keys components and agents read: colour, space, size, radius, type, motion, elevation. A brand- or mode-dependent key's value is {theme.<key>}."
+          "description": "The plain keys components and agents read: colour, space, size, radius, type, motion, elevation. A brand- or mode-dependent key's value is {theme.<its own path>}. A concept with variants has a base, @, beside them: color.action.primary.@ and color.action.primary.hover."
         },
         "component": {
           "$ref": "#/$defs/group",
@@ -801,7 +801,7 @@
   "$defs": {
     "group": {
       "type": "object",
-      "description": "A DTCG group: tokens and nested groups, with an optional $description and $type (inherited by its tokens). @ is the group's own base value.",
+      "description": "A DTCG group: tokens and nested groups, with an optional $description and $type (inherited by its tokens). @ is the concept's base (default) value, beside its variants.",
       "properties": {
         "$description": {
           "type": "string",
@@ -813,7 +813,7 @@
         },
         "@": {
           "$ref": "#/$defs/token",
-          "description": "The group's own base value, for example a hue's base colour. The build drops the @ from the name: color.blue.@ becomes --color-blue. A reference names it: {color.blue.@}."
+          "description": "The concept's base value, beside its variants, for example color.action.primary.@ next to color.action.primary.hover. The build drops the @ from the name: it becomes --color-action-primary. A reference names it: {color.action.primary.@}. Not used on primitives, which are steps only."
         }
       },
       "patternProperties": {

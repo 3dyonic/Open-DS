@@ -197,9 +197,9 @@
         "properties": {
           "id": {
             "type": "string",
-            "pattern": "^[a-z-]+(/[a-z-]+)+$",
-            "description": "Key id: component / part / property. Becomes the CSS variable --component-part-property.",
-            "examples": ["button/primary/background"]
+            "pattern": "^[a-z-]+(/([a-z-]+|@))+$",
+            "description": "Key id: component / part / property, and the key's token path. A part with variants has a base, @, beside them (button/primary/background/@ and button/primary/background/hover). Becomes the CSS variable --component-part-property, with the @ dropped: --button-primary-background.",
+            "examples": ["button/primary/background/@", "button/primary/background/hover", "button/height"]
           },
           "component": {
             "type": "string",

@@ -31,8 +31,8 @@ Each token points to another token. Values live only on primitives, below.
 
 | Token | Points to, light | Points to, dark |
 | --- | --- | --- |
-| `elevation.card` | `dense-data.theme.light.elevation-card` → `shadow.none` | `dense-data.theme.dark.elevation-card` → `shadow.none` |
-| `elevation.overlay` | `dense-data.theme.light.elevation-overlay` → `shadow.overlay` | `dense-data.theme.dark.elevation-overlay` → `shadow.overlay-dark` |
+| `elevation.card` | `dense-data.theme.light.elevation.card` → `shadow.none` | `dense-data.theme.dark.elevation.card` → `shadow.none` |
+| `elevation.overlay` | `dense-data.theme.light.elevation.overlay` → `shadow.overlay` | `dense-data.theme.dark.elevation.overlay` → `shadow.overlay-dark` |
 
 ## Primitives
 

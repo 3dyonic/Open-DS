@@ -9,7 +9,11 @@ const root = join(here, "..");
 const read = (...p) => readFileSync(join(here, "dist", ...p), "utf8");
 const index = JSON.parse(read("index.json"));
 const keys = JSON.parse(readFileSync(join(root, "schemes", "grammar.json"), "utf8")).component_keys.map(
-  (k) => `--${k.id.replaceAll("/", "-")}:`,
+  (k) =>
+    `--${k.id
+      .split("/")
+      .filter((p) => p !== "@")
+      .join("-")}:`,
 );
 
 test("all five schemes are built", () => {
@@ -75,7 +79,7 @@ test("multi-brand is a real multi-brand setup", () => {
     assert.ok(css.includes(`.dark[data-brand="${b}"]`), `${b} dark selector`);
     assert.ok(css.includes(`[data-brand="${b}"] .dark`), `${b} brand above dark`);
   }
-  const brandColor = (theme) => JSON.parse(read("multi-brand", `${theme}.tokens.json`)).color.action.primary;
+  const brandColor = (theme) => JSON.parse(read("multi-brand", `${theme}.tokens.json`)).color.action.primary["@"];
   assert.notEqual(brandColor("aster-light"), brandColor("birch-light"));
   assert.notEqual(brandColor("birch-light"), brandColor("coral-light"));
 });
@@ -105,40 +109,33 @@ test("voice tokens ship as content.json and stay out of the CSS", () => {
   }
 });
 
-test("colour primitives are hue, mode and step, and semantics reach them through the brand's theme", () => {
+test("only semantic and component keys ship as CSS variables, with primitives and themes resolved", () => {
   for (const s of index.schemes) {
     const css = read(s.id, "tokens.css");
-    assert.match(css, /--color-[a-z]+-light-\d+: #[0-9A-F]{6}/i, `${s.id}: a light ramp step`);
-    assert.match(css, /--color-[a-z]+-dark-\d+: #[0-9A-F]{6}/i, `${s.id}: a dark ramp step`);
-    assert.match(css, /--color-[a-z]+: var\(--color-[a-z]+-light-\d+\)/, `${s.id}: an @ base value`);
     const name = s.brands.length > 1 ? s.brands[0].id : s.id;
+    assert.ok(!new RegExp(`--${name}-theme-`).test(css), `${s.id}: no theme variables`);
+    assert.ok(!/--color-[a-z]+-(light|dark)-\d+/.test(css), `${s.id}: no colour primitive variables`);
+    assert.ok(!/var\(--color-[a-z]+-(light|dark)-/.test(css), `${s.id}: no reference to a primitive`);
+    assert.match(css, /--color-action-primary: #[0-9A-F]{6}/i, `${s.id}: a semantic resolves to its value`);
     assert.ok(
-      css.includes(`--color-action-primary: var(--${name}-theme-light-color-action-primary)`),
-      `${s.id}: light semantic → theme`,
-    );
-    assert.ok(
-      css.includes(`--color-action-primary: var(--${name}-theme-dark-color-action-primary)`),
-      `${s.id}: dark semantic → theme`,
+      css.includes("--button-primary-background: var(--color-action-primary)"),
+      `${s.id}: a component reads a semantic`,
     );
     assert.ok(!/--[\w-]*@/.test(css), `${s.id}: no @ in names`);
   }
 });
 
-test("every hue's @ base value is picked by a brand theme", () => {
+test("each theme decides its own base: primitives are steps only, themes and semantics share paths", () => {
   for (const s of index.schemes) {
-    const scheme = JSON.parse(readFileSync(new URL(`../../schemes/${s.id}.json`, import.meta.url), "utf8"));
-    const picks = new Set(
-      Object.values(scheme.tokens.brands).flatMap((b) =>
-        ["base", "light", "dark"].flatMap((part) => Object.values(b.theme[part] ?? {}).map((t) => t.$value)),
-      ),
-    );
-    for (const [hue, group] of Object.entries(scheme.tokens.primitive.color)) {
-      if (!group["@"]) continue;
-      assert.ok(picks.has(`{color.${hue}.@}`), `${s.id}: color.${hue}.@ is defined but no theme picks it`);
-      assert.ok(
-        ![...picks].includes(group["@"].$value),
-        `${s.id}: a theme picks ${group["@"].$value}; pick {color.${hue}.@} instead`,
-      );
+    const scheme = JSON.parse(readFileSync(join(root, "schemes", `${s.id}.json`), "utf8"));
+    for (const [hue, group] of Object.entries(scheme.tokens.primitive.color))
+      assert.ok(!group["@"], `${s.id}: color.${hue} has a base; bases belong to themes`);
+    for (const [id, b] of Object.entries(scheme.tokens.brands)) {
+      const light = b.theme.light.color.action.primary;
+      const dark = b.theme.dark.color.action.primary;
+      assert.ok(light["@"] && light.hover, `${s.id} ${id}: light action.primary has @ and hover`);
+      assert.ok(dark["@"] && dark.hover, `${s.id} ${id}: dark action.primary has @ and hover`);
     }
+    assert.equal(scheme.tokens.semantic.color.action.primary["@"].$value, "{theme.color.action.primary.@}");
   }
 });
