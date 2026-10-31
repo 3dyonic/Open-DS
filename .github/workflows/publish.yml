@@ -58,6 +58,11 @@ jobs:
           NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
         working-directory: cli
         run: |
+          # A version published by hand (the first one, with a 2FA code) is skipped, not an error.
+          version="$(node -p "require('./package.json').version")"
+          if npm view "open-ds@$version" version --registry https://registry.npmjs.org >/dev/null 2>&1; then
+            echo "::notice title=npmjs::open-ds@$version is already on npmjs; skipping."; exit 0
+          fi
           if [ -n "$NPM_TOKEN" ]; then
             echo "//registry.npmjs.org/:_authToken=${NPM_TOKEN}" > .npmrc
           fi
@@ -73,5 +78,9 @@ jobs:
           npm pkg set name=@3dyonic/open-ds
           echo "@3dyonic:registry=https://npm.pkg.github.com" > .npmrc
           echo "//npm.pkg.github.com/:_authToken=${NODE_AUTH_TOKEN}" >> .npmrc
+          version="$(node -p "require('./package.json').version")"
+          if npm view "@3dyonic/open-ds@$version" version --registry https://npm.pkg.github.com >/dev/null 2>&1; then
+            echo "::notice title=GitHub Packages::@3dyonic/open-ds@$version is already published; skipping."; rm .npmrc; exit 0
+          fi
           npm publish --registry https://npm.pkg.github.com $DRY
           rm .npmrc
