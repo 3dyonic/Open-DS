@@ -153,6 +153,12 @@ export default function Home() {
             Built for AI agents: an MCP server, AGENTS.md and llms.txt, so agents get the reasons,
             not just the values.
           </p>
+          <Link
+            href="/install/"
+            className="self-start text-[16px] font-semibold text-accent hover:underline"
+          >
+            How to install →
+          </Link>
         </div>
         <div className="flex flex-col gap-4 rounded-[8px] border border-muted p-7 lg:w-[480px] lg:shrink-0">
           <Eyebrow tone="accent">Contribute</Eyebrow>
