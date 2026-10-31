@@ -11,7 +11,14 @@
 //
 // Edit a file in tokens/src, then run: npm run tokens
 
-import { existsSync, mkdirSync, readFileSync, readdirSync, rmSync, writeFileSync } from "node:fs";
+import {
+  existsSync,
+  mkdirSync,
+  readFileSync,
+  readdirSync,
+  rmSync,
+  writeFileSync,
+} from "node:fs";
 import { dirname, join } from "node:path";
 import { fileURLToPath } from "node:url";
 import StyleDictionary from "style-dictionary";
@@ -20,10 +27,18 @@ const here = dirname(fileURLToPath(import.meta.url));
 const src = join(here, "src");
 const out = join(here, "..", "build");
 const read = (...p) => JSON.parse(readFileSync(join(src, ...p), "utf8"));
-const { name, brands, themes } = JSON.parse(readFileSync(join(here, "themes.json"), "utf8"));
+const { name, brands, themes } = JSON.parse(
+  readFileSync(join(here, "themes.json"), "utf8"),
+);
 
 // The values are already valid CSS, so only naming and composite transforms run.
-const TRANSFORMS = ["attribute/cti", "name/kebab", "fontFamily/css", "cubicBezier/css", "shadow/css/shorthand"];
+const TRANSFORMS = [
+  "attribute/cti",
+  "name/kebab",
+  "fontFamily/css",
+  "cubicBezier/css",
+  "shadow/css/shorthand",
+];
 
 // shadcn reads these variables. Each points at one semantic decision.
 const SHADCN = {
@@ -84,14 +99,25 @@ const SHADCN_SCALE = {
   "--text-lg": "var(--type-heading-font-size)",
   "--text-lg--line-height": "var(--type-heading-line-height)",
 };
-const ROLES = ["display", "title", "heading", "body", "label", "caption", "data"];
+const ROLES = [
+  "display",
+  "title",
+  "heading",
+  "body",
+  "label",
+  "caption",
+  "data",
+];
 
 const isObject = (v) => v && typeof v === "object" && !Array.isArray(v);
 function merge(...trees) {
   const tree = {};
   for (const t of trees) {
     for (const [k, v] of Object.entries(t ?? {})) {
-      tree[k] = isObject(v) && !("$value" in v) && isObject(tree[k]) ? merge(tree[k], v) : v;
+      tree[k] =
+        isObject(v) && !("$value" in v) && isObject(tree[k])
+          ? merge(tree[k], v)
+          : v;
     }
   }
   return tree;
@@ -113,7 +139,10 @@ function selectors(brand, mode) {
   const b = `[data-brand="${brand}"]`;
   const base = mode === "light" ? [":root"] : [".dark"];
   if (!multi) return base;
-  const withBrand = mode === "light" ? [`:root${b}`, b] : [`.dark${b}`, `.dark ${b}`, `${b} .dark`];
+  const withBrand =
+    mode === "light"
+      ? [`:root${b}`, b]
+      : [`.dark${b}`, `.dark ${b}`, `${b} .dark`];
   return first ? [...base, ...withBrand] : withBrand;
 }
 
@@ -122,7 +151,9 @@ async function format(tokens, platform) {
     tokens,
     usesDtcg: true,
     log: { verbosity: "silent", warnings: "disabled" },
-    platforms: { [platform.name]: { transforms: TRANSFORMS, files: [platform.file] } },
+    platforms: {
+      [platform.name]: { transforms: TRANSFORMS, files: [platform.file] },
+    },
   });
   const [file] = await sd.formatPlatform(platform.name);
   return file.output;
@@ -132,12 +163,21 @@ const cssBlock = async (tokens, selector) =>
   (
     await format(tokens, {
       name: "css",
-      file: { destination: "x.css", format: "css/variables", options: { selector, outputReferences: true } },
+      file: {
+        destination: "x.css",
+        format: "css/variables",
+        options: { selector, outputReferences: true },
+      },
     })
   ).replace(/^\/\*\*[\s\S]*?\*\/\n/, "");
 
 const resolved = async (tokens) =>
-  JSON.parse(await format(tokens, { name: "json", file: { destination: "x.json", format: "json/nested" } }));
+  JSON.parse(
+    await format(tokens, {
+      name: "json",
+      file: { destination: "x.json", format: "json/nested" },
+    }),
+  );
 
 const themeCss = () =>
   [
@@ -243,7 +283,10 @@ const INFIMA = {
 
 async function docusaurusCss(brand) {
   const light = await cssBlock(themeTokens(brand, "light"), ":root");
-  const dark = await cssBlock(themeTokens(brand, "dark"), 'html[data-theme="dark"]');
+  const dark = await cssBlock(
+    themeTokens(brand, "dark"),
+    'html[data-theme="dark"]',
+  );
   const infima = `:root,\nhtml[data-theme="dark"] {\n${Object.entries(INFIMA)
     .map(([k, v]) => `  ${k}: var(--${v});`)
     .join("\n")}\n}\n`;
@@ -258,7 +301,10 @@ for (const theme of themes) {
   const tokens = themeTokens(theme.brand, theme.mode);
   css += await cssBlock(tokens, selectors(theme.brand, theme.mode).join(",\n"));
   json[theme.id] = await resolved(tokens);
-  writeFileSync(join(out, "json", `${theme.id}.tokens.json`), JSON.stringify(json[theme.id], null, 2) + "\n");
+  writeFileSync(
+    join(out, "json", `${theme.id}.tokens.json`),
+    JSON.stringify(json[theme.id], null, 2) + "\n",
+  );
 }
 writeFileSync(join(out, "tokens.css"), css);
 writeFileSync(join(out, "theme.css"), themeCss());
@@ -273,6 +319,81 @@ writeFileSync(
   ].join("\n"),
 );
 if (existsSync(join(src, "content.tokens.json")))
-  writeFileSync(join(out, "content.json"), JSON.stringify(read("content.tokens.json"), null, 2) + "\n");
+  writeFileSync(
+    join(out, "content.json"),
+    JSON.stringify(read("content.tokens.json"), null, 2) + "\n",
+  );
 writeFileSync(join(out, "docusaurus.css"), await docusaurusCss(brands[0].id));
-console.log(`Built ${name}: ${themes.length} themes into build/ (${readdirSync(out).join(", ")}).`);
+
+// The brand of this design system's docs and Storybook, in the default brand's resolved tokens:
+// the Open DS mark (a 6 by 5 pixel grid, one cell lit) in the system's ink and primary colour,
+// for light and dark, and the Storybook theme. Docusaurus and Storybook serve build/brand/.
+const pick = (tree, path) => path.split(".").reduce((n, k) => n?.[k], tree);
+const modeTokens = (mode) =>
+  json[themes.find((t) => t.brand === brands[0].id && t.mode === mode)?.id] ??
+  json[themes.find((t) => t.mode === mode)?.id];
+const MARK = ["110111", "101010", "1l1011", "101001", "110111"];
+const logo = (ink, lit) =>
+  `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32.2 26.6" role="img" aria-label="Open DS">${MARK.flatMap(
+    (row, r) =>
+      [...row].map((c, i) =>
+        c === "0"
+          ? ""
+          : `<rect x="${+(i * 5.6).toFixed(1)}" y="${+(r * 5.6).toFixed(1)}" width="4.2" height="4.2" fill="${c === "l" ? lit : ink}"/>`,
+      ),
+  ).join("")}</svg>\n`;
+const px = (v) =>
+  typeof v === "string" && v.endsWith("rem")
+    ? parseFloat(v) * 16
+    : parseFloat(v) || 4;
+const storybookTheme = (t, base) => ({
+  base,
+  // manager.ts builds the sidebar brand (mark, name and a "Storybook" tag) from these.
+  brandName: `Open DS · ${name}`,
+  brandLogo: base === "dark" ? "logo-dark.svg" : "logo.svg",
+  colorPrimary: pick(t, "color.action.primary"),
+  colorSecondary: pick(t, "color.action.primary"),
+  appBg: pick(t, "color.surface.canvas"),
+  appContentBg: pick(t, "color.surface.default"),
+  appPreviewBg: pick(t, "color.surface.canvas"),
+  appBorderColor: pick(t, "color.border.default"),
+  appBorderRadius: px(pick(t, "radius.container")),
+  barBg: pick(t, "color.surface.default"),
+  barTextColor: pick(t, "color.text.secondary"),
+  barSelectedColor: pick(t, "color.action.primary"),
+  textColor: pick(t, "color.text.primary"),
+  textMutedColor: pick(t, "color.text.secondary"),
+  inputBg: pick(t, "color.surface.default"),
+  inputBorder: pick(t, "color.border.default"),
+  inputTextColor: pick(t, "color.text.primary"),
+  inputBorderRadius: px(pick(t, "radius.control")),
+  fontBase: pick(t, "type.body.font-family"),
+  fontCode: pick(t, "type.data.font-family"),
+});
+const brandOut = join(out, "brand");
+mkdirSync(brandOut, { recursive: true });
+const light = modeTokens("light");
+const dark = modeTokens("dark") ?? light;
+writeFileSync(
+  join(brandOut, "logo.svg"),
+  logo(pick(light, "color.text.primary"), pick(light, "color.action.primary")),
+);
+writeFileSync(
+  join(brandOut, "logo-dark.svg"),
+  logo(pick(dark, "color.text.primary"), pick(dark, "color.action.primary")),
+);
+writeFileSync(
+  join(brandOut, "storybook-theme.json"),
+  JSON.stringify(
+    {
+      description: `The Storybook theme of ${name}, from its tokens. Generated by tokens/build.mjs.`,
+      light: storybookTheme(light, "light"),
+      dark: storybookTheme(dark, "dark"),
+    },
+    null,
+    2,
+  ) + "\n",
+);
+console.log(
+  `Built ${name}: ${themes.length} themes into build/ (${readdirSync(out).join(", ")}).`,
+);
