@@ -1,4 +1,5 @@
 // One scheme, built from the Figma frame S02 Scheme (117:900).
+import { DemoNote } from "@/components/demo-note";
 import { Options } from "@/components/options";
 import type { Metadata } from "next";
 import Link from "next/link";
@@ -113,6 +114,7 @@ export default async function SchemePage({ params }: { params: Promise<{ id: str
           </Link>
         </div>
       </header>
+      <DemoNote />
 
       <section className="flex flex-col gap-5" aria-labelledby="reasons">
         <Eyebrow>Why this scheme exists</Eyebrow>

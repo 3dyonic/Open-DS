@@ -1,6 +1,7 @@
 // The grammar index, built from the Figma frame G Grammar index (130:900).
 import type { Metadata } from "next";
 import { Eyebrow } from "@/components/chrome";
+import { DemoNote } from "@/components/demo-note";
 import { Options } from "@/components/options";
 import { grammar, pickedBy, type Group } from "@/lib/schemes";
 
@@ -61,7 +62,7 @@ export default function QuestionsPage() {
           The master list every scheme answers. {reasonCount} reason questions and {scopeCount}{" "}
           scope questions, each with a stable id. Every scope answers the same five questions:{" "}
           {g.methods.map((m) => m.title.toLowerCase()).join(", ")}. The answers make each design
-          system. Draft for markup.
+          system.
         </p>
         <ol className="flex flex-wrap items-center gap-3">
           {layers.map(([t, n, on], i) => (
@@ -81,6 +82,7 @@ export default function QuestionsPage() {
           ))}
         </ol>
       </header>
+      <DemoNote />
       <section className="flex flex-col gap-4" aria-labelledby="reasons">
         <Eyebrow>
           <span id="reasons">Reasons · {reasonCount} questions</span>
