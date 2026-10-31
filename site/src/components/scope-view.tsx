@@ -1,5 +1,6 @@
 // One scope for one scheme, built from the Figma frame S01 Scope (114:900). The same five
 // questions and the same parts for every scope, voice included.
+import { Options } from "@/components/options";
 import Link from "next/link";
 import type { ScopePage } from "@/lib/scope";
 import { Legend, Swatch } from "./chrome";
@@ -269,8 +270,9 @@ export function ScopeView({ p }: { p: ScopePage }) {
               Question {i + 1}
             </p>
             <h2 className="text-[28px] font-extrabold leading-[1.15]">{q.text}</h2>
+            <Options options={q.options} chosen={q.chosen} label={`The options for: ${q.text}`} />
             <p className="text-[16px] leading-[1.45] text-[#3e3a31]">
-              <span className="font-semibold text-ink">{q.label}.</span> {q.why}
+              <span className="font-semibold text-ink">Why {p.scheme.name} picks it:</span> {q.why}
             </p>
             {q.because.length > 0 && (
               <p className="flex flex-wrap items-center gap-[6px]">

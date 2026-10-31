@@ -556,7 +556,7 @@
     {
       "question": "typography.count",
       "option": "some",
-      "why": "A middle-sized scale suits every brand font.",
+      "why": "One size per kind of text suits every brand font.",
       "because": [
         "business.q2"
       ]
@@ -999,7 +999,7 @@
     {
       "question": "components.count",
       "option": "some",
-      "why": "Enough for three product teams, kept by one platform team.",
+      "why": "Three product teams find their next parts ready, kept by one platform team.",
       "because": [
         "team.q1",
         "team.q2"
@@ -1017,7 +1017,7 @@
     {
       "question": "components.values",
       "option": "some",
-      "why": "Some variants let each brand feel present without new components.",
+      "why": "Variants for emphasis and size let each brand feel present without new components.",
       "because": [
         "brand.q2",
         "outcomes.q2"

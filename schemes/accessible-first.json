@@ -417,7 +417,7 @@
     {
       "question": "typography.count",
       "option": "few",
-      "why": "Few sizes, each clearly different.",
+      "why": "Only the sizes the screens need, each clearly different.",
       "because": [
         "human.q1"
       ]
@@ -859,7 +859,7 @@
     {
       "question": "components.count",
       "option": "few",
-      "why": "Fewer parts, each tested with assistive technology.",
+      "why": "Only the parts in use, each tested with assistive technology.",
       "because": [
         "people.q2",
         "team.q2"

@@ -15,9 +15,9 @@ Which components the system carries: its inventory, picked from the catalogue.
 | Question | Answer | Why |
 | --- | --- | --- |
 | Which component families does it need? | Core, plus data | Records need tables, filters and fast ways to move between them. |
-| How many components does it carry? | Some | Enough for a full operations tool, few enough for a small team to keep right. |
+| How far does the inventory reach? | What today's screens use, plus what the next ones will likely need | A full operations tool with the parts its next screens will need, still few enough for a small team to keep right. |
 | How does a component earn its place? | A use scenario needs it | A component joins only when a daily task needs it. |
-| How many variants does each component offer? | Few | Few variants keep repeated screens identical. |
+| When does a component get another look? | Only when the meaning changes | Repeated screens stay identical when a component changes only with its meaning. |
 | Where do components do the most work? | Tables and forms | Most work happens in tables and the forms that edit them. |
 
 ## Tokens
