@@ -4,6 +4,7 @@ import { createHash } from "node:crypto";
 import { existsSync, mkdirSync, readFileSync, readdirSync, writeFileSync } from "node:fs";
 import { dirname, join, resolve } from "node:path";
 import { agentsMd, skillSection } from "./agents.mjs";
+import { createProject } from "./create.mjs";
 import { docsLlms, docsPages } from "./docs.mjs";
 import { assetRoots, grammar, keyInfo, loadScheme, schemeIds, when, why } from "./schemes.mjs";
 
@@ -14,6 +15,9 @@ const HELP = `open-ds: deploy an Open DS scheme as a full design system.
   open-ds why <scheme> <id>            the answer and its reasons, for a question id
                                        (typography.definition) or a component key (button/primary/background)
   open-ds when <scheme> <situation>    what to use and why, for a situation id or plain words
+  open-ds create <dir> --scheme <id> [--brand <id>]
+                                       write a full design system project: Style Dictionary tokens,
+                                       components, Storybook, Docusaurus docs, agent files and CI
   open-ds init <scheme> [--dir .] [--brand <id>] [--docs]
                                        copy tokens, components, AGENTS.md and the agent skill;
                                        --docs also writes the design system's docs pages to docs/
@@ -177,6 +181,18 @@ export async function run(argv) {
       const rule = when(s, words.join(" "));
       if (!rule) throw new Error(`No situation matches "${words.join(" ")}". Situations are listed in schemes/grammar.json.`);
       out(rule, () => console.log(`${rule.title}\n  Use: ${rule.use}\n  Not: ${rule.not}\n  Why: ${rule.why}`));
+      return 0;
+    }
+    if (cmd === "create") {
+      if (!args[0] || args[0].startsWith("--")) throw new Error("create needs a folder: open-ds create <dir> --scheme <id>.");
+      const scheme = flag(args, "--scheme");
+      if (!scheme) throw new Error('create needs a scheme: --scheme <id>. Run "open-ds list" to see them.');
+      const dir = resolve(args[0]);
+      const record = createProject(scheme, dir, { brand: flag(args, "--brand"), openDs: flag(args, "--open-ds"), overwrite: yes });
+      out(record, () => {
+        console.log(`Created the ${record.scheme} design system in ${dir}: ${record.files.length} files.`);
+        console.log(`Next:\n  cd ${args[0]}\n  npm install\n  npm run storybook   # components\n  npm run docs        # docs`);
+      });
       return 0;
     }
     if (cmd === "init") {

@@ -6,8 +6,17 @@
     {
       "id": "OD-115",
       "title": "Harness: DoD test suite for every layer",
-      "in": ["instructions.json", "specs.json", "runner and report", "harness tests"],
-      "checks": ["harness-covers-instructions", "harness-covers-specs", "harness-self-test"]
+      "in": [
+        "instructions.json",
+        "specs.json",
+        "runner and report",
+        "harness tests"
+      ],
+      "checks": [
+        "harness-covers-instructions",
+        "harness-covers-specs",
+        "harness-self-test"
+      ]
     },
     {
       "id": "OD-109",
@@ -50,7 +59,12 @@
     {
       "id": "OD-117",
       "title": "Tokens with Style Dictionary",
-      "in": ["tokens/ package", "CSS light and dark per scheme", "shadcn variable mapping", "DTCG JSON"],
+      "in": [
+        "tokens/ package",
+        "CSS light and dark per scheme",
+        "shadcn variable mapping",
+        "DTCG JSON"
+      ],
       "checks": [
         "tokens-style-dictionary",
         "tokens-built-all-schemes",
@@ -62,32 +76,73 @@
     {
       "id": "OD-118",
       "title": "Components on the component API, themed per scheme",
-      "in": ["ui/ components", "component keys only", "shadcn registry"],
-      "checks": ["ui-components", "ui-component-keys-only", "ui-registry"]
+      "in": [
+        "ui/ components",
+        "component keys only",
+        "shadcn registry"
+      ],
+      "checks": [
+        "ui-components",
+        "ui-component-keys-only",
+        "ui-registry"
+      ]
     },
     {
       "id": "OD-111",
       "title": "CLI deploys any scheme",
-      "in": ["list, show, why, when, init, add", "init writes tokens, components, AGENTS.md and the skill"],
-      "checks": ["cli-package", "cli-package-works", "cli-commands", "cli-init-temp"]
+      "in": [
+        "list, show, why, when, init, add",
+        "init writes tokens, components, AGENTS.md and the skill"
+      ],
+      "checks": [
+        "cli-package",
+        "cli-package-works",
+        "cli-commands",
+        "cli-init-temp"
+      ]
     },
     {
       "id": "OD-112",
       "title": "Local MCP",
-      "in": ["FastMCP server", "list, get answer, why, when to use, deploy", "deploy runs the CLI"],
-      "checks": ["mcp-fastmcp", "mcp-tools", "mcp-deploy-uses-cli", "mcp-tests"]
+      "in": [
+        "FastMCP server",
+        "list, get answer, why, when to use, deploy",
+        "deploy runs the CLI"
+      ],
+      "checks": [
+        "mcp-fastmcp",
+        "mcp-tools",
+        "mcp-deploy-uses-cli",
+        "mcp-tests"
+      ]
     },
     {
       "id": "OD-119",
       "title": "Storybook",
-      "in": ["a story per component", "scheme and mode switches"],
-      "checks": ["storybook-stories", "storybook-switches", "storybook-build"]
+      "in": [
+        "a story per component",
+        "scheme and mode switches"
+      ],
+      "checks": [
+        "storybook-stories",
+        "storybook-switches",
+        "storybook-build"
+      ]
     },
     {
       "id": "OD-110",
       "title": "Website",
-      "in": ["Next.js static SPA", "home, schemes, scheme scopes, usage, take"],
-      "checks": ["site-stack", "site-static-export", "site-routes", "site-build", "content-no-real-names"]
+      "in": [
+        "Next.js static SPA",
+        "home, schemes, scheme scopes, usage, take"
+      ],
+      "checks": [
+        "site-stack",
+        "site-static-export",
+        "site-routes",
+        "site-build",
+        "content-no-real-names"
+      ]
     },
     {
       "id": "OD-120",
@@ -97,13 +152,25 @@
         "about, voice and tone, a page per scope, components, themes, agents",
         "the Open DS guide in guide/"
       ],
-      "checks": ["docs-docusaurus", "docs-sections", "llm-docs-frontmatter", "docs-build", "content-no-real-names"]
+      "checks": [
+        "docs-docusaurus",
+        "docs-sections",
+        "llm-docs-frontmatter",
+        "docs-build",
+        "content-no-real-names"
+      ]
     },
     {
       "id": "OD-121",
       "title": "Local end to end",
-      "in": ["TESTING.md", "pnpm e2e"],
-      "checks": ["e2e-guide", "e2e-run"]
+      "in": [
+        "TESTING.md",
+        "pnpm e2e"
+      ],
+      "checks": [
+        "e2e-guide",
+        "e2e-run"
+      ]
     },
     {
       "id": "OD-123",
@@ -115,7 +182,12 @@
         "voice and scenario text as outputs with follows",
         "voice tokens (content)"
       ],
-      "checks": ["scopes-uniform-template", "outputs-follow-answers", "schemes-voice-and-themes", "json-files-validate"]
+      "checks": [
+        "scopes-uniform-template",
+        "outputs-follow-answers",
+        "schemes-voice-and-themes",
+        "json-files-validate"
+      ]
     },
     {
       "id": "OD-124",
@@ -126,7 +198,12 @@
         "reference screenshots in harness/design",
         "design check: texts in order, fold, palette, height"
       ],
-      "checks": ["site-routes", "site-design-fidelity", "site-build", "content-no-real-names"]
+      "checks": [
+        "site-routes",
+        "site-design-fidelity",
+        "site-build",
+        "content-no-real-names"
+      ]
     },
     {
       "id": "OD-126",
@@ -137,7 +214,13 @@
         "open-ds init --docs and MCP deploy docs=true",
         "Open DS pages moved to guide/, old notes to guide/archive/"
       ],
-      "checks": ["docs-sections", "llm-docs-frontmatter", "docs-build", "cli-commands", "mcp-tests"]
+      "checks": [
+        "docs-sections",
+        "llm-docs-frontmatter",
+        "docs-build",
+        "cli-commands",
+        "mcp-tests"
+      ]
     },
     {
       "id": "OD-127",
@@ -147,7 +230,30 @@
         "the packed CLI runs outside the repository",
         "pnpm test:package: pack, npx init in a fresh app, type-check and build"
       ],
-      "checks": ["cli-package-works", "cli-commands", "mcp-tests", "standards-python", "json-files-validate"]
+      "checks": [
+        "cli-package-works",
+        "cli-commands",
+        "mcp-tests",
+        "standards-python",
+        "json-files-validate"
+      ]
+    },
+    {
+      "id": "OD-128",
+      "title": "open-ds create writes a full design system project for one scheme",
+      "in": [
+        "tokens/src DTCG source and a Style Dictionary build (npm run tokens) to build/",
+        "the components, Storybook for the scheme with mode and brand toggles and usage rules",
+        "Docusaurus docs from the scheme, in its own colours and fonts",
+        "scheme.json, AGENTS.md, the skill, llms.txt, CI and a README",
+        "the project depends on the open-ds package for why and when",
+        "pnpm test:create: pack, create, npm install, build tokens, Storybook and docs"
+      ],
+      "checks": [
+        "cli-create-temp",
+        "cli-create-works",
+        "cli-commands"
+      ]
     }
   ]
 }
