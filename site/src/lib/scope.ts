@@ -45,7 +45,7 @@ const themeOf = (s: Scheme) =>
   Object.values((s.tokens as unknown as { brands: Record<string, { theme: Theme }> }).brands)[0]
     .theme;
 
-/** The semantic tree in one mode, with each {theme.key} replaced by what the first brand's theme picks. */
+/** The semantic tree in one mode, with each {theme.<path>} replaced by what the first brand's theme picks. */
 export function semanticView(s: Scheme, mode: "light" | "dark"): Tree {
   const theme = themeOf(s);
   const walk = (node: Tree): Tree =>
@@ -55,7 +55,12 @@ export function semanticView(s: Scheme, mode: "light" | "dark"): Tree {
           const t = v as { $value: unknown };
           const m = typeof t.$value === "string" && t.$value.match(/^\{theme\.([^}]+)\}$/);
           if (!m) return [k, v];
-          const pick = (theme.base?.[m[1]] ?? theme[mode][m[1]]) as { $value: unknown } | undefined;
+          // The theme has the same paths as the semantics, with a base (@) per concept.
+          const at = (tree?: Tree) => {
+            const n = get(tree, m[1]);
+            return isToken(n) ? (n as { $value: unknown }) : undefined;
+          };
+          const pick = at(theme.base) ?? at(theme[mode]);
           return [k, { ...(v as Tree), $value: pick?.$value ?? t.$value }];
         }
         return [k, v && typeof v === "object" ? walk(v as Tree) : v];

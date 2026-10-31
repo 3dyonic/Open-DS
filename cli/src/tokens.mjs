@@ -1,13 +1,17 @@
 // How a scheme's tokens fit together, shared by the token build, the CLI, the docs and the site.
 //
-//   primitive   raw options: color.<hue>.light.<step>, color.<hue>.dark.<step>, color.<hue>.$root,
+//   primitive   raw options, steps only: color.<hue>.light.<step>, color.<hue>.dark.<step>,
 //               then space, size, radius, border-width, font, shadow, duration, easing, opacity
-//   theme       per brand: base (mode-free picks such as fonts and corners), light and dark.
-//               Each key picks a primitive. Built as <theme>.theme.<mode>.<key>,
-//               so CSS reads --<theme>-theme-light-color-action-primary.
-//   semantic    the plain keys components read. A brand-dependent one says {theme.<key>}, and the
-//               build points it at the active brand and mode's theme token.
+//   theme       per brand, the decision layer: base (mode-free picks such as fonts and corners),
+//               light and dark. Its tree has the same paths as the semantics it serves, and a
+//               concept with variants has a base, @, that each mode decides:
+//               theme.light.color.action.primary.@ and theme.light.color.action.primary.hover.
+//   semantic    the plain keys components read. A brand-dependent one says {theme.<its path>}, and
+//               the build points it at the active brand and mode's theme token.
 //   component   component keys, which read semantics.
+//
+// Only semantic and component keys ship as CSS variables. The build resolves primitives and
+// themes to values. A name drops the @: color.action.primary.@ is --color-action-primary.
 
 const isObject = (v) => v && typeof v === "object" && !Array.isArray(v);
 
@@ -29,7 +33,30 @@ export function mergeTokens(...trees) {
 export const themeName = (schemeId, brand) =>
   brand === "default" ? schemeId : brand;
 
-/** Rewrites {theme.<key>} in a token tree to the theme token of one brand and mode. */
+/** The CSS name of a token path: dots become dashes and a base (@) drops out. */
+export const cssName = (path) =>
+  (Array.isArray(path) ? path : path.split("."))
+    .filter((p) => p !== "@")
+    .join("-");
+
+/** The token at a dotted path in a tree, or undefined. */
+export const tokenAt = (tree, path) => {
+  const node = path
+    .split(".")
+    .reduce((n, p) => (isObject(n) ? n[p] : undefined), tree);
+  return isObject(node) && "$value" in node ? node : undefined;
+};
+
+/** Every token in a tree as [dotted path, token]. */
+export function flatTokens(tree, prefix = []) {
+  return Object.entries(tree ?? {}).flatMap(([k, v]) => {
+    if (k.startsWith("$") || !isObject(v)) return [];
+    const p = [...prefix, k];
+    return "$value" in v ? [[p.join("."), v]] : flatTokens(v, p);
+  });
+}
+
+/** Rewrites {theme.<path>} in a token tree to the theme token of one brand and mode. */
 function pointAtTheme(tree, name, theme, mode) {
   const out = {};
   for (const [k, v] of Object.entries(tree ?? {})) {
@@ -39,8 +66,8 @@ function pointAtTheme(tree, name, theme, mode) {
       if (!m) out[k] = v;
       else {
         const key = m[1];
-        const part = theme.base && key in theme.base ? "base" : mode;
-        if (!theme[part] || !(key in theme[part]))
+        const part = tokenAt(theme.base, key) ? "base" : mode;
+        if (!tokenAt(theme[part], key))
           throw new Error(`No theme key "${key}" in ${name} ${part}.`);
         out[k] = { ...v, $value: `{${name}.theme.${part}.${key}}` };
       }
@@ -81,7 +108,8 @@ export function semanticView(
           const m =
             typeof v.$value === "string" &&
             v.$value.match(/^\{theme\.([^}]+)\}$/);
-          const pick = m && (theme.base?.[m[1]] ?? theme[mode]?.[m[1]]);
+          const pick =
+            m && (tokenAt(theme.base, m[1]) ?? tokenAt(theme[mode], m[1]));
           return [k, pick ? { ...v, $value: pick.$value } : v];
         }
         return [k, isObject(v) ? walk(v) : v];
@@ -89,3 +117,11 @@ export function semanticView(
     );
   return walk(scheme.tokens.semantic);
 }
+
+/** The token paths that ship as CSS variables: every semantic and component key. */
+export const publicPaths = (scheme) =>
+  new Set(
+    [scheme.tokens.semantic, scheme.tokens.component].flatMap((t) =>
+      flatTokens(t).map(([p]) => p),
+    ),
+  );

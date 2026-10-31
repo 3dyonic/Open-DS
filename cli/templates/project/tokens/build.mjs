@@ -2,7 +2,8 @@
 // Builds this design system's tokens with Style Dictionary.
 //
 // Reads the DTCG source in tokens/src and tokens/themes.json, and writes build/:
-//   tokens.css               every token as a CSS variable: light on :root, dark on .dark, one block per brand
+//   tokens.css               the semantic and component keys as CSS variables: light on :root, dark on .dark,
+//                            one block per brand. Primitives and themes resolve to values and never ship.
 //   theme.css                shadcn's variables and a Tailwind v4 @theme, mapped onto the semantics
 //   shadcn.css               shadcn's radius, shadow and text scale, mapped onto the tokens
 //   json/<theme>.tokens.json the resolved tokens for one brand and mode
@@ -22,6 +23,7 @@ import {
 import { dirname, join } from "node:path";
 import { fileURLToPath } from "node:url";
 import StyleDictionary from "style-dictionary";
+import { outputReferencesFilter } from "style-dictionary/utils";
 
 const here = dirname(fileURLToPath(import.meta.url));
 const src = join(here, "src");
@@ -138,7 +140,26 @@ const primitives = readDir("primitive");
 const semantics = readDir("semantic");
 const components = readDir("component");
 
-// A semantic key that depends on the brand or mode says {theme.<key>}. Point it at this brand and mode.
+// The token at a dotted path, or undefined.
+const tokenAt = (tree, path) => {
+  const node = path
+    .split(".")
+    .reduce((n, p) => (isObject(n) ? n[p] : undefined), tree);
+  return isObject(node) && "$value" in node ? node : undefined;
+};
+const paths = (tree, prefix = []) =>
+  Object.entries(tree ?? {}).flatMap(([k, v]) =>
+    k.startsWith("$") || !isObject(v)
+      ? []
+      : "$value" in v
+        ? [[...prefix, k].join(".")]
+        : paths(v, [...prefix, k]),
+  );
+// Only the semantic and component keys ship as CSS variables.
+const ship = new Set([...paths(semantics), ...paths(components)]);
+
+// A semantic key that depends on the brand or mode says {theme.<its path>}. The theme has the same
+// paths, with a base (@) per concept that each mode decides. Point it at this brand and mode.
 function pointAtTheme(tree, name, theme, mode) {
   const out = {};
   for (const [k, v] of Object.entries(tree)) {
@@ -147,8 +168,8 @@ function pointAtTheme(tree, name, theme, mode) {
         typeof v.$value === "string" && v.$value.match(/^\{theme\.([^}]+)\}$/);
       if (!m) out[k] = v;
       else {
-        const part = theme.base && m[1] in theme.base ? "base" : mode;
-        if (!theme[part]?.[m[1]])
+        const part = tokenAt(theme.base, m[1]) ? "base" : mode;
+        if (!tokenAt(theme[part], m[1]))
           throw new Error(
             `No theme key "${m[1]}" in tokens/src/theme for ${name} ${part}.`,
           );
@@ -209,7 +230,8 @@ const cssBlock = async (tokens, selector) =>
       file: {
         destination: "x.css",
         format: "css/variables",
-        options: { selector, outputReferences: true },
+        filter: (token) => ship.has(token.path.join(".")),
+        options: { selector, outputReferences: outputReferencesFilter },
       },
     })
   ).replace(/^\/\*\*[\s\S]*?\*\/\n/, "");

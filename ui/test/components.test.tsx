@@ -9,14 +9,23 @@ import * as UI from "../src/index";
 const here = join(import.meta.dirname, "..");
 const files: string[] = readdirSync(join(here, "src", "components")).filter((f: string) => f.endsWith(".tsx"));
 const keys = JSON.parse(readFileSync(join(here, "..", "schemes", "grammar.json"), "utf8")).component_keys.map(
-  (k: { id: string }) => `--${k.id.replaceAll("/", "-")}`,
+  // The CSS name drops a base (@): button/primary/background/@ is --button-primary-background.
+  (k: { id: string }) =>
+    `--${k.id
+      .split("/")
+      .filter((p) => p !== "@")
+      .join("-")}`,
 );
 
 test("every component file explains itself to people and agents", () => {
   for (const f of files) {
     const src = readFileSync(join(here, "src", "components", f), "utf8");
     assert.match(src, /^\/\*\*\n \* .+\n/, `${f} needs a doc comment`);
-    assert.match(src, /Reads (only component keys|the label text role|the shadcn variables)/, `${f} must say which keys it reads`);
+    assert.match(
+      src,
+      /Reads (only component keys|the label text role|the shadcn variables)/,
+      `${f} must say which keys it reads`,
+    );
   }
 });
 

@@ -2,7 +2,7 @@
 // Docusaurus. The docs site (docs/) and `open-ds init --docs` both use this, so a team that takes
 // a scheme gets the same pages Open DS builds.
 
-import { semanticView, themeTokens } from "./tokens.mjs";
+import { cssName, semanticView, themeTokens } from "./tokens.mjs";
 import { existsSync, readFileSync, readdirSync } from "node:fs";
 import { join } from "node:path";
 import { questions } from "./schemes.mjs";
@@ -101,7 +101,7 @@ const show = (v) =>
 const px = (v) =>
   /^-?[\d.]+rem$/.test(v) ? `${v} (${Math.round(parseFloat(v) * 16)}px)` : v;
 
-const cssVar = (path) => `var(--${path.replaceAll(".", "-")})`;
+const cssVar = (path) => `var(--${cssName(path)})`;
 const attr = (s) => String(s).replaceAll('"', "&quot;");
 
 /** One theme's tokens before resolving: primitives, the brand, the semantics for the mode, component keys. */
@@ -471,7 +471,7 @@ export function docsPages(
       `# ${title(name)}\n\n${esc(componentIntro(roots.ui, name)).replaceAll("*", "\\*").replaceAll("_", "\\_")}\n\n` +
       `See it in [Storybook](${storybook}) under Components / ${title(name)}, in every theme.\n\n` +
       (keys.length
-        ? `## Component keys\n\nThe CSS variable is the key with \`/\` replaced by \`-\`. Each key points to a token; values live only on primitives.\n\n| Key | What it controls | Points to, ${first.id} | Points to, ${dark.id} |\n| --- | --- | --- | --- |\n`
+        ? `## Component keys\n\nThe CSS variable is the key with \`/\` replaced by \`-\` and the base \`@\` dropped. Each key points to a token; values live only on primitives.\n\n| Key | What it controls | Points to, ${first.id} | Points to, ${dark.id} |\n| --- | --- | --- | --- |\n`
         : `## Tokens it reads\n\nFrom shadcn/ui. It reads shadcn's variables, which theme.css maps onto this system's semantic tokens, and the radius, shadow and text scale in shadcn.css.\n`) +
       keys
         .map((k) => {

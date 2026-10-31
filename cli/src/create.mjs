@@ -3,6 +3,7 @@
 // The project depends on the open-ds package for why, when and add.
 
 import { themeName } from "./tokens.mjs";
+import { tokenReadmes } from "./readmes.mjs";
 import {
   existsSync,
   mkdirSync,
@@ -70,7 +71,7 @@ function readme(scheme, name, brands) {
     "",
     "| Folder | What it holds |",
     "| --- | --- |",
-    "| `tokens/src/` | The DTCG token source, one file per group: `primitive/` (colour by hue with light, dark and `$root`; space, size, radius, font, shadow, motion), `theme/` (each brand's picks per mode), `semantic/`, `component/` and content. |",
+    "| `tokens/src/` | The DTCG token source, one file per group: `primitive/` (steps only: colour by hue with light and dark ramps; space, size, radius, font, shadow, motion), `theme/` (each brand's decisions per mode, on the semantic paths, with a base `@` per concept), `semantic/`, `component/` and content. Each folder has a README. Only semantic and component keys ship as CSS variables. |",
     "| `tokens/build.mjs` | The Style Dictionary build. `npm run tokens` writes CSS, the shadcn and Tailwind theme and JSON to `build/`. |",
     "| `src/components/ui/` | The components. Each reads only component keys such as `--button-primary-background`. |",
     "| `src/styles/index.css` | Tailwind, the built tokens, the theme and the base styles. |",
@@ -189,6 +190,9 @@ export function createProject(
     write(`tokens/src/component/${group}.tokens.json`, json({ [group]: node }));
   if (t.content)
     write("tokens/src/content.tokens.json", json({ content: t.content }));
+  // Every folder says what it holds and its rules, for people and agents.
+  for (const [dir, text] of Object.entries(tokenReadmes(scheme)))
+    write(`tokens/src/${dir}README.md`, text);
   // The default brand goes first, so it is the one on :root.
   const order = brand ? [brand, ...brands.filter((b) => b !== brand)] : brands;
   write(

@@ -9,7 +9,7 @@ export type Primitive = {
   description?: string;
   /** Semantic tokens that reach it (through a brand's theme for brand-dependent keys), with the mode and brand. */
   usedBy: { path: string; mode: string; brand?: string }[];
-  /** Set when the primitive itself points at another primitive (a hue's $root pointing at a step). */
+  /** Set when the primitive itself points at another primitive (a hue's @ pointing at a step). */
   ref?: string;
   /** Other primitives that point at this one. */
   pointedBy: string[];
@@ -20,7 +20,7 @@ const GROUPS: [string, string, string][] = [
   [
     "color",
     "Colour",
-    "Raw hues. Each has a light ramp, a dark ramp (the same steps, tuned for dark backgrounds) and a base value named after the hue (such as color.purple), written $root in the source. Brand themes pick from these.",
+    "Raw hues. Each has a light ramp and a dark ramp (the same steps, tuned for dark backgrounds). Steps only: each brand theme picks from these and decides its own base (@).",
   ],
   ["font", "Type", "Font families, sizes, weights and line heights."],
   ["space", "Space", "The spacing steps gaps and insets pick from."],
@@ -43,7 +43,7 @@ function flatten(
   // A group's $type is inherited by its tokens (DTCG).
   const inherited = (node.$type as string | undefined) ?? type;
   return Object.entries(node).flatMap(([k, v]) => {
-    if ((k.startsWith("$") && k !== "$root") || !v || typeof v !== "object") return [];
+    if (k.startsWith("$") || !v || typeof v !== "object") return [];
     const p = [...prefix, k];
     return isToken(v)
       ? [{ path: p.join("."), token: { $type: inherited, ...(v as Node) } }]
@@ -74,7 +74,7 @@ export function primitivesPage(schemeId: string) {
   const brandIds = Object.keys(t.brands);
   const multi = brandIds.length > 1;
 
-  // Which semantic keys say {theme.<key>}, and which point straight at a primitive.
+  // Which semantic keys say {theme.<path>}, and which point straight at a primitive.
   const byThemeKey = new Map<string, string[]>();
   const used = new Map<string, { path: string; mode: string; brand?: string }[]>();
   const add = (prim: string, u: { path: string; mode: string; brand?: string }) =>
@@ -86,26 +86,27 @@ export function primitivesPage(schemeId: string) {
       byThemeKey.set(r.slice(6), [...(byThemeKey.get(r.slice(6)) ?? []), path]);
     else add(r, { path, mode: "base" });
   }
-  // Each brand's theme picks a primitive per key; the semantic keys that read that key use it.
+  // Each brand's theme picks a primitive per path (the semantic's own path, with a base @ per
+  // concept); the semantic keys that read that path use it.
   for (const b of brandIds)
     for (const part of ["base", "light", "dark"]) {
       const tree = t.brands[b].theme[part];
       if (!tree || typeof tree !== "object") continue;
-      for (const [key, tok] of Object.entries(tree as Node)) {
-        const r = refOf((tok as Node).$value);
+      for (const { path: key, token: tok } of flatten(tree as Node)) {
+        const r = refOf(tok.$value);
         if (!r) continue;
         for (const path of byThemeKey.get(key) ?? [])
           add(r, { path, mode: part, ...(multi && { brand: t.brands[b].label ?? b }) });
       }
     }
-  // A primitive that points at another (a hue's $root → a light step) passes its users on.
+  // A primitive that points at another passes its users on.
   const primRefs = new Map<string, string[]>();
   for (const { path, token } of flatten(t.primitive)) {
     const r = refOf(token.$value);
     if (r) primRefs.set(r, [...(primRefs.get(r) ?? []), path]);
   }
 
-  // The value a reference ends at, so a hue's base value draws its swatch.
+  // The value a reference ends at, so a primitive that points at another draws its swatch.
   const byPath = new Map(flatten(t.primitive).map(({ path, token }) => [path, token]));
   const resolve = (v: unknown, depth = 0): unknown => {
     const r = refOf(v);

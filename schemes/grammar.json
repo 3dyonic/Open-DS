@@ -2156,11 +2156,11 @@
       "id": "button",
       "description": "Triggers an action. Variants: primary, secondary, ghost.",
       "keys": [
-        "button/primary/background",
-        "button/primary/background-hover",
+        "button/primary/background/@",
+        "button/primary/background/hover",
         "button/primary/label",
-        "button/secondary/background",
-        "button/secondary/background-hover",
+        "button/secondary/background/@",
+        "button/secondary/background/hover",
         "button/secondary/label",
         "button/secondary/border",
         "button/ghost/background-hover",
@@ -2179,8 +2179,8 @@
       "description": "Single-line text entry, also used by select.",
       "keys": [
         "input/background",
-        "input/border",
-        "input/border-focus",
+        "input/border/@",
+        "input/border/focus",
         "input/text",
         "input/placeholder",
         "input/height",
@@ -2244,8 +2244,8 @@
       "description": "Switches between views.",
       "keys": [
         "tabs/indicator",
-        "tabs/label",
-        "tabs/label-active"
+        "tabs/label/@",
+        "tabs/label/active"
       ]
     },
     {
@@ -2272,16 +2272,16 @@
   ],
   "component_keys": [
     {
-      "id": "button/primary/background",
+      "id": "button/primary/background/@",
       "component": "button",
       "description": "Primary button fill.",
-      "default": "color.action.primary"
+      "default": "color.action.primary.@"
     },
     {
-      "id": "button/primary/background-hover",
+      "id": "button/primary/background/hover",
       "component": "button",
       "description": "Primary button fill on hover.",
-      "default": "color.action.primary-hover"
+      "default": "color.action.primary.hover"
     },
     {
       "id": "button/primary/label",
@@ -2290,16 +2290,16 @@
       "default": "color.text.on-action"
     },
     {
-      "id": "button/secondary/background",
+      "id": "button/secondary/background/@",
       "component": "button",
       "description": "Secondary button fill.",
-      "default": "color.action.secondary"
+      "default": "color.action.secondary.@"
     },
     {
-      "id": "button/secondary/background-hover",
+      "id": "button/secondary/background/hover",
       "component": "button",
       "description": "Secondary button fill on hover.",
-      "default": "color.action.secondary-hover"
+      "default": "color.action.secondary.hover"
     },
     {
       "id": "button/secondary/label",
@@ -2374,13 +2374,13 @@
       "default": "color.surface.default"
     },
     {
-      "id": "input/border",
+      "id": "input/border/@",
       "component": "input",
       "description": "Input border at rest.",
       "default": "color.border.strong"
     },
     {
-      "id": "input/border-focus",
+      "id": "input/border/focus",
       "component": "input",
       "description": "Input border when focused.",
       "default": "color.border.focus"
@@ -2425,7 +2425,7 @@
       "id": "control/checked",
       "component": "control",
       "description": "Fill of a checked checkbox or an on switch.",
-      "default": "color.action.primary"
+      "default": "color.action.primary.@"
     },
     {
       "id": "control/track",
@@ -2479,37 +2479,37 @@
       "id": "badge/success/background",
       "component": "badge",
       "description": "Success badge fill.",
-      "default": "color.status.success-subtle"
+      "default": "color.status.success.subtle"
     },
     {
       "id": "badge/success/label",
       "component": "badge",
       "description": "Success badge label.",
-      "default": "color.status.success"
+      "default": "color.status.success.@"
     },
     {
       "id": "badge/warning/background",
       "component": "badge",
       "description": "Warning badge fill.",
-      "default": "color.status.warning-subtle"
+      "default": "color.status.warning.subtle"
     },
     {
       "id": "badge/warning/label",
       "component": "badge",
       "description": "Warning badge label.",
-      "default": "color.status.warning"
+      "default": "color.status.warning.@"
     },
     {
       "id": "badge/danger/background",
       "component": "badge",
       "description": "Danger badge fill.",
-      "default": "color.status.danger-subtle"
+      "default": "color.status.danger.subtle"
     },
     {
       "id": "badge/danger/label",
       "component": "badge",
       "description": "Danger badge label.",
-      "default": "color.status.danger"
+      "default": "color.status.danger.@"
     },
     {
       "id": "card/background",
@@ -2581,16 +2581,16 @@
       "id": "tabs/indicator",
       "component": "tabs",
       "description": "Active tab indicator.",
-      "default": "color.action.primary"
+      "default": "color.action.primary.@"
     },
     {
-      "id": "tabs/label",
+      "id": "tabs/label/@",
       "component": "tabs",
       "description": "Inactive tab label.",
       "default": "color.text.secondary"
     },
     {
-      "id": "tabs/label-active",
+      "id": "tabs/label/active",
       "component": "tabs",
       "description": "Active tab label.",
       "default": "color.text.primary"

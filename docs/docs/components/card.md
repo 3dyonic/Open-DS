@@ -14,15 +14,15 @@ See it in [Storybook](http://localhost:6006) under Components / Card, in every t
 
 ## Component keys
 
-The CSS variable is the key with `/` replaced by `-`. Each key points to a token; values live only on primitives.
+The CSS variable is the key with `/` replaced by `-` and the base `@` dropped. Each key points to a token; values live only on primitives.
 
 | Key | What it controls | Points to, light | Points to, dark |
 | --- | --- | --- | --- |
-| `card/background` | Card fill. | `color.surface.default` → `dense-data.theme.light.color-surface-default` → `color.slate.light.0` | `color.surface.default` → `dense-data.theme.dark.color-surface-default` → `color.slate.dark.50` |
-| `card/border` | Card border. | `color.border.default` → `dense-data.theme.light.color-border-default` → `color.slate.light.200` | `color.border.default` → `dense-data.theme.dark.color-border-default` → `color.slate.dark.100` |
-| `card/radius` | Card corner radius. | `radius.container` → `dense-data.theme.base.radius-container` → `radius.4` | same |
+| `card/background` | Card fill. | `color.surface.default` → `dense-data.theme.light.color.surface.default` → `color.slate.light.0` | `color.surface.default` → `dense-data.theme.dark.color.surface.default` → `color.slate.dark.50` |
+| `card/border` | Card border. | `color.border.default` → `dense-data.theme.light.color.border.default` → `color.slate.light.200` | `color.border.default` → `dense-data.theme.dark.color.border.default` → `color.slate.dark.100` |
+| `card/radius` | Card corner radius. | `radius.container` → `dense-data.theme.base.radius.container` → `radius.4` | same |
 | `card/padding` | Padding inside a card. | `space.inset.container` → `space.16` | same |
-| `card/shadow` | Card shadow. | `elevation.card` → `dense-data.theme.light.elevation-card` → `shadow.none` | `elevation.card` → `dense-data.theme.dark.elevation-card` → `shadow.none` |
+| `card/shadow` | Card shadow. | `elevation.card` → `dense-data.theme.light.elevation.card` → `shadow.none` | `elevation.card` → `dense-data.theme.dark.elevation.card` → `shadow.none` |
 
 ## When to use it
 
