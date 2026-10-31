@@ -539,9 +539,12 @@ export async function runStdio(options) {
   await createMcpServer(options).connect(new StdioServerTransport());
 }
 
-/** Serves Streamable HTTP at /mcp, without sessions or authentication. Returns the Node server. */
-export function runHttp({ port = 8787, host = "127.0.0.1", roots } = {}) {
-  const http = createHttpServer(async (req, res) => {
+/**
+ * The request handler behind runHttp: Streamable HTTP at /mcp, health at / and /health. A host can
+ * mount it next to other routes (the hosted server also serves the site).
+ */
+export function mcpHandler({ roots } = {}) {
+  return async (req, res) => {
     const path = new URL(req.url, "http://x").pathname;
     if (path === "/" || path === "/health") {
       res.writeHead(200, { "content-type": "application/json" });
@@ -611,7 +614,12 @@ export function runHttp({ port = 8787, host = "127.0.0.1", roots } = {}) {
     });
     await server.connect(transport);
     await transport.handleRequest(req, res, body);
-  });
+  };
+}
+
+/** Serves Streamable HTTP at /mcp, without sessions or authentication. Returns the Node server. */
+export function runHttp({ port = 8787, host = "127.0.0.1", roots } = {}) {
+  const http = createHttpServer(mcpHandler({ roots }));
   http.on("error", (e) => {
     console.error(
       e.code === "EADDRINUSE"
