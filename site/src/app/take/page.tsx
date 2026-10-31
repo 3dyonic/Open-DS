@@ -2,6 +2,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { Eyebrow } from "@/components/chrome";
+import { WithRobot } from "@/components/robot";
 import { answerOf, grammar, scheme } from "@/lib/schemes";
 
 export const metadata: Metadata = {
@@ -78,14 +79,16 @@ export default function TakePage() {
           <span className="text-muted">/</span>
           <span className="text-accent-text">Take it</span>
         </nav>
-        <h1 className="text-[44px] leading-[1.05] font-extrabold md:text-[56px]">
-          Take a scheme. Deploy it your way.
-        </h1>
-        <p className="max-w-[880px] text-[19px] leading-[1.45] text-[#3e3a31]">
-          Pick a ready-made scheme. Connect your AI and let it deploy the scheme, or use the package
-          and do it yourself. Either way you get a whole working design system, and every piece
-          carries the product reason behind it.
-        </p>
+        <WithRobot name="parcel" priority>
+          <h1 className="text-[44px] leading-[1.05] font-extrabold md:text-[56px]">
+            Take a scheme. Deploy it your way.
+          </h1>
+          <p className="max-w-[880px] text-[19px] leading-[1.45] text-body">
+            Pick a ready-made scheme. Connect your AI and let it deploy the scheme, or use the
+            package and do it yourself. Either way you get a whole working design system, and every
+            piece carries the product reason behind it.
+          </p>
+        </WithRobot>
       </header>
 
       <div className="grid gap-4 lg:grid-cols-2">
@@ -106,8 +109,8 @@ export default function TakePage() {
             className="flex flex-col gap-3 rounded-[8px] border border-line bg-white p-6"
           >
             <h2 className="text-[26px] font-extrabold">{t}</h2>
-            <p className="text-[16px] leading-[1.45] text-[#3e3a31]">{p}</p>
-            <pre className="rounded-[6px] bg-ink p-4 font-mono text-[14px] whitespace-pre-wrap text-paper">
+            <p className="text-[16px] leading-[1.45] text-body">{p}</p>
+            <pre className="inverse rounded-[6px] bg-ink p-4 font-mono text-[14px] whitespace-pre-wrap text-paper">
               {code}
             </pre>
           </section>
@@ -128,7 +131,7 @@ export default function TakePage() {
                 <span aria-hidden className="size-[10px] bg-accent" />
                 {t}
               </h3>
-              <p className="text-[15px] leading-[1.45] text-[#3e3a31]">{p}</p>
+              <p className="text-[15px] leading-[1.45] text-body">{p}</p>
               <ul className="flex flex-wrap gap-[6px]">
                 {chips.map((c) => (
                   <li key={c} className="rounded-[3px] bg-tag px-2 py-1 font-mono text-[12px]">
@@ -141,7 +144,7 @@ export default function TakePage() {
         </ul>
       </section>
 
-      <section className="flex flex-col gap-6 rounded-[8px] bg-ink p-10 text-paper">
+      <section className="inverse flex flex-col gap-6 rounded-[8px] bg-ink p-10 text-paper">
         <Eyebrow tone="accent">The AI layer · optimized for agents</Eyebrow>
         <h2 className="text-[36px] font-extrabold md:text-[44px]">
           Your agent gets the reasons, not just the values.
@@ -165,11 +168,11 @@ export default function TakePage() {
               ))}
             </dl>
           </div>
-          <div className="flex flex-col gap-3 rounded-[6px] bg-[#2c2821] p-5">
+          <div className="flex flex-col gap-3 rounded-[6px] bg-ink-raised p-5">
             <p className="font-mono text-[12px] uppercase tracking-[0.48px] text-line">
               An agent, asking why
             </p>
-            <p className="rounded-[4px] bg-[#3e3a31] p-3 text-[14px]">
+            <p className="rounded-[4px] bg-ink-rule p-3 text-[14px]">
               <span className="block font-mono text-[11px] text-line">Agent</span>
               Why does {s.name} have two densities?
             </p>
@@ -177,7 +180,7 @@ export default function TakePage() {
               <span className="block text-[11px] text-accent-text">why()</span>
               {chain("spacing.count")}
             </p>
-            <p className="rounded-[4px] bg-[#3e3a31] p-3 text-[14px]">
+            <p className="rounded-[4px] bg-ink-rule p-3 text-[14px]">
               <span className="block font-mono text-[11px] text-line">Agent</span>
               Building a delete dialog. What does it say?
             </p>
@@ -190,7 +193,7 @@ export default function TakePage() {
         <p className="flex flex-wrap items-center gap-2 font-mono text-[12px] text-line">
           Also ships:
           {["AGENTS.md", "llms.txt", "Claude skill"].map((x) => (
-            <span key={x} className="rounded-[3px] bg-[#2c2821] px-2 py-1 text-paper">
+            <span key={x} className="rounded-[3px] bg-ink-raised px-2 py-1 text-paper">
               {x}
             </span>
           ))}

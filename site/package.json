@@ -15,8 +15,8 @@
     "node": ">=22"
   },
   "scripts": {
-    "dev": "next dev",
-    "build": "pnpm --dir ../tokens build && next build",
+    "dev": "node scripts/dark-specimens.mjs && next dev",
+    "build": "pnpm --dir ../tokens build && node scripts/dark-specimens.mjs && next build",
     "lint": "eslint . && prettier --check .",
     "typecheck": "tsc --noEmit"
   },

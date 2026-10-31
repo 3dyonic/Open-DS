@@ -2,6 +2,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { Eyebrow } from "@/components/chrome";
+import { WithRobot } from "@/components/robot";
 import { brandName, brandTagline, openGraphBase } from "@/lib/brand";
 import { Proof } from "@/components/proof";
 import { SchemeCards, Squares } from "@/components/scheme-cards";
@@ -78,42 +79,46 @@ export default function Home() {
   return (
     <>
       <section className="flex flex-col gap-10 px-5 pt-14 pb-[72px] lg:px-20">
-        <div className="flex flex-col gap-5">
-          <Eyebrow>For makers, product teams and their AI</Eyebrow>
-          <h1 className="text-[44px] leading-none font-extrabold md:text-[72px]">
-            A design system
-            <br />
-            you can read and take.
-          </h1>
-          <p className="max-w-[820px] text-[21px] leading-[1.45] text-[#3e3a31]">
-            Every decision is an answered question, with its options and its reason in plain view.
-            Then the whole system is yours: tokens, components, Storybook and docs, delivered in one
-            command or through your AI, as code you own.
-          </p>
-          <div className="flex flex-wrap gap-3 pt-2">
-            <Link
-              href="/schemes/"
-              className="flex items-center gap-[10px] rounded-[4px] bg-ink px-5 py-[14px] text-[17px] font-semibold text-paper"
-            >
-              <span aria-hidden className="size-[8px] bg-accent" />
-              Pick a scheme
-            </Link>
-            <Link
-              href="#how-it-works"
-              className="rounded-[4px] border border-ink px-5 py-[14px] text-[17px] font-semibold"
-            >
-              See how it works
-            </Link>
+        <WithRobot name="swatch" priority>
+          <div className="flex flex-col gap-5">
+            <Eyebrow>For makers, product teams and their AI</Eyebrow>
+            <h1 className="text-[44px] leading-none font-extrabold md:text-[72px]">
+              A design system
+              <br />
+              you can read and take.
+            </h1>
+            <p className="max-w-[820px] text-[21px] leading-[1.45] text-body">
+              Every decision is an answered question, with its options and its reason in plain view.
+              Then the whole system is yours: tokens, components, Storybook and docs, delivered in
+              one command or through your AI, as code you own.
+            </p>
+            <div className="flex flex-wrap gap-3 pt-2">
+              <Link
+                href="/schemes/"
+                className="flex items-center gap-[10px] rounded-[4px] bg-ink px-5 py-[14px] text-[17px] font-semibold text-paper"
+              >
+                <span aria-hidden className="size-[8px] bg-accent" />
+                Pick a scheme
+              </Link>
+              <Link
+                href="#how-it-works"
+                className="rounded-[4px] border border-ink px-5 py-[14px] text-[17px] font-semibold"
+              >
+                See how it works
+              </Link>
+            </div>
           </div>
-        </div>
+        </WithRobot>
         <Proof data={HOME_SCHEMES.map(proofData)} />
       </section>
 
       <section id="how-it-works" className="flex flex-col gap-8 bg-white px-5 py-[72px] lg:px-20">
-        <Eyebrow>How it works</Eyebrow>
-        <h2 className="text-[32px] leading-[1.05] font-extrabold md:text-[44px]">
-          Start from a scheme. Deploy it your way.
-        </h2>
+        <WithRobot name="measure">
+          <Eyebrow>How it works</Eyebrow>
+          <h2 className="text-[32px] leading-[1.05] font-extrabold md:text-[44px]">
+            Start from a scheme. Deploy it your way.
+          </h2>
+        </WithRobot>
         <ol className="grid gap-5 lg:grid-cols-3">
           {STEPS.map((s, i) => (
             <li
@@ -122,7 +127,7 @@ export default function Home() {
             >
               <Squares lit={[0, 1, 2].map((n) => n <= i)} size={12} />
               <h3 className="text-[28px] font-extrabold">{s.title}</h3>
-              <p className="text-[16px] leading-[1.45] text-[#3e3a31]">{s.text}</p>
+              <p className="text-[16px] leading-[1.45] text-body">{s.text}</p>
               <ul className="flex flex-wrap gap-[6px]">
                 {s.chips.map((c) => (
                   <li
@@ -160,7 +165,7 @@ export default function Home() {
         <SchemeCards />
       </section>
 
-      <section className="flex flex-col gap-5 bg-ink px-5 py-[72px] text-paper lg:flex-row lg:items-start lg:px-20">
+      <section className="inverse flex flex-col gap-5 bg-ink px-5 py-[72px] text-paper lg:flex-row lg:items-start lg:px-20">
         <div className="flex min-w-0 flex-1 flex-col gap-4">
           <Eyebrow tone="accent">Take a scheme · A full design system</Eyebrow>
           <h2 className="text-[40px] font-extrabold">Take a whole design system.</h2>
@@ -182,7 +187,7 @@ export default function Home() {
             {DELIVERS.map(([name, what]) => (
               <li
                 key={name}
-                className="flex flex-col gap-1 rounded-[4px] border border-[#3e3a31] p-4"
+                className="flex flex-col gap-1 rounded-[4px] border border-ink-rule p-4"
               >
                 <span className="text-[17px] font-semibold">{name}</span>
                 <span className="text-[14px] leading-[1.4] text-line">{what}</span>
@@ -193,13 +198,13 @@ export default function Home() {
             {DELIVERABLES.map((d) => (
               <li
                 key={d}
-                className="rounded-[3px] border border-[#3e3a31] px-2 py-1 font-mono text-[12px] font-medium"
+                className="rounded-[3px] border border-ink-rule px-2 py-1 font-mono text-[12px] font-medium"
               >
                 {d}
               </li>
             ))}
           </ul>
-          <p className="flex items-center gap-3 rounded-[6px] bg-[#2c2821] p-4 text-[16px] leading-[1.35] font-semibold">
+          <p className="flex items-center gap-3 rounded-[6px] bg-ink-raised p-4 text-[16px] leading-[1.35] font-semibold">
             <span aria-hidden className="size-[12px] shrink-0 bg-accent" />
             Built for AI agents: an MCP server, AGENTS.md and llms.txt, so agents get the reasons,
             not just the values.
@@ -221,7 +226,7 @@ export default function Home() {
           <h2 id="open-source" className="text-[32px] leading-[1.05] font-extrabold md:text-[40px]">
             Standing on good work.
           </h2>
-          <p className="max-w-[820px] text-[17px] leading-[1.45] text-[#3e3a31]">
+          <p className="max-w-[820px] text-[17px] leading-[1.45] text-body">
             {brandName} decides and explains; these projects do the building. Every design system we
             deliver uses them as their authors intend, keeps their licences, and credits them here
             and in its own files.
@@ -236,7 +241,7 @@ export default function Home() {
                 className="flex h-full flex-col gap-1 rounded-[6px] border border-line bg-white p-4 hover:border-ink"
               >
                 <span className="text-[17px] font-semibold">{name} ↗</span>
-                <span className="text-[14px] leading-[1.4] text-[#3e3a31]">{what}</span>
+                <span className="text-[14px] leading-[1.4] text-body">{what}</span>
               </a>
             </li>
           ))}
@@ -244,7 +249,7 @@ export default function Home() {
       </section>
       <section
         aria-labelledby="contribute"
-        className="flex flex-col gap-5 bg-ink px-5 py-[56px] text-paper md:flex-row md:items-center lg:px-20"
+        className="inverse flex flex-col gap-5 bg-ink px-5 py-[56px] text-paper md:flex-row md:items-center lg:px-20"
       >
         <div className="flex flex-1 flex-col gap-3">
           <Eyebrow tone="accent">Contribute</Eyebrow>

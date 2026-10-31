@@ -58,7 +58,7 @@ export function MovesView({
 
   return (
     <div className="flex flex-col gap-10">
-      <section className="flex flex-col gap-6 rounded-[8px] bg-ink p-7 text-paper lg:flex-row lg:items-center">
+      <section className="inverse flex flex-col gap-6 rounded-[8px] bg-ink p-7 text-paper lg:flex-row lg:items-center">
         <div className="flex flex-col gap-3">
           <label
             htmlFor="mv-q"
@@ -197,7 +197,7 @@ export function MovesView({
           ].map(([name, draw]) => (
             <div
               key={name as string}
-              className="flex flex-wrap items-center gap-6 rounded-[6px] bg-[#f7f8fa] p-4"
+              className="flex flex-wrap items-center gap-6 rounded-[6px] bg-well p-4"
             >
               <span className="w-[140px] text-[17px] font-semibold">{name as string}</span>
               {[me.id, result.donor!.id].map((sid, i) => (

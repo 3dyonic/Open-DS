@@ -29,7 +29,7 @@ function Step({ n, title, note }: { n: number; title: string; note: string }) {
 
 // A cell only this scheme answers this way: a soft tint of the scheme's own primary colour.
 const LIT =
-  "border-[color-mix(in_srgb,var(--color-action-primary)_45%,transparent)] bg-[color-mix(in_srgb,var(--color-action-primary)_12%,white)]";
+  "border-[color-mix(in_srgb,var(--color-action-primary)_45%,transparent)] bg-[color-mix(in_srgb,var(--color-action-primary)_12%,var(--color-white))]";
 
 function Specimen({ p }: { p: ProofData }) {
   return (
@@ -193,7 +193,7 @@ export function Proof({ data }: { data: ProofData[] }) {
               ].map(([k, v]) => (
                 <div
                   key={k}
-                  className="flex flex-1 flex-col gap-[2px] rounded-[4px] bg-[#f7f8fa] px-[10px] py-2"
+                  className="flex flex-1 flex-col gap-[2px] rounded-[4px] bg-well px-[10px] py-2"
                 >
                   <Label size={10}>{k}</Label>
                   <span className="text-[14px]" style={{ fontFamily: p.voice.body }}>
@@ -242,9 +242,7 @@ export function Proof({ data }: { data: ProofData[] }) {
                         key={c.id}
                         title={c.question}
                         className={`rounded-[3px] border p-[10px] align-top font-mono text-[12px] ${
-                          c.lit
-                            ? `${LIT} font-semibold text-ink`
-                            : "border-line bg-paper text-[#3e3a31]"
+                          c.lit ? `${LIT} font-semibold text-ink` : "border-line bg-paper text-body"
                         }`}
                       >
                         {c.label}

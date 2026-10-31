@@ -17,7 +17,7 @@ function componentShot(scheme: Scheme) {
 }
 
 const box =
-  "flex h-[72px] w-full shrink-0 items-center gap-[6px] overflow-hidden rounded-[6px] bg-[#f7f8fa] px-3 md:w-[220px]";
+  "flex h-[72px] w-full shrink-0 items-center gap-[6px] overflow-hidden rounded-[6px] bg-well px-3 md:w-[220px]";
 
 export function ScopeMini({
   scheme,

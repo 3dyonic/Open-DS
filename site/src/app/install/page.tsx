@@ -3,6 +3,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { Eyebrow } from "@/components/chrome";
+import { WithRobot } from "@/components/robot";
 import { Command } from "@/components/copy";
 import { schemes } from "@/lib/schemes";
 
@@ -73,15 +74,17 @@ export default function InstallPage() {
   return (
     <div className="flex flex-col gap-12 px-5 pb-20 lg:px-20">
       <header className="flex flex-col gap-4">
-        <Eyebrow>How to install</Eyebrow>
-        <h1 className="text-[44px] leading-[1.05] font-extrabold md:text-[56px]">
-          Install Open DS. Then take a scheme.
-        </h1>
-        <p className="max-w-[880px] text-[19px] leading-[1.45] text-[#3e3a31]">
-          Connect your AI through MCP and let it deploy a scheme, or run the CLI yourself. Both use
-          the same engine, so you get the same design system either way.
-        </p>
-        <p className="max-w-[880px] rounded-[6px] border border-line bg-white p-4 text-[15px] text-[#3e3a31]">
+        <WithRobot name="scroll" priority>
+          <Eyebrow>How to install</Eyebrow>
+          <h1 className="text-[44px] leading-[1.05] font-extrabold md:text-[56px]">
+            Install Open DS. Then take a scheme.
+          </h1>
+          <p className="max-w-[880px] text-[19px] leading-[1.45] text-body">
+            Connect your AI through MCP and let it deploy a scheme, or run the CLI yourself. Both
+            use the same engine, so you get the same design system either way.
+          </p>
+        </WithRobot>
+        <p className="max-w-[880px] rounded-[6px] border border-line bg-white p-4 text-[15px] text-body">
           Open DS is not published yet. For now both paths run from a copy of the repository on your
           machine. Access keys for the MCP server are coming; you will request one here.
         </p>
@@ -93,7 +96,7 @@ export default function InstallPage() {
         </h2>
         <ol className="flex flex-col gap-3">
           <Step n={1} title="Have the tools">
-            <p className="text-[16px] text-[#3e3a31]">
+            <p className="text-[16px] text-body">
               Node.js 22 or later, pnpm 10 (corepack enable gives it to you), uv for Python, and an
               AI client with MCP, such as Claude Code.
             </p>
@@ -114,25 +117,25 @@ export default function InstallPage() {
         </h2>
         <ol className="flex flex-col gap-3">
           <Step n={1} title="Add the server">
-            <p className="text-[16px] text-[#3e3a31]">In Claude Code, from the Open-DS folder:</p>
+            <p className="text-[16px] text-body">In Claude Code, from the Open-DS folder:</p>
             <Command
               label="add the MCP server"
               code={
                 'claude mcp add --scope user open-ds -- uv run --directory "$(pwd)" open-ds-mcp'
               }
             />
-            <p className="text-[15px] text-[#3e3a31]">
+            <p className="text-[15px] text-body">
               <code className="font-mono">--scope user</code> makes the server available in every
               folder. Check it with <code className="font-mono">claude mcp list</code>.
             </p>
-            <p className="text-[16px] text-[#3e3a31]">
+            <p className="text-[16px] text-body">
               Other MCP clients take the same server in their config file. Replace the path with
               your Open-DS folder:
             </p>
             <Command label="MCP config" code={mcpJson} />
           </Step>
           <Step n={2} title="Ask your AI">
-            <p className="text-[16px] text-[#3e3a31]">
+            <p className="text-[16px] text-body">
               Open your AI in an empty project folder and ask, for example:
             </p>
             <ul className="flex flex-col gap-2">
@@ -142,7 +145,7 @@ export default function InstallPage() {
                 </li>
               ))}
             </ul>
-            <p className="text-[15px] text-[#3e3a31]">
+            <p className="text-[15px] text-body">
               The scheme tools: list_schemes, get_scheme, get_answer, why, when_to_use and deploy.
               Deploy runs the same CLI as Path B.
             </p>
@@ -158,14 +161,14 @@ export default function InstallPage() {
         <ol className="flex flex-col gap-3">
           <Step n={1} title="See the schemes">
             <Command label="list" code="node cli/bin/open-ds.js list" />
-            <p className="text-[15px] text-[#3e3a31]">Schemes: {ids.join(", ")}.</p>
+            <p className="text-[15px] text-body">Schemes: {ids.join(", ")}.</p>
           </Step>
           <Step n={2} title="Deploy one into your project">
             <Command
               label="init"
               code="node cli/bin/open-ds.js init dense-data --dir /path/to/your-app"
             />
-            <p className="text-[15px] text-[#3e3a31]">
+            <p className="text-[15px] text-body">
               For Multi-brand, add <code className="font-mono">--brand aster</code>,{" "}
               <code className="font-mono">birch</code> or <code className="font-mono">coral</code>.
               Add <code className="font-mono">--yes</code> to run it again over the same folder. Add{" "}
@@ -175,7 +178,7 @@ export default function InstallPage() {
           </Step>
           <Step n={3} title="Install the component packages and import the styles">
             <Command label="packages" code={`npm install ${PACKAGES}`} />
-            <p className="text-[15px] text-[#3e3a31]">
+            <p className="text-[15px] text-body">
               Then import <code className="font-mono">src/styles/open-ds.css</code> after Tailwind.
             </p>
           </Step>
@@ -197,7 +200,7 @@ export default function InstallPage() {
       </section>
 
       <section
-        className="flex flex-col gap-4 rounded-[8px] bg-ink p-8 text-paper"
+        className="inverse flex flex-col gap-4 rounded-[8px] bg-ink p-8 text-paper"
         aria-labelledby="get"
       >
         <Eyebrow tone="accent">What you get</Eyebrow>

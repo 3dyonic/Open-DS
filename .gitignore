@@ -8,6 +8,7 @@ __pycache__/
 node_modules
 site/.next/
 site/out/
+site/src/generated/
 site/public/downloads/
 dist/
 coverage/

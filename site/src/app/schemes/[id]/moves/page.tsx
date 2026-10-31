@@ -64,7 +64,7 @@ export default async function MovesPage({ params }: { params: Promise<{ id: stri
         <h1 className="text-[44px] leading-[1.05] font-extrabold md:text-[56px]">
           Change one answer. See what moves.
         </h1>
-        <p className="max-w-[880px] text-[19px] leading-[1.45] text-[#3e3a31]">
+        <p className="max-w-[880px] text-[19px] leading-[1.45] text-body">
           A design system that knows why it is the way it is can tell you what to change when the
           why changes. Pick an answer and a new option.
         </p>
