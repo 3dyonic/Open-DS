@@ -117,10 +117,6 @@
         "why": "Sign-up without leaving the page."
       },
       {
-        "id": "tooltip",
-        "why": "Explains an icon."
-      },
-      {
         "id": "card",
         "why": "Article previews."
       },
@@ -181,6 +177,10 @@
       {
         "id": "chart",
         "why": "Figures appear as images inside articles."
+      },
+      {
+        "id": "tooltip",
+        "why": "Readers arrive on phones, where hover hints never show; icons carry visible labels instead."
       }
     ]
   },
