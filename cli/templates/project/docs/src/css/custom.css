@@ -241,3 +241,35 @@ code {
 .markdown table .ods-card {
   vertical-align: middle;
 }
+
+/* The brand: the Open DS mark in this system's colours, its name in the title type, and a tag
+   that says these are its docs. */
+.navbar__brand {
+  gap: var(--space-gap-default);
+}
+.navbar__logo {
+  height: 1.25rem;
+  margin-right: 0;
+}
+.navbar__logo img {
+  height: 100%;
+}
+.navbar__title {
+  font-family: var(--type-title-font-family);
+  font-weight: var(--type-title-font-weight);
+  font-size: var(--type-heading-font-size);
+}
+.ods-docs-tag {
+  display: inline-flex;
+  align-items: center;
+  height: 1.375rem;
+  padding: 0 var(--badge-padding-x);
+  border-radius: var(--badge-radius);
+  background: var(--color-surface-selected);
+  color: var(--color-text-link);
+  font-family: var(--type-label-font-family);
+  font-size: var(--type-caption-font-size);
+  font-weight: var(--type-label-font-weight);
+  letter-spacing: 0.02em;
+  text-transform: uppercase;
+}

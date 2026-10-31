@@ -1,5 +1,6 @@
 {
   "id": "dense-data",
   "name": "Dense data",
+  "version": "0.1.0",
   "summary": "Compact, exact and quiet, for analysts who scan alerts and compare signals all day."
 }

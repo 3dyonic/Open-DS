@@ -121,11 +121,34 @@ const schemeCss =
     .map(([k, v]) => `  ${k}: var(--${v});`)
     .join("\n")}\n}\n`;
 
+// The brand: the Open DS mark (a 6 by 5 pixel grid, one cell lit) in the scheme's ink and primary
+// colour, light and dark, from the first brand's built tokens. The same mark the CLI's project
+// template draws (cli/templates/project/tokens/build.mjs).
+const built = readdirSync(join(roots.tokens, id))
+  .filter((f) => f.endsWith(".tokens.json"))
+  .sort();
+const modeFile = (mode) => built.find((f) => f === `${mode}.tokens.json` || f.endsWith(`-${mode}.tokens.json`));
+const modeTokens = (mode) => JSON.parse(readFileSync(join(roots.tokens, id, modeFile(mode)), "utf8"));
+const MARK = ["110111", "101010", "1l1011", "101001", "110111"];
+const logo = (t) =>
+  `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32.2 26.6" role="img" aria-label="Open DS">${MARK.flatMap(
+    (row, r) =>
+      [...row].map((c, i) =>
+        c === "0"
+          ? ""
+          : `<rect x="${+(i * 5.6).toFixed(1)}" y="${+(r * 5.6).toFixed(1)}" width="4.2" height="4.2" fill="${c === "l" ? t.color.action.primary["@"] : t.color.text.primary}"/>`,
+      ),
+  ).join("")}</svg>\n`;
+
 const files = {
   "src/css/scheme.css": schemeCss,
+  "static/logo.svg": logo(modeTokens("light")),
+  "static/logo-dark.svg": logo(modeTokens("dark")),
   ...Object.fromEntries(Object.entries(pages).map(([p, t]) => [`docs/${p}`, t])),
   "static/llms.txt": docsLlms(scheme, pages),
-  "scheme.json": JSON.stringify({ id: scheme.id, name: scheme.name, summary: scheme.summary }, null, 2) + "\n",
+  "scheme.json":
+    JSON.stringify({ id: scheme.id, name: scheme.name, version: scheme.version, summary: scheme.summary }, null, 2) +
+    "\n",
 };
 
 const walk = (dir) =>
