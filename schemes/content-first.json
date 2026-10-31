@@ -180,7 +180,7 @@
       },
       {
         "id": "tooltip",
-        "why": "Readers arrive on phones, where hover hints never show; icons carry visible labels instead."
+        "why": "Readers arrive on any device, and on touch screens hover hints never show; icons carry visible labels instead."
       }
     ]
   },
