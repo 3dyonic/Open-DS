@@ -37,16 +37,16 @@ The image installs the CLI from its own packed file, the way npm users get it. T
 
 Add these in the repository settings, under Secrets and variables, then Actions.
 
-| Secret                 | Used by                    | How to get it                                                                                                                                         |
-| ---------------------- | -------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `FLY_API_TOKEN`        | `deploy`, `connect-domain` | `fly tokens create org`. An org token can create the app on the first deploy; after that, a `fly tokens create deploy --app open-ds` token is enough. |
-| `NPM_TOKEN`            | `publish`                  | An npmjs automation token from an account that can publish `open-ds`.                                                                                 |
-| `CLOUDFLARE_API_TOKEN` | `connect-domain`           | A Cloudflare API token with Zone, DNS, Edit on the `open-ds.dev` zone.                                                                                |
-| `CLOUDFLARE_ZONE_ID`   | `connect-domain`           | On the `open-ds.dev` overview page in Cloudflare.                                                                                                     |
+| Secret                 | Used by                       | How to get it                                                                                                                                         |
+| ---------------------- | ----------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `FLY_API_TOKEN`        | `deploy`, `connect-domain`    | `fly tokens create org`. An org token can create the app on the first deploy; after that, a `fly tokens create deploy --app open-ds` token is enough. |
+| `NPM_TOKEN`            | `publish`, first version only | A short-lived npm granular token, only to create the package. After that, npm Trusted Publishing needs no token: delete it.                           |
+| `CLOUDFLARE_API_TOKEN` | `connect-domain`              | A Cloudflare API token with Zone, DNS, Edit on the `open-ds.dev` zone.                                                                                |
+| `CLOUDFLARE_ZONE_ID`   | `connect-domain`              | On the `open-ds.dev` overview page in Cloudflare.                                                                                                     |
 
 GitHub Packages needs no secret: `publish` uses `GITHUB_TOKEN` with `packages: write`.
 
-Without `FLY_API_TOKEN`, `deploy` says so and skips. Without `NPM_TOKEN`, `publish` skips npmjs and still publishes to GitHub Packages.
+Without `FLY_API_TOKEN`, `deploy` says so and skips. npmjs uses Trusted Publishing: on npmjs.com, open the `open-ds` package, then Settings, Trusted Publisher, GitHub Actions, with `3dyonic`, `Open-DS` and the workflow `publish.yml`. npm then trusts this workflow, so no token is stored and every version gets provenance. Trusted Publishing can only be added to a package that exists, so the first version needs `NPM_TOKEN` once.
 
 ## The first deploy
 
