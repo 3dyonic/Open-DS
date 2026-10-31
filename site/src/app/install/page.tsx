@@ -143,7 +143,7 @@ export default function InstallPage() {
               ))}
             </ul>
             <p className="text-[15px] text-[#3e3a31]">
-              The server’s tools: list_schemes, get_scheme, get_answer, why, when_to_use and deploy.
+              The scheme tools: list_schemes, get_scheme, get_answer, why, when_to_use and deploy.
               Deploy runs the same CLI as Path B.
             </p>
           </Step>
