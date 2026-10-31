@@ -23,16 +23,19 @@ const STEPS = [
     title: "1 · Pick a scheme",
     text: "Start from a ready-made design system for a product like yours: dense data, content, accessibility first, multi-brand, or an expressive brand.",
     chips: ["Dense data", "Content first", "Accessible first"],
+    cta: ["See the schemes", "/schemes/"],
   },
   {
     title: "2 · Deploy it",
     text: "Connect your AI through MCP and it deploys the scheme, keeping every answer and its reason, so it builds the way the system would. Or run the CLI and do it yourself.",
     chips: ["“Deploy Dense data”", "open-ds init", "get_answer(id)"],
+    cta: ["How to install", "/install/"],
   },
   {
     title: "3 · Change what differs",
     text: "When your product is different, change that one answer. See what moves, and keep it as your own flavour of the scheme.",
     chips: ["accessibility.values → Touch", "See what moves", "Compare schemes"],
+    cta: ["Compare schemes", "/compare/"],
   },
 ];
 
@@ -93,7 +96,7 @@ export default function Home() {
         <h2 className="text-[32px] leading-[1.05] font-extrabold md:text-[44px]">
           Start from a scheme. Deploy it your way.
         </h2>
-        <ol className="grid gap-5 lg:grid-cols-3 lg:items-start">
+        <ol className="grid gap-5 lg:grid-cols-3">
           {STEPS.map((s, i) => (
             <li
               key={s.title}
@@ -112,6 +115,12 @@ export default function Home() {
                   </li>
                 ))}
               </ul>
+              <Link
+                href={s.cta[1]}
+                className="mt-auto self-start pt-2 text-[16px] font-semibold hover:text-accent-text"
+              >
+                {s.cta[0]} →
+              </Link>
             </li>
           ))}
         </ol>
