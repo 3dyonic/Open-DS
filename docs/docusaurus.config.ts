@@ -1,11 +1,20 @@
 import type { Config } from "@docusaurus/types";
 import type * as Preset from "@docusaurus/preset-classic";
+import { readFileSync } from "node:fs";
 import { themes as prismThemes } from "prism-react-renderer";
 
-// The product name is pending (see brand.json). No public URL yet, so the site is local only.
+// These are the docs of one delivered design system: the scheme that scripts/generate.mjs wrote
+// (OPEN_DS_SCHEME, or dense-data). No public URL yet, so the site is local only.
+const scheme = JSON.parse(readFileSync(new URL("./scheme.json", import.meta.url), "utf8")) as {
+  id: string;
+  name: string;
+  summary: string;
+};
+const STORYBOOK = process.env.STORYBOOK_URL ?? "http://localhost:6006";
+
 const config: Config = {
-  title: "Open DS",
-  tagline: "Every design system is a set of answers.",
+  title: scheme.name,
+  tagline: scheme.summary,
   url: "http://localhost",
   baseUrl: "/",
   favicon: undefined,
@@ -25,14 +34,14 @@ const config: Config = {
   themeConfig: {
     colorMode: { respectPrefersColorScheme: true },
     navbar: {
-      title: "Open DS",
+      title: scheme.name,
       items: [
         { type: "docSidebar", sidebarId: "docs", position: "left", label: "Docs" },
+        { href: STORYBOOK, label: "Storybook", position: "right" },
         { href: "pathname:///llms.txt", label: "llms.txt", position: "right" },
-        { href: "https://github.com/3dyonic/Open-DS", label: "GitHub", position: "right" },
       ],
     },
-    footer: { style: "light", copyright: "Open DS. MIT. All scheme answers are drafts until curated." },
+    footer: { style: "light", copyright: `${scheme.name}: a design system built from an Open DS scheme. MIT.` },
     prism: { theme: prismThemes.github, darkTheme: prismThemes.dracula },
   } satisfies Preset.ThemeConfig,
 };

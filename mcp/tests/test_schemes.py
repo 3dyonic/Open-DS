@@ -76,6 +76,13 @@ def test_deploy_writes_a_project(tmp_path: Path) -> None:
     assert any("npm install" in step for step in result["next_steps"])
 
 
+def test_deploy_can_write_the_design_system_docs(tmp_path: Path) -> None:
+    deploy("dense-data", str(tmp_path), docs=True)
+    assert (tmp_path / "docs" / "index.md").read_text().count("Dense data") > 0
+    assert (tmp_path / "docs" / "foundations" / "voice.md").exists()
+    assert (tmp_path / "docs" / "components" / "button.md").exists()
+
+
 def test_deploy_reports_the_cli_error(tmp_path: Path) -> None:
     with pytest.raises(ValueError, match="no brand"):
         deploy("multi-brand", str(tmp_path), brand="nope")

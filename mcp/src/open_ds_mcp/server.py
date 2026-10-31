@@ -267,12 +267,17 @@ def deploy(
         bool,
         Field(description="Set true to replace the files of a project that already has a scheme."),
     ] = False,
+    docs: Annotated[
+        bool,
+        Field(description="Set true to also write the design system's docs pages (Docusaurus) to docs/."),
+    ] = False,
 ) -> dict:
     """Deploy a scheme into a project by running the open-ds CLI.
 
     Writes src/styles/open-ds.css (tokens, light and dark), the components in
-    src/components/ui, AGENTS.md, the agent skill and open-ds.json. Returns the
-    record and the next steps (packages to install, the CSS import).
+    src/components/ui, AGENTS.md, the agent skill and open-ds.json. With docs=true it
+    also writes the design system's docs pages to docs/. Returns the record and the
+    next steps (packages to install, the CSS import).
     """
     if not Path(project_dir).is_absolute():
         raise ValueError(f"project_dir must be an absolute path. Got '{project_dir}'.")
@@ -281,6 +286,8 @@ def deploy(
         args += ["--brand", brand]
     if overwrite:
         args.append("--yes")
+    if docs:
+        args.append("--docs")
     try:
         record = sch.run_cli(*args)
     except ValueError as error:
