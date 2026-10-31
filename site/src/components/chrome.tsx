@@ -23,14 +23,11 @@ export function Mark() {
   );
 }
 
-export const DOCS_URL =
-  process.env.NEXT_PUBLIC_DOCS_URL ?? "https://github.com/3dyonic/Open-DS/tree/RC1/docs/docs";
-
 const LINKS: [string, string][] = [
   ["Schemes", "/schemes/"],
   ["How it works", "/#how-it-works"],
   ["Questions", "/questions/"],
-  ["Docs", DOCS_URL],
+  ["Install", "/install/"],
 ];
 
 export function SiteNav() {
