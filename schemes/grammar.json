@@ -1347,9 +1347,7 @@
       "title": "Theming",
       "description": "Modes and brands.",
       "owns": [
-        "color.brand",
-        "font.family",
-        "radius.brand"
+        "theme"
       ],
       "lands_in": [
         "button",

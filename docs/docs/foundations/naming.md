@@ -26,67 +26,67 @@ Each token points to another token. Values live only on primitives, below.
 
 | Token | Points to, light | Points to, dark |
 | --- | --- | --- |
-| `component.button.primary.background` | `color.action.primary` → `color.brand.600` → `color.violet.600` | `color.action.primary` → `color.brand.300` → `color.violet.300` |
-| `component.button.primary.background-hover` | `color.action.primary-hover` → `color.brand.700` → `color.violet.700` | `color.action.primary-hover` → `color.brand.100` → `color.violet.100` |
-| `component.button.primary.label` | `color.text.on-action` → `color.neutral.0` → `color.slate.0` | `color.text.on-action` → `color.neutral.950` → `color.slate.950` |
-| `component.button.secondary.background` | `color.action.secondary` → `color.neutral.0` → `color.slate.0` | `color.action.secondary` → `color.neutral.900` → `color.slate.900` |
-| `component.button.secondary.background-hover` | `color.action.secondary-hover` → `color.neutral.100` → `color.slate.100` | `color.action.secondary-hover` → `color.neutral.800` → `color.slate.800` |
-| `component.button.secondary.label` | `color.text.primary` → `color.neutral.900` → `color.slate.900` | `color.text.primary` → `color.neutral.50` → `color.slate.50` |
-| `component.button.secondary.border` | `color.border.strong` → `color.neutral.300` → `color.slate.300` | `color.border.strong` → `color.neutral.700` → `color.slate.700` |
-| `component.button.ghost.background-hover` | `color.surface.sunken` → `color.neutral.100` → `color.slate.100` | `color.surface.sunken` → `color.neutral.800` → `color.slate.800` |
-| `component.button.ghost.label` | `color.text.link` → `color.brand.700` → `color.violet.700` | `color.text.link` → `color.brand.300` → `color.violet.300` |
+| `component.button.primary.background` | `color.action.primary` → `dense-data.theme.light.color-action-primary` → `color.violet.light.600` | `color.action.primary` → `dense-data.theme.dark.color-action-primary` → `color.violet.dark.700` |
+| `component.button.primary.background-hover` | `color.action.primary-hover` → `dense-data.theme.light.color-action-primary-hover` → `color.violet.light.700` | `color.action.primary-hover` → `dense-data.theme.dark.color-action-primary-hover` → `color.violet.dark.800` |
+| `component.button.primary.label` | `color.text.on-action` → `dense-data.theme.light.color-text-on-action` → `color.slate.light.0` | `color.text.on-action` → `dense-data.theme.dark.color-text-on-action` → `color.slate.dark.0` |
+| `component.button.secondary.background` | `color.action.secondary` → `dense-data.theme.light.color-action-secondary` → `color.slate.light.0` | `color.action.secondary` → `dense-data.theme.dark.color-action-secondary` → `color.slate.dark.50` |
+| `component.button.secondary.background-hover` | `color.action.secondary-hover` → `dense-data.theme.light.color-action-secondary-hover` → `color.slate.light.100` | `color.action.secondary-hover` → `dense-data.theme.dark.color-action-secondary-hover` → `color.slate.dark.100` |
+| `component.button.secondary.label` | `color.text.primary` → `dense-data.theme.light.color-text-primary` → `color.slate.light.900` | `color.text.primary` → `dense-data.theme.dark.color-text-primary` → `color.slate.dark.900` |
+| `component.button.secondary.border` | `color.border.strong` → `dense-data.theme.light.color-border-strong` → `color.slate.light.300` | `color.border.strong` → `dense-data.theme.dark.color-border-strong` → `color.slate.dark.200` |
+| `component.button.ghost.background-hover` | `color.surface.sunken` → `dense-data.theme.light.color-surface-sunken` → `color.slate.light.100` | `color.surface.sunken` → `dense-data.theme.dark.color-surface-sunken` → `color.slate.dark.100` |
+| `component.button.ghost.label` | `color.text.link` → `dense-data.theme.light.color-text-link` → `color.violet.light.700` | `color.text.link` → `dense-data.theme.dark.color-text-link` → `color.violet.dark.700` |
 | `component.button.height` | `size.control.default` → `size.32` | `size.control.default` → `size.32` |
 | `component.button.padding-x` | `space.inset.control-x` → `space.12` | `space.inset.control-x` → `space.12` |
-| `component.button.radius` | `radius.control` → `radius.brand.control` → `radius.2` | `radius.control` → `radius.brand.control` → `radius.2` |
+| `component.button.radius` | `radius.control` → `dense-data.theme.base.radius-control` → `radius.2` | `radius.control` → `dense-data.theme.base.radius-control` → `radius.2` |
 | `component.button.font-size` | `type.label.font-size` → `font.size.12` | `type.label.font-size` → `font.size.12` |
 | `component.button.font-weight` | `type.label.font-weight` → `font.weight.500` | `type.label.font-weight` → `font.weight.500` |
-| `component.button.focus-ring` | `color.border.focus` → `color.brand.600` → `color.violet.600` | `color.border.focus` → `color.brand.300` → `color.violet.300` |
+| `component.button.focus-ring` | `color.border.focus` → `dense-data.theme.light.color-border-focus` → `color.violet.light.600` | `color.border.focus` → `dense-data.theme.dark.color-border-focus` → `color.violet.dark.700` |
 | `component.button.icon-size` | `size.icon` → `size.16` | `size.icon` → `size.16` |
-| `component.input.background` | `color.surface.default` → `color.neutral.0` → `color.slate.0` | `color.surface.default` → `color.neutral.900` → `color.slate.900` |
-| `component.input.border` | `color.border.strong` → `color.neutral.300` → `color.slate.300` | `color.border.strong` → `color.neutral.700` → `color.slate.700` |
-| `component.input.border-focus` | `color.border.focus` → `color.brand.600` → `color.violet.600` | `color.border.focus` → `color.brand.300` → `color.violet.300` |
-| `component.input.text` | `color.text.primary` → `color.neutral.900` → `color.slate.900` | `color.text.primary` → `color.neutral.50` → `color.slate.50` |
-| `component.input.placeholder` | `color.text.muted` → `color.neutral.500` → `color.slate.500` | `color.text.muted` → `color.neutral.500` → `color.slate.500` |
+| `component.input.background` | `color.surface.default` → `dense-data.theme.light.color-surface-default` → `color.slate.light.0` | `color.surface.default` → `dense-data.theme.dark.color-surface-default` → `color.slate.dark.50` |
+| `component.input.border` | `color.border.strong` → `dense-data.theme.light.color-border-strong` → `color.slate.light.300` | `color.border.strong` → `dense-data.theme.dark.color-border-strong` → `color.slate.dark.200` |
+| `component.input.border-focus` | `color.border.focus` → `dense-data.theme.light.color-border-focus` → `color.violet.light.600` | `color.border.focus` → `dense-data.theme.dark.color-border-focus` → `color.violet.dark.700` |
+| `component.input.text` | `color.text.primary` → `dense-data.theme.light.color-text-primary` → `color.slate.light.900` | `color.text.primary` → `dense-data.theme.dark.color-text-primary` → `color.slate.dark.900` |
+| `component.input.placeholder` | `color.text.muted` → `dense-data.theme.light.color-text-muted` → `color.slate.light.500` | `color.text.muted` → `dense-data.theme.dark.color-text-muted` → `color.slate.dark.300` |
 | `component.input.height` | `size.control.default` → `size.32` | `size.control.default` → `size.32` |
 | `component.input.padding-x` | `space.inset.control-x` → `space.12` | `space.inset.control-x` → `space.12` |
-| `component.input.radius` | `radius.control` → `radius.brand.control` → `radius.2` | `radius.control` → `radius.brand.control` → `radius.2` |
+| `component.input.radius` | `radius.control` → `dense-data.theme.base.radius-control` → `radius.2` | `radius.control` → `dense-data.theme.base.radius-control` → `radius.2` |
 | `component.input.font-size` | `type.body.font-size` → `font.size.14` | `type.body.font-size` → `font.size.14` |
-| `component.control.checked` | `color.action.primary` → `color.brand.600` → `color.violet.600` | `color.action.primary` → `color.brand.300` → `color.violet.300` |
-| `component.control.track` | `color.border.strong` → `color.neutral.300` → `color.slate.300` | `color.border.strong` → `color.neutral.700` → `color.slate.700` |
-| `component.control.thumb` | `color.surface.default` → `color.neutral.0` → `color.slate.0` | `color.surface.default` → `color.neutral.900` → `color.slate.900` |
-| `component.control.radius` | `radius.badge` → `radius.brand.badge` → `radius.0` | `radius.badge` → `radius.brand.badge` → `radius.0` |
-| `component.badge.radius` | `radius.badge` → `radius.brand.badge` → `radius.0` | `radius.badge` → `radius.brand.badge` → `radius.0` |
+| `component.control.checked` | `color.action.primary` → `dense-data.theme.light.color-action-primary` → `color.violet.light.600` | `color.action.primary` → `dense-data.theme.dark.color-action-primary` → `color.violet.dark.700` |
+| `component.control.track` | `color.border.strong` → `dense-data.theme.light.color-border-strong` → `color.slate.light.300` | `color.border.strong` → `dense-data.theme.dark.color-border-strong` → `color.slate.dark.200` |
+| `component.control.thumb` | `color.surface.default` → `dense-data.theme.light.color-surface-default` → `color.slate.light.0` | `color.surface.default` → `dense-data.theme.dark.color-surface-default` → `color.slate.dark.50` |
+| `component.control.radius` | `radius.badge` → `dense-data.theme.base.radius-badge` → `radius.0` | `radius.badge` → `dense-data.theme.base.radius-badge` → `radius.0` |
+| `component.badge.radius` | `radius.badge` → `dense-data.theme.base.radius-badge` → `radius.0` | `radius.badge` → `dense-data.theme.base.radius-badge` → `radius.0` |
 | `component.badge.padding-x` | `space.gap.tight` → `space.4` | `space.gap.tight` → `space.4` |
 | `component.badge.font-size` | `type.caption.font-size` → `font.size.12` | `type.caption.font-size` → `font.size.12` |
-| `component.badge.neutral.background` | `color.surface.sunken` → `color.neutral.100` → `color.slate.100` | `color.surface.sunken` → `color.neutral.800` → `color.slate.800` |
-| `component.badge.neutral.label` | `color.text.secondary` → `color.neutral.700` → `color.slate.700` | `color.text.secondary` → `color.neutral.300` → `color.slate.300` |
-| `component.badge.success.background` | `color.status.success-subtle` → `color.success.subtle` → `color.green.100` | `color.status.success-subtle` → `color.success.subtle-dark` → `color.green.900` |
-| `component.badge.success.label` | `color.status.success` → `color.success.strong` → `color.green.700` | `color.status.success` → `color.success.strong-dark` → `color.green.300` |
-| `component.badge.warning.background` | `color.status.warning-subtle` → `color.warning.subtle` → `color.amber.100` | `color.status.warning-subtle` → `color.warning.subtle-dark` → `color.amber.900` |
-| `component.badge.warning.label` | `color.status.warning` → `color.warning.strong` → `color.amber.700` | `color.status.warning` → `color.warning.strong-dark` → `color.amber.300` |
-| `component.badge.danger.background` | `color.status.danger-subtle` → `color.danger.subtle` → `color.red.100` | `color.status.danger-subtle` → `color.danger.subtle-dark` → `color.red.900` |
-| `component.badge.danger.label` | `color.status.danger` → `color.danger.strong` → `color.red.700` | `color.status.danger` → `color.danger.strong-dark` → `color.red.300` |
-| `component.card.background` | `color.surface.default` → `color.neutral.0` → `color.slate.0` | `color.surface.default` → `color.neutral.900` → `color.slate.900` |
-| `component.card.border` | `color.border.default` → `color.neutral.200` → `color.slate.200` | `color.border.default` → `color.neutral.800` → `color.slate.800` |
-| `component.card.radius` | `radius.container` → `radius.brand.container` → `radius.4` | `radius.container` → `radius.brand.container` → `radius.4` |
+| `component.badge.neutral.background` | `color.surface.sunken` → `dense-data.theme.light.color-surface-sunken` → `color.slate.light.100` | `color.surface.sunken` → `dense-data.theme.dark.color-surface-sunken` → `color.slate.dark.100` |
+| `component.badge.neutral.label` | `color.text.secondary` → `dense-data.theme.light.color-text-secondary` → `color.slate.light.700` | `color.text.secondary` → `dense-data.theme.dark.color-text-secondary` → `color.slate.dark.500` |
+| `component.badge.success.background` | `color.status.success-subtle` → `dense-data.theme.light.color-status-success-subtle` → `color.green.light.100` | `color.status.success-subtle` → `dense-data.theme.dark.color-status-success-subtle` → `color.green.dark.100` |
+| `component.badge.success.label` | `color.status.success` → `dense-data.theme.light.color-status-success` → `color.green.light.700` | `color.status.success` → `dense-data.theme.dark.color-status-success` → `color.green.dark.700` |
+| `component.badge.warning.background` | `color.status.warning-subtle` → `dense-data.theme.light.color-status-warning-subtle` → `color.amber.light.100` | `color.status.warning-subtle` → `dense-data.theme.dark.color-status-warning-subtle` → `color.amber.dark.100` |
+| `component.badge.warning.label` | `color.status.warning` → `dense-data.theme.light.color-status-warning` → `color.amber.light.700` | `color.status.warning` → `dense-data.theme.dark.color-status-warning` → `color.amber.dark.700` |
+| `component.badge.danger.background` | `color.status.danger-subtle` → `dense-data.theme.light.color-status-danger-subtle` → `color.red.light.100` | `color.status.danger-subtle` → `dense-data.theme.dark.color-status-danger-subtle` → `color.red.dark.100` |
+| `component.badge.danger.label` | `color.status.danger` → `dense-data.theme.light.color-status-danger` → `color.red.light.700` | `color.status.danger` → `dense-data.theme.dark.color-status-danger` → `color.red.dark.700` |
+| `component.card.background` | `color.surface.default` → `dense-data.theme.light.color-surface-default` → `color.slate.light.0` | `color.surface.default` → `dense-data.theme.dark.color-surface-default` → `color.slate.dark.50` |
+| `component.card.border` | `color.border.default` → `dense-data.theme.light.color-border-default` → `color.slate.light.200` | `color.border.default` → `dense-data.theme.dark.color-border-default` → `color.slate.dark.100` |
+| `component.card.radius` | `radius.container` → `dense-data.theme.base.radius-container` → `radius.4` | `radius.container` → `dense-data.theme.base.radius-container` → `radius.4` |
 | `component.card.padding` | `space.inset.container` → `space.16` | `space.inset.container` → `space.16` |
-| `component.card.shadow` | `elevation.card` → `shadow.none` | `elevation.card` → `shadow.none` |
-| `component.table.header-background` | `color.surface.sunken` → `color.neutral.100` → `color.slate.100` | `color.surface.sunken` → `color.neutral.800` → `color.slate.800` |
+| `component.card.shadow` | `elevation.card` → `dense-data.theme.light.elevation-card` → `shadow.none` | `elevation.card` → `dense-data.theme.dark.elevation-card` → `shadow.none` |
+| `component.table.header-background` | `color.surface.sunken` → `dense-data.theme.light.color-surface-sunken` → `color.slate.light.100` | `color.surface.sunken` → `dense-data.theme.dark.color-surface-sunken` → `color.slate.dark.100` |
 | `component.table.row-height` | `size.row` → `size.32` | `size.row` → `size.32` |
 | `component.table.cell-padding-x` | `space.inset.cell-x` → `space.12` | `space.inset.cell-x` → `space.12` |
-| `component.table.row-border` | `color.border.default` → `color.neutral.200` → `color.slate.200` | `color.border.default` → `color.neutral.800` → `color.slate.800` |
-| `component.table.row-selected` | `color.surface.selected` → `color.brand.100` → `color.violet.100` | `color.surface.selected` → `color.brand.800` → `color.violet.800` |
+| `component.table.row-border` | `color.border.default` → `dense-data.theme.light.color-border-default` → `color.slate.light.200` | `color.border.default` → `dense-data.theme.dark.color-border-default` → `color.slate.dark.100` |
+| `component.table.row-selected` | `color.surface.selected` → `dense-data.theme.light.color-surface-selected` → `color.violet.light.100` | `color.surface.selected` → `dense-data.theme.dark.color-surface-selected` → `color.violet.dark.100` |
 | `component.table.font-size` | `type.data.font-size` → `font.size.13` | `type.data.font-size` → `font.size.13` |
-| `component.tabs.indicator` | `color.action.primary` → `color.brand.600` → `color.violet.600` | `color.action.primary` → `color.brand.300` → `color.violet.300` |
-| `component.tabs.label` | `color.text.secondary` → `color.neutral.700` → `color.slate.700` | `color.text.secondary` → `color.neutral.300` → `color.slate.300` |
-| `component.tabs.label-active` | `color.text.primary` → `color.neutral.900` → `color.slate.900` | `color.text.primary` → `color.neutral.50` → `color.slate.50` |
-| `component.overlay.background` | `color.surface.raised` → `color.neutral.0` → `color.slate.0` | `color.surface.raised` → `color.neutral.800` → `color.slate.800` |
-| `component.overlay.radius` | `radius.container` → `radius.brand.container` → `radius.4` | `radius.container` → `radius.brand.container` → `radius.4` |
-| `component.overlay.shadow` | `elevation.overlay` → `shadow.overlay` | `elevation.overlay` → `shadow.overlay-dark` |
-| `component.overlay.scrim` | `color.surface.scrim` → `color.black-alpha.scrim` | `color.surface.scrim` → `color.black-alpha.scrim-dark` |
+| `component.tabs.indicator` | `color.action.primary` → `dense-data.theme.light.color-action-primary` → `color.violet.light.600` | `color.action.primary` → `dense-data.theme.dark.color-action-primary` → `color.violet.dark.700` |
+| `component.tabs.label` | `color.text.secondary` → `dense-data.theme.light.color-text-secondary` → `color.slate.light.700` | `color.text.secondary` → `dense-data.theme.dark.color-text-secondary` → `color.slate.dark.500` |
+| `component.tabs.label-active` | `color.text.primary` → `dense-data.theme.light.color-text-primary` → `color.slate.light.900` | `color.text.primary` → `dense-data.theme.dark.color-text-primary` → `color.slate.dark.900` |
+| `component.overlay.background` | `color.surface.raised` → `dense-data.theme.light.color-surface-raised` → `color.slate.light.0` | `color.surface.raised` → `dense-data.theme.dark.color-surface-raised` → `color.slate.dark.100` |
+| `component.overlay.radius` | `radius.container` → `dense-data.theme.base.radius-container` → `radius.4` | `radius.container` → `dense-data.theme.base.radius-container` → `radius.4` |
+| `component.overlay.shadow` | `elevation.overlay` → `dense-data.theme.light.elevation-overlay` → `shadow.overlay` | `elevation.overlay` → `dense-data.theme.dark.elevation-overlay` → `shadow.overlay-dark` |
+| `component.overlay.scrim` | `color.surface.scrim` → `dense-data.theme.light.color-surface-scrim` → `color.black.light.scrim` | `color.surface.scrim` → `dense-data.theme.dark.color-surface-scrim` → `color.black.dark.scrim` |
 | `component.overlay.item-height` | `size.control.default` → `size.32` | `size.control.default` → `size.32` |
-| `component.tooltip.background` | `color.surface.inverse` → `color.neutral.900` → `color.slate.900` | `color.surface.inverse` → `color.neutral.50` → `color.slate.50` |
-| `component.tooltip.label` | `color.text.inverse` → `color.neutral.0` → `color.slate.0` | `color.text.inverse` → `color.neutral.900` → `color.slate.900` |
+| `component.tooltip.background` | `color.surface.inverse` → `dense-data.theme.light.color-surface-inverse` → `color.slate.light.900` | `color.surface.inverse` → `dense-data.theme.dark.color-surface-inverse` → `color.slate.dark.900` |
+| `component.tooltip.label` | `color.text.inverse` → `dense-data.theme.light.color-text-inverse` → `color.slate.light.0` | `color.text.inverse` → `dense-data.theme.dark.color-text-inverse` → `color.slate.dark.50` |
 | `component.transition.duration` | `motion.duration.feedback` → `duration.fast` | `motion.duration.feedback` → `duration.fast` |
 | `component.transition.easing` | `motion.easing.standard` → `easing.standard` | `motion.easing.standard` → `easing.standard` |
 
@@ -96,35 +96,40 @@ The raw values the tokens above end at.
 
 | Primitive | Value | Sample |
 | --- | --- | --- |
-| `color.amber.100` | #FFF3D6 | <span class="ods-swatch" style="background:var(--color-amber-100)"></span> |
-| `color.amber.300` | #F2B84B | <span class="ods-swatch" style="background:var(--color-amber-300)"></span> |
-| `color.amber.700` | #8A5600 | <span class="ods-swatch" style="background:var(--color-amber-700)"></span> |
-| `color.amber.900` | #3A2A05 | <span class="ods-swatch" style="background:var(--color-amber-900)"></span> |
-| `color.black-alpha.scrim` | #0000008C | <span class="ods-swatch" style="background:var(--color-black-alpha-scrim)"></span> |
-| `color.black-alpha.scrim-dark` | #000000B3 | <span class="ods-swatch" style="background:var(--color-black-alpha-scrim-dark)"></span> |
-| `color.green.100` | #E3F4EA | <span class="ods-swatch" style="background:var(--color-green-100)"></span> |
-| `color.green.300` | #5CC283 | <span class="ods-swatch" style="background:var(--color-green-300)"></span> |
-| `color.green.700` | #1F7A3A | <span class="ods-swatch" style="background:var(--color-green-700)"></span> |
-| `color.green.900` | #123322 | <span class="ods-swatch" style="background:var(--color-green-900)"></span> |
-| `color.red.100` | #FDE7E7 | <span class="ods-swatch" style="background:var(--color-red-100)"></span> |
-| `color.red.300` | #F28B8B | <span class="ods-swatch" style="background:var(--color-red-300)"></span> |
-| `color.red.700` | #C42B2B | <span class="ods-swatch" style="background:var(--color-red-700)"></span> |
-| `color.red.900` | #3D1414 | <span class="ods-swatch" style="background:var(--color-red-900)"></span> |
-| `color.slate.0` | #FFFFFF | <span class="ods-swatch" style="background:var(--color-slate-0)"></span> |
-| `color.slate.100` | #EEF1F5 | <span class="ods-swatch" style="background:var(--color-slate-100)"></span> |
-| `color.slate.200` | #DDE2EA | <span class="ods-swatch" style="background:var(--color-slate-200)"></span> |
-| `color.slate.300` | #C4CBD6 | <span class="ods-swatch" style="background:var(--color-slate-300)"></span> |
-| `color.slate.50` | #F7F8FA | <span class="ods-swatch" style="background:var(--color-slate-50)"></span> |
-| `color.slate.500` | #6B7585 | <span class="ods-swatch" style="background:var(--color-slate-500)"></span> |
-| `color.slate.700` | #3D4655 | <span class="ods-swatch" style="background:var(--color-slate-700)"></span> |
-| `color.slate.800` | #262D38 | <span class="ods-swatch" style="background:var(--color-slate-800)"></span> |
-| `color.slate.900` | #161B23 | <span class="ods-swatch" style="background:var(--color-slate-900)"></span> |
-| `color.slate.950` | #0D1117 | <span class="ods-swatch" style="background:var(--color-slate-950)"></span> |
-| `color.violet.100` | #EEEDFE | <span class="ods-swatch" style="background:var(--color-violet-100)"></span> |
-| `color.violet.300` | #A9A3F6 | <span class="ods-swatch" style="background:var(--color-violet-300)"></span> |
-| `color.violet.600` | #4B3FD9 | <span class="ods-swatch" style="background:var(--color-violet-600)"></span> |
-| `color.violet.700` | #3B31B0 | <span class="ods-swatch" style="background:var(--color-violet-700)"></span> |
-| `color.violet.800` | #2C2588 | <span class="ods-swatch" style="background:var(--color-violet-800)"></span> |
+| `color.amber.dark.100` | #3A2A05 |  |
+| `color.amber.dark.700` | #F2B84B |  |
+| `color.amber.light.100` | #FFF3D6 |  |
+| `color.amber.light.700` | #8A5600 |  |
+| `color.black.dark.scrim` | #000000B3 |  |
+| `color.black.light.scrim` | #0000008C |  |
+| `color.green.dark.100` | #123322 |  |
+| `color.green.dark.700` | #5CC283 |  |
+| `color.green.light.100` | #E3F4EA |  |
+| `color.green.light.700` | #1F7A3A |  |
+| `color.red.dark.100` | #3D1414 |  |
+| `color.red.dark.700` | #F28B8B |  |
+| `color.red.light.100` | #FDE7E7 |  |
+| `color.red.light.700` | #C42B2B |  |
+| `color.slate.dark.0` | #0D1117 |  |
+| `color.slate.dark.100` | #262D38 |  |
+| `color.slate.dark.200` | #3D4655 |  |
+| `color.slate.dark.300` | #6B7585 |  |
+| `color.slate.dark.50` | #161B23 |  |
+| `color.slate.dark.500` | #C4CBD6 |  |
+| `color.slate.dark.900` | #F7F8FA |  |
+| `color.slate.light.0` | #FFFFFF |  |
+| `color.slate.light.100` | #EEF1F5 |  |
+| `color.slate.light.200` | #DDE2EA |  |
+| `color.slate.light.300` | #C4CBD6 |  |
+| `color.slate.light.500` | #6B7585 |  |
+| `color.slate.light.700` | #3D4655 |  |
+| `color.slate.light.900` | #161B23 |  |
+| `color.violet.dark.100` | #2C2588 |  |
+| `color.violet.dark.700` | #A9A3F6 |  |
+| `color.violet.dark.800` | #EEEDFE |  |
+| `color.violet.light.100` | #EEEDFE |  |
+| `color.violet.light.600` | #4B3FD9 |  |
+| `color.violet.light.700` | #3B31B0 |  |
 | `duration.fast` | 120ms | <span class="ods-motion" style="--ods-d:var(--duration-fast)"><span></span></span> |
 | `easing.standard` | cubic-bezier(0.2, 0, 0, 1) |  |
 | `font.size.12` | 0.75rem (12px) | <span class="ods-bar" style="width:var(--font-size-12)"></span> |

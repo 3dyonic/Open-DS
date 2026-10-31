@@ -52,16 +52,19 @@ const get = (tree: unknown, path: string) =>
 function chain(s: SchemeData, path: string) {
   const t = (s as unknown as { tokens: Tree }).tokens as {
     primitive: Tree;
-    brands: Record<string, { primitive: Tree }>;
-    semantic: { base: Tree; light: Tree };
+    brands: Record<string, { theme: { base?: Tree; light: Tree } }>;
+    semantic: Tree;
     component: Tree;
   };
-  const trees = [t.component, t.semantic.light, t.semantic.base, Object.values(t.brands)[0].primitive, t.primitive];
+  // Component key → semantic → the first brand's light theme pick → primitive.
+  const theme = Object.values(t.brands)[0].theme;
+  const trees = [t.component, t.semantic, { theme: { ...theme.base, ...theme.light } }, t.primitive];
   const steps: string[] = [];
   let at = path;
   for (let i = 0; i < 8; i++) {
     const node = trees.map((x) => get(x, at)).find((n) => n && typeof n === "object" && "$value" in (n as Tree)) as
-      { $value: unknown } | undefined;
+      | { $value: unknown }
+      | undefined;
     const m = typeof node?.$value === "string" && node.$value.match(/^\{(.+)\}$/);
     if (!m) break;
     steps.push(m[1]);
@@ -83,8 +86,7 @@ export function ComponentInfo() {
         <strong>
           {inv ? "In" : "Not in"} the {s.name} inventory.
         </strong>{" "}
-        {inv?.why ?? out?.why ?? "Its answers did not pick it."} {s.inventory.in.length} of{" "}
-        {grammar.catalogue.items.length} catalogue components are in.
+        {inv?.why ?? out?.why ?? "Its answers did not pick it."} {s.inventory.in.length} components are in.
       </p>
     </div>
   );
