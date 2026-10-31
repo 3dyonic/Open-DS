@@ -197,7 +197,7 @@ export function MovesView({
           ].map(([name, draw]) => (
             <div
               key={name as string}
-              className="specimen flex flex-wrap items-center gap-6 rounded-[6px] bg-well p-4"
+              className="flex flex-wrap items-center gap-6 rounded-[6px] bg-well p-4"
             >
               <span className="w-[140px] text-[17px] font-semibold">{name as string}</span>
               {[me.id, result.donor!.id].map((sid, i) => (
