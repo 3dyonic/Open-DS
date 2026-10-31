@@ -1,7 +1,20 @@
 // The small picture on each scope card (Figma 117:1088 to 117:1177), drawn with the scheme's
 // own tokens through data-scheme.
+import { existsSync } from "node:fs";
+import { join } from "node:path";
 import { Check } from "lucide-react";
 import type { Scheme } from "@/lib/schemes";
+
+// A picture of one of the scheme's components (pnpm shots): the button, else the first one shot.
+function componentShot(scheme: Scheme) {
+  const ids = (scheme as unknown as { inventory: { in: { id: string }[] } }).inventory.in.map(
+    (i) => i.id,
+  );
+  const id = ["button", ...ids].find((c) =>
+    existsSync(join(process.cwd(), "public", "shots", scheme.id, `${c}.jpg`)),
+  );
+  return id ? `/shots/${scheme.id}/${id}` : null;
+}
 
 const box =
   "flex h-[72px] w-full shrink-0 items-center gap-[6px] overflow-hidden rounded-[6px] bg-[#f7f8fa] px-3 md:w-[220px]";
@@ -114,6 +127,19 @@ export function ScopeMini({
             <span className="text-[12px]">target</span>
           </span>
         );
+      case "components": {
+        const shot = componentShot(scheme);
+        return shot ? (
+          // eslint-disable-next-line @next/next/no-img-element
+          <img
+            src={`${shot}.jpg`}
+            srcSet={`${shot}.jpg 1x, ${shot}@2x.jpg 2x`}
+            alt=""
+            loading="lazy"
+            className="max-h-full max-w-full object-contain"
+          />
+        ) : null;
+      }
       case "naming":
         return <span className="font-mono text-[12px] text-muted">button/primary/background</span>;
       case "voice":
