@@ -100,13 +100,21 @@ pnpm --dir storybook dev
 
 Open http://localhost:6006. Use the Scheme and Mode switches in the toolbar.
 
-### Docs
+### Docs of a delivered design system
+
+Docusaurus documents the design system a team gets when it takes a scheme: its reasons, voice and tone, a page per scope, the components, the themes and the agent layer. It builds one scheme at a time and wears that scheme's own fonts and colors.
 
 ```bash
 pnpm --dir docs start
 ```
 
-Open http://localhost:3000. If the site is still running on that port, Docusaurus asks whether to use another port: answer y. `/llms.txt` is the index for agents.
+```bash
+OPEN_DS_SCHEME=multi-brand pnpm --dir docs start
+```
+
+Open http://localhost:3000. If the site is still running on that port, Docusaurus asks whether to use another port: answer y. `/llms.txt` is the index for agents. The same pages land in a project with `open-ds init <scheme> --docs`.
+
+The guide for Open DS itself (product, business, brand, CLI, MCP, contributing) is plain Markdown in `guide/`.
 
 ### The deployed app
 

@@ -1,25 +1,9 @@
-/* Open DS brand route B: cream paper, ink, one orange accent. */
-@import url("https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@400;600;800&family=DM+Mono:wght@400;500&display=swap");
+/* The docs wear the design system they document: scheme.css is generated from the scheme's
+   tokens (scripts/generate.mjs). Only layout details live here. */
+@import url("https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible:wght@400;700&family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,600;12..96,800&family=DM+Mono:wght@400;500&family=DM+Sans:wght@400;700&family=IBM+Plex+Mono&family=IBM+Plex+Sans:wght@400;500;600&family=Inter:wght@400;600;700&family=Plus+Jakarta+Sans:wght@400;600;700&family=Poppins:wght@400;600;700&family=Source+Serif+4:wght@400;600&display=swap");
+@import "./scheme.css";
 
-:root {
-  --ifm-font-family-base: "Bricolage Grotesque", system-ui, sans-serif;
-  --ifm-font-family-monospace: "DM Mono", ui-monospace, monospace;
-  --ifm-color-primary: #b93a00;
-  --ifm-color-primary-dark: #a33300;
-  --ifm-color-primary-darker: #992f00;
-  --ifm-color-primary-darkest: #7e2700;
-  --ifm-color-primary-light: #cf4100;
-  --ifm-color-primary-lighter: #d94400;
-  --ifm-color-primary-lightest: #ff5a1f;
-  --ifm-background-color: #f6f2e9;
-  --ifm-navbar-background-color: #f6f2e9;
-  --ifm-font-color-base: #16140f;
-  --ifm-heading-font-weight: 800;
-}
-
-[data-theme="dark"] {
-  --ifm-color-primary: #ff8a5c;
-  --ifm-background-color: #16140f;
-  --ifm-navbar-background-color: #16140f;
-  --ifm-font-color-base: #f6f2e9;
+.markdown table {
+  display: table;
+  width: 100%;
 }

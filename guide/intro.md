@@ -14,8 +14,8 @@ You do not start by answering questions. You **pick a ready-made scheme**, then 
 | ------------------- | ------------------------------------------------------ |
 | Understand the idea | [Product: the vision](product/vision.md)               |
 | See why it matters  | [Business: why it matters](business/why-it-matters.md) |
-| See the questions   | [The grammar](grammar/overview.md)                     |
-| Pick a scheme       | [Schemes](schemes/index.md)                            |
+| See the questions   | [The grammar](../schemes/grammar.json), or the site's Questions page |
+| Pick a scheme       | [The schemes](../schemes/), or the site's Schemes page |
 | Deploy one          | [CLI](cli.md) or [MCP](mcp.md)                         |
 | Let an agent use it | [For agents](agents/index.md)                          |
 

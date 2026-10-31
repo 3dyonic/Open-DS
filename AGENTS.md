@@ -8,20 +8,21 @@ Open DS models a design system as a finite grammar of questions. A scheme answer
 
 ## Layout
 
-| Folder | What it holds | Check |
-| --- | --- | --- |
-| `schemes/` | `grammar.json` and the five scheme files. The source of truth. | `pnpm harness` |
-| `schema/` | JSON Schemas (draft 2020-12) for the grammar, schemes and the first-preview packs. | `pnpm harness` |
-| `tokens/` | Style Dictionary build: CSS (each brand, light and dark), shadcn and Tailwind theme, DTCG JSON. | `pnpm --dir tokens test` |
-| `ui/` | Components on Radix and Tailwind v4 that read only component keys; shadcn registry. | `pnpm --dir ui test` |
-| `cli/` | The `open-ds` command: list, show, why, when, init, add. | `pnpm --dir cli test` |
-| `mcp/` | FastMCP server; deploy, why and when run the CLI. | `uv run pytest` |
-| `storybook/` | Every component in every scheme, brand and mode. | `pnpm --dir storybook build` |
-| `site/` | The website, a static Next.js app. | `pnpm --dir site build` |
-| `docs/` | Docusaurus docs: product, business, brand, grammar, schemes, agents. | `pnpm --dir docs build` |
-| `skills/` | The agent skill shipped with every deployed scheme. | `pnpm harness` |
-| `harness/` | Checks every layer against Yonatan's instructions and the ticket specs. | `pnpm harness:full` |
-| `packs/`, `recipes/`, `validator/`, `boilerplates/`, `fragments/` | The first preview (recipe model). Kept; the CLI still runs its commands. | `uv run pytest` |
+| Folder                                                            | What it holds                                                                                                          | Check                        |
+| ----------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------- | ---------------------------- |
+| `schemes/`                                                        | `grammar.json` and the five scheme files. The source of truth.                                                         | `pnpm harness`               |
+| `schema/`                                                         | JSON Schemas (draft 2020-12) for the grammar, schemes and the first-preview packs.                                     | `pnpm harness`               |
+| `tokens/`                                                         | Style Dictionary build: CSS (each brand, light and dark), shadcn and Tailwind theme, DTCG JSON.                        | `pnpm --dir tokens test`     |
+| `ui/`                                                             | Components on Radix and Tailwind v4 that read only component keys; shadcn registry.                                    | `pnpm --dir ui test`         |
+| `cli/`                                                            | The `open-ds` command: list, show, why, when, init, add.                                                               | `pnpm --dir cli test`        |
+| `mcp/`                                                            | FastMCP server; deploy, why and when run the CLI.                                                                      | `uv run pytest`              |
+| `storybook/`                                                      | Every component in every scheme, brand and mode.                                                                       | `pnpm --dir storybook build` |
+| `site/`                                                           | The website, a static Next.js app.                                                                                     | `pnpm --dir site build`      |
+| `docs/`                                                           | Docusaurus docs of a delivered design system, generated for one scheme (`OPEN_DS_SCHEME`).                             | `pnpm --dir docs build`      |
+| `guide/`                                                          | The guide for Open DS itself: product, business, brand, CLI, MCP, agents, contributing. Old notes in `guide/archive/`. | `pnpm harness`               |
+| `skills/`                                                         | The agent skill shipped with every deployed scheme.                                                                    | `pnpm harness`               |
+| `harness/`                                                        | Checks every layer against Yonatan's instructions and the ticket specs.                                                | `pnpm harness:full`          |
+| `packs/`, `recipes/`, `validator/`, `boilerplates/`, `fragments/` | The first preview (recipe model). Kept; the CLI still runs its commands.                                               | `uv run pytest`              |
 
 ## Rules
 
