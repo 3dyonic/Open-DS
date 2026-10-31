@@ -110,7 +110,7 @@ test("colour primitives are hue, mode and step, and semantics reach them through
     const css = read(s.id, "tokens.css");
     assert.match(css, /--color-[a-z]+-light-\d+: #[0-9A-F]{6}/i, `${s.id}: a light ramp step`);
     assert.match(css, /--color-[a-z]+-dark-\d+: #[0-9A-F]{6}/i, `${s.id}: a dark ramp step`);
-    assert.match(css, /--color-[a-z]+: var\(--color-[a-z]+-light-\d+\)/, `${s.id}: a $root base value`);
+    assert.match(css, /--color-[a-z]+: var\(--color-[a-z]+-light-\d+\)/, `${s.id}: an @ base value`);
     const name = s.brands.length > 1 ? s.brands[0].id : s.id;
     assert.ok(
       css.includes(`--color-action-primary: var(--${name}-theme-light-color-action-primary)`),
@@ -120,6 +120,6 @@ test("colour primitives are hue, mode and step, and semantics reach them through
       css.includes(`--color-action-primary: var(--${name}-theme-dark-color-action-primary)`),
       `${s.id}: dark semantic → theme`,
     );
-    assert.ok(!/\$root/.test(css), `${s.id}: no $root in names`);
+    assert.ok(!/--[\w-]*@/.test(css), `${s.id}: no @ in names`);
   }
 });

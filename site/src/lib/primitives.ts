@@ -9,7 +9,7 @@ export type Primitive = {
   description?: string;
   /** Semantic tokens that reach it (through a brand's theme for brand-dependent keys), with the mode and brand. */
   usedBy: { path: string; mode: string; brand?: string }[];
-  /** Set when the primitive itself points at another primitive (a hue's $root pointing at a step). */
+  /** Set when the primitive itself points at another primitive (a hue's @ pointing at a step). */
   ref?: string;
   /** Other primitives that point at this one. */
   pointedBy: string[];
@@ -20,7 +20,7 @@ const GROUPS: [string, string, string][] = [
   [
     "color",
     "Colour",
-    "Raw hues. Each has a light ramp, a dark ramp (the same steps, tuned for dark backgrounds) and a base value named after the hue (such as color.purple), written $root in the source. Brand themes pick from these.",
+    "Raw hues. Each has a light ramp, a dark ramp (the same steps, tuned for dark backgrounds) and a base value named after the hue (such as color.purple), written @ in the source. Brand themes pick from these.",
   ],
   ["font", "Type", "Font families, sizes, weights and line heights."],
   ["space", "Space", "The spacing steps gaps and insets pick from."],
@@ -43,7 +43,7 @@ function flatten(
   // A group's $type is inherited by its tokens (DTCG).
   const inherited = (node.$type as string | undefined) ?? type;
   return Object.entries(node).flatMap(([k, v]) => {
-    if ((k.startsWith("$") && k !== "$root") || !v || typeof v !== "object") return [];
+    if (k.startsWith("$") || !v || typeof v !== "object") return [];
     const p = [...prefix, k];
     return isToken(v)
       ? [{ path: p.join("."), token: { $type: inherited, ...(v as Node) } }]
@@ -98,7 +98,7 @@ export function primitivesPage(schemeId: string) {
           add(r, { path, mode: part, ...(multi && { brand: t.brands[b].label ?? b }) });
       }
     }
-  // A primitive that points at another (a hue's $root → a light step) passes its users on.
+  // A primitive that points at another (a hue's @ → a light step) passes its users on.
   const primRefs = new Map<string, string[]>();
   for (const { path, token } of flatten(t.primitive)) {
     const r = refOf(token.$value);

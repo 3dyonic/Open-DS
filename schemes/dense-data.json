@@ -1599,7 +1599,7 @@
   "tokens": {
     "primitive": {
       "color": {
-        "$description": "Colour options: raw hue ramps. Each hue has a light ramp, a dark ramp (the same steps tuned for dark backgrounds) and its base value ($root). Themes pick from these; components never read them.",
+        "$description": "Colour options: raw hue ramps. Each hue has a light ramp, a dark ramp (the same steps tuned for dark backgrounds) and its base value (@, built as color.<hue>). Themes pick from these; components never read them.",
         "slate": {
           "$type": "color",
           "$description": "The slate hue: a light ramp, a dark ramp and its base value.",
@@ -1667,7 +1667,7 @@
               "$value": "#FFFFFF"
             }
           },
-          "$root": {
+          "@": {
             "$value": "{color.slate.light.500}",
             "$description": "The base slate."
           }
@@ -1715,7 +1715,7 @@
               "$value": "#EEEDFE"
             }
           },
-          "$root": {
+          "@": {
             "$value": "{color.violet.light.600}",
             "$description": "The base violet."
           }

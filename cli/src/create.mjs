@@ -70,7 +70,7 @@ function readme(scheme, name, brands) {
     "",
     "| Folder | What it holds |",
     "| --- | --- |",
-    "| `tokens/src/` | The DTCG token source, one file per group: `primitive/` (colour by hue with light, dark and `$root`; space, size, radius, font, shadow, motion), `theme/` (each brand's picks per mode), `semantic/`, `component/` and content. |",
+    "| `tokens/src/` | The DTCG token source, one file per group: `primitive/` (colour by hue with light, dark and the `@` base; space, size, radius, font, shadow, motion), `theme/` (each brand's picks per mode), `semantic/`, `component/` and content. |",
     "| `tokens/build.mjs` | The Style Dictionary build. `npm run tokens` writes CSS, the shadcn and Tailwind theme and JSON to `build/`. |",
     "| `src/components/ui/` | The components. Each reads only component keys such as `--button-primary-background`. |",
     "| `src/styles/index.css` | Tailwind, the built tokens, the theme and the base styles. |",
