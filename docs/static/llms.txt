@@ -31,6 +31,7 @@
 - [Combobox](/components/combobox)
 - [Command](/components/command)
 - [Context menu](/components/context-menu)
+- [Data table](/components/data-table)
 - [Dialog](/components/dialog)
 - [Dropdown menu](/components/dropdown-menu)
 - [Empty](/components/empty)
