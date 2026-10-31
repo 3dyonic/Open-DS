@@ -2033,7 +2033,7 @@
             },
             "color-text-muted": {
               "$type": "color",
-              "$value": "{color.slate.light.500}"
+              "$value": "{color.slate.@}"
             },
             "color-text-inverse": {
               "$type": "color",
@@ -2057,11 +2057,11 @@
             },
             "color-border-focus": {
               "$type": "color",
-              "$value": "{color.teal.light.600}"
+              "$value": "{color.teal.@}"
             },
             "color-action-primary": {
               "$type": "color",
-              "$value": "{color.teal.light.600}"
+              "$value": "{color.teal.@}"
             },
             "color-action-primary-hover": {
               "$type": "color",
@@ -2310,7 +2310,7 @@
             },
             "color-text-muted": {
               "$type": "color",
-              "$value": "{color.slate.light.500}"
+              "$value": "{color.slate.@}"
             },
             "color-text-inverse": {
               "$type": "color",
@@ -2334,11 +2334,11 @@
             },
             "color-border-focus": {
               "$type": "color",
-              "$value": "{color.purple.light.600}"
+              "$value": "{color.purple.@}"
             },
             "color-action-primary": {
               "$type": "color",
-              "$value": "{color.purple.light.600}"
+              "$value": "{color.purple.@}"
             },
             "color-action-primary-hover": {
               "$type": "color",
@@ -2587,7 +2587,7 @@
             },
             "color-text-muted": {
               "$type": "color",
-              "$value": "{color.slate.light.500}"
+              "$value": "{color.slate.@}"
             },
             "color-text-inverse": {
               "$type": "color",
@@ -2611,11 +2611,11 @@
             },
             "color-border-focus": {
               "$type": "color",
-              "$value": "{color.orange.light.600}"
+              "$value": "{color.orange.@}"
             },
             "color-action-primary": {
               "$type": "color",
-              "$value": "{color.orange.light.600}"
+              "$value": "{color.orange.@}"
             },
             "color-action-primary-hover": {
               "$type": "color",

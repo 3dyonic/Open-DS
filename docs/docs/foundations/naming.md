@@ -26,7 +26,7 @@ Each token points to another token. Values live only on primitives, below.
 
 | Token | Points to, light | Points to, dark |
 | --- | --- | --- |
-| `component.button.primary.background` | `color.action.primary` → `dense-data.theme.light.color-action-primary` → `color.violet.light.600` | `color.action.primary` → `dense-data.theme.dark.color-action-primary` → `color.violet.dark.700` |
+| `component.button.primary.background` | `color.action.primary` → `dense-data.theme.light.color-action-primary` → `color.violet.@` → `color.violet.light.600` | `color.action.primary` → `dense-data.theme.dark.color-action-primary` → `color.violet.dark.700` |
 | `component.button.primary.background-hover` | `color.action.primary-hover` → `dense-data.theme.light.color-action-primary-hover` → `color.violet.light.700` | `color.action.primary-hover` → `dense-data.theme.dark.color-action-primary-hover` → `color.violet.dark.800` |
 | `component.button.primary.label` | `color.text.on-action` → `dense-data.theme.light.color-text-on-action` → `color.slate.light.0` | `color.text.on-action` → `dense-data.theme.dark.color-text-on-action` → `color.slate.dark.0` |
 | `component.button.secondary.background` | `color.action.secondary` → `dense-data.theme.light.color-action-secondary` → `color.slate.light.0` | `color.action.secondary` → `dense-data.theme.dark.color-action-secondary` → `color.slate.dark.50` |
@@ -40,18 +40,18 @@ Each token points to another token. Values live only on primitives, below.
 | `component.button.radius` | `radius.control` → `dense-data.theme.base.radius-control` → `radius.2` | `radius.control` → `dense-data.theme.base.radius-control` → `radius.2` |
 | `component.button.font-size` | `type.label.font-size` → `font.size.12` | `type.label.font-size` → `font.size.12` |
 | `component.button.font-weight` | `type.label.font-weight` → `font.weight.500` | `type.label.font-weight` → `font.weight.500` |
-| `component.button.focus-ring` | `color.border.focus` → `dense-data.theme.light.color-border-focus` → `color.violet.light.600` | `color.border.focus` → `dense-data.theme.dark.color-border-focus` → `color.violet.dark.700` |
+| `component.button.focus-ring` | `color.border.focus` → `dense-data.theme.light.color-border-focus` → `color.violet.@` → `color.violet.light.600` | `color.border.focus` → `dense-data.theme.dark.color-border-focus` → `color.violet.dark.700` |
 | `component.button.icon-size` | `size.icon` → `size.16` | `size.icon` → `size.16` |
 | `component.input.background` | `color.surface.default` → `dense-data.theme.light.color-surface-default` → `color.slate.light.0` | `color.surface.default` → `dense-data.theme.dark.color-surface-default` → `color.slate.dark.50` |
 | `component.input.border` | `color.border.strong` → `dense-data.theme.light.color-border-strong` → `color.slate.light.300` | `color.border.strong` → `dense-data.theme.dark.color-border-strong` → `color.slate.dark.200` |
-| `component.input.border-focus` | `color.border.focus` → `dense-data.theme.light.color-border-focus` → `color.violet.light.600` | `color.border.focus` → `dense-data.theme.dark.color-border-focus` → `color.violet.dark.700` |
+| `component.input.border-focus` | `color.border.focus` → `dense-data.theme.light.color-border-focus` → `color.violet.@` → `color.violet.light.600` | `color.border.focus` → `dense-data.theme.dark.color-border-focus` → `color.violet.dark.700` |
 | `component.input.text` | `color.text.primary` → `dense-data.theme.light.color-text-primary` → `color.slate.light.900` | `color.text.primary` → `dense-data.theme.dark.color-text-primary` → `color.slate.dark.900` |
-| `component.input.placeholder` | `color.text.muted` → `dense-data.theme.light.color-text-muted` → `color.slate.light.500` | `color.text.muted` → `dense-data.theme.dark.color-text-muted` → `color.slate.dark.300` |
+| `component.input.placeholder` | `color.text.muted` → `dense-data.theme.light.color-text-muted` → `color.slate.@` → `color.slate.light.500` | `color.text.muted` → `dense-data.theme.dark.color-text-muted` → `color.slate.dark.300` |
 | `component.input.height` | `size.control.default` → `size.32` | `size.control.default` → `size.32` |
 | `component.input.padding-x` | `space.inset.control-x` → `space.12` | `space.inset.control-x` → `space.12` |
 | `component.input.radius` | `radius.control` → `dense-data.theme.base.radius-control` → `radius.2` | `radius.control` → `dense-data.theme.base.radius-control` → `radius.2` |
 | `component.input.font-size` | `type.body.font-size` → `font.size.14` | `type.body.font-size` → `font.size.14` |
-| `component.control.checked` | `color.action.primary` → `dense-data.theme.light.color-action-primary` → `color.violet.light.600` | `color.action.primary` → `dense-data.theme.dark.color-action-primary` → `color.violet.dark.700` |
+| `component.control.checked` | `color.action.primary` → `dense-data.theme.light.color-action-primary` → `color.violet.@` → `color.violet.light.600` | `color.action.primary` → `dense-data.theme.dark.color-action-primary` → `color.violet.dark.700` |
 | `component.control.track` | `color.border.strong` → `dense-data.theme.light.color-border-strong` → `color.slate.light.300` | `color.border.strong` → `dense-data.theme.dark.color-border-strong` → `color.slate.dark.200` |
 | `component.control.thumb` | `color.surface.default` → `dense-data.theme.light.color-surface-default` → `color.slate.light.0` | `color.surface.default` → `dense-data.theme.dark.color-surface-default` → `color.slate.dark.50` |
 | `component.control.radius` | `radius.badge` → `dense-data.theme.base.radius-badge` → `radius.0` | `radius.badge` → `dense-data.theme.base.radius-badge` → `radius.0` |
@@ -77,7 +77,7 @@ Each token points to another token. Values live only on primitives, below.
 | `component.table.row-border` | `color.border.default` → `dense-data.theme.light.color-border-default` → `color.slate.light.200` | `color.border.default` → `dense-data.theme.dark.color-border-default` → `color.slate.dark.100` |
 | `component.table.row-selected` | `color.surface.selected` → `dense-data.theme.light.color-surface-selected` → `color.violet.light.100` | `color.surface.selected` → `dense-data.theme.dark.color-surface-selected` → `color.violet.dark.100` |
 | `component.table.font-size` | `type.data.font-size` → `font.size.13` | `type.data.font-size` → `font.size.13` |
-| `component.tabs.indicator` | `color.action.primary` → `dense-data.theme.light.color-action-primary` → `color.violet.light.600` | `color.action.primary` → `dense-data.theme.dark.color-action-primary` → `color.violet.dark.700` |
+| `component.tabs.indicator` | `color.action.primary` → `dense-data.theme.light.color-action-primary` → `color.violet.@` → `color.violet.light.600` | `color.action.primary` → `dense-data.theme.dark.color-action-primary` → `color.violet.dark.700` |
 | `component.tabs.label` | `color.text.secondary` → `dense-data.theme.light.color-text-secondary` → `color.slate.light.700` | `color.text.secondary` → `dense-data.theme.dark.color-text-secondary` → `color.slate.dark.500` |
 | `component.tabs.label-active` | `color.text.primary` → `dense-data.theme.light.color-text-primary` → `color.slate.light.900` | `color.text.primary` → `dense-data.theme.dark.color-text-primary` → `color.slate.dark.900` |
 | `component.overlay.background` | `color.surface.raised` → `dense-data.theme.light.color-surface-raised` → `color.slate.light.0` | `color.surface.raised` → `dense-data.theme.dark.color-surface-raised` → `color.slate.dark.100` |

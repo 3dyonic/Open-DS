@@ -1780,7 +1780,7 @@
             },
             "color-text-muted": {
               "$type": "color",
-              "$value": "{color.taupe.light.500}"
+              "$value": "{color.taupe.@}"
             },
             "color-text-inverse": {
               "$type": "color",
@@ -1804,11 +1804,11 @@
             },
             "color-border-focus": {
               "$type": "color",
-              "$value": "{color.pink.light.600}"
+              "$value": "{color.pink.@}"
             },
             "color-action-primary": {
               "$type": "color",
-              "$value": "{color.pink.light.600}"
+              "$value": "{color.pink.@}"
             },
             "color-action-primary-hover": {
               "$type": "color",

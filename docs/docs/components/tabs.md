@@ -18,6 +18,6 @@ The CSS variable is the key with `/` replaced by `-`. Each key points to a token
 
 | Key | What it controls | Points to, light | Points to, dark |
 | --- | --- | --- | --- |
-| `tabs/indicator` | Active tab indicator. | `color.action.primary` → `dense-data.theme.light.color-action-primary` → `color.violet.light.600` | `color.action.primary` → `dense-data.theme.dark.color-action-primary` → `color.violet.dark.700` |
+| `tabs/indicator` | Active tab indicator. | `color.action.primary` → `dense-data.theme.light.color-action-primary` → `color.violet.@` → `color.violet.light.600` | `color.action.primary` → `dense-data.theme.dark.color-action-primary` → `color.violet.dark.700` |
 | `tabs/label` | Inactive tab label. | `color.text.secondary` → `dense-data.theme.light.color-text-secondary` → `color.slate.light.700` | `color.text.secondary` → `dense-data.theme.dark.color-text-secondary` → `color.slate.dark.500` |
 | `tabs/label-active` | Active tab label. | `color.text.primary` → `dense-data.theme.light.color-text-primary` → `color.slate.light.900` | `color.text.primary` → `dense-data.theme.dark.color-text-primary` → `color.slate.dark.900` |

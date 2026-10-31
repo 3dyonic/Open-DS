@@ -64,14 +64,14 @@ Each token points to another token. Values live only on primitives, below.
 | `color.surface.scrim` | `dense-data.theme.light.color-surface-scrim` → `color.black.light.scrim` | `dense-data.theme.dark.color-surface-scrim` → `color.black.dark.scrim` |
 | `color.text.primary` | `dense-data.theme.light.color-text-primary` → `color.slate.light.900` | `dense-data.theme.dark.color-text-primary` → `color.slate.dark.900` |
 | `color.text.secondary` | `dense-data.theme.light.color-text-secondary` → `color.slate.light.700` | `dense-data.theme.dark.color-text-secondary` → `color.slate.dark.500` |
-| `color.text.muted` | `dense-data.theme.light.color-text-muted` → `color.slate.light.500` | `dense-data.theme.dark.color-text-muted` → `color.slate.dark.300` |
+| `color.text.muted` | `dense-data.theme.light.color-text-muted` → `color.slate.@` → `color.slate.light.500` | `dense-data.theme.dark.color-text-muted` → `color.slate.dark.300` |
 | `color.text.inverse` | `dense-data.theme.light.color-text-inverse` → `color.slate.light.0` | `dense-data.theme.dark.color-text-inverse` → `color.slate.dark.50` |
 | `color.text.on-action` | `dense-data.theme.light.color-text-on-action` → `color.slate.light.0` | `dense-data.theme.dark.color-text-on-action` → `color.slate.dark.0` |
 | `color.text.link` | `dense-data.theme.light.color-text-link` → `color.violet.light.700` | `dense-data.theme.dark.color-text-link` → `color.violet.dark.700` |
 | `color.border.default` | `dense-data.theme.light.color-border-default` → `color.slate.light.200` | `dense-data.theme.dark.color-border-default` → `color.slate.dark.100` |
 | `color.border.strong` | `dense-data.theme.light.color-border-strong` → `color.slate.light.300` | `dense-data.theme.dark.color-border-strong` → `color.slate.dark.200` |
-| `color.border.focus` | `dense-data.theme.light.color-border-focus` → `color.violet.light.600` | `dense-data.theme.dark.color-border-focus` → `color.violet.dark.700` |
-| `color.action.primary` | `dense-data.theme.light.color-action-primary` → `color.violet.light.600` | `dense-data.theme.dark.color-action-primary` → `color.violet.dark.700` |
+| `color.border.focus` | `dense-data.theme.light.color-border-focus` → `color.violet.@` → `color.violet.light.600` | `dense-data.theme.dark.color-border-focus` → `color.violet.dark.700` |
+| `color.action.primary` | `dense-data.theme.light.color-action-primary` → `color.violet.@` → `color.violet.light.600` | `dense-data.theme.dark.color-action-primary` → `color.violet.dark.700` |
 | `color.action.primary-hover` | `dense-data.theme.light.color-action-primary-hover` → `color.violet.light.700` | `dense-data.theme.dark.color-action-primary-hover` → `color.violet.dark.800` |
 | `color.action.secondary` | `dense-data.theme.light.color-action-secondary` → `color.slate.light.0` | `dense-data.theme.dark.color-action-secondary` → `color.slate.dark.50` |
 | `color.action.secondary-hover` | `dense-data.theme.light.color-action-secondary-hover` → `color.slate.light.100` | `dense-data.theme.dark.color-action-secondary-hover` → `color.slate.dark.100` |

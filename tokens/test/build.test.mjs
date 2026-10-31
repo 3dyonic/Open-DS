@@ -123,3 +123,22 @@ test("colour primitives are hue, mode and step, and semantics reach them through
     assert.ok(!/--[\w-]*@/.test(css), `${s.id}: no @ in names`);
   }
 });
+
+test("every hue's @ base value is picked by a brand theme", () => {
+  for (const s of index.schemes) {
+    const scheme = JSON.parse(readFileSync(new URL(`../../schemes/${s.id}.json`, import.meta.url), "utf8"));
+    const picks = new Set(
+      Object.values(scheme.tokens.brands).flatMap((b) =>
+        ["base", "light", "dark"].flatMap((part) => Object.values(b.theme[part] ?? {}).map((t) => t.$value)),
+      ),
+    );
+    for (const [hue, group] of Object.entries(scheme.tokens.primitive.color)) {
+      if (!group["@"]) continue;
+      assert.ok(picks.has(`{color.${hue}.@}`), `${s.id}: color.${hue}.@ is defined but no theme picks it`);
+      assert.ok(
+        ![...picks].includes(group["@"].$value),
+        `${s.id}: a theme picks ${group["@"].$value}; pick {color.${hue}.@} instead`,
+      );
+    }
+  }
+});
