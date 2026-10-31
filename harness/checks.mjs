@@ -2,6 +2,7 @@
 // Each check says what it needs to exist (`requires`). If that is missing, the layer is
 // "not built" yet, which is different from "fail". Slow checks (full builds) run with --full.
 
+import { themeTokens } from "../cli/src/tokens.mjs";
 import { spawnSync } from "node:child_process";
 import { pathToFileURL } from "node:url";
 import { existsSync, mkdtempSync, readFileSync, readdirSync, rmSync, statSync } from "node:fs";
@@ -260,14 +261,12 @@ export const CHECKS = {
       const problems = [];
       for (const s of SCHEMES) {
         const t = c.json("schemes", `${s}.json`).tokens;
-        const lightPaths = Object.keys(flatten(t.semantic.light)).sort().join();
-        if (lightPaths !== Object.keys(flatten(t.semantic.dark)).sort().join())
-          problems.push(`${s}: light and dark differ`);
         for (const brand of Object.keys(t.brands)) {
+          const th = t.brands[brand].theme;
+          if (Object.keys(flatten(th.light)).sort().join() !== Object.keys(flatten(th.dark)).sort().join())
+            problems.push(`${s}/${brand}: the light and dark themes have different keys`);
           for (const mode of ["light", "dark"]) {
-            const all = flatten(
-              mergeTrees(t.primitive, t.brands[brand].primitive, t.semantic.base, t.semantic[mode], t.component),
-            );
+            const all = flatten(themeTokens({ id: s, tokens: t }, brand, mode));
             for (const path of Object.keys(all)) {
               const r = resolve(all, path);
               if (r.error) problems.push(`${s}/${brand}/${mode}: ${path} ${r.error}`);
@@ -278,6 +277,69 @@ export const CHECKS = {
       return problems.length
         ? bad(`${problems.length} problems: ${problems.slice(0, 4).join("; ")}`)
         : ok("every token resolves in every brand and mode");
+    },
+  },
+
+  "semantics-guidance": {
+    requires: ["schemes/grammar.json", ...SCHEMES.map((s) => `schemes/${s}.json`)],
+    run: (c) => {
+      // Every colour semantic has guidance in the grammar; every key it names exists; every pair keeps
+      // its contrast in every brand and mode. No exceptions: a failing pair fails the check.
+      const g = c.json("schemes", "grammar.json");
+      const guide = new Map(g.semantics.keys.map((k) => [k.id, k]));
+      const gaps = [];
+      const lum = (hex) => {
+        const [r, gr, b] = [1, 3, 5]
+          .map((i) => parseInt(hex.slice(i, i + 2), 16) / 255)
+          .map((v) => (v <= 0.04045 ? v / 12.92 : ((v + 0.055) / 1.055) ** 2.4));
+        return 0.2126 * r + 0.7152 * gr + 0.0722 * b;
+      };
+      const ratio = (a, b) => {
+        const [x, y] = [lum(a), lum(b)].sort((m, n) => n - m);
+        return (x + 0.05) / (y + 0.05);
+      };
+      for (const id of g.semantics.urgency.order)
+        if (!guide.has(id)) gaps.push(`urgency names ${id}, which has no guidance`);
+      let pairs = 0;
+      for (const s of SCHEMES) {
+        const t = c.json("schemes", `${s}.json`).tokens;
+        const semantic = Object.keys(flatten(t.semantic)).filter((p) => p.startsWith("color."));
+        for (const p of semantic) if (!guide.has(p)) gaps.push(`${s}: ${p} has no guidance in the grammar`);
+        for (const k of guide.values()) {
+          if (!semantic.includes(k.id)) gaps.push(`${s}: guidance for ${k.id}, which the scheme does not define`);
+          for (const n of k.not_for)
+            if (!semantic.includes(n.use)) gaps.push(`${k.id}: not_for names ${n.use}, which ${s} does not define`);
+          for (const on of k.pairs?.on ?? [])
+            if (!semantic.includes(on)) gaps.push(`${k.id}: pairs with ${on}, which ${s} does not define`);
+          if (k.pairs && k.pairs.contrast === null && !k.exempt) gaps.push(`${k.id}: no contrast and no exempt reason`);
+        }
+        for (const brand of Object.keys(t.brands))
+          for (const mode of ["light", "dark"]) {
+            const all = flatten(themeTokens({ id: s, tokens: t }, brand, mode));
+            const hex = (p) => {
+              const v = resolve(all, p).value;
+              return typeof v === "string" && /^#[0-9a-f]{6}$/i.test(v) ? v : null;
+            };
+            for (const k of guide.values()) {
+              if (!k.pairs?.contrast) continue;
+              for (const on of k.pairs.on) {
+                const [a, b] = [hex(k.id), hex(on)];
+                if (!a || !b) continue;
+                pairs++;
+                const r = ratio(a, b);
+                if (r < k.pairs.contrast)
+                  gaps.push(
+                    `${s}/${brand}/${mode}: ${k.id} on ${on} is ${r.toFixed(2)}:1, needs ${k.pairs.contrast}:1`,
+                  );
+              }
+            }
+          }
+      }
+      return gaps.length
+        ? bad(`${gaps.length} problems: ${gaps.slice(0, 5).join("; ")}`)
+        : ok(
+            `${guide.size} colour semantics have guidance; ${pairs} pairs keep their contrast in every brand and mode`,
+          );
     },
   },
 
@@ -298,7 +360,8 @@ export const CHECKS = {
       for (const id of SCHEMES) {
         const t = c.json("schemes", `${id}.json`).tokens;
         const raw = [];
-        for (const part of ["base", "light", "dark"]) walk(t.semantic[part], "", raw);
+        walk(t.semantic, "", raw);
+        for (const b of Object.values(t.brands)) walk(b.theme, "", raw);
         walk(t.component, "", raw);
         if (raw.length) gaps.push(`${id}: raw values on ${raw.slice(0, 4).join(", ")}`);
       }
@@ -459,7 +522,7 @@ export const CHECKS = {
       const schemes = SCHEMES.map((id) => c.json("schemes", `${id}.json`));
       const has = (tree, path) =>
         path.split(".").reduce((n, p) => (n && typeof n === "object" ? n[p] : undefined), tree) !== undefined;
-      const semantic = (sch) => mergeTrees(sch.tokens.semantic.base, sch.tokens.semantic.light);
+      const semantic = (sch) => sch.tokens.semantic;
       for (const sc of g.scopes) {
         const got = sc.questions.map((q) => q.method).join();
         if (got !== methods.join()) gaps.push(`${sc.id}: methods ${got}`);
@@ -472,18 +535,15 @@ export const CHECKS = {
         for (const sch of schemes) {
           const trees = [
             sch.tokens.primitive,
-            ...Object.values(sch.tokens.brands).map((b) => b.primitive),
             semantic(sch),
-            sch.tokens.semantic.dark,
+            { theme: Object.values(sch.tokens.brands)[0].theme },
             { component: sch.tokens.component },
             { content: sch.tokens.content },
           ];
           for (const o of sc.owns ?? [])
             if (!trees.some((t) => has(t, o))) gaps.push(`${sch.id}: ${sc.id} owns ${o}, which is not a token`);
         }
-        const semanticOwns = (sc.owns ?? []).filter(
-          (o) => has(semantic(schemes[0]), o) || has(schemes[0].tokens.semantic.dark, o),
-        );
+        const semanticOwns = (sc.owns ?? []).filter((o) => has(semantic(schemes[0]), o));
         for (const cid of sc.lands_in ?? []) {
           if (!comps.has(cid)) {
             gaps.push(`${sc.id}: lands in ${cid}, which is not a component`);
@@ -731,7 +791,13 @@ export const CHECKS = {
     run: (c) => {
       const err = ensureTokens(c);
       if (err) return bad(tail(err));
-      const keys = c.json("schemes/grammar.json").component_keys.map((k) => `--${k.id.replaceAll("/", "-")}`);
+      const keys = c.json("schemes/grammar.json").component_keys.map(
+        (k) =>
+          `--${k.id
+            .split("/")
+            .filter((p) => p !== "@")
+            .join("-")}`,
+      );
       const gaps = [];
       for (const s of SCHEMES) {
         const css = c.has("tokens", "dist", s, "tokens.css") ? c.read("tokens", "dist", s, "tokens.css") : "";
@@ -813,8 +879,9 @@ export const CHECKS = {
         if (r.code !== 0) return bad(tail(r.out));
         const need = [
           "tokens/build.mjs",
-          "tokens/src/primitive.tokens.json",
-          "tokens/src/brands/coral.tokens.json",
+          "tokens/src/primitive/color/teal.tokens.json",
+          "tokens/src/theme/coral.tokens.json",
+          "tokens/src/semantic/color.tokens.json",
           ".storybook/preview.tsx",
           "stories/button.stories.tsx",
           "docs/docusaurus.config.ts",
@@ -1105,8 +1172,15 @@ export const CHECKS = {
   "git-rc1-from-master": {
     requires: [],
     run: (c) => {
-      const r = c.sh("git", ["merge-base", "--is-ancestor", "origin/master", "origin/RC1"]);
-      return r.code === 0 ? ok("RC1 contains master") : bad("origin/RC1 missing or not based on master");
+      // RC1 grows from master, and master only ever takes RC1 through release merges. So master may hold
+      // merge commits RC1 lacks (the release merges themselves), but never work of its own.
+      const base = c.sh("git", ["merge-base", "origin/master", "origin/RC1"]);
+      if (base.code !== 0) return bad("origin/RC1 missing or not based on master");
+      const own = c.sh("git", ["rev-list", "--no-merges", "origin/RC1..origin/master"]);
+      const commits = own.out.trim().split("\n").filter(Boolean);
+      return commits.length
+        ? bad(`master has ${commits.length} commits RC1 lacks: bring master into RC1`)
+        : ok("RC1 contains all of master's work");
     },
   },
   "git-feature-merges": {

@@ -2,7 +2,8 @@
 // Builds this design system's tokens with Style Dictionary.
 //
 // Reads the DTCG source in tokens/src and tokens/themes.json, and writes build/:
-//   tokens.css               every token as a CSS variable: light on :root, dark on .dark, one block per brand
+//   tokens.css               the semantic and component keys as CSS variables: light on :root, dark on .dark,
+//                            one block per brand. Primitives and themes resolve to values and never ship.
 //   theme.css                shadcn's variables and a Tailwind v4 @theme, mapped onto the semantics
 //   shadcn.css               shadcn's radius, shadow and text scale, mapped onto the tokens
 //   json/<theme>.tokens.json the resolved tokens for one brand and mode
@@ -22,6 +23,7 @@ import {
 import { dirname, join } from "node:path";
 import { fileURLToPath } from "node:url";
 import StyleDictionary from "style-dictionary";
+import { outputReferencesFilter } from "style-dictionary/utils";
 
 const here = dirname(fileURLToPath(import.meta.url));
 const src = join(here, "src");
@@ -70,12 +72,12 @@ const SHADCN = {
   "sidebar-accent-foreground": "color-text-primary",
   "sidebar-border": "color-border-default",
   "sidebar-ring": "color-border-focus",
-  // Chart series use action and status colours by their meaning: no danger for an ordinary series.
-  "chart-1": "color-action-primary",
-  "chart-2": "color-status-success",
-  "chart-3": "color-status-warning",
-  "chart-4": "color-text-secondary",
-  "chart-5": "color-text-muted",
+  // Chart series use the category colours: distinct hues that carry no meaning, so no series reads as an error.
+  "chart-1": "color-category-1",
+  "chart-2": "color-category-2",
+  "chart-3": "color-category-3",
+  "chart-4": "color-category-4",
+  "chart-5": "color-category-5",
 };
 
 // shadcn's radius, shadow and text classes, mapped onto the scheme's tokens. Written to build/shadcn.css.
@@ -123,15 +125,77 @@ function merge(...trees) {
   return tree;
 }
 
-// One theme is the primitives, the brand's primitives, the semantics for the mode and the component keys.
-const themeTokens = (brand, mode) =>
-  merge(
-    read("primitive.tokens.json"),
-    read("brands", `${brand}.tokens.json`),
-    read("semantic", "base.tokens.json"),
-    read("semantic", `${mode}.tokens.json`),
-    read("component.tokens.json"),
+// Every *.tokens.json under a folder of tokens/src, merged.
+const readDir = (dir) => {
+  const at = join(src, dir);
+  if (!existsSync(at)) return {};
+  return merge(
+    ...readdirSync(at, { recursive: true })
+      .filter((f) => String(f).endsWith(".tokens.json"))
+      .sort()
+      .map((f) => JSON.parse(readFileSync(join(at, String(f)), "utf8"))),
   );
+};
+const primitives = readDir("primitive");
+const semantics = readDir("semantic");
+const components = readDir("component");
+
+// The token at a dotted path, or undefined.
+const tokenAt = (tree, path) => {
+  const node = path
+    .split(".")
+    .reduce((n, p) => (isObject(n) ? n[p] : undefined), tree);
+  return isObject(node) && "$value" in node ? node : undefined;
+};
+const paths = (tree, prefix = []) =>
+  Object.entries(tree ?? {}).flatMap(([k, v]) =>
+    k.startsWith("$") || !isObject(v)
+      ? []
+      : "$value" in v
+        ? [[...prefix, k].join(".")]
+        : paths(v, [...prefix, k]),
+  );
+// Only the semantic and component keys ship as CSS variables.
+const ship = new Set([...paths(semantics), ...paths(components)]);
+
+// A semantic key that depends on the brand or mode says {theme.<its path>}. The theme has the same
+// paths, with a base (@) per concept that each mode decides. Point it at this brand and mode.
+function pointAtTheme(tree, name, theme, mode) {
+  const out = {};
+  for (const [k, v] of Object.entries(tree)) {
+    if (isObject(v) && "$value" in v) {
+      const m =
+        typeof v.$value === "string" && v.$value.match(/^\{theme\.([^}]+)\}$/);
+      if (!m) out[k] = v;
+      else {
+        const part = tokenAt(theme.base, m[1]) ? "base" : mode;
+        if (!tokenAt(theme[part], m[1]))
+          throw new Error(
+            `No theme key "${m[1]}" in tokens/src/theme for ${name} ${part}.`,
+          );
+        out[k] = { ...v, $value: `{${name}.theme.${part}.${m[1]}}` };
+      }
+    } else out[k] = isObject(v) ? pointAtTheme(v, name, theme, mode) : v;
+  }
+  return out;
+}
+
+// One theme: the primitives, this brand's theme for the mode, the semantics pointed at it, the component keys.
+const themeTokens = (brand, mode) => {
+  const { theme: name } = brands.find((b) => b.id === brand);
+  const theme = read("theme", `${brand}.tokens.json`)[name].theme;
+  const picked = {
+    [name]: {
+      theme: { ...(theme.base && { base: theme.base }), [mode]: theme[mode] },
+    },
+  };
+  return merge(
+    primitives,
+    picked,
+    pointAtTheme(semantics, name, theme, mode),
+    components,
+  );
+};
 
 function selectors(brand, mode) {
   const multi = brands.length > 1;
@@ -166,7 +230,8 @@ const cssBlock = async (tokens, selector) =>
       file: {
         destination: "x.css",
         format: "css/variables",
-        options: { selector, outputReferences: true },
+        filter: (token) => ship.has(token.path.join(".")),
+        options: { selector, outputReferences: outputReferencesFilter },
       },
     })
   ).replace(/^\/\*\*[\s\S]*?\*\/\n/, "");
@@ -328,7 +393,11 @@ writeFileSync(join(out, "docusaurus.css"), await docusaurusCss(brands[0].id));
 // The brand of this design system's docs and Storybook, in the default brand's resolved tokens:
 // the Open DS mark (a 6 by 5 pixel grid, one cell lit) in the system's ink and primary colour,
 // for light and dark, and the Storybook theme. Docusaurus and Storybook serve build/brand/.
-const pick = (tree, path) => path.split(".").reduce((n, k) => n?.[k], tree);
+// A concept with variants is a group: its base value sits under @ (color.action.primary.@).
+const pick = (tree, path) => {
+  const v = path.split(".").reduce((n, k) => n?.[k], tree);
+  return v && typeof v === "object" && "@" in v ? v["@"] : v;
+};
 const modeTokens = (mode) =>
   json[themes.find((t) => t.brand === brands[0].id && t.mode === mode)?.id] ??
   json[themes.find((t) => t.mode === mode)?.id];

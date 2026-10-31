@@ -282,7 +282,7 @@
                 "description": "The words on the badge."
               },
               "meaning": {
-                "enum": ["neutral", "success", "warning", "danger"],
+                "enum": ["neutral", "info", "success", "warning", "danger"],
                 "description": "What the status means; it picks the badge tone."
               },
               "why": {
@@ -731,22 +731,22 @@
     },
     "tokens": {
       "type": "object",
-      "description": "DTCG tokens in three tiers. Primitives are the options; brands add brand primitives; semantics are the decisions (base, light, dark); component keys point to semantics. content holds the voice scope's tokens: the words components use.",
+      "description": "DTCG tokens in four tiers. Primitives are the raw options, steps only (colour by hue, mode and step: color.<hue>.light.<step>, color.<hue>.dark.<step>). Each brand's theme picks from them, per mode, and decides each concept's base (@). Semantics are the plain keys components read, on the same paths as the theme; a brand-dependent one points at {theme.<path>}, which the build resolves to the active brand and mode. Only semantic and component keys ship as CSS variables. Component keys point to semantics. content holds the voice scope's words.",
       "additionalProperties": false,
       "required": ["primitive", "brands", "semantic", "component", "content"],
       "properties": {
         "primitive": {
           "$ref": "#/$defs/group",
-          "description": "Shared options. Components never read them."
+          "description": "Raw options shared by every brand: colour hues (light ramp and dark ramp, steps only), space, size, radius, border width, font families, sizes, weights and line heights, shadows, durations, easing and opacity. Components never read them."
         },
         "brands": {
           "type": "object",
           "minProperties": 1,
-          "description": "Brand primitives keyed by brand id. A single-brand scheme has one brand, 'default'.",
+          "description": "Brands keyed by id. A single-brand scheme has one brand, 'default'. Each brand's theme picks primitives for the brand-dependent semantic keys.",
           "additionalProperties": {
             "type": "object",
             "additionalProperties": false,
-            "required": ["label", "description", "primitive"],
+            "required": ["label", "description", "theme"],
             "properties": {
               "label": {
                 "type": "string",
@@ -756,32 +756,36 @@
                 "type": "string",
                 "description": "The brand in one sentence."
               },
-              "primitive": {
-                "$ref": "#/$defs/group",
-                "description": "Brand color ramp, font families and corner picks."
+              "theme": {
+                "type": "object",
+                "additionalProperties": false,
+                "required": ["light", "dark"],
+                "description": "The brand's theme: the decision layer. Its tree has the same paths as the semantic keys it serves (color.action.primary.@, color.action.primary.hover), and each token picks a primitive. A concept with variants has a base, @, which each mode decides for itself. Build-time only: semantics resolve through it and it never ships as CSS variables.",
+                "properties": {
+                  "$description": {
+                    "type": "string",
+                    "description": "What this theme is."
+                  },
+                  "base": {
+                    "$ref": "#/$defs/group",
+                    "description": "Mode-free picks: font families and corners."
+                  },
+                  "light": {
+                    "$ref": "#/$defs/group",
+                    "description": "Light mode picks: colours and shadows."
+                  },
+                  "dark": {
+                    "$ref": "#/$defs/group",
+                    "description": "Dark mode picks; the same keys as light."
+                  }
+                }
               }
             }
           }
         },
         "semantic": {
-          "type": "object",
-          "description": "The decisions. base does not change by mode; light and dark hold the color and shadow decisions.",
-          "additionalProperties": false,
-          "required": ["base", "light", "dark"],
-          "properties": {
-            "base": {
-              "$ref": "#/$defs/group",
-              "description": "Mode-independent decisions: space, size, radius, type, motion."
-            },
-            "light": {
-              "$ref": "#/$defs/group",
-              "description": "Light mode color and elevation decisions."
-            },
-            "dark": {
-              "$ref": "#/$defs/group",
-              "description": "Dark mode color and elevation decisions; same paths as light."
-            }
-          }
+          "$ref": "#/$defs/group",
+          "description": "The plain keys components and agents read: colour, space, size, radius, type, motion, elevation. A brand- or mode-dependent key's value is {theme.<its own path>}. A concept with variants has a base, @, beside them: color.action.primary.@ and color.action.primary.hover."
         },
         "component": {
           "$ref": "#/$defs/group",
@@ -797,11 +801,19 @@
   "$defs": {
     "group": {
       "type": "object",
-      "description": "A DTCG group: tokens and nested groups, with an optional $description.",
+      "description": "A DTCG group: tokens and nested groups, with an optional $description and $type (inherited by its tokens). @ is the concept's base (default) value, beside its variants.",
       "properties": {
         "$description": {
           "type": "string",
           "description": "What the group holds."
+        },
+        "$type": {
+          "$ref": "#/$defs/token/properties/$type",
+          "description": "Type inherited by every token in the group."
+        },
+        "@": {
+          "$ref": "#/$defs/token",
+          "description": "The concept's base value, beside its variants, for example color.action.primary.@ next to color.action.primary.hover. The build drops the @ from the name: it becomes --color-action-primary. A reference names it: {color.action.primary.@}. Not used on primitives, which are steps only."
         }
       },
       "patternProperties": {
@@ -826,7 +838,7 @@
       "additionalProperties": false,
       "properties": {
         "$value": {
-          "description": "The value, or a reference such as {color.brand.600}."
+          "description": "The value, or a reference such as {color.blue.light.600} or {theme.color-action-primary}."
         },
         "$type": {
           "enum": [

@@ -136,7 +136,7 @@ const logo = (t) =>
       [...row].map((c, i) =>
         c === "0"
           ? ""
-          : `<rect x="${+(i * 5.6).toFixed(1)}" y="${+(r * 5.6).toFixed(1)}" width="4.2" height="4.2" fill="${c === "l" ? t.color.action.primary : t.color.text.primary}"/>`,
+          : `<rect x="${+(i * 5.6).toFixed(1)}" y="${+(r * 5.6).toFixed(1)}" width="4.2" height="4.2" fill="${c === "l" ? t.color.action.primary["@"] : t.color.text.primary}"/>`,
       ),
   ).join("")}</svg>\n`;
 

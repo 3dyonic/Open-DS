@@ -14,14 +14,14 @@ See it in [Storybook](http://localhost:6006) under Components / Toast, in every 
 
 ## Component keys
 
-The CSS variable is the key with `/` replaced by `-`. Each key points to a token; values live only on primitives.
+The CSS variable is the key with `/` replaced by `-` and the base `@` dropped. Each key points to a token; values live only on primitives.
 
 | Key | What it controls | Points to, light | Points to, dark |
 | --- | --- | --- | --- |
-| `overlay/background` | Fill of a dialog, menu or toast. | `color.surface.raised` → `color.neutral.0` → `color.slate.0` | `color.surface.raised` → `color.neutral.800` → `color.slate.800` |
-| `overlay/radius` | Corner radius of overlays. | `radius.container` → `radius.brand.container` → `radius.4` | same |
-| `overlay/shadow` | Shadow of overlays. | `elevation.overlay` → `shadow.overlay` | `elevation.overlay` → `shadow.overlay-dark` |
-| `overlay/scrim` | Color that dims the page behind a dialog. | `color.surface.scrim` → `color.black-alpha.scrim` | `color.surface.scrim` → `color.black-alpha.scrim-dark` |
+| `overlay/background` | Fill of a dialog, menu or toast. | `color.surface.raised` → `dense-data.theme.light.color.surface.raised` → `color.slate.light.0` | `color.surface.raised` → `dense-data.theme.dark.color.surface.raised` → `color.slate.dark.100` |
+| `overlay/radius` | Corner radius of overlays. | `radius.container` → `dense-data.theme.base.radius.container` → `radius.4` | same |
+| `overlay/shadow` | Shadow of overlays. | `elevation.overlay` → `dense-data.theme.light.elevation.overlay` → `shadow.overlay` | `elevation.overlay` → `dense-data.theme.dark.elevation.overlay` → `shadow.overlay-dark` |
+| `overlay/scrim` | Color that dims the page behind a dialog. | `color.surface.scrim` → `dense-data.theme.light.color.surface.scrim` → `color.black.light.scrim` | `color.surface.scrim` → `dense-data.theme.dark.color.surface.scrim` → `color.black.dark.scrim` |
 | `overlay/item-height` | Height of a menu item. | `size.control.default` → `size.32` | same |
-| `tooltip/background` | Tooltip fill. | `color.surface.inverse` → `color.neutral.900` → `color.slate.900` | `color.surface.inverse` → `color.neutral.50` → `color.slate.50` |
-| `tooltip/label` | Tooltip text. | `color.text.inverse` → `color.neutral.0` → `color.slate.0` | `color.text.inverse` → `color.neutral.900` → `color.slate.900` |
+| `tooltip/background` | Tooltip fill. | `color.surface.inverse` → `dense-data.theme.light.color.surface.inverse` → `color.slate.light.900` | `color.surface.inverse` → `dense-data.theme.dark.color.surface.inverse` → `color.slate.dark.900` |
+| `tooltip/label` | Tooltip text. | `color.text.inverse` → `dense-data.theme.light.color.text.inverse` → `color.slate.light.0` | `color.text.inverse` → `dense-data.theme.dark.color.text.inverse` → `color.slate.dark.50` |

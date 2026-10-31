@@ -83,7 +83,7 @@ export interface Scheme {
   answers: Answer[];
   usage: Rule[];
   tokens: {
-    brands: Record<string, { label: string; description: string }>;
+    brands: Record<string, { label: string; description: string; theme: Record<string, unknown> }>;
     semantic: Record<string, unknown>;
   };
 }

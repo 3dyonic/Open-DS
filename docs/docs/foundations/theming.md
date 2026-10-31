@@ -11,19 +11,46 @@ description: "Dense data: Modes and brands."
 Modes and brands.
 
 <div class="ods-specimen">
-<span class="ods-item"><span class="ods-swatch" style="background:var(--color-brand-100)"></span><span class="ods-label">color.brand.100</span></span>
-<span class="ods-item"><span class="ods-swatch" style="background:var(--color-brand-300)"></span><span class="ods-label">color.brand.300</span></span>
-<span class="ods-item"><span class="ods-swatch" style="background:var(--color-brand-500)"></span><span class="ods-label">color.brand.500</span></span>
-<span class="ods-item"><span class="ods-swatch" style="background:var(--color-brand-600)"></span><span class="ods-label">color.brand.600</span></span>
-<span class="ods-item"><span class="ods-swatch" style="background:var(--color-brand-700)"></span><span class="ods-label">color.brand.700</span></span>
-<span class="ods-item"><span class="ods-swatch" style="background:var(--color-brand-800)"></span><span class="ods-label">color.brand.800</span></span>
-<span class="ods-item"><span class="ods-font" style="font-family:var(--font-family-display)">Aa 123</span><span class="ods-label">font.family.display</span></span>
-<span class="ods-item"><span class="ods-font" style="font-family:var(--font-family-body)">Aa 123</span><span class="ods-label">font.family.body</span></span>
-<span class="ods-item"><span class="ods-font" style="font-family:var(--font-family-ui)">Aa 123</span><span class="ods-label">font.family.ui</span></span>
-<span class="ods-item"><span class="ods-font" style="font-family:var(--font-family-mono)">Aa 123</span><span class="ods-label">font.family.mono</span></span>
-<span class="ods-item"><span class="ods-tile" style="border-radius:var(--radius-brand-control)"></span><span class="ods-label">radius.brand.control</span></span>
-<span class="ods-item"><span class="ods-tile" style="border-radius:var(--radius-brand-badge)"></span><span class="ods-label">radius.brand.badge</span></span>
-<span class="ods-item"><span class="ods-tile" style="border-radius:var(--radius-brand-container)"></span><span class="ods-label">radius.brand.container</span></span>
+<span class="ods-item"><span class="ods-tile" style="border-radius:var(--theme-radius-control)"></span><span class="ods-label">theme.radius.control</span></span>
+<span class="ods-item"><span class="ods-tile" style="border-radius:var(--theme-radius-badge)"></span><span class="ods-label">theme.radius.badge</span></span>
+<span class="ods-item"><span class="ods-tile" style="border-radius:var(--theme-radius-container)"></span><span class="ods-label">theme.radius.container</span></span>
+<span class="ods-item"><span class="ods-font" style="font-family:var(--theme-type-display-font-family)">Aa 123</span><span class="ods-label">theme.type.display.font-family</span></span>
+<span class="ods-item"><span class="ods-font" style="font-family:var(--theme-type-title-font-family)">Aa 123</span><span class="ods-label">theme.type.title.font-family</span></span>
+<span class="ods-item"><span class="ods-font" style="font-family:var(--theme-type-heading-font-family)">Aa 123</span><span class="ods-label">theme.type.heading.font-family</span></span>
+<span class="ods-item"><span class="ods-font" style="font-family:var(--theme-type-body-font-family)">Aa 123</span><span class="ods-label">theme.type.body.font-family</span></span>
+<span class="ods-item"><span class="ods-font" style="font-family:var(--theme-type-label-font-family)">Aa 123</span><span class="ods-label">theme.type.label.font-family</span></span>
+<span class="ods-item"><span class="ods-font" style="font-family:var(--theme-type-caption-font-family)">Aa 123</span><span class="ods-label">theme.type.caption.font-family</span></span>
+<span class="ods-item"><span class="ods-font" style="font-family:var(--theme-type-data-font-family)">Aa 123</span><span class="ods-label">theme.type.data.font-family</span></span>
+<span class="ods-item"><span class="ods-swatch" style="background:var(--theme-color-surface-canvas)"></span><span class="ods-label">theme.color.surface.canvas</span></span>
+<span class="ods-item"><span class="ods-swatch" style="background:var(--theme-color-surface-default)"></span><span class="ods-label">theme.color.surface.default</span></span>
+<span class="ods-item"><span class="ods-swatch" style="background:var(--theme-color-surface-raised)"></span><span class="ods-label">theme.color.surface.raised</span></span>
+<span class="ods-item"><span class="ods-swatch" style="background:var(--theme-color-surface-sunken)"></span><span class="ods-label">theme.color.surface.sunken</span></span>
+<span class="ods-item"><span class="ods-swatch" style="background:var(--theme-color-surface-selected)"></span><span class="ods-label">theme.color.surface.selected</span></span>
+<span class="ods-item"><span class="ods-swatch" style="background:var(--theme-color-surface-inverse)"></span><span class="ods-label">theme.color.surface.inverse</span></span>
+<span class="ods-item"><span class="ods-swatch" style="background:var(--theme-color-surface-scrim)"></span><span class="ods-label">theme.color.surface.scrim</span></span>
+<span class="ods-item"><span class="ods-swatch" style="background:var(--theme-color-text-primary)"></span><span class="ods-label">theme.color.text.primary</span></span>
+<span class="ods-item"><span class="ods-swatch" style="background:var(--theme-color-text-secondary)"></span><span class="ods-label">theme.color.text.secondary</span></span>
+<span class="ods-item"><span class="ods-swatch" style="background:var(--theme-color-text-muted)"></span><span class="ods-label">theme.color.text.muted</span></span>
+<span class="ods-item"><span class="ods-swatch" style="background:var(--theme-color-text-inverse)"></span><span class="ods-label">theme.color.text.inverse</span></span>
+<span class="ods-item"><span class="ods-swatch" style="background:var(--theme-color-text-on-action)"></span><span class="ods-label">theme.color.text.on-action</span></span>
+<span class="ods-item"><span class="ods-swatch" style="background:var(--theme-color-text-link)"></span><span class="ods-label">theme.color.text.link</span></span>
+<span class="ods-item"><span class="ods-swatch" style="background:var(--theme-color-border-default)"></span><span class="ods-label">theme.color.border.default</span></span>
+<span class="ods-item"><span class="ods-swatch" style="background:var(--theme-color-border-strong)"></span><span class="ods-label">theme.color.border.strong</span></span>
+<span class="ods-item"><span class="ods-swatch" style="background:var(--theme-color-border-focus)"></span><span class="ods-label">theme.color.border.focus</span></span>
+<span class="ods-item"><span class="ods-swatch" style="background:var(--theme-color-action-primary)"></span><span class="ods-label">theme.color.action.primary.@</span></span>
+<span class="ods-item"><span class="ods-swatch" style="background:var(--theme-color-action-primary-hover)"></span><span class="ods-label">theme.color.action.primary.hover</span></span>
+<span class="ods-item"><span class="ods-swatch" style="background:var(--theme-color-action-secondary)"></span><span class="ods-label">theme.color.action.secondary.@</span></span>
+<span class="ods-item"><span class="ods-swatch" style="background:var(--theme-color-action-secondary-hover)"></span><span class="ods-label">theme.color.action.secondary.hover</span></span>
+<span class="ods-item"><span class="ods-swatch" style="background:var(--theme-color-status-info)"></span><span class="ods-label">theme.color.status.info.@</span></span>
+<span class="ods-item"><span class="ods-swatch" style="background:var(--theme-color-status-info-subtle)"></span><span class="ods-label">theme.color.status.info.subtle</span></span>
+<span class="ods-item"><span class="ods-swatch" style="background:var(--theme-color-status-success)"></span><span class="ods-label">theme.color.status.success.@</span></span>
+<span class="ods-item"><span class="ods-swatch" style="background:var(--theme-color-status-success-subtle)"></span><span class="ods-label">theme.color.status.success.subtle</span></span>
+<span class="ods-item"><span class="ods-swatch" style="background:var(--theme-color-status-warning)"></span><span class="ods-label">theme.color.status.warning.@</span></span>
+<span class="ods-item"><span class="ods-swatch" style="background:var(--theme-color-status-warning-subtle)"></span><span class="ods-label">theme.color.status.warning.subtle</span></span>
+<span class="ods-item"><span class="ods-swatch" style="background:var(--theme-color-status-danger)"></span><span class="ods-label">theme.color.status.danger.@</span></span>
+<span class="ods-item"><span class="ods-swatch" style="background:var(--theme-color-status-danger-subtle)"></span><span class="ods-label">theme.color.status.danger.subtle</span></span>
+<span class="ods-item"><span class="ods-swatch" style="background:var(--theme-color-category-1)"></span><span class="ods-label">theme.color.category.1.@</span></span>
+<span class="ods-item"><span class="ods-swatch" style="background:var(--theme-color-category-1-subtle)"></span><span class="ods-label">theme.color.category.1.subtle</span></span>
 </div>
 
 ## The five answers
@@ -38,27 +65,63 @@ Modes and brands.
 
 ## Tokens
 
-This scope sets primitives directly.
+Each token points to another token. Values live only on primitives, below.
 
-## Primitives
-
-The raw values the tokens above end at.
-
-| Primitive | Value | Sample |
-| --- | --- | --- |
-| `color.brand.100` | #EEEDFE | <span class="ods-swatch" style="background:var(--color-brand-100)"></span> |
-| `color.brand.300` | #A9A3F6 | <span class="ods-swatch" style="background:var(--color-brand-300)"></span> |
-| `color.brand.500` | #5B4FE8 | <span class="ods-swatch" style="background:var(--color-brand-500)"></span> |
-| `color.brand.600` | #4B3FD9 | <span class="ods-swatch" style="background:var(--color-brand-600)"></span> |
-| `color.brand.700` | #3B31B0 | <span class="ods-swatch" style="background:var(--color-brand-700)"></span> |
-| `color.brand.800` | #2C2588 | <span class="ods-swatch" style="background:var(--color-brand-800)"></span> |
-| `font.family.body` | "IBM Plex Sans", system-ui, sans-serif | <span class="ods-font" style="font-family:var(--font-family-body)">Aa 123</span> |
-| `font.family.display` | "IBM Plex Sans", system-ui, sans-serif | <span class="ods-font" style="font-family:var(--font-family-display)">Aa 123</span> |
-| `font.family.mono` | "IBM Plex Mono", ui-monospace, monospace | <span class="ods-font" style="font-family:var(--font-family-mono)">Aa 123</span> |
-| `font.family.ui` | "IBM Plex Sans", system-ui, sans-serif | <span class="ods-font" style="font-family:var(--font-family-ui)">Aa 123</span> |
-| `radius.brand.badge` | 0rem (0px) | <span class="ods-tile" style="border-radius:var(--radius-brand-badge)"></span> |
-| `radius.brand.container` | 0.25rem (4px) | <span class="ods-tile" style="border-radius:var(--radius-brand-container)"></span> |
-| `radius.brand.control` | 0.125rem (2px) | <span class="ods-tile" style="border-radius:var(--radius-brand-control)"></span> |
+| Token | Points to |
+| --- | --- |
+| `theme.radius.control` |  |
+| `theme.radius.badge` |  |
+| `theme.radius.container` |  |
+| `theme.type.display.font-family` |  |
+| `theme.type.title.font-family` |  |
+| `theme.type.heading.font-family` |  |
+| `theme.type.body.font-family` |  |
+| `theme.type.label.font-family` |  |
+| `theme.type.caption.font-family` |  |
+| `theme.type.data.font-family` |  |
+| `theme.color.surface.canvas` |  |
+| `theme.color.surface.default` |  |
+| `theme.color.surface.raised` |  |
+| `theme.color.surface.sunken` |  |
+| `theme.color.surface.selected` |  |
+| `theme.color.surface.inverse` |  |
+| `theme.color.surface.scrim` |  |
+| `theme.color.text.primary` |  |
+| `theme.color.text.secondary` |  |
+| `theme.color.text.muted` |  |
+| `theme.color.text.inverse` |  |
+| `theme.color.text.on-action` |  |
+| `theme.color.text.link` |  |
+| `theme.color.border.default` |  |
+| `theme.color.border.strong` |  |
+| `theme.color.border.focus` |  |
+| `theme.color.action.primary.@` |  |
+| `theme.color.action.primary.hover` |  |
+| `theme.color.action.secondary.@` |  |
+| `theme.color.action.secondary.hover` |  |
+| `theme.color.status.info.@` |  |
+| `theme.color.status.info.subtle` |  |
+| `theme.color.status.success.@` |  |
+| `theme.color.status.success.subtle` |  |
+| `theme.color.status.warning.@` |  |
+| `theme.color.status.warning.subtle` |  |
+| `theme.color.status.danger.@` |  |
+| `theme.color.status.danger.subtle` |  |
+| `theme.color.category.1.@` |  |
+| `theme.color.category.1.subtle` |  |
+| `theme.color.category.2.@` |  |
+| `theme.color.category.2.subtle` |  |
+| `theme.color.category.3.@` |  |
+| `theme.color.category.3.subtle` |  |
+| `theme.color.category.4.@` |  |
+| `theme.color.category.4.subtle` |  |
+| `theme.color.category.5.@` |  |
+| `theme.color.category.5.subtle` |  |
+| `theme.color.disabled.text` |  |
+| `theme.color.disabled.surface` |  |
+| `theme.color.disabled.border` |  |
+| `theme.elevation.card` |  |
+| `theme.elevation.overlay` |  |
 
 ## Where it lands
 

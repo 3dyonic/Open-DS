@@ -22,6 +22,7 @@ import {
   packagesFor,
   withImports,
 } from "./components.mjs";
+import { context, TASKS } from "./context.mjs";
 import { createProject } from "./create.mjs";
 import {
   assetRoots,
@@ -391,7 +392,7 @@ export function createMcpServer({ roots = assetRoots() } = {}) {
     {
       title: "Component key",
       description:
-        "A component key (button/primary/background): what it is for, the semantic token it reads, and its resolved value in every theme of the scheme.",
+        "A component key (button/primary/background): what it is for, the semantic token it reads, its resolved value in every theme of the scheme, and the guidance for that semantic (intent, not_for with what to use instead, the fills it may sit on).",
       inputSchema: {
         scheme_id: SchemeId,
         key: z
@@ -404,6 +405,33 @@ export function createMcpServer({ roots = assetRoots() } = {}) {
       scheme(scheme_id);
       const out = keyInfo(scheme_id, key, roots, g);
       if (!out) throw new Error(`Unknown component key "${key}".`);
+      return json(out);
+    },
+  );
+
+  server.registerTool(
+    "get_context",
+    {
+      title: "Context",
+      description:
+        "Only the context you need for one target, in one call. A task (choose, build, write, change, review) returns what that skill needs. A component (badge), a component key (button/primary/background), a semantic token (color.status.danger) or a situation (status-label) returns its rules, guidance, pairs and resolved values in every theme.",
+      inputSchema: {
+        scheme_id: SchemeId,
+        target: z
+          .string()
+          .describe(
+            `A task (${TASKS.join(", ")}), a component, a component key, a semantic token or a situation id.`,
+          ),
+      },
+      annotations: { readOnlyHint: true },
+    },
+    async ({ scheme_id, target }) => {
+      scheme(scheme_id);
+      const out = context(scheme_id, target, roots, g);
+      if (!out)
+        throw new Error(
+          `Nothing called "${target}". Give a task (${TASKS.join(", ")}), a component (${g.components.map((c) => c.id).join(", ")}), a component key, a semantic token such as color.status.danger, or a situation id.`,
+        );
       return json(out);
     },
   );
@@ -539,9 +567,12 @@ export async function runStdio(options) {
   await createMcpServer(options).connect(new StdioServerTransport());
 }
 
-/** Serves Streamable HTTP at /mcp, without sessions or authentication. Returns the Node server. */
-export function runHttp({ port = 8787, host = "127.0.0.1", roots } = {}) {
-  const http = createHttpServer(async (req, res) => {
+/**
+ * The request handler behind runHttp: Streamable HTTP at /mcp, health at / and /health. A host can
+ * mount it next to other routes (the hosted server also serves the site).
+ */
+export function mcpHandler({ roots } = {}) {
+  return async (req, res) => {
     const path = new URL(req.url, "http://x").pathname;
     if (path === "/" || path === "/health") {
       res.writeHead(200, { "content-type": "application/json" });
@@ -611,7 +642,12 @@ export function runHttp({ port = 8787, host = "127.0.0.1", roots } = {}) {
     });
     await server.connect(transport);
     await transport.handleRequest(req, res, body);
-  });
+  };
+}
+
+/** Serves Streamable HTTP at /mcp, without sessions or authentication. Returns the Node server. */
+export function runHttp({ port = 8787, host = "127.0.0.1", roots } = {}) {
+  const http = createHttpServer(mcpHandler({ roots }));
   http.on("error", (e) => {
     console.error(
       e.code === "EADDRINUSE"

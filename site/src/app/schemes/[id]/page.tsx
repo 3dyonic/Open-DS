@@ -48,11 +48,8 @@ export default async function SchemePage({ params }: { params: Promise<{ id: str
       : "$value" in o
         ? 1
         : Object.values(o).reduce((n: number, v) => n + leaves(v), 0);
-  // Each brand ships its own semantics and component keys, so those count once per brand.
-  const tokenCount =
-    leaves(s.tokens) +
-    (Object.keys(s.tokens.brands).length - 1) *
-      (leaves(s.tokens.semantic) + leaves((s.tokens as Record<string, unknown>).component));
+  // Every primitive, every brand's theme picks, the semantics and the component keys.
+  const tokenCount = leaves(s.tokens);
   const componentCount = (s as unknown as { inventory: { in: unknown[] } }).inventory.in.length;
   const prim = primitivesPage(id);
   const primitiveCount =

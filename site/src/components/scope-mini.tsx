@@ -30,7 +30,7 @@ export function ScopeMini({
 }) {
   const brand = Object.keys(scheme.tokens.brands);
   const v = (name: string) => `var(--${name})`;
-  const base = scheme.tokens.semantic.base as {
+  const base = scheme.tokens.semantic as {
     motion: { duration: { feedback: { $value: string } } };
   };
   const speed = base.motion.duration.feedback.$value.replace(/[{}]/g, "").split(".").pop();

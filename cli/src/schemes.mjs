@@ -4,6 +4,7 @@
 import { existsSync, readFileSync, readdirSync } from "node:fs";
 import { dirname, join } from "node:path";
 import { fileURLToPath } from "node:url";
+import { guidanceFor } from "./guidance.mjs";
 
 const here = dirname(fileURLToPath(import.meta.url));
 
@@ -133,7 +134,27 @@ export function when(scheme, query, g = grammar()) {
     if (!sit || score(sit) === 0) return null;
   }
   const rule = scheme.usage.find((u) => u.situation === sit.id);
-  return { situation: sit.id, title: sit.title, ...rule };
+  const guidance = rule && guidanceFor(g, rule.use);
+  return {
+    situation: sit.id,
+    title: sit.title,
+    ...rule,
+    ...(guidance && { guidance }),
+  };
+}
+
+/** The resolved value of a token path in each theme of a scheme, from the built tokens. */
+export function valuesFor(schemeId, path, roots = assetRoots()) {
+  const index = readJson(join(roots.tokens, "index.json")).schemes.find(
+    (s) => s.id === schemeId,
+  );
+  const values = {};
+  for (const t of index?.themes ?? []) {
+    let node = readJson(join(roots.tokens, schemeId, `${t.id}.tokens.json`));
+    for (const part of path.split(/[./]/)) node = node?.[part];
+    values[t.id] = node;
+  }
+  return values;
 }
 
 /** The component key, its semantic and the resolved value in each theme. */
@@ -143,22 +164,18 @@ export function keyInfo(
   roots = assetRoots(),
   g = grammar(roots),
 ) {
-  const key = g.component_keys.find((k) => k.id === keyId);
+  // A part with variants has a base, @: button/primary/background means button/primary/background/@.
+  const key =
+    g.component_keys.find((k) => k.id === keyId) ??
+    g.component_keys.find((k) => k.id === `${keyId}/@`);
   if (!key) return null;
-  const index = readJson(join(roots.tokens, "index.json")).schemes.find(
-    (s) => s.id === schemeId,
-  );
-  const values = {};
-  for (const t of index.themes) {
-    let node = readJson(join(roots.tokens, schemeId, `${t.id}.tokens.json`));
-    for (const part of keyId.split("/")) node = node?.[part];
-    values[t.id] = node;
-  }
+  const guidance = guidanceFor(g, key.default);
   return {
-    key: keyId,
+    key: key.id,
     description: key.description,
     semantic: key.default,
-    values,
+    values: valuesFor(schemeId, key.id, roots),
+    ...(guidance && { guidance }),
   };
 }
 
