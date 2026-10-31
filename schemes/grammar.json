@@ -2691,6 +2691,45 @@
         "description": "Messages and attachments for chat interfaces."
       }
     ],
+    "roles": {
+      "description": "The families each components.roles option admits. Core is the families every system needs.",
+      "core": [
+        "action",
+        "form",
+        "feedback",
+        "overlay",
+        "layout",
+        "navigation"
+      ],
+      "core-data": [
+        "action",
+        "form",
+        "feedback",
+        "overlay",
+        "layout",
+        "navigation",
+        "data"
+      ],
+      "core-content": [
+        "action",
+        "form",
+        "feedback",
+        "overlay",
+        "layout",
+        "navigation",
+        "content",
+        "media"
+      ],
+      "core-media": [
+        "action",
+        "form",
+        "feedback",
+        "overlay",
+        "layout",
+        "navigation",
+        "media"
+      ]
+    },
     "items": [
       {
         "id": "accordion",

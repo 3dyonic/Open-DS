@@ -387,13 +387,8 @@ export const CHECKS = {
       // only from the families the roles answer names, and as many as the count answer says.
       const g = c.json("schemes", "grammar.json");
       const items = Object.fromEntries((g.catalogue?.items ?? []).map((i) => [i.id, i]));
-      const CORE = ["action", "form", "feedback", "overlay", "layout", "navigation"];
-      const ROLES = {
-        core: CORE,
-        "core-data": [...CORE, "data"],
-        "core-content": [...CORE, "content", "media"],
-        "core-media": [...CORE, "media"],
-      };
+      // The families each roles option admits live in the grammar, so the site and this check agree.
+      const ROLES = g.catalogue?.roles ?? {};
       const COUNT = { few: [1, 20], some: [21, 35], many: [36, Infinity] };
       const gaps = [];
       for (const id of SCHEMES) {
