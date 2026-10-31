@@ -126,7 +126,8 @@ async function compareImages([a, b, offset]) {
     const t = spec.thresholds;
     if (img.fold < t.fold) problems.push(`fold similarity ${img.fold.toFixed(2)} < ${t.fold}`);
     if (img.palette < t.palette) problems.push(`palette overlap ${img.palette.toFixed(2)} < ${t.palette}`);
-    if (ratio < t.height[0] || ratio > t.height[1])
+    const height = p.height ?? t.height;
+    if (ratio < height[0] || ratio > height[1])
       problems.push(`height ${img.heights[0]}px vs frame ${img.heights[1]}px`);
     pages.push({
       route: p.route,
