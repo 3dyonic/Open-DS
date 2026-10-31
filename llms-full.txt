@@ -31,7 +31,7 @@ Themes: light, dark
 - team.q1 Who maintains the system? A platform team. A platform team serves many services.
 - team.q2 How fast does it change? Rarely. Changes are rare and tested.
 - typography.roles Which text roles does it need? Core: heading, body, label. Few roles keep pages predictable. (because human.q1)
-- typography.count How many sizes does the scale have? Few. Few sizes, each clearly different. (because human.q1)
+- typography.count How many steps does the type scale take? Only the steps the screens need. Only the sizes the screens need, each clearly different. (because human.q1)
 - typography.definition How are sizes and line heights defined? A ratio, line heights in proportion. Line height grows with text size for zoom users. (because people.q2)
 - typography.values How large is body text? Large. Large text is readable for more people. (because people.q1)
 - typography.lands Where does type do the most work? Forms and labels. Type matters most in form labels and hints. (because content.q1)
@@ -86,9 +86,9 @@ Themes: light, dark
 - voice.values How does it sound? Plain and direct. Every sentence is easy to read on the first try. (because people.q1, brand.q1)
 - voice.lands Where do the words matter most? Form steps and errors. Words decide whether a form gets finished. (because outcomes.q1)
 - components.roles Which component families does it need? Actions, forms, feedback, overlays, layout and navigation. Forms, steps and feedback are all a public service needs. (because content.q1, people.q1)
-- components.count How many components does it carry? Few. Fewer parts, each tested with assistive technology. (because people.q2, team.q2)
+- components.count How far does the inventory reach? Only what today's screens use. Only the parts in use, each tested with assistive technology. (because people.q2, team.q2)
 - components.definition How does a component earn its place? It works for everyone, with any device and assistive technology. A component joins only when it works with any device and assistive technology. (because people.q1, people.q2)
-- components.values How many variants does each component offer? Few. One clear way to do each thing. (because people.q1, brand.q1)
+- components.values When does a component get another look? Only when the meaning changes. One clear way to do each thing. (because people.q1, brand.q1)
 - components.lands Where do components do the most work? Forms and steps. Components do their work in forms and steps. (because content.q1, tasks.q1)
 
 ### Usage rules
@@ -170,7 +170,7 @@ Themes: light, dark
 - team.q1 Who maintains the system? An agency. An agency runs campaigns.
 - team.q2 How fast does it change? Every campaign. Every campaign changes the look a little. (because team.q1)
 - typography.roles Which text roles does it need? Core and expressive display. A big expressive display role carries the brand. (because brand.q2)
-- typography.count How many sizes does the scale have? Many. A wide scale gives big moments room. (because brand.q2)
+- typography.count How many steps does the type scale take? Fine steps, so pages can set their own rhythm. Fine steps give big moments room. (because brand.q2)
 - typography.definition How are sizes and line heights defined? A ratio, line heights in proportion. Ratios suit the big display sizes. (because typography.roles)
 - typography.values How large is body text? Regular. Regular body; the display does the shouting. (because content.q2)
 - typography.lands Where does type do the most work? Headlines and hero. Type does its work in headlines. (because brand.q2)
@@ -225,9 +225,9 @@ Themes: light, dark
 - voice.values How does it sound? Playful. Big words, few of them. (because brand.q1, brand.q2)
 - voice.lands Where do the words matter most? Headlines and buttons. Words work hardest in headlines and buttons. (because outcomes.q1)
 - components.roles Which component families does it need? Core, plus media. Campaigns lead with media and big sections. (because content.q1, brand.q2)
-- components.count How many components does it carry? Few. One action and a story need few parts; an agency keeps them fresh. (because tasks.q2, team.q1)
+- components.count How far does the inventory reach? Only what today's screens use. One action and a story need only the parts in use; an agency keeps them fresh. (because tasks.q2, team.q1)
 - components.definition How does a component earn its place? It gives the brand a moment. A component joins when it gives the campaign a moment. (because brand.q1, outcomes.q1)
-- components.values How many variants does each component offer? Some. Some variants let each campaign look a little different. (because team.q2, brand.q2)
+- components.values When does a component get another look? Also for emphasis and size. Variants for emphasis and size let each campaign look a little different. (because team.q2, brand.q2)
 - components.lands Where do components do the most work? Campaign sections. Components sit inside big campaign sections. (because content.q1, tasks.q1)
 
 ### Usage rules
@@ -309,7 +309,7 @@ Themes: light, dark
 - team.q1 Who maintains the system? A small team. A small editorial team.
 - team.q2 How fast does it change? Rarely. The design changes rarely.
 - typography.roles Which text roles does it need? Core and editorial display. A lead and a display role open articles. (because content.q1)
-- typography.count How many sizes does the scale have? Many. Long pages need a clear hierarchy of headings. (because content.q1)
+- typography.count How many steps does the type scale take? Fine steps, so pages can set their own rhythm. Long pages need a clear hierarchy of headings, with fine steps between them. (because content.q1)
 - typography.definition How are sizes and line heights defined? A ratio, line heights in proportion. Line height is a ratio, so it grows with the text. (because tasks.q1, people.q2)
 - typography.values How large is body text? Large. Large body text is easy on the eyes. (because outcomes.q1)
 - typography.lands Where does type do the most work? Articles and long text. Type does its work in articles. (because content.q1)
@@ -364,9 +364,9 @@ Themes: light, dark
 - voice.values How does it sound? Conversational. Talk to one reader, like a good editor. (because people.q1, brand.q1)
 - voice.lands Where do the words matter most? Articles and guides. Most words are in articles and guides. (because content.q1)
 - components.roles Which component families does it need? Core, plus content and media. Readers need sections, navigation and little else. (because content.q1, tasks.q1)
-- components.count How many components does it carry? Few. Actions are rare, so few components cover them. (because tasks.q2, team.q1)
+- components.count How far does the inventory reach? Only what today's screens use. Actions are rare, so the components today's pages use cover them. (because tasks.q2, team.q1)
 - components.definition How does a component earn its place? A use scenario needs it. A component joins only when reading needs it. (because scenarios.q2, tasks.q1)
-- components.values How many variants does each component offer? Few. Few variants keep pages calm. (because brand.q2, outcomes.q1)
+- components.values When does a component get another look? Only when the meaning changes. Pages stay calm when a component changes only with its meaning. (because brand.q2, outcomes.q1)
 - components.lands Where do components do the most work? Articles. Components sit inside and around articles. (because content.q1)
 
 ### Usage rules
@@ -448,7 +448,7 @@ Themes: light, dark
 - team.q1 Who maintains the system? A small team. A small team keeps the system right.
 - team.q2 How fast does it change? Every month. Features ship every month; the system must keep up.
 - typography.roles Which text roles does it need? Core and data. A data role keeps numbers in aligned columns. (because content.q1, tasks.q1)
-- typography.count How many sizes does the scale have? Few. Few sizes keep a screen full of records calm. (because content.q2)
+- typography.count How many steps does the type scale take? Only the steps the screens need. A screen full of records stays calm with only the sizes it needs. (because content.q2)
 - typography.definition How are sizes and line heights defined? A ratio, line heights on the grid. Lines stay on the grid so rows align, and grow with the user's text size. (because tasks.q1, people.q2)
 - typography.values How large is body text? Small. Small body text fits more rows on the screen. (because content.q2)
 - typography.lands Where does type do the most work? Tables and inputs. Most text sits in table cells and inputs. (because content.q1)
@@ -503,9 +503,9 @@ Themes: light, dark
 - voice.values How does it sound? Terse. Experts want short labels and short messages. (because people.q1, brand.q1)
 - voice.lands Where do the words matter most? Errors and empty states. Errors and empty tables are where words decide the next action. (because outcomes.q2)
 - components.roles Which component families does it need? Core, plus data. Records need tables, filters and fast ways to move between them. (because content.q1, tasks.q1)
-- components.count How many components does it carry? Some. Enough for a full operations tool, few enough for a small team to keep right. (because content.q2, team.q1)
+- components.count How far does the inventory reach? What today's screens use, plus what the next ones will likely need. A full operations tool with the parts its next screens will need, still few enough for a small team to keep right. (because content.q2, team.q1)
 - components.definition How does a component earn its place? A use scenario needs it. A component joins only when a daily task needs it. (because scenarios.q1, tasks.q2)
-- components.values How many variants does each component offer? Few. Few variants keep repeated screens identical. (because brand.q2, tasks.q2)
+- components.values When does a component get another look? Only when the meaning changes. Repeated screens stay identical when a component changes only with its meaning. (because brand.q2, tasks.q2)
 - components.lands Where do components do the most work? Tables and forms. Most work happens in tables and the forms that edit them. (because content.q1, tasks.q1)
 
 ### Usage rules
@@ -587,7 +587,7 @@ Themes: aster-light, aster-dark, birch-light, birch-dark, coral-light, coral-dar
 - team.q1 Who maintains the system? A platform team. A platform team serves three product teams. (because business.q2)
 - team.q2 How fast does it change? Every month. Brands ship every month. (because business.q2)
 - typography.roles Which text roles does it need? Core: heading, body, label. One set of roles across brands. (because business.q2)
-- typography.count How many sizes does the scale have? Some. A middle-sized scale suits every brand font. (because business.q2)
+- typography.count How many steps does the type scale take? One step per kind of text. One size per kind of text suits every brand font. (because business.q2)
 - typography.definition How are sizes and line heights defined? A ratio, line heights in proportion. Ratios work with every brand font. (because business.q2)
 - typography.values How large is body text? Regular. Regular body size suits all brands. (because brand.q1)
 - typography.lands Where does type do the most work? Forms and labels. Sign-up and account forms carry most text. (because tasks.q1)
@@ -642,9 +642,9 @@ Themes: aster-light, aster-dark, birch-light, birch-dark, coral-light, coral-dar
 - voice.values How does it sound? Plain and direct. The shared core is plain and direct. (because brand.q1)
 - voice.lands Where do the words matter most? Headlines and buttons. Brand tone shows in headlines and buttons. (because brand.q2)
 - components.roles Which component families does it need? Core, plus content and media. Product teams build sign-up and account forms, plus product pages with questions and faces. (because content.q1, team.q1)
-- components.count How many components does it carry? Some. Enough for three product teams, kept by one platform team. (because team.q1, team.q2)
+- components.count How far does the inventory reach? What today's screens use, plus what the next ones will likely need. Three product teams find their next parts ready, kept by one platform team. (because team.q1, team.q2)
 - components.definition How does a component earn its place? Its family is in the roles, so product teams find it ready. Product teams find a whole family ready instead of asking one by one. (because team.q1, team.q2)
-- components.values How many variants does each component offer? Some. Some variants let each brand feel present without new components. (because brand.q2, outcomes.q2)
+- components.values When does a component get another look? Also for emphasis and size. Variants for emphasis and size let each brand feel present without new components. (because brand.q2, outcomes.q2)
 - components.lands Where do components do the most work? Sign-up and account pages. Most components sit in sign-up and account pages. (because content.q1, tasks.q1)
 
 ### Usage rules
