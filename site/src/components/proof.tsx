@@ -27,12 +27,9 @@ function Step({ n, title, note }: { n: number; title: string; note: string }) {
   );
 }
 
-const ORDERS: [string, string, string][] = [
-  ["#1042", "Shipped", "1,240.00"],
-  ["#1043", "Pending", "86.50"],
-  ["#1044", "Shipped", "3,915.20"],
-  ["#1045", "Refunded", "212.00"],
-];
+// A cell only this scheme answers this way: a soft tint of the scheme's own primary colour.
+const LIT =
+  "border-[color-mix(in_srgb,var(--color-action-primary)_45%,transparent)] bg-[color-mix(in_srgb,var(--color-action-primary)_12%,white)]";
 
 function Specimen({ p }: { p: ProofData }) {
   return (
@@ -43,39 +40,58 @@ function Specimen({ p }: { p: ProofData }) {
         className="flex w-full flex-col gap-[10px] rounded-[var(--radius-container)] border border-[var(--color-border-default)] bg-[var(--color-surface-default)] p-4 text-[var(--color-text-primary)] [font-family:var(--type-body-font-family)]"
       >
         <p className="[font-family:var(--type-heading-font-family)] text-[length:var(--type-heading-font-size)] [font-weight:var(--type-heading-font-weight)]">
-          Open orders
+          {p.sample.screen}
         </p>
-        <div className="flex gap-4">
-          {[
-            ["Today", "1,240.00"],
-            ["Pending", "86"],
-            ["Refunds", "3"],
-          ].map(([k, v]) => (
-            <div key={k} className="flex flex-col gap-[2px]">
+        <div className="flex flex-wrap gap-4">
+          {p.sample.metrics.map((m) => (
+            <div key={m.label} className="flex flex-col gap-[2px]">
               <span className="text-[11px] font-medium uppercase text-[var(--color-text-secondary)]">
-                {k}
+                {m.label}
               </span>
-              <span className="[font-family:var(--type-data-font-family)] text-[16px]">{v}</span>
+              <span className="[font-family:var(--type-data-font-family)] text-[16px]">
+                {m.value}
+              </span>
             </div>
           ))}
         </div>
-        <table className="w-full border border-[var(--table-row-border)] text-[length:var(--table-font-size)]">
-          <tbody>
-            {ORDERS.map(([id, state, amount]) => (
-              <tr key={id}>
-                <td className="w-[60px] px-2 py-1 [font-family:var(--type-data-font-family)]">
-                  {id}
-                </td>
-                <td className="px-2 py-1 text-[var(--color-text-secondary)]">{state}</td>
-                <td className="px-2 py-1 text-right [font-family:var(--type-data-font-family)]">
-                  {amount}
-                </td>
-              </tr>
-            ))}
-          </tbody>
-        </table>
-        <div>
-          <Button size="compact">Export</Button>
+        {p.sample.table && (
+          <table className="w-full border border-[var(--table-row-border)] text-[length:var(--table-font-size)]">
+            <tbody>
+              {p.sample.table.rows.map((r, ri) => (
+                <tr key={ri}>
+                  {r.map((c, ci) => (
+                    <td
+                      key={ci}
+                      className={`px-2 py-1 ${p.sample.table!.numeric[ci] ? "text-right [font-family:var(--type-data-font-family)]" : ci === 0 ? "" : "text-[var(--color-text-secondary)]"}`}
+                    >
+                      {c}
+                    </td>
+                  ))}
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        )}
+        {!p.sample.table && p.sample.card && (
+          <div className="flex flex-col gap-1 rounded-[var(--radius-container)] border border-[var(--color-border-default)] p-3">
+            <span className="[font-family:var(--type-heading-font-family)] text-[17px] [font-weight:var(--type-heading-font-weight)]">
+              {p.sample.card.title}
+            </span>
+            <span className="text-[14px] text-[var(--color-text-secondary)]">
+              {p.sample.card.description}
+            </span>
+            {p.sample.card.status && (
+              <span className="text-[12px] font-medium uppercase text-[var(--color-text-secondary)]">
+                {p.sample.card.status}
+              </span>
+            )}
+          </div>
+        )}
+        <div className="flex gap-2">
+          <Button size="compact">{p.sample.primary}</Button>
+          <Button size="compact" variant="secondary">
+            {p.sample.secondary}
+          </Button>
         </div>
       </div>
       <p className="text-[15px] font-semibold leading-[1.35]">{p.because}</p>
@@ -194,13 +210,13 @@ export function Proof({ data }: { data: ProofData[] }) {
       </div>
 
       <div className="flex flex-col gap-8 lg:flex-row lg:items-start">
-        <div className="flex min-w-0 flex-1 flex-col gap-[10px]">
+        <div data-scheme={p.id} className="flex min-w-0 flex-1 flex-col gap-[10px]">
           <Step n={2} title="Answers" note="same questions for every scheme" />
           <p className="font-mono text-[12px] text-muted">
             {p.name}’s answers, chosen because of the reasons above:
           </p>
-          <div className="overflow-x-auto">
-            <table className="w-full min-w-[640px] table-fixed border-separate border-spacing-[6px] [margin:-6px]">
+          <div className="max-lg:overflow-x-auto">
+            <table className="w-full table-fixed border-separate border-spacing-[6px] max-lg:min-w-[640px]">
               <thead>
                 <tr>
                   <td className="w-[110px]" />
@@ -227,7 +243,7 @@ export function Proof({ data }: { data: ProofData[] }) {
                         title={c.question}
                         className={`rounded-[3px] border p-[10px] align-top font-mono text-[12px] ${
                           c.lit
-                            ? "border-accent bg-accent text-ink"
+                            ? `${LIT} font-semibold text-ink`
                             : "border-line bg-paper text-[#3e3a31]"
                         }`}
                       >
@@ -241,7 +257,10 @@ export function Proof({ data }: { data: ProofData[] }) {
           </div>
           <Legend
             items={[
-              [Swatch.answerOwn, `Only ${p.name} answers this way`],
+              [
+                <span key="own" className={`block size-[18px] rounded-[3px] border ${LIT}`} />,
+                `Only ${p.name} answers this way`,
+              ],
               [Swatch.answerShared, "Other schemes give the same answer"],
             ]}
           />
