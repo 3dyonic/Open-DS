@@ -44,6 +44,8 @@ jobs:
       - name: Build and test what ships
         run: |
           pnpm --dir tokens build
+          # The version and the snapshot of the public surface must move together (OD-165).
+          node scripts/release.mjs check
           pnpm --dir cli test
           pnpm test:package
 

@@ -27,6 +27,7 @@
     "e2e:quick": "node scripts/e2e.mjs --quick",
     "test:package": "node scripts/test-package.mjs",
     "test:create": "node scripts/test-create.mjs",
-    "shots": "node scripts/shots.mjs"
+    "shots": "node scripts/shots.mjs",
+    "release": "node scripts/release.mjs"
   }
 }
