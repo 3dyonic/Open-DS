@@ -236,3 +236,20 @@ test("create writes a full design system project", async () => {
   rmSync(dirname(fresh), { recursive: true, force: true });
   rmSync(dirname(dir), { recursive: true, force: true });
 });
+
+test("add brings the components a component imports and names the packages it needs", () => {
+  const dir = temp();
+  try {
+    deploy("accessible-first", dir);
+    assert.ok(!existsSync(join(dir, "src/components/ui/sheet.tsx")));
+    const record = addComponent("sidebar", dir);
+    for (const c of ["sidebar", "sheet", "skeleton", "tooltip"]) assert.ok(existsSync(join(dir, `src/components/ui/${c}.tsx`)), c);
+    assert.ok(existsSync(join(dir, "src/lib/use-mobile.ts")));
+    assert.ok(record.components.includes("sheet"));
+    const chart = addComponent("chart", dir);
+    assert.ok(chart.added.packages.includes("recharts"));
+    assert.ok(JSON.parse(readFileSync(join(dir, "open-ds.json"), "utf8")).dependencies.includes("recharts"));
+  } finally {
+    rmSync(dir, { recursive: true, force: true });
+  }
+});

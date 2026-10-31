@@ -20,6 +20,18 @@
       ]
     },
     {
+      "name": "use-mobile",
+      "type": "registry:lib",
+      "title": "useIsMobile hook",
+      "description": "True below the phone breakpoint. The sidebar uses it.",
+      "files": [
+        {
+          "path": "src/lib/use-mobile.ts",
+          "type": "registry:lib"
+        }
+      ]
+    },
+    {
       "name": "accordion",
       "type": "registry:ui",
       "title": "Accordion",
@@ -758,6 +770,7 @@
       ],
       "registryDependencies": [
         "utils",
+        "use-mobile",
         "button",
         "input",
         "separator",

@@ -34,9 +34,7 @@ const DEV_DEPENDENCIES = {
 const json = (data) => JSON.stringify(data, null, 2) + "\n";
 
 const walk = (dir) =>
-  readdirSync(dir, { withFileTypes: true }).flatMap((e) =>
-    e.isDirectory() ? walk(join(dir, e.name)) : [join(dir, e.name)],
-  );
+  readdirSync(dir, { withFileTypes: true }).flatMap((e) => (e.isDirectory() ? walk(join(dir, e.name)) : [join(dir, e.name)]));
 
 function readme(scheme, name, brands) {
   return [
@@ -85,7 +83,8 @@ export function createProject(schemeId, dir, { brand, openDs = `^${VERSION}`, ov
   const g = grammar(roots);
   const brands = Object.keys(scheme.tokens.brands);
   if (brand && !brands.includes(brand)) throw new Error(`${scheme.name} has no brand "${brand}". Brands: ${brands.join(", ")}.`);
-  if (!existsSync(join(roots.tokens, schemeId, "tokens.css"))) throw new Error(`Tokens for ${schemeId} are not built. Run: pnpm --dir tokens build`);
+  if (!existsSync(join(roots.tokens, schemeId, "tokens.css")))
+    throw new Error(`Tokens for ${schemeId} are not built. Run: pnpm --dir tokens build`);
   // A fresh git folder, a vendored package and npm's leftovers do not count as content.
   const SETUP = new Set([".git", ".DS_Store", "vendor", "node_modules", "package-lock.json"]);
   const taken = existsSync(dir) ? readdirSync(dir).filter((f) => !SETUP.has(f)) : [];
@@ -150,18 +149,37 @@ export function createProject(schemeId, dir, { brand, openDs = `^${VERSION}`, ov
     components.flatMap((c) => {
       const src = readFileSync(join(roots.ui, "components", `${c}.tsx`), "utf8");
       const names = [...src.matchAll(/^export (?:function|const|interface|type) ([A-Za-z]+)/gm)].map((m) => m[1]);
-      for (const m of src.matchAll(/^export \{([^}]+)\}/gm)) names.push(...m[1].split(",").map((x) => x.trim()).filter(Boolean));
+      for (const m of src.matchAll(/^export \{([^}]+)\}/gm))
+        names.push(
+          ...m[1]
+            .split(",")
+            .map((x) => x.trim())
+            .filter(Boolean),
+        );
       return names;
     }),
   );
   const storyFits = (text) => {
     const m = text.match(/import \{([^}]+)\} from "@open-ds\/ui"/);
-    return !m || m[1].split(",").map((x) => x.trim()).filter(Boolean).every((n) => exported.has(n));
+    return (
+      !m ||
+      m[1]
+        .split(",")
+        .map((x) => x.trim())
+        .filter(Boolean)
+        .every((n) => exported.has(n))
+    );
   };
-  for (const f of readdirSync(roots.stories).filter((x) => x.endsWith(".stories.tsx") && storyFits(readFileSync(join(roots.stories, x), "utf8")))) {
+  for (const f of readdirSync(roots.stories).filter(
+    (x) => x.endsWith(".stories.tsx") && storyFits(readFileSync(join(roots.stories, x), "utf8")),
+  )) {
     write(
       `stories/${f}`,
-      readFileSync(join(roots.stories, f), "utf8").replaceAll(`from "@open-ds/ui"`, `from "../src"`).replaceAll(`from "../src/usage"`, `from "./usage"`).replaceAll(`from "../src/samples"`, `from "./samples"`).replaceAll(`from "../src/docs-blocks"`, `from "./docs-blocks"`),
+      readFileSync(join(roots.stories, f), "utf8")
+        .replaceAll(`from "@open-ds/ui"`, `from "../src"`)
+        .replaceAll(`from "../src/usage"`, `from "./usage"`)
+        .replaceAll(`from "../src/samples"`, `from "./samples"`)
+        .replaceAll(`from "../src/docs-blocks"`, `from "./docs-blocks"`),
     );
   }
 
