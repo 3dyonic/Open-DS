@@ -97,10 +97,12 @@ if (!quick) {
     run("pnpm", ["--dir", "storybook", "build"]);
     return "storybook/storybook-static";
   });
-  step("Docs build (Docusaurus)", () => {
-    run("pnpm", ["--dir", "docs", "build"]);
+  step("Docs build (Docusaurus, the delivered design system)", () => {
+    run("pnpm", ["--dir", "docs", "build"], { env: { ...process.env, OPEN_DS_SCHEME: "multi-brand" } });
     must(existsSync(join(root, "docs", "build", "llms.txt")), "docs do not serve llms.txt");
-    return "docs/build, with llms.txt";
+    must(existsSync(join(root, "docs", "build", "foundations", "voice", "index.html")), "no voice foundation page");
+    run("node", ["docs/scripts/generate.mjs"]);
+    return "multi-brand docs in docs/build, with llms.txt and a page per scope";
   });
 }
 

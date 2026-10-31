@@ -5,6 +5,7 @@ import { createHash } from "node:crypto";
 import { existsSync, mkdirSync, readFileSync, readdirSync, writeFileSync } from "node:fs";
 import { dirname, join, resolve } from "node:path";
 import { agentsMd, skillSection } from "./agents.mjs";
+import { docsLlms, docsPages } from "./docs.mjs";
 import { run as runRecipe } from "./main.mjs";
 import { assetRoots, grammar, keyInfo, loadScheme, schemeIds, when, why } from "./schemes.mjs";
 
@@ -15,8 +16,9 @@ const HELP = `open-ds: deploy an Open DS scheme as a full design system.
   open-ds why <scheme> <id>            the answer and its reasons, for a question id
                                        (typography.definition) or a component key (button/primary/background)
   open-ds when <scheme> <situation>    what to use and why, for a situation id or plain words
-  open-ds init <scheme> [--dir .] [--brand <id>]
-                                       copy tokens, components, AGENTS.md and the agent skill
+  open-ds init <scheme> [--dir .] [--brand <id>] [--docs]
+                                       copy tokens, components, AGENTS.md and the agent skill;
+                                       --docs also writes the design system's docs pages to docs/
   open-ds add <component> [--dir .]    copy one more component into an initialised project
 
 Add --json to list, show, why and when for machine-readable output.
@@ -55,7 +57,7 @@ function componentSource(roots, name) {
 }
 
 /** Copies a scheme into a project. Returns what it wrote. */
-export function deploy(schemeId, dir, { brand, overwrite = false, roots = assetRoots() } = {}) {
+export function deploy(schemeId, dir, { brand, overwrite = false, docs = false, roots = assetRoots() } = {}) {
   const scheme = loadScheme(schemeId, roots);
   const g = grammar(roots);
   const brands = Object.keys(scheme.tokens.brands);
@@ -85,6 +87,12 @@ export function deploy(schemeId, dir, { brand, overwrite = false, roots = assetR
   write(dir, "AGENTS.md", agentsMd(scheme, g, { brand: brand ?? (brands.length > 1 ? brands[0] : null), components }), files);
   const skill = readFileSync(join(roots.skills, "open-ds", "SKILL.md"), "utf8") + skillSection(scheme);
   write(dir, ".claude/skills/open-ds/SKILL.md", skill, files);
+  if (docs) {
+    // The design system's docs, as Docusaurus pages: the same pages Open DS builds for this scheme.
+    const pages = docsPages(scheme, g, roots);
+    for (const [rel, text] of Object.entries(pages)) write(dir, `docs/${rel}`, text, files);
+    write(dir, "docs/llms.txt", docsLlms(scheme, pages), files);
+  }
   const record = {
     $comment: "Written by open-ds init. Lists the scheme and every file it wrote, with a short hash.",
     scheme: scheme.id,
@@ -120,7 +128,8 @@ export async function run(argv) {
   const [cmd, ...rest] = argv;
   const json = rest.includes("--json");
   const yes = rest.includes("--yes");
-  const args = rest.filter((a) => a !== "--json" && a !== "--yes");
+  const withDocs = rest.includes("--docs");
+  const args = rest.filter((a) => a !== "--json" && a !== "--yes" && a !== "--docs");
   const out = (data, text) => (json ? console.log(JSON.stringify(data, null, 2)) : text());
   try {
     if (!cmd || cmd === "--help" || cmd === "-h" || cmd === "help") {
@@ -176,10 +185,10 @@ export async function run(argv) {
     const looksLikeRecipe = (a) => a.endsWith(".json") || /^[0-9a-f]{12,}$/.test(a);
     if (cmd === "init" && args[0] && !looksLikeRecipe(args[0])) {
       const dir = resolve(flag(args, "--dir", "."));
-      const record = deploy(args[0], dir, { brand: flag(args, "--brand"), overwrite: yes });
+      const record = deploy(args[0], dir, { brand: flag(args, "--brand"), overwrite: yes, docs: withDocs });
       out(record, () => {
         console.log(`Deployed ${record.scheme}${record.brand ? ` (${record.brand})` : ""} into ${dir}.`);
-        console.log(`Wrote ${Object.keys(record.files).length} files: tokens, ${record.components.length} components, AGENTS.md and the agent skill.`);
+        console.log(`Wrote ${Object.keys(record.files).length} files: tokens, ${record.components.length} components, AGENTS.md and the agent skill${withDocs ? ", and the docs pages in docs/" : ""}.`);
         console.log(`Next: install the component packages: npm install ${record.dependencies.join(" ")}`);
         console.log(`Then import src/styles/open-ds.css after Tailwind.`);
       });

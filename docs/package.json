@@ -2,7 +2,7 @@
   "name": "@open-ds/docs",
   "version": "0.1.0",
   "private": true,
-  "description": "Open DS documentation (Docusaurus): the product, the business, the brand, the grammar, the five schemes, the CLI, the MCP server and the agent layer.",
+  "description": "The docs of a delivered design system (Docusaurus), generated from one Open DS scheme: its reasons, voice and tone, foundations per scope, components, themes and agent layer. Set OPEN_DS_SCHEME to pick the scheme.",
   "license": "MIT",
   "engines": {
     "node": ">=22"

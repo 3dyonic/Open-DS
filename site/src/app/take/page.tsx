@@ -33,8 +33,8 @@ const GET: [string, string, string[]][] = [
   ],
   [
     "Docs",
-    "Pages like these, generated for every scheme: reasons, scopes, usage rules.",
-    ["Docusaurus", "llms.txt"],
+    "The design system’s own docs, generated from its answers: reasons, voice, a page per scope, components, themes.",
+    ["Docusaurus", "init --docs", "llms.txt"],
   ],
   [
     "Checks",
