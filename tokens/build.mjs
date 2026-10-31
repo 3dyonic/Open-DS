@@ -15,6 +15,7 @@ import { mkdirSync, readFileSync, readdirSync, rmSync, writeFileSync } from "nod
 import { dirname, join } from "node:path";
 import { fileURLToPath } from "node:url";
 import StyleDictionary from "style-dictionary";
+import { themeTokens } from "../cli/src/tokens.mjs";
 
 const here = dirname(fileURLToPath(import.meta.url));
 const root = join(here, "..");
@@ -93,22 +94,8 @@ export const shadcnCss = (name) =>
     "",
   ].join("\n");
 
-const isObject = (v) => v && typeof v === "object" && !Array.isArray(v);
-
-function merge(...trees) {
-  const out = {};
-  for (const tree of trees) {
-    for (const [k, v] of Object.entries(tree ?? {})) {
-      out[k] = isObject(v) && !("$value" in v) && isObject(out[k]) ? merge(out[k], v) : v;
-    }
-  }
-  return out;
-}
-
-export function themeTokens(scheme, brand, mode) {
-  const t = scheme.tokens;
-  return merge(t.primitive, t.brands[brand].primitive, t.semantic.base, t.semantic[mode], t.component);
-}
+// One engine with the CLI and the site: primitives, the brand's theme, semantics, components.
+export { themeTokens } from "../cli/src/tokens.mjs";
 
 function selectors(schemeId, brands, brand, mode, scoped) {
   const first = brands[0] === brand;

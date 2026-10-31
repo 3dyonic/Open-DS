@@ -62,15 +62,16 @@ const get = (tree: unknown, path: string) =>
 function chain(s: SchemeData, path: string) {
   const t = (s as unknown as { tokens: Tree }).tokens as {
     primitive: Tree;
-    brands: Record<string, { primitive: Tree }>;
-    semantic: { base: Tree; light: Tree };
+    brands: Record<string, { theme: { base?: Tree; light: Tree } }>;
+    semantic: Tree;
     component: Tree;
   };
+  // Component key → semantic → the first brand's light theme pick → primitive.
+  const theme = Object.values(t.brands)[0].theme;
   const trees = [
     t.component,
-    t.semantic.light,
-    t.semantic.base,
-    Object.values(t.brands)[0].primitive,
+    t.semantic,
+    { theme: { ...theme.base, ...theme.light } },
     t.primitive,
   ];
   const steps: string[] = [];
@@ -152,8 +153,9 @@ export function ComponentKeys() {
   if (!keys.length)
     return (
       <p>
-        From shadcn/ui. It reads shadcn&apos;s variables, which theme.css maps onto the design system&apos;s semantic
-        tokens, and the radius, shadow and text scale in shadcn.css.
+        From shadcn/ui. It reads shadcn&apos;s variables, which theme.css maps
+        onto the design system&apos;s semantic tokens, and the radius, shadow
+        and text scale in shadcn.css.
       </p>
     );
   return (

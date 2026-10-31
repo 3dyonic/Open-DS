@@ -2,6 +2,7 @@
 // Each check says what it needs to exist (`requires`). If that is missing, the layer is
 // "not built" yet, which is different from "fail". Slow checks (full builds) run with --full.
 
+import { themeTokens } from "../cli/src/tokens.mjs";
 import { spawnSync } from "node:child_process";
 import { pathToFileURL } from "node:url";
 import { existsSync, mkdtempSync, readFileSync, readdirSync, rmSync, statSync } from "node:fs";
@@ -260,14 +261,12 @@ export const CHECKS = {
       const problems = [];
       for (const s of SCHEMES) {
         const t = c.json("schemes", `${s}.json`).tokens;
-        const lightPaths = Object.keys(flatten(t.semantic.light)).sort().join();
-        if (lightPaths !== Object.keys(flatten(t.semantic.dark)).sort().join())
-          problems.push(`${s}: light and dark differ`);
         for (const brand of Object.keys(t.brands)) {
+          const th = t.brands[brand].theme;
+          if (Object.keys(flatten(th.light)).sort().join() !== Object.keys(flatten(th.dark)).sort().join())
+            problems.push(`${s}/${brand}: the light and dark themes have different keys`);
           for (const mode of ["light", "dark"]) {
-            const all = flatten(
-              mergeTrees(t.primitive, t.brands[brand].primitive, t.semantic.base, t.semantic[mode], t.component),
-            );
+            const all = flatten(themeTokens({ id: s, tokens: t }, brand, mode));
             for (const path of Object.keys(all)) {
               const r = resolve(all, path);
               if (r.error) problems.push(`${s}/${brand}/${mode}: ${path} ${r.error}`);
@@ -298,7 +297,8 @@ export const CHECKS = {
       for (const id of SCHEMES) {
         const t = c.json("schemes", `${id}.json`).tokens;
         const raw = [];
-        for (const part of ["base", "light", "dark"]) walk(t.semantic[part], "", raw);
+        walk(t.semantic, "", raw);
+        for (const b of Object.values(t.brands)) walk(b.theme, "", raw);
         walk(t.component, "", raw);
         if (raw.length) gaps.push(`${id}: raw values on ${raw.slice(0, 4).join(", ")}`);
       }
@@ -459,7 +459,7 @@ export const CHECKS = {
       const schemes = SCHEMES.map((id) => c.json("schemes", `${id}.json`));
       const has = (tree, path) =>
         path.split(".").reduce((n, p) => (n && typeof n === "object" ? n[p] : undefined), tree) !== undefined;
-      const semantic = (sch) => mergeTrees(sch.tokens.semantic.base, sch.tokens.semantic.light);
+      const semantic = (sch) => sch.tokens.semantic;
       for (const sc of g.scopes) {
         const got = sc.questions.map((q) => q.method).join();
         if (got !== methods.join()) gaps.push(`${sc.id}: methods ${got}`);
@@ -472,18 +472,15 @@ export const CHECKS = {
         for (const sch of schemes) {
           const trees = [
             sch.tokens.primitive,
-            ...Object.values(sch.tokens.brands).map((b) => b.primitive),
             semantic(sch),
-            sch.tokens.semantic.dark,
+            { theme: Object.values(sch.tokens.brands)[0].theme },
             { component: sch.tokens.component },
             { content: sch.tokens.content },
           ];
           for (const o of sc.owns ?? [])
             if (!trees.some((t) => has(t, o))) gaps.push(`${sch.id}: ${sc.id} owns ${o}, which is not a token`);
         }
-        const semanticOwns = (sc.owns ?? []).filter(
-          (o) => has(semantic(schemes[0]), o) || has(schemes[0].tokens.semantic.dark, o),
-        );
+        const semanticOwns = (sc.owns ?? []).filter((o) => has(semantic(schemes[0]), o));
         for (const cid of sc.lands_in ?? []) {
           if (!comps.has(cid)) {
             gaps.push(`${sc.id}: lands in ${cid}, which is not a component`);
@@ -813,8 +810,9 @@ export const CHECKS = {
         if (r.code !== 0) return bad(tail(r.out));
         const need = [
           "tokens/build.mjs",
-          "tokens/src/primitive.tokens.json",
-          "tokens/src/brands/coral.tokens.json",
+          "tokens/src/primitive/color/teal.tokens.json",
+          "tokens/src/theme/coral.tokens.json",
+          "tokens/src/semantic/color.tokens.json",
           ".storybook/preview.tsx",
           "stories/button.stories.tsx",
           "docs/docusaurus.config.ts",

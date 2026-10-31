@@ -18,7 +18,7 @@ The CSS variable is the key with `/` replaced by `-`. Each key points to a token
 
 | Key | What it controls | Points to, light | Points to, dark |
 | --- | --- | --- | --- |
-| `control/checked` | Fill of a checked checkbox or an on switch. | `color.action.primary` → `color.brand.600` → `color.violet.600` | `color.action.primary` → `color.brand.300` → `color.violet.300` |
-| `control/track` | Track of an off switch. | `color.border.strong` → `color.neutral.300` → `color.slate.300` | `color.border.strong` → `color.neutral.700` → `color.slate.700` |
-| `control/thumb` | Switch thumb and checkmark color. | `color.surface.default` → `color.neutral.0` → `color.slate.0` | `color.surface.default` → `color.neutral.900` → `color.slate.900` |
-| `control/radius` | Checkbox corner radius. | `radius.badge` → `radius.brand.badge` → `radius.0` | same |
+| `control/checked` | Fill of a checked checkbox or an on switch. | `color.action.primary` → `dense-data.theme.light.color-action-primary` → `color.violet.light.600` | `color.action.primary` → `dense-data.theme.dark.color-action-primary` → `color.violet.dark.700` |
+| `control/track` | Track of an off switch. | `color.border.strong` → `dense-data.theme.light.color-border-strong` → `color.slate.light.300` | `color.border.strong` → `dense-data.theme.dark.color-border-strong` → `color.slate.dark.200` |
+| `control/thumb` | Switch thumb and checkmark color. | `color.surface.default` → `dense-data.theme.light.color-surface-default` → `color.slate.light.0` | `color.surface.default` → `dense-data.theme.dark.color-surface-default` → `color.slate.dark.50` |
+| `control/radius` | Checkbox corner radius. | `radius.badge` → `dense-data.theme.base.radius-badge` → `radius.0` | same |

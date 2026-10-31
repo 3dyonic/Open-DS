@@ -123,16 +123,16 @@ export function proofData(id: string) {
       text: `${label("brand.q1")}, ${lower(label("brand.q2"))}`,
       lit: top.includes("brand"),
       swatches: [
-        "color.neutral.900",
-        "color.neutral.500",
-        "color.neutral.200",
-        "color.neutral.50",
-        "color.brand.600",
+        "color.text.primary",
+        "color.text.muted",
+        "color.border.default",
+        "color.surface.canvas",
+        "color.action.primary",
       ].map((p) => String(at(tokens, p))),
-      display: String(at(tokens, "font.family.display")),
+      display: String(at(tokens, "type.display.font-family")),
       fonts: [
         ...new Set(
-          [at(tokens, "font.family.display"), at(tokens, "font.family.mono")].map((f) =>
+          [at(tokens, "type.display.font-family"), at(tokens, "type.data.font-family")].map((f) =>
             family(String(f)),
           ),
         ),
@@ -141,7 +141,7 @@ export function proofData(id: string) {
     voice: {
       text: sentence(s.voice.summary.text),
       lit: g.scopes.find((x) => x.id === "voice")!.questions.some((q) => isLit(all, s, q.id)),
-      body: String(at(tokens, "font.family.body")),
+      body: String(at(tokens, "type.body.font-family")),
       toast: rule("success-words").example ?? "",
       error: rule("error-words").example ?? "",
     },
