@@ -1,10 +1,13 @@
 {
   "description": "The site pages the design check compares with their Figma frames (file NiZ4iZm98sf3NdK4PbiaDB). Each page lists the frame, the reference screenshot exported from Figma at 1440px, and the static texts of the frame that must appear on the page in the same order. Texts that come from scheme data are left out, because the data, not the mock, is the source. Where the frame has a 'Lit =' note, the site has a 'What the colours mean' key that opens as a tooltip (Yonatan, 2026-10-30). The frame's nav item 'Docs' is 'Install' on the site (Yonatan, 2026-10-31: the website needs a How to install section, not docs).",
   "thresholds": {
-    "description": "fold: pixel similarity of the top 900px at 48 by 30. palette: colour histogram overlap of the whole page. height: page height divided by frame height, as [min, max]; data pages run longer than their mock. offset (per page): pixels dropped from the top of the site screenshot before the fold compare, because inner-page frames are drawn without the 156px site nav and start their content at 80px.",
+    "description": "fold: pixel similarity of the top 900px at 48 by 30. palette: colour histogram overlap of the whole page. height: page height divided by frame height, as [min, max]; data pages run longer than their mock. offset (per page): pixels dropped from the top of the site screenshot before the fold compare, because inner-page frames are drawn without the 156px site nav and start their content at 80px. A page may set its own height range, with height_why saying why.",
     "fold": 0.8,
     "palette": 0.6,
-    "height": [0.6, 2.8]
+    "height": [
+      0.6,
+      2.8
+    ]
   },
   "pages": [
     {
@@ -146,7 +149,12 @@
         "DESIGN ANSWERS THAT DIFFER",
         "Answers that are the same"
       ],
-      "offset": 76
+      "offset": 76,
+      "height": [
+        0.6,
+        3.4
+      ],
+      "height_why": "The page lists every question two schemes answer differently, so it grows with the grammar. The frame was drawn for 11 scopes; the components scope (OD-136) makes 12."
     },
     {
       "route": "/schemes/dense-data/moves/",
