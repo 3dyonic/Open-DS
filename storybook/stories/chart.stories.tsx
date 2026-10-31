@@ -52,7 +52,7 @@ function chartRows(s: Samples) {
   const col = t ? t.columns.findIndex((c) => c.numeric) : -1;
   const toNumber = (v: string) => Number.parseFloat(v.replace(/[^0-9.]/g, "")) || 0;
   return t && col >= 0
-    ? t.rows.map((r) => ({ name: r.cells[0], value: toNumber(r.cells[col]) }))
+    ? t.rows.slice(0, 8).map((r) => ({ name: r.cells[0], value: toNumber(r.cells[col]) }))
     : s.metrics.map((m) => ({ name: m.label, value: toNumber(m.value) }));
 }
 function valueLabel(s: Samples) {

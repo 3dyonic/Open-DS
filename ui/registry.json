@@ -351,6 +351,31 @@
       ]
     },
     {
+      "name": "data-table",
+      "type": "registry:ui",
+      "title": "Data Table",
+      "description": "Data table. A pattern for many records: search, faceted filters, sorting, column choice, row",
+      "dependencies": [
+        "@tanstack/react-table",
+        "lucide-react"
+      ],
+      "registryDependencies": [
+        "utils",
+        "button",
+        "checkbox",
+        "input",
+        "popover",
+        "table",
+        "toggle-group"
+      ],
+      "files": [
+        {
+          "path": "src/components/data-table.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
       "name": "dialog",
       "type": "registry:ui",
       "title": "Dialog",

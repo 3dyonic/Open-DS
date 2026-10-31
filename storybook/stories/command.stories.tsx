@@ -48,7 +48,7 @@ export const Examples: Story = {
               <CommandItem>{s.actions.secondary}</CommandItem>
             </CommandGroup>
             <CommandGroup heading={s.table?.caption ?? s.metrics[0].label}>
-              {(s.table?.rows.map((r) => r.cells[0]) ?? s.metrics.map((m) => m.label)).map((x) => (
+              {(s.table?.rows.map((r) => r.cells[0]) ?? s.metrics.map((m) => m.label)).slice(0, 6).map((x) => (
                 <CommandItem key={x}>{x}</CommandItem>
               ))}
             </CommandGroup>

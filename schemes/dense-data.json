@@ -244,6 +244,12 @@
         "id": "accordion",
         "why": "Hiding fields slows people who use them all day."
       }
+    ],
+    "patterns": [
+      {
+        "id": "data-table",
+        "why": "Experts scan hundreds of orders, filter by status and depot, sort by due time and act on many rows at once."
+      }
     ]
   },
   "samples": {
@@ -349,6 +355,177 @@
             "East depot",
             "11:00",
             "640.75"
+          ],
+          "status": "Packing"
+        },
+        {
+          "cells": [
+            "#1047",
+            "South depot",
+            "11:30",
+            "1,078.40"
+          ],
+          "status": "Late"
+        },
+        {
+          "cells": [
+            "#1048",
+            "North depot",
+            "11:45",
+            "54.90"
+          ],
+          "status": "Shipped"
+        },
+        {
+          "cells": [
+            "#1049",
+            "East depot",
+            "12:00",
+            "2,310.00"
+          ],
+          "status": "Packing"
+        },
+        {
+          "cells": [
+            "#1050",
+            "North depot",
+            "12:15",
+            "415.25"
+          ],
+          "status": "Shipped"
+        },
+        {
+          "cells": [
+            "#1051",
+            "South depot",
+            "12:30",
+            "99.00"
+          ],
+          "status": "Payment failed"
+        },
+        {
+          "cells": [
+            "#1052",
+            "East depot",
+            "12:45",
+            "760.10"
+          ],
+          "status": "Shipped"
+        },
+        {
+          "cells": [
+            "#1053",
+            "North depot",
+            "13:00",
+            "1,450.00"
+          ],
+          "status": "Late"
+        },
+        {
+          "cells": [
+            "#1054",
+            "South depot",
+            "13:15",
+            "38.60"
+          ],
+          "status": "Refunded"
+        },
+        {
+          "cells": [
+            "#1055",
+            "East depot",
+            "13:30",
+            "5,120.75"
+          ],
+          "status": "Packing"
+        },
+        {
+          "cells": [
+            "#1056",
+            "North depot",
+            "13:45",
+            "222.40"
+          ],
+          "status": "Shipped"
+        },
+        {
+          "cells": [
+            "#1057",
+            "South depot",
+            "14:00",
+            "612.00"
+          ],
+          "status": "Shipped"
+        },
+        {
+          "cells": [
+            "#1058",
+            "East depot",
+            "14:15",
+            "87.30"
+          ],
+          "status": "Late"
+        },
+        {
+          "cells": [
+            "#1059",
+            "North depot",
+            "14:30",
+            "3,004.90"
+          ],
+          "status": "Shipped"
+        },
+        {
+          "cells": [
+            "#1060",
+            "South depot",
+            "14:45",
+            "150.00"
+          ],
+          "status": "Packing"
+        },
+        {
+          "cells": [
+            "#1061",
+            "East depot",
+            "15:00",
+            "940.80"
+          ],
+          "status": "Shipped"
+        },
+        {
+          "cells": [
+            "#1062",
+            "North depot",
+            "15:15",
+            "71.20"
+          ],
+          "status": "Refunded"
+        },
+        {
+          "cells": [
+            "#1063",
+            "South depot",
+            "15:30",
+            "1,899.99"
+          ],
+          "status": "Shipped"
+        },
+        {
+          "cells": [
+            "#1064",
+            "East depot",
+            "15:45",
+            "305.50"
+          ],
+          "status": "Late"
+        },
+        {
+          "cells": [
+            "#1065",
+            "North depot",
+            "16:00",
+            "2,640.00"
           ],
           "status": "Packing"
         }

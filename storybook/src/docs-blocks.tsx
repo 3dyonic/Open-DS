@@ -61,8 +61,7 @@ function chain(s: SchemeData, path: string) {
   let at = path;
   for (let i = 0; i < 8; i++) {
     const node = trees.map((x) => get(x, at)).find((n) => n && typeof n === "object" && "$value" in (n as Tree)) as
-      | { $value: unknown }
-      | undefined;
+      { $value: unknown } | undefined;
     const m = typeof node?.$value === "string" && node.$value.match(/^\{(.+)\}$/);
     if (!m) break;
     steps.push(m[1]);

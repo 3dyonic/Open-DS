@@ -1,5 +1,5 @@
 ---
-sidebar_position: 17
+sidebar_position: 18
 title: "Input group"
 description: "Input group in Dense data."
 ---
