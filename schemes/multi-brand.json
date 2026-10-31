@@ -247,6 +247,129 @@
       }
     ]
   },
+  "samples": {
+    "description": "Sample content for showing this system: written from its use scenarios, in its voice, with every status mapped to a meaning. Storybook, the site and the docs read it; it is never shared between schemes.",
+    "follows": [
+      "scenarios.q1",
+      "scenarios.q2",
+      "content.q1",
+      "voice.definition"
+    ],
+    "screen": "Your plan",
+    "actions": {
+      "primary": "Get started",
+      "secondary": "Compare plans"
+    },
+    "statuses": [
+      {
+        "label": "Trial",
+        "meaning": "neutral",
+        "why": "The plan works; billing has not started."
+      },
+      {
+        "label": "Active",
+        "meaning": "success",
+        "why": "The plan is paid and running."
+      },
+      {
+        "label": "Renews in 3 days",
+        "meaning": "warning",
+        "why": "A payment is coming; nothing has gone wrong."
+      },
+      {
+        "label": "Card declined",
+        "meaning": "danger",
+        "why": "The payment failed, so the plan will stop."
+      }
+    ],
+    "metrics": [
+      {
+        "label": "Plan",
+        "value": "Standard"
+      },
+      {
+        "label": "Next payment",
+        "value": "12.00"
+      },
+      {
+        "label": "Orders this year",
+        "value": "9"
+      },
+      {
+        "label": "Member since",
+        "value": "2024"
+      }
+    ],
+    "field": {
+      "label": "Card number",
+      "placeholder": "1234 5678 9012 3456",
+      "hint": "We never store the full number.",
+      "error": "Your card was declined. Try another card or contact your bank.",
+      "invalid": "1234"
+    },
+    "checkbox": [
+      "Email me about my orders",
+      "Send me offers",
+      "Remember this device"
+    ],
+    "select": {
+      "label": "Plan",
+      "options": [
+        "Basic",
+        "Standard",
+        "Plus"
+      ],
+      "value": "Standard"
+    },
+    "switches": [
+      "Renew automatically",
+      "Paperless invoices"
+    ],
+    "messages": {
+      "success": "Your plan is active.",
+      "error": {
+        "title": "Your card was declined.",
+        "description": "Try another card or contact your bank."
+      },
+      "neutral": "No orders yet. Your first order will appear here."
+    },
+    "confirm": {
+      "trigger": "Cancel plan",
+      "title": "Cancel your plan?",
+      "body": "It stays active until the end of the month.",
+      "confirm": "Cancel plan",
+      "cancel": "Keep my plan"
+    },
+    "card": {
+      "title": "Standard plan",
+      "description": "12.00 a month · renews on the 14th",
+      "status": "Active",
+      "primary": "Change plan",
+      "secondary": "View invoices"
+    },
+    "tabs": [
+      {
+        "label": "Plan",
+        "content": "Standard, renews on the 14th."
+      },
+      {
+        "label": "Orders",
+        "content": "9 orders this year."
+      },
+      {
+        "label": "Payment",
+        "content": "Card ending 4242."
+      }
+    ],
+    "menu": {
+      "trigger": "Plan actions",
+      "items": [
+        "Change plan",
+        "Download invoice"
+      ],
+      "destructive": "Cancel plan"
+    }
+  },
   "themes": [
     {
       "id": "aster-light",
