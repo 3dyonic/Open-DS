@@ -1212,7 +1212,7 @@
   "tokens": {
     "primitive": {
       "color": {
-        "$description": "Colour options: raw hue ramps. Each hue has a light ramp, a dark ramp (the same steps tuned for dark backgrounds) and its base value (@, built as color.<hue>). Themes pick from these; components never read them.",
+        "$description": "Colour options: raw hue ramps. Each hue has a light ramp and a dark ramp (the same steps tuned for dark backgrounds). Steps only: each theme decides its own base (@). Themes pick from these; components never read them.",
         "stone": {
           "$type": "color",
           "$description": "The stone hue: a light ramp, a dark ramp and its base value.",
@@ -1279,10 +1279,6 @@
             "950": {
               "$value": "#FFFFFF"
             }
-          },
-          "@": {
-            "$value": "{color.stone.light.500}",
-            "$description": "The base stone."
           }
         },
         "navy": {
@@ -1327,10 +1323,6 @@
             "800": {
               "$value": "#E3EAF3"
             }
-          },
-          "@": {
-            "$value": "{color.navy.light.600}",
-            "$description": "The base navy."
           }
         },
         "green": {
@@ -1685,273 +1677,339 @@
         "theme": {
           "$description": "The Content first theme: what each brand-dependent semantic key picks, in light and dark, plus mode-free picks (fonts, corners) in base.",
           "base": {
-            "radius-control": {
-              "$type": "dimension",
-              "$value": "{radius.8}"
+            "radius": {
+              "control": {
+                "$type": "dimension",
+                "$value": "{radius.8}"
+              },
+              "badge": {
+                "$type": "dimension",
+                "$value": "{radius.999}"
+              },
+              "container": {
+                "$type": "dimension",
+                "$value": "{radius.12}"
+              }
             },
-            "radius-badge": {
-              "$type": "dimension",
-              "$value": "{radius.999}"
-            },
-            "radius-container": {
-              "$type": "dimension",
-              "$value": "{radius.12}"
-            },
-            "type-display-font-family": {
-              "$type": "fontFamily",
-              "$value": "{font.family.source-serif-4}"
-            },
-            "type-title-font-family": {
-              "$type": "fontFamily",
-              "$value": "{font.family.source-serif-4}"
-            },
-            "type-heading-font-family": {
-              "$type": "fontFamily",
-              "$value": "{font.family.source-serif-4}"
-            },
-            "type-body-font-family": {
-              "$type": "fontFamily",
-              "$value": "{font.family.source-serif-4}"
-            },
-            "type-label-font-family": {
-              "$type": "fontFamily",
-              "$value": "{font.family.inter}"
-            },
-            "type-caption-font-family": {
-              "$type": "fontFamily",
-              "$value": "{font.family.inter}"
-            },
-            "type-data-font-family": {
-              "$type": "fontFamily",
-              "$value": "{font.family.source-serif-4}"
+            "type": {
+              "display": {
+                "font-family": {
+                  "$type": "fontFamily",
+                  "$value": "{font.family.source-serif-4}"
+                }
+              },
+              "title": {
+                "font-family": {
+                  "$type": "fontFamily",
+                  "$value": "{font.family.source-serif-4}"
+                }
+              },
+              "heading": {
+                "font-family": {
+                  "$type": "fontFamily",
+                  "$value": "{font.family.source-serif-4}"
+                }
+              },
+              "body": {
+                "font-family": {
+                  "$type": "fontFamily",
+                  "$value": "{font.family.source-serif-4}"
+                }
+              },
+              "label": {
+                "font-family": {
+                  "$type": "fontFamily",
+                  "$value": "{font.family.inter}"
+                }
+              },
+              "caption": {
+                "font-family": {
+                  "$type": "fontFamily",
+                  "$value": "{font.family.inter}"
+                }
+              },
+              "data": {
+                "font-family": {
+                  "$type": "fontFamily",
+                  "$value": "{font.family.source-serif-4}"
+                }
+              }
             }
           },
           "light": {
-            "color-surface-canvas": {
-              "$type": "color",
-              "$value": "{color.stone.light.50}"
+            "color": {
+              "surface": {
+                "canvas": {
+                  "$type": "color",
+                  "$value": "{color.stone.light.50}"
+                },
+                "default": {
+                  "$type": "color",
+                  "$value": "{color.stone.light.0}"
+                },
+                "raised": {
+                  "$type": "color",
+                  "$value": "{color.stone.light.0}"
+                },
+                "sunken": {
+                  "$type": "color",
+                  "$value": "{color.stone.light.100}"
+                },
+                "selected": {
+                  "$type": "color",
+                  "$value": "{color.navy.light.100}"
+                },
+                "inverse": {
+                  "$type": "color",
+                  "$value": "{color.stone.light.900}"
+                },
+                "scrim": {
+                  "$type": "color",
+                  "$value": "{color.black.light.scrim}"
+                }
+              },
+              "text": {
+                "primary": {
+                  "$type": "color",
+                  "$value": "{color.stone.light.900}"
+                },
+                "secondary": {
+                  "$type": "color",
+                  "$value": "{color.stone.light.700}"
+                },
+                "muted": {
+                  "$type": "color",
+                  "$value": "{color.stone.light.500}"
+                },
+                "inverse": {
+                  "$type": "color",
+                  "$value": "{color.stone.light.0}"
+                },
+                "on-action": {
+                  "$type": "color",
+                  "$value": "{color.stone.light.0}"
+                },
+                "link": {
+                  "$type": "color",
+                  "$value": "{color.navy.light.700}"
+                }
+              },
+              "border": {
+                "default": {
+                  "$type": "color",
+                  "$value": "{color.stone.light.200}"
+                },
+                "strong": {
+                  "$type": "color",
+                  "$value": "{color.stone.light.300}"
+                },
+                "focus": {
+                  "$type": "color",
+                  "$value": "{color.navy.light.600}"
+                }
+              },
+              "action": {
+                "primary": {
+                  "@": {
+                    "$type": "color",
+                    "$value": "{color.navy.light.600}"
+                  },
+                  "hover": {
+                    "$type": "color",
+                    "$value": "{color.navy.light.700}"
+                  }
+                },
+                "secondary": {
+                  "@": {
+                    "$type": "color",
+                    "$value": "{color.stone.light.0}"
+                  },
+                  "hover": {
+                    "$type": "color",
+                    "$value": "{color.stone.light.100}"
+                  }
+                }
+              },
+              "status": {
+                "success": {
+                  "@": {
+                    "$type": "color",
+                    "$value": "{color.green.light.700}"
+                  },
+                  "subtle": {
+                    "$type": "color",
+                    "$value": "{color.green.light.100}"
+                  }
+                },
+                "warning": {
+                  "@": {
+                    "$type": "color",
+                    "$value": "{color.amber.light.700}"
+                  },
+                  "subtle": {
+                    "$type": "color",
+                    "$value": "{color.amber.light.100}"
+                  }
+                },
+                "danger": {
+                  "@": {
+                    "$type": "color",
+                    "$value": "{color.red.light.700}"
+                  },
+                  "subtle": {
+                    "$type": "color",
+                    "$value": "{color.red.light.100}"
+                  }
+                }
+              }
             },
-            "color-surface-default": {
-              "$type": "color",
-              "$value": "{color.stone.light.0}"
-            },
-            "color-surface-raised": {
-              "$type": "color",
-              "$value": "{color.stone.light.0}"
-            },
-            "color-surface-sunken": {
-              "$type": "color",
-              "$value": "{color.stone.light.100}"
-            },
-            "color-surface-selected": {
-              "$type": "color",
-              "$value": "{color.navy.light.100}"
-            },
-            "color-surface-inverse": {
-              "$type": "color",
-              "$value": "{color.stone.light.900}"
-            },
-            "color-surface-scrim": {
-              "$type": "color",
-              "$value": "{color.black.light.scrim}"
-            },
-            "color-text-primary": {
-              "$type": "color",
-              "$value": "{color.stone.light.900}"
-            },
-            "color-text-secondary": {
-              "$type": "color",
-              "$value": "{color.stone.light.700}"
-            },
-            "color-text-muted": {
-              "$type": "color",
-              "$value": "{color.stone.@}"
-            },
-            "color-text-inverse": {
-              "$type": "color",
-              "$value": "{color.stone.light.0}"
-            },
-            "color-text-on-action": {
-              "$type": "color",
-              "$value": "{color.stone.light.0}"
-            },
-            "color-text-link": {
-              "$type": "color",
-              "$value": "{color.navy.light.700}"
-            },
-            "color-border-default": {
-              "$type": "color",
-              "$value": "{color.stone.light.200}"
-            },
-            "color-border-strong": {
-              "$type": "color",
-              "$value": "{color.stone.light.300}"
-            },
-            "color-border-focus": {
-              "$type": "color",
-              "$value": "{color.navy.@}"
-            },
-            "color-action-primary": {
-              "$type": "color",
-              "$value": "{color.navy.@}"
-            },
-            "color-action-primary-hover": {
-              "$type": "color",
-              "$value": "{color.navy.light.700}"
-            },
-            "color-action-secondary": {
-              "$type": "color",
-              "$value": "{color.stone.light.0}"
-            },
-            "color-action-secondary-hover": {
-              "$type": "color",
-              "$value": "{color.stone.light.100}"
-            },
-            "color-status-success": {
-              "$type": "color",
-              "$value": "{color.green.light.700}"
-            },
-            "color-status-warning": {
-              "$type": "color",
-              "$value": "{color.amber.light.700}"
-            },
-            "color-status-danger": {
-              "$type": "color",
-              "$value": "{color.red.light.700}"
-            },
-            "color-status-success-subtle": {
-              "$type": "color",
-              "$value": "{color.green.light.100}"
-            },
-            "color-status-warning-subtle": {
-              "$type": "color",
-              "$value": "{color.amber.light.100}"
-            },
-            "color-status-danger-subtle": {
-              "$type": "color",
-              "$value": "{color.red.light.100}"
-            },
-            "elevation-card": {
-              "$type": "shadow",
-              "$value": "{shadow.none}"
-            },
-            "elevation-overlay": {
-              "$type": "shadow",
-              "$value": "{shadow.overlay}"
+            "elevation": {
+              "card": {
+                "$type": "shadow",
+                "$value": "{shadow.none}"
+              },
+              "overlay": {
+                "$type": "shadow",
+                "$value": "{shadow.overlay}"
+              }
             }
           },
           "dark": {
-            "color-surface-canvas": {
-              "$type": "color",
-              "$value": "{color.stone.dark.0}"
+            "color": {
+              "surface": {
+                "canvas": {
+                  "$type": "color",
+                  "$value": "{color.stone.dark.0}"
+                },
+                "default": {
+                  "$type": "color",
+                  "$value": "{color.stone.dark.50}"
+                },
+                "raised": {
+                  "$type": "color",
+                  "$value": "{color.stone.dark.100}"
+                },
+                "sunken": {
+                  "$type": "color",
+                  "$value": "{color.stone.dark.100}"
+                },
+                "selected": {
+                  "$type": "color",
+                  "$value": "{color.navy.dark.100}"
+                },
+                "inverse": {
+                  "$type": "color",
+                  "$value": "{color.stone.dark.900}"
+                },
+                "scrim": {
+                  "$type": "color",
+                  "$value": "{color.black.dark.scrim}"
+                }
+              },
+              "text": {
+                "primary": {
+                  "$type": "color",
+                  "$value": "{color.stone.dark.900}"
+                },
+                "secondary": {
+                  "$type": "color",
+                  "$value": "{color.stone.dark.500}"
+                },
+                "muted": {
+                  "$type": "color",
+                  "$value": "{color.stone.dark.300}"
+                },
+                "inverse": {
+                  "$type": "color",
+                  "$value": "{color.stone.dark.50}"
+                },
+                "on-action": {
+                  "$type": "color",
+                  "$value": "{color.stone.dark.0}"
+                },
+                "link": {
+                  "$type": "color",
+                  "$value": "{color.navy.dark.700}"
+                }
+              },
+              "border": {
+                "default": {
+                  "$type": "color",
+                  "$value": "{color.stone.dark.100}"
+                },
+                "strong": {
+                  "$type": "color",
+                  "$value": "{color.stone.dark.200}"
+                },
+                "focus": {
+                  "$type": "color",
+                  "$value": "{color.navy.dark.700}"
+                }
+              },
+              "action": {
+                "primary": {
+                  "@": {
+                    "$type": "color",
+                    "$value": "{color.navy.dark.700}"
+                  },
+                  "hover": {
+                    "$type": "color",
+                    "$value": "{color.navy.dark.800}"
+                  }
+                },
+                "secondary": {
+                  "@": {
+                    "$type": "color",
+                    "$value": "{color.stone.dark.50}"
+                  },
+                  "hover": {
+                    "$type": "color",
+                    "$value": "{color.stone.dark.100}"
+                  }
+                }
+              },
+              "status": {
+                "success": {
+                  "@": {
+                    "$type": "color",
+                    "$value": "{color.green.dark.700}"
+                  },
+                  "subtle": {
+                    "$type": "color",
+                    "$value": "{color.green.dark.100}"
+                  }
+                },
+                "warning": {
+                  "@": {
+                    "$type": "color",
+                    "$value": "{color.amber.dark.700}"
+                  },
+                  "subtle": {
+                    "$type": "color",
+                    "$value": "{color.amber.dark.100}"
+                  }
+                },
+                "danger": {
+                  "@": {
+                    "$type": "color",
+                    "$value": "{color.red.dark.700}"
+                  },
+                  "subtle": {
+                    "$type": "color",
+                    "$value": "{color.red.dark.100}"
+                  }
+                }
+              }
             },
-            "color-surface-default": {
-              "$type": "color",
-              "$value": "{color.stone.dark.50}"
-            },
-            "color-surface-raised": {
-              "$type": "color",
-              "$value": "{color.stone.dark.100}"
-            },
-            "color-surface-sunken": {
-              "$type": "color",
-              "$value": "{color.stone.dark.100}"
-            },
-            "color-surface-selected": {
-              "$type": "color",
-              "$value": "{color.navy.dark.100}"
-            },
-            "color-surface-inverse": {
-              "$type": "color",
-              "$value": "{color.stone.dark.900}"
-            },
-            "color-surface-scrim": {
-              "$type": "color",
-              "$value": "{color.black.dark.scrim}"
-            },
-            "color-text-primary": {
-              "$type": "color",
-              "$value": "{color.stone.dark.900}"
-            },
-            "color-text-secondary": {
-              "$type": "color",
-              "$value": "{color.stone.dark.500}"
-            },
-            "color-text-muted": {
-              "$type": "color",
-              "$value": "{color.stone.dark.300}"
-            },
-            "color-text-inverse": {
-              "$type": "color",
-              "$value": "{color.stone.dark.50}"
-            },
-            "color-text-on-action": {
-              "$type": "color",
-              "$value": "{color.stone.dark.0}"
-            },
-            "color-text-link": {
-              "$type": "color",
-              "$value": "{color.navy.dark.700}"
-            },
-            "color-border-default": {
-              "$type": "color",
-              "$value": "{color.stone.dark.100}"
-            },
-            "color-border-strong": {
-              "$type": "color",
-              "$value": "{color.stone.dark.200}"
-            },
-            "color-border-focus": {
-              "$type": "color",
-              "$value": "{color.navy.dark.700}"
-            },
-            "color-action-primary": {
-              "$type": "color",
-              "$value": "{color.navy.dark.700}"
-            },
-            "color-action-primary-hover": {
-              "$type": "color",
-              "$value": "{color.navy.dark.800}"
-            },
-            "color-action-secondary": {
-              "$type": "color",
-              "$value": "{color.stone.dark.50}"
-            },
-            "color-action-secondary-hover": {
-              "$type": "color",
-              "$value": "{color.stone.dark.100}"
-            },
-            "color-status-success": {
-              "$type": "color",
-              "$value": "{color.green.dark.700}"
-            },
-            "color-status-warning": {
-              "$type": "color",
-              "$value": "{color.amber.dark.700}"
-            },
-            "color-status-danger": {
-              "$type": "color",
-              "$value": "{color.red.dark.700}"
-            },
-            "color-status-success-subtle": {
-              "$type": "color",
-              "$value": "{color.green.dark.100}"
-            },
-            "color-status-warning-subtle": {
-              "$type": "color",
-              "$value": "{color.amber.dark.100}"
-            },
-            "color-status-danger-subtle": {
-              "$type": "color",
-              "$value": "{color.red.dark.100}"
-            },
-            "elevation-card": {
-              "$type": "shadow",
-              "$value": "{shadow.none}"
-            },
-            "elevation-overlay": {
-              "$type": "shadow",
-              "$value": "{shadow.overlay-dark}"
+            "elevation": {
+              "card": {
+                "$type": "shadow",
+                "$value": "{shadow.none}"
+              },
+              "overlay": {
+                "$type": "shadow",
+                "$value": "{shadow.overlay-dark}"
+              }
             }
           }
         }
@@ -2026,17 +2084,17 @@
       "radius": {
         "control": {
           "$type": "dimension",
-          "$value": "{theme.radius-control}",
+          "$value": "{theme.radius.control}",
           "$description": "Corner of buttons and inputs."
         },
         "badge": {
           "$type": "dimension",
-          "$value": "{theme.radius-badge}",
+          "$value": "{theme.radius.badge}",
           "$description": "Corner of badges and checkboxes."
         },
         "container": {
           "$type": "dimension",
-          "$value": "{theme.radius-container}",
+          "$value": "{theme.radius.container}",
           "$description": "Corner of cards, menus and dialogs."
         },
         "round": {
@@ -2061,7 +2119,7 @@
         "display": {
           "font-family": {
             "$type": "fontFamily",
-            "$value": "{theme.type-display-font-family}"
+            "$value": "{theme.type.display.font-family}"
           },
           "font-size": {
             "$type": "dimension",
@@ -2080,7 +2138,7 @@
         "title": {
           "font-family": {
             "$type": "fontFamily",
-            "$value": "{theme.type-title-font-family}"
+            "$value": "{theme.type.title.font-family}"
           },
           "font-size": {
             "$type": "dimension",
@@ -2099,7 +2157,7 @@
         "heading": {
           "font-family": {
             "$type": "fontFamily",
-            "$value": "{theme.type-heading-font-family}"
+            "$value": "{theme.type.heading.font-family}"
           },
           "font-size": {
             "$type": "dimension",
@@ -2118,7 +2176,7 @@
         "body": {
           "font-family": {
             "$type": "fontFamily",
-            "$value": "{theme.type-body-font-family}"
+            "$value": "{theme.type.body.font-family}"
           },
           "font-size": {
             "$type": "dimension",
@@ -2137,7 +2195,7 @@
         "label": {
           "font-family": {
             "$type": "fontFamily",
-            "$value": "{theme.type-label-font-family}"
+            "$value": "{theme.type.label.font-family}"
           },
           "font-size": {
             "$type": "dimension",
@@ -2156,7 +2214,7 @@
         "caption": {
           "font-family": {
             "$type": "fontFamily",
-            "$value": "{theme.type-caption-font-family}"
+            "$value": "{theme.type.caption.font-family}"
           },
           "font-size": {
             "$type": "dimension",
@@ -2175,7 +2233,7 @@
         "data": {
           "font-family": {
             "$type": "fontFamily",
-            "$value": "{theme.type-data-font-family}"
+            "$value": "{theme.type.data.font-family}"
           },
           "font-size": {
             "$type": "dimension",
@@ -2220,140 +2278,150 @@
           "canvas": {
             "$type": "color",
             "$description": "The page background.",
-            "$value": "{theme.color-surface-canvas}"
+            "$value": "{theme.color.surface.canvas}"
           },
           "default": {
             "$type": "color",
             "$description": "Cards, inputs and tables.",
-            "$value": "{theme.color-surface-default}"
+            "$value": "{theme.color.surface.default}"
           },
           "raised": {
             "$type": "color",
             "$description": "Menus, dialogs, toasts.",
-            "$value": "{theme.color-surface-raised}"
+            "$value": "{theme.color.surface.raised}"
           },
           "sunken": {
             "$type": "color",
             "$description": "Table headers and wells.",
-            "$value": "{theme.color-surface-sunken}"
+            "$value": "{theme.color.surface.sunken}"
           },
           "selected": {
             "$type": "color",
             "$description": "A selected row or item.",
-            "$value": "{theme.color-surface-selected}"
+            "$value": "{theme.color.surface.selected}"
           },
           "inverse": {
             "$type": "color",
             "$description": "Tooltips.",
-            "$value": "{theme.color-surface-inverse}"
+            "$value": "{theme.color.surface.inverse}"
           },
           "scrim": {
             "$type": "color",
             "$description": "Dims the page behind a dialog.",
-            "$value": "{theme.color-surface-scrim}"
+            "$value": "{theme.color.surface.scrim}"
           }
         },
         "text": {
           "primary": {
             "$type": "color",
             "$description": "Main text.",
-            "$value": "{theme.color-text-primary}"
+            "$value": "{theme.color.text.primary}"
           },
           "secondary": {
             "$type": "color",
             "$description": "Supporting text; passes AA.",
-            "$value": "{theme.color-text-secondary}"
+            "$value": "{theme.color.text.secondary}"
           },
           "muted": {
             "$type": "color",
             "$description": "Hints and placeholders.",
-            "$value": "{theme.color-text-muted}"
+            "$value": "{theme.color.text.muted}"
           },
           "inverse": {
             "$type": "color",
             "$description": "Text on inverse surfaces.",
-            "$value": "{theme.color-text-inverse}"
+            "$value": "{theme.color.text.inverse}"
           },
           "on-action": {
             "$type": "color",
             "$description": "Text on the primary action.",
-            "$value": "{theme.color-text-on-action}"
+            "$value": "{theme.color.text.on-action}"
           },
           "link": {
             "$type": "color",
             "$description": "Links.",
-            "$value": "{theme.color-text-link}"
+            "$value": "{theme.color.text.link}"
           }
         },
         "border": {
           "default": {
             "$type": "color",
             "$description": "Row lines and card borders.",
-            "$value": "{theme.color-border-default}"
+            "$value": "{theme.color.border.default}"
           },
           "strong": {
             "$type": "color",
             "$description": "Input and secondary button borders.",
-            "$value": "{theme.color-border-strong}"
+            "$value": "{theme.color.border.strong}"
           },
           "focus": {
             "$type": "color",
             "$description": "The keyboard focus ring.",
-            "$value": "{theme.color-border-focus}"
+            "$value": "{theme.color.border.focus}"
           }
         },
         "action": {
           "primary": {
-            "$type": "color",
-            "$description": "The primary action.",
-            "$value": "{theme.color-action-primary}"
-          },
-          "primary-hover": {
-            "$type": "color",
-            "$description": "Primary action on hover.",
-            "$value": "{theme.color-action-primary-hover}"
+            "@": {
+              "$type": "color",
+              "$description": "The primary action.",
+              "$value": "{theme.color.action.primary.@}"
+            },
+            "hover": {
+              "$type": "color",
+              "$description": "Primary action on hover.",
+              "$value": "{theme.color.action.primary.hover}"
+            }
           },
           "secondary": {
-            "$type": "color",
-            "$description": "Secondary action fill.",
-            "$value": "{theme.color-action-secondary}"
-          },
-          "secondary-hover": {
-            "$type": "color",
-            "$description": "Secondary action on hover.",
-            "$value": "{theme.color-action-secondary-hover}"
+            "@": {
+              "$type": "color",
+              "$description": "Secondary action fill.",
+              "$value": "{theme.color.action.secondary.@}"
+            },
+            "hover": {
+              "$type": "color",
+              "$description": "Secondary action on hover.",
+              "$value": "{theme.color.action.secondary.hover}"
+            }
           }
         },
         "status": {
           "success": {
-            "$type": "color",
-            "$description": "Success text and icons.",
-            "$value": "{theme.color-status-success}"
+            "@": {
+              "$type": "color",
+              "$description": "Success text and icons.",
+              "$value": "{theme.color.status.success.@}"
+            },
+            "subtle": {
+              "$type": "color",
+              "$description": "Success badge fill.",
+              "$value": "{theme.color.status.success.subtle}"
+            }
           },
           "warning": {
-            "$type": "color",
-            "$description": "Warning text and icons.",
-            "$value": "{theme.color-status-warning}"
+            "@": {
+              "$type": "color",
+              "$description": "Warning text and icons.",
+              "$value": "{theme.color.status.warning.@}"
+            },
+            "subtle": {
+              "$type": "color",
+              "$description": "Warning badge fill.",
+              "$value": "{theme.color.status.warning.subtle}"
+            }
           },
           "danger": {
-            "$type": "color",
-            "$description": "Danger text and icons.",
-            "$value": "{theme.color-status-danger}"
-          },
-          "success-subtle": {
-            "$type": "color",
-            "$description": "Success badge fill.",
-            "$value": "{theme.color-status-success-subtle}"
-          },
-          "warning-subtle": {
-            "$type": "color",
-            "$description": "Warning badge fill.",
-            "$value": "{theme.color-status-warning-subtle}"
-          },
-          "danger-subtle": {
-            "$type": "color",
-            "$description": "Danger badge fill.",
-            "$value": "{theme.color-status-danger-subtle}"
+            "@": {
+              "$type": "color",
+              "$description": "Danger text and icons.",
+              "$value": "{theme.color.status.danger.@}"
+            },
+            "subtle": {
+              "$type": "color",
+              "$description": "Danger badge fill.",
+              "$value": "{theme.color.status.danger.subtle}"
+            }
           }
         }
       },
@@ -2361,11 +2429,11 @@
         "card": {
           "$type": "shadow",
           "$description": "No shadow in this scheme.",
-          "$value": "{theme.elevation-card}"
+          "$value": "{theme.elevation.card}"
         },
         "overlay": {
           "$type": "shadow",
-          "$value": "{theme.elevation-overlay}"
+          "$value": "{theme.elevation.overlay}"
         }
       }
     },
@@ -2373,12 +2441,14 @@
       "button": {
         "primary": {
           "background": {
-            "$value": "{color.action.primary}",
-            "$description": "Primary button fill."
-          },
-          "background-hover": {
-            "$value": "{color.action.primary-hover}",
-            "$description": "Primary button fill on hover."
+            "@": {
+              "$value": "{color.action.primary.@}",
+              "$description": "Primary button fill."
+            },
+            "hover": {
+              "$value": "{color.action.primary.hover}",
+              "$description": "Primary button fill on hover."
+            }
           },
           "label": {
             "$value": "{color.text.on-action}",
@@ -2387,12 +2457,14 @@
         },
         "secondary": {
           "background": {
-            "$value": "{color.action.secondary}",
-            "$description": "Secondary button fill."
-          },
-          "background-hover": {
-            "$value": "{color.action.secondary-hover}",
-            "$description": "Secondary button fill on hover."
+            "@": {
+              "$value": "{color.action.secondary.@}",
+              "$description": "Secondary button fill."
+            },
+            "hover": {
+              "$value": "{color.action.secondary.hover}",
+              "$description": "Secondary button fill on hover."
+            }
           },
           "label": {
             "$value": "{color.text.primary}",
@@ -2448,12 +2520,14 @@
           "$description": "Input fill."
         },
         "border": {
-          "$value": "{color.border.strong}",
-          "$description": "Input border at rest."
-        },
-        "border-focus": {
-          "$value": "{color.border.focus}",
-          "$description": "Input border when focused."
+          "@": {
+            "$value": "{color.border.strong}",
+            "$description": "Input border at rest."
+          },
+          "focus": {
+            "$value": "{color.border.focus}",
+            "$description": "Input border when focused."
+          }
         },
         "text": {
           "$value": "{color.text.primary}",
@@ -2482,7 +2556,7 @@
       },
       "control": {
         "checked": {
-          "$value": "{color.action.primary}",
+          "$value": "{color.action.primary.@}",
           "$description": "Fill of a checked checkbox or an on switch."
         },
         "track": {
@@ -2523,31 +2597,31 @@
         },
         "success": {
           "background": {
-            "$value": "{color.status.success-subtle}",
+            "$value": "{color.status.success.subtle}",
             "$description": "Success badge fill."
           },
           "label": {
-            "$value": "{color.status.success}",
+            "$value": "{color.status.success.@}",
             "$description": "Success badge label."
           }
         },
         "warning": {
           "background": {
-            "$value": "{color.status.warning-subtle}",
+            "$value": "{color.status.warning.subtle}",
             "$description": "Warning badge fill."
           },
           "label": {
-            "$value": "{color.status.warning}",
+            "$value": "{color.status.warning.@}",
             "$description": "Warning badge label."
           }
         },
         "danger": {
           "background": {
-            "$value": "{color.status.danger-subtle}",
+            "$value": "{color.status.danger.subtle}",
             "$description": "Danger badge fill."
           },
           "label": {
-            "$value": "{color.status.danger}",
+            "$value": "{color.status.danger.@}",
             "$description": "Danger badge label."
           }
         }
@@ -2602,16 +2676,18 @@
       },
       "tabs": {
         "indicator": {
-          "$value": "{color.action.primary}",
+          "$value": "{color.action.primary.@}",
           "$description": "Active tab indicator."
         },
         "label": {
-          "$value": "{color.text.secondary}",
-          "$description": "Inactive tab label."
-        },
-        "label-active": {
-          "$value": "{color.text.primary}",
-          "$description": "Active tab label."
+          "@": {
+            "$value": "{color.text.secondary}",
+            "$description": "Inactive tab label."
+          },
+          "active": {
+            "$value": "{color.text.primary}",
+            "$description": "Active tab label."
+          }
         }
       },
       "overlay": {

@@ -27,16 +27,16 @@ How color carries action, state and brand.
 <span class="ods-item"><span class="ods-swatch" style="background:var(--color-border-default)"></span><span class="ods-label">color.border.default</span></span>
 <span class="ods-item"><span class="ods-swatch" style="background:var(--color-border-strong)"></span><span class="ods-label">color.border.strong</span></span>
 <span class="ods-item"><span class="ods-swatch" style="background:var(--color-border-focus)"></span><span class="ods-label">color.border.focus</span></span>
-<span class="ods-item"><span class="ods-swatch" style="background:var(--color-action-primary)"></span><span class="ods-label">color.action.primary</span></span>
-<span class="ods-item"><span class="ods-swatch" style="background:var(--color-action-primary-hover)"></span><span class="ods-label">color.action.primary-hover</span></span>
-<span class="ods-item"><span class="ods-swatch" style="background:var(--color-action-secondary)"></span><span class="ods-label">color.action.secondary</span></span>
-<span class="ods-item"><span class="ods-swatch" style="background:var(--color-action-secondary-hover)"></span><span class="ods-label">color.action.secondary-hover</span></span>
-<span class="ods-item"><span class="ods-swatch" style="background:var(--color-status-success)"></span><span class="ods-label">color.status.success</span></span>
-<span class="ods-item"><span class="ods-swatch" style="background:var(--color-status-warning)"></span><span class="ods-label">color.status.warning</span></span>
-<span class="ods-item"><span class="ods-swatch" style="background:var(--color-status-danger)"></span><span class="ods-label">color.status.danger</span></span>
-<span class="ods-item"><span class="ods-swatch" style="background:var(--color-status-success-subtle)"></span><span class="ods-label">color.status.success-subtle</span></span>
-<span class="ods-item"><span class="ods-swatch" style="background:var(--color-status-warning-subtle)"></span><span class="ods-label">color.status.warning-subtle</span></span>
-<span class="ods-item"><span class="ods-swatch" style="background:var(--color-status-danger-subtle)"></span><span class="ods-label">color.status.danger-subtle</span></span>
+<span class="ods-item"><span class="ods-swatch" style="background:var(--color-action-primary)"></span><span class="ods-label">color.action.primary.@</span></span>
+<span class="ods-item"><span class="ods-swatch" style="background:var(--color-action-primary-hover)"></span><span class="ods-label">color.action.primary.hover</span></span>
+<span class="ods-item"><span class="ods-swatch" style="background:var(--color-action-secondary)"></span><span class="ods-label">color.action.secondary.@</span></span>
+<span class="ods-item"><span class="ods-swatch" style="background:var(--color-action-secondary-hover)"></span><span class="ods-label">color.action.secondary.hover</span></span>
+<span class="ods-item"><span class="ods-swatch" style="background:var(--color-status-success)"></span><span class="ods-label">color.status.success.@</span></span>
+<span class="ods-item"><span class="ods-swatch" style="background:var(--color-status-success-subtle)"></span><span class="ods-label">color.status.success.subtle</span></span>
+<span class="ods-item"><span class="ods-swatch" style="background:var(--color-status-warning)"></span><span class="ods-label">color.status.warning.@</span></span>
+<span class="ods-item"><span class="ods-swatch" style="background:var(--color-status-warning-subtle)"></span><span class="ods-label">color.status.warning.subtle</span></span>
+<span class="ods-item"><span class="ods-swatch" style="background:var(--color-status-danger)"></span><span class="ods-label">color.status.danger.@</span></span>
+<span class="ods-item"><span class="ods-swatch" style="background:var(--color-status-danger-subtle)"></span><span class="ods-label">color.status.danger.subtle</span></span>
 </div>
 
 ## The five answers
@@ -55,32 +55,32 @@ Each token points to another token. Values live only on primitives, below.
 
 | Token | Points to, light | Points to, dark |
 | --- | --- | --- |
-| `color.surface.canvas` | `dense-data.theme.light.color-surface-canvas` → `color.slate.light.50` | `dense-data.theme.dark.color-surface-canvas` → `color.slate.dark.0` |
-| `color.surface.default` | `dense-data.theme.light.color-surface-default` → `color.slate.light.0` | `dense-data.theme.dark.color-surface-default` → `color.slate.dark.50` |
-| `color.surface.raised` | `dense-data.theme.light.color-surface-raised` → `color.slate.light.0` | `dense-data.theme.dark.color-surface-raised` → `color.slate.dark.100` |
-| `color.surface.sunken` | `dense-data.theme.light.color-surface-sunken` → `color.slate.light.100` | `dense-data.theme.dark.color-surface-sunken` → `color.slate.dark.100` |
-| `color.surface.selected` | `dense-data.theme.light.color-surface-selected` → `color.violet.light.100` | `dense-data.theme.dark.color-surface-selected` → `color.violet.dark.100` |
-| `color.surface.inverse` | `dense-data.theme.light.color-surface-inverse` → `color.slate.light.900` | `dense-data.theme.dark.color-surface-inverse` → `color.slate.dark.900` |
-| `color.surface.scrim` | `dense-data.theme.light.color-surface-scrim` → `color.black.light.scrim` | `dense-data.theme.dark.color-surface-scrim` → `color.black.dark.scrim` |
-| `color.text.primary` | `dense-data.theme.light.color-text-primary` → `color.slate.light.900` | `dense-data.theme.dark.color-text-primary` → `color.slate.dark.900` |
-| `color.text.secondary` | `dense-data.theme.light.color-text-secondary` → `color.slate.light.700` | `dense-data.theme.dark.color-text-secondary` → `color.slate.dark.500` |
-| `color.text.muted` | `dense-data.theme.light.color-text-muted` → `color.slate.@` → `color.slate.light.500` | `dense-data.theme.dark.color-text-muted` → `color.slate.dark.300` |
-| `color.text.inverse` | `dense-data.theme.light.color-text-inverse` → `color.slate.light.0` | `dense-data.theme.dark.color-text-inverse` → `color.slate.dark.50` |
-| `color.text.on-action` | `dense-data.theme.light.color-text-on-action` → `color.slate.light.0` | `dense-data.theme.dark.color-text-on-action` → `color.slate.dark.0` |
-| `color.text.link` | `dense-data.theme.light.color-text-link` → `color.violet.light.700` | `dense-data.theme.dark.color-text-link` → `color.violet.dark.700` |
-| `color.border.default` | `dense-data.theme.light.color-border-default` → `color.slate.light.200` | `dense-data.theme.dark.color-border-default` → `color.slate.dark.100` |
-| `color.border.strong` | `dense-data.theme.light.color-border-strong` → `color.slate.light.300` | `dense-data.theme.dark.color-border-strong` → `color.slate.dark.200` |
-| `color.border.focus` | `dense-data.theme.light.color-border-focus` → `color.violet.@` → `color.violet.light.600` | `dense-data.theme.dark.color-border-focus` → `color.violet.dark.700` |
-| `color.action.primary` | `dense-data.theme.light.color-action-primary` → `color.violet.@` → `color.violet.light.600` | `dense-data.theme.dark.color-action-primary` → `color.violet.dark.700` |
-| `color.action.primary-hover` | `dense-data.theme.light.color-action-primary-hover` → `color.violet.light.700` | `dense-data.theme.dark.color-action-primary-hover` → `color.violet.dark.800` |
-| `color.action.secondary` | `dense-data.theme.light.color-action-secondary` → `color.slate.light.0` | `dense-data.theme.dark.color-action-secondary` → `color.slate.dark.50` |
-| `color.action.secondary-hover` | `dense-data.theme.light.color-action-secondary-hover` → `color.slate.light.100` | `dense-data.theme.dark.color-action-secondary-hover` → `color.slate.dark.100` |
-| `color.status.success` | `dense-data.theme.light.color-status-success` → `color.green.light.700` | `dense-data.theme.dark.color-status-success` → `color.green.dark.700` |
-| `color.status.warning` | `dense-data.theme.light.color-status-warning` → `color.amber.light.700` | `dense-data.theme.dark.color-status-warning` → `color.amber.dark.700` |
-| `color.status.danger` | `dense-data.theme.light.color-status-danger` → `color.red.light.700` | `dense-data.theme.dark.color-status-danger` → `color.red.dark.700` |
-| `color.status.success-subtle` | `dense-data.theme.light.color-status-success-subtle` → `color.green.light.100` | `dense-data.theme.dark.color-status-success-subtle` → `color.green.dark.100` |
-| `color.status.warning-subtle` | `dense-data.theme.light.color-status-warning-subtle` → `color.amber.light.100` | `dense-data.theme.dark.color-status-warning-subtle` → `color.amber.dark.100` |
-| `color.status.danger-subtle` | `dense-data.theme.light.color-status-danger-subtle` → `color.red.light.100` | `dense-data.theme.dark.color-status-danger-subtle` → `color.red.dark.100` |
+| `color.surface.canvas` | `dense-data.theme.light.color.surface.canvas` → `color.slate.light.50` | `dense-data.theme.dark.color.surface.canvas` → `color.slate.dark.0` |
+| `color.surface.default` | `dense-data.theme.light.color.surface.default` → `color.slate.light.0` | `dense-data.theme.dark.color.surface.default` → `color.slate.dark.50` |
+| `color.surface.raised` | `dense-data.theme.light.color.surface.raised` → `color.slate.light.0` | `dense-data.theme.dark.color.surface.raised` → `color.slate.dark.100` |
+| `color.surface.sunken` | `dense-data.theme.light.color.surface.sunken` → `color.slate.light.100` | `dense-data.theme.dark.color.surface.sunken` → `color.slate.dark.100` |
+| `color.surface.selected` | `dense-data.theme.light.color.surface.selected` → `color.violet.light.100` | `dense-data.theme.dark.color.surface.selected` → `color.violet.dark.100` |
+| `color.surface.inverse` | `dense-data.theme.light.color.surface.inverse` → `color.slate.light.900` | `dense-data.theme.dark.color.surface.inverse` → `color.slate.dark.900` |
+| `color.surface.scrim` | `dense-data.theme.light.color.surface.scrim` → `color.black.light.scrim` | `dense-data.theme.dark.color.surface.scrim` → `color.black.dark.scrim` |
+| `color.text.primary` | `dense-data.theme.light.color.text.primary` → `color.slate.light.900` | `dense-data.theme.dark.color.text.primary` → `color.slate.dark.900` |
+| `color.text.secondary` | `dense-data.theme.light.color.text.secondary` → `color.slate.light.700` | `dense-data.theme.dark.color.text.secondary` → `color.slate.dark.500` |
+| `color.text.muted` | `dense-data.theme.light.color.text.muted` → `color.slate.light.500` | `dense-data.theme.dark.color.text.muted` → `color.slate.dark.300` |
+| `color.text.inverse` | `dense-data.theme.light.color.text.inverse` → `color.slate.light.0` | `dense-data.theme.dark.color.text.inverse` → `color.slate.dark.50` |
+| `color.text.on-action` | `dense-data.theme.light.color.text.on-action` → `color.slate.light.0` | `dense-data.theme.dark.color.text.on-action` → `color.slate.dark.0` |
+| `color.text.link` | `dense-data.theme.light.color.text.link` → `color.violet.light.700` | `dense-data.theme.dark.color.text.link` → `color.violet.dark.700` |
+| `color.border.default` | `dense-data.theme.light.color.border.default` → `color.slate.light.200` | `dense-data.theme.dark.color.border.default` → `color.slate.dark.100` |
+| `color.border.strong` | `dense-data.theme.light.color.border.strong` → `color.slate.light.300` | `dense-data.theme.dark.color.border.strong` → `color.slate.dark.200` |
+| `color.border.focus` | `dense-data.theme.light.color.border.focus` → `color.violet.light.600` | `dense-data.theme.dark.color.border.focus` → `color.violet.dark.700` |
+| `color.action.primary.@` | `dense-data.theme.light.color.action.primary.@` → `color.violet.light.600` | `dense-data.theme.dark.color.action.primary.@` → `color.violet.dark.700` |
+| `color.action.primary.hover` | `dense-data.theme.light.color.action.primary.hover` → `color.violet.light.700` | `dense-data.theme.dark.color.action.primary.hover` → `color.violet.dark.800` |
+| `color.action.secondary.@` | `dense-data.theme.light.color.action.secondary.@` → `color.slate.light.0` | `dense-data.theme.dark.color.action.secondary.@` → `color.slate.dark.50` |
+| `color.action.secondary.hover` | `dense-data.theme.light.color.action.secondary.hover` → `color.slate.light.100` | `dense-data.theme.dark.color.action.secondary.hover` → `color.slate.dark.100` |
+| `color.status.success.@` | `dense-data.theme.light.color.status.success.@` → `color.green.light.700` | `dense-data.theme.dark.color.status.success.@` → `color.green.dark.700` |
+| `color.status.success.subtle` | `dense-data.theme.light.color.status.success.subtle` → `color.green.light.100` | `dense-data.theme.dark.color.status.success.subtle` → `color.green.dark.100` |
+| `color.status.warning.@` | `dense-data.theme.light.color.status.warning.@` → `color.amber.light.700` | `dense-data.theme.dark.color.status.warning.@` → `color.amber.dark.700` |
+| `color.status.warning.subtle` | `dense-data.theme.light.color.status.warning.subtle` → `color.amber.light.100` | `dense-data.theme.dark.color.status.warning.subtle` → `color.amber.dark.100` |
+| `color.status.danger.@` | `dense-data.theme.light.color.status.danger.@` → `color.red.light.700` | `dense-data.theme.dark.color.status.danger.@` → `color.red.dark.700` |
+| `color.status.danger.subtle` | `dense-data.theme.light.color.status.danger.subtle` → `color.red.light.100` | `dense-data.theme.dark.color.status.danger.subtle` → `color.red.dark.100` |
 
 ## Primitives
 

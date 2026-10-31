@@ -36,7 +36,7 @@ Each token points to another token. Values live only on primitives, below.
 | `size.control.default` | `size.32` | `size.32` |
 | `size.control.compact` | `size.24` | `size.24` |
 | `opacity.disabled` | `opacity.40` | `opacity.40` |
-| `color.border.focus` | `dense-data.theme.light.color-border-focus` → `color.violet.@` → `color.violet.light.600` | `dense-data.theme.dark.color-border-focus` → `color.violet.dark.700` |
+| `color.border.focus` | `dense-data.theme.light.color.border.focus` → `color.violet.light.600` | `dense-data.theme.dark.color.border.focus` → `color.violet.dark.700` |
 
 ## Primitives
 
