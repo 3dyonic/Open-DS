@@ -1,12 +1,12 @@
 import type { Meta, StoryObj } from "@storybook/react-vite";
 import { Badge } from "@open-ds/ui";
-import { AlertTriangle, Check, X } from "lucide-react";
 import { Usage } from "../src/usage";
+import { Show, toneOf } from "../src/samples";
 
 const meta = {
   title: "Components/Badge",
   component: Badge,
-  args: { children: "Paid", tone: "success" },
+  args: { children: "Status", tone: "neutral" },
   argTypes: { tone: { control: "inline-radio", options: ["neutral", "success", "warning", "danger"] } },
 } satisfies Meta<typeof Badge>;
 export default meta;
@@ -14,22 +14,27 @@ type Story = StoryObj<typeof meta>;
 
 export const Playground: Story = {};
 
-export const Tones: Story = {
+// Each status shows in the tone its meaning picks. Danger appears only where the scheme says something failed.
+export const Statuses: Story = {
   render: () => (
-    <div>
-      <div className="flex flex-wrap gap-[var(--space-gap-default)]">
-        <Badge tone="neutral">Draft</Badge>
-        <Badge tone="success">
-          <Check /> Paid
-        </Badge>
-        <Badge tone="warning">
-          <AlertTriangle /> Late
-        </Badge>
-        <Badge tone="danger">
-          <X /> Failed
-        </Badge>
-      </div>
-      <Usage situations={["status-label", "status-shape"]} />
-    </div>
+    <Show component="badge">
+      {(s) => (
+        <div>
+          <dl className="grid max-w-2xl grid-cols-[auto_1fr] items-center gap-x-[var(--space-gap-group)] gap-y-[var(--space-gap-default)]">
+            {s.statuses.map((x) => (
+              <div key={x.label} className="contents">
+                <dt>
+                  <Badge tone={x.meaning}>{x.label}</Badge>
+                </dt>
+                <dd className="text-[var(--color-text-secondary)]">
+                  {x.meaning}: {x.why}
+                </dd>
+              </div>
+            ))}
+          </dl>
+          <Usage situations={["status-label", "status-shape"]} />
+        </div>
+      )}
+    </Show>
   ),
 };

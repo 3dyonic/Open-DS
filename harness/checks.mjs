@@ -306,6 +306,53 @@ export const CHECKS = {
     },
   },
 
+  "schemes-samples": {
+    requires: ["schemes/grammar.json"],
+    run: (c) => {
+      // Each scheme shows itself with its own content: every inventory component has its sample part,
+      // statuses carry a meaning, rows use those statuses, and no two schemes share a screen or rows.
+      const NEEDS = {
+        badge: "statuses",
+        card: "card",
+        checkbox: "checkbox",
+        dialog: "confirm",
+        "dropdown-menu": "menu",
+        select: "select",
+        switch: "switches",
+        table: "table",
+        tabs: "tabs",
+        toast: "messages",
+        tooltip: "icon_action",
+      };
+      const gaps = [];
+      const seen = new Map();
+      for (const id of SCHEMES) {
+        const s = c.json("schemes", `${id}.json`);
+        const smp = s.samples;
+        if (!smp) {
+          gaps.push(`${id}: no samples`);
+          continue;
+        }
+        const inv = s.inventory.in.map((i) => i.id);
+        for (const [comp, part] of Object.entries(NEEDS))
+          if (inv.includes(comp) && !smp[part]) gaps.push(`${id}: ${comp} is in the inventory but samples has no ${part}`);
+        const labels = new Set((smp.statuses ?? []).map((x) => x.label));
+        for (const r of smp.table?.rows ?? []) {
+          if (!labels.has(r.status)) gaps.push(`${id}: row status "${r.status}" is not in statuses`);
+          if (r.cells.length !== smp.table.columns.length - 1) gaps.push(`${id}: a row has the wrong number of cells`);
+        }
+        if (smp.card && !labels.has(smp.card.status)) gaps.push(`${id}: card status "${smp.card.status}" is not in statuses`);
+        for (const key of [smp.screen, ...(smp.table?.rows ?? []).map((r) => r.cells.join("|"))]) {
+          if (seen.has(key)) gaps.push(`${id} and ${seen.get(key)} share "${key}"`);
+          seen.set(key, id);
+        }
+      }
+      return gaps.length
+        ? bad(gaps.slice(0, 6).join("; "))
+        : ok("every scheme shows its inventory with its own content, and every status has a meaning");
+    },
+  },
+
   "schemes-inventory": {
     requires: ["schemes/grammar.json"],
     run: (c) => {

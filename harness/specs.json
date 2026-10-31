@@ -288,6 +288,22 @@
         "docs-build",
         "site-build"
       ]
+    },
+    {
+      "id": "OD-135",
+      "title": "Each scheme shows its UI with its own content, data, status meanings and voice",
+      "in": [
+        "samples in every scheme: screen, actions, statuses with meaning and why, table, figures, field, messages, confirm, card, tabs, menu",
+        "danger only where something failed or will be lost",
+        "Storybook stories and the site preview read the active scheme's samples, and say when a component is not in the inventory",
+        "no shared fixtures between schemes"
+      ],
+      "checks": [
+        "schemes-samples",
+        "json-files-validate",
+        "storybook-build",
+        "site-build"
+      ]
     }
   ]
 }

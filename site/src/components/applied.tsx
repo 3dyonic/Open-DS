@@ -14,32 +14,39 @@ import {
 } from "@open-ds/ui";
 import { useState } from "react";
 
-const ROWS: [string, string, string, "success" | "warning" | "danger", string, string][] = [
-  ["#1042", "Pine Street Co.", "Oct 28", "success", "Shipped", "1,240.00"],
-  ["#1043", "Lumen Labs", "Oct 28", "warning", "Pending", "86.50"],
-  ["#1044", "Atlas Foods", "Oct 27", "success", "Shipped", "3,915.20"],
-  ["#1045", "Kite & Co.", "Oct 27", "danger", "Refunded", "212.00"],
-  ["#1046", "Harbor Studio", "Oct 27", "success", "Shipped", "640.75"],
-  ["#1047", "Oro Market", "Oct 26", "warning", "Pending", "1,078.40"],
-  ["#1048", "Fieldnote", "Oct 26", "success", "Shipped", "54.90"],
-];
-
-const KPIS: [string, string, string][] = [
-  ["Revenue today", "12,480.00", "+4.2%"],
-  ["Open orders", "86", "−3"],
-  ["Refunds", "3", "+1"],
-  ["Avg. ship time", "1.8 d", "−0.2"],
-];
+// Everything shown comes from the scheme's own samples: its screen, figures, rows, statuses and
+// words. A table appears only when the scheme carries one; otherwise its card and field do the work.
+type Meaning = "neutral" | "success" | "warning" | "danger";
+export interface AppliedSamples {
+  screen: string;
+  actions: { primary: string; secondary: string };
+  statuses: { label: string; meaning: Meaning }[];
+  metrics: { label: string; value: string }[];
+  field: { label: string; placeholder: string; hint: string };
+  table?: {
+    caption: string;
+    columns: { label: string; numeric?: boolean }[];
+    rows: { cells: string[]; status: string }[];
+  };
+  card?: { title: string; description: string; status: string; primary: string; secondary: string };
+  messages?: { success: string };
+}
 
 export function Applied({
   scheme,
   brands,
   toast,
+  samples: s,
+  inventory,
 }: {
   scheme: string;
   brands: { id: string; label: string }[];
   toast: string;
+  samples: AppliedSamples;
+  inventory: string[];
 }) {
+  const tone = (label: string): Meaning =>
+    s.statuses.find((x) => x.label === label)?.meaning ?? "neutral";
   const [brand, setBrand] = useState(brands[0].id);
   const [dark, setDark] = useState(false);
   const chip =
@@ -73,66 +80,89 @@ export function Applied({
       >
         <div className="flex flex-wrap items-center gap-3">
           <p className="[font-family:var(--type-title-font-family)] text-[length:var(--type-title-font-size)] [font-weight:var(--type-title-font-weight)]">
-            Orders
+            {s.screen}
           </p>
           <div className="ml-auto flex flex-wrap items-center gap-3">
             <Input
-              aria-label="Filter by customer"
-              placeholder="Filter by customer"
+              aria-label={s.field.label}
+              placeholder={s.field.placeholder || s.field.label}
               className="w-[240px]"
             />
-            <Button variant="secondary">Export</Button>
-            <Button>New order</Button>
+            <Button variant="secondary">{s.actions.secondary}</Button>
+            <Button>{s.actions.primary}</Button>
           </div>
         </div>
         <div className="grid gap-3 sm:grid-cols-2 lg:grid-cols-4">
-          {KPIS.map(([k, v, d]) => (
+          {s.metrics.map((m) => (
             <div
-              key={k}
+              key={m.label}
               className="rounded-[var(--radius-container)] border border-[var(--card-border)] bg-[var(--card-background)] p-3"
             >
               <p className="text-[length:var(--type-caption-font-size)] uppercase text-[var(--color-text-secondary)]">
-                {k}
+                {m.label}
               </p>
               <p className="[font-family:var(--type-data-font-family)] text-[length:var(--type-title-font-size)]">
-                {v}{" "}
-                <span className="text-[length:var(--type-caption-font-size)] text-[var(--color-text-muted)]">
-                  {d}
-                </span>
+                {m.value}
               </p>
             </div>
           ))}
         </div>
-        <div className="overflow-x-auto rounded-[var(--radius-container)] border border-[var(--card-border)] bg-[var(--card-background)]">
-          <Table>
-            <TableHeader>
-              <TableRow>
-                {["Order", "Customer", "Date", "Status", "Amount"].map((h) => (
-                  <TableHead key={h} className={h === "Amount" ? "text-right" : ""}>
-                    {h}
-                  </TableHead>
-                ))}
-              </TableRow>
-            </TableHeader>
-            <TableBody>
-              {ROWS.map(([id, who, date, tone, state, amount]) => (
-                <TableRow key={id}>
-                  <TableCell className="[font-family:var(--type-data-font-family)]">{id}</TableCell>
-                  <TableCell>{who}</TableCell>
-                  <TableCell>{date}</TableCell>
-                  <TableCell>
-                    <Badge tone={tone}>{state}</Badge>
-                  </TableCell>
-                  <TableCell className="text-right [font-family:var(--type-data-font-family)]">
-                    {amount}
-                  </TableCell>
+        {s.table && inventory.includes("table") ? (
+          <div className="overflow-x-auto rounded-[var(--radius-container)] border border-[var(--card-border)] bg-[var(--card-background)]">
+            <Table aria-label={s.table.caption}>
+              <TableHeader>
+                <TableRow>
+                  {s.table.columns.map((c) => (
+                    <TableHead key={c.label} className={c.numeric ? "text-right" : ""}>
+                      {c.label}
+                    </TableHead>
+                  ))}
                 </TableRow>
-              ))}
-            </TableBody>
-          </Table>
-        </div>
+              </TableHeader>
+              <TableBody>
+                {s.table.rows.map((r) => (
+                  <TableRow key={r.cells[0]}>
+                    {r.cells.map((cell, j) => (
+                      <TableCell
+                        key={j}
+                        className={
+                          s.table!.columns[j].numeric || j === 0
+                            ? `[font-family:var(--type-data-font-family)]${s.table!.columns[j].numeric ? " text-right" : ""}`
+                            : ""
+                        }
+                      >
+                        {cell}
+                      </TableCell>
+                    ))}
+                    <TableCell>
+                      <Badge tone={tone(r.status)}>{r.status}</Badge>
+                    </TableCell>
+                  </TableRow>
+                ))}
+              </TableBody>
+            </Table>
+          </div>
+        ) : (
+          s.card && (
+            <div className="flex flex-col gap-2 rounded-[var(--card-radius)] border border-[var(--card-border)] bg-[var(--card-background)] p-[var(--card-padding)]">
+              <p className="[font-family:var(--type-heading-font-family)] text-[length:var(--type-heading-font-size)] [font-weight:var(--type-heading-font-weight)]">
+                {s.card.title}
+              </p>
+              <p className="text-[var(--color-text-secondary)]">{s.card.description}</p>
+              {inventory.includes("badge") && (
+                <span>
+                  <Badge tone={tone(s.card.status)}>{s.card.status}</Badge>
+                </span>
+              )}
+              <div className="flex flex-wrap gap-3">
+                <Button>{s.card.primary}</Button>
+                <Button variant="ghost">{s.card.secondary}</Button>
+              </div>
+            </div>
+          )
+        )}
         <p className="text-[length:var(--type-caption-font-size)] text-[var(--color-text-secondary)]">
-          {toast}
+          {s.messages?.success ?? toast}
         </p>
       </div>
     </div>

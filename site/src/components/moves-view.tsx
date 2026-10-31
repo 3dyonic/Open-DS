@@ -11,10 +11,13 @@ export function MovesView({
   book,
   schemeId,
   start,
+  sample,
 }: {
   book: AnswerBook;
   schemeId: string;
   start: { question: string; option: string };
+  // The scheme's own action and two rows of its content, so the before and after show its words.
+  sample: { action: string; rows: [string, string][] };
 }) {
   const me = book.schemes.find((s) => s.id === schemeId)!;
   const [question, setQuestion] = useState(start.question);
@@ -168,19 +171,19 @@ export function MovesView({
             Where it lands · before → after
           </p>
           {[
-            ["Button", () => <Button>Export</Button>],
+            ["Button", () => <Button>{sample.action}</Button>],
             [
               "Table row",
               () => (
                 <table className="border border-[var(--table-row-border)] text-[length:var(--table-font-size)]">
                   <tbody>
-                    {["1,240.00", "86.50"].map((v) => (
+                    {sample.rows.map(([k, v]) => (
                       <tr
-                        key={v}
+                        key={k}
                         className="h-[var(--table-row-height)] border-b border-[var(--table-row-border)]"
                       >
                         <td className="px-[var(--table-cell-padding-x)] [font-family:var(--type-data-font-family)]">
-                          #1042
+                          {k}
                         </td>
                         <td className="px-[var(--table-cell-padding-x)] text-right [font-family:var(--type-data-font-family)]">
                           {v}
