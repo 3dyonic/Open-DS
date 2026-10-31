@@ -68,6 +68,10 @@ jobs:
           fi
           npm publish --access public --registry https://registry.npmjs.org $DRY
           rm -f .npmrc
+          # The published package must keep its command; npm drops a bin entry it thinks is invalid.
+          if [ -z "$DRY" ]; then
+            test "$(npm view "open-ds@$version" bin --json --registry https://registry.npmjs.org)" != "" || { echo "::error::open-ds@$version has no open-ds command"; exit 1; }
+          fi
 
       - name: GitHub Packages
         env:
@@ -83,4 +87,7 @@ jobs:
             echo "::notice title=GitHub Packages::@3dyonic/open-ds@$version is already published; skipping."; rm .npmrc; exit 0
           fi
           npm publish --registry https://npm.pkg.github.com $DRY
+          if [ -z "$DRY" ]; then
+            test "$(npm view "@3dyonic/open-ds@$version" bin --json --registry https://npm.pkg.github.com)" != "" || { echo "::error::@3dyonic/open-ds@$version has no open-ds command"; rm .npmrc; exit 1; }
+          fi
           rm .npmrc
