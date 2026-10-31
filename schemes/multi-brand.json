@@ -99,6 +99,154 @@
       }
     }
   },
+  "inventory": {
+    "description": "The components this system carries, picked from the grammar catalogue by the components answers. Anything not listed is out.",
+    "follows": [
+      "components.roles",
+      "components.count",
+      "components.definition"
+    ],
+    "in": [
+      {
+        "id": "button",
+        "why": "Every action."
+      },
+      {
+        "id": "toggle-group",
+        "why": "Monthly or yearly prices."
+      },
+      {
+        "id": "input",
+        "why": "Sign-up and account fields."
+      },
+      {
+        "id": "input-otp",
+        "why": "The code that verifies an email or phone."
+      },
+      {
+        "id": "select",
+        "why": "Country and plan options."
+      },
+      {
+        "id": "checkbox",
+        "why": "Terms and preferences."
+      },
+      {
+        "id": "radio-group",
+        "why": "Picks a plan."
+      },
+      {
+        "id": "switch",
+        "why": "Account settings."
+      },
+      {
+        "id": "label",
+        "why": "Names every control."
+      },
+      {
+        "id": "field",
+        "why": "Lays out every form the same way in every brand."
+      },
+      {
+        "id": "textarea",
+        "why": "Messages to support."
+      },
+      {
+        "id": "form",
+        "why": "Validation shared by every product team."
+      },
+      {
+        "id": "badge",
+        "why": "Plan and status labels."
+      },
+      {
+        "id": "avatar",
+        "why": "The customer in the account menu."
+      },
+      {
+        "id": "navigation-menu",
+        "why": "Brand site navigation."
+      },
+      {
+        "id": "breadcrumb",
+        "why": "Where a page sits in the account area."
+      },
+      {
+        "id": "tabs",
+        "why": "Sections of the account."
+      },
+      {
+        "id": "dropdown-menu",
+        "why": "The account menu."
+      },
+      {
+        "id": "sidebar",
+        "why": "Account area navigation."
+      },
+      {
+        "id": "alert",
+        "why": "Billing problems."
+      },
+      {
+        "id": "toast",
+        "why": "Confirms a saved change."
+      },
+      {
+        "id": "skeleton",
+        "why": "Plans and orders while they load."
+      },
+      {
+        "id": "spinner",
+        "why": "A payment in progress."
+      },
+      {
+        "id": "empty",
+        "why": "No orders yet."
+      },
+      {
+        "id": "dialog",
+        "why": "Change a plan."
+      },
+      {
+        "id": "alert-dialog",
+        "why": "Cancel a plan."
+      },
+      {
+        "id": "sheet",
+        "why": "The menu on a phone."
+      },
+      {
+        "id": "popover",
+        "why": "Plan details."
+      },
+      {
+        "id": "tooltip",
+        "why": "Explains a fee."
+      },
+      {
+        "id": "card",
+        "why": "Plans and products."
+      },
+      {
+        "id": "separator",
+        "why": "Groups of settings."
+      },
+      {
+        "id": "accordion",
+        "why": "Frequent questions."
+      }
+    ],
+    "out": [
+      {
+        "id": "chart",
+        "why": "Customers manage plans; they do not analyse data."
+      },
+      {
+        "id": "command",
+        "why": "Customers browse; keyboard command menus suit experts."
+      }
+    ]
+  },
   "themes": [
     {
       "id": "aster-light",
@@ -715,6 +863,51 @@
       "because": [
         "brand.q2"
       ]
+    },
+    {
+      "question": "components.roles",
+      "option": "core-content",
+      "why": "Product teams build sign-up and account forms, plus product pages with questions and faces.",
+      "because": [
+        "content.q1",
+        "team.q1"
+      ]
+    },
+    {
+      "question": "components.count",
+      "option": "some",
+      "why": "Enough for three product teams, kept by one platform team.",
+      "because": [
+        "team.q1",
+        "team.q2"
+      ]
+    },
+    {
+      "question": "components.definition",
+      "option": "family",
+      "why": "Product teams find a whole family ready instead of asking one by one.",
+      "because": [
+        "team.q1",
+        "team.q2"
+      ]
+    },
+    {
+      "question": "components.values",
+      "option": "some",
+      "why": "Some variants let each brand feel present without new components.",
+      "because": [
+        "brand.q2",
+        "outcomes.q2"
+      ]
+    },
+    {
+      "question": "components.lands",
+      "option": "sign-up-account",
+      "why": "Most components sit in sign-up and account pages.",
+      "because": [
+        "content.q1",
+        "tasks.q1"
+      ]
     }
   ],
   "usage": [
@@ -1017,6 +1210,16 @@
         "voice.lands"
       ],
       "example": "Birch: Hi! Let's set up your plan."
+    },
+    {
+      "situation": "missing-component",
+      "use": "a component from the inventory with brand tokens",
+      "not": "a component made for one brand",
+      "why": "Brands change primitives, never components; one brand-only part breaks the shared library.",
+      "because": [
+        "brand.q1",
+        "outcomes.q2"
+      ]
     }
   ],
   "tokens": {

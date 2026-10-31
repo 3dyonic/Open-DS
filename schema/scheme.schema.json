@@ -16,6 +16,7 @@
     "ai",
     "scenarios",
     "voice",
+    "inventory",
     "themes",
     "answers",
     "usage",
@@ -146,6 +147,71 @@
           "additionalProperties": {
             "$ref": "#/$defs/output"
           }
+        }
+      }
+    },
+    "inventory": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["description", "follows", "in", "out"],
+      "description": "The components this system carries: an output of the components answers, picked from the grammar catalogue. Anything not in the in list is out.",
+      "properties": {
+        "description": {
+          "type": "string",
+          "minLength": 1,
+          "description": "What the inventory is."
+        },
+        "follows": {
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "type": "string",
+            "pattern": "^[a-z]+\\.(q\\d+|roles|count|definition|values|lands)$"
+          },
+          "description": "Question ids whose answers picked the inventory."
+        },
+        "in": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": ["id", "why"],
+            "properties": {
+              "id": {
+                "type": "string",
+                "pattern": "^[a-z-]+$",
+                "description": "A catalogue item id from the grammar."
+              },
+              "why": {
+                "type": "string",
+                "minLength": 1,
+                "description": "Why it is in or out, in one sentence."
+              }
+            }
+          },
+          "description": "The components in the inventory, each with why.",
+          "minItems": 1
+        },
+        "out": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": ["id", "why"],
+            "properties": {
+              "id": {
+                "type": "string",
+                "pattern": "^[a-z-]+$",
+                "description": "A catalogue item id from the grammar."
+              },
+              "why": {
+                "type": "string",
+                "minLength": 1,
+                "description": "Why it is in or out, in one sentence."
+              }
+            }
+          },
+          "description": "Notable components left out, each with why. Every other catalogue item is out too."
         }
       }
     },

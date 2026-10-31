@@ -39,7 +39,9 @@ export function agentsMd(scheme, g, { brand, components, project = false }) {
       : [
           "- `src/styles/open-ds.css`: every token as a CSS variable (light and dark; add the class `dark` for dark mode), shadcn variables and a Tailwind v4 theme. Import it after Tailwind.",
         ]),
-    ...(brand ? [`- Brand: set \`data-brand="${brand}"\` on \`<html>\`. Other brands: ${Object.keys(scheme.tokens.brands).join(", ")}.`] : []),
+    ...(brand
+      ? [`- Brand: set \`data-brand="${brand}"\` on \`<html>\`. Other brands: ${Object.keys(scheme.tokens.brands).join(", ")}.`]
+      : []),
     "- `src/components/ui/*`: the components. Each reads only component keys such as `--button-primary-background`. Change a key, not the component.",
     `- \`${project ? "scheme.json" : ".open-ds/scheme.json"}\`: the full scheme: every answer with why and because, every usage rule, the voice, the tokens.`,
     "- `open-ds.json`: what was installed.",
@@ -75,9 +77,17 @@ export function agentsMd(scheme, g, { brand, components, project = false }) {
       .filter((a) => qs[a.question].kind === "scope")
       .map((a) => `- ${qs[a.question].text} **${answer(a.question)}**. ${a.why}`),
     "",
-    "## Components installed",
+    "## Component inventory",
     "",
-    components.join(", "),
+    ...(scheme.inventory
+      ? [
+          `${scheme.inventory.in.length} of ${g.catalogue.items.length} catalogue components are in. Use only these. If none fits, follow the rule for "${sit["missing-component"]?.title ?? "missing component"}" above; never add another component without a new components answer.`,
+          "",
+          ...scheme.inventory.in.map((i) => `- ${i.id}${components.includes(i.id) ? "" : " (not built yet)"}: ${i.why}`),
+          "",
+          "Built and installed here: " + components.filter((c) => scheme.inventory.in.some((i) => i.id === c)).join(", "),
+        ]
+      : [components.join(", ")]),
     "",
     "## Commands",
     "",

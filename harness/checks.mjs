@@ -281,6 +281,54 @@ export const CHECKS = {
     },
   },
 
+  "schemes-inventory": {
+    requires: ["schemes/grammar.json"],
+    run: (c) => {
+      // Each scheme's inventory is an output of its components answers: real catalogue items,
+      // only from the families the roles answer names, and as many as the count answer says.
+      const g = c.json("schemes", "grammar.json");
+      const items = Object.fromEntries((g.catalogue?.items ?? []).map((i) => [i.id, i]));
+      const CORE = ["action", "form", "feedback", "overlay", "layout", "navigation"];
+      const ROLES = {
+        core: CORE,
+        "core-data": [...CORE, "data"],
+        "core-content": [...CORE, "content", "media"],
+        "core-media": [...CORE, "media"],
+      };
+      const COUNT = { few: [1, 20], some: [21, 35], many: [36, Infinity] };
+      const gaps = [];
+      for (const id of SCHEMES) {
+        const s = c.json("schemes", `${id}.json`);
+        const inv = s.inventory;
+        if (!inv?.in?.length) {
+          gaps.push(`${id}: no inventory`);
+          continue;
+        }
+        const answer = (q) => s.answers.find((a) => a.question === q)?.option;
+        const families = ROLES[answer("components.roles")] ?? [];
+        const ids = inv.in.map((i) => i.id);
+        if (new Set(ids).size !== ids.length) gaps.push(`${id}: an inventory item is listed twice`);
+        for (const i of inv.in) {
+          if (!items[i.id]) gaps.push(`${id}: ${i.id} is not in the catalogue`);
+          else if (!families.includes(items[i.id].family))
+            gaps.push(`${id}: ${i.id} is ${items[i.id].family}, outside its roles answer`);
+        }
+        for (const o of inv.out ?? []) {
+          if (!items[o.id]) gaps.push(`${id}: out item ${o.id} is not in the catalogue`);
+          if (ids.includes(o.id)) gaps.push(`${id}: ${o.id} is both in and out`);
+        }
+        const [lo, hi] = COUNT[answer("components.count")] ?? [0, -1];
+        if (ids.length < lo || ids.length > hi)
+          gaps.push(`${id}: ${ids.length} components, but the count answer is ${answer("components.count")}`);
+        if (!inv.follows?.some((f) => f.startsWith("components.")))
+          gaps.push(`${id}: the inventory follows no components answer`);
+      }
+      return gaps.length
+        ? bad(gaps.slice(0, 6).join("; "))
+        : ok("every scheme's inventory matches its components answers and the catalogue");
+    },
+  },
+
   "schemes-voice-and-themes": {
     requires: [...SCHEMES.map((s) => `schemes/${s}.json`)],
     run: (c) => {
@@ -704,7 +752,9 @@ export const CHECKS = {
       const missing = ["list", "show", "why", "when", "create", "init", "add"].filter(
         (cmd) => !new RegExp(`\\b${cmd}\\b`).test(r.out),
       );
-      return missing.length ? bad(`help does not list: ${missing.join(", ")}`) : ok("list, show, why, when, create, init, add");
+      return missing.length
+        ? bad(`help does not list: ${missing.join(", ")}`)
+        : ok("list, show, why, when, create, init, add");
     },
   },
   "cli-init-temp": {
