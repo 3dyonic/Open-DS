@@ -36,6 +36,11 @@ export const ROBOTS = {
     light: [466, 720],
     dark: [473, 720],
   },
+  shelf: {
+    alt: "Shelf, a tin robot, lifts one wooden crate with an orange tag off a shelf of three.",
+    light: [623, 720],
+    dark: [603, 720],
+  },
 } as const;
 
 export type RobotName = keyof typeof ROBOTS;
