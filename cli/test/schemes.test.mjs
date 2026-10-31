@@ -179,7 +179,7 @@ test("docs pages cover every scope and component, for every scheme", async () =>
     // An inventory page, then one page per built component that is in the inventory.
     const scheme = loadScheme(id, roots);
     const inv = scheme.inventory.in.map((i) => i.id);
-    const carried = [...inv, ...(scheme.inventory.patterns ?? []).map((i) => i.id)];
+    const carried = inv;
     const expected = components.map((f) => f.replace(/\.tsx$/, "")).filter((c) => carried.includes(c));
     assert.match(pages["components/inventory.md"], new RegExp(`\\*\\*${inv.length} of ${g.catalogue.items.length}\\*\\*`));
     assert.deepEqual(

@@ -38,15 +38,11 @@ export function componentsPage(schemeId: string) {
   const families = (cat.roles[rolesOption] as string[]) ?? [];
   const familyOf = Object.fromEntries(cat.items.map((i) => [i.id, i.family]));
   const inIds = new Set(s.inventory.in.map((i) => i.id));
-  const countOption = g.scopes
-    .find((x) => x.id === "components")!
-    .questions.find((q) => q.id === "components.count")!
-    .options.find((o) => o.id === option("components.count"))!;
 
   // What each answer did to the inventory, in plain words.
   const effect: Record<string, string> = {
     "components.roles": `Admits ${families.length} families: ${families.join(", ")}.`,
-    "components.count": `${countOption.description ?? countOption.label} ${s.name} carries ${inIds.size}.`,
+    "components.count": `${label("components.count")}: ${s.name} carries ${inIds.size}, as many as its needs.`,
     "components.definition": "Every component in the list above names the need it meets.",
     "components.values": `${label("components.values")} variants per component: the components above keep to them.`,
     "components.lands": `Most components above serve ${label("components.lands").toLowerCase()}.`,
@@ -63,24 +59,8 @@ export function componentsPage(schemeId: string) {
         .map((i) => ({ id: i.id, name: title(i.id), why: i.why })),
     }));
 
-  const patterns = (
-    (cat as unknown as { patterns?: { id: string; built_from: string[] }[] }).patterns ?? []
-  )
-    .map((pt) => ({
-      pt,
-      pick: (s.inventory as { patterns?: Pick[] }).patterns?.find((x) => x.id === pt.id),
-    }))
-    .filter((x) => x.pick)
-    .map(({ pt, pick }) => ({
-      id: pt.id,
-      name: title(pt.id),
-      why: pick!.why,
-      parts: pt.built_from.map(title),
-    }));
-
   return {
     scheme: base.scheme,
-    patterns,
     reasons: base.reasons,
     questions: base.questions.map((q) => ({ ...q, effect: effect[q.id] ?? "" })),
     total: cat.items.length,

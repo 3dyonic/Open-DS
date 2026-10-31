@@ -301,41 +301,6 @@
               }
             }
           }
-        },
-        "patterns": {
-          "type": "array",
-          "description": "Patterns: larger parts built from catalogue items. A scheme carries one only when it carries every item it is built from. Patterns do not count toward the components count.",
-          "items": {
-            "type": "object",
-            "additionalProperties": false,
-            "required": ["id", "description", "built_from", "source"],
-            "properties": {
-              "id": {
-                "type": "string",
-                "pattern": "^[a-z-]+$",
-                "description": "Pattern id."
-              },
-              "description": {
-                "type": "string",
-                "minLength": 1,
-                "description": "What the pattern does, in one sentence."
-              },
-              "built_from": {
-                "type": "array",
-                "minItems": 1,
-                "items": {
-                  "type": "string",
-                  "pattern": "^[a-z-]+$"
-                },
-                "description": "Catalogue item ids the pattern is built from."
-              },
-              "source": {
-                "type": "string",
-                "format": "uri",
-                "description": "Where the pattern is documented."
-              }
-            }
-          }
         }
       }
     }

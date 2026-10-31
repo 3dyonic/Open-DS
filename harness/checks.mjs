@@ -384,12 +384,11 @@ export const CHECKS = {
     requires: ["schemes/grammar.json"],
     run: (c) => {
       // Each scheme's inventory is an output of its components answers: real catalogue items,
-      // only from the families the roles answer names, and as many as the count answer says.
+      // only from the families the roles answer names. The count answer describes the size and limits nothing.
       const g = c.json("schemes", "grammar.json");
       const items = Object.fromEntries((g.catalogue?.items ?? []).map((i) => [i.id, i]));
       // The families each roles option admits live in the grammar, so the site and this check agree.
       const ROLES = g.catalogue?.roles ?? {};
-      const COUNT = { few: [1, 20], some: [21, 35], many: [36, Infinity] };
       const gaps = [];
       for (const id of SCHEMES) {
         const s = c.json("schemes", `${id}.json`);
@@ -410,16 +409,6 @@ export const CHECKS = {
         for (const o of inv.out ?? []) {
           if (!items[o.id]) gaps.push(`${id}: out item ${o.id} is not in the catalogue`);
           if (ids.includes(o.id)) gaps.push(`${id}: ${o.id} is both in and out`);
-        }
-        const [lo, hi] = COUNT[answer("components.count")] ?? [0, -1];
-        if (ids.length < lo || ids.length > hi)
-          gaps.push(`${id}: ${ids.length} components, but the count answer is ${answer("components.count")}`);
-        const patterns = Object.fromEntries((g.catalogue?.patterns ?? []).map((p) => [p.id, p]));
-        for (const p of inv.patterns ?? []) {
-          if (!patterns[p.id]) gaps.push(`${id}: pattern ${p.id} is not in the catalogue`);
-          else
-            for (const part of patterns[p.id].built_from)
-              if (!ids.includes(part)) gaps.push(`${id}: pattern ${p.id} needs ${part}, which is not in the inventory`);
         }
         if (!inv.follows?.some((f) => f.startsWith("components.")))
           gaps.push(`${id}: the inventory follows no components answer`);
