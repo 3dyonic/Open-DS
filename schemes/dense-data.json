@@ -4,21 +4,21 @@
   "name": "Dense data",
   "version": "0.1.0",
   "status": "draft",
-  "summary": "Compact, exact and quiet, for experts who scan and compare numbers all day.",
-  "description": "Dense data is an Open DS scheme: a full set of answers to the Open DS grammar, with the reasons behind each, usage rules, voice and tone, and the tokens that follow. Compact, exact and quiet, for experts who scan and compare numbers all day.",
+  "summary": "Compact, exact and quiet, for analysts who scan alerts and compare signals all day.",
+  "description": "Dense data is an Open DS scheme: a full set of answers to the Open DS grammar, with the reasons behind each, usage rules, voice and tone, and the tokens that follow. Compact, exact and quiet, for analysts who scan alerts and compare signals all day.",
   "ai": {
-    "use_when": "Operations tools, admin panels, finance and analytics: many records, daily expert users, mouse and keyboard.",
+    "use_when": "Security operations, threat detection, model monitoring, admin panels and analytics: many records, daily expert users, mouse and keyboard.",
     "avoid_when": "Public sites, reading products, or first-time visitors on phones.",
     "example_products": [
-      "Order management",
-      "Inventory",
-      "Finance back office",
+      "Security operations console",
+      "Threat detection",
+      "AI model monitoring",
       "Analytics dashboard"
     ]
   },
   "scenarios": [
     {
-      "text": "An operations lead opens the orders table at 8:00 and scans 200 rows for late shipments.",
+      "text": "A security analyst opens the alert queue at 8:00 and scans 200 rows for escalated threats.",
       "follows": [
         "scenarios.q1",
         "scenarios.q2",
@@ -26,7 +26,7 @@
       ]
     },
     {
-      "text": "A finance clerk compares this month's totals with last month's, column by column.",
+      "text": "An analyst compares this week's detections with last week's, model by model and column by column.",
       "follows": [
         "tasks.q1",
         "content.q1"
@@ -43,7 +43,7 @@
     },
     "principles": [
       {
-        "text": "Lead with the object, then the state: \"Order 1042 shipped.\"",
+        "text": "Lead with the object, then the state: \"Alert 2041 contained.\"",
         "follows": [
           "voice.values",
           "content.q1"
@@ -65,11 +65,11 @@
     ],
     "words": {
       "use": [
-        "Export",
+        "Investigate",
         "Filter",
-        "Save",
-        "Late",
-        "Paid"
+        "Assign",
+        "Escalated",
+        "Resolved"
       ],
       "avoid": [
         "Oops",
@@ -108,7 +108,7 @@
       },
       {
         "id": "slider",
-        "why": "Narrows a filter to a range of totals by dragging."
+        "why": "Narrows a filter to a range of risk scores by dragging."
       },
       {
         "id": "select",
@@ -120,7 +120,7 @@
       },
       {
         "id": "combobox",
-        "why": "Picks a customer or product from thousands."
+        "why": "Picks an asset or a user from thousands."
       },
       {
         "id": "checkbox",
@@ -144,7 +144,7 @@
       },
       {
         "id": "textarea",
-        "why": "Notes on an order."
+        "why": "Notes on an alert, for the next analyst."
       },
       {
         "id": "calendar",
@@ -160,7 +160,7 @@
       },
       {
         "id": "data-table",
-        "why": "Experts scan hundreds of orders, filter by status and depot, sort by due time and act on many rows at once."
+        "why": "Analysts scan hundreds of alerts, filter by status and asset group, sort by risk and act on many rows at once."
       },
       {
         "id": "pagination",
@@ -168,7 +168,7 @@
       },
       {
         "id": "badge",
-        "why": "Order and payment status in rows."
+        "why": "Alert status in rows."
       },
       {
         "id": "chart",
@@ -274,52 +274,57 @@
       "voice.values",
       "voice.definition"
     ],
-    "screen": "Orders due today",
+    "screen": "Open alerts",
     "actions": {
-      "primary": "Ship now",
+      "primary": "Investigate",
       "secondary": "Export"
     },
     "statuses": [
       {
-        "label": "Packing",
+        "label": "New",
         "meaning": "neutral",
-        "why": "Work in progress; nothing to act on."
+        "why": "Not triaged yet; nothing is confirmed."
       },
       {
-        "label": "Shipped",
-        "meaning": "success",
-        "why": "The order left the depot."
+        "label": "Investigating",
+        "meaning": "neutral",
+        "why": "An analyst is on it; nothing to act on."
       },
       {
-        "label": "Late",
+        "label": "Escalated",
         "meaning": "warning",
-        "why": "Past its ship time, still recoverable."
+        "why": "Needs a senior analyst soon, still containable."
       },
       {
-        "label": "Payment failed",
+        "label": "Breach confirmed",
         "meaning": "danger",
-        "why": "The payment did not go through, so the order will not ship."
+        "why": "Data left or an account was taken over: a real loss."
       },
       {
-        "label": "Refunded",
+        "label": "Resolved",
+        "meaning": "success",
+        "why": "Contained and closed."
+      },
+      {
+        "label": "False positive",
         "meaning": "neutral",
-        "why": "A refund is a finished outcome, not a failure."
+        "why": "The detection was wrong; a finished outcome, not a failure."
       }
     ],
     "table": {
-      "caption": "Orders due today",
+      "caption": "Open alerts",
       "columns": [
         {
-          "label": "Order"
+          "label": "Alert"
         },
         {
-          "label": "Depot"
+          "label": "Asset"
         },
         {
-          "label": "Due"
+          "label": "Detected"
         },
         {
-          "label": "Total",
+          "label": "Risk score",
           "numeric": true
         },
         {
@@ -329,308 +334,308 @@
       "rows": [
         {
           "cells": [
-            "#1042",
-            "North depot",
+            "ALR-2041",
+            "api-gateway-01",
             "08:30",
-            "1,240.00"
+            "92"
           ],
-          "status": "Shipped"
+          "status": "Resolved"
         },
         {
           "cells": [
-            "#1043",
-            "East depot",
+            "ALR-2042",
+            "llm-inference-02",
             "09:10",
-            "86.50"
+            "78"
           ],
-          "status": "Late"
+          "status": "Escalated"
         },
         {
           "cells": [
-            "#1044",
-            "North depot",
+            "ALR-2043",
+            "vpn-edge-03",
             "09:45",
-            "3,915.20"
+            "99"
           ],
-          "status": "Payment failed"
+          "status": "Breach confirmed"
         },
         {
           "cells": [
-            "#1045",
-            "South depot",
+            "ALR-2044",
+            "model-registry",
             "10:20",
-            "212.00"
+            "31"
           ],
-          "status": "Refunded"
+          "status": "False positive"
         },
         {
           "cells": [
-            "#1046",
-            "East depot",
+            "ALR-2045",
+            "auth-service",
             "11:00",
-            "640.75"
+            "64"
           ],
-          "status": "Packing"
+          "status": "Investigating"
         },
         {
           "cells": [
-            "#1047",
-            "South depot",
+            "ALR-2046",
+            "db-primary",
             "11:30",
-            "1,078.40"
+            "81"
           ],
-          "status": "Late"
+          "status": "Escalated"
         },
         {
           "cells": [
-            "#1048",
-            "North depot",
+            "ALR-2047",
+            "build-runner-07",
             "11:45",
-            "54.90"
+            "57"
           ],
-          "status": "Shipped"
+          "status": "Resolved"
         },
         {
           "cells": [
-            "#1049",
-            "East depot",
+            "ALR-2048",
+            "llm-inference-04",
             "12:00",
-            "2,310.00"
+            "45"
           ],
-          "status": "Packing"
+          "status": "New"
         },
         {
           "cells": [
-            "#1050",
-            "North depot",
+            "ALR-2049",
+            "api-gateway-01",
             "12:15",
-            "415.25"
+            "70"
           ],
-          "status": "Shipped"
+          "status": "Resolved"
         },
         {
           "cells": [
-            "#1051",
-            "South depot",
+            "ALR-2050",
+            "llm-inference-02",
             "12:30",
-            "99.00"
+            "97"
           ],
-          "status": "Payment failed"
+          "status": "Breach confirmed"
         },
         {
           "cells": [
-            "#1052",
-            "East depot",
+            "ALR-2051",
+            "vpn-edge-03",
             "12:45",
-            "760.10"
+            "52"
           ],
-          "status": "Shipped"
+          "status": "Resolved"
         },
         {
           "cells": [
-            "#1053",
-            "North depot",
+            "ALR-2052",
+            "model-registry",
             "13:00",
-            "1,450.00"
+            "84"
           ],
-          "status": "Late"
+          "status": "Escalated"
         },
         {
           "cells": [
-            "#1054",
-            "South depot",
+            "ALR-2053",
+            "auth-service",
             "13:15",
-            "38.60"
+            "28"
           ],
-          "status": "Refunded"
+          "status": "False positive"
         },
         {
           "cells": [
-            "#1055",
-            "East depot",
+            "ALR-2054",
+            "db-primary",
             "13:30",
-            "5,120.75"
+            "49"
           ],
-          "status": "Packing"
+          "status": "New"
         },
         {
           "cells": [
-            "#1056",
-            "North depot",
+            "ALR-2055",
+            "build-runner-07",
             "13:45",
-            "222.40"
+            "66"
           ],
-          "status": "Shipped"
+          "status": "Resolved"
         },
         {
           "cells": [
-            "#1057",
-            "South depot",
+            "ALR-2056",
+            "llm-inference-04",
             "14:00",
-            "612.00"
+            "73"
           ],
-          "status": "Shipped"
+          "status": "Resolved"
         },
         {
           "cells": [
-            "#1058",
-            "East depot",
+            "ALR-2057",
+            "api-gateway-01",
             "14:15",
-            "87.30"
+            "88"
           ],
-          "status": "Late"
+          "status": "Escalated"
         },
         {
           "cells": [
-            "#1059",
-            "North depot",
+            "ALR-2058",
+            "llm-inference-02",
             "14:30",
-            "3,004.90"
+            "61"
           ],
-          "status": "Shipped"
+          "status": "Resolved"
         },
         {
           "cells": [
-            "#1060",
-            "South depot",
+            "ALR-2059",
+            "vpn-edge-03",
             "14:45",
-            "150.00"
+            "55"
           ],
-          "status": "Packing"
+          "status": "Investigating"
         },
         {
           "cells": [
-            "#1061",
-            "East depot",
+            "ALR-2060",
+            "model-registry",
             "15:00",
-            "940.80"
+            "69"
           ],
-          "status": "Shipped"
+          "status": "Resolved"
         },
         {
           "cells": [
-            "#1062",
-            "North depot",
+            "ALR-2061",
+            "auth-service",
             "15:15",
-            "71.20"
+            "22"
           ],
-          "status": "Refunded"
+          "status": "False positive"
         },
         {
           "cells": [
-            "#1063",
-            "South depot",
+            "ALR-2062",
+            "db-primary",
             "15:30",
-            "1,899.99"
+            "74"
           ],
-          "status": "Shipped"
+          "status": "Resolved"
         },
         {
           "cells": [
-            "#1064",
-            "East depot",
+            "ALR-2063",
+            "build-runner-07",
             "15:45",
-            "305.50"
+            "86"
           ],
-          "status": "Late"
+          "status": "Escalated"
         },
         {
           "cells": [
-            "#1065",
-            "North depot",
+            "ALR-2064",
+            "llm-inference-04",
             "16:00",
-            "2,640.00"
+            "43"
           ],
-          "status": "Packing"
+          "status": "New"
         }
       ]
     },
     "metrics": [
       {
-        "label": "Orders today",
-        "value": "186"
+        "label": "Open alerts",
+        "value": "142"
       },
       {
-        "label": "Late",
+        "label": "Escalated",
         "value": "7"
       },
       {
-        "label": "Payments failed",
-        "value": "2"
+        "label": "Model precision",
+        "value": "96.4%"
       },
       {
-        "label": "Average ship time",
-        "value": "1.8 h"
+        "label": "Mean time to contain",
+        "value": "38 min"
       }
     ],
     "field": {
-      "label": "Quantity",
+      "label": "Risk threshold",
       "placeholder": "0",
-      "hint": "Whole units.",
-      "error": "Quantity must be 1 or more.",
-      "invalid": "0"
+      "hint": "From 0 to 100.",
+      "error": "Threshold must be between 0 and 100.",
+      "invalid": "140"
     },
     "checkbox": [
-      "Late only",
-      "Paid",
+      "Escalated only",
+      "Assigned to me",
       "Archived"
     ],
     "select": {
-      "label": "Depot",
+      "label": "Asset group",
       "options": [
-        "North depot",
-        "East depot",
-        "South depot"
+        "Production",
+        "Staging",
+        "Model endpoints"
       ],
-      "value": "East depot"
+      "value": "Model endpoints"
     },
     "switches": [
       "Compact rows",
-      "Auto-refresh"
+      "Live updates"
     ],
     "messages": {
-      "success": "12 orders exported.",
+      "success": "12 alerts exported.",
       "error": {
-        "title": "Order 1042 not saved.",
-        "description": "Quantity must be 1 or more."
+        "title": "Alert ALR-2042 not saved.",
+        "description": "Threshold must be between 0 and 100."
       },
       "neutral": "Filters cleared."
     },
     "confirm": {
-      "trigger": "Delete 3 orders",
-      "title": "Delete 3 orders?",
-      "body": "This cannot be undone.",
-      "confirm": "Delete",
+      "trigger": "Dismiss 3 alerts",
+      "title": "Dismiss 3 alerts?",
+      "body": "They leave the queue for good. This cannot be undone.",
+      "confirm": "Dismiss",
       "cancel": "Keep them"
     },
     "card": {
-      "title": "Order 1043",
-      "description": "East depot · 40 min late",
-      "status": "Late",
-      "primary": "Ship now",
+      "title": "Alert ALR-2043",
+      "description": "llm-inference-02 · prompt injection attempt",
+      "status": "Escalated",
+      "primary": "Investigate",
       "secondary": "View"
     },
     "tabs": [
       {
         "label": "Open",
-        "content": "12 open orders."
+        "content": "142 open alerts."
       },
       {
-        "label": "Late",
-        "content": "7 late orders."
+        "label": "Escalated",
+        "content": "7 escalated alerts."
       },
       {
-        "label": "Done",
-        "content": "240 shipped this month."
+        "label": "Resolved",
+        "content": "1,240 resolved this month."
       }
     ],
     "menu": {
-      "trigger": "Actions for order 1042",
+      "trigger": "Actions for alert ALR-2041",
       "items": [
-        "Edit",
-        "Duplicate"
+        "Assign",
+        "Add note"
       ],
-      "destructive": "Delete"
+      "destructive": "Dismiss"
     },
     "icon_action": "Filter"
   },
@@ -650,7 +655,7 @@
     {
       "question": "business.q1",
       "option": "operate",
-      "why": "The product runs daily operations: orders, stock, money.",
+      "why": "The product runs daily security operations: alerts, incidents and the assets they touch.",
       "because": []
     },
     {
@@ -1093,7 +1098,7 @@
     {
       "question": "theming.values",
       "option": "light-dark",
-      "why": "Light and dark ship as standard; long shifts favour dark.",
+      "why": "Light first, always; dark ships as standard for night shifts.",
       "because": [
         "scenarios.q2"
       ]
@@ -1536,7 +1541,7 @@
         "voice.values",
         "voice.lands"
       ],
-      "example": "Order 1042 not saved. Quantity must be 1 or more."
+      "example": "Alert ALR-2042 not saved. Threshold must be between 0 and 100."
     },
     {
       "situation": "success-words",
@@ -1547,7 +1552,7 @@
         "voice.values",
         "tasks.q2"
       ],
-      "example": "12 orders exported."
+      "example": "12 alerts exported."
     },
     {
       "situation": "empty-words",
@@ -1557,7 +1562,7 @@
       "because": [
         "voice.lands"
       ],
-      "example": "No late orders. Change the date range to see older ones."
+      "example": "No escalated alerts. Change the date range to see older ones."
     },
     {
       "situation": "confirm-words",
@@ -1567,7 +1572,7 @@
       "because": [
         "outcomes.q2"
       ],
-      "example": "Delete 3 orders? This cannot be undone."
+      "example": "Dismiss 3 alerts? This cannot be undone."
     },
     {
       "situation": "first-visit",
@@ -1926,27 +1931,27 @@
             "brand": {
               "100": {
                 "$type": "color",
-                "$value": "#E6EDFC"
+                "$value": "#EEEDFE"
               },
               "300": {
                 "$type": "color",
-                "$value": "#8EA9EC"
+                "$value": "#A9A3F6"
               },
               "500": {
                 "$type": "color",
-                "$value": "#3B6BE0"
+                "$value": "#5B4FE8"
               },
               "600": {
                 "$type": "color",
-                "$value": "#2457D6"
+                "$value": "#4B3FD9"
               },
               "700": {
                 "$type": "color",
-                "$value": "#1C45AB"
+                "$value": "#3B31B0"
               },
               "800": {
                 "$type": "color",
-                "$value": "#163784"
+                "$value": "#2C2588"
               }
             }
           },
@@ -1974,15 +1979,15 @@
             "brand": {
               "control": {
                 "$type": "dimension",
-                "$value": "{radius.4}"
+                "$value": "{radius.2}"
               },
               "badge": {
                 "$type": "dimension",
-                "$value": "{radius.2}"
+                "$value": "{radius.0}"
               },
               "container": {
                 "$type": "dimension",
-                "$value": "{radius.6}"
+                "$value": "{radius.4}"
               }
             }
           }

@@ -35,9 +35,9 @@ Each token points to another token. Values live only on primitives, below.
 
 | Token | Points to |
 | --- | --- |
-| `radius.control` | `radius.brand.control` → `radius.4` |
-| `radius.badge` | `radius.brand.badge` → `radius.2` |
-| `radius.container` | `radius.brand.container` → `radius.6` |
+| `radius.control` | `radius.brand.control` → `radius.2` |
+| `radius.badge` | `radius.brand.badge` → `radius.0` |
+| `radius.container` | `radius.brand.container` → `radius.4` |
 | `radius.round` | `radius.full` |
 | `border-width.default` | `border-width.1` |
 | `border-width.focus` | `border-width.2` |
@@ -50,9 +50,9 @@ The raw values the tokens above end at.
 | --- | --- | --- |
 | `border-width.1` | 1px | <span class="ods-line" style="height:var(--border-width-1)"></span> |
 | `border-width.2` | 2px | <span class="ods-line" style="height:var(--border-width-2)"></span> |
+| `radius.0` | 0rem (0px) | <span class="ods-tile" style="border-radius:var(--radius-0)"></span> |
 | `radius.2` | 0.125rem (2px) | <span class="ods-tile" style="border-radius:var(--radius-2)"></span> |
 | `radius.4` | 0.25rem (4px) | <span class="ods-tile" style="border-radius:var(--radius-4)"></span> |
-| `radius.6` | 0.375rem (6px) | <span class="ods-tile" style="border-radius:var(--radius-6)"></span> |
 | `radius.full` | 9999px | <span class="ods-tile" style="border-radius:var(--radius-full)"></span> |
 
 ## Where it lands
