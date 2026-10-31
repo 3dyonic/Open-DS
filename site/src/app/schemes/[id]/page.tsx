@@ -5,8 +5,7 @@ import { Applied, type AppliedSamples } from "@/components/applied";
 import { Eyebrow, Legend, Swatch } from "@/components/chrome";
 import { ScopeMini } from "@/components/scope-mini";
 import { cardMark, REASON_LABEL } from "@/lib/home";
-import { ownedTokens } from "@/lib/scope";
-import { answerOf, grammar, scheme, schemeIds, uiComponents } from "@/lib/schemes";
+import { answerOf, grammar, scheme, schemeIds } from "@/lib/schemes";
 
 export function generateStaticParams() {
   return schemeIds().map((id) => ({ id }));
@@ -39,14 +38,27 @@ export default async function SchemePage({ params }: { params: Promise<{ id: str
     .sort((a, b) => b[1] - a[1])
     .slice(0, 4)
     .map(([k]) => k);
-  const tokenCount = g.scopes.reduce((n, sc) => n + ownedTokens(s, sc.owns ?? []).length, 0);
+  // This scheme's own token values and inventory, not the shared catalogue.
+  const leaves = (o: unknown): number =>
+    !o || typeof o !== "object"
+      ? 0
+      : "$value" in o
+        ? 1
+        : Object.values(o).reduce((n: number, v) => n + leaves(v), 0);
+  // Each brand ships its own semantics and component keys, so those count once per brand.
+  const tokenCount =
+    leaves(s.tokens) +
+    (Object.keys(s.tokens.brands).length - 1) *
+      (leaves(s.tokens.semantic) + leaves((s.tokens as Record<string, unknown>).component));
+  const componentCount = (s as unknown as { inventory: { in: unknown[] } }).inventory.in.length;
   const brands = Object.entries(s.tokens.brands).map(([bid, b]) => ({ id: bid, label: b.label }));
   const rule = (sit: string) => s.usage.find((u) => u.situation === sit)!;
   const meta = [
     `${g.scopes.length} scopes`,
     `${s.answers.length} answers`,
     `${tokenCount} tokens`,
-    `${uiComponents().length} components`,
+    `${componentCount} components`,
+    ...(brands.length > 1 ? [`${brands.length} brands`] : []),
   ];
   return (
     <article className="flex flex-col gap-14 px-5 pb-20 lg:px-20">
@@ -200,7 +212,7 @@ export default async function SchemePage({ params }: { params: Promise<{ id: str
           <Eyebrow tone="accent">Take this scheme</Eyebrow>
           <h2 className="text-[36px] font-extrabold">Start from {s.name}.</h2>
           <p className="text-[16px] leading-[1.45] text-line">
-            You get {tokenCount} tokens, the variants of {uiComponents().length} components, and all{" "}
+            You get {tokenCount} tokens, the variants of {componentCount} components, and all{" "}
             {s.answers.length} answers with their reasons. Change any answer later, and see what it
             moves.
           </p>
