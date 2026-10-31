@@ -28,6 +28,10 @@ const FILES: [string, string][] = [
   [".open-ds/scheme.json", "The full scheme: every answer with its reason"],
   [".open-ds/tokens/*.tokens.json", "The resolved DTCG tokens for each theme"],
   [".open-ds/content.json", "The voice tokens: the words for common actions"],
+  [
+    "docs/ (with --docs)",
+    "The design system’s docs: reasons, voice, a page per scope, components, themes",
+  ],
   ["open-ds.json", "What was installed, with a hash for each file"],
 ];
 
@@ -164,7 +168,9 @@ export default function InstallPage() {
             <p className="text-[15px] text-[#3e3a31]">
               For Multi-brand, add <code className="font-mono">--brand aster</code>,{" "}
               <code className="font-mono">birch</code> or <code className="font-mono">coral</code>.
-              Add <code className="font-mono">--yes</code> to run it again over the same folder.
+              Add <code className="font-mono">--yes</code> to run it again over the same folder. Add{" "}
+              <code className="font-mono">--docs</code> to also write the design system’s docs pages
+              (Docusaurus) to <code className="font-mono">docs/</code>.
             </p>
           </Step>
           <Step n={3} title="Install the component packages and import the styles">
