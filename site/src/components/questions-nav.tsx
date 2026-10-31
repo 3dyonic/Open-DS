@@ -63,11 +63,14 @@ export function QuestionsNav({ reasons, scopes }: { reasons: NavGroup[]; scopes:
   );
   return (
     <>
-      <details className="rounded-[6px] border border-line bg-white lg:hidden">
-        <summary className="cursor-pointer px-4 py-3 text-[15px] font-semibold">
+      <details
+        key={path}
+        className="sticky top-0 z-20 -mx-5 border-b border-line bg-paper/95 px-5 backdrop-blur lg:hidden"
+      >
+        <summary className="cursor-pointer py-3 text-[15px] font-semibold">
           Jump to: <span className="font-normal">{here}</span>
         </summary>
-        <div className="border-t border-line p-2">{menu}</div>
+        <div className="max-h-[70vh] overflow-y-auto border-t border-line py-2">{menu}</div>
       </details>
       <aside className="hidden lg:block lg:w-[240px] lg:shrink-0">
         <div className="sticky top-6 max-h-[calc(100vh-48px)] overflow-y-auto pb-6">{menu}</div>
