@@ -8,7 +8,7 @@ description: "Badge in Dense data."
 
 # Badge
 
-Badge. A short status such as Paid, Late or Failed. Always put a word inside; color alone is not enough (situation status-label in every scheme). Tones: neutral, success, warning, danger. Reads only component keys: --badge-\*.
+Badge. A short status such as Paid, Late or Failed. Always put a word inside; color alone is not enough (situation status-label in every scheme). Tones: neutral, info, success, warning, danger. Pick the status that matches the real risk: info, then warning, then danger (the urgency order in the grammar). Never go up a level to get attention. Reads only component keys: --badge-\*.
 
 See it in [Storybook](http://localhost:6006) under Components / Badge, in every theme.
 
@@ -23,6 +23,8 @@ The CSS variable is the key with `/` replaced by `-` and the base `@` dropped. E
 | `badge/font-size` | Badge label size. | `type.caption.font-size` → `font.size.12` | same |
 | `badge/neutral/background` | Neutral badge fill. | `color.surface.sunken` → `dense-data.theme.light.color.surface.sunken` → `color.slate.light.100` | `color.surface.sunken` → `dense-data.theme.dark.color.surface.sunken` → `color.slate.dark.100` |
 | `badge/neutral/label` | Neutral badge label. | `color.text.secondary` → `dense-data.theme.light.color.text.secondary` → `color.slate.light.700` | `color.text.secondary` → `dense-data.theme.dark.color.text.secondary` → `color.slate.dark.500` |
+| `badge/info/background` | Info badge fill. | `color.status.info.subtle` → `dense-data.theme.light.color.status.info.subtle` → `color.blue.light.100` | `color.status.info.subtle` → `dense-data.theme.dark.color.status.info.subtle` → `color.blue.dark.100` |
+| `badge/info/label` | Info badge label. | `color.status.info.@` → `dense-data.theme.light.color.status.info.@` → `color.blue.light.700` | `color.status.info.@` → `dense-data.theme.dark.color.status.info.@` → `color.blue.dark.700` |
 | `badge/success/background` | Success badge fill. | `color.status.success.subtle` → `dense-data.theme.light.color.status.success.subtle` → `color.green.light.100` | `color.status.success.subtle` → `dense-data.theme.dark.color.status.success.subtle` → `color.green.dark.100` |
 | `badge/success/label` | Success badge label. | `color.status.success.@` → `dense-data.theme.light.color.status.success.@` → `color.green.light.700` | `color.status.success.@` → `dense-data.theme.dark.color.status.success.@` → `color.green.dark.700` |
 | `badge/warning/background` | Warning badge fill. | `color.status.warning.subtle` → `dense-data.theme.light.color.status.warning.subtle` → `color.amber.light.100` | `color.status.warning.subtle` → `dense-data.theme.dark.color.status.warning.subtle` → `color.amber.dark.100` |

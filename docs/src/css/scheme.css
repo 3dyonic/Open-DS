@@ -48,23 +48,38 @@
   --color-surface-scrim: #0000008C; /** Dims the page behind a dialog. */
   --color-text-primary: #161B23; /** Main text. */
   --color-text-secondary: #3D4655; /** Supporting text; passes AA. */
-  --color-text-muted: #6B7585; /** Hints and placeholders. */
+  --color-text-muted: #535D6D; /** Hints and placeholders. */
   --color-text-inverse: #FFFFFF; /** Text on inverse surfaces. */
   --color-text-on-action: #FFFFFF; /** Text on the primary action. */
   --color-text-link: #3B31B0; /** Links. */
   --color-border-default: #DDE2EA; /** Row lines and card borders. */
-  --color-border-strong: #C4CBD6; /** Input and secondary button borders. */
+  --color-border-strong: #6B7585; /** Input and secondary button borders. */
   --color-border-focus: #4B3FD9; /** The keyboard focus ring. */
   --color-action-primary: #4B3FD9; /** The primary action. */
   --color-action-primary-hover: #3B31B0; /** Primary action on hover. */
   --color-action-secondary: #FFFFFF; /** Secondary action fill. */
   --color-action-secondary-hover: #EEF1F5; /** Secondary action on hover. */
+  --color-status-info: #083C93; /** Info text and icons: neutral news, no action needed. */
+  --color-status-info-subtle: #E1ECFF; /** Info badge and banner fill. */
   --color-status-success: #1F7A3A; /** Success text and icons. */
   --color-status-success-subtle: #E3F4EA; /** Success badge fill. */
   --color-status-warning: #8A5600; /** Warning text and icons. */
   --color-status-warning-subtle: #FFF3D6; /** Warning badge fill. */
   --color-status-danger: #C42B2B; /** Danger text and icons. */
   --color-status-danger-subtle: #FDE7E7; /** Danger badge fill. */
+  --color-category-1: #4B3FD9; /** Category 1: chart series, tag dots and icons. Tag text uses color.text.primary. */
+  --color-category-1-subtle: #EEEDFE; /** Category 1: tag fill. */
+  --color-category-2: #0B4FC0; /** Category 2: chart series, tag dots and icons. Tag text uses color.text.primary. */
+  --color-category-2-subtle: #E1ECFF; /** Category 2: tag fill. */
+  --color-category-3: #1F7A3A; /** Category 3: chart series, tag dots and icons. Tag text uses color.text.primary. */
+  --color-category-3-subtle: #E3F4EA; /** Category 3: tag fill. */
+  --color-category-4: #8A5600; /** Category 4: chart series, tag dots and icons. Tag text uses color.text.primary. */
+  --color-category-4-subtle: #FFF3D6; /** Category 4: tag fill. */
+  --color-category-5: #6B7585; /** Category 5: chart series, tag dots and icons. Tag text uses color.text.primary. */
+  --color-category-5-subtle: #EEF1F5; /** Category 5: tag fill. */
+  --color-disabled-text: #6B7585; /** Text and icons of a disabled control. */
+  --color-disabled-surface: #EEF1F5; /** Fill of a disabled control. */
+  --color-disabled-border: #DDE2EA; /** Border of a disabled control. */
   --radius-control: 0.125rem; /** Corner of buttons and inputs. */
   --radius-badge: 0rem; /** Corner of badges and checkboxes. */
   --radius-container: 0.25rem; /** Corner of cards, menus and dialogs. */
@@ -105,12 +120,18 @@
   --button-ghost-label: var(--color-text-link); /** Ghost button label color. */
   --button-radius: var(--radius-control); /** Button corner radius. */
   --button-focus-ring: var(--color-border-focus); /** Focus ring color on any button. */
+  --button-disabled-background: var(--color-disabled-surface); /** Fill of a disabled button. */
+  --button-disabled-label: var(--color-disabled-text); /** Label of a disabled button. */
+  --button-disabled-border: var(--color-disabled-border); /** Border of a disabled secondary button. */
   --input-background: var(--color-surface-default); /** Input fill. */
   --input-border: var(--color-border-strong); /** Input border at rest. */
   --input-border-focus: var(--color-border-focus); /** Input border when focused. */
   --input-text: var(--color-text-primary); /** Typed text color. */
   --input-placeholder: var(--color-text-muted); /** Placeholder text color. */
   --input-radius: var(--radius-control); /** Input corner radius. */
+  --input-disabled-background: var(--color-disabled-surface); /** Fill of a disabled input. */
+  --input-disabled-border: var(--color-disabled-border); /** Border of a disabled input. */
+  --input-disabled-text: var(--color-disabled-text); /** Text in a disabled input. */
   --control-checked: var(--color-action-primary); /** Fill of a checked checkbox or an on switch. */
   --control-track: var(--color-border-strong); /** Track of an off switch. */
   --control-thumb: var(--color-surface-default); /** Switch thumb and checkmark color. */
@@ -124,6 +145,8 @@
   --badge-warning-label: var(--color-status-warning); /** Warning badge label. */
   --badge-danger-background: var(--color-status-danger-subtle); /** Danger badge fill. */
   --badge-danger-label: var(--color-status-danger); /** Danger badge label. */
+  --badge-info-background: var(--color-status-info-subtle); /** Info badge fill. */
+  --badge-info-label: var(--color-status-info); /** Info badge label. */
   --card-background: var(--color-surface-default); /** Card fill. */
   --card-border: var(--color-border-default); /** Card border. */
   --card-radius: var(--radius-container); /** Card corner radius. */
@@ -190,23 +213,38 @@ html[data-theme="dark"] {
   --color-surface-scrim: #000000B3; /** Dims the page behind a dialog. */
   --color-text-primary: #F7F8FA; /** Main text. */
   --color-text-secondary: #C4CBD6; /** Supporting text; passes AA. */
-  --color-text-muted: #6B7585; /** Hints and placeholders. */
+  --color-text-muted: #969FAD; /** Hints and placeholders. */
   --color-text-inverse: #161B23; /** Text on inverse surfaces. */
   --color-text-on-action: #0D1117; /** Text on the primary action. */
   --color-text-link: #A9A3F6; /** Links. */
   --color-border-default: #262D38; /** Row lines and card borders. */
-  --color-border-strong: #3D4655; /** Input and secondary button borders. */
+  --color-border-strong: #6B7585; /** Input and secondary button borders. */
   --color-border-focus: #A9A3F6; /** The keyboard focus ring. */
   --color-action-primary: #A9A3F6; /** The primary action. */
   --color-action-primary-hover: #EEEDFE; /** Primary action on hover. */
   --color-action-secondary: #161B23; /** Secondary action fill. */
   --color-action-secondary-hover: #262D38; /** Secondary action on hover. */
+  --color-status-info: #8AB4F8; /** Info text and icons: neutral news, no action needed. */
+  --color-status-info-subtle: #062C6E; /** Info badge and banner fill. */
   --color-status-success: #5CC283; /** Success text and icons. */
   --color-status-success-subtle: #123322; /** Success badge fill. */
   --color-status-warning: #F2B84B; /** Warning text and icons. */
   --color-status-warning-subtle: #3A2A05; /** Warning badge fill. */
   --color-status-danger: #F28B8B; /** Danger text and icons. */
   --color-status-danger-subtle: #3D1414; /** Danger badge fill. */
+  --color-category-1: #A9A3F6; /** Category 1: chart series, tag dots and icons. Tag text uses color.text.primary. */
+  --color-category-1-subtle: #2C2588; /** Category 1: tag fill. */
+  --color-category-2: #8AB4F8; /** Category 2: chart series, tag dots and icons. Tag text uses color.text.primary. */
+  --color-category-2-subtle: #062C6E; /** Category 2: tag fill. */
+  --color-category-3: #5CC283; /** Category 3: chart series, tag dots and icons. Tag text uses color.text.primary. */
+  --color-category-3-subtle: #123322; /** Category 3: tag fill. */
+  --color-category-4: #F2B84B; /** Category 4: chart series, tag dots and icons. Tag text uses color.text.primary. */
+  --color-category-4-subtle: #3A2A05; /** Category 4: tag fill. */
+  --color-category-5: #DDE2EA; /** Category 5: chart series, tag dots and icons. Tag text uses color.text.primary. */
+  --color-category-5-subtle: #262D38; /** Category 5: tag fill. */
+  --color-disabled-text: #C4CBD6; /** Text and icons of a disabled control. */
+  --color-disabled-surface: #262D38; /** Fill of a disabled control. */
+  --color-disabled-border: #3D4655; /** Border of a disabled control. */
   --radius-control: 0.125rem; /** Corner of buttons and inputs. */
   --radius-badge: 0rem; /** Corner of badges and checkboxes. */
   --radius-container: 0.25rem; /** Corner of cards, menus and dialogs. */
@@ -247,12 +285,18 @@ html[data-theme="dark"] {
   --button-ghost-label: var(--color-text-link); /** Ghost button label color. */
   --button-radius: var(--radius-control); /** Button corner radius. */
   --button-focus-ring: var(--color-border-focus); /** Focus ring color on any button. */
+  --button-disabled-background: var(--color-disabled-surface); /** Fill of a disabled button. */
+  --button-disabled-label: var(--color-disabled-text); /** Label of a disabled button. */
+  --button-disabled-border: var(--color-disabled-border); /** Border of a disabled secondary button. */
   --input-background: var(--color-surface-default); /** Input fill. */
   --input-border: var(--color-border-strong); /** Input border at rest. */
   --input-border-focus: var(--color-border-focus); /** Input border when focused. */
   --input-text: var(--color-text-primary); /** Typed text color. */
   --input-placeholder: var(--color-text-muted); /** Placeholder text color. */
   --input-radius: var(--radius-control); /** Input corner radius. */
+  --input-disabled-background: var(--color-disabled-surface); /** Fill of a disabled input. */
+  --input-disabled-border: var(--color-disabled-border); /** Border of a disabled input. */
+  --input-disabled-text: var(--color-disabled-text); /** Text in a disabled input. */
   --control-checked: var(--color-action-primary); /** Fill of a checked checkbox or an on switch. */
   --control-track: var(--color-border-strong); /** Track of an off switch. */
   --control-thumb: var(--color-surface-default); /** Switch thumb and checkmark color. */
@@ -266,6 +310,8 @@ html[data-theme="dark"] {
   --badge-warning-label: var(--color-status-warning); /** Warning badge label. */
   --badge-danger-background: var(--color-status-danger-subtle); /** Danger badge fill. */
   --badge-danger-label: var(--color-status-danger); /** Danger badge label. */
+  --badge-info-background: var(--color-status-info-subtle); /** Info badge fill. */
+  --badge-info-label: var(--color-status-info); /** Info badge label. */
   --card-background: var(--color-surface-default); /** Card fill. */
   --card-border: var(--color-border-default); /** Card border. */
   --card-radius: var(--radius-container); /** Card corner radius. */

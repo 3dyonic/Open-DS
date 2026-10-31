@@ -13,7 +13,7 @@ export const SCHEMES = {
   "brand-expressive": expressive,
 } as unknown as Record<string, SchemeData>;
 
-type Status = { label: string; meaning: "neutral" | "success" | "warning" | "danger"; why: string };
+type Status = { label: string; meaning: "neutral" | "info" | "success" | "warning" | "danger"; why: string };
 export interface Samples {
   screen: string;
   actions: { primary: string; secondary: string };

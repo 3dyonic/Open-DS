@@ -19,7 +19,8 @@
     "situations",
     "components",
     "component_keys",
-    "catalogue"
+    "catalogue",
+    "semantics"
   ],
   "properties": {
     "$schema": {
@@ -199,7 +200,11 @@
             "type": "string",
             "pattern": "^[a-z-]+(/([a-z-]+|@))+$",
             "description": "Key id: component / part / property, and the key's token path. A part with variants has a base, @, beside them (button/primary/background/@ and button/primary/background/hover). Becomes the CSS variable --component-part-property, with the @ dropped: --button-primary-background.",
-            "examples": ["button/primary/background/@", "button/primary/background/hover", "button/height"]
+            "examples": [
+              "button/primary/background/@",
+              "button/primary/background/hover",
+              "button/height"
+            ]
           },
           "component": {
             "type": "string",
@@ -214,6 +219,128 @@
             "type": "string",
             "description": "The semantic token path the key points to by default.",
             "examples": ["color.action.primary"]
+          }
+        }
+      }
+    },
+    "semantics": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["description", "urgency", "keys"],
+      "description": "What each semantic key is for, written once for every scheme: intent, use, misuse with what to use instead, and the fills it may sit on with the contrast it must keep. Words only; values come from each scheme. The harness checks every rule.",
+      "properties": {
+        "description": {
+          "type": "string",
+          "minLength": 1,
+          "description": "What this list is and how to read it."
+        },
+        "urgency": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["description", "order"],
+          "description": "The order of status colours from least to most urgent.",
+          "properties": {
+            "description": {
+              "type": "string",
+              "minLength": 1,
+              "description": "The rule, for an agent: pick the level that matches the real risk."
+            },
+            "order": {
+              "type": "array",
+              "minItems": 2,
+              "items": {
+                "type": "string",
+                "pattern": "^color(\\.[a-z0-9-]+)+(\\.@)?$",
+                "description": "A semantic token path, for example color.status.danger.@."
+              },
+              "description": "Status keys from least to most urgent."
+            }
+          }
+        },
+        "keys": {
+          "type": "array",
+          "minItems": 1,
+          "description": "One entry per semantic key.",
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": ["id", "intent", "use_for", "not_for"],
+            "description": "Guidance for one semantic key.",
+            "properties": {
+              "id": {
+                "type": "string",
+                "pattern": "^color(\\.[a-z0-9-]+)+(\\.@)?$",
+                "description": "A semantic token path, for example color.status.danger.@."
+              },
+              "intent": {
+                "type": "string",
+                "minLength": 1,
+                "description": "What the key is for, in one or two plain sentences."
+              },
+              "use_for": {
+                "type": "array",
+                "minItems": 1,
+                "items": {
+                  "type": "string",
+                  "minLength": 1
+                },
+                "description": "Concrete uses, for example 'Error text and icons'."
+              },
+              "not_for": {
+                "type": "array",
+                "items": {
+                  "type": "object",
+                  "additionalProperties": false,
+                  "required": ["when", "use"],
+                  "description": "A misuse and the key to use instead.",
+                  "properties": {
+                    "when": {
+                      "type": "string",
+                      "minLength": 1,
+                      "description": "The situation this key is wrong for."
+                    },
+                    "use": {
+                      "type": "string",
+                      "pattern": "^color(\\.[a-z0-9-]+)+(\\.@)?$",
+                      "description": "The semantic key to use instead. It must exist."
+                    }
+                  }
+                },
+                "description": "Misuses, each with the key to use instead."
+              },
+              "pairs": {
+                "type": "object",
+                "additionalProperties": false,
+                "required": ["on", "contrast"],
+                "description": "The fills this key may sit on, and the contrast it must keep on each in every brand and mode.",
+                "properties": {
+                  "on": {
+                    "type": "array",
+                    "minItems": 1,
+                    "items": {
+                      "type": "string",
+                      "pattern": "^color(\\.[a-z0-9-]+)+(\\.@)?$",
+                      "description": "A semantic token path, for example color.status.danger.@."
+                    },
+                    "description": "Fill keys this key may sit on."
+                  },
+                  "contrast": {
+                    "type": ["number", "null"],
+                    "description": "The WCAG minimum: 4.5 for text, 3 for graphics and control edges, null when exempt."
+                  }
+                }
+              },
+              "order": {
+                "type": "integer",
+                "minimum": 1,
+                "description": "Place on the urgency order, for status keys."
+              },
+              "exempt": {
+                "type": "string",
+                "minLength": 1,
+                "description": "Why this key has no contrast minimum, when contrast is null."
+              }
+            }
           }
         }
       }
