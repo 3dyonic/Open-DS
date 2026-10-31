@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import { SiteFooter, SiteNav } from "@/components/chrome";
-import { brandCopy, brandName } from "@/lib/data";
+import { brandName, brandTagline } from "@/lib/brand";
 import "./globals.css";
 
 export const metadata: Metadata = {
@@ -8,7 +8,7 @@ export const metadata: Metadata = {
     default: `${brandName}: design systems as answered questions`,
     template: `%s · ${brandName}`,
   },
-  description: brandCopy.tagline,
+  description: brandTagline,
 };
 
 const FONTS =

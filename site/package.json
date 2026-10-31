@@ -17,7 +17,6 @@
   "scripts": {
     "dev": "next dev",
     "build": "pnpm --dir ../tokens build && next build",
-    "test": "node --test src/lib/*.test.mjs",
     "lint": "eslint . && prettier --check .",
     "typecheck": "tsc --noEmit"
   },

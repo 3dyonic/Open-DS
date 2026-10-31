@@ -16,7 +16,11 @@ export function buildLlms(repo) {
     .map((f) => f.replace(/\.json$/, ""))
     .sort();
   const schemes = ids.map((id) => read(`schemes/${id}.json`));
-  const qs = Object.fromEntries([...g.reasons, ...g.scopes].flatMap((x) => x.questions.map((q) => [q.id, q])));
+  const qs = Object.fromEntries(
+    [...g.reasons, ...g.scopes].flatMap((x) =>
+      x.questions.map((q) => [q.id, q]),
+    ),
+  );
   const sits = Object.fromEntries(g.situations.map((s) => [s.id, s]));
 
   const index = [
@@ -28,7 +32,10 @@ export function buildLlms(repo) {
     "",
     "## Schemes",
     "",
-    ...schemes.map((s) => `- [${s.name}](${REPO_URL}/schemes/${s.id}.json): id ${s.id}. ${s.summary} Use when: ${s.ai.use_when}`),
+    ...schemes.map(
+      (s) =>
+        `- [${s.name}](${REPO_URL}/schemes/${s.id}.json): id ${s.id}. ${s.summary} Use when: ${s.ai.use_when}`,
+    ),
     "",
     "## Grammar and formats",
     "",
@@ -55,7 +62,8 @@ export function buildLlms(repo) {
     "> Generated from schemes/*.json. Each scheme lists its answers (question: answer. why), its usage rules (situation: use; not; why) and its voice.",
     "",
     ...schemes.flatMap((s) => {
-      const answer = (a) => qs[a.question].options.find((o) => o.id === a.option).label;
+      const answer = (a) =>
+        qs[a.question].options.find((o) => o.id === a.option).label;
       return [
         `## ${s.name} (${s.id})`,
         "",
@@ -67,22 +75,32 @@ export function buildLlms(repo) {
         "",
         "### Answers",
         "",
-        ...s.answers.map((a) => `- ${a.question} ${qs[a.question].text} ${answer(a)}. ${a.why}${a.because.length ? ` (because ${a.because.join(", ")})` : ""}`),
+        ...s.answers.map(
+          (a) =>
+            `- ${a.question} ${qs[a.question].text} ${answer(a)}. ${a.why}${a.because.length ? ` (because ${a.because.join(", ")})` : ""}`,
+        ),
         "",
         "### Usage rules",
         "",
-        ...s.usage.map((u) => `- ${sits[u.situation].title} (${u.situation}): use ${u.use}; not ${u.not}; ${u.why}${u.example ? ` Example: "${u.example}"` : ""}`),
+        ...s.usage.map(
+          (u) =>
+            `- ${sits[u.situation].title} (${u.situation}): use ${u.use}; not ${u.not}; ${u.why}${u.example ? ` Example: "${u.example}"` : ""}`,
+        ),
         "",
         "### Voice and tone",
         "",
         `${s.voice.summary.text} (follows ${s.voice.summary.follows.join(", ")})`,
-        ...s.voice.principles.map((p) => `- ${p.text} (follows ${p.follows.join(", ")})`),
+        ...s.voice.principles.map(
+          (p) => `- ${p.text} (follows ${p.follows.join(", ")})`,
+        ),
         `Use: ${s.voice.words.use.join(", ")}. Avoid: ${s.voice.words.avoid.join(", ")}.`,
         "The tone per moment is in the usage rules of the voice situations above.",
         "",
         "### Use scenarios",
         "",
-        ...s.scenarios.map((x) => `- ${x.text} (follows ${x.follows.join(", ")})`),
+        ...s.scenarios.map(
+          (x) => `- ${x.text} (follows ${x.follows.join(", ")})`,
+        ),
         "",
       ];
     }),
@@ -95,10 +113,15 @@ if (process.argv[1] === fileURLToPath(import.meta.url)) {
   const repo = join(dirname(fileURLToPath(import.meta.url)), "..");
   const out = buildLlms(repo);
   const check = process.argv.includes("--check");
-  const stale = Object.entries(out).filter(([f, t]) => !existsSync(join(repo, f)) || readFileSync(join(repo, f), "utf8") !== t);
+  const stale = Object.entries(out).filter(
+    ([f, t]) =>
+      !existsSync(join(repo, f)) || readFileSync(join(repo, f), "utf8") !== t,
+  );
   if (check) {
     if (stale.length) {
-      console.error(`Out of date: ${stale.map(([f]) => f).join(", ")}. Run: node scripts/build-llms.mjs`);
+      console.error(
+        `Out of date: ${stale.map(([f]) => f).join(", ")}. Run: node scripts/build-llms.mjs`,
+      );
       process.exit(1);
     }
     console.log("llms files are current.");

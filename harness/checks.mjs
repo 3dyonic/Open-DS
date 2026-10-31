@@ -649,6 +649,15 @@ export const CHECKS = {
       return pkg.bin?.["open-ds"] ? ok("cli has the open-ds bin") : bad("cli/package.json has no open-ds bin");
     },
   },
+  "cli-package-works": {
+    requires: ["scripts/test-package.mjs"],
+    slow: true,
+    run: (c) => {
+      // Packs the CLI as npm would publish it and runs it from the packed file in a fresh app.
+      const r = c.sh("node", ["scripts/test-package.mjs"]);
+      return r.code === 0 ? ok("the packed CLI deploys a scheme into a fresh app that builds") : bad(tail(r.out));
+    },
+  },
   "cli-commands": {
     requires: ["cli/src/schemes.mjs"],
     run: (c) => {
@@ -879,8 +888,8 @@ export const CHECKS = {
     requires: ["mcp"],
     slow: true,
     run: (c) => {
-      const a = c.sh("uv", ["run", "ruff", "check", "validator", "mcp"]);
-      const b = c.sh("uv", ["run", "ruff", "format", "--check", "validator", "mcp"]);
+      const a = c.sh("uv", ["run", "ruff", "check", "mcp"]);
+      const b = c.sh("uv", ["run", "ruff", "format", "--check", "mcp"]);
       return a.code === 0 && b.code === 0 ? ok("ruff check and format pass") : bad(tail(a.out + "\n" + b.out));
     },
   },

@@ -13,7 +13,7 @@
       "id": "I02",
       "title": "CLI tool package",
       "words": "the CLI tool package",
-      "checks": ["cli-package", "cli-commands", "cli-init-temp"]
+      "checks": ["cli-package", "cli-package-works", "cli-commands", "cli-init-temp"]
     },
     {
       "id": "I03",

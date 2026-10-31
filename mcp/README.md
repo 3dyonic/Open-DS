@@ -26,8 +26,3 @@ Scheme tools:
 
 Set `OPEN_DS_ROOT` to use another checkout, or `OPEN_DS_CLI` to use another CLI file.
 
-Recipe tools from the first preview:
-
-- `list_questions` returns each question's id, title, and `affects`. The title is the pack prompt.
-- `get_question` returns that question's options, reasons, and sources as they are written in the packs.
-- `check_recipe` calls the same Python validator the CLI uses.

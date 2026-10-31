@@ -31,11 +31,10 @@ jobs:
         run: pnpm install --frozen-lockfile
       - name: Lint
         run: |
-          uv run ruff check validator mcp
-          uv run ruff format --check validator mcp
-      - name: Test validator and MCP
+          uv run ruff check mcp
+          uv run ruff format --check mcp
+      - name: Test the MCP server
         run: |
-          uv run pytest -q validator/tests
           uv run pytest -q mcp/tests
 
   node:
@@ -69,18 +68,11 @@ jobs:
       - name: Build
         run: pnpm build
 
-  # Same install and init as README.md. The dev server is not started:
-  # `pnpm --dir site dev` keeps running and would hold the job.
-  readme:
+  # The CLI as a user gets it: packed with npm pack and run from the packed file in a fresh app.
+  package:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v5
-      - uses: actions/setup-python@v6
-        with:
-          python-version: "3.12"
-      - uses: astral-sh/setup-uv@v10.0.1
-        with:
-          version: "0.12.15"
       - uses: pnpm/action-setup@v4
         with:
           version: 10.33.4
@@ -88,17 +80,7 @@ jobs:
         with:
           node-version: "22"
           cache: pnpm
-      - name: README install and init
-        run: |
-          pnpm install
-          uv sync --all-packages
-          node cli/bin/open-ds.js init recipes/dense-data.json --out ./my-ds
-          test -f ./my-ds/recipe.json
-          test -f ./my-ds/theme/tokens.json
-          test -f ./my-ds/AGENTS.md
-          test -f ./my-ds/links.json
-          regen="$(mktemp -d)"
-          for stance in accessible-first dense-data multi-brand content-first brand-expressive; do
-            bash examples/run-preset.sh "$stance" "$regen/$stance"
-            diff -ru "examples/$stance" "$regen/$stance"
-          done
+      - name: Install
+        run: pnpm install --frozen-lockfile
+      - name: Pack the CLI and deploy a scheme from the packed file
+        run: pnpm test:package
