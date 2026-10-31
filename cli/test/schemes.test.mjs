@@ -196,6 +196,7 @@ test("create writes a full design system project", async () => {
   const pkg = JSON.parse(readFileSync(join(dir, "package.json"), "utf8"));
   assert.equal(pkg.devDependencies["open-ds"], "file:../open-ds.tgz");
   assert.ok(!readFileSync(join(dir, "stories/button.stories.tsx"), "utf8").includes("@open-ds/ui"));
+  assert.ok(!readFileSync(join(dir, ".storybook/preview-head.html"), "utf8").includes("__"), "a template placeholder was left in");
   assert.throws(() => createProject("multi-brand", dir), /not empty/);
   const fresh = join(temp(), "fresh");
   mkdirSync(join(fresh, "vendor"), { recursive: true });
