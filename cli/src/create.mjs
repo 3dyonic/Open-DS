@@ -93,7 +93,9 @@ export function createProject(schemeId, dir, { brand, openDs = `^${VERSION}`, ov
   const brands = Object.keys(scheme.tokens.brands);
   if (brand && !brands.includes(brand)) throw new Error(`${scheme.name} has no brand "${brand}". Brands: ${brands.join(", ")}.`);
   if (!existsSync(join(roots.tokens, schemeId, "tokens.css"))) throw new Error(`Tokens for ${schemeId} are not built. Run: pnpm --dir tokens build`);
-  const taken = existsSync(dir) ? readdirSync(dir).filter((f) => f !== ".git" && f !== ".DS_Store") : [];
+  // A fresh git folder, a vendored package and npm's leftovers do not count as content.
+  const SETUP = new Set([".git", ".DS_Store", "vendor", "node_modules", "package-lock.json"]);
+  const taken = existsSync(dir) ? readdirSync(dir).filter((f) => !SETUP.has(f)) : [];
   if (taken.length && !overwrite) {
     throw new Error(`${dir} is not empty (${taken.slice(0, 5).join(", ")}). Run create again with --yes to write into it.`);
   }
