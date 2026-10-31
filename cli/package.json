@@ -1,7 +1,7 @@
 {
   "name": "open-ds",
   "version": "0.1.0",
-  "description": "Design systems as answered questions. Pick a scheme, read why every decision was made, and take the whole system into your project as code you own: tokens, components, Storybook, docs and agent files. Includes the Open DS MCP server.",
+  "description": "Create or add a complete design system to a project: tokens, components, Storybook, docs and agent files using open-ds schemes",
   "license": "MIT",
   "author": "3dyonic (https://3dyonic.com)",
   "homepage": "https://open-ds.dev",
