@@ -4,6 +4,7 @@ import type { Decorator, Preview } from "@storybook/react-vite";
 import { useEffect } from "react";
 import themes from "../tokens/themes.json";
 import "../src/styles/index.css";
+import ComponentDocs from "./component-docs.mdx";
 
 const brands = themes.brands;
 
@@ -17,7 +18,7 @@ const withTheme: Decorator = (Story, context) => {
     html.classList.toggle("dark", mode === "dark");
   }, [brand, mode]);
   return (
-    <div className="min-h-screen p-8 bg-[var(--color-surface-canvas)] text-[var(--color-text-primary)] [font-family:var(--type-body-font-family)]">
+    <div className={`${context.viewMode === "docs" ? "" : "min-h-screen "}p-8 bg-[var(--color-surface-canvas)] text-[var(--color-text-primary)] [font-family:var(--type-body-font-family)]`}>
       <Story />
     </div>
   );
@@ -53,7 +54,9 @@ const preview: Preview = {
       : {}),
   },
   initialGlobals: { mode: "light", brand: brands[0].id },
-  parameters: { layout: "fullscreen", controls: { expanded: true } },
+  // Every component's docs page uses the same template; the stories only show the component.
+  tags: ["autodocs"],
+  parameters: { layout: "fullscreen", controls: { expanded: true }, docs: { page: ComponentDocs } },
 };
 
 export default preview;

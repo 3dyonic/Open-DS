@@ -10,14 +10,38 @@ import {
   DialogTitle,
   DialogTrigger,
 } from "@open-ds/ui";
-import { Usage } from "../src/usage";
 import { Show, toneOf } from "../src/samples";
 
-const meta = { title: "Components/Dialog", component: Dialog } satisfies Meta<typeof Dialog>;
+const meta = {
+  parameters: { openDs: { component: "dialog", situations: ["destructive-action", "menu-or-dialog"] } },
+  title: "Components/Dialog",
+  component: Dialog,
+} satisfies Meta<typeof Dialog>;
 export default meta;
 type Story = StoryObj<typeof meta>;
 
-export const ConfirmDestructive: Story = {
+export const Playground: Story = {
+  args: { modal: true },
+  render: (args) => (
+    <Show component="dialog">
+      {(s) => (
+        <Dialog {...args}>
+          <DialogTrigger asChild>
+            <Button variant="secondary">{s.confirm!.trigger}</Button>
+          </DialogTrigger>
+          <DialogContent>
+            <DialogHeader>
+              <DialogTitle>{s.confirm!.title}</DialogTitle>
+              <DialogDescription>{s.confirm!.body}</DialogDescription>
+            </DialogHeader>
+          </DialogContent>
+        </Dialog>
+      )}
+    </Show>
+  ),
+};
+
+export const Examples: Story = {
   render: () => (
     <Show component="dialog">
       {(s) => (
@@ -39,7 +63,6 @@ export const ConfirmDestructive: Story = {
               </DialogFooter>
             </DialogContent>
           </Dialog>
-          <Usage situations={["destructive-action", "menu-or-dialog"]} />
         </div>
       )}
     </Show>

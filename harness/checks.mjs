@@ -302,7 +302,32 @@ export const CHECKS = {
         walk(t.component, "", raw);
         if (raw.length) gaps.push(`${id}: raw values on ${raw.slice(0, 4).join(", ")}`);
       }
-      return gaps.length ? bad(gaps.join("; ")) : ok("every semantic and component token is a link; values live on primitives");
+      return gaps.length
+        ? bad(gaps.join("; "))
+        : ok("every semantic and component token is a link; values live on primitives");
+    },
+  },
+
+  "storybook-stories-uniform": {
+    requires: ["storybook/stories", "storybook/.storybook/component-docs.mdx"],
+    run: (c) => {
+      // Every component's stories have the same shape: parameters.openDs names the component and its
+      // situations, then Playground and Examples. Explanations live on the docs page, not in the canvas.
+      const dir = join(c.root, "storybook", "stories");
+      const gaps = [];
+      for (const f of readdirSync(dir).filter((x) => x.endsWith(".stories.tsx"))) {
+        const text = readFileSync(join(dir, f), "utf8");
+        const name = f.replace(".stories.tsx", "");
+        const exports = [...text.matchAll(/export const (\w+): Story/g)].map((m) => m[1]);
+        if (exports.join(",") !== "Playground,Examples")
+          gaps.push(`${f}: exports ${exports.join(", ")}, not Playground, Examples`);
+        if (!new RegExp(`openDs: \\{\\s*component: "${name}"`).test(text))
+          gaps.push(`${f}: no openDs parameters for ${name}`);
+        if (/<Usage\b/.test(text)) gaps.push(`${f}: usage text inside the canvas`);
+      }
+      return gaps.length
+        ? bad(gaps.slice(0, 6).join("; "))
+        : ok("every component's stories are Playground and Examples, with one docs template");
     },
   },
 
@@ -335,13 +360,15 @@ export const CHECKS = {
         }
         const inv = s.inventory.in.map((i) => i.id);
         for (const [comp, part] of Object.entries(NEEDS))
-          if (inv.includes(comp) && !smp[part]) gaps.push(`${id}: ${comp} is in the inventory but samples has no ${part}`);
+          if (inv.includes(comp) && !smp[part])
+            gaps.push(`${id}: ${comp} is in the inventory but samples has no ${part}`);
         const labels = new Set((smp.statuses ?? []).map((x) => x.label));
         for (const r of smp.table?.rows ?? []) {
           if (!labels.has(r.status)) gaps.push(`${id}: row status "${r.status}" is not in statuses`);
           if (r.cells.length !== smp.table.columns.length - 1) gaps.push(`${id}: a row has the wrong number of cells`);
         }
-        if (smp.card && !labels.has(smp.card.status)) gaps.push(`${id}: card status "${smp.card.status}" is not in statuses`);
+        if (smp.card && !labels.has(smp.card.status))
+          gaps.push(`${id}: card status "${smp.card.status}" is not in statuses`);
         for (const key of [smp.screen, ...(smp.table?.rows ?? []).map((r) => r.cells.join("|"))]) {
           if (seen.has(key)) gaps.push(`${id} and ${seen.get(key)} share "${key}"`);
           seen.set(key, id);
