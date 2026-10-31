@@ -1,10 +1,15 @@
 import type { Meta, StoryObj } from "@storybook/react-vite";
 import { Button } from "@open-ds/ui";
 import { Download, MoreHorizontal } from "lucide-react";
-import { Usage } from "../src/usage";
 import { Show, toneOf } from "../src/samples";
 
 const meta = {
+  parameters: {
+    openDs: {
+      component: "button",
+      situations: ["commit-action", "alternative-action", "destructive-action", "row-action"],
+    },
+  },
   title: "Components/Button",
   component: Button,
   args: { children: "Continue", variant: "primary", size: "default" },
@@ -18,7 +23,7 @@ type Story = StoryObj<typeof meta>;
 
 export const Playground: Story = {};
 
-export const Variants: Story = {
+export const Examples: Story = {
   render: () => (
     <Show component="button">
       {(s) => (
@@ -34,7 +39,6 @@ export const Variants: Story = {
             </Button>
             <Button disabled>{s.actions.primary}</Button>
           </div>
-          <Usage situations={["commit-action", "alternative-action", "destructive-action", "row-action"]} />
         </div>
       )}
     </Show>

@@ -25,6 +25,7 @@ const DEV_DEPENDENCIES = {
   "@docusaurus/preset-classic": "^3.10.2",
   "@docusaurus/types": "^3.10.2",
   "@mdx-js/react": "^3.1.0",
+  "@storybook/addon-docs": "^10.6.5",
   "@storybook/react-vite": "^10.6.5",
   "@tailwindcss/vite": "^4.3.3",
   "@types/react": "^19.1.13",
@@ -158,12 +159,13 @@ export function createProject(schemeId, dir, { brand, openDs = `^${VERSION}`, ov
   for (const f of readdirSync(roots.stories).filter((x) => x.endsWith(".stories.tsx"))) {
     write(
       `stories/${f}`,
-      readFileSync(join(roots.stories, f), "utf8").replaceAll(`from "@open-ds/ui"`, `from "../src"`).replace(`from "../src/usage"`, `from "./usage"`).replace(`from "../src/samples"`, `from "./samples"`),
+      readFileSync(join(roots.stories, f), "utf8").replaceAll(`from "@open-ds/ui"`, `from "../src"`).replace(`from "../src/usage"`, `from "./usage"`).replace(`from "../src/samples"`, `from "./samples"`).replace(`from "../src/docs-blocks"`, `from "./docs-blocks"`),
     );
   }
 
   // The answer map and the situations the usage rules name.
   write("scheme.json", json(scheme));
+  write(".open-ds/grammar.json", json({ situations: g.situations, catalogue: g.catalogue, component_keys: g.component_keys }));
   write(".open-ds/situations.json", json(g.situations.map((s) => ({ id: s.id, title: s.title, description: s.description }))));
 
   // The docs pages.

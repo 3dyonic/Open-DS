@@ -1,13 +1,18 @@
 import type { Meta, StoryObj } from "@storybook/react-vite";
 import { Checkbox, Label } from "@open-ds/ui";
-import { Usage } from "../src/usage";
 import { Show, toneOf } from "../src/samples";
 
-const meta = { title: "Components/Checkbox", component: Checkbox } satisfies Meta<typeof Checkbox>;
+const meta = {
+  parameters: { openDs: { component: "checkbox", situations: ["smallest-target", "keyboard-focus"] } },
+  title: "Components/Checkbox",
+  component: Checkbox,
+} satisfies Meta<typeof Checkbox>;
 export default meta;
 type Story = StoryObj<typeof meta>;
 
-export const States: Story = {
+export const Playground: Story = { args: { defaultChecked: true, disabled: false } };
+
+export const Examples: Story = {
   render: () => (
     <Show component="checkbox">
       {(s) => (
@@ -17,7 +22,6 @@ export const States: Story = {
               <Checkbox defaultChecked={i === 0} disabled={i === 2} /> {label}
             </Label>
           ))}
-          <Usage situations={["smallest-target", "keyboard-focus"]} />
         </div>
       )}
     </Show>

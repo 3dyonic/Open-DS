@@ -1,14 +1,45 @@
 import type { Meta, StoryObj } from "@storybook/react-vite";
 import { Badge, Button, Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@open-ds/ui";
 import { MoreHorizontal } from "lucide-react";
-import { Usage } from "../src/usage";
 import { Show, toneOf } from "../src/samples";
 
-const meta = { title: "Components/Table", component: Table } satisfies Meta<typeof Table>;
+const meta = {
+  parameters: {
+    openDs: { component: "table", situations: ["number-in-table", "table-row", "selected-row", "row-action"] },
+  },
+  title: "Components/Table",
+  component: Table,
+} satisfies Meta<typeof Table>;
 export default meta;
 type Story = StoryObj<typeof meta>;
 
-export const Rows: Story = {
+export const Playground: Story = {
+  render: (args) => (
+    <Show component="table">
+      {(s) => (
+        <Table {...args} aria-label={s.table!.caption}>
+          <TableHeader>
+            <TableRow>
+              {s.table!.columns.map((c) => (
+                <TableHead key={c.label}>{c.label}</TableHead>
+              ))}
+            </TableRow>
+          </TableHeader>
+          <TableBody>
+            <TableRow>
+              {s.table!.rows[0].cells.map((cell, j) => (
+                <TableCell key={j}>{cell}</TableCell>
+              ))}
+              <TableCell>{s.table!.rows[0].status}</TableCell>
+            </TableRow>
+          </TableBody>
+        </Table>
+      )}
+    </Show>
+  ),
+};
+
+export const Examples: Story = {
   render: () => (
     <Show component="table">
       {(s) => {
@@ -58,7 +89,6 @@ export const Rows: Story = {
                 ))}
               </TableBody>
             </Table>
-            <Usage situations={["number-in-table", "table-row", "selected-row", "row-action"]} />
           </div>
         );
       }}

@@ -1,13 +1,18 @@
 import type { Meta, StoryObj } from "@storybook/react-vite";
 import { Input, Label } from "@open-ds/ui";
-import { Usage } from "../src/usage";
 import { Show, toneOf } from "../src/samples";
 
-const meta = { title: "Components/Input", component: Input } satisfies Meta<typeof Input>;
+const meta = {
+  parameters: { openDs: { component: "input", situations: ["field-label", "error-message", "keyboard-focus"] } },
+  title: "Components/Input",
+  component: Input,
+} satisfies Meta<typeof Input>;
 export default meta;
 type Story = StoryObj<typeof meta>;
 
-export const WithLabel: Story = {
+export const Playground: Story = { args: { placeholder: "Type here", disabled: false } };
+
+export const Examples: Story = {
   render: () => (
     <Show component="input">
       {(s) => (
@@ -20,7 +25,6 @@ export const WithLabel: Story = {
           <p id="field-error" className="text-[var(--color-status-danger)]">
             {s.field.error}
           </p>
-          <Usage situations={["field-label", "error-message", "keyboard-focus"]} />
         </div>
       )}
     </Show>

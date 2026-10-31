@@ -1,9 +1,9 @@
 import type { Meta, StoryObj } from "@storybook/react-vite";
 import { Badge } from "@open-ds/ui";
-import { Usage } from "../src/usage";
 import { Show, toneOf } from "../src/samples";
 
 const meta = {
+  parameters: { openDs: { component: "badge", situations: ["status-label", "status-shape"] } },
   title: "Components/Badge",
   component: Badge,
   args: { children: "Status", tone: "neutral" },
@@ -15,7 +15,7 @@ type Story = StoryObj<typeof meta>;
 export const Playground: Story = {};
 
 // Each status shows in the tone its meaning picks. Danger appears only where the scheme says something failed.
-export const Statuses: Story = {
+export const Examples: Story = {
   render: () => (
     <Show component="badge">
       {(s) => (
@@ -32,7 +32,6 @@ export const Statuses: Story = {
               </div>
             ))}
           </dl>
-          <Usage situations={["status-label", "status-shape"]} />
         </div>
       )}
     </Show>
