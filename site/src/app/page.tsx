@@ -60,14 +60,14 @@ export default function Home() {
         <div className="flex flex-col gap-5">
           <Eyebrow>For makers, product teams and their AI</Eyebrow>
           <h1 className="text-[44px] leading-none font-extrabold md:text-[72px]">
-            Every design system
+            A design system
             <br />
-            is a set of answers.
+            you can read and take.
           </h1>
           <p className="max-w-[820px] text-[21px] leading-[1.45] text-[#3e3a31]">
-            Pick a ready-made design system scheme. Connect your AI and deploy it, or use the
-            package and do it yourself. Every value comes with the product reason behind it. Change
-            an answer only where your product is different.
+            Every decision is an answered question, with its options and its reason in plain view.
+            Take the whole system, the way you take a shadcn component: connect your AI, or run one
+            command and own the code.
           </p>
           <div className="flex flex-wrap gap-3 pt-2">
             <Link
