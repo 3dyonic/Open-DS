@@ -28,4 +28,3 @@ Add `--json` to `list`, `show`, `why` and `when` for machine-readable output. Th
 
 The package is private until the name is final. `pnpm --dir cli pack` bundles the schemes, tokens, components and skill into `cli/assets` and shows what the package would hold.
 
-The recipe commands from the first preview still work: `check`, `catalog`, `diff`, and `init <recipe.json>`.

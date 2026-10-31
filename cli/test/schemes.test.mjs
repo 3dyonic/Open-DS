@@ -145,9 +145,17 @@ test("errors are clear, and JSON when --json is set", () => {
   assert.deepEqual(Object.keys(JSON.parse(fail("show", "nope", "--json").stdout)), ["error"]);
 });
 
-test("recipe commands from the first preview still run through the new entry point", () => {
-  const out = cli("diff");
-  assert.match(out, /diff is not ready/);
+test("unknown commands and init without a scheme fail with a clear message", () => {
+  const fail = (...args) => {
+    try {
+      execFileSync(process.execPath, [bin, ...args], { encoding: "utf8", stdio: "pipe" });
+      return null;
+    } catch (e) {
+      return e.stderr;
+    }
+  };
+  assert.match(fail("diff"), /Unknown command "diff"/);
+  assert.match(fail("init"), /init needs a scheme/);
 });
 
 test("docs pages cover every scope and component, for every scheme", async () => {
