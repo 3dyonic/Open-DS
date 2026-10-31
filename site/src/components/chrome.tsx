@@ -25,7 +25,6 @@ export function Mark() {
 
 const LINKS: [string, string][] = [
   ["Schemes", "/schemes/"],
-  ["How it works", "/#how-it-works"],
   ["Questions", "/questions/"],
   ["Install", "/install/"],
 ];
