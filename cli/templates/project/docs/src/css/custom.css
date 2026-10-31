@@ -142,3 +142,102 @@ code {
   border-width: var(--border-width-default);
   box-shadow: none;
 }
+
+/* Specimens: small live samples on the foundation pages, drawn from the token variables. */
+.ods-specimen {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-gap-default, 0.5rem) var(--space-gap-group, 1rem);
+  padding: var(--space-inset-container, 1rem);
+  margin-bottom: var(--space-gap-section, 1.5rem);
+  border: var(--border-width-default, 1px) solid var(--color-border-default);
+  border-radius: var(--radius-container, 0.375rem);
+  background: var(--color-surface-default);
+}
+.ods-item {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-gap-default, 0.5rem);
+  min-width: 13rem;
+}
+.ods-type {
+  display: flex;
+  align-items: baseline;
+  gap: var(--space-gap-group, 1rem);
+  width: 100%;
+}
+.ods-type .ods-label {
+  flex: 0 0 5rem;
+}
+.ods-label {
+  font-family: var(--type-data-font-family, monospace);
+  font-size: var(--type-caption-font-size, 0.75rem);
+  color: var(--color-text-muted);
+}
+.ods-swatch,
+.ods-tile,
+.ods-card {
+  display: inline-block;
+  width: 1.5rem;
+  height: 1.5rem;
+  flex: none;
+  border-radius: var(--radius-control, 0.25rem);
+  border: var(--border-width-default, 1px) solid var(--color-border-default);
+}
+.ods-swatch {
+  background: var(--color-text-primary);
+}
+.ods-tile {
+  background: var(--color-surface-sunken);
+  border-color: var(--color-border-strong);
+}
+.ods-card {
+  width: 2.5rem;
+  background: var(--color-surface-raised);
+}
+.ods-bar {
+  display: inline-block;
+  height: 0.5rem;
+  min-width: 1px;
+  background: var(--color-action-primary);
+  border-radius: 1px;
+}
+.ods-line {
+  display: inline-block;
+  width: 1.5rem;
+  background: var(--color-text-primary);
+}
+.ods-font {
+  font-size: 1.125rem;
+}
+.ods-motion {
+  display: inline-block;
+  width: 3rem;
+  height: 0.75rem;
+  border-radius: 9999px;
+  background: var(--color-surface-sunken);
+  position: relative;
+}
+.ods-motion > span {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 0.75rem;
+  height: 0.75rem;
+  border-radius: 9999px;
+  background: var(--color-action-primary);
+  transition: left var(--ods-d) var(--motion-easing-standard, ease);
+}
+.ods-specimen:hover .ods-motion > span {
+  left: 2.25rem;
+}
+@media (prefers-reduced-motion: reduce) {
+  .ods-motion > span {
+    transition: none;
+  }
+}
+.markdown table .ods-swatch,
+.markdown table .ods-tile,
+.markdown table .ods-card {
+  vertical-align: middle;
+}

@@ -271,6 +271,23 @@
         "docs-sections",
         "llm-files"
       ]
+    },
+    {
+      "id": "OD-137",
+      "title": "Token linkage, values only on primitives, and a subtle living style guide",
+      "in": [
+        "semantic and component tokens shown as links to the primitive they end at, light and dark",
+        "primitives listed per foundation with raw values and a live sample",
+        "a specimen per foundation drawn from the scheme's CSS variables (type set in the scheme's scenario text)",
+        "shadows moved to primitives so no semantic token holds a raw value",
+        "site scope pages show links instead of raw values on decisions"
+      ],
+      "checks": [
+        "tokens-semantics-are-links",
+        "docs-sections",
+        "docs-build",
+        "site-build"
+      ]
     }
   ]
 }

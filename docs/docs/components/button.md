@@ -14,26 +14,26 @@ See it in [Storybook](http://localhost:6006) under Components / Button, in every
 
 ## Component keys
 
-The CSS variable is the key with `/` replaced by `-`.
+The CSS variable is the key with `/` replaced by `-`. Each key points to a token; values live only on primitives.
 
-| Key | What it controls | Reads | light | dark |
-| --- | --- | --- | --- | --- |
-| `button/primary/background` | Primary button fill. | `color.action.primary` | #2457D6 | #8EA9EC |
-| `button/primary/background-hover` | Primary button fill on hover. | `color.action.primary-hover` | #1C45AB | #E6EDFC |
-| `button/primary/label` | Primary button label color. | `color.text.on-action` | #FFFFFF | #0D1117 |
-| `button/secondary/background` | Secondary button fill. | `color.action.secondary` | #FFFFFF | #161B23 |
-| `button/secondary/background-hover` | Secondary button fill on hover. | `color.action.secondary-hover` | #EEF1F5 | #262D38 |
-| `button/secondary/label` | Secondary button label color. | `color.text.primary` | #161B23 | #F7F8FA |
-| `button/secondary/border` | Secondary button border. | `color.border.strong` | #C4CBD6 | #3D4655 |
-| `button/ghost/background-hover` | Ghost button fill on hover. | `color.surface.sunken` | #EEF1F5 | #262D38 |
-| `button/ghost/label` | Ghost button label color. | `color.text.link` | #1C45AB | #8EA9EC |
-| `button/height` | Button height. | `size.control.default` | 2rem (32px) | 2rem (32px) |
-| `button/padding-x` | Horizontal padding inside a button. | `space.inset.control-x` | 0.75rem (12px) | 0.75rem (12px) |
-| `button/radius` | Button corner radius. | `radius.control` | 0.25rem (4px) | 0.25rem (4px) |
-| `button/font-size` | Button label size. | `type.label.font-size` | 0.75rem (12px) | 0.75rem (12px) |
-| `button/font-weight` | Button label weight. | `type.label.font-weight` | 500 | 500 |
-| `button/focus-ring` | Focus ring color on any button. | `color.border.focus` | #2457D6 | #8EA9EC |
-| `button/icon-size` | Size of an icon inside a button. | `size.icon` | 1rem (16px) | 1rem (16px) |
+| Key | What it controls | Points to, light | Points to, dark |
+| --- | --- | --- | --- |
+| `button/primary/background` | Primary button fill. | `color.action.primary` → `color.brand.600` | `color.action.primary` → `color.brand.300` |
+| `button/primary/background-hover` | Primary button fill on hover. | `color.action.primary-hover` → `color.brand.700` | `color.action.primary-hover` → `color.brand.100` |
+| `button/primary/label` | Primary button label color. | `color.text.on-action` → `color.neutral.0` | `color.text.on-action` → `color.neutral.950` |
+| `button/secondary/background` | Secondary button fill. | `color.action.secondary` → `color.neutral.0` | `color.action.secondary` → `color.neutral.900` |
+| `button/secondary/background-hover` | Secondary button fill on hover. | `color.action.secondary-hover` → `color.neutral.100` | `color.action.secondary-hover` → `color.neutral.800` |
+| `button/secondary/label` | Secondary button label color. | `color.text.primary` → `color.neutral.900` | `color.text.primary` → `color.neutral.50` |
+| `button/secondary/border` | Secondary button border. | `color.border.strong` → `color.neutral.300` | `color.border.strong` → `color.neutral.700` |
+| `button/ghost/background-hover` | Ghost button fill on hover. | `color.surface.sunken` → `color.neutral.100` | `color.surface.sunken` → `color.neutral.800` |
+| `button/ghost/label` | Ghost button label color. | `color.text.link` → `color.brand.700` | `color.text.link` → `color.brand.300` |
+| `button/height` | Button height. | `size.control.default` → `size.32` | same |
+| `button/padding-x` | Horizontal padding inside a button. | `space.inset.control-x` → `space.12` | same |
+| `button/radius` | Button corner radius. | `radius.control` → `radius.brand.control` → `radius.4` | same |
+| `button/font-size` | Button label size. | `type.label.font-size` → `font.size.12` | same |
+| `button/font-weight` | Button label weight. | `type.label.font-weight` → `font.weight.500` | same |
+| `button/focus-ring` | Focus ring color on any button. | `color.border.focus` → `color.brand.600` | `color.border.focus` → `color.brand.300` |
+| `button/icon-size` | Size of an icon inside a button. | `size.icon` → `size.16` | same |
 
 ## When to use it
 

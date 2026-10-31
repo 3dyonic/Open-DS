@@ -1423,6 +1423,53 @@
           "$value": 0.4,
           "$description": "An opacity option."
         }
+      },
+      "shadow": {
+        "$description": "Raw shadows. Elevation semantics point at these.",
+        "card": {
+          "$type": "shadow",
+          "$value": {
+            "color": "#1F141124",
+            "offsetX": "0px",
+            "offsetY": "12px",
+            "blur": "32px",
+            "spread": "0px"
+          },
+          "$description": "Raw shadow for card in light mode."
+        },
+        "overlay": {
+          "$type": "shadow",
+          "$value": {
+            "color": "#1F141133",
+            "offsetX": "0px",
+            "offsetY": "24px",
+            "blur": "48px",
+            "spread": "0px"
+          },
+          "$description": "Raw shadow for overlay in light mode."
+        },
+        "card-dark": {
+          "$type": "shadow",
+          "$value": {
+            "color": "#00000080",
+            "offsetX": "0px",
+            "offsetY": "12px",
+            "blur": "32px",
+            "spread": "0px"
+          },
+          "$description": "Raw shadow for card in dark mode."
+        },
+        "overlay-dark": {
+          "$type": "shadow",
+          "$value": {
+            "color": "#00000099",
+            "offsetX": "0px",
+            "offsetY": "24px",
+            "blur": "48px",
+            "spread": "0px"
+          },
+          "$description": "Raw shadow for overlay in dark mode."
+        }
       }
     },
     "brands": {
@@ -1903,23 +1950,11 @@
         "elevation": {
           "card": {
             "$type": "shadow",
-            "$value": {
-              "color": "#1F141124",
-              "offsetX": "0px",
-              "offsetY": "12px",
-              "blur": "32px",
-              "spread": "0px"
-            }
+            "$value": "{shadow.card}"
           },
           "overlay": {
             "$type": "shadow",
-            "$value": {
-              "color": "#1F141133",
-              "offsetX": "0px",
-              "offsetY": "24px",
-              "blur": "48px",
-              "spread": "0px"
-            }
+            "$value": "{shadow.overlay}"
           }
         }
       },
@@ -2043,23 +2078,11 @@
         "elevation": {
           "card": {
             "$type": "shadow",
-            "$value": {
-              "color": "#00000080",
-              "offsetX": "0px",
-              "offsetY": "12px",
-              "blur": "32px",
-              "spread": "0px"
-            }
+            "$value": "{shadow.card-dark}"
           },
           "overlay": {
             "$type": "shadow",
-            "$value": {
-              "color": "#00000099",
-              "offsetX": "0px",
-              "offsetY": "24px",
-              "blur": "48px",
-              "spread": "0px"
-            }
+            "$value": "{shadow.overlay-dark}"
           }
         }
       }

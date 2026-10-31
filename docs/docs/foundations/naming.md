@@ -22,71 +22,126 @@ How tokens and keys are named.
 
 ## Tokens
 
-| Token | Value |
-| --- | --- |
-| `component.button.primary.background` | &#123;color.action.primary&#125; |
-| `component.button.primary.background-hover` | &#123;color.action.primary-hover&#125; |
-| `component.button.primary.label` | &#123;color.text.on-action&#125; |
-| `component.button.secondary.background` | &#123;color.action.secondary&#125; |
-| `component.button.secondary.background-hover` | &#123;color.action.secondary-hover&#125; |
-| `component.button.secondary.label` | &#123;color.text.primary&#125; |
-| `component.button.secondary.border` | &#123;color.border.strong&#125; |
-| `component.button.ghost.background-hover` | &#123;color.surface.sunken&#125; |
-| `component.button.ghost.label` | &#123;color.text.link&#125; |
-| `component.button.height` | &#123;size.control.default&#125; |
-| `component.button.padding-x` | &#123;space.inset.control-x&#125; |
-| `component.button.radius` | &#123;radius.control&#125; |
-| `component.button.font-size` | &#123;type.label.font-size&#125; |
-| `component.button.font-weight` | &#123;type.label.font-weight&#125; |
-| `component.button.focus-ring` | &#123;color.border.focus&#125; |
-| `component.button.icon-size` | &#123;size.icon&#125; |
-| `component.input.background` | &#123;color.surface.default&#125; |
-| `component.input.border` | &#123;color.border.strong&#125; |
-| `component.input.border-focus` | &#123;color.border.focus&#125; |
-| `component.input.text` | &#123;color.text.primary&#125; |
-| `component.input.placeholder` | &#123;color.text.muted&#125; |
-| `component.input.height` | &#123;size.control.default&#125; |
-| `component.input.padding-x` | &#123;space.inset.control-x&#125; |
-| `component.input.radius` | &#123;radius.control&#125; |
-| `component.input.font-size` | &#123;type.body.font-size&#125; |
-| `component.control.checked` | &#123;color.action.primary&#125; |
-| `component.control.track` | &#123;color.border.strong&#125; |
-| `component.control.thumb` | &#123;color.surface.default&#125; |
-| `component.control.radius` | &#123;radius.badge&#125; |
-| `component.badge.radius` | &#123;radius.badge&#125; |
-| `component.badge.padding-x` | &#123;space.gap.tight&#125; |
-| `component.badge.font-size` | &#123;type.caption.font-size&#125; |
-| `component.badge.neutral.background` | &#123;color.surface.sunken&#125; |
-| `component.badge.neutral.label` | &#123;color.text.secondary&#125; |
-| `component.badge.success.background` | &#123;color.status.success-subtle&#125; |
-| `component.badge.success.label` | &#123;color.status.success&#125; |
-| `component.badge.warning.background` | &#123;color.status.warning-subtle&#125; |
-| `component.badge.warning.label` | &#123;color.status.warning&#125; |
-| `component.badge.danger.background` | &#123;color.status.danger-subtle&#125; |
-| `component.badge.danger.label` | &#123;color.status.danger&#125; |
-| `component.card.background` | &#123;color.surface.default&#125; |
-| `component.card.border` | &#123;color.border.default&#125; |
-| `component.card.radius` | &#123;radius.container&#125; |
-| `component.card.padding` | &#123;space.inset.container&#125; |
-| `component.card.shadow` | &#123;elevation.card&#125; |
-| `component.table.header-background` | &#123;color.surface.sunken&#125; |
-| `component.table.row-height` | &#123;size.row&#125; |
-| `component.table.cell-padding-x` | &#123;space.inset.cell-x&#125; |
-| `component.table.row-border` | &#123;color.border.default&#125; |
-| `component.table.row-selected` | &#123;color.surface.selected&#125; |
-| `component.table.font-size` | &#123;type.data.font-size&#125; |
-| `component.tabs.indicator` | &#123;color.action.primary&#125; |
-| `component.tabs.label` | &#123;color.text.secondary&#125; |
-| `component.tabs.label-active` | &#123;color.text.primary&#125; |
-| `component.overlay.background` | &#123;color.surface.raised&#125; |
-| `component.overlay.radius` | &#123;radius.container&#125; |
-| `component.overlay.shadow` | &#123;elevation.overlay&#125; |
-| `component.overlay.scrim` | &#123;color.surface.scrim&#125; |
-| `component.overlay.item-height` | &#123;size.control.default&#125; |
-| `component.tooltip.background` | &#123;color.surface.inverse&#125; |
-| `component.tooltip.label` | &#123;color.text.inverse&#125; |
-| `component.transition.duration` | &#123;motion.duration.feedback&#125; |
-| `component.transition.easing` | &#123;motion.easing.standard&#125; |
+Each token points to another token. Values live only on primitives, below.
+
+| Token | Points to, light | Points to, dark |
+| --- | --- | --- |
+| `component.button.primary.background` | `color.action.primary` → `color.brand.600` | `color.action.primary` → `color.brand.300` |
+| `component.button.primary.background-hover` | `color.action.primary-hover` → `color.brand.700` | `color.action.primary-hover` → `color.brand.100` |
+| `component.button.primary.label` | `color.text.on-action` → `color.neutral.0` | `color.text.on-action` → `color.neutral.950` |
+| `component.button.secondary.background` | `color.action.secondary` → `color.neutral.0` | `color.action.secondary` → `color.neutral.900` |
+| `component.button.secondary.background-hover` | `color.action.secondary-hover` → `color.neutral.100` | `color.action.secondary-hover` → `color.neutral.800` |
+| `component.button.secondary.label` | `color.text.primary` → `color.neutral.900` | `color.text.primary` → `color.neutral.50` |
+| `component.button.secondary.border` | `color.border.strong` → `color.neutral.300` | `color.border.strong` → `color.neutral.700` |
+| `component.button.ghost.background-hover` | `color.surface.sunken` → `color.neutral.100` | `color.surface.sunken` → `color.neutral.800` |
+| `component.button.ghost.label` | `color.text.link` → `color.brand.700` | `color.text.link` → `color.brand.300` |
+| `component.button.height` | `size.control.default` → `size.32` | `size.control.default` → `size.32` |
+| `component.button.padding-x` | `space.inset.control-x` → `space.12` | `space.inset.control-x` → `space.12` |
+| `component.button.radius` | `radius.control` → `radius.brand.control` → `radius.4` | `radius.control` → `radius.brand.control` → `radius.4` |
+| `component.button.font-size` | `type.label.font-size` → `font.size.12` | `type.label.font-size` → `font.size.12` |
+| `component.button.font-weight` | `type.label.font-weight` → `font.weight.500` | `type.label.font-weight` → `font.weight.500` |
+| `component.button.focus-ring` | `color.border.focus` → `color.brand.600` | `color.border.focus` → `color.brand.300` |
+| `component.button.icon-size` | `size.icon` → `size.16` | `size.icon` → `size.16` |
+| `component.input.background` | `color.surface.default` → `color.neutral.0` | `color.surface.default` → `color.neutral.900` |
+| `component.input.border` | `color.border.strong` → `color.neutral.300` | `color.border.strong` → `color.neutral.700` |
+| `component.input.border-focus` | `color.border.focus` → `color.brand.600` | `color.border.focus` → `color.brand.300` |
+| `component.input.text` | `color.text.primary` → `color.neutral.900` | `color.text.primary` → `color.neutral.50` |
+| `component.input.placeholder` | `color.text.muted` → `color.neutral.500` | `color.text.muted` → `color.neutral.500` |
+| `component.input.height` | `size.control.default` → `size.32` | `size.control.default` → `size.32` |
+| `component.input.padding-x` | `space.inset.control-x` → `space.12` | `space.inset.control-x` → `space.12` |
+| `component.input.radius` | `radius.control` → `radius.brand.control` → `radius.4` | `radius.control` → `radius.brand.control` → `radius.4` |
+| `component.input.font-size` | `type.body.font-size` → `font.size.14` | `type.body.font-size` → `font.size.14` |
+| `component.control.checked` | `color.action.primary` → `color.brand.600` | `color.action.primary` → `color.brand.300` |
+| `component.control.track` | `color.border.strong` → `color.neutral.300` | `color.border.strong` → `color.neutral.700` |
+| `component.control.thumb` | `color.surface.default` → `color.neutral.0` | `color.surface.default` → `color.neutral.900` |
+| `component.control.radius` | `radius.badge` → `radius.brand.badge` → `radius.2` | `radius.badge` → `radius.brand.badge` → `radius.2` |
+| `component.badge.radius` | `radius.badge` → `radius.brand.badge` → `radius.2` | `radius.badge` → `radius.brand.badge` → `radius.2` |
+| `component.badge.padding-x` | `space.gap.tight` → `space.4` | `space.gap.tight` → `space.4` |
+| `component.badge.font-size` | `type.caption.font-size` → `font.size.12` | `type.caption.font-size` → `font.size.12` |
+| `component.badge.neutral.background` | `color.surface.sunken` → `color.neutral.100` | `color.surface.sunken` → `color.neutral.800` |
+| `component.badge.neutral.label` | `color.text.secondary` → `color.neutral.700` | `color.text.secondary` → `color.neutral.300` |
+| `component.badge.success.background` | `color.status.success-subtle` → `color.success.subtle` | `color.status.success-subtle` → `color.success.subtle-dark` |
+| `component.badge.success.label` | `color.status.success` → `color.success.strong` | `color.status.success` → `color.success.strong-dark` |
+| `component.badge.warning.background` | `color.status.warning-subtle` → `color.warning.subtle` | `color.status.warning-subtle` → `color.warning.subtle-dark` |
+| `component.badge.warning.label` | `color.status.warning` → `color.warning.strong` | `color.status.warning` → `color.warning.strong-dark` |
+| `component.badge.danger.background` | `color.status.danger-subtle` → `color.danger.subtle` | `color.status.danger-subtle` → `color.danger.subtle-dark` |
+| `component.badge.danger.label` | `color.status.danger` → `color.danger.strong` | `color.status.danger` → `color.danger.strong-dark` |
+| `component.card.background` | `color.surface.default` → `color.neutral.0` | `color.surface.default` → `color.neutral.900` |
+| `component.card.border` | `color.border.default` → `color.neutral.200` | `color.border.default` → `color.neutral.800` |
+| `component.card.radius` | `radius.container` → `radius.brand.container` → `radius.6` | `radius.container` → `radius.brand.container` → `radius.6` |
+| `component.card.padding` | `space.inset.container` → `space.16` | `space.inset.container` → `space.16` |
+| `component.card.shadow` | `elevation.card` → `shadow.none` | `elevation.card` → `shadow.none` |
+| `component.table.header-background` | `color.surface.sunken` → `color.neutral.100` | `color.surface.sunken` → `color.neutral.800` |
+| `component.table.row-height` | `size.row` → `size.32` | `size.row` → `size.32` |
+| `component.table.cell-padding-x` | `space.inset.cell-x` → `space.12` | `space.inset.cell-x` → `space.12` |
+| `component.table.row-border` | `color.border.default` → `color.neutral.200` | `color.border.default` → `color.neutral.800` |
+| `component.table.row-selected` | `color.surface.selected` → `color.brand.100` | `color.surface.selected` → `color.brand.800` |
+| `component.table.font-size` | `type.data.font-size` → `font.size.13` | `type.data.font-size` → `font.size.13` |
+| `component.tabs.indicator` | `color.action.primary` → `color.brand.600` | `color.action.primary` → `color.brand.300` |
+| `component.tabs.label` | `color.text.secondary` → `color.neutral.700` | `color.text.secondary` → `color.neutral.300` |
+| `component.tabs.label-active` | `color.text.primary` → `color.neutral.900` | `color.text.primary` → `color.neutral.50` |
+| `component.overlay.background` | `color.surface.raised` → `color.neutral.0` | `color.surface.raised` → `color.neutral.800` |
+| `component.overlay.radius` | `radius.container` → `radius.brand.container` → `radius.6` | `radius.container` → `radius.brand.container` → `radius.6` |
+| `component.overlay.shadow` | `elevation.overlay` → `shadow.overlay` | `elevation.overlay` → `shadow.overlay-dark` |
+| `component.overlay.scrim` | `color.surface.scrim` → `color.black-alpha.scrim` | `color.surface.scrim` → `color.black-alpha.scrim-dark` |
+| `component.overlay.item-height` | `size.control.default` → `size.32` | `size.control.default` → `size.32` |
+| `component.tooltip.background` | `color.surface.inverse` → `color.neutral.900` | `color.surface.inverse` → `color.neutral.50` |
+| `component.tooltip.label` | `color.text.inverse` → `color.neutral.0` | `color.text.inverse` → `color.neutral.900` |
+| `component.transition.duration` | `motion.duration.feedback` → `duration.fast` | `motion.duration.feedback` → `duration.fast` |
+| `component.transition.easing` | `motion.easing.standard` → `easing.standard` | `motion.easing.standard` → `easing.standard` |
+
+## Primitives
+
+The raw values the tokens above end at.
+
+| Primitive | Value | Sample |
+| --- | --- | --- |
+| `color.black-alpha.scrim` | #0000008C | <span class="ods-swatch" style="background:var(--color-black-alpha-scrim)"></span> |
+| `color.black-alpha.scrim-dark` | #000000B3 | <span class="ods-swatch" style="background:var(--color-black-alpha-scrim-dark)"></span> |
+| `color.brand.100` | #E6EDFC | <span class="ods-swatch" style="background:var(--color-brand-100)"></span> |
+| `color.brand.300` | #8EA9EC | <span class="ods-swatch" style="background:var(--color-brand-300)"></span> |
+| `color.brand.600` | #2457D6 | <span class="ods-swatch" style="background:var(--color-brand-600)"></span> |
+| `color.brand.700` | #1C45AB | <span class="ods-swatch" style="background:var(--color-brand-700)"></span> |
+| `color.brand.800` | #163784 | <span class="ods-swatch" style="background:var(--color-brand-800)"></span> |
+| `color.danger.strong` | #C42B2B | <span class="ods-swatch" style="background:var(--color-danger-strong)"></span> |
+| `color.danger.strong-dark` | #F28B8B | <span class="ods-swatch" style="background:var(--color-danger-strong-dark)"></span> |
+| `color.danger.subtle` | #FDE7E7 | <span class="ods-swatch" style="background:var(--color-danger-subtle)"></span> |
+| `color.danger.subtle-dark` | #3D1414 | <span class="ods-swatch" style="background:var(--color-danger-subtle-dark)"></span> |
+| `color.neutral.0` | #FFFFFF | <span class="ods-swatch" style="background:var(--color-neutral-0)"></span> |
+| `color.neutral.100` | #EEF1F5 | <span class="ods-swatch" style="background:var(--color-neutral-100)"></span> |
+| `color.neutral.200` | #DDE2EA | <span class="ods-swatch" style="background:var(--color-neutral-200)"></span> |
+| `color.neutral.300` | #C4CBD6 | <span class="ods-swatch" style="background:var(--color-neutral-300)"></span> |
+| `color.neutral.50` | #F7F8FA | <span class="ods-swatch" style="background:var(--color-neutral-50)"></span> |
+| `color.neutral.500` | #6B7585 | <span class="ods-swatch" style="background:var(--color-neutral-500)"></span> |
+| `color.neutral.700` | #3D4655 | <span class="ods-swatch" style="background:var(--color-neutral-700)"></span> |
+| `color.neutral.800` | #262D38 | <span class="ods-swatch" style="background:var(--color-neutral-800)"></span> |
+| `color.neutral.900` | #161B23 | <span class="ods-swatch" style="background:var(--color-neutral-900)"></span> |
+| `color.neutral.950` | #0D1117 | <span class="ods-swatch" style="background:var(--color-neutral-950)"></span> |
+| `color.success.strong` | #1F7A3A | <span class="ods-swatch" style="background:var(--color-success-strong)"></span> |
+| `color.success.strong-dark` | #5CC283 | <span class="ods-swatch" style="background:var(--color-success-strong-dark)"></span> |
+| `color.success.subtle` | #E3F4EA | <span class="ods-swatch" style="background:var(--color-success-subtle)"></span> |
+| `color.success.subtle-dark` | #123322 | <span class="ods-swatch" style="background:var(--color-success-subtle-dark)"></span> |
+| `color.warning.strong` | #8A5600 | <span class="ods-swatch" style="background:var(--color-warning-strong)"></span> |
+| `color.warning.strong-dark` | #F2B84B | <span class="ods-swatch" style="background:var(--color-warning-strong-dark)"></span> |
+| `color.warning.subtle` | #FFF3D6 | <span class="ods-swatch" style="background:var(--color-warning-subtle)"></span> |
+| `color.warning.subtle-dark` | #3A2A05 | <span class="ods-swatch" style="background:var(--color-warning-subtle-dark)"></span> |
+| `duration.fast` | 120ms | <span class="ods-motion" style="--ods-d:var(--duration-fast)"><span></span></span> |
+| `easing.standard` | cubic-bezier(0.2, 0, 0, 1) |  |
+| `font.size.12` | 0.75rem (12px) | <span class="ods-bar" style="width:var(--font-size-12)"></span> |
+| `font.size.13` | 0.8125rem (13px) | <span class="ods-bar" style="width:var(--font-size-13)"></span> |
+| `font.size.14` | 0.875rem (14px) | <span class="ods-bar" style="width:var(--font-size-14)"></span> |
+| `font.weight.500` | 500 |  |
+| `radius.2` | 0.125rem (2px) | <span class="ods-tile" style="border-radius:var(--radius-2)"></span> |
+| `radius.4` | 0.25rem (4px) | <span class="ods-tile" style="border-radius:var(--radius-4)"></span> |
+| `radius.6` | 0.375rem (6px) | <span class="ods-tile" style="border-radius:var(--radius-6)"></span> |
+| `shadow.none` | 0px 0px 0px 0px #00000000 | <span class="ods-card" style="box-shadow:var(--shadow-none)"></span> |
+| `shadow.overlay` | 0px 8px 24px 0px #0D111729 | <span class="ods-card" style="box-shadow:var(--shadow-overlay)"></span> |
+| `shadow.overlay-dark` | 0px 8px 24px 0px #00000080 | <span class="ods-card" style="box-shadow:var(--shadow-overlay-dark)"></span> |
+| `size.16` | 1rem (16px) | <span class="ods-bar" style="width:var(--size-16)"></span> |
+| `size.32` | 2rem (32px) | <span class="ods-bar" style="width:var(--size-32)"></span> |
+| `space.12` | 0.75rem (12px) | <span class="ods-bar" style="width:var(--space-12)"></span> |
+| `space.16` | 1rem (16px) | <span class="ods-bar" style="width:var(--space-16)"></span> |
+| `space.4` | 0.25rem (4px) | <span class="ods-bar" style="width:var(--space-4)"></span> |
 
 ## Where it lands
 

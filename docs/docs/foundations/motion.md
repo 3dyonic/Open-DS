@@ -10,6 +10,10 @@ description: "Dense data: What moves, why and how fast."
 
 What moves, why and how fast.
 
+<div class="ods-specimen">
+<span class="ods-item"><span class="ods-motion" style="--ods-d:var(--motion-duration-feedback)"><span></span></span><span class="ods-label">motion.duration.feedback</span></span>
+</div>
+
 ## The five answers
 
 | Question | Answer | Why |
@@ -22,10 +26,21 @@ What moves, why and how fast.
 
 ## Tokens
 
-| Token | Value |
+Each token points to another token. Values live only on primitives, below.
+
+| Token | Points to |
 | --- | --- |
-| `motion.duration.feedback` | 120ms |
-| `motion.easing.standard` | cubic-bezier(0.2, 0, 0, 1) |
+| `motion.duration.feedback` | `duration.fast` |
+| `motion.easing.standard` | `easing.standard` |
+
+## Primitives
+
+The raw values the tokens above end at.
+
+| Primitive | Value | Sample |
+| --- | --- | --- |
+| `duration.fast` | 120ms | <span class="ods-motion" style="--ods-d:var(--duration-fast)"><span></span></span> |
+| `easing.standard` | cubic-bezier(0.2, 0, 0, 1) |  |
 
 ## Where it lands
 
