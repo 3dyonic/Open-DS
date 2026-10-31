@@ -9,16 +9,19 @@ export type Primitive = {
   description?: string;
   /** Semantic tokens that point at it, with the mode each lives in. */
   usedBy: { path: string; mode: string }[];
-  /** Set when the primitive itself points at another primitive. */
+  /** Set when the primitive itself points at another primitive (a role pointing at the palette). */
   ref?: string;
+  /** Other primitives that point at this one. */
+  pointedBy: string[];
 };
 export type PrimitiveGroup = { id: string; title: string; why: string; items: Primitive[] };
 
 const GROUPS: [string, string, string][] = [
+  ["palette", "Colour palette", "Raw hues, step by step. The only place colour values are typed."],
   [
     "color",
-    "Colour",
-    "Every colour the scheme can pick from: neutrals, the brand ramp and status colours.",
+    "Colour roles",
+    "Neutral, brand and status ramps. Each step points at the palette, so changing a brand colour means repointing its role.",
   ],
   ["font", "Type", "Font families, sizes, weights and line heights."],
   ["space", "Space", "The spacing steps gaps and insets pick from."],
@@ -70,17 +73,19 @@ export function primitivesPage(schemeId: string) {
       if (r) used.set(r, [...(used.get(r) ?? []), { path, mode }]);
     }
   }
-  // A brand primitive that points at a shared one (radius.brand.control → radius.4) passes its users on.
-  const brandRefs = new Map<string, string[]>();
-  for (const b of Object.values(t.brands))
-    for (const { path, token } of flatten(b.primitive ?? {})) {
+  // A primitive that points at another (color.brand.600 → color.violet.600, radius.brand.control
+  // → radius.4) passes its users on.
+  const primRefs = new Map<string, string[]>();
+  for (const tree of [t.primitive, ...Object.values(t.brands).map((b) => b.primitive ?? {})])
+    for (const { path, token } of flatten(tree)) {
       const r = refOf(token.$value);
-      if (r) brandRefs.set(r, [...(brandRefs.get(r) ?? []), path]);
+      if (r) primRefs.set(r, [...(primRefs.get(r) ?? []), path]);
     }
 
   const rows = (tree: Node): Primitive[] =>
     flatten(tree).map(({ path, token }) => {
-      const via = (brandRefs.get(path) ?? []).flatMap((p) => used.get(p) ?? []);
+      const pointedBy = [...new Set(primRefs.get(path) ?? [])];
+      const via = pointedBy.flatMap((p) => used.get(p) ?? []);
       const usedBy = [...(used.get(path) ?? []), ...via];
       return {
         path,
@@ -91,6 +96,7 @@ export function primitivesPage(schemeId: string) {
           (u, i) => usedBy.findIndex((x) => x.path === u.path && x.mode === u.mode) === i,
         ),
         ref: refOf(token.$value),
+        pointedBy,
       };
     });
 
@@ -99,7 +105,14 @@ export function primitivesPage(schemeId: string) {
       id,
       title,
       why,
-      items: all.filter((p) => p.path.split(".")[0] === id),
+      // Colour splits in two: raw palette values, and roles that point at them.
+      items: all.filter((p) =>
+        id === "palette"
+          ? p.path.startsWith("color.") && !p.ref
+          : id === "color"
+            ? p.path.startsWith("color.") && !!p.ref
+            : p.path.split(".")[0] === id,
+      ),
     })).filter((g) => g.items.length);
 
   const brandIds = Object.keys(t.brands);

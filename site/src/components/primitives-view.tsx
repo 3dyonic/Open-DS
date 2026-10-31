@@ -6,6 +6,13 @@ function Specimen({ p, brand }: { p: Primitive; brand?: string }) {
   const v = p.value;
   const box =
     "flex h-[40px] w-[64px] shrink-0 items-center justify-center rounded-[4px] border border-line bg-white";
+  if (p.ref && p.type === "color")
+    return (
+      <span
+        className="h-[40px] w-[64px] shrink-0 rounded-[4px] border border-line"
+        style={{ background: `var(--${p.path.replaceAll(".", "-")})` }}
+      />
+    );
   if (p.ref) return <span className={`${box} font-mono text-[10px] text-muted`}>→</span>;
   if (p.type === "color")
     return (
@@ -85,6 +92,11 @@ function Group({ g, brand }: { g: PrimitiveGroup; brand?: string }) {
               )}
             </div>
             <div className="flex min-w-0 flex-col gap-1">
+              {p.pointedBy.length > 0 && (
+                <span className="text-[13px] text-[#3e3a31]">
+                  Picked by <span className="font-mono break-all">{p.pointedBy.join(", ")}</span>
+                </span>
+              )}
               <span className="text-[12px] font-medium uppercase tracking-[0.44px] text-muted">
                 Used by
               </span>
@@ -118,7 +130,7 @@ export function PrimitivesView({ p }: { p: PrimitivesPage }) {
     p.shared.reduce((n, g) => n + g.items.length, 0) +
     p.brands.reduce((n, b) => n + b.groups.reduce((m, g) => m + g.items.length, 0), 0);
   return (
-    <div className="flex flex-col gap-12 px-5 pb-20 lg:px-20">
+    <div data-scheme={p.scheme.id} className="flex flex-col gap-12 px-5 pb-20 lg:px-20">
       <header className="flex flex-col gap-4">
         <nav
           aria-label="Breadcrumb"
