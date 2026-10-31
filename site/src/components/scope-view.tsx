@@ -5,7 +5,12 @@ import Link from "next/link";
 import type { ScopePage } from "@/lib/scope";
 import { Legend, Swatch } from "./chrome";
 
-const cssVar = (path: string) => `var(--${path.replaceAll(".", "-")})`;
+// A base (@) drops out of the name: color.action.primary.@ is --color-action-primary.
+const cssVar = (path: string) =>
+  `var(--${path
+    .split(".")
+    .filter((p) => p !== "@")
+    .join("-")})`;
 const isColor = (v: string) => /^#[0-9a-f]{3,8}$/i.test(v) || v.startsWith("rgb");
 
 function Cells({ on, total }: { on: number; total: number }) {

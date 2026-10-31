@@ -143,8 +143,12 @@ export function keyInfo(
   roots = assetRoots(),
   g = grammar(roots),
 ) {
-  const key = g.component_keys.find((k) => k.id === keyId);
+  // A part with variants has a base, @: button/primary/background means button/primary/background/@.
+  const key =
+    g.component_keys.find((k) => k.id === keyId) ??
+    g.component_keys.find((k) => k.id === `${keyId}/@`);
   if (!key) return null;
+  keyId = key.id;
   const index = readJson(join(roots.tokens, "index.json")).schemes.find(
     (s) => s.id === schemeId,
   );

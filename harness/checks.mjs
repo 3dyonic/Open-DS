@@ -728,7 +728,7 @@ export const CHECKS = {
     run: (c) => {
       const err = ensureTokens(c);
       if (err) return bad(tail(err));
-      const keys = c.json("schemes/grammar.json").component_keys.map((k) => `--${k.id.replaceAll("/", "-")}`);
+      const keys = c.json("schemes/grammar.json").component_keys.map((k) => `--${k.id.split("/").filter((p) => p !== "@").join("-")}`);
       const gaps = [];
       for (const s of SCHEMES) {
         const css = c.has("tokens", "dist", s, "tokens.css") ? c.read("tokens", "dist", s, "tokens.css") : "";

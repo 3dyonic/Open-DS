@@ -127,7 +127,7 @@ export function proofData(id: string) {
         "color.text.muted",
         "color.border.default",
         "color.surface.canvas",
-        "color.action.primary",
+        "color.action.primary.@",
       ].map((p) => String(at(tokens, p))),
       display: String(at(tokens, "type.display.font-family")),
       fonts: [

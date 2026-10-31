@@ -14,15 +14,15 @@ See it in [Storybook](http://localhost:6006) under Components / Table, in every 
 
 ## Component keys
 
-The CSS variable is the key with `/` replaced by `-`. Each key points to a token; values live only on primitives.
+The CSS variable is the key with `/` replaced by `-` and the base `@` dropped. Each key points to a token; values live only on primitives.
 
 | Key | What it controls | Points to, light | Points to, dark |
 | --- | --- | --- | --- |
-| `table/header-background` | Header row fill. | `color.surface.sunken` → `dense-data.theme.light.color-surface-sunken` → `color.slate.light.100` | `color.surface.sunken` → `dense-data.theme.dark.color-surface-sunken` → `color.slate.dark.100` |
+| `table/header-background` | Header row fill. | `color.surface.sunken` → `dense-data.theme.light.color.surface.sunken` → `color.slate.light.100` | `color.surface.sunken` → `dense-data.theme.dark.color.surface.sunken` → `color.slate.dark.100` |
 | `table/row-height` | Height of one data row. | `size.row` → `size.32` | same |
 | `table/cell-padding-x` | Horizontal padding inside a cell. | `space.inset.cell-x` → `space.12` | same |
-| `table/row-border` | Line between rows. | `color.border.default` → `dense-data.theme.light.color-border-default` → `color.slate.light.200` | `color.border.default` → `dense-data.theme.dark.color-border-default` → `color.slate.dark.100` |
-| `table/row-selected` | Fill of a selected row. | `color.surface.selected` → `dense-data.theme.light.color-surface-selected` → `color.violet.light.100` | `color.surface.selected` → `dense-data.theme.dark.color-surface-selected` → `color.violet.dark.100` |
+| `table/row-border` | Line between rows. | `color.border.default` → `dense-data.theme.light.color.border.default` → `color.slate.light.200` | `color.border.default` → `dense-data.theme.dark.color.border.default` → `color.slate.dark.100` |
+| `table/row-selected` | Fill of a selected row. | `color.surface.selected` → `dense-data.theme.light.color.surface.selected` → `color.violet.light.100` | `color.surface.selected` → `dense-data.theme.dark.color.surface.selected` → `color.violet.dark.100` |
 | `table/font-size` | Cell text size. | `type.data.font-size` → `font.size.13` | same |
 
 ## When to use it
