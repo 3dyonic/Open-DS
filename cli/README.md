@@ -1,6 +1,6 @@
 # CLI
 
-The `open-ds` command. It lists the schemes, explains their decisions, and deploys one into a project.
+The `open-ds` command. It lists the schemes, explains their decisions, creates a full design system project from one, and deploys one into an existing app.
 
 ```bash
 node cli/bin/open-ds.js list
@@ -8,11 +8,14 @@ node cli/bin/open-ds.js show dense-data
 node cli/bin/open-ds.js why dense-data typography.definition
 node cli/bin/open-ds.js why multi-brand button/radius
 node cli/bin/open-ds.js when content-first "a number in a table"
+node cli/bin/open-ds.js create ../test-ds --scheme dense-data
 node cli/bin/open-ds.js init multi-brand --dir ../my-app --brand birch
 node cli/bin/open-ds.js add dialog --dir ../my-app
 ```
 
-`init` writes into the project:
+`create <dir> --scheme <id>` writes a design system project that depends on the open-ds package: the DTCG token source in `tokens/src` with a Style Dictionary build (`npm run tokens`), the components, Storybook (`npm run storybook`), Docusaurus docs (`npm run docs`), `scheme.json`, the agent files, CI and a README. `pnpm test:create` packs the CLI, creates a project from the packed file, installs it and builds all three.
+
+`init` writes into an existing app:
 
 | Path | What it is |
 | --- | --- |

@@ -1,8 +1,8 @@
 import assert from "node:assert/strict";
 import { execFileSync } from "node:child_process";
-import { existsSync, mkdtempSync, readFileSync, readdirSync, rmSync } from "node:fs";
+import { existsSync, mkdirSync, mkdtempSync, readFileSync, readdirSync, rmSync, writeFileSync } from "node:fs";
 import { tmpdir } from "node:os";
-import { join } from "node:path";
+import { dirname, join } from "node:path";
 import test from "node:test";
 import { addComponent, deploy } from "../src/cli.mjs";
 import { assetRoots, grammar, keyInfo, loadScheme, schemeIds, when, why } from "../src/schemes.mjs";
@@ -20,7 +20,7 @@ test("list shows the five schemes", () => {
 
 test("help names every scheme command", () => {
   const out = cli("--help");
-  for (const c of ["list", "show", "why", "when", "init", "add"]) assert.match(out, new RegExp(`open-ds ${c}`));
+  for (const c of ["list", "show", "why", "when", "create", "init", "add"]) assert.match(out, new RegExp(`open-ds ${c}`));
 });
 
 test("why follows the because chain back to the reasons", () => {
@@ -181,4 +181,27 @@ test("init --docs writes the design system's docs", () => {
   } finally {
     rmSync(dir, { recursive: true, force: true });
   }
+});
+
+test("create writes a full design system project", async () => {
+  const { createProject } = await import("../src/create.mjs");
+  const dir = join(temp(), "ds");
+  const record = createProject("multi-brand", dir, { brand: "coral", openDs: "file:../open-ds.tgz" });
+  assert.equal(record.kind, "project");
+  assert.equal(record.brand, "coral");
+  for (const f of [".gitignore", "tokens/build.mjs", "tokens/src/brands/aster.tokens.json", ".storybook/preview.tsx", "stories/button.stories.tsx", "docs/docs/index.md", "scheme.json", "AGENTS.md"])
+    assert.ok(existsSync(join(dir, f)), f);
+  const themes = JSON.parse(readFileSync(join(dir, "tokens/themes.json"), "utf8"));
+  assert.equal(themes.brands[0].id, "coral");
+  const pkg = JSON.parse(readFileSync(join(dir, "package.json"), "utf8"));
+  assert.equal(pkg.devDependencies["open-ds"], "file:../open-ds.tgz");
+  assert.ok(!readFileSync(join(dir, "stories/button.stories.tsx"), "utf8").includes("@open-ds/ui"));
+  assert.ok(!readFileSync(join(dir, ".storybook/preview-head.html"), "utf8").includes("__"), "a template placeholder was left in");
+  assert.throws(() => createProject("multi-brand", dir), /not empty/);
+  const fresh = join(temp(), "fresh");
+  mkdirSync(join(fresh, "vendor"), { recursive: true });
+  writeFileSync(join(fresh, "package-lock.json"), "{}");
+  assert.equal(createProject("dense-data", fresh).scheme, "dense-data");
+  rmSync(dirname(fresh), { recursive: true, force: true });
+  rmSync(dirname(dir), { recursive: true, force: true });
 });

@@ -9,7 +9,7 @@ const COMMANDS = [
   "open-ds add <component>",
 ];
 
-export function agentsMd(scheme, g, { brand, components }) {
+export function agentsMd(scheme, g, { brand, components, project = false }) {
   const qs = questions(g);
   const sit = Object.fromEntries(g.situations.map((s) => [s.id, s]));
   const answer = (id) => {
@@ -30,10 +30,18 @@ export function agentsMd(scheme, g, { brand, components }) {
     "",
     "## How the files fit together",
     "",
-    "- `src/styles/open-ds.css`: every token as a CSS variable (light and dark; add the class `dark` for dark mode), shadcn variables and a Tailwind v4 theme. Import it after Tailwind.",
+    ...(project
+      ? [
+          "- `tokens/src/*.tokens.json`: the DTCG token source. Edit a token here, then run `npm run tokens`. Style Dictionary (`tokens/build.mjs`) writes `build/`.",
+          "- `src/styles/index.css`: Tailwind, the built tokens (light and dark; add the class `dark` for dark mode), the shadcn and Tailwind theme and the base styles.",
+          "- `stories/`: Storybook (`npm run storybook`). `docs/`: the Docusaurus docs (`npm run docs`).",
+        ]
+      : [
+          "- `src/styles/open-ds.css`: every token as a CSS variable (light and dark; add the class `dark` for dark mode), shadcn variables and a Tailwind v4 theme. Import it after Tailwind.",
+        ]),
     ...(brand ? [`- Brand: set \`data-brand="${brand}"\` on \`<html>\`. Other brands: ${Object.keys(scheme.tokens.brands).join(", ")}.`] : []),
     "- `src/components/ui/*`: the components. Each reads only component keys such as `--button-primary-background`. Change a key, not the component.",
-    "- `.open-ds/scheme.json`: the full scheme: every answer with why and because, every usage rule, the voice, the tokens.",
+    `- \`${project ? "scheme.json" : ".open-ds/scheme.json"}\`: the full scheme: every answer with why and because, every usage rule, the voice, the tokens.`,
     "- `open-ds.json`: what was installed.",
     "",
     "## Usage rules (when to use what)",
@@ -79,14 +87,14 @@ export function agentsMd(scheme, g, { brand, components }) {
   return lines.join("\n");
 }
 
-export function skillSection(scheme) {
+export function skillSection(scheme, { project = false } = {}) {
   return [
     "",
     `## This project: ${scheme.name}`,
     "",
     scheme.summary,
     "",
-    "Read `AGENTS.md` for the usage rules and the voice. Read `.open-ds/scheme.json` when you need the reason behind a decision.",
+    `Read \`AGENTS.md\` for the usage rules and the voice. Read \`${project ? "scheme.json" : ".open-ds/scheme.json"}\` when you need the reason behind a decision.`,
     "",
   ].join("\n");
 }
