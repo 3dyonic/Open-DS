@@ -773,11 +773,12 @@ export const CHECKS = {
         "site/src/app/take/page.tsx",
         "site/src/app/contribute/page.tsx",
         "site/src/app/questions/page.tsx",
+        "site/src/app/install/page.tsx",
       ];
       const missing = need.filter((f) => !c.has(f));
       return missing.length
         ? bad(`missing routes: ${missing.join(", ")}`)
-        : ok("home, schemes, scheme, scope, what moves, compare, take, contribute, questions");
+        : ok("home, schemes, scheme, scope, what moves, compare, take, contribute, questions, install");
     },
   },
   "site-build": {
