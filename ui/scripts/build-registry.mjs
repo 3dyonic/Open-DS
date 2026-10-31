@@ -43,6 +43,13 @@ export function buildRegistry() {
       dependencies: ["clsx", "tailwind-merge"],
       files: [{ path: "src/lib/utils.ts", type: "registry:lib" }],
     },
+    {
+      name: "use-mobile",
+      type: "registry:lib",
+      title: "useIsMobile hook",
+      description: "True below the phone breakpoint. The sidebar uses it.",
+      files: [{ path: "src/lib/use-mobile.ts", type: "registry:lib" }],
+    },
   ];
   for (const file of readdirSync(join(here, "src", "components")).sort()) {
     const name = file.replace(/\.tsx$/, "");
@@ -54,7 +61,11 @@ export function buildRegistry() {
       description: describe(src),
       dependencies: NPM.filter((d) => src.includes(`from "${d}"`)),
       // The cn helper, and the other components this one imports.
-      registryDependencies: ["utils", ...[...src.matchAll(/from "\.\/([a-z-]+)"/g)].map((m) => m[1])],
+      registryDependencies: [
+        "utils",
+        ...[...src.matchAll(/from "\.\.\/lib\/(use-[a-z-]+)"/g)].map((m) => m[1]),
+        ...[...src.matchAll(/from "\.\/([a-z-]+)"/g)].map((m) => m[1]),
+      ],
       files: [{ path: `src/components/${file}`, type: "registry:ui" }],
     });
   }
@@ -88,7 +99,7 @@ export function buildRegistry() {
       // shadcn rewrites @/ imports to the project's aliases, so components find lib/utils.
       files: item.files?.map((f) => ({
         ...f,
-        content: read(join(here, f.path)).replace(`from "../lib/utils"`, `from "@/lib/utils"`),
+        content: read(join(here, f.path)).replaceAll(`from "../lib/`, `from "@/lib/`),
       })),
     };
     writeFileSync(join(here, "r", `${item.name}.json`), JSON.stringify(built, null, 2) + "\n");
