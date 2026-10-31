@@ -145,7 +145,20 @@ export function createProject(schemeId, dir, { brand, openDs = `^${VERSION}`, ov
   );
 
   // Storybook stories, with this scheme's usage rules.
-  for (const f of readdirSync(roots.stories).filter((x) => x.endsWith(".stories.tsx"))) {
+  // A story is copied only when everything it imports from the components is installed here.
+  const exported = new Set(
+    components.flatMap((c) => {
+      const src = readFileSync(join(roots.ui, "components", `${c}.tsx`), "utf8");
+      const names = [...src.matchAll(/^export (?:function|const|interface|type) ([A-Za-z]+)/gm)].map((m) => m[1]);
+      for (const m of src.matchAll(/^export \{([^}]+)\}/gm)) names.push(...m[1].split(",").map((x) => x.trim()).filter(Boolean));
+      return names;
+    }),
+  );
+  const storyFits = (text) => {
+    const m = text.match(/import \{([^}]+)\} from "@open-ds\/ui"/);
+    return !m || m[1].split(",").map((x) => x.trim()).filter(Boolean).every((n) => exported.has(n));
+  };
+  for (const f of readdirSync(roots.stories).filter((x) => x.endsWith(".stories.tsx") && storyFits(readFileSync(join(roots.stories, x), "utf8")))) {
     write(
       `stories/${f}`,
       readFileSync(join(roots.stories, f), "utf8").replaceAll(`from "@open-ds/ui"`, `from "../src"`).replace(`from "../src/usage"`, `from "./usage"`).replace(`from "../src/samples"`, `from "./samples"`).replace(`from "../src/docs-blocks"`, `from "./docs-blocks"`),
