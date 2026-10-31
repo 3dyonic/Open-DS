@@ -20,7 +20,7 @@ const GROUPS: [string, string, string][] = [
   [
     "color",
     "Colour",
-    "Raw hues. Each has a light ramp, a dark ramp (the same steps, tuned for dark backgrounds) and its base value ($root). Brand themes pick from these.",
+    "Raw hues. Each has a light ramp, a dark ramp (the same steps, tuned for dark backgrounds) and a base value named after the hue (such as color.purple), written $root in the source. Brand themes pick from these.",
   ],
   ["font", "Type", "Font families, sizes, weights and line heights."],
   ["space", "Space", "The spacing steps gaps and insets pick from."],
@@ -105,6 +105,14 @@ export function primitivesPage(schemeId: string) {
     if (r) primRefs.set(r, [...(primRefs.get(r) ?? []), path]);
   }
 
+  // The value a reference ends at, so a hue's base value draws its swatch.
+  const byPath = new Map(flatten(t.primitive).map(({ path, token }) => [path, token]));
+  const resolve = (v: unknown, depth = 0): unknown => {
+    const r = refOf(v);
+    const next = r && byPath.get(r);
+    return next && depth < 10 ? resolve(next.$value, depth + 1) : v;
+  };
+
   const rows = (tree: Node): Primitive[] =>
     flatten(tree).map(({ path, token }) => {
       const pointedBy = [...new Set(primRefs.get(path) ?? [])];
@@ -112,7 +120,7 @@ export function primitivesPage(schemeId: string) {
       const usedBy = [...(used.get(path) ?? []), ...via];
       return {
         path,
-        value: show(token.$value),
+        value: show(resolve(token.$value)),
         type: String(token.$type ?? ""),
         description: token.$description as string | undefined,
         usedBy: usedBy.filter(
