@@ -15,7 +15,7 @@
     },
     {
       "id": "scopes",
-      "description": "The design decisions: typography, color, spacing, shape, elevation, motion, iconography, theming, accessibility, naming, voice and tone. Each answers the five method questions."
+      "description": "The design decisions: typography, color, spacing, shape, elevation, motion, iconography, theming, accessibility, naming, voice and tone, components. Each answers the five method questions."
     },
     {
       "id": "tokens",
@@ -1802,6 +1802,149 @@
           ]
         }
       ]
+    },
+    {
+      "id": "components",
+      "kind": "scope",
+      "title": "Components",
+      "description": "Which components the system carries: its inventory, picked from the catalogue.",
+      "owns": [
+        "component"
+      ],
+      "lands_in": [
+        "button",
+        "input",
+        "control",
+        "badge",
+        "card",
+        "table",
+        "tabs",
+        "overlay"
+      ],
+      "situations": [
+        "missing-component"
+      ],
+      "questions": [
+        {
+          "id": "components.roles",
+          "method": "roles",
+          "text": "Which component families does it need?",
+          "description": "The families of the catalogue the inventory draws from. Core is action, form, feedback, overlay, layout and navigation.",
+          "options": [
+            {
+              "id": "core",
+              "label": "Actions, forms, feedback, overlays, layout and navigation"
+            },
+            {
+              "id": "core-data",
+              "label": "Core, plus data"
+            },
+            {
+              "id": "core-content",
+              "label": "Core, plus content and media"
+            },
+            {
+              "id": "core-media",
+              "label": "Core, plus media"
+            }
+          ]
+        },
+        {
+          "id": "components.count",
+          "method": "count",
+          "text": "How many components does it carry?",
+          "description": "The size of the inventory, as a word.",
+          "options": [
+            {
+              "id": "few",
+              "label": "Few",
+              "description": "Up to 20 components."
+            },
+            {
+              "id": "some",
+              "label": "Some",
+              "description": "21 to 35 components."
+            },
+            {
+              "id": "many",
+              "label": "Many",
+              "description": "More than 35 components."
+            }
+          ]
+        },
+        {
+          "id": "components.definition",
+          "method": "definition",
+          "text": "How does a component earn its place?",
+          "description": "The rule that admits a component into the inventory.",
+          "options": [
+            {
+              "id": "scenario",
+              "label": "A use scenario needs it"
+            },
+            {
+              "id": "family",
+              "label": "Its family is in the roles, so product teams find it ready"
+            },
+            {
+              "id": "inclusive",
+              "label": "It works for everyone, with any device and assistive technology"
+            },
+            {
+              "id": "brand-moment",
+              "label": "It gives the brand a moment"
+            }
+          ]
+        },
+        {
+          "id": "components.values",
+          "method": "values",
+          "text": "How many variants does each component offer?",
+          "description": "Variants and sizes per component, as a word.",
+          "options": [
+            {
+              "id": "few",
+              "label": "Few"
+            },
+            {
+              "id": "some",
+              "label": "Some"
+            },
+            {
+              "id": "many",
+              "label": "Many"
+            }
+          ]
+        },
+        {
+          "id": "components.lands",
+          "method": "lands",
+          "text": "Where do components do the most work?",
+          "description": "The screens where the inventory is used most.",
+          "options": [
+            {
+              "id": "tables-forms",
+              "label": "Tables and forms"
+            },
+            {
+              "id": "articles",
+              "label": "Articles"
+            },
+            {
+              "id": "forms",
+              "label": "Forms and steps"
+            },
+            {
+              "id": "sign-up-account",
+              "label": "Sign-up and account pages"
+            },
+            {
+              "id": "campaign-sections",
+              "label": "Campaign sections"
+            }
+          ]
+        }
+      ]
     }
   ],
   "situations": [
@@ -1996,6 +2139,12 @@
       "scope": "voice",
       "title": "A first visit",
       "description": "What the product says to someone new."
+    },
+    {
+      "id": "missing-component",
+      "scope": "components",
+      "title": "No component in the inventory fits",
+      "description": "You need a component this design system does not carry."
     }
   ],
   "components": [
@@ -2496,5 +2645,358 @@
       "description": "Easing of feedback transitions.",
       "default": "motion.easing.standard"
     }
-  ]
+  ],
+  "catalogue": {
+    "description": "Every component a design system can carry: the UI components of the shadcn/ui registry (style new-york-v4, MIT), plus toast, which Open DS builds itself. Each scheme picks its inventory from this list through the components scope. The component-api keys in components cover the ones built so far.",
+    "source": "https://github.com/shadcn-ui/ui/tree/main/apps/v4/registry/new-york-v4/ui",
+    "families": [
+      {
+        "id": "action",
+        "description": "Buttons and toggles that start or switch something."
+      },
+      {
+        "id": "form",
+        "description": "Fields, choices and pickers that take input."
+      },
+      {
+        "id": "data",
+        "description": "Tables, charts and counts that show records."
+      },
+      {
+        "id": "navigation",
+        "description": "Menus, tabs, breadcrumbs and bars that move between places."
+      },
+      {
+        "id": "feedback",
+        "description": "Alerts, toasts, loading and empty states that report what happened."
+      },
+      {
+        "id": "overlay",
+        "description": "Dialogs, sheets, popovers and tooltips that sit above the page."
+      },
+      {
+        "id": "layout",
+        "description": "Cards, separators and containers that group and arrange content."
+      },
+      {
+        "id": "content",
+        "description": "Accordions and sections that organise long text."
+      },
+      {
+        "id": "media",
+        "description": "Images, avatars and carousels."
+      },
+      {
+        "id": "conversation",
+        "description": "Messages and attachments for chat interfaces."
+      }
+    ],
+    "items": [
+      {
+        "id": "accordion",
+        "family": "content",
+        "description": "Stacked sections that open one at a time."
+      },
+      {
+        "id": "alert",
+        "family": "feedback",
+        "description": "A message that stays on the page."
+      },
+      {
+        "id": "alert-dialog",
+        "family": "overlay",
+        "description": "A dialog that asks to confirm an action that cannot be undone."
+      },
+      {
+        "id": "aspect-ratio",
+        "family": "media",
+        "description": "Keeps an image or video at a fixed shape."
+      },
+      {
+        "id": "attachment",
+        "family": "conversation",
+        "description": "A file attached to a message."
+      },
+      {
+        "id": "avatar",
+        "family": "media",
+        "description": "A small image or initials for a person."
+      },
+      {
+        "id": "badge",
+        "family": "feedback",
+        "description": "A short label for a status or count."
+      },
+      {
+        "id": "breadcrumb",
+        "family": "navigation",
+        "description": "The path to the current page."
+      },
+      {
+        "id": "bubble",
+        "family": "conversation",
+        "description": "A chat message bubble."
+      },
+      {
+        "id": "button",
+        "family": "action",
+        "description": "Triggers an action."
+      },
+      {
+        "id": "button-group",
+        "family": "action",
+        "description": "Related buttons joined as one control."
+      },
+      {
+        "id": "calendar",
+        "family": "form",
+        "description": "A month grid for picking dates."
+      },
+      {
+        "id": "card",
+        "family": "layout",
+        "description": "A bordered container for one item or group."
+      },
+      {
+        "id": "carousel",
+        "family": "media",
+        "description": "Slides that move left and right."
+      },
+      {
+        "id": "chart",
+        "family": "data",
+        "description": "Bars, lines and areas built on Recharts."
+      },
+      {
+        "id": "checkbox",
+        "family": "form",
+        "description": "An on-off choice in a list or form."
+      },
+      {
+        "id": "collapsible",
+        "family": "layout",
+        "description": "One section that opens and closes."
+      },
+      {
+        "id": "combobox",
+        "family": "form",
+        "description": "A text field with a filtered list of choices."
+      },
+      {
+        "id": "command",
+        "family": "navigation",
+        "description": "A search-first menu of actions, opened from the keyboard."
+      },
+      {
+        "id": "context-menu",
+        "family": "navigation",
+        "description": "A menu on right-click."
+      },
+      {
+        "id": "dialog",
+        "family": "overlay",
+        "description": "A window over the page for a focused task."
+      },
+      {
+        "id": "drawer",
+        "family": "overlay",
+        "description": "A panel that slides up from the bottom, for phones."
+      },
+      {
+        "id": "dropdown-menu",
+        "family": "navigation",
+        "description": "A menu of actions opened from a button."
+      },
+      {
+        "id": "empty",
+        "family": "feedback",
+        "description": "What to show when there is nothing yet."
+      },
+      {
+        "id": "field",
+        "family": "form",
+        "description": "A label, control, hint and error laid out together."
+      },
+      {
+        "id": "form",
+        "family": "form",
+        "description": "Form state and validation wired to fields."
+      },
+      {
+        "id": "hover-card",
+        "family": "overlay",
+        "description": "A preview card on hover."
+      },
+      {
+        "id": "input",
+        "family": "form",
+        "description": "Single-line text entry."
+      },
+      {
+        "id": "input-group",
+        "family": "form",
+        "description": "An input with addons such as icons or buttons."
+      },
+      {
+        "id": "input-otp",
+        "family": "form",
+        "description": "Separate boxes for a one-time code."
+      },
+      {
+        "id": "item",
+        "family": "layout",
+        "description": "A row with media, title, description and actions."
+      },
+      {
+        "id": "kbd",
+        "family": "navigation",
+        "description": "A keyboard key or shortcut."
+      },
+      {
+        "id": "label",
+        "family": "form",
+        "description": "The name of a form control."
+      },
+      {
+        "id": "marker",
+        "family": "conversation",
+        "description": "A divider or status line inside a conversation."
+      },
+      {
+        "id": "menubar",
+        "family": "navigation",
+        "description": "A row of menus, as in desktop apps."
+      },
+      {
+        "id": "message",
+        "family": "conversation",
+        "description": "One message with its author and time."
+      },
+      {
+        "id": "message-scroller",
+        "family": "conversation",
+        "description": "A scrolling list of messages that keeps the newest in view."
+      },
+      {
+        "id": "native-select",
+        "family": "form",
+        "description": "The browser select, styled."
+      },
+      {
+        "id": "navigation-menu",
+        "family": "navigation",
+        "description": "Site navigation with links and panels."
+      },
+      {
+        "id": "pagination",
+        "family": "navigation",
+        "description": "Moves between pages of results."
+      },
+      {
+        "id": "popover",
+        "family": "overlay",
+        "description": "Rich content in a floating panel, opened by click."
+      },
+      {
+        "id": "progress",
+        "family": "feedback",
+        "description": "How far a task has come."
+      },
+      {
+        "id": "radio-group",
+        "family": "form",
+        "description": "One choice from a short list."
+      },
+      {
+        "id": "resizable",
+        "family": "layout",
+        "description": "Panels the user can resize by dragging."
+      },
+      {
+        "id": "scroll-area",
+        "family": "layout",
+        "description": "A region with styled scrollbars."
+      },
+      {
+        "id": "select",
+        "family": "form",
+        "description": "One choice from a list, in a menu."
+      },
+      {
+        "id": "separator",
+        "family": "layout",
+        "description": "A line between groups."
+      },
+      {
+        "id": "sheet",
+        "family": "overlay",
+        "description": "A panel that slides in from an edge."
+      },
+      {
+        "id": "sidebar",
+        "family": "navigation",
+        "description": "The side navigation of an app."
+      },
+      {
+        "id": "skeleton",
+        "family": "feedback",
+        "description": "A placeholder while content loads."
+      },
+      {
+        "id": "slider",
+        "family": "form",
+        "description": "A value picked by dragging along a track."
+      },
+      {
+        "id": "sonner",
+        "family": "feedback",
+        "description": "Stacked toasts, from the Sonner library."
+      },
+      {
+        "id": "spinner",
+        "family": "feedback",
+        "description": "A small loading indicator."
+      },
+      {
+        "id": "switch",
+        "family": "form",
+        "description": "An on-off setting that applies at once."
+      },
+      {
+        "id": "table",
+        "family": "data",
+        "description": "Rows and columns of records."
+      },
+      {
+        "id": "tabs",
+        "family": "navigation",
+        "description": "Switches between views of the same thing."
+      },
+      {
+        "id": "textarea",
+        "family": "form",
+        "description": "Multi-line text entry."
+      },
+      {
+        "id": "toast",
+        "family": "feedback",
+        "description": "A short message that confirms an action and goes away. Open DS builds its own; shadcn now ships sonner for this."
+      },
+      {
+        "id": "toggle",
+        "family": "action",
+        "description": "A button that stays pressed or not."
+      },
+      {
+        "id": "toggle-group",
+        "family": "action",
+        "description": "A set of toggles where one or many stay pressed."
+      },
+      {
+        "id": "tooltip",
+        "family": "overlay",
+        "description": "A short hint on hover or focus."
+      }
+    ]
+  }
 }

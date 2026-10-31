@@ -80,6 +80,110 @@
       ]
     }
   },
+  "inventory": {
+    "description": "The components this system carries, picked from the grammar catalogue by the components answers. Anything not listed is out.",
+    "follows": [
+      "components.roles",
+      "components.count",
+      "components.definition"
+    ],
+    "in": [
+      {
+        "id": "button",
+        "why": "Subscribe, share and save."
+      },
+      {
+        "id": "input",
+        "why": "Search and the newsletter field."
+      },
+      {
+        "id": "label",
+        "why": "Names every field."
+      },
+      {
+        "id": "field",
+        "why": "Lays out the newsletter and search forms."
+      },
+      {
+        "id": "alert",
+        "why": "A note or warning inside an article."
+      },
+      {
+        "id": "toast",
+        "why": "Confirms a saved article."
+      },
+      {
+        "id": "dialog",
+        "why": "Sign-up without leaving the page."
+      },
+      {
+        "id": "card",
+        "why": "Article previews."
+      },
+      {
+        "id": "separator",
+        "why": "Breaks between parts of a page."
+      },
+      {
+        "id": "accordion",
+        "why": "Questions and answers in guides."
+      },
+      {
+        "id": "collapsible",
+        "why": "A long aside the reader can open."
+      },
+      {
+        "id": "breadcrumb",
+        "why": "Shows where a guide sits."
+      },
+      {
+        "id": "navigation-menu",
+        "why": "The site sections."
+      },
+      {
+        "id": "pagination",
+        "why": "Moves through article lists."
+      },
+      {
+        "id": "aspect-ratio",
+        "why": "Keeps images in shape."
+      },
+      {
+        "id": "avatar",
+        "why": "The author of an article."
+      },
+      {
+        "id": "badge",
+        "why": "The topic of an article."
+      },
+      {
+        "id": "sheet",
+        "why": "The menu on a phone."
+      },
+      {
+        "id": "skeleton",
+        "why": "Article text while it loads."
+      }
+    ],
+    "out": [
+      {
+        "id": "table",
+        "why": "Long-form reading rarely needs records; a plain HTML table covers the odd one."
+      },
+      {
+        "id": "command",
+        "why": "Readers browse; they do not drive the site from the keyboard."
+      },
+      {
+        "id": "chart",
+        "why": "Figures appear as images inside articles."
+      },
+      {
+        "id": "tooltip",
+        "why": "Readers arrive on any device, and on touch screens hover hints never show; icons carry visible labels instead."
+      }
+    ]
+  },
   "themes": [
     {
       "id": "light",
@@ -671,6 +775,50 @@
       "because": [
         "content.q1"
       ]
+    },
+    {
+      "question": "components.roles",
+      "option": "core-content",
+      "why": "Readers need sections, navigation and little else.",
+      "because": [
+        "content.q1",
+        "tasks.q1"
+      ]
+    },
+    {
+      "question": "components.count",
+      "option": "few",
+      "why": "Actions are rare, so few components cover them.",
+      "because": [
+        "tasks.q2",
+        "team.q1"
+      ]
+    },
+    {
+      "question": "components.definition",
+      "option": "scenario",
+      "why": "A component joins only when reading needs it.",
+      "because": [
+        "scenarios.q2",
+        "tasks.q1"
+      ]
+    },
+    {
+      "question": "components.values",
+      "option": "few",
+      "why": "Few variants keep pages calm.",
+      "because": [
+        "brand.q2",
+        "outcomes.q1"
+      ]
+    },
+    {
+      "question": "components.lands",
+      "option": "articles",
+      "why": "Components sit inside and around articles.",
+      "because": [
+        "content.q1"
+      ]
     }
   ],
   "usage": [
@@ -971,6 +1119,16 @@
         "scenarios.q2"
       ],
       "example": "Practical guides, one a week. Start with the most read."
+    },
+    {
+      "situation": "missing-component",
+      "use": "plain text, a link or a heading",
+      "not": "a new component for one article",
+      "why": "Readers come for the words; extra parts pull the eye away from them.",
+      "because": [
+        "tasks.q1",
+        "outcomes.q1"
+      ]
     }
   ],
   "tokens": {

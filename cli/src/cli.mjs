@@ -85,7 +85,15 @@ export function deploy(schemeId, dir, { brand, overwrite = false, docs = false, 
     write(dir, `.open-ds/tokens/${t.id}.tokens.json`, readFileSync(join(tokenDir, `${t.id}.tokens.json`), "utf8"), files);
   }
   write(dir, ".open-ds/content.json", readFileSync(join(tokenDir, "content.json"), "utf8"), files);
-  write(dir, "AGENTS.md", agentsMd(scheme, g, { brand: brand ?? (brands.length > 1 ? brands[0] : null), components }), files);
+  write(
+    dir,
+    "AGENTS.md",
+    agentsMd(scheme, g, {
+      brand: brand ?? (brands.length > 1 ? brands[0] : null),
+      components,
+    }),
+    files,
+  );
   const skill = readFileSync(join(roots.skills, "open-ds", "SKILL.md"), "utf8") + skillSection(scheme);
   write(dir, ".claude/skills/open-ds/SKILL.md", skill, files);
   if (docs) {
@@ -140,7 +148,13 @@ export async function run(argv) {
     if (cmd === "list") {
       const data = schemeIds().map((id) => {
         const s = loadScheme(id);
-        return { id, name: s.name, summary: s.summary, brands: Object.keys(s.tokens.brands), status: s.status };
+        return {
+          id,
+          name: s.name,
+          summary: s.summary,
+          brands: Object.keys(s.tokens.brands),
+          status: s.status,
+        };
       });
       out(data, () => data.forEach((s) => console.log(`${s.id.padEnd(18)} ${s.summary}`)));
       return 0;
@@ -152,6 +166,10 @@ export async function run(argv) {
         console.log(`Use when: ${s.ai.use_when}\nAvoid when: ${s.ai.avoid_when}\n`);
         console.log(`Themes: ${s.themes.map((t) => t.id).join(", ")}`);
         console.log(`Voice: ${s.voice.summary.text}`);
+        if (s.inventory)
+          console.log(
+            `Inventory: ${s.inventory.in.length} of ${grammar().catalogue.items.length} components: ${s.inventory.in.map((i) => i.id).join(", ")}`,
+          );
         console.log(`Scenarios:\n${s.scenarios.map((x) => `  - ${x.text}`).join("\n")}`);
       });
       return 0;
@@ -188,7 +206,11 @@ export async function run(argv) {
       const scheme = flag(args, "--scheme");
       if (!scheme) throw new Error('create needs a scheme: --scheme <id>. Run "open-ds list" to see them.');
       const dir = resolve(args[0]);
-      const record = createProject(scheme, dir, { brand: flag(args, "--brand"), openDs: flag(args, "--open-ds"), overwrite: yes });
+      const record = createProject(scheme, dir, {
+        brand: flag(args, "--brand"),
+        openDs: flag(args, "--open-ds"),
+        overwrite: yes,
+      });
       out(record, () => {
         console.log(`Created the ${record.scheme} design system in ${dir}: ${record.files.length} files.`);
         console.log(`Next:\n  cd ${args[0]}\n  npm install\n  npm run storybook   # components\n  npm run docs        # docs`);
@@ -198,10 +220,16 @@ export async function run(argv) {
     if (cmd === "init") {
       if (!args[0]) throw new Error('init needs a scheme. Run "open-ds list" to see them.');
       const dir = resolve(flag(args, "--dir", "."));
-      const record = deploy(args[0], dir, { brand: flag(args, "--brand"), overwrite: yes, docs: withDocs });
+      const record = deploy(args[0], dir, {
+        brand: flag(args, "--brand"),
+        overwrite: yes,
+        docs: withDocs,
+      });
       out(record, () => {
         console.log(`Deployed ${record.scheme}${record.brand ? ` (${record.brand})` : ""} into ${dir}.`);
-        console.log(`Wrote ${Object.keys(record.files).length} files: tokens, ${record.components.length} components, AGENTS.md and the agent skill${withDocs ? ", and the docs pages in docs/" : ""}.`);
+        console.log(
+          `Wrote ${Object.keys(record.files).length} files: tokens, ${record.components.length} components, AGENTS.md and the agent skill${withDocs ? ", and the docs pages in docs/" : ""}.`,
+        );
         console.log(`Next: install the component packages: npm install ${record.dependencies.join(" ")}`);
         console.log(`Then import src/styles/open-ds.css after Tailwind.`);
       });
@@ -220,4 +248,3 @@ export async function run(argv) {
     return 1;
   }
 }
-

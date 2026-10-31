@@ -85,6 +85,11 @@ Themes: light, dark
 - voice.definition How is the voice defined? Rules and a word list. A word list of common words, with terms to avoid. (because people.q1)
 - voice.values How does it sound? Plain and direct. Every sentence is easy to read on the first try. (because people.q1, brand.q1)
 - voice.lands Where do the words matter most? Form steps and errors. Words decide whether a form gets finished. (because outcomes.q1)
+- components.roles Which component families does it need? Actions, forms, feedback, overlays, layout and navigation. Forms, steps and feedback are all a public service needs. (because content.q1, people.q1)
+- components.count How many components does it carry? Few. Fewer parts, each tested with assistive technology. (because people.q2, team.q2)
+- components.definition How does a component earn its place? It works for everyone, with any device and assistive technology. A component joins only when it works with any device and assistive technology. (because people.q1, people.q2)
+- components.values How many variants does each component offer? Few. One clear way to do each thing. (because people.q1, brand.q1)
+- components.lands Where do components do the most work? Forms and steps. Components do their work in forms and steps. (because content.q1, tasks.q1)
 
 ### Usage rules
 
@@ -120,6 +125,7 @@ Themes: light, dark
 - An empty state (empty-words): use Explain what will appear here and how to start; not A blank page; A blank page leaves people unsure if something failed. Example: "You have no saved applications. Start a new one below."
 - A confirmation question (confirm-words): use Say what will happen in plain words, and offer a way back; not A double negative; Plain words prevent a choice people did not mean. Example: "Do you want to cancel your application? Your answers will be deleted."
 - A first visit (first-visit): use Say how many steps there are and how long it takes; not Marketing copy; Knowing the length lowers effort and anxiety. Example: "This takes about 10 minutes. There are 4 steps."
+- No component in the inventory fits (missing-component): use a native HTML element with a label and a hint; not a custom widget that needs hover, drag or precise pointing; Native elements work with every assistive technology without extra work.
 
 ### Voice and tone
 
@@ -218,6 +224,11 @@ Themes: light, dark
 - voice.definition How is the voice defined? Principles and examples. Principles and examples guide each campaign's writers. (because team.q1)
 - voice.values How does it sound? Playful. Big words, few of them. (because brand.q1, brand.q2)
 - voice.lands Where do the words matter most? Headlines and buttons. Words work hardest in headlines and buttons. (because outcomes.q1)
+- components.roles Which component families does it need? Core, plus media. Campaigns lead with media and big sections. (because content.q1, brand.q2)
+- components.count How many components does it carry? Few. One action and a story need few parts; an agency keeps them fresh. (because tasks.q2, team.q1)
+- components.definition How does a component earn its place? It gives the brand a moment. A component joins when it gives the campaign a moment. (because brand.q1, outcomes.q1)
+- components.values How many variants does each component offer? Some. Some variants let each campaign look a little different. (because team.q2, brand.q2)
+- components.lands Where do components do the most work? Campaign sections. Components sit inside big campaign sections. (because content.q1, tasks.q1)
 
 ### Usage rules
 
@@ -253,6 +264,7 @@ Themes: light, dark
 - An empty state (empty-words): use Playful, with a clear next step; not A dead end; Playful words still need a way forward. Example: "Nothing here yet. Go find something you love."
 - A confirmation question (confirm-words): use Plain. No jokes when something is lost.; not Playful copy; Loss is never the moment for a joke. Example: "Remove this from your list? You can add it back later."
 - A first visit (first-visit): use One bold line and one button; not A paragraph of copy; Visitors from a social post give a few seconds. Example: "The drop is coming. Be first."
+- No component in the inventory fits (missing-component): use a section built from the inventory with campaign tokens; not a new component for one campaign; Campaigns change the look through tokens; new parts every drop are hard to keep working.
 
 ### Voice and tone
 
@@ -351,6 +363,11 @@ Themes: light, dark
 - voice.definition How is the voice defined? Principles and examples. Editors work from principles and examples, not word lists. (because team.q1, content.q1)
 - voice.values How does it sound? Conversational. Talk to one reader, like a good editor. (because people.q1, brand.q1)
 - voice.lands Where do the words matter most? Articles and guides. Most words are in articles and guides. (because content.q1)
+- components.roles Which component families does it need? Core, plus content and media. Readers need sections, navigation and little else. (because content.q1, tasks.q1)
+- components.count How many components does it carry? Few. Actions are rare, so few components cover them. (because tasks.q2, team.q1)
+- components.definition How does a component earn its place? A use scenario needs it. A component joins only when reading needs it. (because scenarios.q2, tasks.q1)
+- components.values How many variants does each component offer? Few. Few variants keep pages calm. (because brand.q2, outcomes.q1)
+- components.lands Where do components do the most work? Articles. Components sit inside and around articles. (because content.q1)
 
 ### Usage rules
 
@@ -386,6 +403,7 @@ Themes: light, dark
 - An empty state (empty-words): use An invitation, not a dead end; not "No items"; An empty list is a chance to show what the product offers. Example: "Nothing saved yet. Tap Save on any article to read it later."
 - A confirmation question (confirm-words): use Gentle and clear about what changes; not Guilt or pressure; Readers come back when leaving felt respectful. Example: "Unsubscribe from the weekly letter? You can come back any time."
 - A first visit (first-visit): use One sentence on what is here and why it is worth reading; not A sign-up wall; Occasional readers decide in seconds whether to stay. Example: "Practical guides, one a week. Start with the most read."
+- No component in the inventory fits (missing-component): use plain text, a link or a heading; not a new component for one article; Readers come for the words; extra parts pull the eye away from them.
 
 ### Voice and tone
 
@@ -484,6 +502,11 @@ Themes: light, dark
 - voice.definition How is the voice defined? Rules and a word list. A word list keeps labels identical across screens. (because team.q1, tasks.q2)
 - voice.values How does it sound? Terse. Experts want short labels and short messages. (because people.q1, brand.q1)
 - voice.lands Where do the words matter most? Errors and empty states. Errors and empty tables are where words decide the next action. (because outcomes.q2)
+- components.roles Which component families does it need? Core, plus data. Records need tables, filters and fast ways to move between them. (because content.q1, tasks.q1)
+- components.count How many components does it carry? Some. Enough for a full operations tool, few enough for a small team to keep right. (because content.q2, team.q1)
+- components.definition How does a component earn its place? A use scenario needs it. A component joins only when a daily task needs it. (because scenarios.q1, tasks.q2)
+- components.values How many variants does each component offer? Few. Few variants keep repeated screens identical. (because brand.q2, tasks.q2)
+- components.lands Where do components do the most work? Tables and forms. Most work happens in tables and the forms that edit them. (because content.q1, tasks.q1)
 
 ### Usage rules
 
@@ -519,6 +542,7 @@ Themes: light, dark
 - An empty state (empty-words): use Why it is empty and the one action that fills it; not A blank table; An empty table with no words looks like an error. Example: "No late orders. Change the date range to see older ones."
 - A confirmation question (confirm-words): use Name the exact object and the consequence; not "Are you sure?"; Acting on the wrong record is the costly mistake. Example: "Delete 3 orders? This cannot be undone."
 - A first visit (first-visit): use No tour. Show the data, with a tooltip where needed.; not A welcome tour; Daily experts skip tours; tooltips cover the first uses. Example: "Hover any column header to see what it counts."
+- No component in the inventory fits (missing-component): use a component from the inventory, composed (for example a popover with a command list); not a one-off component built for one screen; A small team keeps fewer parts right, and experts expect the same parts everywhere.
 
 ### Voice and tone
 
@@ -617,6 +641,11 @@ Themes: aster-light, aster-dark, birch-light, birch-dark, coral-light, coral-dar
 - voice.definition How is the voice defined? A shared core, brand tone on top. Errors and confirmations are shared; brand tone sits on top. (because business.q2, team.q1)
 - voice.values How does it sound? Plain and direct. The shared core is plain and direct. (because brand.q1)
 - voice.lands Where do the words matter most? Headlines and buttons. Brand tone shows in headlines and buttons. (because brand.q2)
+- components.roles Which component families does it need? Core, plus content and media. Product teams build sign-up and account forms, plus product pages with questions and faces. (because content.q1, team.q1)
+- components.count How many components does it carry? Some. Enough for three product teams, kept by one platform team. (because team.q1, team.q2)
+- components.definition How does a component earn its place? Its family is in the roles, so product teams find it ready. Product teams find a whole family ready instead of asking one by one. (because team.q1, team.q2)
+- components.values How many variants does each component offer? Some. Some variants let each brand feel present without new components. (because brand.q2, outcomes.q2)
+- components.lands Where do components do the most work? Sign-up and account pages. Most components sit in sign-up and account pages. (because content.q1, tasks.q1)
 
 ### Usage rules
 
@@ -652,6 +681,7 @@ Themes: aster-light, aster-dark, birch-light, birch-dark, coral-light, coral-dar
 - An empty state (empty-words): use Shared structure, brand words; not A different structure per brand; The structure is the shared core; words carry the brand. Example: "No orders yet. Your first order will appear here."
 - A confirmation question (confirm-words): use Shared across brands: plain and specific; not Brand tone when something is lost; Loss is never the moment for personality. Example: "Cancel your plan? It stays active until the end of the month."
 - A first visit (first-visit): use Brand tone in the first headline only; not Brand tone in every line; One headline carries the brand; the rest stays shared. Example: "Birch: Hi! Let's set up your plan."
+- No component in the inventory fits (missing-component): use a component from the inventory with brand tokens; not a component made for one brand; Brands change primitives, never components; one brand-only part breaks the shared library.
 
 ### Voice and tone
 

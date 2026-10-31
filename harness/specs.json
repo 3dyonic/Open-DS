@@ -254,6 +254,23 @@
         "cli-create-works",
         "cli-commands"
       ]
+    },
+    {
+      "id": "OD-136",
+      "title": "Components scope: each scheme picks its inventory from the shadcn catalogue",
+      "in": [
+        "grammar components scope with the five method questions and a missing-component situation",
+        "grammar catalogue: the shadcn/ui new-york-v4 UI components with families",
+        "every scheme answers the components questions and lists its inventory, in and notable out, each with why",
+        "inventory shown as N of M in the docs, open-ds show and AGENTS.md, with built or not yet built"
+      ],
+      "checks": [
+        "schemes-inventory",
+        "scopes-uniform-template",
+        "json-files-validate",
+        "docs-sections",
+        "llm-files"
+      ]
     }
   ]
 }
