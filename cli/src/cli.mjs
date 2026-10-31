@@ -31,6 +31,9 @@ const HELP = `open-ds: deploy an Open DS scheme as a full design system.
   open-ds why <scheme> <id>            the answer and its reasons, for a question id
                                        (typography.definition) or a component key (button/primary/background)
   open-ds when <scheme> <situation>    what to use and why, for a situation id or plain words
+  open-ds context <scheme> <target>    only the context for one target: a task (choose, build, write,
+                                       change, review), a component, a component key, a semantic
+                                       token (color.status.danger) or a situation
   open-ds create <dir> --scheme <id> [--brand <id>]
                                        write a full design system project: Style Dictionary tokens,
                                        components, Storybook, Docusaurus docs, agent files and CI
@@ -360,6 +363,18 @@ export async function run(argv) {
           `${rule.title}\n  Use: ${rule.use}\n  Not: ${rule.not}\n  Why: ${rule.why}`,
         ),
       );
+      return 0;
+    }
+    if (cmd === "context") {
+      const [id, target] = args;
+      loadScheme(id ?? "");
+      const { context, TASKS } = await import("./context.mjs");
+      const c = target && context(id, target);
+      if (!c)
+        throw new Error(
+          `context needs a target: a task (${TASKS.join(", ")}), a component, a component key, a semantic token or a situation id.`,
+        );
+      out(c, () => console.log(JSON.stringify(c, null, 2)));
       return 0;
     }
     if (cmd === "create") {

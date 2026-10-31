@@ -40,17 +40,42 @@ function leaves(
     .flatMap(([k, v]) => leaves(v, `${path}.${k}`));
 }
 
-/** Where a scope's owned paths live in a scheme: semantics, brand primitives, keys or words. */
+type Theme = { base?: Tree; light: Tree; dark: Tree };
+const themeOf = (s: Scheme) =>
+  Object.values((s.tokens as unknown as { brands: Record<string, { theme: Theme }> }).brands)[0]
+    .theme;
+
+/** The semantic tree in one mode, with each {theme.<path>} replaced by what the first brand's theme picks. */
+export function semanticView(s: Scheme, mode: "light" | "dark"): Tree {
+  const theme = themeOf(s);
+  const walk = (node: Tree): Tree =>
+    Object.fromEntries(
+      Object.entries(node).map(([k, v]) => {
+        if (isToken(v)) {
+          const t = v as { $value: unknown };
+          const m = typeof t.$value === "string" && t.$value.match(/^\{theme\.([^}]+)\}$/);
+          if (!m) return [k, v];
+          // The theme has the same paths as the semantics, with a base (@) per concept.
+          const at = (tree?: Tree) => {
+            const n = get(tree, m[1]);
+            return isToken(n) ? (n as { $value: unknown }) : undefined;
+          };
+          const pick = at(theme.base) ?? at(theme[mode]);
+          return [k, { ...(v as Tree), $value: pick?.$value ?? t.$value }];
+        }
+        return [k, v && typeof v === "object" ? walk(v as Tree) : v];
+      }),
+    );
+  return walk((s.tokens as unknown as { semantic: Tree }).semantic);
+}
+
+/** Where a scope's owned paths live in a scheme: semantics, the brand's theme, keys or words. */
 function sources(s: Scheme): Tree[] {
-  const t = s.tokens as unknown as {
-    semantic: { base: Tree; light: Tree };
-    brands: Record<string, { primitive: Tree }>;
-    component: Tree;
-    content: Tree;
-  };
+  const t = s.tokens as unknown as { component: Tree; content: Tree };
+  const theme = themeOf(s);
   return [
-    merge(t.semantic.base, t.semantic.light),
-    Object.values(t.brands)[0].primitive,
+    semanticView(s, "light"),
+    { theme: merge(theme.base ?? {}, theme.light) },
     { component: t.component },
     { content: t.content },
   ];
@@ -123,8 +148,7 @@ export function scopePage(schemeId: string, scopeId: string) {
     );
   };
   // What a token points to in dark mode, when its semantics differ there.
-  const sem = s.tokens as unknown as { semantic: { base: Tree; dark: Tree } };
-  const darkTree = merge(sem.semantic.base, sem.semantic.dark);
+  const darkTree = semanticView(s, "dark");
   const refOf = (v: unknown) => (typeof v === "string" && v.startsWith("{") ? v.slice(1, -1) : "");
   const tokens = list.map((t) => ({
     path: t.path,

@@ -6,14 +6,8 @@ function Specimen({ p, brand }: { p: Primitive; brand?: string }) {
   const v = p.value;
   const box =
     "flex h-[40px] w-[64px] shrink-0 items-center justify-center rounded-[4px] border border-line bg-white";
-  if (p.ref && p.type === "color")
-    return (
-      <span
-        className="h-[40px] w-[64px] shrink-0 rounded-[4px] border border-line"
-        style={{ background: `var(--${p.path.replaceAll(".", "-")})` }}
-      />
-    );
-  if (p.ref) return <span className={`${box} font-mono text-[10px] text-muted`}>→</span>;
+  if (p.ref && p.type !== "color")
+    return <span className={`${box} font-mono text-[10px] text-muted`}>→</span>;
   if (p.type === "color")
     return (
       <span
@@ -104,11 +98,16 @@ function Group({ g, brand, anchor }: { g: PrimitiveGroup; brand?: string; anchor
                 <ul className="flex flex-wrap gap-[6px]">
                   {p.usedBy.map((u) => (
                     <li
-                      key={`${u.mode}-${u.path}`}
+                      key={`${u.brand ?? ""}-${u.mode}-${u.path}`}
                       className="rounded-[3px] bg-paper px-2 py-[2px] font-mono text-[12px] break-all"
                     >
                       {u.path}
-                      {u.mode !== "base" && <span className="text-muted"> · {u.mode}</span>}
+                      {(u.brand || u.mode !== "base") && (
+                        <span className="text-muted">
+                          {" "}
+                          · {[u.brand, u.mode !== "base" ? u.mode : ""].filter(Boolean).join(" ")}
+                        </span>
+                      )}
                     </li>
                   ))}
                 </ul>
@@ -170,7 +169,11 @@ export function PrimitivesView({ p }: { p: PrimitivesPage }) {
           <p>
             The meaning comes from <strong className="text-ink">decision tokens</strong> (semantic
             tokens), which pick one option and say what it is for: &ldquo;the primary action&rdquo;,
-            &ldquo;a card corner&rdquo;. Each primitive below lists the decisions that use it.
+            &ldquo;a card corner&rdquo;. In between, each brand&rsquo;s theme picks a primitive for
+            every brand-dependent decision, in light and dark. Colours come by hue, then mode, then
+            step (color.violet.light.600). Primitives are steps only: each theme decides its own
+            base (@) for every concept, such as color.action.primary.@ beside
+            color.action.primary.hover. Each primitive below lists the decisions that reach it.
             Change a primitive, and every decision that points at it changes too.
           </p>
         </div>

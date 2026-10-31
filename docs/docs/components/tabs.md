@@ -14,10 +14,10 @@ See it in [Storybook](http://localhost:6006) under Components / Tabs, in every t
 
 ## Component keys
 
-The CSS variable is the key with `/` replaced by `-`. Each key points to a token; values live only on primitives.
+The CSS variable is the key with `/` replaced by `-` and the base `@` dropped. Each key points to a token; values live only on primitives.
 
 | Key | What it controls | Points to, light | Points to, dark |
 | --- | --- | --- | --- |
-| `tabs/indicator` | Active tab indicator. | `color.action.primary` → `color.brand.600` → `color.violet.600` | `color.action.primary` → `color.brand.300` → `color.violet.300` |
-| `tabs/label` | Inactive tab label. | `color.text.secondary` → `color.neutral.700` → `color.slate.700` | `color.text.secondary` → `color.neutral.300` → `color.slate.300` |
-| `tabs/label-active` | Active tab label. | `color.text.primary` → `color.neutral.900` → `color.slate.900` | `color.text.primary` → `color.neutral.50` → `color.slate.50` |
+| `tabs/indicator` | Active tab indicator. | `color.action.primary.@` → `dense-data.theme.light.color.action.primary.@` → `color.violet.light.600` | `color.action.primary.@` → `dense-data.theme.dark.color.action.primary.@` → `color.violet.dark.700` |
+| `tabs/label/@` | Inactive tab label. | `color.text.secondary` → `dense-data.theme.light.color.text.secondary` → `color.slate.light.700` | `color.text.secondary` → `dense-data.theme.dark.color.text.secondary` → `color.slate.dark.500` |
+| `tabs/label/active` | Active tab label. | `color.text.primary` → `dense-data.theme.light.color.text.primary` → `color.slate.light.900` | `color.text.primary` → `dense-data.theme.dark.color.text.primary` → `color.slate.dark.900` |

@@ -21,6 +21,8 @@ Open DS is built so an agent can use it without guessing.
 - Use only component keys and semantic tokens. Never raw values.
 - Write copy in the scheme's voice.
 - To explain a decision, quote the answer and its because chain (`why`).
+- Before you use a colour, read its guidance: `open-ds context <scheme> <token>` or `get_context`. Follow its `not_for` and its pairs. Pick status by real risk: info, warning, danger.
+- For a task, ask for only its slice: `get_context build` (or choose, write, change, review).
 
 ## Files for agents
 

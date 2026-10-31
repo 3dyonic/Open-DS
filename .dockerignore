@@ -1,0 +1,14 @@
+**/node_modules
+.git
+.venv
+site/.next
+site/out
+storybook/storybook-static
+docs/build
+docs/.docusaurus
+cli/assets
+test-ds
+e2e/app/node_modules
+**/*.tsbuildinfo
+.env
+.env.*

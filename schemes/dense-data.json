@@ -287,8 +287,8 @@
       },
       {
         "label": "Investigating",
-        "meaning": "neutral",
-        "why": "An analyst is on it; nothing to act on."
+        "meaning": "info",
+        "why": "An analyst is on it: news, nothing for you to act on."
       },
       {
         "label": "Escalated",
@@ -1599,243 +1599,291 @@
   "tokens": {
     "primitive": {
       "color": {
-        "$description": "Colour options in two steps. The palette holds raw hues, step by step. Roles (neutral, brand, success, warning, danger) point at the palette. Semantics pick from the roles; components never read either.",
+        "$description": "Colour options: raw hue ramps. Each hue has a light ramp and a dark ramp (the same steps tuned for dark backgrounds). Steps only: each theme decides its own base (@). Themes pick from these; components never read them.",
         "slate": {
-          "$description": "Palette: the raw slate ramp.",
-          "0": {
-            "$type": "color",
-            "$value": "#FFFFFF"
+          "$type": "color",
+          "$description": "The slate hue: a light ramp, a dark ramp and its base value.",
+          "light": {
+            "0": {
+              "$value": "#FFFFFF"
+            },
+            "50": {
+              "$value": "#F7F8FA"
+            },
+            "100": {
+              "$value": "#EEF1F5"
+            },
+            "200": {
+              "$value": "#DDE2EA"
+            },
+            "300": {
+              "$value": "#C4CBD6"
+            },
+            "400": {
+              "$value": "#969FAD",
+              "$description": "Derived: the OKLab midpoint of 300 and 500. Added so muted text can pass 4.5:1 and stay quieter than secondary."
+            },
+            "500": {
+              "$value": "#6B7585"
+            },
+            "600": {
+              "$value": "#535D6D",
+              "$description": "Derived: the OKLab midpoint of 500 and 700. Added so muted text can pass 4.5:1 and stay quieter than secondary."
+            },
+            "700": {
+              "$value": "#3D4655"
+            },
+            "800": {
+              "$value": "#262D38"
+            },
+            "900": {
+              "$value": "#161B23"
+            },
+            "950": {
+              "$value": "#0D1117"
+            }
           },
-          "50": {
-            "$type": "color",
-            "$value": "#F7F8FA"
-          },
-          "100": {
-            "$type": "color",
-            "$value": "#EEF1F5"
-          },
-          "200": {
-            "$type": "color",
-            "$value": "#DDE2EA"
-          },
-          "300": {
-            "$type": "color",
-            "$value": "#C4CBD6"
-          },
-          "500": {
-            "$type": "color",
-            "$value": "#6B7585"
-          },
-          "700": {
-            "$type": "color",
-            "$value": "#3D4655"
-          },
-          "800": {
-            "$type": "color",
-            "$value": "#262D38"
-          },
-          "900": {
-            "$type": "color",
-            "$value": "#161B23"
-          },
-          "950": {
-            "$type": "color",
-            "$value": "#0D1117"
+          "dark": {
+            "0": {
+              "$value": "#0D1117"
+            },
+            "50": {
+              "$value": "#161B23"
+            },
+            "100": {
+              "$value": "#262D38"
+            },
+            "200": {
+              "$value": "#3D4655"
+            },
+            "300": {
+              "$value": "#6B7585"
+            },
+            "400": {
+              "$value": "#969FAD",
+              "$description": "Derived: the OKLab midpoint of 300 and 500. Added so muted text can pass 4.5:1 and stay quieter than secondary."
+            },
+            "500": {
+              "$value": "#C4CBD6"
+            },
+            "600": {
+              "$value": "#D0D6E0",
+              "$description": "Derived: the OKLab midpoint of 500 and 700. Added so muted text can pass 4.5:1 and stay quieter than secondary."
+            },
+            "700": {
+              "$value": "#DDE2EA"
+            },
+            "800": {
+              "$value": "#EEF1F5"
+            },
+            "900": {
+              "$value": "#F7F8FA"
+            },
+            "950": {
+              "$value": "#FFFFFF"
+            }
           }
         },
         "violet": {
-          "$description": "Palette: the raw violet ramp.",
-          "100": {
-            "$type": "color",
-            "$value": "#EEEDFE"
+          "$type": "color",
+          "$description": "The violet hue: a light ramp, a dark ramp and its base value.",
+          "light": {
+            "100": {
+              "$value": "#EEEDFE"
+            },
+            "300": {
+              "$value": "#A9A3F6"
+            },
+            "500": {
+              "$value": "#5B4FE8"
+            },
+            "600": {
+              "$value": "#4B3FD9"
+            },
+            "700": {
+              "$value": "#3B31B0"
+            },
+            "800": {
+              "$value": "#2C2588"
+            }
           },
-          "300": {
-            "$type": "color",
-            "$value": "#A9A3F6"
-          },
-          "500": {
-            "$type": "color",
-            "$value": "#5B4FE8"
-          },
-          "600": {
-            "$type": "color",
-            "$value": "#4B3FD9"
-          },
-          "700": {
-            "$type": "color",
-            "$value": "#3B31B0"
-          },
-          "800": {
-            "$type": "color",
-            "$value": "#2C2588"
+          "dark": {
+            "100": {
+              "$value": "#2C2588"
+            },
+            "300": {
+              "$value": "#3B31B0"
+            },
+            "500": {
+              "$value": "#4B3FD9"
+            },
+            "600": {
+              "$value": "#5B4FE8"
+            },
+            "700": {
+              "$value": "#A9A3F6"
+            },
+            "800": {
+              "$value": "#EEEDFE"
+            }
           }
         },
         "green": {
-          "$description": "Palette: the raw green ramp.",
-          "100": {
-            "$type": "color",
-            "$value": "#E3F4EA"
+          "$type": "color",
+          "$description": "The green hue: a light ramp, a dark ramp and its base value.",
+          "light": {
+            "100": {
+              "$value": "#E3F4EA"
+            },
+            "300": {
+              "$value": "#5CC283"
+            },
+            "700": {
+              "$value": "#1F7A3A"
+            },
+            "900": {
+              "$value": "#123322"
+            }
           },
-          "300": {
-            "$type": "color",
-            "$value": "#5CC283"
-          },
-          "700": {
-            "$type": "color",
-            "$value": "#1F7A3A"
-          },
-          "900": {
-            "$type": "color",
-            "$value": "#123322"
+          "dark": {
+            "100": {
+              "$value": "#123322"
+            },
+            "300": {
+              "$value": "#1F7A3A"
+            },
+            "700": {
+              "$value": "#5CC283"
+            },
+            "900": {
+              "$value": "#E3F4EA"
+            }
           }
         },
         "amber": {
-          "$description": "Palette: the raw amber ramp.",
-          "100": {
-            "$type": "color",
-            "$value": "#FFF3D6"
+          "$type": "color",
+          "$description": "The amber hue: a light ramp, a dark ramp and its base value.",
+          "light": {
+            "100": {
+              "$value": "#FFF3D6"
+            },
+            "300": {
+              "$value": "#F2B84B"
+            },
+            "700": {
+              "$value": "#8A5600"
+            },
+            "900": {
+              "$value": "#3A2A05"
+            }
           },
-          "300": {
-            "$type": "color",
-            "$value": "#F2B84B"
-          },
-          "700": {
-            "$type": "color",
-            "$value": "#8A5600"
-          },
-          "900": {
-            "$type": "color",
-            "$value": "#3A2A05"
+          "dark": {
+            "100": {
+              "$value": "#3A2A05"
+            },
+            "300": {
+              "$value": "#8A5600"
+            },
+            "700": {
+              "$value": "#F2B84B"
+            },
+            "900": {
+              "$value": "#FFF3D6"
+            }
           }
         },
         "red": {
-          "$description": "Palette: the raw red ramp.",
-          "100": {
-            "$type": "color",
-            "$value": "#FDE7E7"
+          "$type": "color",
+          "$description": "The red hue: a light ramp, a dark ramp and its base value.",
+          "light": {
+            "100": {
+              "$value": "#FDE7E7"
+            },
+            "300": {
+              "$value": "#F28B8B"
+            },
+            "700": {
+              "$value": "#C42B2B"
+            },
+            "900": {
+              "$value": "#3D1414"
+            }
           },
-          "300": {
-            "$type": "color",
-            "$value": "#F28B8B"
-          },
-          "700": {
-            "$type": "color",
-            "$value": "#C42B2B"
-          },
-          "900": {
-            "$type": "color",
-            "$value": "#3D1414"
+          "dark": {
+            "100": {
+              "$value": "#3D1414"
+            },
+            "300": {
+              "$value": "#C42B2B"
+            },
+            "700": {
+              "$value": "#F28B8B"
+            },
+            "900": {
+              "$value": "#FDE7E7"
+            }
           }
         },
-        "neutral": {
-          "0": {
-            "$type": "color",
-            "$value": "{color.slate.0}"
+        "black": {
+          "$type": "color",
+          "$description": "See-through black for scrims behind dialogs, light and dark.",
+          "light": {
+            "scrim": {
+              "$value": "#0000008C"
+            }
           },
-          "50": {
-            "$type": "color",
-            "$value": "{color.slate.50}"
-          },
-          "100": {
-            "$type": "color",
-            "$value": "{color.slate.100}"
-          },
-          "200": {
-            "$type": "color",
-            "$value": "{color.slate.200}"
-          },
-          "300": {
-            "$type": "color",
-            "$value": "{color.slate.300}"
-          },
-          "500": {
-            "$type": "color",
-            "$value": "{color.slate.500}"
-          },
-          "700": {
-            "$type": "color",
-            "$value": "{color.slate.700}"
-          },
-          "800": {
-            "$type": "color",
-            "$value": "{color.slate.800}"
-          },
-          "900": {
-            "$type": "color",
-            "$value": "{color.slate.900}"
-          },
-          "950": {
-            "$type": "color",
-            "$value": "{color.slate.950}"
+          "dark": {
+            "scrim": {
+              "$value": "#000000B3"
+            }
           }
         },
-        "success": {
-          "strong": {
-            "$type": "color",
-            "$value": "{color.green.700}"
+        "blue": {
+          "$type": "color",
+          "$description": "Blue ramp for the info status and categories. Same values as the accessible-first blue ramp: borrowed, not invented.",
+          "light": {
+            "100": {
+              "$value": "#E1ECFF"
+            },
+            "300": {
+              "$value": "#8AB4F8"
+            },
+            "500": {
+              "$value": "#1A5DD0"
+            },
+            "600": {
+              "$value": "#0B4FC0"
+            },
+            "700": {
+              "$value": "#083C93"
+            },
+            "800": {
+              "$value": "#062C6E"
+            }
           },
-          "subtle": {
-            "$type": "color",
-            "$value": "{color.green.100}"
-          },
-          "strong-dark": {
-            "$type": "color",
-            "$value": "{color.green.300}"
-          },
-          "subtle-dark": {
-            "$type": "color",
-            "$value": "{color.green.900}"
-          }
-        },
-        "warning": {
-          "strong": {
-            "$type": "color",
-            "$value": "{color.amber.700}"
-          },
-          "subtle": {
-            "$type": "color",
-            "$value": "{color.amber.100}"
-          },
-          "strong-dark": {
-            "$type": "color",
-            "$value": "{color.amber.300}"
-          },
-          "subtle-dark": {
-            "$type": "color",
-            "$value": "{color.amber.900}"
-          }
-        },
-        "danger": {
-          "strong": {
-            "$type": "color",
-            "$value": "{color.red.700}"
-          },
-          "subtle": {
-            "$type": "color",
-            "$value": "{color.red.100}"
-          },
-          "strong-dark": {
-            "$type": "color",
-            "$value": "{color.red.300}"
-          },
-          "subtle-dark": {
-            "$type": "color",
-            "$value": "{color.red.900}"
-          }
-        },
-        "black-alpha": {
-          "scrim": {
-            "$type": "color",
-            "$value": "#0000008C"
-          },
-          "scrim-dark": {
-            "$type": "color",
-            "$value": "#000000B3"
+          "dark": {
+            "100": {
+              "$value": "#062C6E"
+            },
+            "300": {
+              "$value": "#083C93"
+            },
+            "500": {
+              "$value": "#0B4FC0"
+            },
+            "600": {
+              "$value": "#1A5DD0"
+            },
+            "700": {
+              "$value": "#8AB4F8"
+            },
+            "800": {
+              "$value": "#E1ECFF"
+            }
           }
         }
       },
       "space": {
-        "$description": "Space options. Names give the size in pixels at the default text size; values are rem.",
         "4": {
           "$type": "dimension",
           "$value": "0.25rem"
@@ -1855,10 +1903,10 @@
         "24": {
           "$type": "dimension",
           "$value": "1.5rem"
-        }
+        },
+        "$description": "Space options. Names give the size in pixels at the default text size; values are rem."
       },
       "size": {
-        "$description": "Size options for controls, rows and icons.",
         "16": {
           "$type": "dimension",
           "$value": "1rem"
@@ -1874,34 +1922,34 @@
         "32": {
           "$type": "dimension",
           "$value": "2rem"
-        }
+        },
+        "$description": "Size options for controls, rows and icons."
       },
       "radius": {
-        "$description": "Corner options.",
         "0": {
           "$type": "dimension",
           "$value": "0rem"
-        },
-        "full": {
-          "$type": "dimension",
-          "$value": "9999px",
-          "$description": "Fully round."
-        },
-        "4": {
-          "$type": "dimension",
-          "$value": "0.25rem"
         },
         "2": {
           "$type": "dimension",
           "$value": "0.125rem"
         },
+        "4": {
+          "$type": "dimension",
+          "$value": "0.25rem"
+        },
         "6": {
           "$type": "dimension",
           "$value": "0.375rem"
+        },
+        "$description": "Corner options.",
+        "full": {
+          "$type": "dimension",
+          "$value": "9999px",
+          "$description": "Fully round."
         }
       },
       "border-width": {
-        "$description": "Border width options.",
         "1": {
           "$type": "dimension",
           "$value": "1px"
@@ -1909,11 +1957,11 @@
         "2": {
           "$type": "dimension",
           "$value": "2px"
-        }
+        },
+        "$description": "Border width options."
       },
       "font": {
         "size": {
-          "$description": "Type size options. Names are pixels at the default text size; values are rem, so text grows with the user's setting.",
           "12": {
             "$type": "dimension",
             "$value": "0.75rem"
@@ -1937,7 +1985,8 @@
           "24": {
             "$type": "dimension",
             "$value": "1.5rem"
-          }
+          },
+          "$description": "Type size options. Names are pixels at the default text size; values are rem, so text grows with the user's setting."
         },
         "weight": {
           "400": {
@@ -1973,6 +2022,17 @@
             "$type": "dimension",
             "$value": "1.75rem",
             "$description": "On the 4px grid, in rem so it grows with the user's text size."
+          }
+        },
+        "family": {
+          "$description": "Font family options. Each brand's theme picks its display, body, interface and data fonts from these.",
+          "ibm-plex-sans": {
+            "$type": "fontFamily",
+            "$value": "\"IBM Plex Sans\", system-ui, sans-serif"
+          },
+          "ibm-plex-mono": {
+            "$type": "fontFamily",
+            "$value": "\"IBM Plex Mono\", ui-monospace, monospace"
           }
         }
       },
@@ -2053,57 +2113,10 @@
       "default": {
         "label": "Dense data",
         "description": "The single brand: precise blue on cool grey.",
-        "primitive": {
-          "color": {
-            "brand": {
-              "100": {
-                "$type": "color",
-                "$value": "{color.violet.100}"
-              },
-              "300": {
-                "$type": "color",
-                "$value": "{color.violet.300}"
-              },
-              "500": {
-                "$type": "color",
-                "$value": "{color.violet.500}"
-              },
-              "600": {
-                "$type": "color",
-                "$value": "{color.violet.600}"
-              },
-              "700": {
-                "$type": "color",
-                "$value": "{color.violet.700}"
-              },
-              "800": {
-                "$type": "color",
-                "$value": "{color.violet.800}"
-              }
-            }
-          },
-          "font": {
-            "family": {
-              "display": {
-                "$type": "fontFamily",
-                "$value": "\"IBM Plex Sans\", system-ui, sans-serif"
-              },
-              "body": {
-                "$type": "fontFamily",
-                "$value": "\"IBM Plex Sans\", system-ui, sans-serif"
-              },
-              "ui": {
-                "$type": "fontFamily",
-                "$value": "\"IBM Plex Sans\", system-ui, sans-serif"
-              },
-              "mono": {
-                "$type": "fontFamily",
-                "$value": "\"IBM Plex Mono\", ui-monospace, monospace"
-              }
-            }
-          },
-          "radius": {
-            "brand": {
+        "theme": {
+          "$description": "The Dense data theme: what each brand-dependent semantic key picks, in light and dark, plus mode-free picks (fonts, corners) in base. Info uses blue, kept apart from the brand colour so it never reads as an action. Categories 1 to 5 are violet, blue, green, amber, slate: distinct hues for tags and chart series, with no meaning. Disabled uses the neutral slate.",
+          "base": {
+            "radius": {
               "control": {
                 "$type": "dimension",
                 "$value": "{radius.2}"
@@ -2116,553 +2129,995 @@
                 "$type": "dimension",
                 "$value": "{radius.4}"
               }
+            },
+            "type": {
+              "display": {
+                "font-family": {
+                  "$type": "fontFamily",
+                  "$value": "{font.family.ibm-plex-sans}"
+                }
+              },
+              "title": {
+                "font-family": {
+                  "$type": "fontFamily",
+                  "$value": "{font.family.ibm-plex-sans}"
+                }
+              },
+              "heading": {
+                "font-family": {
+                  "$type": "fontFamily",
+                  "$value": "{font.family.ibm-plex-sans}"
+                }
+              },
+              "body": {
+                "font-family": {
+                  "$type": "fontFamily",
+                  "$value": "{font.family.ibm-plex-sans}"
+                }
+              },
+              "label": {
+                "font-family": {
+                  "$type": "fontFamily",
+                  "$value": "{font.family.ibm-plex-sans}"
+                }
+              },
+              "caption": {
+                "font-family": {
+                  "$type": "fontFamily",
+                  "$value": "{font.family.ibm-plex-sans}"
+                }
+              },
+              "data": {
+                "font-family": {
+                  "$type": "fontFamily",
+                  "$value": "{font.family.ibm-plex-mono}"
+                }
+              }
+            }
+          },
+          "light": {
+            "color": {
+              "surface": {
+                "canvas": {
+                  "$type": "color",
+                  "$value": "{color.slate.light.50}"
+                },
+                "default": {
+                  "$type": "color",
+                  "$value": "{color.slate.light.0}"
+                },
+                "raised": {
+                  "$type": "color",
+                  "$value": "{color.slate.light.0}"
+                },
+                "sunken": {
+                  "$type": "color",
+                  "$value": "{color.slate.light.100}"
+                },
+                "selected": {
+                  "$type": "color",
+                  "$value": "{color.violet.light.100}"
+                },
+                "inverse": {
+                  "$type": "color",
+                  "$value": "{color.slate.light.900}"
+                },
+                "scrim": {
+                  "$type": "color",
+                  "$value": "{color.black.light.scrim}"
+                }
+              },
+              "text": {
+                "primary": {
+                  "$type": "color",
+                  "$value": "{color.slate.light.900}"
+                },
+                "secondary": {
+                  "$type": "color",
+                  "$value": "{color.slate.light.700}"
+                },
+                "muted": {
+                  "$type": "color",
+                  "$value": "{color.slate.light.600}"
+                },
+                "inverse": {
+                  "$type": "color",
+                  "$value": "{color.slate.light.0}"
+                },
+                "on-action": {
+                  "$type": "color",
+                  "$value": "{color.slate.light.0}"
+                },
+                "link": {
+                  "$type": "color",
+                  "$value": "{color.violet.light.700}"
+                }
+              },
+              "border": {
+                "default": {
+                  "$type": "color",
+                  "$value": "{color.slate.light.200}"
+                },
+                "strong": {
+                  "$type": "color",
+                  "$value": "{color.slate.light.500}"
+                },
+                "focus": {
+                  "$type": "color",
+                  "$value": "{color.violet.light.600}"
+                }
+              },
+              "action": {
+                "primary": {
+                  "@": {
+                    "$type": "color",
+                    "$value": "{color.violet.light.600}"
+                  },
+                  "hover": {
+                    "$type": "color",
+                    "$value": "{color.violet.light.700}"
+                  }
+                },
+                "secondary": {
+                  "@": {
+                    "$type": "color",
+                    "$value": "{color.slate.light.0}"
+                  },
+                  "hover": {
+                    "$type": "color",
+                    "$value": "{color.slate.light.100}"
+                  }
+                }
+              },
+              "status": {
+                "info": {
+                  "@": {
+                    "$type": "color",
+                    "$value": "{color.blue.light.700}"
+                  },
+                  "subtle": {
+                    "$type": "color",
+                    "$value": "{color.blue.light.100}"
+                  }
+                },
+                "success": {
+                  "@": {
+                    "$type": "color",
+                    "$value": "{color.green.light.700}"
+                  },
+                  "subtle": {
+                    "$type": "color",
+                    "$value": "{color.green.light.100}"
+                  }
+                },
+                "warning": {
+                  "@": {
+                    "$type": "color",
+                    "$value": "{color.amber.light.700}"
+                  },
+                  "subtle": {
+                    "$type": "color",
+                    "$value": "{color.amber.light.100}"
+                  }
+                },
+                "danger": {
+                  "@": {
+                    "$type": "color",
+                    "$value": "{color.red.light.700}"
+                  },
+                  "subtle": {
+                    "$type": "color",
+                    "$value": "{color.red.light.100}"
+                  }
+                }
+              },
+              "category": {
+                "1": {
+                  "@": {
+                    "$type": "color",
+                    "$value": "{color.violet.light.600}"
+                  },
+                  "subtle": {
+                    "$type": "color",
+                    "$value": "{color.violet.light.100}"
+                  }
+                },
+                "2": {
+                  "@": {
+                    "$type": "color",
+                    "$value": "{color.blue.light.600}"
+                  },
+                  "subtle": {
+                    "$type": "color",
+                    "$value": "{color.blue.light.100}"
+                  }
+                },
+                "3": {
+                  "@": {
+                    "$type": "color",
+                    "$value": "{color.green.light.700}"
+                  },
+                  "subtle": {
+                    "$type": "color",
+                    "$value": "{color.green.light.100}"
+                  }
+                },
+                "4": {
+                  "@": {
+                    "$type": "color",
+                    "$value": "{color.amber.light.700}"
+                  },
+                  "subtle": {
+                    "$type": "color",
+                    "$value": "{color.amber.light.100}"
+                  }
+                },
+                "5": {
+                  "@": {
+                    "$type": "color",
+                    "$value": "{color.slate.light.500}"
+                  },
+                  "subtle": {
+                    "$type": "color",
+                    "$value": "{color.slate.light.100}"
+                  }
+                }
+              },
+              "disabled": {
+                "text": {
+                  "$type": "color",
+                  "$value": "{color.slate.light.500}"
+                },
+                "surface": {
+                  "$type": "color",
+                  "$value": "{color.slate.light.100}"
+                },
+                "border": {
+                  "$type": "color",
+                  "$value": "{color.slate.light.200}"
+                }
+              }
+            },
+            "elevation": {
+              "card": {
+                "$type": "shadow",
+                "$value": "{shadow.none}"
+              },
+              "overlay": {
+                "$type": "shadow",
+                "$value": "{shadow.overlay}"
+              }
+            }
+          },
+          "dark": {
+            "color": {
+              "surface": {
+                "canvas": {
+                  "$type": "color",
+                  "$value": "{color.slate.dark.0}"
+                },
+                "default": {
+                  "$type": "color",
+                  "$value": "{color.slate.dark.50}"
+                },
+                "raised": {
+                  "$type": "color",
+                  "$value": "{color.slate.dark.100}"
+                },
+                "sunken": {
+                  "$type": "color",
+                  "$value": "{color.slate.dark.100}"
+                },
+                "selected": {
+                  "$type": "color",
+                  "$value": "{color.violet.dark.100}"
+                },
+                "inverse": {
+                  "$type": "color",
+                  "$value": "{color.slate.dark.900}"
+                },
+                "scrim": {
+                  "$type": "color",
+                  "$value": "{color.black.dark.scrim}"
+                }
+              },
+              "text": {
+                "primary": {
+                  "$type": "color",
+                  "$value": "{color.slate.dark.900}"
+                },
+                "secondary": {
+                  "$type": "color",
+                  "$value": "{color.slate.dark.500}"
+                },
+                "muted": {
+                  "$type": "color",
+                  "$value": "{color.slate.dark.400}"
+                },
+                "inverse": {
+                  "$type": "color",
+                  "$value": "{color.slate.dark.50}"
+                },
+                "on-action": {
+                  "$type": "color",
+                  "$value": "{color.slate.dark.0}"
+                },
+                "link": {
+                  "$type": "color",
+                  "$value": "{color.violet.dark.700}"
+                }
+              },
+              "border": {
+                "default": {
+                  "$type": "color",
+                  "$value": "{color.slate.dark.100}"
+                },
+                "strong": {
+                  "$type": "color",
+                  "$value": "{color.slate.dark.300}"
+                },
+                "focus": {
+                  "$type": "color",
+                  "$value": "{color.violet.dark.700}"
+                }
+              },
+              "action": {
+                "primary": {
+                  "@": {
+                    "$type": "color",
+                    "$value": "{color.violet.dark.700}"
+                  },
+                  "hover": {
+                    "$type": "color",
+                    "$value": "{color.violet.dark.800}"
+                  }
+                },
+                "secondary": {
+                  "@": {
+                    "$type": "color",
+                    "$value": "{color.slate.dark.50}"
+                  },
+                  "hover": {
+                    "$type": "color",
+                    "$value": "{color.slate.dark.100}"
+                  }
+                }
+              },
+              "status": {
+                "info": {
+                  "@": {
+                    "$type": "color",
+                    "$value": "{color.blue.dark.700}"
+                  },
+                  "subtle": {
+                    "$type": "color",
+                    "$value": "{color.blue.dark.100}"
+                  }
+                },
+                "success": {
+                  "@": {
+                    "$type": "color",
+                    "$value": "{color.green.dark.700}"
+                  },
+                  "subtle": {
+                    "$type": "color",
+                    "$value": "{color.green.dark.100}"
+                  }
+                },
+                "warning": {
+                  "@": {
+                    "$type": "color",
+                    "$value": "{color.amber.dark.700}"
+                  },
+                  "subtle": {
+                    "$type": "color",
+                    "$value": "{color.amber.dark.100}"
+                  }
+                },
+                "danger": {
+                  "@": {
+                    "$type": "color",
+                    "$value": "{color.red.dark.700}"
+                  },
+                  "subtle": {
+                    "$type": "color",
+                    "$value": "{color.red.dark.100}"
+                  }
+                }
+              },
+              "category": {
+                "1": {
+                  "@": {
+                    "$type": "color",
+                    "$value": "{color.violet.dark.700}"
+                  },
+                  "subtle": {
+                    "$type": "color",
+                    "$value": "{color.violet.dark.100}"
+                  }
+                },
+                "2": {
+                  "@": {
+                    "$type": "color",
+                    "$value": "{color.blue.dark.700}"
+                  },
+                  "subtle": {
+                    "$type": "color",
+                    "$value": "{color.blue.dark.100}"
+                  }
+                },
+                "3": {
+                  "@": {
+                    "$type": "color",
+                    "$value": "{color.green.dark.700}"
+                  },
+                  "subtle": {
+                    "$type": "color",
+                    "$value": "{color.green.dark.100}"
+                  }
+                },
+                "4": {
+                  "@": {
+                    "$type": "color",
+                    "$value": "{color.amber.dark.700}"
+                  },
+                  "subtle": {
+                    "$type": "color",
+                    "$value": "{color.amber.dark.100}"
+                  }
+                },
+                "5": {
+                  "@": {
+                    "$type": "color",
+                    "$value": "{color.slate.dark.700}"
+                  },
+                  "subtle": {
+                    "$type": "color",
+                    "$value": "{color.slate.dark.100}"
+                  }
+                }
+              },
+              "disabled": {
+                "text": {
+                  "$type": "color",
+                  "$value": "{color.slate.dark.500}"
+                },
+                "surface": {
+                  "$type": "color",
+                  "$value": "{color.slate.dark.100}"
+                },
+                "border": {
+                  "$type": "color",
+                  "$value": "{color.slate.dark.200}"
+                }
+              }
+            },
+            "elevation": {
+              "card": {
+                "$type": "shadow",
+                "$value": "{shadow.none}"
+              },
+              "overlay": {
+                "$type": "shadow",
+                "$value": "{shadow.overlay-dark}"
+              }
             }
           }
         }
       }
     },
     "semantic": {
-      "base": {
-        "space": {
-          "gap": {
-            "tight": {
-              "$type": "dimension",
-              "$value": "{space.4}",
-              "$description": "Between things that belong together."
-            },
-            "default": {
-              "$type": "dimension",
-              "$value": "{space.8}",
-              "$description": "Between items in one group."
-            },
-            "group": {
-              "$type": "dimension",
-              "$value": "{space.16}",
-              "$description": "Between groups."
-            },
-            "section": {
-              "$type": "dimension",
-              "$value": "{space.24}",
-              "$description": "Between page sections."
-            }
+      "space": {
+        "gap": {
+          "tight": {
+            "$type": "dimension",
+            "$value": "{space.4}",
+            "$description": "Between things that belong together."
           },
-          "inset": {
-            "control-x": {
-              "$type": "dimension",
-              "$value": "{space.12}",
-              "$description": "Horizontal padding inside controls."
-            },
-            "container": {
-              "$type": "dimension",
-              "$value": "{space.16}",
-              "$description": "Padding inside cards and dialogs."
-            },
-            "cell-x": {
-              "$type": "dimension",
-              "$value": "{space.12}",
-              "$description": "Horizontal padding inside table cells."
-            }
+          "default": {
+            "$type": "dimension",
+            "$value": "{space.8}",
+            "$description": "Between items in one group."
+          },
+          "group": {
+            "$type": "dimension",
+            "$value": "{space.16}",
+            "$description": "Between groups."
+          },
+          "section": {
+            "$type": "dimension",
+            "$value": "{space.24}",
+            "$description": "Between page sections."
           }
         },
-        "size": {
-          "control": {
-            "default": {
-              "$type": "dimension",
-              "$value": "{size.32}",
-              "$description": "Height of buttons and inputs, and the smallest target."
-            },
-            "compact": {
-              "$type": "dimension",
-              "$value": "{size.24}",
-              "$description": "Height of compact controls."
-            }
-          },
-          "row": {
+        "inset": {
+          "control-x": {
             "$type": "dimension",
-            "$value": "{size.32}",
-            "$description": "Height of one table row."
-          },
-          "icon": {
-            "$type": "dimension",
-            "$value": "{size.16}",
-            "$description": "Icon size next to text."
-          }
-        },
-        "radius": {
-          "control": {
-            "$type": "dimension",
-            "$value": "{radius.brand.control}",
-            "$description": "Corner of buttons and inputs."
-          },
-          "badge": {
-            "$type": "dimension",
-            "$value": "{radius.brand.badge}",
-            "$description": "Corner of badges and checkboxes."
+            "$value": "{space.12}",
+            "$description": "Horizontal padding inside controls."
           },
           "container": {
             "$type": "dimension",
-            "$value": "{radius.brand.container}",
-            "$description": "Corner of cards, menus and dialogs."
+            "$value": "{space.16}",
+            "$description": "Padding inside cards and dialogs."
           },
-          "round": {
+          "cell-x": {
             "$type": "dimension",
-            "$value": "{radius.full}",
-            "$description": "Fully round: avatars and dots."
+            "$value": "{space.12}",
+            "$description": "Horizontal padding inside table cells."
           }
-        },
-        "border-width": {
+        }
+      },
+      "size": {
+        "control": {
           "default": {
             "$type": "dimension",
-            "$value": "{border-width.1}",
-            "$description": "Every border."
+            "$value": "{size.32}",
+            "$description": "Height of buttons and inputs, and the smallest target."
+          },
+          "compact": {
+            "$type": "dimension",
+            "$value": "{size.24}",
+            "$description": "Height of compact controls."
+          }
+        },
+        "row": {
+          "$type": "dimension",
+          "$value": "{size.32}",
+          "$description": "Height of one table row."
+        },
+        "icon": {
+          "$type": "dimension",
+          "$value": "{size.16}",
+          "$description": "Icon size next to text."
+        }
+      },
+      "radius": {
+        "control": {
+          "$type": "dimension",
+          "$value": "{theme.radius.control}",
+          "$description": "Corner of buttons and inputs."
+        },
+        "badge": {
+          "$type": "dimension",
+          "$value": "{theme.radius.badge}",
+          "$description": "Corner of badges and checkboxes."
+        },
+        "container": {
+          "$type": "dimension",
+          "$value": "{theme.radius.container}",
+          "$description": "Corner of cards, menus and dialogs."
+        },
+        "round": {
+          "$type": "dimension",
+          "$value": "{radius.full}",
+          "$description": "Fully round: avatars and dots."
+        }
+      },
+      "border-width": {
+        "default": {
+          "$type": "dimension",
+          "$value": "{border-width.1}",
+          "$description": "Every border."
+        },
+        "focus": {
+          "$type": "dimension",
+          "$value": "{border-width.2}",
+          "$description": "The focus ring."
+        }
+      },
+      "type": {
+        "display": {
+          "font-family": {
+            "$type": "fontFamily",
+            "$value": "{theme.type.display.font-family}"
+          },
+          "font-size": {
+            "$type": "dimension",
+            "$value": "{font.size.24}"
+          },
+          "line-height": {
+            "$type": "dimension",
+            "$value": "{font.line-height.28}"
+          },
+          "font-weight": {
+            "$type": "fontWeight",
+            "$value": "{font.weight.600}"
+          },
+          "$description": "The display text role."
+        },
+        "title": {
+          "font-family": {
+            "$type": "fontFamily",
+            "$value": "{theme.type.title.font-family}"
+          },
+          "font-size": {
+            "$type": "dimension",
+            "$value": "{font.size.20}"
+          },
+          "line-height": {
+            "$type": "dimension",
+            "$value": "{font.line-height.24}"
+          },
+          "font-weight": {
+            "$type": "fontWeight",
+            "$value": "{font.weight.600}"
+          },
+          "$description": "The title text role."
+        },
+        "heading": {
+          "font-family": {
+            "$type": "fontFamily",
+            "$value": "{theme.type.heading.font-family}"
+          },
+          "font-size": {
+            "$type": "dimension",
+            "$value": "{font.size.16}"
+          },
+          "line-height": {
+            "$type": "dimension",
+            "$value": "{font.line-height.20}"
+          },
+          "font-weight": {
+            "$type": "fontWeight",
+            "$value": "{font.weight.600}"
+          },
+          "$description": "The heading text role."
+        },
+        "body": {
+          "font-family": {
+            "$type": "fontFamily",
+            "$value": "{theme.type.body.font-family}"
+          },
+          "font-size": {
+            "$type": "dimension",
+            "$value": "{font.size.14}"
+          },
+          "line-height": {
+            "$type": "dimension",
+            "$value": "{font.line-height.20}"
+          },
+          "font-weight": {
+            "$type": "fontWeight",
+            "$value": "{font.weight.400}"
+          },
+          "$description": "The body text role."
+        },
+        "label": {
+          "font-family": {
+            "$type": "fontFamily",
+            "$value": "{theme.type.label.font-family}"
+          },
+          "font-size": {
+            "$type": "dimension",
+            "$value": "{font.size.12}"
+          },
+          "line-height": {
+            "$type": "dimension",
+            "$value": "{font.line-height.16}"
+          },
+          "font-weight": {
+            "$type": "fontWeight",
+            "$value": "{font.weight.500}"
+          },
+          "$description": "The label text role."
+        },
+        "caption": {
+          "font-family": {
+            "$type": "fontFamily",
+            "$value": "{theme.type.caption.font-family}"
+          },
+          "font-size": {
+            "$type": "dimension",
+            "$value": "{font.size.12}"
+          },
+          "line-height": {
+            "$type": "dimension",
+            "$value": "{font.line-height.16}"
+          },
+          "font-weight": {
+            "$type": "fontWeight",
+            "$value": "{font.weight.400}"
+          },
+          "$description": "The caption text role."
+        },
+        "data": {
+          "font-family": {
+            "$type": "fontFamily",
+            "$value": "{theme.type.data.font-family}"
+          },
+          "font-size": {
+            "$type": "dimension",
+            "$value": "{font.size.13}"
+          },
+          "line-height": {
+            "$type": "dimension",
+            "$value": "{font.line-height.16}"
+          },
+          "font-weight": {
+            "$type": "fontWeight",
+            "$value": "{font.weight.400}"
+          },
+          "$description": "The data text role."
+        }
+      },
+      "motion": {
+        "duration": {
+          "feedback": {
+            "$type": "duration",
+            "$value": "{duration.fast}",
+            "$description": "Feedback speed: fast."
+          }
+        },
+        "easing": {
+          "standard": {
+            "$type": "cubicBezier",
+            "$value": "{easing.standard}",
+            "$description": "Feedback easing."
+          }
+        }
+      },
+      "opacity": {
+        "disabled": {
+          "$type": "number",
+          "$value": "{opacity.40}",
+          "$description": "Disabled controls."
+        }
+      },
+      "color": {
+        "surface": {
+          "canvas": {
+            "$type": "color",
+            "$description": "The page background.",
+            "$value": "{theme.color.surface.canvas}"
+          },
+          "default": {
+            "$type": "color",
+            "$description": "Cards, inputs and tables.",
+            "$value": "{theme.color.surface.default}"
+          },
+          "raised": {
+            "$type": "color",
+            "$description": "Menus, dialogs, toasts.",
+            "$value": "{theme.color.surface.raised}"
+          },
+          "sunken": {
+            "$type": "color",
+            "$description": "Table headers and wells.",
+            "$value": "{theme.color.surface.sunken}"
+          },
+          "selected": {
+            "$type": "color",
+            "$description": "A selected row or item.",
+            "$value": "{theme.color.surface.selected}"
+          },
+          "inverse": {
+            "$type": "color",
+            "$description": "Tooltips.",
+            "$value": "{theme.color.surface.inverse}"
+          },
+          "scrim": {
+            "$type": "color",
+            "$description": "Dims the page behind a dialog.",
+            "$value": "{theme.color.surface.scrim}"
+          }
+        },
+        "text": {
+          "primary": {
+            "$type": "color",
+            "$description": "Main text.",
+            "$value": "{theme.color.text.primary}"
+          },
+          "secondary": {
+            "$type": "color",
+            "$description": "Supporting text; passes AA.",
+            "$value": "{theme.color.text.secondary}"
+          },
+          "muted": {
+            "$type": "color",
+            "$description": "Hints and placeholders.",
+            "$value": "{theme.color.text.muted}"
+          },
+          "inverse": {
+            "$type": "color",
+            "$description": "Text on inverse surfaces.",
+            "$value": "{theme.color.text.inverse}"
+          },
+          "on-action": {
+            "$type": "color",
+            "$description": "Text on the primary action.",
+            "$value": "{theme.color.text.on-action}"
+          },
+          "link": {
+            "$type": "color",
+            "$description": "Links.",
+            "$value": "{theme.color.text.link}"
+          }
+        },
+        "border": {
+          "default": {
+            "$type": "color",
+            "$description": "Row lines and card borders.",
+            "$value": "{theme.color.border.default}"
+          },
+          "strong": {
+            "$type": "color",
+            "$description": "Input and secondary button borders.",
+            "$value": "{theme.color.border.strong}"
           },
           "focus": {
-            "$type": "dimension",
-            "$value": "{border-width.2}",
-            "$description": "The focus ring."
+            "$type": "color",
+            "$description": "The keyboard focus ring.",
+            "$value": "{theme.color.border.focus}"
           }
         },
-        "type": {
-          "display": {
-            "font-family": {
-              "$type": "fontFamily",
-              "$value": "{font.family.display}"
+        "action": {
+          "primary": {
+            "@": {
+              "$type": "color",
+              "$description": "The primary action.",
+              "$value": "{theme.color.action.primary.@}"
             },
-            "font-size": {
-              "$type": "dimension",
-              "$value": "{font.size.24}"
-            },
-            "line-height": {
-              "$type": "dimension",
-              "$value": "{font.line-height.28}"
-            },
-            "font-weight": {
-              "$type": "fontWeight",
-              "$value": "{font.weight.600}"
-            },
-            "$description": "The display text role."
-          },
-          "title": {
-            "font-family": {
-              "$type": "fontFamily",
-              "$value": "{font.family.display}"
-            },
-            "font-size": {
-              "$type": "dimension",
-              "$value": "{font.size.20}"
-            },
-            "line-height": {
-              "$type": "dimension",
-              "$value": "{font.line-height.24}"
-            },
-            "font-weight": {
-              "$type": "fontWeight",
-              "$value": "{font.weight.600}"
-            },
-            "$description": "The title text role."
-          },
-          "heading": {
-            "font-family": {
-              "$type": "fontFamily",
-              "$value": "{font.family.display}"
-            },
-            "font-size": {
-              "$type": "dimension",
-              "$value": "{font.size.16}"
-            },
-            "line-height": {
-              "$type": "dimension",
-              "$value": "{font.line-height.20}"
-            },
-            "font-weight": {
-              "$type": "fontWeight",
-              "$value": "{font.weight.600}"
-            },
-            "$description": "The heading text role."
-          },
-          "body": {
-            "font-family": {
-              "$type": "fontFamily",
-              "$value": "{font.family.body}"
-            },
-            "font-size": {
-              "$type": "dimension",
-              "$value": "{font.size.14}"
-            },
-            "line-height": {
-              "$type": "dimension",
-              "$value": "{font.line-height.20}"
-            },
-            "font-weight": {
-              "$type": "fontWeight",
-              "$value": "{font.weight.400}"
-            },
-            "$description": "The body text role."
-          },
-          "label": {
-            "font-family": {
-              "$type": "fontFamily",
-              "$value": "{font.family.ui}"
-            },
-            "font-size": {
-              "$type": "dimension",
-              "$value": "{font.size.12}"
-            },
-            "line-height": {
-              "$type": "dimension",
-              "$value": "{font.line-height.16}"
-            },
-            "font-weight": {
-              "$type": "fontWeight",
-              "$value": "{font.weight.500}"
-            },
-            "$description": "The label text role."
-          },
-          "caption": {
-            "font-family": {
-              "$type": "fontFamily",
-              "$value": "{font.family.ui}"
-            },
-            "font-size": {
-              "$type": "dimension",
-              "$value": "{font.size.12}"
-            },
-            "line-height": {
-              "$type": "dimension",
-              "$value": "{font.line-height.16}"
-            },
-            "font-weight": {
-              "$type": "fontWeight",
-              "$value": "{font.weight.400}"
-            },
-            "$description": "The caption text role."
-          },
-          "data": {
-            "font-family": {
-              "$type": "fontFamily",
-              "$value": "{font.family.mono}"
-            },
-            "font-size": {
-              "$type": "dimension",
-              "$value": "{font.size.13}"
-            },
-            "line-height": {
-              "$type": "dimension",
-              "$value": "{font.line-height.16}"
-            },
-            "font-weight": {
-              "$type": "fontWeight",
-              "$value": "{font.weight.400}"
-            },
-            "$description": "The data text role."
-          }
-        },
-        "motion": {
-          "duration": {
-            "feedback": {
-              "$type": "duration",
-              "$value": "{duration.fast}",
-              "$description": "Feedback speed: fast."
+            "hover": {
+              "$type": "color",
+              "$description": "Primary action on hover.",
+              "$value": "{theme.color.action.primary.hover}"
             }
           },
-          "easing": {
-            "standard": {
-              "$type": "cubicBezier",
-              "$value": "{easing.standard}",
-              "$description": "Feedback easing."
+          "secondary": {
+            "@": {
+              "$type": "color",
+              "$description": "Secondary action fill.",
+              "$value": "{theme.color.action.secondary.@}"
+            },
+            "hover": {
+              "$type": "color",
+              "$description": "Secondary action on hover.",
+              "$value": "{theme.color.action.secondary.hover}"
             }
           }
         },
-        "opacity": {
-          "disabled": {
-            "$type": "number",
-            "$value": "{opacity.40}",
-            "$description": "Disabled controls."
+        "status": {
+          "info": {
+            "@": {
+              "$type": "color",
+              "$description": "Info text and icons: neutral news, no action needed.",
+              "$value": "{theme.color.status.info.@}"
+            },
+            "subtle": {
+              "$type": "color",
+              "$description": "Info badge and banner fill.",
+              "$value": "{theme.color.status.info.subtle}"
+            }
+          },
+          "success": {
+            "@": {
+              "$type": "color",
+              "$description": "Success text and icons.",
+              "$value": "{theme.color.status.success.@}"
+            },
+            "subtle": {
+              "$type": "color",
+              "$description": "Success badge fill.",
+              "$value": "{theme.color.status.success.subtle}"
+            }
+          },
+          "warning": {
+            "@": {
+              "$type": "color",
+              "$description": "Warning text and icons.",
+              "$value": "{theme.color.status.warning.@}"
+            },
+            "subtle": {
+              "$type": "color",
+              "$description": "Warning badge fill.",
+              "$value": "{theme.color.status.warning.subtle}"
+            }
+          },
+          "danger": {
+            "@": {
+              "$type": "color",
+              "$description": "Danger text and icons.",
+              "$value": "{theme.color.status.danger.@}"
+            },
+            "subtle": {
+              "$type": "color",
+              "$description": "Danger badge fill.",
+              "$value": "{theme.color.status.danger.subtle}"
+            }
+          }
+        },
+        "category": {
+          "$description": "Identity colours for tags, labels and chart series. They tell items apart and carry no meaning.",
+          "1": {
+            "@": {
+              "$type": "color",
+              "$description": "Category 1: chart series, tag dots and icons. Tag text uses color.text.primary.",
+              "$value": "{theme.color.category.1.@}"
+            },
+            "subtle": {
+              "$type": "color",
+              "$description": "Category 1: tag fill.",
+              "$value": "{theme.color.category.1.subtle}"
+            }
+          },
+          "2": {
+            "@": {
+              "$type": "color",
+              "$description": "Category 2: chart series, tag dots and icons. Tag text uses color.text.primary.",
+              "$value": "{theme.color.category.2.@}"
+            },
+            "subtle": {
+              "$type": "color",
+              "$description": "Category 2: tag fill.",
+              "$value": "{theme.color.category.2.subtle}"
+            }
+          },
+          "3": {
+            "@": {
+              "$type": "color",
+              "$description": "Category 3: chart series, tag dots and icons. Tag text uses color.text.primary.",
+              "$value": "{theme.color.category.3.@}"
+            },
+            "subtle": {
+              "$type": "color",
+              "$description": "Category 3: tag fill.",
+              "$value": "{theme.color.category.3.subtle}"
+            }
+          },
+          "4": {
+            "@": {
+              "$type": "color",
+              "$description": "Category 4: chart series, tag dots and icons. Tag text uses color.text.primary.",
+              "$value": "{theme.color.category.4.@}"
+            },
+            "subtle": {
+              "$type": "color",
+              "$description": "Category 4: tag fill.",
+              "$value": "{theme.color.category.4.subtle}"
+            }
+          },
+          "5": {
+            "@": {
+              "$type": "color",
+              "$description": "Category 5: chart series, tag dots and icons. Tag text uses color.text.primary.",
+              "$value": "{theme.color.category.5.@}"
+            },
+            "subtle": {
+              "$type": "color",
+              "$description": "Category 5: tag fill.",
+              "$value": "{theme.color.category.5.subtle}"
+            }
+          }
+        },
+        "disabled": {
+          "$description": "The shared look of controls that cannot be used right now.",
+          "text": {
+            "$type": "color",
+            "$description": "Text and icons of a disabled control.",
+            "$value": "{theme.color.disabled.text}"
+          },
+          "surface": {
+            "$type": "color",
+            "$description": "Fill of a disabled control.",
+            "$value": "{theme.color.disabled.surface}"
+          },
+          "border": {
+            "$type": "color",
+            "$description": "Border of a disabled control.",
+            "$value": "{theme.color.disabled.border}"
           }
         }
       },
-      "light": {
-        "color": {
-          "surface": {
-            "canvas": {
-              "$type": "color",
-              "$value": "{color.neutral.50}",
-              "$description": "The page background."
-            },
-            "default": {
-              "$type": "color",
-              "$value": "{color.neutral.0}",
-              "$description": "Cards, inputs and tables."
-            },
-            "raised": {
-              "$type": "color",
-              "$value": "{color.neutral.0}",
-              "$description": "Menus, dialogs, toasts."
-            },
-            "sunken": {
-              "$type": "color",
-              "$value": "{color.neutral.100}",
-              "$description": "Table headers and wells."
-            },
-            "selected": {
-              "$type": "color",
-              "$value": "{color.brand.100}",
-              "$description": "A selected row or item."
-            },
-            "inverse": {
-              "$type": "color",
-              "$value": "{color.neutral.900}",
-              "$description": "Tooltips."
-            },
-            "scrim": {
-              "$type": "color",
-              "$value": "{color.black-alpha.scrim}",
-              "$description": "Dims the page behind a dialog."
-            }
-          },
-          "text": {
-            "primary": {
-              "$type": "color",
-              "$value": "{color.neutral.900}",
-              "$description": "Main text."
-            },
-            "secondary": {
-              "$type": "color",
-              "$value": "{color.neutral.700}",
-              "$description": "Supporting text; passes AA."
-            },
-            "muted": {
-              "$type": "color",
-              "$value": "{color.neutral.500}",
-              "$description": "Hints and placeholders."
-            },
-            "inverse": {
-              "$type": "color",
-              "$value": "{color.neutral.0}",
-              "$description": "Text on inverse surfaces."
-            },
-            "on-action": {
-              "$type": "color",
-              "$value": "{color.neutral.0}",
-              "$description": "Text on the primary action."
-            },
-            "link": {
-              "$type": "color",
-              "$value": "{color.brand.700}",
-              "$description": "Links."
-            }
-          },
-          "border": {
-            "default": {
-              "$type": "color",
-              "$value": "{color.neutral.200}",
-              "$description": "Row lines and card borders."
-            },
-            "strong": {
-              "$type": "color",
-              "$value": "{color.neutral.300}",
-              "$description": "Input and secondary button borders."
-            },
-            "focus": {
-              "$type": "color",
-              "$value": "{color.brand.600}",
-              "$description": "The keyboard focus ring."
-            }
-          },
-          "action": {
-            "primary": {
-              "$type": "color",
-              "$value": "{color.brand.600}",
-              "$description": "The primary action."
-            },
-            "primary-hover": {
-              "$type": "color",
-              "$value": "{color.brand.700}",
-              "$description": "Primary action on hover."
-            },
-            "secondary": {
-              "$type": "color",
-              "$value": "{color.neutral.0}",
-              "$description": "Secondary action fill."
-            },
-            "secondary-hover": {
-              "$type": "color",
-              "$value": "{color.neutral.100}",
-              "$description": "Secondary action on hover."
-            }
-          },
-          "status": {
-            "success": {
-              "$type": "color",
-              "$value": "{color.success.strong}",
-              "$description": "Success text and icons."
-            },
-            "warning": {
-              "$type": "color",
-              "$value": "{color.warning.strong}",
-              "$description": "Warning text and icons."
-            },
-            "danger": {
-              "$type": "color",
-              "$value": "{color.danger.strong}",
-              "$description": "Danger text and icons."
-            },
-            "success-subtle": {
-              "$type": "color",
-              "$value": "{color.success.subtle}",
-              "$description": "Success badge fill."
-            },
-            "warning-subtle": {
-              "$type": "color",
-              "$value": "{color.warning.subtle}",
-              "$description": "Warning badge fill."
-            },
-            "danger-subtle": {
-              "$type": "color",
-              "$value": "{color.danger.subtle}",
-              "$description": "Danger badge fill."
-            }
-          }
+      "elevation": {
+        "card": {
+          "$type": "shadow",
+          "$description": "No shadow in this scheme.",
+          "$value": "{theme.elevation.card}"
         },
-        "elevation": {
-          "card": {
-            "$type": "shadow",
-            "$value": "{shadow.none}",
-            "$description": "No shadow in this scheme."
-          },
-          "overlay": {
-            "$type": "shadow",
-            "$value": "{shadow.overlay}"
-          }
-        }
-      },
-      "dark": {
-        "color": {
-          "surface": {
-            "canvas": {
-              "$type": "color",
-              "$value": "{color.neutral.950}"
-            },
-            "default": {
-              "$type": "color",
-              "$value": "{color.neutral.900}"
-            },
-            "raised": {
-              "$type": "color",
-              "$value": "{color.neutral.800}"
-            },
-            "sunken": {
-              "$type": "color",
-              "$value": "{color.neutral.800}"
-            },
-            "selected": {
-              "$type": "color",
-              "$value": "{color.brand.800}"
-            },
-            "inverse": {
-              "$type": "color",
-              "$value": "{color.neutral.50}"
-            },
-            "scrim": {
-              "$type": "color",
-              "$value": "{color.black-alpha.scrim-dark}"
-            }
-          },
-          "text": {
-            "primary": {
-              "$type": "color",
-              "$value": "{color.neutral.50}"
-            },
-            "secondary": {
-              "$type": "color",
-              "$value": "{color.neutral.300}"
-            },
-            "muted": {
-              "$type": "color",
-              "$value": "{color.neutral.500}"
-            },
-            "inverse": {
-              "$type": "color",
-              "$value": "{color.neutral.900}"
-            },
-            "on-action": {
-              "$type": "color",
-              "$value": "{color.neutral.950}"
-            },
-            "link": {
-              "$type": "color",
-              "$value": "{color.brand.300}"
-            }
-          },
-          "border": {
-            "default": {
-              "$type": "color",
-              "$value": "{color.neutral.800}"
-            },
-            "strong": {
-              "$type": "color",
-              "$value": "{color.neutral.700}"
-            },
-            "focus": {
-              "$type": "color",
-              "$value": "{color.brand.300}"
-            }
-          },
-          "action": {
-            "primary": {
-              "$type": "color",
-              "$value": "{color.brand.300}"
-            },
-            "primary-hover": {
-              "$type": "color",
-              "$value": "{color.brand.100}"
-            },
-            "secondary": {
-              "$type": "color",
-              "$value": "{color.neutral.900}"
-            },
-            "secondary-hover": {
-              "$type": "color",
-              "$value": "{color.neutral.800}"
-            }
-          },
-          "status": {
-            "success": {
-              "$type": "color",
-              "$value": "{color.success.strong-dark}"
-            },
-            "warning": {
-              "$type": "color",
-              "$value": "{color.warning.strong-dark}"
-            },
-            "danger": {
-              "$type": "color",
-              "$value": "{color.danger.strong-dark}"
-            },
-            "success-subtle": {
-              "$type": "color",
-              "$value": "{color.success.subtle-dark}"
-            },
-            "warning-subtle": {
-              "$type": "color",
-              "$value": "{color.warning.subtle-dark}"
-            },
-            "danger-subtle": {
-              "$type": "color",
-              "$value": "{color.danger.subtle-dark}"
-            }
-          }
-        },
-        "elevation": {
-          "card": {
-            "$type": "shadow",
-            "$value": "{shadow.none}",
-            "$description": "No shadow in this scheme."
-          },
-          "overlay": {
-            "$type": "shadow",
-            "$value": "{shadow.overlay-dark}"
-          }
+        "overlay": {
+          "$type": "shadow",
+          "$value": "{theme.elevation.overlay}"
         }
       }
     },
@@ -2670,12 +3125,14 @@
       "button": {
         "primary": {
           "background": {
-            "$value": "{color.action.primary}",
-            "$description": "Primary button fill."
-          },
-          "background-hover": {
-            "$value": "{color.action.primary-hover}",
-            "$description": "Primary button fill on hover."
+            "@": {
+              "$value": "{color.action.primary.@}",
+              "$description": "Primary button fill."
+            },
+            "hover": {
+              "$value": "{color.action.primary.hover}",
+              "$description": "Primary button fill on hover."
+            }
           },
           "label": {
             "$value": "{color.text.on-action}",
@@ -2684,12 +3141,14 @@
         },
         "secondary": {
           "background": {
-            "$value": "{color.action.secondary}",
-            "$description": "Secondary button fill."
-          },
-          "background-hover": {
-            "$value": "{color.action.secondary-hover}",
-            "$description": "Secondary button fill on hover."
+            "@": {
+              "$value": "{color.action.secondary.@}",
+              "$description": "Secondary button fill."
+            },
+            "hover": {
+              "$value": "{color.action.secondary.hover}",
+              "$description": "Secondary button fill on hover."
+            }
           },
           "label": {
             "$value": "{color.text.primary}",
@@ -2737,6 +3196,20 @@
         "icon-size": {
           "$value": "{size.icon}",
           "$description": "Size of an icon inside a button."
+        },
+        "disabled": {
+          "background": {
+            "$value": "{color.disabled.surface}",
+            "$description": "Fill of a disabled button."
+          },
+          "label": {
+            "$value": "{color.disabled.text}",
+            "$description": "Label of a disabled button."
+          },
+          "border": {
+            "$value": "{color.disabled.border}",
+            "$description": "Border of a disabled secondary button."
+          }
         }
       },
       "input": {
@@ -2745,12 +3218,14 @@
           "$description": "Input fill."
         },
         "border": {
-          "$value": "{color.border.strong}",
-          "$description": "Input border at rest."
-        },
-        "border-focus": {
-          "$value": "{color.border.focus}",
-          "$description": "Input border when focused."
+          "@": {
+            "$value": "{color.border.strong}",
+            "$description": "Input border at rest."
+          },
+          "focus": {
+            "$value": "{color.border.focus}",
+            "$description": "Input border when focused."
+          }
         },
         "text": {
           "$value": "{color.text.primary}",
@@ -2775,11 +3250,25 @@
         "font-size": {
           "$value": "{type.body.font-size}",
           "$description": "Typed text size."
+        },
+        "disabled": {
+          "background": {
+            "$value": "{color.disabled.surface}",
+            "$description": "Fill of a disabled input."
+          },
+          "border": {
+            "$value": "{color.disabled.border}",
+            "$description": "Border of a disabled input."
+          },
+          "text": {
+            "$value": "{color.disabled.text}",
+            "$description": "Text in a disabled input."
+          }
         }
       },
       "control": {
         "checked": {
-          "$value": "{color.action.primary}",
+          "$value": "{color.action.primary.@}",
           "$description": "Fill of a checked checkbox or an on switch."
         },
         "track": {
@@ -2820,32 +3309,42 @@
         },
         "success": {
           "background": {
-            "$value": "{color.status.success-subtle}",
+            "$value": "{color.status.success.subtle}",
             "$description": "Success badge fill."
           },
           "label": {
-            "$value": "{color.status.success}",
+            "$value": "{color.status.success.@}",
             "$description": "Success badge label."
           }
         },
         "warning": {
           "background": {
-            "$value": "{color.status.warning-subtle}",
+            "$value": "{color.status.warning.subtle}",
             "$description": "Warning badge fill."
           },
           "label": {
-            "$value": "{color.status.warning}",
+            "$value": "{color.status.warning.@}",
             "$description": "Warning badge label."
           }
         },
         "danger": {
           "background": {
-            "$value": "{color.status.danger-subtle}",
+            "$value": "{color.status.danger.subtle}",
             "$description": "Danger badge fill."
           },
           "label": {
-            "$value": "{color.status.danger}",
+            "$value": "{color.status.danger.@}",
             "$description": "Danger badge label."
+          }
+        },
+        "info": {
+          "background": {
+            "$value": "{color.status.info.subtle}",
+            "$description": "Info badge fill."
+          },
+          "label": {
+            "$value": "{color.status.info.@}",
+            "$description": "Info badge label."
           }
         }
       },
@@ -2899,16 +3398,18 @@
       },
       "tabs": {
         "indicator": {
-          "$value": "{color.action.primary}",
+          "$value": "{color.action.primary.@}",
           "$description": "Active tab indicator."
         },
         "label": {
-          "$value": "{color.text.secondary}",
-          "$description": "Inactive tab label."
-        },
-        "label-active": {
-          "$value": "{color.text.primary}",
-          "$description": "Active tab label."
+          "@": {
+            "$value": "{color.text.secondary}",
+            "$description": "Inactive tab label."
+          },
+          "active": {
+            "$value": "{color.text.primary}",
+            "$description": "Active tab label."
+          }
         }
       },
       "overlay": {
