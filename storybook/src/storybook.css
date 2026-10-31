@@ -27,6 +27,6 @@ body {
 .ods-table td {
   text-align: left;
   padding: 6px 8px;
-  border-bottom: 1px solid #e3e6eb;
+  border-bottom: 1px solid var(--color-border-default, #e3e6eb);
   vertical-align: top;
 }

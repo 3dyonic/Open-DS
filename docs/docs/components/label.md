@@ -1,5 +1,5 @@
 ---
-sidebar_position: 8
+sidebar_position: 19
 title: "Label"
 description: "Label in Dense data."
 ---

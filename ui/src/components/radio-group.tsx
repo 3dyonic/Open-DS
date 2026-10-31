@@ -6,36 +6,24 @@
  * radius, shadow and text scale that shadcn.css maps onto the scheme's tokens. Dark mode comes
  * from the tokens, so no dark: classes.
  */
-"use client"
+"use client";
 
-import * as React from "react"
-import { cn } from "../lib/utils"
-import { CircleIcon } from "lucide-react"
-import { RadioGroup as RadioGroupPrimitive } from "radix-ui"
+import * as React from "react";
+import { cn } from "../lib/utils";
+import { CircleIcon } from "lucide-react";
+import { RadioGroup as RadioGroupPrimitive } from "radix-ui";
 
-function RadioGroup({
-  className,
-  ...props
-}: React.ComponentProps<typeof RadioGroupPrimitive.Root>) {
-  return (
-    <RadioGroupPrimitive.Root
-      data-slot="radio-group"
-      className={cn("grid gap-3", className)}
-      {...props}
-    />
-  )
+function RadioGroup({ className, ...props }: React.ComponentProps<typeof RadioGroupPrimitive.Root>) {
+  return <RadioGroupPrimitive.Root data-slot="radio-group" className={cn("grid gap-3", className)} {...props} />;
 }
 
-function RadioGroupItem({
-  className,
-  ...props
-}: React.ComponentProps<typeof RadioGroupPrimitive.Item>) {
+function RadioGroupItem({ className, ...props }: React.ComponentProps<typeof RadioGroupPrimitive.Item>) {
   return (
     <RadioGroupPrimitive.Item
       data-slot="radio-group-item"
       className={cn(
         "aspect-square size-4 shrink-0 rounded-full border border-input text-primary shadow-xs transition-[color,box-shadow] outline-none focus-visible:border-ring focus-visible:ring-[3px] focus-visible:ring-ring/50 disabled:cursor-not-allowed disabled:opacity-50 aria-invalid:border-destructive aria-invalid:ring-destructive/20",
-        className
+        className,
       )}
       {...props}
     >
@@ -46,7 +34,7 @@ function RadioGroupItem({
         <CircleIcon className="absolute top-1/2 left-1/2 size-2 -translate-x-1/2 -translate-y-1/2 fill-primary" />
       </RadioGroupPrimitive.Indicator>
     </RadioGroupPrimitive.Item>
-  )
+  );
 }
 
-export { RadioGroup, RadioGroupItem }
+export { RadioGroup, RadioGroupItem };

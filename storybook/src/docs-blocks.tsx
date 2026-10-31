@@ -125,7 +125,13 @@ export function ComponentKeys() {
   const { component } = useOpenDs();
   const s = useActiveScheme();
   const keys = grammar.component_keys.filter((k) => k.component === KEY_GROUP[component]);
-  if (!keys.length) return null;
+  if (!keys.length)
+    return (
+      <p>
+        From shadcn/ui. It reads shadcn&apos;s variables, which theme.css maps onto the scheme&apos;s semantic tokens,
+        and the radius, shadow and text scale in shadcn.css.
+      </p>
+    );
   return (
     <table className="ods-table">
       <thead>

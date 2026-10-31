@@ -1,5 +1,5 @@
 ---
-sidebar_position: 1
+sidebar_position: 3
 title: "Badge"
 description: "Badge in Dense data."
 ---

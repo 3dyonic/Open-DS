@@ -367,7 +367,9 @@ export function docsPages(scheme, g, roots, { storybook = "http://localhost:6006
       NOTE +
       `# ${title(name)}\n\n${esc(componentIntro(roots.ui, name)).replaceAll("*", "\\*").replaceAll("_", "\\_")}\n\n` +
       `See it in [Storybook](${storybook}) under Components / ${title(name)}, in every theme.\n\n` +
-      `## Component keys\n\nThe CSS variable is the key with \`/\` replaced by \`-\`. Each key points to a token; values live only on primitives.\n\n| Key | What it controls | Points to, ${first.id} | Points to, ${dark.id} |\n| --- | --- | --- | --- |\n` +
+      (keys.length
+        ? `## Component keys\n\nThe CSS variable is the key with \`/\` replaced by \`-\`. Each key points to a token; values live only on primitives.\n\n| Key | What it controls | Points to, ${first.id} | Points to, ${dark.id} |\n| --- | --- | --- | --- |\n`
+        : `## Tokens it reads\n\nFrom shadcn/ui. It reads shadcn's variables, which theme.css maps onto this system's semantic tokens, and the radius, shadow and text scale in shadcn.css.\n`) +
       keys
         .map((k) => {
           const p = k.id.replaceAll("/", ".");
