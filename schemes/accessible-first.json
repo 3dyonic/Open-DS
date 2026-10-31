@@ -1230,8 +1230,16 @@
             "300": {
               "$value": "#949494"
             },
+            "400": {
+              "$value": "#767676",
+              "$description": "Derived: the OKLab midpoint of 300 and 500. Added so muted text can pass 4.5:1 and stay quieter than secondary."
+            },
             "500": {
               "$value": "#595959"
+            },
+            "600": {
+              "$value": "#464646",
+              "$description": "Derived: the OKLab midpoint of 500 and 700. Added so muted text can pass 4.5:1 and stay quieter than secondary."
             },
             "700": {
               "$value": "#333333"
@@ -1262,8 +1270,16 @@
             "300": {
               "$value": "#595959"
             },
+            "400": {
+              "$value": "#767676",
+              "$description": "Derived: the OKLab midpoint of 300 and 500. Added so muted text can pass 4.5:1 and stay quieter than secondary."
+            },
             "500": {
               "$value": "#949494"
+            },
+            "600": {
+              "$value": "#B4B4B4",
+              "$description": "Derived: the OKLab midpoint of 500 and 700. Added so muted text can pass 4.5:1 and stay quieter than secondary."
             },
             "700": {
               "$value": "#D6D6D6"
@@ -1430,6 +1446,50 @@
           "dark": {
             "scrim": {
               "$value": "#000000B3"
+            }
+          }
+        },
+        "teal": {
+          "$type": "color",
+          "$description": "Teal ramp for the info status and categories. Same values as the multi-brand teal ramp: borrowed, not invented.",
+          "light": {
+            "100": {
+              "$value": "#E0F2F1"
+            },
+            "300": {
+              "$value": "#7FCFC6"
+            },
+            "500": {
+              "$value": "#14918A"
+            },
+            "600": {
+              "$value": "#0F766E"
+            },
+            "700": {
+              "$value": "#0B5B55"
+            },
+            "800": {
+              "$value": "#08423E"
+            }
+          },
+          "dark": {
+            "100": {
+              "$value": "#08423E"
+            },
+            "300": {
+              "$value": "#0B5B55"
+            },
+            "500": {
+              "$value": "#0F766E"
+            },
+            "600": {
+              "$value": "#14918A"
+            },
+            "700": {
+              "$value": "#7FCFC6"
+            },
+            "800": {
+              "$value": "#E0F2F1"
             }
           }
         }
@@ -1657,7 +1717,7 @@
         "label": "Accessible first",
         "description": "The single brand: strong blue on true neutral, high contrast everywhere.",
         "theme": {
-          "$description": "The Accessible first theme: what each brand-dependent semantic key picks, in light and dark, plus mode-free picks (fonts, corners) in base.",
+          "$description": "The Accessible first theme: what each brand-dependent semantic key picks, in light and dark, plus mode-free picks (fonts, corners) in base. Info uses teal, kept apart from the brand colour so it never reads as an action. Categories 1 to 5 are blue, teal, green, amber, gray: distinct hues for tags and chart series, with no meaning. Disabled uses the neutral gray.",
           "base": {
             "radius": {
               "control": {
@@ -1813,6 +1873,16 @@
                 }
               },
               "status": {
+                "info": {
+                  "@": {
+                    "$type": "color",
+                    "$value": "{color.teal.light.700}"
+                  },
+                  "subtle": {
+                    "$type": "color",
+                    "$value": "{color.teal.light.100}"
+                  }
+                },
                 "success": {
                   "@": {
                     "$type": "color",
@@ -1842,6 +1912,72 @@
                     "$type": "color",
                     "$value": "{color.red.light.100}"
                   }
+                }
+              },
+              "category": {
+                "1": {
+                  "@": {
+                    "$type": "color",
+                    "$value": "{color.blue.light.600}"
+                  },
+                  "subtle": {
+                    "$type": "color",
+                    "$value": "{color.blue.light.100}"
+                  }
+                },
+                "2": {
+                  "@": {
+                    "$type": "color",
+                    "$value": "{color.teal.light.600}"
+                  },
+                  "subtle": {
+                    "$type": "color",
+                    "$value": "{color.teal.light.100}"
+                  }
+                },
+                "3": {
+                  "@": {
+                    "$type": "color",
+                    "$value": "{color.green.light.700}"
+                  },
+                  "subtle": {
+                    "$type": "color",
+                    "$value": "{color.green.light.100}"
+                  }
+                },
+                "4": {
+                  "@": {
+                    "$type": "color",
+                    "$value": "{color.amber.light.700}"
+                  },
+                  "subtle": {
+                    "$type": "color",
+                    "$value": "{color.amber.light.100}"
+                  }
+                },
+                "5": {
+                  "@": {
+                    "$type": "color",
+                    "$value": "{color.gray.light.500}"
+                  },
+                  "subtle": {
+                    "$type": "color",
+                    "$value": "{color.gray.light.100}"
+                  }
+                }
+              },
+              "disabled": {
+                "text": {
+                  "$type": "color",
+                  "$value": "{color.gray.light.500}"
+                },
+                "surface": {
+                  "$type": "color",
+                  "$value": "{color.gray.light.100}"
+                },
+                "border": {
+                  "$type": "color",
+                  "$value": "{color.gray.light.200}"
                 }
               }
             },
@@ -1895,11 +2031,11 @@
                 },
                 "secondary": {
                   "$type": "color",
-                  "$value": "{color.gray.dark.500}"
+                  "$value": "{color.gray.dark.600}"
                 },
                 "muted": {
                   "$type": "color",
-                  "$value": "{color.gray.dark.300}"
+                  "$value": "{color.gray.dark.500}"
                 },
                 "inverse": {
                   "$type": "color",
@@ -1921,7 +2057,7 @@
                 },
                 "strong": {
                   "$type": "color",
-                  "$value": "{color.gray.dark.300}"
+                  "$value": "{color.gray.dark.400}"
                 },
                 "focus": {
                   "$type": "color",
@@ -1951,6 +2087,16 @@
                 }
               },
               "status": {
+                "info": {
+                  "@": {
+                    "$type": "color",
+                    "$value": "{color.teal.dark.700}"
+                  },
+                  "subtle": {
+                    "$type": "color",
+                    "$value": "{color.teal.dark.100}"
+                  }
+                },
                 "success": {
                   "@": {
                     "$type": "color",
@@ -1980,6 +2126,72 @@
                     "$type": "color",
                     "$value": "{color.red.dark.100}"
                   }
+                }
+              },
+              "category": {
+                "1": {
+                  "@": {
+                    "$type": "color",
+                    "$value": "{color.blue.dark.700}"
+                  },
+                  "subtle": {
+                    "$type": "color",
+                    "$value": "{color.blue.dark.100}"
+                  }
+                },
+                "2": {
+                  "@": {
+                    "$type": "color",
+                    "$value": "{color.teal.dark.700}"
+                  },
+                  "subtle": {
+                    "$type": "color",
+                    "$value": "{color.teal.dark.100}"
+                  }
+                },
+                "3": {
+                  "@": {
+                    "$type": "color",
+                    "$value": "{color.green.dark.700}"
+                  },
+                  "subtle": {
+                    "$type": "color",
+                    "$value": "{color.green.dark.100}"
+                  }
+                },
+                "4": {
+                  "@": {
+                    "$type": "color",
+                    "$value": "{color.amber.dark.700}"
+                  },
+                  "subtle": {
+                    "$type": "color",
+                    "$value": "{color.amber.dark.100}"
+                  }
+                },
+                "5": {
+                  "@": {
+                    "$type": "color",
+                    "$value": "{color.gray.dark.700}"
+                  },
+                  "subtle": {
+                    "$type": "color",
+                    "$value": "{color.gray.dark.100}"
+                  }
+                }
+              },
+              "disabled": {
+                "text": {
+                  "$type": "color",
+                  "$value": "{color.gray.dark.500}"
+                },
+                "surface": {
+                  "$type": "color",
+                  "$value": "{color.gray.dark.100}"
+                },
+                "border": {
+                  "$type": "color",
+                  "$value": "{color.gray.dark.200}"
                 }
               }
             },
@@ -2369,6 +2581,18 @@
           }
         },
         "status": {
+          "info": {
+            "@": {
+              "$type": "color",
+              "$description": "Info text and icons: neutral news, no action needed.",
+              "$value": "{theme.color.status.info.@}"
+            },
+            "subtle": {
+              "$type": "color",
+              "$description": "Info badge and banner fill.",
+              "$value": "{theme.color.status.info.subtle}"
+            }
+          },
           "success": {
             "@": {
               "$type": "color",
@@ -2404,6 +2628,87 @@
               "$description": "Danger badge fill.",
               "$value": "{theme.color.status.danger.subtle}"
             }
+          }
+        },
+        "category": {
+          "$description": "Identity colours for tags, labels and chart series. They tell items apart and carry no meaning.",
+          "1": {
+            "@": {
+              "$type": "color",
+              "$description": "Category 1: chart series, tag dots and icons. Tag text uses color.text.primary.",
+              "$value": "{theme.color.category.1.@}"
+            },
+            "subtle": {
+              "$type": "color",
+              "$description": "Category 1: tag fill.",
+              "$value": "{theme.color.category.1.subtle}"
+            }
+          },
+          "2": {
+            "@": {
+              "$type": "color",
+              "$description": "Category 2: chart series, tag dots and icons. Tag text uses color.text.primary.",
+              "$value": "{theme.color.category.2.@}"
+            },
+            "subtle": {
+              "$type": "color",
+              "$description": "Category 2: tag fill.",
+              "$value": "{theme.color.category.2.subtle}"
+            }
+          },
+          "3": {
+            "@": {
+              "$type": "color",
+              "$description": "Category 3: chart series, tag dots and icons. Tag text uses color.text.primary.",
+              "$value": "{theme.color.category.3.@}"
+            },
+            "subtle": {
+              "$type": "color",
+              "$description": "Category 3: tag fill.",
+              "$value": "{theme.color.category.3.subtle}"
+            }
+          },
+          "4": {
+            "@": {
+              "$type": "color",
+              "$description": "Category 4: chart series, tag dots and icons. Tag text uses color.text.primary.",
+              "$value": "{theme.color.category.4.@}"
+            },
+            "subtle": {
+              "$type": "color",
+              "$description": "Category 4: tag fill.",
+              "$value": "{theme.color.category.4.subtle}"
+            }
+          },
+          "5": {
+            "@": {
+              "$type": "color",
+              "$description": "Category 5: chart series, tag dots and icons. Tag text uses color.text.primary.",
+              "$value": "{theme.color.category.5.@}"
+            },
+            "subtle": {
+              "$type": "color",
+              "$description": "Category 5: tag fill.",
+              "$value": "{theme.color.category.5.subtle}"
+            }
+          }
+        },
+        "disabled": {
+          "$description": "The shared look of controls that cannot be used right now.",
+          "text": {
+            "$type": "color",
+            "$description": "Text and icons of a disabled control.",
+            "$value": "{theme.color.disabled.text}"
+          },
+          "surface": {
+            "$type": "color",
+            "$description": "Fill of a disabled control.",
+            "$value": "{theme.color.disabled.surface}"
+          },
+          "border": {
+            "$type": "color",
+            "$description": "Border of a disabled control.",
+            "$value": "{theme.color.disabled.border}"
           }
         }
       },
@@ -2495,6 +2800,20 @@
         "icon-size": {
           "$value": "{size.icon}",
           "$description": "Size of an icon inside a button."
+        },
+        "disabled": {
+          "background": {
+            "$value": "{color.disabled.surface}",
+            "$description": "Fill of a disabled button."
+          },
+          "label": {
+            "$value": "{color.disabled.text}",
+            "$description": "Label of a disabled button."
+          },
+          "border": {
+            "$value": "{color.disabled.border}",
+            "$description": "Border of a disabled secondary button."
+          }
         }
       },
       "input": {
@@ -2535,6 +2854,20 @@
         "font-size": {
           "$value": "{type.body.font-size}",
           "$description": "Typed text size."
+        },
+        "disabled": {
+          "background": {
+            "$value": "{color.disabled.surface}",
+            "$description": "Fill of a disabled input."
+          },
+          "border": {
+            "$value": "{color.disabled.border}",
+            "$description": "Border of a disabled input."
+          },
+          "text": {
+            "$value": "{color.disabled.text}",
+            "$description": "Text in a disabled input."
+          }
         }
       },
       "control": {
@@ -2606,6 +2939,16 @@
           "label": {
             "$value": "{color.status.danger.@}",
             "$description": "Danger badge label."
+          }
+        },
+        "info": {
+          "background": {
+            "$value": "{color.status.info.subtle}",
+            "$description": "Info badge fill."
+          },
+          "label": {
+            "$value": "{color.status.info.@}",
+            "$description": "Info badge label."
           }
         }
       },

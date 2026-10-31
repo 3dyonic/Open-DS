@@ -24,7 +24,7 @@ The CSS variable is the key with `/` replaced by `-` and the base `@` dropped. E
 | `button/secondary/background/@` | Secondary button fill. | `color.action.secondary.@` → `dense-data.theme.light.color.action.secondary.@` → `color.slate.light.0` | `color.action.secondary.@` → `dense-data.theme.dark.color.action.secondary.@` → `color.slate.dark.50` |
 | `button/secondary/background/hover` | Secondary button fill on hover. | `color.action.secondary.hover` → `dense-data.theme.light.color.action.secondary.hover` → `color.slate.light.100` | `color.action.secondary.hover` → `dense-data.theme.dark.color.action.secondary.hover` → `color.slate.dark.100` |
 | `button/secondary/label` | Secondary button label color. | `color.text.primary` → `dense-data.theme.light.color.text.primary` → `color.slate.light.900` | `color.text.primary` → `dense-data.theme.dark.color.text.primary` → `color.slate.dark.900` |
-| `button/secondary/border` | Secondary button border. | `color.border.strong` → `dense-data.theme.light.color.border.strong` → `color.slate.light.300` | `color.border.strong` → `dense-data.theme.dark.color.border.strong` → `color.slate.dark.200` |
+| `button/secondary/border` | Secondary button border. | `color.border.strong` → `dense-data.theme.light.color.border.strong` → `color.slate.light.500` | `color.border.strong` → `dense-data.theme.dark.color.border.strong` → `color.slate.dark.300` |
 | `button/ghost/background-hover` | Ghost button fill on hover. | `color.surface.sunken` → `dense-data.theme.light.color.surface.sunken` → `color.slate.light.100` | `color.surface.sunken` → `dense-data.theme.dark.color.surface.sunken` → `color.slate.dark.100` |
 | `button/ghost/label` | Ghost button label color. | `color.text.link` → `dense-data.theme.light.color.text.link` → `color.violet.light.700` | `color.text.link` → `dense-data.theme.dark.color.text.link` → `color.violet.dark.700` |
 | `button/height` | Button height. | `size.control.default` → `size.32` | same |
@@ -34,6 +34,9 @@ The CSS variable is the key with `/` replaced by `-` and the base `@` dropped. E
 | `button/font-weight` | Button label weight. | `type.label.font-weight` → `font.weight.500` | same |
 | `button/focus-ring` | Focus ring color on any button. | `color.border.focus` → `dense-data.theme.light.color.border.focus` → `color.violet.light.600` | `color.border.focus` → `dense-data.theme.dark.color.border.focus` → `color.violet.dark.700` |
 | `button/icon-size` | Size of an icon inside a button. | `size.icon` → `size.16` | same |
+| `button/disabled/background` | Fill of a disabled button. | `color.disabled.surface` → `dense-data.theme.light.color.disabled.surface` → `color.slate.light.100` | `color.disabled.surface` → `dense-data.theme.dark.color.disabled.surface` → `color.slate.dark.100` |
+| `button/disabled/label` | Label of a disabled button. | `color.disabled.text` → `dense-data.theme.light.color.disabled.text` → `color.slate.light.500` | `color.disabled.text` → `dense-data.theme.dark.color.disabled.text` → `color.slate.dark.500` |
+| `button/disabled/border` | Border of a disabled secondary button. | `color.disabled.border` → `dense-data.theme.light.color.disabled.border` → `color.slate.light.200` | `color.disabled.border` → `dense-data.theme.dark.color.disabled.border` → `color.slate.dark.200` |
 
 ## When to use it
 

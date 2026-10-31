@@ -5,6 +5,8 @@ description: Build UI in a project that uses an Open DS scheme. Use whenever you
 
 # Build UI with the scheme
 
+Before you start, call `get_context build` (or `open-ds context <scheme> build`). Before you use a colour, read its guidance with `get_context <token>`: its intent, what not to use it for and the fills it may sit on.
+
 1. Read `AGENTS.md` first. It holds the usage rules and the voice for this scheme.
 2. Before you pick a component, a variant or a token, find the situation: `npx open-ds when <scheme> <words>` or the MCP tool `when_to_use`. Do what its rule says, never what its "not" says.
 3. Use only the components in `src/components/ui` and the scheme's CSS variables. No raw colours, sizes or spacing.
