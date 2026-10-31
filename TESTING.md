@@ -31,7 +31,7 @@ pnpm may print a warning about ignored build scripts ("approve-builds"). It is s
 pnpm e2e
 ```
 
-It builds the tokens, uses the CLI, deploys Dense data into a real Vite app and builds that app, deploys Multi-brand through the MCP server over stdio, then builds the site, Storybook and the docs. Each step prints ✓ or ✗. `pnpm e2e:quick` skips the three builds.
+It builds the tokens, uses the CLI, deploys Dense data into a real Vite app and builds that app, deploys Multi-brand through the MCP server over stdio, then builds the site, runs the package test (below), and builds Storybook and the docs. Each step prints ✓ or ✗. `pnpm e2e:quick` skips the builds and the package test.
 
 To see every layer checked against your instructions and the ticket specs:
 
@@ -62,6 +62,34 @@ node cli/bin/open-ds.js init multi-brand --dir /tmp/my-app --brand birch --yes
 ```
 
 Then open `/tmp/my-app/AGENTS.md` to see what an agent gets. `--yes` lets you run it again over the same folder.
+
+### The package, as a user gets it
+
+This is how to test the published CLI before it is published. It packs the CLI with `npm pack` (the exact file npm would publish), copies the blank test app (`e2e/app`) to a temporary folder outside the repository, and runs the packed CLI there with `npx`, the way a user runs `npx open-ds init`. Then it type-checks and builds the app.
+
+```bash
+pnpm test:package
+```
+
+Each step prints ✓ or ✗. To keep the app and see it in a browser:
+
+```bash
+pnpm test:package --keep
+```
+
+It prints the app's folder. Then:
+
+```bash
+cd /tmp/open-ds-package-XXXX/app && npx vite
+```
+
+Use the folder it printed. Open the address Vite prints: you see the scheme's components (a card, a badge, a field, two buttons) in its tokens. In the same folder, read `AGENTS.md` (what an agent gets), `src/styles/open-ds.css` (every token), `src/components/ui/` (the components) and `docs/` (the design system's docs pages).
+
+Try another scheme or brand:
+
+```bash
+pnpm test:package --keep --scheme multi-brand --brand coral
+```
 
 ### MCP server with Claude Code
 

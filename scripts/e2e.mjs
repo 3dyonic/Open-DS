@@ -4,7 +4,7 @@
 //   2. CLI: list, why, when
 //   3. CLI: deploy Dense data into e2e/app and build that app with Vite
 //   4. MCP over stdio: list tools and schemes, ask when_to_use, deploy Multi-brand (Coral)
-//   5. build the website, Storybook and the docs
+//   5. pack the CLI and deploy from the packed file into a fresh app; build the website, Storybook and the docs
 // Pass --quick to skip step 5.
 
 import { execFileSync } from "node:child_process";
@@ -165,6 +165,10 @@ if (!quick) {
       "no scheme page in site/out",
     );
     return "site/out";
+  });
+  step("The package, as a user gets it", () => {
+    run("node", ["scripts/test-package.mjs"]);
+    return "packed CLI deployed into a fresh app that type-checks and builds";
   });
   step("Storybook build", () => {
     run("pnpm", ["--dir", "storybook", "build"]);

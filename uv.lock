@@ -12,7 +12,6 @@ resolution-markers = [
 [manifest]
 members = [
     "open-ds-mcp",
-    "open-ds-validator",
     "open-ds-workspace",
 ]
 
@@ -657,25 +656,10 @@ version = "0.1.0"
 source = { editable = "mcp" }
 dependencies = [
     { name = "fastmcp" },
-    { name = "open-ds-validator" },
 ]
 
 [package.metadata]
-requires-dist = [
-    { name = "fastmcp", specifier = ">=2.13,<5" },
-    { name = "open-ds-validator", editable = "validator" },
-]
-
-[[package]]
-name = "open-ds-validator"
-version = "0.1.0"
-source = { editable = "validator" }
-dependencies = [
-    { name = "jsonschema" },
-]
-
-[package.metadata]
-requires-dist = [{ name = "jsonschema", specifier = ">=4.23,<5" }]
+requires-dist = [{ name = "fastmcp", specifier = ">=2.13,<5" }]
 
 [[package]]
 name = "open-ds-workspace"
