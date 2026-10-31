@@ -134,11 +134,21 @@ export default function InstallPage() {
         </h2>
         <p className="max-w-[880px] text-[16px] text-body">The CLI needs Node.js 22 or later.</p>
         <ol className="flex flex-col gap-3">
-          <Step n={1} title="See the schemes">
+          <Step n={1} title="Install the CLI">
+            <Command label="install" code="npm install -g open-ds" />
+            <Command label="check" code="open-ds --help" />
+            <p className="text-[15px] text-body">
+              Or skip installing: <code className="font-mono">npx open-ds</code> runs the latest
+              version each time, which is what the commands below use. Installed? Drop the{" "}
+              <code className="font-mono">npx</code>. In a project, add it as a dev dependency with{" "}
+              <code className="font-mono">npm install -D open-ds</code>.
+            </p>
+          </Step>
+          <Step n={2} title="See the schemes">
             <Command label="list" code="npx open-ds list" />
             <p className="text-[15px] text-body">Schemes: {ids.join(", ")}.</p>
           </Step>
-          <Step n={2} title="Take a whole design system">
+          <Step n={3} title="Take a whole design system">
             <Command
               label="create"
               code="npx open-ds create my-design-system --scheme dense-data"
@@ -152,7 +162,7 @@ export default function InstallPage() {
               Multi-brand, add {code("--brand aster")}, {code("birch")} or {code("coral")}.
             </p>
           </Step>
-          <Step n={3} title="Or add a scheme to an app you have">
+          <Step n={4} title="Or add a scheme to an app you have">
             <Command label="init" code="npx open-ds init dense-data" />
             <p className="text-[15px] text-body">
               Run it in your app’s folder. It lists the component packages to install with{" "}
@@ -160,7 +170,7 @@ export default function InstallPage() {
               Add {code("--docs")} to also write the design system’s docs pages to {code("docs/")}.
             </p>
           </Step>
-          <Step n={4} title="Ask why, and add more components">
+          <Step n={5} title="Ask why, and add more components">
             <Command label="why" code="npx open-ds why dense-data typography.definition" />
             <Command label="when" code={'npx open-ds when dense-data "a number in a table"'} />
             <Command label="add" code="npx open-ds add tooltip" />
