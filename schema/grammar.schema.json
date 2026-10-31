@@ -221,7 +221,7 @@
     "catalogue": {
       "type": "object",
       "additionalProperties": false,
-      "required": ["description", "source", "families", "items"],
+      "required": ["description", "source", "families", "roles", "items"],
       "description": "Every component a design system can carry. Each scheme picks its inventory from these items through the components scope.",
       "properties": {
         "description": {
@@ -254,6 +254,25 @@
                 "description": "What components in the family do."
               }
             }
+          }
+        },
+        "roles": {
+          "type": "object",
+          "description": "For each components.roles option id, the family ids it admits, plus a description.",
+          "properties": {
+            "description": {
+              "type": "string",
+              "minLength": 1,
+              "description": "What the map is."
+            }
+          },
+          "additionalProperties": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "pattern": "^[a-z-]+$"
+            },
+            "description": "Family ids the option admits."
           }
         },
         "items": {
