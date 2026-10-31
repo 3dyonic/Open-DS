@@ -63,7 +63,7 @@ export function SiteNav() {
               aria-label={`${brandName} on GitHub`}
               title="GitHub"
               rel="noopener"
-              className="flex size-[40px] items-center justify-center rounded-[4px] border border-ink hover:bg-ink hover:text-paper"
+              className="flex size-[40px] items-center justify-center hover:text-accent-text"
             >
               <GitHubIcon />
             </a>
