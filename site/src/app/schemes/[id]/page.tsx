@@ -1,7 +1,7 @@
 // One scheme, built from the Figma frame S02 Scheme (117:900).
 import type { Metadata } from "next";
 import Link from "next/link";
-import { Applied } from "@/components/applied";
+import { Applied, type AppliedSamples } from "@/components/applied";
 import { Eyebrow, Legend, Swatch } from "@/components/chrome";
 import { ScopeMini } from "@/components/scope-mini";
 import { cardMark, REASON_LABEL } from "@/lib/home";
@@ -140,7 +140,15 @@ export default async function SchemePage({ params }: { params: Promise<{ id: str
         <h2 id="applied" className="text-[36px] font-extrabold">
           One screen built only from its answers
         </h2>
-        <Applied scheme={s.id} brands={brands} toast={rule("success-words").example ?? ""} />
+        <Applied
+          scheme={s.id}
+          brands={brands}
+          toast={rule("success-words").example ?? ""}
+          samples={(s as unknown as { samples: AppliedSamples }).samples}
+          inventory={(s as unknown as { inventory: { in: { id: string }[] } }).inventory.in.map(
+            (i) => i.id,
+          )}
+        />
       </section>
 
       <section className="flex flex-col gap-4" aria-labelledby="scopes">

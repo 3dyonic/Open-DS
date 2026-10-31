@@ -233,6 +233,12 @@ export function scopePage(schemeId: string, scopeId: string) {
     usage: s.usage
       .filter((u) => g.situations.find((x) => x.id === u.situation)!.scope === scopeId)
       .map((u) => ({ ...u, title: g.situations.find((x) => x.id === u.situation)!.title })),
+    // A line of the scheme's own content, for type samples.
+    sample: (() => {
+      const m = (s as unknown as { samples: { metrics: { label: string; value: string }[] } })
+        .samples.metrics[0];
+      return `${m.label} ${m.value}`;
+    })(),
     line: `${scope.title} in ${s.name}: ${lower(qs[3].label)}. ${qs[3].why} ${qs[4].why}`,
   };
 }

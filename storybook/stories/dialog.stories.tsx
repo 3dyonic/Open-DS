@@ -11,32 +11,37 @@ import {
   DialogTrigger,
 } from "@open-ds/ui";
 import { Usage } from "../src/usage";
+import { Show, toneOf } from "../src/samples";
 
 const meta = { title: "Components/Dialog", component: Dialog } satisfies Meta<typeof Dialog>;
 export default meta;
 type Story = StoryObj<typeof meta>;
 
-export const ConfirmDelete: Story = {
+export const ConfirmDestructive: Story = {
   render: () => (
-    <div>
-      <Dialog>
-        <DialogTrigger asChild>
-          <Button variant="secondary">Delete 3 orders</Button>
-        </DialogTrigger>
-        <DialogContent>
-          <DialogHeader>
-            <DialogTitle>Delete 3 orders?</DialogTitle>
-            <DialogDescription>This cannot be undone.</DialogDescription>
-          </DialogHeader>
-          <DialogFooter>
-            <DialogClose asChild>
-              <Button variant="secondary">Keep them</Button>
-            </DialogClose>
-            <Button>Delete</Button>
-          </DialogFooter>
-        </DialogContent>
-      </Dialog>
-      <Usage situations={["destructive-action", "menu-or-dialog"]} />
-    </div>
+    <Show component="dialog">
+      {(s) => (
+        <div>
+          <Dialog>
+            <DialogTrigger asChild>
+              <Button variant="secondary">{s.confirm!.trigger}</Button>
+            </DialogTrigger>
+            <DialogContent>
+              <DialogHeader>
+                <DialogTitle>{s.confirm!.title}</DialogTitle>
+                <DialogDescription>{s.confirm!.body}</DialogDescription>
+              </DialogHeader>
+              <DialogFooter>
+                <DialogClose asChild>
+                  <Button variant="secondary">{s.confirm!.cancel}</Button>
+                </DialogClose>
+                <Button>{s.confirm!.confirm}</Button>
+              </DialogFooter>
+            </DialogContent>
+          </Dialog>
+          <Usage situations={["destructive-action", "menu-or-dialog"]} />
+        </div>
+      )}
+    </Show>
   ),
 };

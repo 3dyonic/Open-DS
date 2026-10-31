@@ -246,6 +246,203 @@
       }
     ]
   },
+  "samples": {
+    "description": "Sample content for showing this system: written from its use scenarios, in its voice, with every status mapped to a meaning. Storybook, the site and the docs read it; it is never shared between schemes.",
+    "follows": [
+      "scenarios.q1",
+      "content.q1",
+      "voice.values",
+      "voice.definition"
+    ],
+    "screen": "Orders due today",
+    "actions": {
+      "primary": "Ship now",
+      "secondary": "Export"
+    },
+    "statuses": [
+      {
+        "label": "Packing",
+        "meaning": "neutral",
+        "why": "Work in progress; nothing to act on."
+      },
+      {
+        "label": "Shipped",
+        "meaning": "success",
+        "why": "The order left the depot."
+      },
+      {
+        "label": "Late",
+        "meaning": "warning",
+        "why": "Past its ship time, still recoverable."
+      },
+      {
+        "label": "Payment failed",
+        "meaning": "danger",
+        "why": "The payment did not go through, so the order will not ship."
+      },
+      {
+        "label": "Refunded",
+        "meaning": "neutral",
+        "why": "A refund is a finished outcome, not a failure."
+      }
+    ],
+    "table": {
+      "caption": "Orders due today",
+      "columns": [
+        {
+          "label": "Order"
+        },
+        {
+          "label": "Depot"
+        },
+        {
+          "label": "Due"
+        },
+        {
+          "label": "Total",
+          "numeric": true
+        },
+        {
+          "label": "Status"
+        }
+      ],
+      "rows": [
+        {
+          "cells": [
+            "#1042",
+            "North depot",
+            "08:30",
+            "1,240.00"
+          ],
+          "status": "Shipped"
+        },
+        {
+          "cells": [
+            "#1043",
+            "East depot",
+            "09:10",
+            "86.50"
+          ],
+          "status": "Late"
+        },
+        {
+          "cells": [
+            "#1044",
+            "North depot",
+            "09:45",
+            "3,915.20"
+          ],
+          "status": "Payment failed"
+        },
+        {
+          "cells": [
+            "#1045",
+            "South depot",
+            "10:20",
+            "212.00"
+          ],
+          "status": "Refunded"
+        },
+        {
+          "cells": [
+            "#1046",
+            "East depot",
+            "11:00",
+            "640.75"
+          ],
+          "status": "Packing"
+        }
+      ]
+    },
+    "metrics": [
+      {
+        "label": "Orders today",
+        "value": "186"
+      },
+      {
+        "label": "Late",
+        "value": "7"
+      },
+      {
+        "label": "Payments failed",
+        "value": "2"
+      },
+      {
+        "label": "Average ship time",
+        "value": "1.8 h"
+      }
+    ],
+    "field": {
+      "label": "Quantity",
+      "placeholder": "0",
+      "hint": "Whole units.",
+      "error": "Quantity must be 1 or more.",
+      "invalid": "0"
+    },
+    "checkbox": [
+      "Late only",
+      "Paid",
+      "Archived"
+    ],
+    "select": {
+      "label": "Depot",
+      "options": [
+        "North depot",
+        "East depot",
+        "South depot"
+      ],
+      "value": "East depot"
+    },
+    "switches": [
+      "Compact rows",
+      "Auto-refresh"
+    ],
+    "messages": {
+      "success": "12 orders exported.",
+      "error": {
+        "title": "Order 1042 not saved.",
+        "description": "Quantity must be 1 or more."
+      },
+      "neutral": "Filters cleared."
+    },
+    "confirm": {
+      "trigger": "Delete 3 orders",
+      "title": "Delete 3 orders?",
+      "body": "This cannot be undone.",
+      "confirm": "Delete",
+      "cancel": "Keep them"
+    },
+    "card": {
+      "title": "Order 1043",
+      "description": "East depot · 40 min late",
+      "status": "Late",
+      "primary": "Ship now",
+      "secondary": "View"
+    },
+    "tabs": [
+      {
+        "label": "Open",
+        "content": "12 open orders."
+      },
+      {
+        "label": "Late",
+        "content": "7 late orders."
+      },
+      {
+        "label": "Done",
+        "content": "240 shipped this month."
+      }
+    ],
+    "menu": {
+      "trigger": "Actions for order 1042",
+      "items": [
+        "Edit",
+        "Duplicate"
+      ],
+      "destructive": "Delete"
+    },
+    "icon_action": "Filter"
+  },
   "themes": [
     {
       "id": "light",

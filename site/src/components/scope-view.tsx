@@ -54,7 +54,7 @@ function Sample({ p, role }: { p: ScopePage; role: string }) {
           fontWeight: cssVar(`${base}.font-weight`),
         }}
       >
-        Open orders 1,240.00
+        {p.sample}
       </span>
     );
   }
