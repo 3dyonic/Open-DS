@@ -2,6 +2,7 @@
 import type { Metadata } from "next";
 import { Eyebrow } from "@/components/chrome";
 import { DemoNote } from "@/components/demo-note";
+import { WithRobot } from "@/components/robot";
 import Link from "next/link";
 import { grammar, type Group } from "@/lib/schemes";
 
@@ -26,7 +27,7 @@ function GroupLinks({ groups }: { groups: Group[] }) {
                 {grp.questions.length} questions
               </span>
             </span>
-            <span className="text-[14px] leading-[1.45] text-[#3e3a31]">{grp.description}</span>
+            <span className="text-[14px] leading-[1.45] text-body">{grp.description}</span>
           </Link>
         </li>
       ))}
@@ -47,16 +48,18 @@ export default function QuestionsPage() {
   return (
     <>
       <header className="flex flex-col gap-4">
-        <Eyebrow>The grammar</Eyebrow>
-        <h1 className="text-[44px] leading-[1.05] font-extrabold md:text-[56px]">
-          Every question, once.
-        </h1>
-        <p className="max-w-[880px] text-[19px] leading-[1.45] text-[#3e3a31]">
-          The master list every scheme answers. {reasonCount} reason questions and {scopeCount}{" "}
-          scope questions, each with a stable id. Every scope answers the same five questions:{" "}
-          {g.methods.map((m) => m.title.toLowerCase()).join(", ")}. The answers make each design
-          system.
-        </p>
+        <WithRobot name="enquire" priority>
+          <Eyebrow>The grammar</Eyebrow>
+          <h1 className="text-[44px] leading-[1.05] font-extrabold md:text-[56px]">
+            Every question, once.
+          </h1>
+          <p className="max-w-[880px] text-[19px] leading-[1.45] text-body">
+            The master list every scheme answers. {reasonCount} reason questions and {scopeCount}{" "}
+            scope questions, each with a stable id. Every scope answers the same five questions:{" "}
+            {g.methods.map((m) => m.title.toLowerCase()).join(", ")}. The answers make each design
+            system.
+          </p>
+        </WithRobot>
         <ol className="flex flex-wrap items-center gap-3">
           {layers.map(([t, n, on], i) => (
             <li key={t} className="flex items-center gap-3">
@@ -88,7 +91,7 @@ export default function QuestionsPage() {
         </Eyebrow>
         <GroupLinks groups={g.scopes} />
       </section>
-      <section className="flex flex-col gap-3 rounded-[8px] bg-ink p-7 text-paper">
+      <section className="inverse flex flex-col gap-3 rounded-[8px] bg-ink p-7 text-paper">
         <Eyebrow tone="accent">Rules of the grammar</Eyebrow>
         <ul className="flex flex-col gap-2 text-[16px]">
           {[

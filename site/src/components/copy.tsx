@@ -5,7 +5,7 @@ import { useState } from "react";
 export function Command({ code, label }: { code: string; label?: string }) {
   const [state, setState] = useState<"idle" | "copied" | "failed">("idle");
   return (
-    <div className="flex items-start gap-3 rounded-[6px] bg-ink p-4 text-paper">
+    <div className="inverse flex items-start gap-3 rounded-[6px] bg-ink p-4 text-paper">
       <pre className="min-w-0 flex-1 overflow-x-auto font-mono text-[14px] leading-[1.5] whitespace-pre-wrap">
         {code}
       </pre>

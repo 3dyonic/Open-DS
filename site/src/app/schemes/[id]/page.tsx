@@ -91,7 +91,7 @@ export default async function SchemePage({ params }: { params: Promise<{ id: str
             ))}
           </span>
           <h1 className="text-[44px] leading-[1.05] font-extrabold md:text-[56px]">{s.name}</h1>
-          <p className="text-[22px] text-[#3e3a31]">{s.summary}</p>
+          <p className="text-[22px] text-body">{s.summary}</p>
           <ul className="flex flex-wrap gap-2">
             {meta.map((m) => (
               <li
@@ -131,7 +131,7 @@ export default async function SchemePage({ params }: { params: Promise<{ id: str
           <span className="text-[20px] font-extrabold">
             The raw options every answer picks from
           </span>
-          <span className="text-[15px] leading-[1.45] text-[#3e3a31]">
+          <span className="text-[15px] leading-[1.45] text-body">
             The palette, type, space, corners, shadows and motion steps of {s.name}: each value, and
             the decisions that use it.
           </span>
@@ -196,7 +196,7 @@ export default async function SchemePage({ params }: { params: Promise<{ id: str
         <h2 id="scopes" className="text-[36px] font-extrabold">
           {g.scopes.length} scopes, each answered for this scheme
         </h2>
-        <p className="max-w-[860px] text-[16px] leading-[1.45] text-[#3e3a31]">
+        <p className="max-w-[860px] text-[16px] leading-[1.45] text-body">
           Every scope answers the same five questions:{" "}
           {g.methods.map((m) => m.title.toLowerCase()).join(", ")}.
         </p>
@@ -212,7 +212,7 @@ export default async function SchemePage({ params }: { params: Promise<{ id: str
                   <ScopeMini scheme={s} scope={sc.id} toast={rule("success-words").example ?? ""} />
                   <span className="flex min-w-0 flex-1 flex-col gap-2">
                     <span className="text-[24px] font-extrabold">{sc.title}</span>
-                    <span className="text-[16px] leading-[1.45] text-[#3e3a31]">
+                    <span className="text-[16px] leading-[1.45] text-body">
                       {a(3).why} {a(4).why}
                     </span>
                     {/* Each question in full words, with every option and this scheme's choice highlighted. */}
@@ -251,7 +251,7 @@ export default async function SchemePage({ params }: { params: Promise<{ id: str
         </ul>
       </section>
 
-      <section className="flex flex-col gap-8 rounded-[8px] bg-ink p-10 text-paper lg:flex-row">
+      <section className="inverse flex flex-col gap-8 rounded-[8px] bg-ink p-10 text-paper lg:flex-row">
         <div className="flex flex-col gap-3 lg:w-[640px]">
           <Eyebrow tone="accent">Take this scheme</Eyebrow>
           <h2 className="text-[36px] font-extrabold">Start from {s.name}.</h2>

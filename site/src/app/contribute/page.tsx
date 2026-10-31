@@ -52,7 +52,7 @@ export default function ContributePage() {
         <h1 className="text-[44px] leading-[1.05] font-extrabold md:text-[56px]">
           Add your answers.
         </h1>
-        <p className="max-w-[880px] text-[19px] leading-[1.45] text-[#3e3a31]">
+        <p className="max-w-[880px] text-[19px] leading-[1.45] text-body">
           Publish your design system as a scheme: the same questions, your answers, your reasons. It
           joins the gallery, and anyone can compare it, take it, or learn from it.
         </p>
@@ -65,7 +65,7 @@ export default function ContributePage() {
             </span>
             <div className="flex flex-col gap-2">
               <h2 className="text-[24px] font-extrabold">{t}</h2>
-              <p className="text-[16px] text-[#3e3a31]">{p}</p>
+              <p className="text-[16px] text-body">{p}</p>
               <ul className="flex flex-wrap gap-[6px]">
                 {chips.map((c) => (
                   <li key={c} className="rounded-[3px] bg-tag px-2 py-1 font-mono text-[12px]">
@@ -78,19 +78,19 @@ export default function ContributePage() {
         ))}
       </ol>
       <div className="grid gap-4 lg:grid-cols-2">
-        <section className="flex flex-col gap-3 rounded-[8px] bg-ink p-7 text-paper">
+        <section className="inverse flex flex-col gap-3 rounded-[8px] bg-ink p-7 text-paper">
           <Eyebrow tone="accent">Propose a question</Eyebrow>
           <h2 className="text-[30px] font-extrabold">Missing a question?</h2>
           <p className="text-[16px] leading-[1.45] text-line">
             If your design system made a decision the grammar cannot express, propose the question
             and its answer options. Questions are added carefully, so every scheme stays comparable.
           </p>
-          <pre className="rounded-[6px] bg-[#2c2821] p-4 font-mono text-[13px] whitespace-pre-wrap">{`spacing.<method> · one of: ${g.methods.map((m) => m.id).join(", ")}\n  every scope keeps the same five methods`}</pre>
+          <pre className="rounded-[6px] bg-ink-raised p-4 font-mono text-[13px] whitespace-pre-wrap">{`spacing.<method> · one of: ${g.methods.map((m) => m.id).join(", ")}\n  every scope keeps the same five methods`}</pre>
         </section>
         <section className="flex flex-col gap-3 rounded-[8px] border border-line bg-white p-7">
           <Eyebrow>Or start from a scheme</Eyebrow>
           <h2 className="text-[30px] font-extrabold">Change a few answers.</h2>
-          <p className="text-[16px] leading-[1.45] text-[#3e3a31]">
+          <p className="text-[16px] leading-[1.45] text-body">
             Take an existing scheme, change the answers that differ for you, and see what moves
             before you publish it.
           </p>

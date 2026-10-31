@@ -45,7 +45,7 @@ export default async function QuestionGroupPage({
       <header className="flex flex-col gap-3">
         <Eyebrow>{grp.kind}</Eyebrow>
         <h1 className="text-[40px] leading-[1.05] font-extrabold md:text-[48px]">{grp.title}</h1>
-        <p className="max-w-[760px] text-[18px] leading-[1.45] text-[#3e3a31]">{grp.description}</p>
+        <p className="max-w-[760px] text-[18px] leading-[1.45] text-body">{grp.description}</p>
       </header>
       <ol className="flex flex-col gap-8">
         {grp.questions.map((q, n) => (
@@ -55,7 +55,7 @@ export default async function QuestionGroupPage({
             </p>
             <h2 className="text-[24px] leading-[1.2] font-extrabold">{q.text}</h2>
             {q.description && (
-              <p className="text-[16px] leading-[1.45] text-[#3e3a31]">{q.description}</p>
+              <p className="text-[16px] leading-[1.45] text-body">{q.description}</p>
             )}
             <Options
               options={q.options}

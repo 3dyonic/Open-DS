@@ -27,7 +27,7 @@ export default function ComparePage() {
         <h1 className="text-[44px] leading-[1.05] font-extrabold md:text-[56px]">
           Same questions. Different answers.
         </h1>
-        <p className="max-w-[900px] text-[19px] leading-[1.45] text-[#3e3a31]">
+        <p className="max-w-[900px] text-[19px] leading-[1.45] text-body">
           Two schemes answer the same grammar. Here is every question where they differ, and why
           each one answered the way it did. The tokens follow, so they are not shown.
         </p>
