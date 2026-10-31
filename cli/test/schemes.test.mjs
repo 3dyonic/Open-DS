@@ -1,6 +1,6 @@
 import assert from "node:assert/strict";
 import { execFileSync } from "node:child_process";
-import { existsSync, mkdtempSync, readFileSync, readdirSync, rmSync } from "node:fs";
+import { existsSync, mkdirSync, mkdtempSync, readFileSync, readdirSync, rmSync, writeFileSync } from "node:fs";
 import { tmpdir } from "node:os";
 import { dirname, join } from "node:path";
 import test from "node:test";
@@ -197,5 +197,10 @@ test("create writes a full design system project", async () => {
   assert.equal(pkg.devDependencies["open-ds"], "file:../open-ds.tgz");
   assert.ok(!readFileSync(join(dir, "stories/button.stories.tsx"), "utf8").includes("@open-ds/ui"));
   assert.throws(() => createProject("multi-brand", dir), /not empty/);
+  const fresh = join(temp(), "fresh");
+  mkdirSync(join(fresh, "vendor"), { recursive: true });
+  writeFileSync(join(fresh, "package-lock.json"), "{}");
+  assert.equal(createProject("dense-data", fresh).scheme, "dense-data");
+  rmSync(dirname(fresh), { recursive: true, force: true });
   rmSync(dirname(dir), { recursive: true, force: true });
 });
