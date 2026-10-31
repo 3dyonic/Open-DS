@@ -83,7 +83,9 @@ function Group({ g, brand, anchor }: { g: PrimitiveGroup; brand?: string; anchor
           >
             <Specimen p={p} brand={brand} />
             <div className="flex min-w-0 flex-col gap-1">
-              <code className="font-mono text-[13px] font-semibold break-all">{p.path}</code>
+              <code className="font-mono text-[13px] font-semibold break-all">
+                {p.path.endsWith(".$root") ? `${p.path.slice(0, -6)} ($root)` : p.path}
+              </code>
               <span className="font-mono text-[12px] break-all text-muted">
                 {p.ref ? `→ ${p.ref}` : p.value}
               </span>
@@ -104,11 +106,16 @@ function Group({ g, brand, anchor }: { g: PrimitiveGroup; brand?: string; anchor
                 <ul className="flex flex-wrap gap-[6px]">
                   {p.usedBy.map((u) => (
                     <li
-                      key={`${u.mode}-${u.path}`}
+                      key={`${u.brand ?? ""}-${u.mode}-${u.path}`}
                       className="rounded-[3px] bg-paper px-2 py-[2px] font-mono text-[12px] break-all"
                     >
                       {u.path}
-                      {u.mode !== "base" && <span className="text-muted"> · {u.mode}</span>}
+                      {(u.brand || u.mode !== "base") && (
+                        <span className="text-muted">
+                          {" "}
+                          · {[u.brand, u.mode !== "base" ? u.mode : ""].filter(Boolean).join(" ")}
+                        </span>
+                      )}
                     </li>
                   ))}
                 </ul>
@@ -170,8 +177,11 @@ export function PrimitivesView({ p }: { p: PrimitivesPage }) {
           <p>
             The meaning comes from <strong className="text-ink">decision tokens</strong> (semantic
             tokens), which pick one option and say what it is for: &ldquo;the primary action&rdquo;,
-            &ldquo;a card corner&rdquo;. Each primitive below lists the decisions that use it.
-            Change a primitive, and every decision that points at it changes too.
+            &ldquo;a card corner&rdquo;. In between, each brand&rsquo;s theme picks a primitive for
+            every brand-dependent decision, in light and dark. Colours come by hue, then mode, then
+            step (color.violet.light.600), and each hue has a base value ($root). Each primitive
+            below lists the decisions that reach it. Change a primitive, and every decision that
+            points at it changes too.
           </p>
         </div>
       </header>

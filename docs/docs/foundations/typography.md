@@ -36,31 +36,31 @@ Each token points to another token. Values live only on primitives, below.
 
 | Token | Points to |
 | --- | --- |
-| `type.display.font-family` | `font.family.display` |
+| `type.display.font-family` | `dense-data.theme.base.type-display-font-family` → `font.family.ibm-plex-sans` |
 | `type.display.font-size` | `font.size.24` |
 | `type.display.line-height` | `font.line-height.28` |
 | `type.display.font-weight` | `font.weight.600` |
-| `type.title.font-family` | `font.family.display` |
+| `type.title.font-family` | `dense-data.theme.base.type-title-font-family` → `font.family.ibm-plex-sans` |
 | `type.title.font-size` | `font.size.20` |
 | `type.title.line-height` | `font.line-height.24` |
 | `type.title.font-weight` | `font.weight.600` |
-| `type.heading.font-family` | `font.family.display` |
+| `type.heading.font-family` | `dense-data.theme.base.type-heading-font-family` → `font.family.ibm-plex-sans` |
 | `type.heading.font-size` | `font.size.16` |
 | `type.heading.line-height` | `font.line-height.20` |
 | `type.heading.font-weight` | `font.weight.600` |
-| `type.body.font-family` | `font.family.body` |
+| `type.body.font-family` | `dense-data.theme.base.type-body-font-family` → `font.family.ibm-plex-sans` |
 | `type.body.font-size` | `font.size.14` |
 | `type.body.line-height` | `font.line-height.20` |
 | `type.body.font-weight` | `font.weight.400` |
-| `type.label.font-family` | `font.family.ui` |
+| `type.label.font-family` | `dense-data.theme.base.type-label-font-family` → `font.family.ibm-plex-sans` |
 | `type.label.font-size` | `font.size.12` |
 | `type.label.line-height` | `font.line-height.16` |
 | `type.label.font-weight` | `font.weight.500` |
-| `type.caption.font-family` | `font.family.ui` |
+| `type.caption.font-family` | `dense-data.theme.base.type-caption-font-family` → `font.family.ibm-plex-sans` |
 | `type.caption.font-size` | `font.size.12` |
 | `type.caption.line-height` | `font.line-height.16` |
 | `type.caption.font-weight` | `font.weight.400` |
-| `type.data.font-family` | `font.family.mono` |
+| `type.data.font-family` | `dense-data.theme.base.type-data-font-family` → `font.family.ibm-plex-mono` |
 | `type.data.font-size` | `font.size.13` |
 | `type.data.line-height` | `font.line-height.16` |
 | `type.data.font-weight` | `font.weight.400` |
@@ -71,10 +71,8 @@ The raw values the tokens above end at.
 
 | Primitive | Value | Sample |
 | --- | --- | --- |
-| `font.family.body` | "IBM Plex Sans", system-ui, sans-serif | <span class="ods-font" style="font-family:var(--font-family-body)">Aa 123</span> |
-| `font.family.display` | "IBM Plex Sans", system-ui, sans-serif | <span class="ods-font" style="font-family:var(--font-family-display)">Aa 123</span> |
-| `font.family.mono` | "IBM Plex Mono", ui-monospace, monospace | <span class="ods-font" style="font-family:var(--font-family-mono)">Aa 123</span> |
-| `font.family.ui` | "IBM Plex Sans", system-ui, sans-serif | <span class="ods-font" style="font-family:var(--font-family-ui)">Aa 123</span> |
+| `font.family.ibm-plex-mono` | "IBM Plex Mono", ui-monospace, monospace | <span class="ods-font" style="font-family:var(--font-family-ibm-plex-mono)">Aa 123</span> |
+| `font.family.ibm-plex-sans` | "IBM Plex Sans", system-ui, sans-serif | <span class="ods-font" style="font-family:var(--font-family-ibm-plex-sans)">Aa 123</span> |
 | `font.line-height.16` | 1rem (16px) |  |
 | `font.line-height.20` | 1.25rem (20px) |  |
 | `font.line-height.24` | 1.5rem (24px) |  |

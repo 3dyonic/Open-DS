@@ -32,7 +32,8 @@ export function builtComponents(roots) {
     .sort();
 }
 
-const source = (roots, name) => readFileSync(join(roots.ui, "components", `${name}.tsx`), "utf8");
+const source = (roots, name) =>
+  readFileSync(join(roots.ui, "components", `${name}.tsx`), "utf8");
 
 /** The given components plus every component they import, transitively. */
 export function withImports(names, roots) {
@@ -41,7 +42,8 @@ export function withImports(names, roots) {
   const visit = (name) => {
     if (out.has(name) || !built.has(name)) return;
     out.add(name);
-    for (const [, dep] of source(roots, name).matchAll(/from "\.\/([a-z-]+)"/g)) visit(dep);
+    for (const [, dep] of source(roots, name).matchAll(/from "\.\/([a-z-]+)"/g))
+      visit(dep);
   };
   names.forEach(visit);
   return [...out].sort();
@@ -50,7 +52,9 @@ export function withImports(names, roots) {
 /** The scheme's inventory that is built, plus every component those import. */
 export function componentsFor(scheme, roots) {
   const built = builtComponents(roots);
-  const picked = scheme.inventory ? scheme.inventory.in.map((i) => i.id) : built;
+  const picked = scheme.inventory
+    ? scheme.inventory.in.map((i) => i.id)
+    : built;
   const wanted = picked.filter((id) => built.includes(id));
   return withImports(wanted, roots);
 }
@@ -58,6 +62,8 @@ export function componentsFor(scheme, roots) {
 /** The npm packages the given components import, with versions. clsx and tailwind-merge always: the cn helper. */
 export function packagesFor(names, roots) {
   const used = new Set(["clsx", "tailwind-merge"]);
-  for (const n of names) for (const pkg of Object.keys(PACKAGES)) if (source(roots, n).includes(`from "${pkg}"`)) used.add(pkg);
+  for (const n of names)
+    for (const pkg of Object.keys(PACKAGES))
+      if (source(roots, n).includes(`from "${pkg}"`)) used.add(pkg);
   return Object.fromEntries([...used].sort().map((p) => [p, PACKAGES[p]]));
 }

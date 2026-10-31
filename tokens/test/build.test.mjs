@@ -75,7 +75,7 @@ test("multi-brand is a real multi-brand setup", () => {
     assert.ok(css.includes(`.dark[data-brand="${b}"]`), `${b} dark selector`);
     assert.ok(css.includes(`[data-brand="${b}"] .dark`), `${b} brand above dark`);
   }
-  const brandColor = (theme) => JSON.parse(read("multi-brand", `${theme}.tokens.json`)).color.brand["600"];
+  const brandColor = (theme) => JSON.parse(read("multi-brand", `${theme}.tokens.json`)).color.action.primary;
   assert.notEqual(brandColor("aster-light"), brandColor("birch-light"));
   assert.notEqual(brandColor("birch-light"), brandColor("coral-light"));
 });
@@ -100,6 +100,26 @@ test("voice tokens ship as content.json and stay out of the CSS", () => {
   for (const s of index.schemes) {
     const content = JSON.parse(read(s.id, "content.json")).content;
     assert.equal(content.action.commit.$type, "string");
-    assert.ok(!read(s.id, "tokens.css").includes("--content-"));
+    // Voice words never become CSS variables (content-first's own theme tokens are a different thing).
+    assert.ok(!/--content-(?!first-theme)/.test(read(s.id, "tokens.css")));
+  }
+});
+
+test("colour primitives are hue, mode and step, and semantics reach them through the brand's theme", () => {
+  for (const s of index.schemes) {
+    const css = read(s.id, "tokens.css");
+    assert.match(css, /--color-[a-z]+-light-\d+: #[0-9A-F]{6}/i, `${s.id}: a light ramp step`);
+    assert.match(css, /--color-[a-z]+-dark-\d+: #[0-9A-F]{6}/i, `${s.id}: a dark ramp step`);
+    assert.match(css, /--color-[a-z]+: var\(--color-[a-z]+-light-\d+\)/, `${s.id}: a $root base value`);
+    const name = s.brands.length > 1 ? s.brands[0].id : s.id;
+    assert.ok(
+      css.includes(`--color-action-primary: var(--${name}-theme-light-color-action-primary)`),
+      `${s.id}: light semantic → theme`,
+    );
+    assert.ok(
+      css.includes(`--color-action-primary: var(--${name}-theme-dark-color-action-primary)`),
+      `${s.id}: dark semantic → theme`,
+    );
+    assert.ok(!/\$root/.test(css), `${s.id}: no $root in names`);
   }
 });
