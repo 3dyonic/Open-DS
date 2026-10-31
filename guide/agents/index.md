@@ -13,7 +13,7 @@ Open DS is built so an agent can use it without guessing.
 1. `/llms.txt`: a short index of everything.
 2. `schemes/grammar.json`: the questions, situations and component keys. Every object has a `description`.
 3. `schemes/<scheme>.json`: answers with `why` and `because`, `usage` rules, `voice`, and `ai.use_when` / `ai.avoid_when`.
-4. In a deployed project: `AGENTS.md` and `.claude/skills/open-ds/SKILL.md`.
+4. In a deployed project: `AGENTS.md`, `.claude/skills/open-ds/SKILL.md` (the overview) and the five focused skills next to it.
 
 ## Rules
 
@@ -24,10 +24,11 @@ Open DS is built so an agent can use it without guessing.
 
 ## Files for agents
 
-| File                      | What it is                                            |
-| ------------------------- | ----------------------------------------------------- |
-| `llms.txt`                | Index in the llmstxt.org format.                      |
-| `llms-full.txt`           | Every scheme in one text file: answers, rules, voice. |
-| `AGENTS.md` (repo)        | How to work on this repository.                       |
-| `AGENTS.md` (deployed)    | How to build UI with the deployed scheme.             |
-| `skills/open-ds/SKILL.md` | The agent skill.                                      |
+| File                        | What it is                                                 |
+| --------------------------- | ---------------------------------------------------------- |
+| `llms.txt`                  | Index in the llmstxt.org format.                           |
+| `llms-full.txt`             | Every scheme in one text file: answers, rules, voice.      |
+| `AGENTS.md` (repo)          | How to work on this repository.                            |
+| `AGENTS.md` (deployed)      | How to build UI with the deployed scheme.                  |
+| `skills/open-ds/SKILL.md`   | The overview skill.                                        |
+| `skills/open-ds-*/SKILL.md` | Five focused skills: choose, build, write, change, review. |

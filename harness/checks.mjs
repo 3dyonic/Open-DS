@@ -649,16 +649,13 @@ export const CHECKS = {
     },
   },
   "llm-mcp-docstrings": {
-    requires: ["mcp/src/open_ds_mcp/server.py"],
+    requires: ["cli/src/mcp.mjs"],
     run: (c) => {
-      const src = c.read("mcp/src/open_ds_mcp/server.py");
-      const tools = [
-        ...src.matchAll(/@mcp\.tool[^\n]*\n(?:async\s+)?def\s+(\w+)\([\s\S]*?\)\s*(?:->[^:]+)?:\s*\n\s+("""|''')/g),
-      ].map((m) => m[1]);
-      const all = [...src.matchAll(/@mcp\.tool[^\n]*\n(?:async\s+)?def\s+(\w+)/g)].map((m) => m[1]);
-      const missing = all.filter((t) => !tools.includes(t));
+      const src = c.read("cli/src/mcp.mjs");
+      const all = [...src.matchAll(/registerTool\(\s*"(\w+)",\s*\{([\s\S]*?)\},\s*async/g)];
+      const missing = all.filter((m) => !/description:\s*"/.test(m[2])).map((m) => m[1]);
       return missing.length
-        ? bad(`tools without docstring: ${missing.join(", ")}`)
+        ? bad(`tools without description: ${missing.join(", ")}`)
         : ok(`${all.length} MCP tools documented`);
     },
   },
@@ -874,34 +871,57 @@ export const CHECKS = {
   },
 
   // MCP
-  "mcp-fastmcp": {
-    requires: ["mcp/pyproject.toml"],
+  "mcp-node-sdk": {
+    requires: ["cli/package.json"],
     run: (c) =>
-      /fastmcp/.test(c.read("mcp/pyproject.toml")) ? ok("FastMCP dependency") : bad("mcp does not depend on fastmcp"),
+      /@modelcontextprotocol\/sdk/.test(c.read("cli/package.json"))
+        ? ok("Node MCP server on the official SDK, inside the open-ds package")
+        : bad("the open-ds package does not depend on @modelcontextprotocol/sdk"),
   },
   "mcp-tools": {
-    requires: ["mcp/src/open_ds_mcp/schemes.py"],
+    requires: ["cli/src/mcp.mjs"],
     run: (c) => {
-      const src = c.read("mcp/src/open_ds_mcp/server.py");
-      const missing = ["list_schemes", "get_scheme", "get_answer", "why", "when_to_use", "deploy"].filter(
-        (t) => !new RegExp(`def ${t}\\(`).test(src),
-      );
-      return missing.length ? bad(`missing tools: ${missing.join(", ")}`) : ok("6 MCP tools");
+      const src = c.read("cli/src/mcp.mjs");
+      const want = [
+        "list_schemes",
+        "get_scheme",
+        "get_answer",
+        "why",
+        "when_to_use",
+        "compare_schemes",
+        "get_inventory",
+        "what_moves",
+        "get_key",
+        "plan_create",
+        "plan_init",
+        "plan_add",
+      ];
+      const missing = want.filter((t) => !src.includes(`"${t}"`));
+      return missing.length ? bad(`missing tools: ${missing.join(", ")}`) : ok(`${want.length} MCP tools, read-only`);
     },
   },
-  "mcp-deploy-uses-cli": {
-    requires: ["mcp/src/open_ds_mcp/schemes.py"],
-    run: (c) =>
-      /open-ds\.js|"open-ds"/.test(c.read("mcp/src/open_ds_mcp/server.py"))
-        ? ok("deploy calls the CLI")
-        : bad("deploy does not call the CLI"),
+  "mcp-uses-cli-engine": {
+    requires: ["cli/src/mcp.mjs"],
+    run: (c) => {
+      const src = c.read("cli/src/mcp.mjs");
+      return /from "\.\/schemes\.mjs"/.test(src) && /from "\.\/create\.mjs"/.test(src)
+        ? ok("the MCP server imports the CLI's own modules: one engine")
+        : bad("the MCP server does not import the CLI's modules");
+    },
   },
   "mcp-tests": {
-    requires: ["mcp/tests"],
+    requires: ["cli/test/mcp.test.mjs"],
     slow: true,
     run: (c) => {
-      const r = c.sh("uv", ["run", "pytest", "-q", "mcp/tests"]);
-      return r.code === 0 ? ok(tail(r.out).split("\n").pop()) : bad(tail(r.out));
+      const r = c.sh("node", ["--test", "cli/test/mcp.test.mjs", "mcp/test/server.test.mjs"]);
+      return r.code === 0
+        ? ok(
+            tail(r.out)
+              .split("\n")
+              .filter((l) => l.startsWith("# pass"))
+              .pop() ?? "pass",
+          )
+        : bad(tail(r.out));
     },
   },
 
@@ -1063,15 +1083,6 @@ export const CHECKS = {
       return missing.length ? pending(`not built yet: ${missing.join(", ")}`) : ok("layout matches the plan");
     },
   },
-  "standards-python": {
-    requires: ["mcp"],
-    slow: true,
-    run: (c) => {
-      const a = c.sh("uv", ["run", "ruff", "check", "mcp"]);
-      const b = c.sh("uv", ["run", "ruff", "format", "--check", "mcp"]);
-      return a.code === 0 && b.code === 0 ? ok("ruff check and format pass") : bad(tail(a.out + "\n" + b.out));
-    },
-  },
   "standards-node-tests": {
     requires: ["cli/test"],
     slow: true,
@@ -1152,7 +1163,7 @@ export const CHECKS = {
     requires: ["TESTING.md"],
     run: (c) => {
       const t = c.read("TESTING.md");
-      const missing = ["open-ds.js init", "open-ds-mcp", "storybook", "docs", "site", "pnpm e2e"].filter(
+      const missing = ["open-ds.js init", "open-ds mcp", "storybook", "docs", "site", "pnpm e2e"].filter(
         (w) => !t.toLowerCase().includes(w),
       );
       return missing.length

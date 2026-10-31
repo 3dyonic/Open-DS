@@ -110,3 +110,11 @@ export function keyInfo(schemeId, keyId, roots = assetRoots(), g = grammar(roots
   }
   return { key: keyId, description: key.description, semantic: key.default, values };
 }
+
+/** The focused agent skills next to the overview skill: open-ds-choose, -build, -write, -change, -review. */
+export function focusedSkills(roots = assetRoots()) {
+  return readdirSync(roots.skills, { withFileTypes: true })
+    .filter((e) => e.isDirectory() && e.name.startsWith("open-ds-"))
+    .map((e) => e.name)
+    .sort();
+}

@@ -63,8 +63,8 @@ export default function InstallPage() {
     {
       mcpServers: {
         "open-ds": {
-          command: "uv",
-          args: ["run", "--directory", "/path/to/Open-DS", "open-ds-mcp"],
+          command: "node",
+          args: ["/path/to/Open-DS/cli/bin/open-ds.js", "mcp"],
         },
       },
     },
@@ -97,14 +97,14 @@ export default function InstallPage() {
         <ol className="flex flex-col gap-3">
           <Step n={1} title="Have the tools">
             <p className="text-[16px] text-body">
-              Node.js 22 or later, pnpm 10 (corepack enable gives it to you), uv for Python, and an
-              AI client with MCP, such as Claude Code.
+              Node.js 22 or later, pnpm 10 (corepack enable gives it to you), and an AI client with
+              MCP, such as Claude Code.
             </p>
           </Step>
           <Step n={2} title="Get Open DS">
             <Command label="clone" code="git clone https://github.com/3dyonic/Open-DS.git" />
             <Command label="branch" code="cd Open-DS && git checkout RC1" />
-            <Command label="install" code="pnpm install && uv sync --all-packages --group dev" />
+            <Command label="install" code="pnpm install" />
             <Command label="build the tokens" code="pnpm --dir tokens build" />
           </Step>
         </ol>
@@ -120,9 +120,7 @@ export default function InstallPage() {
             <p className="text-[16px] text-body">In Claude Code, from the Open-DS folder:</p>
             <Command
               label="add the MCP server"
-              code={
-                'claude mcp add --scope user open-ds -- uv run --directory "$(pwd)" open-ds-mcp'
-              }
+              code={'claude mcp add --scope user open-ds -- node "$(pwd)/cli/bin/open-ds.js" mcp'}
             />
             <p className="text-[15px] text-body">
               <code className="font-mono">--scope user</code> makes the server available in every

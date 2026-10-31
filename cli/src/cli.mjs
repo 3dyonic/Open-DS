@@ -7,7 +7,7 @@ import { agentsMd, skillSection } from "./agents.mjs";
 import { componentsFor, packagesFor, withImports } from "./components.mjs";
 import { createProject } from "./create.mjs";
 import { docsLlms, docsPages } from "./docs.mjs";
-import { assetRoots, grammar, keyInfo, loadScheme, schemeIds, when, why } from "./schemes.mjs";
+import { assetRoots, focusedSkills, grammar, keyInfo, loadScheme, schemeIds, when, why } from "./schemes.mjs";
 
 const HELP = `open-ds: deploy an Open DS scheme as a full design system.
 
@@ -23,6 +23,9 @@ const HELP = `open-ds: deploy an Open DS scheme as a full design system.
                                        copy tokens, components, AGENTS.md and the agent skill;
                                        --docs also writes the design system's docs pages to docs/
   open-ds add <component> [--dir .]    copy one more component into an initialised project
+  open-ds mcp [--http] [--port 8787] [--host 127.0.0.1]
+                                       the Open DS MCP server: stdio for a local agent, or
+                                       Streamable HTTP at /mcp (read-only, no authentication yet)
 
 Add --json to list, show, why and when for machine-readable output.`;
 
@@ -99,6 +102,9 @@ export function deploy(schemeId, dir, { brand, overwrite = false, docs = false, 
   );
   const skill = readFileSync(join(roots.skills, "open-ds", "SKILL.md"), "utf8") + skillSection(scheme);
   write(dir, ".claude/skills/open-ds/SKILL.md", skill, files);
+  // The focused skills: choose, build, write, change, review.
+  for (const name of focusedSkills(roots))
+    write(dir, `.claude/skills/${name}/SKILL.md`, readFileSync(join(roots.skills, name, "SKILL.md"), "utf8"), files);
   if (docs) {
     // The design system's docs, as Docusaurus pages: the same pages Open DS builds for this scheme.
     const pages = docsPages(scheme, g, roots);
@@ -155,6 +161,19 @@ export async function run(argv) {
     if (!cmd || cmd === "--help" || cmd === "-h" || cmd === "help") {
       console.log(HELP);
       return 0;
+    }
+    if (cmd === "mcp") {
+      // Loaded on demand: the MCP server imports this module too.
+      const { runHttp, runStdio } = await import("./mcp.mjs");
+      if (rest.includes("--http")) {
+        const port = Number(flag(args, "--port", process.env.PORT ?? "8787"));
+        const host = flag(args, "--host", process.env.HOST ?? "127.0.0.1");
+        runHttp({ port, host });
+        console.error(`Open DS MCP server on http://${host}:${port}/mcp (no authentication).`);
+        await new Promise(() => {});
+      }
+      await runStdio();
+      await new Promise(() => {});
     }
     if (cmd === "list") {
       const data = schemeIds().map((id) => {

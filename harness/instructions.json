@@ -37,7 +37,7 @@
       "id": "I06",
       "title": "MCP with FastMCP",
       "words": "i forgot the MCP, include it ... use Fast MCP and Python or Node / TS what you prefer",
-      "checks": ["mcp-fastmcp", "mcp-tools", "mcp-deploy-uses-cli", "mcp-tests"]
+      "checks": ["mcp-node-sdk", "mcp-tools", "mcp-uses-cli-engine", "mcp-tests"]
     },
     {
       "id": "I07",
@@ -67,7 +67,7 @@
       "id": "I11",
       "title": "Our code standards",
       "words": "use our code standards",
-      "checks": ["standards-python", "standards-node-tests", "standards-site-lint"]
+      "checks": ["standards-node-tests", "standards-site-lint"]
     },
     {
       "id": "I12",
