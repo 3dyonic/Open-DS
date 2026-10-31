@@ -27,7 +27,7 @@ const PART: Record<string, keyof Samples> = {
 export function Show({ component, children }: { component: string; children: (s: Samples) => ReactNode }) {
   const { scheme } = useScheme();
   const data = SCHEMES[scheme] ?? SCHEMES["dense-data"];
-  if (![...data.inventory.in, ...(data.inventory.patterns ?? [])].some((i) => i.id === component)) {
+  if (!data.inventory.in.some((i) => i.id === component)) {
     const out = data.inventory.out.find((i) => i.id === component);
     return (
       <p className="max-w-xl border-l-[length:var(--border-width-focus)] border-[var(--color-border-strong)] pl-[var(--space-gap-group)] text-[var(--color-text-secondary)]">

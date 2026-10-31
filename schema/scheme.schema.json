@@ -213,27 +213,6 @@
             }
           },
           "description": "Notable components left out, each with why. Every other catalogue item is out too."
-        },
-        "patterns": {
-          "type": "array",
-          "description": "Patterns from the catalogue this system carries, each with why. Every item a pattern is built from must be in the inventory.",
-          "items": {
-            "type": "object",
-            "additionalProperties": false,
-            "required": ["id", "why"],
-            "properties": {
-              "id": {
-                "type": "string",
-                "pattern": "^[a-z-]+$",
-                "description": "A catalogue pattern id."
-              },
-              "why": {
-                "type": "string",
-                "minLength": 1,
-                "description": "Why the system carries it."
-              }
-            }
-          }
         }
       }
     },

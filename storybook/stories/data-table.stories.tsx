@@ -8,7 +8,7 @@ const meta = {
   parameters: {
     openDs: { component: "data-table", situations: ["number-in-table", "table-row", "selected-row", "row-action"] },
   },
-  title: "Patterns/Data table",
+  title: "Components/Data table",
   component: DataTable,
   args: { columns: [], data: [] },
 } satisfies Meta<typeof DataTable>;

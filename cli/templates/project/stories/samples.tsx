@@ -53,7 +53,7 @@ export interface Samples {
 }
 const data = scheme as unknown as {
   name: string;
-  inventory: { in: { id: string }[]; out: { id: string; why: string }[]; patterns?: { id: string }[] };
+  inventory: { in: { id: string }[]; out: { id: string; why: string }[] };
   samples: Samples;
 };
 
@@ -83,7 +83,7 @@ export function Show({
   component: string;
   children: (s: Samples) => ReactNode;
 }) {
-  if (![...data.inventory.in, ...(data.inventory.patterns ?? [])].some((i) => i.id === component)) {
+  if (!data.inventory.in.some((i) => i.id === component)) {
     const out = data.inventory.out.find((i) => i.id === component);
     return (
       <p className="max-w-xl border-l-[length:var(--border-width-focus)] border-[var(--color-border-strong)] pl-[var(--space-gap-group)] text-[var(--color-text-secondary)]">

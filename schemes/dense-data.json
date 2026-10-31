@@ -143,6 +143,10 @@
         "why": "The heart of the product: rows of records."
       },
       {
+        "id": "data-table",
+        "why": "Experts scan hundreds of orders, filter by status and depot, sort by due time and act on many rows at once."
+      },
+      {
         "id": "pagination",
         "why": "Moves through long result sets."
       },
@@ -243,12 +247,6 @@
       {
         "id": "accordion",
         "why": "Hiding fields slows people who use them all day."
-      }
-    ],
-    "patterns": [
-      {
-        "id": "data-table",
-        "why": "Experts scan hundreds of orders, filter by status and depot, sort by due time and act on many rows at once."
       }
     ]
   },

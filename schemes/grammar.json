@@ -1853,22 +1853,19 @@
           "id": "components.count",
           "method": "count",
           "text": "How many components does it carry?",
-          "description": "The size of the inventory, as a word.",
+          "description": "The size of the inventory, as a word. The inventory follows the needs; the word describes it and sets no limit.",
           "options": [
             {
               "id": "few",
-              "label": "Few",
-              "description": "Up to 20 components."
+              "label": "Few"
             },
             {
               "id": "some",
-              "label": "Some",
-              "description": "21 to 35 components."
+              "label": "Some"
             },
             {
               "id": "many",
-              "label": "Many",
-              "description": "More than 35 components."
+              "label": "Many"
             }
           ]
         },
@@ -2647,7 +2644,7 @@
     }
   ],
   "catalogue": {
-    "description": "Every component a design system can carry: the UI components of the shadcn/ui registry (style new-york-v4, MIT), plus toast, which Open DS builds itself. Each scheme picks its inventory from this list through the components scope. The component-api keys in components cover the ones built so far.",
+    "description": "Every component a design system can carry: the UI components of the shadcn/ui registry (style new-york-v4, MIT), plus toast, which Open DS builds itself, and data-table, which wraps TanStack Table after shadcn's Data Table guide. Each scheme picks its inventory from this list through the components scope. The component-api keys in components cover the ones built so far.",
     "source": "https://github.com/shadcn-ui/ui/tree/main/apps/v4/registry/new-york-v4/ui",
     "families": [
       {
@@ -2830,6 +2827,11 @@
         "id": "context-menu",
         "family": "navigation",
         "description": "A menu on right-click."
+      },
+      {
+        "id": "data-table",
+        "family": "data",
+        "description": "Many records in one view: search, faceted filters, sorting, column choice, row selection with bulk actions, pagination and a density switch. Wraps TanStack Table, after shadcn's Data Table guide."
       },
       {
         "id": "dialog",
@@ -3035,21 +3037,6 @@
         "id": "tooltip",
         "family": "overlay",
         "description": "A short hint on hover or focus."
-      }
-    ],
-    "patterns": [
-      {
-        "id": "data-table",
-        "description": "Many records in one view: search, faceted filters, sorting, column choice, row selection with bulk actions, pagination and a density switch.",
-        "built_from": [
-          "table",
-          "input",
-          "button",
-          "checkbox",
-          "popover",
-          "toggle-group"
-        ],
-        "source": "https://ui.shadcn.com/docs/components/data-table"
       }
     ]
   }
