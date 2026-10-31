@@ -6,20 +6,12 @@ import { existsSync, mkdirSync, readFileSync, readdirSync, writeFileSync } from 
 import { basename, dirname, join, relative } from "node:path";
 import { fileURLToPath } from "node:url";
 import { agentsMd, skillSection } from "./agents.mjs";
+import { componentsFor, packagesFor } from "./components.mjs";
 import { docsLlms, docsPages } from "./docs.mjs";
 import { assetRoots, grammar, loadScheme } from "./schemes.mjs";
 
 const VERSION = JSON.parse(readFileSync(join(dirname(fileURLToPath(import.meta.url)), "..", "package.json"), "utf8")).version;
 
-const DEPENDENCIES = {
-  "class-variance-authority": "^0.7.1",
-  clsx: "^2.1.1",
-  "lucide-react": "^1.65.0",
-  "radix-ui": "^1.8.1",
-  react: "^19.1.1",
-  "react-dom": "^19.1.1",
-  "tailwind-merge": "^3.7.0",
-};
 const DEV_DEPENDENCIES = {
   "@docusaurus/core": "^3.10.2",
   "@docusaurus/preset-classic": "^3.10.2",
@@ -135,18 +127,15 @@ export function createProject(schemeId, dir, { brand, openDs = `^${VERSION}`, ov
     }),
   );
 
-  // The components and their styles.
-  const components = readdirSync(join(roots.ui, "components"))
-    .filter((f) => f.endsWith(".tsx"))
-    .map((f) => f.replace(/\.tsx$/, ""))
-    .sort();
+  // The scheme's inventory, plus the components those import, and their styles.
+  const components = componentsFor(scheme, roots);
   for (const c of components) {
     write(
       `src/components/ui/${c}.tsx`,
-      readFileSync(join(roots.ui, "components", `${c}.tsx`), "utf8").replace(`from "../lib/utils"`, `from "../../lib/utils"`),
+      readFileSync(join(roots.ui, "components", `${c}.tsx`), "utf8").replaceAll(`from "../lib/`, `from "../../lib/`),
     );
   }
-  write("src/lib/utils.ts", readFileSync(join(roots.ui, "lib", "utils.ts"), "utf8"));
+  for (const lib of readdirSync(join(roots.ui, "lib"))) write(`src/lib/${lib}`, readFileSync(join(roots.ui, "lib", lib), "utf8"));
   write("src/styles/base.css", readFileSync(join(roots.ui, "styles.css"), "utf8"));
   write(
     "src/index.ts",
@@ -200,7 +189,7 @@ export function createProject(schemeId, dir, { brand, openDs = `^${VERSION}`, ov
         why: `open-ds why ${scheme.id}`,
         when: `open-ds when ${scheme.id}`,
       },
-      dependencies: DEPENDENCIES,
+      dependencies: { react: "^19.1.1", "react-dom": "^19.1.1", ...packagesFor(components, roots) },
       devDependencies: { "open-ds": openDs, ...DEV_DEPENDENCIES },
     }),
   );
