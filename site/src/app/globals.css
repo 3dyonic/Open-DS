@@ -46,6 +46,25 @@
 
 /* Small ink elements (buttons, chips, badges) flip to cream on dark. The large ink blocks are
    marked .inverse and stay dark, on a deeper surface than the page. */
+/* The robots come in a daytime and a nocturnal edition; the theme shows one. */
+.robot-dark {
+  display: none;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) .robot-light {
+    display: none;
+  }
+  :root:not([data-theme="light"]) .robot-dark {
+    display: block;
+  }
+}
+:root[data-theme="dark"] .robot-light {
+  display: none;
+}
+:root[data-theme="dark"] .robot-dark {
+  display: block;
+}
+
 .inverse {
   --color-ink: light-dark(#16140f, #0f0e0b);
   --color-paper: light-dark(#f6f2e9, #f1ebdd);
