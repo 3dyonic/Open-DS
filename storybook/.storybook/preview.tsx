@@ -26,7 +26,7 @@ const withScheme: Decorator = (Story, context) => {
       <div
         data-scheme={scheme}
         data-brand={brand}
-        className={`${mode === "dark" ? "dark " : ""}min-h-screen p-8 bg-[var(--color-surface-canvas)] text-[var(--color-text-primary)] [font-family:var(--type-body-font-family)]`}
+        className={`${mode === "dark" ? "dark " : ""}${context.viewMode === "docs" ? "" : "min-h-screen "}p-8 bg-[var(--color-surface-canvas)] text-[var(--color-text-primary)] [font-family:var(--type-body-font-family)]`}
       >
         <Story />
       </div>
