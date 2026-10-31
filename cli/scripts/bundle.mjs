@@ -22,4 +22,4 @@ for (const part of ["components", "lib", "styles.css"]) {
 }
 cpSync(join(repo, "storybook", "stories"), join(assets, "stories"), { recursive: true });
 cpSync(join(repo, "skills"), join(assets, "skills"), { recursive: true });
-console.log(`Bundled assets into ${assets}`);
+console.error(`Bundled assets into ${assets}`);
