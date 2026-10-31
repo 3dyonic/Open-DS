@@ -183,9 +183,8 @@ export function PrimitivesView({ p }: { p: PrimitivesPage }) {
             &ldquo;a card corner&rdquo;. In between, each brand&rsquo;s theme picks a primitive for
             every brand-dependent decision, in light and dark. Colours come by hue, then mode, then
             step (color.violet.light.600), and each hue has a base value named after the hue itself
-            (color.violet, written @ in the token source). Each primitive below lists the
-            decisions that reach it. Change a primitive, and every decision that points at it
-            changes too.
+            (color.violet, written @ in the token source). Each primitive below lists the decisions
+            that reach it. Change a primitive, and every decision that points at it changes too.
           </p>
         </div>
       </header>
