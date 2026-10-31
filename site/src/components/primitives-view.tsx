@@ -2,18 +2,15 @@
 import Link from "next/link";
 import type { Primitive, PrimitiveGroup, PrimitivesPage } from "@/lib/primitives";
 
+// A hue's base value is the group's own token: named after the group (color.violet), written $root in the source.
+const name = (path: string) => (path.endsWith(".$root") ? path.slice(0, -6) : path);
+
 function Specimen({ p, brand }: { p: Primitive; brand?: string }) {
   const v = p.value;
   const box =
     "flex h-[40px] w-[64px] shrink-0 items-center justify-center rounded-[4px] border border-line bg-white";
-  if (p.ref && p.type === "color")
-    return (
-      <span
-        className="h-[40px] w-[64px] shrink-0 rounded-[4px] border border-line"
-        style={{ background: `var(--${p.path.replaceAll(".", "-")})` }}
-      />
-    );
-  if (p.ref) return <span className={`${box} font-mono text-[10px] text-muted`}>→</span>;
+  if (p.ref && p.type !== "color")
+    return <span className={`${box} font-mono text-[10px] text-muted`}>→</span>;
   if (p.type === "color")
     return (
       <span
@@ -84,7 +81,12 @@ function Group({ g, brand, anchor }: { g: PrimitiveGroup; brand?: string; anchor
             <Specimen p={p} brand={brand} />
             <div className="flex min-w-0 flex-col gap-1">
               <code className="font-mono text-[13px] font-semibold break-all">
-                {p.path.endsWith(".$root") ? `${p.path.slice(0, -6)} ($root)` : p.path}
+                {name(p.path)}
+                {p.path.endsWith(".$root") && (
+                  <span className="ml-2 rounded-[3px] bg-paper px-[6px] py-[1px] font-sans text-[11px] font-medium text-muted">
+                    base
+                  </span>
+                )}
               </code>
               <span className="font-mono text-[12px] break-all text-muted">
                 {p.ref ? `→ ${p.ref}` : p.value}
@@ -96,7 +98,8 @@ function Group({ g, brand, anchor }: { g: PrimitiveGroup; brand?: string; anchor
             <div className="flex min-w-0 flex-col gap-1">
               {p.pointedBy.length > 0 && (
                 <span className="text-[13px] text-body">
-                  Picked by <span className="font-mono break-all">{p.pointedBy.join(", ")}</span>
+                  Picked by{" "}
+                  <span className="font-mono break-all">{p.pointedBy.map(name).join(", ")}</span>
                 </span>
               )}
               <span className="text-[12px] font-medium uppercase tracking-[0.44px] text-muted">
@@ -179,9 +182,10 @@ export function PrimitivesView({ p }: { p: PrimitivesPage }) {
             tokens), which pick one option and say what it is for: &ldquo;the primary action&rdquo;,
             &ldquo;a card corner&rdquo;. In between, each brand&rsquo;s theme picks a primitive for
             every brand-dependent decision, in light and dark. Colours come by hue, then mode, then
-            step (color.violet.light.600), and each hue has a base value ($root). Each primitive
-            below lists the decisions that reach it. Change a primitive, and every decision that
-            points at it changes too.
+            step (color.violet.light.600), and each hue has a base value named after the hue itself
+            (color.violet, written $root in the token source). Each primitive below lists the
+            decisions that reach it. Change a primitive, and every decision that points at it
+            changes too.
           </p>
         </div>
       </header>
