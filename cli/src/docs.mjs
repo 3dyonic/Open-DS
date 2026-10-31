@@ -331,7 +331,6 @@ export function docsPages(scheme, g, roots, { storybook = "http://localhost:6006
     .map((f) => f.replace(/\.tsx$/, ""))
     .sort();
   const inventory = Object.fromEntries((scheme.inventory?.in ?? []).map((i) => [i.id, i.why]));
-  const patterns = Object.fromEntries((scheme.inventory?.patterns ?? []).map((i) => [i.id, i.why]));
   const out = Object.fromEntries((scheme.inventory?.out ?? []).map((i) => [i.id, i.why]));
   const catalogue = g.catalogue?.items ?? [];
   // The inventory page: every catalogue item, in or out, and whether it is built yet.
@@ -358,17 +357,9 @@ export function docsPages(scheme, g, roots, { storybook = "http://localhost:6006
           `| ${title(c.id)} | ${c.family} | ${c.id in inventory ? "In" : "Out"} | ${built.includes(c.id) ? "Yes" : "Not yet"} | ${esc(inventory[c.id] ?? out[c.id] ?? "")} |`,
       )
       .join("\n") +
-    "\n" +
-    (Object.keys(patterns).length
-      ? `\n## Patterns\n\nLarger parts built from the components above. They do not count toward the ${Object.keys(inventory).length}.\n\n| Pattern | Built from | Why |\n| --- | --- | --- |\n` +
-        (g.catalogue?.patterns ?? [])
-          .filter((p) => p.id in patterns)
-          .map((p) => `| ${title(p.id)} | ${p.built_from.map(title).join(", ")} | ${esc(patterns[p.id])} |`)
-          .join("\n") +
-        "\n"
-      : "");
-  // A page per component or pattern that is in the inventory and built.
-  const names = built.filter((n) => !scheme.inventory || n in inventory || n in patterns);
+    "\n";
+  // A page per component that is in the inventory and built.
+  const names = built.filter((n) => !scheme.inventory || n in inventory);
   names.forEach((name, i) => {
     const group = KEY_GROUP[name];
     const keys = g.component_keys.filter((k) => k.component === group);

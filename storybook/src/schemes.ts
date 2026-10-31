@@ -41,7 +41,6 @@ export interface SchemeData {
   inventory: {
     in: { id: string; why: string }[];
     out: { id: string; why: string }[];
-    patterns?: { id: string; why: string }[];
   };
   samples: Samples;
   usage: { situation: string; use: string; not: string; why: string }[];
