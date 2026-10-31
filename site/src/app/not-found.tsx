@@ -12,7 +12,7 @@ export const metadata: Metadata = {
 export default function NotFound() {
   return (
     <section className="flex flex-col items-center gap-6 px-5 pt-14 pb-20 text-center lg:px-20">
-      <Robot name="slumber" priority className="h-[280px] w-auto md:h-[340px]" />
+      <Robot name="slumber" priority className="h-[224px] w-auto md:h-[272px]" />
       <Eyebrow>404 · Not found</Eyebrow>
       <h1 className="text-[44px] leading-[1.05] font-extrabold md:text-[56px]">
         This page isn’t here.
