@@ -211,20 +211,6 @@ export default function Home() {
             How to install →
           </Link>
         </div>
-        <div className="flex flex-col gap-4 rounded-[8px] border border-muted p-7 lg:w-[480px] lg:shrink-0">
-          <Eyebrow tone="accent">Contribute</Eyebrow>
-          <h2 className="text-[32px] font-extrabold">Add your answers.</h2>
-          <p className="text-[16px] leading-[1.45] text-line">
-            Publish your design system as a scheme: same questions, your answers, your reasons.
-            Missing a question in a scope? Propose it.
-          </p>
-          <Link
-            href="/contribute/"
-            className="self-start rounded-[4px] bg-accent px-4 py-[10px] text-[16px] font-semibold text-ink"
-          >
-            Add a scheme
-          </Link>
-        </div>
       </section>
       <section
         aria-labelledby="open-source"
@@ -255,6 +241,27 @@ export default function Home() {
             </li>
           ))}
         </ul>
+      </section>
+      <section
+        aria-labelledby="contribute"
+        className="flex flex-col gap-5 bg-ink px-5 py-[56px] text-paper md:flex-row md:items-center lg:px-20"
+      >
+        <div className="flex flex-1 flex-col gap-3">
+          <Eyebrow tone="accent">Contribute</Eyebrow>
+          <h2 id="contribute" className="text-[32px] leading-[1.05] font-extrabold md:text-[40px]">
+            Add your answers.
+          </h2>
+          <p className="max-w-[720px] text-[17px] leading-[1.45] text-line">
+            Publish your design system as a scheme: same questions, your answers, your reasons.
+            Missing a question in a scope? Propose it.
+          </p>
+        </div>
+        <Link
+          href="/contribute/"
+          className="self-start rounded-[4px] bg-accent px-5 py-[14px] text-[17px] font-semibold text-ink md:self-center"
+        >
+          Add a scheme
+        </Link>
       </section>
     </>
   );
