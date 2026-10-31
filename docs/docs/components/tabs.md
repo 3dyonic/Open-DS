@@ -14,10 +14,10 @@ See it in [Storybook](http://localhost:6006) under Components / Tabs, in every t
 
 ## Component keys
 
-The CSS variable is the key with `/` replaced by `-`.
+The CSS variable is the key with `/` replaced by `-`. Each key points to a token; values live only on primitives.
 
-| Key | What it controls | Reads | light | dark |
-| --- | --- | --- | --- | --- |
-| `tabs/indicator` | Active tab indicator. | `color.action.primary` | #2457D6 | #8EA9EC |
-| `tabs/label` | Inactive tab label. | `color.text.secondary` | #3D4655 | #C4CBD6 |
-| `tabs/label-active` | Active tab label. | `color.text.primary` | #161B23 | #F7F8FA |
+| Key | What it controls | Points to, light | Points to, dark |
+| --- | --- | --- | --- |
+| `tabs/indicator` | Active tab indicator. | `color.action.primary` → `color.brand.600` | `color.action.primary` → `color.brand.300` |
+| `tabs/label` | Inactive tab label. | `color.text.secondary` → `color.neutral.700` | `color.text.secondary` → `color.neutral.300` |
+| `tabs/label-active` | Active tab label. | `color.text.primary` → `color.neutral.900` | `color.text.primary` → `color.neutral.50` |

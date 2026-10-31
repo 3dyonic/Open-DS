@@ -10,6 +10,15 @@ description: "Dense data: Corners and borders."
 
 Corners and borders.
 
+<div class="ods-specimen">
+<span class="ods-item"><span class="ods-tile" style="border-radius:var(--radius-control)"></span><span class="ods-label">radius.control</span></span>
+<span class="ods-item"><span class="ods-tile" style="border-radius:var(--radius-badge)"></span><span class="ods-label">radius.badge</span></span>
+<span class="ods-item"><span class="ods-tile" style="border-radius:var(--radius-container)"></span><span class="ods-label">radius.container</span></span>
+<span class="ods-item"><span class="ods-tile" style="border-radius:var(--radius-round)"></span><span class="ods-label">radius.round</span></span>
+<span class="ods-item"><span class="ods-line" style="height:var(--border-width-default)"></span><span class="ods-label">border-width.default</span></span>
+<span class="ods-item"><span class="ods-line" style="height:var(--border-width-focus)"></span><span class="ods-label">border-width.focus</span></span>
+</div>
+
 ## The five answers
 
 | Question | Answer | Why |
@@ -22,14 +31,29 @@ Corners and borders.
 
 ## Tokens
 
-| Token | Value |
+Each token points to another token. Values live only on primitives, below.
+
+| Token | Points to |
 | --- | --- |
-| `radius.control` | 0.25rem (4px) |
-| `radius.badge` | 0.125rem (2px) |
-| `radius.container` | 0.375rem (6px) |
-| `radius.round` | 9999px |
-| `border-width.default` | 1px |
-| `border-width.focus` | 2px |
+| `radius.control` | `radius.brand.control` → `radius.4` |
+| `radius.badge` | `radius.brand.badge` → `radius.2` |
+| `radius.container` | `radius.brand.container` → `radius.6` |
+| `radius.round` | `radius.full` |
+| `border-width.default` | `border-width.1` |
+| `border-width.focus` | `border-width.2` |
+
+## Primitives
+
+The raw values the tokens above end at.
+
+| Primitive | Value | Sample |
+| --- | --- | --- |
+| `border-width.1` | 1px | <span class="ods-line" style="height:var(--border-width-1)"></span> |
+| `border-width.2` | 2px | <span class="ods-line" style="height:var(--border-width-2)"></span> |
+| `radius.2` | 0.125rem (2px) | <span class="ods-tile" style="border-radius:var(--radius-2)"></span> |
+| `radius.4` | 0.25rem (4px) | <span class="ods-tile" style="border-radius:var(--radius-4)"></span> |
+| `radius.6` | 0.375rem (6px) | <span class="ods-tile" style="border-radius:var(--radius-6)"></span> |
+| `radius.full` | 9999px | <span class="ods-tile" style="border-radius:var(--radius-full)"></span> |
 
 ## Where it lands
 

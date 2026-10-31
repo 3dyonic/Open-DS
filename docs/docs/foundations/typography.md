@@ -10,6 +10,16 @@ description: "Dense data: How text is set: roles, sizes and line height."
 
 How text is set: roles, sizes and line height.
 
+<div class="ods-specimen">
+<div class="ods-type"><span class="ods-label">display</span><span style="font-family:var(--type-display-font-family);font-size:var(--type-display-font-size);line-height:var(--type-display-line-height);font-weight:var(--type-display-font-weight)">An operations lead opens the orders table at 8:00 and scans 200 rows for late shipments.</span></div>
+<div class="ods-type"><span class="ods-label">title</span><span style="font-family:var(--type-title-font-family);font-size:var(--type-title-font-size);line-height:var(--type-title-line-height);font-weight:var(--type-title-font-weight)">An operations lead opens the orders table at 8:00 and scans 200 rows for late shipments.</span></div>
+<div class="ods-type"><span class="ods-label">heading</span><span style="font-family:var(--type-heading-font-family);font-size:var(--type-heading-font-size);line-height:var(--type-heading-line-height);font-weight:var(--type-heading-font-weight)">An operations lead opens the orders table at 8:00 and scans 200 rows for late shipments.</span></div>
+<div class="ods-type"><span class="ods-label">body</span><span style="font-family:var(--type-body-font-family);font-size:var(--type-body-font-size);line-height:var(--type-body-line-height);font-weight:var(--type-body-font-weight)">An operations lead opens the orders table at 8:00 and scans 200 rows for late shipments.</span></div>
+<div class="ods-type"><span class="ods-label">label</span><span style="font-family:var(--type-label-font-family);font-size:var(--type-label-font-size);line-height:var(--type-label-line-height);font-weight:var(--type-label-font-weight)">An operations lead opens the orders table at 8:00 and scans 200 rows for late shipments.</span></div>
+<div class="ods-type"><span class="ods-label">caption</span><span style="font-family:var(--type-caption-font-family);font-size:var(--type-caption-font-size);line-height:var(--type-caption-line-height);font-weight:var(--type-caption-font-weight)">An operations lead opens the orders table at 8:00 and scans 200 rows for late shipments.</span></div>
+<div class="ods-type"><span class="ods-label">data</span><span style="font-family:var(--type-data-font-family);font-size:var(--type-data-font-size);line-height:var(--type-data-line-height);font-weight:var(--type-data-font-weight)">An operations lead opens the orders table at 8:00 and scans 200 rows for late shipments.</span></div>
+</div>
+
 ## The five answers
 
 | Question | Answer | Why |
@@ -22,36 +32,62 @@ How text is set: roles, sizes and line height.
 
 ## Tokens
 
-| Token | Value |
+Each token points to another token. Values live only on primitives, below.
+
+| Token | Points to |
 | --- | --- |
-| `type.display.font-family` | "IBM Plex Sans", system-ui, sans-serif |
-| `type.display.font-size` | 1.5rem (24px) |
-| `type.display.line-height` | 1.75rem (28px) |
-| `type.display.font-weight` | 600 |
-| `type.title.font-family` | "IBM Plex Sans", system-ui, sans-serif |
-| `type.title.font-size` | 1.25rem (20px) |
-| `type.title.line-height` | 1.5rem (24px) |
-| `type.title.font-weight` | 600 |
-| `type.heading.font-family` | "IBM Plex Sans", system-ui, sans-serif |
-| `type.heading.font-size` | 1rem (16px) |
-| `type.heading.line-height` | 1.25rem (20px) |
-| `type.heading.font-weight` | 600 |
-| `type.body.font-family` | "IBM Plex Sans", system-ui, sans-serif |
-| `type.body.font-size` | 0.875rem (14px) |
-| `type.body.line-height` | 1.25rem (20px) |
-| `type.body.font-weight` | 400 |
-| `type.label.font-family` | "IBM Plex Sans", system-ui, sans-serif |
-| `type.label.font-size` | 0.75rem (12px) |
-| `type.label.line-height` | 1rem (16px) |
-| `type.label.font-weight` | 500 |
-| `type.caption.font-family` | "IBM Plex Sans", system-ui, sans-serif |
-| `type.caption.font-size` | 0.75rem (12px) |
-| `type.caption.line-height` | 1rem (16px) |
-| `type.caption.font-weight` | 400 |
-| `type.data.font-family` | "IBM Plex Mono", ui-monospace, monospace |
-| `type.data.font-size` | 0.8125rem (13px) |
-| `type.data.line-height` | 1rem (16px) |
-| `type.data.font-weight` | 400 |
+| `type.display.font-family` | `font.family.display` |
+| `type.display.font-size` | `font.size.24` |
+| `type.display.line-height` | `font.line-height.28` |
+| `type.display.font-weight` | `font.weight.600` |
+| `type.title.font-family` | `font.family.display` |
+| `type.title.font-size` | `font.size.20` |
+| `type.title.line-height` | `font.line-height.24` |
+| `type.title.font-weight` | `font.weight.600` |
+| `type.heading.font-family` | `font.family.display` |
+| `type.heading.font-size` | `font.size.16` |
+| `type.heading.line-height` | `font.line-height.20` |
+| `type.heading.font-weight` | `font.weight.600` |
+| `type.body.font-family` | `font.family.body` |
+| `type.body.font-size` | `font.size.14` |
+| `type.body.line-height` | `font.line-height.20` |
+| `type.body.font-weight` | `font.weight.400` |
+| `type.label.font-family` | `font.family.ui` |
+| `type.label.font-size` | `font.size.12` |
+| `type.label.line-height` | `font.line-height.16` |
+| `type.label.font-weight` | `font.weight.500` |
+| `type.caption.font-family` | `font.family.ui` |
+| `type.caption.font-size` | `font.size.12` |
+| `type.caption.line-height` | `font.line-height.16` |
+| `type.caption.font-weight` | `font.weight.400` |
+| `type.data.font-family` | `font.family.mono` |
+| `type.data.font-size` | `font.size.13` |
+| `type.data.line-height` | `font.line-height.16` |
+| `type.data.font-weight` | `font.weight.400` |
+
+## Primitives
+
+The raw values the tokens above end at.
+
+| Primitive | Value | Sample |
+| --- | --- | --- |
+| `font.family.body` | "IBM Plex Sans", system-ui, sans-serif | <span class="ods-font" style="font-family:var(--font-family-body)">Aa 123</span> |
+| `font.family.display` | "IBM Plex Sans", system-ui, sans-serif | <span class="ods-font" style="font-family:var(--font-family-display)">Aa 123</span> |
+| `font.family.mono` | "IBM Plex Mono", ui-monospace, monospace | <span class="ods-font" style="font-family:var(--font-family-mono)">Aa 123</span> |
+| `font.family.ui` | "IBM Plex Sans", system-ui, sans-serif | <span class="ods-font" style="font-family:var(--font-family-ui)">Aa 123</span> |
+| `font.line-height.16` | 1rem (16px) |  |
+| `font.line-height.20` | 1.25rem (20px) |  |
+| `font.line-height.24` | 1.5rem (24px) |  |
+| `font.line-height.28` | 1.75rem (28px) |  |
+| `font.size.12` | 0.75rem (12px) | <span class="ods-bar" style="width:var(--font-size-12)"></span> |
+| `font.size.13` | 0.8125rem (13px) | <span class="ods-bar" style="width:var(--font-size-13)"></span> |
+| `font.size.14` | 0.875rem (14px) | <span class="ods-bar" style="width:var(--font-size-14)"></span> |
+| `font.size.16` | 1rem (16px) | <span class="ods-bar" style="width:var(--font-size-16)"></span> |
+| `font.size.20` | 1.25rem (20px) | <span class="ods-bar" style="width:var(--font-size-20)"></span> |
+| `font.size.24` | 1.5rem (24px) | <span class="ods-bar" style="width:var(--font-size-24)"></span> |
+| `font.weight.400` | 400 |  |
+| `font.weight.500` | 500 |  |
+| `font.weight.600` | 600 |  |
 
 ## Where it lands
 

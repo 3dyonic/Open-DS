@@ -145,8 +145,9 @@ export function ScopeView({ p }: { p: ScopePage }) {
                         style={{ background: r.light }}
                       />
                     )}
-                    {r.light}
-                    {r.dark !== r.light && (
+                    {/* A decision shows the primitive it points to; raw values live only on primitives. */}
+                    {r.lightRef ? `→ ${r.lightRef}` : r.light}
+                    {(r.darkRef ? r.darkRef !== r.lightRef : r.dark !== r.light) && (
                       <span className="flex items-center gap-1 text-muted">
                         · dark{" "}
                         {isColor(r.dark) && (
@@ -155,7 +156,7 @@ export function ScopeView({ p }: { p: ScopePage }) {
                             style={{ background: r.dark }}
                           />
                         )}
-                        {r.dark}
+                        {r.darkRef ? `→ ${r.darkRef}` : r.dark}
                       </span>
                     )}
                   </dd>

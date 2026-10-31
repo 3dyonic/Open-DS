@@ -14,14 +14,14 @@ See it in [Storybook](http://localhost:6006) under Components / Dropdown menu, i
 
 ## Component keys
 
-The CSS variable is the key with `/` replaced by `-`.
+The CSS variable is the key with `/` replaced by `-`. Each key points to a token; values live only on primitives.
 
-| Key | What it controls | Reads | light | dark |
-| --- | --- | --- | --- | --- |
-| `overlay/background` | Fill of a dialog, menu or toast. | `color.surface.raised` | #FFFFFF | #262D38 |
-| `overlay/radius` | Corner radius of overlays. | `radius.container` | 0.375rem (6px) | 0.375rem (6px) |
-| `overlay/shadow` | Shadow of overlays. | `elevation.overlay` | 0px 8px 24px 0px #0D111729 | 0px 8px 24px 0px #00000080 |
-| `overlay/scrim` | Color that dims the page behind a dialog. | `color.surface.scrim` | #0000008C | #000000B3 |
-| `overlay/item-height` | Height of a menu item. | `size.control.default` | 2rem (32px) | 2rem (32px) |
-| `tooltip/background` | Tooltip fill. | `color.surface.inverse` | #161B23 | #F7F8FA |
-| `tooltip/label` | Tooltip text. | `color.text.inverse` | #FFFFFF | #161B23 |
+| Key | What it controls | Points to, light | Points to, dark |
+| --- | --- | --- | --- |
+| `overlay/background` | Fill of a dialog, menu or toast. | `color.surface.raised` → `color.neutral.0` | `color.surface.raised` → `color.neutral.800` |
+| `overlay/radius` | Corner radius of overlays. | `radius.container` → `radius.brand.container` → `radius.6` | same |
+| `overlay/shadow` | Shadow of overlays. | `elevation.overlay` → `shadow.overlay` | `elevation.overlay` → `shadow.overlay-dark` |
+| `overlay/scrim` | Color that dims the page behind a dialog. | `color.surface.scrim` → `color.black-alpha.scrim` | `color.surface.scrim` → `color.black-alpha.scrim-dark` |
+| `overlay/item-height` | Height of a menu item. | `size.control.default` → `size.32` | same |
+| `tooltip/background` | Tooltip fill. | `color.surface.inverse` → `color.neutral.900` | `color.surface.inverse` → `color.neutral.50` |
+| `tooltip/label` | Tooltip text. | `color.text.inverse` → `color.neutral.0` | `color.text.inverse` → `color.neutral.900` |

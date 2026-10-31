@@ -1491,6 +1491,42 @@
           "$value": 0.4,
           "$description": "An opacity option."
         }
+      },
+      "shadow": {
+        "$description": "Raw shadows. Elevation semantics point at these.",
+        "none": {
+          "$type": "shadow",
+          "$value": {
+            "color": "#00000000",
+            "offsetX": "0px",
+            "offsetY": "0px",
+            "blur": "0px",
+            "spread": "0px"
+          },
+          "$description": "No shadow: flat surfaces."
+        },
+        "overlay": {
+          "$type": "shadow",
+          "$value": {
+            "color": "#0D111729",
+            "offsetX": "0px",
+            "offsetY": "8px",
+            "blur": "24px",
+            "spread": "0px"
+          },
+          "$description": "Raw shadow for overlay in light mode."
+        },
+        "overlay-dark": {
+          "$type": "shadow",
+          "$value": {
+            "color": "#00000080",
+            "offsetX": "0px",
+            "offsetY": "8px",
+            "blur": "24px",
+            "spread": "0px"
+          },
+          "$description": "Raw shadow for overlay in dark mode."
+        }
       }
     },
     "brands": {
@@ -1971,24 +2007,12 @@
         "elevation": {
           "card": {
             "$type": "shadow",
-            "$value": {
-              "color": "#00000000",
-              "offsetX": "0px",
-              "offsetY": "0px",
-              "blur": "0px",
-              "spread": "0px"
-            },
+            "$value": "{shadow.none}",
             "$description": "No shadow in this scheme."
           },
           "overlay": {
             "$type": "shadow",
-            "$value": {
-              "color": "#0D111729",
-              "offsetX": "0px",
-              "offsetY": "8px",
-              "blur": "24px",
-              "spread": "0px"
-            }
+            "$value": "{shadow.overlay}"
           }
         }
       },
@@ -2112,24 +2136,12 @@
         "elevation": {
           "card": {
             "$type": "shadow",
-            "$value": {
-              "color": "#00000000",
-              "offsetX": "0px",
-              "offsetY": "0px",
-              "blur": "0px",
-              "spread": "0px"
-            },
+            "$value": "{shadow.none}",
             "$description": "No shadow in this scheme."
           },
           "overlay": {
             "$type": "shadow",
-            "$value": {
-              "color": "#00000080",
-              "offsetX": "0px",
-              "offsetY": "8px",
-              "blur": "24px",
-              "spread": "0px"
-            }
+            "$value": "{shadow.overlay-dark}"
           }
         }
       }

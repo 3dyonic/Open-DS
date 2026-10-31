@@ -14,11 +14,11 @@ See it in [Storybook](http://localhost:6006) under Components / Switch, in every
 
 ## Component keys
 
-The CSS variable is the key with `/` replaced by `-`.
+The CSS variable is the key with `/` replaced by `-`. Each key points to a token; values live only on primitives.
 
-| Key | What it controls | Reads | light | dark |
-| --- | --- | --- | --- | --- |
-| `control/checked` | Fill of a checked checkbox or an on switch. | `color.action.primary` | #2457D6 | #8EA9EC |
-| `control/track` | Track of an off switch. | `color.border.strong` | #C4CBD6 | #3D4655 |
-| `control/thumb` | Switch thumb and checkmark color. | `color.surface.default` | #FFFFFF | #161B23 |
-| `control/radius` | Checkbox corner radius. | `radius.badge` | 0.125rem (2px) | 0.125rem (2px) |
+| Key | What it controls | Points to, light | Points to, dark |
+| --- | --- | --- | --- |
+| `control/checked` | Fill of a checked checkbox or an on switch. | `color.action.primary` → `color.brand.600` | `color.action.primary` → `color.brand.300` |
+| `control/track` | Track of an off switch. | `color.border.strong` → `color.neutral.300` | `color.border.strong` → `color.neutral.700` |
+| `control/thumb` | Switch thumb and checkmark color. | `color.surface.default` → `color.neutral.0` | `color.surface.default` → `color.neutral.900` |
+| `control/radius` | Checkbox corner radius. | `radius.badge` → `radius.brand.badge` → `radius.2` | same |

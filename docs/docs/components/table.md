@@ -14,16 +14,16 @@ See it in [Storybook](http://localhost:6006) under Components / Table, in every 
 
 ## Component keys
 
-The CSS variable is the key with `/` replaced by `-`.
+The CSS variable is the key with `/` replaced by `-`. Each key points to a token; values live only on primitives.
 
-| Key | What it controls | Reads | light | dark |
-| --- | --- | --- | --- | --- |
-| `table/header-background` | Header row fill. | `color.surface.sunken` | #EEF1F5 | #262D38 |
-| `table/row-height` | Height of one data row. | `size.row` | 2rem (32px) | 2rem (32px) |
-| `table/cell-padding-x` | Horizontal padding inside a cell. | `space.inset.cell-x` | 0.75rem (12px) | 0.75rem (12px) |
-| `table/row-border` | Line between rows. | `color.border.default` | #DDE2EA | #262D38 |
-| `table/row-selected` | Fill of a selected row. | `color.surface.selected` | #E6EDFC | #163784 |
-| `table/font-size` | Cell text size. | `type.data.font-size` | 0.8125rem (13px) | 0.8125rem (13px) |
+| Key | What it controls | Points to, light | Points to, dark |
+| --- | --- | --- | --- |
+| `table/header-background` | Header row fill. | `color.surface.sunken` → `color.neutral.100` | `color.surface.sunken` → `color.neutral.800` |
+| `table/row-height` | Height of one data row. | `size.row` → `size.32` | same |
+| `table/cell-padding-x` | Horizontal padding inside a cell. | `space.inset.cell-x` → `space.12` | same |
+| `table/row-border` | Line between rows. | `color.border.default` → `color.neutral.200` | `color.border.default` → `color.neutral.800` |
+| `table/row-selected` | Fill of a selected row. | `color.surface.selected` → `color.brand.100` | `color.surface.selected` → `color.brand.800` |
+| `table/font-size` | Cell text size. | `type.data.font-size` → `font.size.13` | same |
 
 ## When to use it
 
