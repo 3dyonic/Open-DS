@@ -2,7 +2,8 @@
  * Badge. A short status such as Paid, Late or Failed. Always put a word inside; color alone is
  * not enough (situation status-label in every scheme).
  *
- * Tones: neutral, success, warning, danger. Reads only component keys: --badge-*.
+ * Tones: neutral, info, success, warning, danger. Pick the status that matches the real risk: info,
+ * then warning, then danger (the urgency order in the grammar). Never go up a level to get attention. Reads only component keys: --badge-*.
  */
 import { cva, type VariantProps } from "class-variance-authority";
 import * as React from "react";
@@ -18,6 +19,7 @@ export const badgeVariants = cva(
     variants: {
       tone: {
         neutral: "bg-[var(--badge-neutral-background)] text-[var(--badge-neutral-label)]",
+        info: "bg-[var(--badge-info-background)] text-[var(--badge-info-label)]",
         success: "bg-[var(--badge-success-background)] text-[var(--badge-success-label)]",
         warning: "bg-[var(--badge-warning-background)] text-[var(--badge-warning-label)]",
         danger: "bg-[var(--badge-danger-background)] text-[var(--badge-danger-label)]",

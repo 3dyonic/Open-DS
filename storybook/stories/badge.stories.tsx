@@ -7,7 +7,7 @@ const meta = {
   title: "Components/Badge",
   component: Badge,
   args: { children: "Status", tone: "neutral" },
-  argTypes: { tone: { control: "inline-radio", options: ["neutral", "success", "warning", "danger"] } },
+  argTypes: { tone: { control: "inline-radio", options: ["neutral", "info", "success", "warning", "danger"] } },
 } satisfies Meta<typeof Badge>;
 export default meta;
 type Story = StoryObj<typeof meta>;

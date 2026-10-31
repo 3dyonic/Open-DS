@@ -16,7 +16,7 @@ export function Input({ className, type = "text", ...props }: React.InputHTMLAtt
         "bg-[var(--input-background)] text-[var(--input-text)] text-[length:var(--input-font-size)] [font-family:var(--type-body-font-family)]",
         "border-[length:var(--border-width-default)] border-[var(--input-border)] placeholder:text-[var(--input-placeholder)]",
         "outline-none focus-visible:border-[var(--input-border-focus)] focus-visible:ring-[length:var(--border-width-focus)] focus-visible:ring-[color:var(--input-border-focus)]",
-        "aria-invalid:border-[var(--color-status-danger)] disabled:opacity-[var(--opacity-disabled)]",
+        "aria-invalid:border-[var(--color-status-danger)] disabled:bg-[var(--input-disabled-background)] disabled:border-[var(--input-disabled-border)] disabled:text-[var(--input-disabled-text)]",
         className,
       )}
       {...props}

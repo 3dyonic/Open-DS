@@ -6,6 +6,7 @@ import { questions } from "./schemes.mjs";
 const COMMANDS = [
   "open-ds why <scheme> <question-id | component-key>",
   "open-ds when <scheme> <situation-id | words>",
+  "open-ds context <scheme> <task | component | key | token | situation>",
   "open-ds add <component>",
 ];
 
@@ -37,7 +38,7 @@ export function agentsMd(scheme, g, { brand, components, project = false }) {
           "- `stories/`: Storybook (`npm run storybook`). `docs/`: the Docusaurus docs (`npm run docs`).",
         ]
       : [
-          "- `src/styles/open-ds.css`: every token as a CSS variable (light and dark; add the class `dark` for dark mode), shadcn variables and a Tailwind v4 theme. Import it after Tailwind.",
+          "- `src/styles/open-ds.css`: the semantic and component keys as CSS variables (light and dark; add the class `dark` for dark mode), shadcn variables and a Tailwind v4 theme. Import it after Tailwind.",
         ]),
     ...(brand
       ? [
@@ -55,6 +56,23 @@ export function agentsMd(scheme, g, { brand, components, project = false }) {
     ...scheme.usage.map(
       (u) => `| ${sit[u.situation].title} | ${u.use} | ${u.not} | ${u.why} |`,
     ),
+    "",
+    "## Colour: what each one is for",
+    "",
+    ...(g.semantics
+      ? [
+          g.semantics.urgency.description,
+          "",
+          "| Token | For | Not for |",
+          "| --- | --- | --- |",
+          ...g.semantics.keys.map(
+            (k) =>
+              `| \`${k.id}\` | ${k.intent} | ${k.not_for.map((n) => `${n.when}: \`${n.use}\``).join("; ")} |`,
+          ),
+          "",
+          "Which text may sit on which fill: `open-ds context <scheme> <token>` (`sits_on` and `takes`).",
+        ]
+      : []),
     "",
     "## Voice and tone",
     "",

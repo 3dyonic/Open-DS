@@ -282,7 +282,7 @@
                 "description": "The words on the badge."
               },
               "meaning": {
-                "enum": ["neutral", "success", "warning", "danger"],
+                "enum": ["neutral", "info", "success", "warning", "danger"],
                 "description": "What the status means; it picks the badge tone."
               },
               "why": {

@@ -20,6 +20,7 @@ const call = async (client, name, args = {}) => {
 const TOOLS = [
   "compare_schemes",
   "get_answer",
+  "get_context",
   "get_inventory",
   "get_key",
   "get_scheme",
@@ -261,4 +262,23 @@ test("plans list open-ds.json, and when_to_use says how it matched", async () =>
     ).match,
     "best guess",
   );
+});
+
+test("get_context returns only the slice for a token, a task and a component, and get_key carries guidance", async () => {
+  const client = await connect();
+  const token = await call(client, "get_context", { scheme_id: "dense-data", target: "color.status.danger" });
+  assert.equal(token.kind, "semantic");
+  assert.equal(token.guidance.id, "color.status.danger.@");
+  assert.equal(token.guidance.urgency.level, 3);
+  assert.ok(token.guidance.not_for.every((n) => n.use.startsWith("color.")));
+  assert.ok(token.values.light.startsWith("#"));
+  const review = await call(client, "get_context", { scheme_id: "dense-data", target: "review" });
+  assert.equal(review.skill, "open-ds-review");
+  assert.ok(review.semantics.length > 30 && review.rules.length > 10);
+  const badge = await call(client, "get_context", { scheme_id: "multi-brand", target: "badge" });
+  assert.ok(badge.keys.some((k) => k.key === "badge/info/label"));
+  const key = await call(client, "get_key", { scheme_id: "dense-data", key: "button/primary/background" });
+  assert.equal(key.guidance.id, "color.action.primary.@");
+  const bad = await client.callTool({ name: "get_context", arguments: { scheme_id: "dense-data", target: "nope" } });
+  assert.ok(bad.isError);
 });
