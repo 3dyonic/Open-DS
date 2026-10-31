@@ -2,11 +2,15 @@
 // The switches set data-scheme, data-brand and the dark class; the tokens do the rest.
 import type { Decorator, Preview } from "@storybook/react-vite";
 import { useEffect } from "react";
+import { themes } from "storybook/theming";
 import { SchemeContext, THEMES } from "../src/scheme-context";
 import "../src/storybook.css";
 import ComponentDocs from "./component-docs.mdx";
 
 const KNOWN = new Set(THEMES.map((t) => t.value.split("--")[0]));
+
+// Start in the device's mode; the Mode switch in the toolbar changes it.
+const deviceDark = window.matchMedia("(prefers-color-scheme: dark)").matches;
 
 const withScheme: Decorator = (Story, context) => {
   const [chosen, brand] = String(context.globals.scheme ?? "dense-data").split("--");
@@ -54,10 +58,14 @@ const preview: Preview = {
       },
     },
   },
-  initialGlobals: { scheme: "dense-data", mode: "light" },
+  initialGlobals: { scheme: "dense-data", mode: deviceDark ? "dark" : "light" },
   // Every component's docs page uses the same template; the stories only show the component.
   tags: ["autodocs"],
-  parameters: { layout: "fullscreen", controls: { expanded: true }, docs: { page: ComponentDocs } },
+  parameters: {
+    layout: "fullscreen",
+    controls: { expanded: true },
+    docs: { page: ComponentDocs, theme: deviceDark ? themes.dark : themes.light },
+  },
 };
 
 export default preview;
