@@ -29,7 +29,7 @@
   },
   "type": "module",
   "bin": {
-    "open-ds": "./bin/open-ds.js"
+    "open-ds": "bin/open-ds.js"
   },
   "exports": {
     ".": "./src/index.mjs",
