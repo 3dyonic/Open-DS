@@ -25,7 +25,7 @@
       "id": "I04",
       "title": "Storybook",
       "words": "storybook",
-      "checks": ["storybook-stories", "storybook-build"]
+      "checks": ["storybook-stories", "storybook-build", "storybook-stories-uniform"]
     },
     {
       "id": "I05",
