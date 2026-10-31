@@ -2,5 +2,7 @@
   "name": "Open DS",
   "slug": "open-ds",
   "tagline": "Every design system is a set of answers.",
-  "nameNote": "The product name is pending. Change it only in this file."
+  "nameNote": "The product name is pending. Change it only in this file.",
+  "url": "https://open-ds.dev",
+  "urlNote": "The site address (Yonatan bought open-ds.dev, 2026-10-31). Deployment is planned later; SITE_URL overrides it at build time."
 }
