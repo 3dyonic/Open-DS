@@ -64,9 +64,9 @@ function Specimen({ p, brand }: { p: Primitive; brand?: string }) {
   );
 }
 
-function Group({ g, brand }: { g: PrimitiveGroup; brand?: string }) {
+function Group({ g, brand, anchor }: { g: PrimitiveGroup; brand?: string; anchor: string }) {
   return (
-    <section className="flex flex-col gap-3" aria-label={g.title}>
+    <section id={anchor} className="flex scroll-mt-[72px] flex-col gap-3" aria-label={g.title}>
       <div className="flex flex-col gap-1">
         <h3 className="text-[22px] font-extrabold">
           {g.title}{" "}
@@ -129,6 +129,20 @@ export function PrimitivesView({ p }: { p: PrimitivesPage }) {
   const count =
     p.shared.reduce((n, g) => n + g.items.length, 0) +
     p.brands.reduce((n, b) => n + b.groups.reduce((m, g) => m + g.items.length, 0), 0);
+  // The jump links: one per group, in page order.
+  const jumps: [string, string][] = p.multiBrand
+    ? [
+        ...p.shared.map((g): [string, string] => [`shared-${g.id}`, g.title]),
+        ...p.brands.flatMap((b) =>
+          b.groups.map((g): [string, string] => [`${b.id}-${g.id}`, `${b.label}: ${g.title}`]),
+        ),
+      ]
+    : [
+        ...p.shared.map((g): [string, string] => [g.id, g.title]),
+        ...(p.brands[0]?.groups ?? [])
+          .filter((x) => !p.shared.some((g) => g.id === x.id))
+          .map((g): [string, string] => [g.id, g.title]),
+      ];
   return (
     <div data-scheme={p.scheme.id} className="flex flex-col gap-12 px-5 pb-20 lg:px-20">
       <header className="flex flex-col gap-4">
@@ -162,19 +176,37 @@ export function PrimitivesView({ p }: { p: PrimitivesPage }) {
         </div>
       </header>
 
+      <nav
+        aria-label="Jump to a group"
+        className="sticky top-0 z-20 -mx-5 border-b border-line bg-paper/95 px-5 py-3 backdrop-blur lg:-mx-20 lg:px-20"
+      >
+        <ul className="flex gap-2 overflow-x-auto md:flex-wrap md:overflow-visible">
+          {jumps.map(([id, title]) => (
+            <li key={id} className="shrink-0">
+              <a
+                href={`#${id}`}
+                className="block rounded-[4px] border border-line bg-white px-3 py-[6px] text-[14px] font-semibold whitespace-nowrap hover:border-ink"
+              >
+                {title}
+              </a>
+            </li>
+          ))}
+        </ul>
+      </nav>
+
       {p.multiBrand ? (
         <>
           <section className="flex flex-col gap-8">
             <h2 className="text-[30px] font-extrabold">Shared by every brand</h2>
             {p.shared.map((g) => (
-              <Group key={g.id} g={g} />
+              <Group key={g.id} g={g} anchor={`shared-${g.id}`} />
             ))}
           </section>
           {p.brands.map((b) => (
             <section key={b.id} data-brand={b.id} className="flex flex-col gap-8">
               <h2 className="text-[30px] font-extrabold">Brand: {b.label}</h2>
               {b.groups.map((g) => (
-                <Group key={g.id} g={g} brand={b.id} />
+                <Group key={g.id} g={g} brand={b.id} anchor={`${b.id}-${g.id}`} />
               ))}
             </section>
           ))}
@@ -184,12 +216,18 @@ export function PrimitivesView({ p }: { p: PrimitivesPage }) {
           {/* One brand: its own options join the shared ones, group by group. */}
           {p.shared.map((g) => {
             const own = p.brands[0]?.groups.find((x) => x.id === g.id);
-            return <Group key={g.id} g={own ? { ...g, items: [...own.items, ...g.items] } : g} />;
+            return (
+              <Group
+                key={g.id}
+                g={own ? { ...g, items: [...own.items, ...g.items] } : g}
+                anchor={g.id}
+              />
+            );
           })}
           {p.brands[0]?.groups
             .filter((x) => !p.shared.some((g) => g.id === x.id))
             .map((g) => (
-              <Group key={g.id} g={g} />
+              <Group key={g.id} g={g} anchor={g.id} />
             ))}
         </section>
       )}
