@@ -796,7 +796,7 @@
     {
       "question": "typography.count",
       "option": "few",
-      "why": "Few sizes keep a screen full of records calm.",
+      "why": "A screen full of records stays calm with only the sizes it needs.",
       "because": [
         "content.q2"
       ]
@@ -1241,7 +1241,7 @@
     {
       "question": "components.count",
       "option": "some",
-      "why": "Enough for a full operations tool, few enough for a small team to keep right.",
+      "why": "A full operations tool with the parts its next screens will need, still few enough for a small team to keep right.",
       "because": [
         "content.q2",
         "team.q1"
@@ -1259,7 +1259,7 @@
     {
       "question": "components.values",
       "option": "few",
-      "why": "Few variants keep repeated screens identical.",
+      "why": "Repeated screens stay identical when a component changes only with its meaning.",
       "because": [
         "brand.q2",
         "tasks.q2"

@@ -550,20 +550,23 @@
         {
           "id": "typography.count",
           "method": "count",
-          "text": "How many sizes does the scale have?",
+          "text": "How many steps does the type scale take?",
           "description": "Few sizes keep a dense screen calm. More sizes give long pages a clear hierarchy.",
           "options": [
             {
               "id": "few",
-              "label": "Few"
+              "label": "Only the steps the screens need",
+              "description": "The scale keeps the few sizes the screens use, and nothing in between."
             },
             {
               "id": "some",
-              "label": "Some"
+              "label": "One step per kind of text",
+              "description": "One size each for caption, body, heading, title and display."
             },
             {
               "id": "many",
-              "label": "Many"
+              "label": "Fine steps, so pages can set their own rhythm",
+              "description": "Many close sizes, so a page can tune its hierarchy and pace."
             }
           ]
         },
@@ -1852,20 +1855,23 @@
         {
           "id": "components.count",
           "method": "count",
-          "text": "How many components does it carry?",
+          "text": "How far does the inventory reach?",
           "description": "The size of the inventory, as a word. The inventory follows the needs; the word describes it and sets no limit.",
           "options": [
             {
               "id": "few",
-              "label": "Few"
+              "label": "Only what today's screens use",
+              "description": "A component joins when a screen in use needs it, not before."
             },
             {
               "id": "some",
-              "label": "Some"
+              "label": "What today's screens use, plus what the next ones will likely need",
+              "description": "Covers the screens in use and the ones the team can see coming, so they find the parts ready."
             },
             {
               "id": "many",
-              "label": "Many"
+              "label": "Everything its families offer, ready before it's asked for",
+              "description": "Every component the admitted families hold is there from the start, so teams never wait for one."
             }
           ]
         },
@@ -1896,20 +1902,23 @@
         {
           "id": "components.values",
           "method": "values",
-          "text": "How many variants does each component offer?",
+          "text": "When does a component get another look?",
           "description": "Variants and sizes per component, as a word.",
           "options": [
             {
               "id": "few",
-              "label": "Few"
+              "label": "Only when the meaning changes",
+              "description": "A new variant only for a different meaning, such as the main action or a danger."
             },
             {
               "id": "some",
-              "label": "Some"
+              "label": "Also for emphasis and size",
+              "description": "Variants also set how loud a component is and how much room it takes."
             },
             {
               "id": "many",
-              "label": "Many"
+              "label": "Also so each brand or page can look its own way",
+              "description": "Variants also let a brand or a page carry its own look on the same component."
             }
           ]
         },

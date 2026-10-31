@@ -1,5 +1,6 @@
 // The Components scope: the inventory first, each component with its reason, then how the scheme's
 // decisions cascade into it.
+import { Options } from "@/components/options";
 import Link from "next/link";
 import type { ComponentsPage } from "@/lib/inventory";
 
@@ -136,10 +137,14 @@ export function ComponentsScopeView({ p }: { p: ComponentsPage }) {
                       ))}
                     </span>
                   </div>
-                  <p className="text-[15px] leading-[1.45]">
-                    <span className="font-semibold">{q.label}.</span>{" "}
-                    <span className="text-[#3e3a31]">{q.why}</span>
-                  </p>
+                  <div className="flex flex-col gap-2">
+                    <Options
+                      options={q.options}
+                      chosen={q.chosen}
+                      label={`The options for: ${q.text}`}
+                    />
+                    <p className="text-[15px] leading-[1.45] text-[#3e3a31]">{q.why}</p>
+                  </div>
                   <p className="text-[15px] leading-[1.45] text-[#3e3a31]">{q.effect}</p>
                 </li>
               ))}

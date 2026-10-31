@@ -25,7 +25,7 @@ How text is set: roles, sizes and line height.
 | Question | Answer | Why |
 | --- | --- | --- |
 | Which text roles does it need? | Core and data | A data role keeps numbers in aligned columns. |
-| How many sizes does the scale have? | Few | Few sizes keep a screen full of records calm. |
+| How many steps does the type scale take? | Only the steps the screens need | A screen full of records stays calm with only the sizes it needs. |
 | How are sizes and line heights defined? | A ratio, line heights on the grid | Lines stay on the grid so rows align, and grow with the user's text size. |
 | How large is body text? | Small | Small body text fits more rows on the screen. |
 | Where does type do the most work? | Tables and inputs | Most text sits in table cells and inputs. |

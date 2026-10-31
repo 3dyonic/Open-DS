@@ -1,4 +1,5 @@
 // One scheme, built from the Figma frame S02 Scheme (117:900).
+import { Options } from "@/components/options";
 import type { Metadata } from "next";
 import Link from "next/link";
 import { Applied, type AppliedSamples } from "@/components/applied";
@@ -187,29 +188,30 @@ export default async function SchemePage({ params }: { params: Promise<{ id: str
                     <span className="text-[16px] leading-[1.45] text-[#3e3a31]">
                       {a(3).why} {a(4).why}
                     </span>
-                    {/* Each answer with its question, in full words: the question, then what this scheme answered. */}
-                    <span className="grid gap-[8px] sm:grid-cols-2 xl:grid-cols-3">
+                    {/* Each question in full words, with every option and this scheme's choice highlighted. */}
+                    <span className="flex flex-col gap-[12px] pt-1">
                       {sc.questions.map((q) => (
-                        <span
-                          key={q.id}
-                          title={answerOf(s, g, q.id).answer.why}
-                          className="flex flex-col gap-[2px] rounded-[4px] border border-line bg-paper px-[12px] py-[8px]"
-                        >
-                          <span className="text-[13px] leading-[1.35] text-muted">{q.text}</span>
-                          <span className="text-[15px] font-semibold leading-[1.35]">
-                            {label(q.id)}
+                        <span key={q.id} className="flex flex-col gap-[6px]">
+                          <span className="text-[15px] font-semibold leading-[1.35] text-ink">
+                            {q.text}
                             {q.id === "components.count" && (
-                              <span className="font-normal text-muted">
+                              <>
                                 {" "}
-                                ·{" "}
+                                {s.name} carries{" "}
                                 {
                                   (s as unknown as { inventory: { in: unknown[] } }).inventory.in
                                     .length
-                                }{" "}
-                                in {s.name}
-                              </span>
+                                }
+                                .
+                              </>
                             )}
                           </span>
+                          <Options
+                            variant="inline"
+                            options={q.options}
+                            chosen={answerOf(s, g, q.id).option.id}
+                            label={`The options for: ${q.text}`}
+                          />
                         </span>
                       ))}
                     </span>

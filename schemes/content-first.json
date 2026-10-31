@@ -422,7 +422,7 @@
     {
       "question": "typography.count",
       "option": "many",
-      "why": "Long pages need a clear hierarchy of headings.",
+      "why": "Long pages need a clear hierarchy of headings, with fine steps between them.",
       "because": [
         "content.q1"
       ]
@@ -866,7 +866,7 @@
     {
       "question": "components.count",
       "option": "few",
-      "why": "Actions are rare, so few components cover them.",
+      "why": "Actions are rare, so the components today's pages use cover them.",
       "because": [
         "tasks.q2",
         "team.q1"
@@ -884,7 +884,7 @@
     {
       "question": "components.values",
       "option": "few",
-      "why": "Few variants keep pages calm.",
+      "why": "Pages stay calm when a component changes only with its meaning.",
       "because": [
         "brand.q2",
         "outcomes.q1"

@@ -154,7 +154,13 @@ export function scopePage(schemeId: string, scopeId: string) {
       const grp = b.split(".")[0];
       if (reasonIds.includes(grp) && !cited.includes(grp)) cited.push(grp);
     }
-    return { ...q, label: a.option.label, why: a.answer.why, because: a.answer.because };
+    return {
+      ...q,
+      chosen: a.option.id,
+      label: a.option.label,
+      why: a.answer.why,
+      because: a.answer.because,
+    };
   });
   const tag = (id: string) => {
     const grp = id.split(".")[0];
