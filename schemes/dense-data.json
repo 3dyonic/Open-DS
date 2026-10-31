@@ -107,8 +107,16 @@
         "why": "Search with an icon and a clear button."
       },
       {
+        "id": "slider",
+        "why": "Narrows a filter to a range of totals by dragging."
+      },
+      {
         "id": "select",
         "why": "Picks one value in filters and forms."
+      },
+      {
+        "id": "radio-group",
+        "why": "Picks one of two or three options, all visible at once."
       },
       {
         "id": "combobox",
@@ -131,12 +139,20 @@
         "why": "Lays out label, control and error the same way everywhere."
       },
       {
+        "id": "form",
+        "why": "Keeps validation and errors the same on every record edit."
+      },
+      {
         "id": "textarea",
         "why": "Notes on an order."
       },
       {
         "id": "calendar",
         "why": "Date ranges for reports."
+      },
+      {
+        "id": "date-picker",
+        "why": "Picks a date range for reports and filters from a button in the toolbar."
       },
       {
         "id": "table",

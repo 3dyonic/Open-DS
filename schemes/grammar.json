@@ -2644,7 +2644,7 @@
     }
   ],
   "catalogue": {
-    "description": "Every component a design system can carry: the UI components of the shadcn/ui registry (style new-york-v4, MIT), plus toast, which Open DS builds itself, and data-table, which wraps TanStack Table after shadcn's Data Table guide. Each scheme picks its inventory from this list through the components scope. The component-api keys in components cover the ones built so far.",
+    "description": "Every component a design system can carry: the UI components of the shadcn/ui registry (style new-york-v4, MIT), plus toast, which Open DS builds itself, data-table, which wraps TanStack Table after shadcn's Data Table guide, and date-picker, after shadcn's Date Picker. Each scheme picks its inventory from this list through the components scope. The component-api keys in components cover the ones built so far.",
     "source": "https://github.com/shadcn-ui/ui/tree/main/apps/v4/registry/new-york-v4/ui",
     "families": [
       {
@@ -2832,6 +2832,11 @@
         "id": "data-table",
         "family": "data",
         "description": "Many records in one view: search, faceted filters, sorting, column choice, row selection with bulk actions, pagination and a density switch. Wraps TanStack Table, after shadcn's Data Table guide."
+      },
+      {
+        "id": "date-picker",
+        "family": "form",
+        "description": "A button that opens a calendar, for one date or a range. Built on calendar and popover, after shadcn's Date Picker."
       },
       {
         "id": "dialog",

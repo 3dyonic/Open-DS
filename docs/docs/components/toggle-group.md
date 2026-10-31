@@ -1,5 +1,5 @@
 ---
-sidebar_position: 35
+sidebar_position: 39
 title: "Toggle group"
 description: "Toggle group in Dense data."
 ---

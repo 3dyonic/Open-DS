@@ -376,6 +376,29 @@
       ]
     },
     {
+      "name": "date-picker",
+      "type": "registry:ui",
+      "title": "Date Picker",
+      "description": "Date picker. A button that opens a calendar, for one date or a range.",
+      "dependencies": [
+        "date-fns",
+        "lucide-react",
+        "react-day-picker"
+      ],
+      "registryDependencies": [
+        "utils",
+        "button",
+        "calendar",
+        "popover"
+      ],
+      "files": [
+        {
+          "path": "src/components/date-picker.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
       "name": "dialog",
       "type": "registry:ui",
       "title": "Dialog",
@@ -822,6 +845,24 @@
       "files": [
         {
           "path": "src/components/skeleton.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "slider",
+      "type": "registry:ui",
+      "title": "Slider",
+      "description": "Slider. A value or a range picked by dragging along a track.",
+      "dependencies": [
+        "radix-ui"
+      ],
+      "registryDependencies": [
+        "utils"
+      ],
+      "files": [
+        {
+          "path": "src/components/slider.tsx",
           "type": "registry:ui"
         }
       ]

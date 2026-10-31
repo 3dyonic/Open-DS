@@ -27,10 +27,8 @@ export function ComponentsScopeView({ p }: { p: ComponentsPage }) {
         </nav>
         <h1 className="text-[44px] font-extrabold leading-[1.05] md:text-[52px]">Components</h1>
         <p className="max-w-[860px] text-[19px] leading-[1.45] text-[#3e3a31]">
-          <span className="font-semibold text-ink">
-            {p.count} of {p.total} components
-          </span>{" "}
-          are in {p.scheme.name}. Each one is here for a reason, and every reason traces back to the
+          <span className="font-semibold text-ink">{p.count} components</span> are in{" "}
+          {p.scheme.name}. Each one is here for a reason, and every reason traces back to the
           answers further down.
         </p>
         <a
@@ -62,7 +60,19 @@ export function ComponentsScopeView({ p }: { p: ComponentsPage }) {
                 {g.items.map((i) => (
                   <li key={i.id} className="grid gap-1 py-[10px] sm:grid-cols-[200px_1fr] sm:gap-4">
                     <span className="text-[16px] font-semibold">{i.name}</span>
-                    <span className="text-[15px] leading-[1.45] text-[#3e3a31]">{i.why}</span>
+                    <span className="flex flex-col gap-3">
+                      <span className="text-[15px] leading-[1.45] text-[#3e3a31]">{i.why}</span>
+                      {i.shot && (
+                        // eslint-disable-next-line @next/next/no-img-element
+                        <img
+                          src={i.shot}
+                          srcSet={`${i.shot} 1x, ${i.shot.replace(/\.jpg$/, "@2x.jpg")} 2x`}
+                          alt={`${i.name} in ${p.scheme.name}`}
+                          loading="lazy"
+                          className="max-h-[240px] max-w-full self-start rounded-[4px] border border-line object-contain object-left-top"
+                        />
+                      )}
+                    </span>
                   </li>
                 ))}
               </ul>
