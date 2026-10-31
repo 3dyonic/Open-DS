@@ -187,14 +187,29 @@ export default async function SchemePage({ params }: { params: Promise<{ id: str
                     <span className="text-[16px] leading-[1.45] text-[#3e3a31]">
                       {a(3).why} {a(4).why}
                     </span>
-                    <span className="flex flex-wrap gap-[6px]">
+                    {/* Each answer with its question, in full words: the question, then what this scheme answered. */}
+                    <span className="grid gap-[8px] sm:grid-cols-2 xl:grid-cols-3">
                       {sc.questions.map((q) => (
                         <span
                           key={q.id}
-                          title={q.text}
-                          className="rounded-[3px] border border-line bg-paper px-[9px] py-[5px] font-mono text-[12px]"
+                          title={answerOf(s, g, q.id).answer.why}
+                          className="flex flex-col gap-[2px] rounded-[4px] border border-line bg-paper px-[12px] py-[8px]"
                         >
-                          {lower(label(q.id))}
+                          <span className="text-[13px] leading-[1.35] text-muted">{q.text}</span>
+                          <span className="text-[15px] font-semibold leading-[1.35]">
+                            {label(q.id)}
+                            {q.id === "components.count" && (
+                              <span className="font-normal text-muted">
+                                {" "}
+                                ·{" "}
+                                {
+                                  (s as unknown as { inventory: { in: unknown[] } }).inventory.in
+                                    .length
+                                }{" "}
+                                in {s.name}
+                              </span>
+                            )}
+                          </span>
                         </span>
                       ))}
                     </span>
