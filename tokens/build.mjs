@@ -5,6 +5,7 @@
 //   tokens.css         every token as a CSS variable, one block per brand and mode, on :root
 //   tokens.scoped.css  the same, scoped to [data-scheme="<scheme>"] so many schemes can share a page
 //   theme.css          shadcn's variables and a Tailwind v4 @theme, mapped onto our semantics
+//   shadcn.css         shadcn's radius, shadow and text scale, mapped onto the scheme's tokens
 //   <theme>.tokens.json  the resolved DTCG tokens for one brand and mode
 //   tokens.json        the default theme (first brand, light) as DTCG
 //   content.json       the voice scope's tokens: words for common actions, as DTCG strings
@@ -43,7 +44,54 @@ export const SHADCN = {
   input: "color-border-strong",
   ring: "color-border-focus",
   radius: "radius-control",
+  // The sidebar and charts from shadcn/ui.
+  sidebar: "color-surface-default",
+  "sidebar-foreground": "color-text-primary",
+  "sidebar-primary": "color-action-primary",
+  "sidebar-primary-foreground": "color-text-on-action",
+  "sidebar-accent": "color-surface-sunken",
+  "sidebar-accent-foreground": "color-text-primary",
+  "sidebar-border": "color-border-default",
+  "sidebar-ring": "color-border-focus",
+  // Chart series use action and status colours by their meaning: no danger for an ordinary series.
+  "chart-1": "color-action-primary",
+  "chart-2": "color-status-success",
+  "chart-3": "color-status-warning",
+  "chart-4": "color-text-secondary",
+  "chart-5": "color-text-muted",
 };
+
+// shadcn's radius, shadow and text classes, mapped onto the scheme's tokens. Written to shadcn.css,
+// which apps and Storybook load and the Open DS site does not, so the site keeps its own scale.
+const SHADCN_SCALE = {
+  "--radius-xs": "var(--radius-badge)",
+  "--radius-sm": "var(--radius-badge)",
+  "--radius-md": "var(--radius-control)",
+  "--radius-lg": "var(--radius-container)",
+  "--radius-xl": "var(--radius-container)",
+  "--shadow-xs": "var(--elevation-card)",
+  "--shadow-sm": "var(--elevation-card)",
+  "--shadow-md": "var(--elevation-overlay)",
+  "--shadow-lg": "var(--elevation-overlay)",
+  "--shadow-xl": "var(--elevation-overlay)",
+  "--text-xs": "var(--type-caption-font-size)",
+  "--text-xs--line-height": "var(--type-caption-line-height)",
+  "--text-sm": "var(--type-body-font-size)",
+  "--text-sm--line-height": "var(--type-body-line-height)",
+  "--text-base": "var(--type-body-font-size)",
+  "--text-base--line-height": "var(--type-body-line-height)",
+  "--text-lg": "var(--type-heading-font-size)",
+  "--text-lg--line-height": "var(--type-heading-line-height)",
+};
+
+export const shadcnCss = (name) =>
+  [
+    `/* ${name}: shadcn/ui's radius, shadow and text scale, mapped onto the scheme's tokens. Generated. */`,
+    "@theme inline {",
+    ...Object.entries(SHADCN_SCALE).map(([k, v]) => `  ${k}: ${v};`),
+    "}",
+    "",
+  ].join("\n");
 
 const isObject = (v) => v && typeof v === "object" && !Array.isArray(v);
 
@@ -145,6 +193,7 @@ export async function buildScheme(scheme) {
   writeFileSync(join(out, "tokens.css"), css);
   writeFileSync(join(out, "tokens.scoped.css"), scopedCss);
   writeFileSync(join(out, "theme.css"), themeCss(scheme));
+  writeFileSync(join(out, "shadcn.css"), shadcnCss(scheme.name));
   const first = scheme.themes[0];
   writeFileSync(join(out, "tokens.json"), JSON.stringify(themeTokens(scheme, first.brand, first.mode), null, 2) + "\n");
   writeFileSync(join(out, "content.json"), JSON.stringify({ content: scheme.tokens.content }, null, 2) + "\n");
