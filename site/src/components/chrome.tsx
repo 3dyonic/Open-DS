@@ -85,11 +85,6 @@ export function SiteFooter() {
           </Link>
         </li>
         <li>
-          <a href={GITHUB} className="hover:text-ink" rel="noopener">
-            GitHub
-          </a>
-        </li>
-        <li>
           <a href="https://3dyonic.com" className="hover:text-ink" rel="noopener">
             A 3dyonic project
           </a>
