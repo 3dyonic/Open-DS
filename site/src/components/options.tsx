@@ -69,7 +69,7 @@ export function Options({
                 className={
                   on
                     ? "text-[18px] font-extrabold leading-[1.3] text-ink"
-                    : "text-[14px] leading-[1.35] text-[#3e3a31]"
+                    : "text-[14px] leading-[1.35] text-body"
                 }
               >
                 {o.label}
@@ -77,7 +77,7 @@ export function Options({
               </span>
               {o.description && (
                 <span
-                  className={`leading-[1.4] ${on ? "text-[14px] text-[#3e3a31]" : "text-[12px] text-muted"}`}
+                  className={`leading-[1.4] ${on ? "text-[14px] text-body" : "text-[12px] text-muted"}`}
                 >
                   {o.description}
                 </span>

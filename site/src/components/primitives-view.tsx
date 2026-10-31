@@ -72,7 +72,7 @@ function Group({ g, brand, anchor }: { g: PrimitiveGroup; brand?: string; anchor
           {g.title}{" "}
           <span className="font-mono text-[12px] font-normal text-muted">{g.items.length}</span>
         </h3>
-        <p className="text-[15px] text-[#3e3a31]">{g.why}</p>
+        <p className="text-[15px] text-body">{g.why}</p>
       </div>
       <ul className="flex flex-col divide-y divide-line rounded-[8px] border border-line bg-white">
         {g.items.map((p) => (
@@ -88,12 +88,12 @@ function Group({ g, brand, anchor }: { g: PrimitiveGroup; brand?: string; anchor
                 {p.ref ? `→ ${p.ref}` : p.value}
               </span>
               {p.description && (
-                <span className="text-[13px] leading-[1.4] text-[#3e3a31]">{p.description}</span>
+                <span className="text-[13px] leading-[1.4] text-body">{p.description}</span>
               )}
             </div>
             <div className="flex min-w-0 flex-col gap-1">
               {p.pointedBy.length > 0 && (
-                <span className="text-[13px] text-[#3e3a31]">
+                <span className="text-[13px] text-body">
                   Picked by <span className="font-mono break-all">{p.pointedBy.join(", ")}</span>
                 </span>
               )}
@@ -161,7 +161,7 @@ export function PrimitivesView({ p }: { p: PrimitivesPage }) {
           <span className="text-accent-text">Primitives</span>
         </nav>
         <h1 className="text-[44px] leading-[1.05] font-extrabold md:text-[52px]">Primitives</h1>
-        <div className="flex max-w-[860px] flex-col gap-3 text-[18px] leading-[1.5] text-[#3e3a31]">
+        <div className="flex max-w-[860px] flex-col gap-3 text-[18px] leading-[1.5] text-body">
           <p>
             {p.scheme.name} has {count} primitives. Think of them as{" "}
             <strong className="text-ink">option tokens</strong>: the raw choices on the shelf, such

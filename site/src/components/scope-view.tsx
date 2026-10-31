@@ -73,7 +73,7 @@ function Sample({ p, role }: { p: ScopePage; role: string }) {
       </span>
     );
   return (
-    <span className="font-mono text-[12px] text-[#3e3a31]">
+    <span className="font-mono text-[12px] text-body">
       {items.map((t) => (t.path.startsWith("content.") ? `“${t.light}”` : t.light)).join(" · ")}
     </span>
   );
@@ -226,7 +226,7 @@ export function ScopeView({ p }: { p: ScopePage }) {
         <h1 className="text-[44px] font-extrabold leading-[1.05] md:text-[52px]">
           {p.scope.title}
         </h1>
-        <p className="max-w-[860px] text-[19px] leading-[1.45] text-[#3e3a31]">
+        <p className="max-w-[860px] text-[19px] leading-[1.45] text-body">
           Five questions every design system answers about {p.scope.title.toLowerCase()}. These are{" "}
           {p.scheme.name}’s answers, and each one points back to the reasons that chose it.
         </p>
@@ -271,7 +271,7 @@ export function ScopeView({ p }: { p: ScopePage }) {
             </p>
             <h2 className="text-[28px] font-extrabold leading-[1.15]">{q.text}</h2>
             <Options options={q.options} chosen={q.chosen} label={`The options for: ${q.text}`} />
-            <p className="text-[16px] leading-[1.45] text-[#3e3a31]">
+            <p className="text-[16px] leading-[1.45] text-body">
               <span className="font-semibold text-ink">Why {p.scheme.name} picks it:</span> {q.why}
             </p>
             {q.because.length > 0 && (
@@ -335,7 +335,7 @@ export function ScopeView({ p }: { p: ScopePage }) {
         </p>
       </section>
 
-      <p className="flex items-start gap-4 rounded-[8px] bg-ink p-6 text-[20px] leading-[1.45] text-paper">
+      <p className="inverse flex items-start gap-4 rounded-[8px] bg-ink p-6 text-[20px] leading-[1.45] text-paper">
         <span aria-hidden className="mt-2 size-4 shrink-0 bg-accent" />
         {p.line}
       </p>

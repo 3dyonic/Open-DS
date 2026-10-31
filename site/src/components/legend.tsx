@@ -34,7 +34,7 @@ export function Legend({ items }: { items: [React.ReactNode, string][] }) {
       <button
         type="button"
         aria-describedby={id}
-        className="flex items-center gap-2 rounded-[4px] border border-line bg-white px-2 py-1 font-mono text-[12px] text-[#3e3a31] hover:border-ink"
+        className="flex items-center gap-2 rounded-[4px] border border-line bg-white px-2 py-1 font-mono text-[12px] text-body hover:border-ink"
       >
         <span aria-hidden className="flex gap-[3px]">
           <span className="size-[8px] bg-accent" />
