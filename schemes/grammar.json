@@ -2647,7 +2647,7 @@
     }
   ],
   "catalogue": {
-    "description": "Every component a design system can carry: the UI components of the shadcn/ui registry (style new-york-v4, MIT). Each scheme picks its inventory from this list through the components scope. The component-api keys in components cover the ones built so far.",
+    "description": "Every component a design system can carry: the UI components of the shadcn/ui registry (style new-york-v4, MIT), plus toast, which Open DS builds itself. Each scheme picks its inventory from this list through the components scope. The component-api keys in components cover the ones built so far.",
     "source": "https://github.com/shadcn-ui/ui/tree/main/apps/v4/registry/new-york-v4/ui",
     "families": [
       {
@@ -2980,7 +2980,7 @@
       {
         "id": "toast",
         "family": "feedback",
-        "description": "A short message that confirms an action and goes away."
+        "description": "A short message that confirms an action and goes away. Open DS builds its own; shadcn now ships sonner for this."
       },
       {
         "id": "toggle",
