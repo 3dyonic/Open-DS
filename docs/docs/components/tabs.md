@@ -18,6 +18,6 @@ The CSS variable is the key with `/` replaced by `-`. Each key points to a token
 
 | Key | What it controls | Points to, light | Points to, dark |
 | --- | --- | --- | --- |
-| `tabs/indicator` | Active tab indicator. | `color.action.primary` → `color.brand.600` | `color.action.primary` → `color.brand.300` |
-| `tabs/label` | Inactive tab label. | `color.text.secondary` → `color.neutral.700` | `color.text.secondary` → `color.neutral.300` |
-| `tabs/label-active` | Active tab label. | `color.text.primary` → `color.neutral.900` | `color.text.primary` → `color.neutral.50` |
+| `tabs/indicator` | Active tab indicator. | `color.action.primary` → `color.brand.600` → `color.violet.600` | `color.action.primary` → `color.brand.300` → `color.violet.300` |
+| `tabs/label` | Inactive tab label. | `color.text.secondary` → `color.neutral.700` → `color.slate.700` | `color.text.secondary` → `color.neutral.300` → `color.slate.300` |
+| `tabs/label-active` | Active tab label. | `color.text.primary` → `color.neutral.900` → `color.slate.900` | `color.text.primary` → `color.neutral.50` → `color.slate.50` |

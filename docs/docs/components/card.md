@@ -18,8 +18,8 @@ The CSS variable is the key with `/` replaced by `-`. Each key points to a token
 
 | Key | What it controls | Points to, light | Points to, dark |
 | --- | --- | --- | --- |
-| `card/background` | Card fill. | `color.surface.default` → `color.neutral.0` | `color.surface.default` → `color.neutral.900` |
-| `card/border` | Card border. | `color.border.default` → `color.neutral.200` | `color.border.default` → `color.neutral.800` |
+| `card/background` | Card fill. | `color.surface.default` → `color.neutral.0` → `color.slate.0` | `color.surface.default` → `color.neutral.900` → `color.slate.900` |
+| `card/border` | Card border. | `color.border.default` → `color.neutral.200` → `color.slate.200` | `color.border.default` → `color.neutral.800` → `color.slate.800` |
 | `card/radius` | Card corner radius. | `radius.container` → `radius.brand.container` → `radius.4` | same |
 | `card/padding` | Padding inside a card. | `space.inset.container` → `space.16` | same |
 | `card/shadow` | Card shadow. | `elevation.card` → `shadow.none` | same |

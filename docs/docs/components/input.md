@@ -18,11 +18,11 @@ The CSS variable is the key with `/` replaced by `-`. Each key points to a token
 
 | Key | What it controls | Points to, light | Points to, dark |
 | --- | --- | --- | --- |
-| `input/background` | Input fill. | `color.surface.default` → `color.neutral.0` | `color.surface.default` → `color.neutral.900` |
-| `input/border` | Input border at rest. | `color.border.strong` → `color.neutral.300` | `color.border.strong` → `color.neutral.700` |
-| `input/border-focus` | Input border when focused. | `color.border.focus` → `color.brand.600` | `color.border.focus` → `color.brand.300` |
-| `input/text` | Typed text color. | `color.text.primary` → `color.neutral.900` | `color.text.primary` → `color.neutral.50` |
-| `input/placeholder` | Placeholder text color. | `color.text.muted` → `color.neutral.500` | same |
+| `input/background` | Input fill. | `color.surface.default` → `color.neutral.0` → `color.slate.0` | `color.surface.default` → `color.neutral.900` → `color.slate.900` |
+| `input/border` | Input border at rest. | `color.border.strong` → `color.neutral.300` → `color.slate.300` | `color.border.strong` → `color.neutral.700` → `color.slate.700` |
+| `input/border-focus` | Input border when focused. | `color.border.focus` → `color.brand.600` → `color.violet.600` | `color.border.focus` → `color.brand.300` → `color.violet.300` |
+| `input/text` | Typed text color. | `color.text.primary` → `color.neutral.900` → `color.slate.900` | `color.text.primary` → `color.neutral.50` → `color.slate.50` |
+| `input/placeholder` | Placeholder text color. | `color.text.muted` → `color.neutral.500` → `color.slate.500` | same |
 | `input/height` | Input height. | `size.control.default` → `size.32` | same |
 | `input/padding-x` | Horizontal padding inside an input. | `space.inset.control-x` → `space.12` | same |
 | `input/radius` | Input corner radius. | `radius.control` → `radius.brand.control` → `radius.2` | same |

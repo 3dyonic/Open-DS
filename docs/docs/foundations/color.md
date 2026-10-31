@@ -55,32 +55,32 @@ Each token points to another token. Values live only on primitives, below.
 
 | Token | Points to, light | Points to, dark |
 | --- | --- | --- |
-| `color.surface.canvas` | `color.neutral.50` | `color.neutral.950` |
-| `color.surface.default` | `color.neutral.0` | `color.neutral.900` |
-| `color.surface.raised` | `color.neutral.0` | `color.neutral.800` |
-| `color.surface.sunken` | `color.neutral.100` | `color.neutral.800` |
-| `color.surface.selected` | `color.brand.100` | `color.brand.800` |
-| `color.surface.inverse` | `color.neutral.900` | `color.neutral.50` |
+| `color.surface.canvas` | `color.neutral.50` → `color.slate.50` | `color.neutral.950` → `color.slate.950` |
+| `color.surface.default` | `color.neutral.0` → `color.slate.0` | `color.neutral.900` → `color.slate.900` |
+| `color.surface.raised` | `color.neutral.0` → `color.slate.0` | `color.neutral.800` → `color.slate.800` |
+| `color.surface.sunken` | `color.neutral.100` → `color.slate.100` | `color.neutral.800` → `color.slate.800` |
+| `color.surface.selected` | `color.brand.100` → `color.violet.100` | `color.brand.800` → `color.violet.800` |
+| `color.surface.inverse` | `color.neutral.900` → `color.slate.900` | `color.neutral.50` → `color.slate.50` |
 | `color.surface.scrim` | `color.black-alpha.scrim` | `color.black-alpha.scrim-dark` |
-| `color.text.primary` | `color.neutral.900` | `color.neutral.50` |
-| `color.text.secondary` | `color.neutral.700` | `color.neutral.300` |
-| `color.text.muted` | `color.neutral.500` | `color.neutral.500` |
-| `color.text.inverse` | `color.neutral.0` | `color.neutral.900` |
-| `color.text.on-action` | `color.neutral.0` | `color.neutral.950` |
-| `color.text.link` | `color.brand.700` | `color.brand.300` |
-| `color.border.default` | `color.neutral.200` | `color.neutral.800` |
-| `color.border.strong` | `color.neutral.300` | `color.neutral.700` |
-| `color.border.focus` | `color.brand.600` | `color.brand.300` |
-| `color.action.primary` | `color.brand.600` | `color.brand.300` |
-| `color.action.primary-hover` | `color.brand.700` | `color.brand.100` |
-| `color.action.secondary` | `color.neutral.0` | `color.neutral.900` |
-| `color.action.secondary-hover` | `color.neutral.100` | `color.neutral.800` |
-| `color.status.success` | `color.success.strong` | `color.success.strong-dark` |
-| `color.status.warning` | `color.warning.strong` | `color.warning.strong-dark` |
-| `color.status.danger` | `color.danger.strong` | `color.danger.strong-dark` |
-| `color.status.success-subtle` | `color.success.subtle` | `color.success.subtle-dark` |
-| `color.status.warning-subtle` | `color.warning.subtle` | `color.warning.subtle-dark` |
-| `color.status.danger-subtle` | `color.danger.subtle` | `color.danger.subtle-dark` |
+| `color.text.primary` | `color.neutral.900` → `color.slate.900` | `color.neutral.50` → `color.slate.50` |
+| `color.text.secondary` | `color.neutral.700` → `color.slate.700` | `color.neutral.300` → `color.slate.300` |
+| `color.text.muted` | `color.neutral.500` → `color.slate.500` | `color.neutral.500` → `color.slate.500` |
+| `color.text.inverse` | `color.neutral.0` → `color.slate.0` | `color.neutral.900` → `color.slate.900` |
+| `color.text.on-action` | `color.neutral.0` → `color.slate.0` | `color.neutral.950` → `color.slate.950` |
+| `color.text.link` | `color.brand.700` → `color.violet.700` | `color.brand.300` → `color.violet.300` |
+| `color.border.default` | `color.neutral.200` → `color.slate.200` | `color.neutral.800` → `color.slate.800` |
+| `color.border.strong` | `color.neutral.300` → `color.slate.300` | `color.neutral.700` → `color.slate.700` |
+| `color.border.focus` | `color.brand.600` → `color.violet.600` | `color.brand.300` → `color.violet.300` |
+| `color.action.primary` | `color.brand.600` → `color.violet.600` | `color.brand.300` → `color.violet.300` |
+| `color.action.primary-hover` | `color.brand.700` → `color.violet.700` | `color.brand.100` → `color.violet.100` |
+| `color.action.secondary` | `color.neutral.0` → `color.slate.0` | `color.neutral.900` → `color.slate.900` |
+| `color.action.secondary-hover` | `color.neutral.100` → `color.slate.100` | `color.neutral.800` → `color.slate.800` |
+| `color.status.success` | `color.success.strong` → `color.green.700` | `color.success.strong-dark` → `color.green.300` |
+| `color.status.warning` | `color.warning.strong` → `color.amber.700` | `color.warning.strong-dark` → `color.amber.300` |
+| `color.status.danger` | `color.danger.strong` → `color.red.700` | `color.danger.strong-dark` → `color.red.300` |
+| `color.status.success-subtle` | `color.success.subtle` → `color.green.100` | `color.success.subtle-dark` → `color.green.900` |
+| `color.status.warning-subtle` | `color.warning.subtle` → `color.amber.100` | `color.warning.subtle-dark` → `color.amber.900` |
+| `color.status.danger-subtle` | `color.danger.subtle` → `color.red.100` | `color.danger.subtle-dark` → `color.red.900` |
 
 ## Primitives
 
@@ -88,35 +88,35 @@ The raw values the tokens above end at.
 
 | Primitive | Value | Sample |
 | --- | --- | --- |
+| `color.amber.100` | #FFF3D6 | <span class="ods-swatch" style="background:var(--color-amber-100)"></span> |
+| `color.amber.300` | #F2B84B | <span class="ods-swatch" style="background:var(--color-amber-300)"></span> |
+| `color.amber.700` | #8A5600 | <span class="ods-swatch" style="background:var(--color-amber-700)"></span> |
+| `color.amber.900` | #3A2A05 | <span class="ods-swatch" style="background:var(--color-amber-900)"></span> |
 | `color.black-alpha.scrim` | #0000008C | <span class="ods-swatch" style="background:var(--color-black-alpha-scrim)"></span> |
 | `color.black-alpha.scrim-dark` | #000000B3 | <span class="ods-swatch" style="background:var(--color-black-alpha-scrim-dark)"></span> |
-| `color.brand.100` | #EEEDFE | <span class="ods-swatch" style="background:var(--color-brand-100)"></span> |
-| `color.brand.300` | #A9A3F6 | <span class="ods-swatch" style="background:var(--color-brand-300)"></span> |
-| `color.brand.600` | #4B3FD9 | <span class="ods-swatch" style="background:var(--color-brand-600)"></span> |
-| `color.brand.700` | #3B31B0 | <span class="ods-swatch" style="background:var(--color-brand-700)"></span> |
-| `color.brand.800` | #2C2588 | <span class="ods-swatch" style="background:var(--color-brand-800)"></span> |
-| `color.danger.strong` | #C42B2B | <span class="ods-swatch" style="background:var(--color-danger-strong)"></span> |
-| `color.danger.strong-dark` | #F28B8B | <span class="ods-swatch" style="background:var(--color-danger-strong-dark)"></span> |
-| `color.danger.subtle` | #FDE7E7 | <span class="ods-swatch" style="background:var(--color-danger-subtle)"></span> |
-| `color.danger.subtle-dark` | #3D1414 | <span class="ods-swatch" style="background:var(--color-danger-subtle-dark)"></span> |
-| `color.neutral.0` | #FFFFFF | <span class="ods-swatch" style="background:var(--color-neutral-0)"></span> |
-| `color.neutral.100` | #EEF1F5 | <span class="ods-swatch" style="background:var(--color-neutral-100)"></span> |
-| `color.neutral.200` | #DDE2EA | <span class="ods-swatch" style="background:var(--color-neutral-200)"></span> |
-| `color.neutral.300` | #C4CBD6 | <span class="ods-swatch" style="background:var(--color-neutral-300)"></span> |
-| `color.neutral.50` | #F7F8FA | <span class="ods-swatch" style="background:var(--color-neutral-50)"></span> |
-| `color.neutral.500` | #6B7585 | <span class="ods-swatch" style="background:var(--color-neutral-500)"></span> |
-| `color.neutral.700` | #3D4655 | <span class="ods-swatch" style="background:var(--color-neutral-700)"></span> |
-| `color.neutral.800` | #262D38 | <span class="ods-swatch" style="background:var(--color-neutral-800)"></span> |
-| `color.neutral.900` | #161B23 | <span class="ods-swatch" style="background:var(--color-neutral-900)"></span> |
-| `color.neutral.950` | #0D1117 | <span class="ods-swatch" style="background:var(--color-neutral-950)"></span> |
-| `color.success.strong` | #1F7A3A | <span class="ods-swatch" style="background:var(--color-success-strong)"></span> |
-| `color.success.strong-dark` | #5CC283 | <span class="ods-swatch" style="background:var(--color-success-strong-dark)"></span> |
-| `color.success.subtle` | #E3F4EA | <span class="ods-swatch" style="background:var(--color-success-subtle)"></span> |
-| `color.success.subtle-dark` | #123322 | <span class="ods-swatch" style="background:var(--color-success-subtle-dark)"></span> |
-| `color.warning.strong` | #8A5600 | <span class="ods-swatch" style="background:var(--color-warning-strong)"></span> |
-| `color.warning.strong-dark` | #F2B84B | <span class="ods-swatch" style="background:var(--color-warning-strong-dark)"></span> |
-| `color.warning.subtle` | #FFF3D6 | <span class="ods-swatch" style="background:var(--color-warning-subtle)"></span> |
-| `color.warning.subtle-dark` | #3A2A05 | <span class="ods-swatch" style="background:var(--color-warning-subtle-dark)"></span> |
+| `color.green.100` | #E3F4EA | <span class="ods-swatch" style="background:var(--color-green-100)"></span> |
+| `color.green.300` | #5CC283 | <span class="ods-swatch" style="background:var(--color-green-300)"></span> |
+| `color.green.700` | #1F7A3A | <span class="ods-swatch" style="background:var(--color-green-700)"></span> |
+| `color.green.900` | #123322 | <span class="ods-swatch" style="background:var(--color-green-900)"></span> |
+| `color.red.100` | #FDE7E7 | <span class="ods-swatch" style="background:var(--color-red-100)"></span> |
+| `color.red.300` | #F28B8B | <span class="ods-swatch" style="background:var(--color-red-300)"></span> |
+| `color.red.700` | #C42B2B | <span class="ods-swatch" style="background:var(--color-red-700)"></span> |
+| `color.red.900` | #3D1414 | <span class="ods-swatch" style="background:var(--color-red-900)"></span> |
+| `color.slate.0` | #FFFFFF | <span class="ods-swatch" style="background:var(--color-slate-0)"></span> |
+| `color.slate.100` | #EEF1F5 | <span class="ods-swatch" style="background:var(--color-slate-100)"></span> |
+| `color.slate.200` | #DDE2EA | <span class="ods-swatch" style="background:var(--color-slate-200)"></span> |
+| `color.slate.300` | #C4CBD6 | <span class="ods-swatch" style="background:var(--color-slate-300)"></span> |
+| `color.slate.50` | #F7F8FA | <span class="ods-swatch" style="background:var(--color-slate-50)"></span> |
+| `color.slate.500` | #6B7585 | <span class="ods-swatch" style="background:var(--color-slate-500)"></span> |
+| `color.slate.700` | #3D4655 | <span class="ods-swatch" style="background:var(--color-slate-700)"></span> |
+| `color.slate.800` | #262D38 | <span class="ods-swatch" style="background:var(--color-slate-800)"></span> |
+| `color.slate.900` | #161B23 | <span class="ods-swatch" style="background:var(--color-slate-900)"></span> |
+| `color.slate.950` | #0D1117 | <span class="ods-swatch" style="background:var(--color-slate-950)"></span> |
+| `color.violet.100` | #EEEDFE | <span class="ods-swatch" style="background:var(--color-violet-100)"></span> |
+| `color.violet.300` | #A9A3F6 | <span class="ods-swatch" style="background:var(--color-violet-300)"></span> |
+| `color.violet.600` | #4B3FD9 | <span class="ods-swatch" style="background:var(--color-violet-600)"></span> |
+| `color.violet.700` | #3B31B0 | <span class="ods-swatch" style="background:var(--color-violet-700)"></span> |
+| `color.violet.800` | #2C2588 | <span class="ods-swatch" style="background:var(--color-violet-800)"></span> |
 
 ## Where it lands
 

@@ -18,11 +18,11 @@ The CSS variable is the key with `/` replaced by `-`. Each key points to a token
 
 | Key | What it controls | Points to, light | Points to, dark |
 | --- | --- | --- | --- |
-| `table/header-background` | Header row fill. | `color.surface.sunken` → `color.neutral.100` | `color.surface.sunken` → `color.neutral.800` |
+| `table/header-background` | Header row fill. | `color.surface.sunken` → `color.neutral.100` → `color.slate.100` | `color.surface.sunken` → `color.neutral.800` → `color.slate.800` |
 | `table/row-height` | Height of one data row. | `size.row` → `size.32` | same |
 | `table/cell-padding-x` | Horizontal padding inside a cell. | `space.inset.cell-x` → `space.12` | same |
-| `table/row-border` | Line between rows. | `color.border.default` → `color.neutral.200` | `color.border.default` → `color.neutral.800` |
-| `table/row-selected` | Fill of a selected row. | `color.surface.selected` → `color.brand.100` | `color.surface.selected` → `color.brand.800` |
+| `table/row-border` | Line between rows. | `color.border.default` → `color.neutral.200` → `color.slate.200` | `color.border.default` → `color.neutral.800` → `color.slate.800` |
+| `table/row-selected` | Fill of a selected row. | `color.surface.selected` → `color.brand.100` → `color.violet.100` | `color.surface.selected` → `color.brand.800` → `color.violet.800` |
 | `table/font-size` | Cell text size. | `type.data.font-size` → `font.size.13` | same |
 
 ## When to use it
