@@ -217,11 +217,7 @@
       },
       {
         "id": "popover",
-        "why": "Plan details."
-      },
-      {
-        "id": "tooltip",
-        "why": "Explains a fee."
+        "why": "Plan details and fee explanations, opened by tap on any device."
       },
       {
         "id": "card",
@@ -244,6 +240,10 @@
       {
         "id": "command",
         "why": "Customers browse; keyboard command menus suit experts."
+      },
+      {
+        "id": "tooltip",
+        "why": "Customers use any device, and on touch screens hover hints never show; a popover explains a fee instead."
       }
     ]
   },

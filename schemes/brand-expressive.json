@@ -123,12 +123,12 @@
         "why": "Products and features."
       },
       {
-        "id": "hover-card",
-        "why": "A preview of a product."
-      },
-      {
         "id": "dialog",
         "why": "The waitlist form over the page."
+      },
+      {
+        "id": "popover",
+        "why": "A product preview that opens on tap."
       },
       {
         "id": "drawer",
@@ -167,6 +167,10 @@
       {
         "id": "accordion",
         "why": "Campaign sections show everything; nothing worth saying is hidden."
+      },
+      {
+        "id": "hover-card",
+        "why": "Hover never happens on a phone, where most visitors arrive."
       }
     ]
   },
