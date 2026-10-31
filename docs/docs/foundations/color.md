@@ -182,3 +182,81 @@ The raw values the tokens above end at.
 | The action that completes the task | Button primary, one per view | Two primaries side by side | One primary makes the committing action obvious. |
 | An alternative or cancel | Button secondary | Button ghost | Cancel must be easy to find next to the primary. |
 | Delete or remove | Button secondary, then confirm in a dialog | Button primary as the first step | Deleting is rare and costly; a confirm step catches mistakes. |
+
+## Status urgency
+
+Status colours go up in urgency: info, then warning, then danger. Pick the level that matches the real risk. Never go up a level to get attention. Success sits outside the order.
+
+`color.status.info.@` → `color.status.warning.@` → `color.status.danger.@`
+
+## What each colour is for
+
+| Token | What it is for | Not for |
+| --- | --- | --- |
+| `color.surface.canvas` | The page background behind everything. | Cards and panels on the page: `color.surface.default` |
+| `color.surface.default` | The base fill for content. | The page behind content: `color.surface.canvas`<br />Menus and popovers above content: `color.surface.raised` |
+| `color.surface.raised` | Fills that float above content. | Cards in the page flow: `color.surface.default` |
+| `color.surface.sunken` | A recessed fill, a step below content. | A selected item: `color.surface.selected` |
+| `color.surface.selected` | The fill of a selected or current item. | Hover: `color.surface.sunken`<br />The main action: `color.action.primary.@` |
+| `color.surface.inverse` | A reversed fill for small, short-lived messages. | Large areas: `color.surface.default` |
+| `color.surface.scrim` | The see-through layer behind a modal. | A solid fill: `color.surface.raised` |
+| `color.text.primary` | Body text and headings. | Text on the main action: `color.text.on-action`<br />Text on an inverse fill: `color.text.inverse` |
+| `color.text.secondary` | Supporting text. | The main content: `color.text.primary` |
+| `color.text.muted` | The quietest text. | Anything people must read to act: `color.text.secondary`<br />A disabled control: `color.disabled.text` |
+| `color.text.inverse` | Text on an inverse fill. | Text on the page: `color.text.primary` |
+| `color.text.on-action` | Text and icons on the main action's fill. | Text on the page: `color.text.primary` |
+| `color.text.link` | Links in running text. | Buttons: `color.action.primary.@` |
+| `color.border.default` | Quiet edges and dividers. Decorative, so it has no contrast minimum. | The edge of a control people must find: `color.border.strong` |
+| `color.border.strong` | The edge of a control people must find. | A divider: `color.border.default` |
+| `color.border.focus` | The focus ring. | A selected item: `color.surface.selected` |
+| `color.action.primary.@` | The one main action in a view. | A second action in the same view: `color.action.secondary.@`<br />Links in text: `color.text.link`<br />News or status: `color.status.info.@` |
+| `color.action.primary.hover` | The main action under the pointer. | The resting state: `color.action.primary.@` |
+| `color.action.secondary.@` | The fill of other actions. | The main action: `color.action.primary.@` |
+| `color.action.secondary.hover` | Other actions under the pointer. | The resting state: `color.action.secondary.@` |
+| `color.status.info.@` | Neutral news: something changed and no action is needed. The lowest level of the urgency order. | Something needs a check: `color.status.warning.@`<br />The main action: `color.action.primary.@` |
+| `color.status.info.subtle` | The fill behind info status. | Large page areas: `color.surface.default` |
+| `color.status.warning.@` | Caution: something may go wrong or needs a check, and it can be fixed. | An error, or an action that cannot be undone: `color.status.danger.@`<br />News that needs no action: `color.status.info.@` |
+| `color.status.warning.subtle` | The fill behind warning status. | Large page areas: `color.surface.default` |
+| `color.status.danger.@` | Real risk: errors, failed checks, actions that cannot be undone. The top of the urgency order. Overuse wears it out. | Caution or advice: `color.status.warning.@`<br />Getting attention: `color.status.info.@` |
+| `color.status.danger.subtle` | The fill behind danger status. | Large page areas: `color.surface.default` |
+| `color.status.success.@` | Confirmation that something worked. It sits outside the urgency order. | The main action: `color.action.primary.@`<br />Brand colour: `color.action.primary.@` |
+| `color.status.success.subtle` | The fill behind success status. | Large page areas: `color.surface.default` |
+| `color.category.1.@` | Category 1: tells one item or series from another. It carries no meaning. | Status or risk: `color.status.warning.@`<br />Tag text: `color.text.primary` |
+| `color.category.1.subtle` | Category 1: the fill of a tag. | A status badge: `color.status.info.subtle` |
+| `color.category.2.@` | Category 2: tells one item or series from another. It carries no meaning. | Status or risk: `color.status.warning.@`<br />Tag text: `color.text.primary` |
+| `color.category.2.subtle` | Category 2: the fill of a tag. | A status badge: `color.status.info.subtle` |
+| `color.category.3.@` | Category 3: tells one item or series from another. It carries no meaning. | Status or risk: `color.status.warning.@`<br />Tag text: `color.text.primary` |
+| `color.category.3.subtle` | Category 3: the fill of a tag. | A status badge: `color.status.info.subtle` |
+| `color.category.4.@` | Category 4: tells one item or series from another. It carries no meaning. | Status or risk: `color.status.warning.@`<br />Tag text: `color.text.primary` |
+| `color.category.4.subtle` | Category 4: the fill of a tag. | A status badge: `color.status.info.subtle` |
+| `color.category.5.@` | Category 5: tells one item or series from another. It carries no meaning. | Status or risk: `color.status.warning.@`<br />Tag text: `color.text.primary` |
+| `color.category.5.subtle` | Category 5: the fill of a tag. | A status badge: `color.status.info.subtle` |
+| `color.disabled.text` | Text and icons of a control that cannot be used right now. | Quiet text that still works: `color.text.muted` |
+| `color.disabled.surface` | The fill of a control that cannot be used right now. | A quiet fill that still works: `color.surface.sunken` |
+| `color.disabled.border` | The edge of a control that cannot be used right now. | An enabled control: `color.border.strong` |
+
+## Pairs at a glance
+
+Which colour may sit on which fill, and the contrast it keeps there in every brand and mode. The harness checks every pair.
+
+| Token | Sits on | Contrast |
+| --- | --- | --- |
+| `color.text.primary` | `color.surface.canvas`, `color.surface.default`, `color.surface.raised`, `color.surface.sunken`, `color.surface.selected`, `color.action.secondary.@`, `color.action.secondary.hover`, `color.category.1.subtle`, `color.category.2.subtle`, `color.category.3.subtle`, `color.category.4.subtle`, `color.category.5.subtle` | 4.5:1 |
+| `color.text.secondary` | `color.surface.canvas`, `color.surface.default`, `color.surface.raised`, `color.surface.sunken` | 4.5:1 |
+| `color.text.muted` | `color.surface.canvas`, `color.surface.default`, `color.surface.sunken` | 4.5:1 |
+| `color.text.inverse` | `color.surface.inverse` | 4.5:1 |
+| `color.text.on-action` | `color.action.primary.@`, `color.action.primary.hover` | 4.5:1 |
+| `color.text.link` | `color.surface.canvas`, `color.surface.default` | 4.5:1 |
+| `color.border.strong` | `color.surface.canvas`, `color.surface.default` | 3:1 |
+| `color.border.focus` | `color.surface.canvas`, `color.surface.default` | 3:1 |
+| `color.action.primary.@` | `color.surface.canvas`, `color.surface.default` | 3:1 |
+| `color.status.info.@` | `color.surface.canvas`, `color.surface.default`, `color.status.info.subtle` | 4.5:1 |
+| `color.status.warning.@` | `color.surface.canvas`, `color.surface.default`, `color.status.warning.subtle` | 4.5:1 |
+| `color.status.danger.@` | `color.surface.canvas`, `color.surface.default`, `color.status.danger.subtle` | 4.5:1 |
+| `color.status.success.@` | `color.surface.canvas`, `color.surface.default`, `color.status.success.subtle` | 4.5:1 |
+| `color.category.1.@` | `color.surface.canvas`, `color.surface.default` | 3:1 |
+| `color.category.2.@` | `color.surface.canvas`, `color.surface.default` | 3:1 |
+| `color.category.3.@` | `color.surface.canvas`, `color.surface.default` | 3:1 |
+| `color.category.4.@` | `color.surface.canvas`, `color.surface.default` | 3:1 |
+| `color.category.5.@` | `color.surface.canvas`, `color.surface.default` | 3:1 |
+| `color.disabled.text` | `color.disabled.surface` | WCAG 1.4.3 does not ask for contrast on controls that cannot be used. |

@@ -3,6 +3,7 @@
 // The project depends on the open-ds package for why, when and add.
 
 import { themeName } from "./tokens.mjs";
+import { withGuidance } from "./guidance.mjs";
 import { tokenReadmes } from "./readmes.mjs";
 import {
   existsSync,
@@ -155,7 +156,8 @@ export function createProject(
   }
 
   // The token source, as DTCG files the team owns and edits: one file per group, in folders.
-  const t = scheme.tokens;
+  // Semantic descriptions come from the grammar's guidance, written once for every scheme.
+  const t = withGuidance(scheme, g).tokens;
   const groups = (tree) =>
     Object.entries(tree).filter(([k]) => !k.startsWith("$"));
   // Primitives: color/<hue>, font/<part>, motion/<duration|easing>, and one file for each other group.

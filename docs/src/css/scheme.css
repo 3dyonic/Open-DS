@@ -39,47 +39,47 @@
   --type-data-font-weight: 400;
   --motion-duration-feedback: 120ms; /** Feedback speed: fast. */
   --motion-easing-standard: cubic-bezier(0.2, 0, 0, 1); /** Feedback easing. */
-  --color-surface-canvas: #F7F8FA; /** The page background. */
-  --color-surface-default: #FFFFFF; /** Cards, inputs and tables. */
-  --color-surface-raised: #FFFFFF; /** Menus, dialogs, toasts. */
-  --color-surface-sunken: #EEF1F5; /** Table headers and wells. */
-  --color-surface-selected: #EEEDFE; /** A selected row or item. */
-  --color-surface-inverse: #161B23; /** Tooltips. */
-  --color-surface-scrim: #0000008C; /** Dims the page behind a dialog. */
-  --color-text-primary: #161B23; /** Main text. */
-  --color-text-secondary: #3D4655; /** Supporting text; passes AA. */
-  --color-text-muted: #535D6D; /** Hints and placeholders. */
-  --color-text-inverse: #FFFFFF; /** Text on inverse surfaces. */
-  --color-text-on-action: #FFFFFF; /** Text on the primary action. */
-  --color-text-link: #3B31B0; /** Links. */
-  --color-border-default: #DDE2EA; /** Row lines and card borders. */
-  --color-border-strong: #6B7585; /** Input and secondary button borders. */
-  --color-border-focus: #4B3FD9; /** The keyboard focus ring. */
-  --color-action-primary: #4B3FD9; /** The primary action. */
-  --color-action-primary-hover: #3B31B0; /** Primary action on hover. */
-  --color-action-secondary: #FFFFFF; /** Secondary action fill. */
-  --color-action-secondary-hover: #EEF1F5; /** Secondary action on hover. */
-  --color-status-info: #083C93; /** Info text and icons: neutral news, no action needed. */
-  --color-status-info-subtle: #E1ECFF; /** Info badge and banner fill. */
-  --color-status-success: #1F7A3A; /** Success text and icons. */
-  --color-status-success-subtle: #E3F4EA; /** Success badge fill. */
-  --color-status-warning: #8A5600; /** Warning text and icons. */
-  --color-status-warning-subtle: #FFF3D6; /** Warning badge fill. */
-  --color-status-danger: #C42B2B; /** Danger text and icons. */
-  --color-status-danger-subtle: #FDE7E7; /** Danger badge fill. */
-  --color-category-1: #4B3FD9; /** Category 1: chart series, tag dots and icons. Tag text uses color.text.primary. */
-  --color-category-1-subtle: #EEEDFE; /** Category 1: tag fill. */
-  --color-category-2: #0B4FC0; /** Category 2: chart series, tag dots and icons. Tag text uses color.text.primary. */
-  --color-category-2-subtle: #E1ECFF; /** Category 2: tag fill. */
-  --color-category-3: #1F7A3A; /** Category 3: chart series, tag dots and icons. Tag text uses color.text.primary. */
-  --color-category-3-subtle: #E3F4EA; /** Category 3: tag fill. */
-  --color-category-4: #8A5600; /** Category 4: chart series, tag dots and icons. Tag text uses color.text.primary. */
-  --color-category-4-subtle: #FFF3D6; /** Category 4: tag fill. */
-  --color-category-5: #6B7585; /** Category 5: chart series, tag dots and icons. Tag text uses color.text.primary. */
-  --color-category-5-subtle: #EEF1F5; /** Category 5: tag fill. */
-  --color-disabled-text: #6B7585; /** Text and icons of a disabled control. */
-  --color-disabled-surface: #EEF1F5; /** Fill of a disabled control. */
-  --color-disabled-border: #DDE2EA; /** Border of a disabled control. */
+  --color-surface-canvas: #F7F8FA; /** The page background behind everything. */
+  --color-surface-default: #FFFFFF; /** The base fill for content. */
+  --color-surface-raised: #FFFFFF; /** Fills that float above content. */
+  --color-surface-sunken: #EEF1F5; /** A recessed fill, a step below content. */
+  --color-surface-selected: #EEEDFE; /** The fill of a selected or current item. */
+  --color-surface-inverse: #161B23; /** A reversed fill for small, short-lived messages. */
+  --color-surface-scrim: #0000008C; /** The see-through layer behind a modal. */
+  --color-text-primary: #161B23; /** Body text and headings. */
+  --color-text-secondary: #3D4655; /** Supporting text. */
+  --color-text-muted: #535D6D; /** The quietest text. */
+  --color-text-inverse: #FFFFFF; /** Text on an inverse fill. */
+  --color-text-on-action: #FFFFFF; /** Text and icons on the main action's fill. */
+  --color-text-link: #3B31B0; /** Links in running text. */
+  --color-border-default: #DDE2EA; /** Quiet edges and dividers. Decorative, so it has no contrast minimum. */
+  --color-border-strong: #6B7585; /** The edge of a control people must find. */
+  --color-border-focus: #4B3FD9; /** The focus ring. */
+  --color-action-primary: #4B3FD9; /** The one main action in a view. */
+  --color-action-primary-hover: #3B31B0; /** The main action under the pointer. */
+  --color-action-secondary: #FFFFFF; /** The fill of other actions. */
+  --color-action-secondary-hover: #EEF1F5; /** Other actions under the pointer. */
+  --color-status-info: #083C93; /** Neutral news: something changed and no action is needed. The lowest level of the urgency order. */
+  --color-status-info-subtle: #E1ECFF; /** The fill behind info status. */
+  --color-status-success: #1F7A3A; /** Confirmation that something worked. It sits outside the urgency order. */
+  --color-status-success-subtle: #E3F4EA; /** The fill behind success status. */
+  --color-status-warning: #8A5600; /** Caution: something may go wrong or needs a check, and it can be fixed. */
+  --color-status-warning-subtle: #FFF3D6; /** The fill behind warning status. */
+  --color-status-danger: #C42B2B; /** Real risk: errors, failed checks, actions that cannot be undone. The top of the urgency order. Overuse wears it out. */
+  --color-status-danger-subtle: #FDE7E7; /** The fill behind danger status. */
+  --color-category-1: #4B3FD9; /** Category 1: tells one item or series from another. It carries no meaning. */
+  --color-category-1-subtle: #EEEDFE; /** Category 1: the fill of a tag. */
+  --color-category-2: #0B4FC0; /** Category 2: tells one item or series from another. It carries no meaning. */
+  --color-category-2-subtle: #E1ECFF; /** Category 2: the fill of a tag. */
+  --color-category-3: #1F7A3A; /** Category 3: tells one item or series from another. It carries no meaning. */
+  --color-category-3-subtle: #E3F4EA; /** Category 3: the fill of a tag. */
+  --color-category-4: #8A5600; /** Category 4: tells one item or series from another. It carries no meaning. */
+  --color-category-4-subtle: #FFF3D6; /** Category 4: the fill of a tag. */
+  --color-category-5: #6B7585; /** Category 5: tells one item or series from another. It carries no meaning. */
+  --color-category-5-subtle: #EEF1F5; /** Category 5: the fill of a tag. */
+  --color-disabled-text: #6B7585; /** Text and icons of a control that cannot be used right now. */
+  --color-disabled-surface: #EEF1F5; /** The fill of a control that cannot be used right now. */
+  --color-disabled-border: #DDE2EA; /** The edge of a control that cannot be used right now. */
   --radius-control: 0.125rem; /** Corner of buttons and inputs. */
   --radius-badge: 0rem; /** Corner of badges and checkboxes. */
   --radius-container: 0.25rem; /** Corner of cards, menus and dialogs. */
@@ -204,47 +204,47 @@ html[data-theme="dark"] {
   --type-data-font-weight: 400;
   --motion-duration-feedback: 120ms; /** Feedback speed: fast. */
   --motion-easing-standard: cubic-bezier(0.2, 0, 0, 1); /** Feedback easing. */
-  --color-surface-canvas: #0D1117; /** The page background. */
-  --color-surface-default: #161B23; /** Cards, inputs and tables. */
-  --color-surface-raised: #262D38; /** Menus, dialogs, toasts. */
-  --color-surface-sunken: #262D38; /** Table headers and wells. */
-  --color-surface-selected: #2C2588; /** A selected row or item. */
-  --color-surface-inverse: #F7F8FA; /** Tooltips. */
-  --color-surface-scrim: #000000B3; /** Dims the page behind a dialog. */
-  --color-text-primary: #F7F8FA; /** Main text. */
-  --color-text-secondary: #C4CBD6; /** Supporting text; passes AA. */
-  --color-text-muted: #969FAD; /** Hints and placeholders. */
-  --color-text-inverse: #161B23; /** Text on inverse surfaces. */
-  --color-text-on-action: #0D1117; /** Text on the primary action. */
-  --color-text-link: #A9A3F6; /** Links. */
-  --color-border-default: #262D38; /** Row lines and card borders. */
-  --color-border-strong: #6B7585; /** Input and secondary button borders. */
-  --color-border-focus: #A9A3F6; /** The keyboard focus ring. */
-  --color-action-primary: #A9A3F6; /** The primary action. */
-  --color-action-primary-hover: #EEEDFE; /** Primary action on hover. */
-  --color-action-secondary: #161B23; /** Secondary action fill. */
-  --color-action-secondary-hover: #262D38; /** Secondary action on hover. */
-  --color-status-info: #8AB4F8; /** Info text and icons: neutral news, no action needed. */
-  --color-status-info-subtle: #062C6E; /** Info badge and banner fill. */
-  --color-status-success: #5CC283; /** Success text and icons. */
-  --color-status-success-subtle: #123322; /** Success badge fill. */
-  --color-status-warning: #F2B84B; /** Warning text and icons. */
-  --color-status-warning-subtle: #3A2A05; /** Warning badge fill. */
-  --color-status-danger: #F28B8B; /** Danger text and icons. */
-  --color-status-danger-subtle: #3D1414; /** Danger badge fill. */
-  --color-category-1: #A9A3F6; /** Category 1: chart series, tag dots and icons. Tag text uses color.text.primary. */
-  --color-category-1-subtle: #2C2588; /** Category 1: tag fill. */
-  --color-category-2: #8AB4F8; /** Category 2: chart series, tag dots and icons. Tag text uses color.text.primary. */
-  --color-category-2-subtle: #062C6E; /** Category 2: tag fill. */
-  --color-category-3: #5CC283; /** Category 3: chart series, tag dots and icons. Tag text uses color.text.primary. */
-  --color-category-3-subtle: #123322; /** Category 3: tag fill. */
-  --color-category-4: #F2B84B; /** Category 4: chart series, tag dots and icons. Tag text uses color.text.primary. */
-  --color-category-4-subtle: #3A2A05; /** Category 4: tag fill. */
-  --color-category-5: #DDE2EA; /** Category 5: chart series, tag dots and icons. Tag text uses color.text.primary. */
-  --color-category-5-subtle: #262D38; /** Category 5: tag fill. */
-  --color-disabled-text: #C4CBD6; /** Text and icons of a disabled control. */
-  --color-disabled-surface: #262D38; /** Fill of a disabled control. */
-  --color-disabled-border: #3D4655; /** Border of a disabled control. */
+  --color-surface-canvas: #0D1117; /** The page background behind everything. */
+  --color-surface-default: #161B23; /** The base fill for content. */
+  --color-surface-raised: #262D38; /** Fills that float above content. */
+  --color-surface-sunken: #262D38; /** A recessed fill, a step below content. */
+  --color-surface-selected: #2C2588; /** The fill of a selected or current item. */
+  --color-surface-inverse: #F7F8FA; /** A reversed fill for small, short-lived messages. */
+  --color-surface-scrim: #000000B3; /** The see-through layer behind a modal. */
+  --color-text-primary: #F7F8FA; /** Body text and headings. */
+  --color-text-secondary: #C4CBD6; /** Supporting text. */
+  --color-text-muted: #969FAD; /** The quietest text. */
+  --color-text-inverse: #161B23; /** Text on an inverse fill. */
+  --color-text-on-action: #0D1117; /** Text and icons on the main action's fill. */
+  --color-text-link: #A9A3F6; /** Links in running text. */
+  --color-border-default: #262D38; /** Quiet edges and dividers. Decorative, so it has no contrast minimum. */
+  --color-border-strong: #6B7585; /** The edge of a control people must find. */
+  --color-border-focus: #A9A3F6; /** The focus ring. */
+  --color-action-primary: #A9A3F6; /** The one main action in a view. */
+  --color-action-primary-hover: #EEEDFE; /** The main action under the pointer. */
+  --color-action-secondary: #161B23; /** The fill of other actions. */
+  --color-action-secondary-hover: #262D38; /** Other actions under the pointer. */
+  --color-status-info: #8AB4F8; /** Neutral news: something changed and no action is needed. The lowest level of the urgency order. */
+  --color-status-info-subtle: #062C6E; /** The fill behind info status. */
+  --color-status-success: #5CC283; /** Confirmation that something worked. It sits outside the urgency order. */
+  --color-status-success-subtle: #123322; /** The fill behind success status. */
+  --color-status-warning: #F2B84B; /** Caution: something may go wrong or needs a check, and it can be fixed. */
+  --color-status-warning-subtle: #3A2A05; /** The fill behind warning status. */
+  --color-status-danger: #F28B8B; /** Real risk: errors, failed checks, actions that cannot be undone. The top of the urgency order. Overuse wears it out. */
+  --color-status-danger-subtle: #3D1414; /** The fill behind danger status. */
+  --color-category-1: #A9A3F6; /** Category 1: tells one item or series from another. It carries no meaning. */
+  --color-category-1-subtle: #2C2588; /** Category 1: the fill of a tag. */
+  --color-category-2: #8AB4F8; /** Category 2: tells one item or series from another. It carries no meaning. */
+  --color-category-2-subtle: #062C6E; /** Category 2: the fill of a tag. */
+  --color-category-3: #5CC283; /** Category 3: tells one item or series from another. It carries no meaning. */
+  --color-category-3-subtle: #123322; /** Category 3: the fill of a tag. */
+  --color-category-4: #F2B84B; /** Category 4: tells one item or series from another. It carries no meaning. */
+  --color-category-4-subtle: #3A2A05; /** Category 4: the fill of a tag. */
+  --color-category-5: #DDE2EA; /** Category 5: tells one item or series from another. It carries no meaning. */
+  --color-category-5-subtle: #262D38; /** Category 5: the fill of a tag. */
+  --color-disabled-text: #C4CBD6; /** Text and icons of a control that cannot be used right now. */
+  --color-disabled-surface: #262D38; /** The fill of a control that cannot be used right now. */
+  --color-disabled-border: #3D4655; /** The edge of a control that cannot be used right now. */
   --radius-control: 0.125rem; /** Corner of buttons and inputs. */
   --radius-badge: 0rem; /** Corner of badges and checkboxes. */
   --radius-container: 0.25rem; /** Corner of cards, menus and dialogs. */

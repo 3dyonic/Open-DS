@@ -41,6 +41,7 @@ The MCP server serves the same five as prompts.
 4. To change how a component looks, change a component key (for example `--button-radius`). Do not edit the component.
 5. Write copy in the scheme's voice. Read the usage rules of the voice situations (button-label, error-words, success-words, empty-words, confirm-words, first-visit): each gives the tone, a rule and an example.
 6. To explain a decision, run `open-ds why <scheme> <question-id>` or call `why`. Quote the answer and its reasons.
+7. Before you use a colour, read its guidance: `open-ds context <scheme> <token>` or `get_context`. Never use it for a case in its `not_for`, and put text only on the fills it lists. Status goes by real risk: info, then warning, then danger.
 
 ## Do not
 

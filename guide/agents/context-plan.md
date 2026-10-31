@@ -1,90 +1,107 @@
 ---
 sidebar_position: 3
-title: "Plan: token guidance and context on demand"
-description: "A plan, not yet built: what agents still lack, where it belongs in Open DS, and how it stays generated and checked."
+title: "Token guidance and context on demand"
+description: "What each colour is for, which fills it may sit on, the status urgency order, and one call that returns only the context a task needs. How it is built and checked."
 ---
 
-# Plan: token guidance and context on demand
+# Token guidance and context on demand
 
-Status: plan. Nothing here is built yet.
+Status: built (OD-159).
 
-## Where we start
+## Why
 
-Agents already get a lot of context, all generated from the scheme JSON:
+Agents could find the right situation, but they could not ask a token what it is for. Three gaps:
 
-| What                                           | Answers                                  |
-| ---------------------------------------------- | ---------------------------------------- |
-| Grammar: questions, situations, component keys | What can be asked, what each id means.   |
-| Scheme answers with `why` and `because`        | Why this scheme decided what it decided. |
-| `usage[]` per situation: `use`, `not`, `why`   | What to use in a situation.              |
-| `voice`                                        | How to write.                            |
-| Token `$description`                           | What a token is, in one line.            |
-| `llms.txt`, `AGENTS.md`, six skills, MCP, CLI  | How to read all of it.                   |
+1. **Meaning per semantic key.** One line said what a key is, not when to use it, when not to, and what to use instead.
+2. **Pairs.** Which text goes on which fill.
+3. **Order.** Status colours have an urgency order. Nothing stopped an agent from raising the level to get attention.
 
-## What is still missing
+## Four rules
 
-An agent can find the right situation, but it cannot ask a token what it is for. Three gaps:
+1. **One source.** Guidance is written once in `schemes/grammar.json` and generated everywhere else.
+2. **Meaning in the grammar, values in the schemes.** `color.status.danger.@` means the same in every scheme.
+3. **Words, never values.** Guidance names keys. Values are resolved on demand.
+4. **Every rule is checked, with no exceptions.** A pair that misses its contrast fails the harness.
 
-1. **Meaning per semantic key.** One line ("Danger text and icons.") says what a key is, not when to use it, when not to, and what to use instead. Agents misuse status colours more than anything else.
-2. **Pairs.** Which text goes on which fill. Today only `text.on-action` exists, and nothing says a subtle fill takes dark text.
-3. **Order.** Status colours have an urgency order: info, warning, danger. Success sits outside it. Nothing stops an agent from raising the level to get attention.
+## What was built
 
-## What is right for Open DS
+### Guidance in the grammar
 
-The reference keeps hand-written context files next to the tokens. Open DS should not. Four rules decide where things go:
+`semantics.keys[]` has one entry per colour semantic key:
 
-1. **One source.** Context is written once in `schemes/` and generated everywhere else. No separate context files that can drift.
-2. **Meaning belongs to the grammar. Values belong to the scheme.** `color.status.danger` means the same thing in every scheme, so its intent, its "not for" and its pairs live in the grammar, once. A scheme can add its own note through an answer or a usage rule.
-3. **Words, never values.** Guidance names keys, never hex codes. Values are resolved on demand, so they are never stale.
-4. **Every rule is checked.** A rule a machine can test becomes data the harness tests. A pair is checked for contrast in every brand and mode. A "use this instead" must name a key that exists.
+| Field     | What it says                                                                                                  |
+| --------- | ------------------------------------------------------------------------------------------------------------- |
+| `intent`  | What the key is for.                                                                                          |
+| `use_for` | Concrete uses.                                                                                                |
+| `not_for` | Misuses, each naming the key to use instead.                                                                  |
+| `pairs`   | The fills it may sit on, and the contrast it keeps there: 4.5:1 for text, 3:1 for graphics and control edges. |
+| `order`   | The place of a status on the urgency order.                                                                   |
+| `exempt`  | Only for disabled text, which WCAG 1.4.3 does not cover.                                                      |
 
-## The plan
+`semantics.urgency` says the rule: info, then warning, then danger. Never go up a level to get attention. Success sits outside the order.
 
-### 1. Semantic keys in the grammar
+### The check
 
-The grammar gains a `semantics` list: one entry per semantic key a component can read. Each entry has:
+`semantics-guidance` in the harness checks four things:
 
-| Field     | Example for `color.status.danger.@`                                      |
-| --------- | ------------------------------------------------------------------------ |
-| `intent`  | Genuine risk: errors, failed checks, actions that cannot be undone.      |
-| `use_for` | Error text and icons, labels of destructive actions.                     |
-| `not_for` | Each item names what to use instead: caution → `color.status.warning.@`. |
-| `pairs`   | `on`: the fills it can sit on. `text`: the text a fill takes. Keys only. |
-| `order`   | For status keys: their place on the urgency order.                       |
+- every colour semantic in every scheme has guidance;
+- every key that guidance names exists;
+- every pair keeps its contrast in every brand and mode;
+- the urgency order names real keys.
 
-The schema requires these for every colour semantic. Space, size and type keys follow later, if they earn it.
+728 pairs pass today.
 
-### 2. Checks in the harness
+### The gaps, filled in every scheme, light and dark
 
-- Every semantic key a scheme defines has a grammar entry.
-- Every `not_for` alternative and every pair names a key that exists.
-- Every pair passes WCAG AA contrast in every brand and mode of every scheme. A known exception is written down as an answer with its `why`, not hidden.
+- **Info status:** `color.status.info.@` and `.subtle`. It lands in Badge as the `info` tone.
+- **Category colours:** `color.category.1` to `.5`, each with `@` and `.subtle`, for tags and chart series. They carry no meaning. shadcn's `chart-1` to `chart-5` read them. Tag text is `color.text.primary` on the subtle fill.
+- **Disabled set:** `color.disabled.text`, `.surface` and `.border`. Button and Input read it through `button/disabled/*` and `input/disabled/*`, instead of fading with opacity.
 
-### 3. Context on demand
+Info and categories borrow existing ramps (blue, teal) rather than inventing values. Each theme says why it picked its hues.
 
-The reference routes agents to files by task. Open DS already has tasks (the five skills) and an engine (the CLI and MCP). So the router is a call:
+### Contrast, fixed without exceptions
 
-- `open-ds context <target>` and the MCP tool `get_context`. The target is a component, a token, a situation or a task (choose, build, write, change, review).
-- It returns only that slice: the grammar entries, the scheme's answers and rules, the guidance, the pairs and the resolved values for each theme.
-- Same engine as `why`, `when` and `get_key`, so it is never stale.
+Measuring the pairs found two real problems:
 
-### 4. Where the guidance shows up
+- `text.muted` missed 4.5:1 in 9 of 14 themes. Accessible-first dark was at 2.83:1.
+- `border.strong`, the edge of inputs, missed 3:1 in 13 of 14 themes. The lowest was 1.56:1.
 
-| Place                             | What it gets                                       |
-| --------------------------------- | -------------------------------------------------- |
-| Token `$description`              | Built from `intent`, so the CSS and JSON carry it. |
-| MCP `get_key`, `when_to_use`      | `use_for`, `not_for` and pairs next to the value.  |
-| `open-ds-review` skill            | `not_for` and pairs become review checks.          |
-| `llms-full.txt`, docs colour page | A "pairs at a glance" table and the urgency order. |
+**The decision:**
 
-## Not now
+1. Each neutral ramp gains two steps, 400 and 600. Each is the OKLab midpoint of its neighbours, so it is computed from the ramp, not invented.
+2. `text.muted` moves to 600 in light and 400 in dark. It stays quieter than secondary and now reaches 4.5:1.
+3. In accessible-first dark there is no room: anything quieter than secondary misses 4.5:1. Secondary moves up to 600 and muted takes 500. The scheme exists for readability, so it raises contrast instead of merging the two.
+4. `border.strong` moves to the nearest step that reaches 3:1. `border.default` stays for decoration.
 
-- **Gaps in the schemes:** an `info` status, colours for tags and charts, a shared disabled set. These are grammar questions, so each scheme has to answer them with a reason. They get their own ticket.
-- **Copying the reference's layout:** its roles, maps, `refPattern`, SCSS maps and `:host`. Open DS already has its own tiers.
+**Rejected:**
 
-## Order of work
+- Written exceptions: we chose to have none.
+- Merging muted into secondary: it loses a level of the hierarchy.
+- New hand-picked values: they would be invented.
 
-1. Grammar `semantics` for the colour keys, with the schema and the harness checks.
-2. Guidance flows into `$description`, the MCP, the review skill and the docs.
-3. `context` in the CLI and the MCP.
-4. A separate ticket for the scheme gaps.
+### Where the guidance shows up
+
+| Place                             | What it gets                                                           |
+| --------------------------------- | ---------------------------------------------------------------------- |
+| Token `$description` (CSS, JSON)  | The grammar's `intent`, applied by the build and by `open-ds create`.  |
+| MCP `get_key`, `when_to_use`      | The guidance next to the value.                                        |
+| Deployed `AGENTS.md`              | A colour table: what each key is for and what not to use it for.       |
+| `open-ds-review`, `open-ds-build` | Check `not_for`, pairs and urgency. Start with `get_context`.          |
+| `llms-full.txt`, docs colour page | The urgency order, what each colour is for, and the pairs at a glance. |
+
+### Context on demand
+
+`open-ds context <scheme> <target>` and the MCP tool `get_context` share one engine, `cli/src/context.mjs`. A target is one of:
+
+- a task: `choose`, `build`, `write`, `change` or `review`;
+- a component: `badge`;
+- a component key: `button/primary/background`;
+- a semantic token: `color.status.danger`;
+- a situation: `status-label`.
+
+It returns only that slice: rules, guidance, pairs and resolved values in every theme. It replaces a file router: the answer is built from the source each time, so it is never stale.
+
+## Next
+
+- Guidance for space, size and type keys, if agents misuse them.
+- Category colours in more components (tags, avatars), when a scheme's inventory needs them.
