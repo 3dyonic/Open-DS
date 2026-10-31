@@ -2,8 +2,8 @@
 import type { Metadata } from "next";
 import { Eyebrow } from "@/components/chrome";
 import { DemoNote } from "@/components/demo-note";
-import { Options } from "@/components/options";
-import { grammar, pickedBy, type Group } from "@/lib/schemes";
+import Link from "next/link";
+import { grammar, type Group } from "@/lib/schemes";
 
 export const metadata: Metadata = {
   title: "Every question, once",
@@ -11,33 +11,26 @@ export const metadata: Metadata = {
     "The master list every scheme answers: reason questions and scope questions, each with a stable id.",
 };
 
-function GroupCard({ grp }: { grp: Group }) {
+function GroupLinks({ groups }: { groups: Group[] }) {
   return (
-    <li className="flex flex-col gap-3 rounded-[8px] border border-line bg-white p-5">
-      <h3 className="text-[20px] font-extrabold">
-        {grp.title}{" "}
-        <span className="font-mono text-[12px] font-normal text-muted">{grp.questions.length}</span>
-      </h3>
-      <ul className="flex flex-col">
-        {grp.questions.map((q, i) => (
-          <li
-            key={q.id}
-            id={q.id}
-            className="flex flex-col gap-[8px] border-t border-tag py-[12px]"
+    <ul className="grid gap-3 md:grid-cols-2 xl:grid-cols-3">
+      {groups.map((grp) => (
+        <li key={grp.id}>
+          <Link
+            href={`/questions/${grp.id}/`}
+            className="flex h-full flex-col gap-2 rounded-[8px] border border-line bg-white p-5 hover:border-ink"
           >
-            <span className="text-[13px] text-muted">
-              Question {i + 1} of {grp.questions.length} · {q.options.length} possible answers
+            <span className="flex flex-col gap-[2px]">
+              <span className="text-[19px] font-extrabold">{grp.title}</span>
+              <span className="font-mono text-[12px] text-muted">
+                {grp.questions.length} questions
+              </span>
             </span>
-            <span className="text-[16px] font-semibold">{q.text}</span>
-            <Options
-              options={q.options}
-              pickedBy={pickedBy(q.id)}
-              label={`The options for: ${q.text}`}
-            />
-          </li>
-        ))}
-      </ul>
-    </li>
+            <span className="text-[14px] leading-[1.45] text-[#3e3a31]">{grp.description}</span>
+          </Link>
+        </li>
+      ))}
+    </ul>
   );
 }
 
@@ -52,7 +45,7 @@ export default function QuestionsPage() {
     ["Component API", "keys", false],
   ];
   return (
-    <div className="flex flex-col gap-10 px-5 pb-20 lg:px-20">
+    <>
       <header className="flex flex-col gap-4">
         <Eyebrow>The grammar</Eyebrow>
         <h1 className="text-[44px] leading-[1.05] font-extrabold md:text-[56px]">
@@ -87,21 +80,13 @@ export default function QuestionsPage() {
         <Eyebrow>
           <span id="reasons">Reasons · {reasonCount} questions</span>
         </Eyebrow>
-        <ul className="grid gap-4 md:grid-cols-2 lg:grid-cols-3">
-          {g.reasons.map((r) => (
-            <GroupCard key={r.id} grp={r} />
-          ))}
-        </ul>
+        <GroupLinks groups={g.reasons} />
       </section>
       <section className="flex flex-col gap-4" aria-labelledby="scopes">
         <Eyebrow>
           <span id="scopes">Scopes · {scopeCount} questions</span>
         </Eyebrow>
-        <ul className="grid gap-4 md:grid-cols-2 lg:grid-cols-3">
-          {g.scopes.map((r) => (
-            <GroupCard key={r.id} grp={r} />
-          ))}
-        </ul>
+        <GroupLinks groups={g.scopes} />
       </section>
       <section className="flex flex-col gap-3 rounded-[8px] bg-ink p-7 text-paper">
         <Eyebrow tone="accent">Rules of the grammar</Eyebrow>
@@ -118,6 +103,6 @@ export default function QuestionsPage() {
           ))}
         </ul>
       </section>
-    </div>
+    </>
   );
 }
