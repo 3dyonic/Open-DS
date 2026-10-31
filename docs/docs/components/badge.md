@@ -21,14 +21,14 @@ The CSS variable is the key with `/` replaced by `-`. Each key points to a token
 | `badge/radius` | Badge corner radius. | `radius.badge` → `radius.brand.badge` → `radius.0` | same |
 | `badge/padding-x` | Horizontal padding inside a badge. | `space.gap.tight` → `space.4` | same |
 | `badge/font-size` | Badge label size. | `type.caption.font-size` → `font.size.12` | same |
-| `badge/neutral/background` | Neutral badge fill. | `color.surface.sunken` → `color.neutral.100` | `color.surface.sunken` → `color.neutral.800` |
-| `badge/neutral/label` | Neutral badge label. | `color.text.secondary` → `color.neutral.700` | `color.text.secondary` → `color.neutral.300` |
-| `badge/success/background` | Success badge fill. | `color.status.success-subtle` → `color.success.subtle` | `color.status.success-subtle` → `color.success.subtle-dark` |
-| `badge/success/label` | Success badge label. | `color.status.success` → `color.success.strong` | `color.status.success` → `color.success.strong-dark` |
-| `badge/warning/background` | Warning badge fill. | `color.status.warning-subtle` → `color.warning.subtle` | `color.status.warning-subtle` → `color.warning.subtle-dark` |
-| `badge/warning/label` | Warning badge label. | `color.status.warning` → `color.warning.strong` | `color.status.warning` → `color.warning.strong-dark` |
-| `badge/danger/background` | Danger badge fill. | `color.status.danger-subtle` → `color.danger.subtle` | `color.status.danger-subtle` → `color.danger.subtle-dark` |
-| `badge/danger/label` | Danger badge label. | `color.status.danger` → `color.danger.strong` | `color.status.danger` → `color.danger.strong-dark` |
+| `badge/neutral/background` | Neutral badge fill. | `color.surface.sunken` → `color.neutral.100` → `color.slate.100` | `color.surface.sunken` → `color.neutral.800` → `color.slate.800` |
+| `badge/neutral/label` | Neutral badge label. | `color.text.secondary` → `color.neutral.700` → `color.slate.700` | `color.text.secondary` → `color.neutral.300` → `color.slate.300` |
+| `badge/success/background` | Success badge fill. | `color.status.success-subtle` → `color.success.subtle` → `color.green.100` | `color.status.success-subtle` → `color.success.subtle-dark` → `color.green.900` |
+| `badge/success/label` | Success badge label. | `color.status.success` → `color.success.strong` → `color.green.700` | `color.status.success` → `color.success.strong-dark` → `color.green.300` |
+| `badge/warning/background` | Warning badge fill. | `color.status.warning-subtle` → `color.warning.subtle` → `color.amber.100` | `color.status.warning-subtle` → `color.warning.subtle-dark` → `color.amber.900` |
+| `badge/warning/label` | Warning badge label. | `color.status.warning` → `color.warning.strong` → `color.amber.700` | `color.status.warning` → `color.warning.strong-dark` → `color.amber.300` |
+| `badge/danger/background` | Danger badge fill. | `color.status.danger-subtle` → `color.danger.subtle` → `color.red.100` | `color.status.danger-subtle` → `color.danger.subtle-dark` → `color.red.900` |
+| `badge/danger/label` | Danger badge label. | `color.status.danger` → `color.danger.strong` → `color.red.700` | `color.status.danger` → `color.danger.strong-dark` → `color.red.300` |
 
 ## When to use it
 
