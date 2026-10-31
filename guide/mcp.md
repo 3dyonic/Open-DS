@@ -26,11 +26,12 @@ Every tool is read-only. Taking, initialising and adding return the exact `npx o
 | `get_scheme`      | One scheme, or one part: summary, answers, usage, voice, inventory, tokens, all. |
 | `get_answer`      | One answer with every option, the chosen one, why and because.                   |
 | `why`             | The chain of reasons, or a component key's value in every theme.                 |
-| `when_to_use`     | What to use, what not to use and why, for a situation.                           |
+| `when_to_use`     | What to use, what not to use and why, for a situation, with the colour guidance. |
 | `compare_schemes` | Two schemes side by side: shared and different answers.                          |
 | `get_inventory`   | The components a scheme carries and why, and the ones it leaves out.             |
 | `what_moves`      | The answers that follow from one answer, and the tokens its scope owns.          |
-| `get_key`         | A component key's semantic and its value in every theme.                         |
+| `get_key`         | A component key's semantic, its value in every theme and its guidance.           |
+| `get_context`     | Only the context for one target: a task, component, key, token or situation.     |
 | `plan_create`     | The `npx open-ds create` command and the files it writes.                        |
 | `plan_init`       | The `npx open-ds init` command, the files and the packages.                      |
 | `plan_add`        | The `npx open-ds add` command with the components and packages it brings.        |

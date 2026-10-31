@@ -17,6 +17,7 @@ import { dirname, join } from "node:path";
 import { fileURLToPath } from "node:url";
 import StyleDictionary from "style-dictionary";
 import { outputReferencesFilter } from "style-dictionary/utils";
+import { withGuidance } from "../cli/src/guidance.mjs";
 import { publicPaths, themeTokens } from "../cli/src/tokens.mjs";
 
 const here = dirname(fileURLToPath(import.meta.url));
@@ -211,8 +212,12 @@ export async function buildAll() {
     .map((f) => f.replace(/\.json$/, ""))
     .sort();
   const index = [];
+  // Semantic descriptions come from the grammar's guidance, written once for every scheme.
+  const grammar = JSON.parse(readFileSync(join(root, "schemes", "grammar.json"), "utf8"));
   for (const id of ids)
-    index.push(await buildScheme(JSON.parse(readFileSync(join(root, "schemes", `${id}.json`), "utf8"))));
+    index.push(
+      await buildScheme(withGuidance(JSON.parse(readFileSync(join(root, "schemes", `${id}.json`), "utf8")), grammar)),
+    );
   writeFileSync(join(dist, "shadcn-map.json"), JSON.stringify(SHADCN, null, 2) + "\n");
   writeFileSync(
     join(dist, "index.json"),
