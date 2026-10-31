@@ -1,6 +1,7 @@
 // The site's nav, footer and mark, from the Figma Home frame (115:900).
 import Link from "next/link";
 import { brandName } from "@/lib/brand";
+import { ThemeSwitch } from "@/components/theme-switch";
 
 // The mark is a 6 by 5 pixel grid; one cell is lit.
 const MARK = ["110111", "101010", "1l1011", "101001", "110111"];
@@ -67,6 +68,9 @@ export function SiteNav() {
             >
               <GitHubIcon />
             </a>
+          </li>
+          <li>
+            <ThemeSwitch />
           </li>
         </ul>
       </nav>

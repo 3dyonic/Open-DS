@@ -13,6 +13,7 @@ import {
   TableRow,
 } from "@open-ds/ui";
 import { useState } from "react";
+import { useTheme } from "@/components/theme-switch";
 
 // Everything shown comes from the scheme's own samples: its screen, figures, rows, statuses and
 // words. A table appears only when the scheme carries one; otherwise its card and field do the work.
@@ -48,7 +49,10 @@ export function Applied({
   const tone = (label: string): Meaning =>
     s.statuses.find((x) => x.label === label)?.meaning ?? "neutral";
   const [brand, setBrand] = useState(brands[0].id);
-  const [dark, setDark] = useState(false);
+  // Light or dark: the site theme until someone picks one here.
+  const siteTheme = useTheme();
+  const [picked, setDark] = useState<boolean | null>(null);
+  const dark = picked ?? siteTheme === "dark";
   const chip =
     "rounded-[4px] border border-line px-[10px] py-[5px] font-mono text-[12px] aria-pressed:bg-ink aria-pressed:text-paper";
   return (
@@ -76,6 +80,7 @@ export function Applied({
       <div
         data-scheme={scheme}
         data-brand={brands.length > 1 ? brand : undefined}
+        data-mode={dark ? undefined : "light"}
         className={`${dark ? "dark " : ""}flex flex-col gap-4 rounded-[8px] border border-[var(--color-border-default)] bg-[var(--color-surface-canvas)] p-6 text-[var(--color-text-primary)] [font-family:var(--type-body-font-family)] text-[length:var(--type-body-font-size)]`}
       >
         <div className="flex flex-wrap items-center gap-3">
