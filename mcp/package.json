@@ -1,0 +1,18 @@
+{
+  "name": "@open-ds/mcp",
+  "version": "0.1.0",
+  "private": true,
+  "description": "The host for the hosted Open DS MCP server. The server itself lives in the open-ds package (cli/src/mcp.mjs), one engine with the CLI and the site.",
+  "license": "MIT",
+  "type": "module",
+  "engines": {
+    "node": ">=22"
+  },
+  "scripts": {
+    "start": "node server.mjs",
+    "test": "node --test"
+  },
+  "dependencies": {
+    "open-ds": "workspace:*"
+  }
+}

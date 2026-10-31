@@ -7,6 +7,20 @@ description: Build UI with an Open DS scheme. Use when you pick a design system,
 
 An Open DS scheme is a full design system as data. It answers a fixed set of questions (the grammar) and gives the reason for each answer. Tokens, components, usage rules and voice follow from those answers.
 
+## Focused skills
+
+This skill is the overview. For each job there is a focused skill next to it:
+
+| Skill            | When                                      |
+| ---------------- | ----------------------------------------- |
+| `open-ds-choose` | Pick a scheme and take it into a project. |
+| `open-ds-build`  | Build UI in a project that uses a scheme. |
+| `open-ds-write`  | Write copy in the scheme's voice.         |
+| `open-ds-change` | Change a token, a component or an answer. |
+| `open-ds-review` | Review UI against the scheme.             |
+
+The MCP server serves the same five as prompts.
+
 ## Pick a scheme
 
 1. Run `open-ds list`, or call the MCP tool `list_schemes`.
@@ -16,7 +30,7 @@ An Open DS scheme is a full design system as data. It answers a fixed set of que
 ## Deploy it
 
 - CLI: `open-ds init <scheme> --dir <project>`. Add `--brand <id>` for a multi-brand scheme.
-- MCP: call `deploy` with the scheme id and the project folder. It runs the same CLI.
+- MCP: call `plan_init` (or `plan_create` for a new project). It returns the exact command and the files it writes; run the command. The server never writes to your disk.
 - Then install the packages that the command prints. Import `src/styles/open-ds.css` after Tailwind.
 
 ## Build UI in a project that uses a scheme

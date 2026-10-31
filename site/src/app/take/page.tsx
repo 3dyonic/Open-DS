@@ -44,14 +44,18 @@ const GET: [string, string, string[]][] = [
   ],
 ];
 
-// The tools the MCP server ships (mcp/src/open_ds_mcp/server.py).
+// The tools the MCP server ships (cli/src/mcp.mjs). All read-only: the plan tools return commands.
 const TOOLS: [string, string][] = [
   ["list_schemes()", "the schemes and what each is for"],
   ["get_scheme(id, part)", "one scheme, or one part of it"],
-  ["get_answer(id, question)", "this scheme’s answer and its because"],
+  ["get_answer(id, question)", "every option, this scheme’s answer and its because"],
   ["why(id, question | key)", "trace a value back to its question and reason"],
   ["when_to_use(id, situation)", "what to use, what not, and why"],
-  ["deploy(id, project_dir)", "runs the CLI to deploy the scheme"],
+  ["compare_schemes(a, b)", "the same questions, side by side"],
+  ["get_inventory(id)", "the components it carries, and why"],
+  ["what_moves(id, question)", "what follows from one answer"],
+  ["plan_create(id, dir)", "the command that takes the whole system"],
+  ["plan_init(id) · plan_add(component)", "the commands for an existing app"],
 ];
 
 export default function TakePage() {

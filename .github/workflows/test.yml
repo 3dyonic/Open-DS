@@ -6,50 +6,10 @@ on:
   pull_request:
 
 jobs:
-  python:
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v5
-      - uses: actions/setup-python@v6
-        with:
-          python-version: "3.12"
-      - uses: astral-sh/setup-uv@v10.0.1
-        with:
-          version: "0.12.15"
-          enable-cache: true
-      - name: Install
-        run: uv sync --frozen --all-packages --group dev
-      # The MCP tests run the open-ds CLI and build the tokens, so they need Node packages.
-      - uses: pnpm/action-setup@v4
-        with:
-          version: 10.33.4
-      - uses: actions/setup-node@v5
-        with:
-          node-version: "22"
-          cache: pnpm
-      - name: Install Node packages
-        run: pnpm install --frozen-lockfile
-      - name: Lint
-        run: |
-          uv run ruff check mcp
-          uv run ruff format --check mcp
-      - name: Test the MCP server
-        run: |
-          uv run pytest -q mcp/tests
-
   node:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v5
-      - uses: actions/setup-python@v6
-        with:
-          python-version: "3.12"
-      - uses: astral-sh/setup-uv@v10.0.1
-        with:
-          version: "0.12.15"
-          enable-cache: true
-      - name: Install Python tools
-        run: uv sync --frozen --all-packages --group dev
       - uses: pnpm/action-setup@v4
         with:
           version: 10.33.4
@@ -65,6 +25,8 @@ jobs:
           pnpm typecheck
       - name: Test
         run: pnpm test
+      - name: Test the MCP host
+        run: pnpm --dir mcp test
       - name: Build
         run: pnpm build
 
