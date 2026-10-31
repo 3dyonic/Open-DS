@@ -192,7 +192,7 @@ export default async function SchemePage({ params }: { params: Promise<{ id: str
                     <span className="flex flex-col gap-[12px] pt-1">
                       {sc.questions.map((q) => (
                         <span key={q.id} className="flex flex-col gap-[6px]">
-                          <span className="text-[14px] leading-[1.35] text-muted">
+                          <span className="text-[15px] font-semibold leading-[1.35] text-ink">
                             {q.text}
                             {q.id === "components.count" && (
                               <>
