@@ -20,7 +20,7 @@ export const buttonVariants = cva(
     "text-[length:var(--button-font-size)] [font-weight:var(--button-font-weight)] [font-family:var(--type-label-font-family)]",
     "transition-colors duration-[var(--transition-duration)] ease-[var(--transition-easing)]",
     "outline-none focus-visible:ring-[length:var(--border-width-focus)] focus-visible:ring-[color:var(--button-focus-ring)] focus-visible:ring-offset-2 focus-visible:ring-offset-[color:var(--color-surface-canvas)]",
-    "disabled:pointer-events-none disabled:opacity-[var(--opacity-disabled)]",
+    "disabled:pointer-events-none disabled:bg-[var(--button-disabled-background)] disabled:text-[var(--button-disabled-label)] disabled:border-[var(--button-disabled-border)]",
     "[&_svg]:size-[var(--button-icon-size)] [&_svg]:shrink-0",
   ],
   {

@@ -207,6 +207,32 @@ function componentIntro(uiDir, name) {
  * Every page of one scheme's docs, as { "relative/path.md": text }.
  * roots: { tokens, ui } from assetRoots(). storybook: the Storybook URL to link to.
  */
+/** The colour scope's guidance, from the grammar: the urgency order, what each key is for, and its pairs. */
+function colourGuidance(g) {
+  const s = g.semantics;
+  if (!s) return "";
+  const keys = s.keys;
+  return (
+    `\n## Status urgency\n\n${s.urgency.description}\n\n${s.urgency.order.map((id) => `\`${id}\``).join(" → ")}\n` +
+    `\n## What each colour is for\n\n| Token | What it is for | Not for |\n| --- | --- | --- |\n` +
+    keys
+      .map(
+        (k) =>
+          `| \`${k.id}\` | ${esc(k.intent)} | ${k.not_for.map((n) => `${esc(n.when)}: \`${n.use}\``).join("<br />") || "—"} |`,
+      )
+      .join("\n") +
+    `\n\n## Pairs at a glance\n\nWhich colour may sit on which fill, and the contrast it keeps there in every brand and mode. The harness checks every pair.\n\n| Token | Sits on | Contrast |\n| --- | --- | --- |\n` +
+    keys
+      .filter((k) => k.pairs)
+      .map(
+        (k) =>
+          `| \`${k.id}\` | ${k.pairs.on.map((o) => `\`${o}\``).join(", ")} | ${k.pairs.contrast ? `${k.pairs.contrast}:1` : esc(k.exempt ?? "exempt")} |`,
+      )
+      .join("\n") +
+    "\n"
+  );
+}
+
 export function docsPages(
   scheme,
   g,
@@ -400,7 +426,8 @@ export function docsPages(
         ? `\n\n## Primitives\n\nThe raw values the tokens above end at.\n\n${primitiveRows(prims)}`
         : "") +
       `\n\n## Where it lands\n\n${(sc.lands_in ?? []).map((c) => `- ${title(c)}`).join("\n")}\n\n` +
-      `## When to use what\n\n${RULES}${usage.map(rule).join("\n")}\n`;
+      `## When to use what\n\n${RULES}${usage.map(rule).join("\n")}\n` +
+      (sc.id === "color" ? colourGuidance(g) : "");
   });
 
   // Components

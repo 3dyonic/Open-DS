@@ -115,9 +115,11 @@ test("init deploys tokens, components, AGENTS.md and the skill", () => {
       ),
     );
     assert.equal(
-      agents.match(/^\| (?!Situation|---)/gm).length,
+      agents.match(/^\| (?!Situation|---|Token|`)/gm).length,
       grammar().situations.length,
     );
+    // The colour guidance: one row per semantic key, from the grammar.
+    assert.equal(agents.match(/^\| `color\./gm).length, grammar().semantics.keys.length);
     assert.match(
       readFileSync(join(dir, ".claude/skills/open-ds/SKILL.md"), "utf8"),
       /^---\nname: open-ds\ndescription: /,
@@ -368,4 +370,25 @@ test("add brings the components a component imports and names the packages it ne
   } finally {
     rmSync(dir, { recursive: true, force: true });
   }
+});
+
+test("guidance: every colour key has intent and not_for; pairs and urgency read back", async () => {
+  const { guidanceFor, withGuidance } = await import("../src/guidance.mjs");
+  const { grammar, loadScheme } = await import("../src/schemes.mjs");
+  const g = grammar();
+  const info = guidanceFor(g, "color.status.info");
+  assert.equal(info.id, "color.status.info.@");
+  assert.equal(info.urgency.level, 1);
+  assert.ok(guidanceFor(g, "color.surface.default").takes.some((t) => t.key === "color.text.primary"));
+  assert.equal(guidanceFor(g, "space.gap.default"), null);
+  const s = withGuidance(loadScheme("dense-data"), g);
+  assert.equal(s.tokens.semantic.color.status.danger["@"].$description, guidanceFor(g, "color.status.danger").intent);
+});
+
+test("context: a task, a component key, a situation and nothing", async () => {
+  const { context } = await import("../src/context.mjs");
+  assert.equal(context("content-first", "write").voice.summary.text.length > 0, true);
+  assert.equal(context("content-first", "button/primary/background").kind, "component key");
+  assert.equal(context("content-first", "status-label").kind, "situation");
+  assert.equal(context("content-first", "nothing-here"), null);
 });
