@@ -1,6 +1,7 @@
 packages:
   - site
   - cli
+  - mcp
   - harness
   - tokens
   - ui

@@ -6,7 +6,6 @@ This guide takes you from a clean checkout to every part running on your machine
 
 - Node.js 22 or later
 - pnpm 10 (`corepack enable` gives it to you)
-- uv (Python tool): https://docs.astral.sh/uv/
 - Claude Code, to try the MCP server with an AI
 
 ## 2. Get the code
@@ -20,7 +19,7 @@ cd Open-DS && git checkout RC1
 ```
 
 ```bash
-pnpm install && uv sync --all-packages --group dev
+pnpm install
 ```
 
 pnpm may print a warning about ignored build scripts ("approve-builds"). It is safe to ignore; nothing in Open DS needs them.
@@ -94,13 +93,13 @@ pnpm test:package --keep --scheme multi-brand --brand coral
 ### MCP server with Claude Code
 
 ```bash
-claude mcp add --scope user open-ds -- uv run --directory "$(pwd)" open-ds-mcp
+claude mcp add --scope user open-ds -- node "$(pwd)/cli/bin/open-ds.js" mcp
 ```
 
-`--scope user` makes the server available in every folder, not only in Open-DS. Check it with `claude mcp list`. Then open Claude Code in any empty project folder and ask:
+This runs `open-ds mcp` over stdio from your checkout (after publishing: `npx -y open-ds mcp`). For the hosted shape, run `pnpm --dir mcp start` and add `--transport http open-ds http://localhost:8787/mcp` instead. `--scope user` makes the server available in every folder, not only in Open-DS. Check it with `claude mcp list`. Then open Claude Code in any empty project folder and ask:
 
 - "Which Open DS scheme fits an order management tool, and why?"
-- "Deploy it into this project."
+- "Take it into this project." (it answers with the `npx open-ds` command to run)
 - "In this scheme, what do I use for a number in a table?"
 - "Why does this scheme set line height that way?"
 

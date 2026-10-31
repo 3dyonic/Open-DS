@@ -8,7 +8,7 @@ import { fileURLToPath } from "node:url";
 import { agentsMd, skillSection } from "./agents.mjs";
 import { componentsFor, packagesFor } from "./components.mjs";
 import { docsLlms, docsPages } from "./docs.mjs";
-import { assetRoots, grammar, loadScheme } from "./schemes.mjs";
+import { assetRoots, focusedSkills, grammar, loadScheme } from "./schemes.mjs";
 
 const VERSION = JSON.parse(readFileSync(join(dirname(fileURLToPath(import.meta.url)), "..", "package.json"), "utf8")).version;
 
@@ -208,6 +208,8 @@ export function createProject(schemeId, dir, { brand, openDs = `^${VERSION}`, ov
     ".claude/skills/open-ds/SKILL.md",
     readFileSync(join(roots.skills, "open-ds", "SKILL.md"), "utf8") + skillSection(scheme, { project: true }),
   );
+  for (const skill of focusedSkills(roots))
+    write(`.claude/skills/${skill}/SKILL.md`, readFileSync(join(roots.skills, skill, "SKILL.md"), "utf8"));
 
   write(
     "package.json",

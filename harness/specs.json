@@ -110,9 +110,9 @@
         "deploy runs the CLI"
       ],
       "checks": [
-        "mcp-fastmcp",
+        "mcp-node-sdk",
         "mcp-tools",
-        "mcp-deploy-uses-cli",
+        "mcp-uses-cli-engine",
         "mcp-tests"
       ]
     },
@@ -234,7 +234,6 @@
         "cli-package-works",
         "cli-commands",
         "mcp-tests",
-        "standards-python",
         "json-files-validate"
       ]
     },
