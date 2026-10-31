@@ -21,7 +21,7 @@ const MCP_URL = "https://open-ds.dev/mcp";
 const FILES: [string, string][] = [
   [
     "src/styles/open-ds.css",
-    "Every token as a CSS variable, light and dark, the shadcn variables and a Tailwind theme",
+    "The semantic and component keys as CSS variables, light and dark, the shadcn variables and a Tailwind theme",
   ],
   ["src/components/ui/*", "The scheme’s components, copied in. They read only component keys"],
   ["src/lib/utils.ts", "The class helper the components use"],
@@ -81,8 +81,8 @@ export default function InstallPage() {
           </p>
         </WithRobot>
         <p className="max-w-[880px] rounded-[6px] border border-line bg-white p-4 text-[15px] text-body">
-          The MCP server is open now, with no key. The {code("open-ds")} package goes to npm with
-          the first release; until then the {code("npx open-ds")} commands below will not run.
+          The MCP server is open now, with no key. The CLI is the {code("open-ds")} package on npm,
+          so the {code("npx open-ds")} commands below run as they are.
         </p>
       </header>
 
