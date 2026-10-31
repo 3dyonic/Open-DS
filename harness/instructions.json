@@ -19,7 +19,7 @@
       "id": "I03",
       "title": "Style Dictionary builds the tokens",
       "words": "including style dictionary",
-      "checks": ["tokens-style-dictionary", "tokens-built-all-schemes", "tokens-light-dark"]
+      "checks": ["tokens-style-dictionary", "tokens-built-all-schemes", "tokens-light-dark", "tokens-semantics-are-links"]
     },
     {
       "id": "I04",

@@ -22,13 +22,15 @@ How the product speaks: the words in every component.
 
 ## Tokens
 
-| Token | Value |
+Each token points to another token. Values live only on primitives, below.
+
+| Token | Points to |
 | --- | --- |
-| `content.action.commit` | Save |
-| `content.action.cancel` | Cancel |
-| `content.action.destroy` | Delete |
-| `content.action.retry` | Retry |
-| `content.action.empty-action` | Change filters |
+| `content.action.commit` |  |
+| `content.action.cancel` |  |
+| `content.action.destroy` |  |
+| `content.action.retry` |  |
+| `content.action.empty-action` |  |
 
 ## Where it lands
 

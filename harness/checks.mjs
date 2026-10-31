@@ -281,6 +281,31 @@ export const CHECKS = {
     },
   },
 
+  "tokens-semantics-are-links": {
+    requires: ["schemes/grammar.json"],
+    run: (c) => {
+      // Raw values live only on primitives. Every semantic and component token points to another token.
+      const gaps = [];
+      const walk = (node, path, out) => {
+        if (node && typeof node === "object" && "$value" in node) {
+          const v = node.$value;
+          if (!(typeof v === "string" && /^\{[^}]+\}$/.test(v))) out.push(path);
+          return;
+        }
+        if (node && typeof node === "object")
+          for (const [k, v] of Object.entries(node)) if (!k.startsWith("$")) walk(v, path ? `${path}.${k}` : k, out);
+      };
+      for (const id of SCHEMES) {
+        const t = c.json("schemes", `${id}.json`).tokens;
+        const raw = [];
+        for (const part of ["base", "light", "dark"]) walk(t.semantic[part], "", raw);
+        walk(t.component, "", raw);
+        if (raw.length) gaps.push(`${id}: raw values on ${raw.slice(0, 4).join(", ")}`);
+      }
+      return gaps.length ? bad(gaps.join("; ")) : ok("every semantic and component token is a link; values live on primitives");
+    },
+  },
+
   "schemes-inventory": {
     requires: ["schemes/grammar.json"],
     run: (c) => {

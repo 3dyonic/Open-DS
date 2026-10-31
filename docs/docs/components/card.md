@@ -14,15 +14,15 @@ See it in [Storybook](http://localhost:6006) under Components / Card, in every t
 
 ## Component keys
 
-The CSS variable is the key with `/` replaced by `-`.
+The CSS variable is the key with `/` replaced by `-`. Each key points to a token; values live only on primitives.
 
-| Key | What it controls | Reads | light | dark |
-| --- | --- | --- | --- | --- |
-| `card/background` | Card fill. | `color.surface.default` | #FFFFFF | #161B23 |
-| `card/border` | Card border. | `color.border.default` | #DDE2EA | #262D38 |
-| `card/radius` | Card corner radius. | `radius.container` | 0.375rem (6px) | 0.375rem (6px) |
-| `card/padding` | Padding inside a card. | `space.inset.container` | 1rem (16px) | 1rem (16px) |
-| `card/shadow` | Card shadow. | `elevation.card` | 0px 0px 0px 0px #00000000 | 0px 0px 0px 0px #00000000 |
+| Key | What it controls | Points to, light | Points to, dark |
+| --- | --- | --- | --- |
+| `card/background` | Card fill. | `color.surface.default` → `color.neutral.0` | `color.surface.default` → `color.neutral.900` |
+| `card/border` | Card border. | `color.border.default` → `color.neutral.200` | `color.border.default` → `color.neutral.800` |
+| `card/radius` | Card corner radius. | `radius.container` → `radius.brand.container` → `radius.6` | same |
+| `card/padding` | Padding inside a card. | `space.inset.container` → `space.16` | same |
+| `card/shadow` | Card shadow. | `elevation.card` → `shadow.none` | same |
 
 ## When to use it
 

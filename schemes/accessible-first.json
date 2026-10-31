@@ -1429,6 +1429,20 @@
           "$value": 0.5,
           "$description": "An opacity option."
         }
+      },
+      "shadow": {
+        "$description": "Raw shadows. Elevation semantics point at these.",
+        "none": {
+          "$type": "shadow",
+          "$value": {
+            "color": "#00000000",
+            "offsetX": "0px",
+            "offsetY": "0px",
+            "blur": "0px",
+            "spread": "0px"
+          },
+          "$description": "No shadow: flat surfaces."
+        }
       }
     },
     "brands": {
@@ -1909,24 +1923,12 @@
         "elevation": {
           "card": {
             "$type": "shadow",
-            "$value": {
-              "color": "#00000000",
-              "offsetX": "0px",
-              "offsetY": "0px",
-              "blur": "0px",
-              "spread": "0px"
-            },
+            "$value": "{shadow.none}",
             "$description": "No shadow in this scheme."
           },
           "overlay": {
             "$type": "shadow",
-            "$value": {
-              "color": "#00000000",
-              "offsetX": "0px",
-              "offsetY": "0px",
-              "blur": "0px",
-              "spread": "0px"
-            },
+            "$value": "{shadow.none}",
             "$description": "No shadow in this scheme."
           }
         }
@@ -2051,24 +2053,12 @@
         "elevation": {
           "card": {
             "$type": "shadow",
-            "$value": {
-              "color": "#00000000",
-              "offsetX": "0px",
-              "offsetY": "0px",
-              "blur": "0px",
-              "spread": "0px"
-            },
+            "$value": "{shadow.none}",
             "$description": "No shadow in this scheme."
           },
           "overlay": {
             "$type": "shadow",
-            "$value": {
-              "color": "#00000000",
-              "offsetX": "0px",
-              "offsetY": "0px",
-              "blur": "0px",
-              "spread": "0px"
-            },
+            "$value": "{shadow.none}",
             "$description": "No shadow in this scheme."
           }
         }

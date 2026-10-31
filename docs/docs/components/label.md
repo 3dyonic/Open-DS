@@ -14,19 +14,19 @@ See it in [Storybook](http://localhost:6006) under Components / Label, in every 
 
 ## Component keys
 
-The CSS variable is the key with `/` replaced by `-`.
+The CSS variable is the key with `/` replaced by `-`. Each key points to a token; values live only on primitives.
 
-| Key | What it controls | Reads | light | dark |
-| --- | --- | --- | --- | --- |
-| `input/background` | Input fill. | `color.surface.default` | #FFFFFF | #161B23 |
-| `input/border` | Input border at rest. | `color.border.strong` | #C4CBD6 | #3D4655 |
-| `input/border-focus` | Input border when focused. | `color.border.focus` | #2457D6 | #8EA9EC |
-| `input/text` | Typed text color. | `color.text.primary` | #161B23 | #F7F8FA |
-| `input/placeholder` | Placeholder text color. | `color.text.muted` | #6B7585 | #6B7585 |
-| `input/height` | Input height. | `size.control.default` | 2rem (32px) | 2rem (32px) |
-| `input/padding-x` | Horizontal padding inside an input. | `space.inset.control-x` | 0.75rem (12px) | 0.75rem (12px) |
-| `input/radius` | Input corner radius. | `radius.control` | 0.25rem (4px) | 0.25rem (4px) |
-| `input/font-size` | Typed text size. | `type.body.font-size` | 0.875rem (14px) | 0.875rem (14px) |
+| Key | What it controls | Points to, light | Points to, dark |
+| --- | --- | --- | --- |
+| `input/background` | Input fill. | `color.surface.default` → `color.neutral.0` | `color.surface.default` → `color.neutral.900` |
+| `input/border` | Input border at rest. | `color.border.strong` → `color.neutral.300` | `color.border.strong` → `color.neutral.700` |
+| `input/border-focus` | Input border when focused. | `color.border.focus` → `color.brand.600` | `color.border.focus` → `color.brand.300` |
+| `input/text` | Typed text color. | `color.text.primary` → `color.neutral.900` | `color.text.primary` → `color.neutral.50` |
+| `input/placeholder` | Placeholder text color. | `color.text.muted` → `color.neutral.500` | same |
+| `input/height` | Input height. | `size.control.default` → `size.32` | same |
+| `input/padding-x` | Horizontal padding inside an input. | `space.inset.control-x` → `space.12` | same |
+| `input/radius` | Input corner radius. | `radius.control` → `radius.brand.control` → `radius.4` | same |
+| `input/font-size` | Typed text size. | `type.body.font-size` → `font.size.14` | same |
 
 ## When to use it
 

@@ -10,6 +10,11 @@ description: "Dense data: When something rises above the page, and what separate
 
 When something rises above the page, and what separates groups.
 
+<div class="ods-specimen">
+<span class="ods-item"><span class="ods-card" style="box-shadow:var(--elevation-card)"></span><span class="ods-label">elevation.card</span></span>
+<span class="ods-item"><span class="ods-card" style="box-shadow:var(--elevation-overlay)"></span><span class="ods-label">elevation.overlay</span></span>
+</div>
+
 ## The five answers
 
 | Question | Answer | Why |
@@ -22,10 +27,22 @@ When something rises above the page, and what separates groups.
 
 ## Tokens
 
-| Token | Light | Dark |
+Each token points to another token. Values live only on primitives, below.
+
+| Token | Points to, light | Points to, dark |
 | --- | --- | --- |
-| `elevation.card` | 0px 0px 0px 0px #00000000 | 0px 0px 0px 0px #00000000 |
-| `elevation.overlay` | 0px 8px 24px 0px #0D111729 | 0px 8px 24px 0px #00000080 |
+| `elevation.card` | `shadow.none` | `shadow.none` |
+| `elevation.overlay` | `shadow.overlay` | `shadow.overlay-dark` |
+
+## Primitives
+
+The raw values the tokens above end at.
+
+| Primitive | Value | Sample |
+| --- | --- | --- |
+| `shadow.none` | 0px 0px 0px 0px #00000000 | <span class="ods-card" style="box-shadow:var(--shadow-none)"></span> |
+| `shadow.overlay` | 0px 8px 24px 0px #0D111729 | <span class="ods-card" style="box-shadow:var(--shadow-overlay)"></span> |
+| `shadow.overlay-dark` | 0px 8px 24px 0px #00000080 | <span class="ods-card" style="box-shadow:var(--shadow-overlay-dark)"></span> |
 
 ## Where it lands
 
