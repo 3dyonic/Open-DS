@@ -1,5 +1,7 @@
 // The Components scope of one scheme, told as a cascade: the reasons, the five components answers
 // and what each did to the inventory, and the components in it with their reasons.
+import { existsSync } from "node:fs";
+import { join } from "node:path";
 import { scopePage } from "@/lib/scope";
 import { grammar, scheme } from "@/lib/schemes";
 
@@ -10,6 +12,12 @@ interface Catalogue {
   roles: Record<string, string[] | string>;
   items: Item[];
 }
+
+// The component's picture from its Storybook Examples story, written by `pnpm shots`.
+const shot = (schemeId: string, id: string) =>
+  existsSync(join(process.cwd(), "public", "shots", schemeId, `${id}.jpg`))
+    ? `/shots/${schemeId}/${id}.jpg`
+    : null;
 
 const title = (id: string) => id.charAt(0).toUpperCase() + id.slice(1).replaceAll("-", " ");
 
@@ -56,7 +64,7 @@ export function componentsPage(schemeId: string) {
       description: f.description,
       items: s.inventory.in
         .filter((i) => familyOf[i.id] === f.id)
-        .map((i) => ({ id: i.id, name: title(i.id), why: i.why })),
+        .map((i) => ({ id: i.id, name: title(i.id), why: i.why, shot: shot(schemeId, i.id) })),
     }));
 
   return {
@@ -66,7 +74,7 @@ export function componentsPage(schemeId: string) {
     total: cat.items.length,
     count: inIds.size,
     groups,
-    line: `${s.name} carries ${inIds.size} of ${cat.items.length} components: ${label("components.roles").toLowerCase()}, each admitted because ${label("components.definition").toLowerCase()}.`,
+    line: `${s.name} carries ${inIds.size} components: ${label("components.roles").toLowerCase()}, each admitted because ${label("components.definition").toLowerCase()}.`,
   };
 }
 
