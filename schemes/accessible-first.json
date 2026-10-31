@@ -1210,243 +1210,239 @@
   "tokens": {
     "primitive": {
       "color": {
-        "$description": "Colour options in two steps. The palette holds raw hues, step by step. Roles (neutral, brand, success, warning, danger) point at the palette. Semantics pick from the roles; components never read either.",
+        "$description": "Colour options: raw hue ramps. Each hue has a light ramp, a dark ramp (the same steps tuned for dark backgrounds) and its base value ($root). Themes pick from these; components never read them.",
         "gray": {
-          "$description": "Palette: the raw gray ramp.",
-          "0": {
-            "$type": "color",
-            "$value": "#FFFFFF"
+          "$type": "color",
+          "$description": "The gray hue: a light ramp, a dark ramp and its base value.",
+          "light": {
+            "0": {
+              "$value": "#FFFFFF"
+            },
+            "50": {
+              "$value": "#F7F7F7"
+            },
+            "100": {
+              "$value": "#EDEDED"
+            },
+            "200": {
+              "$value": "#D6D6D6"
+            },
+            "300": {
+              "$value": "#949494"
+            },
+            "500": {
+              "$value": "#595959"
+            },
+            "700": {
+              "$value": "#333333"
+            },
+            "800": {
+              "$value": "#222222"
+            },
+            "900": {
+              "$value": "#141414"
+            },
+            "950": {
+              "$value": "#0A0A0A"
+            }
           },
-          "50": {
-            "$type": "color",
-            "$value": "#F7F7F7"
+          "dark": {
+            "0": {
+              "$value": "#0A0A0A"
+            },
+            "50": {
+              "$value": "#141414"
+            },
+            "100": {
+              "$value": "#222222"
+            },
+            "200": {
+              "$value": "#333333"
+            },
+            "300": {
+              "$value": "#595959"
+            },
+            "500": {
+              "$value": "#949494"
+            },
+            "700": {
+              "$value": "#D6D6D6"
+            },
+            "800": {
+              "$value": "#EDEDED"
+            },
+            "900": {
+              "$value": "#F7F7F7"
+            },
+            "950": {
+              "$value": "#FFFFFF"
+            }
           },
-          "100": {
-            "$type": "color",
-            "$value": "#EDEDED"
-          },
-          "200": {
-            "$type": "color",
-            "$value": "#D6D6D6"
-          },
-          "300": {
-            "$type": "color",
-            "$value": "#949494"
-          },
-          "500": {
-            "$type": "color",
-            "$value": "#595959"
-          },
-          "700": {
-            "$type": "color",
-            "$value": "#333333"
-          },
-          "800": {
-            "$type": "color",
-            "$value": "#222222"
-          },
-          "900": {
-            "$type": "color",
-            "$value": "#141414"
-          },
-          "950": {
-            "$type": "color",
-            "$value": "#0A0A0A"
+          "$root": {
+            "$value": "{color.gray.light.500}",
+            "$description": "The base gray."
           }
         },
         "blue": {
-          "$description": "Palette: the raw blue ramp.",
-          "100": {
-            "$type": "color",
-            "$value": "#E1ECFF"
+          "$type": "color",
+          "$description": "The blue hue: a light ramp, a dark ramp and its base value.",
+          "light": {
+            "100": {
+              "$value": "#E1ECFF"
+            },
+            "300": {
+              "$value": "#8AB4F8"
+            },
+            "500": {
+              "$value": "#1A5DD0"
+            },
+            "600": {
+              "$value": "#0B4FC0"
+            },
+            "700": {
+              "$value": "#083C93"
+            },
+            "800": {
+              "$value": "#062C6E"
+            }
           },
-          "300": {
-            "$type": "color",
-            "$value": "#8AB4F8"
+          "dark": {
+            "100": {
+              "$value": "#062C6E"
+            },
+            "300": {
+              "$value": "#083C93"
+            },
+            "500": {
+              "$value": "#0B4FC0"
+            },
+            "600": {
+              "$value": "#1A5DD0"
+            },
+            "700": {
+              "$value": "#8AB4F8"
+            },
+            "800": {
+              "$value": "#E1ECFF"
+            }
           },
-          "500": {
-            "$type": "color",
-            "$value": "#1A5DD0"
-          },
-          "600": {
-            "$type": "color",
-            "$value": "#0B4FC0"
-          },
-          "700": {
-            "$type": "color",
-            "$value": "#083C93"
-          },
-          "800": {
-            "$type": "color",
-            "$value": "#062C6E"
+          "$root": {
+            "$value": "{color.blue.light.600}",
+            "$description": "The base blue."
           }
         },
         "green": {
-          "$description": "Palette: the raw green ramp.",
-          "100": {
-            "$type": "color",
-            "$value": "#E3F4EA"
+          "$type": "color",
+          "$description": "The green hue: a light ramp, a dark ramp and its base value.",
+          "light": {
+            "100": {
+              "$value": "#E3F4EA"
+            },
+            "300": {
+              "$value": "#5CC283"
+            },
+            "700": {
+              "$value": "#1F7A3A"
+            },
+            "900": {
+              "$value": "#123322"
+            }
           },
-          "300": {
-            "$type": "color",
-            "$value": "#5CC283"
-          },
-          "700": {
-            "$type": "color",
-            "$value": "#1F7A3A"
-          },
-          "900": {
-            "$type": "color",
-            "$value": "#123322"
+          "dark": {
+            "100": {
+              "$value": "#123322"
+            },
+            "300": {
+              "$value": "#1F7A3A"
+            },
+            "700": {
+              "$value": "#5CC283"
+            },
+            "900": {
+              "$value": "#E3F4EA"
+            }
           }
         },
         "amber": {
-          "$description": "Palette: the raw amber ramp.",
-          "100": {
-            "$type": "color",
-            "$value": "#FFF3D6"
+          "$type": "color",
+          "$description": "The amber hue: a light ramp, a dark ramp and its base value.",
+          "light": {
+            "100": {
+              "$value": "#FFF3D6"
+            },
+            "300": {
+              "$value": "#F2B84B"
+            },
+            "700": {
+              "$value": "#8A5600"
+            },
+            "900": {
+              "$value": "#3A2A05"
+            }
           },
-          "300": {
-            "$type": "color",
-            "$value": "#F2B84B"
-          },
-          "700": {
-            "$type": "color",
-            "$value": "#8A5600"
-          },
-          "900": {
-            "$type": "color",
-            "$value": "#3A2A05"
+          "dark": {
+            "100": {
+              "$value": "#3A2A05"
+            },
+            "300": {
+              "$value": "#8A5600"
+            },
+            "700": {
+              "$value": "#F2B84B"
+            },
+            "900": {
+              "$value": "#FFF3D6"
+            }
           }
         },
         "red": {
-          "$description": "Palette: the raw red ramp.",
-          "100": {
-            "$type": "color",
-            "$value": "#FDE7E7"
+          "$type": "color",
+          "$description": "The red hue: a light ramp, a dark ramp and its base value.",
+          "light": {
+            "100": {
+              "$value": "#FDE7E7"
+            },
+            "300": {
+              "$value": "#F28B8B"
+            },
+            "700": {
+              "$value": "#C42B2B"
+            },
+            "900": {
+              "$value": "#3D1414"
+            }
           },
-          "300": {
-            "$type": "color",
-            "$value": "#F28B8B"
-          },
-          "700": {
-            "$type": "color",
-            "$value": "#C42B2B"
-          },
-          "900": {
-            "$type": "color",
-            "$value": "#3D1414"
+          "dark": {
+            "100": {
+              "$value": "#3D1414"
+            },
+            "300": {
+              "$value": "#C42B2B"
+            },
+            "700": {
+              "$value": "#F28B8B"
+            },
+            "900": {
+              "$value": "#FDE7E7"
+            }
           }
         },
-        "neutral": {
-          "0": {
-            "$type": "color",
-            "$value": "{color.gray.0}"
+        "black": {
+          "$type": "color",
+          "$description": "See-through black for scrims behind dialogs, light and dark.",
+          "light": {
+            "scrim": {
+              "$value": "#0000008C"
+            }
           },
-          "50": {
-            "$type": "color",
-            "$value": "{color.gray.50}"
-          },
-          "100": {
-            "$type": "color",
-            "$value": "{color.gray.100}"
-          },
-          "200": {
-            "$type": "color",
-            "$value": "{color.gray.200}"
-          },
-          "300": {
-            "$type": "color",
-            "$value": "{color.gray.300}"
-          },
-          "500": {
-            "$type": "color",
-            "$value": "{color.gray.500}"
-          },
-          "700": {
-            "$type": "color",
-            "$value": "{color.gray.700}"
-          },
-          "800": {
-            "$type": "color",
-            "$value": "{color.gray.800}"
-          },
-          "900": {
-            "$type": "color",
-            "$value": "{color.gray.900}"
-          },
-          "950": {
-            "$type": "color",
-            "$value": "{color.gray.950}"
-          }
-        },
-        "success": {
-          "strong": {
-            "$type": "color",
-            "$value": "{color.green.700}"
-          },
-          "subtle": {
-            "$type": "color",
-            "$value": "{color.green.100}"
-          },
-          "strong-dark": {
-            "$type": "color",
-            "$value": "{color.green.300}"
-          },
-          "subtle-dark": {
-            "$type": "color",
-            "$value": "{color.green.900}"
-          }
-        },
-        "warning": {
-          "strong": {
-            "$type": "color",
-            "$value": "{color.amber.700}"
-          },
-          "subtle": {
-            "$type": "color",
-            "$value": "{color.amber.100}"
-          },
-          "strong-dark": {
-            "$type": "color",
-            "$value": "{color.amber.300}"
-          },
-          "subtle-dark": {
-            "$type": "color",
-            "$value": "{color.amber.900}"
-          }
-        },
-        "danger": {
-          "strong": {
-            "$type": "color",
-            "$value": "{color.red.700}"
-          },
-          "subtle": {
-            "$type": "color",
-            "$value": "{color.red.100}"
-          },
-          "strong-dark": {
-            "$type": "color",
-            "$value": "{color.red.300}"
-          },
-          "subtle-dark": {
-            "$type": "color",
-            "$value": "{color.red.900}"
-          }
-        },
-        "black-alpha": {
-          "scrim": {
-            "$type": "color",
-            "$value": "#0000008C"
-          },
-          "scrim-dark": {
-            "$type": "color",
-            "$value": "#000000B3"
+          "dark": {
+            "scrim": {
+              "$value": "#000000B3"
+            }
           }
         }
       },
       "space": {
-        "$description": "Space options. Names give the size in pixels at the default text size; values are rem.",
         "12": {
           "$type": "dimension",
           "$value": "0.75rem"
@@ -1466,10 +1462,10 @@
         "48": {
           "$type": "dimension",
           "$value": "3rem"
-        }
+        },
+        "$description": "Space options. Names give the size in pixels at the default text size; values are rem."
       },
       "size": {
-        "$description": "Size options for controls, rows and icons.",
         "16": {
           "$type": "dimension",
           "$value": "1rem"
@@ -1493,34 +1489,34 @@
         "56": {
           "$type": "dimension",
           "$value": "3.5rem"
-        }
+        },
+        "$description": "Size options for controls, rows and icons."
       },
       "radius": {
-        "$description": "Corner options.",
         "0": {
           "$type": "dimension",
           "$value": "0rem"
-        },
-        "full": {
-          "$type": "dimension",
-          "$value": "9999px",
-          "$description": "Fully round."
-        },
-        "6": {
-          "$type": "dimension",
-          "$value": "0.375rem"
         },
         "4": {
           "$type": "dimension",
           "$value": "0.25rem"
         },
+        "6": {
+          "$type": "dimension",
+          "$value": "0.375rem"
+        },
         "8": {
           "$type": "dimension",
           "$value": "0.5rem"
+        },
+        "$description": "Corner options.",
+        "full": {
+          "$type": "dimension",
+          "$value": "9999px",
+          "$description": "Fully round."
         }
       },
       "border-width": {
-        "$description": "Border width options.",
         "2": {
           "$type": "dimension",
           "$value": "2px"
@@ -1528,11 +1524,11 @@
         "3": {
           "$type": "dimension",
           "$value": "3px"
-        }
+        },
+        "$description": "Border width options."
       },
       "font": {
         "size": {
-          "$description": "Type size options. Names are pixels at the default text size; values are rem, so text grows with the user's setting.",
           "16": {
             "$type": "dimension",
             "$value": "1rem"
@@ -1556,7 +1552,8 @@
           "36": {
             "$type": "dimension",
             "$value": "2.25rem"
-          }
+          },
+          "$description": "Type size options. Names are pixels at the default text size; values are rem, so text grows with the user's setting."
         },
         "weight": {
           "400": {
@@ -1598,6 +1595,17 @@
             "$type": "number",
             "$value": 1.6,
             "$description": "A ratio of the text size."
+          }
+        },
+        "family": {
+          "$description": "Font family options. Each brand's theme picks its display, body, interface and data fonts from these.",
+          "atkinson-hyperlegible": {
+            "$type": "fontFamily",
+            "$value": "\"Atkinson Hyperlegible\", Verdana, sans-serif"
+          },
+          "ibm-plex-mono": {
+            "$type": "fontFamily",
+            "$value": "\"IBM Plex Mono\", ui-monospace, monospace"
           }
         }
       },
@@ -1656,618 +1664,691 @@
       "default": {
         "label": "Accessible first",
         "description": "The single brand: strong blue on true neutral, high contrast everywhere.",
-        "primitive": {
-          "color": {
-            "brand": {
-              "100": {
-                "$type": "color",
-                "$value": "{color.blue.100}"
-              },
-              "300": {
-                "$type": "color",
-                "$value": "{color.blue.300}"
-              },
-              "500": {
-                "$type": "color",
-                "$value": "{color.blue.500}"
-              },
-              "600": {
-                "$type": "color",
-                "$value": "{color.blue.600}"
-              },
-              "700": {
-                "$type": "color",
-                "$value": "{color.blue.700}"
-              },
-              "800": {
-                "$type": "color",
-                "$value": "{color.blue.800}"
-              }
+        "theme": {
+          "$description": "The Accessible first theme: what each brand-dependent semantic key picks, in light and dark, plus mode-free picks (fonts, corners) in base.",
+          "base": {
+            "radius-control": {
+              "$type": "dimension",
+              "$value": "{radius.6}"
+            },
+            "radius-badge": {
+              "$type": "dimension",
+              "$value": "{radius.4}"
+            },
+            "radius-container": {
+              "$type": "dimension",
+              "$value": "{radius.8}"
+            },
+            "type-display-font-family": {
+              "$type": "fontFamily",
+              "$value": "{font.family.atkinson-hyperlegible}"
+            },
+            "type-title-font-family": {
+              "$type": "fontFamily",
+              "$value": "{font.family.atkinson-hyperlegible}"
+            },
+            "type-heading-font-family": {
+              "$type": "fontFamily",
+              "$value": "{font.family.atkinson-hyperlegible}"
+            },
+            "type-body-font-family": {
+              "$type": "fontFamily",
+              "$value": "{font.family.atkinson-hyperlegible}"
+            },
+            "type-label-font-family": {
+              "$type": "fontFamily",
+              "$value": "{font.family.atkinson-hyperlegible}"
+            },
+            "type-caption-font-family": {
+              "$type": "fontFamily",
+              "$value": "{font.family.atkinson-hyperlegible}"
+            },
+            "type-data-font-family": {
+              "$type": "fontFamily",
+              "$value": "{font.family.atkinson-hyperlegible}"
             }
           },
-          "font": {
-            "family": {
-              "display": {
-                "$type": "fontFamily",
-                "$value": "\"Atkinson Hyperlegible\", Verdana, sans-serif"
-              },
-              "body": {
-                "$type": "fontFamily",
-                "$value": "\"Atkinson Hyperlegible\", Verdana, sans-serif"
-              },
-              "ui": {
-                "$type": "fontFamily",
-                "$value": "\"Atkinson Hyperlegible\", Verdana, sans-serif"
-              },
-              "mono": {
-                "$type": "fontFamily",
-                "$value": "\"IBM Plex Mono\", ui-monospace, monospace"
-              }
+          "light": {
+            "color-surface-canvas": {
+              "$type": "color",
+              "$value": "{color.gray.light.50}"
+            },
+            "color-surface-default": {
+              "$type": "color",
+              "$value": "{color.gray.light.0}"
+            },
+            "color-surface-raised": {
+              "$type": "color",
+              "$value": "{color.gray.light.0}"
+            },
+            "color-surface-sunken": {
+              "$type": "color",
+              "$value": "{color.gray.light.100}"
+            },
+            "color-surface-selected": {
+              "$type": "color",
+              "$value": "{color.blue.light.100}"
+            },
+            "color-surface-inverse": {
+              "$type": "color",
+              "$value": "{color.gray.light.900}"
+            },
+            "color-surface-scrim": {
+              "$type": "color",
+              "$value": "{color.black.light.scrim}"
+            },
+            "color-text-primary": {
+              "$type": "color",
+              "$value": "{color.gray.light.900}"
+            },
+            "color-text-secondary": {
+              "$type": "color",
+              "$value": "{color.gray.light.700}"
+            },
+            "color-text-muted": {
+              "$type": "color",
+              "$value": "{color.gray.light.500}"
+            },
+            "color-text-inverse": {
+              "$type": "color",
+              "$value": "{color.gray.light.0}"
+            },
+            "color-text-on-action": {
+              "$type": "color",
+              "$value": "{color.gray.light.0}"
+            },
+            "color-text-link": {
+              "$type": "color",
+              "$value": "{color.blue.light.700}"
+            },
+            "color-border-default": {
+              "$type": "color",
+              "$value": "{color.gray.light.200}"
+            },
+            "color-border-strong": {
+              "$type": "color",
+              "$value": "{color.gray.light.500}"
+            },
+            "color-border-focus": {
+              "$type": "color",
+              "$value": "{color.blue.light.600}"
+            },
+            "color-action-primary": {
+              "$type": "color",
+              "$value": "{color.blue.light.600}"
+            },
+            "color-action-primary-hover": {
+              "$type": "color",
+              "$value": "{color.blue.light.700}"
+            },
+            "color-action-secondary": {
+              "$type": "color",
+              "$value": "{color.gray.light.0}"
+            },
+            "color-action-secondary-hover": {
+              "$type": "color",
+              "$value": "{color.gray.light.100}"
+            },
+            "color-status-success": {
+              "$type": "color",
+              "$value": "{color.green.light.700}"
+            },
+            "color-status-warning": {
+              "$type": "color",
+              "$value": "{color.amber.light.700}"
+            },
+            "color-status-danger": {
+              "$type": "color",
+              "$value": "{color.red.light.700}"
+            },
+            "color-status-success-subtle": {
+              "$type": "color",
+              "$value": "{color.green.light.100}"
+            },
+            "color-status-warning-subtle": {
+              "$type": "color",
+              "$value": "{color.amber.light.100}"
+            },
+            "color-status-danger-subtle": {
+              "$type": "color",
+              "$value": "{color.red.light.100}"
+            },
+            "elevation-card": {
+              "$type": "shadow",
+              "$value": "{shadow.none}"
+            },
+            "elevation-overlay": {
+              "$type": "shadow",
+              "$value": "{shadow.none}"
             }
           },
-          "radius": {
-            "brand": {
-              "control": {
-                "$type": "dimension",
-                "$value": "{radius.6}"
-              },
-              "badge": {
-                "$type": "dimension",
-                "$value": "{radius.4}"
-              },
-              "container": {
-                "$type": "dimension",
-                "$value": "{radius.8}"
-              }
+          "dark": {
+            "color-surface-canvas": {
+              "$type": "color",
+              "$value": "{color.gray.dark.0}"
+            },
+            "color-surface-default": {
+              "$type": "color",
+              "$value": "{color.gray.dark.50}"
+            },
+            "color-surface-raised": {
+              "$type": "color",
+              "$value": "{color.gray.dark.100}"
+            },
+            "color-surface-sunken": {
+              "$type": "color",
+              "$value": "{color.gray.dark.100}"
+            },
+            "color-surface-selected": {
+              "$type": "color",
+              "$value": "{color.blue.dark.100}"
+            },
+            "color-surface-inverse": {
+              "$type": "color",
+              "$value": "{color.gray.dark.900}"
+            },
+            "color-surface-scrim": {
+              "$type": "color",
+              "$value": "{color.black.dark.scrim}"
+            },
+            "color-text-primary": {
+              "$type": "color",
+              "$value": "{color.gray.dark.900}"
+            },
+            "color-text-secondary": {
+              "$type": "color",
+              "$value": "{color.gray.dark.500}"
+            },
+            "color-text-muted": {
+              "$type": "color",
+              "$value": "{color.gray.dark.300}"
+            },
+            "color-text-inverse": {
+              "$type": "color",
+              "$value": "{color.gray.dark.50}"
+            },
+            "color-text-on-action": {
+              "$type": "color",
+              "$value": "{color.gray.dark.0}"
+            },
+            "color-text-link": {
+              "$type": "color",
+              "$value": "{color.blue.dark.700}"
+            },
+            "color-border-default": {
+              "$type": "color",
+              "$value": "{color.gray.dark.100}"
+            },
+            "color-border-strong": {
+              "$type": "color",
+              "$value": "{color.gray.dark.300}"
+            },
+            "color-border-focus": {
+              "$type": "color",
+              "$value": "{color.blue.dark.700}"
+            },
+            "color-action-primary": {
+              "$type": "color",
+              "$value": "{color.blue.dark.700}"
+            },
+            "color-action-primary-hover": {
+              "$type": "color",
+              "$value": "{color.blue.dark.800}"
+            },
+            "color-action-secondary": {
+              "$type": "color",
+              "$value": "{color.gray.dark.50}"
+            },
+            "color-action-secondary-hover": {
+              "$type": "color",
+              "$value": "{color.gray.dark.100}"
+            },
+            "color-status-success": {
+              "$type": "color",
+              "$value": "{color.green.dark.700}"
+            },
+            "color-status-warning": {
+              "$type": "color",
+              "$value": "{color.amber.dark.700}"
+            },
+            "color-status-danger": {
+              "$type": "color",
+              "$value": "{color.red.dark.700}"
+            },
+            "color-status-success-subtle": {
+              "$type": "color",
+              "$value": "{color.green.dark.100}"
+            },
+            "color-status-warning-subtle": {
+              "$type": "color",
+              "$value": "{color.amber.dark.100}"
+            },
+            "color-status-danger-subtle": {
+              "$type": "color",
+              "$value": "{color.red.dark.100}"
+            },
+            "elevation-card": {
+              "$type": "shadow",
+              "$value": "{shadow.none}"
+            },
+            "elevation-overlay": {
+              "$type": "shadow",
+              "$value": "{shadow.none}"
             }
           }
         }
       }
     },
     "semantic": {
-      "base": {
-        "space": {
-          "gap": {
-            "tight": {
-              "$type": "dimension",
-              "$value": "{space.12}",
-              "$description": "Between things that belong together."
-            },
-            "default": {
-              "$type": "dimension",
-              "$value": "{space.16}",
-              "$description": "Between items in one group."
-            },
-            "group": {
-              "$type": "dimension",
-              "$value": "{space.32}",
-              "$description": "Between groups."
-            },
-            "section": {
-              "$type": "dimension",
-              "$value": "{space.48}",
-              "$description": "Between page sections."
-            }
+      "space": {
+        "gap": {
+          "tight": {
+            "$type": "dimension",
+            "$value": "{space.12}",
+            "$description": "Between things that belong together."
           },
-          "inset": {
-            "control-x": {
-              "$type": "dimension",
-              "$value": "{space.24}",
-              "$description": "Horizontal padding inside controls."
-            },
-            "container": {
-              "$type": "dimension",
-              "$value": "{space.24}",
-              "$description": "Padding inside cards and dialogs."
-            },
-            "cell-x": {
-              "$type": "dimension",
-              "$value": "{space.16}",
-              "$description": "Horizontal padding inside table cells."
-            }
+          "default": {
+            "$type": "dimension",
+            "$value": "{space.16}",
+            "$description": "Between items in one group."
+          },
+          "group": {
+            "$type": "dimension",
+            "$value": "{space.32}",
+            "$description": "Between groups."
+          },
+          "section": {
+            "$type": "dimension",
+            "$value": "{space.48}",
+            "$description": "Between page sections."
           }
         },
-        "size": {
-          "control": {
-            "default": {
-              "$type": "dimension",
-              "$value": "{size.52}",
-              "$description": "Height of buttons and inputs, and the smallest target."
-            },
-            "compact": {
-              "$type": "dimension",
-              "$value": "{size.48}",
-              "$description": "Height of compact controls."
-            }
-          },
-          "row": {
+        "inset": {
+          "control-x": {
             "$type": "dimension",
-            "$value": "{size.56}",
-            "$description": "Height of one table row."
-          },
-          "icon": {
-            "$type": "dimension",
-            "$value": "{size.20}",
-            "$description": "Icon size next to text."
-          }
-        },
-        "radius": {
-          "control": {
-            "$type": "dimension",
-            "$value": "{radius.brand.control}",
-            "$description": "Corner of buttons and inputs."
-          },
-          "badge": {
-            "$type": "dimension",
-            "$value": "{radius.brand.badge}",
-            "$description": "Corner of badges and checkboxes."
+            "$value": "{space.24}",
+            "$description": "Horizontal padding inside controls."
           },
           "container": {
             "$type": "dimension",
-            "$value": "{radius.brand.container}",
-            "$description": "Corner of cards, menus and dialogs."
+            "$value": "{space.24}",
+            "$description": "Padding inside cards and dialogs."
           },
-          "round": {
+          "cell-x": {
             "$type": "dimension",
-            "$value": "{radius.full}",
-            "$description": "Fully round: avatars and dots."
+            "$value": "{space.16}",
+            "$description": "Horizontal padding inside table cells."
           }
-        },
-        "border-width": {
+        }
+      },
+      "size": {
+        "control": {
           "default": {
             "$type": "dimension",
-            "$value": "{border-width.2}",
-            "$description": "Every border."
+            "$value": "{size.52}",
+            "$description": "Height of buttons and inputs, and the smallest target."
+          },
+          "compact": {
+            "$type": "dimension",
+            "$value": "{size.48}",
+            "$description": "Height of compact controls."
+          }
+        },
+        "row": {
+          "$type": "dimension",
+          "$value": "{size.56}",
+          "$description": "Height of one table row."
+        },
+        "icon": {
+          "$type": "dimension",
+          "$value": "{size.20}",
+          "$description": "Icon size next to text."
+        }
+      },
+      "radius": {
+        "control": {
+          "$type": "dimension",
+          "$value": "{theme.radius-control}",
+          "$description": "Corner of buttons and inputs."
+        },
+        "badge": {
+          "$type": "dimension",
+          "$value": "{theme.radius-badge}",
+          "$description": "Corner of badges and checkboxes."
+        },
+        "container": {
+          "$type": "dimension",
+          "$value": "{theme.radius-container}",
+          "$description": "Corner of cards, menus and dialogs."
+        },
+        "round": {
+          "$type": "dimension",
+          "$value": "{radius.full}",
+          "$description": "Fully round: avatars and dots."
+        }
+      },
+      "border-width": {
+        "default": {
+          "$type": "dimension",
+          "$value": "{border-width.2}",
+          "$description": "Every border."
+        },
+        "focus": {
+          "$type": "dimension",
+          "$value": "{border-width.3}",
+          "$description": "The focus ring."
+        }
+      },
+      "type": {
+        "display": {
+          "font-family": {
+            "$type": "fontFamily",
+            "$value": "{theme.type-display-font-family}"
+          },
+          "font-size": {
+            "$type": "dimension",
+            "$value": "{font.size.36}"
+          },
+          "line-height": {
+            "$type": "number",
+            "$value": "{font.line-height.1_2}"
+          },
+          "font-weight": {
+            "$type": "fontWeight",
+            "$value": "{font.weight.700}"
+          },
+          "$description": "The display text role."
+        },
+        "title": {
+          "font-family": {
+            "$type": "fontFamily",
+            "$value": "{theme.type-title-font-family}"
+          },
+          "font-size": {
+            "$type": "dimension",
+            "$value": "{font.size.28}"
+          },
+          "line-height": {
+            "$type": "number",
+            "$value": "{font.line-height.1_25}"
+          },
+          "font-weight": {
+            "$type": "fontWeight",
+            "$value": "{font.weight.700}"
+          },
+          "$description": "The title text role."
+        },
+        "heading": {
+          "font-family": {
+            "$type": "fontFamily",
+            "$value": "{theme.type-heading-font-family}"
+          },
+          "font-size": {
+            "$type": "dimension",
+            "$value": "{font.size.22}"
+          },
+          "line-height": {
+            "$type": "number",
+            "$value": "{font.line-height.1_3}"
+          },
+          "font-weight": {
+            "$type": "fontWeight",
+            "$value": "{font.weight.700}"
+          },
+          "$description": "The heading text role."
+        },
+        "body": {
+          "font-family": {
+            "$type": "fontFamily",
+            "$value": "{theme.type-body-font-family}"
+          },
+          "font-size": {
+            "$type": "dimension",
+            "$value": "{font.size.19}"
+          },
+          "line-height": {
+            "$type": "number",
+            "$value": "{font.line-height.1_6}"
+          },
+          "font-weight": {
+            "$type": "fontWeight",
+            "$value": "{font.weight.400}"
+          },
+          "$description": "The body text role."
+        },
+        "label": {
+          "font-family": {
+            "$type": "fontFamily",
+            "$value": "{theme.type-label-font-family}"
+          },
+          "font-size": {
+            "$type": "dimension",
+            "$value": "{font.size.18}"
+          },
+          "line-height": {
+            "$type": "number",
+            "$value": "{font.line-height.1_4}"
+          },
+          "font-weight": {
+            "$type": "fontWeight",
+            "$value": "{font.weight.700}"
+          },
+          "$description": "The label text role."
+        },
+        "caption": {
+          "font-family": {
+            "$type": "fontFamily",
+            "$value": "{theme.type-caption-font-family}"
+          },
+          "font-size": {
+            "$type": "dimension",
+            "$value": "{font.size.16}"
+          },
+          "line-height": {
+            "$type": "number",
+            "$value": "{font.line-height.1_5}"
+          },
+          "font-weight": {
+            "$type": "fontWeight",
+            "$value": "{font.weight.400}"
+          },
+          "$description": "The caption text role."
+        },
+        "data": {
+          "font-family": {
+            "$type": "fontFamily",
+            "$value": "{theme.type-data-font-family}"
+          },
+          "font-size": {
+            "$type": "dimension",
+            "$value": "{font.size.19}"
+          },
+          "line-height": {
+            "$type": "number",
+            "$value": "{font.line-height.1_6}"
+          },
+          "font-weight": {
+            "$type": "fontWeight",
+            "$value": "{font.weight.400}"
+          },
+          "$description": "The data text role."
+        }
+      },
+      "motion": {
+        "duration": {
+          "feedback": {
+            "$type": "duration",
+            "$value": "{duration.moderate}",
+            "$description": "Feedback speed: moderate."
+          }
+        },
+        "easing": {
+          "standard": {
+            "$type": "cubicBezier",
+            "$value": "{easing.standard}",
+            "$description": "Feedback easing."
+          }
+        }
+      },
+      "opacity": {
+        "disabled": {
+          "$type": "number",
+          "$value": "{opacity.50}",
+          "$description": "Disabled controls."
+        }
+      },
+      "color": {
+        "surface": {
+          "canvas": {
+            "$type": "color",
+            "$description": "The page background.",
+            "$value": "{theme.color-surface-canvas}"
+          },
+          "default": {
+            "$type": "color",
+            "$description": "Cards, inputs and tables.",
+            "$value": "{theme.color-surface-default}"
+          },
+          "raised": {
+            "$type": "color",
+            "$description": "Menus, dialogs, toasts.",
+            "$value": "{theme.color-surface-raised}"
+          },
+          "sunken": {
+            "$type": "color",
+            "$description": "Table headers and wells.",
+            "$value": "{theme.color-surface-sunken}"
+          },
+          "selected": {
+            "$type": "color",
+            "$description": "A selected row or item.",
+            "$value": "{theme.color-surface-selected}"
+          },
+          "inverse": {
+            "$type": "color",
+            "$description": "Tooltips.",
+            "$value": "{theme.color-surface-inverse}"
+          },
+          "scrim": {
+            "$type": "color",
+            "$description": "Dims the page behind a dialog.",
+            "$value": "{theme.color-surface-scrim}"
+          }
+        },
+        "text": {
+          "primary": {
+            "$type": "color",
+            "$description": "Main text.",
+            "$value": "{theme.color-text-primary}"
+          },
+          "secondary": {
+            "$type": "color",
+            "$description": "Supporting text; passes AA.",
+            "$value": "{theme.color-text-secondary}"
+          },
+          "muted": {
+            "$type": "color",
+            "$description": "Hints and placeholders.",
+            "$value": "{theme.color-text-muted}"
+          },
+          "inverse": {
+            "$type": "color",
+            "$description": "Text on inverse surfaces.",
+            "$value": "{theme.color-text-inverse}"
+          },
+          "on-action": {
+            "$type": "color",
+            "$description": "Text on the primary action.",
+            "$value": "{theme.color-text-on-action}"
+          },
+          "link": {
+            "$type": "color",
+            "$description": "Links.",
+            "$value": "{theme.color-text-link}"
+          }
+        },
+        "border": {
+          "default": {
+            "$type": "color",
+            "$description": "Row lines and card borders.",
+            "$value": "{theme.color-border-default}"
+          },
+          "strong": {
+            "$type": "color",
+            "$description": "Input and secondary button borders.",
+            "$value": "{theme.color-border-strong}"
           },
           "focus": {
-            "$type": "dimension",
-            "$value": "{border-width.3}",
-            "$description": "The focus ring."
+            "$type": "color",
+            "$description": "The keyboard focus ring.",
+            "$value": "{theme.color-border-focus}"
           }
         },
-        "type": {
-          "display": {
-            "font-family": {
-              "$type": "fontFamily",
-              "$value": "{font.family.display}"
-            },
-            "font-size": {
-              "$type": "dimension",
-              "$value": "{font.size.36}"
-            },
-            "line-height": {
-              "$type": "number",
-              "$value": "{font.line-height.1_2}"
-            },
-            "font-weight": {
-              "$type": "fontWeight",
-              "$value": "{font.weight.700}"
-            },
-            "$description": "The display text role."
+        "action": {
+          "primary": {
+            "$type": "color",
+            "$description": "The primary action.",
+            "$value": "{theme.color-action-primary}"
           },
-          "title": {
-            "font-family": {
-              "$type": "fontFamily",
-              "$value": "{font.family.display}"
-            },
-            "font-size": {
-              "$type": "dimension",
-              "$value": "{font.size.28}"
-            },
-            "line-height": {
-              "$type": "number",
-              "$value": "{font.line-height.1_25}"
-            },
-            "font-weight": {
-              "$type": "fontWeight",
-              "$value": "{font.weight.700}"
-            },
-            "$description": "The title text role."
+          "primary-hover": {
+            "$type": "color",
+            "$description": "Primary action on hover.",
+            "$value": "{theme.color-action-primary-hover}"
           },
-          "heading": {
-            "font-family": {
-              "$type": "fontFamily",
-              "$value": "{font.family.display}"
-            },
-            "font-size": {
-              "$type": "dimension",
-              "$value": "{font.size.22}"
-            },
-            "line-height": {
-              "$type": "number",
-              "$value": "{font.line-height.1_3}"
-            },
-            "font-weight": {
-              "$type": "fontWeight",
-              "$value": "{font.weight.700}"
-            },
-            "$description": "The heading text role."
+          "secondary": {
+            "$type": "color",
+            "$description": "Secondary action fill.",
+            "$value": "{theme.color-action-secondary}"
           },
-          "body": {
-            "font-family": {
-              "$type": "fontFamily",
-              "$value": "{font.family.body}"
-            },
-            "font-size": {
-              "$type": "dimension",
-              "$value": "{font.size.19}"
-            },
-            "line-height": {
-              "$type": "number",
-              "$value": "{font.line-height.1_6}"
-            },
-            "font-weight": {
-              "$type": "fontWeight",
-              "$value": "{font.weight.400}"
-            },
-            "$description": "The body text role."
-          },
-          "label": {
-            "font-family": {
-              "$type": "fontFamily",
-              "$value": "{font.family.ui}"
-            },
-            "font-size": {
-              "$type": "dimension",
-              "$value": "{font.size.18}"
-            },
-            "line-height": {
-              "$type": "number",
-              "$value": "{font.line-height.1_4}"
-            },
-            "font-weight": {
-              "$type": "fontWeight",
-              "$value": "{font.weight.700}"
-            },
-            "$description": "The label text role."
-          },
-          "caption": {
-            "font-family": {
-              "$type": "fontFamily",
-              "$value": "{font.family.ui}"
-            },
-            "font-size": {
-              "$type": "dimension",
-              "$value": "{font.size.16}"
-            },
-            "line-height": {
-              "$type": "number",
-              "$value": "{font.line-height.1_5}"
-            },
-            "font-weight": {
-              "$type": "fontWeight",
-              "$value": "{font.weight.400}"
-            },
-            "$description": "The caption text role."
-          },
-          "data": {
-            "font-family": {
-              "$type": "fontFamily",
-              "$value": "{font.family.body}"
-            },
-            "font-size": {
-              "$type": "dimension",
-              "$value": "{font.size.19}"
-            },
-            "line-height": {
-              "$type": "number",
-              "$value": "{font.line-height.1_6}"
-            },
-            "font-weight": {
-              "$type": "fontWeight",
-              "$value": "{font.weight.400}"
-            },
-            "$description": "The data text role."
+          "secondary-hover": {
+            "$type": "color",
+            "$description": "Secondary action on hover.",
+            "$value": "{theme.color-action-secondary-hover}"
           }
         },
-        "motion": {
-          "duration": {
-            "feedback": {
-              "$type": "duration",
-              "$value": "{duration.moderate}",
-              "$description": "Feedback speed: moderate."
-            }
+        "status": {
+          "success": {
+            "$type": "color",
+            "$description": "Success text and icons.",
+            "$value": "{theme.color-status-success}"
           },
-          "easing": {
-            "standard": {
-              "$type": "cubicBezier",
-              "$value": "{easing.standard}",
-              "$description": "Feedback easing."
-            }
-          }
-        },
-        "opacity": {
-          "disabled": {
-            "$type": "number",
-            "$value": "{opacity.50}",
-            "$description": "Disabled controls."
+          "warning": {
+            "$type": "color",
+            "$description": "Warning text and icons.",
+            "$value": "{theme.color-status-warning}"
+          },
+          "danger": {
+            "$type": "color",
+            "$description": "Danger text and icons.",
+            "$value": "{theme.color-status-danger}"
+          },
+          "success-subtle": {
+            "$type": "color",
+            "$description": "Success badge fill.",
+            "$value": "{theme.color-status-success-subtle}"
+          },
+          "warning-subtle": {
+            "$type": "color",
+            "$description": "Warning badge fill.",
+            "$value": "{theme.color-status-warning-subtle}"
+          },
+          "danger-subtle": {
+            "$type": "color",
+            "$description": "Danger badge fill.",
+            "$value": "{theme.color-status-danger-subtle}"
           }
         }
       },
-      "light": {
-        "color": {
-          "surface": {
-            "canvas": {
-              "$type": "color",
-              "$value": "{color.neutral.50}",
-              "$description": "The page background."
-            },
-            "default": {
-              "$type": "color",
-              "$value": "{color.neutral.0}",
-              "$description": "Cards, inputs and tables."
-            },
-            "raised": {
-              "$type": "color",
-              "$value": "{color.neutral.0}",
-              "$description": "Menus, dialogs, toasts."
-            },
-            "sunken": {
-              "$type": "color",
-              "$value": "{color.neutral.100}",
-              "$description": "Table headers and wells."
-            },
-            "selected": {
-              "$type": "color",
-              "$value": "{color.brand.100}",
-              "$description": "A selected row or item."
-            },
-            "inverse": {
-              "$type": "color",
-              "$value": "{color.neutral.900}",
-              "$description": "Tooltips."
-            },
-            "scrim": {
-              "$type": "color",
-              "$value": "{color.black-alpha.scrim}",
-              "$description": "Dims the page behind a dialog."
-            }
-          },
-          "text": {
-            "primary": {
-              "$type": "color",
-              "$value": "{color.neutral.900}",
-              "$description": "Main text."
-            },
-            "secondary": {
-              "$type": "color",
-              "$value": "{color.neutral.700}",
-              "$description": "Supporting text; passes AA."
-            },
-            "muted": {
-              "$type": "color",
-              "$value": "{color.neutral.500}",
-              "$description": "Hints and placeholders."
-            },
-            "inverse": {
-              "$type": "color",
-              "$value": "{color.neutral.0}",
-              "$description": "Text on inverse surfaces."
-            },
-            "on-action": {
-              "$type": "color",
-              "$value": "{color.neutral.0}",
-              "$description": "Text on the primary action."
-            },
-            "link": {
-              "$type": "color",
-              "$value": "{color.brand.700}",
-              "$description": "Links."
-            }
-          },
-          "border": {
-            "default": {
-              "$type": "color",
-              "$value": "{color.neutral.200}",
-              "$description": "Row lines and card borders."
-            },
-            "strong": {
-              "$type": "color",
-              "$value": "{color.neutral.500}",
-              "$description": "Input and secondary button borders."
-            },
-            "focus": {
-              "$type": "color",
-              "$value": "{color.brand.600}",
-              "$description": "The keyboard focus ring."
-            }
-          },
-          "action": {
-            "primary": {
-              "$type": "color",
-              "$value": "{color.brand.600}",
-              "$description": "The primary action."
-            },
-            "primary-hover": {
-              "$type": "color",
-              "$value": "{color.brand.700}",
-              "$description": "Primary action on hover."
-            },
-            "secondary": {
-              "$type": "color",
-              "$value": "{color.neutral.0}",
-              "$description": "Secondary action fill."
-            },
-            "secondary-hover": {
-              "$type": "color",
-              "$value": "{color.neutral.100}",
-              "$description": "Secondary action on hover."
-            }
-          },
-          "status": {
-            "success": {
-              "$type": "color",
-              "$value": "{color.success.strong}",
-              "$description": "Success text and icons."
-            },
-            "warning": {
-              "$type": "color",
-              "$value": "{color.warning.strong}",
-              "$description": "Warning text and icons."
-            },
-            "danger": {
-              "$type": "color",
-              "$value": "{color.danger.strong}",
-              "$description": "Danger text and icons."
-            },
-            "success-subtle": {
-              "$type": "color",
-              "$value": "{color.success.subtle}",
-              "$description": "Success badge fill."
-            },
-            "warning-subtle": {
-              "$type": "color",
-              "$value": "{color.warning.subtle}",
-              "$description": "Warning badge fill."
-            },
-            "danger-subtle": {
-              "$type": "color",
-              "$value": "{color.danger.subtle}",
-              "$description": "Danger badge fill."
-            }
-          }
+      "elevation": {
+        "card": {
+          "$type": "shadow",
+          "$description": "No shadow in this scheme.",
+          "$value": "{theme.elevation-card}"
         },
-        "elevation": {
-          "card": {
-            "$type": "shadow",
-            "$value": "{shadow.none}",
-            "$description": "No shadow in this scheme."
-          },
-          "overlay": {
-            "$type": "shadow",
-            "$value": "{shadow.none}",
-            "$description": "No shadow in this scheme."
-          }
-        }
-      },
-      "dark": {
-        "color": {
-          "surface": {
-            "canvas": {
-              "$type": "color",
-              "$value": "{color.neutral.950}"
-            },
-            "default": {
-              "$type": "color",
-              "$value": "{color.neutral.900}"
-            },
-            "raised": {
-              "$type": "color",
-              "$value": "{color.neutral.800}"
-            },
-            "sunken": {
-              "$type": "color",
-              "$value": "{color.neutral.800}"
-            },
-            "selected": {
-              "$type": "color",
-              "$value": "{color.brand.800}"
-            },
-            "inverse": {
-              "$type": "color",
-              "$value": "{color.neutral.50}"
-            },
-            "scrim": {
-              "$type": "color",
-              "$value": "{color.black-alpha.scrim-dark}"
-            }
-          },
-          "text": {
-            "primary": {
-              "$type": "color",
-              "$value": "{color.neutral.50}"
-            },
-            "secondary": {
-              "$type": "color",
-              "$value": "{color.neutral.300}"
-            },
-            "muted": {
-              "$type": "color",
-              "$value": "{color.neutral.500}"
-            },
-            "inverse": {
-              "$type": "color",
-              "$value": "{color.neutral.900}"
-            },
-            "on-action": {
-              "$type": "color",
-              "$value": "{color.neutral.950}"
-            },
-            "link": {
-              "$type": "color",
-              "$value": "{color.brand.300}"
-            }
-          },
-          "border": {
-            "default": {
-              "$type": "color",
-              "$value": "{color.neutral.800}"
-            },
-            "strong": {
-              "$type": "color",
-              "$value": "{color.neutral.500}"
-            },
-            "focus": {
-              "$type": "color",
-              "$value": "{color.brand.300}"
-            }
-          },
-          "action": {
-            "primary": {
-              "$type": "color",
-              "$value": "{color.brand.300}"
-            },
-            "primary-hover": {
-              "$type": "color",
-              "$value": "{color.brand.100}"
-            },
-            "secondary": {
-              "$type": "color",
-              "$value": "{color.neutral.900}"
-            },
-            "secondary-hover": {
-              "$type": "color",
-              "$value": "{color.neutral.800}"
-            }
-          },
-          "status": {
-            "success": {
-              "$type": "color",
-              "$value": "{color.success.strong-dark}"
-            },
-            "warning": {
-              "$type": "color",
-              "$value": "{color.warning.strong-dark}"
-            },
-            "danger": {
-              "$type": "color",
-              "$value": "{color.danger.strong-dark}"
-            },
-            "success-subtle": {
-              "$type": "color",
-              "$value": "{color.success.subtle-dark}"
-            },
-            "warning-subtle": {
-              "$type": "color",
-              "$value": "{color.warning.subtle-dark}"
-            },
-            "danger-subtle": {
-              "$type": "color",
-              "$value": "{color.danger.subtle-dark}"
-            }
-          }
-        },
-        "elevation": {
-          "card": {
-            "$type": "shadow",
-            "$value": "{shadow.none}",
-            "$description": "No shadow in this scheme."
-          },
-          "overlay": {
-            "$type": "shadow",
-            "$value": "{shadow.none}",
-            "$description": "No shadow in this scheme."
-          }
+        "overlay": {
+          "$type": "shadow",
+          "$description": "No shadow in this scheme.",
+          "$value": "{theme.elevation-overlay}"
         }
       }
     },

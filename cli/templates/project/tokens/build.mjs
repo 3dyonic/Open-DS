@@ -11,7 +11,14 @@
 //
 // Edit a file in tokens/src, then run: npm run tokens
 
-import { existsSync, mkdirSync, readFileSync, readdirSync, rmSync, writeFileSync } from "node:fs";
+import {
+  existsSync,
+  mkdirSync,
+  readFileSync,
+  readdirSync,
+  rmSync,
+  writeFileSync,
+} from "node:fs";
 import { dirname, join } from "node:path";
 import { fileURLToPath } from "node:url";
 import StyleDictionary from "style-dictionary";
@@ -20,10 +27,18 @@ const here = dirname(fileURLToPath(import.meta.url));
 const src = join(here, "src");
 const out = join(here, "..", "build");
 const read = (...p) => JSON.parse(readFileSync(join(src, ...p), "utf8"));
-const { name, brands, themes } = JSON.parse(readFileSync(join(here, "themes.json"), "utf8"));
+const { name, brands, themes } = JSON.parse(
+  readFileSync(join(here, "themes.json"), "utf8"),
+);
 
 // The values are already valid CSS, so only naming and composite transforms run.
-const TRANSFORMS = ["attribute/cti", "name/kebab", "fontFamily/css", "cubicBezier/css", "shadow/css/shorthand"];
+const TRANSFORMS = [
+  "attribute/cti",
+  "name/kebab",
+  "fontFamily/css",
+  "cubicBezier/css",
+  "shadow/css/shorthand",
+];
 
 // shadcn reads these variables. Each points at one semantic decision.
 const SHADCN = {
@@ -84,28 +99,82 @@ const SHADCN_SCALE = {
   "--text-lg": "var(--type-heading-font-size)",
   "--text-lg--line-height": "var(--type-heading-line-height)",
 };
-const ROLES = ["display", "title", "heading", "body", "label", "caption", "data"];
+const ROLES = [
+  "display",
+  "title",
+  "heading",
+  "body",
+  "label",
+  "caption",
+  "data",
+];
 
 const isObject = (v) => v && typeof v === "object" && !Array.isArray(v);
 function merge(...trees) {
   const tree = {};
   for (const t of trees) {
     for (const [k, v] of Object.entries(t ?? {})) {
-      tree[k] = isObject(v) && !("$value" in v) && isObject(tree[k]) ? merge(tree[k], v) : v;
+      tree[k] =
+        isObject(v) && !("$value" in v) && isObject(tree[k])
+          ? merge(tree[k], v)
+          : v;
     }
   }
   return tree;
 }
 
-// One theme is the primitives, the brand's primitives, the semantics for the mode and the component keys.
-const themeTokens = (brand, mode) =>
-  merge(
-    read("primitive.tokens.json"),
-    read("brands", `${brand}.tokens.json`),
-    read("semantic", "base.tokens.json"),
-    read("semantic", `${mode}.tokens.json`),
-    read("component.tokens.json"),
+// Every *.tokens.json under a folder of tokens/src, merged.
+const readDir = (dir) => {
+  const at = join(src, dir);
+  if (!existsSync(at)) return {};
+  return merge(
+    ...readdirSync(at, { recursive: true })
+      .filter((f) => String(f).endsWith(".tokens.json"))
+      .sort()
+      .map((f) => JSON.parse(readFileSync(join(at, String(f)), "utf8"))),
   );
+};
+const primitives = readDir("primitive");
+const semantics = readDir("semantic");
+const components = readDir("component");
+
+// A semantic key that depends on the brand or mode says {theme.<key>}. Point it at this brand and mode.
+function pointAtTheme(tree, name, theme, mode) {
+  const out = {};
+  for (const [k, v] of Object.entries(tree)) {
+    if (isObject(v) && "$value" in v) {
+      const m =
+        typeof v.$value === "string" && v.$value.match(/^\{theme\.([^}]+)\}$/);
+      if (!m) out[k] = v;
+      else {
+        const part = theme.base && m[1] in theme.base ? "base" : mode;
+        if (!theme[part]?.[m[1]])
+          throw new Error(
+            `No theme key "${m[1]}" in tokens/src/theme for ${name} ${part}.`,
+          );
+        out[k] = { ...v, $value: `{${name}.theme.${part}.${m[1]}}` };
+      }
+    } else out[k] = isObject(v) ? pointAtTheme(v, name, theme, mode) : v;
+  }
+  return out;
+}
+
+// One theme: the primitives, this brand's theme for the mode, the semantics pointed at it, the component keys.
+const themeTokens = (brand, mode) => {
+  const { theme: name } = brands.find((b) => b.id === brand);
+  const theme = read("theme", `${brand}.tokens.json`)[name].theme;
+  const picked = {
+    [name]: {
+      theme: { ...(theme.base && { base: theme.base }), [mode]: theme[mode] },
+    },
+  };
+  return merge(
+    primitives,
+    picked,
+    pointAtTheme(semantics, name, theme, mode),
+    components,
+  );
+};
 
 function selectors(brand, mode) {
   const multi = brands.length > 1;
@@ -113,7 +182,10 @@ function selectors(brand, mode) {
   const b = `[data-brand="${brand}"]`;
   const base = mode === "light" ? [":root"] : [".dark"];
   if (!multi) return base;
-  const withBrand = mode === "light" ? [`:root${b}`, b] : [`.dark${b}`, `.dark ${b}`, `${b} .dark`];
+  const withBrand =
+    mode === "light"
+      ? [`:root${b}`, b]
+      : [`.dark${b}`, `.dark ${b}`, `${b} .dark`];
   return first ? [...base, ...withBrand] : withBrand;
 }
 
@@ -122,7 +194,9 @@ async function format(tokens, platform) {
     tokens,
     usesDtcg: true,
     log: { verbosity: "silent", warnings: "disabled" },
-    platforms: { [platform.name]: { transforms: TRANSFORMS, files: [platform.file] } },
+    platforms: {
+      [platform.name]: { transforms: TRANSFORMS, files: [platform.file] },
+    },
   });
   const [file] = await sd.formatPlatform(platform.name);
   return file.output;
@@ -132,12 +206,21 @@ const cssBlock = async (tokens, selector) =>
   (
     await format(tokens, {
       name: "css",
-      file: { destination: "x.css", format: "css/variables", options: { selector, outputReferences: true } },
+      file: {
+        destination: "x.css",
+        format: "css/variables",
+        options: { selector, outputReferences: true },
+      },
     })
   ).replace(/^\/\*\*[\s\S]*?\*\/\n/, "");
 
 const resolved = async (tokens) =>
-  JSON.parse(await format(tokens, { name: "json", file: { destination: "x.json", format: "json/nested" } }));
+  JSON.parse(
+    await format(tokens, {
+      name: "json",
+      file: { destination: "x.json", format: "json/nested" },
+    }),
+  );
 
 const themeCss = () =>
   [
@@ -243,7 +326,10 @@ const INFIMA = {
 
 async function docusaurusCss(brand) {
   const light = await cssBlock(themeTokens(brand, "light"), ":root");
-  const dark = await cssBlock(themeTokens(brand, "dark"), 'html[data-theme="dark"]');
+  const dark = await cssBlock(
+    themeTokens(brand, "dark"),
+    'html[data-theme="dark"]',
+  );
   const infima = `:root,\nhtml[data-theme="dark"] {\n${Object.entries(INFIMA)
     .map(([k, v]) => `  ${k}: var(--${v});`)
     .join("\n")}\n}\n`;
@@ -258,7 +344,10 @@ for (const theme of themes) {
   const tokens = themeTokens(theme.brand, theme.mode);
   css += await cssBlock(tokens, selectors(theme.brand, theme.mode).join(",\n"));
   json[theme.id] = await resolved(tokens);
-  writeFileSync(join(out, "json", `${theme.id}.tokens.json`), JSON.stringify(json[theme.id], null, 2) + "\n");
+  writeFileSync(
+    join(out, "json", `${theme.id}.tokens.json`),
+    JSON.stringify(json[theme.id], null, 2) + "\n",
+  );
 }
 writeFileSync(join(out, "tokens.css"), css);
 writeFileSync(join(out, "theme.css"), themeCss());
@@ -273,6 +362,11 @@ writeFileSync(
   ].join("\n"),
 );
 if (existsSync(join(src, "content.tokens.json")))
-  writeFileSync(join(out, "content.json"), JSON.stringify(read("content.tokens.json"), null, 2) + "\n");
+  writeFileSync(
+    join(out, "content.json"),
+    JSON.stringify(read("content.tokens.json"), null, 2) + "\n",
+  );
 writeFileSync(join(out, "docusaurus.css"), await docusaurusCss(brands[0].id));
-console.log(`Built ${name}: ${themes.length} themes into build/ (${readdirSync(out).join(", ")}).`);
+console.log(
+  `Built ${name}: ${themes.length} themes into build/ (${readdirSync(out).join(", ")}).`,
+);

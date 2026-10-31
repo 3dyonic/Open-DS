@@ -55,32 +55,32 @@ Each token points to another token. Values live only on primitives, below.
 
 | Token | Points to, light | Points to, dark |
 | --- | --- | --- |
-| `color.surface.canvas` | `color.neutral.50` → `color.slate.50` | `color.neutral.950` → `color.slate.950` |
-| `color.surface.default` | `color.neutral.0` → `color.slate.0` | `color.neutral.900` → `color.slate.900` |
-| `color.surface.raised` | `color.neutral.0` → `color.slate.0` | `color.neutral.800` → `color.slate.800` |
-| `color.surface.sunken` | `color.neutral.100` → `color.slate.100` | `color.neutral.800` → `color.slate.800` |
-| `color.surface.selected` | `color.brand.100` → `color.violet.100` | `color.brand.800` → `color.violet.800` |
-| `color.surface.inverse` | `color.neutral.900` → `color.slate.900` | `color.neutral.50` → `color.slate.50` |
-| `color.surface.scrim` | `color.black-alpha.scrim` | `color.black-alpha.scrim-dark` |
-| `color.text.primary` | `color.neutral.900` → `color.slate.900` | `color.neutral.50` → `color.slate.50` |
-| `color.text.secondary` | `color.neutral.700` → `color.slate.700` | `color.neutral.300` → `color.slate.300` |
-| `color.text.muted` | `color.neutral.500` → `color.slate.500` | `color.neutral.500` → `color.slate.500` |
-| `color.text.inverse` | `color.neutral.0` → `color.slate.0` | `color.neutral.900` → `color.slate.900` |
-| `color.text.on-action` | `color.neutral.0` → `color.slate.0` | `color.neutral.950` → `color.slate.950` |
-| `color.text.link` | `color.brand.700` → `color.violet.700` | `color.brand.300` → `color.violet.300` |
-| `color.border.default` | `color.neutral.200` → `color.slate.200` | `color.neutral.800` → `color.slate.800` |
-| `color.border.strong` | `color.neutral.300` → `color.slate.300` | `color.neutral.700` → `color.slate.700` |
-| `color.border.focus` | `color.brand.600` → `color.violet.600` | `color.brand.300` → `color.violet.300` |
-| `color.action.primary` | `color.brand.600` → `color.violet.600` | `color.brand.300` → `color.violet.300` |
-| `color.action.primary-hover` | `color.brand.700` → `color.violet.700` | `color.brand.100` → `color.violet.100` |
-| `color.action.secondary` | `color.neutral.0` → `color.slate.0` | `color.neutral.900` → `color.slate.900` |
-| `color.action.secondary-hover` | `color.neutral.100` → `color.slate.100` | `color.neutral.800` → `color.slate.800` |
-| `color.status.success` | `color.success.strong` → `color.green.700` | `color.success.strong-dark` → `color.green.300` |
-| `color.status.warning` | `color.warning.strong` → `color.amber.700` | `color.warning.strong-dark` → `color.amber.300` |
-| `color.status.danger` | `color.danger.strong` → `color.red.700` | `color.danger.strong-dark` → `color.red.300` |
-| `color.status.success-subtle` | `color.success.subtle` → `color.green.100` | `color.success.subtle-dark` → `color.green.900` |
-| `color.status.warning-subtle` | `color.warning.subtle` → `color.amber.100` | `color.warning.subtle-dark` → `color.amber.900` |
-| `color.status.danger-subtle` | `color.danger.subtle` → `color.red.100` | `color.danger.subtle-dark` → `color.red.900` |
+| `color.surface.canvas` | `dense-data.theme.light.color-surface-canvas` → `color.slate.light.50` | `dense-data.theme.dark.color-surface-canvas` → `color.slate.dark.0` |
+| `color.surface.default` | `dense-data.theme.light.color-surface-default` → `color.slate.light.0` | `dense-data.theme.dark.color-surface-default` → `color.slate.dark.50` |
+| `color.surface.raised` | `dense-data.theme.light.color-surface-raised` → `color.slate.light.0` | `dense-data.theme.dark.color-surface-raised` → `color.slate.dark.100` |
+| `color.surface.sunken` | `dense-data.theme.light.color-surface-sunken` → `color.slate.light.100` | `dense-data.theme.dark.color-surface-sunken` → `color.slate.dark.100` |
+| `color.surface.selected` | `dense-data.theme.light.color-surface-selected` → `color.violet.light.100` | `dense-data.theme.dark.color-surface-selected` → `color.violet.dark.100` |
+| `color.surface.inverse` | `dense-data.theme.light.color-surface-inverse` → `color.slate.light.900` | `dense-data.theme.dark.color-surface-inverse` → `color.slate.dark.900` |
+| `color.surface.scrim` | `dense-data.theme.light.color-surface-scrim` → `color.black.light.scrim` | `dense-data.theme.dark.color-surface-scrim` → `color.black.dark.scrim` |
+| `color.text.primary` | `dense-data.theme.light.color-text-primary` → `color.slate.light.900` | `dense-data.theme.dark.color-text-primary` → `color.slate.dark.900` |
+| `color.text.secondary` | `dense-data.theme.light.color-text-secondary` → `color.slate.light.700` | `dense-data.theme.dark.color-text-secondary` → `color.slate.dark.500` |
+| `color.text.muted` | `dense-data.theme.light.color-text-muted` → `color.slate.light.500` | `dense-data.theme.dark.color-text-muted` → `color.slate.dark.300` |
+| `color.text.inverse` | `dense-data.theme.light.color-text-inverse` → `color.slate.light.0` | `dense-data.theme.dark.color-text-inverse` → `color.slate.dark.50` |
+| `color.text.on-action` | `dense-data.theme.light.color-text-on-action` → `color.slate.light.0` | `dense-data.theme.dark.color-text-on-action` → `color.slate.dark.0` |
+| `color.text.link` | `dense-data.theme.light.color-text-link` → `color.violet.light.700` | `dense-data.theme.dark.color-text-link` → `color.violet.dark.700` |
+| `color.border.default` | `dense-data.theme.light.color-border-default` → `color.slate.light.200` | `dense-data.theme.dark.color-border-default` → `color.slate.dark.100` |
+| `color.border.strong` | `dense-data.theme.light.color-border-strong` → `color.slate.light.300` | `dense-data.theme.dark.color-border-strong` → `color.slate.dark.200` |
+| `color.border.focus` | `dense-data.theme.light.color-border-focus` → `color.violet.light.600` | `dense-data.theme.dark.color-border-focus` → `color.violet.dark.700` |
+| `color.action.primary` | `dense-data.theme.light.color-action-primary` → `color.violet.light.600` | `dense-data.theme.dark.color-action-primary` → `color.violet.dark.700` |
+| `color.action.primary-hover` | `dense-data.theme.light.color-action-primary-hover` → `color.violet.light.700` | `dense-data.theme.dark.color-action-primary-hover` → `color.violet.dark.800` |
+| `color.action.secondary` | `dense-data.theme.light.color-action-secondary` → `color.slate.light.0` | `dense-data.theme.dark.color-action-secondary` → `color.slate.dark.50` |
+| `color.action.secondary-hover` | `dense-data.theme.light.color-action-secondary-hover` → `color.slate.light.100` | `dense-data.theme.dark.color-action-secondary-hover` → `color.slate.dark.100` |
+| `color.status.success` | `dense-data.theme.light.color-status-success` → `color.green.light.700` | `dense-data.theme.dark.color-status-success` → `color.green.dark.700` |
+| `color.status.warning` | `dense-data.theme.light.color-status-warning` → `color.amber.light.700` | `dense-data.theme.dark.color-status-warning` → `color.amber.dark.700` |
+| `color.status.danger` | `dense-data.theme.light.color-status-danger` → `color.red.light.700` | `dense-data.theme.dark.color-status-danger` → `color.red.dark.700` |
+| `color.status.success-subtle` | `dense-data.theme.light.color-status-success-subtle` → `color.green.light.100` | `dense-data.theme.dark.color-status-success-subtle` → `color.green.dark.100` |
+| `color.status.warning-subtle` | `dense-data.theme.light.color-status-warning-subtle` → `color.amber.light.100` | `dense-data.theme.dark.color-status-warning-subtle` → `color.amber.dark.100` |
+| `color.status.danger-subtle` | `dense-data.theme.light.color-status-danger-subtle` → `color.red.light.100` | `dense-data.theme.dark.color-status-danger-subtle` → `color.red.dark.100` |
 
 ## Primitives
 
@@ -88,35 +88,41 @@ The raw values the tokens above end at.
 
 | Primitive | Value | Sample |
 | --- | --- | --- |
-| `color.amber.100` | #FFF3D6 | <span class="ods-swatch" style="background:var(--color-amber-100)"></span> |
-| `color.amber.300` | #F2B84B | <span class="ods-swatch" style="background:var(--color-amber-300)"></span> |
-| `color.amber.700` | #8A5600 | <span class="ods-swatch" style="background:var(--color-amber-700)"></span> |
-| `color.amber.900` | #3A2A05 | <span class="ods-swatch" style="background:var(--color-amber-900)"></span> |
-| `color.black-alpha.scrim` | #0000008C | <span class="ods-swatch" style="background:var(--color-black-alpha-scrim)"></span> |
-| `color.black-alpha.scrim-dark` | #000000B3 | <span class="ods-swatch" style="background:var(--color-black-alpha-scrim-dark)"></span> |
-| `color.green.100` | #E3F4EA | <span class="ods-swatch" style="background:var(--color-green-100)"></span> |
-| `color.green.300` | #5CC283 | <span class="ods-swatch" style="background:var(--color-green-300)"></span> |
-| `color.green.700` | #1F7A3A | <span class="ods-swatch" style="background:var(--color-green-700)"></span> |
-| `color.green.900` | #123322 | <span class="ods-swatch" style="background:var(--color-green-900)"></span> |
-| `color.red.100` | #FDE7E7 | <span class="ods-swatch" style="background:var(--color-red-100)"></span> |
-| `color.red.300` | #F28B8B | <span class="ods-swatch" style="background:var(--color-red-300)"></span> |
-| `color.red.700` | #C42B2B | <span class="ods-swatch" style="background:var(--color-red-700)"></span> |
-| `color.red.900` | #3D1414 | <span class="ods-swatch" style="background:var(--color-red-900)"></span> |
-| `color.slate.0` | #FFFFFF | <span class="ods-swatch" style="background:var(--color-slate-0)"></span> |
-| `color.slate.100` | #EEF1F5 | <span class="ods-swatch" style="background:var(--color-slate-100)"></span> |
-| `color.slate.200` | #DDE2EA | <span class="ods-swatch" style="background:var(--color-slate-200)"></span> |
-| `color.slate.300` | #C4CBD6 | <span class="ods-swatch" style="background:var(--color-slate-300)"></span> |
-| `color.slate.50` | #F7F8FA | <span class="ods-swatch" style="background:var(--color-slate-50)"></span> |
-| `color.slate.500` | #6B7585 | <span class="ods-swatch" style="background:var(--color-slate-500)"></span> |
-| `color.slate.700` | #3D4655 | <span class="ods-swatch" style="background:var(--color-slate-700)"></span> |
-| `color.slate.800` | #262D38 | <span class="ods-swatch" style="background:var(--color-slate-800)"></span> |
-| `color.slate.900` | #161B23 | <span class="ods-swatch" style="background:var(--color-slate-900)"></span> |
-| `color.slate.950` | #0D1117 | <span class="ods-swatch" style="background:var(--color-slate-950)"></span> |
-| `color.violet.100` | #EEEDFE | <span class="ods-swatch" style="background:var(--color-violet-100)"></span> |
-| `color.violet.300` | #A9A3F6 | <span class="ods-swatch" style="background:var(--color-violet-300)"></span> |
-| `color.violet.600` | #4B3FD9 | <span class="ods-swatch" style="background:var(--color-violet-600)"></span> |
-| `color.violet.700` | #3B31B0 | <span class="ods-swatch" style="background:var(--color-violet-700)"></span> |
-| `color.violet.800` | #2C2588 | <span class="ods-swatch" style="background:var(--color-violet-800)"></span> |
+| `color.amber.dark.100` | #3A2A05 |  |
+| `color.amber.dark.700` | #F2B84B |  |
+| `color.amber.light.100` | #FFF3D6 |  |
+| `color.amber.light.700` | #8A5600 |  |
+| `color.black.dark.scrim` | #000000B3 |  |
+| `color.black.light.scrim` | #0000008C |  |
+| `color.green.dark.100` | #123322 |  |
+| `color.green.dark.700` | #5CC283 |  |
+| `color.green.light.100` | #E3F4EA |  |
+| `color.green.light.700` | #1F7A3A |  |
+| `color.red.dark.100` | #3D1414 |  |
+| `color.red.dark.700` | #F28B8B |  |
+| `color.red.light.100` | #FDE7E7 |  |
+| `color.red.light.700` | #C42B2B |  |
+| `color.slate.dark.0` | #0D1117 |  |
+| `color.slate.dark.100` | #262D38 |  |
+| `color.slate.dark.200` | #3D4655 |  |
+| `color.slate.dark.300` | #6B7585 |  |
+| `color.slate.dark.50` | #161B23 |  |
+| `color.slate.dark.500` | #C4CBD6 |  |
+| `color.slate.dark.900` | #F7F8FA |  |
+| `color.slate.light.0` | #FFFFFF |  |
+| `color.slate.light.100` | #EEF1F5 |  |
+| `color.slate.light.200` | #DDE2EA |  |
+| `color.slate.light.300` | #C4CBD6 |  |
+| `color.slate.light.50` | #F7F8FA |  |
+| `color.slate.light.500` | #6B7585 |  |
+| `color.slate.light.700` | #3D4655 |  |
+| `color.slate.light.900` | #161B23 |  |
+| `color.violet.dark.100` | #2C2588 |  |
+| `color.violet.dark.700` | #A9A3F6 |  |
+| `color.violet.dark.800` | #EEEDFE |  |
+| `color.violet.light.100` | #EEEDFE |  |
+| `color.violet.light.600` | #4B3FD9 |  |
+| `color.violet.light.700` | #3B31B0 |  |
 
 ## Where it lands
 
