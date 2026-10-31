@@ -65,7 +65,9 @@ export function SiteFooter() {
   return (
     <footer className="flex min-h-[164px] flex-wrap items-start justify-between gap-4 px-5 pt-8 font-mono text-[13px] text-muted lg:px-20">
       <p>{brandName} · MIT</p>
-      <p>A 3dyonic project · Case study</p>
+      <a href="https://3dyonic.com" className="hover:text-ink" rel="noopener">
+        A 3dyonic project
+      </a>
     </footer>
   );
 }
