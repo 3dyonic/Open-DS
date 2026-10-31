@@ -1,6 +1,6 @@
 # Dense data
 
-> Compact, exact and quiet, for experts who scan and compare numbers all day.
+> Compact, exact and quiet, for analysts who scan alerts and compare signals all day.
 
 ## Pages
 

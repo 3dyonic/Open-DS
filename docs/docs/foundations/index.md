@@ -18,7 +18,7 @@ Every scope answers the same five questions. This is the answer that sets each s
 | [Elevation](./elevation.md) | Subtle | Subtle shadows keep the grid crisp. |
 | [Motion](./motion.md) | Fast | Fast feedback keeps up with experts. |
 | [Iconography](./iconography.md) | Match the text | Icons match the label so they do not outweigh it. |
-| [Theming](./theming.md) | Light and dark | Light and dark ship as standard; long shifts favour dark. |
+| [Theming](./theming.md) | Light and dark | Light first, always; dark ships as standard for night shifts. |
 | [Accessibility](./accessibility.md) | Compact, for a pointer | Mouse and keyboard; compact targets are enough. |
 | [Naming](./naming.md) | Lowercase words in paths | Lowercase paths read the same in CSS, JSON and Figma. |
 | [Voice and tone](./voice.md) | Terse | Experts want short labels and short messages. |

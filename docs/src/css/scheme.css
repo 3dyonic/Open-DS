@@ -25,12 +25,12 @@
   --color-danger-subtle-dark: #3D1414;
   --color-black-alpha-scrim: #0000008C;
   --color-black-alpha-scrim-dark: #000000B3;
-  --color-brand-100: #E6EDFC;
-  --color-brand-300: #8EA9EC;
-  --color-brand-500: #3B6BE0;
-  --color-brand-600: #2457D6;
-  --color-brand-700: #1C45AB;
-  --color-brand-800: #163784;
+  --color-brand-100: #EEEDFE;
+  --color-brand-300: #A9A3F6;
+  --color-brand-500: #5B4FE8;
+  --color-brand-600: #4B3FD9;
+  --color-brand-700: #3B31B0;
+  --color-brand-800: #2C2588;
   --space-4: 0.25rem;
   --space-8: 0.5rem;
   --space-12: 0.75rem;
@@ -109,9 +109,9 @@
   --size-control-compact: var(--size-24); /** Height of compact controls. */
   --size-row: var(--size-32); /** Height of one table row. */
   --size-icon: var(--size-16); /** Icon size next to text. */
-  --radius-brand-control: var(--radius-4);
-  --radius-brand-badge: var(--radius-2);
-  --radius-brand-container: var(--radius-6);
+  --radius-brand-control: var(--radius-2);
+  --radius-brand-badge: var(--radius-0);
+  --radius-brand-container: var(--radius-4);
   --radius-round: var(--radius-full); /** Fully round: avatars and dots. */
   --border-width-default: var(--border-width-1); /** Every border. */
   --border-width-focus: var(--border-width-2); /** The focus ring. */
@@ -241,12 +241,12 @@ html[data-theme="dark"] {
   --color-danger-subtle-dark: #3D1414;
   --color-black-alpha-scrim: #0000008C;
   --color-black-alpha-scrim-dark: #000000B3;
-  --color-brand-100: #E6EDFC;
-  --color-brand-300: #8EA9EC;
-  --color-brand-500: #3B6BE0;
-  --color-brand-600: #2457D6;
-  --color-brand-700: #1C45AB;
-  --color-brand-800: #163784;
+  --color-brand-100: #EEEDFE;
+  --color-brand-300: #A9A3F6;
+  --color-brand-500: #5B4FE8;
+  --color-brand-600: #4B3FD9;
+  --color-brand-700: #3B31B0;
+  --color-brand-800: #2C2588;
   --space-4: 0.25rem;
   --space-8: 0.5rem;
   --space-12: 0.75rem;
@@ -325,9 +325,9 @@ html[data-theme="dark"] {
   --size-control-compact: var(--size-24); /** Height of compact controls. */
   --size-row: var(--size-32); /** Height of one table row. */
   --size-icon: var(--size-16); /** Icon size next to text. */
-  --radius-brand-control: var(--radius-4);
-  --radius-brand-badge: var(--radius-2);
-  --radius-brand-container: var(--radius-6);
+  --radius-brand-control: var(--radius-2);
+  --radius-brand-badge: var(--radius-0);
+  --radius-brand-container: var(--radius-4);
   --radius-round: var(--radius-full); /** Fully round: avatars and dots. */
   --border-width-default: var(--border-width-1); /** Every border. */
   --border-width-focus: var(--border-width-2); /** The focus ring. */

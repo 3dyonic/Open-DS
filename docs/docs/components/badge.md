@@ -18,7 +18,7 @@ The CSS variable is the key with `/` replaced by `-`. Each key points to a token
 
 | Key | What it controls | Points to, light | Points to, dark |
 | --- | --- | --- | --- |
-| `badge/radius` | Badge corner radius. | `radius.badge` → `radius.brand.badge` → `radius.2` | same |
+| `badge/radius` | Badge corner radius. | `radius.badge` → `radius.brand.badge` → `radius.0` | same |
 | `badge/padding-x` | Horizontal padding inside a badge. | `space.gap.tight` → `space.4` | same |
 | `badge/font-size` | Badge label size. | `type.caption.font-size` → `font.size.12` | same |
 | `badge/neutral/background` | Neutral badge fill. | `color.surface.sunken` → `color.neutral.100` | `color.surface.sunken` → `color.neutral.800` |

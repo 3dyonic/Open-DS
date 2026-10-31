@@ -29,4 +29,4 @@ The CSS variable is the key with `/` replaced by `-`. Each key points to a token
 
 | Situation | Use | Not | Why |
 | --- | --- | --- | --- |
-| An empty state | Why it is empty and the one action that fills it | A blank table | An empty table with no words looks like an error. Example: “No late orders. Change the date range to see older ones.” |
+| An empty state | Why it is empty and the one action that fills it | A blank table | An empty table with no words looks like an error. Example: “No escalated alerts. Change the date range to see older ones.” |

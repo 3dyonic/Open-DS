@@ -25,5 +25,5 @@ Dense data ships 2 themes: light, dark. Only semantic tokens change between them
 | `color.surface.canvas` | #F7F8FA | #0D1117 |
 | `color.surface.default` | #FFFFFF | #161B23 |
 | `color.text.primary` | #161B23 | #F7F8FA |
-| `color.action.primary` | #2457D6 | #8EA9EC |
-| `color.border.focus` | #2457D6 | #8EA9EC |
+| `color.action.primary` | #4B3FD9 | #A9A3F6 |
+| `color.border.focus` | #4B3FD9 | #A9A3F6 |

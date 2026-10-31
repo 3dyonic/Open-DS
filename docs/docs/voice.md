@@ -12,13 +12,13 @@ Terse and exact. Say what happened and what to do, in as few words as possible.
 
 ## Principles
 
-- Lead with the object, then the state: "Order 1042 shipped."
+- Lead with the object, then the state: "Alert 2041 contained."
 - Use numbers, not words for numbers.
 - One verb per button. No "please", no exclamation marks.
 
 ## Words
 
-- Use: Export, Filter, Save, Late, Paid
+- Use: Investigate, Filter, Assign, Escalated, Resolved
 - Avoid: Oops, Awesome, Please, Simply
 
 ## Tone for each moment
@@ -26,8 +26,8 @@ Terse and exact. Say what happened and what to do, in as few words as possible.
 | Situation | Use | Not | Why |
 | --- | --- | --- | --- |
 | A button label | One verb from the word list | A sentence or "Please" | Labels repeat on every screen; one verb reads fastest. Example: “Export” |
-| The words of an error | Name the record, then the fix. Flat and specific. | "Oops" or a vague apology | Experts act on the message; the record and the fix are all they need. Example: “Order 1042 not saved. Quantity must be 1 or more.” |
-| A success message | A short confirmation with the count | Celebration | Confirm and get out of the way; the next task is waiting. Example: “12 orders exported.” |
-| An empty state | Why it is empty and the one action that fills it | A blank table | An empty table with no words looks like an error. Example: “No late orders. Change the date range to see older ones.” |
-| A confirmation question | Name the exact object and the consequence | "Are you sure?" | Acting on the wrong record is the costly mistake. Example: “Delete 3 orders? This cannot be undone.” |
+| The words of an error | Name the record, then the fix. Flat and specific. | "Oops" or a vague apology | Experts act on the message; the record and the fix are all they need. Example: “Alert ALR-2042 not saved. Threshold must be between 0 and 100.” |
+| A success message | A short confirmation with the count | Celebration | Confirm and get out of the way; the next task is waiting. Example: “12 alerts exported.” |
+| An empty state | Why it is empty and the one action that fills it | A blank table | An empty table with no words looks like an error. Example: “No escalated alerts. Change the date range to see older ones.” |
+| A confirmation question | Name the exact object and the consequence | "Are you sure?" | Acting on the wrong record is the costly mistake. Example: “Dismiss 3 alerts? This cannot be undone.” |
 | A first visit | No tour. Show the data, with a tooltip where needed. | A welcome tour | Daily experts skip tours; tooltips cover the first uses. Example: “Hover any column header to see what it counts.” |
