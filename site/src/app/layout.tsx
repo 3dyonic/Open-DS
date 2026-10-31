@@ -1,6 +1,6 @@
 import type { Metadata, Viewport } from "next";
 import { SiteFooter, SiteNav } from "@/components/chrome";
-import { brandName, brandTagline, siteUrl } from "@/lib/brand";
+import { brandName, brandTagline, openGraphBase, siteUrl } from "@/lib/brand";
 import "./globals.css";
 
 const TITLE = `${brandName}: design systems as answered questions`;
@@ -20,15 +20,7 @@ export const metadata: Metadata = {
     "Docusaurus",
     "AI agents",
   ],
-  alternates: { canonical: "/" },
-  openGraph: {
-    type: "website",
-    siteName: brandName,
-    title: TITLE,
-    description: brandTagline,
-    url: "/",
-    locale: "en",
-  },
+  openGraph: { ...openGraphBase, title: TITLE, description: brandTagline },
   twitter: { card: "summary_large_image", title: TITLE, description: brandTagline },
   robots: { index: true, follow: true },
 };

@@ -1,9 +1,22 @@
 // Home, built from the Figma frame S00 Home / 1440 (115:900).
+import type { Metadata } from "next";
 import Link from "next/link";
 import { Eyebrow } from "@/components/chrome";
+import { brandName, brandTagline, openGraphBase } from "@/lib/brand";
 import { Proof } from "@/components/proof";
 import { SchemeCards, Squares } from "@/components/scheme-cards";
 import { HOME_SCHEMES, proofData } from "@/lib/home";
+
+// Only the home page names itself canonical; set in the layout it would apply to every page.
+export const metadata: Metadata = {
+  alternates: { canonical: "/" },
+  openGraph: {
+    ...openGraphBase,
+    title: `${brandName}: design systems as answered questions`,
+    description: brandTagline,
+    url: "/",
+  },
+};
 
 const STEPS = [
   {
