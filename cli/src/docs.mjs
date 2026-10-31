@@ -255,14 +255,24 @@ export function docsPages(scheme, g, roots, { storybook = "http://localhost:6006
       {
         label: "Foundations",
         position: 3,
-        link: {
-          type: "generated-index",
-          description: "Every scope answers the same five questions.",
-        },
+        link: { type: "doc", id: "foundations/index" },
       },
       null,
       2,
     ) + "\n";
+  // The foundations overview: every scope in one compact table, with the answer that sets its values.
+  pages["foundations/index.md"] =
+    fm({ title: "Foundations", description: `${scheme.name}: every scope and the answer that sets its values.` }) +
+    NOTE +
+    `# Foundations\n\nEvery scope answers the same five questions. This is the answer that sets each scope's values; open a scope for all five, its tokens and its specimen.\n\n` +
+    `| Scope | Values | Why |\n| --- | --- | --- |\n` +
+    g.scopes
+      .map((sc) => {
+        const q = sc.questions.find((x) => x.method === "values") ?? sc.questions[3];
+        return `| [${sc.title}](./${sc.id}.md) | ${esc(label(q.id))} | ${esc(answer(q.id).why)} |`;
+      })
+      .join("\n") +
+    "\n";
   g.scopes.forEach((sc, i) => {
     const tokens = owned(scheme, sc.owns ?? []);
     const usage = scheme.usage.filter((u) => sits[u.situation].scope === sc.id);
@@ -311,10 +321,7 @@ export function docsPages(scheme, g, roots, { storybook = "http://localhost:6006
       {
         label: "Components",
         position: 4,
-        link: {
-          type: "generated-index",
-          description: "Each component reads only component keys.",
-        },
+        link: { type: "doc", id: "components/inventory" },
       },
       null,
       2,

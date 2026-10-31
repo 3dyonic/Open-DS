@@ -2,7 +2,7 @@
   "label": "Foundations",
   "position": 3,
   "link": {
-    "type": "generated-index",
-    "description": "Every scope answers the same five questions."
+    "type": "doc",
+    "id": "foundations/index"
   }
 }
