@@ -81,6 +81,102 @@
       ]
     }
   },
+  "inventory": {
+    "description": "The components this system carries, picked from the grammar catalogue by the components answers. Anything not listed is out.",
+    "follows": [
+      "components.roles",
+      "components.count",
+      "components.definition"
+    ],
+    "in": [
+      {
+        "id": "button",
+        "why": "Every action, with a large target."
+      },
+      {
+        "id": "input",
+        "why": "Text answers."
+      },
+      {
+        "id": "textarea",
+        "why": "Longer answers."
+      },
+      {
+        "id": "label",
+        "why": "Names every control."
+      },
+      {
+        "id": "field",
+        "why": "Label, hint and error in the same place on every question."
+      },
+      {
+        "id": "checkbox",
+        "why": "Many choices, each with a large target."
+      },
+      {
+        "id": "radio-group",
+        "why": "One choice from a short, visible list."
+      },
+      {
+        "id": "native-select",
+        "why": "A browser select that every assistive technology understands."
+      },
+      {
+        "id": "alert",
+        "why": "Errors and important notes that stay on the page."
+      },
+      {
+        "id": "progress",
+        "why": "Shows how far through the steps a person is."
+      },
+      {
+        "id": "breadcrumb",
+        "why": "Shows where a person is in the service."
+      },
+      {
+        "id": "card",
+        "why": "Groups a summary before submitting."
+      },
+      {
+        "id": "separator",
+        "why": "Breaks between groups of questions."
+      },
+      {
+        "id": "dialog",
+        "why": "Only to confirm leaving with unsaved answers."
+      },
+      {
+        "id": "collapsible",
+        "why": "Optional help a person can open."
+      },
+      {
+        "id": "spinner",
+        "why": "Says that the page is working."
+      }
+    ],
+    "out": [
+      {
+        "id": "tooltip",
+        "why": "Hover-only hints fail touch, magnifier and keyboard users."
+      },
+      {
+        "id": "select",
+        "why": "A custom listbox is harder for screen readers than the native select."
+      },
+      {
+        "id": "slider",
+        "why": "Dragging is hard with a tremor; a text field is exact."
+      },
+      {
+        "id": "toast",
+        "why": "Messages that disappear can be missed; alerts stay."
+      },
+      {
+        "id": "switch",
+        "why": "A checkbox is clearer about what on and off mean."
+      }
+    ]
+  },
   "themes": [
     {
       "id": "light",
@@ -670,6 +766,51 @@
       "because": [
         "outcomes.q1"
       ]
+    },
+    {
+      "question": "components.roles",
+      "option": "core",
+      "why": "Forms, steps and feedback are all a public service needs.",
+      "because": [
+        "content.q1",
+        "people.q1"
+      ]
+    },
+    {
+      "question": "components.count",
+      "option": "few",
+      "why": "Fewer parts, each tested with assistive technology.",
+      "because": [
+        "people.q2",
+        "team.q2"
+      ]
+    },
+    {
+      "question": "components.definition",
+      "option": "inclusive",
+      "why": "A component joins only when it works with any device and assistive technology.",
+      "because": [
+        "people.q1",
+        "people.q2"
+      ]
+    },
+    {
+      "question": "components.values",
+      "option": "few",
+      "why": "One clear way to do each thing.",
+      "because": [
+        "people.q1",
+        "brand.q1"
+      ]
+    },
+    {
+      "question": "components.lands",
+      "option": "forms",
+      "why": "Components do their work in forms and steps.",
+      "because": [
+        "content.q1",
+        "tasks.q1"
+      ]
     }
   ],
   "usage": [
@@ -974,6 +1115,16 @@
         "scenarios.q2"
       ],
       "example": "This takes about 10 minutes. There are 4 steps."
+    },
+    {
+      "situation": "missing-component",
+      "use": "a native HTML element with a label and a hint",
+      "not": "a custom widget that needs hover, drag or precise pointing",
+      "why": "Native elements work with every assistive technology without extra work.",
+      "because": [
+        "people.q1",
+        "components.definition"
+      ]
     }
   ],
   "tokens": {

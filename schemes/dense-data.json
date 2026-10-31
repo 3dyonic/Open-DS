@@ -82,6 +82,170 @@
       ]
     }
   },
+  "inventory": {
+    "description": "The components this system carries, picked from the grammar catalogue by the components answers. Anything not listed is out.",
+    "follows": [
+      "components.roles",
+      "components.count",
+      "components.definition"
+    ],
+    "in": [
+      {
+        "id": "button",
+        "why": "Every action."
+      },
+      {
+        "id": "toggle-group",
+        "why": "Switches a table between views and densities."
+      },
+      {
+        "id": "input",
+        "why": "Search and edit fields."
+      },
+      {
+        "id": "input-group",
+        "why": "Search with an icon and a clear button."
+      },
+      {
+        "id": "select",
+        "why": "Picks one value in filters and forms."
+      },
+      {
+        "id": "combobox",
+        "why": "Picks a customer or product from thousands."
+      },
+      {
+        "id": "checkbox",
+        "why": "Selects rows and filter values."
+      },
+      {
+        "id": "switch",
+        "why": "Settings that apply at once."
+      },
+      {
+        "id": "label",
+        "why": "Names every control."
+      },
+      {
+        "id": "field",
+        "why": "Lays out label, control and error the same way everywhere."
+      },
+      {
+        "id": "textarea",
+        "why": "Notes on an order."
+      },
+      {
+        "id": "calendar",
+        "why": "Date ranges for reports."
+      },
+      {
+        "id": "table",
+        "why": "The heart of the product: rows of records."
+      },
+      {
+        "id": "pagination",
+        "why": "Moves through long result sets."
+      },
+      {
+        "id": "badge",
+        "why": "Order and payment status in rows."
+      },
+      {
+        "id": "chart",
+        "why": "Totals over time on dashboards."
+      },
+      {
+        "id": "command",
+        "why": "Keyboard-first jump to any record or action."
+      },
+      {
+        "id": "dropdown-menu",
+        "why": "Row actions."
+      },
+      {
+        "id": "context-menu",
+        "why": "Right-click on a row, for experts."
+      },
+      {
+        "id": "tabs",
+        "why": "Views of one record."
+      },
+      {
+        "id": "sidebar",
+        "why": "App navigation that stays open all shift."
+      },
+      {
+        "id": "kbd",
+        "why": "Shows the shortcuts experts learn."
+      },
+      {
+        "id": "alert",
+        "why": "A problem that stays on the page."
+      },
+      {
+        "id": "toast",
+        "why": "Confirms a saved change."
+      },
+      {
+        "id": "skeleton",
+        "why": "Rows while a table loads."
+      },
+      {
+        "id": "empty",
+        "why": "An empty table says what to do next."
+      },
+      {
+        "id": "dialog",
+        "why": "Edit one record without leaving the table."
+      },
+      {
+        "id": "alert-dialog",
+        "why": "Confirms a delete."
+      },
+      {
+        "id": "sheet",
+        "why": "Record details beside the table."
+      },
+      {
+        "id": "popover",
+        "why": "Filters next to the column."
+      },
+      {
+        "id": "tooltip",
+        "why": "Explains an icon button."
+      },
+      {
+        "id": "card",
+        "why": "Dashboard figures."
+      },
+      {
+        "id": "separator",
+        "why": "Groups toolbar actions."
+      },
+      {
+        "id": "scroll-area",
+        "why": "Long tables in fixed panels."
+      },
+      {
+        "id": "resizable",
+        "why": "Experts size the table and detail panes."
+      }
+    ],
+    "out": [
+      {
+        "id": "carousel",
+        "why": "Slides hide records; experts need them all in view."
+      },
+      {
+        "id": "drawer",
+        "why": "A desk tool with a mouse and keyboard does not need phone drawers."
+      },
+      {
+        "id": "accordion",
+        "why": "Hiding fields slows people who use them all day."
+      }
+    ]
+  },
   "themes": [
     {
       "id": "light",
@@ -676,6 +840,51 @@
       "because": [
         "outcomes.q2"
       ]
+    },
+    {
+      "question": "components.roles",
+      "option": "core-data",
+      "why": "Records need tables, filters and fast ways to move between them.",
+      "because": [
+        "content.q1",
+        "tasks.q1"
+      ]
+    },
+    {
+      "question": "components.count",
+      "option": "some",
+      "why": "Enough for a full operations tool, few enough for a small team to keep right.",
+      "because": [
+        "content.q2",
+        "team.q1"
+      ]
+    },
+    {
+      "question": "components.definition",
+      "option": "scenario",
+      "why": "A component joins only when a daily task needs it.",
+      "because": [
+        "scenarios.q1",
+        "tasks.q2"
+      ]
+    },
+    {
+      "question": "components.values",
+      "option": "few",
+      "why": "Few variants keep repeated screens identical.",
+      "because": [
+        "brand.q2",
+        "tasks.q2"
+      ]
+    },
+    {
+      "question": "components.lands",
+      "option": "tables-forms",
+      "why": "Most work happens in tables and the forms that edit them.",
+      "because": [
+        "content.q1",
+        "tasks.q1"
+      ]
     }
   ],
   "usage": [
@@ -982,6 +1191,16 @@
         "voice.count"
       ],
       "example": "Hover any column header to see what it counts."
+    },
+    {
+      "situation": "missing-component",
+      "use": "a component from the inventory, composed (for example a popover with a command list)",
+      "not": "a one-off component built for one screen",
+      "why": "A small team keeps fewer parts right, and experts expect the same parts everywhere.",
+      "because": [
+        "team.q1",
+        "components.definition"
+      ]
     }
   ],
   "tokens": {

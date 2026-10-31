@@ -14,7 +14,7 @@ Pick a scheme by its use_when and avoid_when. Deploy it with the CLI (`open-ds i
 
 ## Grammar and formats
 
-- [Grammar](https://raw.githubusercontent.com/3dyonic/Open-DS/RC1/schemes/grammar.json): 9 reason groups, 11 scopes (each answers the same 5 method questions: roles, how many, how defined, values, lands in), 73 questions, 32 situations, 63 component keys
+- [Grammar](https://raw.githubusercontent.com/3dyonic/Open-DS/RC1/schemes/grammar.json): 9 reason groups, 12 scopes (each answers the same 5 method questions: roles, how many, how defined, values, lands in), 78 questions, 33 situations, 63 component keys
 - [Scheme JSON Schema](https://raw.githubusercontent.com/3dyonic/Open-DS/RC1/schema/scheme.schema.json): the scheme format, every property described
 - [Grammar JSON Schema](https://raw.githubusercontent.com/3dyonic/Open-DS/RC1/schema/grammar.schema.json): the grammar format
 

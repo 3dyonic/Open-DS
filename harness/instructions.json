@@ -128,7 +128,7 @@
       "id": "I20",
       "title": "Every scope behaves the same, with the same methods",
       "words": "voice and tone shoudbe like any other scope , all scope should behave the same and wrok the same and be consited of simiar methods",
-      "checks": ["scopes-uniform-template"]
+      "checks": ["scopes-uniform-template", "schemes-inventory"]
     },
     {
       "id": "I21",
