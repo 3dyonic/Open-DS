@@ -10,7 +10,10 @@ import { fileURLToPath } from "node:url";
 const here = join(dirname(fileURLToPath(import.meta.url)), "..");
 const root = join(here, "..");
 const tokensDist = join(root, "tokens", "dist");
-const NPM = ["radix-ui", "lucide-react", "class-variance-authority"];
+const read0 = (p) => readFileSync(p, "utf8");
+const NPM = Object.keys(JSON.parse(read0(join(here, "package.json"))).dependencies).filter(
+  (d) => !["clsx", "tailwind-merge"].includes(d),
+);
 
 const read = (p) => readFileSync(p, "utf8");
 const describe = (src) => (src.match(/^\/\*\*\n \* (.+?)\n/) ?? [])[1] ?? "";
@@ -50,7 +53,8 @@ export function buildRegistry() {
       title: name.replace(/(^|-)(\w)/g, (_, s, c) => (s ? " " : "") + c.toUpperCase()),
       description: describe(src),
       dependencies: NPM.filter((d) => src.includes(`from "${d}"`)),
-      registryDependencies: ["utils"],
+      // The cn helper, and the other components this one imports.
+      registryDependencies: ["utils", ...[...src.matchAll(/from "\.\/([a-z-]+)"/g)].map((m) => m[1])],
       files: [{ path: `src/components/${file}`, type: "registry:ui" }],
     });
   }

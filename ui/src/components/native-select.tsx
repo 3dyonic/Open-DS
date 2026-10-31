@@ -6,9 +6,9 @@
  * radius, shadow and text scale that shadcn.css maps onto the scheme's tokens. Dark mode comes
  * from the tokens, so no dark: classes.
  */
-import * as React from "react"
-import { cn } from "../lib/utils"
-import { ChevronDownIcon } from "lucide-react"
+import * as React from "react";
+import { cn } from "../lib/utils";
+import { ChevronDownIcon } from "lucide-react";
 
 function NativeSelect({
   className,
@@ -27,7 +27,7 @@ function NativeSelect({
           "h-9 w-full min-w-0 appearance-none rounded-md border border-input bg-transparent px-3 py-2 pr-9 text-sm shadow-xs transition-[color,box-shadow] outline-none selection:bg-primary selection:text-primary-foreground placeholder:text-muted-foreground disabled:pointer-events-none disabled:cursor-not-allowed data-[size=sm]:h-8 data-[size=sm]:py-1",
           "focus-visible:border-ring focus-visible:ring-[3px] focus-visible:ring-ring/50",
           "aria-invalid:border-destructive aria-invalid:ring-destructive/20",
-          className
+          className,
         )}
         {...props}
       />
@@ -37,33 +37,23 @@ function NativeSelect({
         data-slot="native-select-icon"
       />
     </div>
-  )
+  );
 }
 
-function NativeSelectOption({
-  className,
-  ...props
-}: React.ComponentProps<"option">) {
+function NativeSelectOption({ className, ...props }: React.ComponentProps<"option">) {
   return (
-    <option
-      data-slot="native-select-option"
-      className={cn("bg-[Canvas] text-[CanvasText]", className)}
-      {...props}
-    />
-  )
+    <option data-slot="native-select-option" className={cn("bg-[Canvas] text-[CanvasText]", className)} {...props} />
+  );
 }
 
-function NativeSelectOptGroup({
-  className,
-  ...props
-}: React.ComponentProps<"optgroup">) {
+function NativeSelectOptGroup({ className, ...props }: React.ComponentProps<"optgroup">) {
   return (
     <optgroup
       data-slot="native-select-optgroup"
       className={cn("bg-[Canvas] text-[CanvasText]", className)}
       {...props}
     />
-  )
+  );
 }
 
-export { NativeSelect, NativeSelectOptGroup, NativeSelectOption }
+export { NativeSelect, NativeSelectOptGroup, NativeSelectOption };

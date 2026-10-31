@@ -73,7 +73,13 @@ test("init deploys tokens, components, AGENTS.md and the skill", () => {
     assert.ok(readFileSync(join(dir, ".open-ds/content.json"), "utf8").includes('"commit"'));
     assert.equal(agents.match(/^\| (?!Situation|---)/gm).length, grammar().situations.length);
     assert.match(readFileSync(join(dir, ".claude/skills/open-ds/SKILL.md"), "utf8"), /^---\nname: open-ds\ndescription: /);
-    assert.equal(record.components.length, 14);
+    // The scheme's inventory, plus what those components import (toggle-group brings toggle), and nothing else.
+    const inventory = loadScheme("dense-data").inventory.in.map((i) => i.id);
+    for (const id of inventory) assert.ok(record.components.includes(id), `missing ${id}`);
+    assert.ok(record.components.includes("toggle"));
+    assert.ok(!record.components.includes("carousel"));
+    assert.ok(!existsSync(join(dir, "src/components/ui/carousel.tsx")));
+    assert.ok(record.dependencies.includes("recharts") && !record.dependencies.includes("embla-carousel-react"));
   } finally {
     rmSync(dir, { recursive: true, force: true });
   }
@@ -113,7 +119,7 @@ test("init through the binary prints the next steps", () => {
   try {
     const out = cli("init", "accessible-first", "--dir", dir, "--yes");
     assert.match(out, /Deployed accessible-first/);
-    assert.match(out, /npm install radix-ui/);
+    assert.match(out, /npm install .*radix-ui/);
   } finally {
     rmSync(dir, { recursive: true, force: true });
   }

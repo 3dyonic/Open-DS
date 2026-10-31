@@ -1,5 +1,5 @@
 ---
-sidebar_position: 3
+sidebar_position: 6
 title: "Card"
 description: "Card in Dense data."
 ---

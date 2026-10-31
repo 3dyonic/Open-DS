@@ -16,7 +16,7 @@ test("every component file explains itself to people and agents", () => {
   for (const f of files) {
     const src = readFileSync(join(here, "src", "components", f), "utf8");
     assert.match(src, /^\/\*\*\n \* .+\n/, `${f} needs a doc comment`);
-    assert.match(src, /Reads (only component keys|the label text role)/, `${f} must say which keys it reads`);
+    assert.match(src, /Reads (only component keys|the label text role|the shadcn variables)/, `${f} must say which keys it reads`);
   }
 });
 
@@ -33,11 +33,14 @@ test("components use tokens, never raw colors or palette classes", () => {
 });
 
 test("every variable a component reads exists in the token output", () => {
-  const css = readFileSync(join(here, "..", "tokens", "dist", "dense-data", "tokens.css"), "utf8");
+  const dist = join(here, "..", "tokens", "dist", "dense-data");
+  const css = ["tokens.css", "theme.css", "shadcn.css"].map((f) => readFileSync(join(dist, f), "utf8")).join("\n");
+  // Variables that libraries set at run time, or that a component sets itself, are not tokens.
+  const runtime = /^--(radix-|anchor-|available-|spacing$|gap$|sidebar-width)/;
   for (const f of files) {
     const src = readFileSync(join(here, "src", "components", f), "utf8");
-    for (const [, name] of src.matchAll(/var\((--[a-z0-9-]+)\)/g)) {
-      if (name.startsWith("--radix-")) continue;
+    for (const [, name] of src.matchAll(/var\((--[a-z0-9-]+)/g)) {
+      if (runtime.test(name) || src.includes(`"${name}"`)) continue;
       assert.ok(css.includes(`${name}:`), `${f} reads ${name}, which no scheme defines`);
     }
   }
