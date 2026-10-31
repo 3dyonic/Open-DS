@@ -62,11 +62,47 @@ const code = (s: string) => <code className="font-mono">{s}</code>;
 
 export default function InstallPage() {
   const ids = schemes().map((s) => s.id);
-  const mcpJson = JSON.stringify(
-    { mcpServers: { "open-ds": { type: "http", url: MCP_URL } } },
-    null,
-    2,
-  );
+  const j = (o: object) => JSON.stringify(o, null, 2);
+  // How each client connects to the hosted server. Clients without remote MCP run it from npm.
+  const clients: { name: string; where: string; label: string; code: string }[] = [
+    {
+      name: "Claude Code",
+      where: "In a terminal. --scope user makes it available in every folder.",
+      label: "Claude Code",
+      code: `claude mcp add --transport http --scope user open-ds ${MCP_URL}`,
+    },
+    {
+      name: "Claude (desktop and claude.ai)",
+      where: "Settings, Connectors, Add custom connector. Name it Open DS and paste the URL:",
+      label: "connector URL",
+      code: MCP_URL,
+    },
+    {
+      name: "Cursor",
+      where: "In ~/.cursor/mcp.json (every project) or .cursor/mcp.json (one project):",
+      label: "Cursor",
+      code: j({ mcpServers: { "open-ds": { url: MCP_URL } } }),
+    },
+    {
+      name: "VS Code",
+      where: "In .vscode/mcp.json in your project:",
+      label: "VS Code",
+      code: j({ servers: { "open-ds": { type: "http", url: MCP_URL } } }),
+    },
+    {
+      name: "Windsurf",
+      where: "In ~/.codeium/windsurf/mcp_config.json:",
+      label: "Windsurf",
+      code: j({ mcpServers: { "open-ds": { serverUrl: MCP_URL } } }),
+    },
+    {
+      name: "Any other client",
+      where:
+        "If it takes a URL, use the one above. If it only runs local servers, run Open DS from npm (Node.js 22 or later):",
+      label: "local server",
+      code: j({ mcpServers: { "open-ds": { command: "npx", args: ["-y", "open-ds", "mcp"] } } }),
+    },
+  ];
   return (
     <div className="flex flex-col gap-12 px-5 pb-20 lg:px-20">
       <header className="flex flex-col gap-4">
@@ -92,20 +128,19 @@ export default function InstallPage() {
           Connect your AI (MCP)
         </h2>
         <ol className="flex flex-col gap-3">
-          <Step n={1} title="Add the server">
-            <p className="text-[16px] text-body">In Claude Code:</p>
-            <Command
-              label="add the MCP server"
-              code={`claude mcp add --transport http --scope user open-ds ${MCP_URL}`}
-            />
-            <p className="text-[15px] text-body">
-              {code("--scope user")} makes the server available in every folder. Check it with{" "}
-              {code("claude mcp list")}.
-            </p>
+          <Step n={1} title="Add the server to your AI">
             <p className="text-[16px] text-body">
-              Other MCP clients take the same URL in their config:
+              The server is at {code(MCP_URL)}. Add it the way your client takes MCP servers:
             </p>
-            <Command label="MCP config" code={mcpJson} />
+            <div className="flex flex-col gap-4">
+              {clients.map((c) => (
+                <div key={c.name} className="flex flex-col gap-2">
+                  <h4 className="text-[17px] font-bold">{c.name}</h4>
+                  <p className="text-[15px] text-body">{c.where}</p>
+                  <Command label={c.label} code={c.code} />
+                </div>
+              ))}
+            </div>
           </Step>
           <Step n={2} title="Ask your AI">
             <p className="text-[16px] text-body">
@@ -134,11 +169,21 @@ export default function InstallPage() {
         </h2>
         <p className="max-w-[880px] text-[16px] text-body">The CLI needs Node.js 22 or later.</p>
         <ol className="flex flex-col gap-3">
-          <Step n={1} title="See the schemes">
+          <Step n={1} title="Install the CLI">
+            <Command label="install" code="npm install -g open-ds" />
+            <Command label="check" code="open-ds --help" />
+            <p className="text-[15px] text-body">
+              Or skip installing: <code className="font-mono">npx open-ds</code> runs the latest
+              version each time, which is what the commands below use. Installed? Drop the{" "}
+              <code className="font-mono">npx</code>. In a project, add it as a dev dependency with{" "}
+              <code className="font-mono">npm install -D open-ds</code>.
+            </p>
+          </Step>
+          <Step n={2} title="See the schemes">
             <Command label="list" code="npx open-ds list" />
             <p className="text-[15px] text-body">Schemes: {ids.join(", ")}.</p>
           </Step>
-          <Step n={2} title="Take a whole design system">
+          <Step n={3} title="Take a whole design system">
             <Command
               label="create"
               code="npx open-ds create my-design-system --scheme dense-data"
@@ -152,7 +197,7 @@ export default function InstallPage() {
               Multi-brand, add {code("--brand aster")}, {code("birch")} or {code("coral")}.
             </p>
           </Step>
-          <Step n={3} title="Or add a scheme to an app you have">
+          <Step n={4} title="Or add a scheme to an app you have">
             <Command label="init" code="npx open-ds init dense-data" />
             <p className="text-[15px] text-body">
               Run it in your app’s folder. It lists the component packages to install with{" "}
@@ -160,7 +205,7 @@ export default function InstallPage() {
               Add {code("--docs")} to also write the design system’s docs pages to {code("docs/")}.
             </p>
           </Step>
-          <Step n={4} title="Ask why, and add more components">
+          <Step n={5} title="Ask why, and add more components">
             <Command label="why" code="npx open-ds why dense-data typography.definition" />
             <Command label="when" code={'npx open-ds when dense-data "a number in a table"'} />
             <Command label="add" code="npx open-ds add tooltip" />
