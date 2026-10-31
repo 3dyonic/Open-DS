@@ -71,6 +71,32 @@ export function ComponentsScopeView({ p }: { p: ComponentsPage }) {
         </div>
       </section>
 
+      {p.patterns.length > 0 && (
+        <section
+          aria-labelledby="patterns"
+          className="flex max-w-[960px] flex-col gap-3 rounded-[8px] border border-line bg-white p-6"
+        >
+          <div className="flex flex-col gap-1">
+            <h2 id="patterns" className={`${eyebrow} text-accent-text`}>
+              Patterns · {p.patterns.length}
+            </h2>
+            <p className="text-[14px] text-muted">
+              Larger parts built from the components above. They do not count toward the {p.count}.
+            </p>
+          </div>
+          <ul className="flex flex-col divide-y divide-line">
+            {p.patterns.map((x) => (
+              <li key={x.id} className="grid gap-1 py-[10px] sm:grid-cols-[200px_1fr] sm:gap-4">
+                <span className="text-[16px] font-semibold">{x.name}</span>
+                <span className="text-[15px] leading-[1.45] text-[#3e3a31]">
+                  {x.why} <span className="text-muted">Built from {x.parts.join(", ")}.</span>
+                </span>
+              </li>
+            ))}
+          </ul>
+        </section>
+      )}
+
       <section id="cascade" aria-labelledby="cascade-title" className="flex flex-col gap-6">
         <div className="flex flex-col gap-2">
           <h2 id="cascade-title" className="text-[28px] font-extrabold">

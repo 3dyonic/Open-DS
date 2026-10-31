@@ -61,7 +61,7 @@ export const Examples: Story = {
                 </TableRow>
               </TableHeader>
               <TableBody>
-                {t.rows.map((r, i) => (
+                {t.rows.slice(0, 8).map((r, i) => (
                   <TableRow key={r.cells[0]} data-state={i === 1 ? "selected" : undefined}>
                     {r.cells.map((cell, j) =>
                       t.columns[j].numeric ? (

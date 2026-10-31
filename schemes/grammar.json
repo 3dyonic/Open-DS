@@ -3036,6 +3036,21 @@
         "family": "overlay",
         "description": "A short hint on hover or focus."
       }
+    ],
+    "patterns": [
+      {
+        "id": "data-table",
+        "description": "Many records in one view: search, faceted filters, sorting, column choice, row selection with bulk actions, pagination and a density switch.",
+        "built_from": [
+          "table",
+          "input",
+          "button",
+          "checkbox",
+          "popover",
+          "toggle-group"
+        ],
+        "source": "https://ui.shadcn.com/docs/components/data-table"
+      }
     ]
   }
 }

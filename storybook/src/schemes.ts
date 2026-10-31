@@ -38,7 +38,11 @@ export interface Samples {
 export interface SchemeData {
   id: string;
   name: string;
-  inventory: { in: { id: string; why: string }[]; out: { id: string; why: string }[] };
+  inventory: {
+    in: { id: string; why: string }[];
+    out: { id: string; why: string }[];
+    patterns?: { id: string; why: string }[];
+  };
   samples: Samples;
   usage: { situation: string; use: string; not: string; why: string }[];
 }

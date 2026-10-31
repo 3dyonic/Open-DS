@@ -319,6 +319,23 @@
         "storybook-build",
         "cli-create-works"
       ]
+    },
+    {
+      "id": "OD-147",
+      "title": "Patterns in the catalogue; a data table for Dense data",
+      "in": [
+        "grammar catalogue.patterns: larger parts built from catalogue items, outside the component count",
+        "schemes may carry patterns with why; every part must be in the inventory",
+        "data-table pattern on TanStack Table (shadcn Data Table guide): search, faceted filters, sorting, column choice, selection with bulk actions, pagination, density",
+        "Dense data carries it, with 24 sample orders; stories, docs and the site list it; installs bring TanStack Table only where carried"
+      ],
+      "checks": [
+        "schemes-inventory",
+        "schemes-samples",
+        "storybook-stories-uniform",
+        "cli-create-works",
+        "cli-package-works"
+      ]
     }
   ]
 }

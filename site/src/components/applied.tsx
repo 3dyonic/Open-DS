@@ -120,7 +120,7 @@ export function Applied({
                 </TableRow>
               </TableHeader>
               <TableBody>
-                {s.table.rows.map((r) => (
+                {s.table.rows.slice(0, 7).map((r) => (
                   <TableRow key={r.cells[0]}>
                     {r.cells.map((cell, j) => (
                       <TableCell

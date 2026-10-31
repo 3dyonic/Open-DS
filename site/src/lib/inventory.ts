@@ -63,8 +63,24 @@ export function componentsPage(schemeId: string) {
         .map((i) => ({ id: i.id, name: title(i.id), why: i.why })),
     }));
 
+  const patterns = (
+    (cat as unknown as { patterns?: { id: string; built_from: string[] }[] }).patterns ?? []
+  )
+    .map((pt) => ({
+      pt,
+      pick: (s.inventory as { patterns?: Pick[] }).patterns?.find((x) => x.id === pt.id),
+    }))
+    .filter((x) => x.pick)
+    .map(({ pt, pick }) => ({
+      id: pt.id,
+      name: title(pt.id),
+      why: pick!.why,
+      parts: pt.built_from.map(title),
+    }));
+
   return {
     scheme: base.scheme,
+    patterns,
     reasons: base.reasons,
     questions: base.questions.map((q) => ({ ...q, effect: effect[q.id] ?? "" })),
     total: cat.items.length,
