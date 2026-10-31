@@ -5,10 +5,10 @@ export function DemoNote({ className = "" }: { className?: string }) {
   return (
     <aside
       aria-label="About these questions and answers"
-      className={`flex max-w-[880px] gap-3 rounded-[8px] border border-line bg-white p-5 ${className}`}
+      className={`flex gap-3 rounded-[8px] border border-line bg-white p-5 ${className}`}
     >
       <span aria-hidden className="mt-[6px] size-[10px] shrink-0 bg-accent" />
-      <div className="flex flex-col gap-2 text-[16px] leading-[1.5] text-[#3e3a31]">
+      <div className="flex max-w-[880px] flex-col gap-2 text-[16px] leading-[1.5] text-[#3e3a31]">
         <p className="font-semibold text-ink">A starting point, not the last word.</p>
         <p>
           These questions and answers are a sketch, written to show the idea. They are not a
