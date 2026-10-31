@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
+  <!-- A question answered: a square that branches. The site's ink and accent. -->
+  <rect width="64" height="64" rx="12" fill="#16140f"/>
+  <rect x="14" y="14" width="16" height="16" rx="3" fill="#ff5a1f"/>
+  <rect x="34" y="14" width="16" height="16" rx="3" fill="#f6f2e9"/>
+  <rect x="14" y="34" width="16" height="16" rx="3" fill="#f6f2e9"/>
+  <rect x="34" y="34" width="16" height="16" rx="3" fill="#f6f2e9" opacity="0.45"/>
+</svg>
