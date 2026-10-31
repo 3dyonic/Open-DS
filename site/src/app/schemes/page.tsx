@@ -1,6 +1,7 @@
 // The schemes index: the Home scheme cards on their own page.
 import type { Metadata } from "next";
 import { Eyebrow } from "@/components/chrome";
+import { DemoNote } from "@/components/demo-note";
 import { SchemeCards } from "@/components/scheme-cards";
 
 export const metadata: Metadata = {
@@ -17,6 +18,7 @@ export default function SchemesPage() {
         Each scheme answers every question in the grammar and says why. Open one to see its reasons,
         its answers and the screen they build.
       </p>
+      <DemoNote />
       <SchemeCards />
     </div>
   );
