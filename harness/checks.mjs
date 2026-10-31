@@ -3,6 +3,7 @@
 // "not built" yet, which is different from "fail". Slow checks (full builds) run with --full.
 
 import { spawnSync } from "node:child_process";
+import { pathToFileURL } from "node:url";
 import { existsSync, mkdtempSync, readFileSync, readdirSync, rmSync, statSync } from "node:fs";
 import { tmpdir } from "node:os";
 import { join, relative } from "node:path";
@@ -401,7 +402,7 @@ export const CHECKS = {
     requires: [],
     run: (c) => {
       const NAMES = /\b(Northwind|Contoso|Fabrikam|Adventure Works|Initech|Globex|Acme Corp)\b/;
-      const roots = ["schemes", "site/src", "storybook/stories", "docs/docs", "ui/src", "skills", "cli/src"];
+      const roots = ["schemes", "site/src", "storybook/stories", "docs/docs", "guide", "ui/src", "skills", "cli/src"];
       const hits = roots
         .flatMap((r) => c.walk(r, (f) => /\.(json|tsx?|mdx?|mjs)$/.test(f)))
         .filter((f) => NAMES.test(c.read(f)));
@@ -526,7 +527,11 @@ export const CHECKS = {
   "llm-docs-frontmatter": {
     requires: ["docs/docusaurus.config.ts"],
     run: (c) => {
-      const pages = c.walk("docs/docs", (f) => /\.mdx?$/.test(f));
+      // The delivered design system's docs, and the Open DS guide in guide/.
+      const pages = [
+        ...c.walk("docs/docs", (f) => /\.mdx?$/.test(f)),
+        ...c.walk("guide", (f) => /\.mdx?$/.test(f) && !f.includes("/archive/")),
+      ];
       if (!pages.length) return bad("no docs pages");
       const missing = pages.filter((f) => !/^description:\s*\S+/m.test(frontMatter(c.read(f)) ?? ""));
       return missing.length
@@ -817,13 +822,39 @@ export const CHECKS = {
         : bad("docs/ is not Docusaurus"),
   },
   "docs-sections": {
-    requires: ["docs/docusaurus.config.ts"],
-    run: (c) => {
-      const need = ["product", "business", "brand", "grammar", "schemes", "cli", "mcp", "agents", "contributing"];
-      const missing = need.filter(
-        (s) => !c.has("docs", "docs", s) && !c.has("docs", "docs", `${s}.md`) && !c.has("docs", "docs", `${s}.mdx`),
+    requires: ["docs/docusaurus.config.ts", "cli/src/docs.mjs"],
+    run: async (c) => {
+      // Docusaurus documents the delivered design system: every scheme gets the same pages.
+      const { docsPages } = await import(pathToFileURL(c.p("cli/src/docs.mjs")).href);
+      const { assetRoots, grammar, loadScheme, schemeIds } = await import(
+        pathToFileURL(c.p("cli/src/schemes.mjs")).href
       );
-      return missing.length ? bad(`missing sections: ${missing.join(", ")}`) : ok("all sections present");
+      ensureTokens(c);
+      const roots = assetRoots();
+      const g = grammar(roots);
+      const gaps = [];
+      for (const id of schemeIds(roots)) {
+        const pages = docsPages(loadScheme(id, roots), g, roots);
+        const need = [
+          "index.md",
+          "voice.md",
+          "themes.md",
+          "agents.md",
+          ...g.scopes.map((sc) => `foundations/${sc.id}.md`),
+        ];
+        const missing = need.filter((p) => !pages[p]);
+        if (missing.length) gaps.push(`${id}: ${missing.join(", ")}`);
+        if (!Object.keys(pages).some((p) => p.startsWith("components/"))) gaps.push(`${id}: no component pages`);
+      }
+      const gen = c.sh("node", ["docs/scripts/generate.mjs", "--check"]);
+      if (gen.code !== 0) gaps.push(tail(gen.out));
+      for (const d of ["product", "business", "brand", "contributing"])
+        if (!c.has("guide", d)) gaps.push(`guide/${d} is missing`);
+      return gaps.length
+        ? bad(gaps.join("; "))
+        : ok(
+            "every scheme has about, voice, a page per scope, components, themes and agents; the Open DS guide is in guide/",
+          );
     },
   },
   "docs-build": {

@@ -1,11 +1,11 @@
 import assert from "node:assert/strict";
 import { execFileSync } from "node:child_process";
-import { existsSync, mkdtempSync, readFileSync, rmSync } from "node:fs";
+import { existsSync, mkdtempSync, readFileSync, readdirSync, rmSync } from "node:fs";
 import { tmpdir } from "node:os";
 import { join } from "node:path";
 import test from "node:test";
 import { addComponent, deploy } from "../src/cli.mjs";
-import { grammar, keyInfo, loadScheme, schemeIds, when, why } from "../src/schemes.mjs";
+import { assetRoots, grammar, keyInfo, loadScheme, schemeIds, when, why } from "../src/schemes.mjs";
 
 const bin = join(import.meta.dirname, "..", "bin", "open-ds.js");
 const cli = (...args) => execFileSync("node", [bin, ...args], { encoding: "utf8" });
@@ -148,4 +148,29 @@ test("errors are clear, and JSON when --json is set", () => {
 test("recipe commands from the first preview still run through the new entry point", () => {
   const out = cli("diff");
   assert.match(out, /diff is not ready/);
+});
+
+test("docs pages cover every scope and component, for every scheme", async () => {
+  const { docsPages, docsLlms } = await import("../src/docs.mjs");
+  const roots = assetRoots();
+  const g = grammar(roots);
+  const components = readdirSync(join(roots.ui, "components")).filter((f) => f.endsWith(".tsx"));
+  for (const id of schemeIds(roots)) {
+    const pages = docsPages(loadScheme(id, roots), g, roots);
+    for (const p of ["index.md", "voice.md", "themes.md", "agents.md"]) assert.ok(pages[p], `${id}: ${p}`);
+    for (const sc of g.scopes) assert.match(pages[`foundations/${sc.id}.md`], /## The five answers/);
+    assert.equal(Object.keys(pages).filter((p) => p.startsWith("components/") && p.endsWith(".md")).length, components.length);
+    assert.match(docsLlms(loadScheme(id, roots), pages), /- \[Voice and tone\]\(\/voice\)/);
+  }
+});
+
+test("init --docs writes the design system's docs", () => {
+  const dir = mkdtempSync(join(tmpdir(), "open-ds-docs-"));
+  try {
+    const record = deploy("content-first", dir, { docs: true });
+    assert.ok(record.files["docs/index.md"]);
+    assert.match(readFileSync(join(dir, "docs/foundations/typography.md"), "utf8"), /# Typography/);
+  } finally {
+    rmSync(dir, { recursive: true, force: true });
+  }
 });

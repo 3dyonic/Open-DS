@@ -1,7 +1,7 @@
 {
   "$schema": "./harness.schema.json",
   "description": "Claude's specs for the MVP: one item per Jira ticket, each listing what it delivers (In) and the checks that prove it. The harness runs these next to Yonatan's instructions.",
-  "source": "Jira OD-109 to OD-124, created 2026-10-30.",
+  "source": "Jira OD-109 to OD-126, created 2026-10-30 and 2026-10-31.",
   "items": [
     {
       "id": "OD-115",
@@ -91,8 +91,12 @@
     },
     {
       "id": "OD-120",
-      "title": "Docusaurus docs",
-      "in": ["docs/ site", "product, business, brand, grammar, schemes, CLI, MCP, agents, contributing"],
+      "title": "Docusaurus docs of the delivered design system",
+      "in": [
+        "docs/ site, one scheme at a time",
+        "about, voice and tone, a page per scope, components, themes, agents",
+        "the Open DS guide in guide/"
+      ],
       "checks": ["docs-docusaurus", "docs-sections", "llm-docs-frontmatter", "docs-build", "content-no-real-names"]
     },
     {
@@ -123,6 +127,17 @@
         "design check: texts in order, fold, palette, height"
       ],
       "checks": ["site-routes", "site-design-fidelity", "site-build", "content-no-real-names"]
+    },
+    {
+      "id": "OD-126",
+      "title": "Docusaurus documents the delivered design system, per scheme",
+      "in": [
+        "cli/src/docs.mjs page builder",
+        "docs/ builds any scheme (OPEN_DS_SCHEME) in its own fonts and colors",
+        "open-ds init --docs and MCP deploy docs=true",
+        "Open DS pages moved to guide/, old notes to guide/archive/"
+      ],
+      "checks": ["docs-sections", "llm-docs-frontmatter", "docs-build", "cli-commands", "mcp-tests"]
     }
   ]
 }

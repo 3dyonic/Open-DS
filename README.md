@@ -4,6 +4,18 @@
   <img src=".github/assets/hero.png" alt="Open DS: every design system is a set of answers. A question, its answer and the answers it follows from, next to five schemes (Dense data, Content first, Accessible first, Multi-brand, Brand expressive) built from the same components." width="100%" />
 </p>
 
+## Start here
+
+Open DS models a design system as a grammar of questions. A scheme answers every question with a reason, and deploys as a whole design system: tokens, components, Storybook, docs and an agent layer.
+
+- **The guide** for Open DS itself (product, business, brand, CLI, MCP, agents, contributing): [guide/intro.md](guide/intro.md)
+- **Run it locally**, end to end, including the CLI and the MCP server: [TESTING.md](TESTING.md)
+- **The schemes and the grammar**: [schemes/](schemes/)
+- **The docs of a delivered design system** (Docusaurus, one scheme at a time): `docs/`, see TESTING.md
+
+The sections below describe the first preview (packs and recipes). Its commands still run.
+
+## The first preview
 
 Open DS is a cited dictionary of design-system decisions. `open-ds init` turns a stance recipe into files a person or an agent can start from.
 
@@ -24,11 +36,11 @@ The license file is MIT until the owner decides.
 
 ## Three ways to read the book
 
-| Surface | Who it is for | What it does |
-| --- | --- | --- |
-| Packs | Everyone | The dictionary. JSON only. |
-| MCP server | An AI agent | Lists questions and checks a recipe. It runs no model. |
-| Website | A person | Browse the catalog, pick answers, and see the check. |
+| Surface    | Who it is for | What it does                                           |
+| ---------- | ------------- | ------------------------------------------------------ |
+| Packs      | Everyone      | The dictionary. JSON only.                             |
+| MCP server | An AI agent   | Lists questions and checks a recipe. It runs no model. |
+| Website    | A person      | Browse the catalog, pick answers, and see the check.   |
 
 There is also a validator, and a local CLI that copies a boilerplate onto your machine. The CLI package name `open-ds` is a placeholder. It is not published.
 
@@ -55,12 +67,12 @@ The same init works for `recipes/accessible-first.json`, `recipes/multi-brand.js
 
 `./my-ds` is the bundle:
 
-| File | What it is for |
-| --- | --- |
-| `recipe.json` | The answers in the recipe. Stance recipes include `"status": "provisional"`. |
-| `theme/tokens.json` | DTCG tokens. Each value carries `$extensions.openDs`. |
-| `links.json` | One row per pack link: id, from, to, type, basis, and sources. |
-| `AGENTS.md` | Rules for an agent. The first line is the recipe status. |
+| File                | What it is for                                                               |
+| ------------------- | ---------------------------------------------------------------------------- |
+| `recipe.json`       | The answers in the recipe. Stance recipes include `"status": "provisional"`. |
+| `theme/tokens.json` | DTCG tokens. Each value carries `$extensions.openDs`.                        |
+| `links.json`        | One row per pack link: id, from, to, type, basis, and sources.               |
+| `AGENTS.md`         | Rules for an agent. The first line is the recipe status.                     |
 
 The folder also contains the shared boilerplate (CSS, components, and `open-ds.json`).
 
