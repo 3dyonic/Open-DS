@@ -414,7 +414,7 @@
     {
       "question": "typography.count",
       "option": "many",
-      "why": "A wide scale gives big moments room.",
+      "why": "Fine steps give big moments room.",
       "because": [
         "brand.q2"
       ]
@@ -856,7 +856,7 @@
     {
       "question": "components.count",
       "option": "few",
-      "why": "One action and a story need few parts; an agency keeps them fresh.",
+      "why": "One action and a story need only the parts in use; an agency keeps them fresh.",
       "because": [
         "tasks.q2",
         "team.q1"
@@ -874,7 +874,7 @@
     {
       "question": "components.values",
       "option": "some",
-      "why": "Some variants let each campaign look a little different.",
+      "why": "Variants for emphasis and size let each campaign look a little different.",
       "because": [
         "team.q2",
         "brand.q2"

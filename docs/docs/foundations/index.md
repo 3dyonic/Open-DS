@@ -22,4 +22,4 @@ Every scope answers the same five questions. This is the answer that sets each s
 | [Accessibility](./accessibility.md) | Compact, for a pointer | Mouse and keyboard; compact targets are enough. |
 | [Naming](./naming.md) | Lowercase words in paths | Lowercase paths read the same in CSS, JSON and Figma. |
 | [Voice and tone](./voice.md) | Terse | Experts want short labels and short messages. |
-| [Components](./components.md) | Few | Few variants keep repeated screens identical. |
+| [Components](./components.md) | Only when the meaning changes | Repeated screens stay identical when a component changes only with its meaning. |
