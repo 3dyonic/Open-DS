@@ -74,6 +74,14 @@ function readme(scheme, name, brands) {
     "npm run when -- destructive action",
     "```",
     "",
+    "## Built on open source",
+    "",
+    "This design system is built on open-source projects, used as their authors intend and under their own licences:",
+    "[shadcn/ui](https://ui.shadcn.com) (the component patterns), [Radix UI](https://www.radix-ui.com) (accessible primitives),",
+    "[Tailwind CSS](https://tailwindcss.com), [Style Dictionary](https://styledictionary.com) (the token build),",
+    "[Storybook](https://storybook.js.org), [Docusaurus](https://docusaurus.io), [TanStack Table](https://tanstack.com/table)",
+    "and [Lucide](https://lucide.dev) icons. Each package's licence is in `node_modules`.",
+    "",
   ].join("\n");
 }
 

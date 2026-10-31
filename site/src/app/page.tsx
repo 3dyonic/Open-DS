@@ -45,16 +45,34 @@ const TAKE: [string, string][] = [
   ["Link", "/schemes/dense-data"],
 ];
 
-const DELIVERABLES = [
-  "Components · copied in, shadcn-style",
-  "Storybook",
-  "Style Dictionary tokens",
-  "DTCG · CSS · Tailwind",
-  "Agent skill",
-  "Docs",
-  "CI checks",
-  "The answer map",
+// The open-source projects every delivered design system is built on, credited by name.
+const OPEN_SOURCE: [string, string, string][] = [
+  ["shadcn/ui", "https://ui.shadcn.com", "The component patterns our components start from."],
+  ["Radix UI", "https://www.radix-ui.com", "Accessible primitives under the components."],
+  ["Tailwind CSS", "https://tailwindcss.com", "The styling layer that reads the tokens."],
+  [
+    "Style Dictionary",
+    "https://styledictionary.com",
+    "Builds the tokens into CSS, Tailwind and JSON.",
+  ],
+  ["Storybook", "https://storybook.js.org", "Shows every component in every scheme and mode."],
+  ["Docusaurus", "https://docusaurus.io", "Publishes the docs of each delivered system."],
+  ["TanStack Table", "https://tanstack.com/table", "Powers the data table."],
+  ["Lucide", "https://lucide.dev", "The icons."],
 ];
+
+// What every delivered design system contains: the main parts, then the extras.
+const DELIVERS: [string, string][] = [
+  [
+    "shadcn/ui components",
+    "The scheme's components, themed by its tokens and copied into your project.",
+  ],
+  ["A Storybook", "Every component, rendered in your scheme, in light and dark and every brand."],
+  ["Docusaurus docs", "A docs site for your system: reasons, voice, foundations and components."],
+  ["Style Dictionary tokens", "DTCG source files, built into CSS, the Tailwind theme and JSON."],
+];
+
+const DELIVERABLES = ["Agent skill", "AGENTS.md", "CI checks", "The answer map"];
 
 export default function Home() {
   return (
@@ -69,8 +87,8 @@ export default function Home() {
           </h1>
           <p className="max-w-[820px] text-[21px] leading-[1.45] text-[#3e3a31]">
             Every decision is an answered question, with its options and its reason in plain view.
-            Take the whole system, the way you take a shadcn component: connect your AI, or run one
-            command and own the code.
+            Then the whole system is yours: tokens, components, Storybook and docs, delivered in one
+            command or through your AI, as code you own.
           </p>
           <div className="flex flex-wrap gap-3 pt-2">
             <Link
@@ -160,6 +178,17 @@ export default function Home() {
             Not a token file. Every scheme delivers a fully working design system, built from its
             answers:
           </p>
+          <ul className="grid gap-3 sm:grid-cols-2">
+            {DELIVERS.map(([name, what]) => (
+              <li
+                key={name}
+                className="flex flex-col gap-1 rounded-[4px] border border-[#3e3a31] p-4"
+              >
+                <span className="text-[17px] font-semibold">{name}</span>
+                <span className="text-[14px] leading-[1.4] text-line">{what}</span>
+              </li>
+            ))}
+          </ul>
           <ul className="flex flex-wrap gap-[6px]">
             {DELIVERABLES.map((d) => (
               <li
@@ -196,6 +225,36 @@ export default function Home() {
             Add a scheme
           </Link>
         </div>
+      </section>
+      <section
+        aria-labelledby="open-source"
+        className="flex flex-col gap-6 px-5 py-[72px] lg:px-20"
+      >
+        <Eyebrow>Built on open source</Eyebrow>
+        <div className="flex flex-col gap-3">
+          <h2 id="open-source" className="text-[32px] leading-[1.05] font-extrabold md:text-[40px]">
+            Standing on good work.
+          </h2>
+          <p className="max-w-[820px] text-[17px] leading-[1.45] text-[#3e3a31]">
+            {brandName} decides and explains; these projects do the building. Every design system we
+            deliver uses them as their authors intend, keeps their licences, and credits them here
+            and in its own files.
+          </p>
+        </div>
+        <ul className="grid gap-3 sm:grid-cols-2 lg:grid-cols-4">
+          {OPEN_SOURCE.map(([name, href, what]) => (
+            <li key={name}>
+              <a
+                href={href}
+                rel="noopener"
+                className="flex h-full flex-col gap-1 rounded-[6px] border border-line bg-white p-4 hover:border-ink"
+              >
+                <span className="text-[17px] font-semibold">{name} ↗</span>
+                <span className="text-[14px] leading-[1.4] text-[#3e3a31]">{what}</span>
+              </a>
+            </li>
+          ))}
+        </ul>
       </section>
     </>
   );
