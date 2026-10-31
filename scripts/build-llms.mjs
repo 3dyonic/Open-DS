@@ -46,7 +46,7 @@ export function buildLlms(repo) {
     "## Tools",
     "",
     `- [CLI](${REPO_URL}/cli/README.md): list, show, why, when, init, add`,
-    `- [MCP server](${REPO_URL}/mcp/README.md): list_schemes, get_scheme, get_answer, why, when_to_use, deploy`,
+    `- [MCP server](${REPO_URL}/mcp/README.md): list_schemes, get_scheme, get_answer, why, when_to_use, compare_schemes, get_inventory, what_moves, get_key, plan_create, plan_init, plan_add; the skills as prompts`,
     `- [Agent skill](${REPO_URL}/skills/open-ds/SKILL.md): how an agent picks, deploys and follows a scheme`,
     `- [AGENTS.md](${REPO_URL}/AGENTS.md): how to work on this repository`,
     "",

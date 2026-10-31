@@ -15,7 +15,7 @@ Open DS models a design system as a finite grammar of questions. A scheme answer
 | `tokens/`    | Style Dictionary build: CSS (each brand, light and dark), shadcn and Tailwind theme, DTCG JSON.                        | `pnpm --dir tokens test`     |
 | `ui/`        | Components on Radix and Tailwind v4 that read only component keys; shadcn registry.                                    | `pnpm --dir ui test`         |
 | `cli/`       | The `open-ds` command: list, show, why, when, init, add.                                                               | `pnpm --dir cli test`        |
-| `mcp/`       | FastMCP server; deploy, why and when run the CLI.                                                                      | `uv run pytest`              |
+| `mcp/`       | Host for the MCP server, which lives in the `open-ds` package (`cli/src/mcp.mjs`): one engine with the CLI.            | `pnpm --dir mcp test`        |
 | `storybook/` | Every component in every scheme, brand and mode.                                                                       | `pnpm --dir storybook build` |
 | `site/`      | The website, a static Next.js app.                                                                                     | `pnpm --dir site build`      |
 | `docs/`      | Docusaurus docs of a delivered design system, generated for one scheme (`OPEN_DS_SCHEME`).                             | `pnpm --dir docs build`      |
@@ -36,7 +36,7 @@ Open DS models a design system as a finite grammar of questions. A scheme answer
 ## Commands
 
 ```bash
-pnpm install && uv sync --all-packages --group dev
+pnpm install
 pnpm --dir tokens build   # the CLI, site and Storybook read tokens/dist
 pnpm harness          # fast checks
 pnpm harness:full     # with builds and test suites

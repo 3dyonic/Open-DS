@@ -125,34 +125,36 @@ step("CLI: deploy Dense data into a Vite app and build it", () => {
   return "deployed files typecheck and build; the built CSS carries the scheme";
 });
 
-step("MCP over stdio: tools, schemes, when_to_use, deploy", () => {
-  const dir = mkdtempSync(join(tmpdir(), "open-ds-e2e-mcp-"));
-  try {
-    const out = JSON.parse(
-      run("uv", ["run", "python", "scripts/e2e_mcp.py", dir])
-        .trim()
-        .split("\n")
-        .pop(),
-    );
-    for (const t of [
-      "list_schemes",
-      "get_scheme",
-      "get_answer",
-      "why",
-      "when_to_use",
-      "deploy",
-    ])
-      must(out.tools.includes(t), `missing tool ${t}`);
-    must(out.schemes.length === 5, "list_schemes did not return 5");
-    must(out.rule === "type.data", `when_to_use returned ${out.rule}`);
-    must(
-      existsSync(join(dir, "AGENTS.md")) && out.brand === "coral",
-      "deploy did not write the Coral project",
-    );
-    return `${out.tools.length} tools; deployed ${out.deployed} (${out.brand})`;
-  } finally {
-    rmSync(dir, { recursive: true, force: true });
-  }
+step("MCP over stdio: tools, prompts, schemes, when_to_use, plan_init", () => {
+  const out = JSON.parse(
+    run("node", ["cli/scripts/e2e-mcp.mjs"]).trim().split("\n").pop(),
+  );
+  for (const t of [
+    "list_schemes",
+    "get_scheme",
+    "get_answer",
+    "why",
+    "when_to_use",
+    "compare_schemes",
+    "get_inventory",
+    "what_moves",
+    "plan_create",
+    "plan_init",
+    "plan_add",
+  ])
+    must(out.tools.includes(t), `missing tool ${t}`);
+  must(
+    out.prompts.length === 6,
+    `expected 6 prompts, got ${out.prompts.length}`,
+  );
+  must(out.schemes.length === 5, "list_schemes did not return 5");
+  must(out.rule === "number-in-table", `when_to_use returned ${out.rule}`);
+  must(
+    out.command === "npx open-ds init multi-brand --dir . --brand coral" &&
+      out.files.includes("AGENTS.md"),
+    "plan_init did not plan the Coral project",
+  );
+  return `${out.tools.length} tools, ${out.prompts.length} prompts; planned ${out.command}`;
 });
 
 if (!quick) {
