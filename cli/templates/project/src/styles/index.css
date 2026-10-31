@@ -3,6 +3,7 @@
 @import "tailwindcss";
 @import "../../build/tokens.css";
 @import "../../build/theme.css";
+@import "../../build/shadcn.css";
 @import "./base.css";
 
 @source "../";
