@@ -1,6 +1,6 @@
 #!/usr/bin/env node
 // Copies what the CLI needs into cli/assets so the package works outside the repository:
-// schemes, built tokens, component sources and the agent skill. Run after the tokens build.
+// schemes, built tokens, component sources, Storybook stories and the agent skill. Run after the tokens build.
 
 import { cpSync, existsSync, rmSync } from "node:fs";
 import { dirname, join } from "node:path";
@@ -20,5 +20,6 @@ cpSync(join(repo, "tokens", "dist"), join(assets, "tokens"), { recursive: true }
 for (const part of ["components", "lib", "styles.css"]) {
   cpSync(join(repo, "ui", "src", part), join(assets, "ui", part), { recursive: true });
 }
+cpSync(join(repo, "storybook", "stories"), join(assets, "stories"), { recursive: true });
 cpSync(join(repo, "skills"), join(assets, "skills"), { recursive: true });
 console.log(`Bundled assets into ${assets}`);
