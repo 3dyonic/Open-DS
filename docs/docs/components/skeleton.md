@@ -1,5 +1,5 @@
 ---
-sidebar_position: 29
+sidebar_position: 32
 title: "Skeleton"
 description: "Skeleton in Dense data."
 ---

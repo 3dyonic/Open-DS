@@ -181,7 +181,7 @@ test("docs pages cover every scope and component, for every scheme", async () =>
     const inv = scheme.inventory.in.map((i) => i.id);
     const carried = inv;
     const expected = components.map((f) => f.replace(/\.tsx$/, "")).filter((c) => carried.includes(c));
-    assert.match(pages["components/inventory.md"], new RegExp(`\\*\\*${inv.length} of ${g.catalogue.items.length}\\*\\*`));
+    assert.match(pages["components/inventory.md"], new RegExp(`\\*\\*${inv.length}\\*\\* components are in`));
     assert.deepEqual(
       Object.keys(pages)
         .filter((p) => p.startsWith("components/") && p.endsWith(".md") && p !== "components/inventory.md")

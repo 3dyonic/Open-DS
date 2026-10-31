@@ -8,7 +8,7 @@ description: "The components Dense data carries."
 
 # Inventory
 
-**36 of 62** catalogue components are in Dense data. The components answers picked them (see [Components](../foundations/components.md)). Anything not in is out.
+**40** components are in Dense data. The components answers picked them (see [Components](../foundations/components.md)). Anything not in is out.
 
 | Component | Family | In | Built | Why |
 | --- | --- | --- | --- | --- |
@@ -24,16 +24,19 @@ description: "The components Dense data carries."
 | Command | navigation | In | Yes | Keyboard-first jump to any record or action. |
 | Context menu | navigation | In | Yes | Right-click on a row, for experts. |
 | Data table | data | In | Yes | Experts scan hundreds of orders, filter by status and depot, sort by due time and act on many rows at once. |
+| Date picker | form | In | Yes | Picks a date range for reports and filters from a button in the toolbar. |
 | Dialog | overlay | In | Yes | Edit one record without leaving the table. |
 | Dropdown menu | navigation | In | Yes | Row actions. |
 | Empty | feedback | In | Yes | An empty table says what to do next. |
 | Field | form | In | Yes | Lays out label, control and error the same way everywhere. |
+| Form | form | In | Yes | Keeps validation and errors the same on every record edit. |
 | Input | form | In | Yes | Search and edit fields. |
 | Input group | form | In | Yes | Search with an icon and a clear button. |
 | Kbd | navigation | In | Yes | Shows the shortcuts experts learn. |
 | Label | form | In | Yes | Names every control. |
 | Pagination | navigation | In | Yes | Moves through long result sets. |
 | Popover | overlay | In | Yes | Filters next to the column. |
+| Radio group | form | In | Yes | Picks one of two or three options, all visible at once. |
 | Resizable | layout | In | Yes | Experts size the table and detail panes. |
 | Scroll area | layout | In | Yes | Long tables in fixed panels. |
 | Select | form | In | Yes | Picks one value in filters and forms. |
@@ -41,6 +44,7 @@ description: "The components Dense data carries."
 | Sheet | overlay | In | Yes | Record details beside the table. |
 | Sidebar | navigation | In | Yes | App navigation that stays open all shift. |
 | Skeleton | feedback | In | Yes | Rows while a table loads. |
+| Slider | form | In | Yes | Narrows a filter to a range of totals by dragging. |
 | Switch | form | In | Yes | Settings that apply at once. |
 | Table | data | In | Yes | The heart of the product: rows of records. |
 | Tabs | navigation | In | Yes | Views of one record. |
@@ -58,7 +62,6 @@ description: "The components Dense data carries."
 | Carousel | media | Out | Yes | Slides hide records; experts need them all in view. |
 | Collapsible | layout | Out | Yes |  |
 | Drawer | overlay | Out | Yes | A desk tool with a mouse and keyboard does not need phone drawers. |
-| Form | form | Out | Yes |  |
 | Hover card | overlay | Out | Not yet |  |
 | Input otp | form | Out | Yes |  |
 | Item | layout | Out | Not yet |  |
@@ -69,8 +72,6 @@ description: "The components Dense data carries."
 | Native select | form | Out | Yes |  |
 | Navigation menu | navigation | Out | Yes |  |
 | Progress | feedback | Out | Yes |  |
-| Radio group | form | Out | Yes |  |
-| Slider | form | Out | Not yet |  |
 | Sonner | feedback | Out | Not yet |  |
 | Spinner | feedback | Out | Yes |  |
 | Toggle | action | Out | Yes |  |

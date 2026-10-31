@@ -1,5 +1,5 @@
 ---
-sidebar_position: 24
+sidebar_position: 27
 title: "Scroll area"
 description: "Scroll area in Dense data."
 ---
