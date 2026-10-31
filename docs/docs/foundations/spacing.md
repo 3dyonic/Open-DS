@@ -10,6 +10,17 @@ description: "Dense data: How space shows what belongs together."
 
 How space shows what belongs together.
 
+<div class="ods-specimen">
+<span class="ods-item"><span class="ods-bar" style="width:var(--space-gap-tight)"></span><span class="ods-label">space.gap.tight</span></span>
+<span class="ods-item"><span class="ods-bar" style="width:var(--space-gap-default)"></span><span class="ods-label">space.gap.default</span></span>
+<span class="ods-item"><span class="ods-bar" style="width:var(--space-gap-group)"></span><span class="ods-label">space.gap.group</span></span>
+<span class="ods-item"><span class="ods-bar" style="width:var(--space-gap-section)"></span><span class="ods-label">space.gap.section</span></span>
+<span class="ods-item"><span class="ods-bar" style="width:var(--space-inset-control-x)"></span><span class="ods-label">space.inset.control-x</span></span>
+<span class="ods-item"><span class="ods-bar" style="width:var(--space-inset-container)"></span><span class="ods-label">space.inset.container</span></span>
+<span class="ods-item"><span class="ods-bar" style="width:var(--space-inset-cell-x)"></span><span class="ods-label">space.inset.cell-x</span></span>
+<span class="ods-item"><span class="ods-bar" style="width:var(--size-row)"></span><span class="ods-label">size.row</span></span>
+</div>
+
 ## The five answers
 
 | Question | Answer | Why |
@@ -22,16 +33,31 @@ How space shows what belongs together.
 
 ## Tokens
 
-| Token | Value |
+Each token points to another token. Values live only on primitives, below.
+
+| Token | Points to |
 | --- | --- |
-| `space.gap.tight` | 0.25rem (4px) |
-| `space.gap.default` | 0.5rem (8px) |
-| `space.gap.group` | 1rem (16px) |
-| `space.gap.section` | 1.5rem (24px) |
-| `space.inset.control-x` | 0.75rem (12px) |
-| `space.inset.container` | 1rem (16px) |
-| `space.inset.cell-x` | 0.75rem (12px) |
-| `size.row` | 2rem (32px) |
+| `space.gap.tight` | `space.4` |
+| `space.gap.default` | `space.8` |
+| `space.gap.group` | `space.16` |
+| `space.gap.section` | `space.24` |
+| `space.inset.control-x` | `space.12` |
+| `space.inset.container` | `space.16` |
+| `space.inset.cell-x` | `space.12` |
+| `size.row` | `size.32` |
+
+## Primitives
+
+The raw values the tokens above end at.
+
+| Primitive | Value | Sample |
+| --- | --- | --- |
+| `size.32` | 2rem (32px) | <span class="ods-bar" style="width:var(--size-32)"></span> |
+| `space.12` | 0.75rem (12px) | <span class="ods-bar" style="width:var(--space-12)"></span> |
+| `space.16` | 1rem (16px) | <span class="ods-bar" style="width:var(--space-16)"></span> |
+| `space.24` | 1.5rem (24px) | <span class="ods-bar" style="width:var(--space-24)"></span> |
+| `space.4` | 0.25rem (4px) | <span class="ods-bar" style="width:var(--space-4)"></span> |
+| `space.8` | 0.5rem (8px) | <span class="ods-bar" style="width:var(--space-8)"></span> |
 
 ## Where it lands
 

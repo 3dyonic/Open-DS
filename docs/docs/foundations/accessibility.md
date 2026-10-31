@@ -10,6 +10,13 @@ description: "Dense data: Floors the system must hold."
 
 Floors the system must hold.
 
+<div class="ods-specimen">
+<span class="ods-item"><span class="ods-bar" style="width:var(--size-control-default)"></span><span class="ods-label">size.control.default</span></span>
+<span class="ods-item"><span class="ods-bar" style="width:var(--size-control-compact)"></span><span class="ods-label">size.control.compact</span></span>
+<span class="ods-item"><span class="ods-swatch" style="opacity:var(--opacity-disabled)"></span><span class="ods-label">opacity.disabled</span></span>
+<span class="ods-item"><span class="ods-swatch" style="background:var(--color-border-focus)"></span><span class="ods-label">color.border.focus</span></span>
+</div>
+
 ## The five answers
 
 | Question | Answer | Why |
@@ -22,12 +29,26 @@ Floors the system must hold.
 
 ## Tokens
 
-| Token | Light | Dark |
+Each token points to another token. Values live only on primitives, below.
+
+| Token | Points to, light | Points to, dark |
 | --- | --- | --- |
-| `size.control.default` | 2rem (32px) | 2rem (32px) |
-| `size.control.compact` | 1.5rem (24px) | 1.5rem (24px) |
-| `opacity.disabled` | 0.4 | 0.4 |
-| `color.border.focus` | #2457D6 | #8EA9EC |
+| `size.control.default` | `size.32` | `size.32` |
+| `size.control.compact` | `size.24` | `size.24` |
+| `opacity.disabled` | `opacity.40` | `opacity.40` |
+| `color.border.focus` | `color.brand.600` | `color.brand.300` |
+
+## Primitives
+
+The raw values the tokens above end at.
+
+| Primitive | Value | Sample |
+| --- | --- | --- |
+| `color.brand.300` | #8EA9EC | <span class="ods-swatch" style="background:var(--color-brand-300)"></span> |
+| `color.brand.600` | #2457D6 | <span class="ods-swatch" style="background:var(--color-brand-600)"></span> |
+| `opacity.40` | 0.4 | <span class="ods-swatch" style="opacity:var(--opacity-40)"></span> |
+| `size.24` | 1.5rem (24px) | <span class="ods-bar" style="width:var(--size-24)"></span> |
+| `size.32` | 2rem (32px) | <span class="ods-bar" style="width:var(--size-32)"></span> |
 
 ## Where it lands
 

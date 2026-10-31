@@ -42,7 +42,7 @@ function merge(a, b) {
 }
 
 function leaves(node, path) {
-  if (isToken(node)) return [{ path, ref: node.$value, description: node.$description }];
+  if (isToken(node)) return [{ path, ref: node.$value, type: node.$type, description: node.$description }];
   if (!node || typeof node !== "object") return [];
   return Object.entries(node)
     .filter(([k]) => !k.startsWith("$"))
@@ -75,6 +75,75 @@ const show = (v) =>
           ? Object.values(v).join(" ")
           : String(v);
 const px = (v) => (/^-?[\d.]+rem$/.test(v) ? `${v} (${Math.round(parseFloat(v) * 16)}px)` : v);
+
+const cssVar = (path) => `var(--${path.replaceAll(".", "-")})`;
+const attr = (s) => String(s).replaceAll('"', "&quot;");
+
+/** One theme's tokens before resolving: primitives, the brand, the semantics for the mode, component keys. */
+function rawTree(scheme, theme) {
+  const t = scheme.tokens;
+  return merge(merge(merge(merge(t.primitive, t.brands[theme.brand].primitive), t.semantic.base), t.semantic[theme.mode]), t.component);
+}
+
+/** The aliases a token points through, ending at a primitive. Raw is set when the chain ends in a value. */
+function chain(tree, path) {
+  const steps = [];
+  let at = path;
+  for (let i = 0; i < 10; i++) {
+    const node = get(tree, at);
+    if (!isToken(node)) break;
+    const m = typeof node.$value === "string" && node.$value.match(/^\{(.+)\}$/);
+    if (!m) return { steps, raw: node.$value };
+    steps.push(m[1]);
+    at = m[1];
+  }
+  return { steps, raw: undefined };
+}
+
+/** A small live sample of a primitive or semantic value, drawn from its CSS variable. */
+function sample(path, type) {
+  const v = cssVar(path);
+  if (type === "color") return `<span class="ods-swatch" style="background:${v}"></span>`;
+  if (type === "fontFamily") return `<span class="ods-font" style="font-family:${v}">Aa 123</span>`;
+  if (type === "shadow") return `<span class="ods-card" style="box-shadow:${v}"></span>`;
+  if (type === "duration") return `<span class="ods-motion" style="--ods-d:${v}"><span></span></span>`;
+  if (type === "number" && /opacity/.test(path)) return `<span class="ods-swatch" style="opacity:${v}"></span>`;
+  if (type === "dimension") {
+    if (/radius/.test(path)) return `<span class="ods-tile" style="border-radius:${v}"></span>`;
+    if (/border-width/.test(path)) return `<span class="ods-line" style="height:${v}"></span>`;
+    if (/font-size|line-height|letter/.test(path)) return "";
+    return `<span class="ods-bar" style="width:${v}"></span>`;
+  }
+  return "";
+}
+
+/** The specimen at the top of a foundation page: the scope's semantic tokens, drawn live. */
+function specimen(tokens, text) {
+  const roles = [...new Set(tokens.map((t) => t.path.match(/^type\.([a-z-]+)\.font-size$/)?.[1]).filter(Boolean))];
+  if (roles.length) {
+    return (
+      `<div class="ods-specimen">\n` +
+      roles
+        .map((r) => {
+          const p = `type.${r}`;
+          const style = `font-family:${cssVar(`${p}.font-family`)};font-size:${cssVar(`${p}.font-size`)};line-height:${cssVar(`${p}.line-height`)};font-weight:${cssVar(`${p}.font-weight`)}`;
+          return `<div class="ods-type"><span class="ods-label">${r}</span><span style="${style}">${attr(text)}</span></div>`;
+        })
+        .join("\n") +
+      `\n</div>\n\n`
+    );
+  }
+  const items = tokens
+    .map((t) => ({ t, s: sample(t.path, t.type) }))
+    .filter((x) => x.s)
+    .slice(0, 40);
+  if (!items.length) return "";
+  return (
+    `<div class="ods-specimen">\n` +
+    items.map(({ t, s }) => `<span class="ods-item">${s}<span class="ods-label">${t.path}</span></span>`).join("\n") +
+    `\n</div>\n\n`
+  );
+}
 
 /** The header comment of a component file, as plain text. */
 function componentIntro(uiDir, name) {
@@ -110,6 +179,26 @@ export function docsPages(scheme, g, roots, { storybook = "http://localhost:6006
     const v = get(themes[theme.id], path);
     return px(show(v === undefined ? ref : v));
   };
+  const trees = Object.fromEntries(scheme.themes.map((t) => [t.id, rawTree(scheme, t)]));
+  const primitiveTree = merge(scheme.tokens.primitive, scheme.tokens.brands[first.brand].primitive);
+  const isPrimitive = (path) => isToken(get(primitiveTree, path));
+  // A semantic or component token shows what it points to, never a raw value. Only primitives have values.
+  const link = (theme, path) => {
+    const { steps, raw } = chain(trees[theme.id], path);
+    if (steps.length) return steps.map((x) => `\`${x}\``).join(" → ");
+    return raw === undefined ? "" : `${esc(px(show(raw)))} (set here, not a primitive)`;
+  };
+  const primitiveOf = (theme, path) => {
+    const { steps } = chain(trees[theme.id], path);
+    return steps.length && isPrimitive(steps.at(-1)) ? steps.at(-1) : undefined;
+  };
+  const primitiveRows = (paths) =>
+    `| Primitive | Value | Sample |\n| --- | --- | --- |\n` +
+    [...new Set(paths)]
+      .filter(Boolean)
+      .sort()
+      .map((p) => `| \`${p}\` | ${esc(value(first, p, ""))} | ${sample(p, get(primitiveTree, p)?.$type)} |`)
+      .join("\n");
   const rule = (u) =>
     `| ${esc(sits[u.situation].title)} | ${esc(u.use)} | ${esc(u.not)} | ${esc(u.why)}${u.example ? ` Example: “${esc(u.example)}”` : ""} |`;
   const RULES = "| Situation | Use | Not | Why |\n| --- | --- | --- | --- |\n";
@@ -177,7 +266,17 @@ export function docsPages(scheme, g, roots, { storybook = "http://localhost:6006
   g.scopes.forEach((sc, i) => {
     const tokens = owned(scheme, sc.owns ?? []);
     const usage = scheme.usage.filter((u) => sits[u.situation].scope === sc.id);
-    const darkDiffers = tokens.some((t) => value(first, t.path, t.ref) !== value(dark, t.path, t.ref));
+    // Paths for the component scope start with component.; the key itself is the rest.
+    const key = (p) => p.replace(/^component\./, "");
+    const semantics = tokens.filter((t) => !isPrimitive(t.path));
+    const darkDiffers = semantics.some((t) => link(first, key(t.path)) !== link(dark, key(t.path)));
+    const prims = [
+      ...tokens.filter((t) => isPrimitive(t.path)).map((t) => t.path),
+      ...semantics.flatMap((t) => [primitiveOf(first, key(t.path)), primitiveOf(dark, key(t.path))]),
+    ];
+    const SPECIMEN = ["components", "naming", "voice"].includes(sc.id)
+      ? ""
+      : specimen(semantics.length ? semantics : tokens, scheme.scenarios[0].text);
     pages[`foundations/${sc.id}.md`] =
       fm({
         sidebar_position: i + 1,
@@ -185,17 +284,23 @@ export function docsPages(scheme, g, roots, { storybook = "http://localhost:6006
         description: `${scheme.name}: ${sc.description}`,
       }) +
       NOTE +
-      `# ${sc.title}\n\n${sc.description}\n\n## The five answers\n\n| Question | Answer | Why |\n| --- | --- | --- |\n` +
+      `# ${sc.title}\n\n${sc.description}\n\n${SPECIMEN}## The five answers\n\n| Question | Answer | Why |\n| --- | --- | --- |\n` +
       sc.questions.map((q) => `| ${esc(q.text)} | ${esc(label(q.id))} | ${esc(answer(q.id).why)} |`).join("\n") +
       `\n\n## Tokens\n\n` +
-      (darkDiffers ? "| Token | Light | Dark |\n| --- | --- | --- |\n" : "| Token | Value |\n| --- | --- |\n") +
-      tokens
-        .map((t) =>
-          darkDiffers
-            ? `| \`${t.path}\` | ${esc(value(first, t.path, t.ref))} | ${esc(value(dark, t.path, t.ref))} |`
-            : `| \`${t.path}\` | ${esc(value(first, t.path, t.ref))} |`,
-        )
-        .join("\n") +
+      (semantics.length
+        ? `Each token points to another token. Values live only on primitives, below.\n\n` +
+          (darkDiffers
+            ? "| Token | Points to, light | Points to, dark |\n| --- | --- | --- |\n"
+            : "| Token | Points to |\n| --- | --- |\n") +
+          semantics
+            .map((t) =>
+              darkDiffers
+                ? `| \`${t.path}\` | ${link(first, key(t.path))} | ${link(dark, key(t.path))} |`
+                : `| \`${t.path}\` | ${link(first, key(t.path))} |`,
+            )
+            .join("\n")
+        : "This scope sets primitives directly.") +
+      (prims.filter(Boolean).length ? `\n\n## Primitives\n\nThe raw values the tokens above end at.\n\n${primitiveRows(prims)}` : "") +
       `\n\n## Where it lands\n\n${(sc.lands_in ?? []).map((c) => `- ${title(c)}`).join("\n")}\n\n` +
       `## When to use what\n\n${RULES}${usage.map(rule).join("\n")}\n`;
   });
@@ -262,12 +367,14 @@ export function docsPages(scheme, g, roots, { storybook = "http://localhost:6006
       NOTE +
       `# ${title(name)}\n\n${esc(componentIntro(roots.ui, name)).replaceAll("*", "\\*").replaceAll("_", "\\_")}\n\n` +
       `See it in [Storybook](${storybook}) under Components / ${title(name)}, in every theme.\n\n` +
-      `## Component keys\n\nThe CSS variable is the key with \`/\` replaced by \`-\`.\n\n| Key | What it controls | Reads | ${first.id} | ${dark.id} |\n| --- | --- | --- | --- | --- |\n` +
+      `## Component keys\n\nThe CSS variable is the key with \`/\` replaced by \`-\`. Each key points to a token; values live only on primitives.\n\n| Key | What it controls | Points to, ${first.id} | Points to, ${dark.id} |\n| --- | --- | --- | --- |\n` +
       keys
-        .map(
-          (k) =>
-            `| \`${k.id}\` | ${esc(k.description)} | \`${k.default}\` | ${esc(value(first, k.id.replaceAll("/", "."), ""))} | ${esc(value(dark, k.id.replaceAll("/", "."), ""))} |`,
-        )
+        .map((k) => {
+          const p = k.id.replaceAll("/", ".");
+          const l = link(first, p);
+          const d = link(dark, p);
+          return `| \`${k.id}\` | ${esc(k.description)} | ${l} | ${d === l ? "same" : d} |`;
+        })
         .join("\n") +
       (usage.length ? `\n\n## When to use it\n\n${RULES}${usage.map(rule).join("\n")}` : "") +
       "\n";

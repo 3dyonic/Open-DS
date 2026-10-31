@@ -122,9 +122,15 @@ export function scopePage(schemeId: string, scopeId: string) {
         : v,
     );
   };
+  // What a token points to in dark mode, when its semantics differ there.
+  const sem = s.tokens as unknown as { semantic: { base: Tree; dark: Tree } };
+  const darkTree = merge(sem.semantic.base, sem.semantic.dark);
+  const refOf = (v: unknown) => (typeof v === "string" && v.startsWith("{") ? v.slice(1, -1) : "");
   const tokens = list.map((t) => ({
     path: t.path,
     ref: show(t.ref),
+    lightRef: refOf(t.ref),
+    darkRef: refOf((get(darkTree, t.path) as Tree | undefined)?.$value ?? t.ref),
     light: value(light, t.path, t.ref),
     dark: value(dark, t.path, t.ref),
     description: t.description,
@@ -212,6 +218,8 @@ export function scopePage(schemeId: string, scopeId: string) {
             prop: t.path === full ? r.name.split(".").pop()! : t.path.slice(full.length + 1),
             light: rem(t.light),
             dark: rem(t.dark),
+            lightRef: t.lightRef,
+            darkRef: t.darkRef,
           })),
       };
     }),

@@ -10,6 +10,10 @@ description: "Dense data: When icons appear and how they look."
 
 When icons appear and how they look.
 
+<div class="ods-specimen">
+<span class="ods-item"><span class="ods-bar" style="width:var(--size-icon)"></span><span class="ods-label">size.icon</span></span>
+</div>
+
 ## The five answers
 
 | Question | Answer | Why |
@@ -22,9 +26,19 @@ When icons appear and how they look.
 
 ## Tokens
 
-| Token | Value |
+Each token points to another token. Values live only on primitives, below.
+
+| Token | Points to |
 | --- | --- |
-| `size.icon` | 1rem (16px) |
+| `size.icon` | `size.16` |
+
+## Primitives
+
+The raw values the tokens above end at.
+
+| Primitive | Value | Sample |
+| --- | --- | --- |
+| `size.16` | 1rem (16px) | <span class="ods-bar" style="width:var(--size-16)"></span> |
 
 ## Where it lands
 

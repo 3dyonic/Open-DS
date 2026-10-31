@@ -10,6 +10,35 @@ description: "Dense data: How color carries action, state and brand."
 
 How color carries action, state and brand.
 
+<div class="ods-specimen">
+<span class="ods-item"><span class="ods-swatch" style="background:var(--color-surface-canvas)"></span><span class="ods-label">color.surface.canvas</span></span>
+<span class="ods-item"><span class="ods-swatch" style="background:var(--color-surface-default)"></span><span class="ods-label">color.surface.default</span></span>
+<span class="ods-item"><span class="ods-swatch" style="background:var(--color-surface-raised)"></span><span class="ods-label">color.surface.raised</span></span>
+<span class="ods-item"><span class="ods-swatch" style="background:var(--color-surface-sunken)"></span><span class="ods-label">color.surface.sunken</span></span>
+<span class="ods-item"><span class="ods-swatch" style="background:var(--color-surface-selected)"></span><span class="ods-label">color.surface.selected</span></span>
+<span class="ods-item"><span class="ods-swatch" style="background:var(--color-surface-inverse)"></span><span class="ods-label">color.surface.inverse</span></span>
+<span class="ods-item"><span class="ods-swatch" style="background:var(--color-surface-scrim)"></span><span class="ods-label">color.surface.scrim</span></span>
+<span class="ods-item"><span class="ods-swatch" style="background:var(--color-text-primary)"></span><span class="ods-label">color.text.primary</span></span>
+<span class="ods-item"><span class="ods-swatch" style="background:var(--color-text-secondary)"></span><span class="ods-label">color.text.secondary</span></span>
+<span class="ods-item"><span class="ods-swatch" style="background:var(--color-text-muted)"></span><span class="ods-label">color.text.muted</span></span>
+<span class="ods-item"><span class="ods-swatch" style="background:var(--color-text-inverse)"></span><span class="ods-label">color.text.inverse</span></span>
+<span class="ods-item"><span class="ods-swatch" style="background:var(--color-text-on-action)"></span><span class="ods-label">color.text.on-action</span></span>
+<span class="ods-item"><span class="ods-swatch" style="background:var(--color-text-link)"></span><span class="ods-label">color.text.link</span></span>
+<span class="ods-item"><span class="ods-swatch" style="background:var(--color-border-default)"></span><span class="ods-label">color.border.default</span></span>
+<span class="ods-item"><span class="ods-swatch" style="background:var(--color-border-strong)"></span><span class="ods-label">color.border.strong</span></span>
+<span class="ods-item"><span class="ods-swatch" style="background:var(--color-border-focus)"></span><span class="ods-label">color.border.focus</span></span>
+<span class="ods-item"><span class="ods-swatch" style="background:var(--color-action-primary)"></span><span class="ods-label">color.action.primary</span></span>
+<span class="ods-item"><span class="ods-swatch" style="background:var(--color-action-primary-hover)"></span><span class="ods-label">color.action.primary-hover</span></span>
+<span class="ods-item"><span class="ods-swatch" style="background:var(--color-action-secondary)"></span><span class="ods-label">color.action.secondary</span></span>
+<span class="ods-item"><span class="ods-swatch" style="background:var(--color-action-secondary-hover)"></span><span class="ods-label">color.action.secondary-hover</span></span>
+<span class="ods-item"><span class="ods-swatch" style="background:var(--color-status-success)"></span><span class="ods-label">color.status.success</span></span>
+<span class="ods-item"><span class="ods-swatch" style="background:var(--color-status-warning)"></span><span class="ods-label">color.status.warning</span></span>
+<span class="ods-item"><span class="ods-swatch" style="background:var(--color-status-danger)"></span><span class="ods-label">color.status.danger</span></span>
+<span class="ods-item"><span class="ods-swatch" style="background:var(--color-status-success-subtle)"></span><span class="ods-label">color.status.success-subtle</span></span>
+<span class="ods-item"><span class="ods-swatch" style="background:var(--color-status-warning-subtle)"></span><span class="ods-label">color.status.warning-subtle</span></span>
+<span class="ods-item"><span class="ods-swatch" style="background:var(--color-status-danger-subtle)"></span><span class="ods-label">color.status.danger-subtle</span></span>
+</div>
+
 ## The five answers
 
 | Question | Answer | Why |
@@ -22,34 +51,72 @@ How color carries action, state and brand.
 
 ## Tokens
 
-| Token | Light | Dark |
+Each token points to another token. Values live only on primitives, below.
+
+| Token | Points to, light | Points to, dark |
 | --- | --- | --- |
-| `color.surface.canvas` | #F7F8FA | #0D1117 |
-| `color.surface.default` | #FFFFFF | #161B23 |
-| `color.surface.raised` | #FFFFFF | #262D38 |
-| `color.surface.sunken` | #EEF1F5 | #262D38 |
-| `color.surface.selected` | #E6EDFC | #163784 |
-| `color.surface.inverse` | #161B23 | #F7F8FA |
-| `color.surface.scrim` | #0000008C | #000000B3 |
-| `color.text.primary` | #161B23 | #F7F8FA |
-| `color.text.secondary` | #3D4655 | #C4CBD6 |
-| `color.text.muted` | #6B7585 | #6B7585 |
-| `color.text.inverse` | #FFFFFF | #161B23 |
-| `color.text.on-action` | #FFFFFF | #0D1117 |
-| `color.text.link` | #1C45AB | #8EA9EC |
-| `color.border.default` | #DDE2EA | #262D38 |
-| `color.border.strong` | #C4CBD6 | #3D4655 |
-| `color.border.focus` | #2457D6 | #8EA9EC |
-| `color.action.primary` | #2457D6 | #8EA9EC |
-| `color.action.primary-hover` | #1C45AB | #E6EDFC |
-| `color.action.secondary` | #FFFFFF | #161B23 |
-| `color.action.secondary-hover` | #EEF1F5 | #262D38 |
-| `color.status.success` | #1F7A3A | #5CC283 |
-| `color.status.warning` | #8A5600 | #F2B84B |
-| `color.status.danger` | #C42B2B | #F28B8B |
-| `color.status.success-subtle` | #E3F4EA | #123322 |
-| `color.status.warning-subtle` | #FFF3D6 | #3A2A05 |
-| `color.status.danger-subtle` | #FDE7E7 | #3D1414 |
+| `color.surface.canvas` | `color.neutral.50` | `color.neutral.950` |
+| `color.surface.default` | `color.neutral.0` | `color.neutral.900` |
+| `color.surface.raised` | `color.neutral.0` | `color.neutral.800` |
+| `color.surface.sunken` | `color.neutral.100` | `color.neutral.800` |
+| `color.surface.selected` | `color.brand.100` | `color.brand.800` |
+| `color.surface.inverse` | `color.neutral.900` | `color.neutral.50` |
+| `color.surface.scrim` | `color.black-alpha.scrim` | `color.black-alpha.scrim-dark` |
+| `color.text.primary` | `color.neutral.900` | `color.neutral.50` |
+| `color.text.secondary` | `color.neutral.700` | `color.neutral.300` |
+| `color.text.muted` | `color.neutral.500` | `color.neutral.500` |
+| `color.text.inverse` | `color.neutral.0` | `color.neutral.900` |
+| `color.text.on-action` | `color.neutral.0` | `color.neutral.950` |
+| `color.text.link` | `color.brand.700` | `color.brand.300` |
+| `color.border.default` | `color.neutral.200` | `color.neutral.800` |
+| `color.border.strong` | `color.neutral.300` | `color.neutral.700` |
+| `color.border.focus` | `color.brand.600` | `color.brand.300` |
+| `color.action.primary` | `color.brand.600` | `color.brand.300` |
+| `color.action.primary-hover` | `color.brand.700` | `color.brand.100` |
+| `color.action.secondary` | `color.neutral.0` | `color.neutral.900` |
+| `color.action.secondary-hover` | `color.neutral.100` | `color.neutral.800` |
+| `color.status.success` | `color.success.strong` | `color.success.strong-dark` |
+| `color.status.warning` | `color.warning.strong` | `color.warning.strong-dark` |
+| `color.status.danger` | `color.danger.strong` | `color.danger.strong-dark` |
+| `color.status.success-subtle` | `color.success.subtle` | `color.success.subtle-dark` |
+| `color.status.warning-subtle` | `color.warning.subtle` | `color.warning.subtle-dark` |
+| `color.status.danger-subtle` | `color.danger.subtle` | `color.danger.subtle-dark` |
+
+## Primitives
+
+The raw values the tokens above end at.
+
+| Primitive | Value | Sample |
+| --- | --- | --- |
+| `color.black-alpha.scrim` | #0000008C | <span class="ods-swatch" style="background:var(--color-black-alpha-scrim)"></span> |
+| `color.black-alpha.scrim-dark` | #000000B3 | <span class="ods-swatch" style="background:var(--color-black-alpha-scrim-dark)"></span> |
+| `color.brand.100` | #E6EDFC | <span class="ods-swatch" style="background:var(--color-brand-100)"></span> |
+| `color.brand.300` | #8EA9EC | <span class="ods-swatch" style="background:var(--color-brand-300)"></span> |
+| `color.brand.600` | #2457D6 | <span class="ods-swatch" style="background:var(--color-brand-600)"></span> |
+| `color.brand.700` | #1C45AB | <span class="ods-swatch" style="background:var(--color-brand-700)"></span> |
+| `color.brand.800` | #163784 | <span class="ods-swatch" style="background:var(--color-brand-800)"></span> |
+| `color.danger.strong` | #C42B2B | <span class="ods-swatch" style="background:var(--color-danger-strong)"></span> |
+| `color.danger.strong-dark` | #F28B8B | <span class="ods-swatch" style="background:var(--color-danger-strong-dark)"></span> |
+| `color.danger.subtle` | #FDE7E7 | <span class="ods-swatch" style="background:var(--color-danger-subtle)"></span> |
+| `color.danger.subtle-dark` | #3D1414 | <span class="ods-swatch" style="background:var(--color-danger-subtle-dark)"></span> |
+| `color.neutral.0` | #FFFFFF | <span class="ods-swatch" style="background:var(--color-neutral-0)"></span> |
+| `color.neutral.100` | #EEF1F5 | <span class="ods-swatch" style="background:var(--color-neutral-100)"></span> |
+| `color.neutral.200` | #DDE2EA | <span class="ods-swatch" style="background:var(--color-neutral-200)"></span> |
+| `color.neutral.300` | #C4CBD6 | <span class="ods-swatch" style="background:var(--color-neutral-300)"></span> |
+| `color.neutral.50` | #F7F8FA | <span class="ods-swatch" style="background:var(--color-neutral-50)"></span> |
+| `color.neutral.500` | #6B7585 | <span class="ods-swatch" style="background:var(--color-neutral-500)"></span> |
+| `color.neutral.700` | #3D4655 | <span class="ods-swatch" style="background:var(--color-neutral-700)"></span> |
+| `color.neutral.800` | #262D38 | <span class="ods-swatch" style="background:var(--color-neutral-800)"></span> |
+| `color.neutral.900` | #161B23 | <span class="ods-swatch" style="background:var(--color-neutral-900)"></span> |
+| `color.neutral.950` | #0D1117 | <span class="ods-swatch" style="background:var(--color-neutral-950)"></span> |
+| `color.success.strong` | #1F7A3A | <span class="ods-swatch" style="background:var(--color-success-strong)"></span> |
+| `color.success.strong-dark` | #5CC283 | <span class="ods-swatch" style="background:var(--color-success-strong-dark)"></span> |
+| `color.success.subtle` | #E3F4EA | <span class="ods-swatch" style="background:var(--color-success-subtle)"></span> |
+| `color.success.subtle-dark` | #123322 | <span class="ods-swatch" style="background:var(--color-success-subtle-dark)"></span> |
+| `color.warning.strong` | #8A5600 | <span class="ods-swatch" style="background:var(--color-warning-strong)"></span> |
+| `color.warning.strong-dark` | #F2B84B | <span class="ods-swatch" style="background:var(--color-warning-strong-dark)"></span> |
+| `color.warning.subtle` | #FFF3D6 | <span class="ods-swatch" style="background:var(--color-warning-subtle)"></span> |
+| `color.warning.subtle-dark` | #3A2A05 | <span class="ods-swatch" style="background:var(--color-warning-subtle-dark)"></span> |
 
 ## Where it lands
 
