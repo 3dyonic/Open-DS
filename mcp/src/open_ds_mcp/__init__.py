@@ -1,1 +1,1 @@
-"""FastMCP server. It lists the core questions and checks recipes. It runs no model."""
+"""FastMCP server. It lists the schemes, explains their decisions and deploys one through the CLI. It runs no model."""
