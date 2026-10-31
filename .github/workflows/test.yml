@@ -84,3 +84,5 @@ jobs:
         run: pnpm install --frozen-lockfile
       - name: Pack the CLI and deploy a scheme from the packed file
         run: pnpm test:package
+      - name: Create a design system project from the packed file, install and build it
+        run: pnpm test:create

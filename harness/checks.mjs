@@ -6,7 +6,7 @@ import { spawnSync } from "node:child_process";
 import { pathToFileURL } from "node:url";
 import { existsSync, mkdtempSync, readFileSync, readdirSync, rmSync, statSync } from "node:fs";
 import { tmpdir } from "node:os";
-import { join, relative } from "node:path";
+import { dirname, join, relative } from "node:path";
 import Ajv2020 from "ajv/dist/2020.js";
 import addFormats from "ajv-formats";
 
@@ -658,14 +658,53 @@ export const CHECKS = {
       return r.code === 0 ? ok("the packed CLI deploys a scheme into a fresh app that builds") : bad(tail(r.out));
     },
   },
+  "cli-create-works": {
+    requires: ["scripts/test-create.mjs"],
+    slow: true,
+    run: (c) => {
+      // Packs the CLI, creates a design system project from the packed file, installs and builds it.
+      const r = c.sh("node", ["scripts/test-create.mjs"]);
+      return r.code === 0 ? ok("a created project builds its tokens, Storybook and docs") : bad(tail(r.out));
+    },
+  },
+  "cli-create-temp": {
+    requires: ["cli/src/create.mjs", "tokens/package.json"],
+    run: (c) => {
+      const err = ensureTokens(c);
+      if (err) return bad(tail(err));
+      const dir = join(mkdtempSync(join(tmpdir(), "ods-harness-")), "ds");
+      try {
+        const r = c.sh("node", ["cli/bin/open-ds.js", "create", dir, "--scheme", "multi-brand"]);
+        if (r.code !== 0) return bad(tail(r.out));
+        const need = [
+          "tokens/build.mjs",
+          "tokens/src/primitive.tokens.json",
+          "tokens/src/brands/coral.tokens.json",
+          ".storybook/preview.tsx",
+          "stories/button.stories.tsx",
+          "docs/docusaurus.config.ts",
+          "docs/docs/index.md",
+          "scheme.json",
+          "AGENTS.md",
+          ".github/workflows/ci.yml",
+        ];
+        const missing = need.filter((f) => !existsSync(join(dir, f)));
+        return missing.length
+          ? bad(`create did not write: ${missing.join(", ")}`)
+          : ok("create wrote tokens source and build, components, Storybook, docs, agent files and CI");
+      } finally {
+        rmSync(dirname(dir), { recursive: true, force: true });
+      }
+    },
+  },
   "cli-commands": {
     requires: ["cli/src/schemes.mjs"],
     run: (c) => {
       const r = c.sh("node", ["cli/bin/open-ds.js", "--help"]);
-      const missing = ["list", "show", "why", "when", "init", "add"].filter(
+      const missing = ["list", "show", "why", "when", "create", "init", "add"].filter(
         (cmd) => !new RegExp(`\\b${cmd}\\b`).test(r.out),
       );
-      return missing.length ? bad(`help does not list: ${missing.join(", ")}`) : ok("list, show, why, when, init, add");
+      return missing.length ? bad(`help does not list: ${missing.join(", ")}`) : ok("list, show, why, when, create, init, add");
     },
   },
   "cli-init-temp": {

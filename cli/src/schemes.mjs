@@ -7,7 +7,7 @@ import { fileURLToPath } from "node:url";
 
 const here = dirname(fileURLToPath(import.meta.url));
 
-/** Where schemes, built tokens, components and skills live. */
+/** Where schemes, built tokens, components, stories, skills and project templates live. */
 export function assetRoots() {
   const packed = join(here, "..", "assets");
   const inRepo = existsSync(join(here, "..", "..", "schemes", "grammar.json"));
@@ -18,6 +18,8 @@ export function assetRoots() {
       tokens: join(packed, "tokens"),
       ui: join(packed, "ui"),
       skills: join(packed, "skills"),
+      stories: join(packed, "stories"),
+      templates: join(here, "..", "templates"),
     };
   }
   const repo = join(here, "..", "..");
@@ -26,6 +28,8 @@ export function assetRoots() {
     tokens: join(repo, "tokens", "dist"),
     ui: join(repo, "ui", "src"),
     skills: join(repo, "skills"),
+    stories: join(repo, "storybook", "stories"),
+    templates: join(here, "..", "templates"),
   };
 }
 
