@@ -90,11 +90,11 @@ The raw values the tokens above end at.
 | --- | --- | --- |
 | `color.black-alpha.scrim` | #0000008C | <span class="ods-swatch" style="background:var(--color-black-alpha-scrim)"></span> |
 | `color.black-alpha.scrim-dark` | #000000B3 | <span class="ods-swatch" style="background:var(--color-black-alpha-scrim-dark)"></span> |
-| `color.brand.100` | #E6EDFC | <span class="ods-swatch" style="background:var(--color-brand-100)"></span> |
-| `color.brand.300` | #8EA9EC | <span class="ods-swatch" style="background:var(--color-brand-300)"></span> |
-| `color.brand.600` | #2457D6 | <span class="ods-swatch" style="background:var(--color-brand-600)"></span> |
-| `color.brand.700` | #1C45AB | <span class="ods-swatch" style="background:var(--color-brand-700)"></span> |
-| `color.brand.800` | #163784 | <span class="ods-swatch" style="background:var(--color-brand-800)"></span> |
+| `color.brand.100` | #EEEDFE | <span class="ods-swatch" style="background:var(--color-brand-100)"></span> |
+| `color.brand.300` | #A9A3F6 | <span class="ods-swatch" style="background:var(--color-brand-300)"></span> |
+| `color.brand.600` | #4B3FD9 | <span class="ods-swatch" style="background:var(--color-brand-600)"></span> |
+| `color.brand.700` | #3B31B0 | <span class="ods-swatch" style="background:var(--color-brand-700)"></span> |
+| `color.brand.800` | #2C2588 | <span class="ods-swatch" style="background:var(--color-brand-800)"></span> |
 | `color.danger.strong` | #C42B2B | <span class="ods-swatch" style="background:var(--color-danger-strong)"></span> |
 | `color.danger.strong-dark` | #F28B8B | <span class="ods-swatch" style="background:var(--color-danger-strong-dark)"></span> |
 | `color.danger.subtle` | #FDE7E7 | <span class="ods-swatch" style="background:var(--color-danger-subtle)"></span> |

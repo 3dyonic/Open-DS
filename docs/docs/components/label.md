@@ -25,7 +25,7 @@ The CSS variable is the key with `/` replaced by `-`. Each key points to a token
 | `input/placeholder` | Placeholder text color. | `color.text.muted` → `color.neutral.500` | same |
 | `input/height` | Input height. | `size.control.default` → `size.32` | same |
 | `input/padding-x` | Horizontal padding inside an input. | `space.inset.control-x` → `space.12` | same |
-| `input/radius` | Input corner radius. | `radius.control` → `radius.brand.control` → `radius.4` | same |
+| `input/radius` | Input corner radius. | `radius.control` → `radius.brand.control` → `radius.2` | same |
 | `input/font-size` | Typed text size. | `type.body.font-size` → `font.size.14` | same |
 
 ## When to use it

@@ -37,7 +37,7 @@ Each token points to another token. Values live only on primitives, below.
 | `component.button.ghost.label` | `color.text.link` → `color.brand.700` | `color.text.link` → `color.brand.300` |
 | `component.button.height` | `size.control.default` → `size.32` | `size.control.default` → `size.32` |
 | `component.button.padding-x` | `space.inset.control-x` → `space.12` | `space.inset.control-x` → `space.12` |
-| `component.button.radius` | `radius.control` → `radius.brand.control` → `radius.4` | `radius.control` → `radius.brand.control` → `radius.4` |
+| `component.button.radius` | `radius.control` → `radius.brand.control` → `radius.2` | `radius.control` → `radius.brand.control` → `radius.2` |
 | `component.button.font-size` | `type.label.font-size` → `font.size.12` | `type.label.font-size` → `font.size.12` |
 | `component.button.font-weight` | `type.label.font-weight` → `font.weight.500` | `type.label.font-weight` → `font.weight.500` |
 | `component.button.focus-ring` | `color.border.focus` → `color.brand.600` | `color.border.focus` → `color.brand.300` |
@@ -49,13 +49,13 @@ Each token points to another token. Values live only on primitives, below.
 | `component.input.placeholder` | `color.text.muted` → `color.neutral.500` | `color.text.muted` → `color.neutral.500` |
 | `component.input.height` | `size.control.default` → `size.32` | `size.control.default` → `size.32` |
 | `component.input.padding-x` | `space.inset.control-x` → `space.12` | `space.inset.control-x` → `space.12` |
-| `component.input.radius` | `radius.control` → `radius.brand.control` → `radius.4` | `radius.control` → `radius.brand.control` → `radius.4` |
+| `component.input.radius` | `radius.control` → `radius.brand.control` → `radius.2` | `radius.control` → `radius.brand.control` → `radius.2` |
 | `component.input.font-size` | `type.body.font-size` → `font.size.14` | `type.body.font-size` → `font.size.14` |
 | `component.control.checked` | `color.action.primary` → `color.brand.600` | `color.action.primary` → `color.brand.300` |
 | `component.control.track` | `color.border.strong` → `color.neutral.300` | `color.border.strong` → `color.neutral.700` |
 | `component.control.thumb` | `color.surface.default` → `color.neutral.0` | `color.surface.default` → `color.neutral.900` |
-| `component.control.radius` | `radius.badge` → `radius.brand.badge` → `radius.2` | `radius.badge` → `radius.brand.badge` → `radius.2` |
-| `component.badge.radius` | `radius.badge` → `radius.brand.badge` → `radius.2` | `radius.badge` → `radius.brand.badge` → `radius.2` |
+| `component.control.radius` | `radius.badge` → `radius.brand.badge` → `radius.0` | `radius.badge` → `radius.brand.badge` → `radius.0` |
+| `component.badge.radius` | `radius.badge` → `radius.brand.badge` → `radius.0` | `radius.badge` → `radius.brand.badge` → `radius.0` |
 | `component.badge.padding-x` | `space.gap.tight` → `space.4` | `space.gap.tight` → `space.4` |
 | `component.badge.font-size` | `type.caption.font-size` → `font.size.12` | `type.caption.font-size` → `font.size.12` |
 | `component.badge.neutral.background` | `color.surface.sunken` → `color.neutral.100` | `color.surface.sunken` → `color.neutral.800` |
@@ -68,7 +68,7 @@ Each token points to another token. Values live only on primitives, below.
 | `component.badge.danger.label` | `color.status.danger` → `color.danger.strong` | `color.status.danger` → `color.danger.strong-dark` |
 | `component.card.background` | `color.surface.default` → `color.neutral.0` | `color.surface.default` → `color.neutral.900` |
 | `component.card.border` | `color.border.default` → `color.neutral.200` | `color.border.default` → `color.neutral.800` |
-| `component.card.radius` | `radius.container` → `radius.brand.container` → `radius.6` | `radius.container` → `radius.brand.container` → `radius.6` |
+| `component.card.radius` | `radius.container` → `radius.brand.container` → `radius.4` | `radius.container` → `radius.brand.container` → `radius.4` |
 | `component.card.padding` | `space.inset.container` → `space.16` | `space.inset.container` → `space.16` |
 | `component.card.shadow` | `elevation.card` → `shadow.none` | `elevation.card` → `shadow.none` |
 | `component.table.header-background` | `color.surface.sunken` → `color.neutral.100` | `color.surface.sunken` → `color.neutral.800` |
@@ -81,7 +81,7 @@ Each token points to another token. Values live only on primitives, below.
 | `component.tabs.label` | `color.text.secondary` → `color.neutral.700` | `color.text.secondary` → `color.neutral.300` |
 | `component.tabs.label-active` | `color.text.primary` → `color.neutral.900` | `color.text.primary` → `color.neutral.50` |
 | `component.overlay.background` | `color.surface.raised` → `color.neutral.0` | `color.surface.raised` → `color.neutral.800` |
-| `component.overlay.radius` | `radius.container` → `radius.brand.container` → `radius.6` | `radius.container` → `radius.brand.container` → `radius.6` |
+| `component.overlay.radius` | `radius.container` → `radius.brand.container` → `radius.4` | `radius.container` → `radius.brand.container` → `radius.4` |
 | `component.overlay.shadow` | `elevation.overlay` → `shadow.overlay` | `elevation.overlay` → `shadow.overlay-dark` |
 | `component.overlay.scrim` | `color.surface.scrim` → `color.black-alpha.scrim` | `color.surface.scrim` → `color.black-alpha.scrim-dark` |
 | `component.overlay.item-height` | `size.control.default` → `size.32` | `size.control.default` → `size.32` |
@@ -98,11 +98,11 @@ The raw values the tokens above end at.
 | --- | --- | --- |
 | `color.black-alpha.scrim` | #0000008C | <span class="ods-swatch" style="background:var(--color-black-alpha-scrim)"></span> |
 | `color.black-alpha.scrim-dark` | #000000B3 | <span class="ods-swatch" style="background:var(--color-black-alpha-scrim-dark)"></span> |
-| `color.brand.100` | #E6EDFC | <span class="ods-swatch" style="background:var(--color-brand-100)"></span> |
-| `color.brand.300` | #8EA9EC | <span class="ods-swatch" style="background:var(--color-brand-300)"></span> |
-| `color.brand.600` | #2457D6 | <span class="ods-swatch" style="background:var(--color-brand-600)"></span> |
-| `color.brand.700` | #1C45AB | <span class="ods-swatch" style="background:var(--color-brand-700)"></span> |
-| `color.brand.800` | #163784 | <span class="ods-swatch" style="background:var(--color-brand-800)"></span> |
+| `color.brand.100` | #EEEDFE | <span class="ods-swatch" style="background:var(--color-brand-100)"></span> |
+| `color.brand.300` | #A9A3F6 | <span class="ods-swatch" style="background:var(--color-brand-300)"></span> |
+| `color.brand.600` | #4B3FD9 | <span class="ods-swatch" style="background:var(--color-brand-600)"></span> |
+| `color.brand.700` | #3B31B0 | <span class="ods-swatch" style="background:var(--color-brand-700)"></span> |
+| `color.brand.800` | #2C2588 | <span class="ods-swatch" style="background:var(--color-brand-800)"></span> |
 | `color.danger.strong` | #C42B2B | <span class="ods-swatch" style="background:var(--color-danger-strong)"></span> |
 | `color.danger.strong-dark` | #F28B8B | <span class="ods-swatch" style="background:var(--color-danger-strong-dark)"></span> |
 | `color.danger.subtle` | #FDE7E7 | <span class="ods-swatch" style="background:var(--color-danger-subtle)"></span> |
@@ -131,9 +131,9 @@ The raw values the tokens above end at.
 | `font.size.13` | 0.8125rem (13px) | <span class="ods-bar" style="width:var(--font-size-13)"></span> |
 | `font.size.14` | 0.875rem (14px) | <span class="ods-bar" style="width:var(--font-size-14)"></span> |
 | `font.weight.500` | 500 |  |
+| `radius.0` | 0rem (0px) | <span class="ods-tile" style="border-radius:var(--radius-0)"></span> |
 | `radius.2` | 0.125rem (2px) | <span class="ods-tile" style="border-radius:var(--radius-2)"></span> |
 | `radius.4` | 0.25rem (4px) | <span class="ods-tile" style="border-radius:var(--radius-4)"></span> |
-| `radius.6` | 0.375rem (6px) | <span class="ods-tile" style="border-radius:var(--radius-6)"></span> |
 | `shadow.none` | 0px 0px 0px 0px #00000000 | <span class="ods-card" style="box-shadow:var(--shadow-none)"></span> |
 | `shadow.overlay` | 0px 8px 24px 0px #0D111729 | <span class="ods-card" style="box-shadow:var(--shadow-overlay)"></span> |
 | `shadow.overlay-dark` | 0px 8px 24px 0px #00000080 | <span class="ods-card" style="box-shadow:var(--shadow-overlay-dark)"></span> |

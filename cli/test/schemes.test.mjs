@@ -69,7 +69,7 @@ test("init deploys tokens, components, AGENTS.md and the skill", () => {
     assert.match(agents, /\| Situation \| Use \| Not \| Why \|/);
     assert.match(agents, /## Voice and tone/);
     assert.match(agents, /Tone per moment, with an example:\n\n- A button label: .+ Example: "Export"/);
-    assert.match(agents, /## Use scenarios\n\n- An operations lead/);
+    assert.match(agents, /## Use scenarios\n\n- A security analyst/);
     assert.ok(readFileSync(join(dir, ".open-ds/content.json"), "utf8").includes('"commit"'));
     assert.equal(agents.match(/^\| (?!Situation|---)/gm).length, grammar().situations.length);
     assert.match(readFileSync(join(dir, ".claude/skills/open-ds/SKILL.md"), "utf8"), /^---\nname: open-ds\ndescription: /);
