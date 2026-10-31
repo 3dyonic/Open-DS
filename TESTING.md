@@ -31,7 +31,7 @@ pnpm may print a warning about ignored build scripts ("approve-builds"). It is s
 pnpm e2e
 ```
 
-It builds the tokens, uses the CLI, deploys Dense data into a real Vite app and builds that app, deploys Multi-brand through the MCP server over stdio, then builds the site, Storybook and the docs. Each step prints ✓ or ✗. `pnpm e2e:quick` skips the three builds.
+It builds the tokens, uses the CLI, deploys Dense data into a real Vite app and builds that app, deploys Multi-brand through the MCP server over stdio, then builds the site, runs the package test (below), and builds Storybook and the docs. Each step prints ✓ or ✗. `pnpm e2e:quick` skips the builds and the package test.
 
 To see every layer checked against your instructions and the ticket specs:
 

@@ -5,7 +5,7 @@ description: "Contributor note from the first preview: ADR-001: Dictionary, chec
 
 # ADR-001: Dictionary, checker, site, boilerplates
 
-Status: accepted for the preview. The product name is not final.
+Status: superseded. This was the first preview's layout. OD-127 removed `packs/`, `validator/` and `boilerplates/`; the current layout is in `AGENTS.md`.
 
 ## Decision
 
