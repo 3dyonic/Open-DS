@@ -12,64 +12,64 @@ description: "The components Dense data carries."
 
 | Component | Family | In | Built | Why |
 | --- | --- | --- | --- | --- |
-| Alert | feedback | In | Not yet | A problem that stays on the page. |
-| Alert dialog | overlay | In | Not yet | Confirms a delete. |
+| Alert | feedback | In | Yes | A problem that stays on the page. |
+| Alert dialog | overlay | In | Yes | Confirms a delete. |
 | Badge | feedback | In | Yes | Order and payment status in rows. |
 | Button | action | In | Yes | Every action. |
-| Calendar | form | In | Not yet | Date ranges for reports. |
+| Calendar | form | In | Yes | Date ranges for reports. |
 | Card | layout | In | Yes | Dashboard figures. |
-| Chart | data | In | Not yet | Totals over time on dashboards. |
+| Chart | data | In | Yes | Totals over time on dashboards. |
 | Checkbox | form | In | Yes | Selects rows and filter values. |
-| Combobox | form | In | Not yet | Picks a customer or product from thousands. |
-| Command | navigation | In | Not yet | Keyboard-first jump to any record or action. |
-| Context menu | navigation | In | Not yet | Right-click on a row, for experts. |
+| Combobox | form | In | Yes | Picks a customer or product from thousands. |
+| Command | navigation | In | Yes | Keyboard-first jump to any record or action. |
+| Context menu | navigation | In | Yes | Right-click on a row, for experts. |
 | Dialog | overlay | In | Yes | Edit one record without leaving the table. |
 | Dropdown menu | navigation | In | Yes | Row actions. |
-| Empty | feedback | In | Not yet | An empty table says what to do next. |
-| Field | form | In | Not yet | Lays out label, control and error the same way everywhere. |
+| Empty | feedback | In | Yes | An empty table says what to do next. |
+| Field | form | In | Yes | Lays out label, control and error the same way everywhere. |
 | Input | form | In | Yes | Search and edit fields. |
-| Input group | form | In | Not yet | Search with an icon and a clear button. |
-| Kbd | navigation | In | Not yet | Shows the shortcuts experts learn. |
+| Input group | form | In | Yes | Search with an icon and a clear button. |
+| Kbd | navigation | In | Yes | Shows the shortcuts experts learn. |
 | Label | form | In | Yes | Names every control. |
-| Pagination | navigation | In | Not yet | Moves through long result sets. |
-| Popover | overlay | In | Not yet | Filters next to the column. |
-| Resizable | layout | In | Not yet | Experts size the table and detail panes. |
-| Scroll area | layout | In | Not yet | Long tables in fixed panels. |
+| Pagination | navigation | In | Yes | Moves through long result sets. |
+| Popover | overlay | In | Yes | Filters next to the column. |
+| Resizable | layout | In | Yes | Experts size the table and detail panes. |
+| Scroll area | layout | In | Yes | Long tables in fixed panels. |
 | Select | form | In | Yes | Picks one value in filters and forms. |
-| Separator | layout | In | Not yet | Groups toolbar actions. |
-| Sheet | overlay | In | Not yet | Record details beside the table. |
-| Sidebar | navigation | In | Not yet | App navigation that stays open all shift. |
-| Skeleton | feedback | In | Not yet | Rows while a table loads. |
+| Separator | layout | In | Yes | Groups toolbar actions. |
+| Sheet | overlay | In | Yes | Record details beside the table. |
+| Sidebar | navigation | In | Yes | App navigation that stays open all shift. |
+| Skeleton | feedback | In | Yes | Rows while a table loads. |
 | Switch | form | In | Yes | Settings that apply at once. |
 | Table | data | In | Yes | The heart of the product: rows of records. |
 | Tabs | navigation | In | Yes | Views of one record. |
-| Textarea | form | In | Not yet | Notes on an order. |
+| Textarea | form | In | Yes | Notes on an order. |
 | Toast | feedback | In | Yes | Confirms a saved change. |
-| Toggle group | action | In | Not yet | Switches a table between views and densities. |
+| Toggle group | action | In | Yes | Switches a table between views and densities. |
 | Tooltip | overlay | In | Yes | Explains an icon button. |
-| Accordion | content | Out | Not yet | Hiding fields slows people who use them all day. |
-| Aspect ratio | media | Out | Not yet |  |
+| Accordion | content | Out | Yes | Hiding fields slows people who use them all day. |
+| Aspect ratio | media | Out | Yes |  |
 | Attachment | conversation | Out | Not yet |  |
-| Avatar | media | Out | Not yet |  |
-| Breadcrumb | navigation | Out | Not yet |  |
+| Avatar | media | Out | Yes |  |
+| Breadcrumb | navigation | Out | Yes |  |
 | Bubble | conversation | Out | Not yet |  |
 | Button group | action | Out | Not yet |  |
-| Carousel | media | Out | Not yet | Slides hide records; experts need them all in view. |
-| Collapsible | layout | Out | Not yet |  |
-| Drawer | overlay | Out | Not yet | A desk tool with a mouse and keyboard does not need phone drawers. |
-| Form | form | Out | Not yet |  |
+| Carousel | media | Out | Yes | Slides hide records; experts need them all in view. |
+| Collapsible | layout | Out | Yes |  |
+| Drawer | overlay | Out | Yes | A desk tool with a mouse and keyboard does not need phone drawers. |
+| Form | form | Out | Yes |  |
 | Hover card | overlay | Out | Not yet |  |
-| Input otp | form | Out | Not yet |  |
+| Input otp | form | Out | Yes |  |
 | Item | layout | Out | Not yet |  |
 | Marker | conversation | Out | Not yet |  |
 | Menubar | navigation | Out | Not yet |  |
 | Message | conversation | Out | Not yet |  |
 | Message scroller | conversation | Out | Not yet |  |
-| Native select | form | Out | Not yet |  |
-| Navigation menu | navigation | Out | Not yet |  |
-| Progress | feedback | Out | Not yet |  |
-| Radio group | form | Out | Not yet |  |
+| Native select | form | Out | Yes |  |
+| Navigation menu | navigation | Out | Yes |  |
+| Progress | feedback | Out | Yes |  |
+| Radio group | form | Out | Yes |  |
 | Slider | form | Out | Not yet |  |
 | Sonner | feedback | Out | Not yet |  |
-| Spinner | feedback | Out | Not yet |  |
-| Toggle | action | Out | Not yet |  |
+| Spinner | feedback | Out | Yes |  |
+| Toggle | action | Out | Yes |  |

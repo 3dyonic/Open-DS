@@ -1,5 +1,5 @@
 ---
-sidebar_position: 12
+sidebar_position: 31
 title: "Tabs"
 description: "Tabs in Dense data."
 ---

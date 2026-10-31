@@ -20,6 +20,110 @@
       ]
     },
     {
+      "name": "use-mobile",
+      "type": "registry:lib",
+      "title": "useIsMobile hook",
+      "description": "True below the phone breakpoint. The sidebar uses it.",
+      "files": [
+        {
+          "path": "src/lib/use-mobile.ts",
+          "type": "registry:lib"
+        }
+      ]
+    },
+    {
+      "name": "accordion",
+      "type": "registry:ui",
+      "title": "Accordion",
+      "description": "Accordion. Stacked sections that open one at a time.",
+      "dependencies": [
+        "lucide-react",
+        "radix-ui"
+      ],
+      "registryDependencies": [
+        "utils"
+      ],
+      "files": [
+        {
+          "path": "src/components/accordion.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "alert-dialog",
+      "type": "registry:ui",
+      "title": "Alert Dialog",
+      "description": "Alert dialog. A dialog that asks to confirm an action that cannot be undone.",
+      "dependencies": [
+        "radix-ui"
+      ],
+      "registryDependencies": [
+        "utils",
+        "button"
+      ],
+      "files": [
+        {
+          "path": "src/components/alert-dialog.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "alert",
+      "type": "registry:ui",
+      "title": "Alert",
+      "description": "Alert. A message that stays on the page.",
+      "dependencies": [
+        "class-variance-authority"
+      ],
+      "registryDependencies": [
+        "utils"
+      ],
+      "files": [
+        {
+          "path": "src/components/alert.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "aspect-ratio",
+      "type": "registry:ui",
+      "title": "Aspect Ratio",
+      "description": "Aspect ratio. Keeps an image or video at a fixed shape.",
+      "dependencies": [
+        "radix-ui"
+      ],
+      "registryDependencies": [
+        "utils"
+      ],
+      "files": [
+        {
+          "path": "src/components/aspect-ratio.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "avatar",
+      "type": "registry:ui",
+      "title": "Avatar",
+      "description": "Avatar. A small image or initials for a person.",
+      "dependencies": [
+        "radix-ui"
+      ],
+      "registryDependencies": [
+        "utils"
+      ],
+      "files": [
+        {
+          "path": "src/components/avatar.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
       "name": "badge",
       "type": "registry:ui",
       "title": "Badge",
@@ -38,13 +142,32 @@
       ]
     },
     {
+      "name": "breadcrumb",
+      "type": "registry:ui",
+      "title": "Breadcrumb",
+      "description": "Breadcrumb. The path to the current page.",
+      "dependencies": [
+        "lucide-react",
+        "radix-ui"
+      ],
+      "registryDependencies": [
+        "utils"
+      ],
+      "files": [
+        {
+          "path": "src/components/breadcrumb.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
       "name": "button",
       "type": "registry:ui",
       "title": "Button",
       "description": "Button. Triggers an action.",
       "dependencies": [
-        "radix-ui",
-        "class-variance-authority"
+        "class-variance-authority",
+        "radix-ui"
       ],
       "registryDependencies": [
         "utils"
@@ -52,6 +175,26 @@
       "files": [
         {
           "path": "src/components/button.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "calendar",
+      "type": "registry:ui",
+      "title": "Calendar",
+      "description": "Calendar. A month grid for picking dates.",
+      "dependencies": [
+        "lucide-react",
+        "react-day-picker"
+      ],
+      "registryDependencies": [
+        "utils",
+        "button"
+      ],
+      "files": [
+        {
+          "path": "src/components/calendar.tsx",
           "type": "registry:ui"
         }
       ]
@@ -73,13 +216,51 @@
       ]
     },
     {
+      "name": "carousel",
+      "type": "registry:ui",
+      "title": "Carousel",
+      "description": "Carousel. Slides that move left and right.",
+      "dependencies": [
+        "embla-carousel-react",
+        "lucide-react"
+      ],
+      "registryDependencies": [
+        "utils",
+        "button"
+      ],
+      "files": [
+        {
+          "path": "src/components/carousel.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "chart",
+      "type": "registry:ui",
+      "title": "Chart",
+      "description": "Chart. Bars, lines and areas built on Recharts.",
+      "dependencies": [
+        "recharts"
+      ],
+      "registryDependencies": [
+        "utils"
+      ],
+      "files": [
+        {
+          "path": "src/components/chart.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
       "name": "checkbox",
       "type": "registry:ui",
       "title": "Checkbox",
       "description": "Checkbox. Turns one option on or off inside a form.",
       "dependencies": [
-        "radix-ui",
-        "lucide-react"
+        "lucide-react",
+        "radix-ui"
       ],
       "registryDependencies": [
         "utils"
@@ -92,13 +273,91 @@
       ]
     },
     {
+      "name": "collapsible",
+      "type": "registry:ui",
+      "title": "Collapsible",
+      "description": "Collapsible. One section that opens and closes.",
+      "dependencies": [
+        "radix-ui"
+      ],
+      "registryDependencies": [
+        "utils"
+      ],
+      "files": [
+        {
+          "path": "src/components/collapsible.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "combobox",
+      "type": "registry:ui",
+      "title": "Combobox",
+      "description": "Combobox. A text field with a filtered list of choices.",
+      "dependencies": [
+        "@base-ui/react",
+        "lucide-react"
+      ],
+      "registryDependencies": [
+        "utils",
+        "button",
+        "input-group"
+      ],
+      "files": [
+        {
+          "path": "src/components/combobox.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "command",
+      "type": "registry:ui",
+      "title": "Command",
+      "description": "Command. A search-first menu of actions, opened from the keyboard.",
+      "dependencies": [
+        "cmdk",
+        "lucide-react"
+      ],
+      "registryDependencies": [
+        "utils",
+        "dialog"
+      ],
+      "files": [
+        {
+          "path": "src/components/command.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "context-menu",
+      "type": "registry:ui",
+      "title": "Context Menu",
+      "description": "Context menu. A menu on right-click.",
+      "dependencies": [
+        "lucide-react",
+        "radix-ui"
+      ],
+      "registryDependencies": [
+        "utils"
+      ],
+      "files": [
+        {
+          "path": "src/components/context-menu.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
       "name": "dialog",
       "type": "registry:ui",
       "title": "Dialog",
       "description": "Dialog. Interrupts to ask for a decision, such as confirming a delete. The scrim dims the",
       "dependencies": [
-        "radix-ui",
-        "lucide-react"
+        "lucide-react",
+        "radix-ui"
       ],
       "registryDependencies": [
         "utils"
@@ -106,6 +365,24 @@
       "files": [
         {
           "path": "src/components/dialog.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "drawer",
+      "type": "registry:ui",
+      "title": "Drawer",
+      "description": "Drawer. A panel that slides up from the bottom, for phones.",
+      "dependencies": [
+        "vaul"
+      ],
+      "registryDependencies": [
+        "utils"
+      ],
+      "files": [
+        {
+          "path": "src/components/drawer.tsx",
           "type": "registry:ui"
         }
       ]
@@ -129,6 +406,104 @@
       ]
     },
     {
+      "name": "empty",
+      "type": "registry:ui",
+      "title": "Empty",
+      "description": "Empty. What to show when there is nothing yet.",
+      "dependencies": [
+        "class-variance-authority"
+      ],
+      "registryDependencies": [
+        "utils"
+      ],
+      "files": [
+        {
+          "path": "src/components/empty.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "field",
+      "type": "registry:ui",
+      "title": "Field",
+      "description": "Field. A label, control, hint and error laid out together.",
+      "dependencies": [
+        "class-variance-authority"
+      ],
+      "registryDependencies": [
+        "utils",
+        "label",
+        "separator"
+      ],
+      "files": [
+        {
+          "path": "src/components/field.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "form",
+      "type": "registry:ui",
+      "title": "Form",
+      "description": "Form. Form state and validation wired to fields.",
+      "dependencies": [
+        "radix-ui",
+        "react-hook-form"
+      ],
+      "registryDependencies": [
+        "utils",
+        "label"
+      ],
+      "files": [
+        {
+          "path": "src/components/form.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "input-group",
+      "type": "registry:ui",
+      "title": "Input Group",
+      "description": "Input group. An input with addons such as icons or buttons.",
+      "dependencies": [
+        "class-variance-authority"
+      ],
+      "registryDependencies": [
+        "utils",
+        "button",
+        "input",
+        "textarea"
+      ],
+      "files": [
+        {
+          "path": "src/components/input-group.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "input-otp",
+      "type": "registry:ui",
+      "title": "Input Otp",
+      "description": "Input otp. Separate boxes for a one-time code.",
+      "dependencies": [
+        "input-otp",
+        "lucide-react"
+      ],
+      "registryDependencies": [
+        "utils"
+      ],
+      "files": [
+        {
+          "path": "src/components/input-otp.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
       "name": "input",
       "type": "registry:ui",
       "title": "Input",
@@ -140,6 +515,22 @@
       "files": [
         {
           "path": "src/components/input.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "kbd",
+      "type": "registry:ui",
+      "title": "Kbd",
+      "description": "Kbd. A keyboard key or shortcut.",
+      "dependencies": [],
+      "registryDependencies": [
+        "utils"
+      ],
+      "files": [
+        {
+          "path": "src/components/kbd.tsx",
           "type": "registry:ui"
         }
       ]
@@ -163,12 +554,11 @@
       ]
     },
     {
-      "name": "select",
+      "name": "native-select",
       "type": "registry:ui",
-      "title": "Select",
-      "description": "Select. Pick one option from a list. Uses the input keys for the trigger and the overlay keys",
+      "title": "Native Select",
+      "description": "Native select. The browser select, styled.",
       "dependencies": [
-        "radix-ui",
         "lucide-react"
       ],
       "registryDependencies": [
@@ -176,7 +566,255 @@
       ],
       "files": [
         {
+          "path": "src/components/native-select.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "navigation-menu",
+      "type": "registry:ui",
+      "title": "Navigation Menu",
+      "description": "Navigation menu. Site navigation with links and panels.",
+      "dependencies": [
+        "class-variance-authority",
+        "lucide-react",
+        "radix-ui"
+      ],
+      "registryDependencies": [
+        "utils"
+      ],
+      "files": [
+        {
+          "path": "src/components/navigation-menu.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "pagination",
+      "type": "registry:ui",
+      "title": "Pagination",
+      "description": "Pagination. Moves between pages of results.",
+      "dependencies": [
+        "lucide-react"
+      ],
+      "registryDependencies": [
+        "utils",
+        "button"
+      ],
+      "files": [
+        {
+          "path": "src/components/pagination.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "popover",
+      "type": "registry:ui",
+      "title": "Popover",
+      "description": "Popover. Rich content in a floating panel, opened by click.",
+      "dependencies": [
+        "radix-ui"
+      ],
+      "registryDependencies": [
+        "utils"
+      ],
+      "files": [
+        {
+          "path": "src/components/popover.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "progress",
+      "type": "registry:ui",
+      "title": "Progress",
+      "description": "Progress. How far a task has come.",
+      "dependencies": [
+        "radix-ui"
+      ],
+      "registryDependencies": [
+        "utils"
+      ],
+      "files": [
+        {
+          "path": "src/components/progress.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "radio-group",
+      "type": "registry:ui",
+      "title": "Radio Group",
+      "description": "Radio group. One choice from a short list.",
+      "dependencies": [
+        "lucide-react",
+        "radix-ui"
+      ],
+      "registryDependencies": [
+        "utils"
+      ],
+      "files": [
+        {
+          "path": "src/components/radio-group.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "resizable",
+      "type": "registry:ui",
+      "title": "Resizable",
+      "description": "Resizable. Panels the user can resize by dragging.",
+      "dependencies": [
+        "lucide-react",
+        "react-resizable-panels"
+      ],
+      "registryDependencies": [
+        "utils"
+      ],
+      "files": [
+        {
+          "path": "src/components/resizable.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "scroll-area",
+      "type": "registry:ui",
+      "title": "Scroll Area",
+      "description": "Scroll area. A region with styled scrollbars.",
+      "dependencies": [
+        "radix-ui"
+      ],
+      "registryDependencies": [
+        "utils"
+      ],
+      "files": [
+        {
+          "path": "src/components/scroll-area.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "select",
+      "type": "registry:ui",
+      "title": "Select",
+      "description": "Select. Pick one option from a list. Uses the input keys for the trigger and the overlay keys",
+      "dependencies": [
+        "lucide-react",
+        "radix-ui"
+      ],
+      "registryDependencies": [
+        "utils"
+      ],
+      "files": [
+        {
           "path": "src/components/select.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "separator",
+      "type": "registry:ui",
+      "title": "Separator",
+      "description": "Separator. A line between groups.",
+      "dependencies": [
+        "radix-ui"
+      ],
+      "registryDependencies": [
+        "utils"
+      ],
+      "files": [
+        {
+          "path": "src/components/separator.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "sheet",
+      "type": "registry:ui",
+      "title": "Sheet",
+      "description": "Sheet. A panel that slides in from an edge.",
+      "dependencies": [
+        "lucide-react",
+        "radix-ui"
+      ],
+      "registryDependencies": [
+        "utils"
+      ],
+      "files": [
+        {
+          "path": "src/components/sheet.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "sidebar",
+      "type": "registry:ui",
+      "title": "Sidebar",
+      "description": "Sidebar. The side navigation of an app.",
+      "dependencies": [
+        "class-variance-authority",
+        "lucide-react",
+        "radix-ui"
+      ],
+      "registryDependencies": [
+        "utils",
+        "use-mobile",
+        "button",
+        "input",
+        "separator",
+        "sheet",
+        "skeleton",
+        "tooltip"
+      ],
+      "files": [
+        {
+          "path": "src/components/sidebar.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "skeleton",
+      "type": "registry:ui",
+      "title": "Skeleton",
+      "description": "Skeleton. A placeholder while content loads.",
+      "dependencies": [],
+      "registryDependencies": [
+        "utils"
+      ],
+      "files": [
+        {
+          "path": "src/components/skeleton.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "spinner",
+      "type": "registry:ui",
+      "title": "Spinner",
+      "description": "Spinner. A small loading indicator.",
+      "dependencies": [
+        "lucide-react"
+      ],
+      "registryDependencies": [
+        "utils"
+      ],
+      "files": [
+        {
+          "path": "src/components/spinner.tsx",
           "type": "registry:ui"
         }
       ]
@@ -234,6 +872,22 @@
       ]
     },
     {
+      "name": "textarea",
+      "type": "registry:ui",
+      "title": "Textarea",
+      "description": "Textarea. Multi-line text entry.",
+      "dependencies": [],
+      "registryDependencies": [
+        "utils"
+      ],
+      "files": [
+        {
+          "path": "src/components/textarea.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
       "name": "toast",
       "type": "registry:ui",
       "title": "Toast",
@@ -247,6 +901,45 @@
       "files": [
         {
           "path": "src/components/toast.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "toggle-group",
+      "type": "registry:ui",
+      "title": "Toggle Group",
+      "description": "Toggle group. A set of toggles where one or many stay pressed.",
+      "dependencies": [
+        "class-variance-authority",
+        "radix-ui"
+      ],
+      "registryDependencies": [
+        "utils",
+        "toggle"
+      ],
+      "files": [
+        {
+          "path": "src/components/toggle-group.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "toggle",
+      "type": "registry:ui",
+      "title": "Toggle",
+      "description": "Toggle. A button that stays pressed or not.",
+      "dependencies": [
+        "class-variance-authority",
+        "radix-ui"
+      ],
+      "registryDependencies": [
+        "utils"
+      ],
+      "files": [
+        {
+          "path": "src/components/toggle.tsx",
           "type": "registry:ui"
         }
       ]
@@ -508,7 +1201,20 @@
           "border": "#D6D6D6",
           "input": "#595959",
           "ring": "#0B4FC0",
-          "radius": "0.375rem"
+          "radius": "0.375rem",
+          "sidebar": "#FFFFFF",
+          "sidebar-foreground": "#141414",
+          "sidebar-primary": "#0B4FC0",
+          "sidebar-primary-foreground": "#FFFFFF",
+          "sidebar-accent": "#EDEDED",
+          "sidebar-accent-foreground": "#141414",
+          "sidebar-border": "#D6D6D6",
+          "sidebar-ring": "#0B4FC0",
+          "chart-1": "#0B4FC0",
+          "chart-2": "#1F7A3A",
+          "chart-3": "#8A5600",
+          "chart-4": "#333333",
+          "chart-5": "#595959"
         },
         "dark": {
           "color-neutral-0": "#FFFFFF",
@@ -743,7 +1449,20 @@
           "border": "#222222",
           "input": "#595959",
           "ring": "#8AB4F8",
-          "radius": "0.375rem"
+          "radius": "0.375rem",
+          "sidebar": "#141414",
+          "sidebar-foreground": "#F7F7F7",
+          "sidebar-primary": "#8AB4F8",
+          "sidebar-primary-foreground": "#0A0A0A",
+          "sidebar-accent": "#222222",
+          "sidebar-accent-foreground": "#F7F7F7",
+          "sidebar-border": "#222222",
+          "sidebar-ring": "#8AB4F8",
+          "chart-1": "#8AB4F8",
+          "chart-2": "#5CC283",
+          "chart-3": "#F2B84B",
+          "chart-4": "#949494",
+          "chart-5": "#595959"
         }
       }
     },
@@ -989,7 +1708,20 @@
           "border": "#F2DCCF",
           "input": "#E2C4B3",
           "ring": "#D61F7A",
-          "radius": "9999px"
+          "radius": "9999px",
+          "sidebar": "#FFFFFF",
+          "sidebar-foreground": "#1F1411",
+          "sidebar-primary": "#D61F7A",
+          "sidebar-primary-foreground": "#FFFFFF",
+          "sidebar-accent": "#FCEFE6",
+          "sidebar-accent-foreground": "#1F1411",
+          "sidebar-border": "#F2DCCF",
+          "sidebar-ring": "#D61F7A",
+          "chart-1": "#D61F7A",
+          "chart-2": "#1F7A3A",
+          "chart-3": "#8A5600",
+          "chart-4": "#4D3A33",
+          "chart-5": "#8A6F63"
         },
         "dark": {
           "color-neutral-0": "#FFFFFF",
@@ -1227,7 +1959,20 @@
           "border": "#33241F",
           "input": "#4D3A33",
           "ring": "#F59ACA",
-          "radius": "9999px"
+          "radius": "9999px",
+          "sidebar": "#1F1411",
+          "sidebar-foreground": "#FFF8F3",
+          "sidebar-primary": "#F59ACA",
+          "sidebar-primary-foreground": "#120B09",
+          "sidebar-accent": "#33241F",
+          "sidebar-accent-foreground": "#FFF8F3",
+          "sidebar-border": "#33241F",
+          "sidebar-ring": "#F59ACA",
+          "chart-1": "#F59ACA",
+          "chart-2": "#5CC283",
+          "chart-3": "#F2B84B",
+          "chart-4": "#E2C4B3",
+          "chart-5": "#8A6F63"
         }
       }
     },
@@ -1470,7 +2215,20 @@
           "border": "#E4DDD0",
           "input": "#CFC6B6",
           "ring": "#1E3A5F",
-          "radius": "0.5rem"
+          "radius": "0.5rem",
+          "sidebar": "#FFFFFF",
+          "sidebar-foreground": "#1F1B16",
+          "sidebar-primary": "#1E3A5F",
+          "sidebar-primary-foreground": "#FFFFFF",
+          "sidebar-accent": "#F6F2EA",
+          "sidebar-accent-foreground": "#1F1B16",
+          "sidebar-border": "#E4DDD0",
+          "sidebar-ring": "#1E3A5F",
+          "chart-1": "#1E3A5F",
+          "chart-2": "#1F7A3A",
+          "chart-3": "#8A5600",
+          "chart-4": "#4A4339",
+          "chart-5": "#7A7062"
         },
         "dark": {
           "color-neutral-0": "#FFFFFF",
@@ -1705,7 +2463,20 @@
           "border": "#2E2A24",
           "input": "#4A4339",
           "ring": "#8FA6C4",
-          "radius": "0.5rem"
+          "radius": "0.5rem",
+          "sidebar": "#1F1B16",
+          "sidebar-foreground": "#FFFDF8",
+          "sidebar-primary": "#8FA6C4",
+          "sidebar-primary-foreground": "#14110D",
+          "sidebar-accent": "#2E2A24",
+          "sidebar-accent-foreground": "#FFFDF8",
+          "sidebar-border": "#2E2A24",
+          "sidebar-ring": "#8FA6C4",
+          "chart-1": "#8FA6C4",
+          "chart-2": "#5CC283",
+          "chart-3": "#F2B84B",
+          "chart-4": "#CFC6B6",
+          "chart-5": "#7A7062"
         }
       }
     },
@@ -1947,7 +2718,20 @@
           "border": "#DDE2EA",
           "input": "#C4CBD6",
           "ring": "#2457D6",
-          "radius": "0.25rem"
+          "radius": "0.25rem",
+          "sidebar": "#FFFFFF",
+          "sidebar-foreground": "#161B23",
+          "sidebar-primary": "#2457D6",
+          "sidebar-primary-foreground": "#FFFFFF",
+          "sidebar-accent": "#EEF1F5",
+          "sidebar-accent-foreground": "#161B23",
+          "sidebar-border": "#DDE2EA",
+          "sidebar-ring": "#2457D6",
+          "chart-1": "#2457D6",
+          "chart-2": "#1F7A3A",
+          "chart-3": "#8A5600",
+          "chart-4": "#3D4655",
+          "chart-5": "#6B7585"
         },
         "dark": {
           "color-neutral-0": "#FFFFFF",
@@ -2181,7 +2965,20 @@
           "border": "#262D38",
           "input": "#3D4655",
           "ring": "#8EA9EC",
-          "radius": "0.25rem"
+          "radius": "0.25rem",
+          "sidebar": "#161B23",
+          "sidebar-foreground": "#F7F8FA",
+          "sidebar-primary": "#8EA9EC",
+          "sidebar-primary-foreground": "#0D1117",
+          "sidebar-accent": "#262D38",
+          "sidebar-accent-foreground": "#F7F8FA",
+          "sidebar-border": "#262D38",
+          "sidebar-ring": "#8EA9EC",
+          "chart-1": "#8EA9EC",
+          "chart-2": "#5CC283",
+          "chart-3": "#F2B84B",
+          "chart-4": "#C4CBD6",
+          "chart-5": "#6B7585"
         }
       }
     },
@@ -2430,7 +3227,20 @@
           "border": "#E2E8F0",
           "input": "#CBD5E1",
           "ring": "#0F766E",
-          "radius": "0.25rem"
+          "radius": "0.25rem",
+          "sidebar": "#FFFFFF",
+          "sidebar-foreground": "#0F172A",
+          "sidebar-primary": "#0F766E",
+          "sidebar-primary-foreground": "#FFFFFF",
+          "sidebar-accent": "#F1F5F9",
+          "sidebar-accent-foreground": "#0F172A",
+          "sidebar-border": "#E2E8F0",
+          "sidebar-ring": "#0F766E",
+          "chart-1": "#0F766E",
+          "chart-2": "#1F7A3A",
+          "chart-3": "#8A5600",
+          "chart-4": "#334155",
+          "chart-5": "#64748B"
         },
         "dark": {
           "color-neutral-0": "#FFFFFF",
@@ -2671,7 +3481,20 @@
           "border": "#1E293B",
           "input": "#334155",
           "ring": "#7FCFC6",
-          "radius": "0.25rem"
+          "radius": "0.25rem",
+          "sidebar": "#0F172A",
+          "sidebar-foreground": "#F8FAFC",
+          "sidebar-primary": "#7FCFC6",
+          "sidebar-primary-foreground": "#020617",
+          "sidebar-accent": "#1E293B",
+          "sidebar-accent-foreground": "#F8FAFC",
+          "sidebar-border": "#1E293B",
+          "sidebar-ring": "#7FCFC6",
+          "chart-1": "#7FCFC6",
+          "chart-2": "#5CC283",
+          "chart-3": "#F2B84B",
+          "chart-4": "#CBD5E1",
+          "chart-5": "#64748B"
         }
       }
     },
@@ -2920,7 +3743,20 @@
           "border": "#E2E8F0",
           "input": "#CBD5E1",
           "ring": "#6D28D9",
-          "radius": "0.75rem"
+          "radius": "0.75rem",
+          "sidebar": "#FFFFFF",
+          "sidebar-foreground": "#0F172A",
+          "sidebar-primary": "#6D28D9",
+          "sidebar-primary-foreground": "#FFFFFF",
+          "sidebar-accent": "#F1F5F9",
+          "sidebar-accent-foreground": "#0F172A",
+          "sidebar-border": "#E2E8F0",
+          "sidebar-ring": "#6D28D9",
+          "chart-1": "#6D28D9",
+          "chart-2": "#1F7A3A",
+          "chart-3": "#8A5600",
+          "chart-4": "#334155",
+          "chart-5": "#64748B"
         },
         "dark": {
           "color-neutral-0": "#FFFFFF",
@@ -3161,7 +3997,20 @@
           "border": "#1E293B",
           "input": "#334155",
           "ring": "#B79DF7",
-          "radius": "0.75rem"
+          "radius": "0.75rem",
+          "sidebar": "#0F172A",
+          "sidebar-foreground": "#F8FAFC",
+          "sidebar-primary": "#B79DF7",
+          "sidebar-primary-foreground": "#020617",
+          "sidebar-accent": "#1E293B",
+          "sidebar-accent-foreground": "#F8FAFC",
+          "sidebar-border": "#1E293B",
+          "sidebar-ring": "#B79DF7",
+          "chart-1": "#B79DF7",
+          "chart-2": "#5CC283",
+          "chart-3": "#F2B84B",
+          "chart-4": "#CBD5E1",
+          "chart-5": "#64748B"
         }
       }
     },
@@ -3410,7 +4259,20 @@
           "border": "#E2E8F0",
           "input": "#CBD5E1",
           "ring": "#C2410C",
-          "radius": "9999px"
+          "radius": "9999px",
+          "sidebar": "#FFFFFF",
+          "sidebar-foreground": "#0F172A",
+          "sidebar-primary": "#C2410C",
+          "sidebar-primary-foreground": "#FFFFFF",
+          "sidebar-accent": "#F1F5F9",
+          "sidebar-accent-foreground": "#0F172A",
+          "sidebar-border": "#E2E8F0",
+          "sidebar-ring": "#C2410C",
+          "chart-1": "#C2410C",
+          "chart-2": "#1F7A3A",
+          "chart-3": "#8A5600",
+          "chart-4": "#334155",
+          "chart-5": "#64748B"
         },
         "dark": {
           "color-neutral-0": "#FFFFFF",
@@ -3651,7 +4513,20 @@
           "border": "#1E293B",
           "input": "#334155",
           "ring": "#F7A67F",
-          "radius": "9999px"
+          "radius": "9999px",
+          "sidebar": "#0F172A",
+          "sidebar-foreground": "#F8FAFC",
+          "sidebar-primary": "#F7A67F",
+          "sidebar-primary-foreground": "#020617",
+          "sidebar-accent": "#1E293B",
+          "sidebar-accent-foreground": "#F8FAFC",
+          "sidebar-border": "#1E293B",
+          "sidebar-ring": "#F7A67F",
+          "chart-1": "#F7A67F",
+          "chart-2": "#5CC283",
+          "chart-3": "#F2B84B",
+          "chart-4": "#CBD5E1",
+          "chart-5": "#64748B"
         }
       }
     }

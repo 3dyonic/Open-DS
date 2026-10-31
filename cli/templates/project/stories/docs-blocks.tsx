@@ -149,7 +149,13 @@ export function ComponentKeys() {
   const keys = grammar.component_keys.filter(
     (k) => k.component === KEY_GROUP[component],
   );
-  if (!keys.length) return null;
+  if (!keys.length)
+    return (
+      <p>
+        From shadcn/ui. It reads shadcn&apos;s variables, which theme.css maps onto the design system&apos;s semantic
+        tokens, and the radius, shadow and text scale in shadcn.css.
+      </p>
+    );
   return (
     <table className="ods-table">
       <thead>

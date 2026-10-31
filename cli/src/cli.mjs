@@ -4,6 +4,7 @@ import { createHash } from "node:crypto";
 import { existsSync, mkdirSync, readFileSync, readdirSync, writeFileSync } from "node:fs";
 import { dirname, join, resolve } from "node:path";
 import { agentsMd, skillSection } from "./agents.mjs";
+import { componentsFor, packagesFor, withImports } from "./components.mjs";
 import { createProject } from "./create.mjs";
 import { docsLlms, docsPages } from "./docs.mjs";
 import { assetRoots, grammar, keyInfo, loadScheme, schemeIds, when, why } from "./schemes.mjs";
@@ -24,8 +25,6 @@ const HELP = `open-ds: deploy an Open DS scheme as a full design system.
   open-ds add <component> [--dir .]    copy one more component into an initialised project
 
 Add --json to list, show, why and when for machine-readable output.`;
-
-const NPM = ["radix-ui", "lucide-react", "class-variance-authority", "clsx", "tailwind-merge"];
 
 function flag(args, name, fallback) {
   const i = args.indexOf(name);
@@ -54,7 +53,7 @@ function componentNames(roots) {
 function componentSource(roots, name) {
   const path = join(roots.ui, "components", `${name}.tsx`);
   if (!existsSync(path)) throw new Error(`No component called "${name}". Components: ${componentNames(roots).join(", ")}.`);
-  return readFileSync(path, "utf8").replace(`from "../lib/utils"`, `from "../../lib/utils"`);
+  return readFileSync(path, "utf8").replaceAll(`from "../lib/`, `from "../../lib/`);
 }
 
 /** Copies a scheme into a project. Returns what it wrote. */
@@ -74,11 +73,15 @@ export function deploy(schemeId, dir, { brand, overwrite = false, docs = false, 
     `/* ${scheme.name}: Open DS tokens, shadcn theme and base styles. Import after Tailwind. */`,
     readFileSync(join(tokenDir, "tokens.css"), "utf8"),
     readFileSync(join(tokenDir, "theme.css"), "utf8"),
+    readFileSync(join(tokenDir, "shadcn.css"), "utf8"),
     readFileSync(join(roots.ui, "styles.css"), "utf8"),
   ].join("\n");
   write(dir, "src/styles/open-ds.css", css, files);
-  write(dir, "src/lib/utils.ts", readFileSync(join(roots.ui, "lib", "utils.ts"), "utf8"), files);
-  const components = componentNames(roots);
+  for (const lib of readdirSync(join(roots.ui, "lib")))
+    write(dir, `src/lib/${lib}`, readFileSync(join(roots.ui, "lib", lib), "utf8"), files);
+  // The scheme's inventory, plus the components those import.
+  const components = componentsFor(scheme, roots);
+  const packages = packagesFor(components, roots);
   for (const name of components) write(dir, `src/components/ui/${name}.tsx`, componentSource(roots, name), files);
   write(dir, ".open-ds/scheme.json", JSON.stringify(scheme, null, 2) + "\n", files);
   for (const t of scheme.themes) {
@@ -108,7 +111,7 @@ export function deploy(schemeId, dir, { brand, overwrite = false, docs = false, 
     version: scheme.version,
     brand: brand ?? (brands.length > 1 ? brands[0] : null),
     components,
-    dependencies: NPM,
+    dependencies: Object.keys(packages),
     files,
   };
   writeFileSync(join(dir, "open-ds.json"), JSON.stringify(record, null, 2) + "\n");
@@ -120,10 +123,18 @@ export function addComponent(name, dir, roots = assetRoots()) {
   if (!existsSync(recordPath)) throw new Error(`No open-ds.json in ${dir}. Run "open-ds init <scheme>" first.`);
   const record = JSON.parse(readFileSync(recordPath, "utf8"));
   if (!record.scheme) throw new Error(`${recordPath} has no scheme. Run "open-ds init <scheme>" first.`);
-  const text = componentSource(roots, name);
-  write(dir, `src/components/ui/${name}.tsx`, text, record.files);
-  if (!record.components.includes(name)) record.components = [...record.components, name].sort();
-  writeFileSync(recordPath, JSON.stringify(record, null, 2) + "\n");
+  componentSource(roots, name); // fails with the list of components when the name is unknown
+  // The component and every component it imports that the project does not have yet.
+  const added = withImports([name], roots).filter((c) => c === name || !record.components.includes(c));
+  for (const c of added) write(dir, `src/components/ui/${c}.tsx`, componentSource(roots, c), record.files);
+  for (const lib of readdirSync(join(roots.ui, "lib")))
+    if (!existsSync(join(dir, "src/lib", lib)))
+      write(dir, `src/lib/${lib}`, readFileSync(join(roots.ui, "lib", lib), "utf8"), record.files);
+  record.components = [...new Set([...record.components, ...added])].sort();
+  const before = new Set(record.dependencies ?? []);
+  record.dependencies = Object.keys(packagesFor(record.components, roots));
+  record.added = { components: added, packages: record.dependencies.filter((d) => !before.has(d)) };
+  writeFileSync(recordPath, JSON.stringify({ ...record, added: undefined }, null, 2) + "\n");
   return record;
 }
 
@@ -238,7 +249,10 @@ export async function run(argv) {
     if (cmd === "add") {
       const dir = resolve(flag(args, "--dir", "."));
       const record = addComponent(args[0] ?? "", dir);
-      out(record, () => console.log(`Added ${args[0]} to ${dir}.`));
+      out(record, () => {
+        console.log(`Added ${record.added.components.join(", ")} to ${dir}.`);
+        if (record.added.packages.length) console.log(`Next: npm install ${record.added.packages.join(" ")}`);
+      });
       return 0;
     }
     throw new Error(`Unknown command "${cmd}". Run "open-ds help".`);

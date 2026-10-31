@@ -6,20 +6,12 @@ import { existsSync, mkdirSync, readFileSync, readdirSync, writeFileSync } from 
 import { basename, dirname, join, relative } from "node:path";
 import { fileURLToPath } from "node:url";
 import { agentsMd, skillSection } from "./agents.mjs";
+import { componentsFor, packagesFor } from "./components.mjs";
 import { docsLlms, docsPages } from "./docs.mjs";
 import { assetRoots, grammar, loadScheme } from "./schemes.mjs";
 
 const VERSION = JSON.parse(readFileSync(join(dirname(fileURLToPath(import.meta.url)), "..", "package.json"), "utf8")).version;
 
-const DEPENDENCIES = {
-  "class-variance-authority": "^0.7.1",
-  clsx: "^2.1.1",
-  "lucide-react": "^1.65.0",
-  "radix-ui": "^1.8.1",
-  react: "^19.1.1",
-  "react-dom": "^19.1.1",
-  "tailwind-merge": "^3.7.0",
-};
 const DEV_DEPENDENCIES = {
   "@docusaurus/core": "^3.10.2",
   "@docusaurus/preset-classic": "^3.10.2",
@@ -42,9 +34,7 @@ const DEV_DEPENDENCIES = {
 const json = (data) => JSON.stringify(data, null, 2) + "\n";
 
 const walk = (dir) =>
-  readdirSync(dir, { withFileTypes: true }).flatMap((e) =>
-    e.isDirectory() ? walk(join(dir, e.name)) : [join(dir, e.name)],
-  );
+  readdirSync(dir, { withFileTypes: true }).flatMap((e) => (e.isDirectory() ? walk(join(dir, e.name)) : [join(dir, e.name)]));
 
 function readme(scheme, name, brands) {
   return [
@@ -93,7 +83,8 @@ export function createProject(schemeId, dir, { brand, openDs = `^${VERSION}`, ov
   const g = grammar(roots);
   const brands = Object.keys(scheme.tokens.brands);
   if (brand && !brands.includes(brand)) throw new Error(`${scheme.name} has no brand "${brand}". Brands: ${brands.join(", ")}.`);
-  if (!existsSync(join(roots.tokens, schemeId, "tokens.css"))) throw new Error(`Tokens for ${schemeId} are not built. Run: pnpm --dir tokens build`);
+  if (!existsSync(join(roots.tokens, schemeId, "tokens.css")))
+    throw new Error(`Tokens for ${schemeId} are not built. Run: pnpm --dir tokens build`);
   // A fresh git folder, a vendored package and npm's leftovers do not count as content.
   const SETUP = new Set([".git", ".DS_Store", "vendor", "node_modules", "package-lock.json"]);
   const taken = existsSync(dir) ? readdirSync(dir).filter((f) => !SETUP.has(f)) : [];
@@ -135,18 +126,15 @@ export function createProject(schemeId, dir, { brand, openDs = `^${VERSION}`, ov
     }),
   );
 
-  // The components and their styles.
-  const components = readdirSync(join(roots.ui, "components"))
-    .filter((f) => f.endsWith(".tsx"))
-    .map((f) => f.replace(/\.tsx$/, ""))
-    .sort();
+  // The scheme's inventory, plus the components those import, and their styles.
+  const components = componentsFor(scheme, roots);
   for (const c of components) {
     write(
       `src/components/ui/${c}.tsx`,
-      readFileSync(join(roots.ui, "components", `${c}.tsx`), "utf8").replace(`from "../lib/utils"`, `from "../../lib/utils"`),
+      readFileSync(join(roots.ui, "components", `${c}.tsx`), "utf8").replaceAll(`from "../lib/`, `from "../../lib/`),
     );
   }
-  write("src/lib/utils.ts", readFileSync(join(roots.ui, "lib", "utils.ts"), "utf8"));
+  for (const lib of readdirSync(join(roots.ui, "lib"))) write(`src/lib/${lib}`, readFileSync(join(roots.ui, "lib", lib), "utf8"));
   write("src/styles/base.css", readFileSync(join(roots.ui, "styles.css"), "utf8"));
   write(
     "src/index.ts",
@@ -156,10 +144,42 @@ export function createProject(schemeId, dir, { brand, openDs = `^${VERSION}`, ov
   );
 
   // Storybook stories, with this scheme's usage rules.
-  for (const f of readdirSync(roots.stories).filter((x) => x.endsWith(".stories.tsx"))) {
+  // A story is copied only when everything it imports from the components is installed here.
+  const exported = new Set(
+    components.flatMap((c) => {
+      const src = readFileSync(join(roots.ui, "components", `${c}.tsx`), "utf8");
+      const names = [...src.matchAll(/^export (?:function|const|interface|type) ([A-Za-z]+)/gm)].map((m) => m[1]);
+      for (const m of src.matchAll(/^export \{([^}]+)\}/gm))
+        names.push(
+          ...m[1]
+            .split(",")
+            .map((x) => x.trim())
+            .filter(Boolean),
+        );
+      return names;
+    }),
+  );
+  const storyFits = (text) => {
+    const m = text.match(/import \{([^}]+)\} from "@open-ds\/ui"/);
+    return (
+      !m ||
+      m[1]
+        .split(",")
+        .map((x) => x.trim())
+        .filter(Boolean)
+        .every((n) => exported.has(n))
+    );
+  };
+  for (const f of readdirSync(roots.stories).filter(
+    (x) => x.endsWith(".stories.tsx") && storyFits(readFileSync(join(roots.stories, x), "utf8")),
+  )) {
     write(
       `stories/${f}`,
-      readFileSync(join(roots.stories, f), "utf8").replaceAll(`from "@open-ds/ui"`, `from "../src"`).replace(`from "../src/usage"`, `from "./usage"`).replace(`from "../src/samples"`, `from "./samples"`).replace(`from "../src/docs-blocks"`, `from "./docs-blocks"`),
+      readFileSync(join(roots.stories, f), "utf8")
+        .replaceAll(`from "@open-ds/ui"`, `from "../src"`)
+        .replaceAll(`from "../src/usage"`, `from "./usage"`)
+        .replaceAll(`from "../src/samples"`, `from "./samples"`)
+        .replaceAll(`from "../src/docs-blocks"`, `from "./docs-blocks"`),
     );
   }
 
@@ -200,7 +220,7 @@ export function createProject(schemeId, dir, { brand, openDs = `^${VERSION}`, ov
         why: `open-ds why ${scheme.id}`,
         when: `open-ds when ${scheme.id}`,
       },
-      dependencies: DEPENDENCIES,
+      dependencies: { react: "^19.1.1", "react-dom": "^19.1.1", ...packagesFor(components, roots) },
       devDependencies: { "open-ds": openDs, ...DEV_DEPENDENCIES },
     }),
   );
