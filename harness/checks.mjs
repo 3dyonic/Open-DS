@@ -280,6 +280,69 @@ export const CHECKS = {
     },
   },
 
+  "semantics-guidance": {
+    requires: ["schemes/grammar.json", ...SCHEMES.map((s) => `schemes/${s}.json`)],
+    run: (c) => {
+      // Every colour semantic has guidance in the grammar; every key it names exists; every pair keeps
+      // its contrast in every brand and mode. No exceptions: a failing pair fails the check.
+      const g = c.json("schemes", "grammar.json");
+      const guide = new Map(g.semantics.keys.map((k) => [k.id, k]));
+      const gaps = [];
+      const lum = (hex) => {
+        const [r, gr, b] = [1, 3, 5]
+          .map((i) => parseInt(hex.slice(i, i + 2), 16) / 255)
+          .map((v) => (v <= 0.04045 ? v / 12.92 : ((v + 0.055) / 1.055) ** 2.4));
+        return 0.2126 * r + 0.7152 * gr + 0.0722 * b;
+      };
+      const ratio = (a, b) => {
+        const [x, y] = [lum(a), lum(b)].sort((m, n) => n - m);
+        return (x + 0.05) / (y + 0.05);
+      };
+      for (const id of g.semantics.urgency.order)
+        if (!guide.has(id)) gaps.push(`urgency names ${id}, which has no guidance`);
+      let pairs = 0;
+      for (const s of SCHEMES) {
+        const t = c.json("schemes", `${s}.json`).tokens;
+        const semantic = Object.keys(flatten(t.semantic)).filter((p) => p.startsWith("color."));
+        for (const p of semantic) if (!guide.has(p)) gaps.push(`${s}: ${p} has no guidance in the grammar`);
+        for (const k of guide.values()) {
+          if (!semantic.includes(k.id)) gaps.push(`${s}: guidance for ${k.id}, which the scheme does not define`);
+          for (const n of k.not_for)
+            if (!semantic.includes(n.use)) gaps.push(`${k.id}: not_for names ${n.use}, which ${s} does not define`);
+          for (const on of k.pairs?.on ?? [])
+            if (!semantic.includes(on)) gaps.push(`${k.id}: pairs with ${on}, which ${s} does not define`);
+          if (k.pairs && k.pairs.contrast === null && !k.exempt) gaps.push(`${k.id}: no contrast and no exempt reason`);
+        }
+        for (const brand of Object.keys(t.brands))
+          for (const mode of ["light", "dark"]) {
+            const all = flatten(themeTokens({ id: s, tokens: t }, brand, mode));
+            const hex = (p) => {
+              const v = resolve(all, p).value;
+              return typeof v === "string" && /^#[0-9a-f]{6}$/i.test(v) ? v : null;
+            };
+            for (const k of guide.values()) {
+              if (!k.pairs?.contrast) continue;
+              for (const on of k.pairs.on) {
+                const [a, b] = [hex(k.id), hex(on)];
+                if (!a || !b) continue;
+                pairs++;
+                const r = ratio(a, b);
+                if (r < k.pairs.contrast)
+                  gaps.push(
+                    `${s}/${brand}/${mode}: ${k.id} on ${on} is ${r.toFixed(2)}:1, needs ${k.pairs.contrast}:1`,
+                  );
+              }
+            }
+          }
+      }
+      return gaps.length
+        ? bad(`${gaps.length} problems: ${gaps.slice(0, 5).join("; ")}`)
+        : ok(
+            `${guide.size} colour semantics have guidance; ${pairs} pairs keep their contrast in every brand and mode`,
+          );
+    },
+  },
+
   "tokens-semantics-are-links": {
     requires: ["schemes/grammar.json"],
     run: (c) => {
@@ -728,7 +791,13 @@ export const CHECKS = {
     run: (c) => {
       const err = ensureTokens(c);
       if (err) return bad(tail(err));
-      const keys = c.json("schemes/grammar.json").component_keys.map((k) => `--${k.id.split("/").filter((p) => p !== "@").join("-")}`);
+      const keys = c.json("schemes/grammar.json").component_keys.map(
+        (k) =>
+          `--${k.id
+            .split("/")
+            .filter((p) => p !== "@")
+            .join("-")}`,
+      );
       const gaps = [];
       for (const s of SCHEMES) {
         const css = c.has("tokens", "dist", s, "tokens.css") ? c.read("tokens", "dist", s, "tokens.css") : "";

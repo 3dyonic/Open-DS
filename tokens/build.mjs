@@ -56,12 +56,12 @@ export const SHADCN = {
   "sidebar-accent-foreground": "color-text-primary",
   "sidebar-border": "color-border-default",
   "sidebar-ring": "color-border-focus",
-  // Chart series use action and status colours by their meaning: no danger for an ordinary series.
-  "chart-1": "color-action-primary",
-  "chart-2": "color-status-success",
-  "chart-3": "color-status-warning",
-  "chart-4": "color-text-secondary",
-  "chart-5": "color-text-muted",
+  // Chart series use the category colours: distinct hues that carry no meaning, so no series reads as an error.
+  "chart-1": "color-category-1",
+  "chart-2": "color-category-2",
+  "chart-3": "color-category-3",
+  "chart-4": "color-category-4",
+  "chart-5": "color-category-5",
 };
 
 // shadcn's radius, shadow and text classes, mapped onto the scheme's tokens. Written to shadcn.css,

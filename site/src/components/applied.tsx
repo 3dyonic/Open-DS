@@ -17,7 +17,7 @@ import { useTheme } from "@/components/theme-switch";
 
 // Everything shown comes from the scheme's own samples: its screen, figures, rows, statuses and
 // words. A table appears only when the scheme carries one; otherwise its card and field do the work.
-type Meaning = "neutral" | "success" | "warning" | "danger";
+type Meaning = "neutral" | "info" | "success" | "warning" | "danger";
 export interface AppliedSamples {
   screen: string;
   actions: { primary: string; secondary: string };

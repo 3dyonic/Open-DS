@@ -41,14 +41,16 @@ Modes and brands.
 <span class="ods-item"><span class="ods-swatch" style="background:var(--theme-color-action-primary-hover)"></span><span class="ods-label">theme.color.action.primary.hover</span></span>
 <span class="ods-item"><span class="ods-swatch" style="background:var(--theme-color-action-secondary)"></span><span class="ods-label">theme.color.action.secondary.@</span></span>
 <span class="ods-item"><span class="ods-swatch" style="background:var(--theme-color-action-secondary-hover)"></span><span class="ods-label">theme.color.action.secondary.hover</span></span>
+<span class="ods-item"><span class="ods-swatch" style="background:var(--theme-color-status-info)"></span><span class="ods-label">theme.color.status.info.@</span></span>
+<span class="ods-item"><span class="ods-swatch" style="background:var(--theme-color-status-info-subtle)"></span><span class="ods-label">theme.color.status.info.subtle</span></span>
 <span class="ods-item"><span class="ods-swatch" style="background:var(--theme-color-status-success)"></span><span class="ods-label">theme.color.status.success.@</span></span>
 <span class="ods-item"><span class="ods-swatch" style="background:var(--theme-color-status-success-subtle)"></span><span class="ods-label">theme.color.status.success.subtle</span></span>
 <span class="ods-item"><span class="ods-swatch" style="background:var(--theme-color-status-warning)"></span><span class="ods-label">theme.color.status.warning.@</span></span>
 <span class="ods-item"><span class="ods-swatch" style="background:var(--theme-color-status-warning-subtle)"></span><span class="ods-label">theme.color.status.warning.subtle</span></span>
 <span class="ods-item"><span class="ods-swatch" style="background:var(--theme-color-status-danger)"></span><span class="ods-label">theme.color.status.danger.@</span></span>
 <span class="ods-item"><span class="ods-swatch" style="background:var(--theme-color-status-danger-subtle)"></span><span class="ods-label">theme.color.status.danger.subtle</span></span>
-<span class="ods-item"><span class="ods-card" style="box-shadow:var(--theme-elevation-card)"></span><span class="ods-label">theme.elevation.card</span></span>
-<span class="ods-item"><span class="ods-card" style="box-shadow:var(--theme-elevation-overlay)"></span><span class="ods-label">theme.elevation.overlay</span></span>
+<span class="ods-item"><span class="ods-swatch" style="background:var(--theme-color-category-1)"></span><span class="ods-label">theme.color.category.1.@</span></span>
+<span class="ods-item"><span class="ods-swatch" style="background:var(--theme-color-category-1-subtle)"></span><span class="ods-label">theme.color.category.1.subtle</span></span>
 </div>
 
 ## The five answers
@@ -97,12 +99,27 @@ Each token points to another token. Values live only on primitives, below.
 | `theme.color.action.primary.hover` |  |
 | `theme.color.action.secondary.@` |  |
 | `theme.color.action.secondary.hover` |  |
+| `theme.color.status.info.@` |  |
+| `theme.color.status.info.subtle` |  |
 | `theme.color.status.success.@` |  |
 | `theme.color.status.success.subtle` |  |
 | `theme.color.status.warning.@` |  |
 | `theme.color.status.warning.subtle` |  |
 | `theme.color.status.danger.@` |  |
 | `theme.color.status.danger.subtle` |  |
+| `theme.color.category.1.@` |  |
+| `theme.color.category.1.subtle` |  |
+| `theme.color.category.2.@` |  |
+| `theme.color.category.2.subtle` |  |
+| `theme.color.category.3.@` |  |
+| `theme.color.category.3.subtle` |  |
+| `theme.color.category.4.@` |  |
+| `theme.color.category.4.subtle` |  |
+| `theme.color.category.5.@` |  |
+| `theme.color.category.5.subtle` |  |
+| `theme.color.disabled.text` |  |
+| `theme.color.disabled.surface` |  |
+| `theme.color.disabled.border` |  |
 | `theme.elevation.card` |  |
 | `theme.elevation.overlay` |  |
 

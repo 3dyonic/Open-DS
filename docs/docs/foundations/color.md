@@ -31,12 +31,26 @@ How color carries action, state and brand.
 <span class="ods-item"><span class="ods-swatch" style="background:var(--color-action-primary-hover)"></span><span class="ods-label">color.action.primary.hover</span></span>
 <span class="ods-item"><span class="ods-swatch" style="background:var(--color-action-secondary)"></span><span class="ods-label">color.action.secondary.@</span></span>
 <span class="ods-item"><span class="ods-swatch" style="background:var(--color-action-secondary-hover)"></span><span class="ods-label">color.action.secondary.hover</span></span>
+<span class="ods-item"><span class="ods-swatch" style="background:var(--color-status-info)"></span><span class="ods-label">color.status.info.@</span></span>
+<span class="ods-item"><span class="ods-swatch" style="background:var(--color-status-info-subtle)"></span><span class="ods-label">color.status.info.subtle</span></span>
 <span class="ods-item"><span class="ods-swatch" style="background:var(--color-status-success)"></span><span class="ods-label">color.status.success.@</span></span>
 <span class="ods-item"><span class="ods-swatch" style="background:var(--color-status-success-subtle)"></span><span class="ods-label">color.status.success.subtle</span></span>
 <span class="ods-item"><span class="ods-swatch" style="background:var(--color-status-warning)"></span><span class="ods-label">color.status.warning.@</span></span>
 <span class="ods-item"><span class="ods-swatch" style="background:var(--color-status-warning-subtle)"></span><span class="ods-label">color.status.warning.subtle</span></span>
 <span class="ods-item"><span class="ods-swatch" style="background:var(--color-status-danger)"></span><span class="ods-label">color.status.danger.@</span></span>
 <span class="ods-item"><span class="ods-swatch" style="background:var(--color-status-danger-subtle)"></span><span class="ods-label">color.status.danger.subtle</span></span>
+<span class="ods-item"><span class="ods-swatch" style="background:var(--color-category-1)"></span><span class="ods-label">color.category.1.@</span></span>
+<span class="ods-item"><span class="ods-swatch" style="background:var(--color-category-1-subtle)"></span><span class="ods-label">color.category.1.subtle</span></span>
+<span class="ods-item"><span class="ods-swatch" style="background:var(--color-category-2)"></span><span class="ods-label">color.category.2.@</span></span>
+<span class="ods-item"><span class="ods-swatch" style="background:var(--color-category-2-subtle)"></span><span class="ods-label">color.category.2.subtle</span></span>
+<span class="ods-item"><span class="ods-swatch" style="background:var(--color-category-3)"></span><span class="ods-label">color.category.3.@</span></span>
+<span class="ods-item"><span class="ods-swatch" style="background:var(--color-category-3-subtle)"></span><span class="ods-label">color.category.3.subtle</span></span>
+<span class="ods-item"><span class="ods-swatch" style="background:var(--color-category-4)"></span><span class="ods-label">color.category.4.@</span></span>
+<span class="ods-item"><span class="ods-swatch" style="background:var(--color-category-4-subtle)"></span><span class="ods-label">color.category.4.subtle</span></span>
+<span class="ods-item"><span class="ods-swatch" style="background:var(--color-category-5)"></span><span class="ods-label">color.category.5.@</span></span>
+<span class="ods-item"><span class="ods-swatch" style="background:var(--color-category-5-subtle)"></span><span class="ods-label">color.category.5.subtle</span></span>
+<span class="ods-item"><span class="ods-swatch" style="background:var(--color-disabled-text)"></span><span class="ods-label">color.disabled.text</span></span>
+<span class="ods-item"><span class="ods-swatch" style="background:var(--color-disabled-surface)"></span><span class="ods-label">color.disabled.surface</span></span>
 </div>
 
 ## The five answers
@@ -64,23 +78,38 @@ Each token points to another token. Values live only on primitives, below.
 | `color.surface.scrim` | `dense-data.theme.light.color.surface.scrim` → `color.black.light.scrim` | `dense-data.theme.dark.color.surface.scrim` → `color.black.dark.scrim` |
 | `color.text.primary` | `dense-data.theme.light.color.text.primary` → `color.slate.light.900` | `dense-data.theme.dark.color.text.primary` → `color.slate.dark.900` |
 | `color.text.secondary` | `dense-data.theme.light.color.text.secondary` → `color.slate.light.700` | `dense-data.theme.dark.color.text.secondary` → `color.slate.dark.500` |
-| `color.text.muted` | `dense-data.theme.light.color.text.muted` → `color.slate.light.500` | `dense-data.theme.dark.color.text.muted` → `color.slate.dark.300` |
+| `color.text.muted` | `dense-data.theme.light.color.text.muted` → `color.slate.light.600` | `dense-data.theme.dark.color.text.muted` → `color.slate.dark.400` |
 | `color.text.inverse` | `dense-data.theme.light.color.text.inverse` → `color.slate.light.0` | `dense-data.theme.dark.color.text.inverse` → `color.slate.dark.50` |
 | `color.text.on-action` | `dense-data.theme.light.color.text.on-action` → `color.slate.light.0` | `dense-data.theme.dark.color.text.on-action` → `color.slate.dark.0` |
 | `color.text.link` | `dense-data.theme.light.color.text.link` → `color.violet.light.700` | `dense-data.theme.dark.color.text.link` → `color.violet.dark.700` |
 | `color.border.default` | `dense-data.theme.light.color.border.default` → `color.slate.light.200` | `dense-data.theme.dark.color.border.default` → `color.slate.dark.100` |
-| `color.border.strong` | `dense-data.theme.light.color.border.strong` → `color.slate.light.300` | `dense-data.theme.dark.color.border.strong` → `color.slate.dark.200` |
+| `color.border.strong` | `dense-data.theme.light.color.border.strong` → `color.slate.light.500` | `dense-data.theme.dark.color.border.strong` → `color.slate.dark.300` |
 | `color.border.focus` | `dense-data.theme.light.color.border.focus` → `color.violet.light.600` | `dense-data.theme.dark.color.border.focus` → `color.violet.dark.700` |
 | `color.action.primary.@` | `dense-data.theme.light.color.action.primary.@` → `color.violet.light.600` | `dense-data.theme.dark.color.action.primary.@` → `color.violet.dark.700` |
 | `color.action.primary.hover` | `dense-data.theme.light.color.action.primary.hover` → `color.violet.light.700` | `dense-data.theme.dark.color.action.primary.hover` → `color.violet.dark.800` |
 | `color.action.secondary.@` | `dense-data.theme.light.color.action.secondary.@` → `color.slate.light.0` | `dense-data.theme.dark.color.action.secondary.@` → `color.slate.dark.50` |
 | `color.action.secondary.hover` | `dense-data.theme.light.color.action.secondary.hover` → `color.slate.light.100` | `dense-data.theme.dark.color.action.secondary.hover` → `color.slate.dark.100` |
+| `color.status.info.@` | `dense-data.theme.light.color.status.info.@` → `color.blue.light.700` | `dense-data.theme.dark.color.status.info.@` → `color.blue.dark.700` |
+| `color.status.info.subtle` | `dense-data.theme.light.color.status.info.subtle` → `color.blue.light.100` | `dense-data.theme.dark.color.status.info.subtle` → `color.blue.dark.100` |
 | `color.status.success.@` | `dense-data.theme.light.color.status.success.@` → `color.green.light.700` | `dense-data.theme.dark.color.status.success.@` → `color.green.dark.700` |
 | `color.status.success.subtle` | `dense-data.theme.light.color.status.success.subtle` → `color.green.light.100` | `dense-data.theme.dark.color.status.success.subtle` → `color.green.dark.100` |
 | `color.status.warning.@` | `dense-data.theme.light.color.status.warning.@` → `color.amber.light.700` | `dense-data.theme.dark.color.status.warning.@` → `color.amber.dark.700` |
 | `color.status.warning.subtle` | `dense-data.theme.light.color.status.warning.subtle` → `color.amber.light.100` | `dense-data.theme.dark.color.status.warning.subtle` → `color.amber.dark.100` |
 | `color.status.danger.@` | `dense-data.theme.light.color.status.danger.@` → `color.red.light.700` | `dense-data.theme.dark.color.status.danger.@` → `color.red.dark.700` |
 | `color.status.danger.subtle` | `dense-data.theme.light.color.status.danger.subtle` → `color.red.light.100` | `dense-data.theme.dark.color.status.danger.subtle` → `color.red.dark.100` |
+| `color.category.1.@` | `dense-data.theme.light.color.category.1.@` → `color.violet.light.600` | `dense-data.theme.dark.color.category.1.@` → `color.violet.dark.700` |
+| `color.category.1.subtle` | `dense-data.theme.light.color.category.1.subtle` → `color.violet.light.100` | `dense-data.theme.dark.color.category.1.subtle` → `color.violet.dark.100` |
+| `color.category.2.@` | `dense-data.theme.light.color.category.2.@` → `color.blue.light.600` | `dense-data.theme.dark.color.category.2.@` → `color.blue.dark.700` |
+| `color.category.2.subtle` | `dense-data.theme.light.color.category.2.subtle` → `color.blue.light.100` | `dense-data.theme.dark.color.category.2.subtle` → `color.blue.dark.100` |
+| `color.category.3.@` | `dense-data.theme.light.color.category.3.@` → `color.green.light.700` | `dense-data.theme.dark.color.category.3.@` → `color.green.dark.700` |
+| `color.category.3.subtle` | `dense-data.theme.light.color.category.3.subtle` → `color.green.light.100` | `dense-data.theme.dark.color.category.3.subtle` → `color.green.dark.100` |
+| `color.category.4.@` | `dense-data.theme.light.color.category.4.@` → `color.amber.light.700` | `dense-data.theme.dark.color.category.4.@` → `color.amber.dark.700` |
+| `color.category.4.subtle` | `dense-data.theme.light.color.category.4.subtle` → `color.amber.light.100` | `dense-data.theme.dark.color.category.4.subtle` → `color.amber.dark.100` |
+| `color.category.5.@` | `dense-data.theme.light.color.category.5.@` → `color.slate.light.500` | `dense-data.theme.dark.color.category.5.@` → `color.slate.dark.700` |
+| `color.category.5.subtle` | `dense-data.theme.light.color.category.5.subtle` → `color.slate.light.100` | `dense-data.theme.dark.color.category.5.subtle` → `color.slate.dark.100` |
+| `color.disabled.text` | `dense-data.theme.light.color.disabled.text` → `color.slate.light.500` | `dense-data.theme.dark.color.disabled.text` → `color.slate.dark.500` |
+| `color.disabled.surface` | `dense-data.theme.light.color.disabled.surface` → `color.slate.light.100` | `dense-data.theme.dark.color.disabled.surface` → `color.slate.dark.100` |
+| `color.disabled.border` | `dense-data.theme.light.color.disabled.border` → `color.slate.light.200` | `dense-data.theme.dark.color.disabled.border` → `color.slate.dark.200` |
 
 ## Primitives
 
@@ -94,6 +123,11 @@ The raw values the tokens above end at.
 | `color.amber.light.700` | #8A5600 |  |
 | `color.black.dark.scrim` | #000000B3 |  |
 | `color.black.light.scrim` | #0000008C |  |
+| `color.blue.dark.100` | #062C6E |  |
+| `color.blue.dark.700` | #8AB4F8 |  |
+| `color.blue.light.100` | #E1ECFF |  |
+| `color.blue.light.600` | #0B4FC0 |  |
+| `color.blue.light.700` | #083C93 |  |
 | `color.green.dark.100` | #123322 |  |
 | `color.green.dark.700` | #5CC283 |  |
 | `color.green.light.100` | #E3F4EA |  |
@@ -106,15 +140,17 @@ The raw values the tokens above end at.
 | `color.slate.dark.100` | #262D38 |  |
 | `color.slate.dark.200` | #3D4655 |  |
 | `color.slate.dark.300` | #6B7585 |  |
+| `color.slate.dark.400` | #969FAD |  |
 | `color.slate.dark.50` | #161B23 |  |
 | `color.slate.dark.500` | #C4CBD6 |  |
+| `color.slate.dark.700` | #DDE2EA |  |
 | `color.slate.dark.900` | #F7F8FA |  |
 | `color.slate.light.0` | #FFFFFF |  |
 | `color.slate.light.100` | #EEF1F5 |  |
 | `color.slate.light.200` | #DDE2EA |  |
-| `color.slate.light.300` | #C4CBD6 |  |
 | `color.slate.light.50` | #F7F8FA |  |
 | `color.slate.light.500` | #6B7585 |  |
+| `color.slate.light.600` | #535D6D |  |
 | `color.slate.light.700` | #3D4655 |  |
 | `color.slate.light.900` | #161B23 |  |
 | `color.violet.dark.100` | #2C2588 |  |

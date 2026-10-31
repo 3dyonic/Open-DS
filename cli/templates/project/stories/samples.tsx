@@ -5,7 +5,7 @@ import scheme from "../scheme.json";
 
 type Status = {
   label: string;
-  meaning: "neutral" | "success" | "warning" | "danger";
+  meaning: "neutral" | "info" | "success" | "warning" | "danger";
   why: string;
 };
 export interface Samples {
