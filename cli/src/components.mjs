@@ -11,6 +11,7 @@ export const PACKAGES = {
   "class-variance-authority": "^0.7.1",
   clsx: "^2.1.1",
   cmdk: "^1.1.1",
+  "date-fns": "^4.4.0",
   "embla-carousel-react": "^8.6.0",
   "input-otp": "^1.5.0",
   "lucide-react": "^1.65.0",

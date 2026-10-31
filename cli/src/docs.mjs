@@ -343,7 +343,7 @@ export function docsPages(scheme, g, roots, { storybook = "http://localhost:6006
     NOTE +
     `# Inventory
 
-**${Object.keys(inventory).length} of ${catalogue.length}** catalogue components are in ${esc(scheme.name)}. ` +
+**${Object.keys(inventory).length}** components are in ${esc(scheme.name)}. ` +
     `The components answers picked them (see [Components](../foundations/components.md)). Anything not in is out.
 
 ` +
