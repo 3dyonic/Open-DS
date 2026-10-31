@@ -1,14 +1,29 @@
 {
   "name": "open-ds",
   "version": "0.1.0",
-  "private": true,
-  "description": "Local helper that installs an Open DS boilerplate and checks it. Not published.",
+  "description": "Design systems as answered questions. Pick a scheme, read why every decision was made, and take the whole system into your project as code you own: tokens, components, Storybook, docs and agent files. Includes the Open DS MCP server.",
   "license": "MIT",
+  "author": "3dyonic (https://3dyonic.com)",
+  "homepage": "https://open-ds.dev",
   "repository": {
     "type": "git",
-    "url": "https://github.com/3dyonic/Open-DS"
+    "url": "git+https://github.com/3dyonic/Open-DS.git",
+    "directory": "cli"
   },
-  "keywords": ["design-system", "dtcg"],
+  "bugs": {
+    "url": "https://github.com/3dyonic/Open-DS/issues"
+  },
+  "keywords": [
+    "design-system",
+    "design-tokens",
+    "dtcg",
+    "style-dictionary",
+    "shadcn",
+    "storybook",
+    "docusaurus",
+    "mcp",
+    "cli"
+  ],
   "engines": {
     "node": ">=22"
   },
@@ -16,7 +31,28 @@
   "bin": {
     "open-ds": "./bin/open-ds.js"
   },
+  "exports": {
+    ".": "./src/index.mjs",
+    "./mcp": "./src/mcp.mjs",
+    "./package.json": "./package.json"
+  },
   "scripts": {
-    "test": "node --test"
+    "bundle": "node scripts/bundle.mjs",
+    "prepack": "node scripts/bundle.mjs",
+    "test": "node --test",
+    "pack": "npm pack --dry-run"
+  },
+  "files": [
+    "bin",
+    "src",
+    "assets",
+    "templates"
+  ],
+  "publishConfig": {
+    "access": "public"
+  },
+  "dependencies": {
+    "@modelcontextprotocol/sdk": "^1.32.2",
+    "zod": "^4.6.7"
   }
 }

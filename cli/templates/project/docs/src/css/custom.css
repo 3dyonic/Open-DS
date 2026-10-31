@@ -1,0 +1,243 @@
+/* The docs wear the design system. build/docusaurus.css (npm run tokens) holds its tokens and
+   points Docusaurus's own variables at them. The rules below dress the parts Docusaurus has no
+   variable for in the same tokens and component keys. */
+@import url("https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible:wght@400;700&family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,600;12..96,800&family=DM+Mono:wght@400;500&family=DM+Sans:wght@400;700&family=IBM+Plex+Mono&family=IBM+Plex+Sans:wght@400;500;600&family=Inter:wght@400;600;700&family=Plus+Jakarta+Sans:wght@400;600;700&family=Poppins:wght@400;600;700&family=Source+Serif+4:wght@400;600&display=swap");
+@import "../../../build/docusaurus.css";
+
+body {
+  font-size: var(--type-body-font-size);
+  -webkit-font-smoothing: antialiased;
+}
+
+/* Headings follow the type scale, the first one included. */
+.markdown h1:first-child,
+.markdown h1 {
+  --ifm-h1-font-size: var(--type-display-font-size);
+  line-height: var(--type-display-line-height);
+  font-weight: var(--type-display-font-weight);
+}
+.markdown h2 {
+  line-height: var(--type-title-line-height);
+  font-weight: var(--type-title-font-weight);
+  margin-top: var(--space-gap-section);
+}
+.markdown h3 {
+  line-height: var(--type-heading-line-height);
+  font-weight: var(--type-heading-font-weight);
+}
+.markdown > h2 {
+  --ifm-h2-font-size: var(--type-title-font-size);
+  --ifm-h2-vertical-rhythm-top: 1;
+}
+.markdown > h3 {
+  --ifm-h3-font-size: var(--type-heading-font-size);
+  --ifm-h3-vertical-rhythm-top: 1;
+}
+
+/* Navigation: label type, control density. */
+.menu__link,
+.table-of-contents__link,
+.breadcrumbs__link,
+.navbar__link {
+  font-size: var(--type-label-font-size);
+  line-height: var(--type-label-line-height);
+  font-weight: var(--type-label-font-weight);
+}
+.menu__link--active:not(.menu__link--sublist) {
+  border-radius: var(--radius-control);
+}
+.breadcrumbs__item--active .breadcrumbs__link {
+  background: var(--color-surface-selected);
+  border-radius: var(--radius-control);
+}
+.navbar {
+  border-bottom: var(--border-width-default) solid var(--color-border-default);
+  box-shadow: none;
+}
+.footer {
+  border-top: var(--border-width-default) solid var(--color-border-default);
+}
+
+/* Tables read the table component keys. */
+.markdown table {
+  display: table;
+  width: 100%;
+  border-collapse: collapse;
+  font-size: var(--table-font-size);
+}
+.markdown table thead tr {
+  background: var(--table-header-background);
+}
+.markdown table th,
+.markdown table td {
+  border: 0;
+  border-bottom: var(--border-width-default) solid var(--table-row-border);
+  padding: 0 var(--table-cell-padding-x);
+  height: var(--table-row-height);
+  text-align: left;
+}
+.markdown table th {
+  font-size: var(--type-label-font-size);
+  font-weight: var(--type-label-font-weight);
+  color: var(--color-text-secondary);
+}
+.markdown table tr:nth-child(2n) {
+  background: transparent;
+}
+
+/* Code uses the data type. */
+code {
+  font-family: var(--type-data-font-family);
+  border: var(--border-width-default) solid var(--color-border-default);
+  padding: 0 var(--space-gap-tight);
+}
+
+/* Cards, buttons, badges, tabs and callouts read their component keys. */
+.card,
+.pagination-nav__link {
+  background: var(--card-background);
+  border: var(--border-width-default) solid var(--card-border);
+  border-radius: var(--card-radius);
+  box-shadow: var(--card-shadow);
+}
+.button {
+  height: var(--button-height);
+  font-size: var(--button-font-size);
+  font-weight: var(--button-font-weight);
+  line-height: var(--button-height);
+  padding-top: 0;
+  padding-bottom: 0;
+}
+.button--primary {
+  background: var(--button-primary-background);
+  border-color: var(--button-primary-background);
+  color: var(--button-primary-label);
+}
+.button--primary:hover {
+  background: var(--button-primary-background-hover);
+}
+.button--secondary {
+  background: var(--button-secondary-background);
+  border-color: var(--button-secondary-border);
+  color: var(--button-secondary-label);
+}
+.badge {
+  font-size: var(--badge-font-size);
+  padding: 0 var(--badge-padding-x);
+  background: var(--badge-neutral-background);
+  color: var(--badge-neutral-label);
+  border: 0;
+}
+.tabs__item {
+  color: var(--tabs-label);
+  font-size: var(--type-label-font-size);
+}
+.tabs__item--active {
+  color: var(--tabs-label-active);
+  border-bottom-color: var(--tabs-indicator);
+}
+.alert,
+.theme-admonition {
+  border-radius: var(--radius-container);
+  border-width: var(--border-width-default);
+  box-shadow: none;
+}
+
+/* Specimens: small live samples on the foundation pages, drawn from the token variables. */
+.ods-specimen {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-gap-default, 0.5rem) var(--space-gap-group, 1rem);
+  padding: var(--space-inset-container, 1rem);
+  margin-bottom: var(--space-gap-section, 1.5rem);
+  border: var(--border-width-default, 1px) solid var(--color-border-default);
+  border-radius: var(--radius-container, 0.375rem);
+  background: var(--color-surface-default);
+}
+.ods-item {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-gap-default, 0.5rem);
+  min-width: 13rem;
+}
+.ods-type {
+  display: flex;
+  align-items: baseline;
+  gap: var(--space-gap-group, 1rem);
+  width: 100%;
+}
+.ods-type .ods-label {
+  flex: 0 0 5rem;
+}
+.ods-label {
+  font-family: var(--type-data-font-family, monospace);
+  font-size: var(--type-caption-font-size, 0.75rem);
+  color: var(--color-text-muted);
+}
+.ods-swatch,
+.ods-tile,
+.ods-card {
+  display: inline-block;
+  width: 1.5rem;
+  height: 1.5rem;
+  flex: none;
+  border-radius: var(--radius-control, 0.25rem);
+  border: var(--border-width-default, 1px) solid var(--color-border-default);
+}
+.ods-swatch {
+  background: var(--color-text-primary);
+}
+.ods-tile {
+  background: var(--color-surface-sunken);
+  border-color: var(--color-border-strong);
+}
+.ods-card {
+  width: 2.5rem;
+  background: var(--color-surface-raised);
+}
+.ods-bar {
+  display: inline-block;
+  height: 0.5rem;
+  min-width: 1px;
+  background: var(--color-action-primary);
+  border-radius: 1px;
+}
+.ods-line {
+  display: inline-block;
+  width: 1.5rem;
+  background: var(--color-text-primary);
+}
+.ods-font {
+  font-size: 1.125rem;
+}
+.ods-motion {
+  display: inline-block;
+  width: 3rem;
+  height: 0.75rem;
+  border-radius: 9999px;
+  background: var(--color-surface-sunken);
+  position: relative;
+}
+.ods-motion > span {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 0.75rem;
+  height: 0.75rem;
+  border-radius: 9999px;
+  background: var(--color-action-primary);
+  transition: left var(--ods-d) var(--motion-easing-standard, ease);
+}
+.ods-specimen:hover .ods-motion > span {
+  left: 2.25rem;
+}
+@media (prefers-reduced-motion: reduce) {
+  .ods-motion > span {
+    transition: none;
+  }
+}
+.markdown table .ods-swatch,
+.markdown table .ods-tile,
+.markdown table .ods-card {
+  vertical-align: middle;
+}

@@ -1,0 +1,41 @@
+{
+  "name": "@open-ds/e2e-app",
+  "version": "0.0.0",
+  "private": true,
+  "description": "A blank Vite + React + Tailwind app. The end-to-end run deploys a scheme into it with the open-ds CLI and builds it, to prove the deployed files compile in a real project.",
+  "type": "module",
+  "scripts": {
+    "build": "vite build",
+    "dev": "vite",
+    "typecheck": "tsc --noEmit"
+  },
+  "dependencies": {
+    "@base-ui/react": "^1.9.0",
+    "@tanstack/react-table": "^8.21.3",
+    "class-variance-authority": "^0.7.1",
+    "clsx": "^2.1.1",
+    "cmdk": "^1.1.1",
+    "date-fns": "^4.4.0",
+    "embla-carousel-react": "^8.6.0",
+    "input-otp": "^1.5.0",
+    "lucide-react": "^1.65.0",
+    "radix-ui": "^1.8.1",
+    "react": "^19.1.1",
+    "react-day-picker": "^10.0.2",
+    "react-dom": "^19.1.1",
+    "react-hook-form": "^7.91.0",
+    "react-resizable-panels": "^4.15.3",
+    "recharts": "^3.10.1",
+    "tailwind-merge": "^3.7.0",
+    "vaul": "^1.1.2"
+  },
+  "devDependencies": {
+    "@tailwindcss/vite": "^4.3.3",
+    "@types/react": "^19.1.13",
+    "@types/react-dom": "^19.1.9",
+    "@vitejs/plugin-react": "^6.1.2",
+    "tailwindcss": "^4.3.3",
+    "typescript": "^5.9.2",
+    "vite": "^8.3.5"
+  }
+}

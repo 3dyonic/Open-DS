@@ -1,0 +1,886 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/3dyonic/Open-DS/schema/scheme.schema.json",
+  "title": "Open DS scheme",
+  "description": "A full design system as data: every grammar question answered with why and because, usage rules for every situation, voice and tone, scenarios, themes (brands × light and dark) and DTCG tokens in three tiers. Tools build CSS, components, docs and agent files from it.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "$schema",
+    "id",
+    "name",
+    "version",
+    "status",
+    "summary",
+    "description",
+    "ai",
+    "scenarios",
+    "voice",
+    "inventory",
+    "samples",
+    "themes",
+    "answers",
+    "usage",
+    "tokens"
+  ],
+  "properties": {
+    "$schema": {
+      "type": "string",
+      "description": "Relative path to this schema."
+    },
+    "id": {
+      "type": "string",
+      "pattern": "^[a-z0-9-]+$",
+      "description": "Scheme id; also the CLI argument and the file name.",
+      "examples": ["dense-data"]
+    },
+    "name": {
+      "type": "string",
+      "minLength": 1,
+      "description": "Scheme name as shown to people."
+    },
+    "version": {
+      "type": "string",
+      "pattern": "^\\d+\\.\\d+\\.\\d+$",
+      "description": "Semantic version of the scheme."
+    },
+    "status": {
+      "enum": ["draft", "curated"],
+      "description": "draft until Yonatan curates the answers."
+    },
+    "summary": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 140,
+      "description": "One sentence: what the scheme is for."
+    },
+    "description": {
+      "type": "string",
+      "minLength": 40,
+      "description": "A paragraph an agent can read cold to understand the scheme."
+    },
+    "ai": {
+      "type": "object",
+      "description": "Guidance for an agent choosing or applying the scheme.",
+      "additionalProperties": false,
+      "required": ["use_when", "avoid_when", "example_products"],
+      "properties": {
+        "use_when": {
+          "type": "string",
+          "minLength": 1,
+          "description": "Products and contexts this scheme fits."
+        },
+        "avoid_when": {
+          "type": "string",
+          "minLength": 1,
+          "description": "Products and contexts this scheme does not fit."
+        },
+        "example_products": {
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "type": "string"
+          },
+          "description": "Kinds of products that would pick this scheme."
+        }
+      }
+    },
+    "scenarios": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "$ref": "#/$defs/output"
+      },
+      "description": "Use scenarios: real work, written from the answers to the use scenario questions (scenarios.q1, scenarios.q2) and other reasons."
+    },
+    "voice": {
+      "type": "object",
+      "description": "The written outputs of the voice and tone scope. Each lists the answers it follows. The tone per moment lives in usage, under the voice situations.",
+      "required": ["summary", "principles", "words"],
+      "additionalProperties": false,
+      "properties": {
+        "summary": {
+          "$ref": "#/$defs/output",
+          "description": "The voice in one sentence."
+        },
+        "principles": {
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "$ref": "#/$defs/output"
+          },
+          "description": "Rules a writer or an agent follows."
+        },
+        "words": {
+          "type": "object",
+          "description": "Words to use and words to avoid.",
+          "additionalProperties": false,
+          "required": ["use", "avoid", "follows"],
+          "properties": {
+            "use": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              },
+              "description": "Preferred words."
+            },
+            "avoid": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              },
+              "description": "Words to avoid."
+            },
+            "follows": {
+              "type": "array",
+              "minItems": 1,
+              "items": {
+                "type": "string",
+                "pattern": "^[a-z]+\\.(q\\d+|roles|count|definition|values|lands)$"
+              },
+              "description": "Question ids whose answers this text was written from."
+            }
+          }
+        },
+        "brands": {
+          "type": "object",
+          "description": "Per-brand tone, for multi-brand schemes. Keys are brand ids.",
+          "additionalProperties": {
+            "$ref": "#/$defs/output"
+          }
+        }
+      }
+    },
+    "inventory": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["description", "follows", "in", "out"],
+      "description": "The components this system carries: an output of the components answers, picked from the grammar catalogue. Anything not in the in list is out.",
+      "properties": {
+        "description": {
+          "type": "string",
+          "minLength": 1,
+          "description": "What the inventory is."
+        },
+        "follows": {
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "type": "string",
+            "pattern": "^[a-z]+\\.(q\\d+|roles|count|definition|values|lands)$"
+          },
+          "description": "Question ids whose answers picked the inventory."
+        },
+        "in": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": ["id", "why"],
+            "properties": {
+              "id": {
+                "type": "string",
+                "pattern": "^[a-z-]+$",
+                "description": "A catalogue item id from the grammar."
+              },
+              "why": {
+                "type": "string",
+                "minLength": 1,
+                "description": "Why it is in or out, in one sentence."
+              }
+            }
+          },
+          "description": "The components in the inventory, each with why.",
+          "minItems": 1
+        },
+        "out": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": ["id", "why"],
+            "properties": {
+              "id": {
+                "type": "string",
+                "pattern": "^[a-z-]+$",
+                "description": "A catalogue item id from the grammar."
+              },
+              "why": {
+                "type": "string",
+                "minLength": 1,
+                "description": "Why it is in or out, in one sentence."
+              }
+            }
+          },
+          "description": "Notable components left out, each with why. Every other catalogue item is out too."
+        }
+      }
+    },
+    "samples": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "description",
+        "follows",
+        "screen",
+        "actions",
+        "statuses",
+        "metrics",
+        "field"
+      ],
+      "description": "Sample content for showing this system: written from its use scenarios, in its voice, with every status mapped to a meaning. Storybook, the site and the docs read it. Each component in the inventory needs its part; parts for components outside the inventory are not used.",
+      "properties": {
+        "description": {
+          "type": "string",
+          "minLength": 1,
+          "description": "What the samples are."
+        },
+        "follows": {
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "type": "string",
+            "pattern": "^[a-z]+\\.(q\\d+|roles|count|definition|values|lands)$"
+          },
+          "description": "Question ids whose answers the samples are written from."
+        },
+        "screen": {
+          "type": "string",
+          "minLength": 1,
+          "description": "The title of a typical screen in this product."
+        },
+        "actions": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["primary", "secondary"],
+          "description": "Button labels.",
+          "properties": {
+            "primary": {
+              "type": "string",
+              "minLength": 1,
+              "description": "The action that completes the task."
+            },
+            "secondary": {
+              "type": "string",
+              "minLength": 1,
+              "description": "An alternative action."
+            }
+          }
+        },
+        "statuses": {
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": ["label", "meaning", "why"],
+            "description": "One status.",
+            "properties": {
+              "label": {
+                "type": "string",
+                "minLength": 1,
+                "description": "The words on the badge."
+              },
+              "meaning": {
+                "enum": ["neutral", "info", "success", "warning", "danger"],
+                "description": "What the status means; it picks the badge tone."
+              },
+              "why": {
+                "type": "string",
+                "minLength": 1,
+                "description": "Why the status has this meaning."
+              }
+            }
+          },
+          "description": "Status labels, each with its meaning. Danger only when something failed or will be lost."
+        },
+        "table": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["caption", "columns", "rows"],
+          "description": "Rows for a table.",
+          "properties": {
+            "caption": {
+              "type": "string",
+              "minLength": 1,
+              "description": "What the table lists."
+            },
+            "columns": {
+              "type": "array",
+              "minItems": 1,
+              "items": {
+                "type": "object",
+                "additionalProperties": false,
+                "required": ["label"],
+                "description": "A column.",
+                "properties": {
+                  "label": {
+                    "type": "string",
+                    "minLength": 1,
+                    "description": "Header text."
+                  },
+                  "numeric": {
+                    "type": "boolean",
+                    "description": "True for numbers that align right."
+                  }
+                }
+              },
+              "description": "Columns."
+            },
+            "rows": {
+              "type": "array",
+              "minItems": 1,
+              "items": {
+                "type": "object",
+                "additionalProperties": false,
+                "required": ["cells", "status"],
+                "description": "A row.",
+                "properties": {
+                  "cells": {
+                    "type": "array",
+                    "minItems": 1,
+                    "items": {
+                      "type": "string"
+                    },
+                    "description": "One value per column before the status."
+                  },
+                  "status": {
+                    "type": "string",
+                    "minLength": 1,
+                    "description": "A label from statuses."
+                  }
+                }
+              },
+              "description": "Rows."
+            }
+          }
+        },
+        "metrics": {
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": ["label", "value"],
+            "description": "A figure.",
+            "properties": {
+              "label": {
+                "type": "string",
+                "minLength": 1,
+                "description": "What it counts."
+              },
+              "value": {
+                "type": "string",
+                "minLength": 1,
+                "description": "The figure, as shown."
+              }
+            }
+          },
+          "description": "Figures for a summary row."
+        },
+        "field": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["label", "placeholder", "hint", "error", "invalid"],
+          "description": "A text field.",
+          "properties": {
+            "label": {
+              "type": "string",
+              "minLength": 1,
+              "description": "The label."
+            },
+            "placeholder": {
+              "type": "string",
+              "description": "Placeholder text, or empty."
+            },
+            "hint": {
+              "type": "string",
+              "minLength": 1,
+              "description": "Hint under the label."
+            },
+            "error": {
+              "type": "string",
+              "minLength": 1,
+              "description": "Error message."
+            },
+            "invalid": {
+              "type": "string",
+              "minLength": 1,
+              "description": "A value that triggers the error."
+            }
+          }
+        },
+        "checkbox": {
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "type": "string",
+            "minLength": 1
+          },
+          "description": "Checkbox labels."
+        },
+        "select": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["label", "options", "value"],
+          "description": "A select.",
+          "properties": {
+            "label": {
+              "type": "string",
+              "minLength": 1,
+              "description": "The label."
+            },
+            "options": {
+              "type": "array",
+              "minItems": 2,
+              "items": {
+                "type": "string",
+                "minLength": 1
+              },
+              "description": "Options."
+            },
+            "value": {
+              "type": "string",
+              "minLength": 1,
+              "description": "The chosen option."
+            }
+          }
+        },
+        "switches": {
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "type": "string",
+            "minLength": 1
+          },
+          "description": "Switch labels: settings that apply at once."
+        },
+        "messages": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["success", "error", "neutral"],
+          "description": "Toast messages.",
+          "properties": {
+            "success": {
+              "type": "string",
+              "minLength": 1,
+              "description": "A confirmation."
+            },
+            "error": {
+              "type": "object",
+              "additionalProperties": false,
+              "required": ["title", "description"],
+              "description": "An error.",
+              "properties": {
+                "title": {
+                  "type": "string",
+                  "minLength": 1,
+                  "description": "What went wrong."
+                },
+                "description": {
+                  "type": "string",
+                  "minLength": 1,
+                  "description": "What to do."
+                }
+              }
+            },
+            "neutral": {
+              "type": "string",
+              "minLength": 1,
+              "description": "A neutral note."
+            }
+          }
+        },
+        "confirm": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["trigger", "title", "body", "confirm", "cancel"],
+          "description": "A confirm dialog for a destructive action.",
+          "properties": {
+            "trigger": {
+              "type": "string",
+              "minLength": 1,
+              "description": "The button that opens it."
+            },
+            "title": {
+              "type": "string",
+              "minLength": 1,
+              "description": "The question."
+            },
+            "body": {
+              "type": "string",
+              "minLength": 1,
+              "description": "The consequence."
+            },
+            "confirm": {
+              "type": "string",
+              "minLength": 1,
+              "description": "The destructive button."
+            },
+            "cancel": {
+              "type": "string",
+              "minLength": 1,
+              "description": "The safe button."
+            }
+          }
+        },
+        "card": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "title",
+            "description",
+            "status",
+            "primary",
+            "secondary"
+          ],
+          "description": "A card for one item.",
+          "properties": {
+            "title": {
+              "type": "string",
+              "minLength": 1,
+              "description": "The item."
+            },
+            "description": {
+              "type": "string",
+              "minLength": 1,
+              "description": "Details."
+            },
+            "status": {
+              "type": "string",
+              "minLength": 1,
+              "description": "A label from statuses."
+            },
+            "primary": {
+              "type": "string",
+              "minLength": 1,
+              "description": "Main action."
+            },
+            "secondary": {
+              "type": "string",
+              "minLength": 1,
+              "description": "Other action."
+            }
+          }
+        },
+        "tabs": {
+          "type": "array",
+          "minItems": 2,
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": ["label", "content"],
+            "description": "A tab.",
+            "properties": {
+              "label": {
+                "type": "string",
+                "minLength": 1,
+                "description": "Tab label."
+              },
+              "content": {
+                "type": "string",
+                "minLength": 1,
+                "description": "Panel text."
+              }
+            }
+          },
+          "description": "Tabs, each with its panel text."
+        },
+        "menu": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["trigger", "items", "destructive"],
+          "description": "A menu of actions.",
+          "properties": {
+            "trigger": {
+              "type": "string",
+              "minLength": 1,
+              "description": "Accessible name of the menu button."
+            },
+            "items": {
+              "type": "array",
+              "minItems": 1,
+              "items": {
+                "type": "string",
+                "minLength": 1
+              },
+              "description": "Ordinary actions."
+            },
+            "destructive": {
+              "type": "string",
+              "minLength": 1,
+              "description": "The destructive action, last."
+            }
+          }
+        },
+        "icon_action": {
+          "type": "string",
+          "minLength": 1,
+          "description": "The name of an icon-only action, shown in its tooltip."
+        }
+      }
+    },
+    "themes": {
+      "type": "array",
+      "minItems": 2,
+      "description": "Every brand × mode pair the scheme ships. Light and dark are standard for every brand.",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["id", "brand", "mode"],
+        "properties": {
+          "id": {
+            "type": "string",
+            "pattern": "^[a-z0-9-]+$",
+            "description": "Theme id.",
+            "examples": ["light", "birch-dark"]
+          },
+          "brand": {
+            "type": "string",
+            "pattern": "^[a-z0-9-]+$",
+            "description": "Brand id from tokens.brands."
+          },
+          "mode": {
+            "enum": ["light", "dark"],
+            "description": "Color mode."
+          }
+        }
+      }
+    },
+    "answers": {
+      "type": "array",
+      "minItems": 1,
+      "description": "One answer for every grammar question.",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["question", "option", "why", "because"],
+        "properties": {
+          "question": {
+            "type": "string",
+            "pattern": "^[a-z]+\\.(q\\d+|roles|count|definition|values|lands)$",
+            "description": "Grammar question id."
+          },
+          "option": {
+            "type": "string",
+            "pattern": "^[a-z0-9-]+$",
+            "description": "Chosen option id."
+          },
+          "why": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 200,
+            "description": "The reason in plain words."
+          },
+          "because": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "pattern": "^[a-z]+\\.(q\\d+|roles|count|definition|values|lands)$"
+            },
+            "description": "Earlier question ids whose answers pulled this one."
+          }
+        }
+      }
+    },
+    "usage": {
+      "type": "array",
+      "minItems": 1,
+      "description": "When to use what: one rule for every grammar situation.",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["situation", "use", "not", "why", "because"],
+        "properties": {
+          "situation": {
+            "type": "string",
+            "pattern": "^[a-z0-9-]+$",
+            "description": "Grammar situation id."
+          },
+          "use": {
+            "type": "string",
+            "minLength": 1,
+            "description": "The token, component, variant or tone to use."
+          },
+          "not": {
+            "type": "string",
+            "minLength": 1,
+            "description": "The tempting wrong choice."
+          },
+          "why": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 200,
+            "description": "The reason in plain words."
+          },
+          "because": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "pattern": "^[a-z]+\\.(q\\d+|roles|count|definition|values|lands)$"
+            },
+            "description": "Question ids whose answers this rule follows from."
+          },
+          "example": {
+            "type": "string",
+            "minLength": 1,
+            "description": "Real copy that follows the rule. Voice situations always have one."
+          }
+        }
+      }
+    },
+    "tokens": {
+      "type": "object",
+      "description": "DTCG tokens in four tiers. Primitives are the raw options, steps only (colour by hue, mode and step: color.<hue>.light.<step>, color.<hue>.dark.<step>). Each brand's theme picks from them, per mode, and decides each concept's base (@). Semantics are the plain keys components read, on the same paths as the theme; a brand-dependent one points at {theme.<path>}, which the build resolves to the active brand and mode. Only semantic and component keys ship as CSS variables. Component keys point to semantics. content holds the voice scope's words.",
+      "additionalProperties": false,
+      "required": ["primitive", "brands", "semantic", "component", "content"],
+      "properties": {
+        "primitive": {
+          "$ref": "#/$defs/group",
+          "description": "Raw options shared by every brand: colour hues (light ramp and dark ramp, steps only), space, size, radius, border width, font families, sizes, weights and line heights, shadows, durations, easing and opacity. Components never read them."
+        },
+        "brands": {
+          "type": "object",
+          "minProperties": 1,
+          "description": "Brands keyed by id. A single-brand scheme has one brand, 'default'. Each brand's theme picks primitives for the brand-dependent semantic keys.",
+          "additionalProperties": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": ["label", "description", "theme"],
+            "properties": {
+              "label": {
+                "type": "string",
+                "description": "Brand name."
+              },
+              "description": {
+                "type": "string",
+                "description": "The brand in one sentence."
+              },
+              "theme": {
+                "type": "object",
+                "additionalProperties": false,
+                "required": ["light", "dark"],
+                "description": "The brand's theme: the decision layer. Its tree has the same paths as the semantic keys it serves (color.action.primary.@, color.action.primary.hover), and each token picks a primitive. A concept with variants has a base, @, which each mode decides for itself. Build-time only: semantics resolve through it and it never ships as CSS variables.",
+                "properties": {
+                  "$description": {
+                    "type": "string",
+                    "description": "What this theme is."
+                  },
+                  "base": {
+                    "$ref": "#/$defs/group",
+                    "description": "Mode-free picks: font families and corners."
+                  },
+                  "light": {
+                    "$ref": "#/$defs/group",
+                    "description": "Light mode picks: colours and shadows."
+                  },
+                  "dark": {
+                    "$ref": "#/$defs/group",
+                    "description": "Dark mode picks; the same keys as light."
+                  }
+                }
+              }
+            }
+          }
+        },
+        "semantic": {
+          "$ref": "#/$defs/group",
+          "description": "The plain keys components and agents read: colour, space, size, radius, type, motion, elevation. A brand- or mode-dependent key's value is {theme.<its own path>}. A concept with variants has a base, @, beside them: color.action.primary.@ and color.action.primary.hover."
+        },
+        "component": {
+          "$ref": "#/$defs/group",
+          "description": "The component API: one key per grammar component key."
+        },
+        "content": {
+          "$ref": "#/$defs/group",
+          "description": "Voice tokens: words for common actions, $type string. Not written to CSS."
+        }
+      }
+    }
+  },
+  "$defs": {
+    "group": {
+      "type": "object",
+      "description": "A DTCG group: tokens and nested groups, with an optional $description and $type (inherited by its tokens). @ is the concept's base (default) value, beside its variants.",
+      "properties": {
+        "$description": {
+          "type": "string",
+          "description": "What the group holds."
+        },
+        "$type": {
+          "$ref": "#/$defs/token/properties/$type",
+          "description": "Type inherited by every token in the group."
+        },
+        "@": {
+          "$ref": "#/$defs/token",
+          "description": "The concept's base value, beside its variants, for example color.action.primary.@ next to color.action.primary.hover. The build drops the @ from the name: it becomes --color-action-primary. A reference names it: {color.action.primary.@}. Not used on primitives, which are steps only."
+        }
+      },
+      "patternProperties": {
+        "^[a-z0-9_-]+$": {
+          "description": "A token or a nested group.",
+          "anyOf": [
+            {
+              "$ref": "#/$defs/token"
+            },
+            {
+              "$ref": "#/$defs/group"
+            }
+          ]
+        }
+      },
+      "additionalProperties": false
+    },
+    "token": {
+      "type": "object",
+      "description": "A DTCG token. $value is a literal or a {path.to.token} reference.",
+      "required": ["$value"],
+      "additionalProperties": false,
+      "properties": {
+        "$value": {
+          "description": "The value, or a reference such as {color.blue.light.600} or {theme.color-action-primary}."
+        },
+        "$type": {
+          "enum": [
+            "color",
+            "dimension",
+            "fontFamily",
+            "fontWeight",
+            "number",
+            "duration",
+            "cubicBezier",
+            "shadow",
+            "string"
+          ],
+          "description": "DTCG token type."
+        },
+        "$description": {
+          "type": "string",
+          "description": "What the token is for."
+        }
+      }
+    },
+    "output": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["text", "follows"],
+      "description": "Written text that is an output of answers, never an input.",
+      "properties": {
+        "text": {
+          "type": "string",
+          "minLength": 1,
+          "description": "The text itself."
+        },
+        "follows": {
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "type": "string",
+            "pattern": "^[a-z]+\\.(q\\d+|roles|count|definition|values|lands)$"
+          },
+          "description": "Question ids whose answers this text was written from."
+        }
+      }
+    }
+  }
+}

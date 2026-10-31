@@ -1,0 +1,3903 @@
+{
+  "$schema": "../schema/grammar.schema.json",
+  "id": "open-ds-grammar",
+  "version": "0.1.0",
+  "status": "draft",
+  "description": "The Open DS grammar: a finite set of questions a design system must answer. Reasons come first (business, people, content, tasks, human factors, outcomes, brand, use scenarios, team). Scopes follow, from typography to voice and tone. Every scope answers the same five method questions (roles, how many, how defined, values, lands in) and has the same parts: the tokens it owns, the components it lands in and its situations. Each scheme answers every question, and each answer says why and which earlier answers it follows from. Situations are the moments where people need to know what to use; each scheme answers them too. Component keys are the shared component API every scheme fills.",
+  "ai": {
+    "use_when": "You need the list of questions behind a design system, or the meaning of a question id such as typography.definition or a situation id such as number-in-table.",
+    "how_to_read": "Reasons are answered first. A scope answer lists in 'because' the answers that pulled it. Scope question ids are <scope>.<method>, so typography.values and voice.values answer the same kind of question. Tokens follow from the answers. Components read only component keys. Written text in a scheme (voice, scenarios) lists in 'follows' the answers it was written from."
+  },
+  "layers": [
+    {
+      "id": "reasons",
+      "description": "Why the system exists: product, people, content, tasks, human factors, outcomes, brand, use scenarios, team."
+    },
+    {
+      "id": "scopes",
+      "description": "The design decisions: typography, color, spacing, shape, elevation, motion, iconography, theming, accessibility, naming, voice and tone, components. Each answers the five method questions."
+    },
+    {
+      "id": "tokens",
+      "description": "Primitives are the options. Semantics are the decisions, in light and dark. Brands and modes are themes."
+    },
+    {
+      "id": "component-api",
+      "description": "One key per component element, variant and state. Every scheme fills every key."
+    }
+  ],
+  "methods": [
+    {
+      "id": "roles",
+      "title": "Roles",
+      "description": "Which roles the scope needs. Each role becomes a group of decisions."
+    },
+    {
+      "id": "count",
+      "title": "How many",
+      "description": "How many steps, levels or variants each role gets."
+    },
+    {
+      "id": "definition",
+      "title": "How defined",
+      "description": "The rule that produces the values: a scale, a base unit, a style or a policy."
+    },
+    {
+      "id": "values",
+      "title": "Values",
+      "description": "Where the values sit, as a word. The exact values live in the tokens."
+    },
+    {
+      "id": "lands",
+      "title": "Lands in",
+      "description": "Where the scope does its most visible work in the product."
+    }
+  ],
+  "reasons": [
+    {
+      "id": "business",
+      "kind": "reason",
+      "title": "Business and product",
+      "description": "Why the product exists and what it does for the business. It frames every later answer.",
+      "questions": [
+        {
+          "id": "business.q1",
+          "text": "What does the product do for the business?",
+          "description": "The main job of the product. Operating tools, publishing, selling and public services pull the system in different directions.",
+          "options": [
+            {
+              "id": "operate",
+              "label": "Runs daily operations"
+            },
+            {
+              "id": "inform",
+              "label": "Informs and publishes"
+            },
+            {
+              "id": "convert",
+              "label": "Sells and converts"
+            },
+            {
+              "id": "serve-public",
+              "label": "Serves the public"
+            }
+          ]
+        },
+        {
+          "id": "business.q2",
+          "text": "How many brands or products share the system?",
+          "description": "One brand keeps the system small. Many brands need a theming layer.",
+          "options": [
+            {
+              "id": "one",
+              "label": "One"
+            },
+            {
+              "id": "few",
+              "label": "A few"
+            },
+            {
+              "id": "many",
+              "label": "Many"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "people",
+      "kind": "reason",
+      "title": "People and work context",
+      "description": "Who uses the product, how often and with what abilities.",
+      "questions": [
+        {
+          "id": "people.q1",
+          "text": "Who uses it most?",
+          "description": "The main audience. Experts learn an interface; occasional visitors must understand it at first sight.",
+          "options": [
+            {
+              "id": "experts",
+              "label": "Daily experts"
+            },
+            {
+              "id": "occasional",
+              "label": "Occasional visitors"
+            },
+            {
+              "id": "everyone",
+              "label": "Everyone, including people with disabilities"
+            },
+            {
+              "id": "customers",
+              "label": "Customers who choose us"
+            }
+          ]
+        },
+        {
+          "id": "people.q2",
+          "text": "What accessibility level do we commit to?",
+          "description": "The accessibility promise. It sets floors for contrast, targets and states.",
+          "options": [
+            {
+              "id": "aa",
+              "label": "AA"
+            },
+            {
+              "id": "aa-plus",
+              "label": "AA, with AAA where it is cheap"
+            },
+            {
+              "id": "aaa",
+              "label": "AAA"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "content",
+      "kind": "reason",
+      "title": "Content and data",
+      "description": "What fills the screen.",
+      "questions": [
+        {
+          "id": "content.q1",
+          "text": "What is the main content?",
+          "description": "Numbers, long text, forms and media each need different type, spacing and color.",
+          "options": [
+            {
+              "id": "numbers",
+              "label": "Numbers and records"
+            },
+            {
+              "id": "long-text",
+              "label": "Long-form text"
+            },
+            {
+              "id": "forms",
+              "label": "Forms and tasks"
+            },
+            {
+              "id": "media",
+              "label": "Images and campaigns"
+            }
+          ]
+        },
+        {
+          "id": "content.q2",
+          "text": "How much is on one screen?",
+          "description": "Information density. It drives spacing, type size and how groups separate.",
+          "options": [
+            {
+              "id": "a-lot",
+              "label": "A lot"
+            },
+            {
+              "id": "moderate",
+              "label": "A moderate amount"
+            },
+            {
+              "id": "one-idea",
+              "label": "One idea at a time"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "tasks",
+      "kind": "reason",
+      "title": "Tasks and flows",
+      "description": "What people do with the content.",
+      "questions": [
+        {
+          "id": "tasks.q1",
+          "text": "What is the main task?",
+          "description": "The task that must be fastest. Comparing, reading, completing and exploring need different layouts.",
+          "options": [
+            {
+              "id": "compare",
+              "label": "Scan and compare"
+            },
+            {
+              "id": "read",
+              "label": "Read start to end"
+            },
+            {
+              "id": "complete",
+              "label": "Complete a form"
+            },
+            {
+              "id": "explore",
+              "label": "Browse and explore"
+            }
+          ]
+        },
+        {
+          "id": "tasks.q2",
+          "text": "How often do people repeat actions?",
+          "description": "Repetition. Frequent actions must be quiet and fast; rare ones can be explicit.",
+          "options": [
+            {
+              "id": "constantly",
+              "label": "Constantly"
+            },
+            {
+              "id": "sometimes",
+              "label": "Sometimes"
+            },
+            {
+              "id": "rarely",
+              "label": "Rarely"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "human",
+      "kind": "reason",
+      "title": "Human factors",
+      "description": "Attention, memory and effort.",
+      "questions": [
+        {
+          "id": "human.q1",
+          "text": "What must the interface protect?",
+          "description": "The scarce human resource on this product.",
+          "options": [
+            {
+              "id": "place",
+              "label": "People keep their place"
+            },
+            {
+              "id": "attention",
+              "label": "Attention on the content"
+            },
+            {
+              "id": "effort",
+              "label": "Low effort to understand"
+            },
+            {
+              "id": "delight",
+              "label": "Delight"
+            }
+          ]
+        },
+        {
+          "id": "human.q2",
+          "text": "How do people recall the interface?",
+          "description": "Learned interfaces can rely on recognition. Fresh visits need explicit labels.",
+          "options": [
+            {
+              "id": "learned",
+              "label": "They learn it and recognise it"
+            },
+            {
+              "id": "fresh",
+              "label": "They see it fresh each time"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "outcomes",
+      "kind": "reason",
+      "title": "Outcomes",
+      "description": "What success looks like and what failure costs.",
+      "questions": [
+        {
+          "id": "outcomes.q1",
+          "text": "Which outcome matters most?",
+          "description": "The measure the system optimises for.",
+          "options": [
+            {
+              "id": "time-on-task",
+              "label": "Time on task"
+            },
+            {
+              "id": "reading-comfort",
+              "label": "Reading comfort"
+            },
+            {
+              "id": "completion",
+              "label": "Completion without errors"
+            },
+            {
+              "id": "engagement",
+              "label": "Engagement"
+            }
+          ]
+        },
+        {
+          "id": "outcomes.q2",
+          "text": "What is a costly mistake?",
+          "description": "The error the system must make hard.",
+          "options": [
+            {
+              "id": "wrong-record",
+              "label": "Acting on the wrong record"
+            },
+            {
+              "id": "lost-place",
+              "label": "Losing your place"
+            },
+            {
+              "id": "failed-task",
+              "label": "A task that fails"
+            },
+            {
+              "id": "off-brand",
+              "label": "Looking off-brand"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "brand",
+      "kind": "reason",
+      "title": "Brand",
+      "description": "How the brand should feel in the interface.",
+      "questions": [
+        {
+          "id": "brand.q1",
+          "text": "What should the brand feel like?",
+          "description": "The feeling the interface carries.",
+          "options": [
+            {
+              "id": "precise",
+              "label": "Precise"
+            },
+            {
+              "id": "warm",
+              "label": "Warm"
+            },
+            {
+              "id": "calm-clear",
+              "label": "Calm and clear"
+            },
+            {
+              "id": "neutral",
+              "label": "Neutral and adaptable"
+            },
+            {
+              "id": "bold",
+              "label": "Bold"
+            }
+          ]
+        },
+        {
+          "id": "brand.q2",
+          "text": "How visible is the brand in the interface?",
+          "description": "How much brand expression the product carries.",
+          "options": [
+            {
+              "id": "quiet",
+              "label": "Quiet"
+            },
+            {
+              "id": "present",
+              "label": "Present"
+            },
+            {
+              "id": "loud",
+              "label": "Loud"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "scenarios",
+      "kind": "reason",
+      "title": "Use scenarios",
+      "description": "Where and for how long people use the product. Written scenarios follow from these answers.",
+      "questions": [
+        {
+          "id": "scenarios.q1",
+          "text": "Where do people use it?",
+          "description": "The place and device. A desk with a mouse, a phone on the move, or anything at all.",
+          "options": [
+            {
+              "id": "desk",
+              "label": "At a desk"
+            },
+            {
+              "id": "on-the-move",
+              "label": "On the move"
+            },
+            {
+              "id": "anywhere",
+              "label": "Anywhere, on any device"
+            }
+          ]
+        },
+        {
+          "id": "scenarios.q2",
+          "text": "How long is one visit?",
+          "description": "Session length. All-day use rewards learning; short visits must work at first sight.",
+          "options": [
+            {
+              "id": "all-day",
+              "label": "All day"
+            },
+            {
+              "id": "one-sitting",
+              "label": "One sitting"
+            },
+            {
+              "id": "short",
+              "label": "A few minutes"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "team",
+      "kind": "reason",
+      "title": "Team and delivery",
+      "description": "Who keeps the system right, and how fast it changes.",
+      "questions": [
+        {
+          "id": "team.q1",
+          "text": "Who maintains the system?",
+          "description": "Team size limits how many tokens and variants can stay correct.",
+          "options": [
+            {
+              "id": "small",
+              "label": "A small team"
+            },
+            {
+              "id": "platform",
+              "label": "A platform team"
+            },
+            {
+              "id": "agency",
+              "label": "An agency"
+            }
+          ]
+        },
+        {
+          "id": "team.q2",
+          "text": "How fast does it change?",
+          "description": "Change rate. Fast change needs a stable component API and a flexible theme.",
+          "options": [
+            {
+              "id": "stable",
+              "label": "Rarely"
+            },
+            {
+              "id": "monthly",
+              "label": "Every month"
+            },
+            {
+              "id": "campaign",
+              "label": "Every campaign"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "scopes": [
+    {
+      "id": "typography",
+      "kind": "scope",
+      "title": "Typography",
+      "description": "How text is set: roles, sizes and line height.",
+      "owns": [
+        "type"
+      ],
+      "lands_in": [
+        "button",
+        "input",
+        "badge",
+        "table"
+      ],
+      "situations": [
+        "page-title",
+        "number-in-table",
+        "paragraph",
+        "field-label"
+      ],
+      "questions": [
+        {
+          "id": "typography.roles",
+          "method": "roles",
+          "text": "Which text roles does it need?",
+          "description": "The set of text roles. Each role becomes a type decision.",
+          "options": [
+            {
+              "id": "core",
+              "label": "Core: heading, body, label"
+            },
+            {
+              "id": "core-data",
+              "label": "Core and data"
+            },
+            {
+              "id": "core-editorial",
+              "label": "Core and editorial display"
+            },
+            {
+              "id": "core-expressive",
+              "label": "Core and expressive display"
+            }
+          ]
+        },
+        {
+          "id": "typography.count",
+          "method": "count",
+          "text": "How many steps does the type scale take?",
+          "description": "Few sizes keep a dense screen calm. More sizes give long pages a clear hierarchy.",
+          "options": [
+            {
+              "id": "few",
+              "label": "Only the steps the screens need",
+              "description": "The scale keeps the few sizes the screens use, and nothing in between."
+            },
+            {
+              "id": "some",
+              "label": "One step per kind of text",
+              "description": "One size each for caption, body, heading, title and display."
+            },
+            {
+              "id": "many",
+              "label": "Fine steps, so pages can set their own rhythm",
+              "description": "Many close sizes, so a page can tune its hierarchy and pace."
+            }
+          ]
+        },
+        {
+          "id": "typography.definition",
+          "method": "definition",
+          "text": "How are sizes and line heights defined?",
+          "description": "A ratio scale with line heights on the grid, a ratio scale with proportional line heights, or fixed steps.",
+          "options": [
+            {
+              "id": "ratio-grid",
+              "label": "A ratio, line heights on the grid"
+            },
+            {
+              "id": "ratio-proportional",
+              "label": "A ratio, line heights in proportion"
+            },
+            {
+              "id": "fixed",
+              "label": "Fixed steps"
+            }
+          ]
+        },
+        {
+          "id": "typography.values",
+          "method": "values",
+          "text": "How large is body text?",
+          "description": "Body size relative to the usual default.",
+          "options": [
+            {
+              "id": "small",
+              "label": "Small"
+            },
+            {
+              "id": "regular",
+              "label": "Regular"
+            },
+            {
+              "id": "large",
+              "label": "Large"
+            }
+          ]
+        },
+        {
+          "id": "typography.lands",
+          "method": "lands",
+          "text": "Where does type do the most work?",
+          "description": "The place where type decisions matter most.",
+          "options": [
+            {
+              "id": "tables-inputs",
+              "label": "Tables and inputs"
+            },
+            {
+              "id": "articles",
+              "label": "Articles and long text"
+            },
+            {
+              "id": "forms",
+              "label": "Forms and labels"
+            },
+            {
+              "id": "headlines",
+              "label": "Headlines and hero"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "color",
+      "kind": "scope",
+      "title": "Color",
+      "description": "How color carries action, state and brand.",
+      "owns": [
+        "color"
+      ],
+      "lands_in": [
+        "button",
+        "input",
+        "control",
+        "badge",
+        "card",
+        "table",
+        "tabs",
+        "overlay"
+      ],
+      "situations": [
+        "selected-row",
+        "error-message",
+        "link",
+        "status-label",
+        "commit-action",
+        "alternative-action",
+        "destructive-action"
+      ],
+      "questions": [
+        {
+          "id": "color.roles",
+          "method": "roles",
+          "text": "Which color roles does it need?",
+          "description": "The groups of color decisions.",
+          "options": [
+            {
+              "id": "core",
+              "label": "Surface, text, action and status"
+            },
+            {
+              "id": "core-brand",
+              "label": "Those and brand accents"
+            }
+          ]
+        },
+        {
+          "id": "color.count",
+          "method": "count",
+          "text": "How many emphasis levels do actions need?",
+          "description": "The number of action styles, from primary to quiet.",
+          "options": [
+            {
+              "id": "two",
+              "label": "Two"
+            },
+            {
+              "id": "three",
+              "label": "Three"
+            },
+            {
+              "id": "four",
+              "label": "Four"
+            }
+          ]
+        },
+        {
+          "id": "color.definition",
+          "method": "definition",
+          "text": "How is the palette defined?",
+          "description": "Neutrals and one brand ramp, or a shared base with a ramp per brand.",
+          "options": [
+            {
+              "id": "neutral-brand",
+              "label": "Neutrals and one brand ramp"
+            },
+            {
+              "id": "ramp-per-brand",
+              "label": "Shared neutrals, a ramp per brand"
+            }
+          ]
+        },
+        {
+          "id": "color.values",
+          "method": "values",
+          "text": "How saturated is the palette?",
+          "description": "Overall color intensity.",
+          "options": [
+            {
+              "id": "muted",
+              "label": "Muted"
+            },
+            {
+              "id": "balanced",
+              "label": "Balanced"
+            },
+            {
+              "id": "vivid",
+              "label": "Vivid"
+            }
+          ]
+        },
+        {
+          "id": "color.lands",
+          "method": "lands",
+          "text": "Where does color carry meaning first?",
+          "description": "The place where color does its most important job.",
+          "options": [
+            {
+              "id": "status",
+              "label": "Status in tables"
+            },
+            {
+              "id": "links-actions",
+              "label": "Links and actions"
+            },
+            {
+              "id": "brand-moments",
+              "label": "Brand moments"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "spacing",
+      "kind": "scope",
+      "title": "Spacing",
+      "description": "How space shows what belongs together.",
+      "owns": [
+        "space",
+        "size.row"
+      ],
+      "lands_in": [
+        "button",
+        "input",
+        "badge",
+        "card",
+        "table"
+      ],
+      "situations": [
+        "related-items",
+        "between-sections",
+        "table-row"
+      ],
+      "questions": [
+        {
+          "id": "spacing.roles",
+          "method": "roles",
+          "text": "Which spacing roles does it need?",
+          "description": "The groups of space decisions.",
+          "options": [
+            {
+              "id": "gap-inset",
+              "label": "Gaps and insets"
+            },
+            {
+              "id": "gap-inset-row",
+              "label": "Gaps, insets and row heights"
+            }
+          ]
+        },
+        {
+          "id": "spacing.count",
+          "method": "count",
+          "text": "How many densities exist?",
+          "description": "One density for everything, or a second for dense views.",
+          "options": [
+            {
+              "id": "one",
+              "label": "One"
+            },
+            {
+              "id": "two",
+              "label": "Two"
+            }
+          ]
+        },
+        {
+          "id": "spacing.definition",
+          "method": "definition",
+          "text": "How are spacing steps defined?",
+          "description": "A fine base unit gives small steps for dense screens; a coarse one gives big, even steps.",
+          "options": [
+            {
+              "id": "fine",
+              "label": "A fine base unit"
+            },
+            {
+              "id": "coarse",
+              "label": "A coarse base unit"
+            }
+          ]
+        },
+        {
+          "id": "spacing.values",
+          "method": "values",
+          "text": "How dense is the layout?",
+          "description": "The base density.",
+          "options": [
+            {
+              "id": "compact",
+              "label": "Compact"
+            },
+            {
+              "id": "comfortable",
+              "label": "Comfortable"
+            },
+            {
+              "id": "spacious",
+              "label": "Spacious"
+            }
+          ]
+        },
+        {
+          "id": "spacing.lands",
+          "method": "lands",
+          "text": "Where does spacing matter most?",
+          "description": "The place where space does its most visible work.",
+          "options": [
+            {
+              "id": "rows-cells",
+              "label": "Rows and cells"
+            },
+            {
+              "id": "reading",
+              "label": "Between paragraphs"
+            },
+            {
+              "id": "fields",
+              "label": "Between fields"
+            },
+            {
+              "id": "sections",
+              "label": "Between big sections"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "shape",
+      "kind": "scope",
+      "title": "Shape",
+      "description": "Corners and borders.",
+      "owns": [
+        "radius",
+        "border-width"
+      ],
+      "lands_in": [
+        "button",
+        "input",
+        "control",
+        "badge",
+        "card",
+        "overlay"
+      ],
+      "situations": [
+        "control-corner",
+        "status-shape"
+      ],
+      "questions": [
+        {
+          "id": "shape.roles",
+          "method": "roles",
+          "text": "Which shape roles does it need?",
+          "description": "The elements that get their own corner.",
+          "options": [
+            {
+              "id": "control-container",
+              "label": "Controls and containers"
+            },
+            {
+              "id": "control-badge-container",
+              "label": "Controls, badges and containers"
+            }
+          ]
+        },
+        {
+          "id": "shape.count",
+          "method": "count",
+          "text": "How many corner sizes exist?",
+          "description": "How many different corners appear.",
+          "options": [
+            {
+              "id": "two",
+              "label": "Two"
+            },
+            {
+              "id": "three",
+              "label": "Three"
+            }
+          ]
+        },
+        {
+          "id": "shape.definition",
+          "method": "definition",
+          "text": "How are corners set?",
+          "description": "One fixed set for the product, or a set per brand.",
+          "options": [
+            {
+              "id": "fixed",
+              "label": "Fixed for the product"
+            },
+            {
+              "id": "per-brand",
+              "label": "Set by each brand"
+            }
+          ]
+        },
+        {
+          "id": "shape.values",
+          "method": "values",
+          "text": "What should control corners say?",
+          "description": "The corner of buttons and inputs.",
+          "options": [
+            {
+              "id": "sharp",
+              "label": "Sharp"
+            },
+            {
+              "id": "slightly-rounded",
+              "label": "Slightly rounded"
+            },
+            {
+              "id": "rounded",
+              "label": "Rounded"
+            },
+            {
+              "id": "pill",
+              "label": "Pill"
+            }
+          ]
+        },
+        {
+          "id": "shape.lands",
+          "method": "lands",
+          "text": "Where does shape show most?",
+          "description": "The place where corners are seen most.",
+          "options": [
+            {
+              "id": "controls",
+              "label": "Controls in dense rows"
+            },
+            {
+              "id": "controls-cards",
+              "label": "Controls and cards"
+            },
+            {
+              "id": "buttons-badges",
+              "label": "Buttons and badges"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "elevation",
+      "kind": "scope",
+      "title": "Elevation",
+      "description": "When something rises above the page, and what separates groups.",
+      "owns": [
+        "elevation"
+      ],
+      "lands_in": [
+        "card",
+        "overlay"
+      ],
+      "situations": [
+        "card",
+        "menu-or-dialog"
+      ],
+      "questions": [
+        {
+          "id": "elevation.roles",
+          "method": "roles",
+          "text": "What rises above the page?",
+          "description": "The layers that get a shadow.",
+          "options": [
+            {
+              "id": "floating-only",
+              "label": "Only what floats"
+            },
+            {
+              "id": "cards-too",
+              "label": "Cards too"
+            },
+            {
+              "id": "nothing",
+              "label": "Nothing"
+            }
+          ]
+        },
+        {
+          "id": "elevation.count",
+          "method": "count",
+          "text": "How many shadow levels exist?",
+          "description": "The number of distinct shadows.",
+          "options": [
+            {
+              "id": "none",
+              "label": "None"
+            },
+            {
+              "id": "one",
+              "label": "One"
+            },
+            {
+              "id": "two",
+              "label": "Two"
+            }
+          ]
+        },
+        {
+          "id": "elevation.definition",
+          "method": "definition",
+          "text": "What separates groups on the page?",
+          "description": "The device that tells the eye a new group starts.",
+          "options": [
+            {
+              "id": "space",
+              "label": "Space"
+            },
+            {
+              "id": "lines",
+              "label": "Lines"
+            },
+            {
+              "id": "cards",
+              "label": "Cards"
+            }
+          ]
+        },
+        {
+          "id": "elevation.values",
+          "method": "values",
+          "text": "How soft are shadows?",
+          "description": "Shadow character.",
+          "options": [
+            {
+              "id": "none",
+              "label": "No shadows"
+            },
+            {
+              "id": "subtle",
+              "label": "Subtle"
+            },
+            {
+              "id": "soft",
+              "label": "Soft"
+            },
+            {
+              "id": "pronounced",
+              "label": "Pronounced"
+            }
+          ]
+        },
+        {
+          "id": "elevation.lands",
+          "method": "lands",
+          "text": "Where does elevation show?",
+          "description": "The place where layering is seen.",
+          "options": [
+            {
+              "id": "menus-dialogs",
+              "label": "Menus and dialogs"
+            },
+            {
+              "id": "cards-menus",
+              "label": "Cards, menus and dialogs"
+            },
+            {
+              "id": "dialogs-only",
+              "label": "Dialogs only"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "motion",
+      "kind": "scope",
+      "title": "Motion",
+      "description": "What moves, why and how fast.",
+      "owns": [
+        "motion"
+      ],
+      "lands_in": [
+        "transition"
+      ],
+      "situations": [
+        "hover-feedback",
+        "reduced-motion"
+      ],
+      "questions": [
+        {
+          "id": "motion.roles",
+          "method": "roles",
+          "text": "What is motion for?",
+          "description": "The jobs motion does.",
+          "options": [
+            {
+              "id": "feedback",
+              "label": "Feedback only"
+            },
+            {
+              "id": "feedback-guidance",
+              "label": "Feedback and guidance"
+            },
+            {
+              "id": "expression",
+              "label": "Feedback and expression"
+            }
+          ]
+        },
+        {
+          "id": "motion.count",
+          "method": "count",
+          "text": "How many speeds exist?",
+          "description": "The number of distinct durations.",
+          "options": [
+            {
+              "id": "one",
+              "label": "One"
+            },
+            {
+              "id": "two",
+              "label": "Two"
+            },
+            {
+              "id": "three",
+              "label": "Three"
+            }
+          ]
+        },
+        {
+          "id": "motion.definition",
+          "method": "definition",
+          "text": "How is easing defined?",
+          "description": "A standard ease-out, or a spring that overshoots.",
+          "options": [
+            {
+              "id": "standard",
+              "label": "Standard ease-out"
+            },
+            {
+              "id": "spring",
+              "label": "A spring"
+            }
+          ]
+        },
+        {
+          "id": "motion.values",
+          "method": "values",
+          "text": "How fast does feedback feel?",
+          "description": "Speed as a word. The convention behind each word is in the primitives.",
+          "options": [
+            {
+              "id": "fast",
+              "label": "Fast"
+            },
+            {
+              "id": "moderate",
+              "label": "Moderate"
+            },
+            {
+              "id": "relaxed",
+              "label": "Relaxed"
+            }
+          ]
+        },
+        {
+          "id": "motion.lands",
+          "method": "lands",
+          "text": "Where does motion show?",
+          "description": "The place where motion is seen.",
+          "options": [
+            {
+              "id": "state-only",
+              "label": "State changes only"
+            },
+            {
+              "id": "state-panels",
+              "label": "State changes and panels"
+            },
+            {
+              "id": "hero",
+              "label": "Hero and launch moments"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "iconography",
+      "kind": "scope",
+      "title": "Iconography",
+      "description": "When icons appear and how they look.",
+      "owns": [
+        "size.icon"
+      ],
+      "lands_in": [
+        "button"
+      ],
+      "situations": [
+        "icon-alone",
+        "row-action"
+      ],
+      "questions": [
+        {
+          "id": "iconography.roles",
+          "method": "roles",
+          "text": "What do icons do?",
+          "description": "The jobs icons carry.",
+          "options": [
+            {
+              "id": "actions-status",
+              "label": "Actions and status"
+            },
+            {
+              "id": "actions-status-nav",
+              "label": "Actions, status and navigation"
+            },
+            {
+              "id": "decoration-too",
+              "label": "Those and decoration"
+            }
+          ]
+        },
+        {
+          "id": "iconography.count",
+          "method": "count",
+          "text": "How many icon sizes exist?",
+          "description": "The number of icon sizes.",
+          "options": [
+            {
+              "id": "one",
+              "label": "One"
+            },
+            {
+              "id": "two",
+              "label": "Two"
+            }
+          ]
+        },
+        {
+          "id": "iconography.definition",
+          "method": "definition",
+          "text": "What icon style?",
+          "description": "Stroke or fill.",
+          "options": [
+            {
+              "id": "outline",
+              "label": "Outline"
+            },
+            {
+              "id": "filled",
+              "label": "Filled"
+            },
+            {
+              "id": "duotone",
+              "label": "Two-tone"
+            }
+          ]
+        },
+        {
+          "id": "iconography.values",
+          "method": "values",
+          "text": "How big are icons next to text?",
+          "description": "Icon size relative to text.",
+          "options": [
+            {
+              "id": "match-text",
+              "label": "Match the text"
+            },
+            {
+              "id": "larger",
+              "label": "Larger than the text"
+            }
+          ]
+        },
+        {
+          "id": "iconography.lands",
+          "method": "lands",
+          "text": "Where do icons work hardest?",
+          "description": "The place where icons are seen most.",
+          "options": [
+            {
+              "id": "toolbars-rows",
+              "label": "Toolbars and rows"
+            },
+            {
+              "id": "status",
+              "label": "Status and messages"
+            },
+            {
+              "id": "navigation",
+              "label": "Navigation"
+            },
+            {
+              "id": "buttons",
+              "label": "Buttons and calls to action"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "theming",
+      "kind": "scope",
+      "title": "Theming",
+      "description": "Modes and brands.",
+      "owns": [
+        "theme"
+      ],
+      "lands_in": [
+        "button",
+        "card",
+        "overlay"
+      ],
+      "situations": [
+        "dark-mode"
+      ],
+      "questions": [
+        {
+          "id": "theming.roles",
+          "method": "roles",
+          "text": "What can a theme change?",
+          "description": "The axes a theme varies along.",
+          "options": [
+            {
+              "id": "mode",
+              "label": "Mode only"
+            },
+            {
+              "id": "mode-brand",
+              "label": "Mode and brand"
+            },
+            {
+              "id": "mode-contrast",
+              "label": "Mode and contrast"
+            }
+          ]
+        },
+        {
+          "id": "theming.count",
+          "method": "count",
+          "text": "How many themes ship?",
+          "description": "Brands times modes.",
+          "options": [
+            {
+              "id": "two",
+              "label": "Two"
+            },
+            {
+              "id": "several",
+              "label": "Several"
+            }
+          ]
+        },
+        {
+          "id": "theming.definition",
+          "method": "definition",
+          "text": "How are brands handled?",
+          "description": "Single brand, or brands as theme modes over shared semantics.",
+          "options": [
+            {
+              "id": "single",
+              "label": "One brand"
+            },
+            {
+              "id": "brand-modes",
+              "label": "Brands as modes"
+            }
+          ]
+        },
+        {
+          "id": "theming.values",
+          "method": "values",
+          "text": "Which modes ship?",
+          "description": "The modes the semantic layer carries. Light and dark are standard.",
+          "options": [
+            {
+              "id": "light-dark",
+              "label": "Light and dark"
+            },
+            {
+              "id": "light-dark-contrast",
+              "label": "Light, dark and high contrast"
+            }
+          ]
+        },
+        {
+          "id": "theming.lands",
+          "method": "lands",
+          "text": "What changes when the theme changes?",
+          "description": "The decisions a theme switch touches.",
+          "options": [
+            {
+              "id": "colors",
+              "label": "Colors only"
+            },
+            {
+              "id": "colors-type-shape",
+              "label": "Colors, type and shape"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "accessibility",
+      "kind": "scope",
+      "title": "Accessibility",
+      "description": "Floors the system must hold.",
+      "owns": [
+        "size.control",
+        "opacity",
+        "color.border.focus"
+      ],
+      "lands_in": [
+        "button",
+        "input",
+        "overlay"
+      ],
+      "situations": [
+        "keyboard-focus",
+        "smallest-target"
+      ],
+      "questions": [
+        {
+          "id": "accessibility.roles",
+          "method": "roles",
+          "text": "Which states get their own visible value?",
+          "description": "States with a distinct look.",
+          "options": [
+            {
+              "id": "hover-focus-disabled",
+              "label": "Hover, focus, disabled"
+            },
+            {
+              "id": "plus-pressed",
+              "label": "Those and pressed"
+            },
+            {
+              "id": "all",
+              "label": "All, including loading"
+            }
+          ]
+        },
+        {
+          "id": "accessibility.count",
+          "method": "count",
+          "text": "How many signals carry each meaning?",
+          "description": "Whether status relies on color alone or also on icons and words.",
+          "options": [
+            {
+              "id": "color-word",
+              "label": "Two: color and word"
+            },
+            {
+              "id": "color-icon-word",
+              "label": "Three: color, icon and word"
+            }
+          ]
+        },
+        {
+          "id": "accessibility.definition",
+          "method": "definition",
+          "text": "What contrast floor do we hold?",
+          "description": "Contrast commitment for text.",
+          "options": [
+            {
+              "id": "aa",
+              "label": "AA"
+            },
+            {
+              "id": "aaa-text",
+              "label": "AAA for text"
+            }
+          ]
+        },
+        {
+          "id": "accessibility.values",
+          "method": "values",
+          "text": "What is the smallest target?",
+          "description": "The smallest clickable size.",
+          "options": [
+            {
+              "id": "pointer",
+              "label": "Compact, for a pointer"
+            },
+            {
+              "id": "touch",
+              "label": "Touch size"
+            },
+            {
+              "id": "large",
+              "label": "Large"
+            }
+          ]
+        },
+        {
+          "id": "accessibility.lands",
+          "method": "lands",
+          "text": "Where are the floors hardest to hold?",
+          "description": "The place where accessibility needs the most care.",
+          "options": [
+            {
+              "id": "dense-tables",
+              "label": "Dense tables"
+            },
+            {
+              "id": "long-text",
+              "label": "Long text"
+            },
+            {
+              "id": "forms",
+              "label": "Forms"
+            },
+            {
+              "id": "brand-color",
+              "label": "Brand color"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "naming",
+      "kind": "scope",
+      "title": "Naming",
+      "description": "How tokens and keys are named.",
+      "owns": [
+        "component"
+      ],
+      "lands_in": [
+        "button",
+        "input",
+        "control",
+        "badge",
+        "card",
+        "table",
+        "tabs",
+        "overlay",
+        "transition"
+      ],
+      "situations": [
+        "missing-token"
+      ],
+      "questions": [
+        {
+          "id": "naming.roles",
+          "method": "roles",
+          "text": "What gets a name?",
+          "description": "Tokens only, or tokens and a component API.",
+          "options": [
+            {
+              "id": "tokens",
+              "label": "Tokens"
+            },
+            {
+              "id": "tokens-keys",
+              "label": "Tokens and component keys"
+            }
+          ]
+        },
+        {
+          "id": "naming.count",
+          "method": "count",
+          "text": "How many token tiers?",
+          "description": "Primitives and semantics, or also component keys.",
+          "options": [
+            {
+              "id": "two",
+              "label": "Two"
+            },
+            {
+              "id": "three",
+              "label": "Three"
+            }
+          ]
+        },
+        {
+          "id": "naming.definition",
+          "method": "definition",
+          "text": "How are decisions named?",
+          "description": "Role names survive change; component names are local.",
+          "options": [
+            {
+              "id": "by-role",
+              "label": "By role"
+            },
+            {
+              "id": "by-component",
+              "label": "By component"
+            }
+          ]
+        },
+        {
+          "id": "naming.values",
+          "method": "values",
+          "text": "How are names written?",
+          "description": "The spelling of every name.",
+          "options": [
+            {
+              "id": "kebab-paths",
+              "label": "Lowercase words in paths"
+            },
+            {
+              "id": "camel",
+              "label": "camelCase"
+            }
+          ]
+        },
+        {
+          "id": "naming.lands",
+          "method": "lands",
+          "text": "What do components read?",
+          "description": "A component API: one key per element, variant and state.",
+          "options": [
+            {
+              "id": "keys",
+              "label": "Component keys"
+            },
+            {
+              "id": "semantic",
+              "label": "Semantic tokens"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "voice",
+      "kind": "scope",
+      "title": "Voice and tone",
+      "description": "How the product speaks: the words in every component.",
+      "owns": [
+        "content"
+      ],
+      "lands_in": [
+        "button",
+        "input",
+        "overlay",
+        "table"
+      ],
+      "situations": [
+        "button-label",
+        "error-words",
+        "success-words",
+        "empty-words",
+        "confirm-words",
+        "first-visit"
+      ],
+      "questions": [
+        {
+          "id": "voice.roles",
+          "method": "roles",
+          "text": "Which kinds of copy does it need?",
+          "description": "The groups of words the product writes.",
+          "options": [
+            {
+              "id": "ui",
+              "label": "Labels and messages"
+            },
+            {
+              "id": "ui-help",
+              "label": "Labels, messages and help"
+            },
+            {
+              "id": "ui-editorial",
+              "label": "Labels, messages and articles"
+            },
+            {
+              "id": "ui-marketing",
+              "label": "Labels, messages and headlines"
+            }
+          ]
+        },
+        {
+          "id": "voice.count",
+          "method": "count",
+          "text": "How many tones does it use?",
+          "description": "One tone everywhere, a tone per moment, or a shared core with a tone per brand.",
+          "options": [
+            {
+              "id": "one",
+              "label": "One"
+            },
+            {
+              "id": "per-moment",
+              "label": "One per moment"
+            },
+            {
+              "id": "per-brand",
+              "label": "One per brand"
+            }
+          ]
+        },
+        {
+          "id": "voice.definition",
+          "method": "definition",
+          "text": "How is the voice defined?",
+          "description": "The rule that keeps copy consistent.",
+          "options": [
+            {
+              "id": "word-list",
+              "label": "Rules and a word list"
+            },
+            {
+              "id": "principles",
+              "label": "Principles and examples"
+            },
+            {
+              "id": "shared-core",
+              "label": "A shared core, brand tone on top"
+            }
+          ]
+        },
+        {
+          "id": "voice.values",
+          "method": "values",
+          "text": "How does it sound?",
+          "description": "The voice as a word.",
+          "options": [
+            {
+              "id": "terse",
+              "label": "Terse"
+            },
+            {
+              "id": "plain",
+              "label": "Plain and direct"
+            },
+            {
+              "id": "conversational",
+              "label": "Conversational"
+            },
+            {
+              "id": "playful",
+              "label": "Playful"
+            }
+          ]
+        },
+        {
+          "id": "voice.lands",
+          "method": "lands",
+          "text": "Where do the words matter most?",
+          "description": "The place where copy does its most important job.",
+          "options": [
+            {
+              "id": "errors-empty",
+              "label": "Errors and empty states"
+            },
+            {
+              "id": "articles",
+              "label": "Articles and guides"
+            },
+            {
+              "id": "forms",
+              "label": "Form steps and errors"
+            },
+            {
+              "id": "headlines",
+              "label": "Headlines and buttons"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "components",
+      "kind": "scope",
+      "title": "Components",
+      "description": "Which components the system carries: its inventory, picked from the catalogue.",
+      "owns": [
+        "component"
+      ],
+      "lands_in": [
+        "button",
+        "input",
+        "control",
+        "badge",
+        "card",
+        "table",
+        "tabs",
+        "overlay"
+      ],
+      "situations": [
+        "missing-component"
+      ],
+      "questions": [
+        {
+          "id": "components.roles",
+          "method": "roles",
+          "text": "Which component families does it need?",
+          "description": "The families of the catalogue the inventory draws from. Core is action, form, feedback, overlay, layout and navigation.",
+          "options": [
+            {
+              "id": "core",
+              "label": "Actions, forms, feedback, overlays, layout and navigation"
+            },
+            {
+              "id": "core-data",
+              "label": "Core, plus data"
+            },
+            {
+              "id": "core-content",
+              "label": "Core, plus content and media"
+            },
+            {
+              "id": "core-media",
+              "label": "Core, plus media"
+            }
+          ]
+        },
+        {
+          "id": "components.count",
+          "method": "count",
+          "text": "How far does the inventory reach?",
+          "description": "The size of the inventory, as a word. The inventory follows the needs; the word describes it and sets no limit.",
+          "options": [
+            {
+              "id": "few",
+              "label": "Only what today's screens use",
+              "description": "A component joins when a screen in use needs it, not before."
+            },
+            {
+              "id": "some",
+              "label": "What today's screens use, plus what the next ones will likely need",
+              "description": "Covers the screens in use and the ones the team can see coming, so they find the parts ready."
+            },
+            {
+              "id": "many",
+              "label": "Everything its families offer, ready before it's asked for",
+              "description": "Every component the admitted families hold is there from the start, so teams never wait for one."
+            }
+          ]
+        },
+        {
+          "id": "components.definition",
+          "method": "definition",
+          "text": "How does a component earn its place?",
+          "description": "The rule that admits a component into the inventory.",
+          "options": [
+            {
+              "id": "scenario",
+              "label": "A use scenario needs it"
+            },
+            {
+              "id": "family",
+              "label": "Its family is in the roles, so product teams find it ready"
+            },
+            {
+              "id": "inclusive",
+              "label": "It works for everyone, with any device and assistive technology"
+            },
+            {
+              "id": "brand-moment",
+              "label": "It gives the brand a moment"
+            }
+          ]
+        },
+        {
+          "id": "components.values",
+          "method": "values",
+          "text": "When does a component get another look?",
+          "description": "Variants and sizes per component, as a word.",
+          "options": [
+            {
+              "id": "few",
+              "label": "Only when the meaning changes",
+              "description": "A new variant only for a different meaning, such as the main action or a danger."
+            },
+            {
+              "id": "some",
+              "label": "Also for emphasis and size",
+              "description": "Variants also set how loud a component is and how much room it takes."
+            },
+            {
+              "id": "many",
+              "label": "Also so each brand or page can look its own way",
+              "description": "Variants also let a brand or a page carry its own look on the same component."
+            }
+          ]
+        },
+        {
+          "id": "components.lands",
+          "method": "lands",
+          "text": "Where do components do the most work?",
+          "description": "The screens where the inventory is used most.",
+          "options": [
+            {
+              "id": "tables-forms",
+              "label": "Tables and forms"
+            },
+            {
+              "id": "articles",
+              "label": "Articles"
+            },
+            {
+              "id": "forms",
+              "label": "Forms and steps"
+            },
+            {
+              "id": "sign-up-account",
+              "label": "Sign-up and account pages"
+            },
+            {
+              "id": "campaign-sections",
+              "label": "Campaign sections"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "situations": [
+    {
+      "id": "page-title",
+      "scope": "typography",
+      "title": "Page title",
+      "description": "The title at the top of a page or view."
+    },
+    {
+      "id": "number-in-table",
+      "scope": "typography",
+      "title": "A number in a table",
+      "description": "A value people compare across rows."
+    },
+    {
+      "id": "paragraph",
+      "scope": "typography",
+      "title": "Paragraph or help text",
+      "description": "Running text: help, descriptions, articles."
+    },
+    {
+      "id": "field-label",
+      "scope": "typography",
+      "title": "Field label or column header",
+      "description": "The name of an input or a table column."
+    },
+    {
+      "id": "selected-row",
+      "scope": "color",
+      "title": "A selected row or item",
+      "description": "The item the user picked in a list or table."
+    },
+    {
+      "id": "error-message",
+      "scope": "color",
+      "title": "An error message",
+      "description": "Text that says something went wrong and how to fix it."
+    },
+    {
+      "id": "link",
+      "scope": "color",
+      "title": "A link",
+      "description": "Text that navigates."
+    },
+    {
+      "id": "status-label",
+      "scope": "color",
+      "title": "A status",
+      "description": "A short state such as paid, late or failed."
+    },
+    {
+      "id": "related-items",
+      "scope": "spacing",
+      "title": "Items that belong together",
+      "description": "A label and its value, or controls in one toolbar."
+    },
+    {
+      "id": "between-sections",
+      "scope": "spacing",
+      "title": "Between page sections",
+      "description": "The break between two sections of a page."
+    },
+    {
+      "id": "table-row",
+      "scope": "spacing",
+      "title": "Table row height",
+      "description": "The vertical size of one row of data."
+    },
+    {
+      "id": "control-corner",
+      "scope": "shape",
+      "title": "Corners of buttons and inputs",
+      "description": "The corner shape of interactive controls."
+    },
+    {
+      "id": "status-shape",
+      "scope": "shape",
+      "title": "Shape of a status badge",
+      "description": "The outline of a status label."
+    },
+    {
+      "id": "card",
+      "scope": "elevation",
+      "title": "A card on the page",
+      "description": "A container that groups content inside a page."
+    },
+    {
+      "id": "menu-or-dialog",
+      "scope": "elevation",
+      "title": "A menu or dialog",
+      "description": "Anything that floats above the page."
+    },
+    {
+      "id": "hover-feedback",
+      "scope": "motion",
+      "title": "Hover and press feedback",
+      "description": "The response when a pointer or finger touches a control."
+    },
+    {
+      "id": "reduced-motion",
+      "scope": "motion",
+      "title": "Someone asked for less motion",
+      "description": "The operating system setting for reduced motion is on."
+    },
+    {
+      "id": "icon-alone",
+      "scope": "iconography",
+      "title": "An icon with no label",
+      "description": "An action shown only as an icon."
+    },
+    {
+      "id": "dark-mode",
+      "scope": "theming",
+      "title": "Someone switches to dark",
+      "description": "The user or the system turns dark mode on."
+    },
+    {
+      "id": "keyboard-focus",
+      "scope": "accessibility",
+      "title": "Keyboard focus",
+      "description": "The control that keyboard input goes to."
+    },
+    {
+      "id": "smallest-target",
+      "scope": "accessibility",
+      "title": "The smallest clickable thing",
+      "description": "The minimum size of anything people can click or tap."
+    },
+    {
+      "id": "commit-action",
+      "scope": "color",
+      "title": "The action that completes the task",
+      "description": "Save, submit, pay: the step that finishes the job."
+    },
+    {
+      "id": "alternative-action",
+      "scope": "color",
+      "title": "An alternative or cancel",
+      "description": "The other way out next to the main action."
+    },
+    {
+      "id": "destructive-action",
+      "scope": "color",
+      "title": "Delete or remove",
+      "description": "An action that destroys data."
+    },
+    {
+      "id": "row-action",
+      "scope": "iconography",
+      "title": "An action on one row or item",
+      "description": "An action repeated on every row of a list."
+    },
+    {
+      "id": "missing-token",
+      "scope": "naming",
+      "title": "A value with no token",
+      "description": "You need a color, size or space that no token names."
+    },
+    {
+      "id": "button-label",
+      "scope": "voice",
+      "title": "A button label",
+      "description": "The words on a button."
+    },
+    {
+      "id": "error-words",
+      "scope": "voice",
+      "title": "The words of an error",
+      "description": "What an error message says, not how it looks."
+    },
+    {
+      "id": "success-words",
+      "scope": "voice",
+      "title": "A success message",
+      "description": "The confirmation after an action works."
+    },
+    {
+      "id": "empty-words",
+      "scope": "voice",
+      "title": "An empty state",
+      "description": "What a list or page says when it has nothing yet."
+    },
+    {
+      "id": "confirm-words",
+      "scope": "voice",
+      "title": "A confirmation question",
+      "description": "The question before something hard to undo."
+    },
+    {
+      "id": "first-visit",
+      "scope": "voice",
+      "title": "A first visit",
+      "description": "What the product says to someone new."
+    },
+    {
+      "id": "missing-component",
+      "scope": "components",
+      "title": "No component in the inventory fits",
+      "description": "You need a component this design system does not carry."
+    }
+  ],
+  "components": [
+    {
+      "id": "button",
+      "description": "Triggers an action. Variants: primary, secondary, ghost.",
+      "keys": [
+        "button/primary/background/@",
+        "button/primary/background/hover",
+        "button/primary/label",
+        "button/secondary/background/@",
+        "button/secondary/background/hover",
+        "button/secondary/label",
+        "button/secondary/border",
+        "button/ghost/background-hover",
+        "button/ghost/label",
+        "button/height",
+        "button/padding-x",
+        "button/radius",
+        "button/font-size",
+        "button/font-weight",
+        "button/focus-ring",
+        "button/icon-size",
+        "button/disabled/background",
+        "button/disabled/label",
+        "button/disabled/border"
+      ]
+    },
+    {
+      "id": "input",
+      "description": "Single-line text entry, also used by select.",
+      "keys": [
+        "input/background",
+        "input/border/@",
+        "input/border/focus",
+        "input/text",
+        "input/placeholder",
+        "input/height",
+        "input/padding-x",
+        "input/radius",
+        "input/font-size",
+        "input/disabled/background",
+        "input/disabled/border",
+        "input/disabled/text"
+      ]
+    },
+    {
+      "id": "control",
+      "description": "Shared keys for checkbox and switch.",
+      "keys": [
+        "control/checked",
+        "control/track",
+        "control/thumb",
+        "control/radius"
+      ]
+    },
+    {
+      "id": "badge",
+      "description": "Short status label.",
+      "keys": [
+        "badge/radius",
+        "badge/padding-x",
+        "badge/font-size",
+        "badge/neutral/background",
+        "badge/neutral/label",
+        "badge/info/background",
+        "badge/info/label",
+        "badge/success/background",
+        "badge/success/label",
+        "badge/warning/background",
+        "badge/warning/label",
+        "badge/danger/background",
+        "badge/danger/label"
+      ]
+    },
+    {
+      "id": "card",
+      "description": "Groups content inside a page.",
+      "keys": [
+        "card/background",
+        "card/border",
+        "card/radius",
+        "card/padding",
+        "card/shadow"
+      ]
+    },
+    {
+      "id": "table",
+      "description": "Rows of data.",
+      "keys": [
+        "table/header-background",
+        "table/row-height",
+        "table/cell-padding-x",
+        "table/row-border",
+        "table/row-selected",
+        "table/font-size"
+      ]
+    },
+    {
+      "id": "tabs",
+      "description": "Switches between views.",
+      "keys": [
+        "tabs/indicator",
+        "tabs/label/@",
+        "tabs/label/active"
+      ]
+    },
+    {
+      "id": "overlay",
+      "description": "Shared keys for dialog, menu, tooltip and toast.",
+      "keys": [
+        "overlay/background",
+        "overlay/radius",
+        "overlay/shadow",
+        "overlay/scrim",
+        "overlay/item-height",
+        "tooltip/background",
+        "tooltip/label"
+      ]
+    },
+    {
+      "id": "transition",
+      "description": "Shared transition keys for hover and press feedback.",
+      "keys": [
+        "transition/duration",
+        "transition/easing"
+      ]
+    }
+  ],
+  "component_keys": [
+    {
+      "id": "button/primary/background/@",
+      "component": "button",
+      "description": "Primary button fill.",
+      "default": "color.action.primary.@"
+    },
+    {
+      "id": "button/primary/background/hover",
+      "component": "button",
+      "description": "Primary button fill on hover.",
+      "default": "color.action.primary.hover"
+    },
+    {
+      "id": "button/primary/label",
+      "component": "button",
+      "description": "Primary button label color.",
+      "default": "color.text.on-action"
+    },
+    {
+      "id": "button/secondary/background/@",
+      "component": "button",
+      "description": "Secondary button fill.",
+      "default": "color.action.secondary.@"
+    },
+    {
+      "id": "button/secondary/background/hover",
+      "component": "button",
+      "description": "Secondary button fill on hover.",
+      "default": "color.action.secondary.hover"
+    },
+    {
+      "id": "button/secondary/label",
+      "component": "button",
+      "description": "Secondary button label color.",
+      "default": "color.text.primary"
+    },
+    {
+      "id": "button/secondary/border",
+      "component": "button",
+      "description": "Secondary button border.",
+      "default": "color.border.strong"
+    },
+    {
+      "id": "button/ghost/background-hover",
+      "component": "button",
+      "description": "Ghost button fill on hover.",
+      "default": "color.surface.sunken"
+    },
+    {
+      "id": "button/ghost/label",
+      "component": "button",
+      "description": "Ghost button label color.",
+      "default": "color.text.link"
+    },
+    {
+      "id": "button/height",
+      "component": "button",
+      "description": "Button height.",
+      "default": "size.control.default"
+    },
+    {
+      "id": "button/padding-x",
+      "component": "button",
+      "description": "Horizontal padding inside a button.",
+      "default": "space.inset.control-x"
+    },
+    {
+      "id": "button/radius",
+      "component": "button",
+      "description": "Button corner radius.",
+      "default": "radius.control"
+    },
+    {
+      "id": "button/font-size",
+      "component": "button",
+      "description": "Button label size.",
+      "default": "type.label.font-size"
+    },
+    {
+      "id": "button/font-weight",
+      "component": "button",
+      "description": "Button label weight.",
+      "default": "type.label.font-weight"
+    },
+    {
+      "id": "button/focus-ring",
+      "component": "button",
+      "description": "Focus ring color on any button.",
+      "default": "color.border.focus"
+    },
+    {
+      "id": "button/icon-size",
+      "component": "button",
+      "description": "Size of an icon inside a button.",
+      "default": "size.icon"
+    },
+    {
+      "id": "button/disabled/background",
+      "component": "button",
+      "description": "Fill of a disabled button.",
+      "default": "color.disabled.surface"
+    },
+    {
+      "id": "button/disabled/label",
+      "component": "button",
+      "description": "Label of a disabled button.",
+      "default": "color.disabled.text"
+    },
+    {
+      "id": "button/disabled/border",
+      "component": "button",
+      "description": "Border of a disabled secondary button.",
+      "default": "color.disabled.border"
+    },
+    {
+      "id": "input/background",
+      "component": "input",
+      "description": "Input fill.",
+      "default": "color.surface.default"
+    },
+    {
+      "id": "input/border/@",
+      "component": "input",
+      "description": "Input border at rest.",
+      "default": "color.border.strong"
+    },
+    {
+      "id": "input/border/focus",
+      "component": "input",
+      "description": "Input border when focused.",
+      "default": "color.border.focus"
+    },
+    {
+      "id": "input/text",
+      "component": "input",
+      "description": "Typed text color.",
+      "default": "color.text.primary"
+    },
+    {
+      "id": "input/placeholder",
+      "component": "input",
+      "description": "Placeholder text color.",
+      "default": "color.text.muted"
+    },
+    {
+      "id": "input/height",
+      "component": "input",
+      "description": "Input height.",
+      "default": "size.control.default"
+    },
+    {
+      "id": "input/padding-x",
+      "component": "input",
+      "description": "Horizontal padding inside an input.",
+      "default": "space.inset.control-x"
+    },
+    {
+      "id": "input/radius",
+      "component": "input",
+      "description": "Input corner radius.",
+      "default": "radius.control"
+    },
+    {
+      "id": "input/font-size",
+      "component": "input",
+      "description": "Typed text size.",
+      "default": "type.body.font-size"
+    },
+    {
+      "id": "input/disabled/background",
+      "component": "input",
+      "description": "Fill of a disabled input.",
+      "default": "color.disabled.surface"
+    },
+    {
+      "id": "input/disabled/border",
+      "component": "input",
+      "description": "Border of a disabled input.",
+      "default": "color.disabled.border"
+    },
+    {
+      "id": "input/disabled/text",
+      "component": "input",
+      "description": "Text in a disabled input.",
+      "default": "color.disabled.text"
+    },
+    {
+      "id": "control/checked",
+      "component": "control",
+      "description": "Fill of a checked checkbox or an on switch.",
+      "default": "color.action.primary.@"
+    },
+    {
+      "id": "control/track",
+      "component": "control",
+      "description": "Track of an off switch.",
+      "default": "color.border.strong"
+    },
+    {
+      "id": "control/thumb",
+      "component": "control",
+      "description": "Switch thumb and checkmark color.",
+      "default": "color.surface.default"
+    },
+    {
+      "id": "control/radius",
+      "component": "control",
+      "description": "Checkbox corner radius.",
+      "default": "radius.badge"
+    },
+    {
+      "id": "badge/radius",
+      "component": "badge",
+      "description": "Badge corner radius.",
+      "default": "radius.badge"
+    },
+    {
+      "id": "badge/padding-x",
+      "component": "badge",
+      "description": "Horizontal padding inside a badge.",
+      "default": "space.gap.tight"
+    },
+    {
+      "id": "badge/font-size",
+      "component": "badge",
+      "description": "Badge label size.",
+      "default": "type.caption.font-size"
+    },
+    {
+      "id": "badge/neutral/background",
+      "component": "badge",
+      "description": "Neutral badge fill.",
+      "default": "color.surface.sunken"
+    },
+    {
+      "id": "badge/neutral/label",
+      "component": "badge",
+      "description": "Neutral badge label.",
+      "default": "color.text.secondary"
+    },
+    {
+      "id": "badge/info/background",
+      "component": "badge",
+      "description": "Info badge fill.",
+      "default": "color.status.info.subtle"
+    },
+    {
+      "id": "badge/info/label",
+      "component": "badge",
+      "description": "Info badge label.",
+      "default": "color.status.info.@"
+    },
+    {
+      "id": "badge/success/background",
+      "component": "badge",
+      "description": "Success badge fill.",
+      "default": "color.status.success.subtle"
+    },
+    {
+      "id": "badge/success/label",
+      "component": "badge",
+      "description": "Success badge label.",
+      "default": "color.status.success.@"
+    },
+    {
+      "id": "badge/warning/background",
+      "component": "badge",
+      "description": "Warning badge fill.",
+      "default": "color.status.warning.subtle"
+    },
+    {
+      "id": "badge/warning/label",
+      "component": "badge",
+      "description": "Warning badge label.",
+      "default": "color.status.warning.@"
+    },
+    {
+      "id": "badge/danger/background",
+      "component": "badge",
+      "description": "Danger badge fill.",
+      "default": "color.status.danger.subtle"
+    },
+    {
+      "id": "badge/danger/label",
+      "component": "badge",
+      "description": "Danger badge label.",
+      "default": "color.status.danger.@"
+    },
+    {
+      "id": "card/background",
+      "component": "card",
+      "description": "Card fill.",
+      "default": "color.surface.default"
+    },
+    {
+      "id": "card/border",
+      "component": "card",
+      "description": "Card border.",
+      "default": "color.border.default"
+    },
+    {
+      "id": "card/radius",
+      "component": "card",
+      "description": "Card corner radius.",
+      "default": "radius.container"
+    },
+    {
+      "id": "card/padding",
+      "component": "card",
+      "description": "Padding inside a card.",
+      "default": "space.inset.container"
+    },
+    {
+      "id": "card/shadow",
+      "component": "card",
+      "description": "Card shadow.",
+      "default": "elevation.card"
+    },
+    {
+      "id": "table/header-background",
+      "component": "table",
+      "description": "Header row fill.",
+      "default": "color.surface.sunken"
+    },
+    {
+      "id": "table/row-height",
+      "component": "table",
+      "description": "Height of one data row.",
+      "default": "size.row"
+    },
+    {
+      "id": "table/cell-padding-x",
+      "component": "table",
+      "description": "Horizontal padding inside a cell.",
+      "default": "space.inset.cell-x"
+    },
+    {
+      "id": "table/row-border",
+      "component": "table",
+      "description": "Line between rows.",
+      "default": "color.border.default"
+    },
+    {
+      "id": "table/row-selected",
+      "component": "table",
+      "description": "Fill of a selected row.",
+      "default": "color.surface.selected"
+    },
+    {
+      "id": "table/font-size",
+      "component": "table",
+      "description": "Cell text size.",
+      "default": "type.data.font-size"
+    },
+    {
+      "id": "tabs/indicator",
+      "component": "tabs",
+      "description": "Active tab indicator.",
+      "default": "color.action.primary.@"
+    },
+    {
+      "id": "tabs/label/@",
+      "component": "tabs",
+      "description": "Inactive tab label.",
+      "default": "color.text.secondary"
+    },
+    {
+      "id": "tabs/label/active",
+      "component": "tabs",
+      "description": "Active tab label.",
+      "default": "color.text.primary"
+    },
+    {
+      "id": "overlay/background",
+      "component": "overlay",
+      "description": "Fill of a dialog, menu or toast.",
+      "default": "color.surface.raised"
+    },
+    {
+      "id": "overlay/radius",
+      "component": "overlay",
+      "description": "Corner radius of overlays.",
+      "default": "radius.container"
+    },
+    {
+      "id": "overlay/shadow",
+      "component": "overlay",
+      "description": "Shadow of overlays.",
+      "default": "elevation.overlay"
+    },
+    {
+      "id": "overlay/scrim",
+      "component": "overlay",
+      "description": "Color that dims the page behind a dialog.",
+      "default": "color.surface.scrim"
+    },
+    {
+      "id": "overlay/item-height",
+      "component": "overlay",
+      "description": "Height of a menu item.",
+      "default": "size.control.default"
+    },
+    {
+      "id": "tooltip/background",
+      "component": "overlay",
+      "description": "Tooltip fill.",
+      "default": "color.surface.inverse"
+    },
+    {
+      "id": "tooltip/label",
+      "component": "overlay",
+      "description": "Tooltip text.",
+      "default": "color.text.inverse"
+    },
+    {
+      "id": "transition/duration",
+      "component": "transition",
+      "description": "Duration of feedback transitions.",
+      "default": "motion.duration.feedback"
+    },
+    {
+      "id": "transition/easing",
+      "component": "transition",
+      "description": "Easing of feedback transitions.",
+      "default": "motion.easing.standard"
+    }
+  ],
+  "semantics": {
+    "description": "What each semantic key is for, written once for every scheme. Each entry says its intent, what to use it for, what not to use it for (and what to use instead) and, where it matters, which fills it may sit on and the contrast it must keep there. Words only; values come from each scheme. The harness checks every rule.",
+    "urgency": {
+      "description": "Status colours go up in urgency: info, then warning, then danger. Pick the level that matches the real risk. Never go up a level to get attention. Success sits outside the order.",
+      "order": [
+        "color.status.info.@",
+        "color.status.warning.@",
+        "color.status.danger.@"
+      ]
+    },
+    "keys": [
+      {
+        "id": "color.surface.canvas",
+        "intent": "The page background behind everything.",
+        "use_for": [
+          "Page and app background"
+        ],
+        "not_for": [
+          {
+            "when": "Cards and panels on the page",
+            "use": "color.surface.default"
+          }
+        ]
+      },
+      {
+        "id": "color.surface.default",
+        "intent": "The base fill for content.",
+        "use_for": [
+          "Cards",
+          "Panels",
+          "Inputs",
+          "Table body"
+        ],
+        "not_for": [
+          {
+            "when": "The page behind content",
+            "use": "color.surface.canvas"
+          },
+          {
+            "when": "Menus and popovers above content",
+            "use": "color.surface.raised"
+          }
+        ]
+      },
+      {
+        "id": "color.surface.raised",
+        "intent": "Fills that float above content.",
+        "use_for": [
+          "Menus",
+          "Popovers",
+          "Dialogs"
+        ],
+        "not_for": [
+          {
+            "when": "Cards in the page flow",
+            "use": "color.surface.default"
+          }
+        ]
+      },
+      {
+        "id": "color.surface.sunken",
+        "intent": "A recessed fill, a step below content.",
+        "use_for": [
+          "Table headers",
+          "Wells",
+          "Hover rows"
+        ],
+        "not_for": [
+          {
+            "when": "A selected item",
+            "use": "color.surface.selected"
+          }
+        ]
+      },
+      {
+        "id": "color.surface.selected",
+        "intent": "The fill of a selected or current item.",
+        "use_for": [
+          "Selected rows",
+          "Current menu item"
+        ],
+        "not_for": [
+          {
+            "when": "Hover",
+            "use": "color.surface.sunken"
+          },
+          {
+            "when": "The main action",
+            "use": "color.action.primary.@"
+          }
+        ]
+      },
+      {
+        "id": "color.surface.inverse",
+        "intent": "A reversed fill for small, short-lived messages.",
+        "use_for": [
+          "Tooltips",
+          "Toasts"
+        ],
+        "not_for": [
+          {
+            "when": "Large areas",
+            "use": "color.surface.default"
+          }
+        ]
+      },
+      {
+        "id": "color.surface.scrim",
+        "intent": "The see-through layer behind a modal.",
+        "use_for": [
+          "Behind dialogs and sheets"
+        ],
+        "not_for": [
+          {
+            "when": "A solid fill",
+            "use": "color.surface.raised"
+          }
+        ]
+      },
+      {
+        "id": "color.text.primary",
+        "intent": "Body text and headings.",
+        "use_for": [
+          "Body text",
+          "Headings",
+          "Tag labels"
+        ],
+        "not_for": [
+          {
+            "when": "Text on the main action",
+            "use": "color.text.on-action"
+          },
+          {
+            "when": "Text on an inverse fill",
+            "use": "color.text.inverse"
+          }
+        ],
+        "pairs": {
+          "on": [
+            "color.surface.canvas",
+            "color.surface.default",
+            "color.surface.raised",
+            "color.surface.sunken",
+            "color.surface.selected",
+            "color.action.secondary.@",
+            "color.action.secondary.hover",
+            "color.category.1.subtle",
+            "color.category.2.subtle",
+            "color.category.3.subtle",
+            "color.category.4.subtle",
+            "color.category.5.subtle"
+          ],
+          "contrast": 4.5
+        }
+      },
+      {
+        "id": "color.text.secondary",
+        "intent": "Supporting text.",
+        "use_for": [
+          "Labels",
+          "Descriptions",
+          "Metadata"
+        ],
+        "not_for": [
+          {
+            "when": "The main content",
+            "use": "color.text.primary"
+          }
+        ],
+        "pairs": {
+          "on": [
+            "color.surface.canvas",
+            "color.surface.default",
+            "color.surface.raised",
+            "color.surface.sunken"
+          ],
+          "contrast": 4.5
+        }
+      },
+      {
+        "id": "color.text.muted",
+        "intent": "The quietest text.",
+        "use_for": [
+          "Placeholders",
+          "Hints",
+          "Timestamps"
+        ],
+        "not_for": [
+          {
+            "when": "Anything people must read to act",
+            "use": "color.text.secondary"
+          },
+          {
+            "when": "A disabled control",
+            "use": "color.disabled.text"
+          }
+        ],
+        "pairs": {
+          "on": [
+            "color.surface.canvas",
+            "color.surface.default",
+            "color.surface.sunken"
+          ],
+          "contrast": 4.5
+        }
+      },
+      {
+        "id": "color.text.inverse",
+        "intent": "Text on an inverse fill.",
+        "use_for": [
+          "Tooltip and toast text"
+        ],
+        "not_for": [
+          {
+            "when": "Text on the page",
+            "use": "color.text.primary"
+          }
+        ],
+        "pairs": {
+          "on": [
+            "color.surface.inverse"
+          ],
+          "contrast": 4.5
+        }
+      },
+      {
+        "id": "color.text.on-action",
+        "intent": "Text and icons on the main action's fill.",
+        "use_for": [
+          "Primary button labels"
+        ],
+        "not_for": [
+          {
+            "when": "Text on the page",
+            "use": "color.text.primary"
+          }
+        ],
+        "pairs": {
+          "on": [
+            "color.action.primary.@",
+            "color.action.primary.hover"
+          ],
+          "contrast": 4.5
+        }
+      },
+      {
+        "id": "color.text.link",
+        "intent": "Links in running text.",
+        "use_for": [
+          "Inline links"
+        ],
+        "not_for": [
+          {
+            "when": "Buttons",
+            "use": "color.action.primary.@"
+          }
+        ],
+        "pairs": {
+          "on": [
+            "color.surface.canvas",
+            "color.surface.default"
+          ],
+          "contrast": 4.5
+        }
+      },
+      {
+        "id": "color.border.default",
+        "intent": "Quiet edges and dividers. Decorative, so it has no contrast minimum.",
+        "use_for": [
+          "Card edges",
+          "Dividers",
+          "Table rules"
+        ],
+        "not_for": [
+          {
+            "when": "The edge of a control people must find",
+            "use": "color.border.strong"
+          }
+        ]
+      },
+      {
+        "id": "color.border.strong",
+        "intent": "The edge of a control people must find.",
+        "use_for": [
+          "Input borders",
+          "Checkbox borders",
+          "Secondary button borders"
+        ],
+        "not_for": [
+          {
+            "when": "A divider",
+            "use": "color.border.default"
+          }
+        ],
+        "pairs": {
+          "on": [
+            "color.surface.canvas",
+            "color.surface.default"
+          ],
+          "contrast": 3
+        }
+      },
+      {
+        "id": "color.border.focus",
+        "intent": "The focus ring.",
+        "use_for": [
+          "Keyboard focus on any control"
+        ],
+        "not_for": [
+          {
+            "when": "A selected item",
+            "use": "color.surface.selected"
+          }
+        ],
+        "pairs": {
+          "on": [
+            "color.surface.canvas",
+            "color.surface.default"
+          ],
+          "contrast": 3
+        }
+      },
+      {
+        "id": "color.action.primary.@",
+        "intent": "The one main action in a view.",
+        "use_for": [
+          "Primary button fill",
+          "Checked controls",
+          "Active tab indicator"
+        ],
+        "not_for": [
+          {
+            "when": "A second action in the same view",
+            "use": "color.action.secondary.@"
+          },
+          {
+            "when": "Links in text",
+            "use": "color.text.link"
+          },
+          {
+            "when": "News or status",
+            "use": "color.status.info.@"
+          }
+        ],
+        "pairs": {
+          "on": [
+            "color.surface.canvas",
+            "color.surface.default"
+          ],
+          "contrast": 3
+        }
+      },
+      {
+        "id": "color.action.primary.hover",
+        "intent": "The main action under the pointer.",
+        "use_for": [
+          "Primary button hover"
+        ],
+        "not_for": [
+          {
+            "when": "The resting state",
+            "use": "color.action.primary.@"
+          }
+        ]
+      },
+      {
+        "id": "color.action.secondary.@",
+        "intent": "The fill of other actions.",
+        "use_for": [
+          "Secondary buttons"
+        ],
+        "not_for": [
+          {
+            "when": "The main action",
+            "use": "color.action.primary.@"
+          }
+        ]
+      },
+      {
+        "id": "color.action.secondary.hover",
+        "intent": "Other actions under the pointer.",
+        "use_for": [
+          "Secondary button hover"
+        ],
+        "not_for": [
+          {
+            "when": "The resting state",
+            "use": "color.action.secondary.@"
+          }
+        ]
+      },
+      {
+        "id": "color.status.info.@",
+        "intent": "Neutral news: something changed and no action is needed. The lowest level of the urgency order.",
+        "use_for": [
+          "Status text and icons",
+          "Badge labels"
+        ],
+        "not_for": [
+          {
+            "when": "Something needs a check",
+            "use": "color.status.warning.@"
+          },
+          {
+            "when": "The main action",
+            "use": "color.action.primary.@"
+          }
+        ],
+        "pairs": {
+          "on": [
+            "color.surface.canvas",
+            "color.surface.default",
+            "color.status.info.subtle"
+          ],
+          "contrast": 4.5
+        },
+        "order": 1
+      },
+      {
+        "id": "color.status.info.subtle",
+        "intent": "The fill behind info status.",
+        "use_for": [
+          "Info badges",
+          "Banners"
+        ],
+        "not_for": [
+          {
+            "when": "Large page areas",
+            "use": "color.surface.default"
+          }
+        ]
+      },
+      {
+        "id": "color.status.warning.@",
+        "intent": "Caution: something may go wrong or needs a check, and it can be fixed.",
+        "use_for": [
+          "Status text and icons",
+          "Badge labels"
+        ],
+        "not_for": [
+          {
+            "when": "An error, or an action that cannot be undone",
+            "use": "color.status.danger.@"
+          },
+          {
+            "when": "News that needs no action",
+            "use": "color.status.info.@"
+          }
+        ],
+        "pairs": {
+          "on": [
+            "color.surface.canvas",
+            "color.surface.default",
+            "color.status.warning.subtle"
+          ],
+          "contrast": 4.5
+        },
+        "order": 2
+      },
+      {
+        "id": "color.status.warning.subtle",
+        "intent": "The fill behind warning status.",
+        "use_for": [
+          "Warning badges",
+          "Banners"
+        ],
+        "not_for": [
+          {
+            "when": "Large page areas",
+            "use": "color.surface.default"
+          }
+        ]
+      },
+      {
+        "id": "color.status.danger.@",
+        "intent": "Real risk: errors, failed checks, actions that cannot be undone. The top of the urgency order. Overuse wears it out.",
+        "use_for": [
+          "Status text and icons",
+          "Badge labels"
+        ],
+        "not_for": [
+          {
+            "when": "Caution or advice",
+            "use": "color.status.warning.@"
+          },
+          {
+            "when": "Getting attention",
+            "use": "color.status.info.@"
+          }
+        ],
+        "pairs": {
+          "on": [
+            "color.surface.canvas",
+            "color.surface.default",
+            "color.status.danger.subtle"
+          ],
+          "contrast": 4.5
+        },
+        "order": 3
+      },
+      {
+        "id": "color.status.danger.subtle",
+        "intent": "The fill behind danger status.",
+        "use_for": [
+          "Danger badges",
+          "Banners"
+        ],
+        "not_for": [
+          {
+            "when": "Large page areas",
+            "use": "color.surface.default"
+          }
+        ]
+      },
+      {
+        "id": "color.status.success.@",
+        "intent": "Confirmation that something worked. It sits outside the urgency order.",
+        "use_for": [
+          "Status text and icons",
+          "Badge labels"
+        ],
+        "not_for": [
+          {
+            "when": "The main action",
+            "use": "color.action.primary.@"
+          },
+          {
+            "when": "Brand colour",
+            "use": "color.action.primary.@"
+          }
+        ],
+        "pairs": {
+          "on": [
+            "color.surface.canvas",
+            "color.surface.default",
+            "color.status.success.subtle"
+          ],
+          "contrast": 4.5
+        }
+      },
+      {
+        "id": "color.status.success.subtle",
+        "intent": "The fill behind success status.",
+        "use_for": [
+          "Success badges",
+          "Banners"
+        ],
+        "not_for": [
+          {
+            "when": "Large page areas",
+            "use": "color.surface.default"
+          }
+        ]
+      },
+      {
+        "id": "color.category.1.@",
+        "intent": "Category 1: tells one item or series from another. It carries no meaning.",
+        "use_for": [
+          "Chart series",
+          "Tag dots and icons"
+        ],
+        "not_for": [
+          {
+            "when": "Status or risk",
+            "use": "color.status.warning.@"
+          },
+          {
+            "when": "Tag text",
+            "use": "color.text.primary"
+          }
+        ],
+        "pairs": {
+          "on": [
+            "color.surface.canvas",
+            "color.surface.default"
+          ],
+          "contrast": 3
+        }
+      },
+      {
+        "id": "color.category.1.subtle",
+        "intent": "Category 1: the fill of a tag.",
+        "use_for": [
+          "Tag and label fills"
+        ],
+        "not_for": [
+          {
+            "when": "A status badge",
+            "use": "color.status.info.subtle"
+          }
+        ]
+      },
+      {
+        "id": "color.category.2.@",
+        "intent": "Category 2: tells one item or series from another. It carries no meaning.",
+        "use_for": [
+          "Chart series",
+          "Tag dots and icons"
+        ],
+        "not_for": [
+          {
+            "when": "Status or risk",
+            "use": "color.status.warning.@"
+          },
+          {
+            "when": "Tag text",
+            "use": "color.text.primary"
+          }
+        ],
+        "pairs": {
+          "on": [
+            "color.surface.canvas",
+            "color.surface.default"
+          ],
+          "contrast": 3
+        }
+      },
+      {
+        "id": "color.category.2.subtle",
+        "intent": "Category 2: the fill of a tag.",
+        "use_for": [
+          "Tag and label fills"
+        ],
+        "not_for": [
+          {
+            "when": "A status badge",
+            "use": "color.status.info.subtle"
+          }
+        ]
+      },
+      {
+        "id": "color.category.3.@",
+        "intent": "Category 3: tells one item or series from another. It carries no meaning.",
+        "use_for": [
+          "Chart series",
+          "Tag dots and icons"
+        ],
+        "not_for": [
+          {
+            "when": "Status or risk",
+            "use": "color.status.warning.@"
+          },
+          {
+            "when": "Tag text",
+            "use": "color.text.primary"
+          }
+        ],
+        "pairs": {
+          "on": [
+            "color.surface.canvas",
+            "color.surface.default"
+          ],
+          "contrast": 3
+        }
+      },
+      {
+        "id": "color.category.3.subtle",
+        "intent": "Category 3: the fill of a tag.",
+        "use_for": [
+          "Tag and label fills"
+        ],
+        "not_for": [
+          {
+            "when": "A status badge",
+            "use": "color.status.info.subtle"
+          }
+        ]
+      },
+      {
+        "id": "color.category.4.@",
+        "intent": "Category 4: tells one item or series from another. It carries no meaning.",
+        "use_for": [
+          "Chart series",
+          "Tag dots and icons"
+        ],
+        "not_for": [
+          {
+            "when": "Status or risk",
+            "use": "color.status.warning.@"
+          },
+          {
+            "when": "Tag text",
+            "use": "color.text.primary"
+          }
+        ],
+        "pairs": {
+          "on": [
+            "color.surface.canvas",
+            "color.surface.default"
+          ],
+          "contrast": 3
+        }
+      },
+      {
+        "id": "color.category.4.subtle",
+        "intent": "Category 4: the fill of a tag.",
+        "use_for": [
+          "Tag and label fills"
+        ],
+        "not_for": [
+          {
+            "when": "A status badge",
+            "use": "color.status.info.subtle"
+          }
+        ]
+      },
+      {
+        "id": "color.category.5.@",
+        "intent": "Category 5: tells one item or series from another. It carries no meaning.",
+        "use_for": [
+          "Chart series",
+          "Tag dots and icons"
+        ],
+        "not_for": [
+          {
+            "when": "Status or risk",
+            "use": "color.status.warning.@"
+          },
+          {
+            "when": "Tag text",
+            "use": "color.text.primary"
+          }
+        ],
+        "pairs": {
+          "on": [
+            "color.surface.canvas",
+            "color.surface.default"
+          ],
+          "contrast": 3
+        }
+      },
+      {
+        "id": "color.category.5.subtle",
+        "intent": "Category 5: the fill of a tag.",
+        "use_for": [
+          "Tag and label fills"
+        ],
+        "not_for": [
+          {
+            "when": "A status badge",
+            "use": "color.status.info.subtle"
+          }
+        ]
+      },
+      {
+        "id": "color.disabled.text",
+        "intent": "Text and icons of a control that cannot be used right now.",
+        "use_for": [
+          "Disabled labels and icons"
+        ],
+        "not_for": [
+          {
+            "when": "Quiet text that still works",
+            "use": "color.text.muted"
+          }
+        ],
+        "pairs": {
+          "on": [
+            "color.disabled.surface"
+          ],
+          "contrast": null
+        },
+        "exempt": "WCAG 1.4.3 does not ask for contrast on controls that cannot be used."
+      },
+      {
+        "id": "color.disabled.surface",
+        "intent": "The fill of a control that cannot be used right now.",
+        "use_for": [
+          "Disabled buttons and inputs"
+        ],
+        "not_for": [
+          {
+            "when": "A quiet fill that still works",
+            "use": "color.surface.sunken"
+          }
+        ]
+      },
+      {
+        "id": "color.disabled.border",
+        "intent": "The edge of a control that cannot be used right now.",
+        "use_for": [
+          "Disabled inputs and checkboxes"
+        ],
+        "not_for": [
+          {
+            "when": "An enabled control",
+            "use": "color.border.strong"
+          }
+        ]
+      }
+    ]
+  },
+  "catalogue": {
+    "description": "Every component a design system can carry: the UI components of the shadcn/ui registry (style new-york-v4, MIT), plus toast, which Open DS builds itself, data-table, which wraps TanStack Table after shadcn's Data Table guide, and date-picker, after shadcn's Date Picker. Each scheme picks its inventory from this list through the components scope. The component-api keys in components cover the ones built so far.",
+    "source": "https://github.com/shadcn-ui/ui/tree/main/apps/v4/registry/new-york-v4/ui",
+    "families": [
+      {
+        "id": "action",
+        "description": "Buttons and toggles that start or switch something."
+      },
+      {
+        "id": "form",
+        "description": "Fields, choices and pickers that take input."
+      },
+      {
+        "id": "data",
+        "description": "Tables, charts and counts that show records."
+      },
+      {
+        "id": "navigation",
+        "description": "Menus, tabs, breadcrumbs and bars that move between places."
+      },
+      {
+        "id": "feedback",
+        "description": "Alerts, toasts, loading and empty states that report what happened."
+      },
+      {
+        "id": "overlay",
+        "description": "Dialogs, sheets, popovers and tooltips that sit above the page."
+      },
+      {
+        "id": "layout",
+        "description": "Cards, separators and containers that group and arrange content."
+      },
+      {
+        "id": "content",
+        "description": "Accordions and sections that organise long text."
+      },
+      {
+        "id": "media",
+        "description": "Images, avatars and carousels."
+      },
+      {
+        "id": "conversation",
+        "description": "Messages and attachments for chat interfaces."
+      }
+    ],
+    "roles": {
+      "description": "The families each components.roles option admits. Core is the families every system needs.",
+      "core": [
+        "action",
+        "form",
+        "feedback",
+        "overlay",
+        "layout",
+        "navigation"
+      ],
+      "core-data": [
+        "action",
+        "form",
+        "feedback",
+        "overlay",
+        "layout",
+        "navigation",
+        "data"
+      ],
+      "core-content": [
+        "action",
+        "form",
+        "feedback",
+        "overlay",
+        "layout",
+        "navigation",
+        "content",
+        "media"
+      ],
+      "core-media": [
+        "action",
+        "form",
+        "feedback",
+        "overlay",
+        "layout",
+        "navigation",
+        "media"
+      ]
+    },
+    "items": [
+      {
+        "id": "accordion",
+        "family": "content",
+        "description": "Stacked sections that open one at a time."
+      },
+      {
+        "id": "alert",
+        "family": "feedback",
+        "description": "A message that stays on the page."
+      },
+      {
+        "id": "alert-dialog",
+        "family": "overlay",
+        "description": "A dialog that asks to confirm an action that cannot be undone."
+      },
+      {
+        "id": "aspect-ratio",
+        "family": "media",
+        "description": "Keeps an image or video at a fixed shape."
+      },
+      {
+        "id": "attachment",
+        "family": "conversation",
+        "description": "A file attached to a message."
+      },
+      {
+        "id": "avatar",
+        "family": "media",
+        "description": "A small image or initials for a person."
+      },
+      {
+        "id": "badge",
+        "family": "feedback",
+        "description": "A short label for a status or count."
+      },
+      {
+        "id": "breadcrumb",
+        "family": "navigation",
+        "description": "The path to the current page."
+      },
+      {
+        "id": "bubble",
+        "family": "conversation",
+        "description": "A chat message bubble."
+      },
+      {
+        "id": "button",
+        "family": "action",
+        "description": "Triggers an action."
+      },
+      {
+        "id": "button-group",
+        "family": "action",
+        "description": "Related buttons joined as one control."
+      },
+      {
+        "id": "calendar",
+        "family": "form",
+        "description": "A month grid for picking dates."
+      },
+      {
+        "id": "card",
+        "family": "layout",
+        "description": "A bordered container for one item or group."
+      },
+      {
+        "id": "carousel",
+        "family": "media",
+        "description": "Slides that move left and right."
+      },
+      {
+        "id": "chart",
+        "family": "data",
+        "description": "Bars, lines and areas built on Recharts."
+      },
+      {
+        "id": "checkbox",
+        "family": "form",
+        "description": "An on-off choice in a list or form."
+      },
+      {
+        "id": "collapsible",
+        "family": "layout",
+        "description": "One section that opens and closes."
+      },
+      {
+        "id": "combobox",
+        "family": "form",
+        "description": "A text field with a filtered list of choices."
+      },
+      {
+        "id": "command",
+        "family": "navigation",
+        "description": "A search-first menu of actions, opened from the keyboard."
+      },
+      {
+        "id": "context-menu",
+        "family": "navigation",
+        "description": "A menu on right-click."
+      },
+      {
+        "id": "data-table",
+        "family": "data",
+        "description": "Many records in one view: search, faceted filters, sorting, column choice, row selection with bulk actions, pagination and a density switch. Wraps TanStack Table, after shadcn's Data Table guide."
+      },
+      {
+        "id": "date-picker",
+        "family": "form",
+        "description": "A button that opens a calendar, for one date or a range. Built on calendar and popover, after shadcn's Date Picker."
+      },
+      {
+        "id": "dialog",
+        "family": "overlay",
+        "description": "A window over the page for a focused task."
+      },
+      {
+        "id": "drawer",
+        "family": "overlay",
+        "description": "A panel that slides up from the bottom, for phones."
+      },
+      {
+        "id": "dropdown-menu",
+        "family": "navigation",
+        "description": "A menu of actions opened from a button."
+      },
+      {
+        "id": "empty",
+        "family": "feedback",
+        "description": "What to show when there is nothing yet."
+      },
+      {
+        "id": "field",
+        "family": "form",
+        "description": "A label, control, hint and error laid out together."
+      },
+      {
+        "id": "form",
+        "family": "form",
+        "description": "Form state and validation wired to fields."
+      },
+      {
+        "id": "hover-card",
+        "family": "overlay",
+        "description": "A preview card on hover."
+      },
+      {
+        "id": "input",
+        "family": "form",
+        "description": "Single-line text entry."
+      },
+      {
+        "id": "input-group",
+        "family": "form",
+        "description": "An input with addons such as icons or buttons."
+      },
+      {
+        "id": "input-otp",
+        "family": "form",
+        "description": "Separate boxes for a one-time code."
+      },
+      {
+        "id": "item",
+        "family": "layout",
+        "description": "A row with media, title, description and actions."
+      },
+      {
+        "id": "kbd",
+        "family": "navigation",
+        "description": "A keyboard key or shortcut."
+      },
+      {
+        "id": "label",
+        "family": "form",
+        "description": "The name of a form control."
+      },
+      {
+        "id": "marker",
+        "family": "conversation",
+        "description": "A divider or status line inside a conversation."
+      },
+      {
+        "id": "menubar",
+        "family": "navigation",
+        "description": "A row of menus, as in desktop apps."
+      },
+      {
+        "id": "message",
+        "family": "conversation",
+        "description": "One message with its author and time."
+      },
+      {
+        "id": "message-scroller",
+        "family": "conversation",
+        "description": "A scrolling list of messages that keeps the newest in view."
+      },
+      {
+        "id": "native-select",
+        "family": "form",
+        "description": "The browser select, styled."
+      },
+      {
+        "id": "navigation-menu",
+        "family": "navigation",
+        "description": "Site navigation with links and panels."
+      },
+      {
+        "id": "pagination",
+        "family": "navigation",
+        "description": "Moves between pages of results."
+      },
+      {
+        "id": "popover",
+        "family": "overlay",
+        "description": "Rich content in a floating panel, opened by click."
+      },
+      {
+        "id": "progress",
+        "family": "feedback",
+        "description": "How far a task has come."
+      },
+      {
+        "id": "radio-group",
+        "family": "form",
+        "description": "One choice from a short list."
+      },
+      {
+        "id": "resizable",
+        "family": "layout",
+        "description": "Panels the user can resize by dragging."
+      },
+      {
+        "id": "scroll-area",
+        "family": "layout",
+        "description": "A region with styled scrollbars."
+      },
+      {
+        "id": "select",
+        "family": "form",
+        "description": "One choice from a list, in a menu."
+      },
+      {
+        "id": "separator",
+        "family": "layout",
+        "description": "A line between groups."
+      },
+      {
+        "id": "sheet",
+        "family": "overlay",
+        "description": "A panel that slides in from an edge."
+      },
+      {
+        "id": "sidebar",
+        "family": "navigation",
+        "description": "The side navigation of an app."
+      },
+      {
+        "id": "skeleton",
+        "family": "feedback",
+        "description": "A placeholder while content loads."
+      },
+      {
+        "id": "slider",
+        "family": "form",
+        "description": "A value picked by dragging along a track."
+      },
+      {
+        "id": "sonner",
+        "family": "feedback",
+        "description": "Stacked toasts, from the Sonner library."
+      },
+      {
+        "id": "spinner",
+        "family": "feedback",
+        "description": "A small loading indicator."
+      },
+      {
+        "id": "switch",
+        "family": "form",
+        "description": "An on-off setting that applies at once."
+      },
+      {
+        "id": "table",
+        "family": "data",
+        "description": "Rows and columns of records."
+      },
+      {
+        "id": "tabs",
+        "family": "navigation",
+        "description": "Switches between views of the same thing."
+      },
+      {
+        "id": "textarea",
+        "family": "form",
+        "description": "Multi-line text entry."
+      },
+      {
+        "id": "toast",
+        "family": "feedback",
+        "description": "A short message that confirms an action and goes away. Open DS builds its own; shadcn now ships sonner for this."
+      },
+      {
+        "id": "toggle",
+        "family": "action",
+        "description": "A button that stays pressed or not."
+      },
+      {
+        "id": "toggle-group",
+        "family": "action",
+        "description": "A set of toggles where one or many stay pressed."
+      },
+      {
+        "id": "tooltip",
+        "family": "overlay",
+        "description": "A short hint on hover or focus."
+      }
+    ]
+  }
+}

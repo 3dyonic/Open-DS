@@ -1,0 +1,338 @@
+<!doctype html>
+<!-- Source of .github/assets/hero.png. Rebuild: node .github/assets/render-hero.cjs -->
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,600;12..96,800&family=DM+Mono:wght@400;500&family=IBM+Plex+Sans:wght@500;600&family=IBM+Plex+Mono&family=Source+Serif+4:wght@400;600&family=Atkinson+Hyperlegible:wght@400;700&family=Plus+Jakarta+Sans:wght@600;700&family=DM+Sans:wght@500;700&display=swap"
+    />
+    <style>
+      :root {
+        --paper: #f6f2e9;
+        --ink: #16140f;
+        --muted: #645e50;
+        --line: #cfc6b4;
+        --tag: #ede7da;
+        --accent: #ff5a1f;
+        --accent-text: #b93a00;
+        --accent-soft: #ffe3d6;
+      }
+      * {
+        box-sizing: border-box;
+        margin: 0;
+      }
+      body {
+        width: 1280px;
+        height: 640px;
+        background: var(--paper);
+        color: var(--ink);
+        font-family: "Bricolage Grotesque", sans-serif;
+        overflow: hidden;
+        position: relative;
+      }
+      .grid {
+        position: absolute;
+        inset: 0;
+        background-image:
+          linear-gradient(var(--line) 1px, transparent 1px),
+          linear-gradient(90deg, var(--line) 1px, transparent 1px);
+        background-size: 40px 40px;
+        opacity: 0.35;
+        mask-image: linear-gradient(90deg, transparent 0%, #000 55%, #000 100%);
+      }
+      .wrap {
+        position: relative;
+        display: grid;
+        grid-template-columns: 600px 1fr;
+        gap: 48px;
+        padding: 64px 64px 56px;
+        height: 100%;
+      }
+      .eyebrow {
+        font-family: "DM Mono", monospace;
+        font-size: 15px;
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+        color: var(--muted);
+        display: flex;
+        align-items: center;
+        gap: 12px;
+      }
+      .dot {
+        width: 12px;
+        height: 12px;
+        background: var(--accent);
+      }
+      h1 {
+        margin-top: 22px;
+        font-size: 74px;
+        line-height: 0.98;
+        font-weight: 800;
+        letter-spacing: -0.02em;
+      }
+      h1 em {
+        font-style: normal;
+        color: var(--accent-text);
+      }
+      .sub {
+        margin-top: 22px;
+        font-size: 21px;
+        line-height: 1.4;
+        color: var(--muted);
+        max-width: 540px;
+      }
+      .chain {
+        margin-top: 30px;
+        display: grid;
+        gap: 10px;
+      }
+      .row {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        font-size: 17px;
+      }
+      .lab {
+        font-family: "DM Mono", monospace;
+        font-size: 13px;
+        text-transform: uppercase;
+        letter-spacing: 0.06em;
+        color: var(--muted);
+        width: 76px;
+      }
+      .chip {
+        font-family: "DM Mono", monospace;
+        font-size: 14px;
+        padding: 5px 10px;
+        border-radius: 4px;
+        background: var(--tag);
+      }
+      .chip.ink {
+        background: var(--ink);
+        color: var(--paper);
+      }
+      .chip.acc {
+        background: var(--accent-soft);
+        color: var(--accent-text);
+      }
+      .stack {
+        display: flex;
+        gap: 8px;
+        position: absolute;
+        left: 64px;
+        bottom: 48px;
+      }
+      .schemes {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 16px;
+        align-content: center;
+      }
+      .card {
+        border-radius: 14px;
+        padding: 18px;
+        border: 1px solid var(--line);
+        box-shadow: 0 1px 0 rgba(22, 20, 15, 0.04);
+      }
+      .card .name {
+        font-family: "DM Mono", monospace;
+        font-size: 12px;
+        text-transform: uppercase;
+        letter-spacing: 0.06em;
+        opacity: 0.7;
+      }
+      .card .title {
+        margin-top: 8px;
+        font-size: 22px;
+      }
+      .card .line {
+        margin-top: 4px;
+        font-size: 14px;
+        opacity: 0.75;
+      }
+      .card .btns {
+        margin-top: 14px;
+        display: flex;
+        gap: 8px;
+        align-items: center;
+      }
+      .b {
+        font-size: 13px;
+        padding: 7px 12px;
+        font-weight: 600;
+      }
+      .badge {
+        font-size: 11px;
+        padding: 2px 8px;
+      }
+      /* Each card uses its scheme's own decisions. */
+      .dense {
+        background: #ffffff;
+        color: #161b23;
+        font-family: "IBM Plex Sans";
+      }
+      .dense .title {
+        font-size: 17px;
+        font-weight: 600;
+      }
+      .dense .b {
+        background: #2457d6;
+        color: #fff;
+        border-radius: 4px;
+        padding: 5px 10px;
+        font-size: 12px;
+      }
+      .dense .badge {
+        background: #fff3d6;
+        color: #8a5600;
+        border-radius: 2px;
+        font-family: "IBM Plex Mono";
+      }
+      .content {
+        background: #fffdf8;
+        color: #1f1b16;
+        font-family: "Source Serif 4";
+      }
+      .content .title {
+        font-size: 26px;
+        font-weight: 600;
+      }
+      .content .b {
+        background: #1e3a5f;
+        color: #fff;
+        border-radius: 8px;
+        font-family: "DM Sans";
+      }
+      .content .badge {
+        background: #e3f4ea;
+        color: #1f7a3a;
+        border-radius: 999px;
+        font-family: "DM Sans";
+      }
+      .access {
+        background: #ffffff;
+        color: #141414;
+        font-family: "Atkinson Hyperlegible";
+        border: 2px solid #595959;
+      }
+      .access .title {
+        font-size: 22px;
+        font-weight: 700;
+      }
+      .access .b {
+        background: #0b4fc0;
+        color: #fff;
+        border-radius: 6px;
+        padding: 9px 16px;
+        font-size: 15px;
+      }
+      .access .badge {
+        background: #fde7e7;
+        color: #c42b2b;
+        border-radius: 4px;
+        font-size: 13px;
+      }
+      .multi {
+        background: #0f172a;
+        color: #f8fafc;
+        font-family: "Plus Jakarta Sans";
+      }
+      .multi .title {
+        font-weight: 700;
+      }
+      .multi .b {
+        border-radius: 12px;
+        color: #fff;
+      }
+      .sw {
+        width: 14px;
+        height: 14px;
+        border-radius: 99px;
+        display: inline-block;
+      }
+      .expr {
+        background: #fff8f3;
+        color: #1f1411;
+        font-family: "DM Sans";
+        grid-column: span 2;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+      }
+      .expr .title {
+        font-family: "Bricolage Grotesque";
+        font-weight: 800;
+        font-size: 34px;
+        margin-top: 4px;
+        letter-spacing: -0.02em;
+      }
+      .expr .b {
+        background: #d61f7a;
+        color: #fff;
+        border-radius: 999px;
+        padding: 10px 18px;
+        font-size: 14px;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="grid"></div>
+    <div class="wrap">
+      <div>
+        <p class="eyebrow"><span class="dot"></span>Open DS · design systems as data</p>
+        <h1>Every design system is a <em>set of answers.</em></h1>
+        <p class="sub">Pick a scheme. Connect your AI and deploy it, or use the package yourself. Every decision says why.</p>
+        <div class="chain">
+          <div class="row"><span class="lab">Question</span><span>Which text roles does the product need?</span></div>
+          <div class="row"><span class="lab">Answer</span><span class="chip ink">Core and data</span></div>
+          <div class="row">
+            <span class="lab">Because</span><span class="chip acc">Numbers and records</span
+            ><span class="chip acc">Scan and compare</span>
+          </div>
+        </div>
+      </div>
+      <div class="schemes">
+        <div class="card dense">
+          <p class="name">Dense data</p>
+          <p class="title">Order 1042</p>
+          <p class="line">Due in 3 days · 1,240.00</p>
+          <div class="btns"><span class="b">Export</span><span class="badge">Late</span></div>
+        </div>
+        <div class="card content">
+          <p class="name">Content first</p>
+          <p class="title">Before you go</p>
+          <p class="line">Pack the night before.</p>
+          <div class="btns"><span class="b">Subscribe</span><span class="badge">New</span></div>
+        </div>
+        <div class="card access">
+          <p class="name">Accessible first</p>
+          <p class="title">Your application</p>
+          <p class="line">Step 2 of 4</p>
+          <div class="btns"><span class="b">Continue</span><span class="badge">Required</span></div>
+        </div>
+        <div class="card multi">
+          <p class="name">Multi-brand · 3 brands</p>
+          <p class="title">Get started</p>
+          <p class="line">
+            <span class="sw" style="background: #0f766e"></span> <span class="sw" style="background: #6d28d9"></span>
+            <span class="sw" style="background: #c2410c"></span> Aster · Birch · Coral
+          </p>
+          <div class="btns"><span class="b" style="background: #6d28d9">Choose a plan</span></div>
+        </div>
+        <div class="card expr">
+          <div>
+            <p class="name">Brand expressive</p>
+            <p class="title">Join the drop.</p>
+          </div>
+          <span class="b">Join now</span>
+        </div>
+      </div>
+    </div>
+    <div class="stack">
+      <span class="chip">Style Dictionary</span><span class="chip">shadcn + Radix</span><span class="chip">Storybook</span
+      ><span class="chip">CLI</span><span class="chip">MCP</span><span class="chip">AGENTS.md</span>
+    </div>
+  </body>
+</html>

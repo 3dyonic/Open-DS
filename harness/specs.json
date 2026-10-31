@@ -1,0 +1,340 @@
+{
+  "$schema": "./harness.schema.json",
+  "description": "Claude's specs for the MVP: one item per Jira ticket, each listing what it delivers (In) and the checks that prove it. The harness runs these next to Yonatan's instructions.",
+  "source": "Jira OD-109 to OD-127, created 2026-10-30 and 2026-10-31.",
+  "items": [
+    {
+      "id": "OD-115",
+      "title": "Harness: DoD test suite for every layer",
+      "in": [
+        "instructions.json",
+        "specs.json",
+        "runner and report",
+        "harness tests"
+      ],
+      "checks": [
+        "harness-covers-instructions",
+        "harness-covers-specs",
+        "harness-self-test"
+      ]
+    },
+    {
+      "id": "OD-109",
+      "title": "All 5 schemes as data, with because links",
+      "in": [
+        "schema/scheme.schema.json and schema/grammar.schema.json",
+        "schemes/grammar.json: reasons, scopes, questions, situations",
+        "one file per scheme: answers with why and because, usage rules, DTCG tokens"
+      ],
+      "checks": [
+        "schemes-five",
+        "schemes-answer-every-question",
+        "schemes-because-resolves",
+        "schemes-tokens-resolve",
+        "schemes-usage-rules",
+        "json-files-validate",
+        "llm-scheme-descriptions"
+      ]
+    },
+    {
+      "id": "OD-116",
+      "title": "LLM and agent context layer",
+      "in": [
+        "descriptions on every scheme object",
+        "title, description and examples in every schema property",
+        "llms.txt, llms-full.txt, AGENTS.md",
+        "agent skill",
+        "MCP docstrings",
+        "docs front matter"
+      ],
+      "checks": [
+        "llm-schema-descriptions",
+        "llm-scheme-descriptions",
+        "llm-files",
+        "llm-skill",
+        "llm-mcp-docstrings",
+        "llm-docs-frontmatter"
+      ]
+    },
+    {
+      "id": "OD-117",
+      "title": "Tokens with Style Dictionary",
+      "in": [
+        "tokens/ package",
+        "CSS light and dark per scheme",
+        "shadcn variable mapping",
+        "DTCG JSON"
+      ],
+      "checks": [
+        "tokens-style-dictionary",
+        "tokens-built-all-schemes",
+        "tokens-light-dark",
+        "tokens-shadcn-mapping",
+        "tokens-component-keys-resolve"
+      ]
+    },
+    {
+      "id": "OD-118",
+      "title": "Components on the component API, themed per scheme",
+      "in": [
+        "ui/ components",
+        "component keys only",
+        "shadcn registry"
+      ],
+      "checks": [
+        "ui-components",
+        "ui-component-keys-only",
+        "ui-registry"
+      ]
+    },
+    {
+      "id": "OD-111",
+      "title": "CLI deploys any scheme",
+      "in": [
+        "list, show, why, when, init, add",
+        "init writes tokens, components, AGENTS.md and the skill"
+      ],
+      "checks": [
+        "cli-package",
+        "cli-package-works",
+        "cli-commands",
+        "cli-init-temp"
+      ]
+    },
+    {
+      "id": "OD-112",
+      "title": "Local MCP",
+      "in": [
+        "FastMCP server",
+        "list, get answer, why, when to use, deploy",
+        "deploy runs the CLI"
+      ],
+      "checks": [
+        "mcp-node-sdk",
+        "mcp-tools",
+        "mcp-uses-cli-engine",
+        "mcp-tests"
+      ]
+    },
+    {
+      "id": "OD-119",
+      "title": "Storybook",
+      "in": [
+        "a story per component",
+        "scheme and mode switches"
+      ],
+      "checks": [
+        "storybook-stories",
+        "storybook-switches",
+        "storybook-build"
+      ]
+    },
+    {
+      "id": "OD-110",
+      "title": "Website",
+      "in": [
+        "Next.js static SPA",
+        "home, schemes, scheme scopes, usage, take"
+      ],
+      "checks": [
+        "site-stack",
+        "site-static-export",
+        "site-routes",
+        "site-build",
+        "content-no-real-names"
+      ]
+    },
+    {
+      "id": "OD-120",
+      "title": "Docusaurus docs of the delivered design system",
+      "in": [
+        "docs/ site, one scheme at a time",
+        "about, voice and tone, a page per scope, components, themes, agents",
+        "the Open DS guide in guide/"
+      ],
+      "checks": [
+        "docs-docusaurus",
+        "docs-sections",
+        "llm-docs-frontmatter",
+        "docs-build",
+        "content-no-real-names"
+      ]
+    },
+    {
+      "id": "OD-121",
+      "title": "Local end to end",
+      "in": [
+        "TESTING.md",
+        "pnpm e2e"
+      ],
+      "checks": [
+        "e2e-guide",
+        "e2e-run"
+      ]
+    },
+    {
+      "id": "OD-123",
+      "title": "One template for every scope; voice and scenarios as questions",
+      "in": [
+        "five method questions for every scope, voice included",
+        "owned tokens, landing components and situations per scope",
+        "use scenario questions",
+        "voice and scenario text as outputs with follows",
+        "voice tokens (content)"
+      ],
+      "checks": [
+        "scopes-uniform-template",
+        "outputs-follow-answers",
+        "schemes-voice-and-themes",
+        "json-files-validate"
+      ]
+    },
+    {
+      "id": "OD-124",
+      "title": "Website rebuilt from the Figma frames",
+      "in": [
+        "home, scheme, scope, what moves, compare, take, contribute, questions pages from frames 115:900 to 130:900",
+        "one scope page template for all 11 scopes, voice included",
+        "reference screenshots in harness/design",
+        "design check: texts in order, fold, palette, height"
+      ],
+      "checks": [
+        "site-routes",
+        "site-design-fidelity",
+        "site-build",
+        "content-no-real-names"
+      ]
+    },
+    {
+      "id": "OD-126",
+      "title": "Docusaurus documents the delivered design system, per scheme",
+      "in": [
+        "cli/src/docs.mjs page builder",
+        "docs/ builds any scheme (OPEN_DS_SCHEME) in its own fonts and colors",
+        "open-ds init --docs and MCP deploy docs=true",
+        "Open DS pages moved to guide/, old notes to guide/archive/"
+      ],
+      "checks": [
+        "docs-sections",
+        "llm-docs-frontmatter",
+        "docs-build",
+        "cli-commands",
+        "mcp-tests"
+      ]
+    },
+    {
+      "id": "OD-127",
+      "title": "Remove unused code; the CLI package works outside the repo",
+      "in": [
+        "first-preview recipe model removed: packs, recipes, boilerplates, fragments, fixtures, examples, validator, recipe CLI commands and MCP tools",
+        "the packed CLI runs outside the repository",
+        "pnpm test:package: pack, npx init in a fresh app, type-check and build"
+      ],
+      "checks": [
+        "cli-package-works",
+        "cli-commands",
+        "mcp-tests",
+        "json-files-validate"
+      ]
+    },
+    {
+      "id": "OD-128",
+      "title": "open-ds create writes a full design system project for one scheme",
+      "in": [
+        "tokens/src DTCG source and a Style Dictionary build (npm run tokens) to build/",
+        "the components, Storybook for the scheme with mode and brand toggles and usage rules",
+        "Docusaurus docs from the scheme, in its own colours and fonts",
+        "scheme.json, AGENTS.md, the skill, llms.txt, CI and a README",
+        "the project depends on the open-ds package for why and when",
+        "pnpm test:create: pack, create, npm install, build tokens, Storybook and docs"
+      ],
+      "checks": [
+        "cli-create-temp",
+        "cli-create-works",
+        "cli-commands"
+      ]
+    },
+    {
+      "id": "OD-136",
+      "title": "Components scope: each scheme picks its inventory from the shadcn catalogue",
+      "in": [
+        "grammar components scope with the five method questions and a missing-component situation",
+        "grammar catalogue: the shadcn/ui new-york-v4 UI components with families",
+        "every scheme answers the components questions and lists its inventory, in and notable out, each with why",
+        "inventory shown as N of M in the docs, open-ds show and AGENTS.md, with built or not yet built"
+      ],
+      "checks": [
+        "schemes-inventory",
+        "scopes-uniform-template",
+        "json-files-validate",
+        "docs-sections",
+        "llm-files"
+      ]
+    },
+    {
+      "id": "OD-137",
+      "title": "Token linkage, values only on primitives, and a subtle living style guide",
+      "in": [
+        "semantic and component tokens shown as links to the primitive they end at, light and dark",
+        "primitives listed per foundation with raw values and a live sample",
+        "a specimen per foundation drawn from the scheme's CSS variables (type set in the scheme's scenario text)",
+        "shadows moved to primitives so no semantic token holds a raw value",
+        "site scope pages show links instead of raw values on decisions"
+      ],
+      "checks": [
+        "tokens-semantics-are-links",
+        "docs-sections",
+        "docs-build",
+        "site-build"
+      ]
+    },
+    {
+      "id": "OD-135",
+      "title": "Each scheme shows its UI with its own content, data, status meanings and voice",
+      "in": [
+        "samples in every scheme: screen, actions, statuses with meaning and why, table, figures, field, messages, confirm, card, tabs, menu",
+        "danger only where something failed or will be lost",
+        "Storybook stories and the site preview read the active scheme's samples, and say when a component is not in the inventory",
+        "no shared fixtures between schemes"
+      ],
+      "checks": [
+        "schemes-samples",
+        "json-files-validate",
+        "storybook-build",
+        "site-build"
+      ]
+    },
+    {
+      "id": "OD-138",
+      "title": "Storybook: the canvas shows the component, one MDX docs template explains it, every component's stories built the same way",
+      "in": [
+        "one MDX docs page template for every component: what it is, in or out of the inventory and why, examples, playground and controls, when to use it, component keys as links",
+        "stories files: parameters.openDs, Playground, Examples; no usage text in the canvas",
+        "the docs page follows the scheme chosen in the toolbar",
+        "created projects get the same template"
+      ],
+      "checks": [
+        "storybook-stories-uniform",
+        "storybook-build",
+        "cli-create-works"
+      ]
+    },
+    {
+      "id": "OD-147",
+      "title": "Patterns in the catalogue; a data table for Dense data",
+      "in": [
+        "grammar catalogue.patterns: larger parts built from catalogue items, outside the component count",
+        "schemes may carry patterns with why; every part must be in the inventory",
+        "data-table pattern on TanStack Table (shadcn Data Table guide): search, faceted filters, sorting, column choice, selection with bulk actions, pagination, density",
+        "Dense data carries it, with 24 sample alerts; stories, docs and the site list it; installs bring TanStack Table only where carried"
+      ],
+      "checks": [
+        "schemes-inventory",
+        "schemes-samples",
+        "storybook-stories-uniform",
+        "cli-create-works",
+        "cli-package-works"
+      ]
+    }
+  ]
+}

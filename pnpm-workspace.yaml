@@ -1,3 +1,10 @@
 packages:
   - site
   - cli
+  - mcp
+  - harness
+  - tokens
+  - ui
+  - storybook
+  - docs
+  - e2e/app

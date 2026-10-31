@@ -5,9 +5,10 @@ __pycache__/
 .ruff_cache/
 *.egg-info/
 .mypy_cache/
-node_modules/
+node_modules
 site/.next/
 site/out/
+site/src/generated/
 site/public/downloads/
 dist/
 coverage/
@@ -17,3 +18,19 @@ coverage/
 .env.*
 open-ds.json
 .codex/
+harness/report.md
+harness/report.json
+r/
+cli/assets/
+storybook/storybook-static/
+docs/build/
+docs/.docusaurus/
+# Written by open-ds init during the end-to-end run
+e2e/app/src/components/
+e2e/app/src/lib/
+e2e/app/src/styles/
+e2e/app/AGENTS.md
+e2e/app/open-ds.json
+e2e/app/.open-ds/
+e2e/app/.claude/
+e2e/app/dist/
