@@ -27,7 +27,7 @@ export function ComponentsScopeView({ p }: { p: ComponentsPage }) {
           <span className="text-accent-text">Components</span>
         </nav>
         <h1 className="text-[44px] font-extrabold leading-[1.05] md:text-[52px]">Components</h1>
-        <p className="max-w-[860px] text-[19px] leading-[1.45] text-[#3e3a31]">
+        <p className="max-w-[860px] text-[19px] leading-[1.45] text-body">
           <span className="font-semibold text-ink">{p.count} components</span> are in{" "}
           {p.scheme.name}. Each one is here for a reason, and every reason traces back to the
           answers further down.
@@ -62,7 +62,7 @@ export function ComponentsScopeView({ p }: { p: ComponentsPage }) {
                   <li key={i.id} className="grid gap-1 py-[10px] sm:grid-cols-[200px_1fr] sm:gap-4">
                     <span className="text-[16px] font-semibold">{i.name}</span>
                     <span className="flex flex-col gap-3">
-                      <span className="text-[15px] leading-[1.45] text-[#3e3a31]">{i.why}</span>
+                      <span className="text-[15px] leading-[1.45] text-body">{i.why}</span>
                       {i.shot && (
                         // eslint-disable-next-line @next/next/no-img-element
                         <img
@@ -87,7 +87,7 @@ export function ComponentsScopeView({ p }: { p: ComponentsPage }) {
           <h2 id="cascade-title" className="text-[28px] font-extrabold">
             How the decisions cascade into them
           </h2>
-          <p className="max-w-[860px] text-[17px] leading-[1.45] text-[#3e3a31]">
+          <p className="max-w-[860px] text-[17px] leading-[1.45] text-body">
             The reasons come first. Five answers follow from them, and each answer shapes the
             inventory.
           </p>
@@ -143,9 +143,9 @@ export function ComponentsScopeView({ p }: { p: ComponentsPage }) {
                       chosen={q.chosen}
                       label={`The options for: ${q.text}`}
                     />
-                    <p className="text-[15px] leading-[1.45] text-[#3e3a31]">{q.why}</p>
+                    <p className="text-[15px] leading-[1.45] text-body">{q.why}</p>
                   </div>
-                  <p className="text-[15px] leading-[1.45] text-[#3e3a31]">{q.effect}</p>
+                  <p className="text-[15px] leading-[1.45] text-body">{q.effect}</p>
                 </li>
               ))}
             </ul>
@@ -153,7 +153,7 @@ export function ComponentsScopeView({ p }: { p: ComponentsPage }) {
 
           <li className="flex flex-col gap-2 rounded-[8px] border border-line bg-white p-6">
             <p className={`${eyebrow} text-muted`}>3 · The inventory</p>
-            <p className="text-[15px] leading-[1.45] text-[#3e3a31]">
+            <p className="text-[15px] leading-[1.45] text-body">
               {p.count} components, listed above, each with the reason it passed.{" "}
               <a href="#inventory" className="font-semibold text-ink underline">
                 Back to the list
@@ -163,7 +163,7 @@ export function ComponentsScopeView({ p }: { p: ComponentsPage }) {
         </ol>
       </section>
 
-      <p className="flex items-start gap-4 rounded-[8px] bg-ink p-6 text-[20px] leading-[1.45] text-paper">
+      <p className="inverse flex items-start gap-4 rounded-[8px] bg-ink p-6 text-[20px] leading-[1.45] text-paper">
         <span aria-hidden className="mt-2 size-4 shrink-0 bg-accent" />
         {p.line}
       </p>

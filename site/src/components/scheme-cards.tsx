@@ -32,7 +32,7 @@ export function SchemeCards() {
               ))}
             </span>
             <span className="text-[26px] font-extrabold">{s.name}</span>
-            <span className="text-[16px] text-[#3e3a31]">{s.summary}</span>
+            <span className="text-[16px] text-body">{s.summary}</span>
             <span className="flex flex-wrap gap-[6px]">
               {cardFacts(s).map((f) => (
                 <span
@@ -56,7 +56,7 @@ export function SchemeCards() {
             <Squares lit={[true, false, false, true, false, false]} size={14} />
           </span>
           <span className="text-[26px] font-extrabold">Compare schemes</span>
-          <span className="text-[16px] text-[#3e3a31]">
+          <span className="text-[16px] text-body">
             The same questions, side by side, with what differs lit.
           </span>
           <span className="flex flex-wrap gap-[6px]">

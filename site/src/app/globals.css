@@ -18,8 +18,55 @@
   --color-accent: #ff5a1f;
   --color-accent-text: #b93a00;
   --color-accent-soft: #ffe3d6;
+  --color-body: #3e3a31;
+  --color-well: #f7f8fa;
+  /* Inside the large ink blocks: a rule line and a raised panel. */
+  --color-ink-rule: #3e3a31;
+  --color-ink-raised: #2c2821;
   --font-sans: "Bricolage Grotesque", ui-sans-serif, system-ui, sans-serif;
   --font-mono: "DM Mono", ui-monospace, monospace;
+}
+
+/* Dark mode follows the device setting, like Orchestra and 3dyonic.com: no toggle, no script.
+   The palette is designed, not inverted: warm dark paper, cream ink, the same orange.
+   Small ink elements (buttons, chips, badges) flip to cream on dark. The large ink blocks are
+   marked .inverse and stay dark, on a deeper surface than the page. */
+:root {
+  color-scheme: light dark;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --color-paper: #1b1914;
+    --color-white: #24211b;
+    --color-ink: #f1ebdd;
+    --color-body: #d3cbba;
+    --color-muted: #a59c89;
+    --color-line: #3d382f;
+    --color-tag: #2e2a22;
+    --color-accent-text: #ff9a70;
+    --color-accent-soft: #46271b;
+    --color-well: #2a2721;
+  }
+
+  .inverse {
+    --color-ink: #0f0e0b;
+    --color-paper: #f1ebdd;
+    --color-line: #bdb4a2;
+    --color-muted: #4b463b;
+    --color-ink-rule: #39342b;
+    --color-ink-raised: #26231d;
+  }
+
+  /* A tile that holds scheme specimens: the schemes draw in their light theme, so the tile
+     stays light, like a printed specimen card, with the light site colours inside it. */
+  .specimen {
+    --color-well: #f7f8fa;
+    --color-ink: #16140f;
+    --color-muted: #645e50;
+    --color-line: #cfc6b4;
+    color: var(--color-ink);
+  }
 }
 
 html {
