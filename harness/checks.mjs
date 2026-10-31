@@ -1172,8 +1172,15 @@ export const CHECKS = {
   "git-rc1-from-master": {
     requires: [],
     run: (c) => {
-      const r = c.sh("git", ["merge-base", "--is-ancestor", "origin/master", "origin/RC1"]);
-      return r.code === 0 ? ok("RC1 contains master") : bad("origin/RC1 missing or not based on master");
+      // RC1 grows from master, and master only ever takes RC1 through release merges. So master may hold
+      // merge commits RC1 lacks (the release merges themselves), but never work of its own.
+      const base = c.sh("git", ["merge-base", "origin/master", "origin/RC1"]);
+      if (base.code !== 0) return bad("origin/RC1 missing or not based on master");
+      const own = c.sh("git", ["rev-list", "--no-merges", "origin/RC1..origin/master"]);
+      const commits = own.out.trim().split("\n").filter(Boolean);
+      return commits.length
+        ? bad(`master has ${commits.length} commits RC1 lacks: bring master into RC1`)
+        : ok("RC1 contains all of master's work");
     },
   },
   "git-feature-merges": {

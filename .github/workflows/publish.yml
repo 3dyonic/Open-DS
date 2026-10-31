@@ -1,0 +1,70 @@
+# Publishes the CLI when a GitHub release is published (OD-163):
+#   npmjs:           open-ds, with provenance. Needs the repository secret NPM_TOKEN.
+#   GitHub Packages: @3dyonic/open-ds, with GITHUB_TOKEN, so it shows on the repository's Packages page.
+# The release tag must be v<version> from cli/package.json. Nothing publishes without a release.
+# Run it by hand with dry_run to see what would be published.
+name: publish
+
+on:
+  release:
+    types: [published]
+  workflow_dispatch:
+    inputs:
+      dry_run:
+        description: Pack and check only; publish nothing.
+        type: boolean
+        default: true
+
+permissions:
+  contents: read
+  id-token: write
+  packages: write
+
+jobs:
+  cli:
+    runs-on: ubuntu-latest
+    env:
+      DRY: ${{ github.event_name == 'workflow_dispatch' && inputs.dry_run && '--dry-run' || '' }}
+    steps:
+      - uses: actions/checkout@v5
+      - uses: pnpm/action-setup@v4
+        with:
+          version: 10.33.4
+      - uses: actions/setup-node@v5
+        with:
+          node-version: "22"
+          cache: pnpm
+      - name: Install
+        run: pnpm install --frozen-lockfile
+      - name: The tag matches the version
+        if: github.event_name == 'release'
+        run: |
+          version="v$(node -p "require('./cli/package.json').version")"
+          test "$version" = "${{ github.event.release.tag_name }}" || { echo "::error::Release tag ${{ github.event.release.tag_name }} is not $version (cli/package.json)."; exit 1; }
+      - name: Build and test what ships
+        run: |
+          pnpm --dir tokens build
+          pnpm --dir cli test
+          pnpm test:package
+
+      - name: npmjs
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
+        working-directory: cli
+        run: |
+          if [ -z "$NODE_AUTH_TOKEN" ] && [ -z "$DRY" ]; then echo "::notice title=npmjs skipped::Add the NPM_TOKEN repository secret to publish open-ds to npmjs."; exit 0; fi
+          echo "//registry.npmjs.org/:_authToken=${NODE_AUTH_TOKEN}" > .npmrc
+          npm publish --access public --provenance --registry https://registry.npmjs.org $DRY
+          rm .npmrc
+
+      - name: GitHub Packages
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        working-directory: cli
+        run: |
+          # GitHub Packages takes only a scope that matches the owner.
+          npm pkg set name=@3dyonic/open-ds
+          echo "@3dyonic:registry=https://npm.pkg.github.com" > .npmrc
+          echo "//npm.pkg.github.com/:_authToken=${NODE_AUTH_TOKEN}" >> .npmrc
+          npm publish --registry https://npm.pkg.github.com $DRY
+          rm .npmrc
