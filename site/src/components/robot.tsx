@@ -36,6 +36,11 @@ export const ROBOTS = {
     light: [466, 720],
     dark: [473, 720],
   },
+  pulse: {
+    alt: "Pulse, a tin robot doctor, listens through a stethoscope and holds a clipboard.",
+    light: [370, 720],
+    dark: [354, 720],
+  },
   shelf: {
     alt: "Shelf, a tin robot, lifts one wooden crate with an orange tag off a shelf of three.",
     light: [623, 720],
