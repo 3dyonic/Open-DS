@@ -10,7 +10,7 @@
 //   01-variables.js     Semantic and Component collections, one mode per theme, with CSS code syntax;
 //                       component variables alias semantic ones, as in tokens.css. Text and effect styles.
 //   02-foundations.js   Cover, then colour swatches (every theme), type, spacing and radius specimens.
-//   03-components.js    The scheme's components that have component keys, bound to the variables.
+//   03-components-*.js  The scheme's whole inventory, each component built from the variables.
 //   04-scheme-*.js      Every question with its answer, why and because; voice, usage and inventory.
 //
 // Sources: tokens/dist/<scheme>/tokens.css (the shipped semantic and component variables, run
@@ -18,6 +18,7 @@
 import { mkdirSync, readFileSync, rmSync, writeFileSync } from "node:fs";
 import { dirname, join } from "node:path";
 import { fileURLToPath } from "node:url";
+import { COMPONENT_HELPERS, FAMILIES, RECIPES } from "./figma-kit-components.mjs";
 
 const ROOT = join(dirname(fileURLToPath(import.meta.url)), "..");
 const MAX_SCRIPT = 48_000; // use_figma takes up to 50,000 characters per call.
@@ -73,6 +74,22 @@ const px = (v) => {
   return m ? Number(m[1]) * (m[2] === "rem" ? 16 : 1) : null;
 };
 const isShadow = (v) => /^-?\d+(px)? -?\d+(px)? /.test(v) && /#/.test(v);
+
+/** A line height for Figma: px stays px, a plain ratio (1.55) becomes a percentage. */
+function lineHeightOf(v) {
+  if (v == null) return null;
+  if (/^[\d.]+$/.test(String(v)) && Number(v) < 4) return { unit: "PERCENT", value: Math.round(Number(v) * 1000) / 10 };
+  const n = px(v);
+  return n === null ? null : { unit: "PIXELS", value: n };
+}
+/** Letter spacing for Figma: em becomes a percentage of the size, px stays px. */
+function letterSpacingOf(v) {
+  if (v == null) return null;
+  const em = String(v).match(/^(-?[\d.]+)em$/);
+  if (em) return { unit: "PERCENT", value: Number(em[1]) * 100 };
+  const n = px(v);
+  return n ? { unit: "PIXELS", value: n } : null;
+}
 
 /** One variable's type and value in a mode. */
 function valueOf(v) {
@@ -159,6 +176,8 @@ export function kitData(id) {
     }
     v.type = t;
     v.scopes = scopesFor(v.name, t);
+    // A unitless ratio (1.55) is not a pixel line height: keep it, but offer it nowhere.
+    if (/line-height/.test(v.css) && Object.values(v.values).some((k) => k.kind === "FLOAT" && k.value < 4)) v.scopes = [];
     kept.push(v);
   }
   const keptSet = new Set(kept.map((v) => v.css));
@@ -178,9 +197,9 @@ export function kitData(id) {
     role: r,
     family: valueOf(resolve(`type-${r}-font-family`) ?? '"Inter"').value,
     size: px(resolve(`type-${r}-font-size`)) ?? 14,
-    lineHeight: px(resolve(`type-${r}-line-height`)),
+    lineHeight: lineHeightOf(resolve(`type-${r}-line-height`)),
     weight: Number(resolve(`type-${r}-font-weight`) ?? 400),
-    letterSpacing: px(resolve(`type-${r}-letter-spacing`) ?? "0"),
+    letterSpacing: letterSpacingOf(resolve(`type-${r}-letter-spacing`)),
   }));
 
   // Questions and answers, grouped by reason and scope.
@@ -345,8 +364,8 @@ if (D.last) {
     st.name = t.name;
     st.fontName = await load(fontFor(t.family, t.weight));
     st.fontSize = t.size;
-    if (t.lineHeight) st.lineHeight = { unit: 'PIXELS', value: t.lineHeight };
-    if (t.letterSpacing) st.letterSpacing = { unit: 'PIXELS', value: t.letterSpacing };
+    if (t.lineHeight) st.lineHeight = t.lineHeight;
+    if (t.letterSpacing) st.letterSpacing = t.letterSpacing;
     st.description = t.family + (families.has(t.family) ? '' : ' (not in Figma here: shown in Inter)') + ', ' + t.weight;
     styleIds.push(st.id);
   }
@@ -445,149 +464,79 @@ return { created, swatches: D.colors.length * D.modes.length, styles: D.styles.l
 `;
 }
 
-function componentsScript(d) {
-  const data = { components: d.components, modes: d.modes, inventory: d.inventory.map((c) => c.id), name: d.name };
-  return `${HEADER(d, "03 components")}const D = ${JSON.stringify(data)};
+/** The scheme's inventory, in family order, as [family, [ids]] — only components with a recipe. */
+function inventoryByFamily(d) {
+  const have = new Set(d.inventory.map((c) => c.id));
+  return FAMILIES.map(([f, ids]) => [f, ids.filter((id) => have.has(id) && RECIPES[id])]).filter(([, ids]) => ids.length);
+}
+
+function componentsScripts(d) {
+  // One script per family or two, so each stays small. The first makes the page; the rest add to it.
+  const fams = inventoryByFamily(d);
+  const count = fams.reduce((n, [, ids]) => n + ids.length, 0);
+  const missing = d.inventory.map((c) => c.id).filter((id) => !RECIPES[id]);
+  const chunks = [];
+  let cur = [];
+  for (const fam of fams) {
+    const size = (x) => x.reduce((n, [, ids]) => n + ids.reduce((m, id) => m + RECIPES[id][2].length, 0), 0);
+    if (cur.length && size(cur) + size([fam]) > (PART || 22_000)) (chunks.push(cur), (cur = []));
+    cur.push(fam);
+  }
+  if (cur.length) chunks.push(cur);
+  return chunks.map((part, i) => {
+    const first = i === 0;
+    const last = i === chunks.length - 1;
+    const recipes = part
+      .flatMap(([, ids]) => ids)
+      .map((id) => `  ${JSON.stringify(id)}: [${JSON.stringify(RECIPES[id][0])}, ${JSON.stringify(RECIPES[id][1])}, async () => {${RECIPES[id][2]}\n  }],`)
+      .join("\n");
+    const data = { name: d.name, first, last, families: part, count, missing };
+    return `${HEADER(d, `03 components, part ${i + 1} of ${chunks.length}`)}const D = ${JSON.stringify(data)};
 ${HELPERS}
-await pageNamed('Components', 2);
-const fam = (role) => { const st = figma.getLocalTextStyles ? null : null; return role; };
-const styles = await figma.getLocalTextStylesAsync();
-const style = (role) => styles.find((s) => s.name === 'Type/' + role) || styles.find((s) => s.name === 'Type/body') || styles[0];
-async function label(chars, role, fill) {
-  const t = figma.createText(); const st = style(role);
-  if (st) { await load(st.fontName); t.fontName = st.fontName; t.characters = chars; await t.setTextStyleIdAsync(st.id); }
-  else { t.fontName = await load({ family: 'Inter', style: 'Regular' }); t.characters = chars; }
-  if (fill) bindFill(t, fill); return t;
+${COMPONENT_HELPERS}
+const R = {
+${recipes}
+};
+const sansF = await load({ family: 'Inter', style: 'Regular' }), boldF = await load({ family: 'Inter', style: 'Bold' }), semiF = await load({ family: 'Inter', style: 'Semi Bold' });
+let page, root;
+if (D.first) {
+  page = await pageNamed('Components', 2);
+  root = figma.createAutoLayout('VERTICAL', { name: 'Components', itemSpacing: 72, paddingLeft: 80, paddingRight: 80, paddingTop: 80, paddingBottom: 80 });
+  root.fills = [{ type: 'SOLID', color: { r: 1, g: 1, b: 1 } }];
+  root.appendChild(await text('Components', { font: boldF, size: 56, color: INK }));
+  root.appendChild(await text(D.count + ' components, the inventory of ' + D.name + '. Each reads only the variables of the kit, so it follows every theme: switch the Semantic and Component modes on a frame to see another.', { font: sansF, size: 18, color: MUTED, width: 960, lineHeight: 27 }));
+  root.x = 0; root.y = 0;
+} else {
+  page = figma.root.children.find((p) => p.name === 'Components'); await figma.setCurrentPageAsync(page);
+  root = page.children.find((n) => n.name === 'Components' && n.type === 'FRAME');
 }
-function pad(node, x, y) { if (!bindNum(node, 'paddingLeft', x)) node.paddingLeft = 12; bindNum(node, 'paddingRight', x) || (node.paddingRight = 12); if (y) { bindNum(node, 'paddingTop', y) || (node.paddingTop = 8); bindNum(node, 'paddingBottom', y) || (node.paddingBottom = 8); } }
-function radius(node, name) { if (V(name)) for (const f of ['topLeftRadius', 'topRightRadius', 'bottomLeftRadius', 'bottomRightRadius']) node.setBoundVariable(f, V(name)); }
-function stroke(node, name) { const v = V(name); if (!v) return; node.strokes = [figma.variables.setBoundVariableForPaint({ type: 'SOLID', color: { r: 0.5, g: 0.5, b: 0.5 } }, 'color', v)]; node.strokeAlign = 'INSIDE'; if (!bindNum(node, 'strokeWeight', 'border/width/default')) node.strokeWeight = 1; }
-function base(name, dir = 'HORIZONTAL') { const c = figma.createComponent(); c.name = name; c.layoutMode = dir; c.primaryAxisSizingMode = 'AUTO'; c.counterAxisSizingMode = 'AUTO'; c.counterAxisAlignItems = 'CENTER'; c.primaryAxisAlignItems = 'CENTER'; c.fills = []; return c; }
-function grid(set, cols) { const kids = set.children; let x = 0, y = 0, rowH = 0, i = 0; for (const k of kids) { k.x = x; k.y = y; rowH = Math.max(rowH, k.height); x += k.width + 24; if (++i % cols === 0) { x = 0; y += rowH + 24; rowH = 0; } } set.layoutMode = 'NONE'; let w = 0, h = 0; for (const k of kids) { w = Math.max(w, k.x + k.width); h = Math.max(h, k.y + k.height); } set.resize(w + 32, h + 32); for (const k of kids) { k.x += 16; k.y += 16; } }
-const sets = [];
-const page = figma.currentPage;
-let cursorY = 0;
-async function place(node, title, desc) {
-  const header = await text(title, { font: await load({ family: 'Inter', style: 'Bold' }), size: 28, color: INK });
-  header.x = 0; header.y = cursorY; cursorY += header.height + 12;
-  node.x = 0; node.y = cursorY; cursorY += node.height + 72;
-  if (desc && (node.type === 'COMPONENT_SET' || node.type === 'COMPONENT')) node.description = desc;
-  sets.push(node.id);
-}
-
-if (D.components.includes('button')) {
-  const variants = [['Primary', 'button/primary/background/default', 'button/primary/label', null], ['Primary hover', 'button/primary/background/hover', 'button/primary/label', null], ['Secondary', 'button/secondary/background/default', 'button/secondary/label', 'button/secondary/border'], ['Secondary hover', 'button/secondary/background/hover', 'button/secondary/label', 'button/secondary/border'], ['Ghost', null, 'button/ghost/label', null], ['Ghost hover', 'button/ghost/background-hover', 'button/ghost/label', null], ['Disabled', 'button/disabled/background', 'button/disabled/label', 'button/disabled/border']];
-  const comps = [];
-  for (const [vn, bg, fg, br] of variants) {
-    const c = base('Variant=' + vn); bindNum(c, 'height', 'button/height'); c.primaryAxisSizingMode = 'AUTO'; c.counterAxisSizingMode = 'FIXED';
-    pad(c, 'button/padding-x'); radius(c, 'button/radius'); c.itemSpacing = 6;
-    if (bg) bindFill(c, bg); if (br) stroke(c, br);
-    const t = await label('Button', 'label', fg); c.appendChild(t); bindNum(t, 'fontSize', 'button/font-size');
-    comps.push(c);
+const made = [];
+for (const [family, ids] of D.families) {
+  const sec = figma.createAutoLayout('VERTICAL', { name: family, itemSpacing: 40 }); sec.fills = []; root.appendChild(sec);
+  const head = figma.createAutoLayout('VERTICAL', { name: 'Heading', itemSpacing: 8 }); head.fills = []; sec.appendChild(head);
+  head.appendChild(await text(family.toUpperCase(), { font: semiF, size: 14, color: ACCENT }));
+  const rule = figma.createRectangle(); rule.resize(960, 1); rule.fills = [{ type: 'SOLID', color: LINE }]; head.appendChild(rule);
+  const grid = figma.createAutoLayout('HORIZONTAL', { name: 'Grid', itemSpacing: 40, counterAxisSpacing: 48 }); grid.fills = []; grid.layoutWrap = 'WRAP'; sec.appendChild(grid); grid.resize(1440, grid.height); grid.primaryAxisSizingMode = 'FIXED';
+  for (const id of ids) {
+    const [title, desc, build] = R[id];
+    const card = figma.createAutoLayout('VERTICAL', { name: title, itemSpacing: 10 }); card.fills = []; grid.appendChild(card);
+    card.appendChild(await text(title, { font: boldF, size: 20, color: INK }));
+    card.appendChild(await text(desc, { font: sansF, size: 13, color: MUTED, width: 420, lineHeight: 19 }));
+    // The stage has room above the component so Figma's component name label never covers the title.
+    const stage = figma.createAutoLayout('HORIZONTAL', { name: 'Stage', paddingLeft: 32, paddingRight: 32, paddingTop: 40, paddingBottom: 32, cornerRadius: 12 });
+    fill(stage, 'color-surface-canvas'); card.appendChild(stage);
+    try {
+      const node = await build();
+      stage.appendChild(node);
+      if (node.type === 'COMPONENT' && !node.description) node.description = desc;
+      made.push(node.id);
+    } catch (e) { stage.appendChild(await text('Could not build: ' + e.message, { font: sansF, size: 12, color: ACCENT })); }
   }
-  const set = figma.combineAsVariants(comps, page); set.name = 'Button'; grid(set, 7);
-  await place(set, 'Button', 'Every action. Primary is the one main action in a view. Reads only button/* component keys.');
 }
-
-if (D.components.includes('input')) {
-  const comps = [];
-  for (const [vn, br, bg, fg] of [['Default', 'input/border', 'input/background', 'input/placeholder'], ['Filled', 'input/border', 'input/background', 'input/text'], ['Focus', 'input/border-focus', 'input/background', 'input/text'], ['Disabled', 'input/disabled/border', 'input/disabled/background', 'input/disabled/text']]) {
-    const c = base('State=' + vn); c.primaryAxisAlignItems = 'MIN'; c.resize(240, 32); c.primaryAxisSizingMode = 'FIXED'; c.counterAxisSizingMode = 'FIXED'; bindNum(c, 'height', 'input/height');
-    pad(c, 'input/padding-x'); radius(c, 'input/radius'); bindFill(c, bg); stroke(c, br);
-    if (vn === 'Focus' && V('input/border-focus')) { bindNum(c, 'strokeWeight', 'border/width/focus') || (c.strokeWeight = 2); }
-    const t = await label(vn === 'Default' ? 'Search' : vn === 'Disabled' ? 'Not editable' : 'Alert 2041', 'body', fg); c.appendChild(t); bindNum(t, 'fontSize', 'input/font-size');
-    comps.push(c);
-  }
-  const set = figma.combineAsVariants(comps, page); set.name = 'Input'; grid(set, 4);
-  await place(set, 'Input', 'Text fields. Reads only input/* component keys.');
-}
-
-if (D.components.includes('badge')) {
-  const comps = [];
-  for (const tone of ['neutral', 'info', 'success', 'warning', 'danger']) {
-    if (!V('badge/' + tone + '/background')) continue;
-    const c = base('Tone=' + tone[0].toUpperCase() + tone.slice(1)); pad(c, 'badge/padding-x'); c.paddingTop = 2; c.paddingBottom = 2; radius(c, 'badge/radius');
-    bindFill(c, 'badge/' + tone + '/background');
-    const t = await label(tone[0].toUpperCase() + tone.slice(1), 'caption', 'badge/' + tone + '/label'); c.appendChild(t); bindNum(t, 'fontSize', 'badge/font-size');
-    comps.push(c);
-  }
-  if (comps.length) { const set = figma.combineAsVariants(comps, page); set.name = 'Badge'; grid(set, 5); await place(set, 'Badge', 'Status at a glance. One tone per status meaning.'); }
-}
-
-if (D.components.includes('control')) {
-  const comps = [];
-  for (const [vn, on] of [['Checkbox off', false], ['Checkbox on', true], ['Switch off', false], ['Switch on', true]]) {
-    const isSwitch = vn.startsWith('Switch');
-    const c = base('Control=' + vn); c.itemSpacing = 8;
-    const box = figma.createFrame(); box.name = isSwitch ? 'Track' : 'Box'; box.resize(isSwitch ? 32 : 16, 16); box.layoutMode = 'HORIZONTAL'; box.primaryAxisAlignItems = on ? 'MAX' : 'MIN'; box.counterAxisAlignItems = 'CENTER'; box.paddingLeft = 2; box.paddingRight = 2;
-    if (isSwitch) { box.cornerRadius = 8; bindFill(box, on ? 'control/checked' : 'control/track'); const th = figma.createEllipse(); th.resize(12, 12); bindFill(th, 'control/thumb'); box.appendChild(th); }
-    else { radius(box, 'control/radius'); if (on) bindFill(box, 'control/checked'); else { box.fills = []; stroke(box, 'input/border'); } if (on) { const tick = await label('✓', 'caption', 'control/thumb'); box.primaryAxisAlignItems = 'CENTER'; box.appendChild(tick); } }
-    c.appendChild(box); c.appendChild(await label(isSwitch ? 'Live updates' : 'Select row', 'body', 'color/text/primary'));
-    comps.push(c);
-  }
-  const set = figma.combineAsVariants(comps, page); set.name = 'Checkbox and switch'; grid(set, 4);
-  await place(set, 'Checkbox and switch', 'Choices that are on or off. Reads control/* component keys.');
-}
-
-if (D.components.includes('card')) {
-  const c = base('Card', 'VERTICAL'); c.primaryAxisAlignItems = 'MIN'; c.counterAxisAlignItems = 'MIN'; c.resize(320, 120); c.counterAxisSizingMode = 'FIXED'; c.itemSpacing = 8;
-  bindFill(c, 'card/background'); stroke(c, 'card/border'); radius(c, 'card/radius');
-  for (const f of ['paddingLeft', 'paddingRight', 'paddingTop', 'paddingBottom']) bindNum(c, f, 'card/padding') || (c[f] = 16);
-  const es = (await figma.getLocalEffectStylesAsync()).find((s) => s.name === 'Elevation/card'); if (es) await c.setEffectStyleIdAsync(es.id);
-  const h = await label('Card title', 'heading', 'color/text/primary'); c.appendChild(h);
-  const b = await label('A group of related content, on its own surface.', 'body', 'color/text/secondary'); c.appendChild(b); b.layoutSizingHorizontal = 'FILL'; b.textAutoResize = 'HEIGHT';
-  await place(c, 'Card', 'A surface that groups related content.');
-}
-
-if (D.components.includes('table')) {
-  const c = base('Table', 'VERTICAL'); c.primaryAxisAlignItems = 'MIN'; c.counterAxisAlignItems = 'MIN'; c.itemSpacing = 0; c.resize(480, 100); c.counterAxisSizingMode = 'FIXED';
-  stroke(c, 'table/row-border'); radius(c, 'radius/container'); c.clipsContent = true;
-  const rows = [['Name', 'Status', 'Updated'], ['Row one', 'Open', '09:41'], ['Row two', 'Closed', '08:15'], ['Row three', 'Open', 'Yesterday']];
-  for (const [i, r] of rows.entries()) {
-    const row = figma.createAutoLayout('HORIZONTAL', { name: i ? 'Row' : 'Header', itemSpacing: 0, counterAxisAlignItems: 'CENTER' });
-    c.appendChild(row); row.layoutSizingHorizontal = 'FILL'; bindNum(row, 'height', 'table/row-height'); row.counterAxisSizingMode = 'FIXED';
-    if (i === 0) bindFill(row, 'table/header-background'); else if (i === 2) bindFill(row, 'table/row-selected'); else row.fills = [];
-    if (i < rows.length - 1) { const v = V('table/row-border'); if (v) { row.strokes = [figma.variables.setBoundVariableForPaint({ type: 'SOLID', color: { r: 0.5, g: 0.5, b: 0.5 } }, 'color', v)]; row.strokeTopWeight = 0; row.strokeLeftWeight = 0; row.strokeRightWeight = 0; row.strokeBottomWeight = 1; } }
-    for (const cell of r) {
-      const f = figma.createAutoLayout('HORIZONTAL', { name: 'Cell', counterAxisAlignItems: 'CENTER' }); row.appendChild(f); f.layoutSizingHorizontal = 'FILL'; pad(f, 'table/cell-padding-x');
-      const t = await label(cell, i ? 'data' : 'label', i ? 'color/text/primary' : 'color/text/secondary'); f.appendChild(t); bindNum(t, 'fontSize', 'table/font-size');
-    }
-  }
-  await place(c, 'Table', 'Rows of records. Header, rows, and a selected row.');
-}
-
-if (D.components.includes('tabs')) {
-  const c = base('Tabs'); c.itemSpacing = 24; c.primaryAxisAlignItems = 'MIN';
-  for (const [i, n] of ['Overview', 'Activity', 'Settings'].entries()) {
-    const tab = figma.createAutoLayout('VERTICAL', { name: 'Tab', itemSpacing: 6, counterAxisAlignItems: 'CENTER' }); c.appendChild(tab);
-    tab.appendChild(await label(n, 'label', i === 0 ? 'tabs/label-active' : 'tabs/label'));
-    const bar = figma.createRectangle(); bar.resize(40, 2); tab.appendChild(bar); bar.layoutSizingHorizontal = 'FILL'; if (i === 0) bindFill(bar, 'tabs/indicator'); else bar.fills = [];
-  }
-  await place(c, 'Tabs', 'Switch between views of the same thing.');
-}
-
-if (D.components.includes('overlay')) {
-  const c = base('Menu', 'VERTICAL'); c.primaryAxisAlignItems = 'MIN'; c.counterAxisAlignItems = 'MIN'; c.resize(200, 100); c.counterAxisSizingMode = 'FIXED'; c.paddingTop = 4; c.paddingBottom = 4;
-  bindFill(c, 'overlay/background'); radius(c, 'overlay/radius'); stroke(c, 'color/border/default');
-  const es = (await figma.getLocalEffectStylesAsync()).find((s) => s.name === 'Elevation/overlay'); if (es) await c.setEffectStyleIdAsync(es.id);
-  for (const n of ['Open', 'Rename', 'Delete']) {
-    const item = figma.createAutoLayout('HORIZONTAL', { name: 'Item', counterAxisAlignItems: 'CENTER' }); c.appendChild(item); item.layoutSizingHorizontal = 'FILL';
-    bindNum(item, 'height', 'overlay/item-height'); item.counterAxisSizingMode = 'FIXED'; item.paddingLeft = 12; item.paddingRight = 12; item.fills = [];
-    item.appendChild(await label(n, 'body', n === 'Delete' ? 'color/status/danger' : 'color/text/primary'));
-  }
-  await place(c, 'Menu', 'Dropdown and context menus, popovers. Reads overlay/* keys.');
-}
-
-if (D.components.includes('tooltip')) {
-  const c = base('Tooltip'); c.paddingLeft = 8; c.paddingRight = 8; c.paddingTop = 4; c.paddingBottom = 4; radius(c, 'radius/control');
-  bindFill(c, 'tooltip/background'); c.appendChild(await label('Copied', 'caption', 'tooltip/label'));
-  await place(c, 'Tooltip', 'A short hint on hover or focus.');
-}
-
-const note = await text('This kit carries the components that have component keys. The scheme\\'s full inventory (' + D.inventory.length + ' components) is listed on the Scheme page; every one reads the same variables.', { font: await load({ family: 'Inter', style: 'Regular' }), size: 14, color: MUTED, width: 900 });
-note.x = 0; note.y = cursorY;
-return { components: sets.length, ids: sets };
+if (D.last && D.missing.length) root.appendChild(await text('Not drawn yet: ' + D.missing.join(', ') + '. They read the same variables in code.', { font: sansF, size: 14, color: MUTED, width: 960 }));
+return { part: D.families.map((f) => f[0]), components: made.length };
 `;
+  });
 }
 
 function schemeScripts(d) {
@@ -698,7 +647,7 @@ export function kitScripts(id) {
   const scripts = [
     ...variablesScripts(d).map((code, i) => ({ file: `01-variables-${i + 1}.js`, code })),
     { file: "02-foundations.js", code: foundationsScript(d) },
-    { file: "03-components.js", code: componentsScript(d) },
+    ...componentsScripts(d).map((code, i) => ({ file: `03-components-${i + 1}.js`, code })),
     ...schemeScripts(d).map((code, i) => ({ file: `04-scheme-${i + 1}.js`, code })),
     { file: "05-cover.js", code: coverScript(d) },
   ];
