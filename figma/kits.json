@@ -7,5 +7,5 @@
     "content-first": "https://www.figma.com/design/r0vVNFHYC6aX1FQ2K381ks",
     "multi-brand": "https://www.figma.com/design/Dgqcx7utJcnGmy1uHDAtAC"
   },
-  "plugin": "figma/plugin: the Open DS kits development plugin. In Figma: Plugins, Development, Import plugin from manifest, pick figma/plugin/manifest.json, then run it in a kit file."
+  "plugin": "The Open DS kits Figma plugin is generated, not committed: pnpm figma-kit all writes figma/plugin, and every GitHub release has open-ds-kits-plugin.zip attached. In Figma desktop: Plugins, Development, Import plugin from manifest, pick plugin/manifest.json, then run it in a kit file."
 }
