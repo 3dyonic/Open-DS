@@ -406,7 +406,7 @@ for (const pg of [...figma.root.children]) if (pg.name === 'Page 1' && figma.roo
 // Intro: Open DS, the scheme, what is in the kit and how to use it.
 await pageNamed('Intro', 1);
 const intro = figma.createAutoLayout('VERTICAL', { name: 'Intro', itemSpacing: 40, paddingLeft: 96, paddingRight: 96, paddingTop: 88, paddingBottom: 88 });
-intro.fills = [{ type: 'SOLID', color: PAPER }]; intro.resize(1200, 100); intro.counterAxisSizingMode = 'FIXED';
+intro.fills = [{ type: 'SOLID', color: PAPER }]; intro.resize(1200, 100); intro.counterAxisSizingMode = 'FIXED'; intro.primaryAxisSizingMode = 'AUTO';
 const brand = figma.createAutoLayout('HORIZONTAL', { name: 'Open DS', itemSpacing: 14, counterAxisAlignItems: 'CENTER' }); intro.appendChild(brand);
 const mark = figma.createFrame(); mark.name = 'Mark'; mark.resize(36, 26); mark.fills = []; brand.appendChild(mark);
 ['110111', '101010', '1l1011', '101001', '110111'].forEach((row, r) => [...row].forEach((c, i) => { if (c === '0') return; const px = figma.createRectangle(); px.resize(4, 4); px.x = i * 16 / 3; px.y = r * 16 / 3; px.fills = [{ type: 'SOLID', color: c === 'l' ? ACCENT : INK }]; mark.appendChild(px); }));
@@ -565,7 +565,7 @@ for (const [family, ids] of D.families) {
   const head = figma.createAutoLayout('VERTICAL', { name: 'Heading', itemSpacing: 8 }); head.fills = []; sec.appendChild(head);
   head.appendChild(await text(family.toUpperCase(), { font: semiF, size: 14, color: ACCENT }));
   const rule = figma.createRectangle(); rule.resize(960, 1); rule.fills = [{ type: 'SOLID', color: LINE }]; head.appendChild(rule);
-  const grid = figma.createAutoLayout('HORIZONTAL', { name: 'Grid', itemSpacing: 40, counterAxisSpacing: 48 }); grid.fills = []; grid.layoutWrap = 'WRAP'; sec.appendChild(grid); grid.resize(1440, grid.height); grid.primaryAxisSizingMode = 'FIXED';
+  const grid = figma.createAutoLayout('HORIZONTAL', { name: 'Grid', itemSpacing: 40, counterAxisSpacing: 48 }); grid.fills = []; grid.layoutWrap = 'WRAP'; sec.appendChild(grid); grid.resize(1440, grid.height); grid.primaryAxisSizingMode = 'FIXED'; grid.counterAxisSizingMode = 'AUTO';
   for (const id of ids) {
     const [title, desc, build] = R[id];
     const card = figma.createAutoLayout('VERTICAL', { name: title, itemSpacing: 10 }); card.fills = []; grid.appendChild(card);
@@ -615,7 +615,7 @@ const sans = await load({ family: 'Inter', style: 'Regular' }), bold = await loa
 let page = figma.root.children.find((p) => p.name === 'Scheme');
 if (D.first) page = await pageNamed('Scheme', 4); else await figma.setCurrentPageAsync(page);
 const col = figma.createAutoLayout('VERTICAL', { name: 'Scheme ' + (D.part[0]?.title || ''), itemSpacing: 32, paddingLeft: 48, paddingRight: 48, paddingTop: 48, paddingBottom: 48 });
-col.fills = [{ type: 'SOLID', color: { r: 1, g: 1, b: 1 } }]; col.resize(1000, 100); col.counterAxisSizingMode = 'FIXED';
+col.fills = [{ type: 'SOLID', color: { r: 1, g: 1, b: 1 } }]; col.resize(1000, 100); col.counterAxisSizingMode = 'FIXED'; col.primaryAxisSizingMode = 'AUTO';
 if (D.first) {
   col.appendChild(await text(D.name + ': every question and its answer', { font: bold, size: 36, color: INK, width: 904 }));
   col.appendChild(await text('Reasons come first: why the product exists and who uses it. Scopes follow: what the system decides. Each answer carries its why, and the earlier answers it follows.', { font: sans, size: 15, color: MUTED, width: 904, lineHeight: 22 }));
@@ -637,7 +637,7 @@ if (D.extras) {
   // its description on the next line.
   async function frame(name, x) {
     const f = figma.createAutoLayout('VERTICAL', { name, itemSpacing: 24, paddingLeft: 48, paddingRight: 48, paddingTop: 48, paddingBottom: 48 });
-    f.fills = [{ type: 'SOLID', color: { r: 1, g: 1, b: 1 } }]; f.resize(760, 100); f.counterAxisSizingMode = 'FIXED'; f.x = x; f.y = 0; return f;
+    f.fills = [{ type: 'SOLID', color: { r: 1, g: 1, b: 1 } }]; f.resize(760, 100); f.counterAxisSizingMode = 'FIXED'; f.primaryAxisSizingMode = 'AUTO'; f.x = x; f.y = 0; return f;
   }
   const add = async (f, chars, opts) => { const t = await text(chars, opts); f.appendChild(t); t.layoutSizingHorizontal = 'FILL'; t.textAutoResize = 'HEIGHT'; return t; };
   async function item(f, label, body) {
