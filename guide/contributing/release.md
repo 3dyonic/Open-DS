@@ -39,11 +39,11 @@ This bumps `cli/package.json` and updates the snapshot together; use `minor` or 
 
 ## Workflows
 
-| Workflow     | Runs on                                        | What it does                                                                                                                                                                                                          |
-| ------------ | ---------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `test`       | Every PR; pushes to `RC1` and `master`         | Four jobs: `node` (lint, typecheck, `pnpm test`, the MCP host, the site build), `suites` (tokens, components, `pnpm harness`), `builds` (Storybook, docs), `package` (the packed CLI, `test:package`, `test:create`). |
-| `publish`    | A published release, or by hand with `dry_run` | Checks that the tag matches `cli/package.json`, tests, then publishes `open-ds` to npmjs (with provenance) and `@3dyonic/open-ds` to GitHub Packages.                                                                 |
-| `notify-ops` | `test` passing on a push to `master`           | Sends a `repository_dispatch` to `3dyonic/open-ds-ops`, which builds and deploys open-ds.dev from this commit.                                                                                                        |
+| Workflow     | Runs on                                        | What it does                                                                                                                                                                                                                                                                  |
+| ------------ | ---------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `test`       | Every PR; pushes to `RC1` and `master`         | Four jobs: `node` (lint, typecheck, `pnpm test`, the MCP host, the site build), `suites` (tokens, components, `pnpm harness`), `builds` (Storybook, docs), `package` (the packed CLI, `test:package`, `test:create`).                                                         |
+| `publish`    | A published release, or by hand with `dry_run` | Checks that the tag matches `cli/package.json`, tests, then publishes `open-ds` to npmjs (with provenance) and `@3dyonic/open-ds` to GitHub Packages. It builds the Figma kits plugin and attaches `open-ds-kits-plugin.zip` to the release (and keeps it as a run artifact). |
+| `notify-ops` | `test` passing on a push to `master`           | Sends a `repository_dispatch` to `3dyonic/open-ds-ops`, which builds and deploys open-ds.dev from this commit.                                                                                                                                                                |
 
 ## Hosting lives in open-ds-ops
 

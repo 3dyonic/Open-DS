@@ -28,7 +28,7 @@ pnpm figma-kit dense-data
 
 `pnpm figma-kit all` writes two things:
 
-- **`figma/plugin/`** (committed): the "Open DS kits" development plugin with every scheme's kit. In Figma desktop: Plugins, Development, Import plugin from manifest, and pick `figma/plugin/manifest.json`. Open a kit file, run the plugin, pick the scheme (it guesses from the file name) and press Build the kit. Running it again rebuilds the kit.
+- **`figma/plugin/`**: the "Open DS kits" development plugin with every scheme's kit. It is generated, so it is not committed; every GitHub release has it attached as `open-ds-kits-plugin.zip`, built from that release's schemes. In Figma desktop: Plugins, Development, Import plugin from manifest, and pick `plugin/manifest.json`. Open a kit file, run the plugin, pick the scheme (it guesses from the file name) and press Build the kit. Running it again rebuilds the kit.
 - **`figma/kits/<scheme>/`** (not committed): the same steps as separate scripts, for the Figma MCP (`use_figma`). Large steps can be split finer with `FIGMA_KIT_PART=12000`.
 
 A rebuild replaces the kit's own collections, styles and pages, and nothing else. The cover is the first frame of the first page, so it is the file's thumbnail.
