@@ -11,9 +11,17 @@ export const metadata: Metadata = {
 
 const UPDATED = "2026-11-01";
 
-function Section({ title, children }: { title: string; children: React.ReactNode }) {
+function Section({
+  id,
+  title,
+  children,
+}: {
+  id?: string;
+  title: string;
+  children: React.ReactNode;
+}) {
   return (
-    <section className="flex flex-col gap-3">
+    <section id={id} className="flex scroll-mt-24 flex-col gap-3">
       <h2 className="text-[24px] font-extrabold">{title}</h2>
       <div className="flex flex-col gap-3 text-[17px] leading-[1.55] text-body">{children}</div>
     </section>
@@ -33,7 +41,10 @@ export default function PrivacyPage() {
 
       <Section title="The short version">
         <ul className="flex list-disc flex-col gap-2 pl-5">
-          <li>The website sets no cookies and runs no analytics or tracking.</li>
+          <li>
+            The website counts visits with Google Analytics, only if you accept the cookie banner.
+            If you reject it, nothing from Google loads.
+          </li>
           <li>
             If you ask for a key, we keep what you send in the form to decide and to reach you.
           </li>
@@ -48,10 +59,22 @@ export default function PrivacyPage() {
 
       <Section title="The website">
         <p>
-          The site sets no cookies and loads no analytics, advertising or tracking scripts. If you
-          pick light or dark with the theme switch, that choice stays in your browser’s local
-          storage and never reaches us. The service that serves the site does not store IP
-          addresses. Our host and DNS provider process each request to deliver it.
+          We use Google Analytics 4 to see which pages people read and how they found the site, so
+          we know what to improve. It runs only after you press Accept on the cookie banner. Until
+          then, and if you press Reject, the site loads nothing from Google.
+        </p>
+        <p>
+          When it runs, Google Analytics records the pages you open, the site that sent you, and
+          your browser, device, language and rough location (country or city). It does not log or
+          store your IP address. We turned off Google signals and ad personalization, we run no ads,
+          and we do not link this data to key requests or to anything else about you. Google keeps
+          it for 2 months and processes it for us under its data processing terms; it may be handled
+          outside your country, under Google’s safeguards for data transfers.
+        </p>
+        <p>
+          If you pick light or dark with the theme switch, that choice stays in your browser’s local
+          storage and never reaches us. So does your cookie choice. The service that serves the site
+          does not store IP addresses. Our host and DNS provider process each request to deliver it.
         </p>
       </Section>
 
@@ -87,10 +110,20 @@ export default function PrivacyPage() {
         </p>
       </Section>
 
-      <Section title="Cookies">
+      <Section id="cookies" title="Cookies">
         <p>
-          The public site sets none. The admin area sets one cookie that keeps an admin signed in
-          for up to 7 days. It is only set for admins who sign in.
+          If you accept, Google Analytics sets two cookies on this site: <code>_ga</code>, which
+          tells one visitor from another, and <code>_ga_&lt;id&gt;</code>, which keeps the visit
+          together. Both last up to 2 years unless you clear them or withdraw. If you reject, none
+          are set.
+        </p>
+        <p>
+          You can change your mind any time: press <strong>Cookie settings</strong> at the bottom of
+          any page. Rejecting there stops measuring and removes the Google Analytics cookies.
+        </p>
+        <p>
+          The admin area sets one more cookie that keeps an admin signed in for up to 7 days. It is
+          only set for admins who sign in.
         </p>
       </Section>
 
