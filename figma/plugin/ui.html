@@ -1,8 +1,0 @@
-<style>body{font:13px Inter,system-ui,sans-serif;margin:16px;color:#16140f}select,button{width:100%;height:32px;margin-top:8px;font:inherit}button{background:#16140f;color:#f6f2e9;border:0;border-radius:4px;font-weight:600}p{color:#645e50}</style>
-<b>Open DS kits</b>
-<p>Builds the scheme's kit in this file: variables, styles, foundations, components, every question and answer, and the cover. Running it again rebuilds the kit.</p>
-<select id="kit"></select><button id="run">Build the kit</button><p id="status"></p>
-<script>
-onmessage = (e) => { const m = e.data.pluginMessage; if (m.type === "init") { const s = document.getElementById("kit"); for (const [id, name] of Object.entries(m.kits)) s.add(new Option(name, id, false, id === m.guess)); } if (m.type === "progress") document.getElementById("status").textContent = m.text; };
-document.getElementById("run").onclick = () => parent.postMessage({ pluginMessage: { type: "run", id: document.getElementById("kit").value } }, "*");
-</script>

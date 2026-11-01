@@ -1,6 +1,6 @@
 // The site's nav, footer and mark, from the Figma Home frame (115:900).
 import Link from "next/link";
-import { brandName } from "@/lib/brand";
+import { brandContact, brandName } from "@/lib/brand";
 import { ThemeSwitch } from "@/components/theme-switch";
 
 // The mark is a 6 by 5 pixel grid; one cell is lit.
@@ -96,6 +96,11 @@ export function SiteFooter() {
             </Link>
           </li>
         ))}
+        <li>
+          <a href={`mailto:${brandContact}`} className="hover:text-ink">
+            {brandContact}
+          </a>
+        </li>
         <li>
           <a href="https://3dyonic.com" className="hover:text-ink" rel="noopener">
             A 3dyonic project
