@@ -43,7 +43,6 @@ const STEPS = [
 const TAKE: [string, string][] = [
   ["Agent", "Connect your AI: “Deploy the Dense data scheme.”"],
   ["CLI", "open-ds init dense-data"],
-  ["Link", "/schemes/dense-data"],
 ];
 
 // The open-source projects every delivered design system is built on, credited by name.
