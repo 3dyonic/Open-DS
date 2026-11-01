@@ -26,6 +26,8 @@
   --color-accent: #ff5a1f;
   --color-accent-text: light-dark(#b93a00, #ff9a70);
   --color-accent-soft: light-dark(#ffe3d6, #46271b);
+  /* Status: well (the health page). */
+  --color-good: light-dark(#2f6b45, #7fc79a);
   /* Inside the large ink blocks: a rule line and a raised panel. */
   --color-ink-rule: light-dark(#3e3a31, #39342b);
   --color-ink-raised: light-dark(#2c2821, #26231d);
@@ -63,6 +65,42 @@
 }
 :root[data-theme="dark"] .robot-dark {
   display: block;
+}
+
+/* Pulse leans in to listen when tapped (the health page). */
+@keyframes listen {
+  0%,
+  100% {
+    transform: rotate(0);
+  }
+  30% {
+    transform: rotate(-3deg) translateY(-4px);
+  }
+  60% {
+    transform: rotate(2deg);
+  }
+}
+
+/* The health page's twin: type "twin" and the other edition shows. */
+.twin .robot-light {
+  display: none;
+}
+.twin .robot-dark {
+  display: block;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) .twin .robot-light {
+    display: block;
+  }
+  :root:not([data-theme="light"]) .twin .robot-dark {
+    display: none;
+  }
+}
+:root[data-theme="dark"] .twin .robot-light {
+  display: block;
+}
+:root[data-theme="dark"] .twin .robot-dark {
+  display: none;
 }
 
 .inverse {
