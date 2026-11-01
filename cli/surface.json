@@ -1,6 +1,6 @@
 {
   "description": "The public surface of the last open-ds release: what users and agents can notice. scripts/release.mjs compares the current surface with it to decide the version bump (OD-165). Generated; do not edit by hand.",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "surface": {
     "schemes": [
       "accessible-first",

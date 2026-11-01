@@ -1,6 +1,6 @@
 {
   "name": "open-ds",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "Create or add a complete design system to a project: tokens, components, Storybook, docs and agent files using open-ds schemes",
   "license": "MIT",
   "author": "3dyonic (https://3dyonic.com)",
