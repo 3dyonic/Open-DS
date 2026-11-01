@@ -103,6 +103,24 @@ export default function InstallPage() {
       code: j({ mcpServers: { "open-ds": { command: "npx", args: ["-y", "open-ds", "mcp"] } } }),
     },
   ];
+  // The same clients with a key, as a bearer token (open-ds-ops checks it).
+  const KEY = "<your key>";
+  const auth = { Authorization: `Bearer ${KEY}` };
+  const keyed: { name: string; code: string }[] = [
+    {
+      name: "Claude Code",
+      code: `claude mcp add --transport http --scope user open-ds ${MCP_URL} --header "Authorization: Bearer ${KEY}"`,
+    },
+    { name: "Cursor", code: j({ mcpServers: { "open-ds": { url: MCP_URL, headers: auth } } }) },
+    {
+      name: "VS Code",
+      code: j({ servers: { "open-ds": { type: "http", url: MCP_URL, headers: auth } } }),
+    },
+    {
+      name: "Windsurf",
+      code: j({ mcpServers: { "open-ds": { serverUrl: MCP_URL, headers: auth } } }),
+    },
+  ];
   return (
     <div className="flex flex-col gap-12 px-5 pb-20 lg:px-20">
       <header className="flex flex-col gap-4">
@@ -117,8 +135,13 @@ export default function InstallPage() {
           </p>
         </WithRobot>
         <p className="max-w-[880px] rounded-[6px] border border-line bg-white p-4 text-[15px] text-body">
-          The MCP server is open now, with no key. The CLI is the {code("open-ds")} package on npm,
-          so the {code("npx open-ds")} commands below run as they are.
+          Open DS is in Beta. The hosted MCP server works without a key for now; with a key, it
+          knows it is you.{" "}
+          <Link href="/key/" className="font-semibold text-accent-text hover:underline">
+            Ask for a key
+          </Link>
+          : invitations are limited in number. The CLI is the {code("open-ds")} package on npm and
+          needs no key, so the {code("npx open-ds")} commands below run as they are.
         </p>
       </header>
 
@@ -142,7 +165,29 @@ export default function InstallPage() {
               ))}
             </div>
           </Step>
-          <Step n={2} title="Ask your AI">
+          <Step n={2} title="Add your key (Beta)">
+            <p className="text-[16px] text-body">
+              Have a key? Send it with every call as a bearer token. The page that shows your key
+              gives these with your key filled in. No key yet?{" "}
+              <Link href="/key/" className="font-semibold text-accent-text hover:underline">
+                Ask for one
+              </Link>
+              , or skip this step for now.
+            </p>
+            <div className="flex flex-col gap-4">
+              {keyed.map((c) => (
+                <div key={c.name} className="flex flex-col gap-2">
+                  <h4 className="text-[17px] font-bold">{c.name}</h4>
+                  <Command label={`${c.name} with a key`} code={c.code} />
+                </div>
+              ))}
+            </div>
+            <p className="text-[15px] text-body">
+              Any other client: add the header {code("Authorization: Bearer <your key>")} to the
+              server {code(MCP_URL)}. Keep the key private. If it leaks, ask for a fresh one.
+            </p>
+          </Step>
+          <Step n={3} title="Ask your AI">
             <p className="text-[16px] text-body">
               Open your AI in an empty project folder and ask, for example:
             </p>
