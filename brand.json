@@ -6,5 +6,9 @@
   "url": "https://open-ds.dev",
   "urlNote": "The site address (Yonatan bought open-ds.dev, 2026-10-31). Deployment is planned later; SITE_URL overrides it at build time.",
   "contact": "contact@open-ds.dev",
-  "contactNote": "The public contact address. Mail to it is forwarded by Cloudflare Email Routing; the inbox it reaches is set there, never in this repository."
+  "contactNote": "The public contact address. Mail to it is forwarded by Cloudflare Email Routing; the inbox it reaches is set there, never in this repository.",
+  "analytics": {
+    "ga4": ""
+  },
+  "analyticsNote": "The Google Analytics 4 measurement ID (G-...). It is public. While it is empty the site shows no cookie banner and loads nothing from Google."
 }

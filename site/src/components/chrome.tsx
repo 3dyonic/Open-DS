@@ -2,6 +2,7 @@
 import Link from "next/link";
 import { brandContact, brandName } from "@/lib/brand";
 import { ThemeSwitch } from "@/components/theme-switch";
+import { CookieSettingsLink } from "@/components/consent";
 
 // The mark is a 6 by 5 pixel grid; one cell is lit.
 const MARK = ["110111", "101010", "1l1011", "101001", "110111"];
@@ -97,6 +98,7 @@ export function SiteFooter() {
             </Link>
           </li>
         ))}
+        <CookieSettingsLink className="hover:text-ink" />
         <li>
           <a href={`mailto:${brandContact}`} className="hover:text-ink">
             {brandContact}

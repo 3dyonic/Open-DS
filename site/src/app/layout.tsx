@@ -1,5 +1,6 @@
 import type { Metadata, Viewport } from "next";
 import { SiteFooter, SiteNav } from "@/components/chrome";
+import { ConsentBanner } from "@/components/consent";
 import { THEME_SCRIPT } from "@/lib/theme";
 import { brandName, brandTagline, openGraphBase, siteUrl } from "@/lib/brand";
 import "./globals.css";
@@ -53,6 +54,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         <SiteNav />
         <main id="content">{children}</main>
         <SiteFooter />
+        <ConsentBanner />
       </body>
     </html>
   );
