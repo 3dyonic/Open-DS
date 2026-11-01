@@ -61,9 +61,10 @@ export function SiteNav() {
           <li>
             <a
               href={GITHUB}
-              aria-label={`${brandName} on GitHub`}
+              target="_blank"
+              aria-label={`${brandName} on GitHub (opens in a new tab)`}
               title="GitHub"
-              rel="noopener"
+              rel="noopener noreferrer"
               className="flex size-[40px] items-center justify-center hover:text-accent-text"
             >
               <GitHubIcon />
@@ -102,8 +103,14 @@ export function SiteFooter() {
           </a>
         </li>
         <li>
-          <a href="https://3dyonic.com" className="hover:text-ink" rel="noopener">
+          <a
+            href="https://3dyonic.com"
+            className="hover:text-ink"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
             A 3dyonic project
+            <span className="sr-only"> (opens in a new tab)</span>
           </a>
         </li>
       </ul>

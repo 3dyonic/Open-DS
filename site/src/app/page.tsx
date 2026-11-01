@@ -236,10 +236,13 @@ export default function Home() {
             <li key={name}>
               <a
                 href={href}
-                rel="noopener"
+                target="_blank"
+                rel="noopener noreferrer"
                 className="flex h-full flex-col gap-1 rounded-[6px] border border-line bg-white p-4 hover:border-ink"
               >
-                <span className="text-[17px] font-semibold">{name} ↗</span>
+                <span className="text-[17px] font-semibold">
+                  {name} ↗<span className="sr-only"> (opens in a new tab)</span>
+                </span>
                 <span className="text-[14px] leading-[1.4] text-body">{what}</span>
               </a>
             </li>
