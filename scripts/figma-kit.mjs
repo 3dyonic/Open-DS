@@ -21,6 +21,8 @@ import { fileURLToPath } from "node:url";
 
 const ROOT = join(dirname(fileURLToPath(import.meta.url)), "..");
 const MAX_SCRIPT = 48_000; // use_figma takes up to 50,000 characters per call.
+// Smaller parts are easier to hand over: FIGMA_KIT_PART=12000 splits variables and answers finer.
+const PART = Number(process.env.FIGMA_KIT_PART || 0);
 
 // ---------- reading the scheme ----------
 
@@ -288,7 +290,7 @@ function variablesScripts(d) {
   const parts = [];
   let cur = [];
   for (const v of d.variables) {
-    if (cur.length && JSON.stringify(cur).length + JSON.stringify(v).length > 34_000) (parts.push(cur), (cur = []));
+    if (cur.length && JSON.stringify(cur).length + JSON.stringify(v).length > (PART || 34_000)) (parts.push(cur), (cur = []));
     cur.push(v);
   }
   parts.push(cur);
@@ -611,7 +613,7 @@ function schemeScripts(d) {
   let cur = [];
   const size = (x) => JSON.stringify(x).length;
   for (const g of groups) {
-    if (cur.length && size(cur) + size(g) > 30_000) (chunks.push(cur), (cur = []));
+    if (cur.length && size(cur) + size(g) > (PART || 30_000)) (chunks.push(cur), (cur = []));
     cur.push(g);
   }
   if (cur.length) chunks.push(cur);
