@@ -268,11 +268,13 @@ export default async function SchemePage({ params }: { params: Promise<{ id: str
           </div>
           <a
             href={kit}
-            rel="noopener"
+            target="_blank"
+            rel="noopener noreferrer"
             className="flex shrink-0 items-center gap-[10px] self-start rounded-[4px] bg-ink px-5 py-[14px] text-[17px] font-semibold text-paper md:self-center"
           >
             <span aria-hidden className="size-[8px] bg-accent" />
             Open the Figma kit
+            <span className="sr-only"> (opens in a new tab)</span>
           </a>
         </section>
       )}
