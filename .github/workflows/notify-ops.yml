@@ -1,0 +1,24 @@
+# open-ds.dev is hosted from the private repository 3dyonic/open-ds-ops. When the tests pass on master,
+# this asks it to redeploy, so the site and the MCP follow the product. Needs the secret OPS_DISPATCH_TOKEN:
+# a fine-grained token with access to 3dyonic/open-ds-ops only, permission Contents: read and write.
+name: notify-ops
+
+on:
+  workflow_run:
+    workflows: [test]
+    types: [completed]
+    branches: [master]
+
+jobs:
+  dispatch:
+    if: github.event.workflow_run.conclusion == 'success' && github.event.workflow_run.event == 'push'
+    runs-on: ubuntu-latest
+    env:
+      TOKEN: ${{ secrets.OPS_DISPATCH_TOKEN }}
+    steps:
+      - name: Ask open-ds-ops to deploy this commit
+        run: |
+          if [ -z "$TOKEN" ]; then echo "::notice title=Not sent::Add the OPS_DISPATCH_TOKEN secret to redeploy open-ds.dev on every master change."; exit 0; fi
+          curl -fsS -X POST https://api.github.com/repos/3dyonic/open-ds-ops/dispatches \
+            -H "Authorization: Bearer $TOKEN" -H "Accept: application/vnd.github+json" \
+            -d '{"event_type":"open-ds-master","client_payload":{"ref":"master"}}'
