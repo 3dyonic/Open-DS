@@ -261,9 +261,9 @@ export default async function SchemePage({ params }: { params: Promise<{ id: str
               {s.name} in Figma
             </h2>
             <p className="text-[16px] leading-[1.45] text-body">
-              Variables for every theme with their CSS names, text and effect styles, the
-              components bound to the component keys, and a page with all {s.answers.length}{" "}
-              answers and their reasons. Generated from the scheme, so it matches the code.
+              Variables for every theme with their CSS names, text and effect styles, the components
+              bound to the component keys, and a page with all {s.answers.length} answers and their
+              reasons. Generated from the scheme, so it matches the code.
             </p>
           </div>
           <a
