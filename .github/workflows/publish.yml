@@ -72,7 +72,13 @@ jobs:
           rm -f .npmrc
           # The published package must keep its command; npm drops a bin entry it thinks is invalid.
           if [ -z "$DRY" ]; then
-            test "$(npm view "open-ds@$version" bin --json --registry https://registry.npmjs.org)" != "" || { echo "::error::open-ds@$version has no open-ds command"; exit 1; }
+            # npmjs can take a few minutes to show a new version. A failed npm view prints its error as
+            # JSON, so check for the command itself, and wait up to five minutes for it.
+            for i in $(seq 1 30); do
+              if npm view "open-ds@$version" bin --json --registry https://registry.npmjs.org 2>/dev/null | grep -q '"open-ds"'; then echo "open-ds@$version has its open-ds command."; break; fi
+              if [ "$i" = 30 ]; then echo "::error::open-ds@$version is not on npmjs with an open-ds command after five minutes."; exit 1; fi
+              sleep 10
+            done
           fi
 
       - name: GitHub Packages
@@ -90,6 +96,10 @@ jobs:
           fi
           npm publish --registry https://npm.pkg.github.com $DRY
           if [ -z "$DRY" ]; then
-            test "$(npm view "@3dyonic/open-ds@$version" bin --json --registry https://npm.pkg.github.com)" != "" || { echo "::error::@3dyonic/open-ds@$version has no open-ds command"; rm .npmrc; exit 1; }
+            for i in $(seq 1 30); do
+              if npm view "@3dyonic/open-ds@$version" bin --json --registry https://npm.pkg.github.com 2>/dev/null | grep -q '"open-ds"'; then echo "@3dyonic/open-ds@$version has its open-ds command."; break; fi
+              if [ "$i" = 30 ]; then echo "::error::@3dyonic/open-ds@$version has no open-ds command after five minutes."; rm -f .npmrc; exit 1; fi
+              sleep 10
+            done
           fi
           rm .npmrc
