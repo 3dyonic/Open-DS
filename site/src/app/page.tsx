@@ -82,9 +82,9 @@ export default function Home() {
           <div className="flex flex-col gap-5">
             <Eyebrow>For makers, product teams and their AI</Eyebrow>
             <h1 className="text-[44px] leading-none font-extrabold md:text-[72px]">
-              A design system
+              A complete design system,
               <br />
-              you can read and take.
+              with the reason for every decision.
             </h1>
             <p className="max-w-[820px] text-[21px] leading-[1.45] text-body">
               Every decision is an answered question, with its options and its reason in plain view.
