@@ -83,11 +83,19 @@ export function SiteFooter() {
     <footer className="flex min-h-[164px] flex-wrap items-start justify-between gap-4 px-5 pt-8 font-mono text-[13px] text-muted lg:px-20">
       <p>{brandName} · MIT</p>
       <ul className="flex flex-wrap items-center gap-6">
-        <li>
-          <Link href="/contribute/" className="hover:text-ink">
-            Contribute
-          </Link>
-        </li>
+        {[
+          ["Get a key", "/key/"],
+          ["Privacy", "/privacy/"],
+          ["Terms", "/terms/"],
+          ["Health", "/health/"],
+          ["Contribute", "/contribute/"],
+        ].map(([label, href]) => (
+          <li key={href}>
+            <Link href={href} className="hover:text-ink">
+              {label}
+            </Link>
+          </li>
+        ))}
         <li>
           <a href="https://3dyonic.com" className="hover:text-ink" rel="noopener">
             A 3dyonic project

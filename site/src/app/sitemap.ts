@@ -7,7 +7,17 @@ export const dynamic = "force-static";
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const url = (path: string) => new URL(path, siteUrl).toString();
-  const pages = ["/", "/take/", "/compare/", "/questions/", "/install/", "/contribute/"];
+  const pages = [
+    "/",
+    "/take/",
+    "/compare/",
+    "/questions/",
+    "/install/",
+    "/contribute/",
+    "/key/",
+    "/privacy/",
+    "/terms/",
+  ];
   const scopes = grammar().scopes.map((s) => s.id);
   pages.push(...[...grammar().reasons, ...grammar().scopes].map((x) => `/questions/${x.id}/`));
   for (const id of schemeIds()) {
