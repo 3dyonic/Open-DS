@@ -379,8 +379,9 @@ ${HELPERS}
 const sans = await load({ family: 'Inter', style: 'Regular' }), bold = await load({ family: 'Inter', style: 'Bold' }), semi = await load({ family: 'Inter', style: 'Semi Bold' });
 const created = [];
 
-// Cover
+// Cover (and Figma's empty default page goes)
 const cover = await pageNamed('Cover', 0);
+for (const pg of [...figma.root.children]) if (pg.name === 'Page 1' && pg !== cover) { await pg.loadAsync(); if (pg.children.length === 0) pg.remove(); }
 const cv = figma.createAutoLayout('VERTICAL', { name: 'Cover', itemSpacing: 24, paddingLeft: 96, paddingRight: 96, paddingTop: 96, paddingBottom: 96 });
 cv.fills = [{ type: 'SOLID', color: PAPER }]; cv.resize(1440, 960); cv.primaryAxisSizingMode = 'FIXED'; cv.counterAxisSizingMode = 'FIXED';
 cv.appendChild(await text('OPEN DS · FIGMA KIT', { font: semi, size: 16, color: ACCENT }));
