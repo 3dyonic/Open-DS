@@ -243,8 +243,11 @@ export function HealthView() {
                 <a
                   className="text-accent-text hover:underline"
                   href={`https://github.com/3dyonic/Open-DS/commit/${h.commit}`}
+                  target="_blank"
+                  rel="noopener noreferrer"
                 >
                   {h.commit.slice(0, 7)}
+                  <span className="sr-only"> (opens in a new tab)</span>
                 </a>
               ) : (
                 "unknown"
