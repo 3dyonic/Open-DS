@@ -421,7 +421,7 @@ function comp(name, dir = 'HORIZONTAL', gap = 8) {
   c.primaryAxisAlignItems = 'MIN'; c.counterAxisAlignItems = dir === 'HORIZONTAL' ? 'CENTER' : 'MIN'; c.fills = []; return c;
 }
 function width(node, w) { node.counterAxisSizingMode = node.layoutMode === 'VERTICAL' ? 'FIXED' : node.counterAxisSizingMode; if (node.layoutMode === 'VERTICAL') node.resize(w, node.height); else { node.primaryAxisSizingMode = 'FIXED'; node.resize(w, node.height); } return node; }
-const ICONS = { chevron: 'M 4 6 L 8 10 L 12 6', right: 'M 6 4 L 10 8 L 6 12', left: 'M 10 4 L 6 8 L 10 12', check: 'M 3.5 8 L 6.5 11 L 12.5 5', x: 'M 4 4 L 12 12 M 12 4 L 4 12', search: 'M 7 3 A 4 4 0 1 1 6.99 3 M 10 10 L 13 13', plus: 'M 8 3 L 8 13 M 3 8 L 13 8', info: 'M 8 7 L 8 11 M 8 5 L 8 5.2', calendar: 'M 3 4 L 13 4 L 13 13 L 3 13 Z M 3 7 L 13 7 M 6 2.5 L 6 5 M 10 2.5 L 10 5', menu: 'M 3 5 L 13 5 M 3 8 L 13 8 M 3 11 L 13 11', grip: 'M 6 4 L 6 4.2 M 10 4 L 10 4.2 M 6 8 L 6 8.2 M 10 8 L 10 8.2 M 6 12 L 6 12.2 M 10 12 L 10 12.2' };
+const ICONS = { chevron: 'M 4 6 L 8 10 L 12 6', right: 'M 6 4 L 10 8 L 6 12', left: 'M 10 4 L 6 8 L 10 12', check: 'M 3.5 8 L 6.5 11 L 12.5 5', x: 'M 4 4 L 12 12 M 12 4 L 4 12', search: 'M 7 3 C 9.2 3 11 4.8 11 7 C 11 9.2 9.2 11 7 11 C 4.8 11 3 9.2 3 7 C 3 4.8 4.8 3 7 3 Z M 10 10 L 13 13', plus: 'M 8 3 L 8 13 M 3 8 L 13 8', info: 'M 8 7 L 8 11 M 8 5 L 8 5.2', calendar: 'M 3 4 L 13 4 L 13 13 L 3 13 Z M 3 7 L 13 7 M 6 2.5 L 6 5 M 10 2.5 L 10 5', menu: 'M 3 5 L 13 5 M 3 8 L 13 8 M 3 11 L 13 11', grip: 'M 6 4 L 6 4.2 M 10 4 L 10 4.2 M 6 8 L 6 8.2 M 10 8 L 10 8.2 M 6 12 L 6 12.2 M 10 12 L 10 12.2' };
 function icon(name, colorCss = 'color-text-secondary', size = 16) {
   const f = figma.createFrame(); f.name = 'Icon/' + name; f.resize(16, 16); f.fills = []; f.clipsContent = false;
   const v = figma.createVector(); v.vectorPaths = [{ windingRule: 'NONE', data: ICONS[name] }];
@@ -467,8 +467,13 @@ function asSet(comps, name, cols, desc, textProp) {
   let w = 0, h = 0; for (const c of comps) { w = Math.max(w, c.x + c.width); h = Math.max(h, c.y + c.height); }
   set.resize(w + 24, h + 24); set.fills = [];
   set.strokes = [{ type: 'SOLID', color: { r: 0.592, g: 0.278, b: 1 } }]; set.dashPattern = [6, 4]; set.strokeWeight = 1; set.cornerRadius = 8;
-  if (textProp) { const key = set.addComponentProperty(textProp, 'TEXT', comps[0].findOne((n) => n.type === 'TEXT' && n.name === 'Label')?.characters || textProp);
-    for (const c of comps) { const t = c.findOne((n) => n.type === 'TEXT' && n.name === 'Label'); if (t) t.componentPropertyReferences = { characters: key }; } }
+  // One shared text property only when every variant shows the same words (Button, Checkbox); variants
+  // that differ on purpose (Input states, Badge tones) keep their own text.
+  const texts = comps.map((c) => c.findOne((n) => n.type === 'TEXT' && n.name === 'Label')?.characters);
+  if (textProp && texts[0] && texts.every((t) => t === texts[0])) {
+    const key = set.addComponentProperty(textProp, 'TEXT', texts[0]);
+    for (const c of comps) { const t = c.findOne((n) => n.type === 'TEXT' && n.name === 'Label'); if (t) t.componentPropertyReferences = { characters: key }; }
+  }
   set.description = desc; return set;
 }
 function textProp(c, name = 'Label') { const t = c.findOne((n) => n.type === 'TEXT' && n.name === 'Label'); if (t) t.componentPropertyReferences = { characters: c.addComponentProperty(name, 'TEXT', t.characters) }; return c; }
@@ -1192,7 +1197,7 @@ function comp(name, dir = 'HORIZONTAL', gap = 8) {
   c.primaryAxisAlignItems = 'MIN'; c.counterAxisAlignItems = dir === 'HORIZONTAL' ? 'CENTER' : 'MIN'; c.fills = []; return c;
 }
 function width(node, w) { node.counterAxisSizingMode = node.layoutMode === 'VERTICAL' ? 'FIXED' : node.counterAxisSizingMode; if (node.layoutMode === 'VERTICAL') node.resize(w, node.height); else { node.primaryAxisSizingMode = 'FIXED'; node.resize(w, node.height); } return node; }
-const ICONS = { chevron: 'M 4 6 L 8 10 L 12 6', right: 'M 6 4 L 10 8 L 6 12', left: 'M 10 4 L 6 8 L 10 12', check: 'M 3.5 8 L 6.5 11 L 12.5 5', x: 'M 4 4 L 12 12 M 12 4 L 4 12', search: 'M 7 3 A 4 4 0 1 1 6.99 3 M 10 10 L 13 13', plus: 'M 8 3 L 8 13 M 3 8 L 13 8', info: 'M 8 7 L 8 11 M 8 5 L 8 5.2', calendar: 'M 3 4 L 13 4 L 13 13 L 3 13 Z M 3 7 L 13 7 M 6 2.5 L 6 5 M 10 2.5 L 10 5', menu: 'M 3 5 L 13 5 M 3 8 L 13 8 M 3 11 L 13 11', grip: 'M 6 4 L 6 4.2 M 10 4 L 10 4.2 M 6 8 L 6 8.2 M 10 8 L 10 8.2 M 6 12 L 6 12.2 M 10 12 L 10 12.2' };
+const ICONS = { chevron: 'M 4 6 L 8 10 L 12 6', right: 'M 6 4 L 10 8 L 6 12', left: 'M 10 4 L 6 8 L 10 12', check: 'M 3.5 8 L 6.5 11 L 12.5 5', x: 'M 4 4 L 12 12 M 12 4 L 4 12', search: 'M 7 3 C 9.2 3 11 4.8 11 7 C 11 9.2 9.2 11 7 11 C 4.8 11 3 9.2 3 7 C 3 4.8 4.8 3 7 3 Z M 10 10 L 13 13', plus: 'M 8 3 L 8 13 M 3 8 L 13 8', info: 'M 8 7 L 8 11 M 8 5 L 8 5.2', calendar: 'M 3 4 L 13 4 L 13 13 L 3 13 Z M 3 7 L 13 7 M 6 2.5 L 6 5 M 10 2.5 L 10 5', menu: 'M 3 5 L 13 5 M 3 8 L 13 8 M 3 11 L 13 11', grip: 'M 6 4 L 6 4.2 M 10 4 L 10 4.2 M 6 8 L 6 8.2 M 10 8 L 10 8.2 M 6 12 L 6 12.2 M 10 12 L 10 12.2' };
 function icon(name, colorCss = 'color-text-secondary', size = 16) {
   const f = figma.createFrame(); f.name = 'Icon/' + name; f.resize(16, 16); f.fills = []; f.clipsContent = false;
   const v = figma.createVector(); v.vectorPaths = [{ windingRule: 'NONE', data: ICONS[name] }];
@@ -1238,8 +1243,13 @@ function asSet(comps, name, cols, desc, textProp) {
   let w = 0, h = 0; for (const c of comps) { w = Math.max(w, c.x + c.width); h = Math.max(h, c.y + c.height); }
   set.resize(w + 24, h + 24); set.fills = [];
   set.strokes = [{ type: 'SOLID', color: { r: 0.592, g: 0.278, b: 1 } }]; set.dashPattern = [6, 4]; set.strokeWeight = 1; set.cornerRadius = 8;
-  if (textProp) { const key = set.addComponentProperty(textProp, 'TEXT', comps[0].findOne((n) => n.type === 'TEXT' && n.name === 'Label')?.characters || textProp);
-    for (const c of comps) { const t = c.findOne((n) => n.type === 'TEXT' && n.name === 'Label'); if (t) t.componentPropertyReferences = { characters: key }; } }
+  // One shared text property only when every variant shows the same words (Button, Checkbox); variants
+  // that differ on purpose (Input states, Badge tones) keep their own text.
+  const texts = comps.map((c) => c.findOne((n) => n.type === 'TEXT' && n.name === 'Label')?.characters);
+  if (textProp && texts[0] && texts.every((t) => t === texts[0])) {
+    const key = set.addComponentProperty(textProp, 'TEXT', texts[0]);
+    for (const c of comps) { const t = c.findOne((n) => n.type === 'TEXT' && n.name === 'Label'); if (t) t.componentPropertyReferences = { characters: key }; }
+  }
   set.description = desc; return set;
 }
 function textProp(c, name = 'Label') { const t = c.findOne((n) => n.type === 'TEXT' && n.name === 'Label'); if (t) t.componentPropertyReferences = { characters: c.addComponentProperty(name, 'TEXT', t.characters) }; return c; }
@@ -1955,7 +1965,7 @@ function comp(name, dir = 'HORIZONTAL', gap = 8) {
   c.primaryAxisAlignItems = 'MIN'; c.counterAxisAlignItems = dir === 'HORIZONTAL' ? 'CENTER' : 'MIN'; c.fills = []; return c;
 }
 function width(node, w) { node.counterAxisSizingMode = node.layoutMode === 'VERTICAL' ? 'FIXED' : node.counterAxisSizingMode; if (node.layoutMode === 'VERTICAL') node.resize(w, node.height); else { node.primaryAxisSizingMode = 'FIXED'; node.resize(w, node.height); } return node; }
-const ICONS = { chevron: 'M 4 6 L 8 10 L 12 6', right: 'M 6 4 L 10 8 L 6 12', left: 'M 10 4 L 6 8 L 10 12', check: 'M 3.5 8 L 6.5 11 L 12.5 5', x: 'M 4 4 L 12 12 M 12 4 L 4 12', search: 'M 7 3 A 4 4 0 1 1 6.99 3 M 10 10 L 13 13', plus: 'M 8 3 L 8 13 M 3 8 L 13 8', info: 'M 8 7 L 8 11 M 8 5 L 8 5.2', calendar: 'M 3 4 L 13 4 L 13 13 L 3 13 Z M 3 7 L 13 7 M 6 2.5 L 6 5 M 10 2.5 L 10 5', menu: 'M 3 5 L 13 5 M 3 8 L 13 8 M 3 11 L 13 11', grip: 'M 6 4 L 6 4.2 M 10 4 L 10 4.2 M 6 8 L 6 8.2 M 10 8 L 10 8.2 M 6 12 L 6 12.2 M 10 12 L 10 12.2' };
+const ICONS = { chevron: 'M 4 6 L 8 10 L 12 6', right: 'M 6 4 L 10 8 L 6 12', left: 'M 10 4 L 6 8 L 10 12', check: 'M 3.5 8 L 6.5 11 L 12.5 5', x: 'M 4 4 L 12 12 M 12 4 L 4 12', search: 'M 7 3 C 9.2 3 11 4.8 11 7 C 11 9.2 9.2 11 7 11 C 4.8 11 3 9.2 3 7 C 3 4.8 4.8 3 7 3 Z M 10 10 L 13 13', plus: 'M 8 3 L 8 13 M 3 8 L 13 8', info: 'M 8 7 L 8 11 M 8 5 L 8 5.2', calendar: 'M 3 4 L 13 4 L 13 13 L 3 13 Z M 3 7 L 13 7 M 6 2.5 L 6 5 M 10 2.5 L 10 5', menu: 'M 3 5 L 13 5 M 3 8 L 13 8 M 3 11 L 13 11', grip: 'M 6 4 L 6 4.2 M 10 4 L 10 4.2 M 6 8 L 6 8.2 M 10 8 L 10 8.2 M 6 12 L 6 12.2 M 10 12 L 10 12.2' };
 function icon(name, colorCss = 'color-text-secondary', size = 16) {
   const f = figma.createFrame(); f.name = 'Icon/' + name; f.resize(16, 16); f.fills = []; f.clipsContent = false;
   const v = figma.createVector(); v.vectorPaths = [{ windingRule: 'NONE', data: ICONS[name] }];
@@ -2001,8 +2011,13 @@ function asSet(comps, name, cols, desc, textProp) {
   let w = 0, h = 0; for (const c of comps) { w = Math.max(w, c.x + c.width); h = Math.max(h, c.y + c.height); }
   set.resize(w + 24, h + 24); set.fills = [];
   set.strokes = [{ type: 'SOLID', color: { r: 0.592, g: 0.278, b: 1 } }]; set.dashPattern = [6, 4]; set.strokeWeight = 1; set.cornerRadius = 8;
-  if (textProp) { const key = set.addComponentProperty(textProp, 'TEXT', comps[0].findOne((n) => n.type === 'TEXT' && n.name === 'Label')?.characters || textProp);
-    for (const c of comps) { const t = c.findOne((n) => n.type === 'TEXT' && n.name === 'Label'); if (t) t.componentPropertyReferences = { characters: key }; } }
+  // One shared text property only when every variant shows the same words (Button, Checkbox); variants
+  // that differ on purpose (Input states, Badge tones) keep their own text.
+  const texts = comps.map((c) => c.findOne((n) => n.type === 'TEXT' && n.name === 'Label')?.characters);
+  if (textProp && texts[0] && texts.every((t) => t === texts[0])) {
+    const key = set.addComponentProperty(textProp, 'TEXT', texts[0]);
+    for (const c of comps) { const t = c.findOne((n) => n.type === 'TEXT' && n.name === 'Label'); if (t) t.componentPropertyReferences = { characters: key }; }
+  }
   set.description = desc; return set;
 }
 function textProp(c, name = 'Label') { const t = c.findOne((n) => n.type === 'TEXT' && n.name === 'Label'); if (t) t.componentPropertyReferences = { characters: c.addComponentProperty(name, 'TEXT', t.characters) }; return c; }
@@ -2741,7 +2756,7 @@ function comp(name, dir = 'HORIZONTAL', gap = 8) {
   c.primaryAxisAlignItems = 'MIN'; c.counterAxisAlignItems = dir === 'HORIZONTAL' ? 'CENTER' : 'MIN'; c.fills = []; return c;
 }
 function width(node, w) { node.counterAxisSizingMode = node.layoutMode === 'VERTICAL' ? 'FIXED' : node.counterAxisSizingMode; if (node.layoutMode === 'VERTICAL') node.resize(w, node.height); else { node.primaryAxisSizingMode = 'FIXED'; node.resize(w, node.height); } return node; }
-const ICONS = { chevron: 'M 4 6 L 8 10 L 12 6', right: 'M 6 4 L 10 8 L 6 12', left: 'M 10 4 L 6 8 L 10 12', check: 'M 3.5 8 L 6.5 11 L 12.5 5', x: 'M 4 4 L 12 12 M 12 4 L 4 12', search: 'M 7 3 A 4 4 0 1 1 6.99 3 M 10 10 L 13 13', plus: 'M 8 3 L 8 13 M 3 8 L 13 8', info: 'M 8 7 L 8 11 M 8 5 L 8 5.2', calendar: 'M 3 4 L 13 4 L 13 13 L 3 13 Z M 3 7 L 13 7 M 6 2.5 L 6 5 M 10 2.5 L 10 5', menu: 'M 3 5 L 13 5 M 3 8 L 13 8 M 3 11 L 13 11', grip: 'M 6 4 L 6 4.2 M 10 4 L 10 4.2 M 6 8 L 6 8.2 M 10 8 L 10 8.2 M 6 12 L 6 12.2 M 10 12 L 10 12.2' };
+const ICONS = { chevron: 'M 4 6 L 8 10 L 12 6', right: 'M 6 4 L 10 8 L 6 12', left: 'M 10 4 L 6 8 L 10 12', check: 'M 3.5 8 L 6.5 11 L 12.5 5', x: 'M 4 4 L 12 12 M 12 4 L 4 12', search: 'M 7 3 C 9.2 3 11 4.8 11 7 C 11 9.2 9.2 11 7 11 C 4.8 11 3 9.2 3 7 C 3 4.8 4.8 3 7 3 Z M 10 10 L 13 13', plus: 'M 8 3 L 8 13 M 3 8 L 13 8', info: 'M 8 7 L 8 11 M 8 5 L 8 5.2', calendar: 'M 3 4 L 13 4 L 13 13 L 3 13 Z M 3 7 L 13 7 M 6 2.5 L 6 5 M 10 2.5 L 10 5', menu: 'M 3 5 L 13 5 M 3 8 L 13 8 M 3 11 L 13 11', grip: 'M 6 4 L 6 4.2 M 10 4 L 10 4.2 M 6 8 L 6 8.2 M 10 8 L 10 8.2 M 6 12 L 6 12.2 M 10 12 L 10 12.2' };
 function icon(name, colorCss = 'color-text-secondary', size = 16) {
   const f = figma.createFrame(); f.name = 'Icon/' + name; f.resize(16, 16); f.fills = []; f.clipsContent = false;
   const v = figma.createVector(); v.vectorPaths = [{ windingRule: 'NONE', data: ICONS[name] }];
@@ -2787,8 +2802,13 @@ function asSet(comps, name, cols, desc, textProp) {
   let w = 0, h = 0; for (const c of comps) { w = Math.max(w, c.x + c.width); h = Math.max(h, c.y + c.height); }
   set.resize(w + 24, h + 24); set.fills = [];
   set.strokes = [{ type: 'SOLID', color: { r: 0.592, g: 0.278, b: 1 } }]; set.dashPattern = [6, 4]; set.strokeWeight = 1; set.cornerRadius = 8;
-  if (textProp) { const key = set.addComponentProperty(textProp, 'TEXT', comps[0].findOne((n) => n.type === 'TEXT' && n.name === 'Label')?.characters || textProp);
-    for (const c of comps) { const t = c.findOne((n) => n.type === 'TEXT' && n.name === 'Label'); if (t) t.componentPropertyReferences = { characters: key }; } }
+  // One shared text property only when every variant shows the same words (Button, Checkbox); variants
+  // that differ on purpose (Input states, Badge tones) keep their own text.
+  const texts = comps.map((c) => c.findOne((n) => n.type === 'TEXT' && n.name === 'Label')?.characters);
+  if (textProp && texts[0] && texts.every((t) => t === texts[0])) {
+    const key = set.addComponentProperty(textProp, 'TEXT', texts[0]);
+    for (const c of comps) { const t = c.findOne((n) => n.type === 'TEXT' && n.name === 'Label'); if (t) t.componentPropertyReferences = { characters: key }; }
+  }
   set.description = desc; return set;
 }
 function textProp(c, name = 'Label') { const t = c.findOne((n) => n.type === 'TEXT' && n.name === 'Label'); if (t) t.componentPropertyReferences = { characters: c.addComponentProperty(name, 'TEXT', t.characters) }; return c; }
@@ -3127,7 +3147,7 @@ function comp(name, dir = 'HORIZONTAL', gap = 8) {
   c.primaryAxisAlignItems = 'MIN'; c.counterAxisAlignItems = dir === 'HORIZONTAL' ? 'CENTER' : 'MIN'; c.fills = []; return c;
 }
 function width(node, w) { node.counterAxisSizingMode = node.layoutMode === 'VERTICAL' ? 'FIXED' : node.counterAxisSizingMode; if (node.layoutMode === 'VERTICAL') node.resize(w, node.height); else { node.primaryAxisSizingMode = 'FIXED'; node.resize(w, node.height); } return node; }
-const ICONS = { chevron: 'M 4 6 L 8 10 L 12 6', right: 'M 6 4 L 10 8 L 6 12', left: 'M 10 4 L 6 8 L 10 12', check: 'M 3.5 8 L 6.5 11 L 12.5 5', x: 'M 4 4 L 12 12 M 12 4 L 4 12', search: 'M 7 3 A 4 4 0 1 1 6.99 3 M 10 10 L 13 13', plus: 'M 8 3 L 8 13 M 3 8 L 13 8', info: 'M 8 7 L 8 11 M 8 5 L 8 5.2', calendar: 'M 3 4 L 13 4 L 13 13 L 3 13 Z M 3 7 L 13 7 M 6 2.5 L 6 5 M 10 2.5 L 10 5', menu: 'M 3 5 L 13 5 M 3 8 L 13 8 M 3 11 L 13 11', grip: 'M 6 4 L 6 4.2 M 10 4 L 10 4.2 M 6 8 L 6 8.2 M 10 8 L 10 8.2 M 6 12 L 6 12.2 M 10 12 L 10 12.2' };
+const ICONS = { chevron: 'M 4 6 L 8 10 L 12 6', right: 'M 6 4 L 10 8 L 6 12', left: 'M 10 4 L 6 8 L 10 12', check: 'M 3.5 8 L 6.5 11 L 12.5 5', x: 'M 4 4 L 12 12 M 12 4 L 4 12', search: 'M 7 3 C 9.2 3 11 4.8 11 7 C 11 9.2 9.2 11 7 11 C 4.8 11 3 9.2 3 7 C 3 4.8 4.8 3 7 3 Z M 10 10 L 13 13', plus: 'M 8 3 L 8 13 M 3 8 L 13 8', info: 'M 8 7 L 8 11 M 8 5 L 8 5.2', calendar: 'M 3 4 L 13 4 L 13 13 L 3 13 Z M 3 7 L 13 7 M 6 2.5 L 6 5 M 10 2.5 L 10 5', menu: 'M 3 5 L 13 5 M 3 8 L 13 8 M 3 11 L 13 11', grip: 'M 6 4 L 6 4.2 M 10 4 L 10 4.2 M 6 8 L 6 8.2 M 10 8 L 10 8.2 M 6 12 L 6 12.2 M 10 12 L 10 12.2' };
 function icon(name, colorCss = 'color-text-secondary', size = 16) {
   const f = figma.createFrame(); f.name = 'Icon/' + name; f.resize(16, 16); f.fills = []; f.clipsContent = false;
   const v = figma.createVector(); v.vectorPaths = [{ windingRule: 'NONE', data: ICONS[name] }];
@@ -3173,8 +3193,13 @@ function asSet(comps, name, cols, desc, textProp) {
   let w = 0, h = 0; for (const c of comps) { w = Math.max(w, c.x + c.width); h = Math.max(h, c.y + c.height); }
   set.resize(w + 24, h + 24); set.fills = [];
   set.strokes = [{ type: 'SOLID', color: { r: 0.592, g: 0.278, b: 1 } }]; set.dashPattern = [6, 4]; set.strokeWeight = 1; set.cornerRadius = 8;
-  if (textProp) { const key = set.addComponentProperty(textProp, 'TEXT', comps[0].findOne((n) => n.type === 'TEXT' && n.name === 'Label')?.characters || textProp);
-    for (const c of comps) { const t = c.findOne((n) => n.type === 'TEXT' && n.name === 'Label'); if (t) t.componentPropertyReferences = { characters: key }; } }
+  // One shared text property only when every variant shows the same words (Button, Checkbox); variants
+  // that differ on purpose (Input states, Badge tones) keep their own text.
+  const texts = comps.map((c) => c.findOne((n) => n.type === 'TEXT' && n.name === 'Label')?.characters);
+  if (textProp && texts[0] && texts.every((t) => t === texts[0])) {
+    const key = set.addComponentProperty(textProp, 'TEXT', texts[0]);
+    for (const c of comps) { const t = c.findOne((n) => n.type === 'TEXT' && n.name === 'Label'); if (t) t.componentPropertyReferences = { characters: key }; }
+  }
   set.description = desc; return set;
 }
 function textProp(c, name = 'Label') { const t = c.findOne((n) => n.type === 'TEXT' && n.name === 'Label'); if (t) t.componentPropertyReferences = { characters: c.addComponentProperty(name, 'TEXT', t.characters) }; return c; }
@@ -3852,7 +3877,7 @@ function comp(name, dir = 'HORIZONTAL', gap = 8) {
   c.primaryAxisAlignItems = 'MIN'; c.counterAxisAlignItems = dir === 'HORIZONTAL' ? 'CENTER' : 'MIN'; c.fills = []; return c;
 }
 function width(node, w) { node.counterAxisSizingMode = node.layoutMode === 'VERTICAL' ? 'FIXED' : node.counterAxisSizingMode; if (node.layoutMode === 'VERTICAL') node.resize(w, node.height); else { node.primaryAxisSizingMode = 'FIXED'; node.resize(w, node.height); } return node; }
-const ICONS = { chevron: 'M 4 6 L 8 10 L 12 6', right: 'M 6 4 L 10 8 L 6 12', left: 'M 10 4 L 6 8 L 10 12', check: 'M 3.5 8 L 6.5 11 L 12.5 5', x: 'M 4 4 L 12 12 M 12 4 L 4 12', search: 'M 7 3 A 4 4 0 1 1 6.99 3 M 10 10 L 13 13', plus: 'M 8 3 L 8 13 M 3 8 L 13 8', info: 'M 8 7 L 8 11 M 8 5 L 8 5.2', calendar: 'M 3 4 L 13 4 L 13 13 L 3 13 Z M 3 7 L 13 7 M 6 2.5 L 6 5 M 10 2.5 L 10 5', menu: 'M 3 5 L 13 5 M 3 8 L 13 8 M 3 11 L 13 11', grip: 'M 6 4 L 6 4.2 M 10 4 L 10 4.2 M 6 8 L 6 8.2 M 10 8 L 10 8.2 M 6 12 L 6 12.2 M 10 12 L 10 12.2' };
+const ICONS = { chevron: 'M 4 6 L 8 10 L 12 6', right: 'M 6 4 L 10 8 L 6 12', left: 'M 10 4 L 6 8 L 10 12', check: 'M 3.5 8 L 6.5 11 L 12.5 5', x: 'M 4 4 L 12 12 M 12 4 L 4 12', search: 'M 7 3 C 9.2 3 11 4.8 11 7 C 11 9.2 9.2 11 7 11 C 4.8 11 3 9.2 3 7 C 3 4.8 4.8 3 7 3 Z M 10 10 L 13 13', plus: 'M 8 3 L 8 13 M 3 8 L 13 8', info: 'M 8 7 L 8 11 M 8 5 L 8 5.2', calendar: 'M 3 4 L 13 4 L 13 13 L 3 13 Z M 3 7 L 13 7 M 6 2.5 L 6 5 M 10 2.5 L 10 5', menu: 'M 3 5 L 13 5 M 3 8 L 13 8 M 3 11 L 13 11', grip: 'M 6 4 L 6 4.2 M 10 4 L 10 4.2 M 6 8 L 6 8.2 M 10 8 L 10 8.2 M 6 12 L 6 12.2 M 10 12 L 10 12.2' };
 function icon(name, colorCss = 'color-text-secondary', size = 16) {
   const f = figma.createFrame(); f.name = 'Icon/' + name; f.resize(16, 16); f.fills = []; f.clipsContent = false;
   const v = figma.createVector(); v.vectorPaths = [{ windingRule: 'NONE', data: ICONS[name] }];
@@ -3898,8 +3923,13 @@ function asSet(comps, name, cols, desc, textProp) {
   let w = 0, h = 0; for (const c of comps) { w = Math.max(w, c.x + c.width); h = Math.max(h, c.y + c.height); }
   set.resize(w + 24, h + 24); set.fills = [];
   set.strokes = [{ type: 'SOLID', color: { r: 0.592, g: 0.278, b: 1 } }]; set.dashPattern = [6, 4]; set.strokeWeight = 1; set.cornerRadius = 8;
-  if (textProp) { const key = set.addComponentProperty(textProp, 'TEXT', comps[0].findOne((n) => n.type === 'TEXT' && n.name === 'Label')?.characters || textProp);
-    for (const c of comps) { const t = c.findOne((n) => n.type === 'TEXT' && n.name === 'Label'); if (t) t.componentPropertyReferences = { characters: key }; } }
+  // One shared text property only when every variant shows the same words (Button, Checkbox); variants
+  // that differ on purpose (Input states, Badge tones) keep their own text.
+  const texts = comps.map((c) => c.findOne((n) => n.type === 'TEXT' && n.name === 'Label')?.characters);
+  if (textProp && texts[0] && texts.every((t) => t === texts[0])) {
+    const key = set.addComponentProperty(textProp, 'TEXT', texts[0]);
+    for (const c of comps) { const t = c.findOne((n) => n.type === 'TEXT' && n.name === 'Label'); if (t) t.componentPropertyReferences = { characters: key }; }
+  }
   set.description = desc; return set;
 }
 function textProp(c, name = 'Label') { const t = c.findOne((n) => n.type === 'TEXT' && n.name === 'Label'); if (t) t.componentPropertyReferences = { characters: c.addComponentProperty(name, 'TEXT', t.characters) }; return c; }
