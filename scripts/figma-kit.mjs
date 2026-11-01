@@ -394,8 +394,8 @@ return { part: ${i + 1}, collections: Object.fromEntries(Object.entries(cols).ma
 function foundationsScript(d) {
   const colors = d.variables.filter((v) => v.collection === "Semantic" && v.type === "COLOR").map((v) => v.name);
   const floats = d.variables.filter((v) => v.collection === "Semantic" && v.type === "FLOAT" && /^(space|radius|size)\//.test(v.name)).map((v) => v.name);
-  const data = { name: d.name, id: d.id, version: d.version, summary: d.summary, description: d.description, modes: d.modes, colors, floats, styles: d.textStyles.map((t) => t.name), counts: { variables: d.variables.length, components: d.components.length, answers: d.answers.length } };
-  return `${HEADER(d, "02 cover and foundations")}const D = ${JSON.stringify(data)};
+  const data = { name: d.name, id: d.id, version: d.version, summary: d.summary, description: d.description, modes: d.modes, colors, floats, styles: d.textStyles.map((t) => t.name), counts: { variables: d.variables.length, components: kitCount(d), answers: d.answers.length }, inventory: kitCount(d) };
+  return `${HEADER(d, "02 intro and foundations")}const D = ${JSON.stringify(data)};
 ${HELPERS}
 const sans = await load({ family: 'Inter', style: 'Regular' }), bold = await load({ family: 'Inter', style: 'Bold' }), semi = await load({ family: 'Inter', style: 'Semi Bold' });
 const created = [];
@@ -403,8 +403,52 @@ const created = [];
 // Figma's empty default page goes (the cover is its own step, 05).
 for (const pg of [...figma.root.children]) if (pg.name === 'Page 1' && figma.root.children.length > 1) { await pg.loadAsync(); if (pg.children.length === 0) pg.remove(); }
 
+// Intro: Open DS, the scheme, what is in the kit and how to use it.
+await pageNamed('Intro', 1);
+const intro = figma.createAutoLayout('VERTICAL', { name: 'Intro', itemSpacing: 40, paddingLeft: 96, paddingRight: 96, paddingTop: 88, paddingBottom: 88 });
+intro.fills = [{ type: 'SOLID', color: PAPER }]; intro.resize(1200, 100); intro.counterAxisSizingMode = 'FIXED';
+const brand = figma.createAutoLayout('HORIZONTAL', { name: 'Open DS', itemSpacing: 14, counterAxisAlignItems: 'CENTER' }); intro.appendChild(brand);
+const mark = figma.createFrame(); mark.name = 'Mark'; mark.resize(36, 26); mark.fills = []; brand.appendChild(mark);
+['110111', '101010', '1l1011', '101001', '110111'].forEach((row, r) => [...row].forEach((c, i) => { if (c === '0') return; const px = figma.createRectangle(); px.resize(4, 4); px.x = i * 16 / 3; px.y = r * 16 / 3; px.fills = [{ type: 'SOLID', color: c === 'l' ? ACCENT : INK }]; mark.appendChild(px); }));
+brand.appendChild(await text('Open DS', { font: bold, size: 26, color: INK }));
+const dot = figma.createRectangle(); dot.resize(7, 7); dot.fills = [{ type: 'SOLID', color: ACCENT }]; brand.appendChild(dot);
+const head = figma.createAutoLayout('VERTICAL', { name: 'Heading', itemSpacing: 14 }); intro.appendChild(head);
+head.appendChild(await text('FIGMA KIT', { font: semi, size: 14, color: ACCENT }));
+head.appendChild(await text(D.name, { font: bold, size: 64, color: INK }));
+head.appendChild(await text(D.summary, { font: sans, size: 24, color: INK, width: 1000, lineHeight: 34 }));
+head.appendChild(await text(D.description, { font: sans, size: 17, color: MUTED, width: 1000, lineHeight: 26 }));
+const links = figma.createAutoLayout('VERTICAL', { name: 'Links', itemSpacing: 8 }); intro.appendChild(links);
+for (const [label, url] of [['The scheme on open-ds.dev', 'https://open-ds.dev/schemes/' + D.id + '/'], ['Take it as code', 'https://open-ds.dev/install/'], ['Open DS', 'https://open-ds.dev']]) {
+  const t = await text(label + ': ' + url.replace('https://', ''), { font: semi, size: 17, color: { r: 0.725, g: 0.227, b: 0 } });
+  t.hyperlink = { type: 'URL', value: url }; t.textDecoration = 'UNDERLINE'; links.appendChild(t);
+}
+async function block(title, items) {
+  const b = figma.createAutoLayout('VERTICAL', { name: title, itemSpacing: 16 }); intro.appendChild(b);
+  b.appendChild(await text(title.toUpperCase(), { font: semi, size: 14, color: ACCENT }));
+  for (const [label, body] of items) {
+    const it = figma.createAutoLayout('VERTICAL', { name: label, itemSpacing: 4 }); b.appendChild(it);
+    it.appendChild(await text(label, { font: semi, size: 18, color: INK }));
+    it.appendChild(await text(body, { font: sans, size: 15, color: MUTED, width: 1000, lineHeight: 23 }));
+  }
+}
+await block('In this kit', [
+  ['Variables', D.counts.variables + ' variables in two collections, Semantic and Component, with one mode per theme: ' + D.modes.join(', ') + '. Each carries its CSS name, so Dev Mode shows var(--…) as in the code.'],
+  ['Styles', 'A text style per type role in the fonts of the scheme, and elevation effect styles.'],
+  ['Foundations', 'Every colour in every theme, the type roles, and the spacing, size and radius scale.'],
+  ['Components', D.counts.components + ' components: the inventory of the scheme, each reading only the variables.'],
+  ['Scheme', 'All ' + D.counts.answers + ' design questions with their answers and reasons, the voice, when to use what, and the inventory.'],
+]);
+await block('How to use it', [
+  ['Switch theme', 'Select a frame, then in the Appearance panel pick a mode for Semantic and Component.'],
+  ['Build screens', 'Use the components as instances. They follow every theme without detaching.'],
+  ['Go to code', 'Run npx open-ds init ' + D.id + ' in a project for the same system as tokens, components, Storybook and docs.'],
+]);
+intro.appendChild(await text('Generated from the scheme by Open DS. The Open DS code, schemes and tokens are MIT licensed.', { font: sans, size: 13, color: MUTED, width: 1000 }));
+intro.x = 0; intro.y = 0;
+created.push(intro.id);
+
 // Foundations
-await pageNamed('Foundations', 1);
+await pageNamed('Foundations', 2);
 const semantic = C('Semantic');
 const root = figma.createAutoLayout('VERTICAL', { name: 'Foundations', itemSpacing: 48, paddingLeft: 64, paddingRight: 64, paddingTop: 64, paddingBottom: 64 });
 root.fills = [{ type: 'SOLID', color: { r: 1, g: 1, b: 1 } }];
@@ -420,7 +464,9 @@ for (const m of D.modes) {
   for (const name of D.colors) {
     const row = figma.createAutoLayout('HORIZONTAL', { name, itemSpacing: 10, counterAxisAlignItems: 'CENTER' });
     const sw = figma.createRectangle(); sw.resize(28, 28); sw.cornerRadius = 6; bindFill(sw, name);
-    sw.strokes = [{ type: 'SOLID', color: { r: 0.5, g: 0.5, b: 0.5 }, opacity: 0.3 }]; sw.strokeWeight = 1;
+    // A border in the theme's own strong border colour, so dark swatches show on dark paper.
+    if (!bindFill(sw, 'color/border/strong', 'strokes')) sw.strokes = [{ type: 'SOLID', color: { r: 0.5, g: 0.5, b: 0.5 }, opacity: 0.5 }];
+    sw.strokeWeight = 1; sw.strokeAlign = 'INSIDE';
     row.appendChild(sw);
     const label = await text(name, { font: sans, size: 12 }); bindFill(label, 'color/text/secondary') || bindFill(label, 'color/text/primary');
     row.appendChild(label); col.appendChild(row);
@@ -464,6 +510,9 @@ return { created, swatches: D.colors.length * D.modes.length, styles: D.styles.l
 `;
 }
 
+/** How many components the kit draws: the scheme's inventory, where a recipe exists. */
+const kitCount = (d) => d.inventory.filter((c) => RECIPES[c.id]).length;
+
 /** The scheme's inventory, in family order, as [family, [ids]] — only components with a recipe. */
 function inventoryByFamily(d) {
   const have = new Set(d.inventory.map((c) => c.id));
@@ -500,7 +549,7 @@ ${recipes}
 const sansF = await load({ family: 'Inter', style: 'Regular' }), boldF = await load({ family: 'Inter', style: 'Bold' }), semiF = await load({ family: 'Inter', style: 'Semi Bold' });
 let page, root;
 if (D.first) {
-  page = await pageNamed('Components', 2);
+  page = await pageNamed('Components', 3);
   root = figma.createAutoLayout('VERTICAL', { name: 'Components', itemSpacing: 72, paddingLeft: 80, paddingRight: 80, paddingTop: 80, paddingBottom: 80 });
   root.fills = [{ type: 'SOLID', color: { r: 1, g: 1, b: 1 } }];
   root.appendChild(await text('Components', { font: boldF, size: 56, color: INK }));
@@ -564,7 +613,7 @@ function schemeScripts(d) {
 ${HELPERS}
 const sans = await load({ family: 'Inter', style: 'Regular' }), bold = await load({ family: 'Inter', style: 'Bold' }), semi = await load({ family: 'Inter', style: 'Semi Bold' }), mono = families.has('Roboto Mono') ? await load({ family: 'Roboto Mono', style: 'Regular' }) : sans;
 let page = figma.root.children.find((p) => p.name === 'Scheme');
-if (D.first) page = await pageNamed('Scheme', 3); else await figma.setCurrentPageAsync(page);
+if (D.first) page = await pageNamed('Scheme', 4); else await figma.setCurrentPageAsync(page);
 const col = figma.createAutoLayout('VERTICAL', { name: 'Scheme ' + (D.part[0]?.title || ''), itemSpacing: 32, paddingLeft: 48, paddingRight: 48, paddingTop: 48, paddingBottom: 48 });
 col.fills = [{ type: 'SOLID', color: { r: 1, g: 1, b: 1 } }]; col.resize(1000, 100); col.counterAxisSizingMode = 'FIXED';
 if (D.first) {
@@ -584,17 +633,32 @@ for (const g of D.part) {
 }
 if (D.extras) {
   const E = D.extras;
-  const section = async (title) => col.appendChild(await text(title, { font: semi, size: 13, color: ACCENT }));
-  const para = async (chars, size = 14, color = INK, font = sans) => { const t = await text(chars, { font, size, color, lineHeight: Math.round(size * 1.5) }); col.appendChild(t); t.layoutSizingHorizontal = 'FILL'; t.textAutoResize = 'HEIGHT'; };
-  await section('VOICE');
-  if (E.voice?.summary) await para(E.voice.summary.text, 18, INK, semi);
-  for (const p of E.voice?.principles || []) await para('· ' + p.text);
-  if (E.voice?.words) await para('Use: ' + (E.voice.words.use || []).join(', ') + '.  Avoid: ' + (E.voice.words.avoid || []).join(', ') + '.', 14, MUTED);
-  for (const [b, v] of Object.entries(E.voice?.brands || {})) await para(b + ': ' + v.text, 14, MUTED);
-  await section('WHEN TO USE WHAT');
-  for (const u of E.usage || []) await para(u.situation + ': use ' + u.use + (u.not ? ', not ' + u.not : '') + '. ' + (u.why || ''));
-  await section('INVENTORY · ' + E.inventory.length + ' COMPONENTS');
-  for (const c of E.inventory) await para(c.id + ': ' + c.why);
+  // Voice and when to use what share a frame; the inventory has its own. Each item: a bold label, then
+  // its description on the next line.
+  async function frame(name, x) {
+    const f = figma.createAutoLayout('VERTICAL', { name, itemSpacing: 24, paddingLeft: 48, paddingRight: 48, paddingTop: 48, paddingBottom: 48 });
+    f.fills = [{ type: 'SOLID', color: { r: 1, g: 1, b: 1 } }]; f.resize(760, 100); f.counterAxisSizingMode = 'FIXED'; f.x = x; f.y = 0; return f;
+  }
+  const add = async (f, chars, opts) => { const t = await text(chars, opts); f.appendChild(t); t.layoutSizingHorizontal = 'FILL'; t.textAutoResize = 'HEIGHT'; return t; };
+  async function item(f, label, body) {
+    const it = figma.createAutoLayout('VERTICAL', { name: label, itemSpacing: 4 }); f.appendChild(it); it.layoutSizingHorizontal = 'FILL';
+    await add(it, label, { font: semi, size: 17, color: INK });
+    if (body) await add(it, body, { font: sans, size: 14, color: MUTED, lineHeight: 21 });
+  }
+  const human = (s) => String(s).replace(/[-_]/g, ' ').replace(/^./, (c) => c.toUpperCase());
+  const vf = await frame('Voice and when to use what', D.x + 1040);
+  await add(vf, 'Voice and when to use what', { font: bold, size: 32, color: INK });
+  await add(vf, 'VOICE', { font: semi, size: 13, color: ACCENT });
+  if (E.voice?.summary) await add(vf, E.voice.summary.text, { font: semi, size: 20, color: INK, lineHeight: 28 });
+  for (const p of E.voice?.principles || []) await item(vf, p.text);
+  if (E.voice?.words) { await item(vf, 'Words to use', (E.voice.words.use || []).join(', ')); await item(vf, 'Words to avoid', (E.voice.words.avoid || []).join(', ')); }
+  for (const [b, v] of Object.entries(E.voice?.brands || {})) await item(vf, human(b), v.text);
+  await add(vf, 'WHEN TO USE WHAT', { font: semi, size: 13, color: ACCENT });
+  for (const u of E.usage || []) await item(vf, human(u.situation), 'Use ' + u.use + (u.not ? ', not ' + u.not : '') + '. ' + (u.why || ''));
+  const inv = await frame('Inventory', D.x + 1040 + 800);
+  await add(inv, 'Inventory', { font: bold, size: 32, color: INK });
+  await add(inv, E.inventory.length + ' COMPONENTS', { font: semi, size: 13, color: ACCENT });
+  for (const c of E.inventory) await item(inv, human(c.id), c.why);
 }
 col.x = D.x; col.y = 0;
 return { id: col.id, groups: D.part.length, answers: D.part.reduce((n, g) => n + g.answers.length, 0) };
@@ -603,7 +667,7 @@ return { id: col.id, groups: D.part.length, answers: D.part.reduce((n, g) => n +
 }
 
 function coverScript(d) {
-  const data = { name: d.name, id: d.id, version: d.version, summary: d.summary, modes: d.modes, counts: { variables: d.variables.length, components: d.components.length, answers: d.answers.length } };
+  const data = { name: d.name, id: d.id, version: d.version, summary: d.summary, modes: d.modes, counts: { variables: d.variables.length, components: kitCount(d), answers: d.answers.length } };
   return `${HEADER(d, "05 cover")}const D = ${JSON.stringify(data)};
 ${HELPERS}
 // The cover: the scheme in its own colours, bound to the kit's variables. It is the file's thumbnail.
@@ -675,6 +739,7 @@ export function writePlugin(dir, ids) {
 function createAutoLayout(dir, props) {
   if (dir && typeof dir === "object") { props = dir; dir = "HORIZONTAL"; }
   const f = figma.createFrame();
+  f.fills = [];
   f.layoutMode = dir || "HORIZONTAL";
   f.primaryAxisSizingMode = "AUTO";
   f.counterAxisSizingMode = "AUTO";
