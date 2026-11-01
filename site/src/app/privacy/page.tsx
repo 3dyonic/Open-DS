@@ -2,7 +2,7 @@
 // actually do; if the service changes what it keeps, this page changes with it.
 import type { Metadata } from "next";
 import { Eyebrow } from "@/components/chrome";
-import { brandName } from "@/lib/brand";
+import { brandContact, brandName } from "@/lib/brand";
 
 export const metadata: Metadata = {
   title: "Privacy",
@@ -98,7 +98,11 @@ export default function PrivacyPage() {
         <p>
           We keep your request and key for as long as you have a key or your request is open. Usage
           rows go after 30 days. To have everything about you deleted (your request, your keys and
-          their usage), reply to any email you got from {brandName}. We delete it and confirm.
+          their usage), write to{" "}
+          <a href={`mailto:${brandContact}`} className="font-semibold text-accent-text underline">
+            {brandContact}
+          </a>{" "}
+          or reply to any email you got from {brandName}. We delete it and confirm.
         </p>
       </Section>
 
