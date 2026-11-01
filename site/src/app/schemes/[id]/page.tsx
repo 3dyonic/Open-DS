@@ -8,6 +8,7 @@ import { Applied, type AppliedSamples } from "@/components/applied";
 import { Eyebrow, Legend, Swatch } from "@/components/chrome";
 import { ScopeMini } from "@/components/scope-mini";
 import { cardMark, REASON_LABEL } from "@/lib/home";
+import { figmaKit } from "@/lib/figma-kits";
 import { answerOf, grammar, scheme, schemeIds } from "@/lib/schemes";
 
 export function generateStaticParams() {
@@ -28,6 +29,7 @@ const lower = (t: string) => (/^[A-Z]{2}/.test(t) ? t : t.charAt(0).toLowerCase(
 
 export default async function SchemePage({ params }: { params: Promise<{ id: string }> }) {
   const { id } = await params;
+  const kit = figmaKit(id);
   const s = scheme(id);
   const g = grammar();
   const label = (q: string) => answerOf(s, g, q).option.label;
@@ -248,6 +250,33 @@ export default async function SchemePage({ params }: { params: Promise<{ id: str
         </ul>
       </section>
 
+      {kit && (
+        <section
+          className="flex flex-col gap-4 rounded-[8px] border border-line bg-white p-8 md:flex-row md:items-center md:justify-between"
+          aria-labelledby="figma"
+        >
+          <div className="flex max-w-[760px] flex-col gap-2">
+            <Eyebrow>Figma kit</Eyebrow>
+            <h2 id="figma" className="text-[28px] font-extrabold">
+              {s.name} in Figma
+            </h2>
+            <p className="text-[16px] leading-[1.45] text-body">
+              Variables for every theme with their CSS names, text and effect styles, the components
+              bound to the component keys, and a page with all {s.answers.length} answers and their
+              reasons. Generated from the scheme, so it matches the code.
+            </p>
+          </div>
+          <a
+            href={kit}
+            rel="noopener"
+            className="flex shrink-0 items-center gap-[10px] self-start rounded-[4px] bg-ink px-5 py-[14px] text-[17px] font-semibold text-paper md:self-center"
+          >
+            <span aria-hidden className="size-[8px] bg-accent" />
+            Open the Figma kit
+          </a>
+        </section>
+      )}
+
       <section className="inverse flex flex-col gap-8 rounded-[8px] bg-ink p-10 text-paper lg:flex-row">
         <div className="flex flex-col gap-3 lg:w-[640px]">
           <Eyebrow tone="accent">Take this scheme</Eyebrow>
@@ -263,6 +292,7 @@ export default async function SchemePage({ params }: { params: Promise<{ id: str
             ["CLI", `open-ds init ${s.id}`],
             ["Link", `/schemes/${s.id}`],
             ["Agent", `MCP · get_scheme("${s.id}")`],
+            ...(kit ? [["Figma", "Figma kit · variables, styles, components"]] : []),
           ].map(([k, v]) => (
             <li key={k} className="flex gap-4 rounded-[4px] border border-muted px-4 py-3">
               <span className="w-[60px] shrink-0 font-mono text-[11px] font-medium uppercase tracking-[0.44px] text-line">
