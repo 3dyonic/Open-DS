@@ -666,19 +666,19 @@ const cv = figma.createAutoLayout('VERTICAL', { name: 'Cover', itemSpacing: 40, 
 cv.resize(1600, 960); cv.primaryAxisSizingMode = 'FIXED'; cv.counterAxisSizingMode = 'FIXED'; cv.primaryAxisAlignItems = 'SPACE_BETWEEN';
 cv.setExplicitVariableModeForCollection(semantic, semantic.modes[0].modeId);
 bindFill(cv, 'color/surface/canvas') || (cv.fills = [{ type: 'SOLID', color: PAPER }]);
-const top = figma.createAutoLayout('VERTICAL', { name: 'Title', itemSpacing: 20 }); cv.appendChild(top);
+const top = figma.createAutoLayout('VERTICAL', { name: 'Title', itemSpacing: 20 }); top.fills = []; cv.appendChild(top);\nconst VV = (n) => V(n) || V(n + '/default');\nconst display = (await figma.getLocalTextStylesAsync()).find((s) => s.name === 'Type/display');\nconst displayFont = display ? await load(display.fontName) : bold;
 const eyebrow = await text('OPEN DS · FIGMA KIT', { font: semi, size: 18 }); bindFill(eyebrow, 'color/action/primary/default') || (eyebrow.fills = [{ type: 'SOLID', color: ACCENT }]); top.appendChild(eyebrow);
-const title = await text(D.name, { font: bold, size: 120 }); bindFill(title, 'color/text/primary'); top.appendChild(title);
+const title = await text(D.name, { font: displayFont, size: 120 }); bindFill(title, 'color/text/primary'); top.appendChild(title);
 const sum = await text(D.summary, { font: sans, size: 34, width: 1180, lineHeight: 44 }); bindFill(sum, 'color/text/secondary'); top.appendChild(sum);
 // The scheme's colours.
 const strip = figma.createAutoLayout('HORIZONTAL', { name: 'Colours', itemSpacing: 0 }); cv.appendChild(strip); strip.layoutSizingHorizontal = 'FILL';
-for (const n of ['color/action/primary/default', 'color/action/primary/hover', 'color/text/primary', 'color/surface/raised', 'color/status/success', 'color/status/warning', 'color/status/danger', 'color/status/info']) {
-  if (!V(n)) continue;
-  const r = figma.createRectangle(); r.name = n; r.resize(100, 96); bindFill(r, n); strip.appendChild(r); r.layoutSizingHorizontal = 'FILL';
+for (const n of ['color/action/primary', 'color/action/primary/hover', 'color/text/primary', 'color/surface/raised', 'color/status/success', 'color/status/warning', 'color/status/danger', 'color/status/info']) {
+  const v = VV(n); if (!v) continue;
+  const r = figma.createRectangle(); r.name = v.name; r.resize(100, 96); bindFill(r, v.name); strip.appendChild(r); r.layoutSizingHorizontal = 'FILL';
 }
 strip.cornerRadius = 16; strip.clipsContent = true; strip.strokes = [{ type: 'SOLID', color: { r: 0.5, g: 0.5, b: 0.5 }, opacity: 0.25 }]; strip.strokeWeight = 1;
 // A button from the kit, and the facts.
-const foot = figma.createAutoLayout('HORIZONTAL', { name: 'Facts', itemSpacing: 32, counterAxisAlignItems: 'CENTER' }); cv.appendChild(foot);
+const foot = figma.createAutoLayout('HORIZONTAL', { name: 'Facts', itemSpacing: 32, counterAxisAlignItems: 'CENTER' }); foot.fills = []; cv.appendChild(foot);
 const compPage = figma.root.children.find((p) => p.name === 'Components');
 let set = null;
 if (compPage) { await compPage.loadAsync(); set = compPage.children.find((n) => n.name === 'Button' && n.type === 'COMPONENT_SET') || null; }
