@@ -4,5 +4,7 @@
   "tagline": "Every design system is a set of answers.",
   "nameNote": "The product name is pending. Change it only in this file.",
   "url": "https://open-ds.dev",
-  "urlNote": "The site address (Yonatan bought open-ds.dev, 2026-10-31). Deployment is planned later; SITE_URL overrides it at build time."
+  "urlNote": "The site address (Yonatan bought open-ds.dev, 2026-10-31). Deployment is planned later; SITE_URL overrides it at build time.",
+  "contact": "contact@open-ds.dev",
+  "contactNote": "The public contact address. Mail to it is forwarded by Cloudflare Email Routing; the inbox it reaches is set there, never in this repository."
 }
