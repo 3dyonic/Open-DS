@@ -407,11 +407,12 @@ for (const pg of [...figma.root.children]) if (pg.name === 'Page 1' && figma.roo
 await pageNamed('Intro', 1);
 const intro = figma.createAutoLayout('VERTICAL', { name: 'Intro', itemSpacing: 40, paddingLeft: 96, paddingRight: 96, paddingTop: 88, paddingBottom: 88 });
 intro.fills = [{ type: 'SOLID', color: PAPER }]; intro.resize(1200, 100); intro.counterAxisSizingMode = 'FIXED'; intro.primaryAxisSizingMode = 'AUTO';
-const brand = figma.createAutoLayout('HORIZONTAL', { name: 'Open DS', itemSpacing: 14, counterAxisAlignItems: 'CENTER' }); intro.appendChild(brand);
+const brand = figma.createAutoLayout('HORIZONTAL', { name: 'open-ds.dev', itemSpacing: 20, counterAxisAlignItems: 'CENTER' }); intro.appendChild(brand);
 const mark = figma.createFrame(); mark.name = 'Mark'; mark.resize(36, 26); mark.fills = []; brand.appendChild(mark);
 ['110111', '101010', '1l1011', '101001', '110111'].forEach((row, r) => [...row].forEach((c, i) => { if (c === '0') return; const px = figma.createRectangle(); px.resize(4, 4); px.x = i * 16 / 3; px.y = r * 16 / 3; px.fills = [{ type: 'SOLID', color: c === 'l' ? ACCENT : INK }]; mark.appendChild(px); }));
-brand.appendChild(await text('Open DS', { font: bold, size: 26, color: INK }));
-const dot = figma.createRectangle(); dot.resize(7, 7); dot.fills = [{ type: 'SOLID', color: ACCENT }]; brand.appendChild(dot);
+mark.rescale(1.8);
+const site = await text('open-ds.dev', { font: bold, size: 56, color: INK }); site.hyperlink = { type: 'URL', value: 'https://open-ds.dev' }; brand.appendChild(site);
+const dot = figma.createRectangle(); dot.resize(12, 12); dot.fills = [{ type: 'SOLID', color: ACCENT }]; brand.appendChild(dot);
 const head = figma.createAutoLayout('VERTICAL', { name: 'Heading', itemSpacing: 14 }); intro.appendChild(head);
 head.appendChild(await text('FIGMA KIT', { font: semi, size: 14, color: ACCENT }));
 head.appendChild(await text(D.name, { font: bold, size: 64, color: INK }));
