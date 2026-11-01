@@ -290,7 +290,6 @@ export default async function SchemePage({ params }: { params: Promise<{ id: str
         <ul className="flex flex-1 flex-col gap-[10px]">
           {[
             ["CLI", `open-ds init ${s.id}`],
-            ["Link", `/schemes/${s.id}`],
             ["Agent", `MCP · get_scheme("${s.id}")`],
             ...(kit ? [["Figma", "Figma kit · variables, styles, components"]] : []),
           ].map(([k, v]) => (
