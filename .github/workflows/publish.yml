@@ -16,7 +16,8 @@ on:
         default: true
 
 permissions:
-  contents: read
+  # write: to attach the Figma kits plugin to the release.
+  contents: write
   id-token: write
   packages: write
 
@@ -103,3 +104,20 @@ jobs:
             done
           fi
           rm .npmrc
+
+      # The Figma kits plugin, built from the same schemes as this release (OD-149). It is generated, so
+      # it is not committed: every run keeps it as a workflow artifact, and a release gets it attached.
+      - name: Build the Figma kits plugin
+        run: |
+          node scripts/figma-kit.mjs all
+          (cd figma && zip -qr ../open-ds-kits-plugin.zip plugin)
+      - name: Keep the plugin with this run
+        uses: actions/upload-artifact@v4
+        with:
+          name: open-ds-kits-plugin
+          path: open-ds-kits-plugin.zip
+      - name: Attach the plugin to the release
+        if: github.event_name == 'release'
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: gh release upload "${{ github.event.release.tag_name }}" open-ds-kits-plugin.zip --clobber
