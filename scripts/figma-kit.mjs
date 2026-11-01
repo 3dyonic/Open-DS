@@ -381,18 +381,8 @@ ${HELPERS}
 const sans = await load({ family: 'Inter', style: 'Regular' }), bold = await load({ family: 'Inter', style: 'Bold' }), semi = await load({ family: 'Inter', style: 'Semi Bold' });
 const created = [];
 
-// Cover (and Figma's empty default page goes)
-const cover = await pageNamed('Cover', 0);
-for (const pg of [...figma.root.children]) if (pg.name === 'Page 1' && pg !== cover) { await pg.loadAsync(); if (pg.children.length === 0) pg.remove(); }
-const cv = figma.createAutoLayout('VERTICAL', { name: 'Cover', itemSpacing: 24, paddingLeft: 96, paddingRight: 96, paddingTop: 96, paddingBottom: 96 });
-cv.fills = [{ type: 'SOLID', color: PAPER }]; cv.resize(1440, 960); cv.primaryAxisSizingMode = 'FIXED'; cv.counterAxisSizingMode = 'FIXED';
-cv.appendChild(await text('OPEN DS · FIGMA KIT', { font: semi, size: 16, color: ACCENT }));
-cv.appendChild(await text(D.name, { font: bold, size: 96, color: INK }));
-cv.appendChild(await text(D.summary, { font: sans, size: 32, color: INK, width: 1100, lineHeight: 42 }));
-cv.appendChild(await text(D.description, { font: sans, size: 20, color: MUTED, width: 1000, lineHeight: 30 }));
-cv.appendChild(await text('Scheme ' + D.id + ' · version ' + D.version + ' · ' + D.counts.variables + ' variables in ' + D.modes.length + ' modes (' + D.modes.join(', ') + ') · ' + D.counts.components + ' components · ' + D.counts.answers + ' answered questions', { font: sans, size: 16, color: MUTED, width: 1100 }));
-cv.appendChild(await text('Generated from the scheme by scripts/figma-kit.mjs. Every value is a variable with its CSS name. The Scheme page holds every question and answer, with the reasons.', { font: sans, size: 16, color: MUTED, width: 1100 }));
-created.push(cv.id);
+// Figma's empty default page goes (the cover is its own step, 05).
+for (const pg of [...figma.root.children]) if (pg.name === 'Page 1' && figma.root.children.length > 1) { await pg.loadAsync(); if (pg.children.length === 0) pg.remove(); }
 
 // Foundations
 await pageNamed('Foundations', 1);
@@ -663,6 +653,45 @@ return { id: col.id, groups: D.part.length, answers: D.part.reduce((n, g) => n +
   });
 }
 
+function coverScript(d) {
+  const data = { name: d.name, id: d.id, version: d.version, summary: d.summary, modes: d.modes, counts: { variables: d.variables.length, components: d.components.length, answers: d.answers.length } };
+  return `${HEADER(d, "05 cover")}const D = ${JSON.stringify(data)};
+${HELPERS}
+// The cover: the scheme in its own colours, bound to the kit's variables. It is the file's thumbnail.
+const sans = await load({ family: 'Inter', style: 'Regular' }), bold = await load({ family: 'Inter', style: 'Bold' }), semi = await load({ family: 'Inter', style: 'Semi Bold' });
+const page = await pageNamed('Cover', 0);
+for (const pg of [...figma.root.children]) if (pg.name === 'Page 1' && pg !== page) { await pg.loadAsync(); if (pg.children.length === 0) pg.remove(); }
+const semantic = C('Semantic');
+const cv = figma.createAutoLayout('VERTICAL', { name: 'Cover', itemSpacing: 40, paddingLeft: 96, paddingRight: 96, paddingTop: 88, paddingBottom: 88 });
+cv.resize(1600, 960); cv.primaryAxisSizingMode = 'FIXED'; cv.counterAxisSizingMode = 'FIXED'; cv.primaryAxisAlignItems = 'SPACE_BETWEEN';
+cv.setExplicitVariableModeForCollection(semantic, semantic.modes[0].modeId);
+bindFill(cv, 'color/surface/canvas') || (cv.fills = [{ type: 'SOLID', color: PAPER }]);
+const top = figma.createAutoLayout('VERTICAL', { name: 'Title', itemSpacing: 20 }); cv.appendChild(top);
+const eyebrow = await text('OPEN DS · FIGMA KIT', { font: semi, size: 18 }); bindFill(eyebrow, 'color/action/primary/default') || (eyebrow.fills = [{ type: 'SOLID', color: ACCENT }]); top.appendChild(eyebrow);
+const title = await text(D.name, { font: bold, size: 120 }); bindFill(title, 'color/text/primary'); top.appendChild(title);
+const sum = await text(D.summary, { font: sans, size: 34, width: 1180, lineHeight: 44 }); bindFill(sum, 'color/text/secondary'); top.appendChild(sum);
+// The scheme's colours.
+const strip = figma.createAutoLayout('HORIZONTAL', { name: 'Colours', itemSpacing: 0 }); cv.appendChild(strip); strip.layoutSizingHorizontal = 'FILL';
+for (const n of ['color/action/primary/default', 'color/action/primary/hover', 'color/text/primary', 'color/surface/raised', 'color/status/success', 'color/status/warning', 'color/status/danger', 'color/status/info']) {
+  if (!V(n)) continue;
+  const r = figma.createRectangle(); r.name = n; r.resize(100, 96); bindFill(r, n); strip.appendChild(r); r.layoutSizingHorizontal = 'FILL';
+}
+strip.cornerRadius = 16; strip.clipsContent = true; strip.strokes = [{ type: 'SOLID', color: { r: 0.5, g: 0.5, b: 0.5 }, opacity: 0.25 }]; strip.strokeWeight = 1;
+// A button from the kit, and the facts.
+const foot = figma.createAutoLayout('HORIZONTAL', { name: 'Facts', itemSpacing: 32, counterAxisAlignItems: 'CENTER' }); cv.appendChild(foot);
+const compPage = figma.root.children.find((p) => p.name === 'Components');
+let set = null;
+if (compPage) { await compPage.loadAsync(); set = compPage.children.find((n) => n.name === 'Button' && n.type === 'COMPONENT_SET') || null; }
+if (set && set.type === 'COMPONENT_SET') { const inst = set.defaultVariant.createInstance(); inst.rescale(1.6); foot.appendChild(inst); }
+const facts = await text(D.modes.length + ' themes: ' + D.modes.join(', ') + '\\n' + D.counts.variables + ' variables · ' + D.counts.components + ' components · ' + D.counts.answers + ' answered questions\\nScheme ' + D.id + ' ' + D.version + ' · generated from the scheme', { font: sans, size: 20, lineHeight: 30 });
+bindFill(facts, 'color/text/secondary'); foot.appendChild(facts);
+// The first frame of the first page is the file's thumbnail in Figma.
+cv.x = 0; cv.y = 0;
+if (figma.setFileThumbnailNodeAsync) { try { await figma.setFileThumbnailNodeAsync(cv); } catch {} }
+return { cover: cv.id };
+`;
+}
+
 /** All scripts for a scheme, in order: [{ file, code }]. */
 export function kitScripts(id) {
   const d = kitData(id);
@@ -671,9 +700,60 @@ export function kitScripts(id) {
     { file: "02-foundations.js", code: foundationsScript(d) },
     { file: "03-components.js", code: componentsScript(d) },
     ...schemeScripts(d).map((code, i) => ({ file: `04-scheme-${i + 1}.js`, code })),
+    { file: "05-cover.js", code: coverScript(d) },
   ];
   for (const s of scripts) if (s.code.length > MAX_SCRIPT) throw new Error(`${id}/${s.file} is ${s.code.length} characters, over ${MAX_SCRIPT}.`);
   return { data: d, scripts };
+}
+
+/** One development plugin with every scheme's kit: figma/plugin/ (manifest.json, code.js, ui.html). */
+export function writePlugin(dir, ids) {
+  mkdirSync(dir, { recursive: true });
+  writeFileSync(
+    join(dir, "manifest.json"),
+    JSON.stringify({ name: "Open DS kits", id: "open-ds-kits", api: "1.0.0", main: "code.js", ui: "ui.html", editorType: ["figma"], documentAccess: "dynamic-page", networkAccess: { allowedDomains: ["none"] } }, null, 2) + "\n",
+  );
+  const kits = ids.map((id) => {
+    const { data, scripts } = kitScripts(id);
+    const steps = scripts.map((x) => `    [${JSON.stringify(x.file)}, async () => {\n${x.code}\n    }],`).join("\n");
+    return `  ${JSON.stringify(id)}: { name: ${JSON.stringify(data.name)}, steps: [\n${steps}\n  ] },`;
+  });
+  writeFileSync(
+    join(dir, "code.js"),
+    `// Open DS kits: builds a scheme's Figma kit in the open file. Generated by scripts/figma-kit.mjs.
+const KITS = {
+${kits.join("\n")}
+};
+const guess = Object.keys(KITS).find((id) => figma.root.name.toLowerCase().includes(KITS[id].name.toLowerCase())) || "";
+figma.showUI(__html__, { width: 360, height: 240 });
+figma.ui.postMessage({ type: "init", kits: Object.fromEntries(Object.entries(KITS).map(([k, v]) => [k, v.name])), guess });
+figma.ui.onmessage = async (msg) => {
+  if (msg.type !== "run") return;
+  const kit = KITS[msg.id];
+  try {
+    for (const [i, [file, step]] of kit.steps.entries()) {
+      figma.ui.postMessage({ type: "progress", text: (i + 1) + " of " + kit.steps.length + ": " + file });
+      await step();
+    }
+    figma.closePlugin("Open DS kit · " + kit.name + ": done");
+  } catch (e) {
+    figma.ui.postMessage({ type: "progress", text: "Failed: " + e.message });
+  }
+};
+`,
+  );
+  writeFileSync(
+    join(dir, "ui.html"),
+    `<style>body{font:13px Inter,system-ui,sans-serif;margin:16px;color:#16140f}select,button{width:100%;height:32px;margin-top:8px;font:inherit}button{background:#16140f;color:#f6f2e9;border:0;border-radius:4px;font-weight:600}p{color:#645e50}</style>
+<b>Open DS kits</b>
+<p>Builds the scheme's kit in this file: variables, styles, foundations, components, every question and answer, and the cover. Running it again rebuilds the kit.</p>
+<select id="kit"></select><button id="run">Build the kit</button><p id="status"></p>
+<script>
+onmessage = (e) => { const m = e.data.pluginMessage; if (m.type === "init") { const s = document.getElementById("kit"); for (const [id, name] of Object.entries(m.kits)) s.add(new Option(name, id, false, id === m.guess)); } if (m.type === "progress") document.getElementById("status").textContent = m.text; };
+document.getElementById("run").onclick = () => parent.postMessage({ pluginMessage: { type: "run", id: document.getElementById("kit").value } }, "*");
+</script>
+`,
+  );
 }
 
 if (import.meta.url === `file://${process.argv[1]}`) {
@@ -685,5 +765,10 @@ if (import.meta.url === `file://${process.argv[1]}`) {
     const { data, scripts } = kitScripts(id);
     for (const s of scripts) writeFileSync(join(out, s.file), s.code);
     console.log(`${id}: ${data.variables.length} variables, ${data.modes.length} modes, ${data.textStyles.length} text styles, ${data.components.length} components, ${data.answers.length} answers → ${scripts.length} scripts in ${out}`);
+  }
+  if (!process.argv[3]) {
+    const all = JSON.parse(readFileSync(join(ROOT, "tokens/dist/index.json"), "utf8")).schemes.map((s) => s.id);
+    writePlugin(join(ROOT, "figma/plugin"), all);
+    console.log(`Figma plugin with every kit → figma/plugin (Plugins, Development, Import plugin from manifest).`);
   }
 }
