@@ -432,6 +432,16 @@ async function block(title, items) {
     it.appendChild(await text(body, { font: sans, size: 15, color: MUTED, width: 1000, lineHeight: 23 }));
   }
 }
+await block('What Open DS is', [
+  ['A design system as answered questions', 'Open DS models a design system as a set of questions: about the product and its people first, then about type, colour, spacing, components, voice and more. A scheme answers every question, and every answer carries its reason.'],
+  ['Schemes are data; the rest is built from them', 'From one scheme come the tokens, the components, a Storybook, the docs, the agent files, and this Figma kit. Change an answer and everything built from it follows.'],
+  ['Take it whole, as your own', 'Take a scheme through your AI (the Open DS MCP server) or the open-ds command line, and get the whole design system as code you own.'],
+]);
+await block('What this kit is', [
+  ['The ' + D.name + ' scheme, in Figma', 'Every variable, style and component here is generated from the ' + D.name + ' scheme, so the kit matches the code: the same names, values, themes and components.'],
+  ['For designing with it', 'Use the variables and components to design screens in ' + D.name + '. A developer who takes the scheme as code gets the same system.'],
+  ['Rebuilt, not redrawn', 'When the scheme changes, the kit is rebuilt from it with the Open DS kits plugin. Nothing in it is drawn by hand.'],
+]);
 await block('In this kit', [
   ['Variables', D.counts.variables + ' variables in two collections, Semantic and Component, with one mode per theme: ' + D.modes.join(', ') + '. Each carries its CSS name, so Dev Mode shows var(--…) as in the code.'],
   ['Styles', 'A text style per type role in the fonts of the scheme, and elevation effect styles.'],
