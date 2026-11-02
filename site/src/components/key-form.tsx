@@ -103,6 +103,16 @@ export function KeyRequestForm() {
           We sent you an email to say so. A person reads every request, and we will email you when
           we decide. Invitations are limited in number during the Beta.
         </p>
+        <p className="text-[17px] text-body">
+          You don’t have to wait to start: run the same MCP server on your computer, with no key.
+          When your key arrives, switch to the hosted server.
+        </p>
+        <Link
+          href="/install/#local"
+          className="self-start rounded-[4px] border border-ink px-5 py-[14px] text-[17px] font-semibold"
+        >
+          Run it locally
+        </Link>
       </div>
     );
 
