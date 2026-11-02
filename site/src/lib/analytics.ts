@@ -1,8 +1,10 @@
-// Google Analytics, only with consent. The measurement ID lives in brand.json (analytics.ga4).
-// While it is empty, the site shows no banner and loads nothing from Google.
+// Google Tag Manager, only with consent. The container ID lives in brand.json (analytics.gtm);
+// the Google Analytics tag is set up inside the container. While the ID is empty, the site shows
+// no banner and loads nothing from Google. The container itself loads only after Accept, so no
+// tag in it can run before consent.
 import brand from "../../../brand.json";
 
-export const gaId: string = (brand as { analytics?: { ga4?: string } }).analytics?.ga4 ?? "";
+export const gtmId: string = (brand as { analytics?: { gtm?: string } }).analytics?.gtm ?? "";
 export const CONSENT_KEY = "open-ds-consent";
 export type Consent = "granted" | "denied";
 /** The footer link asks the banner to open again with this event. */
@@ -32,29 +34,26 @@ export function saveConsent(v: Consent) {
   }
 }
 
-/** Loads gtag.js once. Called only after the visitor accepts. IP addresses are not logged by GA4. */
-export function loadGa() {
-  if (!gaId || window.gtag) return;
+/** Loads the Tag Manager container once. Called only after the visitor accepts. */
+export function loadGtm() {
+  if (!gtmId || window.gtag) return;
   window.dataLayer = window.dataLayer ?? [];
   window.gtag = function gtag() {
-    // gtag reads the arguments object, not an array.
+    // Consent commands must be pushed as the arguments object, not an array.
     // eslint-disable-next-line prefer-rest-params
     window.dataLayer!.push(arguments);
   };
+  // Measuring is allowed (the visitor accepted); ads stay off whatever the container holds.
   window.gtag("consent", "default", {
     ad_storage: "denied",
     ad_user_data: "denied",
     ad_personalization: "denied",
     analytics_storage: "granted",
   });
-  window.gtag("js", new Date());
-  window.gtag("config", gaId, {
-    allow_google_signals: false,
-    allow_ad_personalization_signals: false,
-  });
+  window.dataLayer.push({ "gtm.start": Date.now(), event: "gtm.js" });
   const s = document.createElement("script");
   s.async = true;
-  s.src = `https://www.googletagmanager.com/gtag/js?id=${encodeURIComponent(gaId)}`;
+  s.src = `https://www.googletagmanager.com/gtm.js?id=${encodeURIComponent(gtmId)}`;
   document.head.appendChild(s);
 }
 

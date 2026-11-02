@@ -1,14 +1,14 @@
 "use client";
 // The cookie banner. It asks once, before any Google Analytics cookie is set. Accept and Reject
 // are equal buttons. "Cookie settings" in the footer opens it again. Without a measurement ID
-// (brand.json analytics.ga4) it renders nothing.
+// (brand.json analytics.gtm) it renders nothing.
 import Link from "next/link";
 import { useEffect, useState } from "react";
 import {
   type Consent,
   OPEN_CONSENT_EVENT,
-  gaId,
-  loadGa,
+  gtmId,
+  loadGtm,
   readConsent,
   saveConsent,
   stopGa,
@@ -18,20 +18,20 @@ export function ConsentBanner() {
   const [open, setOpen] = useState(false);
 
   useEffect(() => {
-    if (!gaId) return;
+    if (!gtmId) return;
     const c = readConsent();
-    if (c === "granted") loadGa();
+    if (c === "granted") loadGtm();
     if (c === null) setOpen(true);
     const reopen = () => setOpen(true);
     window.addEventListener(OPEN_CONSENT_EVENT, reopen);
     return () => window.removeEventListener(OPEN_CONSENT_EVENT, reopen);
   }, []);
 
-  if (!gaId || !open) return null;
+  if (!gtmId || !open) return null;
 
   const choose = (v: Consent) => {
     saveConsent(v);
-    if (v === "granted") loadGa();
+    if (v === "granted") loadGtm();
     else stopGa();
     setOpen(false);
   };
@@ -72,7 +72,7 @@ export function ConsentBanner() {
 
 /** The footer item that opens the banner again. Hidden while there is no measurement ID. */
 export function CookieSettingsLink({ className }: { className?: string }) {
-  if (!gaId) return null;
+  if (!gtmId) return null;
   return (
     <li>
       <button
