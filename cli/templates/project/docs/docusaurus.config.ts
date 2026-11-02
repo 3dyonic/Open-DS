@@ -53,14 +53,14 @@ const config: Config = {
         },
         {
           type: "doc",
-          docId: "foundations/index",
-          label: "Foundations",
+          docId: "primitives/index",
+          label: "Primitives",
           position: "left",
         },
         {
           type: "doc",
-          docId: "primitives/index",
-          label: "Primitives",
+          docId: "foundations/index",
+          label: "Foundations",
           position: "left",
         },
         {

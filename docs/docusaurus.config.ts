@@ -45,8 +45,8 @@ const config: Config = {
       logo: { src: "logo.svg", srcDark: "logo-dark.svg", alt: scheme.name },
       items: [
         { type: "html", position: "left", value: `<span class="ods-docs-tag">v${scheme.version}</span>` },
-        { type: "doc", docId: "foundations/index", label: "Foundations", position: "left" },
         { type: "doc", docId: "primitives/index", label: "Primitives", position: "left" },
+        { type: "doc", docId: "foundations/index", label: "Foundations", position: "left" },
         { type: "doc", docId: "components/inventory", label: "Components", position: "left" },
         { type: "doc", docId: "voice", label: "Voice", position: "left" },
         { type: "doc", docId: "themes", label: "Themes", position: "left" },
