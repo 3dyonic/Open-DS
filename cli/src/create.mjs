@@ -358,6 +358,10 @@ export function createProject(
         ...packagesFor(components, roots),
       },
       devDependencies: { "open-ds": openDs, ...DEV_DEPENDENCIES },
+      // Docusaurus's dev server pulls sockjs, whose latest release still asks for uuid@8, so every
+      // install warned that uuid@8 is deprecated. uuid@11 keeps the require('uuid').v4 that sockjs
+      // uses, and installs with no warning.
+      overrides: { sockjs: { uuid: "^11.1.0" } },
     }),
   );
   write("README.md", readme(scheme, name, brands));
