@@ -8,11 +8,87 @@ description: "Input group in Dense data."
 
 # Input group
 
-Input group. An input with addons such as icons or buttons. From shadcn/ui (new-york-v4, MIT), carried by the schemes whose inventory names it. Reads the shadcn variables, which theme.css maps onto the scheme's semantic tokens, and the radius, shadow and text scale that shadcn.css maps onto the scheme's tokens. Dark mode comes from the tokens, so no dark: classes.
+An input with addons inside its border: icons, text, buttons.
 
-See it in [Storybook](http://localhost:6006) under Components / Input group, in every theme.
+**In Dense data.** Search with an icon and a clear button. Family: form. Reference: Open DS, MIT.
+
+## See it live
+
+<iframe src="http://localhost:6006/iframe.html?id=components-input-group--examples&viewMode=story" title="Input group examples in Storybook" loading="lazy" style="width:100%;height:320px;border:1px solid var(--color-border-default);border-radius:var(--radius-container)"></iframe>
+
+[Open Input group in Storybook](http://localhost:6006/?path=/docs/components-input-group--docs): every variant, the playground and its controls, in every theme.
+
+## When to use it
+
+- **Use it when:** A search with an icon and a clear button, a value with a unit or currency.
+- **Not when:** Controls that are separate fields (lay them out with field).
+
+Instead:
+
+- [Input](./input.md): A plain field.
+
+## Variants
+
+What each variant is for in any design system, and what Dense data decided, with the answers behind it.
+
+| Axis | Variant | What it is for | In Dense data | Because |
+| --- | --- | --- | --- | --- |
+| align | `inline-start` | An addon before the text, on the same line: an icon or currency. | The search icon before the text. | `iconography.roles` |
+|  | `inline-end` | An addon after the text: a unit, a clear button, a shortcut. | The clear button after the text, for searches people repeat all day. | `tasks.q2` |
+|  | `block-start` | An addon row above the text, inside the field. | Not used. Inputs stay one line high in toolbars and filter bars. | `content.q2` |
+|  | `block-end` | An addon row below the text, inside the field. | Not used. Inputs stay one line high in toolbars and filter bars. | `content.q2` |
+
+## Why it works this way
+
+The answers that shaped Input group here. Change one, and the decisions above change with it.
+
+| Question | Answer |
+| --- | --- |
+| What do icons do? (`iconography.roles`) | **Actions and status**. Icons mark row actions and status. |
+| How often do people repeat actions? (`tasks.q2`) | **Constantly**. The same actions repeat many times an hour. |
+| How much is on one screen? (`content.q2`) | **A lot**. Experts want many records on one screen. |
+
+## What moves if an answer changes
+
+For each answer above: the Input group decisions it would reopen, and the other answers that follow from it.
+
+| If this changes | Input group decisions it reopens | Answers that follow |
+| --- | --- | --- |
+| `iconography.roles` | `align/inline-start` | None |
+| `tasks.q2` | `align/inline-start`, `align/inline-end` | `outcomes.q1`, `scenarios.q2`, `color.count`, `motion.values`, `iconography.roles`, `iconography.lands`, `theming.values`, `voice.definition`, `components.definition`, `components.values`, `theming.count` |
+| `content.q2` | `align/block-start`, `align/block-end` | `brand.q2`, `typography.count`, `typography.values`, `color.roles`, `color.values`, `spacing.definition`, `spacing.values`, `shape.lands`, `iconography.count`, `iconography.definition`, `iconography.values`, `accessibility.lands`, `components.count`, `components.values` |
+
+## Words
+
+- Lead with the object, then the state: "Alert 2041 contained."
+- Use numbers, not words for numbers.
+- One verb per button. No "please", no exclamation marks.
+- Use: Investigate, Filter, Assign, Escalated, Resolved. Avoid: Oops, Awesome, Please, Simply.
+
+The labels components use, from the voice tokens:
+
+- `content.action.commit`: Save
+- `content.action.cancel`: Cancel
+- `content.action.destroy`: Delete
+- `content.action.retry`: Retry
+- `content.action.empty-action`: Change filters
+
+See [Voice and tone](../voice.md) for the whole voice.
+
+## Accessibility and keyboard
+
+Test before you ship:
+
+- [ ] Addon buttons have names; icons that only decorate are hidden from screen readers. undefined
+
+## Use it in code
+
+```bash
+npx open-ds add input-group
+```
+
+The component reads only component keys and semantic tokens, so it follows the brand and mode on `<html>`.
 
 ## Tokens it reads
 
 From shadcn/ui. It reads shadcn's variables, which theme.css maps onto this system's semantic tokens, and the radius, shadow and text scale in shadcn.css.
-

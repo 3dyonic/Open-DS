@@ -8,11 +8,62 @@ description: "Chart in Dense data."
 
 # Chart
 
-Chart. Bars, lines and areas built on Recharts. From shadcn/ui (new-york-v4, MIT), carried by the schemes whose inventory names it. Reads the shadcn variables, which theme.css maps onto the scheme's semantic tokens, and the radius, shadow and text scale that shadcn.css maps onto the scheme's tokens. Dark mode comes from the tokens, so no dark: classes.
+A picture of numbers: comparison, trend, share or spread.
 
-See it in [Storybook](http://localhost:6006) under Components / Chart, in every theme.
+**In Dense data.** Totals over time on dashboards. Family: data. Reference: Open UX (chart), MIT.
+
+## See it live
+
+<iframe src="http://localhost:6006/iframe.html?id=components-chart--examples&viewMode=story" title="Chart examples in Storybook" loading="lazy" style="width:100%;height:320px;border:1px solid var(--color-border-default);border-radius:var(--radius-container)"></iframe>
+
+[Open Chart in Storybook](http://localhost:6006/?path=/docs/components-chart--docs): every variant, the playground and its controls, in every theme.
+
+## When to use it
+
+- **Use it when:** The story is a relationship in a set of numbers, not a single number.
+- **Not when:** A table is clearer, the set is too small, or the chart is decoration.
+
+Instead:
+
+- [Table](./table.md): The numbers as rows; often needed beside the chart.
+
+## How Dense data uses it
+
+| Situation | Use | Not | Why |
+| --- | --- | --- | --- |
+| A number in a table | type.data | type.body | Mono digits line up in columns, so values compare at a glance. |
+
+## Words
+
+- Lead with the object, then the state: "Alert 2041 contained."
+- Use numbers, not words for numbers.
+- One verb per button. No "please", no exclamation marks.
+- Use: Investigate, Filter, Assign, Escalated, Resolved. Avoid: Oops, Awesome, Please, Simply.
+
+The labels components use, from the voice tokens:
+
+- `content.action.commit`: Save
+- `content.action.cancel`: Cancel
+- `content.action.destroy`: Delete
+- `content.action.retry`: Retry
+- `content.action.empty-action`: Change filters
+
+See [Voice and tone](../voice.md) for the whole voice.
+
+## Accessibility and keyboard
+
+Test before you ship:
+
+- [ ] The same numbers are available as a table or text; color is not the only key. undefined
+
+## Use it in code
+
+```bash
+npx open-ds add chart
+```
+
+The component reads only component keys and semantic tokens, so it follows the brand and mode on `<html>`.
 
 ## Tokens it reads
 
 From shadcn/ui. It reads shadcn's variables, which theme.css maps onto this system's semantic tokens, and the radius, shadow and text scale in shadcn.css.
-

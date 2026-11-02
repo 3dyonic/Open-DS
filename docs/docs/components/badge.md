@@ -8,9 +8,93 @@ description: "Badge in Dense data."
 
 # Badge
 
-Badge. A short status such as Paid, Late or Failed. Always put a word inside; color alone is not enough (situation status-label in every scheme). Tones: neutral, info, success, warning, danger. Pick the status that matches the real risk: info, then warning, then danger (the urgency order in the grammar). Never go up a level to get attention. Reads only component keys: --badge-\*.
+A short label for a status, category or count, next to what it describes.
 
-See it in [Storybook](http://localhost:6006) under Components / Badge, in every theme.
+**In Dense data.** Alert status in rows. Family: feedback. Reference: Open DS, MIT.
+
+## See it live
+
+<iframe src="http://localhost:6006/iframe.html?id=components-badge--examples&viewMode=story" title="Badge examples in Storybook" loading="lazy" style="width:100%;height:320px;border:1px solid var(--color-border-default);border-radius:var(--radius-container)"></iframe>
+
+[Open Badge in Storybook](http://localhost:6006/?path=/docs/components-badge--docs): every variant, the playground and its controls, in every theme.
+
+## When to use it
+
+- **Use it when:** A state people scan for in a list or table, or a small category label.
+- **Not when:** A message people must read (alert or toast), or an action (a button).
+
+Instead:
+
+- [Alert](./alert.md): A message, not a label.
+- [Button](./button.md): Something to press.
+
+## Variants
+
+What each variant is for in any design system, and what Dense data decided, with the answers behind it.
+
+| Axis | Variant | What it is for | In Dense data | Because |
+| --- | --- | --- | --- | --- |
+| tone | `neutral` | A label with no status meaning: a category, a count, a waiting state. | New and False positive: not triaged yet, or a finished outcome that is not a failure. | `accessibility.count`, `content.q1` |
+|  | `info` | News: worth knowing, nothing to act on. | Investigating: an analyst is on it; news, nothing to act on. | `accessibility.count`, `content.q1` |
+|  | `success` | Done, healthy or paid. | Resolved: contained and closed. | `accessibility.count`, `content.q1` |
+|  | `warning` | Needs attention soon; nothing has failed yet. | Escalated: needs a senior analyst soon, still containable. | `accessibility.count`, `content.q1` |
+|  | `danger` | Failed, blocked or lost; act now. | Breach confirmed: a real loss. | `accessibility.count`, `content.q1` |
+
+## How Dense data uses it
+
+| Situation | Use | Not | Why |
+| --- | --- | --- | --- |
+| A status | Badge with a subtle fill, an icon and a word | A full-strength fill | Subtle fills let many statuses share one table. |
+| Shape of a status badge | radius.badge (rectangle) | A pill | Rectangles line up in a column. |
+
+## Why it works this way
+
+The answers that shaped Badge here. Change one, and the decisions above change with it.
+
+| Question | Answer |
+| --- | --- |
+| How many signals carry each meaning? (`accessibility.count`) | **Three: color, icon and word**. Many statuses share one table; color alone is not enough. |
+| What is the main content? (`content.q1`) | **Numbers and records**. Most of the screen is numbers and records. |
+
+## What moves if an answer changes
+
+For each answer above: the Badge decisions it would reopen, and the other answers that follow from it.
+
+| If this changes | Badge decisions it reopens | Answers that follow |
+| --- | --- | --- |
+| `accessibility.count` | `tone/neutral`, `tone/info`, `tone/success`, `tone/warning`, `tone/danger` | None |
+| `content.q1` | `tone/neutral`, `tone/info`, `tone/success`, `tone/warning`, `tone/danger` | `content.q2`, `tasks.q1`, `human.q1`, `outcomes.q2`, `brand.q1`, `brand.q2`, `typography.roles`, `typography.count`, `typography.definition`, `typography.values`, `typography.lands`, `color.roles`, `color.values`, `color.lands`, `spacing.roles`, `spacing.count`, `spacing.definition`, `spacing.values`, `spacing.lands`, `shape.roles`, `shape.count`, `shape.values`, `shape.lands`, `elevation.definition`, `elevation.values`, `motion.roles`, `motion.count`, `motion.definition`, `motion.lands`, `iconography.count`, `iconography.definition`, `iconography.values`, `theming.lands`, `accessibility.count`, `accessibility.lands`, `voice.values`, `voice.lands`, `components.roles`, `components.count`, `components.values`, `components.lands`, `elevation.roles`, `elevation.count`, `elevation.lands` |
+
+## Words
+
+- Lead with the object, then the state: "Alert 2041 contained."
+- Use numbers, not words for numbers.
+- One verb per button. No "please", no exclamation marks.
+- Use: Investigate, Filter, Assign, Escalated, Resolved. Avoid: Oops, Awesome, Please, Simply.
+
+The labels components use, from the voice tokens:
+
+- `content.action.commit`: Save
+- `content.action.cancel`: Cancel
+- `content.action.destroy`: Delete
+- `content.action.retry`: Retry
+- `content.action.empty-action`: Change filters
+
+See [Voice and tone](../voice.md) for the whole voice.
+
+## Accessibility and keyboard
+
+Test before you ship:
+
+- [ ] The status is a word; color and icon add to it, never replace it. undefined
+
+## Use it in code
+
+```bash
+npx open-ds add badge
+```
+
+The component reads only component keys and semantic tokens, so it follows the brand and mode on `<html>`.
 
 ## Component keys
 
@@ -31,10 +115,3 @@ The CSS variable is the key with `/` replaced by `-` and the base `@` dropped. E
 | `badge/warning/label` | Warning badge label. | `color.status.warning.@` → `dense-data.theme.light.color.status.warning.@` → `color.amber.light.700` | `color.status.warning.@` → `dense-data.theme.dark.color.status.warning.@` → `color.amber.dark.700` |
 | `badge/danger/background` | Danger badge fill. | `color.status.danger.subtle` → `dense-data.theme.light.color.status.danger.subtle` → `color.red.light.100` | `color.status.danger.subtle` → `dense-data.theme.dark.color.status.danger.subtle` → `color.red.dark.100` |
 | `badge/danger/label` | Danger badge label. | `color.status.danger.@` → `dense-data.theme.light.color.status.danger.@` → `color.red.light.700` | `color.status.danger.@` → `dense-data.theme.dark.color.status.danger.@` → `color.red.dark.700` |
-
-## When to use it
-
-| Situation | Use | Not | Why |
-| --- | --- | --- | --- |
-| A status | Badge with a subtle fill, an icon and a word | A full-strength fill | Subtle fills let many statuses share one table. |
-| Shape of a status badge | radius.badge (rectangle) | A pill | Rectangles line up in a column. |

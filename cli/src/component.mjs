@@ -77,6 +77,22 @@ export function componentGuide(
   };
 }
 
+/** The answers that follow from one answer, directly or through others: what a change to it would
+ * reopen. The MCP's what_moves and the docs' "What moves" section both use it. */
+export function followers(scheme, questionId) {
+  const follows = new Set([questionId]);
+  for (let grew = true; grew; ) {
+    grew = false;
+    for (const a of scheme.answers)
+      if (!follows.has(a.question) && a.because.some((b) => follows.has(b))) {
+        follows.add(a.question);
+        grew = true;
+      }
+  }
+  follows.delete(questionId);
+  return [...follows];
+}
+
 /** The guide as plain text, for people at a terminal. */
 export function componentText(guide) {
   const lines = [];

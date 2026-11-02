@@ -6,6 +6,7 @@ import { cssName, semanticView, themeTokens } from "./tokens.mjs";
 import { existsSync, readFileSync, readdirSync } from "node:fs";
 import { join } from "node:path";
 import { questions } from "./schemes.mjs";
+import { componentGuide, followers } from "./component.mjs";
 
 // Which component keys each shipped component reads.
 const KEY_GROUP = {
@@ -430,6 +431,84 @@ export function docsPages(
       (sc.id === "color" ? colourGuidance(g) : "");
   });
 
+  // Primitives (OD-184): every raw value, and what points to it in which mode. Unused primitives stay
+  // listed, so a brand or a changed answer can pick them up without adding a value.
+  const usedBy = {};
+  const scan = (node, path, where) => {
+    if (!node || typeof node !== "object") return;
+    if (isToken(node)) {
+      for (const m of JSON.stringify(node.$value).matchAll(/\{([^}]+)\}/g))
+        (usedBy[m[1]] ??= []).push({ token: path.replace(/\.@$/, ""), where });
+      return;
+    }
+    for (const [k, v] of Object.entries(node))
+      if (!k.startsWith("$")) scan(v, path ? `${path}.${k}` : k, where);
+  };
+  for (const [b, brand] of Object.entries(scheme.tokens.brands ?? {}))
+    for (const [mode, tree] of Object.entries(brand.theme ?? {}))
+      scan(
+        tree,
+        "",
+        mode === "base"
+          ? `every mode${Object.keys(scheme.tokens.brands).length > 1 ? `, ${b}` : ""}`
+          : `${mode}${Object.keys(scheme.tokens.brands).length > 1 ? `, ${b}` : ""}`,
+      );
+  scan(scheme.tokens.semantic, "", "semantic");
+  scan(scheme.tokens.component, "", "component key");
+  const prims = leaves(primitiveTree, "").map((x) => ({
+    ...x,
+    path: x.path.replace(/^\./, ""),
+  }));
+  const family = (path) => {
+    const p = path.split(".");
+    return p[0] === "color"
+      ? p.slice(0, 3).join(".")
+      : p[0] === "font"
+        ? p.slice(0, 2).join(".")
+        : p[0];
+  };
+  // DTCG lets a group carry $type for its tokens; fall back to the path when a token has none.
+  const typeOf = (path) =>
+    ({
+      color: "color",
+      shadow: "shadow",
+      duration: "duration",
+      opacity: "number",
+    })[path.split(".")[0]] ??
+    (path.startsWith("font.family")
+      ? "fontFamily"
+      : /^(space|size|radius|border-width|font\.size|font\.line-height)\./.test(
+            path,
+          )
+        ? "dimension"
+        : undefined);
+  const families = [...new Set(prims.map((x) => family(x.path)))];
+  const nUsed = prims.filter((x) => usedBy[x.path]).length;
+  pages["foundations/primitives.md"] =
+    fm({
+      sidebar_position: g.scopes.length + 1,
+      title: "Primitives",
+      description: `Every raw value in ${scheme.name}, and what points to it.`,
+    }) +
+    NOTE +
+    `# Primitives\n\nEvery raw value in ${esc(scheme.name)}. Primitives hold the values; semantic tokens give them a job, and components read only the jobs.\n\n` +
+    `**${prims.length}** primitives. **${nUsed}** are used by a semantic token, a theme or a component key. **${prims.length - nUsed}** are not used yet: they stay, so a brand or a changed answer can use them without adding a value.\n\n` +
+    families
+      .map((f) => {
+        const list = prims.filter((x) => family(x.path) === f);
+        return (
+          `## \`${f}\`\n\n| Primitive | Value | Sample | Used by |\n| --- | --- | --- | --- |\n` +
+          list
+            .map((x) => {
+              const u = usedBy[x.path] ?? [];
+              return `| \`${x.path}\` | ${esc(value(first, x.path, x.ref))} | ${sample(x.path, x.type ?? typeOf(x.path))} | ${u.length ? u.map((y) => `\`${y.token}\` (${y.where})`).join("<br />") : "Not used yet"} |`;
+            })
+            .join("\n")
+        );
+      })
+      .join("\n\n") +
+    "\n";
+
   // Components
   pages["components/_category_.json"] =
     JSON.stringify(
@@ -481,13 +560,143 @@ export function docsPages(
       )
       .join("\n") +
     "\n";
-  // A page per component that is in the inventory and built.
+  // A page per component that is in the inventory and built (OD-194). It reads the same engine as the
+  // CLI's component command and the MCP's get_component, so the docs, Storybook and agents agree, and
+  // adds what Storybook cannot: the answers behind each decision and what a change would move.
   const names = built.filter((n) => !scheme.inventory || n in inventory);
+  const pageOf = (id) =>
+    names.includes(id) ? `[${title(id)}](./${id}.md)` : title(id);
+  const qText = (id) => qs[id]?.text ?? id;
+  const answerLine = (id) => {
+    const a = answer(id);
+    return a ? `**${label(id)}**. ${esc(a.why)}` : "";
+  };
+  const contentWords = Object.entries(scheme.tokens.content?.action ?? {})
+    .filter(([k]) => !k.startsWith("$"))
+    .map(([k, v]) => `- \`content.action.${k}\`: ${esc(v.$value)}`);
   names.forEach((name, i) => {
     const group = KEY_GROUP[name];
     const keys = g.component_keys.filter((k) => k.component === group);
-    const word = new RegExp(`\\b${name.replace("-", "[ -]")}`, "i");
-    const usage = scheme.usage.filter((u) => word.test(`${u.use} ${u.not}`));
+    const guide = componentGuide(scheme.id, name, roots, g);
+    const r = guide?.reference ?? {};
+    const parts = [];
+    parts.push(
+      `# ${title(name)}\n\n${esc(r.overview ?? componentIntro(roots.ui, name))}\n\n` +
+        `**In ${esc(scheme.name)}.** ${esc(guide?.why ?? inventory[name] ?? "")}` +
+        (guide?.family ? ` Family: ${guide.family}.` : "") +
+        (r.source
+          ? ` Reference: ${esc(r.source.name)}${r.source.id ? ` (${r.source.id})` : ""}, ${r.source.license}.`
+          : ""),
+    );
+    // The live component, from Storybook (OD-183). Docusaurus serves this page as Markdown, so the
+    // embed is plain HTML; the link works where the embed cannot load.
+    parts.push(
+      `## See it live\n\n` +
+        `<iframe src="${storybook}/iframe.html?id=components-${name}--examples&viewMode=story" title="${title(name)} examples in Storybook" loading="lazy" style="width:100%;height:320px;border:1px solid var(--color-border-default);border-radius:var(--radius-container)"></iframe>\n\n` +
+        `[Open ${title(name)} in Storybook](${storybook}/?path=/docs/components-${name}--docs): every variant, the playground and its controls, in every theme.`,
+    );
+    if (r.apply_when)
+      parts.push(
+        `## When to use it\n\n- **Use it when:** ${esc(r.apply_when)}\n- **Not when:** ${esc(r.not_when)}` +
+          (r.vs?.length
+            ? `\n\nInstead:\n\n${r.vs.map((v) => `- ${v.outside ? esc(title(v.id)) : pageOf(v.id)}: ${esc(v.why)}`).join("\n")}`
+            : ""),
+      );
+    const variants = guide?.variants ?? [];
+    if (variants.length)
+      parts.push(
+        `## Variants\n\nWhat each variant is for in any design system, and what ${esc(scheme.name)} decided, with the answers behind it.\n\n` +
+          `| Axis | Variant | What it is for | In ${esc(scheme.name)} | Because |\n| --- | --- | --- | --- | --- |\n` +
+          variants
+            .map((v, j) => {
+              const h = v.here;
+              const here = !h
+                ? "Not decided yet."
+                : h.not_used
+                  ? `Not used. ${esc(h.why)}`
+                  : esc(h.use);
+              const why = (h?.because ?? []).map((b) => `\`${b}\``).join(", ");
+              return `| ${variants[j - 1]?.axis === v.axis ? "" : v.axis} | \`${v.id}\` | ${esc(v.reference.overview)} | ${here} | ${why} |`;
+            })
+            .join("\n"),
+      );
+    const rules = guide?.rules ?? [];
+    if (rules.length)
+      parts.push(
+        `## How ${esc(scheme.name)} uses it\n\n${RULES}${rules.map((u) => rule(u)).join("\n")}`,
+      );
+    const cited = [
+      ...new Set(variants.flatMap((v) => v.here?.because ?? [])),
+    ].filter((q) => answer(q));
+    if (cited.length) {
+      parts.push(
+        `## Why it works this way\n\nThe answers that shaped ${title(name)} here. Change one, and the decisions above change with it.\n\n` +
+          `| Question | Answer |\n| --- | --- |\n` +
+          cited
+            .map((q) => `| ${esc(qText(q))} (\`${q}\`) | ${answerLine(q)} |`)
+            .join("\n"),
+      );
+      parts.push(
+        `## What moves if an answer changes\n\nFor each answer above: the ${title(name)} decisions it would reopen, and the other answers that follow from it.\n\n` +
+          `| If this changes | ${title(name)} decisions it reopens | Answers that follow |\n| --- | --- | --- |\n` +
+          cited
+            .map((q) => {
+              const f = followers(scheme, q);
+              const moved = new Set([q, ...f]);
+              const reopen = variants
+                .filter((v) =>
+                  (v.here?.because ?? []).some((b) => moved.has(b)),
+                )
+                .map((v) => `\`${v.axis}/${v.id}\``);
+              return `| \`${q}\` | ${reopen.join(", ")} | ${f.length ? f.map((x) => `\`${x}\``).join(", ") : "None"} |`;
+            })
+            .join("\n"),
+      );
+    }
+    const voiceLines = (scheme.voice?.principles ?? []).map(
+      (x) => `- ${esc(x.text)}`,
+    );
+    if (voiceLines.length || contentWords.length)
+      parts.push(
+        `## Words\n\n` +
+          (voiceLines.length ? `${voiceLines.join("\n")}\n` : "") +
+          (scheme.voice?.words
+            ? `- Use: ${scheme.voice.words.use.map(esc).join(", ")}. Avoid: ${scheme.voice.words.avoid.map(esc).join(", ")}.\n`
+            : "") +
+          (contentWords.length
+            ? `\nThe labels components use, from the voice tokens:\n\n${contentWords.join("\n")}`
+            : "") +
+          `\n\nSee [Voice and tone](../voice.md) for the whole voice.`,
+      );
+    const a11y = r.accessibility ?? [];
+    const kb = r.keyboard ?? [];
+    if (a11y.length || kb.length)
+      parts.push(
+        `## Accessibility and keyboard\n\n` +
+          (kb.length
+            ? `| Keyboard | What happens | Not |\n| --- | --- | --- |\n${kb.map((k) => `| ${esc(k.apply_when)} | ${esc(k.overview)} | ${esc(k.not_when)} |`).join("\n")}\n\n`
+            : "") +
+          (a11y.length
+            ? `Test before you ship:\n\n${a11y.map((x) => `- [ ] ${esc(x.overview)} ${esc(x.apply_when)}`).join("\n")}`
+            : ""),
+      );
+    parts.push(
+      `## Use it in code\n\n\`\`\`bash\nnpx open-ds add ${name}\n\`\`\`\n\n` +
+        `The component reads only component keys and semantic tokens, so it follows the brand and mode on \`<html>\`.`,
+    );
+    parts.push(
+      keys.length
+        ? `## Component keys\n\nThe CSS variable is the key with \`/\` replaced by \`-\` and the base \`@\` dropped. Each key points to a token; values live only on primitives.\n\n| Key | What it controls | Points to, ${first.id} | Points to, ${dark.id} |\n| --- | --- | --- | --- |\n` +
+            keys
+              .map((k) => {
+                const p = k.id.replaceAll("/", ".");
+                const l = link(first, p);
+                const d = link(dark, p);
+                return `| \`${k.id}\` | ${esc(k.description)} | ${l} | ${d === l ? "same" : d} |`;
+              })
+              .join("\n")
+        : `## Tokens it reads\n\nFrom shadcn/ui. It reads shadcn's variables, which theme.css maps onto this system's semantic tokens, and the radius, shadow and text scale in shadcn.css.`,
+    );
     pages[`components/${name}.md`] =
       fm({
         sidebar_position: i + 1,
@@ -495,22 +704,7 @@ export function docsPages(
         description: `${title(name)} in ${scheme.name}.`,
       }) +
       NOTE +
-      `# ${title(name)}\n\n${esc(componentIntro(roots.ui, name)).replaceAll("*", "\\*").replaceAll("_", "\\_")}\n\n` +
-      `See it in [Storybook](${storybook}) under Components / ${title(name)}, in every theme.\n\n` +
-      (keys.length
-        ? `## Component keys\n\nThe CSS variable is the key with \`/\` replaced by \`-\` and the base \`@\` dropped. Each key points to a token; values live only on primitives.\n\n| Key | What it controls | Points to, ${first.id} | Points to, ${dark.id} |\n| --- | --- | --- | --- |\n`
-        : `## Tokens it reads\n\nFrom shadcn/ui. It reads shadcn's variables, which theme.css maps onto this system's semantic tokens, and the radius, shadow and text scale in shadcn.css.\n`) +
-      keys
-        .map((k) => {
-          const p = k.id.replaceAll("/", ".");
-          const l = link(first, p);
-          const d = link(dark, p);
-          return `| \`${k.id}\` | ${esc(k.description)} | ${l} | ${d === l ? "same" : d} |`;
-        })
-        .join("\n") +
-      (usage.length
-        ? `\n\n## When to use it\n\n${RULES}${usage.map(rule).join("\n")}`
-        : "") +
+      parts.join("\n\n") +
       "\n";
   });
 

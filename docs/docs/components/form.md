@@ -8,11 +8,63 @@ description: "Form in Dense data."
 
 # Form
 
-Form. Form state and validation wired to fields. From shadcn/ui (new-york-v4, MIT), carried by the schemes whose inventory names it. Reads the shadcn variables, which theme.css maps onto the scheme's semantic tokens, and the radius, shadow and text scale that shadcn.css maps onto the scheme's tokens. Dark mode comes from the tokens, so no dark: classes.
+Form state and validation wired to the fields.
 
-See it in [Storybook](http://localhost:6006) under Components / Form, in every theme.
+**In Dense data.** Keeps validation and errors the same on every record edit. Family: form. Reference: Open DS, MIT.
+
+## See it live
+
+<iframe src="http://localhost:6006/iframe.html?id=components-form--examples&viewMode=story" title="Form examples in Storybook" loading="lazy" style="width:100%;height:320px;border:1px solid var(--color-border-default);border-radius:var(--radius-container)"></iframe>
+
+[Open Form in Storybook](http://localhost:6006/?path=/docs/components-form--docs): every variant, the playground and its controls, in every theme.
+
+## When to use it
+
+- **Use it when:** Any form that checks answers and shows errors next to the fields.
+- **Not when:** A single control that saves at once (a switch).
+
+Instead:
+
+- [Field](./field.md): How one control is laid out.
+
+## How Dense data uses it
+
+| Situation | Use | Not | Why |
+| --- | --- | --- | --- |
+| An error message | color.status.danger with an icon | color.status.warning | Red always means fix this, and the icon says it without color. |
+| The words of an error | Name the record, then the fix. Flat and specific. | "Oops" or a vague apology | Experts act on the message; the record and the fix are all they need. Example: “Alert ALR-2042 not saved. Threshold must be between 0 and 100.” |
+
+## Words
+
+- Lead with the object, then the state: "Alert 2041 contained."
+- Use numbers, not words for numbers.
+- One verb per button. No "please", no exclamation marks.
+- Use: Investigate, Filter, Assign, Escalated, Resolved. Avoid: Oops, Awesome, Please, Simply.
+
+The labels components use, from the voice tokens:
+
+- `content.action.commit`: Save
+- `content.action.cancel`: Cancel
+- `content.action.destroy`: Delete
+- `content.action.retry`: Retry
+- `content.action.empty-action`: Change filters
+
+See [Voice and tone](../voice.md) for the whole voice.
+
+## Accessibility and keyboard
+
+Test before you ship:
+
+- [ ] Errors are announced, linked to their fields, and the first one gets focus on submit. undefined
+
+## Use it in code
+
+```bash
+npx open-ds add form
+```
+
+The component reads only component keys and semantic tokens, so it follows the brand and mode on `<html>`.
 
 ## Tokens it reads
 
 From shadcn/ui. It reads shadcn's variables, which theme.css maps onto this system's semantic tokens, and the radius, shadow and text scale in shadcn.css.
-

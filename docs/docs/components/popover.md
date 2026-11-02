@@ -8,17 +8,61 @@ description: "Popover in Dense data."
 
 # Popover
 
-Popover. Rich content in a floating panel, opened by click. From shadcn/ui (new-york-v4, MIT), carried by the schemes whose inventory names it. Reads the shadcn variables, which theme.css maps onto the scheme's semantic tokens, and the radius, shadow and text scale that shadcn.css maps onto the scheme's tokens. Dark mode comes from the tokens, so no dark: classes.
+Rich content in a floating panel, opened by click.
 
-See it in [Storybook](http://localhost:6006) under Components / Popover, in every theme.
+**In Dense data.** Filters next to the column. Family: overlay. Reference: Open DS, MIT.
+
+## See it live
+
+<iframe src="http://localhost:6006/iframe.html?id=components-popover--examples&viewMode=story" title="Popover examples in Storybook" loading="lazy" style="width:100%;height:320px;border:1px solid var(--color-border-default);border-radius:var(--radius-container)"></iframe>
+
+[Open Popover in Storybook](http://localhost:6006/?path=/docs/components-popover--docs): every variant, the playground and its controls, in every theme.
+
+## When to use it
+
+- **Use it when:** Extra detail or a small control next to what it explains, on any device.
+- **Not when:** A one-line hint (tooltip), or a task that should block the page (dialog).
+
+Instead:
+
+- [Tooltip](./tooltip.md): A one-line hint on hover.
+- [Dialog](./dialog.md): A blocking task.
+
+## Words
+
+- Lead with the object, then the state: "Alert 2041 contained."
+- Use numbers, not words for numbers.
+- One verb per button. No "please", no exclamation marks.
+- Use: Investigate, Filter, Assign, Escalated, Resolved. Avoid: Oops, Awesome, Please, Simply.
+
+The labels components use, from the voice tokens:
+
+- `content.action.commit`: Save
+- `content.action.cancel`: Cancel
+- `content.action.destroy`: Delete
+- `content.action.retry`: Retry
+- `content.action.empty-action`: Change filters
+
+See [Voice and tone](../voice.md) for the whole voice.
+
+## Accessibility and keyboard
+
+| Keyboard | What happens | Not |
+| --- | --- | --- |
+| undefined | Escape closes it and returns focus. | undefined |
+
+Test before you ship:
+
+- [ ] The trigger says it opens a panel and whether it is open. undefined
+
+## Use it in code
+
+```bash
+npx open-ds add popover
+```
+
+The component reads only component keys and semantic tokens, so it follows the brand and mode on `<html>`.
 
 ## Tokens it reads
 
 From shadcn/ui. It reads shadcn's variables, which theme.css maps onto this system's semantic tokens, and the radius, shadow and text scale in shadcn.css.
-
-
-## When to use it
-
-| Situation | Use | Not | Why |
-| --- | --- | --- | --- |
-| No component in the inventory fits | a component from the inventory, composed (for example a popover with a command list) | a one-off component built for one screen | A small team keeps fewer parts right, and experts expect the same parts everywhere. |

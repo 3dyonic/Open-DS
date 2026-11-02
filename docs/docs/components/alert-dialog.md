@@ -8,11 +8,70 @@ description: "Alert dialog in Dense data."
 
 # Alert dialog
 
-Alert dialog. A dialog that asks to confirm an action that cannot be undone. From shadcn/ui (new-york-v4, MIT), carried by the schemes whose inventory names it. Reads the shadcn variables, which theme.css maps onto the scheme's semantic tokens, and the radius, shadow and text scale that shadcn.css maps onto the scheme's tokens. Dark mode comes from the tokens, so no dark: classes.
+A dialog that interrupts to confirm an action that cannot be undone.
 
-See it in [Storybook](http://localhost:6006) under Components / Alert dialog, in every theme.
+**In Dense data.** Confirms a delete. Family: overlay. Reference: Open DS, MIT.
+
+## See it live
+
+<iframe src="http://localhost:6006/iframe.html?id=components-alert-dialog--examples&viewMode=story" title="Alert dialog examples in Storybook" loading="lazy" style="width:100%;height:320px;border:1px solid var(--color-border-default);border-radius:var(--radius-container)"></iframe>
+
+[Open Alert dialog in Storybook](http://localhost:6006/?path=/docs/components-alert-dialog--docs): every variant, the playground and its controls, in every theme.
+
+## When to use it
+
+- **Use it when:** Deleting, cancelling or overwriting something people cannot get back, when undo is not possible.
+- **Not when:** Anything that can be undone (offer undo instead), or a form or task (use a dialog).
+
+Instead:
+
+- [Dialog](./dialog.md): A focused task, not a confirmation.
+- [Toast](./toast.md): Undo after the fact, when the action can be reversed.
+
+## How Dense data uses it
+
+| Situation | Use | Not | Why |
+| --- | --- | --- | --- |
+| Delete or remove | Button secondary, then confirm in a dialog | Button primary as the first step | Deleting is rare and costly; a confirm step catches mistakes. |
+| A confirmation question | Name the exact object and the consequence | "Are you sure?" | Acting on the wrong record is the costly mistake. Example: “Dismiss 3 alerts? This cannot be undone.” |
+
+## Words
+
+- Lead with the object, then the state: "Alert 2041 contained."
+- Use numbers, not words for numbers.
+- One verb per button. No "please", no exclamation marks.
+- Use: Investigate, Filter, Assign, Escalated, Resolved. Avoid: Oops, Awesome, Please, Simply.
+
+The labels components use, from the voice tokens:
+
+- `content.action.commit`: Save
+- `content.action.cancel`: Cancel
+- `content.action.destroy`: Delete
+- `content.action.retry`: Retry
+- `content.action.empty-action`: Change filters
+
+See [Voice and tone](../voice.md) for the whole voice.
+
+## Accessibility and keyboard
+
+| Keyboard | What happens | Not |
+| --- | --- | --- |
+| undefined | Escape cancels, the same as the safe choice. | undefined |
+| undefined | Tab stays inside until people choose. | undefined |
+
+Test before you ship:
+
+- [ ] It is an alertdialog with a title and a description that names the consequence. undefined
+- [ ] Focus starts on the safe choice, never on the destructive one. undefined
+
+## Use it in code
+
+```bash
+npx open-ds add alert-dialog
+```
+
+The component reads only component keys and semantic tokens, so it follows the brand and mode on `<html>`.
 
 ## Tokens it reads
 
 From shadcn/ui. It reads shadcn's variables, which theme.css maps onto this system's semantic tokens, and the radius, shadow and text scale in shadcn.css.
-

@@ -8,9 +8,61 @@ description: "Select in Dense data."
 
 # Select
 
-Select. Pick one option from a list. Uses the input keys for the trigger and the overlay keys for the list. Reads only component keys: --input-\*, --overlay-\*.
+One choice from a list, in a menu.
 
-See it in [Storybook](http://localhost:6006) under Components / Select, in every theme.
+**In Dense data.** Picks one value in filters and forms. Family: form. Reference: Open UX (select), MIT.
+
+## See it live
+
+<iframe src="http://localhost:6006/iframe.html?id=components-select--examples&viewMode=story" title="Select examples in Storybook" loading="lazy" style="width:100%;height:320px;border:1px solid var(--color-border-default);border-radius:var(--radius-container)"></iframe>
+
+[Open Select in Storybook](http://localhost:6006/?path=/docs/components-select--docs): every variant, the playground and its controls, in every theme.
+
+## When to use it
+
+- **Use it when:** Four or more options, a known closed list, or a setting with a default.
+- **Not when:** Two to five options people should see (radio group), or many flags (checkboxes).
+
+Instead:
+
+- [Radio group](./radio-group.md): A short list shown at once.
+- [Combobox](./combobox.md): Type to find in a long list.
+- Native select: The system picker.
+
+## Words
+
+- Lead with the object, then the state: "Alert 2041 contained."
+- Use numbers, not words for numbers.
+- One verb per button. No "please", no exclamation marks.
+- Use: Investigate, Filter, Assign, Escalated, Resolved. Avoid: Oops, Awesome, Please, Simply.
+
+The labels components use, from the voice tokens:
+
+- `content.action.commit`: Save
+- `content.action.cancel`: Cancel
+- `content.action.destroy`: Delete
+- `content.action.retry`: Retry
+- `content.action.empty-action`: Change filters
+
+See [Voice and tone](../voice.md) for the whole voice.
+
+## Accessibility and keyboard
+
+| Keyboard | What happens | Not |
+| --- | --- | --- |
+| undefined | Arrows move; Enter picks; Escape closes. | undefined |
+
+Test before you ship:
+
+- [ ] It has a visible label; the chosen value is announced. undefined
+
+## Use it in code
+
+```bash
+npx open-ds add select
+```
+
+The component reads only component keys and semantic tokens, so it follows the brand and mode on `<html>`.
 
 ## Component keys
 
@@ -30,9 +82,3 @@ The CSS variable is the key with `/` replaced by `-` and the base `@` dropped. E
 | `input/disabled/background` | Fill of a disabled input. | `color.disabled.surface` → `dense-data.theme.light.color.disabled.surface` → `color.slate.light.100` | `color.disabled.surface` → `dense-data.theme.dark.color.disabled.surface` → `color.slate.dark.100` |
 | `input/disabled/border` | Border of a disabled input. | `color.disabled.border` → `dense-data.theme.light.color.disabled.border` → `color.slate.light.200` | `color.disabled.border` → `dense-data.theme.dark.color.disabled.border` → `color.slate.dark.200` |
 | `input/disabled/text` | Text in a disabled input. | `color.disabled.text` → `dense-data.theme.light.color.disabled.text` → `color.slate.light.500` | `color.disabled.text` → `dense-data.theme.dark.color.disabled.text` → `color.slate.dark.500` |
-
-## When to use it
-
-| Situation | Use | Not | Why |
-| --- | --- | --- | --- |
-| A selected row or item | color.surface.selected | color.action.primary as a fill | A light tint shows selection without hiding the data. |

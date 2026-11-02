@@ -8,9 +8,62 @@ description: "Input in Dense data."
 
 # Input
 
-Input. Single-line text entry. Pair it with a Label that stays visible. Reads only component keys: --input-\*.
+A labeled field for a short typed value.
 
-See it in [Storybook](http://localhost:6006) under Components / Input, in every theme.
+**In Dense data.** Search and edit fields. Family: form. Reference: Open UX (text_field), MIT.
+
+## See it live
+
+<iframe src="http://localhost:6006/iframe.html?id=components-input--examples&viewMode=story" title="Input examples in Storybook" loading="lazy" style="width:100%;height:320px;border:1px solid var(--color-border-default);border-radius:var(--radius-container)"></iframe>
+
+[Open Input in Storybook](http://localhost:6006/?path=/docs/components-input--docs): every variant, the playground and its controls, in every theme.
+
+## When to use it
+
+- **Use it when:** A name, email, phone number or other one-line answer.
+- **Not when:** Long text (textarea), or a closed choice (radio group, select or checkbox).
+
+Instead:
+
+- [Textarea](./textarea.md): Several lines.
+- [Select](./select.md): A known list of options.
+
+## How Dense data uses it
+
+| Situation | Use | Not | Why |
+| --- | --- | --- | --- |
+| Field label or column header | type.label | type.heading | Headers repeat on every column; a heavy style would compete with the data. |
+
+## Words
+
+- Lead with the object, then the state: "Alert 2041 contained."
+- Use numbers, not words for numbers.
+- One verb per button. No "please", no exclamation marks.
+- Use: Investigate, Filter, Assign, Escalated, Resolved. Avoid: Oops, Awesome, Please, Simply.
+
+The labels components use, from the voice tokens:
+
+- `content.action.commit`: Save
+- `content.action.cancel`: Cancel
+- `content.action.destroy`: Delete
+- `content.action.retry`: Retry
+- `content.action.empty-action`: Change filters
+
+See [Voice and tone](../voice.md) for the whole voice.
+
+## Accessibility and keyboard
+
+Test before you ship:
+
+- [ ] A visible label, never a placeholder as the only label. undefined
+
+## Use it in code
+
+```bash
+npx open-ds add input
+```
+
+The component reads only component keys and semantic tokens, so it follows the brand and mode on `<html>`.
 
 ## Component keys
 
