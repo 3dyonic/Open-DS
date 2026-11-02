@@ -95,12 +95,26 @@ export default function InstallPage() {
       label: "Windsurf",
       code: j({ mcpServers: { "open-ds": { serverUrl: MCP_URL } } }),
     },
+  ];
+  // The same server on your computer: the client starts `npx -y open-ds mcp` and talks to it over
+  // stdio. It answers from the data in the npm package, so it needs no key and sends us nothing.
+  const LOCAL = { command: "npx", args: ["-y", "open-ds", "mcp"] };
+  const local: { name: string; where: string; code: string }[] = [
     {
-      name: "Any other client",
+      name: "Claude Code",
+      where: "In a terminal. --scope user makes it available in every folder.",
+      code: "claude mcp add --scope user open-ds -- npx -y open-ds mcp",
+    },
+    {
+      name: "Claude desktop, Cursor, Windsurf and others",
       where:
-        "If it takes a URL, use the one above. If it only runs local servers, run Open DS from npm (Node.js 22 or later):",
-      label: "local server",
-      code: j({ mcpServers: { "open-ds": { command: "npx", args: ["-y", "open-ds", "mcp"] } } }),
+        "Claude desktop: Settings, Developer, Edit Config (claude_desktop_config.json), then restart Claude. Cursor: ~/.cursor/mcp.json or .cursor/mcp.json. Windsurf: ~/.codeium/windsurf/mcp_config.json. Any other client: add a local (stdio) server with this command.",
+      code: j({ mcpServers: { "open-ds": LOCAL } }),
+    },
+    {
+      name: "VS Code",
+      where: "In .vscode/mcp.json in your project:",
+      code: j({ servers: { "open-ds": { type: "stdio", ...LOCAL } } }),
     },
   ];
   // The same clients with a key, as a bearer token (open-ds-ops checks it).
@@ -153,7 +167,12 @@ export default function InstallPage() {
         <ol className="flex flex-col gap-3">
           <Step n={1} title="Add the server to your AI">
             <p className="text-[16px] text-body">
-              The server is at {code(MCP_URL)}. Add it the way your client takes MCP servers:
+              The server is at {code(MCP_URL)}. Add it the way your client takes MCP servers. A
+              client that only runs local servers?{" "}
+              <a href="#local" className="font-semibold text-accent-text hover:underline">
+                Run it on your computer
+              </a>
+              .
             </p>
             <div className="flex flex-col gap-4">
               {clients.map((c) => (
@@ -205,6 +224,35 @@ export default function InstallPage() {
             </p>
           </Step>
         </ol>
+      </section>
+
+      <section
+        className="flex scroll-mt-24 flex-col gap-4"
+        id="local"
+        aria-labelledby="local-title"
+      >
+        <Eyebrow>Path A, on your computer</Eyebrow>
+        <h2 id="local-title" className="text-[32px] font-extrabold">
+          Or run the MCP server locally
+        </h2>
+        <p className="max-w-[880px] text-[16px] text-body">
+          The same server, from the {code("open-ds")} package on npm. Your AI client starts it on
+          your computer with {code("npx -y open-ds mcp")} and talks to it directly. It answers from
+          the schemes inside the package, so it needs no key and sends us nothing. It needs Node.js
+          22 or later, and it serves the version you have: the hosted server always has the latest.
+        </p>
+        <div className="flex flex-col gap-4 rounded-[8px] border border-line bg-white p-6">
+          {local.map((c) => (
+            <div key={c.name} className="flex flex-col gap-2">
+              <h3 className="text-[17px] font-bold">{c.name}</h3>
+              <p className="text-[15px] text-body">{c.where}</p>
+              <Command label={`${c.name}, local`} code={c.code} />
+            </div>
+          ))}
+        </div>
+        <p className="max-w-[880px] text-[15px] text-body">
+          Then ask your AI the same way as in step 3 above.
+        </p>
       </section>
 
       <section className="flex flex-col gap-4" aria-labelledby="cli">

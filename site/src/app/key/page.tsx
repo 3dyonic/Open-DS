@@ -44,8 +44,11 @@ export default function KeyPage() {
             <h2 className="text-[17px] font-bold text-ink">No key yet?</h2>
             <p>
               You can use Open DS now. The CLI and a local MCP server run from npm with no key. See{" "}
-              <Link href="/install/" className="font-semibold text-accent-text hover:underline">
-                How to install
+              <Link
+                href="/install/#local"
+                className="font-semibold text-accent-text hover:underline"
+              >
+                Run it locally
               </Link>
               .
             </p>
