@@ -1282,6 +1282,18 @@ export const CHECKS = {
           const lacking = want.filter((h) => !text.includes(h));
           if (lacking.length) gaps.push(`${id} ${p}: no ${lacking.join(", ")}`);
         }
+        // OD-182: the docs lead with visuals. The home shows a product screen and the answers, the
+        // colour page shows its colours in use, component pages show each variant live.
+        const visual = [
+          ["index.md", "odv-hero"],
+          ["index.md", "odv-tile"],
+          ["foundations/color.md", "odv-band"],
+          ["foundations/color.md", "odv-stack"],
+          ["primitives/color.md", "odv-ramp"],
+          ["components/button.md", "odv-vcard"],
+        ];
+        for (const [pg, cls] of visual)
+          if (pages[pg] && !pages[pg].includes(cls)) gaps.push(`${id} ${pg}: no ${cls} block`);
         // OD-184, OD-195: the Primitives section counts every primitive.
         const prim = pages["primitives/index.md"] ?? "";
         const count = (function n(x) {
@@ -1289,6 +1301,9 @@ export const CHECKS = {
         })(loadScheme(id, roots).tokens.primitive);
         if (!prim.includes(`**${count}** primitives`)) gaps.push(`${id}: the primitives page does not list all ${count} primitives`);
       }
+      // The visual blocks look the same in these docs and in a created project's docs.
+      if (c.read("docs/src/css/visual.css") !== c.read("cli/templates/project/docs/src/css/visual.css"))
+        gaps.push("docs/src/css/visual.css and the project template's copy differ");
       const gen = c.sh("node", ["docs/scripts/generate.mjs", "--check"]);
       if (gen.code !== 0) gaps.push(tail(gen.out));
       for (const d of ["product", "business", "brand", "contributing"])

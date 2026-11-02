@@ -14,9 +14,7 @@ A label, control, hint and error laid out together, the same way every time.
 
 ## See it live
 
-<iframe src="http://localhost:6006/iframe.html?id=components-field--examples&viewMode=story" title="Field examples in Storybook" loading="lazy" style="width:100%;height:320px;border:1px solid var(--color-border-default);border-radius:var(--radius-container)"></iframe>
-
-[Open Field in Storybook](http://localhost:6006/?path=/docs/components-field--docs): every variant, the playground and its controls, in every theme.
+<div class="odv-live"><span class="odv-wait">Start Storybook to see it live: <code>npm run storybook</code></span><iframe src="http://localhost:6006/iframe.html?id=components-field--examples&viewMode=story&globals=scheme:dense-data" title="Field examples in Storybook" loading="lazy"></iframe><div class="bar"><span>Live from Storybook</span><a href="http://localhost:6006/?path=/docs/components-field--docs">Open Field in Storybook</a><a href="http://localhost:6006/iframe.html?id=components-field--examples&viewMode=story&globals=scheme:dense-data;mode:dark">See it in dark</a></div></div>
 
 ## When to use it
 
@@ -29,7 +27,11 @@ Instead:
 
 ## Variants
 
-What each variant is for in any design system, and what Dense data decided, with the answers behind it.
+What each variant is for in any design system, and what Dense data decided, with the answers behind it. Each sample is the live story with that variant set.
+
+<div class="odv-axis"><code>orientation</code></div><div class="odv-grid"><div class="odv-card odv-vcard"><div class="stage"><iframe src="http://localhost:6006/iframe.html?id=components-field--playground&viewMode=story&globals=scheme:dense-data&args=orientation:vertical" title="Field vertical" loading="lazy" tabindex="-1"></iframe></div><div class="body"><code>vertical</code><div class="ref">The label above the control.</div><div class="here"><b>In Dense data:</b> Forms in dialogs and sheets: the label above.</div><span class="odv-ans" title="What is the main task?">Scan and compare · tasks.q1</span> </div></div><div class="odv-card odv-vcard"><div class="stage"><iframe src="http://localhost:6006/iframe.html?id=components-field--playground&viewMode=story&globals=scheme:dense-data&args=orientation:horizontal" title="Field horizontal" loading="lazy" tabindex="-1"></iframe></div><div class="body"><code>horizontal</code><div class="ref">The label beside the control.</div><div class="here"><b>In Dense data:</b> Settings and filter panels: switches and short controls with the label beside.</div><span class="odv-ans" title="How much is on one screen?">A lot · content.q2</span> <span class="odv-ans" title="How many densities exist?">Two · spacing.count</span> </div></div><div class="odv-card odv-vcard off"><div class="stage"><iframe src="http://localhost:6006/iframe.html?id=components-field--playground&viewMode=story&globals=scheme:dense-data&args=orientation:responsive" title="Field responsive" loading="lazy" tabindex="-1"></iframe></div><div class="body"><code>responsive</code><div class="ref">The label above on narrow screens and beside on wide ones.</div><div class="here"><b>Not used:</b> A desk with a mouse and keyboard: there is no narrow screen to adapt to.</div><span class="odv-ans" title="Where do people use it?">At a desk · scenarios.q1</span> </div></div></div>
+
+### In detail
 
 | Axis | Variant | What it is for | In Dense data | Because |
 | --- | --- | --- | --- | --- |
@@ -39,21 +41,13 @@ What each variant is for in any design system, and what Dense data decided, with
 
 ## How Dense data uses it
 
-| Situation | Use | Not | Why |
-| --- | --- | --- | --- |
-| Field label or column header | type.label | type.heading | Headers repeat on every column; a heavy style would compete with the data. |
-| An error message | color.status.danger with an icon | color.status.warning | Red always means fix this, and the icon says it without color. |
+<div class="odv-grid two"><div class="odv-dd"><div class="stage"><div class="odv-eyebrow">Field label or column header</div><div style="margin-top:6px"><b style="color:var(--color-status-success)">Use</b> type.label</div><div><b style="color:var(--color-status-danger)">Not</b> type.heading</div></div><div class="cap">Headers repeat on every column; a heavy style would compete with the data.</div></div><div class="odv-dd"><div class="stage"><div class="odv-eyebrow">An error message</div><div style="margin-top:6px"><b style="color:var(--color-status-success)">Use</b> color.status.danger with an icon</div><div><b style="color:var(--color-status-danger)">Not</b> color.status.warning</div></div><div class="cap">Red always means fix this, and the icon says it without color.</div></div></div>
 
 ## Why it works this way
 
 The answers that shaped Field here. Change one, and the decisions above change with it.
 
-| Question | Answer |
-| --- | --- |
-| What is the main task? (`tasks.q1`) | **Scan and compare**. People scan rows and compare values. |
-| How much is on one screen? (`content.q2`) | **A lot**. Experts want many records on one screen. |
-| How many densities exist? (`spacing.count`) | **Two**. A second, denser size serves tables and toolbars. |
-| Where do people use it? (`scenarios.q1`) | **At a desk**. Experts work at a desk with a mouse and keyboard. |
+<div class="odv-grid"><div class="odv-card"><div class="odv-eyebrow">What is the main task?</div><q>Scan and compare</q><p>People scan rows and compare values.</p><span class="odv-ans">tasks.q1</span><div class="odv-moves">Change it and 2 Field decisions reopen.</div></div><div class="odv-card"><div class="odv-eyebrow">How much is on one screen?</div><q>A lot</q><p>Experts want many records on one screen.</p><span class="odv-ans">content.q2</span><div class="odv-moves">Change it and 1 Field decision reopen.</div></div><div class="odv-card"><div class="odv-eyebrow">How many densities exist?</div><q>Two</q><p>A second, denser size serves tables and toolbars.</p><span class="odv-ans">spacing.count</span><div class="odv-moves">Change it and 1 Field decision reopen.</div></div><div class="odv-card"><div class="odv-eyebrow">Where do people use it?</div><q>At a desk</q><p>Experts work at a desk with a mouse and keyboard.</p><span class="odv-ans">scenarios.q1</span><div class="odv-moves">Change it and 1 Field decision reopen.</div></div></div>
 
 ## What moves if an answer changes
 

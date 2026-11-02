@@ -14,9 +14,7 @@ Form state and validation wired to the fields.
 
 ## See it live
 
-<iframe src="http://localhost:6006/iframe.html?id=components-form--examples&viewMode=story" title="Form examples in Storybook" loading="lazy" style="width:100%;height:320px;border:1px solid var(--color-border-default);border-radius:var(--radius-container)"></iframe>
-
-[Open Form in Storybook](http://localhost:6006/?path=/docs/components-form--docs): every variant, the playground and its controls, in every theme.
+<div class="odv-live"><span class="odv-wait">Start Storybook to see it live: <code>npm run storybook</code></span><iframe src="http://localhost:6006/iframe.html?id=components-form--examples&viewMode=story&globals=scheme:dense-data" title="Form examples in Storybook" loading="lazy"></iframe><div class="bar"><span>Live from Storybook</span><a href="http://localhost:6006/?path=/docs/components-form--docs">Open Form in Storybook</a><a href="http://localhost:6006/iframe.html?id=components-form--examples&viewMode=story&globals=scheme:dense-data;mode:dark">See it in dark</a></div></div>
 
 ## When to use it
 
@@ -29,10 +27,7 @@ Instead:
 
 ## How Dense data uses it
 
-| Situation | Use | Not | Why |
-| --- | --- | --- | --- |
-| An error message | color.status.danger with an icon | color.status.warning | Red always means fix this, and the icon says it without color. |
-| The words of an error | Name the record, then the fix. Flat and specific. | "Oops" or a vague apology | Experts act on the message; the record and the fix are all they need. Example: “Alert ALR-2042 not saved. Threshold must be between 0 and 100.” |
+<div class="odv-grid two"><div class="odv-dd"><div class="stage"><div class="odv-eyebrow">An error message</div><div style="margin-top:6px"><b style="color:var(--color-status-success)">Use</b> color.status.danger with an icon</div><div><b style="color:var(--color-status-danger)">Not</b> color.status.warning</div></div><div class="cap">Red always means fix this, and the icon says it without color.</div></div><div class="odv-dd"><div class="stage"><div class="odv-eyebrow">The words of an error</div><div style="margin-top:6px"><b style="color:var(--color-status-success)">Use</b> Name the record, then the fix. Flat and specific.</div><div><b style="color:var(--color-status-danger)">Not</b> &quot;Oops&quot; or a vague apology</div></div><div class="cap">Experts act on the message; the record and the fix are all they need. Example: “Alert ALR-2042 not saved. Threshold must be between 0 and 100.”</div></div></div>
 
 ## Words
 

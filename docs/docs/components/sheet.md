@@ -14,9 +14,7 @@ A panel that slides in from an edge.
 
 ## See it live
 
-<iframe src="http://localhost:6006/iframe.html?id=components-sheet--examples&viewMode=story" title="Sheet examples in Storybook" loading="lazy" style="width:100%;height:320px;border:1px solid var(--color-border-default);border-radius:var(--radius-container)"></iframe>
-
-[Open Sheet in Storybook](http://localhost:6006/?path=/docs/components-sheet--docs): every variant, the playground and its controls, in every theme.
+<div class="odv-live"><span class="odv-wait">Start Storybook to see it live: <code>npm run storybook</code></span><iframe src="http://localhost:6006/iframe.html?id=components-sheet--examples&viewMode=story&globals=scheme:dense-data" title="Sheet examples in Storybook" loading="lazy"></iframe><div class="bar"><span>Live from Storybook</span><a href="http://localhost:6006/?path=/docs/components-sheet--docs">Open Sheet in Storybook</a><a href="http://localhost:6006/iframe.html?id=components-sheet--examples&viewMode=story&globals=scheme:dense-data;mode:dark">See it in dark</a></div></div>
 
 ## When to use it
 
@@ -30,9 +28,7 @@ Instead:
 
 ## How Dense data uses it
 
-| Situation | Use | Not | Why |
-| --- | --- | --- | --- |
-| A menu or dialog | elevation.overlay and a dimmed page for dialogs | A border only | Floating things need a shadow so they read as on top. |
+<div class="odv-grid two"><div class="odv-dd"><div class="stage"><div class="odv-eyebrow">A menu or dialog</div><div style="margin-top:6px"><b style="color:var(--color-status-success)">Use</b> elevation.overlay and a dimmed page for dialogs</div><div><b style="color:var(--color-status-danger)">Not</b> A border only</div></div><div class="cap">Floating things need a shadow so they read as on top.</div></div></div>
 
 ## Words
 

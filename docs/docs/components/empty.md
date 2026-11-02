@@ -14,9 +14,7 @@ What a region shows when it loaded and has nothing: why, and what to do next.
 
 ## See it live
 
-<iframe src="http://localhost:6006/iframe.html?id=components-empty--examples&viewMode=story" title="Empty examples in Storybook" loading="lazy" style="width:100%;height:320px;border:1px solid var(--color-border-default);border-radius:var(--radius-container)"></iframe>
-
-[Open Empty in Storybook](http://localhost:6006/?path=/docs/components-empty--docs): every variant, the playground and its controls, in every theme.
+<div class="odv-live"><span class="odv-wait">Start Storybook to see it live: <code>npm run storybook</code></span><iframe src="http://localhost:6006/iframe.html?id=components-empty--examples&viewMode=story&globals=scheme:dense-data" title="Empty examples in Storybook" loading="lazy"></iframe><div class="bar"><span>Live from Storybook</span><a href="http://localhost:6006/?path=/docs/components-empty--docs">Open Empty in Storybook</a><a href="http://localhost:6006/iframe.html?id=components-empty--examples&viewMode=story&globals=scheme:dense-data;mode:dark">See it in dark</a></div></div>
 
 ## When to use it
 
@@ -30,7 +28,11 @@ Instead:
 
 ## Variants
 
-What each variant is for in any design system, and what Dense data decided, with the answers behind it.
+What each variant is for in any design system, and what Dense data decided, with the answers behind it. Each sample is the live story with that variant set.
+
+<div class="odv-axis"><code>variant</code></div><div class="odv-grid"><div class="odv-card odv-vcard off"><div class="stage"><iframe src="http://localhost:6006/iframe.html?id=components-empty--playground&viewMode=story&globals=scheme:dense-data&args=variant:default" title="Empty default" loading="lazy" tabindex="-1"></iframe></div><div class="body"><code>default</code><div class="ref">The picture shown as it is: an image or illustration.</div><div class="here"><b>Not used:</b> No pictures: an empty table needs the reason and the one action that fills it.</div><span class="odv-ans" title="What is the main content?">Numbers and records · content.q1</span> <span class="odv-ans" title="Where do the words matter most?">Errors and empty states · voice.lands</span> </div></div><div class="odv-card odv-vcard"><div class="stage"><iframe src="http://localhost:6006/iframe.html?id=components-empty--playground&viewMode=story&globals=scheme:dense-data&args=variant:icon" title="Empty icon" loading="lazy" tabindex="-1"></iframe></div><div class="body"><code>icon</code><div class="ref">The picture as an icon in a small tile.</div><div class="here"><b>In Dense data:</b> An outline icon in a small tile beside the reason and the action.</div><span class="odv-ans" title="What do icons do?">Actions and status · iconography.roles</span> <span class="odv-ans" title="What icon style?">Outline · iconography.definition</span> </div></div></div>
+
+### In detail
 
 | Axis | Variant | What it is for | In Dense data | Because |
 | --- | --- | --- | --- | --- |
@@ -39,20 +41,13 @@ What each variant is for in any design system, and what Dense data decided, with
 
 ## How Dense data uses it
 
-| Situation | Use | Not | Why |
-| --- | --- | --- | --- |
-| An empty state | Why it is empty and the one action that fills it | A blank table | An empty table with no words looks like an error. Example: “No escalated alerts. Change the date range to see older ones.” |
+<div class="odv-grid two"><div class="odv-dd"><div class="stage"><div class="odv-eyebrow">An empty state</div><div style="margin-top:6px"><b style="color:var(--color-status-success)">Use</b> Why it is empty and the one action that fills it</div><div><b style="color:var(--color-status-danger)">Not</b> A blank table</div></div><div class="cap">An empty table with no words looks like an error. Example: “No escalated alerts. Change the date range to see older ones.”</div></div></div>
 
 ## Why it works this way
 
 The answers that shaped Empty here. Change one, and the decisions above change with it.
 
-| Question | Answer |
-| --- | --- |
-| What is the main content? (`content.q1`) | **Numbers and records**. Most of the screen is numbers and records. |
-| Where do the words matter most? (`voice.lands`) | **Errors and empty states**. Errors and empty tables are where words decide the next action. |
-| What do icons do? (`iconography.roles`) | **Actions and status**. Icons mark row actions and status. |
-| What icon style? (`iconography.definition`) | **Outline**. Outline icons stay light next to dense text. |
+<div class="odv-grid"><div class="odv-card"><div class="odv-eyebrow">What is the main content?</div><q>Numbers and records</q><p>Most of the screen is numbers and records.</p><span class="odv-ans">content.q1</span><div class="odv-moves">Change it and 2 Empty decisions reopen.</div></div><div class="odv-card"><div class="odv-eyebrow">Where do the words matter most?</div><q>Errors and empty states</q><p>Errors and empty tables are where words decide the next action.</p><span class="odv-ans">voice.lands</span><div class="odv-moves">Change it and 1 Empty decision reopen.</div></div><div class="odv-card"><div class="odv-eyebrow">What do icons do?</div><q>Actions and status</q><p>Icons mark row actions and status.</p><span class="odv-ans">iconography.roles</span><div class="odv-moves">Change it and 1 Empty decision reopen.</div></div><div class="odv-card"><div class="odv-eyebrow">What icon style?</div><q>Outline</q><p>Outline icons stay light next to dense text.</p><span class="odv-ans">iconography.definition</span><div class="odv-moves">Change it and 1 Empty decision reopen.</div></div></div>
 
 ## What moves if an answer changes
 

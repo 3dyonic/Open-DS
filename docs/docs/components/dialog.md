@@ -14,9 +14,7 @@ A window over the page that takes attention until people finish or close it.
 
 ## See it live
 
-<iframe src="http://localhost:6006/iframe.html?id=components-dialog--examples&viewMode=story" title="Dialog examples in Storybook" loading="lazy" style="width:100%;height:320px;border:1px solid var(--color-border-default);border-radius:var(--radius-container)"></iframe>
-
-[Open Dialog in Storybook](http://localhost:6006/?path=/docs/components-dialog--docs): every variant, the playground and its controls, in every theme.
+<div class="odv-live"><span class="odv-wait">Start Storybook to see it live: <code>npm run storybook</code></span><iframe src="http://localhost:6006/iframe.html?id=components-dialog--examples&viewMode=story&globals=scheme:dense-data" title="Dialog examples in Storybook" loading="lazy"></iframe><div class="bar"><span>Live from Storybook</span><a href="http://localhost:6006/?path=/docs/components-dialog--docs">Open Dialog in Storybook</a><a href="http://localhost:6006/iframe.html?id=components-dialog--examples&viewMode=story&globals=scheme:dense-data;mode:dark">See it in dark</a></div></div>
 
 ## When to use it
 
@@ -31,10 +29,7 @@ Instead:
 
 ## How Dense data uses it
 
-| Situation | Use | Not | Why |
-| --- | --- | --- | --- |
-| A menu or dialog | elevation.overlay and a dimmed page for dialogs | A border only | Floating things need a shadow so they read as on top. |
-| Delete or remove | Button secondary, then confirm in a dialog | Button primary as the first step | Deleting is rare and costly; a confirm step catches mistakes. |
+<div class="odv-grid two"><div class="odv-dd"><div class="stage"><div class="odv-eyebrow">A menu or dialog</div><div style="margin-top:6px"><b style="color:var(--color-status-success)">Use</b> elevation.overlay and a dimmed page for dialogs</div><div><b style="color:var(--color-status-danger)">Not</b> A border only</div></div><div class="cap">Floating things need a shadow so they read as on top.</div></div><div class="odv-dd"><div class="stage"><div class="odv-eyebrow">Delete or remove</div><div style="margin-top:6px"><b style="color:var(--color-status-success)">Use</b> Button secondary, then confirm in a dialog</div><div><b style="color:var(--color-status-danger)">Not</b> Button primary as the first step</div></div><div class="cap">Deleting is rare and costly; a confirm step catches mistakes.</div></div></div>
 
 ## Words
 
