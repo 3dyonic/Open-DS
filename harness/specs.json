@@ -413,7 +413,7 @@
       ]
     },
     {
-      "id": "OD-196",
+      "id": "OD-203",
       "title": "Docs component pages: each variant a full-width section, and each answer a contained card in three steps",
       "in": [
         "each variant has its own section: a live sample, what it is for (with use when and not when), this scheme's decision, and the answers behind it",

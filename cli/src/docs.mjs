@@ -935,7 +935,7 @@ export function docsPages(
             : ""),
       );
     const variants = guide?.variants ?? [];
-    // Each variant is its own full-width section (OD-196): a live sample, then what it is for, what
+    // Each variant is its own full-width section (OD-203): a live sample, then what it is for, what
     // this scheme decided, and the answers behind it, each as its own topic.
     const answerChip = (b) =>
       answer(b)
@@ -991,7 +991,7 @@ export function docsPages(
     const cited = [
       ...new Set(variants.flatMap((v) => v.here?.because ?? [])),
     ].filter((q) => answer(q));
-    // Why it works this way (OD-196): one card per answer, three steps inside: the answer, what it
+    // Why it works this way (OD-203): one card per answer, three steps inside: the answer, what it
     // decided for this component (and what else it shapes), and what would move if it changed.
     if (cited.length)
       parts.push(

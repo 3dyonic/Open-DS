@@ -41,9 +41,10 @@ const overlap = (query, text) => {
 // --- checkUi -------------------------------------------------------------------------------------
 
 // Not product UI: generated output, the components and token styles themselves (they read only keys),
-// the docs site's own chrome, and the package's index, which re-exports what components import.
+// the docs site's and Storybook's own chrome, and the package's index, which re-exports what
+// components import.
 const SKIP =
-  /(^|\/)(node_modules|dist|build|storybook-static|\.open-ds|tokens|docs|src\/components\/ui|src\/styles)\/|(^|\/)src\/index\.[jt]s$/;
+  /(^|\/)(node_modules|dist|build|storybook-static|\.open-ds|\.storybook|tokens|docs|src\/components\/ui|src\/styles)\/|(^|\/)src\/index\.[jt]s$/;
 const PALETTE =
   /\b(?:bg|text|border|ring|fill|stroke|from|via|to|outline|divide|placeholder|shadow)-(?:slate|gray|zinc|neutral|stone|red|orange|amber|yellow|lime|green|emerald|teal|cyan|sky|blue|indigo|violet|purple|fuchsia|pink|rose|black|white)(?:-\d{2,3})?\b/g;
 const HEX =

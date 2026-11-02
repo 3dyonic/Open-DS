@@ -477,7 +477,7 @@
   font-size: var(--type-label-font-size);
 }
 
-/* Variants: one full-width section per variant (OD-196). */
+/* Variants: one full-width section per variant (OD-203). */
 .odv-variant {
   background: var(--color-surface-default);
   border: var(--border-width-default) solid var(--color-border-default);
@@ -618,7 +618,7 @@
   padding: 0;
 }
 
-/* Why it works this way: one contained card per answer, three steps inside (OD-196). */
+/* Why it works this way: one contained card per answer, three steps inside (OD-203). */
 .odv-trail {
   background: var(--color-surface-default);
   border: var(--border-width-default) solid var(--color-border-default);
