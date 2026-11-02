@@ -150,7 +150,3 @@ pnpm --dir e2e/app dev
 ```
 
 After `pnpm e2e`, this app runs with the Dense data scheme that the CLI deployed into it.
-
-## 5. What is still a draft
-
-All answers in the five schemes are drafts until you curate them. Nothing is published: no npm package and no public site.

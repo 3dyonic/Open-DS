@@ -1,5 +1,5 @@
-# Releases the CLI on every merge to master (OD-199). A merge to master needs Yonatan's go-ahead, so
-# that go-ahead is the release decision. When master's cli/package.json has a version with no tag yet:
+# Releases the CLI on every merge to master (OD-199): the merge is the release decision.
+# When master's cli/package.json has a version with no tag yet:
 #   1. test what ships;
 #   2. npmjs:           open-ds, through npm Trusted Publishing (no stored token), with provenance;
 #   3. GitHub Packages: @3dyonic/open-ds, with GITHUB_TOKEN, so it shows on the repository's Packages page;

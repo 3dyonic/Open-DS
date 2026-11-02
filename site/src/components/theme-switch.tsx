@@ -1,7 +1,7 @@
 "use client";
 // The light and dark switch in the nav. The site follows the device by default. One click
 // switches to the other theme and remembers it; the next click goes back to following the device
-// (Yonatan's rule from 3dyonic.com: dark device → light → dark is follow-device again).
+// (dark device → light → dark is follow-device again).
 // The choice lives in localStorage and on <html data-theme>; THEME_SCRIPT (lib/theme) applies it
 // before paint.
 import { useEffect, useState } from "react";
