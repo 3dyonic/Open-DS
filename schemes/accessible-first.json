@@ -182,7 +182,33 @@
       },
       {
         "id": "field",
-        "why": "Label, hint and error in the same place on every question."
+        "why": "Label, hint and error in the same place on every question.",
+        "variants": {
+          "orientation": {
+            "vertical": {
+              "use": "Every question: the label above the field, always visible.",
+              "because": [
+                "people.q2",
+                "tasks.q1"
+              ]
+            },
+            "horizontal": {
+              "not_used": true,
+              "why": "Labels stay above the field, visible while typing and in the same place on any screen.",
+              "because": [
+                "people.q2"
+              ]
+            },
+            "responsive": {
+              "not_used": true,
+              "why": "One layout on every device, so people meet the same form every time.",
+              "because": [
+                "human.q2",
+                "scenarios.q1"
+              ]
+            }
+          }
+        }
       },
       {
         "id": "checkbox",
@@ -198,7 +224,26 @@
       },
       {
         "id": "alert",
-        "why": "Errors and important notes that stay on the page."
+        "why": "Errors and important notes that stay on the page.",
+        "variants": {
+          "variant": {
+            "default": {
+              "use": "Important notes that stay on the page while people answer.",
+              "because": [
+                "outcomes.q1",
+                "human.q1"
+              ]
+            },
+            "destructive": {
+              "use": "Errors, with what went wrong, where, and exactly how to fix it, next to the field.",
+              "because": [
+                "accessibility.count",
+                "outcomes.q2",
+                "voice.values"
+              ]
+            }
+          }
+        }
       },
       {
         "id": "progress",

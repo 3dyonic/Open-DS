@@ -218,7 +218,31 @@
       },
       {
         "id": "field",
-        "why": "Lays out every form the same way in every brand."
+        "why": "Lays out every form the same way in every brand.",
+        "variants": {
+          "orientation": {
+            "vertical": {
+              "use": "Sign-up and checkout forms: the label above, in every brand.",
+              "because": [
+                "people.q2",
+                "scenarios.q1"
+              ]
+            },
+            "horizontal": {
+              "not_used": true,
+              "why": "Customers sign up on phones: labels stay above.",
+              "because": [
+                "accessibility.values"
+              ]
+            },
+            "responsive": {
+              "use": "Account settings: stacked on phones, label beside on laptops.",
+              "because": [
+                "scenarios.q1"
+              ]
+            }
+          }
+        }
       },
       {
         "id": "textarea",
@@ -230,7 +254,44 @@
       },
       {
         "id": "badge",
-        "why": "Plan and status labels."
+        "why": "Plan and status labels.",
+        "variants": {
+          "tone": {
+            "neutral": {
+              "use": "Trial: the plan works and billing has not started.",
+              "because": [
+                "accessibility.count"
+              ]
+            },
+            "info": {
+              "use": "Renews in 3 days: a payment is coming; nothing has gone wrong.",
+              "because": [
+                "accessibility.count"
+              ]
+            },
+            "success": {
+              "use": "Active: the plan is paid and running.",
+              "because": [
+                "accessibility.count"
+              ]
+            },
+            "warning": {
+              "not_used": true,
+              "why": "No plan or order state sits between running and failed; a coming renewal is news, not a warning.",
+              "because": [
+                "content.q1",
+                "accessibility.count"
+              ]
+            },
+            "danger": {
+              "use": "Card declined: the payment failed, so the plan will stop.",
+              "because": [
+                "accessibility.count",
+                "outcomes.q2"
+              ]
+            }
+          }
+        }
       },
       {
         "id": "avatar",
@@ -254,15 +315,97 @@
       },
       {
         "id": "sidebar",
-        "why": "Account area navigation."
+        "why": "Account area navigation.",
+        "variants": {
+          "variant": {
+            "default": {
+              "use": "Account-area menu items, the same in every brand.",
+              "because": [
+                "theming.definition"
+              ]
+            },
+            "outline": {
+              "not_used": true,
+              "why": "Brands change color and corners, not the structure of the menu.",
+              "because": [
+                "theming.definition"
+              ]
+            }
+          },
+          "size": {
+            "default": {
+              "use": "Every account-area menu item.",
+              "because": [
+                "spacing.count"
+              ]
+            },
+            "sm": {
+              "not_used": true,
+              "why": "One density across brands.",
+              "because": [
+                "spacing.count"
+              ]
+            },
+            "lg": {
+              "not_used": true,
+              "why": "One density across brands.",
+              "because": [
+                "spacing.count"
+              ]
+            }
+          }
+        }
       },
       {
         "id": "alert",
-        "why": "Billing problems."
+        "why": "Billing problems.",
+        "variants": {
+          "variant": {
+            "default": {
+              "not_used": true,
+              "why": "Alerts here are for billing problems; news is a badge or a toast.",
+              "because": [
+                "content.q1",
+                "outcomes.q1"
+              ]
+            },
+            "destructive": {
+              "use": "A billing problem such as a declined card: plain and specific, the same in every brand.",
+              "because": [
+                "accessibility.count",
+                "outcomes.q2",
+                "voice.definition"
+              ]
+            }
+          }
+        }
       },
       {
         "id": "toast",
-        "why": "Confirms a saved change."
+        "why": "Confirms a saved change.",
+        "variants": {
+          "tone": {
+            "neutral": {
+              "use": "A shared line with brand words.",
+              "because": [
+                "voice.definition"
+              ]
+            },
+            "success": {
+              "use": "Brand tone allowed: Aster calm, Birch friendly, Coral upbeat.",
+              "because": [
+                "voice.count"
+              ]
+            },
+            "danger": {
+              "use": "Shared across brands: plain and specific.",
+              "because": [
+                "voice.definition",
+                "voice.values"
+              ]
+            }
+          }
+        }
       },
       {
         "id": "skeleton",
@@ -274,7 +417,25 @@
       },
       {
         "id": "empty",
-        "why": "No orders yet."
+        "why": "No orders yet.",
+        "variants": {
+          "variant": {
+            "default": {
+              "not_used": true,
+              "why": "Shared structure in every brand: no brand pictures in empty states.",
+              "because": [
+                "voice.definition",
+                "theming.definition"
+              ]
+            },
+            "icon": {
+              "use": "An icon in a small tile, from the one outline set every brand shares.",
+              "because": [
+                "iconography.definition"
+              ]
+            }
+          }
+        }
       },
       {
         "id": "dialog",
@@ -1179,6 +1340,11 @@
       "why": "Brand hues vary, so meaning needs a word.",
       "because": [
         "accessibility.count"
+      ],
+      "uses": [
+        {
+          "component": "badge"
+        }
       ]
     },
     {
@@ -1421,7 +1587,12 @@
       "because": [
         "voice.definition"
       ],
-      "example": "No orders yet. Your first order will appear here."
+      "example": "No orders yet. Your first order will appear here.",
+      "uses": [
+        {
+          "component": "empty"
+        }
+      ]
     },
     {
       "situation": "confirm-words",
