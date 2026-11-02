@@ -63,39 +63,6 @@ const code = (s: string) => <code className="font-mono">{s}</code>;
 export default function InstallPage() {
   const ids = schemes().map((s) => s.id);
   const j = (o: object) => JSON.stringify(o, null, 2);
-  // How each client connects to the hosted server. Clients without remote MCP run it from npm.
-  const clients: { name: string; where: string; label: string; code: string }[] = [
-    {
-      name: "Claude Code",
-      where: "In a terminal. --scope user makes it available in every folder.",
-      label: "Claude Code",
-      code: `claude mcp add --transport http --scope user open-ds ${MCP_URL}`,
-    },
-    {
-      name: "Claude (desktop and claude.ai)",
-      where: "Settings, Connectors, Add custom connector. Name it Open DS and paste the URL:",
-      label: "connector URL",
-      code: MCP_URL,
-    },
-    {
-      name: "Cursor",
-      where: "In ~/.cursor/mcp.json (every project) or .cursor/mcp.json (one project):",
-      label: "Cursor",
-      code: j({ mcpServers: { "open-ds": { url: MCP_URL } } }),
-    },
-    {
-      name: "VS Code",
-      where: "In .vscode/mcp.json in your project:",
-      label: "VS Code",
-      code: j({ servers: { "open-ds": { type: "http", url: MCP_URL } } }),
-    },
-    {
-      name: "Windsurf",
-      where: "In ~/.codeium/windsurf/mcp_config.json:",
-      label: "Windsurf",
-      code: j({ mcpServers: { "open-ds": { serverUrl: MCP_URL } } }),
-    },
-  ];
   // The same server on your computer: the client starts `npx -y open-ds mcp` and talks to it over
   // stdio. It answers from the data in the npm package, so it needs no key and sends us nothing.
   const LOCAL = { command: "npx", args: ["-y", "open-ds", "mcp"] };
@@ -117,7 +84,8 @@ export default function InstallPage() {
       code: j({ servers: { "open-ds": { type: "stdio", ...LOCAL } } }),
     },
   ];
-  // The same clients with a key, as a bearer token (open-ds-ops checks it).
+  // How each client connects to the hosted server, with the key as a bearer token. The hosted
+  // server needs a key (open-ds-ops, OD-176); without one, people run it locally.
   const KEY = "<your key>";
   const auth = { Authorization: `Bearer ${KEY}` };
   const keyed: { name: string; code: string }[] = [
@@ -149,13 +117,16 @@ export default function InstallPage() {
           </p>
         </WithRobot>
         <p className="max-w-[880px] rounded-[6px] border border-line bg-white p-4 text-[15px] text-body">
-          Open DS is in Beta. The hosted MCP server works without a key for now; with a key, it
-          knows it is you.{" "}
+          Open DS is in Beta. The hosted MCP server needs a key, and invitations are limited in
+          number:{" "}
           <Link href="/key/" className="font-semibold text-accent-text hover:underline">
-            Ask for a key
+            ask for a key
           </Link>
-          : invitations are limited in number. The CLI is the {code("open-ds")} package on npm and
-          needs no key, so the {code("npx open-ds")} commands below run as they are.
+          . No key yet? Everything else works without one:{" "}
+          <a href="#local" className="font-semibold text-accent-text hover:underline">
+            run the MCP server on your computer
+          </a>
+          , or run the CLI. Both are the {code("open-ds")} package on npm.
         </p>
       </header>
 
@@ -165,33 +136,24 @@ export default function InstallPage() {
           Connect your AI (MCP)
         </h2>
         <ol className="flex flex-col gap-3">
-          <Step n={1} title="Add the server to your AI">
+          <Step n={1} title="Get a key (Beta)">
             <p className="text-[16px] text-body">
-              The server is at {code(MCP_URL)}. Add it the way your client takes MCP servers. A
-              client that only runs local servers?{" "}
-              <a href="#local" className="font-semibold text-accent-text hover:underline">
-                Run it on your computer
-              </a>
-              .
-            </p>
-            <div className="flex flex-col gap-4">
-              {clients.map((c) => (
-                <div key={c.name} className="flex flex-col gap-2">
-                  <h4 className="text-[17px] font-bold">{c.name}</h4>
-                  <p className="text-[15px] text-body">{c.where}</p>
-                  <Command label={c.label} code={c.code} />
-                </div>
-              ))}
-            </div>
-          </Step>
-          <Step n={2} title="Add your key (Beta)">
-            <p className="text-[16px] text-body">
-              Have a key? Send it with every call as a bearer token. The page that shows your key
-              gives these with your key filled in. No key yet?{" "}
+              The hosted server only answers calls with a key.{" "}
               <Link href="/key/" className="font-semibold text-accent-text hover:underline">
                 Ask for one
               </Link>
-              , or skip this step for now.
+              . If you are approved, the email has a one-time link that shows your key once, with
+              the setup below filled in. No key yet?{" "}
+              <a href="#local" className="font-semibold text-accent-text hover:underline">
+                Run the server on your computer
+              </a>{" "}
+              instead: it needs no key.
+            </p>
+          </Step>
+          <Step n={2} title="Add the server to your AI, with your key">
+            <p className="text-[16px] text-body">
+              The server is at {code(MCP_URL)}. Your key goes with every call as a bearer token.
+              Replace {code(KEY)} with it:
             </p>
             <div className="flex flex-col gap-4">
               {keyed.map((c) => (
@@ -203,7 +165,12 @@ export default function InstallPage() {
             </div>
             <p className="text-[15px] text-body">
               Any other client: add the header {code("Authorization: Bearer <your key>")} to the
-              server {code(MCP_URL)}. Keep the key private. If it leaks, ask for a fresh one.
+              server {code(MCP_URL)}. Claude desktop and claude.ai connectors cannot send a key yet,
+              so in Claude desktop{" "}
+              <a href="#local" className="font-semibold text-accent-text hover:underline">
+                run it on your computer
+              </a>
+              . Keep the key private. If it leaks, ask for a fresh one.
             </p>
           </Step>
           <Step n={3} title="Ask your AI">
@@ -231,7 +198,7 @@ export default function InstallPage() {
         id="local"
         aria-labelledby="local-title"
       >
-        <Eyebrow>Path A, on your computer</Eyebrow>
+        <Eyebrow>Path A, on your computer, no key</Eyebrow>
         <h2 id="local-title" className="text-[32px] font-extrabold">
           Or run the MCP server locally
         </h2>
