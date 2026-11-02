@@ -28,9 +28,11 @@ const withTheme: Decorator = (Story, context) => {
     if (brands.length > 1) html.dataset.brand = brand;
     html.classList.toggle("dark", mode === "dark");
   }, [brand, mode]);
+  // The canvas is white in light mode, so components stand out against it; dark mode keeps the
+  // scheme's own canvas.
   return (
     <div
-      className={`${context.viewMode === "docs" ? "" : "min-h-screen "}p-8 bg-[var(--color-surface-canvas)] text-[var(--color-text-primary)] [font-family:var(--type-body-font-family)]`}
+      className={`${context.viewMode === "docs" ? "" : "min-h-screen "}p-8 ${mode === "dark" ? "bg-[var(--color-surface-canvas)]" : "bg-white"} text-[var(--color-text-primary)] [font-family:var(--type-body-font-family)]`}
     >
       <Story />
     </div>

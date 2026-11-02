@@ -392,6 +392,90 @@
         "why": "The facts may have changed since it was written."
       }
     ],
+    "table": {
+      "caption": "Saved guides",
+      "columns": [
+        {
+          "label": "Guide"
+        },
+        {
+          "label": "Section"
+        },
+        {
+          "label": "Minutes",
+          "numeric": true
+        },
+        {
+          "label": "Status"
+        }
+      ],
+      "rows": [
+        {
+          "cells": [
+            "Planting a winter garden",
+            "Home and garden",
+            "12"
+          ],
+          "status": "Saved"
+        },
+        {
+          "cells": [
+            "Bread without a mixer",
+            "Food",
+            "9"
+          ],
+          "status": "Finished"
+        },
+        {
+          "cells": [
+            "Fixing a dripping tap",
+            "Home and garden",
+            "6"
+          ],
+          "status": "Out of date"
+        },
+        {
+          "cells": [
+            "A weekend in Lisbon",
+            "Travel",
+            "14"
+          ],
+          "status": "Saved"
+        },
+        {
+          "cells": [
+            "Starting to run at 40",
+            "Health",
+            "11"
+          ],
+          "status": "Finished"
+        },
+        {
+          "cells": [
+            "Keeping basil alive",
+            "Home and garden",
+            "5"
+          ],
+          "status": "Finished"
+        },
+        {
+          "cells": [
+            "The quiet history of maps",
+            "Ideas",
+            "18"
+          ],
+          "status": "Saved"
+        },
+        {
+          "cells": [
+            "Choosing a first bike",
+            "Health",
+            "8"
+          ],
+          "status": "Out of date"
+        }
+      ]
+    },
     "metrics": [
       {
         "label": "Guides saved",
@@ -417,6 +501,24 @@
       "error": "We could not save your email. Check it and try again.",
       "invalid": "reader-at-home"
     },
+    "checkbox": [
+      "Home and garden",
+      "Food",
+      "Travel"
+    ],
+    "select": {
+      "label": "Sort your list",
+      "options": [
+        "Newest first",
+        "Shortest read first",
+        "By topic"
+      ],
+      "value": "Newest first"
+    },
+    "switches": [
+      "Larger text",
+      "Email me the weekly letter"
+    ],
     "messages": {
       "success": "You're in. The next issue arrives on Friday.",
       "error": {
@@ -438,7 +540,30 @@
       "status": "Saved",
       "primary": "Keep reading",
       "secondary": "Share"
-    }
+    },
+    "tabs": [
+      {
+        "label": "Saved",
+        "content": "4 guides are waiting for you."
+      },
+      {
+        "label": "Finished",
+        "content": "You read 11 this month."
+      },
+      {
+        "label": "Topics",
+        "content": "Home and garden, food and travel."
+      }
+    ],
+    "menu": {
+      "trigger": "Options for this guide",
+      "items": [
+        "Save for later",
+        "Share"
+      ],
+      "destructive": "Remove from your list"
+    },
+    "icon_action": "Save for later"
   },
   "themes": [
     {

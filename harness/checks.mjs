@@ -419,8 +419,9 @@ export const CHECKS = {
   "schemes-samples": {
     requires: ["schemes/grammar.json"],
     run: (c) => {
-      // Each scheme shows itself with its own content: every inventory component has its sample part,
-      // statuses carry a meaning, rows use those statuses, and no two schemes share a screen or rows.
+      // Each scheme shows itself with its own content: every sample part a story reads is there, so every
+      // component renders in every scheme, carried or not (OD-192). Statuses carry a meaning, rows use
+      // those statuses, and no two schemes share a screen or rows.
       const NEEDS = {
         badge: "statuses",
         card: "card",
@@ -445,8 +446,10 @@ export const CHECKS = {
         }
         const inv = s.inventory.in.map((i) => i.id);
         for (const [comp, part] of Object.entries(NEEDS))
-          if (inv.includes(comp) && !smp[part])
-            gaps.push(`${id}: ${comp} is in the inventory but samples has no ${part}`);
+          if (!smp[part])
+            gaps.push(
+              `${id}: samples has no ${part}, so ${comp} cannot show ${inv.includes(comp) ? "its inventory" : "in this scheme"}`,
+            );
         const labels = new Set((smp.statuses ?? []).map((x) => x.label));
         for (const r of smp.table?.rows ?? []) {
           if (!labels.has(r.status)) gaps.push(`${id}: row status "${r.status}" is not in statuses`);
@@ -461,7 +464,7 @@ export const CHECKS = {
       }
       return gaps.length
         ? bad(gaps.slice(0, 6).join("; "))
-        : ok("every scheme shows its inventory with its own content, and every status has a meaning");
+        : ok("every scheme has its own content for every component, and every status has a meaning");
     },
   },
 
@@ -1138,7 +1141,16 @@ export const CHECKS = {
       // A build can pass while stories fail to show, so open every story and docs page (OD-178).
       const b = c.sh("pnpm", ["--dir", "storybook", "build"]);
       if (b.code !== 0) return bad(tail(b.out));
-      const r = c.sh("node", ["harness/storybook-renders.cjs", c.p("storybook/storybook-static")]);
+      // Every entry as it opens, then every story in each other toolbar scheme (OD-192).
+      const others = [...c.read("storybook/src/scheme-context.tsx").matchAll(/value: "([^"]+)"/g)]
+        .map((m) => m[1])
+        .filter((v) => v !== "dense-data");
+      const r = c.sh("node", [
+        "harness/storybook-renders.cjs",
+        c.p("storybook/storybook-static"),
+        "--schemes",
+        others.join(","),
+      ]);
       let res;
       try {
         res = JSON.parse(r.out.trim().split("\n").pop());
@@ -1150,7 +1162,7 @@ export const CHECKS = {
       if (res.error) return bad(res.error);
       return res.failed.length
         ? bad(res.failed.slice(0, 5).map((f) => `${f.id}: ${f.problem}`).join("; "))
-        : ok(`${res.entries} stories and docs pages render`);
+        : ok(`${res.entries} renders: every story and docs page, and every story in every scheme`);
     },
   },
 

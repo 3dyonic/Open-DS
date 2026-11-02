@@ -25,12 +25,14 @@ const withScheme: Decorator = (Story, context) => {
     else delete html.dataset.brand;
     html.classList.toggle("dark", mode === "dark");
   }, [scheme, brand, mode]);
+  // The canvas is white in light mode, so components stand out against it; dark mode keeps the
+  // scheme's own canvas.
   return (
     <SchemeContext.Provider value={{ scheme, brand, mode }}>
       <div
         data-scheme={scheme}
         data-brand={brand}
-        className={`${mode === "dark" ? "dark " : ""}${context.viewMode === "docs" ? "" : "min-h-screen "}p-8 bg-[var(--color-surface-canvas)] text-[var(--color-text-primary)] [font-family:var(--type-body-font-family)]`}
+        className={`${mode === "dark" ? "dark " : ""}${context.viewMode === "docs" ? "" : "min-h-screen "}p-8 ${mode === "dark" ? "bg-[var(--color-surface-canvas)]" : "bg-white"} text-[var(--color-text-primary)] [font-family:var(--type-body-font-family)]`}
       >
         <Story />
       </div>

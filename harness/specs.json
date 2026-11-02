@@ -294,7 +294,7 @@
       "in": [
         "samples in every scheme: screen, actions, statuses with meaning and why, table, figures, field, messages, confirm, card, tabs, menu",
         "danger only where something failed or will be lost",
-        "Storybook stories and the site preview read the active scheme's samples, and say when a component is not in the inventory",
+        "Storybook stories and the site preview read the active scheme's samples; every component renders in every scheme, and its docs page says when the scheme leaves it out (OD-192)",
         "no shared fixtures between schemes"
       ],
       "checks": [
@@ -363,6 +363,22 @@
         "storybook-stories-uniform",
         "storybook-renders",
         "cli-create-works"
+      ]
+    },
+    {
+      "id": "OD-192",
+      "title": "Every component renders in every scheme, and its docs page says when the scheme leaves it out",
+      "in": [
+        "a component a scheme does not carry still renders in the repo Storybook, styled by that scheme's tokens",
+        "every scheme has its own sample content for every part a story reads; no content is shared between schemes",
+        "the docs page says clearly when the scheme leaves the component out, and why",
+        "the story canvas is white in light mode and the scheme's own canvas in dark mode",
+        "created projects still carry only the components their scheme carries"
+      ],
+      "checks": [
+        "schemes-samples",
+        "storybook-renders",
+        "json-files-validate"
       ]
     }
   ]
