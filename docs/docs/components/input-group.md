@@ -14,9 +14,7 @@ An input with addons inside its border: icons, text, buttons.
 
 ## See it live
 
-<iframe src="http://localhost:6006/iframe.html?id=components-input-group--examples&viewMode=story" title="Input group examples in Storybook" loading="lazy" style="width:100%;height:320px;border:1px solid var(--color-border-default);border-radius:var(--radius-container)"></iframe>
-
-[Open Input group in Storybook](http://localhost:6006/?path=/docs/components-input-group--docs): every variant, the playground and its controls, in every theme.
+<div class="odv-live"><span class="odv-wait">Start Storybook to see it live: <code>npm run storybook</code></span><iframe src="http://localhost:6006/iframe.html?id=components-input-group--examples&viewMode=story&globals=scheme:dense-data" title="Input group examples in Storybook" loading="lazy"></iframe><div class="bar"><span>Live from Storybook</span><a href="http://localhost:6006/?path=/docs/components-input-group--docs">Open Input group in Storybook</a><a href="http://localhost:6006/iframe.html?id=components-input-group--examples&viewMode=story&globals=scheme:dense-data;mode:dark">See it in dark</a></div></div>
 
 ## When to use it
 
@@ -29,7 +27,11 @@ Instead:
 
 ## Variants
 
-What each variant is for in any design system, and what Dense data decided, with the answers behind it.
+What each variant is for in any design system, and what Dense data decided, with the answers behind it. Each sample is the live story with that variant set.
+
+<div class="odv-axis"><code>align</code></div><div class="odv-grid"><div class="odv-card odv-vcard"><div class="stage"><iframe src="http://localhost:6006/iframe.html?id=components-input-group--playground&viewMode=story&globals=scheme:dense-data&args=align:inline-start" title="Input group inline-start" loading="lazy" tabindex="-1"></iframe></div><div class="body"><code>inline-start</code><div class="ref">An addon before the text, on the same line: an icon or currency.</div><div class="here"><b>In Dense data:</b> The search icon before the text.</div><span class="odv-ans" title="What do icons do?">Actions and status · iconography.roles</span> </div></div><div class="odv-card odv-vcard"><div class="stage"><iframe src="http://localhost:6006/iframe.html?id=components-input-group--playground&viewMode=story&globals=scheme:dense-data&args=align:inline-end" title="Input group inline-end" loading="lazy" tabindex="-1"></iframe></div><div class="body"><code>inline-end</code><div class="ref">An addon after the text: a unit, a clear button, a shortcut.</div><div class="here"><b>In Dense data:</b> The clear button after the text, for searches people repeat all day.</div><span class="odv-ans" title="How often do people repeat actions?">Constantly · tasks.q2</span> </div></div><div class="odv-card odv-vcard off"><div class="stage"><iframe src="http://localhost:6006/iframe.html?id=components-input-group--playground&viewMode=story&globals=scheme:dense-data&args=align:block-start" title="Input group block-start" loading="lazy" tabindex="-1"></iframe></div><div class="body"><code>block-start</code><div class="ref">An addon row above the text, inside the field.</div><div class="here"><b>Not used:</b> Inputs stay one line high in toolbars and filter bars.</div><span class="odv-ans" title="How much is on one screen?">A lot · content.q2</span> </div></div><div class="odv-card odv-vcard off"><div class="stage"><iframe src="http://localhost:6006/iframe.html?id=components-input-group--playground&viewMode=story&globals=scheme:dense-data&args=align:block-end" title="Input group block-end" loading="lazy" tabindex="-1"></iframe></div><div class="body"><code>block-end</code><div class="ref">An addon row below the text, inside the field.</div><div class="here"><b>Not used:</b> Inputs stay one line high in toolbars and filter bars.</div><span class="odv-ans" title="How much is on one screen?">A lot · content.q2</span> </div></div></div>
+
+### In detail
 
 | Axis | Variant | What it is for | In Dense data | Because |
 | --- | --- | --- | --- | --- |
@@ -42,11 +44,7 @@ What each variant is for in any design system, and what Dense data decided, with
 
 The answers that shaped Input group here. Change one, and the decisions above change with it.
 
-| Question | Answer |
-| --- | --- |
-| What do icons do? (`iconography.roles`) | **Actions and status**. Icons mark row actions and status. |
-| How often do people repeat actions? (`tasks.q2`) | **Constantly**. The same actions repeat many times an hour. |
-| How much is on one screen? (`content.q2`) | **A lot**. Experts want many records on one screen. |
+<div class="odv-grid"><div class="odv-card"><div class="odv-eyebrow">What do icons do?</div><q>Actions and status</q><p>Icons mark row actions and status.</p><span class="odv-ans">iconography.roles</span><div class="odv-moves">Change it and 1 Input group decision reopen.</div></div><div class="odv-card"><div class="odv-eyebrow">How often do people repeat actions?</div><q>Constantly</q><p>The same actions repeat many times an hour.</p><span class="odv-ans">tasks.q2</span><div class="odv-moves">Change it and 2 Input group decisions reopen.</div></div><div class="odv-card"><div class="odv-eyebrow">How much is on one screen?</div><q>A lot</q><p>Experts want many records on one screen.</p><span class="odv-ans">content.q2</span><div class="odv-moves">Change it and 2 Input group decisions reopen.</div></div></div>
 
 ## What moves if an answer changes
 

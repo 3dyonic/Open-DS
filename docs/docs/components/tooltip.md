@@ -14,9 +14,7 @@ A short hint on hover or focus.
 
 ## See it live
 
-<iframe src="http://localhost:6006/iframe.html?id=components-tooltip--examples&viewMode=story" title="Tooltip examples in Storybook" loading="lazy" style="width:100%;height:320px;border:1px solid var(--color-border-default);border-radius:var(--radius-container)"></iframe>
-
-[Open Tooltip in Storybook](http://localhost:6006/?path=/docs/components-tooltip--docs): every variant, the playground and its controls, in every theme.
+<div class="odv-live"><span class="odv-wait">Start Storybook to see it live: <code>npm run storybook</code></span><iframe src="http://localhost:6006/iframe.html?id=components-tooltip--examples&viewMode=story&globals=scheme:dense-data" title="Tooltip examples in Storybook" loading="lazy"></iframe><div class="bar"><span>Live from Storybook</span><a href="http://localhost:6006/?path=/docs/components-tooltip--docs">Open Tooltip in Storybook</a><a href="http://localhost:6006/iframe.html?id=components-tooltip--examples&viewMode=story&globals=scheme:dense-data;mode:dark">See it in dark</a></div></div>
 
 ## When to use it
 
@@ -30,9 +28,7 @@ Instead:
 
 ## How Dense data uses it
 
-| Situation | Use | Not | Why |
-| --- | --- | --- | --- |
-| An icon with no label | Icon button with a tooltip | A bare icon | Experts learn icons; the tooltip covers the first uses. |
+<div class="odv-grid two"><div class="odv-dd"><div class="stage"><div class="odv-eyebrow">An icon with no label</div><div style="margin-top:6px"><b style="color:var(--color-status-success)">Use</b> Icon button with a tooltip</div><div><b style="color:var(--color-status-danger)">Not</b> A bare icon</div></div><div class="cap">Experts learn icons; the tooltip covers the first uses.</div></div></div>
 
 ## Words
 

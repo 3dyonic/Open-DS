@@ -14,9 +14,7 @@ A short label for a status, category or count, next to what it describes.
 
 ## See it live
 
-<iframe src="http://localhost:6006/iframe.html?id=components-badge--examples&viewMode=story" title="Badge examples in Storybook" loading="lazy" style="width:100%;height:320px;border:1px solid var(--color-border-default);border-radius:var(--radius-container)"></iframe>
-
-[Open Badge in Storybook](http://localhost:6006/?path=/docs/components-badge--docs): every variant, the playground and its controls, in every theme.
+<div class="odv-live"><span class="odv-wait">Start Storybook to see it live: <code>npm run storybook</code></span><iframe src="http://localhost:6006/iframe.html?id=components-badge--examples&viewMode=story&globals=scheme:dense-data" title="Badge examples in Storybook" loading="lazy"></iframe><div class="bar"><span>Live from Storybook</span><a href="http://localhost:6006/?path=/docs/components-badge--docs">Open Badge in Storybook</a><a href="http://localhost:6006/iframe.html?id=components-badge--examples&viewMode=story&globals=scheme:dense-data;mode:dark">See it in dark</a></div></div>
 
 ## When to use it
 
@@ -30,7 +28,11 @@ Instead:
 
 ## Variants
 
-What each variant is for in any design system, and what Dense data decided, with the answers behind it.
+What each variant is for in any design system, and what Dense data decided, with the answers behind it. Each sample is the live story with that variant set.
+
+<div class="odv-axis"><code>tone</code></div><div class="odv-grid"><div class="odv-card odv-vcard"><div class="stage"><iframe src="http://localhost:6006/iframe.html?id=components-badge--playground&viewMode=story&globals=scheme:dense-data&args=tone:neutral" title="Badge neutral" loading="lazy" tabindex="-1"></iframe></div><div class="body"><code>neutral</code><div class="ref">A label with no status meaning: a category, a count, a waiting state.</div><div class="here"><b>In Dense data:</b> New and False positive: not triaged yet, or a finished outcome that is not a failure.</div><span class="odv-ans" title="How many signals carry each meaning?">Three: color, icon and word · accessibility.count</span> <span class="odv-ans" title="What is the main content?">Numbers and records · content.q1</span> </div></div><div class="odv-card odv-vcard"><div class="stage"><iframe src="http://localhost:6006/iframe.html?id=components-badge--playground&viewMode=story&globals=scheme:dense-data&args=tone:info" title="Badge info" loading="lazy" tabindex="-1"></iframe></div><div class="body"><code>info</code><div class="ref">News: worth knowing, nothing to act on.</div><div class="here"><b>In Dense data:</b> Investigating: an analyst is on it; news, nothing to act on.</div><span class="odv-ans" title="How many signals carry each meaning?">Three: color, icon and word · accessibility.count</span> <span class="odv-ans" title="What is the main content?">Numbers and records · content.q1</span> </div></div><div class="odv-card odv-vcard"><div class="stage"><iframe src="http://localhost:6006/iframe.html?id=components-badge--playground&viewMode=story&globals=scheme:dense-data&args=tone:success" title="Badge success" loading="lazy" tabindex="-1"></iframe></div><div class="body"><code>success</code><div class="ref">Done, healthy or paid.</div><div class="here"><b>In Dense data:</b> Resolved: contained and closed.</div><span class="odv-ans" title="How many signals carry each meaning?">Three: color, icon and word · accessibility.count</span> <span class="odv-ans" title="What is the main content?">Numbers and records · content.q1</span> </div></div><div class="odv-card odv-vcard"><div class="stage"><iframe src="http://localhost:6006/iframe.html?id=components-badge--playground&viewMode=story&globals=scheme:dense-data&args=tone:warning" title="Badge warning" loading="lazy" tabindex="-1"></iframe></div><div class="body"><code>warning</code><div class="ref">Needs attention soon; nothing has failed yet.</div><div class="here"><b>In Dense data:</b> Escalated: needs a senior analyst soon, still containable.</div><span class="odv-ans" title="How many signals carry each meaning?">Three: color, icon and word · accessibility.count</span> <span class="odv-ans" title="What is the main content?">Numbers and records · content.q1</span> </div></div><div class="odv-card odv-vcard"><div class="stage"><iframe src="http://localhost:6006/iframe.html?id=components-badge--playground&viewMode=story&globals=scheme:dense-data&args=tone:danger" title="Badge danger" loading="lazy" tabindex="-1"></iframe></div><div class="body"><code>danger</code><div class="ref">Failed, blocked or lost; act now.</div><div class="here"><b>In Dense data:</b> Breach confirmed: a real loss.</div><span class="odv-ans" title="How many signals carry each meaning?">Three: color, icon and word · accessibility.count</span> <span class="odv-ans" title="What is the main content?">Numbers and records · content.q1</span> </div></div></div>
+
+### In detail
 
 | Axis | Variant | What it is for | In Dense data | Because |
 | --- | --- | --- | --- | --- |
@@ -42,19 +44,13 @@ What each variant is for in any design system, and what Dense data decided, with
 
 ## How Dense data uses it
 
-| Situation | Use | Not | Why |
-| --- | --- | --- | --- |
-| A status | Badge with a subtle fill, an icon and a word | A full-strength fill | Subtle fills let many statuses share one table. |
-| Shape of a status badge | radius.badge (rectangle) | A pill | Rectangles line up in a column. |
+<div class="odv-grid two"><div class="odv-dd"><div class="stage"><div class="odv-eyebrow">A status</div><div style="margin-top:6px"><b style="color:var(--color-status-success)">Use</b> Badge with a subtle fill, an icon and a word</div><div><b style="color:var(--color-status-danger)">Not</b> A full-strength fill</div></div><div class="cap">Subtle fills let many statuses share one table.</div></div><div class="odv-dd"><div class="stage"><div class="odv-eyebrow">Shape of a status badge</div><div style="margin-top:6px"><b style="color:var(--color-status-success)">Use</b> radius.badge (rectangle)</div><div><b style="color:var(--color-status-danger)">Not</b> A pill</div></div><div class="cap">Rectangles line up in a column.</div></div></div>
 
 ## Why it works this way
 
 The answers that shaped Badge here. Change one, and the decisions above change with it.
 
-| Question | Answer |
-| --- | --- |
-| How many signals carry each meaning? (`accessibility.count`) | **Three: color, icon and word**. Many statuses share one table; color alone is not enough. |
-| What is the main content? (`content.q1`) | **Numbers and records**. Most of the screen is numbers and records. |
+<div class="odv-grid"><div class="odv-card"><div class="odv-eyebrow">How many signals carry each meaning?</div><q>Three: color, icon and word</q><p>Many statuses share one table; color alone is not enough.</p><span class="odv-ans">accessibility.count</span><div class="odv-moves">Change it and 5 Badge decisions reopen.</div></div><div class="odv-card"><div class="odv-eyebrow">What is the main content?</div><q>Numbers and records</q><p>Most of the screen is numbers and records.</p><span class="odv-ans">content.q1</span><div class="odv-moves">Change it and 5 Badge decisions reopen.</div></div></div>
 
 ## What moves if an answer changes
 

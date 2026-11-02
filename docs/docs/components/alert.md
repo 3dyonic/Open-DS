@@ -14,9 +14,7 @@ A message that stays on the page with the content it is about.
 
 ## See it live
 
-<iframe src="http://localhost:6006/iframe.html?id=components-alert--examples&viewMode=story" title="Alert examples in Storybook" loading="lazy" style="width:100%;height:320px;border:1px solid var(--color-border-default);border-radius:var(--radius-container)"></iframe>
-
-[Open Alert in Storybook](http://localhost:6006/?path=/docs/components-alert--docs): every variant, the playground and its controls, in every theme.
+<div class="odv-live"><span class="odv-wait">Start Storybook to see it live: <code>npm run storybook</code></span><iframe src="http://localhost:6006/iframe.html?id=components-alert--examples&viewMode=story&globals=scheme:dense-data" title="Alert examples in Storybook" loading="lazy"></iframe><div class="bar"><span>Live from Storybook</span><a href="http://localhost:6006/?path=/docs/components-alert--docs">Open Alert in Storybook</a><a href="http://localhost:6006/iframe.html?id=components-alert--examples&viewMode=story&globals=scheme:dense-data;mode:dark">See it in dark</a></div></div>
 
 ## When to use it
 
@@ -31,7 +29,11 @@ Instead:
 
 ## Variants
 
-What each variant is for in any design system, and what Dense data decided, with the answers behind it.
+What each variant is for in any design system, and what Dense data decided, with the answers behind it. Each sample is the live story with that variant set.
+
+<div class="odv-axis"><code>variant</code></div><div class="odv-grid"><div class="odv-card odv-vcard off"><div class="stage"><iframe src="http://localhost:6006/iframe.html?id=components-alert--playground&viewMode=story&globals=scheme:dense-data&args=variant:default" title="Alert default" loading="lazy" tabindex="-1"></iframe></div><div class="body"><code>default</code><div class="ref">A notice that stays on the page: information or a heads-up.</div><div class="here"><b>Not used:</b> Alerts here are for problems that stay on the page; news goes in a toast or a badge.</div><span class="odv-ans" title="What is a costly mistake?">Acting on the wrong record · outcomes.q2</span> <span class="odv-ans" title="How often do people repeat actions?">Constantly · tasks.q2</span> </div></div><div class="odv-card odv-vcard"><div class="stage"><iframe src="http://localhost:6006/iframe.html?id=components-alert--playground&viewMode=story&globals=scheme:dense-data&args=variant:destructive" title="Alert destructive" loading="lazy" tabindex="-1"></iframe></div><div class="body"><code>destructive</code><div class="ref">Something failed or will be lost, and people must act to recover.</div><div class="here"><b>In Dense data:</b> A record that was not saved or an action that failed: name the record, then the fix, with an icon.</div><span class="odv-ans" title="What is a costly mistake?">Acting on the wrong record · outcomes.q2</span> <span class="odv-ans" title="How many signals carry each meaning?">Three: color, icon and word · accessibility.count</span> <span class="odv-ans" title="How does it sound?">Terse · voice.values</span> </div></div></div>
+
+### In detail
 
 | Axis | Variant | What it is for | In Dense data | Because |
 | --- | --- | --- | --- | --- |
@@ -40,20 +42,13 @@ What each variant is for in any design system, and what Dense data decided, with
 
 ## How Dense data uses it
 
-| Situation | Use | Not | Why |
-| --- | --- | --- | --- |
-| An error message | color.status.danger with an icon | color.status.warning | Red always means fix this, and the icon says it without color. |
+<div class="odv-grid two"><div class="odv-dd"><div class="stage"><div class="odv-eyebrow">An error message</div><div style="margin-top:6px"><b style="color:var(--color-status-success)">Use</b> color.status.danger with an icon</div><div><b style="color:var(--color-status-danger)">Not</b> color.status.warning</div></div><div class="cap">Red always means fix this, and the icon says it without color.</div></div></div>
 
 ## Why it works this way
 
 The answers that shaped Alert here. Change one, and the decisions above change with it.
 
-| Question | Answer |
-| --- | --- |
-| What is a costly mistake? (`outcomes.q2`) | **Acting on the wrong record**. Acting on the wrong row is the costly error. |
-| How often do people repeat actions? (`tasks.q2`) | **Constantly**. The same actions repeat many times an hour. |
-| How many signals carry each meaning? (`accessibility.count`) | **Three: color, icon and word**. Many statuses share one table; color alone is not enough. |
-| How does it sound? (`voice.values`) | **Terse**. Experts want short labels and short messages. |
+<div class="odv-grid"><div class="odv-card"><div class="odv-eyebrow">What is a costly mistake?</div><q>Acting on the wrong record</q><p>Acting on the wrong row is the costly error.</p><span class="odv-ans">outcomes.q2</span><div class="odv-moves">Change it and 2 Alert decisions reopen.</div></div><div class="odv-card"><div class="odv-eyebrow">How often do people repeat actions?</div><q>Constantly</q><p>The same actions repeat many times an hour.</p><span class="odv-ans">tasks.q2</span><div class="odv-moves">Change it and 1 Alert decision reopen.</div></div><div class="odv-card"><div class="odv-eyebrow">How many signals carry each meaning?</div><q>Three: color, icon and word</q><p>Many statuses share one table; color alone is not enough.</p><span class="odv-ans">accessibility.count</span><div class="odv-moves">Change it and 1 Alert decision reopen.</div></div><div class="odv-card"><div class="odv-eyebrow">How does it sound?</div><q>Terse</q><p>Experts want short labels and short messages.</p><span class="odv-ans">voice.values</span><div class="odv-moves">Change it and 1 Alert decision reopen.</div></div></div>
 
 ## What moves if an answer changes
 

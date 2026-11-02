@@ -14,9 +14,7 @@ The side navigation of an app, open while people work.
 
 ## See it live
 
-<iframe src="http://localhost:6006/iframe.html?id=components-sidebar--examples&viewMode=story" title="Sidebar examples in Storybook" loading="lazy" style="width:100%;height:320px;border:1px solid var(--color-border-default);border-radius:var(--radius-container)"></iframe>
-
-[Open Sidebar in Storybook](http://localhost:6006/?path=/docs/components-sidebar--docs): every variant, the playground and its controls, in every theme.
+<div class="odv-live"><span class="odv-wait">Start Storybook to see it live: <code>npm run storybook</code></span><iframe src="http://localhost:6006/iframe.html?id=components-sidebar--examples&viewMode=story&globals=scheme:dense-data" title="Sidebar examples in Storybook" loading="lazy"></iframe><div class="bar"><span>Live from Storybook</span><a href="http://localhost:6006/?path=/docs/components-sidebar--docs">Open Sidebar in Storybook</a><a href="http://localhost:6006/iframe.html?id=components-sidebar--examples&viewMode=story&globals=scheme:dense-data;mode:dark">See it in dark</a></div></div>
 
 ## When to use it
 
@@ -30,7 +28,13 @@ Instead:
 
 ## Variants
 
-What each variant is for in any design system, and what Dense data decided, with the answers behind it.
+What each variant is for in any design system, and what Dense data decided, with the answers behind it. Each sample is the live story with that variant set.
+
+<div class="odv-axis"><code>variant</code></div><div class="odv-grid"><div class="odv-card odv-vcard"><div class="stage"><iframe src="http://localhost:6006/iframe.html?id=components-sidebar--playground&viewMode=story&globals=scheme:dense-data&args=variant:default" title="Sidebar default" loading="lazy" tabindex="-1"></iframe></div><div class="body"><code>default</code><div class="ref">Menu items with no border; hover shows the item.</div><div class="here"><b>In Dense data:</b> Menu items with no border, quiet beside dense data.</div><span class="odv-ans" title="What is the main content?">Numbers and records · content.q1</span> </div></div><div class="odv-card odv-vcard off"><div class="stage"><iframe src="http://localhost:6006/iframe.html?id=components-sidebar--playground&viewMode=story&globals=scheme:dense-data&args=variant:outline" title="Sidebar outline" loading="lazy" tabindex="-1"></iframe></div><div class="body"><code>outline</code><div class="ref">Menu items with a border.</div><div class="here"><b>Not used:</b> Borders on every item would compete with the data.</div><span class="odv-ans" title="What is the main content?">Numbers and records · content.q1</span> </div></div></div>
+
+<div class="odv-axis"><code>size</code></div><div class="odv-grid"><div class="odv-card odv-vcard"><div class="stage"><iframe src="http://localhost:6006/iframe.html?id=components-sidebar--playground&viewMode=story&globals=scheme:dense-data&args=size:default" title="Sidebar default" loading="lazy" tabindex="-1"></iframe></div><div class="body"><code>default</code><div class="ref">The normal row height.</div><div class="here"><b>In Dense data:</b> Every section of the app.</div><span class="odv-ans" title="How often do people repeat actions?">Constantly · tasks.q2</span> </div></div><div class="odv-card odv-vcard"><div class="stage"><iframe src="http://localhost:6006/iframe.html?id=components-sidebar--playground&viewMode=story&globals=scheme:dense-data&args=size:sm" title="Sidebar sm" loading="lazy" tabindex="-1"></iframe></div><div class="body"><code>sm</code><div class="ref">A smaller row.</div><div class="here"><b>In Dense data:</b> Long secondary lists, at the denser size.</div><span class="odv-ans" title="How many densities exist?">Two · spacing.count</span> </div></div><div class="odv-card odv-vcard off"><div class="stage"><iframe src="http://localhost:6006/iframe.html?id=components-sidebar--playground&viewMode=story&globals=scheme:dense-data&args=size:lg" title="Sidebar lg" loading="lazy" tabindex="-1"></iframe></div><div class="body"><code>lg</code><div class="ref">A taller row with room for an icon and two lines.</div><div class="here"><b>Not used:</b> Rows stay small so the whole navigation fits the screen all shift.</div><span class="odv-ans" title="How much is on one screen?">A lot · content.q2</span> </div></div></div>
+
+### In detail
 
 | Axis | Variant | What it is for | In Dense data | Because |
 | --- | --- | --- | --- | --- |
@@ -44,12 +48,7 @@ What each variant is for in any design system, and what Dense data decided, with
 
 The answers that shaped Sidebar here. Change one, and the decisions above change with it.
 
-| Question | Answer |
-| --- | --- |
-| What is the main content? (`content.q1`) | **Numbers and records**. Most of the screen is numbers and records. |
-| How often do people repeat actions? (`tasks.q2`) | **Constantly**. The same actions repeat many times an hour. |
-| How many densities exist? (`spacing.count`) | **Two**. A second, denser size serves tables and toolbars. |
-| How much is on one screen? (`content.q2`) | **A lot**. Experts want many records on one screen. |
+<div class="odv-grid"><div class="odv-card"><div class="odv-eyebrow">What is the main content?</div><q>Numbers and records</q><p>Most of the screen is numbers and records.</p><span class="odv-ans">content.q1</span><div class="odv-moves">Change it and 4 Sidebar decisions reopen.</div></div><div class="odv-card"><div class="odv-eyebrow">How often do people repeat actions?</div><q>Constantly</q><p>The same actions repeat many times an hour.</p><span class="odv-ans">tasks.q2</span><div class="odv-moves">Change it and 1 Sidebar decision reopen.</div></div><div class="odv-card"><div class="odv-eyebrow">How many densities exist?</div><q>Two</q><p>A second, denser size serves tables and toolbars.</p><span class="odv-ans">spacing.count</span><div class="odv-moves">Change it and 1 Sidebar decision reopen.</div></div><div class="odv-card"><div class="odv-eyebrow">How much is on one screen?</div><q>A lot</q><p>Experts want many records on one screen.</p><span class="odv-ans">content.q2</span><div class="odv-moves">Change it and 1 Sidebar decision reopen.</div></div></div>
 
 ## What moves if an answer changes
 
