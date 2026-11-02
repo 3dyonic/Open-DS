@@ -516,6 +516,74 @@
         "why": "The payment failed, so the plan will stop."
       }
     ],
+    "table": {
+      "caption": "Your subscriptions",
+      "columns": [
+        {
+          "label": "Subscription"
+        },
+        {
+          "label": "Started"
+        },
+        {
+          "label": "Per month",
+          "numeric": true
+        },
+        {
+          "label": "Status"
+        }
+      ],
+      "rows": [
+        {
+          "cells": [
+            "Standard plan",
+            "14 Mar 2024",
+            "12.00"
+          ],
+          "status": "Active"
+        },
+        {
+          "cells": [
+            "Cloud storage",
+            "2 Jan 2025",
+            "3.00"
+          ],
+          "status": "Renews in 3 days"
+        },
+        {
+          "cells": [
+            "Device cover",
+            "20 May 2025",
+            "5.00"
+          ],
+          "status": "Card declined"
+        },
+        {
+          "cells": [
+            "Music add-on",
+            "1 Jun 2025",
+            "4.00"
+          ],
+          "status": "Trial"
+        },
+        {
+          "cells": [
+            "Family member",
+            "9 Feb 2025",
+            "6.00"
+          ],
+          "status": "Active"
+        },
+        {
+          "cells": [
+            "Extra data",
+            "18 Apr 2025",
+            "2.00"
+          ],
+          "status": "Active"
+        }
+      ]
+    },
     "metrics": [
       {
         "label": "Plan",
@@ -602,7 +670,8 @@
         "Download invoice"
       ],
       "destructive": "Cancel plan"
-    }
+    },
+    "icon_action": "Download invoice"
   },
   "themes": [
     {
