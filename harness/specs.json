@@ -424,6 +424,20 @@
         "docs-sections",
         "docs-build"
       ]
+    },
+    {
+      "id": "OD-198",
+      "title": "Skills use the component reference and follow the Orchestra skill standard",
+      "in": [
+        "front matter: name, a description with what and Use when in at most 25 words, and the tools the skill uses",
+        "every skill has Why, When, Input, Run and Done, with short plain sentences",
+        "every listed tool exists and a Run step uses it; every tool, command and skill a skill names exists",
+        "review checks variants against the scheme's decisions; change lists what an answer would reopen"
+      ],
+      "checks": [
+        "skills-shape",
+        "llm-skill"
+      ]
     }
   ]
 }
