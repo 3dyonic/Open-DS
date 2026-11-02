@@ -8,18 +8,15 @@ import { rollup, runCheck, runHarness, toMarkdown } from "../run.mjs";
 
 const root = join(import.meta.dirname, "..", "..");
 
-test("every check named in instructions and specs exists", () => {
+test("every check named in the specs exists", () => {
   const ctx = makeContext(root);
-  for (const file of ["harness/instructions.json", "harness/specs.json"]) {
-    for (const item of ctx.json(file).items) {
-      for (const name of item.checks) assert.ok(CHECKS[name], `${item.id} names unknown check ${name}`);
-    }
+  for (const item of ctx.json("harness/specs.json").items) {
+    for (const name of item.checks) assert.ok(CHECKS[name], `${item.id} names unknown check ${name}`);
   }
 });
 
-test("every instruction carries Yonatan's words and every spec its In list", () => {
+test("every spec has its In list", () => {
   const ctx = makeContext(root);
-  for (const i of ctx.json("harness/instructions.json").items) assert.ok(i.words, `${i.id} has no words`);
   for (const s of ctx.json("harness/specs.json").items) assert.ok(s.in?.length, `${s.id} has no In`);
 });
 
@@ -49,10 +46,21 @@ test("rollup reads pass, partial and not built", () => {
   assert.equal(rollup([{ status: "pass" }, { status: "not built" }]), "not built");
 });
 
-test("the report lists both sources", async () => {
+test("the report runs the specs, then every check no spec names", async () => {
   const report = await runHarness({ rootDir: root });
   const md = toMarkdown(report);
-  assert.match(md, /Yonatan's instructions/);
   assert.match(md, /Ticket specs/);
-  assert.equal(report.sections[0].rows.length, makeContext(root).json("harness/instructions.json").items.length);
+  assert.equal(report.sections[0].rows.length, makeContext(root).json("harness/specs.json").items.length);
+  const ran = new Set(report.sections.flatMap((s) => s.rows.flatMap((r) => r.results.map((x) => x.name))));
+  assert.deepEqual([...ran].sort(), Object.keys(CHECKS).sort(), "every check runs");
+});
+
+test("another harness can add its own checks and sources", async () => {
+  const checks = { ...CHECKS, "extra-check": { requires: [], run: () => ({ ok: true, detail: "fine" }) } };
+  const report = await runHarness({
+    rootDir: root,
+    checks,
+    sources: [["Extra", [{ id: "X1", title: "x", checks: ["extra-check"] }]]],
+  });
+  assert.equal(report.sections[0].rows[0].status, "pass");
 });

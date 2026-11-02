@@ -10,4 +10,3 @@ Read `CONTRIBUTING.md` and `AGENTS.md` at the repository root first.
 
 - Run `pnpm harness` to see every layer checked against the instructions and specs.
 - The architecture decision is in [ADR-001](adr/001-architecture.md).
-- Notes from the first preview (packs and recipes) are in `guide/archive/`, for history.

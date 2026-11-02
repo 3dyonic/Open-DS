@@ -2,7 +2,7 @@
   "name": "open-ds-harness",
   "version": "0.1.0",
   "private": true,
-  "description": "Definition-of-done harness. Checks every layer against Yonatan's instructions and the ticket specs.",
+  "description": "Definition-of-done harness. Checks every layer against the ticket specs.",
   "license": "MIT",
   "type": "module",
   "engines": {

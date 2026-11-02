@@ -1,0 +1,28 @@
+# Dependency updates (Jira OD-201). Security fixes come as soon as GitHub knows of them; version
+# updates come once a week, grouped so there are few PRs. Every PR goes into RC1, like any change.
+version: 2
+updates:
+  - package-ecosystem: npm
+    directory: "/"
+    target-branch: RC1
+    schedule:
+      interval: weekly
+      day: monday
+    open-pull-requests-limit: 5
+    groups:
+      minor-and-patch:
+        update-types: [minor, patch]
+    ignore:
+      # Majors are planned one at a time (OD-201, section 2).
+      - dependency-name: "*"
+        update-types: ["version-update:semver-major"]
+
+  - package-ecosystem: github-actions
+    directory: "/"
+    target-branch: RC1
+    schedule:
+      interval: weekly
+      day: monday
+    groups:
+      actions:
+        patterns: ["*"]

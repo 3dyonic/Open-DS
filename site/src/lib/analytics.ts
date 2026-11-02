@@ -1,10 +1,8 @@
-// Google Tag Manager, only with consent. The container ID lives in brand.json (analytics.gtm);
-// the Google Analytics tag is set up inside the container. While the ID is empty, the site shows
+// Google Tag Manager, only with consent. The container ID comes from NEXT_PUBLIC_GTM_ID at build
+// time and is never committed; the Google Analytics tag is set up inside the container. While the ID is empty, the site shows
 // no banner and loads nothing from Google. The container itself loads only after Accept, so no
 // tag in it can run before consent.
-import brand from "../../../brand.json";
-
-export const gtmId: string = (brand as { analytics?: { gtm?: string } }).analytics?.gtm ?? "";
+export const gtmId: string = process.env.NEXT_PUBLIC_GTM_ID ?? "";
 export const CONSENT_KEY = "open-ds-consent";
 export type Consent = "granted" | "denied";
 /** The footer link asks the banner to open again with this event. */

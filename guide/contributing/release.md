@@ -44,10 +44,16 @@ This bumps `cli/package.json` and updates the snapshot together; use `minor` or 
 | `test`       | Every PR; pushes to `RC1` and `master`         | Four jobs: `node` (lint, typecheck, `pnpm test`, the MCP host, the site build), `suites` (tokens, components, `pnpm harness`), `builds` (Storybook, docs), `package` (the packed CLI, `test:package`, `test:create`).                                                         |
 | `publish`    | A merge to master with an untagged version, a published release, or by hand with `dry_run` | Tests, then publishes `open-ds` to npmjs (with provenance) and `@3dyonic/open-ds` to GitHub Packages. On a merge it then creates the tag and release. It builds the Figma kits plugin and attaches `open-ds-kits-plugin.zip` to the release (and keeps it as a run artifact). A merge whose version is already tagged does nothing. |
 | `notify-ops` | `test` passing on a push to `master`           | Sends a `repository_dispatch` to `3dyonic/open-ds-ops`, which builds and deploys open-ds.dev from this commit.                                                                                                                                                                |
+| `security`   | Every PR; pushes to `RC1` and `master`; weekly | Dependency review (a PR adding a moderate or worse vulnerability fails), OSV-Scanner (on a PR, only new vulnerabilities fail), `pnpm audit` (high and critical fail), zizmor (unsafe workflows) and gitleaks (secrets). Results show in the Security tab.                       |
+| `scorecard`  | Pushes to `master`; weekly                     | OpenSSF Scorecard: how well the repository follows security practices. Results show in the Security tab and on scorecard.dev.                                                                                                                                                |
+
+Every workflow is read-only by default and widens permissions per job. Every action is pinned to a commit, with its release in a comment. Dependabot (`.github/dependabot.yml`) proposes updates each Monday, into `RC1`: security fixes at once, minor and patch versions grouped, majors never (they are planned one at a time).
 
 ## Hosting lives in open-ds-ops
 
 The open project holds the product; the private project holds private things. open-ds.dev (the website and the hosted MCP at `/mcp`) is deployed from the private `3dyonic/open-ds-ops` repository. It also holds the Fly config, the domain setup, and the private hosted parts: keys, key requests, admin and telemetry. Its image builds this repository's site and packed engine at a ref, so the product stays here.
+
+The analytics ID is one of those private things. The site reads the Google Tag Manager container ID from `NEXT_PUBLIC_GTM_ID` at build time, and only open-ds-ops sets it. A build without it, such as a fork or a local run, shows no cookie banner and loads nothing from Google.
 
 To self-host the MCP with no key, run `npx open-ds mcp`, or `mcp/server.mjs` from a checkout.
 

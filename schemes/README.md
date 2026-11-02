@@ -21,5 +21,3 @@ Each scheme holds:
 - `tokens`: DTCG tokens in three tiers. Primitives are the options. Semantics are the decisions (`base`, `light`, `dark`). Component keys point to semantics.
 
 The schemas are `schema/grammar.schema.json` and `schema/scheme.schema.json` (JSON Schema draft 2020-12). Every object carries a description written for agents.
-
-All answers are drafts until Yonatan curates them.

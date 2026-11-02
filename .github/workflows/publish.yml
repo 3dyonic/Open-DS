@@ -1,5 +1,5 @@
-# Releases the CLI on every merge to master (OD-199). A merge to master needs Yonatan's go-ahead, so
-# that go-ahead is the release decision. When master's cli/package.json has a version with no tag yet:
+# Releases the CLI on every merge to master (OD-199): the merge is the release decision.
+# When master's cli/package.json has a version with no tag yet:
 #   1. test what ships;
 #   2. npmjs:           open-ds, through npm Trusted Publishing (no stored token), with provenance;
 #   3. GitHub Packages: @3dyonic/open-ds, with GITHUB_TOKEN, so it shows on the repository's Packages page;
@@ -21,11 +21,9 @@ on:
         type: boolean
         default: true
 
+# Read-only by default. Only the job that publishes gets write access (OD-201).
 permissions:
-  # write: to create the tag and release, and attach the Figma kits plugin to it.
-  contents: write
-  id-token: write
-  packages: write
+  contents: read
 
 jobs:
   # Is there something to release? On a push, only when the version has no tag yet.
@@ -35,12 +33,16 @@ jobs:
       go: ${{ steps.plan.outputs.go }}
       version: ${{ steps.plan.outputs.version }}
     steps:
-      - uses: actions/checkout@v5
+      - uses: actions/checkout@fbc6f3992d24b796d5a048ff273f7fcc4a7b6c09 # v5.1.0
+        with:
+          persist-credentials: false
       - id: plan
+        env:
+          EVENT: ${{ github.event_name }}
         run: |
           version="$(node -p "require('./cli/package.json').version")"
           echo "version=$version" >> "$GITHUB_OUTPUT"
-          if [ "${{ github.event_name }}" = "push" ] && git ls-remote --exit-code --tags origin "refs/tags/v$version" >/dev/null; then
+          if [ "$EVENT" = "push" ] && git ls-remote --exit-code --tags origin "refs/tags/v$version" >/dev/null; then
             echo "::notice title=publish::v$version is already released; nothing to do."
             echo "go=false" >> "$GITHUB_OUTPUT"
           else
@@ -51,24 +53,37 @@ jobs:
     needs: plan
     if: needs.plan.outputs.go == 'true'
     runs-on: ubuntu-latest
+    permissions:
+      # write: to create the tag and release, and attach the Figma kits plugin to it.
+      contents: write
+      # npm Trusted Publishing (OIDC) and provenance.
+      id-token: write
+      # GitHub Packages.
+      packages: write
     env:
       DRY: ${{ github.event_name == 'workflow_dispatch' && inputs.dry_run && '--dry-run' || '' }}
+      # Event values go through the environment, never pasted into a script.
+      RELEASE_TAG: ${{ github.event.release.tag_name }}
+      VERSION: ${{ needs.plan.outputs.version }}
     steps:
-      - uses: actions/checkout@v5
-      - uses: pnpm/action-setup@v4
+      - uses: actions/checkout@fbc6f3992d24b796d5a048ff273f7fcc4a7b6c09 # v5.1.0
+        with:
+          persist-credentials: false
+      - uses: pnpm/action-setup@fc06bc1257f339d1d5d8b3a19a8cae5388b55320 # v4.4.0
         with:
           version: 10.33.4
-      - uses: actions/setup-node@v5
+      # No dependency cache in the release job: a poisoned cache would ship in the package.
+      - uses: actions/setup-node@a0853c24544627f65ddf259abe73b1d18a591444 # v5.0.0
         with:
           node-version: "22"
-          cache: pnpm
+          package-manager-cache: false
       - name: Install
         run: pnpm install --frozen-lockfile
       - name: The tag matches the version
         if: github.event_name == 'release'
         run: |
           version="v$(node -p "require('./cli/package.json').version")"
-          test "$version" = "${{ github.event.release.tag_name }}" || { echo "::error::Release tag ${{ github.event.release.tag_name }} is not $version (cli/package.json)."; exit 1; }
+          test "$version" = "$RELEASE_TAG" || { echo "::error::Release tag $RELEASE_TAG is not $version (cli/package.json)."; exit 1; }
       - name: Build and test what ships
         run: |
           pnpm --dir tokens build
@@ -139,7 +154,7 @@ jobs:
           node scripts/figma-kit.mjs all
           (cd figma && zip -qr ../open-ds-kits-plugin.zip plugin)
       - name: Keep the plugin with this run
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02 # v4.6.2
         with:
           name: open-ds-kits-plugin
           path: open-ds-kits-plugin.zip
@@ -151,14 +166,14 @@ jobs:
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
-          tag="v${{ needs.plan.outputs.version }}"
+          tag="v$VERSION"
           # Notes come from the merged PRs since the last release. If GitHub cannot compare with the
           # last tag (for example after a history rewrite), the release still goes out with plain notes.
-          gh release create "$tag" --target "$GITHUB_SHA" --title "open-ds ${{ needs.plan.outputs.version }}" --generate-notes \
-            || gh release create "$tag" --target "$GITHUB_SHA" --title "open-ds ${{ needs.plan.outputs.version }}" \
-                 --notes "open-ds ${{ needs.plan.outputs.version }}. See the merged pull requests for what changed."
+          gh release create "$tag" --target "$GITHUB_SHA" --title "open-ds $VERSION" --generate-notes \
+            || gh release create "$tag" --target "$GITHUB_SHA" --title "open-ds $VERSION" \
+                 --notes "open-ds $VERSION. See the merged pull requests for what changed."
       - name: Attach the plugin to the release
         if: github.event_name != 'workflow_dispatch'
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        run: gh release upload "${{ github.event.release.tag_name || format('v{0}', needs.plan.outputs.version) }}" open-ds-kits-plugin.zip --clobber
+        run: gh release upload "${RELEASE_TAG:-v$VERSION}" open-ds-kits-plugin.zip --clobber
