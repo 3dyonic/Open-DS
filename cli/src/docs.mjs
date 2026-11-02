@@ -6,6 +6,7 @@ import { cssName, semanticView, themeTokens } from "./tokens.mjs";
 import { existsSync, readFileSync, readdirSync } from "node:fs";
 import { join } from "node:path";
 import { questions } from "./schemes.mjs";
+import { componentGuide, followers } from "./component.mjs";
 
 // Which component keys each shipped component reads.
 const KEY_GROUP = {
@@ -102,6 +103,14 @@ const px = (v) =>
   /^-?[\d.]+rem$/.test(v) ? `${v} (${Math.round(parseFloat(v) * 16)}px)` : v;
 
 const cssVar = (path) => `var(--${cssName(path)})`;
+const cssValue = (v) =>
+  Array.isArray(v)
+    ? `cubic-bezier(${v.join(",")})`
+    : v && typeof v === "object"
+      ? [v.offsetX, v.offsetY, v.blur, v.spread, v.color]
+          .filter(Boolean)
+          .join(" ")
+      : String(v);
 const attr = (s) => String(s).replaceAll('"', "&quot;");
 
 /** One theme's tokens before resolving: primitives, the brand, the semantics for the mode, component keys. */
@@ -126,8 +135,84 @@ function chain(tree, path) {
 }
 
 /** A small live sample of a primitive or semantic value, drawn from its CSS variable. */
-function sample(path, type) {
-  const v = cssVar(path);
+// The visual blocks (OD-182) are HTML inside Markdown. Docusaurus ends an HTML block at a blank
+// line, so each block is written on one line; docs/src/css/visual.css dresses them.
+const h = (...parts) => parts.flat().join("");
+const STATUS_CLASS = {
+  success: "success",
+  warning: "warning",
+  danger: "danger",
+  info: "info",
+};
+const badgeHtml = (label, meaning) =>
+  `<span class="odv-badge odv-t-${STATUS_CLASS[meaning] ?? "neutral"}">${attr(label)}</span>`;
+/** WCAG contrast between two hex colours, for the ratios the colour page prints. */
+function contrast(a, b) {
+  const lum = (hex) => {
+    const c = String(hex).replace("#", "").slice(0, 6).match(/../g);
+    if (!c) return 0;
+    const [r, g, bl] = c.map((x) => {
+      const v = parseInt(x, 16) / 255;
+      return v <= 0.03928 ? v / 12.92 : ((v + 0.055) / 1.055) ** 2.4;
+    });
+    return 0.2126 * r + 0.7152 * g + 0.0722 * bl;
+  };
+  const [x, y] = [lum(a), lum(b)].sort((p, q) => q - p);
+  return (x + 0.05) / (y + 0.05);
+}
+const ink = (hex) => {
+  const c = String(hex).replace("#", "").slice(0, 6);
+  return /^[0-9a-f]{6}$/i.test(c) && contrast(`#${c}`, "#000000") > 9
+    ? "#000000"
+    : "#FFFFFF";
+};
+
+// DTCG lets a group carry $type for its tokens; fall back to the path when a token has none.
+const primitiveType = (path) =>
+  ({
+    color: "color",
+    shadow: "shadow",
+    duration: "duration",
+    opacity: "number",
+  })[path.split(".")[0]] ??
+  (path.startsWith("font.family")
+    ? "fontFamily"
+    : /^(space|size|radius|border-width|font\.size|font\.line-height)\./.test(
+          path,
+        )
+      ? "dimension"
+      : undefined);
+
+// The Primitives section (OD-195): one page per kind of value, in this order.
+const PRIMITIVE_PAGES = [
+  { id: "color", title: "Color", match: (p) => p.startsWith("color.") },
+  {
+    id: "space-and-size",
+    title: "Space and size",
+    match: (p) => /^(space|size)\./.test(p),
+  },
+  {
+    id: "shape",
+    title: "Shape",
+    match: (p) => /^(radius|border-width)\./.test(p),
+  },
+  { id: "type", title: "Type", match: (p) => p.startsWith("font.") },
+  {
+    id: "motion",
+    title: "Motion",
+    match: (p) => /^(duration|easing)\./.test(p),
+  },
+  {
+    id: "effects",
+    title: "Effects",
+    match: (p) => /^(opacity|shadow)\./.test(p),
+  },
+];
+
+function sample(path, type, raw) {
+  // Primitives are not CSS variables (only semantic tokens and component keys are), so a primitive's
+  // sample draws its own value.
+  const v = raw === undefined ? cssVar(path) : cssValue(raw);
   if (type === "color")
     return `<span class="ods-swatch" style="background:${v}"></span>`;
   if (type === "fontFamily")
@@ -289,7 +374,7 @@ export function docsPages(
       .sort()
       .map(
         (p) =>
-          `| \`${p}\` | ${esc(value(first, p, ""))} | ${sample(p, get(primitiveTree, p)?.$type)} |`,
+          `| \`${p}\` | ${esc(value(first, p, ""))} | ${sample(p, get(primitiveTree, p)?.$type ?? primitiveType(p), get(primitiveTree, p)?.$value)} |`,
       )
       .join("\n");
   const rule = (u) =>
@@ -297,19 +382,152 @@ export function docsPages(
   const RULES = "| Situation | Use | Not | Why |\n| --- | --- | --- | --- |\n";
   const pages = {};
 
-  // About this system
+  // About this system: a home that shows the system before it explains it (OD-182). A product screen
+  // built from its own components and sample content, the answers that shape it most, then tiles into
+  // every section. The full reasons follow underneath.
+  const smp = scheme.samples ?? {};
+  const meaning = Object.fromEntries(
+    (smp.statuses ?? []).map((x) => [x.label, x.meaning]),
+  );
+  const cited = {};
+  for (const c of scheme.inventory?.in ?? [])
+    for (const axis of Object.values(c.variants ?? {}))
+      for (const d of Object.values(axis))
+        for (const q of d.because ?? []) cited[q] = (cited[q] ?? 0) + 1;
+  for (const u of scheme.usage)
+    for (const q of u.because ?? []) cited[q] = (cited[q] ?? 0) + 1;
+  const top = Object.entries(cited)
+    .filter(([q]) => answer(q))
+    .sort((a, b) => b[1] - a[1] || a[0].localeCompare(b[0]))
+    .slice(0, 3)
+    .map(([q]) => q);
+  const primCount = leaves(primitiveTree, "").length;
+  const tableHtml = smp.table
+    ? h(
+        `<div class="odv-app"><div class="odv-app-bar"><b>${attr(smp.table.caption)}</b>`,
+        smp.actions
+          ? `<span class="odv-btn secondary">${attr(smp.actions.secondary)}</span><span class="odv-btn primary">${attr(smp.actions.primary)}</span>`
+          : "",
+        `</div><div class="odv-scroll"><table><thead><tr>`,
+        smp.table.columns.map(
+          (c) => `<th${c.numeric ? ' class="num"' : ""}>${attr(c.label)}</th>`,
+        ),
+        `</tr></thead><tbody>`,
+        smp.table.rows
+          .slice(0, 6)
+          .map(
+            (r) =>
+              `<tr>${r.cells.map((c, i) => `<td${smp.table.columns[i]?.numeric ? ' class="num"' : ""}>${attr(c)}</td>`).join("")}<td>${badgeHtml(r.status, meaning[r.status])}</td></tr>`,
+          ),
+        `</tbody></table></div></div>`,
+      )
+    : "";
+  const firstRamp = leaves(primitiveTree, "")
+    .filter((x) => x.path.startsWith(".color.") && /^#/.test(String(x.ref)))
+    .slice(0, 12);
+  const tiles = [
+    [
+      "primitives/index.md",
+      "Primitives",
+      `All ${primCount} raw values, and the tokens that point to each.`,
+      `<span class="odv-strip">${firstRamp.map((x) => `<span style="background:${x.ref}"></span>`).join("")}</span>`,
+    ],
+    [
+      "foundations/index.md",
+      "Foundations",
+      "Color, type, spacing, shape and motion, each with the answer behind it.",
+      h(
+        [
+          "color.action.primary",
+          "color.status.success",
+          "color.status.warning",
+          "color.status.danger",
+          "color.status.info",
+          "color.text.primary",
+        ].map(
+          (p) =>
+            `<span class="odv-dot" style="background:${cssVar(p)}"></span>`,
+        ),
+        `<span class="odv-aa">Aa</span>`,
+      ),
+    ],
+    [
+      "components/inventory.md",
+      "Components",
+      `${(scheme.inventory?.in ?? []).length} components, each with when to use it and how ${attr(scheme.name)} decided.`,
+      h(
+        smp.actions
+          ? `<span class="odv-btn primary">${attr(smp.actions.primary)}</span>`
+          : "",
+        (smp.statuses ?? [])[2]
+          ? badgeHtml(smp.statuses[2].label, smp.statuses[2].meaning)
+          : "",
+      ),
+    ],
+    [
+      "voice.md",
+      "Voice and tone",
+      attr(scheme.voice?.summary?.text ?? ""),
+      `<span style="font-weight:600">${attr(scheme.voice?.principles?.[0]?.text ?? "")}</span>`,
+    ],
+    [
+      "themes.md",
+      "Themes",
+      `${scheme.themes.length} themes. Only semantic tokens change; components never do.`,
+      scheme.themes
+        .map(
+          (th) =>
+            `<span class="odv-dot" style="width:34px;height:34px;background:${value(th, "color.surface.canvas", "")}" title="${attr(th.id)}"></span>`,
+        )
+        .join(""),
+    ],
+    [
+      "agents.md",
+      "For agents",
+      "AGENTS.md, the skill and the MCP: an AI builds the way the system would.",
+      `<code>open-ds why ${scheme.id} button</code>`,
+    ],
+  ];
   pages["index.md"] =
     fm({
       sidebar_position: 1,
       slug: "/",
       title: scheme.name,
       description: scheme.summary,
+      hide_title: true,
+      hide_table_of_contents: true,
     }) +
     NOTE +
-    `# ${scheme.name}\n\n${scheme.summary}\n\n` +
+    h(
+      `<div class="odv-hero"><div>`,
+      `<div class="odv-eyebrow">Design system · built from ${scheme.answers.length} answered questions</div>`,
+      `<h1>${attr(scheme.name)}</h1><p class="odv-lede">${attr(scheme.summary)}</p>`,
+      `<div class="odv-cta"><a class="odv-btn primary" href="foundations/">Explore the foundations</a><a class="odv-btn secondary" href="${storybook}">Open Storybook</a></div>`,
+      `<div class="odv-facts"><div><b>${(scheme.inventory?.in ?? []).length}</b><span>components</span></div><div><b>${primCount}</b><span>primitives</span></div><div><b>${scheme.themes.length}</b><span>themes</span></div></div>`,
+      `</div>${tableHtml}</div>`,
+    ) +
+    `\n\n## Why it looks like this\n\nEvery decision follows from an answer. These are the answers its components and rules cite most.\n\n` +
+    h(
+      `<div class="odv-grid">`,
+      top.map(
+        (q) =>
+          `<div class="odv-card"><div class="odv-eyebrow">${attr(qs[q].text)}</div><q>${attr(label(q))}</q><p>${attr(answer(q).why)}</p><span class="odv-ans">${q}</span></div>`,
+      ),
+      `</div>`,
+    ) +
+    `\n\n## Explore the system\n\n` +
+    h(
+      `<div class="odv-grid">`,
+      tiles.map(
+        ([href, name, text, art]) =>
+          `<a class="odv-card odv-tile" href="${href.replace(/\.md$/, "").replace(/index$/, "")}"><div class="art">${art}</div><div class="body"><b>${name}</b><span>${text}</span></div></a>`,
+      ),
+      `</div>`,
+    ) +
+    `\n\n## Who it is for\n\n` +
     `- **Use it for:** ${scheme.ai.use_when}\n- **Not for:** ${scheme.ai.avoid_when}\n- **Products like:** ${scheme.ai.example_products.join(", ")}\n- **Themes:** ${scheme.themes.map((t) => t.id).join(", ")}\n\n` +
     `## Use scenarios\n\n${scheme.scenarios.map((s) => `- ${s.text}`).join("\n")}\n\n` +
-    `## Why this design system is the way it is\n\nEvery decision in this system follows from these answers.\n\n` +
+    `## Every answer\n\nEvery decision in this system follows from these answers.\n\n` +
     g.reasons
       .map(
         (r) =>
@@ -372,6 +590,73 @@ export function docsPages(
       })
       .join("\n") +
     "\n";
+  // The colour page leads with the colours in use (OD-182): the key colours as a band, the surfaces
+  // as a stack in light and dark, and each status in use with its contrast, computed from the tokens.
+  const colorVisuals = () => {
+    const band = [
+      ["Action", "color.action.primary"],
+      ["Text", "color.text.primary"],
+      ["Success", "color.status.success"],
+      ["Warning", "color.status.warning"],
+      ["Danger", "color.status.danger"],
+      ["Info", "color.status.info"],
+    ];
+    const hex = (th, p) =>
+      String(value(th, p, "")).match(/#[0-9a-f]{6,8}/i)?.[0] ?? "";
+    const stack = (th) => {
+      const [cv, df, sk, tx, bd] = [
+        "color.surface.canvas",
+        "color.surface.default",
+        "color.surface.sunken",
+        "color.text.primary",
+        "color.border.default",
+      ].map((p) => hex(th, p));
+      return h(
+        `<div class="odv-stack" style="background:${cv};color:${tx};border-color:${bd}">`,
+        `<div style="inset:12px 12px auto 12px;border:0;background:none"><b>${attr(th.id)}</b></div>`,
+        `<div style="inset:44px 16px 16px 16px;background:${df};border-color:${bd}"><b>Default</b><code>surface.default</code></div>`,
+        `<div style="inset:104px 44px 36px 44px;background:${sk};border-color:${bd}"><b>Sunken</b><code>surface.sunken</code></div>`,
+        `</div>`,
+      );
+    };
+    const sts = (smp.statuses ?? []).filter(
+      (x, j, all) =>
+        STATUS_CLASS[x.meaning] &&
+        all.findIndex((y) => y.meaning === x.meaning) === j,
+    );
+    return (
+      h(
+        `<div class="odv-band">`,
+        band.map(([n, p]) => {
+          const c = hex(first, p);
+          return `<div style="background:${cssVar(p)};color:${ink(c)}"><b>${n}</b>${p.replace(/^color\./, "")}</div>`;
+        }),
+        `</div>`,
+      ) +
+      `\n\n## Surfaces\n\nThe canvas, then the surfaces content sits on, in ${scheme.themes.map((th) => th.id).join(" and ")}.\n\n` +
+      h(
+        `<div class="odv-grid two">`,
+        [first, dark].filter(Boolean).map(stack),
+        `</div>`,
+      ) +
+      (sts.length
+        ? `\n\n## Status colours in use\n\nEach status label always gets the same colour, with its dot, so colour is never the only cue. The ratio is the status colour on its subtle fill, computed from the tokens.\n\n` +
+          h(
+            `<div class="odv-card">`,
+            sts.map((x) => {
+              const k = `color.status.${x.meaning}`;
+              const r = (th) =>
+                th
+                  ? contrast(hex(th, k), hex(th, `${k}.subtle`)).toFixed(1)
+                  : "";
+              return `<div class="odv-status"><div>${badgeHtml(x.label, x.meaning)}</div><div class="odv-alert odv-t-${x.meaning}"><b>${attr(x.label)}.</b> ${attr(x.why)}</div><div><span class="odv-ratio">${first.id} ${r(first)}:1</span> <span class="odv-ratio">${dark?.id ?? ""} ${r(dark)}:1</span></div></div>`;
+            }),
+            `</div>`,
+          )
+        : "") +
+      "\n\n"
+    );
+  };
   g.scopes.forEach((sc, i) => {
     const tokens = owned(scheme, sc.owns ?? []);
     const usage = scheme.usage.filter((u) => sits[u.situation].scope === sc.id);
@@ -401,7 +686,7 @@ export function docsPages(
         description: `${scheme.name}: ${sc.description}`,
       }) +
       NOTE +
-      `# ${sc.title}\n\n${sc.description}\n\n${SPECIMEN}## The five answers\n\n| Question | Answer | Why |\n| --- | --- | --- |\n` +
+      `# ${sc.title}\n\n${sc.description}\n\n${SPECIMEN}${sc.id === "color" ? colorVisuals() : ""}## The five answers\n\n| Question | Answer | Why |\n| --- | --- | --- |\n` +
       sc.questions
         .map(
           (q) =>
@@ -428,6 +713,130 @@ export function docsPages(
       `\n\n## Where it lands\n\n${(sc.lands_in ?? []).map((c) => `- ${title(c)}`).join("\n")}\n\n` +
       `## When to use what\n\n${RULES}${usage.map(rule).join("\n")}\n` +
       (sc.id === "color" ? colourGuidance(g) : "");
+  });
+
+  // Primitives (OD-184): every raw value, and what points to it in which mode. Unused primitives stay
+  // listed, so a brand or a changed answer can pick them up without adding a value.
+  const usedBy = {};
+  const scan = (node, path, where) => {
+    if (!node || typeof node !== "object") return;
+    if (isToken(node)) {
+      for (const m of JSON.stringify(node.$value).matchAll(/\{([^}]+)\}/g))
+        (usedBy[m[1]] ??= []).push({ token: path.replace(/\.@$/, ""), where });
+      return;
+    }
+    for (const [k, v] of Object.entries(node))
+      if (!k.startsWith("$")) scan(v, path ? `${path}.${k}` : k, where);
+  };
+  for (const [b, brand] of Object.entries(scheme.tokens.brands ?? {}))
+    for (const [mode, tree] of Object.entries(brand.theme ?? {}))
+      scan(
+        tree,
+        "",
+        mode === "base"
+          ? `every mode${Object.keys(scheme.tokens.brands).length > 1 ? `, ${b}` : ""}`
+          : `${mode}${Object.keys(scheme.tokens.brands).length > 1 ? `, ${b}` : ""}`,
+      );
+  scan(scheme.tokens.semantic, "", "semantic");
+  scan(scheme.tokens.component, "", "component key");
+  const prims = leaves(primitiveTree, "").map((x) => ({
+    ...x,
+    path: x.path.replace(/^\./, ""),
+  }));
+  const family = (path) => {
+    const p = path.split(".");
+    return p[0] === "color"
+      ? p.slice(0, 3).join(".")
+      : p[0] === "font"
+        ? p.slice(0, 2).join(".")
+        : p[0];
+  };
+  const nUsed = prims.filter((x) => usedBy[x.path]).length;
+  const table = (list) =>
+    `| Primitive | Value | Sample | Used by |\n| --- | --- | --- | --- |\n` +
+    list
+      .map((x) => {
+        const u = usedBy[x.path] ?? [];
+        return `| \`${x.path}\` | ${esc(value(first, x.path, x.ref))} | ${sample(x.path, x.type ?? primitiveType(x.path), x.ref)} | ${u.length ? u.map((y) => `\`${y.token}\` (${y.where})`).join("<br />") : "Not used yet"} |`;
+      })
+      .join("\n");
+  const kinds = [
+    ...PRIMITIVE_PAGES,
+    {
+      id: "other",
+      title: "Other",
+      match: (p) => !PRIMITIVE_PAGES.some((k) => k.match(p)),
+    },
+  ]
+    .map((k) => ({ ...k, list: prims.filter((x) => k.match(x.path)) }))
+    .filter((k) => k.list.length);
+  pages["primitives/_category_.json"] =
+    JSON.stringify(
+      {
+        label: "Primitives",
+        position: 2.5,
+        link: { type: "doc", id: "primitives/index" },
+      },
+      null,
+      2,
+    ) + "\n";
+  pages["primitives/index.md"] =
+    fm({
+      title: "Primitives",
+      description: `Every raw value in ${scheme.name}, and what points to it.`,
+    }) +
+    NOTE +
+    `# Primitives\n\nThe raw values of ${esc(scheme.name)}. Primitives hold the values; semantic tokens give them a job (see [Foundations](../foundations/index.md)), and components read only the jobs.\n\n` +
+    `**${prims.length}** primitives. **${nUsed}** are used by a semantic token, a theme or a component key. **${prims.length - nUsed}** are not used yet: they stay, so a brand or a changed answer can use them without adding a value.\n\n` +
+    `| Kind | Primitives | Used |\n| --- | --- | --- |\n` +
+    kinds
+      .map(
+        (k) =>
+          `| [${k.title}](./${k.id}.md) | ${k.list.length} | ${k.list.filter((x) => usedBy[x.path]).length} |`,
+      )
+      .join("\n") +
+    "\n";
+  kinds.forEach((k, i) => {
+    const fams = [...new Set(k.list.map((x) => family(x.path)))];
+    pages[`primitives/${k.id}.md`] =
+      fm({
+        sidebar_position: i + 1,
+        title: k.title,
+        description: `${k.title} primitives in ${scheme.name}.`,
+      }) +
+      NOTE +
+      `# ${k.title}\n\n${k.list.length} primitives, ${k.list.filter((x) => usedBy[x.path]).length} used.\n\n` +
+      // Colours lead with each family as a ramp (OD-182): every step, its value, and how many tokens
+      // use it. Hover a step for the list; the table under it has the detail.
+      (k.id === "color"
+        ? `<div class="odv-legend"><span>● used by a token</span><span>◌ not used yet</span></div>\n\n` +
+          fams
+            .map((f) => {
+              const list = k.list.filter(
+                (x) => family(x.path) === f && /^#/.test(String(x.ref)),
+              );
+              if (!list.length) return "";
+              return h(
+                `<div class="odv-ramp-h"><code>${f}</code><span>${list.filter((x) => usedBy[x.path]).length} of ${list.length} used</span></div><div class="odv-ramp">`,
+                list.map((x) => {
+                  const u = usedBy[x.path] ?? [];
+                  return `<div class="odv-step${u.length ? "" : " unused"}" style="background:${x.ref};color:${ink(x.ref)}" title="${attr(u.map((y) => `${y.token} (${y.where})`).join(", ") || "Not used yet")}"><span>${x.path.split(".").pop()}</span><span><span class="use">${u.length || ""}</span><br>${x.ref}</span></div>`;
+                }),
+                `</div>`,
+              );
+            })
+            .join("\n\n") +
+          `\n\n## Every colour\n\n`
+        : "") +
+      (fams.length > 1
+        ? fams
+            .map(
+              (f) =>
+                `## \`${f}\`\n\n${table(k.list.filter((x) => family(x.path) === f))}`,
+            )
+            .join("\n\n")
+        : table(k.list)) +
+      "\n";
   });
 
   // Components
@@ -481,13 +890,205 @@ export function docsPages(
       )
       .join("\n") +
     "\n";
-  // A page per component that is in the inventory and built.
+  // A page per component that is in the inventory and built (OD-194). It reads the same engine as the
+  // CLI's component command and the MCP's get_component, so the docs, Storybook and agents agree, and
+  // adds what Storybook cannot: the answers behind each decision and what a change would move.
   const names = built.filter((n) => !scheme.inventory || n in inventory);
+  // Embeds open the story in this design system: the Open DS Storybook reads the scheme (and the first
+  // brand) from its toolbar global; a created project's Storybook has one scheme and ignores it.
+  const brandIds = Object.keys(scheme.tokens.brands ?? {});
+  const sbScheme = `scheme:${scheme.id}${brandIds.length > 1 ? `--${brandIds[0]}` : ""}`;
+  const pageOf = (id) =>
+    names.includes(id) ? `[${title(id)}](./${id}.md)` : title(id);
+  const qText = (id) => qs[id]?.text ?? id;
+  const contentWords = Object.entries(scheme.tokens.content?.action ?? {})
+    .filter(([k]) => !k.startsWith("$"))
+    .map(([k, v]) => `- \`content.action.${k}\`: ${esc(v.$value)}`);
   names.forEach((name, i) => {
     const group = KEY_GROUP[name];
     const keys = g.component_keys.filter((k) => k.component === group);
-    const word = new RegExp(`\\b${name.replace("-", "[ -]")}`, "i");
-    const usage = scheme.usage.filter((u) => word.test(`${u.use} ${u.not}`));
+    const guide = componentGuide(scheme.id, name, roots, g);
+    const r = guide?.reference ?? {};
+    const parts = [];
+    parts.push(
+      `# ${title(name)}\n\n${esc(r.overview ?? componentIntro(roots.ui, name))}\n\n` +
+        `**In ${esc(scheme.name)}.** ${esc(guide?.why ?? inventory[name] ?? "")}` +
+        (guide?.family ? ` Family: ${guide.family}.` : "") +
+        (r.source
+          ? ` Reference: ${esc(r.source.name)}${r.source.id ? ` (${r.source.id})` : ""}, ${r.source.license}.`
+          : ""),
+    );
+    // The live component, from Storybook (OD-183). Docusaurus serves this page as Markdown, so the
+    // embed is plain HTML; the link works where the embed cannot load.
+    parts.push(
+      `## See it live\n\n` +
+        h(
+          `<div class="odv-live"><span class="odv-wait">Start Storybook to see it live: <code>npm run storybook</code></span><iframe src="${storybook}/iframe.html?id=components-${name}--examples&viewMode=story&globals=${sbScheme}" title="${title(name)} examples in Storybook" loading="lazy"></iframe>`,
+          `<div class="bar"><span>Live from Storybook</span><a href="${storybook}/?path=/docs/components-${name}--docs">Open ${title(name)} in Storybook</a><a href="${storybook}/iframe.html?id=components-${name}--examples&viewMode=story&globals=${sbScheme};mode:dark">See it in dark</a></div></div>`,
+        ),
+    );
+    if (r.apply_when)
+      parts.push(
+        `## When to use it\n\n- **Use it when:** ${esc(r.apply_when)}\n- **Not when:** ${esc(r.not_when)}` +
+          (r.vs?.length
+            ? `\n\nInstead:\n\n${r.vs.map((v) => `- ${v.outside ? esc(title(v.id)) : pageOf(v.id)}: ${esc(v.why)}`).join("\n")}`
+            : ""),
+      );
+    const variants = guide?.variants ?? [];
+    // Each variant is its own full-width section (OD-196): a live sample, then what it is for, what
+    // this scheme decided, and the answers behind it, each as its own topic.
+    const answerChip = (b) =>
+      answer(b)
+        ? `<a class="odv-achip" href="#why-${b.replace(/\./g, "-")}"><span>${attr(qText(b))}</span><b>${attr(label(b))}</b> · <code>${b}</code></a>`
+        : `<code>${b}</code>`;
+    if (variants.length)
+      parts.push(
+        `## Variants\n\nWhat each variant is for in any design system, then what ${esc(scheme.name)} decided and why. Each sample is the live story with that variant set.\n\n` +
+          variants
+            .map((v) => {
+              const d = v.here;
+              const used = d && !d.not_used;
+              const pill = !d
+                ? `<span class="odv-pill">Not decided yet</span>`
+                : used
+                  ? `<span class="odv-pill used">Used in ${attr(scheme.name)}</span>`
+                  : `<span class="odv-pill">Not used in ${attr(scheme.name)}</span>`;
+              const stage =
+                v.axis === "state"
+                  ? ""
+                  : `<div class="odv-vstage"><span class="odv-wait">Start Storybook to see it live</span><iframe src="${storybook}/iframe.html?id=components-${name}--playground&viewMode=story&globals=${sbScheme}&args=${v.axis}:${v.id}" title="${title(name)} ${v.id}" loading="lazy" tabindex="-1"></iframe></div>`;
+              return h(
+                `<section class="odv-variant${used || !d ? "" : " off"}${stage ? "" : " nostage"}">`,
+                `<header><code>${v.id}</code><span class="odv-axisname">${v.axis}</span>${pill}</header>`,
+                `<div class="odv-vbody">${stage}<div class="odv-vinfo">`,
+                `<div class="odv-topic"><h4>What it is for</h4><p>${attr(v.reference.overview)}</p>`,
+                v.reference.apply_when || v.reference.not_when
+                  ? `<div class="odv-when">${v.reference.apply_when ? `<div><span class="y">✓</span>${attr(v.reference.apply_when)}</div>` : ""}${v.reference.not_when ? `<div><span class="n">✕</span>${attr(v.reference.not_when)}</div>` : ""}</div>`
+                  : "",
+                `</div>`,
+                `<div class="odv-topic"><h4>In ${attr(scheme.name)}</h4><p class="odv-decision">${attr(!d ? "Not decided yet." : used ? d.use : d.why)}</p></div>`,
+                (d?.because ?? []).length
+                  ? `<div class="odv-topic"><h4>Because</h4><div class="odv-chips">${d.because.map(answerChip).join("")}</div></div>`
+                  : "",
+                `</div></div></section>`,
+              );
+            })
+            .join("\n\n"),
+      );
+    const rules = guide?.rules ?? [];
+    if (rules.length)
+      parts.push(
+        `## How ${esc(scheme.name)} uses it\n\n` +
+          h(
+            `<div class="odv-grid two">`,
+            rules.map(
+              (u) =>
+                `<div class="odv-dd"><div class="stage"><div class="odv-eyebrow">${attr(u.title ?? u.situation)}</div><div style="margin-top:6px"><b style="color:var(--color-status-success)">Use</b> ${attr(u.use)}</div><div><b style="color:var(--color-status-danger)">Not</b> ${attr(u.not)}</div></div><div class="cap">${attr(u.why)}${u.example ? ` Example: “${attr(u.example)}”` : ""}</div></div>`,
+            ),
+            `</div>`,
+          ),
+      );
+    const cited = [
+      ...new Set(variants.flatMap((v) => v.here?.because ?? [])),
+    ].filter((q) => answer(q));
+    // Why it works this way (OD-196): one card per answer, three steps inside: the answer, what it
+    // decided for this component (and what else it shapes), and what would move if it changed.
+    if (cited.length)
+      parts.push(
+        `## Why it works this way\n\n${title(name)} looks the way it does because of ${cited.length} answer${cited.length === 1 ? "" : "s"} about this product. Each card is one answer, in three steps: the answer, what it decided for ${title(name)}, and what would move if it changed.\n\n` +
+          cited
+            .map((q) => {
+              const f = followers(scheme, q);
+              const moved = new Set([q, ...f]);
+              const here = variants.filter((v) =>
+                (v.here?.because ?? []).includes(q),
+              );
+              const reopen = variants.filter((v) =>
+                (v.here?.because ?? []).some((b) => moved.has(b)),
+              ).length;
+              const also = (scheme.inventory?.in ?? []).flatMap((c) =>
+                c.id === name
+                  ? []
+                  : Object.entries(c.variants ?? {}).flatMap(([ax, vs]) =>
+                      Object.entries(vs)
+                        .filter(([, d]) => (d.because ?? []).includes(q))
+                        .map(([vid]) => `${title(c.id)}: ${vid}`),
+                    ),
+              );
+              return h(
+                `<section class="odv-trail" id="why-${q.replace(/\./g, "-")}">`,
+                `<div class="odv-trail-head"><b>${attr(qText(q))}</b><code>${q}</code></div><div class="odv-steps">`,
+                `<div class="odv-step-col"><h5><i>1</i>The answer</h5><div class="odv-answer">${attr(label(q))}</div><p>${attr(answer(q).why)}</p></div>`,
+                `<div class="odv-step-col"><h5><i>2</i>So ${title(name)}</h5><ul>`,
+                here.map(
+                  (v) =>
+                    `<li><span class="${v.here.not_used ? "n" : "y"}">${v.here.not_used ? "–" : "✓"}</span><span>${v.here.not_used ? `does not use <b>${v.id}</b>` : `uses <b>${v.id}</b>`}: ${attr(v.here.not_used ? v.here.why : v.here.use)}</span></li>`,
+                ),
+                `</ul>`,
+                also.length
+                  ? `<div class="odv-also"><small>It also shapes</small> ${also.map((x) => `<code>${attr(x)}</code>`).join(" ")}</div>`
+                  : "",
+                `</div>`,
+                `<div class="odv-step-col change"><h5><i>3</i>If it changed</h5><div class="odv-big">${reopen}</div><small>${title(name)} decision${reopen === 1 ? "" : "s"} would reopen</small>`,
+                `<p>${
+                  f.length
+                    ? `and ${f.length} answer${f.length === 1 ? "" : "s"} that follow from it: ${f
+                        .slice(0, 3)
+                        .map((x) => `<b>${attr(label(x))}</b>`)
+                        .join(
+                          ", ",
+                        )}${f.length > 3 ? `, and ${f.length - 3} more` : ""}.`
+                    : "No other answer follows from it."
+                }</p></div>`,
+                `</div></section>`,
+              );
+            })
+            .join("\n\n"),
+      );
+    const voiceLines = (scheme.voice?.principles ?? []).map(
+      (x) => `- ${esc(x.text)}`,
+    );
+    if (voiceLines.length || contentWords.length)
+      parts.push(
+        `## Words\n\n` +
+          (voiceLines.length ? `${voiceLines.join("\n")}\n` : "") +
+          (scheme.voice?.words
+            ? `- Use: ${scheme.voice.words.use.map(esc).join(", ")}. Avoid: ${scheme.voice.words.avoid.map(esc).join(", ")}.\n`
+            : "") +
+          (contentWords.length
+            ? `\nThe labels components use, from the voice tokens:\n\n${contentWords.join("\n")}`
+            : "") +
+          `\n\nSee [Voice and tone](../voice.md) for the whole voice.`,
+      );
+    const a11y = r.accessibility ?? [];
+    const kb = r.keyboard ?? [];
+    if (a11y.length || kb.length)
+      parts.push(
+        `## Accessibility and keyboard\n\n` +
+          (kb.length
+            ? `| Keyboard | What happens | Not |\n| --- | --- | --- |\n${kb.map((k) => `| ${esc(k.apply_when)} | ${esc(k.overview)} | ${esc(k.not_when)} |`).join("\n")}\n\n`
+            : "") +
+          (a11y.length
+            ? `Test before you ship:\n\n${a11y.map((x) => `- [ ] ${esc(x.overview)} ${esc(x.apply_when)}`).join("\n")}`
+            : ""),
+      );
+    parts.push(
+      `## Use it in code\n\n\`\`\`bash\nnpx open-ds add ${name}\n\`\`\`\n\n` +
+        `The component reads only component keys and semantic tokens, so it follows the brand and mode on \`<html>\`.`,
+    );
+    parts.push(
+      keys.length
+        ? `## Component keys\n\nThe CSS variable is the key with \`/\` replaced by \`-\` and the base \`@\` dropped. Each key points to a token; values live only on primitives.\n\n| Key | What it controls | Points to, ${first.id} | Points to, ${dark.id} |\n| --- | --- | --- | --- |\n` +
+            keys
+              .map((k) => {
+                const p = k.id.replaceAll("/", ".");
+                const l = link(first, p);
+                const d = link(dark, p);
+                return `| \`${k.id}\` | ${esc(k.description)} | ${l} | ${d === l ? "same" : d} |`;
+              })
+              .join("\n")
+        : `## Tokens it reads\n\nFrom shadcn/ui. It reads shadcn's variables, which theme.css maps onto this system's semantic tokens, and the radius, shadow and text scale in shadcn.css.`,
+    );
     pages[`components/${name}.md`] =
       fm({
         sidebar_position: i + 1,
@@ -495,22 +1096,7 @@ export function docsPages(
         description: `${title(name)} in ${scheme.name}.`,
       }) +
       NOTE +
-      `# ${title(name)}\n\n${esc(componentIntro(roots.ui, name)).replaceAll("*", "\\*").replaceAll("_", "\\_")}\n\n` +
-      `See it in [Storybook](${storybook}) under Components / ${title(name)}, in every theme.\n\n` +
-      (keys.length
-        ? `## Component keys\n\nThe CSS variable is the key with \`/\` replaced by \`-\` and the base \`@\` dropped. Each key points to a token; values live only on primitives.\n\n| Key | What it controls | Points to, ${first.id} | Points to, ${dark.id} |\n| --- | --- | --- | --- |\n`
-        : `## Tokens it reads\n\nFrom shadcn/ui. It reads shadcn's variables, which theme.css maps onto this system's semantic tokens, and the radius, shadow and text scale in shadcn.css.\n`) +
-      keys
-        .map((k) => {
-          const p = k.id.replaceAll("/", ".");
-          const l = link(first, p);
-          const d = link(dark, p);
-          return `| \`${k.id}\` | ${esc(k.description)} | ${l} | ${d === l ? "same" : d} |`;
-        })
-        .join("\n") +
-      (usage.length
-        ? `\n\n## When to use it\n\n${RULES}${usage.map(rule).join("\n")}`
-        : "") +
+      parts.join("\n\n") +
       "\n";
   });
 

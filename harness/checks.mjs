@@ -419,8 +419,9 @@ export const CHECKS = {
   "schemes-samples": {
     requires: ["schemes/grammar.json"],
     run: (c) => {
-      // Each scheme shows itself with its own content: every inventory component has its sample part,
-      // statuses carry a meaning, rows use those statuses, and no two schemes share a screen or rows.
+      // Each scheme shows itself with its own content: every sample part a story reads is there, so every
+      // component renders in every scheme, carried or not (OD-192). Statuses carry a meaning, rows use
+      // those statuses, and no two schemes share a screen or rows.
       const NEEDS = {
         badge: "statuses",
         card: "card",
@@ -445,8 +446,10 @@ export const CHECKS = {
         }
         const inv = s.inventory.in.map((i) => i.id);
         for (const [comp, part] of Object.entries(NEEDS))
-          if (inv.includes(comp) && !smp[part])
-            gaps.push(`${id}: ${comp} is in the inventory but samples has no ${part}`);
+          if (!smp[part])
+            gaps.push(
+              `${id}: samples has no ${part}, so ${comp} cannot show ${inv.includes(comp) ? "its inventory" : "in this scheme"}`,
+            );
         const labels = new Set((smp.statuses ?? []).map((x) => x.label));
         for (const r of smp.table?.rows ?? []) {
           if (!labels.has(r.status)) gaps.push(`${id}: row status "${r.status}" is not in statuses`);
@@ -461,7 +464,99 @@ export const CHECKS = {
       }
       return gaps.length
         ? bad(gaps.slice(0, 6).join("; "))
-        : ok("every scheme shows its inventory with its own content, and every status has a meaning");
+        : ok("every scheme has its own content for every component, and every status has a meaning");
+    },
+  },
+
+  "components-reference": {
+    requires: ["schemes/grammar.json"],
+    run: (c) => {
+      // OD-185. The reference says what each component and variant is for, the same in every design
+      // system; each scheme decides every variant of what it carries. Applies to every catalogue item
+      // with a reference, so it widens as components are filled in.
+      const g = c.json("schemes", "grammar.json");
+      const items = g.catalogue?.items ?? [];
+      const ids = new Set(items.map((i) => i.id));
+      const sits = new Set(g.situations.map((s) => s.id));
+      const gaps = [];
+      // The variant axes and options a built component declares in its cva(...) call.
+      const builtAxes = (id) => {
+        if (!c.has("ui", "src", "components", `${id}.tsx`)) return null;
+        const src = c.read("ui", "src", "components", `${id}.tsx`);
+        const start = src.indexOf("variants: {");
+        if (start < 0) return {};
+        const axes = {};
+        let depth = 0;
+        let axis = null;
+        for (const line of src.slice(start + "variants: {".length).split("\n")) {
+          if (depth === 0) {
+            const m = line.match(/^\s*([a-zA-Z-]+): \{/);
+            if (m) axis = axes[m[1]] = [];
+          } else if (depth === 1 && axis) {
+            const m = line.match(/^\s*"?([a-zA-Z-]+)"?:/);
+            if (m) axis.push(m[1]);
+          }
+          for (const ch of line) depth += ch === "{" ? 1 : ch === "}" ? -1 : 0;
+          if (depth < 0) break;
+        }
+        return axes;
+      };
+      const ref = items.filter((i) => i.overview);
+      for (const i of ref) {
+        for (const f of ["apply_when", "not_when", "source"]) if (!i[f]) gaps.push(`${i.id}: reference has no ${f}`);
+        for (const v of i.vs ?? [])
+          if (!v.outside && !ids.has(v.id)) gaps.push(`${i.id}: vs ${v.id} is not in the catalogue`);
+        for (const s of i.situations ?? [])
+          if (!sits.has(s)) gaps.push(`${i.id}: situation ${s} is not in the grammar`);
+        const built = builtAxes(i.id);
+        if (built)
+          for (const [axis, opts] of Object.entries(built)) {
+            const refOpts = (i.variants?.[axis] ?? []).map((v) => v.id);
+            if (opts.join() !== refOpts.join())
+              gaps.push(
+                `${i.id}: the built ${axis} axis is ${opts.join(", ")} but the reference says ${refOpts.join(", ") || "nothing"}`,
+              );
+          }
+      }
+      const byId = Object.fromEntries(ref.map((i) => [i.id, i]));
+      for (const sid of SCHEMES) {
+        const s = c.json("schemes", `${sid}.json`);
+        const answered = new Set(s.answers.map((a) => a.question));
+        const carried = Object.fromEntries(s.inventory.in.map((x) => [x.id, x]));
+        const decided = (comp, axis, v) => carried[comp]?.variants?.[axis]?.[v];
+        for (const [id, item] of Object.entries(carried)) {
+          const r = byId[id];
+          if (!r) continue;
+          for (const [axis, list] of Object.entries(r.variants ?? {})) {
+            for (const v of list)
+              if (!decided(id, axis, v.id)) gaps.push(`${sid}: ${id} ${axis} ${v.id} is not decided`);
+            for (const extra of Object.keys(item.variants?.[axis] ?? {}))
+              if (!list.some((v) => v.id === extra))
+                gaps.push(`${sid}: ${id} ${axis} ${extra} is not in the reference`);
+          }
+          for (const [axis, vs] of Object.entries(item.variants ?? {}))
+            for (const [v, d] of Object.entries(vs))
+              for (const q of d.because ?? [])
+                if (!answered.has(q)) gaps.push(`${sid}: ${id} ${axis} ${v} cites ${q}, which it does not answer`);
+        }
+        for (const u of s.usage)
+          for (const x of u.uses ?? []) {
+            if (!carried[x.component])
+              gaps.push(`${sid}: ${u.situation} uses ${x.component}, which is not in the inventory`);
+            else if (x.variant) {
+              const d = decided(x.component, x.axis, x.variant);
+              if (byId[x.component] && !d)
+                gaps.push(`${sid}: ${u.situation} uses ${x.component} ${x.axis} ${x.variant}, which is not decided`);
+              if (d?.not_used)
+                gaps.push(`${sid}: ${u.situation} uses ${x.component} ${x.axis} ${x.variant}, which it does not use`);
+            }
+          }
+      }
+      return gaps.length
+        ? bad(gaps.slice(0, 8).join("; ") + (gaps.length > 8 ? ` (+${gaps.length - 8} more)` : ""))
+        : ok(
+            `${ref.length} components have a reference; every scheme decides every variant of them, and every uses entry checks out`,
+          );
     },
   },
 
@@ -1039,6 +1134,37 @@ export const CHECKS = {
       return r.code === 0 ? ok("storybook builds") : bad(tail(r.out));
     },
   },
+  "storybook-renders": {
+    requires: ["storybook/package.json", "harness/storybook-renders.cjs"],
+    slow: true,
+    run: (c) => {
+      // A build can pass while stories fail to show, so open every story and docs page (OD-178).
+      const b = c.sh("pnpm", ["--dir", "storybook", "build"]);
+      if (b.code !== 0) return bad(tail(b.out));
+      // Every entry as it opens, then every story in each other toolbar scheme (OD-192).
+      const others = [...c.read("storybook/src/scheme-context.tsx").matchAll(/value: "([^"]+)"/g)]
+        .map((m) => m[1])
+        .filter((v) => v !== "dense-data");
+      const r = c.sh("node", [
+        "harness/storybook-renders.cjs",
+        c.p("storybook/storybook-static"),
+        "--schemes",
+        others.join(","),
+      ]);
+      let res;
+      try {
+        res = JSON.parse(r.out.trim().split("\n").pop());
+      } catch {
+        return bad(tail(r.out));
+      }
+      if (res.missing)
+        return pending("Playwright is not installed: npm i -g playwright && npx playwright install chromium");
+      if (res.error) return bad(res.error);
+      return res.failed.length
+        ? bad(res.failed.slice(0, 5).map((f) => `${f.id}: ${f.problem}`).join("; "))
+        : ok(`${res.entries} renders: every story and docs page, and every story in every scheme`);
+    },
+  },
 
   // Site
   "site-stack": {
@@ -1139,11 +1265,46 @@ export const CHECKS = {
           "themes.md",
           "agents.md",
           ...g.scopes.map((sc) => `foundations/${sc.id}.md`),
+          "primitives/index.md",
         ];
         const missing = need.filter((p) => !pages[p]);
         if (missing.length) gaps.push(`${id}: ${missing.join(", ")}`);
         if (!Object.keys(pages).some((p) => p.startsWith("components/"))) gaps.push(`${id}: no component pages`);
+        // OD-194: every component page embeds Storybook and says how to use it in code; where the
+        // reference has variants, it shows this scheme's decisions and what a change would move.
+        for (const [p, text] of Object.entries(pages)) {
+          const m = p.match(/^components\/(.+)\.md$/);
+          if (!m || m[1] === "inventory") continue;
+          const item = g.catalogue.items.find((i) => i.id === m[1]);
+          const want = ["## See it live", "## Use it in code"];
+          if (item?.apply_when) want.push("## When to use it");
+          if (item?.variants) want.push("## Variants", "## Why it works this way");
+          const lacking = want.filter((h) => !text.includes(h));
+          if (lacking.length) gaps.push(`${id} ${p}: no ${lacking.join(", ")}`);
+        }
+        // OD-182: the docs lead with visuals. The home shows a product screen and the answers, the
+        // colour page shows its colours in use, component pages show each variant live.
+        const visual = [
+          ["index.md", "odv-hero"],
+          ["index.md", "odv-tile"],
+          ["foundations/color.md", "odv-band"],
+          ["foundations/color.md", "odv-stack"],
+          ["primitives/color.md", "odv-ramp"],
+          ["components/button.md", "odv-variant"],
+          ["components/button.md", "odv-trail"],
+        ];
+        for (const [pg, cls] of visual)
+          if (pages[pg] && !pages[pg].includes(cls)) gaps.push(`${id} ${pg}: no ${cls} block`);
+        // OD-184, OD-195: the Primitives section counts every primitive.
+        const prim = pages["primitives/index.md"] ?? "";
+        const count = (function n(x) {
+          return x && typeof x === "object" ? ("$value" in x ? 1 : Object.entries(x).filter(([k]) => !k.startsWith("$")).reduce((a, [, v]) => a + n(v), 0)) : 0;
+        })(loadScheme(id, roots).tokens.primitive);
+        if (!prim.includes(`**${count}** primitives`)) gaps.push(`${id}: the primitives page does not list all ${count} primitives`);
       }
+      // The visual blocks look the same in these docs and in a created project's docs.
+      if (c.read("docs/src/css/visual.css") !== c.read("cli/templates/project/docs/src/css/visual.css"))
+        gaps.push("docs/src/css/visual.css and the project template's copy differ");
       const gen = c.sh("node", ["docs/scripts/generate.mjs", "--check"]);
       if (gen.code !== 0) gaps.push(tail(gen.out));
       for (const d of ["product", "business", "brand", "contributing"])
@@ -1151,7 +1312,7 @@ export const CHECKS = {
       return gaps.length
         ? bad(gaps.join("; "))
         : ok(
-            "every scheme has about, voice, a page per scope, components, themes and agents; the Open DS guide is in guide/",
+            "every scheme has about, voice, a page per scope, primitives, component pages with the Storybook embed and decisions, themes and agents; the Open DS guide is in guide/",
           );
     },
   },

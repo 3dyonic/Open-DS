@@ -294,7 +294,7 @@
       "in": [
         "samples in every scheme: screen, actions, statuses with meaning and why, table, figures, field, messages, confirm, card, tabs, menu",
         "danger only where something failed or will be lost",
-        "Storybook stories and the site preview read the active scheme's samples, and say when a component is not in the inventory",
+        "Storybook stories and the site preview read the active scheme's samples; every component renders in every scheme, and its docs page says when the scheme leaves it out (OD-192)",
         "no shared fixtures between schemes"
       ],
       "checks": [
@@ -334,6 +334,95 @@
         "storybook-stories-uniform",
         "cli-create-works",
         "cli-package-works"
+      ]
+    },
+    {
+      "id": "OD-185",
+      "title": "Component reference layer: general guidance per component and variant, and each scheme's decisions, in the package and MCP",
+      "in": [
+        "grammar catalogue items carry a reference: overview, apply_when, not_when, vs, variants by axis, situations, accessibility, keyboard, source (Open UX where it matches)",
+        "each scheme decides every variant of every component it carries: use, or not_used with why, with because",
+        "usage rules name the components and variants they use as data (uses)",
+        "variant axes match the built components; the CLI context and component commands and the MCP return both layers"
+      ],
+      "checks": [
+        "components-reference",
+        "json-files-validate"
+      ]
+    },
+    {
+      "id": "OD-178",
+      "title": "Storybook guide: an introduction, foundations pages and one component docs template with when to use it and variants, in both Storybooks",
+      "in": [
+        "an Introduction page and Foundations pages (color, typography, spacing, shape, motion) read the active scheme's tokens and answers",
+        "every component docs page shows when to use it, each variant with this scheme's decision, how the scheme uses it, words and accessibility",
+        "the repo Storybook and a created project's Storybook share the same guide",
+        "every story and docs page renders in a browser, not only builds"
+      ],
+      "checks": [
+        "storybook-stories-uniform",
+        "storybook-renders",
+        "cli-create-works"
+      ]
+    },
+    {
+      "id": "OD-192",
+      "title": "Every component renders in every scheme, and its docs page says when the scheme leaves it out",
+      "in": [
+        "a component a scheme does not carry still renders in the repo Storybook, styled by that scheme's tokens",
+        "every scheme has its own sample content for every part a story reads; no content is shared between schemes",
+        "the docs page says clearly when the scheme leaves the component out, and why",
+        "the story canvas is white in light mode and the scheme's own canvas in dark mode",
+        "created projects still carry only the components their scheme carries"
+      ],
+      "checks": [
+        "schemes-samples",
+        "storybook-renders",
+        "json-files-validate"
+      ]
+    },
+    {
+      "id": "OD-194",
+      "title": "Docs: component pages from the component reference, with the Storybook embed, and a Primitives page in the docs and Storybook",
+      "in": [
+        "each component page reads the same engine as the CLI and MCP (componentGuide)",
+        "each component page embeds its Storybook examples and links to Storybook",
+        "each component page shows when to use it, variants with this scheme's decisions and the answers behind them, how the scheme uses it, why, what moves, words, accessibility and keyboard, code and component keys",
+        "a Primitives section of its own, next to Foundations, in the docs and in Storybook: every primitive by kind, with a sample of its value and what points to it (OD-195)"
+      ],
+      "checks": [
+        "docs-sections",
+        "docs-build",
+        "storybook-renders"
+      ]
+    },
+    {
+      "id": "OD-182",
+      "title": "Docs: branded and visual, wearing the design system",
+      "in": [
+        "the top bar carries the design system's name, version and sections, with Built with Open DS on the right",
+        "the home shows a product screen from the system's own components and samples, the answers it cites most, and tiles into every section",
+        "the colour page shows the key colours, the surfaces in light and dark, and each status in use with its contrast",
+        "component pages show the live story, each variant live with its decision and answers, the rules as do and don't, and the answers as cards",
+        "primitive colours show as ramps; the same visual styles ship in a created project's docs"
+      ],
+      "checks": [
+        "docs-sections",
+        "docs-build",
+        "cli-create-works"
+      ]
+    },
+    {
+      "id": "OD-196",
+      "title": "Docs component pages: each variant a full-width section, and each answer a contained card in three steps",
+      "in": [
+        "each variant has its own section: a live sample, what it is for (with use when and not when), this scheme's decision, and the answers behind it",
+        "each answer is one card: the answer, what it decided for the component and what else it shapes, and what would move if it changed",
+        "the steps stack inside the same card on a phone"
+      ],
+      "checks": [
+        "docs-sections",
+        "docs-build"
       ]
     }
   ]

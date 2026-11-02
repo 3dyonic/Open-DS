@@ -8,9 +8,65 @@ description: "Dialog in Dense data."
 
 # Dialog
 
-Dialog. Interrupts to ask for a decision, such as confirming a delete. The scrim dims the page where the scheme answers the menu-or-dialog situation with a dimmed page. Reads only component keys: --overlay-\*.
+A window over the page that takes attention until people finish or close it.
 
-See it in [Storybook](http://localhost:6006) under Components / Dialog, in every theme.
+**In Dense data.** Edit one record without leaving the table. Family: overlay. Reference: Open UX (modal), MIT.
+
+## See it live
+
+<div class="odv-live"><span class="odv-wait">Start Storybook to see it live: <code>npm run storybook</code></span><iframe src="http://localhost:6006/iframe.html?id=components-dialog--examples&viewMode=story&globals=scheme:dense-data" title="Dialog examples in Storybook" loading="lazy"></iframe><div class="bar"><span>Live from Storybook</span><a href="http://localhost:6006/?path=/docs/components-dialog--docs">Open Dialog in Storybook</a><a href="http://localhost:6006/iframe.html?id=components-dialog--examples&viewMode=story&globals=scheme:dense-data;mode:dark">See it in dark</a></div></div>
+
+## When to use it
+
+- **Use it when:** People must decide or finish something before going back: a short form, an important choice.
+- **Not when:** A short status (toast), extra detail on the page (accordion), or a side panel that should not block the page (sheet).
+
+Instead:
+
+- [Sheet](./sheet.md): A side panel; the page stays in view.
+- [Toast](./toast.md): Does not interrupt.
+- [Alert dialog](./alert-dialog.md): Confirms something that cannot be undone.
+
+## How Dense data uses it
+
+<div class="odv-grid two"><div class="odv-dd"><div class="stage"><div class="odv-eyebrow">A menu or dialog</div><div style="margin-top:6px"><b style="color:var(--color-status-success)">Use</b> elevation.overlay and a dimmed page for dialogs</div><div><b style="color:var(--color-status-danger)">Not</b> A border only</div></div><div class="cap">Floating things need a shadow so they read as on top.</div></div><div class="odv-dd"><div class="stage"><div class="odv-eyebrow">Delete or remove</div><div style="margin-top:6px"><b style="color:var(--color-status-success)">Use</b> Button secondary, then confirm in a dialog</div><div><b style="color:var(--color-status-danger)">Not</b> Button primary as the first step</div></div><div class="cap">Deleting is rare and costly; a confirm step catches mistakes.</div></div></div>
+
+## Words
+
+- Lead with the object, then the state: "Alert 2041 contained."
+- Use numbers, not words for numbers.
+- One verb per button. No "please", no exclamation marks.
+- Use: Investigate, Filter, Assign, Escalated, Resolved. Avoid: Oops, Awesome, Please, Simply.
+
+The labels components use, from the voice tokens:
+
+- `content.action.commit`: Save
+- `content.action.cancel`: Cancel
+- `content.action.destroy`: Delete
+- `content.action.retry`: Retry
+- `content.action.empty-action`: Change filters
+
+See [Voice and tone](../voice.md) for the whole voice.
+
+## Accessibility and keyboard
+
+| Keyboard | What happens | Not |
+| --- | --- | --- |
+| undefined | Escape closes it. | undefined |
+| undefined | Tab stays inside while it is open. | undefined |
+
+Test before you ship:
+
+- [ ] It is a dialog with a title; the page behind is hidden from screen readers. undefined
+- [ ] Focus moves in when it opens and back to the trigger when it closes. undefined
+
+## Use it in code
+
+```bash
+npx open-ds add dialog
+```
+
+The component reads only component keys and semantic tokens, so it follows the brand and mode on `<html>`.
 
 ## Component keys
 
@@ -25,10 +81,3 @@ The CSS variable is the key with `/` replaced by `-` and the base `@` dropped. E
 | `overlay/item-height` | Height of a menu item. | `size.control.default` → `size.32` | same |
 | `tooltip/background` | Tooltip fill. | `color.surface.inverse` → `dense-data.theme.light.color.surface.inverse` → `color.slate.light.900` | `color.surface.inverse` → `dense-data.theme.dark.color.surface.inverse` → `color.slate.dark.900` |
 | `tooltip/label` | Tooltip text. | `color.text.inverse` → `dense-data.theme.light.color.text.inverse` → `color.slate.light.0` | `color.text.inverse` → `dense-data.theme.dark.color.text.inverse` → `color.slate.dark.50` |
-
-## When to use it
-
-| Situation | Use | Not | Why |
-| --- | --- | --- | --- |
-| A menu or dialog | elevation.overlay and a dimmed page for dialogs | A border only | Floating things need a shadow so they read as on top. |
-| Delete or remove | Button secondary, then confirm in a dialog | Button primary as the first step | Deleting is rare and costly; a confirm step catches mistakes. |

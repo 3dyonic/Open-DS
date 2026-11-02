@@ -40,17 +40,45 @@ const config: Config = {
   ],
   themeConfig: {
     colorMode: { respectPrefersColorScheme: true },
+    // The top bar wears the design system (OD-182): its name, then its sections, with Open DS as
+    // the maker on the right.
     navbar: {
-      title: `Open DS · ${scheme.name}`,
-      logo: { src: "logo.svg", srcDark: "logo-dark.svg", alt: "Open DS" },
+      title: scheme.name,
+      logo: { src: "logo.svg", srcDark: "logo-dark.svg", alt: scheme.name },
       items: [
         {
           type: "html",
           position: "left",
-          value: '<span class="ods-docs-tag">Docs</span>',
+          value: `<span class="ods-docs-tag">v${scheme.version}</span>`,
         },
+        {
+          type: "doc",
+          docId: "primitives/index",
+          label: "Primitives",
+          position: "left",
+        },
+        {
+          type: "doc",
+          docId: "foundations/index",
+          label: "Foundations",
+          position: "left",
+        },
+        {
+          type: "doc",
+          docId: "components/inventory",
+          label: "Components",
+          position: "left",
+        },
+        { type: "doc", docId: "voice", label: "Voice", position: "left" },
+        { type: "doc", docId: "themes", label: "Themes", position: "left" },
+        { type: "doc", docId: "agents", label: "For agents", position: "left" },
         { href: STORYBOOK, label: "Storybook", position: "right" },
         { href: "pathname:///llms.txt", label: "llms.txt", position: "right" },
+        {
+          type: "html",
+          position: "right",
+          value: '<span class="ods-built">Built with Open DS</span>',
+        },
       ],
     },
     footer: {

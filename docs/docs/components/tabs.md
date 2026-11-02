@@ -8,9 +8,58 @@ description: "Tabs in Dense data."
 
 # Tabs
 
-Tabs. Switches between views of the same thing. Reads only component keys: --tabs-\*.
+Switches between views of the same thing on one page.
 
-See it in [Storybook](http://localhost:6006) under Components / Tabs, in every theme.
+**In Dense data.** Views of one record. Family: navigation. Reference: Open UX (tabs), MIT.
+
+## See it live
+
+<div class="odv-live"><span class="odv-wait">Start Storybook to see it live: <code>npm run storybook</code></span><iframe src="http://localhost:6006/iframe.html?id=components-tabs--examples&viewMode=story&globals=scheme:dense-data" title="Tabs examples in Storybook" loading="lazy"></iframe><div class="bar"><span>Live from Storybook</span><a href="http://localhost:6006/?path=/docs/components-tabs--docs">Open Tabs in Storybook</a><a href="http://localhost:6006/iframe.html?id=components-tabs--examples&viewMode=story&globals=scheme:dense-data;mode:dark">See it in dark</a></div></div>
+
+## When to use it
+
+- **Use it when:** Related views of one object that people move between.
+- **Not when:** Navigation to other pages (links), or steps of a task (progress).
+
+Instead:
+
+- Accordion: Stacked sections people can open together.
+- Navigation menu: Other pages.
+
+## Words
+
+- Lead with the object, then the state: "Alert 2041 contained."
+- Use numbers, not words for numbers.
+- One verb per button. No "please", no exclamation marks.
+- Use: Investigate, Filter, Assign, Escalated, Resolved. Avoid: Oops, Awesome, Please, Simply.
+
+The labels components use, from the voice tokens:
+
+- `content.action.commit`: Save
+- `content.action.cancel`: Cancel
+- `content.action.destroy`: Delete
+- `content.action.retry`: Retry
+- `content.action.empty-action`: Change filters
+
+See [Voice and tone](../voice.md) for the whole voice.
+
+## Accessibility and keyboard
+
+| Keyboard | What happens | Not |
+| --- | --- | --- |
+| undefined | Arrow keys move between tabs; Tab moves into the panel. | undefined |
+
+Test before you ship:
+
+- [ ] It is a tablist; the selected tab owns its panel. undefined
+
+## Use it in code
+
+```bash
+npx open-ds add tabs
+```
+
+The component reads only component keys and semantic tokens, so it follows the brand and mode on `<html>`.
 
 ## Component keys
 
