@@ -119,7 +119,11 @@
           },
           "size": {
             "default": {
-              "use": "Actions outside tables: forms, dialogs, page actions."
+              "use": "Actions outside tables: forms, dialogs, page actions.",
+              "because": [
+                "content.q2",
+                "accessibility.values"
+              ]
             },
             "compact": {
               "use": "Table rows and toolbars. Compact still fits a mouse.",
@@ -132,6 +136,13 @@
               "use": "Known row and toolbar actions, always with a tooltip.",
               "because": [
                 "iconography.roles"
+              ]
+            },
+            "large": {
+              "not_used": true,
+              "why": "Controls stay small so more records fit on one screen.",
+              "because": [
+                "content.q2"
               ]
             }
           },
@@ -2775,6 +2786,11 @@
             "$type": "dimension",
             "$value": "{size.24}",
             "$description": "Height of compact controls."
+          },
+          "large": {
+            "$type": "dimension",
+            "$value": "{size.32}",
+            "$description": "Height of large controls. Not used in this system, so it equals the default."
           }
         },
         "row": {

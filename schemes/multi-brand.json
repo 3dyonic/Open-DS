@@ -147,9 +147,18 @@
               ]
             },
             "icon": {
-              "use": "Rarely, with a tooltip: customers need a hint.",
+              "not_used": true,
+              "why": "Customers use any device and hover hints never show on touch, so every button has a word.",
               "because": [
+                "accessibility.values",
                 "iconography.roles"
+              ]
+            },
+            "large": {
+              "not_used": true,
+              "why": "One clear action per view, at the normal size, in every brand.",
+              "because": [
+                "outcomes.q1"
               ]
             }
           },
@@ -1256,18 +1265,12 @@
     },
     {
       "situation": "icon-alone",
-      "use": "Icon button with a tooltip, rarely",
-      "not": "A bare icon",
-      "why": "Customers need a hint.",
+      "use": "Not used: always add a word; a popover explains a fee",
+      "not": "An icon button with a hover hint",
+      "why": "On touch screens hover hints never show; a word says what will happen.",
       "because": [
+        "accessibility.values",
         "iconography.roles"
-      ],
-      "uses": [
-        {
-          "component": "button",
-          "axis": "size",
-          "variant": "icon"
-        }
       ]
     },
     {
@@ -3636,6 +3639,11 @@
             "$type": "dimension",
             "$value": "{size.36}",
             "$description": "Height of compact controls."
+          },
+          "large": {
+            "$type": "dimension",
+            "$value": "{size.44}",
+            "$description": "Height of large controls. Not used in this system, so it equals the default."
           }
         },
         "row": {

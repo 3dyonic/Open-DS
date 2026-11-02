@@ -135,6 +135,13 @@
               "because": [
                 "iconography.roles"
               ]
+            },
+            "large": {
+              "not_used": true,
+              "why": "The default size is already large for motor needs; a bigger one adds nothing.",
+              "because": [
+                "accessibility.values"
+              ]
             }
           },
           "state": {
@@ -2365,6 +2372,11 @@
             "$type": "dimension",
             "$value": "{size.48}",
             "$description": "Height of compact controls."
+          },
+          "large": {
+            "$type": "dimension",
+            "$value": "{size.52}",
+            "$description": "Height of large controls. Not used in this system, so it equals the default."
           }
         },
         "row": {

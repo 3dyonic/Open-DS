@@ -134,6 +134,14 @@
                 "iconography.roles",
                 "human.q2"
               ]
+            },
+            "large": {
+              "not_used": true,
+              "why": "Attention belongs to the text: one clear action per section, at the normal size.",
+              "because": [
+                "human.q1",
+                "tasks.q2"
+              ]
             }
           },
           "state": {
@@ -2383,6 +2391,11 @@
             "$type": "dimension",
             "$value": "{size.40}",
             "$description": "Height of compact controls."
+          },
+          "large": {
+            "$type": "dimension",
+            "$value": "{size.48}",
+            "$description": "Height of large controls. Not used in this system, so it equals the default."
           }
         },
         "row": {
