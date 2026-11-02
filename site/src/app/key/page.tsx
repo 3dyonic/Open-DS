@@ -13,6 +13,8 @@ export const metadata: Metadata = {
     "Ask for an Open DS key for the hosted MCP server. Open DS is in Beta and invitations are limited in number.",
 };
 
+const code = (s: string) => <code className="font-mono">{s}</code>;
+
 export default function KeyPage() {
   return (
     <div className="flex flex-col gap-10 px-5 pb-20 lg:px-20">
@@ -20,9 +22,10 @@ export default function KeyPage() {
         <Eyebrow>Beta · Limited invitations</Eyebrow>
         <h1 className="text-[44px] leading-[1.05] font-extrabold md:text-[56px]">Get a key</h1>
         <p className="max-w-[760px] text-[19px] leading-[1.45] text-body">
-          A key connects your AI to the hosted Open DS MCP server as you. Open DS is in Beta and
-          invitations are limited in number, so a person reads every request. If you are approved,
-          we email you a link that shows your key once.
+          The hosted Open DS MCP server needs a key. With one, any AI client connects by URL:
+          nothing to install, and every scheme stays up to date. Open DS is in Beta and invitations
+          are limited in number, so a person reads every request. If you are approved, we email you
+          a link that shows your key once.
         </p>
       </WithRobot>
 
@@ -41,17 +44,18 @@ export default function KeyPage() {
             </ol>
           </div>
           <div className="flex flex-col gap-2 rounded-[6px] border border-line bg-white p-5">
-            <h2 className="text-[17px] font-bold text-ink">No key yet?</h2>
+            <h2 className="text-[17px] font-bold text-ink">No key yet? Start now</h2>
             <p>
-              You can use Open DS now. The CLI and a local MCP server run from npm with no key. See{" "}
-              <Link
-                href="/install/#local"
-                className="font-semibold text-accent-text hover:underline"
-              >
-                Run it locally
-              </Link>
-              .
+              The key is only for the hosted server. Run the same MCP server on your computer, or
+              the CLI, from the {code("open-ds")} package on npm. No key, and nothing leaves your
+              machine.
             </p>
+            <Link
+              href="/install/#local"
+              className="self-start rounded-[4px] border border-ink px-4 py-[10px] text-[15px] font-semibold text-ink"
+            >
+              Run it locally
+            </Link>
           </div>
         </aside>
       </div>
