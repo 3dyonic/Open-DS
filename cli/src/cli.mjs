@@ -34,6 +34,8 @@ const HELP = `open-ds: deploy an Open DS scheme as a full design system.
   open-ds context <scheme> <target>    only the context for one target: a task (choose, build, write,
                                        change, review), a component, a component key, a semantic
                                        token (color.status.danger) or a situation
+  open-ds component <scheme> <id>      what a component and each variant are for, and how this scheme
+                                       uses each one (or does not), with its rules
   open-ds create <dir> --scheme <id> [--brand <id>]
                                        write a full design system project: Style Dictionary tokens,
                                        components, Storybook, Docusaurus docs, agent files and CI
@@ -45,7 +47,7 @@ const HELP = `open-ds: deploy an Open DS scheme as a full design system.
                                        the Open DS MCP server: stdio for a local agent, or
                                        Streamable HTTP at /mcp (read-only, no authentication yet)
 
-Add --json to list, show, why and when for machine-readable output.`;
+Add --json to list, show, why, when and component for machine-readable output.`;
 
 function flag(args, name, fallback) {
   const i = args.indexOf(name);
@@ -363,6 +365,18 @@ export async function run(argv) {
           `${rule.title}\n  Use: ${rule.use}\n  Not: ${rule.not}\n  Why: ${rule.why}`,
         ),
       );
+      return 0;
+    }
+    if (cmd === "component") {
+      const [id, comp] = args;
+      loadScheme(id ?? "");
+      const { componentGuide, componentText } = await import("./component.mjs");
+      const c = comp && componentGuide(id, comp);
+      if (!c)
+        throw new Error(
+          `component needs a catalogue component id, for example: open-ds component ${id} button.`,
+        );
+      out(c, () => console.log(componentText(c)));
       return 0;
     }
     if (cmd === "context") {

@@ -3631,7 +3631,157 @@
       {
         "id": "button",
         "family": "action",
-        "description": "Triggers an action."
+        "description": "Triggers an action.",
+        "overview": "A control that commits an action on this screen.",
+        "apply_when": "The press does something here: save, submit, delete, open a dialog, go to the next step.",
+        "not_when": "The press only takes people to another page, or flips a setting that should persist.",
+        "vs": [
+          {
+            "id": "toggle",
+            "why": "An on or off setting that should persist as state."
+          },
+          {
+            "id": "link",
+            "why": "Navigation to another page or section.",
+            "outside": true
+          }
+        ],
+        "variants": {
+          "variant": [
+            {
+              "id": "primary",
+              "overview": "The one action this view is for.",
+              "apply_when": "One commit: Submit, Save, Continue, Start, Next.",
+              "not_when": "A second equally loud action on the same view."
+            },
+            {
+              "id": "secondary",
+              "overview": "A real action, quieter than the commit.",
+              "apply_when": "Cancel, Back or Reset next to a primary, or an action with no commit beside it.",
+              "not_when": "It is the only action; then it is primary."
+            },
+            {
+              "id": "ghost",
+              "overview": "The lowest emphasis; it never competes with the commit.",
+              "apply_when": "A third option, a card or row action, a toast action.",
+              "not_when": "The page's main task; that is primary."
+            }
+          ],
+          "size": [
+            {
+              "id": "default",
+              "overview": "The normal size, for ordinary actions in forms, dialogs and page chrome."
+            },
+            {
+              "id": "compact",
+              "overview": "Denser, for toolbars and table rows that sit beside content.",
+              "not_when": "The page's main commit, or a control too small to hit."
+            },
+            {
+              "id": "icon",
+              "overview": "Icon only: the name is not on screen.",
+              "apply_when": "A repeated, known control in chrome: close, settings, more.",
+              "not_when": "A one-off or destructive action with no accessible name."
+            }
+          ],
+          "state": [
+            {
+              "id": "hover",
+              "overview": "The pointer is over the control: an extra cue, never the only cue.",
+              "apply_when": "A mouse or trackpad can reach the control.",
+              "not_when": "Hover is the only way to tell it is a button; that fails on touch."
+            },
+            {
+              "id": "focus",
+              "overview": "Keyboard or assistive tech is on this control. It must stay visible.",
+              "apply_when": "Tab, Enter, Space, or focus restored after a dialog.",
+              "not_when": "The focus outline removed with no replacement."
+            },
+            {
+              "id": "disabled",
+              "overview": "The action is not available. It must stay perceivable and say why.",
+              "apply_when": "A control that must not run now, with a visible reason.",
+              "not_when": "A form's submit that could explain the problem on press instead."
+            }
+          ]
+        },
+        "situations": [
+          "commit-action",
+          "alternative-action",
+          "destructive-action",
+          "row-action",
+          "icon-alone"
+        ],
+        "accessibility": [
+          {
+            "id": "accessible-name",
+            "overview": "The control has a name assistive tech can speak.",
+            "apply_when": "Any button, especially an icon-only one.",
+            "not_when": "The only name is a tooltip that never reaches the button."
+          },
+          {
+            "id": "focus-visible",
+            "overview": "The focused control stays visible; color alone is not the cue.",
+            "apply_when": "Keyboard or assistive-tech focus is on the button.",
+            "not_when": "The outline removed with no replacement."
+          },
+          {
+            "id": "aria-disabled",
+            "overview": "Unavailable stays in the tab order and explains why.",
+            "apply_when": "The action must not run, but focus must not jump away.",
+            "not_when": "The HTML disabled attribute, which drops the control from the keyboard flow."
+          },
+          {
+            "id": "aria-pressed",
+            "overview": "A button that stays down exposes its pressed state.",
+            "apply_when": "Pin, follow, or another sticky on or off on a button.",
+            "not_when": "A setting that should be a toggle, not a button."
+          },
+          {
+            "id": "aria-expanded",
+            "overview": "A button that opens something exposes open or closed.",
+            "apply_when": "The press reveals a menu, panel or more content.",
+            "not_when": "A plain commit that reveals nothing."
+          },
+          {
+            "id": "hit-target",
+            "overview": "The hit area stays usable, including at a small size.",
+            "apply_when": "Touch, pointer, or a compact toolbar button.",
+            "not_when": "An icon whose tap area is the glyph only."
+          }
+        ],
+        "keyboard": [
+          {
+            "id": "tab",
+            "overview": "Tab lands on the button in a logical order.",
+            "apply_when": "Moving through the page or a dialog.",
+            "not_when": "The control is skipped because it used HTML disabled."
+          },
+          {
+            "id": "enter",
+            "overview": "Enter runs the same action as a click.",
+            "apply_when": "The button is focused and the person confirms.",
+            "not_when": "Enter only works on submit buttons."
+          },
+          {
+            "id": "space",
+            "overview": "Space runs the same action as a click.",
+            "apply_when": "The button is focused.",
+            "not_when": "Space scrolls the page instead."
+          },
+          {
+            "id": "focus-restore",
+            "overview": "After the action closes a surface, focus returns to the button.",
+            "apply_when": "The button opened a dialog, menu or popover that just closed.",
+            "not_when": "Focus dropped on the page body."
+          }
+        ],
+        "source": {
+          "name": "Open UX",
+          "id": "button",
+          "license": "MIT",
+          "url": "https://github.com/3dyonic/open-ux/blob/main/catalog/components/button.json"
+        }
       },
       {
         "id": "button-group",

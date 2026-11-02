@@ -109,7 +109,71 @@
     "in": [
       {
         "id": "button",
-        "why": "Every action."
+        "why": "Every action.",
+        "variants": {
+          "variant": {
+            "primary": {
+              "use": "One clear action per view.",
+              "because": [
+                "outcomes.q1"
+              ]
+            },
+            "secondary": {
+              "use": "The alternative that steps back, and the first step of a delete.",
+              "because": [
+                "color.count",
+                "outcomes.q2"
+              ]
+            },
+            "ghost": {
+              "use": "Row actions, with a word.",
+              "because": [
+                "human.q2"
+              ]
+            }
+          },
+          "size": {
+            "default": {
+              "use": "Every button, at touch size: customers are often on phones.",
+              "because": [
+                "accessibility.values"
+              ]
+            },
+            "compact": {
+              "not_used": true,
+              "why": "Customers are often on phones: no compact controls.",
+              "because": [
+                "accessibility.values"
+              ]
+            },
+            "icon": {
+              "use": "Rarely, with a tooltip: customers need a hint.",
+              "because": [
+                "iconography.roles"
+              ]
+            }
+          },
+          "state": {
+            "hover": {
+              "use": "Moderate feedback, shared across brands.",
+              "because": [
+                "motion.values"
+              ]
+            },
+            "focus": {
+              "use": "Follows the brand, but always shows.",
+              "because": [
+                "people.q2"
+              ]
+            },
+            "disabled": {
+              "use": "Only with a visible reason next to it.",
+              "because": [
+                "people.q2"
+              ]
+            }
+          }
+        }
       },
       {
         "id": "toggle-group",
@@ -1197,6 +1261,13 @@
       "why": "Customers need a hint.",
       "because": [
         "iconography.roles"
+      ],
+      "uses": [
+        {
+          "component": "button",
+          "axis": "size",
+          "variant": "icon"
+        }
       ]
     },
     {
@@ -1216,6 +1287,13 @@
       "why": "Focus follows the brand but always shows.",
       "because": [
         "people.q2"
+      ],
+      "uses": [
+        {
+          "component": "button",
+          "axis": "state",
+          "variant": "focus"
+        }
       ]
     },
     {
@@ -1234,6 +1312,13 @@
       "why": "One clear action per view.",
       "because": [
         "outcomes.q1"
+      ],
+      "uses": [
+        {
+          "component": "button",
+          "axis": "variant",
+          "variant": "primary"
+        }
       ]
     },
     {
@@ -1243,6 +1328,13 @@
       "why": "The alternative steps back.",
       "because": [
         "color.count"
+      ],
+      "uses": [
+        {
+          "component": "button",
+          "axis": "variant",
+          "variant": "secondary"
+        }
       ]
     },
     {
@@ -1252,6 +1344,13 @@
       "why": "Confirm before destroying data.",
       "because": [
         "outcomes.q2"
+      ],
+      "uses": [
+        {
+          "component": "button",
+          "axis": "variant",
+          "variant": "secondary"
+        }
       ]
     },
     {
@@ -1261,6 +1360,13 @@
       "why": "A word says what will happen.",
       "because": [
         "human.q2"
+      ],
+      "uses": [
+        {
+          "component": "button",
+          "axis": "variant",
+          "variant": "ghost"
+        }
       ]
     },
     {

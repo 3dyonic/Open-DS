@@ -90,7 +90,75 @@
     "in": [
       {
         "id": "button",
-        "why": "Subscribe, share and save."
+        "why": "Subscribe, share and save.",
+        "variants": {
+          "variant": {
+            "primary": {
+              "use": "One clear action per section.",
+              "because": [
+                "tasks.q2"
+              ]
+            },
+            "secondary": {
+              "use": "The first step of a delete, with the full verb, before the confirm.",
+              "because": [
+                "outcomes.q2"
+              ]
+            },
+            "ghost": {
+              "use": "Alternatives as a text link, and row actions with a word.",
+              "because": [
+                "brand.q1",
+                "human.q2"
+              ]
+            }
+          },
+          "size": {
+            "default": {
+              "use": "Every button, at touch size: many readers are on phones.",
+              "because": [
+                "accessibility.values"
+              ]
+            },
+            "compact": {
+              "not_used": true,
+              "why": "Many readers are on phones: no compact controls.",
+              "because": [
+                "accessibility.values"
+              ]
+            },
+            "icon": {
+              "not_used": true,
+              "why": "Occasional visitors do not know icons: always add a word.",
+              "because": [
+                "iconography.roles",
+                "human.q2"
+              ]
+            }
+          },
+          "state": {
+            "hover": {
+              "use": "Moderate feedback that feels calm.",
+              "because": [
+                "motion.values"
+              ]
+            },
+            "focus": {
+              "use": "Always visible.",
+              "because": [
+                "people.q2"
+              ]
+            },
+            "disabled": {
+              "not_used": true,
+              "why": "Keep it enabled and explain on press: visitors see the interface fresh each time.",
+              "because": [
+                "human.q2",
+                "people.q2"
+              ]
+            }
+          }
+        }
       },
       {
         "id": "input",
@@ -1079,6 +1147,13 @@
       "why": "Keyboard users must always see where they are.",
       "because": [
         "people.q2"
+      ],
+      "uses": [
+        {
+          "component": "button",
+          "axis": "state",
+          "variant": "focus"
+        }
       ]
     },
     {
@@ -1097,6 +1172,13 @@
       "why": "One clear action per section.",
       "because": [
         "tasks.q2"
+      ],
+      "uses": [
+        {
+          "component": "button",
+          "axis": "variant",
+          "variant": "primary"
+        }
       ]
     },
     {
@@ -1106,6 +1188,13 @@
       "why": "A link feels lighter and does not compete.",
       "because": [
         "brand.q1"
+      ],
+      "uses": [
+        {
+          "component": "button",
+          "axis": "variant",
+          "variant": "ghost"
+        }
       ]
     },
     {
@@ -1115,6 +1204,13 @@
       "why": "Naming the verb and confirming prevents a mistake.",
       "because": [
         "outcomes.q2"
+      ],
+      "uses": [
+        {
+          "component": "button",
+          "axis": "variant",
+          "variant": "secondary"
+        }
       ]
     },
     {
@@ -1124,6 +1220,13 @@
       "why": "Occasional visitors need the word.",
       "because": [
         "human.q2"
+      ],
+      "uses": [
+        {
+          "component": "button",
+          "axis": "variant",
+          "variant": "ghost"
+        }
       ]
     },
     {

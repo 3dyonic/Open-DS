@@ -1,5 +1,6 @@
 // Context on demand: one call returns only the slice an agent needs for a target, built from the
 // scheme, the grammar and the built tokens. The CLI (open-ds context) and the MCP (get_context) share it.
+import { componentGuide } from "./component.mjs";
 import { guidanceFor, guidanceId } from "./guidance.mjs";
 import {
   assetRoots,
@@ -101,6 +102,8 @@ export function context(
   if (TASKS.includes(target)) return task(target, scheme, g, roots);
 
   const comp = g.components.find((c) => c.id === target);
+  const guide = componentGuide(schemeId, target, roots, g);
+  if (!comp && guide) return { target, kind: "component", ...guide };
   if (comp) {
     const keys = comp.keys
       .map((k) => keyInfo(schemeId, k, roots, g))
@@ -113,9 +116,14 @@ export function context(
       description: comp.description,
       keys: keys.map(({ guidance, ...k }) => k),
       guidance: sems.map((p) => guidanceFor(g, p)).filter(Boolean),
-      rules: rules(scheme, g).filter((r) =>
-        `${r.use} ${r.not}`.toLowerCase().includes(target),
-      ),
+      ...(guide && { reference: guide.reference, variants: guide.variants }),
+      // The rules that name this component as data (uses), or the situations its reference lists;
+      // the old text match only when neither exists yet.
+      rules: guide?.rules.length
+        ? guide.rules
+        : rules(scheme, g).filter((r) =>
+            `${r.use} ${r.not}`.toLowerCase().includes(target),
+          ),
     };
   }
 

@@ -92,7 +92,70 @@
     "in": [
       {
         "id": "button",
-        "why": "Every action."
+        "why": "Every action.",
+        "variants": {
+          "variant": {
+            "primary": {
+              "use": "The one commit in a view.",
+              "because": [
+                "color.count",
+                "outcomes.q2"
+              ]
+            },
+            "secondary": {
+              "use": "Alternatives and cancel next to the primary, and the first step of a delete.",
+              "because": [
+                "human.q2",
+                "outcomes.q2"
+              ]
+            },
+            "ghost": {
+              "use": "Row actions, as compact icon buttons. Never for cancel.",
+              "because": [
+                "tasks.q2",
+                "human.q2"
+              ]
+            }
+          },
+          "size": {
+            "default": {
+              "use": "Actions outside tables: forms, dialogs, page actions."
+            },
+            "compact": {
+              "use": "Table rows and toolbars. Compact still fits a mouse.",
+              "because": [
+                "content.q2",
+                "accessibility.values"
+              ]
+            },
+            "icon": {
+              "use": "Known row and toolbar actions, always with a tooltip.",
+              "because": [
+                "iconography.roles"
+              ]
+            }
+          },
+          "state": {
+            "hover": {
+              "use": "Fast feedback that confirms the pointer.",
+              "because": [
+                "motion.values"
+              ]
+            },
+            "focus": {
+              "use": "Always visible: the focus ring at border-width.focus.",
+              "because": [
+                "people.q2"
+              ]
+            },
+            "disabled": {
+              "use": "Only with a visible reason next to it.",
+              "because": [
+                "people.q2"
+              ]
+            }
+          }
+        }
       },
       {
         "id": "toggle-group",
@@ -1446,6 +1509,16 @@
       "why": "Experts learn icons; the tooltip covers the first uses.",
       "because": [
         "iconography.roles"
+      ],
+      "uses": [
+        {
+          "component": "button",
+          "axis": "size",
+          "variant": "icon"
+        },
+        {
+          "component": "tooltip"
+        }
       ]
     },
     {
@@ -1464,6 +1537,13 @@
       "why": "Keyboard users must always see where they are.",
       "because": [
         "people.q2"
+      ],
+      "uses": [
+        {
+          "component": "button",
+          "axis": "state",
+          "variant": "focus"
+        }
       ]
     },
     {
@@ -1483,6 +1563,13 @@
       "because": [
         "color.count",
         "outcomes.q2"
+      ],
+      "uses": [
+        {
+          "component": "button",
+          "axis": "variant",
+          "variant": "primary"
+        }
       ]
     },
     {
@@ -1492,6 +1579,13 @@
       "why": "Cancel must be easy to find next to the primary.",
       "because": [
         "human.q2"
+      ],
+      "uses": [
+        {
+          "component": "button",
+          "axis": "variant",
+          "variant": "secondary"
+        }
       ]
     },
     {
@@ -1501,6 +1595,16 @@
       "why": "Deleting is rare and costly; a confirm step catches mistakes.",
       "because": [
         "outcomes.q2"
+      ],
+      "uses": [
+        {
+          "component": "button",
+          "axis": "variant",
+          "variant": "secondary"
+        },
+        {
+          "component": "dialog"
+        }
       ]
     },
     {
@@ -1510,6 +1614,18 @@
       "why": "Rows repeat dozens of times; a quiet icon keeps the table readable.",
       "because": [
         "tasks.q2"
+      ],
+      "uses": [
+        {
+          "component": "button",
+          "axis": "variant",
+          "variant": "ghost"
+        },
+        {
+          "component": "button",
+          "axis": "size",
+          "variant": "icon"
+        }
       ]
     },
     {

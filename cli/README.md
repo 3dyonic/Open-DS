@@ -42,6 +42,7 @@ npx open-ds show dense-data
 npx open-ds why dense-data typography.definition
 npx open-ds why dense-data button/primary/background
 npx open-ds when dense-data "a number in a table"
+npx open-ds component dense-data button
 ```
 
 Add `--json` to `list`, `show`, `why` and `when` for machine-readable output.
