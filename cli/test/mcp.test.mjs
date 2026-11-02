@@ -272,9 +272,11 @@ test("plans list open-ds.json, and when_to_use says how it matched", async () =>
 
 test("get_context returns only the slice for a token, a task and a component, and get_key carries guidance", async () => {
   const client = await connect();
+  // Section all is the full answer as JSON, as before OD-205.
   const token = await call(client, "get_context", {
     scheme_id: "dense-data",
     target: "color.status.danger",
+    section: "all",
   });
   assert.equal(token.kind, "semantic");
   assert.equal(token.guidance.id, "color.status.danger.@");
@@ -284,12 +286,14 @@ test("get_context returns only the slice for a token, a task and a component, an
   const review = await call(client, "get_context", {
     scheme_id: "dense-data",
     target: "review",
+    section: "all",
   });
   assert.equal(review.skill, "open-ds-review");
   assert.ok(review.semantics.length > 30 && review.rules.length > 10);
   const badge = await call(client, "get_context", {
     scheme_id: "multi-brand",
     target: "badge",
+    section: "all",
   });
   assert.ok(badge.keys.some((k) => k.key === "badge/info/label"));
   const key = await call(client, "get_key", {
@@ -300,6 +304,50 @@ test("get_context returns only the slice for a token, a task and a component, an
   const bad = await client.callTool({
     name: "get_context",
     arguments: { scheme_id: "dense-data", target: "nope" },
+  });
+  assert.ok(bad.isError);
+});
+
+test("get_context is short by default, with sections, pages and file routes (OD-205)", async () => {
+  const c = await connect();
+  const text = async (args) =>
+    (await c.callTool({ name: "get_context", arguments: args })).content[0]
+      .text;
+  const button = await text({ scheme_id: "dense-data", target: "button" });
+  assert.match(button, /^# button \(dense-data\)/);
+  assert.match(button, /secondary, then confirm in a dialog/);
+  assert.doesNotMatch(button, /#[0-9A-Fa-f]{6}\b/, "no values by default");
+  assert.match(button, /More, ask by section:/);
+  assert.match(button, /get_context target=button section=/);
+  assert.ok(Buffer.byteLength(button) <= 3000);
+  const values = await text({
+    scheme_id: "dense-data",
+    target: "button",
+    section: "values",
+  });
+  assert.match(values, /#[0-9A-Fa-f]{6}/);
+  const rules = await text({
+    scheme_id: "dense-data",
+    target: "build",
+    section: "rules",
+  });
+  assert.match(rules, /Page 1 of \d+\. Next: get_context target=build section=rules page=2/);
+  const second = await text({
+    scheme_id: "dense-data",
+    target: "build",
+    section: "rules",
+    page: 2,
+  });
+  assert.match(second, /Page 2 of/);
+  const file = await text({
+    scheme_id: "dense-data",
+    file: "src/components/ui/dialog.tsx",
+  });
+  assert.match(file, /components\/dialog\.md/);
+  assert.match(file, /# dialog \(dense-data\)/);
+  const bad = await c.callTool({
+    name: "get_context",
+    arguments: { scheme_id: "dense-data", target: "button", section: "nope" },
   });
   assert.ok(bad.isError);
 });
@@ -327,6 +375,7 @@ test("get_component: the reference next to each scheme's decisions (OD-185)", as
   const ctx = await call(c, "get_context", {
     scheme_id: "dense-data",
     target: "button",
+    section: "all",
   });
   assert.ok(ctx.reference && ctx.variants.length >= 9);
   const bad = await c.callTool({
@@ -381,4 +430,7 @@ test("every server sends its instructions when an agent connects (OD-204)", asyn
   assert.match(text, /check_ui/);
   assert.match(text, /fit_scheme/);
   assert.match(text, /plan_change/);
+  // The read-once text, the same as in AGENTS.md and context/README.md (OD-205).
+  const { READ_ONCE } = await import("../src/brief.mjs");
+  assert.ok(text.endsWith(READ_ONCE));
 });

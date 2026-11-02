@@ -105,3 +105,7 @@ It returns only that slice: rules, guidance, pairs and resolved values in every 
 
 - Guidance for space, size and type keys, if agents misuse them.
 - Category colours in more components (tags, avatars), when a scheme's inventory needs them.
+
+## Short form and booklets (OD-205)
+
+The context above is the full answer. Since OD-205 `get_context` and `open-ds context` return a short form by default: words, not values, keys by name, ending with the sections an agent can ask for. A created project keeps the same text as files in `context/`, with a router. See [For agents](index.md).

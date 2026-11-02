@@ -22,7 +22,8 @@ import {
   packagesFor,
   withImports,
 } from "./components.mjs";
-import { context, TASKS } from "./context.mjs";
+import { TASKS } from "./context.mjs";
+import { brief, briefForFile, READ_ONCE } from "./brief.mjs";
 import { componentGuide, followers } from "./component.mjs";
 import { createProject } from "./create.mjs";
 import {
@@ -49,12 +50,16 @@ const VERSION = JSON.parse(
   readFileSync(new URL("../package.json", import.meta.url), "utf8"),
 ).version;
 
+// Sent once when an agent connects. Ends with the read-once text that AGENTS.md and context/README.md
+// carry too (OD-205).
 const INSTRUCTIONS = `Open DS: design systems as answered questions. Every scheme answers the same questions and gives the reason for each answer; tokens, components, usage rules and voice follow from them.
 Choose: describe the product to fit_scheme, compare the top ones with compare_schemes, then plan_create (a new design system project) or plan_init (an existing app). They return the exact npx command; run it yourself.
-Build: call get_context build first. Before a component or variant, call get_component; before a token, find_token or when_to_use. Before you finish, run check_ui on the files you changed and fix each finding.
-Write: check each label or message with check_copy. Change: call plan_change before you change an answer or a primitive. Review: run check_ui, then the review prompt.
+Build: call get_context build first, or get_context file=<path> for the file you edit. Before a component or variant, call get_component; before a token, find_token or when_to_use. Before you finish, run check_ui on the files you changed and fix each finding.
+Write: get_context write holds the voice; get_scheme returns any part of a scheme in full. Check each label or message with check_copy. Change: call plan_change before you change an answer or a primitive. Review: run check_ui, then the review prompt.
 Explain any decision with why; get_answer shows one answer with every option, and what_moves shows what follows from an answer. The prompts open-ds-choose, open-ds-build, open-ds-write, open-ds-change and open-ds-review hold the step-by-step skills.
-The questions and answers are a starting point, not a standard.`;
+The questions and answers are a starting point, not a standard.
+
+${READ_ONCE}`;
 
 const json = (data) => ({
   content: [{ type: "text", text: JSON.stringify(data, null, 2) }],
@@ -432,25 +437,50 @@ export function createMcpServer({ roots = assetRoots() } = {}) {
     {
       title: "Context",
       description:
-        "Only the context you need for one target, in one call. A task (choose, build, write, change, review) returns what that skill needs. A component (badge), a component key (button/primary/background), a semantic token (color.status.danger) or a situation (status-label) returns its rules, guidance, pairs and resolved values in every theme.",
+        "Short context for one target, as Markdown: what it is for, how this scheme uses it, its rules and its keys by name. A target is a task (choose, build, write, change, review), a component (badge), a component key (button/primary/background), a semantic token (color.status.danger) or a situation (status-label). Or pass file, a path in a created project, for the booklets its context/index.json lists. Each answer ends with its sections, their size and the exact call: pass section for one (values, keyboard, rules…), page for the next page of a long one, and section all for the full answer as JSON.",
       inputSchema: {
         scheme_id: SchemeId,
         target: z
           .string()
+          .optional()
           .describe(
             `A task (${TASKS.join(", ")}), a component, a component key, a semantic token or a situation id.`,
           ),
+        file: z
+          .string()
+          .max(300)
+          .optional()
+          .describe(
+            "A file path in a created project, for example src/components/ui/card.tsx. Returns what context/index.json lists for it.",
+          ),
+        section: z
+          .string()
+          .max(40)
+          .optional()
+          .describe(
+            "One section, as the answer's hints name it, or all for the full answer as JSON.",
+          ),
+        page: z
+          .number()
+          .int()
+          .min(1)
+          .max(50)
+          .optional()
+          .describe("The page of a long section. Starts at 1."),
       },
       annotations: { readOnlyHint: true },
     },
-    async ({ scheme_id, target }) => {
-      scheme(scheme_id);
-      const out = context(scheme_id, target, roots, g);
+    async ({ scheme_id, target, file, section, page }) => {
+      const s = scheme(scheme_id);
+      const text = (t) => ({ content: [{ type: "text", text: t }] });
+      if (file)
+        return text(briefForFile(s, g, componentsFor(s, roots), file, roots));
+      const out = target && brief(scheme_id, target, { section, page, roots, g });
       if (!out)
         throw new Error(
-          `Nothing called "${target}". Give a task (${TASKS.join(", ")}), a component (${g.components.map((c) => c.id).join(", ")}), a component key, a semantic token such as color.status.danger, or a situation id.`,
+          `Nothing called "${target ?? ""}". Give a task (${TASKS.join(", ")}), a component (${g.components.map((c) => c.id).join(", ")}), a component key, a semantic token such as color.status.danger, a situation id, or file.`,
         );
-      return json(out);
+      return text(out);
     },
   );
 
@@ -487,7 +517,7 @@ export function createMcpServer({ roots = assetRoots() } = {}) {
     {
       title: "Check UI",
       description:
-        "Checks UI code against a scheme and lists each problem with its file, line, rule and fix: raw colours and sizes instead of tokens, components the scheme does not carry, and variants it decided not to use (for example the large Button size in Dense data). Pass the contents of the files; this server never reads your disk. A review passes only when this returns no findings. The CLI runs the same check on a folder: open-ds check.",
+        "Checks UI code against a scheme and lists each problem with its file, line, rule, fix and see (the booklet section in a created project that answers it): raw colours and sizes instead of tokens, components the scheme does not carry, and variants it decided not to use (for example the large Button size in Dense data). Pass the contents of the files; this server never reads your disk. A review passes only when this returns no findings. The CLI runs the same check on a folder: open-ds check.",
       inputSchema: {
         scheme_id: SchemeId,
         files: z

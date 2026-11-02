@@ -38,18 +38,20 @@ The MCP server serves the same five skills as prompts.
 ## Run
 
 1. If the project has no scheme yet, use `open-ds-choose`.
-2. Read `AGENTS.md`.
-3. Before you pick a token, a component or a variant, find its situation with `when_to_use`.
-4. On the command line, use `open-ds when <scheme> <words>` for the same answer.
-5. Do what the rule says. Never do what its "not" says.
-6. Before you use a component, call `get_component` or run `open-ds component <scheme> <id>`.
-7. Use only the variants the scheme uses. Never use a variant it marks as not used.
-8. Before you use a colour, read its guidance with `get_context` or `open-ds context <scheme> <token>`.
-9. Use only components in `src/components/ui` and the scheme's CSS variables.
-10. Write no raw colours, sizes or spacing.
-11. To change a look, change its component key, for example `--button-radius`. Do not edit the component.
-12. To explain a decision, call `why` or run `open-ds why <scheme> <id>`. Quote the answer and its reason.
-13. Before you finish, call `check_ui` or run `open-ds check`. Fix each finding.
+2. Read `AGENTS.md`. It holds the rules that always apply.
+3. For the file you edit, call `get_context` with `file`, or run `open-ds context --file <path>`.
+4. Read the booklets it returns. Ask for a section only when they do not answer.
+5. Before you pick a token, a component or a variant, find its situation with `when_to_use`.
+6. On the command line, use `open-ds when <scheme> <words>` for the same answer.
+7. Do what the rule says. Never do what its "not" says.
+8. Before you use a component, call `get_component` or run `open-ds component <scheme> <id>`.
+9. Use only the variants the scheme uses. Never use a variant it marks as not used.
+10. Before you use a colour, read its booklet with `get_context` or `open-ds context <scheme> <token>`.
+11. Use only components in `src/components/ui` and the scheme's CSS variables.
+12. Write no raw colours, sizes or spacing.
+13. To change a look, change its component key, for example `--button-radius`. Do not edit the component.
+14. To explain a decision, call `why` or run `open-ds why <scheme> <id>`. Quote the answer and its reason.
+15. Before you finish, call `check_ui` or run `open-ds check`. Fix each finding.
 
 ## Done
 

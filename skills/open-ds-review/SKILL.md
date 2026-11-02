@@ -30,8 +30,8 @@ A review catches a choice that breaks a rule before people see it. Each finding 
 
 1. Call `check_ui` with the files, or run `open-ds check` in the project.
 2. Report each finding it returns with its file, line, rule and fix.
-3. Call `get_context review`, or run `open-ds context <scheme> review`.
-4. It returns every rule, the colour guidance and the urgency order in one call.
+3. Call `get_context` with target `review`, or run `open-ds context <scheme> review`. It lists the steps.
+4. Load the build and write booklets it names. Ask for section `rules` or `colors` when you check them.
 5. Components: check that each one is in the inventory with `get_inventory`. Flag look-alikes.
 6. Variants: call `get_component` for each component. Flag each variant that the scheme marks as not used.
 7. Variants: check each used variant against what the scheme says it is for.

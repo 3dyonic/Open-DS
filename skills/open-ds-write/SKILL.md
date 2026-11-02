@@ -2,7 +2,7 @@
 name: open-ds-write
 description: Write interface copy in the voice of an Open DS scheme. Use when you write labels, errors, success or empty messages, confirmations or hints.
 tools:
-  - get_scheme
+  - get_context
   - when_to_use
   - get_component
   - check_copy
@@ -26,8 +26,8 @@ The voice is part of the design system. Words that follow it make every screen s
 
 ## Run
 
-1. Read the voice with `get_scheme` and part `voice`, or run `npx open-ds show <scheme>`.
-2. Note the summary, the principles, and the words to use and to avoid.
+1. Call `get_context` with target `write`, or run `open-ds context <scheme> write`.
+2. It holds the voice, the words to use and avoid, and each writing situation with its rule.
 3. Find the situation with `when_to_use`: button-label, error-words, success-words, empty-words, confirm-words or first-visit.
 4. Match the shape of the rule's example. Use the product's own objects and numbers.
 5. For words inside a component, read its rules with `get_component`.

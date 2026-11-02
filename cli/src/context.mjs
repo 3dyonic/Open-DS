@@ -70,6 +70,9 @@ function task(name, scheme, g, roots) {
       read: "Write in the scheme's voice. Use the words in content for common actions.",
       voice: scheme.voice,
       content: scheme.tokens.content,
+      rules: rules(scheme, g).filter((r) =>
+        g.situations.some((x) => x.id === r.situation && x.scope === "voice"),
+      ),
     };
   if (name === "change")
     return {
