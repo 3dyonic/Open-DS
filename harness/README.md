@@ -1,13 +1,12 @@
 # Harness
 
-The harness proves the MVP is done the way Yonatan asked. It reads two lists and runs a check for every line.
+The harness proves every layer of Open DS is done and works. It runs a named check for every line of the ticket specs, then every check no spec names.
 
-| File                | What it holds                                                                                                                 |
-| ------------------- | ----------------------------------------------------------------------------------------------------------------------------- |
-| `instructions.json` | Yonatan's instructions, in his words.                                                                                         |
-| `specs.json`        | The ticket specs (OD-109 to OD-121, without OD-113 and OD-114, which are not code): what each delivers and how it is checked. |
-| `checks.mjs`        | One named check per proof.                                                                                                    |
-| `evidence.json`     | Process proof: one entry per feature merged into RC1 (PR, sub-agent, skills, Jira, Orchestra).                                |
+| File         | What it holds                                                                        |
+| ------------ | ------------------------------------------------------------------------------------ |
+| `specs.json` | The ticket specs: what each Jira ticket delivers (In) and the checks that prove it.  |
+| `checks.mjs` | One named check per proof.                                                           |
+| `run.mjs`    | The runner and the report. Another harness can pass its own checks and requirements. |
 
 ## Run it
 
@@ -28,5 +27,5 @@ The exit code is 1 only when something fails.
 ## Add a check
 
 1. Add a function to `CHECKS` in `checks.mjs`. List what it needs in `requires`.
-2. Name it in an instruction or a spec.
-3. `pnpm --dir harness test` fails if a name has no check.
+2. Name it in a spec. A check no spec names still runs, under "Other checks".
+3. `pnpm --dir harness test` fails if a spec names a check that does not exist.

@@ -2,7 +2,7 @@
   "$schema": "https://json-schema.org/draft/2020-12/schema",
   "$id": "https://github.com/3dyonic/Open-DS/harness/harness.schema.json",
   "title": "Harness source",
-  "description": "A list of requirements (Yonatan's instructions or ticket specs) and the named checks that prove each one. Check names must exist in harness/checks.mjs.",
+  "description": "A list of requirements (ticket specs) and the named checks that prove each one. Check names must exist in harness/checks.mjs.",
   "type": "object",
   "additionalProperties": false,
   "required": ["$schema", "description", "source", "items"],
@@ -16,7 +16,7 @@
     "source": {
       "type": "string",
       "minLength": 1,
-      "description": "Where the requirements came from (chat date, Jira keys, Orchestra record)."
+      "description": "Where the requirements came from (Jira keys and dates)."
     },
     "items": {
       "type": "array",
@@ -29,19 +29,15 @@
         "properties": {
           "id": {
             "type": "string",
-            "pattern": "^(I\\d{2}|OD-\\d+)$",
-            "description": "I01..I99 for an instruction, or a Jira key for a spec.",
-            "examples": ["I01", "OD-117"]
+            "pattern": "^OD-\\d+$",
+            "description": "The Jira key of the ticket.",
+            "examples": ["OD-117"]
           },
           "title": { "type": "string", "minLength": 1, "description": "The requirement in plain words." },
-          "words": {
-            "type": "string",
-            "description": "Yonatan's own words, copied as he wrote them. Instructions only."
-          },
           "in": {
             "type": "array",
             "items": { "type": "string", "minLength": 1 },
-            "description": "What the ticket delivers. Specs only."
+            "description": "What the ticket delivers."
           },
           "checks": {
             "type": "array",

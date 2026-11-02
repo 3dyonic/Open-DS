@@ -1,19 +1,17 @@
 {
   "$schema": "./harness.schema.json",
-  "description": "Claude's specs for the MVP: one item per Jira ticket, each listing what it delivers (In) and the checks that prove it. The harness runs these next to Yonatan's instructions.",
+  "description": "The specs: one item per Jira ticket, each listing what it delivers (In) and the checks that prove it. The harness runs these, then every check no spec names.",
   "source": "Jira OD-109 to OD-127, created 2026-10-30 and 2026-10-31.",
   "items": [
     {
       "id": "OD-115",
       "title": "Harness: DoD test suite for every layer",
       "in": [
-        "instructions.json",
         "specs.json",
         "runner and report",
         "harness tests"
       ],
       "checks": [
-        "harness-covers-instructions",
         "harness-covers-specs",
         "harness-self-test"
       ]

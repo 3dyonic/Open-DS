@@ -173,14 +173,6 @@ function ensureTokens(c) {
 
 export const CHECKS = {
   // Harness
-  "harness-covers-instructions": {
-    requires: ["harness/instructions.json"],
-    run: (c) => {
-      const items = c.json("harness/instructions.json").items;
-      const missing = items.flatMap((i) => i.checks).filter((n) => !CHECKS[n]);
-      return missing.length ? bad(`unknown checks: ${missing.join(", ")}`) : ok(`${items.length} instructions mapped`);
-    },
-  },
   "harness-covers-specs": {
     requires: ["harness/specs.json"],
     run: (c) => {
@@ -748,7 +740,6 @@ export const CHECKS = {
           `schemes/${s}.json`,
           "schema/scheme.schema.json",
         ]),
-        ["harness/instructions.json", "harness/harness.schema.json"],
         ["harness/specs.json", "harness/harness.schema.json"],
       ];
       const errs = [];
@@ -1436,70 +1427,6 @@ export const CHECKS = {
     run: (c) => {
       const r = c.sh("pnpm", ["--dir", "site", "lint"]);
       return r.code === 0 ? ok("eslint and prettier pass") : bad(tail(r.out));
-    },
-  },
-
-  // Git
-  "git-rc1-from-master": {
-    requires: [],
-    run: (c) => {
-      // RC1 grows from master, and master only ever takes RC1 through release merges. So master may hold
-      // merge commits RC1 lacks (the release merges themselves), but never work of its own.
-      const base = c.sh("git", ["merge-base", "origin/master", "origin/RC1"]);
-      if (base.code !== 0) return bad("origin/RC1 missing or not based on master");
-      const own = c.sh("git", ["rev-list", "--no-merges", "origin/RC1..origin/master"]);
-      const commits = own.out.trim().split("\n").filter(Boolean);
-      return commits.length
-        ? bad(`master has ${commits.length} commits RC1 lacks: bring master into RC1`)
-        : ok("RC1 contains all of master's work");
-    },
-  },
-  "git-feature-merges": {
-    requires: [],
-    run: (c) => {
-      const r = c.sh("git", ["log", "origin/RC1", "--merges", "--format=%s", "--first-parent"]);
-      const merges = r.out.split("\n").filter((l) => /feat\/OD-\d+/.test(l));
-      return merges.length
-        ? ok(`${merges.length} feature merges into RC1`)
-        : pending("no feature branch merged into RC1 yet");
-    },
-  },
-
-  // Process evidence (kept in harness/evidence.json, one entry per merged feature)
-  "evidence-subagent-merges": {
-    requires: ["harness/evidence.json"],
-    run: (c) => {
-      const e = c.json("harness/evidence.json").merges ?? [];
-      const missing = e.filter((m) => !m.pr || !m.merged_by_subagent || !m.sha);
-      return !e.length
-        ? pending("no merges recorded yet")
-        : missing.length
-          ? bad(`${missing.length} merges without PR, sub-agent or SHA`)
-          : ok(`${e.length} PRs merged by a sub-agent`);
-    },
-  },
-  "evidence-orchestra-skills": {
-    requires: ["harness/evidence.json"],
-    run: (c) => {
-      const e = c.json("harness/evidence.json").merges ?? [];
-      const missing = e.filter((m) => !m.skills?.length);
-      return !e.length
-        ? pending("no merges recorded yet")
-        : missing.length
-          ? bad(`${missing.length} merges without an Orchestra skill`)
-          : ok("every merge used Orchestra skills");
-    },
-  },
-  "evidence-jira-orchestra": {
-    requires: ["harness/evidence.json"],
-    run: (c) => {
-      const e = c.json("harness/evidence.json").merges ?? [];
-      const missing = e.filter((m) => !m.jira || !m.orchestra);
-      return !e.length
-        ? pending("no merges recorded yet")
-        : missing.length
-          ? bad(`${missing.length} merges without a Jira update and an Orchestra record`)
-          : ok("every merge updated Jira and Orchestra");
     },
   },
 

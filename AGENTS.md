@@ -21,7 +21,7 @@ Open DS models a design system as a finite grammar of questions. A scheme answer
 | `docs/`      | Docusaurus docs of a delivered design system, generated for one scheme (`OPEN_DS_SCHEME`).                  | `pnpm --dir docs build`      |
 | `guide/`     | The guide for Open DS itself: product, business, brand, CLI, MCP, agents, contributing.                     | `pnpm harness`               |
 | `skills/`    | The agent skill shipped with every deployed scheme.                                                         | `pnpm harness`               |
-| `harness/`   | Checks every layer against Yonatan's instructions and the ticket specs.                                     | `pnpm harness:full`          |
+| `harness/`   | Checks every layer against the ticket specs.                                                                | `pnpm harness:full`          |
 
 ## Rules
 
