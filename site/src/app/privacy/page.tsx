@@ -61,7 +61,8 @@ export default function PrivacyPage() {
         <p>
           We use Google Analytics 4 to see which pages people read and how they found the site, so
           we know what to improve. It runs only after you press Accept on the cookie banner. Until
-          then, and if you press Reject, the site loads nothing from Google.
+          then, and if you press Reject, the site loads nothing from Google. We load it through
+          Google Tag Manager, which also loads only after you accept and holds no other tags.
         </p>
         <p>
           When it runs, Google Analytics records the pages you open, the site that sent you, and
