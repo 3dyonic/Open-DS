@@ -8,11 +8,58 @@ description: "Context menu in Dense data."
 
 # Context menu
 
-Context menu. A menu on right-click. From shadcn/ui (new-york-v4, MIT), carried by the schemes whose inventory names it. Reads the shadcn variables, which theme.css maps onto the scheme's semantic tokens, and the radius, shadow and text scale that shadcn.css maps onto the scheme's tokens. Dark mode comes from the tokens, so no dark: classes.
+A menu of actions on right-click or long-press.
 
-See it in [Storybook](http://localhost:6006) under Components / Context menu, in every theme.
+**In Dense data.** Right-click on a row, for experts. Family: navigation. Reference: Open DS, MIT.
+
+## See it live
+
+<iframe src="http://localhost:6006/iframe.html?id=components-context-menu--examples&viewMode=story" title="Context menu examples in Storybook" loading="lazy" style="width:100%;height:320px;border:1px solid var(--color-border-default);border-radius:var(--radius-container)"></iframe>
+
+[Open Context menu in Storybook](http://localhost:6006/?path=/docs/components-context-menu--docs): every variant, the playground and its controls, in every theme.
+
+## When to use it
+
+- **Use it when:** Power users acting on an item in place, with the same actions also reachable elsewhere.
+- **Not when:** The only way to reach an action: people who don't know to right-click never find it.
+
+Instead:
+
+- [Dropdown menu](./dropdown-menu.md): The same actions from a visible button.
+
+## Words
+
+- Lead with the object, then the state: "Alert 2041 contained."
+- Use numbers, not words for numbers.
+- One verb per button. No "please", no exclamation marks.
+- Use: Investigate, Filter, Assign, Escalated, Resolved. Avoid: Oops, Awesome, Please, Simply.
+
+The labels components use, from the voice tokens:
+
+- `content.action.commit`: Save
+- `content.action.cancel`: Cancel
+- `content.action.destroy`: Delete
+- `content.action.retry`: Retry
+- `content.action.empty-action`: Change filters
+
+See [Voice and tone](../voice.md) for the whole voice.
+
+## Accessibility and keyboard
+
+| Keyboard | What happens | Not |
+| --- | --- | --- |
+| undefined | Shift F10 or the menu key opens it; arrows move; Escape closes. | undefined |
+
+
+
+## Use it in code
+
+```bash
+npx open-ds add context-menu
+```
+
+The component reads only component keys and semantic tokens, so it follows the brand and mode on `<html>`.
 
 ## Tokens it reads
 
 From shadcn/ui. It reads shadcn's variables, which theme.css maps onto this system's semantic tokens, and the radius, shadow and text scale in shadcn.css.
-

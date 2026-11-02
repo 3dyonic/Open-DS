@@ -1,10 +1,12 @@
 // The foundations (OD-180): the three token layers, then color, type, spacing, shape and motion, each
-// with the scheme's answer and its reason, and values read live from the tokens.
+// with the scheme's answer and its reason, and values read live from the tokens; then every primitive
+// and what points to it (OD-184).
 import type { Meta, StoryObj } from "@storybook/react-vite";
 import {
   FoundationsColor,
   FoundationsMotion,
   FoundationsOverview,
+  FoundationsPrimitives,
   FoundationsShape,
   FoundationsSpacing,
   FoundationsTypography,
@@ -24,3 +26,4 @@ export const Typography: Story = { render: () => <FoundationsTypography /> };
 export const Spacing: Story = { name: "Spacing and density", render: () => <FoundationsSpacing /> };
 export const Shape: Story = { name: "Shape and elevation", render: () => <FoundationsShape /> };
 export const Motion: Story = { render: () => <FoundationsMotion /> };
+export const Primitives: Story = { render: () => <FoundationsPrimitives /> };

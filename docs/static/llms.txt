@@ -19,6 +19,7 @@
 - [Naming](/foundations/naming)
 - [Voice and tone](/foundations/voice)
 - [Components](/foundations/components)
+- [Primitives](/foundations/primitives)
 - [Inventory](/components/inventory)
 - [Alert](/components/alert)
 - [Alert dialog](/components/alert-dialog)

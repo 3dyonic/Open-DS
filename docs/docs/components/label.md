@@ -8,9 +8,61 @@ description: "Label in Dense data."
 
 # Label
 
-Label. Names a field. Keep it visible above the field; never use a placeholder instead. Reads the label text role: --type-label-\*.
+The visible name of a form control.
 
-See it in [Storybook](http://localhost:6006) under Components / Label, in every theme.
+**In Dense data.** Names every control. Family: form. Reference: Open DS, MIT.
+
+## See it live
+
+<iframe src="http://localhost:6006/iframe.html?id=components-label--examples&viewMode=story" title="Label examples in Storybook" loading="lazy" style="width:100%;height:320px;border:1px solid var(--color-border-default);border-radius:var(--radius-container)"></iframe>
+
+[Open Label in Storybook](http://localhost:6006/?path=/docs/components-label--docs): every variant, the playground and its controls, in every theme.
+
+## When to use it
+
+- **Use it when:** Every form control.
+- **Not when:** Never skipped: a placeholder is not a label.
+
+Instead:
+
+- [Field](./field.md): The label laid out with hint and error.
+
+## How Dense data uses it
+
+| Situation | Use | Not | Why |
+| --- | --- | --- | --- |
+| Field label or column header | type.label | type.heading | Headers repeat on every column; a heavy style would compete with the data. |
+
+## Words
+
+- Lead with the object, then the state: "Alert 2041 contained."
+- Use numbers, not words for numbers.
+- One verb per button. No "please", no exclamation marks.
+- Use: Investigate, Filter, Assign, Escalated, Resolved. Avoid: Oops, Awesome, Please, Simply.
+
+The labels components use, from the voice tokens:
+
+- `content.action.commit`: Save
+- `content.action.cancel`: Cancel
+- `content.action.destroy`: Delete
+- `content.action.retry`: Retry
+- `content.action.empty-action`: Change filters
+
+See [Voice and tone](../voice.md) for the whole voice.
+
+## Accessibility and keyboard
+
+Test before you ship:
+
+- [ ] The label is linked to its control and makes the hit area larger. undefined
+
+## Use it in code
+
+```bash
+npx open-ds add label
+```
+
+The component reads only component keys and semantic tokens, so it follows the brand and mode on `<html>`.
 
 ## Component keys
 
@@ -30,10 +82,3 @@ The CSS variable is the key with `/` replaced by `-` and the base `@` dropped. E
 | `input/disabled/background` | Fill of a disabled input. | `color.disabled.surface` → `dense-data.theme.light.color.disabled.surface` → `color.slate.light.100` | `color.disabled.surface` → `dense-data.theme.dark.color.disabled.surface` → `color.slate.dark.100` |
 | `input/disabled/border` | Border of a disabled input. | `color.disabled.border` → `dense-data.theme.light.color.disabled.border` → `color.slate.light.200` | `color.disabled.border` → `dense-data.theme.dark.color.disabled.border` → `color.slate.dark.200` |
 | `input/disabled/text` | Text in a disabled input. | `color.disabled.text` → `dense-data.theme.light.color.disabled.text` → `color.slate.light.500` | `color.disabled.text` → `dense-data.theme.dark.color.disabled.text` → `color.slate.dark.500` |
-
-## When to use it
-
-| Situation | Use | Not | Why |
-| --- | --- | --- | --- |
-| Paragraph or help text | type.body | type.label | Help text is read in passing; body size keeps it quick. |
-| Field label or column header | type.label | type.heading | Headers repeat on every column; a heavy style would compete with the data. |

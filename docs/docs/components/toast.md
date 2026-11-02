@@ -8,9 +8,96 @@ description: "Toast in Dense data."
 
 # Toast
 
-Toast. A short confirmation that something happened ("12 orders exported."). It stays long enough to read; write it in the scheme's voice (the success-words usage rule). Tones: neutral, success, danger. Reads only component keys: --overlay-\*.
+A short message that confirms an action and goes away.
 
-See it in [Storybook](http://localhost:6006) under Components / Toast, in every theme.
+**In Dense data.** Confirms a saved change. Family: feedback. Reference: Open UX (toast), MIT.
+
+## See it live
+
+<iframe src="http://localhost:6006/iframe.html?id=components-toast--examples&viewMode=story" title="Toast examples in Storybook" loading="lazy" style="width:100%;height:320px;border:1px solid var(--color-border-default);border-radius:var(--radius-container)"></iframe>
+
+[Open Toast in Storybook](http://localhost:6006/?path=/docs/components-toast--docs): every variant, the playground and its controls, in every theme.
+
+## When to use it
+
+- **Use it when:** Saved, sent, exported: something people should notice without stopping.
+- **Not when:** A failure people must understand (alert or dialog), or a notice that stays (alert).
+
+Instead:
+
+- [Alert](./alert.md): Stays on the page.
+- [Dialog](./dialog.md): Needs an answer.
+
+## Variants
+
+What each variant is for in any design system, and what Dense data decided, with the answers behind it.
+
+| Axis | Variant | What it is for | In Dense data | Because |
+| --- | --- | --- | --- | --- |
+| tone | `neutral` | A plain confirmation. | A plain confirmation: Filters cleared. | `voice.values` |
+|  | `success` | Confirms that something people care about worked. | A short confirmation with the count: 12 alerts exported. | `voice.values`, `tasks.q2` |
+|  | `danger` | Something failed in the background. | A background failure: name the record, then the fix. | `voice.values`, `voice.lands`, `outcomes.q2` |
+
+## How Dense data uses it
+
+| Situation | Use | Not | Why |
+| --- | --- | --- | --- |
+| The words of an error | Name the record, then the fix. Flat and specific. | "Oops" or a vague apology | Experts act on the message; the record and the fix are all they need. Example: “Alert ALR-2042 not saved. Threshold must be between 0 and 100.” |
+| A success message | A short confirmation with the count | Celebration | Confirm and get out of the way; the next task is waiting. Example: “12 alerts exported.” |
+
+## Why it works this way
+
+The answers that shaped Toast here. Change one, and the decisions above change with it.
+
+| Question | Answer |
+| --- | --- |
+| How does it sound? (`voice.values`) | **Terse**. Experts want short labels and short messages. |
+| How often do people repeat actions? (`tasks.q2`) | **Constantly**. The same actions repeat many times an hour. |
+| Where do the words matter most? (`voice.lands`) | **Errors and empty states**. Errors and empty tables are where words decide the next action. |
+| What is a costly mistake? (`outcomes.q2`) | **Acting on the wrong record**. Acting on the wrong row is the costly error. |
+
+## What moves if an answer changes
+
+For each answer above: the Toast decisions it would reopen, and the other answers that follow from it.
+
+| If this changes | Toast decisions it reopens | Answers that follow |
+| --- | --- | --- |
+| `voice.values` | `tone/neutral`, `tone/success`, `tone/danger` | None |
+| `tasks.q2` | `tone/success` | `outcomes.q1`, `scenarios.q2`, `color.count`, `motion.values`, `iconography.roles`, `iconography.lands`, `theming.values`, `voice.definition`, `components.definition`, `components.values`, `theming.count` |
+| `voice.lands` | `tone/danger` | None |
+| `outcomes.q2` | `tone/danger` | `color.lands`, `voice.lands` |
+
+## Words
+
+- Lead with the object, then the state: "Alert 2041 contained."
+- Use numbers, not words for numbers.
+- One verb per button. No "please", no exclamation marks.
+- Use: Investigate, Filter, Assign, Escalated, Resolved. Avoid: Oops, Awesome, Please, Simply.
+
+The labels components use, from the voice tokens:
+
+- `content.action.commit`: Save
+- `content.action.cancel`: Cancel
+- `content.action.destroy`: Delete
+- `content.action.retry`: Retry
+- `content.action.empty-action`: Change filters
+
+See [Voice and tone](../voice.md) for the whole voice.
+
+## Accessibility and keyboard
+
+Test before you ship:
+
+- [ ] It is announced politely without taking focus, and stays long enough to read. undefined
+- [ ] Nothing people must act on lives only in a toast. undefined
+
+## Use it in code
+
+```bash
+npx open-ds add toast
+```
+
+The component reads only component keys and semantic tokens, so it follows the brand and mode on `<html>`.
 
 ## Component keys
 

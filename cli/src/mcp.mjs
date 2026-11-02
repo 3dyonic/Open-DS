@@ -23,7 +23,7 @@ import {
   withImports,
 } from "./components.mjs";
 import { context, TASKS } from "./context.mjs";
-import { componentGuide } from "./component.mjs";
+import { componentGuide, followers } from "./component.mjs";
 import { createProject } from "./create.mjs";
 import {
   assetRoots,
@@ -358,20 +358,8 @@ export function createMcpServer({ roots = assetRoots() } = {}) {
       const s = scheme(scheme_id);
       if (!qs[question_id])
         throw new Error(`Unknown question "${question_id}".`);
-      const follows = new Set([question_id]);
-      for (let grew = true; grew; ) {
-        grew = false;
-        for (const a of s.answers)
-          if (
-            !follows.has(a.question) &&
-            a.because.some((b) => follows.has(b))
-          ) {
-            follows.add(a.question);
-            grew = true;
-          }
-      }
-      const moved = new Set(follows);
-      follows.delete(question_id);
+      const follows = new Set(followers(s, question_id));
+      const moved = new Set([question_id, ...follows]);
       const scope = g.scopes.find((x) =>
         x.questions.some((q) => q.id === question_id),
       );
