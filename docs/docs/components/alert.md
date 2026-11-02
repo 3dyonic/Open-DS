@@ -8,11 +8,96 @@ description: "Alert in Dense data."
 
 # Alert
 
-Alert. A message that stays on the page. From shadcn/ui (new-york-v4, MIT), carried by the schemes whose inventory names it. Reads the shadcn variables, which theme.css maps onto the scheme's semantic tokens, and the radius, shadow and text scale that shadcn.css maps onto the scheme's tokens. Dark mode comes from the tokens, so no dark: classes.
+A message that stays on the page with the content it is about.
 
-See it in [Storybook](http://localhost:6006) under Components / Alert, in every theme.
+**In Dense data.** A problem that stays on the page. Family: feedback. Reference: Open UX (alert), MIT.
+
+## See it live
+
+<iframe src="http://localhost:6006/iframe.html?id=components-alert--examples&viewMode=story" title="Alert examples in Storybook" loading="lazy" style="width:100%;height:320px;border:1px solid var(--color-border-default);border-radius:var(--radius-container)"></iframe>
+
+[Open Alert in Storybook](http://localhost:6006/?path=/docs/components-alert--docs): every variant, the playground and its controls, in every theme.
+
+## When to use it
+
+- **Use it when:** People need to read a standing notice or how to recover, on this page, tied to what they are doing.
+- **Not when:** A short confirmation that can go away by itself, or one notice for the whole site.
+
+Instead:
+
+- [Toast](./toast.md): Short, non-blocking, goes away.
+- [Dialog](./dialog.md): Needs an answer before going on.
+- Site banner: One full-width notice for the whole site.
+
+## Variants
+
+What each variant is for in any design system, and what Dense data decided, with the answers behind it.
+
+| Axis | Variant | What it is for | In Dense data | Because |
+| --- | --- | --- | --- | --- |
+| variant | `default` | A notice that stays on the page: information or a heads-up. | Not used. Alerts here are for problems that stay on the page; news goes in a toast or a badge. | `outcomes.q2`, `tasks.q2` |
+|  | `destructive` | Something failed or will be lost, and people must act to recover. | A record that was not saved or an action that failed: name the record, then the fix, with an icon. | `outcomes.q2`, `accessibility.count`, `voice.values` |
+
+## How Dense data uses it
+
+| Situation | Use | Not | Why |
+| --- | --- | --- | --- |
+| An error message | color.status.danger with an icon | color.status.warning | Red always means fix this, and the icon says it without color. |
+
+## Why it works this way
+
+The answers that shaped Alert here. Change one, and the decisions above change with it.
+
+| Question | Answer |
+| --- | --- |
+| What is a costly mistake? (`outcomes.q2`) | **Acting on the wrong record**. Acting on the wrong row is the costly error. |
+| How often do people repeat actions? (`tasks.q2`) | **Constantly**. The same actions repeat many times an hour. |
+| How many signals carry each meaning? (`accessibility.count`) | **Three: color, icon and word**. Many statuses share one table; color alone is not enough. |
+| How does it sound? (`voice.values`) | **Terse**. Experts want short labels and short messages. |
+
+## What moves if an answer changes
+
+For each answer above: the Alert decisions it would reopen, and the other answers that follow from it.
+
+| If this changes | Alert decisions it reopens | Answers that follow |
+| --- | --- | --- |
+| `outcomes.q2` | `variant/default`, `variant/destructive` | `color.lands`, `voice.lands` |
+| `tasks.q2` | `variant/default` | `outcomes.q1`, `scenarios.q2`, `color.count`, `motion.values`, `iconography.roles`, `iconography.lands`, `theming.values`, `voice.definition`, `components.definition`, `components.values`, `theming.count` |
+| `accessibility.count` | `variant/destructive` | None |
+| `voice.values` | `variant/destructive` | None |
+
+## Words
+
+- Lead with the object, then the state: "Alert 2041 contained."
+- Use numbers, not words for numbers.
+- One verb per button. No "please", no exclamation marks.
+- Use: Investigate, Filter, Assign, Escalated, Resolved. Avoid: Oops, Awesome, Please, Simply.
+
+The labels components use, from the voice tokens:
+
+- `content.action.commit`: Save
+- `content.action.cancel`: Cancel
+- `content.action.destroy`: Delete
+- `content.action.retry`: Retry
+- `content.action.empty-action`: Change filters
+
+See [Voice and tone](../voice.md) for the whole voice.
+
+## Accessibility and keyboard
+
+Test before you ship:
+
+- [ ] An error that appears after an action is announced (role alert); a standing note is not. undefined
+- [ ] The tone also shows as an icon and words, never color alone. undefined
+
+## Use it in code
+
+```bash
+npx open-ds add alert
+```
+
+The component reads only component keys and semantic tokens, so it follows the brand and mode on `<html>`.
 
 ## Tokens it reads
 
 From shadcn/ui. It reads shadcn's variables, which theme.css maps onto this system's semantic tokens, and the radius, shadow and text scale in shadcn.css.
-

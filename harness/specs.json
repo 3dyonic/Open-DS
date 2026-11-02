@@ -380,6 +380,21 @@
         "storybook-renders",
         "json-files-validate"
       ]
+    },
+    {
+      "id": "OD-194",
+      "title": "Docs: component pages from the component reference, with the Storybook embed, and a Primitives page in the docs and Storybook",
+      "in": [
+        "each component page reads the same engine as the CLI and MCP (componentGuide)",
+        "each component page embeds its Storybook examples and links to Storybook",
+        "each component page shows when to use it, variants with this scheme's decisions and the answers behind them, how the scheme uses it, why, what moves, words, accessibility and keyboard, code and component keys",
+        "a Primitives page in the docs and in Storybook Foundations lists every primitive and what points to it"
+      ],
+      "checks": [
+        "docs-sections",
+        "docs-build",
+        "storybook-renders"
+      ]
     }
   ]
 }

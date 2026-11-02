@@ -8,11 +8,50 @@ description: "Kbd in Dense data."
 
 # Kbd
 
-Kbd. A keyboard key or shortcut. From shadcn/ui (new-york-v4, MIT), carried by the schemes whose inventory names it. Reads the shadcn variables, which theme.css maps onto the scheme's semantic tokens, and the radius, shadow and text scale that shadcn.css maps onto the scheme's tokens. Dark mode comes from the tokens, so no dark: classes.
+A keyboard key or shortcut, shown as text.
 
-See it in [Storybook](http://localhost:6006) under Components / Kbd, in every theme.
+**In Dense data.** Shows the shortcuts experts learn. Family: navigation. Reference: Open DS, MIT.
+
+## See it live
+
+<iframe src="http://localhost:6006/iframe.html?id=components-kbd--examples&viewMode=story" title="Kbd examples in Storybook" loading="lazy" style="width:100%;height:320px;border:1px solid var(--color-border-default);border-radius:var(--radius-container)"></iframe>
+
+[Open Kbd in Storybook](http://localhost:6006/?path=/docs/components-kbd--docs): every variant, the playground and its controls, in every theme.
+
+## When to use it
+
+- **Use it when:** Telling people the shortcut for an action.
+- **Not when:** Decoration, or the only way to discover an action.
+
+Instead:
+
+- [Command](./command.md): Where shortcuts are often listed.
+
+## Words
+
+- Lead with the object, then the state: "Alert 2041 contained."
+- Use numbers, not words for numbers.
+- One verb per button. No "please", no exclamation marks.
+- Use: Investigate, Filter, Assign, Escalated, Resolved. Avoid: Oops, Awesome, Please, Simply.
+
+The labels components use, from the voice tokens:
+
+- `content.action.commit`: Save
+- `content.action.cancel`: Cancel
+- `content.action.destroy`: Delete
+- `content.action.retry`: Retry
+- `content.action.empty-action`: Change filters
+
+See [Voice and tone](../voice.md) for the whole voice.
+
+## Use it in code
+
+```bash
+npx open-ds add kbd
+```
+
+The component reads only component keys and semantic tokens, so it follows the brand and mode on `<html>`.
 
 ## Tokens it reads
 
 From shadcn/ui. It reads shadcn's variables, which theme.css maps onto this system's semantic tokens, and the radius, shadow and text scale in shadcn.css.
-

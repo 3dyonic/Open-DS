@@ -8,11 +8,61 @@ description: "Slider in Dense data."
 
 # Slider
 
-Slider. A value or a range picked by dragging along a track. From shadcn/ui (new-york-v4, MIT), carried by the schemes whose inventory names it. Reads the shadcn variables, which theme.css maps onto the scheme's semantic tokens, and the radius, shadow and text scale that shadcn.css maps onto the scheme's tokens. Dark mode comes from the tokens, so no dark: classes.
+A value picked by dragging along a track, when an exact number is not needed.
 
-See it in [Storybook](http://localhost:6006) under Components / Slider, in every theme.
+**In Dense data.** Narrows a filter to a range of risk scores by dragging. Family: form. Reference: Open UX (slider), MIT.
+
+## See it live
+
+<iframe src="http://localhost:6006/iframe.html?id=components-slider--examples&viewMode=story" title="Slider examples in Storybook" loading="lazy" style="width:100%;height:320px;border:1px solid var(--color-border-default);border-radius:var(--radius-container)"></iframe>
+
+[Open Slider in Storybook](http://localhost:6006/?path=/docs/components-slider--docs): every variant, the playground and its controls, in every theme.
+
+## When to use it
+
+- **Use it when:** Volume, brightness, a rough range; pair with a number field when precision matters.
+- **Not when:** An exact answer people must type.
+
+Instead:
+
+- [Input](./input.md): An exact number.
+- [Radio group](./radio-group.md): A few named choices.
+
+## Words
+
+- Lead with the object, then the state: "Alert 2041 contained."
+- Use numbers, not words for numbers.
+- One verb per button. No "please", no exclamation marks.
+- Use: Investigate, Filter, Assign, Escalated, Resolved. Avoid: Oops, Awesome, Please, Simply.
+
+The labels components use, from the voice tokens:
+
+- `content.action.commit`: Save
+- `content.action.cancel`: Cancel
+- `content.action.destroy`: Delete
+- `content.action.retry`: Retry
+- `content.action.empty-action`: Change filters
+
+See [Voice and tone](../voice.md) for the whole voice.
+
+## Accessibility and keyboard
+
+| Keyboard | What happens | Not |
+| --- | --- | --- |
+| undefined | Arrow keys change the value; Home and End jump to the ends. | undefined |
+
+Test before you ship:
+
+- [ ] It has a name and announces its value. undefined
+
+## Use it in code
+
+```bash
+npx open-ds add slider
+```
+
+The component reads only component keys and semantic tokens, so it follows the brand and mode on `<html>`.
 
 ## Tokens it reads
 
 From shadcn/ui. It reads shadcn's variables, which theme.css maps onto this system's semantic tokens, and the radius, shadow and text scale in shadcn.css.
-

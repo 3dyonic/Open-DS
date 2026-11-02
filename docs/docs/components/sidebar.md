@@ -8,11 +8,91 @@ description: "Sidebar in Dense data."
 
 # Sidebar
 
-Sidebar. The side navigation of an app. From shadcn/ui (new-york-v4, MIT), carried by the schemes whose inventory names it. Reads the shadcn variables, which theme.css maps onto the scheme's semantic tokens, and the radius, shadow and text scale that shadcn.css maps onto the scheme's tokens. Dark mode comes from the tokens, so no dark: classes.
+The side navigation of an app, open while people work.
 
-See it in [Storybook](http://localhost:6006) under Components / Sidebar, in every theme.
+**In Dense data.** App navigation that stays open all shift. Family: navigation. Reference: Open DS, MIT.
+
+## See it live
+
+<iframe src="http://localhost:6006/iframe.html?id=components-sidebar--examples&viewMode=story" title="Sidebar examples in Storybook" loading="lazy" style="width:100%;height:320px;border:1px solid var(--color-border-default);border-radius:var(--radius-container)"></iframe>
+
+[Open Sidebar in Storybook](http://localhost:6006/?path=/docs/components-sidebar--docs): every variant, the playground and its controls, in every theme.
+
+## When to use it
+
+- **Use it when:** Apps with several sections people move between all session.
+- **Not when:** A website's main navigation (navigation menu), or a few sections that fit in tabs.
+
+Instead:
+
+- Navigation menu: Website navigation.
+- [Tabs](./tabs.md): Views of one thing.
+
+## Variants
+
+What each variant is for in any design system, and what Dense data decided, with the answers behind it.
+
+| Axis | Variant | What it is for | In Dense data | Because |
+| --- | --- | --- | --- | --- |
+| variant | `default` | Menu items with no border; hover shows the item. | Menu items with no border, quiet beside dense data. | `content.q1` |
+|  | `outline` | Menu items with a border. | Not used. Borders on every item would compete with the data. | `content.q1` |
+| size | `default` | The normal row height. | Every section of the app. | `tasks.q2` |
+|  | `sm` | A smaller row. | Long secondary lists, at the denser size. | `spacing.count` |
+|  | `lg` | A taller row with room for an icon and two lines. | Not used. Rows stay small so the whole navigation fits the screen all shift. | `content.q2` |
+
+## Why it works this way
+
+The answers that shaped Sidebar here. Change one, and the decisions above change with it.
+
+| Question | Answer |
+| --- | --- |
+| What is the main content? (`content.q1`) | **Numbers and records**. Most of the screen is numbers and records. |
+| How often do people repeat actions? (`tasks.q2`) | **Constantly**. The same actions repeat many times an hour. |
+| How many densities exist? (`spacing.count`) | **Two**. A second, denser size serves tables and toolbars. |
+| How much is on one screen? (`content.q2`) | **A lot**. Experts want many records on one screen. |
+
+## What moves if an answer changes
+
+For each answer above: the Sidebar decisions it would reopen, and the other answers that follow from it.
+
+| If this changes | Sidebar decisions it reopens | Answers that follow |
+| --- | --- | --- |
+| `content.q1` | `variant/default`, `variant/outline`, `size/sm`, `size/lg` | `content.q2`, `tasks.q1`, `human.q1`, `outcomes.q2`, `brand.q1`, `brand.q2`, `typography.roles`, `typography.count`, `typography.definition`, `typography.values`, `typography.lands`, `color.roles`, `color.values`, `color.lands`, `spacing.roles`, `spacing.count`, `spacing.definition`, `spacing.values`, `spacing.lands`, `shape.roles`, `shape.count`, `shape.values`, `shape.lands`, `elevation.definition`, `elevation.values`, `motion.roles`, `motion.count`, `motion.definition`, `motion.lands`, `iconography.count`, `iconography.definition`, `iconography.values`, `theming.lands`, `accessibility.count`, `accessibility.lands`, `voice.values`, `voice.lands`, `components.roles`, `components.count`, `components.values`, `components.lands`, `elevation.roles`, `elevation.count`, `elevation.lands` |
+| `tasks.q2` | `size/default` | `outcomes.q1`, `scenarios.q2`, `color.count`, `motion.values`, `iconography.roles`, `iconography.lands`, `theming.values`, `voice.definition`, `components.definition`, `components.values`, `theming.count` |
+| `spacing.count` | `size/sm` | None |
+| `content.q2` | `size/lg` | `brand.q2`, `typography.count`, `typography.values`, `color.roles`, `color.values`, `spacing.definition`, `spacing.values`, `shape.lands`, `iconography.count`, `iconography.definition`, `iconography.values`, `accessibility.lands`, `components.count`, `components.values` |
+
+## Words
+
+- Lead with the object, then the state: "Alert 2041 contained."
+- Use numbers, not words for numbers.
+- One verb per button. No "please", no exclamation marks.
+- Use: Investigate, Filter, Assign, Escalated, Resolved. Avoid: Oops, Awesome, Please, Simply.
+
+The labels components use, from the voice tokens:
+
+- `content.action.commit`: Save
+- `content.action.cancel`: Cancel
+- `content.action.destroy`: Delete
+- `content.action.retry`: Retry
+- `content.action.empty-action`: Change filters
+
+See [Voice and tone](../voice.md) for the whole voice.
+
+## Accessibility and keyboard
+
+Test before you ship:
+
+- [ ] It is a navigation landmark; the current section is marked; collapsing keeps names for icons. undefined
+
+## Use it in code
+
+```bash
+npx open-ds add sidebar
+```
+
+The component reads only component keys and semantic tokens, so it follows the brand and mode on `<html>`.
 
 ## Tokens it reads
 
 From shadcn/ui. It reads shadcn's variables, which theme.css maps onto this system's semantic tokens, and the radius, shadow and text scale in shadcn.css.
-

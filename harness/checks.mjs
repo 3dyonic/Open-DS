@@ -1265,10 +1265,29 @@ export const CHECKS = {
           "themes.md",
           "agents.md",
           ...g.scopes.map((sc) => `foundations/${sc.id}.md`),
+          "foundations/primitives.md",
         ];
         const missing = need.filter((p) => !pages[p]);
         if (missing.length) gaps.push(`${id}: ${missing.join(", ")}`);
         if (!Object.keys(pages).some((p) => p.startsWith("components/"))) gaps.push(`${id}: no component pages`);
+        // OD-194: every component page embeds Storybook and says how to use it in code; where the
+        // reference has variants, it shows this scheme's decisions and what a change would move.
+        for (const [p, text] of Object.entries(pages)) {
+          const m = p.match(/^components\/(.+)\.md$/);
+          if (!m || m[1] === "inventory") continue;
+          const item = g.catalogue.items.find((i) => i.id === m[1]);
+          const want = ["## See it live", "## Use it in code"];
+          if (item?.apply_when) want.push("## When to use it");
+          if (item?.variants) want.push("## Variants", "## Why it works this way", "## What moves if an answer changes");
+          const lacking = want.filter((h) => !text.includes(h));
+          if (lacking.length) gaps.push(`${id} ${p}: no ${lacking.join(", ")}`);
+        }
+        // OD-184: the primitives page lists every primitive.
+        const prim = pages["foundations/primitives.md"] ?? "";
+        const count = (function n(x) {
+          return x && typeof x === "object" ? ("$value" in x ? 1 : Object.entries(x).filter(([k]) => !k.startsWith("$")).reduce((a, [, v]) => a + n(v), 0)) : 0;
+        })(loadScheme(id, roots).tokens.primitive);
+        if (!prim.includes(`**${count}** primitives`)) gaps.push(`${id}: the primitives page does not list all ${count} primitives`);
       }
       const gen = c.sh("node", ["docs/scripts/generate.mjs", "--check"]);
       if (gen.code !== 0) gaps.push(tail(gen.out));
@@ -1277,7 +1296,7 @@ export const CHECKS = {
       return gaps.length
         ? bad(gaps.join("; "))
         : ok(
-            "every scheme has about, voice, a page per scope, components, themes and agents; the Open DS guide is in guide/",
+            "every scheme has about, voice, a page per scope, primitives, component pages with the Storybook embed and decisions, themes and agents; the Open DS guide is in guide/",
           );
     },
   },

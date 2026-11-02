@@ -8,11 +8,95 @@ description: "Field in Dense data."
 
 # Field
 
-Field. A label, control, hint and error laid out together. From shadcn/ui (new-york-v4, MIT), carried by the schemes whose inventory names it. Reads the shadcn variables, which theme.css maps onto the scheme's semantic tokens, and the radius, shadow and text scale that shadcn.css maps onto the scheme's tokens. Dark mode comes from the tokens, so no dark: classes.
+A label, control, hint and error laid out together, the same way every time.
 
-See it in [Storybook](http://localhost:6006) under Components / Field, in every theme.
+**In Dense data.** Lays out label, control and error the same way everywhere. Family: form. Reference: Open DS, MIT.
+
+## See it live
+
+<iframe src="http://localhost:6006/iframe.html?id=components-field--examples&viewMode=story" title="Field examples in Storybook" loading="lazy" style="width:100%;height:320px;border:1px solid var(--color-border-default);border-radius:var(--radius-container)"></iframe>
+
+[Open Field in Storybook](http://localhost:6006/?path=/docs/components-field--docs): every variant, the playground and its controls, in every theme.
+
+## When to use it
+
+- **Use it when:** Every form control that needs a label, a hint or an error.
+- **Not when:** A control that is not part of a form, such as a search box in a toolbar.
+
+Instead:
+
+- [Label](./label.md): The label on its own.
+
+## Variants
+
+What each variant is for in any design system, and what Dense data decided, with the answers behind it.
+
+| Axis | Variant | What it is for | In Dense data | Because |
+| --- | --- | --- | --- | --- |
+| orientation | `vertical` | The label above the control. | Forms in dialogs and sheets: the label above. | `tasks.q1` |
+|  | `horizontal` | The label beside the control. | Settings and filter panels: switches and short controls with the label beside. | `content.q2`, `spacing.count` |
+|  | `responsive` | The label above on narrow screens and beside on wide ones. | Not used. A desk with a mouse and keyboard: there is no narrow screen to adapt to. | `scenarios.q1` |
+
+## How Dense data uses it
+
+| Situation | Use | Not | Why |
+| --- | --- | --- | --- |
+| Field label or column header | type.label | type.heading | Headers repeat on every column; a heavy style would compete with the data. |
+| An error message | color.status.danger with an icon | color.status.warning | Red always means fix this, and the icon says it without color. |
+
+## Why it works this way
+
+The answers that shaped Field here. Change one, and the decisions above change with it.
+
+| Question | Answer |
+| --- | --- |
+| What is the main task? (`tasks.q1`) | **Scan and compare**. People scan rows and compare values. |
+| How much is on one screen? (`content.q2`) | **A lot**. Experts want many records on one screen. |
+| How many densities exist? (`spacing.count`) | **Two**. A second, denser size serves tables and toolbars. |
+| Where do people use it? (`scenarios.q1`) | **At a desk**. Experts work at a desk with a mouse and keyboard. |
+
+## What moves if an answer changes
+
+For each answer above: the Field decisions it would reopen, and the other answers that follow from it.
+
+| If this changes | Field decisions it reopens | Answers that follow |
+| --- | --- | --- |
+| `tasks.q1` | `orientation/vertical`, `orientation/horizontal` | `human.q1`, `outcomes.q2`, `typography.roles`, `typography.definition`, `color.lands`, `spacing.count`, `spacing.lands`, `shape.roles`, `shape.count`, `elevation.definition`, `motion.roles`, `motion.count`, `motion.lands`, `theming.lands`, `voice.lands`, `components.roles`, `components.lands`, `elevation.roles`, `elevation.count`, `elevation.lands` |
+| `content.q2` | `orientation/horizontal` | `brand.q2`, `typography.count`, `typography.values`, `color.roles`, `color.values`, `spacing.definition`, `spacing.values`, `shape.lands`, `iconography.count`, `iconography.definition`, `iconography.values`, `accessibility.lands`, `components.count`, `components.values` |
+| `spacing.count` | `orientation/horizontal` | None |
+| `scenarios.q1` | `orientation/responsive` | `accessibility.values`, `components.definition` |
+
+## Words
+
+- Lead with the object, then the state: "Alert 2041 contained."
+- Use numbers, not words for numbers.
+- One verb per button. No "please", no exclamation marks.
+- Use: Investigate, Filter, Assign, Escalated, Resolved. Avoid: Oops, Awesome, Please, Simply.
+
+The labels components use, from the voice tokens:
+
+- `content.action.commit`: Save
+- `content.action.cancel`: Cancel
+- `content.action.destroy`: Delete
+- `content.action.retry`: Retry
+- `content.action.empty-action`: Change filters
+
+See [Voice and tone](../voice.md) for the whole voice.
+
+## Accessibility and keyboard
+
+Test before you ship:
+
+- [ ] The label, hint and error are linked to the control, so they are read with it. undefined
+
+## Use it in code
+
+```bash
+npx open-ds add field
+```
+
+The component reads only component keys and semantic tokens, so it follows the brand and mode on `<html>`.
 
 ## Tokens it reads
 
 From shadcn/ui. It reads shadcn's variables, which theme.css maps onto this system's semantic tokens, and the radius, shadow and text scale in shadcn.css.
-

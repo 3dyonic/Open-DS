@@ -8,9 +8,64 @@ description: "Table in Dense data."
 
 # Table
 
-Table. Rows of data. Row height is a scheme decision (situation table-row): compact in Dense data, comfortable or large elsewhere. Numbers use the data text role so columns align where the scheme answers typography.roles with a data role. Reads only component keys: --table-\*.
+Rows and columns of comparable records, with headers.
 
-See it in [Storybook](http://localhost:6006) under Components / Table, in every theme.
+**In Dense data.** The heart of the product: rows of records. Family: data. Reference: Open UX (table), MIT.
+
+## See it live
+
+<iframe src="http://localhost:6006/iframe.html?id=components-table--examples&viewMode=story" title="Table examples in Storybook" loading="lazy" style="width:100%;height:320px;border:1px solid var(--color-border-default);border-radius:var(--radius-container)"></iframe>
+
+[Open Table in Storybook](http://localhost:6006/?path=/docs/components-table--docs): every variant, the playground and its controls, in every theme.
+
+## When to use it
+
+- **Use it when:** Records people scan, sort or compare cell by cell.
+- **Not when:** A grid of teasers (cards), or the shape of a relationship (chart).
+
+Instead:
+
+- [Data table](./data-table.md): Many records with search, filters and paging.
+- [Chart](./chart.md): The shape of the numbers.
+
+## How Dense data uses it
+
+| Situation | Use | Not | Why |
+| --- | --- | --- | --- |
+| A number in a table | type.data | type.body | Mono digits line up in columns, so values compare at a glance. |
+| A selected row or item | color.surface.selected | color.action.primary as a fill | A light tint shows selection without hiding the data. |
+| Table row height | size.row (compact) | The comfortable row | Compact rows show more records without scrolling. |
+
+## Words
+
+- Lead with the object, then the state: "Alert 2041 contained."
+- Use numbers, not words for numbers.
+- One verb per button. No "please", no exclamation marks.
+- Use: Investigate, Filter, Assign, Escalated, Resolved. Avoid: Oops, Awesome, Please, Simply.
+
+The labels components use, from the voice tokens:
+
+- `content.action.commit`: Save
+- `content.action.cancel`: Cancel
+- `content.action.destroy`: Delete
+- `content.action.retry`: Retry
+- `content.action.empty-action`: Change filters
+
+See [Voice and tone](../voice.md) for the whole voice.
+
+## Accessibility and keyboard
+
+Test before you ship:
+
+- [ ] It has a caption and header cells, so each cell is read with its header. undefined
+
+## Use it in code
+
+```bash
+npx open-ds add table
+```
+
+The component reads only component keys and semantic tokens, so it follows the brand and mode on `<html>`.
 
 ## Component keys
 
@@ -24,9 +79,3 @@ The CSS variable is the key with `/` replaced by `-` and the base `@` dropped. E
 | `table/row-border` | Line between rows. | `color.border.default` → `dense-data.theme.light.color.border.default` → `color.slate.light.200` | `color.border.default` → `dense-data.theme.dark.color.border.default` → `color.slate.dark.100` |
 | `table/row-selected` | Fill of a selected row. | `color.surface.selected` → `dense-data.theme.light.color.surface.selected` → `color.violet.light.100` | `color.surface.selected` → `dense-data.theme.dark.color.surface.selected` → `color.violet.dark.100` |
 | `table/font-size` | Cell text size. | `type.data.font-size` → `font.size.13` | same |
-
-## When to use it
-
-| Situation | Use | Not | Why |
-| --- | --- | --- | --- |
-| An empty state | Why it is empty and the one action that fills it | A blank table | An empty table with no words looks like an error. Example: “No escalated alerts. Change the date range to see older ones.” |

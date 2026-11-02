@@ -8,17 +8,88 @@ description: "Empty in Dense data."
 
 # Empty
 
-Empty. What to show when there is nothing yet. From shadcn/ui (new-york-v4, MIT), carried by the schemes whose inventory names it. Reads the shadcn variables, which theme.css maps onto the scheme's semantic tokens, and the radius, shadow and text scale that shadcn.css maps onto the scheme's tokens. Dark mode comes from the tokens, so no dark: classes.
+What a region shows when it loaded and has nothing: why, and what to do next.
 
-See it in [Storybook](http://localhost:6006) under Components / Empty, in every theme.
+**In Dense data.** An empty table says what to do next. Family: feedback. Reference: Open UX (empty_state), MIT.
 
-## Tokens it reads
+## See it live
 
-From shadcn/ui. It reads shadcn's variables, which theme.css maps onto this system's semantic tokens, and the radius, shadow and text scale in shadcn.css.
+<iframe src="http://localhost:6006/iframe.html?id=components-empty--examples&viewMode=story" title="Empty examples in Storybook" loading="lazy" style="width:100%;height:320px;border:1px solid var(--color-border-default);border-radius:var(--radius-container)"></iframe>
 
+[Open Empty in Storybook](http://localhost:6006/?path=/docs/components-empty--docs): every variant, the playground and its controls, in every theme.
 
 ## When to use it
+
+- **Use it when:** An empty list, a search with no results, or a first visit with no items yet.
+- **Not when:** Still loading (skeleton or spinner), or a load that failed (alert).
+
+Instead:
+
+- [Skeleton](./skeleton.md): Still loading.
+- [Alert](./alert.md): Something went wrong.
+
+## Variants
+
+What each variant is for in any design system, and what Dense data decided, with the answers behind it.
+
+| Axis | Variant | What it is for | In Dense data | Because |
+| --- | --- | --- | --- | --- |
+| variant | `default` | The picture shown as it is: an image or illustration. | Not used. No pictures: an empty table needs the reason and the one action that fills it. | `content.q1`, `voice.lands` |
+|  | `icon` | The picture as an icon in a small tile. | An outline icon in a small tile beside the reason and the action. | `iconography.roles`, `iconography.definition` |
+
+## How Dense data uses it
 
 | Situation | Use | Not | Why |
 | --- | --- | --- | --- |
 | An empty state | Why it is empty and the one action that fills it | A blank table | An empty table with no words looks like an error. Example: “No escalated alerts. Change the date range to see older ones.” |
+
+## Why it works this way
+
+The answers that shaped Empty here. Change one, and the decisions above change with it.
+
+| Question | Answer |
+| --- | --- |
+| What is the main content? (`content.q1`) | **Numbers and records**. Most of the screen is numbers and records. |
+| Where do the words matter most? (`voice.lands`) | **Errors and empty states**. Errors and empty tables are where words decide the next action. |
+| What do icons do? (`iconography.roles`) | **Actions and status**. Icons mark row actions and status. |
+| What icon style? (`iconography.definition`) | **Outline**. Outline icons stay light next to dense text. |
+
+## What moves if an answer changes
+
+For each answer above: the Empty decisions it would reopen, and the other answers that follow from it.
+
+| If this changes | Empty decisions it reopens | Answers that follow |
+| --- | --- | --- |
+| `content.q1` | `variant/default`, `variant/icon` | `content.q2`, `tasks.q1`, `human.q1`, `outcomes.q2`, `brand.q1`, `brand.q2`, `typography.roles`, `typography.count`, `typography.definition`, `typography.values`, `typography.lands`, `color.roles`, `color.values`, `color.lands`, `spacing.roles`, `spacing.count`, `spacing.definition`, `spacing.values`, `spacing.lands`, `shape.roles`, `shape.count`, `shape.values`, `shape.lands`, `elevation.definition`, `elevation.values`, `motion.roles`, `motion.count`, `motion.definition`, `motion.lands`, `iconography.count`, `iconography.definition`, `iconography.values`, `theming.lands`, `accessibility.count`, `accessibility.lands`, `voice.values`, `voice.lands`, `components.roles`, `components.count`, `components.values`, `components.lands`, `elevation.roles`, `elevation.count`, `elevation.lands` |
+| `voice.lands` | `variant/default` | None |
+| `iconography.roles` | `variant/icon` | None |
+| `iconography.definition` | `variant/icon` | None |
+
+## Words
+
+- Lead with the object, then the state: "Alert 2041 contained."
+- Use numbers, not words for numbers.
+- One verb per button. No "please", no exclamation marks.
+- Use: Investigate, Filter, Assign, Escalated, Resolved. Avoid: Oops, Awesome, Please, Simply.
+
+The labels components use, from the voice tokens:
+
+- `content.action.commit`: Save
+- `content.action.cancel`: Cancel
+- `content.action.destroy`: Delete
+- `content.action.retry`: Retry
+- `content.action.empty-action`: Change filters
+
+See [Voice and tone](../voice.md) for the whole voice.
+
+## Use it in code
+
+```bash
+npx open-ds add empty
+```
+
+The component reads only component keys and semantic tokens, so it follows the brand and mode on `<html>`.
+
+## Tokens it reads
+
+From shadcn/ui. It reads shadcn's variables, which theme.css maps onto this system's semantic tokens, and the radius, shadow and text scale in shadcn.css.
