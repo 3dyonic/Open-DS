@@ -1,11 +1,17 @@
-# Publishes the CLI when a GitHub release is published (OD-163):
-#   npmjs:           open-ds, through npm Trusted Publishing (no stored token), with provenance.
-#   GitHub Packages: @3dyonic/open-ds, with GITHUB_TOKEN, so it shows on the repository's Packages page.
-# The release tag must be v<version> from cli/package.json. Nothing publishes without a release.
-# Run it by hand with dry_run to see what would be published.
+# Releases the CLI on every merge to master (OD-199). A merge to master needs Yonatan's go-ahead, so
+# that go-ahead is the release decision. When master's cli/package.json has a version with no tag yet:
+#   1. test what ships;
+#   2. npmjs:           open-ds, through npm Trusted Publishing (no stored token), with provenance;
+#   3. GitHub Packages: @3dyonic/open-ds, with GITHUB_TOKEN, so it shows on the repository's Packages page;
+#   4. create the tag v<version> and its GitHub release, with notes from the merged PRs;
+#   5. attach the Figma kits plugin to the release.
+# A push to master whose version already has a tag does nothing. A release published by hand runs the
+# same steps for its tag. Run it by hand with dry_run to see what would be published.
 name: publish
 
 on:
+  push:
+    branches: [master]
   release:
     types: [published]
   workflow_dispatch:
@@ -16,13 +22,34 @@ on:
         default: true
 
 permissions:
-  # write: to attach the Figma kits plugin to the release.
+  # write: to create the tag and release, and attach the Figma kits plugin to it.
   contents: write
   id-token: write
   packages: write
 
 jobs:
+  # Is there something to release? On a push, only when the version has no tag yet.
+  plan:
+    runs-on: ubuntu-latest
+    outputs:
+      go: ${{ steps.plan.outputs.go }}
+      version: ${{ steps.plan.outputs.version }}
+    steps:
+      - uses: actions/checkout@v5
+      - id: plan
+        run: |
+          version="$(node -p "require('./cli/package.json').version")"
+          echo "version=$version" >> "$GITHUB_OUTPUT"
+          if [ "${{ github.event_name }}" = "push" ] && git ls-remote --exit-code --tags origin "refs/tags/v$version" >/dev/null; then
+            echo "::notice title=publish::v$version is already released; nothing to do."
+            echo "go=false" >> "$GITHUB_OUTPUT"
+          else
+            echo "go=true" >> "$GITHUB_OUTPUT"
+          fi
+
   cli:
+    needs: plan
+    if: needs.plan.outputs.go == 'true'
     runs-on: ubuntu-latest
     env:
       DRY: ${{ github.event_name == 'workflow_dispatch' && inputs.dry_run && '--dry-run' || '' }}
@@ -116,8 +143,18 @@ jobs:
         with:
           name: open-ds-kits-plugin
           path: open-ds-kits-plugin.zip
-      - name: Attach the plugin to the release
-        if: github.event_name == 'release'
+      # On a merge to master: the tag and the release, made after the packages are published, so a
+      # release page always means the packages are out. A release made with GITHUB_TOKEN starts no
+      # second run of this workflow.
+      - name: Create the release
+        if: github.event_name == 'push'
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        run: gh release upload "${{ github.event.release.tag_name }}" open-ds-kits-plugin.zip --clobber
+        run: |
+          tag="v${{ needs.plan.outputs.version }}"
+          gh release create "$tag" --target "$GITHUB_SHA" --title "open-ds ${{ needs.plan.outputs.version }}" --generate-notes
+      - name: Attach the plugin to the release
+        if: github.event_name != 'workflow_dispatch'
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: gh release upload "${{ github.event.release.tag_name || format('v{0}', needs.plan.outputs.version) }}" open-ds-kits-plugin.zip --clobber
