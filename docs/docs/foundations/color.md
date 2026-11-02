@@ -53,6 +53,20 @@ How color carries action, state and brand.
 <span class="ods-item"><span class="ods-swatch" style="background:var(--color-disabled-surface)"></span><span class="ods-label">color.disabled.surface</span></span>
 </div>
 
+<div class="odv-band"><div style="background:var(--color-action-primary);color:#FFFFFF"><b>Action</b>action.primary</div><div style="background:var(--color-text-primary);color:#FFFFFF"><b>Text</b>text.primary</div><div style="background:var(--color-status-success);color:#FFFFFF"><b>Success</b>status.success</div><div style="background:var(--color-status-warning);color:#FFFFFF"><b>Warning</b>status.warning</div><div style="background:var(--color-status-danger);color:#FFFFFF"><b>Danger</b>status.danger</div><div style="background:var(--color-status-info);color:#FFFFFF"><b>Info</b>status.info</div></div>
+
+## Surfaces
+
+The canvas, then the surfaces content sits on, in light and dark.
+
+<div class="odv-grid two"><div class="odv-stack" style="background:#F7F8FA;color:#161B23;border-color:#DDE2EA"><div style="inset:12px 12px auto 12px;border:0;background:none"><b>light</b></div><div style="inset:44px 16px 16px 16px;background:#FFFFFF;border-color:#DDE2EA"><b>Default</b><code>surface.default</code></div><div style="inset:104px 44px 36px 44px;background:#EEF1F5;border-color:#DDE2EA"><b>Sunken</b><code>surface.sunken</code></div></div><div class="odv-stack" style="background:#0D1117;color:#F7F8FA;border-color:#262D38"><div style="inset:12px 12px auto 12px;border:0;background:none"><b>dark</b></div><div style="inset:44px 16px 16px 16px;background:#161B23;border-color:#262D38"><b>Default</b><code>surface.default</code></div><div style="inset:104px 44px 36px 44px;background:#262D38;border-color:#262D38"><b>Sunken</b><code>surface.sunken</code></div></div></div>
+
+## Status colours in use
+
+Each status label always gets the same colour, with its dot, so colour is never the only cue. The ratio is the status colour on its subtle fill, computed from the tokens.
+
+<div class="odv-card"><div class="odv-status"><div><span class="odv-badge odv-t-info">Investigating</span></div><div class="odv-alert odv-t-info"><b>Investigating.</b> An analyst is on it: news, nothing for you to act on.</div><div><span class="odv-ratio">light 8.5:1</span> <span class="odv-ratio">dark 6.3:1</span></div></div><div class="odv-status"><div><span class="odv-badge odv-t-warning">Escalated</span></div><div class="odv-alert odv-t-warning"><b>Escalated.</b> Needs a senior analyst soon, still containable.</div><div><span class="odv-ratio">light 5.6:1</span> <span class="odv-ratio">dark 7.8:1</span></div></div><div class="odv-status"><div><span class="odv-badge odv-t-danger">Breach confirmed</span></div><div class="odv-alert odv-t-danger"><b>Breach confirmed.</b> Data left or an account was taken over: a real loss.</div><div><span class="odv-ratio">light 4.8:1</span> <span class="odv-ratio">dark 6.8:1</span></div></div><div class="odv-status"><div><span class="odv-badge odv-t-success">Resolved</span></div><div class="odv-alert odv-t-success"><b>Resolved.</b> Contained and closed.</div><div><span class="odv-ratio">light 4.7:1</span> <span class="odv-ratio">dark 6.2:1</span></div></div></div>
+
 ## The five answers
 
 | Question | Answer | Why |

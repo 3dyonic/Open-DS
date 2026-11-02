@@ -14,9 +14,7 @@ Many records in one view, with search, filters, sorting, column choice, selectio
 
 ## See it live
 
-<iframe src="http://localhost:6006/iframe.html?id=components-data-table--examples&viewMode=story" title="Data table examples in Storybook" loading="lazy" style="width:100%;height:320px;border:1px solid var(--color-border-default);border-radius:var(--radius-container)"></iframe>
-
-[Open Data table in Storybook](http://localhost:6006/?path=/docs/components-data-table--docs): every variant, the playground and its controls, in every theme.
+<div class="odv-live"><span class="odv-wait">Start Storybook to see it live: <code>npm run storybook</code></span><iframe src="http://localhost:6006/iframe.html?id=components-data-table--examples&viewMode=story&globals=scheme:dense-data" title="Data table examples in Storybook" loading="lazy"></iframe><div class="bar"><span>Live from Storybook</span><a href="http://localhost:6006/?path=/docs/components-data-table--docs">Open Data table in Storybook</a><a href="http://localhost:6006/iframe.html?id=components-data-table--examples&viewMode=story&globals=scheme:dense-data;mode:dark">See it in dark</a></div></div>
 
 ## When to use it
 
@@ -30,12 +28,7 @@ Instead:
 
 ## How Dense data uses it
 
-| Situation | Use | Not | Why |
-| --- | --- | --- | --- |
-| A number in a table | type.data | type.body | Mono digits line up in columns, so values compare at a glance. |
-| A selected row or item | color.surface.selected | color.action.primary as a fill | A light tint shows selection without hiding the data. |
-| Table row height | size.row (compact) | The comfortable row | Compact rows show more records without scrolling. |
-| An action on one row or item | Icon button, ghost, compact | Button secondary in every row | Rows repeat dozens of times; a quiet icon keeps the table readable. |
+<div class="odv-grid two"><div class="odv-dd"><div class="stage"><div class="odv-eyebrow">A number in a table</div><div style="margin-top:6px"><b style="color:var(--color-status-success)">Use</b> type.data</div><div><b style="color:var(--color-status-danger)">Not</b> type.body</div></div><div class="cap">Mono digits line up in columns, so values compare at a glance.</div></div><div class="odv-dd"><div class="stage"><div class="odv-eyebrow">A selected row or item</div><div style="margin-top:6px"><b style="color:var(--color-status-success)">Use</b> color.surface.selected</div><div><b style="color:var(--color-status-danger)">Not</b> color.action.primary as a fill</div></div><div class="cap">A light tint shows selection without hiding the data.</div></div><div class="odv-dd"><div class="stage"><div class="odv-eyebrow">Table row height</div><div style="margin-top:6px"><b style="color:var(--color-status-success)">Use</b> size.row (compact)</div><div><b style="color:var(--color-status-danger)">Not</b> The comfortable row</div></div><div class="cap">Compact rows show more records without scrolling.</div></div><div class="odv-dd"><div class="stage"><div class="odv-eyebrow">An action on one row or item</div><div style="margin-top:6px"><b style="color:var(--color-status-success)">Use</b> Icon button, ghost, compact</div><div><b style="color:var(--color-status-danger)">Not</b> Button secondary in every row</div></div><div class="cap">Rows repeat dozens of times; a quiet icon keeps the table readable.</div></div></div>
 
 ## Words
 

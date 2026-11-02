@@ -14,9 +14,7 @@ A month grid for picking a date or a range.
 
 ## See it live
 
-<iframe src="http://localhost:6006/iframe.html?id=components-calendar--examples&viewMode=story" title="Calendar examples in Storybook" loading="lazy" style="width:100%;height:320px;border:1px solid var(--color-border-default);border-radius:var(--radius-container)"></iframe>
-
-[Open Calendar in Storybook](http://localhost:6006/?path=/docs/components-calendar--docs): every variant, the playground and its controls, in every theme.
+<div class="odv-live"><span class="odv-wait">Start Storybook to see it live: <code>npm run storybook</code></span><iframe src="http://localhost:6006/iframe.html?id=components-calendar--examples&viewMode=story&globals=scheme:dense-data" title="Calendar examples in Storybook" loading="lazy"></iframe><div class="bar"><span>Live from Storybook</span><a href="http://localhost:6006/?path=/docs/components-calendar--docs">Open Calendar in Storybook</a><a href="http://localhost:6006/iframe.html?id=components-calendar--examples&viewMode=story&globals=scheme:dense-data;mode:dark">See it in dark</a></div></div>
 
 ## When to use it
 

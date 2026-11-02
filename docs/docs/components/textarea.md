@@ -14,9 +14,7 @@ A field for free text over several lines.
 
 ## See it live
 
-<iframe src="http://localhost:6006/iframe.html?id=components-textarea--examples&viewMode=story" title="Textarea examples in Storybook" loading="lazy" style="width:100%;height:320px;border:1px solid var(--color-border-default);border-radius:var(--radius-container)"></iframe>
-
-[Open Textarea in Storybook](http://localhost:6006/?path=/docs/components-textarea--docs): every variant, the playground and its controls, in every theme.
+<div class="odv-live"><span class="odv-wait">Start Storybook to see it live: <code>npm run storybook</code></span><iframe src="http://localhost:6006/iframe.html?id=components-textarea--examples&viewMode=story&globals=scheme:dense-data" title="Textarea examples in Storybook" loading="lazy"></iframe><div class="bar"><span>Live from Storybook</span><a href="http://localhost:6006/?path=/docs/components-textarea--docs">Open Textarea in Storybook</a><a href="http://localhost:6006/iframe.html?id=components-textarea--examples&viewMode=story&globals=scheme:dense-data;mode:dark">See it in dark</a></div></div>
 
 ## When to use it
 
@@ -29,9 +27,7 @@ Instead:
 
 ## How Dense data uses it
 
-| Situation | Use | Not | Why |
-| --- | --- | --- | --- |
-| Field label or column header | type.label | type.heading | Headers repeat on every column; a heavy style would compete with the data. |
+<div class="odv-grid two"><div class="odv-dd"><div class="stage"><div class="odv-eyebrow">Field label or column header</div><div style="margin-top:6px"><b style="color:var(--color-status-success)">Use</b> type.label</div><div><b style="color:var(--color-status-danger)">Not</b> type.heading</div></div><div class="cap">Headers repeat on every column; a heavy style would compete with the data.</div></div></div>
 
 ## Words
 

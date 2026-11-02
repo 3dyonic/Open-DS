@@ -135,6 +135,38 @@ function chain(tree, path) {
 }
 
 /** A small live sample of a primitive or semantic value, drawn from its CSS variable. */
+// The visual blocks (OD-182) are HTML inside Markdown. Docusaurus ends an HTML block at a blank
+// line, so each block is written on one line; docs/src/css/visual.css dresses them.
+const h = (...parts) => parts.flat().join("");
+const STATUS_CLASS = {
+  success: "success",
+  warning: "warning",
+  danger: "danger",
+  info: "info",
+};
+const badgeHtml = (label, meaning) =>
+  `<span class="odv-badge odv-t-${STATUS_CLASS[meaning] ?? "neutral"}">${attr(label)}</span>`;
+/** WCAG contrast between two hex colours, for the ratios the colour page prints. */
+function contrast(a, b) {
+  const lum = (hex) => {
+    const c = String(hex).replace("#", "").slice(0, 6).match(/../g);
+    if (!c) return 0;
+    const [r, g, bl] = c.map((x) => {
+      const v = parseInt(x, 16) / 255;
+      return v <= 0.03928 ? v / 12.92 : ((v + 0.055) / 1.055) ** 2.4;
+    });
+    return 0.2126 * r + 0.7152 * g + 0.0722 * bl;
+  };
+  const [x, y] = [lum(a), lum(b)].sort((p, q) => q - p);
+  return (x + 0.05) / (y + 0.05);
+}
+const ink = (hex) => {
+  const c = String(hex).replace("#", "").slice(0, 6);
+  return /^[0-9a-f]{6}$/i.test(c) && contrast(`#${c}`, "#000000") > 9
+    ? "#000000"
+    : "#FFFFFF";
+};
+
 // DTCG lets a group carry $type for its tokens; fall back to the path when a token has none.
 const primitiveType = (path) =>
   ({
@@ -350,19 +382,152 @@ export function docsPages(
   const RULES = "| Situation | Use | Not | Why |\n| --- | --- | --- | --- |\n";
   const pages = {};
 
-  // About this system
+  // About this system: a home that shows the system before it explains it (OD-182). A product screen
+  // built from its own components and sample content, the answers that shape it most, then tiles into
+  // every section. The full reasons follow underneath.
+  const smp = scheme.samples ?? {};
+  const meaning = Object.fromEntries(
+    (smp.statuses ?? []).map((x) => [x.label, x.meaning]),
+  );
+  const cited = {};
+  for (const c of scheme.inventory?.in ?? [])
+    for (const axis of Object.values(c.variants ?? {}))
+      for (const d of Object.values(axis))
+        for (const q of d.because ?? []) cited[q] = (cited[q] ?? 0) + 1;
+  for (const u of scheme.usage)
+    for (const q of u.because ?? []) cited[q] = (cited[q] ?? 0) + 1;
+  const top = Object.entries(cited)
+    .filter(([q]) => answer(q))
+    .sort((a, b) => b[1] - a[1] || a[0].localeCompare(b[0]))
+    .slice(0, 3)
+    .map(([q]) => q);
+  const primCount = leaves(primitiveTree, "").length;
+  const tableHtml = smp.table
+    ? h(
+        `<div class="odv-app"><div class="odv-app-bar"><b>${attr(smp.table.caption)}</b>`,
+        smp.actions
+          ? `<span class="odv-btn secondary">${attr(smp.actions.secondary)}</span><span class="odv-btn primary">${attr(smp.actions.primary)}</span>`
+          : "",
+        `</div><div class="odv-scroll"><table><thead><tr>`,
+        smp.table.columns.map(
+          (c) => `<th${c.numeric ? ' class="num"' : ""}>${attr(c.label)}</th>`,
+        ),
+        `</tr></thead><tbody>`,
+        smp.table.rows
+          .slice(0, 6)
+          .map(
+            (r) =>
+              `<tr>${r.cells.map((c, i) => `<td${smp.table.columns[i]?.numeric ? ' class="num"' : ""}>${attr(c)}</td>`).join("")}<td>${badgeHtml(r.status, meaning[r.status])}</td></tr>`,
+          ),
+        `</tbody></table></div></div>`,
+      )
+    : "";
+  const firstRamp = leaves(primitiveTree, "")
+    .filter((x) => x.path.startsWith(".color.") && /^#/.test(String(x.ref)))
+    .slice(0, 12);
+  const tiles = [
+    [
+      "primitives/index.md",
+      "Primitives",
+      `All ${primCount} raw values, and the tokens that point to each.`,
+      `<span class="odv-strip">${firstRamp.map((x) => `<span style="background:${x.ref}"></span>`).join("")}</span>`,
+    ],
+    [
+      "foundations/index.md",
+      "Foundations",
+      "Color, type, spacing, shape and motion, each with the answer behind it.",
+      h(
+        [
+          "color.action.primary",
+          "color.status.success",
+          "color.status.warning",
+          "color.status.danger",
+          "color.status.info",
+          "color.text.primary",
+        ].map(
+          (p) =>
+            `<span class="odv-dot" style="background:${cssVar(p)}"></span>`,
+        ),
+        `<span class="odv-aa">Aa</span>`,
+      ),
+    ],
+    [
+      "components/inventory.md",
+      "Components",
+      `${(scheme.inventory?.in ?? []).length} components, each with when to use it and how ${attr(scheme.name)} decided.`,
+      h(
+        smp.actions
+          ? `<span class="odv-btn primary">${attr(smp.actions.primary)}</span>`
+          : "",
+        (smp.statuses ?? [])[2]
+          ? badgeHtml(smp.statuses[2].label, smp.statuses[2].meaning)
+          : "",
+      ),
+    ],
+    [
+      "voice.md",
+      "Voice and tone",
+      attr(scheme.voice?.summary?.text ?? ""),
+      `<span style="font-weight:600">${attr(scheme.voice?.principles?.[0]?.text ?? "")}</span>`,
+    ],
+    [
+      "themes.md",
+      "Themes",
+      `${scheme.themes.length} themes. Only semantic tokens change; components never do.`,
+      scheme.themes
+        .map(
+          (th) =>
+            `<span class="odv-dot" style="width:34px;height:34px;background:${value(th, "color.surface.canvas", "")}" title="${attr(th.id)}"></span>`,
+        )
+        .join(""),
+    ],
+    [
+      "agents.md",
+      "For agents",
+      "AGENTS.md, the skill and the MCP: an AI builds the way the system would.",
+      `<code>open-ds why ${scheme.id} button</code>`,
+    ],
+  ];
   pages["index.md"] =
     fm({
       sidebar_position: 1,
       slug: "/",
       title: scheme.name,
       description: scheme.summary,
+      hide_title: true,
+      hide_table_of_contents: true,
     }) +
     NOTE +
-    `# ${scheme.name}\n\n${scheme.summary}\n\n` +
+    h(
+      `<div class="odv-hero"><div>`,
+      `<div class="odv-eyebrow">Design system · built from ${scheme.answers.length} answered questions</div>`,
+      `<h1>${attr(scheme.name)}</h1><p class="odv-lede">${attr(scheme.summary)}</p>`,
+      `<div class="odv-cta"><a class="odv-btn primary" href="foundations/">Explore the foundations</a><a class="odv-btn secondary" href="${storybook}">Open Storybook</a></div>`,
+      `<div class="odv-facts"><div><b>${(scheme.inventory?.in ?? []).length}</b><span>components</span></div><div><b>${primCount}</b><span>primitives</span></div><div><b>${scheme.themes.length}</b><span>themes</span></div></div>`,
+      `</div>${tableHtml}</div>`,
+    ) +
+    `\n\n## Why it looks like this\n\nEvery decision follows from an answer. These are the answers its components and rules cite most.\n\n` +
+    h(
+      `<div class="odv-grid">`,
+      top.map(
+        (q) =>
+          `<div class="odv-card"><div class="odv-eyebrow">${attr(qs[q].text)}</div><q>${attr(label(q))}</q><p>${attr(answer(q).why)}</p><span class="odv-ans">${q}</span></div>`,
+      ),
+      `</div>`,
+    ) +
+    `\n\n## Explore the system\n\n` +
+    h(
+      `<div class="odv-grid">`,
+      tiles.map(
+        ([href, name, text, art]) =>
+          `<a class="odv-card odv-tile" href="${href.replace(/\.md$/, "").replace(/index$/, "")}"><div class="art">${art}</div><div class="body"><b>${name}</b><span>${text}</span></div></a>`,
+      ),
+      `</div>`,
+    ) +
+    `\n\n## Who it is for\n\n` +
     `- **Use it for:** ${scheme.ai.use_when}\n- **Not for:** ${scheme.ai.avoid_when}\n- **Products like:** ${scheme.ai.example_products.join(", ")}\n- **Themes:** ${scheme.themes.map((t) => t.id).join(", ")}\n\n` +
     `## Use scenarios\n\n${scheme.scenarios.map((s) => `- ${s.text}`).join("\n")}\n\n` +
-    `## Why this design system is the way it is\n\nEvery decision in this system follows from these answers.\n\n` +
+    `## Every answer\n\nEvery decision in this system follows from these answers.\n\n` +
     g.reasons
       .map(
         (r) =>
@@ -425,6 +590,73 @@ export function docsPages(
       })
       .join("\n") +
     "\n";
+  // The colour page leads with the colours in use (OD-182): the key colours as a band, the surfaces
+  // as a stack in light and dark, and each status in use with its contrast, computed from the tokens.
+  const colorVisuals = () => {
+    const band = [
+      ["Action", "color.action.primary"],
+      ["Text", "color.text.primary"],
+      ["Success", "color.status.success"],
+      ["Warning", "color.status.warning"],
+      ["Danger", "color.status.danger"],
+      ["Info", "color.status.info"],
+    ];
+    const hex = (th, p) =>
+      String(value(th, p, "")).match(/#[0-9a-f]{6,8}/i)?.[0] ?? "";
+    const stack = (th) => {
+      const [cv, df, sk, tx, bd] = [
+        "color.surface.canvas",
+        "color.surface.default",
+        "color.surface.sunken",
+        "color.text.primary",
+        "color.border.default",
+      ].map((p) => hex(th, p));
+      return h(
+        `<div class="odv-stack" style="background:${cv};color:${tx};border-color:${bd}">`,
+        `<div style="inset:12px 12px auto 12px;border:0;background:none"><b>${attr(th.id)}</b></div>`,
+        `<div style="inset:44px 16px 16px 16px;background:${df};border-color:${bd}"><b>Default</b><code>surface.default</code></div>`,
+        `<div style="inset:104px 44px 36px 44px;background:${sk};border-color:${bd}"><b>Sunken</b><code>surface.sunken</code></div>`,
+        `</div>`,
+      );
+    };
+    const sts = (smp.statuses ?? []).filter(
+      (x, j, all) =>
+        STATUS_CLASS[x.meaning] &&
+        all.findIndex((y) => y.meaning === x.meaning) === j,
+    );
+    return (
+      h(
+        `<div class="odv-band">`,
+        band.map(([n, p]) => {
+          const c = hex(first, p);
+          return `<div style="background:${cssVar(p)};color:${ink(c)}"><b>${n}</b>${p.replace(/^color\./, "")}</div>`;
+        }),
+        `</div>`,
+      ) +
+      `\n\n## Surfaces\n\nThe canvas, then the surfaces content sits on, in ${scheme.themes.map((th) => th.id).join(" and ")}.\n\n` +
+      h(
+        `<div class="odv-grid two">`,
+        [first, dark].filter(Boolean).map(stack),
+        `</div>`,
+      ) +
+      (sts.length
+        ? `\n\n## Status colours in use\n\nEach status label always gets the same colour, with its dot, so colour is never the only cue. The ratio is the status colour on its subtle fill, computed from the tokens.\n\n` +
+          h(
+            `<div class="odv-card">`,
+            sts.map((x) => {
+              const k = `color.status.${x.meaning}`;
+              const r = (th) =>
+                th
+                  ? contrast(hex(th, k), hex(th, `${k}.subtle`)).toFixed(1)
+                  : "";
+              return `<div class="odv-status"><div>${badgeHtml(x.label, x.meaning)}</div><div class="odv-alert odv-t-${x.meaning}"><b>${attr(x.label)}.</b> ${attr(x.why)}</div><div><span class="odv-ratio">${first.id} ${r(first)}:1</span> <span class="odv-ratio">${dark?.id ?? ""} ${r(dark)}:1</span></div></div>`;
+            }),
+            `</div>`,
+          )
+        : "") +
+      "\n\n"
+    );
+  };
   g.scopes.forEach((sc, i) => {
     const tokens = owned(scheme, sc.owns ?? []);
     const usage = scheme.usage.filter((u) => sits[u.situation].scope === sc.id);
@@ -454,7 +686,7 @@ export function docsPages(
         description: `${scheme.name}: ${sc.description}`,
       }) +
       NOTE +
-      `# ${sc.title}\n\n${sc.description}\n\n${SPECIMEN}## The five answers\n\n| Question | Answer | Why |\n| --- | --- | --- |\n` +
+      `# ${sc.title}\n\n${sc.description}\n\n${SPECIMEN}${sc.id === "color" ? colorVisuals() : ""}## The five answers\n\n| Question | Answer | Why |\n| --- | --- | --- |\n` +
       sc.questions
         .map(
           (q) =>
@@ -542,7 +774,7 @@ export function docsPages(
     JSON.stringify(
       {
         label: "Primitives",
-        position: 3.5,
+        position: 2.5,
         link: { type: "doc", id: "primitives/index" },
       },
       null,
@@ -574,6 +806,28 @@ export function docsPages(
       }) +
       NOTE +
       `# ${k.title}\n\n${k.list.length} primitives, ${k.list.filter((x) => usedBy[x.path]).length} used.\n\n` +
+      // Colours lead with each family as a ramp (OD-182): every step, its value, and how many tokens
+      // use it. Hover a step for the list; the table under it has the detail.
+      (k.id === "color"
+        ? `<div class="odv-legend"><span>● used by a token</span><span>◌ not used yet</span></div>\n\n` +
+          fams
+            .map((f) => {
+              const list = k.list.filter(
+                (x) => family(x.path) === f && /^#/.test(String(x.ref)),
+              );
+              if (!list.length) return "";
+              return h(
+                `<div class="odv-ramp-h"><code>${f}</code><span>${list.filter((x) => usedBy[x.path]).length} of ${list.length} used</span></div><div class="odv-ramp">`,
+                list.map((x) => {
+                  const u = usedBy[x.path] ?? [];
+                  return `<div class="odv-step${u.length ? "" : " unused"}" style="background:${x.ref};color:${ink(x.ref)}" title="${attr(u.map((y) => `${y.token} (${y.where})`).join(", ") || "Not used yet")}"><span>${x.path.split(".").pop()}</span><span><span class="use">${u.length || ""}</span><br>${x.ref}</span></div>`;
+                }),
+                `</div>`,
+              );
+            })
+            .join("\n\n") +
+          `\n\n## Every colour\n\n`
+        : "") +
       (fams.length > 1
         ? fams
             .map(
@@ -640,13 +894,13 @@ export function docsPages(
   // CLI's component command and the MCP's get_component, so the docs, Storybook and agents agree, and
   // adds what Storybook cannot: the answers behind each decision and what a change would move.
   const names = built.filter((n) => !scheme.inventory || n in inventory);
+  // Embeds open the story in this design system: the Open DS Storybook reads the scheme (and the first
+  // brand) from its toolbar global; a created project's Storybook has one scheme and ignores it.
+  const brandIds = Object.keys(scheme.tokens.brands ?? {});
+  const sbScheme = `scheme:${scheme.id}${brandIds.length > 1 ? `--${brandIds[0]}` : ""}`;
   const pageOf = (id) =>
     names.includes(id) ? `[${title(id)}](./${id}.md)` : title(id);
   const qText = (id) => qs[id]?.text ?? id;
-  const answerLine = (id) => {
-    const a = answer(id);
-    return a ? `**${label(id)}**. ${esc(a.why)}` : "";
-  };
   const contentWords = Object.entries(scheme.tokens.content?.action ?? {})
     .filter(([k]) => !k.startsWith("$"))
     .map(([k, v]) => `- \`content.action.${k}\`: ${esc(v.$value)}`);
@@ -668,8 +922,10 @@ export function docsPages(
     // embed is plain HTML; the link works where the embed cannot load.
     parts.push(
       `## See it live\n\n` +
-        `<iframe src="${storybook}/iframe.html?id=components-${name}--examples&viewMode=story" title="${title(name)} examples in Storybook" loading="lazy" style="width:100%;height:320px;border:1px solid var(--color-border-default);border-radius:var(--radius-container)"></iframe>\n\n` +
-        `[Open ${title(name)} in Storybook](${storybook}/?path=/docs/components-${name}--docs): every variant, the playground and its controls, in every theme.`,
+        h(
+          `<div class="odv-live"><span class="odv-wait">Start Storybook to see it live: <code>npm run storybook</code></span><iframe src="${storybook}/iframe.html?id=components-${name}--examples&viewMode=story&globals=${sbScheme}" title="${title(name)} examples in Storybook" loading="lazy"></iframe>`,
+          `<div class="bar"><span>Live from Storybook</span><a href="${storybook}/?path=/docs/components-${name}--docs">Open ${title(name)} in Storybook</a><a href="${storybook}/iframe.html?id=components-${name}--examples&viewMode=story&globals=${sbScheme};mode:dark">See it in dark</a></div></div>`,
+        ),
     );
     if (r.apply_when)
       parts.push(
@@ -681,7 +937,39 @@ export function docsPages(
     const variants = guide?.variants ?? [];
     if (variants.length)
       parts.push(
-        `## Variants\n\nWhat each variant is for in any design system, and what ${esc(scheme.name)} decided, with the answers behind it.\n\n` +
+        `## Variants\n\nWhat each variant is for in any design system, and what ${esc(scheme.name)} decided, with the answers behind it. Each sample is the live story with that variant set.\n\n` +
+          [...new Set(variants.map((v) => v.axis))]
+            .map((axis) =>
+              h(
+                `<div class="odv-axis"><code>${axis}</code></div><div class="odv-grid">`,
+                variants
+                  .filter((v) => v.axis === axis)
+                  .map((v) => {
+                    const d = v.here;
+                    const stage =
+                      axis === "state"
+                        ? ""
+                        : `<div class="stage"><iframe src="${storybook}/iframe.html?id=components-${name}--playground&viewMode=story&globals=${sbScheme}&args=${axis}:${v.id}" title="${title(name)} ${v.id}" loading="lazy" tabindex="-1"></iframe></div>`;
+                    const here = !d
+                      ? "Not decided yet."
+                      : d.not_used
+                        ? `<b>Not used:</b> ${attr(d.why)}`
+                        : `<b>In ${attr(scheme.name)}:</b> ${attr(d.use)}`;
+                    return `<div class="odv-card odv-vcard${d?.not_used ? " off" : ""}">${stage}<div class="body"><code>${v.id}</code><div class="ref">${attr(v.reference.overview)}</div><div class="here">${here}</div>${(
+                      d?.because ?? []
+                    )
+                      .filter((b) => answer(b))
+                      .map(
+                        (b) =>
+                          `<span class="odv-ans" title="${attr(qText(b))}">${attr(label(b))} · ${b}</span> `,
+                      )
+                      .join("")}</div></div>`;
+                  }),
+                `</div>`,
+              ),
+            )
+            .join("\n\n") +
+          `\n\n### In detail\n\n` +
           `| Axis | Variant | What it is for | In ${esc(scheme.name)} | Because |\n| --- | --- | --- | --- | --- |\n` +
           variants
             .map((v, j) => {
@@ -706,7 +994,15 @@ export function docsPages(
     const rules = guide?.rules ?? [];
     if (rules.length)
       parts.push(
-        `## How ${esc(scheme.name)} uses it\n\n${RULES}${rules.map((u) => rule(u)).join("\n")}`,
+        `## How ${esc(scheme.name)} uses it\n\n` +
+          h(
+            `<div class="odv-grid two">`,
+            rules.map(
+              (u) =>
+                `<div class="odv-dd"><div class="stage"><div class="odv-eyebrow">${attr(u.title ?? u.situation)}</div><div style="margin-top:6px"><b style="color:var(--color-status-success)">Use</b> ${attr(u.use)}</div><div><b style="color:var(--color-status-danger)">Not</b> ${attr(u.not)}</div></div><div class="cap">${attr(u.why)}${u.example ? ` Example: “${attr(u.example)}”` : ""}</div></div>`,
+            ),
+            `</div>`,
+          ),
       );
     const cited = [
       ...new Set(variants.flatMap((v) => v.here?.because ?? [])),
@@ -714,10 +1010,17 @@ export function docsPages(
     if (cited.length) {
       parts.push(
         `## Why it works this way\n\nThe answers that shaped ${title(name)} here. Change one, and the decisions above change with it.\n\n` +
-          `| Question | Answer |\n| --- | --- |\n` +
-          cited
-            .map((q) => `| ${esc(qText(q))} (\`${q}\`) | ${answerLine(q)} |`)
-            .join("\n"),
+          h(
+            `<div class="odv-grid">`,
+            cited.map((q) => {
+              const moved = new Set([q, ...followers(scheme, q)]);
+              const n = variants.filter((v) =>
+                (v.here?.because ?? []).some((b) => moved.has(b)),
+              ).length;
+              return `<div class="odv-card"><div class="odv-eyebrow">${attr(qText(q))}</div><q>${attr(label(q))}</q><p>${attr(answer(q).why)}</p><span class="odv-ans">${q}</span><div class="odv-moves">Change it and ${n} ${title(name)} decision${n === 1 ? "" : "s"} reopen.</div></div>`;
+            }),
+            `</div>`,
+          ),
       );
       parts.push(
         `## What moves if an answer changes\n\nFor each answer above: the ${title(name)} decisions it would reopen, and the other answers that follow from it.\n\n` +
