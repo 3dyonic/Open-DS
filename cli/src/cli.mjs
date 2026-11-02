@@ -36,6 +36,15 @@ const HELP = `open-ds: deploy an Open DS scheme as a full design system.
                                        token (color.status.danger) or a situation
   open-ds component <scheme> <id>      what a component and each variant are for, and how this scheme
                                        uses each one (or does not), with its rules
+  open-ds check [dir] [--scheme <id>]  check UI code against the scheme: raw colours and sizes, components it
+                                       does not carry, variants it does not use; exits 1 when it finds any
+  open-ds copy <scheme> <kind> <text>  check a label or message against the voice; kind: button, error,
+                                       success, empty, confirm or hint
+  open-ds change <scheme> <question-id> <option>
+  open-ds change <scheme> --token <path> <value>
+                                       plan a change: what it reopens, or the contrast it keeps; changes nothing
+  open-ds token <scheme> <words>       the tokens and component keys that fit an intent
+  open-ds fit <words>                  rank the schemes against a product description
   open-ds create <dir> --scheme <id> [--brand <id>]
                                        write a full design system project: Style Dictionary tokens,
                                        components, Storybook, Docusaurus docs, agent files and CI
@@ -47,7 +56,7 @@ const HELP = `open-ds: deploy an Open DS scheme as a full design system.
                                        the Open DS MCP server: stdio for a local agent, or
                                        Streamable HTTP at /mcp (read-only, no authentication yet)
 
-Add --json to list, show, why, when and component for machine-readable output.`;
+Add --json to list, show, why, when, component, check, copy, change, token and fit for machine-readable output.`;
 
 function flag(args, name, fallback) {
   const i = args.indexOf(name);
@@ -390,6 +399,138 @@ export async function run(argv) {
         );
       out(c, () => console.log(JSON.stringify(c, null, 2)));
       return 0;
+    }
+    // The tools behind the skills (OD-202), one engine with the MCP server.
+    if (["check", "copy", "change", "token", "fit"].includes(cmd)) {
+      const tools = await import("./tools.mjs");
+      const g = grammar();
+      if (cmd === "check") {
+        const dir = resolve(
+          args[0] && !args[0].startsWith("--") ? args[0] : ".",
+        );
+        const read = (f) =>
+          existsSync(join(dir, f))
+            ? JSON.parse(readFileSync(join(dir, f), "utf8"))
+            : null;
+        const id =
+          flag(args, "--scheme") ??
+          read("open-ds.json")?.scheme ??
+          read("scheme.json")?.id;
+        if (!id)
+          throw new Error(
+            "check needs a scheme: run it in a project with open-ds.json, or add --scheme <id>.",
+          );
+        const files = [];
+        const walk = (rel) => {
+          for (const e of readdirSync(join(dir, rel), {
+            withFileTypes: true,
+          })) {
+            const p = rel ? `${rel}/${e.name}` : e.name;
+            if (e.isDirectory()) {
+              if (
+                !/^(node_modules|\.git|dist|build|storybook-static|\.next|\.open-ds)$/.test(
+                  e.name,
+                )
+              )
+                walk(p);
+            } else if (/\.(tsx|jsx|ts|js|css|html|vue|svelte)$/.test(e.name))
+              files.push({
+                path: p,
+                content: readFileSync(join(dir, p), "utf8"),
+              });
+          }
+        };
+        walk("");
+        const result = tools.checkUi(loadScheme(id), g, files);
+        out(result, () => {
+          for (const f of result.findings)
+            console.log(
+              `${f.file}:${f.line}  ${f.rule}  ${f.message}\n    fix: ${f.fix}`,
+            );
+          console.log(
+            result.pass
+              ? `Clean: ${files.length} files follow ${id}.`
+              : `${result.findings.length} findings in ${files.length} files.`,
+          );
+        });
+        return result.pass ? 0 : 1;
+      }
+      if (cmd === "copy") {
+        const [id, kind, ...text] = args;
+        const result = tools.checkCopy(loadScheme(id ?? ""), g, {
+          kind,
+          text: text.join(" "),
+        });
+        out(result, () => {
+          for (const f of result.findings)
+            console.log(`${f.rule}: ${f.message}`);
+          if (result.rule)
+            console.log(
+              `Rule for ${result.situation}: use ${result.rule.use}. Not: ${result.rule.not}.${result.rule.example ? ` Example: "${result.rule.example}"` : ""}`,
+            );
+          console.log(
+            result.pass
+              ? "Passes the voice."
+              : `${result.findings.length} findings.`,
+          );
+        });
+        return result.pass ? 0 : 1;
+      }
+      if (cmd === "change") {
+        const [id, ...more] = args;
+        const s = loadScheme(id ?? "");
+        const token = flag(more, "--token");
+        const change = token
+          ? { token, value: more[more.indexOf("--token") + 2] }
+          : { question: more[0], option: more[1] };
+        if (token ? !change.value : !change.question || !change.option)
+          throw new Error(
+            "change needs <question-id> <option>, or --token <path> <value>.",
+          );
+        const plan = tools.planChange(s, g, change);
+        out(plan, () => {
+          console.log(
+            plan.kind === "answer"
+              ? `${plan.text} ${plan.from?.label} → ${plan.to.label}`
+              : `${plan.token}: ${plan.from} → ${plan.to}`,
+          );
+          for (const e of plan.edits) console.log(`  - ${e}`);
+          if (plan.kind === "token")
+            console.log(
+              plan.pass
+                ? "Every colour pair keeps its contrast."
+                : "Some colour pairs would fail.",
+            );
+        });
+        return 0;
+      }
+      if (cmd === "token") {
+        const [id, ...q] = args;
+        const found = tools.findToken(loadScheme(id ?? ""), g, q.join(" "));
+        out(found, () => {
+          for (const r of found.results)
+            console.log(`${r.token}  (${r.kind}) ${r.intent}`);
+          if (found.situation)
+            console.log(
+              `Situation ${found.situation.id}: use ${found.situation.use}. Not: ${found.situation.not}.`,
+            );
+        });
+        return 0;
+      }
+      if (cmd === "fit") {
+        const ranked = tools.fitScheme(
+          schemeIds().map((x) => loadScheme(x)),
+          args.join(" "),
+        );
+        out(ranked, () =>
+          ranked.forEach((r) =>
+            console.log(
+              `${String(r.score).padStart(3)}  ${r.scheme.padEnd(18)} matched: ${r.matched.join(", ") || "-"}${r.against.length ? `; against: ${r.against.join(", ")}` : ""}`,
+            ),
+          ),
+        );
+        return 0;
+      }
     }
     if (cmd === "create") {
       if (!args[0] || args[0].startsWith("--"))

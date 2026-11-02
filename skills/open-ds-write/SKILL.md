@@ -1,13 +1,46 @@
 ---
 name: open-ds-write
-description: Write interface copy in the voice of an Open DS scheme. Use for button labels, errors, success and empty messages, confirmations and first-visit hints.
+description: Write interface copy in the voice of an Open DS scheme. Use when you write labels, errors, success or empty messages, confirmations or hints.
+tools:
+  - get_scheme
+  - when_to_use
+  - get_component
+  - check_copy
 ---
 
 # Write in the scheme's voice
 
-1. Read the voice: `npx open-ds show <scheme>` or `get_scheme` with part `voice`. Note its summary, principles and the words to use and avoid.
-2. For each message, find its situation with `when_to_use`: button-label, error-words, success-words, empty-words, confirm-words or first-visit. Each rule gives the tone, a rule and an example.
-3. Match the example's shape, not its words. Use the product's own objects and numbers.
-4. Buttons: one verb, the action itself. Errors: what happened, then what to do. Empty states: why it is empty, then the next step. Confirmations: name the object and the consequence.
-5. Never use the words the voice says to avoid.
-6. Keep it short. If a message needs two sentences, the first says what happened.
+## Why
+
+The voice is part of the design system. Words that follow it make every screen sound like one product.
+
+## When
+
+- You write a button label, an error, a success message or an empty state.
+- You write a confirmation or a first-visit hint.
+
+## Input
+
+- The scheme id and the message to write.
+- The product's own objects and numbers.
+
+## Run
+
+1. Read the voice with `get_scheme` and part `voice`, or run `npx open-ds show <scheme>`.
+2. Note the summary, the principles, and the words to use and to avoid.
+3. Find the situation with `when_to_use`: button-label, error-words, success-words, empty-words, confirm-words or first-visit.
+4. Match the shape of the rule's example. Use the product's own objects and numbers.
+5. For words inside a component, read its rules with `get_component`.
+6. Write a button as one verb: the action itself.
+7. Write an error as what happened, then what to do.
+8. Write an empty state as why it is empty, then the next step.
+9. Write a confirmation that names the object and the consequence.
+10. Check each message with `check_copy`, or run `open-ds copy <scheme> <kind> <text>`.
+11. Fix each finding, then check the message again.
+
+## Done
+
+- `check_copy` passes for each message.
+- The copy has no word from the avoid list.
+- Each message has at most two sentences. The first says what happened.
+- Each message follows the rule of its situation.

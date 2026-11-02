@@ -825,6 +825,66 @@ export const CHECKS = {
       return ok("agent skill has name and description");
     },
   },
+  "skills-shape": {
+    requires: ["skills", "cli/src/mcp.mjs", "cli/src/cli.mjs"],
+    run: (c) => {
+      // OD-198: every skill follows the skill standard in Orchestra, and names only real tools.
+      // Front matter: name (the folder), a description that says what and "Use when" in at most 25
+      // words, and tools: the grant list. Body: Why, When, Input, Run, Done, in that order, with at most
+      // 20 words a sentence. Every listed tool exists and appears in a step; every tool, command and
+      // skill the body names exists. A standard that nothing checks gets missed.
+      const tools = new Set([...c.read("cli/src/mcp.mjs").matchAll(/registerTool\(\s*"(\w+)"/g)].map((m) => m[1]));
+      const commands = new Set(
+        [...c.read("cli/src/cli.mjs").matchAll(/open-ds ([a-z]+)\s/g)].map((m) => m[1]),
+      );
+      const names = c.walk("skills", (f) => f.endsWith("SKILL.md")).map((f) => f.split("/").at(-2));
+      const SECTIONS = ["Why", "When", "Input", "Run", "Done"];
+      const gaps = [];
+      for (const name of names) {
+        const f = `skills/${name}/SKILL.md`;
+        const text = c.read(f);
+        const fm = frontMatter(text) ?? "";
+        const body = text.replace(/^---\n[\s\S]*?\n---\n/, "");
+        const field = (k) => fm.match(new RegExp(`^${k}:\\s*(.*)$`, "m"))?.[1]?.trim() ?? "";
+        if (field("name") !== name) gaps.push(`${f}: name is not ${name}`);
+        const desc = field("description");
+        if (!/\bUse when\b/.test(desc)) gaps.push(`${f}: the description has no "Use when"`);
+        if (desc.split(/\s+/).length > 25) gaps.push(`${f}: the description has more than 25 words`);
+        // tools: a YAML list, one tool a line ("  - get_component"), or inline ([a, b]).
+        const block = fm.match(/^tools:\s*\n((?:\s+-\s+\S+\n?)+)/m)?.[1];
+        const granted = block
+          ? [...block.matchAll(/-\s+(\S+)/g)].map((m) => m[1])
+          : (field("tools").match(/^\[(.*)\]$/)?.[1] ?? "").split(",").map((x) => x.trim()).filter(Boolean);
+        if (!granted.length) gaps.push(`${f}: no tools list in the front matter`);
+        const heads = [...body.matchAll(/^## (.+)$/gm)].map((m) => m[1].trim());
+        if (heads.join(",") !== SECTIONS.join(",")) gaps.push(`${f}: sections are ${heads.join(", ")}, not ${SECTIONS.join(", ")}`);
+        const steps = body.split(/^## Run$/m)[1]?.split(/^## /m)[0] ?? "";
+        for (const tool of granted) {
+          if (!tools.has(tool)) gaps.push(`${f}: tools lists ${tool}, which the MCP server does not have`);
+          else if (!steps.includes(`\`${tool}`)) gaps.push(`${f}: ${tool} is listed but no Run step uses it`);
+        }
+        for (const m of body.matchAll(/`((?:get|list|plan|compare|what|when|check|find|fit)_[a-z_]+)/g))
+          if (!tools.has(m[1]) && !["use_when", "avoid_when"].includes(m[1])) gaps.push(`${f}: names ${m[1]}, which is not an MCP tool`);
+        for (const m of body.matchAll(/`(?:npx )?open-ds ([a-z]+)/g))
+          if (!commands.has(m[1])) gaps.push(`${f}: names open-ds ${m[1]}, which is not a CLI command`);
+        for (const m of body.matchAll(/`(open-ds-[a-z]+)`/g))
+          if (!names.includes(m[1])) gaps.push(`${f}: names ${m[1]}, which is not a skill`);
+        // Sentences: prose and list items, without tables, headings and code.
+        const prose = body
+          .split("\n")
+          .filter((l) => !/^\s*(\||#)/.test(l))
+          .map((l) => l.replace(/^\s*(?:[-*]|\d+\.)\s+/, "").replace(/`[^`]*`/g, "X"))
+          .join("\n");
+        for (const s of prose.split(/(?<=[.!?])\s+|\n{2,}|\n(?=\S)/)) {
+          const words = s.trim().split(/\s+/).filter(Boolean).length;
+          if (words > 20) gaps.push(`${f}: a sentence has ${words} words: "${s.trim().slice(0, 50)}…"`);
+        }
+      }
+      return gaps.length
+        ? bad(gaps.slice(0, 8).join("; "))
+        : ok(`${names.length} skills follow the standard: front matter, Why to Done, short sentences, real tools`);
+    },
+  },
   "llm-mcp-docstrings": {
     requires: ["cli/src/mcp.mjs"],
     run: (c) => {
