@@ -6,7 +6,7 @@
 
 Open DS models a design system as a finite grammar of questions. A **scheme** answers every question with a reason, and deploys as a whole design system: tokens, components, Storybook, docs and an agent layer. Every value can say why it is the way it is.
 
-The display name is the `name` field in [brand.json](brand.json). Nothing is published yet.
+The display name is the `displayName` field in the root [package.json](package.json).
 
 ## How it works
 

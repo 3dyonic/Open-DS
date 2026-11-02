@@ -18,4 +18,4 @@ Open DS has its own look, separate from the five schemes. It uses route B, "Grid
 | Display and text | Bricolage Grotesque |
 | Labels and code  | DM Mono             |
 
-The product name is pending. It lives only in `brand.json`.
+The product name is Open DS. It lives only in the root `package.json` (`displayName`), with the tagline, the site address and the contact.

@@ -1,5 +1,12 @@
 {
   "name": "open-ds",
+  "displayName": "Open DS",
+  "description": "Every design system is a set of answers.",
+  "homepage": "https://open-ds.dev",
+  "bugs": {
+    "url": "https://github.com/3dyonic/Open-DS/issues",
+    "email": "contact@open-ds.dev"
+  },
   "private": true,
   "version": "0.1.0",
   "license": "MIT",

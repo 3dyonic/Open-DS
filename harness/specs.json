@@ -212,7 +212,7 @@
         "cli/src/docs.mjs page builder",
         "docs/ builds any scheme (OPEN_DS_SCHEME) in its own fonts and colors",
         "open-ds init --docs and MCP deploy docs=true",
-        "Open DS pages moved to guide/, old notes to guide/archive/"
+        "Open DS pages moved to guide/"
       ],
       "checks": [
         "docs-sections",
