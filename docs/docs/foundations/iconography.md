@@ -38,7 +38,7 @@ The raw values the tokens above end at.
 
 | Primitive | Value | Sample |
 | --- | --- | --- |
-| `size.16` | 1rem (16px) | <span class="ods-bar" style="width:var(--size-16)"></span> |
+| `size.16` | 1rem (16px) | <span class="ods-bar" style="width:1rem"></span> |
 
 ## Where it lands
 

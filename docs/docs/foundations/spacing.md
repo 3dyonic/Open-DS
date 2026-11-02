@@ -52,12 +52,12 @@ The raw values the tokens above end at.
 
 | Primitive | Value | Sample |
 | --- | --- | --- |
-| `size.32` | 2rem (32px) | <span class="ods-bar" style="width:var(--size-32)"></span> |
-| `space.12` | 0.75rem (12px) | <span class="ods-bar" style="width:var(--space-12)"></span> |
-| `space.16` | 1rem (16px) | <span class="ods-bar" style="width:var(--space-16)"></span> |
-| `space.24` | 1.5rem (24px) | <span class="ods-bar" style="width:var(--space-24)"></span> |
-| `space.4` | 0.25rem (4px) | <span class="ods-bar" style="width:var(--space-4)"></span> |
-| `space.8` | 0.5rem (8px) | <span class="ods-bar" style="width:var(--space-8)"></span> |
+| `size.32` | 2rem (32px) | <span class="ods-bar" style="width:2rem"></span> |
+| `space.12` | 0.75rem (12px) | <span class="ods-bar" style="width:0.75rem"></span> |
+| `space.16` | 1rem (16px) | <span class="ods-bar" style="width:1rem"></span> |
+| `space.24` | 1.5rem (24px) | <span class="ods-bar" style="width:1.5rem"></span> |
+| `space.4` | 0.25rem (4px) | <span class="ods-bar" style="width:0.25rem"></span> |
+| `space.8` | 0.5rem (8px) | <span class="ods-bar" style="width:0.5rem"></span> |
 
 ## Where it lands
 
