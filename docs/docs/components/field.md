@@ -33,9 +33,9 @@ What each variant is for in any design system, and what Dense data decided, with
 
 | Axis | Variant | What it is for | In Dense data | Because |
 | --- | --- | --- | --- | --- |
-| orientation | `vertical` | The label above the control. | Forms in dialogs and sheets: the label above. | `tasks.q1` |
-|  | `horizontal` | The label beside the control. | Settings and filter panels: switches and short controls with the label beside. | `content.q2`, `spacing.count` |
-|  | `responsive` | The label above on narrow screens and beside on wide ones. | Not used. A desk with a mouse and keyboard: there is no narrow screen to adapt to. | `scenarios.q1` |
+| orientation | `vertical` | The label above the control. | Forms in dialogs and sheets: the label above. | <span title="What is the main task?">Scan and compare</span> <small>(`tasks.q1`)</small> |
+|  | `horizontal` | The label beside the control. | Settings and filter panels: switches and short controls with the label beside. | <span title="How much is on one screen?">A lot</span> <small>(`content.q2`)</small><br /><span title="How many densities exist?">Two</span> <small>(`spacing.count`)</small> |
+|  | `responsive` | The label above on narrow screens and beside on wide ones. | Not used. A desk with a mouse and keyboard: there is no narrow screen to adapt to. | <span title="Where do people use it?">At a desk</span> <small>(`scenarios.q1`)</small> |
 
 ## How Dense data uses it
 

@@ -33,10 +33,10 @@ What each variant is for in any design system, and what Dense data decided, with
 
 | Axis | Variant | What it is for | In Dense data | Because |
 | --- | --- | --- | --- | --- |
-| align | `inline-start` | An addon before the text, on the same line: an icon or currency. | The search icon before the text. | `iconography.roles` |
-|  | `inline-end` | An addon after the text: a unit, a clear button, a shortcut. | The clear button after the text, for searches people repeat all day. | `tasks.q2` |
-|  | `block-start` | An addon row above the text, inside the field. | Not used. Inputs stay one line high in toolbars and filter bars. | `content.q2` |
-|  | `block-end` | An addon row below the text, inside the field. | Not used. Inputs stay one line high in toolbars and filter bars. | `content.q2` |
+| align | `inline-start` | An addon before the text, on the same line: an icon or currency. | The search icon before the text. | <span title="What do icons do?">Actions and status</span> <small>(`iconography.roles`)</small> |
+|  | `inline-end` | An addon after the text: a unit, a clear button, a shortcut. | The clear button after the text, for searches people repeat all day. | <span title="How often do people repeat actions?">Constantly</span> <small>(`tasks.q2`)</small> |
+|  | `block-start` | An addon row above the text, inside the field. | Not used. Inputs stay one line high in toolbars and filter bars. | <span title="How much is on one screen?">A lot</span> <small>(`content.q2`)</small> |
+|  | `block-end` | An addon row below the text, inside the field. | Not used. Inputs stay one line high in toolbars and filter bars. | <span title="How much is on one screen?">A lot</span> <small>(`content.q2`)</small> |
 
 ## Why it works this way
 
