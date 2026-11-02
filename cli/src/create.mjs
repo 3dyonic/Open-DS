@@ -287,6 +287,15 @@ export function createProject(
     );
   }
 
+  // The guide (OD-178): the Introduction and Foundations pages and the docs-page blocks. They read this
+  // project's scheme.json through stories/guide/guide-data.ts, which comes from the project template.
+  const guideDir = join(roots.stories, "guide");
+  if (existsSync(guideDir))
+    for (const f of readdirSync(guideDir).filter(
+      (x) => x.endsWith(".stories.tsx") || x === "guide.tsx",
+    ))
+      write(`stories/guide/${f}`, readFileSync(join(guideDir, f), "utf8"));
+
   // The answer map and the situations the usage rules name.
   write("scheme.json", json(scheme));
   write(

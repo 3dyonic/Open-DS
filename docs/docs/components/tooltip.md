@@ -8,9 +8,62 @@ description: "Tooltip in Dense data."
 
 # Tooltip
 
-Tooltip. A short hint for an icon-only control. Never the only place for important information. Reads only component keys: --tooltip-\*, --overlay-radius.
+A short hint on hover or focus.
 
-See it in [Storybook](http://localhost:6006) under Components / Tooltip, in every theme.
+**In Dense data.** Explains an icon button. Family: overlay. Reference: Open UX (tooltip), MIT.
+
+## See it live
+
+<div class="odv-live"><span class="odv-wait">Start Storybook to see it live: <code>npm run storybook</code></span><iframe src="http://localhost:6006/iframe.html?id=components-tooltip--examples&viewMode=story&globals=scheme:dense-data" title="Tooltip examples in Storybook" loading="lazy"></iframe><div class="bar"><span>Live from Storybook</span><a href="http://localhost:6006/?path=/docs/components-tooltip--docs">Open Tooltip in Storybook</a><a href="http://localhost:6006/iframe.html?id=components-tooltip--examples&viewMode=story&globals=scheme:dense-data;mode:dark">See it in dark</a></div></div>
+
+## When to use it
+
+- **Use it when:** A brief name or hint for a control that already has an accessible name.
+- **Not when:** The only place values or important words live, or touch screens, where hover never happens.
+
+Instead:
+
+- [Popover](./popover.md): Opens on click and works on touch.
+- Hover card: A richer preview.
+
+## How Dense data uses it
+
+<div class="odv-grid two"><div class="odv-dd"><div class="stage"><div class="odv-eyebrow">An icon with no label</div><div style="margin-top:6px"><b style="color:var(--color-status-success)">Use</b> Icon button with a tooltip</div><div><b style="color:var(--color-status-danger)">Not</b> A bare icon</div></div><div class="cap">Experts learn icons; the tooltip covers the first uses.</div></div></div>
+
+## Words
+
+- Lead with the object, then the state: "Alert 2041 contained."
+- Use numbers, not words for numbers.
+- One verb per button. No "please", no exclamation marks.
+- Use: Investigate, Filter, Assign, Escalated, Resolved. Avoid: Oops, Awesome, Please, Simply.
+
+The labels components use, from the voice tokens:
+
+- `content.action.commit`: Save
+- `content.action.cancel`: Cancel
+- `content.action.destroy`: Delete
+- `content.action.retry`: Retry
+- `content.action.empty-action`: Change filters
+
+See [Voice and tone](../voice.md) for the whole voice.
+
+## Accessibility and keyboard
+
+| Keyboard | What happens | Not |
+| --- | --- | --- |
+| undefined | Escape hides it. | undefined |
+
+Test before you ship:
+
+- [ ] It describes its trigger and also shows on keyboard focus. undefined
+
+## Use it in code
+
+```bash
+npx open-ds add tooltip
+```
+
+The component reads only component keys and semantic tokens, so it follows the brand and mode on `<html>`.
 
 ## Component keys
 
@@ -25,10 +78,3 @@ The CSS variable is the key with `/` replaced by `-` and the base `@` dropped. E
 | `overlay/item-height` | Height of a menu item. | `size.control.default` → `size.32` | same |
 | `tooltip/background` | Tooltip fill. | `color.surface.inverse` → `dense-data.theme.light.color.surface.inverse` → `color.slate.light.900` | `color.surface.inverse` → `dense-data.theme.dark.color.surface.inverse` → `color.slate.dark.900` |
 | `tooltip/label` | Tooltip text. | `color.text.inverse` → `dense-data.theme.light.color.text.inverse` → `color.slate.light.0` | `color.text.inverse` → `dense-data.theme.dark.color.text.inverse` → `color.slate.dark.50` |
-
-## When to use it
-
-| Situation | Use | Not | Why |
-| --- | --- | --- | --- |
-| An icon with no label | Icon button with a tooltip | A bare icon | Experts learn icons; the tooltip covers the first uses. |
-| A first visit | No tour. Show the data, with a tooltip where needed. | A welcome tour | Daily experts skip tours; tooltips cover the first uses. Example: “Hover any column header to see what it counts.” |

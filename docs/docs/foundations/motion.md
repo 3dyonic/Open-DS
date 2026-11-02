@@ -39,7 +39,7 @@ The raw values the tokens above end at.
 
 | Primitive | Value | Sample |
 | --- | --- | --- |
-| `duration.fast` | 120ms | <span class="ods-motion" style="--ods-d:var(--duration-fast)"><span></span></span> |
+| `duration.fast` | 120ms | <span class="ods-motion" style="--ods-d:120ms"><span></span></span> |
 | `easing.standard` | cubic-bezier(0.2, 0, 0, 1) |  |
 
 ## Where it lands

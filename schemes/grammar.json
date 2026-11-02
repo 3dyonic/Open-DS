@@ -3586,317 +3586,2272 @@
       {
         "id": "accordion",
         "family": "content",
-        "description": "Stacked sections that open one at a time."
+        "description": "Stacked sections that open one at a time.",
+        "overview": "Stacked sections that expand and collapse without leaving the page.",
+        "apply_when": "Optional detail, questions and answers, grouped content people may skip.",
+        "not_when": "A decision that blocks the page, a side panel, or a hint on hover.",
+        "vs": [
+          {
+            "id": "tabs",
+            "why": "Peer views of the same thing, one at a time."
+          },
+          {
+            "id": "collapsible",
+            "why": "A single section, not a stack."
+          },
+          {
+            "id": "dialog",
+            "why": "A blocking decision."
+          }
+        ],
+        "accessibility": [
+          {
+            "id": "button-headings",
+            "overview": "Each header is a button inside a heading and says whether it is open."
+          }
+        ],
+        "keyboard": [
+          {
+            "id": "enter-space",
+            "overview": "Enter or Space opens and closes the focused section."
+          }
+        ],
+        "source": {
+          "name": "Open UX",
+          "id": "accordion",
+          "license": "MIT",
+          "url": "https://github.com/3dyonic/open-ux/blob/main/catalog/components/accordion.json"
+        }
       },
       {
         "id": "alert",
         "family": "feedback",
-        "description": "A message that stays on the page."
+        "description": "A message that stays on the page.",
+        "overview": "A message that stays on the page with the content it is about.",
+        "apply_when": "People need to read a standing notice or how to recover, on this page, tied to what they are doing.",
+        "not_when": "A short confirmation that can go away by itself, or one notice for the whole site.",
+        "vs": [
+          {
+            "id": "toast",
+            "why": "Short, non-blocking, goes away."
+          },
+          {
+            "id": "dialog",
+            "why": "Needs an answer before going on."
+          },
+          {
+            "id": "site-banner",
+            "why": "One full-width notice for the whole site.",
+            "outside": true
+          }
+        ],
+        "variants": {
+          "variant": [
+            {
+              "id": "default",
+              "overview": "A notice that stays on the page: information or a heads-up.",
+              "apply_when": "A note people should read but need not fix.",
+              "not_when": "Something failed and must be fixed."
+            },
+            {
+              "id": "destructive",
+              "overview": "Something failed or will be lost, and people must act to recover.",
+              "apply_when": "An error, with what went wrong and how to fix it.",
+              "not_when": "A plain note dressed as danger for emphasis."
+            }
+          ]
+        },
+        "situations": [
+          "error-message"
+        ],
+        "accessibility": [
+          {
+            "id": "role-alert",
+            "overview": "An error that appears after an action is announced (role alert); a standing note is not."
+          },
+          {
+            "id": "not-color-alone",
+            "overview": "The tone also shows as an icon and words, never color alone."
+          }
+        ],
+        "source": {
+          "name": "Open UX",
+          "id": "alert",
+          "license": "MIT",
+          "url": "https://github.com/3dyonic/open-ux/blob/main/catalog/components/alert.json"
+        }
       },
       {
         "id": "alert-dialog",
         "family": "overlay",
-        "description": "A dialog that asks to confirm an action that cannot be undone."
+        "description": "A dialog that asks to confirm an action that cannot be undone.",
+        "overview": "A dialog that interrupts to confirm an action that cannot be undone.",
+        "apply_when": "Deleting, cancelling or overwriting something people cannot get back, when undo is not possible.",
+        "not_when": "Anything that can be undone (offer undo instead), or a form or task (use a dialog).",
+        "vs": [
+          {
+            "id": "dialog",
+            "why": "A focused task, not a confirmation."
+          },
+          {
+            "id": "toast",
+            "why": "Undo after the fact, when the action can be reversed."
+          }
+        ],
+        "situations": [
+          "destructive-action",
+          "confirm-words"
+        ],
+        "accessibility": [
+          {
+            "id": "alertdialog-role",
+            "overview": "It is an alertdialog with a title and a description that names the consequence."
+          },
+          {
+            "id": "safe-focus",
+            "overview": "Focus starts on the safe choice, never on the destructive one."
+          }
+        ],
+        "keyboard": [
+          {
+            "id": "escape",
+            "overview": "Escape cancels, the same as the safe choice."
+          },
+          {
+            "id": "focus-trap",
+            "overview": "Tab stays inside until people choose."
+          }
+        ],
+        "source": {
+          "name": "Open DS",
+          "license": "MIT"
+        }
       },
       {
         "id": "aspect-ratio",
         "family": "media",
-        "description": "Keeps an image or video at a fixed shape."
+        "description": "Keeps an image or video at a fixed shape.",
+        "overview": "Keeps an image or video at a fixed shape while the layout resizes.",
+        "apply_when": "Media in cards, galleries and heroes that must not stretch or jump while it loads.",
+        "not_when": "Text content, or media that should keep its own natural shape.",
+        "vs": [
+          {
+            "id": "skeleton",
+            "why": "The placeholder shown while the media loads."
+          }
+        ],
+        "source": {
+          "name": "Open DS",
+          "license": "MIT"
+        }
       },
       {
         "id": "attachment",
         "family": "conversation",
-        "description": "A file attached to a message."
+        "description": "A file attached to a message.",
+        "overview": "A file attached to a message, with its name, type and size.",
+        "apply_when": "A conversation that shares files people may open or download.",
+        "not_when": "Uploading files in a form (a file input), or images meant to be seen inline.",
+        "vs": [
+          {
+            "id": "message",
+            "why": "The message the file belongs to."
+          }
+        ],
+        "accessibility": [
+          {
+            "id": "named-link",
+            "overview": "The link names the file and its type and size, not just Download."
+          }
+        ],
+        "source": {
+          "name": "Open DS",
+          "license": "MIT"
+        }
       },
       {
         "id": "avatar",
         "family": "media",
-        "description": "A small image or initials for a person."
+        "description": "A small image or initials for a person.",
+        "overview": "A small image or initials that stand for a person or account.",
+        "apply_when": "Showing who wrote, owns or is signed in, next to their name.",
+        "not_when": "The only way to tell people apart, or decoration with no person behind it.",
+        "vs": [
+          {
+            "id": "badge",
+            "why": "A status or count, not a person."
+          }
+        ],
+        "accessibility": [
+          {
+            "id": "named",
+            "overview": "The person's name is in text nearby or in the image's alternative text; initials alone are not a name."
+          }
+        ],
+        "source": {
+          "name": "Open DS",
+          "license": "MIT"
+        }
       },
       {
         "id": "badge",
         "family": "feedback",
-        "description": "A short label for a status or count."
+        "description": "A short label for a status or count.",
+        "overview": "A short label for a status, category or count, next to what it describes.",
+        "apply_when": "A state people scan for in a list or table, or a small category label.",
+        "not_when": "A message people must read (alert or toast), or an action (a button).",
+        "vs": [
+          {
+            "id": "alert",
+            "why": "A message, not a label."
+          },
+          {
+            "id": "button",
+            "why": "Something to press."
+          }
+        ],
+        "variants": {
+          "tone": [
+            {
+              "id": "neutral",
+              "overview": "A label with no status meaning: a category, a count, a waiting state.",
+              "apply_when": "Nothing is wrong and nothing needs doing.",
+              "not_when": "The state needs attention."
+            },
+            {
+              "id": "info",
+              "overview": "News: worth knowing, nothing to act on.",
+              "apply_when": "Something is happening or coming.",
+              "not_when": "Something is wrong or nearly wrong."
+            },
+            {
+              "id": "success",
+              "overview": "Done, healthy or paid.",
+              "apply_when": "The outcome people wanted.",
+              "not_when": "A state that is only waiting."
+            },
+            {
+              "id": "warning",
+              "overview": "Needs attention soon; nothing has failed yet.",
+              "apply_when": "A risk people can still act on.",
+              "not_when": "Something already failed."
+            },
+            {
+              "id": "danger",
+              "overview": "Failed, blocked or lost; act now.",
+              "apply_when": "A real failure or loss.",
+              "not_when": "Anything that is only unusual."
+            }
+          ]
+        },
+        "situations": [
+          "status-label",
+          "status-shape"
+        ],
+        "accessibility": [
+          {
+            "id": "word",
+            "overview": "The status is a word; color and icon add to it, never replace it."
+          }
+        ],
+        "source": {
+          "name": "Open DS",
+          "license": "MIT"
+        }
       },
       {
         "id": "breadcrumb",
         "family": "navigation",
-        "description": "The path to the current page."
+        "description": "The path to the current page.",
+        "overview": "The trail of pages above this one, so people know where they are.",
+        "apply_when": "Deep structure where people may want to go up a level.",
+        "not_when": "Steps of a task (progress), or the main navigation.",
+        "vs": [
+          {
+            "id": "progress",
+            "why": "Steps of a task, not where a page sits."
+          },
+          {
+            "id": "pagination",
+            "why": "Pages of a list, not levels."
+          }
+        ],
+        "accessibility": [
+          {
+            "id": "nav-current",
+            "overview": "It is a navigation landmark, and the current page is marked as current."
+          }
+        ],
+        "source": {
+          "name": "Open UX",
+          "id": "breadcrumb",
+          "license": "MIT",
+          "url": "https://github.com/3dyonic/open-ux/blob/main/catalog/components/breadcrumb.json"
+        }
       },
       {
         "id": "bubble",
         "family": "conversation",
-        "description": "A chat message bubble."
+        "description": "A chat message bubble.",
+        "overview": "A chat message in a bubble that shows who sent it.",
+        "apply_when": "A back-and-forth conversation between people or with an assistant.",
+        "not_when": "Comments on a page or long text (use a message or a card).",
+        "vs": [
+          {
+            "id": "message",
+            "why": "One message with its author and time, without the bubble shape."
+          }
+        ],
+        "source": {
+          "name": "Open DS",
+          "license": "MIT"
+        }
       },
       {
         "id": "button",
         "family": "action",
-        "description": "Triggers an action."
+        "description": "Triggers an action.",
+        "overview": "A control that commits an action on this screen.",
+        "apply_when": "The press does something here: save, submit, delete, open a dialog, go to the next step.",
+        "not_when": "The press only takes people to another page, or flips a setting that should persist.",
+        "vs": [
+          {
+            "id": "toggle",
+            "why": "An on or off setting that should persist as state."
+          },
+          {
+            "id": "link",
+            "why": "Navigation to another page or section.",
+            "outside": true
+          }
+        ],
+        "variants": {
+          "variant": [
+            {
+              "id": "primary",
+              "overview": "The one action this view is for.",
+              "apply_when": "One commit: Submit, Save, Continue, Start, Next.",
+              "not_when": "A second equally loud action on the same view."
+            },
+            {
+              "id": "secondary",
+              "overview": "A real action, quieter than the commit.",
+              "apply_when": "Cancel, Back or Reset next to a primary, or an action with no commit beside it.",
+              "not_when": "It is the only action; then it is primary."
+            },
+            {
+              "id": "ghost",
+              "overview": "The lowest emphasis; it never competes with the commit.",
+              "apply_when": "A third option, a card or row action, a toast action.",
+              "not_when": "The page's main task; that is primary."
+            }
+          ],
+          "size": [
+            {
+              "id": "default",
+              "overview": "The normal size, for ordinary actions in forms, dialogs and page chrome."
+            },
+            {
+              "id": "compact",
+              "overview": "Denser, for toolbars and table rows that sit beside content.",
+              "not_when": "The page's main commit, or a control too small to hit."
+            },
+            {
+              "id": "icon",
+              "overview": "Icon only: the name is not on screen.",
+              "apply_when": "A repeated, known control in chrome: close, settings, more.",
+              "not_when": "A one-off or destructive action with no accessible name."
+            },
+            {
+              "id": "large",
+              "overview": "The largest size: the one action that must stand out most.",
+              "apply_when": "The single main call to action of a section or page.",
+              "not_when": "Ordinary actions, or more than one per section."
+            }
+          ],
+          "state": [
+            {
+              "id": "hover",
+              "overview": "The pointer is over the control: an extra cue, never the only cue.",
+              "apply_when": "A mouse or trackpad can reach the control.",
+              "not_when": "Hover is the only way to tell it is a button; that fails on touch."
+            },
+            {
+              "id": "focus",
+              "overview": "Keyboard or assistive tech is on this control. It must stay visible.",
+              "apply_when": "Tab, Enter, Space, or focus restored after a dialog.",
+              "not_when": "The focus outline removed with no replacement."
+            },
+            {
+              "id": "disabled",
+              "overview": "The action is not available. It must stay perceivable and say why.",
+              "apply_when": "A control that must not run now, with a visible reason.",
+              "not_when": "A form's submit that could explain the problem on press instead."
+            }
+          ]
+        },
+        "situations": [
+          "commit-action",
+          "alternative-action",
+          "destructive-action",
+          "row-action",
+          "icon-alone"
+        ],
+        "accessibility": [
+          {
+            "id": "accessible-name",
+            "overview": "The control has a name assistive tech can speak.",
+            "apply_when": "Any button, especially an icon-only one.",
+            "not_when": "The only name is a tooltip that never reaches the button."
+          },
+          {
+            "id": "focus-visible",
+            "overview": "The focused control stays visible; color alone is not the cue.",
+            "apply_when": "Keyboard or assistive-tech focus is on the button.",
+            "not_when": "The outline removed with no replacement."
+          },
+          {
+            "id": "aria-disabled",
+            "overview": "Unavailable stays in the tab order and explains why.",
+            "apply_when": "The action must not run, but focus must not jump away.",
+            "not_when": "The HTML disabled attribute, which drops the control from the keyboard flow."
+          },
+          {
+            "id": "aria-pressed",
+            "overview": "A button that stays down exposes its pressed state.",
+            "apply_when": "Pin, follow, or another sticky on or off on a button.",
+            "not_when": "A setting that should be a toggle, not a button."
+          },
+          {
+            "id": "aria-expanded",
+            "overview": "A button that opens something exposes open or closed.",
+            "apply_when": "The press reveals a menu, panel or more content.",
+            "not_when": "A plain commit that reveals nothing."
+          },
+          {
+            "id": "hit-target",
+            "overview": "The hit area stays usable, including at a small size.",
+            "apply_when": "Touch, pointer, or a compact toolbar button.",
+            "not_when": "An icon whose tap area is the glyph only."
+          }
+        ],
+        "keyboard": [
+          {
+            "id": "tab",
+            "overview": "Tab lands on the button in a logical order.",
+            "apply_when": "Moving through the page or a dialog.",
+            "not_when": "The control is skipped because it used HTML disabled."
+          },
+          {
+            "id": "enter",
+            "overview": "Enter runs the same action as a click.",
+            "apply_when": "The button is focused and the person confirms.",
+            "not_when": "Enter only works on submit buttons."
+          },
+          {
+            "id": "space",
+            "overview": "Space runs the same action as a click.",
+            "apply_when": "The button is focused.",
+            "not_when": "Space scrolls the page instead."
+          },
+          {
+            "id": "focus-restore",
+            "overview": "After the action closes a surface, focus returns to the button.",
+            "apply_when": "The button opened a dialog, menu or popover that just closed.",
+            "not_when": "Focus dropped on the page body."
+          }
+        ],
+        "source": {
+          "name": "Open UX",
+          "id": "button",
+          "license": "MIT",
+          "url": "https://github.com/3dyonic/open-ux/blob/main/catalog/components/button.json"
+        }
       },
       {
         "id": "button-group",
         "family": "action",
-        "description": "Related buttons joined as one control."
+        "description": "Related buttons joined as one control.",
+        "overview": "Related buttons joined into one control.",
+        "apply_when": "A few actions that belong together, such as previous and next, or a split action.",
+        "not_when": "A choice that stays selected (toggle group), or unrelated actions.",
+        "vs": [
+          {
+            "id": "toggle-group",
+            "why": "The choice stays pressed."
+          },
+          {
+            "id": "dropdown-menu",
+            "why": "More actions than fit in a row."
+          }
+        ],
+        "accessibility": [
+          {
+            "id": "group",
+            "overview": "The buttons are a group with a name."
+          }
+        ],
+        "source": {
+          "name": "Open DS",
+          "license": "MIT"
+        }
       },
       {
         "id": "calendar",
         "family": "form",
-        "description": "A month grid for picking dates."
+        "description": "A month grid for picking dates.",
+        "overview": "A month grid for picking a date or a range.",
+        "apply_when": "Dates near today, ranges, or when the day of the week matters.",
+        "not_when": "A date people know by heart, such as a birth date: typed fields are faster.",
+        "vs": [
+          {
+            "id": "date-picker",
+            "why": "A calendar opened from a field, in a popover."
+          },
+          {
+            "id": "input",
+            "why": "A known date typed in."
+          }
+        ],
+        "accessibility": [
+          {
+            "id": "grid",
+            "overview": "It is a grid; the selected and today's dates are announced."
+          }
+        ],
+        "keyboard": [
+          {
+            "id": "arrows",
+            "overview": "Arrow keys move between days; Page Up and Page Down change month."
+          }
+        ],
+        "source": {
+          "name": "Open DS",
+          "license": "MIT"
+        }
       },
       {
         "id": "card",
         "family": "layout",
-        "description": "A bordered container for one item or group."
+        "description": "A bordered container for one item or group.",
+        "overview": "A bordered container for one item or group, with its title, content and actions.",
+        "apply_when": "A repeating unit of title, media and one destination or action.",
+        "not_when": "Records people compare cell by cell (a table), or a whole card as one big link that screen readers read as one.",
+        "vs": [
+          {
+            "id": "table",
+            "why": "Records compared across rows."
+          },
+          {
+            "id": "item",
+            "why": "A compact row in a list."
+          }
+        ],
+        "situations": [
+          "card"
+        ],
+        "accessibility": [
+          {
+            "id": "one-link",
+            "overview": "One inner link or button names the destination; the rest is not one big link."
+          }
+        ],
+        "source": {
+          "name": "Open UX",
+          "id": "content_card",
+          "license": "MIT",
+          "url": "https://github.com/3dyonic/open-ux/blob/main/catalog/components/content_card.json"
+        }
       },
       {
         "id": "carousel",
         "family": "media",
-        "description": "Slides that move left and right."
+        "description": "Slides that move left and right.",
+        "overview": "Slides that move left and right, one or a few at a time.",
+        "apply_when": "A few images or items people browse for pleasure, where missing some is fine.",
+        "not_when": "Content people must see: most never reach the later slides.",
+        "vs": [
+          {
+            "id": "card",
+            "why": "A grid shows every item at once."
+          }
+        ],
+        "accessibility": [
+          {
+            "id": "controls",
+            "overview": "Previous and next are buttons with names; nothing moves on its own without a pause control."
+          }
+        ],
+        "keyboard": [
+          {
+            "id": "arrows",
+            "overview": "Arrow keys move between slides when the carousel has focus."
+          }
+        ],
+        "source": {
+          "name": "Open DS",
+          "license": "MIT"
+        }
       },
       {
         "id": "chart",
         "family": "data",
-        "description": "Bars, lines and areas built on Recharts."
+        "description": "Bars, lines and areas built on Recharts.",
+        "overview": "A picture of numbers: comparison, trend, share or spread.",
+        "apply_when": "The story is a relationship in a set of numbers, not a single number.",
+        "not_when": "A table is clearer, the set is too small, or the chart is decoration.",
+        "vs": [
+          {
+            "id": "table",
+            "why": "The numbers as rows; often needed beside the chart."
+          }
+        ],
+        "situations": [
+          "number-in-table"
+        ],
+        "accessibility": [
+          {
+            "id": "alternative",
+            "overview": "The same numbers are available as a table or text; color is not the only key."
+          }
+        ],
+        "source": {
+          "name": "Open UX",
+          "id": "chart",
+          "license": "MIT",
+          "url": "https://github.com/3dyonic/open-ux/blob/main/catalog/components/chart.json"
+        }
       },
       {
         "id": "checkbox",
         "family": "form",
-        "description": "An on-off choice in a list or form."
+        "description": "An on-off choice in a list or form.",
+        "overview": "One or many independent on or off choices, usually sent with a form.",
+        "apply_when": "Agreeing, picking many, optional extras; the choice waits for the form.",
+        "not_when": "Exactly one of a short set (radio group), or a setting that applies at once (switch).",
+        "vs": [
+          {
+            "id": "radio-group",
+            "why": "One choice only."
+          },
+          {
+            "id": "switch",
+            "why": "Applies at once."
+          },
+          {
+            "id": "select",
+            "why": "Many options in a compact list."
+          }
+        ],
+        "accessibility": [
+          {
+            "id": "label",
+            "overview": "Each checkbox has a visible label that is part of the hit area."
+          }
+        ],
+        "keyboard": [
+          {
+            "id": "space",
+            "overview": "Space checks and unchecks."
+          }
+        ],
+        "source": {
+          "name": "Open UX",
+          "id": "checkbox",
+          "license": "MIT",
+          "url": "https://github.com/3dyonic/open-ux/blob/main/catalog/components/checkbox.json"
+        }
       },
       {
         "id": "collapsible",
         "family": "layout",
-        "description": "One section that opens and closes."
+        "description": "One section that opens and closes.",
+        "overview": "One section that opens and closes.",
+        "apply_when": "A single block of extra detail people may want: more filters, advanced options.",
+        "not_when": "Several stacked sections (accordion), or content everyone needs.",
+        "vs": [
+          {
+            "id": "accordion",
+            "why": "A stack of sections."
+          }
+        ],
+        "accessibility": [
+          {
+            "id": "expanded",
+            "overview": "The trigger is a button that says whether it is open."
+          }
+        ],
+        "keyboard": [
+          {
+            "id": "enter-space",
+            "overview": "Enter or Space opens and closes."
+          }
+        ],
+        "source": {
+          "name": "Open DS",
+          "license": "MIT"
+        }
       },
       {
         "id": "combobox",
         "family": "form",
-        "description": "A text field with a filtered list of choices."
+        "description": "A text field with a filtered list of choices.",
+        "overview": "A text field that suggests and completes matches from a known list as people type.",
+        "apply_when": "A long, closed list: countries, addresses, people, tags.",
+        "not_when": "Searching a whole site, or a short list people can see at once.",
+        "vs": [
+          {
+            "id": "select",
+            "why": "A compact closed list without typing."
+          },
+          {
+            "id": "command",
+            "why": "A search-first menu of actions."
+          }
+        ],
+        "accessibility": [
+          {
+            "id": "combobox-role",
+            "overview": "It is a combobox; the open state and the active option are announced."
+          }
+        ],
+        "keyboard": [
+          {
+            "id": "arrows",
+            "overview": "Arrow keys move through suggestions; Enter picks; Escape closes."
+          }
+        ],
+        "source": {
+          "name": "Open UX",
+          "id": "autocomplete",
+          "license": "MIT",
+          "url": "https://github.com/3dyonic/open-ux/blob/main/catalog/components/autocomplete.json"
+        }
       },
       {
         "id": "command",
         "family": "navigation",
-        "description": "A search-first menu of actions, opened from the keyboard."
+        "description": "A search-first menu of actions, opened from the keyboard.",
+        "overview": "A search-first menu of actions and places, opened from the keyboard.",
+        "apply_when": "Expert users who want to jump anywhere or run any action by typing.",
+        "not_when": "The only way to reach an action, or people who visit now and then.",
+        "vs": [
+          {
+            "id": "dropdown-menu",
+            "why": "A short menu from a button."
+          },
+          {
+            "id": "combobox",
+            "why": "Picking a value for a field."
+          }
+        ],
+        "accessibility": [
+          {
+            "id": "listbox",
+            "overview": "Results are a list; the active result is announced."
+          }
+        ],
+        "keyboard": [
+          {
+            "id": "shortcut",
+            "overview": "A shortcut opens it; arrows move; Enter runs; Escape closes."
+          }
+        ],
+        "source": {
+          "name": "Open DS",
+          "license": "MIT"
+        }
       },
       {
         "id": "context-menu",
         "family": "navigation",
-        "description": "A menu on right-click."
+        "description": "A menu on right-click.",
+        "overview": "A menu of actions on right-click or long-press.",
+        "apply_when": "Power users acting on an item in place, with the same actions also reachable elsewhere.",
+        "not_when": "The only way to reach an action: people who don't know to right-click never find it.",
+        "vs": [
+          {
+            "id": "dropdown-menu",
+            "why": "The same actions from a visible button."
+          }
+        ],
+        "keyboard": [
+          {
+            "id": "menu-key",
+            "overview": "Shift F10 or the menu key opens it; arrows move; Escape closes."
+          }
+        ],
+        "source": {
+          "name": "Open DS",
+          "license": "MIT"
+        }
       },
       {
         "id": "data-table",
         "family": "data",
-        "description": "Many records in one view: search, faceted filters, sorting, column choice, row selection with bulk actions, pagination and a density switch. Wraps TanStack Table, after shadcn's Data Table guide."
+        "description": "Many records in one view: search, faceted filters, sorting, column choice, row selection with bulk actions, pagination and a density switch. Wraps TanStack Table, after shadcn's Data Table guide.",
+        "overview": "Many records in one view, with search, filters, sorting, column choice, selection and paging.",
+        "apply_when": "People find, compare and act on many records, often in bulk.",
+        "not_when": "A handful of rows (a plain table), or items people browse rather than compare (cards).",
+        "vs": [
+          {
+            "id": "table",
+            "why": "A few rows, no tools."
+          },
+          {
+            "id": "card",
+            "why": "Items to browse, not compare."
+          }
+        ],
+        "situations": [
+          "number-in-table",
+          "selected-row",
+          "table-row",
+          "row-action"
+        ],
+        "accessibility": [
+          {
+            "id": "table-semantics",
+            "overview": "It stays a real table with headers; sorting and selection are announced."
+          }
+        ],
+        "keyboard": [
+          {
+            "id": "tab-tools",
+            "overview": "Every tool and row action is reachable by keyboard."
+          }
+        ],
+        "source": {
+          "name": "Open DS",
+          "license": "MIT"
+        }
       },
       {
         "id": "date-picker",
         "family": "form",
-        "description": "A button that opens a calendar, for one date or a range. Built on calendar and popover, after shadcn's Date Picker."
+        "description": "A button that opens a calendar, for one date or a range. Built on calendar and popover, after shadcn's Date Picker.",
+        "overview": "A field-like button that opens a calendar for one date or a range.",
+        "apply_when": "Dates near today, ranges, or when the day of the week matters.",
+        "not_when": "A date people know by heart, such as a birth date: typed fields are faster.",
+        "vs": [
+          {
+            "id": "calendar",
+            "why": "The calendar on its own, always shown."
+          },
+          {
+            "id": "input",
+            "why": "A known date typed in."
+          }
+        ],
+        "accessibility": [
+          {
+            "id": "named",
+            "overview": "The button says the chosen date, not just Pick a date."
+          }
+        ],
+        "source": {
+          "name": "Open DS",
+          "license": "MIT"
+        }
       },
       {
         "id": "dialog",
         "family": "overlay",
-        "description": "A window over the page for a focused task."
+        "description": "A window over the page for a focused task.",
+        "overview": "A window over the page that takes attention until people finish or close it.",
+        "apply_when": "People must decide or finish something before going back: a short form, an important choice.",
+        "not_when": "A short status (toast), extra detail on the page (accordion), or a side panel that should not block the page (sheet).",
+        "vs": [
+          {
+            "id": "sheet",
+            "why": "A side panel; the page stays in view."
+          },
+          {
+            "id": "toast",
+            "why": "Does not interrupt."
+          },
+          {
+            "id": "alert-dialog",
+            "why": "Confirms something that cannot be undone."
+          }
+        ],
+        "situations": [
+          "menu-or-dialog"
+        ],
+        "accessibility": [
+          {
+            "id": "named",
+            "overview": "It is a dialog with a title; the page behind is hidden from screen readers."
+          },
+          {
+            "id": "focus",
+            "overview": "Focus moves in when it opens and back to the trigger when it closes."
+          }
+        ],
+        "keyboard": [
+          {
+            "id": "escape",
+            "overview": "Escape closes it."
+          },
+          {
+            "id": "focus-trap",
+            "overview": "Tab stays inside while it is open."
+          }
+        ],
+        "source": {
+          "name": "Open UX",
+          "id": "modal",
+          "license": "MIT",
+          "url": "https://github.com/3dyonic/open-ux/blob/main/catalog/components/modal.json"
+        }
       },
       {
         "id": "drawer",
         "family": "overlay",
-        "description": "A panel that slides up from the bottom, for phones."
+        "description": "A panel that slides up from the bottom, for phones.",
+        "overview": "A panel that slides up from the bottom, for phones.",
+        "apply_when": "Filters, details or a short form on a phone, while the page stays partly in view.",
+        "not_when": "A blocking decision (dialog), or a wide screen where a side panel fits better (sheet).",
+        "vs": [
+          {
+            "id": "sheet",
+            "why": "Slides from an edge on wide screens."
+          },
+          {
+            "id": "dialog",
+            "why": "A blocking decision."
+          }
+        ],
+        "accessibility": [
+          {
+            "id": "dialog-semantics",
+            "overview": "It behaves as a dialog: named, focus moves in and back."
+          }
+        ],
+        "keyboard": [
+          {
+            "id": "escape",
+            "overview": "Escape closes it."
+          }
+        ],
+        "source": {
+          "name": "Open UX",
+          "id": "drawer",
+          "license": "MIT",
+          "url": "https://github.com/3dyonic/open-ux/blob/main/catalog/components/drawer.json"
+        }
       },
       {
         "id": "dropdown-menu",
         "family": "navigation",
-        "description": "A menu of actions opened from a button."
+        "description": "A menu of actions opened from a button.",
+        "overview": "A menu of actions opened from a button.",
+        "apply_when": "More actions than fit, or actions people use now and then.",
+        "not_when": "Choosing a value for a field (select), or the one main action (a button).",
+        "vs": [
+          {
+            "id": "select",
+            "why": "Choosing a value."
+          },
+          {
+            "id": "context-menu",
+            "why": "The same menu on right-click."
+          }
+        ],
+        "situations": [
+          "menu-or-dialog",
+          "row-action"
+        ],
+        "accessibility": [
+          {
+            "id": "menu-role",
+            "overview": "The trigger says it opens a menu and whether it is open."
+          }
+        ],
+        "keyboard": [
+          {
+            "id": "arrows",
+            "overview": "Arrows move; Enter runs; Escape closes and returns focus."
+          }
+        ],
+        "source": {
+          "name": "Open DS",
+          "license": "MIT"
+        }
       },
       {
         "id": "empty",
         "family": "feedback",
-        "description": "What to show when there is nothing yet."
+        "description": "What to show when there is nothing yet.",
+        "overview": "What a region shows when it loaded and has nothing: why, and what to do next.",
+        "apply_when": "An empty list, a search with no results, or a first visit with no items yet.",
+        "not_when": "Still loading (skeleton or spinner), or a load that failed (alert).",
+        "vs": [
+          {
+            "id": "skeleton",
+            "why": "Still loading."
+          },
+          {
+            "id": "alert",
+            "why": "Something went wrong."
+          }
+        ],
+        "variants": {
+          "variant": [
+            {
+              "id": "default",
+              "overview": "The picture shown as it is: an image or illustration.",
+              "apply_when": "A larger empty area where a picture helps.",
+              "not_when": "A small region where the picture would push the words away."
+            },
+            {
+              "id": "icon",
+              "overview": "The picture as an icon in a small tile.",
+              "apply_when": "A compact empty state next to data.",
+              "not_when": "A first visit that needs more warmth than an icon."
+            }
+          ]
+        },
+        "situations": [
+          "empty-words"
+        ],
+        "source": {
+          "name": "Open UX",
+          "id": "empty_state",
+          "license": "MIT",
+          "url": "https://github.com/3dyonic/open-ux/blob/main/catalog/components/empty_state.json"
+        }
       },
       {
         "id": "field",
         "family": "form",
-        "description": "A label, control, hint and error laid out together."
+        "description": "A label, control, hint and error laid out together.",
+        "overview": "A label, control, hint and error laid out together, the same way every time.",
+        "apply_when": "Every form control that needs a label, a hint or an error.",
+        "not_when": "A control that is not part of a form, such as a search box in a toolbar.",
+        "vs": [
+          {
+            "id": "label",
+            "why": "The label on its own."
+          }
+        ],
+        "variants": {
+          "orientation": [
+            {
+              "id": "vertical",
+              "overview": "The label above the control.",
+              "apply_when": "Most forms: easy to scan from top to bottom.",
+              "not_when": "Short settings where the label sits better beside."
+            },
+            {
+              "id": "horizontal",
+              "overview": "The label beside the control.",
+              "apply_when": "Settings and short controls such as switches.",
+              "not_when": "Narrow screens, or long labels."
+            },
+            {
+              "id": "responsive",
+              "overview": "The label above on narrow screens and beside on wide ones.",
+              "apply_when": "Forms people use on phones and laptops alike.",
+              "not_when": "When one layout is simpler for everyone."
+            }
+          ]
+        },
+        "situations": [
+          "field-label",
+          "error-message"
+        ],
+        "accessibility": [
+          {
+            "id": "linked",
+            "overview": "The label, hint and error are linked to the control, so they are read with it."
+          }
+        ],
+        "source": {
+          "name": "Open DS",
+          "license": "MIT"
+        }
       },
       {
         "id": "form",
         "family": "form",
-        "description": "Form state and validation wired to fields."
+        "description": "Form state and validation wired to fields.",
+        "overview": "Form state and validation wired to the fields.",
+        "apply_when": "Any form that checks answers and shows errors next to the fields.",
+        "not_when": "A single control that saves at once (a switch).",
+        "vs": [
+          {
+            "id": "field",
+            "why": "How one control is laid out."
+          }
+        ],
+        "situations": [
+          "error-message",
+          "error-words"
+        ],
+        "accessibility": [
+          {
+            "id": "errors",
+            "overview": "Errors are announced, linked to their fields, and the first one gets focus on submit."
+          }
+        ],
+        "source": {
+          "name": "Open DS",
+          "license": "MIT"
+        }
       },
       {
         "id": "hover-card",
         "family": "overlay",
-        "description": "A preview card on hover."
+        "description": "A preview card on hover.",
+        "overview": "A preview card that appears on hover or focus.",
+        "apply_when": "A quick look at a person or link for people with a mouse, with the same detail reachable on click.",
+        "not_when": "The only way to see the content: touch screens have no hover.",
+        "vs": [
+          {
+            "id": "popover",
+            "why": "Opens on click, works on touch."
+          },
+          {
+            "id": "tooltip",
+            "why": "A one-line hint."
+          }
+        ],
+        "source": {
+          "name": "Open DS",
+          "license": "MIT"
+        }
       },
       {
         "id": "input",
         "family": "form",
-        "description": "Single-line text entry."
+        "description": "Single-line text entry.",
+        "overview": "A labeled field for a short typed value.",
+        "apply_when": "A name, email, phone number or other one-line answer.",
+        "not_when": "Long text (textarea), or a closed choice (radio group, select or checkbox).",
+        "vs": [
+          {
+            "id": "textarea",
+            "why": "Several lines."
+          },
+          {
+            "id": "select",
+            "why": "A known list of options."
+          }
+        ],
+        "situations": [
+          "field-label"
+        ],
+        "accessibility": [
+          {
+            "id": "label",
+            "overview": "A visible label, never a placeholder as the only label."
+          }
+        ],
+        "source": {
+          "name": "Open UX",
+          "id": "text_field",
+          "license": "MIT",
+          "url": "https://github.com/3dyonic/open-ux/blob/main/catalog/components/text_field.json"
+        }
       },
       {
         "id": "input-group",
         "family": "form",
-        "description": "An input with addons such as icons or buttons."
+        "description": "An input with addons such as icons or buttons.",
+        "overview": "An input with addons inside its border: icons, text, buttons.",
+        "apply_when": "A search with an icon and a clear button, a value with a unit or currency.",
+        "not_when": "Controls that are separate fields (lay them out with field).",
+        "vs": [
+          {
+            "id": "input",
+            "why": "A plain field."
+          }
+        ],
+        "variants": {
+          "align": [
+            {
+              "id": "inline-start",
+              "overview": "An addon before the text, on the same line: an icon or currency.",
+              "apply_when": "A search icon or a unit that comes first.",
+              "not_when": "Something people press often; put it after the text."
+            },
+            {
+              "id": "inline-end",
+              "overview": "An addon after the text: a unit, a clear button, a shortcut.",
+              "apply_when": "Clear, submit or a unit that follows the value.",
+              "not_when": "A label that should be outside the field."
+            },
+            {
+              "id": "block-start",
+              "overview": "An addon row above the text, inside the field.",
+              "apply_when": "A toolbar or a label row for a larger input.",
+              "not_when": "Single-line fields in a toolbar."
+            },
+            {
+              "id": "block-end",
+              "overview": "An addon row below the text, inside the field.",
+              "apply_when": "A counter or actions under a larger input.",
+              "not_when": "Single-line fields in a toolbar."
+            }
+          ]
+        },
+        "accessibility": [
+          {
+            "id": "named-addons",
+            "overview": "Addon buttons have names; icons that only decorate are hidden from screen readers."
+          }
+        ],
+        "source": {
+          "name": "Open DS",
+          "license": "MIT"
+        }
       },
       {
         "id": "input-otp",
         "family": "form",
-        "description": "Separate boxes for a one-time code."
+        "description": "Separate boxes for a one-time code.",
+        "overview": "Separate boxes for a one-time code.",
+        "apply_when": "A short code sent by text or email, typed or pasted.",
+        "not_when": "Passwords or any value that is not a fixed-length code.",
+        "vs": [
+          {
+            "id": "input",
+            "why": "Any other short value."
+          }
+        ],
+        "accessibility": [
+          {
+            "id": "one-field",
+            "overview": "Screen readers hear one field with a label, and pasting the whole code works."
+          }
+        ],
+        "source": {
+          "name": "Open DS",
+          "license": "MIT"
+        }
       },
       {
         "id": "item",
         "family": "layout",
-        "description": "A row with media, title, description and actions."
+        "description": "A row with media, title, description and actions.",
+        "overview": "A row with media, a title, a description and actions.",
+        "apply_when": "Lists of things such as people, files or settings, each with a few actions.",
+        "not_when": "Records people compare cell by cell (a table).",
+        "vs": [
+          {
+            "id": "card",
+            "why": "A larger unit with more content."
+          },
+          {
+            "id": "table",
+            "why": "Records compared across columns."
+          }
+        ],
+        "source": {
+          "name": "Open DS",
+          "license": "MIT"
+        }
       },
       {
         "id": "kbd",
         "family": "navigation",
-        "description": "A keyboard key or shortcut."
+        "description": "A keyboard key or shortcut.",
+        "overview": "A keyboard key or shortcut, shown as text.",
+        "apply_when": "Telling people the shortcut for an action.",
+        "not_when": "Decoration, or the only way to discover an action.",
+        "vs": [
+          {
+            "id": "command",
+            "why": "Where shortcuts are often listed."
+          }
+        ],
+        "source": {
+          "name": "Open DS",
+          "license": "MIT"
+        }
       },
       {
         "id": "label",
         "family": "form",
-        "description": "The name of a form control."
+        "description": "The name of a form control.",
+        "overview": "The visible name of a form control.",
+        "apply_when": "Every form control.",
+        "not_when": "Never skipped: a placeholder is not a label.",
+        "vs": [
+          {
+            "id": "field",
+            "why": "The label laid out with hint and error."
+          }
+        ],
+        "situations": [
+          "field-label"
+        ],
+        "accessibility": [
+          {
+            "id": "for",
+            "overview": "The label is linked to its control and makes the hit area larger."
+          }
+        ],
+        "source": {
+          "name": "Open DS",
+          "license": "MIT"
+        }
       },
       {
         "id": "marker",
         "family": "conversation",
-        "description": "A divider or status line inside a conversation."
+        "description": "A divider or status line inside a conversation.",
+        "overview": "A divider or status line inside a conversation, such as a date or someone joining.",
+        "apply_when": "Breaking a long conversation into days or showing events in it.",
+        "not_when": "A message someone wrote.",
+        "vs": [
+          {
+            "id": "message",
+            "why": "Something someone said."
+          }
+        ],
+        "source": {
+          "name": "Open DS",
+          "license": "MIT"
+        }
       },
       {
         "id": "menubar",
         "family": "navigation",
-        "description": "A row of menus, as in desktop apps."
+        "description": "A row of menus, as in desktop apps.",
+        "overview": "A row of menus, as in desktop apps.",
+        "apply_when": "A dense desktop-style tool with many commands grouped by menu.",
+        "not_when": "Website navigation (navigation menu), or phones.",
+        "vs": [
+          {
+            "id": "navigation-menu",
+            "why": "Site navigation, not commands."
+          },
+          {
+            "id": "dropdown-menu",
+            "why": "One menu from one button."
+          }
+        ],
+        "keyboard": [
+          {
+            "id": "arrows",
+            "overview": "Arrow keys move between and within menus; Escape closes."
+          }
+        ],
+        "source": {
+          "name": "Open DS",
+          "license": "MIT"
+        }
       },
       {
         "id": "message",
         "family": "conversation",
-        "description": "One message with its author and time."
+        "description": "One message with its author and time.",
+        "overview": "One message with its author and time.",
+        "apply_when": "Conversations, comments and activity feeds.",
+        "not_when": "Status about the system (alert or toast).",
+        "vs": [
+          {
+            "id": "bubble",
+            "why": "A chat bubble."
+          },
+          {
+            "id": "alert",
+            "why": "A system message."
+          }
+        ],
+        "source": {
+          "name": "Open DS",
+          "license": "MIT"
+        }
       },
       {
         "id": "message-scroller",
         "family": "conversation",
-        "description": "A scrolling list of messages that keeps the newest in view."
+        "description": "A scrolling list of messages that keeps the newest in view.",
+        "overview": "A scrolling list of messages that keeps the newest in view.",
+        "apply_when": "A live conversation where new messages arrive at the bottom.",
+        "not_when": "A static list (a scroll area).",
+        "vs": [
+          {
+            "id": "scroll-area",
+            "why": "A plain scrolling region."
+          }
+        ],
+        "accessibility": [
+          {
+            "id": "live",
+            "overview": "New messages are announced politely without moving focus."
+          }
+        ],
+        "source": {
+          "name": "Open DS",
+          "license": "MIT"
+        }
       },
       {
         "id": "native-select",
         "family": "form",
-        "description": "The browser select, styled."
+        "description": "The browser select, styled.",
+        "overview": "The browser's own select, styled.",
+        "apply_when": "A plain closed list, especially on phones, where the system picker is best.",
+        "not_when": "Options that need icons or rich content (select), or a short list better shown at once (radio group).",
+        "vs": [
+          {
+            "id": "select",
+            "why": "A custom menu with richer options."
+          },
+          {
+            "id": "radio-group",
+            "why": "A short list shown at once."
+          }
+        ],
+        "source": {
+          "name": "Open UX",
+          "id": "select",
+          "license": "MIT",
+          "url": "https://github.com/3dyonic/open-ux/blob/main/catalog/components/select.json"
+        }
       },
       {
         "id": "navigation-menu",
         "family": "navigation",
-        "description": "Site navigation with links and panels."
+        "description": "Site navigation with links and panels.",
+        "overview": "Site navigation with links and panels.",
+        "apply_when": "The main sections of a website, sometimes with a panel of sub-links.",
+        "not_when": "App navigation that stays open (sidebar), or actions (dropdown menu).",
+        "vs": [
+          {
+            "id": "sidebar",
+            "why": "App navigation that stays open."
+          },
+          {
+            "id": "tabs",
+            "why": "Views of one thing."
+          }
+        ],
+        "accessibility": [
+          {
+            "id": "nav",
+            "overview": "It is a navigation landmark; the current page is marked."
+          }
+        ],
+        "source": {
+          "name": "Open DS",
+          "license": "MIT"
+        }
       },
       {
         "id": "pagination",
         "family": "navigation",
-        "description": "Moves between pages of results."
+        "description": "Moves between pages of results.",
+        "overview": "Moves between pages of results.",
+        "apply_when": "A list or table split across pages.",
+        "not_when": "Steps of a task (progress).",
+        "vs": [
+          {
+            "id": "progress",
+            "why": "Steps of a task."
+          },
+          {
+            "id": "table",
+            "why": "The rows being paged."
+          }
+        ],
+        "accessibility": [
+          {
+            "id": "current",
+            "overview": "The current page is marked; previous and next have names."
+          }
+        ],
+        "source": {
+          "name": "Open UX",
+          "id": "pagination",
+          "license": "MIT",
+          "url": "https://github.com/3dyonic/open-ux/blob/main/catalog/components/pagination.json"
+        }
       },
       {
         "id": "popover",
         "family": "overlay",
-        "description": "Rich content in a floating panel, opened by click."
+        "description": "Rich content in a floating panel, opened by click.",
+        "overview": "Rich content in a floating panel, opened by click.",
+        "apply_when": "Extra detail or a small control next to what it explains, on any device.",
+        "not_when": "A one-line hint (tooltip), or a task that should block the page (dialog).",
+        "vs": [
+          {
+            "id": "tooltip",
+            "why": "A one-line hint on hover."
+          },
+          {
+            "id": "dialog",
+            "why": "A blocking task."
+          }
+        ],
+        "accessibility": [
+          {
+            "id": "expanded",
+            "overview": "The trigger says it opens a panel and whether it is open."
+          }
+        ],
+        "keyboard": [
+          {
+            "id": "escape",
+            "overview": "Escape closes it and returns focus."
+          }
+        ],
+        "source": {
+          "name": "Open DS",
+          "license": "MIT"
+        }
       },
       {
         "id": "progress",
         "family": "feedback",
-        "description": "How far a task has come."
+        "description": "How far a task has come.",
+        "overview": "How far a task has come.",
+        "apply_when": "A known amount of work: an upload, steps of a form.",
+        "not_when": "A wait of unknown length (spinner), or a layout placeholder (skeleton).",
+        "vs": [
+          {
+            "id": "spinner",
+            "why": "A wait of unknown length."
+          },
+          {
+            "id": "skeleton",
+            "why": "Content that has not arrived."
+          }
+        ],
+        "accessibility": [
+          {
+            "id": "value",
+            "overview": "It reports its value and has a name."
+          }
+        ],
+        "source": {
+          "name": "Open UX",
+          "id": "progress",
+          "license": "MIT",
+          "url": "https://github.com/3dyonic/open-ux/blob/main/catalog/components/progress.json"
+        }
       },
       {
         "id": "radio-group",
         "family": "form",
-        "description": "One choice from a short list."
+        "description": "One choice from a short list.",
+        "overview": "One choice from a short list shown at once.",
+        "apply_when": "Two to about five options where the answer is one of them.",
+        "not_when": "Many options (select), many answers (checkboxes), or a setting that applies at once (switch).",
+        "vs": [
+          {
+            "id": "checkbox",
+            "why": "More than one may be true."
+          },
+          {
+            "id": "select",
+            "why": "The list is long."
+          }
+        ],
+        "accessibility": [
+          {
+            "id": "group",
+            "overview": "The options are a group with a question as its name."
+          }
+        ],
+        "keyboard": [
+          {
+            "id": "arrows",
+            "overview": "Arrow keys move the choice; Tab leaves the group."
+          }
+        ],
+        "source": {
+          "name": "Open UX",
+          "id": "radio",
+          "license": "MIT",
+          "url": "https://github.com/3dyonic/open-ux/blob/main/catalog/components/radio.json"
+        }
       },
       {
         "id": "resizable",
         "family": "layout",
-        "description": "Panels the user can resize by dragging."
+        "description": "Panels the user can resize by dragging.",
+        "overview": "Panels people resize by dragging the line between them.",
+        "apply_when": "Desktop tools where people choose how much space each panel gets.",
+        "not_when": "Phones, or layouts with one obvious shape.",
+        "vs": [
+          {
+            "id": "sidebar",
+            "why": "Fixed app navigation."
+          }
+        ],
+        "keyboard": [
+          {
+            "id": "arrows",
+            "overview": "The handle can be focused and moved with arrow keys."
+          }
+        ],
+        "source": {
+          "name": "Open DS",
+          "license": "MIT"
+        }
       },
       {
         "id": "scroll-area",
         "family": "layout",
-        "description": "A region with styled scrollbars."
+        "description": "A region with styled scrollbars.",
+        "overview": "A region with its own styled scrollbars.",
+        "apply_when": "A fixed-height list or panel inside a larger page.",
+        "not_when": "The whole page: let the page scroll.",
+        "vs": [
+          {
+            "id": "message-scroller",
+            "why": "A conversation that keeps the newest in view."
+          }
+        ],
+        "keyboard": [
+          {
+            "id": "focusable",
+            "overview": "The region can be focused and scrolled with the keyboard."
+          }
+        ],
+        "source": {
+          "name": "Open DS",
+          "license": "MIT"
+        }
       },
       {
         "id": "select",
         "family": "form",
-        "description": "One choice from a list, in a menu."
+        "description": "One choice from a list, in a menu.",
+        "overview": "One choice from a list, in a menu.",
+        "apply_when": "Four or more options, a known closed list, or a setting with a default.",
+        "not_when": "Two to five options people should see (radio group), or many flags (checkboxes).",
+        "vs": [
+          {
+            "id": "radio-group",
+            "why": "A short list shown at once."
+          },
+          {
+            "id": "combobox",
+            "why": "Type to find in a long list."
+          },
+          {
+            "id": "native-select",
+            "why": "The system picker."
+          }
+        ],
+        "accessibility": [
+          {
+            "id": "label",
+            "overview": "It has a visible label; the chosen value is announced."
+          }
+        ],
+        "keyboard": [
+          {
+            "id": "arrows",
+            "overview": "Arrows move; Enter picks; Escape closes."
+          }
+        ],
+        "source": {
+          "name": "Open UX",
+          "id": "select",
+          "license": "MIT",
+          "url": "https://github.com/3dyonic/open-ux/blob/main/catalog/components/select.json"
+        }
       },
       {
         "id": "separator",
         "family": "layout",
-        "description": "A line between groups."
+        "description": "A line between groups.",
+        "overview": "A line between groups.",
+        "apply_when": "Separating groups that spacing alone does not separate.",
+        "not_when": "Decoration between every item: spacing is quieter.",
+        "vs": [
+          {
+            "id": "card",
+            "why": "A container, when groups need a boundary."
+          }
+        ],
+        "situations": [
+          "between-sections"
+        ],
+        "source": {
+          "name": "Open DS",
+          "license": "MIT"
+        }
       },
       {
         "id": "sheet",
         "family": "overlay",
-        "description": "A panel that slides in from an edge."
+        "description": "A panel that slides in from an edge.",
+        "overview": "A panel that slides in from an edge.",
+        "apply_when": "Filters, details or a secondary form while the page stays in view.",
+        "not_when": "A blocking decision (dialog), or a tiny confirmation.",
+        "vs": [
+          {
+            "id": "dialog",
+            "why": "A centered blocking window."
+          },
+          {
+            "id": "drawer",
+            "why": "The bottom panel for phones."
+          }
+        ],
+        "situations": [
+          "menu-or-dialog"
+        ],
+        "accessibility": [
+          {
+            "id": "dialog-semantics",
+            "overview": "It behaves as a dialog: named, focus moves in and back."
+          }
+        ],
+        "keyboard": [
+          {
+            "id": "escape",
+            "overview": "Escape closes it."
+          }
+        ],
+        "source": {
+          "name": "Open UX",
+          "id": "drawer",
+          "license": "MIT",
+          "url": "https://github.com/3dyonic/open-ux/blob/main/catalog/components/drawer.json"
+        }
       },
       {
         "id": "sidebar",
         "family": "navigation",
-        "description": "The side navigation of an app."
+        "description": "The side navigation of an app.",
+        "overview": "The side navigation of an app, open while people work.",
+        "apply_when": "Apps with several sections people move between all session.",
+        "not_when": "A website's main navigation (navigation menu), or a few sections that fit in tabs.",
+        "vs": [
+          {
+            "id": "navigation-menu",
+            "why": "Website navigation."
+          },
+          {
+            "id": "tabs",
+            "why": "Views of one thing."
+          }
+        ],
+        "variants": {
+          "variant": [
+            {
+              "id": "default",
+              "overview": "Menu items with no border; hover shows the item.",
+              "apply_when": "Most apps: quiet next to the content.",
+              "not_when": "Items that need extra separation."
+            },
+            {
+              "id": "outline",
+              "overview": "Menu items with a border.",
+              "apply_when": "Items that need extra separation from a busy background.",
+              "not_when": "A quiet sidebar next to dense content."
+            }
+          ],
+          "size": [
+            {
+              "id": "default",
+              "overview": "The normal row height.",
+              "apply_when": "Most menu items.",
+              "not_when": "Very long lists."
+            },
+            {
+              "id": "sm",
+              "overview": "A smaller row.",
+              "apply_when": "Long or secondary lists.",
+              "not_when": "Touch screens."
+            },
+            {
+              "id": "lg",
+              "overview": "A taller row with room for an icon and two lines.",
+              "apply_when": "A workspace or account switcher at the top.",
+              "not_when": "Ordinary menu items."
+            }
+          ]
+        },
+        "accessibility": [
+          {
+            "id": "nav",
+            "overview": "It is a navigation landmark; the current section is marked; collapsing keeps names for icons."
+          }
+        ],
+        "source": {
+          "name": "Open DS",
+          "license": "MIT"
+        }
       },
       {
         "id": "skeleton",
         "family": "feedback",
-        "description": "A placeholder while content loads."
+        "description": "A placeholder while content loads.",
+        "overview": "Placeholder shapes that match the final layout, so the page does not jump when content arrives.",
+        "apply_when": "Lists, cards, dashboards and tables whose shape is known.",
+        "not_when": "A wait with no layout (spinner), or a region that loaded empty (empty).",
+        "vs": [
+          {
+            "id": "spinner",
+            "why": "A wait with no layout."
+          },
+          {
+            "id": "empty",
+            "why": "Loaded, with nothing to show."
+          }
+        ],
+        "accessibility": [
+          {
+            "id": "busy",
+            "overview": "The region says it is loading; the shapes themselves are hidden from screen readers."
+          }
+        ],
+        "source": {
+          "name": "Open UX",
+          "id": "skeleton",
+          "license": "MIT",
+          "url": "https://github.com/3dyonic/open-ux/blob/main/catalog/components/skeleton.json"
+        }
       },
       {
         "id": "slider",
         "family": "form",
-        "description": "A value picked by dragging along a track."
+        "description": "A value picked by dragging along a track.",
+        "overview": "A value picked by dragging along a track, when an exact number is not needed.",
+        "apply_when": "Volume, brightness, a rough range; pair with a number field when precision matters.",
+        "not_when": "An exact answer people must type.",
+        "vs": [
+          {
+            "id": "input",
+            "why": "An exact number."
+          },
+          {
+            "id": "radio-group",
+            "why": "A few named choices."
+          }
+        ],
+        "accessibility": [
+          {
+            "id": "value",
+            "overview": "It has a name and announces its value."
+          }
+        ],
+        "keyboard": [
+          {
+            "id": "arrows",
+            "overview": "Arrow keys change the value; Home and End jump to the ends."
+          }
+        ],
+        "source": {
+          "name": "Open UX",
+          "id": "slider",
+          "license": "MIT",
+          "url": "https://github.com/3dyonic/open-ux/blob/main/catalog/components/slider.json"
+        }
       },
       {
         "id": "sonner",
         "family": "feedback",
-        "description": "Stacked toasts, from the Sonner library."
+        "description": "Stacked toasts, from the Sonner library.",
+        "overview": "Stacked toasts, from the Sonner library.",
+        "apply_when": "Many short confirmations that may arrive close together.",
+        "not_when": "A message people must read or act on (alert or dialog).",
+        "vs": [
+          {
+            "id": "toast",
+            "why": "Open DS's own single toast."
+          },
+          {
+            "id": "alert",
+            "why": "A message that stays."
+          }
+        ],
+        "accessibility": [
+          {
+            "id": "live",
+            "overview": "Toasts are announced politely and do not take focus."
+          }
+        ],
+        "source": {
+          "name": "Open UX",
+          "id": "toast",
+          "license": "MIT",
+          "url": "https://github.com/3dyonic/open-ux/blob/main/catalog/components/toast.json"
+        }
       },
       {
         "id": "spinner",
         "family": "feedback",
-        "description": "A small loading indicator."
+        "description": "A small loading indicator.",
+        "overview": "A small indicator that work is in progress when the time is unknown.",
+        "apply_when": "Fetching a panel or syncing, a wait that is not the button itself.",
+        "not_when": "A layout placeholder (skeleton), or known progress (progress).",
+        "vs": [
+          {
+            "id": "skeleton",
+            "why": "Keeps the final layout."
+          },
+          {
+            "id": "progress",
+            "why": "A known amount of work."
+          }
+        ],
+        "accessibility": [
+          {
+            "id": "status",
+            "overview": "It has a name such as Loading and is announced politely."
+          }
+        ],
+        "source": {
+          "name": "Open UX",
+          "id": "loading_indicator",
+          "license": "MIT",
+          "url": "https://github.com/3dyonic/open-ux/blob/main/catalog/components/loading_indicator.json"
+        }
       },
       {
         "id": "switch",
         "family": "form",
-        "description": "An on-off setting that applies at once."
+        "description": "An on-off setting that applies at once.",
+        "overview": "An on or off setting that applies at once, with no submit.",
+        "apply_when": "A setting that should take effect as soon as it is flipped.",
+        "not_when": "A choice that waits for a form (checkbox).",
+        "vs": [
+          {
+            "id": "checkbox",
+            "why": "Waits for the form."
+          },
+          {
+            "id": "toggle",
+            "why": "A pressed button in a toolbar."
+          }
+        ],
+        "accessibility": [
+          {
+            "id": "switch-role",
+            "overview": "It is a switch with a visible label; on and off are announced."
+          }
+        ],
+        "keyboard": [
+          {
+            "id": "space",
+            "overview": "Space flips it."
+          }
+        ],
+        "source": {
+          "name": "Open UX",
+          "id": "switch",
+          "license": "MIT",
+          "url": "https://github.com/3dyonic/open-ux/blob/main/catalog/components/switch.json"
+        }
       },
       {
         "id": "table",
         "family": "data",
-        "description": "Rows and columns of records."
+        "description": "Rows and columns of records.",
+        "overview": "Rows and columns of comparable records, with headers.",
+        "apply_when": "Records people scan, sort or compare cell by cell.",
+        "not_when": "A grid of teasers (cards), or the shape of a relationship (chart).",
+        "vs": [
+          {
+            "id": "data-table",
+            "why": "Many records with search, filters and paging."
+          },
+          {
+            "id": "chart",
+            "why": "The shape of the numbers."
+          }
+        ],
+        "situations": [
+          "number-in-table",
+          "table-row",
+          "selected-row"
+        ],
+        "accessibility": [
+          {
+            "id": "headers",
+            "overview": "It has a caption and header cells, so each cell is read with its header."
+          }
+        ],
+        "source": {
+          "name": "Open UX",
+          "id": "table",
+          "license": "MIT",
+          "url": "https://github.com/3dyonic/open-ux/blob/main/catalog/components/table.json"
+        }
       },
       {
         "id": "tabs",
         "family": "navigation",
-        "description": "Switches between views of the same thing."
+        "description": "Switches between views of the same thing.",
+        "overview": "Switches between views of the same thing on one page.",
+        "apply_when": "Related views of one object that people move between.",
+        "not_when": "Navigation to other pages (links), or steps of a task (progress).",
+        "vs": [
+          {
+            "id": "accordion",
+            "why": "Stacked sections people can open together."
+          },
+          {
+            "id": "navigation-menu",
+            "why": "Other pages."
+          }
+        ],
+        "accessibility": [
+          {
+            "id": "tablist",
+            "overview": "It is a tablist; the selected tab owns its panel."
+          }
+        ],
+        "keyboard": [
+          {
+            "id": "arrows",
+            "overview": "Arrow keys move between tabs; Tab moves into the panel."
+          }
+        ],
+        "source": {
+          "name": "Open UX",
+          "id": "tabs",
+          "license": "MIT",
+          "url": "https://github.com/3dyonic/open-ux/blob/main/catalog/components/tabs.json"
+        }
       },
       {
         "id": "textarea",
         "family": "form",
-        "description": "Multi-line text entry."
+        "description": "Multi-line text entry.",
+        "overview": "A field for free text over several lines.",
+        "apply_when": "Comments, descriptions, anything longer than one line.",
+        "not_when": "A one-line value (input), or a known set of options.",
+        "vs": [
+          {
+            "id": "input",
+            "why": "One line."
+          }
+        ],
+        "situations": [
+          "field-label"
+        ],
+        "accessibility": [
+          {
+            "id": "label",
+            "overview": "It has a visible label; a limit is announced as people type."
+          }
+        ],
+        "source": {
+          "name": "Open UX",
+          "id": "textarea",
+          "license": "MIT",
+          "url": "https://github.com/3dyonic/open-ux/blob/main/catalog/components/textarea.json"
+        }
       },
       {
         "id": "toast",
         "family": "feedback",
-        "description": "A short message that confirms an action and goes away. Open DS builds its own; shadcn now ships sonner for this."
+        "description": "A short message that confirms an action and goes away. Open DS builds its own; shadcn now ships sonner for this.",
+        "overview": "A short message that confirms an action and goes away.",
+        "apply_when": "Saved, sent, exported: something people should notice without stopping.",
+        "not_when": "A failure people must understand (alert or dialog), or a notice that stays (alert).",
+        "vs": [
+          {
+            "id": "alert",
+            "why": "Stays on the page."
+          },
+          {
+            "id": "dialog",
+            "why": "Needs an answer."
+          }
+        ],
+        "variants": {
+          "tone": [
+            {
+              "id": "neutral",
+              "overview": "A plain confirmation.",
+              "apply_when": "Something changed: cleared, copied, moved.",
+              "not_when": "Something failed."
+            },
+            {
+              "id": "success",
+              "overview": "Confirms that something people care about worked.",
+              "apply_when": "Exported, paid, joined.",
+              "not_when": "A routine change that needs no celebration."
+            },
+            {
+              "id": "danger",
+              "overview": "Something failed in the background.",
+              "apply_when": "What failed and how to fix it, when it can wait for people's attention.",
+              "not_when": "A failure that blocks the task: use an alert or a dialog."
+            }
+          ]
+        },
+        "situations": [
+          "success-words",
+          "error-words"
+        ],
+        "accessibility": [
+          {
+            "id": "live",
+            "overview": "It is announced politely without taking focus, and stays long enough to read."
+          },
+          {
+            "id": "not-only-place",
+            "overview": "Nothing people must act on lives only in a toast."
+          }
+        ],
+        "source": {
+          "name": "Open UX",
+          "id": "toast",
+          "license": "MIT",
+          "url": "https://github.com/3dyonic/open-ux/blob/main/catalog/components/toast.json"
+        }
       },
       {
         "id": "toggle",
         "family": "action",
-        "description": "A button that stays pressed or not."
+        "description": "A button that stays pressed or not.",
+        "overview": "A button that stays pressed or not.",
+        "apply_when": "Turning a mode or format on and off in a toolbar, such as bold.",
+        "not_when": "A setting saved at once (switch), or a one-off action (button).",
+        "vs": [
+          {
+            "id": "switch",
+            "why": "A setting."
+          },
+          {
+            "id": "button",
+            "why": "A one-off action."
+          },
+          {
+            "id": "toggle-group",
+            "why": "Several toggles together."
+          }
+        ],
+        "variants": {
+          "variant": [
+            {
+              "id": "default",
+              "overview": "No border; the pressed state shows as a fill.",
+              "apply_when": "Toolbars where toggles sit together.",
+              "not_when": "A toggle alone on a busy background."
+            },
+            {
+              "id": "outline",
+              "overview": "A border, so the toggle reads as a control at rest.",
+              "apply_when": "A toggle that stands alone.",
+              "not_when": "A dense toolbar of many toggles."
+            }
+          ],
+          "size": [
+            {
+              "id": "default",
+              "overview": "The normal size.",
+              "apply_when": "Most toolbars.",
+              "not_when": "Very dense toolbars."
+            },
+            {
+              "id": "sm",
+              "overview": "A smaller toggle.",
+              "apply_when": "Dense toolbars and compact panels.",
+              "not_when": "Touch screens."
+            },
+            {
+              "id": "lg",
+              "overview": "A larger toggle.",
+              "apply_when": "A few toggles that need to be easy to hit.",
+              "not_when": "Dense toolbars."
+            }
+          ]
+        },
+        "accessibility": [
+          {
+            "id": "pressed",
+            "overview": "It says whether it is pressed."
+          }
+        ],
+        "keyboard": [
+          {
+            "id": "space-enter",
+            "overview": "Space or Enter presses it."
+          }
+        ],
+        "source": {
+          "name": "Open DS",
+          "license": "MIT"
+        }
       },
       {
         "id": "toggle-group",
         "family": "action",
-        "description": "A set of toggles where one or many stay pressed."
+        "description": "A set of toggles where one or many stay pressed.",
+        "overview": "A set of toggles where one or many stay pressed.",
+        "apply_when": "Switching a view or a mode between a few options, such as list and grid.",
+        "not_when": "A form answer (radio group), or actions (button group).",
+        "vs": [
+          {
+            "id": "radio-group",
+            "why": "An answer in a form."
+          },
+          {
+            "id": "button-group",
+            "why": "Actions, not a pressed choice."
+          }
+        ],
+        "accessibility": [
+          {
+            "id": "group",
+            "overview": "It is a group with a name; each toggle says whether it is pressed."
+          }
+        ],
+        "keyboard": [
+          {
+            "id": "arrows",
+            "overview": "Arrow keys move between toggles."
+          }
+        ],
+        "source": {
+          "name": "Open DS",
+          "license": "MIT"
+        }
       },
       {
         "id": "tooltip",
         "family": "overlay",
-        "description": "A short hint on hover or focus."
+        "description": "A short hint on hover or focus.",
+        "overview": "A short hint on hover or focus.",
+        "apply_when": "A brief name or hint for a control that already has an accessible name.",
+        "not_when": "The only place values or important words live, or touch screens, where hover never happens.",
+        "vs": [
+          {
+            "id": "popover",
+            "why": "Opens on click and works on touch."
+          },
+          {
+            "id": "hover-card",
+            "why": "A richer preview."
+          }
+        ],
+        "situations": [
+          "icon-alone"
+        ],
+        "accessibility": [
+          {
+            "id": "describedby",
+            "overview": "It describes its trigger and also shows on keyboard focus."
+          }
+        ],
+        "keyboard": [
+          {
+            "id": "escape",
+            "overview": "Escape hides it."
+          }
+        ],
+        "source": {
+          "name": "Open UX",
+          "id": "tooltip",
+          "license": "MIT",
+          "url": "https://github.com/3dyonic/open-ux/blob/main/catalog/components/tooltip.json"
+        }
       }
     ]
   }

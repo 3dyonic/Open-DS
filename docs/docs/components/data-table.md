@@ -8,11 +8,63 @@ description: "Data table in Dense data."
 
 # Data table
 
-Data table. A pattern for many records: search, faceted filters, sorting, column choice, row selection with bulk actions, pagination and a density switch. Built from the system's own components (table, input, button, checkbox, popover, toggle group) on TanStack Table, following shadcn/ui's Data Table guide (MIT). Reads only component keys and the shadcn variables that theme.css maps onto the scheme's semantics. Every label is a prop, so the words come from the scheme's voice.
+Many records in one view, with search, filters, sorting, column choice, selection and paging.
 
-See it in [Storybook](http://localhost:6006) under Components / Data table, in every theme.
+**In Dense data.** Analysts scan hundreds of alerts, filter by status and asset group, sort by risk and act on many rows at once. Family: data. Reference: Open DS, MIT.
+
+## See it live
+
+<div class="odv-live"><span class="odv-wait">Start Storybook to see it live: <code>npm run storybook</code></span><iframe src="http://localhost:6006/iframe.html?id=components-data-table--examples&viewMode=story&globals=scheme:dense-data" title="Data table examples in Storybook" loading="lazy"></iframe><div class="bar"><span>Live from Storybook</span><a href="http://localhost:6006/?path=/docs/components-data-table--docs">Open Data table in Storybook</a><a href="http://localhost:6006/iframe.html?id=components-data-table--examples&viewMode=story&globals=scheme:dense-data;mode:dark">See it in dark</a></div></div>
+
+## When to use it
+
+- **Use it when:** People find, compare and act on many records, often in bulk.
+- **Not when:** A handful of rows (a plain table), or items people browse rather than compare (cards).
+
+Instead:
+
+- [Table](./table.md): A few rows, no tools.
+- [Card](./card.md): Items to browse, not compare.
+
+## How Dense data uses it
+
+<div class="odv-grid two"><div class="odv-dd"><div class="stage"><div class="odv-eyebrow">A number in a table</div><div style="margin-top:6px"><b style="color:var(--color-status-success)">Use</b> type.data</div><div><b style="color:var(--color-status-danger)">Not</b> type.body</div></div><div class="cap">Mono digits line up in columns, so values compare at a glance.</div></div><div class="odv-dd"><div class="stage"><div class="odv-eyebrow">A selected row or item</div><div style="margin-top:6px"><b style="color:var(--color-status-success)">Use</b> color.surface.selected</div><div><b style="color:var(--color-status-danger)">Not</b> color.action.primary as a fill</div></div><div class="cap">A light tint shows selection without hiding the data.</div></div><div class="odv-dd"><div class="stage"><div class="odv-eyebrow">Table row height</div><div style="margin-top:6px"><b style="color:var(--color-status-success)">Use</b> size.row (compact)</div><div><b style="color:var(--color-status-danger)">Not</b> The comfortable row</div></div><div class="cap">Compact rows show more records without scrolling.</div></div><div class="odv-dd"><div class="stage"><div class="odv-eyebrow">An action on one row or item</div><div style="margin-top:6px"><b style="color:var(--color-status-success)">Use</b> Icon button, ghost, compact</div><div><b style="color:var(--color-status-danger)">Not</b> Button secondary in every row</div></div><div class="cap">Rows repeat dozens of times; a quiet icon keeps the table readable.</div></div></div>
+
+## Words
+
+- Lead with the object, then the state: "Alert 2041 contained."
+- Use numbers, not words for numbers.
+- One verb per button. No "please", no exclamation marks.
+- Use: Investigate, Filter, Assign, Escalated, Resolved. Avoid: Oops, Awesome, Please, Simply.
+
+The labels components use, from the voice tokens:
+
+- `content.action.commit`: Save
+- `content.action.cancel`: Cancel
+- `content.action.destroy`: Delete
+- `content.action.retry`: Retry
+- `content.action.empty-action`: Change filters
+
+See [Voice and tone](../voice.md) for the whole voice.
+
+## Accessibility and keyboard
+
+| Keyboard | What happens | Not |
+| --- | --- | --- |
+| undefined | Every tool and row action is reachable by keyboard. | undefined |
+
+Test before you ship:
+
+- [ ] It stays a real table with headers; sorting and selection are announced. undefined
+
+## Use it in code
+
+```bash
+npx open-ds add data-table
+```
+
+The component reads only component keys and semantic tokens, so it follows the brand and mode on `<html>`.
 
 ## Tokens it reads
 
 From shadcn/ui. It reads shadcn's variables, which theme.css maps onto this system's semantic tokens, and the radius, shadow and text scale in shadcn.css.
-

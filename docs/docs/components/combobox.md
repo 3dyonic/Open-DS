@@ -8,11 +8,59 @@ description: "Combobox in Dense data."
 
 # Combobox
 
-Combobox. A text field with a filtered list of choices. From shadcn/ui (new-york-v4, MIT), carried by the schemes whose inventory names it. Reads the shadcn variables, which theme.css maps onto the scheme's semantic tokens, and the radius, shadow and text scale that shadcn.css maps onto the scheme's tokens. Dark mode comes from the tokens, so no dark: classes.
+A text field that suggests and completes matches from a known list as people type.
 
-See it in [Storybook](http://localhost:6006) under Components / Combobox, in every theme.
+**In Dense data.** Picks an asset or a user from thousands. Family: form. Reference: Open UX (autocomplete), MIT.
+
+## See it live
+
+<div class="odv-live"><span class="odv-wait">Start Storybook to see it live: <code>npm run storybook</code></span><iframe src="http://localhost:6006/iframe.html?id=components-combobox--examples&viewMode=story&globals=scheme:dense-data" title="Combobox examples in Storybook" loading="lazy"></iframe><div class="bar"><span>Live from Storybook</span><a href="http://localhost:6006/?path=/docs/components-combobox--docs">Open Combobox in Storybook</a><a href="http://localhost:6006/iframe.html?id=components-combobox--examples&viewMode=story&globals=scheme:dense-data;mode:dark">See it in dark</a></div></div>
+
+## When to use it
+
+- **Use it when:** A long, closed list: countries, addresses, people, tags.
+- **Not when:** Searching a whole site, or a short list people can see at once.
+
+Instead:
+
+- [Select](./select.md): A compact closed list without typing.
+- [Command](./command.md): A search-first menu of actions.
+
+## Words
+
+- Lead with the object, then the state: "Alert 2041 contained."
+- Use numbers, not words for numbers.
+- One verb per button. No "please", no exclamation marks.
+- Use: Investigate, Filter, Assign, Escalated, Resolved. Avoid: Oops, Awesome, Please, Simply.
+
+The labels components use, from the voice tokens:
+
+- `content.action.commit`: Save
+- `content.action.cancel`: Cancel
+- `content.action.destroy`: Delete
+- `content.action.retry`: Retry
+- `content.action.empty-action`: Change filters
+
+See [Voice and tone](../voice.md) for the whole voice.
+
+## Accessibility and keyboard
+
+| Keyboard | What happens | Not |
+| --- | --- | --- |
+| undefined | Arrow keys move through suggestions; Enter picks; Escape closes. | undefined |
+
+Test before you ship:
+
+- [ ] It is a combobox; the open state and the active option are announced. undefined
+
+## Use it in code
+
+```bash
+npx open-ds add combobox
+```
+
+The component reads only component keys and semantic tokens, so it follows the brand and mode on `<html>`.
 
 ## Tokens it reads
 
 From shadcn/ui. It reads shadcn's variables, which theme.css maps onto this system's semantic tokens, and the radius, shadow and text scale in shadcn.css.
-

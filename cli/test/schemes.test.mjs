@@ -119,7 +119,10 @@ test("init deploys tokens, components, AGENTS.md and the skill", () => {
       grammar().situations.length,
     );
     // The colour guidance: one row per semantic key, from the grammar.
-    assert.equal(agents.match(/^\| `color\./gm).length, grammar().semantics.keys.length);
+    assert.equal(
+      agents.match(/^\| `color\./gm).length,
+      grammar().semantics.keys.length,
+    );
     assert.match(
       readFileSync(join(dir, ".claude/skills/open-ds/SKILL.md"), "utf8"),
       /^---\nname: open-ds\ndescription: /,
@@ -379,16 +382,42 @@ test("guidance: every colour key has intent and not_for; pairs and urgency read 
   const info = guidanceFor(g, "color.status.info");
   assert.equal(info.id, "color.status.info.@");
   assert.equal(info.urgency.level, 1);
-  assert.ok(guidanceFor(g, "color.surface.default").takes.some((t) => t.key === "color.text.primary"));
+  assert.ok(
+    guidanceFor(g, "color.surface.default").takes.some(
+      (t) => t.key === "color.text.primary",
+    ),
+  );
   assert.equal(guidanceFor(g, "space.gap.default"), null);
   const s = withGuidance(loadScheme("dense-data"), g);
-  assert.equal(s.tokens.semantic.color.status.danger["@"].$description, guidanceFor(g, "color.status.danger").intent);
+  assert.equal(
+    s.tokens.semantic.color.status.danger["@"].$description,
+    guidanceFor(g, "color.status.danger").intent,
+  );
 });
 
 test("context: a task, a component key, a situation and nothing", async () => {
   const { context } = await import("../src/context.mjs");
-  assert.equal(context("content-first", "write").voice.summary.text.length > 0, true);
-  assert.equal(context("content-first", "button/primary/background").kind, "component key");
+  assert.equal(
+    context("content-first", "write").voice.summary.text.length > 0,
+    true,
+  );
+  assert.equal(
+    context("content-first", "button/primary/background").kind,
+    "component key",
+  );
   assert.equal(context("content-first", "status-label").kind, "situation");
   assert.equal(context("content-first", "nothing-here"), null);
+});
+
+test("component shows the reference and this scheme's decision for every variant (OD-185)", () => {
+  const text = cli("component", "content-first", "button");
+  assert.match(text, /What it is: A control that commits an action/);
+  assert.match(text, /icon: Icon only/);
+  assert.match(text, /Here: not used: Occasional visitors do not know icons/);
+  const json = JSON.parse(cli("component", "dense-data", "button", "--json"));
+  assert.equal(
+    json.variants.filter((v) => !v.here).length,
+    0,
+    "every variant is decided",
+  );
 });

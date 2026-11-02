@@ -23,6 +23,7 @@ import {
   withImports,
 } from "./components.mjs";
 import { context, TASKS } from "./context.mjs";
+import { componentGuide, followers } from "./component.mjs";
 import { createProject } from "./create.mjs";
 import {
   assetRoots,
@@ -357,19 +358,8 @@ export function createMcpServer({ roots = assetRoots() } = {}) {
       const s = scheme(scheme_id);
       if (!qs[question_id])
         throw new Error(`Unknown question "${question_id}".`);
-      const follows = new Set([question_id]);
-      for (let grew = true; grew; ) {
-        grew = false;
-        for (const a of s.answers)
-          if (
-            !follows.has(a.question) &&
-            a.because.some((b) => follows.has(b))
-          ) {
-            follows.add(a.question);
-            grew = true;
-          }
-      }
-      follows.delete(question_id);
+      const follows = new Set(followers(s, question_id));
+      const moved = new Set([question_id, ...follows]);
       const scope = g.scopes.find((x) =>
         x.questions.some((q) => q.id === question_id),
       );
@@ -383,6 +373,23 @@ export function createMcpServer({ roots = assetRoots() } = {}) {
         })),
         tokens: scope?.owns ?? [],
         lands_in: scope?.lands_in ?? [],
+        // The outputs that cite the answer or anything that follows from it (OD-185): each variant
+        // decision in the component scheme, and each usage rule.
+        variants: s.inventory.in.flatMap((c) =>
+          Object.entries(c.variants ?? {}).flatMap(([axis, vs]) =>
+            Object.entries(vs)
+              .filter(([, d]) => (d.because ?? []).some((b) => moved.has(b)))
+              .map(([variant, d]) => ({
+                component: c.id,
+                axis,
+                variant,
+                ...d,
+              })),
+          ),
+        ),
+        rules: s.usage
+          .filter((u) => (u.because ?? []).some((b) => moved.has(b)))
+          .map((u) => ({ situation: u.situation, use: u.use })),
       });
     },
   );
@@ -431,6 +438,33 @@ export function createMcpServer({ roots = assetRoots() } = {}) {
       if (!out)
         throw new Error(
           `Nothing called "${target}". Give a task (${TASKS.join(", ")}), a component (${g.components.map((c) => c.id).join(", ")}), a component key, a semantic token such as color.status.danger, or a situation id.`,
+        );
+      return json(out);
+    },
+  );
+
+  server.registerTool(
+    "get_component",
+    {
+      title: "Component",
+      description:
+        "One component in one scheme: the reference (what the component and each of its variants are for, the same in every design system, and what to use instead) next to this scheme's decisions (whether it carries the component and why, how it uses each variant or that it does not, and its usage rules). Read this before you build with a component or pick a variant.",
+      inputSchema: {
+        scheme_id: SchemeId,
+        component: z
+          .string()
+          .describe(
+            "A catalogue component id, for example button, badge or dialog.",
+          ),
+      },
+      annotations: { readOnlyHint: true },
+    },
+    async ({ scheme_id, component }) => {
+      scheme(scheme_id);
+      const out = componentGuide(scheme_id, component, roots, g);
+      if (!out)
+        throw new Error(
+          `"${component}" is not in the catalogue. Components: ${g.catalogue.items.map((i) => i.id).join(", ")}.`,
         );
       return json(out);
     },
