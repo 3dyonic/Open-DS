@@ -8,7 +8,7 @@
   "contact": "contact@open-ds.dev",
   "contactNote": "The public contact address. Mail to it is forwarded by Cloudflare Email Routing; the inbox it reaches is set there, never in this repository.",
   "analytics": {
-    "gtm": ""
+    "gtm": "GTM-5X4DWH92"
   },
   "analyticsNote": "The Google Tag Manager container ID (GTM-...). It is public. The container holds the Google Analytics tag. While it is empty the site shows no cookie banner and loads nothing from Google."
 }
