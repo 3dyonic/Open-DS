@@ -92,7 +92,81 @@
     "in": [
       {
         "id": "button",
-        "why": "Every action."
+        "why": "Every action.",
+        "variants": {
+          "variant": {
+            "primary": {
+              "use": "The one commit in a view.",
+              "because": [
+                "color.count",
+                "outcomes.q2"
+              ]
+            },
+            "secondary": {
+              "use": "Alternatives and cancel next to the primary, and the first step of a delete.",
+              "because": [
+                "human.q2",
+                "outcomes.q2"
+              ]
+            },
+            "ghost": {
+              "use": "Row actions, as compact icon buttons. Never for cancel.",
+              "because": [
+                "tasks.q2",
+                "human.q2"
+              ]
+            }
+          },
+          "size": {
+            "default": {
+              "use": "Actions outside tables: forms, dialogs, page actions.",
+              "because": [
+                "content.q2",
+                "accessibility.values"
+              ]
+            },
+            "compact": {
+              "use": "Table rows and toolbars. Compact still fits a mouse.",
+              "because": [
+                "content.q2",
+                "accessibility.values"
+              ]
+            },
+            "icon": {
+              "use": "Known row and toolbar actions, always with a tooltip.",
+              "because": [
+                "iconography.roles"
+              ]
+            },
+            "large": {
+              "not_used": true,
+              "why": "Controls stay small so more records fit on one screen.",
+              "because": [
+                "content.q2"
+              ]
+            }
+          },
+          "state": {
+            "hover": {
+              "use": "Fast feedback that confirms the pointer.",
+              "because": [
+                "motion.values"
+              ]
+            },
+            "focus": {
+              "use": "Always visible: the focus ring at border-width.focus.",
+              "because": [
+                "people.q2"
+              ]
+            },
+            "disabled": {
+              "use": "Only with a visible reason next to it.",
+              "because": [
+                "people.q2"
+              ]
+            }
+          }
+        }
       },
       {
         "id": "toggle-group",
@@ -104,7 +178,37 @@
       },
       {
         "id": "input-group",
-        "why": "Search with an icon and a clear button."
+        "why": "Search with an icon and a clear button.",
+        "variants": {
+          "align": {
+            "inline-start": {
+              "use": "The search icon before the text.",
+              "because": [
+                "iconography.roles"
+              ]
+            },
+            "inline-end": {
+              "use": "The clear button after the text, for searches people repeat all day.",
+              "because": [
+                "tasks.q2"
+              ]
+            },
+            "block-start": {
+              "not_used": true,
+              "why": "Inputs stay one line high in toolbars and filter bars.",
+              "because": [
+                "content.q2"
+              ]
+            },
+            "block-end": {
+              "not_used": true,
+              "why": "Inputs stay one line high in toolbars and filter bars.",
+              "because": [
+                "content.q2"
+              ]
+            }
+          }
+        }
       },
       {
         "id": "slider",
@@ -136,7 +240,31 @@
       },
       {
         "id": "field",
-        "why": "Lays out label, control and error the same way everywhere."
+        "why": "Lays out label, control and error the same way everywhere.",
+        "variants": {
+          "orientation": {
+            "vertical": {
+              "use": "Forms in dialogs and sheets: the label above.",
+              "because": [
+                "tasks.q1"
+              ]
+            },
+            "horizontal": {
+              "use": "Settings and filter panels: switches and short controls with the label beside.",
+              "because": [
+                "content.q2",
+                "spacing.count"
+              ]
+            },
+            "responsive": {
+              "not_used": true,
+              "why": "A desk with a mouse and keyboard: there is no narrow screen to adapt to.",
+              "because": [
+                "scenarios.q1"
+              ]
+            }
+          }
+        }
       },
       {
         "id": "form",
@@ -168,7 +296,46 @@
       },
       {
         "id": "badge",
-        "why": "Alert status in rows."
+        "why": "Alert status in rows.",
+        "variants": {
+          "tone": {
+            "neutral": {
+              "use": "New and False positive: not triaged yet, or a finished outcome that is not a failure.",
+              "because": [
+                "accessibility.count",
+                "content.q1"
+              ]
+            },
+            "info": {
+              "use": "Investigating: an analyst is on it; news, nothing to act on.",
+              "because": [
+                "accessibility.count",
+                "content.q1"
+              ]
+            },
+            "success": {
+              "use": "Resolved: contained and closed.",
+              "because": [
+                "accessibility.count",
+                "content.q1"
+              ]
+            },
+            "warning": {
+              "use": "Escalated: needs a senior analyst soon, still containable.",
+              "because": [
+                "accessibility.count",
+                "content.q1"
+              ]
+            },
+            "danger": {
+              "use": "Breach confirmed: a real loss.",
+              "because": [
+                "accessibility.count",
+                "content.q1"
+              ]
+            }
+          }
+        }
       },
       {
         "id": "chart",
@@ -192,7 +359,45 @@
       },
       {
         "id": "sidebar",
-        "why": "App navigation that stays open all shift."
+        "why": "App navigation that stays open all shift.",
+        "variants": {
+          "variant": {
+            "default": {
+              "use": "Menu items with no border, quiet beside dense data.",
+              "because": [
+                "content.q1"
+              ]
+            },
+            "outline": {
+              "not_used": true,
+              "why": "Borders on every item would compete with the data.",
+              "because": [
+                "content.q1"
+              ]
+            }
+          },
+          "size": {
+            "default": {
+              "use": "Every section of the app.",
+              "because": [
+                "tasks.q2"
+              ]
+            },
+            "sm": {
+              "use": "Long secondary lists, at the denser size.",
+              "because": [
+                "spacing.count"
+              ]
+            },
+            "lg": {
+              "not_used": true,
+              "why": "Rows stay small so the whole navigation fits the screen all shift.",
+              "because": [
+                "content.q2"
+              ]
+            }
+          }
+        }
       },
       {
         "id": "kbd",
@@ -200,11 +405,56 @@
       },
       {
         "id": "alert",
-        "why": "A problem that stays on the page."
+        "why": "A problem that stays on the page.",
+        "variants": {
+          "variant": {
+            "default": {
+              "not_used": true,
+              "why": "Alerts here are for problems that stay on the page; news goes in a toast or a badge.",
+              "because": [
+                "outcomes.q2",
+                "tasks.q2"
+              ]
+            },
+            "destructive": {
+              "use": "A record that was not saved or an action that failed: name the record, then the fix, with an icon.",
+              "because": [
+                "outcomes.q2",
+                "accessibility.count",
+                "voice.values"
+              ]
+            }
+          }
+        }
       },
       {
         "id": "toast",
-        "why": "Confirms a saved change."
+        "why": "Confirms a saved change.",
+        "variants": {
+          "tone": {
+            "neutral": {
+              "use": "A plain confirmation: Filters cleared.",
+              "because": [
+                "voice.values"
+              ]
+            },
+            "success": {
+              "use": "A short confirmation with the count: 12 alerts exported.",
+              "because": [
+                "voice.values",
+                "tasks.q2"
+              ]
+            },
+            "danger": {
+              "use": "A background failure: name the record, then the fix.",
+              "because": [
+                "voice.values",
+                "voice.lands",
+                "outcomes.q2"
+              ]
+            }
+          }
+        }
       },
       {
         "id": "skeleton",
@@ -212,7 +462,26 @@
       },
       {
         "id": "empty",
-        "why": "An empty table says what to do next."
+        "why": "An empty table says what to do next.",
+        "variants": {
+          "variant": {
+            "default": {
+              "not_used": true,
+              "why": "No pictures: an empty table needs the reason and the one action that fills it.",
+              "because": [
+                "content.q1",
+                "voice.lands"
+              ]
+            },
+            "icon": {
+              "use": "An outline icon in a small tile beside the reason and the action.",
+              "because": [
+                "iconography.roles",
+                "iconography.definition"
+              ]
+            }
+          }
+        }
       },
       {
         "id": "dialog",
@@ -1354,6 +1623,11 @@
       "because": [
         "accessibility.count",
         "content.q1"
+      ],
+      "uses": [
+        {
+          "component": "badge"
+        }
       ]
     },
     {
@@ -1446,6 +1720,16 @@
       "why": "Experts learn icons; the tooltip covers the first uses.",
       "because": [
         "iconography.roles"
+      ],
+      "uses": [
+        {
+          "component": "button",
+          "axis": "size",
+          "variant": "icon"
+        },
+        {
+          "component": "tooltip"
+        }
       ]
     },
     {
@@ -1464,6 +1748,13 @@
       "why": "Keyboard users must always see where they are.",
       "because": [
         "people.q2"
+      ],
+      "uses": [
+        {
+          "component": "button",
+          "axis": "state",
+          "variant": "focus"
+        }
       ]
     },
     {
@@ -1483,6 +1774,13 @@
       "because": [
         "color.count",
         "outcomes.q2"
+      ],
+      "uses": [
+        {
+          "component": "button",
+          "axis": "variant",
+          "variant": "primary"
+        }
       ]
     },
     {
@@ -1492,6 +1790,13 @@
       "why": "Cancel must be easy to find next to the primary.",
       "because": [
         "human.q2"
+      ],
+      "uses": [
+        {
+          "component": "button",
+          "axis": "variant",
+          "variant": "secondary"
+        }
       ]
     },
     {
@@ -1501,6 +1806,16 @@
       "why": "Deleting is rare and costly; a confirm step catches mistakes.",
       "because": [
         "outcomes.q2"
+      ],
+      "uses": [
+        {
+          "component": "button",
+          "axis": "variant",
+          "variant": "secondary"
+        },
+        {
+          "component": "dialog"
+        }
       ]
     },
     {
@@ -1510,6 +1825,18 @@
       "why": "Rows repeat dozens of times; a quiet icon keeps the table readable.",
       "because": [
         "tasks.q2"
+      ],
+      "uses": [
+        {
+          "component": "button",
+          "axis": "variant",
+          "variant": "ghost"
+        },
+        {
+          "component": "button",
+          "axis": "size",
+          "variant": "icon"
+        }
       ]
     },
     {
@@ -1562,7 +1889,12 @@
       "because": [
         "voice.lands"
       ],
-      "example": "No escalated alerts. Change the date range to see older ones."
+      "example": "No escalated alerts. Change the date range to see older ones.",
+      "uses": [
+        {
+          "component": "empty"
+        }
+      ]
     },
     {
       "situation": "confirm-words",
@@ -2659,6 +2991,11 @@
             "$type": "dimension",
             "$value": "{size.24}",
             "$description": "Height of compact controls."
+          },
+          "large": {
+            "$type": "dimension",
+            "$value": "{size.32}",
+            "$description": "Height of large controls. Not used in this system, so it equals the default."
           }
         },
         "row": {

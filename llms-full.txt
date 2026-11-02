@@ -296,7 +296,7 @@ Themes: light, dark
 - A menu or dialog (menu-or-dialog): use elevation.overlay and a dimmed page; not No shadow; Strong depth for floating things.
 - Hover and press feedback (hover-feedback): use motion.duration.feedback (relaxed); not An instant change; Springy motion is part of the brand.
 - Someone asked for less motion (reduced-motion): use Reduced motion; not Full motion; Motion is reduced when asked.
-- An icon with no label (icon-alone): use Rarely, with a tooltip; not Many bare icons; Type and image carry the page.
+- An icon with no label (icon-alone): use Not used: always add a word; not An icon button with a hover hint; On phones, hover hints never show; a word says what will happen.
 - Someone switches to dark (dark-mode): use The dark semantic mode; not A separate campaign palette; Dark ships as standard; campaigns change values, not structure.
 - Keyboard focus (keyboard-focus): use button/focus-ring at border-width.focus; not Removing the outline; Focus must show on vivid color.
 - The smallest clickable thing (smallest-target): use size.control.default (touch); not A compact control; Phones first.
@@ -607,10 +607,10 @@ The tone per moment is in the usage rules of the voice situations above.
 
 ## Multi-brand (multi-brand)
 
-Multi-brand is an Open DS scheme: a full set of answers to the Open DS grammar, with the reasons behind each, usage rules, voice and tone, and the tokens that follow. One shared system with three brands as themes. Components never change; brand primitives do.
+Multi-brand is an Open DS scheme: a full set of answers to the Open DS grammar, with the reasons behind each, usage rules, voice and tone, and the tokens that follow. Customer screens for several brands, often on phones: sign-up, checkout, account. Components never change; brand primitives do.
 
-Use when: Companies with several brands or white-label products on one component library.
-Avoid when: A single product with one brand: the brand layer is cost with no user.
+Use when: Companies that sell to customers under several brands, or white-label products shown to their clients' customers: sign-up, checkout, account and product pages.
+Avoid when: A single product with one brand, where the brand layer is cost with no user; or tools staff use all day. Use Dense data for those.
 Themes: aster-light, aster-dark, birch-light, birch-dark, coral-light, coral-dark
 
 ### Answers
@@ -713,7 +713,7 @@ Themes: aster-light, aster-dark, birch-light, birch-dark, coral-light, coral-dar
 - A menu or dialog (menu-or-dialog): use elevation.overlay and a dimmed page; not No shadow; Same overlay in every brand.
 - Hover and press feedback (hover-feedback): use motion.duration.feedback (moderate); not Brand-specific motion; Motion is shared across brands.
 - Someone asked for less motion (reduced-motion): use Reduced motion; not Full motion; Motion is reduced, not removed.
-- An icon with no label (icon-alone): use Icon button with a tooltip, rarely; not A bare icon; Customers need a hint.
+- An icon with no label (icon-alone): use Not used: always add a word; a popover explains a fee; not An icon button with a hover hint; On touch screens hover hints never show; a word says what will happen.
 - Someone switches to dark (dark-mode): use The dark mode of the active brand; not One dark theme for all brands; Every brand ships light and dark.
 - Keyboard focus (keyboard-focus): use button/focus-ring (from the brand); not Removing the outline; Focus follows the brand but always shows.
 - The smallest clickable thing (smallest-target): use size.control.default (touch); not A compact control; Customers are often on phones.

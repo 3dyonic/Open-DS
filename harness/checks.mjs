@@ -465,6 +465,98 @@ export const CHECKS = {
     },
   },
 
+  "components-reference": {
+    requires: ["schemes/grammar.json"],
+    run: (c) => {
+      // OD-185. The reference says what each component and variant is for, the same in every design
+      // system; each scheme decides every variant of what it carries. Applies to every catalogue item
+      // with a reference, so it widens as components are filled in.
+      const g = c.json("schemes", "grammar.json");
+      const items = g.catalogue?.items ?? [];
+      const ids = new Set(items.map((i) => i.id));
+      const sits = new Set(g.situations.map((s) => s.id));
+      const gaps = [];
+      // The variant axes and options a built component declares in its cva(...) call.
+      const builtAxes = (id) => {
+        if (!c.has("ui", "src", "components", `${id}.tsx`)) return null;
+        const src = c.read("ui", "src", "components", `${id}.tsx`);
+        const start = src.indexOf("variants: {");
+        if (start < 0) return {};
+        const axes = {};
+        let depth = 0;
+        let axis = null;
+        for (const line of src.slice(start + "variants: {".length).split("\n")) {
+          if (depth === 0) {
+            const m = line.match(/^\s*([a-zA-Z-]+): \{/);
+            if (m) axis = axes[m[1]] = [];
+          } else if (depth === 1 && axis) {
+            const m = line.match(/^\s*"?([a-zA-Z-]+)"?:/);
+            if (m) axis.push(m[1]);
+          }
+          for (const ch of line) depth += ch === "{" ? 1 : ch === "}" ? -1 : 0;
+          if (depth < 0) break;
+        }
+        return axes;
+      };
+      const ref = items.filter((i) => i.overview);
+      for (const i of ref) {
+        for (const f of ["apply_when", "not_when", "source"]) if (!i[f]) gaps.push(`${i.id}: reference has no ${f}`);
+        for (const v of i.vs ?? [])
+          if (!v.outside && !ids.has(v.id)) gaps.push(`${i.id}: vs ${v.id} is not in the catalogue`);
+        for (const s of i.situations ?? [])
+          if (!sits.has(s)) gaps.push(`${i.id}: situation ${s} is not in the grammar`);
+        const built = builtAxes(i.id);
+        if (built)
+          for (const [axis, opts] of Object.entries(built)) {
+            const refOpts = (i.variants?.[axis] ?? []).map((v) => v.id);
+            if (opts.join() !== refOpts.join())
+              gaps.push(
+                `${i.id}: the built ${axis} axis is ${opts.join(", ")} but the reference says ${refOpts.join(", ") || "nothing"}`,
+              );
+          }
+      }
+      const byId = Object.fromEntries(ref.map((i) => [i.id, i]));
+      for (const sid of SCHEMES) {
+        const s = c.json("schemes", `${sid}.json`);
+        const answered = new Set(s.answers.map((a) => a.question));
+        const carried = Object.fromEntries(s.inventory.in.map((x) => [x.id, x]));
+        const decided = (comp, axis, v) => carried[comp]?.variants?.[axis]?.[v];
+        for (const [id, item] of Object.entries(carried)) {
+          const r = byId[id];
+          if (!r) continue;
+          for (const [axis, list] of Object.entries(r.variants ?? {})) {
+            for (const v of list)
+              if (!decided(id, axis, v.id)) gaps.push(`${sid}: ${id} ${axis} ${v.id} is not decided`);
+            for (const extra of Object.keys(item.variants?.[axis] ?? {}))
+              if (!list.some((v) => v.id === extra))
+                gaps.push(`${sid}: ${id} ${axis} ${extra} is not in the reference`);
+          }
+          for (const [axis, vs] of Object.entries(item.variants ?? {}))
+            for (const [v, d] of Object.entries(vs))
+              for (const q of d.because ?? [])
+                if (!answered.has(q)) gaps.push(`${sid}: ${id} ${axis} ${v} cites ${q}, which it does not answer`);
+        }
+        for (const u of s.usage)
+          for (const x of u.uses ?? []) {
+            if (!carried[x.component])
+              gaps.push(`${sid}: ${u.situation} uses ${x.component}, which is not in the inventory`);
+            else if (x.variant) {
+              const d = decided(x.component, x.axis, x.variant);
+              if (byId[x.component] && !d)
+                gaps.push(`${sid}: ${u.situation} uses ${x.component} ${x.axis} ${x.variant}, which is not decided`);
+              if (d?.not_used)
+                gaps.push(`${sid}: ${u.situation} uses ${x.component} ${x.axis} ${x.variant}, which it does not use`);
+            }
+          }
+      }
+      return gaps.length
+        ? bad(gaps.slice(0, 8).join("; ") + (gaps.length > 8 ? ` (+${gaps.length - 8} more)` : ""))
+        : ok(
+            `${ref.length} components have a reference; every scheme decides every variant of them, and every uses entry checks out`,
+          );
+    },
+  },
+
   "schemes-inventory": {
     requires: ["schemes/grammar.json"],
     run: (c) => {

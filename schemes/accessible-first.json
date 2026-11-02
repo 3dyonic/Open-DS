@@ -91,7 +91,82 @@
     "in": [
       {
         "id": "button",
-        "why": "Every action, with a large target."
+        "why": "Every action, with a large target.",
+        "variants": {
+          "variant": {
+            "primary": {
+              "use": "The one next step on a page.",
+              "because": [
+                "color.count"
+              ]
+            },
+            "secondary": {
+              "use": "Every other action, always with a word: alternatives, row actions, and the first step of a delete.",
+              "because": [
+                "human.q2",
+                "outcomes.q2"
+              ]
+            },
+            "ghost": {
+              "not_used": true,
+              "why": "Every action looks like a button people can find.",
+              "because": [
+                "human.q2"
+              ]
+            }
+          },
+          "size": {
+            "default": {
+              "use": "Every button. Large targets help people with motor needs.",
+              "because": [
+                "accessibility.values"
+              ]
+            },
+            "compact": {
+              "not_used": true,
+              "why": "Large targets help people with motor needs; nothing smaller.",
+              "because": [
+                "accessibility.values"
+              ]
+            },
+            "icon": {
+              "not_used": true,
+              "why": "Icons alone are guesswork: always add a word.",
+              "because": [
+                "iconography.roles"
+              ]
+            },
+            "large": {
+              "not_used": true,
+              "why": "The default size is already large for motor needs; a bigger one adds nothing.",
+              "because": [
+                "accessibility.values"
+              ]
+            }
+          },
+          "state": {
+            "hover": {
+              "use": "Moderate feedback that is easy to follow.",
+              "because": [
+                "motion.values"
+              ]
+            },
+            "focus": {
+              "use": "Seen by everyone: the focus ring with an offset.",
+              "because": [
+                "people.q2"
+              ]
+            },
+            "disabled": {
+              "not_used": true,
+              "why": "Keep it enabled and explain on press: nobody is left out, and nobody remembers the interface from last time.",
+              "because": [
+                "people.q2",
+                "human.q2"
+              ]
+            }
+          }
+        }
       },
       {
         "id": "input",
@@ -107,7 +182,33 @@
       },
       {
         "id": "field",
-        "why": "Label, hint and error in the same place on every question."
+        "why": "Label, hint and error in the same place on every question.",
+        "variants": {
+          "orientation": {
+            "vertical": {
+              "use": "Every question: the label above the field, always visible.",
+              "because": [
+                "people.q2",
+                "tasks.q1"
+              ]
+            },
+            "horizontal": {
+              "not_used": true,
+              "why": "Labels stay above the field, visible while typing and in the same place on any screen.",
+              "because": [
+                "people.q2"
+              ]
+            },
+            "responsive": {
+              "not_used": true,
+              "why": "One layout on every device, so people meet the same form every time.",
+              "because": [
+                "human.q2",
+                "scenarios.q1"
+              ]
+            }
+          }
+        }
       },
       {
         "id": "checkbox",
@@ -123,7 +224,26 @@
       },
       {
         "id": "alert",
-        "why": "Errors and important notes that stay on the page."
+        "why": "Errors and important notes that stay on the page.",
+        "variants": {
+          "variant": {
+            "default": {
+              "use": "Important notes that stay on the page while people answer.",
+              "because": [
+                "outcomes.q1",
+                "human.q1"
+              ]
+            },
+            "destructive": {
+              "use": "Errors, with what went wrong, where, and exactly how to fix it, next to the field.",
+              "because": [
+                "accessibility.count",
+                "outcomes.q2",
+                "voice.values"
+              ]
+            }
+          }
+        }
       },
       {
         "id": "progress",
@@ -1074,6 +1194,13 @@
       "why": "Focus must be seen by everyone.",
       "because": [
         "people.q2"
+      ],
+      "uses": [
+        {
+          "component": "button",
+          "axis": "state",
+          "variant": "focus"
+        }
       ]
     },
     {
@@ -1092,6 +1219,13 @@
       "why": "One clear next step.",
       "because": [
         "color.count"
+      ],
+      "uses": [
+        {
+          "component": "button",
+          "axis": "variant",
+          "variant": "primary"
+        }
       ]
     },
     {
@@ -1101,6 +1235,13 @@
       "why": "Every action looks like a button people can find.",
       "because": [
         "human.q2"
+      ],
+      "uses": [
+        {
+          "component": "button",
+          "axis": "variant",
+          "variant": "secondary"
+        }
       ]
     },
     {
@@ -1110,6 +1251,13 @@
       "why": "A confirm step prevents a costly error.",
       "because": [
         "outcomes.q2"
+      ],
+      "uses": [
+        {
+          "component": "button",
+          "axis": "variant",
+          "variant": "secondary"
+        }
       ]
     },
     {
@@ -1119,6 +1267,13 @@
       "why": "A word says what will happen.",
       "because": [
         "human.q2"
+      ],
+      "uses": [
+        {
+          "component": "button",
+          "axis": "variant",
+          "variant": "secondary"
+        }
       ]
     },
     {
@@ -2262,6 +2417,11 @@
             "$type": "dimension",
             "$value": "{size.48}",
             "$description": "Height of compact controls."
+          },
+          "large": {
+            "$type": "dimension",
+            "$value": "{size.52}",
+            "$description": "Height of large controls. Not used in this system, so it equals the default."
           }
         },
         "row": {
