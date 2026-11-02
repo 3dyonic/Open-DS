@@ -60,6 +60,21 @@ function Step({ n, title, children }: { n: number; title: string; children: Reac
 
 const code = (s: string) => <code className="font-mono">{s}</code>;
 
+// The site's primary and secondary buttons (the home page's), as links.
+const PRIMARY =
+  "inline-flex items-center gap-[10px] rounded-[4px] bg-ink px-5 py-[14px] text-[17px] font-semibold text-paper";
+const SECONDARY =
+  "inline-flex items-center rounded-[4px] border border-ink px-5 py-[14px] text-[17px] font-semibold";
+
+function GetKeyButton() {
+  return (
+    <Link href="/key/" className={PRIMARY}>
+      <span aria-hidden className="size-[8px] bg-accent" />
+      Get a key
+    </Link>
+  );
+}
+
 export default function InstallPage() {
   const ids = schemes().map((s) => s.id);
   const j = (o: object) => JSON.stringify(o, null, 2);
@@ -116,18 +131,41 @@ export default function InstallPage() {
             use the same engine, so you get the same design system either way.
           </p>
         </WithRobot>
-        <p className="max-w-[880px] rounded-[6px] border border-line bg-white p-4 text-[15px] text-body">
-          Open DS is in Beta. The hosted MCP server needs a key, and invitations are limited in
-          number:{" "}
-          <Link href="/key/" className="font-semibold text-accent-text hover:underline">
-            ask for a key
-          </Link>
-          . No key yet? Everything else works without one:{" "}
-          <a href="#local" className="font-semibold text-accent-text hover:underline">
-            run the MCP server on your computer
-          </a>
-          , or run the CLI. Both are the {code("open-ds")} package on npm.
-        </p>
+        <div className="grid gap-4 lg:grid-cols-[minmax(0,3fr)_minmax(0,2fr)]">
+          <section
+            aria-labelledby="beta"
+            className="flex flex-col gap-4 rounded-[8px] border border-line bg-white p-6 md:p-8"
+          >
+            <Eyebrow>Beta · Limited invitations</Eyebrow>
+            <h2 id="beta" className="text-[28px] leading-[1.15] font-extrabold md:text-[32px]">
+              Get early access.
+            </h2>
+            <p className="text-[17px] leading-[1.5] text-body">
+              The hosted MCP server: one URL, always up to date.
+            </p>
+            <div className="pt-1">
+              <GetKeyButton />
+            </div>
+          </section>
+          <section
+            aria-labelledby="no-key"
+            className="flex flex-col gap-4 rounded-[8px] border border-line bg-paper p-6 md:p-8"
+          >
+            <Eyebrow>No key? Start now</Eyebrow>
+            <h2 id="no-key" className="text-[24px] leading-[1.2] font-extrabold">
+              Run it on your computer.
+            </h2>
+            <p className="text-[16px] leading-[1.5] text-body">The same engine, no key needed.</p>
+            <div className="flex flex-wrap gap-3 pt-1">
+              <a href="#local" className={SECONDARY}>
+                Run it locally
+              </a>
+              <a href="#cli" className={SECONDARY}>
+                Use the CLI
+              </a>
+            </div>
+          </section>
+        </div>
       </header>
 
       <section className="flex flex-col gap-4" aria-labelledby="mcp">
@@ -138,17 +176,18 @@ export default function InstallPage() {
         <ol className="flex flex-col gap-3">
           <Step n={1} title="Get a key (Beta)">
             <p className="text-[16px] text-body">
-              The hosted server only answers calls with a key.{" "}
-              <Link href="/key/" className="font-semibold text-accent-text hover:underline">
-                Ask for one
-              </Link>
-              . If you are approved, the email has a one-time link that shows your key once, with
-              the setup below filled in. No key yet?{" "}
-              <a href="#local" className="font-semibold text-accent-text hover:underline">
-                Run the server on your computer
-              </a>{" "}
-              instead: it needs no key.
+              The hosted server answers only calls with a key. If you are approved, the email has a
+              one-time link that shows your key once, with the setup below filled in.
             </p>
+            <div className="flex flex-wrap items-center gap-4">
+              <GetKeyButton />
+              <a
+                href="#local"
+                className="text-[15px] font-semibold text-accent-text hover:underline"
+              >
+                No key yet? Run it locally
+              </a>
+            </div>
           </Step>
           <Step n={2} title="Add the server to your AI, with your key">
             <p className="text-[16px] text-body">
