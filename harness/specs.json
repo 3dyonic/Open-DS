@@ -453,6 +453,19 @@
         "llm-mcp-docstrings",
         "cli-create-works"
       ]
+    },
+    {
+      "id": "OD-204",
+      "title": "MCP server instructions name only real tools and prompts, and every tool reaches agents",
+      "in": [
+        "every tool and prompt the server instructions name exists",
+        "every tool is named in the instructions or in a skill's tools list",
+        "the local stdio server and the hosted server send the same instructions"
+      ],
+      "checks": [
+        "mcp-instructions",
+        "llm-mcp-docstrings"
+      ]
     }
   ]
 }
