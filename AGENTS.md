@@ -8,20 +8,20 @@ Open DS models a design system as a finite grammar of questions. A scheme answer
 
 ## Layout
 
-| Folder       | What it holds                                                                                                          | Check                        |
-| ------------ | ---------------------------------------------------------------------------------------------------------------------- | ---------------------------- |
-| `schemes/`   | `grammar.json` and the five scheme files. The source of truth.                                                         | `pnpm harness`               |
-| `schema/`    | JSON Schemas (draft 2020-12) for the grammar and the schemes.                                                          | `pnpm harness`               |
-| `tokens/`    | Style Dictionary build: CSS (each brand, light and dark), shadcn and Tailwind theme, DTCG JSON.                        | `pnpm --dir tokens test`     |
-| `ui/`        | Components on Radix and Tailwind v4 that read only component keys; shadcn registry.                                    | `pnpm --dir ui test`         |
-| `cli/`       | The `open-ds` command: list, show, why, when, init, add.                                                               | `pnpm --dir cli test`        |
-| `mcp/`       | Host for the MCP server, which lives in the `open-ds` package (`cli/src/mcp.mjs`): one engine with the CLI.            | `pnpm --dir mcp test`        |
-| `storybook/` | Every component in every scheme, brand and mode.                                                                       | `pnpm --dir storybook build` |
-| `site/`      | The website, a static Next.js app.                                                                                     | `pnpm --dir site build`      |
-| `docs/`      | Docusaurus docs of a delivered design system, generated for one scheme (`OPEN_DS_SCHEME`).                             | `pnpm --dir docs build`      |
-| `guide/`     | The guide for Open DS itself: product, business, brand, CLI, MCP, agents, contributing. Old notes in `guide/archive/`. | `pnpm harness`               |
-| `skills/`    | The agent skill shipped with every deployed scheme.                                                                    | `pnpm harness`               |
-| `harness/`   | Checks every layer against Yonatan's instructions and the ticket specs.                                                | `pnpm harness:full`          |
+| Folder       | What it holds                                                                                               | Check                        |
+| ------------ | ----------------------------------------------------------------------------------------------------------- | ---------------------------- |
+| `schemes/`   | `grammar.json` and the five scheme files. The source of truth.                                              | `pnpm harness`               |
+| `schema/`    | JSON Schemas (draft 2020-12) for the grammar and the schemes.                                               | `pnpm harness`               |
+| `tokens/`    | Style Dictionary build: CSS (each brand, light and dark), shadcn and Tailwind theme, DTCG JSON.             | `pnpm --dir tokens test`     |
+| `ui/`        | Components on Radix and Tailwind v4 that read only component keys; shadcn registry.                         | `pnpm --dir ui test`         |
+| `cli/`       | The `open-ds` command: list, show, why, when, init, add.                                                    | `pnpm --dir cli test`        |
+| `mcp/`       | Host for the MCP server, which lives in the `open-ds` package (`cli/src/mcp.mjs`): one engine with the CLI. | `pnpm --dir mcp test`        |
+| `storybook/` | Every component in every scheme, brand and mode.                                                            | `pnpm --dir storybook build` |
+| `site/`      | The website, a static Next.js app.                                                                          | `pnpm --dir site build`      |
+| `docs/`      | Docusaurus docs of a delivered design system, generated for one scheme (`OPEN_DS_SCHEME`).                  | `pnpm --dir docs build`      |
+| `guide/`     | The guide for Open DS itself: product, business, brand, CLI, MCP, agents, contributing.                     | `pnpm harness`               |
+| `skills/`    | The agent skill shipped with every deployed scheme.                                                         | `pnpm harness`               |
+| `harness/`   | Checks every layer against Yonatan's instructions and the ticket specs.                                     | `pnpm harness:full`          |
 
 ## Rules
 
@@ -30,7 +30,7 @@ Open DS models a design system as a finite grammar of questions. A scheme answer
 3. Scope answers are words ("fast", "compact"), never raw values. Values live in tokens.
 4. Components read only component keys and semantic variables. No raw colors.
 5. Light and dark ship for every brand of every scheme.
-6. Plain words, short sentences. Never invent names, numbers or domains. The product name lives only in `brand.json`.
+6. Plain words, short sentences. Never invent names, numbers or domains. The product name, tagline, site address and contact live only in the root `package.json` (`displayName`, `description`, `homepage`, `bugs.email`). Deploy settings (analytics IDs, hosting) never go in this repository: they live in open-ds-ops.
 7. Work on a feature branch from `RC1`. Open a PR into `RC1`. Run `pnpm harness` before you push.
 
 ## Commands

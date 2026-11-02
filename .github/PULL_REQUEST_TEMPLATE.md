@@ -9,7 +9,7 @@
 
 ## Checks
 
-- [ ] `uv run pytest`
+- [ ] `pnpm harness`
 - [ ] `pnpm test`
 - [ ] `pnpm --dir site build`
 
