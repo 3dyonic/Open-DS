@@ -4,10 +4,16 @@
 name: notify-ops
 
 on:
-  workflow_run:
+  # Safe here: the job checks out no code and runs only for a push to master in this repository
+  # (event == 'push' below), never for a pull request from a fork.
+  workflow_run: # zizmor: ignore[dangerous-triggers]
     workflows: [test]
     types: [completed]
     branches: [master]
+
+# The dispatch uses its own token (OPS_DISPATCH_TOKEN); the workflow token only needs to read.
+permissions:
+  contents: read
 
 jobs:
   dispatch:

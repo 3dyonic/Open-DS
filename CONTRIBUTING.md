@@ -5,25 +5,23 @@ PRs are welcome. Keep one concern in each PR: a scheme, the grammar, a package (
 ## Set up
 
 ```bash
-pnpm install && uv sync --all-packages --group dev
+pnpm install
 ```
 
 ```bash
 pnpm --dir tokens build
 ```
 
-`uv` is the Python tool for the MCP server. If you do not have it: `pip install -e mcp`.
-
 ## Checks
 
-| Command             | What it checks                                                   |
-| ------------------- | ---------------------------------------------------------------- |
-| `pnpm harness`      | Every layer against the instructions and the ticket specs (fast) |
-| `pnpm harness:full` | The same, with builds and every test suite                       |
-| `pnpm test`         | The CLI and harness tests                                        |
-| `pnpm test:package` | The CLI as a user gets it, packed and run in a fresh app         |
-| `uv run pytest`     | The MCP server                                                   |
-| `pnpm e2e`          | The local end-to-end run                                         |
+| Command               | What it checks                                                   |
+| --------------------- | ---------------------------------------------------------------- |
+| `pnpm harness`        | Every layer against the instructions and the ticket specs (fast) |
+| `pnpm harness:full`   | The same, with builds and every test suite                       |
+| `pnpm test`           | The CLI and harness tests                                        |
+| `pnpm test:package`   | The CLI as a user gets it, packed and run in a fresh app         |
+| `pnpm --dir mcp test` | The MCP server                                                   |
+| `pnpm e2e`            | The local end-to-end run                                         |
 
 ## Change a scheme
 

@@ -46,7 +46,7 @@
     },
     "status": {
       "enum": ["draft", "curated"],
-      "description": "draft until Yonatan curates the answers."
+      "description": "draft: the answers may still change; curated: reviewed and settled."
     },
     "summary": {
       "type": "string",

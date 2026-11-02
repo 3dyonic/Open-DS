@@ -1,4 +1,4 @@
-// The preview image for shared links, built once at build time from brand.json.
+// The preview image for shared links, built once at build time from the root package.json.
 import { ImageResponse } from "next/og";
 import { brandName, brandTagline } from "@/lib/brand";
 

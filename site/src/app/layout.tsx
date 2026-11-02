@@ -7,7 +7,7 @@ import "./globals.css";
 
 const TITLE = `${brandName}: design systems as answered questions`;
 
-// Absolute links (Open Graph, canonical, sitemap) use brand.json's url, or SITE_URL at build time.
+// Absolute links (Open Graph, canonical, sitemap) use the root package.json's homepage, or SITE_URL at build time.
 export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),
   title: { default: TITLE, template: `%s · ${brandName}` },

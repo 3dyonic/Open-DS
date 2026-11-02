@@ -1,9 +1,9 @@
 #!/usr/bin/env node
-// Runs every check behind Yonatan's instructions and the ticket specs, and writes a report.
+// Runs every check behind the ticket specs, and every other check, and writes a report.
 //
 //   node harness/run.mjs            fast checks; slow builds are listed as skipped
 //   node harness/run.mjs --full     also runs builds and test suites
-//   node harness/run.mjs --only I06 one requirement
+//   node harness/run.mjs --only OD-117 one requirement
 //
 // Statuses: pass, fail, not built (the layer does not exist yet), skipped (slow, run --full).
 // The exit code is 1 only when a check that can run fails.
@@ -16,8 +16,8 @@ import { CHECKS, makeContext } from "./checks.mjs";
 const here = dirname(fileURLToPath(import.meta.url));
 const root = join(here, "..");
 
-export async function runCheck(name, ctx, { full }) {
-  const check = CHECKS[name];
+export async function runCheck(name, ctx, { full, checks = CHECKS }) {
+  const check = checks[name];
   if (!check) return { name, status: "fail", detail: "no such check" };
   const missing = (check.requires ?? []).filter((r) => !ctx.has(r));
   if (missing.length) return { name, status: "not built", detail: `needs ${missing.join(", ")}` };
@@ -38,20 +38,31 @@ export function rollup(results) {
   return "partial";
 }
 
-export async function runHarness({ full = false, only = null, rootDir = root } = {}) {
+/**
+ * sources: [label, items] pairs, each item { id, title, checks }. By default the ticket specs, then
+ * every check no spec names, so no check is left out. Other harnesses pass their own sources and
+ * checks (a private one adds process checks to these).
+ */
+export async function runHarness({ full = false, only = null, rootDir = root, checks = CHECKS, sources } = {}) {
   const ctx = makeContext(rootDir);
+  if (!sources) {
+    const specs = ctx.json("harness/specs.json").items;
+    const named = new Set(specs.flatMap((i) => i.checks));
+    const rest = Object.keys(checks).filter((n) => !named.has(n));
+    sources = [
+      ["Ticket specs", specs],
+      ["Other checks", rest.length ? [{ id: "OTHER", title: "Checks no spec names", checks: rest }] : []],
+    ];
+  }
   const cache = new Map();
   const sections = [];
-  for (const [label, file] of [
-    ["Yonatan's instructions", "harness/instructions.json"],
-    ["Ticket specs", "harness/specs.json"],
-  ]) {
-    const items = ctx.json(file).items.filter((i) => !only || i.id === only);
+  for (const [label, all] of sources) {
+    const items = all.filter((i) => !only || i.id === only);
     const rows = [];
     for (const item of items) {
       const results = [];
       for (const name of item.checks) {
-        if (!cache.has(name)) cache.set(name, await runCheck(name, ctx, { full }));
+        if (!cache.has(name)) cache.set(name, await runCheck(name, ctx, { full, checks }));
         results.push(cache.get(name));
       }
       rows.push({ id: item.id, title: item.title, status: rollup(results), results });
@@ -97,7 +108,7 @@ if (process.argv[1] === fileURLToPath(import.meta.url)) {
   const onlyAt = args.indexOf("--only");
   const report = await runHarness({ full: args.includes("--full"), only: onlyAt >= 0 ? args[onlyAt + 1] : null });
   if (onlyAt >= 0 && !report.sections.some((sec) => sec.rows.length)) {
-    console.error(`No instruction or spec with id ${args[onlyAt + 1]}.`);
+    console.error(`No spec with id ${args[onlyAt + 1]}.`);
     process.exit(1);
   }
   const md = toMarkdown(report);

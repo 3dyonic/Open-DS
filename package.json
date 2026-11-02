@@ -1,5 +1,12 @@
 {
   "name": "open-ds",
+  "displayName": "Open DS",
+  "description": "Every design system is a set of answers.",
+  "homepage": "https://open-ds.dev",
+  "bugs": {
+    "url": "https://github.com/3dyonic/Open-DS/issues",
+    "email": "contact@open-ds.dev"
+  },
   "private": true,
   "version": "0.1.0",
   "license": "MIT",
@@ -30,5 +37,12 @@
     "shots": "node scripts/shots.mjs",
     "figma-kit": "node scripts/figma-kit.mjs",
     "release": "node scripts/release.mjs"
+  },
+  "pnpm": {
+    "overrides": {
+      "postcss@<8.5.23": "^8.5.23",
+      "tinypool@<2.1.2": "^2.1.2",
+      "serialize-javascript@<7.1.3": "^7.1.3"
+    }
   }
 }
