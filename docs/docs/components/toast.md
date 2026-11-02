@@ -34,9 +34,9 @@ What each variant is for in any design system, and what Dense data decided, with
 
 | Axis | Variant | What it is for | In Dense data | Because |
 | --- | --- | --- | --- | --- |
-| tone | `neutral` | A plain confirmation. | A plain confirmation: Filters cleared. | `voice.values` |
-|  | `success` | Confirms that something people care about worked. | A short confirmation with the count: 12 alerts exported. | `voice.values`, `tasks.q2` |
-|  | `danger` | Something failed in the background. | A background failure: name the record, then the fix. | `voice.values`, `voice.lands`, `outcomes.q2` |
+| tone | `neutral` | A plain confirmation. | A plain confirmation: Filters cleared. | <span title="How does it sound?">Terse</span> <small>(`voice.values`)</small> |
+|  | `success` | Confirms that something people care about worked. | A short confirmation with the count: 12 alerts exported. | <span title="How does it sound?">Terse</span> <small>(`voice.values`)</small><br /><span title="How often do people repeat actions?">Constantly</span> <small>(`tasks.q2`)</small> |
+|  | `danger` | Something failed in the background. | A background failure: name the record, then the fix. | <span title="How does it sound?">Terse</span> <small>(`voice.values`)</small><br /><span title="Where do the words matter most?">Errors and empty states</span> <small>(`voice.lands`)</small><br /><span title="What is a costly mistake?">Acting on the wrong record</span> <small>(`outcomes.q2`)</small> |
 
 ## How Dense data uses it
 

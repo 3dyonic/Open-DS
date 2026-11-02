@@ -34,11 +34,11 @@ What each variant is for in any design system, and what Dense data decided, with
 
 | Axis | Variant | What it is for | In Dense data | Because |
 | --- | --- | --- | --- | --- |
-| tone | `neutral` | A label with no status meaning: a category, a count, a waiting state. | New and False positive: not triaged yet, or a finished outcome that is not a failure. | `accessibility.count`, `content.q1` |
-|  | `info` | News: worth knowing, nothing to act on. | Investigating: an analyst is on it; news, nothing to act on. | `accessibility.count`, `content.q1` |
-|  | `success` | Done, healthy or paid. | Resolved: contained and closed. | `accessibility.count`, `content.q1` |
-|  | `warning` | Needs attention soon; nothing has failed yet. | Escalated: needs a senior analyst soon, still containable. | `accessibility.count`, `content.q1` |
-|  | `danger` | Failed, blocked or lost; act now. | Breach confirmed: a real loss. | `accessibility.count`, `content.q1` |
+| tone | `neutral` | A label with no status meaning: a category, a count, a waiting state. | New and False positive: not triaged yet, or a finished outcome that is not a failure. | <span title="How many signals carry each meaning?">Three: color, icon and word</span> <small>(`accessibility.count`)</small><br /><span title="What is the main content?">Numbers and records</span> <small>(`content.q1`)</small> |
+|  | `info` | News: worth knowing, nothing to act on. | Investigating: an analyst is on it; news, nothing to act on. | <span title="How many signals carry each meaning?">Three: color, icon and word</span> <small>(`accessibility.count`)</small><br /><span title="What is the main content?">Numbers and records</span> <small>(`content.q1`)</small> |
+|  | `success` | Done, healthy or paid. | Resolved: contained and closed. | <span title="How many signals carry each meaning?">Three: color, icon and word</span> <small>(`accessibility.count`)</small><br /><span title="What is the main content?">Numbers and records</span> <small>(`content.q1`)</small> |
+|  | `warning` | Needs attention soon; nothing has failed yet. | Escalated: needs a senior analyst soon, still containable. | <span title="How many signals carry each meaning?">Three: color, icon and word</span> <small>(`accessibility.count`)</small><br /><span title="What is the main content?">Numbers and records</span> <small>(`content.q1`)</small> |
+|  | `danger` | Failed, blocked or lost; act now. | Breach confirmed: a real loss. | <span title="How many signals carry each meaning?">Three: color, icon and word</span> <small>(`accessibility.count`)</small><br /><span title="What is the main content?">Numbers and records</span> <small>(`content.q1`)</small> |
 
 ## How Dense data uses it
 

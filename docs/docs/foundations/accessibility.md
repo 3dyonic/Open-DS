@@ -46,11 +46,11 @@ The raw values the tokens above end at.
 
 | Primitive | Value | Sample |
 | --- | --- | --- |
-| `color.violet.dark.700` | #A9A3F6 |  |
-| `color.violet.light.600` | #4B3FD9 |  |
-| `opacity.40` | 0.4 | <span class="ods-swatch" style="opacity:var(--opacity-40)"></span> |
-| `size.24` | 1.5rem (24px) | <span class="ods-bar" style="width:var(--size-24)"></span> |
-| `size.32` | 2rem (32px) | <span class="ods-bar" style="width:var(--size-32)"></span> |
+| `color.violet.dark.700` | #A9A3F6 | <span class="ods-swatch" style="background:#A9A3F6"></span> |
+| `color.violet.light.600` | #4B3FD9 | <span class="ods-swatch" style="background:#4B3FD9"></span> |
+| `opacity.40` | 0.4 | <span class="ods-swatch" style="opacity:0.4"></span> |
+| `size.24` | 1.5rem (24px) | <span class="ods-bar" style="width:1.5rem"></span> |
+| `size.32` | 2rem (32px) | <span class="ods-bar" style="width:2rem"></span> |
 
 ## Where it lands
 

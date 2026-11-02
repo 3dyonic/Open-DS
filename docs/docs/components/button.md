@@ -34,16 +34,16 @@ What each variant is for in any design system, and what Dense data decided, with
 
 | Axis | Variant | What it is for | In Dense data | Because |
 | --- | --- | --- | --- | --- |
-| variant | `primary` | The one action this view is for. | The one commit in a view. | `color.count`, `outcomes.q2` |
-|  | `secondary` | A real action, quieter than the commit. | Alternatives and cancel next to the primary, and the first step of a delete. | `human.q2`, `outcomes.q2` |
-|  | `ghost` | The lowest emphasis; it never competes with the commit. | Row actions, as compact icon buttons. Never for cancel. | `tasks.q2`, `human.q2` |
-| size | `default` | The normal size, for ordinary actions in forms, dialogs and page chrome. | Actions outside tables: forms, dialogs, page actions. | `content.q2`, `accessibility.values` |
-|  | `compact` | Denser, for toolbars and table rows that sit beside content. | Table rows and toolbars. Compact still fits a mouse. | `content.q2`, `accessibility.values` |
-|  | `icon` | Icon only: the name is not on screen. | Known row and toolbar actions, always with a tooltip. | `iconography.roles` |
-|  | `large` | The largest size: the one action that must stand out most. | Not used. Controls stay small so more records fit on one screen. | `content.q2` |
-| state | `hover` | The pointer is over the control: an extra cue, never the only cue. | Fast feedback that confirms the pointer. | `motion.values` |
-|  | `focus` | Keyboard or assistive tech is on this control. It must stay visible. | Always visible: the focus ring at border-width.focus. | `people.q2` |
-|  | `disabled` | The action is not available. It must stay perceivable and say why. | Only with a visible reason next to it. | `people.q2` |
+| variant | `primary` | The one action this view is for. | The one commit in a view. | <span title="How many emphasis levels do actions need?">Three</span> <small>(`color.count`)</small><br /><span title="What is a costly mistake?">Acting on the wrong record</span> <small>(`outcomes.q2`)</small> |
+|  | `secondary` | A real action, quieter than the commit. | Alternatives and cancel next to the primary, and the first step of a delete. | <span title="How do people recall the interface?">They learn it and recognise it</span> <small>(`human.q2`)</small><br /><span title="What is a costly mistake?">Acting on the wrong record</span> <small>(`outcomes.q2`)</small> |
+|  | `ghost` | The lowest emphasis; it never competes with the commit. | Row actions, as compact icon buttons. Never for cancel. | <span title="How often do people repeat actions?">Constantly</span> <small>(`tasks.q2`)</small><br /><span title="How do people recall the interface?">They learn it and recognise it</span> <small>(`human.q2`)</small> |
+| size | `default` | The normal size, for ordinary actions in forms, dialogs and page chrome. | Actions outside tables: forms, dialogs, page actions. | <span title="How much is on one screen?">A lot</span> <small>(`content.q2`)</small><br /><span title="What is the smallest target?">Compact, for a pointer</span> <small>(`accessibility.values`)</small> |
+|  | `compact` | Denser, for toolbars and table rows that sit beside content. | Table rows and toolbars. Compact still fits a mouse. | <span title="How much is on one screen?">A lot</span> <small>(`content.q2`)</small><br /><span title="What is the smallest target?">Compact, for a pointer</span> <small>(`accessibility.values`)</small> |
+|  | `icon` | Icon only: the name is not on screen. | Known row and toolbar actions, always with a tooltip. | <span title="What do icons do?">Actions and status</span> <small>(`iconography.roles`)</small> |
+|  | `large` | The largest size: the one action that must stand out most. | Not used. Controls stay small so more records fit on one screen. | <span title="How much is on one screen?">A lot</span> <small>(`content.q2`)</small> |
+| state | `hover` | The pointer is over the control: an extra cue, never the only cue. | Fast feedback that confirms the pointer. | <span title="How fast does feedback feel?">Fast</span> <small>(`motion.values`)</small> |
+|  | `focus` | Keyboard or assistive tech is on this control. It must stay visible. | Always visible: the focus ring at border-width.focus. | <span title="What accessibility level do we commit to?">AA</span> <small>(`people.q2`)</small> |
+|  | `disabled` | The action is not available. It must stay perceivable and say why. | Only with a visible reason next to it. | <span title="What accessibility level do we commit to?">AA</span> <small>(`people.q2`)</small> |
 
 ## How Dense data uses it
 

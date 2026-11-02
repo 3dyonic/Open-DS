@@ -103,6 +103,14 @@ const px = (v) =>
   /^-?[\d.]+rem$/.test(v) ? `${v} (${Math.round(parseFloat(v) * 16)}px)` : v;
 
 const cssVar = (path) => `var(--${cssName(path)})`;
+const cssValue = (v) =>
+  Array.isArray(v)
+    ? `cubic-bezier(${v.join(",")})`
+    : v && typeof v === "object"
+      ? [v.offsetX, v.offsetY, v.blur, v.spread, v.color]
+          .filter(Boolean)
+          .join(" ")
+      : String(v);
 const attr = (s) => String(s).replaceAll('"', "&quot;");
 
 /** One theme's tokens before resolving: primitives, the brand, the semantics for the mode, component keys. */
@@ -127,8 +135,52 @@ function chain(tree, path) {
 }
 
 /** A small live sample of a primitive or semantic value, drawn from its CSS variable. */
-function sample(path, type) {
-  const v = cssVar(path);
+// DTCG lets a group carry $type for its tokens; fall back to the path when a token has none.
+const primitiveType = (path) =>
+  ({
+    color: "color",
+    shadow: "shadow",
+    duration: "duration",
+    opacity: "number",
+  })[path.split(".")[0]] ??
+  (path.startsWith("font.family")
+    ? "fontFamily"
+    : /^(space|size|radius|border-width|font\.size|font\.line-height)\./.test(
+          path,
+        )
+      ? "dimension"
+      : undefined);
+
+// The Primitives section (OD-195): one page per kind of value, in this order.
+const PRIMITIVE_PAGES = [
+  { id: "color", title: "Color", match: (p) => p.startsWith("color.") },
+  {
+    id: "space-and-size",
+    title: "Space and size",
+    match: (p) => /^(space|size)\./.test(p),
+  },
+  {
+    id: "shape",
+    title: "Shape",
+    match: (p) => /^(radius|border-width)\./.test(p),
+  },
+  { id: "type", title: "Type", match: (p) => p.startsWith("font.") },
+  {
+    id: "motion",
+    title: "Motion",
+    match: (p) => /^(duration|easing)\./.test(p),
+  },
+  {
+    id: "effects",
+    title: "Effects",
+    match: (p) => /^(opacity|shadow)\./.test(p),
+  },
+];
+
+function sample(path, type, raw) {
+  // Primitives are not CSS variables (only semantic tokens and component keys are), so a primitive's
+  // sample draws its own value.
+  const v = raw === undefined ? cssVar(path) : cssValue(raw);
   if (type === "color")
     return `<span class="ods-swatch" style="background:${v}"></span>`;
   if (type === "fontFamily")
@@ -290,7 +342,7 @@ export function docsPages(
       .sort()
       .map(
         (p) =>
-          `| \`${p}\` | ${esc(value(first, p, ""))} | ${sample(p, get(primitiveTree, p)?.$type)} |`,
+          `| \`${p}\` | ${esc(value(first, p, ""))} | ${sample(p, get(primitiveTree, p)?.$type ?? primitiveType(p), get(primitiveTree, p)?.$value)} |`,
       )
       .join("\n");
   const rule = (u) =>
@@ -467,47 +519,71 @@ export function docsPages(
         ? p.slice(0, 2).join(".")
         : p[0];
   };
-  // DTCG lets a group carry $type for its tokens; fall back to the path when a token has none.
-  const typeOf = (path) =>
-    ({
-      color: "color",
-      shadow: "shadow",
-      duration: "duration",
-      opacity: "number",
-    })[path.split(".")[0]] ??
-    (path.startsWith("font.family")
-      ? "fontFamily"
-      : /^(space|size|radius|border-width|font\.size|font\.line-height)\./.test(
-            path,
-          )
-        ? "dimension"
-        : undefined);
-  const families = [...new Set(prims.map((x) => family(x.path)))];
   const nUsed = prims.filter((x) => usedBy[x.path]).length;
-  pages["foundations/primitives.md"] =
+  const table = (list) =>
+    `| Primitive | Value | Sample | Used by |\n| --- | --- | --- | --- |\n` +
+    list
+      .map((x) => {
+        const u = usedBy[x.path] ?? [];
+        return `| \`${x.path}\` | ${esc(value(first, x.path, x.ref))} | ${sample(x.path, x.type ?? primitiveType(x.path), x.ref)} | ${u.length ? u.map((y) => `\`${y.token}\` (${y.where})`).join("<br />") : "Not used yet"} |`;
+      })
+      .join("\n");
+  const kinds = [
+    ...PRIMITIVE_PAGES,
+    {
+      id: "other",
+      title: "Other",
+      match: (p) => !PRIMITIVE_PAGES.some((k) => k.match(p)),
+    },
+  ]
+    .map((k) => ({ ...k, list: prims.filter((x) => k.match(x.path)) }))
+    .filter((k) => k.list.length);
+  pages["primitives/_category_.json"] =
+    JSON.stringify(
+      {
+        label: "Primitives",
+        position: 3.5,
+        link: { type: "doc", id: "primitives/index" },
+      },
+      null,
+      2,
+    ) + "\n";
+  pages["primitives/index.md"] =
     fm({
-      sidebar_position: g.scopes.length + 1,
       title: "Primitives",
       description: `Every raw value in ${scheme.name}, and what points to it.`,
     }) +
     NOTE +
-    `# Primitives\n\nEvery raw value in ${esc(scheme.name)}. Primitives hold the values; semantic tokens give them a job, and components read only the jobs.\n\n` +
+    `# Primitives\n\nThe raw values of ${esc(scheme.name)}. Primitives hold the values; semantic tokens give them a job (see [Foundations](../foundations/index.md)), and components read only the jobs.\n\n` +
     `**${prims.length}** primitives. **${nUsed}** are used by a semantic token, a theme or a component key. **${prims.length - nUsed}** are not used yet: they stay, so a brand or a changed answer can use them without adding a value.\n\n` +
-    families
-      .map((f) => {
-        const list = prims.filter((x) => family(x.path) === f);
-        return (
-          `## \`${f}\`\n\n| Primitive | Value | Sample | Used by |\n| --- | --- | --- | --- |\n` +
-          list
-            .map((x) => {
-              const u = usedBy[x.path] ?? [];
-              return `| \`${x.path}\` | ${esc(value(first, x.path, x.ref))} | ${sample(x.path, x.type ?? typeOf(x.path))} | ${u.length ? u.map((y) => `\`${y.token}\` (${y.where})`).join("<br />") : "Not used yet"} |`;
-            })
-            .join("\n")
-        );
-      })
-      .join("\n\n") +
+    `| Kind | Primitives | Used |\n| --- | --- | --- |\n` +
+    kinds
+      .map(
+        (k) =>
+          `| [${k.title}](./${k.id}.md) | ${k.list.length} | ${k.list.filter((x) => usedBy[x.path]).length} |`,
+      )
+      .join("\n") +
     "\n";
+  kinds.forEach((k, i) => {
+    const fams = [...new Set(k.list.map((x) => family(x.path)))];
+    pages[`primitives/${k.id}.md`] =
+      fm({
+        sidebar_position: i + 1,
+        title: k.title,
+        description: `${k.title} primitives in ${scheme.name}.`,
+      }) +
+      NOTE +
+      `# ${k.title}\n\n${k.list.length} primitives, ${k.list.filter((x) => usedBy[x.path]).length} used.\n\n` +
+      (fams.length > 1
+        ? fams
+            .map(
+              (f) =>
+                `## \`${f}\`\n\n${table(k.list.filter((x) => family(x.path) === f))}`,
+            )
+            .join("\n\n")
+        : table(k.list)) +
+      "\n";
+  });
 
   // Components
   pages["components/_category_.json"] =
@@ -615,7 +691,14 @@ export function docsPages(
                 : h.not_used
                   ? `Not used. ${esc(h.why)}`
                   : esc(h.use);
-              const why = (h?.because ?? []).map((b) => `\`${b}\``).join(", ");
+              // The answers themselves, not only their ids (Yonatan): "Acting on the wrong record (outcomes.q2)".
+              const why = (h?.because ?? [])
+                .map((b) =>
+                  answer(b)
+                    ? `<span title="${attr(qText(b))}">${esc(label(b))}</span> <small>(\`${b}\`)</small>`
+                    : `\`${b}\``,
+                )
+                .join("<br />");
               return `| ${variants[j - 1]?.axis === v.axis ? "" : v.axis} | \`${v.id}\` | ${esc(v.reference.overview)} | ${here} | ${why} |`;
             })
             .join("\n"),

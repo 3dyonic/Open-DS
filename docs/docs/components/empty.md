@@ -34,8 +34,8 @@ What each variant is for in any design system, and what Dense data decided, with
 
 | Axis | Variant | What it is for | In Dense data | Because |
 | --- | --- | --- | --- | --- |
-| variant | `default` | The picture shown as it is: an image or illustration. | Not used. No pictures: an empty table needs the reason and the one action that fills it. | `content.q1`, `voice.lands` |
-|  | `icon` | The picture as an icon in a small tile. | An outline icon in a small tile beside the reason and the action. | `iconography.roles`, `iconography.definition` |
+| variant | `default` | The picture shown as it is: an image or illustration. | Not used. No pictures: an empty table needs the reason and the one action that fills it. | <span title="What is the main content?">Numbers and records</span> <small>(`content.q1`)</small><br /><span title="Where do the words matter most?">Errors and empty states</span> <small>(`voice.lands`)</small> |
+|  | `icon` | The picture as an icon in a small tile. | An outline icon in a small tile beside the reason and the action. | <span title="What do icons do?">Actions and status</span> <small>(`iconography.roles`)</small><br /><span title="What icon style?">Outline</span> <small>(`iconography.definition`)</small> |
 
 ## How Dense data uses it
 

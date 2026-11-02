@@ -563,10 +563,22 @@ const showValue = (v: Any) =>
       ? `${v.offsetY} ${v.blur ?? ""} ${v.color}`
       : String(v);
 
-export function FoundationsPrimitives() {
+/** The kinds of primitive, one Storybook page each (OD-195), the same as the docs' Primitives section. */
+export const PRIMITIVE_KINDS: { id: string; title: string; match: (p: string) => boolean }[] = [
+  { id: "color", title: "Color", match: (p) => p.startsWith("color.") },
+  { id: "space-and-size", title: "Space and size", match: (p) => /^(space|size)\./.test(p) },
+  { id: "shape", title: "Shape", match: (p) => /^(radius|border-width)\./.test(p) },
+  { id: "type", title: "Type", match: (p) => p.startsWith("font.") },
+  { id: "motion", title: "Motion", match: (p) => /^(duration|easing)\./.test(p) },
+  { id: "effects", title: "Effects", match: (p) => /^(opacity|shadow)\./.test(p) },
+];
+
+export function Primitives({ kind }: { kind: string }) {
   const { scheme: s } = useGuideData();
   const used = primitiveUse(s);
-  const all = primitiveLeaves(s.tokens.primitive);
+  const k = PRIMITIVE_KINDS.find((x) => x.id === kind) ?? PRIMITIVE_KINDS[0];
+  const every = primitiveLeaves(s.tokens.primitive);
+  const all = every.filter((x) => k.match(x.path));
   const family = (p: string) => {
     const x = p.split(".");
     return x[0] === "color" ? x.slice(0, 3).join(".") : x[0] === "font" ? x.slice(0, 2).join(".") : x[0];
@@ -579,11 +591,11 @@ export function FoundationsPrimitives() {
   };
   return (
     <Frame>
-      <div className="eyebrow">Foundations</div>
-      <h1>Primitives</h1>
+      <div className="eyebrow">Primitives</div>
+      <h1>{k.title}</h1>
       <p className="lede">
-        Every raw value in {s.name}. Primitives hold the values; semantic tokens give them a job, and components read
-        only the jobs.
+        The raw {k.title.toLowerCase()} values in {s.name}. Primitives hold the values; semantic tokens give them a job,
+        and components read only the jobs.
       </p>
       <p style={{ marginTop: 10 }}>
         <b>{all.length}</b> primitives. <b>{nUsed}</b> are used. <b>{all.length - nUsed}</b> are not used yet: they

@@ -48,12 +48,12 @@ The raw values the tokens above end at.
 
 | Primitive | Value | Sample |
 | --- | --- | --- |
-| `border-width.1` | 1px | <span class="ods-line" style="height:var(--border-width-1)"></span> |
-| `border-width.2` | 2px | <span class="ods-line" style="height:var(--border-width-2)"></span> |
-| `radius.0` | 0rem (0px) | <span class="ods-tile" style="border-radius:var(--radius-0)"></span> |
-| `radius.2` | 0.125rem (2px) | <span class="ods-tile" style="border-radius:var(--radius-2)"></span> |
-| `radius.4` | 0.25rem (4px) | <span class="ods-tile" style="border-radius:var(--radius-4)"></span> |
-| `radius.full` | 9999px | <span class="ods-tile" style="border-radius:var(--radius-full)"></span> |
+| `border-width.1` | 1px | <span class="ods-line" style="height:1px"></span> |
+| `border-width.2` | 2px | <span class="ods-line" style="height:2px"></span> |
+| `radius.0` | 0rem (0px) | <span class="ods-tile" style="border-radius:0rem"></span> |
+| `radius.2` | 0.125rem (2px) | <span class="ods-tile" style="border-radius:0.125rem"></span> |
+| `radius.4` | 0.25rem (4px) | <span class="ods-tile" style="border-radius:0.25rem"></span> |
+| `radius.full` | 9999px | <span class="ods-tile" style="border-radius:9999px"></span> |
 
 ## Where it lands
 
