@@ -7,8 +7,5 @@
   "urlNote": "The site address (Yonatan bought open-ds.dev, 2026-10-31). Deployment is planned later; SITE_URL overrides it at build time.",
   "contact": "contact@open-ds.dev",
   "contactNote": "The public contact address. Mail to it is forwarded by Cloudflare Email Routing; the inbox it reaches is set there, never in this repository.",
-  "analytics": {
-    "gtm": ""
-  },
-  "analyticsNote": "The Google Tag Manager container ID (GTM-...). It is public. The container holds the Google Analytics tag. While it is empty the site shows no cookie banner and loads nothing from Google."
+  "analyticsNote": "Analytics is off unless the site is built with NEXT_PUBLIC_GTM_ID set to a Google Tag Manager container ID. The ID is set in the deploy environment, never in this repository, so forks and local builds send nothing to the owner's container."
 }

@@ -1,7 +1,7 @@
 "use client";
 // The cookie banner. It asks once, before any Google Analytics cookie is set. Accept and Reject
 // are equal buttons. "Cookie settings" in the footer opens it again. Without a measurement ID
-// (brand.json analytics.gtm) it renders nothing.
+// (NEXT_PUBLIC_GTM_ID) it renders nothing.
 import Link from "next/link";
 import { useEffect, useState } from "react";
 import {

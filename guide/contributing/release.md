@@ -49,6 +49,8 @@ This bumps `cli/package.json` and updates the snapshot together; use `minor` or 
 
 The open project holds the product; the private project holds private things. open-ds.dev (the website and the hosted MCP at `/mcp`) is deployed from the private `3dyonic/open-ds-ops` repository. It also holds the Fly config, the domain setup, and the private hosted parts: keys, key requests, admin and telemetry. Its image builds this repository's site and packed engine at a ref, so the product stays here.
 
+The analytics ID is one of those private things. The site reads the Google Tag Manager container ID from `NEXT_PUBLIC_GTM_ID` at build time, and only open-ds-ops sets it. A build without it, such as a fork or a local run, shows no cookie banner and loads nothing from Google.
+
 To self-host the MCP with no key, run `npx open-ds mcp`, or `mcp/server.mjs` from a checkout.
 
 ## Secrets
