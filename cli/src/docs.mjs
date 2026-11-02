@@ -427,6 +427,12 @@ export function docsPages(
     .slice(0, 12);
   const tiles = [
     [
+      "primitives/index.md",
+      "Primitives",
+      `All ${primCount} raw values, and the tokens that point to each.`,
+      `<span class="odv-strip">${firstRamp.map((x) => `<span style="background:${x.ref}"></span>`).join("")}</span>`,
+    ],
+    [
       "foundations/index.md",
       "Foundations",
       "Color, type, spacing, shape and motion, each with the answer behind it.",
@@ -444,12 +450,6 @@ export function docsPages(
         ),
         `<span class="odv-aa">Aa</span>`,
       ),
-    ],
-    [
-      "primitives/index.md",
-      "Primitives",
-      `All ${primCount} raw values, and the tokens that point to each.`,
-      `<span class="odv-strip">${firstRamp.map((x) => `<span style="background:${x.ref}"></span>`).join("")}</span>`,
     ],
     [
       "components/inventory.md",
@@ -774,7 +774,7 @@ export function docsPages(
     JSON.stringify(
       {
         label: "Primitives",
-        position: 3.5,
+        position: 2.5,
         link: { type: "doc", id: "primitives/index" },
       },
       null,
