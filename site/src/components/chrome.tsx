@@ -3,6 +3,7 @@ import Link from "next/link";
 import { brandContact, brandName } from "@/lib/brand";
 import { ThemeSwitch } from "@/components/theme-switch";
 import { CookieSettingsLink } from "@/components/consent";
+import { MobileMenu } from "@/components/mobile-menu";
 
 // The mark is a 6 by 5 pixel grid; one cell is lit.
 const MARK = ["110111", "101010", "1l1011", "101001", "110111"];
@@ -44,13 +45,18 @@ const LINKS: [string, string][] = [
 
 export function SiteNav() {
   return (
-    <header className="flex min-h-[156px] flex-wrap items-center gap-x-8 gap-y-4 px-5 py-7 lg:px-20">
+    <header className="relative flex min-h-[96px] items-center gap-x-8 gap-y-4 px-5 py-5 md:min-h-[156px] md:flex-wrap md:py-7 lg:px-20">
       <Link href="/" className="flex items-center gap-3" aria-label={`${brandName} home`}>
         <Mark />
         <span className="text-[22px] font-extrabold">{brandName}</span>
         <span aria-hidden className="size-[6px] bg-accent" />
       </Link>
-      <nav aria-label="Primary" className="ml-auto">
+      {/* Small screens: the theme switch and a Menu button (OD-177). */}
+      <div className="ml-auto flex items-center gap-2 md:hidden">
+        <ThemeSwitch />
+        <MobileMenu links={LINKS} github={GITHUB} githubLabel="(opens in a new tab)" />
+      </div>
+      <nav aria-label="Primary" className="ml-auto hidden md:block">
         <ul className="flex flex-wrap items-center gap-8 text-[16px] font-semibold">
           {LINKS.map(([label, href]) => (
             <li key={label}>
