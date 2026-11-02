@@ -173,7 +173,32 @@
       },
       {
         "id": "field",
-        "why": "Lays out the sign-up form."
+        "why": "Lays out the sign-up form.",
+        "variants": {
+          "orientation": {
+            "vertical": {
+              "use": "The sign-up form: the label above the field.",
+              "because": [
+                "scenarios.q1"
+              ]
+            },
+            "horizontal": {
+              "not_used": true,
+              "why": "Phones first: there is no room beside the field.",
+              "because": [
+                "scenarios.q1",
+                "accessibility.values"
+              ]
+            },
+            "responsive": {
+              "not_used": true,
+              "why": "Phones first: one stacked layout.",
+              "because": [
+                "scenarios.q1"
+              ]
+            }
+          }
+        }
       },
       {
         "id": "carousel",
@@ -189,7 +214,44 @@
       },
       {
         "id": "badge",
-        "why": "New and limited labels."
+        "why": "New and limited labels.",
+        "variants": {
+          "tone": {
+            "neutral": {
+              "use": "New: a label, not a state to fix.",
+              "because": [
+                "accessibility.count"
+              ]
+            },
+            "info": {
+              "not_used": true,
+              "why": "Campaign labels are a state or a nudge; there are no plain news labels.",
+              "because": [
+                "content.q1"
+              ]
+            },
+            "success": {
+              "use": "On the list: you joined and your place is saved.",
+              "because": [
+                "accessibility.count"
+              ]
+            },
+            "warning": {
+              "use": "Almost gone: few left, act soon.",
+              "because": [
+                "accessibility.count",
+                "outcomes.q1"
+              ]
+            },
+            "danger": {
+              "not_used": true,
+              "why": "Nothing on a launch page is labeled as failed; errors are plain sentences.",
+              "because": [
+                "voice.count"
+              ]
+            }
+          }
+        }
       },
       {
         "id": "card",
@@ -209,7 +271,30 @@
       },
       {
         "id": "toast",
-        "why": "Confirms a place on the waitlist."
+        "why": "Confirms a place on the waitlist.",
+        "variants": {
+          "tone": {
+            "neutral": {
+              "use": "A light note that something changed.",
+              "because": [
+                "voice.count"
+              ]
+            },
+            "success": {
+              "use": "Celebrate, briefly: You're on the list. See you at launch.",
+              "because": [
+                "voice.values",
+                "outcomes.q1"
+              ]
+            },
+            "danger": {
+              "use": "Plain first, a light touch after: That didn't go through.",
+              "because": [
+                "voice.count"
+              ]
+            }
+          }
+        }
       },
       {
         "id": "navigation-menu",
@@ -1036,6 +1121,11 @@
       "why": "A word keeps meaning on vivid backgrounds.",
       "because": [
         "accessibility.count"
+      ],
+      "uses": [
+        {
+          "component": "badge"
+        }
       ]
     },
     {

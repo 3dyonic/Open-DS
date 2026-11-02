@@ -178,15 +178,80 @@
       },
       {
         "id": "field",
-        "why": "Lays out the newsletter and search forms."
+        "why": "Lays out the newsletter and search forms.",
+        "variants": {
+          "orientation": {
+            "vertical": {
+              "use": "Newsletter and search forms: the label above.",
+              "because": [
+                "people.q2"
+              ]
+            },
+            "horizontal": {
+              "not_used": true,
+              "why": "Forms are rare and short; stacking keeps the reading column.",
+              "because": [
+                "tasks.q2",
+                "human.q1"
+              ]
+            },
+            "responsive": {
+              "not_used": true,
+              "why": "One stacked layout reads the same on phones and laptops.",
+              "because": [
+                "scenarios.q1"
+              ]
+            }
+          }
+        }
       },
       {
         "id": "alert",
-        "why": "A note or warning inside an article."
+        "why": "A note or warning inside an article.",
+        "variants": {
+          "variant": {
+            "default": {
+              "use": "A note or a warning inside an article.",
+              "because": [
+                "content.q1"
+              ]
+            },
+            "destructive": {
+              "use": "A failed save or sign-up: calm, take the blame, offer the way forward.",
+              "because": [
+                "accessibility.count",
+                "voice.count"
+              ]
+            }
+          }
+        }
       },
       {
         "id": "toast",
-        "why": "Confirms a saved article."
+        "why": "Confirms a saved article.",
+        "variants": {
+          "tone": {
+            "neutral": {
+              "use": "A calm note: You're all caught up.",
+              "because": [
+                "voice.values"
+              ]
+            },
+            "success": {
+              "use": "Warm and brief, with what happens next.",
+              "because": [
+                "voice.values"
+              ]
+            },
+            "danger": {
+              "use": "Calm and helpful: take the blame, offer the way forward.",
+              "because": [
+                "voice.count",
+                "voice.values"
+              ]
+            }
+          }
+        }
       },
       {
         "id": "dialog",
@@ -230,7 +295,44 @@
       },
       {
         "id": "badge",
-        "why": "The topic of an article."
+        "why": "The topic of an article.",
+        "variants": {
+          "tone": {
+            "neutral": {
+              "use": "Saved: waiting for you; nothing is wrong.",
+              "because": [
+                "accessibility.count"
+              ]
+            },
+            "info": {
+              "not_used": true,
+              "why": "Topics and reading states need no news tone; status is rare.",
+              "because": [
+                "accessibility.count"
+              ]
+            },
+            "success": {
+              "use": "Finished: you read it to the end.",
+              "because": [
+                "accessibility.count"
+              ]
+            },
+            "warning": {
+              "use": "Out of date: the facts may have changed since it was written.",
+              "because": [
+                "accessibility.count"
+              ]
+            },
+            "danger": {
+              "not_used": true,
+              "why": "Nothing in an article fails; errors are calm sentences, not labels.",
+              "because": [
+                "accessibility.count",
+                "voice.count"
+              ]
+            }
+          }
+        }
       },
       {
         "id": "sheet",
@@ -1046,6 +1148,11 @@
       "why": "Status is rare; a word is clear.",
       "because": [
         "accessibility.count"
+      ],
+      "uses": [
+        {
+          "component": "badge"
+        }
       ]
     },
     {
