@@ -18,14 +18,20 @@ const call = async (client, name, args = {}) => {
 };
 
 const TOOLS = [
+  "check_copy",
+  "check_ui",
   "compare_schemes",
+  "find_token",
+  "fit_scheme",
   "get_answer",
+  "get_component",
   "get_context",
   "get_inventory",
   "get_key",
   "get_scheme",
   "list_schemes",
   "plan_add",
+  "plan_change",
   "plan_create",
   "plan_init",
   "what_moves",
@@ -266,19 +272,104 @@ test("plans list open-ds.json, and when_to_use says how it matched", async () =>
 
 test("get_context returns only the slice for a token, a task and a component, and get_key carries guidance", async () => {
   const client = await connect();
-  const token = await call(client, "get_context", { scheme_id: "dense-data", target: "color.status.danger" });
+  const token = await call(client, "get_context", {
+    scheme_id: "dense-data",
+    target: "color.status.danger",
+  });
   assert.equal(token.kind, "semantic");
   assert.equal(token.guidance.id, "color.status.danger.@");
   assert.equal(token.guidance.urgency.level, 3);
   assert.ok(token.guidance.not_for.every((n) => n.use.startsWith("color.")));
   assert.ok(token.values.light.startsWith("#"));
-  const review = await call(client, "get_context", { scheme_id: "dense-data", target: "review" });
+  const review = await call(client, "get_context", {
+    scheme_id: "dense-data",
+    target: "review",
+  });
   assert.equal(review.skill, "open-ds-review");
   assert.ok(review.semantics.length > 30 && review.rules.length > 10);
-  const badge = await call(client, "get_context", { scheme_id: "multi-brand", target: "badge" });
+  const badge = await call(client, "get_context", {
+    scheme_id: "multi-brand",
+    target: "badge",
+  });
   assert.ok(badge.keys.some((k) => k.key === "badge/info/label"));
-  const key = await call(client, "get_key", { scheme_id: "dense-data", key: "button/primary/background" });
+  const key = await call(client, "get_key", {
+    scheme_id: "dense-data",
+    key: "button/primary/background",
+  });
   assert.equal(key.guidance.id, "color.action.primary.@");
-  const bad = await client.callTool({ name: "get_context", arguments: { scheme_id: "dense-data", target: "nope" } });
+  const bad = await client.callTool({
+    name: "get_context",
+    arguments: { scheme_id: "dense-data", target: "nope" },
+  });
+  assert.ok(bad.isError);
+});
+
+test("get_component: the reference next to each scheme's decisions (OD-185)", async () => {
+  const c = await connect();
+  const dense = await call(c, "get_component", {
+    scheme_id: "dense-data",
+    component: "button",
+  });
+  assert.equal(dense.carried, true);
+  assert.match(dense.reference.overview, /commits an action/);
+  assert.ok(dense.reference.vs.some((v) => v.id === "toggle"));
+  const ghost = (g) =>
+    g.variants.find((v) => v.axis === "variant" && v.id === "ghost");
+  assert.match(ghost(dense).here.use, /Row actions/);
+  // The same component, decided differently: Accessible first does not use ghost.
+  const af = await call(c, "get_component", {
+    scheme_id: "accessible-first",
+    component: "button",
+  });
+  assert.equal(ghost(af).here.not_used, true);
+  assert.ok(af.rules.some((r) => r.situation === "commit-action"));
+  // get_context on a component carries the same two layers.
+  const ctx = await call(c, "get_context", {
+    scheme_id: "dense-data",
+    target: "button",
+  });
+  assert.ok(ctx.reference && ctx.variants.length >= 9);
+  const bad = await c.callTool({
+    name: "get_component",
+    arguments: { scheme_id: "dense-data", component: "nope" },
+  });
+  assert.ok(bad.isError);
+});
+
+test("what_moves lists the variant decisions and rules an answer drives (OD-185)", async () => {
+  const c = await connect();
+  const m = await call(c, "what_moves", {
+    scheme_id: "multi-brand",
+    question_id: "accessibility.values",
+  });
+  assert.ok(
+    m.variants.some(
+      (v) =>
+        v.component === "button" &&
+        v.axis === "size" &&
+        v.variant === "compact" &&
+        v.not_used,
+    ),
+  );
+  assert.ok(m.rules.some((r) => r.situation === "smallest-target"));
+});
+
+test("the tools behind the skills answer through the server (OD-202)", async () => {
+  const c = await connect();
+  const ui = await call(c, "check_ui", {
+    scheme_id: "dense-data",
+    files: [{ path: "src/app/page.tsx", content: '<Button size="large">Go</Button>' }],
+  });
+  assert.equal(ui.pass, false);
+  assert.equal(ui.findings[0].rule, "variant-not-used");
+  const copy = await call(c, "check_copy", { scheme_id: "dense-data", kind: "button", text: "Export" });
+  assert.equal(copy.pass, true);
+  const plan = await call(c, "plan_change", { scheme_id: "dense-data", token: "color.violet.light.600", value: "#9C93F5" });
+  assert.equal(plan.pass, false);
+  const token = await call(c, "find_token", { scheme_id: "dense-data", query: "page background" });
+  assert.equal(token.results[0].token, "color.surface.canvas");
+  const fit = await call(c, "fit_scheme", { product: "a magazine where people read long articles" });
+  assert.equal(fit[0].scheme, "content-first");
+  const bad = await c.callTool({ name: "plan_change", arguments: { scheme_id: "dense-data", question_id: "content.q2" } });
   assert.ok(bad.isError);
 });

@@ -8,11 +8,81 @@ description: "Alert in Dense data."
 
 # Alert
 
-Alert. A message that stays on the page. From shadcn/ui (new-york-v4, MIT), carried by the schemes whose inventory names it. Reads the shadcn variables, which theme.css maps onto the scheme's semantic tokens, and the radius, shadow and text scale that shadcn.css maps onto the scheme's tokens. Dark mode comes from the tokens, so no dark: classes.
+A message that stays on the page with the content it is about.
 
-See it in [Storybook](http://localhost:6006) under Components / Alert, in every theme.
+**In Dense data.** A problem that stays on the page. Family: feedback. Reference: Open UX (alert), MIT.
+
+## See it live
+
+<div class="odv-live"><span class="odv-wait">Start Storybook to see it live: <code>npm run storybook</code></span><iframe src="http://localhost:6006/iframe.html?id=components-alert--examples&viewMode=story&globals=scheme:dense-data" title="Alert examples in Storybook" loading="lazy"></iframe><div class="bar"><span>Live from Storybook</span><a href="http://localhost:6006/?path=/docs/components-alert--docs">Open Alert in Storybook</a><a href="http://localhost:6006/iframe.html?id=components-alert--examples&viewMode=story&globals=scheme:dense-data;mode:dark">See it in dark</a></div></div>
+
+## When to use it
+
+- **Use it when:** People need to read a standing notice or how to recover, on this page, tied to what they are doing.
+- **Not when:** A short confirmation that can go away by itself, or one notice for the whole site.
+
+Instead:
+
+- [Toast](./toast.md): Short, non-blocking, goes away.
+- [Dialog](./dialog.md): Needs an answer before going on.
+- Site banner: One full-width notice for the whole site.
+
+## Variants
+
+What each variant is for in any design system, then what Dense data decided and why. Each sample is the live story with that variant set.
+
+<section class="odv-variant off"><header><code>default</code><span class="odv-axisname">variant</span><span class="odv-pill">Not used in Dense data</span></header><div class="odv-vbody"><div class="odv-vstage"><span class="odv-wait">Start Storybook to see it live</span><iframe src="http://localhost:6006/iframe.html?id=components-alert--playground&viewMode=story&globals=scheme:dense-data&args=variant:default" title="Alert default" loading="lazy" tabindex="-1"></iframe></div><div class="odv-vinfo"><div class="odv-topic"><h4>What it is for</h4><p>A notice that stays on the page: information or a heads-up.</p><div class="odv-when"><div><span class="y">✓</span>A note people should read but need not fix.</div><div><span class="n">✕</span>Something failed and must be fixed.</div></div></div><div class="odv-topic"><h4>In Dense data</h4><p class="odv-decision">Alerts here are for problems that stay on the page; news goes in a toast or a badge.</p></div><div class="odv-topic"><h4>Because</h4><div class="odv-chips"><a class="odv-achip" href="#why-outcomes-q2"><span>What is a costly mistake?</span><b>Acting on the wrong record</b> · <code>outcomes.q2</code></a><a class="odv-achip" href="#why-tasks-q2"><span>How often do people repeat actions?</span><b>Constantly</b> · <code>tasks.q2</code></a></div></div></div></div></section>
+
+<section class="odv-variant"><header><code>destructive</code><span class="odv-axisname">variant</span><span class="odv-pill used">Used in Dense data</span></header><div class="odv-vbody"><div class="odv-vstage"><span class="odv-wait">Start Storybook to see it live</span><iframe src="http://localhost:6006/iframe.html?id=components-alert--playground&viewMode=story&globals=scheme:dense-data&args=variant:destructive" title="Alert destructive" loading="lazy" tabindex="-1"></iframe></div><div class="odv-vinfo"><div class="odv-topic"><h4>What it is for</h4><p>Something failed or will be lost, and people must act to recover.</p><div class="odv-when"><div><span class="y">✓</span>An error, with what went wrong and how to fix it.</div><div><span class="n">✕</span>A plain note dressed as danger for emphasis.</div></div></div><div class="odv-topic"><h4>In Dense data</h4><p class="odv-decision">A record that was not saved or an action that failed: name the record, then the fix, with an icon.</p></div><div class="odv-topic"><h4>Because</h4><div class="odv-chips"><a class="odv-achip" href="#why-outcomes-q2"><span>What is a costly mistake?</span><b>Acting on the wrong record</b> · <code>outcomes.q2</code></a><a class="odv-achip" href="#why-accessibility-count"><span>How many signals carry each meaning?</span><b>Three: color, icon and word</b> · <code>accessibility.count</code></a><a class="odv-achip" href="#why-voice-values"><span>How does it sound?</span><b>Terse</b> · <code>voice.values</code></a></div></div></div></div></section>
+
+## How Dense data uses it
+
+<div class="odv-grid two"><div class="odv-dd"><div class="stage"><div class="odv-eyebrow">An error message</div><div style="margin-top:6px"><b style="color:var(--color-status-success)">Use</b> color.status.danger with an icon</div><div><b style="color:var(--color-status-danger)">Not</b> color.status.warning</div></div><div class="cap">Red always means fix this, and the icon says it without color.</div></div></div>
+
+## Why it works this way
+
+Alert looks the way it does because of 4 answers about this product. Each card is one answer, in three steps: the answer, what it decided for Alert, and what would move if it changed.
+
+<section class="odv-trail" id="why-outcomes-q2"><div class="odv-trail-head"><b>What is a costly mistake?</b><code>outcomes.q2</code></div><div class="odv-steps"><div class="odv-step-col"><h5><i>1</i>The answer</h5><div class="odv-answer">Acting on the wrong record</div><p>Acting on the wrong row is the costly error.</p></div><div class="odv-step-col"><h5><i>2</i>So Alert</h5><ul><li><span class="n">–</span><span>does not use <b>default</b>: Alerts here are for problems that stay on the page; news goes in a toast or a badge.</span></li><li><span class="y">✓</span><span>uses <b>destructive</b>: A record that was not saved or an action that failed: name the record, then the fix, with an icon.</span></li></ul><div class="odv-also"><small>It also shapes</small> <code>Button: primary</code> <code>Button: secondary</code> <code>Toast: danger</code></div></div><div class="odv-step-col change"><h5><i>3</i>If it changed</h5><div class="odv-big">2</div><small>Alert decisions would reopen</small><p>and 2 answers that follow from it: <b>Status in tables</b>, <b>Errors and empty states</b>.</p></div></div></section>
+
+<section class="odv-trail" id="why-tasks-q2"><div class="odv-trail-head"><b>How often do people repeat actions?</b><code>tasks.q2</code></div><div class="odv-steps"><div class="odv-step-col"><h5><i>1</i>The answer</h5><div class="odv-answer">Constantly</div><p>The same actions repeat many times an hour.</p></div><div class="odv-step-col"><h5><i>2</i>So Alert</h5><ul><li><span class="n">–</span><span>does not use <b>default</b>: Alerts here are for problems that stay on the page; news goes in a toast or a badge.</span></li></ul><div class="odv-also"><small>It also shapes</small> <code>Button: ghost</code> <code>Input group: inline-end</code> <code>Sidebar: default</code> <code>Toast: success</code></div></div><div class="odv-step-col change"><h5><i>3</i>If it changed</h5><div class="odv-big">1</div><small>Alert decision would reopen</small><p>and 11 answers that follow from it: <b>Time on task</b>, <b>All day</b>, <b>Three</b>, and 8 more.</p></div></div></section>
+
+<section class="odv-trail" id="why-accessibility-count"><div class="odv-trail-head"><b>How many signals carry each meaning?</b><code>accessibility.count</code></div><div class="odv-steps"><div class="odv-step-col"><h5><i>1</i>The answer</h5><div class="odv-answer">Three: color, icon and word</div><p>Many statuses share one table; color alone is not enough.</p></div><div class="odv-step-col"><h5><i>2</i>So Alert</h5><ul><li><span class="y">✓</span><span>uses <b>destructive</b>: A record that was not saved or an action that failed: name the record, then the fix, with an icon.</span></li></ul><div class="odv-also"><small>It also shapes</small> <code>Badge: neutral</code> <code>Badge: info</code> <code>Badge: success</code> <code>Badge: warning</code> <code>Badge: danger</code></div></div><div class="odv-step-col change"><h5><i>3</i>If it changed</h5><div class="odv-big">1</div><small>Alert decision would reopen</small><p>No other answer follows from it.</p></div></div></section>
+
+<section class="odv-trail" id="why-voice-values"><div class="odv-trail-head"><b>How does it sound?</b><code>voice.values</code></div><div class="odv-steps"><div class="odv-step-col"><h5><i>1</i>The answer</h5><div class="odv-answer">Terse</div><p>Experts want short labels and short messages.</p></div><div class="odv-step-col"><h5><i>2</i>So Alert</h5><ul><li><span class="y">✓</span><span>uses <b>destructive</b>: A record that was not saved or an action that failed: name the record, then the fix, with an icon.</span></li></ul><div class="odv-also"><small>It also shapes</small> <code>Toast: neutral</code> <code>Toast: success</code> <code>Toast: danger</code></div></div><div class="odv-step-col change"><h5><i>3</i>If it changed</h5><div class="odv-big">1</div><small>Alert decision would reopen</small><p>No other answer follows from it.</p></div></div></section>
+
+## Words
+
+- Lead with the object, then the state: "Alert 2041 contained."
+- Use numbers, not words for numbers.
+- One verb per button. No "please", no exclamation marks.
+- Use: Investigate, Filter, Assign, Escalated, Resolved. Avoid: Oops, Awesome, Please, Simply.
+
+The labels components use, from the voice tokens:
+
+- `content.action.commit`: Save
+- `content.action.cancel`: Cancel
+- `content.action.destroy`: Delete
+- `content.action.retry`: Retry
+- `content.action.empty-action`: Change filters
+
+See [Voice and tone](../voice.md) for the whole voice.
+
+## Accessibility and keyboard
+
+Test before you ship:
+
+- [ ] An error that appears after an action is announced (role alert); a standing note is not. undefined
+- [ ] The tone also shows as an icon and words, never color alone. undefined
+
+## Use it in code
+
+```bash
+npx open-ds add alert
+```
+
+The component reads only component keys and semantic tokens, so it follows the brand and mode on `<html>`.
 
 ## Tokens it reads
 
 From shadcn/ui. It reads shadcn's variables, which theme.css maps onto this system's semantic tokens, and the radius, shadow and text scale in shadcn.css.
-

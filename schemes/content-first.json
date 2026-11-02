@@ -90,7 +90,83 @@
     "in": [
       {
         "id": "button",
-        "why": "Subscribe, share and save."
+        "why": "Subscribe, share and save.",
+        "variants": {
+          "variant": {
+            "primary": {
+              "use": "One clear action per section.",
+              "because": [
+                "tasks.q2"
+              ]
+            },
+            "secondary": {
+              "use": "The first step of a delete, with the full verb, before the confirm.",
+              "because": [
+                "outcomes.q2"
+              ]
+            },
+            "ghost": {
+              "use": "Alternatives as a text link, and row actions with a word.",
+              "because": [
+                "brand.q1",
+                "human.q2"
+              ]
+            }
+          },
+          "size": {
+            "default": {
+              "use": "Every button, at touch size: many readers are on phones.",
+              "because": [
+                "accessibility.values"
+              ]
+            },
+            "compact": {
+              "not_used": true,
+              "why": "Many readers are on phones: no compact controls.",
+              "because": [
+                "accessibility.values"
+              ]
+            },
+            "icon": {
+              "not_used": true,
+              "why": "Occasional visitors do not know icons: always add a word.",
+              "because": [
+                "iconography.roles",
+                "human.q2"
+              ]
+            },
+            "large": {
+              "not_used": true,
+              "why": "Attention belongs to the text: one clear action per section, at the normal size.",
+              "because": [
+                "human.q1",
+                "tasks.q2"
+              ]
+            }
+          },
+          "state": {
+            "hover": {
+              "use": "Moderate feedback that feels calm.",
+              "because": [
+                "motion.values"
+              ]
+            },
+            "focus": {
+              "use": "Always visible.",
+              "because": [
+                "people.q2"
+              ]
+            },
+            "disabled": {
+              "not_used": true,
+              "why": "Keep it enabled and explain on press: visitors see the interface fresh each time.",
+              "because": [
+                "human.q2",
+                "people.q2"
+              ]
+            }
+          }
+        }
       },
       {
         "id": "input",
@@ -102,15 +178,80 @@
       },
       {
         "id": "field",
-        "why": "Lays out the newsletter and search forms."
+        "why": "Lays out the newsletter and search forms.",
+        "variants": {
+          "orientation": {
+            "vertical": {
+              "use": "Newsletter and search forms: the label above.",
+              "because": [
+                "people.q2"
+              ]
+            },
+            "horizontal": {
+              "not_used": true,
+              "why": "Forms are rare and short; stacking keeps the reading column.",
+              "because": [
+                "tasks.q2",
+                "human.q1"
+              ]
+            },
+            "responsive": {
+              "not_used": true,
+              "why": "One stacked layout reads the same on phones and laptops.",
+              "because": [
+                "scenarios.q1"
+              ]
+            }
+          }
+        }
       },
       {
         "id": "alert",
-        "why": "A note or warning inside an article."
+        "why": "A note or warning inside an article.",
+        "variants": {
+          "variant": {
+            "default": {
+              "use": "A note or a warning inside an article.",
+              "because": [
+                "content.q1"
+              ]
+            },
+            "destructive": {
+              "use": "A failed save or sign-up: calm, take the blame, offer the way forward.",
+              "because": [
+                "accessibility.count",
+                "voice.count"
+              ]
+            }
+          }
+        }
       },
       {
         "id": "toast",
-        "why": "Confirms a saved article."
+        "why": "Confirms a saved article.",
+        "variants": {
+          "tone": {
+            "neutral": {
+              "use": "A calm note: You're all caught up.",
+              "because": [
+                "voice.values"
+              ]
+            },
+            "success": {
+              "use": "Warm and brief, with what happens next.",
+              "because": [
+                "voice.values"
+              ]
+            },
+            "danger": {
+              "use": "Calm and helpful: take the blame, offer the way forward.",
+              "because": [
+                "voice.count",
+                "voice.values"
+              ]
+            }
+          }
+        }
       },
       {
         "id": "dialog",
@@ -154,7 +295,44 @@
       },
       {
         "id": "badge",
-        "why": "The topic of an article."
+        "why": "The topic of an article.",
+        "variants": {
+          "tone": {
+            "neutral": {
+              "use": "Saved: waiting for you; nothing is wrong.",
+              "because": [
+                "accessibility.count"
+              ]
+            },
+            "info": {
+              "not_used": true,
+              "why": "Topics and reading states need no news tone; status is rare.",
+              "because": [
+                "accessibility.count"
+              ]
+            },
+            "success": {
+              "use": "Finished: you read it to the end.",
+              "because": [
+                "accessibility.count"
+              ]
+            },
+            "warning": {
+              "use": "Out of date: the facts may have changed since it was written.",
+              "because": [
+                "accessibility.count"
+              ]
+            },
+            "danger": {
+              "not_used": true,
+              "why": "Nothing in an article fails; errors are calm sentences, not labels.",
+              "because": [
+                "accessibility.count",
+                "voice.count"
+              ]
+            }
+          }
+        }
       },
       {
         "id": "sheet",
@@ -214,6 +392,90 @@
         "why": "The facts may have changed since it was written."
       }
     ],
+    "table": {
+      "caption": "Saved guides",
+      "columns": [
+        {
+          "label": "Guide"
+        },
+        {
+          "label": "Section"
+        },
+        {
+          "label": "Minutes",
+          "numeric": true
+        },
+        {
+          "label": "Status"
+        }
+      ],
+      "rows": [
+        {
+          "cells": [
+            "Planting a winter garden",
+            "Home and garden",
+            "12"
+          ],
+          "status": "Saved"
+        },
+        {
+          "cells": [
+            "Bread without a mixer",
+            "Food",
+            "9"
+          ],
+          "status": "Finished"
+        },
+        {
+          "cells": [
+            "Fixing a dripping tap",
+            "Home and garden",
+            "6"
+          ],
+          "status": "Out of date"
+        },
+        {
+          "cells": [
+            "A weekend in Lisbon",
+            "Travel",
+            "14"
+          ],
+          "status": "Saved"
+        },
+        {
+          "cells": [
+            "Starting to run at 40",
+            "Health",
+            "11"
+          ],
+          "status": "Finished"
+        },
+        {
+          "cells": [
+            "Keeping basil alive",
+            "Home and garden",
+            "5"
+          ],
+          "status": "Finished"
+        },
+        {
+          "cells": [
+            "The quiet history of maps",
+            "Ideas",
+            "18"
+          ],
+          "status": "Saved"
+        },
+        {
+          "cells": [
+            "Choosing a first bike",
+            "Health",
+            "8"
+          ],
+          "status": "Out of date"
+        }
+      ]
+    },
     "metrics": [
       {
         "label": "Guides saved",
@@ -239,6 +501,24 @@
       "error": "We could not save your email. Check it and try again.",
       "invalid": "reader-at-home"
     },
+    "checkbox": [
+      "Home and garden",
+      "Food",
+      "Travel"
+    ],
+    "select": {
+      "label": "Sort your list",
+      "options": [
+        "Newest first",
+        "Shortest read first",
+        "By topic"
+      ],
+      "value": "Newest first"
+    },
+    "switches": [
+      "Larger text",
+      "Email me the weekly letter"
+    ],
     "messages": {
       "success": "You're in. The next issue arrives on Friday.",
       "error": {
@@ -260,7 +540,30 @@
       "status": "Saved",
       "primary": "Keep reading",
       "secondary": "Share"
-    }
+    },
+    "tabs": [
+      {
+        "label": "Saved",
+        "content": "4 guides are waiting for you."
+      },
+      {
+        "label": "Finished",
+        "content": "You read 11 this month."
+      },
+      {
+        "label": "Topics",
+        "content": "Home and garden, food and travel."
+      }
+    ],
+    "menu": {
+      "trigger": "Options for this guide",
+      "items": [
+        "Save for later",
+        "Share"
+      ],
+      "destructive": "Remove from your list"
+    },
+    "icon_action": "Save for later"
   },
   "themes": [
     {
@@ -970,6 +1273,11 @@
       "why": "Status is rare; a word is clear.",
       "because": [
         "accessibility.count"
+      ],
+      "uses": [
+        {
+          "component": "badge"
+        }
       ]
     },
     {
@@ -1079,6 +1387,13 @@
       "why": "Keyboard users must always see where they are.",
       "because": [
         "people.q2"
+      ],
+      "uses": [
+        {
+          "component": "button",
+          "axis": "state",
+          "variant": "focus"
+        }
       ]
     },
     {
@@ -1097,6 +1412,13 @@
       "why": "One clear action per section.",
       "because": [
         "tasks.q2"
+      ],
+      "uses": [
+        {
+          "component": "button",
+          "axis": "variant",
+          "variant": "primary"
+        }
       ]
     },
     {
@@ -1106,6 +1428,13 @@
       "why": "A link feels lighter and does not compete.",
       "because": [
         "brand.q1"
+      ],
+      "uses": [
+        {
+          "component": "button",
+          "axis": "variant",
+          "variant": "ghost"
+        }
       ]
     },
     {
@@ -1115,6 +1444,13 @@
       "why": "Naming the verb and confirming prevents a mistake.",
       "because": [
         "outcomes.q2"
+      ],
+      "uses": [
+        {
+          "component": "button",
+          "axis": "variant",
+          "variant": "secondary"
+        }
       ]
     },
     {
@@ -1124,6 +1460,13 @@
       "why": "Occasional visitors need the word.",
       "because": [
         "human.q2"
+      ],
+      "uses": [
+        {
+          "component": "button",
+          "axis": "variant",
+          "variant": "ghost"
+        }
       ]
     },
     {
@@ -2280,6 +2623,11 @@
             "$type": "dimension",
             "$value": "{size.40}",
             "$description": "Height of compact controls."
+          },
+          "large": {
+            "$type": "dimension",
+            "$value": "{size.48}",
+            "$description": "Height of large controls. Not used in this system, so it equals the default."
           }
         },
         "row": {

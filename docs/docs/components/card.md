@@ -8,9 +8,58 @@ description: "Card in Dense data."
 
 # Card
 
-Card. Groups content inside a page. Whether it has a shadow is a scheme decision (elevation.roles, elevation.definition): --card-shadow is "no shadow" in schemes that separate with lines. Reads only component keys: --card-\*.
+A bordered container for one item or group, with its title, content and actions.
 
-See it in [Storybook](http://localhost:6006) under Components / Card, in every theme.
+**In Dense data.** Dashboard figures. Family: layout. Reference: Open UX (content_card), MIT.
+
+## See it live
+
+<div class="odv-live"><span class="odv-wait">Start Storybook to see it live: <code>npm run storybook</code></span><iframe src="http://localhost:6006/iframe.html?id=components-card--examples&viewMode=story&globals=scheme:dense-data" title="Card examples in Storybook" loading="lazy"></iframe><div class="bar"><span>Live from Storybook</span><a href="http://localhost:6006/?path=/docs/components-card--docs">Open Card in Storybook</a><a href="http://localhost:6006/iframe.html?id=components-card--examples&viewMode=story&globals=scheme:dense-data;mode:dark">See it in dark</a></div></div>
+
+## When to use it
+
+- **Use it when:** A repeating unit of title, media and one destination or action.
+- **Not when:** Records people compare cell by cell (a table), or a whole card as one big link that screen readers read as one.
+
+Instead:
+
+- [Table](./table.md): Records compared across rows.
+- Item: A compact row in a list.
+
+## How Dense data uses it
+
+<div class="odv-grid two"><div class="odv-dd"><div class="stage"><div class="odv-eyebrow">A card on the page</div><div style="margin-top:6px"><b style="color:var(--color-status-success)">Use</b> A hairline border, no shadow</div><div><b style="color:var(--color-status-danger)">Not</b> A shadow</div></div><div class="cap">On a busy grid, lines separate. Shadows blur the edges.</div></div></div>
+
+## Words
+
+- Lead with the object, then the state: "Alert 2041 contained."
+- Use numbers, not words for numbers.
+- One verb per button. No "please", no exclamation marks.
+- Use: Investigate, Filter, Assign, Escalated, Resolved. Avoid: Oops, Awesome, Please, Simply.
+
+The labels components use, from the voice tokens:
+
+- `content.action.commit`: Save
+- `content.action.cancel`: Cancel
+- `content.action.destroy`: Delete
+- `content.action.retry`: Retry
+- `content.action.empty-action`: Change filters
+
+See [Voice and tone](../voice.md) for the whole voice.
+
+## Accessibility and keyboard
+
+Test before you ship:
+
+- [ ] One inner link or button names the destination; the rest is not one big link. undefined
+
+## Use it in code
+
+```bash
+npx open-ds add card
+```
+
+The component reads only component keys and semantic tokens, so it follows the brand and mode on `<html>`.
 
 ## Component keys
 
@@ -23,9 +72,3 @@ The CSS variable is the key with `/` replaced by `-` and the base `@` dropped. E
 | `card/radius` | Card corner radius. | `radius.container` → `dense-data.theme.base.radius.container` → `radius.4` | same |
 | `card/padding` | Padding inside a card. | `space.inset.container` → `space.16` | same |
 | `card/shadow` | Card shadow. | `elevation.card` → `dense-data.theme.light.elevation.card` → `shadow.none` | `elevation.card` → `dense-data.theme.dark.elevation.card` → `shadow.none` |
-
-## When to use it
-
-| Situation | Use | Not | Why |
-| --- | --- | --- | --- |
-| Between page sections | space.gap.section and a hairline | A card around every section | Lines separate without taking room from the data. |

@@ -123,3 +123,16 @@ test("the registry lists every component, the helper and a theme per scheme and 
   assert.ok(theme.cssVars.light.primary && theme.cssVars.dark.primary);
   assert.notEqual(theme.cssVars.light.background, theme.cssVars.dark.background);
 });
+
+test("a disabled Button stays focusable and announced, and its click is blocked (OD-185)", () => {
+  const html = renderToStaticMarkup(<UI.Button disabled>Save</UI.Button>);
+  assert.match(html, /aria-disabled="true"/);
+  assert.doesNotMatch(html, /\sdisabled=""/, "no HTML disabled attribute, so it stays in the tab order");
+  let clicked = false;
+  const el = UI.Button({ disabled: true, onClick: () => (clicked = true), children: "Save" }) as React.ReactElement<{
+    onClick: (e: { preventDefault(): void; stopPropagation(): void }) => void;
+  }>;
+  el.props.onClick({ preventDefault() {}, stopPropagation() {} });
+  assert.equal(clicked, false);
+  assert.match(renderToStaticMarkup(<UI.Button size="large">Join</UI.Button>), /var\(--size-control-large\)/);
+});

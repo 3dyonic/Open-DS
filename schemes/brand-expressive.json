@@ -88,7 +88,80 @@
     "in": [
       {
         "id": "button",
-        "why": "The one action: sign up."
+        "why": "The one action: sign up.",
+        "variants": {
+          "variant": {
+            "primary": {
+              "use": "One loud call to action per section.",
+              "because": [
+                "outcomes.q1"
+              ]
+            },
+            "secondary": {
+              "use": "The first step of a delete, before the confirm.",
+              "because": [
+                "outcomes.q2"
+              ]
+            },
+            "ghost": {
+              "use": "The alternative next to the primary, and row actions with a word.",
+              "because": [
+                "color.count",
+                "iconography.roles"
+              ]
+            }
+          },
+          "size": {
+            "default": {
+              "use": "Every button, at touch size: phones first.",
+              "because": [
+                "accessibility.values"
+              ]
+            },
+            "compact": {
+              "not_used": true,
+              "why": "Phones first: no compact controls.",
+              "because": [
+                "accessibility.values"
+              ]
+            },
+            "icon": {
+              "not_used": true,
+              "why": "Phones first: hover hints never show, so every button has a word.",
+              "because": [
+                "accessibility.values",
+                "iconography.roles"
+              ]
+            },
+            "large": {
+              "use": "The one loud call to action per section.",
+              "because": [
+                "outcomes.q1"
+              ]
+            }
+          },
+          "state": {
+            "hover": {
+              "use": "Relaxed, springy feedback: motion is part of the brand.",
+              "because": [
+                "motion.roles",
+                "motion.values"
+              ]
+            },
+            "focus": {
+              "use": "Always shows, even on vivid color.",
+              "because": [
+                "people.q2"
+              ]
+            },
+            "disabled": {
+              "use": "Only with a visible reason next to it.",
+              "because": [
+                "people.q2"
+              ]
+            }
+          }
+        }
       },
       {
         "id": "input",
@@ -100,7 +173,32 @@
       },
       {
         "id": "field",
-        "why": "Lays out the sign-up form."
+        "why": "Lays out the sign-up form.",
+        "variants": {
+          "orientation": {
+            "vertical": {
+              "use": "The sign-up form: the label above the field.",
+              "because": [
+                "scenarios.q1"
+              ]
+            },
+            "horizontal": {
+              "not_used": true,
+              "why": "Phones first: there is no room beside the field.",
+              "because": [
+                "scenarios.q1",
+                "accessibility.values"
+              ]
+            },
+            "responsive": {
+              "not_used": true,
+              "why": "Phones first: one stacked layout.",
+              "because": [
+                "scenarios.q1"
+              ]
+            }
+          }
+        }
       },
       {
         "id": "carousel",
@@ -116,7 +214,44 @@
       },
       {
         "id": "badge",
-        "why": "New and limited labels."
+        "why": "New and limited labels.",
+        "variants": {
+          "tone": {
+            "neutral": {
+              "use": "New: a label, not a state to fix.",
+              "because": [
+                "accessibility.count"
+              ]
+            },
+            "info": {
+              "not_used": true,
+              "why": "Campaign labels are a state or a nudge; there are no plain news labels.",
+              "because": [
+                "content.q1"
+              ]
+            },
+            "success": {
+              "use": "On the list: you joined and your place is saved.",
+              "because": [
+                "accessibility.count"
+              ]
+            },
+            "warning": {
+              "use": "Almost gone: few left, act soon.",
+              "because": [
+                "accessibility.count",
+                "outcomes.q1"
+              ]
+            },
+            "danger": {
+              "not_used": true,
+              "why": "Nothing on a launch page is labeled as failed; errors are plain sentences.",
+              "because": [
+                "voice.count"
+              ]
+            }
+          }
+        }
       },
       {
         "id": "card",
@@ -136,7 +271,30 @@
       },
       {
         "id": "toast",
-        "why": "Confirms a place on the waitlist."
+        "why": "Confirms a place on the waitlist.",
+        "variants": {
+          "tone": {
+            "neutral": {
+              "use": "A light note that something changed.",
+              "because": [
+                "voice.count"
+              ]
+            },
+            "success": {
+              "use": "Celebrate, briefly: You're on the list. See you at launch.",
+              "because": [
+                "voice.values",
+                "outcomes.q1"
+              ]
+            },
+            "danger": {
+              "use": "Plain first, a light touch after: That didn't go through.",
+              "because": [
+                "voice.count"
+              ]
+            }
+          }
+        }
       },
       {
         "id": "navigation-menu",
@@ -204,6 +362,90 @@
         "why": "Few left; act soon."
       }
     ],
+    "table": {
+      "caption": "Drop 03 line-up",
+      "columns": [
+        {
+          "label": "Piece"
+        },
+        {
+          "label": "Colour"
+        },
+        {
+          "label": "Left",
+          "numeric": true
+        },
+        {
+          "label": "Status"
+        }
+      ],
+      "rows": [
+        {
+          "cells": [
+            "Night runner jacket",
+            "Ink",
+            "40"
+          ],
+          "status": "Almost gone"
+        },
+        {
+          "cells": [
+            "Trail shell",
+            "Volt",
+            "220"
+          ],
+          "status": "New"
+        },
+        {
+          "cells": [
+            "Studio hoodie",
+            "Chalk",
+            "180"
+          ],
+          "status": "On the list"
+        },
+        {
+          "cells": [
+            "Drift cap",
+            "Ember",
+            "35"
+          ],
+          "status": "Almost gone"
+        },
+        {
+          "cells": [
+            "Loop tee",
+            "Chalk",
+            "300"
+          ],
+          "status": "New"
+        },
+        {
+          "cells": [
+            "Cargo short",
+            "Ember",
+            "150"
+          ],
+          "status": "On the list"
+        },
+        {
+          "cells": [
+            "Pace sock",
+            "Volt",
+            "90"
+          ],
+          "status": "New"
+        },
+        {
+          "cells": [
+            "Weekend tote",
+            "Ink",
+            "25"
+          ],
+          "status": "Almost gone"
+        }
+      ]
+    },
     "metrics": [
       {
         "label": "Days to launch",
@@ -229,6 +471,25 @@
       "error": "That email doesn't look right. Check it and try again.",
       "invalid": "hello@"
     },
+    "checkbox": [
+      "Remind me at launch",
+      "Tell me about the next drop",
+      "Text me when it's live"
+    ],
+    "select": {
+      "label": "Your size",
+      "options": [
+        "S",
+        "M",
+        "L",
+        "XL"
+      ],
+      "value": "M"
+    },
+    "switches": [
+      "Launch reminder",
+      "Drop news by email"
+    ],
     "messages": {
       "success": "You're on the list. See you at launch.",
       "error": {
@@ -250,7 +511,30 @@
       "status": "Almost gone",
       "primary": "Join the drop",
       "secondary": "Save"
-    }
+    },
+    "tabs": [
+      {
+        "label": "Line-up",
+        "content": "12 pieces. 4 colours."
+      },
+      {
+        "label": "Countdown",
+        "content": "6 days to go."
+      },
+      {
+        "label": "The list",
+        "content": "2,400 people are in."
+      }
+    ],
+    "menu": {
+      "trigger": "More for this piece",
+      "items": [
+        "Share the drop",
+        "Set a reminder"
+      ],
+      "destructive": "Leave the list"
+    },
+    "icon_action": "Share the drop"
   },
   "themes": [
     {
@@ -963,6 +1247,11 @@
       "why": "A word keeps meaning on vivid backgrounds.",
       "because": [
         "accessibility.count"
+      ],
+      "uses": [
+        {
+          "component": "badge"
+        }
       ]
     },
     {
@@ -1050,10 +1339,11 @@
     },
     {
       "situation": "icon-alone",
-      "use": "Rarely, with a tooltip",
-      "not": "Many bare icons",
-      "why": "Type and image carry the page.",
+      "use": "Not used: always add a word",
+      "not": "An icon button with a hover hint",
+      "why": "On phones, hover hints never show; a word says what will happen.",
       "because": [
+        "accessibility.values",
         "iconography.roles"
       ]
     },
@@ -1073,6 +1363,13 @@
       "why": "Focus must show on vivid color.",
       "because": [
         "people.q2"
+      ],
+      "uses": [
+        {
+          "component": "button",
+          "axis": "state",
+          "variant": "focus"
+        }
       ]
     },
     {
@@ -1091,6 +1388,18 @@
       "why": "One loud call to action per section.",
       "because": [
         "outcomes.q1"
+      ],
+      "uses": [
+        {
+          "component": "button",
+          "axis": "variant",
+          "variant": "primary"
+        },
+        {
+          "component": "button",
+          "axis": "size",
+          "variant": "large"
+        }
       ]
     },
     {
@@ -1100,6 +1409,13 @@
       "why": "The alternative must not compete.",
       "because": [
         "color.count"
+      ],
+      "uses": [
+        {
+          "component": "button",
+          "axis": "variant",
+          "variant": "ghost"
+        }
       ]
     },
     {
@@ -1109,6 +1425,13 @@
       "why": "Confirm before destroying data.",
       "because": [
         "outcomes.q2"
+      ],
+      "uses": [
+        {
+          "component": "button",
+          "axis": "variant",
+          "variant": "secondary"
+        }
       ]
     },
     {
@@ -1118,6 +1441,13 @@
       "why": "A word keeps it clear.",
       "because": [
         "iconography.roles"
+      ],
+      "uses": [
+        {
+          "component": "button",
+          "axis": "variant",
+          "variant": "ghost"
+        }
       ]
     },
     {
@@ -1537,6 +1867,10 @@
         "52": {
           "$type": "dimension",
           "$value": "3.25rem"
+        },
+        "60": {
+          "$type": "dimension",
+          "$value": "3.75rem"
         },
         "$description": "Size options for controls, rows and icons."
       },
@@ -2295,6 +2629,11 @@
             "$type": "dimension",
             "$value": "{size.44}",
             "$description": "Height of compact controls."
+          },
+          "large": {
+            "$type": "dimension",
+            "$value": "{size.60}",
+            "$description": "Height of large controls: the one loud call to action."
           }
         },
         "row": {

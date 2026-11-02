@@ -8,11 +8,55 @@ description: "Skeleton in Dense data."
 
 # Skeleton
 
-Skeleton. A placeholder while content loads. From shadcn/ui (new-york-v4, MIT), carried by the schemes whose inventory names it. Reads the shadcn variables, which theme.css maps onto the scheme's semantic tokens, and the radius, shadow and text scale that shadcn.css maps onto the scheme's tokens. Dark mode comes from the tokens, so no dark: classes.
+Placeholder shapes that match the final layout, so the page does not jump when content arrives.
 
-See it in [Storybook](http://localhost:6006) under Components / Skeleton, in every theme.
+**In Dense data.** Rows while a table loads. Family: feedback. Reference: Open UX (skeleton), MIT.
+
+## See it live
+
+<div class="odv-live"><span class="odv-wait">Start Storybook to see it live: <code>npm run storybook</code></span><iframe src="http://localhost:6006/iframe.html?id=components-skeleton--examples&viewMode=story&globals=scheme:dense-data" title="Skeleton examples in Storybook" loading="lazy"></iframe><div class="bar"><span>Live from Storybook</span><a href="http://localhost:6006/?path=/docs/components-skeleton--docs">Open Skeleton in Storybook</a><a href="http://localhost:6006/iframe.html?id=components-skeleton--examples&viewMode=story&globals=scheme:dense-data;mode:dark">See it in dark</a></div></div>
+
+## When to use it
+
+- **Use it when:** Lists, cards, dashboards and tables whose shape is known.
+- **Not when:** A wait with no layout (spinner), or a region that loaded empty (empty).
+
+Instead:
+
+- Spinner: A wait with no layout.
+- [Empty](./empty.md): Loaded, with nothing to show.
+
+## Words
+
+- Lead with the object, then the state: "Alert 2041 contained."
+- Use numbers, not words for numbers.
+- One verb per button. No "please", no exclamation marks.
+- Use: Investigate, Filter, Assign, Escalated, Resolved. Avoid: Oops, Awesome, Please, Simply.
+
+The labels components use, from the voice tokens:
+
+- `content.action.commit`: Save
+- `content.action.cancel`: Cancel
+- `content.action.destroy`: Delete
+- `content.action.retry`: Retry
+- `content.action.empty-action`: Change filters
+
+See [Voice and tone](../voice.md) for the whole voice.
+
+## Accessibility and keyboard
+
+Test before you ship:
+
+- [ ] The region says it is loading; the shapes themselves are hidden from screen readers. undefined
+
+## Use it in code
+
+```bash
+npx open-ds add skeleton
+```
+
+The component reads only component keys and semantic tokens, so it follows the brand and mode on `<html>`.
 
 ## Tokens it reads
 
 From shadcn/ui. It reads shadcn's variables, which theme.css maps onto this system's semantic tokens, and the radius, shadow and text scale in shadcn.css.
-

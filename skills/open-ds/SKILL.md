@@ -1,17 +1,26 @@
 ---
 name: open-ds
-description: Build UI with an Open DS scheme. Use when you pick a design system, deploy one into a project, or write UI in a project that has open-ds.json.
+description: Build UI with an Open DS scheme. Use when you pick a scheme, take one into a project, or build UI with open-ds.json.
+tools:
+  - when_to_use
+  - get_component
+  - get_context
+  - check_ui
+  - why
 ---
 
 # Open DS
 
-An Open DS scheme is a full design system as data. It answers a fixed set of questions (the grammar) and gives the reason for each answer. Tokens, components, usage rules and voice follow from those answers.
+## Why
 
-## Focused skills
+An Open DS scheme is a full design system as data. It answers a fixed set of questions and gives a reason for each answer. Tokens, components, rules and voice follow from those answers. Follow the scheme, and the UI stays consistent and explainable.
 
-This skill is the overview. For each job there is a focused skill next to it:
+## When
 
-| Skill            | When                                      |
+- The project has `open-ds.json`, or it needs a design system.
+- For one job, use its focused skill:
+
+| Skill            | Job                                       |
 | ---------------- | ----------------------------------------- |
 | `open-ds-choose` | Pick a scheme and take it into a project. |
 | `open-ds-build`  | Build UI in a project that uses a scheme. |
@@ -19,32 +28,33 @@ This skill is the overview. For each job there is a focused skill next to it:
 | `open-ds-change` | Change a token, a component or an answer. |
 | `open-ds-review` | Review UI against the scheme.             |
 
-The MCP server serves the same five as prompts.
+The MCP server serves the same five skills as prompts.
 
-## Pick a scheme
+## Input
 
-1. Run `open-ds list`, or call the MCP tool `list_schemes`.
-2. Read `ai.use_when` and `ai.avoid_when` of each scheme. Pick the one that fits the product.
-3. If two fit, read `scenarios` in each scheme. Pick the closest one.
+- The scheme id, from `open-ds.json` or `.open-ds/scheme.json`.
+- `AGENTS.md` in the project root. It holds the rules and the voice.
 
-## Deploy it
+## Run
 
-- CLI: `open-ds init <scheme> --dir <project>`. Add `--brand <id>` for a multi-brand scheme.
-- MCP: call `plan_init` (or `plan_create` for a new project). It returns the exact command and the files it writes; run the command. The server never writes to your disk.
-- Then install the packages that the command prints. Import `src/styles/open-ds.css` after Tailwind.
+1. If the project has no scheme yet, use `open-ds-choose`.
+2. Read `AGENTS.md`.
+3. Before you pick a token, a component or a variant, find its situation with `when_to_use`.
+4. On the command line, use `open-ds when <scheme> <words>` for the same answer.
+5. Do what the rule says. Never do what its "not" says.
+6. Before you use a component, call `get_component` or run `open-ds component <scheme> <id>`.
+7. Use only the variants the scheme uses. Never use a variant it marks as not used.
+8. Before you use a colour, read its guidance with `get_context` or `open-ds context <scheme> <token>`.
+9. Use only components in `src/components/ui` and the scheme's CSS variables.
+10. Write no raw colours, sizes or spacing.
+11. To change a look, change its component key, for example `--button-radius`. Do not edit the component.
+12. To explain a decision, call `why` or run `open-ds why <scheme> <id>`. Quote the answer and its reason.
+13. Before you finish, call `check_ui` or run `open-ds check`. Fix each finding.
 
-## Build UI in a project that uses a scheme
+## Done
 
-1. Read `AGENTS.md`. It holds the usage rules and the voice.
-2. Before you choose a token, a component or a variant, find the situation: `open-ds when <scheme> <words>` or the MCP tool `when_to_use`. Do what the rule says. Do not do what its "not" says.
-3. Use only the components in `src/components/ui` and the CSS variables in `src/styles/open-ds.css`. Do not write raw colors, sizes or spacing.
-4. To change how a component looks, change a component key (for example `--button-radius`). Do not edit the component.
-5. Write copy in the scheme's voice. Read the usage rules of the voice situations (button-label, error-words, success-words, empty-words, confirm-words, first-visit): each gives the tone, a rule and an example.
-6. To explain a decision, run `open-ds why <scheme> <question-id>` or call `why`. Quote the answer and its reasons.
-7. Before you use a colour, read its guidance: `open-ds context <scheme> <token>` or `get_context`. Never use it for a case in its `not_for`, and put text only on the fills it lists. Status goes by real risk: info, then warning, then danger.
-
-## Do not
-
-- Do not mix two schemes in one product.
-- Do not use color alone to show meaning.
-- Do not remove focus rings.
+- Every component, variant and token follows a rule of the scheme.
+- Colour is never the only signal, and focus rings stay.
+- Light and dark both work.
+- The product uses one scheme only.
+- `open-ds-review` finds no failures.

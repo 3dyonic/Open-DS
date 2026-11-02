@@ -1,0 +1,739 @@
+/* The visual blocks of the docs (OD-182): the home hero and product screen, answer cards, section
+   tiles, live variant cards, do and don't, colour bands, surface stacks and primitive ramps. The
+   pages come from cli/src/docs.mjs as HTML inside Markdown; these rules dress them in the design
+   system's own tokens and component keys, so each scheme's docs look like that scheme. The same file
+   ships in a created project (cli/templates/project/docs/src/css/visual.css); the harness keeps the
+   two the same. */
+
+.odv-hero {
+  display: grid;
+  grid-template-columns: minmax(0, 0.9fr) minmax(0, 1.1fr);
+  gap: 40px;
+  align-items: center;
+  margin: 8px 0 48px;
+}
+.odv-eyebrow {
+  font: 500 var(--type-caption-font-size) var(--type-data-font-family);
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--color-text-muted);
+}
+.odv-hero h1 {
+  font-family: var(--type-display-font-family);
+  font-size: calc(var(--type-display-font-size) * 1.6);
+  line-height: 1.05;
+  letter-spacing: -0.02em;
+  margin: 8px 0 12px;
+}
+.odv-lede {
+  font-size: calc(var(--type-body-font-size) * 1.15);
+  color: var(--color-text-secondary);
+  max-width: 62ch;
+  margin: 0;
+}
+.odv-cta {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+  margin-top: 22px;
+}
+.odv-facts {
+  display: flex;
+  gap: 28px;
+  flex-wrap: wrap;
+  margin-top: 26px;
+}
+.odv-facts b {
+  display: block;
+  font-size: var(--type-title-font-size);
+  font-variant-numeric: tabular-nums;
+}
+.odv-facts span {
+  color: var(--color-text-muted);
+  font-size: var(--type-caption-font-size);
+}
+
+/* Product pieces, drawn from component keys. */
+.odv-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  height: var(--button-height);
+  padding: 0 var(--button-padding-x);
+  border-radius: var(--button-radius);
+  font-size: var(--button-font-size);
+  font-weight: var(--button-font-weight);
+  border: var(--border-width-default) solid transparent;
+  white-space: nowrap;
+  text-decoration: none !important;
+}
+.odv-btn.primary {
+  background: var(--button-primary-background);
+  color: var(--button-primary-label);
+}
+.odv-btn.primary:hover {
+  background: var(--button-primary-background-hover);
+}
+.odv-btn.secondary {
+  background: var(--button-secondary-background);
+  color: var(--button-secondary-label);
+  border-color: var(--button-secondary-border);
+}
+.odv-btn.secondary:hover {
+  background: var(--button-secondary-background-hover);
+}
+.odv-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  font-size: var(--type-caption-font-size);
+  font-weight: 500;
+  padding: 1px 8px;
+  border-radius: var(--radius-badge, 999px);
+  white-space: nowrap;
+}
+.odv-badge::before {
+  content: "";
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: currentColor;
+}
+.odv-t-success {
+  background: var(--color-status-success-subtle);
+  color: var(--color-status-success);
+}
+.odv-t-warning {
+  background: var(--color-status-warning-subtle);
+  color: var(--color-status-warning);
+}
+.odv-t-danger {
+  background: var(--color-status-danger-subtle);
+  color: var(--color-status-danger);
+}
+.odv-t-info {
+  background: var(--color-status-info-subtle);
+  color: var(--color-status-info);
+}
+.odv-t-neutral {
+  background: var(--color-surface-sunken);
+  color: var(--color-text-secondary);
+}
+
+.odv-app {
+  background: var(--color-surface-default);
+  border: var(--border-width-default) solid var(--color-border-default);
+  border-radius: var(--radius-container);
+  box-shadow: var(--elevation-overlay, none);
+  overflow: hidden;
+}
+.odv-app-bar {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex-wrap: wrap;
+  padding: 10px 12px;
+  border-bottom: var(--border-width-default) solid var(--color-border-default);
+}
+.odv-app-bar b {
+  margin-right: auto;
+  font-size: var(--type-label-font-size);
+}
+.odv-scroll {
+  overflow-x: auto;
+}
+.markdown .odv-app table {
+  display: table;
+  width: 100%;
+  margin: 0;
+  border: 0;
+  border-radius: 0;
+  font-size: var(--type-caption-font-size);
+}
+.markdown .odv-app th,
+.markdown .odv-app td {
+  border: 0;
+  border-top: var(--border-width-default) solid var(--color-border-default);
+  padding: 6px 12px;
+  white-space: nowrap;
+}
+.markdown .odv-app thead th {
+  border-top: 0;
+  background: var(--color-surface-sunken);
+}
+.markdown .odv-app tr:nth-child(2n) {
+  background: transparent;
+}
+.markdown .odv-app td.num,
+.markdown .odv-app th.num {
+  text-align: right;
+  font-variant-numeric: tabular-nums;
+  font-family: var(--type-data-font-family);
+}
+
+/* Cards and grids. */
+.odv-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 12px;
+  margin: 12px 0 8px;
+}
+.odv-grid.two {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+.odv-card {
+  background: var(--color-surface-default);
+  border: var(--border-width-default) solid var(--color-border-default);
+  border-radius: var(--radius-container);
+  padding: 14px 16px;
+  min-width: 0;
+}
+.odv-card q {
+  quotes: none;
+  display: block;
+  font-weight: 600;
+  font-size: calc(var(--type-body-font-size) * 1.1);
+  margin: 6px 0 4px;
+}
+.odv-card p {
+  margin: 0;
+  color: var(--color-text-secondary);
+  font-size: var(--type-label-font-size);
+}
+.odv-ans {
+  display: inline-block;
+  font-family: var(--type-data-font-family);
+  font-size: 11px;
+  padding: 1px 7px;
+  border-radius: var(--radius-control);
+  background: var(--color-surface-selected, var(--color-surface-sunken));
+  color: var(--color-text-link);
+  margin-top: 8px;
+}
+.odv-tile {
+  display: flex;
+  flex-direction: column;
+  padding: 0;
+  overflow: hidden;
+  color: inherit !important;
+  text-decoration: none !important;
+}
+.odv-tile:hover {
+  border-color: var(--color-border-strong);
+}
+.odv-tile .art {
+  height: 112px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 16px;
+  background: var(--color-surface-sunken);
+  border-bottom: var(--border-width-default) solid var(--color-border-default);
+  overflow: hidden;
+}
+.odv-tile .body {
+  padding: 12px 16px;
+}
+.odv-tile .body b {
+  display: block;
+}
+.odv-tile .body span {
+  color: var(--color-text-muted);
+  font-size: var(--type-label-font-size);
+}
+.odv-dot {
+  width: 22px;
+  height: 22px;
+  border-radius: 50%;
+  border: var(--border-width-default) solid var(--color-border-default);
+  flex: none;
+}
+.odv-aa {
+  font: var(--type-display-font-weight) 2rem var(--type-display-font-family);
+  margin-left: 6px;
+}
+.odv-strip {
+  display: flex;
+  width: 100%;
+  height: 28px;
+  border-radius: var(--radius-control);
+  overflow: hidden;
+}
+.odv-strip span {
+  flex: 1;
+}
+
+/* The live component, and each variant drawn live from its Storybook story. */
+.odv-live {
+  border: var(--border-width-default) solid var(--color-border-default);
+  border-radius: var(--radius-container);
+  overflow: hidden;
+  margin: 18px 0 6px;
+  background: var(--color-surface-default);
+}
+.odv-live iframe {
+  display: block;
+  width: 100%;
+  height: 300px;
+  border: 0;
+}
+.odv-live .bar {
+  display: flex;
+  gap: 14px;
+  align-items: center;
+  flex-wrap: wrap;
+  padding: 8px 12px;
+  border-top: var(--border-width-default) solid var(--color-border-default);
+  font-size: var(--type-caption-font-size);
+  color: var(--color-text-muted);
+}
+/* Do and don't. */
+.odv-dd {
+  border: var(--border-width-default) solid var(--color-border-default);
+  border-radius: var(--radius-container);
+  overflow: hidden;
+  background: var(--color-surface-default);
+}
+.odv-dd .cap {
+  padding: 10px 14px;
+  border-top: 3px solid var(--color-status-success);
+  font-size: var(--type-label-font-size);
+}
+.odv-dd.bad .cap {
+  border-top-color: var(--color-status-danger);
+}
+.odv-dd .cap b {
+  color: var(--color-status-success);
+}
+.odv-dd.bad .cap b {
+  color: var(--color-status-danger);
+}
+.odv-dd .stage {
+  padding: 18px 14px;
+  background: var(--color-surface-canvas);
+  font-size: var(--type-label-font-size);
+}
+
+/* Colour: the key colours as a band, surfaces as a stack, statuses in use. */
+.odv-band {
+  display: grid;
+  grid-template-columns: repeat(6, minmax(0, 1fr));
+  height: 112px;
+  border-radius: var(--radius-container);
+  overflow: hidden;
+  margin: 18px 0 8px;
+}
+.odv-band div {
+  padding: 10px;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  font: 500 11px var(--type-data-font-family);
+}
+.odv-stack {
+  position: relative;
+  height: 220px;
+  border-radius: var(--radius-container);
+  border: var(--border-width-default) solid;
+  overflow: hidden;
+}
+.odv-stack div {
+  position: absolute;
+  border-radius: var(--radius-container);
+  border: var(--border-width-default) solid;
+  padding: 10px 12px;
+  font-size: var(--type-caption-font-size);
+}
+.odv-stack code {
+  display: block;
+  background: none;
+  border: 0;
+  padding: 0;
+  opacity: 0.7;
+  color: inherit;
+}
+.odv-status {
+  display: grid;
+  grid-template-columns: 160px minmax(0, 1fr) auto;
+  gap: 12px;
+  align-items: center;
+  padding: 10px 0;
+  border-top: var(--border-width-default) solid var(--color-border-default);
+}
+.odv-status:first-child {
+  border-top: 0;
+}
+.odv-alert {
+  border-left: 3px solid currentColor;
+  border-radius: var(--radius-control);
+  padding: 8px 10px;
+  font-size: var(--type-label-font-size);
+}
+.odv-ratio {
+  font: 600 11px var(--type-data-font-family);
+  padding: 1px 6px;
+  border-radius: var(--radius-control);
+  background: var(--color-status-success-subtle);
+  color: var(--color-status-success);
+  white-space: nowrap;
+}
+
+/* Primitives: each family as a ramp. */
+.odv-ramp-h {
+  display: flex;
+  justify-content: space-between;
+  gap: 8px;
+  flex-wrap: wrap;
+  align-items: baseline;
+  margin: 26px 0 8px;
+}
+.odv-ramp-h span {
+  color: var(--color-text-muted);
+  font-size: var(--type-caption-font-size);
+}
+.odv-ramp {
+  display: grid;
+  grid-auto-flow: column;
+  grid-auto-columns: minmax(0, 1fr);
+  border-radius: var(--radius-container);
+  overflow: hidden;
+  border: var(--border-width-default) solid var(--color-border-default);
+}
+.odv-step {
+  height: 88px;
+  padding: 8px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  font: 500 11px var(--type-data-font-family);
+}
+.odv-step .use::before {
+  content: "● ";
+}
+.odv-step.unused .use::before {
+  content: "◌ ";
+}
+.odv-legend {
+  display: flex;
+  gap: 16px;
+  flex-wrap: wrap;
+  color: var(--color-text-muted);
+  font-size: var(--type-caption-font-size);
+}
+
+@media (max-width: 996px) {
+  .odv-hero,
+  .odv-grid,
+  .odv-grid.two {
+    grid-template-columns: minmax(0, 1fr);
+  }
+  .odv-band {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    height: auto;
+  }
+  .odv-band div {
+    height: 64px;
+  }
+  .odv-ramp {
+    grid-auto-flow: row;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    grid-auto-columns: auto;
+  }
+  .odv-status {
+    grid-template-columns: minmax(0, 1fr);
+  }
+}
+
+/* "Built with Open DS" on the right of the top bar (OD-182). */
+.ods-built {
+  font: 500 11px var(--type-data-font-family);
+  color: var(--color-text-muted);
+  border: var(--border-width-default) solid var(--color-border-default);
+  border-radius: 999px;
+  padding: 2px 8px;
+  white-space: nowrap;
+}
+
+/* Behind each embed: what to do when Storybook is not running. A loaded story covers it. */
+.odv-live {
+  position: relative;
+}
+.odv-wait {
+  position: absolute;
+  inset: 0 0 40px 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--color-text-muted);
+  font-size: var(--type-label-font-size);
+  pointer-events: none;
+}
+.odv-live iframe {
+  position: relative;
+}
+.odv-band b {
+  font-family: var(--type-body-font-family);
+  font-size: var(--type-label-font-size);
+}
+
+/* Variants: one full-width section per variant (OD-203). */
+.odv-variant {
+  background: var(--color-surface-default);
+  border: var(--border-width-default) solid var(--color-border-default);
+  border-radius: var(--radius-container);
+  overflow: hidden;
+  margin: 16px 0;
+}
+.odv-variant header {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex-wrap: wrap;
+  padding: 12px 18px;
+  border-bottom: var(--border-width-default) solid var(--color-border-default);
+}
+.odv-variant header code {
+  font-weight: 600;
+  font-size: var(--type-body-font-size);
+}
+.odv-axisname {
+  color: var(--color-text-muted);
+  font-size: var(--type-caption-font-size);
+}
+.odv-pill {
+  margin-left: auto;
+  font-size: var(--type-caption-font-size);
+  font-weight: 600;
+  padding: 2px 10px;
+  border-radius: 999px;
+  background: var(--color-surface-sunken);
+  color: var(--color-text-muted);
+}
+.odv-pill.used {
+  background: var(--color-status-success-subtle);
+  color: var(--color-status-success);
+}
+.odv-vbody {
+  display: grid;
+  grid-template-columns: minmax(0, 0.95fr) minmax(0, 1.05fr);
+}
+.odv-variant.nostage .odv-vbody {
+  grid-template-columns: minmax(0, 1fr);
+}
+.odv-vstage {
+  position: relative;
+  min-height: 240px;
+  background: var(--color-surface-canvas);
+  border-right: var(--border-width-default) solid var(--color-border-default);
+}
+.odv-vstage iframe {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  min-height: 240px;
+  border: 0;
+  pointer-events: none;
+}
+.odv-vstage .odv-wait {
+  inset: 0;
+}
+.odv-variant.off .odv-vstage iframe {
+  opacity: 0.45;
+}
+.odv-vinfo {
+  padding: 16px 20px;
+  display: grid;
+  gap: 16px;
+  align-content: start;
+}
+.odv-topic h4,
+.odv-step-col h5 {
+  margin: 0 0 6px;
+  font: 600 11px var(--type-data-font-family);
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--color-text-muted);
+}
+.odv-topic p {
+  margin: 0;
+}
+.odv-when {
+  display: grid;
+  gap: 4px;
+  margin-top: 8px;
+  font-size: var(--type-label-font-size);
+  color: var(--color-text-secondary);
+}
+.odv-when div {
+  display: grid;
+  grid-template-columns: 20px minmax(0, 1fr);
+}
+.odv-when .y,
+.odv-trail li .y {
+  color: var(--color-status-success);
+  font-weight: 700;
+}
+.odv-when .n {
+  color: var(--color-status-danger);
+  font-weight: 700;
+}
+.odv-decision {
+  font-size: calc(var(--type-body-font-size) * 1.05);
+  font-weight: 500;
+  border-left: 3px solid var(--color-status-success);
+  padding-left: 10px;
+}
+.odv-variant.off .odv-decision {
+  border-left-color: var(--color-border-strong);
+  color: var(--color-text-secondary);
+}
+.odv-chips {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+.odv-achip {
+  border: var(--border-width-default) solid var(--color-border-default);
+  border-radius: var(--radius-container);
+  padding: 6px 10px;
+  background: var(--color-surface-canvas);
+  font-size: var(--type-caption-font-size);
+  color: var(--color-text-primary) !important;
+  text-decoration: none !important;
+  max-width: 100%;
+}
+.odv-achip:hover {
+  border-color: var(--color-border-strong);
+}
+.odv-achip span {
+  display: block;
+  color: var(--color-text-muted);
+}
+.odv-achip code {
+  font-size: 11px;
+  color: var(--color-text-link);
+  background: none;
+  border: 0;
+  padding: 0;
+}
+
+/* Why it works this way: one contained card per answer, three steps inside (OD-203). */
+.odv-trail {
+  background: var(--color-surface-default);
+  border: var(--border-width-default) solid var(--color-border-default);
+  border-radius: var(--radius-container);
+  overflow: hidden;
+  margin: 16px 0;
+  scroll-margin-top: 80px;
+}
+.odv-trail-head {
+  display: flex;
+  align-items: baseline;
+  gap: 10px;
+  flex-wrap: wrap;
+  padding: 10px 18px;
+  background: var(--color-surface-sunken);
+  border-bottom: var(--border-width-default) solid var(--color-border-default);
+}
+.odv-trail-head code {
+  margin-left: auto;
+  font-size: 11px;
+}
+.odv-steps {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1.2fr) minmax(0, 0.9fr);
+}
+.odv-step-col {
+  padding: 16px 18px;
+  min-width: 0;
+  border-left: var(--border-width-default) solid var(--color-border-default);
+}
+.odv-step-col:first-child {
+  border-left: 0;
+}
+.odv-step-col h5 {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.odv-step-col h5 i {
+  font-style: normal;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--color-surface-selected);
+  color: var(--color-text-link);
+}
+.odv-answer {
+  font-size: calc(var(--type-body-font-size) * 1.2);
+  font-weight: 700;
+  margin-bottom: 4px;
+}
+.odv-step-col p {
+  margin: 0;
+  font-size: var(--type-label-font-size);
+  color: var(--color-text-secondary);
+}
+.odv-step-col.change {
+  background: var(--color-surface-canvas);
+}
+.odv-step-col.change p {
+  margin-top: 10px;
+}
+.odv-big {
+  font-size: calc(var(--type-title-font-size) * 1.3);
+  font-weight: 700;
+  line-height: 1;
+  font-variant-numeric: tabular-nums;
+}
+.odv-step-col small {
+  color: var(--color-text-muted);
+}
+.odv-trail ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  gap: 6px;
+  font-size: var(--type-label-font-size);
+}
+.odv-trail li {
+  display: grid;
+  grid-template-columns: 18px minmax(0, 1fr);
+  margin: 0;
+}
+.odv-trail li .n {
+  color: var(--color-border-strong);
+  font-weight: 700;
+}
+.odv-also {
+  margin-top: 10px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4px;
+  align-items: center;
+}
+.odv-also code {
+  font-size: 11px;
+}
+@media (max-width: 996px) {
+  .odv-vbody,
+  .odv-steps {
+    grid-template-columns: minmax(0, 1fr);
+  }
+  .odv-vstage {
+    border-right: 0;
+    border-bottom: var(--border-width-default) solid var(--color-border-default);
+  }
+  .odv-step-col {
+    border-left: 0;
+    border-top: var(--border-width-default) solid var(--color-border-default);
+  }
+  .odv-step-col:first-child {
+    border-top: 0;
+  }
+}

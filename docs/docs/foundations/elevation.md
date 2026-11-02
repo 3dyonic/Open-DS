@@ -40,9 +40,9 @@ The raw values the tokens above end at.
 
 | Primitive | Value | Sample |
 | --- | --- | --- |
-| `shadow.none` | 0px 0px 0px 0px #00000000 | <span class="ods-card" style="box-shadow:var(--shadow-none)"></span> |
-| `shadow.overlay` | 0px 8px 24px 0px #0D111729 | <span class="ods-card" style="box-shadow:var(--shadow-overlay)"></span> |
-| `shadow.overlay-dark` | 0px 8px 24px 0px #00000080 | <span class="ods-card" style="box-shadow:var(--shadow-overlay-dark)"></span> |
+| `shadow.none` | 0px 0px 0px 0px #00000000 | <span class="ods-card" style="box-shadow:0px 0px 0px 0px #00000000"></span> |
+| `shadow.overlay` | 0px 8px 24px 0px #0D111729 | <span class="ods-card" style="box-shadow:0px 8px 24px 0px #0D111729"></span> |
+| `shadow.overlay-dark` | 0px 8px 24px 0px #00000080 | <span class="ods-card" style="box-shadow:0px 8px 24px 0px #00000080"></span> |
 
 ## Where it lands
 

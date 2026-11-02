@@ -71,18 +71,18 @@ The raw values the tokens above end at.
 
 | Primitive | Value | Sample |
 | --- | --- | --- |
-| `font.family.ibm-plex-mono` | "IBM Plex Mono", ui-monospace, monospace | <span class="ods-font" style="font-family:var(--font-family-ibm-plex-mono)">Aa 123</span> |
-| `font.family.ibm-plex-sans` | "IBM Plex Sans", system-ui, sans-serif | <span class="ods-font" style="font-family:var(--font-family-ibm-plex-sans)">Aa 123</span> |
+| `font.family.ibm-plex-mono` | "IBM Plex Mono", ui-monospace, monospace | <span class="ods-font" style="font-family:"IBM Plex Mono", ui-monospace, monospace">Aa 123</span> |
+| `font.family.ibm-plex-sans` | "IBM Plex Sans", system-ui, sans-serif | <span class="ods-font" style="font-family:"IBM Plex Sans", system-ui, sans-serif">Aa 123</span> |
 | `font.line-height.16` | 1rem (16px) |  |
 | `font.line-height.20` | 1.25rem (20px) |  |
 | `font.line-height.24` | 1.5rem (24px) |  |
 | `font.line-height.28` | 1.75rem (28px) |  |
-| `font.size.12` | 0.75rem (12px) | <span class="ods-bar" style="width:var(--font-size-12)"></span> |
-| `font.size.13` | 0.8125rem (13px) | <span class="ods-bar" style="width:var(--font-size-13)"></span> |
-| `font.size.14` | 0.875rem (14px) | <span class="ods-bar" style="width:var(--font-size-14)"></span> |
-| `font.size.16` | 1rem (16px) | <span class="ods-bar" style="width:var(--font-size-16)"></span> |
-| `font.size.20` | 1.25rem (20px) | <span class="ods-bar" style="width:var(--font-size-20)"></span> |
-| `font.size.24` | 1.5rem (24px) | <span class="ods-bar" style="width:var(--font-size-24)"></span> |
+| `font.size.12` | 0.75rem (12px) | <span class="ods-bar" style="width:0.75rem"></span> |
+| `font.size.13` | 0.8125rem (13px) | <span class="ods-bar" style="width:0.8125rem"></span> |
+| `font.size.14` | 0.875rem (14px) | <span class="ods-bar" style="width:0.875rem"></span> |
+| `font.size.16` | 1rem (16px) | <span class="ods-bar" style="width:1rem"></span> |
+| `font.size.20` | 1.25rem (20px) | <span class="ods-bar" style="width:1.25rem"></span> |
+| `font.size.24` | 1.5rem (24px) | <span class="ods-bar" style="width:1.5rem"></span> |
 | `font.weight.400` | 400 |  |
 | `font.weight.500` | 500 |  |
 | `font.weight.600` | 600 |  |

@@ -104,62 +104,62 @@ The raw values the tokens above end at.
 
 | Primitive | Value | Sample |
 | --- | --- | --- |
-| `color.amber.dark.100` | #3A2A05 |  |
-| `color.amber.dark.700` | #F2B84B |  |
-| `color.amber.light.100` | #FFF3D6 |  |
-| `color.amber.light.700` | #8A5600 |  |
-| `color.black.dark.scrim` | #000000B3 |  |
-| `color.black.light.scrim` | #0000008C |  |
-| `color.blue.dark.100` | #062C6E |  |
-| `color.blue.dark.700` | #8AB4F8 |  |
-| `color.blue.light.100` | #E1ECFF |  |
-| `color.blue.light.700` | #083C93 |  |
-| `color.green.dark.100` | #123322 |  |
-| `color.green.dark.700` | #5CC283 |  |
-| `color.green.light.100` | #E3F4EA |  |
-| `color.green.light.700` | #1F7A3A |  |
-| `color.red.dark.100` | #3D1414 |  |
-| `color.red.dark.700` | #F28B8B |  |
-| `color.red.light.100` | #FDE7E7 |  |
-| `color.red.light.700` | #C42B2B |  |
-| `color.slate.dark.0` | #0D1117 |  |
-| `color.slate.dark.100` | #262D38 |  |
-| `color.slate.dark.200` | #3D4655 |  |
-| `color.slate.dark.300` | #6B7585 |  |
-| `color.slate.dark.400` | #969FAD |  |
-| `color.slate.dark.50` | #161B23 |  |
-| `color.slate.dark.500` | #C4CBD6 |  |
-| `color.slate.dark.900` | #F7F8FA |  |
-| `color.slate.light.0` | #FFFFFF |  |
-| `color.slate.light.100` | #EEF1F5 |  |
-| `color.slate.light.200` | #DDE2EA |  |
-| `color.slate.light.500` | #6B7585 |  |
-| `color.slate.light.600` | #535D6D |  |
-| `color.slate.light.700` | #3D4655 |  |
-| `color.slate.light.900` | #161B23 |  |
-| `color.violet.dark.100` | #2C2588 |  |
-| `color.violet.dark.700` | #A9A3F6 |  |
-| `color.violet.dark.800` | #EEEDFE |  |
-| `color.violet.light.100` | #EEEDFE |  |
-| `color.violet.light.600` | #4B3FD9 |  |
-| `color.violet.light.700` | #3B31B0 |  |
-| `duration.fast` | 120ms | <span class="ods-motion" style="--ods-d:var(--duration-fast)"><span></span></span> |
+| `color.amber.dark.100` | #3A2A05 | <span class="ods-swatch" style="background:#3A2A05"></span> |
+| `color.amber.dark.700` | #F2B84B | <span class="ods-swatch" style="background:#F2B84B"></span> |
+| `color.amber.light.100` | #FFF3D6 | <span class="ods-swatch" style="background:#FFF3D6"></span> |
+| `color.amber.light.700` | #8A5600 | <span class="ods-swatch" style="background:#8A5600"></span> |
+| `color.black.dark.scrim` | #000000B3 | <span class="ods-swatch" style="background:#000000B3"></span> |
+| `color.black.light.scrim` | #0000008C | <span class="ods-swatch" style="background:#0000008C"></span> |
+| `color.blue.dark.100` | #062C6E | <span class="ods-swatch" style="background:#062C6E"></span> |
+| `color.blue.dark.700` | #8AB4F8 | <span class="ods-swatch" style="background:#8AB4F8"></span> |
+| `color.blue.light.100` | #E1ECFF | <span class="ods-swatch" style="background:#E1ECFF"></span> |
+| `color.blue.light.700` | #083C93 | <span class="ods-swatch" style="background:#083C93"></span> |
+| `color.green.dark.100` | #123322 | <span class="ods-swatch" style="background:#123322"></span> |
+| `color.green.dark.700` | #5CC283 | <span class="ods-swatch" style="background:#5CC283"></span> |
+| `color.green.light.100` | #E3F4EA | <span class="ods-swatch" style="background:#E3F4EA"></span> |
+| `color.green.light.700` | #1F7A3A | <span class="ods-swatch" style="background:#1F7A3A"></span> |
+| `color.red.dark.100` | #3D1414 | <span class="ods-swatch" style="background:#3D1414"></span> |
+| `color.red.dark.700` | #F28B8B | <span class="ods-swatch" style="background:#F28B8B"></span> |
+| `color.red.light.100` | #FDE7E7 | <span class="ods-swatch" style="background:#FDE7E7"></span> |
+| `color.red.light.700` | #C42B2B | <span class="ods-swatch" style="background:#C42B2B"></span> |
+| `color.slate.dark.0` | #0D1117 | <span class="ods-swatch" style="background:#0D1117"></span> |
+| `color.slate.dark.100` | #262D38 | <span class="ods-swatch" style="background:#262D38"></span> |
+| `color.slate.dark.200` | #3D4655 | <span class="ods-swatch" style="background:#3D4655"></span> |
+| `color.slate.dark.300` | #6B7585 | <span class="ods-swatch" style="background:#6B7585"></span> |
+| `color.slate.dark.400` | #969FAD | <span class="ods-swatch" style="background:#969FAD"></span> |
+| `color.slate.dark.50` | #161B23 | <span class="ods-swatch" style="background:#161B23"></span> |
+| `color.slate.dark.500` | #C4CBD6 | <span class="ods-swatch" style="background:#C4CBD6"></span> |
+| `color.slate.dark.900` | #F7F8FA | <span class="ods-swatch" style="background:#F7F8FA"></span> |
+| `color.slate.light.0` | #FFFFFF | <span class="ods-swatch" style="background:#FFFFFF"></span> |
+| `color.slate.light.100` | #EEF1F5 | <span class="ods-swatch" style="background:#EEF1F5"></span> |
+| `color.slate.light.200` | #DDE2EA | <span class="ods-swatch" style="background:#DDE2EA"></span> |
+| `color.slate.light.500` | #6B7585 | <span class="ods-swatch" style="background:#6B7585"></span> |
+| `color.slate.light.600` | #535D6D | <span class="ods-swatch" style="background:#535D6D"></span> |
+| `color.slate.light.700` | #3D4655 | <span class="ods-swatch" style="background:#3D4655"></span> |
+| `color.slate.light.900` | #161B23 | <span class="ods-swatch" style="background:#161B23"></span> |
+| `color.violet.dark.100` | #2C2588 | <span class="ods-swatch" style="background:#2C2588"></span> |
+| `color.violet.dark.700` | #A9A3F6 | <span class="ods-swatch" style="background:#A9A3F6"></span> |
+| `color.violet.dark.800` | #EEEDFE | <span class="ods-swatch" style="background:#EEEDFE"></span> |
+| `color.violet.light.100` | #EEEDFE | <span class="ods-swatch" style="background:#EEEDFE"></span> |
+| `color.violet.light.600` | #4B3FD9 | <span class="ods-swatch" style="background:#4B3FD9"></span> |
+| `color.violet.light.700` | #3B31B0 | <span class="ods-swatch" style="background:#3B31B0"></span> |
+| `duration.fast` | 120ms | <span class="ods-motion" style="--ods-d:120ms"><span></span></span> |
 | `easing.standard` | cubic-bezier(0.2, 0, 0, 1) |  |
-| `font.size.12` | 0.75rem (12px) | <span class="ods-bar" style="width:var(--font-size-12)"></span> |
-| `font.size.13` | 0.8125rem (13px) | <span class="ods-bar" style="width:var(--font-size-13)"></span> |
-| `font.size.14` | 0.875rem (14px) | <span class="ods-bar" style="width:var(--font-size-14)"></span> |
+| `font.size.12` | 0.75rem (12px) | <span class="ods-bar" style="width:0.75rem"></span> |
+| `font.size.13` | 0.8125rem (13px) | <span class="ods-bar" style="width:0.8125rem"></span> |
+| `font.size.14` | 0.875rem (14px) | <span class="ods-bar" style="width:0.875rem"></span> |
 | `font.weight.500` | 500 |  |
-| `radius.0` | 0rem (0px) | <span class="ods-tile" style="border-radius:var(--radius-0)"></span> |
-| `radius.2` | 0.125rem (2px) | <span class="ods-tile" style="border-radius:var(--radius-2)"></span> |
-| `radius.4` | 0.25rem (4px) | <span class="ods-tile" style="border-radius:var(--radius-4)"></span> |
-| `shadow.none` | 0px 0px 0px 0px #00000000 | <span class="ods-card" style="box-shadow:var(--shadow-none)"></span> |
-| `shadow.overlay` | 0px 8px 24px 0px #0D111729 | <span class="ods-card" style="box-shadow:var(--shadow-overlay)"></span> |
-| `shadow.overlay-dark` | 0px 8px 24px 0px #00000080 | <span class="ods-card" style="box-shadow:var(--shadow-overlay-dark)"></span> |
-| `size.16` | 1rem (16px) | <span class="ods-bar" style="width:var(--size-16)"></span> |
-| `size.32` | 2rem (32px) | <span class="ods-bar" style="width:var(--size-32)"></span> |
-| `space.12` | 0.75rem (12px) | <span class="ods-bar" style="width:var(--space-12)"></span> |
-| `space.16` | 1rem (16px) | <span class="ods-bar" style="width:var(--space-16)"></span> |
-| `space.4` | 0.25rem (4px) | <span class="ods-bar" style="width:var(--space-4)"></span> |
+| `radius.0` | 0rem (0px) | <span class="ods-tile" style="border-radius:0rem"></span> |
+| `radius.2` | 0.125rem (2px) | <span class="ods-tile" style="border-radius:0.125rem"></span> |
+| `radius.4` | 0.25rem (4px) | <span class="ods-tile" style="border-radius:0.25rem"></span> |
+| `shadow.none` | 0px 0px 0px 0px #00000000 | <span class="ods-card" style="box-shadow:0px 0px 0px 0px #00000000"></span> |
+| `shadow.overlay` | 0px 8px 24px 0px #0D111729 | <span class="ods-card" style="box-shadow:0px 8px 24px 0px #0D111729"></span> |
+| `shadow.overlay-dark` | 0px 8px 24px 0px #00000080 | <span class="ods-card" style="box-shadow:0px 8px 24px 0px #00000080"></span> |
+| `size.16` | 1rem (16px) | <span class="ods-bar" style="width:1rem"></span> |
+| `size.32` | 2rem (32px) | <span class="ods-bar" style="width:2rem"></span> |
+| `space.12` | 0.75rem (12px) | <span class="ods-bar" style="width:0.75rem"></span> |
+| `space.16` | 1rem (16px) | <span class="ods-bar" style="width:1rem"></span> |
+| `space.4` | 0.25rem (4px) | <span class="ods-bar" style="width:0.25rem"></span> |
 
 ## Where it lands
 

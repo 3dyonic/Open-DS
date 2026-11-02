@@ -1,19 +1,57 @@
 ---
 name: open-ds-build
-description: Build UI in a project that uses an Open DS scheme. Use whenever you write or edit screens, components or styles in a project with open-ds.json.
+description: Build UI in a project that uses an Open DS scheme. Use when you write or edit screens, components or styles.
+tools:
+  - get_context
+  - when_to_use
+  - get_component
+  - get_inventory
+  - plan_add
+  - find_token
+  - check_ui
+  - why
 ---
 
 # Build UI with the scheme
 
-Before you start, call `get_context build` (or `open-ds context <scheme> build`). Before you use a colour, read its guidance with `get_context <token>`: its intent, what not to use it for and the fills it may sit on.
+## Why
 
-1. Read `AGENTS.md` first. It holds the usage rules and the voice for this scheme.
-2. Before you pick a component, a variant or a token, find the situation: `npx open-ds when <scheme> <words>` or the MCP tool `when_to_use`. Do what its rule says, never what its "not" says.
-3. Use only the components in `src/components/ui` and the scheme's CSS variables. No raw colours, sizes or spacing.
-4. Use only components in the scheme's inventory (`get_inventory`). If you need one that is missing, say so and add it with `npx open-ds add <component>` (`plan_add`), or ask; do not build a look-alike.
-5. To change how a component looks, change its component key (for example `--button-radius`), not the component file.
-6. Light first: build and check the light theme, then dark.
-7. Write the words with open-ds-write.
-8. Before you finish, check the screen with open-ds-review.
+Each component and variant has a decision behind it. Build with those decisions, and the screen matches the system and can explain itself.
 
-To explain a decision, call `why` with the question id or the component key, and quote the answer and its reasons.
+## When
+
+- You write or edit a screen, a component or a style.
+- The project has `open-ds.json`.
+
+## Input
+
+- `AGENTS.md`: the rules and the voice of this scheme.
+- The screen to build, and the job it does.
+
+## Run
+
+1. Call `get_context build`, or run `open-ds context <scheme> build`.
+2. Read `AGENTS.md`.
+3. For each choice, find its situation with `when_to_use` or `npx open-ds when <scheme> <words>`.
+4. Do what the rule says. Never do what its "not" says.
+5. Before you use a component, call `get_component` or run `open-ds component <scheme> <id>`.
+6. Use only the variants this scheme uses, for what it says. Never use a variant marked as not used.
+7. Use only components in the inventory. Check them with `get_inventory`.
+8. If a component is missing, add it with `plan_add` or `npx open-ds add <component>`.
+9. Do not build a look-alike of a component.
+10. To find the token or key for an intent, call `find_token` or run `open-ds token <scheme> <words>`.
+11. Before you use a colour, read its guidance with `get_context <token>`.
+12. Use only the scheme's CSS variables and component keys. Write no raw colours, sizes or spacing.
+13. To change a look, change its component key, for example `--button-radius`.
+14. Build the light theme first. Then check the dark theme.
+15. Write the words with `open-ds-write`.
+16. To explain a decision, call `why` with the question id or the component key.
+17. Before you finish, call `check_ui` with the files you changed. Fix each finding.
+
+## Done
+
+- Each component and variant follows its decision in `get_component`.
+- `check_ui` or `open-ds check` returns no findings.
+- Light and dark both work.
+- You can explain each choice with its answer and reason.
+- `open-ds-review` finds no failures.
