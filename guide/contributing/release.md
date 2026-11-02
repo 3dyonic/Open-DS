@@ -12,7 +12,7 @@ description: "The GitHub Actions that test every change and publish the CLI on a
 2. `test` runs on the PR. Merge only when it is green.
 3. When `RC1` is ready, open a PR from `RC1` into `master` and merge it the same way.
 4. A push to `master` runs `test` again. When it passes, `notify-ops` asks the private `open-ds-ops` repository to redeploy open-ds.dev.
-5. To publish the CLI, run `pnpm release <patch|minor|major>` in a release PR, merge it to master, then publish a GitHub release tagged `v<version>`. `publish` sends it to npmjs and GitHub Packages.
+5. To publish the CLI, run `pnpm release <patch|minor|major>` in a release PR, then merge RC1 to master. The merge is the release: `publish` sees a version with no tag, publishes it to npmjs and GitHub Packages, then creates the tag `v<version>` and its GitHub release (OD-199).
 
 ## Versions
 
@@ -42,7 +42,7 @@ This bumps `cli/package.json` and updates the snapshot together; use `minor` or 
 | Workflow     | Runs on                                        | What it does                                                                                                                                                                                                                                                                  |
 | ------------ | ---------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | `test`       | Every PR; pushes to `RC1` and `master`         | Four jobs: `node` (lint, typecheck, `pnpm test`, the MCP host, the site build), `suites` (tokens, components, `pnpm harness`), `builds` (Storybook, docs), `package` (the packed CLI, `test:package`, `test:create`).                                                         |
-| `publish`    | A published release, or by hand with `dry_run` | Checks that the tag matches `cli/package.json`, tests, then publishes `open-ds` to npmjs (with provenance) and `@3dyonic/open-ds` to GitHub Packages. It builds the Figma kits plugin and attaches `open-ds-kits-plugin.zip` to the release (and keeps it as a run artifact). |
+| `publish`    | A merge to master with an untagged version, a published release, or by hand with `dry_run` | Tests, then publishes `open-ds` to npmjs (with provenance) and `@3dyonic/open-ds` to GitHub Packages. On a merge it then creates the tag and release. It builds the Figma kits plugin and attaches `open-ds-kits-plugin.zip` to the release (and keeps it as a run artifact). A merge whose version is already tagged does nothing. |
 | `notify-ops` | `test` passing on a push to `master`           | Sends a `repository_dispatch` to `3dyonic/open-ds-ops`, which builds and deploys open-ds.dev from this commit.                                                                                                                                                                |
 
 ## Hosting lives in open-ds-ops
