@@ -411,6 +411,19 @@
         "docs-build",
         "cli-create-works"
       ]
+    },
+    {
+      "id": "OD-196",
+      "title": "Docs component pages: each variant a full-width section, and each answer a contained card in three steps",
+      "in": [
+        "each variant has its own section: a live sample, what it is for (with use when and not when), this scheme's decision, and the answers behind it",
+        "each answer is one card: the answer, what it decided for the component and what else it shapes, and what would move if it changed",
+        "the steps stack inside the same card on a phone"
+      ],
+      "checks": [
+        "docs-sections",
+        "docs-build"
+      ]
     }
   ]
 }
