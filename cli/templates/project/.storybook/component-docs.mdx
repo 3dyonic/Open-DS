@@ -1,23 +1,42 @@
-import { Controls, Primary, Stories, Title } from "@storybook/addon-docs/blocks";
-import { ComponentInfo, ComponentKeys, UsageRules } from "../stories/docs-blocks";
+import {
+  Controls,
+  Primary,
+  Stories,
+  Title,
+} from "@storybook/addon-docs/blocks";
+import { ComponentKeys } from "../stories/docs-blocks";
+import {
+  Accessibility,
+  ComponentHeader,
+  SituationRules,
+  Variants,
+  WhenToUse,
+  Words,
+} from "../stories/guide/guide";
 
-{/* The docs page of every component, in the same order. The canvas shows the component; this page explains it. */}
+{/* The docs page of every component, in the same order (OD-181): the reference says what each component and variant is for; the scheme says how this design system uses them. */}
 
 <Title />
 
-<ComponentInfo />
+<ComponentHeader />
 
 <Stories includePrimary={false} title="" />
+
+<WhenToUse />
+
+<Variants />
+
+<SituationRules />
+
+<Words />
+
+<Accessibility />
 
 ## Playground
 
 <Primary />
 
 <Controls />
-
-## When to use it
-
-<UsageRules />
 
 ## Component keys
 

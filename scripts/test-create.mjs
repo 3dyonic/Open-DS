@@ -164,6 +164,24 @@ step("Build Storybook", () => {
   );
 });
 
+step("Open every story and docs page in a browser", () => {
+  const out = run("node", [
+    join(root, "harness", "storybook-renders.cjs"),
+    join(project, "storybook-static"),
+  ]);
+  const res = JSON.parse(out.trim().split("\n").pop());
+  if (res.missing) return "skipped: Playwright is not installed";
+  must(!res.error, res.error);
+  must(
+    !res.failed.length,
+    res.failed
+      .slice(0, 5)
+      .map((f) => `${f.id}: ${f.problem}`)
+      .join("; "),
+  );
+  return `${res.entries} render`;
+});
+
 step("Build the docs with Docusaurus", () => {
   run("npm", ["run", "build-docs"], project);
   must(
