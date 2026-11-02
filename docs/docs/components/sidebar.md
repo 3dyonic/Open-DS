@@ -34,11 +34,11 @@ What each variant is for in any design system, and what Dense data decided, with
 
 | Axis | Variant | What it is for | In Dense data | Because |
 | --- | --- | --- | --- | --- |
-| variant | `default` | Menu items with no border; hover shows the item. | Menu items with no border, quiet beside dense data. | `content.q1` |
-|  | `outline` | Menu items with a border. | Not used. Borders on every item would compete with the data. | `content.q1` |
-| size | `default` | The normal row height. | Every section of the app. | `tasks.q2` |
-|  | `sm` | A smaller row. | Long secondary lists, at the denser size. | `spacing.count` |
-|  | `lg` | A taller row with room for an icon and two lines. | Not used. Rows stay small so the whole navigation fits the screen all shift. | `content.q2` |
+| variant | `default` | Menu items with no border; hover shows the item. | Menu items with no border, quiet beside dense data. | <span title="What is the main content?">Numbers and records</span> <small>(`content.q1`)</small> |
+|  | `outline` | Menu items with a border. | Not used. Borders on every item would compete with the data. | <span title="What is the main content?">Numbers and records</span> <small>(`content.q1`)</small> |
+| size | `default` | The normal row height. | Every section of the app. | <span title="How often do people repeat actions?">Constantly</span> <small>(`tasks.q2`)</small> |
+|  | `sm` | A smaller row. | Long secondary lists, at the denser size. | <span title="How many densities exist?">Two</span> <small>(`spacing.count`)</small> |
+|  | `lg` | A taller row with room for an icon and two lines. | Not used. Rows stay small so the whole navigation fits the screen all shift. | <span title="How much is on one screen?">A lot</span> <small>(`content.q2`)</small> |
 
 ## Why it works this way
 

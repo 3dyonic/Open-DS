@@ -691,7 +691,14 @@ export function docsPages(
                 : h.not_used
                   ? `Not used. ${esc(h.why)}`
                   : esc(h.use);
-              const why = (h?.because ?? []).map((b) => `\`${b}\``).join(", ");
+              // The answers themselves, not only their ids (Yonatan): "Acting on the wrong record (outcomes.q2)".
+              const why = (h?.because ?? [])
+                .map((b) =>
+                  answer(b)
+                    ? `<span title="${attr(qText(b))}">${esc(label(b))}</span> <small>(\`${b}\`)</small>`
+                    : `\`${b}\``,
+                )
+                .join("<br />");
               return `| ${variants[j - 1]?.axis === v.axis ? "" : v.axis} | \`${v.id}\` | ${esc(v.reference.overview)} | ${here} | ${why} |`;
             })
             .join("\n"),
