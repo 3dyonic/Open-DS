@@ -88,7 +88,72 @@
     "in": [
       {
         "id": "button",
-        "why": "The one action: sign up."
+        "why": "The one action: sign up.",
+        "variants": {
+          "variant": {
+            "primary": {
+              "use": "One loud call to action per section.",
+              "because": [
+                "outcomes.q1"
+              ]
+            },
+            "secondary": {
+              "use": "The first step of a delete, before the confirm.",
+              "because": [
+                "outcomes.q2"
+              ]
+            },
+            "ghost": {
+              "use": "The alternative next to the primary, and row actions with a word.",
+              "because": [
+                "color.count",
+                "iconography.roles"
+              ]
+            }
+          },
+          "size": {
+            "default": {
+              "use": "Every button, at touch size: phones first.",
+              "because": [
+                "accessibility.values"
+              ]
+            },
+            "compact": {
+              "not_used": true,
+              "why": "Phones first: no compact controls.",
+              "because": [
+                "accessibility.values"
+              ]
+            },
+            "icon": {
+              "use": "Rarely, with a tooltip: type and image carry the page.",
+              "because": [
+                "iconography.roles"
+              ]
+            }
+          },
+          "state": {
+            "hover": {
+              "use": "Relaxed, springy feedback: motion is part of the brand.",
+              "because": [
+                "motion.roles",
+                "motion.values"
+              ]
+            },
+            "focus": {
+              "use": "Always shows, even on vivid color.",
+              "because": [
+                "people.q2"
+              ]
+            },
+            "disabled": {
+              "use": "Only with a visible reason next to it.",
+              "because": [
+                "people.q2"
+              ]
+            }
+          }
+        }
       },
       {
         "id": "input",
@@ -1055,6 +1120,13 @@
       "why": "Type and image carry the page.",
       "because": [
         "iconography.roles"
+      ],
+      "uses": [
+        {
+          "component": "button",
+          "axis": "size",
+          "variant": "icon"
+        }
       ]
     },
     {
@@ -1073,6 +1145,13 @@
       "why": "Focus must show on vivid color.",
       "because": [
         "people.q2"
+      ],
+      "uses": [
+        {
+          "component": "button",
+          "axis": "state",
+          "variant": "focus"
+        }
       ]
     },
     {
@@ -1091,6 +1170,13 @@
       "why": "One loud call to action per section.",
       "because": [
         "outcomes.q1"
+      ],
+      "uses": [
+        {
+          "component": "button",
+          "axis": "variant",
+          "variant": "primary"
+        }
       ]
     },
     {
@@ -1100,6 +1186,13 @@
       "why": "The alternative must not compete.",
       "because": [
         "color.count"
+      ],
+      "uses": [
+        {
+          "component": "button",
+          "axis": "variant",
+          "variant": "ghost"
+        }
       ]
     },
     {
@@ -1109,6 +1202,13 @@
       "why": "Confirm before destroying data.",
       "because": [
         "outcomes.q2"
+      ],
+      "uses": [
+        {
+          "component": "button",
+          "axis": "variant",
+          "variant": "secondary"
+        }
       ]
     },
     {
@@ -1118,6 +1218,13 @@
       "why": "A word keeps it clear.",
       "because": [
         "iconography.roles"
+      ],
+      "uses": [
+        {
+          "component": "button",
+          "axis": "variant",
+          "variant": "ghost"
+        }
       ]
     },
     {

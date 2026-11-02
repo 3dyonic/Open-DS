@@ -187,6 +187,56 @@
                 "type": "string",
                 "minLength": 1,
                 "description": "Why it is in or out, in one sentence."
+              },
+              "variants": {
+                "type": "object",
+                "description": "For every variant in the component's reference, by axis then variant id: how this design system uses it, or that it does not.",
+                "propertyNames": {
+                  "pattern": "^[a-z-]+$"
+                },
+                "additionalProperties": {
+                  "type": "object",
+                  "propertyNames": {
+                    "pattern": "^[a-z0-9-]+$"
+                  },
+                  "additionalProperties": {
+                    "type": "object",
+                    "additionalProperties": false,
+                    "description": "This design system's decision on one variant: how it uses it, or that it does not.",
+                    "oneOf": [
+                      {
+                        "required": ["use"]
+                      },
+                      {
+                        "required": ["not_used", "why"]
+                      }
+                    ],
+                    "properties": {
+                      "use": {
+                        "type": "string",
+                        "minLength": 1,
+                        "description": "What this design system uses the variant for."
+                      },
+                      "not_used": {
+                        "const": true,
+                        "description": "True when this design system does not use the variant."
+                      },
+                      "why": {
+                        "type": "string",
+                        "minLength": 1,
+                        "description": "Why it is not used (required with not_used), or more reason for the use."
+                      },
+                      "because": {
+                        "type": "array",
+                        "items": {
+                          "type": "string",
+                          "pattern": "^[a-z]+\\.(q\\d+|roles|count|definition|values|lands)$"
+                        },
+                        "description": "Question ids whose answers this rule follows from."
+                      }
+                    }
+                  }
+                }
               }
             }
           },
@@ -725,6 +775,32 @@
             "type": "string",
             "minLength": 1,
             "description": "Real copy that follows the rule. Voice situations always have one."
+          },
+          "uses": {
+            "type": "array",
+            "description": "The components (and variants) the rule's use names, as data, so tools need not read the prose.",
+            "items": {
+              "type": "object",
+              "additionalProperties": false,
+              "required": ["component"],
+              "properties": {
+                "component": {
+                  "type": "string",
+                  "pattern": "^[a-z0-9-]+$",
+                  "description": "A component id in this scheme's inventory."
+                },
+                "axis": {
+                  "type": "string",
+                  "pattern": "^[a-z-]+$",
+                  "description": "The variant axis, for example variant or size."
+                },
+                "variant": {
+                  "type": "string",
+                  "pattern": "^[a-z0-9-]+$",
+                  "description": "A variant id on that axis."
+                }
+              }
+            }
           }
         }
       }

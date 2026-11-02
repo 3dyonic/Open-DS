@@ -91,7 +91,75 @@
     "in": [
       {
         "id": "button",
-        "why": "Every action, with a large target."
+        "why": "Every action, with a large target.",
+        "variants": {
+          "variant": {
+            "primary": {
+              "use": "The one next step on a page.",
+              "because": [
+                "color.count"
+              ]
+            },
+            "secondary": {
+              "use": "Every other action, always with a word: alternatives, row actions, and the first step of a delete.",
+              "because": [
+                "human.q2",
+                "outcomes.q2"
+              ]
+            },
+            "ghost": {
+              "not_used": true,
+              "why": "Every action looks like a button people can find.",
+              "because": [
+                "human.q2"
+              ]
+            }
+          },
+          "size": {
+            "default": {
+              "use": "Every button. Large targets help people with motor needs.",
+              "because": [
+                "accessibility.values"
+              ]
+            },
+            "compact": {
+              "not_used": true,
+              "why": "Large targets help people with motor needs; nothing smaller.",
+              "because": [
+                "accessibility.values"
+              ]
+            },
+            "icon": {
+              "not_used": true,
+              "why": "Icons alone are guesswork: always add a word.",
+              "because": [
+                "iconography.roles"
+              ]
+            }
+          },
+          "state": {
+            "hover": {
+              "use": "Moderate feedback that is easy to follow.",
+              "because": [
+                "motion.values"
+              ]
+            },
+            "focus": {
+              "use": "Seen by everyone: the focus ring with an offset.",
+              "because": [
+                "people.q2"
+              ]
+            },
+            "disabled": {
+              "not_used": true,
+              "why": "Keep it enabled and explain on press: nobody is left out, and nobody remembers the interface from last time.",
+              "because": [
+                "people.q2",
+                "human.q2"
+              ]
+            }
+          }
+        }
       },
       {
         "id": "input",
@@ -1074,6 +1142,13 @@
       "why": "Focus must be seen by everyone.",
       "because": [
         "people.q2"
+      ],
+      "uses": [
+        {
+          "component": "button",
+          "axis": "state",
+          "variant": "focus"
+        }
       ]
     },
     {
@@ -1092,6 +1167,13 @@
       "why": "One clear next step.",
       "because": [
         "color.count"
+      ],
+      "uses": [
+        {
+          "component": "button",
+          "axis": "variant",
+          "variant": "primary"
+        }
       ]
     },
     {
@@ -1101,6 +1183,13 @@
       "why": "Every action looks like a button people can find.",
       "because": [
         "human.q2"
+      ],
+      "uses": [
+        {
+          "component": "button",
+          "axis": "variant",
+          "variant": "secondary"
+        }
       ]
     },
     {
@@ -1110,6 +1199,13 @@
       "why": "A confirm step prevents a costly error.",
       "because": [
         "outcomes.q2"
+      ],
+      "uses": [
+        {
+          "component": "button",
+          "axis": "variant",
+          "variant": "secondary"
+        }
       ]
     },
     {
@@ -1119,6 +1215,13 @@
       "why": "A word says what will happen.",
       "because": [
         "human.q2"
+      ],
+      "uses": [
+        {
+          "component": "button",
+          "axis": "variant",
+          "variant": "secondary"
+        }
       ]
     },
     {
