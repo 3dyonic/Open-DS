@@ -152,7 +152,11 @@ jobs:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
           tag="v${{ needs.plan.outputs.version }}"
-          gh release create "$tag" --target "$GITHUB_SHA" --title "open-ds ${{ needs.plan.outputs.version }}" --generate-notes
+          # Notes come from the merged PRs since the last release. If GitHub cannot compare with the
+          # last tag (for example after a history rewrite), the release still goes out with plain notes.
+          gh release create "$tag" --target "$GITHUB_SHA" --title "open-ds ${{ needs.plan.outputs.version }}" --generate-notes \
+            || gh release create "$tag" --target "$GITHUB_SHA" --title "open-ds ${{ needs.plan.outputs.version }}" \
+                 --notes "open-ds ${{ needs.plan.outputs.version }}. See the merged pull requests for what changed."
       - name: Attach the plugin to the release
         if: github.event_name != 'workflow_dispatch'
         env:
