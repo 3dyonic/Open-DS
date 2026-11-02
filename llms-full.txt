@@ -607,10 +607,10 @@ The tone per moment is in the usage rules of the voice situations above.
 
 ## Multi-brand (multi-brand)
 
-Multi-brand is an Open DS scheme: a full set of answers to the Open DS grammar, with the reasons behind each, usage rules, voice and tone, and the tokens that follow. One shared system with three brands as themes. Components never change; brand primitives do.
+Multi-brand is an Open DS scheme: a full set of answers to the Open DS grammar, with the reasons behind each, usage rules, voice and tone, and the tokens that follow. Customer screens for several brands, often on phones: sign-up, checkout, account. Components never change; brand primitives do.
 
-Use when: Companies with several brands or white-label products on one component library.
-Avoid when: A single product with one brand: the brand layer is cost with no user.
+Use when: Companies that sell to customers under several brands, or white-label products shown to their clients' customers: sign-up, checkout, account and product pages.
+Avoid when: A single product with one brand, where the brand layer is cost with no user; or tools staff use all day. Use Dense data for those.
 Themes: aster-light, aster-dark, birch-light, birch-dark, coral-light, coral-dark
 
 ### Answers
