@@ -8,9 +8,128 @@ description: "Button in Dense data."
 
 # Button
 
-Button. Triggers an action. Variants: primary (the one action that completes the task), secondary (alternatives, cancel, tools), ghost (quiet actions, actions inside rows and text). Sizes: default, compact, icon, large. What each one is for is the grammar's reference (catalogue item button); whether and how a design system uses it is that scheme's decision (inventory button.variants, OD-185). Disabled stays focusable and announced (aria-disabled), so keyboard and screen-reader users can still reach it and hear why; the click is blocked instead of dropping it from the tab order. Reads only component keys: --button-\*, --transition-\*.
+A control that commits an action on this screen.
 
-See it in [Storybook](http://localhost:6006) under Components / Button, in every theme.
+**In Dense data.** Every action. Family: action. Reference: Open UX (button), MIT.
+
+## See it live
+
+<iframe src="http://localhost:6006/iframe.html?id=components-button--examples&viewMode=story" title="Button examples in Storybook" loading="lazy" style="width:100%;height:320px;border:1px solid var(--color-border-default);border-radius:var(--radius-container)"></iframe>
+
+[Open Button in Storybook](http://localhost:6006/?path=/docs/components-button--docs): every variant, the playground and its controls, in every theme.
+
+## When to use it
+
+- **Use it when:** The press does something here: save, submit, delete, open a dialog, go to the next step.
+- **Not when:** The press only takes people to another page, or flips a setting that should persist.
+
+Instead:
+
+- Toggle: An on or off setting that should persist as state.
+- Link: Navigation to another page or section.
+
+## Variants
+
+What each variant is for in any design system, and what Dense data decided, with the answers behind it.
+
+| Axis | Variant | What it is for | In Dense data | Because |
+| --- | --- | --- | --- | --- |
+| variant | `primary` | The one action this view is for. | The one commit in a view. | `color.count`, `outcomes.q2` |
+|  | `secondary` | A real action, quieter than the commit. | Alternatives and cancel next to the primary, and the first step of a delete. | `human.q2`, `outcomes.q2` |
+|  | `ghost` | The lowest emphasis; it never competes with the commit. | Row actions, as compact icon buttons. Never for cancel. | `tasks.q2`, `human.q2` |
+| size | `default` | The normal size, for ordinary actions in forms, dialogs and page chrome. | Actions outside tables: forms, dialogs, page actions. | `content.q2`, `accessibility.values` |
+|  | `compact` | Denser, for toolbars and table rows that sit beside content. | Table rows and toolbars. Compact still fits a mouse. | `content.q2`, `accessibility.values` |
+|  | `icon` | Icon only: the name is not on screen. | Known row and toolbar actions, always with a tooltip. | `iconography.roles` |
+|  | `large` | The largest size: the one action that must stand out most. | Not used. Controls stay small so more records fit on one screen. | `content.q2` |
+| state | `hover` | The pointer is over the control: an extra cue, never the only cue. | Fast feedback that confirms the pointer. | `motion.values` |
+|  | `focus` | Keyboard or assistive tech is on this control. It must stay visible. | Always visible: the focus ring at border-width.focus. | `people.q2` |
+|  | `disabled` | The action is not available. It must stay perceivable and say why. | Only with a visible reason next to it. | `people.q2` |
+
+## How Dense data uses it
+
+| Situation | Use | Not | Why |
+| --- | --- | --- | --- |
+| An icon with no label | Icon button with a tooltip | A bare icon | Experts learn icons; the tooltip covers the first uses. |
+| Keyboard focus | button/focus-ring at border-width.focus | Removing the outline | Keyboard users must always see where they are. |
+| The action that completes the task | Button primary, one per view | Two primaries side by side | One primary makes the committing action obvious. |
+| An alternative or cancel | Button secondary | Button ghost | Cancel must be easy to find next to the primary. |
+| Delete or remove | Button secondary, then confirm in a dialog | Button primary as the first step | Deleting is rare and costly; a confirm step catches mistakes. |
+| An action on one row or item | Icon button, ghost, compact | Button secondary in every row | Rows repeat dozens of times; a quiet icon keeps the table readable. |
+
+## Why it works this way
+
+The answers that shaped Button here. Change one, and the decisions above change with it.
+
+| Question | Answer |
+| --- | --- |
+| How many emphasis levels do actions need? (`color.count`) | **Three**. One primary per view; the rest step back. |
+| What is a costly mistake? (`outcomes.q2`) | **Acting on the wrong record**. Acting on the wrong row is the costly error. |
+| How do people recall the interface? (`human.q2`) | **They learn it and recognise it**. Daily users learn the interface and recognise it. |
+| How often do people repeat actions? (`tasks.q2`) | **Constantly**. The same actions repeat many times an hour. |
+| How much is on one screen? (`content.q2`) | **A lot**. Experts want many records on one screen. |
+| What is the smallest target? (`accessibility.values`) | **Compact, for a pointer**. Mouse and keyboard; compact targets are enough. |
+| What do icons do? (`iconography.roles`) | **Actions and status**. Icons mark row actions and status. |
+| How fast does feedback feel? (`motion.values`) | **Fast**. Fast feedback keeps up with experts. |
+| What accessibility level do we commit to? (`people.q2`) | **AA**. AA is the floor for an internal tool used by trained staff. |
+
+## What moves if an answer changes
+
+For each answer above: the Button decisions it would reopen, and the other answers that follow from it.
+
+| If this changes | Button decisions it reopens | Answers that follow |
+| --- | --- | --- |
+| `color.count` | `variant/primary` | None |
+| `outcomes.q2` | `variant/primary`, `variant/secondary` | `color.lands`, `voice.lands` |
+| `human.q2` | `variant/secondary`, `variant/ghost` | None |
+| `tasks.q2` | `variant/primary`, `variant/ghost`, `size/icon`, `state/hover` | `outcomes.q1`, `scenarios.q2`, `color.count`, `motion.values`, `iconography.roles`, `iconography.lands`, `theming.values`, `voice.definition`, `components.definition`, `components.values`, `theming.count` |
+| `content.q2` | `size/default`, `size/compact`, `size/large` | `brand.q2`, `typography.count`, `typography.values`, `color.roles`, `color.values`, `spacing.definition`, `spacing.values`, `shape.lands`, `iconography.count`, `iconography.definition`, `iconography.values`, `accessibility.lands`, `components.count`, `components.values` |
+| `accessibility.values` | `size/default`, `size/compact` | None |
+| `iconography.roles` | `size/icon` | None |
+| `motion.values` | `state/hover` | None |
+| `people.q2` | `state/focus`, `state/disabled` | `typography.definition`, `accessibility.count`, `accessibility.definition` |
+
+## Words
+
+- Lead with the object, then the state: "Alert 2041 contained."
+- Use numbers, not words for numbers.
+- One verb per button. No "please", no exclamation marks.
+- Use: Investigate, Filter, Assign, Escalated, Resolved. Avoid: Oops, Awesome, Please, Simply.
+
+The labels components use, from the voice tokens:
+
+- `content.action.commit`: Save
+- `content.action.cancel`: Cancel
+- `content.action.destroy`: Delete
+- `content.action.retry`: Retry
+- `content.action.empty-action`: Change filters
+
+See [Voice and tone](../voice.md) for the whole voice.
+
+## Accessibility and keyboard
+
+| Keyboard | What happens | Not |
+| --- | --- | --- |
+| Moving through the page or a dialog. | Tab lands on the button in a logical order. | The control is skipped because it used HTML disabled. |
+| The button is focused and the person confirms. | Enter runs the same action as a click. | Enter only works on submit buttons. |
+| The button is focused. | Space runs the same action as a click. | Space scrolls the page instead. |
+| The button opened a dialog, menu or popover that just closed. | After the action closes a surface, focus returns to the button. | Focus dropped on the page body. |
+
+Test before you ship:
+
+- [ ] The control has a name assistive tech can speak. Any button, especially an icon-only one.
+- [ ] The focused control stays visible; color alone is not the cue. Keyboard or assistive-tech focus is on the button.
+- [ ] Unavailable stays in the tab order and explains why. The action must not run, but focus must not jump away.
+- [ ] A button that stays down exposes its pressed state. Pin, follow, or another sticky on or off on a button.
+- [ ] A button that opens something exposes open or closed. The press reveals a menu, panel or more content.
+- [ ] The hit area stays usable, including at a small size. Touch, pointer, or a compact toolbar button.
+
+## Use it in code
+
+```bash
+npx open-ds add button
+```
+
+The component reads only component keys and semantic tokens, so it follows the brand and mode on `<html>`.
 
 ## Component keys
 
@@ -37,14 +156,3 @@ The CSS variable is the key with `/` replaced by `-` and the base `@` dropped. E
 | `button/disabled/background` | Fill of a disabled button. | `color.disabled.surface` → `dense-data.theme.light.color.disabled.surface` → `color.slate.light.100` | `color.disabled.surface` → `dense-data.theme.dark.color.disabled.surface` → `color.slate.dark.100` |
 | `button/disabled/label` | Label of a disabled button. | `color.disabled.text` → `dense-data.theme.light.color.disabled.text` → `color.slate.light.500` | `color.disabled.text` → `dense-data.theme.dark.color.disabled.text` → `color.slate.dark.500` |
 | `button/disabled/border` | Border of a disabled secondary button. | `color.disabled.border` → `dense-data.theme.light.color.disabled.border` → `color.slate.light.200` | `color.disabled.border` → `dense-data.theme.dark.color.disabled.border` → `color.slate.dark.200` |
-
-## When to use it
-
-| Situation | Use | Not | Why |
-| --- | --- | --- | --- |
-| An icon with no label | Icon button with a tooltip | A bare icon | Experts learn icons; the tooltip covers the first uses. |
-| Keyboard focus | button/focus-ring at border-width.focus | Removing the outline | Keyboard users must always see where they are. |
-| The action that completes the task | Button primary, one per view | Two primaries side by side | One primary makes the committing action obvious. |
-| An alternative or cancel | Button secondary | Button ghost | Cancel must be easy to find next to the primary. |
-| Delete or remove | Button secondary, then confirm in a dialog | Button primary as the first step | Deleting is rare and costly; a confirm step catches mistakes. |
-| An action on one row or item | Icon button, ghost, compact | Button secondary in every row | Rows repeat dozens of times; a quiet icon keeps the table readable. |

@@ -8,9 +8,60 @@ description: "Switch in Dense data."
 
 # Switch
 
-Switch. Turns a setting on or off with an immediate effect. Reads only component keys: --control-\*, --transition-\*.
+An on or off setting that applies at once, with no submit.
 
-See it in [Storybook](http://localhost:6006) under Components / Switch, in every theme.
+**In Dense data.** Settings that apply at once. Family: form. Reference: Open UX (switch), MIT.
+
+## See it live
+
+<iframe src="http://localhost:6006/iframe.html?id=components-switch--examples&viewMode=story" title="Switch examples in Storybook" loading="lazy" style="width:100%;height:320px;border:1px solid var(--color-border-default);border-radius:var(--radius-container)"></iframe>
+
+[Open Switch in Storybook](http://localhost:6006/?path=/docs/components-switch--docs): every variant, the playground and its controls, in every theme.
+
+## When to use it
+
+- **Use it when:** A setting that should take effect as soon as it is flipped.
+- **Not when:** A choice that waits for a form (checkbox).
+
+Instead:
+
+- [Checkbox](./checkbox.md): Waits for the form.
+- Toggle: A pressed button in a toolbar.
+
+## Words
+
+- Lead with the object, then the state: "Alert 2041 contained."
+- Use numbers, not words for numbers.
+- One verb per button. No "please", no exclamation marks.
+- Use: Investigate, Filter, Assign, Escalated, Resolved. Avoid: Oops, Awesome, Please, Simply.
+
+The labels components use, from the voice tokens:
+
+- `content.action.commit`: Save
+- `content.action.cancel`: Cancel
+- `content.action.destroy`: Delete
+- `content.action.retry`: Retry
+- `content.action.empty-action`: Change filters
+
+See [Voice and tone](../voice.md) for the whole voice.
+
+## Accessibility and keyboard
+
+| Keyboard | What happens | Not |
+| --- | --- | --- |
+| undefined | Space flips it. | undefined |
+
+Test before you ship:
+
+- [ ] It is a switch with a visible label; on and off are announced. undefined
+
+## Use it in code
+
+```bash
+npx open-ds add switch
+```
+
+The component reads only component keys and semantic tokens, so it follows the brand and mode on `<html>`.
 
 ## Component keys
 

@@ -8,11 +8,62 @@ description: "Textarea in Dense data."
 
 # Textarea
 
-Textarea. Multi-line text entry. From shadcn/ui (new-york-v4, MIT), carried by the schemes whose inventory names it. Reads the shadcn variables, which theme.css maps onto the scheme's semantic tokens, and the radius, shadow and text scale that shadcn.css maps onto the scheme's tokens. Dark mode comes from the tokens, so no dark: classes.
+A field for free text over several lines.
 
-See it in [Storybook](http://localhost:6006) under Components / Textarea, in every theme.
+**In Dense data.** Notes on an alert, for the next analyst. Family: form. Reference: Open UX (textarea), MIT.
+
+## See it live
+
+<iframe src="http://localhost:6006/iframe.html?id=components-textarea--examples&viewMode=story" title="Textarea examples in Storybook" loading="lazy" style="width:100%;height:320px;border:1px solid var(--color-border-default);border-radius:var(--radius-container)"></iframe>
+
+[Open Textarea in Storybook](http://localhost:6006/?path=/docs/components-textarea--docs): every variant, the playground and its controls, in every theme.
+
+## When to use it
+
+- **Use it when:** Comments, descriptions, anything longer than one line.
+- **Not when:** A one-line value (input), or a known set of options.
+
+Instead:
+
+- [Input](./input.md): One line.
+
+## How Dense data uses it
+
+| Situation | Use | Not | Why |
+| --- | --- | --- | --- |
+| Field label or column header | type.label | type.heading | Headers repeat on every column; a heavy style would compete with the data. |
+
+## Words
+
+- Lead with the object, then the state: "Alert 2041 contained."
+- Use numbers, not words for numbers.
+- One verb per button. No "please", no exclamation marks.
+- Use: Investigate, Filter, Assign, Escalated, Resolved. Avoid: Oops, Awesome, Please, Simply.
+
+The labels components use, from the voice tokens:
+
+- `content.action.commit`: Save
+- `content.action.cancel`: Cancel
+- `content.action.destroy`: Delete
+- `content.action.retry`: Retry
+- `content.action.empty-action`: Change filters
+
+See [Voice and tone](../voice.md) for the whole voice.
+
+## Accessibility and keyboard
+
+Test before you ship:
+
+- [ ] It has a visible label; a limit is announced as people type. undefined
+
+## Use it in code
+
+```bash
+npx open-ds add textarea
+```
+
+The component reads only component keys and semantic tokens, so it follows the brand and mode on `<html>`.
 
 ## Tokens it reads
 
 From shadcn/ui. It reads shadcn's variables, which theme.css maps onto this system's semantic tokens, and the radius, shadow and text scale in shadcn.css.
-

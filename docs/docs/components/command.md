@@ -8,17 +8,61 @@ description: "Command in Dense data."
 
 # Command
 
-Command. A search-first menu of actions, opened from the keyboard. From shadcn/ui (new-york-v4, MIT), carried by the schemes whose inventory names it. Reads the shadcn variables, which theme.css maps onto the scheme's semantic tokens, and the radius, shadow and text scale that shadcn.css maps onto the scheme's tokens. Dark mode comes from the tokens, so no dark: classes.
+A search-first menu of actions and places, opened from the keyboard.
 
-See it in [Storybook](http://localhost:6006) under Components / Command, in every theme.
+**In Dense data.** Keyboard-first jump to any record or action. Family: navigation. Reference: Open DS, MIT.
+
+## See it live
+
+<iframe src="http://localhost:6006/iframe.html?id=components-command--examples&viewMode=story" title="Command examples in Storybook" loading="lazy" style="width:100%;height:320px;border:1px solid var(--color-border-default);border-radius:var(--radius-container)"></iframe>
+
+[Open Command in Storybook](http://localhost:6006/?path=/docs/components-command--docs): every variant, the playground and its controls, in every theme.
+
+## When to use it
+
+- **Use it when:** Expert users who want to jump anywhere or run any action by typing.
+- **Not when:** The only way to reach an action, or people who visit now and then.
+
+Instead:
+
+- [Dropdown menu](./dropdown-menu.md): A short menu from a button.
+- [Combobox](./combobox.md): Picking a value for a field.
+
+## Words
+
+- Lead with the object, then the state: "Alert 2041 contained."
+- Use numbers, not words for numbers.
+- One verb per button. No "please", no exclamation marks.
+- Use: Investigate, Filter, Assign, Escalated, Resolved. Avoid: Oops, Awesome, Please, Simply.
+
+The labels components use, from the voice tokens:
+
+- `content.action.commit`: Save
+- `content.action.cancel`: Cancel
+- `content.action.destroy`: Delete
+- `content.action.retry`: Retry
+- `content.action.empty-action`: Change filters
+
+See [Voice and tone](../voice.md) for the whole voice.
+
+## Accessibility and keyboard
+
+| Keyboard | What happens | Not |
+| --- | --- | --- |
+| undefined | A shortcut opens it; arrows move; Enter runs; Escape closes. | undefined |
+
+Test before you ship:
+
+- [ ] Results are a list; the active result is announced. undefined
+
+## Use it in code
+
+```bash
+npx open-ds add command
+```
+
+The component reads only component keys and semantic tokens, so it follows the brand and mode on `<html>`.
 
 ## Tokens it reads
 
 From shadcn/ui. It reads shadcn's variables, which theme.css maps onto this system's semantic tokens, and the radius, shadow and text scale in shadcn.css.
-
-
-## When to use it
-
-| Situation | Use | Not | Why |
-| --- | --- | --- | --- |
-| No component in the inventory fits | a component from the inventory, composed (for example a popover with a command list) | a one-off component built for one screen | A small team keeps fewer parts right, and experts expect the same parts everywhere. |

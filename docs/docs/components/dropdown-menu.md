@@ -8,9 +8,67 @@ description: "Dropdown menu in Dense data."
 
 # Dropdown menu
 
-Dropdown menu. A list of actions behind one button, such as the row actions behind a "more" icon button. Reads only component keys: --overlay-\*.
+A menu of actions opened from a button.
 
-See it in [Storybook](http://localhost:6006) under Components / Dropdown menu, in every theme.
+**In Dense data.** Row actions. Family: navigation. Reference: Open DS, MIT.
+
+## See it live
+
+<iframe src="http://localhost:6006/iframe.html?id=components-dropdown-menu--examples&viewMode=story" title="Dropdown menu examples in Storybook" loading="lazy" style="width:100%;height:320px;border:1px solid var(--color-border-default);border-radius:var(--radius-container)"></iframe>
+
+[Open Dropdown menu in Storybook](http://localhost:6006/?path=/docs/components-dropdown-menu--docs): every variant, the playground and its controls, in every theme.
+
+## When to use it
+
+- **Use it when:** More actions than fit, or actions people use now and then.
+- **Not when:** Choosing a value for a field (select), or the one main action (a button).
+
+Instead:
+
+- [Select](./select.md): Choosing a value.
+- [Context menu](./context-menu.md): The same menu on right-click.
+
+## How Dense data uses it
+
+| Situation | Use | Not | Why |
+| --- | --- | --- | --- |
+| A menu or dialog | elevation.overlay and a dimmed page for dialogs | A border only | Floating things need a shadow so they read as on top. |
+| An action on one row or item | Icon button, ghost, compact | Button secondary in every row | Rows repeat dozens of times; a quiet icon keeps the table readable. |
+
+## Words
+
+- Lead with the object, then the state: "Alert 2041 contained."
+- Use numbers, not words for numbers.
+- One verb per button. No "please", no exclamation marks.
+- Use: Investigate, Filter, Assign, Escalated, Resolved. Avoid: Oops, Awesome, Please, Simply.
+
+The labels components use, from the voice tokens:
+
+- `content.action.commit`: Save
+- `content.action.cancel`: Cancel
+- `content.action.destroy`: Delete
+- `content.action.retry`: Retry
+- `content.action.empty-action`: Change filters
+
+See [Voice and tone](../voice.md) for the whole voice.
+
+## Accessibility and keyboard
+
+| Keyboard | What happens | Not |
+| --- | --- | --- |
+| undefined | Arrows move; Enter runs; Escape closes and returns focus. | undefined |
+
+Test before you ship:
+
+- [ ] The trigger says it opens a menu and whether it is open. undefined
+
+## Use it in code
+
+```bash
+npx open-ds add dropdown-menu
+```
+
+The component reads only component keys and semantic tokens, so it follows the brand and mode on `<html>`.
 
 ## Component keys
 

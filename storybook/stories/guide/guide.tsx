@@ -62,6 +62,13 @@ const CSS = `
 .odg .leftout b{display:block;margin-bottom:2px}
 .odg .cite{font:11px var(--type-data-font-family);color:var(--color-text-muted);margin-top:4px}
 .odg a{color:var(--color-text-link)}
+.odg .prim{border:var(--border-width-default) solid var(--color-border-default);border-radius:var(--radius-container);overflow:hidden;background:var(--color-surface-default)}
+.odg .prim.unused{border-style:dashed}
+.odg .prim .c{height:40px;border-bottom:var(--border-width-default) solid var(--color-border-default)}
+.odg .prim .t{padding:6px 8px;font-size:var(--type-caption-font-size);line-height:1.4}
+.odg .prim .t code{font-family:var(--type-data-font-family)}
+.odg .used{color:var(--color-text-link)}
+.odg .bar{height:8px;border-radius:2px;background:var(--color-action-primary)}
 @media (max-width:720px){.odg .step,.odg .row,.odg .variant,.odg .dd,.odg .layers{grid-template-columns:1fr}.odg .do{border-right:0}}
 `;
 
@@ -518,6 +525,114 @@ export function FoundationsShape() {
           ))}
         </div>
       </div>
+    </Frame>
+  );
+}
+
+/** Every primitive, its value, and what points to it (OD-184). Unused primitives stay, dashed. */
+function primitiveUse(s: Any) {
+  const used: Record<string, string[]> = {};
+  const scan = (node: Any, path: string, where: string) => {
+    if (!node || typeof node !== "object") return;
+    if ("$value" in node) {
+      for (const m of JSON.stringify(node.$value).matchAll(/\{([^}]+)\}/g))
+        (used[m[1]] ??= []).push(`${path.replace(/\.@$/, "")} (${where})`);
+      return;
+    }
+    for (const [k, v] of Object.entries(node)) if (!k.startsWith("$")) scan(v, path ? `${path}.${k}` : k, where);
+  };
+  for (const brand of Object.values(s.tokens.brands ?? {}) as Any[])
+    for (const [mode, tree] of Object.entries(brand.theme ?? {})) scan(tree, "", mode === "base" ? "every mode" : mode);
+  scan(s.tokens.semantic, "", "semantic");
+  scan(s.tokens.component, "", "component key");
+  return used;
+}
+
+function primitiveLeaves(node: Any, path: string[] = []): { path: string; value: Any }[] {
+  if (!node || typeof node !== "object") return [];
+  if ("$value" in node) return [{ path: path.join("."), value: node.$value }];
+  return Object.entries(node)
+    .filter(([k]) => !k.startsWith("$"))
+    .flatMap(([k, v]) => primitiveLeaves(v, [...path, k]));
+}
+
+const showValue = (v: Any) =>
+  Array.isArray(v)
+    ? `cubic-bezier(${v.join(", ")})`
+    : v && typeof v === "object"
+      ? `${v.offsetY} ${v.blur ?? ""} ${v.color}`
+      : String(v);
+
+export function FoundationsPrimitives() {
+  const { scheme: s } = useGuideData();
+  const used = primitiveUse(s);
+  const all = primitiveLeaves(s.tokens.primitive);
+  const family = (p: string) => {
+    const x = p.split(".");
+    return x[0] === "color" ? x.slice(0, 3).join(".") : x[0] === "font" ? x.slice(0, 2).join(".") : x[0];
+  };
+  const families = [...new Set(all.map((x) => family(x.path)))];
+  const nUsed = all.filter((x) => used[x.path]).length;
+  const rem = (v: Any) => {
+    const m = String(v).match(/^([\d.]+)(rem|px)$/);
+    return m ? +m[1] * (m[2] === "rem" ? 16 : 1) : null;
+  };
+  return (
+    <Frame>
+      <div className="eyebrow">Foundations</div>
+      <h1>Primitives</h1>
+      <p className="lede">
+        Every raw value in {s.name}. Primitives hold the values; semantic tokens give them a job, and components read
+        only the jobs.
+      </p>
+      <p style={{ marginTop: 10 }}>
+        <b>{all.length}</b> primitives. <b>{nUsed}</b> are used. <b>{all.length - nUsed}</b> are not used yet: they
+        stay, so a brand or a changed answer can use them without adding a value. Hover one to see what points to it.
+      </p>
+      {families.map((f) => {
+        const list = all.filter((x) => family(x.path) === f);
+        const max = Math.max(1, ...list.map((x) => rem(x.value) ?? 0));
+        return (
+          <div key={f}>
+            <h2>
+              <code>{f}</code>
+            </h2>
+            <p className="sub">
+              {list.filter((x) => used[x.path]).length} of {list.length} used
+            </p>
+            <div className="grid4">
+              {list.map((x) => {
+                const u = used[x.path] ?? [];
+                const n = rem(x.value);
+                return (
+                  <div
+                    key={x.path}
+                    className={`prim${u.length ? "" : " unused"}`}
+                    title={u.join("\n") || "Not used yet"}
+                  >
+                    {f.startsWith("color") ? (
+                      <div className="c" style={{ background: String(x.value) }} />
+                    ) : n !== null ? (
+                      <div style={{ padding: "16px 8px 0" }}>
+                        <div className="bar" style={{ width: `${Math.max(4, (n / max) * 100)}%` }} />
+                      </div>
+                    ) : null}
+                    <div className="t">
+                      <code style={{ fontWeight: 600 }}>{x.path.slice(f.length + 1) || x.path}</code>
+                      <div className="muted">
+                        <code>{showValue(x.value)}</code>
+                      </div>
+                      <div className={u.length ? "used" : "muted"}>
+                        {u.length ? `${u.length} use${u.length > 1 ? "s" : ""}` : "Not used yet"}
+                      </div>
+                    </div>
+                  </div>
+                );
+              })}
+            </div>
+          </div>
+        );
+      })}
     </Frame>
   );
 }
