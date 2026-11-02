@@ -388,7 +388,7 @@
         "each component page reads the same engine as the CLI and MCP (componentGuide)",
         "each component page embeds its Storybook examples and links to Storybook",
         "each component page shows when to use it, variants with this scheme's decisions and the answers behind them, how the scheme uses it, why, what moves, words, accessibility and keyboard, code and component keys",
-        "a Primitives page in the docs and in Storybook Foundations lists every primitive and what points to it"
+        "a Primitives section of its own, next to Foundations, in the docs and in Storybook: every primitive by kind, with a sample of its value and what points to it (OD-195)"
       ],
       "checks": [
         "docs-sections",

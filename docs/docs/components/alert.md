@@ -35,8 +35,8 @@ What each variant is for in any design system, and what Dense data decided, with
 
 | Axis | Variant | What it is for | In Dense data | Because |
 | --- | --- | --- | --- | --- |
-| variant | `default` | A notice that stays on the page: information or a heads-up. | Not used. Alerts here are for problems that stay on the page; news goes in a toast or a badge. | `outcomes.q2`, `tasks.q2` |
-|  | `destructive` | Something failed or will be lost, and people must act to recover. | A record that was not saved or an action that failed: name the record, then the fix, with an icon. | `outcomes.q2`, `accessibility.count`, `voice.values` |
+| variant | `default` | A notice that stays on the page: information or a heads-up. | Not used. Alerts here are for problems that stay on the page; news goes in a toast or a badge. | <span title="What is a costly mistake?">Acting on the wrong record</span> <small>(`outcomes.q2`)</small><br /><span title="How often do people repeat actions?">Constantly</span> <small>(`tasks.q2`)</small> |
+|  | `destructive` | Something failed or will be lost, and people must act to recover. | A record that was not saved or an action that failed: name the record, then the fix, with an icon. | <span title="What is a costly mistake?">Acting on the wrong record</span> <small>(`outcomes.q2`)</small><br /><span title="How many signals carry each meaning?">Three: color, icon and word</span> <small>(`accessibility.count`)</small><br /><span title="How does it sound?">Terse</span> <small>(`voice.values`)</small> |
 
 ## How Dense data uses it
 
