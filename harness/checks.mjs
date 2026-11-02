@@ -1278,7 +1278,7 @@ export const CHECKS = {
           const item = g.catalogue.items.find((i) => i.id === m[1]);
           const want = ["## See it live", "## Use it in code"];
           if (item?.apply_when) want.push("## When to use it");
-          if (item?.variants) want.push("## Variants", "## Why it works this way", "## What moves if an answer changes");
+          if (item?.variants) want.push("## Variants", "## Why it works this way");
           const lacking = want.filter((h) => !text.includes(h));
           if (lacking.length) gaps.push(`${id} ${p}: no ${lacking.join(", ")}`);
         }
@@ -1290,7 +1290,8 @@ export const CHECKS = {
           ["foundations/color.md", "odv-band"],
           ["foundations/color.md", "odv-stack"],
           ["primitives/color.md", "odv-ramp"],
-          ["components/button.md", "odv-vcard"],
+          ["components/button.md", "odv-variant"],
+          ["components/button.md", "odv-trail"],
         ];
         for (const [pg, cls] of visual)
           if (pages[pg] && !pages[pg].includes(cls)) gaps.push(`${id} ${pg}: no ${cls} block`);

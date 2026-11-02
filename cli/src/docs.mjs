@@ -935,61 +935,45 @@ export function docsPages(
             : ""),
       );
     const variants = guide?.variants ?? [];
+    // Each variant is its own full-width section (OD-196): a live sample, then what it is for, what
+    // this scheme decided, and the answers behind it, each as its own topic.
+    const answerChip = (b) =>
+      answer(b)
+        ? `<a class="odv-achip" href="#why-${b.replace(/\./g, "-")}"><span>${attr(qText(b))}</span><b>${attr(label(b))}</b> · <code>${b}</code></a>`
+        : `<code>${b}</code>`;
     if (variants.length)
       parts.push(
-        `## Variants\n\nWhat each variant is for in any design system, and what ${esc(scheme.name)} decided, with the answers behind it. Each sample is the live story with that variant set.\n\n` +
-          [...new Set(variants.map((v) => v.axis))]
-            .map((axis) =>
-              h(
-                `<div class="odv-axis"><code>${axis}</code></div><div class="odv-grid">`,
-                variants
-                  .filter((v) => v.axis === axis)
-                  .map((v) => {
-                    const d = v.here;
-                    const stage =
-                      axis === "state"
-                        ? ""
-                        : `<div class="stage"><iframe src="${storybook}/iframe.html?id=components-${name}--playground&viewMode=story&globals=${sbScheme}&args=${axis}:${v.id}" title="${title(name)} ${v.id}" loading="lazy" tabindex="-1"></iframe></div>`;
-                    const here = !d
-                      ? "Not decided yet."
-                      : d.not_used
-                        ? `<b>Not used:</b> ${attr(d.why)}`
-                        : `<b>In ${attr(scheme.name)}:</b> ${attr(d.use)}`;
-                    return `<div class="odv-card odv-vcard${d?.not_used ? " off" : ""}">${stage}<div class="body"><code>${v.id}</code><div class="ref">${attr(v.reference.overview)}</div><div class="here">${here}</div>${(
-                      d?.because ?? []
-                    )
-                      .filter((b) => answer(b))
-                      .map(
-                        (b) =>
-                          `<span class="odv-ans" title="${attr(qText(b))}">${attr(label(b))} · ${b}</span> `,
-                      )
-                      .join("")}</div></div>`;
-                  }),
-                `</div>`,
-              ),
-            )
-            .join("\n\n") +
-          `\n\n### In detail\n\n` +
-          `| Axis | Variant | What it is for | In ${esc(scheme.name)} | Because |\n| --- | --- | --- | --- | --- |\n` +
+        `## Variants\n\nWhat each variant is for in any design system, then what ${esc(scheme.name)} decided and why. Each sample is the live story with that variant set.\n\n` +
           variants
-            .map((v, j) => {
-              const h = v.here;
-              const here = !h
-                ? "Not decided yet."
-                : h.not_used
-                  ? `Not used. ${esc(h.why)}`
-                  : esc(h.use);
-              // The answers themselves, not only their ids (Yonatan): "Acting on the wrong record (outcomes.q2)".
-              const why = (h?.because ?? [])
-                .map((b) =>
-                  answer(b)
-                    ? `<span title="${attr(qText(b))}">${esc(label(b))}</span> <small>(\`${b}\`)</small>`
-                    : `\`${b}\``,
-                )
-                .join("<br />");
-              return `| ${variants[j - 1]?.axis === v.axis ? "" : v.axis} | \`${v.id}\` | ${esc(v.reference.overview)} | ${here} | ${why} |`;
+            .map((v) => {
+              const d = v.here;
+              const used = d && !d.not_used;
+              const pill = !d
+                ? `<span class="odv-pill">Not decided yet</span>`
+                : used
+                  ? `<span class="odv-pill used">Used in ${attr(scheme.name)}</span>`
+                  : `<span class="odv-pill">Not used in ${attr(scheme.name)}</span>`;
+              const stage =
+                v.axis === "state"
+                  ? ""
+                  : `<div class="odv-vstage"><span class="odv-wait">Start Storybook to see it live</span><iframe src="${storybook}/iframe.html?id=components-${name}--playground&viewMode=story&globals=${sbScheme}&args=${v.axis}:${v.id}" title="${title(name)} ${v.id}" loading="lazy" tabindex="-1"></iframe></div>`;
+              return h(
+                `<section class="odv-variant${used || !d ? "" : " off"}${stage ? "" : " nostage"}">`,
+                `<header><code>${v.id}</code><span class="odv-axisname">${v.axis}</span>${pill}</header>`,
+                `<div class="odv-vbody">${stage}<div class="odv-vinfo">`,
+                `<div class="odv-topic"><h4>What it is for</h4><p>${attr(v.reference.overview)}</p>`,
+                v.reference.apply_when || v.reference.not_when
+                  ? `<div class="odv-when">${v.reference.apply_when ? `<div><span class="y">✓</span>${attr(v.reference.apply_when)}</div>` : ""}${v.reference.not_when ? `<div><span class="n">✕</span>${attr(v.reference.not_when)}</div>` : ""}</div>`
+                  : "",
+                `</div>`,
+                `<div class="odv-topic"><h4>In ${attr(scheme.name)}</h4><p class="odv-decision">${attr(!d ? "Not decided yet." : used ? d.use : d.why)}</p></div>`,
+                (d?.because ?? []).length
+                  ? `<div class="odv-topic"><h4>Because</h4><div class="odv-chips">${d.because.map(answerChip).join("")}</div></div>`
+                  : "",
+                `</div></div></section>`,
+              );
             })
-            .join("\n"),
+            .join("\n\n"),
       );
     const rules = guide?.rules ?? [];
     if (rules.length)
@@ -1007,38 +991,60 @@ export function docsPages(
     const cited = [
       ...new Set(variants.flatMap((v) => v.here?.because ?? [])),
     ].filter((q) => answer(q));
-    if (cited.length) {
+    // Why it works this way (OD-196): one card per answer, three steps inside: the answer, what it
+    // decided for this component (and what else it shapes), and what would move if it changed.
+    if (cited.length)
       parts.push(
-        `## Why it works this way\n\nThe answers that shaped ${title(name)} here. Change one, and the decisions above change with it.\n\n` +
-          h(
-            `<div class="odv-grid">`,
-            cited.map((q) => {
-              const moved = new Set([q, ...followers(scheme, q)]);
-              const n = variants.filter((v) =>
-                (v.here?.because ?? []).some((b) => moved.has(b)),
-              ).length;
-              return `<div class="odv-card"><div class="odv-eyebrow">${attr(qText(q))}</div><q>${attr(label(q))}</q><p>${attr(answer(q).why)}</p><span class="odv-ans">${q}</span><div class="odv-moves">Change it and ${n} ${title(name)} decision${n === 1 ? "" : "s"} reopen.</div></div>`;
-            }),
-            `</div>`,
-          ),
-      );
-      parts.push(
-        `## What moves if an answer changes\n\nFor each answer above: the ${title(name)} decisions it would reopen, and the other answers that follow from it.\n\n` +
-          `| If this changes | ${title(name)} decisions it reopens | Answers that follow |\n| --- | --- | --- |\n` +
+        `## Why it works this way\n\n${title(name)} looks the way it does because of ${cited.length} answer${cited.length === 1 ? "" : "s"} about this product. Each card is one answer, in three steps: the answer, what it decided for ${title(name)}, and what would move if it changed.\n\n` +
           cited
             .map((q) => {
               const f = followers(scheme, q);
               const moved = new Set([q, ...f]);
-              const reopen = variants
-                .filter((v) =>
-                  (v.here?.because ?? []).some((b) => moved.has(b)),
-                )
-                .map((v) => `\`${v.axis}/${v.id}\``);
-              return `| \`${q}\` | ${reopen.join(", ")} | ${f.length ? f.map((x) => `\`${x}\``).join(", ") : "None"} |`;
+              const here = variants.filter((v) =>
+                (v.here?.because ?? []).includes(q),
+              );
+              const reopen = variants.filter((v) =>
+                (v.here?.because ?? []).some((b) => moved.has(b)),
+              ).length;
+              const also = (scheme.inventory?.in ?? []).flatMap((c) =>
+                c.id === name
+                  ? []
+                  : Object.entries(c.variants ?? {}).flatMap(([ax, vs]) =>
+                      Object.entries(vs)
+                        .filter(([, d]) => (d.because ?? []).includes(q))
+                        .map(([vid]) => `${title(c.id)}: ${vid}`),
+                    ),
+              );
+              return h(
+                `<section class="odv-trail" id="why-${q.replace(/\./g, "-")}">`,
+                `<div class="odv-trail-head"><b>${attr(qText(q))}</b><code>${q}</code></div><div class="odv-steps">`,
+                `<div class="odv-step-col"><h5><i>1</i>The answer</h5><div class="odv-answer">${attr(label(q))}</div><p>${attr(answer(q).why)}</p></div>`,
+                `<div class="odv-step-col"><h5><i>2</i>So ${title(name)}</h5><ul>`,
+                here.map(
+                  (v) =>
+                    `<li><span class="${v.here.not_used ? "n" : "y"}">${v.here.not_used ? "–" : "✓"}</span><span>${v.here.not_used ? `does not use <b>${v.id}</b>` : `uses <b>${v.id}</b>`}: ${attr(v.here.not_used ? v.here.why : v.here.use)}</span></li>`,
+                ),
+                `</ul>`,
+                also.length
+                  ? `<div class="odv-also"><small>It also shapes</small> ${also.map((x) => `<code>${attr(x)}</code>`).join(" ")}</div>`
+                  : "",
+                `</div>`,
+                `<div class="odv-step-col change"><h5><i>3</i>If it changed</h5><div class="odv-big">${reopen}</div><small>${title(name)} decision${reopen === 1 ? "" : "s"} would reopen</small>`,
+                `<p>${
+                  f.length
+                    ? `and ${f.length} answer${f.length === 1 ? "" : "s"} that follow from it: ${f
+                        .slice(0, 3)
+                        .map((x) => `<b>${attr(label(x))}</b>`)
+                        .join(
+                          ", ",
+                        )}${f.length > 3 ? `, and ${f.length - 3} more` : ""}.`
+                    : "No other answer follows from it."
+                }</p></div>`,
+                `</div></section>`,
+              );
             })
-            .join("\n"),
+            .join("\n\n"),
       );
-    }
     const voiceLines = (scheme.voice?.principles ?? []).map(
       (x) => `- ${esc(x.text)}`,
     );
