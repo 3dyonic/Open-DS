@@ -10,6 +10,7 @@
   --space-inset-cell-x: 0.75rem; /** Horizontal padding inside table cells. */
   --size-control-default: 2rem; /** Height of buttons and inputs, and the smallest target. */
   --size-control-compact: 1.5rem; /** Height of compact controls. */
+  --size-control-large: 2rem; /** Height of large controls. Not used in this system, so it equals the default. */
   --size-row: 2rem; /** Height of one table row. */
   --size-icon: 1rem; /** Icon size next to text. */
   --radius-round: 9999px; /** Fully round: avatars and dots. */
@@ -175,6 +176,7 @@ html[data-theme="dark"] {
   --space-inset-cell-x: 0.75rem; /** Horizontal padding inside table cells. */
   --size-control-default: 2rem; /** Height of buttons and inputs, and the smallest target. */
   --size-control-compact: 1.5rem; /** Height of compact controls. */
+  --size-control-large: 2rem; /** Height of large controls. Not used in this system, so it equals the default. */
   --size-row: 2rem; /** Height of one table row. */
   --size-icon: 1rem; /** Icon size next to text. */
   --radius-round: 9999px; /** Fully round: avatars and dots. */

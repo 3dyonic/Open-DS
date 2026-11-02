@@ -335,6 +335,20 @@
         "cli-create-works",
         "cli-package-works"
       ]
+    },
+    {
+      "id": "OD-185",
+      "title": "Component reference layer: general guidance per component and variant, and each scheme's decisions, in the package and MCP",
+      "in": [
+        "grammar catalogue items carry a reference: overview, apply_when, not_when, vs, variants by axis, situations, accessibility, keyboard, source (Open UX where it matches)",
+        "each scheme decides every variant of every component it carries: use, or not_used with why, with because",
+        "usage rules name the components and variants they use as data (uses)",
+        "variant axes match the built components; the CLI context and component commands and the MCP return both layers"
+      ],
+      "checks": [
+        "components-reference",
+        "json-files-validate"
+      ]
     }
   ]
 }

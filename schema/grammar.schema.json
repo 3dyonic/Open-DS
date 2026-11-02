@@ -425,6 +425,186 @@
                 "type": "string",
                 "minLength": 1,
                 "description": "What the component is for, in one sentence."
+              },
+              "overview": {
+                "type": "string",
+                "minLength": 1,
+                "description": "The reference: what the component is, in one sentence, the same in every design system."
+              },
+              "apply_when": {
+                "type": "string",
+                "minLength": 1,
+                "description": "The reference: when this component is the right choice."
+              },
+              "not_when": {
+                "type": "string",
+                "minLength": 1,
+                "description": "The reference: when it is the wrong choice. Name what to use instead in vs."
+              },
+              "vs": {
+                "type": "array",
+                "description": "Components people confuse with this one, and when to use them instead.",
+                "items": {
+                  "type": "object",
+                  "additionalProperties": false,
+                  "required": ["id", "why"],
+                  "properties": {
+                    "id": {
+                      "type": "string",
+                      "pattern": "^[a-z0-9-]+$",
+                      "description": "A catalogue item id, or a pattern outside the catalogue when outside is true."
+                    },
+                    "why": {
+                      "type": "string",
+                      "minLength": 1,
+                      "description": "When to use that one instead."
+                    },
+                    "outside": {
+                      "type": "boolean",
+                      "description": "True when the alternative is not a catalogue component (for example a plain link)."
+                    }
+                  }
+                }
+              },
+              "variants": {
+                "type": "object",
+                "description": "The reference for each variant, by axis. The axes and ids are the built component's own props (for example variant and size); state covers the states the component draws, such as hover, focus and disabled. Every scheme that carries the component decides each one.",
+                "propertyNames": {
+                  "pattern": "^[a-z-]+$"
+                },
+                "additionalProperties": {
+                  "type": "array",
+                  "minItems": 1,
+                  "items": {
+                    "type": "object",
+                    "additionalProperties": false,
+                    "required": ["id", "overview"],
+                    "description": "One variant on this axis.",
+                    "properties": {
+                      "id": {
+                        "type": "string",
+                        "pattern": "^[a-z0-9-]+$",
+                        "description": "Id, unique in its list."
+                      },
+                      "overview": {
+                        "type": "string",
+                        "minLength": 1,
+                        "description": "What it is, in one sentence."
+                      },
+                      "apply_when": {
+                        "type": "string",
+                        "minLength": 1,
+                        "description": "When it is the right choice."
+                      },
+                      "not_when": {
+                        "type": "string",
+                        "minLength": 1,
+                        "description": "When it is the wrong choice, and what that case needs instead."
+                      }
+                    }
+                  }
+                }
+              },
+              "situations": {
+                "type": "array",
+                "description": "The grammar situations this component serves. Each scheme's usage rule for the situation says how.",
+                "items": {
+                  "type": "string",
+                  "pattern": "^[a-z0-9-]+$",
+                  "description": "A grammar situation id."
+                }
+              },
+              "accessibility": {
+                "type": "array",
+                "description": "What every use of this component must do for assistive tech.",
+                "items": {
+                  "type": "object",
+                  "additionalProperties": false,
+                  "required": ["id", "overview"],
+                  "description": "One accessibility rule.",
+                  "properties": {
+                    "id": {
+                      "type": "string",
+                      "pattern": "^[a-z0-9-]+$",
+                      "description": "Id, unique in its list."
+                    },
+                    "overview": {
+                      "type": "string",
+                      "minLength": 1,
+                      "description": "What it is, in one sentence."
+                    },
+                    "apply_when": {
+                      "type": "string",
+                      "minLength": 1,
+                      "description": "When it is the right choice."
+                    },
+                    "not_when": {
+                      "type": "string",
+                      "minLength": 1,
+                      "description": "When it is the wrong choice, and what that case needs instead."
+                    }
+                  }
+                }
+              },
+              "keyboard": {
+                "type": "array",
+                "description": "How the component works from the keyboard.",
+                "items": {
+                  "type": "object",
+                  "additionalProperties": false,
+                  "required": ["id", "overview"],
+                  "description": "One keyboard rule.",
+                  "properties": {
+                    "id": {
+                      "type": "string",
+                      "pattern": "^[a-z0-9-]+$",
+                      "description": "Id, unique in its list."
+                    },
+                    "overview": {
+                      "type": "string",
+                      "minLength": 1,
+                      "description": "What it is, in one sentence."
+                    },
+                    "apply_when": {
+                      "type": "string",
+                      "minLength": 1,
+                      "description": "When it is the right choice."
+                    },
+                    "not_when": {
+                      "type": "string",
+                      "minLength": 1,
+                      "description": "When it is the wrong choice, and what that case needs instead."
+                    }
+                  }
+                }
+              },
+              "source": {
+                "type": "object",
+                "additionalProperties": false,
+                "required": ["name", "license"],
+                "description": "Where the reference text comes from.",
+                "properties": {
+                  "name": {
+                    "type": "string",
+                    "minLength": 1,
+                    "description": "The source, for example Open UX, or Open DS when written here."
+                  },
+                  "id": {
+                    "type": "string",
+                    "minLength": 1,
+                    "description": "The record id in the source."
+                  },
+                  "license": {
+                    "type": "string",
+                    "minLength": 1,
+                    "description": "The source's license."
+                  },
+                  "url": {
+                    "type": "string",
+                    "format": "uri",
+                    "description": "Where the source record lives."
+                  }
+                }
               }
             }
           }

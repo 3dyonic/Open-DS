@@ -4,11 +4,11 @@
   "name": "Multi-brand",
   "version": "0.1.0",
   "status": "draft",
-  "summary": "One shared system with three brands as themes. Components never change; brand primitives do.",
-  "description": "Multi-brand is an Open DS scheme: a full set of answers to the Open DS grammar, with the reasons behind each, usage rules, voice and tone, and the tokens that follow. One shared system with three brands as themes. Components never change; brand primitives do.",
+  "summary": "Customer screens for several brands, often on phones: sign-up, checkout, account. Components never change; brand primitives do.",
+  "description": "Multi-brand is an Open DS scheme: a full set of answers to the Open DS grammar, with the reasons behind each, usage rules, voice and tone, and the tokens that follow. Customer screens for several brands, often on phones: sign-up, checkout, account. Components never change; brand primitives do.",
   "ai": {
-    "use_when": "Companies with several brands or white-label products on one component library.",
-    "avoid_when": "A single product with one brand: the brand layer is cost with no user.",
+    "use_when": "Companies that sell to customers under several brands, or white-label products shown to their clients' customers: sign-up, checkout, account and product pages.",
+    "avoid_when": "A single product with one brand, where the brand layer is cost with no user; or tools staff use all day. Use Dense data for those.",
     "example_products": [
       "Brand family of apps",
       "White-label platform",
@@ -109,7 +109,80 @@
     "in": [
       {
         "id": "button",
-        "why": "Every action."
+        "why": "Every action.",
+        "variants": {
+          "variant": {
+            "primary": {
+              "use": "One clear action per view.",
+              "because": [
+                "outcomes.q1"
+              ]
+            },
+            "secondary": {
+              "use": "The alternative that steps back, and the first step of a delete.",
+              "because": [
+                "color.count",
+                "outcomes.q2"
+              ]
+            },
+            "ghost": {
+              "use": "Row actions, with a word.",
+              "because": [
+                "human.q2"
+              ]
+            }
+          },
+          "size": {
+            "default": {
+              "use": "Every button, at touch size: customers are often on phones.",
+              "because": [
+                "accessibility.values"
+              ]
+            },
+            "compact": {
+              "not_used": true,
+              "why": "Customers are often on phones: no compact controls.",
+              "because": [
+                "accessibility.values"
+              ]
+            },
+            "icon": {
+              "not_used": true,
+              "why": "Customers use any device and hover hints never show on touch, so every button has a word.",
+              "because": [
+                "accessibility.values",
+                "iconography.roles"
+              ]
+            },
+            "large": {
+              "not_used": true,
+              "why": "One clear action per view, at the normal size, in every brand.",
+              "because": [
+                "outcomes.q1"
+              ]
+            }
+          },
+          "state": {
+            "hover": {
+              "use": "Moderate feedback, shared across brands.",
+              "because": [
+                "motion.values"
+              ]
+            },
+            "focus": {
+              "use": "Follows the brand, but always shows.",
+              "because": [
+                "people.q2"
+              ]
+            },
+            "disabled": {
+              "use": "Only with a visible reason next to it.",
+              "because": [
+                "people.q2"
+              ]
+            }
+          }
+        }
       },
       {
         "id": "toggle-group",
@@ -145,7 +218,31 @@
       },
       {
         "id": "field",
-        "why": "Lays out every form the same way in every brand."
+        "why": "Lays out every form the same way in every brand.",
+        "variants": {
+          "orientation": {
+            "vertical": {
+              "use": "Sign-up and checkout forms: the label above, in every brand.",
+              "because": [
+                "people.q2",
+                "scenarios.q1"
+              ]
+            },
+            "horizontal": {
+              "not_used": true,
+              "why": "Customers sign up on phones: labels stay above.",
+              "because": [
+                "accessibility.values"
+              ]
+            },
+            "responsive": {
+              "use": "Account settings: stacked on phones, label beside on laptops.",
+              "because": [
+                "scenarios.q1"
+              ]
+            }
+          }
+        }
       },
       {
         "id": "textarea",
@@ -157,7 +254,44 @@
       },
       {
         "id": "badge",
-        "why": "Plan and status labels."
+        "why": "Plan and status labels.",
+        "variants": {
+          "tone": {
+            "neutral": {
+              "use": "Trial: the plan works and billing has not started.",
+              "because": [
+                "accessibility.count"
+              ]
+            },
+            "info": {
+              "use": "Renews in 3 days: a payment is coming; nothing has gone wrong.",
+              "because": [
+                "accessibility.count"
+              ]
+            },
+            "success": {
+              "use": "Active: the plan is paid and running.",
+              "because": [
+                "accessibility.count"
+              ]
+            },
+            "warning": {
+              "not_used": true,
+              "why": "No plan or order state sits between running and failed; a coming renewal is news, not a warning.",
+              "because": [
+                "content.q1",
+                "accessibility.count"
+              ]
+            },
+            "danger": {
+              "use": "Card declined: the payment failed, so the plan will stop.",
+              "because": [
+                "accessibility.count",
+                "outcomes.q2"
+              ]
+            }
+          }
+        }
       },
       {
         "id": "avatar",
@@ -181,15 +315,97 @@
       },
       {
         "id": "sidebar",
-        "why": "Account area navigation."
+        "why": "Account area navigation.",
+        "variants": {
+          "variant": {
+            "default": {
+              "use": "Account-area menu items, the same in every brand.",
+              "because": [
+                "theming.definition"
+              ]
+            },
+            "outline": {
+              "not_used": true,
+              "why": "Brands change color and corners, not the structure of the menu.",
+              "because": [
+                "theming.definition"
+              ]
+            }
+          },
+          "size": {
+            "default": {
+              "use": "Every account-area menu item.",
+              "because": [
+                "spacing.count"
+              ]
+            },
+            "sm": {
+              "not_used": true,
+              "why": "One density across brands.",
+              "because": [
+                "spacing.count"
+              ]
+            },
+            "lg": {
+              "not_used": true,
+              "why": "One density across brands.",
+              "because": [
+                "spacing.count"
+              ]
+            }
+          }
+        }
       },
       {
         "id": "alert",
-        "why": "Billing problems."
+        "why": "Billing problems.",
+        "variants": {
+          "variant": {
+            "default": {
+              "not_used": true,
+              "why": "Alerts here are for billing problems; news is a badge or a toast.",
+              "because": [
+                "content.q1",
+                "outcomes.q1"
+              ]
+            },
+            "destructive": {
+              "use": "A billing problem such as a declined card: plain and specific, the same in every brand.",
+              "because": [
+                "accessibility.count",
+                "outcomes.q2",
+                "voice.definition"
+              ]
+            }
+          }
+        }
       },
       {
         "id": "toast",
-        "why": "Confirms a saved change."
+        "why": "Confirms a saved change.",
+        "variants": {
+          "tone": {
+            "neutral": {
+              "use": "A shared line with brand words.",
+              "because": [
+                "voice.definition"
+              ]
+            },
+            "success": {
+              "use": "Brand tone allowed: Aster calm, Birch friendly, Coral upbeat.",
+              "because": [
+                "voice.count"
+              ]
+            },
+            "danger": {
+              "use": "Shared across brands: plain and specific.",
+              "because": [
+                "voice.definition",
+                "voice.values"
+              ]
+            }
+          }
+        }
       },
       {
         "id": "skeleton",
@@ -201,7 +417,25 @@
       },
       {
         "id": "empty",
-        "why": "No orders yet."
+        "why": "No orders yet.",
+        "variants": {
+          "variant": {
+            "default": {
+              "not_used": true,
+              "why": "Shared structure in every brand: no brand pictures in empty states.",
+              "because": [
+                "voice.definition",
+                "theming.definition"
+              ]
+            },
+            "icon": {
+              "use": "An icon in a small tile, from the one outline set every brand shares.",
+              "because": [
+                "iconography.definition"
+              ]
+            }
+          }
+        }
       },
       {
         "id": "dialog",
@@ -1106,6 +1340,11 @@
       "why": "Brand hues vary, so meaning needs a word.",
       "because": [
         "accessibility.count"
+      ],
+      "uses": [
+        {
+          "component": "badge"
+        }
       ]
     },
     {
@@ -1192,10 +1431,11 @@
     },
     {
       "situation": "icon-alone",
-      "use": "Icon button with a tooltip, rarely",
-      "not": "A bare icon",
-      "why": "Customers need a hint.",
+      "use": "Not used: always add a word; a popover explains a fee",
+      "not": "An icon button with a hover hint",
+      "why": "On touch screens hover hints never show; a word says what will happen.",
       "because": [
+        "accessibility.values",
         "iconography.roles"
       ]
     },
@@ -1216,6 +1456,13 @@
       "why": "Focus follows the brand but always shows.",
       "because": [
         "people.q2"
+      ],
+      "uses": [
+        {
+          "component": "button",
+          "axis": "state",
+          "variant": "focus"
+        }
       ]
     },
     {
@@ -1234,6 +1481,13 @@
       "why": "One clear action per view.",
       "because": [
         "outcomes.q1"
+      ],
+      "uses": [
+        {
+          "component": "button",
+          "axis": "variant",
+          "variant": "primary"
+        }
       ]
     },
     {
@@ -1243,6 +1497,13 @@
       "why": "The alternative steps back.",
       "because": [
         "color.count"
+      ],
+      "uses": [
+        {
+          "component": "button",
+          "axis": "variant",
+          "variant": "secondary"
+        }
       ]
     },
     {
@@ -1252,6 +1513,13 @@
       "why": "Confirm before destroying data.",
       "because": [
         "outcomes.q2"
+      ],
+      "uses": [
+        {
+          "component": "button",
+          "axis": "variant",
+          "variant": "secondary"
+        }
       ]
     },
     {
@@ -1261,6 +1529,13 @@
       "why": "A word says what will happen.",
       "because": [
         "human.q2"
+      ],
+      "uses": [
+        {
+          "component": "button",
+          "axis": "variant",
+          "variant": "ghost"
+        }
       ]
     },
     {
@@ -1312,7 +1587,12 @@
       "because": [
         "voice.definition"
       ],
-      "example": "No orders yet. Your first order will appear here."
+      "example": "No orders yet. Your first order will appear here.",
+      "uses": [
+        {
+          "component": "empty"
+        }
+      ]
     },
     {
       "situation": "confirm-words",
@@ -3530,6 +3810,11 @@
             "$type": "dimension",
             "$value": "{size.36}",
             "$description": "Height of compact controls."
+          },
+          "large": {
+            "$type": "dimension",
+            "$value": "{size.44}",
+            "$description": "Height of large controls. Not used in this system, so it equals the default."
           }
         },
         "row": {
