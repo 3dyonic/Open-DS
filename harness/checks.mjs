@@ -904,6 +904,188 @@ export const CHECKS = {
         : ok(`the instructions name only real tools and prompts, and all ${tools.length} tools reach agents`);
     },
   },
+  "context-booklets": {
+    requires: ["cli/src/brief.mjs", "cli/src/agents.mjs"],
+    run: async () => {
+      // OD-205: a created project's context/ is the engine's short answers as files. Per scheme:
+      // AGENTS.md, each booklet and each file route stay within budget; every route resolves to a
+      // booklet that is written; every component and task booklet is reachable from a route; every
+      // booklet with sections ends with its hints and the exact call.
+      const { BUDGET, booklets, routeFile } = await import("../cli/src/brief.mjs");
+      const { agentsMd } = await import("../cli/src/agents.mjs");
+      const { componentsFor } = await import("../cli/src/components.mjs");
+      const { assetRoots, grammar, loadScheme } = await import("../cli/src/schemes.mjs");
+      const roots = assetRoots();
+      const g = grammar(roots);
+      const B = (t) => Buffer.byteLength(t, "utf8");
+      const gaps = [];
+      let files = 0;
+      for (const id of SCHEMES) {
+        const s = loadScheme(id, roots);
+        const comps = componentsFor(s, roots);
+        const set = booklets(s, g, comps, roots);
+        files += Object.keys(set).length;
+        const agents = agentsMd(s, g, { components: comps, project: true });
+        if (B(agents) > BUDGET.agents) gaps.push(`${id} AGENTS.md is ${B(agents)} B, over ${BUDGET.agents}`);
+        for (const [f, t] of Object.entries(set)) {
+          if (!f.endsWith(".md") || f === "README.md") continue;
+          if (B(t) > BUDGET.booklet) gaps.push(`${id} ${f} is ${B(t)} B, over ${BUDGET.booklet}`);
+          if (/^(components|tasks)\//.test(f) && !/\nMore, ask by section:\n[\s\S]*\nExample: get_context target=/.test(t))
+            gaps.push(`${id} ${f} has no section hints`);
+        }
+        const index = JSON.parse(set["index.json"]);
+        const reached = new Set();
+        const route = (label, list) => {
+          for (const f of list) {
+            if (!(f in set)) gaps.push(`${id}: ${label} routes to ${f}, which is not written`);
+            reached.add(f);
+          }
+          // A route is the booklets it lists; AGENTS.md has its own budget, read once on top.
+          const size = list.reduce((n, f) => n + B(set[f] ?? ""), 0);
+          if (size > BUDGET.route) gaps.push(`${id}: the route for ${label} is ${size} B, over ${BUDGET.route}`);
+        };
+        for (const c of comps) {
+          route(`src/components/ui/${c}.tsx`, routeFile(index, `src/components/ui/${c}.tsx`));
+          route(`stories/${c}.stories.tsx`, routeFile(index, `stories/${c}.stories.tsx`));
+        }
+        for (const [t, list] of Object.entries(index.tasks)) route(`task ${t}`, list);
+        for (const [x, list] of Object.entries(index.situations)) route(`situation ${x}`, list);
+        for (const f of Object.keys(set))
+          if (/^(components|tasks)\//.test(f) && !reached.has(f)) gaps.push(`${id}: ${f} is not reachable from any route`);
+      }
+      return gaps.length
+        ? bad(gaps.slice(0, 8).join("; "))
+        : ok(`${files} context files in ${SCHEMES.length} schemes: within budget, every route resolves, every booklet reachable`);
+    },
+  },
+  "context-fixtures": {
+    requires: ["cli/src/brief.mjs"],
+    run: async () => {
+      // OD-205: the short form keeps what an agent needs, from each scheme's own rules. A situation's
+      // route holds its rule; build.md holds every layout and colour rule and write.md every voice
+      // rule; a component's booklet holds how the scheme uses each variant, or that it does not.
+      const { booklets, routeFile } = await import("../cli/src/brief.mjs");
+      const { componentsFor } = await import("../cli/src/components.mjs");
+      const { assetRoots, grammar, loadScheme } = await import("../cli/src/schemes.mjs");
+      const roots = assetRoots();
+      const g = grammar(roots);
+      const voice = new Set(g.situations.filter((x) => x.scope === "voice").map((x) => x.id));
+      const gaps = [];
+      let n = 0;
+      for (const id of SCHEMES) {
+        const s = loadScheme(id, roots);
+        const comps = componentsFor(s, roots);
+        const set = booklets(s, g, comps, roots);
+        const index = JSON.parse(set["index.json"]);
+        const has = (f, text, what) => {
+          n++;
+          if (!(set[f] ?? "").includes(text)) gaps.push(`${id} ${f} lacks ${what}: "${text.slice(0, 40)}"`);
+        };
+        for (const u of s.usage.filter((u) => u.use)) {
+          const use = u.use.replace(/[.]+$/, "");
+          has(voice.has(u.situation) ? "tasks/write.md" : "tasks/build.md", use, `the rule for ${u.situation}`);
+          for (const f of index.situations[u.situation] ?? [])
+            if (f.startsWith("components/") && (u.uses ?? []).some((x) => f === `components/${x.component}.md`))
+              has(f, use, `the rule for ${u.situation}`);
+        }
+        for (const c of s.inventory.in.filter((c) => comps.includes(c.id)))
+          for (const [axis, list] of Object.entries(c.variants ?? {}))
+            for (const [v, d] of Object.entries(list))
+              has(`components/${c.id}.md`, d.not_used ? `${axis} ${v}: not used` : `${axis} ${v}: ${d.use}`, `the ${axis} ${v} decision`);
+        for (const c of comps)
+          if (!routeFile(index, `src/components/ui/${c}.tsx`).includes(`components/${c}.md`))
+            gaps.push(`${id}: src/components/ui/${c}.tsx does not route to its booklet`);
+      }
+      return gaps.length
+        ? bad(gaps.slice(0, 8).join("; "))
+        : ok(`${n} fixtures from the schemes' own rules hold in the short form`);
+    },
+  },
+  "context-guidance": {
+    requires: ["cli/src/brief.mjs", "cli/src/mcp.mjs", "cli/src/tools.mjs", "skills"],
+    run: async (c) => {
+      // OD-205: agents learn the structure from any way in. The read-once text is in the MCP
+      // instructions, AGENTS.md and context/README.md, and names only real tools; every check_ui
+      // finding names a booklet section that exists; the build, review, write and change skills start
+      // from their booklet.
+      const { READ_ONCE, booklets } = await import("../cli/src/brief.mjs");
+      const { agentsMd } = await import("../cli/src/agents.mjs");
+      const { SEE } = await import("../cli/src/tools.mjs");
+      const { componentsFor } = await import("../cli/src/components.mjs");
+      const { assetRoots, grammar, loadScheme } = await import("../cli/src/schemes.mjs");
+      const roots = assetRoots();
+      const g = grammar(roots);
+      const src = c.read("cli/src/mcp.mjs");
+      const tools = [...src.matchAll(/registerTool\(\s*"(\w+)"/g)].map((m) => m[1]);
+      const gaps = [];
+      const start = src.indexOf("const INSTRUCTIONS = `");
+      if (!src.slice(start, src.indexOf("`;", start)).includes("${READ_ONCE}")) gaps.push("the MCP instructions do not carry the read-once text");
+      for (const m of READ_ONCE.matchAll(/\b([a-z]+_[a-z_]+)\b/g))
+        if (!tools.includes(m[1])) gaps.push(`the read-once text names ${m[1]}, which is not a tool`);
+      for (const id of SCHEMES) {
+        const s = loadScheme(id, roots);
+        const comps = componentsFor(s, roots);
+        const set = booklets(s, g, comps, roots);
+        const agents = agentsMd(s, g, { components: comps, project: true });
+        if (!agents.includes(READ_ONCE)) gaps.push(`${id} AGENTS.md does not carry the read-once text`);
+        if (!set["README.md"].includes(READ_ONCE)) gaps.push(`${id} context/README.md does not carry the read-once text`);
+        for (const [rule, see] of Object.entries(SEE)) {
+          const [file, section] = see.replace("<id>", comps.find((c) => /## Variants here/.test(set[`components/${c}.md`] ?? "")) ?? "button").split(": ");
+          const text = file === "AGENTS.md" ? agents : set[file.replace(/^context\//, "")];
+          if (!text) gaps.push(`${id}: ${rule} points to ${file}, which a project does not have`);
+          else if (section && !text.includes(`## ${section}`)) gaps.push(`${id}: ${rule} points to ${file}: ${section}, which it does not have`);
+        }
+      }
+      for (const name of ["open-ds", "open-ds-build", "open-ds-review", "open-ds-write", "open-ds-change"]) {
+        const run = c.read(`skills/${name}/SKILL.md`).split("## Run")[1]?.split("## Done")[0] ?? "";
+        if (!run.split("\n").filter((l) => /^\d+\./.test(l)).slice(0, 4).some((l) => /get_context/.test(l)))
+          gaps.push(`${name}: the Run steps do not start from get_context`);
+      }
+      return gaps.length
+        ? bad(gaps.slice(0, 8).join("; "))
+        : ok("the read-once text is in all three places; every finding and every skill points to a booklet");
+    },
+  },
+  "context-benchmark": {
+    requires: ["cli/src/brief.mjs"],
+    run: async () => {
+      // OD-205: before and after, measured on every run, so a regression shows as a number. Before is
+      // the full answer (JSON, as get_context returned it) and the full AGENTS.md; after is the short
+      // form a project ships.
+      const { brief } = await import("../cli/src/brief.mjs");
+      const { context, TASKS } = await import("../cli/src/context.mjs");
+      const { agentsMd } = await import("../cli/src/agents.mjs");
+      const { componentsFor } = await import("../cli/src/components.mjs");
+      const { assetRoots, grammar, loadScheme } = await import("../cli/src/schemes.mjs");
+      const roots = assetRoots();
+      const g = grammar(roots);
+      const B = (t) => Buffer.byteLength(t, "utf8");
+      let before = 0;
+      let after = 0;
+      const parts = [];
+      for (const id of SCHEMES) {
+        const s = loadScheme(id, roots);
+        const comps = componentsFor(s, roots);
+        const a0 = B(agentsMd(s, g, { components: comps }));
+        const a1 = B(agentsMd(s, g, { components: comps, project: true }));
+        let b = a0;
+        let f = a1;
+        for (const t of [...TASKS, ...comps]) {
+          b += B(JSON.stringify(context(id, t, roots, g), null, 2));
+          f += B(brief(id, t, { roots, g }));
+        }
+        before += b;
+        after += f;
+        if (id === "dense-data") {
+          const job = (list) => list.reduce((n, t) => [n[0] + B(JSON.stringify(context(id, t, roots, g), null, 2)), n[1] + B(brief(id, t, { roots, g }))], [a0, a1]);
+          const [x0, x1] = job(["build", "button", "dialog"]);
+          parts.push(`dense-data, add a delete action: ${(x0 / 1024).toFixed(1)} → ${(x1 / 1024).toFixed(1)} KB`);
+        }
+      }
+      if (after >= before) return bad(`the short form is not smaller: ${before} → ${after} B`);
+      return ok(`AGENTS.md, tasks and components, 5 schemes: ${(before / 1024).toFixed(0)} → ${(after / 1024).toFixed(0)} KB (−${Math.round((1 - after / before) * 100)}%); ${parts.join("; ")}`);
+    },
+  },
   "llm-mcp-docstrings": {
     requires: ["cli/src/mcp.mjs"],
     run: (c) => {

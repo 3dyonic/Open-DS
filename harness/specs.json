@@ -464,6 +464,28 @@
         "mcp-instructions",
         "llm-mcp-docstrings"
       ]
+    },
+    {
+      "id": "OD-205",
+      "title": "Context booklets and a router in created projects, from the context engine",
+      "in": [
+        "a created project has context/: one Markdown booklet per component, colour and task, a router (index.json) and a README",
+        "AGENTS.md in a project holds the read-once text and the core rules, within 4 KB",
+        "get_context and open-ds context return the short form by default, with named sections, pages for long sections, and the full answer on request",
+        "get_context file=<path> and open-ds context --file return the booklets the router lists",
+        "open-ds check reports a context/ that no longer matches the scheme; open-ds context --write regenerates it",
+        "every check_ui finding names the booklet section that answers it",
+        "the read-once text is in the MCP instructions, AGENTS.md and context/README.md",
+        "budgets, routes, fixtures and the before and after benchmark are checked with no model"
+      ],
+      "checks": [
+        "context-booklets",
+        "context-fixtures",
+        "context-guidance",
+        "context-benchmark",
+        "mcp-instructions",
+        "skills-shape"
+      ]
     }
   ]
 }

@@ -31,13 +31,18 @@ const HELP = `open-ds: deploy an Open DS scheme as a full design system.
   open-ds why <scheme> <id>            the answer and its reasons, for a question id
                                        (typography.definition) or a component key (button/primary/background)
   open-ds when <scheme> <situation>    what to use and why, for a situation id or plain words
-  open-ds context <scheme> <target>    only the context for one target: a task (choose, build, write,
-                                       change, review), a component, a component key, a semantic
-                                       token (color.status.danger) or a situation
+  open-ds context <scheme> <target> [--section <name>] [--page <n>]
+                                       the short context for one target, as Markdown: a task (choose,
+                                       build, write, change, review), a component, a component key, a
+                                       semantic token (color.status.danger) or a situation; it ends with
+                                       its sections; --json prints the full answer
+  open-ds context --file <path>        in a project: the booklets context/index.json lists for a file
+  open-ds context --write              in a project: regenerate context/ from the scheme
   open-ds component <scheme> <id>      what a component and each variant are for, and how this scheme
                                        uses each one (or does not), with its rules
   open-ds check [dir] [--scheme <id>]  check UI code against the scheme: raw colours and sizes, components it
-                                       does not carry, variants it does not use; exits 1 when it finds any
+                                       does not carry, variants it does not use, and a context/ that no
+                                       longer matches the scheme; exits 1 when it finds any
   open-ds copy <scheme> <kind> <text>  check a label or message against the voice; kind: button, error,
                                        success, empty, confirm or hint
   open-ds change <scheme> <question-id> <option>
@@ -56,7 +61,7 @@ const HELP = `open-ds: deploy an Open DS scheme as a full design system.
                                        the Open DS MCP server: stdio for a local agent, or
                                        Streamable HTTP at /mcp (read-only, no authentication yet)
 
-Add --json to list, show, why, when, component, check, copy, change, token and fit for machine-readable output.`;
+Add --json to list, show, why, when, context, component, check, copy, change, token and fit for machine-readable output.`;
 
 function flag(args, name, fallback) {
   const i = args.indexOf(name);
@@ -389,15 +394,69 @@ export async function run(argv) {
       return 0;
     }
     if (cmd === "context") {
-      const [id, target] = args;
-      loadScheme(id ?? "");
+      // Short Markdown by default (OD-205); --section for one part, --json for the full answer.
+      const brief = await import("./brief.mjs");
       const { context, TASKS } = await import("./context.mjs");
-      const c = target && context(id, target);
-      if (!c)
-        throw new Error(
+      const g = grammar();
+      const project = () => {
+        const dir = resolve(flag(args, "--dir", "."));
+        const rec = existsSync(join(dir, "open-ds.json"))
+          ? JSON.parse(readFileSync(join(dir, "open-ds.json"), "utf8"))
+          : null;
+        const id = flag(args, "--scheme") ?? rec?.scheme;
+        if (!id)
+          throw new Error(
+            "Run this in a project with open-ds.json, or add --scheme <id>.",
+          );
+        return { dir, scheme: loadScheme(id) };
+      };
+      if (args.includes("--write")) {
+        const { dir, scheme } = project();
+        const files = brief.writeContext(
+          dir,
+          scheme,
+          g,
+          brief.projectComponents(dir),
+        );
+        out({ files }, () =>
+          console.log(`Wrote ${files.length} files to context/.`),
+        );
+        return 0;
+      }
+      if (args.includes("--file")) {
+        const { dir, scheme } = project();
+        const text = brief.briefForFile(
+          scheme,
+          g,
+          brief.projectComponents(dir),
+          flag(args, "--file"),
+        );
+        out({ text }, () => process.stdout.write(text));
+        return 0;
+      }
+      const [id, target] = args.filter(
+        (a, i) => !a.startsWith("--") && !args[i - 1]?.startsWith("--"),
+      );
+      loadScheme(id ?? "");
+      const missing = () =>
+        new Error(
           `context needs a target: a task (${TASKS.join(", ")}), a component, a component key, a semantic token or a situation id.`,
         );
-      out(c, () => console.log(JSON.stringify(c, null, 2)));
+      if (json) {
+        const c = target && context(id, target);
+        if (!c) throw missing();
+        console.log(JSON.stringify(c, null, 2));
+        return 0;
+      }
+      const text =
+        target &&
+        brief.brief(id, target, {
+          section: flag(args, "--section"),
+          page: flag(args, "--page", "1"),
+          g,
+        });
+      if (!text) throw missing();
+      process.stdout.write(text.endsWith("\n") ? text : `${text}\n`);
       return 0;
     }
     // The tools behind the skills (OD-202), one engine with the MCP server.
@@ -442,10 +501,29 @@ export async function run(argv) {
         };
         walk("");
         const result = tools.checkUi(loadScheme(id), g, files);
+        // context/ must match what the engine prints for this scheme (OD-205).
+        const { contextDrift, projectComponents } = await import(
+          "./brief.mjs"
+        );
+        for (const d of contextDrift(
+          dir,
+          loadScheme(id),
+          g,
+          projectComponents(dir),
+        ))
+          result.findings.push({
+            file: d.file,
+            line: 1,
+            rule: "context-drift",
+            message: `${d.file} is ${d.problem}: it does not match the scheme.`,
+            fix: "Run npx open-ds context --write. Do not edit context/ by hand.",
+            see: tools.SEE["context-drift"],
+          });
+        result.pass = result.findings.length === 0;
         out(result, () => {
           for (const f of result.findings)
             console.log(
-              `${f.file}:${f.line}  ${f.rule}  ${f.message}\n    fix: ${f.fix}`,
+              `${f.file}:${f.line}  ${f.rule}  ${f.message}\n    fix: ${f.fix}${f.see ? `\n    see: ${f.see}` : ""}`,
             );
           console.log(
             result.pass

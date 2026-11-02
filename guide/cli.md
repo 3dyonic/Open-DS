@@ -13,6 +13,9 @@ node cli/bin/open-ds.js why multi-brand button/radius
 node cli/bin/open-ds.js when content-first "a number in a table"
 node cli/bin/open-ds.js context dense-data color.status.danger
 node cli/bin/open-ds.js context dense-data review
+node cli/bin/open-ds.js context dense-data button --section keyboard
+node cli/bin/open-ds.js context --file src/components/ui/card.tsx   # in a created project
+node cli/bin/open-ds.js context --write                            # in a created project
 node cli/bin/open-ds.js component dense-data button
 node cli/bin/open-ds.js check ./my-app
 node cli/bin/open-ds.js copy dense-data button "Export"
@@ -24,7 +27,7 @@ node cli/bin/open-ds.js init multi-brand --dir ./my-app --brand birch
 node cli/bin/open-ds.js add dialog --dir ./my-app
 ```
 
-`init` writes `src/styles/open-ds.css`, the components, `AGENTS.md`, `.claude/skills/open-ds/SKILL.md`, `.open-ds/scheme.json` and `open-ds.json`. It will not overwrite an existing scheme unless you pass `--yes`. Add `--json` to `list`, `show`, `why` and `when` for machine-readable output. `context` always prints JSON: only the slice one target needs (a task, a component, a component key, a semantic token or a situation).
+`init` writes `src/styles/open-ds.css`, the components, `AGENTS.md`, `.claude/skills/open-ds/SKILL.md`, `.open-ds/scheme.json` and `open-ds.json`. It will not overwrite an existing scheme unless you pass `--yes`. Add `--json` to `list`, `show`, `why` and `when` for machine-readable output. `context` prints the short context for one target as Markdown (a task, a component, a component key, a semantic token or a situation). It ends with the sections you can ask for with `--section`; a long section has pages (`--page 2`); `--json` prints the full answer. In a created project, `context --file <path>` prints the booklets `context/index.json` lists for a file, and `context --write` regenerates `context/`. `check` reports a `context/` that no longer matches the scheme, and each finding names the booklet section that answers it.
 
 ## Tools for the skills
 

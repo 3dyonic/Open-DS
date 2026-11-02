@@ -15,6 +15,7 @@ import {
 import { basename, dirname, join, relative } from "node:path";
 import { fileURLToPath } from "node:url";
 import { agentsMd, skillSection } from "./agents.mjs";
+import { booklets } from "./brief.mjs";
 import { componentsFor, packagesFor } from "./components.mjs";
 import { docsLlms, docsPages } from "./docs.mjs";
 import { assetRoots, focusedSkills, grammar, loadScheme } from "./schemes.mjs";
@@ -79,7 +80,7 @@ function readme(scheme, name, brands) {
     "| `stories/` | Storybook stories, with the usage rules next to each component. |",
     "| `docs/` | The Docusaurus docs: reasons, voice, foundations, components, themes. |",
     "| `scheme.json` | The answer map: every decision with why and because, every usage rule, the voice. |",
-    "| `AGENTS.md`, `.claude/skills/` | What a coding agent reads before it writes UI. |",
+    "| `AGENTS.md`, `context/`, `.claude/skills/` | What a coding agent reads before it writes UI. AGENTS.md holds the rules that always apply; `context/` holds one short booklet per component, colour and task, and a router (`index.json`) that says what to load for a file. |",
     "",
     `Themes: ${scheme.themes.map((t) => t.id).join(", ")}.${brands.length > 1 ? ` Set \`data-brand\` on \`<html>\` to pick a brand.` : ""} Add the class \`dark\` for dark mode.`,
     "",
@@ -329,6 +330,9 @@ export function createProject(
     "AGENTS.md",
     agentsMd(scheme, g, { brand: defaultBrand, components, project: true }),
   );
+  // The booklets and the router (OD-205): the context engine's short answers, as files.
+  for (const [rel, text] of Object.entries(booklets(scheme, g, components, roots)))
+    write(`context/${rel}`, text);
   write(
     ".claude/skills/open-ds/SKILL.md",
     readFileSync(join(roots.skills, "open-ds", "SKILL.md"), "utf8") +
