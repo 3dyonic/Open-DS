@@ -1,6 +1,7 @@
 // Writes the agent files that ship with a deployed scheme: AGENTS.md and the scheme section of
 // the skill. They let a coding agent build UI that follows the scheme's answers and usage rules.
 
+import { BUDGET, colorIds, READ_ONCE } from "./brief.mjs";
 import { questions } from "./schemes.mjs";
 
 const COMMANDS = [
@@ -11,6 +12,7 @@ const COMMANDS = [
 ];
 
 export function agentsMd(scheme, g, { brand, components, project = false }) {
+  if (project) return agentsCore(scheme, g, { brand, components });
   const qs = questions(g);
   const sit = Object.fromEntries(g.situations.map((s) => [s.id, s]));
   const answer = (id) => {
@@ -148,3 +150,57 @@ export function skillSection(scheme, { project = false } = {}) {
     "",
   ].join("\n");
 }
+
+/**
+ * AGENTS.md in a created project (OD-205): the read-once text and the rules that always apply,
+ * within BUDGET.agents. The detail lives in context/, one booklet per component, colour and task.
+ */
+export function agentsCore(scheme, g, { brand, components }) {
+  const groups = {};
+  for (const id of colorIds(g)) {
+    const [, group, ...rest] = id.split(".");
+    (groups[group] ??= []).push(rest.join(".") || "@");
+  }
+  const inventory = scheme.inventory
+    ? components.filter((c) => scheme.inventory.in.some((i) => i.id === c))
+    : components;
+  return [
+    `# AGENTS.md: ${scheme.name} design system`,
+    "",
+    `Open DS scheme **${scheme.name}** (${scheme.id} ${scheme.version}${brand ? `, brand ${brand}` : ""}). ${scheme.summary}`,
+    `Use when: ${scheme.ai.use_when} Avoid when: ${scheme.ai.avoid_when}`,
+    "",
+    READ_ONCE,
+    "",
+    "## Never",
+    "",
+    "- A raw value: a hex or rgb colour, a px size, a Tailwind palette class. Use a token or a component key.",
+    "- A component that is not listed below. If none fits, compose from these; see context/tasks/build.md.",
+    "- A variant this scheme does not use. Each component's booklet says which variants it uses.",
+    "- A status colour one level up the urgency order to get attention.",
+    "",
+    `## Components (${inventory.length})`,
+    "",
+    inventory.join(", "),
+    "",
+    "## Colours",
+    "",
+    "One booklet each in context/colors/. By group:",
+    ...Object.entries(groups).map(([k, v]) => `- color.${k}: ${v.join(", ")}`),
+    "",
+    "## Files",
+    "",
+    "- `tokens/src/`: the token source; edit, then `npm run tokens`. `scheme.json`: every answer with why.",
+    "- `src/components/ui/`: the components; they read only component keys. `stories/`, `docs/`: Storybook and docs.",
+    `- \`context/\`: the booklets and the router. Regenerate with \`npx open-ds context --write\`.${brand ? ` Brand: \`data-brand="${brand}"\` on \`<html>\`.` : ""}`,
+    "",
+    "## Commands",
+    "",
+    "- `npx open-ds check .`: check the UI and that context/ matches the scheme.",
+    `- \`npx open-ds context ${scheme.id} <component | token | task> [--section <name>]\`, or \`--file <path>\`.`,
+    `- \`npx open-ds why ${scheme.id} <question | key>\`: the reason behind an answer.`,
+    "",
+  ].join("\n");
+}
+
+export { BUDGET };

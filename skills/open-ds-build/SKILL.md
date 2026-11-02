@@ -30,23 +30,25 @@ Each component and variant has a decision behind it. Build with those decisions,
 
 ## Run
 
-1. Call `get_context build`, or run `open-ds context <scheme> build`.
-2. Read `AGENTS.md`.
-3. For each choice, find its situation with `when_to_use` or `npx open-ds when <scheme> <words>`.
-4. Do what the rule says. Never do what its "not" says.
-5. Before you use a component, call `get_component` or run `open-ds component <scheme> <id>`.
-6. Use only the variants this scheme uses, for what it says. Never use a variant marked as not used.
-7. Use only components in the inventory. Check them with `get_inventory`.
-8. If a component is missing, add it with `plan_add` or `npx open-ds add <component>`.
-9. Do not build a look-alike of a component.
-10. To find the token or key for an intent, call `find_token` or run `open-ds token <scheme> <words>`.
-11. Before you use a colour, read its guidance with `get_context <token>`.
-12. Use only the scheme's CSS variables and component keys. Write no raw colours, sizes or spacing.
-13. To change a look, change its component key, for example `--button-radius`.
-14. Build the light theme first. Then check the dark theme.
-15. Write the words with `open-ds-write`.
-16. To explain a decision, call `why` with the question id or the component key.
-17. Before you finish, call `check_ui` with the files you changed. Fix each finding.
+1. Read `AGENTS.md`. It holds the rules that always apply.
+2. For the file you edit, call `get_context` with `file`, or run `open-ds context --file <path>`.
+3. Read the booklets it returns. Ask for a section only when they do not answer.
+4. For the whole task, call `get_context` with target `build`. It lists every situation and its rule.
+5. For each choice, find its situation with `when_to_use` or `npx open-ds when <scheme> <words>`.
+6. Do what the rule says. Never do what its "not" says.
+7. Before you use a component, call `get_component` or run `open-ds component <scheme> <id>`.
+8. Use only the variants this scheme uses, for what it says. Never use a variant marked as not used.
+9. Use only components in the inventory. Check them with `get_inventory`.
+10. If a component is missing, add it with `plan_add` or `npx open-ds add <component>`.
+11. Do not build a look-alike of a component.
+12. To find the token or key for an intent, call `find_token` or run `open-ds token <scheme> <words>`.
+13. Before you use a colour, read its guidance with `get_context <token>`.
+14. Use only the scheme's CSS variables and component keys. Write no raw colours, sizes or spacing.
+15. To change a look, change its component key, for example `--button-radius`.
+16. Build the light theme first. Then check the dark theme.
+17. Write the words with `open-ds-write`.
+18. To explain a decision, call `why` with the question id or the component key.
+19. Before you finish, call `check_ui` with the files you changed. Fix each finding.
 
 ## Done
 

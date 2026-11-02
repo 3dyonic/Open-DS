@@ -1139,7 +1139,7 @@ export function docsPages(
     }) +
     NOTE +
     `# For agents\n\nThis design system ships an agent layer, so an AI builds the way the system would and can say why.\n\n` +
-    `- **AGENTS.md** in the project root: the usage rules, the voice and tone, and the key decisions.\n` +
+    `- **AGENTS.md** in the project root: the rules that always apply. In a design system project it is short, and \`context/\` holds one booklet per component, colour and task, with a router (\`context/index.json\`) that says what to load for a file.\n` +
     `- **The agent skill** in \`.claude/skills/open-ds/SKILL.md\`: how to pick, read and follow the scheme.\n` +
     `- **The full scheme** in \`.open-ds/scheme.json\`: every answer with its reason.\n` +
     `- **llms.txt** next to these docs: an index of these pages for agents.\n\n` +

@@ -56,13 +56,25 @@ const ARBITRARY = /\b[a-z][a-z-]*-\[-?\d+(?:\.\d+)?(?:px|rem|em)\]/g;
  * Checks project files against a scheme. files: [{ path, content }]. Returns { pass, findings },
  * one finding per problem with the file, the line, the rule and the fix.
  */
+/**
+ * Where each finding is answered (OD-205): a file in a created project and its section heading.
+ * The harness checks that each one exists.
+ */
+export const SEE = {
+  "raw-colour": "context/tasks/build.md: Situations",
+  "raw-size": "context/tasks/build.md: Situations",
+  "not-in-inventory": "AGENTS.md: Components",
+  "variant-not-used": "context/components/<id>.md: Variants here",
+  "context-drift": "context/README.md",
+};
+
 export function checkUi(scheme, g, files) {
   const carried = new Map((scheme.inventory?.in ?? []).map((c) => [c.id, c]));
   const out = new Map((scheme.inventory?.out ?? []).map((c) => [c.id, c.why]));
   const catalogue = new Set(g.catalogue.items.map((i) => i.id));
   const findings = [];
-  const add = (file, text, index, rule, message, fix) =>
-    findings.push({ file, line: lineOf(text, index), rule, message, fix });
+  const add = (file, text, index, rule, message, fix, see = SEE[rule]) =>
+    findings.push({ file, line: lineOf(text, index), rule, message, fix, see });
   for (const { path, content } of files) {
     if (SKIP.test(path) || !/\.(tsx|jsx|ts|js|css|html|vue|svelte)$/.test(path))
       continue;
@@ -161,6 +173,7 @@ export function checkUi(scheme, g, files) {
             used.length
               ? `Use ${p[1]}: ${used.join(", ")}.`
               : `Leave ${p[1]} out.`,
+            `context/components/${id}.md: Variants here`,
           );
         }
       }

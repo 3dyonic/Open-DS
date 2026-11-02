@@ -114,6 +114,9 @@ step(`Run the packed CLI: create test-ds --scheme ${scheme}`, () => {
     "docs/docs/index.md",
     "scheme.json",
     "AGENTS.md",
+    "context/index.json",
+    "context/components/button.md",
+    "context/tasks/build.md",
   ])
     must(existsSync(join(project, need)), `missing ${need}`);
   return `${record.files.length} files`;
