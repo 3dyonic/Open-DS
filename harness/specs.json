@@ -349,6 +349,21 @@
         "components-reference",
         "json-files-validate"
       ]
+    },
+    {
+      "id": "OD-178",
+      "title": "Storybook guide: an introduction, foundations pages and one component docs template with when to use it and variants, in both Storybooks",
+      "in": [
+        "an Introduction page and Foundations pages (color, typography, spacing, shape, motion) read the active scheme's tokens and answers",
+        "every component docs page shows when to use it, each variant with this scheme's decision, how the scheme uses it, words and accessibility",
+        "the repo Storybook and a created project's Storybook share the same guide",
+        "every story and docs page renders in a browser, not only builds"
+      ],
+      "checks": [
+        "storybook-stories-uniform",
+        "storybook-renders",
+        "cli-create-works"
+      ]
     }
   ]
 }
