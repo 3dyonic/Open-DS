@@ -885,6 +885,34 @@ export const CHECKS = {
         : ok(`${names.length} skills follow the standard: front matter, Why to Done, short sentences, real tools`);
     },
   },
+  "mcp-instructions": {
+    requires: ["cli/src/mcp.mjs", "skills"],
+    run: (c) => {
+      // OD-204: the server instructions are the first thing an agent reads when it connects. Every
+      // tool they name exists, every prompt they name is a skill, and every tool reaches agents:
+      // through the instructions or a skill's tools list. Nothing else checks this text, so it drifted
+      // once already.
+      const src = c.read("cli/src/mcp.mjs");
+      const tools = [...src.matchAll(/registerTool\(\s*"(\w+)"/g)].map((m) => m[1]);
+      const start = src.indexOf("const INSTRUCTIONS = `");
+      if (start < 0) return bad("cli/src/mcp.mjs has no INSTRUCTIONS");
+      const text = src.slice(start, src.indexOf("`;", start));
+      const skills = c.walk("skills", (f) => f.endsWith("SKILL.md"));
+      const names = skills.map((f) => f.split("/").at(-2));
+      const granted = new Set(skills.flatMap((f) => [...c.read(f).matchAll(/^\s+-\s+(\w+)\s*$/gm)].map((m) => m[1])));
+      const gaps = [];
+      for (const m of text.matchAll(/\b((?:get|list|plan|compare|what|when|check|find|fit)_[a-z_]+)\b/g))
+        if (!tools.includes(m[1])) gaps.push(`the instructions name ${m[1]}, which is not a tool`);
+      for (const m of text.matchAll(/\b(open-ds-[a-z]+)\b/g))
+        if (!names.includes(m[1])) gaps.push(`the instructions name the prompt ${m[1]}, which is not a skill`);
+      for (const t of tools)
+        if (!new RegExp(`\\b${t}\\b`).test(text) && !granted.has(t))
+          gaps.push(`${t} reaches no agent: not in the instructions or any skill's tools`);
+      return gaps.length
+        ? bad([...new Set(gaps)].slice(0, 8).join("; "))
+        : ok(`the instructions name only real tools and prompts, and all ${tools.length} tools reach agents`);
+    },
+  },
   "llm-mcp-docstrings": {
     requires: ["cli/src/mcp.mjs"],
     run: (c) => {

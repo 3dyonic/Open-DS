@@ -373,3 +373,12 @@ test("the tools behind the skills answer through the server (OD-202)", async () 
   const bad = await c.callTool({ name: "plan_change", arguments: { scheme_id: "dense-data", question_id: "content.q2" } });
   assert.ok(bad.isError);
 });
+
+test("every server sends its instructions when an agent connects (OD-204)", async () => {
+  // The local stdio server and the hosted HTTP server are built by the same createMcpServer.
+  const c = await connect();
+  const text = c.getInstructions();
+  assert.match(text, /check_ui/);
+  assert.match(text, /fit_scheme/);
+  assert.match(text, /plan_change/);
+});
