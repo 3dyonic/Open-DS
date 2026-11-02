@@ -850,7 +850,11 @@ export const CHECKS = {
         const desc = field("description");
         if (!/\bUse when\b/.test(desc)) gaps.push(`${f}: the description has no "Use when"`);
         if (desc.split(/\s+/).length > 25) gaps.push(`${f}: the description has more than 25 words`);
-        const granted = (field("tools").match(/^\[(.*)\]$/)?.[1] ?? "").split(",").map((x) => x.trim()).filter(Boolean);
+        // tools: a YAML list, one tool a line ("  - get_component"), or inline ([a, b]).
+        const block = fm.match(/^tools:\s*\n((?:\s+-\s+\S+\n?)+)/m)?.[1];
+        const granted = block
+          ? [...block.matchAll(/-\s+(\S+)/g)].map((m) => m[1])
+          : (field("tools").match(/^\[(.*)\]$/)?.[1] ?? "").split(",").map((x) => x.trim()).filter(Boolean);
         if (!granted.length) gaps.push(`${f}: no tools list in the front matter`);
         const heads = [...body.matchAll(/^## (.+)$/gm)].map((m) => m[1].trim());
         if (heads.join(",") !== SECTIONS.join(",")) gaps.push(`${f}: sections are ${heads.join(", ")}, not ${SECTIONS.join(", ")}`);
@@ -859,7 +863,7 @@ export const CHECKS = {
           if (!tools.has(tool)) gaps.push(`${f}: tools lists ${tool}, which the MCP server does not have`);
           else if (!steps.includes(`\`${tool}`)) gaps.push(`${f}: ${tool} is listed but no Run step uses it`);
         }
-        for (const m of body.matchAll(/`((?:get|list|plan|compare|what|when)_[a-z_]+)/g))
+        for (const m of body.matchAll(/`((?:get|list|plan|compare|what|when|check|find|fit)_[a-z_]+)/g))
           if (!tools.has(m[1]) && !["use_when", "avoid_when"].includes(m[1])) gaps.push(`${f}: names ${m[1]}, which is not an MCP tool`);
         for (const m of body.matchAll(/`(?:npx )?open-ds ([a-z]+)/g))
           if (!commands.has(m[1])) gaps.push(`${f}: names open-ds ${m[1]}, which is not a CLI command`);

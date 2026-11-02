@@ -1,7 +1,15 @@
 ---
 name: open-ds-build
 description: Build UI in a project that uses an Open DS scheme. Use when you write or edit screens, components or styles.
-tools: [get_context, when_to_use, get_component, get_inventory, plan_add, why]
+tools:
+  - get_context
+  - when_to_use
+  - get_component
+  - get_inventory
+  - plan_add
+  - find_token
+  - check_ui
+  - why
 ---
 
 # Build UI with the scheme
@@ -31,17 +39,19 @@ Each component and variant has a decision behind it. Build with those decisions,
 7. Use only components in the inventory. Check them with `get_inventory`.
 8. If a component is missing, add it with `plan_add` or `npx open-ds add <component>`.
 9. Do not build a look-alike of a component.
-10. Before you use a colour, read its guidance with `get_context <token>`.
-11. Use only the scheme's CSS variables and component keys. Write no raw colours, sizes or spacing.
-12. To change a look, change its component key, for example `--button-radius`.
-13. Build the light theme first. Then check the dark theme.
-14. Write the words with `open-ds-write`.
-15. To explain a decision, call `why` with the question id or the component key.
+10. To find the token or key for an intent, call `find_token` or run `open-ds token <scheme> <words>`.
+11. Before you use a colour, read its guidance with `get_context <token>`.
+12. Use only the scheme's CSS variables and component keys. Write no raw colours, sizes or spacing.
+13. To change a look, change its component key, for example `--button-radius`.
+14. Build the light theme first. Then check the dark theme.
+15. Write the words with `open-ds-write`.
+16. To explain a decision, call `why` with the question id or the component key.
+17. Before you finish, call `check_ui` with the files you changed. Fix each finding.
 
 ## Done
 
 - Each component and variant follows its decision in `get_component`.
-- The code has no raw values.
+- `check_ui` or `open-ds check` returns no findings.
 - Light and dark both work.
 - You can explain each choice with its answer and reason.
 - `open-ds-review` finds no failures.
