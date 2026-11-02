@@ -1,7 +1,11 @@
 ---
 name: open-ds-change
 description: Change a token, a component or an answer in an Open DS scheme. Use when the product differs from the scheme.
-tools: [why, get_key, what_moves, get_component]
+tools:
+  - why
+  - get_key
+  - plan_change
+  - get_component
 ---
 
 # Change the design system
@@ -26,11 +30,12 @@ Each layer of the system feeds the next. A change at the right layer moves only 
 2. For the look of one component, change its component key, for example `button/radius`.
 3. For a value everywhere, change its semantic token. Find it with `why` or `get_key`.
 4. For a raw option, change the primitive that the semantic token points to.
-5. For a decision, change the answer itself. First call `what_moves` with its question id.
-6. Read what `what_moves` returns: the answers that follow, the token groups, the variant decisions and the rules.
-7. Check each variant decision it lists with `get_component`. Update the decisions that no longer fit.
-8. Write the new reason for each answer you change.
-9. Rebuild the tokens with `npm run tokens`.
+5. Before any change, call `plan_change`, or run `open-ds change <scheme> <question-id> <option>`.
+6. For a primitive, plan with the token path and the new value. Fix each pair that would fail contrast.
+7. For a decision, read what the plan returns: the answers that follow, the variant decisions and the rules.
+8. Check each variant decision it lists with `get_component`. Update the decisions that no longer fit.
+9. Write the new reason for each answer you change.
+10. Rebuild the tokens with `npm run tokens`.
 
 ## Done
 

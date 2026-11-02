@@ -33,6 +33,11 @@ Every tool is read-only. Taking, initialising and adding return the exact `npx o
 | `get_key`         | A component key's semantic, its value in every theme and its guidance.           |
 | `get_component`   | One component: what it and each variant are for, and how this scheme uses them.  |
 | `get_context`     | Only the context for one target: a task, component, key, token or situation.     |
+| `check_ui`        | Raw values, components the scheme does not carry and variants it does not use.   |
+| `check_copy`      | A label or message against the voice and the rule for its situation.             |
+| `plan_change`     | A change planned, not made: what an answer reopens, or a colour's contrast.      |
+| `find_token`      | The tokens and component keys that fit an intent, with their guidance.           |
+| `fit_scheme`      | The schemes ranked against a product description, with the reasons.              |
 | `plan_create`     | The `npx open-ds create` command and the files it writes.                        |
 | `plan_init`       | The `npx open-ds init` command, the files and the packages.                      |
 | `plan_add`        | The `npx open-ds add` command with the components and packages it brings.        |

@@ -45,7 +45,19 @@ npx open-ds when dense-data "a number in a table"
 npx open-ds component dense-data button
 ```
 
-Add `--json` to `list`, `show`, `why` and `when` for machine-readable output.
+## Check and plan
+
+```bash
+npx open-ds check .
+npx open-ds copy dense-data button "Export"
+npx open-ds change dense-data content.q2 moderate
+npx open-ds token dense-data "border of a field with an error"
+npx open-ds fit "a console where analysts triage alerts all day"
+```
+
+`check` lists raw colours and sizes, components the scheme does not carry and variants it does not use, and exits 1 when it finds any. `copy` checks a label or message against the voice. `change` plans a change without making it. `token` finds the token for an intent. `fit` ranks the schemes against a product.
+
+Add `--json` to any of these, and to `list`, `show`, `why` and `when`, for machine-readable output.
 
 ## Schemes
 

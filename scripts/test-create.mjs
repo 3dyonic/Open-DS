@@ -152,6 +152,20 @@ step("Ask why through the installed package", () => {
   );
 });
 
+step("Check the project's UI with the installed CLI", () => {
+  // OD-202: a created project follows its own scheme, so open-ds check finds nothing.
+  const out = run("npx", ["--no-install", "open-ds", "check", ".", "--json"], project);
+  const res = JSON.parse(out);
+  must(
+    res.pass,
+    res.findings
+      .slice(0, 5)
+      .map((f) => `${f.file}:${f.line} ${f.rule} ${f.message}`)
+      .join("; "),
+  );
+  return "clean";
+});
+
 step("Type-check the components and stories", () => {
   run("npx", ["tsc", "--noEmit"], project);
 });

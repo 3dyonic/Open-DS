@@ -1,7 +1,12 @@
 ---
 name: open-ds
 description: Build UI with an Open DS scheme. Use when you pick a scheme, take one into a project, or build UI with open-ds.json.
-tools: [when_to_use, get_component, get_context, why]
+tools:
+  - when_to_use
+  - get_component
+  - get_context
+  - check_ui
+  - why
 ---
 
 # Open DS
@@ -44,6 +49,7 @@ The MCP server serves the same five skills as prompts.
 10. Write no raw colours, sizes or spacing.
 11. To change a look, change its component key, for example `--button-radius`. Do not edit the component.
 12. To explain a decision, call `why` or run `open-ds why <scheme> <id>`. Quote the answer and its reason.
+13. Before you finish, call `check_ui` or run `open-ds check`. Fix each finding.
 
 ## Done
 

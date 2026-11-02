@@ -26,6 +26,14 @@ import { context, TASKS } from "./context.mjs";
 import { componentGuide, followers } from "./component.mjs";
 import { createProject } from "./create.mjs";
 import {
+  checkCopy,
+  checkUi,
+  COPY_KINDS,
+  findToken,
+  fitScheme,
+  planChange,
+} from "./tools.mjs";
+import {
   assetRoots,
   focusedSkills,
   grammar,
@@ -468,6 +476,151 @@ export function createMcpServer({ roots = assetRoots() } = {}) {
         );
       return json(out);
     },
+  );
+
+  // The tools behind the skills (OD-202): each does a step a skill would otherwise judge by eye.
+  server.registerTool(
+    "check_ui",
+    {
+      title: "Check UI",
+      description:
+        "Checks UI code against a scheme and lists each problem with its file, line, rule and fix: raw colours and sizes instead of tokens, components the scheme does not carry, and variants it decided not to use (for example the large Button size in Dense data). Pass the contents of the files; this server never reads your disk. A review passes only when this returns no findings. The CLI runs the same check on a folder: open-ds check.",
+      inputSchema: {
+        scheme_id: SchemeId,
+        files: z
+          .array(
+            z.object({
+              path: z
+                .string()
+                .describe(
+                  "The file's path in the project, for example src/app/page.tsx.",
+                ),
+              content: z.string().max(400000).describe("The file's full text."),
+            }),
+          )
+          .min(1)
+          .max(200)
+          .describe(
+            "The files to check: .tsx, .jsx, .ts, .js, .css, .html, .vue or .svelte.",
+          ),
+      },
+      annotations: { readOnlyHint: true },
+    },
+    async ({ scheme_id, files }) => json(checkUi(scheme(scheme_id), g, files)),
+  );
+
+  server.registerTool(
+    "check_copy",
+    {
+      title: "Check copy",
+      description:
+        "Checks one label or message against a scheme's voice: words on its avoid list, exclamation marks where the voice forbids them, a button as one short verb with no end punctuation, and at most two sentences. Returns the findings and the rule for the text's situation, with its example.",
+      inputSchema: {
+        scheme_id: SchemeId,
+        kind: z
+          .enum(Object.keys(COPY_KINDS))
+          .describe(
+            "What the text is: button, error, success, empty, confirm or hint.",
+          ),
+        text: z.string().min(1).max(2000).describe("The text to check."),
+      },
+      annotations: { readOnlyHint: true },
+    },
+    async ({ scheme_id, kind, text }) =>
+      json(checkCopy(scheme(scheme_id), g, { kind, text })),
+  );
+
+  server.registerTool(
+    "plan_change",
+    {
+      title: "Plan a change",
+      description:
+        "Plans a change without making it. For a new answer (question_id and option): the edits, the answers that follow, and the variant decisions and rules it reopens. For a new primitive value (token and value): the semantic tokens and component keys it reaches in each theme, and the contrast of every colour pair before and after, with the pairs that would fail.",
+      inputSchema: {
+        scheme_id: SchemeId,
+        question_id: z
+          .string()
+          .optional()
+          .describe(
+            "The question whose answer would change, for example content.q2.",
+          ),
+        option: z
+          .string()
+          .optional()
+          .describe("The new option id for that question."),
+        token: z
+          .string()
+          .optional()
+          .describe(
+            "A primitive token path, for example color.violet.light.600.",
+          ),
+        value: z
+          .string()
+          .optional()
+          .describe("The new value for that primitive, for example #5B4FE8."),
+      },
+      annotations: { readOnlyHint: true },
+    },
+    async ({ scheme_id, question_id, option, token, value }) => {
+      if (question_id && !option)
+        throw new Error("option is needed with question_id.");
+      if (token && !value) throw new Error("value is needed with token.");
+      return json(
+        planChange(
+          scheme(scheme_id),
+          g,
+          question_id ? { question: question_id, option } : { token, value },
+        ),
+      );
+    },
+  );
+
+  server.registerTool(
+    "find_token",
+    {
+      title: "Find a token",
+      description:
+        "Finds the semantic tokens and component keys that fit an intent in plain words, best first, with what each is for, what not to use it for and the fills it may sit on, plus the matching situation rule. Use it before you pick a colour or a key.",
+      inputSchema: {
+        scheme_id: SchemeId,
+        query: z
+          .string()
+          .min(2)
+          .max(200)
+          .describe(
+            'What the token is for, for example "border of a field with an error".',
+          ),
+      },
+      annotations: { readOnlyHint: true },
+    },
+    async ({ scheme_id, query }) =>
+      json(findToken(scheme(scheme_id), g, query)),
+  );
+
+  server.registerTool(
+    "fit_scheme",
+    {
+      title: "Fit a scheme",
+      description:
+        "Ranks the schemes against a description of a product, its people, content and main task, with the words that matched each scheme's use_when and the ones that match its avoid_when. Read the reasons before you pick.",
+      inputSchema: {
+        product: z
+          .string()
+          .min(3)
+          .max(1000)
+          .describe(
+            "The product in plain words: who uses it, what they see and their main task.",
+          ),
+      },
+      annotations: { readOnlyHint: true },
+    },
+    async ({ product }) =>
+      json(
+        fitScheme(
+          ids.map((id) => scheme(id)),
+          product,
+        ),
+      ),
   );
 
   server.registerTool(

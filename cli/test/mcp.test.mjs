@@ -18,7 +18,11 @@ const call = async (client, name, args = {}) => {
 };
 
 const TOOLS = [
+  "check_copy",
+  "check_ui",
   "compare_schemes",
+  "find_token",
+  "fit_scheme",
   "get_answer",
   "get_component",
   "get_context",
@@ -27,6 +31,7 @@ const TOOLS = [
   "get_scheme",
   "list_schemes",
   "plan_add",
+  "plan_change",
   "plan_create",
   "plan_init",
   "what_moves",
@@ -347,4 +352,24 @@ test("what_moves lists the variant decisions and rules an answer drives (OD-185)
     ),
   );
   assert.ok(m.rules.some((r) => r.situation === "smallest-target"));
+});
+
+test("the tools behind the skills answer through the server (OD-202)", async () => {
+  const c = await connect();
+  const ui = await call(c, "check_ui", {
+    scheme_id: "dense-data",
+    files: [{ path: "src/app/page.tsx", content: '<Button size="large">Go</Button>' }],
+  });
+  assert.equal(ui.pass, false);
+  assert.equal(ui.findings[0].rule, "variant-not-used");
+  const copy = await call(c, "check_copy", { scheme_id: "dense-data", kind: "button", text: "Export" });
+  assert.equal(copy.pass, true);
+  const plan = await call(c, "plan_change", { scheme_id: "dense-data", token: "color.violet.light.600", value: "#9C93F5" });
+  assert.equal(plan.pass, false);
+  const token = await call(c, "find_token", { scheme_id: "dense-data", query: "page background" });
+  assert.equal(token.results[0].token, "color.surface.canvas");
+  const fit = await call(c, "fit_scheme", { product: "a magazine where people read long articles" });
+  assert.equal(fit[0].scheme, "content-first");
+  const bad = await c.callTool({ name: "plan_change", arguments: { scheme_id: "dense-data", question_id: "content.q2" } });
+  assert.ok(bad.isError);
 });

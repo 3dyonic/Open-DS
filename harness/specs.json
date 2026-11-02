@@ -438,6 +438,21 @@
         "skills-shape",
         "llm-skill"
       ]
+    },
+    {
+      "id": "OD-202",
+      "title": "Tools for the skills: check_ui, check_copy, plan_change, find_token, fit_scheme",
+      "in": [
+        "each tool is one engine, served as an MCP tool and a CLI command (check, copy, change, token, fit)",
+        "check_ui finds raw values, components the scheme does not carry and variants it does not use; a created project comes back clean",
+        "plan_change changes nothing: it lists what an answer reopens, or the contrast a new colour keeps in every theme",
+        "the skills use the tools: review and build run check_ui, write check_copy, change plan_change, build find_token, choose fit_scheme"
+      ],
+      "checks": [
+        "skills-shape",
+        "llm-mcp-docstrings",
+        "cli-create-works"
+      ]
     }
   ]
 }
