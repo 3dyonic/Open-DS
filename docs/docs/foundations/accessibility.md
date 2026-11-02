@@ -13,6 +13,7 @@ Floors the system must hold.
 <div class="ods-specimen">
 <span class="ods-item"><span class="ods-bar" style="width:var(--size-control-default)"></span><span class="ods-label">size.control.default</span></span>
 <span class="ods-item"><span class="ods-bar" style="width:var(--size-control-compact)"></span><span class="ods-label">size.control.compact</span></span>
+<span class="ods-item"><span class="ods-bar" style="width:var(--size-control-large)"></span><span class="ods-label">size.control.large</span></span>
 <span class="ods-item"><span class="ods-swatch" style="opacity:var(--opacity-disabled)"></span><span class="ods-label">opacity.disabled</span></span>
 <span class="ods-item"><span class="ods-swatch" style="background:var(--color-border-focus)"></span><span class="ods-label">color.border.focus</span></span>
 </div>
@@ -35,6 +36,7 @@ Each token points to another token. Values live only on primitives, below.
 | --- | --- | --- |
 | `size.control.default` | `size.32` | `size.32` |
 | `size.control.compact` | `size.24` | `size.24` |
+| `size.control.large` | `size.32` | `size.32` |
 | `opacity.disabled` | `opacity.40` | `opacity.40` |
 | `color.border.focus` | `dense-data.theme.light.color.border.focus` → `color.violet.light.600` | `dense-data.theme.dark.color.border.focus` → `color.violet.dark.700` |
 

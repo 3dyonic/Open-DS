@@ -3682,6 +3682,12 @@
               "overview": "Icon only: the name is not on screen.",
               "apply_when": "A repeated, known control in chrome: close, settings, more.",
               "not_when": "A one-off or destructive action with no accessible name."
+            },
+            {
+              "id": "large",
+              "overview": "The largest size: the one action that must stand out most.",
+              "apply_when": "The single main call to action of a section or page.",
+              "not_when": "Ordinary actions, or more than one per section."
             }
           ],
           "state": [

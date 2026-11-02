@@ -15,7 +15,7 @@ const meta = {
   args: { children: "Continue", variant: "primary", size: "default" },
   argTypes: {
     variant: { control: "inline-radio", options: ["primary", "secondary", "ghost"] },
-    size: { control: "inline-radio", options: ["default", "compact", "icon"] },
+    size: { control: "inline-radio", options: ["default", "compact", "icon", "large"] },
   },
 } satisfies Meta<typeof Button>;
 export default meta;

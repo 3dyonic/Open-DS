@@ -8,7 +8,7 @@ description: "Button in Dense data."
 
 # Button
 
-Button. Triggers an action. Variants: primary (the one action that completes the task), secondary (alternatives, cancel, tools), ghost (quiet actions, actions inside rows and text). Sizes: default, compact. When to use each variant is a scheme decision: read `usage` in schemes/&lt;scheme>.json (situations commit-action, alternative-action, destructive-action, row-action). Reads only component keys: --button-\*, --transition-\*.
+Button. Triggers an action. Variants: primary (the one action that completes the task), secondary (alternatives, cancel, tools), ghost (quiet actions, actions inside rows and text). Sizes: default, compact, icon, large. What each one is for is the grammar's reference (catalogue item button); whether and how a design system uses it is that scheme's decision (inventory button.variants, OD-185). Disabled stays focusable and announced (aria-disabled), so keyboard and screen-reader users can still reach it and hear why; the click is blocked instead of dropping it from the tab order. Reads only component keys: --button-\*, --transition-\*.
 
 See it in [Storybook](http://localhost:6006) under Components / Button, in every theme.
 

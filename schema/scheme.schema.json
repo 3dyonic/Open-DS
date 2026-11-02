@@ -202,13 +202,13 @@
                   "additionalProperties": {
                     "type": "object",
                     "additionalProperties": false,
-                    "description": "This design system's decision on one variant: how it uses it, or that it does not.",
+                    "description": "This design system's decision on one variant: how it uses it, or that it does not. Always follows from answers (because).",
                     "oneOf": [
                       {
-                        "required": ["use"]
+                        "required": ["use", "because"]
                       },
                       {
-                        "required": ["not_used", "why"]
+                        "required": ["not_used", "why", "because"]
                       }
                     ],
                     "properties": {
@@ -228,11 +228,12 @@
                       },
                       "because": {
                         "type": "array",
+                        "minItems": 1,
                         "items": {
                           "type": "string",
                           "pattern": "^[a-z]+\\.(q\\d+|roles|count|definition|values|lands)$"
                         },
-                        "description": "Question ids whose answers this rule follows from."
+                        "description": "The question ids whose answers this decision follows from. Required: a decision with no answer above it is not part of the scheme."
                       }
                     }
                   }

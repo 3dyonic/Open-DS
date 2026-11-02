@@ -330,3 +330,21 @@ test("get_component: the reference next to each scheme's decisions (OD-185)", as
   });
   assert.ok(bad.isError);
 });
+
+test("what_moves lists the variant decisions and rules an answer drives (OD-185)", async () => {
+  const c = await connect();
+  const m = await call(c, "what_moves", {
+    scheme_id: "multi-brand",
+    question_id: "accessibility.values",
+  });
+  assert.ok(
+    m.variants.some(
+      (v) =>
+        v.component === "button" &&
+        v.axis === "size" &&
+        v.variant === "compact" &&
+        v.not_used,
+    ),
+  );
+  assert.ok(m.rules.some((r) => r.situation === "smallest-target"));
+});

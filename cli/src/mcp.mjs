@@ -370,6 +370,7 @@ export function createMcpServer({ roots = assetRoots() } = {}) {
             grew = true;
           }
       }
+      const moved = new Set(follows);
       follows.delete(question_id);
       const scope = g.scopes.find((x) =>
         x.questions.some((q) => q.id === question_id),
@@ -384,6 +385,23 @@ export function createMcpServer({ roots = assetRoots() } = {}) {
         })),
         tokens: scope?.owns ?? [],
         lands_in: scope?.lands_in ?? [],
+        // The outputs that cite the answer or anything that follows from it (OD-185): each variant
+        // decision in the component scheme, and each usage rule.
+        variants: s.inventory.in.flatMap((c) =>
+          Object.entries(c.variants ?? {}).flatMap(([axis, vs]) =>
+            Object.entries(vs)
+              .filter(([, d]) => (d.because ?? []).some((b) => moved.has(b)))
+              .map(([variant, d]) => ({
+                component: c.id,
+                axis,
+                variant,
+                ...d,
+              })),
+          ),
+        ),
+        rules: s.usage
+          .filter((u) => (u.because ?? []).some((b) => moved.has(b)))
+          .map((u) => ({ situation: u.situation, use: u.use })),
       });
     },
   );
