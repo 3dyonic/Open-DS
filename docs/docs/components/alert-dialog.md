@@ -14,9 +14,7 @@ A dialog that interrupts to confirm an action that cannot be undone.
 
 ## See it live
 
-<iframe src="http://localhost:6006/iframe.html?id=components-alert-dialog--examples&viewMode=story" title="Alert dialog examples in Storybook" loading="lazy" style="width:100%;height:320px;border:1px solid var(--color-border-default);border-radius:var(--radius-container)"></iframe>
-
-[Open Alert dialog in Storybook](http://localhost:6006/?path=/docs/components-alert-dialog--docs): every variant, the playground and its controls, in every theme.
+<div class="odv-live"><span class="odv-wait">Start Storybook to see it live: <code>npm run storybook</code></span><iframe src="http://localhost:6006/iframe.html?id=components-alert-dialog--examples&viewMode=story&globals=scheme:dense-data" title="Alert dialog examples in Storybook" loading="lazy"></iframe><div class="bar"><span>Live from Storybook</span><a href="http://localhost:6006/?path=/docs/components-alert-dialog--docs">Open Alert dialog in Storybook</a><a href="http://localhost:6006/iframe.html?id=components-alert-dialog--examples&viewMode=story&globals=scheme:dense-data;mode:dark">See it in dark</a></div></div>
 
 ## When to use it
 
@@ -30,10 +28,7 @@ Instead:
 
 ## How Dense data uses it
 
-| Situation | Use | Not | Why |
-| --- | --- | --- | --- |
-| Delete or remove | Button secondary, then confirm in a dialog | Button primary as the first step | Deleting is rare and costly; a confirm step catches mistakes. |
-| A confirmation question | Name the exact object and the consequence | "Are you sure?" | Acting on the wrong record is the costly mistake. Example: “Dismiss 3 alerts? This cannot be undone.” |
+<div class="odv-grid two"><div class="odv-dd"><div class="stage"><div class="odv-eyebrow">Delete or remove</div><div style="margin-top:6px"><b style="color:var(--color-status-success)">Use</b> Button secondary, then confirm in a dialog</div><div><b style="color:var(--color-status-danger)">Not</b> Button primary as the first step</div></div><div class="cap">Deleting is rare and costly; a confirm step catches mistakes.</div></div><div class="odv-dd"><div class="stage"><div class="odv-eyebrow">A confirmation question</div><div style="margin-top:6px"><b style="color:var(--color-status-success)">Use</b> Name the exact object and the consequence</div><div><b style="color:var(--color-status-danger)">Not</b> &quot;Are you sure?&quot;</div></div><div class="cap">Acting on the wrong record is the costly mistake. Example: “Dismiss 3 alerts? This cannot be undone.”</div></div></div>
 
 ## Words
 

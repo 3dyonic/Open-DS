@@ -14,9 +14,7 @@ A short message that confirms an action and goes away.
 
 ## See it live
 
-<iframe src="http://localhost:6006/iframe.html?id=components-toast--examples&viewMode=story" title="Toast examples in Storybook" loading="lazy" style="width:100%;height:320px;border:1px solid var(--color-border-default);border-radius:var(--radius-container)"></iframe>
-
-[Open Toast in Storybook](http://localhost:6006/?path=/docs/components-toast--docs): every variant, the playground and its controls, in every theme.
+<div class="odv-live"><span class="odv-wait">Start Storybook to see it live: <code>npm run storybook</code></span><iframe src="http://localhost:6006/iframe.html?id=components-toast--examples&viewMode=story&globals=scheme:dense-data" title="Toast examples in Storybook" loading="lazy"></iframe><div class="bar"><span>Live from Storybook</span><a href="http://localhost:6006/?path=/docs/components-toast--docs">Open Toast in Storybook</a><a href="http://localhost:6006/iframe.html?id=components-toast--examples&viewMode=story&globals=scheme:dense-data;mode:dark">See it in dark</a></div></div>
 
 ## When to use it
 
@@ -30,7 +28,11 @@ Instead:
 
 ## Variants
 
-What each variant is for in any design system, and what Dense data decided, with the answers behind it.
+What each variant is for in any design system, and what Dense data decided, with the answers behind it. Each sample is the live story with that variant set.
+
+<div class="odv-axis"><code>tone</code></div><div class="odv-grid"><div class="odv-card odv-vcard"><div class="stage"><iframe src="http://localhost:6006/iframe.html?id=components-toast--playground&viewMode=story&globals=scheme:dense-data&args=tone:neutral" title="Toast neutral" loading="lazy" tabindex="-1"></iframe></div><div class="body"><code>neutral</code><div class="ref">A plain confirmation.</div><div class="here"><b>In Dense data:</b> A plain confirmation: Filters cleared.</div><span class="odv-ans" title="How does it sound?">Terse · voice.values</span> </div></div><div class="odv-card odv-vcard"><div class="stage"><iframe src="http://localhost:6006/iframe.html?id=components-toast--playground&viewMode=story&globals=scheme:dense-data&args=tone:success" title="Toast success" loading="lazy" tabindex="-1"></iframe></div><div class="body"><code>success</code><div class="ref">Confirms that something people care about worked.</div><div class="here"><b>In Dense data:</b> A short confirmation with the count: 12 alerts exported.</div><span class="odv-ans" title="How does it sound?">Terse · voice.values</span> <span class="odv-ans" title="How often do people repeat actions?">Constantly · tasks.q2</span> </div></div><div class="odv-card odv-vcard"><div class="stage"><iframe src="http://localhost:6006/iframe.html?id=components-toast--playground&viewMode=story&globals=scheme:dense-data&args=tone:danger" title="Toast danger" loading="lazy" tabindex="-1"></iframe></div><div class="body"><code>danger</code><div class="ref">Something failed in the background.</div><div class="here"><b>In Dense data:</b> A background failure: name the record, then the fix.</div><span class="odv-ans" title="How does it sound?">Terse · voice.values</span> <span class="odv-ans" title="Where do the words matter most?">Errors and empty states · voice.lands</span> <span class="odv-ans" title="What is a costly mistake?">Acting on the wrong record · outcomes.q2</span> </div></div></div>
+
+### In detail
 
 | Axis | Variant | What it is for | In Dense data | Because |
 | --- | --- | --- | --- | --- |
@@ -40,21 +42,13 @@ What each variant is for in any design system, and what Dense data decided, with
 
 ## How Dense data uses it
 
-| Situation | Use | Not | Why |
-| --- | --- | --- | --- |
-| The words of an error | Name the record, then the fix. Flat and specific. | "Oops" or a vague apology | Experts act on the message; the record and the fix are all they need. Example: “Alert ALR-2042 not saved. Threshold must be between 0 and 100.” |
-| A success message | A short confirmation with the count | Celebration | Confirm and get out of the way; the next task is waiting. Example: “12 alerts exported.” |
+<div class="odv-grid two"><div class="odv-dd"><div class="stage"><div class="odv-eyebrow">The words of an error</div><div style="margin-top:6px"><b style="color:var(--color-status-success)">Use</b> Name the record, then the fix. Flat and specific.</div><div><b style="color:var(--color-status-danger)">Not</b> &quot;Oops&quot; or a vague apology</div></div><div class="cap">Experts act on the message; the record and the fix are all they need. Example: “Alert ALR-2042 not saved. Threshold must be between 0 and 100.”</div></div><div class="odv-dd"><div class="stage"><div class="odv-eyebrow">A success message</div><div style="margin-top:6px"><b style="color:var(--color-status-success)">Use</b> A short confirmation with the count</div><div><b style="color:var(--color-status-danger)">Not</b> Celebration</div></div><div class="cap">Confirm and get out of the way; the next task is waiting. Example: “12 alerts exported.”</div></div></div>
 
 ## Why it works this way
 
 The answers that shaped Toast here. Change one, and the decisions above change with it.
 
-| Question | Answer |
-| --- | --- |
-| How does it sound? (`voice.values`) | **Terse**. Experts want short labels and short messages. |
-| How often do people repeat actions? (`tasks.q2`) | **Constantly**. The same actions repeat many times an hour. |
-| Where do the words matter most? (`voice.lands`) | **Errors and empty states**. Errors and empty tables are where words decide the next action. |
-| What is a costly mistake? (`outcomes.q2`) | **Acting on the wrong record**. Acting on the wrong row is the costly error. |
+<div class="odv-grid"><div class="odv-card"><div class="odv-eyebrow">How does it sound?</div><q>Terse</q><p>Experts want short labels and short messages.</p><span class="odv-ans">voice.values</span><div class="odv-moves">Change it and 3 Toast decisions reopen.</div></div><div class="odv-card"><div class="odv-eyebrow">How often do people repeat actions?</div><q>Constantly</q><p>The same actions repeat many times an hour.</p><span class="odv-ans">tasks.q2</span><div class="odv-moves">Change it and 1 Toast decision reopen.</div></div><div class="odv-card"><div class="odv-eyebrow">Where do the words matter most?</div><q>Errors and empty states</q><p>Errors and empty tables are where words decide the next action.</p><span class="odv-ans">voice.lands</span><div class="odv-moves">Change it and 1 Toast decision reopen.</div></div><div class="odv-card"><div class="odv-eyebrow">What is a costly mistake?</div><q>Acting on the wrong record</q><p>Acting on the wrong row is the costly error.</p><span class="odv-ans">outcomes.q2</span><div class="odv-moves">Change it and 1 Toast decision reopen.</div></div></div>
 
 ## What moves if an answer changes
 

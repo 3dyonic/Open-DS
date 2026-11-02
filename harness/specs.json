@@ -395,6 +395,22 @@
         "docs-build",
         "storybook-renders"
       ]
+    },
+    {
+      "id": "OD-182",
+      "title": "Docs: branded and visual, wearing the design system",
+      "in": [
+        "the top bar carries the design system's name, version and sections, with Built with Open DS on the right",
+        "the home shows a product screen from the system's own components and samples, the answers it cites most, and tiles into every section",
+        "the colour page shows the key colours, the surfaces in light and dark, and each status in use with its contrast",
+        "component pages show the live story, each variant live with its decision and answers, the rules as do and don't, and the answers as cards",
+        "primitive colours show as ramps; the same visual styles ship in a created project's docs"
+      ],
+      "checks": [
+        "docs-sections",
+        "docs-build",
+        "cli-create-works"
+      ]
     }
   ]
 }

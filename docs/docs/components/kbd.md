@@ -14,9 +14,7 @@ A keyboard key or shortcut, shown as text.
 
 ## See it live
 
-<iframe src="http://localhost:6006/iframe.html?id=components-kbd--examples&viewMode=story" title="Kbd examples in Storybook" loading="lazy" style="width:100%;height:320px;border:1px solid var(--color-border-default);border-radius:var(--radius-container)"></iframe>
-
-[Open Kbd in Storybook](http://localhost:6006/?path=/docs/components-kbd--docs): every variant, the playground and its controls, in every theme.
+<div class="odv-live"><span class="odv-wait">Start Storybook to see it live: <code>npm run storybook</code></span><iframe src="http://localhost:6006/iframe.html?id=components-kbd--examples&viewMode=story&globals=scheme:dense-data" title="Kbd examples in Storybook" loading="lazy"></iframe><div class="bar"><span>Live from Storybook</span><a href="http://localhost:6006/?path=/docs/components-kbd--docs">Open Kbd in Storybook</a><a href="http://localhost:6006/iframe.html?id=components-kbd--examples&viewMode=story&globals=scheme:dense-data;mode:dark">See it in dark</a></div></div>
 
 ## When to use it
 

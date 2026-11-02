@@ -14,9 +14,7 @@ A bordered container for one item or group, with its title, content and actions.
 
 ## See it live
 
-<iframe src="http://localhost:6006/iframe.html?id=components-card--examples&viewMode=story" title="Card examples in Storybook" loading="lazy" style="width:100%;height:320px;border:1px solid var(--color-border-default);border-radius:var(--radius-container)"></iframe>
-
-[Open Card in Storybook](http://localhost:6006/?path=/docs/components-card--docs): every variant, the playground and its controls, in every theme.
+<div class="odv-live"><span class="odv-wait">Start Storybook to see it live: <code>npm run storybook</code></span><iframe src="http://localhost:6006/iframe.html?id=components-card--examples&viewMode=story&globals=scheme:dense-data" title="Card examples in Storybook" loading="lazy"></iframe><div class="bar"><span>Live from Storybook</span><a href="http://localhost:6006/?path=/docs/components-card--docs">Open Card in Storybook</a><a href="http://localhost:6006/iframe.html?id=components-card--examples&viewMode=story&globals=scheme:dense-data;mode:dark">See it in dark</a></div></div>
 
 ## When to use it
 
@@ -30,9 +28,7 @@ Instead:
 
 ## How Dense data uses it
 
-| Situation | Use | Not | Why |
-| --- | --- | --- | --- |
-| A card on the page | A hairline border, no shadow | A shadow | On a busy grid, lines separate. Shadows blur the edges. |
+<div class="odv-grid two"><div class="odv-dd"><div class="stage"><div class="odv-eyebrow">A card on the page</div><div style="margin-top:6px"><b style="color:var(--color-status-success)">Use</b> A hairline border, no shadow</div><div><b style="color:var(--color-status-danger)">Not</b> A shadow</div></div><div class="cap">On a busy grid, lines separate. Shadows blur the edges.</div></div></div>
 
 ## Words
 
