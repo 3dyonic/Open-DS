@@ -5,10 +5,10 @@ export const THEMES = [
   { value: "dense-data", title: "Dense data" },
   { value: "content-first", title: "Content first" },
   { value: "accessible-first", title: "Accessible first" },
+  { value: "brand-expressive", title: "Brand expressive" },
   { value: "multi-brand--aster", title: "Multi-brand · Aster" },
   { value: "multi-brand--birch", title: "Multi-brand · Birch" },
   { value: "multi-brand--coral", title: "Multi-brand · Coral" },
-  { value: "brand-expressive", title: "Brand expressive" },
 ];
 
 export interface SchemeChoice {
