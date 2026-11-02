@@ -362,6 +362,90 @@
         "why": "Few left; act soon."
       }
     ],
+    "table": {
+      "caption": "Drop 03 line-up",
+      "columns": [
+        {
+          "label": "Piece"
+        },
+        {
+          "label": "Colour"
+        },
+        {
+          "label": "Left",
+          "numeric": true
+        },
+        {
+          "label": "Status"
+        }
+      ],
+      "rows": [
+        {
+          "cells": [
+            "Night runner jacket",
+            "Ink",
+            "40"
+          ],
+          "status": "Almost gone"
+        },
+        {
+          "cells": [
+            "Trail shell",
+            "Volt",
+            "220"
+          ],
+          "status": "New"
+        },
+        {
+          "cells": [
+            "Studio hoodie",
+            "Chalk",
+            "180"
+          ],
+          "status": "On the list"
+        },
+        {
+          "cells": [
+            "Drift cap",
+            "Ember",
+            "35"
+          ],
+          "status": "Almost gone"
+        },
+        {
+          "cells": [
+            "Loop tee",
+            "Chalk",
+            "300"
+          ],
+          "status": "New"
+        },
+        {
+          "cells": [
+            "Cargo short",
+            "Ember",
+            "150"
+          ],
+          "status": "On the list"
+        },
+        {
+          "cells": [
+            "Pace sock",
+            "Volt",
+            "90"
+          ],
+          "status": "New"
+        },
+        {
+          "cells": [
+            "Weekend tote",
+            "Ink",
+            "25"
+          ],
+          "status": "Almost gone"
+        }
+      ]
+    },
     "metrics": [
       {
         "label": "Days to launch",
@@ -387,6 +471,25 @@
       "error": "That email doesn't look right. Check it and try again.",
       "invalid": "hello@"
     },
+    "checkbox": [
+      "Remind me at launch",
+      "Tell me about the next drop",
+      "Text me when it's live"
+    ],
+    "select": {
+      "label": "Your size",
+      "options": [
+        "S",
+        "M",
+        "L",
+        "XL"
+      ],
+      "value": "M"
+    },
+    "switches": [
+      "Launch reminder",
+      "Drop news by email"
+    ],
     "messages": {
       "success": "You're on the list. See you at launch.",
       "error": {
@@ -408,7 +511,30 @@
       "status": "Almost gone",
       "primary": "Join the drop",
       "secondary": "Save"
-    }
+    },
+    "tabs": [
+      {
+        "label": "Line-up",
+        "content": "12 pieces. 4 colours."
+      },
+      {
+        "label": "Countdown",
+        "content": "6 days to go."
+      },
+      {
+        "label": "The list",
+        "content": "2,400 people are in."
+      }
+    ],
+    "menu": {
+      "trigger": "More for this piece",
+      "items": [
+        "Share the drop",
+        "Set a reminder"
+      ],
+      "destructive": "Leave the list"
+    },
+    "icon_action": "Share the drop"
   },
   "themes": [
     {
