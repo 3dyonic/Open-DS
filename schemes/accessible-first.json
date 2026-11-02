@@ -332,6 +332,66 @@
         "why": "The file did not reach us and must be sent again."
       }
     ],
+    "table": {
+      "caption": "Your application",
+      "columns": [
+        {
+          "label": "Step"
+        },
+        {
+          "label": "Questions",
+          "numeric": true
+        },
+        {
+          "label": "Time it takes"
+        },
+        {
+          "label": "Status"
+        }
+      ],
+      "rows": [
+        {
+          "cells": [
+            "About you",
+            "6",
+            "About 2 minutes"
+          ],
+          "status": "Completed"
+        },
+        {
+          "cells": [
+            "Your home",
+            "8",
+            "About 3 minutes"
+          ],
+          "status": "Check your answers"
+        },
+        {
+          "cells": [
+            "Your money",
+            "10",
+            "About 4 minutes"
+          ],
+          "status": "Not started"
+        },
+        {
+          "cells": [
+            "Your documents",
+            "3",
+            "About 5 minutes"
+          ],
+          "status": "Upload failed"
+        },
+        {
+          "cells": [
+            "Check and send",
+            "1",
+            "About 2 minutes"
+          ],
+          "status": "Not started"
+        }
+      ]
+    },
     "metrics": [
       {
         "label": "Steps done",
@@ -362,6 +422,27 @@
       "Someone is helping me fill in this form",
       "Contact me by text message"
     ],
+    "select": {
+      "label": "How should we contact you?",
+      "options": [
+        "By email",
+        "By text message",
+        "By post"
+      ],
+      "value": "By text message"
+    },
+    "switches": [
+      "Show help on every question",
+      "Remind me by text message"
+    ],
+    "messages": {
+      "success": "Your answers are saved. You can come back later.",
+      "error": {
+        "title": "We could not get your document.",
+        "description": "Choose the file again, then select Continue."
+      },
+      "neutral": "You have not sent any documents yet."
+    },
     "confirm": {
       "trigger": "Cancel application",
       "title": "Do you want to cancel your application?",
@@ -375,7 +456,30 @@
       "status": "Not started",
       "primary": "Start this step",
       "secondary": "Change earlier answers"
-    }
+    },
+    "tabs": [
+      {
+        "label": "Your answers",
+        "content": "You have answered 6 of 8 questions."
+      },
+      {
+        "label": "Documents",
+        "content": "You have sent 3 documents."
+      },
+      {
+        "label": "Help",
+        "content": "Someone can help you fill in this form."
+      }
+    ],
+    "menu": {
+      "trigger": "Options for this step",
+      "items": [
+        "Change your answers",
+        "Print this step"
+      ],
+      "destructive": "Delete your answers"
+    },
+    "icon_action": "Get help with this question"
   },
   "themes": [
     {
