@@ -1131,6 +1131,28 @@ export const CHECKS = {
       return r.code === 0 ? ok("storybook builds") : bad(tail(r.out));
     },
   },
+  "storybook-renders": {
+    requires: ["storybook/package.json", "harness/storybook-renders.cjs"],
+    slow: true,
+    run: (c) => {
+      // A build can pass while stories fail to show, so open every story and docs page (OD-178).
+      const b = c.sh("pnpm", ["--dir", "storybook", "build"]);
+      if (b.code !== 0) return bad(tail(b.out));
+      const r = c.sh("node", ["harness/storybook-renders.cjs", c.p("storybook/storybook-static")]);
+      let res;
+      try {
+        res = JSON.parse(r.out.trim().split("\n").pop());
+      } catch {
+        return bad(tail(r.out));
+      }
+      if (res.missing)
+        return pending("Playwright is not installed: npm i -g playwright && npx playwright install chromium");
+      if (res.error) return bad(res.error);
+      return res.failed.length
+        ? bad(res.failed.slice(0, 5).map((f) => `${f.id}: ${f.problem}`).join("; "))
+        : ok(`${res.entries} stories and docs pages render`);
+    },
+  },
 
   // Site
   "site-stack": {
