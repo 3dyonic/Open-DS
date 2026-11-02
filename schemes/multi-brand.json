@@ -4,11 +4,11 @@
   "name": "Multi-brand",
   "version": "0.1.0",
   "status": "draft",
-  "summary": "One shared system with three brands as themes. Components never change; brand primitives do.",
-  "description": "Multi-brand is an Open DS scheme: a full set of answers to the Open DS grammar, with the reasons behind each, usage rules, voice and tone, and the tokens that follow. One shared system with three brands as themes. Components never change; brand primitives do.",
+  "summary": "Customer screens for several brands, often on phones: sign-up, checkout, account. Components never change; brand primitives do.",
+  "description": "Multi-brand is an Open DS scheme: a full set of answers to the Open DS grammar, with the reasons behind each, usage rules, voice and tone, and the tokens that follow. Customer screens for several brands, often on phones: sign-up, checkout, account. Components never change; brand primitives do.",
   "ai": {
-    "use_when": "Companies with several brands or white-label products on one component library.",
-    "avoid_when": "A single product with one brand: the brand layer is cost with no user.",
+    "use_when": "Companies that sell to customers under several brands, or white-label products shown to their clients' customers: sign-up, checkout, account and product pages.",
+    "avoid_when": "A single product with one brand, where the brand layer is cost with no user; or tools staff use all day. Use Dense data for those.",
     "example_products": [
       "Brand family of apps",
       "White-label platform",
