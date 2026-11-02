@@ -1265,7 +1265,7 @@ export const CHECKS = {
           "themes.md",
           "agents.md",
           ...g.scopes.map((sc) => `foundations/${sc.id}.md`),
-          "foundations/primitives.md",
+          "primitives/index.md",
         ];
         const missing = need.filter((p) => !pages[p]);
         if (missing.length) gaps.push(`${id}: ${missing.join(", ")}`);
@@ -1282,8 +1282,8 @@ export const CHECKS = {
           const lacking = want.filter((h) => !text.includes(h));
           if (lacking.length) gaps.push(`${id} ${p}: no ${lacking.join(", ")}`);
         }
-        // OD-184: the primitives page lists every primitive.
-        const prim = pages["foundations/primitives.md"] ?? "";
+        // OD-184, OD-195: the Primitives section counts every primitive.
+        const prim = pages["primitives/index.md"] ?? "";
         const count = (function n(x) {
           return x && typeof x === "object" ? ("$value" in x ? 1 : Object.entries(x).filter(([k]) => !k.startsWith("$")).reduce((a, [, v]) => a + n(v), 0)) : 0;
         })(loadScheme(id, roots).tokens.primitive);
