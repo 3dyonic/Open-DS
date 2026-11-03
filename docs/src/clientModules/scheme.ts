@@ -5,7 +5,8 @@ import siteConfig from "@generated/docusaurus.config";
 const ids = (siteConfig.customFields?.schemes as { id: string }[]).map((s) => s.id);
 
 export function onRouteDidUpdate({ location }: { location: Location }) {
-  const id = location.pathname.split("/")[1];
+  // Paths start with the site's base URL: "/" locally, "/docs/" on open-ds.dev (OD-210).
+  const id = location.pathname.slice(siteConfig.baseUrl.length).split("/")[0];
   const html = document.documentElement;
   if (ids.includes(id)) html.setAttribute("data-scheme", id);
   else html.removeAttribute("data-scheme");

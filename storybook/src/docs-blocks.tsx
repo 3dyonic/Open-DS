@@ -63,8 +63,7 @@ function chain(s: SchemeData, path: string) {
   let at = path;
   for (let i = 0; i < 8; i++) {
     const node = trees.map((x) => get(x, at)).find((n) => n && typeof n === "object" && "$value" in (n as Tree)) as
-      | { $value: unknown }
-      | undefined;
+      { $value: unknown } | undefined;
     const m = typeof node?.$value === "string" && node.$value.match(/^\{(.+)\}$/);
     if (!m) break;
     steps.push(m[1]);
@@ -161,5 +160,29 @@ export function ComponentKeys() {
         ))}
       </tbody>
     </table>
+  );
+}
+
+// The docs site (OD-210): http://localhost:3000 next to `pnpm --dir docs start`, /docs on open-ds.dev.
+const DOCS = (
+  (import.meta as unknown as { env?: Record<string, string> }).env?.STORYBOOK_DOCS_URL ?? "http://localhost:3000"
+).replace(/\/$/, "");
+
+/** One quiet line at the end of a component's page: the same component in the scheme's docs, where the reasons live. Text only. */
+export function DocsLink() {
+  const { component } = useOpenDs();
+  const s = useActiveScheme();
+  if (!component) return null;
+  const name = component
+    .split("-")
+    .map((w) => w[0].toUpperCase() + w.slice(1))
+    .join(" ");
+  return (
+    <p className="sb-unstyled ods-docslink">
+      Why {s.name} uses it this way →{" "}
+      <a href={`${DOCS}/${s.id}/components/${component}`} target="_top">
+        {name} in the {s.name} docs
+      </a>
+    </p>
   );
 }

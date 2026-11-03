@@ -322,15 +322,15 @@ export function docsPages(
   scheme,
   g,
   roots,
-  { storybook = "http://localhost:6006", all = false, robots = false } = {},
+  { storybook = "http://localhost:6006", all = false, robots = false, base = "/" } = {},
 ) {
   // robots: the Open DS robot illustrations (OD-209), in the repo docs only. A scope's robot on its
   // Foundations card, the scheme's robot on its home page and in "Not part of" notes, Shelf on the
-  // inventory. Day and night editions; the theme picks one. Created projects get the same layout
+  // inventory. Day and night editions; the theme picks one. base: the site's base URL, for raw HTML. Created projects get the same layout
   // without the pictures, so the package stays small.
   const robot = (name, cls = "") =>
     robots
-      ? `<span class="odv-robot ${cls}"><img class="odv-robot-day" src="/robots/${name}.webp" alt="" loading="lazy"/><img class="odv-robot-night" src="/robots/${name}-dark.webp" alt="" loading="lazy"/></span>`
+      ? `<span class="odv-robot ${cls}"><img class="odv-robot-day" src="${base}robots/${name}.webp" alt="" loading="lazy"/><img class="odv-robot-night" src="${base}robots/${name}-dark.webp" alt="" loading="lazy"/></span>`
       : "";
   // all: a page for every built component, the ones the scheme leaves out too, each marked "Not part
   // of" (OD-207). The repo docs use it so a scheme switch never lands on a missing page, the way the

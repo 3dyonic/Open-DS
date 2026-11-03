@@ -9,6 +9,8 @@ import { Eyebrow, Legend, Swatch } from "@/components/chrome";
 import { ScopeMini } from "@/components/scope-mini";
 import { cardMark, REASON_LABEL } from "@/lib/home";
 import { figmaKit } from "@/lib/figma-kits";
+import { Robot } from "@/components/robot";
+import { docsOf, storybookOf } from "@/lib/places";
 import { answerOf, grammar, scheme, schemeIds } from "@/lib/schemes";
 
 export function generateStaticParams() {
@@ -250,6 +252,53 @@ export default async function SchemePage({ params }: { params: Promise<{ id: str
         </ul>
       </section>
 
+      {/* The docs and Storybook (OD-210): two places, each with its own people and path. */}
+      <section className="grid gap-5 md:grid-cols-2" aria-label={`${s.name} docs and Storybook`}>
+        {[
+          {
+            id: "docs",
+            robot: "scroll" as const,
+            eyebrow: "For designers, product teams and agents",
+            title: `${s.name} docs`,
+            text: `Why ${s.name} looks and behaves the way it does: every foundation, component and rule, with the answer behind it.`,
+            href: docsOf(s.id),
+            cta: "Read the docs",
+          },
+          {
+            id: "storybook",
+            robot: "shelf" as const,
+            eyebrow: "For developers",
+            title: `${s.name} in Storybook`,
+            text: `Every component live in ${s.name}, in each theme${brands.length > 1 ? " and brand" : ""}. Try the props, then copy the code.`,
+            href: storybookOf(
+              s.id,
+              brands.map((b) => b.id),
+            ),
+            cta: "Open Storybook",
+          },
+        ].map((c) => (
+          <div key={c.id} className="flex gap-5 rounded-[8px] border border-line bg-white p-8">
+            <div className="flex flex-1 flex-col gap-2">
+              <Eyebrow>{c.eyebrow}</Eyebrow>
+              <h2 id={`place-${c.id}`} className="text-[28px] font-extrabold">
+                {c.title}
+              </h2>
+              <p className="text-[16px] leading-[1.45] text-body">{c.text}</p>
+              <a
+                href={c.href}
+                aria-describedby={`place-${c.id}`}
+                className="mt-3 flex items-center gap-[10px] self-start rounded-[4px] border border-ink px-5 py-[14px] text-[17px] font-semibold"
+              >
+                {c.cta}
+              </a>
+            </div>
+            <div aria-hidden className="hidden w-[112px] shrink-0 items-end sm:flex">
+              <Robot name={c.robot} className="h-auto w-full" />
+            </div>
+          </div>
+        ))}
+      </section>
+
       {kit && (
         <section
           className="flex flex-col gap-4 rounded-[8px] border border-line bg-white p-8 md:flex-row md:items-center md:justify-between"
@@ -293,6 +342,8 @@ export default async function SchemePage({ params }: { params: Promise<{ id: str
           {[
             ["CLI", `open-ds init ${s.id}`],
             ["Agent", `MCP · get_scheme("${s.id}")`],
+            ["Docs", `open-ds.dev/docs/${s.id}/`],
+            ["Storybook", "Every component, live"],
             ...(kit ? [["Figma", "Figma kit · variables, styles, components"]] : []),
           ].map(([k, v]) => (
             <li key={k} className="flex gap-4 rounded-[4px] border border-muted px-4 py-3">
