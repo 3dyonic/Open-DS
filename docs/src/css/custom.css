@@ -2,7 +2,7 @@
    Docusaurus's own variables at them. The rules below dress the parts Docusaurus has no
    variable for in the same tokens and component keys. */
 @import url("https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible:wght@400;700&family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,600;12..96,800&family=DM+Mono:wght@400;500&family=DM+Sans:wght@400;700&family=IBM+Plex+Mono&family=IBM+Plex+Sans:wght@400;500;600&family=Inter:wght@400;600;700&family=Plus+Jakarta+Sans:wght@400;600;700&family=Poppins:wght@400;600;700&family=Source+Serif+4:wght@400;600&display=swap");
-@import "./scheme.css";
+@import "./schemes.css";
 @import "./visual.css";
 
 body {
@@ -273,4 +273,107 @@ code {
   font-weight: var(--type-label-font-weight);
   letter-spacing: 0.02em;
   text-transform: uppercase;
+}
+
+/* The scheme switcher and the landing page (OD-207). They read the tokens of the scheme you are on;
+   on the landing page, where no scheme applies, Docusaurus's own variables. */
+.ods-switcher {
+  display: flex;
+  gap: var(--space-gap-tight, 0.5rem);
+  align-items: center;
+  padding: 0 var(--ifm-navbar-item-padding-horizontal);
+}
+.ods-switcher label {
+  display: flex;
+  gap: 0.375rem;
+  align-items: center;
+  font-size: var(--type-label-font-size, 0.875rem);
+  color: var(--ifm-font-color-secondary);
+}
+.ods-switcher select {
+  font: inherit;
+  color: var(--ifm-font-color-base);
+  background: var(--ifm-background-surface-color);
+  border: 1px solid var(--color-border-default, var(--ifm-color-emphasis-300));
+  border-radius: var(--radius-control, 0.25rem);
+  padding: 0.25rem 0.5rem;
+}
+.ods-switcher--mobile {
+  padding: 0.5rem var(--ifm-menu-link-padding-horizontal);
+  flex-wrap: wrap;
+}
+.ods-home {
+  max-width: 64rem;
+  margin: 0 auto;
+  padding: 3rem 1rem 4rem;
+}
+.ods-home h1 {
+  font-size: 2.25rem;
+  line-height: 1.15;
+  text-wrap: balance;
+}
+.ods-home-lede {
+  max-width: 40rem;
+  color: var(--ifm-font-color-secondary);
+}
+.ods-home-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(16rem, 1fr));
+  gap: 1rem;
+  margin-top: 2rem;
+}
+.ods-home-card {
+  display: grid;
+  gap: 0.5rem;
+  align-content: start;
+  padding: 1.25rem;
+  border: 1px solid var(--ifm-color-emphasis-300);
+  border-radius: 0.5rem;
+  color: inherit;
+}
+.ods-home-card:hover {
+  text-decoration: none;
+  border-color: var(--ifm-color-primary);
+}
+.ods-home-name {
+  font-weight: 700;
+  font-size: 1.125rem;
+}
+.ods-home-summary {
+  color: var(--ifm-font-color-secondary);
+}
+.ods-home-meta {
+  font-size: 0.8125rem;
+  color: var(--ifm-font-color-secondary);
+}
+/* The navbar holds a scheme's sections and the switcher in every scheme's type size: items never
+   wrap, and on narrower screens the labels and gaps tighten before Docusaurus switches to its menu. */
+.navbar__item,
+.navbar__brand,
+.navbar__title {
+  white-space: nowrap;
+}
+@media (max-width: 1440px) {
+  .navbar {
+    font-size: min(var(--type-label-font-size, 0.875rem), 0.9375rem);
+  }
+  .navbar__item {
+    --ifm-navbar-item-padding-horizontal: 0.5rem;
+  }
+  .ods-switcher label > span {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+    clip: rect(0 0 0 0);
+  }
+}
+@media (max-width: 1280px) {
+  .navbar__title {
+    display: none;
+  }
+}
+/* A component the scheme leaves out: its page exists so a switch never breaks, dimmed in the sidebar. */
+.ods-left-out > .menu__link:not(.menu__link--active) {
+  opacity: 0.55;
 }

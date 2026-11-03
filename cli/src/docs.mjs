@@ -322,8 +322,11 @@ export function docsPages(
   scheme,
   g,
   roots,
-  { storybook = "http://localhost:6006" } = {},
+  { storybook = "http://localhost:6006", all = false } = {},
 ) {
+  // all: a page for every built component, the ones the scheme leaves out too, each marked "Not part
+  // of" (OD-207). The repo docs use it so a scheme switch never lands on a missing page, the way the
+  // repo Storybook renders every component in every scheme (OD-192).
   const qs = questions(g);
   const sits = Object.fromEntries(g.situations.map((s) => [s.id, s]));
   const answer = (id) => scheme.answers.find((a) => a.question === id);
@@ -893,7 +896,10 @@ export function docsPages(
   // A page per component that is in the inventory and built (OD-194). It reads the same engine as the
   // CLI's component command and the MCP's get_component, so the docs, Storybook and agents agree, and
   // adds what Storybook cannot: the answers behind each decision and what a change would move.
-  const names = built.filter((n) => !scheme.inventory || n in inventory);
+  const names = built.filter(
+    (n) => all || !scheme.inventory || n in inventory,
+  );
+  const leftOut = (n) => Boolean(scheme.inventory) && !(n in inventory);
   // Embeds open the story in this design system: the Open DS Storybook reads the scheme (and the first
   // brand) from its toolbar global; a created project's Storybook has one scheme and ignores it.
   const brandIds = Object.keys(scheme.tokens.brands ?? {});
@@ -912,7 +918,9 @@ export function docsPages(
     const parts = [];
     parts.push(
       `# ${title(name)}\n\n${esc(r.overview ?? componentIntro(roots.ui, name))}\n\n` +
-        `**In ${esc(scheme.name)}.** ${esc(guide?.why ?? inventory[name] ?? "")}` +
+        (leftOut(name)
+          ? `**Not part of ${esc(scheme.name)}.** ${esc(out[name] ?? guide?.why ?? "Its answers did not pick it.")} The examples use ${esc(scheme.name)}'s tokens, to show how it would look if the design system added it.`
+          : `**In ${esc(scheme.name)}.** ${esc(guide?.why ?? inventory[name] ?? "")}`) +
         (guide?.family ? ` Family: ${guide.family}.` : "") +
         (r.source
           ? ` Reference: ${esc(r.source.name)}${r.source.id ? ` (${r.source.id})` : ""}, ${r.source.license}.`
@@ -1094,6 +1102,7 @@ export function docsPages(
         sidebar_position: i + 1,
         title: title(name),
         description: `${title(name)} in ${scheme.name}.`,
+        ...(leftOut(name) && { sidebar_class_name: "ods-left-out" }),
       }) +
       NOTE +
       parts.join("\n\n") +

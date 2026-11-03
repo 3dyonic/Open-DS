@@ -208,7 +208,7 @@
       "title": "Docusaurus documents the delivered design system, per scheme",
       "in": [
         "cli/src/docs.mjs page builder",
-        "docs/ builds any scheme (OPEN_DS_SCHEME) in its own fonts and colors",
+        "docs/ builds every scheme, each in its own fonts and colors (OD-207)",
         "open-ds init --docs and MCP deploy docs=true",
         "Open DS pages moved to guide/"
       ],
@@ -485,6 +485,22 @@
         "context-benchmark",
         "mcp-instructions",
         "skills-shape"
+      ]
+    },
+    {
+      "id": "OD-207",
+      "title": "Repo docs: one Docusaurus site for every scheme, with a scheme switcher",
+      "in": [
+        "docs/ holds every scheme, one folder each, with a landing page that shows them",
+        "a switcher in the navbar keeps the page and swaps the scheme; multi-brand also picks a brand",
+        "each scheme's tokens apply only on its own pages",
+        "every component page exists in every scheme; a left-out one says Not part of, with the reason",
+        "a created project's docs stay one scheme"
+      ],
+      "checks": [
+        "docs-schemes",
+        "docs-sections",
+        "docs-build"
       ]
     }
   ]

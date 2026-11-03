@@ -1,0 +1,49 @@
+[
+  {
+    "id": "dense-data",
+    "name": "Dense data",
+    "version": "0.1.0",
+    "summary": "Compact, exact and quiet, for analysts who scan alerts and compare signals all day.",
+    "brands": [
+      "default"
+    ]
+  },
+  {
+    "id": "content-first",
+    "name": "Content first",
+    "version": "0.1.0",
+    "summary": "Large, calm type and generous space, for people who come to read.",
+    "brands": [
+      "default"
+    ]
+  },
+  {
+    "id": "accessible-first",
+    "name": "Accessible first",
+    "version": "0.1.0",
+    "summary": "Large text, large targets and AAA contrast, so everyone can finish the task.",
+    "brands": [
+      "default"
+    ]
+  },
+  {
+    "id": "brand-expressive",
+    "name": "Brand expressive",
+    "version": "0.1.0",
+    "summary": "Big display type, vivid color and springy motion, for launches that must be remembered.",
+    "brands": [
+      "default"
+    ]
+  },
+  {
+    "id": "multi-brand",
+    "name": "Multi-brand",
+    "version": "0.1.0",
+    "summary": "Customer screens for several brands, often on phones: sign-up, checkout, account. Components never change; brand primitives do.",
+    "brands": [
+      "aster",
+      "birch",
+      "coral"
+    ]
+  }
+]

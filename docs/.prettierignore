@@ -3,5 +3,6 @@ build
 static
 # Generated from the scheme by scripts/generate.mjs
 docs
-src/css/scheme.css
-scheme.json
+src/css/schemes.css
+src/css/schemes
+schemes.json
