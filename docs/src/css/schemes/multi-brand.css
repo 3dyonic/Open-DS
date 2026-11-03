@@ -1086,3 +1086,6 @@ html[data-scheme="multi-brand"] .navbar__logo img { content: url("/logo-multi-br
 html[data-scheme="multi-brand"] .theme-doc-sidebar-container .menu::after { background-image: url("/robots/multi-brand.webp"); }
 html[data-scheme="multi-brand"][data-theme="dark"] .theme-doc-sidebar-container .menu::after { background-image: url("/robots/multi-brand-dark.webp"); }
 html[data-scheme="multi-brand"][data-theme="dark"] .navbar__logo img { content: url("/logo-multi-brand-dark.svg"); }
+html[data-scheme="multi-brand"][data-brand="aster"] .odv-brandset:not([data-for-brand="aster"]) { display: none; }
+html[data-scheme="multi-brand"][data-brand="birch"] .odv-brandset:not([data-for-brand="birch"]) { display: none; }
+html[data-scheme="multi-brand"][data-brand="coral"] .odv-brandset:not([data-for-brand="coral"]) { display: none; }

@@ -809,7 +809,6 @@ export function docsPages(
     const semPath = (p) => p.replace(/^\./, "").replace(/\.@$/, "");
     const cap = (x) => x.charAt(0).toUpperCase() + x.slice(1);
     const brandLabel = (b) => scheme.tokens.brands[b]?.label ?? cap(b);
-    const base0 = scheme.tokens.brands[brandIds[0]]?.theme?.base ?? {};
     const radius = (th, k) => value(th, `radius.${k}`, "0");
     const sts = (smp.statuses ?? []).filter((x) => STATUS_CLASS[x.meaning]).slice(0, 2);
     const commit = scheme.tokens.content?.action?.commit?.$value ?? "Save";
@@ -828,6 +827,27 @@ export function docsPages(
         `</div></div>`,
       );
     };
+    const sameBlock = (b) => {
+      const base = scheme.tokens.brands[b]?.theme?.base ?? {};
+      const th = scheme.themes.find((t) => t.brand === b) ?? first;
+      const radii = leaves(base.radius ?? {}, "").map((x) => x.path.replace(/^\./, ""));
+      const fams = {};
+      for (const x of leaves(base.type ?? {}, "")) {
+        const role = x.path.replace(/^\./, "").split(".")[0];
+        const v = String(cssValue(value(th, `type.${role}.font-family`, "")) || "").split(",")[0].replaceAll('"', "");
+        if (v) (fams[v] ??= []).push(role);
+      }
+      return h(
+        `<h3>What stays the same in every mode</h3><div class="odv-same">`,
+        radii.length
+          ? `<div class="odv-card"><b>Corners</b><div class="odv-corners">${radii.map((r) => `<span><i style="border-radius:${radius(th, r)}"></i>${attr(r)} · ${attr(radius(th, r))}</span>`).join("")}</div></div>`
+          : "",
+        Object.keys(fams).length
+          ? `<div class="odv-card"><b>Type families</b><div class="odv-fams">${Object.entries(fams).map(([f, roles]) => `<div><span>${attr(roles.map(cap).join(", "))}</span><span style="font-family:${attr(f)}">${attr(f)}</span></div>`).join("")}</div></div>`
+          : "",
+        `</div>`,
+      );
+    };
     const brandSet = (b) => {
       const ths = scheme.themes.filter((t) => t.brand === b);
       const tree = scheme.tokens.brands[b]?.theme ?? {};
@@ -840,12 +860,6 @@ export function docsPages(
           ? `<span class="odv-tsw"><i style="background:${hx}"></i><small>${attr(prim ?? hx)}</small></span>`
           : `<code>${attr(value(th, p, ""))}</code>`;
       };
-      const table = (list) =>
-        h(
-          `<table class="odv-ttable"><thead><tr><th>Job</th>${ths.map((t) => `<th>${attr(cap(t.mode))}</th>`).join("")}</tr></thead><tbody>`,
-          list.map((p) => `<tr><td><code>${attr(p)}</code></td>${ths.map((t) => `<td>${cell(t, p)}</td>`).join("")}</tr>`),
-          `</tbody></table>`,
-        );
       return h(
         `<div class="odv-brandset" data-for-brand="${b}">`,
         brandIds.length > 1 ? `<h3>${attr(brandLabel(b))}</h3>` : "",
@@ -853,34 +867,24 @@ export function docsPages(
         ths.map(preview),
         `</div>`,
         `<h3>What a mode changes</h3>`,
-        groups.map((gr, j) => {
-          const list = jobs.filter((p) => p.startsWith(`${gr}.`) || p === gr);
-          return h(`<details class="odv-tgroup"${j === 0 ? " open" : ""}><summary>${attr(cap(gr.split(".").pop()))} <span>${list.length}</span></summary>`, table(list), `</details>`);
-        }),
+        h(
+          `<div class="odv-tscroll"><table class="odv-ttable"><thead><tr><th>Job</th>${ths.map((t) => `<th>${attr(cap(t.mode))}</th>`).join("")}</tr></thead><tbody>`,
+          groups.map((gr) => {
+            const list = jobs.filter((p) => p.startsWith(`${gr}.`) || p === gr);
+            return h(
+              `<tr class="odv-tgroup"><td colspan="${ths.length + 1}">${attr(cap(gr.split(".").pop()))} · ${list.length}</td></tr>`,
+              list.map((p) => `<tr><td><code>${attr(p.split(".").slice(1).join("."))}</code></td>${ths.map((t) => `<td>${cell(t, p)}</td>`).join("")}</tr>`),
+            );
+          }),
+          `</tbody></table></div>`,
+        ),
+        sameBlock(b),
         `</div>`,
       );
     };
-    const radii = leaves(base0.radius ?? {}, "").map((x) => x.path.replace(/^\./, ""));
-    const fams = {};
-    for (const x of leaves(base0.type ?? {}, "")) {
-      const role = x.path.replace(/^\./, "").split(".")[0];
-      const v = String(cssValue(value(first, `type.${role}.font-family`, "")) || "").split(",")[0].replaceAll('"', "");
-      if (v) (fams[v] ??= []).push(role);
-    }
     return (
       `${esc(scheme.name)} has **${modes.length} mode${modes.length === 1 ? "" : "s"}** and **${brandIds.length} brand${brandIds.length === 1 ? "" : "s"}**. A mode swaps the colours; corners and type stay the same in every mode.${brandIds.length > 1 ? " Pick a brand in the top bar to see its set." : ""}\n\n` +
       h(`<div class="odv-theming">`, brandIds.map(brandSet), `</div>`) +
-      `\n\n### What stays the same in every mode\n\n` +
-      h(
-        `<div class="odv-same">`,
-        radii.length
-          ? `<div class="odv-card"><b>Corners</b><div class="odv-corners">${radii.map((r) => `<span><i style="border-radius:${radius(first, r)}"></i>${attr(r)} · ${attr(radius(first, r))}</span>`).join("")}</div></div>`
-          : "",
-        Object.keys(fams).length
-          ? `<div class="odv-card"><b>Type families</b><div class="odv-fams">${Object.entries(fams).map(([f, roles]) => `<div><span>${attr(roles.map(cap).join(", "))}</span><span style="font-family:${attr(f)}">${attr(f)}</span></div>`).join("")}</div></div>`
-          : "",
-        `</div>`,
-      ) +
       "\n\n"
     );
   };
@@ -922,7 +926,10 @@ export function docsPages(
             `| ${esc(q.text)} | ${esc(label(q.id))} | ${esc(answer(q.id).why)} |`,
         )
         .join("\n") +
-      `\n\n## Tokens\n\n` +
+      // Theming shows its tokens as the mode table above (OD-211), so it skips the flat lists.
+      (sc.id === "theming"
+        ? ""
+        : `\n\n## Tokens\n\n` +
       (semantics.length
         ? `Each token points to another token. Values live only on primitives, below.\n\n` +
           (darkDiffers
@@ -938,7 +945,7 @@ export function docsPages(
         : "This scope sets primitives directly.") +
       (prims.filter(Boolean).length
         ? `\n\n## Primitives\n\nThe raw values the tokens above end at.\n\n${primitiveRows(prims)}`
-        : "") +
+        : "")) +
       `\n\n## Where it lands\n\n${(sc.lands_in ?? []).map((c) => `- ${title(c)}`).join("\n")}\n\n` +
       `## When to use what\n\n${RULES}${usage.map(rule).join("\n")}\n` +
       (sc.id === "color" ? colourGuidance(g) : "");
@@ -1034,8 +1041,14 @@ export function docsPages(
     const pick = used.length ? used : k.list;
     if (k.id === "color") {
       // One used step from each family, so the specimen is the palette in use.
-      const seen = new Set();
-      const sws = pick.filter((x) => /^#/.test(String(x.ref)) && !seen.has(family(x.path)) && seen.add(family(x.path)));
+      const hues = {};
+      for (const x of pick.filter((y) => /^#/.test(String(y.ref)) && !/\.dark\./.test(y.path))) {
+        const hue = x.path.split(".")[1];
+        const step = Number(x.path.split(".").pop());
+        const best = hues[hue];
+        if (!best || Math.abs(step - 600) < Math.abs(best.step - 600)) hues[hue] = { ...x, step };
+      }
+      const sws = Object.values(hues);
       return `<div class="odv-spec">${sws
         .slice(0, 8)
         .map((x) => `<i class="odv-sw" style="background:${x.ref}" title="${attr(x.path)}"></i>`)
@@ -1099,7 +1112,7 @@ export function docsPages(
       `<div class="odv-pagehero"><div><p>`,
       `The raw values of ${esc(scheme.name)}. Primitives hold the values; semantic tokens give them a job (see <a href="../foundations/">Foundations</a>), and components read only the jobs. Spare values stay, so a brand or a changed answer can use them without adding a value.`,
       `</p><div class="odv-stats"><span><b>${prims.length}</b>Primitives</span><span><b>${nUsed}</b>In use</span><span><b>${prims.length - nUsed}</b>Spare</span></div></div>`,
-      robot("measure", "odv-pagehero-robot"),
+      robot(scheme.id, "odv-pagehero-robot"),
       `</div>`,
     ) +
     "\n\n" +

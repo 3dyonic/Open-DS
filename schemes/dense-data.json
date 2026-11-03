@@ -358,6 +358,10 @@
         "why": "Views of one record."
       },
       {
+        "id": "breadcrumb",
+        "why": "With care: on a record's own page, the way back to the list it came from. Not on the queue itself."
+      },
+      {
         "id": "sidebar",
         "why": "App navigation that stays open all shift.",
         "variants": {

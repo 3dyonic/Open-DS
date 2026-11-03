@@ -157,7 +157,12 @@ for (const id of ids) {
     // OD-209: the scheme's robot, small and quiet at the foot of its sidebar.
     `${scope} .theme-doc-sidebar-container .menu::after { background-image: url("/robots/${id}.webp"); }\n` +
     `${scope}[data-theme="dark"] .theme-doc-sidebar-container .menu::after { background-image: url("/robots/${id}-dark.webp"); }\n` +
-    `${scope}[data-theme="dark"] .navbar__logo img { content: url("/logo-${id}-dark.svg"); }\n`;
+    `${scope}[data-theme="dark"] .navbar__logo img { content: url("/logo-${id}-dark.svg"); }\n` +
+    // OD-211: with several brands, the Theming page shows the set of the brand picked in the top bar.
+    Object.keys(scheme.tokens.brands ?? {})
+      .filter((_, i, all) => all.length > 1)
+      .map((b) => `${scope}[data-brand="${b}"] .odv-brandset:not([data-for-brand="${b}"]) { display: none; }\n`)
+      .join("");
   files[`static/logo-${id}.svg`] = logo(modeTokens("light"));
   files[`static/logo-${id}-dark.svg`] = logo(modeTokens("dark"));
   files[`static/${id}/llms.txt`] = docsLlms(scheme, pages);
