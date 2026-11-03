@@ -1224,7 +1224,8 @@ export function docsPages(
         ? `<a class="odv-icard" href="./${c.id}">`
         : `<div class="odv-icard">`,
       `<span class="odv-icard-name">${title(c.id)}</span>`,
-      `<span class="odv-icard-why">${esc(inventory[c.id] ?? out ?? "")}</span>`,
+      // A left-out card says what the component is; why the scheme leaves it out is on its page (OD-213).
+      `<span class="odv-icard-why">${esc(out ? (c.description ?? "") : (inventory[c.id] ?? ""))}</span>`,
       `<span class="odv-pill${out ? " odv-pill-out" : ""}">${out ? "Left out" : built.includes(c.id) ? "In · built" : "In · not built yet"}</span>`,
       hasPage(c.id) ? `</a>` : `</div>`,
     );
