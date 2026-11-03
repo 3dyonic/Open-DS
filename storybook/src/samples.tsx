@@ -45,7 +45,6 @@ const PART: Record<string, keyof Samples> = {
   "button-group": "actions",
   menubar: "menu",
   "hover-card": "card",
-  sonner: "messages",
 };
 
 export function Show({ component, children }: { component: string; children: (s: Samples) => ReactNode }) {

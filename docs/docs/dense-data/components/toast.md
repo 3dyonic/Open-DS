@@ -1,5 +1,5 @@
 ---
-sidebar_position: 60
+sidebar_position: 59
 title: "Toast"
 description: "Toast in Dense data."
 ---

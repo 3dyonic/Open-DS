@@ -1,5 +1,5 @@
 ---
-sidebar_position: 62
+sidebar_position: 61
 title: "Toggle group"
 description: "Toggle group in Content first."
 sidebar_class_name: "ods-left-out"

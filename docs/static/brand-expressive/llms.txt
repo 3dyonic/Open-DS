@@ -80,7 +80,6 @@
 - [Sidebar](/components/sidebar)
 - [Skeleton](/components/skeleton)
 - [Slider](/components/slider)
-- [Sonner](/components/sonner)
 - [Spinner](/components/spinner)
 - [Switch](/components/switch)
 - [Table](/components/table)

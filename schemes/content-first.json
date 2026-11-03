@@ -756,17 +756,6 @@
         ]
       },
       {
-        "id": "sonner",
-        "why": "Toast already confirms a saved article. Actions are rare, so confirmations do not arrive close together.",
-        "instead": [
-          "toast"
-        ],
-        "because": [
-          "tasks.q2",
-          "components.count"
-        ]
-      },
-      {
         "id": "textarea",
         "why": "Forms are rare and short: newsletter and search, both one line. Actions are rare: subscribe, share, save. None calls for long text entry.",
         "instead": [

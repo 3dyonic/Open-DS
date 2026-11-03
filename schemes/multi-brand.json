@@ -603,10 +603,6 @@
         "why": "A rough value where an exact number is not needed, paired with a number field. Not for picking a plan; radio-group does that."
       },
       {
-        "id": "sonner",
-        "why": "Several short confirmations arriving close together, such as saved changes. Not for billing problems; alert holds those."
-      },
-      {
         "id": "toggle",
         "why": "One mode turned on or off in place. Not for account settings, which use switch, or one-off actions, which use button.",
         "variants": {
