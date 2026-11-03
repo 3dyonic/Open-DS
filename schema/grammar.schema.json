@@ -227,13 +227,71 @@
     "semantics": {
       "type": "object",
       "additionalProperties": false,
-      "required": ["description", "urgency", "keys"],
+      "required": ["description", "urgency", "tones", "keys"],
       "description": "What each semantic key is for, written once for every scheme: intent, use, misuse with what to use instead, and the fills it may sit on with the contrast it must keep. Words only; values come from each scheme. The harness checks every rule.",
       "properties": {
         "description": {
           "type": "string",
           "minLength": 1,
           "description": "What this list is and how to read it."
+        },
+        "tones": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["description", "sets", "fills"],
+          "description": "How foregrounds pair with fills (OD-222). Each fill states its tone, light or dark, per brand and mode. What sits on it comes from color.on-light or color.on-dark.",
+          "properties": {
+            "description": {
+              "type": "string",
+              "minLength": 1,
+              "description": "How the tones work."
+            },
+            "sets": {
+              "type": "array",
+              "minItems": 1,
+              "description": "The roles in each tone set, with the contrast each keeps on a fill that carries it.",
+              "items": {
+                "type": "object",
+                "additionalProperties": false,
+                "required": ["role", "contrast"],
+                "properties": {
+                  "role": {
+                    "type": "string",
+                    "pattern": "^[a-z]+(\\.[a-z]+)?$",
+                    "description": "The role, for example text.muted."
+                  },
+                  "contrast": {
+                    "type": "number",
+                    "exclusiveMinimum": 0,
+                    "description": "The WCAG minimum on a fill."
+                  }
+                }
+              }
+            },
+            "fills": {
+              "type": "array",
+              "minItems": 1,
+              "description": "Every fill that carries foregrounds, and which roles it carries.",
+              "items": {
+                "type": "object",
+                "additionalProperties": false,
+                "required": ["id", "carries"],
+                "properties": {
+                  "id": {
+                    "type": "string",
+                    "pattern": "^color(\\.[a-z0-9-]+)+(\\.@)?$",
+                    "description": "The fill's semantic path."
+                  },
+                  "carries": {
+                    "type": "array",
+                    "minItems": 1,
+                    "items": { "type": "string" },
+                    "description": "The roles that sit on it."
+                  }
+                }
+              }
+            }
+          }
         },
         "urgency": {
           "type": "object",
@@ -312,9 +370,13 @@
               "pairs": {
                 "type": "object",
                 "additionalProperties": false,
-                "required": ["on", "contrast"],
-                "description": "The fills this key may sit on, and the contrast it must keep on each in every brand and mode.",
+                "required": ["contrast"],
+                "description": "The fills this key may sit on, and the contrast it must keep on each in every brand and mode. A key in a tone set says tone: true instead of listing fills: it sits on every fill of its tone that carries its role (semantics.tones).",
                 "properties": {
+                  "tone": {
+                    "const": true,
+                    "description": "The fills come from the tones: every fill whose tone matches and that carries this role."
+                  },
                   "on": {
                     "type": "array",
                     "minItems": 1,

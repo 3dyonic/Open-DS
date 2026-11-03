@@ -22,4 +22,6 @@ Each scheme holds:
 
 Options must look clearly different from each other: two steps you cannot tell apart are one step. The rules, with the smallest gap per kind of option, are in `grammar.json` under `options`; the harness checks every scheme against them, and the agent context carries them. Keep only the options something reads: outside colour ramps, which stay whole, every primitive is read by a semantic, a theme or a component key. A count answer has that many tokens: `motion.count` "two" means two speeds.
 
+Text, icons, borders and focus pair with fills by tone. Every fill in a theme states its tone, light or dark, in `$extensions.open-ds.tone`: a decision, like a value. What sits on a fill comes from that tone's set, `color.on-light` or `color.on-dark`; `color.text.*` is the mode's own set, for the page's own surfaces. The grammar's `semantics.tones` lists the roles, their contrast and what each fill carries, and the harness checks every fill. A known shortfall can wait on its fill with the ticket that fixes it (`waits`); the check names it.
+
 The schemas are `schema/grammar.schema.json` and `schema/scheme.schema.json` (JSON Schema draft 2020-12). Every object carries a description written for agents.

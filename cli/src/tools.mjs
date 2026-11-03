@@ -9,6 +9,7 @@
 import { followers } from "./component.mjs";
 import { questions, when } from "./schemes.mjs";
 import { themeTokens } from "./tokens.mjs";
+import { pairsIn, sitsOn } from "./tones.mjs";
 
 const get = (tree, path) =>
   path
@@ -388,8 +389,14 @@ export function planChange(scheme, g, change) {
     };
     const pairs = [];
     for (const t of themes)
-      for (const k of keys.filter((x) => x.pairs?.contrast))
-        for (const on of k.pairs.on) {
+      for (const { key: id, on, contrast: needs } of pairsIn(
+        g,
+        scheme,
+        t.brand,
+        t.mode,
+      )) {
+        const k = { id, pairs: { contrast: needs } };
+        {
           if (!affected[t.id].includes(k.id) && !affected[t.id].includes(on))
             continue;
           const before = contrast(
@@ -408,6 +415,7 @@ export function planChange(scheme, g, change) {
             pass: after >= k.pairs.contrast,
           });
         }
+      }
     const componentKeys = g.component_keys
       .filter((ck) =>
         themes.some(
@@ -480,7 +488,7 @@ export function findToken(scheme, g, query, limit = 5) {
       intent: k.intent,
       use_for: k.use_for ?? [],
       not_for: k.not_for ?? [],
-      ...(k.pairs && { sits_on: k.pairs.on }),
+      ...(k.pairs && { sits_on: sitsOn(g, k) }),
       score: head.length * 2 + body.length,
       matched: [...new Set([...head, ...body])],
     };

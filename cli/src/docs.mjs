@@ -7,6 +7,7 @@ import { existsSync, readFileSync, readdirSync } from "node:fs";
 import { join } from "node:path";
 import { questions } from "./schemes.mjs";
 import { SHADCN, SHADCN_SCALE } from "./shadcn.mjs";
+import { sitsOn, toneOf, toneRole } from "./tones.mjs";
 import { componentGuide, followers } from "./component.mjs";
 
 // Which component keys each shipped component reads.
@@ -333,6 +334,14 @@ function componentIntro(uiDir, name) {
  * Every page of one scheme's docs, as { "relative/path.md": text }.
  * roots: { tokens, ui } from assetRoots(). storybook: the Storybook URL to link to.
  */
+/** Where a tone key sits, in words. */
+const toneWords = (id) => {
+  const r = toneRole(id);
+  return r?.tone === "own"
+    ? "The page's own fills"
+    : `Fills whose tone is ${r?.tone}`;
+};
+
 /** The colour scope's guidance, from the grammar: the urgency order, what each key is for, and its pairs. */
 function colourGuidance(g) {
   const s = g.semantics;
@@ -347,12 +356,19 @@ function colourGuidance(g) {
           `| \`${k.id}\` | ${esc(k.intent)} | ${k.not_for.map((n) => `${esc(n.when)}: \`${n.use}\``).join("<br />") || "—"} |`,
       )
       .join("\n") +
-    `\n\n## Pairs at a glance\n\nWhich colour may sit on which fill, and the contrast it keeps there in every brand and mode. The harness checks every pair.\n\n| Token | Sits on | Contrast |\n| --- | --- | --- |\n` +
+    `\n\n## Pairs at a glance\n\nWhich colour may sit on which fill, and the contrast it keeps there in every brand and mode. Text, links, icons, borders and focus pair by tone: every fill says whether it is light or dark, and what sits on it comes from that tone's set, \`color.on-light\` or \`color.on-dark\`. The page's own text is the set of its own surfaces. The harness checks every pair.\n\n| Token | Sits on | Contrast |\n| --- | --- | --- |\n` +
     keys
       .filter((k) => k.pairs)
       .map(
         (k) =>
-          `| \`${k.id}\` | ${k.pairs.on.map((o) => `\`${o}\``).join(", ")} | ${k.pairs.contrast ? `${k.pairs.contrast}:1` : esc(k.exempt ?? "exempt")} |`,
+          `| \`${k.id}\` | ${k.pairs.tone ? `${toneWords(k.id)}: ` : ""}${sitsOn(
+            g,
+            k,
+          )
+            .map((o) => `\`${o}\``)
+            .join(
+              ", ",
+            )} | ${k.pairs.contrast ? `${k.pairs.contrast}:1` : esc(k.exempt ?? "exempt")} |`,
       )
       .join("\n") +
     "\n"
@@ -446,6 +462,31 @@ export function docsPages(
             return `<div class="odv-brandset" data-for-brand="${b}">\n\n<p class="odv-brandname">${attr(scheme.tokens.brands[b]?.label ?? b)}</p>\n\n${fn(l, d)}\n\n</div>`;
           })
           .join("\n\n");
+  // OD-222: each fill's tone, per brand and mode, and the set that sits on it.
+  const fillTones = () =>
+    g.semantics?.tones
+      ? `\n## The tone of each fill\n\nEvery fill says whether it is light or dark. What sits on it reads that tone's set: \`color.on-light\` or \`color.on-dark\`.\n\n` +
+        perBrand((F, D) => {
+          const brand = F.brand;
+          const th = scheme.tokens.brands[brand].theme;
+          const cell = (mode, id) => {
+            const t = toneOf(th, mode, id);
+            return t
+              ? `${t.tone}${t.waits ? ` (waits for ${t.waits.for}: ${esc(t.waits.why)})` : ""}`
+              : "—";
+          };
+          return (
+            `| Fill | Light mode | Dark mode | Carries |\n| --- | --- | --- | --- |\n` +
+            g.semantics.tones.fills
+              .map(
+                (f) =>
+                  `| \`${f.id}\` | ${cell("light", f.id)} | ${cell("dark", f.id)} | ${f.carries.join(", ")} |`,
+              )
+              .join("\n")
+          );
+        }) +
+        "\n"
+      : "";
   const primitiveRows = (paths, F = first) =>
     `| Primitive | Value | Sample |\n| --- | --- | --- |\n` +
     [...new Set(paths)]
@@ -1106,7 +1147,7 @@ export function docsPages(
             : "")) +
       `\n\n## Where it lands\n\n${(sc.lands_in ?? []).map((c) => `- ${title(c)}`).join("\n")}\n\n` +
       `## When to use what\n\n${RULES}${usage.map(rule).join("\n")}\n` +
-      (sc.id === "color" ? colourGuidance(g) : "");
+      (sc.id === "color" ? colourGuidance(g) + fillTones() : "");
   });
 
   // Primitives (OD-184): every raw value, and what points to it in which mode. Unused primitives stay

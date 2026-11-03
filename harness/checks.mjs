@@ -3,6 +3,7 @@
 // "not built" yet, which is different from "fail". Slow checks (full builds) run with --full.
 
 import { themeTokens } from "../cli/src/tokens.mjs";
+import { pairsIn, toneOf } from "../cli/src/tones.mjs";
 import { spawnSync } from "node:child_process";
 import { pathToFileURL } from "node:url";
 import { existsSync, mkdtempSync, readFileSync, readdirSync, rmSync, statSync } from "node:fs";
@@ -315,6 +316,7 @@ export const CHECKS = {
       for (const id of g.semantics.urgency.order)
         if (!guide.has(id)) gaps.push(`urgency names ${id}, which has no guidance`);
       let pairs = 0;
+      const waiting = new Set();
       for (const s of SCHEMES) {
         const t = c.json("schemes", `${s}.json`).tokens;
         const semantic = Object.keys(flatten(t.semantic)).filter((p) => p.startsWith("color."));
@@ -334,25 +336,27 @@ export const CHECKS = {
               const v = resolve(all, p).value;
               return typeof v === "string" && /^#[0-9a-f]{6}$/i.test(v) ? v : null;
             };
-            for (const k of guide.values()) {
-              if (!k.pairs?.contrast) continue;
-              for (const on of k.pairs.on) {
-                const [a, b] = [hex(k.id), hex(on)];
-                if (!a || !b) continue;
-                pairs++;
-                const r = ratio(a, b);
-                if (r < k.pairs.contrast)
-                  gaps.push(
-                    `${s}/${brand}/${mode}: ${k.id} on ${on} is ${r.toFixed(2)}:1, needs ${k.pairs.contrast}:1`,
-                  );
-              }
+            // OD-222: every fill states its tone; text, icons, borders and focus pair by tone.
+            for (const f of g.semantics.tones?.fills ?? [])
+              if (!toneOf(t.brands[brand].theme, mode, f.id))
+                gaps.push(`${s}/${brand}/${mode}: ${f.id} states no tone`);
+            for (const p of pairsIn(g, { id: s, tokens: t }, brand, mode)) {
+              const [a, b] = [hex(p.key), hex(p.on)];
+              if (!a || !b) continue;
+              pairs++;
+              const r = ratio(a, b);
+              if (r >= p.contrast) continue;
+              const what = `${s}/${brand}/${mode}: ${p.key} on ${p.on} is ${r.toFixed(2)}:1, needs ${p.contrast}:1`;
+              if (p.waits) waiting.add(`${s}/${brand}/${mode} ${p.on} (${p.waits.for})`);
+              else gaps.push(what);
             }
           }
       }
       return gaps.length
         ? bad(`${gaps.length} problems: ${gaps.slice(0, 5).join("; ")}`)
         : ok(
-            `${guide.size} colour semantics have guidance; ${pairs} pairs keep their contrast in every brand and mode`,
+            `${guide.size} colour semantics have guidance; ${pairs} pairs keep their contrast in every brand and mode` +
+              (waiting.size ? `, except on fills that wait for a fix: ${[...waiting].join("; ")}` : ""),
           );
     },
   },

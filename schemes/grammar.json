@@ -2870,20 +2870,7 @@
           }
         ],
         "pairs": {
-          "on": [
-            "color.surface.canvas",
-            "color.surface.default",
-            "color.surface.raised",
-            "color.surface.sunken",
-            "color.surface.selected",
-            "color.action.secondary.@",
-            "color.action.secondary.hover",
-            "color.category.1.subtle",
-            "color.category.2.subtle",
-            "color.category.3.subtle",
-            "color.category.4.subtle",
-            "color.category.5.subtle"
-          ],
+          "tone": true,
           "contrast": 4.5
         }
       },
@@ -2902,12 +2889,7 @@
           }
         ],
         "pairs": {
-          "on": [
-            "color.surface.canvas",
-            "color.surface.default",
-            "color.surface.raised",
-            "color.surface.sunken"
-          ],
+          "tone": true,
           "contrast": 4.5
         }
       },
@@ -2930,11 +2912,7 @@
           }
         ],
         "pairs": {
-          "on": [
-            "color.surface.canvas",
-            "color.surface.default",
-            "color.surface.sunken"
-          ],
+          "tone": true,
           "contrast": 4.5
         }
       },
@@ -2990,10 +2968,7 @@
           }
         ],
         "pairs": {
-          "on": [
-            "color.surface.canvas",
-            "color.surface.default"
-          ],
+          "tone": true,
           "contrast": 4.5
         }
       },
@@ -3027,10 +3002,7 @@
           }
         ],
         "pairs": {
-          "on": [
-            "color.surface.canvas",
-            "color.surface.default"
-          ],
+          "tone": true,
           "contrast": 3
         }
       },
@@ -3047,10 +3019,7 @@
           }
         ],
         "pairs": {
-          "on": [
-            "color.surface.canvas",
-            "color.surface.default"
-          ],
+          "tone": true,
           "contrast": 3
         }
       },
@@ -3521,8 +3490,403 @@
             "use": "color.border.strong"
           }
         ]
+      },
+      {
+        "id": "color.on-light.text.primary",
+        "intent": "Main text on a fill whose tone is light.",
+        "use_for": [
+          "Body text, headings and labels on a toned fill"
+        ],
+        "not_for": [
+          {
+            "when": "On the page's own surfaces",
+            "use": "color.text.primary"
+          }
+        ],
+        "pairs": {
+          "tone": true,
+          "contrast": 4.5
+        }
+      },
+      {
+        "id": "color.on-light.text.secondary",
+        "intent": "Supporting text on a fill whose tone is light.",
+        "use_for": [
+          "Supporting text on a toned fill"
+        ],
+        "not_for": [
+          {
+            "when": "On the page's own surfaces",
+            "use": "color.text.secondary"
+          }
+        ],
+        "pairs": {
+          "tone": true,
+          "contrast": 4.5
+        }
+      },
+      {
+        "id": "color.on-light.text.muted",
+        "intent": "The quietest text on a fill whose tone is light.",
+        "use_for": [
+          "Hints and timestamps on a toned fill"
+        ],
+        "not_for": [
+          {
+            "when": "On the page's own surfaces",
+            "use": "color.text.muted"
+          }
+        ],
+        "pairs": {
+          "tone": true,
+          "contrast": 4.5
+        }
+      },
+      {
+        "id": "color.on-light.link",
+        "intent": "Links on a fill whose tone is light.",
+        "use_for": [
+          "Links on a toned fill"
+        ],
+        "not_for": [
+          {
+            "when": "On the page's own surfaces",
+            "use": "color.text.link"
+          }
+        ],
+        "pairs": {
+          "tone": true,
+          "contrast": 4.5
+        }
+      },
+      {
+        "id": "color.on-light.icon",
+        "intent": "Icons on a fill whose tone is light.",
+        "use_for": [
+          "Icons on a toned fill"
+        ],
+        "not_for": [
+          {
+            "when": "On the page's own surfaces",
+            "use": "color.text.secondary"
+          }
+        ],
+        "pairs": {
+          "tone": true,
+          "contrast": 3
+        }
+      },
+      {
+        "id": "color.on-light.border",
+        "intent": "Control edges on a fill whose tone is light.",
+        "use_for": [
+          "Control edges on a toned fill"
+        ],
+        "not_for": [
+          {
+            "when": "On the page's own surfaces",
+            "use": "color.border.strong"
+          }
+        ],
+        "pairs": {
+          "tone": true,
+          "contrast": 3
+        }
+      },
+      {
+        "id": "color.on-light.focus",
+        "intent": "The focus ring on a fill whose tone is light.",
+        "use_for": [
+          "The focus ring on a toned fill"
+        ],
+        "not_for": [
+          {
+            "when": "On the page's own surfaces",
+            "use": "color.border.focus"
+          }
+        ],
+        "pairs": {
+          "tone": true,
+          "contrast": 3
+        }
+      },
+      {
+        "id": "color.on-dark.text.primary",
+        "intent": "Main text on a fill whose tone is dark.",
+        "use_for": [
+          "Body text, headings and labels on a toned fill"
+        ],
+        "not_for": [
+          {
+            "when": "On the page's own surfaces",
+            "use": "color.text.primary"
+          }
+        ],
+        "pairs": {
+          "tone": true,
+          "contrast": 4.5
+        }
+      },
+      {
+        "id": "color.on-dark.text.secondary",
+        "intent": "Supporting text on a fill whose tone is dark.",
+        "use_for": [
+          "Supporting text on a toned fill"
+        ],
+        "not_for": [
+          {
+            "when": "On the page's own surfaces",
+            "use": "color.text.secondary"
+          }
+        ],
+        "pairs": {
+          "tone": true,
+          "contrast": 4.5
+        }
+      },
+      {
+        "id": "color.on-dark.text.muted",
+        "intent": "The quietest text on a fill whose tone is dark.",
+        "use_for": [
+          "Hints and timestamps on a toned fill"
+        ],
+        "not_for": [
+          {
+            "when": "On the page's own surfaces",
+            "use": "color.text.muted"
+          }
+        ],
+        "pairs": {
+          "tone": true,
+          "contrast": 4.5
+        }
+      },
+      {
+        "id": "color.on-dark.link",
+        "intent": "Links on a fill whose tone is dark.",
+        "use_for": [
+          "Links on a toned fill"
+        ],
+        "not_for": [
+          {
+            "when": "On the page's own surfaces",
+            "use": "color.text.link"
+          }
+        ],
+        "pairs": {
+          "tone": true,
+          "contrast": 4.5
+        }
+      },
+      {
+        "id": "color.on-dark.icon",
+        "intent": "Icons on a fill whose tone is dark.",
+        "use_for": [
+          "Icons on a toned fill"
+        ],
+        "not_for": [
+          {
+            "when": "On the page's own surfaces",
+            "use": "color.text.secondary"
+          }
+        ],
+        "pairs": {
+          "tone": true,
+          "contrast": 3
+        }
+      },
+      {
+        "id": "color.on-dark.border",
+        "intent": "Control edges on a fill whose tone is dark.",
+        "use_for": [
+          "Control edges on a toned fill"
+        ],
+        "not_for": [
+          {
+            "when": "On the page's own surfaces",
+            "use": "color.border.strong"
+          }
+        ],
+        "pairs": {
+          "tone": true,
+          "contrast": 3
+        }
+      },
+      {
+        "id": "color.on-dark.focus",
+        "intent": "The focus ring on a fill whose tone is dark.",
+        "use_for": [
+          "The focus ring on a toned fill"
+        ],
+        "not_for": [
+          {
+            "when": "On the page's own surfaces",
+            "use": "color.border.focus"
+          }
+        ],
+        "pairs": {
+          "tone": true,
+          "contrast": 3
+        }
       }
-    ]
+    ],
+    "tones": {
+      "description": "Text, icons, borders and focus pair with fills by tone (OD-222). Every fill states its tone, light or dark, in each brand and mode: a decision, written on the fill as $extensions.open-ds.tone. What sits on a fill comes from its tone's set: color.on-light or color.on-dark. color.text, color.text.inverse and color.text.on-action are those sets as seen from their own fills. The harness checks every fill against its tone's set.",
+      "sets": [
+        {
+          "role": "text.primary",
+          "contrast": 4.5
+        },
+        {
+          "role": "text.secondary",
+          "contrast": 4.5
+        },
+        {
+          "role": "text.muted",
+          "contrast": 4.5
+        },
+        {
+          "role": "link",
+          "contrast": 4.5
+        },
+        {
+          "role": "icon",
+          "contrast": 3
+        },
+        {
+          "role": "border",
+          "contrast": 3
+        },
+        {
+          "role": "focus",
+          "contrast": 3
+        }
+      ],
+      "fills": [
+        {
+          "id": "color.surface.canvas",
+          "carries": [
+            "text.primary",
+            "text.secondary",
+            "text.muted",
+            "link",
+            "icon",
+            "border",
+            "focus"
+          ]
+        },
+        {
+          "id": "color.surface.default",
+          "carries": [
+            "text.primary",
+            "text.secondary",
+            "text.muted",
+            "link",
+            "icon",
+            "border",
+            "focus"
+          ]
+        },
+        {
+          "id": "color.surface.raised",
+          "carries": [
+            "text.primary",
+            "text.secondary",
+            "text.muted",
+            "link",
+            "icon",
+            "border",
+            "focus"
+          ]
+        },
+        {
+          "id": "color.surface.sunken",
+          "carries": [
+            "text.primary",
+            "text.secondary",
+            "text.muted",
+            "link",
+            "icon",
+            "border",
+            "focus"
+          ]
+        },
+        {
+          "id": "color.surface.selected",
+          "carries": [
+            "text.primary",
+            "text.secondary",
+            "text.muted",
+            "link",
+            "icon",
+            "border",
+            "focus"
+          ]
+        },
+        {
+          "id": "color.surface.inverse",
+          "carries": [
+            "text.primary",
+            "icon",
+            "focus"
+          ]
+        },
+        {
+          "id": "color.action.primary.@",
+          "carries": [
+            "text.primary"
+          ]
+        },
+        {
+          "id": "color.action.primary.hover",
+          "carries": [
+            "text.primary"
+          ]
+        },
+        {
+          "id": "color.action.secondary.@",
+          "carries": [
+            "text.primary",
+            "icon"
+          ]
+        },
+        {
+          "id": "color.action.secondary.hover",
+          "carries": [
+            "text.primary",
+            "icon"
+          ]
+        },
+        {
+          "id": "color.status.info.subtle",
+          "carries": [
+            "text.primary",
+            "icon"
+          ]
+        },
+        {
+          "id": "color.status.warning.subtle",
+          "carries": [
+            "text.primary",
+            "icon"
+          ]
+        },
+        {
+          "id": "color.status.danger.subtle",
+          "carries": [
+            "text.primary",
+            "icon"
+          ]
+        },
+        {
+          "id": "color.status.success.subtle",
+          "carries": [
+            "text.primary",
+            "icon"
+          ]
+        }
+      ]
+    }
   },
   "catalogue": {
     "description": "Every component a design system can carry: the UI components of the shadcn/ui registry (style new-york-v4, MIT), plus toast, which Open DS builds itself, data-table, which wraps TanStack Table after shadcn's Data Table guide, and date-picker, after shadcn's Date Picker. Each scheme picks its inventory from this list through the components scope. The component-api keys in components cover the ones built so far.",

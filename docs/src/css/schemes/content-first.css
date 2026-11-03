@@ -82,6 +82,20 @@ html[data-scheme="content-first"] {
   --color-disabled-text: #7A7062; /** Text and icons of a control that cannot be used right now. */
   --color-disabled-surface: #F6F2EA; /** The fill of a control that cannot be used right now. */
   --color-disabled-border: #E4DDD0; /** The edge of a control that cannot be used right now. */
+  --color-on-light-text-primary: #1F1B16; /** Main text on a fill whose tone is light. */
+  --color-on-light-text-secondary: #4A4339; /** Supporting text on a fill whose tone is light. */
+  --color-on-light-text-muted: #61594D; /** The quietest text on a fill whose tone is light. */
+  --color-on-light-link: #162C49; /** Links on a fill whose tone is light. */
+  --color-on-light-icon: #4A4339; /** Icons on a fill whose tone is light. */
+  --color-on-light-border: #7A7062; /** Control edges on a fill whose tone is light. */
+  --color-on-light-focus: #1E3A5F; /** The focus ring on a fill whose tone is light. */
+  --color-on-dark-text-primary: #FFFDF8; /** Main text on a fill whose tone is dark. */
+  --color-on-dark-text-secondary: #CFC6B6; /** Supporting text on a fill whose tone is dark. */
+  --color-on-dark-text-muted: #A39A8B; /** The quietest text on a fill whose tone is dark. */
+  --color-on-dark-link: #8FA6C4; /** Links on a fill whose tone is dark. */
+  --color-on-dark-icon: #CFC6B6; /** Icons on a fill whose tone is dark. */
+  --color-on-dark-border: #A39A8B; /** Control edges on a fill whose tone is dark. */
+  --color-on-dark-focus: #8FA6C4; /** The focus ring on a fill whose tone is dark. */
   --radius-control: 0.5rem; /** Corner of buttons and inputs. */
   --radius-badge: 9999px; /** Corner of badges and checkboxes. */
   --radius-container: 0.75rem; /** Corner of cards, menus and dialogs. */
@@ -223,7 +237,7 @@ html[data-scheme="content-first"][data-theme="dark"] {
   --color-text-on-action: #14110D; /** Text and icons on the main action's fill. */
   --color-text-link: #8FA6C4; /** Links in running text. */
   --color-border-default: #2E2A24; /** Quiet edges and dividers. Decorative, so it has no contrast minimum. */
-  --color-border-strong: #7A7062; /** The edge of a control people must find. */
+  --color-border-strong: #A39A8B; /** The edge of a control people must find. */
   --color-border-focus: #8FA6C4; /** The focus ring. */
   --color-action-primary: #8FA6C4; /** The one main action in a view. */
   --color-action-primary-hover: #E3EAF3; /** The main action under the pointer. */
@@ -250,6 +264,20 @@ html[data-scheme="content-first"][data-theme="dark"] {
   --color-disabled-text: #CFC6B6; /** Text and icons of a control that cannot be used right now. */
   --color-disabled-surface: #2E2A24; /** The fill of a control that cannot be used right now. */
   --color-disabled-border: #4A4339; /** The edge of a control that cannot be used right now. */
+  --color-on-light-text-primary: #1F1B16; /** Main text on a fill whose tone is light. */
+  --color-on-light-text-secondary: #4A4339; /** Supporting text on a fill whose tone is light. */
+  --color-on-light-text-muted: #61594D; /** The quietest text on a fill whose tone is light. */
+  --color-on-light-link: #162C49; /** Links on a fill whose tone is light. */
+  --color-on-light-icon: #4A4339; /** Icons on a fill whose tone is light. */
+  --color-on-light-border: #7A7062; /** Control edges on a fill whose tone is light. */
+  --color-on-light-focus: #1E3A5F; /** The focus ring on a fill whose tone is light. */
+  --color-on-dark-text-primary: #FFFDF8; /** Main text on a fill whose tone is dark. */
+  --color-on-dark-text-secondary: #CFC6B6; /** Supporting text on a fill whose tone is dark. */
+  --color-on-dark-text-muted: #A39A8B; /** The quietest text on a fill whose tone is dark. */
+  --color-on-dark-link: #8FA6C4; /** Links on a fill whose tone is dark. */
+  --color-on-dark-icon: #CFC6B6; /** Icons on a fill whose tone is dark. */
+  --color-on-dark-border: #A39A8B; /** Control edges on a fill whose tone is dark. */
+  --color-on-dark-focus: #8FA6C4; /** The focus ring on a fill whose tone is dark. */
   --radius-control: 0.5rem; /** Corner of buttons and inputs. */
   --radius-badge: 9999px; /** Corner of badges and checkboxes. */
   --radius-container: 0.75rem; /** Corner of cards, menus and dialogs. */
