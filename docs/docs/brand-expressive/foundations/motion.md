@@ -11,7 +11,8 @@ description: "Brand expressive: What moves, why and how fast."
 What moves, why and how fast.
 
 <div class="ods-specimen">
-<span class="ods-item"><span class="ods-motion" style="--ods-d:var(--motion-duration-feedback)"><span></span></span><span class="ods-label">motion.duration.feedback</span></span>
+<span class="ods-item"><span class="ods-motion" style="--ods-d:var(--motion-duration-feedback)" title="Hover to play"><span></span></span><span class="ods-label">motion.duration.feedback</span></span>
+<span class="ods-item"><span class="ods-motion" style="--ods-e:var(--motion-easing-standard)" title="Hover to play"><span></span></span><span class="ods-label">motion.easing.standard</span></span>
 </div>
 
 ## The five answers
@@ -39,8 +40,8 @@ The raw values the tokens above end at.
 
 | Primitive | Value | Sample |
 | --- | --- | --- |
-| `duration.relaxed` | 320ms | <span class="ods-motion" style="--ods-d:320ms"><span></span></span> |
-| `easing.standard` | cubic-bezier(0.34, 1.56, 0.64, 1) |  |
+| `duration.relaxed` | 320ms | <span class="ods-motion" style="--ods-d:320ms" title="Hover to play"><span></span></span> |
+| `easing.standard` | cubic-bezier(0.34, 1.56, 0.64, 1) | <span class="ods-motion" style="--ods-e:cubic-bezier(0.34,1.56,0.64,1)" title="Hover to play"><span></span></span> |
 
 ## Where it lands
 

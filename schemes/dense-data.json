@@ -1388,7 +1388,7 @@
     {
       "question": "spacing.definition",
       "option": "fine",
-      "why": "A fine base unit gives the small steps dense screens need.",
+      "why": "Steps on a 4px grid give the small gaps dense screens need.",
       "because": [
         "content.q2"
       ]

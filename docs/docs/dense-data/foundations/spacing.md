@@ -27,7 +27,7 @@ How space shows what belongs together.
 | --- | --- | --- |
 | Which spacing roles does it need? | Gaps, insets and row heights | Row height is a decision of its own in a table product. |
 | How many densities exist? | Two | A second, denser size serves tables and toolbars. |
-| How are spacing steps defined? | A fine base unit | A fine base unit gives the small steps dense screens need. |
+| How are spacing steps defined? | Small steps, on a 4px grid | Steps on a 4px grid give the small gaps dense screens need. |
 | How dense is the layout? | Compact | Compact spacing shows more records. |
 | Where does spacing matter most? | Rows and cells | Space is spent inside rows and cells. |
 

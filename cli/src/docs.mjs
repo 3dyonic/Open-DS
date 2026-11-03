@@ -226,8 +226,12 @@ function sample(path, type, raw) {
     return `<span class="ods-typesample" style="letter-spacing:${v}">Aa Aa</span>`;
   if (type === "shadow")
     return `<span class="ods-card" style="box-shadow:${v}"></span>`;
+  // Motion plays when you hover its row (OD-220): a duration at the standard easing, an easing at a
+  // relaxed speed.
   if (type === "duration")
-    return `<span class="ods-motion" style="--ods-d:${v}"><span></span></span>`;
+    return `<span class="ods-motion" style="--ods-d:${v}" title="Hover to play"><span></span></span>`;
+  if (type === "cubicBezier")
+    return `<span class="ods-motion" style="--ods-e:${v}" title="Hover to play"><span></span></span>`;
   if (type === "number" && /opacity/.test(path))
     return `<span class="ods-swatch" style="opacity:${v}"></span>`;
   if (type === "dimension") {

@@ -27,7 +27,7 @@ How space shows what belongs together.
 | --- | --- | --- |
 | Which spacing roles does it need? | Gaps, insets and row heights | Large rows matter for touch and zoom. |
 | How many densities exist? | One | One density; no compact mode to fail people. |
-| How are spacing steps defined? | A coarse base unit | Big, even steps lower effort. |
+| How are spacing steps defined? | Big, even steps | Big, even steps lower effort. |
 | How dense is the layout? | Spacious | Space lowers effort and mis-taps. |
 | Where does spacing matter most? | Between fields | Space between fields prevents mis-taps. |
 

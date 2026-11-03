@@ -143,8 +143,8 @@ The raw values the tokens above end at.
 | `color.violet.light.100` | #EEEDFE | <span class="ods-swatch" style="background:#EEEDFE"></span> |
 | `color.violet.light.600` | #4B3FD9 | <span class="ods-swatch" style="background:#4B3FD9"></span> |
 | `color.violet.light.700` | #3B31B0 | <span class="ods-swatch" style="background:#3B31B0"></span> |
-| `duration.fast` | 120ms | <span class="ods-motion" style="--ods-d:120ms"><span></span></span> |
-| `easing.standard` | cubic-bezier(0.2, 0, 0, 1) |  |
+| `duration.fast` | 120ms | <span class="ods-motion" style="--ods-d:120ms" title="Hover to play"><span></span></span> |
+| `easing.standard` | cubic-bezier(0.2, 0, 0, 1) | <span class="ods-motion" style="--ods-e:cubic-bezier(0.2,0,0,1)" title="Hover to play"><span></span></span> |
 | `font.size.12` | 0.75rem (12px) | <span class="ods-typesample" style="font-size:0.75rem">Aa</span> |
 | `font.size.13` | 0.8125rem (13px) | <span class="ods-typesample" style="font-size:0.8125rem">Aa</span> |
 | `font.size.14` | 0.875rem (14px) | <span class="ods-typesample" style="font-size:0.875rem">Aa</span> |

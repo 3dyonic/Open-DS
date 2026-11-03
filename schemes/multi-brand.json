@@ -1299,7 +1299,7 @@
     {
       "question": "spacing.definition",
       "option": "fine",
-      "why": "A fine base unit fits every brand.",
+      "why": "Every brand shares one set of steps, so they sit on a 4px grid: small enough for account forms, with big ones for product pages.",
       "because": [
         "business.q2"
       ]

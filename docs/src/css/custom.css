@@ -264,9 +264,11 @@ code {
   height: 0.75rem;
   border-radius: 9999px;
   background: var(--color-action-primary);
-  transition: left var(--ods-d) var(--motion-easing-standard, ease);
+  transition: left var(--ods-d, 320ms) var(--ods-e, var(--motion-easing-standard, ease));
 }
-.ods-specimen:hover .ods-motion > span {
+/* OD-220: a duration or easing plays when you hover its row or the specimen. */
+.ods-specimen:hover .ods-motion > span,
+.markdown tr:hover .ods-motion > span {
   left: 2.25rem;
 }
 @media (prefers-reduced-motion: reduce) {

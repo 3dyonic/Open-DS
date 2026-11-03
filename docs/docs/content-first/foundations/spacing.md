@@ -27,7 +27,7 @@ How space shows what belongs together.
 | --- | --- | --- |
 | Which spacing roles does it need? | Gaps and insets | No dense tables, so no row role. |
 | How many densities exist? | One | One calm density. |
-| How are spacing steps defined? | A coarse base unit | Big, even steps suit long reading. |
+| How are spacing steps defined? | Big, even steps | Big, even steps suit long reading. |
 | How dense is the layout? | Spacious | Room around the text helps reading. |
 | Where does spacing matter most? | Between paragraphs | Space is spent between paragraphs and sections. |
 

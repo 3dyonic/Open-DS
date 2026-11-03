@@ -816,15 +816,15 @@
           "id": "spacing.definition",
           "method": "definition",
           "text": "How are spacing steps defined?",
-          "description": "A fine base unit gives small steps for dense screens; a coarse one gives big, even steps.",
+          "description": "How big the steps between spaces are. Small steps on a 4px grid suit dense screens and shared forms; big, even steps suit reading and big moments.",
           "options": [
             {
               "id": "fine",
-              "label": "A fine base unit"
+              "label": "Small steps, on a 4px grid"
             },
             {
               "id": "coarse",
-              "label": "A coarse base unit"
+              "label": "Big, even steps"
             }
           ]
         },

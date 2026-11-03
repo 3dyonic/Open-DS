@@ -143,8 +143,8 @@ The raw values the tokens above end at.
 | `color.taupe.light.600` | #6B544A | <span class="ods-swatch" style="background:#6B544A"></span> |
 | `color.taupe.light.700` | #4D3A33 | <span class="ods-swatch" style="background:#4D3A33"></span> |
 | `color.taupe.light.900` | #1F1411 | <span class="ods-swatch" style="background:#1F1411"></span> |
-| `duration.relaxed` | 320ms | <span class="ods-motion" style="--ods-d:320ms"><span></span></span> |
-| `easing.standard` | cubic-bezier(0.34, 1.56, 0.64, 1) |  |
+| `duration.relaxed` | 320ms | <span class="ods-motion" style="--ods-d:320ms" title="Hover to play"><span></span></span> |
+| `easing.standard` | cubic-bezier(0.34, 1.56, 0.64, 1) | <span class="ods-motion" style="--ods-e:cubic-bezier(0.34,1.56,0.64,1)" title="Hover to play"><span></span></span> |
 | `font.size.14` | 0.875rem (14px) | <span class="ods-typesample" style="font-size:0.875rem">Aa</span> |
 | `font.size.15` | 0.9375rem (15px) | <span class="ods-typesample" style="font-size:0.9375rem">Aa</span> |
 | `font.size.17` | 1.0625rem (17px) | <span class="ods-typesample" style="font-size:1.0625rem">Aa</span> |
