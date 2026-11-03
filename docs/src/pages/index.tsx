@@ -1,13 +1,12 @@
 import React, { useMemo, useState } from "react";
 import Layout from "@theme/Layout";
 import Link from "@docusaurus/Link";
-import useDocusaurusContext from "@docusaurus/useDocusaurusContext";
 import { useScheme, type Scheme } from "../components/scheme";
 import { Robot } from "../components/Robot";
 
 // The docs home (OD-209): the five schemes as a small marketplace. A stage of their robots, then a
-// row per scheme with its answers from its tokens, and the ways in: its docs, its Storybook, the
-// command that creates it.
+// row per scheme with its answers from its tokens, and the ways in: its docs and the command that
+// creates it.
 
 // What each scheme is for, in two words, for the filter. The rest of a row comes from schemes.json.
 const FOR: Record<string, string> = {
@@ -21,10 +20,9 @@ const corners = (c: string) =>
   parseFloat(c) >= 999 ? "Pill" : `${Math.round(parseFloat(c) * (c.endsWith("rem") ? 16 : 1))} px`;
 const family = (f: string) => f.split(",")[0].replaceAll('"', "").trim();
 
-function Row({ s, storybook }: { s: Scheme; storybook: string }) {
+function Row({ s }: { s: Scheme }) {
   const [copied, setCopied] = useState(false);
   const cmd = `npx open-ds create my-ds --scheme ${s.id}`;
-  const brand = s.brands.length > 1 ? `--${s.brands[0]}` : "";
   const copy = async (e: React.MouseEvent<HTMLButtonElement>) => {
     try {
       await navigator.clipboard.writeText(cmd);
@@ -87,9 +85,6 @@ function Row({ s, storybook }: { s: Scheme; storybook: string }) {
         <Link className="ods-btn ods-btn--primary" to={`/${s.id}/`}>
           Read the docs
         </Link>
-        <a className="ods-btn" href={`${storybook}/?globals=scheme:${s.id}${brand}`}>
-          Open in Storybook
-        </a>
         <button className="ods-cmd" type="button" onClick={copy} title="Copy the command">
           {copied ? "Copied" : `$ ${cmd}`}
         </button>
@@ -100,8 +95,6 @@ function Row({ s, storybook }: { s: Scheme; storybook: string }) {
 
 export default function Home() {
   const { schemes } = useScheme();
-  const { siteConfig } = useDocusaurusContext();
-  const storybook = siteConfig.customFields?.storybook as string;
   const [pick, setPick] = useState("All");
   const [q, setQ] = useState("");
   const list = useMemo(() => {
@@ -163,7 +156,7 @@ export default function Home() {
           </div>
           <div className="ods-rows">
             {list.length ? (
-              list.map((s) => <Row key={s.id} s={s} storybook={storybook} />)
+              list.map((s) => <Row key={s.id} s={s} />)
             ) : (
               <p className="ods-empty">No scheme matches “{q}”. Try dashboard, reading or checkout.</p>
             )}
