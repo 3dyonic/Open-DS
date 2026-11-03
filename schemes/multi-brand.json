@@ -610,6 +610,10 @@
             }
           }
         }
+      },
+      {
+        "id": "table",
+        "why": "A customer's own records in the account area, such as Your subscriptions, in comfortable rows. Not as a tool for bulk work."
       }
     ],
     "out": [
@@ -748,17 +752,6 @@
         "because": [
           "scenarios.q1",
           "people.q1"
-        ]
-      },
-      {
-        "id": "table",
-        "why": "Table is a data component. Multi-brand's components answer takes core, content and media families only, because product teams build sign-up and account forms, plus product pages with questions and faces.",
-        "instead": [
-          "item",
-          "card"
-        ],
-        "because": [
-          "components.roles"
         ]
       },
       {

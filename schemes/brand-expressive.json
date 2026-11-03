@@ -527,20 +527,25 @@
       {
         "id": "toggle-group",
         "why": "Switching a view between a few options, such as list and grid. Not as a form answer."
+      },
+      {
+        "id": "accordion",
+        "why": "Questions and answers people may skip. Not to hide a section's one big idea."
+      },
+      {
+        "id": "chart",
+        "why": "A relationship in numbers that is part of the campaign story. Not as decoration, or for a single number."
+      },
+      {
+        "id": "message",
+        "why": "A customer quote with its author, beside the avatar. Not for system status; toast and alert do that."
+      },
+      {
+        "id": "table",
+        "why": "A rare line-up people compare cell by cell, with comfortable rows. Not as the story of a section."
       }
     ],
     "out": [
-      {
-        "id": "accordion",
-        "why": "Accordion is a content component. Brand expressive's components answer takes core and media families only, because campaigns lead with media and big sections.",
-        "instead": [
-          "collapsible",
-          "tabs"
-        ],
-        "because": [
-          "components.roles"
-        ]
-      },
       {
         "id": "attachment",
         "why": "Brand expressive keeps only the parts in use for one action and a story, not a part for one campaign. Sharing files in a conversation is neither.",
@@ -562,16 +567,6 @@
         "because": [
           "components.count",
           "tasks.q2"
-        ]
-      },
-      {
-        "id": "chart",
-        "why": "Chart is a data component. Brand expressive's components answer takes core and media families only, because campaigns lead with media and big sections.",
-        "instead": [
-          "card"
-        ],
-        "because": [
-          "components.roles"
         ]
       },
       {
@@ -654,17 +649,6 @@
         ]
       },
       {
-        "id": "message",
-        "why": "Message is a conversation component. Brand expressive's components answer takes core and media families only, because campaigns lead with media and big sections.",
-        "instead": [
-          "card",
-          "textarea"
-        ],
-        "because": [
-          "components.roles"
-        ]
-      },
-      {
         "id": "message-scroller",
         "why": "Brand expressive keeps only the parts in use for one action and a story, not a part for one campaign. A live conversation is neither.",
         "instead": [
@@ -729,17 +713,6 @@
         "because": [
           "tasks.q2",
           "scenarios.q1"
-        ]
-      },
-      {
-        "id": "table",
-        "why": "Table is a data component. Brand expressive's components answer takes core and media families only, because campaigns lead with media and big sections.",
-        "instead": [
-          "item",
-          "card"
-        ],
-        "because": [
-          "components.roles"
         ]
       },
       {

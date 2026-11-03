@@ -451,6 +451,14 @@
       {
         "id": "tabs",
         "why": "Views of the reading list, such as saved and finished. Not to move between site sections."
+      },
+      {
+        "id": "chart",
+        "why": "A figure inside an article when the story is a relationship in numbers. Not as decoration."
+      },
+      {
+        "id": "table",
+        "why": "The rare table inside an article, read row by row at a comfortable height. Not for records people scan or sort."
       }
     ],
     "out": [
@@ -497,16 +505,6 @@
         "because": [
           "components.roles",
           "tasks.q2"
-        ]
-      },
-      {
-        "id": "chart",
-        "why": "Chart is a data component. Content first's components answer takes core, content and media families only, because readers need sections, navigation and little else.",
-        "instead": [
-          "card"
-        ],
-        "because": [
-          "components.roles"
         ]
       },
       {
@@ -725,17 +723,6 @@
         "because": [
           "tasks.q2",
           "components.count"
-        ]
-      },
-      {
-        "id": "table",
-        "why": "Table is a data component. Content first's components answer takes core, content and media families only, because readers need sections, navigation and little else.",
-        "instead": [
-          "item",
-          "card"
-        ],
-        "because": [
-          "components.roles"
         ]
       },
       {

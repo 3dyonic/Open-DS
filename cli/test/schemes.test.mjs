@@ -368,12 +368,13 @@ test("add brings the components a component imports and names the packages it ne
       assert.ok(existsSync(join(dir, `src/components/ui/${c}.tsx`)), c);
     assert.ok(existsSync(join(dir, "src/lib/use-mobile.ts")));
     assert.ok(record.components.includes("sheet"));
-    const chart = addComponent("chart", dir);
-    assert.ok(chart.added.packages.includes("recharts"));
+    // Accessible first leaves out command, so adding it brings its package.
+    const command = addComponent("command", dir);
+    assert.ok(command.added.packages.includes("cmdk"));
     assert.ok(
       JSON.parse(
         readFileSync(join(dir, "open-ds.json"), "utf8"),
-      ).dependencies.includes("recharts"),
+      ).dependencies.includes("cmdk"),
     );
   } finally {
     rmSync(dir, { recursive: true, force: true });

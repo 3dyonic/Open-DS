@@ -362,6 +362,14 @@
         "why": "On a record's own page, the way back to the list it came from. Not on the queue itself."
       },
       {
+        "id": "avatar",
+        "why": "Next to a user's name when assigning an alert or picking a user. Not without the name beside it, and not as decoration."
+      },
+      {
+        "id": "aspect-ratio",
+        "why": "Any image or video in a panel, so it keeps its shape while loading. Not for decorative or hero media."
+      },
+      {
         "id": "sidebar",
         "why": "App navigation that stays open all shift.",
         "variants": {
@@ -599,63 +607,33 @@
             }
           }
         }
-      }
-    ],
-    "out": [
-      {
-        "id": "accordion",
-        "why": "Accordion is a content component. Dense data's components answer takes core and data families only, because records need tables, filters and fast ways to move between them.",
-        "instead": [
-          "collapsible",
-          "tabs"
-        ],
-        "because": [
-          "components.roles"
-        ]
       },
       {
-        "id": "aspect-ratio",
-        "why": "Aspect ratio is a media component. Dense data's components answer takes core and data families only, because records need tables, filters and fast ways to move between them.",
-        "instead": [
-          "card"
-        ],
-        "because": [
-          "components.roles"
-        ]
+        "id": "accordion",
+        "why": "Optional detail on one record that analysts may skip. Not for fields they use every day, and not in the queue."
       },
       {
         "id": "attachment",
-        "why": "Attachment is a conversation component. Dense data's components answer takes core and data families only, because records need tables, filters and fast ways to move between them.",
-        "instead": [
-          "card",
-          "button"
-        ],
-        "because": [
-          "components.roles"
-        ]
-      },
-      {
-        "id": "avatar",
-        "why": "Avatar is a media component. Dense data's components answer takes core and data families only, because records need tables, filters and fast ways to move between them.",
-        "instead": [
-          "badge",
-          "card"
-        ],
-        "because": [
-          "components.roles"
-        ]
+        "why": "A file added to a note on an alert, with its name, type and size. Not for file uploads in forms."
       },
       {
         "id": "bubble",
-        "why": "Bubble is a conversation component. Dense data's components answer takes core and data families only, because records need tables, filters and fast ways to move between them.",
-        "instead": [
-          "card",
-          "textarea"
-        ],
-        "because": [
-          "components.roles"
-        ]
+        "why": "A back-and-forth between analysts or with an assistant. Not for notes on an alert, which use a message."
       },
+      {
+        "id": "marker",
+        "why": "A date or event line in a long thread of notes on an alert. Not for a note someone wrote."
+      },
+      {
+        "id": "message",
+        "why": "Notes on an alert, each shown with its author and time for the next analyst. Not for system status."
+      },
+      {
+        "id": "message-scroller",
+        "why": "A thread of notes on an alert where new ones arrive at the bottom. Not for static lists."
+      }
+    ],
+    "out": [
       {
         "id": "carousel",
         "why": "Slides hide items, and most people never reach the later ones. Dense data's experts want many records on one screen.",
@@ -678,39 +656,6 @@
         "because": [
           "scenarios.q1",
           "accessibility.values"
-        ]
-      },
-      {
-        "id": "marker",
-        "why": "Marker is a conversation component. Dense data's components answer takes core and data families only, because records need tables, filters and fast ways to move between them.",
-        "instead": [
-          "separator",
-          "card"
-        ],
-        "because": [
-          "components.roles"
-        ]
-      },
-      {
-        "id": "message",
-        "why": "Message is a conversation component. Dense data's components answer takes core and data families only, because records need tables, filters and fast ways to move between them.",
-        "instead": [
-          "card",
-          "textarea"
-        ],
-        "because": [
-          "components.roles"
-        ]
-      },
-      {
-        "id": "message-scroller",
-        "why": "Message scroller is a conversation component. Dense data's components answer takes core and data families only, because records need tables, filters and fast ways to move between them.",
-        "instead": [
-          "scroll-area",
-          "card"
-        ],
-        "because": [
-          "components.roles"
         ]
       },
       {
