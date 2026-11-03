@@ -14,12 +14,12 @@ description: "Type primitives in Content first."
 
 | Primitive | Value | Sample | Used by |
 | --- | --- | --- | --- |
-| `font.size.14` | 0.875rem (14px) | <span class="ods-bar" style="width:0.875rem"></span> | `type.caption.font-size` (semantic) |
-| `font.size.16` | 1rem (16px) | <span class="ods-bar" style="width:1rem"></span> | `type.label.font-size` (semantic) |
-| `font.size.18` | 1.125rem (18px) | <span class="ods-bar" style="width:1.125rem"></span> | `type.body.font-size` (semantic)<br />`type.data.font-size` (semantic) |
-| `font.size.28` | 1.75rem (28px) | <span class="ods-bar" style="width:1.75rem"></span> | `type.heading.font-size` (semantic) |
-| `font.size.36` | 2.25rem (36px) | <span class="ods-bar" style="width:2.25rem"></span> | `type.title.font-size` (semantic) |
-| `font.size.44` | 2.75rem (44px) | <span class="ods-bar" style="width:2.75rem"></span> | `type.display.font-size` (semantic) |
+| `font.size.14` | 0.875rem (14px) | <span class="ods-type" style="font-size:0.875rem">Aa</span> | `type.caption.font-size` (semantic) |
+| `font.size.16` | 1rem (16px) | <span class="ods-type" style="font-size:1rem">Aa</span> | `type.label.font-size` (semantic) |
+| `font.size.18` | 1.125rem (18px) | <span class="ods-type" style="font-size:1.125rem">Aa</span> | `type.body.font-size` (semantic)<br />`type.data.font-size` (semantic) |
+| `font.size.28` | 1.75rem (28px) | <span class="ods-type" style="font-size:1.75rem">Aa</span> | `type.heading.font-size` (semantic) |
+| `font.size.36` | 2.25rem (36px) | <span class="ods-type" style="font-size:2.25rem">Aa</span> | `type.title.font-size` (semantic) |
+| `font.size.44` | 2.75rem (44px) | <span class="ods-type" style="font-size:2.75rem">Aa</span> | `type.display.font-size` (semantic) |
 
 ## `font.weight`
 

@@ -211,6 +211,12 @@ code {
 .ods-font {
   font-size: 1.125rem;
 }
+/* A type size primitive, shown as type at that size (OD-217). */
+.ods-type {
+  display: inline-block;
+  font-weight: 600;
+  line-height: 1;
+}
 .ods-motion {
   display: inline-block;
   width: 3rem;

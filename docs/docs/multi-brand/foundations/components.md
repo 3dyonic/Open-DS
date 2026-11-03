@@ -24,6 +24,10 @@ Which components the system carries: its inventory, picked from the catalogue.
 
 Each token points to another token. Values live only on primitives, below.
 
+<div class="odv-brandset" data-for-brand="aster">
+
+<p class="odv-brandname">Aster</p>
+
 | Token | Points to, light | Points to, dark |
 | --- | --- | --- |
 | `component.button.primary.background.@` | `color.action.primary.@` → `aster.theme.light.color.action.primary.@` → `color.teal.light.600` | `color.action.primary.@` → `aster.theme.dark.color.action.primary.@` → `color.teal.dark.700` |
@@ -98,9 +102,175 @@ Each token points to another token. Values live only on primitives, below.
 | `component.transition.duration` | `motion.duration.feedback` → `duration.moderate` | `motion.duration.feedback` → `duration.moderate` |
 | `component.transition.easing` | `motion.easing.standard` → `easing.standard` | `motion.easing.standard` → `easing.standard` |
 
+</div>
+
+<div class="odv-brandset" data-for-brand="birch">
+
+<p class="odv-brandname">Birch</p>
+
+| Token | Points to, light | Points to, dark |
+| --- | --- | --- |
+| `component.button.primary.background.@` | `color.action.primary.@` → `birch.theme.light.color.action.primary.@` → `color.purple.light.600` | `color.action.primary.@` → `birch.theme.dark.color.action.primary.@` → `color.purple.dark.700` |
+| `component.button.primary.background.hover` | `color.action.primary.hover` → `birch.theme.light.color.action.primary.hover` → `color.purple.light.700` | `color.action.primary.hover` → `birch.theme.dark.color.action.primary.hover` → `color.purple.dark.800` |
+| `component.button.primary.label` | `color.text.on-action` → `birch.theme.light.color.text.on-action` → `color.slate.light.0` | `color.text.on-action` → `birch.theme.dark.color.text.on-action` → `color.slate.dark.0` |
+| `component.button.secondary.background.@` | `color.action.secondary.@` → `birch.theme.light.color.action.secondary.@` → `color.slate.light.0` | `color.action.secondary.@` → `birch.theme.dark.color.action.secondary.@` → `color.slate.dark.50` |
+| `component.button.secondary.background.hover` | `color.action.secondary.hover` → `birch.theme.light.color.action.secondary.hover` → `color.slate.light.100` | `color.action.secondary.hover` → `birch.theme.dark.color.action.secondary.hover` → `color.slate.dark.100` |
+| `component.button.secondary.label` | `color.text.primary` → `birch.theme.light.color.text.primary` → `color.slate.light.900` | `color.text.primary` → `birch.theme.dark.color.text.primary` → `color.slate.dark.900` |
+| `component.button.secondary.border` | `color.border.strong` → `birch.theme.light.color.border.strong` → `color.slate.light.500` | `color.border.strong` → `birch.theme.dark.color.border.strong` → `color.slate.dark.300` |
+| `component.button.ghost.background-hover` | `color.surface.sunken` → `birch.theme.light.color.surface.sunken` → `color.slate.light.100` | `color.surface.sunken` → `birch.theme.dark.color.surface.sunken` → `color.slate.dark.100` |
+| `component.button.ghost.label` | `color.text.link` → `birch.theme.light.color.text.link` → `color.purple.light.700` | `color.text.link` → `birch.theme.dark.color.text.link` → `color.purple.dark.700` |
+| `component.button.height` | `size.control.default` → `size.44` | `size.control.default` → `size.44` |
+| `component.button.padding-x` | `space.inset.control-x` → `space.16` | `space.inset.control-x` → `space.16` |
+| `component.button.radius` | `radius.control` → `birch.theme.base.radius.control` → `radius.12` | `radius.control` → `birch.theme.base.radius.control` → `radius.12` |
+| `component.button.font-size` | `type.label.font-size` → `font.size.14` | `type.label.font-size` → `font.size.14` |
+| `component.button.font-weight` | `type.label.font-weight` → `font.weight.600` | `type.label.font-weight` → `font.weight.600` |
+| `component.button.focus-ring` | `color.border.focus` → `birch.theme.light.color.border.focus` → `color.purple.light.600` | `color.border.focus` → `birch.theme.dark.color.border.focus` → `color.purple.dark.700` |
+| `component.button.icon-size` | `size.icon` → `size.16` | `size.icon` → `size.16` |
+| `component.button.disabled.background` | `color.disabled.surface` → `birch.theme.light.color.disabled.surface` → `color.slate.light.100` | `color.disabled.surface` → `birch.theme.dark.color.disabled.surface` → `color.slate.dark.100` |
+| `component.button.disabled.label` | `color.disabled.text` → `birch.theme.light.color.disabled.text` → `color.slate.light.500` | `color.disabled.text` → `birch.theme.dark.color.disabled.text` → `color.slate.dark.500` |
+| `component.button.disabled.border` | `color.disabled.border` → `birch.theme.light.color.disabled.border` → `color.slate.light.200` | `color.disabled.border` → `birch.theme.dark.color.disabled.border` → `color.slate.dark.200` |
+| `component.input.background` | `color.surface.default` → `birch.theme.light.color.surface.default` → `color.slate.light.0` | `color.surface.default` → `birch.theme.dark.color.surface.default` → `color.slate.dark.50` |
+| `component.input.border.@` | `color.border.strong` → `birch.theme.light.color.border.strong` → `color.slate.light.500` | `color.border.strong` → `birch.theme.dark.color.border.strong` → `color.slate.dark.300` |
+| `component.input.border.focus` | `color.border.focus` → `birch.theme.light.color.border.focus` → `color.purple.light.600` | `color.border.focus` → `birch.theme.dark.color.border.focus` → `color.purple.dark.700` |
+| `component.input.text` | `color.text.primary` → `birch.theme.light.color.text.primary` → `color.slate.light.900` | `color.text.primary` → `birch.theme.dark.color.text.primary` → `color.slate.dark.900` |
+| `component.input.placeholder` | `color.text.muted` → `birch.theme.light.color.text.muted` → `color.slate.light.600` | `color.text.muted` → `birch.theme.dark.color.text.muted` → `color.slate.dark.400` |
+| `component.input.height` | `size.control.default` → `size.44` | `size.control.default` → `size.44` |
+| `component.input.padding-x` | `space.inset.control-x` → `space.16` | `space.inset.control-x` → `space.16` |
+| `component.input.radius` | `radius.control` → `birch.theme.base.radius.control` → `radius.12` | `radius.control` → `birch.theme.base.radius.control` → `radius.12` |
+| `component.input.font-size` | `type.body.font-size` → `font.size.16` | `type.body.font-size` → `font.size.16` |
+| `component.input.disabled.background` | `color.disabled.surface` → `birch.theme.light.color.disabled.surface` → `color.slate.light.100` | `color.disabled.surface` → `birch.theme.dark.color.disabled.surface` → `color.slate.dark.100` |
+| `component.input.disabled.border` | `color.disabled.border` → `birch.theme.light.color.disabled.border` → `color.slate.light.200` | `color.disabled.border` → `birch.theme.dark.color.disabled.border` → `color.slate.dark.200` |
+| `component.input.disabled.text` | `color.disabled.text` → `birch.theme.light.color.disabled.text` → `color.slate.light.500` | `color.disabled.text` → `birch.theme.dark.color.disabled.text` → `color.slate.dark.500` |
+| `component.control.checked` | `color.action.primary.@` → `birch.theme.light.color.action.primary.@` → `color.purple.light.600` | `color.action.primary.@` → `birch.theme.dark.color.action.primary.@` → `color.purple.dark.700` |
+| `component.control.track` | `color.border.strong` → `birch.theme.light.color.border.strong` → `color.slate.light.500` | `color.border.strong` → `birch.theme.dark.color.border.strong` → `color.slate.dark.300` |
+| `component.control.thumb` | `color.surface.default` → `birch.theme.light.color.surface.default` → `color.slate.light.0` | `color.surface.default` → `birch.theme.dark.color.surface.default` → `color.slate.dark.50` |
+| `component.control.radius` | `radius.badge` → `birch.theme.base.radius.badge` → `radius.999` | `radius.badge` → `birch.theme.base.radius.badge` → `radius.999` |
+| `component.badge.radius` | `radius.badge` → `birch.theme.base.radius.badge` → `radius.999` | `radius.badge` → `birch.theme.base.radius.badge` → `radius.999` |
+| `component.badge.padding-x` | `space.gap.tight` → `space.8` | `space.gap.tight` → `space.8` |
+| `component.badge.font-size` | `type.caption.font-size` → `font.size.13` | `type.caption.font-size` → `font.size.13` |
+| `component.badge.neutral.background` | `color.surface.sunken` → `birch.theme.light.color.surface.sunken` → `color.slate.light.100` | `color.surface.sunken` → `birch.theme.dark.color.surface.sunken` → `color.slate.dark.100` |
+| `component.badge.neutral.label` | `color.text.secondary` → `birch.theme.light.color.text.secondary` → `color.slate.light.700` | `color.text.secondary` → `birch.theme.dark.color.text.secondary` → `color.slate.dark.500` |
+| `component.badge.success.background` | `color.status.success.subtle` → `birch.theme.light.color.status.success.subtle` → `color.green.light.100` | `color.status.success.subtle` → `birch.theme.dark.color.status.success.subtle` → `color.green.dark.100` |
+| `component.badge.success.label` | `color.status.success.@` → `birch.theme.light.color.status.success.@` → `color.green.light.700` | `color.status.success.@` → `birch.theme.dark.color.status.success.@` → `color.green.dark.700` |
+| `component.badge.warning.background` | `color.status.warning.subtle` → `birch.theme.light.color.status.warning.subtle` → `color.amber.light.100` | `color.status.warning.subtle` → `birch.theme.dark.color.status.warning.subtle` → `color.amber.dark.100` |
+| `component.badge.warning.label` | `color.status.warning.@` → `birch.theme.light.color.status.warning.@` → `color.amber.light.700` | `color.status.warning.@` → `birch.theme.dark.color.status.warning.@` → `color.amber.dark.700` |
+| `component.badge.danger.background` | `color.status.danger.subtle` → `birch.theme.light.color.status.danger.subtle` → `color.red.light.100` | `color.status.danger.subtle` → `birch.theme.dark.color.status.danger.subtle` → `color.red.dark.100` |
+| `component.badge.danger.label` | `color.status.danger.@` → `birch.theme.light.color.status.danger.@` → `color.red.light.700` | `color.status.danger.@` → `birch.theme.dark.color.status.danger.@` → `color.red.dark.700` |
+| `component.badge.info.background` | `color.status.info.subtle` → `birch.theme.light.color.status.info.subtle` → `color.blue.light.100` | `color.status.info.subtle` → `birch.theme.dark.color.status.info.subtle` → `color.blue.dark.100` |
+| `component.badge.info.label` | `color.status.info.@` → `birch.theme.light.color.status.info.@` → `color.blue.light.700` | `color.status.info.@` → `birch.theme.dark.color.status.info.@` → `color.blue.dark.700` |
+| `component.card.background` | `color.surface.default` → `birch.theme.light.color.surface.default` → `color.slate.light.0` | `color.surface.default` → `birch.theme.dark.color.surface.default` → `color.slate.dark.50` |
+| `component.card.border` | `color.border.default` → `birch.theme.light.color.border.default` → `color.slate.light.200` | `color.border.default` → `birch.theme.dark.color.border.default` → `color.slate.dark.100` |
+| `component.card.radius` | `radius.container` → `birch.theme.base.radius.container` → `radius.16` | `radius.container` → `birch.theme.base.radius.container` → `radius.16` |
+| `component.card.padding` | `space.inset.container` → `space.24` | `space.inset.container` → `space.24` |
+| `component.card.shadow` | `elevation.card` → `birch.theme.light.elevation.card` → `shadow.card` | `elevation.card` → `birch.theme.dark.elevation.card` → `shadow.card-dark` |
+| `component.table.header-background` | `color.surface.sunken` → `birch.theme.light.color.surface.sunken` → `color.slate.light.100` | `color.surface.sunken` → `birch.theme.dark.color.surface.sunken` → `color.slate.dark.100` |
+| `component.table.row-height` | `size.row` → `size.48` | `size.row` → `size.48` |
+| `component.table.cell-padding-x` | `space.inset.cell-x` → `space.16` | `space.inset.cell-x` → `space.16` |
+| `component.table.row-border` | `color.border.default` → `birch.theme.light.color.border.default` → `color.slate.light.200` | `color.border.default` → `birch.theme.dark.color.border.default` → `color.slate.dark.100` |
+| `component.table.row-selected` | `color.surface.selected` → `birch.theme.light.color.surface.selected` → `color.purple.light.100` | `color.surface.selected` → `birch.theme.dark.color.surface.selected` → `color.purple.dark.100` |
+| `component.table.font-size` | `type.data.font-size` → `font.size.16` | `type.data.font-size` → `font.size.16` |
+| `component.tabs.indicator` | `color.action.primary.@` → `birch.theme.light.color.action.primary.@` → `color.purple.light.600` | `color.action.primary.@` → `birch.theme.dark.color.action.primary.@` → `color.purple.dark.700` |
+| `component.tabs.label.@` | `color.text.secondary` → `birch.theme.light.color.text.secondary` → `color.slate.light.700` | `color.text.secondary` → `birch.theme.dark.color.text.secondary` → `color.slate.dark.500` |
+| `component.tabs.label.active` | `color.text.primary` → `birch.theme.light.color.text.primary` → `color.slate.light.900` | `color.text.primary` → `birch.theme.dark.color.text.primary` → `color.slate.dark.900` |
+| `component.overlay.background` | `color.surface.raised` → `birch.theme.light.color.surface.raised` → `color.slate.light.0` | `color.surface.raised` → `birch.theme.dark.color.surface.raised` → `color.slate.dark.100` |
+| `component.overlay.radius` | `radius.container` → `birch.theme.base.radius.container` → `radius.16` | `radius.container` → `birch.theme.base.radius.container` → `radius.16` |
+| `component.overlay.shadow` | `elevation.overlay` → `birch.theme.light.elevation.overlay` → `shadow.overlay` | `elevation.overlay` → `birch.theme.dark.elevation.overlay` → `shadow.overlay-dark` |
+| `component.overlay.scrim` | `color.surface.scrim` → `birch.theme.light.color.surface.scrim` → `color.black.light.scrim` | `color.surface.scrim` → `birch.theme.dark.color.surface.scrim` → `color.black.dark.scrim` |
+| `component.overlay.item-height` | `size.control.default` → `size.44` | `size.control.default` → `size.44` |
+| `component.tooltip.background` | `color.surface.inverse` → `birch.theme.light.color.surface.inverse` → `color.slate.light.900` | `color.surface.inverse` → `birch.theme.dark.color.surface.inverse` → `color.slate.dark.900` |
+| `component.tooltip.label` | `color.text.inverse` → `birch.theme.light.color.text.inverse` → `color.slate.light.0` | `color.text.inverse` → `birch.theme.dark.color.text.inverse` → `color.slate.dark.50` |
+| `component.transition.duration` | `motion.duration.feedback` → `duration.moderate` | `motion.duration.feedback` → `duration.moderate` |
+| `component.transition.easing` | `motion.easing.standard` → `easing.standard` | `motion.easing.standard` → `easing.standard` |
+
+</div>
+
+<div class="odv-brandset" data-for-brand="coral">
+
+<p class="odv-brandname">Coral</p>
+
+| Token | Points to, light | Points to, dark |
+| --- | --- | --- |
+| `component.button.primary.background.@` | `color.action.primary.@` → `coral.theme.light.color.action.primary.@` → `color.orange.light.600` | `color.action.primary.@` → `coral.theme.dark.color.action.primary.@` → `color.orange.dark.700` |
+| `component.button.primary.background.hover` | `color.action.primary.hover` → `coral.theme.light.color.action.primary.hover` → `color.orange.light.700` | `color.action.primary.hover` → `coral.theme.dark.color.action.primary.hover` → `color.orange.dark.800` |
+| `component.button.primary.label` | `color.text.on-action` → `coral.theme.light.color.text.on-action` → `color.slate.light.0` | `color.text.on-action` → `coral.theme.dark.color.text.on-action` → `color.slate.dark.0` |
+| `component.button.secondary.background.@` | `color.action.secondary.@` → `coral.theme.light.color.action.secondary.@` → `color.slate.light.0` | `color.action.secondary.@` → `coral.theme.dark.color.action.secondary.@` → `color.slate.dark.50` |
+| `component.button.secondary.background.hover` | `color.action.secondary.hover` → `coral.theme.light.color.action.secondary.hover` → `color.slate.light.100` | `color.action.secondary.hover` → `coral.theme.dark.color.action.secondary.hover` → `color.slate.dark.100` |
+| `component.button.secondary.label` | `color.text.primary` → `coral.theme.light.color.text.primary` → `color.slate.light.900` | `color.text.primary` → `coral.theme.dark.color.text.primary` → `color.slate.dark.900` |
+| `component.button.secondary.border` | `color.border.strong` → `coral.theme.light.color.border.strong` → `color.slate.light.500` | `color.border.strong` → `coral.theme.dark.color.border.strong` → `color.slate.dark.300` |
+| `component.button.ghost.background-hover` | `color.surface.sunken` → `coral.theme.light.color.surface.sunken` → `color.slate.light.100` | `color.surface.sunken` → `coral.theme.dark.color.surface.sunken` → `color.slate.dark.100` |
+| `component.button.ghost.label` | `color.text.link` → `coral.theme.light.color.text.link` → `color.orange.light.700` | `color.text.link` → `coral.theme.dark.color.text.link` → `color.orange.dark.700` |
+| `component.button.height` | `size.control.default` → `size.44` | `size.control.default` → `size.44` |
+| `component.button.padding-x` | `space.inset.control-x` → `space.16` | `space.inset.control-x` → `space.16` |
+| `component.button.radius` | `radius.control` → `coral.theme.base.radius.control` → `radius.999` | `radius.control` → `coral.theme.base.radius.control` → `radius.999` |
+| `component.button.font-size` | `type.label.font-size` → `font.size.14` | `type.label.font-size` → `font.size.14` |
+| `component.button.font-weight` | `type.label.font-weight` → `font.weight.600` | `type.label.font-weight` → `font.weight.600` |
+| `component.button.focus-ring` | `color.border.focus` → `coral.theme.light.color.border.focus` → `color.orange.light.600` | `color.border.focus` → `coral.theme.dark.color.border.focus` → `color.orange.dark.700` |
+| `component.button.icon-size` | `size.icon` → `size.16` | `size.icon` → `size.16` |
+| `component.button.disabled.background` | `color.disabled.surface` → `coral.theme.light.color.disabled.surface` → `color.slate.light.100` | `color.disabled.surface` → `coral.theme.dark.color.disabled.surface` → `color.slate.dark.100` |
+| `component.button.disabled.label` | `color.disabled.text` → `coral.theme.light.color.disabled.text` → `color.slate.light.500` | `color.disabled.text` → `coral.theme.dark.color.disabled.text` → `color.slate.dark.500` |
+| `component.button.disabled.border` | `color.disabled.border` → `coral.theme.light.color.disabled.border` → `color.slate.light.200` | `color.disabled.border` → `coral.theme.dark.color.disabled.border` → `color.slate.dark.200` |
+| `component.input.background` | `color.surface.default` → `coral.theme.light.color.surface.default` → `color.slate.light.0` | `color.surface.default` → `coral.theme.dark.color.surface.default` → `color.slate.dark.50` |
+| `component.input.border.@` | `color.border.strong` → `coral.theme.light.color.border.strong` → `color.slate.light.500` | `color.border.strong` → `coral.theme.dark.color.border.strong` → `color.slate.dark.300` |
+| `component.input.border.focus` | `color.border.focus` → `coral.theme.light.color.border.focus` → `color.orange.light.600` | `color.border.focus` → `coral.theme.dark.color.border.focus` → `color.orange.dark.700` |
+| `component.input.text` | `color.text.primary` → `coral.theme.light.color.text.primary` → `color.slate.light.900` | `color.text.primary` → `coral.theme.dark.color.text.primary` → `color.slate.dark.900` |
+| `component.input.placeholder` | `color.text.muted` → `coral.theme.light.color.text.muted` → `color.slate.light.600` | `color.text.muted` → `coral.theme.dark.color.text.muted` → `color.slate.dark.400` |
+| `component.input.height` | `size.control.default` → `size.44` | `size.control.default` → `size.44` |
+| `component.input.padding-x` | `space.inset.control-x` → `space.16` | `space.inset.control-x` → `space.16` |
+| `component.input.radius` | `radius.control` → `coral.theme.base.radius.control` → `radius.999` | `radius.control` → `coral.theme.base.radius.control` → `radius.999` |
+| `component.input.font-size` | `type.body.font-size` → `font.size.16` | `type.body.font-size` → `font.size.16` |
+| `component.input.disabled.background` | `color.disabled.surface` → `coral.theme.light.color.disabled.surface` → `color.slate.light.100` | `color.disabled.surface` → `coral.theme.dark.color.disabled.surface` → `color.slate.dark.100` |
+| `component.input.disabled.border` | `color.disabled.border` → `coral.theme.light.color.disabled.border` → `color.slate.light.200` | `color.disabled.border` → `coral.theme.dark.color.disabled.border` → `color.slate.dark.200` |
+| `component.input.disabled.text` | `color.disabled.text` → `coral.theme.light.color.disabled.text` → `color.slate.light.500` | `color.disabled.text` → `coral.theme.dark.color.disabled.text` → `color.slate.dark.500` |
+| `component.control.checked` | `color.action.primary.@` → `coral.theme.light.color.action.primary.@` → `color.orange.light.600` | `color.action.primary.@` → `coral.theme.dark.color.action.primary.@` → `color.orange.dark.700` |
+| `component.control.track` | `color.border.strong` → `coral.theme.light.color.border.strong` → `color.slate.light.500` | `color.border.strong` → `coral.theme.dark.color.border.strong` → `color.slate.dark.300` |
+| `component.control.thumb` | `color.surface.default` → `coral.theme.light.color.surface.default` → `color.slate.light.0` | `color.surface.default` → `coral.theme.dark.color.surface.default` → `color.slate.dark.50` |
+| `component.control.radius` | `radius.badge` → `coral.theme.base.radius.badge` → `radius.999` | `radius.badge` → `coral.theme.base.radius.badge` → `radius.999` |
+| `component.badge.radius` | `radius.badge` → `coral.theme.base.radius.badge` → `radius.999` | `radius.badge` → `coral.theme.base.radius.badge` → `radius.999` |
+| `component.badge.padding-x` | `space.gap.tight` → `space.8` | `space.gap.tight` → `space.8` |
+| `component.badge.font-size` | `type.caption.font-size` → `font.size.13` | `type.caption.font-size` → `font.size.13` |
+| `component.badge.neutral.background` | `color.surface.sunken` → `coral.theme.light.color.surface.sunken` → `color.slate.light.100` | `color.surface.sunken` → `coral.theme.dark.color.surface.sunken` → `color.slate.dark.100` |
+| `component.badge.neutral.label` | `color.text.secondary` → `coral.theme.light.color.text.secondary` → `color.slate.light.700` | `color.text.secondary` → `coral.theme.dark.color.text.secondary` → `color.slate.dark.500` |
+| `component.badge.success.background` | `color.status.success.subtle` → `coral.theme.light.color.status.success.subtle` → `color.green.light.100` | `color.status.success.subtle` → `coral.theme.dark.color.status.success.subtle` → `color.green.dark.100` |
+| `component.badge.success.label` | `color.status.success.@` → `coral.theme.light.color.status.success.@` → `color.green.light.700` | `color.status.success.@` → `coral.theme.dark.color.status.success.@` → `color.green.dark.700` |
+| `component.badge.warning.background` | `color.status.warning.subtle` → `coral.theme.light.color.status.warning.subtle` → `color.amber.light.100` | `color.status.warning.subtle` → `coral.theme.dark.color.status.warning.subtle` → `color.amber.dark.100` |
+| `component.badge.warning.label` | `color.status.warning.@` → `coral.theme.light.color.status.warning.@` → `color.amber.light.700` | `color.status.warning.@` → `coral.theme.dark.color.status.warning.@` → `color.amber.dark.700` |
+| `component.badge.danger.background` | `color.status.danger.subtle` → `coral.theme.light.color.status.danger.subtle` → `color.red.light.100` | `color.status.danger.subtle` → `coral.theme.dark.color.status.danger.subtle` → `color.red.dark.100` |
+| `component.badge.danger.label` | `color.status.danger.@` → `coral.theme.light.color.status.danger.@` → `color.red.light.700` | `color.status.danger.@` → `coral.theme.dark.color.status.danger.@` → `color.red.dark.700` |
+| `component.badge.info.background` | `color.status.info.subtle` → `coral.theme.light.color.status.info.subtle` → `color.blue.light.100` | `color.status.info.subtle` → `coral.theme.dark.color.status.info.subtle` → `color.blue.dark.100` |
+| `component.badge.info.label` | `color.status.info.@` → `coral.theme.light.color.status.info.@` → `color.blue.light.700` | `color.status.info.@` → `coral.theme.dark.color.status.info.@` → `color.blue.dark.700` |
+| `component.card.background` | `color.surface.default` → `coral.theme.light.color.surface.default` → `color.slate.light.0` | `color.surface.default` → `coral.theme.dark.color.surface.default` → `color.slate.dark.50` |
+| `component.card.border` | `color.border.default` → `coral.theme.light.color.border.default` → `color.slate.light.200` | `color.border.default` → `coral.theme.dark.color.border.default` → `color.slate.dark.100` |
+| `component.card.radius` | `radius.container` → `coral.theme.base.radius.container` → `radius.20` | `radius.container` → `coral.theme.base.radius.container` → `radius.20` |
+| `component.card.padding` | `space.inset.container` → `space.24` | `space.inset.container` → `space.24` |
+| `component.card.shadow` | `elevation.card` → `coral.theme.light.elevation.card` → `shadow.card` | `elevation.card` → `coral.theme.dark.elevation.card` → `shadow.card-dark` |
+| `component.table.header-background` | `color.surface.sunken` → `coral.theme.light.color.surface.sunken` → `color.slate.light.100` | `color.surface.sunken` → `coral.theme.dark.color.surface.sunken` → `color.slate.dark.100` |
+| `component.table.row-height` | `size.row` → `size.48` | `size.row` → `size.48` |
+| `component.table.cell-padding-x` | `space.inset.cell-x` → `space.16` | `space.inset.cell-x` → `space.16` |
+| `component.table.row-border` | `color.border.default` → `coral.theme.light.color.border.default` → `color.slate.light.200` | `color.border.default` → `coral.theme.dark.color.border.default` → `color.slate.dark.100` |
+| `component.table.row-selected` | `color.surface.selected` → `coral.theme.light.color.surface.selected` → `color.orange.light.100` | `color.surface.selected` → `coral.theme.dark.color.surface.selected` → `color.orange.dark.100` |
+| `component.table.font-size` | `type.data.font-size` → `font.size.16` | `type.data.font-size` → `font.size.16` |
+| `component.tabs.indicator` | `color.action.primary.@` → `coral.theme.light.color.action.primary.@` → `color.orange.light.600` | `color.action.primary.@` → `coral.theme.dark.color.action.primary.@` → `color.orange.dark.700` |
+| `component.tabs.label.@` | `color.text.secondary` → `coral.theme.light.color.text.secondary` → `color.slate.light.700` | `color.text.secondary` → `coral.theme.dark.color.text.secondary` → `color.slate.dark.500` |
+| `component.tabs.label.active` | `color.text.primary` → `coral.theme.light.color.text.primary` → `color.slate.light.900` | `color.text.primary` → `coral.theme.dark.color.text.primary` → `color.slate.dark.900` |
+| `component.overlay.background` | `color.surface.raised` → `coral.theme.light.color.surface.raised` → `color.slate.light.0` | `color.surface.raised` → `coral.theme.dark.color.surface.raised` → `color.slate.dark.100` |
+| `component.overlay.radius` | `radius.container` → `coral.theme.base.radius.container` → `radius.20` | `radius.container` → `coral.theme.base.radius.container` → `radius.20` |
+| `component.overlay.shadow` | `elevation.overlay` → `coral.theme.light.elevation.overlay` → `shadow.overlay` | `elevation.overlay` → `coral.theme.dark.elevation.overlay` → `shadow.overlay-dark` |
+| `component.overlay.scrim` | `color.surface.scrim` → `coral.theme.light.color.surface.scrim` → `color.black.light.scrim` | `color.surface.scrim` → `coral.theme.dark.color.surface.scrim` → `color.black.dark.scrim` |
+| `component.overlay.item-height` | `size.control.default` → `size.44` | `size.control.default` → `size.44` |
+| `component.tooltip.background` | `color.surface.inverse` → `coral.theme.light.color.surface.inverse` → `color.slate.light.900` | `color.surface.inverse` → `coral.theme.dark.color.surface.inverse` → `color.slate.dark.900` |
+| `component.tooltip.label` | `color.text.inverse` → `coral.theme.light.color.text.inverse` → `color.slate.light.0` | `color.text.inverse` → `coral.theme.dark.color.text.inverse` → `color.slate.dark.50` |
+| `component.transition.duration` | `motion.duration.feedback` → `duration.moderate` | `motion.duration.feedback` → `duration.moderate` |
+| `component.transition.easing` | `motion.easing.standard` → `easing.standard` | `motion.easing.standard` → `easing.standard` |
+
+</div>
+
 ## Primitives
 
 The raw values the tokens above end at.
+
+<div class="odv-brandset" data-for-brand="aster">
+
+<p class="odv-brandname">Aster</p>
 
 | Primitive | Value | Sample |
 | --- | --- | --- |
@@ -145,9 +315,9 @@ The raw values the tokens above end at.
 | `color.teal.light.700` | #0B5B55 | <span class="ods-swatch" style="background:#0B5B55"></span> |
 | `duration.moderate` | 200ms | <span class="ods-motion" style="--ods-d:200ms"><span></span></span> |
 | `easing.standard` | cubic-bezier(0.2, 0, 0, 1) |  |
-| `font.size.13` | 0.8125rem (13px) | <span class="ods-bar" style="width:0.8125rem"></span> |
-| `font.size.14` | 0.875rem (14px) | <span class="ods-bar" style="width:0.875rem"></span> |
-| `font.size.16` | 1rem (16px) | <span class="ods-bar" style="width:1rem"></span> |
+| `font.size.13` | 0.8125rem (13px) | <span class="ods-type" style="font-size:0.8125rem">Aa</span> |
+| `font.size.14` | 0.875rem (14px) | <span class="ods-type" style="font-size:0.875rem">Aa</span> |
+| `font.size.16` | 1rem (16px) | <span class="ods-type" style="font-size:1rem">Aa</span> |
 | `font.weight.600` | 600 |  |
 | `radius.4` | 0.25rem (4px) | <span class="ods-tile" style="border-radius:0.25rem"></span> |
 | `radius.8` | 0.5rem (8px) | <span class="ods-tile" style="border-radius:0.5rem"></span> |
@@ -161,6 +331,141 @@ The raw values the tokens above end at.
 | `space.16` | 1rem (16px) | <span class="ods-bar" style="width:1rem"></span> |
 | `space.24` | 1.5rem (24px) | <span class="ods-bar" style="width:1.5rem"></span> |
 | `space.8` | 0.5rem (8px) | <span class="ods-bar" style="width:0.5rem"></span> |
+
+</div>
+
+<div class="odv-brandset" data-for-brand="birch">
+
+<p class="odv-brandname">Birch</p>
+
+| Primitive | Value | Sample |
+| --- | --- | --- |
+| `color.amber.dark.100` | #3A2A05 | <span class="ods-swatch" style="background:#3A2A05"></span> |
+| `color.amber.dark.700` | #F2B84B | <span class="ods-swatch" style="background:#F2B84B"></span> |
+| `color.amber.light.100` | #FFF3D6 | <span class="ods-swatch" style="background:#FFF3D6"></span> |
+| `color.amber.light.700` | #8A5600 | <span class="ods-swatch" style="background:#8A5600"></span> |
+| `color.black.dark.scrim` | #000000B3 | <span class="ods-swatch" style="background:#000000B3"></span> |
+| `color.black.light.scrim` | #0000008C | <span class="ods-swatch" style="background:#0000008C"></span> |
+| `color.blue.dark.100` | #062C6E | <span class="ods-swatch" style="background:#062C6E"></span> |
+| `color.blue.dark.700` | #8AB4F8 | <span class="ods-swatch" style="background:#8AB4F8"></span> |
+| `color.blue.light.100` | #E1ECFF | <span class="ods-swatch" style="background:#E1ECFF"></span> |
+| `color.blue.light.700` | #083C93 | <span class="ods-swatch" style="background:#083C93"></span> |
+| `color.green.dark.100` | #123322 | <span class="ods-swatch" style="background:#123322"></span> |
+| `color.green.dark.700` | #5CC283 | <span class="ods-swatch" style="background:#5CC283"></span> |
+| `color.green.light.100` | #E3F4EA | <span class="ods-swatch" style="background:#E3F4EA"></span> |
+| `color.green.light.700` | #1F7A3A | <span class="ods-swatch" style="background:#1F7A3A"></span> |
+| `color.purple.dark.100` | #3E177D | <span class="ods-swatch" style="background:#3E177D"></span> |
+| `color.purple.dark.700` | #B79DF7 | <span class="ods-swatch" style="background:#B79DF7"></span> |
+| `color.purple.dark.800` | #EDE7FE | <span class="ods-swatch" style="background:#EDE7FE"></span> |
+| `color.purple.light.100` | #EDE7FE | <span class="ods-swatch" style="background:#EDE7FE"></span> |
+| `color.purple.light.600` | #6D28D9 | <span class="ods-swatch" style="background:#6D28D9"></span> |
+| `color.purple.light.700` | #5520AA | <span class="ods-swatch" style="background:#5520AA"></span> |
+| `color.red.dark.100` | #3D1414 | <span class="ods-swatch" style="background:#3D1414"></span> |
+| `color.red.dark.700` | #F28B8B | <span class="ods-swatch" style="background:#F28B8B"></span> |
+| `color.red.light.100` | #FDE7E7 | <span class="ods-swatch" style="background:#FDE7E7"></span> |
+| `color.red.light.700` | #C42B2B | <span class="ods-swatch" style="background:#C42B2B"></span> |
+| `color.slate.dark.0` | #020617 | <span class="ods-swatch" style="background:#020617"></span> |
+| `color.slate.dark.100` | #1E293B | <span class="ods-swatch" style="background:#1E293B"></span> |
+| `color.slate.dark.200` | #334155 | <span class="ods-swatch" style="background:#334155"></span> |
+| `color.slate.dark.300` | #64748B | <span class="ods-swatch" style="background:#64748B"></span> |
+| `color.slate.dark.400` | #96A3B5 | <span class="ods-swatch" style="background:#96A3B5"></span> |
+| `color.slate.dark.50` | #0F172A | <span class="ods-swatch" style="background:#0F172A"></span> |
+| `color.slate.dark.500` | #CBD5E1 | <span class="ods-swatch" style="background:#CBD5E1"></span> |
+| `color.slate.dark.900` | #F8FAFC | <span class="ods-swatch" style="background:#F8FAFC"></span> |
+| `color.slate.light.0` | #FFFFFF | <span class="ods-swatch" style="background:#FFFFFF"></span> |
+| `color.slate.light.100` | #F1F5F9 | <span class="ods-swatch" style="background:#F1F5F9"></span> |
+| `color.slate.light.200` | #E2E8F0 | <span class="ods-swatch" style="background:#E2E8F0"></span> |
+| `color.slate.light.500` | #64748B | <span class="ods-swatch" style="background:#64748B"></span> |
+| `color.slate.light.600` | #4B5A6F | <span class="ods-swatch" style="background:#4B5A6F"></span> |
+| `color.slate.light.700` | #334155 | <span class="ods-swatch" style="background:#334155"></span> |
+| `color.slate.light.900` | #0F172A | <span class="ods-swatch" style="background:#0F172A"></span> |
+| `duration.moderate` | 200ms | <span class="ods-motion" style="--ods-d:200ms"><span></span></span> |
+| `easing.standard` | cubic-bezier(0.2, 0, 0, 1) |  |
+| `font.size.13` | 0.8125rem (13px) | <span class="ods-type" style="font-size:0.8125rem">Aa</span> |
+| `font.size.14` | 0.875rem (14px) | <span class="ods-type" style="font-size:0.875rem">Aa</span> |
+| `font.size.16` | 1rem (16px) | <span class="ods-type" style="font-size:1rem">Aa</span> |
+| `font.weight.600` | 600 |  |
+| `radius.12` | 0.75rem (12px) | <span class="ods-tile" style="border-radius:0.75rem"></span> |
+| `radius.16` | 1rem (16px) | <span class="ods-tile" style="border-radius:1rem"></span> |
+| `radius.999` | 9999px | <span class="ods-tile" style="border-radius:9999px"></span> |
+| `shadow.card` | 0px 2px 8px 0px #0F172A14 | <span class="ods-card" style="box-shadow:0px 2px 8px 0px #0F172A14"></span> |
+| `shadow.card-dark` | 0px 2px 8px 0px #00000066 | <span class="ods-card" style="box-shadow:0px 2px 8px 0px #00000066"></span> |
+| `shadow.overlay` | 0px 12px 32px 0px #0F172A29 | <span class="ods-card" style="box-shadow:0px 12px 32px 0px #0F172A29"></span> |
+| `shadow.overlay-dark` | 0px 12px 32px 0px #00000080 | <span class="ods-card" style="box-shadow:0px 12px 32px 0px #00000080"></span> |
+| `size.16` | 1rem (16px) | <span class="ods-bar" style="width:1rem"></span> |
+| `size.44` | 2.75rem (44px) | <span class="ods-bar" style="width:2.75rem"></span> |
+| `size.48` | 3rem (48px) | <span class="ods-bar" style="width:3rem"></span> |
+| `space.16` | 1rem (16px) | <span class="ods-bar" style="width:1rem"></span> |
+| `space.24` | 1.5rem (24px) | <span class="ods-bar" style="width:1.5rem"></span> |
+| `space.8` | 0.5rem (8px) | <span class="ods-bar" style="width:0.5rem"></span> |
+
+</div>
+
+<div class="odv-brandset" data-for-brand="coral">
+
+<p class="odv-brandname">Coral</p>
+
+| Primitive | Value | Sample |
+| --- | --- | --- |
+| `color.amber.dark.100` | #3A2A05 | <span class="ods-swatch" style="background:#3A2A05"></span> |
+| `color.amber.dark.700` | #F2B84B | <span class="ods-swatch" style="background:#F2B84B"></span> |
+| `color.amber.light.100` | #FFF3D6 | <span class="ods-swatch" style="background:#FFF3D6"></span> |
+| `color.amber.light.700` | #8A5600 | <span class="ods-swatch" style="background:#8A5600"></span> |
+| `color.black.dark.scrim` | #000000B3 | <span class="ods-swatch" style="background:#000000B3"></span> |
+| `color.black.light.scrim` | #0000008C | <span class="ods-swatch" style="background:#0000008C"></span> |
+| `color.blue.dark.100` | #062C6E | <span class="ods-swatch" style="background:#062C6E"></span> |
+| `color.blue.dark.700` | #8AB4F8 | <span class="ods-swatch" style="background:#8AB4F8"></span> |
+| `color.blue.light.100` | #E1ECFF | <span class="ods-swatch" style="background:#E1ECFF"></span> |
+| `color.blue.light.700` | #083C93 | <span class="ods-swatch" style="background:#083C93"></span> |
+| `color.green.dark.100` | #123322 | <span class="ods-swatch" style="background:#123322"></span> |
+| `color.green.dark.700` | #5CC283 | <span class="ods-swatch" style="background:#5CC283"></span> |
+| `color.green.light.100` | #E3F4EA | <span class="ods-swatch" style="background:#E3F4EA"></span> |
+| `color.green.light.700` | #1F7A3A | <span class="ods-swatch" style="background:#1F7A3A"></span> |
+| `color.orange.dark.100` | #732607 | <span class="ods-swatch" style="background:#732607"></span> |
+| `color.orange.dark.700` | #F7A67F | <span class="ods-swatch" style="background:#F7A67F"></span> |
+| `color.orange.dark.800` | #FFEDE5 | <span class="ods-swatch" style="background:#FFEDE5"></span> |
+| `color.orange.light.100` | #FFEDE5 | <span class="ods-swatch" style="background:#FFEDE5"></span> |
+| `color.orange.light.600` | #C2410C | <span class="ods-swatch" style="background:#C2410C"></span> |
+| `color.orange.light.700` | #9A330A | <span class="ods-swatch" style="background:#9A330A"></span> |
+| `color.red.dark.100` | #3D1414 | <span class="ods-swatch" style="background:#3D1414"></span> |
+| `color.red.dark.700` | #F28B8B | <span class="ods-swatch" style="background:#F28B8B"></span> |
+| `color.red.light.100` | #FDE7E7 | <span class="ods-swatch" style="background:#FDE7E7"></span> |
+| `color.red.light.700` | #C42B2B | <span class="ods-swatch" style="background:#C42B2B"></span> |
+| `color.slate.dark.0` | #020617 | <span class="ods-swatch" style="background:#020617"></span> |
+| `color.slate.dark.100` | #1E293B | <span class="ods-swatch" style="background:#1E293B"></span> |
+| `color.slate.dark.200` | #334155 | <span class="ods-swatch" style="background:#334155"></span> |
+| `color.slate.dark.300` | #64748B | <span class="ods-swatch" style="background:#64748B"></span> |
+| `color.slate.dark.400` | #96A3B5 | <span class="ods-swatch" style="background:#96A3B5"></span> |
+| `color.slate.dark.50` | #0F172A | <span class="ods-swatch" style="background:#0F172A"></span> |
+| `color.slate.dark.500` | #CBD5E1 | <span class="ods-swatch" style="background:#CBD5E1"></span> |
+| `color.slate.dark.900` | #F8FAFC | <span class="ods-swatch" style="background:#F8FAFC"></span> |
+| `color.slate.light.0` | #FFFFFF | <span class="ods-swatch" style="background:#FFFFFF"></span> |
+| `color.slate.light.100` | #F1F5F9 | <span class="ods-swatch" style="background:#F1F5F9"></span> |
+| `color.slate.light.200` | #E2E8F0 | <span class="ods-swatch" style="background:#E2E8F0"></span> |
+| `color.slate.light.500` | #64748B | <span class="ods-swatch" style="background:#64748B"></span> |
+| `color.slate.light.600` | #4B5A6F | <span class="ods-swatch" style="background:#4B5A6F"></span> |
+| `color.slate.light.700` | #334155 | <span class="ods-swatch" style="background:#334155"></span> |
+| `color.slate.light.900` | #0F172A | <span class="ods-swatch" style="background:#0F172A"></span> |
+| `duration.moderate` | 200ms | <span class="ods-motion" style="--ods-d:200ms"><span></span></span> |
+| `easing.standard` | cubic-bezier(0.2, 0, 0, 1) |  |
+| `font.size.13` | 0.8125rem (13px) | <span class="ods-type" style="font-size:0.8125rem">Aa</span> |
+| `font.size.14` | 0.875rem (14px) | <span class="ods-type" style="font-size:0.875rem">Aa</span> |
+| `font.size.16` | 1rem (16px) | <span class="ods-type" style="font-size:1rem">Aa</span> |
+| `font.weight.600` | 600 |  |
+| `radius.20` | 1.25rem (20px) | <span class="ods-tile" style="border-radius:1.25rem"></span> |
+| `radius.999` | 9999px | <span class="ods-tile" style="border-radius:9999px"></span> |
+| `shadow.card` | 0px 2px 8px 0px #0F172A14 | <span class="ods-card" style="box-shadow:0px 2px 8px 0px #0F172A14"></span> |
+| `shadow.card-dark` | 0px 2px 8px 0px #00000066 | <span class="ods-card" style="box-shadow:0px 2px 8px 0px #00000066"></span> |
+| `shadow.overlay` | 0px 12px 32px 0px #0F172A29 | <span class="ods-card" style="box-shadow:0px 12px 32px 0px #0F172A29"></span> |
+| `shadow.overlay-dark` | 0px 12px 32px 0px #00000080 | <span class="ods-card" style="box-shadow:0px 12px 32px 0px #00000080"></span> |
+| `size.16` | 1rem (16px) | <span class="ods-bar" style="width:1rem"></span> |
+| `size.44` | 2.75rem (44px) | <span class="ods-bar" style="width:2.75rem"></span> |
+| `size.48` | 3rem (48px) | <span class="ods-bar" style="width:3rem"></span> |
+| `space.16` | 1rem (16px) | <span class="ods-bar" style="width:1rem"></span> |
+| `space.24` | 1.5rem (24px) | <span class="ods-bar" style="width:1.5rem"></span> |
+| `space.8` | 0.5rem (8px) | <span class="ods-bar" style="width:0.5rem"></span> |
+
+</div>
 
 ## Where it lands
 

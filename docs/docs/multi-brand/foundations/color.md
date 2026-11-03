@@ -53,19 +53,85 @@ How color carries action, state and brand.
 <span class="ods-item"><span class="ods-swatch" style="background:var(--color-disabled-surface)"></span><span class="ods-label">color.disabled.surface</span></span>
 </div>
 
+<div class="odv-brandset" data-for-brand="aster">
+
+<p class="odv-brandname">Aster</p>
+
 <div class="odv-band"><div style="background:var(--color-action-primary);color:#FFFFFF"><b>Action</b>action.primary</div><div style="background:var(--color-text-primary);color:#FFFFFF"><b>Text</b>text.primary</div><div style="background:var(--color-status-success);color:#FFFFFF"><b>Success</b>status.success</div><div style="background:var(--color-status-warning);color:#FFFFFF"><b>Warning</b>status.warning</div><div style="background:var(--color-status-danger);color:#FFFFFF"><b>Danger</b>status.danger</div><div style="background:var(--color-status-info);color:#FFFFFF"><b>Info</b>status.info</div></div>
+
+</div>
+
+<div class="odv-brandset" data-for-brand="birch">
+
+<p class="odv-brandname">Birch</p>
+
+<div class="odv-band"><div style="background:var(--color-action-primary);color:#FFFFFF"><b>Action</b>action.primary</div><div style="background:var(--color-text-primary);color:#FFFFFF"><b>Text</b>text.primary</div><div style="background:var(--color-status-success);color:#FFFFFF"><b>Success</b>status.success</div><div style="background:var(--color-status-warning);color:#FFFFFF"><b>Warning</b>status.warning</div><div style="background:var(--color-status-danger);color:#FFFFFF"><b>Danger</b>status.danger</div><div style="background:var(--color-status-info);color:#FFFFFF"><b>Info</b>status.info</div></div>
+
+</div>
+
+<div class="odv-brandset" data-for-brand="coral">
+
+<p class="odv-brandname">Coral</p>
+
+<div class="odv-band"><div style="background:var(--color-action-primary);color:#FFFFFF"><b>Action</b>action.primary</div><div style="background:var(--color-text-primary);color:#FFFFFF"><b>Text</b>text.primary</div><div style="background:var(--color-status-success);color:#FFFFFF"><b>Success</b>status.success</div><div style="background:var(--color-status-warning);color:#FFFFFF"><b>Warning</b>status.warning</div><div style="background:var(--color-status-danger);color:#FFFFFF"><b>Danger</b>status.danger</div><div style="background:var(--color-status-info);color:#FFFFFF"><b>Info</b>status.info</div></div>
+
+</div>
 
 ## Surfaces
 
 The canvas, then the surfaces content sits on, in aster-light and aster-dark and birch-light and birch-dark and coral-light and coral-dark.
 
+<div class="odv-brandset" data-for-brand="aster">
+
+<p class="odv-brandname">Aster</p>
+
 <div class="odv-grid two"><div class="odv-stack" style="background:#F8FAFC;color:#0F172A;border-color:#E2E8F0"><div style="inset:12px 12px auto 12px;border:0;background:none"><b>aster-light</b></div><div style="inset:44px 16px 16px 16px;background:#FFFFFF;border-color:#E2E8F0"><b>Default</b><code>surface.default</code></div><div style="inset:104px 44px 36px 44px;background:#F1F5F9;border-color:#E2E8F0"><b>Sunken</b><code>surface.sunken</code></div></div><div class="odv-stack" style="background:#020617;color:#F8FAFC;border-color:#1E293B"><div style="inset:12px 12px auto 12px;border:0;background:none"><b>aster-dark</b></div><div style="inset:44px 16px 16px 16px;background:#0F172A;border-color:#1E293B"><b>Default</b><code>surface.default</code></div><div style="inset:104px 44px 36px 44px;background:#1E293B;border-color:#1E293B"><b>Sunken</b><code>surface.sunken</code></div></div></div>
+
+</div>
+
+<div class="odv-brandset" data-for-brand="birch">
+
+<p class="odv-brandname">Birch</p>
+
+<div class="odv-grid two"><div class="odv-stack" style="background:#F8FAFC;color:#0F172A;border-color:#E2E8F0"><div style="inset:12px 12px auto 12px;border:0;background:none"><b>birch-light</b></div><div style="inset:44px 16px 16px 16px;background:#FFFFFF;border-color:#E2E8F0"><b>Default</b><code>surface.default</code></div><div style="inset:104px 44px 36px 44px;background:#F1F5F9;border-color:#E2E8F0"><b>Sunken</b><code>surface.sunken</code></div></div><div class="odv-stack" style="background:#020617;color:#F8FAFC;border-color:#1E293B"><div style="inset:12px 12px auto 12px;border:0;background:none"><b>birch-dark</b></div><div style="inset:44px 16px 16px 16px;background:#0F172A;border-color:#1E293B"><b>Default</b><code>surface.default</code></div><div style="inset:104px 44px 36px 44px;background:#1E293B;border-color:#1E293B"><b>Sunken</b><code>surface.sunken</code></div></div></div>
+
+</div>
+
+<div class="odv-brandset" data-for-brand="coral">
+
+<p class="odv-brandname">Coral</p>
+
+<div class="odv-grid two"><div class="odv-stack" style="background:#F8FAFC;color:#0F172A;border-color:#E2E8F0"><div style="inset:12px 12px auto 12px;border:0;background:none"><b>coral-light</b></div><div style="inset:44px 16px 16px 16px;background:#FFFFFF;border-color:#E2E8F0"><b>Default</b><code>surface.default</code></div><div style="inset:104px 44px 36px 44px;background:#F1F5F9;border-color:#E2E8F0"><b>Sunken</b><code>surface.sunken</code></div></div><div class="odv-stack" style="background:#020617;color:#F8FAFC;border-color:#1E293B"><div style="inset:12px 12px auto 12px;border:0;background:none"><b>coral-dark</b></div><div style="inset:44px 16px 16px 16px;background:#0F172A;border-color:#1E293B"><b>Default</b><code>surface.default</code></div><div style="inset:104px 44px 36px 44px;background:#1E293B;border-color:#1E293B"><b>Sunken</b><code>surface.sunken</code></div></div></div>
+
+</div>
 
 ## Status colours in use
 
 Each status label always gets the same colour, with its dot, so colour is never the only cue. The ratio is the status colour on its subtle fill, computed from the tokens.
 
+<div class="odv-brandset" data-for-brand="aster">
+
+<p class="odv-brandname">Aster</p>
+
 <div class="odv-card"><div class="odv-status"><div><span class="odv-badge odv-t-success">Active</span></div><div class="odv-alert odv-t-success"><b>Active.</b> The plan is paid and running.</div><div><span class="odv-ratio">aster-light 4.7:1</span> <span class="odv-ratio">aster-dark 6.2:1</span></div></div><div class="odv-status"><div><span class="odv-badge odv-t-info">Renews in 3 days</span></div><div class="odv-alert odv-t-info"><b>Renews in 3 days.</b> A payment is coming: news, nothing has gone wrong.</div><div><span class="odv-ratio">aster-light 8.5:1</span> <span class="odv-ratio">aster-dark 6.3:1</span></div></div><div class="odv-status"><div><span class="odv-badge odv-t-danger">Card declined</span></div><div class="odv-alert odv-t-danger"><b>Card declined.</b> The payment failed, so the plan will stop.</div><div><span class="odv-ratio">aster-light 4.8:1</span> <span class="odv-ratio">aster-dark 6.8:1</span></div></div></div>
+
+</div>
+
+<div class="odv-brandset" data-for-brand="birch">
+
+<p class="odv-brandname">Birch</p>
+
+<div class="odv-card"><div class="odv-status"><div><span class="odv-badge odv-t-success">Active</span></div><div class="odv-alert odv-t-success"><b>Active.</b> The plan is paid and running.</div><div><span class="odv-ratio">birch-light 4.7:1</span> <span class="odv-ratio">birch-dark 6.2:1</span></div></div><div class="odv-status"><div><span class="odv-badge odv-t-info">Renews in 3 days</span></div><div class="odv-alert odv-t-info"><b>Renews in 3 days.</b> A payment is coming: news, nothing has gone wrong.</div><div><span class="odv-ratio">birch-light 8.5:1</span> <span class="odv-ratio">birch-dark 6.3:1</span></div></div><div class="odv-status"><div><span class="odv-badge odv-t-danger">Card declined</span></div><div class="odv-alert odv-t-danger"><b>Card declined.</b> The payment failed, so the plan will stop.</div><div><span class="odv-ratio">birch-light 4.8:1</span> <span class="odv-ratio">birch-dark 6.8:1</span></div></div></div>
+
+</div>
+
+<div class="odv-brandset" data-for-brand="coral">
+
+<p class="odv-brandname">Coral</p>
+
+<div class="odv-card"><div class="odv-status"><div><span class="odv-badge odv-t-success">Active</span></div><div class="odv-alert odv-t-success"><b>Active.</b> The plan is paid and running.</div><div><span class="odv-ratio">coral-light 4.7:1</span> <span class="odv-ratio">coral-dark 6.2:1</span></div></div><div class="odv-status"><div><span class="odv-badge odv-t-info">Renews in 3 days</span></div><div class="odv-alert odv-t-info"><b>Renews in 3 days.</b> A payment is coming: news, nothing has gone wrong.</div><div><span class="odv-ratio">coral-light 8.5:1</span> <span class="odv-ratio">coral-dark 6.3:1</span></div></div><div class="odv-status"><div><span class="odv-badge odv-t-danger">Card declined</span></div><div class="odv-alert odv-t-danger"><b>Card declined.</b> The payment failed, so the plan will stop.</div><div><span class="odv-ratio">coral-light 4.8:1</span> <span class="odv-ratio">coral-dark 6.8:1</span></div></div></div>
+
+</div>
 
 ## The five answers
 
@@ -80,6 +146,10 @@ Each status label always gets the same colour, with its dot, so colour is never 
 ## Tokens
 
 Each token points to another token. Values live only on primitives, below.
+
+<div class="odv-brandset" data-for-brand="aster">
+
+<p class="odv-brandname">Aster</p>
 
 | Token | Points to, light | Points to, dark |
 | --- | --- | --- |
@@ -125,9 +195,115 @@ Each token points to another token. Values live only on primitives, below.
 | `color.disabled.surface` | `aster.theme.light.color.disabled.surface` → `color.slate.light.100` | `aster.theme.dark.color.disabled.surface` → `color.slate.dark.100` |
 | `color.disabled.border` | `aster.theme.light.color.disabled.border` → `color.slate.light.200` | `aster.theme.dark.color.disabled.border` → `color.slate.dark.200` |
 
+</div>
+
+<div class="odv-brandset" data-for-brand="birch">
+
+<p class="odv-brandname">Birch</p>
+
+| Token | Points to, light | Points to, dark |
+| --- | --- | --- |
+| `color.surface.canvas` | `birch.theme.light.color.surface.canvas` → `color.slate.light.50` | `birch.theme.dark.color.surface.canvas` → `color.slate.dark.0` |
+| `color.surface.default` | `birch.theme.light.color.surface.default` → `color.slate.light.0` | `birch.theme.dark.color.surface.default` → `color.slate.dark.50` |
+| `color.surface.raised` | `birch.theme.light.color.surface.raised` → `color.slate.light.0` | `birch.theme.dark.color.surface.raised` → `color.slate.dark.100` |
+| `color.surface.sunken` | `birch.theme.light.color.surface.sunken` → `color.slate.light.100` | `birch.theme.dark.color.surface.sunken` → `color.slate.dark.100` |
+| `color.surface.selected` | `birch.theme.light.color.surface.selected` → `color.purple.light.100` | `birch.theme.dark.color.surface.selected` → `color.purple.dark.100` |
+| `color.surface.inverse` | `birch.theme.light.color.surface.inverse` → `color.slate.light.900` | `birch.theme.dark.color.surface.inverse` → `color.slate.dark.900` |
+| `color.surface.scrim` | `birch.theme.light.color.surface.scrim` → `color.black.light.scrim` | `birch.theme.dark.color.surface.scrim` → `color.black.dark.scrim` |
+| `color.text.primary` | `birch.theme.light.color.text.primary` → `color.slate.light.900` | `birch.theme.dark.color.text.primary` → `color.slate.dark.900` |
+| `color.text.secondary` | `birch.theme.light.color.text.secondary` → `color.slate.light.700` | `birch.theme.dark.color.text.secondary` → `color.slate.dark.500` |
+| `color.text.muted` | `birch.theme.light.color.text.muted` → `color.slate.light.600` | `birch.theme.dark.color.text.muted` → `color.slate.dark.400` |
+| `color.text.inverse` | `birch.theme.light.color.text.inverse` → `color.slate.light.0` | `birch.theme.dark.color.text.inverse` → `color.slate.dark.50` |
+| `color.text.on-action` | `birch.theme.light.color.text.on-action` → `color.slate.light.0` | `birch.theme.dark.color.text.on-action` → `color.slate.dark.0` |
+| `color.text.link` | `birch.theme.light.color.text.link` → `color.purple.light.700` | `birch.theme.dark.color.text.link` → `color.purple.dark.700` |
+| `color.border.default` | `birch.theme.light.color.border.default` → `color.slate.light.200` | `birch.theme.dark.color.border.default` → `color.slate.dark.100` |
+| `color.border.strong` | `birch.theme.light.color.border.strong` → `color.slate.light.500` | `birch.theme.dark.color.border.strong` → `color.slate.dark.300` |
+| `color.border.focus` | `birch.theme.light.color.border.focus` → `color.purple.light.600` | `birch.theme.dark.color.border.focus` → `color.purple.dark.700` |
+| `color.action.primary.@` | `birch.theme.light.color.action.primary.@` → `color.purple.light.600` | `birch.theme.dark.color.action.primary.@` → `color.purple.dark.700` |
+| `color.action.primary.hover` | `birch.theme.light.color.action.primary.hover` → `color.purple.light.700` | `birch.theme.dark.color.action.primary.hover` → `color.purple.dark.800` |
+| `color.action.secondary.@` | `birch.theme.light.color.action.secondary.@` → `color.slate.light.0` | `birch.theme.dark.color.action.secondary.@` → `color.slate.dark.50` |
+| `color.action.secondary.hover` | `birch.theme.light.color.action.secondary.hover` → `color.slate.light.100` | `birch.theme.dark.color.action.secondary.hover` → `color.slate.dark.100` |
+| `color.status.info.@` | `birch.theme.light.color.status.info.@` → `color.blue.light.700` | `birch.theme.dark.color.status.info.@` → `color.blue.dark.700` |
+| `color.status.info.subtle` | `birch.theme.light.color.status.info.subtle` → `color.blue.light.100` | `birch.theme.dark.color.status.info.subtle` → `color.blue.dark.100` |
+| `color.status.success.@` | `birch.theme.light.color.status.success.@` → `color.green.light.700` | `birch.theme.dark.color.status.success.@` → `color.green.dark.700` |
+| `color.status.success.subtle` | `birch.theme.light.color.status.success.subtle` → `color.green.light.100` | `birch.theme.dark.color.status.success.subtle` → `color.green.dark.100` |
+| `color.status.warning.@` | `birch.theme.light.color.status.warning.@` → `color.amber.light.700` | `birch.theme.dark.color.status.warning.@` → `color.amber.dark.700` |
+| `color.status.warning.subtle` | `birch.theme.light.color.status.warning.subtle` → `color.amber.light.100` | `birch.theme.dark.color.status.warning.subtle` → `color.amber.dark.100` |
+| `color.status.danger.@` | `birch.theme.light.color.status.danger.@` → `color.red.light.700` | `birch.theme.dark.color.status.danger.@` → `color.red.dark.700` |
+| `color.status.danger.subtle` | `birch.theme.light.color.status.danger.subtle` → `color.red.light.100` | `birch.theme.dark.color.status.danger.subtle` → `color.red.dark.100` |
+| `color.category.1.@` | `birch.theme.light.color.category.1.@` → `color.teal.light.600` | `birch.theme.dark.color.category.1.@` → `color.teal.dark.700` |
+| `color.category.1.subtle` | `birch.theme.light.color.category.1.subtle` → `color.teal.light.100` | `birch.theme.dark.color.category.1.subtle` → `color.teal.dark.100` |
+| `color.category.2.@` | `birch.theme.light.color.category.2.@` → `color.purple.light.600` | `birch.theme.dark.color.category.2.@` → `color.purple.dark.700` |
+| `color.category.2.subtle` | `birch.theme.light.color.category.2.subtle` → `color.purple.light.100` | `birch.theme.dark.color.category.2.subtle` → `color.purple.dark.100` |
+| `color.category.3.@` | `birch.theme.light.color.category.3.@` → `color.orange.light.600` | `birch.theme.dark.color.category.3.@` → `color.orange.dark.700` |
+| `color.category.3.subtle` | `birch.theme.light.color.category.3.subtle` → `color.orange.light.100` | `birch.theme.dark.color.category.3.subtle` → `color.orange.dark.100` |
+| `color.category.4.@` | `birch.theme.light.color.category.4.@` → `color.blue.light.600` | `birch.theme.dark.color.category.4.@` → `color.blue.dark.700` |
+| `color.category.4.subtle` | `birch.theme.light.color.category.4.subtle` → `color.blue.light.100` | `birch.theme.dark.color.category.4.subtle` → `color.blue.dark.100` |
+| `color.category.5.@` | `birch.theme.light.color.category.5.@` → `color.green.light.700` | `birch.theme.dark.color.category.5.@` → `color.green.dark.700` |
+| `color.category.5.subtle` | `birch.theme.light.color.category.5.subtle` → `color.green.light.100` | `birch.theme.dark.color.category.5.subtle` → `color.green.dark.100` |
+| `color.disabled.text` | `birch.theme.light.color.disabled.text` → `color.slate.light.500` | `birch.theme.dark.color.disabled.text` → `color.slate.dark.500` |
+| `color.disabled.surface` | `birch.theme.light.color.disabled.surface` → `color.slate.light.100` | `birch.theme.dark.color.disabled.surface` → `color.slate.dark.100` |
+| `color.disabled.border` | `birch.theme.light.color.disabled.border` → `color.slate.light.200` | `birch.theme.dark.color.disabled.border` → `color.slate.dark.200` |
+
+</div>
+
+<div class="odv-brandset" data-for-brand="coral">
+
+<p class="odv-brandname">Coral</p>
+
+| Token | Points to, light | Points to, dark |
+| --- | --- | --- |
+| `color.surface.canvas` | `coral.theme.light.color.surface.canvas` → `color.slate.light.50` | `coral.theme.dark.color.surface.canvas` → `color.slate.dark.0` |
+| `color.surface.default` | `coral.theme.light.color.surface.default` → `color.slate.light.0` | `coral.theme.dark.color.surface.default` → `color.slate.dark.50` |
+| `color.surface.raised` | `coral.theme.light.color.surface.raised` → `color.slate.light.0` | `coral.theme.dark.color.surface.raised` → `color.slate.dark.100` |
+| `color.surface.sunken` | `coral.theme.light.color.surface.sunken` → `color.slate.light.100` | `coral.theme.dark.color.surface.sunken` → `color.slate.dark.100` |
+| `color.surface.selected` | `coral.theme.light.color.surface.selected` → `color.orange.light.100` | `coral.theme.dark.color.surface.selected` → `color.orange.dark.100` |
+| `color.surface.inverse` | `coral.theme.light.color.surface.inverse` → `color.slate.light.900` | `coral.theme.dark.color.surface.inverse` → `color.slate.dark.900` |
+| `color.surface.scrim` | `coral.theme.light.color.surface.scrim` → `color.black.light.scrim` | `coral.theme.dark.color.surface.scrim` → `color.black.dark.scrim` |
+| `color.text.primary` | `coral.theme.light.color.text.primary` → `color.slate.light.900` | `coral.theme.dark.color.text.primary` → `color.slate.dark.900` |
+| `color.text.secondary` | `coral.theme.light.color.text.secondary` → `color.slate.light.700` | `coral.theme.dark.color.text.secondary` → `color.slate.dark.500` |
+| `color.text.muted` | `coral.theme.light.color.text.muted` → `color.slate.light.600` | `coral.theme.dark.color.text.muted` → `color.slate.dark.400` |
+| `color.text.inverse` | `coral.theme.light.color.text.inverse` → `color.slate.light.0` | `coral.theme.dark.color.text.inverse` → `color.slate.dark.50` |
+| `color.text.on-action` | `coral.theme.light.color.text.on-action` → `color.slate.light.0` | `coral.theme.dark.color.text.on-action` → `color.slate.dark.0` |
+| `color.text.link` | `coral.theme.light.color.text.link` → `color.orange.light.700` | `coral.theme.dark.color.text.link` → `color.orange.dark.700` |
+| `color.border.default` | `coral.theme.light.color.border.default` → `color.slate.light.200` | `coral.theme.dark.color.border.default` → `color.slate.dark.100` |
+| `color.border.strong` | `coral.theme.light.color.border.strong` → `color.slate.light.500` | `coral.theme.dark.color.border.strong` → `color.slate.dark.300` |
+| `color.border.focus` | `coral.theme.light.color.border.focus` → `color.orange.light.600` | `coral.theme.dark.color.border.focus` → `color.orange.dark.700` |
+| `color.action.primary.@` | `coral.theme.light.color.action.primary.@` → `color.orange.light.600` | `coral.theme.dark.color.action.primary.@` → `color.orange.dark.700` |
+| `color.action.primary.hover` | `coral.theme.light.color.action.primary.hover` → `color.orange.light.700` | `coral.theme.dark.color.action.primary.hover` → `color.orange.dark.800` |
+| `color.action.secondary.@` | `coral.theme.light.color.action.secondary.@` → `color.slate.light.0` | `coral.theme.dark.color.action.secondary.@` → `color.slate.dark.50` |
+| `color.action.secondary.hover` | `coral.theme.light.color.action.secondary.hover` → `color.slate.light.100` | `coral.theme.dark.color.action.secondary.hover` → `color.slate.dark.100` |
+| `color.status.info.@` | `coral.theme.light.color.status.info.@` → `color.blue.light.700` | `coral.theme.dark.color.status.info.@` → `color.blue.dark.700` |
+| `color.status.info.subtle` | `coral.theme.light.color.status.info.subtle` → `color.blue.light.100` | `coral.theme.dark.color.status.info.subtle` → `color.blue.dark.100` |
+| `color.status.success.@` | `coral.theme.light.color.status.success.@` → `color.green.light.700` | `coral.theme.dark.color.status.success.@` → `color.green.dark.700` |
+| `color.status.success.subtle` | `coral.theme.light.color.status.success.subtle` → `color.green.light.100` | `coral.theme.dark.color.status.success.subtle` → `color.green.dark.100` |
+| `color.status.warning.@` | `coral.theme.light.color.status.warning.@` → `color.amber.light.700` | `coral.theme.dark.color.status.warning.@` → `color.amber.dark.700` |
+| `color.status.warning.subtle` | `coral.theme.light.color.status.warning.subtle` → `color.amber.light.100` | `coral.theme.dark.color.status.warning.subtle` → `color.amber.dark.100` |
+| `color.status.danger.@` | `coral.theme.light.color.status.danger.@` → `color.red.light.700` | `coral.theme.dark.color.status.danger.@` → `color.red.dark.700` |
+| `color.status.danger.subtle` | `coral.theme.light.color.status.danger.subtle` → `color.red.light.100` | `coral.theme.dark.color.status.danger.subtle` → `color.red.dark.100` |
+| `color.category.1.@` | `coral.theme.light.color.category.1.@` → `color.teal.light.600` | `coral.theme.dark.color.category.1.@` → `color.teal.dark.700` |
+| `color.category.1.subtle` | `coral.theme.light.color.category.1.subtle` → `color.teal.light.100` | `coral.theme.dark.color.category.1.subtle` → `color.teal.dark.100` |
+| `color.category.2.@` | `coral.theme.light.color.category.2.@` → `color.purple.light.600` | `coral.theme.dark.color.category.2.@` → `color.purple.dark.700` |
+| `color.category.2.subtle` | `coral.theme.light.color.category.2.subtle` → `color.purple.light.100` | `coral.theme.dark.color.category.2.subtle` → `color.purple.dark.100` |
+| `color.category.3.@` | `coral.theme.light.color.category.3.@` → `color.orange.light.600` | `coral.theme.dark.color.category.3.@` → `color.orange.dark.700` |
+| `color.category.3.subtle` | `coral.theme.light.color.category.3.subtle` → `color.orange.light.100` | `coral.theme.dark.color.category.3.subtle` → `color.orange.dark.100` |
+| `color.category.4.@` | `coral.theme.light.color.category.4.@` → `color.blue.light.600` | `coral.theme.dark.color.category.4.@` → `color.blue.dark.700` |
+| `color.category.4.subtle` | `coral.theme.light.color.category.4.subtle` → `color.blue.light.100` | `coral.theme.dark.color.category.4.subtle` → `color.blue.dark.100` |
+| `color.category.5.@` | `coral.theme.light.color.category.5.@` → `color.green.light.700` | `coral.theme.dark.color.category.5.@` → `color.green.dark.700` |
+| `color.category.5.subtle` | `coral.theme.light.color.category.5.subtle` → `color.green.light.100` | `coral.theme.dark.color.category.5.subtle` → `color.green.dark.100` |
+| `color.disabled.text` | `coral.theme.light.color.disabled.text` → `color.slate.light.500` | `coral.theme.dark.color.disabled.text` → `color.slate.dark.500` |
+| `color.disabled.surface` | `coral.theme.light.color.disabled.surface` → `color.slate.light.100` | `coral.theme.dark.color.disabled.surface` → `color.slate.dark.100` |
+| `color.disabled.border` | `coral.theme.light.color.disabled.border` → `color.slate.light.200` | `coral.theme.dark.color.disabled.border` → `color.slate.dark.200` |
+
+</div>
+
 ## Primitives
 
 The raw values the tokens above end at.
+
+<div class="odv-brandset" data-for-brand="aster">
+
+<p class="odv-brandname">Aster</p>
 
 | Primitive | Value | Sample |
 | --- | --- | --- |
@@ -180,6 +356,124 @@ The raw values the tokens above end at.
 | `color.teal.light.100` | #E0F2F1 | <span class="ods-swatch" style="background:#E0F2F1"></span> |
 | `color.teal.light.600` | #0F766E | <span class="ods-swatch" style="background:#0F766E"></span> |
 | `color.teal.light.700` | #0B5B55 | <span class="ods-swatch" style="background:#0B5B55"></span> |
+
+</div>
+
+<div class="odv-brandset" data-for-brand="birch">
+
+<p class="odv-brandname">Birch</p>
+
+| Primitive | Value | Sample |
+| --- | --- | --- |
+| `color.amber.dark.100` | #3A2A05 | <span class="ods-swatch" style="background:#3A2A05"></span> |
+| `color.amber.dark.700` | #F2B84B | <span class="ods-swatch" style="background:#F2B84B"></span> |
+| `color.amber.light.100` | #FFF3D6 | <span class="ods-swatch" style="background:#FFF3D6"></span> |
+| `color.amber.light.700` | #8A5600 | <span class="ods-swatch" style="background:#8A5600"></span> |
+| `color.black.dark.scrim` | #000000B3 | <span class="ods-swatch" style="background:#000000B3"></span> |
+| `color.black.light.scrim` | #0000008C | <span class="ods-swatch" style="background:#0000008C"></span> |
+| `color.blue.dark.100` | #062C6E | <span class="ods-swatch" style="background:#062C6E"></span> |
+| `color.blue.dark.700` | #8AB4F8 | <span class="ods-swatch" style="background:#8AB4F8"></span> |
+| `color.blue.light.100` | #E1ECFF | <span class="ods-swatch" style="background:#E1ECFF"></span> |
+| `color.blue.light.600` | #0B4FC0 | <span class="ods-swatch" style="background:#0B4FC0"></span> |
+| `color.blue.light.700` | #083C93 | <span class="ods-swatch" style="background:#083C93"></span> |
+| `color.green.dark.100` | #123322 | <span class="ods-swatch" style="background:#123322"></span> |
+| `color.green.dark.700` | #5CC283 | <span class="ods-swatch" style="background:#5CC283"></span> |
+| `color.green.light.100` | #E3F4EA | <span class="ods-swatch" style="background:#E3F4EA"></span> |
+| `color.green.light.700` | #1F7A3A | <span class="ods-swatch" style="background:#1F7A3A"></span> |
+| `color.orange.dark.100` | #732607 | <span class="ods-swatch" style="background:#732607"></span> |
+| `color.orange.dark.700` | #F7A67F | <span class="ods-swatch" style="background:#F7A67F"></span> |
+| `color.orange.light.100` | #FFEDE5 | <span class="ods-swatch" style="background:#FFEDE5"></span> |
+| `color.orange.light.600` | #C2410C | <span class="ods-swatch" style="background:#C2410C"></span> |
+| `color.purple.dark.100` | #3E177D | <span class="ods-swatch" style="background:#3E177D"></span> |
+| `color.purple.dark.700` | #B79DF7 | <span class="ods-swatch" style="background:#B79DF7"></span> |
+| `color.purple.dark.800` | #EDE7FE | <span class="ods-swatch" style="background:#EDE7FE"></span> |
+| `color.purple.light.100` | #EDE7FE | <span class="ods-swatch" style="background:#EDE7FE"></span> |
+| `color.purple.light.600` | #6D28D9 | <span class="ods-swatch" style="background:#6D28D9"></span> |
+| `color.purple.light.700` | #5520AA | <span class="ods-swatch" style="background:#5520AA"></span> |
+| `color.red.dark.100` | #3D1414 | <span class="ods-swatch" style="background:#3D1414"></span> |
+| `color.red.dark.700` | #F28B8B | <span class="ods-swatch" style="background:#F28B8B"></span> |
+| `color.red.light.100` | #FDE7E7 | <span class="ods-swatch" style="background:#FDE7E7"></span> |
+| `color.red.light.700` | #C42B2B | <span class="ods-swatch" style="background:#C42B2B"></span> |
+| `color.slate.dark.0` | #020617 | <span class="ods-swatch" style="background:#020617"></span> |
+| `color.slate.dark.100` | #1E293B | <span class="ods-swatch" style="background:#1E293B"></span> |
+| `color.slate.dark.200` | #334155 | <span class="ods-swatch" style="background:#334155"></span> |
+| `color.slate.dark.300` | #64748B | <span class="ods-swatch" style="background:#64748B"></span> |
+| `color.slate.dark.400` | #96A3B5 | <span class="ods-swatch" style="background:#96A3B5"></span> |
+| `color.slate.dark.50` | #0F172A | <span class="ods-swatch" style="background:#0F172A"></span> |
+| `color.slate.dark.500` | #CBD5E1 | <span class="ods-swatch" style="background:#CBD5E1"></span> |
+| `color.slate.dark.900` | #F8FAFC | <span class="ods-swatch" style="background:#F8FAFC"></span> |
+| `color.slate.light.0` | #FFFFFF | <span class="ods-swatch" style="background:#FFFFFF"></span> |
+| `color.slate.light.100` | #F1F5F9 | <span class="ods-swatch" style="background:#F1F5F9"></span> |
+| `color.slate.light.200` | #E2E8F0 | <span class="ods-swatch" style="background:#E2E8F0"></span> |
+| `color.slate.light.50` | #F8FAFC | <span class="ods-swatch" style="background:#F8FAFC"></span> |
+| `color.slate.light.500` | #64748B | <span class="ods-swatch" style="background:#64748B"></span> |
+| `color.slate.light.600` | #4B5A6F | <span class="ods-swatch" style="background:#4B5A6F"></span> |
+| `color.slate.light.700` | #334155 | <span class="ods-swatch" style="background:#334155"></span> |
+| `color.slate.light.900` | #0F172A | <span class="ods-swatch" style="background:#0F172A"></span> |
+| `color.teal.dark.100` | #08423E | <span class="ods-swatch" style="background:#08423E"></span> |
+| `color.teal.dark.700` | #7FCFC6 | <span class="ods-swatch" style="background:#7FCFC6"></span> |
+| `color.teal.light.100` | #E0F2F1 | <span class="ods-swatch" style="background:#E0F2F1"></span> |
+| `color.teal.light.600` | #0F766E | <span class="ods-swatch" style="background:#0F766E"></span> |
+
+</div>
+
+<div class="odv-brandset" data-for-brand="coral">
+
+<p class="odv-brandname">Coral</p>
+
+| Primitive | Value | Sample |
+| --- | --- | --- |
+| `color.amber.dark.100` | #3A2A05 | <span class="ods-swatch" style="background:#3A2A05"></span> |
+| `color.amber.dark.700` | #F2B84B | <span class="ods-swatch" style="background:#F2B84B"></span> |
+| `color.amber.light.100` | #FFF3D6 | <span class="ods-swatch" style="background:#FFF3D6"></span> |
+| `color.amber.light.700` | #8A5600 | <span class="ods-swatch" style="background:#8A5600"></span> |
+| `color.black.dark.scrim` | #000000B3 | <span class="ods-swatch" style="background:#000000B3"></span> |
+| `color.black.light.scrim` | #0000008C | <span class="ods-swatch" style="background:#0000008C"></span> |
+| `color.blue.dark.100` | #062C6E | <span class="ods-swatch" style="background:#062C6E"></span> |
+| `color.blue.dark.700` | #8AB4F8 | <span class="ods-swatch" style="background:#8AB4F8"></span> |
+| `color.blue.light.100` | #E1ECFF | <span class="ods-swatch" style="background:#E1ECFF"></span> |
+| `color.blue.light.600` | #0B4FC0 | <span class="ods-swatch" style="background:#0B4FC0"></span> |
+| `color.blue.light.700` | #083C93 | <span class="ods-swatch" style="background:#083C93"></span> |
+| `color.green.dark.100` | #123322 | <span class="ods-swatch" style="background:#123322"></span> |
+| `color.green.dark.700` | #5CC283 | <span class="ods-swatch" style="background:#5CC283"></span> |
+| `color.green.light.100` | #E3F4EA | <span class="ods-swatch" style="background:#E3F4EA"></span> |
+| `color.green.light.700` | #1F7A3A | <span class="ods-swatch" style="background:#1F7A3A"></span> |
+| `color.orange.dark.100` | #732607 | <span class="ods-swatch" style="background:#732607"></span> |
+| `color.orange.dark.700` | #F7A67F | <span class="ods-swatch" style="background:#F7A67F"></span> |
+| `color.orange.dark.800` | #FFEDE5 | <span class="ods-swatch" style="background:#FFEDE5"></span> |
+| `color.orange.light.100` | #FFEDE5 | <span class="ods-swatch" style="background:#FFEDE5"></span> |
+| `color.orange.light.600` | #C2410C | <span class="ods-swatch" style="background:#C2410C"></span> |
+| `color.orange.light.700` | #9A330A | <span class="ods-swatch" style="background:#9A330A"></span> |
+| `color.purple.dark.100` | #3E177D | <span class="ods-swatch" style="background:#3E177D"></span> |
+| `color.purple.dark.700` | #B79DF7 | <span class="ods-swatch" style="background:#B79DF7"></span> |
+| `color.purple.light.100` | #EDE7FE | <span class="ods-swatch" style="background:#EDE7FE"></span> |
+| `color.purple.light.600` | #6D28D9 | <span class="ods-swatch" style="background:#6D28D9"></span> |
+| `color.red.dark.100` | #3D1414 | <span class="ods-swatch" style="background:#3D1414"></span> |
+| `color.red.dark.700` | #F28B8B | <span class="ods-swatch" style="background:#F28B8B"></span> |
+| `color.red.light.100` | #FDE7E7 | <span class="ods-swatch" style="background:#FDE7E7"></span> |
+| `color.red.light.700` | #C42B2B | <span class="ods-swatch" style="background:#C42B2B"></span> |
+| `color.slate.dark.0` | #020617 | <span class="ods-swatch" style="background:#020617"></span> |
+| `color.slate.dark.100` | #1E293B | <span class="ods-swatch" style="background:#1E293B"></span> |
+| `color.slate.dark.200` | #334155 | <span class="ods-swatch" style="background:#334155"></span> |
+| `color.slate.dark.300` | #64748B | <span class="ods-swatch" style="background:#64748B"></span> |
+| `color.slate.dark.400` | #96A3B5 | <span class="ods-swatch" style="background:#96A3B5"></span> |
+| `color.slate.dark.50` | #0F172A | <span class="ods-swatch" style="background:#0F172A"></span> |
+| `color.slate.dark.500` | #CBD5E1 | <span class="ods-swatch" style="background:#CBD5E1"></span> |
+| `color.slate.dark.900` | #F8FAFC | <span class="ods-swatch" style="background:#F8FAFC"></span> |
+| `color.slate.light.0` | #FFFFFF | <span class="ods-swatch" style="background:#FFFFFF"></span> |
+| `color.slate.light.100` | #F1F5F9 | <span class="ods-swatch" style="background:#F1F5F9"></span> |
+| `color.slate.light.200` | #E2E8F0 | <span class="ods-swatch" style="background:#E2E8F0"></span> |
+| `color.slate.light.50` | #F8FAFC | <span class="ods-swatch" style="background:#F8FAFC"></span> |
+| `color.slate.light.500` | #64748B | <span class="ods-swatch" style="background:#64748B"></span> |
+| `color.slate.light.600` | #4B5A6F | <span class="ods-swatch" style="background:#4B5A6F"></span> |
+| `color.slate.light.700` | #334155 | <span class="ods-swatch" style="background:#334155"></span> |
+| `color.slate.light.900` | #0F172A | <span class="ods-swatch" style="background:#0F172A"></span> |
+| `color.teal.dark.100` | #08423E | <span class="ods-swatch" style="background:#08423E"></span> |
+| `color.teal.dark.700` | #7FCFC6 | <span class="ods-swatch" style="background:#7FCFC6"></span> |
+| `color.teal.light.100` | #E0F2F1 | <span class="ods-swatch" style="background:#E0F2F1"></span> |
+| `color.teal.light.600` | #0F766E | <span class="ods-swatch" style="background:#0F766E"></span> |
+
+</div>
 
 ## Where it lands
 

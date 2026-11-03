@@ -67,6 +67,10 @@ The component reads only component keys and semantic tokens, so it follows the b
 
 The CSS variable is the key with `/` replaced by `-` and the base `@` dropped. Each key points to a token; values live only on primitives.
 
+<div class="odv-brandset" data-for-brand="aster">
+
+<p class="odv-brandname">Aster</p>
+
 | Key | What it controls | Points to, aster-light | Points to, aster-dark |
 | --- | --- | --- | --- |
 | `card/background` | Card fill. | `color.surface.default` → `aster.theme.light.color.surface.default` → `color.slate.light.0` | `color.surface.default` → `aster.theme.dark.color.surface.default` → `color.slate.dark.50` |
@@ -74,3 +78,33 @@ The CSS variable is the key with `/` replaced by `-` and the base `@` dropped. E
 | `card/radius` | Card corner radius. | `radius.container` → `aster.theme.base.radius.container` → `radius.8` | same |
 | `card/padding` | Padding inside a card. | `space.inset.container` → `space.24` | same |
 | `card/shadow` | Card shadow. | `elevation.card` → `aster.theme.light.elevation.card` → `shadow.card` | `elevation.card` → `aster.theme.dark.elevation.card` → `shadow.card-dark` |
+
+</div>
+
+<div class="odv-brandset" data-for-brand="birch">
+
+<p class="odv-brandname">Birch</p>
+
+| Key | What it controls | Points to, birch-light | Points to, birch-dark |
+| --- | --- | --- | --- |
+| `card/background` | Card fill. | `color.surface.default` → `birch.theme.light.color.surface.default` → `color.slate.light.0` | `color.surface.default` → `birch.theme.dark.color.surface.default` → `color.slate.dark.50` |
+| `card/border` | Card border. | `color.border.default` → `birch.theme.light.color.border.default` → `color.slate.light.200` | `color.border.default` → `birch.theme.dark.color.border.default` → `color.slate.dark.100` |
+| `card/radius` | Card corner radius. | `radius.container` → `birch.theme.base.radius.container` → `radius.16` | same |
+| `card/padding` | Padding inside a card. | `space.inset.container` → `space.24` | same |
+| `card/shadow` | Card shadow. | `elevation.card` → `birch.theme.light.elevation.card` → `shadow.card` | `elevation.card` → `birch.theme.dark.elevation.card` → `shadow.card-dark` |
+
+</div>
+
+<div class="odv-brandset" data-for-brand="coral">
+
+<p class="odv-brandname">Coral</p>
+
+| Key | What it controls | Points to, coral-light | Points to, coral-dark |
+| --- | --- | --- | --- |
+| `card/background` | Card fill. | `color.surface.default` → `coral.theme.light.color.surface.default` → `color.slate.light.0` | `color.surface.default` → `coral.theme.dark.color.surface.default` → `color.slate.dark.50` |
+| `card/border` | Card border. | `color.border.default` → `coral.theme.light.color.border.default` → `color.slate.light.200` | `color.border.default` → `coral.theme.dark.color.border.default` → `color.slate.dark.100` |
+| `card/radius` | Card corner radius. | `radius.container` → `coral.theme.base.radius.container` → `radius.20` | same |
+| `card/padding` | Padding inside a card. | `space.inset.container` → `space.24` | same |
+| `card/shadow` | Card shadow. | `elevation.card` → `coral.theme.light.elevation.card` → `shadow.card` | `elevation.card` → `coral.theme.dark.elevation.card` → `shadow.card-dark` |
+
+</div>

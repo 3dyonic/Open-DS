@@ -123,6 +123,10 @@ The component reads only component keys and semantic tokens, so it follows the b
 
 The CSS variable is the key with `/` replaced by `-` and the base `@` dropped. Each key points to a token; values live only on primitives.
 
+<div class="odv-brandset" data-for-brand="aster">
+
+<p class="odv-brandname">Aster</p>
+
 | Key | What it controls | Points to, aster-light | Points to, aster-dark |
 | --- | --- | --- | --- |
 | `button/primary/background/@` | Primary button fill. | `color.action.primary.@` → `aster.theme.light.color.action.primary.@` → `color.teal.light.600` | `color.action.primary.@` → `aster.theme.dark.color.action.primary.@` → `color.teal.dark.700` |
@@ -144,3 +148,61 @@ The CSS variable is the key with `/` replaced by `-` and the base `@` dropped. E
 | `button/disabled/background` | Fill of a disabled button. | `color.disabled.surface` → `aster.theme.light.color.disabled.surface` → `color.slate.light.100` | `color.disabled.surface` → `aster.theme.dark.color.disabled.surface` → `color.slate.dark.100` |
 | `button/disabled/label` | Label of a disabled button. | `color.disabled.text` → `aster.theme.light.color.disabled.text` → `color.slate.light.500` | `color.disabled.text` → `aster.theme.dark.color.disabled.text` → `color.slate.dark.500` |
 | `button/disabled/border` | Border of a disabled secondary button. | `color.disabled.border` → `aster.theme.light.color.disabled.border` → `color.slate.light.200` | `color.disabled.border` → `aster.theme.dark.color.disabled.border` → `color.slate.dark.200` |
+
+</div>
+
+<div class="odv-brandset" data-for-brand="birch">
+
+<p class="odv-brandname">Birch</p>
+
+| Key | What it controls | Points to, birch-light | Points to, birch-dark |
+| --- | --- | --- | --- |
+| `button/primary/background/@` | Primary button fill. | `color.action.primary.@` → `birch.theme.light.color.action.primary.@` → `color.purple.light.600` | `color.action.primary.@` → `birch.theme.dark.color.action.primary.@` → `color.purple.dark.700` |
+| `button/primary/background/hover` | Primary button fill on hover. | `color.action.primary.hover` → `birch.theme.light.color.action.primary.hover` → `color.purple.light.700` | `color.action.primary.hover` → `birch.theme.dark.color.action.primary.hover` → `color.purple.dark.800` |
+| `button/primary/label` | Primary button label color. | `color.text.on-action` → `birch.theme.light.color.text.on-action` → `color.slate.light.0` | `color.text.on-action` → `birch.theme.dark.color.text.on-action` → `color.slate.dark.0` |
+| `button/secondary/background/@` | Secondary button fill. | `color.action.secondary.@` → `birch.theme.light.color.action.secondary.@` → `color.slate.light.0` | `color.action.secondary.@` → `birch.theme.dark.color.action.secondary.@` → `color.slate.dark.50` |
+| `button/secondary/background/hover` | Secondary button fill on hover. | `color.action.secondary.hover` → `birch.theme.light.color.action.secondary.hover` → `color.slate.light.100` | `color.action.secondary.hover` → `birch.theme.dark.color.action.secondary.hover` → `color.slate.dark.100` |
+| `button/secondary/label` | Secondary button label color. | `color.text.primary` → `birch.theme.light.color.text.primary` → `color.slate.light.900` | `color.text.primary` → `birch.theme.dark.color.text.primary` → `color.slate.dark.900` |
+| `button/secondary/border` | Secondary button border. | `color.border.strong` → `birch.theme.light.color.border.strong` → `color.slate.light.500` | `color.border.strong` → `birch.theme.dark.color.border.strong` → `color.slate.dark.300` |
+| `button/ghost/background-hover` | Ghost button fill on hover. | `color.surface.sunken` → `birch.theme.light.color.surface.sunken` → `color.slate.light.100` | `color.surface.sunken` → `birch.theme.dark.color.surface.sunken` → `color.slate.dark.100` |
+| `button/ghost/label` | Ghost button label color. | `color.text.link` → `birch.theme.light.color.text.link` → `color.purple.light.700` | `color.text.link` → `birch.theme.dark.color.text.link` → `color.purple.dark.700` |
+| `button/height` | Button height. | `size.control.default` → `size.44` | same |
+| `button/padding-x` | Horizontal padding inside a button. | `space.inset.control-x` → `space.16` | same |
+| `button/radius` | Button corner radius. | `radius.control` → `birch.theme.base.radius.control` → `radius.12` | same |
+| `button/font-size` | Button label size. | `type.label.font-size` → `font.size.14` | same |
+| `button/font-weight` | Button label weight. | `type.label.font-weight` → `font.weight.600` | same |
+| `button/focus-ring` | Focus ring color on any button. | `color.border.focus` → `birch.theme.light.color.border.focus` → `color.purple.light.600` | `color.border.focus` → `birch.theme.dark.color.border.focus` → `color.purple.dark.700` |
+| `button/icon-size` | Size of an icon inside a button. | `size.icon` → `size.16` | same |
+| `button/disabled/background` | Fill of a disabled button. | `color.disabled.surface` → `birch.theme.light.color.disabled.surface` → `color.slate.light.100` | `color.disabled.surface` → `birch.theme.dark.color.disabled.surface` → `color.slate.dark.100` |
+| `button/disabled/label` | Label of a disabled button. | `color.disabled.text` → `birch.theme.light.color.disabled.text` → `color.slate.light.500` | `color.disabled.text` → `birch.theme.dark.color.disabled.text` → `color.slate.dark.500` |
+| `button/disabled/border` | Border of a disabled secondary button. | `color.disabled.border` → `birch.theme.light.color.disabled.border` → `color.slate.light.200` | `color.disabled.border` → `birch.theme.dark.color.disabled.border` → `color.slate.dark.200` |
+
+</div>
+
+<div class="odv-brandset" data-for-brand="coral">
+
+<p class="odv-brandname">Coral</p>
+
+| Key | What it controls | Points to, coral-light | Points to, coral-dark |
+| --- | --- | --- | --- |
+| `button/primary/background/@` | Primary button fill. | `color.action.primary.@` → `coral.theme.light.color.action.primary.@` → `color.orange.light.600` | `color.action.primary.@` → `coral.theme.dark.color.action.primary.@` → `color.orange.dark.700` |
+| `button/primary/background/hover` | Primary button fill on hover. | `color.action.primary.hover` → `coral.theme.light.color.action.primary.hover` → `color.orange.light.700` | `color.action.primary.hover` → `coral.theme.dark.color.action.primary.hover` → `color.orange.dark.800` |
+| `button/primary/label` | Primary button label color. | `color.text.on-action` → `coral.theme.light.color.text.on-action` → `color.slate.light.0` | `color.text.on-action` → `coral.theme.dark.color.text.on-action` → `color.slate.dark.0` |
+| `button/secondary/background/@` | Secondary button fill. | `color.action.secondary.@` → `coral.theme.light.color.action.secondary.@` → `color.slate.light.0` | `color.action.secondary.@` → `coral.theme.dark.color.action.secondary.@` → `color.slate.dark.50` |
+| `button/secondary/background/hover` | Secondary button fill on hover. | `color.action.secondary.hover` → `coral.theme.light.color.action.secondary.hover` → `color.slate.light.100` | `color.action.secondary.hover` → `coral.theme.dark.color.action.secondary.hover` → `color.slate.dark.100` |
+| `button/secondary/label` | Secondary button label color. | `color.text.primary` → `coral.theme.light.color.text.primary` → `color.slate.light.900` | `color.text.primary` → `coral.theme.dark.color.text.primary` → `color.slate.dark.900` |
+| `button/secondary/border` | Secondary button border. | `color.border.strong` → `coral.theme.light.color.border.strong` → `color.slate.light.500` | `color.border.strong` → `coral.theme.dark.color.border.strong` → `color.slate.dark.300` |
+| `button/ghost/background-hover` | Ghost button fill on hover. | `color.surface.sunken` → `coral.theme.light.color.surface.sunken` → `color.slate.light.100` | `color.surface.sunken` → `coral.theme.dark.color.surface.sunken` → `color.slate.dark.100` |
+| `button/ghost/label` | Ghost button label color. | `color.text.link` → `coral.theme.light.color.text.link` → `color.orange.light.700` | `color.text.link` → `coral.theme.dark.color.text.link` → `color.orange.dark.700` |
+| `button/height` | Button height. | `size.control.default` → `size.44` | same |
+| `button/padding-x` | Horizontal padding inside a button. | `space.inset.control-x` → `space.16` | same |
+| `button/radius` | Button corner radius. | `radius.control` → `coral.theme.base.radius.control` → `radius.999` | same |
+| `button/font-size` | Button label size. | `type.label.font-size` → `font.size.14` | same |
+| `button/font-weight` | Button label weight. | `type.label.font-weight` → `font.weight.600` | same |
+| `button/focus-ring` | Focus ring color on any button. | `color.border.focus` → `coral.theme.light.color.border.focus` → `color.orange.light.600` | `color.border.focus` → `coral.theme.dark.color.border.focus` → `color.orange.dark.700` |
+| `button/icon-size` | Size of an icon inside a button. | `size.icon` → `size.16` | same |
+| `button/disabled/background` | Fill of a disabled button. | `color.disabled.surface` → `coral.theme.light.color.disabled.surface` → `color.slate.light.100` | `color.disabled.surface` → `coral.theme.dark.color.disabled.surface` → `color.slate.dark.100` |
+| `button/disabled/label` | Label of a disabled button. | `color.disabled.text` → `coral.theme.light.color.disabled.text` → `color.slate.light.500` | `color.disabled.text` → `coral.theme.dark.color.disabled.text` → `color.slate.dark.500` |
+| `button/disabled/border` | Border of a disabled secondary button. | `color.disabled.border` → `coral.theme.light.color.disabled.border` → `color.slate.light.200` | `color.disabled.border` → `coral.theme.dark.color.disabled.border` → `color.slate.dark.200` |
+
+</div>

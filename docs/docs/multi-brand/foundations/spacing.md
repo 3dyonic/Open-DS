@@ -35,6 +35,10 @@ How space shows what belongs together.
 
 Each token points to another token. Values live only on primitives, below.
 
+<div class="odv-brandset" data-for-brand="aster">
+
+<p class="odv-brandname">Aster</p>
+
 | Token | Points to |
 | --- | --- |
 | `space.gap.tight` | `space.8` |
@@ -46,9 +50,49 @@ Each token points to another token. Values live only on primitives, below.
 | `space.inset.cell-x` | `space.16` |
 | `size.row` | `size.48` |
 
+</div>
+
+<div class="odv-brandset" data-for-brand="birch">
+
+<p class="odv-brandname">Birch</p>
+
+| Token | Points to |
+| --- | --- |
+| `space.gap.tight` | `space.8` |
+| `space.gap.default` | `space.12` |
+| `space.gap.group` | `space.24` |
+| `space.gap.section` | `space.48` |
+| `space.inset.control-x` | `space.16` |
+| `space.inset.container` | `space.24` |
+| `space.inset.cell-x` | `space.16` |
+| `size.row` | `size.48` |
+
+</div>
+
+<div class="odv-brandset" data-for-brand="coral">
+
+<p class="odv-brandname">Coral</p>
+
+| Token | Points to |
+| --- | --- |
+| `space.gap.tight` | `space.8` |
+| `space.gap.default` | `space.12` |
+| `space.gap.group` | `space.24` |
+| `space.gap.section` | `space.48` |
+| `space.inset.control-x` | `space.16` |
+| `space.inset.container` | `space.24` |
+| `space.inset.cell-x` | `space.16` |
+| `size.row` | `size.48` |
+
+</div>
+
 ## Primitives
 
 The raw values the tokens above end at.
+
+<div class="odv-brandset" data-for-brand="aster">
+
+<p class="odv-brandname">Aster</p>
 
 | Primitive | Value | Sample |
 | --- | --- | --- |
@@ -58,6 +102,38 @@ The raw values the tokens above end at.
 | `space.24` | 1.5rem (24px) | <span class="ods-bar" style="width:1.5rem"></span> |
 | `space.48` | 3rem (48px) | <span class="ods-bar" style="width:3rem"></span> |
 | `space.8` | 0.5rem (8px) | <span class="ods-bar" style="width:0.5rem"></span> |
+
+</div>
+
+<div class="odv-brandset" data-for-brand="birch">
+
+<p class="odv-brandname">Birch</p>
+
+| Primitive | Value | Sample |
+| --- | --- | --- |
+| `size.48` | 3rem (48px) | <span class="ods-bar" style="width:3rem"></span> |
+| `space.12` | 0.75rem (12px) | <span class="ods-bar" style="width:0.75rem"></span> |
+| `space.16` | 1rem (16px) | <span class="ods-bar" style="width:1rem"></span> |
+| `space.24` | 1.5rem (24px) | <span class="ods-bar" style="width:1.5rem"></span> |
+| `space.48` | 3rem (48px) | <span class="ods-bar" style="width:3rem"></span> |
+| `space.8` | 0.5rem (8px) | <span class="ods-bar" style="width:0.5rem"></span> |
+
+</div>
+
+<div class="odv-brandset" data-for-brand="coral">
+
+<p class="odv-brandname">Coral</p>
+
+| Primitive | Value | Sample |
+| --- | --- | --- |
+| `size.48` | 3rem (48px) | <span class="ods-bar" style="width:3rem"></span> |
+| `space.12` | 0.75rem (12px) | <span class="ods-bar" style="width:0.75rem"></span> |
+| `space.16` | 1rem (16px) | <span class="ods-bar" style="width:1rem"></span> |
+| `space.24` | 1.5rem (24px) | <span class="ods-bar" style="width:1.5rem"></span> |
+| `space.48` | 3rem (48px) | <span class="ods-bar" style="width:3rem"></span> |
+| `space.8` | 0.5rem (8px) | <span class="ods-bar" style="width:0.5rem"></span> |
+
+</div>
 
 ## Where it lands
 

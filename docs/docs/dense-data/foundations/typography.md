@@ -77,12 +77,12 @@ The raw values the tokens above end at.
 | `font.line-height.20` | 1.25rem (20px) |  |
 | `font.line-height.24` | 1.5rem (24px) |  |
 | `font.line-height.28` | 1.75rem (28px) |  |
-| `font.size.12` | 0.75rem (12px) | <span class="ods-bar" style="width:0.75rem"></span> |
-| `font.size.13` | 0.8125rem (13px) | <span class="ods-bar" style="width:0.8125rem"></span> |
-| `font.size.14` | 0.875rem (14px) | <span class="ods-bar" style="width:0.875rem"></span> |
-| `font.size.16` | 1rem (16px) | <span class="ods-bar" style="width:1rem"></span> |
-| `font.size.20` | 1.25rem (20px) | <span class="ods-bar" style="width:1.25rem"></span> |
-| `font.size.24` | 1.5rem (24px) | <span class="ods-bar" style="width:1.5rem"></span> |
+| `font.size.12` | 0.75rem (12px) | <span class="ods-type" style="font-size:0.75rem">Aa</span> |
+| `font.size.13` | 0.8125rem (13px) | <span class="ods-type" style="font-size:0.8125rem">Aa</span> |
+| `font.size.14` | 0.875rem (14px) | <span class="ods-type" style="font-size:0.875rem">Aa</span> |
+| `font.size.16` | 1rem (16px) | <span class="ods-type" style="font-size:1rem">Aa</span> |
+| `font.size.20` | 1.25rem (20px) | <span class="ods-type" style="font-size:1.25rem">Aa</span> |
+| `font.size.24` | 1.5rem (24px) | <span class="ods-type" style="font-size:1.5rem">Aa</span> |
 | `font.weight.400` | 400 |  |
 | `font.weight.500` | 500 |  |
 | `font.weight.600` | 600 |  |

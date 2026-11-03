@@ -91,6 +91,10 @@ The component reads only component keys and semantic tokens, so it follows the b
 
 The CSS variable is the key with `/` replaced by `-` and the base `@` dropped. Each key points to a token; values live only on primitives.
 
+<div class="odv-brandset" data-for-brand="aster">
+
+<p class="odv-brandname">Aster</p>
+
 | Key | What it controls | Points to, aster-light | Points to, aster-dark |
 | --- | --- | --- | --- |
 | `badge/radius` | Badge corner radius. | `radius.badge` → `aster.theme.base.radius.badge` → `radius.4` | same |
@@ -106,3 +110,49 @@ The CSS variable is the key with `/` replaced by `-` and the base `@` dropped. E
 | `badge/warning/label` | Warning badge label. | `color.status.warning.@` → `aster.theme.light.color.status.warning.@` → `color.amber.light.700` | `color.status.warning.@` → `aster.theme.dark.color.status.warning.@` → `color.amber.dark.700` |
 | `badge/danger/background` | Danger badge fill. | `color.status.danger.subtle` → `aster.theme.light.color.status.danger.subtle` → `color.red.light.100` | `color.status.danger.subtle` → `aster.theme.dark.color.status.danger.subtle` → `color.red.dark.100` |
 | `badge/danger/label` | Danger badge label. | `color.status.danger.@` → `aster.theme.light.color.status.danger.@` → `color.red.light.700` | `color.status.danger.@` → `aster.theme.dark.color.status.danger.@` → `color.red.dark.700` |
+
+</div>
+
+<div class="odv-brandset" data-for-brand="birch">
+
+<p class="odv-brandname">Birch</p>
+
+| Key | What it controls | Points to, birch-light | Points to, birch-dark |
+| --- | --- | --- | --- |
+| `badge/radius` | Badge corner radius. | `radius.badge` → `birch.theme.base.radius.badge` → `radius.999` | same |
+| `badge/padding-x` | Horizontal padding inside a badge. | `space.gap.tight` → `space.8` | same |
+| `badge/font-size` | Badge label size. | `type.caption.font-size` → `font.size.13` | same |
+| `badge/neutral/background` | Neutral badge fill. | `color.surface.sunken` → `birch.theme.light.color.surface.sunken` → `color.slate.light.100` | `color.surface.sunken` → `birch.theme.dark.color.surface.sunken` → `color.slate.dark.100` |
+| `badge/neutral/label` | Neutral badge label. | `color.text.secondary` → `birch.theme.light.color.text.secondary` → `color.slate.light.700` | `color.text.secondary` → `birch.theme.dark.color.text.secondary` → `color.slate.dark.500` |
+| `badge/info/background` | Info badge fill. | `color.status.info.subtle` → `birch.theme.light.color.status.info.subtle` → `color.blue.light.100` | `color.status.info.subtle` → `birch.theme.dark.color.status.info.subtle` → `color.blue.dark.100` |
+| `badge/info/label` | Info badge label. | `color.status.info.@` → `birch.theme.light.color.status.info.@` → `color.blue.light.700` | `color.status.info.@` → `birch.theme.dark.color.status.info.@` → `color.blue.dark.700` |
+| `badge/success/background` | Success badge fill. | `color.status.success.subtle` → `birch.theme.light.color.status.success.subtle` → `color.green.light.100` | `color.status.success.subtle` → `birch.theme.dark.color.status.success.subtle` → `color.green.dark.100` |
+| `badge/success/label` | Success badge label. | `color.status.success.@` → `birch.theme.light.color.status.success.@` → `color.green.light.700` | `color.status.success.@` → `birch.theme.dark.color.status.success.@` → `color.green.dark.700` |
+| `badge/warning/background` | Warning badge fill. | `color.status.warning.subtle` → `birch.theme.light.color.status.warning.subtle` → `color.amber.light.100` | `color.status.warning.subtle` → `birch.theme.dark.color.status.warning.subtle` → `color.amber.dark.100` |
+| `badge/warning/label` | Warning badge label. | `color.status.warning.@` → `birch.theme.light.color.status.warning.@` → `color.amber.light.700` | `color.status.warning.@` → `birch.theme.dark.color.status.warning.@` → `color.amber.dark.700` |
+| `badge/danger/background` | Danger badge fill. | `color.status.danger.subtle` → `birch.theme.light.color.status.danger.subtle` → `color.red.light.100` | `color.status.danger.subtle` → `birch.theme.dark.color.status.danger.subtle` → `color.red.dark.100` |
+| `badge/danger/label` | Danger badge label. | `color.status.danger.@` → `birch.theme.light.color.status.danger.@` → `color.red.light.700` | `color.status.danger.@` → `birch.theme.dark.color.status.danger.@` → `color.red.dark.700` |
+
+</div>
+
+<div class="odv-brandset" data-for-brand="coral">
+
+<p class="odv-brandname">Coral</p>
+
+| Key | What it controls | Points to, coral-light | Points to, coral-dark |
+| --- | --- | --- | --- |
+| `badge/radius` | Badge corner radius. | `radius.badge` → `coral.theme.base.radius.badge` → `radius.999` | same |
+| `badge/padding-x` | Horizontal padding inside a badge. | `space.gap.tight` → `space.8` | same |
+| `badge/font-size` | Badge label size. | `type.caption.font-size` → `font.size.13` | same |
+| `badge/neutral/background` | Neutral badge fill. | `color.surface.sunken` → `coral.theme.light.color.surface.sunken` → `color.slate.light.100` | `color.surface.sunken` → `coral.theme.dark.color.surface.sunken` → `color.slate.dark.100` |
+| `badge/neutral/label` | Neutral badge label. | `color.text.secondary` → `coral.theme.light.color.text.secondary` → `color.slate.light.700` | `color.text.secondary` → `coral.theme.dark.color.text.secondary` → `color.slate.dark.500` |
+| `badge/info/background` | Info badge fill. | `color.status.info.subtle` → `coral.theme.light.color.status.info.subtle` → `color.blue.light.100` | `color.status.info.subtle` → `coral.theme.dark.color.status.info.subtle` → `color.blue.dark.100` |
+| `badge/info/label` | Info badge label. | `color.status.info.@` → `coral.theme.light.color.status.info.@` → `color.blue.light.700` | `color.status.info.@` → `coral.theme.dark.color.status.info.@` → `color.blue.dark.700` |
+| `badge/success/background` | Success badge fill. | `color.status.success.subtle` → `coral.theme.light.color.status.success.subtle` → `color.green.light.100` | `color.status.success.subtle` → `coral.theme.dark.color.status.success.subtle` → `color.green.dark.100` |
+| `badge/success/label` | Success badge label. | `color.status.success.@` → `coral.theme.light.color.status.success.@` → `color.green.light.700` | `color.status.success.@` → `coral.theme.dark.color.status.success.@` → `color.green.dark.700` |
+| `badge/warning/background` | Warning badge fill. | `color.status.warning.subtle` → `coral.theme.light.color.status.warning.subtle` → `color.amber.light.100` | `color.status.warning.subtle` → `coral.theme.dark.color.status.warning.subtle` → `color.amber.dark.100` |
+| `badge/warning/label` | Warning badge label. | `color.status.warning.@` → `coral.theme.light.color.status.warning.@` → `color.amber.light.700` | `color.status.warning.@` → `coral.theme.dark.color.status.warning.@` → `color.amber.dark.700` |
+| `badge/danger/background` | Danger badge fill. | `color.status.danger.subtle` → `coral.theme.light.color.status.danger.subtle` → `color.red.light.100` | `color.status.danger.subtle` → `coral.theme.dark.color.status.danger.subtle` → `color.red.dark.100` |
+| `badge/danger/label` | Danger badge label. | `color.status.danger.@` → `coral.theme.light.color.status.danger.@` → `color.red.light.700` | `color.status.danger.@` → `coral.theme.dark.color.status.danger.@` → `color.red.dark.700` |
+
+</div>

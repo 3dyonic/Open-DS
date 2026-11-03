@@ -145,9 +145,9 @@ The raw values the tokens above end at.
 | `color.taupe.light.900` | #1F1411 | <span class="ods-swatch" style="background:#1F1411"></span> |
 | `duration.relaxed` | 320ms | <span class="ods-motion" style="--ods-d:320ms"><span></span></span> |
 | `easing.standard` | cubic-bezier(0.34, 1.56, 0.64, 1) |  |
-| `font.size.14` | 0.875rem (14px) | <span class="ods-bar" style="width:0.875rem"></span> |
-| `font.size.15` | 0.9375rem (15px) | <span class="ods-bar" style="width:0.9375rem"></span> |
-| `font.size.17` | 1.0625rem (17px) | <span class="ods-bar" style="width:1.0625rem"></span> |
+| `font.size.14` | 0.875rem (14px) | <span class="ods-type" style="font-size:0.875rem">Aa</span> |
+| `font.size.15` | 0.9375rem (15px) | <span class="ods-type" style="font-size:0.9375rem">Aa</span> |
+| `font.size.17` | 1.0625rem (17px) | <span class="ods-type" style="font-size:1.0625rem">Aa</span> |
 | `font.weight.700` | 700 |  |
 | `radius.24` | 1.5rem (24px) | <span class="ods-tile" style="border-radius:1.5rem"></span> |
 | `radius.999` | 9999px | <span class="ods-tile" style="border-radius:9999px"></span> |

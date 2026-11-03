@@ -70,6 +70,10 @@ The component reads only component keys and semantic tokens, so it follows the b
 
 The CSS variable is the key with `/` replaced by `-` and the base `@` dropped. Each key points to a token; values live only on primitives.
 
+<div class="odv-brandset" data-for-brand="aster">
+
+<p class="odv-brandname">Aster</p>
+
 | Key | What it controls | Points to, aster-light | Points to, aster-dark |
 | --- | --- | --- | --- |
 | `overlay/background` | Fill of a dialog, menu or toast. | `color.surface.raised` → `aster.theme.light.color.surface.raised` → `color.slate.light.0` | `color.surface.raised` → `aster.theme.dark.color.surface.raised` → `color.slate.dark.100` |
@@ -79,3 +83,37 @@ The CSS variable is the key with `/` replaced by `-` and the base `@` dropped. E
 | `overlay/item-height` | Height of a menu item. | `size.control.default` → `size.44` | same |
 | `tooltip/background` | Tooltip fill. | `color.surface.inverse` → `aster.theme.light.color.surface.inverse` → `color.slate.light.900` | `color.surface.inverse` → `aster.theme.dark.color.surface.inverse` → `color.slate.dark.900` |
 | `tooltip/label` | Tooltip text. | `color.text.inverse` → `aster.theme.light.color.text.inverse` → `color.slate.light.0` | `color.text.inverse` → `aster.theme.dark.color.text.inverse` → `color.slate.dark.50` |
+
+</div>
+
+<div class="odv-brandset" data-for-brand="birch">
+
+<p class="odv-brandname">Birch</p>
+
+| Key | What it controls | Points to, birch-light | Points to, birch-dark |
+| --- | --- | --- | --- |
+| `overlay/background` | Fill of a dialog, menu or toast. | `color.surface.raised` → `birch.theme.light.color.surface.raised` → `color.slate.light.0` | `color.surface.raised` → `birch.theme.dark.color.surface.raised` → `color.slate.dark.100` |
+| `overlay/radius` | Corner radius of overlays. | `radius.container` → `birch.theme.base.radius.container` → `radius.16` | same |
+| `overlay/shadow` | Shadow of overlays. | `elevation.overlay` → `birch.theme.light.elevation.overlay` → `shadow.overlay` | `elevation.overlay` → `birch.theme.dark.elevation.overlay` → `shadow.overlay-dark` |
+| `overlay/scrim` | Color that dims the page behind a dialog. | `color.surface.scrim` → `birch.theme.light.color.surface.scrim` → `color.black.light.scrim` | `color.surface.scrim` → `birch.theme.dark.color.surface.scrim` → `color.black.dark.scrim` |
+| `overlay/item-height` | Height of a menu item. | `size.control.default` → `size.44` | same |
+| `tooltip/background` | Tooltip fill. | `color.surface.inverse` → `birch.theme.light.color.surface.inverse` → `color.slate.light.900` | `color.surface.inverse` → `birch.theme.dark.color.surface.inverse` → `color.slate.dark.900` |
+| `tooltip/label` | Tooltip text. | `color.text.inverse` → `birch.theme.light.color.text.inverse` → `color.slate.light.0` | `color.text.inverse` → `birch.theme.dark.color.text.inverse` → `color.slate.dark.50` |
+
+</div>
+
+<div class="odv-brandset" data-for-brand="coral">
+
+<p class="odv-brandname">Coral</p>
+
+| Key | What it controls | Points to, coral-light | Points to, coral-dark |
+| --- | --- | --- | --- |
+| `overlay/background` | Fill of a dialog, menu or toast. | `color.surface.raised` → `coral.theme.light.color.surface.raised` → `color.slate.light.0` | `color.surface.raised` → `coral.theme.dark.color.surface.raised` → `color.slate.dark.100` |
+| `overlay/radius` | Corner radius of overlays. | `radius.container` → `coral.theme.base.radius.container` → `radius.20` | same |
+| `overlay/shadow` | Shadow of overlays. | `elevation.overlay` → `coral.theme.light.elevation.overlay` → `shadow.overlay` | `elevation.overlay` → `coral.theme.dark.elevation.overlay` → `shadow.overlay-dark` |
+| `overlay/scrim` | Color that dims the page behind a dialog. | `color.surface.scrim` → `coral.theme.light.color.surface.scrim` → `color.black.light.scrim` | `color.surface.scrim` → `coral.theme.dark.color.surface.scrim` → `color.black.dark.scrim` |
+| `overlay/item-height` | Height of a menu item. | `size.control.default` → `size.44` | same |
+| `tooltip/background` | Tooltip fill. | `color.surface.inverse` → `coral.theme.light.color.surface.inverse` → `color.slate.light.900` | `color.surface.inverse` → `coral.theme.dark.color.surface.inverse` → `color.slate.dark.900` |
+| `tooltip/label` | Tooltip text. | `color.text.inverse` → `coral.theme.light.color.text.inverse` → `color.slate.light.0` | `color.text.inverse` → `coral.theme.dark.color.text.inverse` → `color.slate.dark.50` |
+
+</div>
