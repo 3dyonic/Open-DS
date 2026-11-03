@@ -8,6 +8,19 @@ import { SCHEMES, type Samples } from "./schemes";
 export type { Samples };
 
 /** The tone a status label maps to, from its meaning in the scheme. */
+/**
+ * The first variant this scheme uses on an axis, so an example stays inside its decisions (OD-214):
+ * Dense data's Item shows default, Accessible first's shows outline. A component the scheme leaves
+ * out has no decisions, so it shows the fallback.
+ */
+export function useVariant(component: string, axis: string, fallback: string): string {
+  const { scheme } = useScheme();
+  const data = SCHEMES[scheme] ?? SCHEMES["dense-data"];
+  const item = (data.inventory.in as Carried[]).find((i) => i.id === component);
+  return Object.entries(item?.variants?.[axis] ?? {}).find(([, d]) => !d.not_used)?.[0] ?? fallback;
+}
+type Carried = { id: string; variants?: Record<string, Record<string, { not_used?: boolean }>> };
+
 export const toneOf = (s: Samples, label: string) => s.statuses.find((x) => x.label === label)?.meaning ?? "neutral";
 
 // The samples part each component's examples read.
