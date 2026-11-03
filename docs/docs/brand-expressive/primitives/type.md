@@ -8,7 +8,7 @@ description: "Type primitives in Brand expressive."
 
 # Type
 
-15 primitives, 14 used.
+14 primitives, 14 used.
 
 ## `font.size`
 
@@ -43,4 +43,3 @@ description: "Type primitives in Brand expressive."
 | --- | --- | --- | --- |
 | `font.family.bricolage-grotesque` | "Bricolage Grotesque", system-ui, sans-serif | <span class="ods-font" style="font-family:"Bricolage Grotesque", system-ui, sans-serif">Aa 123</span> | `type.display.font-family` (every mode)<br />`type.title.font-family` (every mode)<br />`type.heading.font-family` (every mode) |
 | `font.family.dm-sans` | "DM Sans", system-ui, sans-serif | <span class="ods-font" style="font-family:"DM Sans", system-ui, sans-serif">Aa 123</span> | `type.body.font-family` (every mode)<br />`type.label.font-family` (every mode)<br />`type.caption.font-family` (every mode)<br />`type.data.font-family` (every mode) |
-| `font.family.dm-mono` | "DM Mono", ui-monospace, monospace | <span class="ods-font" style="font-family:"DM Mono", ui-monospace, monospace">Aa 123</span> | Not used yet |

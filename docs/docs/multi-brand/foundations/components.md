@@ -101,6 +101,7 @@ Each token points to another token. Values live only on primitives, below.
 | `component.tooltip.label` | `color.text.inverse` → `aster.theme.light.color.text.inverse` → `color.slate.light.0` | `color.text.inverse` → `aster.theme.dark.color.text.inverse` → `color.slate.dark.50` |
 | `component.transition.duration` | `motion.duration.feedback` → `duration.moderate` | `motion.duration.feedback` → `duration.moderate` |
 | `component.transition.easing` | `motion.easing.standard` → `easing.standard` | `motion.easing.standard` → `easing.standard` |
+| `component.transition.panels-duration` | `motion.duration.panels` → `duration.relaxed` | `motion.duration.panels` → `duration.relaxed` |
 
 </div>
 
@@ -181,6 +182,7 @@ Each token points to another token. Values live only on primitives, below.
 | `component.tooltip.label` | `color.text.inverse` → `birch.theme.light.color.text.inverse` → `color.slate.light.0` | `color.text.inverse` → `birch.theme.dark.color.text.inverse` → `color.slate.dark.50` |
 | `component.transition.duration` | `motion.duration.feedback` → `duration.moderate` | `motion.duration.feedback` → `duration.moderate` |
 | `component.transition.easing` | `motion.easing.standard` → `easing.standard` | `motion.easing.standard` → `easing.standard` |
+| `component.transition.panels-duration` | `motion.duration.panels` → `duration.relaxed` | `motion.duration.panels` → `duration.relaxed` |
 
 </div>
 
@@ -261,6 +263,7 @@ Each token points to another token. Values live only on primitives, below.
 | `component.tooltip.label` | `color.text.inverse` → `coral.theme.light.color.text.inverse` → `color.slate.light.0` | `color.text.inverse` → `coral.theme.dark.color.text.inverse` → `color.slate.dark.50` |
 | `component.transition.duration` | `motion.duration.feedback` → `duration.moderate` | `motion.duration.feedback` → `duration.moderate` |
 | `component.transition.easing` | `motion.easing.standard` → `easing.standard` | `motion.easing.standard` → `easing.standard` |
+| `component.transition.panels-duration` | `motion.duration.panels` → `duration.relaxed` | `motion.duration.panels` → `duration.relaxed` |
 
 </div>
 
@@ -314,6 +317,7 @@ The raw values the tokens above end at.
 | `color.teal.light.600` | #0F766E | <span class="ods-swatch" style="background:#0F766E"></span> |
 | `color.teal.light.700` | #0B5B55 | <span class="ods-swatch" style="background:#0B5B55"></span> |
 | `duration.moderate` | 200ms | <span class="ods-motion" style="--ods-d:200ms" title="Hover to play"><span></span></span> |
+| `duration.relaxed` | 320ms | <span class="ods-motion" style="--ods-d:320ms" title="Hover to play"><span></span></span> |
 | `easing.standard` | cubic-bezier(0.2, 0, 0, 1) | <span class="ods-motion" style="--ods-e:cubic-bezier(0.2,0,0,1)" title="Hover to play"><span></span></span> |
 | `font.size.13` | 0.8125rem (13px) | <span class="ods-typesample" style="font-size:0.8125rem">Aa</span> |
 | `font.size.14` | 0.875rem (14px) | <span class="ods-typesample" style="font-size:0.875rem">Aa</span> |
@@ -380,6 +384,7 @@ The raw values the tokens above end at.
 | `color.slate.light.700` | #334155 | <span class="ods-swatch" style="background:#334155"></span> |
 | `color.slate.light.900` | #0F172A | <span class="ods-swatch" style="background:#0F172A"></span> |
 | `duration.moderate` | 200ms | <span class="ods-motion" style="--ods-d:200ms" title="Hover to play"><span></span></span> |
+| `duration.relaxed` | 320ms | <span class="ods-motion" style="--ods-d:320ms" title="Hover to play"><span></span></span> |
 | `easing.standard` | cubic-bezier(0.2, 0, 0, 1) | <span class="ods-motion" style="--ods-e:cubic-bezier(0.2,0,0,1)" title="Hover to play"><span></span></span> |
 | `font.size.13` | 0.8125rem (13px) | <span class="ods-typesample" style="font-size:0.8125rem">Aa</span> |
 | `font.size.14` | 0.875rem (14px) | <span class="ods-typesample" style="font-size:0.875rem">Aa</span> |
@@ -447,6 +452,7 @@ The raw values the tokens above end at.
 | `color.slate.light.700` | #334155 | <span class="ods-swatch" style="background:#334155"></span> |
 | `color.slate.light.900` | #0F172A | <span class="ods-swatch" style="background:#0F172A"></span> |
 | `duration.moderate` | 200ms | <span class="ods-motion" style="--ods-d:200ms" title="Hover to play"><span></span></span> |
+| `duration.relaxed` | 320ms | <span class="ods-motion" style="--ods-d:320ms" title="Hover to play"><span></span></span> |
 | `easing.standard` | cubic-bezier(0.2, 0, 0, 1) | <span class="ods-motion" style="--ods-e:cubic-bezier(0.2,0,0,1)" title="Hover to play"><span></span></span> |
 | `font.size.13` | 0.8125rem (13px) | <span class="ods-typesample" style="font-size:0.8125rem">Aa</span> |
 | `font.size.14` | 0.875rem (14px) | <span class="ods-typesample" style="font-size:0.875rem">Aa</span> |

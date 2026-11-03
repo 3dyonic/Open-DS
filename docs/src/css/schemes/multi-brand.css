@@ -40,7 +40,8 @@ html[data-scheme="multi-brand"] [data-brand="aster"] {
   --type-data-font-size: 1rem;
   --type-data-line-height: 1.5;
   --type-data-font-weight: 400;
-  --motion-duration-feedback: 200ms; /** Feedback speed: moderate. */
+  --motion-duration-feedback: 200ms; /** Feedback speed: moderate. Hover, press and small state changes. */
+  --motion-duration-panels: 320ms; /** Panel speed: relaxed. Dialogs, sheets, popovers and menus opening and closing. Two speeds: moderate feedback, relaxed panels, shared across brands (motion.count, motion.values). */
   --motion-easing-standard: cubic-bezier(0.2, 0, 0, 1); /** Feedback easing. */
   --color-surface-canvas: #F8FAFC; /** The page background behind everything. */
   --color-surface-default: #FFFFFF; /** The base fill for content. */
@@ -112,6 +113,7 @@ html[data-scheme="multi-brand"] [data-brand="aster"] {
   --overlay-item-height: var(--size-control-default); /** Height of a menu item. */
   --transition-duration: var(--motion-duration-feedback); /** Duration of feedback transitions. */
   --transition-easing: var(--motion-easing-standard); /** Easing of feedback transitions. */
+  --transition-panels-duration: var(--motion-duration-panels); /** Duration of panels opening and closing: dialogs, sheets, popovers, menus. */
   --button-primary-background: var(--color-action-primary); /** Primary button fill. */
   --button-primary-background-hover: var(--color-action-primary-hover); /** Primary button fill on hover. */
   --button-primary-label: var(--color-text-on-action); /** Primary button label color. */
@@ -209,7 +211,8 @@ html[data-scheme="multi-brand"][data-theme="dark"] [data-brand="aster"],
   --type-data-font-size: 1rem;
   --type-data-line-height: 1.5;
   --type-data-font-weight: 400;
-  --motion-duration-feedback: 200ms; /** Feedback speed: moderate. */
+  --motion-duration-feedback: 200ms; /** Feedback speed: moderate. Hover, press and small state changes. */
+  --motion-duration-panels: 320ms; /** Panel speed: relaxed. Dialogs, sheets, popovers and menus opening and closing. Two speeds: moderate feedback, relaxed panels, shared across brands (motion.count, motion.values). */
   --motion-easing-standard: cubic-bezier(0.2, 0, 0, 1); /** Feedback easing. */
   --color-surface-canvas: #020617; /** The page background behind everything. */
   --color-surface-default: #0F172A; /** The base fill for content. */
@@ -281,6 +284,7 @@ html[data-scheme="multi-brand"][data-theme="dark"] [data-brand="aster"],
   --overlay-item-height: var(--size-control-default); /** Height of a menu item. */
   --transition-duration: var(--motion-duration-feedback); /** Duration of feedback transitions. */
   --transition-easing: var(--motion-easing-standard); /** Easing of feedback transitions. */
+  --transition-panels-duration: var(--motion-duration-panels); /** Duration of panels opening and closing: dialogs, sheets, popovers, menus. */
   --button-primary-background: var(--color-action-primary); /** Primary button fill. */
   --button-primary-background-hover: var(--color-action-primary-hover); /** Primary button fill on hover. */
   --button-primary-label: var(--color-text-on-action); /** Primary button label color. */
@@ -376,7 +380,8 @@ html[data-scheme="multi-brand"] [data-brand="birch"] {
   --type-data-font-size: 1rem;
   --type-data-line-height: 1.5;
   --type-data-font-weight: 400;
-  --motion-duration-feedback: 200ms; /** Feedback speed: moderate. */
+  --motion-duration-feedback: 200ms; /** Feedback speed: moderate. Hover, press and small state changes. */
+  --motion-duration-panels: 320ms; /** Panel speed: relaxed. Dialogs, sheets, popovers and menus opening and closing. Two speeds: moderate feedback, relaxed panels, shared across brands (motion.count, motion.values). */
   --motion-easing-standard: cubic-bezier(0.2, 0, 0, 1); /** Feedback easing. */
   --color-surface-canvas: #F8FAFC; /** The page background behind everything. */
   --color-surface-default: #FFFFFF; /** The base fill for content. */
@@ -448,6 +453,7 @@ html[data-scheme="multi-brand"] [data-brand="birch"] {
   --overlay-item-height: var(--size-control-default); /** Height of a menu item. */
   --transition-duration: var(--motion-duration-feedback); /** Duration of feedback transitions. */
   --transition-easing: var(--motion-easing-standard); /** Easing of feedback transitions. */
+  --transition-panels-duration: var(--motion-duration-panels); /** Duration of panels opening and closing: dialogs, sheets, popovers, menus. */
   --button-primary-background: var(--color-action-primary); /** Primary button fill. */
   --button-primary-background-hover: var(--color-action-primary-hover); /** Primary button fill on hover. */
   --button-primary-label: var(--color-text-on-action); /** Primary button label color. */
@@ -544,7 +550,8 @@ html[data-scheme="multi-brand"][data-theme="dark"] [data-brand="birch"],
   --type-data-font-size: 1rem;
   --type-data-line-height: 1.5;
   --type-data-font-weight: 400;
-  --motion-duration-feedback: 200ms; /** Feedback speed: moderate. */
+  --motion-duration-feedback: 200ms; /** Feedback speed: moderate. Hover, press and small state changes. */
+  --motion-duration-panels: 320ms; /** Panel speed: relaxed. Dialogs, sheets, popovers and menus opening and closing. Two speeds: moderate feedback, relaxed panels, shared across brands (motion.count, motion.values). */
   --motion-easing-standard: cubic-bezier(0.2, 0, 0, 1); /** Feedback easing. */
   --color-surface-canvas: #020617; /** The page background behind everything. */
   --color-surface-default: #0F172A; /** The base fill for content. */
@@ -616,6 +623,7 @@ html[data-scheme="multi-brand"][data-theme="dark"] [data-brand="birch"],
   --overlay-item-height: var(--size-control-default); /** Height of a menu item. */
   --transition-duration: var(--motion-duration-feedback); /** Duration of feedback transitions. */
   --transition-easing: var(--motion-easing-standard); /** Easing of feedback transitions. */
+  --transition-panels-duration: var(--motion-duration-panels); /** Duration of panels opening and closing: dialogs, sheets, popovers, menus. */
   --button-primary-background: var(--color-action-primary); /** Primary button fill. */
   --button-primary-background-hover: var(--color-action-primary-hover); /** Primary button fill on hover. */
   --button-primary-label: var(--color-text-on-action); /** Primary button label color. */
@@ -711,7 +719,8 @@ html[data-scheme="multi-brand"] [data-brand="coral"] {
   --type-data-font-size: 1rem;
   --type-data-line-height: 1.5;
   --type-data-font-weight: 400;
-  --motion-duration-feedback: 200ms; /** Feedback speed: moderate. */
+  --motion-duration-feedback: 200ms; /** Feedback speed: moderate. Hover, press and small state changes. */
+  --motion-duration-panels: 320ms; /** Panel speed: relaxed. Dialogs, sheets, popovers and menus opening and closing. Two speeds: moderate feedback, relaxed panels, shared across brands (motion.count, motion.values). */
   --motion-easing-standard: cubic-bezier(0.2, 0, 0, 1); /** Feedback easing. */
   --color-surface-canvas: #F8FAFC; /** The page background behind everything. */
   --color-surface-default: #FFFFFF; /** The base fill for content. */
@@ -783,6 +792,7 @@ html[data-scheme="multi-brand"] [data-brand="coral"] {
   --overlay-item-height: var(--size-control-default); /** Height of a menu item. */
   --transition-duration: var(--motion-duration-feedback); /** Duration of feedback transitions. */
   --transition-easing: var(--motion-easing-standard); /** Easing of feedback transitions. */
+  --transition-panels-duration: var(--motion-duration-panels); /** Duration of panels opening and closing: dialogs, sheets, popovers, menus. */
   --button-primary-background: var(--color-action-primary); /** Primary button fill. */
   --button-primary-background-hover: var(--color-action-primary-hover); /** Primary button fill on hover. */
   --button-primary-label: var(--color-text-on-action); /** Primary button label color. */
@@ -879,7 +889,8 @@ html[data-scheme="multi-brand"][data-theme="dark"] [data-brand="coral"],
   --type-data-font-size: 1rem;
   --type-data-line-height: 1.5;
   --type-data-font-weight: 400;
-  --motion-duration-feedback: 200ms; /** Feedback speed: moderate. */
+  --motion-duration-feedback: 200ms; /** Feedback speed: moderate. Hover, press and small state changes. */
+  --motion-duration-panels: 320ms; /** Panel speed: relaxed. Dialogs, sheets, popovers and menus opening and closing. Two speeds: moderate feedback, relaxed panels, shared across brands (motion.count, motion.values). */
   --motion-easing-standard: cubic-bezier(0.2, 0, 0, 1); /** Feedback easing. */
   --color-surface-canvas: #020617; /** The page background behind everything. */
   --color-surface-default: #0F172A; /** The base fill for content. */
@@ -951,6 +962,7 @@ html[data-scheme="multi-brand"][data-theme="dark"] [data-brand="coral"],
   --overlay-item-height: var(--size-control-default); /** Height of a menu item. */
   --transition-duration: var(--motion-duration-feedback); /** Duration of feedback transitions. */
   --transition-easing: var(--motion-easing-standard); /** Easing of feedback transitions. */
+  --transition-panels-duration: var(--motion-duration-panels); /** Duration of panels opening and closing: dialogs, sheets, popovers, menus. */
   --button-primary-background: var(--color-action-primary); /** Primary button fill. */
   --button-primary-background-hover: var(--color-action-primary-hover); /** Primary button fill on hover. */
   --button-primary-label: var(--color-text-on-action); /** Primary button label color. */

@@ -13,9 +13,14 @@ const COMMANDS = [
 
 /** The grammar's rules for options (OD-221), in one sentence for the agent context. */
 export const optionsRule = (g) =>
-  g.options?.rules?.length
-    ? `New options must look clearly different from their neighbours: ${g.options.rules.map((r) => r.say).join("; ")}.`
-    : "";
+  [
+    g.options?.rules?.length
+      ? `New options must look clearly different from their neighbours: ${g.options.rules.map((r) => r.say).join("; ")}.`
+      : "",
+    g.options?.used ? `And ${g.options.used.say}.` : "",
+  ]
+    .filter(Boolean)
+    .join(" ");
 
 export function agentsMd(scheme, g, { brand, components, project = false }) {
   if (project) return agentsCore(scheme, g, { brand, components });
@@ -125,10 +130,7 @@ export function agentsMd(scheme, g, { brand, components, project = false }) {
       ? [
           `${scheme.inventory.in.length} of ${g.catalogue.items.length} catalogue components are in. Use only these. If none fits, follow the rule for "${sit["missing-component"]?.title ?? "missing component"}" above; never add another component without a new components answer.`,
           "",
-          ...scheme.inventory.in.map(
-            (i) =>
-              `- ${i.id}: ${i.why}`,
-          ),
+          ...scheme.inventory.in.map((i) => `- ${i.id}: ${i.why}`),
           "",
           "Built and installed here: " +
             components

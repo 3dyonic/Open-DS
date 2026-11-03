@@ -12,6 +12,7 @@ What moves, why and how fast.
 
 <div class="ods-specimen">
 <span class="ods-item"><span class="ods-motion" style="--ods-d:var(--motion-duration-feedback)" title="Hover to play"><span></span></span><span class="ods-label">motion.duration.feedback</span></span>
+<span class="ods-item"><span class="ods-motion" style="--ods-d:var(--motion-duration-panels)" title="Hover to play"><span></span></span><span class="ods-label">motion.duration.panels</span></span>
 <span class="ods-item"><span class="ods-motion" style="--ods-e:var(--motion-easing-standard)" title="Hover to play"><span></span></span><span class="ods-label">motion.easing.standard</span></span>
 </div>
 
@@ -32,6 +33,7 @@ Each token points to another token. Values live only on primitives, below.
 | Token | Points to |
 | --- | --- |
 | `motion.duration.feedback` | `duration.moderate` |
+| `motion.duration.panels` | `duration.relaxed` |
 | `motion.easing.standard` | `easing.standard` |
 
 ## Primitives
@@ -41,6 +43,7 @@ The raw values the tokens above end at.
 | Primitive | Value | Sample |
 | --- | --- | --- |
 | `duration.moderate` | 200ms | <span class="ods-motion" style="--ods-d:200ms" title="Hover to play"><span></span></span> |
+| `duration.relaxed` | 320ms | <span class="ods-motion" style="--ods-d:320ms" title="Hover to play"><span></span></span> |
 | `easing.standard` | cubic-bezier(0.2, 0, 0, 1) | <span class="ods-motion" style="--ods-e:cubic-bezier(0.2,0,0,1)" title="Hover to play"><span></span></span> |
 
 ## Where it lands

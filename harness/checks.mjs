@@ -459,6 +459,53 @@ export const CHECKS = {
     },
   },
 
+  "options-used": {
+    requires: ["schemes/grammar.json"],
+    run: (c) => {
+      // OD-222: outside the groups kept whole (colour ramps), every primitive is read by a semantic, a theme,
+      // a component key or another primitive. An option nothing reads is a choice nobody made.
+      const used = c.json("schemes", "grammar.json").options?.used;
+      if (!used) return bad("the grammar's options say nothing about unused options");
+      const gaps = [];
+      for (const id of SCHEMES) {
+        const t = c.json("schemes", `${id}.json`).tokens;
+        const prim = flatten(t.primitive);
+        const readers = JSON.stringify([t.semantic, t.component, t.brands, Object.values(prim).map((x) => x.$value)]);
+        for (const p of Object.keys(prim))
+          if (!used.except.some((g) => p === g || p.startsWith(`${g}.`)) && !readers.includes(`{${p}}`))
+            gaps.push(`${id}: ${p} is read by nothing`);
+      }
+      return gaps.length
+        ? bad(gaps.slice(0, 8).join("; "))
+        : ok(`every scheme keeps only the options it reads (${used.say})`);
+    },
+  },
+
+  "answers-match-tokens": {
+    requires: ["schemes/grammar.json"],
+    run: (c) => {
+      // OD-222: a count answer has that many tokens. motion.count names how many speeds exist, so the
+      // motion durations hold exactly that many distinct values.
+      const N = { one: 1, two: 2, three: 3 };
+      const gaps = [];
+      for (const id of SCHEMES) {
+        const s = c.json("schemes", `${id}.json`);
+        const count = N[s.answers.find((a) => a.question === "motion.count")?.option];
+        const prim = flatten(s.tokens.primitive);
+        const durs = Object.values(flatten(s.tokens.semantic.motion?.duration ?? {})).map(
+          (d) => prim[String(d.$value).replace(/[{}]/g, "")]?.$value ?? d.$value,
+        );
+        const distinct = new Set(durs).size;
+        if (!count) gaps.push(`${id}: no motion.count answer`);
+        else if (distinct !== count)
+          gaps.push(
+            `${id}: motion.count says ${count}, the motion tokens hold ${distinct} (${[...new Set(durs)].join(", ")})`,
+          );
+      }
+      return gaps.length ? bad(gaps.join("; ")) : ok("every scheme's motion count answer matches its motion tokens");
+    },
+  },
+
   "catalogue-built": {
     requires: ["schemes/grammar.json", "ui/src/components"],
     run: (c) => {

@@ -8,13 +8,12 @@ description: "Shape primitives in Brand expressive."
 
 # Shape
 
-6 primitives, 5 used.
+5 primitives, 5 used.
 
 ## `radius`
 
 | Primitive | Value | Sample | Used by |
 | --- | --- | --- | --- |
-| `radius.0` | 0rem (0px) | <span class="ods-tile" style="border-radius:0rem"></span> | Not used yet |
 | `radius.24` | 1.5rem (24px) | <span class="ods-tile" style="border-radius:1.5rem"></span> | `radius.container` (every mode) |
 | `radius.999` | 9999px | <span class="ods-tile" style="border-radius:9999px"></span> | `radius.control` (every mode)<br />`radius.badge` (every mode) |
 | `radius.full` | 9999px | <span class="ods-tile" style="border-radius:9999px"></span> | `radius.round` (semantic) |

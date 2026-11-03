@@ -12,6 +12,8 @@ What moves, why and how fast.
 
 <div class="ods-specimen">
 <span class="ods-item"><span class="ods-motion" style="--ods-d:var(--motion-duration-feedback)" title="Hover to play"><span></span></span><span class="ods-label">motion.duration.feedback</span></span>
+<span class="ods-item"><span class="ods-motion" style="--ods-d:var(--motion-duration-panels)" title="Hover to play"><span></span></span><span class="ods-label">motion.duration.panels</span></span>
+<span class="ods-item"><span class="ods-motion" style="--ods-d:var(--motion-duration-hero)" title="Hover to play"><span></span></span><span class="ods-label">motion.duration.hero</span></span>
 <span class="ods-item"><span class="ods-motion" style="--ods-e:var(--motion-easing-standard)" title="Hover to play"><span></span></span><span class="ods-label">motion.easing.standard</span></span>
 </div>
 
@@ -22,7 +24,7 @@ What moves, why and how fast.
 | What is motion for? | Feedback and expression | Motion carries personality. |
 | How many speeds exist? | Three | Fast feedback, moderate panels, relaxed hero. |
 | How is easing defined? | A spring | A spring that overshoots feels alive. |
-| How fast does feedback feel? | Relaxed | Relaxed, springy motion. |
+| How fast does feedback feel? | Fast | Feedback stays fast; the personality shows in panels and hero moments, which move slower on a spring. |
 | Where does motion show? | Hero and launch moments | Motion shows in hero and launch moments. |
 
 ## Tokens
@@ -31,8 +33,10 @@ Each token points to another token. Values live only on primitives, below.
 
 | Token | Points to |
 | --- | --- |
-| `motion.duration.feedback` | `duration.relaxed` |
-| `motion.easing.standard` | `easing.standard` |
+| `motion.duration.feedback` | `duration.fast` |
+| `motion.duration.panels` | `duration.moderate` |
+| `motion.duration.hero` | `duration.relaxed` |
+| `motion.easing.standard` | `easing.spring` |
 
 ## Primitives
 
@@ -40,8 +44,10 @@ The raw values the tokens above end at.
 
 | Primitive | Value | Sample |
 | --- | --- | --- |
+| `duration.fast` | 120ms | <span class="ods-motion" style="--ods-d:120ms" title="Hover to play"><span></span></span> |
+| `duration.moderate` | 200ms | <span class="ods-motion" style="--ods-d:200ms" title="Hover to play"><span></span></span> |
 | `duration.relaxed` | 320ms | <span class="ods-motion" style="--ods-d:320ms" title="Hover to play"><span></span></span> |
-| `easing.standard` | cubic-bezier(0.34, 1.56, 0.64, 1) | <span class="ods-motion" style="--ods-e:cubic-bezier(0.34,1.56,0.64,1)" title="Hover to play"><span></span></span> |
+| `easing.spring` | cubic-bezier(0.34, 1.56, 0.64, 1) | <span class="ods-motion" style="--ods-e:cubic-bezier(0.34,1.56,0.64,1)" title="Hover to play"><span></span></span> |
 
 ## Where it lands
 
@@ -51,5 +57,5 @@ The raw values the tokens above end at.
 
 | Situation | Use | Not | Why |
 | --- | --- | --- | --- |
-| Hover and press feedback | motion.duration.feedback (relaxed) | An instant change | Springy motion is part of the brand. |
+| Hover and press feedback | motion.duration.feedback (fast) | An instant change | Fast feedback, on the brand's spring. |
 | Someone asked for less motion | Reduced motion | Full motion | Motion is reduced when asked. |

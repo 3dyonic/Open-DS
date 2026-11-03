@@ -8,7 +8,7 @@ description: "Type primitives in Accessible first."
 
 # Type
 
-12 primitives, 11 used.
+11 primitives, 11 used.
 
 ## `font.size`
 
@@ -40,4 +40,3 @@ description: "Type primitives in Accessible first."
 | Primitive | Value | Sample | Used by |
 | --- | --- | --- | --- |
 | `font.family.atkinson-hyperlegible` | "Atkinson Hyperlegible", Verdana, sans-serif | <span class="ods-font" style="font-family:"Atkinson Hyperlegible", Verdana, sans-serif">Aa 123</span> | `type.display.font-family` (every mode)<br />`type.title.font-family` (every mode)<br />`type.heading.font-family` (every mode)<br />`type.body.font-family` (every mode)<br />`type.label.font-family` (every mode)<br />`type.caption.font-family` (every mode)<br />`type.data.font-family` (every mode) |
-| `font.family.ibm-plex-mono` | "IBM Plex Mono", ui-monospace, monospace | <span class="ods-font" style="font-family:"IBM Plex Mono", ui-monospace, monospace">Aa 123</span> | Not used yet |

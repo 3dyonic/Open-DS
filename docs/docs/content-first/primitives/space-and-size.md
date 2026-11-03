@@ -8,7 +8,7 @@ description: "Space and size primitives in Content first."
 
 # Space and size
 
-11 primitives, 9 used.
+9 primitives, 9 used.
 
 ## `space`
 
@@ -26,7 +26,5 @@ description: "Space and size primitives in Content first."
 | Primitive | Value | Sample | Used by |
 | --- | --- | --- | --- |
 | `size.16` | 1rem (16px) | <span class="ods-bar" style="width:1rem"></span> | `size.icon` (semantic) |
-| `size.20` | 1.25rem (20px) | <span class="ods-bar" style="width:1.25rem"></span> | Not used yet |
-| `size.24` | 1.5rem (24px) | <span class="ods-bar" style="width:1.5rem"></span> | Not used yet |
 | `size.40` | 2.5rem (40px) | <span class="ods-bar" style="width:2.5rem"></span> | `size.control.compact` (semantic) |
 | `size.48` | 3rem (48px) | <span class="ods-bar" style="width:3rem"></span> | `size.control.default` (semantic)<br />`size.control.large` (semantic)<br />`size.row` (semantic) |

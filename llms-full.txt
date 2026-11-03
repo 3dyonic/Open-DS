@@ -244,7 +244,7 @@ Themes: light, dark
 - motion.roles What is motion for? Feedback and expression. Motion carries personality. (because brand.q2)
 - motion.count How many speeds exist? Three. Fast feedback, moderate panels, relaxed hero. (because motion.roles)
 - motion.definition How is easing defined? A spring. A spring that overshoots feels alive. (because brand.q1)
-- motion.values How fast does feedback feel? Relaxed. Relaxed, springy motion. (because human.q1)
+- motion.values How fast does feedback feel? Fast. Feedback stays fast; the personality shows in panels and hero moments, which move slower on a spring. (because human.q1)
 - motion.lands Where does motion show? Hero and launch moments. Motion shows in hero and launch moments. (because outcomes.q1)
 - iconography.roles What do icons do? Those and decoration. Icons also decorate campaign pages. (because brand.q2)
 - iconography.count How many icon sizes exist? Two. One size next to text, one for decoration. (because iconography.roles)
@@ -294,7 +294,7 @@ Themes: light, dark
 - Shape of a status badge (status-shape): use radius.badge (pill); not A rectangle; Pills match the controls.
 - A card on the page (card): use elevation.card (pronounced); not A flat card; Cards float to feel tactile.
 - A menu or dialog (menu-or-dialog): use elevation.overlay and a dimmed page; not No shadow; Strong depth for floating things.
-- Hover and press feedback (hover-feedback): use motion.duration.feedback (relaxed); not An instant change; Springy motion is part of the brand.
+- Hover and press feedback (hover-feedback): use motion.duration.feedback (fast); not An instant change; Fast feedback, on the brand's spring.
 - Someone asked for less motion (reduced-motion): use Reduced motion; not Full motion; Motion is reduced when asked.
 - An icon with no label (icon-alone): use Not used: always add a word; not An icon button with a hover hint; On phones, hover hints never show; a word says what will happen.
 - Someone switches to dark (dark-mode): use The dark semantic mode; not A separate campaign palette; Dark ships as standard; campaigns change values, not structure.

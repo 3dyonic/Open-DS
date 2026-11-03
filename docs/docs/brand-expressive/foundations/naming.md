@@ -95,8 +95,9 @@ Each token points to another token. Values live only on primitives, below.
 | `component.overlay.item-height` | `size.control.default` → `size.52` | `size.control.default` → `size.52` |
 | `component.tooltip.background` | `color.surface.inverse` → `brand-expressive.theme.light.color.surface.inverse` → `color.taupe.light.900` | `color.surface.inverse` → `brand-expressive.theme.dark.color.surface.inverse` → `color.taupe.dark.900` |
 | `component.tooltip.label` | `color.text.inverse` → `brand-expressive.theme.light.color.text.inverse` → `color.taupe.light.0` | `color.text.inverse` → `brand-expressive.theme.dark.color.text.inverse` → `color.taupe.dark.50` |
-| `component.transition.duration` | `motion.duration.feedback` → `duration.relaxed` | `motion.duration.feedback` → `duration.relaxed` |
-| `component.transition.easing` | `motion.easing.standard` → `easing.standard` | `motion.easing.standard` → `easing.standard` |
+| `component.transition.duration` | `motion.duration.feedback` → `duration.fast` | `motion.duration.feedback` → `duration.fast` |
+| `component.transition.easing` | `motion.easing.standard` → `easing.spring` | `motion.easing.standard` → `easing.spring` |
+| `component.transition.panels-duration` | `motion.duration.panels` → `duration.moderate` | `motion.duration.panels` → `duration.moderate` |
 
 ## Primitives
 
@@ -143,8 +144,9 @@ The raw values the tokens above end at.
 | `color.taupe.light.600` | #6B544A | <span class="ods-swatch" style="background:#6B544A"></span> |
 | `color.taupe.light.700` | #4D3A33 | <span class="ods-swatch" style="background:#4D3A33"></span> |
 | `color.taupe.light.900` | #1F1411 | <span class="ods-swatch" style="background:#1F1411"></span> |
-| `duration.relaxed` | 320ms | <span class="ods-motion" style="--ods-d:320ms" title="Hover to play"><span></span></span> |
-| `easing.standard` | cubic-bezier(0.34, 1.56, 0.64, 1) | <span class="ods-motion" style="--ods-e:cubic-bezier(0.34,1.56,0.64,1)" title="Hover to play"><span></span></span> |
+| `duration.fast` | 120ms | <span class="ods-motion" style="--ods-d:120ms" title="Hover to play"><span></span></span> |
+| `duration.moderate` | 200ms | <span class="ods-motion" style="--ods-d:200ms" title="Hover to play"><span></span></span> |
+| `easing.spring` | cubic-bezier(0.34, 1.56, 0.64, 1) | <span class="ods-motion" style="--ods-e:cubic-bezier(0.34,1.56,0.64,1)" title="Hover to play"><span></span></span> |
 | `font.size.14` | 0.875rem (14px) | <span class="ods-typesample" style="font-size:0.875rem">Aa</span> |
 | `font.size.15` | 0.9375rem (15px) | <span class="ods-typesample" style="font-size:0.9375rem">Aa</span> |
 | `font.size.17` | 1.0625rem (17px) | <span class="ods-typesample" style="font-size:1.0625rem">Aa</span> |

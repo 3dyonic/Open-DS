@@ -8,15 +8,14 @@ description: "Motion primitives in Content first."
 
 # Motion
 
-4 primitives, 2 used.
+3 primitives, 3 used.
 
 ## `duration`
 
 | Primitive | Value | Sample | Used by |
 | --- | --- | --- | --- |
-| `duration.fast` | 120ms | <span class="ods-motion" style="--ods-d:120ms" title="Hover to play"><span></span></span> | Not used yet |
 | `duration.moderate` | 200ms | <span class="ods-motion" style="--ods-d:200ms" title="Hover to play"><span></span></span> | `motion.duration.feedback` (semantic) |
-| `duration.relaxed` | 320ms | <span class="ods-motion" style="--ods-d:320ms" title="Hover to play"><span></span></span> | Not used yet |
+| `duration.relaxed` | 320ms | <span class="ods-motion" style="--ods-d:320ms" title="Hover to play"><span></span></span> | `motion.duration.panels` (semantic) |
 
 ## `easing`
 

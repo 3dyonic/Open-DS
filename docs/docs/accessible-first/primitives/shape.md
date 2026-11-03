@@ -8,13 +8,12 @@ description: "Shape primitives in Accessible first."
 
 # Shape
 
-7 primitives, 6 used.
+6 primitives, 6 used.
 
 ## `radius`
 
 | Primitive | Value | Sample | Used by |
 | --- | --- | --- | --- |
-| `radius.0` | 0rem (0px) | <span class="ods-tile" style="border-radius:0rem"></span> | Not used yet |
 | `radius.4` | 0.25rem (4px) | <span class="ods-tile" style="border-radius:0.25rem"></span> | `radius.badge` (every mode) |
 | `radius.6` | 0.375rem (6px) | <span class="ods-tile" style="border-radius:0.375rem"></span> | `radius.control` (every mode) |
 | `radius.8` | 0.5rem (8px) | <span class="ods-tile" style="border-radius:0.5rem"></span> | `radius.container` (every mode) |

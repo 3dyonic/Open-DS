@@ -89,7 +89,7 @@
     "primary": "#D61F7A",
     "corners": "9999px",
     "font": "\"Bricolage Grotesque\", system-ui, sans-serif",
-    "motion": "320ms"
+    "motion": "120ms"
   },
   {
     "id": "multi-brand",
