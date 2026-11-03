@@ -27,66 +27,9 @@ const dist = join(here, "dist");
 // The values in the schemes are already valid CSS, so only naming and composite transforms run.
 const TRANSFORMS = ["attribute/cti", "name/kebab", "fontFamily/css", "cubicBezier/css", "shadow/css/shorthand"];
 
-// shadcn reads these variables. Each points at one of our semantic decisions.
-export const SHADCN = {
-  background: "color-surface-canvas",
-  foreground: "color-text-primary",
-  card: "color-surface-default",
-  "card-foreground": "color-text-primary",
-  popover: "color-surface-raised",
-  "popover-foreground": "color-text-primary",
-  primary: "color-action-primary",
-  "primary-foreground": "color-text-on-action",
-  secondary: "color-action-secondary",
-  "secondary-foreground": "color-text-primary",
-  muted: "color-surface-sunken",
-  "muted-foreground": "color-text-muted",
-  accent: "color-surface-sunken",
-  "accent-foreground": "color-text-primary",
-  destructive: "color-status-danger",
-  border: "color-border-default",
-  input: "color-border-strong",
-  ring: "color-border-focus",
-  radius: "radius-control",
-  // The sidebar and charts from shadcn/ui.
-  sidebar: "color-surface-default",
-  "sidebar-foreground": "color-text-primary",
-  "sidebar-primary": "color-action-primary",
-  "sidebar-primary-foreground": "color-text-on-action",
-  "sidebar-accent": "color-surface-sunken",
-  "sidebar-accent-foreground": "color-text-primary",
-  "sidebar-border": "color-border-default",
-  "sidebar-ring": "color-border-focus",
-  // Chart series use the category colours: distinct hues that carry no meaning, so no series reads as an error.
-  "chart-1": "color-category-1",
-  "chart-2": "color-category-2",
-  "chart-3": "color-category-3",
-  "chart-4": "color-category-4",
-  "chart-5": "color-category-5",
-};
-
-// shadcn's radius, shadow and text classes, mapped onto the scheme's tokens. Written to shadcn.css,
-// which apps and Storybook load and the Open DS site does not, so the site keeps its own scale.
-const SHADCN_SCALE = {
-  "--radius-xs": "var(--radius-badge)",
-  "--radius-sm": "var(--radius-badge)",
-  "--radius-md": "var(--radius-control)",
-  "--radius-lg": "var(--radius-container)",
-  "--radius-xl": "var(--radius-container)",
-  "--shadow-xs": "var(--elevation-card)",
-  "--shadow-sm": "var(--elevation-card)",
-  "--shadow-md": "var(--elevation-overlay)",
-  "--shadow-lg": "var(--elevation-overlay)",
-  "--shadow-xl": "var(--elevation-overlay)",
-  "--text-xs": "var(--type-caption-font-size)",
-  "--text-xs--line-height": "var(--type-caption-line-height)",
-  "--text-sm": "var(--type-body-font-size)",
-  "--text-sm--line-height": "var(--type-body-line-height)",
-  "--text-base": "var(--type-body-font-size)",
-  "--text-base--line-height": "var(--type-body-line-height)",
-  "--text-lg": "var(--type-heading-font-size)",
-  "--text-lg--line-height": "var(--type-heading-line-height)",
-};
+// The shadcn mapping lives with the CLI (OD-215), so the docs show exactly what this build writes.
+import { SHADCN, SHADCN_SCALE } from "../cli/src/shadcn.mjs";
+export { SHADCN };
 
 export const shadcnCss = (name) =>
   [

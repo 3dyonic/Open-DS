@@ -61,4 +61,6 @@ The component reads only component keys and semantic tokens, so it follows the b
 
 ## Tokens it reads
 
-From shadcn/ui. It reads shadcn's variables, which theme.css maps onto this system's semantic tokens, and the radius, shadow and text scale in shadcn.css.
+Progress reads 1 of Dense data's tokens. Each row follows one part of the component from its class to the value it ends at, in every theme. Change a token in the scheme and every component that reads it follows.
+
+<div class="odv-tscroll"><table class="odv-ttable odv-reads"><thead><tr><th>Part</th><th>From the class to the token</th><th>Light</th><th>Dark</th></tr></thead><tbody><tr><td><b>Fill</b></td><td><span class="odv-chain"><span>bg-primary</span><i>→</i><span>--primary</span><i>→</i><span class="tok">color.action.primary</span></span></td><td><span class="odv-tsw"><i style="background:#4B3FD9"></i><small>violet.light.600 · #4B3FD9</small></span></td><td><span class="odv-tsw"><i style="background:#A9A3F6"></i><small>violet.dark.700 · #A9A3F6</small></span></td></tr></tbody></table></div>

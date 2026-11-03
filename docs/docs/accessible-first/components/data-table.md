@@ -68,4 +68,6 @@ The component reads only component keys and semantic tokens, so it follows the b
 
 ## Tokens it reads
 
-From shadcn/ui. It reads shadcn's variables, which theme.css maps onto this system's semantic tokens, and the radius, shadow and text scale in shadcn.css.
+Data table reads 2 of Accessible first's tokens. Each row follows one part of the component from its class to the value it ends at, in every theme. Change a token in the scheme and every component that reads it follows.
+
+<div class="odv-tscroll"><table class="odv-ttable odv-reads"><thead><tr><th>Part</th><th>From the class to the token</th><th>Light</th><th>Dark</th></tr></thead><tbody><tr><td><b>Edge</b></td><td><span class="odv-chain"><span>border</span><i>→</i><span>--border</span><i>→</i><span class="tok">color.border.default</span></span></td><td><span class="odv-tsw"><i style="background:#D6D6D6"></i><small>gray.light.200 · #D6D6D6</small></span></td><td><span class="odv-tsw"><i style="background:#222222"></i><small>gray.dark.100 · #222222</small></span></td></tr><tr><td><b>Corner</b></td><td><span class="odv-chain"><span>rounded-sm</span><i>→</i><span>--radius-sm</span><i>→</i><span class="tok">radius.badge</span></span></td><td colspan="2"><span class="odv-tsw"><i class="odv-tshape" style="border-radius:0.25rem (4px)"></i><small>radius.4 · 0.25rem (4px), every theme</small></span></td></tr></tbody></table></div>

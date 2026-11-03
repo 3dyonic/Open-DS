@@ -53,4 +53,6 @@ The component reads only component keys and semantic tokens, so it follows the b
 
 ## Tokens it reads
 
-From shadcn/ui. It reads shadcn's variables, which theme.css maps onto this system's semantic tokens, and the radius, shadow and text scale in shadcn.css.
+Marker reads 1 of Brand expressive's tokens. Each row follows one part of the component from its class to the value it ends at, in every theme. Change a token in the scheme and every component that reads it follows.
+
+<div class="odv-tscroll"><table class="odv-ttable odv-reads"><thead><tr><th>Part</th><th>From the class to the token</th><th>Light</th><th>Dark</th></tr></thead><tbody><tr><td><b>Text size</b></td><td><span class="odv-chain"><span>text-xs</span><i>→</i><span>--text-xs</span><i>→</i><span class="tok">type.caption.font-size</span></span></td><td colspan="2"><span class="odv-tsw"><small>font.size.14 · 0.875rem (14px), every theme</small></span></td></tr></tbody></table></div>
