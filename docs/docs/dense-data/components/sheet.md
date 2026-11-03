@@ -10,7 +10,7 @@ description: "Sheet in Dense data."
 
 A panel that slides in from an edge.
 
-**In Dense data.** Record details beside the table.
+<p class="odv-compstatus"><span class="odv-pill">In Dense data</span> Record details beside the table.</p>
 
 ## See it live
 

@@ -10,7 +10,7 @@ description: "Toast in Dense data."
 
 A short message that confirms an action and goes away.
 
-**In Dense data.** Confirms a saved change.
+<p class="odv-compstatus"><span class="odv-pill">In Dense data</span> Confirms a saved change.</p>
 
 ## See it live
 

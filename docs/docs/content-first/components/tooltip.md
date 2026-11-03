@@ -11,7 +11,7 @@ sidebar_class_name: "ods-left-out"
 
 A short hint on hover or focus.
 
-<div class="odv-leftout"><span class="odv-robot "><img class="odv-robot-day" src="/robots/content-first.webp" alt="" loading="lazy"/><img class="odv-robot-night" src="/robots/content-first-dark.webp" alt="" loading="lazy"/></span><p><b>Not part of Content first.</b> Readers arrive on any device, and on touch screens hover hints never show; icons carry visible labels instead. The examples use Content first's tokens, to show how it would look if the design system added it.</p></div>
+<p class="odv-compstatus"><span class="odv-pill odv-pill-out">Left out of Content first</span> Readers arrive on any device, and on touch screens hover hints never show; icons carry visible labels instead.</p>
 
 ## See it live
 

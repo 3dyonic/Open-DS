@@ -11,7 +11,7 @@ sidebar_class_name: "ods-left-out"
 
 Rows and columns of comparable records, with headers.
 
-<div class="odv-leftout"><span class="odv-robot "><img class="odv-robot-day" src="/robots/content-first.webp" alt="" loading="lazy"/><img class="odv-robot-night" src="/robots/content-first-dark.webp" alt="" loading="lazy"/></span><p><b>Not part of Content first.</b> Long-form reading rarely needs records; a plain HTML table covers the odd one. The examples use Content first's tokens, to show how it would look if the design system added it.</p></div>
+<p class="odv-compstatus"><span class="odv-pill odv-pill-out">Left out of Content first</span> Long-form reading rarely needs records; a plain HTML table covers the odd one.</p>
 
 ## See it live
 

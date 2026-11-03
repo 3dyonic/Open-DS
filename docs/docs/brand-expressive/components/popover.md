@@ -10,7 +10,7 @@ description: "Popover in Brand expressive."
 
 Rich content in a floating panel, opened by click.
 
-**In Brand expressive.** A product preview that opens on tap.
+<p class="odv-compstatus"><span class="odv-pill">In Brand expressive</span> A product preview that opens on tap.</p>
 
 ## See it live
 

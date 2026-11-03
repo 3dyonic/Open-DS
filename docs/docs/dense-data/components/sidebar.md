@@ -10,7 +10,7 @@ description: "Sidebar in Dense data."
 
 The side navigation of an app, open while people work.
 
-**In Dense data.** App navigation that stays open all shift.
+<p class="odv-compstatus"><span class="odv-pill">In Dense data</span> App navigation that stays open all shift.</p>
 
 ## See it live
 

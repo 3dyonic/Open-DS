@@ -10,7 +10,7 @@ description: "Textarea in Accessible first."
 
 A field for free text over several lines.
 
-**In Accessible first.** Longer answers.
+<p class="odv-compstatus"><span class="odv-pill">In Accessible first</span> Longer answers.</p>
 
 ## See it live
 

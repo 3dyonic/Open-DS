@@ -10,7 +10,7 @@ description: "Switch in Dense data."
 
 An on or off setting that applies at once, with no submit.
 
-**In Dense data.** Settings that apply at once.
+<p class="odv-compstatus"><span class="odv-pill">In Dense data</span> Settings that apply at once.</p>
 
 ## See it live
 

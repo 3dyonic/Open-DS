@@ -10,7 +10,7 @@ description: "Accordion in Content first."
 
 Stacked sections that expand and collapse without leaving the page.
 
-**In Content first.** Questions and answers in guides.
+<p class="odv-compstatus"><span class="odv-pill">In Content first</span> Questions and answers in guides.</p>
 
 ## See it live
 

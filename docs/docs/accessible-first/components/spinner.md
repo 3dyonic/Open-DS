@@ -10,7 +10,7 @@ description: "Spinner in Accessible first."
 
 A small indicator that work is in progress when the time is unknown.
 
-**In Accessible first.** Says that the page is working.
+<p class="odv-compstatus"><span class="odv-pill">In Accessible first</span> Says that the page is working.</p>
 
 ## See it live
 

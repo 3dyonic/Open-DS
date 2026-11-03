@@ -10,7 +10,7 @@ description: "Pagination in Content first."
 
 Moves between pages of results.
 
-**In Content first.** Moves through article lists.
+<p class="odv-compstatus"><span class="odv-pill">In Content first</span> Moves through article lists.</p>
 
 ## See it live
 

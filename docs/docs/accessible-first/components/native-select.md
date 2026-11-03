@@ -10,7 +10,7 @@ description: "Native select in Accessible first."
 
 The browser's own select, styled.
 
-**In Accessible first.** A browser select that every assistive technology understands.
+<p class="odv-compstatus"><span class="odv-pill">In Accessible first</span> A browser select that every assistive technology understands.</p>
 
 ## See it live
 

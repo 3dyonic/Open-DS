@@ -11,7 +11,7 @@ sidebar_class_name: "ods-left-out"
 
 A picture of numbers: comparison, trend, share or spread.
 
-<div class="odv-leftout"><span class="odv-robot "><img class="odv-robot-day" src="/robots/content-first.webp" alt="" loading="lazy"/><img class="odv-robot-night" src="/robots/content-first-dark.webp" alt="" loading="lazy"/></span><p><b>Not part of Content first.</b> Figures appear as images inside articles. The examples use Content first's tokens, to show how it would look if the design system added it.</p></div>
+<p class="odv-compstatus"><span class="odv-pill odv-pill-out">Left out of Content first</span> Figures appear as images inside articles.</p>
 
 ## See it live
 

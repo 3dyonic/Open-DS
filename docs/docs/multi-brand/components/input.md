@@ -10,7 +10,7 @@ description: "Input in Multi-brand."
 
 A labeled field for a short typed value.
 
-**In Multi-brand.** Sign-up and account fields.
+<p class="odv-compstatus"><span class="odv-pill">In Multi-brand</span> Sign-up and account fields.</p>
 
 ## See it live
 

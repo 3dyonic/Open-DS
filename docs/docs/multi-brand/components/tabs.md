@@ -10,7 +10,7 @@ description: "Tabs in Multi-brand."
 
 Switches between views of the same thing on one page.
 
-**In Multi-brand.** Sections of the account.
+<p class="odv-compstatus"><span class="odv-pill">In Multi-brand</span> Sections of the account.</p>
 
 ## See it live
 

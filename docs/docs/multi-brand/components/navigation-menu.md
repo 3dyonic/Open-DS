@@ -10,7 +10,7 @@ description: "Navigation menu in Multi-brand."
 
 Site navigation with links and panels.
 
-**In Multi-brand.** Brand site navigation.
+<p class="odv-compstatus"><span class="odv-pill">In Multi-brand</span> Brand site navigation.</p>
 
 ## See it live
 

@@ -10,7 +10,7 @@ description: "Separator in Multi-brand."
 
 A line between groups.
 
-**In Multi-brand.** Groups of settings.
+<p class="odv-compstatus"><span class="odv-pill">In Multi-brand</span> Groups of settings.</p>
 
 ## See it live
 

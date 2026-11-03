@@ -10,7 +10,7 @@ description: "Button in Dense data."
 
 A control that commits an action on this screen.
 
-**In Dense data.** Every action.
+<p class="odv-compstatus"><span class="odv-pill">In Dense data</span> Every action.</p>
 
 ## See it live
 

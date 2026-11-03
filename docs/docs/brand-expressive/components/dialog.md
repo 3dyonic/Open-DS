@@ -10,7 +10,7 @@ description: "Dialog in Brand expressive."
 
 A window over the page that takes attention until people finish or close it.
 
-**In Brand expressive.** The waitlist form over the page.
+<p class="odv-compstatus"><span class="odv-pill">In Brand expressive</span> The waitlist form over the page.</p>
 
 ## See it live
 

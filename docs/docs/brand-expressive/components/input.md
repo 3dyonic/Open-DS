@@ -10,7 +10,7 @@ description: "Input in Brand expressive."
 
 A labeled field for a short typed value.
 
-**In Brand expressive.** The sign-up email.
+<p class="odv-compstatus"><span class="odv-pill">In Brand expressive</span> The sign-up email.</p>
 
 ## See it live
 

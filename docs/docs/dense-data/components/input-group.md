@@ -10,7 +10,7 @@ description: "Input group in Dense data."
 
 An input with addons inside its border: icons, text, buttons.
 
-**In Dense data.** Search with an icon and a clear button.
+<p class="odv-compstatus"><span class="odv-pill">In Dense data</span> Search with an icon and a clear button.</p>
 
 ## See it live
 

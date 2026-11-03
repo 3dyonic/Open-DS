@@ -10,7 +10,7 @@ description: "Badge in Content first."
 
 A short label for a status, category or count, next to what it describes.
 
-**In Content first.** The topic of an article.
+<p class="odv-compstatus"><span class="odv-pill">In Content first</span> The topic of an article.</p>
 
 ## See it live
 

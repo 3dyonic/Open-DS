@@ -10,7 +10,7 @@ description: "Aspect ratio in Content first."
 
 Keeps an image or video at a fixed shape while the layout resizes.
 
-**In Content first.** Keeps images in shape.
+<p class="odv-compstatus"><span class="odv-pill">In Content first</span> Keeps images in shape.</p>
 
 ## See it live
 

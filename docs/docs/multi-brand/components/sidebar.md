@@ -10,7 +10,7 @@ description: "Sidebar in Multi-brand."
 
 The side navigation of an app, open while people work.
 
-**In Multi-brand.** Account area navigation.
+<p class="odv-compstatus"><span class="odv-pill">In Multi-brand</span> Account area navigation.</p>
 
 ## See it live
 

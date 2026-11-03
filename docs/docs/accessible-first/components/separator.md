@@ -10,7 +10,7 @@ description: "Separator in Accessible first."
 
 A line between groups.
 
-**In Accessible first.** Breaks between groups of questions.
+<p class="odv-compstatus"><span class="odv-pill">In Accessible first</span> Breaks between groups of questions.</p>
 
 ## See it live
 

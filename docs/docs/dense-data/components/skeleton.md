@@ -10,7 +10,7 @@ description: "Skeleton in Dense data."
 
 Placeholder shapes that match the final layout, so the page does not jump when content arrives.
 
-**In Dense data.** Rows while a table loads.
+<p class="odv-compstatus"><span class="odv-pill">In Dense data</span> Rows while a table loads.</p>
 
 ## See it live
 

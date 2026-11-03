@@ -10,7 +10,7 @@ description: "Combobox in Dense data."
 
 A text field that suggests and completes matches from a known list as people type.
 
-**In Dense data.** Picks an asset or a user from thousands.
+<p class="odv-compstatus"><span class="odv-pill">In Dense data</span> Picks an asset or a user from thousands.</p>
 
 ## See it live
 

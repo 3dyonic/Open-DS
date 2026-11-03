@@ -10,7 +10,7 @@ description: "Toast in Content first."
 
 A short message that confirms an action and goes away.
 
-**In Content first.** Confirms a saved article.
+<p class="odv-compstatus"><span class="odv-pill">In Content first</span> Confirms a saved article.</p>
 
 ## See it live
 

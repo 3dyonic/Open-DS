@@ -85,7 +85,7 @@ export function ComponentInfo() {
         <strong>
           {inv ? "In" : "Not in"} the {s.name} inventory.
         </strong>{" "}
-        {inv?.why ?? out?.why ?? "Its answers did not pick it."} {s.inventory.in.length} components are in.
+        {inv?.why ?? out?.why} {s.inventory.in.length} components are in.
       </p>
     </div>
   );

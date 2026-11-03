@@ -10,7 +10,7 @@ description: "Label in Brand expressive."
 
 The visible name of a form control.
 
-**In Brand expressive.** Names the field.
+<p class="odv-compstatus"><span class="odv-pill">In Brand expressive</span> Names the field.</p>
 
 ## See it live
 

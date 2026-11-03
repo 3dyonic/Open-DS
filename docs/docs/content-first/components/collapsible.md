@@ -10,7 +10,7 @@ description: "Collapsible in Content first."
 
 One section that opens and closes.
 
-**In Content first.** A long aside the reader can open.
+<p class="odv-compstatus"><span class="odv-pill">In Content first</span> A long aside the reader can open.</p>
 
 ## See it live
 

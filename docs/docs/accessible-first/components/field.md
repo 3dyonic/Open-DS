@@ -10,7 +10,7 @@ description: "Field in Accessible first."
 
 A label, control, hint and error laid out together, the same way every time.
 
-**In Accessible first.** Label, hint and error in the same place on every question.
+<p class="odv-compstatus"><span class="odv-pill">In Accessible first</span> Label, hint and error in the same place on every question.</p>
 
 ## See it live
 

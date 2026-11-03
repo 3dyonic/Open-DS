@@ -10,7 +10,7 @@ description: "Alert dialog in Dense data."
 
 A dialog that interrupts to confirm an action that cannot be undone.
 
-**In Dense data.** Confirms a delete.
+<p class="odv-compstatus"><span class="odv-pill">In Dense data</span> Confirms a delete.</p>
 
 ## See it live
 

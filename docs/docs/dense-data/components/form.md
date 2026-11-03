@@ -10,7 +10,7 @@ description: "Form in Dense data."
 
 Form state and validation wired to the fields.
 
-**In Dense data.** Keeps validation and errors the same on every record edit.
+<p class="odv-compstatus"><span class="odv-pill">In Dense data</span> Keeps validation and errors the same on every record edit.</p>
 
 ## See it live
 

@@ -10,7 +10,7 @@ description: "Navigation menu in Brand expressive."
 
 Site navigation with links and panels.
 
-**In Brand expressive.** The site sections.
+<p class="odv-compstatus"><span class="odv-pill">In Brand expressive</span> The site sections.</p>
 
 ## See it live
 

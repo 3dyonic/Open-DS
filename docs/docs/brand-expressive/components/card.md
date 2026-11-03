@@ -10,7 +10,7 @@ description: "Card in Brand expressive."
 
 A bordered container for one item or group, with its title, content and actions.
 
-**In Brand expressive.** Products and features.
+<p class="odv-compstatus"><span class="odv-pill">In Brand expressive</span> Products and features.</p>
 
 ## See it live
 

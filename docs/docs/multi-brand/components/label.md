@@ -10,7 +10,7 @@ description: "Label in Multi-brand."
 
 The visible name of a form control.
 
-**In Multi-brand.** Names every control.
+<p class="odv-compstatus"><span class="odv-pill">In Multi-brand</span> Names every control.</p>
 
 ## See it live
 

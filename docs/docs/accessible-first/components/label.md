@@ -10,7 +10,7 @@ description: "Label in Accessible first."
 
 The visible name of a form control.
 
-**In Accessible first.** Names every control.
+<p class="odv-compstatus"><span class="odv-pill">In Accessible first</span> Names every control.</p>
 
 ## See it live
 

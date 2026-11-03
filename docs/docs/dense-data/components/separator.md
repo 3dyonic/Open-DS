@@ -10,7 +10,7 @@ description: "Separator in Dense data."
 
 A line between groups.
 
-**In Dense data.** Groups toolbar actions.
+<p class="odv-compstatus"><span class="odv-pill">In Dense data</span> Groups toolbar actions.</p>
 
 ## See it live
 

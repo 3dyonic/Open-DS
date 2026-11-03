@@ -10,7 +10,7 @@ description: "Checkbox in Dense data."
 
 One or many independent on or off choices, usually sent with a form.
 
-**In Dense data.** Selects rows and filter values.
+<p class="odv-compstatus"><span class="odv-pill">In Dense data</span> Selects rows and filter values.</p>
 
 ## See it live
 

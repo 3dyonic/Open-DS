@@ -10,7 +10,7 @@ description: "Label in Content first."
 
 The visible name of a form control.
 
-**In Content first.** Names every field.
+<p class="odv-compstatus"><span class="odv-pill">In Content first</span> Names every field.</p>
 
 ## See it live
 

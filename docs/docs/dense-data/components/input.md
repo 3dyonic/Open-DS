@@ -10,7 +10,7 @@ description: "Input in Dense data."
 
 A labeled field for a short typed value.
 
-**In Dense data.** Search and edit fields.
+<p class="odv-compstatus"><span class="odv-pill">In Dense data</span> Search and edit fields.</p>
 
 ## See it live
 

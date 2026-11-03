@@ -10,7 +10,7 @@ description: "Badge in Dense data."
 
 A short label for a status, category or count, next to what it describes.
 
-**In Dense data.** Alert status in rows.
+<p class="odv-compstatus"><span class="odv-pill">In Dense data</span> Alert status in rows.</p>
 
 ## See it live
 

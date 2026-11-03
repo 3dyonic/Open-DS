@@ -10,7 +10,7 @@ description: "Calendar in Dense data."
 
 A month grid for picking a date or a range.
 
-**In Dense data.** Date ranges for reports.
+<p class="odv-compstatus"><span class="odv-pill">In Dense data</span> Date ranges for reports.</p>
 
 ## See it live
 

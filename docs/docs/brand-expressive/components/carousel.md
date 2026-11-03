@@ -10,7 +10,7 @@ description: "Carousel in Brand expressive."
 
 Slides that move left and right, one or a few at a time.
 
-**In Brand expressive.** Moves through campaign images.
+<p class="odv-compstatus"><span class="odv-pill">In Brand expressive</span> Moves through campaign images.</p>
 
 ## See it live
 

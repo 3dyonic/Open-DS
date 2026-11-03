@@ -10,7 +10,7 @@ description: "Skeleton in Content first."
 
 Placeholder shapes that match the final layout, so the page does not jump when content arrives.
 
-**In Content first.** Article text while it loads.
+<p class="odv-compstatus"><span class="odv-pill">In Content first</span> Article text while it loads.</p>
 
 ## See it live
 

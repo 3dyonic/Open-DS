@@ -10,7 +10,7 @@ description: "Avatar in Brand expressive."
 
 A small image or initials that stand for a person or account.
 
-**In Brand expressive.** Faces in quotes from customers.
+<p class="odv-compstatus"><span class="odv-pill">In Brand expressive</span> Faces in quotes from customers.</p>
 
 ## See it live
 

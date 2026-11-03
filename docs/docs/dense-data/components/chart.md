@@ -10,7 +10,7 @@ description: "Chart in Dense data."
 
 A picture of numbers: comparison, trend, share or spread.
 
-**In Dense data.** Totals over time on dashboards.
+<p class="odv-compstatus"><span class="odv-pill">In Dense data</span> Totals over time on dashboards.</p>
 
 ## See it live
 

@@ -10,7 +10,7 @@ description: "Card in Content first."
 
 A bordered container for one item or group, with its title, content and actions.
 
-**In Content first.** Article previews.
+<p class="odv-compstatus"><span class="odv-pill">In Content first</span> Article previews.</p>
 
 ## See it live
 

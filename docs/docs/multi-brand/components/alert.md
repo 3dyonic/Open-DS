@@ -10,7 +10,7 @@ description: "Alert in Multi-brand."
 
 A message that stays on the page with the content it is about.
 
-**In Multi-brand.** Billing problems.
+<p class="odv-compstatus"><span class="odv-pill">In Multi-brand</span> Billing problems.</p>
 
 ## See it live
 

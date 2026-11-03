@@ -10,7 +10,7 @@ description: "Input in Content first."
 
 A labeled field for a short typed value.
 
-**In Content first.** Search and the newsletter field.
+<p class="odv-compstatus"><span class="odv-pill">In Content first</span> Search and the newsletter field.</p>
 
 ## See it live
 

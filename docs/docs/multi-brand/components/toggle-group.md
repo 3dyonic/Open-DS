@@ -10,7 +10,7 @@ description: "Toggle group in Multi-brand."
 
 A set of toggles where one or many stay pressed.
 
-**In Multi-brand.** Monthly or yearly prices.
+<p class="odv-compstatus"><span class="odv-pill">In Multi-brand</span> Monthly or yearly prices.</p>
 
 ## See it live
 

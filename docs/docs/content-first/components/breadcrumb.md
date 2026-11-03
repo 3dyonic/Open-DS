@@ -10,7 +10,7 @@ description: "Breadcrumb in Content first."
 
 The trail of pages above this one, so people know where they are.
 
-**In Content first.** Shows where a guide sits.
+<p class="odv-compstatus"><span class="odv-pill">In Content first</span> Shows where a guide sits.</p>
 
 ## See it live
 

@@ -10,7 +10,7 @@ description: "Table in Dense data."
 
 Rows and columns of comparable records, with headers.
 
-**In Dense data.** The heart of the product: rows of records.
+<p class="odv-compstatus"><span class="odv-pill">In Dense data</span> The heart of the product: rows of records.</p>
 
 ## See it live
 

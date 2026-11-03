@@ -10,7 +10,7 @@ description: "Card in Accessible first."
 
 A bordered container for one item or group, with its title, content and actions.
 
-**In Accessible first.** Groups a summary before submitting.
+<p class="odv-compstatus"><span class="odv-pill">In Accessible first</span> Groups a summary before submitting.</p>
 
 ## See it live
 

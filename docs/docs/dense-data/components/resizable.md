@@ -10,7 +10,7 @@ description: "Resizable in Dense data."
 
 Panels people resize by dragging the line between them.
 
-**In Dense data.** Experts size the table and detail panes.
+<p class="odv-compstatus"><span class="odv-pill">In Dense data</span> Experts size the table and detail panes.</p>
 
 ## See it live
 

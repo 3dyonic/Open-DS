@@ -10,7 +10,7 @@ description: "Dialog in Multi-brand."
 
 A window over the page that takes attention until people finish or close it.
 
-**In Multi-brand.** Change a plan.
+<p class="odv-compstatus"><span class="odv-pill">In Multi-brand</span> Change a plan.</p>
 
 ## See it live
 

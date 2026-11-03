@@ -10,7 +10,7 @@ description: "Alert dialog in Multi-brand."
 
 A dialog that interrupts to confirm an action that cannot be undone.
 
-**In Multi-brand.** Cancel a plan.
+<p class="odv-compstatus"><span class="odv-pill">In Multi-brand</span> Cancel a plan.</p>
 
 ## See it live
 

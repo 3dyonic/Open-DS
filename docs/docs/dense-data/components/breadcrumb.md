@@ -10,7 +10,7 @@ description: "Breadcrumb in Dense data."
 
 The trail of pages above this one, so people know where they are.
 
-**In Dense data.** With care: on a record's own page, the way back to the list it came from. Not on the queue itself.
+<p class="odv-compstatus"><span class="odv-pill">In Dense data</span> With care: on a record's own page, the way back to the list it came from. Not on the queue itself.</p>
 
 ## See it live
 

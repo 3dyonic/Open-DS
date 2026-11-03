@@ -10,7 +10,7 @@ description: "Dialog in Accessible first."
 
 A window over the page that takes attention until people finish or close it.
 
-**In Accessible first.** Only to confirm leaving with unsaved answers.
+<p class="odv-compstatus"><span class="odv-pill">In Accessible first</span> Only to confirm leaving with unsaved answers.</p>
 
 ## See it live
 

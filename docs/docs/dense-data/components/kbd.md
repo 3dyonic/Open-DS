@@ -10,7 +10,7 @@ description: "Kbd in Dense data."
 
 A keyboard key or shortcut, shown as text.
 
-**In Dense data.** Shows the shortcuts experts learn.
+<p class="odv-compstatus"><span class="odv-pill">In Dense data</span> Shows the shortcuts experts learn.</p>
 
 ## See it live
 

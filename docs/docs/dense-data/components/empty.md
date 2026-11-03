@@ -10,7 +10,7 @@ description: "Empty in Dense data."
 
 What a region shows when it loaded and has nothing: why, and what to do next.
 
-**In Dense data.** An empty table says what to do next.
+<p class="odv-compstatus"><span class="odv-pill">In Dense data</span> An empty table says what to do next.</p>
 
 ## See it live
 

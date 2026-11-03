@@ -10,7 +10,7 @@ description: "Empty in Multi-brand."
 
 What a region shows when it loaded and has nothing: why, and what to do next.
 
-**In Multi-brand.** No orders yet.
+<p class="odv-compstatus"><span class="odv-pill">In Multi-brand</span> No orders yet.</p>
 
 ## See it live
 

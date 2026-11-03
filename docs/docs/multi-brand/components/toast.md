@@ -10,7 +10,7 @@ description: "Toast in Multi-brand."
 
 A short message that confirms an action and goes away.
 
-**In Multi-brand.** Confirms a saved change.
+<p class="odv-compstatus"><span class="odv-pill">In Multi-brand</span> Confirms a saved change.</p>
 
 ## See it live
 

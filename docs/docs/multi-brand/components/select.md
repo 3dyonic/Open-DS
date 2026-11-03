@@ -10,7 +10,7 @@ description: "Select in Multi-brand."
 
 One choice from a list, in a menu.
 
-**In Multi-brand.** Country and plan options.
+<p class="odv-compstatus"><span class="odv-pill">In Multi-brand</span> Country and plan options.</p>
 
 ## See it live
 

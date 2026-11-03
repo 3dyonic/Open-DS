@@ -10,7 +10,7 @@ description: "Pagination in Dense data."
 
 Moves between pages of results.
 
-**In Dense data.** Moves through long result sets.
+<p class="odv-compstatus"><span class="odv-pill">In Dense data</span> Moves through long result sets.</p>
 
 ## See it live
 

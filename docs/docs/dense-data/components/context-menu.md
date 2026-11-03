@@ -10,7 +10,7 @@ description: "Context menu in Dense data."
 
 A menu of actions on right-click or long-press.
 
-**In Dense data.** Right-click on a row, for experts.
+<p class="odv-compstatus"><span class="odv-pill">In Dense data</span> Right-click on a row, for experts.</p>
 
 ## See it live
 

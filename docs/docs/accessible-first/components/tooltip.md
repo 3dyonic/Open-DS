@@ -11,7 +11,7 @@ sidebar_class_name: "ods-left-out"
 
 A short hint on hover or focus.
 
-<div class="odv-leftout"><span class="odv-robot "><img class="odv-robot-day" src="/robots/accessible-first.webp" alt="" loading="lazy"/><img class="odv-robot-night" src="/robots/accessible-first-dark.webp" alt="" loading="lazy"/></span><p><b>Not part of Accessible first.</b> Hover-only hints fail touch, magnifier and keyboard users. The examples use Accessible first's tokens, to show how it would look if the design system added it.</p></div>
+<p class="odv-compstatus"><span class="odv-pill odv-pill-out">Left out of Accessible first</span> Hover-only hints fail touch, magnifier and keyboard users.</p>
 
 ## See it live
 

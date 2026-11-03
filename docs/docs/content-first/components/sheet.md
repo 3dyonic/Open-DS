@@ -10,7 +10,7 @@ description: "Sheet in Content first."
 
 A panel that slides in from an edge.
 
-**In Content first.** The menu on a phone.
+<p class="odv-compstatus"><span class="odv-pill">In Content first</span> The menu on a phone.</p>
 
 ## See it live
 

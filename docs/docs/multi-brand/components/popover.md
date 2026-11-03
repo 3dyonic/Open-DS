@@ -10,7 +10,7 @@ description: "Popover in Multi-brand."
 
 Rich content in a floating panel, opened by click.
 
-**In Multi-brand.** Plan details and fee explanations, opened by tap on any device.
+<p class="odv-compstatus"><span class="odv-pill">In Multi-brand</span> Plan details and fee explanations, opened by tap on any device.</p>
 
 ## See it live
 

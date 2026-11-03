@@ -10,7 +10,7 @@ description: "Aspect ratio in Brand expressive."
 
 Keeps an image or video at a fixed shape while the layout resizes.
 
-**In Brand expressive.** Keeps campaign images in shape.
+<p class="odv-compstatus"><span class="odv-pill">In Brand expressive</span> Keeps campaign images in shape.</p>
 
 ## See it live
 

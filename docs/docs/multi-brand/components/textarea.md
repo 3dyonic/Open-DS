@@ -10,7 +10,7 @@ description: "Textarea in Multi-brand."
 
 A field for free text over several lines.
 
-**In Multi-brand.** Messages to support.
+<p class="odv-compstatus"><span class="odv-pill">In Multi-brand</span> Messages to support.</p>
 
 ## See it live
 

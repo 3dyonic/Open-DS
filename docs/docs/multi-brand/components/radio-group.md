@@ -10,7 +10,7 @@ description: "Radio group in Multi-brand."
 
 One choice from a short list shown at once.
 
-**In Multi-brand.** Picks a plan.
+<p class="odv-compstatus"><span class="odv-pill">In Multi-brand</span> Picks a plan.</p>
 
 ## See it live
 

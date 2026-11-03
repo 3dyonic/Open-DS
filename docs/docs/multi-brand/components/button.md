@@ -10,7 +10,7 @@ description: "Button in Multi-brand."
 
 A control that commits an action on this screen.
 
-**In Multi-brand.** Every action.
+<p class="odv-compstatus"><span class="odv-pill">In Multi-brand</span> Every action.</p>
 
 ## See it live
 

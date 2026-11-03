@@ -10,7 +10,7 @@ description: "Button in Content first."
 
 A control that commits an action on this screen.
 
-**In Content first.** Subscribe, share and save.
+<p class="odv-compstatus"><span class="odv-pill">In Content first</span> Subscribe, share and save.</p>
 
 ## See it live
 

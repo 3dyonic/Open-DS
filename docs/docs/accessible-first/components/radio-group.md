@@ -10,7 +10,7 @@ description: "Radio group in Accessible first."
 
 One choice from a short list shown at once.
 
-**In Accessible first.** One choice from a short, visible list.
+<p class="odv-compstatus"><span class="odv-pill">In Accessible first</span> One choice from a short, visible list.</p>
 
 ## See it live
 

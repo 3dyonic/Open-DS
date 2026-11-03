@@ -10,7 +10,7 @@ description: "Field in Content first."
 
 A label, control, hint and error laid out together, the same way every time.
 
-**In Content first.** Lays out the newsletter and search forms.
+<p class="odv-compstatus"><span class="odv-pill">In Content first</span> Lays out the newsletter and search forms.</p>
 
 ## See it live
 

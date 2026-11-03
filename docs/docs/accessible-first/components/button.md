@@ -10,7 +10,7 @@ description: "Button in Accessible first."
 
 A control that commits an action on this screen.
 
-**In Accessible first.** Every action, with a large target.
+<p class="odv-compstatus"><span class="odv-pill">In Accessible first</span> Every action, with a large target.</p>
 
 ## See it live
 

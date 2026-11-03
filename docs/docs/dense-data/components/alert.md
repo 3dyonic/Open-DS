@@ -10,7 +10,7 @@ description: "Alert in Dense data."
 
 A message that stays on the page with the content it is about.
 
-**In Dense data.** A problem that stays on the page.
+<p class="odv-compstatus"><span class="odv-pill">In Dense data</span> A problem that stays on the page.</p>
 
 ## See it live
 

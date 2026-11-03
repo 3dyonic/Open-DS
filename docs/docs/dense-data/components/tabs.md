@@ -10,7 +10,7 @@ description: "Tabs in Dense data."
 
 Switches between views of the same thing on one page.
 
-**In Dense data.** Views of one record.
+<p class="odv-compstatus"><span class="odv-pill">In Dense data</span> Views of one record.</p>
 
 ## See it live
 

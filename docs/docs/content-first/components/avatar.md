@@ -10,7 +10,7 @@ description: "Avatar in Content first."
 
 A small image or initials that stand for a person or account.
 
-**In Content first.** The author of an article.
+<p class="odv-compstatus"><span class="odv-pill">In Content first</span> The author of an article.</p>
 
 ## See it live
 

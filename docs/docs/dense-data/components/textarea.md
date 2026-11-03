@@ -10,7 +10,7 @@ description: "Textarea in Dense data."
 
 A field for free text over several lines.
 
-**In Dense data.** Notes on an alert, for the next analyst.
+<p class="odv-compstatus"><span class="odv-pill">In Dense data</span> Notes on an alert, for the next analyst.</p>
 
 ## See it live
 

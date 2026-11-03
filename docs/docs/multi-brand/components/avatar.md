@@ -10,7 +10,7 @@ description: "Avatar in Multi-brand."
 
 A small image or initials that stand for a person or account.
 
-**In Multi-brand.** The customer in the account menu.
+<p class="odv-compstatus"><span class="odv-pill">In Multi-brand</span> The customer in the account menu.</p>
 
 ## See it live
 

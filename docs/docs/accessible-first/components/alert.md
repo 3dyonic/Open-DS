@@ -10,7 +10,7 @@ description: "Alert in Accessible first."
 
 A message that stays on the page with the content it is about.
 
-**In Accessible first.** Errors and important notes that stay on the page.
+<p class="odv-compstatus"><span class="odv-pill">In Accessible first</span> Errors and important notes that stay on the page.</p>
 
 ## See it live
 

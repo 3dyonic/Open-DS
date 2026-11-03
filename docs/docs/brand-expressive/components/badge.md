@@ -10,7 +10,7 @@ description: "Badge in Brand expressive."
 
 A short label for a status, category or count, next to what it describes.
 
-**In Brand expressive.** New and limited labels.
+<p class="odv-compstatus"><span class="odv-pill">In Brand expressive</span> New and limited labels.</p>
 
 ## See it live
 

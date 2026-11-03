@@ -10,7 +10,7 @@ description: "Sheet in Multi-brand."
 
 A panel that slides in from an edge.
 
-**In Multi-brand.** The menu on a phone.
+<p class="odv-compstatus"><span class="odv-pill">In Multi-brand</span> The menu on a phone.</p>
 
 ## See it live
 

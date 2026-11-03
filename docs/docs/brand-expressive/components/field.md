@@ -10,7 +10,7 @@ description: "Field in Brand expressive."
 
 A label, control, hint and error laid out together, the same way every time.
 
-**In Brand expressive.** Lays out the sign-up form.
+<p class="odv-compstatus"><span class="odv-pill">In Brand expressive</span> Lays out the sign-up form.</p>
 
 ## See it live
 

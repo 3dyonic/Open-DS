@@ -10,7 +10,7 @@ description: "Progress in Accessible first."
 
 How far a task has come.
 
-**In Accessible first.** Shows how far through the steps a person is.
+<p class="odv-compstatus"><span class="odv-pill">In Accessible first</span> Shows how far through the steps a person is.</p>
 
 ## See it live
 

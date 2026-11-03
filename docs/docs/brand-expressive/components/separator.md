@@ -10,7 +10,7 @@ description: "Separator in Brand expressive."
 
 A line between groups.
 
-**In Brand expressive.** Breaks between sections.
+<p class="odv-compstatus"><span class="odv-pill">In Brand expressive</span> Breaks between sections.</p>
 
 ## See it live
 

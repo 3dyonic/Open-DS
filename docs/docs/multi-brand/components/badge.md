@@ -10,7 +10,7 @@ description: "Badge in Multi-brand."
 
 A short label for a status, category or count, next to what it describes.
 
-**In Multi-brand.** Plan and status labels.
+<p class="odv-compstatus"><span class="odv-pill">In Multi-brand</span> Plan and status labels.</p>
 
 ## See it live
 

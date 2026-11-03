@@ -983,12 +983,22 @@ a.odv-icard:hover {
   border-radius: var(--radius-badge);
   padding: 1px 6px;
 }
-.odv-icard.out {
-  border-style: dashed;
-}
-.odv-icard.out .odv-pill {
+/* OD-211: a left-out component looks like any other; only its badge differs. */
+.odv-pill-out {
   color: var(--color-status-warning);
   background: var(--color-status-warning-subtle);
+}
+.odv-compstatus {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.375rem 0.5rem;
+  align-items: baseline;
+}
+.odv-compstatus .odv-pill {
+  margin-top: 0;
+}
+.odv-instead {
+  color: var(--color-text-secondary);
 }
 .odv-leftout {
   margin-bottom: var(--space-gap-group);

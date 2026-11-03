@@ -10,7 +10,7 @@ description: "Drawer in Brand expressive."
 
 A panel that slides up from the bottom, for phones.
 
-**In Brand expressive.** The menu on a phone.
+<p class="odv-compstatus"><span class="odv-pill">In Brand expressive</span> The menu on a phone.</p>
 
 ## See it live
 

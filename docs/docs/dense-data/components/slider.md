@@ -10,7 +10,7 @@ description: "Slider in Dense data."
 
 A value picked by dragging along a track, when an exact number is not needed.
 
-**In Dense data.** Narrows a filter to a range of risk scores by dragging.
+<p class="odv-compstatus"><span class="odv-pill">In Dense data</span> Narrows a filter to a range of risk scores by dragging.</p>
 
 ## See it live
 

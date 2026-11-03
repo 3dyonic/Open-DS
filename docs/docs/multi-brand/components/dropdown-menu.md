@@ -10,7 +10,7 @@ description: "Dropdown menu in Multi-brand."
 
 A menu of actions opened from a button.
 
-**In Multi-brand.** The account menu.
+<p class="odv-compstatus"><span class="odv-pill">In Multi-brand</span> The account menu.</p>
 
 ## See it live
 

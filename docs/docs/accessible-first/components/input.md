@@ -10,7 +10,7 @@ description: "Input in Accessible first."
 
 A labeled field for a short typed value.
 
-**In Accessible first.** Text answers.
+<p class="odv-compstatus"><span class="odv-pill">In Accessible first</span> Text answers.</p>
 
 ## See it live
 

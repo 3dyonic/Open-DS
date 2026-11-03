@@ -10,7 +10,7 @@ description: "Navigation menu in Content first."
 
 Site navigation with links and panels.
 
-**In Content first.** The site sections.
+<p class="odv-compstatus"><span class="odv-pill">In Content first</span> The site sections.</p>
 
 ## See it live
 

@@ -10,7 +10,7 @@ description: "Card in Multi-brand."
 
 A bordered container for one item or group, with its title, content and actions.
 
-**In Multi-brand.** Plans and products.
+<p class="odv-compstatus"><span class="odv-pill">In Multi-brand</span> Plans and products.</p>
 
 ## See it live
 

@@ -10,7 +10,7 @@ description: "Scroll area in Dense data."
 
 A region with its own styled scrollbars.
 
-**In Dense data.** Long tables in fixed panels.
+<p class="odv-compstatus"><span class="odv-pill">In Dense data</span> Long tables in fixed panels.</p>
 
 ## See it live
 

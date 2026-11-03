@@ -10,7 +10,7 @@ description: "Checkbox in Multi-brand."
 
 One or many independent on or off choices, usually sent with a form.
 
-**In Multi-brand.** Terms and preferences.
+<p class="odv-compstatus"><span class="odv-pill">In Multi-brand</span> Terms and preferences.</p>
 
 ## See it live
 

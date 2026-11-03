@@ -10,7 +10,7 @@ description: "Button in Brand expressive."
 
 A control that commits an action on this screen.
 
-**In Brand expressive.** The one action: sign up.
+<p class="odv-compstatus"><span class="odv-pill">In Brand expressive</span> The one action: sign up.</p>
 
 ## See it live
 

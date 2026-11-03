@@ -10,7 +10,7 @@ description: "Spinner in Multi-brand."
 
 A small indicator that work is in progress when the time is unknown.
 
-**In Multi-brand.** A payment in progress.
+<p class="odv-compstatus"><span class="odv-pill">In Multi-brand</span> A payment in progress.</p>
 
 ## See it live
 

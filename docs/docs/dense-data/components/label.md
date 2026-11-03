@@ -10,7 +10,7 @@ description: "Label in Dense data."
 
 The visible name of a form control.
 
-**In Dense data.** Names every control.
+<p class="odv-compstatus"><span class="odv-pill">In Dense data</span> Names every control.</p>
 
 ## See it live
 

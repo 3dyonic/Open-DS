@@ -10,7 +10,7 @@ description: "Checkbox in Accessible first."
 
 One or many independent on or off choices, usually sent with a form.
 
-**In Accessible first.** Many choices, each with a large target.
+<p class="odv-compstatus"><span class="odv-pill">In Accessible first</span> Many choices, each with a large target.</p>
 
 ## See it live
 

@@ -10,7 +10,7 @@ description: "Select in Dense data."
 
 One choice from a list, in a menu.
 
-**In Dense data.** Picks one value in filters and forms.
+<p class="odv-compstatus"><span class="odv-pill">In Dense data</span> Picks one value in filters and forms.</p>
 
 ## See it live
 

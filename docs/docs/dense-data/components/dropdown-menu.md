@@ -10,7 +10,7 @@ description: "Dropdown menu in Dense data."
 
 A menu of actions opened from a button.
 
-**In Dense data.** Row actions.
+<p class="odv-compstatus"><span class="odv-pill">In Dense data</span> Row actions.</p>
 
 ## See it live
 

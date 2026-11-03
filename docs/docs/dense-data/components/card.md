@@ -10,7 +10,7 @@ description: "Card in Dense data."
 
 A bordered container for one item or group, with its title, content and actions.
 
-**In Dense data.** Dashboard figures.
+<p class="odv-compstatus"><span class="odv-pill">In Dense data</span> Dashboard figures.</p>
 
 ## See it live
 

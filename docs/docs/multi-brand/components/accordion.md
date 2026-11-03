@@ -10,7 +10,7 @@ description: "Accordion in Multi-brand."
 
 Stacked sections that expand and collapse without leaving the page.
 
-**In Multi-brand.** Frequent questions.
+<p class="odv-compstatus"><span class="odv-pill">In Multi-brand</span> Frequent questions.</p>
 
 ## See it live
 

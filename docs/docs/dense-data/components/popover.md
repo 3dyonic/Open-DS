@@ -10,7 +10,7 @@ description: "Popover in Dense data."
 
 Rich content in a floating panel, opened by click.
 
-**In Dense data.** Filters next to the column.
+<p class="odv-compstatus"><span class="odv-pill">In Dense data</span> Filters next to the column.</p>
 
 ## See it live
 

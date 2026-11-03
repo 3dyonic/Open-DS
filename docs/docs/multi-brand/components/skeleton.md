@@ -10,7 +10,7 @@ description: "Skeleton in Multi-brand."
 
 Placeholder shapes that match the final layout, so the page does not jump when content arrives.
 
-**In Multi-brand.** Plans and orders while they load.
+<p class="odv-compstatus"><span class="odv-pill">In Multi-brand</span> Plans and orders while they load.</p>
 
 ## See it live
 

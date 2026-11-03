@@ -10,7 +10,7 @@ description: "Command in Dense data."
 
 A search-first menu of actions and places, opened from the keyboard.
 
-**In Dense data.** Keyboard-first jump to any record or action.
+<p class="odv-compstatus"><span class="odv-pill">In Dense data</span> Keyboard-first jump to any record or action.</p>
 
 ## See it live
 

@@ -11,7 +11,7 @@ sidebar_class_name: "ods-left-out"
 
 The side navigation of an app, open while people work.
 
-<div class="odv-leftout"><span class="odv-robot "><img class="odv-robot-day" src="/robots/brand-expressive.webp" alt="" loading="lazy"/><img class="odv-robot-night" src="/robots/brand-expressive-dark.webp" alt="" loading="lazy"/></span><p><b>Not part of Brand expressive.</b> Launch sites have no app navigation. The examples use Brand expressive's tokens, to show how it would look if the design system added it.</p></div>
+<p class="odv-compstatus"><span class="odv-pill odv-pill-out">Left out of Brand expressive</span> Launch sites have no app navigation.</p>
 
 ## See it live
 

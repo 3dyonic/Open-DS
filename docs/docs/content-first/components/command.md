@@ -11,7 +11,7 @@ sidebar_class_name: "ods-left-out"
 
 A search-first menu of actions and places, opened from the keyboard.
 
-<div class="odv-leftout"><span class="odv-robot "><img class="odv-robot-day" src="/robots/content-first.webp" alt="" loading="lazy"/><img class="odv-robot-night" src="/robots/content-first-dark.webp" alt="" loading="lazy"/></span><p><b>Not part of Content first.</b> Readers browse; they do not drive the site from the keyboard. The examples use Content first's tokens, to show how it would look if the design system added it.</p></div>
+<p class="odv-compstatus"><span class="odv-pill odv-pill-out">Left out of Content first</span> Readers browse; they do not drive the site from the keyboard.</p>
 
 ## See it live
 

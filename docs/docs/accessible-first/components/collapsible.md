@@ -10,7 +10,7 @@ description: "Collapsible in Accessible first."
 
 One section that opens and closes.
 
-**In Accessible first.** Optional help a person can open.
+<p class="odv-compstatus"><span class="odv-pill">In Accessible first</span> Optional help a person can open.</p>
 
 ## See it live
 

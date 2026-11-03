@@ -10,7 +10,7 @@ description: "Separator in Content first."
 
 A line between groups.
 
-**In Content first.** Breaks between parts of a page.
+<p class="odv-compstatus"><span class="odv-pill">In Content first</span> Breaks between parts of a page.</p>
 
 ## See it live
 

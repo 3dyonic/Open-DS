@@ -10,7 +10,7 @@ description: "Input otp in Multi-brand."
 
 Separate boxes for a one-time code.
 
-**In Multi-brand.** The code that verifies an email or phone.
+<p class="odv-compstatus"><span class="odv-pill">In Multi-brand</span> The code that verifies an email or phone.</p>
 
 ## See it live
 

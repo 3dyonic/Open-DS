@@ -10,7 +10,7 @@ description: "Radio group in Dense data."
 
 One choice from a short list shown at once.
 
-**In Dense data.** Picks one of two or three options, all visible at once.
+<p class="odv-compstatus"><span class="odv-pill">In Dense data</span> Picks one of two or three options, all visible at once.</p>
 
 ## See it live
 

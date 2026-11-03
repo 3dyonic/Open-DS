@@ -10,7 +10,7 @@ description: "Tooltip in Dense data."
 
 A short hint on hover or focus.
 
-**In Dense data.** Explains an icon button.
+<p class="odv-compstatus"><span class="odv-pill">In Dense data</span> Explains an icon button.</p>
 
 ## See it live
 

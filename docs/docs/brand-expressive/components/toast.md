@@ -10,7 +10,7 @@ description: "Toast in Brand expressive."
 
 A short message that confirms an action and goes away.
 
-**In Brand expressive.** Confirms a place on the waitlist.
+<p class="odv-compstatus"><span class="odv-pill">In Brand expressive</span> Confirms a place on the waitlist.</p>
 
 ## See it live
 

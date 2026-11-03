@@ -1196,6 +1196,10 @@ export function docsPages(
   const out = Object.fromEntries(
     (scheme.inventory?.out ?? []).map((i) => [i.id, i.why]),
   );
+  // What to use instead of a left-out component (OD-211), each a component the scheme keeps.
+  const instead = Object.fromEntries(
+    (scheme.inventory?.out ?? []).map((i) => [i.id, i.instead ?? []]),
+  );
   const catalogue = g.catalogue?.items ?? [];
   // The inventory page (OD-209): what the scheme carries, grouped by family as cards, then what it
   // leaves out and why. Every catalogue item appears once, with whether it is built yet.
@@ -1217,11 +1221,11 @@ export function docsPages(
   const icard = (c, out) =>
     h(
       hasPage(c.id)
-        ? `<a class="odv-icard${out ? " out" : ""}" href="./${c.id}">`
-        : `<div class="odv-icard${out ? " out" : ""}">`,
+        ? `<a class="odv-icard" href="./${c.id}">`
+        : `<div class="odv-icard">`,
       `<span class="odv-icard-name">${title(c.id)}</span>`,
       `<span class="odv-icard-why">${esc(inventory[c.id] ?? out ?? "")}</span>`,
-      `<span class="odv-pill">${out ? `Not part of ${attr(scheme.name)}` : built.includes(c.id) ? "In · built" : "In · not built yet"}</span>`,
+      `<span class="odv-pill${out ? " odv-pill-out" : ""}">${out ? "Left out" : built.includes(c.id) ? "In · built" : "In · not built yet"}</span>`,
       hasPage(c.id) ? `</a>` : `</div>`,
     );
   const inItems = catalogue.filter((c) => c.id in inventory);
@@ -1255,7 +1259,7 @@ export function docsPages(
       .join("\n\n") +
     (outItems.length
       ? `\n\n## Left out\n\nThe components answers did not pick these.${all ? " Each page still shows how it would look." : ""}\n\n` +
-        h(`<div class="odv-icards">`, outItems.sort((a, b) => a.id.localeCompare(b.id)).map((c) => icard(c, out[c.id] ?? "Its answers did not pick it.")), `</div>`)
+        h(`<div class="odv-icards">`, outItems.sort((a, b) => a.id.localeCompare(b.id)).map((c) => icard(c, out[c.id] ?? "Left out.")), `</div>`)
       : "") +
     "\n";
   // A page per component that is in the inventory and built (OD-194). It reads the same engine as the
@@ -1283,13 +1287,18 @@ export function docsPages(
     const parts = [];
     parts.push(
       `# ${title(name)}\n\n${esc(r.overview ?? componentIntro(roots.ui, name))}\n\n` +
-        (leftOut(name)
-          ? robots
-            ? h(
-                `<div class="odv-leftout">${robot(scheme.id)}<p><b>Not part of ${attr(scheme.name)}.</b> ${attr(out[name] ?? guide?.why ?? "Its answers did not pick it.")} The examples use ${attr(scheme.name)}'s tokens, to show how it would look if the design system added it.</p></div>`,
-              )
-            : `**Not part of ${esc(scheme.name)}.** ${esc(out[name] ?? guide?.why ?? "Its answers did not pick it.")} The examples use ${esc(scheme.name)}'s tokens, to show how it would look if the design system added it.`
-          : `**In ${esc(scheme.name)}.** ${esc(guide?.why ?? inventory[name] ?? "")}`),
+        // Left out or in, the page is the same (OD-192, OD-211): a left-out component is designed in
+        // the scheme's tokens like any other, and only adds its badge, its reason and what to use.
+        h(
+          `<p class="odv-compstatus">`,
+          leftOut(name)
+            ? `<span class="odv-pill odv-pill-out">Left out of ${attr(scheme.name)}</span> ${attr(out[name] ?? guide?.why ?? "")}` +
+                ((instead[name] ?? []).length
+                  ? ` <span class="odv-instead">Use instead: ${instead[name].map((x) => (names.includes(x) ? `<a href="./${x}">${title(x)}</a>` : title(x))).join(", ")}</span>`
+                  : "")
+            : `<span class="odv-pill">In ${attr(scheme.name)}</span> ${attr(guide?.why ?? inventory[name] ?? "")}`,
+          `</p>`,
+        ),
     );
     // The live component, from Storybook (OD-183). Docusaurus serves this page as Markdown, so the
     // embed is plain HTML; the link works where the embed cannot load.

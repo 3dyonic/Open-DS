@@ -10,7 +10,7 @@ description: "Toggle group in Dense data."
 
 A set of toggles where one or many stay pressed.
 
-**In Dense data.** Switches a table between views and densities.
+<p class="odv-compstatus"><span class="odv-pill">In Dense data</span> Switches a table between views and densities.</p>
 
 ## See it live
 

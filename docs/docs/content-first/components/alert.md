@@ -10,7 +10,7 @@ description: "Alert in Content first."
 
 A message that stays on the page with the content it is about.
 
-**In Content first.** A note or warning inside an article.
+<p class="odv-compstatus"><span class="odv-pill">In Content first</span> A note or warning inside an article.</p>
 
 ## See it live
 

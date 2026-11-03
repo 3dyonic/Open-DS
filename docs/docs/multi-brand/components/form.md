@@ -10,7 +10,7 @@ description: "Form in Multi-brand."
 
 Form state and validation wired to the fields.
 
-**In Multi-brand.** Validation shared by every product team.
+<p class="odv-compstatus"><span class="odv-pill">In Multi-brand</span> Validation shared by every product team.</p>
 
 ## See it live
 

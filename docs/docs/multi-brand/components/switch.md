@@ -10,7 +10,7 @@ description: "Switch in Multi-brand."
 
 An on or off setting that applies at once, with no submit.
 
-**In Multi-brand.** Account settings.
+<p class="odv-compstatus"><span class="odv-pill">In Multi-brand</span> Account settings.</p>
 
 ## See it live
 
