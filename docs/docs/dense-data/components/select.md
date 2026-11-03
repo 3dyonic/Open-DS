@@ -10,13 +10,15 @@ description: "Select in Dense data."
 
 One choice from a list, in a menu.
 
-<p class="odv-compstatus"><span class="odv-pill">In Dense data</span> Picks one value in filters and forms.</p>
+<p class="odv-compstatus"><span class="odv-pill">In Dense data</span></p>
 
 ## See it live
 
 <div class="odv-live"><span class="odv-wait">Start Storybook to see it live: <code>npm run storybook</code></span><iframe src="http://localhost:6006/iframe.html?id=components-select--examples&viewMode=story&globals=scheme:dense-data" title="Select examples in Storybook" loading="lazy"></iframe><div class="bar"><span>Live from Storybook</span><a href="http://localhost:6006/?path=/docs/components-select--docs">Open Select in Storybook</a><a href="http://localhost:6006/iframe.html?id=components-select--examples&viewMode=story&globals=scheme:dense-data;mode:dark">See it in dark</a></div></div>
 
 ## When to use it
+
+**In Dense data:** Picks one value in filters and forms.
 
 - **Use it when:** Four or more options, a known closed list, or a setting with a default.
 - **Not when:** Two to five options people should see (radio group), or many flags (checkboxes).

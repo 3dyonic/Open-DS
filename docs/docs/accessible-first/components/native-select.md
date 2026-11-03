@@ -10,13 +10,15 @@ description: "Native select in Accessible first."
 
 The browser's own select, styled.
 
-<p class="odv-compstatus"><span class="odv-pill">In Accessible first</span> A browser select that every assistive technology understands.</p>
+<p class="odv-compstatus"><span class="odv-pill">In Accessible first</span></p>
 
 ## See it live
 
 <div class="odv-live"><span class="odv-wait">Start Storybook to see it live: <code>npm run storybook</code></span><iframe src="http://localhost:6006/iframe.html?id=components-native-select--examples&viewMode=story&globals=scheme:accessible-first" title="Native select examples in Storybook" loading="lazy"></iframe><div class="bar"><span>Live from Storybook</span><a href="http://localhost:6006/?path=/docs/components-native-select--docs">Open Native select in Storybook</a><a href="http://localhost:6006/iframe.html?id=components-native-select--examples&viewMode=story&globals=scheme:accessible-first;mode:dark">See it in dark</a></div></div>
 
 ## When to use it
+
+**In Accessible first:** A browser select that every assistive technology understands.
 
 - **Use it when:** A plain closed list, especially on phones, where the system picker is best.
 - **Not when:** Options that need icons or rich content (select), or a short list better shown at once (radio group).

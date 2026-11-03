@@ -10,13 +10,15 @@ description: "Tabs in Multi-brand."
 
 Switches between views of the same thing on one page.
 
-<p class="odv-compstatus"><span class="odv-pill">In Multi-brand</span> Sections of the account.</p>
+<p class="odv-compstatus"><span class="odv-pill">In Multi-brand</span></p>
 
 ## See it live
 
 <div class="odv-live"><span class="odv-wait">Start Storybook to see it live: <code>npm run storybook</code></span><iframe src="http://localhost:6006/iframe.html?id=components-tabs--examples&viewMode=story&globals=scheme:multi-brand--aster" title="Tabs examples in Storybook" loading="lazy"></iframe><div class="bar"><span>Live from Storybook</span><a href="http://localhost:6006/?path=/docs/components-tabs--docs">Open Tabs in Storybook</a><a href="http://localhost:6006/iframe.html?id=components-tabs--examples&viewMode=story&globals=scheme:multi-brand--aster;mode:dark">See it in dark</a></div></div>
 
 ## When to use it
+
+**In Multi-brand:** Sections of the account.
 
 - **Use it when:** Related views of one object that people move between.
 - **Not when:** Navigation to other pages (links), or steps of a task (progress).

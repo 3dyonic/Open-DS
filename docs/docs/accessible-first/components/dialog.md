@@ -10,13 +10,15 @@ description: "Dialog in Accessible first."
 
 A window over the page that takes attention until people finish or close it.
 
-<p class="odv-compstatus"><span class="odv-pill">In Accessible first</span> Only to confirm leaving with unsaved answers.</p>
+<p class="odv-compstatus"><span class="odv-pill">In Accessible first</span></p>
 
 ## See it live
 
 <div class="odv-live"><span class="odv-wait">Start Storybook to see it live: <code>npm run storybook</code></span><iframe src="http://localhost:6006/iframe.html?id=components-dialog--examples&viewMode=story&globals=scheme:accessible-first" title="Dialog examples in Storybook" loading="lazy"></iframe><div class="bar"><span>Live from Storybook</span><a href="http://localhost:6006/?path=/docs/components-dialog--docs">Open Dialog in Storybook</a><a href="http://localhost:6006/iframe.html?id=components-dialog--examples&viewMode=story&globals=scheme:accessible-first;mode:dark">See it in dark</a></div></div>
 
 ## When to use it
+
+**In Accessible first:** Only to confirm leaving with unsaved answers.
 
 - **Use it when:** People must decide or finish something before going back: a short form, an important choice.
 - **Not when:** A short status (toast), extra detail on the page (accordion), or a side panel that should not block the page (sheet).

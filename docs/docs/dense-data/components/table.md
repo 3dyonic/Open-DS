@@ -10,13 +10,15 @@ description: "Table in Dense data."
 
 Rows and columns of comparable records, with headers.
 
-<p class="odv-compstatus"><span class="odv-pill">In Dense data</span> The heart of the product: rows of records.</p>
+<p class="odv-compstatus"><span class="odv-pill">In Dense data</span></p>
 
 ## See it live
 
 <div class="odv-live"><span class="odv-wait">Start Storybook to see it live: <code>npm run storybook</code></span><iframe src="http://localhost:6006/iframe.html?id=components-table--examples&viewMode=story&globals=scheme:dense-data" title="Table examples in Storybook" loading="lazy"></iframe><div class="bar"><span>Live from Storybook</span><a href="http://localhost:6006/?path=/docs/components-table--docs">Open Table in Storybook</a><a href="http://localhost:6006/iframe.html?id=components-table--examples&viewMode=story&globals=scheme:dense-data;mode:dark">See it in dark</a></div></div>
 
 ## When to use it
+
+**In Dense data:** The heart of the product: rows of records.
 
 - **Use it when:** Records people scan, sort or compare cell by cell.
 - **Not when:** A grid of teasers (cards), or the shape of a relationship (chart).

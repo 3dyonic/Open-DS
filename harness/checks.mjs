@@ -389,7 +389,7 @@ export const CHECKS = {
     requires: ["schemes/grammar.json"],
     run: (c) => {
       // OD-211: every catalogue item is decided in every scheme. It is in, with why (a limited use
-      // says so, with care), or out, with the reason argued from the scheme's answers and what to use
+      // says where it fits), or out, with the reason argued from the scheme's answers and what to use
       // instead. Nothing falls out by default.
       const items = c.json("schemes", "grammar.json").catalogue.items.map((i) => i.id);
       const gaps = [];

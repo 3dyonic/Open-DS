@@ -10,13 +10,15 @@ description: "Combobox in Dense data."
 
 A text field that suggests and completes matches from a known list as people type.
 
-<p class="odv-compstatus"><span class="odv-pill">In Dense data</span> Picks an asset or a user from thousands.</p>
+<p class="odv-compstatus"><span class="odv-pill">In Dense data</span></p>
 
 ## See it live
 
 <div class="odv-live"><span class="odv-wait">Start Storybook to see it live: <code>npm run storybook</code></span><iframe src="http://localhost:6006/iframe.html?id=components-combobox--examples&viewMode=story&globals=scheme:dense-data" title="Combobox examples in Storybook" loading="lazy"></iframe><div class="bar"><span>Live from Storybook</span><a href="http://localhost:6006/?path=/docs/components-combobox--docs">Open Combobox in Storybook</a><a href="http://localhost:6006/iframe.html?id=components-combobox--examples&viewMode=story&globals=scheme:dense-data;mode:dark">See it in dark</a></div></div>
 
 ## When to use it
+
+**In Dense data:** Picks an asset or a user from thousands.
 
 - **Use it when:** A long, closed list: countries, addresses, people, tags.
 - **Not when:** Searching a whole site, or a short list people can see at once.

@@ -10,13 +10,15 @@ description: "Button in Brand expressive."
 
 A control that commits an action on this screen.
 
-<p class="odv-compstatus"><span class="odv-pill">In Brand expressive</span> The one action: sign up.</p>
+<p class="odv-compstatus"><span class="odv-pill">In Brand expressive</span></p>
 
 ## See it live
 
 <div class="odv-live"><span class="odv-wait">Start Storybook to see it live: <code>npm run storybook</code></span><iframe src="http://localhost:6006/iframe.html?id=components-button--examples&viewMode=story&globals=scheme:brand-expressive" title="Button examples in Storybook" loading="lazy"></iframe><div class="bar"><span>Live from Storybook</span><a href="http://localhost:6006/?path=/docs/components-button--docs">Open Button in Storybook</a><a href="http://localhost:6006/iframe.html?id=components-button--examples&viewMode=story&globals=scheme:brand-expressive;mode:dark">See it in dark</a></div></div>
 
 ## When to use it
+
+**In Brand expressive:** The one action: sign up.
 
 - **Use it when:** The press does something here: save, submit, delete, open a dialog, go to the next step.
 - **Not when:** The press only takes people to another page, or flips a setting that should persist.

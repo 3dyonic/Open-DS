@@ -10,13 +10,15 @@ description: "Card in Accessible first."
 
 A bordered container for one item or group, with its title, content and actions.
 
-<p class="odv-compstatus"><span class="odv-pill">In Accessible first</span> Groups a summary before submitting.</p>
+<p class="odv-compstatus"><span class="odv-pill">In Accessible first</span></p>
 
 ## See it live
 
 <div class="odv-live"><span class="odv-wait">Start Storybook to see it live: <code>npm run storybook</code></span><iframe src="http://localhost:6006/iframe.html?id=components-card--examples&viewMode=story&globals=scheme:accessible-first" title="Card examples in Storybook" loading="lazy"></iframe><div class="bar"><span>Live from Storybook</span><a href="http://localhost:6006/?path=/docs/components-card--docs">Open Card in Storybook</a><a href="http://localhost:6006/iframe.html?id=components-card--examples&viewMode=story&globals=scheme:accessible-first;mode:dark">See it in dark</a></div></div>
 
 ## When to use it
+
+**In Accessible first:** Groups a summary before submitting.
 
 - **Use it when:** A repeating unit of title, media and one destination or action.
 - **Not when:** Records people compare cell by cell (a table), or a whole card as one big link that screen readers read as one.

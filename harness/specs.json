@@ -375,7 +375,7 @@
         "navbar room before the name; the scheme's name heads its sidebar",
         "a Primitives index in the Foundations style",
         "a Theming page with a preview per mode, one table of what a mode changes, and what stays the same",
-        "every catalogue component is in (with care where its use is limited) or out, with the reason argued from the answers and what to use instead"
+        "every catalogue component is in (a limited use says where it fits) or out, with the reason argued from the answers and what to use instead"
       ],
       "checks": ["inventory-decided", "docs-sections", "docs-build"]
     }

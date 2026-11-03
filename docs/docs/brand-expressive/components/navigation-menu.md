@@ -10,13 +10,15 @@ description: "Navigation menu in Brand expressive."
 
 Site navigation with links and panels.
 
-<p class="odv-compstatus"><span class="odv-pill">In Brand expressive</span> The site sections.</p>
+<p class="odv-compstatus"><span class="odv-pill">In Brand expressive</span></p>
 
 ## See it live
 
 <div class="odv-live"><span class="odv-wait">Start Storybook to see it live: <code>npm run storybook</code></span><iframe src="http://localhost:6006/iframe.html?id=components-navigation-menu--examples&viewMode=story&globals=scheme:brand-expressive" title="Navigation menu examples in Storybook" loading="lazy"></iframe><div class="bar"><span>Live from Storybook</span><a href="http://localhost:6006/?path=/docs/components-navigation-menu--docs">Open Navigation menu in Storybook</a><a href="http://localhost:6006/iframe.html?id=components-navigation-menu--examples&viewMode=story&globals=scheme:brand-expressive;mode:dark">See it in dark</a></div></div>
 
 ## When to use it
+
+**In Brand expressive:** The site sections.
 
 - **Use it when:** The main sections of a website, sometimes with a panel of sub-links.
 - **Not when:** App navigation that stays open (sidebar), or actions (dropdown menu).

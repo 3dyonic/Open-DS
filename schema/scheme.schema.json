@@ -155,7 +155,7 @@
       "type": "object",
       "additionalProperties": false,
       "required": ["description", "follows", "in", "out"],
-      "description": "The components this system carries: an output of the components answers, picked from the grammar catalogue. Every catalogue item is decided (OD-211): in, with why (a limited use says so with care), or out, with the reason argued from the answers.",
+      "description": "The components this system carries: an output of the components answers, picked from the grammar catalogue. Every catalogue item is decided (OD-211): in, with why (a limited use says where it fits), or out, with the reason argued from the answers.",
       "properties": {
         "description": {
           "type": "string",

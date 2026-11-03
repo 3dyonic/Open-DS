@@ -10,13 +10,15 @@ description: "Empty in Dense data."
 
 What a region shows when it loaded and has nothing: why, and what to do next.
 
-<p class="odv-compstatus"><span class="odv-pill">In Dense data</span> An empty table says what to do next.</p>
+<p class="odv-compstatus"><span class="odv-pill">In Dense data</span></p>
 
 ## See it live
 
 <div class="odv-live"><span class="odv-wait">Start Storybook to see it live: <code>npm run storybook</code></span><iframe src="http://localhost:6006/iframe.html?id=components-empty--examples&viewMode=story&globals=scheme:dense-data" title="Empty examples in Storybook" loading="lazy"></iframe><div class="bar"><span>Live from Storybook</span><a href="http://localhost:6006/?path=/docs/components-empty--docs">Open Empty in Storybook</a><a href="http://localhost:6006/iframe.html?id=components-empty--examples&viewMode=story&globals=scheme:dense-data;mode:dark">See it in dark</a></div></div>
 
 ## When to use it
+
+**In Dense data:** An empty table says what to do next.
 
 - **Use it when:** An empty list, a search with no results, or a first visit with no items yet.
 - **Not when:** Still loading (skeleton or spinner), or a load that failed (alert).

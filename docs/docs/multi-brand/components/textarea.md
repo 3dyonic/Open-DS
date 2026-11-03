@@ -10,13 +10,15 @@ description: "Textarea in Multi-brand."
 
 A field for free text over several lines.
 
-<p class="odv-compstatus"><span class="odv-pill">In Multi-brand</span> Messages to support.</p>
+<p class="odv-compstatus"><span class="odv-pill">In Multi-brand</span></p>
 
 ## See it live
 
 <div class="odv-live"><span class="odv-wait">Start Storybook to see it live: <code>npm run storybook</code></span><iframe src="http://localhost:6006/iframe.html?id=components-textarea--examples&viewMode=story&globals=scheme:multi-brand--aster" title="Textarea examples in Storybook" loading="lazy"></iframe><div class="bar"><span>Live from Storybook</span><a href="http://localhost:6006/?path=/docs/components-textarea--docs">Open Textarea in Storybook</a><a href="http://localhost:6006/iframe.html?id=components-textarea--examples&viewMode=story&globals=scheme:multi-brand--aster;mode:dark">See it in dark</a></div></div>
 
 ## When to use it
+
+**In Multi-brand:** Messages to support.
 
 - **Use it when:** Comments, descriptions, anything longer than one line.
 - **Not when:** A one-line value (input), or a known set of options.

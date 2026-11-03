@@ -10,13 +10,15 @@ description: "Sidebar in Multi-brand."
 
 The side navigation of an app, open while people work.
 
-<p class="odv-compstatus"><span class="odv-pill">In Multi-brand</span> Account area navigation.</p>
+<p class="odv-compstatus"><span class="odv-pill">In Multi-brand</span></p>
 
 ## See it live
 
 <div class="odv-live"><span class="odv-wait">Start Storybook to see it live: <code>npm run storybook</code></span><iframe src="http://localhost:6006/iframe.html?id=components-sidebar--examples&viewMode=story&globals=scheme:multi-brand--aster" title="Sidebar examples in Storybook" loading="lazy"></iframe><div class="bar"><span>Live from Storybook</span><a href="http://localhost:6006/?path=/docs/components-sidebar--docs">Open Sidebar in Storybook</a><a href="http://localhost:6006/iframe.html?id=components-sidebar--examples&viewMode=story&globals=scheme:multi-brand--aster;mode:dark">See it in dark</a></div></div>
 
 ## When to use it
+
+**In Multi-brand:** Account area navigation.
 
 - **Use it when:** Apps with several sections people move between all session.
 - **Not when:** A website's main navigation (navigation menu), or a few sections that fit in tabs.

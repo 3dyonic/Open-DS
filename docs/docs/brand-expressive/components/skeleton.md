@@ -10,13 +10,15 @@ description: "Skeleton in Brand expressive."
 
 Placeholder shapes that match the final layout, so the page does not jump when content arrives.
 
-<p class="odv-compstatus"><span class="odv-pill">In Brand expressive</span> Images while they load.</p>
+<p class="odv-compstatus"><span class="odv-pill">In Brand expressive</span></p>
 
 ## See it live
 
 <div class="odv-live"><span class="odv-wait">Start Storybook to see it live: <code>npm run storybook</code></span><iframe src="http://localhost:6006/iframe.html?id=components-skeleton--examples&viewMode=story&globals=scheme:brand-expressive" title="Skeleton examples in Storybook" loading="lazy"></iframe><div class="bar"><span>Live from Storybook</span><a href="http://localhost:6006/?path=/docs/components-skeleton--docs">Open Skeleton in Storybook</a><a href="http://localhost:6006/iframe.html?id=components-skeleton--examples&viewMode=story&globals=scheme:brand-expressive;mode:dark">See it in dark</a></div></div>
 
 ## When to use it
+
+**In Brand expressive:** Images while they load.
 
 - **Use it when:** Lists, cards, dashboards and tables whose shape is known.
 - **Not when:** A wait with no layout (spinner), or a region that loaded empty (empty).

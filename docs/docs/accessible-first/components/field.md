@@ -10,13 +10,15 @@ description: "Field in Accessible first."
 
 A label, control, hint and error laid out together, the same way every time.
 
-<p class="odv-compstatus"><span class="odv-pill">In Accessible first</span> Label, hint and error in the same place on every question.</p>
+<p class="odv-compstatus"><span class="odv-pill">In Accessible first</span></p>
 
 ## See it live
 
 <div class="odv-live"><span class="odv-wait">Start Storybook to see it live: <code>npm run storybook</code></span><iframe src="http://localhost:6006/iframe.html?id=components-field--examples&viewMode=story&globals=scheme:accessible-first" title="Field examples in Storybook" loading="lazy"></iframe><div class="bar"><span>Live from Storybook</span><a href="http://localhost:6006/?path=/docs/components-field--docs">Open Field in Storybook</a><a href="http://localhost:6006/iframe.html?id=components-field--examples&viewMode=story&globals=scheme:accessible-first;mode:dark">See it in dark</a></div></div>
 
 ## When to use it
+
+**In Accessible first:** Label, hint and error in the same place on every question.
 
 - **Use it when:** Every form control that needs a label, a hint or an error.
 - **Not when:** A control that is not part of a form, such as a search box in a toolbar.

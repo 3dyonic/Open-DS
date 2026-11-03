@@ -10,13 +10,15 @@ description: "Collapsible in Accessible first."
 
 One section that opens and closes.
 
-<p class="odv-compstatus"><span class="odv-pill">In Accessible first</span> Optional help a person can open.</p>
+<p class="odv-compstatus"><span class="odv-pill">In Accessible first</span></p>
 
 ## See it live
 
 <div class="odv-live"><span class="odv-wait">Start Storybook to see it live: <code>npm run storybook</code></span><iframe src="http://localhost:6006/iframe.html?id=components-collapsible--examples&viewMode=story&globals=scheme:accessible-first" title="Collapsible examples in Storybook" loading="lazy"></iframe><div class="bar"><span>Live from Storybook</span><a href="http://localhost:6006/?path=/docs/components-collapsible--docs">Open Collapsible in Storybook</a><a href="http://localhost:6006/iframe.html?id=components-collapsible--examples&viewMode=story&globals=scheme:accessible-first;mode:dark">See it in dark</a></div></div>
 
 ## When to use it
+
+**In Accessible first:** Optional help a person can open.
 
 - **Use it when:** A single block of extra detail people may want: more filters, advanced options.
 - **Not when:** Several stacked sections (accordion), or content everyone needs.

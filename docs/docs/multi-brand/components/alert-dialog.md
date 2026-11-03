@@ -10,13 +10,15 @@ description: "Alert dialog in Multi-brand."
 
 A dialog that interrupts to confirm an action that cannot be undone.
 
-<p class="odv-compstatus"><span class="odv-pill">In Multi-brand</span> Cancel a plan.</p>
+<p class="odv-compstatus"><span class="odv-pill">In Multi-brand</span></p>
 
 ## See it live
 
 <div class="odv-live"><span class="odv-wait">Start Storybook to see it live: <code>npm run storybook</code></span><iframe src="http://localhost:6006/iframe.html?id=components-alert-dialog--examples&viewMode=story&globals=scheme:multi-brand--aster" title="Alert dialog examples in Storybook" loading="lazy"></iframe><div class="bar"><span>Live from Storybook</span><a href="http://localhost:6006/?path=/docs/components-alert-dialog--docs">Open Alert dialog in Storybook</a><a href="http://localhost:6006/iframe.html?id=components-alert-dialog--examples&viewMode=story&globals=scheme:multi-brand--aster;mode:dark">See it in dark</a></div></div>
 
 ## When to use it
+
+**In Multi-brand:** Cancel a plan.
 
 - **Use it when:** Deleting, cancelling or overwriting something people cannot get back, when undo is not possible.
 - **Not when:** Anything that can be undone (offer undo instead), or a form or task (use a dialog).

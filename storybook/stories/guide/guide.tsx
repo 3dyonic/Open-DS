@@ -737,10 +737,7 @@ export function ComponentHeader() {
       </p>
       {carried ? (
         <p style={{ marginTop: 10 }}>
-          <span className="chip" style={{ marginRight: 8 }}>
-            In {s.name}
-          </span>
-          {carried.why}
+          <span className="chip">In {s.name}</span>
         </p>
       ) : (
         // OD-192, OD-211: a component the scheme leaves out renders in its tokens like any other. Only
@@ -759,12 +756,18 @@ export function ComponentHeader() {
 
 /** When to use it, when not, and what to use instead (the reference). */
 export function WhenToUse() {
-  const { s, item } = useComponent();
-  if (!item?.apply_when) return null;
+  const { s, item, carried } = useComponent();
+  if (!item?.apply_when && !carried?.why) return null;
   const carriedIds = new Set(s.inventory.in.map((x: Any) => x.id));
   return (
     <Frame>
       <h2>When to use it</h2>
+      {/* OD-211: a kept component's own use leads: where this scheme uses it. */}
+      {carried?.why && (
+        <p style={{ marginBottom: 12 }}>
+          <b>In {s.name}:</b> {carried.why}
+        </p>
+      )}
       <div className="grid2">
         <div className="card">
           <div className="lab" style={{ color: "var(--color-status-success)" }}>

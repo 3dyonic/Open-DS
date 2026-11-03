@@ -10,13 +10,15 @@ description: "Label in Accessible first."
 
 The visible name of a form control.
 
-<p class="odv-compstatus"><span class="odv-pill">In Accessible first</span> Names every control.</p>
+<p class="odv-compstatus"><span class="odv-pill">In Accessible first</span></p>
 
 ## See it live
 
 <div class="odv-live"><span class="odv-wait">Start Storybook to see it live: <code>npm run storybook</code></span><iframe src="http://localhost:6006/iframe.html?id=components-label--examples&viewMode=story&globals=scheme:accessible-first" title="Label examples in Storybook" loading="lazy"></iframe><div class="bar"><span>Live from Storybook</span><a href="http://localhost:6006/?path=/docs/components-label--docs">Open Label in Storybook</a><a href="http://localhost:6006/iframe.html?id=components-label--examples&viewMode=story&globals=scheme:accessible-first;mode:dark">See it in dark</a></div></div>
 
 ## When to use it
+
+**In Accessible first:** Names every control.
 
 - **Use it when:** Every form control.
 - **Not when:** Never skipped: a placeholder is not a label.

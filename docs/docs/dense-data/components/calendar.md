@@ -10,13 +10,15 @@ description: "Calendar in Dense data."
 
 A month grid for picking a date or a range.
 
-<p class="odv-compstatus"><span class="odv-pill">In Dense data</span> Date ranges for reports.</p>
+<p class="odv-compstatus"><span class="odv-pill">In Dense data</span></p>
 
 ## See it live
 
 <div class="odv-live"><span class="odv-wait">Start Storybook to see it live: <code>npm run storybook</code></span><iframe src="http://localhost:6006/iframe.html?id=components-calendar--examples&viewMode=story&globals=scheme:dense-data" title="Calendar examples in Storybook" loading="lazy"></iframe><div class="bar"><span>Live from Storybook</span><a href="http://localhost:6006/?path=/docs/components-calendar--docs">Open Calendar in Storybook</a><a href="http://localhost:6006/iframe.html?id=components-calendar--examples&viewMode=story&globals=scheme:dense-data;mode:dark">See it in dark</a></div></div>
 
 ## When to use it
+
+**In Dense data:** Date ranges for reports.
 
 - **Use it when:** Dates near today, ranges, or when the day of the week matters.
 - **Not when:** A date people know by heart, such as a birth date: typed fields are faster.

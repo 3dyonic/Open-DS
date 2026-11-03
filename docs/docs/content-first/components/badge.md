@@ -10,13 +10,15 @@ description: "Badge in Content first."
 
 A short label for a status, category or count, next to what it describes.
 
-<p class="odv-compstatus"><span class="odv-pill">In Content first</span> The topic of an article.</p>
+<p class="odv-compstatus"><span class="odv-pill">In Content first</span></p>
 
 ## See it live
 
 <div class="odv-live"><span class="odv-wait">Start Storybook to see it live: <code>npm run storybook</code></span><iframe src="http://localhost:6006/iframe.html?id=components-badge--examples&viewMode=story&globals=scheme:content-first" title="Badge examples in Storybook" loading="lazy"></iframe><div class="bar"><span>Live from Storybook</span><a href="http://localhost:6006/?path=/docs/components-badge--docs">Open Badge in Storybook</a><a href="http://localhost:6006/iframe.html?id=components-badge--examples&viewMode=story&globals=scheme:content-first;mode:dark">See it in dark</a></div></div>
 
 ## When to use it
+
+**In Content first:** The topic of an article.
 
 - **Use it when:** A state people scan for in a list or table, or a small category label.
 - **Not when:** A message people must read (alert or toast), or an action (a button).

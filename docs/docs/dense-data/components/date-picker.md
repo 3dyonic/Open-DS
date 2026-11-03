@@ -10,13 +10,15 @@ description: "Date picker in Dense data."
 
 A field-like button that opens a calendar for one date or a range.
 
-<p class="odv-compstatus"><span class="odv-pill">In Dense data</span> Picks a date range for reports and filters from a button in the toolbar.</p>
+<p class="odv-compstatus"><span class="odv-pill">In Dense data</span></p>
 
 ## See it live
 
 <div class="odv-live"><span class="odv-wait">Start Storybook to see it live: <code>npm run storybook</code></span><iframe src="http://localhost:6006/iframe.html?id=components-date-picker--examples&viewMode=story&globals=scheme:dense-data" title="Date picker examples in Storybook" loading="lazy"></iframe><div class="bar"><span>Live from Storybook</span><a href="http://localhost:6006/?path=/docs/components-date-picker--docs">Open Date picker in Storybook</a><a href="http://localhost:6006/iframe.html?id=components-date-picker--examples&viewMode=story&globals=scheme:dense-data;mode:dark">See it in dark</a></div></div>
 
 ## When to use it
+
+**In Dense data:** Picks a date range for reports and filters from a button in the toolbar.
 
 - **Use it when:** Dates near today, ranges, or when the day of the week matters.
 - **Not when:** A date people know by heart, such as a birth date: typed fields are faster.

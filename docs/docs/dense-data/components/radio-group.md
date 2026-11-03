@@ -10,13 +10,15 @@ description: "Radio group in Dense data."
 
 One choice from a short list shown at once.
 
-<p class="odv-compstatus"><span class="odv-pill">In Dense data</span> Picks one of two or three options, all visible at once.</p>
+<p class="odv-compstatus"><span class="odv-pill">In Dense data</span></p>
 
 ## See it live
 
 <div class="odv-live"><span class="odv-wait">Start Storybook to see it live: <code>npm run storybook</code></span><iframe src="http://localhost:6006/iframe.html?id=components-radio-group--examples&viewMode=story&globals=scheme:dense-data" title="Radio group examples in Storybook" loading="lazy"></iframe><div class="bar"><span>Live from Storybook</span><a href="http://localhost:6006/?path=/docs/components-radio-group--docs">Open Radio group in Storybook</a><a href="http://localhost:6006/iframe.html?id=components-radio-group--examples&viewMode=story&globals=scheme:dense-data;mode:dark">See it in dark</a></div></div>
 
 ## When to use it
+
+**In Dense data:** Picks one of two or three options, all visible at once.
 
 - **Use it when:** Two to about five options where the answer is one of them.
 - **Not when:** Many options (select), many answers (checkboxes), or a setting that applies at once (switch).

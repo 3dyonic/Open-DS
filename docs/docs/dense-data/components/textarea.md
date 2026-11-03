@@ -10,13 +10,15 @@ description: "Textarea in Dense data."
 
 A field for free text over several lines.
 
-<p class="odv-compstatus"><span class="odv-pill">In Dense data</span> Notes on an alert, for the next analyst.</p>
+<p class="odv-compstatus"><span class="odv-pill">In Dense data</span></p>
 
 ## See it live
 
 <div class="odv-live"><span class="odv-wait">Start Storybook to see it live: <code>npm run storybook</code></span><iframe src="http://localhost:6006/iframe.html?id=components-textarea--examples&viewMode=story&globals=scheme:dense-data" title="Textarea examples in Storybook" loading="lazy"></iframe><div class="bar"><span>Live from Storybook</span><a href="http://localhost:6006/?path=/docs/components-textarea--docs">Open Textarea in Storybook</a><a href="http://localhost:6006/iframe.html?id=components-textarea--examples&viewMode=story&globals=scheme:dense-data;mode:dark">See it in dark</a></div></div>
 
 ## When to use it
+
+**In Dense data:** Notes on an alert, for the next analyst.
 
 - **Use it when:** Comments, descriptions, anything longer than one line.
 - **Not when:** A one-line value (input), or a known set of options.

@@ -10,13 +10,15 @@ description: "Tooltip in Dense data."
 
 A short hint on hover or focus.
 
-<p class="odv-compstatus"><span class="odv-pill">In Dense data</span> Explains an icon button.</p>
+<p class="odv-compstatus"><span class="odv-pill">In Dense data</span></p>
 
 ## See it live
 
 <div class="odv-live"><span class="odv-wait">Start Storybook to see it live: <code>npm run storybook</code></span><iframe src="http://localhost:6006/iframe.html?id=components-tooltip--examples&viewMode=story&globals=scheme:dense-data" title="Tooltip examples in Storybook" loading="lazy"></iframe><div class="bar"><span>Live from Storybook</span><a href="http://localhost:6006/?path=/docs/components-tooltip--docs">Open Tooltip in Storybook</a><a href="http://localhost:6006/iframe.html?id=components-tooltip--examples&viewMode=story&globals=scheme:dense-data;mode:dark">See it in dark</a></div></div>
 
 ## When to use it
+
+**In Dense data:** Explains an icon button.
 
 - **Use it when:** A brief name or hint for a control that already has an accessible name.
 - **Not when:** The only place values or important words live, or touch screens, where hover never happens.

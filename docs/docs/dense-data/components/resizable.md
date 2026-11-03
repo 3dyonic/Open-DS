@@ -10,13 +10,15 @@ description: "Resizable in Dense data."
 
 Panels people resize by dragging the line between them.
 
-<p class="odv-compstatus"><span class="odv-pill">In Dense data</span> Experts size the table and detail panes.</p>
+<p class="odv-compstatus"><span class="odv-pill">In Dense data</span></p>
 
 ## See it live
 
 <div class="odv-live"><span class="odv-wait">Start Storybook to see it live: <code>npm run storybook</code></span><iframe src="http://localhost:6006/iframe.html?id=components-resizable--examples&viewMode=story&globals=scheme:dense-data" title="Resizable examples in Storybook" loading="lazy"></iframe><div class="bar"><span>Live from Storybook</span><a href="http://localhost:6006/?path=/docs/components-resizable--docs">Open Resizable in Storybook</a><a href="http://localhost:6006/iframe.html?id=components-resizable--examples&viewMode=story&globals=scheme:dense-data;mode:dark">See it in dark</a></div></div>
 
 ## When to use it
+
+**In Dense data:** Experts size the table and detail panes.
 
 - **Use it when:** Desktop tools where people choose how much space each panel gets.
 - **Not when:** Phones, or layouts with one obvious shape.

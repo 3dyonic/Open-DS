@@ -10,13 +10,15 @@ description: "Input group in Dense data."
 
 An input with addons inside its border: icons, text, buttons.
 
-<p class="odv-compstatus"><span class="odv-pill">In Dense data</span> Search with an icon and a clear button.</p>
+<p class="odv-compstatus"><span class="odv-pill">In Dense data</span></p>
 
 ## See it live
 
 <div class="odv-live"><span class="odv-wait">Start Storybook to see it live: <code>npm run storybook</code></span><iframe src="http://localhost:6006/iframe.html?id=components-input-group--examples&viewMode=story&globals=scheme:dense-data" title="Input group examples in Storybook" loading="lazy"></iframe><div class="bar"><span>Live from Storybook</span><a href="http://localhost:6006/?path=/docs/components-input-group--docs">Open Input group in Storybook</a><a href="http://localhost:6006/iframe.html?id=components-input-group--examples&viewMode=story&globals=scheme:dense-data;mode:dark">See it in dark</a></div></div>
 
 ## When to use it
+
+**In Dense data:** Search with an icon and a clear button.
 
 - **Use it when:** A search with an icon and a clear button, a value with a unit or currency.
 - **Not when:** Controls that are separate fields (lay them out with field).

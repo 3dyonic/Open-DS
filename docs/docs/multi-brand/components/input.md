@@ -10,13 +10,15 @@ description: "Input in Multi-brand."
 
 A labeled field for a short typed value.
 
-<p class="odv-compstatus"><span class="odv-pill">In Multi-brand</span> Sign-up and account fields.</p>
+<p class="odv-compstatus"><span class="odv-pill">In Multi-brand</span></p>
 
 ## See it live
 
 <div class="odv-live"><span class="odv-wait">Start Storybook to see it live: <code>npm run storybook</code></span><iframe src="http://localhost:6006/iframe.html?id=components-input--examples&viewMode=story&globals=scheme:multi-brand--aster" title="Input examples in Storybook" loading="lazy"></iframe><div class="bar"><span>Live from Storybook</span><a href="http://localhost:6006/?path=/docs/components-input--docs">Open Input in Storybook</a><a href="http://localhost:6006/iframe.html?id=components-input--examples&viewMode=story&globals=scheme:multi-brand--aster;mode:dark">See it in dark</a></div></div>
 
 ## When to use it
+
+**In Multi-brand:** Sign-up and account fields.
 
 - **Use it when:** A name, email, phone number or other one-line answer.
 - **Not when:** Long text (textarea), or a closed choice (radio group, select or checkbox).

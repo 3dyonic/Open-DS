@@ -10,13 +10,15 @@ description: "Pagination in Dense data."
 
 Moves between pages of results.
 
-<p class="odv-compstatus"><span class="odv-pill">In Dense data</span> Moves through long result sets.</p>
+<p class="odv-compstatus"><span class="odv-pill">In Dense data</span></p>
 
 ## See it live
 
 <div class="odv-live"><span class="odv-wait">Start Storybook to see it live: <code>npm run storybook</code></span><iframe src="http://localhost:6006/iframe.html?id=components-pagination--examples&viewMode=story&globals=scheme:dense-data" title="Pagination examples in Storybook" loading="lazy"></iframe><div class="bar"><span>Live from Storybook</span><a href="http://localhost:6006/?path=/docs/components-pagination--docs">Open Pagination in Storybook</a><a href="http://localhost:6006/iframe.html?id=components-pagination--examples&viewMode=story&globals=scheme:dense-data;mode:dark">See it in dark</a></div></div>
 
 ## When to use it
+
+**In Dense data:** Moves through long result sets.
 
 - **Use it when:** A list or table split across pages.
 - **Not when:** Steps of a task (progress).

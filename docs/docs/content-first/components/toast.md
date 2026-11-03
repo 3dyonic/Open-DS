@@ -10,13 +10,15 @@ description: "Toast in Content first."
 
 A short message that confirms an action and goes away.
 
-<p class="odv-compstatus"><span class="odv-pill">In Content first</span> Confirms a saved article.</p>
+<p class="odv-compstatus"><span class="odv-pill">In Content first</span></p>
 
 ## See it live
 
 <div class="odv-live"><span class="odv-wait">Start Storybook to see it live: <code>npm run storybook</code></span><iframe src="http://localhost:6006/iframe.html?id=components-toast--examples&viewMode=story&globals=scheme:content-first" title="Toast examples in Storybook" loading="lazy"></iframe><div class="bar"><span>Live from Storybook</span><a href="http://localhost:6006/?path=/docs/components-toast--docs">Open Toast in Storybook</a><a href="http://localhost:6006/iframe.html?id=components-toast--examples&viewMode=story&globals=scheme:content-first;mode:dark">See it in dark</a></div></div>
 
 ## When to use it
+
+**In Content first:** Confirms a saved article.
 
 - **Use it when:** Saved, sent, exported: something people should notice without stopping.
 - **Not when:** A failure people must understand (alert or dialog), or a notice that stays (alert).

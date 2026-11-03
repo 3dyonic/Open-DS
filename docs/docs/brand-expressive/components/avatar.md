@@ -10,13 +10,15 @@ description: "Avatar in Brand expressive."
 
 A small image or initials that stand for a person or account.
 
-<p class="odv-compstatus"><span class="odv-pill">In Brand expressive</span> Faces in quotes from customers.</p>
+<p class="odv-compstatus"><span class="odv-pill">In Brand expressive</span></p>
 
 ## See it live
 
 <div class="odv-live"><span class="odv-wait">Start Storybook to see it live: <code>npm run storybook</code></span><iframe src="http://localhost:6006/iframe.html?id=components-avatar--examples&viewMode=story&globals=scheme:brand-expressive" title="Avatar examples in Storybook" loading="lazy"></iframe><div class="bar"><span>Live from Storybook</span><a href="http://localhost:6006/?path=/docs/components-avatar--docs">Open Avatar in Storybook</a><a href="http://localhost:6006/iframe.html?id=components-avatar--examples&viewMode=story&globals=scheme:brand-expressive;mode:dark">See it in dark</a></div></div>
 
 ## When to use it
+
+**In Brand expressive:** Faces in quotes from customers.
 
 - **Use it when:** Showing who wrote, owns or is signed in, next to their name.
 - **Not when:** The only way to tell people apart, or decoration with no person behind it.

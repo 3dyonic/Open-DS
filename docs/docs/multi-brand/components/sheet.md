@@ -10,13 +10,15 @@ description: "Sheet in Multi-brand."
 
 A panel that slides in from an edge.
 
-<p class="odv-compstatus"><span class="odv-pill">In Multi-brand</span> The menu on a phone.</p>
+<p class="odv-compstatus"><span class="odv-pill">In Multi-brand</span></p>
 
 ## See it live
 
 <div class="odv-live"><span class="odv-wait">Start Storybook to see it live: <code>npm run storybook</code></span><iframe src="http://localhost:6006/iframe.html?id=components-sheet--examples&viewMode=story&globals=scheme:multi-brand--aster" title="Sheet examples in Storybook" loading="lazy"></iframe><div class="bar"><span>Live from Storybook</span><a href="http://localhost:6006/?path=/docs/components-sheet--docs">Open Sheet in Storybook</a><a href="http://localhost:6006/iframe.html?id=components-sheet--examples&viewMode=story&globals=scheme:multi-brand--aster;mode:dark">See it in dark</a></div></div>
 
 ## When to use it
+
+**In Multi-brand:** The menu on a phone.
 
 - **Use it when:** Filters, details or a secondary form while the page stays in view.
 - **Not when:** A blocking decision (dialog), or a tiny confirmation.

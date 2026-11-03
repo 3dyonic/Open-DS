@@ -10,13 +10,15 @@ description: "Aspect ratio in Content first."
 
 Keeps an image or video at a fixed shape while the layout resizes.
 
-<p class="odv-compstatus"><span class="odv-pill">In Content first</span> Keeps images in shape.</p>
+<p class="odv-compstatus"><span class="odv-pill">In Content first</span></p>
 
 ## See it live
 
 <div class="odv-live"><span class="odv-wait">Start Storybook to see it live: <code>npm run storybook</code></span><iframe src="http://localhost:6006/iframe.html?id=components-aspect-ratio--examples&viewMode=story&globals=scheme:content-first" title="Aspect ratio examples in Storybook" loading="lazy"></iframe><div class="bar"><span>Live from Storybook</span><a href="http://localhost:6006/?path=/docs/components-aspect-ratio--docs">Open Aspect ratio in Storybook</a><a href="http://localhost:6006/iframe.html?id=components-aspect-ratio--examples&viewMode=story&globals=scheme:content-first;mode:dark">See it in dark</a></div></div>
 
 ## When to use it
+
+**In Content first:** Keeps images in shape.
 
 - **Use it when:** Media in cards, galleries and heroes that must not stretch or jump while it loads.
 - **Not when:** Text content, or media that should keep its own natural shape.

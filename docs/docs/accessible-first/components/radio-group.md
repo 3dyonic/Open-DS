@@ -10,13 +10,15 @@ description: "Radio group in Accessible first."
 
 One choice from a short list shown at once.
 
-<p class="odv-compstatus"><span class="odv-pill">In Accessible first</span> One choice from a short, visible list.</p>
+<p class="odv-compstatus"><span class="odv-pill">In Accessible first</span></p>
 
 ## See it live
 
 <div class="odv-live"><span class="odv-wait">Start Storybook to see it live: <code>npm run storybook</code></span><iframe src="http://localhost:6006/iframe.html?id=components-radio-group--examples&viewMode=story&globals=scheme:accessible-first" title="Radio group examples in Storybook" loading="lazy"></iframe><div class="bar"><span>Live from Storybook</span><a href="http://localhost:6006/?path=/docs/components-radio-group--docs">Open Radio group in Storybook</a><a href="http://localhost:6006/iframe.html?id=components-radio-group--examples&viewMode=story&globals=scheme:accessible-first;mode:dark">See it in dark</a></div></div>
 
 ## When to use it
+
+**In Accessible first:** One choice from a short, visible list.
 
 - **Use it when:** Two to about five options where the answer is one of them.
 - **Not when:** Many options (select), many answers (checkboxes), or a setting that applies at once (switch).

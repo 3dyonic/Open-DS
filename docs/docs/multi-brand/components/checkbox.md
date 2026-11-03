@@ -10,13 +10,15 @@ description: "Checkbox in Multi-brand."
 
 One or many independent on or off choices, usually sent with a form.
 
-<p class="odv-compstatus"><span class="odv-pill">In Multi-brand</span> Terms and preferences.</p>
+<p class="odv-compstatus"><span class="odv-pill">In Multi-brand</span></p>
 
 ## See it live
 
 <div class="odv-live"><span class="odv-wait">Start Storybook to see it live: <code>npm run storybook</code></span><iframe src="http://localhost:6006/iframe.html?id=components-checkbox--examples&viewMode=story&globals=scheme:multi-brand--aster" title="Checkbox examples in Storybook" loading="lazy"></iframe><div class="bar"><span>Live from Storybook</span><a href="http://localhost:6006/?path=/docs/components-checkbox--docs">Open Checkbox in Storybook</a><a href="http://localhost:6006/iframe.html?id=components-checkbox--examples&viewMode=story&globals=scheme:multi-brand--aster;mode:dark">See it in dark</a></div></div>
 
 ## When to use it
+
+**In Multi-brand:** Terms and preferences.
 
 - **Use it when:** Agreeing, picking many, optional extras; the choice waits for the form.
 - **Not when:** Exactly one of a short set (radio group), or a setting that applies at once (switch).

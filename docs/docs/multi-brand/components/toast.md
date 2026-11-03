@@ -10,13 +10,15 @@ description: "Toast in Multi-brand."
 
 A short message that confirms an action and goes away.
 
-<p class="odv-compstatus"><span class="odv-pill">In Multi-brand</span> Confirms a saved change.</p>
+<p class="odv-compstatus"><span class="odv-pill">In Multi-brand</span></p>
 
 ## See it live
 
 <div class="odv-live"><span class="odv-wait">Start Storybook to see it live: <code>npm run storybook</code></span><iframe src="http://localhost:6006/iframe.html?id=components-toast--examples&viewMode=story&globals=scheme:multi-brand--aster" title="Toast examples in Storybook" loading="lazy"></iframe><div class="bar"><span>Live from Storybook</span><a href="http://localhost:6006/?path=/docs/components-toast--docs">Open Toast in Storybook</a><a href="http://localhost:6006/iframe.html?id=components-toast--examples&viewMode=story&globals=scheme:multi-brand--aster;mode:dark">See it in dark</a></div></div>
 
 ## When to use it
+
+**In Multi-brand:** Confirms a saved change.
 
 - **Use it when:** Saved, sent, exported: something people should notice without stopping.
 - **Not when:** A failure people must understand (alert or dialog), or a notice that stays (alert).

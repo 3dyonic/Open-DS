@@ -10,13 +10,15 @@ description: "Alert in Dense data."
 
 A message that stays on the page with the content it is about.
 
-<p class="odv-compstatus"><span class="odv-pill">In Dense data</span> A problem that stays on the page.</p>
+<p class="odv-compstatus"><span class="odv-pill">In Dense data</span></p>
 
 ## See it live
 
 <div class="odv-live"><span class="odv-wait">Start Storybook to see it live: <code>npm run storybook</code></span><iframe src="http://localhost:6006/iframe.html?id=components-alert--examples&viewMode=story&globals=scheme:dense-data" title="Alert examples in Storybook" loading="lazy"></iframe><div class="bar"><span>Live from Storybook</span><a href="http://localhost:6006/?path=/docs/components-alert--docs">Open Alert in Storybook</a><a href="http://localhost:6006/iframe.html?id=components-alert--examples&viewMode=story&globals=scheme:dense-data;mode:dark">See it in dark</a></div></div>
 
 ## When to use it
+
+**In Dense data:** A problem that stays on the page.
 
 - **Use it when:** People need to read a standing notice or how to recover, on this page, tied to what they are doing.
 - **Not when:** A short confirmation that can go away by itself, or one notice for the whole site.

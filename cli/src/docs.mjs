@@ -1296,7 +1296,7 @@ export function docsPages(
                 ((instead[name] ?? []).length
                   ? ` <span class="odv-instead">Use instead: ${instead[name].map((x) => (names.includes(x) ? `<a href="./${x}">${title(x)}</a>` : title(x))).join(", ")}</span>`
                   : "")
-            : `<span class="odv-pill">In ${attr(scheme.name)}</span> ${attr(guide?.why ?? inventory[name] ?? "")}`,
+            : `<span class="odv-pill">In ${attr(scheme.name)}</span>`,
           `</p>`,
         ),
     );
@@ -1309,9 +1309,14 @@ export function docsPages(
           `<div class="bar"><span>Live from Storybook</span><a href="${storybook}/?path=/docs/components-${name}--docs">Open ${title(name)} in Storybook</a><a href="${storybook}/iframe.html?id=components-${name}--examples&viewMode=story&globals=${sbScheme};mode:dark">See it in dark</a></div></div>`,
         ),
     );
-    if (r.apply_when)
+    // A kept component's own use leads "When to use it" (OD-211): where this scheme uses it, then
+    // what it is for in any design system.
+    const ownUse = leftOut(name) ? "" : (guide?.why ?? inventory[name] ?? "");
+    if (r.apply_when || ownUse)
       parts.push(
-        `## When to use it\n\n- **Use it when:** ${esc(r.apply_when)}\n- **Not when:** ${esc(r.not_when)}` +
+        `## When to use it\n\n` +
+          (ownUse ? `**In ${esc(scheme.name)}:** ${esc(ownUse)}\n\n` : "") +
+          (r.apply_when ? `- **Use it when:** ${esc(r.apply_when)}\n- **Not when:** ${esc(r.not_when)}` : "") +
           (r.vs?.length
             ? `\n\nInstead:\n\n${r.vs.map((v) => `- ${v.outside ? esc(title(v.id)) : pageOf(v.id)}: ${esc(v.why)}`).join("\n")}`
             : ""),
