@@ -8,7 +8,7 @@
 //
 // Needs the npm registry: the project installs Storybook, Docusaurus and Style Dictionary.
 
-import { execFileSync } from "node:child_process";
+import { execFileSync, spawnSync } from "node:child_process";
 import {
   existsSync,
   mkdtempSync,
@@ -200,7 +200,16 @@ step("Open every story and docs page in a browser", () => {
 });
 
 step("Build the docs with Docusaurus", () => {
-  run("npm", ["run", "build-docs"], project);
+  // Docusaurus prints warnings on stderr, so read both streams.
+  const r = spawnSync("npm", ["run", "build-docs"], {
+    cwd: project,
+    encoding: "utf8",
+    maxBuffer: 64 * 1024 * 1024,
+  });
+  if (r.status !== 0) throw Object.assign(new Error("build-docs failed"), r);
+  const out = `${r.stdout}${r.stderr}`;
+  const warn = out.split("\n").filter((l) => /\[WARNING\]/.test(l));
+  must(!warn.length, `the docs build warns: ${warn.slice(0, 3).join("; ")}`);
   must(
     existsSync(join(project, "docs", "build", "index.html")),
     "no docs/build/index.html",

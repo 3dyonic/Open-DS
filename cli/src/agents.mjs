@@ -121,7 +121,7 @@ export function agentsMd(scheme, g, { brand, components, project = false }) {
           "",
           ...scheme.inventory.in.map(
             (i) =>
-              `- ${i.id}${components.includes(i.id) ? "" : " (not built yet)"}: ${i.why}`,
+              `- ${i.id}: ${i.why}`,
           ),
           "",
           "Built and installed here: " +

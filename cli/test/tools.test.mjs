@@ -13,7 +13,7 @@ test("checkUi: raw values, components the scheme does not carry, variants it doe
       path: "src/app/page.tsx",
       content: [
         'import { Button } from "@/components/ui/button";',
-        'import { Accordion } from "@/components/ui/accordion";',
+        'import { Carousel } from "@/components/ui/carousel";',
         'export default () => <div className="bg-red-500 p-[13px]" style={{ color: "#ff0000" }}>',
         '  <Button size="large">Go</Button> <Button size="compact">Ok</Button>',
         "</div>;",

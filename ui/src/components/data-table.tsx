@@ -105,23 +105,45 @@ export function dataTableSelectColumn<TData>(labels: Partial<DataTableLabels> = 
       />
     ),
     cell: ({ row }) => (
-      <Checkbox aria-label={l.selectRow} checked={row.getIsSelected()} onCheckedChange={(v) => row.toggleSelected(!!v)} />
+      <Checkbox
+        aria-label={l.selectRow}
+        checked={row.getIsSelected()}
+        onCheckedChange={(v) => row.toggleSelected(!!v)}
+      />
     ),
   };
 }
 
 /** A header that sorts its column on click and shows the direction. */
-export function DataTableSortHeader({ label, sorted, onSort }: { label: string; sorted: false | "asc" | "desc"; onSort: () => void }) {
+export function DataTableSortHeader({
+  label,
+  sorted,
+  onSort,
+}: {
+  label: string;
+  sorted: false | "asc" | "desc";
+  onSort: () => void;
+}) {
   const Icon = sorted === "asc" ? ArrowUp : sorted === "desc" ? ArrowDown : ChevronsUpDown;
   return (
-    <button type="button" onClick={onSort} className="inline-flex items-center gap-1 font-[inherit] hover:text-foreground">
+    <button
+      type="button"
+      onClick={onSort}
+      className="inline-flex items-center gap-1 font-[inherit] hover:text-foreground"
+    >
       {label}
       <Icon className="size-3.5" aria-hidden />
     </button>
   );
 }
 
-function FacetFilter<TData>({ facet, table }: { facet: DataTableFacet; table: ReturnType<typeof useReactTable<TData>> }) {
+function FacetFilter<TData>({
+  facet,
+  table,
+}: {
+  facet: DataTableFacet;
+  table: ReturnType<typeof useReactTable<TData>>;
+}) {
   const column = table.getColumn(facet.column);
   if (!column) return null;
   const counts = column.getFacetedUniqueValues();
@@ -161,7 +183,15 @@ function FacetFilter<TData>({ facet, table }: { facet: DataTableFacet; table: Re
 
 const inFacet = <TData,>(row: Row<TData>, id: string, value: string[]) => value.includes(String(row.getValue(id)));
 
-export function DataTable<TData>({ columns, data, facets = [], pageSize = 10, bulkActions, labels = {}, className }: DataTableProps<TData>) {
+export function DataTable<TData>({
+  columns,
+  data,
+  facets = [],
+  pageSize = 10,
+  bulkActions,
+  labels = {},
+  className,
+}: DataTableProps<TData>) {
   const l = { ...LABELS, ...labels };
   const [sorting, setSorting] = React.useState<SortingState>([]);
   const [filters, setFilters] = React.useState<ColumnFiltersState>([]);
@@ -173,8 +203,18 @@ export function DataTable<TData>({ columns, data, facets = [], pageSize = 10, bu
   const facetIds = new Set(facets.map((f) => f.column));
   const table = useReactTable({
     data,
-    columns: columns.map((c) => (c.id && facetIds.has(c.id)) || ("accessorKey" in c && facetIds.has(String(c.accessorKey))) ? { ...c, filterFn: inFacet } : c),
-    state: { sorting, columnFilters: filters, columnVisibility: visibility, rowSelection: selection, globalFilter: search },
+    columns: columns.map((c) =>
+      (c.id && facetIds.has(c.id)) || ("accessorKey" in c && facetIds.has(String(c.accessorKey)))
+        ? { ...c, filterFn: inFacet }
+        : c,
+    ),
+    state: {
+      sorting,
+      columnFilters: filters,
+      columnVisibility: visibility,
+      rowSelection: selection,
+      globalFilter: search,
+    },
     onSortingChange: setSorting,
     onColumnFiltersChange: setFilters,
     onColumnVisibilityChange: setVisibility,
@@ -294,8 +334,15 @@ export function DataTable<TData>({ columns, data, facets = [], pageSize = 10, bu
       </div>
 
       <div className="flex items-center justify-end gap-[var(--space-gap-default)]">
-        <span className="text-muted-foreground tabular-nums">{l.page(table.getState().pagination.pageIndex + 1, pages)}</span>
-        <Button variant="secondary" size="compact" onClick={() => table.previousPage()} disabled={!table.getCanPreviousPage()}>
+        <span className="text-muted-foreground tabular-nums">
+          {l.page(table.getState().pagination.pageIndex + 1, pages)}
+        </span>
+        <Button
+          variant="secondary"
+          size="compact"
+          onClick={() => table.previousPage()}
+          disabled={!table.getCanPreviousPage()}
+        >
           {l.previous}
         </Button>
         <Button variant="secondary" size="compact" onClick={() => table.nextPage()} disabled={!table.getCanNextPage()}>

@@ -322,8 +322,19 @@ export function docsPages(
   scheme,
   g,
   roots,
-  { storybook = "http://localhost:6006" } = {},
+  { storybook = "http://localhost:6006", all = false, robots = false, base = "/" } = {},
 ) {
+  // robots: the Open DS robot illustrations (OD-209), in the repo docs only. A scope's robot on its
+  // Foundations card, the scheme's robot on its home page and in "Not part of" notes, Shelf on the
+  // inventory. Day and night editions; the theme picks one. base: the site's base URL, for raw HTML. Created projects get the same layout
+  // without the pictures, so the package stays small.
+  const robot = (name, cls = "") =>
+    robots
+      ? `<span class="odv-robot ${cls}"><img class="odv-robot-day" src="${base}robots/${name}.webp" alt="" loading="lazy"/><img class="odv-robot-night" src="${base}robots/${name}-dark.webp" alt="" loading="lazy"/></span>`
+      : "";
+  // all: a page for every built component, the ones the scheme leaves out too, each marked "Not part
+  // of" (OD-207). The repo docs use it so a scheme switch never lands on a missing page, the way the
+  // repo Storybook renders every component in every scheme (OD-192).
   const qs = questions(g);
   const sits = Object.fromEntries(g.situations.map((s) => [s.id, s]));
   const answer = (id) => scheme.answers.find((a) => a.question === id);
@@ -422,6 +433,99 @@ export function docsPages(
         `</tbody></table></div></div>`,
       )
     : "";
+  // The hero shows the scheme's own sample screen (OD-209): a table where the scheme carries one,
+  // otherwise its sample card, in its voice, with its status, actions and figures.
+  const carriesTable = (scheme.inventory?.in ?? []).some((c) => c.id === "table" || c.id === "data-table");
+  const cardHtml = smp.card
+    ? h(
+        `<div class="odv-app odv-app-card"><div class="odv-app-bar"><b>${attr(smp.screen ?? "")}</b></div>`,
+        `<div class="odv-samplecard">`,
+        `<div class="odv-samplecard-head"><b>${attr(smp.card.title)}</b>${smp.card.status ? badgeHtml(smp.card.status, meaning[smp.card.status]) : ""}</div>`,
+        smp.card.description ? `<p>${attr(smp.card.description)}</p>` : "",
+        `<div class="odv-samplecard-act">`,
+        smp.card.primary ? `<span class="odv-btn primary">${attr(smp.card.primary)}</span>` : "",
+        smp.card.secondary ? `<span class="odv-btn secondary">${attr(smp.card.secondary)}</span>` : "",
+        `</div></div>`,
+        smp.metrics?.length
+          ? h(
+              `<div class="odv-samplemetrics">`,
+              smp.metrics.slice(0, 4).map((m) => `<div><b>${attr(m.value)}</b><span>${attr(m.label)}</span></div>`),
+              `</div>`,
+            )
+          : "",
+        `</div>`,
+      )
+    : "";
+  // Which preview fits comes from the scheme's own answer to the main task (tasks.q1) and its
+  // brands: compare shows the table, read an article opening, complete a form step (or the same card
+  // in every brand), explore a launch sign-up. Every word is the scheme's sample content.
+  const task = answer("tasks.q1")?.option;
+  const brandList = Object.keys(scheme.tokens.brands ?? {});
+  const fieldHtml = (f) =>
+    f
+      ? h(
+          `<label class="odv-samplefield"><span class="odv-samplefield-label">${attr(f.label)}</span>`,
+          f.hint ? `<span class="odv-samplefield-hint">${attr(f.hint)}</span>` : "",
+          `<span class="odv-samplefield-input">${attr(f.placeholder ?? "")}</span></label>`,
+        )
+      : "";
+  const previews = {
+    read: () =>
+      smp.card &&
+      h(
+        `<div class="odv-preview odv-preview-read">`,
+        `<span class="odv-eyebrow">${attr(smp.card.description ?? "")}</span>`,
+        `<span class="odv-preview-headline">${attr(smp.card.title)}</span>`,
+        smp.tabs?.[0]?.content ? `<p>${attr(smp.tabs[0].content)}</p>` : "",
+        `<div class="odv-samplecard-act">`,
+        smp.card.primary ? `<span class="odv-btn primary">${attr(smp.card.primary)}</span>` : "",
+        smp.card.secondary ? `<span class="odv-btn secondary">${attr(smp.card.secondary)}</span>` : "",
+        `</div></div>`,
+      ),
+    complete: () =>
+      brandList.length > 1
+        ? smp.card &&
+          h(
+            `<div class="odv-preview odv-preview-brands">`,
+            brandList.map((b) =>
+              h(
+                `<div class="odv-samplecard" data-brand="${attr(b)}">`,
+                `<span class="odv-eyebrow">${attr(scheme.tokens.brands[b]?.label ?? b)}</span>`,
+                `<div class="odv-samplecard-head"><b>${attr(smp.card.title)}</b>${smp.card.status ? badgeHtml(smp.card.status, meaning[smp.card.status]) : ""}</div>`,
+                smp.card.description ? `<p>${attr(smp.card.description)}</p>` : "",
+                smp.card.primary ? `<div class="odv-samplecard-act"><span class="odv-btn primary">${attr(smp.card.primary)}</span></div>` : "",
+                `</div>`,
+              ),
+            ),
+            `</div>`,
+          )
+        : smp.card &&
+          h(
+            `<div class="odv-app odv-preview-step"><div class="odv-app-bar"><b>${attr(smp.screen ?? "")}</b></div><div class="odv-preview-body">`,
+            `<span class="odv-eyebrow">${attr(smp.card.title)}</span>`,
+            fieldHtml(smp.field),
+            `<div class="odv-samplecard-act">`,
+            smp.card.primary ? `<span class="odv-btn primary">${attr(smp.card.primary)}</span>` : "",
+            `</div>`,
+            smp.card.secondary ? `<span class="odv-preview-link">${attr(smp.card.secondary)}</span>` : "",
+            `</div></div>`,
+          ),
+    explore: () =>
+      h(
+        `<div class="odv-preview odv-preview-launch">`,
+        `<span class="odv-preview-headline">${attr(smp.screen ?? "")}</span>`,
+        smp.metrics?.length
+          ? h(`<div class="odv-preview-count">`, smp.metrics.slice(0, 2).map((m) => `<div><b>${attr(m.value)}</b><span>${attr(m.label)}</span></div>`), `</div>`)
+          : "",
+        fieldHtml(smp.field),
+        smp.actions?.primary ? `<div class="odv-samplecard-act"><span class="odv-btn primary">${attr(smp.actions.primary)}</span></div>` : "",
+        `</div>`,
+      ),
+  };
+  const heroSample =
+    (task === "compare" || carriesTable) && tableHtml
+      ? tableHtml
+      : previews[task]?.() || cardHtml || tableHtml;
   const firstRamp = leaves(primitiveTree, "")
     .filter((x) => x.path.startsWith(".color.") && /^#/.test(String(x.ref)))
     .slice(0, 12);
@@ -500,11 +604,13 @@ export function docsPages(
     NOTE +
     h(
       `<div class="odv-hero"><div>`,
+      robot(scheme.id, "odv-hero-robot"),
       `<div class="odv-eyebrow">Design system · built from ${scheme.answers.length} answered questions</div>`,
       `<h1>${attr(scheme.name)}</h1><p class="odv-lede">${attr(scheme.summary)}</p>`,
-      `<div class="odv-cta"><a class="odv-btn primary" href="foundations/">Explore the foundations</a><a class="odv-btn secondary" href="${storybook}">Open Storybook</a></div>`,
+      // The scheme's entry point has one way forward; Storybook is on every component page.
+      `<div class="odv-cta"><a class="odv-btn primary" href="foundations/">Explore the foundations</a></div>`,
       `<div class="odv-facts"><div><b>${(scheme.inventory?.in ?? []).length}</b><span>components</span></div><div><b>${primCount}</b><span>primitives</span></div><div><b>${scheme.themes.length}</b><span>themes</span></div></div>`,
-      `</div>${tableHtml}</div>`,
+      `</div>${heroSample}</div>`,
     ) +
     `\n\n## Why it looks like this\n\nEvery decision follows from an answer. These are the answers its components and rules cite most.\n\n` +
     h(
@@ -574,21 +680,56 @@ export function docsPages(
       2,
     ) + "\n";
   // The foundations overview: every scope in one compact table, with the answer that sets its values.
+  // The Foundations index (OD-209): a card per scope in three groups, each with its answer for the
+  // values, why, and a small specimen drawn in the scheme's own tokens.
+  const SCOPE_ROBOT = { color: "swatch", spacing: "measure", components: "shelf" };
+  const scopeRobot = (id) => robot(SCOPE_ROBOT[id] ?? `scopes/${id}`);
+  const scopeSpecimen = {
+    typography: `<div class="odv-spec"><span style="font-size:var(--type-title-font-size);font-family:var(--type-display-font-family)">Aa</span><span style="font-size:var(--type-body-font-size)">Aa</span><span style="font-size:var(--type-caption-font-size)">Aa</span></div>`,
+    color: `<div class="odv-spec">${["color-action-primary", "color-text-primary", "color-text-secondary", "color-border-default", "color-status-danger", "color-status-success"].map((v) => `<i class="odv-sw" style="background:var(--${v})"></i>`).join("")}</div>`,
+    spacing: `<div class="odv-spec odv-spec-bars">${["space-gap-tight", "space-gap-default", "space-gap-group", "space-gap-section"].map((v) => `<i style="width:var(--${v})"></i>`).join("")}</div>`,
+    shape: `<div class="odv-spec">${["radius-badge", "radius-control", "radius-container"].map((v) => `<i class="odv-shape" style="border-radius:var(--${v})"></i>`).join("")}</div>`,
+    elevation: `<div class="odv-spec">${["elevation-card", "elevation-overlay"].map((v) => `<i class="odv-lift" style="box-shadow:var(--${v})"></i>`).join("")}</div>`,
+    motion: `<div class="odv-spec"><i class="odv-dot"></i></div>`,
+    iconography: `<div class="odv-spec"><span class="odv-iconlabel">&#9888;&#xFE0E; ${attr(scheme.tokens.content?.action?.destroy?.$value ?? "Delete")}</span></div>`,
+    theming: `<div class="odv-spec"><i class="odv-mode odv-mode-light"></i><i class="odv-mode odv-mode-dark"></i></div>`,
+    accessibility: `<div class="odv-spec"><i class="odv-target"></i></div>`,
+    naming: `<div class="odv-spec"><code>button/primary/background</code></div>`,
+    voice: `<div class="odv-spec"><span class="odv-quote">${attr(scheme.tokens.content?.action?.commit?.$value ?? "Save")}</span></div>`,
+    components: `<div class="odv-spec"><b class="odv-count">${(scheme.inventory?.in ?? []).length}</b><span>of ${g.catalogue?.items?.length ?? 0} in the catalogue</span></div>`,
+  };
+  const SCOPE_GROUPS = [
+    ["How it looks", ["typography", "color", "shape", "elevation"]],
+    ["How it feels to use", ["spacing", "motion", "iconography", "accessibility"]],
+    ["Where it runs and how it speaks", ["theming", "naming", "voice", "components"]],
+  ];
+  const grouped = new Set(SCOPE_GROUPS.flatMap(([, ids]) => ids));
+  const rest = g.scopes.filter((sc) => !grouped.has(sc.id)).map((sc) => sc.id);
+  const scopeCard = (id) => {
+    const sc = g.scopes.find((x) => x.id === id);
+    if (!sc) return "";
+    const q = sc.questions.find((x) => x.method === "values") ?? sc.questions[3];
+    return h(
+      `<a class="odv-scard" href="./${sc.id}">`,
+      robots ? `<span class="odv-scard-art">${scopeRobot(sc.id)}</span>` : "",
+      `<span class="odv-scard-body"><span class="odv-scard-title">${attr(sc.title)}</span>`,
+      `<span class="odv-scard-ans"><small>Values</small>${attr(label(q.id))}</span>`,
+      `<span class="odv-scard-why">${attr(answer(q.id).why)}</span>`,
+      scopeSpecimen[sc.id] ?? "",
+      `</span></a>`,
+    );
+  };
   pages["foundations/index.md"] =
     fm({
       title: "Foundations",
       description: `${scheme.name}: every scope and the answer that sets its values.`,
+      hide_table_of_contents: true,
     }) +
     NOTE +
     `# Foundations\n\nEvery scope answers the same five questions. This is the answer that sets each scope's values; open a scope for all five, its tokens and its specimen.\n\n` +
-    `| Scope | Values | Why |\n| --- | --- | --- |\n` +
-    g.scopes
-      .map((sc) => {
-        const q =
-          sc.questions.find((x) => x.method === "values") ?? sc.questions[3];
-        return `| [${sc.title}](./${sc.id}.md) | ${esc(label(q.id))} | ${esc(answer(q.id).why)} |`;
-      })
-      .join("\n") +
+    [...SCOPE_GROUPS, ...(rest.length ? [["More", rest]] : [])]
+      .map(([title, ids]) => `## ${title}\n\n` + h(`<div class="odv-scards">`, ids.map(scopeCard), `</div>`))
+      .join("\n\n") +
     "\n";
   // The colour page leads with the colours in use (OD-182): the key colours as a band, the surfaces
   // as a stack in light and dark, and each status in use with its contrast, computed from the tokens.
@@ -657,6 +798,96 @@ export function docsPages(
       "\n\n"
     );
   };
+  // The Theming page (OD-211): what a mode is, shown not listed. A live preview per mode from its
+  // real colours, then what a mode changes (a table per job group, every mode side by side), then
+  // what stays the same in every mode. Multi-brand gets one set per brand; the brand picked in the
+  // top bar shows (generate.mjs scopes it), and without that CSS every brand shows.
+  const themingVisuals = () => {
+    const brandIds = Object.keys(scheme.tokens.brands ?? {});
+    const modes = [...new Set(scheme.themes.map((t) => t.mode))];
+    const hexOf = (th, p) => String(value(th, p, "")).match(/#[0-9a-f]{6,8}/i)?.[0] ?? "";
+    const semPath = (p) => p.replace(/^\./, "").replace(/\.@$/, "");
+    const cap = (x) => x.charAt(0).toUpperCase() + x.slice(1);
+    const brandLabel = (b) => scheme.tokens.brands[b]?.label ?? cap(b);
+    const radius = (th, k) => value(th, `radius.${k}`, "0");
+    const sts = (smp.statuses ?? []).filter((x) => STATUS_CLASS[x.meaning]).slice(0, 2);
+    const commit = scheme.tokens.content?.action?.commit?.$value ?? "Save";
+    const cancel = scheme.tokens.content?.action?.cancel?.$value ?? "Cancel";
+    const preview = (th) => {
+      const c = (p) => hexOf(th, p);
+      return h(
+        `<div class="odv-mode-prev" style="background:${c("color.surface.canvas")};color:${c("color.text.primary")};border-color:${c("color.border.default")}">`,
+        `<div class="odv-mode-head"><span>${attr(cap(th.mode))}</span>${brandIds.length > 1 ? `<span>${attr(brandLabel(th.brand))}</span>` : ""}</div>`,
+        `<div class="odv-mode-surf" style="background:${c("color.surface.default")};border-color:${c("color.border.default")};border-radius:${radius(th, "container")}">`,
+        `<b>${attr(scheme.name)}</b><span style="color:${c("color.text.secondary") || c("color.text.muted")}">${attr(scheme.scenarios[0]?.text ?? scheme.summary)}</span>`,
+        sts.length
+          ? `<span class="odv-mode-row">${sts.map((x) => `<span class="odv-mode-pill" style="background:${c(`color.status.${x.meaning}.subtle`)};color:${c(`color.status.${x.meaning}`) || c("color.text.primary")};border-radius:${radius(th, "badge")}">${attr(x.label)}</span>`).join("")}</span>`
+          : "",
+        `<span class="odv-mode-row"><span class="odv-mode-btn" style="background:${c("color.action.primary")};color:${c("color.text.on-action")};border-radius:${radius(th, "control")}">${attr(commit)}</span><span class="odv-mode-btn" style="background:${c("color.surface.sunken")};color:${c("color.text.primary")};border-radius:${radius(th, "control")}">${attr(cancel)}</span></span>`,
+        `</div></div>`,
+      );
+    };
+    const sameBlock = (b) => {
+      const base = scheme.tokens.brands[b]?.theme?.base ?? {};
+      const th = scheme.themes.find((t) => t.brand === b) ?? first;
+      const radii = leaves(base.radius ?? {}, "").map((x) => x.path.replace(/^\./, ""));
+      const fams = {};
+      for (const x of leaves(base.type ?? {}, "")) {
+        const role = x.path.replace(/^\./, "").split(".")[0];
+        const v = String(cssValue(value(th, `type.${role}.font-family`, "")) || "").split(",")[0].replaceAll('"', "");
+        if (v) (fams[v] ??= []).push(role);
+      }
+      return h(
+        `<h3>What stays the same in every mode</h3><div class="odv-same">`,
+        radii.length
+          ? `<div class="odv-card"><b>Corners</b><div class="odv-corners">${radii.map((r) => `<span><i style="border-radius:${radius(th, r)}"></i>${attr(r)} · ${attr(radius(th, r))}</span>`).join("")}</div></div>`
+          : "",
+        Object.keys(fams).length
+          ? `<div class="odv-card"><b>Type families</b><div class="odv-fams">${Object.entries(fams).map(([f, roles]) => `<div><span>${attr(roles.map(cap).join(", "))}</span><span style="font-family:${attr(f)}">${attr(f)}</span></div>`).join("")}</div></div>`
+          : "",
+        `</div>`,
+      );
+    };
+    const brandSet = (b) => {
+      const ths = scheme.themes.filter((t) => t.brand === b);
+      const tree = scheme.tokens.brands[b]?.theme ?? {};
+      const jobs = leaves(tree[ths[0]?.mode] ?? {}, "").map((x) => semPath(x.path));
+      const groups = [...new Set(jobs.map((p) => p.split(".").slice(0, 2).join(".")))];
+      const cell = (th, p) => {
+        const hx = hexOf(th, p);
+        const prim = primitiveOf(th, p)?.replace(/^color\./, "");
+        return hx
+          ? `<span class="odv-tsw"><i style="background:${hx}"></i><small>${attr(prim ?? hx)}</small></span>`
+          : `<code>${attr(value(th, p, ""))}</code>`;
+      };
+      return h(
+        `<div class="odv-brandset" data-for-brand="${b}">`,
+        brandIds.length > 1 ? `<h3>${attr(brandLabel(b))}</h3>` : "",
+        `<div class="odv-modes">`,
+        ths.map(preview),
+        `</div>`,
+        `<h3>What a mode changes</h3>`,
+        h(
+          `<div class="odv-tscroll"><table class="odv-ttable"><thead><tr><th>Job</th>${ths.map((t) => `<th>${attr(cap(t.mode))}</th>`).join("")}</tr></thead><tbody>`,
+          groups.map((gr) => {
+            const list = jobs.filter((p) => p.startsWith(`${gr}.`) || p === gr);
+            return h(
+              `<tr class="odv-tgroup"><td colspan="${ths.length + 1}">${attr(cap(gr.split(".").pop()))} · ${list.length}</td></tr>`,
+              list.map((p) => `<tr><td><code>${attr(p.split(".").slice(1).join("."))}</code></td>${ths.map((t) => `<td>${cell(t, p)}</td>`).join("")}</tr>`),
+            );
+          }),
+          `</tbody></table></div>`,
+        ),
+        sameBlock(b),
+        `</div>`,
+      );
+    };
+    return (
+      `${esc(scheme.name)} has **${modes.length} mode${modes.length === 1 ? "" : "s"}** and **${brandIds.length} brand${brandIds.length === 1 ? "" : "s"}**. A mode swaps the colours; corners and type stay the same in every mode.${brandIds.length > 1 ? " Pick a brand in the top bar to see its set." : ""}\n\n` +
+      h(`<div class="odv-theming">`, brandIds.map(brandSet), `</div>`) +
+      "\n\n"
+    );
+  };
   g.scopes.forEach((sc, i) => {
     const tokens = owned(scheme, sc.owns ?? []);
     const usage = scheme.usage.filter((u) => sits[u.situation].scope === sc.id);
@@ -673,7 +904,9 @@ export function docsPages(
         primitiveOf(dark, key(t.path)),
       ]),
     ];
-    const SPECIMEN = ["components", "naming", "voice"].includes(sc.id)
+    const SPECIMEN = sc.id === "theming"
+      ? themingVisuals()
+      : ["components", "naming", "voice"].includes(sc.id)
       ? ""
       : specimen(
           semantics.length ? semantics : tokens,
@@ -693,7 +926,10 @@ export function docsPages(
             `| ${esc(q.text)} | ${esc(label(q.id))} | ${esc(answer(q.id).why)} |`,
         )
         .join("\n") +
-      `\n\n## Tokens\n\n` +
+      // Theming shows its tokens as the mode table above (OD-211), so it skips the flat lists.
+      (sc.id === "theming"
+        ? ""
+        : `\n\n## Tokens\n\n` +
       (semantics.length
         ? `Each token points to another token. Values live only on primitives, below.\n\n` +
           (darkDiffers
@@ -709,7 +945,7 @@ export function docsPages(
         : "This scope sets primitives directly.") +
       (prims.filter(Boolean).length
         ? `\n\n## Primitives\n\nThe raw values the tokens above end at.\n\n${primitiveRows(prims)}`
-        : "") +
+        : "")) +
       `\n\n## Where it lands\n\n${(sc.lands_in ?? []).map((c) => `- ${title(c)}`).join("\n")}\n\n` +
       `## When to use what\n\n${RULES}${usage.map(rule).join("\n")}\n` +
       (sc.id === "color" ? colourGuidance(g) : "");
@@ -780,14 +1016,114 @@ export function docsPages(
       null,
       2,
     ) + "\n";
+  // The Primitives index (OD-211), in the Foundations style: a card per kind in groups, each with a
+  // robot, a specimen drawn from the raw values, and how many are in use. The table closes the page.
+  const PRIM_GROUPS = [
+    ["Colour", ["color"]],
+    ["Space and shape", ["space-and-size", "shape"]],
+    ["Type, motion and effects", ["type", "motion", "effects"]],
+  ];
+  const PRIM_ROBOT = {
+    color: "swatch",
+    "space-and-size": "measure",
+    shape: "scopes/shape",
+    type: "scopes/typography",
+    motion: "scopes/motion",
+    effects: "scopes/elevation",
+    other: "scopes/naming",
+  };
+  const rem = (v) => {
+    const m = String(v).match(/^([\d.]+)(rem|px)$/);
+    return m ? Number(m[1]) * (m[2] === "rem" ? 16 : 1) : NaN;
+  };
+  const primSpecimen = (k) => {
+    const used = k.list.filter((x) => usedBy[x.path]);
+    const pick = used.length ? used : k.list;
+    if (k.id === "color") {
+      // One used step from each family, so the specimen is the palette in use.
+      const hues = {};
+      for (const x of pick.filter((y) => /^#/.test(String(y.ref)) && !/\.dark\./.test(y.path))) {
+        const hue = x.path.split(".")[1];
+        const step = Number(x.path.split(".").pop());
+        const best = hues[hue];
+        if (!best || Math.abs(step - 600) < Math.abs(best.step - 600)) hues[hue] = { ...x, step };
+      }
+      const sws = Object.values(hues);
+      return `<div class="odv-spec">${sws
+        .slice(0, 8)
+        .map((x) => `<i class="odv-sw" style="background:${x.ref}" title="${attr(x.path)}"></i>`)
+        .join("")}</div>`;
+    }
+    if (k.id === "space-and-size") {
+      const px = [...new Set(pick.map((x) => rem(x.ref)).filter((n) => n > 0))].sort((a, b) => a - b).slice(0, 7);
+      const top = Math.max(...px);
+      return `<div class="odv-spec odv-spec-cols">${px.map((n) => `<i style="height:${Math.max(3, Math.round((n / top) * 30))}px" title="${n}px"></i>`).join("")}</div>`;
+    }
+    if (k.id === "shape") {
+      const rs = [
+        ...new Set(
+          pick
+            .filter((x) => x.path.startsWith("radius."))
+            .map((x) => String(x.ref))
+            .filter((v) => rem(v) < 999),
+        ),
+      ].slice(0, 4);
+      return `<div class="odv-spec">${rs.map((v) => `<i class="odv-shape" style="border-radius:${v}" title="${attr(v)}"></i>`).join("")}</div>`;
+    }
+    if (k.id === "type") {
+      const fams = pick.filter((x) => x.path.startsWith("font.family.")).slice(0, 2);
+      return `<div class="odv-spec">${fams
+        .map((x) => `<span class="odv-aa" style="font-family:${attr(cssValue(x.ref))}" title="${attr(x.path)}">Aa</span>`)
+        .join("")}<span class="odv-spec-note">${fams.map((x) => attr(String(cssValue(x.ref)).split(",")[0].replaceAll('"', ""))).join(" · ")}</span></div>`;
+    }
+    if (k.id === "motion") {
+      const ds = pick.filter((x) => x.path.startsWith("duration.")).map((x) => String(x.ref));
+      return `<div class="odv-spec"><i class="odv-dot"></i><span class="odv-spec-note">${ds.slice(0, 3).map(attr).join(" · ")}</span></div>`;
+    }
+    if (k.id === "effects") {
+      const sh = pick.filter((x) => x.path.startsWith("shadow.") && !/none/.test(x.path)).slice(0, 3);
+      return `<div class="odv-spec odv-spec-lift">${sh.map((x) => `<i class="odv-lift" style="box-shadow:${attr(cssValue(x.ref))}" title="${attr(x.path)}"></i>`).join("")}</div>`;
+    }
+    return "";
+  };
+  const primCard = (k) => {
+    const n = k.list.filter((x) => usedBy[x.path]).length;
+    return h(
+      `<a class="odv-scard" href="./${k.id}">`,
+      robots ? `<span class="odv-scard-art">${robot(PRIM_ROBOT[k.id] ?? PRIM_ROBOT.other)}</span>` : "",
+      `<span class="odv-scard-body"><span class="odv-scard-title">${attr(k.title)}</span>`,
+      primSpecimen(k),
+      `<span class="odv-scard-why">${k.list.length} primitives · ${n} in use</span>`,
+      `<span class="odv-meter" role="img" aria-label="${n} of ${k.list.length} in use"><i style="width:${Math.round((n / k.list.length) * 100)}%"></i></span>`,
+      `</span></a>`,
+    );
+  };
+  const primGrouped = new Set(PRIM_GROUPS.flatMap(([, ids]) => ids));
+  const primRest = kinds.filter((k) => !primGrouped.has(k.id)).map((k) => k.id);
   pages["primitives/index.md"] =
     fm({
       title: "Primitives",
       description: `Every raw value in ${scheme.name}, and what points to it.`,
+      hide_table_of_contents: true,
     }) +
     NOTE +
-    `# Primitives\n\nThe raw values of ${esc(scheme.name)}. Primitives hold the values; semantic tokens give them a job (see [Foundations](../foundations/index.md)), and components read only the jobs.\n\n` +
-    `**${prims.length}** primitives. **${nUsed}** are used by a semantic token, a theme or a component key. **${prims.length - nUsed}** are not used yet: they stay, so a brand or a changed answer can use them without adding a value.\n\n` +
+    `# Primitives\n\n` +
+    h(
+      `<div class="odv-pagehero"><div><p>`,
+      `The raw values of ${esc(scheme.name)}. Primitives hold the values; semantic tokens give them a job (see <a href="../foundations/">Foundations</a>), and components read only the jobs. Spare values stay, so a brand or a changed answer can use them without adding a value.`,
+      `</p><div class="odv-stats"><span><b>${prims.length}</b>Primitives</span><span><b>${nUsed}</b>In use</span><span><b>${prims.length - nUsed}</b>Spare</span></div></div>`,
+      robot(scheme.id, "odv-pagehero-robot"),
+      `</div>`,
+    ) +
+    "\n\n" +
+    [...PRIM_GROUPS, ...(primRest.length ? [["More", primRest]] : [])]
+      .map(([t, ids]) => {
+        const cards = ids.map((id) => kinds.find((k) => k.id === id)).filter(Boolean);
+        return cards.length ? `## ${t}\n\n` + h(`<div class="odv-scards">`, cards.map(primCard), `</div>`) : "";
+      })
+      .filter(Boolean)
+      .join("\n\n") +
+    `\n\n## Every kind\n\n**${prims.length}** primitives. **${nUsed}** are used by a semantic token, a theme or a component key. **${prims.length - nUsed}** are not used yet.\n\n` +
     `| Kind | Primitives | Used |\n| --- | --- | --- |\n` +
     kinds
       .map(
@@ -860,40 +1196,81 @@ export function docsPages(
   const out = Object.fromEntries(
     (scheme.inventory?.out ?? []).map((i) => [i.id, i.why]),
   );
+  // What to use instead of a left-out component (OD-211), each a component the scheme keeps.
+  const instead = Object.fromEntries(
+    (scheme.inventory?.out ?? []).map((i) => [i.id, i.instead ?? []]),
+  );
   const catalogue = g.catalogue?.items ?? [];
-  // The inventory page: every catalogue item, in or out, and whether it is built yet.
+  // The inventory page (OD-209): what the scheme carries, grouped by family as cards, then what it
+  // leaves out and why. Every catalogue item appears once, with whether it is built yet.
+  const FAMILY_TEXT = {
+    action: "Things people press.",
+    form: "Things people fill in.",
+    data: "Tables and charts.",
+    feedback: "Status and messages.",
+    navigation: "Ways around.",
+    overlay: "Things that float above the page.",
+    layout: "The frame around content.",
+    content: "Ways to show more content.",
+    media: "Pictures and slides.",
+  };
+  const FAMILY_ORDER = ["action", "form", "data", "feedback", "navigation", "overlay", "layout", "content", "media"];
+  const families = [...new Set([...FAMILY_ORDER, ...catalogue.map((c) => c.family)])];
+  // Only a component with a page links to it: built, and in the inventory unless every page is made.
+  const hasPage = (id) => built.includes(id) && (all || id in inventory);
+  const icard = (c, out) =>
+    h(
+      hasPage(c.id)
+        ? `<a class="odv-icard" href="./${c.id}">`
+        : `<div class="odv-icard">`,
+      `<span class="odv-icard-name">${title(c.id)}</span>`,
+      // Every card says what the component is (OD-213). The scheme's rule, or why it leaves the
+      // component out, is on the component's page.
+      `<span class="odv-icard-why">${esc(c.description ?? "")}</span>`,
+      `<span class="odv-pill${out ? " odv-pill-out" : ""}">${out ? "Left out" : "In · built"}</span>`,
+      hasPage(c.id) ? `</a>` : `</div>`,
+    );
+  const inItems = catalogue.filter((c) => c.id in inventory);
+  const outItems = catalogue.filter((c) => !(c.id in inventory));
   pages["components/inventory.md"] =
     fm({
       sidebar_position: 0,
       title: "Inventory",
       description: `The components ${scheme.name} carries.`,
+      hide_table_of_contents: true,
     }) +
     NOTE +
     `# Inventory
 
-**${Object.keys(inventory).length}** components are in ${esc(scheme.name)}. ` +
-    `The components answers picked them (see [Components](../foundations/components.md)). Anything not in is out.
-
 ` +
-    `| Component | Family | In | Built | Why |
-| --- | --- | --- | --- | --- |
-` +
-    [...catalogue]
-      .sort(
-        (a, b) =>
-          Number(b.id in inventory) - Number(a.id in inventory) ||
-          a.id.localeCompare(b.id),
-      )
-      .map(
-        (c) =>
-          `| ${title(c.id)} | ${c.family} | ${c.id in inventory ? "In" : "Out"} | ${built.includes(c.id) ? "Yes" : "Not yet"} | ${esc(inventory[c.id] ?? out[c.id] ?? "")} |`,
-      )
-      .join("\n") +
+    h(
+      `<div class="odv-pagehero"><div><p>`,
+      `<b>${Object.keys(inventory).length}</b> components are in ${esc(scheme.name)}. The components answers picked them (see <a href="../foundations/components">Components</a>). Anything not in is out, and its page says why.`,
+      `</p><div class="odv-stats"><span><b>${Object.keys(inventory).length}</b>In</span><span><b>${outItems.length}</b>Left out</span><span><b>${new Set(inItems.map((c) => c.family)).size}</b>Families</span></div></div>`,
+      robot("shelf", "odv-pagehero-robot"),
+      `</div>`,
+    ) +
+    "\n\n" +
+    families
+      .map((f) => {
+        const list = inItems.filter((c) => c.family === f).sort((a, b) => a.id.localeCompare(b.id));
+        if (!list.length) return "";
+        return `## ${title(f)}\n\n${FAMILY_TEXT[f] ?? ""} ${list.length} in ${esc(scheme.name)}.\n\n` + h(`<div class="odv-icards">`, list.map((c) => icard(c)), `</div>`);
+      })
+      .filter(Boolean)
+      .join("\n\n") +
+    (outItems.length
+      ? `\n\n## Left out\n\nThe components answers did not pick these.${all ? " Each page still shows how it would look." : ""}\n\n` +
+        h(`<div class="odv-icards">`, outItems.sort((a, b) => a.id.localeCompare(b.id)).map((c) => icard(c, out[c.id] ?? "Left out.")), `</div>`)
+      : "") +
     "\n";
   // A page per component that is in the inventory and built (OD-194). It reads the same engine as the
   // CLI's component command and the MCP's get_component, so the docs, Storybook and agents agree, and
   // adds what Storybook cannot: the answers behind each decision and what a change would move.
-  const names = built.filter((n) => !scheme.inventory || n in inventory);
+  const names = built.filter(
+    (n) => all || !scheme.inventory || n in inventory,
+  );
+  const leftOut = (n) => Boolean(scheme.inventory) && !(n in inventory);
   // Embeds open the story in this design system: the Open DS Storybook reads the scheme (and the first
   // brand) from its toolbar global; a created project's Storybook has one scheme and ignores it.
   const brandIds = Object.keys(scheme.tokens.brands ?? {});
@@ -912,24 +1289,36 @@ export function docsPages(
     const parts = [];
     parts.push(
       `# ${title(name)}\n\n${esc(r.overview ?? componentIntro(roots.ui, name))}\n\n` +
-        `**In ${esc(scheme.name)}.** ${esc(guide?.why ?? inventory[name] ?? "")}` +
-        (guide?.family ? ` Family: ${guide.family}.` : "") +
-        (r.source
-          ? ` Reference: ${esc(r.source.name)}${r.source.id ? ` (${r.source.id})` : ""}, ${r.source.license}.`
-          : ""),
+        // Left out or in, the page is the same (OD-192, OD-211): a left-out component is designed in
+        // the scheme's tokens like any other, and only adds its badge, its reason and what to use.
+        h(
+          `<p class="odv-compstatus">`,
+          leftOut(name)
+            ? `<span class="odv-pill odv-pill-out">Left out of ${attr(scheme.name)}</span> ${attr(out[name] ?? guide?.why ?? "")}` +
+                ((instead[name] ?? []).length
+                  ? ` <span class="odv-instead">Use instead: ${instead[name].map((x) => (names.includes(x) ? `<a href="./${x}">${title(x)}</a>` : title(x))).join(", ")}</span>`
+                  : "")
+            : `<span class="odv-pill">In ${attr(scheme.name)}</span>`,
+          `</p>`,
+        ),
     );
     // The live component, from Storybook (OD-183). Docusaurus serves this page as Markdown, so the
     // embed is plain HTML; the link works where the embed cannot load.
     parts.push(
       `## See it live\n\n` +
         h(
-          `<div class="odv-live"><span class="odv-wait">Start Storybook to see it live: <code>npm run storybook</code></span><iframe src="${storybook}/iframe.html?id=components-${name}--examples&viewMode=story&globals=${sbScheme}" title="${title(name)} examples in Storybook" loading="lazy"></iframe>`,
+          `<div class="odv-live"><span class="odv-wait">Start Storybook to see it live: <code>npm run storybook</code></span><iframe src="${storybook}/iframe.html?id=components-${name}--examples&viewMode=story&globals=${sbScheme};mode:light" title="${title(name)} examples in Storybook" loading="lazy"></iframe>`,
           `<div class="bar"><span>Live from Storybook</span><a href="${storybook}/?path=/docs/components-${name}--docs">Open ${title(name)} in Storybook</a><a href="${storybook}/iframe.html?id=components-${name}--examples&viewMode=story&globals=${sbScheme};mode:dark">See it in dark</a></div></div>`,
         ),
     );
-    if (r.apply_when)
+    // A kept component's own use leads "When to use it" (OD-211): where this scheme uses it, then
+    // what it is for in any design system.
+    const ownUse = leftOut(name) ? "" : (guide?.why ?? inventory[name] ?? "");
+    if (r.apply_when || ownUse)
       parts.push(
-        `## When to use it\n\n- **Use it when:** ${esc(r.apply_when)}\n- **Not when:** ${esc(r.not_when)}` +
+        `## When to use it\n\n` +
+          (ownUse ? `**In ${esc(scheme.name)}:** ${esc(ownUse)}\n\n` : "") +
+          (r.apply_when ? `- **Use it when:** ${esc(r.apply_when)}\n- **Not when:** ${esc(r.not_when)}` : "") +
           (r.vs?.length
             ? `\n\nInstead:\n\n${r.vs.map((v) => `- ${v.outside ? esc(title(v.id)) : pageOf(v.id)}: ${esc(v.why)}`).join("\n")}`
             : ""),
@@ -956,7 +1345,7 @@ export function docsPages(
               const stage =
                 v.axis === "state"
                   ? ""
-                  : `<div class="odv-vstage"><span class="odv-wait">Start Storybook to see it live</span><iframe src="${storybook}/iframe.html?id=components-${name}--playground&viewMode=story&globals=${sbScheme}&args=${v.axis}:${v.id}" title="${title(name)} ${v.id}" loading="lazy" tabindex="-1"></iframe></div>`;
+                  : `<div class="odv-vstage"><span class="odv-wait">Start Storybook to see it live</span><iframe src="${storybook}/iframe.html?id=components-${name}--playground&viewMode=story&globals=${sbScheme};mode:light&args=${v.axis}:${v.id}" title="${title(name)} ${v.id}" loading="lazy" tabindex="-1"></iframe></div>`;
               return h(
                 `<section class="odv-variant${used || !d ? "" : " off"}${stage ? "" : " nostage"}">`,
                 `<header><code>${v.id}</code><span class="odv-axisname">${v.axis}</span>${pill}</header>`,
@@ -1094,6 +1483,7 @@ export function docsPages(
         sidebar_position: i + 1,
         title: title(name),
         description: `${title(name)} in ${scheme.name}.`,
+        ...(leftOut(name) && { sidebar_class_name: "ods-left-out" }),
       }) +
       NOTE +
       parts.join("\n\n") +

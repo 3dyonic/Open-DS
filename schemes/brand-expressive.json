@@ -307,28 +307,464 @@
       {
         "id": "skeleton",
         "why": "Images while they load."
+      },
+      {
+        "id": "alert",
+        "why": "A sign-up that did not go through, and how to recover, on the page. Not for confirmations; toast does that.",
+        "variants": {
+          "variant": {
+            "default": {
+              "not_used": true,
+              "why": "Alerts here only report a sign-up that did not go through; confirmations go in a toast.",
+              "because": [
+                "tasks.q2",
+                "voice.count"
+              ]
+            },
+            "destructive": {
+              "use": "A sign-up that did not go through: plain first, then how to recover, with a word beside the color.",
+              "because": [
+                "voice.count",
+                "accessibility.count",
+                "outcomes.q2"
+              ]
+            }
+          }
+        }
+      },
+      {
+        "id": "alert-dialog",
+        "why": "The confirm after Button secondary, when something cannot be got back. Not when the visitor can join or add back later."
+      },
+      {
+        "id": "breadcrumb",
+        "why": "On a page below a site section, the way back up to it. Not on the launch page itself."
+      },
+      {
+        "id": "button-group",
+        "why": "Previous and next on the carousel. Not to join the one call to action with other actions."
+      },
+      {
+        "id": "calendar",
+        "why": "Inside a popover on an event site, when visitors pick a date near today. Not always shown in a section."
+      },
+      {
+        "id": "checkbox",
+        "why": "An optional extra in the sign-up form, such as a launch reminder. Not as a second action beside sign-up."
+      },
+      {
+        "id": "collapsible",
+        "why": "One block of extra detail people may skip. Not for a section's one big idea."
+      },
+      {
+        "id": "combobox",
+        "why": "A long, closed list in a form, such as countries. Not for a short list people can see at once."
+      },
+      {
+        "id": "date-picker",
+        "why": "On an event site, when visitors pick a date near today. Not for a date people know by heart."
+      },
+      {
+        "id": "dropdown-menu",
+        "why": "A few now-and-then actions on a piece, such as sharing the drop. Not for the one main action."
+      },
+      {
+        "id": "empty",
+        "why": "A region that loaded with nothing, in playful words with a clear next step. Not while images load; skeleton does that.",
+        "variants": {
+          "variant": {
+            "default": {
+              "use": "A campaign image or illustration beside the playful words and a clear next step.",
+              "because": [
+                "content.q1",
+                "human.q1"
+              ]
+            },
+            "icon": {
+              "use": "A two-tone icon in a tile, for a small region where a picture would push the words away.",
+              "because": [
+                "iconography.definition",
+                "iconography.roles"
+              ]
+            }
+          }
+        }
+      },
+      {
+        "id": "form",
+        "why": "The sign-up email, checked, with its error next to the field. Not for sections without a field."
+      },
+      {
+        "id": "input-group",
+        "why": "A value with a unit, or a search with a clear button. Not for controls that are separate fields.",
+        "variants": {
+          "align": {
+            "inline-start": {
+              "use": "The search icon before the text.",
+              "because": [
+                "iconography.roles"
+              ]
+            },
+            "inline-end": {
+              "use": "The unit after the value, or the clear button with a word: hover hints never show on phones.",
+              "because": [
+                "accessibility.values"
+              ]
+            },
+            "block-start": {
+              "not_used": true,
+              "why": "Copy is short and sign-up is the one action, so fields stay one line.",
+              "because": [
+                "content.q1",
+                "tasks.q2"
+              ]
+            },
+            "block-end": {
+              "not_used": true,
+              "why": "Copy is short and sign-up is the one action, so fields stay one line.",
+              "because": [
+                "content.q1",
+                "tasks.q2"
+              ]
+            }
+          }
+        }
+      },
+      {
+        "id": "input-otp",
+        "why": "A short code sent by text or email, typed or pasted. Not for passwords or other values."
+      },
+      {
+        "id": "item",
+        "why": "A short list with media and a few actions. Not for products and features; card does that.",
+        "variants": {
+          "variant": {
+            "default": {
+              "use": "Rows inside a card, which already gives the frame.",
+              "because": [
+                "elevation.definition"
+              ]
+            },
+            "outline": {
+              "use": "Rows on a color block, with a border so each holds its edge on vivid color.",
+              "because": [
+                "color.values"
+              ]
+            },
+            "muted": {
+              "not_used": true,
+              "why": "A quiet fill reads as bland on a loud page; color blocks already mark each section.",
+              "because": [
+                "brand.q2",
+                "outcomes.q2"
+              ]
+            }
+          },
+          "size": {
+            "default": {
+              "use": "Every row, at touch size: phones first.",
+              "because": [
+                "accessibility.values"
+              ]
+            },
+            "sm": {
+              "not_used": true,
+              "why": "Phones first: no compact rows.",
+              "because": [
+                "accessibility.values"
+              ]
+            }
+          }
+        }
+      },
+      {
+        "id": "native-select",
+        "why": "A plain closed list on a phone, such as a size. Not for a short list better shown at once."
+      },
+      {
+        "id": "pagination",
+        "why": "A rare line-up table split across pages. Not on campaign sections."
+      },
+      {
+        "id": "progress",
+        "why": "A known amount of work, such as an upload. Not for images loading; skeleton does that."
+      },
+      {
+        "id": "radio-group",
+        "why": "One answer from two to five options in a form. Not as a second action beside sign-up."
+      },
+      {
+        "id": "scroll-area",
+        "why": "A fixed-height list inside a popover or drawer. Not the whole page; let the page scroll."
+      },
+      {
+        "id": "slider",
+        "why": "A rough value where an exact number is not needed. Not for an exact answer people must type."
+      },
+      {
+        "id": "spinner",
+        "why": "A wait of unknown length that is not the button itself. Not for images; skeleton does that."
+      },
+      {
+        "id": "switch",
+        "why": "A setting that applies at once, such as drop news by email. Not inside the sign-up form; checkbox waits for it."
+      },
+      {
+        "id": "tabs",
+        "why": "A few related views of one drop, such as line-up and countdown. Not for links to other pages."
+      },
+      {
+        "id": "textarea",
+        "why": "A free-text answer longer than one line. Not in place of the sign-up email."
+      },
+      {
+        "id": "toggle",
+        "why": "A mode turned on and off in place. Not as a one-off action; button does that.",
+        "variants": {
+          "variant": {
+            "default": {
+              "not_used": true,
+              "why": "Sections lead with media and color blocks, not toolbars; a toggle with no border is lost on vivid color.",
+              "because": [
+                "components.roles",
+                "color.values"
+              ]
+            },
+            "outline": {
+              "use": "A pill with a border, so the toggle reads as a control on vivid color.",
+              "because": [
+                "shape.values",
+                "color.values"
+              ]
+            }
+          },
+          "size": {
+            "default": {
+              "use": "Every toggle, at touch size: phones first.",
+              "because": [
+                "accessibility.values"
+              ]
+            },
+            "sm": {
+              "not_used": true,
+              "why": "Phones first: no compact controls.",
+              "because": [
+                "accessibility.values"
+              ]
+            },
+            "lg": {
+              "not_used": true,
+              "why": "Large is for the one call to action per section, and a toggle is not that action.",
+              "because": [
+                "tasks.q2",
+                "outcomes.q1"
+              ]
+            }
+          }
+        }
+      },
+      {
+        "id": "toggle-group",
+        "why": "Switching a view between a few options, such as list and grid. Not as a form answer."
+      },
+      {
+        "id": "accordion",
+        "why": "Questions and answers people may skip. Not to hide a section's one big idea."
+      },
+      {
+        "id": "chart",
+        "why": "A relationship in numbers that is part of the campaign story. Not as decoration, or for a single number."
+      },
+      {
+        "id": "message",
+        "why": "A customer quote with its author, beside the avatar. Not for system status; toast and alert do that."
+      },
+      {
+        "id": "table",
+        "why": "A rare line-up people compare cell by cell, with comfortable rows. Not as the story of a section."
       }
     ],
     "out": [
       {
-        "id": "table",
-        "why": "Campaign pages tell a story; they do not list records."
+        "id": "attachment",
+        "why": "Brand expressive keeps only the parts in use for one action and a story, not a part for one campaign. Sharing files in a conversation is neither.",
+        "instead": [
+          "card"
+        ],
+        "because": [
+          "components.count",
+          "tasks.q2"
+        ]
       },
       {
-        "id": "sidebar",
-        "why": "Launch sites have no app navigation."
+        "id": "bubble",
+        "why": "Brand expressive keeps only the parts in use for one action and a story, not a part for one campaign. A back-and-forth chat is neither.",
+        "instead": [
+          "card",
+          "avatar"
+        ],
+        "because": [
+          "components.count",
+          "tasks.q2"
+        ]
       },
       {
         "id": "command",
-        "why": "Visitors on phones do not use keyboard menus."
+        "why": "Command serves expert users who type to jump anywhere. Brand expressive serves new customers deciding if they care, who come from social posts on their phones.",
+        "instead": [
+          "navigation-menu",
+          "drawer"
+        ],
+        "because": [
+          "people.q1",
+          "scenarios.q1"
+        ]
       },
       {
-        "id": "accordion",
-        "why": "Campaign sections show everything; nothing worth saying is hidden."
+        "id": "context-menu",
+        "why": "Context menu is for power users, and people who don't know to right-click never find it. Brand expressive serves new customers deciding if they care.",
+        "instead": [
+          "button",
+          "popover"
+        ],
+        "because": [
+          "people.q1",
+          "tasks.q2"
+        ]
+      },
+      {
+        "id": "data-table",
+        "why": "Brand expressive avoids tools people use for hours. Data table is for acting on many records in bulk; here people browse and explore the story.",
+        "instead": [
+          "card"
+        ],
+        "because": [
+          "tasks.q1",
+          "people.q1"
+        ]
       },
       {
         "id": "hover-card",
-        "why": "Hover never happens on a phone, where most visitors arrive."
+        "why": "Touch screens have no hover, and visitors come from social posts on their phones. Popover already opens a product preview on tap.",
+        "instead": [
+          "popover"
+        ],
+        "because": [
+          "scenarios.q1",
+          "accessibility.values"
+        ]
+      },
+      {
+        "id": "kbd",
+        "why": "Visitors come from social posts on their phones, and they are new customers deciding if they care. A keyboard shortcut serves neither.",
+        "instead": [
+          "button"
+        ],
+        "because": [
+          "scenarios.q1",
+          "people.q1"
+        ]
+      },
+      {
+        "id": "marker",
+        "why": "Brand expressive keeps only the parts in use for one action and a story, and a visit lasts a few minutes. A long conversation split into days is neither.",
+        "instead": [
+          "separator"
+        ],
+        "because": [
+          "components.count",
+          "scenarios.q2"
+        ]
+      },
+      {
+        "id": "menubar",
+        "why": "Menubar is for dense desktop tools and not phones. Visitors come from social posts on their phones, and the site sections use navigation menu.",
+        "instead": [
+          "navigation-menu",
+          "drawer"
+        ],
+        "because": [
+          "scenarios.q1"
+        ]
+      },
+      {
+        "id": "message-scroller",
+        "why": "Brand expressive keeps only the parts in use for one action and a story, not a part for one campaign. A live conversation is neither.",
+        "instead": [
+          "card"
+        ],
+        "because": [
+          "components.count",
+          "tasks.q2"
+        ]
+      },
+      {
+        "id": "resizable",
+        "why": "Resizable is for desktop tools and not phones. Visitors come from social posts on their phones, and Brand expressive avoids tools people use for hours.",
+        "instead": [
+          "card"
+        ],
+        "because": [
+          "scenarios.q1"
+        ]
+      },
+      {
+        "id": "select",
+        "why": "Visitors come from social posts on their phones, where the system picker is best. Native select covers a closed list there.",
+        "instead": [
+          "field",
+          "popover"
+        ],
+        "because": [
+          "scenarios.q1",
+          "accessibility.values"
+        ]
+      },
+      {
+        "id": "sheet",
+        "why": "Phones first: drawer is the bottom panel for phones and already holds the menu, and dialog holds the waitlist form.",
+        "instead": [
+          "drawer",
+          "dialog"
+        ],
+        "because": [
+          "accessibility.values",
+          "scenarios.q1"
+        ]
+      },
+      {
+        "id": "sidebar",
+        "why": "Sidebar is for apps people move around all session. Brand expressive avoids tools people use for hours, and a visit lasts a few minutes at most.",
+        "instead": [
+          "navigation-menu",
+          "drawer"
+        ],
+        "because": [
+          "scenarios.q2"
+        ]
+      },
+      {
+        "id": "sonner",
+        "why": "Brand expressive has one action: sign up, and toast confirms a place on the waitlist. Stacked toasts are for many confirmations close together.",
+        "instead": [
+          "toast"
+        ],
+        "because": [
+          "tasks.q2",
+          "scenarios.q1"
+        ]
+      },
+      {
+        "id": "tooltip",
+        "why": "Visitors come from social posts on their phones, where hover hints never show. Every button has a word instead.",
+        "instead": [
+          "button",
+          "popover"
+        ],
+        "because": [
+          "accessibility.values",
+          "iconography.roles"
+        ]
       }
     ]
   },
@@ -341,6 +777,33 @@
       "voice.values"
     ],
     "screen": "The drop is coming",
+    "conversation": {
+      "title": "Drop 03 chat",
+      "marker": "Drop day",
+      "messages": [
+        {
+          "author": "Drop crew",
+          "time": "10:00",
+          "text": "Night runner is live. Four colours. Go."
+        },
+        {
+          "author": "You",
+          "time": "10:01",
+          "text": "Black in medium, please!",
+          "mine": true
+        },
+        {
+          "author": "Drop crew",
+          "time": "10:02",
+          "text": "Locked in. See you at checkout."
+        }
+      ],
+      "attachment": {
+        "name": "night-runner-size-guide.pdf",
+        "type": "PDF",
+        "size": "860 KB"
+      }
+    },
     "actions": {
       "primary": "Join the drop",
       "secondary": "See the line-up"

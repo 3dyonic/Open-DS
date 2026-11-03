@@ -34,6 +34,12 @@ export interface Samples {
   tabs?: { label: string; content: string }[];
   menu?: { trigger: string; items: string[]; destructive: string };
   icon_action?: string;
+  conversation?: {
+    title: string;
+    marker: string;
+    messages: { author: string; time: string; text: string; mine?: boolean }[];
+    attachment: { name: string; type: string; size: string };
+  };
 }
 export interface SchemeData {
   id: string;

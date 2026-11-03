@@ -18,7 +18,7 @@ Open DS models a design system as a finite grammar of questions. A scheme answer
 | `mcp/`       | Host for the MCP server, which lives in the `open-ds` package (`cli/src/mcp.mjs`): one engine with the CLI. | `pnpm --dir mcp test`        |
 | `storybook/` | Every component in every scheme, brand and mode.                                                            | `pnpm --dir storybook build` |
 | `site/`      | The website, a static Next.js app.                                                                          | `pnpm --dir site build`      |
-| `docs/`      | Docusaurus docs of a delivered design system, generated for one scheme (`OPEN_DS_SCHEME`).                  | `pnpm --dir docs build`      |
+| `docs/`      | Docusaurus docs of every scheme in one site, with a scheme switcher (OD-207).                               | `pnpm --dir docs build`      |
 | `guide/`     | The guide for Open DS itself: product, business, brand, CLI, MCP, agents, contributing.                     | `pnpm harness`               |
 | `skills/`    | The agent skill shipped with every deployed scheme.                                                         | `pnpm harness`               |
 | `harness/`   | Checks every layer against the ticket specs.                                                                | `pnpm harness:full`          |

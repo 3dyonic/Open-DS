@@ -2,7 +2,7 @@
    Docusaurus's own variables at them. The rules below dress the parts Docusaurus has no
    variable for in the same tokens and component keys. */
 @import url("https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible:wght@400;700&family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,600;12..96,800&family=DM+Mono:wght@400;500&family=DM+Sans:wght@400;700&family=IBM+Plex+Mono&family=IBM+Plex+Sans:wght@400;500;600&family=Inter:wght@400;600;700&family=Plus+Jakarta+Sans:wght@400;600;700&family=Poppins:wght@400;600;700&family=Source+Serif+4:wght@400;600&display=swap");
-@import "./scheme.css";
+@import "./schemes.css";
 @import "./visual.css";
 
 body {
@@ -246,7 +246,8 @@ code {
 /* The brand: the Open DS mark in this system's colours, its name in the title type, and a tag
    that says these are its docs. */
 .navbar__brand {
-  gap: var(--space-gap-default);
+  /* OD-211: room between the mark and the name, even in the tightest scheme. */
+  gap: max(var(--space-gap-default), 0.75rem);
 }
 .navbar__logo {
   height: 1.25rem;
@@ -273,4 +274,465 @@ code {
   font-weight: var(--type-label-font-weight);
   letter-spacing: 0.02em;
   text-transform: uppercase;
+}
+
+/* The scheme switcher and the landing page (OD-207). They read the tokens of the scheme you are on;
+   on the landing page, where no scheme applies, Docusaurus's own variables. */
+.ods-switcher {
+  display: flex;
+  gap: var(--space-gap-tight, 0.5rem);
+  align-items: center;
+  padding: 0 var(--ifm-navbar-item-padding-horizontal);
+}
+.ods-switcher label {
+  display: flex;
+  gap: 0.375rem;
+  align-items: center;
+  font-size: var(--type-label-font-size, 0.875rem);
+  color: var(--ifm-font-color-secondary);
+}
+.ods-switcher select {
+  font: inherit;
+  color: var(--ifm-font-color-base);
+  background: var(--ifm-background-surface-color);
+  border: 1px solid var(--color-border-default, var(--ifm-color-emphasis-300));
+  border-radius: var(--radius-control, 0.25rem);
+  padding: 0.25rem 0.5rem;
+}
+.ods-switcher--mobile {
+  padding: 0.5rem var(--ifm-menu-link-padding-horizontal);
+  flex-wrap: wrap;
+}
+/* The docs home (OD-209). It sits outside every scheme, on paper like the robots. */
+.ods-home {
+  --paper: #f6efe2;
+  --ink: #16140f;
+  --muted: #5d574b;
+  --line: #e2d9c6;
+  --card: #fffdf8;
+  max-width: 72rem;
+  margin: 0 auto;
+  padding: 2.5rem 1rem 4rem;
+  display: grid;
+  gap: 3rem;
+}
+html[data-theme="dark"] .ods-home {
+  --paper: #15171d;
+  --ink: #ece6d8;
+  --muted: #a49c8b;
+  --line: #2c2f38;
+  --card: #1b1e25;
+}
+.ods-hero {
+  display: grid;
+  justify-items: center;
+  text-align: center;
+  gap: 1rem;
+}
+.ods-eyebrow {
+  margin: 0;
+  font:
+    500 0.75rem "IBM Plex Mono",
+    ui-monospace,
+    monospace;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--ifm-color-primary);
+}
+.ods-hero h1 {
+  margin: 0;
+  max-width: 18ch;
+  font-size: clamp(2rem, 5vw, 3.4rem);
+  line-height: 1.05;
+  letter-spacing: -0.02em;
+  text-wrap: balance;
+}
+.ods-lede {
+  margin: 0;
+  max-width: 56ch;
+  font-size: 1.0625rem;
+  color: var(--ifm-font-color-secondary);
+}
+.ods-asks,
+.ods-tags {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  justify-content: center;
+}
+.ods-asks li {
+  font:
+    0.75rem "IBM Plex Mono",
+    ui-monospace,
+    monospace;
+  border: 1px solid var(--ifm-color-emphasis-300);
+  border-radius: 999px;
+  padding: 0.25rem 0.75rem;
+  color: var(--ifm-font-color-secondary);
+}
+.ods-stage {
+  width: 100%;
+  margin-top: 0.5rem;
+  background: var(--paper);
+  border-radius: 1.25rem;
+  padding: 1.5rem 1rem 1.25rem;
+  display: grid;
+  grid-template-columns: repeat(5, minmax(0, 1fr));
+  gap: clamp(0.25rem, 2vw, 1.5rem);
+  align-items: end;
+}
+.ods-stage-bot {
+  display: grid;
+  gap: 0.5rem;
+  justify-items: center;
+  color: var(--ink);
+}
+.ods-stage-bot:hover {
+  text-decoration: none;
+}
+.ods-stage-bot .ods-robot {
+  transition: transform 0.3s;
+}
+.ods-stage-bot:hover .ods-robot,
+.ods-stage-bot:focus-visible .ods-robot {
+  transform: translateY(-6px) rotate(-2deg);
+}
+.ods-stage-name {
+  font-weight: 700;
+  font-size: 0.9375rem;
+}
+.ods-robot {
+  display: block;
+  width: 100%;
+}
+.ods-robot img {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+.ods-robot-night,
+html[data-theme="dark"] .ods-robot-day {
+  display: none !important;
+}
+html[data-theme="dark"] .ods-robot-night {
+  display: block !important;
+}
+@media (prefers-reduced-motion: reduce) {
+  .ods-stage-bot .ods-robot {
+    transition: none;
+  }
+}
+.ods-shelf {
+  display: grid;
+  gap: 0.875rem;
+}
+.ods-shelf-bar {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  align-items: center;
+  justify-content: space-between;
+}
+.ods-shelf-bar h2 {
+  margin: 0;
+}
+.ods-search {
+  font: inherit;
+  width: 16rem;
+  max-width: 100%;
+  border: 1px solid var(--ifm-color-emphasis-300);
+  border-radius: 0.625rem;
+  padding: 0.5rem 0.75rem;
+  background: var(--ifm-background-surface-color);
+  color: var(--ifm-font-color-base);
+}
+.ods-chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+.ods-chip {
+  font: inherit;
+  font-size: 0.8125rem;
+  border: 1px solid var(--ifm-color-emphasis-300);
+  background: var(--ifm-background-surface-color);
+  color: var(--ifm-font-color-base);
+  border-radius: 999px;
+  padding: 0.3rem 0.8rem;
+  cursor: pointer;
+}
+.ods-chip[aria-pressed="true"] {
+  background: var(--ifm-font-color-base);
+  color: var(--ifm-background-surface-color, #fff);
+  border-color: var(--ifm-font-color-base);
+}
+/* The home page wears no scheme, so its logo follows the theme on its own. */
+html:not([data-scheme])[data-theme="dark"] .navbar__logo img {
+  content: url("/logo-dense-data-dark.svg");
+}
+.ods-rows {
+  border: 1px solid var(--ifm-color-emphasis-300);
+  border-radius: 1rem;
+  overflow: hidden;
+  background: var(--ifm-background-surface-color);
+}
+.ods-row {
+  position: relative;
+  display: grid;
+  grid-template-columns: 7rem minmax(0, 1.5fr) minmax(0, 1fr) 14.5rem;
+  gap: 1.25rem;
+  align-items: center;
+  padding: 1.125rem 1.25rem;
+  border-top: 1px solid var(--ifm-color-emphasis-300);
+}
+.ods-row:first-child {
+  border-top: 0;
+}
+.ods-row::before {
+  content: "";
+  position: absolute;
+  inset: 0 auto 0 0;
+  width: 4px;
+  background: var(--c);
+  opacity: 0;
+  transition: opacity 0.2s;
+}
+.ods-row:hover::before {
+  opacity: 1;
+}
+.ods-row-art {
+  display: grid;
+  place-items: center;
+  aspect-ratio: 1;
+  border-radius: 0.875rem;
+  background: var(--paper);
+  border: 2px solid color-mix(in srgb, var(--c) 35%, transparent);
+  padding: 0.375rem;
+}
+.ods-row-info {
+  display: grid;
+  gap: 0.25rem;
+  min-width: 0;
+}
+.ods-row-info h3 {
+  margin: 0;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  align-items: center;
+  font-size: 1.25rem;
+}
+.ods-row-info h3 a {
+  color: inherit;
+}
+.ods-row-info p {
+  margin: 0;
+  font-size: 0.875rem;
+  color: var(--ifm-font-color-secondary);
+}
+.ods-badge {
+  font:
+    500 0.6875rem "IBM Plex Mono",
+    ui-monospace,
+    monospace;
+  color: var(--ifm-font-color-secondary);
+  border: 1px solid var(--ifm-color-emphasis-300);
+  border-radius: 4px;
+  padding: 1px 6px;
+}
+.ods-tags {
+  justify-content: flex-start;
+  margin-top: 0.25rem;
+}
+.ods-tags li {
+  font-size: 0.75rem;
+  background: var(--ifm-color-emphasis-100);
+  border-radius: 6px;
+  padding: 2px 8px;
+}
+.ods-facts {
+  margin: 0;
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 0.5rem 0.875rem;
+  min-width: 0;
+}
+.ods-facts div {
+  min-width: 0;
+}
+.ods-facts dt {
+  font:
+    0.6875rem "IBM Plex Mono",
+    ui-monospace,
+    monospace;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: var(--ifm-font-color-secondary);
+}
+.ods-facts dd {
+  margin: 0;
+  font-weight: 700;
+  font-size: 0.875rem;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.ods-row-act {
+  display: grid;
+  gap: 0.5rem;
+  min-width: 0;
+}
+.ods-btn {
+  font-weight: 600;
+  font-size: 0.8125rem;
+  text-align: center;
+  border-radius: 0.5rem;
+  padding: 0.5rem 0.75rem;
+  border: 1px solid var(--ifm-color-emphasis-300);
+  color: var(--ifm-font-color-base);
+}
+.ods-btn:hover {
+  text-decoration: none;
+  border-color: var(--c);
+}
+.ods-btn--primary {
+  background: var(--c);
+  border-color: var(--c);
+  color: #fff;
+}
+.ods-btn--primary:hover {
+  color: #fff;
+  filter: brightness(1.08);
+}
+.ods-cmd {
+  font:
+    0.75rem "IBM Plex Mono",
+    ui-monospace,
+    monospace;
+  color: var(--ifm-font-color-secondary);
+  background: var(--ifm-color-emphasis-100);
+  border: 0;
+  border-radius: 6px;
+  padding: 0.375rem 0.5rem;
+  text-align: left;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  cursor: pointer;
+}
+.ods-empty {
+  margin: 0;
+  padding: 1.5rem;
+  text-align: center;
+  color: var(--ifm-font-color-secondary);
+}
+@media (max-width: 1020px) {
+  .ods-row {
+    grid-template-columns: 5rem minmax(0, 1fr);
+  }
+  .ods-facts,
+  .ods-row-act {
+    grid-column: 1 / -1;
+  }
+  .ods-row-act {
+    grid-template-columns: 1fr 1fr;
+  }
+  .ods-cmd {
+    grid-column: 1 / -1;
+  }
+}
+@media (max-width: 640px) {
+  .ods-stage {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+}
+/* The navbar holds a scheme's sections and the switcher in every scheme's type size: items never
+   wrap, and on narrower screens the labels and gaps tighten before Docusaurus switches to its menu. */
+.navbar__item,
+.navbar__brand,
+.navbar__title {
+  white-space: nowrap;
+}
+@media (max-width: 1440px) {
+  .navbar {
+    font-size: min(var(--type-label-font-size, 0.875rem), 0.9375rem);
+  }
+  .navbar__item {
+    --ifm-navbar-item-padding-horizontal: 0.5rem;
+  }
+  .ods-switcher label > span {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+    clip: rect(0 0 0 0);
+  }
+}
+@media (max-width: 1280px) {
+  .navbar__title {
+    display: none;
+  }
+}
+/* A component the scheme leaves out (OD-211): the same entry as any other, with a small badge. */
+.ods-left-out > .menu__link::after {
+  content: "Left out";
+  margin-left: auto;
+  padding: 0 0.375rem;
+  font: 500 0.625rem/1.6 var(--type-data-font-family, ui-monospace, monospace);
+  color: var(--color-status-warning);
+  background: var(--color-status-warning-subtle);
+  border-radius: var(--radius-badge);
+}
+
+/* OD-209: the scheme's robot at the foot of the sidebar. Each scheme's CSS sets the picture. */
+.theme-doc-sidebar-container .menu::after {
+  content: "";
+  display: block;
+  height: 120px;
+  margin: 24px auto 8px;
+  background: no-repeat center bottom / contain;
+  opacity: 0.9;
+}
+
+/* OD-209: page not found, with Slumber. */
+.ods-notfound {
+  display: grid;
+  justify-items: center;
+  gap: 0.75rem;
+  text-align: center;
+}
+.ods-notfound-robot {
+  width: 220px;
+}
+.ods-notfound p {
+  max-width: 40ch;
+  color: var(--ifm-font-color-secondary);
+}
+
+/* OD-211: the scheme's home, first in its sidebar, reads as the sidebar's heading: which design
+   system you are reading. */
+.theme-doc-sidebar-menu > .menu__list-item:first-child > .menu__link {
+  display: block;
+  font-family: var(--type-title-font-family);
+  font-size: 1.25rem;
+  font-weight: 700;
+  line-height: 1.2;
+  padding-bottom: 0.625rem;
+  margin-bottom: 0.375rem;
+  border-bottom: 1px solid var(--ifm-color-emphasis-200);
+  border-radius: 0;
+  background: none;
+  color: var(--ifm-font-color-base);
+}
+.theme-doc-sidebar-menu > .menu__list-item:first-child > .menu__link::before {
+  content: "Scheme";
+  display: block;
+  margin-bottom: 0.125rem;
+  font: 500 0.6875rem/1.4 var(--type-data-font-family, ui-monospace, monospace);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--ifm-color-emphasis-600);
 }

@@ -176,26 +176,27 @@ if (!quick) {
     run("pnpm", ["--dir", "storybook", "build"]);
     return "storybook/storybook-static";
   });
-  step("Docs build (Docusaurus, the delivered design system)", () => {
-    try {
-      run("pnpm", ["--dir", "docs", "build"], {
-        env: { ...process.env, OPEN_DS_SCHEME: "multi-brand" },
-      });
-      must(
-        existsSync(join(root, "docs", "build", "llms.txt")),
-        "docs do not serve llms.txt",
-      );
-      must(
-        existsSync(
-          join(root, "docs", "build", "foundations", "voice", "index.html"),
+  step("Docs build (Docusaurus, every scheme)", () => {
+    run("pnpm", ["--dir", "docs", "build"]);
+    must(
+      existsSync(join(root, "docs", "build", "multi-brand", "llms.txt")),
+      "docs do not serve multi-brand/llms.txt",
+    );
+    must(
+      existsSync(
+        join(
+          root,
+          "docs",
+          "build",
+          "multi-brand",
+          "foundations",
+          "voice",
+          "index.html",
         ),
-        "no voice foundation page",
-      );
-    } finally {
-      // Put the default scheme's docs back, even when the build fails.
-      run("node", ["docs/scripts/generate.mjs"]);
-    }
-    return "multi-brand docs in docs/build, with llms.txt and a page per scope";
+      ),
+      "no multi-brand voice foundation page",
+    );
+    return "every scheme's docs in docs/build, each with llms.txt and a page per scope";
   });
 }
 

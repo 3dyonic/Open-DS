@@ -341,24 +341,476 @@
       {
         "id": "skeleton",
         "why": "Article text while it loads."
+      },
+      {
+        "id": "alert-dialog",
+        "why": "The confirm after a delete that cannot be undone. Not for unsubscribing, which readers can undo."
+      },
+      {
+        "id": "carousel",
+        "why": "A few images people browse for pleasure, where missing some is fine. Not for anything readers must see."
+      },
+      {
+        "id": "checkbox",
+        "why": "Picking topics, where many may be true and the choice waits for the form. Not for a setting that applies at once."
+      },
+      {
+        "id": "dropdown-menu",
+        "why": "A short menu of rare actions on a guide, such as save and share. Not for the one main action."
+      },
+      {
+        "id": "empty",
+        "why": "An empty reading list, as an invitation to save an article. Not while article text is loading.",
+        "variants": {
+          "variant": {
+            "default": {
+              "not_used": true,
+              "why": "Attention belongs to the text: the invitation is in words, not a picture.",
+              "because": [
+                "human.q1",
+                "brand.q2"
+              ]
+            },
+            "icon": {
+              "use": "A quiet outline icon in a small tile, above a warm invitation to save an article.",
+              "because": [
+                "iconography.definition",
+                "voice.values"
+              ]
+            }
+          }
+        }
+      },
+      {
+        "id": "form",
+        "why": "The newsletter and search forms, with a plain sentence that says what to fix. Not for a single control."
+      },
+      {
+        "id": "input-group",
+        "why": "The search field, with a clear button and any icon beside a visible word. Not for separate fields.",
+        "variants": {
+          "align": {
+            "inline-start": {
+              "use": "The search icon before the text, with the visible label above the field.",
+              "because": [
+                "iconography.roles",
+                "human.q2"
+              ]
+            },
+            "inline-end": {
+              "use": "The clear button after the text, with a word: occasional visitors do not know icons.",
+              "because": [
+                "human.q2"
+              ]
+            },
+            "block-start": {
+              "not_used": true,
+              "why": "Search is one line, and forms are rare and short.",
+              "because": [
+                "tasks.q2"
+              ]
+            },
+            "block-end": {
+              "not_used": true,
+              "why": "Search is one line, and forms are rare and short.",
+              "because": [
+                "tasks.q2"
+              ]
+            }
+          }
+        }
+      },
+      {
+        "id": "item",
+        "why": "Rows in the reading list, each with an action named in a word. Not where cards preview articles.",
+        "variants": {
+          "variant": {
+            "default": {
+              "use": "Rows in the reading list, separated by space, not lines.",
+              "because": [
+                "elevation.definition",
+                "spacing.values"
+              ]
+            },
+            "outline": {
+              "not_used": true,
+              "why": "Borders would interrupt reading; space separates the rows.",
+              "because": [
+                "elevation.definition"
+              ]
+            },
+            "muted": {
+              "not_used": true,
+              "why": "Every row in the reading list weighs the same; attention belongs to the text.",
+              "because": [
+                "human.q1"
+              ]
+            }
+          },
+          "size": {
+            "default": {
+              "use": "Every row, at touch size: many readers are on phones.",
+              "because": [
+                "accessibility.values"
+              ]
+            },
+            "sm": {
+              "not_used": true,
+              "why": "Many readers are on phones, and rows are read, not scanned.",
+              "because": [
+                "accessibility.values",
+                "tasks.q1"
+              ]
+            }
+          }
+        }
+      },
+      {
+        "id": "native-select",
+        "why": "A plain closed choice on a phone, such as sorting the reading list. Not for options that need icons."
+      },
+      {
+        "id": "radio-group",
+        "why": "Two to five choices readers should see at once, such as how to sort the list. Not for many options."
+      },
+      {
+        "id": "scroll-area",
+        "why": "A fixed-height panel inside a page, such as the phone menu in a sheet. Not the article: let the page scroll."
+      },
+      {
+        "id": "select",
+        "why": "A closed list whose options need more than plain text. Not for a short list readers should see at once."
+      },
+      {
+        "id": "spinner",
+        "why": "A short wait that is not article text or the button itself. Not while article text loads; skeleton keeps that layout."
+      },
+      {
+        "id": "switch",
+        "why": "A setting that applies at once, such as emailing the weekly letter. Not for a choice that waits for a form."
+      },
+      {
+        "id": "tabs",
+        "why": "Views of the reading list, such as saved and finished. Not to move between site sections."
+      },
+      {
+        "id": "chart",
+        "why": "A figure inside an article when the story is a relationship in numbers. Not as decoration."
+      },
+      {
+        "id": "table",
+        "why": "The rare table inside an article, read row by row at a comfortable height. Not for records people scan or sort."
       }
     ],
     "out": [
       {
-        "id": "table",
-        "why": "Long-form reading rarely needs records; a plain HTML table covers the odd one."
+        "id": "attachment",
+        "why": "Readers need sections, navigation and little else. Files attach to messages, and Content first carries no conversations: people read from start to end.",
+        "instead": [
+          "button"
+        ],
+        "because": [
+          "components.roles",
+          "tasks.q1"
+        ]
+      },
+      {
+        "id": "bubble",
+        "why": "Readers need sections, navigation and little else. Bubbles are for back-and-forth chat, and the catalogue rules them out for long text.",
+        "instead": [
+          "card"
+        ],
+        "because": [
+          "components.roles",
+          "content.q1"
+        ]
+      },
+      {
+        "id": "button-group",
+        "why": "Content first keeps one clear action per section, and alternatives are text links so they do not compete. Joined buttons work against that.",
+        "instead": [
+          "button",
+          "pagination"
+        ],
+        "because": [
+          "tasks.q2",
+          "brand.q1"
+        ]
+      },
+      {
+        "id": "calendar",
+        "why": "Readers need sections, navigation and little else. Actions are rare: subscribe, share, save. Picking dates is not one of them.",
+        "instead": [
+          "input"
+        ],
+        "because": [
+          "components.roles",
+          "tasks.q2"
+        ]
+      },
+      {
+        "id": "combobox",
+        "why": "Readers need sections, navigation and little else. Actions are rare: subscribe, share, save. The catalogue rules combobox out for searching a whole site; search is a plain input.",
+        "instead": [
+          "input"
+        ],
+        "because": [
+          "components.roles",
+          "tasks.q2"
+        ]
       },
       {
         "id": "command",
-        "why": "Readers browse; they do not drive the site from the keyboard."
+        "why": "Command suits expert users who type to jump anywhere. Most readers visit now and then, and the catalogue rules it out for them.",
+        "instead": [
+          "navigation-menu",
+          "input"
+        ],
+        "because": [
+          "people.q1",
+          "human.q2"
+        ]
       },
       {
-        "id": "chart",
-        "why": "Figures appear as images inside articles."
+        "id": "context-menu",
+        "why": "Right-click menus suit power users. Readers are occasional visitors who see the interface fresh each time, and arrive on phones too.",
+        "instead": [
+          "button"
+        ],
+        "because": [
+          "people.q1",
+          "human.q2",
+          "scenarios.q1"
+        ]
+      },
+      {
+        "id": "data-table",
+        "why": "Content first avoids data-heavy tools. It has no dense tables, and its rows are read, not scanned.",
+        "instead": [
+          "card",
+          "pagination"
+        ],
+        "because": [
+          "spacing.roles",
+          "tasks.q1"
+        ]
+      },
+      {
+        "id": "date-picker",
+        "why": "Readers need sections, navigation and little else. Actions are rare: subscribe, share, save. Picking a date or range is not one of them.",
+        "instead": [
+          "input"
+        ],
+        "because": [
+          "components.roles",
+          "tasks.q2"
+        ]
+      },
+      {
+        "id": "drawer",
+        "why": "Content first keeps few components, covered by today's pages. Sheet already holds the phone menu, and forms are rare and short.",
+        "instead": [
+          "sheet",
+          "dialog"
+        ],
+        "because": [
+          "components.count",
+          "tasks.q2"
+        ]
+      },
+      {
+        "id": "hover-card",
+        "why": "Readers arrive on phones and laptops alike, and touch screens have no hover. Occasional visitors need visible words, not hidden previews.",
+        "instead": [
+          "card",
+          "collapsible"
+        ],
+        "because": [
+          "scenarios.q1",
+          "human.q2"
+        ]
+      },
+      {
+        "id": "input-otp",
+        "why": "Forms are rare and short: newsletter and search. Actions are rare: subscribe, share, save. No step asks for a one-time code.",
+        "instead": [
+          "input"
+        ],
+        "because": [
+          "tasks.q2",
+          "components.roles"
+        ]
+      },
+      {
+        "id": "kbd",
+        "why": "Most readers visit now and then and see the interface fresh each time. Shortcuts serve repeat experts, and command is left out too.",
+        "instead": [
+          "button"
+        ],
+        "because": [
+          "people.q1",
+          "human.q2"
+        ]
+      },
+      {
+        "id": "marker",
+        "why": "Readers need sections, navigation and little else. Markers split conversations, and Content first separates sections with space, not lines.",
+        "instead": [
+          "separator"
+        ],
+        "because": [
+          "components.roles",
+          "elevation.definition"
+        ]
+      },
+      {
+        "id": "menubar",
+        "why": "Menubar is for dense desktop-style tools, not website navigation or phones. Content first avoids screens with many actions, and readers arrive on phones.",
+        "instead": [
+          "navigation-menu",
+          "sheet"
+        ],
+        "because": [
+          "tasks.q2",
+          "scenarios.q1"
+        ]
+      },
+      {
+        "id": "message",
+        "why": "Readers need sections, navigation and little else. People read from start to end; actions are rare: subscribe, share, save. No comments or feeds are among them.",
+        "instead": [
+          "card",
+          "alert"
+        ],
+        "because": [
+          "components.roles",
+          "tasks.q2"
+        ]
+      },
+      {
+        "id": "message-scroller",
+        "why": "Readers need sections, navigation and little else. It keeps live chat in view, and people here read from start to end.",
+        "instead": [
+          "pagination"
+        ],
+        "because": [
+          "components.roles",
+          "tasks.q1"
+        ]
+      },
+      {
+        "id": "popover",
+        "why": "Only menus and dialogs float in Content first. A long aside opens in place with collapsible instead.",
+        "instead": [
+          "collapsible",
+          "dialog"
+        ],
+        "because": [
+          "elevation.roles",
+          "elevation.lands"
+        ]
+      },
+      {
+        "id": "progress",
+        "why": "Forms are rare and short, so there are no steps to count. Skeleton already holds article text while it loads.",
+        "instead": [
+          "skeleton"
+        ],
+        "because": [
+          "tasks.q2",
+          "components.count"
+        ]
+      },
+      {
+        "id": "resizable",
+        "why": "Resizable panels are for desktop tools, not phones. Content first readers arrive on phones and laptops alike, and it avoids data-heavy tools.",
+        "instead": [
+          "sheet"
+        ],
+        "because": [
+          "scenarios.q1",
+          "accessibility.values"
+        ]
+      },
+      {
+        "id": "sidebar",
+        "why": "Sidebar is app navigation, not a website's main navigation. Content first is a public site; navigation menu carries the site sections and sheet the phone menu.",
+        "instead": [
+          "navigation-menu",
+          "sheet"
+        ],
+        "because": [
+          "people.q2",
+          "components.roles"
+        ]
+      },
+      {
+        "id": "slider",
+        "why": "Readers need sections, navigation and little else. Actions are rare: subscribe, share, save. Dragging a value is not one of them.",
+        "instead": [
+          "input"
+        ],
+        "because": [
+          "components.roles",
+          "tasks.q2"
+        ]
+      },
+      {
+        "id": "sonner",
+        "why": "Toast already confirms a saved article. Actions are rare, so confirmations do not arrive close together.",
+        "instead": [
+          "toast"
+        ],
+        "because": [
+          "tasks.q2",
+          "components.count"
+        ]
+      },
+      {
+        "id": "textarea",
+        "why": "Forms are rare and short: newsletter and search, both one line. Actions are rare: subscribe, share, save. None calls for long text entry.",
+        "instead": [
+          "input"
+        ],
+        "because": [
+          "tasks.q2",
+          "components.roles"
+        ]
+      },
+      {
+        "id": "toggle",
+        "why": "Readers need sections, navigation and little else. Toggles format text in a toolbar, and Content first avoids screens with many actions.",
+        "instead": [
+          "button"
+        ],
+        "because": [
+          "components.roles",
+          "tasks.q2"
+        ]
+      },
+      {
+        "id": "toggle-group",
+        "why": "Readers need sections, navigation and little else. Actions are rare: subscribe, share, save. Switching views between modes is not one of them.",
+        "instead": [
+          "button"
+        ],
+        "because": [
+          "components.roles",
+          "tasks.q2"
+        ]
       },
       {
         "id": "tooltip",
-        "why": "Readers arrive on any device, and on touch screens hover hints never show; icons carry visible labels instead."
+        "why": "Readers arrive on any device, and on touch screens hover hints never show. Icons always carry a visible word instead.",
+        "instead": [
+          "button",
+          "label"
+        ],
+        "because": [
+          "scenarios.q1",
+          "iconography.roles",
+          "human.q2"
+        ]
       }
     ]
   },
@@ -371,6 +823,33 @@
       "voice.values"
     ],
     "screen": "Your reading list",
+    "conversation": {
+      "title": "Comments on Planting a winter garden",
+      "marker": "Yesterday",
+      "messages": [
+        {
+          "author": "A reader",
+          "time": "18:40",
+          "text": "Do the bulbs need sun in winter?"
+        },
+        {
+          "author": "The editor",
+          "time": "19:05",
+          "text": "A few hours a day is enough. The second section has a planting calendar."
+        },
+        {
+          "author": "You",
+          "time": "19:10",
+          "text": "Thanks, saved it for the weekend.",
+          "mine": true
+        }
+      ],
+      "attachment": {
+        "name": "winter-planting-calendar.pdf",
+        "type": "PDF",
+        "size": "1.2 MB"
+      }
+    },
     "actions": {
       "primary": "Keep reading",
       "secondary": "Save for later"

@@ -13,6 +13,7 @@ import { tmpdir } from "node:os";
 import { dirname, join } from "node:path";
 import test from "node:test";
 import { addComponent, deploy } from "../src/cli.mjs";
+import { builtComponents } from "../src/components.mjs";
 import {
   assetRoots,
   grammar,
@@ -127,8 +128,12 @@ test("init deploys tokens, components, AGENTS.md and the skill", () => {
       readFileSync(join(dir, ".claude/skills/open-ds/SKILL.md"), "utf8"),
       /^---\nname: open-ds\ndescription: /,
     );
-    // The scheme's inventory, plus what those components import (toggle-group brings toggle), and nothing else.
-    const inventory = loadScheme("dense-data").inventory.in.map((i) => i.id);
+    // The scheme's built inventory, plus what those components import (toggle-group brings toggle), and
+    // nothing else. A component in the inventory that is not built yet is not deployed (OD-211).
+    const built = builtComponents(assetRoots());
+    const inventory = loadScheme("dense-data")
+      .inventory.in.map((i) => i.id)
+      .filter((id) => built.includes(id));
     for (const id of inventory)
       assert.ok(record.components.includes(id), `missing ${id}`);
     assert.ok(record.components.includes("toggle"));
@@ -271,7 +276,7 @@ test("docs pages cover every scope and component, for every scheme", async () =>
       .filter((c) => carried.includes(c));
     assert.match(
       pages["components/inventory.md"],
-      new RegExp(`\\*\\*${inv.length}\\*\\* components are in`),
+      new RegExp(`(\\*\\*|<b>)${inv.length}(\\*\\*|</b>) components are in`),
     );
     assert.deepEqual(
       Object.keys(pages)
@@ -363,12 +368,13 @@ test("add brings the components a component imports and names the packages it ne
       assert.ok(existsSync(join(dir, `src/components/ui/${c}.tsx`)), c);
     assert.ok(existsSync(join(dir, "src/lib/use-mobile.ts")));
     assert.ok(record.components.includes("sheet"));
-    const chart = addComponent("chart", dir);
-    assert.ok(chart.added.packages.includes("recharts"));
+    // Accessible first leaves out command, so adding it brings its package.
+    const command = addComponent("command", dir);
+    assert.ok(command.added.packages.includes("cmdk"));
     assert.ok(
       JSON.parse(
         readFileSync(join(dir, "open-ds.json"), "utf8"),
-      ).dependencies.includes("recharts"),
+      ).dependencies.includes("cmdk"),
     );
   } finally {
     rmSync(dir, { recursive: true, force: true });

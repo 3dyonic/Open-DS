@@ -61,6 +61,15 @@ export function componentGuide(
     family: item.family,
     carried: Boolean(carried),
     why: carried?.why ?? left?.why ?? null,
+    // A left-out component (OD-212): what to use instead, each kept by this scheme, and the answers
+    // the decision rests on, as the docs and get_inventory give them.
+    ...(left && {
+      instead: (left.instead ?? []).map((x) => ({
+        id: x,
+        what: g.catalogue.items.find((i) => i.id === x)?.description ?? "",
+      })),
+      because: left.because ?? [],
+    }),
     reference: item.overview
       ? {
           overview: item.overview,
@@ -100,6 +109,10 @@ export function componentText(guide) {
   lines.push(
     `${guide.component} (${guide.family}) in ${guide.scheme}: ${guide.carried ? "carried" : "not carried"}. ${guide.why ?? ""}`.trim(),
   );
+  if (guide.instead?.length)
+    lines.push(
+      `Use instead in ${guide.scheme}: ${guide.instead.map((x) => x.id).join(", ")}. Because: ${guide.because.join(", ")}.`,
+    );
   lines.push("", `What it is: ${r.overview}`);
   if (r.apply_when) lines.push(`Use it when: ${r.apply_when}`);
   if (r.not_when) lines.push(`Not when: ${r.not_when}`);

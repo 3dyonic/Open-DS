@@ -50,12 +50,38 @@ export interface Samples {
   tabs?: { label: string; content: string }[];
   menu?: { trigger: string; items: string[]; destructive: string };
   icon_action?: string;
+  conversation?: {
+    title: string;
+    marker: string;
+    messages: { author: string; time: string; text: string; mine?: boolean }[];
+    attachment: { name: string; type: string; size: string };
+  };
 }
 const data = scheme as unknown as {
   name: string;
-  inventory: { in: { id: string }[]; out: { id: string; why: string }[] };
+  inventory: {
+    in: {
+      id: string;
+      variants?: Record<string, Record<string, { not_used?: boolean }>>;
+    }[];
+    out: { id: string; why: string }[];
+  };
   samples: Samples;
 };
+
+/** The first variant this design system uses on an axis, so an example stays inside its decisions. */
+export function useVariant(
+  component: string,
+  axis: string,
+  fallback: string,
+): string {
+  const item = data.inventory.in.find((i) => i.id === component);
+  return (
+    Object.entries(item?.variants?.[axis] ?? {}).find(
+      ([, d]) => !d.not_used,
+    )?.[0] ?? fallback
+  );
+}
 
 /** The tone a status label maps to, from its meaning in the scheme. */
 export const toneOf = (s: Samples, label: string) =>
@@ -74,6 +100,15 @@ const PART: Record<string, keyof Samples> = {
   tabs: "tabs",
   toast: "messages",
   tooltip: "icon_action",
+  attachment: "conversation",
+  bubble: "conversation",
+  marker: "conversation",
+  message: "conversation",
+  "message-scroller": "conversation",
+  item: "menu",
+  menubar: "menu",
+  "hover-card": "card",
+  sonner: "messages",
 };
 
 export function Show({

@@ -30,3 +30,17 @@ body {
   border-bottom: 1px solid var(--color-border-default, #e3e6eb);
   vertical-align: top;
 }
+
+/* The quiet link to the docs at the end of a component page (OD-210): muted, small, no button. */
+.ods-docslink {
+  margin-top: 3rem;
+  padding-top: 1rem;
+  border-top: 1px solid rgb(128 128 128 / 0.2);
+  font-size: 0.875rem;
+  opacity: 0.7;
+}
+.ods-docslink a {
+  color: inherit;
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}

@@ -20,6 +20,7 @@ export const PACKAGES = {
   "react-hook-form": "^7.91.0",
   "react-resizable-panels": "^4.15.3",
   recharts: "^3.10.1",
+  sonner: "^2.0.8",
   "tailwind-merge": "^3.7.0",
   vaul: "^1.1.2",
 };

@@ -3,29 +3,38 @@ import type * as Preset from "@docusaurus/preset-classic";
 import { readFileSync } from "node:fs";
 import { themes as prismThemes } from "prism-react-renderer";
 
-// These are the docs of one delivered design system: the scheme that scripts/generate.mjs wrote
-// (OPEN_DS_SCHEME, or dense-data). No public URL yet, so the site is local only. The site wears the
-// system: src/css/scheme.css holds its tokens, and static/logo*.svg the Open DS mark in its colours.
-// The branding matches the docs the CLI's project template writes (cli/templates/project/docs).
-const scheme = JSON.parse(readFileSync(new URL("./scheme.json", import.meta.url), "utf8")) as {
-  id: string;
-  name: string;
-  version: string;
-  summary: string;
-};
+// The repo's docs: every Open DS scheme in one site (OD-207), the way the repo Storybook shows every
+// scheme. scripts/generate.mjs writes docs/<scheme>/ for each one, its tokens scoped to its own pages
+// (src/css/schemes/), and schemes.json, which the switcher and the landing page read. No public URL
+// A created project's docs stay one scheme.
+type Scheme = { id: string; name: string; version: string; summary: string; brands: string[] };
+const schemes = JSON.parse(readFileSync(new URL("./schemes.json", import.meta.url), "utf8")) as Scheme[];
 const STORYBOOK = process.env.STORYBOOK_URL ?? "http://localhost:6006";
+// Where the site lives (OD-210): "/" locally, "/docs/" on open-ds.dev, next to /storybook/.
+const BASE = process.env.DOCS_BASE_URL ?? "/";
+const ids = JSON.stringify(schemes.map((s) => s.id));
 
 const config: Config = {
-  // Browser tabs read "Page · Dense data docs · Open DS".
-  title: `${scheme.name} docs · Open DS`,
+  title: "Open DS docs",
   titleDelimiter: "·",
-  tagline: scheme.summary,
-  url: "http://localhost",
-  baseUrl: "/",
+  tagline: "Every design system is a set of answers.",
+  url: process.env.DOCS_URL ?? "http://localhost",
+  baseUrl: BASE,
   favicon: "logo.svg",
   onBrokenLinks: "throw",
   markdown: { format: "detect", hooks: { onBrokenMarkdownLinks: "throw" } },
   i18n: { defaultLocale: "en", locales: ["en"] },
+  customFields: { schemes, storybook: STORYBOOK },
+  // Sets the scheme (and the multi-brand brand) on <html> before the first paint, so a page never
+  // flashes in another scheme's colours. clientModules/scheme.ts keeps it right as you navigate.
+  headTags: [
+    {
+      tagName: "script",
+      attributes: {},
+      innerHTML: `(function(){var s=${ids},p=location.pathname.slice(${BASE.length}).split("/")[0],h=document.documentElement;if(s.indexOf(p)>=0)h.setAttribute("data-scheme",p);try{h.setAttribute("data-brand",localStorage.getItem("open-ds-brand")||"aster")}catch(e){h.setAttribute("data-brand","aster")}})();`,
+    },
+  ],
+  clientModules: ["./src/clientModules/scheme.ts", "./src/clientModules/embed-mode.ts"],
   presets: [
     [
       "classic",
@@ -38,27 +47,19 @@ const config: Config = {
   ],
   themeConfig: {
     colorMode: { respectPrefersColorScheme: true },
-    // The top bar wears the design system (OD-182): its name, then its sections, with Open DS as
-    // the maker on the right.
+    // The top bar: the current scheme's sections on the left, the switcher on the right.
     navbar: {
-      title: scheme.name,
-      logo: { src: "logo.svg", srcDark: "logo-dark.svg", alt: scheme.name },
+      title: "Open DS docs",
+      logo: { src: "logo.svg", alt: "Open DS" },
       items: [
-        { type: "html", position: "left", value: `<span class="ods-docs-tag">v${scheme.version}</span>` },
-        { type: "doc", docId: "primitives/index", label: "Primitives", position: "left" },
-        { type: "doc", docId: "foundations/index", label: "Foundations", position: "left" },
-        { type: "doc", docId: "components/inventory", label: "Components", position: "left" },
-        { type: "doc", docId: "voice", label: "Voice", position: "left" },
-        { type: "doc", docId: "themes", label: "Themes", position: "left" },
-        { type: "doc", docId: "agents", label: "For agents", position: "left" },
+        { type: "custom-schemeLinks", position: "left" },
+        { type: "custom-schemeSwitcher", position: "right" },
         { href: STORYBOOK, label: "Storybook", position: "right" },
-        { href: "pathname:///llms.txt", label: "llms.txt", position: "right" },
-        { type: "html", position: "right", value: '<span class="ods-built">Built with Open DS</span>' },
       ],
     },
     footer: {
       style: "light",
-      copyright: `Open DS · ${scheme.name} docs. ${scheme.name} is a design system built from the Open DS scheme ${scheme.id} ${scheme.version}. MIT.`,
+      copyright: "Open DS docs: every scheme, each as the design system it builds. MIT.",
     },
     prism: { theme: prismThemes.github, darkTheme: prismThemes.dracula },
   } satisfies Preset.ThemeConfig,

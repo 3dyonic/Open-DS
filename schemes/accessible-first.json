@@ -272,28 +272,531 @@
       {
         "id": "spinner",
         "why": "Says that the page is working."
+      },
+      {
+        "id": "badge",
+        "why": "A status label with an icon and a word, in a clear rectangle. Not color alone, and not a pill.",
+        "variants": {
+          "tone": {
+            "neutral": {
+              "use": "A waiting state, such as an application saved to resume later, with an icon and a word.",
+              "because": [
+                "accessibility.count",
+                "scenarios.q2"
+              ]
+            },
+            "info": {
+              "not_used": true,
+              "why": "Neutral covers news with nothing to do: one clear way to do each thing.",
+              "because": [
+                "components.values"
+              ]
+            },
+            "success": {
+              "use": "A finished task, with a filled icon and a word.",
+              "because": [
+                "accessibility.count",
+                "outcomes.q1"
+              ]
+            },
+            "warning": {
+              "use": "A risk people can still fix before they finish, with an icon and a word.",
+              "because": [
+                "accessibility.count",
+                "outcomes.q2"
+              ]
+            },
+            "danger": {
+              "use": "A failure that blocks the task, with a filled icon and a word; an alert says how to fix it.",
+              "because": [
+                "accessibility.count",
+                "outcomes.q2"
+              ]
+            }
+          }
+        }
+      },
+      {
+        "id": "button-group",
+        "why": "A few related buttons, each with a word, and at most one primary. Not unrelated actions, and never icon-only."
+      },
+      {
+        "id": "calendar",
+        "why": "Dates near today, such as a health appointment. Not a date people know by heart, like a birth date."
+      },
+      {
+        "id": "combobox",
+        "why": "A long closed list, such as countries or addresses, with a label and a hint. Not a short list people can see."
+      },
+      {
+        "id": "date-picker",
+        "why": "A date near today, such as a health appointment. Not a birth date or other known date."
+      },
+      {
+        "id": "empty",
+        "why": "An empty list, saying what will appear and how to start. Not while loading, and never a blank page.",
+        "variants": {
+          "variant": {
+            "default": {
+              "not_used": true,
+              "why": "The brand stays out of the way: words say what will appear and how to start.",
+              "because": [
+                "brand.q2",
+                "human.q1"
+              ]
+            },
+            "icon": {
+              "use": "A filled icon in a tile, beside words that say what will appear here and how to start.",
+              "because": [
+                "iconography.definition",
+                "voice.values"
+              ]
+            }
+          }
+        }
+      },
+      {
+        "id": "form",
+        "why": "Every form that checks answers, with the error next to the field. Not errors shown by color alone."
+      },
+      {
+        "id": "input-group",
+        "why": "A value with a unit or currency, with the label still above the field. Not for separate fields.",
+        "variants": {
+          "align": {
+            "inline-start": {
+              "use": "A currency sign before the amount, with the label still above the field.",
+              "because": [
+                "people.q2",
+                "tasks.q1"
+              ]
+            },
+            "inline-end": {
+              "use": "A unit after the value, as a word people can read, with the label still above the field.",
+              "because": [
+                "people.q2",
+                "iconography.roles"
+              ]
+            },
+            "block-start": {
+              "not_used": true,
+              "why": "The label stays above the field, outside it, always visible.",
+              "because": [
+                "people.q2"
+              ]
+            },
+            "block-end": {
+              "not_used": true,
+              "why": "Hints and errors sit in the field layout, in the same place on every question.",
+              "because": [
+                "people.q2",
+                "voice.roles"
+              ]
+            }
+          }
+        }
+      },
+      {
+        "id": "input-otp",
+        "why": "A short code sent by text or email, typed or pasted. Not passwords or values of any length."
+      },
+      {
+        "id": "item",
+        "why": "A list such as saved applications, each with worded secondary buttons. Not records compared cell by cell.",
+        "variants": {
+          "variant": {
+            "default": {
+              "not_used": true,
+              "why": "A row with no border is hard to see at high zoom; borders do the work.",
+              "because": [
+                "elevation.definition",
+                "elevation.values"
+              ]
+            },
+            "outline": {
+              "use": "Each saved application, with a strong border that separates it at any zoom.",
+              "because": [
+                "elevation.definition",
+                "elevation.values"
+              ]
+            },
+            "muted": {
+              "not_used": true,
+              "why": "A fill alone marks a row by color; status goes in a badge with an icon and a word.",
+              "because": [
+                "accessibility.count"
+              ]
+            }
+          },
+          "size": {
+            "default": {
+              "use": "Every row. Large targets help people with motor needs.",
+              "because": [
+                "accessibility.values"
+              ]
+            },
+            "sm": {
+              "not_used": true,
+              "why": "Large targets help people with motor needs; nothing smaller.",
+              "because": [
+                "accessibility.values",
+                "spacing.count"
+              ]
+            }
+          }
+        }
+      },
+      {
+        "id": "navigation-menu",
+        "why": "The main sections of a public service site. Not inside the steps of a form."
+      },
+      {
+        "id": "pagination",
+        "why": "A long list or table split across pages, with large targets. Not for the steps of a form."
+      },
+      {
+        "id": "scroll-area",
+        "why": "A fixed-height list or panel inside a page that still works at 200% zoom. Not the whole page."
+      },
+      {
+        "id": "tabs",
+        "why": "Related views of one application, such as answers and documents. Not the steps of a form."
+      },
+      {
+        "id": "toggle",
+        "why": "Turning a mode on and off, with a word on the button. Not a form answer or a one-off action.",
+        "variants": {
+          "variant": {
+            "default": {
+              "not_used": true,
+              "why": "Every action looks like a control people can find, so the toggle keeps its border.",
+              "because": [
+                "human.q2",
+                "elevation.definition"
+              ]
+            },
+            "outline": {
+              "use": "Every toggle, with a strong border and a word, so it reads as a control at any zoom.",
+              "because": [
+                "elevation.definition",
+                "iconography.roles"
+              ]
+            }
+          },
+          "size": {
+            "default": {
+              "use": "Every toggle. Large targets help people with motor needs.",
+              "because": [
+                "accessibility.values"
+              ]
+            },
+            "sm": {
+              "not_used": true,
+              "why": "Large targets help people with motor needs; nothing smaller.",
+              "because": [
+                "accessibility.values"
+              ]
+            },
+            "lg": {
+              "not_used": true,
+              "why": "The default size is already large for motor needs; a bigger one adds nothing.",
+              "because": [
+                "accessibility.values"
+              ]
+            }
+          }
+        }
+      },
+      {
+        "id": "toggle-group",
+        "why": "Switching a view between a few options, each with a word. Not a form answer, which uses a radio group."
+      },
+      {
+        "id": "aspect-ratio",
+        "why": "An image in a step card that must not stretch or jump while it loads. Not for text content."
+      },
+      {
+        "id": "attachment",
+        "why": "A file people open or download from a conversation. Not for uploading documents in a form, which uses a file input."
+      },
+      {
+        "id": "avatar",
+        "why": "Beside a name, to show who is signed in. Not the only way to tell people apart; words come first."
+      },
+      {
+        "id": "bubble",
+        "why": "A back-and-forth conversation, in large text with strong contrast. Not for comments or long text."
+      },
+      {
+        "id": "chart",
+        "why": "A relationship in a set of numbers, with the numbers also as a table. Not decoration, and never color alone."
+      },
+      {
+        "id": "marker",
+        "why": "Dividing a long conversation into days, in plain words. Not a message someone wrote."
+      },
+      {
+        "id": "message",
+        "why": "Conversations or comments, each with author and time. Not system status, which an alert carries."
+      },
+      {
+        "id": "message-scroller",
+        "why": "A live conversation where new messages arrive at the bottom. Not a static list, and no motion when less is asked."
+      },
+      {
+        "id": "table",
+        "why": "A summary like the steps of an application, with large rows and numbers in body text. Not compact rows or small fonts."
       }
     ],
     "out": [
       {
-        "id": "tooltip",
-        "why": "Hover-only hints fail touch, magnifier and keyboard users."
+        "id": "accordion",
+        "why": "Optional help here is a single section a person can open. Accessible first keeps one clear way to do each thing, so a stack of sections adds a second way.",
+        "instead": [
+          "collapsible"
+        ],
+        "because": [
+          "components.values",
+          "components.count"
+        ]
+      },
+      {
+        "id": "alert-dialog",
+        "why": "A destructive action here is a secondary button, then a confirm page. The dialog is kept only to confirm leaving with unsaved answers.",
+        "instead": [
+          "button",
+          "dialog"
+        ],
+        "because": [
+          "outcomes.q2",
+          "elevation.lands"
+        ]
+      },
+      {
+        "id": "carousel",
+        "why": "People must finish the form, and a carousel suits content where missing some is fine. Content people must see does not belong in slides.",
+        "instead": [
+          "card"
+        ],
+        "because": [
+          "tasks.q1",
+          "outcomes.q1"
+        ]
+      },
+      {
+        "id": "command",
+        "why": "Command is for expert users who jump anywhere by typing. Here people do this once or twice a year and nobody remembers the interface.",
+        "instead": [
+          "button"
+        ],
+        "because": [
+          "tasks.q2",
+          "human.q2"
+        ]
+      },
+      {
+        "id": "context-menu",
+        "why": "Context menus are for power users. Here nobody remembers the interface, and every action looks like a button people can find.",
+        "instead": [
+          "button"
+        ],
+        "because": [
+          "human.q2",
+          "tasks.q2"
+        ]
+      },
+      {
+        "id": "data-table",
+        "why": "Data table is for finding and acting on many records, often in bulk. Accessible first avoids dense expert tools, and its one density has no compact mode.",
+        "instead": [
+          "card"
+        ],
+        "because": [
+          "spacing.count",
+          "components.count"
+        ]
+      },
+      {
+        "id": "drawer",
+        "why": "Only dialogs separate from the page here, with a dimmed page and a border. A sliding panel adds a second layer the scheme does not use.",
+        "instead": [
+          "dialog",
+          "collapsible"
+        ],
+        "because": [
+          "elevation.lands",
+          "components.values"
+        ]
+      },
+      {
+        "id": "dropdown-menu",
+        "why": "Every action here looks like a button people can find. Row actions are a secondary button with a word, not a menu.",
+        "instead": [
+          "button"
+        ],
+        "because": [
+          "human.q2",
+          "components.values"
+        ]
+      },
+      {
+        "id": "hover-card",
+        "why": "Touch screens have no hover, and public services are used on any device. A person with a tremor completes a form on a tablet.",
+        "instead": [
+          "collapsible"
+        ],
+        "because": [
+          "scenarios.q1",
+          "components.definition"
+        ]
+      },
+      {
+        "id": "kbd",
+        "why": "Kbd tells people the shortcut for an action. Here people do this once or twice a year, and nobody remembers the interface from last time.",
+        "instead": [
+          "label"
+        ],
+        "because": [
+          "tasks.q2",
+          "human.q2"
+        ]
+      },
+      {
+        "id": "menubar",
+        "why": "Menubar is for dense desktop-style tools. Accessible first avoids dense expert tools, and nobody remembers the interface from last time.",
+        "instead": [
+          "button"
+        ],
+        "because": [
+          "human.q2",
+          "components.count"
+        ]
+      },
+      {
+        "id": "popover",
+        "why": "Optional help here sits in a section a person can open, in the page. One clear way to do each thing leaves no room for a floating panel too.",
+        "instead": [
+          "collapsible"
+        ],
+        "because": [
+          "components.values",
+          "elevation.lands"
+        ]
+      },
+      {
+        "id": "resizable",
+        "why": "Resizing means dragging panels in desktop tools. The scheme avoids widgets that need drag or precise pointing, and avoids dense expert tools.",
+        "instead": [
+          "card"
+        ],
+        "because": [
+          "components.definition",
+          "accessibility.values"
+        ]
       },
       {
         "id": "select",
-        "why": "A custom listbox is harder for screen readers than the native select."
+        "why": "A component joins only when it works with any assistive technology. The native select covers the same choice and every assistive technology understands it.",
+        "instead": [
+          "native-select",
+          "radio-group"
+        ],
+        "because": [
+          "components.definition",
+          "components.values"
+        ]
+      },
+      {
+        "id": "sheet",
+        "why": "Only dialogs separate from the page here, with a dimmed page and a border. A panel sliding in from an edge adds a layer the scheme does not use.",
+        "instead": [
+          "dialog",
+          "collapsible"
+        ],
+        "because": [
+          "elevation.lands",
+          "components.values"
+        ]
+      },
+      {
+        "id": "sidebar",
+        "why": "Sidebar is for apps people move around all session. Here people do this once or twice a year, and breadcrumb shows where they are.",
+        "instead": [
+          "breadcrumb",
+          "progress"
+        ],
+        "because": [
+          "tasks.q2",
+          "components.lands"
+        ]
+      },
+      {
+        "id": "skeleton",
+        "why": "Spinner already says the page is working. Accessible first keeps one clear way to do each thing, so a second loading state is not added.",
+        "instead": [
+          "spinner"
+        ],
+        "because": [
+          "components.values",
+          "components.count"
+        ]
       },
       {
         "id": "slider",
-        "why": "Dragging is hard with a tremor; a text field is exact."
+        "why": "The scheme avoids widgets that need drag or precise pointing. A person with a tremor completes a form here, and an exact answer is typed.",
+        "instead": [
+          "input",
+          "radio-group"
+        ],
+        "because": [
+          "components.definition",
+          "accessibility.values"
+        ]
       },
       {
-        "id": "toast",
-        "why": "Messages that disappear can be missed; alerts stay."
+        "id": "sonner",
+        "why": "Sonner stacks messages that go away. Here errors and important notes stay on the page, and success words say what comes next.",
+        "instead": [
+          "alert"
+        ],
+        "because": [
+          "outcomes.q2",
+          "voice.lands"
+        ]
       },
       {
         "id": "switch",
-        "why": "A checkbox is clearer about what on and off mean."
+        "why": "Components do their work in forms and steps, where a choice waits for the form. The catalogue gives that case to the checkbox.",
+        "instead": [
+          "checkbox"
+        ],
+        "because": [
+          "components.lands",
+          "content.q1"
+        ]
+      },
+      {
+        "id": "toast",
+        "why": "A toast goes away. Here errors and important notes stay on the page, because people must know what went wrong and where.",
+        "instead": [
+          "alert"
+        ],
+        "because": [
+          "outcomes.q2",
+          "accessibility.count"
+        ]
+      },
+      {
+        "id": "tooltip",
+        "why": "Icons never stand alone here, so no control needs a hover hint. Touch screens never hover, and optional help sits in a section a person can open.",
+        "instead": [
+          "collapsible",
+          "label"
+        ],
+        "because": [
+          "iconography.roles",
+          "scenarios.q1"
+        ]
       }
     ]
   },
@@ -306,6 +809,33 @@
       "voice.values"
     ],
     "screen": "Apply for support with housing costs",
+    "conversation": {
+      "title": "Messages about your application",
+      "marker": "Monday 3 November",
+      "messages": [
+        {
+          "author": "Housing support team",
+          "time": "10:02",
+          "text": "We need a copy of your rent agreement to continue."
+        },
+        {
+          "author": "You",
+          "time": "10:30",
+          "text": "I have attached it.",
+          "mine": true
+        },
+        {
+          "author": "Housing support team",
+          "time": "11:15",
+          "text": "Thank you. We will reply within 5 working days."
+        }
+      ],
+      "attachment": {
+        "name": "rent-agreement.pdf",
+        "type": "PDF",
+        "size": "380 KB"
+      }
+    },
     "actions": {
       "primary": "Continue",
       "secondary": "Save and come back later"

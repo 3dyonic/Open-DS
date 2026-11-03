@@ -23,7 +23,12 @@ type Common = { placeholder?: string; className?: string; dateFormat?: string };
 
 export type DatePickerProps =
   | (Common & { mode?: "single"; value?: Date; defaultValue?: Date; onChange?: (date: Date | undefined) => void })
-  | (Common & { mode: "range"; value?: DateRange; defaultValue?: DateRange; onChange?: (range: DateRange | undefined) => void });
+  | (Common & {
+      mode: "range";
+      value?: DateRange;
+      defaultValue?: DateRange;
+      onChange?: (range: DateRange | undefined) => void;
+    });
 
 export function DatePicker(props: DatePickerProps) {
   const { placeholder = "Pick a date", className, dateFormat = "d MMM yyyy" } = props;
