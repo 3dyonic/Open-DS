@@ -11,7 +11,7 @@ sidebar_class_name: "ods-left-out"
 
 Slides that move left and right, one or a few at a time.
 
-<p class="odv-compstatus"><span class="odv-pill odv-pill-out">Left out of Dense data</span> Slides hide records; experts need them all in view.</p>
+<p class="odv-compstatus"><span class="odv-pill odv-pill-out">Left out of Dense data</span> Slides hide items, and most people never reach the later ones. Dense data's experts want many records on one screen. <span class="odv-instead">Use instead: <a href="./table">Table</a>, <a href="./card">Card</a></span></p>
 
 ## See it live
 

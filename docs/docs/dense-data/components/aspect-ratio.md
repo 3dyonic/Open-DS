@@ -11,7 +11,7 @@ sidebar_class_name: "ods-left-out"
 
 Keeps an image or video at a fixed shape while the layout resizes.
 
-<p class="odv-compstatus"><span class="odv-pill odv-pill-out">Left out of Dense data</span> </p>
+<p class="odv-compstatus"><span class="odv-pill odv-pill-out">Left out of Dense data</span> Aspect ratio is a media component. Dense data's components answer takes core and data families only, because records need tables, filters and fast ways to move between them. <span class="odv-instead">Use instead: <a href="./card">Card</a></span></p>
 
 ## See it live
 

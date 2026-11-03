@@ -11,7 +11,7 @@ sidebar_class_name: "ods-left-out"
 
 A keyboard key or shortcut, shown as text.
 
-<p class="odv-compstatus"><span class="odv-pill odv-pill-out">Left out of Content first</span> </p>
+<p class="odv-compstatus"><span class="odv-pill odv-pill-out">Left out of Content first</span> Most readers visit now and then and see the interface fresh each time. Shortcuts serve repeat experts, and command is left out too. <span class="odv-instead">Use instead: <a href="./button">Button</a></span></p>
 
 ## See it live
 

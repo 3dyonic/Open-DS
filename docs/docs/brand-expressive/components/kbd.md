@@ -11,7 +11,7 @@ sidebar_class_name: "ods-left-out"
 
 A keyboard key or shortcut, shown as text.
 
-<p class="odv-compstatus"><span class="odv-pill odv-pill-out">Left out of Brand expressive</span> </p>
+<p class="odv-compstatus"><span class="odv-pill odv-pill-out">Left out of Brand expressive</span> Visitors come from social posts on their phones, and they are new customers deciding if they care. A keyboard shortcut serves neither. <span class="odv-instead">Use instead: <a href="./button">Button</a></span></p>
 
 ## See it live
 

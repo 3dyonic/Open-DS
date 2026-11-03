@@ -11,7 +11,7 @@ sidebar_class_name: "ods-left-out"
 
 A keyboard key or shortcut, shown as text.
 
-<p class="odv-compstatus"><span class="odv-pill odv-pill-out">Left out of Accessible first</span> </p>
+<p class="odv-compstatus"><span class="odv-pill odv-pill-out">Left out of Accessible first</span> Kbd tells people the shortcut for an action. Here people do this once or twice a year, and nobody remembers the interface from last time. <span class="odv-instead">Use instead: <a href="./label">Label</a></span></p>
 
 ## See it live
 

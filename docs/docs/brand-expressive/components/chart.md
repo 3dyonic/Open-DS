@@ -11,7 +11,7 @@ sidebar_class_name: "ods-left-out"
 
 A picture of numbers: comparison, trend, share or spread.
 
-<p class="odv-compstatus"><span class="odv-pill odv-pill-out">Left out of Brand expressive</span> </p>
+<p class="odv-compstatus"><span class="odv-pill odv-pill-out">Left out of Brand expressive</span> Chart is a data component. Brand expressive's components answer takes core and media families only, because campaigns lead with media and big sections. <span class="odv-instead">Use instead: <a href="./card">Card</a></span></p>
 
 ## See it live
 

@@ -11,7 +11,7 @@ sidebar_class_name: "ods-left-out"
 
 A menu of actions opened from a button.
 
-<p class="odv-compstatus"><span class="odv-pill odv-pill-out">Left out of Accessible first</span> </p>
+<p class="odv-compstatus"><span class="odv-pill odv-pill-out">Left out of Accessible first</span> Every action here looks like a button people can find. Row actions are a secondary button with a word, not a menu. <span class="odv-instead">Use instead: <a href="./button">Button</a></span></p>
 
 ## See it live
 

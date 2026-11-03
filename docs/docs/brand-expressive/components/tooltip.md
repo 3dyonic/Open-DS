@@ -11,7 +11,7 @@ sidebar_class_name: "ods-left-out"
 
 A short hint on hover or focus.
 
-<p class="odv-compstatus"><span class="odv-pill odv-pill-out">Left out of Brand expressive</span> </p>
+<p class="odv-compstatus"><span class="odv-pill odv-pill-out">Left out of Brand expressive</span> Visitors come from social posts on their phones, where hover hints never show. Every button has a word instead. <span class="odv-instead">Use instead: <a href="./button">Button</a>, <a href="./popover">Popover</a></span></p>
 
 ## See it live
 

@@ -11,7 +11,7 @@ sidebar_class_name: "ods-left-out"
 
 A search-first menu of actions and places, opened from the keyboard.
 
-<p class="odv-compstatus"><span class="odv-pill odv-pill-out">Left out of Multi-brand</span> Customers browse; keyboard command menus suit experts.</p>
+<p class="odv-compstatus"><span class="odv-pill odv-pill-out">Left out of Multi-brand</span> Command suits expert users who jump anywhere by typing, not people who visit now and then. Multi-brand's customers return now and then, and most visits last a few minutes. <span class="odv-instead">Use instead: <a href="./navigation-menu">Navigation menu</a>, <a href="./dropdown-menu">Dropdown menu</a></span></p>
 
 ## See it live
 

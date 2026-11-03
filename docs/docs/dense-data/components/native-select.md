@@ -11,7 +11,7 @@ sidebar_class_name: "ods-left-out"
 
 The browser's own select, styled.
 
-<p class="odv-compstatus"><span class="odv-pill odv-pill-out">Left out of Dense data</span> </p>
+<p class="odv-compstatus"><span class="odv-pill odv-pill-out">Left out of Dense data</span> Native select is best on phones, and Dense data runs at a desk. Its select already picks one value. A small team keeps fewer parts right. <span class="odv-instead">Use instead: <a href="./select">Select</a>, <a href="./radio-group">Radio group</a></span></p>
 
 ## See it live
 

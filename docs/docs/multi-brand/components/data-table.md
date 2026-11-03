@@ -11,7 +11,7 @@ sidebar_class_name: "ods-left-out"
 
 Many records in one view, with search, filters, sorting, column choice, selection and paging.
 
-<p class="odv-compstatus"><span class="odv-pill odv-pill-out">Left out of Multi-brand</span> </p>
+<p class="odv-compstatus"><span class="odv-pill odv-pill-out">Left out of Multi-brand</span> Multi-brand draws on core, content and media families, not data. It avoids tools staff use all day and points those to Dense data. <span class="odv-instead">Use instead: <a href="./card">Card</a>, <a href="./tabs">Tabs</a></span></p>
 
 ## See it live
 

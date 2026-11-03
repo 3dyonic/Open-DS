@@ -11,7 +11,7 @@ sidebar_class_name: "ods-left-out"
 
 A picture of numbers: comparison, trend, share or spread.
 
-<p class="odv-compstatus"><span class="odv-pill odv-pill-out">Left out of Multi-brand</span> Customers manage plans; they do not analyse data.</p>
+<p class="odv-compstatus"><span class="odv-pill odv-pill-out">Left out of Multi-brand</span> Multi-brand draws on core, content and media families, not data. It admits only families in its roles. Its scenarios are signing up and managing a plan. <span class="odv-instead">Use instead: <a href="./card">Card</a>, <a href="./badge">Badge</a></span></p>
 
 ## See it live
 

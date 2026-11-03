@@ -11,7 +11,7 @@ sidebar_class_name: "ods-left-out"
 
 The side navigation of an app, open while people work.
 
-<p class="odv-compstatus"><span class="odv-pill odv-pill-out">Left out of Brand expressive</span> Launch sites have no app navigation.</p>
+<p class="odv-compstatus"><span class="odv-pill odv-pill-out">Left out of Brand expressive</span> Sidebar is for apps people move around all session. Brand expressive avoids tools people use for hours, and a visit lasts a few minutes at most. <span class="odv-instead">Use instead: <a href="./navigation-menu">Navigation menu</a>, <a href="./drawer">Drawer</a></span></p>
 
 ## See it live
 

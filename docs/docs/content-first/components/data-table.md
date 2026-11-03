@@ -11,7 +11,7 @@ sidebar_class_name: "ods-left-out"
 
 Many records in one view, with search, filters, sorting, column choice, selection and paging.
 
-<p class="odv-compstatus"><span class="odv-pill odv-pill-out">Left out of Content first</span> </p>
+<p class="odv-compstatus"><span class="odv-pill odv-pill-out">Left out of Content first</span> Content first avoids data-heavy tools. It has no dense tables, and its rows are read, not scanned. <span class="odv-instead">Use instead: <a href="./card">Card</a>, <a href="./pagination">Pagination</a></span></p>
 
 ## See it live
 

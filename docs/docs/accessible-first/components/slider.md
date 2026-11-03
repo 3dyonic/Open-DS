@@ -11,7 +11,7 @@ sidebar_class_name: "ods-left-out"
 
 A value picked by dragging along a track, when an exact number is not needed.
 
-<p class="odv-compstatus"><span class="odv-pill odv-pill-out">Left out of Accessible first</span> Dragging is hard with a tremor; a text field is exact.</p>
+<p class="odv-compstatus"><span class="odv-pill odv-pill-out">Left out of Accessible first</span> The scheme avoids widgets that need drag or precise pointing. A person with a tremor completes a form here, and an exact answer is typed. <span class="odv-instead">Use instead: <a href="./input">Input</a>, <a href="./radio-group">Radio group</a></span></p>
 
 ## See it live
 

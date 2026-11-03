@@ -11,7 +11,7 @@ sidebar_class_name: "ods-left-out"
 
 A menu of actions on right-click or long-press.
 
-<p class="odv-compstatus"><span class="odv-pill odv-pill-out">Left out of Brand expressive</span> </p>
+<p class="odv-compstatus"><span class="odv-pill odv-pill-out">Left out of Brand expressive</span> Context menu is for power users, and people who don't know to right-click never find it. Brand expressive serves new customers deciding if they care. <span class="odv-instead">Use instead: <a href="./button">Button</a>, <a href="./popover">Popover</a></span></p>
 
 ## See it live
 

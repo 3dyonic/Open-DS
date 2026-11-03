@@ -11,7 +11,7 @@ sidebar_class_name: "ods-left-out"
 
 Many records in one view, with search, filters, sorting, column choice, selection and paging.
 
-<p class="odv-compstatus"><span class="odv-pill odv-pill-out">Left out of Brand expressive</span> </p>
+<p class="odv-compstatus"><span class="odv-pill odv-pill-out">Left out of Brand expressive</span> Brand expressive avoids tools people use for hours. Data table is for acting on many records in bulk; here people browse and explore the story. <span class="odv-instead">Use instead: <a href="./card">Card</a></span></p>
 
 ## See it live
 

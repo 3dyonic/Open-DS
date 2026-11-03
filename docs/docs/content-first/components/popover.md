@@ -11,7 +11,7 @@ sidebar_class_name: "ods-left-out"
 
 Rich content in a floating panel, opened by click.
 
-<p class="odv-compstatus"><span class="odv-pill odv-pill-out">Left out of Content first</span> </p>
+<p class="odv-compstatus"><span class="odv-pill odv-pill-out">Left out of Content first</span> Only menus and dialogs float in Content first. A long aside opens in place with collapsible instead. <span class="odv-instead">Use instead: <a href="./collapsible">Collapsible</a>, <a href="./dialog">Dialog</a></span></p>
 
 ## See it live
 

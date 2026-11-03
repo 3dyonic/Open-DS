@@ -11,7 +11,7 @@ sidebar_class_name: "ods-left-out"
 
 A panel that slides up from the bottom, for phones.
 
-<p class="odv-compstatus"><span class="odv-pill odv-pill-out">Left out of Dense data</span> A desk tool with a mouse and keyboard does not need phone drawers.</p>
+<p class="odv-compstatus"><span class="odv-pill odv-pill-out">Left out of Dense data</span> A drawer is for phones. Dense data's experts work at a desk with a mouse and keyboard, and the scheme avoids first-time visitors on phones. <span class="odv-instead">Use instead: <a href="./sheet">Sheet</a>, <a href="./dialog">Dialog</a></span></p>
 
 ## See it live
 

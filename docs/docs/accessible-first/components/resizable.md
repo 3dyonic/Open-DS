@@ -11,7 +11,7 @@ sidebar_class_name: "ods-left-out"
 
 Panels people resize by dragging the line between them.
 
-<p class="odv-compstatus"><span class="odv-pill odv-pill-out">Left out of Accessible first</span> </p>
+<p class="odv-compstatus"><span class="odv-pill odv-pill-out">Left out of Accessible first</span> Resizing means dragging panels in desktop tools. The scheme avoids widgets that need drag or precise pointing, and avoids dense expert tools. <span class="odv-instead">Use instead: <a href="./card">Card</a></span></p>
 
 ## See it live
 

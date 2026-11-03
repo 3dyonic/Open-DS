@@ -11,7 +11,7 @@ sidebar_class_name: "ods-left-out"
 
 One choice from a list, in a menu.
 
-<p class="odv-compstatus"><span class="odv-pill odv-pill-out">Left out of Brand expressive</span> </p>
+<p class="odv-compstatus"><span class="odv-pill odv-pill-out">Left out of Brand expressive</span> Visitors come from social posts on their phones, where the system picker is best. Native select covers a closed list there. <span class="odv-instead">Use instead: <a href="./field">Field</a>, <a href="./popover">Popover</a></span></p>
 
 ## See it live
 

@@ -11,7 +11,7 @@ sidebar_class_name: "ods-left-out"
 
 Rows and columns of comparable records, with headers.
 
-<p class="odv-compstatus"><span class="odv-pill odv-pill-out">Left out of Multi-brand</span> </p>
+<p class="odv-compstatus"><span class="odv-pill odv-pill-out">Left out of Multi-brand</span> Table is a data component. Multi-brand's components answer takes core, content and media families only, because product teams build sign-up and account forms, plus product pages with questions and faces. <span class="odv-instead">Use instead: Item, <a href="./card">Card</a></span></p>
 
 ## See it live
 

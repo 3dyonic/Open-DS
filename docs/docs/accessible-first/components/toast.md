@@ -11,7 +11,7 @@ sidebar_class_name: "ods-left-out"
 
 A short message that confirms an action and goes away.
 
-<p class="odv-compstatus"><span class="odv-pill odv-pill-out">Left out of Accessible first</span> Messages that disappear can be missed; alerts stay.</p>
+<p class="odv-compstatus"><span class="odv-pill odv-pill-out">Left out of Accessible first</span> A toast goes away. Here errors and important notes stay on the page, because people must know what went wrong and where. <span class="odv-instead">Use instead: <a href="./alert">Alert</a></span></p>
 
 ## See it live
 

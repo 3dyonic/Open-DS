@@ -11,7 +11,7 @@ sidebar_class_name: "ods-left-out"
 
 Stacked sections that expand and collapse without leaving the page.
 
-<p class="odv-compstatus"><span class="odv-pill odv-pill-out">Left out of Accessible first</span> </p>
+<p class="odv-compstatus"><span class="odv-pill odv-pill-out">Left out of Accessible first</span> Optional help here is a single section a person can open. Accessible first keeps one clear way to do each thing, so a stack of sections adds a second way. <span class="odv-instead">Use instead: <a href="./collapsible">Collapsible</a></span></p>
 
 ## See it live
 

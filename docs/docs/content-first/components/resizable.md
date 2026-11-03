@@ -11,7 +11,7 @@ sidebar_class_name: "ods-left-out"
 
 Panels people resize by dragging the line between them.
 
-<p class="odv-compstatus"><span class="odv-pill odv-pill-out">Left out of Content first</span> </p>
+<p class="odv-compstatus"><span class="odv-pill odv-pill-out">Left out of Content first</span> Resizable panels are for desktop tools, not phones. Content first readers arrive on phones and laptops alike, and it avoids data-heavy tools. <span class="odv-instead">Use instead: <a href="./sheet">Sheet</a></span></p>
 
 ## See it live
 

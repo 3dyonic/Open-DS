@@ -11,7 +11,7 @@ sidebar_class_name: "ods-left-out"
 
 A short hint on hover or focus.
 
-<p class="odv-compstatus"><span class="odv-pill odv-pill-out">Left out of Accessible first</span> Hover-only hints fail touch, magnifier and keyboard users.</p>
+<p class="odv-compstatus"><span class="odv-pill odv-pill-out">Left out of Accessible first</span> Icons never stand alone here, so no control needs a hover hint. Touch screens never hover, and optional help sits in a section a person can open. <span class="odv-instead">Use instead: <a href="./collapsible">Collapsible</a>, <a href="./label">Label</a></span></p>
 
 ## See it live
 

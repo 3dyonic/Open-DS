@@ -11,7 +11,7 @@ sidebar_class_name: "ods-left-out"
 
 A dialog that interrupts to confirm an action that cannot be undone.
 
-<p class="odv-compstatus"><span class="odv-pill odv-pill-out">Left out of Accessible first</span> </p>
+<p class="odv-compstatus"><span class="odv-pill odv-pill-out">Left out of Accessible first</span> A destructive action here is a secondary button, then a confirm page. The dialog is kept only to confirm leaving with unsaved answers. <span class="odv-instead">Use instead: <a href="./button">Button</a>, <a href="./dialog">Dialog</a></span></p>
 
 ## See it live
 

@@ -11,7 +11,7 @@ sidebar_class_name: "ods-left-out"
 
 A panel that slides in from an edge.
 
-<p class="odv-compstatus"><span class="odv-pill odv-pill-out">Left out of Brand expressive</span> </p>
+<p class="odv-compstatus"><span class="odv-pill odv-pill-out">Left out of Brand expressive</span> Phones first: drawer is the bottom panel for phones and already holds the menu, and dialog holds the waitlist form. <span class="odv-instead">Use instead: <a href="./drawer">Drawer</a>, <a href="./dialog">Dialog</a></span></p>
 
 ## See it live
 

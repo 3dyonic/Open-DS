@@ -11,7 +11,7 @@ sidebar_class_name: "ods-left-out"
 
 Placeholder shapes that match the final layout, so the page does not jump when content arrives.
 
-<p class="odv-compstatus"><span class="odv-pill odv-pill-out">Left out of Accessible first</span> </p>
+<p class="odv-compstatus"><span class="odv-pill odv-pill-out">Left out of Accessible first</span> Spinner already says the page is working. Accessible first keeps one clear way to do each thing, so a second loading state is not added. <span class="odv-instead">Use instead: <a href="./spinner">Spinner</a></span></p>
 
 ## See it live
 

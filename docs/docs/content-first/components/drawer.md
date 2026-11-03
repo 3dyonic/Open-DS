@@ -11,7 +11,7 @@ sidebar_class_name: "ods-left-out"
 
 A panel that slides up from the bottom, for phones.
 
-<p class="odv-compstatus"><span class="odv-pill odv-pill-out">Left out of Content first</span> </p>
+<p class="odv-compstatus"><span class="odv-pill odv-pill-out">Left out of Content first</span> Content first keeps few components, covered by today's pages. Sheet already holds the phone menu, and forms are rare and short. <span class="odv-instead">Use instead: <a href="./sheet">Sheet</a>, <a href="./dialog">Dialog</a></span></p>
 
 ## See it live
 

@@ -11,7 +11,7 @@ sidebar_class_name: "ods-left-out"
 
 A picture of numbers: comparison, trend, share or spread.
 
-<p class="odv-compstatus"><span class="odv-pill odv-pill-out">Left out of Content first</span> Figures appear as images inside articles.</p>
+<p class="odv-compstatus"><span class="odv-pill odv-pill-out">Left out of Content first</span> Chart is a data component. Content first's components answer takes core, content and media families only, because readers need sections, navigation and little else. <span class="odv-instead">Use instead: <a href="./card">Card</a></span></p>
 
 ## See it live
 

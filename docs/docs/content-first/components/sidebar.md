@@ -11,7 +11,7 @@ sidebar_class_name: "ods-left-out"
 
 The side navigation of an app, open while people work.
 
-<p class="odv-compstatus"><span class="odv-pill odv-pill-out">Left out of Content first</span> </p>
+<p class="odv-compstatus"><span class="odv-pill odv-pill-out">Left out of Content first</span> Sidebar is app navigation, not a website's main navigation. Content first is a public site; navigation menu carries the site sections and sheet the phone menu. <span class="odv-instead">Use instead: <a href="./navigation-menu">Navigation menu</a>, <a href="./sheet">Sheet</a></span></p>
 
 ## See it live
 

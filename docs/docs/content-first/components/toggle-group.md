@@ -11,7 +11,7 @@ sidebar_class_name: "ods-left-out"
 
 A set of toggles where one or many stay pressed.
 
-<p class="odv-compstatus"><span class="odv-pill odv-pill-out">Left out of Content first</span> </p>
+<p class="odv-compstatus"><span class="odv-pill odv-pill-out">Left out of Content first</span> Readers need sections, navigation and little else. Actions are rare: subscribe, share, save. Switching views between modes is not one of them. <span class="odv-instead">Use instead: <a href="./button">Button</a></span></p>
 
 ## See it live
 

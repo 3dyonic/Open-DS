@@ -11,7 +11,7 @@ sidebar_class_name: "ods-left-out"
 
 A menu of actions on right-click or long-press.
 
-<p class="odv-compstatus"><span class="odv-pill odv-pill-out">Left out of Accessible first</span> </p>
+<p class="odv-compstatus"><span class="odv-pill odv-pill-out">Left out of Accessible first</span> Context menus are for power users. Here nobody remembers the interface, and every action looks like a button people can find. <span class="odv-instead">Use instead: <a href="./button">Button</a></span></p>
 
 ## See it live
 

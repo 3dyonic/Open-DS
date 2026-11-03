@@ -11,7 +11,7 @@ sidebar_class_name: "ods-left-out"
 
 The side navigation of an app, open while people work.
 
-<p class="odv-compstatus"><span class="odv-pill odv-pill-out">Left out of Accessible first</span> </p>
+<p class="odv-compstatus"><span class="odv-pill odv-pill-out">Left out of Accessible first</span> Sidebar is for apps people move around all session. Here people do this once or twice a year, and breadcrumb shows where they are. <span class="odv-instead">Use instead: <a href="./breadcrumb">Breadcrumb</a>, <a href="./progress">Progress</a></span></p>
 
 ## See it live
 

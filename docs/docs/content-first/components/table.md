@@ -11,7 +11,7 @@ sidebar_class_name: "ods-left-out"
 
 Rows and columns of comparable records, with headers.
 
-<p class="odv-compstatus"><span class="odv-pill odv-pill-out">Left out of Content first</span> Long-form reading rarely needs records; a plain HTML table covers the odd one.</p>
+<p class="odv-compstatus"><span class="odv-pill odv-pill-out">Left out of Content first</span> Table is a data component. Content first's components answer takes core, content and media families only, because readers need sections, navigation and little else. <span class="odv-instead">Use instead: Item, <a href="./card">Card</a></span></p>
 
 ## See it live
 

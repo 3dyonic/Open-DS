@@ -11,7 +11,7 @@ sidebar_class_name: "ods-left-out"
 
 A short hint on hover or focus.
 
-<p class="odv-compstatus"><span class="odv-pill odv-pill-out">Left out of Multi-brand</span> Customers use any device, and on touch screens hover hints never show; a popover explains a fee instead.</p>
+<p class="odv-compstatus"><span class="odv-pill odv-pill-out">Left out of Multi-brand</span> Customers use any device, and on touch screens hover hints never show; a popover explains a fee instead. <span class="odv-instead">Use instead: <a href="./popover">Popover</a></span></p>
 
 ## See it live
 

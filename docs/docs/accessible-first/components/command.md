@@ -11,7 +11,7 @@ sidebar_class_name: "ods-left-out"
 
 A search-first menu of actions and places, opened from the keyboard.
 
-<p class="odv-compstatus"><span class="odv-pill odv-pill-out">Left out of Accessible first</span> </p>
+<p class="odv-compstatus"><span class="odv-pill odv-pill-out">Left out of Accessible first</span> Command is for expert users who jump anywhere by typing. Here people do this once or twice a year and nobody remembers the interface. <span class="odv-instead">Use instead: <a href="./button">Button</a></span></p>
 
 ## See it live
 

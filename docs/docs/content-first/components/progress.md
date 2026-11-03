@@ -11,7 +11,7 @@ sidebar_class_name: "ods-left-out"
 
 How far a task has come.
 
-<p class="odv-compstatus"><span class="odv-pill odv-pill-out">Left out of Content first</span> </p>
+<p class="odv-compstatus"><span class="odv-pill odv-pill-out">Left out of Content first</span> Forms are rare and short, so there are no steps to count. Skeleton already holds article text while it loads. <span class="odv-instead">Use instead: <a href="./skeleton">Skeleton</a></span></p>
 
 ## See it live
 

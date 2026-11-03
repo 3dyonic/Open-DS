@@ -11,7 +11,7 @@ sidebar_class_name: "ods-left-out"
 
 A short hint on hover or focus.
 
-<p class="odv-compstatus"><span class="odv-pill odv-pill-out">Left out of Content first</span> Readers arrive on any device, and on touch screens hover hints never show; icons carry visible labels instead.</p>
+<p class="odv-compstatus"><span class="odv-pill odv-pill-out">Left out of Content first</span> Readers arrive on any device, and on touch screens hover hints never show. Icons always carry a visible word instead. <span class="odv-instead">Use instead: <a href="./button">Button</a>, <a href="./label">Label</a></span></p>
 
 ## See it live
 

@@ -11,7 +11,7 @@ sidebar_class_name: "ods-left-out"
 
 Stacked sections that expand and collapse without leaving the page.
 
-<p class="odv-compstatus"><span class="odv-pill odv-pill-out">Left out of Brand expressive</span> Campaign sections show everything; nothing worth saying is hidden.</p>
+<p class="odv-compstatus"><span class="odv-pill odv-pill-out">Left out of Brand expressive</span> Accordion is a content component. Brand expressive's components answer takes core and media families only, because campaigns lead with media and big sections. <span class="odv-instead">Use instead: <a href="./collapsible">Collapsible</a>, <a href="./tabs">Tabs</a></span></p>
 
 ## See it live
 

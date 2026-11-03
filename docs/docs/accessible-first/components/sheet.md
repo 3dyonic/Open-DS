@@ -11,7 +11,7 @@ sidebar_class_name: "ods-left-out"
 
 A panel that slides in from an edge.
 
-<p class="odv-compstatus"><span class="odv-pill odv-pill-out">Left out of Accessible first</span> </p>
+<p class="odv-compstatus"><span class="odv-pill odv-pill-out">Left out of Accessible first</span> Only dialogs separate from the page here, with a dimmed page and a border. A panel sliding in from an edge adds a layer the scheme does not use. <span class="odv-instead">Use instead: <a href="./dialog">Dialog</a>, <a href="./collapsible">Collapsible</a></span></p>
 
 ## See it live
 

@@ -11,7 +11,7 @@ sidebar_class_name: "ods-left-out"
 
 Many records in one view, with search, filters, sorting, column choice, selection and paging.
 
-<p class="odv-compstatus"><span class="odv-pill odv-pill-out">Left out of Accessible first</span> </p>
+<p class="odv-compstatus"><span class="odv-pill odv-pill-out">Left out of Accessible first</span> Data table is for finding and acting on many records, often in bulk. Accessible first avoids dense expert tools, and its one density has no compact mode. <span class="odv-instead">Use instead: <a href="./card">Card</a></span></p>
 
 ## See it live
 

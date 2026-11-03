@@ -11,7 +11,7 @@ sidebar_class_name: "ods-left-out"
 
 A search-first menu of actions and places, opened from the keyboard.
 
-<p class="odv-compstatus"><span class="odv-pill odv-pill-out">Left out of Content first</span> Readers browse; they do not drive the site from the keyboard.</p>
+<p class="odv-compstatus"><span class="odv-pill odv-pill-out">Left out of Content first</span> Command suits expert users who type to jump anywhere. Most readers visit now and then, and the catalogue rules it out for them. <span class="odv-instead">Use instead: <a href="./navigation-menu">Navigation menu</a>, <a href="./input">Input</a></span></p>
 
 ## See it live
 

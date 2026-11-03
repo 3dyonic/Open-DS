@@ -11,7 +11,7 @@ sidebar_class_name: "ods-left-out"
 
 Panels people resize by dragging the line between them.
 
-<p class="odv-compstatus"><span class="odv-pill odv-pill-out">Left out of Multi-brand</span> </p>
+<p class="odv-compstatus"><span class="odv-pill odv-pill-out">Left out of Multi-brand</span> Resizable suits desktop tools where people size panels, not phones. Multi-brand avoids tools staff use all day, and customers sign up on phones. <span class="odv-instead">Use instead: <a href="./sidebar">Sidebar</a>, <a href="./sheet">Sheet</a></span></p>
 
 ## See it live
 

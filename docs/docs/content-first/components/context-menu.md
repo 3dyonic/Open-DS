@@ -11,7 +11,7 @@ sidebar_class_name: "ods-left-out"
 
 A menu of actions on right-click or long-press.
 
-<p class="odv-compstatus"><span class="odv-pill odv-pill-out">Left out of Content first</span> </p>
+<p class="odv-compstatus"><span class="odv-pill odv-pill-out">Left out of Content first</span> Right-click menus suit power users. Readers are occasional visitors who see the interface fresh each time, and arrive on phones too. <span class="odv-instead">Use instead: <a href="./button">Button</a></span></p>
 
 ## See it live
 

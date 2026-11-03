@@ -11,7 +11,7 @@ sidebar_class_name: "ods-left-out"
 
 A button that stays pressed or not.
 
-<p class="odv-compstatus"><span class="odv-pill odv-pill-out">Left out of Content first</span> </p>
+<p class="odv-compstatus"><span class="odv-pill odv-pill-out">Left out of Content first</span> Readers need sections, navigation and little else. Toggles format text in a toolbar, and Content first avoids screens with many actions. <span class="odv-instead">Use instead: <a href="./button">Button</a></span></p>
 
 ## See it live
 

@@ -464,20 +464,313 @@
       {
         "id": "accordion",
         "why": "Frequent questions."
+      },
+      {
+        "id": "aspect-ratio",
+        "why": "Media in cards or on product pages, held in shape while it loads. Not in empty states, which carry no brand pictures."
+      },
+      {
+        "id": "button-group",
+        "why": "A few related actions that belong together, such as previous and next. Not two primaries; one clear action per view."
+      },
+      {
+        "id": "calendar",
+        "why": "A date near today or a range, shown at once, where the day of the week matters. Not a birth date; type it."
+      },
+      {
+        "id": "carousel",
+        "why": "A few items browsed for pleasure on product pages, where missing some is fine. Never for plans or offers; cards group those."
+      },
+      {
+        "id": "collapsible",
+        "why": "One block of extra detail on a form, such as more options. Not for frequent questions; accordion holds those."
+      },
+      {
+        "id": "combobox",
+        "why": "A long closed list such as country, matched as the customer types. Not for plan options, a short list that select covers."
+      },
+      {
+        "id": "date-picker",
+        "why": "A date near today or a range, opened by tap from a field. Not a date known by heart; type it."
+      },
+      {
+        "id": "drawer",
+        "why": "Details or a short form on a phone, with the page partly in view. Not for blocking decisions; dialog and alert-dialog hold those."
+      },
+      {
+        "id": "input-group",
+        "why": "A field with a unit or currency, or a search with an icon. Not for separate fields; field lays those out.",
+        "variants": {
+          "align": {
+            "inline-start": {
+              "use": "A currency sign or a search icon before the text, from the outline set every brand shares.",
+              "because": [
+                "iconography.definition",
+                "content.q1"
+              ]
+            },
+            "inline-end": {
+              "use": "A unit after the value, the same in every brand.",
+              "because": [
+                "content.q1",
+                "naming.lands"
+              ]
+            },
+            "block-start": {
+              "not_used": true,
+              "why": "Sign-up and account fields stay one line; field puts the label above, outside the input.",
+              "because": [
+                "content.q1",
+                "people.q2"
+              ]
+            },
+            "block-end": {
+              "not_used": true,
+              "why": "Sign-up and account fields stay one line; field shows the hint and error below.",
+              "because": [
+                "content.q1",
+                "people.q2"
+              ]
+            }
+          }
+        }
+      },
+      {
+        "id": "item",
+        "why": "A list of account settings, each with a few actions named by a word. Not for records compared cell by cell."
+      },
+      {
+        "id": "kbd",
+        "why": "A shortcut shown beside an action on laptops, the action also reachable by tap. Not decoration, and never the only way in."
+      },
+      {
+        "id": "native-select",
+        "why": "A plain closed list such as country on a phone, where the system picker is best. Not where options need rich content."
+      },
+      {
+        "id": "pagination",
+        "why": "An account list or table that grows past one page, such as orders. Not for steps of sign-up; progress covers those."
+      },
+      {
+        "id": "progress",
+        "why": "A sign-up split into known steps, showing how far the customer has come. Not for a payment in progress; spinner covers that."
+      },
+      {
+        "id": "scroll-area",
+        "why": "A fixed-height list or panel inside a page. Not the whole page; let the page scroll."
+      },
+      {
+        "id": "slider",
+        "why": "A rough value where an exact number is not needed, paired with a number field. Not for picking a plan; radio-group does that."
+      },
+      {
+        "id": "sonner",
+        "why": "Several short confirmations arriving close together, such as saved changes. Not for billing problems; alert holds those."
+      },
+      {
+        "id": "toggle",
+        "why": "One mode turned on or off in place. Not for account settings, which use switch, or one-off actions, which use button.",
+        "variants": {
+          "variant": {
+            "default": {
+              "not_used": true,
+              "why": "Toggles that sit together, like monthly or yearly prices, use toggle-group.",
+              "because": [
+                "components.definition"
+              ]
+            },
+            "outline": {
+              "use": "A single toggle, with a border so it reads as a control in every brand.",
+              "because": [
+                "human.q2",
+                "theming.definition"
+              ]
+            }
+          },
+          "size": {
+            "default": {
+              "use": "Every toggle, at touch size: customers are often on phones.",
+              "because": [
+                "accessibility.values"
+              ]
+            },
+            "sm": {
+              "not_used": true,
+              "why": "Customers are often on phones: no compact controls.",
+              "because": [
+                "accessibility.values"
+              ]
+            },
+            "lg": {
+              "not_used": true,
+              "why": "One density across brands.",
+              "because": [
+                "spacing.count"
+              ]
+            }
+          }
+        }
       }
     ],
     "out": [
       {
+        "id": "attachment",
+        "why": "Multi-brand draws on core, content and media families, not conversation. It admits only families in its roles. Its only messages go to support through a textarea.",
+        "instead": [
+          "textarea"
+        ],
+        "because": [
+          "components.roles",
+          "components.definition"
+        ]
+      },
+      {
+        "id": "bubble",
+        "why": "Multi-brand draws on core, content and media families, not conversation. It admits only families in its roles. Its only messages go to support through a textarea.",
+        "instead": [
+          "textarea"
+        ],
+        "because": [
+          "components.roles",
+          "components.definition"
+        ]
+      },
+      {
         "id": "chart",
-        "why": "Customers manage plans; they do not analyse data."
+        "why": "Multi-brand draws on core, content and media families, not data. It admits only families in its roles. Its scenarios are signing up and managing a plan.",
+        "instead": [
+          "card",
+          "badge"
+        ],
+        "because": [
+          "components.roles",
+          "components.definition"
+        ]
       },
       {
         "id": "command",
-        "why": "Customers browse; keyboard command menus suit experts."
+        "why": "Command suits expert users who jump anywhere by typing, not people who visit now and then. Multi-brand's customers return now and then, and most visits last a few minutes.",
+        "instead": [
+          "navigation-menu",
+          "dropdown-menu"
+        ],
+        "because": [
+          "tasks.q2",
+          "scenarios.q2"
+        ]
+      },
+      {
+        "id": "context-menu",
+        "why": "Right-click menus suit power users, and people who don't know to right-click never find them. Multi-brand's customers see it fresh each time. Plan actions sit in a visible menu.",
+        "instead": [
+          "dropdown-menu"
+        ],
+        "because": [
+          "tasks.q2",
+          "human.q2"
+        ]
+      },
+      {
+        "id": "data-table",
+        "why": "Multi-brand draws on core, content and media families, not data. It avoids tools staff use all day and points those to Dense data.",
+        "instead": [
+          "card",
+          "tabs"
+        ],
+        "because": [
+          "components.roles",
+          "components.definition"
+        ]
+      },
+      {
+        "id": "hover-card",
+        "why": "Hover cards need a mouse, and touch screens have no hover. Multi-brand's customers use any device. A popover opens plan details by tap.",
+        "instead": [
+          "popover"
+        ],
+        "because": [
+          "accessibility.values",
+          "scenarios.q1"
+        ]
+      },
+      {
+        "id": "marker",
+        "why": "Multi-brand draws on core, content and media families, not conversation. It admits only families in its roles. Its only messages go to support through a textarea.",
+        "instead": [
+          "separator"
+        ],
+        "because": [
+          "components.roles",
+          "components.definition"
+        ]
+      },
+      {
+        "id": "menubar",
+        "why": "Menubar suits dense desktop tools, not website navigation or phones. Brand sites use navigation-menu, and customers sign up on phones.",
+        "instead": [
+          "navigation-menu",
+          "dropdown-menu"
+        ],
+        "because": [
+          "scenarios.q1",
+          "people.q1"
+        ]
+      },
+      {
+        "id": "message",
+        "why": "Multi-brand draws on core, content and media families, not conversation. It admits only families in its roles. Its only messages go to support through a textarea.",
+        "instead": [
+          "textarea"
+        ],
+        "because": [
+          "components.roles",
+          "components.definition"
+        ]
+      },
+      {
+        "id": "message-scroller",
+        "why": "Multi-brand draws on core, content and media families, not conversation. It admits only families in its roles. Its only messages go to support through a textarea.",
+        "instead": [
+          "textarea"
+        ],
+        "because": [
+          "components.roles",
+          "components.definition"
+        ]
+      },
+      {
+        "id": "resizable",
+        "why": "Resizable suits desktop tools where people size panels, not phones. Multi-brand avoids tools staff use all day, and customers sign up on phones.",
+        "instead": [
+          "sidebar",
+          "sheet"
+        ],
+        "because": [
+          "scenarios.q1",
+          "people.q1"
+        ]
+      },
+      {
+        "id": "table",
+        "why": "Table is a data component. Multi-brand's components answer takes core, content and media families only, because product teams build sign-up and account forms, plus product pages with questions and faces.",
+        "instead": [
+          "item",
+          "card"
+        ],
+        "because": [
+          "components.roles"
+        ]
       },
       {
         "id": "tooltip",
-        "why": "Customers use any device, and on touch screens hover hints never show; a popover explains a fee instead."
+        "why": "Customers use any device, and on touch screens hover hints never show; a popover explains a fee instead.",
+        "instead": [
+          "popover"
+        ],
+        "because": [
+          "accessibility.values",
+          "iconography.roles"
+        ]
       }
     ]
   },

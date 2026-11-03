@@ -11,7 +11,7 @@ sidebar_class_name: "ods-left-out"
 
 Rows and columns of comparable records, with headers.
 
-<p class="odv-compstatus"><span class="odv-pill odv-pill-out">Left out of Brand expressive</span> Campaign pages tell a story; they do not list records.</p>
+<p class="odv-compstatus"><span class="odv-pill odv-pill-out">Left out of Brand expressive</span> Table is a data component. Brand expressive's components answer takes core and media families only, because campaigns lead with media and big sections. <span class="odv-instead">Use instead: Item, <a href="./card">Card</a></span></p>
 
 ## See it live
 

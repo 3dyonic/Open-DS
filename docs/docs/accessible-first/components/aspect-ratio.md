@@ -11,7 +11,7 @@ sidebar_class_name: "ods-left-out"
 
 Keeps an image or video at a fixed shape while the layout resizes.
 
-<p class="odv-compstatus"><span class="odv-pill odv-pill-out">Left out of Accessible first</span> </p>
+<p class="odv-compstatus"><span class="odv-pill odv-pill-out">Left out of Accessible first</span> Aspect ratio is a media component. Accessible first's components answer takes core families only, because forms, steps and feedback are all a public service needs. <span class="odv-instead">Use instead: <a href="./card">Card</a></span></p>
 
 ## See it live
 

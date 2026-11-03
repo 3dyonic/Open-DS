@@ -11,7 +11,7 @@ sidebar_class_name: "ods-left-out"
 
 Rich content in a floating panel, opened by click.
 
-<p class="odv-compstatus"><span class="odv-pill odv-pill-out">Left out of Accessible first</span> </p>
+<p class="odv-compstatus"><span class="odv-pill odv-pill-out">Left out of Accessible first</span> Optional help here sits in a section a person can open, in the page. One clear way to do each thing leaves no room for a floating panel too. <span class="odv-instead">Use instead: <a href="./collapsible">Collapsible</a></span></p>
 
 ## See it live
 

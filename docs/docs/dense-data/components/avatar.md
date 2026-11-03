@@ -11,7 +11,7 @@ sidebar_class_name: "ods-left-out"
 
 A small image or initials that stand for a person or account.
 
-<p class="odv-compstatus"><span class="odv-pill odv-pill-out">Left out of Dense data</span> </p>
+<p class="odv-compstatus"><span class="odv-pill odv-pill-out">Left out of Dense data</span> Avatar is a media component. Dense data's components answer takes core and data families only, because records need tables, filters and fast ways to move between them. <span class="odv-instead">Use instead: <a href="./badge">Badge</a>, <a href="./card">Card</a></span></p>
 
 ## See it live
 

@@ -11,7 +11,7 @@ sidebar_class_name: "ods-left-out"
 
 A menu of actions on right-click or long-press.
 
-<p class="odv-compstatus"><span class="odv-pill odv-pill-out">Left out of Multi-brand</span> </p>
+<p class="odv-compstatus"><span class="odv-pill odv-pill-out">Left out of Multi-brand</span> Right-click menus suit power users, and people who don't know to right-click never find them. Multi-brand's customers see it fresh each time. Plan actions sit in a visible menu. <span class="odv-instead">Use instead: <a href="./dropdown-menu">Dropdown menu</a></span></p>
 
 ## See it live
 

@@ -11,7 +11,7 @@ sidebar_class_name: "ods-left-out"
 
 Panels people resize by dragging the line between them.
 
-<p class="odv-compstatus"><span class="odv-pill odv-pill-out">Left out of Brand expressive</span> </p>
+<p class="odv-compstatus"><span class="odv-pill odv-pill-out">Left out of Brand expressive</span> Resizable is for desktop tools and not phones. Visitors come from social posts on their phones, and Brand expressive avoids tools people use for hours. <span class="odv-instead">Use instead: <a href="./card">Card</a></span></p>
 
 ## See it live
 

@@ -11,7 +11,7 @@ sidebar_class_name: "ods-left-out"
 
 Separate boxes for a one-time code.
 
-<p class="odv-compstatus"><span class="odv-pill odv-pill-out">Left out of Content first</span> </p>
+<p class="odv-compstatus"><span class="odv-pill odv-pill-out">Left out of Content first</span> Forms are rare and short: newsletter and search. Actions are rare: subscribe, share, save. No step asks for a one-time code. <span class="odv-instead">Use instead: <a href="./input">Input</a></span></p>
 
 ## See it live
 

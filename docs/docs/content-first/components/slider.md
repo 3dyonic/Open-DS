@@ -11,7 +11,7 @@ sidebar_class_name: "ods-left-out"
 
 A value picked by dragging along a track, when an exact number is not needed.
 
-<p class="odv-compstatus"><span class="odv-pill odv-pill-out">Left out of Content first</span> </p>
+<p class="odv-compstatus"><span class="odv-pill odv-pill-out">Left out of Content first</span> Readers need sections, navigation and little else. Actions are rare: subscribe, share, save. Dragging a value is not one of them. <span class="odv-instead">Use instead: <a href="./input">Input</a></span></p>
 
 ## See it live
 

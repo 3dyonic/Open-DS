@@ -11,7 +11,7 @@ sidebar_class_name: "ods-left-out"
 
 Site navigation with links and panels.
 
-<p class="odv-compstatus"><span class="odv-pill odv-pill-out">Left out of Dense data</span> </p>
+<p class="odv-compstatus"><span class="odv-pill odv-pill-out">Left out of Dense data</span> Navigation menu is for the sections of a website. Dense data avoids public sites, and its app navigation stays open all shift in a sidebar. <span class="odv-instead">Use instead: <a href="./sidebar">Sidebar</a>, <a href="./tabs">Tabs</a></span></p>
 
 ## See it live
 

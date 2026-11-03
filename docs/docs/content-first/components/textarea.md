@@ -11,7 +11,7 @@ sidebar_class_name: "ods-left-out"
 
 A field for free text over several lines.
 
-<p class="odv-compstatus"><span class="odv-pill odv-pill-out">Left out of Content first</span> </p>
+<p class="odv-compstatus"><span class="odv-pill odv-pill-out">Left out of Content first</span> Forms are rare and short: newsletter and search, both one line. Actions are rare: subscribe, share, save. None calls for long text entry. <span class="odv-instead">Use instead: <a href="./input">Input</a></span></p>
 
 ## See it live
 

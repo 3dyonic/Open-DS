@@ -11,7 +11,7 @@ sidebar_class_name: "ods-left-out"
 
 Slides that move left and right, one or a few at a time.
 
-<p class="odv-compstatus"><span class="odv-pill odv-pill-out">Left out of Accessible first</span> </p>
+<p class="odv-compstatus"><span class="odv-pill odv-pill-out">Left out of Accessible first</span> People must finish the form, and a carousel suits content where missing some is fine. Content people must see does not belong in slides. <span class="odv-instead">Use instead: <a href="./card">Card</a></span></p>
 
 ## See it live
 

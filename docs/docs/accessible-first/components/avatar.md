@@ -11,7 +11,7 @@ sidebar_class_name: "ods-left-out"
 
 A small image or initials that stand for a person or account.
 
-<p class="odv-compstatus"><span class="odv-pill odv-pill-out">Left out of Accessible first</span> </p>
+<p class="odv-compstatus"><span class="odv-pill odv-pill-out">Left out of Accessible first</span> Avatar is a media component. Accessible first's components answer takes core families only, because forms, steps and feedback are all a public service needs. <span class="odv-instead">Use instead: <a href="./badge">Badge</a>, <a href="./card">Card</a></span></p>
 
 ## See it live
 
