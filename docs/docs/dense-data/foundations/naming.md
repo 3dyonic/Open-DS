@@ -97,6 +97,7 @@ Each token points to another token. Values live only on primitives, below.
 | `component.tooltip.label` | `color.text.inverse` → `dense-data.theme.light.color.text.inverse` → `color.slate.light.0` | `color.text.inverse` → `dense-data.theme.dark.color.text.inverse` → `color.slate.dark.50` |
 | `component.transition.duration` | `motion.duration.feedback` → `duration.fast` | `motion.duration.feedback` → `duration.fast` |
 | `component.transition.easing` | `motion.easing.standard` → `easing.standard` | `motion.easing.standard` → `easing.standard` |
+| `component.transition.panels-duration` | `motion.duration.panels` → `duration.fast` | `motion.duration.panels` → `duration.fast` |
 
 ## Primitives
 

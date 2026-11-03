@@ -8,7 +8,7 @@ description: "Type primitives in Content first."
 
 # Type
 
-14 primitives, 13 used.
+13 primitives, 13 used.
 
 ## `font.size`
 
@@ -42,4 +42,3 @@ description: "Type primitives in Content first."
 | --- | --- | --- | --- |
 | `font.family.source-serif-4` | "Source Serif 4", Georgia, serif | <span class="ods-font" style="font-family:"Source Serif 4", Georgia, serif">Aa 123</span> | `type.display.font-family` (every mode)<br />`type.title.font-family` (every mode)<br />`type.heading.font-family` (every mode)<br />`type.body.font-family` (every mode)<br />`type.data.font-family` (every mode) |
 | `font.family.inter` | Inter, system-ui, sans-serif | <span class="ods-font" style="font-family:Inter, system-ui, sans-serif">Aa 123</span> | `type.label.font-family` (every mode)<br />`type.caption.font-family` (every mode) |
-| `font.family.ibm-plex-mono` | "IBM Plex Mono", ui-monospace, monospace | <span class="ods-font" style="font-family:"IBM Plex Mono", ui-monospace, monospace">Aa 123</span> | Not used yet |

@@ -38,7 +38,8 @@ html[data-scheme="accessible-first"] {
   --type-data-font-size: 1.1875rem;
   --type-data-line-height: 1.6;
   --type-data-font-weight: 400;
-  --motion-duration-feedback: 200ms; /** Feedback speed: moderate. */
+  --motion-duration-feedback: 200ms; /** Feedback speed: moderate. Hover, press and small state changes. */
+  --motion-duration-panels: 200ms; /** Panel speed: moderate. Dialogs, sheets, popovers and menus opening and closing. One speed: panels open at the feedback speed (motion.count). */
   --motion-easing-standard: cubic-bezier(0.2, 0, 0, 1); /** Feedback easing. */
   --color-surface-canvas: #F7F7F7; /** The page background behind everything. */
   --color-surface-default: #FFFFFF; /** The base fill for content. */
@@ -110,6 +111,7 @@ html[data-scheme="accessible-first"] {
   --overlay-item-height: var(--size-control-default); /** Height of a menu item. */
   --transition-duration: var(--motion-duration-feedback); /** Duration of feedback transitions. */
   --transition-easing: var(--motion-easing-standard); /** Easing of feedback transitions. */
+  --transition-panels-duration: var(--motion-duration-panels); /** Duration of panels opening and closing: dialogs, sheets, popovers, menus. */
   --button-primary-background: var(--color-action-primary); /** Primary button fill. */
   --button-primary-background-hover: var(--color-action-primary-hover); /** Primary button fill on hover. */
   --button-primary-label: var(--color-text-on-action); /** Primary button label color. */
@@ -204,7 +206,8 @@ html[data-scheme="accessible-first"][data-theme="dark"] {
   --type-data-font-size: 1.1875rem;
   --type-data-line-height: 1.6;
   --type-data-font-weight: 400;
-  --motion-duration-feedback: 200ms; /** Feedback speed: moderate. */
+  --motion-duration-feedback: 200ms; /** Feedback speed: moderate. Hover, press and small state changes. */
+  --motion-duration-panels: 200ms; /** Panel speed: moderate. Dialogs, sheets, popovers and menus opening and closing. One speed: panels open at the feedback speed (motion.count). */
   --motion-easing-standard: cubic-bezier(0.2, 0, 0, 1); /** Feedback easing. */
   --color-surface-canvas: #0A0A0A; /** The page background behind everything. */
   --color-surface-default: #141414; /** The base fill for content. */
@@ -276,6 +279,7 @@ html[data-scheme="accessible-first"][data-theme="dark"] {
   --overlay-item-height: var(--size-control-default); /** Height of a menu item. */
   --transition-duration: var(--motion-duration-feedback); /** Duration of feedback transitions. */
   --transition-easing: var(--motion-easing-standard); /** Easing of feedback transitions. */
+  --transition-panels-duration: var(--motion-duration-panels); /** Duration of panels opening and closing: dialogs, sheets, popovers, menus. */
   --button-primary-background: var(--color-action-primary); /** Primary button fill. */
   --button-primary-background-hover: var(--color-action-primary-hover); /** Primary button fill on hover. */
   --button-primary-label: var(--color-text-on-action); /** Primary button label color. */

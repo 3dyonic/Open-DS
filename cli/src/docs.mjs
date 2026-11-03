@@ -1289,7 +1289,7 @@ export function docsPages(
     `# Primitives\n\n` +
     h(
       `<div class="odv-pagehero"><div><p>`,
-      `The raw values of ${esc(scheme.name)}. Primitives hold the values; semantic tokens give them a job (see <a href="../foundations/">Foundations</a>), and components read only the jobs. Spare values stay, so a brand or a changed answer can use them without adding a value.`,
+      `The raw values of ${esc(scheme.name)}. Primitives hold the values; semantic tokens give them a job (see <a href="../foundations/">Foundations</a>), and components read only the jobs. Colour ramps stay whole, so some colour steps wait for a use; every other primitive is read by something.`,
       `</p><div class="odv-stats"><span><b>${prims.length}</b>Primitives</span><span><b>${nUsed}</b>In use</span><span><b>${prims.length - nUsed}</b>Spare</span></div></div>`,
       robot(scheme.id, "odv-pagehero-robot"),
       `</div>`,

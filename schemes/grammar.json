@@ -25,8 +25,16 @@
       "id": "component-api",
       "description": "One key per component element, variant and state. Every scheme fills every key."
     }
-  ],  "options": {
-    "description": "Rules every scheme's primitives follow (OD-221). An option set exists to offer distinct choices, so each option looks clearly different from the others: two steps you cannot tell apart are one step. Prefer fewer steps that each do a job over one step per role.",
+  ],
+  "options": {
+    "description": "Rules every scheme's primitives follow (OD-221, OD-222). An option set exists to offer distinct choices, so each option looks clearly different from the others: two steps you cannot tell apart are one step. Prefer fewer steps that each do a job over one step per role. And keep only the options something reads: an option nothing reads is a choice nobody made.",
+    "used": {
+      "say": "outside colour ramps, keep only the options a semantic, theme or component key reads",
+      "why": "An option nothing reads is a choice nobody made. Colour ramps stay whole, because a ramp is one unit with meaning.",
+      "except": [
+        "color"
+      ]
+    },
     "rules": [
       {
         "id": "line-height",
@@ -38,7 +46,6 @@
       }
     ]
   },
-
   "methods": [
     {
       "id": "roles",
@@ -2717,6 +2724,12 @@
       "component": "transition",
       "description": "Easing of feedback transitions.",
       "default": "motion.easing.standard"
+    },
+    {
+      "id": "transition/panels-duration",
+      "component": "transition",
+      "description": "Duration of panels opening and closing: dialogs, sheets, popovers, menus.",
+      "default": "motion.duration.panels"
     }
   ],
   "semantics": {

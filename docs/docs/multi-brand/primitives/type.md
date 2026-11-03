@@ -8,7 +8,7 @@ description: "Type primitives in Multi-brand."
 
 # Type
 
-16 primitives, 15 used.
+15 primitives, 15 used.
 
 ## `font.size`
 
@@ -42,6 +42,5 @@ description: "Type primitives in Multi-brand."
 | Primitive | Value | Sample | Used by |
 | --- | --- | --- | --- |
 | `font.family.inter` | Inter, system-ui, sans-serif | <span class="ods-font" style="font-family:Inter, system-ui, sans-serif">Aa 123</span> | `type.display.font-family` (every mode, aster)<br />`type.title.font-family` (every mode, aster)<br />`type.heading.font-family` (every mode, aster)<br />`type.body.font-family` (every mode, aster)<br />`type.label.font-family` (every mode, aster)<br />`type.caption.font-family` (every mode, aster)<br />`type.data.font-family` (every mode, aster) |
-| `font.family.ibm-plex-mono` | "IBM Plex Mono", ui-monospace, monospace | <span class="ods-font" style="font-family:"IBM Plex Mono", ui-monospace, monospace">Aa 123</span> | Not used yet |
 | `font.family.plus-jakarta-sans` | "Plus Jakarta Sans", system-ui, sans-serif | <span class="ods-font" style="font-family:"Plus Jakarta Sans", system-ui, sans-serif">Aa 123</span> | `type.display.font-family` (every mode, birch)<br />`type.title.font-family` (every mode, birch)<br />`type.heading.font-family` (every mode, birch)<br />`type.body.font-family` (every mode, birch)<br />`type.label.font-family` (every mode, birch)<br />`type.caption.font-family` (every mode, birch)<br />`type.data.font-family` (every mode, birch) |
 | `font.family.poppins` | Poppins, system-ui, sans-serif | <span class="ods-font" style="font-family:Poppins, system-ui, sans-serif">Aa 123</span> | `type.display.font-family` (every mode, coral)<br />`type.title.font-family` (every mode, coral)<br />`type.heading.font-family` (every mode, coral)<br />`type.body.font-family` (every mode, coral)<br />`type.label.font-family` (every mode, coral)<br />`type.caption.font-family` (every mode, coral)<br />`type.data.font-family` (every mode, coral) |

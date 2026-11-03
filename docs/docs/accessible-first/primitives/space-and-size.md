@@ -8,7 +8,7 @@ description: "Space and size primitives in Accessible first."
 
 # Space and size
 
-11 primitives, 9 used.
+9 primitives, 9 used.
 
 ## `space`
 
@@ -24,9 +24,7 @@ description: "Space and size primitives in Accessible first."
 
 | Primitive | Value | Sample | Used by |
 | --- | --- | --- | --- |
-| `size.16` | 1rem (16px) | <span class="ods-bar" style="width:1rem"></span> | Not used yet |
 | `size.20` | 1.25rem (20px) | <span class="ods-bar" style="width:1.25rem"></span> | `size.icon` (semantic) |
-| `size.24` | 1.5rem (24px) | <span class="ods-bar" style="width:1.5rem"></span> | Not used yet |
 | `size.48` | 3rem (48px) | <span class="ods-bar" style="width:3rem"></span> | `size.control.compact` (semantic) |
 | `size.52` | 3.25rem (52px) | <span class="ods-bar" style="width:3.25rem"></span> | `size.control.default` (semantic)<br />`size.control.large` (semantic) |
 | `size.56` | 3.5rem (56px) | <span class="ods-bar" style="width:3.5rem"></span> | `size.row` (semantic) |

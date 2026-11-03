@@ -2445,14 +2445,6 @@
           "$type": "dimension",
           "$value": "1rem"
         },
-        "20": {
-          "$type": "dimension",
-          "$value": "1.25rem"
-        },
-        "24": {
-          "$type": "dimension",
-          "$value": "1.5rem"
-        },
         "36": {
           "$type": "dimension",
           "$value": "2.25rem"
@@ -2468,10 +2460,6 @@
         "$description": "Size options for controls, rows and icons."
       },
       "radius": {
-        "0": {
-          "$type": "dimension",
-          "$value": "0rem"
-        },
         "4": {
           "$type": "dimension",
           "$value": "0.25rem"
@@ -2579,10 +2567,6 @@
             "$type": "fontFamily",
             "$value": "Inter, system-ui, sans-serif"
           },
-          "ibm-plex-mono": {
-            "$type": "fontFamily",
-            "$value": "\"IBM Plex Mono\", ui-monospace, monospace"
-          },
           "plus-jakarta-sans": {
             "$type": "fontFamily",
             "$value": "\"Plus Jakarta Sans\", system-ui, sans-serif"
@@ -2594,11 +2578,6 @@
         }
       },
       "duration": {
-        "fast": {
-          "$type": "duration",
-          "$value": "120ms",
-          "$description": "Fast: the usual convention for feedback, about 120ms."
-        },
         "moderate": {
           "$type": "duration",
           "$value": "200ms",
@@ -2607,7 +2586,7 @@
         "relaxed": {
           "$type": "duration",
           "$value": "320ms",
-          "$description": "Relaxed: a slower, springy speed for expressive motion, about 320ms."
+          "$description": "Relaxed: a slower speed for larger moves, about 320ms."
         }
       },
       "easing": {
@@ -4409,7 +4388,12 @@
           "feedback": {
             "$type": "duration",
             "$value": "{duration.moderate}",
-            "$description": "Feedback speed: moderate."
+            "$description": "Feedback speed: moderate. Hover, press and small state changes."
+          },
+          "panels": {
+            "$type": "duration",
+            "$value": "{duration.relaxed}",
+            "$description": "Panel speed: relaxed. Dialogs, sheets, popovers and menus opening and closing. Two speeds: moderate feedback, relaxed panels, shared across brands (motion.count, motion.values)."
           }
         },
         "easing": {
@@ -4591,7 +4575,6 @@
           }
         },
         "category": {
-          "$description": "Identity colours for tags, labels and chart series. They tell items apart and carry no meaning.",
           "1": {
             "@": {
               "$type": "color",
@@ -4651,7 +4634,8 @@
               "$description": "Category 5: tag fill.",
               "$value": "{theme.color.category.5.subtle}"
             }
-          }
+          },
+          "$description": "Identity colours for tags, labels and chart series. They tell items apart and carry no meaning."
         },
         "disabled": {
           "$description": "The shared look of controls that cannot be used right now.",
@@ -5014,6 +4998,10 @@
         "easing": {
           "$value": "{motion.easing.standard}",
           "$description": "Easing of feedback transitions."
+        },
+        "panels-duration": {
+          "$value": "{motion.duration.panels}",
+          "$description": "Duration of panels opening and closing: dialogs, sheets, popovers, menus."
         }
       }
     },

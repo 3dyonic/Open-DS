@@ -8,7 +8,7 @@ description: "Space and size primitives in Brand expressive."
 
 # Space and size
 
-12 primitives, 10 used.
+10 primitives, 10 used.
 
 ## `space`
 
@@ -25,9 +25,7 @@ description: "Space and size primitives in Brand expressive."
 
 | Primitive | Value | Sample | Used by |
 | --- | --- | --- | --- |
-| `size.16` | 1rem (16px) | <span class="ods-bar" style="width:1rem"></span> | Not used yet |
 | `size.20` | 1.25rem (20px) | <span class="ods-bar" style="width:1.25rem"></span> | `size.icon` (semantic) |
-| `size.24` | 1.5rem (24px) | <span class="ods-bar" style="width:1.5rem"></span> | Not used yet |
 | `size.44` | 2.75rem (44px) | <span class="ods-bar" style="width:2.75rem"></span> | `size.control.compact` (semantic) |
 | `size.52` | 3.25rem (52px) | <span class="ods-bar" style="width:3.25rem"></span> | `size.control.default` (semantic)<br />`size.row` (semantic) |
 | `size.60` | 3.75rem (60px) | <span class="ods-bar" style="width:3.75rem"></span> | `size.control.large` (semantic) |

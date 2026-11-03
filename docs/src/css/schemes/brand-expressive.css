@@ -38,7 +38,9 @@ html[data-scheme="brand-expressive"] {
   --type-data-font-size: 1.0625rem;
   --type-data-line-height: 1.55;
   --type-data-font-weight: 400;
-  --motion-duration-feedback: 320ms; /** Feedback speed: relaxed. */
+  --motion-duration-feedback: 120ms; /** Feedback speed: fast. Hover, press and small state changes. */
+  --motion-duration-panels: 200ms; /** Panel speed: moderate. Dialogs, sheets, popovers and menus opening and closing. Three speeds: fast feedback, moderate panels, relaxed hero (motion.count). */
+  --motion-duration-hero: 320ms; /** Hero speed: relaxed. Hero and launch moments. */
   --motion-easing-standard: cubic-bezier(0.34, 1.56, 0.64, 1); /** Feedback easing. */
   --color-surface-canvas: #FFF8F3; /** The page background behind everything. */
   --color-surface-default: #FFFFFF; /** The base fill for content. */
@@ -110,6 +112,7 @@ html[data-scheme="brand-expressive"] {
   --overlay-item-height: var(--size-control-default); /** Height of a menu item. */
   --transition-duration: var(--motion-duration-feedback); /** Duration of feedback transitions. */
   --transition-easing: var(--motion-easing-standard); /** Easing of feedback transitions. */
+  --transition-panels-duration: var(--motion-duration-panels); /** Duration of panels opening and closing: dialogs, sheets, popovers, menus. */
   --button-primary-background: var(--color-action-primary); /** Primary button fill. */
   --button-primary-background-hover: var(--color-action-primary-hover); /** Primary button fill on hover. */
   --button-primary-label: var(--color-text-on-action); /** Primary button label color. */
@@ -204,7 +207,9 @@ html[data-scheme="brand-expressive"][data-theme="dark"] {
   --type-data-font-size: 1.0625rem;
   --type-data-line-height: 1.55;
   --type-data-font-weight: 400;
-  --motion-duration-feedback: 320ms; /** Feedback speed: relaxed. */
+  --motion-duration-feedback: 120ms; /** Feedback speed: fast. Hover, press and small state changes. */
+  --motion-duration-panels: 200ms; /** Panel speed: moderate. Dialogs, sheets, popovers and menus opening and closing. Three speeds: fast feedback, moderate panels, relaxed hero (motion.count). */
+  --motion-duration-hero: 320ms; /** Hero speed: relaxed. Hero and launch moments. */
   --motion-easing-standard: cubic-bezier(0.34, 1.56, 0.64, 1); /** Feedback easing. */
   --color-surface-canvas: #120B09; /** The page background behind everything. */
   --color-surface-default: #1F1411; /** The base fill for content. */
@@ -276,6 +281,7 @@ html[data-scheme="brand-expressive"][data-theme="dark"] {
   --overlay-item-height: var(--size-control-default); /** Height of a menu item. */
   --transition-duration: var(--motion-duration-feedback); /** Duration of feedback transitions. */
   --transition-easing: var(--motion-easing-standard); /** Easing of feedback transitions. */
+  --transition-panels-duration: var(--motion-duration-panels); /** Duration of panels opening and closing: dialogs, sheets, popovers, menus. */
   --button-primary-background: var(--color-action-primary); /** Primary button fill. */
   --button-primary-background-hover: var(--color-action-primary-hover); /** Primary button fill on hover. */
   --button-primary-label: var(--color-text-on-action); /** Primary button label color. */

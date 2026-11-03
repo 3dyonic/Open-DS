@@ -390,6 +390,16 @@
       "checks": ["catalogue-built", "schemes-inventory", "schemes-samples", "storybook-renders", "docs-build"]
     },
     {
+      "id": "OD-222",
+      "title": "Options match the decisions: only what is read, motion as answered, text paired by tone, focus, selected and danger",
+      "in": [
+        "outside colour ramps, every primitive is read by a semantic, a theme or a component key",
+        "the motion tokens hold as many speeds as each scheme's motion.count answer; panels read their own speed",
+        "the agent context carries the rule, generated from the grammar"
+      ],
+      "checks": ["options-used", "answers-match-tokens", "docs-build", "storybook-renders"]
+    },
+    {
       "id": "OD-221",
       "title": "Line heights: ratios in every scheme, one step per job, steps at least 0.2 apart",
       "in": [
