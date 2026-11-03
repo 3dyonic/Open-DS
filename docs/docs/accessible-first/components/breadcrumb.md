@@ -10,7 +10,7 @@ description: "Breadcrumb in Accessible first."
 
 The trail of pages above this one, so people know where they are.
 
-**In Accessible first.** Shows where a person is in the service. Family: navigation. Reference: Open UX (breadcrumb), MIT.
+**In Accessible first.** Shows where a person is in the service.
 
 ## See it live
 

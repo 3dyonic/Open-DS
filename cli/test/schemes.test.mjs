@@ -271,7 +271,7 @@ test("docs pages cover every scope and component, for every scheme", async () =>
       .filter((c) => carried.includes(c));
     assert.match(
       pages["components/inventory.md"],
-      new RegExp(`\\*\\*${inv.length}\\*\\* components are in`),
+      new RegExp(`(\\*\\*|<b>)${inv.length}(\\*\\*|</b>) components are in`),
     );
     assert.deepEqual(
       Object.keys(pages)

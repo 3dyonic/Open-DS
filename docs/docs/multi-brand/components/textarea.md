@@ -10,7 +10,7 @@ description: "Textarea in Multi-brand."
 
 A field for free text over several lines.
 
-**In Multi-brand.** Messages to support. Family: form. Reference: Open UX (textarea), MIT.
+**In Multi-brand.** Messages to support.
 
 ## See it live
 

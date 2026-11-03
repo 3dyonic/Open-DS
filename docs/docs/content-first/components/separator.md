@@ -10,7 +10,7 @@ description: "Separator in Content first."
 
 A line between groups.
 
-**In Content first.** Breaks between parts of a page. Family: layout. Reference: Open DS, MIT.
+**In Content first.** Breaks between parts of a page.
 
 ## See it live
 

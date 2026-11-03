@@ -10,7 +10,7 @@ description: "Sheet in Content first."
 
 A panel that slides in from an edge.
 
-**In Content first.** The menu on a phone. Family: overlay. Reference: Open UX (drawer), MIT.
+**In Content first.** The menu on a phone.
 
 ## See it live
 

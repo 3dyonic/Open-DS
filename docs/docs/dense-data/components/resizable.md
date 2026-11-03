@@ -10,7 +10,7 @@ description: "Resizable in Dense data."
 
 Panels people resize by dragging the line between them.
 
-**In Dense data.** Experts size the table and detail panes. Family: layout. Reference: Open DS, MIT.
+**In Dense data.** Experts size the table and detail panes.
 
 ## See it live
 

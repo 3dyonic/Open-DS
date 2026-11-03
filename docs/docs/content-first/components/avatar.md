@@ -10,7 +10,7 @@ description: "Avatar in Content first."
 
 A small image or initials that stand for a person or account.
 
-**In Content first.** The author of an article. Family: media. Reference: Open DS, MIT.
+**In Content first.** The author of an article.
 
 ## See it live
 

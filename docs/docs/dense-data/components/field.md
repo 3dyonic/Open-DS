@@ -10,7 +10,7 @@ description: "Field in Dense data."
 
 A label, control, hint and error laid out together, the same way every time.
 
-**In Dense data.** Lays out label, control and error the same way everywhere. Family: form. Reference: Open DS, MIT.
+**In Dense data.** Lays out label, control and error the same way everywhere.
 
 ## See it live
 

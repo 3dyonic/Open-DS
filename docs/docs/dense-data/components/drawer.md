@@ -11,7 +11,7 @@ sidebar_class_name: "ods-left-out"
 
 A panel that slides up from the bottom, for phones.
 
-**Not part of Dense data.** A desk tool with a mouse and keyboard does not need phone drawers. The examples use Dense data's tokens, to show how it would look if the design system added it. Family: overlay. Reference: Open UX (drawer), MIT.
+<div class="odv-leftout"><span class="odv-robot "><img class="odv-robot-day" src="/robots/dense-data.webp" alt="" loading="lazy"/><img class="odv-robot-night" src="/robots/dense-data-dark.webp" alt="" loading="lazy"/></span><p><b>Not part of Dense data.</b> A desk tool with a mouse and keyboard does not need phone drawers. The examples use Dense data's tokens, to show how it would look if the design system added it.</p></div>
 
 ## See it live
 

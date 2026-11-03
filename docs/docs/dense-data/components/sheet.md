@@ -10,7 +10,7 @@ description: "Sheet in Dense data."
 
 A panel that slides in from an edge.
 
-**In Dense data.** Record details beside the table. Family: overlay. Reference: Open UX (drawer), MIT.
+**In Dense data.** Record details beside the table.
 
 ## See it live
 

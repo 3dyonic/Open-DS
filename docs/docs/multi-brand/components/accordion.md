@@ -10,7 +10,7 @@ description: "Accordion in Multi-brand."
 
 Stacked sections that expand and collapse without leaving the page.
 
-**In Multi-brand.** Frequent questions. Family: content. Reference: Open UX (accordion), MIT.
+**In Multi-brand.** Frequent questions.
 
 ## See it live
 

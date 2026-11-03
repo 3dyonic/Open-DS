@@ -10,7 +10,7 @@ description: "Popover in Multi-brand."
 
 Rich content in a floating panel, opened by click.
 
-**In Multi-brand.** Plan details and fee explanations, opened by tap on any device. Family: overlay. Reference: Open DS, MIT.
+**In Multi-brand.** Plan details and fee explanations, opened by tap on any device.
 
 ## See it live
 

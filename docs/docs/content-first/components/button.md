@@ -10,7 +10,7 @@ description: "Button in Content first."
 
 A control that commits an action on this screen.
 
-**In Content first.** Subscribe, share and save. Family: action. Reference: Open UX (button), MIT.
+**In Content first.** Subscribe, share and save.
 
 ## See it live
 

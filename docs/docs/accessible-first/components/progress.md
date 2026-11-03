@@ -10,7 +10,7 @@ description: "Progress in Accessible first."
 
 How far a task has come.
 
-**In Accessible first.** Shows how far through the steps a person is. Family: feedback. Reference: Open UX (progress), MIT.
+**In Accessible first.** Shows how far through the steps a person is.
 
 ## See it live
 

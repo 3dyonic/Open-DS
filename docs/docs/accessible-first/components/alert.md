@@ -10,7 +10,7 @@ description: "Alert in Accessible first."
 
 A message that stays on the page with the content it is about.
 
-**In Accessible first.** Errors and important notes that stay on the page. Family: feedback. Reference: Open UX (alert), MIT.
+**In Accessible first.** Errors and important notes that stay on the page.
 
 ## See it live
 

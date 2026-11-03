@@ -10,7 +10,7 @@ description: "Collapsible in Accessible first."
 
 One section that opens and closes.
 
-**In Accessible first.** Optional help a person can open. Family: layout. Reference: Open DS, MIT.
+**In Accessible first.** Optional help a person can open.
 
 ## See it live
 

@@ -10,7 +10,7 @@ description: "Select in Multi-brand."
 
 One choice from a list, in a menu.
 
-**In Multi-brand.** Country and plan options. Family: form. Reference: Open UX (select), MIT.
+**In Multi-brand.** Country and plan options.
 
 ## See it live
 

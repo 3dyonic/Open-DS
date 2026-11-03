@@ -10,7 +10,7 @@ description: "Tabs in Multi-brand."
 
 Switches between views of the same thing on one page.
 
-**In Multi-brand.** Sections of the account. Family: navigation. Reference: Open UX (tabs), MIT.
+**In Multi-brand.** Sections of the account.
 
 ## See it live
 

@@ -10,7 +10,7 @@ description: "Checkbox in Dense data."
 
 One or many independent on or off choices, usually sent with a form.
 
-**In Dense data.** Selects rows and filter values. Family: form. Reference: Open UX (checkbox), MIT.
+**In Dense data.** Selects rows and filter values.
 
 ## See it live
 

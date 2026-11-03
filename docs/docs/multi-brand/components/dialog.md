@@ -10,7 +10,7 @@ description: "Dialog in Multi-brand."
 
 A window over the page that takes attention until people finish or close it.
 
-**In Multi-brand.** Change a plan. Family: overlay. Reference: Open UX (modal), MIT.
+**In Multi-brand.** Change a plan.
 
 ## See it live
 

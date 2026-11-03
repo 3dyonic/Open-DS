@@ -10,7 +10,7 @@ description: "Dialog in Content first."
 
 A window over the page that takes attention until people finish or close it.
 
-**In Content first.** Sign-up without leaving the page. Family: overlay. Reference: Open UX (modal), MIT.
+**In Content first.** Sign-up without leaving the page.
 
 ## See it live
 

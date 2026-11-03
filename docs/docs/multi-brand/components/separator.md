@@ -10,7 +10,7 @@ description: "Separator in Multi-brand."
 
 A line between groups.
 
-**In Multi-brand.** Groups of settings. Family: layout. Reference: Open DS, MIT.
+**In Multi-brand.** Groups of settings.
 
 ## See it live
 

@@ -10,7 +10,7 @@ description: "Input in Content first."
 
 A labeled field for a short typed value.
 
-**In Content first.** Search and the newsletter field. Family: form. Reference: Open UX (text_field), MIT.
+**In Content first.** Search and the newsletter field.
 
 ## See it live
 

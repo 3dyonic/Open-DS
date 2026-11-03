@@ -10,7 +10,7 @@ description: "Skeleton in Content first."
 
 Placeholder shapes that match the final layout, so the page does not jump when content arrives.
 
-**In Content first.** Article text while it loads. Family: feedback. Reference: Open UX (skeleton), MIT.
+**In Content first.** Article text while it loads.
 
 ## See it live
 

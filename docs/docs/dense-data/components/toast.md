@@ -10,7 +10,7 @@ description: "Toast in Dense data."
 
 A short message that confirms an action and goes away.
 
-**In Dense data.** Confirms a saved change. Family: feedback. Reference: Open UX (toast), MIT.
+**In Dense data.** Confirms a saved change.
 
 ## See it live
 

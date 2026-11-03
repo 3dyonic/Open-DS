@@ -10,7 +10,7 @@ description: "Alert in Dense data."
 
 A message that stays on the page with the content it is about.
 
-**In Dense data.** A problem that stays on the page. Family: feedback. Reference: Open UX (alert), MIT.
+**In Dense data.** A problem that stays on the page.
 
 ## See it live
 

@@ -10,7 +10,7 @@ description: "Input group in Dense data."
 
 An input with addons inside its border: icons, text, buttons.
 
-**In Dense data.** Search with an icon and a clear button. Family: form. Reference: Open DS, MIT.
+**In Dense data.** Search with an icon and a clear button.
 
 ## See it live
 

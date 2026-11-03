@@ -11,7 +11,7 @@ sidebar_class_name: "ods-left-out"
 
 A small indicator that work is in progress when the time is unknown.
 
-**Not part of Dense data.** Its answers did not pick it. The examples use Dense data's tokens, to show how it would look if the design system added it. Family: feedback. Reference: Open UX (loading_indicator), MIT.
+<div class="odv-leftout"><span class="odv-robot "><img class="odv-robot-day" src="/robots/dense-data.webp" alt="" loading="lazy"/><img class="odv-robot-night" src="/robots/dense-data-dark.webp" alt="" loading="lazy"/></span><p><b>Not part of Dense data.</b> Its answers did not pick it. The examples use Dense data's tokens, to show how it would look if the design system added it.</p></div>
 
 ## See it live
 

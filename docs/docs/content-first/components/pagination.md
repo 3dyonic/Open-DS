@@ -10,7 +10,7 @@ description: "Pagination in Content first."
 
 Moves between pages of results.
 
-**In Content first.** Moves through article lists. Family: navigation. Reference: Open UX (pagination), MIT.
+**In Content first.** Moves through article lists.
 
 ## See it live
 

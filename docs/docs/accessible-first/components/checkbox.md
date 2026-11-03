@@ -10,7 +10,7 @@ description: "Checkbox in Accessible first."
 
 One or many independent on or off choices, usually sent with a form.
 
-**In Accessible first.** Many choices, each with a large target. Family: form. Reference: Open UX (checkbox), MIT.
+**In Accessible first.** Many choices, each with a large target.
 
 ## See it live
 

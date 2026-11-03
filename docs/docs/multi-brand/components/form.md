@@ -10,7 +10,7 @@ description: "Form in Multi-brand."
 
 Form state and validation wired to the fields.
 
-**In Multi-brand.** Validation shared by every product team. Family: form. Reference: Open DS, MIT.
+**In Multi-brand.** Validation shared by every product team.
 
 ## See it live
 

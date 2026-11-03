@@ -10,7 +10,7 @@ description: "Sidebar in Dense data."
 
 The side navigation of an app, open while people work.
 
-**In Dense data.** App navigation that stays open all shift. Family: navigation. Reference: Open DS, MIT.
+**In Dense data.** App navigation that stays open all shift.
 
 ## See it live
 

@@ -11,7 +11,7 @@ sidebar_class_name: "ods-left-out"
 
 Rows and columns of comparable records, with headers.
 
-**Not part of Multi-brand.** Its answers did not pick it. The examples use Multi-brand's tokens, to show how it would look if the design system added it. Family: data. Reference: Open UX (table), MIT.
+<div class="odv-leftout"><span class="odv-robot "><img class="odv-robot-day" src="/robots/multi-brand.webp" alt="" loading="lazy"/><img class="odv-robot-night" src="/robots/multi-brand-dark.webp" alt="" loading="lazy"/></span><p><b>Not part of Multi-brand.</b> Its answers did not pick it. The examples use Multi-brand's tokens, to show how it would look if the design system added it.</p></div>
 
 ## See it live
 

@@ -10,7 +10,7 @@ description: "Dropdown menu in Multi-brand."
 
 A menu of actions opened from a button.
 
-**In Multi-brand.** The account menu. Family: navigation. Reference: Open DS, MIT.
+**In Multi-brand.** The account menu.
 
 ## See it live
 

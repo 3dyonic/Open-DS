@@ -10,7 +10,7 @@ description: "Label in Accessible first."
 
 The visible name of a form control.
 
-**In Accessible first.** Names every control. Family: form. Reference: Open DS, MIT.
+**In Accessible first.** Names every control.
 
 ## See it live
 

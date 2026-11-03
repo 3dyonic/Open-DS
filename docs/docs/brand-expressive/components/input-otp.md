@@ -11,7 +11,7 @@ sidebar_class_name: "ods-left-out"
 
 Separate boxes for a one-time code.
 
-**Not part of Brand expressive.** Its answers did not pick it. The examples use Brand expressive's tokens, to show how it would look if the design system added it. Family: form. Reference: Open DS, MIT.
+<div class="odv-leftout"><span class="odv-robot "><img class="odv-robot-day" src="/robots/brand-expressive.webp" alt="" loading="lazy"/><img class="odv-robot-night" src="/robots/brand-expressive-dark.webp" alt="" loading="lazy"/></span><p><b>Not part of Brand expressive.</b> Its answers did not pick it. The examples use Brand expressive's tokens, to show how it would look if the design system added it.</p></div>
 
 ## See it live
 

@@ -10,7 +10,7 @@ description: "Scroll area in Dense data."
 
 A region with its own styled scrollbars.
 
-**In Dense data.** Long tables in fixed panels. Family: layout. Reference: Open DS, MIT.
+**In Dense data.** Long tables in fixed panels.
 
 ## See it live
 

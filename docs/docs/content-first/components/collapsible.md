@@ -10,7 +10,7 @@ description: "Collapsible in Content first."
 
 One section that opens and closes.
 
-**In Content first.** A long aside the reader can open. Family: layout. Reference: Open DS, MIT.
+**In Content first.** A long aside the reader can open.
 
 ## See it live
 

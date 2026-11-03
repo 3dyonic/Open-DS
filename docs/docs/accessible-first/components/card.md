@@ -10,7 +10,7 @@ description: "Card in Accessible first."
 
 A bordered container for one item or group, with its title, content and actions.
 
-**In Accessible first.** Groups a summary before submitting. Family: layout. Reference: Open UX (content_card), MIT.
+**In Accessible first.** Groups a summary before submitting.
 
 ## See it live
 

@@ -10,7 +10,7 @@ description: "Navigation menu in Content first."
 
 Site navigation with links and panels.
 
-**In Content first.** The site sections. Family: navigation. Reference: Open DS, MIT.
+**In Content first.** The site sections.
 
 ## See it live
 

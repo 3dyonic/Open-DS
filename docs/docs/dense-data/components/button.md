@@ -10,7 +10,7 @@ description: "Button in Dense data."
 
 A control that commits an action on this screen.
 
-**In Dense data.** Every action. Family: action. Reference: Open UX (button), MIT.
+**In Dense data.** Every action.
 
 ## See it live
 

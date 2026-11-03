@@ -10,7 +10,7 @@ description: "Separator in Accessible first."
 
 A line between groups.
 
-**In Accessible first.** Breaks between groups of questions. Family: layout. Reference: Open DS, MIT.
+**In Accessible first.** Breaks between groups of questions.
 
 ## See it live
 

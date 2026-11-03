@@ -408,4 +408,6 @@ html[data-scheme="accessible-first"] {
   --ifm-color-info-contrast-foreground: var(--color-text-primary);
 }
 html[data-scheme="accessible-first"] .navbar__logo img { content: url("/logo-accessible-first.svg"); }
+html[data-scheme="accessible-first"] .theme-doc-sidebar-container .menu::after { background-image: url("/robots/accessible-first.webp"); }
+html[data-scheme="accessible-first"][data-theme="dark"] .theme-doc-sidebar-container .menu::after { background-image: url("/robots/accessible-first-dark.webp"); }
 html[data-scheme="accessible-first"][data-theme="dark"] .navbar__logo img { content: url("/logo-accessible-first-dark.svg"); }

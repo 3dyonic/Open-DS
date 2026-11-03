@@ -679,3 +679,28 @@ html:not([data-scheme])[data-theme="dark"] .navbar__logo img {
 .ods-left-out > .menu__link:not(.menu__link--active) {
   opacity: 0.55;
 }
+
+/* OD-209: the scheme's robot at the foot of the sidebar. Each scheme's CSS sets the picture. */
+.theme-doc-sidebar-container .menu::after {
+  content: "";
+  display: block;
+  height: 120px;
+  margin: 24px auto 8px;
+  background: no-repeat center bottom / contain;
+  opacity: 0.9;
+}
+
+/* OD-209: page not found, with Slumber. */
+.ods-notfound {
+  display: grid;
+  justify-items: center;
+  gap: 0.75rem;
+  text-align: center;
+}
+.ods-notfound-robot {
+  width: 220px;
+}
+.ods-notfound p {
+  max-width: 40ch;
+  color: var(--ifm-font-color-secondary);
+}

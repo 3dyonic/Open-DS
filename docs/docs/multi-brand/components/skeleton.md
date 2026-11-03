@@ -10,7 +10,7 @@ description: "Skeleton in Multi-brand."
 
 Placeholder shapes that match the final layout, so the page does not jump when content arrives.
 
-**In Multi-brand.** Plans and orders while they load. Family: feedback. Reference: Open UX (skeleton), MIT.
+**In Multi-brand.** Plans and orders while they load.
 
 ## See it live
 

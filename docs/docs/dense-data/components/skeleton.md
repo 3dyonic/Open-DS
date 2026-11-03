@@ -10,7 +10,7 @@ description: "Skeleton in Dense data."
 
 Placeholder shapes that match the final layout, so the page does not jump when content arrives.
 
-**In Dense data.** Rows while a table loads. Family: feedback. Reference: Open UX (skeleton), MIT.
+**In Dense data.** Rows while a table loads.
 
 ## See it live
 

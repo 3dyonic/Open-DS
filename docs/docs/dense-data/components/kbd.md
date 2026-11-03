@@ -10,7 +10,7 @@ description: "Kbd in Dense data."
 
 A keyboard key or shortcut, shown as text.
 
-**In Dense data.** Shows the shortcuts experts learn. Family: navigation. Reference: Open DS, MIT.
+**In Dense data.** Shows the shortcuts experts learn.
 
 ## See it live
 

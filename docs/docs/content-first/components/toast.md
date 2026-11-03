@@ -10,7 +10,7 @@ description: "Toast in Content first."
 
 A short message that confirms an action and goes away.
 
-**In Content first.** Confirms a saved article. Family: feedback. Reference: Open UX (toast), MIT.
+**In Content first.** Confirms a saved article.
 
 ## See it live
 

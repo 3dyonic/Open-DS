@@ -10,7 +10,7 @@ description: "Label in Brand expressive."
 
 The visible name of a form control.
 
-**In Brand expressive.** Names the field. Family: form. Reference: Open DS, MIT.
+**In Brand expressive.** Names the field.
 
 ## See it live
 

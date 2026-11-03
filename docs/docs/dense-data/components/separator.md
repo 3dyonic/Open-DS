@@ -10,7 +10,7 @@ description: "Separator in Dense data."
 
 A line between groups.
 
-**In Dense data.** Groups toolbar actions. Family: layout. Reference: Open DS, MIT.
+**In Dense data.** Groups toolbar actions.
 
 ## See it live
 

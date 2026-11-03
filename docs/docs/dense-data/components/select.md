@@ -10,7 +10,7 @@ description: "Select in Dense data."
 
 One choice from a list, in a menu.
 
-**In Dense data.** Picks one value in filters and forms. Family: form. Reference: Open UX (select), MIT.
+**In Dense data.** Picks one value in filters and forms.
 
 ## See it live
 

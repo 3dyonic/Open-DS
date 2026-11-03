@@ -10,7 +10,7 @@ description: "Drawer in Brand expressive."
 
 A panel that slides up from the bottom, for phones.
 
-**In Brand expressive.** The menu on a phone. Family: overlay. Reference: Open UX (drawer), MIT.
+**In Brand expressive.** The menu on a phone.
 
 ## See it live
 
