@@ -436,7 +436,46 @@
       },
       {
         "id": "item",
-        "why": "A short list with media and a few actions. Not for products and features; card does that."
+        "why": "A short list with media and a few actions. Not for products and features; card does that.",
+        "variants": {
+          "variant": {
+            "default": {
+              "use": "Rows inside a card, which already gives the frame.",
+              "because": [
+                "elevation.definition"
+              ]
+            },
+            "outline": {
+              "use": "Rows on a color block, with a border so each holds its edge on vivid color.",
+              "because": [
+                "color.values"
+              ]
+            },
+            "muted": {
+              "not_used": true,
+              "why": "A quiet fill reads as bland on a loud page; color blocks already mark each section.",
+              "because": [
+                "brand.q2",
+                "outcomes.q2"
+              ]
+            }
+          },
+          "size": {
+            "default": {
+              "use": "Every row, at touch size: phones first.",
+              "because": [
+                "accessibility.values"
+              ]
+            },
+            "sm": {
+              "not_used": true,
+              "why": "Phones first: no compact rows.",
+              "because": [
+                "accessibility.values"
+              ]
+            }
+          }
+        }
       },
       {
         "id": "native-select",
@@ -738,6 +777,33 @@
       "voice.values"
     ],
     "screen": "The drop is coming",
+    "conversation": {
+      "title": "Drop 03 chat",
+      "marker": "Drop day",
+      "messages": [
+        {
+          "author": "Drop crew",
+          "time": "10:00",
+          "text": "Night runner is live. Four colours. Go."
+        },
+        {
+          "author": "You",
+          "time": "10:01",
+          "text": "Black in medium, please!",
+          "mine": true
+        },
+        {
+          "author": "Drop crew",
+          "time": "10:02",
+          "text": "Locked in. See you at checkout."
+        }
+      ],
+      "attachment": {
+        "name": "night-runner-size-guide.pdf",
+        "type": "PDF",
+        "size": "860 KB"
+      }
+    },
     "actions": {
       "primary": "Join the drop",
       "secondary": "See the line-up"

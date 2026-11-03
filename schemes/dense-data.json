@@ -549,7 +549,47 @@
       },
       {
         "id": "item",
-        "why": "Short lists such as users or settings, each with a few actions. Not for records analysts compare; those go in a table."
+        "why": "Short lists such as users or settings, each with a few actions. Not for records analysts compare; those go in a table.",
+        "variants": {
+          "variant": {
+            "default": {
+              "use": "Users and settings in a panel or menu, with no border, quiet beside the data.",
+              "because": [
+                "content.q1"
+              ]
+            },
+            "outline": {
+              "not_used": true,
+              "why": "Borders on every row would compete with the data; hairlines between sections do that work.",
+              "because": [
+                "content.q1",
+                "elevation.definition"
+              ]
+            },
+            "muted": {
+              "use": "The current user or setting, with a soft fill so people keep their place.",
+              "because": [
+                "tasks.q1",
+                "human.q1"
+              ]
+            }
+          },
+          "size": {
+            "default": {
+              "use": "Settings and user lists outside the table, at the standard row.",
+              "because": [
+                "spacing.count"
+              ]
+            },
+            "sm": {
+              "use": "Long lists in a side panel, at the denser size. It still fits a mouse.",
+              "because": [
+                "spacing.count",
+                "accessibility.values"
+              ]
+            }
+          }
+        }
       },
       {
         "id": "menubar",
@@ -706,6 +746,33 @@
       "voice.definition"
     ],
     "screen": "Open alerts",
+    "conversation": {
+      "title": "Notes on ALR-2042",
+      "marker": "Today",
+      "messages": [
+        {
+          "author": "Tier 1 analyst",
+          "time": "09:12",
+          "text": "Prompt injection on llm-inference-02. Risk score 78. Escalated."
+        },
+        {
+          "author": "Senior analyst",
+          "time": "09:20",
+          "text": "On it. Blocking the source IP now."
+        },
+        {
+          "author": "You",
+          "time": "09:24",
+          "text": "Added the request logs.",
+          "mine": true
+        }
+      ],
+      "attachment": {
+        "name": "request-logs-0910.csv",
+        "type": "CSV",
+        "size": "240 KB"
+      }
+    },
     "actions": {
       "primary": "Investigate",
       "secondary": "Export"
