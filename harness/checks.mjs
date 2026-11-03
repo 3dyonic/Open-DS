@@ -520,7 +520,6 @@ export const CHECKS = {
         item: "menu",
         menubar: "menu",
         "hover-card": "card",
-        sonner: "messages",
       };
       const gaps = [];
       const seen = new Map();

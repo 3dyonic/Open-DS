@@ -1026,24 +1026,6 @@
       ]
     },
     {
-      "name": "sonner",
-      "type": "registry:ui",
-      "title": "Sonner",
-      "description": "Sonner. Stacked toasts, for many short confirmations that may arrive close together. Not for a",
-      "dependencies": [
-        "sonner"
-      ],
-      "registryDependencies": [
-        "utils"
-      ],
-      "files": [
-        {
-          "path": "src/components/sonner.tsx",
-          "type": "registry:ui"
-        }
-      ]
-    },
-    {
       "name": "spinner",
       "type": "registry:ui",
       "title": "Spinner",
@@ -1135,7 +1117,8 @@
       "title": "Toast",
       "description": "Toast. A short confirmation that something happened (\"12 orders exported.\"). It stays long",
       "dependencies": [
-        "class-variance-authority"
+        "class-variance-authority",
+        "sonner"
       ],
       "registryDependencies": [
         "utils"

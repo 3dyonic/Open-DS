@@ -1,5 +1,5 @@
 ---
-sidebar_position: 63
+sidebar_position: 62
 title: "Tooltip"
 description: "Tooltip in Content first."
 sidebar_class_name: "ods-left-out"

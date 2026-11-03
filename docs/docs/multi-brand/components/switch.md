@@ -1,5 +1,5 @@
 ---
-sidebar_position: 56
+sidebar_position: 55
 title: "Switch"
 description: "Switch in Multi-brand."
 ---

@@ -5487,36 +5487,6 @@
         }
       },
       {
-        "id": "sonner",
-        "family": "feedback",
-        "description": "Stacked toasts, from the Sonner library.",
-        "overview": "Stacked toasts, from the Sonner library.",
-        "apply_when": "Many short confirmations that may arrive close together.",
-        "not_when": "A message people must read or act on (alert or dialog).",
-        "vs": [
-          {
-            "id": "toast",
-            "why": "Open DS's own single toast."
-          },
-          {
-            "id": "alert",
-            "why": "A message that stays."
-          }
-        ],
-        "accessibility": [
-          {
-            "id": "live",
-            "overview": "Toasts are announced politely and do not take focus."
-          }
-        ],
-        "source": {
-          "name": "Open UX",
-          "id": "toast",
-          "license": "MIT",
-          "url": "https://github.com/3dyonic/open-ux/blob/main/catalog/components/toast.json"
-        }
-      },
-      {
         "id": "spinner",
         "family": "feedback",
         "description": "A small loading indicator.",
@@ -5685,7 +5655,7 @@
       {
         "id": "toast",
         "family": "feedback",
-        "description": "A short message that confirms an action and goes away. Open DS builds its own; shadcn now ships sonner for this.",
+        "description": "A short message that confirms an action and goes away.",
         "overview": "A short message that confirms an action and goes away.",
         "apply_when": "Saved, sent, exported: something people should notice without stopping.",
         "not_when": "A failure people must understand (alert or dialog), or a notice that stays (alert).",

@@ -1,5 +1,5 @@
 ---
-sidebar_position: 58
+sidebar_position: 57
 title: "Tabs"
 description: "Tabs in Multi-brand."
 ---

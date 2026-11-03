@@ -1,5 +1,5 @@
 ---
-sidebar_position: 59
+sidebar_position: 58
 title: "Textarea"
 description: "Textarea in Multi-brand."
 ---
