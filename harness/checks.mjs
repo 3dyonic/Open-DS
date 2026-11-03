@@ -1578,11 +1578,66 @@ export const CHECKS = {
     },
   },
   "docs-build": {
-    requires: ["docs/package.json"],
+    requires: ["docs/package.json", "harness/docs-renders.cjs"],
     slow: true,
     run: (c) => {
       const r = c.sh("pnpm", ["--dir", "docs", "build"]);
-      return r.code === 0 ? ok("docs build") : bad(tail(r.out));
+      if (r.code !== 0) return bad(tail(r.out));
+      // OD-207: open each scheme's page in a browser: its colours, the switch, a left-out component.
+      const v = c.sh("node", ["harness/docs-renders.cjs", c.p("docs")]);
+      let res;
+      try {
+        res = JSON.parse(v.out.trim().split("\n").pop());
+      } catch {
+        return bad(tail(v.out));
+      }
+      if (res.missing)
+        return pending("Playwright is not installed: npm i -g playwright && npx playwright install chromium");
+      if (res.error) return bad(res.error);
+      return res.failed.length
+        ? bad(res.failed.slice(0, 5).map((f) => `${f.id}: ${f.problem}`).join("; "))
+        : ok(`docs build; ${res.pages} pages open in a browser: every scheme in its colours, the switch keeps the page`);
+    },
+  },
+  "docs-schemes": {
+    requires: ["docs/scripts/generate.mjs", "docs/schemes.json"],
+    run: (c) => {
+      // OD-207: the repo docs hold every scheme, and switching never lands on a missing page or
+      // another scheme's colours. Every scheme has the same pages; each scheme's tokens apply only on
+      // its pages; category links and the home slug point inside the scheme's folder.
+      const schemes = c.json("docs/schemes.json");
+      const gaps = [];
+      const ids = schemes.map((s) => s.id);
+      if (ids.length !== SCHEMES.length || SCHEMES.some((id) => !ids.includes(id)))
+        gaps.push(`docs/schemes.json lists ${ids.join(", ")}`);
+      const list = (id) =>
+        c.walk(`docs/docs/${id}`, () => true)
+          .map((f) => f.slice(`docs/docs/${id}/`.length))
+          .sort();
+      const first = list(ids[0]);
+      for (const id of ids.slice(1)) {
+        const l = list(id);
+        const missing = first.filter((f) => !l.includes(f));
+        const extra = l.filter((f) => !first.includes(f));
+        if (missing.length || extra.length)
+          gaps.push(`${id} differs from ${ids[0]}: ${[...missing.map((f) => `no ${f}`), ...extra.map((f) => `extra ${f}`)].slice(0, 4).join(", ")}`);
+      }
+      for (const id of ids) {
+        const css = c.read(`docs/src/css/schemes/${id}.css`);
+        if (/(^|[\s,])(:root|\.dark)\b/m.test(css)) gaps.push(`docs/src/css/schemes/${id}.css sets tokens outside html[data-scheme="${id}"]`);
+        for (const f of c.walk(`docs/docs/${id}`, (f) => f.endsWith("_category_.json")))
+          for (const m of c.read(f).matchAll(/"id": "([^"]+)"/g))
+            if (!m[1].startsWith(`${id}/`)) gaps.push(`${f} links to ${m[1]}`);
+        const home = c.read(`docs/docs/${id}/index.md`);
+        if (!home.includes(`slug: "/${id}/"`)) gaps.push(`docs/docs/${id}/index.md is not at /${id}/`);
+      }
+      if (!c.read("docs/src/css/schemes.css").includes("schemes/"))
+        gaps.push("docs/src/css/schemes.css imports no scheme");
+      for (const f of ["docs/src/theme/NavbarItem/SchemeSwitcher.tsx", "docs/src/pages/index.tsx", "docs/src/clientModules/scheme.ts"])
+        if (!c.has(...f.split("/"))) gaps.push(`${f} is missing`);
+      return gaps.length
+        ? bad(gaps.slice(0, 8).join("; "))
+        : ok(`${ids.length} schemes, ${first.length} pages each, every scheme's tokens scoped to its own pages`);
     },
   },
 
