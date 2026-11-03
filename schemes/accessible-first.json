@@ -2508,6 +2508,74 @@
                   "$value": "{font.family.atkinson-hyperlegible}"
                 }
               }
+            },
+            "color": {
+              "on-light": {
+                "$description": "What sits on a light fill, in either mode.",
+                "text": {
+                  "primary": {
+                    "$type": "color",
+                    "$value": "{color.gray.light.900}"
+                  },
+                  "secondary": {
+                    "$type": "color",
+                    "$value": "{color.gray.light.700}"
+                  },
+                  "muted": {
+                    "$type": "color",
+                    "$value": "{color.gray.light.500}"
+                  }
+                },
+                "link": {
+                  "$type": "color",
+                  "$value": "{color.blue.light.700}"
+                },
+                "icon": {
+                  "$type": "color",
+                  "$value": "{color.gray.light.700}"
+                },
+                "border": {
+                  "$type": "color",
+                  "$value": "{color.gray.light.500}"
+                },
+                "focus": {
+                  "$type": "color",
+                  "$value": "{color.blue.light.600}"
+                }
+              },
+              "on-dark": {
+                "$description": "What sits on a dark fill, in either mode.",
+                "text": {
+                  "primary": {
+                    "$type": "color",
+                    "$value": "{color.gray.dark.900}"
+                  },
+                  "secondary": {
+                    "$type": "color",
+                    "$value": "{color.gray.dark.600}"
+                  },
+                  "muted": {
+                    "$type": "color",
+                    "$value": "{color.gray.dark.500}"
+                  }
+                },
+                "link": {
+                  "$type": "color",
+                  "$value": "{color.blue.dark.700}"
+                },
+                "icon": {
+                  "$type": "color",
+                  "$value": "{color.gray.dark.600}"
+                },
+                "border": {
+                  "$type": "color",
+                  "$value": "{color.gray.dark.500}"
+                },
+                "focus": {
+                  "$type": "color",
+                  "$value": "{color.blue.dark.700}"
+                }
+              }
             }
           },
           "light": {
@@ -2515,27 +2583,57 @@
               "surface": {
                 "canvas": {
                   "$type": "color",
-                  "$value": "{color.gray.light.50}"
+                  "$value": "{color.gray.light.50}",
+                  "$extensions": {
+                    "open-ds": {
+                      "tone": "light"
+                    }
+                  }
                 },
                 "default": {
                   "$type": "color",
-                  "$value": "{color.gray.light.0}"
+                  "$value": "{color.gray.light.0}",
+                  "$extensions": {
+                    "open-ds": {
+                      "tone": "light"
+                    }
+                  }
                 },
                 "raised": {
                   "$type": "color",
-                  "$value": "{color.gray.light.0}"
+                  "$value": "{color.gray.light.0}",
+                  "$extensions": {
+                    "open-ds": {
+                      "tone": "light"
+                    }
+                  }
                 },
                 "sunken": {
                   "$type": "color",
-                  "$value": "{color.gray.light.100}"
+                  "$value": "{color.gray.light.100}",
+                  "$extensions": {
+                    "open-ds": {
+                      "tone": "light"
+                    }
+                  }
                 },
                 "selected": {
                   "$type": "color",
-                  "$value": "{color.blue.light.100}"
+                  "$value": "{color.blue.light.100}",
+                  "$extensions": {
+                    "open-ds": {
+                      "tone": "light"
+                    }
+                  }
                 },
                 "inverse": {
                   "$type": "color",
-                  "$value": "{color.gray.light.900}"
+                  "$value": "{color.gray.light.900}",
+                  "$extensions": {
+                    "open-ds": {
+                      "tone": "dark"
+                    }
+                  }
                 },
                 "scrim": {
                   "$type": "color",
@@ -2586,21 +2684,41 @@
                 "primary": {
                   "@": {
                     "$type": "color",
-                    "$value": "{color.blue.light.600}"
+                    "$value": "{color.blue.light.600}",
+                    "$extensions": {
+                      "open-ds": {
+                        "tone": "dark"
+                      }
+                    }
                   },
                   "hover": {
                     "$type": "color",
-                    "$value": "{color.blue.light.700}"
+                    "$value": "{color.blue.light.700}",
+                    "$extensions": {
+                      "open-ds": {
+                        "tone": "dark"
+                      }
+                    }
                   }
                 },
                 "secondary": {
                   "@": {
                     "$type": "color",
-                    "$value": "{color.gray.light.0}"
+                    "$value": "{color.gray.light.0}",
+                    "$extensions": {
+                      "open-ds": {
+                        "tone": "light"
+                      }
+                    }
                   },
                   "hover": {
                     "$type": "color",
-                    "$value": "{color.gray.light.100}"
+                    "$value": "{color.gray.light.100}",
+                    "$extensions": {
+                      "open-ds": {
+                        "tone": "light"
+                      }
+                    }
                   }
                 }
               },
@@ -2612,7 +2730,12 @@
                   },
                   "subtle": {
                     "$type": "color",
-                    "$value": "{color.teal.light.100}"
+                    "$value": "{color.teal.light.100}",
+                    "$extensions": {
+                      "open-ds": {
+                        "tone": "light"
+                      }
+                    }
                   }
                 },
                 "success": {
@@ -2622,7 +2745,12 @@
                   },
                   "subtle": {
                     "$type": "color",
-                    "$value": "{color.green.light.100}"
+                    "$value": "{color.green.light.100}",
+                    "$extensions": {
+                      "open-ds": {
+                        "tone": "light"
+                      }
+                    }
                   }
                 },
                 "warning": {
@@ -2632,7 +2760,12 @@
                   },
                   "subtle": {
                     "$type": "color",
-                    "$value": "{color.amber.light.100}"
+                    "$value": "{color.amber.light.100}",
+                    "$extensions": {
+                      "open-ds": {
+                        "tone": "light"
+                      }
+                    }
                   }
                 },
                 "danger": {
@@ -2642,7 +2775,12 @@
                   },
                   "subtle": {
                     "$type": "color",
-                    "$value": "{color.red.light.100}"
+                    "$value": "{color.red.light.100}",
+                    "$extensions": {
+                      "open-ds": {
+                        "tone": "light"
+                      }
+                    }
                   }
                 }
               },
@@ -2729,27 +2867,61 @@
               "surface": {
                 "canvas": {
                   "$type": "color",
-                  "$value": "{color.gray.dark.0}"
+                  "$value": "{color.gray.dark.0}",
+                  "$extensions": {
+                    "open-ds": {
+                      "tone": "dark"
+                    }
+                  }
                 },
                 "default": {
                   "$type": "color",
-                  "$value": "{color.gray.dark.50}"
+                  "$value": "{color.gray.dark.50}",
+                  "$extensions": {
+                    "open-ds": {
+                      "tone": "dark"
+                    }
+                  }
                 },
                 "raised": {
                   "$type": "color",
-                  "$value": "{color.gray.dark.100}"
+                  "$value": "{color.gray.dark.100}",
+                  "$extensions": {
+                    "open-ds": {
+                      "tone": "dark"
+                    }
+                  }
                 },
                 "sunken": {
                   "$type": "color",
-                  "$value": "{color.gray.dark.100}"
+                  "$value": "{color.gray.dark.100}",
+                  "$extensions": {
+                    "open-ds": {
+                      "tone": "dark"
+                    }
+                  }
                 },
                 "selected": {
                   "$type": "color",
-                  "$value": "{color.blue.dark.100}"
+                  "$value": "{color.blue.dark.100}",
+                  "$extensions": {
+                    "open-ds": {
+                      "tone": "dark",
+                      "waits": {
+                        "for": "OD-223",
+                        "why": "Its ramp has no step that passes yet (text.muted 4.35:1); whole ramps add one."
+                      }
+                    }
+                  }
                 },
                 "inverse": {
                   "$type": "color",
-                  "$value": "{color.gray.dark.900}"
+                  "$value": "{color.gray.dark.900}",
+                  "$extensions": {
+                    "open-ds": {
+                      "tone": "light"
+                    }
+                  }
                 },
                 "scrim": {
                   "$type": "color",
@@ -2789,7 +2961,7 @@
                 },
                 "strong": {
                   "$type": "color",
-                  "$value": "{color.gray.dark.400}"
+                  "$value": "{color.gray.dark.500}"
                 },
                 "focus": {
                   "$type": "color",
@@ -2800,21 +2972,41 @@
                 "primary": {
                   "@": {
                     "$type": "color",
-                    "$value": "{color.blue.dark.700}"
+                    "$value": "{color.blue.dark.700}",
+                    "$extensions": {
+                      "open-ds": {
+                        "tone": "light"
+                      }
+                    }
                   },
                   "hover": {
                     "$type": "color",
-                    "$value": "{color.blue.dark.800}"
+                    "$value": "{color.blue.dark.800}",
+                    "$extensions": {
+                      "open-ds": {
+                        "tone": "light"
+                      }
+                    }
                   }
                 },
                 "secondary": {
                   "@": {
                     "$type": "color",
-                    "$value": "{color.gray.dark.50}"
+                    "$value": "{color.gray.dark.50}",
+                    "$extensions": {
+                      "open-ds": {
+                        "tone": "dark"
+                      }
+                    }
                   },
                   "hover": {
                     "$type": "color",
-                    "$value": "{color.gray.dark.100}"
+                    "$value": "{color.gray.dark.100}",
+                    "$extensions": {
+                      "open-ds": {
+                        "tone": "dark"
+                      }
+                    }
                   }
                 }
               },
@@ -2826,7 +3018,12 @@
                   },
                   "subtle": {
                     "$type": "color",
-                    "$value": "{color.teal.dark.100}"
+                    "$value": "{color.teal.dark.100}",
+                    "$extensions": {
+                      "open-ds": {
+                        "tone": "dark"
+                      }
+                    }
                   }
                 },
                 "success": {
@@ -2836,7 +3033,12 @@
                   },
                   "subtle": {
                     "$type": "color",
-                    "$value": "{color.green.dark.100}"
+                    "$value": "{color.green.dark.100}",
+                    "$extensions": {
+                      "open-ds": {
+                        "tone": "dark"
+                      }
+                    }
                   }
                 },
                 "warning": {
@@ -2846,7 +3048,12 @@
                   },
                   "subtle": {
                     "$type": "color",
-                    "$value": "{color.amber.dark.100}"
+                    "$value": "{color.amber.dark.100}",
+                    "$extensions": {
+                      "open-ds": {
+                        "tone": "dark"
+                      }
+                    }
                   }
                 },
                 "danger": {
@@ -2856,7 +3063,12 @@
                   },
                   "subtle": {
                     "$type": "color",
-                    "$value": "{color.red.dark.100}"
+                    "$value": "{color.red.dark.100}",
+                    "$extensions": {
+                      "open-ds": {
+                        "tone": "dark"
+                      }
+                    }
                   }
                 }
               },
@@ -3451,6 +3663,86 @@
             "$type": "color",
             "$description": "Border of a disabled control.",
             "$value": "{theme.color.disabled.border}"
+          }
+        },
+        "on-light": {
+          "$description": "What sits on a fill whose tone is light. The fill states its tone.",
+          "text": {
+            "primary": {
+              "$type": "color",
+              "$description": "Main text on a light fill.",
+              "$value": "{theme.color.on-light.text.primary}"
+            },
+            "secondary": {
+              "$type": "color",
+              "$description": "Supporting text on a light fill.",
+              "$value": "{theme.color.on-light.text.secondary}"
+            },
+            "muted": {
+              "$type": "color",
+              "$description": "The quietest text on a light fill.",
+              "$value": "{theme.color.on-light.text.muted}"
+            }
+          },
+          "link": {
+            "$type": "color",
+            "$description": "Links on a light fill.",
+            "$value": "{theme.color.on-light.link}"
+          },
+          "icon": {
+            "$type": "color",
+            "$description": "Icons on a light fill.",
+            "$value": "{theme.color.on-light.icon}"
+          },
+          "border": {
+            "$type": "color",
+            "$description": "Control edges on a light fill.",
+            "$value": "{theme.color.on-light.border}"
+          },
+          "focus": {
+            "$type": "color",
+            "$description": "The focus ring on a light fill.",
+            "$value": "{theme.color.on-light.focus}"
+          }
+        },
+        "on-dark": {
+          "$description": "What sits on a fill whose tone is dark. The fill states its tone.",
+          "text": {
+            "primary": {
+              "$type": "color",
+              "$description": "Main text on a dark fill.",
+              "$value": "{theme.color.on-dark.text.primary}"
+            },
+            "secondary": {
+              "$type": "color",
+              "$description": "Supporting text on a dark fill.",
+              "$value": "{theme.color.on-dark.text.secondary}"
+            },
+            "muted": {
+              "$type": "color",
+              "$description": "The quietest text on a dark fill.",
+              "$value": "{theme.color.on-dark.text.muted}"
+            }
+          },
+          "link": {
+            "$type": "color",
+            "$description": "Links on a dark fill.",
+            "$value": "{theme.color.on-dark.link}"
+          },
+          "icon": {
+            "$type": "color",
+            "$description": "Icons on a dark fill.",
+            "$value": "{theme.color.on-dark.icon}"
+          },
+          "border": {
+            "$type": "color",
+            "$description": "Control edges on a dark fill.",
+            "$value": "{theme.color.on-dark.border}"
+          },
+          "focus": {
+            "$type": "color",
+            "$description": "The focus ring on a dark fill.",
+            "$value": "{theme.color.on-dark.focus}"
           }
         }
       },

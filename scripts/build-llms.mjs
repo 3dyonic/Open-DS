@@ -3,6 +3,7 @@
 // text) at the repository root, from schemes/*.json. With --check, fails if they are out of date.
 
 import { existsSync, readFileSync, readdirSync, writeFileSync } from "node:fs";
+import { sitsOn } from "../cli/src/tones.mjs";
 import { dirname, join } from "node:path";
 import { fileURLToPath } from "node:url";
 
@@ -68,7 +69,7 @@ export function buildLlms(repo) {
     "",
     ...g.semantics.keys.map(
       (k) =>
-        `- ${k.id}: ${k.intent} Use for: ${k.use_for.join(", ")}.${k.not_for.length ? ` Not for: ${k.not_for.map((n) => `${n.when} (use ${n.use})`).join("; ")}.` : ""}${k.pairs ? ` Sits on: ${k.pairs.on.join(", ")}${k.pairs.contrast ? ` at ${k.pairs.contrast}:1 or more` : ""}.` : ""}`,
+        `- ${k.id}: ${k.intent} Use for: ${k.use_for.join(", ")}.${k.not_for.length ? ` Not for: ${k.not_for.map((n) => `${n.when} (use ${n.use})`).join("; ")}.` : ""}${k.pairs ? ` Sits on: ${k.pairs.tone ? "fills of its tone: " : ""}${sitsOn(g, k).join(", ")}${k.pairs.contrast ? ` at ${k.pairs.contrast}:1 or more` : ""}.` : ""}`,
     ),
     "",
     ...schemes.flatMap((s) => {

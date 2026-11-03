@@ -395,9 +395,11 @@
       "in": [
         "outside colour ramps, every primitive is read by a semantic, a theme or a component key",
         "the motion tokens hold as many speeds as each scheme's motion.count answer; panels read their own speed",
-        "the agent context carries the rule, generated from the grammar"
+        "the agent context carries the rule, generated from the grammar",
+        "every fill states its tone, light or dark, in every brand and mode; what sits on it comes from color.on-light or color.on-dark, and keeps its contrast there",
+        "a known shortfall waits on its fill with the ticket that fixes it, and the check names it"
       ],
-      "checks": ["options-used", "answers-match-tokens", "docs-build", "storybook-renders"]
+      "checks": ["options-used", "answers-match-tokens", "semantics-guidance", "docs-build", "storybook-renders"]
     },
     {
       "id": "OD-221",

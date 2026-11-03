@@ -69,7 +69,7 @@ The CSS variable is the key with `/` replaced by `-` and the base `@` dropped. E
 | Key | What it controls | Points to, light | Points to, dark |
 | --- | --- | --- | --- |
 | `input/background` | Input fill. | `color.surface.default` → `content-first.theme.light.color.surface.default` → `color.stone.light.0` | `color.surface.default` → `content-first.theme.dark.color.surface.default` → `color.stone.dark.50` |
-| `input/border/@` | Input border at rest. | `color.border.strong` → `content-first.theme.light.color.border.strong` → `color.stone.light.500` | `color.border.strong` → `content-first.theme.dark.color.border.strong` → `color.stone.dark.300` |
+| `input/border/@` | Input border at rest. | `color.border.strong` → `content-first.theme.light.color.border.strong` → `color.stone.light.500` | `color.border.strong` → `content-first.theme.dark.color.border.strong` → `color.stone.dark.400` |
 | `input/border/focus` | Input border when focused. | `color.border.focus` → `content-first.theme.light.color.border.focus` → `color.navy.light.600` | `color.border.focus` → `content-first.theme.dark.color.border.focus` → `color.navy.dark.700` |
 | `input/text` | Typed text color. | `color.text.primary` → `content-first.theme.light.color.text.primary` → `color.stone.light.900` | `color.text.primary` → `content-first.theme.dark.color.text.primary` → `color.stone.dark.900` |
 | `input/placeholder` | Placeholder text color. | `color.text.muted` → `content-first.theme.light.color.text.muted` → `color.stone.light.600` | `color.text.muted` → `content-first.theme.dark.color.text.muted` → `color.stone.dark.400` |

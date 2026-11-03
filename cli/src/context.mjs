@@ -2,6 +2,7 @@
 // scheme, the grammar and the built tokens. The CLI (open-ds context) and the MCP (get_context) share it.
 import { componentGuide } from "./component.mjs";
 import { guidanceFor, guidanceId } from "./guidance.mjs";
+import { sitsOn } from "./tones.mjs";
 import {
   assetRoots,
   grammar,
@@ -19,7 +20,7 @@ const brief = (g) =>
     id: k.id,
     intent: k.intent,
     not_for: k.not_for.map((n) => `${n.when}: use ${n.use}`),
-    ...(k.pairs && { sits_on: k.pairs.on, contrast: k.pairs.contrast }),
+    ...(k.pairs && { sits_on: sitsOn(g, k), contrast: k.pairs.contrast }),
   }));
 
 const rules = (scheme, g) =>

@@ -36,7 +36,7 @@ Each token points to another token. Values live only on primitives, below.
 | `component.button.secondary.background.@` | `color.action.secondary.@` → `aster.theme.light.color.action.secondary.@` → `color.slate.light.0` | `color.action.secondary.@` → `aster.theme.dark.color.action.secondary.@` → `color.slate.dark.50` |
 | `component.button.secondary.background.hover` | `color.action.secondary.hover` → `aster.theme.light.color.action.secondary.hover` → `color.slate.light.100` | `color.action.secondary.hover` → `aster.theme.dark.color.action.secondary.hover` → `color.slate.dark.100` |
 | `component.button.secondary.label` | `color.text.primary` → `aster.theme.light.color.text.primary` → `color.slate.light.900` | `color.text.primary` → `aster.theme.dark.color.text.primary` → `color.slate.dark.900` |
-| `component.button.secondary.border` | `color.border.strong` → `aster.theme.light.color.border.strong` → `color.slate.light.500` | `color.border.strong` → `aster.theme.dark.color.border.strong` → `color.slate.dark.300` |
+| `component.button.secondary.border` | `color.border.strong` → `aster.theme.light.color.border.strong` → `color.slate.light.500` | `color.border.strong` → `aster.theme.dark.color.border.strong` → `color.slate.dark.400` |
 | `component.button.ghost.background-hover` | `color.surface.sunken` → `aster.theme.light.color.surface.sunken` → `color.slate.light.100` | `color.surface.sunken` → `aster.theme.dark.color.surface.sunken` → `color.slate.dark.100` |
 | `component.button.ghost.label` | `color.text.link` → `aster.theme.light.color.text.link` → `color.teal.light.700` | `color.text.link` → `aster.theme.dark.color.text.link` → `color.teal.dark.700` |
 | `component.button.height` | `size.control.default` → `size.44` | `size.control.default` → `size.44` |
@@ -50,7 +50,7 @@ Each token points to another token. Values live only on primitives, below.
 | `component.button.disabled.label` | `color.disabled.text` → `aster.theme.light.color.disabled.text` → `color.slate.light.500` | `color.disabled.text` → `aster.theme.dark.color.disabled.text` → `color.slate.dark.500` |
 | `component.button.disabled.border` | `color.disabled.border` → `aster.theme.light.color.disabled.border` → `color.slate.light.200` | `color.disabled.border` → `aster.theme.dark.color.disabled.border` → `color.slate.dark.200` |
 | `component.input.background` | `color.surface.default` → `aster.theme.light.color.surface.default` → `color.slate.light.0` | `color.surface.default` → `aster.theme.dark.color.surface.default` → `color.slate.dark.50` |
-| `component.input.border.@` | `color.border.strong` → `aster.theme.light.color.border.strong` → `color.slate.light.500` | `color.border.strong` → `aster.theme.dark.color.border.strong` → `color.slate.dark.300` |
+| `component.input.border.@` | `color.border.strong` → `aster.theme.light.color.border.strong` → `color.slate.light.500` | `color.border.strong` → `aster.theme.dark.color.border.strong` → `color.slate.dark.400` |
 | `component.input.border.focus` | `color.border.focus` → `aster.theme.light.color.border.focus` → `color.teal.light.600` | `color.border.focus` → `aster.theme.dark.color.border.focus` → `color.teal.dark.700` |
 | `component.input.text` | `color.text.primary` → `aster.theme.light.color.text.primary` → `color.slate.light.900` | `color.text.primary` → `aster.theme.dark.color.text.primary` → `color.slate.dark.900` |
 | `component.input.placeholder` | `color.text.muted` → `aster.theme.light.color.text.muted` → `color.slate.light.600` | `color.text.muted` → `aster.theme.dark.color.text.muted` → `color.slate.dark.400` |
@@ -62,7 +62,7 @@ Each token points to another token. Values live only on primitives, below.
 | `component.input.disabled.border` | `color.disabled.border` → `aster.theme.light.color.disabled.border` → `color.slate.light.200` | `color.disabled.border` → `aster.theme.dark.color.disabled.border` → `color.slate.dark.200` |
 | `component.input.disabled.text` | `color.disabled.text` → `aster.theme.light.color.disabled.text` → `color.slate.light.500` | `color.disabled.text` → `aster.theme.dark.color.disabled.text` → `color.slate.dark.500` |
 | `component.control.checked` | `color.action.primary.@` → `aster.theme.light.color.action.primary.@` → `color.teal.light.600` | `color.action.primary.@` → `aster.theme.dark.color.action.primary.@` → `color.teal.dark.700` |
-| `component.control.track` | `color.border.strong` → `aster.theme.light.color.border.strong` → `color.slate.light.500` | `color.border.strong` → `aster.theme.dark.color.border.strong` → `color.slate.dark.300` |
+| `component.control.track` | `color.border.strong` → `aster.theme.light.color.border.strong` → `color.slate.light.500` | `color.border.strong` → `aster.theme.dark.color.border.strong` → `color.slate.dark.400` |
 | `component.control.thumb` | `color.surface.default` → `aster.theme.light.color.surface.default` → `color.slate.light.0` | `color.surface.default` → `aster.theme.dark.color.surface.default` → `color.slate.dark.50` |
 | `component.control.radius` | `radius.badge` → `aster.theme.base.radius.badge` → `radius.4` | `radius.badge` → `aster.theme.base.radius.badge` → `radius.4` |
 | `component.badge.radius` | `radius.badge` → `aster.theme.base.radius.badge` → `radius.4` | `radius.badge` → `aster.theme.base.radius.badge` → `radius.4` |
@@ -117,7 +117,7 @@ Each token points to another token. Values live only on primitives, below.
 | `component.button.secondary.background.@` | `color.action.secondary.@` → `birch.theme.light.color.action.secondary.@` → `color.slate.light.0` | `color.action.secondary.@` → `birch.theme.dark.color.action.secondary.@` → `color.slate.dark.50` |
 | `component.button.secondary.background.hover` | `color.action.secondary.hover` → `birch.theme.light.color.action.secondary.hover` → `color.slate.light.100` | `color.action.secondary.hover` → `birch.theme.dark.color.action.secondary.hover` → `color.slate.dark.100` |
 | `component.button.secondary.label` | `color.text.primary` → `birch.theme.light.color.text.primary` → `color.slate.light.900` | `color.text.primary` → `birch.theme.dark.color.text.primary` → `color.slate.dark.900` |
-| `component.button.secondary.border` | `color.border.strong` → `birch.theme.light.color.border.strong` → `color.slate.light.500` | `color.border.strong` → `birch.theme.dark.color.border.strong` → `color.slate.dark.300` |
+| `component.button.secondary.border` | `color.border.strong` → `birch.theme.light.color.border.strong` → `color.slate.light.500` | `color.border.strong` → `birch.theme.dark.color.border.strong` → `color.slate.dark.400` |
 | `component.button.ghost.background-hover` | `color.surface.sunken` → `birch.theme.light.color.surface.sunken` → `color.slate.light.100` | `color.surface.sunken` → `birch.theme.dark.color.surface.sunken` → `color.slate.dark.100` |
 | `component.button.ghost.label` | `color.text.link` → `birch.theme.light.color.text.link` → `color.purple.light.700` | `color.text.link` → `birch.theme.dark.color.text.link` → `color.purple.dark.700` |
 | `component.button.height` | `size.control.default` → `size.44` | `size.control.default` → `size.44` |
@@ -131,7 +131,7 @@ Each token points to another token. Values live only on primitives, below.
 | `component.button.disabled.label` | `color.disabled.text` → `birch.theme.light.color.disabled.text` → `color.slate.light.500` | `color.disabled.text` → `birch.theme.dark.color.disabled.text` → `color.slate.dark.500` |
 | `component.button.disabled.border` | `color.disabled.border` → `birch.theme.light.color.disabled.border` → `color.slate.light.200` | `color.disabled.border` → `birch.theme.dark.color.disabled.border` → `color.slate.dark.200` |
 | `component.input.background` | `color.surface.default` → `birch.theme.light.color.surface.default` → `color.slate.light.0` | `color.surface.default` → `birch.theme.dark.color.surface.default` → `color.slate.dark.50` |
-| `component.input.border.@` | `color.border.strong` → `birch.theme.light.color.border.strong` → `color.slate.light.500` | `color.border.strong` → `birch.theme.dark.color.border.strong` → `color.slate.dark.300` |
+| `component.input.border.@` | `color.border.strong` → `birch.theme.light.color.border.strong` → `color.slate.light.500` | `color.border.strong` → `birch.theme.dark.color.border.strong` → `color.slate.dark.400` |
 | `component.input.border.focus` | `color.border.focus` → `birch.theme.light.color.border.focus` → `color.purple.light.600` | `color.border.focus` → `birch.theme.dark.color.border.focus` → `color.purple.dark.700` |
 | `component.input.text` | `color.text.primary` → `birch.theme.light.color.text.primary` → `color.slate.light.900` | `color.text.primary` → `birch.theme.dark.color.text.primary` → `color.slate.dark.900` |
 | `component.input.placeholder` | `color.text.muted` → `birch.theme.light.color.text.muted` → `color.slate.light.600` | `color.text.muted` → `birch.theme.dark.color.text.muted` → `color.slate.dark.400` |
@@ -143,7 +143,7 @@ Each token points to another token. Values live only on primitives, below.
 | `component.input.disabled.border` | `color.disabled.border` → `birch.theme.light.color.disabled.border` → `color.slate.light.200` | `color.disabled.border` → `birch.theme.dark.color.disabled.border` → `color.slate.dark.200` |
 | `component.input.disabled.text` | `color.disabled.text` → `birch.theme.light.color.disabled.text` → `color.slate.light.500` | `color.disabled.text` → `birch.theme.dark.color.disabled.text` → `color.slate.dark.500` |
 | `component.control.checked` | `color.action.primary.@` → `birch.theme.light.color.action.primary.@` → `color.purple.light.600` | `color.action.primary.@` → `birch.theme.dark.color.action.primary.@` → `color.purple.dark.700` |
-| `component.control.track` | `color.border.strong` → `birch.theme.light.color.border.strong` → `color.slate.light.500` | `color.border.strong` → `birch.theme.dark.color.border.strong` → `color.slate.dark.300` |
+| `component.control.track` | `color.border.strong` → `birch.theme.light.color.border.strong` → `color.slate.light.500` | `color.border.strong` → `birch.theme.dark.color.border.strong` → `color.slate.dark.400` |
 | `component.control.thumb` | `color.surface.default` → `birch.theme.light.color.surface.default` → `color.slate.light.0` | `color.surface.default` → `birch.theme.dark.color.surface.default` → `color.slate.dark.50` |
 | `component.control.radius` | `radius.badge` → `birch.theme.base.radius.badge` → `radius.999` | `radius.badge` → `birch.theme.base.radius.badge` → `radius.999` |
 | `component.badge.radius` | `radius.badge` → `birch.theme.base.radius.badge` → `radius.999` | `radius.badge` → `birch.theme.base.radius.badge` → `radius.999` |
@@ -198,7 +198,7 @@ Each token points to another token. Values live only on primitives, below.
 | `component.button.secondary.background.@` | `color.action.secondary.@` → `coral.theme.light.color.action.secondary.@` → `color.slate.light.0` | `color.action.secondary.@` → `coral.theme.dark.color.action.secondary.@` → `color.slate.dark.50` |
 | `component.button.secondary.background.hover` | `color.action.secondary.hover` → `coral.theme.light.color.action.secondary.hover` → `color.slate.light.100` | `color.action.secondary.hover` → `coral.theme.dark.color.action.secondary.hover` → `color.slate.dark.100` |
 | `component.button.secondary.label` | `color.text.primary` → `coral.theme.light.color.text.primary` → `color.slate.light.900` | `color.text.primary` → `coral.theme.dark.color.text.primary` → `color.slate.dark.900` |
-| `component.button.secondary.border` | `color.border.strong` → `coral.theme.light.color.border.strong` → `color.slate.light.500` | `color.border.strong` → `coral.theme.dark.color.border.strong` → `color.slate.dark.300` |
+| `component.button.secondary.border` | `color.border.strong` → `coral.theme.light.color.border.strong` → `color.slate.light.500` | `color.border.strong` → `coral.theme.dark.color.border.strong` → `color.slate.dark.400` |
 | `component.button.ghost.background-hover` | `color.surface.sunken` → `coral.theme.light.color.surface.sunken` → `color.slate.light.100` | `color.surface.sunken` → `coral.theme.dark.color.surface.sunken` → `color.slate.dark.100` |
 | `component.button.ghost.label` | `color.text.link` → `coral.theme.light.color.text.link` → `color.orange.light.700` | `color.text.link` → `coral.theme.dark.color.text.link` → `color.orange.dark.700` |
 | `component.button.height` | `size.control.default` → `size.44` | `size.control.default` → `size.44` |
@@ -212,7 +212,7 @@ Each token points to another token. Values live only on primitives, below.
 | `component.button.disabled.label` | `color.disabled.text` → `coral.theme.light.color.disabled.text` → `color.slate.light.500` | `color.disabled.text` → `coral.theme.dark.color.disabled.text` → `color.slate.dark.500` |
 | `component.button.disabled.border` | `color.disabled.border` → `coral.theme.light.color.disabled.border` → `color.slate.light.200` | `color.disabled.border` → `coral.theme.dark.color.disabled.border` → `color.slate.dark.200` |
 | `component.input.background` | `color.surface.default` → `coral.theme.light.color.surface.default` → `color.slate.light.0` | `color.surface.default` → `coral.theme.dark.color.surface.default` → `color.slate.dark.50` |
-| `component.input.border.@` | `color.border.strong` → `coral.theme.light.color.border.strong` → `color.slate.light.500` | `color.border.strong` → `coral.theme.dark.color.border.strong` → `color.slate.dark.300` |
+| `component.input.border.@` | `color.border.strong` → `coral.theme.light.color.border.strong` → `color.slate.light.500` | `color.border.strong` → `coral.theme.dark.color.border.strong` → `color.slate.dark.400` |
 | `component.input.border.focus` | `color.border.focus` → `coral.theme.light.color.border.focus` → `color.orange.light.600` | `color.border.focus` → `coral.theme.dark.color.border.focus` → `color.orange.dark.700` |
 | `component.input.text` | `color.text.primary` → `coral.theme.light.color.text.primary` → `color.slate.light.900` | `color.text.primary` → `coral.theme.dark.color.text.primary` → `color.slate.dark.900` |
 | `component.input.placeholder` | `color.text.muted` → `coral.theme.light.color.text.muted` → `color.slate.light.600` | `color.text.muted` → `coral.theme.dark.color.text.muted` → `color.slate.dark.400` |
@@ -224,7 +224,7 @@ Each token points to another token. Values live only on primitives, below.
 | `component.input.disabled.border` | `color.disabled.border` → `coral.theme.light.color.disabled.border` → `color.slate.light.200` | `color.disabled.border` → `coral.theme.dark.color.disabled.border` → `color.slate.dark.200` |
 | `component.input.disabled.text` | `color.disabled.text` → `coral.theme.light.color.disabled.text` → `color.slate.light.500` | `color.disabled.text` → `coral.theme.dark.color.disabled.text` → `color.slate.dark.500` |
 | `component.control.checked` | `color.action.primary.@` → `coral.theme.light.color.action.primary.@` → `color.orange.light.600` | `color.action.primary.@` → `coral.theme.dark.color.action.primary.@` → `color.orange.dark.700` |
-| `component.control.track` | `color.border.strong` → `coral.theme.light.color.border.strong` → `color.slate.light.500` | `color.border.strong` → `coral.theme.dark.color.border.strong` → `color.slate.dark.300` |
+| `component.control.track` | `color.border.strong` → `coral.theme.light.color.border.strong` → `color.slate.light.500` | `color.border.strong` → `coral.theme.dark.color.border.strong` → `color.slate.dark.400` |
 | `component.control.thumb` | `color.surface.default` → `coral.theme.light.color.surface.default` → `color.slate.light.0` | `color.surface.default` → `coral.theme.dark.color.surface.default` → `color.slate.dark.50` |
 | `component.control.radius` | `radius.badge` → `coral.theme.base.radius.badge` → `radius.999` | `radius.badge` → `coral.theme.base.radius.badge` → `radius.999` |
 | `component.badge.radius` | `radius.badge` → `coral.theme.base.radius.badge` → `radius.999` | `radius.badge` → `coral.theme.base.radius.badge` → `radius.999` |
@@ -298,7 +298,6 @@ The raw values the tokens above end at.
 | `color.slate.dark.0` | #020617 | <span class="ods-swatch" style="background:#020617"></span> |
 | `color.slate.dark.100` | #1E293B | <span class="ods-swatch" style="background:#1E293B"></span> |
 | `color.slate.dark.200` | #334155 | <span class="ods-swatch" style="background:#334155"></span> |
-| `color.slate.dark.300` | #64748B | <span class="ods-swatch" style="background:#64748B"></span> |
 | `color.slate.dark.400` | #96A3B5 | <span class="ods-swatch" style="background:#96A3B5"></span> |
 | `color.slate.dark.50` | #0F172A | <span class="ods-swatch" style="background:#0F172A"></span> |
 | `color.slate.dark.500` | #CBD5E1 | <span class="ods-swatch" style="background:#CBD5E1"></span> |
@@ -371,7 +370,6 @@ The raw values the tokens above end at.
 | `color.slate.dark.0` | #020617 | <span class="ods-swatch" style="background:#020617"></span> |
 | `color.slate.dark.100` | #1E293B | <span class="ods-swatch" style="background:#1E293B"></span> |
 | `color.slate.dark.200` | #334155 | <span class="ods-swatch" style="background:#334155"></span> |
-| `color.slate.dark.300` | #64748B | <span class="ods-swatch" style="background:#64748B"></span> |
 | `color.slate.dark.400` | #96A3B5 | <span class="ods-swatch" style="background:#96A3B5"></span> |
 | `color.slate.dark.50` | #0F172A | <span class="ods-swatch" style="background:#0F172A"></span> |
 | `color.slate.dark.500` | #CBD5E1 | <span class="ods-swatch" style="background:#CBD5E1"></span> |
@@ -439,7 +437,6 @@ The raw values the tokens above end at.
 | `color.slate.dark.0` | #020617 | <span class="ods-swatch" style="background:#020617"></span> |
 | `color.slate.dark.100` | #1E293B | <span class="ods-swatch" style="background:#1E293B"></span> |
 | `color.slate.dark.200` | #334155 | <span class="ods-swatch" style="background:#334155"></span> |
-| `color.slate.dark.300` | #64748B | <span class="ods-swatch" style="background:#64748B"></span> |
 | `color.slate.dark.400` | #96A3B5 | <span class="ods-swatch" style="background:#96A3B5"></span> |
 | `color.slate.dark.50` | #0F172A | <span class="ods-swatch" style="background:#0F172A"></span> |
 | `color.slate.dark.500` | #CBD5E1 | <span class="ods-swatch" style="background:#CBD5E1"></span> |

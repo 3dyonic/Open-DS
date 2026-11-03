@@ -71,6 +71,6 @@ The CSS variable is the key with `/` replaced by `-` and the base `@` dropped. E
 | Key | What it controls | Points to, light | Points to, dark |
 | --- | --- | --- | --- |
 | `control/checked` | Fill of a checked checkbox or an on switch. | `color.action.primary.@` → `brand-expressive.theme.light.color.action.primary.@` → `color.pink.light.600` | `color.action.primary.@` → `brand-expressive.theme.dark.color.action.primary.@` → `color.pink.dark.700` |
-| `control/track` | Track of an off switch. | `color.border.strong` → `brand-expressive.theme.light.color.border.strong` → `color.taupe.light.500` | `color.border.strong` → `brand-expressive.theme.dark.color.border.strong` → `color.taupe.dark.300` |
+| `control/track` | Track of an off switch. | `color.border.strong` → `brand-expressive.theme.light.color.border.strong` → `color.taupe.light.500` | `color.border.strong` → `brand-expressive.theme.dark.color.border.strong` → `color.taupe.dark.400` |
 | `control/thumb` | Switch thumb and checkmark color. | `color.surface.default` → `brand-expressive.theme.light.color.surface.default` → `color.taupe.light.0` | `color.surface.default` → `brand-expressive.theme.dark.color.surface.default` → `color.taupe.dark.50` |
 | `control/radius` | Checkbox corner radius. | `radius.badge` → `brand-expressive.theme.base.radius.badge` → `radius.999` | same |

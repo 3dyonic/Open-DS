@@ -1028,6 +1028,43 @@
         "$description": {
           "type": "string",
           "description": "What the token is for."
+        },
+        "$extensions": {
+          "type": "object",
+          "additionalProperties": false,
+          "description": "Open DS decisions on a token that are not values.",
+          "properties": {
+            "open-ds": {
+              "type": "object",
+              "additionalProperties": false,
+              "required": ["tone"],
+              "description": "On a fill in a theme: its tone, which decides what sits on it (OD-222).",
+              "properties": {
+                "tone": {
+                  "enum": ["light", "dark"],
+                  "description": "Light: what sits on it reads color.on-light. Dark: color.on-dark."
+                },
+                "waits": {
+                  "type": "object",
+                  "additionalProperties": false,
+                  "required": ["for", "why"],
+                  "description": "A known shortfall on this fill, with the ticket that fixes it. The harness reports it.",
+                  "properties": {
+                    "for": {
+                      "type": "string",
+                      "pattern": "^OD-\\d+$",
+                      "description": "The ticket."
+                    },
+                    "why": {
+                      "type": "string",
+                      "minLength": 1,
+                      "description": "What falls short and why."
+                    }
+                  }
+                }
+              }
+            }
+          }
         }
       }
     },

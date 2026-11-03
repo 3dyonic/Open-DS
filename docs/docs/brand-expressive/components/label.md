@@ -69,7 +69,7 @@ The CSS variable is the key with `/` replaced by `-` and the base `@` dropped. E
 | Key | What it controls | Points to, light | Points to, dark |
 | --- | --- | --- | --- |
 | `input/background` | Input fill. | `color.surface.default` → `brand-expressive.theme.light.color.surface.default` → `color.taupe.light.0` | `color.surface.default` → `brand-expressive.theme.dark.color.surface.default` → `color.taupe.dark.50` |
-| `input/border/@` | Input border at rest. | `color.border.strong` → `brand-expressive.theme.light.color.border.strong` → `color.taupe.light.500` | `color.border.strong` → `brand-expressive.theme.dark.color.border.strong` → `color.taupe.dark.300` |
+| `input/border/@` | Input border at rest. | `color.border.strong` → `brand-expressive.theme.light.color.border.strong` → `color.taupe.light.500` | `color.border.strong` → `brand-expressive.theme.dark.color.border.strong` → `color.taupe.dark.400` |
 | `input/border/focus` | Input border when focused. | `color.border.focus` → `brand-expressive.theme.light.color.border.focus` → `color.pink.light.600` | `color.border.focus` → `brand-expressive.theme.dark.color.border.focus` → `color.pink.dark.700` |
 | `input/text` | Typed text color. | `color.text.primary` → `brand-expressive.theme.light.color.text.primary` → `color.taupe.light.900` | `color.text.primary` → `brand-expressive.theme.dark.color.text.primary` → `color.taupe.dark.900` |
 | `input/placeholder` | Placeholder text color. | `color.text.muted` → `brand-expressive.theme.light.color.text.muted` → `color.taupe.light.600` | `color.text.muted` → `brand-expressive.theme.dark.color.text.muted` → `color.taupe.dark.400` |

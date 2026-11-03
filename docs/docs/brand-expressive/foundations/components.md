@@ -32,7 +32,7 @@ Each token points to another token. Values live only on primitives, below.
 | `component.button.secondary.background.@` | `color.action.secondary.@` → `brand-expressive.theme.light.color.action.secondary.@` → `color.taupe.light.0` | `color.action.secondary.@` → `brand-expressive.theme.dark.color.action.secondary.@` → `color.taupe.dark.50` |
 | `component.button.secondary.background.hover` | `color.action.secondary.hover` → `brand-expressive.theme.light.color.action.secondary.hover` → `color.taupe.light.100` | `color.action.secondary.hover` → `brand-expressive.theme.dark.color.action.secondary.hover` → `color.taupe.dark.100` |
 | `component.button.secondary.label` | `color.text.primary` → `brand-expressive.theme.light.color.text.primary` → `color.taupe.light.900` | `color.text.primary` → `brand-expressive.theme.dark.color.text.primary` → `color.taupe.dark.900` |
-| `component.button.secondary.border` | `color.border.strong` → `brand-expressive.theme.light.color.border.strong` → `color.taupe.light.500` | `color.border.strong` → `brand-expressive.theme.dark.color.border.strong` → `color.taupe.dark.300` |
+| `component.button.secondary.border` | `color.border.strong` → `brand-expressive.theme.light.color.border.strong` → `color.taupe.light.500` | `color.border.strong` → `brand-expressive.theme.dark.color.border.strong` → `color.taupe.dark.400` |
 | `component.button.ghost.background-hover` | `color.surface.sunken` → `brand-expressive.theme.light.color.surface.sunken` → `color.taupe.light.100` | `color.surface.sunken` → `brand-expressive.theme.dark.color.surface.sunken` → `color.taupe.dark.100` |
 | `component.button.ghost.label` | `color.text.link` → `brand-expressive.theme.light.color.text.link` → `color.pink.light.700` | `color.text.link` → `brand-expressive.theme.dark.color.text.link` → `color.pink.dark.700` |
 | `component.button.height` | `size.control.default` → `size.52` | `size.control.default` → `size.52` |
@@ -46,7 +46,7 @@ Each token points to another token. Values live only on primitives, below.
 | `component.button.disabled.label` | `color.disabled.text` → `brand-expressive.theme.light.color.disabled.text` → `color.taupe.light.500` | `color.disabled.text` → `brand-expressive.theme.dark.color.disabled.text` → `color.taupe.dark.500` |
 | `component.button.disabled.border` | `color.disabled.border` → `brand-expressive.theme.light.color.disabled.border` → `color.taupe.light.200` | `color.disabled.border` → `brand-expressive.theme.dark.color.disabled.border` → `color.taupe.dark.200` |
 | `component.input.background` | `color.surface.default` → `brand-expressive.theme.light.color.surface.default` → `color.taupe.light.0` | `color.surface.default` → `brand-expressive.theme.dark.color.surface.default` → `color.taupe.dark.50` |
-| `component.input.border.@` | `color.border.strong` → `brand-expressive.theme.light.color.border.strong` → `color.taupe.light.500` | `color.border.strong` → `brand-expressive.theme.dark.color.border.strong` → `color.taupe.dark.300` |
+| `component.input.border.@` | `color.border.strong` → `brand-expressive.theme.light.color.border.strong` → `color.taupe.light.500` | `color.border.strong` → `brand-expressive.theme.dark.color.border.strong` → `color.taupe.dark.400` |
 | `component.input.border.focus` | `color.border.focus` → `brand-expressive.theme.light.color.border.focus` → `color.pink.light.600` | `color.border.focus` → `brand-expressive.theme.dark.color.border.focus` → `color.pink.dark.700` |
 | `component.input.text` | `color.text.primary` → `brand-expressive.theme.light.color.text.primary` → `color.taupe.light.900` | `color.text.primary` → `brand-expressive.theme.dark.color.text.primary` → `color.taupe.dark.900` |
 | `component.input.placeholder` | `color.text.muted` → `brand-expressive.theme.light.color.text.muted` → `color.taupe.light.600` | `color.text.muted` → `brand-expressive.theme.dark.color.text.muted` → `color.taupe.dark.400` |
@@ -58,7 +58,7 @@ Each token points to another token. Values live only on primitives, below.
 | `component.input.disabled.border` | `color.disabled.border` → `brand-expressive.theme.light.color.disabled.border` → `color.taupe.light.200` | `color.disabled.border` → `brand-expressive.theme.dark.color.disabled.border` → `color.taupe.dark.200` |
 | `component.input.disabled.text` | `color.disabled.text` → `brand-expressive.theme.light.color.disabled.text` → `color.taupe.light.500` | `color.disabled.text` → `brand-expressive.theme.dark.color.disabled.text` → `color.taupe.dark.500` |
 | `component.control.checked` | `color.action.primary.@` → `brand-expressive.theme.light.color.action.primary.@` → `color.pink.light.600` | `color.action.primary.@` → `brand-expressive.theme.dark.color.action.primary.@` → `color.pink.dark.700` |
-| `component.control.track` | `color.border.strong` → `brand-expressive.theme.light.color.border.strong` → `color.taupe.light.500` | `color.border.strong` → `brand-expressive.theme.dark.color.border.strong` → `color.taupe.dark.300` |
+| `component.control.track` | `color.border.strong` → `brand-expressive.theme.light.color.border.strong` → `color.taupe.light.500` | `color.border.strong` → `brand-expressive.theme.dark.color.border.strong` → `color.taupe.dark.400` |
 | `component.control.thumb` | `color.surface.default` → `brand-expressive.theme.light.color.surface.default` → `color.taupe.light.0` | `color.surface.default` → `brand-expressive.theme.dark.color.surface.default` → `color.taupe.dark.50` |
 | `component.control.radius` | `radius.badge` → `brand-expressive.theme.base.radius.badge` → `radius.999` | `radius.badge` → `brand-expressive.theme.base.radius.badge` → `radius.999` |
 | `component.badge.radius` | `radius.badge` → `brand-expressive.theme.base.radius.badge` → `radius.999` | `radius.badge` → `brand-expressive.theme.base.radius.badge` → `radius.999` |
@@ -132,7 +132,6 @@ The raw values the tokens above end at.
 | `color.taupe.dark.0` | #120B09 | <span class="ods-swatch" style="background:#120B09"></span> |
 | `color.taupe.dark.100` | #33241F | <span class="ods-swatch" style="background:#33241F"></span> |
 | `color.taupe.dark.200` | #4D3A33 | <span class="ods-swatch" style="background:#4D3A33"></span> |
-| `color.taupe.dark.300` | #8A6F63 | <span class="ods-swatch" style="background:#8A6F63"></span> |
 | `color.taupe.dark.400` | #B5988A | <span class="ods-swatch" style="background:#B5988A"></span> |
 | `color.taupe.dark.50` | #1F1411 | <span class="ods-swatch" style="background:#1F1411"></span> |
 | `color.taupe.dark.500` | #E2C4B3 | <span class="ods-swatch" style="background:#E2C4B3"></span> |

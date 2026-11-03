@@ -75,7 +75,7 @@ The CSS variable is the key with `/` replaced by `-` and the base `@` dropped. E
 | Key | What it controls | Points to, aster-light | Points to, aster-dark |
 | --- | --- | --- | --- |
 | `input/background` | Input fill. | `color.surface.default` → `aster.theme.light.color.surface.default` → `color.slate.light.0` | `color.surface.default` → `aster.theme.dark.color.surface.default` → `color.slate.dark.50` |
-| `input/border/@` | Input border at rest. | `color.border.strong` → `aster.theme.light.color.border.strong` → `color.slate.light.500` | `color.border.strong` → `aster.theme.dark.color.border.strong` → `color.slate.dark.300` |
+| `input/border/@` | Input border at rest. | `color.border.strong` → `aster.theme.light.color.border.strong` → `color.slate.light.500` | `color.border.strong` → `aster.theme.dark.color.border.strong` → `color.slate.dark.400` |
 | `input/border/focus` | Input border when focused. | `color.border.focus` → `aster.theme.light.color.border.focus` → `color.teal.light.600` | `color.border.focus` → `aster.theme.dark.color.border.focus` → `color.teal.dark.700` |
 | `input/text` | Typed text color. | `color.text.primary` → `aster.theme.light.color.text.primary` → `color.slate.light.900` | `color.text.primary` → `aster.theme.dark.color.text.primary` → `color.slate.dark.900` |
 | `input/placeholder` | Placeholder text color. | `color.text.muted` → `aster.theme.light.color.text.muted` → `color.slate.light.600` | `color.text.muted` → `aster.theme.dark.color.text.muted` → `color.slate.dark.400` |
@@ -96,7 +96,7 @@ The CSS variable is the key with `/` replaced by `-` and the base `@` dropped. E
 | Key | What it controls | Points to, birch-light | Points to, birch-dark |
 | --- | --- | --- | --- |
 | `input/background` | Input fill. | `color.surface.default` → `birch.theme.light.color.surface.default` → `color.slate.light.0` | `color.surface.default` → `birch.theme.dark.color.surface.default` → `color.slate.dark.50` |
-| `input/border/@` | Input border at rest. | `color.border.strong` → `birch.theme.light.color.border.strong` → `color.slate.light.500` | `color.border.strong` → `birch.theme.dark.color.border.strong` → `color.slate.dark.300` |
+| `input/border/@` | Input border at rest. | `color.border.strong` → `birch.theme.light.color.border.strong` → `color.slate.light.500` | `color.border.strong` → `birch.theme.dark.color.border.strong` → `color.slate.dark.400` |
 | `input/border/focus` | Input border when focused. | `color.border.focus` → `birch.theme.light.color.border.focus` → `color.purple.light.600` | `color.border.focus` → `birch.theme.dark.color.border.focus` → `color.purple.dark.700` |
 | `input/text` | Typed text color. | `color.text.primary` → `birch.theme.light.color.text.primary` → `color.slate.light.900` | `color.text.primary` → `birch.theme.dark.color.text.primary` → `color.slate.dark.900` |
 | `input/placeholder` | Placeholder text color. | `color.text.muted` → `birch.theme.light.color.text.muted` → `color.slate.light.600` | `color.text.muted` → `birch.theme.dark.color.text.muted` → `color.slate.dark.400` |
@@ -117,7 +117,7 @@ The CSS variable is the key with `/` replaced by `-` and the base `@` dropped. E
 | Key | What it controls | Points to, coral-light | Points to, coral-dark |
 | --- | --- | --- | --- |
 | `input/background` | Input fill. | `color.surface.default` → `coral.theme.light.color.surface.default` → `color.slate.light.0` | `color.surface.default` → `coral.theme.dark.color.surface.default` → `color.slate.dark.50` |
-| `input/border/@` | Input border at rest. | `color.border.strong` → `coral.theme.light.color.border.strong` → `color.slate.light.500` | `color.border.strong` → `coral.theme.dark.color.border.strong` → `color.slate.dark.300` |
+| `input/border/@` | Input border at rest. | `color.border.strong` → `coral.theme.light.color.border.strong` → `color.slate.light.500` | `color.border.strong` → `coral.theme.dark.color.border.strong` → `color.slate.dark.400` |
 | `input/border/focus` | Input border when focused. | `color.border.focus` → `coral.theme.light.color.border.focus` → `color.orange.light.600` | `color.border.focus` → `coral.theme.dark.color.border.focus` → `color.orange.dark.700` |
 | `input/text` | Typed text color. | `color.text.primary` → `coral.theme.light.color.text.primary` → `color.slate.light.900` | `color.text.primary` → `coral.theme.dark.color.text.primary` → `color.slate.dark.900` |
 | `input/placeholder` | Placeholder text color. | `color.text.muted` → `coral.theme.light.color.text.muted` → `color.slate.light.600` | `color.text.muted` → `coral.theme.dark.color.text.muted` → `color.slate.dark.400` |

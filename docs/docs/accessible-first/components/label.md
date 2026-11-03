@@ -69,7 +69,7 @@ The CSS variable is the key with `/` replaced by `-` and the base `@` dropped. E
 | Key | What it controls | Points to, light | Points to, dark |
 | --- | --- | --- | --- |
 | `input/background` | Input fill. | `color.surface.default` → `accessible-first.theme.light.color.surface.default` → `color.gray.light.0` | `color.surface.default` → `accessible-first.theme.dark.color.surface.default` → `color.gray.dark.50` |
-| `input/border/@` | Input border at rest. | `color.border.strong` → `accessible-first.theme.light.color.border.strong` → `color.gray.light.500` | `color.border.strong` → `accessible-first.theme.dark.color.border.strong` → `color.gray.dark.400` |
+| `input/border/@` | Input border at rest. | `color.border.strong` → `accessible-first.theme.light.color.border.strong` → `color.gray.light.500` | `color.border.strong` → `accessible-first.theme.dark.color.border.strong` → `color.gray.dark.500` |
 | `input/border/focus` | Input border when focused. | `color.border.focus` → `accessible-first.theme.light.color.border.focus` → `color.blue.light.600` | `color.border.focus` → `accessible-first.theme.dark.color.border.focus` → `color.blue.dark.700` |
 | `input/text` | Typed text color. | `color.text.primary` → `accessible-first.theme.light.color.text.primary` → `color.gray.light.900` | `color.text.primary` → `accessible-first.theme.dark.color.text.primary` → `color.gray.dark.900` |
 | `input/placeholder` | Placeholder text color. | `color.text.muted` → `accessible-first.theme.light.color.text.muted` → `color.gray.light.500` | `color.text.muted` → `accessible-first.theme.dark.color.text.muted` → `color.gray.dark.500` |

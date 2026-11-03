@@ -32,7 +32,7 @@ Each token points to another token. Values live only on primitives, below.
 | `component.button.secondary.background.@` | `color.action.secondary.@` → `dense-data.theme.light.color.action.secondary.@` → `color.slate.light.0` | `color.action.secondary.@` → `dense-data.theme.dark.color.action.secondary.@` → `color.slate.dark.50` |
 | `component.button.secondary.background.hover` | `color.action.secondary.hover` → `dense-data.theme.light.color.action.secondary.hover` → `color.slate.light.100` | `color.action.secondary.hover` → `dense-data.theme.dark.color.action.secondary.hover` → `color.slate.dark.100` |
 | `component.button.secondary.label` | `color.text.primary` → `dense-data.theme.light.color.text.primary` → `color.slate.light.900` | `color.text.primary` → `dense-data.theme.dark.color.text.primary` → `color.slate.dark.900` |
-| `component.button.secondary.border` | `color.border.strong` → `dense-data.theme.light.color.border.strong` → `color.slate.light.500` | `color.border.strong` → `dense-data.theme.dark.color.border.strong` → `color.slate.dark.300` |
+| `component.button.secondary.border` | `color.border.strong` → `dense-data.theme.light.color.border.strong` → `color.slate.light.500` | `color.border.strong` → `dense-data.theme.dark.color.border.strong` → `color.slate.dark.400` |
 | `component.button.ghost.background-hover` | `color.surface.sunken` → `dense-data.theme.light.color.surface.sunken` → `color.slate.light.100` | `color.surface.sunken` → `dense-data.theme.dark.color.surface.sunken` → `color.slate.dark.100` |
 | `component.button.ghost.label` | `color.text.link` → `dense-data.theme.light.color.text.link` → `color.violet.light.700` | `color.text.link` → `dense-data.theme.dark.color.text.link` → `color.violet.dark.700` |
 | `component.button.height` | `size.control.default` → `size.32` | `size.control.default` → `size.32` |
@@ -46,7 +46,7 @@ Each token points to another token. Values live only on primitives, below.
 | `component.button.disabled.label` | `color.disabled.text` → `dense-data.theme.light.color.disabled.text` → `color.slate.light.500` | `color.disabled.text` → `dense-data.theme.dark.color.disabled.text` → `color.slate.dark.500` |
 | `component.button.disabled.border` | `color.disabled.border` → `dense-data.theme.light.color.disabled.border` → `color.slate.light.200` | `color.disabled.border` → `dense-data.theme.dark.color.disabled.border` → `color.slate.dark.200` |
 | `component.input.background` | `color.surface.default` → `dense-data.theme.light.color.surface.default` → `color.slate.light.0` | `color.surface.default` → `dense-data.theme.dark.color.surface.default` → `color.slate.dark.50` |
-| `component.input.border.@` | `color.border.strong` → `dense-data.theme.light.color.border.strong` → `color.slate.light.500` | `color.border.strong` → `dense-data.theme.dark.color.border.strong` → `color.slate.dark.300` |
+| `component.input.border.@` | `color.border.strong` → `dense-data.theme.light.color.border.strong` → `color.slate.light.500` | `color.border.strong` → `dense-data.theme.dark.color.border.strong` → `color.slate.dark.400` |
 | `component.input.border.focus` | `color.border.focus` → `dense-data.theme.light.color.border.focus` → `color.violet.light.600` | `color.border.focus` → `dense-data.theme.dark.color.border.focus` → `color.violet.dark.700` |
 | `component.input.text` | `color.text.primary` → `dense-data.theme.light.color.text.primary` → `color.slate.light.900` | `color.text.primary` → `dense-data.theme.dark.color.text.primary` → `color.slate.dark.900` |
 | `component.input.placeholder` | `color.text.muted` → `dense-data.theme.light.color.text.muted` → `color.slate.light.600` | `color.text.muted` → `dense-data.theme.dark.color.text.muted` → `color.slate.dark.400` |
@@ -58,7 +58,7 @@ Each token points to another token. Values live only on primitives, below.
 | `component.input.disabled.border` | `color.disabled.border` → `dense-data.theme.light.color.disabled.border` → `color.slate.light.200` | `color.disabled.border` → `dense-data.theme.dark.color.disabled.border` → `color.slate.dark.200` |
 | `component.input.disabled.text` | `color.disabled.text` → `dense-data.theme.light.color.disabled.text` → `color.slate.light.500` | `color.disabled.text` → `dense-data.theme.dark.color.disabled.text` → `color.slate.dark.500` |
 | `component.control.checked` | `color.action.primary.@` → `dense-data.theme.light.color.action.primary.@` → `color.violet.light.600` | `color.action.primary.@` → `dense-data.theme.dark.color.action.primary.@` → `color.violet.dark.700` |
-| `component.control.track` | `color.border.strong` → `dense-data.theme.light.color.border.strong` → `color.slate.light.500` | `color.border.strong` → `dense-data.theme.dark.color.border.strong` → `color.slate.dark.300` |
+| `component.control.track` | `color.border.strong` → `dense-data.theme.light.color.border.strong` → `color.slate.light.500` | `color.border.strong` → `dense-data.theme.dark.color.border.strong` → `color.slate.dark.400` |
 | `component.control.thumb` | `color.surface.default` → `dense-data.theme.light.color.surface.default` → `color.slate.light.0` | `color.surface.default` → `dense-data.theme.dark.color.surface.default` → `color.slate.dark.50` |
 | `component.control.radius` | `radius.badge` → `dense-data.theme.base.radius.badge` → `radius.0` | `radius.badge` → `dense-data.theme.base.radius.badge` → `radius.0` |
 | `component.badge.radius` | `radius.badge` → `dense-data.theme.base.radius.badge` → `radius.0` | `radius.badge` → `dense-data.theme.base.radius.badge` → `radius.0` |
@@ -126,7 +126,6 @@ The raw values the tokens above end at.
 | `color.slate.dark.0` | #0D1117 | <span class="ods-swatch" style="background:#0D1117"></span> |
 | `color.slate.dark.100` | #262D38 | <span class="ods-swatch" style="background:#262D38"></span> |
 | `color.slate.dark.200` | #3D4655 | <span class="ods-swatch" style="background:#3D4655"></span> |
-| `color.slate.dark.300` | #6B7585 | <span class="ods-swatch" style="background:#6B7585"></span> |
 | `color.slate.dark.400` | #969FAD | <span class="ods-swatch" style="background:#969FAD"></span> |
 | `color.slate.dark.50` | #161B23 | <span class="ods-swatch" style="background:#161B23"></span> |
 | `color.slate.dark.500` | #C4CBD6 | <span class="ods-swatch" style="background:#C4CBD6"></span> |

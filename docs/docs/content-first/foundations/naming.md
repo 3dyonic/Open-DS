@@ -32,7 +32,7 @@ Each token points to another token. Values live only on primitives, below.
 | `component.button.secondary.background.@` | `color.action.secondary.@` → `content-first.theme.light.color.action.secondary.@` → `color.stone.light.0` | `color.action.secondary.@` → `content-first.theme.dark.color.action.secondary.@` → `color.stone.dark.50` |
 | `component.button.secondary.background.hover` | `color.action.secondary.hover` → `content-first.theme.light.color.action.secondary.hover` → `color.stone.light.100` | `color.action.secondary.hover` → `content-first.theme.dark.color.action.secondary.hover` → `color.stone.dark.100` |
 | `component.button.secondary.label` | `color.text.primary` → `content-first.theme.light.color.text.primary` → `color.stone.light.900` | `color.text.primary` → `content-first.theme.dark.color.text.primary` → `color.stone.dark.900` |
-| `component.button.secondary.border` | `color.border.strong` → `content-first.theme.light.color.border.strong` → `color.stone.light.500` | `color.border.strong` → `content-first.theme.dark.color.border.strong` → `color.stone.dark.300` |
+| `component.button.secondary.border` | `color.border.strong` → `content-first.theme.light.color.border.strong` → `color.stone.light.500` | `color.border.strong` → `content-first.theme.dark.color.border.strong` → `color.stone.dark.400` |
 | `component.button.ghost.background-hover` | `color.surface.sunken` → `content-first.theme.light.color.surface.sunken` → `color.stone.light.100` | `color.surface.sunken` → `content-first.theme.dark.color.surface.sunken` → `color.stone.dark.100` |
 | `component.button.ghost.label` | `color.text.link` → `content-first.theme.light.color.text.link` → `color.navy.light.700` | `color.text.link` → `content-first.theme.dark.color.text.link` → `color.navy.dark.700` |
 | `component.button.height` | `size.control.default` → `size.48` | `size.control.default` → `size.48` |
@@ -46,7 +46,7 @@ Each token points to another token. Values live only on primitives, below.
 | `component.button.disabled.label` | `color.disabled.text` → `content-first.theme.light.color.disabled.text` → `color.stone.light.500` | `color.disabled.text` → `content-first.theme.dark.color.disabled.text` → `color.stone.dark.500` |
 | `component.button.disabled.border` | `color.disabled.border` → `content-first.theme.light.color.disabled.border` → `color.stone.light.200` | `color.disabled.border` → `content-first.theme.dark.color.disabled.border` → `color.stone.dark.200` |
 | `component.input.background` | `color.surface.default` → `content-first.theme.light.color.surface.default` → `color.stone.light.0` | `color.surface.default` → `content-first.theme.dark.color.surface.default` → `color.stone.dark.50` |
-| `component.input.border.@` | `color.border.strong` → `content-first.theme.light.color.border.strong` → `color.stone.light.500` | `color.border.strong` → `content-first.theme.dark.color.border.strong` → `color.stone.dark.300` |
+| `component.input.border.@` | `color.border.strong` → `content-first.theme.light.color.border.strong` → `color.stone.light.500` | `color.border.strong` → `content-first.theme.dark.color.border.strong` → `color.stone.dark.400` |
 | `component.input.border.focus` | `color.border.focus` → `content-first.theme.light.color.border.focus` → `color.navy.light.600` | `color.border.focus` → `content-first.theme.dark.color.border.focus` → `color.navy.dark.700` |
 | `component.input.text` | `color.text.primary` → `content-first.theme.light.color.text.primary` → `color.stone.light.900` | `color.text.primary` → `content-first.theme.dark.color.text.primary` → `color.stone.dark.900` |
 | `component.input.placeholder` | `color.text.muted` → `content-first.theme.light.color.text.muted` → `color.stone.light.600` | `color.text.muted` → `content-first.theme.dark.color.text.muted` → `color.stone.dark.400` |
@@ -58,7 +58,7 @@ Each token points to another token. Values live only on primitives, below.
 | `component.input.disabled.border` | `color.disabled.border` → `content-first.theme.light.color.disabled.border` → `color.stone.light.200` | `color.disabled.border` → `content-first.theme.dark.color.disabled.border` → `color.stone.dark.200` |
 | `component.input.disabled.text` | `color.disabled.text` → `content-first.theme.light.color.disabled.text` → `color.stone.light.500` | `color.disabled.text` → `content-first.theme.dark.color.disabled.text` → `color.stone.dark.500` |
 | `component.control.checked` | `color.action.primary.@` → `content-first.theme.light.color.action.primary.@` → `color.navy.light.600` | `color.action.primary.@` → `content-first.theme.dark.color.action.primary.@` → `color.navy.dark.700` |
-| `component.control.track` | `color.border.strong` → `content-first.theme.light.color.border.strong` → `color.stone.light.500` | `color.border.strong` → `content-first.theme.dark.color.border.strong` → `color.stone.dark.300` |
+| `component.control.track` | `color.border.strong` → `content-first.theme.light.color.border.strong` → `color.stone.light.500` | `color.border.strong` → `content-first.theme.dark.color.border.strong` → `color.stone.dark.400` |
 | `component.control.thumb` | `color.surface.default` → `content-first.theme.light.color.surface.default` → `color.stone.light.0` | `color.surface.default` → `content-first.theme.dark.color.surface.default` → `color.stone.dark.50` |
 | `component.control.radius` | `radius.badge` → `content-first.theme.base.radius.badge` → `radius.999` | `radius.badge` → `content-first.theme.base.radius.badge` → `radius.999` |
 | `component.badge.radius` | `radius.badge` → `content-first.theme.base.radius.badge` → `radius.999` | `radius.badge` → `content-first.theme.base.radius.badge` → `radius.999` |
@@ -132,7 +132,6 @@ The raw values the tokens above end at.
 | `color.stone.dark.0` | #14110D | <span class="ods-swatch" style="background:#14110D"></span> |
 | `color.stone.dark.100` | #2E2A24 | <span class="ods-swatch" style="background:#2E2A24"></span> |
 | `color.stone.dark.200` | #4A4339 | <span class="ods-swatch" style="background:#4A4339"></span> |
-| `color.stone.dark.300` | #7A7062 | <span class="ods-swatch" style="background:#7A7062"></span> |
 | `color.stone.dark.400` | #A39A8B | <span class="ods-swatch" style="background:#A39A8B"></span> |
 | `color.stone.dark.50` | #1F1B16 | <span class="ods-swatch" style="background:#1F1B16"></span> |
 | `color.stone.dark.500` | #CFC6B6 | <span class="ods-swatch" style="background:#CFC6B6"></span> |

@@ -167,7 +167,7 @@ Each token points to another token. Values live only on primitives, below.
 | `color.text.on-action` | `aster.theme.light.color.text.on-action` → `color.slate.light.0` | `aster.theme.dark.color.text.on-action` → `color.slate.dark.0` |
 | `color.text.link` | `aster.theme.light.color.text.link` → `color.teal.light.700` | `aster.theme.dark.color.text.link` → `color.teal.dark.700` |
 | `color.border.default` | `aster.theme.light.color.border.default` → `color.slate.light.200` | `aster.theme.dark.color.border.default` → `color.slate.dark.100` |
-| `color.border.strong` | `aster.theme.light.color.border.strong` → `color.slate.light.500` | `aster.theme.dark.color.border.strong` → `color.slate.dark.300` |
+| `color.border.strong` | `aster.theme.light.color.border.strong` → `color.slate.light.500` | `aster.theme.dark.color.border.strong` → `color.slate.dark.400` |
 | `color.border.focus` | `aster.theme.light.color.border.focus` → `color.teal.light.600` | `aster.theme.dark.color.border.focus` → `color.teal.dark.700` |
 | `color.action.primary.@` | `aster.theme.light.color.action.primary.@` → `color.teal.light.600` | `aster.theme.dark.color.action.primary.@` → `color.teal.dark.700` |
 | `color.action.primary.hover` | `aster.theme.light.color.action.primary.hover` → `color.teal.light.700` | `aster.theme.dark.color.action.primary.hover` → `color.teal.dark.800` |
@@ -194,6 +194,20 @@ Each token points to another token. Values live only on primitives, below.
 | `color.disabled.text` | `aster.theme.light.color.disabled.text` → `color.slate.light.500` | `aster.theme.dark.color.disabled.text` → `color.slate.dark.500` |
 | `color.disabled.surface` | `aster.theme.light.color.disabled.surface` → `color.slate.light.100` | `aster.theme.dark.color.disabled.surface` → `color.slate.dark.100` |
 | `color.disabled.border` | `aster.theme.light.color.disabled.border` → `color.slate.light.200` | `aster.theme.dark.color.disabled.border` → `color.slate.dark.200` |
+| `color.on-light.text.primary` | `aster.theme.base.color.on-light.text.primary` → `color.slate.light.900` | `aster.theme.base.color.on-light.text.primary` → `color.slate.light.900` |
+| `color.on-light.text.secondary` | `aster.theme.base.color.on-light.text.secondary` → `color.slate.light.700` | `aster.theme.base.color.on-light.text.secondary` → `color.slate.light.700` |
+| `color.on-light.text.muted` | `aster.theme.base.color.on-light.text.muted` → `color.slate.light.600` | `aster.theme.base.color.on-light.text.muted` → `color.slate.light.600` |
+| `color.on-light.link` | `aster.theme.base.color.on-light.link` → `color.teal.light.700` | `aster.theme.base.color.on-light.link` → `color.teal.light.700` |
+| `color.on-light.icon` | `aster.theme.base.color.on-light.icon` → `color.slate.light.700` | `aster.theme.base.color.on-light.icon` → `color.slate.light.700` |
+| `color.on-light.border` | `aster.theme.base.color.on-light.border` → `color.slate.light.500` | `aster.theme.base.color.on-light.border` → `color.slate.light.500` |
+| `color.on-light.focus` | `aster.theme.base.color.on-light.focus` → `color.teal.light.600` | `aster.theme.base.color.on-light.focus` → `color.teal.light.600` |
+| `color.on-dark.text.primary` | `aster.theme.base.color.on-dark.text.primary` → `color.slate.dark.900` | `aster.theme.base.color.on-dark.text.primary` → `color.slate.dark.900` |
+| `color.on-dark.text.secondary` | `aster.theme.base.color.on-dark.text.secondary` → `color.slate.dark.500` | `aster.theme.base.color.on-dark.text.secondary` → `color.slate.dark.500` |
+| `color.on-dark.text.muted` | `aster.theme.base.color.on-dark.text.muted` → `color.slate.dark.400` | `aster.theme.base.color.on-dark.text.muted` → `color.slate.dark.400` |
+| `color.on-dark.link` | `aster.theme.base.color.on-dark.link` → `color.teal.dark.700` | `aster.theme.base.color.on-dark.link` → `color.teal.dark.700` |
+| `color.on-dark.icon` | `aster.theme.base.color.on-dark.icon` → `color.slate.dark.500` | `aster.theme.base.color.on-dark.icon` → `color.slate.dark.500` |
+| `color.on-dark.border` | `aster.theme.base.color.on-dark.border` → `color.slate.dark.400` | `aster.theme.base.color.on-dark.border` → `color.slate.dark.400` |
+| `color.on-dark.focus` | `aster.theme.base.color.on-dark.focus` → `color.teal.dark.700` | `aster.theme.base.color.on-dark.focus` → `color.teal.dark.700` |
 
 </div>
 
@@ -217,7 +231,7 @@ Each token points to another token. Values live only on primitives, below.
 | `color.text.on-action` | `birch.theme.light.color.text.on-action` → `color.slate.light.0` | `birch.theme.dark.color.text.on-action` → `color.slate.dark.0` |
 | `color.text.link` | `birch.theme.light.color.text.link` → `color.purple.light.700` | `birch.theme.dark.color.text.link` → `color.purple.dark.700` |
 | `color.border.default` | `birch.theme.light.color.border.default` → `color.slate.light.200` | `birch.theme.dark.color.border.default` → `color.slate.dark.100` |
-| `color.border.strong` | `birch.theme.light.color.border.strong` → `color.slate.light.500` | `birch.theme.dark.color.border.strong` → `color.slate.dark.300` |
+| `color.border.strong` | `birch.theme.light.color.border.strong` → `color.slate.light.500` | `birch.theme.dark.color.border.strong` → `color.slate.dark.400` |
 | `color.border.focus` | `birch.theme.light.color.border.focus` → `color.purple.light.600` | `birch.theme.dark.color.border.focus` → `color.purple.dark.700` |
 | `color.action.primary.@` | `birch.theme.light.color.action.primary.@` → `color.purple.light.600` | `birch.theme.dark.color.action.primary.@` → `color.purple.dark.700` |
 | `color.action.primary.hover` | `birch.theme.light.color.action.primary.hover` → `color.purple.light.700` | `birch.theme.dark.color.action.primary.hover` → `color.purple.dark.800` |
@@ -244,6 +258,20 @@ Each token points to another token. Values live only on primitives, below.
 | `color.disabled.text` | `birch.theme.light.color.disabled.text` → `color.slate.light.500` | `birch.theme.dark.color.disabled.text` → `color.slate.dark.500` |
 | `color.disabled.surface` | `birch.theme.light.color.disabled.surface` → `color.slate.light.100` | `birch.theme.dark.color.disabled.surface` → `color.slate.dark.100` |
 | `color.disabled.border` | `birch.theme.light.color.disabled.border` → `color.slate.light.200` | `birch.theme.dark.color.disabled.border` → `color.slate.dark.200` |
+| `color.on-light.text.primary` | `birch.theme.base.color.on-light.text.primary` → `color.slate.light.900` | `birch.theme.base.color.on-light.text.primary` → `color.slate.light.900` |
+| `color.on-light.text.secondary` | `birch.theme.base.color.on-light.text.secondary` → `color.slate.light.700` | `birch.theme.base.color.on-light.text.secondary` → `color.slate.light.700` |
+| `color.on-light.text.muted` | `birch.theme.base.color.on-light.text.muted` → `color.slate.light.600` | `birch.theme.base.color.on-light.text.muted` → `color.slate.light.600` |
+| `color.on-light.link` | `birch.theme.base.color.on-light.link` → `color.purple.light.700` | `birch.theme.base.color.on-light.link` → `color.purple.light.700` |
+| `color.on-light.icon` | `birch.theme.base.color.on-light.icon` → `color.slate.light.700` | `birch.theme.base.color.on-light.icon` → `color.slate.light.700` |
+| `color.on-light.border` | `birch.theme.base.color.on-light.border` → `color.slate.light.500` | `birch.theme.base.color.on-light.border` → `color.slate.light.500` |
+| `color.on-light.focus` | `birch.theme.base.color.on-light.focus` → `color.purple.light.600` | `birch.theme.base.color.on-light.focus` → `color.purple.light.600` |
+| `color.on-dark.text.primary` | `birch.theme.base.color.on-dark.text.primary` → `color.slate.dark.900` | `birch.theme.base.color.on-dark.text.primary` → `color.slate.dark.900` |
+| `color.on-dark.text.secondary` | `birch.theme.base.color.on-dark.text.secondary` → `color.slate.dark.500` | `birch.theme.base.color.on-dark.text.secondary` → `color.slate.dark.500` |
+| `color.on-dark.text.muted` | `birch.theme.base.color.on-dark.text.muted` → `color.slate.dark.400` | `birch.theme.base.color.on-dark.text.muted` → `color.slate.dark.400` |
+| `color.on-dark.link` | `birch.theme.base.color.on-dark.link` → `color.purple.dark.700` | `birch.theme.base.color.on-dark.link` → `color.purple.dark.700` |
+| `color.on-dark.icon` | `birch.theme.base.color.on-dark.icon` → `color.slate.dark.500` | `birch.theme.base.color.on-dark.icon` → `color.slate.dark.500` |
+| `color.on-dark.border` | `birch.theme.base.color.on-dark.border` → `color.slate.dark.400` | `birch.theme.base.color.on-dark.border` → `color.slate.dark.400` |
+| `color.on-dark.focus` | `birch.theme.base.color.on-dark.focus` → `color.purple.dark.700` | `birch.theme.base.color.on-dark.focus` → `color.purple.dark.700` |
 
 </div>
 
@@ -267,7 +295,7 @@ Each token points to another token. Values live only on primitives, below.
 | `color.text.on-action` | `coral.theme.light.color.text.on-action` → `color.slate.light.0` | `coral.theme.dark.color.text.on-action` → `color.slate.dark.0` |
 | `color.text.link` | `coral.theme.light.color.text.link` → `color.orange.light.700` | `coral.theme.dark.color.text.link` → `color.orange.dark.700` |
 | `color.border.default` | `coral.theme.light.color.border.default` → `color.slate.light.200` | `coral.theme.dark.color.border.default` → `color.slate.dark.100` |
-| `color.border.strong` | `coral.theme.light.color.border.strong` → `color.slate.light.500` | `coral.theme.dark.color.border.strong` → `color.slate.dark.300` |
+| `color.border.strong` | `coral.theme.light.color.border.strong` → `color.slate.light.500` | `coral.theme.dark.color.border.strong` → `color.slate.dark.400` |
 | `color.border.focus` | `coral.theme.light.color.border.focus` → `color.orange.light.600` | `coral.theme.dark.color.border.focus` → `color.orange.dark.700` |
 | `color.action.primary.@` | `coral.theme.light.color.action.primary.@` → `color.orange.light.600` | `coral.theme.dark.color.action.primary.@` → `color.orange.dark.700` |
 | `color.action.primary.hover` | `coral.theme.light.color.action.primary.hover` → `color.orange.light.700` | `coral.theme.dark.color.action.primary.hover` → `color.orange.dark.800` |
@@ -294,6 +322,20 @@ Each token points to another token. Values live only on primitives, below.
 | `color.disabled.text` | `coral.theme.light.color.disabled.text` → `color.slate.light.500` | `coral.theme.dark.color.disabled.text` → `color.slate.dark.500` |
 | `color.disabled.surface` | `coral.theme.light.color.disabled.surface` → `color.slate.light.100` | `coral.theme.dark.color.disabled.surface` → `color.slate.dark.100` |
 | `color.disabled.border` | `coral.theme.light.color.disabled.border` → `color.slate.light.200` | `coral.theme.dark.color.disabled.border` → `color.slate.dark.200` |
+| `color.on-light.text.primary` | `coral.theme.base.color.on-light.text.primary` → `color.slate.light.900` | `coral.theme.base.color.on-light.text.primary` → `color.slate.light.900` |
+| `color.on-light.text.secondary` | `coral.theme.base.color.on-light.text.secondary` → `color.slate.light.700` | `coral.theme.base.color.on-light.text.secondary` → `color.slate.light.700` |
+| `color.on-light.text.muted` | `coral.theme.base.color.on-light.text.muted` → `color.slate.light.600` | `coral.theme.base.color.on-light.text.muted` → `color.slate.light.600` |
+| `color.on-light.link` | `coral.theme.base.color.on-light.link` → `color.orange.light.700` | `coral.theme.base.color.on-light.link` → `color.orange.light.700` |
+| `color.on-light.icon` | `coral.theme.base.color.on-light.icon` → `color.slate.light.700` | `coral.theme.base.color.on-light.icon` → `color.slate.light.700` |
+| `color.on-light.border` | `coral.theme.base.color.on-light.border` → `color.slate.light.500` | `coral.theme.base.color.on-light.border` → `color.slate.light.500` |
+| `color.on-light.focus` | `coral.theme.base.color.on-light.focus` → `color.orange.light.600` | `coral.theme.base.color.on-light.focus` → `color.orange.light.600` |
+| `color.on-dark.text.primary` | `coral.theme.base.color.on-dark.text.primary` → `color.slate.dark.900` | `coral.theme.base.color.on-dark.text.primary` → `color.slate.dark.900` |
+| `color.on-dark.text.secondary` | `coral.theme.base.color.on-dark.text.secondary` → `color.slate.dark.500` | `coral.theme.base.color.on-dark.text.secondary` → `color.slate.dark.500` |
+| `color.on-dark.text.muted` | `coral.theme.base.color.on-dark.text.muted` → `color.slate.dark.400` | `coral.theme.base.color.on-dark.text.muted` → `color.slate.dark.400` |
+| `color.on-dark.link` | `coral.theme.base.color.on-dark.link` → `color.orange.dark.700` | `coral.theme.base.color.on-dark.link` → `color.orange.dark.700` |
+| `color.on-dark.icon` | `coral.theme.base.color.on-dark.icon` → `color.slate.dark.500` | `coral.theme.base.color.on-dark.icon` → `color.slate.dark.500` |
+| `color.on-dark.border` | `coral.theme.base.color.on-dark.border` → `color.slate.dark.400` | `coral.theme.base.color.on-dark.border` → `color.slate.dark.400` |
+| `color.on-dark.focus` | `coral.theme.base.color.on-dark.focus` → `color.orange.dark.700` | `coral.theme.base.color.on-dark.focus` → `color.orange.dark.700` |
 
 </div>
 
@@ -337,7 +379,6 @@ The raw values the tokens above end at.
 | `color.slate.dark.0` | #020617 | <span class="ods-swatch" style="background:#020617"></span> |
 | `color.slate.dark.100` | #1E293B | <span class="ods-swatch" style="background:#1E293B"></span> |
 | `color.slate.dark.200` | #334155 | <span class="ods-swatch" style="background:#334155"></span> |
-| `color.slate.dark.300` | #64748B | <span class="ods-swatch" style="background:#64748B"></span> |
 | `color.slate.dark.400` | #96A3B5 | <span class="ods-swatch" style="background:#96A3B5"></span> |
 | `color.slate.dark.50` | #0F172A | <span class="ods-swatch" style="background:#0F172A"></span> |
 | `color.slate.dark.500` | #CBD5E1 | <span class="ods-swatch" style="background:#CBD5E1"></span> |
@@ -397,7 +438,6 @@ The raw values the tokens above end at.
 | `color.slate.dark.0` | #020617 | <span class="ods-swatch" style="background:#020617"></span> |
 | `color.slate.dark.100` | #1E293B | <span class="ods-swatch" style="background:#1E293B"></span> |
 | `color.slate.dark.200` | #334155 | <span class="ods-swatch" style="background:#334155"></span> |
-| `color.slate.dark.300` | #64748B | <span class="ods-swatch" style="background:#64748B"></span> |
 | `color.slate.dark.400` | #96A3B5 | <span class="ods-swatch" style="background:#96A3B5"></span> |
 | `color.slate.dark.50` | #0F172A | <span class="ods-swatch" style="background:#0F172A"></span> |
 | `color.slate.dark.500` | #CBD5E1 | <span class="ods-swatch" style="background:#CBD5E1"></span> |
@@ -455,7 +495,6 @@ The raw values the tokens above end at.
 | `color.slate.dark.0` | #020617 | <span class="ods-swatch" style="background:#020617"></span> |
 | `color.slate.dark.100` | #1E293B | <span class="ods-swatch" style="background:#1E293B"></span> |
 | `color.slate.dark.200` | #334155 | <span class="ods-swatch" style="background:#334155"></span> |
-| `color.slate.dark.300` | #64748B | <span class="ods-swatch" style="background:#64748B"></span> |
 | `color.slate.dark.400` | #96A3B5 | <span class="ods-swatch" style="background:#96A3B5"></span> |
 | `color.slate.dark.50` | #0F172A | <span class="ods-swatch" style="background:#0F172A"></span> |
 | `color.slate.dark.500` | #CBD5E1 | <span class="ods-swatch" style="background:#CBD5E1"></span> |
@@ -549,21 +588,35 @@ Status colours go up in urgency: info, then warning, then danger. Pick the level
 | `color.disabled.text` | Text and icons of a control that cannot be used right now. | Quiet text that still works: `color.text.muted` |
 | `color.disabled.surface` | The fill of a control that cannot be used right now. | A quiet fill that still works: `color.surface.sunken` |
 | `color.disabled.border` | The edge of a control that cannot be used right now. | An enabled control: `color.border.strong` |
+| `color.on-light.text.primary` | Main text on a fill whose tone is light. | On the page's own surfaces: `color.text.primary` |
+| `color.on-light.text.secondary` | Supporting text on a fill whose tone is light. | On the page's own surfaces: `color.text.secondary` |
+| `color.on-light.text.muted` | The quietest text on a fill whose tone is light. | On the page's own surfaces: `color.text.muted` |
+| `color.on-light.link` | Links on a fill whose tone is light. | On the page's own surfaces: `color.text.link` |
+| `color.on-light.icon` | Icons on a fill whose tone is light. | On the page's own surfaces: `color.text.secondary` |
+| `color.on-light.border` | Control edges on a fill whose tone is light. | On the page's own surfaces: `color.border.strong` |
+| `color.on-light.focus` | The focus ring on a fill whose tone is light. | On the page's own surfaces: `color.border.focus` |
+| `color.on-dark.text.primary` | Main text on a fill whose tone is dark. | On the page's own surfaces: `color.text.primary` |
+| `color.on-dark.text.secondary` | Supporting text on a fill whose tone is dark. | On the page's own surfaces: `color.text.secondary` |
+| `color.on-dark.text.muted` | The quietest text on a fill whose tone is dark. | On the page's own surfaces: `color.text.muted` |
+| `color.on-dark.link` | Links on a fill whose tone is dark. | On the page's own surfaces: `color.text.link` |
+| `color.on-dark.icon` | Icons on a fill whose tone is dark. | On the page's own surfaces: `color.text.secondary` |
+| `color.on-dark.border` | Control edges on a fill whose tone is dark. | On the page's own surfaces: `color.border.strong` |
+| `color.on-dark.focus` | The focus ring on a fill whose tone is dark. | On the page's own surfaces: `color.border.focus` |
 
 ## Pairs at a glance
 
-Which colour may sit on which fill, and the contrast it keeps there in every brand and mode. The harness checks every pair.
+Which colour may sit on which fill, and the contrast it keeps there in every brand and mode. Text, links, icons, borders and focus pair by tone: every fill says whether it is light or dark, and what sits on it comes from that tone's set, `color.on-light` or `color.on-dark`. The page's own text is the set of its own surfaces. The harness checks every pair.
 
 | Token | Sits on | Contrast |
 | --- | --- | --- |
-| `color.text.primary` | `color.surface.canvas`, `color.surface.default`, `color.surface.raised`, `color.surface.sunken`, `color.surface.selected`, `color.action.secondary.@`, `color.action.secondary.hover`, `color.category.1.subtle`, `color.category.2.subtle`, `color.category.3.subtle`, `color.category.4.subtle`, `color.category.5.subtle` | 4.5:1 |
-| `color.text.secondary` | `color.surface.canvas`, `color.surface.default`, `color.surface.raised`, `color.surface.sunken` | 4.5:1 |
-| `color.text.muted` | `color.surface.canvas`, `color.surface.default`, `color.surface.sunken` | 4.5:1 |
+| `color.text.primary` | The page's own fills: `color.surface.canvas`, `color.surface.default`, `color.surface.raised`, `color.surface.sunken`, `color.surface.selected`, `color.surface.inverse`, `color.action.primary.@`, `color.action.primary.hover`, `color.action.secondary.@`, `color.action.secondary.hover`, `color.status.info.subtle`, `color.status.warning.subtle`, `color.status.danger.subtle`, `color.status.success.subtle` | 4.5:1 |
+| `color.text.secondary` | The page's own fills: `color.surface.canvas`, `color.surface.default`, `color.surface.raised`, `color.surface.sunken`, `color.surface.selected` | 4.5:1 |
+| `color.text.muted` | The page's own fills: `color.surface.canvas`, `color.surface.default`, `color.surface.raised`, `color.surface.sunken`, `color.surface.selected` | 4.5:1 |
 | `color.text.inverse` | `color.surface.inverse` | 4.5:1 |
 | `color.text.on-action` | `color.action.primary.@`, `color.action.primary.hover` | 4.5:1 |
-| `color.text.link` | `color.surface.canvas`, `color.surface.default` | 4.5:1 |
-| `color.border.strong` | `color.surface.canvas`, `color.surface.default` | 3:1 |
-| `color.border.focus` | `color.surface.canvas`, `color.surface.default` | 3:1 |
+| `color.text.link` | The page's own fills: `color.surface.canvas`, `color.surface.default`, `color.surface.raised`, `color.surface.sunken`, `color.surface.selected` | 4.5:1 |
+| `color.border.strong` | The page's own fills: `color.surface.canvas`, `color.surface.default`, `color.surface.raised`, `color.surface.sunken`, `color.surface.selected` | 3:1 |
+| `color.border.focus` | The page's own fills: `color.surface.canvas`, `color.surface.default`, `color.surface.raised`, `color.surface.sunken`, `color.surface.selected`, `color.surface.inverse` | 3:1 |
 | `color.action.primary.@` | `color.surface.canvas`, `color.surface.default` | 3:1 |
 | `color.status.info.@` | `color.surface.canvas`, `color.surface.default`, `color.status.info.subtle` | 4.5:1 |
 | `color.status.warning.@` | `color.surface.canvas`, `color.surface.default`, `color.status.warning.subtle` | 4.5:1 |
@@ -575,3 +628,90 @@ Which colour may sit on which fill, and the contrast it keeps there in every bra
 | `color.category.4.@` | `color.surface.canvas`, `color.surface.default` | 3:1 |
 | `color.category.5.@` | `color.surface.canvas`, `color.surface.default` | 3:1 |
 | `color.disabled.text` | `color.disabled.surface` | WCAG 1.4.3 does not ask for contrast on controls that cannot be used. |
+| `color.on-light.text.primary` | Fills whose tone is light: `color.surface.canvas`, `color.surface.default`, `color.surface.raised`, `color.surface.sunken`, `color.surface.selected`, `color.surface.inverse`, `color.action.primary.@`, `color.action.primary.hover`, `color.action.secondary.@`, `color.action.secondary.hover`, `color.status.info.subtle`, `color.status.warning.subtle`, `color.status.danger.subtle`, `color.status.success.subtle` | 4.5:1 |
+| `color.on-light.text.secondary` | Fills whose tone is light: `color.surface.canvas`, `color.surface.default`, `color.surface.raised`, `color.surface.sunken`, `color.surface.selected` | 4.5:1 |
+| `color.on-light.text.muted` | Fills whose tone is light: `color.surface.canvas`, `color.surface.default`, `color.surface.raised`, `color.surface.sunken`, `color.surface.selected` | 4.5:1 |
+| `color.on-light.link` | Fills whose tone is light: `color.surface.canvas`, `color.surface.default`, `color.surface.raised`, `color.surface.sunken`, `color.surface.selected` | 4.5:1 |
+| `color.on-light.icon` | Fills whose tone is light: `color.surface.canvas`, `color.surface.default`, `color.surface.raised`, `color.surface.sunken`, `color.surface.selected`, `color.surface.inverse`, `color.action.secondary.@`, `color.action.secondary.hover`, `color.status.info.subtle`, `color.status.warning.subtle`, `color.status.danger.subtle`, `color.status.success.subtle` | 3:1 |
+| `color.on-light.border` | Fills whose tone is light: `color.surface.canvas`, `color.surface.default`, `color.surface.raised`, `color.surface.sunken`, `color.surface.selected` | 3:1 |
+| `color.on-light.focus` | Fills whose tone is light: `color.surface.canvas`, `color.surface.default`, `color.surface.raised`, `color.surface.sunken`, `color.surface.selected`, `color.surface.inverse` | 3:1 |
+| `color.on-dark.text.primary` | Fills whose tone is dark: `color.surface.canvas`, `color.surface.default`, `color.surface.raised`, `color.surface.sunken`, `color.surface.selected`, `color.surface.inverse`, `color.action.primary.@`, `color.action.primary.hover`, `color.action.secondary.@`, `color.action.secondary.hover`, `color.status.info.subtle`, `color.status.warning.subtle`, `color.status.danger.subtle`, `color.status.success.subtle` | 4.5:1 |
+| `color.on-dark.text.secondary` | Fills whose tone is dark: `color.surface.canvas`, `color.surface.default`, `color.surface.raised`, `color.surface.sunken`, `color.surface.selected` | 4.5:1 |
+| `color.on-dark.text.muted` | Fills whose tone is dark: `color.surface.canvas`, `color.surface.default`, `color.surface.raised`, `color.surface.sunken`, `color.surface.selected` | 4.5:1 |
+| `color.on-dark.link` | Fills whose tone is dark: `color.surface.canvas`, `color.surface.default`, `color.surface.raised`, `color.surface.sunken`, `color.surface.selected` | 4.5:1 |
+| `color.on-dark.icon` | Fills whose tone is dark: `color.surface.canvas`, `color.surface.default`, `color.surface.raised`, `color.surface.sunken`, `color.surface.selected`, `color.surface.inverse`, `color.action.secondary.@`, `color.action.secondary.hover`, `color.status.info.subtle`, `color.status.warning.subtle`, `color.status.danger.subtle`, `color.status.success.subtle` | 3:1 |
+| `color.on-dark.border` | Fills whose tone is dark: `color.surface.canvas`, `color.surface.default`, `color.surface.raised`, `color.surface.sunken`, `color.surface.selected` | 3:1 |
+| `color.on-dark.focus` | Fills whose tone is dark: `color.surface.canvas`, `color.surface.default`, `color.surface.raised`, `color.surface.sunken`, `color.surface.selected`, `color.surface.inverse` | 3:1 |
+
+## The tone of each fill
+
+Every fill says whether it is light or dark. What sits on it reads that tone's set: `color.on-light` or `color.on-dark`.
+
+<div class="odv-brandset" data-for-brand="aster">
+
+<p class="odv-brandname">Aster</p>
+
+| Fill | Light mode | Dark mode | Carries |
+| --- | --- | --- | --- |
+| `color.surface.canvas` | light | dark | text.primary, text.secondary, text.muted, link, icon, border, focus |
+| `color.surface.default` | light | dark | text.primary, text.secondary, text.muted, link, icon, border, focus |
+| `color.surface.raised` | light | dark | text.primary, text.secondary, text.muted, link, icon, border, focus |
+| `color.surface.sunken` | light | dark | text.primary, text.secondary, text.muted, link, icon, border, focus |
+| `color.surface.selected` | light | dark (waits for OD-223: Its ramp has no step that passes yet (text.muted 4.41:1); whole ramps add one.) | text.primary, text.secondary, text.muted, link, icon, border, focus |
+| `color.surface.inverse` | dark | light | text.primary, icon, focus |
+| `color.action.primary.@` | dark | light | text.primary |
+| `color.action.primary.hover` | dark | light | text.primary |
+| `color.action.secondary.@` | light | dark | text.primary, icon |
+| `color.action.secondary.hover` | light | dark | text.primary, icon |
+| `color.status.info.subtle` | light | dark | text.primary, icon |
+| `color.status.warning.subtle` | light | dark | text.primary, icon |
+| `color.status.danger.subtle` | light | dark | text.primary, icon |
+| `color.status.success.subtle` | light | dark | text.primary, icon |
+
+</div>
+
+<div class="odv-brandset" data-for-brand="birch">
+
+<p class="odv-brandname">Birch</p>
+
+| Fill | Light mode | Dark mode | Carries |
+| --- | --- | --- | --- |
+| `color.surface.canvas` | light | dark | text.primary, text.secondary, text.muted, link, icon, border, focus |
+| `color.surface.default` | light | dark | text.primary, text.secondary, text.muted, link, icon, border, focus |
+| `color.surface.raised` | light | dark | text.primary, text.secondary, text.muted, link, icon, border, focus |
+| `color.surface.sunken` | light | dark | text.primary, text.secondary, text.muted, link, icon, border, focus |
+| `color.surface.selected` | light | dark | text.primary, text.secondary, text.muted, link, icon, border, focus |
+| `color.surface.inverse` | dark | light | text.primary, icon, focus |
+| `color.action.primary.@` | dark | light | text.primary |
+| `color.action.primary.hover` | dark | light | text.primary |
+| `color.action.secondary.@` | light | dark | text.primary, icon |
+| `color.action.secondary.hover` | light | dark | text.primary, icon |
+| `color.status.info.subtle` | light | dark | text.primary, icon |
+| `color.status.warning.subtle` | light | dark | text.primary, icon |
+| `color.status.danger.subtle` | light | dark | text.primary, icon |
+| `color.status.success.subtle` | light | dark | text.primary, icon |
+
+</div>
+
+<div class="odv-brandset" data-for-brand="coral">
+
+<p class="odv-brandname">Coral</p>
+
+| Fill | Light mode | Dark mode | Carries |
+| --- | --- | --- | --- |
+| `color.surface.canvas` | light | dark | text.primary, text.secondary, text.muted, link, icon, border, focus |
+| `color.surface.default` | light | dark | text.primary, text.secondary, text.muted, link, icon, border, focus |
+| `color.surface.raised` | light | dark | text.primary, text.secondary, text.muted, link, icon, border, focus |
+| `color.surface.sunken` | light | dark | text.primary, text.secondary, text.muted, link, icon, border, focus |
+| `color.surface.selected` | light | dark (waits for OD-223: Its ramp has no step that passes yet (text.muted 4.08:1); whole ramps add one.) | text.primary, text.secondary, text.muted, link, icon, border, focus |
+| `color.surface.inverse` | dark | light | text.primary, icon, focus |
+| `color.action.primary.@` | dark | light | text.primary |
+| `color.action.primary.hover` | dark | light | text.primary |
+| `color.action.secondary.@` | light | dark | text.primary, icon |
+| `color.action.secondary.hover` | light | dark | text.primary, icon |
+| `color.status.info.subtle` | light | dark | text.primary, icon |
+| `color.status.warning.subtle` | light | dark | text.primary, icon |
+| `color.status.danger.subtle` | light | dark | text.primary, icon |
+| `color.status.success.subtle` | light | dark | text.primary, icon |
+
+</div>
