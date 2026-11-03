@@ -1,5 +1,6 @@
 import React from "react";
 import Link from "@docusaurus/Link";
+import useBaseUrl from "@docusaurus/useBaseUrl";
 import { useScheme } from "../../components/scheme";
 
 // The sections of the scheme you are on. On the landing page they open the first scheme.
@@ -15,6 +16,7 @@ const SECTIONS = [
 export default function SchemeLinks({ mobile }: { mobile?: boolean }) {
   const { schemes, current } = useScheme();
   const id = (current ?? schemes[0]).id;
+  const llms = useBaseUrl(`/${id}/llms.txt`);
   const cls = mobile ? "menu__link" : "navbar__item navbar__link";
   const items = [
     ...SECTIONS.map(([label, path]) => (
@@ -22,7 +24,7 @@ export default function SchemeLinks({ mobile }: { mobile?: boolean }) {
         {label}
       </Link>
     )),
-    <a key="llms" className={cls} href={`/${id}/llms.txt`}>
+    <a key="llms" className={cls} href={llms}>
       llms.txt
     </a>,
   ];

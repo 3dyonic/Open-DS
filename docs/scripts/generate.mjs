@@ -14,6 +14,8 @@ import { assetRoots, grammar, loadScheme, schemeIds } from "../../cli/src/scheme
 
 const docs = join(dirname(fileURLToPath(import.meta.url)), "..");
 const check = process.argv.includes("--check");
+// The site's base URL (OD-210): "/" locally, "/docs/" on open-ds.dev. Raw HTML in the pages needs it.
+const BASE = process.env.DOCS_BASE_URL ?? "/";
 const roots = assetRoots();
 const g = grammar(roots);
 // The order the switcher lists them in: the same as the repo Storybook's toolbar.
@@ -127,7 +129,12 @@ const files = {};
 const index = [];
 for (const id of ids) {
   const scheme = loadScheme(id, roots);
-  const pages = docsPages(scheme, g, roots, { storybook: process.env.STORYBOOK_URL, all: true, robots: true });
+  const pages = docsPages(scheme, g, roots, {
+    storybook: process.env.STORYBOOK_URL,
+    all: true,
+    robots: true,
+    base: BASE,
+  });
   // The tokens, scoped to this scheme's pages: :root becomes html[data-scheme="<id>"], and the dark
   // class becomes Docusaurus's data-theme="dark" on the same element.
   const scope = `html[data-scheme="${id}"]`;

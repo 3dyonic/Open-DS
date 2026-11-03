@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useHistory } from "@docusaurus/router";
+import { useBaseUrlUtils } from "@docusaurus/useBaseUrl";
 import { useScheme } from "../../components/scheme";
 
 // Swaps the scheme and keeps the page: /dense-data/components/button becomes
@@ -8,6 +9,7 @@ import { useScheme } from "../../components/scheme";
 export default function SchemeSwitcher({ mobile }: { mobile?: boolean }) {
   const { schemes, current, rest } = useScheme();
   const history = useHistory();
+  const { withBaseUrl } = useBaseUrlUtils();
   const [brand, setBrand] = useState("aster");
   useEffect(() => {
     try {
@@ -33,7 +35,7 @@ export default function SchemeSwitcher({ mobile }: { mobile?: boolean }) {
         <select
           aria-label="Scheme"
           value={current?.id ?? ""}
-          onChange={(e) => history.push(`/${e.target.value}/${rest}`)}
+          onChange={(e) => history.push(withBaseUrl(`/${e.target.value}/${rest}`))}
         >
           {!current && (
             <option value="" disabled>

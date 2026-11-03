@@ -6,18 +6,20 @@ import { themes as prismThemes } from "prism-react-renderer";
 // The repo's docs: every Open DS scheme in one site (OD-207), the way the repo Storybook shows every
 // scheme. scripts/generate.mjs writes docs/<scheme>/ for each one, its tokens scoped to its own pages
 // (src/css/schemes/), and schemes.json, which the switcher and the landing page read. No public URL
-// yet, so the site is local only. A created project's docs stay one scheme.
+// A created project's docs stay one scheme.
 type Scheme = { id: string; name: string; version: string; summary: string; brands: string[] };
 const schemes = JSON.parse(readFileSync(new URL("./schemes.json", import.meta.url), "utf8")) as Scheme[];
 const STORYBOOK = process.env.STORYBOOK_URL ?? "http://localhost:6006";
+// Where the site lives (OD-210): "/" locally, "/docs/" on open-ds.dev, next to /storybook/.
+const BASE = process.env.DOCS_BASE_URL ?? "/";
 const ids = JSON.stringify(schemes.map((s) => s.id));
 
 const config: Config = {
   title: "Open DS docs",
   titleDelimiter: "·",
   tagline: "Every design system is a set of answers.",
-  url: "http://localhost",
-  baseUrl: "/",
+  url: process.env.DOCS_URL ?? "http://localhost",
+  baseUrl: BASE,
   favicon: "logo.svg",
   onBrokenLinks: "throw",
   markdown: { format: "detect", hooks: { onBrokenMarkdownLinks: "throw" } },
@@ -29,7 +31,7 @@ const config: Config = {
     {
       tagName: "script",
       attributes: {},
-      innerHTML: `(function(){var s=${ids},p=location.pathname.split("/")[1],h=document.documentElement;if(s.indexOf(p)>=0)h.setAttribute("data-scheme",p);try{h.setAttribute("data-brand",localStorage.getItem("open-ds-brand")||"aster")}catch(e){h.setAttribute("data-brand","aster")}})();`,
+      innerHTML: `(function(){var s=${ids},p=location.pathname.slice(${BASE.length}).split("/")[0],h=document.documentElement;if(s.indexOf(p)>=0)h.setAttribute("data-scheme",p);try{h.setAttribute("data-brand",localStorage.getItem("open-ds-brand")||"aster")}catch(e){h.setAttribute("data-brand","aster")}})();`,
     },
   ],
   clientModules: ["./src/clientModules/scheme.ts"],

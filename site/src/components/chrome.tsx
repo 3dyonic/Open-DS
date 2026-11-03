@@ -4,6 +4,7 @@ import { brandContact, brandName } from "@/lib/brand";
 import { ThemeSwitch } from "@/components/theme-switch";
 import { CookieSettingsLink } from "@/components/consent";
 import { MobileMenu } from "@/components/mobile-menu";
+import { DOCS, STORYBOOK, leavesApp } from "@/lib/places";
 
 // The mark is a 6 by 5 pixel grid; one cell is lit.
 const MARK = ["110111", "101010", "1l1011", "101001", "110111"];
@@ -40,6 +41,8 @@ function GitHubIcon() {
 const LINKS: [string, string][] = [
   ["Schemes", "/schemes/"],
   ["Questions", "/questions/"],
+  ["Docs", `${DOCS}/`],
+  ["Storybook", `${STORYBOOK}/`],
   ["Install", "/install/"],
 ];
 
@@ -60,9 +63,15 @@ export function SiteNav() {
         <ul className="flex flex-wrap items-center gap-8 text-[16px] font-semibold">
           {LINKS.map(([label, href]) => (
             <li key={label}>
-              <Link className="hover:text-accent-text" href={href}>
-                {label}
-              </Link>
+              {leavesApp(href) ? (
+                <a className="hover:text-accent-text" href={href}>
+                  {label}
+                </a>
+              ) : (
+                <Link className="hover:text-accent-text" href={href}>
+                  {label}
+                </Link>
+              )}
             </li>
           ))}
           <li>
@@ -92,6 +101,8 @@ export function SiteFooter() {
       <p>{brandName} · MIT</p>
       <ul className="flex flex-wrap items-center gap-6">
         {[
+          ["Docs", `${DOCS}/`],
+          ["Storybook", `${STORYBOOK}/`],
           ["Get a key", "/key/"],
           ["Privacy", "/privacy/"],
           ["Terms", "/terms/"],
@@ -99,9 +110,15 @@ export function SiteFooter() {
           ["Contribute", "/contribute/"],
         ].map(([label, href]) => (
           <li key={href}>
-            <Link href={href} className="hover:text-ink">
-              {label}
-            </Link>
+            {leavesApp(href) ? (
+              <a href={href} className="hover:text-ink">
+                {label}
+              </a>
+            ) : (
+              <Link href={href} className="hover:text-ink">
+                {label}
+              </Link>
+            )}
           </li>
         ))}
         <CookieSettingsLink className="hover:text-ink" />

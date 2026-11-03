@@ -3,6 +3,7 @@
 // header. A real button with aria-expanded; focus goes to the first link and back to the button;
 // Escape, a tap outside and navigating all close it.
 import Link from "next/link";
+import { leavesApp } from "@/lib/places";
 import { usePathname } from "next/navigation";
 import { useEffect, useRef, useState } from "react";
 
@@ -81,14 +82,20 @@ export function MobileMenu({
           <ul className="flex flex-col py-2">
             {links.map(([label, href]) => (
               <li key={href}>
-                <Link
-                  href={href}
-                  className={item}
-                  aria-current={pathname === href ? "page" : undefined}
-                  onClick={() => setOpen(false)}
-                >
-                  {label}
-                </Link>
+                {leavesApp(href) ? (
+                  <a href={href} className={item}>
+                    {label}
+                  </a>
+                ) : (
+                  <Link
+                    href={href}
+                    className={item}
+                    aria-current={pathname === href ? "page" : undefined}
+                    onClick={() => setOpen(false)}
+                  >
+                    {label}
+                  </Link>
+                )}
               </li>
             ))}
             <li>

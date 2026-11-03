@@ -825,9 +825,7 @@ export const CHECKS = {
       // 20 words a sentence. Every listed tool exists and appears in a step; every tool, command and
       // skill the body names exists. A standard that nothing checks gets missed.
       const tools = new Set([...c.read("cli/src/mcp.mjs").matchAll(/registerTool\(\s*"(\w+)"/g)].map((m) => m[1]));
-      const commands = new Set(
-        [...c.read("cli/src/cli.mjs").matchAll(/open-ds ([a-z]+)\s/g)].map((m) => m[1]),
-      );
+      const commands = new Set([...c.read("cli/src/cli.mjs").matchAll(/open-ds ([a-z]+)\s/g)].map((m) => m[1]));
       const names = c.walk("skills", (f) => f.endsWith("SKILL.md")).map((f) => f.split("/").at(-2));
       const SECTIONS = ["Why", "When", "Input", "Run", "Done"];
       const gaps = [];
@@ -845,17 +843,22 @@ export const CHECKS = {
         const block = fm.match(/^tools:\s*\n((?:\s+-\s+\S+\n?)+)/m)?.[1];
         const granted = block
           ? [...block.matchAll(/-\s+(\S+)/g)].map((m) => m[1])
-          : (field("tools").match(/^\[(.*)\]$/)?.[1] ?? "").split(",").map((x) => x.trim()).filter(Boolean);
+          : (field("tools").match(/^\[(.*)\]$/)?.[1] ?? "")
+              .split(",")
+              .map((x) => x.trim())
+              .filter(Boolean);
         if (!granted.length) gaps.push(`${f}: no tools list in the front matter`);
         const heads = [...body.matchAll(/^## (.+)$/gm)].map((m) => m[1].trim());
-        if (heads.join(",") !== SECTIONS.join(",")) gaps.push(`${f}: sections are ${heads.join(", ")}, not ${SECTIONS.join(", ")}`);
+        if (heads.join(",") !== SECTIONS.join(","))
+          gaps.push(`${f}: sections are ${heads.join(", ")}, not ${SECTIONS.join(", ")}`);
         const steps = body.split(/^## Run$/m)[1]?.split(/^## /m)[0] ?? "";
         for (const tool of granted) {
           if (!tools.has(tool)) gaps.push(`${f}: tools lists ${tool}, which the MCP server does not have`);
           else if (!steps.includes(`\`${tool}`)) gaps.push(`${f}: ${tool} is listed but no Run step uses it`);
         }
         for (const m of body.matchAll(/`((?:get|list|plan|compare|what|when|check|find|fit)_[a-z_]+)/g))
-          if (!tools.has(m[1]) && !["use_when", "avoid_when"].includes(m[1])) gaps.push(`${f}: names ${m[1]}, which is not an MCP tool`);
+          if (!tools.has(m[1]) && !["use_when", "avoid_when"].includes(m[1]))
+            gaps.push(`${f}: names ${m[1]}, which is not an MCP tool`);
         for (const m of body.matchAll(/`(?:npx )?open-ds ([a-z]+)/g))
           if (!commands.has(m[1])) gaps.push(`${f}: names open-ds ${m[1]}, which is not a CLI command`);
         for (const m of body.matchAll(/`(open-ds-[a-z]+)`/g))
@@ -930,7 +933,10 @@ export const CHECKS = {
         for (const [f, t] of Object.entries(set)) {
           if (!f.endsWith(".md") || f === "README.md") continue;
           if (B(t) > BUDGET.booklet) gaps.push(`${id} ${f} is ${B(t)} B, over ${BUDGET.booklet}`);
-          if (/^(components|tasks)\//.test(f) && !/\nMore, ask by section:\n[\s\S]*\nExample: get_context target=/.test(t))
+          if (
+            /^(components|tasks)\//.test(f) &&
+            !/\nMore, ask by section:\n[\s\S]*\nExample: get_context target=/.test(t)
+          )
             gaps.push(`${id} ${f} has no section hints`);
         }
         const index = JSON.parse(set["index.json"]);
@@ -951,11 +957,14 @@ export const CHECKS = {
         for (const [t, list] of Object.entries(index.tasks)) route(`task ${t}`, list);
         for (const [x, list] of Object.entries(index.situations)) route(`situation ${x}`, list);
         for (const f of Object.keys(set))
-          if (/^(components|tasks)\//.test(f) && !reached.has(f)) gaps.push(`${id}: ${f} is not reachable from any route`);
+          if (/^(components|tasks)\//.test(f) && !reached.has(f))
+            gaps.push(`${id}: ${f} is not reachable from any route`);
       }
       return gaps.length
         ? bad(gaps.slice(0, 8).join("; "))
-        : ok(`${files} context files in ${SCHEMES.length} schemes: within budget, every route resolves, every booklet reachable`);
+        : ok(
+            `${files} context files in ${SCHEMES.length} schemes: within budget, every route resolves, every booklet reachable`,
+          );
     },
   },
   "context-fixtures": {
@@ -991,7 +1000,11 @@ export const CHECKS = {
         for (const c of s.inventory.in.filter((c) => comps.includes(c.id)))
           for (const [axis, list] of Object.entries(c.variants ?? {}))
             for (const [v, d] of Object.entries(list))
-              has(`components/${c.id}.md`, d.not_used ? `${axis} ${v}: not used` : `${axis} ${v}: ${d.use}`, `the ${axis} ${v} decision`);
+              has(
+                `components/${c.id}.md`,
+                d.not_used ? `${axis} ${v}: not used` : `${axis} ${v}: ${d.use}`,
+                `the ${axis} ${v} decision`,
+              );
         for (const c of comps)
           if (!routeFile(index, `src/components/ui/${c}.tsx`).includes(`components/${c}.md`))
             gaps.push(`${id}: src/components/ui/${c}.tsx does not route to its booklet`);
@@ -1019,7 +1032,8 @@ export const CHECKS = {
       const tools = [...src.matchAll(/registerTool\(\s*"(\w+)"/g)].map((m) => m[1]);
       const gaps = [];
       const start = src.indexOf("const INSTRUCTIONS = `");
-      if (!src.slice(start, src.indexOf("`;", start)).includes("${READ_ONCE}")) gaps.push("the MCP instructions do not carry the read-once text");
+      if (!src.slice(start, src.indexOf("`;", start)).includes("${READ_ONCE}"))
+        gaps.push("the MCP instructions do not carry the read-once text");
       for (const m of READ_ONCE.matchAll(/\b([a-z]+_[a-z_]+)\b/g))
         if (!tools.includes(m[1])) gaps.push(`the read-once text names ${m[1]}, which is not a tool`);
       for (const id of SCHEMES) {
@@ -1028,17 +1042,27 @@ export const CHECKS = {
         const set = booklets(s, g, comps, roots);
         const agents = agentsMd(s, g, { components: comps, project: true });
         if (!agents.includes(READ_ONCE)) gaps.push(`${id} AGENTS.md does not carry the read-once text`);
-        if (!set["README.md"].includes(READ_ONCE)) gaps.push(`${id} context/README.md does not carry the read-once text`);
+        if (!set["README.md"].includes(READ_ONCE))
+          gaps.push(`${id} context/README.md does not carry the read-once text`);
         for (const [rule, see] of Object.entries(SEE)) {
-          const [file, section] = see.replace("<id>", comps.find((c) => /## Variants here/.test(set[`components/${c}.md`] ?? "")) ?? "button").split(": ");
+          const [file, section] = see
+            .replace("<id>", comps.find((c) => /## Variants here/.test(set[`components/${c}.md`] ?? "")) ?? "button")
+            .split(": ");
           const text = file === "AGENTS.md" ? agents : set[file.replace(/^context\//, "")];
           if (!text) gaps.push(`${id}: ${rule} points to ${file}, which a project does not have`);
-          else if (section && !text.includes(`## ${section}`)) gaps.push(`${id}: ${rule} points to ${file}: ${section}, which it does not have`);
+          else if (section && !text.includes(`## ${section}`))
+            gaps.push(`${id}: ${rule} points to ${file}: ${section}, which it does not have`);
         }
       }
       for (const name of ["open-ds", "open-ds-build", "open-ds-review", "open-ds-write", "open-ds-change"]) {
         const run = c.read(`skills/${name}/SKILL.md`).split("## Run")[1]?.split("## Done")[0] ?? "";
-        if (!run.split("\n").filter((l) => /^\d+\./.test(l)).slice(0, 4).some((l) => /get_context/.test(l)))
+        if (
+          !run
+            .split("\n")
+            .filter((l) => /^\d+\./.test(l))
+            .slice(0, 4)
+            .some((l) => /get_context/.test(l))
+        )
           gaps.push(`${name}: the Run steps do not start from get_context`);
       }
       return gaps.length
@@ -1077,13 +1101,22 @@ export const CHECKS = {
         before += b;
         after += f;
         if (id === "dense-data") {
-          const job = (list) => list.reduce((n, t) => [n[0] + B(JSON.stringify(context(id, t, roots, g), null, 2)), n[1] + B(brief(id, t, { roots, g }))], [a0, a1]);
+          const job = (list) =>
+            list.reduce(
+              (n, t) => [
+                n[0] + B(JSON.stringify(context(id, t, roots, g), null, 2)),
+                n[1] + B(brief(id, t, { roots, g })),
+              ],
+              [a0, a1],
+            );
           const [x0, x1] = job(["build", "button", "dialog"]);
           parts.push(`dense-data, add a delete action: ${(x0 / 1024).toFixed(1)} → ${(x1 / 1024).toFixed(1)} KB`);
         }
       }
       if (after >= before) return bad(`the short form is not smaller: ${before} → ${after} B`);
-      return ok(`AGENTS.md, tasks and components, 5 schemes: ${(before / 1024).toFixed(0)} → ${(after / 1024).toFixed(0)} KB (−${Math.round((1 - after / before) * 100)}%); ${parts.join("; ")}`);
+      return ok(
+        `AGENTS.md, tasks and components, 5 schemes: ${(before / 1024).toFixed(0)} → ${(after / 1024).toFixed(0)} KB (−${Math.round((1 - after / before) * 100)}%); ${parts.join("; ")}`,
+      );
     },
   },
   "llm-mcp-docstrings": {
@@ -1425,7 +1458,12 @@ export const CHECKS = {
         return pending("Playwright is not installed: npm i -g playwright && npx playwright install chromium");
       if (res.error) return bad(res.error);
       return res.failed.length
-        ? bad(res.failed.slice(0, 5).map((f) => `${f.id}: ${f.problem}`).join("; "))
+        ? bad(
+            res.failed
+              .slice(0, 5)
+              .map((f) => `${f.id}: ${f.problem}`)
+              .join("; "),
+          )
         : ok(`${res.entries} renders: every story and docs page, and every story in every scheme`);
     },
   },
@@ -1502,6 +1540,51 @@ export const CHECKS = {
   },
 
   // Docs
+  "site-docs-storybook": {
+    requires: ["site/src/lib/places.ts", "storybook/.storybook/component-docs.mdx", "docs/docusaurus.config.ts"],
+    run: async (c) => {
+      // OD-210: the docs and Storybook live on open-ds.dev, each with its own path, and a quiet link
+      // between them. The site links both from the nav, the footer and each scheme page; the docs
+      // honour a base URL (/docs/ on the site); Storybook ends each component page with one text
+      // link to the same component in the docs.
+      const read = (f) => readFileSync(c.p(f), "utf8");
+      const gaps = [];
+      const chrome = read("site/src/components/chrome.tsx");
+      if (!/\["Docs", `\$\{DOCS\}\/`\]/.test(chrome) || !/\["Storybook", `\$\{STORYBOOK\}\/`\]/.test(chrome))
+        gaps.push("site nav or footer has no Docs and Storybook links");
+      const page = read("site/src/app/schemes/[id]/page.tsx");
+      if (!page.includes("docsOf(s.id)") || !/storybookOf\(\s*s.id/.test(page))
+        gaps.push("a scheme page has no Docs and Storybook cards");
+      const config = read("docs/docusaurus.config.ts");
+      if (!/baseUrl: BASE/.test(config) || !config.includes("DOCS_BASE_URL"))
+        gaps.push("the docs base URL is not configurable");
+      if (!read("docs/src/theme/NavbarItem/SchemeSwitcher.tsx").includes("withBaseUrl("))
+        gaps.push("the scheme switch ignores the base URL");
+      if (!read("docs/src/theme/NavbarItem/SchemeLinks.tsx").includes("useBaseUrl("))
+        gaps.push("the llms.txt link ignores the base URL");
+      const { docsPages } = await import(pathToFileURL(c.p("cli/src/docs.mjs")).href);
+      const { assetRoots, grammar, loadScheme } = await import(pathToFileURL(c.p("cli/src/schemes.mjs")).href);
+      const roots = assetRoots();
+      const text = Object.values(
+        docsPages(loadScheme("dense-data", roots), grammar(roots), roots, { all: true, robots: true, base: "/docs/" }),
+      ).join("\n");
+      if (/src="\/robots\//.test(text) || !text.includes('src="/docs/robots/'))
+        gaps.push("robot pictures ignore the base URL");
+      if (!/<DocsLink \/>\s*$/.test(read("storybook/.storybook/component-docs.mdx")))
+        gaps.push("Storybook's component page does not end with the docs link");
+      const blocks = read("storybook/src/docs-blocks.tsx");
+      const link = blocks.slice(blocks.indexOf("export function DocsLink"));
+      if (
+        !blocks.includes("STORYBOOK_DOCS_URL") ||
+        !link.includes('target="_top"') ||
+        /<button|className="[^"]*btn/.test(link)
+      )
+        gaps.push("the Storybook docs link is not a quiet text link to the configured docs");
+      return gaps.length
+        ? bad(gaps.join("; "))
+        : ok("site links docs and Storybook; docs honour /docs/; Storybook ends each component page with a docs link");
+    },
+  },
   "docs-docusaurus": {
     requires: ["docs/package.json"],
     run: (c) =>
@@ -1562,9 +1645,16 @@ export const CHECKS = {
         // OD-184, OD-195: the Primitives section counts every primitive.
         const prim = pages["primitives/index.md"] ?? "";
         const count = (function n(x) {
-          return x && typeof x === "object" ? ("$value" in x ? 1 : Object.entries(x).filter(([k]) => !k.startsWith("$")).reduce((a, [, v]) => a + n(v), 0)) : 0;
+          return x && typeof x === "object"
+            ? "$value" in x
+              ? 1
+              : Object.entries(x)
+                  .filter(([k]) => !k.startsWith("$"))
+                  .reduce((a, [, v]) => a + n(v), 0)
+            : 0;
         })(loadScheme(id, roots).tokens.primitive);
-        if (!prim.includes(`**${count}** primitives`)) gaps.push(`${id}: the primitives page does not list all ${count} primitives`);
+        if (!prim.includes(`**${count}** primitives`))
+          gaps.push(`${id}: the primitives page does not list all ${count} primitives`);
       }
       // The visual blocks look the same in these docs and in a created project's docs.
       if (c.read("docs/src/css/visual.css") !== c.read("cli/templates/project/docs/src/css/visual.css"))
@@ -1601,8 +1691,15 @@ export const CHECKS = {
         return pending("Playwright is not installed: npm i -g playwright && npx playwright install chromium");
       if (res.error) return bad(res.error);
       return res.failed.length
-        ? bad(res.failed.slice(0, 5).map((f) => `${f.id}: ${f.problem}`).join("; "))
-        : ok(`docs build; ${res.pages} pages open in a browser: every scheme in its colours, the switch keeps the page`);
+        ? bad(
+            res.failed
+              .slice(0, 5)
+              .map((f) => `${f.id}: ${f.problem}`)
+              .join("; "),
+          )
+        : ok(
+            `docs build; ${res.pages} pages open in a browser: every scheme in its colours, the switch keeps the page`,
+          );
     },
   },
   "docs-schemes": {
@@ -1617,7 +1714,8 @@ export const CHECKS = {
       if (ids.length !== SCHEMES.length || SCHEMES.some((id) => !ids.includes(id)))
         gaps.push(`docs/schemes.json lists ${ids.join(", ")}`);
       const list = (id) =>
-        c.walk(`docs/docs/${id}`, () => true)
+        c
+          .walk(`docs/docs/${id}`, () => true)
           .map((f) => f.slice(`docs/docs/${id}/`.length))
           .sort();
       const first = list(ids[0]);
@@ -1626,11 +1724,14 @@ export const CHECKS = {
         const missing = first.filter((f) => !l.includes(f));
         const extra = l.filter((f) => !first.includes(f));
         if (missing.length || extra.length)
-          gaps.push(`${id} differs from ${ids[0]}: ${[...missing.map((f) => `no ${f}`), ...extra.map((f) => `extra ${f}`)].slice(0, 4).join(", ")}`);
+          gaps.push(
+            `${id} differs from ${ids[0]}: ${[...missing.map((f) => `no ${f}`), ...extra.map((f) => `extra ${f}`)].slice(0, 4).join(", ")}`,
+          );
       }
       for (const id of ids) {
         const css = c.read(`docs/src/css/schemes/${id}.css`);
-        if (/(^|[\s,])(:root|\.dark)\b/m.test(css)) gaps.push(`docs/src/css/schemes/${id}.css sets tokens outside html[data-scheme="${id}"]`);
+        if (/(^|[\s,])(:root|\.dark)\b/m.test(css))
+          gaps.push(`docs/src/css/schemes/${id}.css sets tokens outside html[data-scheme="${id}"]`);
         for (const f of c.walk(`docs/docs/${id}`, (f) => f.endsWith("_category_.json")))
           for (const m of c.read(f).matchAll(/"id": "([^"]+)"/g))
             if (!m[1].startsWith(`${id}/`)) gaps.push(`${f} links to ${m[1]}`);
@@ -1641,17 +1742,17 @@ export const CHECKS = {
       // inventory Shelf and the 404 Slumber, each in a day and a night edition.
       const scopeRobot = { color: "swatch", spacing: "measure", components: "shelf" };
       const g = c.json("schemes/grammar.json");
-      const names = [
-        ...ids,
-        "slumber",
-        ...g.scopes.map((sc) => scopeRobot[sc.id] ?? `scopes/${sc.id}`),
-      ];
+      const names = [...ids, "slumber", ...g.scopes.map((sc) => scopeRobot[sc.id] ?? `scopes/${sc.id}`)];
       for (const n of new Set(names))
         for (const f of [`${n}.webp`, `${n}-dark.webp`])
           if (!c.has("docs", "static", "robots", ...f.split("/"))) gaps.push(`docs/static/robots/${f} is missing`);
       if (!c.read("docs/src/css/schemes.css").includes("schemes/"))
         gaps.push("docs/src/css/schemes.css imports no scheme");
-      for (const f of ["docs/src/theme/NavbarItem/SchemeSwitcher.tsx", "docs/src/pages/index.tsx", "docs/src/clientModules/scheme.ts"])
+      for (const f of [
+        "docs/src/theme/NavbarItem/SchemeSwitcher.tsx",
+        "docs/src/pages/index.tsx",
+        "docs/src/clientModules/scheme.ts",
+      ])
         if (!c.has(...f.split("/"))) gaps.push(`${f} is missing`);
       return gaps.length
         ? bad(gaps.slice(0, 8).join("; "))
