@@ -3,11 +3,10 @@
 // delivered design system's Storybook wears its own scheme (cli/templates/project/.storybook).
 import { addons } from "storybook/manager-api";
 import { create } from "storybook/theming";
+import { BRAND } from "./brand";
 
 const dark = window.matchMedia("(prefers-color-scheme: dark)").matches;
-const c = dark
-  ? { paper: "#1b1914", surface: "#24211b", ink: "#f1ebdd", muted: "#a59c89", line: "#3d382f", accent: "#ff9a70" }
-  : { paper: "#f6f2e9", surface: "#ffffff", ink: "#16140f", muted: "#645e50", line: "#cfc6b4", accent: "#b93a00" };
+const c = dark ? BRAND.dark : BRAND.light;
 const name = "Open DS Storybook";
 const tag = `font:500 11px 'DM Mono',monospace;letter-spacing:.04em;text-transform:uppercase;padding:2px 6px;border-radius:3px;color:${c.accent};border:1px solid ${c.accent}`;
 

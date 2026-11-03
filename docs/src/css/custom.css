@@ -671,11 +671,6 @@ html:not([data-scheme])[data-theme="dark"] .navbar__logo img {
     clip: rect(0 0 0 0);
   }
 }
-@media (max-width: 1280px) {
-  .navbar__title {
-    display: none;
-  }
-}
 /* A component the scheme leaves out (OD-211): the same entry as any other, with a small badge. */
 .ods-left-out > .menu__link::after {
   content: "Left out";

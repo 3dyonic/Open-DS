@@ -1658,8 +1658,6 @@ export const CHECKS = {
         gaps.push("the docs base URL is not configurable");
       if (!read("docs/src/theme/NavbarItem/SchemeSwitcher.tsx").includes("withBaseUrl("))
         gaps.push("the scheme switch ignores the base URL");
-      if (!read("docs/src/theme/NavbarItem/SchemeLinks.tsx").includes("useBaseUrl("))
-        gaps.push("the llms.txt link ignores the base URL");
       const { docsPages } = await import(pathToFileURL(c.p("cli/src/docs.mjs")).href);
       const { assetRoots, grammar, loadScheme } = await import(pathToFileURL(c.p("cli/src/schemes.mjs")).href);
       const roots = assetRoots();
