@@ -8,7 +8,7 @@ hide_table_of_contents: true
 
 # Primitives
 
-<div class="odv-pagehero"><div><p>The raw values of Accessible first. Primitives hold the values; semantic tokens give them a job (see <a href="../foundations/">Foundations</a>), and components read only the jobs. Spare values stay, so a brand or a changed answer can use them without adding a value.</p><div class="odv-stats"><span><b>114</b>Primitives</span><span><b>75</b>In use</span><span><b>39</b>Spare</span></div></div><span class="odv-robot odv-pagehero-robot"><img class="odv-robot-day" src="/robots/accessible-first.webp" alt="" loading="lazy"/><img class="odv-robot-night" src="/robots/accessible-first-dark.webp" alt="" loading="lazy"/></span></div>
+<div class="odv-pagehero"><div><p>The raw values of Accessible first. Primitives hold the values; semantic tokens give them a job (see <a href="../foundations/">Foundations</a>), and components read only the jobs. Spare values stay, so a brand or a changed answer can use them without adding a value.</p><div class="odv-stats"><span><b>110</b>Primitives</span><span><b>71</b>In use</span><span><b>39</b>Spare</span></div></div><span class="odv-robot odv-pagehero-robot"><img class="odv-robot-day" src="/robots/accessible-first.webp" alt="" loading="lazy"/><img class="odv-robot-night" src="/robots/accessible-first-dark.webp" alt="" loading="lazy"/></span></div>
 
 ## Colour
 
@@ -20,17 +20,17 @@ hide_table_of_contents: true
 
 ## Type, motion and effects
 
-<div class="odv-scards"><a class="odv-scard" href="./type"><span class="odv-scard-art"><span class="odv-robot "><img class="odv-robot-day" src="/robots/scopes/typography.webp" alt="" loading="lazy"/><img class="odv-robot-night" src="/robots/scopes/typography-dark.webp" alt="" loading="lazy"/></span></span><span class="odv-scard-body"><span class="odv-scard-title">Type</span><div class="odv-spec"><span class="odv-aa" style="font-family:&quot;Atkinson Hyperlegible&quot;, Verdana, sans-serif" title="font.family.atkinson-hyperlegible">Aa</span><span class="odv-spec-note">Atkinson Hyperlegible</span></div><span class="odv-scard-why">16 primitives · 15 in use</span><span class="odv-meter" role="img" aria-label="15 of 16 in use"><i style="width:94%"></i></span></span></a><a class="odv-scard" href="./motion"><span class="odv-scard-art"><span class="odv-robot "><img class="odv-robot-day" src="/robots/scopes/motion.webp" alt="" loading="lazy"/><img class="odv-robot-night" src="/robots/scopes/motion-dark.webp" alt="" loading="lazy"/></span></span><span class="odv-scard-body"><span class="odv-scard-title">Motion</span><div class="odv-spec"><i class="odv-dot"></i><span class="odv-spec-note">200ms</span></div><span class="odv-scard-why">4 primitives · 2 in use</span><span class="odv-meter" role="img" aria-label="2 of 4 in use"><i style="width:50%"></i></span></span></a><a class="odv-scard" href="./effects"><span class="odv-scard-art"><span class="odv-robot "><img class="odv-robot-day" src="/robots/scopes/elevation.webp" alt="" loading="lazy"/><img class="odv-robot-night" src="/robots/scopes/elevation-dark.webp" alt="" loading="lazy"/></span></span><span class="odv-scard-body"><span class="odv-scard-title">Effects</span><div class="odv-spec odv-spec-lift"></div><span class="odv-scard-why">2 primitives · 2 in use</span><span class="odv-meter" role="img" aria-label="2 of 2 in use"><i style="width:100%"></i></span></span></a></div>
+<div class="odv-scards"><a class="odv-scard" href="./type"><span class="odv-scard-art"><span class="odv-robot "><img class="odv-robot-day" src="/robots/scopes/typography.webp" alt="" loading="lazy"/><img class="odv-robot-night" src="/robots/scopes/typography-dark.webp" alt="" loading="lazy"/></span></span><span class="odv-scard-body"><span class="odv-scard-title">Type</span><div class="odv-spec"><span class="odv-aa" style="font-family:&quot;Atkinson Hyperlegible&quot;, Verdana, sans-serif" title="font.family.atkinson-hyperlegible">Aa</span><span class="odv-spec-note">Atkinson Hyperlegible</span></div><span class="odv-scard-why">12 primitives · 11 in use</span><span class="odv-meter" role="img" aria-label="11 of 12 in use"><i style="width:92%"></i></span></span></a><a class="odv-scard" href="./motion"><span class="odv-scard-art"><span class="odv-robot "><img class="odv-robot-day" src="/robots/scopes/motion.webp" alt="" loading="lazy"/><img class="odv-robot-night" src="/robots/scopes/motion-dark.webp" alt="" loading="lazy"/></span></span><span class="odv-scard-body"><span class="odv-scard-title">Motion</span><div class="odv-spec"><i class="odv-dot"></i><span class="odv-spec-note">200ms</span></div><span class="odv-scard-why">4 primitives · 2 in use</span><span class="odv-meter" role="img" aria-label="2 of 4 in use"><i style="width:50%"></i></span></span></a><a class="odv-scard" href="./effects"><span class="odv-scard-art"><span class="odv-robot "><img class="odv-robot-day" src="/robots/scopes/elevation.webp" alt="" loading="lazy"/><img class="odv-robot-night" src="/robots/scopes/elevation-dark.webp" alt="" loading="lazy"/></span></span><span class="odv-scard-body"><span class="odv-scard-title">Effects</span><div class="odv-spec odv-spec-lift"></div><span class="odv-scard-why">2 primitives · 2 in use</span><span class="odv-meter" role="img" aria-label="2 of 2 in use"><i style="width:100%"></i></span></span></a></div>
 
 ## Every kind
 
-**114** primitives. **75** are used by a semantic token, a theme or a component key. **39** are not used yet.
+**110** primitives. **71** are used by a semantic token, a theme or a component key. **39** are not used yet.
 
 | Kind | Primitives | Used |
 | --- | --- | --- |
 | [Color](./color.md) | 74 | 41 |
 | [Space and size](./space-and-size.md) | 11 | 9 |
 | [Shape](./shape.md) | 7 | 6 |
-| [Type](./type.md) | 16 | 15 |
+| [Type](./type.md) | 12 | 11 |
 | [Motion](./motion.md) | 4 | 2 |
 | [Effects](./effects.md) | 2 | 2 |

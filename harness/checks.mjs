@@ -429,6 +429,36 @@ export const CHECKS = {
     },
   },
 
+  "options-distinct": {
+    requires: ["schemes/grammar.json"],
+    run: (c) => {
+      // OD-221: the grammar's options rules. In every scheme, each step of a covered option set has the
+      // rule's type and sits at least min_gap from every other step, so no two options look the same.
+      const rules = c.json("schemes", "grammar.json").options?.rules ?? [];
+      if (!rules.length) return bad("the grammar has no options rules");
+      const gaps = [];
+      for (const id of SCHEMES) {
+        const prim = c.json("schemes", `${id}.json`).tokens.primitive;
+        for (const r of rules) {
+          const set = r.applies_to.split(".").reduce((o, k) => o?.[k], prim) ?? {};
+          const steps = Object.entries(set).filter(([k]) => !k.startsWith("$"));
+          for (const [k, v] of steps)
+            if (r.type && v.$type !== r.type) gaps.push(`${id}: ${r.applies_to}.${k} is ${v.$type}, not ${r.type}`);
+          const vals = steps
+            .map(([, v]) => Number(v.$value))
+            .filter((n) => !Number.isNaN(n))
+            .sort((a, b) => a - b);
+          for (let i = 1; i < vals.length; i++)
+            if (vals[i] - vals[i - 1] < r.min_gap - 1e-9)
+              gaps.push(`${id}: ${r.id} steps ${vals[i - 1]} and ${vals[i]} are closer than ${r.min_gap}`);
+        }
+      }
+      return gaps.length
+        ? bad(gaps.slice(0, 6).join("; "))
+        : ok(`every scheme's options are clearly apart: ${rules.map((r) => r.say).join("; ")}`);
+    },
+  },
+
   "catalogue-built": {
     requires: ["schemes/grammar.json", "ui/src/components"],
     run: (c) => {

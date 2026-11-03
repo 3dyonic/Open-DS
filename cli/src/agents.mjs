@@ -11,6 +11,12 @@ const COMMANDS = [
   "open-ds add <component>",
 ];
 
+/** The grammar's rules for options (OD-221), in one sentence for the agent context. */
+export const optionsRule = (g) =>
+  g.options?.rules?.length
+    ? `New options must look clearly different from their neighbours: ${g.options.rules.map((r) => r.say).join("; ")}.`
+    : "";
+
 export function agentsMd(scheme, g, { brand, components, project = false }) {
   if (project) return agentsCore(scheme, g, { brand, components });
   const qs = questions(g);
@@ -35,7 +41,7 @@ export function agentsMd(scheme, g, { brand, components, project = false }) {
     "",
     ...(project
       ? [
-          "- `tokens/src/`: the DTCG token source, one file per group. `primitive/` holds the raw options, steps only (colour by hue: `color.<hue>.light.<step>`, `color.<hue>.dark.<step>`). `theme/<brand>` is the decision layer: each brand's picks in light and dark, on the same paths as the semantics, with a base `@` per concept (`color.action.primary.@` beside `color.action.primary.hover`). `semantic/` holds the plain keys; a brand-dependent one says `{theme.<its path>}`. Only semantic and component keys ship as CSS variables, and the `@` drops out of the name (`--color-action-primary`). Each folder has a README. Edit a token, then run `npm run tokens`. Style Dictionary (`tokens/build.mjs`) writes `build/`.",
+          `- \`tokens/src/\`: the DTCG token source, one file per group. \`primitive/\` holds the raw options, steps only (colour by hue: \`color.<hue>.light.<step>\`, \`color.<hue>.dark.<step>\`). \`theme/<brand>\` is the decision layer: each brand's picks in light and dark, on the same paths as the semantics, with a base \`@\` per concept (\`color.action.primary.@\` beside \`color.action.primary.hover\`). \`semantic/\` holds the plain keys; a brand-dependent one says \`{theme.<its path>}\`. Only semantic and component keys ship as CSS variables, and the \`@\` drops out of the name (\`--color-action-primary\`). Each folder has a README. Edit a token, then run \`npm run tokens\`. Style Dictionary (\`tokens/build.mjs\`) writes \`build/\`. ${optionsRule(g)}`,
           "- `src/styles/index.css`: Tailwind, the built tokens (light and dark; add the class `dark` for dark mode), the shadcn and Tailwind theme and the base styles.",
           "- `stories/`: Storybook (`npm run storybook`). `docs/`: the Docusaurus docs (`npm run docs`).",
         ]
@@ -190,7 +196,7 @@ export function agentsCore(scheme, g, { brand, components }) {
     "",
     "## Files",
     "",
-    "- `tokens/src/`: the token source; edit, then `npm run tokens`. `scheme.json`: every answer with why.",
+    `- \`tokens/src/\`: the token source; edit, then \`npm run tokens\`. ${optionsRule(g)} \`scheme.json\`: every answer with why.`,
     "- `src/components/ui/`: the components; they read only component keys. `stories/`, `docs/`: Storybook and docs.",
     `- \`context/\`: the booklets and the router. Regenerate with \`npx open-ds context --write\`.${brand ? ` Brand: \`data-brand="${brand}"\` on \`<html>\`.` : ""}`,
     "",

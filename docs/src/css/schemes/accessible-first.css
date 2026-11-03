@@ -18,22 +18,22 @@ html[data-scheme="accessible-first"] {
   --border-width-focus: 3px; /** The focus ring. */
   --opacity-disabled: 0.5; /** Disabled controls. */
   --type-display-font-size: 2.25rem;
-  --type-display-line-height: 1.2;
+  --type-display-line-height: 1.25;
   --type-display-font-weight: 700;
   --type-title-font-size: 1.75rem;
   --type-title-line-height: 1.25;
   --type-title-font-weight: 700;
   --type-heading-font-size: 1.375rem;
-  --type-heading-line-height: 1.3;
+  --type-heading-line-height: 1.25;
   --type-heading-font-weight: 700;
   --type-body-font-size: 1.1875rem;
   --type-body-line-height: 1.6;
   --type-body-font-weight: 400;
   --type-label-font-size: 1.125rem;
-  --type-label-line-height: 1.4;
+  --type-label-line-height: 1.6;
   --type-label-font-weight: 700;
   --type-caption-font-size: 1rem;
-  --type-caption-line-height: 1.5;
+  --type-caption-line-height: 1.6;
   --type-caption-font-weight: 400;
   --type-data-font-size: 1.1875rem;
   --type-data-line-height: 1.6;
@@ -184,22 +184,22 @@ html[data-scheme="accessible-first"][data-theme="dark"] {
   --border-width-focus: 3px; /** The focus ring. */
   --opacity-disabled: 0.5; /** Disabled controls. */
   --type-display-font-size: 2.25rem;
-  --type-display-line-height: 1.2;
+  --type-display-line-height: 1.25;
   --type-display-font-weight: 700;
   --type-title-font-size: 1.75rem;
   --type-title-line-height: 1.25;
   --type-title-font-weight: 700;
   --type-heading-font-size: 1.375rem;
-  --type-heading-line-height: 1.3;
+  --type-heading-line-height: 1.25;
   --type-heading-font-weight: 700;
   --type-body-font-size: 1.1875rem;
   --type-body-line-height: 1.6;
   --type-body-font-weight: 400;
   --type-label-font-size: 1.125rem;
-  --type-label-line-height: 1.4;
+  --type-label-line-height: 1.6;
   --type-label-font-weight: 700;
   --type-caption-font-size: 1rem;
-  --type-caption-line-height: 1.5;
+  --type-caption-line-height: 1.6;
   --type-caption-font-weight: 400;
   --type-data-font-size: 1.1875rem;
   --type-data-line-height: 1.6;

@@ -18,25 +18,25 @@ html[data-scheme="dense-data"] {
   --border-width-focus: 2px; /** The focus ring. */
   --opacity-disabled: 0.4; /** Disabled controls. */
   --type-display-font-size: 1.5rem;
-  --type-display-line-height: 1.75rem;
+  --type-display-line-height: 1.2;
   --type-display-font-weight: 600;
   --type-title-font-size: 1.25rem;
-  --type-title-line-height: 1.5rem;
+  --type-title-line-height: 1.2;
   --type-title-font-weight: 600;
   --type-heading-font-size: 1rem;
-  --type-heading-line-height: 1.25rem;
+  --type-heading-line-height: 1.2;
   --type-heading-font-weight: 600;
   --type-body-font-size: 0.875rem;
-  --type-body-line-height: 1.25rem;
+  --type-body-line-height: 1.45;
   --type-body-font-weight: 400;
   --type-label-font-size: 0.75rem;
-  --type-label-line-height: 1rem;
+  --type-label-line-height: 1.2;
   --type-label-font-weight: 500;
   --type-caption-font-size: 0.75rem;
-  --type-caption-line-height: 1rem;
+  --type-caption-line-height: 1.45;
   --type-caption-font-weight: 400;
   --type-data-font-size: 0.8125rem;
-  --type-data-line-height: 1rem;
+  --type-data-line-height: 1.45;
   --type-data-font-weight: 400;
   --motion-duration-feedback: 120ms; /** Feedback speed: fast. */
   --motion-easing-standard: cubic-bezier(0.2, 0, 0, 1); /** Feedback easing. */
@@ -184,25 +184,25 @@ html[data-scheme="dense-data"][data-theme="dark"] {
   --border-width-focus: 2px; /** The focus ring. */
   --opacity-disabled: 0.4; /** Disabled controls. */
   --type-display-font-size: 1.5rem;
-  --type-display-line-height: 1.75rem;
+  --type-display-line-height: 1.2;
   --type-display-font-weight: 600;
   --type-title-font-size: 1.25rem;
-  --type-title-line-height: 1.5rem;
+  --type-title-line-height: 1.2;
   --type-title-font-weight: 600;
   --type-heading-font-size: 1rem;
-  --type-heading-line-height: 1.25rem;
+  --type-heading-line-height: 1.2;
   --type-heading-font-weight: 600;
   --type-body-font-size: 0.875rem;
-  --type-body-line-height: 1.25rem;
+  --type-body-line-height: 1.45;
   --type-body-font-weight: 400;
   --type-label-font-size: 0.75rem;
-  --type-label-line-height: 1rem;
+  --type-label-line-height: 1.2;
   --type-label-font-weight: 500;
   --type-caption-font-size: 0.75rem;
-  --type-caption-line-height: 1rem;
+  --type-caption-line-height: 1.45;
   --type-caption-font-weight: 400;
   --type-data-font-size: 0.8125rem;
-  --type-data-line-height: 1rem;
+  --type-data-line-height: 1.45;
   --type-data-font-weight: 400;
   --motion-duration-feedback: 120ms; /** Feedback speed: fast. */
   --motion-easing-standard: cubic-bezier(0.2, 0, 0, 1); /** Feedback easing. */

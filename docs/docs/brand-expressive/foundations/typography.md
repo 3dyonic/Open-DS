@@ -11,12 +11,12 @@ description: "Brand expressive: How text is set: roles, sizes and line height."
 How text is set: roles, sizes and line height.
 
 <div class="ods-specimen">
-<div class="ods-type"><span class="ods-label"><b>display</b><span>56px · 1.05 · 800</span></span><span class="ods-typeline" style="font-family:var(--type-display-font-family);font-size:var(--type-display-font-size);line-height:var(--type-display-line-height);font-weight:var(--type-display-font-weight)">The drop is coming</span></div>
+<div class="ods-type"><span class="ods-label"><b>display</b><span>56px · 1.8 · 800</span></span><span class="ods-typeline" style="font-family:var(--type-display-font-family);font-size:var(--type-display-font-size);line-height:var(--type-display-line-height);font-weight:var(--type-display-font-weight)">The drop is coming</span></div>
 <div class="ods-type"><span class="ods-label"><b>title</b><span>40px · 1.1 · 800</span></span><span class="ods-typeline" style="font-family:var(--type-title-font-family);font-size:var(--type-title-font-size);line-height:var(--type-title-line-height);font-weight:var(--type-title-font-weight)">The drop is coming</span></div>
-<div class="ods-type"><span class="ods-label"><b>heading</b><span>28px · 1.2 · 700</span></span><span class="ods-typeline" style="font-family:var(--type-heading-font-family);font-size:var(--type-heading-font-size);line-height:var(--type-heading-line-height);font-weight:var(--type-heading-font-weight)">Night runner jacket</span></div>
+<div class="ods-type"><span class="ods-label"><b>heading</b><span>28px · 1.1 · 700</span></span><span class="ods-typeline" style="font-family:var(--type-heading-font-family);font-size:var(--type-heading-font-size);line-height:var(--type-heading-line-height);font-weight:var(--type-heading-font-weight)">Night runner jacket</span></div>
 <div class="ods-type"><span class="ods-label"><b>body</b><span>17px · 1.55 · 400</span></span><span class="ods-typeline" style="font-family:var(--type-body-font-family);font-size:var(--type-body-font-size);line-height:var(--type-body-line-height);font-weight:var(--type-body-font-weight)">A visitor lands on a launch page from a social post and joins the waiting list.</span></div>
-<div class="ods-type"><span class="ods-label"><b>label</b><span>15px · 1.3 · 700</span></span><span class="ods-typeline" style="font-family:var(--type-label-font-family);font-size:var(--type-label-font-size);line-height:var(--type-label-line-height);font-weight:var(--type-label-font-weight)">Join the drop</span></div>
-<div class="ods-type"><span class="ods-label"><b>caption</b><span>14px · 1.4 · 400</span></span><span class="ods-typeline" style="font-family:var(--type-caption-font-family);font-size:var(--type-caption-font-size);line-height:var(--type-caption-line-height);font-weight:var(--type-caption-font-weight)">A visitor lands on a launch page from a social post and joins the waiting list.</span></div>
+<div class="ods-type"><span class="ods-label"><b>label</b><span>15px · 1.1 · 700</span></span><span class="ods-typeline" style="font-family:var(--type-label-font-family);font-size:var(--type-label-font-size);line-height:var(--type-label-line-height);font-weight:var(--type-label-font-weight)">Join the drop</span></div>
+<div class="ods-type"><span class="ods-label"><b>caption</b><span>14px · 1.55 · 400</span></span><span class="ods-typeline" style="font-family:var(--type-caption-font-family);font-size:var(--type-caption-font-size);line-height:var(--type-caption-line-height);font-weight:var(--type-caption-font-weight)">A visitor lands on a launch page from a social post and joins the waiting list.</span></div>
 <div class="ods-type"><span class="ods-label"><b>data</b><span>17px · 1.55 · 400</span></span><span class="ods-typeline" style="font-family:var(--type-data-font-family);font-size:var(--type-data-font-size);line-height:var(--type-data-line-height);font-weight:var(--type-data-font-weight)">Days to launch 6 · On the list 2,400 · Pieces in the drop 12 · Colours 4</span></div>
 </div>
 
@@ -38,7 +38,7 @@ Each token points to another token. Values live only on primitives, below.
 | --- | --- |
 | `type.display.font-family` | `brand-expressive.theme.base.type.display.font-family` → `font.family.bricolage-grotesque` |
 | `type.display.font-size` | `font.size.56` |
-| `type.display.line-height` | `font.line-height.1_05` |
+| `type.display.line-height` | `font.line-height.1_8` |
 | `type.display.font-weight` | `font.weight.800` |
 | `type.title.font-family` | `brand-expressive.theme.base.type.title.font-family` → `font.family.bricolage-grotesque` |
 | `type.title.font-size` | `font.size.40` |
@@ -46,7 +46,7 @@ Each token points to another token. Values live only on primitives, below.
 | `type.title.font-weight` | `font.weight.800` |
 | `type.heading.font-family` | `brand-expressive.theme.base.type.heading.font-family` → `font.family.bricolage-grotesque` |
 | `type.heading.font-size` | `font.size.28` |
-| `type.heading.line-height` | `font.line-height.1_2` |
+| `type.heading.line-height` | `font.line-height.1_1` |
 | `type.heading.font-weight` | `font.weight.700` |
 | `type.body.font-family` | `brand-expressive.theme.base.type.body.font-family` → `font.family.dm-sans` |
 | `type.body.font-size` | `font.size.17` |
@@ -54,11 +54,11 @@ Each token points to another token. Values live only on primitives, below.
 | `type.body.font-weight` | `font.weight.400` |
 | `type.label.font-family` | `brand-expressive.theme.base.type.label.font-family` → `font.family.dm-sans` |
 | `type.label.font-size` | `font.size.15` |
-| `type.label.line-height` | `font.line-height.1_3` |
+| `type.label.line-height` | `font.line-height.1_1` |
 | `type.label.font-weight` | `font.weight.700` |
 | `type.caption.font-family` | `brand-expressive.theme.base.type.caption.font-family` → `font.family.dm-sans` |
 | `type.caption.font-size` | `font.size.14` |
-| `type.caption.line-height` | `font.line-height.1_4` |
+| `type.caption.line-height` | `font.line-height.1_55` |
 | `type.caption.font-weight` | `font.weight.400` |
 | `type.data.font-family` | `brand-expressive.theme.base.type.data.font-family` → `font.family.dm-sans` |
 | `type.data.font-size` | `font.size.17` |
@@ -73,12 +73,9 @@ The raw values the tokens above end at.
 | --- | --- | --- |
 | `font.family.bricolage-grotesque` | "Bricolage Grotesque", system-ui, sans-serif | <span class="ods-font" style="font-family:"Bricolage Grotesque", system-ui, sans-serif">Aa 123</span> |
 | `font.family.dm-sans` | "DM Sans", system-ui, sans-serif | <span class="ods-font" style="font-family:"DM Sans", system-ui, sans-serif">Aa 123</span> |
-| `font.line-height.1_05` | 1.05 | <span class="ods-leading" style="--lh:1.05">Two lines<br/>of text</span> |
-| `font.line-height.1_1` | 1.1 | <span class="ods-leading" style="--lh:1.1">Two lines<br/>of text</span> |
-| `font.line-height.1_2` | 1.2 | <span class="ods-leading" style="--lh:1.2">Two lines<br/>of text</span> |
-| `font.line-height.1_3` | 1.3 | <span class="ods-leading" style="--lh:1.3">Two lines<br/>of text</span> |
-| `font.line-height.1_4` | 1.4 | <span class="ods-leading" style="--lh:1.4">Two lines<br/>of text</span> |
-| `font.line-height.1_55` | 1.55 | <span class="ods-leading" style="--lh:1.55">Two lines<br/>of text</span> |
+| `font.line-height.1_1` | 1.1 | <span class="ods-leading" style="line-height:1.1" data-h="18px">Ag Ag Ag</span> |
+| `font.line-height.1_55` | 1.55 | <span class="ods-leading" style="line-height:1.55" data-h="25px">Ag Ag Ag</span> |
+| `font.line-height.1_8` | 1.8 | <span class="ods-leading" style="line-height:1.8" data-h="29px">Ag Ag Ag</span> |
 | `font.size.14` | 0.875rem (14px) | <span class="ods-typesample" style="font-size:0.875rem">Aa</span> |
 | `font.size.15` | 0.9375rem (15px) | <span class="ods-typesample" style="font-size:0.9375rem">Aa</span> |
 | `font.size.17` | 1.0625rem (17px) | <span class="ods-typesample" style="font-size:1.0625rem">Aa</span> |

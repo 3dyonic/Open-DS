@@ -390,6 +390,17 @@
       "checks": ["catalogue-built", "schemes-inventory", "schemes-samples", "storybook-renders", "docs-build"]
     },
     {
+      "id": "OD-221",
+      "title": "Line heights: ratios in every scheme, one step per job, steps at least 0.2 apart",
+      "in": [
+        "the grammar's options rules say each option looks clearly different; line heights are ratios at least 0.2 apart",
+        "every scheme's line heights follow them, with one step per job",
+        "the agent context carries the rule, generated from the grammar",
+        "the line-height sample is one line on a band exactly one line height tall, in the docs and Storybook"
+      ],
+      "checks": ["options-distinct", "docs-build", "storybook-renders"]
+    },
+    {
       "id": "OD-215",
       "title": "Docs: every component shows the tokens it reads, from its classes to the scheme's values",
       "in": [

@@ -11,12 +11,12 @@ description: "Accessible first: How text is set: roles, sizes and line height."
 How text is set: roles, sizes and line height.
 
 <div class="ods-specimen">
-<div class="ods-type"><span class="ods-label"><b>display</b><span>36px · 1.2 · 700</span></span><span class="ods-typeline" style="font-family:var(--type-display-font-family);font-size:var(--type-display-font-size);line-height:var(--type-display-line-height);font-weight:var(--type-display-font-weight)">Apply for support with housing costs</span></div>
+<div class="ods-type"><span class="ods-label"><b>display</b><span>36px · 1.25 · 700</span></span><span class="ods-typeline" style="font-family:var(--type-display-font-family);font-size:var(--type-display-font-size);line-height:var(--type-display-line-height);font-weight:var(--type-display-font-weight)">Apply for support with housing costs</span></div>
 <div class="ods-type"><span class="ods-label"><b>title</b><span>28px · 1.25 · 700</span></span><span class="ods-typeline" style="font-family:var(--type-title-font-family);font-size:var(--type-title-font-size);line-height:var(--type-title-line-height);font-weight:var(--type-title-font-weight)">Apply for support with housing costs</span></div>
-<div class="ods-type"><span class="ods-label"><b>heading</b><span>22px · 1.3 · 700</span></span><span class="ods-typeline" style="font-family:var(--type-heading-font-family);font-size:var(--type-heading-font-size);line-height:var(--type-heading-line-height);font-weight:var(--type-heading-font-weight)">Step 2 of 4: Your home</span></div>
+<div class="ods-type"><span class="ods-label"><b>heading</b><span>22px · 1.25 · 700</span></span><span class="ods-typeline" style="font-family:var(--type-heading-font-family);font-size:var(--type-heading-font-size);line-height:var(--type-heading-line-height);font-weight:var(--type-heading-font-weight)">Step 2 of 4: Your home</span></div>
 <div class="ods-type"><span class="ods-label"><b>body</b><span>19px · 1.6 · 400</span></span><span class="ods-typeline" style="font-family:var(--type-body-font-family);font-size:var(--type-body-font-size);line-height:var(--type-body-line-height);font-weight:var(--type-body-font-weight)">A person with low vision zooms to 200% and applies for a benefit with a screen magnifier.</span></div>
-<div class="ods-type"><span class="ods-label"><b>label</b><span>18px · 1.4 · 700</span></span><span class="ods-typeline" style="font-family:var(--type-label-font-family);font-size:var(--type-label-font-size);line-height:var(--type-label-line-height);font-weight:var(--type-label-font-weight)">Continue</span></div>
-<div class="ods-type"><span class="ods-label"><b>caption</b><span>16px · 1.5 · 400</span></span><span class="ods-typeline" style="font-family:var(--type-caption-font-family);font-size:var(--type-caption-font-size);line-height:var(--type-caption-line-height);font-weight:var(--type-caption-font-weight)">A person with low vision zooms to 200% and applies for a benefit with a screen magnifier.</span></div>
+<div class="ods-type"><span class="ods-label"><b>label</b><span>18px · 1.6 · 700</span></span><span class="ods-typeline" style="font-family:var(--type-label-font-family);font-size:var(--type-label-font-size);line-height:var(--type-label-line-height);font-weight:var(--type-label-font-weight)">Continue</span></div>
+<div class="ods-type"><span class="ods-label"><b>caption</b><span>16px · 1.6 · 400</span></span><span class="ods-typeline" style="font-family:var(--type-caption-font-family);font-size:var(--type-caption-font-size);line-height:var(--type-caption-line-height);font-weight:var(--type-caption-font-weight)">A person with low vision zooms to 200% and applies for a benefit with a screen magnifier.</span></div>
 <div class="ods-type"><span class="ods-label"><b>data</b><span>19px · 1.6 · 400</span></span><span class="ods-typeline" style="font-family:var(--type-data-font-family);font-size:var(--type-data-font-size);line-height:var(--type-data-line-height);font-weight:var(--type-data-font-weight)">Steps done 2 of 4 · Documents sent 3 · Time left to apply 12 days · Time this takes About 10 minutes</span></div>
 </div>
 
@@ -38,7 +38,7 @@ Each token points to another token. Values live only on primitives, below.
 | --- | --- |
 | `type.display.font-family` | `accessible-first.theme.base.type.display.font-family` → `font.family.atkinson-hyperlegible` |
 | `type.display.font-size` | `font.size.36` |
-| `type.display.line-height` | `font.line-height.1_2` |
+| `type.display.line-height` | `font.line-height.1_25` |
 | `type.display.font-weight` | `font.weight.700` |
 | `type.title.font-family` | `accessible-first.theme.base.type.title.font-family` → `font.family.atkinson-hyperlegible` |
 | `type.title.font-size` | `font.size.28` |
@@ -46,7 +46,7 @@ Each token points to another token. Values live only on primitives, below.
 | `type.title.font-weight` | `font.weight.700` |
 | `type.heading.font-family` | `accessible-first.theme.base.type.heading.font-family` → `font.family.atkinson-hyperlegible` |
 | `type.heading.font-size` | `font.size.22` |
-| `type.heading.line-height` | `font.line-height.1_3` |
+| `type.heading.line-height` | `font.line-height.1_25` |
 | `type.heading.font-weight` | `font.weight.700` |
 | `type.body.font-family` | `accessible-first.theme.base.type.body.font-family` → `font.family.atkinson-hyperlegible` |
 | `type.body.font-size` | `font.size.19` |
@@ -54,11 +54,11 @@ Each token points to another token. Values live only on primitives, below.
 | `type.body.font-weight` | `font.weight.400` |
 | `type.label.font-family` | `accessible-first.theme.base.type.label.font-family` → `font.family.atkinson-hyperlegible` |
 | `type.label.font-size` | `font.size.18` |
-| `type.label.line-height` | `font.line-height.1_4` |
+| `type.label.line-height` | `font.line-height.1_6` |
 | `type.label.font-weight` | `font.weight.700` |
 | `type.caption.font-family` | `accessible-first.theme.base.type.caption.font-family` → `font.family.atkinson-hyperlegible` |
 | `type.caption.font-size` | `font.size.16` |
-| `type.caption.line-height` | `font.line-height.1_5` |
+| `type.caption.line-height` | `font.line-height.1_6` |
 | `type.caption.font-weight` | `font.weight.400` |
 | `type.data.font-family` | `accessible-first.theme.base.type.data.font-family` → `font.family.atkinson-hyperlegible` |
 | `type.data.font-size` | `font.size.19` |
@@ -72,12 +72,8 @@ The raw values the tokens above end at.
 | Primitive | Value | Sample |
 | --- | --- | --- |
 | `font.family.atkinson-hyperlegible` | "Atkinson Hyperlegible", Verdana, sans-serif | <span class="ods-font" style="font-family:"Atkinson Hyperlegible", Verdana, sans-serif">Aa 123</span> |
-| `font.line-height.1_2` | 1.2 | <span class="ods-leading" style="--lh:1.2">Two lines<br/>of text</span> |
-| `font.line-height.1_25` | 1.25 | <span class="ods-leading" style="--lh:1.25">Two lines<br/>of text</span> |
-| `font.line-height.1_3` | 1.3 | <span class="ods-leading" style="--lh:1.3">Two lines<br/>of text</span> |
-| `font.line-height.1_4` | 1.4 | <span class="ods-leading" style="--lh:1.4">Two lines<br/>of text</span> |
-| `font.line-height.1_5` | 1.5 | <span class="ods-leading" style="--lh:1.5">Two lines<br/>of text</span> |
-| `font.line-height.1_6` | 1.6 | <span class="ods-leading" style="--lh:1.6">Two lines<br/>of text</span> |
+| `font.line-height.1_25` | 1.25 | <span class="ods-leading" style="line-height:1.25" data-h="20px">Ag Ag Ag</span> |
+| `font.line-height.1_6` | 1.6 | <span class="ods-leading" style="line-height:1.6" data-h="26px">Ag Ag Ag</span> |
 | `font.size.16` | 1rem (16px) | <span class="ods-typesample" style="font-size:1rem">Aa</span> |
 | `font.size.18` | 1.125rem (18px) | <span class="ods-typesample" style="font-size:1.125rem">Aa</span> |
 | `font.size.19` | 1.1875rem (19px) | <span class="ods-typesample" style="font-size:1.1875rem">Aa</span> |

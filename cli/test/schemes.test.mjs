@@ -54,7 +54,7 @@ test("help names every scheme command", () => {
 
 test("why follows the because chain back to the reasons", () => {
   const w = why(loadScheme("dense-data"), "typography.definition");
-  assert.equal(w.answer, "A ratio, line heights on the grid");
+  assert.equal(w.answer, "A ratio, line heights in proportion");
   assert.ok(w.because.length > 0);
   assert.ok(
     w.because.some(

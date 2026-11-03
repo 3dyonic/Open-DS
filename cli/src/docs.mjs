@@ -210,6 +210,13 @@ const PRIMITIVE_PAGES = [
   },
 ];
 
+// A line height, as the line box it makes (OD-221): one line of Ag at a fixed 16px on a band exactly
+// one line height tall, with that height in px.
+const leading = (v) => {
+  const m = String(v).match(/^([\d.]+)(rem|px)?$/);
+  const px = m ? Math.round(Number(m[1]) * (m[2] === "px" ? 1 : 16)) : "";
+  return `<span class="ods-leading" style="line-height:${v}" data-h="${px ? `${px}px` : ""}">Ag Ag Ag</span>`;
+};
 function sample(path, type, raw) {
   // Primitives are not CSS variables (only semantic tokens and component keys are), so a primitive's
   // sample draws its own value.
@@ -220,8 +227,7 @@ function sample(path, type, raw) {
     return `<span class="ods-font" style="font-family:${v}">Aa 123</span>`;
   if (type === "fontWeight" || /font[.-]weight/.test(path))
     return `<span class="ods-typesample" style="font-weight:${v}">Aa</span>`;
-  if (/line-height/.test(path) && type !== "dimension")
-    return `<span class="ods-leading" style="--lh:${v}">Two lines<br/>of text</span>`;
+  if (/line-height/.test(path) && type !== "dimension") return leading(v);
   if (/letter/.test(path) && type !== "dimension")
     return `<span class="ods-typesample" style="letter-spacing:${v}">Aa Aa</span>`;
   if (type === "shadow")
@@ -244,8 +250,7 @@ function sample(path, type, raw) {
       return `<span class="ods-typesample" style="font-size:${v}">Aa</span>`;
     if (/letter/.test(path))
       return `<span class="ods-typesample" style="letter-spacing:${v}">Aa Aa</span>`;
-    if (/line-height/.test(path))
-      return `<span class="ods-leading" style="--lh:${v}">Two lines<br/>of text</span>`;
+    if (/line-height/.test(path)) return leading(v);
     return `<span class="ods-bar" style="width:${v}"></span>`;
   }
   return "";
