@@ -247,7 +247,7 @@ code {
    that says these are its docs. */
 .navbar__brand {
   /* OD-211: room between the mark and the name, even in the tightest scheme. */
-  gap: max(var(--space-gap-default), 0.75rem);
+  gap: max(var(--space-gap-default, 0px), 0.75rem);
 }
 .navbar__logo {
   height: 1.25rem;
@@ -669,11 +669,6 @@ html:not([data-scheme])[data-theme="dark"] .navbar__logo img {
     height: 1px;
     overflow: hidden;
     clip: rect(0 0 0 0);
-  }
-}
-@media (max-width: 1280px) {
-  .navbar__title {
-    display: none;
   }
 }
 /* A component the scheme leaves out (OD-211): the same entry as any other, with a small badge. */

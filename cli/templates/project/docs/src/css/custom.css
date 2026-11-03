@@ -246,7 +246,7 @@ code {
 /* The brand: the Open DS mark in this system's colours, its name in the title type, and a tag
    that says these are its docs. */
 .navbar__brand {
-  gap: var(--space-gap-default);
+  gap: max(var(--space-gap-default, 0px), 0.75rem);
 }
 .navbar__logo {
   height: 1.25rem;

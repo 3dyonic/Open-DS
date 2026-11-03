@@ -64,8 +64,14 @@ export function SiteNav() {
           {LINKS.map(([label, href]) => (
             <li key={label}>
               {leavesApp(href) ? (
-                <a className="hover:text-accent-text" href={href}>
+                <a
+                  className="hover:text-accent-text"
+                  href={href}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
                   {label}
+                  <span className="sr-only"> (opens in a new tab)</span>
                 </a>
               ) : (
                 <Link className="hover:text-accent-text" href={href}>
@@ -111,8 +117,9 @@ export function SiteFooter() {
         ].map(([label, href]) => (
           <li key={href}>
             {leavesApp(href) ? (
-              <a href={href} className="hover:text-ink">
+              <a href={href} className="hover:text-ink" target="_blank" rel="noopener noreferrer">
                 {label}
+                <span className="sr-only"> (opens in a new tab)</span>
               </a>
             ) : (
               <Link href={href} className="hover:text-ink">

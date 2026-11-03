@@ -5,7 +5,13 @@ import { Introduction as Page } from "./guide";
 const meta = {
   title: "Introduction",
   tags: ["!autodocs"],
-  parameters: { layout: "fullscreen", controls: { disable: true } },
+  // A page to read, not a component to try: no controls, actions or interactions panel.
+  parameters: {
+    layout: "fullscreen",
+    controls: { disable: true },
+    actions: { disable: true },
+    interactions: { disable: true },
+  },
 } satisfies Meta;
 export default meta;
 

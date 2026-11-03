@@ -47,12 +47,11 @@ const config: Config = {
   ],
   themeConfig: {
     colorMode: { respectPrefersColorScheme: true },
-    // The top bar: the current scheme's sections on the left, the switcher on the right.
+    // The top bar: the brand, then the switcher on the right. A scheme's sections live in its sidebar (OD-216).
     navbar: {
       title: "Open DS docs",
       logo: { src: "logo.svg", alt: "Open DS" },
       items: [
-        { type: "custom-schemeLinks", position: "left" },
         { type: "custom-schemeSwitcher", position: "right" },
         { href: STORYBOOK, label: "Storybook", position: "right" },
       ],

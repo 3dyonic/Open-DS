@@ -5,7 +5,13 @@ import { useEffect } from "react";
 import { themes } from "storybook/theming";
 import { SchemeContext, THEMES } from "../src/scheme-context";
 import "../src/storybook.css";
+import { brandCss } from "./brand";
 import ComponentDocs from "./component-docs.mdx";
+
+// The Open DS brand as --od-* variables, for the introduction's About Open DS (storybook.css).
+const brandStyle = document.createElement("style");
+brandStyle.textContent = brandCss();
+document.head.append(brandStyle);
 
 const KNOWN = new Set(THEMES.map((t) => t.value.split("--")[0]));
 
