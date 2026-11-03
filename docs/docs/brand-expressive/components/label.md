@@ -14,7 +14,7 @@ The visible name of a form control.
 
 ## See it live
 
-<div class="odv-live"><span class="odv-wait">Start Storybook to see it live: <code>npm run storybook</code></span><iframe src="http://localhost:6006/iframe.html?id=components-label--examples&viewMode=story&globals=scheme:brand-expressive" title="Label examples in Storybook" loading="lazy"></iframe><div class="bar"><span>Live from Storybook</span><a href="http://localhost:6006/?path=/docs/components-label--docs">Open Label in Storybook</a><a href="http://localhost:6006/iframe.html?id=components-label--examples&viewMode=story&globals=scheme:brand-expressive;mode:dark">See it in dark</a></div></div>
+<div class="odv-live"><span class="odv-wait">Start Storybook to see it live: <code>npm run storybook</code></span><iframe src="http://localhost:6006/iframe.html?id=components-label--examples&viewMode=story&globals=scheme:brand-expressive;mode:light" title="Label examples in Storybook" loading="lazy"></iframe><div class="bar"><span>Live from Storybook</span><a href="http://localhost:6006/?path=/docs/components-label--docs">Open Label in Storybook</a><a href="http://localhost:6006/iframe.html?id=components-label--examples&viewMode=story&globals=scheme:brand-expressive;mode:dark">See it in dark</a></div></div>
 
 ## When to use it
 

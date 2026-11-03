@@ -15,7 +15,7 @@ Keeps an image or video at a fixed shape while the layout resizes.
 
 ## See it live
 
-<div class="odv-live"><span class="odv-wait">Start Storybook to see it live: <code>npm run storybook</code></span><iframe src="http://localhost:6006/iframe.html?id=components-aspect-ratio--examples&viewMode=story&globals=scheme:accessible-first" title="Aspect ratio examples in Storybook" loading="lazy"></iframe><div class="bar"><span>Live from Storybook</span><a href="http://localhost:6006/?path=/docs/components-aspect-ratio--docs">Open Aspect ratio in Storybook</a><a href="http://localhost:6006/iframe.html?id=components-aspect-ratio--examples&viewMode=story&globals=scheme:accessible-first;mode:dark">See it in dark</a></div></div>
+<div class="odv-live"><span class="odv-wait">Start Storybook to see it live: <code>npm run storybook</code></span><iframe src="http://localhost:6006/iframe.html?id=components-aspect-ratio--examples&viewMode=story&globals=scheme:accessible-first;mode:light" title="Aspect ratio examples in Storybook" loading="lazy"></iframe><div class="bar"><span>Live from Storybook</span><a href="http://localhost:6006/?path=/docs/components-aspect-ratio--docs">Open Aspect ratio in Storybook</a><a href="http://localhost:6006/iframe.html?id=components-aspect-ratio--examples&viewMode=story&globals=scheme:accessible-first;mode:dark">See it in dark</a></div></div>
 
 ## When to use it
 

@@ -15,7 +15,7 @@ A search-first menu of actions and places, opened from the keyboard.
 
 ## See it live
 
-<div class="odv-live"><span class="odv-wait">Start Storybook to see it live: <code>npm run storybook</code></span><iframe src="http://localhost:6006/iframe.html?id=components-command--examples&viewMode=story&globals=scheme:multi-brand--aster" title="Command examples in Storybook" loading="lazy"></iframe><div class="bar"><span>Live from Storybook</span><a href="http://localhost:6006/?path=/docs/components-command--docs">Open Command in Storybook</a><a href="http://localhost:6006/iframe.html?id=components-command--examples&viewMode=story&globals=scheme:multi-brand--aster;mode:dark">See it in dark</a></div></div>
+<div class="odv-live"><span class="odv-wait">Start Storybook to see it live: <code>npm run storybook</code></span><iframe src="http://localhost:6006/iframe.html?id=components-command--examples&viewMode=story&globals=scheme:multi-brand--aster;mode:light" title="Command examples in Storybook" loading="lazy"></iframe><div class="bar"><span>Live from Storybook</span><a href="http://localhost:6006/?path=/docs/components-command--docs">Open Command in Storybook</a><a href="http://localhost:6006/iframe.html?id=components-command--examples&viewMode=story&globals=scheme:multi-brand--aster;mode:dark">See it in dark</a></div></div>
 
 ## When to use it
 

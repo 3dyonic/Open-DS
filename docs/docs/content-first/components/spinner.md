@@ -14,7 +14,7 @@ A small indicator that work is in progress when the time is unknown.
 
 ## See it live
 
-<div class="odv-live"><span class="odv-wait">Start Storybook to see it live: <code>npm run storybook</code></span><iframe src="http://localhost:6006/iframe.html?id=components-spinner--examples&viewMode=story&globals=scheme:content-first" title="Spinner examples in Storybook" loading="lazy"></iframe><div class="bar"><span>Live from Storybook</span><a href="http://localhost:6006/?path=/docs/components-spinner--docs">Open Spinner in Storybook</a><a href="http://localhost:6006/iframe.html?id=components-spinner--examples&viewMode=story&globals=scheme:content-first;mode:dark">See it in dark</a></div></div>
+<div class="odv-live"><span class="odv-wait">Start Storybook to see it live: <code>npm run storybook</code></span><iframe src="http://localhost:6006/iframe.html?id=components-spinner--examples&viewMode=story&globals=scheme:content-first;mode:light" title="Spinner examples in Storybook" loading="lazy"></iframe><div class="bar"><span>Live from Storybook</span><a href="http://localhost:6006/?path=/docs/components-spinner--docs">Open Spinner in Storybook</a><a href="http://localhost:6006/iframe.html?id=components-spinner--examples&viewMode=story&globals=scheme:content-first;mode:dark">See it in dark</a></div></div>
 
 ## When to use it
 

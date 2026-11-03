@@ -15,7 +15,7 @@ A panel that slides in from an edge.
 
 ## See it live
 
-<div class="odv-live"><span class="odv-wait">Start Storybook to see it live: <code>npm run storybook</code></span><iframe src="http://localhost:6006/iframe.html?id=components-sheet--examples&viewMode=story&globals=scheme:brand-expressive" title="Sheet examples in Storybook" loading="lazy"></iframe><div class="bar"><span>Live from Storybook</span><a href="http://localhost:6006/?path=/docs/components-sheet--docs">Open Sheet in Storybook</a><a href="http://localhost:6006/iframe.html?id=components-sheet--examples&viewMode=story&globals=scheme:brand-expressive;mode:dark">See it in dark</a></div></div>
+<div class="odv-live"><span class="odv-wait">Start Storybook to see it live: <code>npm run storybook</code></span><iframe src="http://localhost:6006/iframe.html?id=components-sheet--examples&viewMode=story&globals=scheme:brand-expressive;mode:light" title="Sheet examples in Storybook" loading="lazy"></iframe><div class="bar"><span>Live from Storybook</span><a href="http://localhost:6006/?path=/docs/components-sheet--docs">Open Sheet in Storybook</a><a href="http://localhost:6006/iframe.html?id=components-sheet--examples&viewMode=story&globals=scheme:brand-expressive;mode:dark">See it in dark</a></div></div>
 
 ## When to use it
 

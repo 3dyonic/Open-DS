@@ -28,6 +28,8 @@ const config: Config = {
   onBrokenLinks: "throw",
   markdown: { format: "detect", hooks: { onBrokenMarkdownLinks: "throw" } },
   i18n: { defaultLocale: "en", locales: ["en"] },
+  // The live Storybook embeds follow the docs theme (OD-213).
+  clientModules: ["./src/clientModules/embed-mode.ts"],
   presets: [
     [
       "classic",
