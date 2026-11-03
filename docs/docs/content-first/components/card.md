@@ -1,5 +1,5 @@
 ---
-sidebar_position: 10
+sidebar_position: 13
 title: "Card"
 description: "Card in Content first."
 ---
@@ -26,7 +26,7 @@ A bordered container for one item or group, with its title, content and actions.
 Instead:
 
 - [Table](./table.md): Records compared across rows.
-- Item: A compact row in a list.
+- [Item](./item.md): A compact row in a list.
 
 ## How Content first uses it
 

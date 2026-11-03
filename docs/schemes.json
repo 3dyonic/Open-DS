@@ -14,7 +14,7 @@
       "AI model monitoring",
       "Analytics dashboard"
     ],
-    "components": 50,
+    "components": 58,
     "answers": 78,
     "themes": 2,
     "primary": "#4B3FD9",
@@ -37,7 +37,7 @@
       "Help center",
       "Long-form guide"
     ],
-    "components": 34,
+    "components": 36,
     "answers": 78,
     "themes": 2,
     "primary": "#1E3A5F",
@@ -60,7 +60,7 @@
       "Public form",
       "Council services"
     ],
-    "components": 32,
+    "components": 41,
     "answers": 78,
     "themes": 2,
     "primary": "#0B4FC0",
@@ -83,7 +83,7 @@
       "Consumer app landing",
       "Event site"
     ],
-    "components": 43,
+    "components": 47,
     "answers": 78,
     "themes": 2,
     "primary": "#D61F7A",
@@ -107,7 +107,7 @@
       "White-label platform",
       "Agency client portfolio"
     ],
-    "components": 49,
+    "components": 50,
     "answers": 78,
     "themes": 6,
     "primary": "#0F766E",

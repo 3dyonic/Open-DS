@@ -385,6 +385,24 @@ export const CHECKS = {
     },
   },
 
+  "catalogue-built": {
+    requires: ["schemes/grammar.json", "ui/src/components"],
+    run: (c) => {
+      // OD-214: a component is In or Left out, nothing else. Every catalogue component is built, with
+      // its stories, so every scheme can carry it, render it and document it.
+      const items = c.json("schemes", "grammar.json").catalogue.items.map((i) => i.id);
+      const built = new Set(readdirSync(c.p("ui/src/components")).map((f) => f.replace(/\.tsx$/, "")));
+      const stories = new Set(readdirSync(c.p("storybook/stories")).map((f) => f.replace(/\.stories\.tsx$/, "")));
+      const gaps = [
+        ...items.filter((i) => !built.has(i)).map((i) => `${i} is not built`),
+        ...items.filter((i) => !stories.has(i)).map((i) => `${i} has no stories`),
+      ];
+      return gaps.length
+        ? bad(gaps.join("; "))
+        : ok(`all ${items.length} catalogue components are built, with stories`);
+    },
+  },
+
   "inventory-decided": {
     requires: ["schemes/grammar.json"],
     run: (c) => {
@@ -464,6 +482,15 @@ export const CHECKS = {
         tabs: "tabs",
         toast: "messages",
         tooltip: "icon_action",
+        attachment: "conversation",
+        bubble: "conversation",
+        marker: "conversation",
+        message: "conversation",
+        "message-scroller": "conversation",
+        item: "menu",
+        menubar: "menu",
+        "hover-card": "card",
+        sonner: "messages",
       };
       const gaps = [];
       const seen = new Map();
@@ -593,8 +620,9 @@ export const CHECKS = {
   "schemes-inventory": {
     requires: ["schemes/grammar.json"],
     run: (c) => {
-      // Each scheme's inventory is an output of its components answers: real catalogue items,
-      // only from the families the roles answer names. The count answer describes the size and limits nothing.
+      // Each scheme's inventory is an output of its components answers: real catalogue items. The
+      // roles answer names the families it draws from first; a component from another family can be in
+      // when its entry says where it fits (OD-214, less rigid). The count answer describes the size.
       const g = c.json("schemes", "grammar.json");
       const items = Object.fromEntries((g.catalogue?.items ?? []).map((i) => [i.id, i]));
       // The families each roles option admits live in the grammar, so the site and this check agree.
@@ -613,8 +641,10 @@ export const CHECKS = {
         if (new Set(ids).size !== ids.length) gaps.push(`${id}: an inventory item is listed twice`);
         for (const i of inv.in) {
           if (!items[i.id]) gaps.push(`${id}: ${i.id} is not in the catalogue`);
-          else if (!families.includes(items[i.id].family))
-            gaps.push(`${id}: ${i.id} is ${items[i.id].family}, outside its roles answer`);
+          else if (!families.includes(items[i.id].family) && !i.why?.trim())
+            gaps.push(
+              `${id}: ${i.id} is ${items[i.id].family}, outside its roles answer, with no word on where it fits`,
+            );
         }
         for (const o of inv.out ?? []) {
           if (!items[o.id]) gaps.push(`${id}: out item ${o.id} is not in the catalogue`);

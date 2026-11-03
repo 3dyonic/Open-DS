@@ -1,5 +1,5 @@
 ---
-sidebar_position: 47
+sidebar_position: 57
 title: "Table"
 description: "Table in Dense data."
 ---

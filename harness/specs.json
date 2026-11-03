@@ -378,6 +378,16 @@
         "every catalogue component is in (a limited use says where it fits) or out, with the reason argued from the answers and what to use instead"
       ],
       "checks": ["inventory-decided", "docs-sections", "docs-build"]
+    },
+    {
+      "id": "OD-214",
+      "title": "Every catalogue component is built: In or Left out, nothing else",
+      "in": [
+        "attachment, bubble, button-group, hover-card, item, marker, menubar, message, message-scroller and sonner are built, with stories, docs pages and agent context",
+        "each scheme's samples hold a short conversation for the conversation components",
+        "the roles answer names the families an inventory draws from first; a component from another family can be in when its entry says where it fits"
+      ],
+      "checks": ["catalogue-built", "schemes-inventory", "schemes-samples", "storybook-renders", "docs-build"]
     }
   ]
 }

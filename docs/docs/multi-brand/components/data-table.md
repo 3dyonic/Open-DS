@@ -1,5 +1,5 @@
 ---
-sidebar_position: 18
+sidebar_position: 21
 title: "Data table"
 description: "Data table in Multi-brand."
 sidebar_class_name: "ods-left-out"

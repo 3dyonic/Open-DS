@@ -1,5 +1,5 @@
 ---
-sidebar_position: 21
+sidebar_position: 24
 title: "Drawer"
 description: "Drawer in Content first."
 sidebar_class_name: "ods-left-out"

@@ -1,5 +1,5 @@
 ---
-sidebar_position: 52
+sidebar_position: 62
 title: "Toggle group"
 description: "Toggle group in Brand expressive."
 ---
@@ -26,7 +26,7 @@ A set of toggles where one or many stay pressed.
 Instead:
 
 - [Radio group](./radio-group.md): An answer in a form.
-- Button group: Actions, not a pressed choice.
+- [Button group](./button-group.md): Actions, not a pressed choice.
 
 ## Words
 

@@ -1,5 +1,5 @@
 ---
-sidebar_position: 31
+sidebar_position: 40
 title: "Native select"
 description: "Native select in Multi-brand."
 ---

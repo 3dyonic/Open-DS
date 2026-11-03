@@ -1,5 +1,5 @@
 ---
-sidebar_position: 40
+sidebar_position: 49
 title: "Separator"
 description: "Separator in Dense data."
 ---

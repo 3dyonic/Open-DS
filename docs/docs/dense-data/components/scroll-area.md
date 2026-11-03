@@ -1,5 +1,5 @@
 ---
-sidebar_position: 38
+sidebar_position: 47
 title: "Scroll area"
 description: "Scroll area in Dense data."
 ---
@@ -25,7 +25,7 @@ A region with its own styled scrollbars.
 
 Instead:
 
-- Message scroller: A conversation that keeps the newest in view.
+- [Message scroller](./message-scroller.md): A conversation that keeps the newest in view.
 
 ## Words
 

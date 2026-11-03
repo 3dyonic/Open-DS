@@ -1,5 +1,5 @@
 ---
-sidebar_position: 53
+sidebar_position: 63
 title: "Tooltip"
 description: "Tooltip in Brand expressive."
 sidebar_class_name: "ods-left-out"
@@ -25,7 +25,7 @@ A short hint on hover or focus.
 Instead:
 
 - [Popover](./popover.md): Opens on click and works on touch.
-- Hover card: A richer preview.
+- [Hover card](./hover-card.md): A richer preview.
 
 ## How Brand expressive uses it
 

@@ -1,5 +1,5 @@
 ---
-sidebar_position: 35
+sidebar_position: 44
 title: "Progress"
 description: "Progress in Multi-brand."
 ---

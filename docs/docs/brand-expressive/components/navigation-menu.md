@@ -1,5 +1,5 @@
 ---
-sidebar_position: 32
+sidebar_position: 41
 title: "Navigation menu"
 description: "Navigation menu in Brand expressive."
 ---

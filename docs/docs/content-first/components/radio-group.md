@@ -1,5 +1,5 @@
 ---
-sidebar_position: 36
+sidebar_position: 45
 title: "Radio group"
 description: "Radio group in Content first."
 ---

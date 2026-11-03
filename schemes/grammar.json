@@ -4848,6 +4848,42 @@
             "why": "Records compared across columns."
           }
         ],
+        "variants": {
+          "variant": [
+            {
+              "id": "default",
+              "overview": "No border and no fill: the row sits on the surface around it.",
+              "apply_when": "Lists inside a card, panel or menu that already has a frame.",
+              "not_when": "Rows that stand alone on the page and need edges."
+            },
+            {
+              "id": "outline",
+              "overview": "A border around each row.",
+              "apply_when": "Rows that stand alone on the page, such as a list of settings.",
+              "not_when": "Long lists inside a framed panel, where borders add noise."
+            },
+            {
+              "id": "muted",
+              "overview": "A soft fill behind the row.",
+              "apply_when": "A row that should stand out quietly, such as the current one.",
+              "not_when": "Every row in a long list."
+            }
+          ],
+          "size": [
+            {
+              "id": "default",
+              "overview": "Comfortable padding.",
+              "apply_when": "Most lists.",
+              "not_when": "Dense panels with many short rows."
+            },
+            {
+              "id": "sm",
+              "overview": "Tighter padding.",
+              "apply_when": "Dense panels and short rows.",
+              "not_when": "Touch screens and lists people read slowly."
+            }
+          ]
+        },
         "source": {
           "name": "Open DS",
           "license": "MIT"

@@ -690,6 +690,78 @@
           "type": "string",
           "minLength": 1,
           "description": "The name of an icon-only action, shown in its tooltip."
+        },
+        "conversation": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["title", "marker", "messages", "attachment"],
+          "description": "A short conversation (OD-214), for the message, bubble, marker, attachment and message-scroller examples.",
+          "properties": {
+            "title": {
+              "type": "string",
+              "minLength": 1,
+              "description": "The conversation's name."
+            },
+            "marker": {
+              "type": "string",
+              "minLength": 1,
+              "description": "A divider inside the conversation, such as a day."
+            },
+            "messages": {
+              "type": "array",
+              "minItems": 2,
+              "items": {
+                "type": "object",
+                "additionalProperties": false,
+                "required": ["author", "time", "text"],
+                "properties": {
+                  "author": {
+                    "type": "string",
+                    "minLength": 1,
+                    "description": "Who wrote it: a role, not a person's name."
+                  },
+                  "time": {
+                    "type": "string",
+                    "minLength": 1,
+                    "description": "When it was sent, as people read it."
+                  },
+                  "text": {
+                    "type": "string",
+                    "minLength": 1,
+                    "description": "What it says, in the scheme's voice."
+                  },
+                  "mine": {
+                    "type": "boolean",
+                    "description": "Written by the person viewing."
+                  }
+                }
+              },
+              "description": "The messages, oldest first."
+            },
+            "attachment": {
+              "type": "object",
+              "additionalProperties": false,
+              "required": ["name", "type", "size"],
+              "properties": {
+                "name": {
+                  "type": "string",
+                  "minLength": 1,
+                  "description": "The file name."
+                },
+                "type": {
+                  "type": "string",
+                  "minLength": 1,
+                  "description": "The file type, as people read it."
+                },
+                "size": {
+                  "type": "string",
+                  "minLength": 1,
+                  "description": "The file size, as people read it."
+                }
+              },
+              "description": "A file shared in the conversation."
+            }
+          }
         }
       }
     },

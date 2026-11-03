@@ -1,5 +1,5 @@
 ---
-sidebar_position: 22
+sidebar_position: 25
 title: "Dropdown menu"
 description: "Dropdown menu in Multi-brand."
 ---

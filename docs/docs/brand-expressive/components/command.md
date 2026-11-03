@@ -1,5 +1,5 @@
 ---
-sidebar_position: 16
+sidebar_position: 19
 title: "Command"
 description: "Command in Brand expressive."
 sidebar_class_name: "ods-left-out"

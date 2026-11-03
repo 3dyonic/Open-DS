@@ -1227,7 +1227,7 @@ export function docsPages(
       // Every card says what the component is (OD-213). The scheme's rule, or why it leaves the
       // component out, is on the component's page.
       `<span class="odv-icard-why">${esc(c.description ?? "")}</span>`,
-      `<span class="odv-pill${out ? " odv-pill-out" : ""}">${out ? "Left out" : built.includes(c.id) ? "In · built" : "In · not built yet"}</span>`,
+      `<span class="odv-pill${out ? " odv-pill-out" : ""}">${out ? "Left out" : "In · built"}</span>`,
       hasPage(c.id) ? `</a>` : `</div>`,
     );
   const inItems = catalogue.filter((c) => c.id in inventory);

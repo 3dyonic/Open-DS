@@ -402,7 +402,49 @@
       },
       {
         "id": "item",
-        "why": "A list such as saved applications, each with worded secondary buttons. Not records compared cell by cell."
+        "why": "A list such as saved applications, each with worded secondary buttons. Not records compared cell by cell.",
+        "variants": {
+          "variant": {
+            "default": {
+              "not_used": true,
+              "why": "A row with no border is hard to see at high zoom; borders do the work.",
+              "because": [
+                "elevation.definition",
+                "elevation.values"
+              ]
+            },
+            "outline": {
+              "use": "Each saved application, with a strong border that separates it at any zoom.",
+              "because": [
+                "elevation.definition",
+                "elevation.values"
+              ]
+            },
+            "muted": {
+              "not_used": true,
+              "why": "A fill alone marks a row by color; status goes in a badge with an icon and a word.",
+              "because": [
+                "accessibility.count"
+              ]
+            }
+          },
+          "size": {
+            "default": {
+              "use": "Every row. Large targets help people with motor needs.",
+              "because": [
+                "accessibility.values"
+              ]
+            },
+            "sm": {
+              "not_used": true,
+              "why": "Large targets help people with motor needs; nothing smaller.",
+              "because": [
+                "accessibility.values",
+                "spacing.count"
+              ]
+            }
+          }
+        }
       },
       {
         "id": "navigation-menu",
@@ -468,6 +510,42 @@
       {
         "id": "toggle-group",
         "why": "Switching a view between a few options, each with a word. Not a form answer, which uses a radio group."
+      },
+      {
+        "id": "aspect-ratio",
+        "why": "An image in a step card that must not stretch or jump while it loads. Not for text content."
+      },
+      {
+        "id": "attachment",
+        "why": "A file people open or download from a conversation. Not for uploading documents in a form, which uses a file input."
+      },
+      {
+        "id": "avatar",
+        "why": "Beside a name, to show who is signed in. Not the only way to tell people apart; words come first."
+      },
+      {
+        "id": "bubble",
+        "why": "A back-and-forth conversation, in large text with strong contrast. Not for comments or long text."
+      },
+      {
+        "id": "chart",
+        "why": "A relationship in a set of numbers, with the numbers also as a table. Not decoration, and never color alone."
+      },
+      {
+        "id": "marker",
+        "why": "Dividing a long conversation into days, in plain words. Not a message someone wrote."
+      },
+      {
+        "id": "message",
+        "why": "Conversations or comments, each with author and time. Not system status, which an alert carries."
+      },
+      {
+        "id": "message-scroller",
+        "why": "A live conversation where new messages arrive at the bottom. Not a static list, and no motion when less is asked."
+      },
+      {
+        "id": "table",
+        "why": "A summary like the steps of an application, with large rows and numbers in body text. Not compact rows or small fonts."
       }
     ],
     "out": [
@@ -495,49 +573,6 @@
         ]
       },
       {
-        "id": "aspect-ratio",
-        "why": "Aspect ratio is a media component. Accessible first's components answer takes core families only, because forms, steps and feedback are all a public service needs.",
-        "instead": [
-          "card"
-        ],
-        "because": [
-          "components.roles"
-        ]
-      },
-      {
-        "id": "attachment",
-        "why": "Attachment is a conversation component. Accessible first's components answer takes core families only, because forms, steps and feedback are all a public service needs.",
-        "instead": [
-          "card",
-          "button"
-        ],
-        "because": [
-          "components.roles"
-        ]
-      },
-      {
-        "id": "avatar",
-        "why": "Avatar is a media component. Accessible first's components answer takes core families only, because forms, steps and feedback are all a public service needs.",
-        "instead": [
-          "badge",
-          "card"
-        ],
-        "because": [
-          "components.roles"
-        ]
-      },
-      {
-        "id": "bubble",
-        "why": "Bubble is a conversation component. Accessible first's components answer takes core families only, because forms, steps and feedback are all a public service needs.",
-        "instead": [
-          "card",
-          "textarea"
-        ],
-        "because": [
-          "components.roles"
-        ]
-      },
-      {
         "id": "carousel",
         "why": "People must finish the form, and a carousel suits content where missing some is fine. Content people must see does not belong in slides.",
         "instead": [
@@ -546,16 +581,6 @@
         "because": [
           "tasks.q1",
           "outcomes.q1"
-        ]
-      },
-      {
-        "id": "chart",
-        "why": "Chart is a data component. Accessible first's components answer takes core families only, because forms, steps and feedback are all a public service needs.",
-        "instead": [
-          "card"
-        ],
-        "because": [
-          "components.roles"
         ]
       },
       {
@@ -637,17 +662,6 @@
         ]
       },
       {
-        "id": "marker",
-        "why": "Marker is a conversation component. Accessible first's components answer takes core families only, because forms, steps and feedback are all a public service needs.",
-        "instead": [
-          "separator",
-          "card"
-        ],
-        "because": [
-          "components.roles"
-        ]
-      },
-      {
         "id": "menubar",
         "why": "Menubar is for dense desktop-style tools. Accessible first avoids dense expert tools, and nobody remembers the interface from last time.",
         "instead": [
@@ -656,28 +670,6 @@
         "because": [
           "human.q2",
           "components.count"
-        ]
-      },
-      {
-        "id": "message",
-        "why": "Message is a conversation component. Accessible first's components answer takes core families only, because forms, steps and feedback are all a public service needs.",
-        "instead": [
-          "card",
-          "textarea"
-        ],
-        "because": [
-          "components.roles"
-        ]
-      },
-      {
-        "id": "message-scroller",
-        "why": "Message scroller is a conversation component. Accessible first's components answer takes core families only, because forms, steps and feedback are all a public service needs.",
-        "instead": [
-          "scroll-area",
-          "card"
-        ],
-        "because": [
-          "components.roles"
         ]
       },
       {
@@ -784,17 +776,6 @@
         ]
       },
       {
-        "id": "table",
-        "why": "Table is a data component. Accessible first's components answer takes core families only, because forms, steps and feedback are all a public service needs.",
-        "instead": [
-          "item",
-          "card"
-        ],
-        "because": [
-          "components.roles"
-        ]
-      },
-      {
         "id": "toast",
         "why": "A toast goes away. Here errors and important notes stay on the page, because people must know what went wrong and where.",
         "instead": [
@@ -828,6 +809,33 @@
       "voice.values"
     ],
     "screen": "Apply for support with housing costs",
+    "conversation": {
+      "title": "Messages about your application",
+      "marker": "Monday 3 November",
+      "messages": [
+        {
+          "author": "Housing support team",
+          "time": "10:02",
+          "text": "We need a copy of your rent agreement to continue."
+        },
+        {
+          "author": "You",
+          "time": "10:30",
+          "text": "I have attached it.",
+          "mine": true
+        },
+        {
+          "author": "Housing support team",
+          "time": "11:15",
+          "text": "Thank you. We will reply within 5 working days."
+        }
+      ],
+      "attachment": {
+        "name": "rent-agreement.pdf",
+        "type": "PDF",
+        "size": "380 KB"
+      }
+    },
     "actions": {
       "primary": "Continue",
       "secondary": "Save and come back later"

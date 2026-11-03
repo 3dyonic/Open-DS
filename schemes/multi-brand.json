@@ -537,7 +537,46 @@
       },
       {
         "id": "item",
-        "why": "A list of account settings, each with a few actions named by a word. Not for records compared cell by cell."
+        "why": "A list of account settings, each with a few actions named by a word. Not for records compared cell by cell.",
+        "variants": {
+          "variant": {
+            "default": {
+              "use": "Settings inside a card or menu, which already gives the frame.",
+              "because": [
+                "elevation.definition"
+              ]
+            },
+            "outline": {
+              "use": "Account settings on their own page, with a border and the corner each brand sets.",
+              "because": [
+                "content.q1",
+                "shape.definition"
+              ]
+            },
+            "muted": {
+              "use": "The current setting, with a soft fill from the brand.",
+              "because": [
+                "theming.definition"
+              ]
+            }
+          },
+          "size": {
+            "default": {
+              "use": "Every row, at touch size: customers are often on phones.",
+              "because": [
+                "accessibility.values"
+              ]
+            },
+            "sm": {
+              "not_used": true,
+              "why": "One density across brands, at touch size.",
+              "because": [
+                "spacing.count",
+                "accessibility.values"
+              ]
+            }
+          }
+        }
       },
       {
         "id": "kbd",
@@ -610,6 +649,10 @@
             }
           }
         }
+      },
+      {
+        "id": "table",
+        "why": "A customer's own records in the account area, such as Your subscriptions, in comfortable rows. Not as a tool for bulk work."
       }
     ],
     "out": [
@@ -751,17 +794,6 @@
         ]
       },
       {
-        "id": "table",
-        "why": "Table is a data component. Multi-brand's components answer takes core, content and media families only, because product teams build sign-up and account forms, plus product pages with questions and faces.",
-        "instead": [
-          "item",
-          "card"
-        ],
-        "because": [
-          "components.roles"
-        ]
-      },
-      {
         "id": "tooltip",
         "why": "Customers use any device, and on touch screens hover hints never show; a popover explains a fee instead.",
         "instead": [
@@ -783,6 +815,33 @@
       "voice.definition"
     ],
     "screen": "Your plan",
+    "conversation": {
+      "title": "Help with your plan",
+      "marker": "Today",
+      "messages": [
+        {
+          "author": "Support",
+          "time": "14:05",
+          "text": "Your Standard plan renews on the 14th."
+        },
+        {
+          "author": "You",
+          "time": "14:07",
+          "text": "Can I switch to yearly?",
+          "mine": true
+        },
+        {
+          "author": "Support",
+          "time": "14:09",
+          "text": "Yes. Change it in Your plan, under Billing."
+        }
+      ],
+      "attachment": {
+        "name": "invoice-october.pdf",
+        "type": "PDF",
+        "size": "92 KB"
+      }
+    },
     "actions": {
       "primary": "Get started",
       "secondary": "Compare plans"

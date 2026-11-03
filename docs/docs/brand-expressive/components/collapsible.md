@@ -1,5 +1,5 @@
 ---
-sidebar_position: 14
+sidebar_position: 17
 title: "Collapsible"
 description: "Collapsible in Brand expressive."
 ---

@@ -422,7 +422,48 @@
       },
       {
         "id": "item",
-        "why": "Rows in the reading list, each with an action named in a word. Not where cards preview articles."
+        "why": "Rows in the reading list, each with an action named in a word. Not where cards preview articles.",
+        "variants": {
+          "variant": {
+            "default": {
+              "use": "Rows in the reading list, separated by space, not lines.",
+              "because": [
+                "elevation.definition",
+                "spacing.values"
+              ]
+            },
+            "outline": {
+              "not_used": true,
+              "why": "Borders would interrupt reading; space separates the rows.",
+              "because": [
+                "elevation.definition"
+              ]
+            },
+            "muted": {
+              "not_used": true,
+              "why": "Every row in the reading list weighs the same; attention belongs to the text.",
+              "because": [
+                "human.q1"
+              ]
+            }
+          },
+          "size": {
+            "default": {
+              "use": "Every row, at touch size: many readers are on phones.",
+              "because": [
+                "accessibility.values"
+              ]
+            },
+            "sm": {
+              "not_used": true,
+              "why": "Many readers are on phones, and rows are read, not scanned.",
+              "because": [
+                "accessibility.values",
+                "tasks.q1"
+              ]
+            }
+          }
+        }
       },
       {
         "id": "native-select",
@@ -451,6 +492,14 @@
       {
         "id": "tabs",
         "why": "Views of the reading list, such as saved and finished. Not to move between site sections."
+      },
+      {
+        "id": "chart",
+        "why": "A figure inside an article when the story is a relationship in numbers. Not as decoration."
+      },
+      {
+        "id": "table",
+        "why": "The rare table inside an article, read row by row at a comfortable height. Not for records people scan or sort."
       }
     ],
     "out": [
@@ -497,16 +546,6 @@
         "because": [
           "components.roles",
           "tasks.q2"
-        ]
-      },
-      {
-        "id": "chart",
-        "why": "Chart is a data component. Content first's components answer takes core, content and media families only, because readers need sections, navigation and little else.",
-        "instead": [
-          "card"
-        ],
-        "because": [
-          "components.roles"
         ]
       },
       {
@@ -728,17 +767,6 @@
         ]
       },
       {
-        "id": "table",
-        "why": "Table is a data component. Content first's components answer takes core, content and media families only, because readers need sections, navigation and little else.",
-        "instead": [
-          "item",
-          "card"
-        ],
-        "because": [
-          "components.roles"
-        ]
-      },
-      {
         "id": "textarea",
         "why": "Forms are rare and short: newsletter and search, both one line. Actions are rare: subscribe, share, save. None calls for long text entry.",
         "instead": [
@@ -795,6 +823,33 @@
       "voice.values"
     ],
     "screen": "Your reading list",
+    "conversation": {
+      "title": "Comments on Planting a winter garden",
+      "marker": "Yesterday",
+      "messages": [
+        {
+          "author": "A reader",
+          "time": "18:40",
+          "text": "Do the bulbs need sun in winter?"
+        },
+        {
+          "author": "The editor",
+          "time": "19:05",
+          "text": "A few hours a day is enough. The second section has a planting calendar."
+        },
+        {
+          "author": "You",
+          "time": "19:10",
+          "text": "Thanks, saved it for the weekend.",
+          "mine": true
+        }
+      ],
+      "attachment": {
+        "name": "winter-planting-calendar.pdf",
+        "type": "PDF",
+        "size": "1.2 MB"
+      }
+    },
     "actions": {
       "primary": "Keep reading",
       "secondary": "Save for later"

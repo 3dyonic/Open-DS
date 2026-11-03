@@ -1,5 +1,5 @@
 ---
-sidebar_position: 34
+sidebar_position: 43
 title: "Popover"
 description: "Popover in Brand expressive."
 ---
