@@ -157,12 +157,25 @@ for (const id of ids) {
         text.replaceAll(/("id": ")/g, `$1${id}/`)
       : // The home page's slug is the site root; here it is the scheme's root.
         text.replace(/^slug: "\/"$/m, `slug: "/${id}/"`);
+  // What the home page shows per scheme (OD-209): its answers, read from its built tokens.
+  const light = readFileSync(join(roots.tokens, id, "tokens.css"), "utf8");
+  const token = (name) => light.match(new RegExp(`--${name}:\\s*([^;]+);`))?.[1].trim() ?? null;
+  const brandIds = Object.keys(scheme.tokens.brands ?? {});
   index.push({
     id,
     name: scheme.name,
     version: scheme.version,
     summary: scheme.summary,
-    brands: Object.keys(scheme.tokens.brands ?? {}),
+    brands: brandIds,
+    useWhen: scheme.ai.use_when,
+    examples: scheme.ai.example_products ?? [],
+    components: scheme.inventory?.in.length ?? 0,
+    answers: scheme.answers.length,
+    themes: scheme.themes.length,
+    primary: token("color-action-primary"),
+    corners: token("radius-control"),
+    font: token("type-display-font-family"),
+    motion: token("motion-duration-feedback"),
   });
 }
 files["src/css/schemes.css"] =

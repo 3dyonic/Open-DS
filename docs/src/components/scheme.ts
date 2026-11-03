@@ -1,7 +1,22 @@
 import useDocusaurusContext from "@docusaurus/useDocusaurusContext";
 import { useLocation } from "@docusaurus/router";
 
-export type Scheme = { id: string; name: string; version: string; summary: string; brands: string[] };
+export type Scheme = {
+  id: string;
+  name: string;
+  version: string;
+  summary: string;
+  brands: string[];
+  useWhen: string;
+  examples: string[];
+  components: number;
+  answers: number;
+  themes: number;
+  primary: string;
+  corners: string;
+  font: string;
+  motion: string;
+};
 
 /** Every scheme, the one this page belongs to (or null on the landing page), and the path inside it. */
 export function useScheme() {
