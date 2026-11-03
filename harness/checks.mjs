@@ -1637,6 +1637,10 @@ export const CHECKS = {
         const home = c.read(`docs/docs/${id}/index.md`);
         if (!home.includes(`slug: "/${id}/"`)) gaps.push(`docs/docs/${id}/index.md is not at /${id}/`);
       }
+      // OD-209: the home page shows each scheme's robot, in a day and a night edition.
+      for (const id of ids)
+        for (const f of [`${id}.webp`, `${id}-dark.webp`])
+          if (!c.has("docs", "static", "robots", f)) gaps.push(`docs/static/robots/${f} is missing`);
       if (!c.read("docs/src/css/schemes.css").includes("schemes/"))
         gaps.push("docs/src/css/schemes.css imports no scheme");
       for (const f of ["docs/src/theme/NavbarItem/SchemeSwitcher.tsx", "docs/src/pages/index.tsx", "docs/src/clientModules/scheme.ts"])

@@ -6,7 +6,21 @@
     "summary": "Compact, exact and quiet, for analysts who scan alerts and compare signals all day.",
     "brands": [
       "default"
-    ]
+    ],
+    "useWhen": "Security operations, threat detection, model monitoring, admin panels and analytics: many records, daily expert users, mouse and keyboard.",
+    "examples": [
+      "Security operations console",
+      "Threat detection",
+      "AI model monitoring",
+      "Analytics dashboard"
+    ],
+    "components": 40,
+    "answers": 78,
+    "themes": 2,
+    "primary": "#4B3FD9",
+    "corners": "0.125rem",
+    "font": "\"IBM Plex Sans\", system-ui, sans-serif",
+    "motion": "120ms"
   },
   {
     "id": "content-first",
@@ -15,7 +29,21 @@
     "summary": "Large, calm type and generous space, for people who come to read.",
     "brands": [
       "default"
-    ]
+    ],
+    "useWhen": "Publications, documentation, blogs, guides and help centers.",
+    "examples": [
+      "Magazine",
+      "Documentation site",
+      "Help center",
+      "Long-form guide"
+    ],
+    "components": 19,
+    "answers": 78,
+    "themes": 2,
+    "primary": "#1E3A5F",
+    "corners": "0.5rem",
+    "font": "\"Source Serif 4\", Georgia, serif",
+    "motion": "200ms"
   },
   {
     "id": "accessible-first",
@@ -24,7 +52,21 @@
     "summary": "Large text, large targets and AAA contrast, so everyone can finish the task.",
     "brands": [
       "default"
-    ]
+    ],
+    "useWhen": "Public services, health, government and any product that must work for everyone.",
+    "examples": [
+      "Benefits application",
+      "Health booking",
+      "Public form",
+      "Council services"
+    ],
+    "components": 16,
+    "answers": 78,
+    "themes": 2,
+    "primary": "#0B4FC0",
+    "corners": "0.375rem",
+    "font": "\"Atkinson Hyperlegible\", Verdana, sans-serif",
+    "motion": "200ms"
   },
   {
     "id": "brand-expressive",
@@ -33,7 +75,21 @@
     "summary": "Big display type, vivid color and springy motion, for launches that must be remembered.",
     "brands": [
       "default"
-    ]
+    ],
+    "useWhen": "Launch sites, campaigns, marketing pages and consumer brands that lead with personality.",
+    "examples": [
+      "Product launch",
+      "Campaign site",
+      "Consumer app landing",
+      "Event site"
+    ],
+    "components": 16,
+    "answers": 78,
+    "themes": 2,
+    "primary": "#D61F7A",
+    "corners": "9999px",
+    "font": "\"Bricolage Grotesque\", system-ui, sans-serif",
+    "motion": "320ms"
   },
   {
     "id": "multi-brand",
@@ -44,6 +100,19 @@
       "aster",
       "birch",
       "coral"
-    ]
+    ],
+    "useWhen": "Companies that sell to customers under several brands, or white-label products shown to their clients' customers: sign-up, checkout, account and product pages.",
+    "examples": [
+      "Brand family of apps",
+      "White-label platform",
+      "Agency client portfolio"
+    ],
+    "components": 31,
+    "answers": 78,
+    "themes": 6,
+    "primary": "#0F766E",
+    "corners": "0.25rem",
+    "font": "Inter, system-ui, sans-serif",
+    "motion": "200ms"
   }
 ]
