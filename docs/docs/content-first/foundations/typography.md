@@ -13,9 +13,9 @@ How text is set: roles, sizes and line height.
 <div class="ods-specimen">
 <div class="ods-type"><span class="ods-label"><b>display</b><span>44px · 1.15 · 600</span></span><span class="ods-typeline" style="font-family:var(--type-display-font-family);font-size:var(--type-display-font-size);line-height:var(--type-display-line-height);font-weight:var(--type-display-font-weight)">Your reading list</span></div>
 <div class="ods-type"><span class="ods-label"><b>title</b><span>36px · 1.15 · 600</span></span><span class="ods-typeline" style="font-family:var(--type-title-font-family);font-size:var(--type-title-font-size);line-height:var(--type-title-line-height);font-weight:var(--type-title-font-weight)">Your reading list</span></div>
-<div class="ods-type"><span class="ods-label"><b>heading</b><span>28px · 1.3 · 600</span></span><span class="ods-typeline" style="font-family:var(--type-heading-font-family);font-size:var(--type-heading-font-size);line-height:var(--type-heading-line-height);font-weight:var(--type-heading-font-weight)">Planting a winter garden</span></div>
+<div class="ods-type"><span class="ods-label"><b>heading</b><span>28px · 1.15 · 600</span></span><span class="ods-typeline" style="font-family:var(--type-heading-font-family);font-size:var(--type-heading-font-size);line-height:var(--type-heading-line-height);font-weight:var(--type-heading-font-weight)">Planting a winter garden</span></div>
 <div class="ods-type"><span class="ods-label"><b>body</b><span>18px · 1.65 · 400</span></span><span class="ods-typeline" style="font-family:var(--type-body-font-family);font-size:var(--type-body-font-size);line-height:var(--type-body-line-height);font-weight:var(--type-body-font-weight)">A reader arrives from search on a phone and reads a long guide in one sitting.</span></div>
-<div class="ods-type"><span class="ods-label"><b>label</b><span>16px · 1.3 · 600</span></span><span class="ods-typeline" style="font-family:var(--type-label-font-family);font-size:var(--type-label-font-size);line-height:var(--type-label-line-height);font-weight:var(--type-label-font-weight)">Keep reading</span></div>
+<div class="ods-type"><span class="ods-label"><b>label</b><span>16px · 1.45 · 600</span></span><span class="ods-typeline" style="font-family:var(--type-label-font-family);font-size:var(--type-label-font-size);line-height:var(--type-label-line-height);font-weight:var(--type-label-font-weight)">Keep reading</span></div>
 <div class="ods-type"><span class="ods-label"><b>caption</b><span>14px · 1.45 · 400</span></span><span class="ods-typeline" style="font-family:var(--type-caption-font-family);font-size:var(--type-caption-font-size);line-height:var(--type-caption-line-height);font-weight:var(--type-caption-font-weight)">A reader arrives from search on a phone and reads a long guide in one sitting.</span></div>
 <div class="ods-type"><span class="ods-label"><b>data</b><span>18px · 1.65 · 400</span></span><span class="ods-typeline" style="font-family:var(--type-data-font-family);font-size:var(--type-data-font-size);line-height:var(--type-data-line-height);font-weight:var(--type-data-font-weight)">Guides saved 4 · Finished this month 11 · Minutes read 186 · Next issue Friday</span></div>
 </div>
@@ -46,7 +46,7 @@ Each token points to another token. Values live only on primitives, below.
 | `type.title.font-weight` | `font.weight.600` |
 | `type.heading.font-family` | `content-first.theme.base.type.heading.font-family` → `font.family.source-serif-4` |
 | `type.heading.font-size` | `font.size.28` |
-| `type.heading.line-height` | `font.line-height.1_3` |
+| `type.heading.line-height` | `font.line-height.1_15` |
 | `type.heading.font-weight` | `font.weight.600` |
 | `type.body.font-family` | `content-first.theme.base.type.body.font-family` → `font.family.source-serif-4` |
 | `type.body.font-size` | `font.size.18` |
@@ -54,7 +54,7 @@ Each token points to another token. Values live only on primitives, below.
 | `type.body.font-weight` | `font.weight.400` |
 | `type.label.font-family` | `content-first.theme.base.type.label.font-family` → `font.family.inter` |
 | `type.label.font-size` | `font.size.16` |
-| `type.label.line-height` | `font.line-height.1_3` |
+| `type.label.line-height` | `font.line-height.1_45` |
 | `type.label.font-weight` | `font.weight.600` |
 | `type.caption.font-family` | `content-first.theme.base.type.caption.font-family` → `font.family.inter` |
 | `type.caption.font-size` | `font.size.14` |
@@ -73,10 +73,9 @@ The raw values the tokens above end at.
 | --- | --- | --- |
 | `font.family.inter` | Inter, system-ui, sans-serif | <span class="ods-font" style="font-family:Inter, system-ui, sans-serif">Aa 123</span> |
 | `font.family.source-serif-4` | "Source Serif 4", Georgia, serif | <span class="ods-font" style="font-family:"Source Serif 4", Georgia, serif">Aa 123</span> |
-| `font.line-height.1_15` | 1.15 | <span class="ods-leading" style="--lh:1.15">Two lines<br/>of text</span> |
-| `font.line-height.1_3` | 1.3 | <span class="ods-leading" style="--lh:1.3">Two lines<br/>of text</span> |
-| `font.line-height.1_45` | 1.45 | <span class="ods-leading" style="--lh:1.45">Two lines<br/>of text</span> |
-| `font.line-height.1_65` | 1.65 | <span class="ods-leading" style="--lh:1.65">Two lines<br/>of text</span> |
+| `font.line-height.1_15` | 1.15 | <span class="ods-leading" style="line-height:1.15" data-h="18px">Ag Ag Ag</span> |
+| `font.line-height.1_45` | 1.45 | <span class="ods-leading" style="line-height:1.45" data-h="23px">Ag Ag Ag</span> |
+| `font.line-height.1_65` | 1.65 | <span class="ods-leading" style="line-height:1.65" data-h="26px">Ag Ag Ag</span> |
 | `font.size.14` | 0.875rem (14px) | <span class="ods-typesample" style="font-size:0.875rem">Aa</span> |
 | `font.size.16` | 1rem (16px) | <span class="ods-typesample" style="font-size:1rem">Aa</span> |
 | `font.size.18` | 1.125rem (18px) | <span class="ods-typesample" style="font-size:1.125rem">Aa</span> |

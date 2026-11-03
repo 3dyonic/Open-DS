@@ -496,7 +496,7 @@ Themes: light, dark
 - team.q2 How fast does it change? Every month. Features ship every month; the system must keep up.
 - typography.roles Which text roles does it need? Core and data. A data role keeps numbers in aligned columns. (because content.q1, tasks.q1)
 - typography.count How many steps does the type scale take? Only the steps the screens need. A screen full of records stays calm with only the sizes it needs. (because content.q2)
-- typography.definition How are sizes and line heights defined? A ratio, line heights on the grid. Lines stay on the grid so rows align, and grow with the user's text size. (because tasks.q1, people.q2)
+- typography.definition How are sizes and line heights defined? A ratio, line heights in proportion. Line height is a ratio of each text's own size, so it follows the text. Two steps: tight for headings and labels, open for body, data and captions. (because tasks.q1, people.q2)
 - typography.values How large is body text? Small. Small body text fits more rows on the screen. (because content.q2)
 - typography.lands Where does type do the most work? Tables and inputs. Most text sits in table cells and inputs. (because content.q1)
 - color.roles Which color roles does it need? Surface, text, action and status. Surface, text, action and status cover an operations tool. (because brand.q2)

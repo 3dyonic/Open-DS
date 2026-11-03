@@ -31,7 +31,9 @@ const CSS = `
 .odg .ptile{width:64px;height:40px;border:2px solid var(--color-action-primary);background:var(--color-surface-selected)}
 .odg .pline{width:60px;background:var(--color-text-primary)}
 .odg .paa{font-weight:600;line-height:1;color:var(--color-text-primary)}
-.odg .plead{font-size:12px;color:var(--color-text-primary)}
+.odg .plead{position:relative;display:inline-block;margin:0 56px 0 8px;white-space:nowrap;font-size:16px;color:var(--color-text-primary);isolation:isolate}
+.odg .plead::before{content:"";position:absolute;inset:0 -6px auto -6px;height:1lh;border-left:3px solid var(--color-action-primary);background:var(--color-surface-selected);z-index:-1}
+.odg .plead::after{content:attr(data-h);position:absolute;top:0;right:-6px;height:1lh;display:flex;align-items:center;padding-left:6px;transform:translateX(100%);font:500 10px/1 var(--type-data-font-family,monospace);color:var(--color-action-primary)}
 .odg .plift{width:56px;height:28px;border-radius:var(--radius-control);background:var(--color-surface-raised,var(--color-surface-default))}
 .odg .grid2{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:16px}
 .odg .grid3{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:16px}
@@ -669,16 +671,17 @@ function PrimSample({
         </span>
       </div>
     );
-  if (path.startsWith("font.line-height."))
+  if (path.startsWith("font.line-height.")) {
+    // The line box (OD-221): one line of Ag at a fixed 16px on a band exactly one line height tall.
+    const px = Math.round(Number(String(value).replace(/rem$/, "")) * 16);
     return (
       <div style={box}>
-        <span className="plead" style={{ lineHeight: v }}>
-          Two lines
-          <br />
-          of text
+        <span className="plead" style={{ lineHeight: v }} data-h={`${px}px`}>
+          Ag Ag Ag
         </span>
       </div>
     );
+  }
   if (path.startsWith("font.letter"))
     return (
       <div style={box}>

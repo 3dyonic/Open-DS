@@ -1294,8 +1294,8 @@
     },
     {
       "question": "typography.definition",
-      "option": "ratio-grid",
-      "why": "Lines stay on the grid so rows align, and grow with the user's text size.",
+      "option": "ratio-proportional",
+      "why": "Line height is a ratio of each text's own size, so it follows the text. Two steps: tight for headings and labels, open for body, data and captions.",
       "because": [
         "tasks.q1",
         "people.q2"
@@ -2552,25 +2552,15 @@
           }
         },
         "line-height": {
-          "16": {
-            "$type": "dimension",
-            "$value": "1rem",
-            "$description": "On the 4px grid, in rem so it grows with the user's text size."
+          "1_2": {
+            "$type": "number",
+            "$value": 1.2,
+            "$description": "A ratio of the text size."
           },
-          "20": {
-            "$type": "dimension",
-            "$value": "1.25rem",
-            "$description": "On the 4px grid, in rem so it grows with the user's text size."
-          },
-          "24": {
-            "$type": "dimension",
-            "$value": "1.5rem",
-            "$description": "On the 4px grid, in rem so it grows with the user's text size."
-          },
-          "28": {
-            "$type": "dimension",
-            "$value": "1.75rem",
-            "$description": "On the 4px grid, in rem so it grows with the user's text size."
+          "1_45": {
+            "$type": "number",
+            "$value": 1.45,
+            "$description": "A ratio of the text size."
           }
         },
         "family": {
@@ -3271,8 +3261,8 @@
             "$value": "{font.size.24}"
           },
           "line-height": {
-            "$type": "dimension",
-            "$value": "{font.line-height.28}"
+            "$type": "number",
+            "$value": "{font.line-height.1_2}"
           },
           "font-weight": {
             "$type": "fontWeight",
@@ -3290,8 +3280,8 @@
             "$value": "{font.size.20}"
           },
           "line-height": {
-            "$type": "dimension",
-            "$value": "{font.line-height.24}"
+            "$type": "number",
+            "$value": "{font.line-height.1_2}"
           },
           "font-weight": {
             "$type": "fontWeight",
@@ -3309,8 +3299,8 @@
             "$value": "{font.size.16}"
           },
           "line-height": {
-            "$type": "dimension",
-            "$value": "{font.line-height.20}"
+            "$type": "number",
+            "$value": "{font.line-height.1_2}"
           },
           "font-weight": {
             "$type": "fontWeight",
@@ -3328,8 +3318,8 @@
             "$value": "{font.size.14}"
           },
           "line-height": {
-            "$type": "dimension",
-            "$value": "{font.line-height.20}"
+            "$type": "number",
+            "$value": "{font.line-height.1_45}"
           },
           "font-weight": {
             "$type": "fontWeight",
@@ -3347,8 +3337,8 @@
             "$value": "{font.size.12}"
           },
           "line-height": {
-            "$type": "dimension",
-            "$value": "{font.line-height.16}"
+            "$type": "number",
+            "$value": "{font.line-height.1_2}"
           },
           "font-weight": {
             "$type": "fontWeight",
@@ -3366,8 +3356,8 @@
             "$value": "{font.size.12}"
           },
           "line-height": {
-            "$type": "dimension",
-            "$value": "{font.line-height.16}"
+            "$type": "number",
+            "$value": "{font.line-height.1_45}"
           },
           "font-weight": {
             "$type": "fontWeight",
@@ -3385,8 +3375,8 @@
             "$value": "{font.size.13}"
           },
           "line-height": {
-            "$type": "dimension",
-            "$value": "{font.line-height.16}"
+            "$type": "number",
+            "$value": "{font.line-height.1_45}"
           },
           "font-weight": {
             "$type": "fontWeight",

@@ -8,7 +8,7 @@ description: "Type primitives in Dense data."
 
 # Type
 
-15 primitives, 15 used.
+13 primitives, 13 used.
 
 ## `font.size`
 
@@ -33,10 +33,8 @@ description: "Type primitives in Dense data."
 
 | Primitive | Value | Sample | Used by |
 | --- | --- | --- | --- |
-| `font.line-height.16` | 1rem (16px) | <span class="ods-leading" style="--lh:1rem">Two lines<br/>of text</span> | `type.label.line-height` (semantic)<br />`type.caption.line-height` (semantic)<br />`type.data.line-height` (semantic) |
-| `font.line-height.20` | 1.25rem (20px) | <span class="ods-leading" style="--lh:1.25rem">Two lines<br/>of text</span> | `type.heading.line-height` (semantic)<br />`type.body.line-height` (semantic) |
-| `font.line-height.24` | 1.5rem (24px) | <span class="ods-leading" style="--lh:1.5rem">Two lines<br/>of text</span> | `type.title.line-height` (semantic) |
-| `font.line-height.28` | 1.75rem (28px) | <span class="ods-leading" style="--lh:1.75rem">Two lines<br/>of text</span> | `type.display.line-height` (semantic) |
+| `font.line-height.1_2` | 1.2 | <span class="ods-leading" style="line-height:1.2" data-h="19px">Ag Ag Ag</span> | `type.display.line-height` (semantic)<br />`type.title.line-height` (semantic)<br />`type.heading.line-height` (semantic)<br />`type.label.line-height` (semantic) |
+| `font.line-height.1_45` | 1.45 | <span class="ods-leading" style="line-height:1.45" data-h="23px">Ag Ag Ag</span> | `type.body.line-height` (semantic)<br />`type.caption.line-height` (semantic)<br />`type.data.line-height` (semantic) |
 
 ## `font.family`
 

@@ -8,7 +8,7 @@ description: "Type primitives in Brand expressive."
 
 # Type
 
-18 primitives, 17 used.
+15 primitives, 14 used.
 
 ## `font.size`
 
@@ -33,12 +33,9 @@ description: "Type primitives in Brand expressive."
 
 | Primitive | Value | Sample | Used by |
 | --- | --- | --- | --- |
-| `font.line-height.1_05` | 1.05 | <span class="ods-leading" style="--lh:1.05">Two lines<br/>of text</span> | `type.display.line-height` (semantic) |
-| `font.line-height.1_1` | 1.1 | <span class="ods-leading" style="--lh:1.1">Two lines<br/>of text</span> | `type.title.line-height` (semantic) |
-| `font.line-height.1_2` | 1.2 | <span class="ods-leading" style="--lh:1.2">Two lines<br/>of text</span> | `type.heading.line-height` (semantic) |
-| `font.line-height.1_3` | 1.3 | <span class="ods-leading" style="--lh:1.3">Two lines<br/>of text</span> | `type.label.line-height` (semantic) |
-| `font.line-height.1_4` | 1.4 | <span class="ods-leading" style="--lh:1.4">Two lines<br/>of text</span> | `type.caption.line-height` (semantic) |
-| `font.line-height.1_55` | 1.55 | <span class="ods-leading" style="--lh:1.55">Two lines<br/>of text</span> | `type.body.line-height` (semantic)<br />`type.data.line-height` (semantic) |
+| `font.line-height.1_1` | 1.1 | <span class="ods-leading" style="line-height:1.1" data-h="18px">Ag Ag Ag</span> | `type.title.line-height` (semantic)<br />`type.heading.line-height` (semantic)<br />`type.label.line-height` (semantic) |
+| `font.line-height.1_55` | 1.55 | <span class="ods-leading" style="line-height:1.55" data-h="25px">Ag Ag Ag</span> | `type.body.line-height` (semantic)<br />`type.caption.line-height` (semantic)<br />`type.data.line-height` (semantic) |
+| `font.line-height.1_8` | 1.8 | <span class="ods-leading" style="line-height:1.8" data-h="29px">Ag Ag Ag</span> | `type.display.line-height` (semantic) |
 
 ## `font.family`
 

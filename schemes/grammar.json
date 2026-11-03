@@ -19,13 +19,26 @@
     },
     {
       "id": "tokens",
-      "description": "Primitives are the options. Semantics are the decisions, in light and dark. Brands and modes are themes."
+      "description": "Primitives are the options; each option looks clearly different from the others (see options). Semantics are the decisions, in light and dark. Brands and modes are themes."
     },
     {
       "id": "component-api",
       "description": "One key per component element, variant and state. Every scheme fills every key."
     }
-  ],
+  ],  "options": {
+    "description": "Rules every scheme's primitives follow (OD-221). An option set exists to offer distinct choices, so each option looks clearly different from the others: two steps you cannot tell apart are one step. Prefer fewer steps that each do a job over one step per role.",
+    "rules": [
+      {
+        "id": "line-height",
+        "applies_to": "font.line-height",
+        "type": "number",
+        "min_gap": 0.2,
+        "say": "line heights are ratios of the text size, at least 0.2 apart",
+        "why": "A ratio follows each text's own size, and steps closer than 0.2 look the same."
+      }
+    ]
+  },
+
   "methods": [
     {
       "id": "roles",

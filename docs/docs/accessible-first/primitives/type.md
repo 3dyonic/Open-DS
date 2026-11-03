@@ -8,7 +8,7 @@ description: "Type primitives in Accessible first."
 
 # Type
 
-16 primitives, 15 used.
+12 primitives, 11 used.
 
 ## `font.size`
 
@@ -32,12 +32,8 @@ description: "Type primitives in Accessible first."
 
 | Primitive | Value | Sample | Used by |
 | --- | --- | --- | --- |
-| `font.line-height.1_2` | 1.2 | <span class="ods-leading" style="--lh:1.2">Two lines<br/>of text</span> | `type.display.line-height` (semantic) |
-| `font.line-height.1_25` | 1.25 | <span class="ods-leading" style="--lh:1.25">Two lines<br/>of text</span> | `type.title.line-height` (semantic) |
-| `font.line-height.1_3` | 1.3 | <span class="ods-leading" style="--lh:1.3">Two lines<br/>of text</span> | `type.heading.line-height` (semantic) |
-| `font.line-height.1_4` | 1.4 | <span class="ods-leading" style="--lh:1.4">Two lines<br/>of text</span> | `type.label.line-height` (semantic) |
-| `font.line-height.1_5` | 1.5 | <span class="ods-leading" style="--lh:1.5">Two lines<br/>of text</span> | `type.caption.line-height` (semantic) |
-| `font.line-height.1_6` | 1.6 | <span class="ods-leading" style="--lh:1.6">Two lines<br/>of text</span> | `type.body.line-height` (semantic)<br />`type.data.line-height` (semantic) |
+| `font.line-height.1_25` | 1.25 | <span class="ods-leading" style="line-height:1.25" data-h="20px">Ag Ag Ag</span> | `type.display.line-height` (semantic)<br />`type.title.line-height` (semantic)<br />`type.heading.line-height` (semantic) |
+| `font.line-height.1_6` | 1.6 | <span class="ods-leading" style="line-height:1.6" data-h="26px">Ag Ag Ag</span> | `type.body.line-height` (semantic)<br />`type.label.line-height` (semantic)<br />`type.caption.line-height` (semantic)<br />`type.data.line-height` (semantic) |
 
 ## `font.family`
 
