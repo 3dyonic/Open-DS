@@ -27,7 +27,7 @@ How space shows what belongs together.
 | --- | --- | --- |
 | Which spacing roles does it need? | Gaps and insets | Few tables; no row role needed. |
 | How many densities exist? | One | One generous density. |
-| How are spacing steps defined? | A coarse base unit | Big, even steps make big moments. |
+| How are spacing steps defined? | Big, even steps | Big, even steps make big moments. |
 | How dense is the layout? | Spacious | Big space makes big moments. |
 | Where does spacing matter most? | Between big sections | Space works between big sections. |
 

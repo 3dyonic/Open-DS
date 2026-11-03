@@ -14,12 +14,12 @@ description: "Motion primitives in Accessible first."
 
 | Primitive | Value | Sample | Used by |
 | --- | --- | --- | --- |
-| `duration.fast` | 120ms | <span class="ods-motion" style="--ods-d:120ms"><span></span></span> | Not used yet |
-| `duration.moderate` | 200ms | <span class="ods-motion" style="--ods-d:200ms"><span></span></span> | `motion.duration.feedback` (semantic) |
-| `duration.relaxed` | 320ms | <span class="ods-motion" style="--ods-d:320ms"><span></span></span> | Not used yet |
+| `duration.fast` | 120ms | <span class="ods-motion" style="--ods-d:120ms" title="Hover to play"><span></span></span> | Not used yet |
+| `duration.moderate` | 200ms | <span class="ods-motion" style="--ods-d:200ms" title="Hover to play"><span></span></span> | `motion.duration.feedback` (semantic) |
+| `duration.relaxed` | 320ms | <span class="ods-motion" style="--ods-d:320ms" title="Hover to play"><span></span></span> | Not used yet |
 
 ## `easing`
 
 | Primitive | Value | Sample | Used by |
 | --- | --- | --- | --- |
-| `easing.standard` | cubic-bezier(0.2, 0, 0, 1) |  | `motion.easing.standard` (semantic) |
+| `easing.standard` | cubic-bezier(0.2, 0, 0, 1) | <span class="ods-motion" style="--ods-e:cubic-bezier(0.2,0,0,1)" title="Hover to play"><span></span></span> | `motion.easing.standard` (semantic) |

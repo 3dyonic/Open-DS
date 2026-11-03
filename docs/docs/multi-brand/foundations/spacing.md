@@ -27,7 +27,7 @@ How space shows what belongs together.
 | --- | --- | --- |
 | Which spacing roles does it need? | Gaps, insets and row heights | Account tables need a row height. |
 | How many densities exist? | One | One density across brands. |
-| How are spacing steps defined? | A fine base unit | A fine base unit fits every brand. |
+| How are spacing steps defined? | Small steps, on a 4px grid | Every brand shares one set of steps, so they sit on a 4px grid: small enough for account forms, with big ones for product pages. |
 | How dense is the layout? | Comfortable | Comfortable spacing in every brand. |
 | Where does spacing matter most? | Between fields | Space matters most between form fields. |
 

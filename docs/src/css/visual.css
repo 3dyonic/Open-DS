@@ -1404,3 +1404,8 @@ a.odv-icard:hover {
   text-transform: uppercase;
   color: var(--color-text-secondary);
 }
+
+/* OD-220: anything with a hover hint shows the help cursor, so people know there is one. */
+.theme-doc-markdown [title]:not(a) {
+  cursor: help;
+}

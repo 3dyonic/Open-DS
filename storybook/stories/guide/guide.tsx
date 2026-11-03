@@ -23,6 +23,16 @@ const CSS = `
 .odg .lede{font-size:calc(var(--type-body-font-size)*1.15);color:var(--color-text-secondary);max-width:680px}
 .odg .sub{color:var(--color-text-muted);font-size:var(--type-caption-font-size);margin:0 0 14px}
 .odg .muted{color:var(--color-text-muted)}
+.odg [title]{cursor:help}
+.odg .pmotion{position:relative;display:inline-block;width:72px;height:12px;border-radius:9999px;background:var(--color-surface-sunken)}
+.odg .pmotion>span{position:absolute;left:0;top:0;width:12px;height:12px;border-radius:9999px;background:var(--color-action-primary);transition-property:left;transition-duration:320ms;transition-timing-function:var(--motion-easing-standard,ease)}
+.odg .prim:hover .pmotion>span{left:60px}
+@media (prefers-reduced-motion:reduce){.odg .pmotion>span{transition:none}}
+.odg .ptile{width:64px;height:40px;border:2px solid var(--color-action-primary);background:var(--color-surface-selected)}
+.odg .pline{width:60px;background:var(--color-text-primary)}
+.odg .paa{font-weight:600;line-height:1;color:var(--color-text-primary)}
+.odg .plead{font-size:12px;color:var(--color-text-primary)}
+.odg .plift{width:56px;height:28px;border-radius:var(--radius-control);background:var(--color-surface-raised,var(--color-surface-default))}
 .odg .grid2{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:16px}
 .odg .grid3{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:16px}
 .odg .grid4{display:grid;grid-template-columns:repeat(auto-fill,minmax(180px,1fr));gap:12px}
@@ -612,6 +622,124 @@ const showValue = (v: Any) =>
       ? `${v.offsetY} ${v.blur ?? ""} ${v.color}`
       : String(v);
 
+/**
+ * One primitive shown as itself (OD-220), as the docs show it: a corner as a rounded tile, a type size
+ * or weight as Aa, a line height as two lines, a shadow as a lifted box. Only space and size are bars.
+ */
+function PrimSample({
+  path,
+  value,
+  n,
+  max,
+  stages,
+}: {
+  path: string;
+  value: Any;
+  n: number | null;
+  max: number;
+  stages?: Record<"light" | "dark", { canvas: string; raised: string }>;
+}) {
+  const v = showValue(value);
+  const box = { padding: "16px 8px 0", minHeight: 44, display: "flex", alignItems: "flex-end" } as const;
+  if (path.startsWith("radius."))
+    return (
+      <div style={box}>
+        <div className="ptile" style={{ borderRadius: String(value) === "9999px" ? 9999 : v }} />
+      </div>
+    );
+  if (path.startsWith("border-width."))
+    return (
+      <div style={box}>
+        <div className="pline" style={{ height: v }} />
+      </div>
+    );
+  if (path.startsWith("font.size."))
+    return (
+      <div style={box}>
+        <span className="paa" style={{ fontSize: `min(${v}, 40px)` }}>
+          Aa
+        </span>
+      </div>
+    );
+  if (path.startsWith("font.weight."))
+    return (
+      <div style={box}>
+        <span className="paa" style={{ fontWeight: v }}>
+          Aa
+        </span>
+      </div>
+    );
+  if (path.startsWith("font.line-height."))
+    return (
+      <div style={box}>
+        <span className="plead" style={{ lineHeight: v }}>
+          Two lines
+          <br />
+          of text
+        </span>
+      </div>
+    );
+  if (path.startsWith("font.letter"))
+    return (
+      <div style={box}>
+        <span className="paa" style={{ letterSpacing: v }}>
+          Aa Aa
+        </span>
+      </div>
+    );
+  if (path.startsWith("font.family."))
+    return (
+      <div style={box}>
+        <span className="paa" style={{ fontFamily: v }}>
+          Aa 123
+        </span>
+      </div>
+    );
+  if (path.startsWith("duration.") || path.startsWith("easing."))
+    return (
+      <div style={box} title="Hover to play">
+        <span className="pmotion">
+          <span
+            style={
+              path.startsWith("duration.")
+                ? { transitionDuration: v }
+                : { transitionTimingFunction: Array.isArray(value) ? `cubic-bezier(${value.join(",")})` : v }
+            }
+          />
+        </span>
+      </div>
+    );
+  if (path.startsWith("shadow.")) {
+    // A shadow belongs to a mode: show it on that mode's own canvas and raised surface, whichever mode
+    // Storybook is in (OD-220). The -dark shadows are the dark mode's; the rest are light.
+    const stage = stages?.[/-dark$/.test(path) ? "dark" : "light"];
+    return (
+      <div style={{ ...box, background: stage?.canvas, borderRadius: 8, padding: 12, marginTop: 8 }}>
+        <div
+          className="plift"
+          style={{
+            background: stage?.raised,
+            boxShadow: `${value?.offsetX ?? "0px"} ${value?.offsetY ?? "0px"} ${value?.blur ?? "0px"} ${value?.spread ?? "0px"} ${value?.color ?? "transparent"}`,
+          }}
+        />
+      </div>
+    );
+  }
+  if (path.startsWith("opacity."))
+    return (
+      <div style={box}>
+        <div className="ptile" style={{ background: "var(--color-text-primary)", opacity: Number(value) }} />
+      </div>
+    );
+  if (n !== null)
+    return (
+      <div style={{ padding: "16px 8px 0" }}>
+        <div className="bar" style={{ width: `${Math.max(4, (n / max) * 100)}%` }} />
+      </div>
+    );
+  return null;
+}
+
 /** The kinds of primitive, one Storybook page each (OD-195), the same as the docs' Primitives section. */
 export const PRIMITIVE_KINDS: { id: string; title: string; match: (p: string) => boolean }[] = [
   { id: "color", title: "Color", match: (p) => p.startsWith("color.") },
@@ -634,6 +762,21 @@ export function Primitives({ kind }: { kind: string }) {
   };
   const families = [...new Set(all.map((x) => family(x.path)))];
   const nUsed = all.filter((x) => used[x.path]).length;
+  // Each mode's canvas and raised surface, resolved to their primitive values, for the shadow stages.
+  const resolve = (ref: Any): string => {
+    for (let i = 0, v = ref; i < 6; i++) {
+      const m = typeof v === "string" && v.match(/^\{(.+)\}$/);
+      if (!m) return String(v);
+      v = m[1].split(".").reduce((o: Any, k: string) => o?.[k], s.tokens.primitive)?.$value;
+    }
+    return "";
+  };
+  const firstBrand = Object.values(s.tokens.brands ?? {})[0] as Any;
+  const stage = (mode: "light" | "dark") => ({
+    canvas: resolve(firstBrand?.theme?.[mode]?.color?.surface?.canvas?.$value),
+    raised: resolve(firstBrand?.theme?.[mode]?.color?.surface?.raised?.$value),
+  });
+  const stages = { light: stage("light"), dark: stage("dark") };
   const rem = (v: Any) => {
     const m = String(v).match(/^([\d.]+)(rem|px)$/);
     return m ? +m[1] * (m[2] === "rem" ? 16 : 1) : null;
@@ -673,11 +816,9 @@ export function Primitives({ kind }: { kind: string }) {
                   >
                     {f.startsWith("color") ? (
                       <div className="c" style={{ background: String(x.value) }} />
-                    ) : n !== null ? (
-                      <div style={{ padding: "16px 8px 0" }}>
-                        <div className="bar" style={{ width: `${Math.max(4, (n / max) * 100)}%` }} />
-                      </div>
-                    ) : null}
+                    ) : (
+                      <PrimSample path={x.path} value={x.value} n={n} max={max} stages={stages} />
+                    )}
                     <div className="t">
                       <code style={{ fontWeight: 600 }}>{x.path.slice(f.length + 1) || x.path}</code>
                       <div className="muted">

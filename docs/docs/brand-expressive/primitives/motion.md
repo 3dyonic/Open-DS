@@ -14,12 +14,12 @@ description: "Motion primitives in Brand expressive."
 
 | Primitive | Value | Sample | Used by |
 | --- | --- | --- | --- |
-| `duration.fast` | 120ms | <span class="ods-motion" style="--ods-d:120ms"><span></span></span> | Not used yet |
-| `duration.moderate` | 200ms | <span class="ods-motion" style="--ods-d:200ms"><span></span></span> | Not used yet |
-| `duration.relaxed` | 320ms | <span class="ods-motion" style="--ods-d:320ms"><span></span></span> | `motion.duration.feedback` (semantic) |
+| `duration.fast` | 120ms | <span class="ods-motion" style="--ods-d:120ms" title="Hover to play"><span></span></span> | Not used yet |
+| `duration.moderate` | 200ms | <span class="ods-motion" style="--ods-d:200ms" title="Hover to play"><span></span></span> | Not used yet |
+| `duration.relaxed` | 320ms | <span class="ods-motion" style="--ods-d:320ms" title="Hover to play"><span></span></span> | `motion.duration.feedback` (semantic) |
 
 ## `easing`
 
 | Primitive | Value | Sample | Used by |
 | --- | --- | --- | --- |
-| `easing.standard` | cubic-bezier(0.34, 1.56, 0.64, 1) |  | `motion.easing.standard` (semantic) |
+| `easing.standard` | cubic-bezier(0.34, 1.56, 0.64, 1) | <span class="ods-motion" style="--ods-e:cubic-bezier(0.34,1.56,0.64,1)" title="Hover to play"><span></span></span> | `motion.easing.standard` (semantic) |
