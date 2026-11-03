@@ -11,13 +11,13 @@ description: "Content first: How text is set: roles, sizes and line height."
 How text is set: roles, sizes and line height.
 
 <div class="ods-specimen">
-<div class="ods-type"><span class="ods-label">display</span><span style="font-family:var(--type-display-font-family);font-size:var(--type-display-font-size);line-height:var(--type-display-line-height);font-weight:var(--type-display-font-weight)">A reader arrives from search on a phone and reads a long guide in one sitting.</span></div>
-<div class="ods-type"><span class="ods-label">title</span><span style="font-family:var(--type-title-font-family);font-size:var(--type-title-font-size);line-height:var(--type-title-line-height);font-weight:var(--type-title-font-weight)">A reader arrives from search on a phone and reads a long guide in one sitting.</span></div>
-<div class="ods-type"><span class="ods-label">heading</span><span style="font-family:var(--type-heading-font-family);font-size:var(--type-heading-font-size);line-height:var(--type-heading-line-height);font-weight:var(--type-heading-font-weight)">A reader arrives from search on a phone and reads a long guide in one sitting.</span></div>
-<div class="ods-type"><span class="ods-label">body</span><span style="font-family:var(--type-body-font-family);font-size:var(--type-body-font-size);line-height:var(--type-body-line-height);font-weight:var(--type-body-font-weight)">A reader arrives from search on a phone and reads a long guide in one sitting.</span></div>
-<div class="ods-type"><span class="ods-label">label</span><span style="font-family:var(--type-label-font-family);font-size:var(--type-label-font-size);line-height:var(--type-label-line-height);font-weight:var(--type-label-font-weight)">A reader arrives from search on a phone and reads a long guide in one sitting.</span></div>
-<div class="ods-type"><span class="ods-label">caption</span><span style="font-family:var(--type-caption-font-family);font-size:var(--type-caption-font-size);line-height:var(--type-caption-line-height);font-weight:var(--type-caption-font-weight)">A reader arrives from search on a phone and reads a long guide in one sitting.</span></div>
-<div class="ods-type"><span class="ods-label">data</span><span style="font-family:var(--type-data-font-family);font-size:var(--type-data-font-size);line-height:var(--type-data-line-height);font-weight:var(--type-data-font-weight)">A reader arrives from search on a phone and reads a long guide in one sitting.</span></div>
+<div class="ods-type"><span class="ods-label"><b>display</b><span>44px · 1.15 · 600</span></span><span class="ods-typeline" style="font-family:var(--type-display-font-family);font-size:var(--type-display-font-size);line-height:var(--type-display-line-height);font-weight:var(--type-display-font-weight)">Your reading list</span></div>
+<div class="ods-type"><span class="ods-label"><b>title</b><span>36px · 1.15 · 600</span></span><span class="ods-typeline" style="font-family:var(--type-title-font-family);font-size:var(--type-title-font-size);line-height:var(--type-title-line-height);font-weight:var(--type-title-font-weight)">Your reading list</span></div>
+<div class="ods-type"><span class="ods-label"><b>heading</b><span>28px · 1.3 · 600</span></span><span class="ods-typeline" style="font-family:var(--type-heading-font-family);font-size:var(--type-heading-font-size);line-height:var(--type-heading-line-height);font-weight:var(--type-heading-font-weight)">Planting a winter garden</span></div>
+<div class="ods-type"><span class="ods-label"><b>body</b><span>18px · 1.65 · 400</span></span><span class="ods-typeline" style="font-family:var(--type-body-font-family);font-size:var(--type-body-font-size);line-height:var(--type-body-line-height);font-weight:var(--type-body-font-weight)">A reader arrives from search on a phone and reads a long guide in one sitting.</span></div>
+<div class="ods-type"><span class="ods-label"><b>label</b><span>16px · 1.3 · 600</span></span><span class="ods-typeline" style="font-family:var(--type-label-font-family);font-size:var(--type-label-font-size);line-height:var(--type-label-line-height);font-weight:var(--type-label-font-weight)">Keep reading</span></div>
+<div class="ods-type"><span class="ods-label"><b>caption</b><span>14px · 1.45 · 400</span></span><span class="ods-typeline" style="font-family:var(--type-caption-font-family);font-size:var(--type-caption-font-size);line-height:var(--type-caption-line-height);font-weight:var(--type-caption-font-weight)">A reader arrives from search on a phone and reads a long guide in one sitting.</span></div>
+<div class="ods-type"><span class="ods-label"><b>data</b><span>18px · 1.65 · 400</span></span><span class="ods-typeline" style="font-family:var(--type-data-font-family);font-size:var(--type-data-font-size);line-height:var(--type-data-line-height);font-weight:var(--type-data-font-weight)">Guides saved 4 · Finished this month 11 · Minutes read 186 · Next issue Friday</span></div>
 </div>
 
 ## The five answers
@@ -73,18 +73,18 @@ The raw values the tokens above end at.
 | --- | --- | --- |
 | `font.family.inter` | Inter, system-ui, sans-serif | <span class="ods-font" style="font-family:Inter, system-ui, sans-serif">Aa 123</span> |
 | `font.family.source-serif-4` | "Source Serif 4", Georgia, serif | <span class="ods-font" style="font-family:"Source Serif 4", Georgia, serif">Aa 123</span> |
-| `font.line-height.1_15` | 1.15 |  |
-| `font.line-height.1_3` | 1.3 |  |
-| `font.line-height.1_45` | 1.45 |  |
-| `font.line-height.1_65` | 1.65 |  |
-| `font.size.14` | 0.875rem (14px) | <span class="ods-type" style="font-size:0.875rem">Aa</span> |
-| `font.size.16` | 1rem (16px) | <span class="ods-type" style="font-size:1rem">Aa</span> |
-| `font.size.18` | 1.125rem (18px) | <span class="ods-type" style="font-size:1.125rem">Aa</span> |
-| `font.size.28` | 1.75rem (28px) | <span class="ods-type" style="font-size:1.75rem">Aa</span> |
-| `font.size.36` | 2.25rem (36px) | <span class="ods-type" style="font-size:2.25rem">Aa</span> |
-| `font.size.44` | 2.75rem (44px) | <span class="ods-type" style="font-size:2.75rem">Aa</span> |
-| `font.weight.400` | 400 |  |
-| `font.weight.600` | 600 |  |
+| `font.line-height.1_15` | 1.15 | <span class="ods-leading" style="--lh:1.15">Two lines<br/>of text</span> |
+| `font.line-height.1_3` | 1.3 | <span class="ods-leading" style="--lh:1.3">Two lines<br/>of text</span> |
+| `font.line-height.1_45` | 1.45 | <span class="ods-leading" style="--lh:1.45">Two lines<br/>of text</span> |
+| `font.line-height.1_65` | 1.65 | <span class="ods-leading" style="--lh:1.65">Two lines<br/>of text</span> |
+| `font.size.14` | 0.875rem (14px) | <span class="ods-typesample" style="font-size:0.875rem">Aa</span> |
+| `font.size.16` | 1rem (16px) | <span class="ods-typesample" style="font-size:1rem">Aa</span> |
+| `font.size.18` | 1.125rem (18px) | <span class="ods-typesample" style="font-size:1.125rem">Aa</span> |
+| `font.size.28` | 1.75rem (28px) | <span class="ods-typesample" style="font-size:1.75rem">Aa</span> |
+| `font.size.36` | 2.25rem (36px) | <span class="ods-typesample" style="font-size:2.25rem">Aa</span> |
+| `font.size.44` | 2.75rem (44px) | <span class="ods-typesample" style="font-size:2.75rem">Aa</span> |
+| `font.weight.400` | 400 | <span class="ods-typesample" style="font-weight:400">Aa</span> |
+| `font.weight.600` | 600 | <span class="ods-typesample" style="font-weight:600">Aa</span> |
 
 ## Where it lands
 

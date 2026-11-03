@@ -11,13 +11,13 @@ description: "Multi-brand: How text is set: roles, sizes and line height."
 How text is set: roles, sizes and line height.
 
 <div class="ods-specimen">
-<div class="ods-type"><span class="ods-label">display</span><span style="font-family:var(--type-display-font-family);font-size:var(--type-display-font-size);line-height:var(--type-display-line-height);font-weight:var(--type-display-font-weight)">A customer signs up for a plan on the Birch site, then manages it in the shared account area.</span></div>
-<div class="ods-type"><span class="ods-label">title</span><span style="font-family:var(--type-title-font-family);font-size:var(--type-title-font-size);line-height:var(--type-title-line-height);font-weight:var(--type-title-font-weight)">A customer signs up for a plan on the Birch site, then manages it in the shared account area.</span></div>
-<div class="ods-type"><span class="ods-label">heading</span><span style="font-family:var(--type-heading-font-family);font-size:var(--type-heading-font-size);line-height:var(--type-heading-line-height);font-weight:var(--type-heading-font-weight)">A customer signs up for a plan on the Birch site, then manages it in the shared account area.</span></div>
-<div class="ods-type"><span class="ods-label">body</span><span style="font-family:var(--type-body-font-family);font-size:var(--type-body-font-size);line-height:var(--type-body-line-height);font-weight:var(--type-body-font-weight)">A customer signs up for a plan on the Birch site, then manages it in the shared account area.</span></div>
-<div class="ods-type"><span class="ods-label">label</span><span style="font-family:var(--type-label-font-family);font-size:var(--type-label-font-size);line-height:var(--type-label-line-height);font-weight:var(--type-label-font-weight)">A customer signs up for a plan on the Birch site, then manages it in the shared account area.</span></div>
-<div class="ods-type"><span class="ods-label">caption</span><span style="font-family:var(--type-caption-font-family);font-size:var(--type-caption-font-size);line-height:var(--type-caption-line-height);font-weight:var(--type-caption-font-weight)">A customer signs up for a plan on the Birch site, then manages it in the shared account area.</span></div>
-<div class="ods-type"><span class="ods-label">data</span><span style="font-family:var(--type-data-font-family);font-size:var(--type-data-font-size);line-height:var(--type-data-line-height);font-weight:var(--type-data-font-weight)">A customer signs up for a plan on the Birch site, then manages it in the shared account area.</span></div>
+<div class="ods-type"><span class="ods-label"><b>display</b><span>32px · 1.2 · 700</span></span><span class="ods-typeline" style="font-family:var(--type-display-font-family);font-size:var(--type-display-font-size);line-height:var(--type-display-line-height);font-weight:var(--type-display-font-weight)">Your plan</span></div>
+<div class="ods-type"><span class="ods-label"><b>title</b><span>24px · 1.25 · 600</span></span><span class="ods-typeline" style="font-family:var(--type-title-font-family);font-size:var(--type-title-font-size);line-height:var(--type-title-line-height);font-weight:var(--type-title-font-weight)">Your plan</span></div>
+<div class="ods-type"><span class="ods-label"><b>heading</b><span>20px · 1.3 · 600</span></span><span class="ods-typeline" style="font-family:var(--type-heading-font-family);font-size:var(--type-heading-font-size);line-height:var(--type-heading-line-height);font-weight:var(--type-heading-font-weight)">Standard plan</span></div>
+<div class="ods-type"><span class="ods-label"><b>body</b><span>16px · 1.5 · 400</span></span><span class="ods-typeline" style="font-family:var(--type-body-font-family);font-size:var(--type-body-font-size);line-height:var(--type-body-line-height);font-weight:var(--type-body-font-weight)">A customer signs up for a plan on the Birch site, then manages it in the shared account area.</span></div>
+<div class="ods-type"><span class="ods-label"><b>label</b><span>14px · 1.4 · 600</span></span><span class="ods-typeline" style="font-family:var(--type-label-font-family);font-size:var(--type-label-font-size);line-height:var(--type-label-line-height);font-weight:var(--type-label-font-weight)">Get started</span></div>
+<div class="ods-type"><span class="ods-label"><b>caption</b><span>13px · 1.4 · 400</span></span><span class="ods-typeline" style="font-family:var(--type-caption-font-family);font-size:var(--type-caption-font-size);line-height:var(--type-caption-line-height);font-weight:var(--type-caption-font-weight)">A customer signs up for a plan on the Birch site, then manages it in the shared account area.</span></div>
+<div class="ods-type"><span class="ods-label"><b>data</b><span>16px · 1.5 · 400</span></span><span class="ods-typeline" style="font-family:var(--type-data-font-family);font-size:var(--type-data-font-size);line-height:var(--type-data-line-height);font-weight:var(--type-data-font-weight)">Plan Standard · Next payment 12.00 · Orders this year 9 · Member since 2024</span></div>
 </div>
 
 ## The five answers
@@ -156,20 +156,20 @@ The raw values the tokens above end at.
 | Primitive | Value | Sample |
 | --- | --- | --- |
 | `font.family.inter` | Inter, system-ui, sans-serif | <span class="ods-font" style="font-family:Inter, system-ui, sans-serif">Aa 123</span> |
-| `font.line-height.1_2` | 1.2 |  |
-| `font.line-height.1_25` | 1.25 |  |
-| `font.line-height.1_3` | 1.3 |  |
-| `font.line-height.1_4` | 1.4 |  |
-| `font.line-height.1_5` | 1.5 |  |
-| `font.size.13` | 0.8125rem (13px) | <span class="ods-type" style="font-size:0.8125rem">Aa</span> |
-| `font.size.14` | 0.875rem (14px) | <span class="ods-type" style="font-size:0.875rem">Aa</span> |
-| `font.size.16` | 1rem (16px) | <span class="ods-type" style="font-size:1rem">Aa</span> |
-| `font.size.20` | 1.25rem (20px) | <span class="ods-type" style="font-size:1.25rem">Aa</span> |
-| `font.size.24` | 1.5rem (24px) | <span class="ods-type" style="font-size:1.5rem">Aa</span> |
-| `font.size.32` | 2rem (32px) | <span class="ods-type" style="font-size:2rem">Aa</span> |
-| `font.weight.400` | 400 |  |
-| `font.weight.600` | 600 |  |
-| `font.weight.700` | 700 |  |
+| `font.line-height.1_2` | 1.2 | <span class="ods-leading" style="--lh:1.2">Two lines<br/>of text</span> |
+| `font.line-height.1_25` | 1.25 | <span class="ods-leading" style="--lh:1.25">Two lines<br/>of text</span> |
+| `font.line-height.1_3` | 1.3 | <span class="ods-leading" style="--lh:1.3">Two lines<br/>of text</span> |
+| `font.line-height.1_4` | 1.4 | <span class="ods-leading" style="--lh:1.4">Two lines<br/>of text</span> |
+| `font.line-height.1_5` | 1.5 | <span class="ods-leading" style="--lh:1.5">Two lines<br/>of text</span> |
+| `font.size.13` | 0.8125rem (13px) | <span class="ods-typesample" style="font-size:0.8125rem">Aa</span> |
+| `font.size.14` | 0.875rem (14px) | <span class="ods-typesample" style="font-size:0.875rem">Aa</span> |
+| `font.size.16` | 1rem (16px) | <span class="ods-typesample" style="font-size:1rem">Aa</span> |
+| `font.size.20` | 1.25rem (20px) | <span class="ods-typesample" style="font-size:1.25rem">Aa</span> |
+| `font.size.24` | 1.5rem (24px) | <span class="ods-typesample" style="font-size:1.5rem">Aa</span> |
+| `font.size.32` | 2rem (32px) | <span class="ods-typesample" style="font-size:2rem">Aa</span> |
+| `font.weight.400` | 400 | <span class="ods-typesample" style="font-weight:400">Aa</span> |
+| `font.weight.600` | 600 | <span class="ods-typesample" style="font-weight:600">Aa</span> |
+| `font.weight.700` | 700 | <span class="ods-typesample" style="font-weight:700">Aa</span> |
 
 </div>
 
@@ -180,20 +180,20 @@ The raw values the tokens above end at.
 | Primitive | Value | Sample |
 | --- | --- | --- |
 | `font.family.plus-jakarta-sans` | "Plus Jakarta Sans", system-ui, sans-serif | <span class="ods-font" style="font-family:"Plus Jakarta Sans", system-ui, sans-serif">Aa 123</span> |
-| `font.line-height.1_2` | 1.2 |  |
-| `font.line-height.1_25` | 1.25 |  |
-| `font.line-height.1_3` | 1.3 |  |
-| `font.line-height.1_4` | 1.4 |  |
-| `font.line-height.1_5` | 1.5 |  |
-| `font.size.13` | 0.8125rem (13px) | <span class="ods-type" style="font-size:0.8125rem">Aa</span> |
-| `font.size.14` | 0.875rem (14px) | <span class="ods-type" style="font-size:0.875rem">Aa</span> |
-| `font.size.16` | 1rem (16px) | <span class="ods-type" style="font-size:1rem">Aa</span> |
-| `font.size.20` | 1.25rem (20px) | <span class="ods-type" style="font-size:1.25rem">Aa</span> |
-| `font.size.24` | 1.5rem (24px) | <span class="ods-type" style="font-size:1.5rem">Aa</span> |
-| `font.size.32` | 2rem (32px) | <span class="ods-type" style="font-size:2rem">Aa</span> |
-| `font.weight.400` | 400 |  |
-| `font.weight.600` | 600 |  |
-| `font.weight.700` | 700 |  |
+| `font.line-height.1_2` | 1.2 | <span class="ods-leading" style="--lh:1.2">Two lines<br/>of text</span> |
+| `font.line-height.1_25` | 1.25 | <span class="ods-leading" style="--lh:1.25">Two lines<br/>of text</span> |
+| `font.line-height.1_3` | 1.3 | <span class="ods-leading" style="--lh:1.3">Two lines<br/>of text</span> |
+| `font.line-height.1_4` | 1.4 | <span class="ods-leading" style="--lh:1.4">Two lines<br/>of text</span> |
+| `font.line-height.1_5` | 1.5 | <span class="ods-leading" style="--lh:1.5">Two lines<br/>of text</span> |
+| `font.size.13` | 0.8125rem (13px) | <span class="ods-typesample" style="font-size:0.8125rem">Aa</span> |
+| `font.size.14` | 0.875rem (14px) | <span class="ods-typesample" style="font-size:0.875rem">Aa</span> |
+| `font.size.16` | 1rem (16px) | <span class="ods-typesample" style="font-size:1rem">Aa</span> |
+| `font.size.20` | 1.25rem (20px) | <span class="ods-typesample" style="font-size:1.25rem">Aa</span> |
+| `font.size.24` | 1.5rem (24px) | <span class="ods-typesample" style="font-size:1.5rem">Aa</span> |
+| `font.size.32` | 2rem (32px) | <span class="ods-typesample" style="font-size:2rem">Aa</span> |
+| `font.weight.400` | 400 | <span class="ods-typesample" style="font-weight:400">Aa</span> |
+| `font.weight.600` | 600 | <span class="ods-typesample" style="font-weight:600">Aa</span> |
+| `font.weight.700` | 700 | <span class="ods-typesample" style="font-weight:700">Aa</span> |
 
 </div>
 
@@ -204,20 +204,20 @@ The raw values the tokens above end at.
 | Primitive | Value | Sample |
 | --- | --- | --- |
 | `font.family.poppins` | Poppins, system-ui, sans-serif | <span class="ods-font" style="font-family:Poppins, system-ui, sans-serif">Aa 123</span> |
-| `font.line-height.1_2` | 1.2 |  |
-| `font.line-height.1_25` | 1.25 |  |
-| `font.line-height.1_3` | 1.3 |  |
-| `font.line-height.1_4` | 1.4 |  |
-| `font.line-height.1_5` | 1.5 |  |
-| `font.size.13` | 0.8125rem (13px) | <span class="ods-type" style="font-size:0.8125rem">Aa</span> |
-| `font.size.14` | 0.875rem (14px) | <span class="ods-type" style="font-size:0.875rem">Aa</span> |
-| `font.size.16` | 1rem (16px) | <span class="ods-type" style="font-size:1rem">Aa</span> |
-| `font.size.20` | 1.25rem (20px) | <span class="ods-type" style="font-size:1.25rem">Aa</span> |
-| `font.size.24` | 1.5rem (24px) | <span class="ods-type" style="font-size:1.5rem">Aa</span> |
-| `font.size.32` | 2rem (32px) | <span class="ods-type" style="font-size:2rem">Aa</span> |
-| `font.weight.400` | 400 |  |
-| `font.weight.600` | 600 |  |
-| `font.weight.700` | 700 |  |
+| `font.line-height.1_2` | 1.2 | <span class="ods-leading" style="--lh:1.2">Two lines<br/>of text</span> |
+| `font.line-height.1_25` | 1.25 | <span class="ods-leading" style="--lh:1.25">Two lines<br/>of text</span> |
+| `font.line-height.1_3` | 1.3 | <span class="ods-leading" style="--lh:1.3">Two lines<br/>of text</span> |
+| `font.line-height.1_4` | 1.4 | <span class="ods-leading" style="--lh:1.4">Two lines<br/>of text</span> |
+| `font.line-height.1_5` | 1.5 | <span class="ods-leading" style="--lh:1.5">Two lines<br/>of text</span> |
+| `font.size.13` | 0.8125rem (13px) | <span class="ods-typesample" style="font-size:0.8125rem">Aa</span> |
+| `font.size.14` | 0.875rem (14px) | <span class="ods-typesample" style="font-size:0.875rem">Aa</span> |
+| `font.size.16` | 1rem (16px) | <span class="ods-typesample" style="font-size:1rem">Aa</span> |
+| `font.size.20` | 1.25rem (20px) | <span class="ods-typesample" style="font-size:1.25rem">Aa</span> |
+| `font.size.24` | 1.5rem (24px) | <span class="ods-typesample" style="font-size:1.5rem">Aa</span> |
+| `font.size.32` | 2rem (32px) | <span class="ods-typesample" style="font-size:2rem">Aa</span> |
+| `font.weight.400` | 400 | <span class="ods-typesample" style="font-weight:400">Aa</span> |
+| `font.weight.600` | 600 | <span class="ods-typesample" style="font-weight:600">Aa</span> |
+| `font.weight.700` | 700 | <span class="ods-typesample" style="font-weight:700">Aa</span> |
 
 </div>
 

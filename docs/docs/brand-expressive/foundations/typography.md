@@ -11,13 +11,13 @@ description: "Brand expressive: How text is set: roles, sizes and line height."
 How text is set: roles, sizes and line height.
 
 <div class="ods-specimen">
-<div class="ods-type"><span class="ods-label">display</span><span style="font-family:var(--type-display-font-family);font-size:var(--type-display-font-size);line-height:var(--type-display-line-height);font-weight:var(--type-display-font-weight)">A visitor lands on a launch page from a social post and joins the waiting list.</span></div>
-<div class="ods-type"><span class="ods-label">title</span><span style="font-family:var(--type-title-font-family);font-size:var(--type-title-font-size);line-height:var(--type-title-line-height);font-weight:var(--type-title-font-weight)">A visitor lands on a launch page from a social post and joins the waiting list.</span></div>
-<div class="ods-type"><span class="ods-label">heading</span><span style="font-family:var(--type-heading-font-family);font-size:var(--type-heading-font-size);line-height:var(--type-heading-line-height);font-weight:var(--type-heading-font-weight)">A visitor lands on a launch page from a social post and joins the waiting list.</span></div>
-<div class="ods-type"><span class="ods-label">body</span><span style="font-family:var(--type-body-font-family);font-size:var(--type-body-font-size);line-height:var(--type-body-line-height);font-weight:var(--type-body-font-weight)">A visitor lands on a launch page from a social post and joins the waiting list.</span></div>
-<div class="ods-type"><span class="ods-label">label</span><span style="font-family:var(--type-label-font-family);font-size:var(--type-label-font-size);line-height:var(--type-label-line-height);font-weight:var(--type-label-font-weight)">A visitor lands on a launch page from a social post and joins the waiting list.</span></div>
-<div class="ods-type"><span class="ods-label">caption</span><span style="font-family:var(--type-caption-font-family);font-size:var(--type-caption-font-size);line-height:var(--type-caption-line-height);font-weight:var(--type-caption-font-weight)">A visitor lands on a launch page from a social post and joins the waiting list.</span></div>
-<div class="ods-type"><span class="ods-label">data</span><span style="font-family:var(--type-data-font-family);font-size:var(--type-data-font-size);line-height:var(--type-data-line-height);font-weight:var(--type-data-font-weight)">A visitor lands on a launch page from a social post and joins the waiting list.</span></div>
+<div class="ods-type"><span class="ods-label"><b>display</b><span>56px · 1.05 · 800</span></span><span class="ods-typeline" style="font-family:var(--type-display-font-family);font-size:var(--type-display-font-size);line-height:var(--type-display-line-height);font-weight:var(--type-display-font-weight)">The drop is coming</span></div>
+<div class="ods-type"><span class="ods-label"><b>title</b><span>40px · 1.1 · 800</span></span><span class="ods-typeline" style="font-family:var(--type-title-font-family);font-size:var(--type-title-font-size);line-height:var(--type-title-line-height);font-weight:var(--type-title-font-weight)">The drop is coming</span></div>
+<div class="ods-type"><span class="ods-label"><b>heading</b><span>28px · 1.2 · 700</span></span><span class="ods-typeline" style="font-family:var(--type-heading-font-family);font-size:var(--type-heading-font-size);line-height:var(--type-heading-line-height);font-weight:var(--type-heading-font-weight)">Night runner jacket</span></div>
+<div class="ods-type"><span class="ods-label"><b>body</b><span>17px · 1.55 · 400</span></span><span class="ods-typeline" style="font-family:var(--type-body-font-family);font-size:var(--type-body-font-size);line-height:var(--type-body-line-height);font-weight:var(--type-body-font-weight)">A visitor lands on a launch page from a social post and joins the waiting list.</span></div>
+<div class="ods-type"><span class="ods-label"><b>label</b><span>15px · 1.3 · 700</span></span><span class="ods-typeline" style="font-family:var(--type-label-font-family);font-size:var(--type-label-font-size);line-height:var(--type-label-line-height);font-weight:var(--type-label-font-weight)">Join the drop</span></div>
+<div class="ods-type"><span class="ods-label"><b>caption</b><span>14px · 1.4 · 400</span></span><span class="ods-typeline" style="font-family:var(--type-caption-font-family);font-size:var(--type-caption-font-size);line-height:var(--type-caption-line-height);font-weight:var(--type-caption-font-weight)">A visitor lands on a launch page from a social post and joins the waiting list.</span></div>
+<div class="ods-type"><span class="ods-label"><b>data</b><span>17px · 1.55 · 400</span></span><span class="ods-typeline" style="font-family:var(--type-data-font-family);font-size:var(--type-data-font-size);line-height:var(--type-data-line-height);font-weight:var(--type-data-font-weight)">Days to launch 6 · On the list 2,400 · Pieces in the drop 12 · Colours 4</span></div>
 </div>
 
 ## The five answers
@@ -73,21 +73,21 @@ The raw values the tokens above end at.
 | --- | --- | --- |
 | `font.family.bricolage-grotesque` | "Bricolage Grotesque", system-ui, sans-serif | <span class="ods-font" style="font-family:"Bricolage Grotesque", system-ui, sans-serif">Aa 123</span> |
 | `font.family.dm-sans` | "DM Sans", system-ui, sans-serif | <span class="ods-font" style="font-family:"DM Sans", system-ui, sans-serif">Aa 123</span> |
-| `font.line-height.1_05` | 1.05 |  |
-| `font.line-height.1_1` | 1.1 |  |
-| `font.line-height.1_2` | 1.2 |  |
-| `font.line-height.1_3` | 1.3 |  |
-| `font.line-height.1_4` | 1.4 |  |
-| `font.line-height.1_55` | 1.55 |  |
-| `font.size.14` | 0.875rem (14px) | <span class="ods-type" style="font-size:0.875rem">Aa</span> |
-| `font.size.15` | 0.9375rem (15px) | <span class="ods-type" style="font-size:0.9375rem">Aa</span> |
-| `font.size.17` | 1.0625rem (17px) | <span class="ods-type" style="font-size:1.0625rem">Aa</span> |
-| `font.size.28` | 1.75rem (28px) | <span class="ods-type" style="font-size:1.75rem">Aa</span> |
-| `font.size.40` | 2.5rem (40px) | <span class="ods-type" style="font-size:2.5rem">Aa</span> |
-| `font.size.56` | 3.5rem (56px) | <span class="ods-type" style="font-size:3.5rem">Aa</span> |
-| `font.weight.400` | 400 |  |
-| `font.weight.700` | 700 |  |
-| `font.weight.800` | 800 |  |
+| `font.line-height.1_05` | 1.05 | <span class="ods-leading" style="--lh:1.05">Two lines<br/>of text</span> |
+| `font.line-height.1_1` | 1.1 | <span class="ods-leading" style="--lh:1.1">Two lines<br/>of text</span> |
+| `font.line-height.1_2` | 1.2 | <span class="ods-leading" style="--lh:1.2">Two lines<br/>of text</span> |
+| `font.line-height.1_3` | 1.3 | <span class="ods-leading" style="--lh:1.3">Two lines<br/>of text</span> |
+| `font.line-height.1_4` | 1.4 | <span class="ods-leading" style="--lh:1.4">Two lines<br/>of text</span> |
+| `font.line-height.1_55` | 1.55 | <span class="ods-leading" style="--lh:1.55">Two lines<br/>of text</span> |
+| `font.size.14` | 0.875rem (14px) | <span class="ods-typesample" style="font-size:0.875rem">Aa</span> |
+| `font.size.15` | 0.9375rem (15px) | <span class="ods-typesample" style="font-size:0.9375rem">Aa</span> |
+| `font.size.17` | 1.0625rem (17px) | <span class="ods-typesample" style="font-size:1.0625rem">Aa</span> |
+| `font.size.28` | 1.75rem (28px) | <span class="ods-typesample" style="font-size:1.75rem">Aa</span> |
+| `font.size.40` | 2.5rem (40px) | <span class="ods-typesample" style="font-size:2.5rem">Aa</span> |
+| `font.size.56` | 3.5rem (56px) | <span class="ods-typesample" style="font-size:3.5rem">Aa</span> |
+| `font.weight.400` | 400 | <span class="ods-typesample" style="font-weight:400">Aa</span> |
+| `font.weight.700` | 700 | <span class="ods-typesample" style="font-weight:700">Aa</span> |
+| `font.weight.800` | 800 | <span class="ods-typesample" style="font-weight:800">Aa</span> |
 
 ## Where it lands
 
