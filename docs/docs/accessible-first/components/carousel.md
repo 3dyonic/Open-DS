@@ -1,5 +1,5 @@
 ---
-sidebar_position: 11
+sidebar_position: 14
 title: "Carousel"
 description: "Carousel in Accessible first."
 sidebar_class_name: "ods-left-out"

@@ -1,5 +1,5 @@
 ---
-sidebar_position: 26
+sidebar_position: 30
 title: "Input"
 description: "Input in Multi-brand."
 ---

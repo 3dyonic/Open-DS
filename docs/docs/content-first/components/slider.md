@@ -1,5 +1,5 @@
 ---
-sidebar_position: 44
+sidebar_position: 53
 title: "Slider"
 description: "Slider in Content first."
 sidebar_class_name: "ods-left-out"

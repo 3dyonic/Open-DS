@@ -1,5 +1,5 @@
 ---
-sidebar_position: 28
+sidebar_position: 32
 title: "Input otp"
 description: "Input otp in Dense data."
 ---

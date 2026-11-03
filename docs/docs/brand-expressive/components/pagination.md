@@ -1,5 +1,5 @@
 ---
-sidebar_position: 33
+sidebar_position: 42
 title: "Pagination"
 description: "Pagination in Brand expressive."
 ---

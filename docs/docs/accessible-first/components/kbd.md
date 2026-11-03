@@ -1,5 +1,5 @@
 ---
-sidebar_position: 29
+sidebar_position: 34
 title: "Kbd"
 description: "Kbd in Accessible first."
 sidebar_class_name: "ods-left-out"

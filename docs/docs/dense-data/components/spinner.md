@@ -1,5 +1,5 @@
 ---
-sidebar_position: 45
+sidebar_position: 55
 title: "Spinner"
 description: "Spinner in Dense data."
 ---

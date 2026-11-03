@@ -1,5 +1,5 @@
 ---
-sidebar_position: 43
+sidebar_position: 52
 title: "Skeleton"
 description: "Skeleton in Multi-brand."
 ---

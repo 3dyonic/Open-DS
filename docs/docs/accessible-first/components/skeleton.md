@@ -1,5 +1,5 @@
 ---
-sidebar_position: 43
+sidebar_position: 52
 title: "Skeleton"
 description: "Skeleton in Accessible first."
 sidebar_class_name: "ods-left-out"

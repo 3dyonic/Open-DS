@@ -1,5 +1,5 @@
 ---
-sidebar_position: 42
+sidebar_position: 51
 title: "Sidebar"
 description: "Sidebar in Multi-brand."
 ---

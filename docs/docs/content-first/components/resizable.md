@@ -1,5 +1,5 @@
 ---
-sidebar_position: 37
+sidebar_position: 46
 title: "Resizable"
 description: "Resizable in Content first."
 sidebar_class_name: "ods-left-out"

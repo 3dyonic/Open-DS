@@ -1,5 +1,5 @@
 ---
-sidebar_position: 19
+sidebar_position: 22
 title: "Date picker"
 description: "Date picker in Content first."
 sidebar_class_name: "ods-left-out"

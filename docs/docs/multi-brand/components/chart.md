@@ -1,5 +1,5 @@
 ---
-sidebar_position: 12
+sidebar_position: 15
 title: "Chart"
 description: "Chart in Multi-brand."
 sidebar_class_name: "ods-left-out"

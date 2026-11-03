@@ -385,6 +385,24 @@ export const CHECKS = {
     },
   },
 
+  "catalogue-built": {
+    requires: ["schemes/grammar.json", "ui/src/components"],
+    run: (c) => {
+      // OD-214: a component is In or Left out, nothing else. Every catalogue component is built, with
+      // its stories, so every scheme can carry it, render it and document it.
+      const items = c.json("schemes", "grammar.json").catalogue.items.map((i) => i.id);
+      const built = new Set(readdirSync(c.p("ui/src/components")).map((f) => f.replace(/\.tsx$/, "")));
+      const stories = new Set(readdirSync(c.p("storybook/stories")).map((f) => f.replace(/\.stories\.tsx$/, "")));
+      const gaps = [
+        ...items.filter((i) => !built.has(i)).map((i) => `${i} is not built`),
+        ...items.filter((i) => !stories.has(i)).map((i) => `${i} has no stories`),
+      ];
+      return gaps.length
+        ? bad(gaps.join("; "))
+        : ok(`all ${items.length} catalogue components are built, with stories`);
+    },
+  },
+
   "inventory-decided": {
     requires: ["schemes/grammar.json"],
     run: (c) => {
@@ -464,6 +482,15 @@ export const CHECKS = {
         tabs: "tabs",
         toast: "messages",
         tooltip: "icon_action",
+        attachment: "conversation",
+        bubble: "conversation",
+        marker: "conversation",
+        message: "conversation",
+        "message-scroller": "conversation",
+        item: "menu",
+        menubar: "menu",
+        "hover-card": "card",
+        sonner: "messages",
       };
       const gaps = [];
       const seen = new Map();

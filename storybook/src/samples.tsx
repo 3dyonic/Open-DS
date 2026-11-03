@@ -23,6 +23,16 @@ const PART: Record<string, keyof Samples> = {
   tabs: "tabs",
   toast: "messages",
   tooltip: "icon_action",
+  attachment: "conversation",
+  bubble: "conversation",
+  marker: "conversation",
+  message: "conversation",
+  "message-scroller": "conversation",
+  item: "menu",
+  "button-group": "actions",
+  menubar: "menu",
+  "hover-card": "card",
+  sonner: "messages",
 };
 
 export function Show({ component, children }: { component: string; children: (s: Samples) => ReactNode }) {
