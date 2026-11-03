@@ -1402,6 +1402,9 @@ export const CHECKS = {
       // A build can pass while stories fail to show, so open every story and docs page (OD-178).
       const b = c.sh("pnpm", ["--dir", "storybook", "build"]);
       if (b.code !== 0) return bad(tail(b.out));
+      // The build must not warn: a chunk past the limit, or a bundler message, is a defect to fix.
+      const warn = b.out.split("\n").filter((l) => /^\s*!\s|\(!\)/.test(l));
+      if (warn.length) return bad(`storybook build warns: ${warn.slice(0, 3).join("; ")}`);
       // Every entry as it opens, then every story in each other toolbar scheme (OD-192).
       const others = [...c.read("storybook/src/scheme-context.tsx").matchAll(/value: "([^"]+)"/g)]
         .map((m) => m[1])
@@ -1583,6 +1586,9 @@ export const CHECKS = {
     run: (c) => {
       const r = c.sh("pnpm", ["--dir", "docs", "build"]);
       if (r.code !== 0) return bad(tail(r.out));
+      // A warning is a defect too: broken anchors once hid behind one.
+      const warn = r.out.split("\n").filter((l) => /\[WARNING\]/.test(l));
+      if (warn.length) return bad(`docs build warns: ${warn.slice(0, 3).join("; ")}`);
       // OD-207: open each scheme's page in a browser: its colours, the switch, a left-out component.
       const v = c.sh("node", ["harness/docs-renders.cjs", c.p("docs")]);
       let res;
