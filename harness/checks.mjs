@@ -385,6 +385,44 @@ export const CHECKS = {
     },
   },
 
+  "inventory-decided": {
+    requires: ["schemes/grammar.json"],
+    run: (c) => {
+      // OD-211: every catalogue item is decided in every scheme. It is in, with why (a limited use
+      // says so, with care), or out, with the reason argued from the scheme's answers and what to use
+      // instead. Nothing falls out by default.
+      const items = c.json("schemes", "grammar.json").catalogue.items.map((i) => i.id);
+      const gaps = [];
+      for (const id of SCHEMES) {
+        const s = c.json("schemes", `${id}.json`);
+        const inn = new Map(s.inventory.in.map((x) => [x.id, x]));
+        const out = new Map(s.inventory.out.map((x) => [x.id, x]));
+        const answers = new Set(s.answers.map((a) => a.question));
+        const undecided = items.filter((i) => !inn.has(i) && !out.has(i));
+        if (undecided.length)
+          gaps.push(
+            `${id}: no decision on ${undecided.slice(0, 5).join(", ")}${undecided.length > 5 ? ` and ${undecided.length - 5} more` : ""}`,
+          );
+        const both = [...out.keys()].filter((i) => inn.has(i));
+        if (both.length) gaps.push(`${id}: both in and out: ${both.join(", ")}`);
+        for (const [cid, o] of out) {
+          if (!o.why?.trim()) gaps.push(`${id}/${cid}: out with no why`);
+          if (!o.instead?.length) gaps.push(`${id}/${cid}: out with nothing to use instead`);
+          for (const x of o.instead ?? [])
+            if (!inn.has(x) || x === cid) gaps.push(`${id}/${cid}: instead ${x} is not in the inventory`);
+          if (!o.because?.length) gaps.push(`${id}/${cid}: out with no answers behind it`);
+          for (const q of o.because ?? [])
+            if (!answers.has(q)) gaps.push(`${id}/${cid}: because ${q} is not an answer`);
+        }
+      }
+      return gaps.length
+        ? bad(gaps.slice(0, 8).join("; ") + (gaps.length > 8 ? `; and ${gaps.length - 8} more` : ""))
+        : ok(
+            "every scheme decides every catalogue component: in with why, or out with its answers and what to use instead",
+          );
+    },
+  },
+
   "storybook-stories-uniform": {
     requires: ["storybook/stories", "storybook/.storybook/component-docs.mdx"],
     run: (c) => {
