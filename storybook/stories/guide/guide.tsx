@@ -626,7 +626,19 @@ const showValue = (v: Any) =>
  * One primitive shown as itself (OD-220), as the docs show it: a corner as a rounded tile, a type size
  * or weight as Aa, a line height as two lines, a shadow as a lifted box. Only space and size are bars.
  */
-function PrimSample({ path, value, n, max }: { path: string; value: Any; n: number | null; max: number }) {
+function PrimSample({
+  path,
+  value,
+  n,
+  max,
+  stages,
+}: {
+  path: string;
+  value: Any;
+  n: number | null;
+  max: number;
+  stages?: Record<"light" | "dark", { canvas: string; raised: string }>;
+}) {
   const v = showValue(value);
   const box = { padding: "16px 8px 0", minHeight: 44, display: "flex", alignItems: "flex-end" } as const;
   if (path.startsWith("radius."))
@@ -697,17 +709,22 @@ function PrimSample({ path, value, n, max }: { path: string; value: Any; n: numb
         </span>
       </div>
     );
-  if (path.startsWith("shadow."))
+  if (path.startsWith("shadow.")) {
+    // A shadow belongs to a mode: show it on that mode's own canvas and raised surface, whichever mode
+    // Storybook is in (OD-220). The -dark shadows are the dark mode's; the rest are light.
+    const stage = stages?.[/-dark$/.test(path) ? "dark" : "light"];
     return (
-      <div style={box}>
+      <div style={{ ...box, background: stage?.canvas, borderRadius: 8, padding: 12, marginTop: 8 }}>
         <div
           className="plift"
           style={{
+            background: stage?.raised,
             boxShadow: `${value?.offsetX ?? "0px"} ${value?.offsetY ?? "0px"} ${value?.blur ?? "0px"} ${value?.spread ?? "0px"} ${value?.color ?? "transparent"}`,
           }}
         />
       </div>
     );
+  }
   if (path.startsWith("opacity."))
     return (
       <div style={box}>
@@ -745,6 +762,21 @@ export function Primitives({ kind }: { kind: string }) {
   };
   const families = [...new Set(all.map((x) => family(x.path)))];
   const nUsed = all.filter((x) => used[x.path]).length;
+  // Each mode's canvas and raised surface, resolved to their primitive values, for the shadow stages.
+  const resolve = (ref: Any): string => {
+    for (let i = 0, v = ref; i < 6; i++) {
+      const m = typeof v === "string" && v.match(/^\{(.+)\}$/);
+      if (!m) return String(v);
+      v = m[1].split(".").reduce((o: Any, k: string) => o?.[k], s.tokens.primitive)?.$value;
+    }
+    return "";
+  };
+  const firstBrand = Object.values(s.tokens.brands ?? {})[0] as Any;
+  const stage = (mode: "light" | "dark") => ({
+    canvas: resolve(firstBrand?.theme?.[mode]?.color?.surface?.canvas?.$value),
+    raised: resolve(firstBrand?.theme?.[mode]?.color?.surface?.raised?.$value),
+  });
+  const stages = { light: stage("light"), dark: stage("dark") };
   const rem = (v: Any) => {
     const m = String(v).match(/^([\d.]+)(rem|px)$/);
     return m ? +m[1] * (m[2] === "rem" ? 16 : 1) : null;
@@ -785,7 +817,7 @@ export function Primitives({ kind }: { kind: string }) {
                     {f.startsWith("color") ? (
                       <div className="c" style={{ background: String(x.value) }} />
                     ) : (
-                      <PrimSample path={x.path} value={x.value} n={n} max={max} />
+                      <PrimSample path={x.path} value={x.value} n={n} max={max} stages={stages} />
                     )}
                     <div className="t">
                       <code style={{ fontWeight: 600 }}>{x.path.slice(f.length + 1) || x.path}</code>
