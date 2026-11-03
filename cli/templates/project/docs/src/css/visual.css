@@ -888,7 +888,8 @@ a.odv-icard:hover {
 }
 @media (prefers-reduced-motion: no-preference) {
   .odv-dot {
-    animation: odv-slide calc(var(--motion-duration-feedback) * 6) ease-in-out infinite alternate;
+    animation: odv-slide calc(var(--motion-duration-feedback) * 6) ease-in-out
+      infinite alternate;
   }
 }
 @keyframes odv-slide {
@@ -1095,7 +1096,8 @@ a.odv-icard:hover {
 }
 .odv-preview-read {
   padding: 8px 0 8px 28px;
-  border-left: var(--border-width-default, 1px) solid var(--color-border-default);
+  border-left: var(--border-width-default, 1px) solid
+    var(--color-border-default);
 }
 .odv-preview-read p {
   margin: 0;
@@ -1126,7 +1128,8 @@ a.odv-icard:hover {
   display: flex;
   align-items: center;
   padding: 0 12px;
-  border: calc(var(--border-width-default, 1px) * 2) solid var(--color-border-strong, var(--color-border-default));
+  border: calc(var(--border-width-default, 1px) * 2) solid
+    var(--color-border-strong, var(--color-border-default));
   border-radius: var(--radius-control);
   background: var(--color-surface-default);
   color: var(--color-text-muted);
@@ -1168,4 +1171,42 @@ a.odv-icard:hover {
   .odv-preview-brands {
     grid-template-columns: 1fr;
   }
+}
+
+/* OD-211: the Primitives index. Specimens drawn from raw values, and a bar for how many are in use. */
+.odv-spec-cols {
+  align-items: flex-end;
+}
+.odv-spec-cols i {
+  display: block;
+  width: 8px;
+  background: var(--color-action-primary);
+  border-radius: 1px;
+}
+.odv-spec .odv-aa {
+  font-size: 1.5rem;
+  line-height: 1;
+}
+.odv-spec .odv-spec-note {
+  font-weight: 400;
+  font-family: var(--type-data-font-family, ui-monospace, monospace);
+  font-size: 0.75rem;
+  color: var(--color-text-secondary);
+}
+.odv-spec-lift {
+  padding: 6px;
+  border-radius: var(--radius-control);
+  background: var(--color-surface-sunken, var(--color-surface-canvas));
+}
+.odv-meter {
+  display: block;
+  height: 6px;
+  border-radius: 3px;
+  background: var(--color-border-default);
+  overflow: hidden;
+}
+.odv-meter i {
+  display: block;
+  height: 100%;
+  background: var(--color-action-primary);
 }

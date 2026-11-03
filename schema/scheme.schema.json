@@ -259,11 +259,22 @@
               "why": {
                 "type": "string",
                 "minLength": 1,
-                "description": "Why it is in or out, in one sentence."
+                "description": "Why this design system leaves it out, in one or two short sentences, from its people and answers."
+              },
+              "instead": {
+                "type": "array",
+                "minItems": 1,
+                "maxItems": 3,
+                "uniqueItems": true,
+                "items": {
+                  "type": "string",
+                  "pattern": "^[a-z-]+$"
+                },
+                "description": "Components in this design system's inventory to use instead."
               }
             }
           },
-          "description": "Notable components left out, each with why. Every other catalogue item is out too."
+          "description": "Every catalogue item not in the in list, each with why this design system leaves it out (OD-211), and what it uses instead."
         }
       }
     },

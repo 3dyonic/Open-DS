@@ -798,6 +798,92 @@ export function docsPages(
       "\n\n"
     );
   };
+  // The Theming page (OD-211): what a mode is, shown not listed. A live preview per mode from its
+  // real colours, then what a mode changes (a table per job group, every mode side by side), then
+  // what stays the same in every mode. Multi-brand gets one set per brand; the brand picked in the
+  // top bar shows (generate.mjs scopes it), and without that CSS every brand shows.
+  const themingVisuals = () => {
+    const brandIds = Object.keys(scheme.tokens.brands ?? {});
+    const modes = [...new Set(scheme.themes.map((t) => t.mode))];
+    const hexOf = (th, p) => String(value(th, p, "")).match(/#[0-9a-f]{6,8}/i)?.[0] ?? "";
+    const semPath = (p) => p.replace(/^\./, "").replace(/\.@$/, "");
+    const cap = (x) => x.charAt(0).toUpperCase() + x.slice(1);
+    const brandLabel = (b) => scheme.tokens.brands[b]?.label ?? cap(b);
+    const base0 = scheme.tokens.brands[brandIds[0]]?.theme?.base ?? {};
+    const radius = (th, k) => value(th, `radius.${k}`, "0");
+    const sts = (smp.statuses ?? []).filter((x) => STATUS_CLASS[x.meaning]).slice(0, 2);
+    const commit = scheme.tokens.content?.action?.commit?.$value ?? "Save";
+    const cancel = scheme.tokens.content?.action?.cancel?.$value ?? "Cancel";
+    const preview = (th) => {
+      const c = (p) => hexOf(th, p);
+      return h(
+        `<div class="odv-mode-prev" style="background:${c("color.surface.canvas")};color:${c("color.text.primary")};border-color:${c("color.border.default")}">`,
+        `<div class="odv-mode-head"><span>${attr(cap(th.mode))}</span>${brandIds.length > 1 ? `<span>${attr(brandLabel(th.brand))}</span>` : ""}</div>`,
+        `<div class="odv-mode-surf" style="background:${c("color.surface.default")};border-color:${c("color.border.default")};border-radius:${radius(th, "container")}">`,
+        `<b>${attr(scheme.name)}</b><span style="color:${c("color.text.secondary") || c("color.text.muted")}">${attr(scheme.scenarios[0]?.text ?? scheme.summary)}</span>`,
+        sts.length
+          ? `<span class="odv-mode-row">${sts.map((x) => `<span class="odv-mode-pill" style="background:${c(`color.status.${x.meaning}.subtle`)};color:${c(`color.status.${x.meaning}`) || c("color.text.primary")};border-radius:${radius(th, "badge")}">${attr(x.label)}</span>`).join("")}</span>`
+          : "",
+        `<span class="odv-mode-row"><span class="odv-mode-btn" style="background:${c("color.action.primary")};color:${c("color.text.on-action")};border-radius:${radius(th, "control")}">${attr(commit)}</span><span class="odv-mode-btn" style="background:${c("color.surface.sunken")};color:${c("color.text.primary")};border-radius:${radius(th, "control")}">${attr(cancel)}</span></span>`,
+        `</div></div>`,
+      );
+    };
+    const brandSet = (b) => {
+      const ths = scheme.themes.filter((t) => t.brand === b);
+      const tree = scheme.tokens.brands[b]?.theme ?? {};
+      const jobs = leaves(tree[ths[0]?.mode] ?? {}, "").map((x) => semPath(x.path));
+      const groups = [...new Set(jobs.map((p) => p.split(".").slice(0, 2).join(".")))];
+      const cell = (th, p) => {
+        const hx = hexOf(th, p);
+        const prim = primitiveOf(th, p)?.replace(/^color\./, "");
+        return hx
+          ? `<span class="odv-tsw"><i style="background:${hx}"></i><small>${attr(prim ?? hx)}</small></span>`
+          : `<code>${attr(value(th, p, ""))}</code>`;
+      };
+      const table = (list) =>
+        h(
+          `<table class="odv-ttable"><thead><tr><th>Job</th>${ths.map((t) => `<th>${attr(cap(t.mode))}</th>`).join("")}</tr></thead><tbody>`,
+          list.map((p) => `<tr><td><code>${attr(p)}</code></td>${ths.map((t) => `<td>${cell(t, p)}</td>`).join("")}</tr>`),
+          `</tbody></table>`,
+        );
+      return h(
+        `<div class="odv-brandset" data-for-brand="${b}">`,
+        brandIds.length > 1 ? `<h3>${attr(brandLabel(b))}</h3>` : "",
+        `<div class="odv-modes">`,
+        ths.map(preview),
+        `</div>`,
+        `<h3>What a mode changes</h3>`,
+        groups.map((gr, j) => {
+          const list = jobs.filter((p) => p.startsWith(`${gr}.`) || p === gr);
+          return h(`<details class="odv-tgroup"${j === 0 ? " open" : ""}><summary>${attr(cap(gr.split(".").pop()))} <span>${list.length}</span></summary>`, table(list), `</details>`);
+        }),
+        `</div>`,
+      );
+    };
+    const radii = leaves(base0.radius ?? {}, "").map((x) => x.path.replace(/^\./, ""));
+    const fams = {};
+    for (const x of leaves(base0.type ?? {}, "")) {
+      const role = x.path.replace(/^\./, "").split(".")[0];
+      const v = String(cssValue(value(first, `type.${role}.font-family`, "")) || "").split(",")[0].replaceAll('"', "");
+      if (v) (fams[v] ??= []).push(role);
+    }
+    return (
+      `${esc(scheme.name)} has **${modes.length} mode${modes.length === 1 ? "" : "s"}** and **${brandIds.length} brand${brandIds.length === 1 ? "" : "s"}**. A mode swaps the colours; corners and type stay the same in every mode.${brandIds.length > 1 ? " Pick a brand in the top bar to see its set." : ""}\n\n` +
+      h(`<div class="odv-theming">`, brandIds.map(brandSet), `</div>`) +
+      `\n\n### What stays the same in every mode\n\n` +
+      h(
+        `<div class="odv-same">`,
+        radii.length
+          ? `<div class="odv-card"><b>Corners</b><div class="odv-corners">${radii.map((r) => `<span><i style="border-radius:${radius(first, r)}"></i>${attr(r)} · ${attr(radius(first, r))}</span>`).join("")}</div></div>`
+          : "",
+        Object.keys(fams).length
+          ? `<div class="odv-card"><b>Type families</b><div class="odv-fams">${Object.entries(fams).map(([f, roles]) => `<div><span>${attr(roles.map(cap).join(", "))}</span><span style="font-family:${attr(f)}">${attr(f)}</span></div>`).join("")}</div></div>`
+          : "",
+        `</div>`,
+      ) +
+      "\n\n"
+    );
+  };
   g.scopes.forEach((sc, i) => {
     const tokens = owned(scheme, sc.owns ?? []);
     const usage = scheme.usage.filter((u) => sits[u.situation].scope === sc.id);
@@ -814,7 +900,9 @@ export function docsPages(
         primitiveOf(dark, key(t.path)),
       ]),
     ];
-    const SPECIMEN = ["components", "naming", "voice"].includes(sc.id)
+    const SPECIMEN = sc.id === "theming"
+      ? themingVisuals()
+      : ["components", "naming", "voice"].includes(sc.id)
       ? ""
       : specimen(
           semantics.length ? semantics : tokens,
@@ -921,14 +1009,108 @@ export function docsPages(
       null,
       2,
     ) + "\n";
+  // The Primitives index (OD-211), in the Foundations style: a card per kind in groups, each with a
+  // robot, a specimen drawn from the raw values, and how many are in use. The table closes the page.
+  const PRIM_GROUPS = [
+    ["Colour", ["color"]],
+    ["Space and shape", ["space-and-size", "shape"]],
+    ["Type, motion and effects", ["type", "motion", "effects"]],
+  ];
+  const PRIM_ROBOT = {
+    color: "swatch",
+    "space-and-size": "measure",
+    shape: "scopes/shape",
+    type: "scopes/typography",
+    motion: "scopes/motion",
+    effects: "scopes/elevation",
+    other: "scopes/naming",
+  };
+  const rem = (v) => {
+    const m = String(v).match(/^([\d.]+)(rem|px)$/);
+    return m ? Number(m[1]) * (m[2] === "rem" ? 16 : 1) : NaN;
+  };
+  const primSpecimen = (k) => {
+    const used = k.list.filter((x) => usedBy[x.path]);
+    const pick = used.length ? used : k.list;
+    if (k.id === "color") {
+      // One used step from each family, so the specimen is the palette in use.
+      const seen = new Set();
+      const sws = pick.filter((x) => /^#/.test(String(x.ref)) && !seen.has(family(x.path)) && seen.add(family(x.path)));
+      return `<div class="odv-spec">${sws
+        .slice(0, 8)
+        .map((x) => `<i class="odv-sw" style="background:${x.ref}" title="${attr(x.path)}"></i>`)
+        .join("")}</div>`;
+    }
+    if (k.id === "space-and-size") {
+      const px = [...new Set(pick.map((x) => rem(x.ref)).filter((n) => n > 0))].sort((a, b) => a - b).slice(0, 7);
+      const top = Math.max(...px);
+      return `<div class="odv-spec odv-spec-cols">${px.map((n) => `<i style="height:${Math.max(3, Math.round((n / top) * 30))}px" title="${n}px"></i>`).join("")}</div>`;
+    }
+    if (k.id === "shape") {
+      const rs = [
+        ...new Set(
+          pick
+            .filter((x) => x.path.startsWith("radius."))
+            .map((x) => String(x.ref))
+            .filter((v) => rem(v) < 999),
+        ),
+      ].slice(0, 4);
+      return `<div class="odv-spec">${rs.map((v) => `<i class="odv-shape" style="border-radius:${v}" title="${attr(v)}"></i>`).join("")}</div>`;
+    }
+    if (k.id === "type") {
+      const fams = pick.filter((x) => x.path.startsWith("font.family.")).slice(0, 2);
+      return `<div class="odv-spec">${fams
+        .map((x) => `<span class="odv-aa" style="font-family:${attr(cssValue(x.ref))}" title="${attr(x.path)}">Aa</span>`)
+        .join("")}<span class="odv-spec-note">${fams.map((x) => attr(String(cssValue(x.ref)).split(",")[0].replaceAll('"', ""))).join(" · ")}</span></div>`;
+    }
+    if (k.id === "motion") {
+      const ds = pick.filter((x) => x.path.startsWith("duration.")).map((x) => String(x.ref));
+      return `<div class="odv-spec"><i class="odv-dot"></i><span class="odv-spec-note">${ds.slice(0, 3).map(attr).join(" · ")}</span></div>`;
+    }
+    if (k.id === "effects") {
+      const sh = pick.filter((x) => x.path.startsWith("shadow.") && !/none/.test(x.path)).slice(0, 3);
+      return `<div class="odv-spec odv-spec-lift">${sh.map((x) => `<i class="odv-lift" style="box-shadow:${attr(cssValue(x.ref))}" title="${attr(x.path)}"></i>`).join("")}</div>`;
+    }
+    return "";
+  };
+  const primCard = (k) => {
+    const n = k.list.filter((x) => usedBy[x.path]).length;
+    return h(
+      `<a class="odv-scard" href="./${k.id}">`,
+      robots ? `<span class="odv-scard-art">${robot(PRIM_ROBOT[k.id] ?? PRIM_ROBOT.other)}</span>` : "",
+      `<span class="odv-scard-body"><span class="odv-scard-title">${attr(k.title)}</span>`,
+      primSpecimen(k),
+      `<span class="odv-scard-why">${k.list.length} primitives · ${n} in use</span>`,
+      `<span class="odv-meter" role="img" aria-label="${n} of ${k.list.length} in use"><i style="width:${Math.round((n / k.list.length) * 100)}%"></i></span>`,
+      `</span></a>`,
+    );
+  };
+  const primGrouped = new Set(PRIM_GROUPS.flatMap(([, ids]) => ids));
+  const primRest = kinds.filter((k) => !primGrouped.has(k.id)).map((k) => k.id);
   pages["primitives/index.md"] =
     fm({
       title: "Primitives",
       description: `Every raw value in ${scheme.name}, and what points to it.`,
+      hide_table_of_contents: true,
     }) +
     NOTE +
-    `# Primitives\n\nThe raw values of ${esc(scheme.name)}. Primitives hold the values; semantic tokens give them a job (see [Foundations](../foundations/index.md)), and components read only the jobs.\n\n` +
-    `**${prims.length}** primitives. **${nUsed}** are used by a semantic token, a theme or a component key. **${prims.length - nUsed}** are not used yet: they stay, so a brand or a changed answer can use them without adding a value.\n\n` +
+    `# Primitives\n\n` +
+    h(
+      `<div class="odv-pagehero"><div><p>`,
+      `The raw values of ${esc(scheme.name)}. Primitives hold the values; semantic tokens give them a job (see <a href="../foundations/">Foundations</a>), and components read only the jobs. Spare values stay, so a brand or a changed answer can use them without adding a value.`,
+      `</p><div class="odv-stats"><span><b>${prims.length}</b>Primitives</span><span><b>${nUsed}</b>In use</span><span><b>${prims.length - nUsed}</b>Spare</span></div></div>`,
+      robot("measure", "odv-pagehero-robot"),
+      `</div>`,
+    ) +
+    "\n\n" +
+    [...PRIM_GROUPS, ...(primRest.length ? [["More", primRest]] : [])]
+      .map(([t, ids]) => {
+        const cards = ids.map((id) => kinds.find((k) => k.id === id)).filter(Boolean);
+        return cards.length ? `## ${t}\n\n` + h(`<div class="odv-scards">`, cards.map(primCard), `</div>`) : "";
+      })
+      .filter(Boolean)
+      .join("\n\n") +
+    `\n\n## Every kind\n\n**${prims.length}** primitives. **${nUsed}** are used by a semantic token, a theme or a component key. **${prims.length - nUsed}** are not used yet.\n\n` +
     `| Kind | Primitives | Used |\n| --- | --- | --- |\n` +
     kinds
       .map(
