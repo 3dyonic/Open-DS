@@ -315,10 +315,10 @@ The raw values the tokens above end at.
 | `color.teal.light.700` | #0B5B55 | <span class="ods-swatch" style="background:#0B5B55"></span> |
 | `duration.moderate` | 200ms | <span class="ods-motion" style="--ods-d:200ms"><span></span></span> |
 | `easing.standard` | cubic-bezier(0.2, 0, 0, 1) |  |
-| `font.size.13` | 0.8125rem (13px) | <span class="ods-type" style="font-size:0.8125rem">Aa</span> |
-| `font.size.14` | 0.875rem (14px) | <span class="ods-type" style="font-size:0.875rem">Aa</span> |
-| `font.size.16` | 1rem (16px) | <span class="ods-type" style="font-size:1rem">Aa</span> |
-| `font.weight.600` | 600 |  |
+| `font.size.13` | 0.8125rem (13px) | <span class="ods-typesample" style="font-size:0.8125rem">Aa</span> |
+| `font.size.14` | 0.875rem (14px) | <span class="ods-typesample" style="font-size:0.875rem">Aa</span> |
+| `font.size.16` | 1rem (16px) | <span class="ods-typesample" style="font-size:1rem">Aa</span> |
+| `font.weight.600` | 600 | <span class="ods-typesample" style="font-weight:600">Aa</span> |
 | `radius.4` | 0.25rem (4px) | <span class="ods-tile" style="border-radius:0.25rem"></span> |
 | `radius.8` | 0.5rem (8px) | <span class="ods-tile" style="border-radius:0.5rem"></span> |
 | `shadow.card` | 0px 2px 8px 0px #0F172A14 | <span class="ods-card" style="box-shadow:0px 2px 8px 0px #0F172A14"></span> |
@@ -381,10 +381,10 @@ The raw values the tokens above end at.
 | `color.slate.light.900` | #0F172A | <span class="ods-swatch" style="background:#0F172A"></span> |
 | `duration.moderate` | 200ms | <span class="ods-motion" style="--ods-d:200ms"><span></span></span> |
 | `easing.standard` | cubic-bezier(0.2, 0, 0, 1) |  |
-| `font.size.13` | 0.8125rem (13px) | <span class="ods-type" style="font-size:0.8125rem">Aa</span> |
-| `font.size.14` | 0.875rem (14px) | <span class="ods-type" style="font-size:0.875rem">Aa</span> |
-| `font.size.16` | 1rem (16px) | <span class="ods-type" style="font-size:1rem">Aa</span> |
-| `font.weight.600` | 600 |  |
+| `font.size.13` | 0.8125rem (13px) | <span class="ods-typesample" style="font-size:0.8125rem">Aa</span> |
+| `font.size.14` | 0.875rem (14px) | <span class="ods-typesample" style="font-size:0.875rem">Aa</span> |
+| `font.size.16` | 1rem (16px) | <span class="ods-typesample" style="font-size:1rem">Aa</span> |
+| `font.weight.600` | 600 | <span class="ods-typesample" style="font-weight:600">Aa</span> |
 | `radius.12` | 0.75rem (12px) | <span class="ods-tile" style="border-radius:0.75rem"></span> |
 | `radius.16` | 1rem (16px) | <span class="ods-tile" style="border-radius:1rem"></span> |
 | `radius.999` | 9999px | <span class="ods-tile" style="border-radius:9999px"></span> |
@@ -448,10 +448,10 @@ The raw values the tokens above end at.
 | `color.slate.light.900` | #0F172A | <span class="ods-swatch" style="background:#0F172A"></span> |
 | `duration.moderate` | 200ms | <span class="ods-motion" style="--ods-d:200ms"><span></span></span> |
 | `easing.standard` | cubic-bezier(0.2, 0, 0, 1) |  |
-| `font.size.13` | 0.8125rem (13px) | <span class="ods-type" style="font-size:0.8125rem">Aa</span> |
-| `font.size.14` | 0.875rem (14px) | <span class="ods-type" style="font-size:0.875rem">Aa</span> |
-| `font.size.16` | 1rem (16px) | <span class="ods-type" style="font-size:1rem">Aa</span> |
-| `font.weight.600` | 600 |  |
+| `font.size.13` | 0.8125rem (13px) | <span class="ods-typesample" style="font-size:0.8125rem">Aa</span> |
+| `font.size.14` | 0.875rem (14px) | <span class="ods-typesample" style="font-size:0.875rem">Aa</span> |
+| `font.size.16` | 1rem (16px) | <span class="ods-typesample" style="font-size:1rem">Aa</span> |
+| `font.weight.600` | 600 | <span class="ods-typesample" style="font-weight:600">Aa</span> |
 | `radius.20` | 1.25rem (20px) | <span class="ods-tile" style="border-radius:1.25rem"></span> |
 | `radius.999` | 9999px | <span class="ods-tile" style="border-radius:9999px"></span> |
 | `shadow.card` | 0px 2px 8px 0px #0F172A14 | <span class="ods-card" style="box-shadow:0px 2px 8px 0px #0F172A14"></span> |

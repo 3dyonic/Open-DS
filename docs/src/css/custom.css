@@ -161,14 +161,33 @@ code {
   gap: var(--space-gap-default, 0.5rem);
   min-width: 13rem;
 }
+/* The type specimen (OD-218): one row per role, its name and values on the left, one line of the
+   scheme's own content on the right. */
 .ods-type {
-  display: flex;
-  align-items: baseline;
+  display: grid;
+  grid-template-columns: 9rem minmax(0, 1fr);
   gap: var(--space-gap-group, 1rem);
+  align-items: baseline;
   width: 100%;
+  padding: 0.5rem 0;
+  border-bottom: 1px solid var(--color-border-default);
+}
+.ods-type:last-child {
+  border-bottom: 0;
 }
 .ods-type .ods-label {
-  flex: 0 0 5rem;
+  display: grid;
+  gap: 0.125rem;
+}
+.ods-type .ods-label b {
+  font-family: var(--type-label-font-family, inherit);
+  font-weight: 600;
+  color: var(--color-text-primary);
+}
+.ods-type .ods-typeline {
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
 }
 .ods-label {
   font-family: var(--type-data-font-family, monospace);
@@ -211,11 +230,23 @@ code {
 .ods-font {
   font-size: 1.125rem;
 }
-/* A type size primitive, shown as type at that size (OD-217). */
-.ods-type {
+/* A type primitive's sample (OD-217, OD-218): Aa at that size, weight or spacing, or two lines at that
+   line height. */
+.ods-typesample {
   display: inline-block;
   font-weight: 600;
   line-height: 1;
+}
+.ods-leading {
+  display: inline-block;
+  max-width: 7rem;
+  padding: 0 0.25rem;
+  font-size: 0.75rem;
+  background: repeating-linear-gradient(
+    transparent 0 calc(1em * var(--lh) - 1px),
+    var(--color-border-default) 0 calc(1em * var(--lh))
+  );
+  line-height: var(--lh);
 }
 .ods-motion {
   display: inline-block;

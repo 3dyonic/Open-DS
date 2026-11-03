@@ -145,10 +145,10 @@ The raw values the tokens above end at.
 | `color.stone.light.900` | #1F1B16 | <span class="ods-swatch" style="background:#1F1B16"></span> |
 | `duration.moderate` | 200ms | <span class="ods-motion" style="--ods-d:200ms"><span></span></span> |
 | `easing.standard` | cubic-bezier(0.2, 0, 0, 1) |  |
-| `font.size.14` | 0.875rem (14px) | <span class="ods-type" style="font-size:0.875rem">Aa</span> |
-| `font.size.16` | 1rem (16px) | <span class="ods-type" style="font-size:1rem">Aa</span> |
-| `font.size.18` | 1.125rem (18px) | <span class="ods-type" style="font-size:1.125rem">Aa</span> |
-| `font.weight.600` | 600 |  |
+| `font.size.14` | 0.875rem (14px) | <span class="ods-typesample" style="font-size:0.875rem">Aa</span> |
+| `font.size.16` | 1rem (16px) | <span class="ods-typesample" style="font-size:1rem">Aa</span> |
+| `font.size.18` | 1.125rem (18px) | <span class="ods-typesample" style="font-size:1.125rem">Aa</span> |
+| `font.weight.600` | 600 | <span class="ods-typesample" style="font-weight:600">Aa</span> |
 | `radius.12` | 0.75rem (12px) | <span class="ods-tile" style="border-radius:0.75rem"></span> |
 | `radius.8` | 0.5rem (8px) | <span class="ods-tile" style="border-radius:0.5rem"></span> |
 | `radius.999` | 9999px | <span class="ods-tile" style="border-radius:9999px"></span> |

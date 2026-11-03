@@ -14,30 +14,30 @@ description: "Type primitives in Multi-brand."
 
 | Primitive | Value | Sample | Used by |
 | --- | --- | --- | --- |
-| `font.size.13` | 0.8125rem (13px) | <span class="ods-type" style="font-size:0.8125rem">Aa</span> | `type.caption.font-size` (semantic) |
-| `font.size.14` | 0.875rem (14px) | <span class="ods-type" style="font-size:0.875rem">Aa</span> | `type.label.font-size` (semantic) |
-| `font.size.16` | 1rem (16px) | <span class="ods-type" style="font-size:1rem">Aa</span> | `type.body.font-size` (semantic)<br />`type.data.font-size` (semantic) |
-| `font.size.20` | 1.25rem (20px) | <span class="ods-type" style="font-size:1.25rem">Aa</span> | `type.heading.font-size` (semantic) |
-| `font.size.24` | 1.5rem (24px) | <span class="ods-type" style="font-size:1.5rem">Aa</span> | `type.title.font-size` (semantic) |
-| `font.size.32` | 2rem (32px) | <span class="ods-type" style="font-size:2rem">Aa</span> | `type.display.font-size` (semantic) |
+| `font.size.13` | 0.8125rem (13px) | <span class="ods-typesample" style="font-size:0.8125rem">Aa</span> | `type.caption.font-size` (semantic) |
+| `font.size.14` | 0.875rem (14px) | <span class="ods-typesample" style="font-size:0.875rem">Aa</span> | `type.label.font-size` (semantic) |
+| `font.size.16` | 1rem (16px) | <span class="ods-typesample" style="font-size:1rem">Aa</span> | `type.body.font-size` (semantic)<br />`type.data.font-size` (semantic) |
+| `font.size.20` | 1.25rem (20px) | <span class="ods-typesample" style="font-size:1.25rem">Aa</span> | `type.heading.font-size` (semantic) |
+| `font.size.24` | 1.5rem (24px) | <span class="ods-typesample" style="font-size:1.5rem">Aa</span> | `type.title.font-size` (semantic) |
+| `font.size.32` | 2rem (32px) | <span class="ods-typesample" style="font-size:2rem">Aa</span> | `type.display.font-size` (semantic) |
 
 ## `font.weight`
 
 | Primitive | Value | Sample | Used by |
 | --- | --- | --- | --- |
-| `font.weight.400` | 400 |  | `type.body.font-weight` (semantic)<br />`type.caption.font-weight` (semantic)<br />`type.data.font-weight` (semantic) |
-| `font.weight.600` | 600 |  | `type.title.font-weight` (semantic)<br />`type.heading.font-weight` (semantic)<br />`type.label.font-weight` (semantic) |
-| `font.weight.700` | 700 |  | `type.display.font-weight` (semantic) |
+| `font.weight.400` | 400 | <span class="ods-typesample" style="font-weight:400">Aa</span> | `type.body.font-weight` (semantic)<br />`type.caption.font-weight` (semantic)<br />`type.data.font-weight` (semantic) |
+| `font.weight.600` | 600 | <span class="ods-typesample" style="font-weight:600">Aa</span> | `type.title.font-weight` (semantic)<br />`type.heading.font-weight` (semantic)<br />`type.label.font-weight` (semantic) |
+| `font.weight.700` | 700 | <span class="ods-typesample" style="font-weight:700">Aa</span> | `type.display.font-weight` (semantic) |
 
 ## `font.line-height`
 
 | Primitive | Value | Sample | Used by |
 | --- | --- | --- | --- |
-| `font.line-height.1_2` | 1.2 |  | `type.display.line-height` (semantic) |
-| `font.line-height.1_25` | 1.25 |  | `type.title.line-height` (semantic) |
-| `font.line-height.1_3` | 1.3 |  | `type.heading.line-height` (semantic) |
-| `font.line-height.1_4` | 1.4 |  | `type.label.line-height` (semantic)<br />`type.caption.line-height` (semantic) |
-| `font.line-height.1_5` | 1.5 |  | `type.body.line-height` (semantic)<br />`type.data.line-height` (semantic) |
+| `font.line-height.1_2` | 1.2 | <span class="ods-leading" style="--lh:1.2">Two lines<br/>of text</span> | `type.display.line-height` (semantic) |
+| `font.line-height.1_25` | 1.25 | <span class="ods-leading" style="--lh:1.25">Two lines<br/>of text</span> | `type.title.line-height` (semantic) |
+| `font.line-height.1_3` | 1.3 | <span class="ods-leading" style="--lh:1.3">Two lines<br/>of text</span> | `type.heading.line-height` (semantic) |
+| `font.line-height.1_4` | 1.4 | <span class="ods-leading" style="--lh:1.4">Two lines<br/>of text</span> | `type.label.line-height` (semantic)<br />`type.caption.line-height` (semantic) |
+| `font.line-height.1_5` | 1.5 | <span class="ods-leading" style="--lh:1.5">Two lines<br/>of text</span> | `type.body.line-height` (semantic)<br />`type.data.line-height` (semantic) |
 
 ## `font.family`
 

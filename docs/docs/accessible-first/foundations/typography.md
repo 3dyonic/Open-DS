@@ -11,13 +11,13 @@ description: "Accessible first: How text is set: roles, sizes and line height."
 How text is set: roles, sizes and line height.
 
 <div class="ods-specimen">
-<div class="ods-type"><span class="ods-label">display</span><span style="font-family:var(--type-display-font-family);font-size:var(--type-display-font-size);line-height:var(--type-display-line-height);font-weight:var(--type-display-font-weight)">A person with low vision zooms to 200% and applies for a benefit with a screen magnifier.</span></div>
-<div class="ods-type"><span class="ods-label">title</span><span style="font-family:var(--type-title-font-family);font-size:var(--type-title-font-size);line-height:var(--type-title-line-height);font-weight:var(--type-title-font-weight)">A person with low vision zooms to 200% and applies for a benefit with a screen magnifier.</span></div>
-<div class="ods-type"><span class="ods-label">heading</span><span style="font-family:var(--type-heading-font-family);font-size:var(--type-heading-font-size);line-height:var(--type-heading-line-height);font-weight:var(--type-heading-font-weight)">A person with low vision zooms to 200% and applies for a benefit with a screen magnifier.</span></div>
-<div class="ods-type"><span class="ods-label">body</span><span style="font-family:var(--type-body-font-family);font-size:var(--type-body-font-size);line-height:var(--type-body-line-height);font-weight:var(--type-body-font-weight)">A person with low vision zooms to 200% and applies for a benefit with a screen magnifier.</span></div>
-<div class="ods-type"><span class="ods-label">label</span><span style="font-family:var(--type-label-font-family);font-size:var(--type-label-font-size);line-height:var(--type-label-line-height);font-weight:var(--type-label-font-weight)">A person with low vision zooms to 200% and applies for a benefit with a screen magnifier.</span></div>
-<div class="ods-type"><span class="ods-label">caption</span><span style="font-family:var(--type-caption-font-family);font-size:var(--type-caption-font-size);line-height:var(--type-caption-line-height);font-weight:var(--type-caption-font-weight)">A person with low vision zooms to 200% and applies for a benefit with a screen magnifier.</span></div>
-<div class="ods-type"><span class="ods-label">data</span><span style="font-family:var(--type-data-font-family);font-size:var(--type-data-font-size);line-height:var(--type-data-line-height);font-weight:var(--type-data-font-weight)">A person with low vision zooms to 200% and applies for a benefit with a screen magnifier.</span></div>
+<div class="ods-type"><span class="ods-label"><b>display</b><span>36px · 1.2 · 700</span></span><span class="ods-typeline" style="font-family:var(--type-display-font-family);font-size:var(--type-display-font-size);line-height:var(--type-display-line-height);font-weight:var(--type-display-font-weight)">Apply for support with housing costs</span></div>
+<div class="ods-type"><span class="ods-label"><b>title</b><span>28px · 1.25 · 700</span></span><span class="ods-typeline" style="font-family:var(--type-title-font-family);font-size:var(--type-title-font-size);line-height:var(--type-title-line-height);font-weight:var(--type-title-font-weight)">Apply for support with housing costs</span></div>
+<div class="ods-type"><span class="ods-label"><b>heading</b><span>22px · 1.3 · 700</span></span><span class="ods-typeline" style="font-family:var(--type-heading-font-family);font-size:var(--type-heading-font-size);line-height:var(--type-heading-line-height);font-weight:var(--type-heading-font-weight)">Step 2 of 4: Your home</span></div>
+<div class="ods-type"><span class="ods-label"><b>body</b><span>19px · 1.6 · 400</span></span><span class="ods-typeline" style="font-family:var(--type-body-font-family);font-size:var(--type-body-font-size);line-height:var(--type-body-line-height);font-weight:var(--type-body-font-weight)">A person with low vision zooms to 200% and applies for a benefit with a screen magnifier.</span></div>
+<div class="ods-type"><span class="ods-label"><b>label</b><span>18px · 1.4 · 700</span></span><span class="ods-typeline" style="font-family:var(--type-label-font-family);font-size:var(--type-label-font-size);line-height:var(--type-label-line-height);font-weight:var(--type-label-font-weight)">Continue</span></div>
+<div class="ods-type"><span class="ods-label"><b>caption</b><span>16px · 1.5 · 400</span></span><span class="ods-typeline" style="font-family:var(--type-caption-font-family);font-size:var(--type-caption-font-size);line-height:var(--type-caption-line-height);font-weight:var(--type-caption-font-weight)">A person with low vision zooms to 200% and applies for a benefit with a screen magnifier.</span></div>
+<div class="ods-type"><span class="ods-label"><b>data</b><span>19px · 1.6 · 400</span></span><span class="ods-typeline" style="font-family:var(--type-data-font-family);font-size:var(--type-data-font-size);line-height:var(--type-data-line-height);font-weight:var(--type-data-font-weight)">Steps done 2 of 4 · Documents sent 3 · Time left to apply 12 days · Time this takes About 10 minutes</span></div>
 </div>
 
 ## The five answers
@@ -72,20 +72,20 @@ The raw values the tokens above end at.
 | Primitive | Value | Sample |
 | --- | --- | --- |
 | `font.family.atkinson-hyperlegible` | "Atkinson Hyperlegible", Verdana, sans-serif | <span class="ods-font" style="font-family:"Atkinson Hyperlegible", Verdana, sans-serif">Aa 123</span> |
-| `font.line-height.1_2` | 1.2 |  |
-| `font.line-height.1_25` | 1.25 |  |
-| `font.line-height.1_3` | 1.3 |  |
-| `font.line-height.1_4` | 1.4 |  |
-| `font.line-height.1_5` | 1.5 |  |
-| `font.line-height.1_6` | 1.6 |  |
-| `font.size.16` | 1rem (16px) | <span class="ods-type" style="font-size:1rem">Aa</span> |
-| `font.size.18` | 1.125rem (18px) | <span class="ods-type" style="font-size:1.125rem">Aa</span> |
-| `font.size.19` | 1.1875rem (19px) | <span class="ods-type" style="font-size:1.1875rem">Aa</span> |
-| `font.size.22` | 1.375rem (22px) | <span class="ods-type" style="font-size:1.375rem">Aa</span> |
-| `font.size.28` | 1.75rem (28px) | <span class="ods-type" style="font-size:1.75rem">Aa</span> |
-| `font.size.36` | 2.25rem (36px) | <span class="ods-type" style="font-size:2.25rem">Aa</span> |
-| `font.weight.400` | 400 |  |
-| `font.weight.700` | 700 |  |
+| `font.line-height.1_2` | 1.2 | <span class="ods-leading" style="--lh:1.2">Two lines<br/>of text</span> |
+| `font.line-height.1_25` | 1.25 | <span class="ods-leading" style="--lh:1.25">Two lines<br/>of text</span> |
+| `font.line-height.1_3` | 1.3 | <span class="ods-leading" style="--lh:1.3">Two lines<br/>of text</span> |
+| `font.line-height.1_4` | 1.4 | <span class="ods-leading" style="--lh:1.4">Two lines<br/>of text</span> |
+| `font.line-height.1_5` | 1.5 | <span class="ods-leading" style="--lh:1.5">Two lines<br/>of text</span> |
+| `font.line-height.1_6` | 1.6 | <span class="ods-leading" style="--lh:1.6">Two lines<br/>of text</span> |
+| `font.size.16` | 1rem (16px) | <span class="ods-typesample" style="font-size:1rem">Aa</span> |
+| `font.size.18` | 1.125rem (18px) | <span class="ods-typesample" style="font-size:1.125rem">Aa</span> |
+| `font.size.19` | 1.1875rem (19px) | <span class="ods-typesample" style="font-size:1.1875rem">Aa</span> |
+| `font.size.22` | 1.375rem (22px) | <span class="ods-typesample" style="font-size:1.375rem">Aa</span> |
+| `font.size.28` | 1.75rem (28px) | <span class="ods-typesample" style="font-size:1.75rem">Aa</span> |
+| `font.size.36` | 2.25rem (36px) | <span class="ods-typesample" style="font-size:2.25rem">Aa</span> |
+| `font.weight.400` | 400 | <span class="ods-typesample" style="font-weight:400">Aa</span> |
+| `font.weight.700` | 700 | <span class="ods-typesample" style="font-weight:700">Aa</span> |
 
 ## Where it lands
 

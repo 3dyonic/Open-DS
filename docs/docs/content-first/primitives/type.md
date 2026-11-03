@@ -14,28 +14,28 @@ description: "Type primitives in Content first."
 
 | Primitive | Value | Sample | Used by |
 | --- | --- | --- | --- |
-| `font.size.14` | 0.875rem (14px) | <span class="ods-type" style="font-size:0.875rem">Aa</span> | `type.caption.font-size` (semantic) |
-| `font.size.16` | 1rem (16px) | <span class="ods-type" style="font-size:1rem">Aa</span> | `type.label.font-size` (semantic) |
-| `font.size.18` | 1.125rem (18px) | <span class="ods-type" style="font-size:1.125rem">Aa</span> | `type.body.font-size` (semantic)<br />`type.data.font-size` (semantic) |
-| `font.size.28` | 1.75rem (28px) | <span class="ods-type" style="font-size:1.75rem">Aa</span> | `type.heading.font-size` (semantic) |
-| `font.size.36` | 2.25rem (36px) | <span class="ods-type" style="font-size:2.25rem">Aa</span> | `type.title.font-size` (semantic) |
-| `font.size.44` | 2.75rem (44px) | <span class="ods-type" style="font-size:2.75rem">Aa</span> | `type.display.font-size` (semantic) |
+| `font.size.14` | 0.875rem (14px) | <span class="ods-typesample" style="font-size:0.875rem">Aa</span> | `type.caption.font-size` (semantic) |
+| `font.size.16` | 1rem (16px) | <span class="ods-typesample" style="font-size:1rem">Aa</span> | `type.label.font-size` (semantic) |
+| `font.size.18` | 1.125rem (18px) | <span class="ods-typesample" style="font-size:1.125rem">Aa</span> | `type.body.font-size` (semantic)<br />`type.data.font-size` (semantic) |
+| `font.size.28` | 1.75rem (28px) | <span class="ods-typesample" style="font-size:1.75rem">Aa</span> | `type.heading.font-size` (semantic) |
+| `font.size.36` | 2.25rem (36px) | <span class="ods-typesample" style="font-size:2.25rem">Aa</span> | `type.title.font-size` (semantic) |
+| `font.size.44` | 2.75rem (44px) | <span class="ods-typesample" style="font-size:2.75rem">Aa</span> | `type.display.font-size` (semantic) |
 
 ## `font.weight`
 
 | Primitive | Value | Sample | Used by |
 | --- | --- | --- | --- |
-| `font.weight.400` | 400 |  | `type.body.font-weight` (semantic)<br />`type.caption.font-weight` (semantic)<br />`type.data.font-weight` (semantic) |
-| `font.weight.600` | 600 |  | `type.display.font-weight` (semantic)<br />`type.title.font-weight` (semantic)<br />`type.heading.font-weight` (semantic)<br />`type.label.font-weight` (semantic) |
+| `font.weight.400` | 400 | <span class="ods-typesample" style="font-weight:400">Aa</span> | `type.body.font-weight` (semantic)<br />`type.caption.font-weight` (semantic)<br />`type.data.font-weight` (semantic) |
+| `font.weight.600` | 600 | <span class="ods-typesample" style="font-weight:600">Aa</span> | `type.display.font-weight` (semantic)<br />`type.title.font-weight` (semantic)<br />`type.heading.font-weight` (semantic)<br />`type.label.font-weight` (semantic) |
 
 ## `font.line-height`
 
 | Primitive | Value | Sample | Used by |
 | --- | --- | --- | --- |
-| `font.line-height.1_15` | 1.15 |  | `type.display.line-height` (semantic)<br />`type.title.line-height` (semantic) |
-| `font.line-height.1_3` | 1.3 |  | `type.heading.line-height` (semantic)<br />`type.label.line-height` (semantic) |
-| `font.line-height.1_45` | 1.45 |  | `type.caption.line-height` (semantic) |
-| `font.line-height.1_65` | 1.65 |  | `type.body.line-height` (semantic)<br />`type.data.line-height` (semantic) |
+| `font.line-height.1_15` | 1.15 | <span class="ods-leading" style="--lh:1.15">Two lines<br/>of text</span> | `type.display.line-height` (semantic)<br />`type.title.line-height` (semantic) |
+| `font.line-height.1_3` | 1.3 | <span class="ods-leading" style="--lh:1.3">Two lines<br/>of text</span> | `type.heading.line-height` (semantic)<br />`type.label.line-height` (semantic) |
+| `font.line-height.1_45` | 1.45 | <span class="ods-leading" style="--lh:1.45">Two lines<br/>of text</span> | `type.caption.line-height` (semantic) |
+| `font.line-height.1_65` | 1.65 | <span class="ods-leading" style="--lh:1.65">Two lines<br/>of text</span> | `type.body.line-height` (semantic)<br />`type.data.line-height` (semantic) |
 
 ## `font.family`
 

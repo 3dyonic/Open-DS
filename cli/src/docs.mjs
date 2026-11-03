@@ -218,6 +218,12 @@ function sample(path, type, raw) {
     return `<span class="ods-swatch" style="background:${v}"></span>`;
   if (type === "fontFamily")
     return `<span class="ods-font" style="font-family:${v}">Aa 123</span>`;
+  if (type === "fontWeight" || /font[.-]weight/.test(path))
+    return `<span class="ods-typesample" style="font-weight:${v}">Aa</span>`;
+  if (/line-height/.test(path) && type !== "dimension")
+    return `<span class="ods-leading" style="--lh:${v}">Two lines<br/>of text</span>`;
+  if (/letter/.test(path) && type !== "dimension")
+    return `<span class="ods-typesample" style="letter-spacing:${v}">Aa Aa</span>`;
   if (type === "shadow")
     return `<span class="ods-card" style="box-shadow:${v}"></span>`;
   if (type === "duration")
@@ -231,15 +237,27 @@ function sample(path, type, raw) {
       return `<span class="ods-line" style="height:${v}"></span>`;
     // A type size shows type at that size (OD-217), not a bar.
     if (/font[.-]size/.test(path))
-      return `<span class="ods-type" style="font-size:${v}">Aa</span>`;
-    if (/line-height|letter/.test(path)) return "";
+      return `<span class="ods-typesample" style="font-size:${v}">Aa</span>`;
+    if (/letter/.test(path))
+      return `<span class="ods-typesample" style="letter-spacing:${v}">Aa Aa</span>`;
+    if (/line-height/.test(path))
+      return `<span class="ods-leading" style="--lh:${v}">Two lines<br/>of text</span>`;
     return `<span class="ods-bar" style="width:${v}"></span>`;
   }
   return "";
 }
 
 /** The specimen at the top of a foundation page: the scope's semantic tokens, drawn live. */
-function specimen(tokens, text) {
+// The type specimen shows each role with its own kind of content (OD-218): headings the screen title,
+// running text the scenario, a label the main action, data a number. Values come from the theme.
+const ROLE_TEXT = {
+  display: (x) => x.smp.screen,
+  title: (x) => x.smp.screen,
+  heading: (x) => x.smp.card?.title ?? x.smp.screen,
+  label: (x) => x.smp.actions?.primary,
+  data: (x) => x.smp.metrics?.map((m) => `${m.label} ${m.value}`).join(" · "),
+};
+function specimen(tokens, text, x = {}) {
   const roles = [
     ...new Set(
       tokens
@@ -254,7 +272,17 @@ function specimen(tokens, text) {
         .map((r) => {
           const p = `type.${r}`;
           const style = `font-family:${cssVar(`${p}.font-family`)};font-size:${cssVar(`${p}.font-size`)};line-height:${cssVar(`${p}.line-height`)};font-weight:${cssVar(`${p}.font-weight`)}`;
-          return `<div class="ods-type"><span class="ods-label">${r}</span><span style="${style}">${attr(text)}</span></div>`;
+          const line = (x.smp && ROLE_TEXT[r]?.(x)) || text;
+          const values = x.val
+            ? [
+                x.val(`${p}.font-size`),
+                x.val(`${p}.line-height`),
+                x.val(`${p}.font-weight`),
+              ]
+                .filter(Boolean)
+                .join(" · ")
+            : "";
+          return `<div class="ods-type"><span class="ods-label"><b>${r}</b>${values ? `<span>${attr(values)}</span>` : ""}</span><span class="ods-typeline" style="${style}">${attr(line)}</span></div>`;
         })
         .join("\n") +
       `\n</div>\n\n`
@@ -1034,6 +1062,13 @@ export function docsPages(
           : specimen(
               semantics.length ? semantics : tokens,
               scheme.scenarios[0].text,
+              {
+                smp,
+                val: (path) => {
+                  const v = String(value(first, path, ""));
+                  return v.match(/\((\d+(?:\.\d+)?px)\)/)?.[1] ?? v;
+                },
+              },
             );
     pages[`foundations/${sc.id}.md`] =
       fm({
