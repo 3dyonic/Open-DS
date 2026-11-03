@@ -722,18 +722,6 @@
           "business.q2",
           "scenarios.q2"
         ]
-      },
-      {
-        "id": "sonner",
-        "why": "Dense data already has its own toast to confirm a saved change. A second toast would add a part. A small team keeps fewer parts right.",
-        "instead": [
-          "toast",
-          "alert"
-        ],
-        "because": [
-          "team.q1",
-          "components.count"
-        ]
       }
     ]
   },

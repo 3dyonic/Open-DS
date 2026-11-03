@@ -1,5 +1,5 @@
 ---
-sidebar_position: 61
+sidebar_position: 60
 title: "Toggle"
 description: "Toggle in Multi-brand."
 ---

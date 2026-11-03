@@ -108,7 +108,6 @@ const PART: Record<string, keyof Samples> = {
   item: "menu",
   menubar: "menu",
   "hover-card": "card",
-  sonner: "messages",
 };
 
 export function Show({

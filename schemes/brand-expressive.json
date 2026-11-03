@@ -744,17 +744,6 @@
         ]
       },
       {
-        "id": "sonner",
-        "why": "Brand expressive has one action: sign up, and toast confirms a place on the waitlist. Stacked toasts are for many confirmations close together.",
-        "instead": [
-          "toast"
-        ],
-        "because": [
-          "tasks.q2",
-          "scenarios.q1"
-        ]
-      },
-      {
         "id": "tooltip",
         "why": "Visitors come from social posts on their phones, where hover hints never show. Every button has a word instead.",
         "instead": [

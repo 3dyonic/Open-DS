@@ -754,17 +754,6 @@
         ]
       },
       {
-        "id": "sonner",
-        "why": "Sonner stacks messages that go away. Here errors and important notes stay on the page, and success words say what comes next.",
-        "instead": [
-          "alert"
-        ],
-        "because": [
-          "outcomes.q2",
-          "voice.lands"
-        ]
-      },
-      {
         "id": "switch",
         "why": "Components do their work in forms and steps, where a choice waits for the form. The catalogue gives that case to the checkbox.",
         "instead": [
