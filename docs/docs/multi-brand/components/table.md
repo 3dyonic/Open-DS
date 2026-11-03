@@ -67,6 +67,10 @@ The component reads only component keys and semantic tokens, so it follows the b
 
 The CSS variable is the key with `/` replaced by `-` and the base `@` dropped. Each key points to a token; values live only on primitives.
 
+<div class="odv-brandset" data-for-brand="aster">
+
+<p class="odv-brandname">Aster</p>
+
 | Key | What it controls | Points to, aster-light | Points to, aster-dark |
 | --- | --- | --- | --- |
 | `table/header-background` | Header row fill. | `color.surface.sunken` → `aster.theme.light.color.surface.sunken` → `color.slate.light.100` | `color.surface.sunken` → `aster.theme.dark.color.surface.sunken` → `color.slate.dark.100` |
@@ -75,3 +79,35 @@ The CSS variable is the key with `/` replaced by `-` and the base `@` dropped. E
 | `table/row-border` | Line between rows. | `color.border.default` → `aster.theme.light.color.border.default` → `color.slate.light.200` | `color.border.default` → `aster.theme.dark.color.border.default` → `color.slate.dark.100` |
 | `table/row-selected` | Fill of a selected row. | `color.surface.selected` → `aster.theme.light.color.surface.selected` → `color.teal.light.100` | `color.surface.selected` → `aster.theme.dark.color.surface.selected` → `color.teal.dark.100` |
 | `table/font-size` | Cell text size. | `type.data.font-size` → `font.size.16` | same |
+
+</div>
+
+<div class="odv-brandset" data-for-brand="birch">
+
+<p class="odv-brandname">Birch</p>
+
+| Key | What it controls | Points to, birch-light | Points to, birch-dark |
+| --- | --- | --- | --- |
+| `table/header-background` | Header row fill. | `color.surface.sunken` → `birch.theme.light.color.surface.sunken` → `color.slate.light.100` | `color.surface.sunken` → `birch.theme.dark.color.surface.sunken` → `color.slate.dark.100` |
+| `table/row-height` | Height of one data row. | `size.row` → `size.48` | same |
+| `table/cell-padding-x` | Horizontal padding inside a cell. | `space.inset.cell-x` → `space.16` | same |
+| `table/row-border` | Line between rows. | `color.border.default` → `birch.theme.light.color.border.default` → `color.slate.light.200` | `color.border.default` → `birch.theme.dark.color.border.default` → `color.slate.dark.100` |
+| `table/row-selected` | Fill of a selected row. | `color.surface.selected` → `birch.theme.light.color.surface.selected` → `color.purple.light.100` | `color.surface.selected` → `birch.theme.dark.color.surface.selected` → `color.purple.dark.100` |
+| `table/font-size` | Cell text size. | `type.data.font-size` → `font.size.16` | same |
+
+</div>
+
+<div class="odv-brandset" data-for-brand="coral">
+
+<p class="odv-brandname">Coral</p>
+
+| Key | What it controls | Points to, coral-light | Points to, coral-dark |
+| --- | --- | --- | --- |
+| `table/header-background` | Header row fill. | `color.surface.sunken` → `coral.theme.light.color.surface.sunken` → `color.slate.light.100` | `color.surface.sunken` → `coral.theme.dark.color.surface.sunken` → `color.slate.dark.100` |
+| `table/row-height` | Height of one data row. | `size.row` → `size.48` | same |
+| `table/cell-padding-x` | Horizontal padding inside a cell. | `space.inset.cell-x` → `space.16` | same |
+| `table/row-border` | Line between rows. | `color.border.default` → `coral.theme.light.color.border.default` → `color.slate.light.200` | `color.border.default` → `coral.theme.dark.color.border.default` → `color.slate.dark.100` |
+| `table/row-selected` | Fill of a selected row. | `color.surface.selected` → `coral.theme.light.color.surface.selected` → `color.orange.light.100` | `color.surface.selected` → `coral.theme.dark.color.surface.selected` → `color.orange.dark.100` |
+| `table/font-size` | Cell text size. | `type.data.font-size` → `font.size.16` | same |
+
+</div>

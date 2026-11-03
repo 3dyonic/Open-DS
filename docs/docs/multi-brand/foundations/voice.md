@@ -24,6 +24,10 @@ How the product speaks: the words in every component.
 
 Each token points to another token. Values live only on primitives, below.
 
+<div class="odv-brandset" data-for-brand="aster">
+
+<p class="odv-brandname">Aster</p>
+
 | Token | Points to |
 | --- | --- |
 | `content.action.commit` |  |
@@ -31,6 +35,36 @@ Each token points to another token. Values live only on primitives, below.
 | `content.action.destroy` |  |
 | `content.action.retry` |  |
 | `content.action.empty-action` |  |
+
+</div>
+
+<div class="odv-brandset" data-for-brand="birch">
+
+<p class="odv-brandname">Birch</p>
+
+| Token | Points to |
+| --- | --- |
+| `content.action.commit` |  |
+| `content.action.cancel` |  |
+| `content.action.destroy` |  |
+| `content.action.retry` |  |
+| `content.action.empty-action` |  |
+
+</div>
+
+<div class="odv-brandset" data-for-brand="coral">
+
+<p class="odv-brandname">Coral</p>
+
+| Token | Points to |
+| --- | --- |
+| `content.action.commit` |  |
+| `content.action.cancel` |  |
+| `content.action.destroy` |  |
+| `content.action.retry` |  |
+| `content.action.empty-action` |  |
+
+</div>
 
 ## Where it lands
 

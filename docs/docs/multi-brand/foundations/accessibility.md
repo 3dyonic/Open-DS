@@ -32,6 +32,10 @@ Floors the system must hold.
 
 Each token points to another token. Values live only on primitives, below.
 
+<div class="odv-brandset" data-for-brand="aster">
+
+<p class="odv-brandname">Aster</p>
+
 | Token | Points to, light | Points to, dark |
 | --- | --- | --- |
 | `size.control.default` | `size.44` | `size.44` |
@@ -40,9 +44,43 @@ Each token points to another token. Values live only on primitives, below.
 | `opacity.disabled` | `opacity.40` | `opacity.40` |
 | `color.border.focus` | `aster.theme.light.color.border.focus` → `color.teal.light.600` | `aster.theme.dark.color.border.focus` → `color.teal.dark.700` |
 
+</div>
+
+<div class="odv-brandset" data-for-brand="birch">
+
+<p class="odv-brandname">Birch</p>
+
+| Token | Points to, light | Points to, dark |
+| --- | --- | --- |
+| `size.control.default` | `size.44` | `size.44` |
+| `size.control.compact` | `size.36` | `size.36` |
+| `size.control.large` | `size.44` | `size.44` |
+| `opacity.disabled` | `opacity.40` | `opacity.40` |
+| `color.border.focus` | `birch.theme.light.color.border.focus` → `color.purple.light.600` | `birch.theme.dark.color.border.focus` → `color.purple.dark.700` |
+
+</div>
+
+<div class="odv-brandset" data-for-brand="coral">
+
+<p class="odv-brandname">Coral</p>
+
+| Token | Points to, light | Points to, dark |
+| --- | --- | --- |
+| `size.control.default` | `size.44` | `size.44` |
+| `size.control.compact` | `size.36` | `size.36` |
+| `size.control.large` | `size.44` | `size.44` |
+| `opacity.disabled` | `opacity.40` | `opacity.40` |
+| `color.border.focus` | `coral.theme.light.color.border.focus` → `color.orange.light.600` | `coral.theme.dark.color.border.focus` → `color.orange.dark.700` |
+
+</div>
+
 ## Primitives
 
 The raw values the tokens above end at.
+
+<div class="odv-brandset" data-for-brand="aster">
+
+<p class="odv-brandname">Aster</p>
 
 | Primitive | Value | Sample |
 | --- | --- | --- |
@@ -51,6 +89,36 @@ The raw values the tokens above end at.
 | `opacity.40` | 0.4 | <span class="ods-swatch" style="opacity:0.4"></span> |
 | `size.36` | 2.25rem (36px) | <span class="ods-bar" style="width:2.25rem"></span> |
 | `size.44` | 2.75rem (44px) | <span class="ods-bar" style="width:2.75rem"></span> |
+
+</div>
+
+<div class="odv-brandset" data-for-brand="birch">
+
+<p class="odv-brandname">Birch</p>
+
+| Primitive | Value | Sample |
+| --- | --- | --- |
+| `color.purple.dark.700` | #B79DF7 | <span class="ods-swatch" style="background:#B79DF7"></span> |
+| `color.purple.light.600` | #6D28D9 | <span class="ods-swatch" style="background:#6D28D9"></span> |
+| `opacity.40` | 0.4 | <span class="ods-swatch" style="opacity:0.4"></span> |
+| `size.36` | 2.25rem (36px) | <span class="ods-bar" style="width:2.25rem"></span> |
+| `size.44` | 2.75rem (44px) | <span class="ods-bar" style="width:2.75rem"></span> |
+
+</div>
+
+<div class="odv-brandset" data-for-brand="coral">
+
+<p class="odv-brandname">Coral</p>
+
+| Primitive | Value | Sample |
+| --- | --- | --- |
+| `color.orange.dark.700` | #F7A67F | <span class="ods-swatch" style="background:#F7A67F"></span> |
+| `color.orange.light.600` | #C2410C | <span class="ods-swatch" style="background:#C2410C"></span> |
+| `opacity.40` | 0.4 | <span class="ods-swatch" style="opacity:0.4"></span> |
+| `size.36` | 2.25rem (36px) | <span class="ods-bar" style="width:2.25rem"></span> |
+| `size.44` | 2.75rem (44px) | <span class="ods-bar" style="width:2.75rem"></span> |
+
+</div>
 
 ## Where it lands
 

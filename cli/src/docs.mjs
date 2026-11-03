@@ -229,7 +229,10 @@ function sample(path, type, raw) {
       return `<span class="ods-tile" style="border-radius:${v}"></span>`;
     if (/border-width/.test(path))
       return `<span class="ods-line" style="height:${v}"></span>`;
-    if (/font-size|line-height|letter/.test(path)) return "";
+    // A type size shows type at that size (OD-217), not a bar.
+    if (/font[.-]size/.test(path))
+      return `<span class="ods-type" style="font-size:${v}">Aa</span>`;
+    if (/line-height|letter/.test(path)) return "";
     return `<span class="ods-bar" style="width:${v}"></span>`;
   }
   return "";
@@ -323,7 +326,12 @@ export function docsPages(
   scheme,
   g,
   roots,
-  { storybook = "http://localhost:6006", all = false, robots = false, base = "/" } = {},
+  {
+    storybook = "http://localhost:6006",
+    all = false,
+    robots = false,
+    base = "/",
+  } = {},
 ) {
   // robots: the Open DS robot illustrations (OD-209), in the repo docs only. A scope's robot on its
   // Foundations card, the scheme's robot on its home page and in "Not part of" notes, Shelf on the
@@ -379,14 +387,36 @@ export function docsPages(
     const { steps } = chain(trees[theme.id], path);
     return steps.length && isPrimitive(steps.at(-1)) ? steps.at(-1) : undefined;
   };
-  const primitiveRows = (paths) =>
+  // OD-217: in a scheme with several brands, a table that names tokens or values is written once per
+  // brand. The brand picked in the top bar shows (generate.mjs scopes .odv-brandset); with one brand
+  // the table is written once, as before. Headings stay outside, so the page's contents do not repeat.
+  const brandList = Object.keys(scheme.tokens.brands ?? {});
+  const pairOf = (b) => {
+    const l =
+      scheme.themes.find((t) => t.brand === b && t.mode === "light") ??
+      scheme.themes.find((t) => t.brand === b);
+    return [
+      l,
+      scheme.themes.find((t) => t.brand === b && t.mode === "dark") ?? l,
+    ];
+  };
+  const perBrand = (fn) =>
+    brandsOf.length < 2
+      ? fn(first, dark)
+      : brandsOf
+          .map((b) => {
+            const [l, d] = pairOf(b);
+            return `<div class="odv-brandset" data-for-brand="${b}">\n\n<p class="odv-brandname">${attr(scheme.tokens.brands[b]?.label ?? b)}</p>\n\n${fn(l, d)}\n\n</div>`;
+          })
+          .join("\n\n");
+  const primitiveRows = (paths, F = first) =>
     `| Primitive | Value | Sample |\n| --- | --- | --- |\n` +
     [...new Set(paths)]
       .filter(Boolean)
       .sort()
       .map(
         (p) =>
-          `| \`${p}\` | ${esc(value(first, p, ""))} | ${sample(p, get(primitiveTree, p)?.$type ?? primitiveType(p), get(primitiveTree, p)?.$value)} |`,
+          `| \`${p}\` | ${esc(value(F, p, ""))} | ${sample(p, get(primitiveTree, p)?.$type ?? primitiveType(p), get(primitiveTree, p)?.$value)} |`,
       )
       .join("\n");
   const rule = (u) =>
@@ -436,7 +466,9 @@ export function docsPages(
     : "";
   // The hero shows the scheme's own sample screen (OD-209): a table where the scheme carries one,
   // otherwise its sample card, in its voice, with its status, actions and figures.
-  const carriesTable = (scheme.inventory?.in ?? []).some((c) => c.id === "table" || c.id === "data-table");
+  const carriesTable = (scheme.inventory?.in ?? []).some(
+    (c) => c.id === "table" || c.id === "data-table",
+  );
   const cardHtml = smp.card
     ? h(
         `<div class="odv-app odv-app-card"><div class="odv-app-bar"><b>${attr(smp.screen ?? "")}</b></div>`,
@@ -444,13 +476,22 @@ export function docsPages(
         `<div class="odv-samplecard-head"><b>${attr(smp.card.title)}</b>${smp.card.status ? badgeHtml(smp.card.status, meaning[smp.card.status]) : ""}</div>`,
         smp.card.description ? `<p>${attr(smp.card.description)}</p>` : "",
         `<div class="odv-samplecard-act">`,
-        smp.card.primary ? `<span class="odv-btn primary">${attr(smp.card.primary)}</span>` : "",
-        smp.card.secondary ? `<span class="odv-btn secondary">${attr(smp.card.secondary)}</span>` : "",
+        smp.card.primary
+          ? `<span class="odv-btn primary">${attr(smp.card.primary)}</span>`
+          : "",
+        smp.card.secondary
+          ? `<span class="odv-btn secondary">${attr(smp.card.secondary)}</span>`
+          : "",
         `</div></div>`,
         smp.metrics?.length
           ? h(
               `<div class="odv-samplemetrics">`,
-              smp.metrics.slice(0, 4).map((m) => `<div><b>${attr(m.value)}</b><span>${attr(m.label)}</span></div>`),
+              smp.metrics
+                .slice(0, 4)
+                .map(
+                  (m) =>
+                    `<div><b>${attr(m.value)}</b><span>${attr(m.label)}</span></div>`,
+                ),
               `</div>`,
             )
           : "",
@@ -461,12 +502,14 @@ export function docsPages(
   // brands: compare shows the table, read an article opening, complete a form step (or the same card
   // in every brand), explore a launch sign-up. Every word is the scheme's sample content.
   const task = answer("tasks.q1")?.option;
-  const brandList = Object.keys(scheme.tokens.brands ?? {});
+  const brandsOf = Object.keys(scheme.tokens.brands ?? {});
   const fieldHtml = (f) =>
     f
       ? h(
           `<label class="odv-samplefield"><span class="odv-samplefield-label">${attr(f.label)}</span>`,
-          f.hint ? `<span class="odv-samplefield-hint">${attr(f.hint)}</span>` : "",
+          f.hint
+            ? `<span class="odv-samplefield-hint">${attr(f.hint)}</span>`
+            : "",
           `<span class="odv-samplefield-input">${attr(f.placeholder ?? "")}</span></label>`,
         )
       : "";
@@ -479,8 +522,12 @@ export function docsPages(
         `<span class="odv-preview-headline">${attr(smp.card.title)}</span>`,
         smp.tabs?.[0]?.content ? `<p>${attr(smp.tabs[0].content)}</p>` : "",
         `<div class="odv-samplecard-act">`,
-        smp.card.primary ? `<span class="odv-btn primary">${attr(smp.card.primary)}</span>` : "",
-        smp.card.secondary ? `<span class="odv-btn secondary">${attr(smp.card.secondary)}</span>` : "",
+        smp.card.primary
+          ? `<span class="odv-btn primary">${attr(smp.card.primary)}</span>`
+          : "",
+        smp.card.secondary
+          ? `<span class="odv-btn secondary">${attr(smp.card.secondary)}</span>`
+          : "",
         `</div></div>`,
       ),
     complete: () =>
@@ -493,8 +540,12 @@ export function docsPages(
                 `<div class="odv-samplecard" data-brand="${attr(b)}">`,
                 `<span class="odv-eyebrow">${attr(scheme.tokens.brands[b]?.label ?? b)}</span>`,
                 `<div class="odv-samplecard-head"><b>${attr(smp.card.title)}</b>${smp.card.status ? badgeHtml(smp.card.status, meaning[smp.card.status]) : ""}</div>`,
-                smp.card.description ? `<p>${attr(smp.card.description)}</p>` : "",
-                smp.card.primary ? `<div class="odv-samplecard-act"><span class="odv-btn primary">${attr(smp.card.primary)}</span></div>` : "",
+                smp.card.description
+                  ? `<p>${attr(smp.card.description)}</p>`
+                  : "",
+                smp.card.primary
+                  ? `<div class="odv-samplecard-act"><span class="odv-btn primary">${attr(smp.card.primary)}</span></div>`
+                  : "",
                 `</div>`,
               ),
             ),
@@ -506,9 +557,13 @@ export function docsPages(
             `<span class="odv-eyebrow">${attr(smp.card.title)}</span>`,
             fieldHtml(smp.field),
             `<div class="odv-samplecard-act">`,
-            smp.card.primary ? `<span class="odv-btn primary">${attr(smp.card.primary)}</span>` : "",
+            smp.card.primary
+              ? `<span class="odv-btn primary">${attr(smp.card.primary)}</span>`
+              : "",
             `</div>`,
-            smp.card.secondary ? `<span class="odv-preview-link">${attr(smp.card.secondary)}</span>` : "",
+            smp.card.secondary
+              ? `<span class="odv-preview-link">${attr(smp.card.secondary)}</span>`
+              : "",
             `</div></div>`,
           ),
     explore: () =>
@@ -516,10 +571,21 @@ export function docsPages(
         `<div class="odv-preview odv-preview-launch">`,
         `<span class="odv-preview-headline">${attr(smp.screen ?? "")}</span>`,
         smp.metrics?.length
-          ? h(`<div class="odv-preview-count">`, smp.metrics.slice(0, 2).map((m) => `<div><b>${attr(m.value)}</b><span>${attr(m.label)}</span></div>`), `</div>`)
+          ? h(
+              `<div class="odv-preview-count">`,
+              smp.metrics
+                .slice(0, 2)
+                .map(
+                  (m) =>
+                    `<div><b>${attr(m.value)}</b><span>${attr(m.label)}</span></div>`,
+                ),
+              `</div>`,
+            )
           : "",
         fieldHtml(smp.field),
-        smp.actions?.primary ? `<div class="odv-samplecard-act"><span class="odv-btn primary">${attr(smp.actions.primary)}</span></div>` : "",
+        smp.actions?.primary
+          ? `<div class="odv-samplecard-act"><span class="odv-btn primary">${attr(smp.actions.primary)}</span></div>`
+          : "",
         `</div>`,
       ),
   };
@@ -683,7 +749,11 @@ export function docsPages(
   // The foundations overview: every scope in one compact table, with the answer that sets its values.
   // The Foundations index (OD-209): a card per scope in three groups, each with its answer for the
   // values, why, and a small specimen drawn in the scheme's own tokens.
-  const SCOPE_ROBOT = { color: "swatch", spacing: "measure", components: "shelf" };
+  const SCOPE_ROBOT = {
+    color: "swatch",
+    spacing: "measure",
+    components: "shelf",
+  };
   const scopeRobot = (id) => robot(SCOPE_ROBOT[id] ?? `scopes/${id}`);
   const scopeSpecimen = {
     typography: `<div class="odv-spec"><span style="font-size:var(--type-title-font-size);font-family:var(--type-display-font-family)">Aa</span><span style="font-size:var(--type-body-font-size)">Aa</span><span style="font-size:var(--type-caption-font-size)">Aa</span></div>`,
@@ -701,15 +771,22 @@ export function docsPages(
   };
   const SCOPE_GROUPS = [
     ["How it looks", ["typography", "color", "shape", "elevation"]],
-    ["How it feels to use", ["spacing", "motion", "iconography", "accessibility"]],
-    ["Where it runs and how it speaks", ["theming", "naming", "voice", "components"]],
+    [
+      "How it feels to use",
+      ["spacing", "motion", "iconography", "accessibility"],
+    ],
+    [
+      "Where it runs and how it speaks",
+      ["theming", "naming", "voice", "components"],
+    ],
   ];
   const grouped = new Set(SCOPE_GROUPS.flatMap(([, ids]) => ids));
   const rest = g.scopes.filter((sc) => !grouped.has(sc.id)).map((sc) => sc.id);
   const scopeCard = (id) => {
     const sc = g.scopes.find((x) => x.id === id);
     if (!sc) return "";
-    const q = sc.questions.find((x) => x.method === "values") ?? sc.questions[3];
+    const q =
+      sc.questions.find((x) => x.method === "values") ?? sc.questions[3];
     return h(
       `<a class="odv-scard" href="./${sc.id}">`,
       robots ? `<span class="odv-scard-art">${scopeRobot(sc.id)}</span>` : "",
@@ -729,7 +806,11 @@ export function docsPages(
     NOTE +
     `# Foundations\n\nEvery scope answers the same five questions. This is the answer that sets each scope's values; open a scope for all five, its tokens and its specimen.\n\n` +
     [...SCOPE_GROUPS, ...(rest.length ? [["More", rest]] : [])]
-      .map(([title, ids]) => `## ${title}\n\n` + h(`<div class="odv-scards">`, ids.map(scopeCard), `</div>`))
+      .map(
+        ([title, ids]) =>
+          `## ${title}\n\n` +
+          h(`<div class="odv-scards">`, ids.map(scopeCard), `</div>`),
+      )
       .join("\n\n") +
     "\n";
   // The colour page leads with the colours in use (OD-182): the key colours as a band, the surfaces
@@ -767,33 +848,39 @@ export function docsPages(
         all.findIndex((y) => y.meaning === x.meaning) === j,
     );
     return (
-      h(
-        `<div class="odv-band">`,
-        band.map(([n, p]) => {
-          const c = hex(first, p);
-          return `<div style="background:${cssVar(p)};color:${ink(c)}"><b>${n}</b>${p.replace(/^color\./, "")}</div>`;
-        }),
-        `</div>`,
+      perBrand((F) =>
+        h(
+          `<div class="odv-band">`,
+          band.map(([n, p]) => {
+            const c = hex(F, p);
+            return `<div style="background:${cssVar(p)};color:${ink(c)}"><b>${n}</b>${p.replace(/^color\./, "")}</div>`;
+          }),
+          `</div>`,
+        ),
       ) +
       `\n\n## Surfaces\n\nThe canvas, then the surfaces content sits on, in ${scheme.themes.map((th) => th.id).join(" and ")}.\n\n` +
-      h(
-        `<div class="odv-grid two">`,
-        [first, dark].filter(Boolean).map(stack),
-        `</div>`,
+      perBrand((F, D) =>
+        h(
+          `<div class="odv-grid two">`,
+          [F, D].filter(Boolean).map(stack),
+          `</div>`,
+        ),
       ) +
       (sts.length
         ? `\n\n## Status colours in use\n\nEach status label always gets the same colour, with its dot, so colour is never the only cue. The ratio is the status colour on its subtle fill, computed from the tokens.\n\n` +
-          h(
-            `<div class="odv-card">`,
-            sts.map((x) => {
-              const k = `color.status.${x.meaning}`;
-              const r = (th) =>
-                th
-                  ? contrast(hex(th, k), hex(th, `${k}.subtle`)).toFixed(1)
-                  : "";
-              return `<div class="odv-status"><div>${badgeHtml(x.label, x.meaning)}</div><div class="odv-alert odv-t-${x.meaning}"><b>${attr(x.label)}.</b> ${attr(x.why)}</div><div><span class="odv-ratio">${first.id} ${r(first)}:1</span> <span class="odv-ratio">${dark?.id ?? ""} ${r(dark)}:1</span></div></div>`;
-            }),
-            `</div>`,
+          perBrand((F, D) =>
+            h(
+              `<div class="odv-card">`,
+              sts.map((x) => {
+                const k = `color.status.${x.meaning}`;
+                const r = (th) =>
+                  th
+                    ? contrast(hex(th, k), hex(th, `${k}.subtle`)).toFixed(1)
+                    : "";
+                return `<div class="odv-status"><div>${badgeHtml(x.label, x.meaning)}</div><div class="odv-alert odv-t-${x.meaning}"><b>${attr(x.label)}.</b> ${attr(x.why)}</div><div><span class="odv-ratio">${F.id} ${r(F)}:1</span> <span class="odv-ratio">${D?.id ?? ""} ${r(D)}:1</span></div></div>`;
+              }),
+              `</div>`,
+            ),
           )
         : "") +
       "\n\n"
@@ -806,12 +893,15 @@ export function docsPages(
   const themingVisuals = () => {
     const brandIds = Object.keys(scheme.tokens.brands ?? {});
     const modes = [...new Set(scheme.themes.map((t) => t.mode))];
-    const hexOf = (th, p) => String(value(th, p, "")).match(/#[0-9a-f]{6,8}/i)?.[0] ?? "";
+    const hexOf = (th, p) =>
+      String(value(th, p, "")).match(/#[0-9a-f]{6,8}/i)?.[0] ?? "";
     const semPath = (p) => p.replace(/^\./, "").replace(/\.@$/, "");
     const cap = (x) => x.charAt(0).toUpperCase() + x.slice(1);
     const brandLabel = (b) => scheme.tokens.brands[b]?.label ?? cap(b);
     const radius = (th, k) => value(th, `radius.${k}`, "0");
-    const sts = (smp.statuses ?? []).filter((x) => STATUS_CLASS[x.meaning]).slice(0, 2);
+    const sts = (smp.statuses ?? [])
+      .filter((x) => STATUS_CLASS[x.meaning])
+      .slice(0, 2);
     const commit = scheme.tokens.content?.action?.commit?.$value ?? "Save";
     const cancel = scheme.tokens.content?.action?.cancel?.$value ?? "Cancel";
     const preview = (th) => {
@@ -831,11 +921,17 @@ export function docsPages(
     const sameBlock = (b) => {
       const base = scheme.tokens.brands[b]?.theme?.base ?? {};
       const th = scheme.themes.find((t) => t.brand === b) ?? first;
-      const radii = leaves(base.radius ?? {}, "").map((x) => x.path.replace(/^\./, ""));
+      const radii = leaves(base.radius ?? {}, "").map((x) =>
+        x.path.replace(/^\./, ""),
+      );
       const fams = {};
       for (const x of leaves(base.type ?? {}, "")) {
         const role = x.path.replace(/^\./, "").split(".")[0];
-        const v = String(cssValue(value(th, `type.${role}.font-family`, "")) || "").split(",")[0].replaceAll('"', "");
+        const v = String(
+          cssValue(value(th, `type.${role}.font-family`, "")) || "",
+        )
+          .split(",")[0]
+          .replaceAll('"', "");
         if (v) (fams[v] ??= []).push(role);
       }
       return h(
@@ -844,7 +940,14 @@ export function docsPages(
           ? `<div class="odv-card"><b>Corners</b><div class="odv-corners">${radii.map((r) => `<span><i style="border-radius:${radius(th, r)}"></i>${attr(r)} · ${attr(radius(th, r))}</span>`).join("")}</div></div>`
           : "",
         Object.keys(fams).length
-          ? `<div class="odv-card"><b>Type families</b><div class="odv-fams">${Object.entries(fams).map(([f, roles]) => `<div><span>${attr(roles.map(cap).join(", "))}</span><span style="font-family:${attr(f)}">${attr(f)}</span></div>`).join("")}</div></div>`
+          ? `<div class="odv-card"><b>Type families</b><div class="odv-fams">${Object.entries(
+              fams,
+            )
+              .map(
+                ([f, roles]) =>
+                  `<div><span>${attr(roles.map(cap).join(", "))}</span><span style="font-family:${attr(f)}">${attr(f)}</span></div>`,
+              )
+              .join("")}</div></div>`
           : "",
         `</div>`,
       );
@@ -852,8 +955,12 @@ export function docsPages(
     const brandSet = (b) => {
       const ths = scheme.themes.filter((t) => t.brand === b);
       const tree = scheme.tokens.brands[b]?.theme ?? {};
-      const jobs = leaves(tree[ths[0]?.mode] ?? {}, "").map((x) => semPath(x.path));
-      const groups = [...new Set(jobs.map((p) => p.split(".").slice(0, 2).join(".")))];
+      const jobs = leaves(tree[ths[0]?.mode] ?? {}, "").map((x) =>
+        semPath(x.path),
+      );
+      const groups = [
+        ...new Set(jobs.map((p) => p.split(".").slice(0, 2).join("."))),
+      ];
       const cell = (th, p) => {
         const hx = hexOf(th, p);
         const prim = primitiveOf(th, p)?.replace(/^color\./, "");
@@ -874,7 +981,10 @@ export function docsPages(
             const list = jobs.filter((p) => p.startsWith(`${gr}.`) || p === gr);
             return h(
               `<tr class="odv-tgroup"><td colspan="${ths.length + 1}">${attr(cap(gr.split(".").pop()))} · ${list.length}</td></tr>`,
-              list.map((p) => `<tr><td><code>${attr(p.split(".").slice(1).join("."))}</code></td>${ths.map((t) => `<td>${cell(t, p)}</td>`).join("")}</tr>`),
+              list.map(
+                (p) =>
+                  `<tr><td><code>${attr(p.split(".").slice(1).join("."))}</code></td>${ths.map((t) => `<td>${cell(t, p)}</td>`).join("")}</tr>`,
+              ),
             );
           }),
           `</tbody></table></div>`,
@@ -895,24 +1005,36 @@ export function docsPages(
     // Paths for the component scope start with component.; the key itself is the rest.
     const key = (p) => p.replace(/^component\./, "");
     const semantics = tokens.filter((t) => !isPrimitive(t.path));
-    const darkDiffers = semantics.some(
-      (t) => link(first, key(t.path)) !== link(dark, key(t.path)),
-    );
-    const prims = [
+    const darkDiffers = (F, D) =>
+      semantics.some((t) => link(F, key(t.path)) !== link(D, key(t.path)));
+    const primsOf = (F, D) => [
       ...tokens.filter((t) => isPrimitive(t.path)).map((t) => t.path),
       ...semantics.flatMap((t) => [
-        primitiveOf(first, key(t.path)),
-        primitiveOf(dark, key(t.path)),
+        primitiveOf(F, key(t.path)),
+        primitiveOf(D, key(t.path)),
       ]),
     ];
-    const SPECIMEN = sc.id === "theming"
-      ? themingVisuals()
-      : ["components", "naming", "voice"].includes(sc.id)
-      ? ""
-      : specimen(
-          semantics.length ? semantics : tokens,
-          scheme.scenarios[0].text,
-        );
+    const tokenTable = (F, D) =>
+      (darkDiffers(F, D)
+        ? "| Token | Points to, light | Points to, dark |\n| --- | --- | --- |\n"
+        : "| Token | Points to |\n| --- | --- |\n") +
+      semantics
+        .map((t) =>
+          darkDiffers(F, D)
+            ? `| \`${t.path}\` | ${link(F, key(t.path))} | ${link(D, key(t.path))} |`
+            : `| \`${t.path}\` | ${link(F, key(t.path))} |`,
+        )
+        .join("\n");
+    const hasPrims = primsOf(first, dark).filter(Boolean).length > 0;
+    const SPECIMEN =
+      sc.id === "theming"
+        ? themingVisuals()
+        : ["components", "naming", "voice"].includes(sc.id)
+          ? ""
+          : specimen(
+              semantics.length ? semantics : tokens,
+              scheme.scenarios[0].text,
+            );
     pages[`foundations/${sc.id}.md`] =
       fm({
         sidebar_position: i + 1,
@@ -931,22 +1053,13 @@ export function docsPages(
       (sc.id === "theming"
         ? ""
         : `\n\n## Tokens\n\n` +
-      (semantics.length
-        ? `Each token points to another token. Values live only on primitives, below.\n\n` +
-          (darkDiffers
-            ? "| Token | Points to, light | Points to, dark |\n| --- | --- | --- |\n"
-            : "| Token | Points to |\n| --- | --- |\n") +
-          semantics
-            .map((t) =>
-              darkDiffers
-                ? `| \`${t.path}\` | ${link(first, key(t.path))} | ${link(dark, key(t.path))} |`
-                : `| \`${t.path}\` | ${link(first, key(t.path))} |`,
-            )
-            .join("\n")
-        : "This scope sets primitives directly.") +
-      (prims.filter(Boolean).length
-        ? `\n\n## Primitives\n\nThe raw values the tokens above end at.\n\n${primitiveRows(prims)}`
-        : "")) +
+          (semantics.length
+            ? `Each token points to another token. Values live only on primitives, below.\n\n` +
+              perBrand(tokenTable)
+            : "This scope sets primitives directly.") +
+          (hasPrims
+            ? `\n\n## Primitives\n\nThe raw values the tokens above end at.\n\n${perBrand((F, D) => primitiveRows(primsOf(F, D), F))}`
+            : "")) +
       `\n\n## Where it lands\n\n${(sc.lands_in ?? []).map((c) => `- ${title(c)}`).join("\n")}\n\n` +
       `## When to use what\n\n${RULES}${usage.map(rule).join("\n")}\n` +
       (sc.id === "color" ? colourGuidance(g) : "");
@@ -1043,20 +1156,28 @@ export function docsPages(
     if (k.id === "color") {
       // One used step from each family, so the specimen is the palette in use.
       const hues = {};
-      for (const x of pick.filter((y) => /^#/.test(String(y.ref)) && !/\.dark\./.test(y.path))) {
+      for (const x of pick.filter(
+        (y) => /^#/.test(String(y.ref)) && !/\.dark\./.test(y.path),
+      )) {
         const hue = x.path.split(".")[1];
         const step = Number(x.path.split(".").pop());
         const best = hues[hue];
-        if (!best || Math.abs(step - 600) < Math.abs(best.step - 600)) hues[hue] = { ...x, step };
+        if (!best || Math.abs(step - 600) < Math.abs(best.step - 600))
+          hues[hue] = { ...x, step };
       }
       const sws = Object.values(hues);
       return `<div class="odv-spec">${sws
         .slice(0, 8)
-        .map((x) => `<i class="odv-sw" style="background:${x.ref}" title="${attr(x.path)}"></i>`)
+        .map(
+          (x) =>
+            `<i class="odv-sw" style="background:${x.ref}" title="${attr(x.path)}"></i>`,
+        )
         .join("")}</div>`;
     }
     if (k.id === "space-and-size") {
-      const px = [...new Set(pick.map((x) => rem(x.ref)).filter((n) => n > 0))].sort((a, b) => a - b).slice(0, 7);
+      const px = [...new Set(pick.map((x) => rem(x.ref)).filter((n) => n > 0))]
+        .sort((a, b) => a - b)
+        .slice(0, 7);
       const top = Math.max(...px);
       return `<div class="odv-spec odv-spec-cols">${px.map((n) => `<i style="height:${Math.max(3, Math.round((n / top) * 30))}px" title="${n}px"></i>`).join("")}</div>`;
     }
@@ -1072,17 +1193,28 @@ export function docsPages(
       return `<div class="odv-spec">${rs.map((v) => `<i class="odv-shape" style="border-radius:${v}" title="${attr(v)}"></i>`).join("")}</div>`;
     }
     if (k.id === "type") {
-      const fams = pick.filter((x) => x.path.startsWith("font.family.")).slice(0, 2);
+      const fams = pick
+        .filter((x) => x.path.startsWith("font.family."))
+        .slice(0, 2);
       return `<div class="odv-spec">${fams
-        .map((x) => `<span class="odv-aa" style="font-family:${attr(cssValue(x.ref))}" title="${attr(x.path)}">Aa</span>`)
-        .join("")}<span class="odv-spec-note">${fams.map((x) => attr(String(cssValue(x.ref)).split(",")[0].replaceAll('"', ""))).join(" · ")}</span></div>`;
+        .map(
+          (x) =>
+            `<span class="odv-aa" style="font-family:${attr(cssValue(x.ref))}" title="${attr(x.path)}">Aa</span>`,
+        )
+        .join(
+          "",
+        )}<span class="odv-spec-note">${fams.map((x) => attr(String(cssValue(x.ref)).split(",")[0].replaceAll('"', ""))).join(" · ")}</span></div>`;
     }
     if (k.id === "motion") {
-      const ds = pick.filter((x) => x.path.startsWith("duration.")).map((x) => String(x.ref));
+      const ds = pick
+        .filter((x) => x.path.startsWith("duration."))
+        .map((x) => String(x.ref));
       return `<div class="odv-spec"><i class="odv-dot"></i><span class="odv-spec-note">${ds.slice(0, 3).map(attr).join(" · ")}</span></div>`;
     }
     if (k.id === "effects") {
-      const sh = pick.filter((x) => x.path.startsWith("shadow.") && !/none/.test(x.path)).slice(0, 3);
+      const sh = pick
+        .filter((x) => x.path.startsWith("shadow.") && !/none/.test(x.path))
+        .slice(0, 3);
       return `<div class="odv-spec odv-spec-lift">${sh.map((x) => `<i class="odv-lift" style="box-shadow:${attr(cssValue(x.ref))}" title="${attr(x.path)}"></i>`).join("")}</div>`;
     }
     return "";
@@ -1091,7 +1223,9 @@ export function docsPages(
     const n = k.list.filter((x) => usedBy[x.path]).length;
     return h(
       `<a class="odv-scard" href="./${k.id}">`,
-      robots ? `<span class="odv-scard-art">${robot(PRIM_ROBOT[k.id] ?? PRIM_ROBOT.other)}</span>` : "",
+      robots
+        ? `<span class="odv-scard-art">${robot(PRIM_ROBOT[k.id] ?? PRIM_ROBOT.other)}</span>`
+        : "",
       `<span class="odv-scard-body"><span class="odv-scard-title">${attr(k.title)}</span>`,
       primSpecimen(k),
       `<span class="odv-scard-why">${k.list.length} primitives · ${n} in use</span>`,
@@ -1119,8 +1253,13 @@ export function docsPages(
     "\n\n" +
     [...PRIM_GROUPS, ...(primRest.length ? [["More", primRest]] : [])]
       .map(([t, ids]) => {
-        const cards = ids.map((id) => kinds.find((k) => k.id === id)).filter(Boolean);
-        return cards.length ? `## ${t}\n\n` + h(`<div class="odv-scards">`, cards.map(primCard), `</div>`) : "";
+        const cards = ids
+          .map((id) => kinds.find((k) => k.id === id))
+          .filter(Boolean);
+        return cards.length
+          ? `## ${t}\n\n` +
+              h(`<div class="odv-scards">`, cards.map(primCard), `</div>`)
+          : "";
       })
       .filter(Boolean)
       .join("\n\n") +
@@ -1238,17 +1377,36 @@ export function docsPages(
       const util = cur.replace(/^!/, "").replace(/\/\d+$/, "");
       const states = segs;
       let row;
-      const color = util.match(/^(bg|text|border(?:-[tblrxy])?|ring-offset|ring|outline|fill|stroke|divide|placeholder|caret|accent|decoration)-([a-z0-9-]+)$/);
+      const color = util.match(
+        /^(bg|text|border(?:-[tblrxy])?|ring-offset|ring|outline|fill|stroke|divide|placeholder|caret|accent|decoration)-([a-z0-9-]+)$/,
+      );
       if (color && SHADCN[color[2]])
-        row = { part: PART[color[1]], variable: color[2], token: SHADCN[color[2]] };
+        row = {
+          part: PART[color[1]],
+          variable: color[2],
+          token: SHADCN[color[2]],
+        };
       else if (/^border(-[tblrxy])?$/.test(util))
-        row = { part: "Edge", variable: "border", token: SHADCN.border, cls: util };
+        row = {
+          part: "Edge",
+          variable: "border",
+          token: SHADCN.border,
+          cls: util,
+        };
       else {
-        const scale = util.match(/^(rounded(?:-[tblrse]{1,2})?|shadow|text)-(xs|sm|md|lg|xl|base)$/);
-        const key = scale && `--${scale[1].startsWith("rounded") ? "radius" : scale[1]}-${scale[2]}`;
+        const scale = util.match(
+          /^(rounded(?:-[tblrse]{1,2})?|shadow|text)-(xs|sm|md|lg|xl|base)$/,
+        );
+        const key =
+          scale &&
+          `--${scale[1].startsWith("rounded") ? "radius" : scale[1]}-${scale[2]}`;
         if (key && SHADCN_SCALE[key])
           row = {
-            part: key.startsWith("--radius") ? "Corner" : key.startsWith("--shadow") ? "Shadow" : "Text size",
+            part: key.startsWith("--radius")
+              ? "Corner"
+              : key.startsWith("--shadow")
+                ? "Shadow"
+                : "Text size",
             variable: key.slice(2),
             token: SHADCN_SCALE[key].replace(/^var\(--(.+)\)$/, "$1"),
           };
@@ -1265,9 +1423,29 @@ export function docsPages(
       const k = `${row.part}|${row.path}|${row.when}`;
       if (!rows.has(k)) rows.set(k, row);
     }
-    const order = ["Fill", "Text", "Edge", "Divider", "Focus ring", "Focus ring offset", "Outline", "Icon fill", "Icon stroke", "Placeholder", "Caret", "Accent", "Underline", "Corner", "Shadow", "Text size"];
+    const order = [
+      "Fill",
+      "Text",
+      "Edge",
+      "Divider",
+      "Focus ring",
+      "Focus ring offset",
+      "Outline",
+      "Icon fill",
+      "Icon stroke",
+      "Placeholder",
+      "Caret",
+      "Accent",
+      "Underline",
+      "Corner",
+      "Shadow",
+      "Text size",
+    ];
     return [...rows.values()].sort(
-      (a, b) => order.indexOf(a.part) - order.indexOf(b.part) || (a.when ? 1 : 0) - (b.when ? 1 : 0) || a.cls.localeCompare(b.cls),
+      (a, b) =>
+        order.indexOf(a.part) - order.indexOf(b.part) ||
+        (a.when ? 1 : 0) - (b.when ? 1 : 0) ||
+        a.cls.localeCompare(b.cls),
     );
   };
   const brandName = (b) => scheme.tokens.brands?.[b]?.label ?? b;
@@ -1277,12 +1455,17 @@ export function docsPages(
     const raw = String(value(t, row.lookup, ""));
     const prim = primitiveOf(t, row.lookup)?.replace(/^color\./, "") ?? "";
     const hex = raw.match(/#[0-9a-f]{6,8}/i)?.[0];
-    const shown = `${attr(prim)}${prim && raw ? " · " : ""}${attr(row.part === "Shadow" ? "" : raw)}`.replace(/ · $/, "");
+    const shown =
+      `${attr(prim)}${prim && raw ? " · " : ""}${attr(row.part === "Shadow" ? "" : raw)}`.replace(
+        / · $/,
+        "",
+      );
     if (row.part === "Shadow")
       return `<span class="odv-tsw"><i class="odv-tlift" style="box-shadow:${attr(raw)}"></i><small>${attr(prim || raw)}</small></span>`;
     if (row.part === "Corner")
       return `<span class="odv-tsw"><i class="odv-tshape" style="border-radius:${attr(raw)}"></i><small>${shown}</small></span>`;
-    if (hex) return `<span class="odv-tsw"><i style="background:${hex}"></i><small>${shown}</small></span>`;
+    if (hex)
+      return `<span class="odv-tsw"><i style="background:${hex}"></i><small>${shown}</small></span>`;
     return `<span class="odv-tsw"><small>${shown}</small></span>`;
   };
   const tokensRead = (name) => {
@@ -1351,8 +1534,20 @@ export function docsPages(
     content: "Ways to show more content.",
     media: "Pictures and slides.",
   };
-  const FAMILY_ORDER = ["action", "form", "data", "feedback", "navigation", "overlay", "layout", "content", "media"];
-  const families = [...new Set([...FAMILY_ORDER, ...catalogue.map((c) => c.family)])];
+  const FAMILY_ORDER = [
+    "action",
+    "form",
+    "data",
+    "feedback",
+    "navigation",
+    "overlay",
+    "layout",
+    "content",
+    "media",
+  ];
+  const families = [
+    ...new Set([...FAMILY_ORDER, ...catalogue.map((c) => c.family)]),
+  ];
   // Only a component with a page links to it: built, and in the inventory unless every page is made.
   const hasPage = (id) => built.includes(id) && (all || id in inventory);
   const icard = (c, out) =>
@@ -1390,23 +1585,36 @@ export function docsPages(
     "\n\n" +
     families
       .map((f) => {
-        const list = inItems.filter((c) => c.family === f).sort((a, b) => a.id.localeCompare(b.id));
+        const list = inItems
+          .filter((c) => c.family === f)
+          .sort((a, b) => a.id.localeCompare(b.id));
         if (!list.length) return "";
-        return `## ${title(f)}\n\n${FAMILY_TEXT[f] ?? ""} ${list.length} in ${esc(scheme.name)}.\n\n` + h(`<div class="odv-icards">`, list.map((c) => icard(c)), `</div>`);
+        return (
+          `## ${title(f)}\n\n${FAMILY_TEXT[f] ?? ""} ${list.length} in ${esc(scheme.name)}.\n\n` +
+          h(
+            `<div class="odv-icards">`,
+            list.map((c) => icard(c)),
+            `</div>`,
+          )
+        );
       })
       .filter(Boolean)
       .join("\n\n") +
     (outItems.length
       ? `\n\n## Left out\n\nThe components answers did not pick these.${all ? " Each page still shows how it would look." : ""}\n\n` +
-        h(`<div class="odv-icards">`, outItems.sort((a, b) => a.id.localeCompare(b.id)).map((c) => icard(c, out[c.id] ?? "Left out.")), `</div>`)
+        h(
+          `<div class="odv-icards">`,
+          outItems
+            .sort((a, b) => a.id.localeCompare(b.id))
+            .map((c) => icard(c, out[c.id] ?? "Left out.")),
+          `</div>`,
+        )
       : "") +
     "\n";
   // A page per component that is in the inventory and built (OD-194). It reads the same engine as the
   // CLI's component command and the MCP's get_component, so the docs, Storybook and agents agree, and
   // adds what Storybook cannot: the answers behind each decision and what a change would move.
-  const names = built.filter(
-    (n) => all || !scheme.inventory || n in inventory,
-  );
+  const names = built.filter((n) => all || !scheme.inventory || n in inventory);
   const leftOut = (n) => Boolean(scheme.inventory) && !(n in inventory);
   // Embeds open the story in this design system: the Open DS Storybook reads the scheme (and the first
   // brand) from its toolbar global; a created project's Storybook has one scheme and ignores it.
@@ -1455,7 +1663,9 @@ export function docsPages(
       parts.push(
         `## When to use it\n\n` +
           (ownUse ? `**In ${esc(scheme.name)}:** ${esc(ownUse)}\n\n` : "") +
-          (r.apply_when ? `- **Use it when:** ${esc(r.apply_when)}\n- **Not when:** ${esc(r.not_when)}` : "") +
+          (r.apply_when
+            ? `- **Use it when:** ${esc(r.apply_when)}\n- **Not when:** ${esc(r.not_when)}`
+            : "") +
           (r.vs?.length
             ? `\n\nInstead:\n\n${r.vs.map((v) => `- ${v.outside ? esc(title(v.id)) : pageOf(v.id)}: ${esc(v.why)}`).join("\n")}`
             : ""),
@@ -1604,15 +1814,19 @@ export function docsPages(
     );
     parts.push(
       keys.length
-        ? `## Component keys\n\nThe CSS variable is the key with \`/\` replaced by \`-\` and the base \`@\` dropped. Each key points to a token; values live only on primitives.\n\n| Key | What it controls | Points to, ${first.id} | Points to, ${dark.id} |\n| --- | --- | --- | --- |\n` +
-            keys
-              .map((k) => {
-                const p = k.id.replaceAll("/", ".");
-                const l = link(first, p);
-                const d = link(dark, p);
-                return `| \`${k.id}\` | ${esc(k.description)} | ${l} | ${d === l ? "same" : d} |`;
-              })
-              .join("\n")
+        ? `## Component keys\n\nThe CSS variable is the key with \`/\` replaced by \`-\` and the base \`@\` dropped. Each key points to a token; values live only on primitives.\n\n` +
+            perBrand(
+              (F, D) =>
+                `| Key | What it controls | Points to, ${F.id} | Points to, ${D.id} |\n| --- | --- | --- | --- |\n` +
+                keys
+                  .map((k) => {
+                    const p = k.id.replaceAll("/", ".");
+                    const l = link(F, p);
+                    const d = link(D, p);
+                    return `| \`${k.id}\` | ${esc(k.description)} | ${l} | ${d === l ? "same" : d} |`;
+                  })
+                  .join("\n"),
+            )
         : tokensRead(name),
     );
     pages[`components/${name}.md`] =

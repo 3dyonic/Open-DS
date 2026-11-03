@@ -1395,3 +1395,12 @@ a.odv-icard:hover {
   border: 0;
   background: var(--color-surface-raised, var(--color-surface-default));
 }
+
+/* OD-217: which brand a table belongs to, in a scheme with several brands. */
+.odv-brandname {
+  margin: 0 0 0.5rem;
+  font: 500 0.6875rem/1.4 var(--type-data-font-family, ui-monospace, monospace);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--color-text-secondary);
+}

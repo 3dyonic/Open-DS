@@ -67,8 +67,38 @@ The component reads only component keys and semantic tokens, so it follows the b
 
 The CSS variable is the key with `/` replaced by `-` and the base `@` dropped. Each key points to a token; values live only on primitives.
 
+<div class="odv-brandset" data-for-brand="aster">
+
+<p class="odv-brandname">Aster</p>
+
 | Key | What it controls | Points to, aster-light | Points to, aster-dark |
 | --- | --- | --- | --- |
 | `tabs/indicator` | Active tab indicator. | `color.action.primary.@` → `aster.theme.light.color.action.primary.@` → `color.teal.light.600` | `color.action.primary.@` → `aster.theme.dark.color.action.primary.@` → `color.teal.dark.700` |
 | `tabs/label/@` | Inactive tab label. | `color.text.secondary` → `aster.theme.light.color.text.secondary` → `color.slate.light.700` | `color.text.secondary` → `aster.theme.dark.color.text.secondary` → `color.slate.dark.500` |
 | `tabs/label/active` | Active tab label. | `color.text.primary` → `aster.theme.light.color.text.primary` → `color.slate.light.900` | `color.text.primary` → `aster.theme.dark.color.text.primary` → `color.slate.dark.900` |
+
+</div>
+
+<div class="odv-brandset" data-for-brand="birch">
+
+<p class="odv-brandname">Birch</p>
+
+| Key | What it controls | Points to, birch-light | Points to, birch-dark |
+| --- | --- | --- | --- |
+| `tabs/indicator` | Active tab indicator. | `color.action.primary.@` → `birch.theme.light.color.action.primary.@` → `color.purple.light.600` | `color.action.primary.@` → `birch.theme.dark.color.action.primary.@` → `color.purple.dark.700` |
+| `tabs/label/@` | Inactive tab label. | `color.text.secondary` → `birch.theme.light.color.text.secondary` → `color.slate.light.700` | `color.text.secondary` → `birch.theme.dark.color.text.secondary` → `color.slate.dark.500` |
+| `tabs/label/active` | Active tab label. | `color.text.primary` → `birch.theme.light.color.text.primary` → `color.slate.light.900` | `color.text.primary` → `birch.theme.dark.color.text.primary` → `color.slate.dark.900` |
+
+</div>
+
+<div class="odv-brandset" data-for-brand="coral">
+
+<p class="odv-brandname">Coral</p>
+
+| Key | What it controls | Points to, coral-light | Points to, coral-dark |
+| --- | --- | --- | --- |
+| `tabs/indicator` | Active tab indicator. | `color.action.primary.@` → `coral.theme.light.color.action.primary.@` → `color.orange.light.600` | `color.action.primary.@` → `coral.theme.dark.color.action.primary.@` → `color.orange.dark.700` |
+| `tabs/label/@` | Inactive tab label. | `color.text.secondary` → `coral.theme.light.color.text.secondary` → `color.slate.light.700` | `color.text.secondary` → `coral.theme.dark.color.text.secondary` → `color.slate.dark.500` |
+| `tabs/label/active` | Active tab label. | `color.text.primary` → `coral.theme.light.color.text.primary` → `color.slate.light.900` | `color.text.primary` → `coral.theme.dark.color.text.primary` → `color.slate.dark.900` |
+
+</div>

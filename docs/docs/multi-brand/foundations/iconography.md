@@ -28,17 +28,69 @@ When icons appear and how they look.
 
 Each token points to another token. Values live only on primitives, below.
 
+<div class="odv-brandset" data-for-brand="aster">
+
+<p class="odv-brandname">Aster</p>
+
 | Token | Points to |
 | --- | --- |
 | `size.icon` | `size.16` |
+
+</div>
+
+<div class="odv-brandset" data-for-brand="birch">
+
+<p class="odv-brandname">Birch</p>
+
+| Token | Points to |
+| --- | --- |
+| `size.icon` | `size.16` |
+
+</div>
+
+<div class="odv-brandset" data-for-brand="coral">
+
+<p class="odv-brandname">Coral</p>
+
+| Token | Points to |
+| --- | --- |
+| `size.icon` | `size.16` |
+
+</div>
 
 ## Primitives
 
 The raw values the tokens above end at.
 
+<div class="odv-brandset" data-for-brand="aster">
+
+<p class="odv-brandname">Aster</p>
+
 | Primitive | Value | Sample |
 | --- | --- | --- |
 | `size.16` | 1rem (16px) | <span class="ods-bar" style="width:1rem"></span> |
+
+</div>
+
+<div class="odv-brandset" data-for-brand="birch">
+
+<p class="odv-brandname">Birch</p>
+
+| Primitive | Value | Sample |
+| --- | --- | --- |
+| `size.16` | 1rem (16px) | <span class="ods-bar" style="width:1rem"></span> |
+
+</div>
+
+<div class="odv-brandset" data-for-brand="coral">
+
+<p class="odv-brandname">Coral</p>
+
+| Primitive | Value | Sample |
+| --- | --- | --- |
+| `size.16` | 1rem (16px) | <span class="ods-bar" style="width:1rem"></span> |
+
+</div>
 
 ## Where it lands
 

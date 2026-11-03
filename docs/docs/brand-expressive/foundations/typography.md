@@ -79,12 +79,12 @@ The raw values the tokens above end at.
 | `font.line-height.1_3` | 1.3 |  |
 | `font.line-height.1_4` | 1.4 |  |
 | `font.line-height.1_55` | 1.55 |  |
-| `font.size.14` | 0.875rem (14px) | <span class="ods-bar" style="width:0.875rem"></span> |
-| `font.size.15` | 0.9375rem (15px) | <span class="ods-bar" style="width:0.9375rem"></span> |
-| `font.size.17` | 1.0625rem (17px) | <span class="ods-bar" style="width:1.0625rem"></span> |
-| `font.size.28` | 1.75rem (28px) | <span class="ods-bar" style="width:1.75rem"></span> |
-| `font.size.40` | 2.5rem (40px) | <span class="ods-bar" style="width:2.5rem"></span> |
-| `font.size.56` | 3.5rem (56px) | <span class="ods-bar" style="width:3.5rem"></span> |
+| `font.size.14` | 0.875rem (14px) | <span class="ods-type" style="font-size:0.875rem">Aa</span> |
+| `font.size.15` | 0.9375rem (15px) | <span class="ods-type" style="font-size:0.9375rem">Aa</span> |
+| `font.size.17` | 1.0625rem (17px) | <span class="ods-type" style="font-size:1.0625rem">Aa</span> |
+| `font.size.28` | 1.75rem (28px) | <span class="ods-type" style="font-size:1.75rem">Aa</span> |
+| `font.size.40` | 2.5rem (40px) | <span class="ods-type" style="font-size:2.5rem">Aa</span> |
+| `font.size.56` | 3.5rem (56px) | <span class="ods-type" style="font-size:3.5rem">Aa</span> |
 | `font.weight.400` | 400 |  |
 | `font.weight.700` | 700 |  |
 | `font.weight.800` | 800 |  |
