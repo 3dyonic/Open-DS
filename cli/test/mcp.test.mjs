@@ -4,6 +4,7 @@ import { test } from "node:test";
 import { Client } from "@modelcontextprotocol/sdk/client/index.js";
 import { InMemoryTransport } from "@modelcontextprotocol/sdk/inMemory.js";
 import { createMcpServer, runHttp } from "../src/mcp.mjs";
+import { loadScheme } from "../src/schemes.mjs";
 
 async function connect() {
   const [a, b] = InMemoryTransport.createLinkedPair();
@@ -331,7 +332,10 @@ test("get_context is short by default, with sections, pages and file routes (OD-
     target: "build",
     section: "rules",
   });
-  assert.match(rules, /Page 1 of \d+\. Next: get_context target=build section=rules page=2/);
+  assert.match(
+    rules,
+    /Page 1 of \d+\. Next: get_context target=build section=rules page=2/,
+  );
   const second = await text({
     scheme_id: "dense-data",
     target: "build",
@@ -385,6 +389,31 @@ test("get_component: the reference next to each scheme's decisions (OD-185)", as
   assert.ok(bad.isError);
 });
 
+test("get_component on a left-out component: what to use instead and the answers behind it (OD-212)", async () => {
+  const c = await connect();
+  const s = loadScheme("dense-data");
+  const left = s.inventory.out[0];
+  const r = await call(c, "get_component", {
+    scheme_id: "dense-data",
+    component: left.id,
+  });
+  assert.equal(r.carried, false);
+  assert.equal(r.why, left.why);
+  assert.deepEqual(
+    r.instead.map((x) => x.id),
+    left.instead,
+  );
+  const kept = new Set(s.inventory.in.map((x) => x.id));
+  assert.ok(r.instead.every((x) => kept.has(x.id) && x.what));
+  assert.deepEqual(r.because, left.because);
+  // A kept component carries neither.
+  const b = await call(c, "get_component", {
+    scheme_id: "dense-data",
+    component: "button",
+  });
+  assert.equal(b.instead, undefined);
+});
+
 test("what_moves lists the variant decisions and rules an answer drives (OD-185)", async () => {
   const c = await connect();
   const m = await call(c, "what_moves", {
@@ -407,19 +436,37 @@ test("the tools behind the skills answer through the server (OD-202)", async () 
   const c = await connect();
   const ui = await call(c, "check_ui", {
     scheme_id: "dense-data",
-    files: [{ path: "src/app/page.tsx", content: '<Button size="large">Go</Button>' }],
+    files: [
+      { path: "src/app/page.tsx", content: '<Button size="large">Go</Button>' },
+    ],
   });
   assert.equal(ui.pass, false);
   assert.equal(ui.findings[0].rule, "variant-not-used");
-  const copy = await call(c, "check_copy", { scheme_id: "dense-data", kind: "button", text: "Export" });
+  const copy = await call(c, "check_copy", {
+    scheme_id: "dense-data",
+    kind: "button",
+    text: "Export",
+  });
   assert.equal(copy.pass, true);
-  const plan = await call(c, "plan_change", { scheme_id: "dense-data", token: "color.violet.light.600", value: "#9C93F5" });
+  const plan = await call(c, "plan_change", {
+    scheme_id: "dense-data",
+    token: "color.violet.light.600",
+    value: "#9C93F5",
+  });
   assert.equal(plan.pass, false);
-  const token = await call(c, "find_token", { scheme_id: "dense-data", query: "page background" });
+  const token = await call(c, "find_token", {
+    scheme_id: "dense-data",
+    query: "page background",
+  });
   assert.equal(token.results[0].token, "color.surface.canvas");
-  const fit = await call(c, "fit_scheme", { product: "a magazine where people read long articles" });
+  const fit = await call(c, "fit_scheme", {
+    product: "a magazine where people read long articles",
+  });
   assert.equal(fit[0].scheme, "content-first");
-  const bad = await c.callTool({ name: "plan_change", arguments: { scheme_id: "dense-data", question_id: "content.q2" } });
+  const bad = await c.callTool({
+    name: "plan_change",
+    arguments: { scheme_id: "dense-data", question_id: "content.q2" },
+  });
   assert.ok(bad.isError);
 });
 
