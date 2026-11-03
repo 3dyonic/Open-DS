@@ -415,6 +415,20 @@ export const CHECKS = {
     },
   },
 
+  "e2e-app-packages": {
+    requires: ["cli/src/components.mjs", "e2e/app/package.json"],
+    run: async (c) => {
+      // OD-219: the package test builds a fresh app with the workspace's installs, so that app must list
+      // every package a component can import, or a component that starts importing one fails in CI only.
+      const { PACKAGES } = await import(pathToFileURL(c.p("cli/src/components.mjs")).href);
+      const deps = c.json("e2e/app/package.json").dependencies ?? {};
+      const missing = Object.keys(PACKAGES).filter((p) => !deps[p]);
+      return missing.length
+        ? bad(`e2e/app/package.json lacks ${missing.join(", ")}, which components import`)
+        : ok(`the package test app lists all ${Object.keys(PACKAGES).length} component packages`);
+    },
+  },
+
   "catalogue-built": {
     requires: ["schemes/grammar.json", "ui/src/components"],
     run: (c) => {
