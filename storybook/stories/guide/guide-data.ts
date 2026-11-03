@@ -27,7 +27,7 @@ function useHtmlScheme() {
 }
 
 /** This Storybook shows every Open DS scheme, so its introduction first says what Open DS is (OD-216). */
-export const ABOUT_OPEN_DS = true;
+export const ABOUT_OPEN_DS: { schemes: number } | null = { schemes: Object.keys(SCHEMES).length };
 
 export function useGuideData(): { scheme: any; grammar: any; key: string } {
   const ctx = useContext(SchemeContext);

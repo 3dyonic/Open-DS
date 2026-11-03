@@ -145,6 +145,24 @@ function chain(s: Any, path: string) {
 
 // ---------- Introduction (OD-179) ----------
 
+// A small number as a word, for headings ("Five design systems"); larger ones stay digits.
+const WORDS = [
+  "Zero",
+  "One",
+  "Two",
+  "Three",
+  "Four",
+  "Five",
+  "Six",
+  "Seven",
+  "Eight",
+  "Nine",
+  "Ten",
+  "Eleven",
+  "Twelve",
+];
+const count = (n: number) => WORDS[n] ?? String(n);
+
 export function Introduction() {
   const { scheme: s, key } = useGuideData();
   const brands = Object.keys(s.tokens.brands);
@@ -160,7 +178,9 @@ export function Introduction() {
           <section className="about" aria-labelledby="about-open-ds">
             <div className="about-text">
               <div className="eyebrow">Open DS</div>
-              <h2 id="about-open-ds">Five design systems. Same questions. Different answers.</h2>
+              <h2 id="about-open-ds">
+                {count(ABOUT_OPEN_DS.schemes)} design systems. Same questions. Different answers.
+              </h2>
               <p>
                 Open DS is a set of design system schemes. Each scheme answers the same questions, such as who uses the
                 product, what they do all day and how it should feel, in its own way. Every token, component and rule

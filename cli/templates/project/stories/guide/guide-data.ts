@@ -5,7 +5,7 @@ import grammar from "../../.open-ds/grammar.json";
 import scheme from "../../scheme.json";
 
 /** This Storybook is one design system's own, so its introduction starts with it, not with Open DS. */
-export const ABOUT_OPEN_DS = false;
+export const ABOUT_OPEN_DS: { schemes: number } | null = null;
 
 export function useGuideData(): { scheme: any; grammar: any; key: string } {
   const dark =
