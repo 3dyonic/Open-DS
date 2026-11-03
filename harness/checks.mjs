@@ -385,6 +385,36 @@ export const CHECKS = {
     },
   },
 
+  "components-tokens-mapped": {
+    requires: ["cli/src/shadcn.mjs", "ui/src/components", "cli/templates/project/tokens/build.mjs"],
+    run: async (c) => {
+      // OD-215: every shadcn variable a component reads is mapped onto a scheme token, so its "Tokens
+      // it reads" table is complete; and a created project's token build maps the same way as ours.
+      const { SHADCN, SHADCN_SCALE } = await import(pathToFileURL(c.p("cli/src/shadcn.mjs")).href);
+      const LOOKS_SHADCN =
+        /^(background|foreground|card|popover|primary|secondary|muted|accent|destructive|border|input|ring|sidebar|chart)(-[a-z0-9-]+)?$/;
+      const gaps = [];
+      for (const f of readdirSync(c.p("ui/src/components")).filter((x) => x.endsWith(".tsx"))) {
+        const src = readFileSync(c.p(`ui/src/components/${f}`), "utf8");
+        for (const m of src.matchAll(
+          /(?:^|[\s"'`:])(?:bg|text|border|ring|fill|stroke|outline|divide|placeholder|caret)-([a-z][a-z0-9-]*)(?:\/\d+)?(?=[\s"'`]|$)/gm,
+        )) {
+          const name = m[1];
+          if (LOOKS_SHADCN.test(name) && !SHADCN[name]) gaps.push(`${f}: reads --${name}, which no scheme token maps`);
+        }
+      }
+      const tpl = c.read("cli/templates/project/tokens/build.mjs");
+      for (const [k, v] of Object.entries(SHADCN))
+        if (!tpl.includes(`"${k}": "${v}"`) && !tpl.includes(`${k}: "${v}"`))
+          gaps.push(`the project template maps ${k} differently`);
+      for (const [k, v] of Object.entries(SHADCN_SCALE))
+        if (!tpl.includes(`"${k}": "${v}"`)) gaps.push(`the project template maps ${k} differently`);
+      return gaps.length
+        ? bad([...new Set(gaps)].slice(0, 8).join("; "))
+        : ok("every shadcn variable a component reads maps onto a scheme token, the same in created projects");
+    },
+  },
+
   "catalogue-built": {
     requires: ["schemes/grammar.json", "ui/src/components"],
     run: (c) => {

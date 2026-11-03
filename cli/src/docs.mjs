@@ -6,6 +6,7 @@ import { cssName, semanticView, themeTokens } from "./tokens.mjs";
 import { existsSync, readFileSync, readdirSync } from "node:fs";
 import { join } from "node:path";
 import { questions } from "./schemes.mjs";
+import { SHADCN, SHADCN_SCALE } from "./shadcn.mjs";
 import { componentGuide, followers } from "./component.mjs";
 
 // Which component keys each shipped component reads.
@@ -1175,6 +1176,142 @@ export function docsPages(
       "\n";
   });
 
+  // What a component built on shadcn reads (OD-215): each class it uses, the shadcn variable, the
+  // scheme's token behind it, and the primitive and value that token ends at in every theme. Read from
+  // the component's own source and the mapping the token build writes, so it cannot drift.
+  const tokenPaths = Object.fromEntries(
+    leaves(trees[first.id], "").map((x) => {
+      const path = x.path.replace(/^\./, "");
+      return [cssName(path), path];
+    }),
+  );
+  const PART = {
+    bg: "Fill",
+    text: "Text",
+    border: "Edge",
+    "border-t": "Edge",
+    "border-b": "Edge",
+    "border-l": "Edge",
+    "border-r": "Edge",
+    "border-x": "Edge",
+    "border-y": "Edge",
+    ring: "Focus ring",
+    "ring-offset": "Focus ring offset",
+    outline: "Outline",
+    fill: "Icon fill",
+    stroke: "Icon stroke",
+    placeholder: "Placeholder",
+    caret: "Caret",
+    divide: "Divider",
+    accent: "Accent",
+    decoration: "Underline",
+  };
+  const WHEN = [
+    [/^hover$|^\[a\]:hover$/, "on hover"],
+    [/^focus(-visible|-within)?$/, "on focus"],
+    [/state=open|^open$/, "when open"],
+    [/state=checked|^checked$|state=on/, "when on"],
+    [/selected/, "when selected"],
+    [/^disabled$|disabled/, "when disabled"],
+    [/invalid/, "when invalid"],
+    [/variant=destructive/, "destructive"],
+    [/placeholder/, ""],
+  ];
+  const readsOf = (name) => {
+    const file = join(roots.ui, "components", `${name}.tsx`);
+    if (!existsSync(file)) return [];
+    const src = readFileSync(file, "utf8");
+    const rows = new Map();
+    for (const cls of src.match(/[!\w:[\]=&>*()+.,'"\/-]+/g) ?? []) {
+      // Variants before the last colon outside brackets; the utility after it.
+      const segs = [];
+      let depth = 0;
+      let cur = "";
+      for (const ch of cls) {
+        if (ch === "[") depth++;
+        if (ch === "]") depth--;
+        if (ch === ":" && depth === 0) {
+          segs.push(cur);
+          cur = "";
+        } else cur += ch;
+      }
+      const util = cur.replace(/^!/, "").replace(/\/\d+$/, "");
+      const states = segs;
+      let row;
+      const color = util.match(/^(bg|text|border(?:-[tblrxy])?|ring-offset|ring|outline|fill|stroke|divide|placeholder|caret|accent|decoration)-([a-z0-9-]+)$/);
+      if (color && SHADCN[color[2]])
+        row = { part: PART[color[1]], variable: color[2], token: SHADCN[color[2]] };
+      else if (/^border(-[tblrxy])?$/.test(util))
+        row = { part: "Edge", variable: "border", token: SHADCN.border, cls: util };
+      else {
+        const scale = util.match(/^(rounded(?:-[tblrse]{1,2})?|shadow|text)-(xs|sm|md|lg|xl|base)$/);
+        const key = scale && `--${scale[1].startsWith("rounded") ? "radius" : scale[1]}-${scale[2]}`;
+        if (key && SHADCN_SCALE[key])
+          row = {
+            part: key.startsWith("--radius") ? "Corner" : key.startsWith("--shadow") ? "Shadow" : "Text size",
+            variable: key.slice(2),
+            token: SHADCN_SCALE[key].replace(/^var\(--(.+)\)$/, "$1"),
+          };
+      }
+      if (!row || !tokenPaths[row.token]) continue;
+      const when = states
+        .map((st) => WHEN.find(([re]) => re.test(st))?.[1])
+        .filter(Boolean);
+      row.when = [...new Set(when)].join(", ");
+      row.cls = row.cls ?? util;
+      // The lookup keeps a base's @; the page shows the token without it.
+      row.lookup = tokenPaths[row.token];
+      row.path = row.lookup.replace(/\.@$/, "");
+      const k = `${row.part}|${row.path}|${row.when}`;
+      if (!rows.has(k)) rows.set(k, row);
+    }
+    const order = ["Fill", "Text", "Edge", "Divider", "Focus ring", "Focus ring offset", "Outline", "Icon fill", "Icon stroke", "Placeholder", "Caret", "Accent", "Underline", "Corner", "Shadow", "Text size"];
+    return [...rows.values()].sort(
+      (a, b) => order.indexOf(a.part) - order.indexOf(b.part) || (a.when ? 1 : 0) - (b.when ? 1 : 0) || a.cls.localeCompare(b.cls),
+    );
+  };
+  const brandName = (b) => scheme.tokens.brands?.[b]?.label ?? b;
+  const themeLabel = (t) =>
+    `${Object.keys(scheme.tokens.brands ?? {}).length > 1 ? `${brandName(t.brand)} ` : ""}${t.mode.charAt(0).toUpperCase()}${t.mode.slice(1)}`;
+  const readCell = (row, t) => {
+    const raw = String(value(t, row.lookup, ""));
+    const prim = primitiveOf(t, row.lookup)?.replace(/^color\./, "") ?? "";
+    const hex = raw.match(/#[0-9a-f]{6,8}/i)?.[0];
+    const shown = `${attr(prim)}${prim && raw ? " · " : ""}${attr(row.part === "Shadow" ? "" : raw)}`.replace(/ · $/, "");
+    if (row.part === "Shadow")
+      return `<span class="odv-tsw"><i class="odv-tlift" style="box-shadow:${attr(raw)}"></i><small>${attr(prim || raw)}</small></span>`;
+    if (row.part === "Corner")
+      return `<span class="odv-tsw"><i class="odv-tshape" style="border-radius:${attr(raw)}"></i><small>${shown}</small></span>`;
+    if (hex) return `<span class="odv-tsw"><i style="background:${hex}"></i><small>${shown}</small></span>`;
+    return `<span class="odv-tsw"><small>${shown}</small></span>`;
+  };
+  const tokensRead = (name) => {
+    const rows = readsOf(name);
+    if (!rows.length)
+      return `## Tokens it reads\n\n${title(name)} sets no colours, corners or shadows of its own; it takes them from the components inside it.`;
+    const ths = scheme.themes;
+    const tokens = new Set(rows.map((r) => r.path)).size;
+    return (
+      `## Tokens it reads\n\n${title(name)} reads ${tokens} of ${esc(scheme.name)}'s tokens. Each row follows one part of the component from its class to the value it ends at, in every theme. Change a token in the scheme and every component that reads it follows.\n\n` +
+      h(
+        `<div class="odv-tscroll"><table class="odv-ttable odv-reads"><thead><tr><th>Part</th><th>From the class to the token</th>${ths.map((t) => `<th>${attr(themeLabel(t))}</th>`).join("")}</tr></thead><tbody>`,
+        rows.map((r) => {
+          const cells = ths.map((t) => readCell(r, t));
+          const same = cells.every((c) => c === cells[0]);
+          return (
+            `<tr><td><b>${attr(r.part)}</b>${r.when ? `<br/><small>${attr(r.when)}</small>` : ""}</td>` +
+            `<td><span class="odv-chain"><span>${attr(r.cls)}</span><i>→</i><span>--${attr(r.variable)}</span><i>→</i><span class="tok">${attr(r.path)}</span></span></td>` +
+            (same && ths.length > 1
+              ? `<td colspan="${ths.length}">${cells[0].replace("</small>", ", every theme</small>")}</td>`
+              : cells.map((c) => `<td>${c}</td>`).join("")) +
+            `</tr>`
+          );
+        }),
+        `</tbody></table></div>`,
+      )
+    );
+  };
+
   // Components
   pages["components/_category_.json"] =
     JSON.stringify(
@@ -1476,7 +1613,7 @@ export function docsPages(
                 return `| \`${k.id}\` | ${esc(k.description)} | ${l} | ${d === l ? "same" : d} |`;
               })
               .join("\n")
-        : `## Tokens it reads\n\nFrom shadcn/ui. It reads shadcn's variables, which theme.css maps onto this system's semantic tokens, and the radius, shadow and text scale in shadcn.css.`,
+        : tokensRead(name),
     );
     pages[`components/${name}.md`] =
       fm({

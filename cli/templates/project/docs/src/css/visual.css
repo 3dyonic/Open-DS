@@ -1349,3 +1349,49 @@ a.odv-icard:hover {
   font-size: 0.8125rem;
   color: var(--color-text-secondary);
 }
+
+/* OD-215: "Tokens it reads": each part, from its class to the scheme's token, and the value per theme. */
+.odv-reads {
+  min-width: 760px;
+}
+.odv-reads td:first-child {
+  white-space: nowrap;
+}
+.odv-reads td:first-child small {
+  font-weight: 400;
+  color: var(--color-text-secondary);
+}
+.odv-chain {
+  display: inline-flex;
+  flex-wrap: wrap;
+  gap: 4px;
+  align-items: center;
+  font: 0.75rem/1.5 var(--type-data-font-family, ui-monospace, monospace);
+}
+.odv-chain span {
+  white-space: nowrap;
+  padding: 1px 6px;
+  border-radius: 4px;
+  background: var(--color-surface-sunken, var(--color-surface-canvas));
+}
+.odv-chain span.tok {
+  font-weight: 600;
+  color: var(--color-action-primary);
+  background: var(--color-surface-selected, var(--color-surface-sunken));
+}
+.odv-chain i {
+  font-style: normal;
+  color: var(--color-text-secondary);
+}
+.odv-tsw .odv-tshape {
+  width: 30px;
+  height: 20px;
+  background: none;
+  border: 2px solid var(--color-action-primary);
+}
+.odv-tsw .odv-tlift {
+  width: 34px;
+  height: 20px;
+  border: 0;
+  background: var(--color-surface-raised, var(--color-surface-default));
+}

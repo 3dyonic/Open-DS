@@ -58,4 +58,6 @@ The component reads only component keys and semantic tokens, so it follows the b
 
 ## Tokens it reads
 
-From shadcn/ui. It reads shadcn's variables, which theme.css maps onto this system's semantic tokens, and the radius, shadow and text scale in shadcn.css.
+Separator reads 1 of Content first's tokens. Each row follows one part of the component from its class to the value it ends at, in every theme. Change a token in the scheme and every component that reads it follows.
+
+<div class="odv-tscroll"><table class="odv-ttable odv-reads"><thead><tr><th>Part</th><th>From the class to the token</th><th>Light</th><th>Dark</th></tr></thead><tbody><tr><td><b>Fill</b></td><td><span class="odv-chain"><span>bg-border</span><i>→</i><span>--border</span><i>→</i><span class="tok">color.border.default</span></span></td><td><span class="odv-tsw"><i style="background:#E4DDD0"></i><small>stone.light.200 · #E4DDD0</small></span></td><td><span class="odv-tsw"><i style="background:#2E2A24"></i><small>stone.dark.100 · #2E2A24</small></span></td></tr></tbody></table></div>

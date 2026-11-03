@@ -61,4 +61,6 @@ The component reads only component keys and semantic tokens, so it follows the b
 
 ## Tokens it reads
 
-From shadcn/ui. It reads shadcn's variables, which theme.css maps onto this system's semantic tokens, and the radius, shadow and text scale in shadcn.css.
+Breadcrumb reads 2 of Brand expressive's tokens. Each row follows one part of the component from its class to the value it ends at, in every theme. Change a token in the scheme and every component that reads it follows.
+
+<div class="odv-tscroll"><table class="odv-ttable odv-reads"><thead><tr><th>Part</th><th>From the class to the token</th><th>Light</th><th>Dark</th></tr></thead><tbody><tr><td><b>Text</b></td><td><span class="odv-chain"><span>text-muted-foreground</span><i>→</i><span>--muted-foreground</span><i>→</i><span class="tok">color.text.muted</span></span></td><td><span class="odv-tsw"><i style="background:#6B544A"></i><small>taupe.light.600 · #6B544A</small></span></td><td><span class="odv-tsw"><i style="background:#B5988A"></i><small>taupe.dark.400 · #B5988A</small></span></td></tr><tr><td><b>Text size</b></td><td><span class="odv-chain"><span>text-sm</span><i>→</i><span>--text-sm</span><i>→</i><span class="tok">type.body.font-size</span></span></td><td colspan="2"><span class="odv-tsw"><small>font.size.17 · 1.0625rem (17px), every theme</small></span></td></tr></tbody></table></div>

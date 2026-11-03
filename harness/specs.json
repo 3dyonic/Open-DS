@@ -388,6 +388,16 @@
         "the roles answer names the families an inventory draws from first; a component from another family can be in when its entry says where it fits"
       ],
       "checks": ["catalogue-built", "schemes-inventory", "schemes-samples", "storybook-renders", "docs-build"]
+    },
+    {
+      "id": "OD-215",
+      "title": "Docs: every component shows the tokens it reads, from its classes to the scheme's values",
+      "in": [
+        "the shadcn mapping lives in cli/src/shadcn.mjs; the token build and the docs read the same table",
+        "each component built on shadcn lists every part it styles: class, shadcn variable, the scheme's token, and the primitive and value in every theme, with states",
+        "the harness fails when a component reads a shadcn variable no scheme token maps"
+      ],
+      "checks": ["components-tokens-mapped", "docs-sections", "docs-build"]
     }
   ]
 }

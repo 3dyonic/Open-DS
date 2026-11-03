@@ -61,4 +61,6 @@ The component reads only component keys and semantic tokens, so it follows the b
 
 ## Tokens it reads
 
-From shadcn/ui. It reads shadcn's variables, which theme.css maps onto this system's semantic tokens, and the radius, shadow and text scale in shadcn.css.
+Skeleton reads 1 of Dense data's tokens. Each row follows one part of the component from its class to the value it ends at, in every theme. Change a token in the scheme and every component that reads it follows.
+
+<div class="odv-tscroll"><table class="odv-ttable odv-reads"><thead><tr><th>Part</th><th>From the class to the token</th><th>Light</th><th>Dark</th></tr></thead><tbody><tr><td><b>Corner</b></td><td><span class="odv-chain"><span>rounded-md</span><i>→</i><span>--radius-md</span><i>→</i><span class="tok">radius.control</span></span></td><td colspan="2"><span class="odv-tsw"><i class="odv-tshape" style="border-radius:0.125rem (2px)"></i><small>radius.2 · 0.125rem (2px), every theme</small></span></td></tr></tbody></table></div>
