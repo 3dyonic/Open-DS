@@ -156,7 +156,11 @@ export default function Home() {
           </div>
           <div className="ods-rows">
             {list.length ? (
-              list.map((s) => <Row key={s.id} s={s} />)
+              list.map((s) => (
+                <React.Fragment key={s.id}>
+                  <Row s={s} />
+                </React.Fragment>
+              ))
             ) : (
               <p className="ods-empty">No scheme matches “{q}”. Try dashboard, reading or checkout.</p>
             )}
