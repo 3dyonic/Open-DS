@@ -10,13 +10,15 @@ description: "Field in Multi-brand."
 
 A label, control, hint and error laid out together, the same way every time.
 
-**In Multi-brand.** Lays out every form the same way in every brand.
+<p class="odv-compstatus"><span class="odv-pill">In Multi-brand</span></p>
 
 ## See it live
 
 <div class="odv-live"><span class="odv-wait">Start Storybook to see it live: <code>npm run storybook</code></span><iframe src="http://localhost:6006/iframe.html?id=components-field--examples&viewMode=story&globals=scheme:multi-brand--aster" title="Field examples in Storybook" loading="lazy"></iframe><div class="bar"><span>Live from Storybook</span><a href="http://localhost:6006/?path=/docs/components-field--docs">Open Field in Storybook</a><a href="http://localhost:6006/iframe.html?id=components-field--examples&viewMode=story&globals=scheme:multi-brand--aster;mode:dark">See it in dark</a></div></div>
 
 ## When to use it
+
+**In Multi-brand:** Lays out every form the same way in every brand.
 
 - **Use it when:** Every form control that needs a label, a hint or an error.
 - **Not when:** A control that is not part of a form, such as a search box in a toolbar.
@@ -43,11 +45,11 @@ What each variant is for in any design system, then what Multi-brand decided and
 
 Field looks the way it does because of 3 answers about this product. Each card is one answer, in three steps: the answer, what it decided for Field, and what would move if it changed.
 
-<section class="odv-trail" id="why-people-q2"><div class="odv-trail-head"><b>What accessibility level do we commit to?</b><code>people.q2</code></div><div class="odv-steps"><div class="odv-step-col"><h5><i>1</i>The answer</h5><div class="odv-answer">AA</div><p>AA in every brand.</p></div><div class="odv-step-col"><h5><i>2</i>So Field</h5><ul><li><span class="y">✓</span><span>uses <b>vertical</b>: Sign-up and checkout forms: the label above, in every brand.</span></li></ul><div class="odv-also"><small>It also shapes</small> <code>Button: focus</code> <code>Button: disabled</code></div></div><div class="odv-step-col change"><h5><i>3</i>If it changed</h5><div class="odv-big">1</div><small>Field decision would reopen</small><p>and 1 answer that follow from it: <b>AA</b>.</p></div></div></section>
+<section class="odv-trail" id="why-people-q2"><div class="odv-trail-head"><b>What accessibility level do we commit to?</b><code>people.q2</code></div><div class="odv-steps"><div class="odv-step-col"><h5><i>1</i>The answer</h5><div class="odv-answer">AA</div><p>AA in every brand.</p></div><div class="odv-step-col"><h5><i>2</i>So Field</h5><ul><li><span class="y">✓</span><span>uses <b>vertical</b>: Sign-up and checkout forms: the label above, in every brand.</span></li></ul><div class="odv-also"><small>It also shapes</small> <code>Button: focus</code> <code>Button: disabled</code> <code>Input group: block-start</code> <code>Input group: block-end</code></div></div><div class="odv-step-col change"><h5><i>3</i>If it changed</h5><div class="odv-big">1</div><small>Field decision would reopen</small><p>and 1 answer that follow from it: <b>AA</b>.</p></div></div></section>
 
 <section class="odv-trail" id="why-scenarios-q1"><div class="odv-trail-head"><b>Where do people use it?</b><code>scenarios.q1</code></div><div class="odv-steps"><div class="odv-step-col"><h5><i>1</i>The answer</h5><div class="odv-answer">Anywhere, on any device</div><p>Customers sign up on phones and manage plans on laptops.</p></div><div class="odv-step-col"><h5><i>2</i>So Field</h5><ul><li><span class="y">✓</span><span>uses <b>vertical</b>: Sign-up and checkout forms: the label above, in every brand.</span></li><li><span class="y">✓</span><span>uses <b>responsive</b>: Account settings: stacked on phones, label beside on laptops.</span></li></ul></div><div class="odv-step-col change"><h5><i>3</i>If it changed</h5><div class="odv-big">3</div><small>Field decisions would reopen</small><p>and 2 answers that follow from it: <b>Touch size</b>, <b>Those and pressed</b>.</p></div></div></section>
 
-<section class="odv-trail" id="why-accessibility-values"><div class="odv-trail-head"><b>What is the smallest target?</b><code>accessibility.values</code></div><div class="odv-steps"><div class="odv-step-col"><h5><i>1</i>The answer</h5><div class="odv-answer">Touch size</div><p>Customers sign up on phones.</p></div><div class="odv-step-col"><h5><i>2</i>So Field</h5><ul><li><span class="n">–</span><span>does not use <b>horizontal</b>: Customers sign up on phones: labels stay above.</span></li></ul><div class="odv-also"><small>It also shapes</small> <code>Button: default</code> <code>Button: compact</code> <code>Button: icon</code></div></div><div class="odv-step-col change"><h5><i>3</i>If it changed</h5><div class="odv-big">1</div><small>Field decision would reopen</small><p>and 1 answer that follow from it: <b>Those and pressed</b>.</p></div></div></section>
+<section class="odv-trail" id="why-accessibility-values"><div class="odv-trail-head"><b>What is the smallest target?</b><code>accessibility.values</code></div><div class="odv-steps"><div class="odv-step-col"><h5><i>1</i>The answer</h5><div class="odv-answer">Touch size</div><p>Customers sign up on phones.</p></div><div class="odv-step-col"><h5><i>2</i>So Field</h5><ul><li><span class="n">–</span><span>does not use <b>horizontal</b>: Customers sign up on phones: labels stay above.</span></li></ul><div class="odv-also"><small>It also shapes</small> <code>Button: default</code> <code>Button: compact</code> <code>Button: icon</code> <code>Toggle: default</code> <code>Toggle: sm</code></div></div><div class="odv-step-col change"><h5><i>3</i>If it changed</h5><div class="odv-big">1</div><small>Field decision would reopen</small><p>and 1 answer that follow from it: <b>Those and pressed</b>.</p></div></div></section>
 
 ## Words
 

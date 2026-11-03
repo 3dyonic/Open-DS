@@ -10,13 +10,15 @@ description: "Toggle group in Multi-brand."
 
 A set of toggles where one or many stay pressed.
 
-**In Multi-brand.** Monthly or yearly prices.
+<p class="odv-compstatus"><span class="odv-pill">In Multi-brand</span></p>
 
 ## See it live
 
 <div class="odv-live"><span class="odv-wait">Start Storybook to see it live: <code>npm run storybook</code></span><iframe src="http://localhost:6006/iframe.html?id=components-toggle-group--examples&viewMode=story&globals=scheme:multi-brand--aster" title="Toggle group examples in Storybook" loading="lazy"></iframe><div class="bar"><span>Live from Storybook</span><a href="http://localhost:6006/?path=/docs/components-toggle-group--docs">Open Toggle group in Storybook</a><a href="http://localhost:6006/iframe.html?id=components-toggle-group--examples&viewMode=story&globals=scheme:multi-brand--aster;mode:dark">See it in dark</a></div></div>
 
 ## When to use it
+
+**In Multi-brand:** Monthly or yearly prices.
 
 - **Use it when:** Switching a view or a mode between a few options, such as list and grid.
 - **Not when:** A form answer (radio group), or actions (button group).

@@ -10,13 +10,15 @@ description: "Sidebar in Multi-brand."
 
 The side navigation of an app, open while people work.
 
-**In Multi-brand.** Account area navigation.
+<p class="odv-compstatus"><span class="odv-pill">In Multi-brand</span></p>
 
 ## See it live
 
 <div class="odv-live"><span class="odv-wait">Start Storybook to see it live: <code>npm run storybook</code></span><iframe src="http://localhost:6006/iframe.html?id=components-sidebar--examples&viewMode=story&globals=scheme:multi-brand--aster" title="Sidebar examples in Storybook" loading="lazy"></iframe><div class="bar"><span>Live from Storybook</span><a href="http://localhost:6006/?path=/docs/components-sidebar--docs">Open Sidebar in Storybook</a><a href="http://localhost:6006/iframe.html?id=components-sidebar--examples&viewMode=story&globals=scheme:multi-brand--aster;mode:dark">See it in dark</a></div></div>
 
 ## When to use it
+
+**In Multi-brand:** Account area navigation.
 
 - **Use it when:** Apps with several sections people move between all session.
 - **Not when:** A website's main navigation (navigation menu), or a few sections that fit in tabs.
@@ -44,9 +46,9 @@ What each variant is for in any design system, then what Multi-brand decided and
 
 Sidebar looks the way it does because of 2 answers about this product. Each card is one answer, in three steps: the answer, what it decided for Sidebar, and what would move if it changed.
 
-<section class="odv-trail" id="why-theming-definition"><div class="odv-trail-head"><b>How are brands handled?</b><code>theming.definition</code></div><div class="odv-steps"><div class="odv-step-col"><h5><i>1</i>The answer</h5><div class="odv-answer">Brands as modes</div><p>Brands are theme modes over shared semantics.</p></div><div class="odv-step-col"><h5><i>2</i>So Sidebar</h5><ul><li><span class="y">✓</span><span>uses <b>default</b>: Account-area menu items, the same in every brand.</span></li><li><span class="n">–</span><span>does not use <b>outline</b>: Brands change color and corners, not the structure of the menu.</span></li></ul><div class="odv-also"><small>It also shapes</small> <code>Empty: default</code></div></div><div class="odv-step-col change"><h5><i>3</i>If it changed</h5><div class="odv-big">2</div><small>Sidebar decisions would reopen</small><p>No other answer follows from it.</p></div></div></section>
+<section class="odv-trail" id="why-theming-definition"><div class="odv-trail-head"><b>How are brands handled?</b><code>theming.definition</code></div><div class="odv-steps"><div class="odv-step-col"><h5><i>1</i>The answer</h5><div class="odv-answer">Brands as modes</div><p>Brands are theme modes over shared semantics.</p></div><div class="odv-step-col"><h5><i>2</i>So Sidebar</h5><ul><li><span class="y">✓</span><span>uses <b>default</b>: Account-area menu items, the same in every brand.</span></li><li><span class="n">–</span><span>does not use <b>outline</b>: Brands change color and corners, not the structure of the menu.</span></li></ul><div class="odv-also"><small>It also shapes</small> <code>Empty: default</code> <code>Toggle: outline</code></div></div><div class="odv-step-col change"><h5><i>3</i>If it changed</h5><div class="odv-big">2</div><small>Sidebar decisions would reopen</small><p>No other answer follows from it.</p></div></div></section>
 
-<section class="odv-trail" id="why-spacing-count"><div class="odv-trail-head"><b>How many densities exist?</b><code>spacing.count</code></div><div class="odv-steps"><div class="odv-step-col"><h5><i>1</i>The answer</h5><div class="odv-answer">One</div><p>One density across brands.</p></div><div class="odv-step-col"><h5><i>2</i>So Sidebar</h5><ul><li><span class="y">✓</span><span>uses <b>default</b>: Every account-area menu item.</span></li><li><span class="n">–</span><span>does not use <b>sm</b>: One density across brands.</span></li><li><span class="n">–</span><span>does not use <b>lg</b>: One density across brands.</span></li></ul></div><div class="odv-step-col change"><h5><i>3</i>If it changed</h5><div class="odv-big">3</div><small>Sidebar decisions would reopen</small><p>No other answer follows from it.</p></div></div></section>
+<section class="odv-trail" id="why-spacing-count"><div class="odv-trail-head"><b>How many densities exist?</b><code>spacing.count</code></div><div class="odv-steps"><div class="odv-step-col"><h5><i>1</i>The answer</h5><div class="odv-answer">One</div><p>One density across brands.</p></div><div class="odv-step-col"><h5><i>2</i>So Sidebar</h5><ul><li><span class="y">✓</span><span>uses <b>default</b>: Every account-area menu item.</span></li><li><span class="n">–</span><span>does not use <b>sm</b>: One density across brands.</span></li><li><span class="n">–</span><span>does not use <b>lg</b>: One density across brands.</span></li></ul><div class="odv-also"><small>It also shapes</small> <code>Toggle: lg</code></div></div><div class="odv-step-col change"><h5><i>3</i>If it changed</h5><div class="odv-big">3</div><small>Sidebar decisions would reopen</small><p>No other answer follows from it.</p></div></div></section>
 
 ## Words
 

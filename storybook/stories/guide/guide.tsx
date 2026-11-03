@@ -58,8 +58,7 @@ const CSS = `
 .odg .demo{min-height:44px;display:flex;align-items:center;padding:8px;border-radius:var(--radius-control);background:var(--color-surface-sunken)}
 .odg .demo.off{opacity:.4;filter:grayscale(1)}
 .odg .not{color:var(--color-status-danger);font-weight:600}
-.odg .leftout{margin-top:12px;padding:12px 14px;border:var(--border-width-default,1px) solid var(--color-status-warning);border-radius:var(--radius-container);background:var(--color-status-warning-subtle);color:var(--color-text-primary)}
-.odg .leftout b{display:block;margin-bottom:2px}
+.odg .leftout-chip{color:var(--color-status-warning);background:var(--color-status-warning-subtle);border-color:var(--color-status-warning)}
 .odg .cite{font:11px var(--type-data-font-family);color:var(--color-text-muted);margin-top:4px}
 .odg a{color:var(--color-text-link)}
 .odg .prim{border:var(--border-width-default) solid var(--color-border-default);border-radius:var(--radius-container);overflow:hidden;background:var(--color-surface-default)}
@@ -738,19 +737,18 @@ export function ComponentHeader() {
       </p>
       {carried ? (
         <p style={{ marginTop: 10 }}>
-          <span className="chip" style={{ marginRight: 8 }}>
-            In {s.name}
-          </span>
-          {carried.why}
+          <span className="chip">In {s.name}</span>
         </p>
       ) : (
-        // OD-192: a component the scheme leaves out still renders in its tokens, so this note is the
-        // one place that says it is not part of the design system, and why.
-        <div className="leftout" role="note">
-          <b>Not part of {s.name}.</b>
-          {left?.why ?? "Its answers did not pick it."} The examples use {s.name}'s tokens, to show how it would look if
-          the design system added it.
-        </div>
+        // OD-192, OD-211: a component the scheme leaves out renders in its tokens like any other. Only
+        // the badge, its reason and what to use instead set it apart.
+        <p style={{ marginTop: 10 }}>
+          <span className="chip leftout-chip" style={{ marginRight: 8 }}>
+            Left out of {s.name}
+          </span>
+          {left?.why}
+          {left?.instead?.length ? <span className="muted"> Use instead: {left.instead.join(", ")}.</span> : null}
+        </p>
       )}
     </Frame>
   );
@@ -758,12 +756,18 @@ export function ComponentHeader() {
 
 /** When to use it, when not, and what to use instead (the reference). */
 export function WhenToUse() {
-  const { s, item } = useComponent();
-  if (!item?.apply_when) return null;
+  const { s, item, carried } = useComponent();
+  if (!item?.apply_when && !carried?.why) return null;
   const carriedIds = new Set(s.inventory.in.map((x: Any) => x.id));
   return (
     <Frame>
       <h2>When to use it</h2>
+      {/* OD-211: a kept component's own use leads: where this scheme uses it. */}
+      {carried?.why && (
+        <p style={{ marginBottom: 12 }}>
+          <b>In {s.name}:</b> {carried.why}
+        </p>
+      )}
       <div className="grid2">
         <div className="card">
           <div className="lab" style={{ color: "var(--color-status-success)" }}>

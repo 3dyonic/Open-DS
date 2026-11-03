@@ -10,13 +10,15 @@ description: "Carousel in Brand expressive."
 
 Slides that move left and right, one or a few at a time.
 
-**In Brand expressive.** Moves through campaign images.
+<p class="odv-compstatus"><span class="odv-pill">In Brand expressive</span></p>
 
 ## See it live
 
 <div class="odv-live"><span class="odv-wait">Start Storybook to see it live: <code>npm run storybook</code></span><iframe src="http://localhost:6006/iframe.html?id=components-carousel--examples&viewMode=story&globals=scheme:brand-expressive" title="Carousel examples in Storybook" loading="lazy"></iframe><div class="bar"><span>Live from Storybook</span><a href="http://localhost:6006/?path=/docs/components-carousel--docs">Open Carousel in Storybook</a><a href="http://localhost:6006/iframe.html?id=components-carousel--examples&viewMode=story&globals=scheme:brand-expressive;mode:dark">See it in dark</a></div></div>
 
 ## When to use it
+
+**In Brand expressive:** Moves through campaign images.
 
 - **Use it when:** A few images or items people browse for pleasure, where missing some is fine.
 - **Not when:** Content people must see: most never reach the later slides.

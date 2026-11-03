@@ -10,13 +10,15 @@ description: "Separator in Dense data."
 
 A line between groups.
 
-**In Dense data.** Groups toolbar actions.
+<p class="odv-compstatus"><span class="odv-pill">In Dense data</span></p>
 
 ## See it live
 
 <div class="odv-live"><span class="odv-wait">Start Storybook to see it live: <code>npm run storybook</code></span><iframe src="http://localhost:6006/iframe.html?id=components-separator--examples&viewMode=story&globals=scheme:dense-data" title="Separator examples in Storybook" loading="lazy"></iframe><div class="bar"><span>Live from Storybook</span><a href="http://localhost:6006/?path=/docs/components-separator--docs">Open Separator in Storybook</a><a href="http://localhost:6006/iframe.html?id=components-separator--examples&viewMode=story&globals=scheme:dense-data;mode:dark">See it in dark</a></div></div>
 
 ## When to use it
+
+**In Dense data:** Groups toolbar actions.
 
 - **Use it when:** Separating groups that spacing alone does not separate.
 - **Not when:** Decoration between every item: spacing is quieter.

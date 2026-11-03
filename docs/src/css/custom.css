@@ -246,7 +246,8 @@ code {
 /* The brand: the Open DS mark in this system's colours, its name in the title type, and a tag
    that says these are its docs. */
 .navbar__brand {
-  gap: var(--space-gap-default);
+  /* OD-211: room between the mark and the name, even in the tightest scheme. */
+  gap: max(var(--space-gap-default), 0.75rem);
 }
 .navbar__logo {
   height: 1.25rem;
@@ -675,9 +676,15 @@ html:not([data-scheme])[data-theme="dark"] .navbar__logo img {
     display: none;
   }
 }
-/* A component the scheme leaves out: its page exists so a switch never breaks, dimmed in the sidebar. */
-.ods-left-out > .menu__link:not(.menu__link--active) {
-  opacity: 0.55;
+/* A component the scheme leaves out (OD-211): the same entry as any other, with a small badge. */
+.ods-left-out > .menu__link::after {
+  content: "Left out";
+  margin-left: auto;
+  padding: 0 0.375rem;
+  font: 500 0.625rem/1.6 var(--type-data-font-family, ui-monospace, monospace);
+  color: var(--color-status-warning);
+  background: var(--color-status-warning-subtle);
+  border-radius: var(--radius-badge);
 }
 
 /* OD-209: the scheme's robot at the foot of the sidebar. Each scheme's CSS sets the picture. */
@@ -703,4 +710,29 @@ html:not([data-scheme])[data-theme="dark"] .navbar__logo img {
 .ods-notfound p {
   max-width: 40ch;
   color: var(--ifm-font-color-secondary);
+}
+
+/* OD-211: the scheme's home, first in its sidebar, reads as the sidebar's heading: which design
+   system you are reading. */
+.theme-doc-sidebar-menu > .menu__list-item:first-child > .menu__link {
+  display: block;
+  font-family: var(--type-title-font-family);
+  font-size: 1.25rem;
+  font-weight: 700;
+  line-height: 1.2;
+  padding-bottom: 0.625rem;
+  margin-bottom: 0.375rem;
+  border-bottom: 1px solid var(--ifm-color-emphasis-200);
+  border-radius: 0;
+  background: none;
+  color: var(--ifm-font-color-base);
+}
+.theme-doc-sidebar-menu > .menu__list-item:first-child > .menu__link::before {
+  content: "Scheme";
+  display: block;
+  margin-bottom: 0.125rem;
+  font: 500 0.6875rem/1.4 var(--type-data-font-family, ui-monospace, monospace);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--ifm-color-emphasis-600);
 }

@@ -10,13 +10,15 @@ description: "Input otp in Multi-brand."
 
 Separate boxes for a one-time code.
 
-**In Multi-brand.** The code that verifies an email or phone.
+<p class="odv-compstatus"><span class="odv-pill">In Multi-brand</span></p>
 
 ## See it live
 
 <div class="odv-live"><span class="odv-wait">Start Storybook to see it live: <code>npm run storybook</code></span><iframe src="http://localhost:6006/iframe.html?id=components-input-otp--examples&viewMode=story&globals=scheme:multi-brand--aster" title="Input otp examples in Storybook" loading="lazy"></iframe><div class="bar"><span>Live from Storybook</span><a href="http://localhost:6006/?path=/docs/components-input-otp--docs">Open Input otp in Storybook</a><a href="http://localhost:6006/iframe.html?id=components-input-otp--examples&viewMode=story&globals=scheme:multi-brand--aster;mode:dark">See it in dark</a></div></div>
 
 ## When to use it
+
+**In Multi-brand:** The code that verifies an email or phone.
 
 - **Use it when:** A short code sent by text or email, typed or pasted.
 - **Not when:** Passwords or any value that is not a fixed-length code.

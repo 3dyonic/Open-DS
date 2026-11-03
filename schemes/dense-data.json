@@ -358,6 +358,10 @@
         "why": "Views of one record."
       },
       {
+        "id": "breadcrumb",
+        "why": "On a record's own page, the way back to the list it came from. Not on the queue itself."
+      },
+      {
         "id": "sidebar",
         "why": "App navigation that stays open all shift.",
         "variants": {
@@ -518,20 +522,233 @@
       {
         "id": "resizable",
         "why": "Experts size the table and detail panes."
+      },
+      {
+        "id": "button-group",
+        "why": "A few toolbar actions that belong together, such as previous and next. Not for unrelated actions or a choice that stays pressed."
+      },
+      {
+        "id": "collapsible",
+        "why": "One block of extra filters or advanced options analysts open when needed. Not for content everyone needs."
+      },
+      {
+        "id": "hover-card",
+        "why": "A quick look at an asset or user on hover, also reachable on click. Never the only way to see it."
+      },
+      {
+        "id": "input-otp",
+        "why": "A fixed-length one-time code sent by text or email. Not for passwords or any other value."
+      },
+      {
+        "id": "item",
+        "why": "Short lists such as users or settings, each with a few actions. Not for records analysts compare; those go in a table."
+      },
+      {
+        "id": "menubar",
+        "why": "Many commands grouped by menu in this desk tool. Not in place of the command palette or row menus."
+      },
+      {
+        "id": "progress",
+        "why": "A known amount of work, such as exporting many alerts. Not for table loads, which use skeletons."
+      },
+      {
+        "id": "spinner",
+        "why": "A wait while the record panel beside the table fetches. Not for table rows, which load with skeletons."
+      },
+      {
+        "id": "toggle",
+        "why": "One mode in the table toolbar that turns on and off. Not for settings saved at once, which use a switch.",
+        "variants": {
+          "variant": {
+            "default": {
+              "use": "In the table toolbar, with no border; the pressed state shows as a fill, quiet beside the data.",
+              "because": [
+                "content.q1",
+                "tasks.q2"
+              ]
+            },
+            "outline": {
+              "not_used": true,
+              "why": "Borders on every toggle would compete with the data.",
+              "because": [
+                "content.q1"
+              ]
+            }
+          },
+          "size": {
+            "default": {
+              "not_used": true,
+              "why": "Toggles sit in the table toolbar, at the smaller size like compact buttons.",
+              "because": [
+                "content.q2"
+              ]
+            },
+            "sm": {
+              "use": "The table toolbar, matching compact buttons. It still fits a mouse.",
+              "because": [
+                "content.q2",
+                "accessibility.values"
+              ]
+            },
+            "lg": {
+              "not_used": true,
+              "why": "Controls stay small so more records fit on one screen.",
+              "because": [
+                "content.q2"
+              ]
+            }
+          }
+        }
       }
     ],
     "out": [
       {
+        "id": "accordion",
+        "why": "Accordion is a content component. Dense data's components answer takes core and data families only, because records need tables, filters and fast ways to move between them.",
+        "instead": [
+          "collapsible",
+          "tabs"
+        ],
+        "because": [
+          "components.roles"
+        ]
+      },
+      {
+        "id": "aspect-ratio",
+        "why": "Aspect ratio is a media component. Dense data's components answer takes core and data families only, because records need tables, filters and fast ways to move between them.",
+        "instead": [
+          "card"
+        ],
+        "because": [
+          "components.roles"
+        ]
+      },
+      {
+        "id": "attachment",
+        "why": "Attachment is a conversation component. Dense data's components answer takes core and data families only, because records need tables, filters and fast ways to move between them.",
+        "instead": [
+          "card",
+          "button"
+        ],
+        "because": [
+          "components.roles"
+        ]
+      },
+      {
+        "id": "avatar",
+        "why": "Avatar is a media component. Dense data's components answer takes core and data families only, because records need tables, filters and fast ways to move between them.",
+        "instead": [
+          "badge",
+          "card"
+        ],
+        "because": [
+          "components.roles"
+        ]
+      },
+      {
+        "id": "bubble",
+        "why": "Bubble is a conversation component. Dense data's components answer takes core and data families only, because records need tables, filters and fast ways to move between them.",
+        "instead": [
+          "card",
+          "textarea"
+        ],
+        "because": [
+          "components.roles"
+        ]
+      },
+      {
         "id": "carousel",
-        "why": "Slides hide records; experts need them all in view."
+        "why": "Slides hide items, and most people never reach the later ones. Dense data's experts want many records on one screen.",
+        "instead": [
+          "table",
+          "card"
+        ],
+        "because": [
+          "content.q2",
+          "people.q1"
+        ]
       },
       {
         "id": "drawer",
-        "why": "A desk tool with a mouse and keyboard does not need phone drawers."
+        "why": "A drawer is for phones. Dense data's experts work at a desk with a mouse and keyboard, and the scheme avoids first-time visitors on phones.",
+        "instead": [
+          "sheet",
+          "dialog"
+        ],
+        "because": [
+          "scenarios.q1",
+          "accessibility.values"
+        ]
       },
       {
-        "id": "accordion",
-        "why": "Hiding fields slows people who use them all day."
+        "id": "marker",
+        "why": "Marker is a conversation component. Dense data's components answer takes core and data families only, because records need tables, filters and fast ways to move between them.",
+        "instead": [
+          "separator",
+          "card"
+        ],
+        "because": [
+          "components.roles"
+        ]
+      },
+      {
+        "id": "message",
+        "why": "Message is a conversation component. Dense data's components answer takes core and data families only, because records need tables, filters and fast ways to move between them.",
+        "instead": [
+          "card",
+          "textarea"
+        ],
+        "because": [
+          "components.roles"
+        ]
+      },
+      {
+        "id": "message-scroller",
+        "why": "Message scroller is a conversation component. Dense data's components answer takes core and data families only, because records need tables, filters and fast ways to move between them.",
+        "instead": [
+          "scroll-area",
+          "card"
+        ],
+        "because": [
+          "components.roles"
+        ]
+      },
+      {
+        "id": "native-select",
+        "why": "Native select is best on phones, and Dense data runs at a desk. Its select already picks one value. A small team keeps fewer parts right.",
+        "instead": [
+          "select",
+          "radio-group"
+        ],
+        "because": [
+          "scenarios.q1",
+          "team.q1",
+          "components.definition"
+        ]
+      },
+      {
+        "id": "navigation-menu",
+        "why": "Navigation menu is for the sections of a website. Dense data avoids public sites, and its app navigation stays open all shift in a sidebar.",
+        "instead": [
+          "sidebar",
+          "tabs"
+        ],
+        "because": [
+          "business.q2",
+          "scenarios.q2"
+        ]
+      },
+      {
+        "id": "sonner",
+        "why": "Dense data already has its own toast to confirm a saved change. A second toast would add a part. A small team keeps fewer parts right.",
+        "instead": [
+          "toast",
+          "alert"
+        ],
+        "because": [
+          "team.q1",
+          "components.count"
+        ]
       }
     ]
   },

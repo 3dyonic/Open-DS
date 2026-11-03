@@ -11,7 +11,7 @@ sidebar_class_name: "ods-left-out"
 
 A text field that suggests and completes matches from a known list as people type.
 
-<div class="odv-leftout"><span class="odv-robot "><img class="odv-robot-day" src="/robots/content-first.webp" alt="" loading="lazy"/><img class="odv-robot-night" src="/robots/content-first-dark.webp" alt="" loading="lazy"/></span><p><b>Not part of Content first.</b> Its answers did not pick it. The examples use Content first's tokens, to show how it would look if the design system added it.</p></div>
+<p class="odv-compstatus"><span class="odv-pill odv-pill-out">Left out of Content first</span> Readers need sections, navigation and little else. Actions are rare: subscribe, share, save. The catalogue rules combobox out for searching a whole site; search is a plain input. <span class="odv-instead">Use instead: <a href="./input">Input</a></span></p>
 
 ## See it live
 

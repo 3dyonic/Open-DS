@@ -983,12 +983,22 @@ a.odv-icard:hover {
   border-radius: var(--radius-badge);
   padding: 1px 6px;
 }
-.odv-icard.out {
-  border-style: dashed;
-}
-.odv-icard.out .odv-pill {
+/* OD-211: a left-out component looks like any other; only its badge differs. */
+.odv-pill-out {
   color: var(--color-status-warning);
   background: var(--color-status-warning-subtle);
+}
+.odv-compstatus {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.375rem 0.5rem;
+  align-items: baseline;
+}
+.odv-compstatus .odv-pill {
+  margin-top: 0;
+}
+.odv-instead {
+  color: var(--color-text-secondary);
 }
 .odv-leftout {
   margin-bottom: var(--space-gap-group);
@@ -1168,4 +1178,174 @@ a.odv-icard:hover {
   .odv-preview-brands {
     grid-template-columns: 1fr;
   }
+}
+
+/* OD-211: the Primitives index. Specimens drawn from raw values, and a bar for how many are in use. */
+.odv-spec-cols {
+  align-items: flex-end;
+}
+.odv-spec-cols i {
+  display: block;
+  width: 8px;
+  background: var(--color-action-primary);
+  border-radius: 1px;
+}
+.odv-spec .odv-aa {
+  font-size: 1.5rem;
+  line-height: 1;
+}
+.odv-spec .odv-spec-note {
+  font-weight: 400;
+  font-family: var(--type-data-font-family, ui-monospace, monospace);
+  font-size: 0.75rem;
+  color: var(--color-text-secondary);
+}
+.odv-spec-lift {
+  padding: 6px;
+  border-radius: var(--radius-control);
+  background: var(--color-surface-sunken, var(--color-surface-canvas));
+}
+.odv-meter {
+  display: block;
+  height: 6px;
+  border-radius: 3px;
+  background: var(--color-border-default);
+  overflow: hidden;
+}
+.odv-meter i {
+  display: block;
+  height: 100%;
+  background: var(--color-action-primary);
+}
+
+/* OD-211: the Theming page. A preview per mode in its own colours, the mode table, what stays. */
+.odv-theming {
+  display: grid;
+  gap: 1.25rem;
+  margin-bottom: 1.5rem;
+}
+.odv-brandset {
+  display: grid;
+  gap: 1rem;
+}
+.odv-brandset h3 {
+  margin: 0.5rem 0 0;
+}
+.odv-modes {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 1rem;
+}
+.odv-mode-prev {
+  display: grid;
+  gap: 0.625rem;
+  padding: 1rem;
+  border: 1px solid;
+  border-radius: 12px;
+}
+.odv-mode-head {
+  display: flex;
+  justify-content: space-between;
+  font: 500 0.6875rem/1.4 var(--type-data-font-family, ui-monospace, monospace);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  opacity: 0.8;
+}
+.odv-mode-surf {
+  display: grid;
+  gap: 0.5rem;
+  padding: 0.875rem;
+  border: 1px solid;
+}
+.odv-mode-surf > span {
+  font-size: 0.8125rem;
+  line-height: 1.4;
+}
+.odv-mode-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  align-items: center;
+}
+.odv-mode-pill {
+  padding: 2px 8px;
+  font: 500 0.6875rem/1.5 var(--type-data-font-family, ui-monospace, monospace);
+}
+.odv-mode-btn {
+  padding: 0.375rem 0.75rem;
+  font-size: 0.8125rem;
+  font-weight: 600;
+}
+.odv-tscroll {
+  overflow-x: auto;
+}
+.odv-ttable {
+  display: table;
+  width: 100%;
+  margin: 0;
+  font-size: 0.8125rem;
+}
+.odv-ttable td,
+.odv-ttable th {
+  padding: 0.375rem 0.625rem;
+}
+.odv-ttable tr.odv-tgroup td {
+  padding-top: 0.875rem;
+  font-weight: 600;
+  background: var(--color-surface-sunken, var(--color-surface-canvas));
+}
+.odv-tsw {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  white-space: nowrap;
+}
+.odv-tsw i {
+  width: 20px;
+  height: 20px;
+  border-radius: 3px;
+  border: 1px solid rgb(128 128 128 / 0.35);
+}
+.odv-tsw small {
+  font-family: var(--type-data-font-family, ui-monospace, monospace);
+  color: var(--color-text-secondary);
+}
+.odv-same {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 1rem;
+}
+.odv-same .odv-card {
+  display: grid;
+  gap: 0.75rem;
+}
+.odv-corners {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1.25rem;
+  align-items: flex-end;
+}
+.odv-corners span {
+  display: grid;
+  justify-items: center;
+  gap: 0.375rem;
+  font: 0.6875rem/1.4 var(--type-data-font-family, ui-monospace, monospace);
+  color: var(--color-text-secondary);
+}
+.odv-corners i {
+  width: 46px;
+  height: 34px;
+  border: 2px solid var(--color-action-primary);
+}
+.odv-fams div {
+  display: flex;
+  justify-content: space-between;
+  gap: 0.75rem;
+  align-items: baseline;
+  padding: 0.375rem 0;
+  border-bottom: 1px solid var(--color-border-default);
+}
+.odv-fams div span:first-child {
+  font-size: 0.8125rem;
+  color: var(--color-text-secondary);
 }

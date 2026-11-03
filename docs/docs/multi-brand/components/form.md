@@ -10,13 +10,15 @@ description: "Form in Multi-brand."
 
 Form state and validation wired to the fields.
 
-**In Multi-brand.** Validation shared by every product team.
+<p class="odv-compstatus"><span class="odv-pill">In Multi-brand</span></p>
 
 ## See it live
 
 <div class="odv-live"><span class="odv-wait">Start Storybook to see it live: <code>npm run storybook</code></span><iframe src="http://localhost:6006/iframe.html?id=components-form--examples&viewMode=story&globals=scheme:multi-brand--aster" title="Form examples in Storybook" loading="lazy"></iframe><div class="bar"><span>Live from Storybook</span><a href="http://localhost:6006/?path=/docs/components-form--docs">Open Form in Storybook</a><a href="http://localhost:6006/iframe.html?id=components-form--examples&viewMode=story&globals=scheme:multi-brand--aster;mode:dark">See it in dark</a></div></div>
 
 ## When to use it
+
+**In Multi-brand:** Validation shared by every product team.
 
 - **Use it when:** Any form that checks answers and shows errors next to the fields.
 - **Not when:** A single control that saves at once (a switch).

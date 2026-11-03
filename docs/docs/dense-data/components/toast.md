@@ -10,13 +10,15 @@ description: "Toast in Dense data."
 
 A short message that confirms an action and goes away.
 
-**In Dense data.** Confirms a saved change.
+<p class="odv-compstatus"><span class="odv-pill">In Dense data</span></p>
 
 ## See it live
 
 <div class="odv-live"><span class="odv-wait">Start Storybook to see it live: <code>npm run storybook</code></span><iframe src="http://localhost:6006/iframe.html?id=components-toast--examples&viewMode=story&globals=scheme:dense-data" title="Toast examples in Storybook" loading="lazy"></iframe><div class="bar"><span>Live from Storybook</span><a href="http://localhost:6006/?path=/docs/components-toast--docs">Open Toast in Storybook</a><a href="http://localhost:6006/iframe.html?id=components-toast--examples&viewMode=story&globals=scheme:dense-data;mode:dark">See it in dark</a></div></div>
 
 ## When to use it
+
+**In Dense data:** Confirms a saved change.
 
 - **Use it when:** Saved, sent, exported: something people should notice without stopping.
 - **Not when:** A failure people must understand (alert or dialog), or a notice that stays (alert).
@@ -46,7 +48,7 @@ Toast looks the way it does because of 4 answers about this product. Each card i
 
 <section class="odv-trail" id="why-voice-values"><div class="odv-trail-head"><b>How does it sound?</b><code>voice.values</code></div><div class="odv-steps"><div class="odv-step-col"><h5><i>1</i>The answer</h5><div class="odv-answer">Terse</div><p>Experts want short labels and short messages.</p></div><div class="odv-step-col"><h5><i>2</i>So Toast</h5><ul><li><span class="y">✓</span><span>uses <b>neutral</b>: A plain confirmation: Filters cleared.</span></li><li><span class="y">✓</span><span>uses <b>success</b>: A short confirmation with the count: 12 alerts exported.</span></li><li><span class="y">✓</span><span>uses <b>danger</b>: A background failure: name the record, then the fix.</span></li></ul><div class="odv-also"><small>It also shapes</small> <code>Alert: destructive</code></div></div><div class="odv-step-col change"><h5><i>3</i>If it changed</h5><div class="odv-big">3</div><small>Toast decisions would reopen</small><p>No other answer follows from it.</p></div></div></section>
 
-<section class="odv-trail" id="why-tasks-q2"><div class="odv-trail-head"><b>How often do people repeat actions?</b><code>tasks.q2</code></div><div class="odv-steps"><div class="odv-step-col"><h5><i>1</i>The answer</h5><div class="odv-answer">Constantly</div><p>The same actions repeat many times an hour.</p></div><div class="odv-step-col"><h5><i>2</i>So Toast</h5><ul><li><span class="y">✓</span><span>uses <b>success</b>: A short confirmation with the count: 12 alerts exported.</span></li></ul><div class="odv-also"><small>It also shapes</small> <code>Button: ghost</code> <code>Input group: inline-end</code> <code>Sidebar: default</code> <code>Alert: default</code></div></div><div class="odv-step-col change"><h5><i>3</i>If it changed</h5><div class="odv-big">1</div><small>Toast decision would reopen</small><p>and 11 answers that follow from it: <b>Time on task</b>, <b>All day</b>, <b>Three</b>, and 8 more.</p></div></div></section>
+<section class="odv-trail" id="why-tasks-q2"><div class="odv-trail-head"><b>How often do people repeat actions?</b><code>tasks.q2</code></div><div class="odv-steps"><div class="odv-step-col"><h5><i>1</i>The answer</h5><div class="odv-answer">Constantly</div><p>The same actions repeat many times an hour.</p></div><div class="odv-step-col"><h5><i>2</i>So Toast</h5><ul><li><span class="y">✓</span><span>uses <b>success</b>: A short confirmation with the count: 12 alerts exported.</span></li></ul><div class="odv-also"><small>It also shapes</small> <code>Button: ghost</code> <code>Input group: inline-end</code> <code>Sidebar: default</code> <code>Alert: default</code> <code>Toggle: default</code></div></div><div class="odv-step-col change"><h5><i>3</i>If it changed</h5><div class="odv-big">1</div><small>Toast decision would reopen</small><p>and 11 answers that follow from it: <b>Time on task</b>, <b>All day</b>, <b>Three</b>, and 8 more.</p></div></div></section>
 
 <section class="odv-trail" id="why-voice-lands"><div class="odv-trail-head"><b>Where do the words matter most?</b><code>voice.lands</code></div><div class="odv-steps"><div class="odv-step-col"><h5><i>1</i>The answer</h5><div class="odv-answer">Errors and empty states</div><p>Errors and empty tables are where words decide the next action.</p></div><div class="odv-step-col"><h5><i>2</i>So Toast</h5><ul><li><span class="y">✓</span><span>uses <b>danger</b>: A background failure: name the record, then the fix.</span></li></ul><div class="odv-also"><small>It also shapes</small> <code>Empty: default</code></div></div><div class="odv-step-col change"><h5><i>3</i>If it changed</h5><div class="odv-big">1</div><small>Toast decision would reopen</small><p>No other answer follows from it.</p></div></div></section>
 

@@ -10,13 +10,15 @@ description: "Checkbox in Dense data."
 
 One or many independent on or off choices, usually sent with a form.
 
-**In Dense data.** Selects rows and filter values.
+<p class="odv-compstatus"><span class="odv-pill">In Dense data</span></p>
 
 ## See it live
 
 <div class="odv-live"><span class="odv-wait">Start Storybook to see it live: <code>npm run storybook</code></span><iframe src="http://localhost:6006/iframe.html?id=components-checkbox--examples&viewMode=story&globals=scheme:dense-data" title="Checkbox examples in Storybook" loading="lazy"></iframe><div class="bar"><span>Live from Storybook</span><a href="http://localhost:6006/?path=/docs/components-checkbox--docs">Open Checkbox in Storybook</a><a href="http://localhost:6006/iframe.html?id=components-checkbox--examples&viewMode=story&globals=scheme:dense-data;mode:dark">See it in dark</a></div></div>
 
 ## When to use it
+
+**In Dense data:** Selects rows and filter values.
 
 - **Use it when:** Agreeing, picking many, optional extras; the choice waits for the form.
 - **Not when:** Exactly one of a short set (radio group), or a setting that applies at once (switch).

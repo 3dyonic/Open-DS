@@ -11,7 +11,7 @@ sidebar_class_name: "ods-left-out"
 
 A search-first menu of actions and places, opened from the keyboard.
 
-<div class="odv-leftout"><span class="odv-robot "><img class="odv-robot-day" src="/robots/brand-expressive.webp" alt="" loading="lazy"/><img class="odv-robot-night" src="/robots/brand-expressive-dark.webp" alt="" loading="lazy"/></span><p><b>Not part of Brand expressive.</b> Visitors on phones do not use keyboard menus. The examples use Brand expressive's tokens, to show how it would look if the design system added it.</p></div>
+<p class="odv-compstatus"><span class="odv-pill odv-pill-out">Left out of Brand expressive</span> Command serves expert users who type to jump anywhere. Brand expressive serves new customers deciding if they care, who come from social posts on their phones. <span class="odv-instead">Use instead: <a href="./navigation-menu">Navigation menu</a>, <a href="./drawer">Drawer</a></span></p>
 
 ## See it live
 

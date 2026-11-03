@@ -11,7 +11,7 @@ sidebar_class_name: "ods-left-out"
 
 The side navigation of an app, open while people work.
 
-<div class="odv-leftout"><span class="odv-robot "><img class="odv-robot-day" src="/robots/accessible-first.webp" alt="" loading="lazy"/><img class="odv-robot-night" src="/robots/accessible-first-dark.webp" alt="" loading="lazy"/></span><p><b>Not part of Accessible first.</b> Its answers did not pick it. The examples use Accessible first's tokens, to show how it would look if the design system added it.</p></div>
+<p class="odv-compstatus"><span class="odv-pill odv-pill-out">Left out of Accessible first</span> Sidebar is for apps people move around all session. Here people do this once or twice a year, and breadcrumb shows where they are. <span class="odv-instead">Use instead: <a href="./breadcrumb">Breadcrumb</a>, <a href="./progress">Progress</a></span></p>
 
 ## See it live
 

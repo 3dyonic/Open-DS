@@ -11,7 +11,7 @@ sidebar_class_name: "ods-left-out"
 
 An on or off setting that applies at once, with no submit.
 
-<div class="odv-leftout"><span class="odv-robot "><img class="odv-robot-day" src="/robots/accessible-first.webp" alt="" loading="lazy"/><img class="odv-robot-night" src="/robots/accessible-first-dark.webp" alt="" loading="lazy"/></span><p><b>Not part of Accessible first.</b> A checkbox is clearer about what on and off mean. The examples use Accessible first's tokens, to show how it would look if the design system added it.</p></div>
+<p class="odv-compstatus"><span class="odv-pill odv-pill-out">Left out of Accessible first</span> Components do their work in forms and steps, where a choice waits for the form. The catalogue gives that case to the checkbox. <span class="odv-instead">Use instead: <a href="./checkbox">Checkbox</a></span></p>
 
 ## See it live
 

@@ -11,7 +11,7 @@ sidebar_class_name: "ods-left-out"
 
 A short hint on hover or focus.
 
-<div class="odv-leftout"><span class="odv-robot "><img class="odv-robot-day" src="/robots/brand-expressive.webp" alt="" loading="lazy"/><img class="odv-robot-night" src="/robots/brand-expressive-dark.webp" alt="" loading="lazy"/></span><p><b>Not part of Brand expressive.</b> Its answers did not pick it. The examples use Brand expressive's tokens, to show how it would look if the design system added it.</p></div>
+<p class="odv-compstatus"><span class="odv-pill odv-pill-out">Left out of Brand expressive</span> Visitors come from social posts on their phones, where hover hints never show. Every button has a word instead. <span class="odv-instead">Use instead: <a href="./button">Button</a>, <a href="./popover">Popover</a></span></p>
 
 ## See it live
 

@@ -10,13 +10,15 @@ description: "Popover in Brand expressive."
 
 Rich content in a floating panel, opened by click.
 
-**In Brand expressive.** A product preview that opens on tap.
+<p class="odv-compstatus"><span class="odv-pill">In Brand expressive</span></p>
 
 ## See it live
 
 <div class="odv-live"><span class="odv-wait">Start Storybook to see it live: <code>npm run storybook</code></span><iframe src="http://localhost:6006/iframe.html?id=components-popover--examples&viewMode=story&globals=scheme:brand-expressive" title="Popover examples in Storybook" loading="lazy"></iframe><div class="bar"><span>Live from Storybook</span><a href="http://localhost:6006/?path=/docs/components-popover--docs">Open Popover in Storybook</a><a href="http://localhost:6006/iframe.html?id=components-popover--examples&viewMode=story&globals=scheme:brand-expressive;mode:dark">See it in dark</a></div></div>
 
 ## When to use it
+
+**In Brand expressive:** A product preview that opens on tap.
 
 - **Use it when:** Extra detail or a small control next to what it explains, on any device.
 - **Not when:** A one-line hint (tooltip), or a task that should block the page (dialog).

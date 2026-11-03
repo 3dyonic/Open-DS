@@ -10,13 +10,15 @@ description: "Field in Dense data."
 
 A label, control, hint and error laid out together, the same way every time.
 
-**In Dense data.** Lays out label, control and error the same way everywhere.
+<p class="odv-compstatus"><span class="odv-pill">In Dense data</span></p>
 
 ## See it live
 
 <div class="odv-live"><span class="odv-wait">Start Storybook to see it live: <code>npm run storybook</code></span><iframe src="http://localhost:6006/iframe.html?id=components-field--examples&viewMode=story&globals=scheme:dense-data" title="Field examples in Storybook" loading="lazy"></iframe><div class="bar"><span>Live from Storybook</span><a href="http://localhost:6006/?path=/docs/components-field--docs">Open Field in Storybook</a><a href="http://localhost:6006/iframe.html?id=components-field--examples&viewMode=story&globals=scheme:dense-data;mode:dark">See it in dark</a></div></div>
 
 ## When to use it
+
+**In Dense data:** Lays out label, control and error the same way everywhere.
 
 - **Use it when:** Every form control that needs a label, a hint or an error.
 - **Not when:** A control that is not part of a form, such as a search box in a toolbar.
@@ -45,7 +47,7 @@ Field looks the way it does because of 4 answers about this product. Each card i
 
 <section class="odv-trail" id="why-tasks-q1"><div class="odv-trail-head"><b>What is the main task?</b><code>tasks.q1</code></div><div class="odv-steps"><div class="odv-step-col"><h5><i>1</i>The answer</h5><div class="odv-answer">Scan and compare</div><p>People scan rows and compare values.</p></div><div class="odv-step-col"><h5><i>2</i>So Field</h5><ul><li><span class="y">✓</span><span>uses <b>vertical</b>: Forms in dialogs and sheets: the label above.</span></li></ul></div><div class="odv-step-col change"><h5><i>3</i>If it changed</h5><div class="odv-big">2</div><small>Field decisions would reopen</small><p>and 20 answers that follow from it: <b>People keep their place</b>, <b>Acting on the wrong record</b>, <b>Core and data</b>, and 17 more.</p></div></div></section>
 
-<section class="odv-trail" id="why-content-q2"><div class="odv-trail-head"><b>How much is on one screen?</b><code>content.q2</code></div><div class="odv-steps"><div class="odv-step-col"><h5><i>1</i>The answer</h5><div class="odv-answer">A lot</div><p>Experts want many records on one screen.</p></div><div class="odv-step-col"><h5><i>2</i>So Field</h5><ul><li><span class="y">✓</span><span>uses <b>horizontal</b>: Settings and filter panels: switches and short controls with the label beside.</span></li></ul><div class="odv-also"><small>It also shapes</small> <code>Button: default</code> <code>Button: compact</code> <code>Button: large</code> <code>Input group: block-start</code> <code>Input group: block-end</code> <code>Sidebar: lg</code></div></div><div class="odv-step-col change"><h5><i>3</i>If it changed</h5><div class="odv-big">1</div><small>Field decision would reopen</small><p>and 14 answers that follow from it: <b>Quiet</b>, <b>Only the steps the screens need</b>, <b>Small</b>, and 11 more.</p></div></div></section>
+<section class="odv-trail" id="why-content-q2"><div class="odv-trail-head"><b>How much is on one screen?</b><code>content.q2</code></div><div class="odv-steps"><div class="odv-step-col"><h5><i>1</i>The answer</h5><div class="odv-answer">A lot</div><p>Experts want many records on one screen.</p></div><div class="odv-step-col"><h5><i>2</i>So Field</h5><ul><li><span class="y">✓</span><span>uses <b>horizontal</b>: Settings and filter panels: switches and short controls with the label beside.</span></li></ul><div class="odv-also"><small>It also shapes</small> <code>Button: default</code> <code>Button: compact</code> <code>Button: large</code> <code>Input group: block-start</code> <code>Input group: block-end</code> <code>Sidebar: lg</code> <code>Toggle: default</code> <code>Toggle: sm</code> <code>Toggle: lg</code></div></div><div class="odv-step-col change"><h5><i>3</i>If it changed</h5><div class="odv-big">1</div><small>Field decision would reopen</small><p>and 14 answers that follow from it: <b>Quiet</b>, <b>Only the steps the screens need</b>, <b>Small</b>, and 11 more.</p></div></div></section>
 
 <section class="odv-trail" id="why-spacing-count"><div class="odv-trail-head"><b>How many densities exist?</b><code>spacing.count</code></div><div class="odv-steps"><div class="odv-step-col"><h5><i>1</i>The answer</h5><div class="odv-answer">Two</div><p>A second, denser size serves tables and toolbars.</p></div><div class="odv-step-col"><h5><i>2</i>So Field</h5><ul><li><span class="y">✓</span><span>uses <b>horizontal</b>: Settings and filter panels: switches and short controls with the label beside.</span></li></ul><div class="odv-also"><small>It also shapes</small> <code>Sidebar: sm</code></div></div><div class="odv-step-col change"><h5><i>3</i>If it changed</h5><div class="odv-big">1</div><small>Field decision would reopen</small><p>No other answer follows from it.</p></div></div></section>
 

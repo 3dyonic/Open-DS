@@ -10,13 +10,15 @@ description: "Field in Brand expressive."
 
 A label, control, hint and error laid out together, the same way every time.
 
-**In Brand expressive.** Lays out the sign-up form.
+<p class="odv-compstatus"><span class="odv-pill">In Brand expressive</span></p>
 
 ## See it live
 
 <div class="odv-live"><span class="odv-wait">Start Storybook to see it live: <code>npm run storybook</code></span><iframe src="http://localhost:6006/iframe.html?id=components-field--examples&viewMode=story&globals=scheme:brand-expressive" title="Field examples in Storybook" loading="lazy"></iframe><div class="bar"><span>Live from Storybook</span><a href="http://localhost:6006/?path=/docs/components-field--docs">Open Field in Storybook</a><a href="http://localhost:6006/iframe.html?id=components-field--examples&viewMode=story&globals=scheme:brand-expressive;mode:dark">See it in dark</a></div></div>
 
 ## When to use it
+
+**In Brand expressive:** Lays out the sign-up form.
 
 - **Use it when:** Every form control that needs a label, a hint or an error.
 - **Not when:** A control that is not part of a form, such as a search box in a toolbar.
@@ -45,7 +47,7 @@ Field looks the way it does because of 2 answers about this product. Each card i
 
 <section class="odv-trail" id="why-scenarios-q1"><div class="odv-trail-head"><b>Where do people use it?</b><code>scenarios.q1</code></div><div class="odv-steps"><div class="odv-step-col"><h5><i>1</i>The answer</h5><div class="odv-answer">On the move</div><p>Visitors come from social posts on their phones.</p></div><div class="odv-step-col"><h5><i>2</i>So Field</h5><ul><li><span class="y">✓</span><span>uses <b>vertical</b>: The sign-up form: the label above the field.</span></li><li><span class="n">–</span><span>does not use <b>horizontal</b>: Phones first: there is no room beside the field.</span></li><li><span class="n">–</span><span>does not use <b>responsive</b>: Phones first: one stacked layout.</span></li></ul></div><div class="odv-step-col change"><h5><i>3</i>If it changed</h5><div class="odv-big">3</div><small>Field decisions would reopen</small><p>and 2 answers that follow from it: <b>Touch size</b>, <b>Those and pressed</b>.</p></div></div></section>
 
-<section class="odv-trail" id="why-accessibility-values"><div class="odv-trail-head"><b>What is the smallest target?</b><code>accessibility.values</code></div><div class="odv-steps"><div class="odv-step-col"><h5><i>1</i>The answer</h5><div class="odv-answer">Touch size</div><p>Visitors come from social posts on phones.</p></div><div class="odv-step-col"><h5><i>2</i>So Field</h5><ul><li><span class="n">–</span><span>does not use <b>horizontal</b>: Phones first: there is no room beside the field.</span></li></ul><div class="odv-also"><small>It also shapes</small> <code>Button: default</code> <code>Button: compact</code> <code>Button: icon</code></div></div><div class="odv-step-col change"><h5><i>3</i>If it changed</h5><div class="odv-big">1</div><small>Field decision would reopen</small><p>and 1 answer that follow from it: <b>Those and pressed</b>.</p></div></div></section>
+<section class="odv-trail" id="why-accessibility-values"><div class="odv-trail-head"><b>What is the smallest target?</b><code>accessibility.values</code></div><div class="odv-steps"><div class="odv-step-col"><h5><i>1</i>The answer</h5><div class="odv-answer">Touch size</div><p>Visitors come from social posts on phones.</p></div><div class="odv-step-col"><h5><i>2</i>So Field</h5><ul><li><span class="n">–</span><span>does not use <b>horizontal</b>: Phones first: there is no room beside the field.</span></li></ul><div class="odv-also"><small>It also shapes</small> <code>Button: default</code> <code>Button: compact</code> <code>Button: icon</code> <code>Input group: inline-end</code> <code>Toggle: default</code> <code>Toggle: sm</code></div></div><div class="odv-step-col change"><h5><i>3</i>If it changed</h5><div class="odv-big">1</div><small>Field decision would reopen</small><p>and 1 answer that follow from it: <b>Those and pressed</b>.</p></div></div></section>
 
 ## Words
 

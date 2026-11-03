@@ -10,13 +10,15 @@ description: "Drawer in Brand expressive."
 
 A panel that slides up from the bottom, for phones.
 
-**In Brand expressive.** The menu on a phone.
+<p class="odv-compstatus"><span class="odv-pill">In Brand expressive</span></p>
 
 ## See it live
 
 <div class="odv-live"><span class="odv-wait">Start Storybook to see it live: <code>npm run storybook</code></span><iframe src="http://localhost:6006/iframe.html?id=components-drawer--examples&viewMode=story&globals=scheme:brand-expressive" title="Drawer examples in Storybook" loading="lazy"></iframe><div class="bar"><span>Live from Storybook</span><a href="http://localhost:6006/?path=/docs/components-drawer--docs">Open Drawer in Storybook</a><a href="http://localhost:6006/iframe.html?id=components-drawer--examples&viewMode=story&globals=scheme:brand-expressive;mode:dark">See it in dark</a></div></div>
 
 ## When to use it
+
+**In Brand expressive:** The menu on a phone.
 
 - **Use it when:** Filters, details or a short form on a phone, while the page stays partly in view.
 - **Not when:** A blocking decision (dialog), or a wide screen where a side panel fits better (sheet).

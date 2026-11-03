@@ -10,13 +10,15 @@ description: "Alert in Multi-brand."
 
 A message that stays on the page with the content it is about.
 
-**In Multi-brand.** Billing problems.
+<p class="odv-compstatus"><span class="odv-pill">In Multi-brand</span></p>
 
 ## See it live
 
 <div class="odv-live"><span class="odv-wait">Start Storybook to see it live: <code>npm run storybook</code></span><iframe src="http://localhost:6006/iframe.html?id=components-alert--examples&viewMode=story&globals=scheme:multi-brand--aster" title="Alert examples in Storybook" loading="lazy"></iframe><div class="bar"><span>Live from Storybook</span><a href="http://localhost:6006/?path=/docs/components-alert--docs">Open Alert in Storybook</a><a href="http://localhost:6006/iframe.html?id=components-alert--examples&viewMode=story&globals=scheme:multi-brand--aster;mode:dark">See it in dark</a></div></div>
 
 ## When to use it
+
+**In Multi-brand:** Billing problems.
 
 - **Use it when:** People need to read a standing notice or how to recover, on this page, tied to what they are doing.
 - **Not when:** A short confirmation that can go away by itself, or one notice for the whole site.
@@ -43,7 +45,7 @@ What each variant is for in any design system, then what Multi-brand decided and
 
 Alert looks the way it does because of 5 answers about this product. Each card is one answer, in three steps: the answer, what it decided for Alert, and what would move if it changed.
 
-<section class="odv-trail" id="why-content-q1"><div class="odv-trail-head"><b>What is the main content?</b><code>content.q1</code></div><div class="odv-steps"><div class="odv-step-col"><h5><i>1</i>The answer</h5><div class="odv-answer">Forms and tasks</div><p>Product pages, sign-up and account forms.</p></div><div class="odv-step-col"><h5><i>2</i>So Alert</h5><ul><li><span class="n">–</span><span>does not use <b>default</b>: Alerts here are for billing problems; news is a badge or a toast.</span></li></ul><div class="odv-also"><small>It also shapes</small> <code>Badge: warning</code></div></div><div class="odv-step-col change"><h5><i>3</i>If it changed</h5><div class="odv-big">1</div><small>Alert decision would reopen</small><p>and 9 answers that follow from it: <b>A moderate amount</b>, <b>Gaps, insets and row heights</b>, <b>Comfortable</b>, and 6 more.</p></div></div></section>
+<section class="odv-trail" id="why-content-q1"><div class="odv-trail-head"><b>What is the main content?</b><code>content.q1</code></div><div class="odv-steps"><div class="odv-step-col"><h5><i>1</i>The answer</h5><div class="odv-answer">Forms and tasks</div><p>Product pages, sign-up and account forms.</p></div><div class="odv-step-col"><h5><i>2</i>So Alert</h5><ul><li><span class="n">–</span><span>does not use <b>default</b>: Alerts here are for billing problems; news is a badge or a toast.</span></li></ul><div class="odv-also"><small>It also shapes</small> <code>Badge: warning</code> <code>Input group: inline-start</code> <code>Input group: inline-end</code> <code>Input group: block-start</code> <code>Input group: block-end</code></div></div><div class="odv-step-col change"><h5><i>3</i>If it changed</h5><div class="odv-big">1</div><small>Alert decision would reopen</small><p>and 9 answers that follow from it: <b>A moderate amount</b>, <b>Gaps, insets and row heights</b>, <b>Comfortable</b>, and 6 more.</p></div></div></section>
 
 <section class="odv-trail" id="why-outcomes-q1"><div class="odv-trail-head"><b>Which outcome matters most?</b><code>outcomes.q1</code></div><div class="odv-steps"><div class="odv-step-col"><h5><i>1</i>The answer</h5><div class="odv-answer">Completion without errors</div><p>Finished sign-ups and orders.</p></div><div class="odv-step-col"><h5><i>2</i>So Alert</h5><ul><li><span class="n">–</span><span>does not use <b>default</b>: Alerts here are for billing problems; news is a badge or a toast.</span></li></ul><div class="odv-also"><small>It also shapes</small> <code>Button: primary</code> <code>Button: large</code></div></div><div class="odv-step-col change"><h5><i>3</i>If it changed</h5><div class="odv-big">1</div><small>Alert decision would reopen</small><p>No other answer follows from it.</p></div></div></section>
 

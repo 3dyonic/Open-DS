@@ -11,7 +11,7 @@ sidebar_class_name: "ods-left-out"
 
 A picture of numbers: comparison, trend, share or spread.
 
-<div class="odv-leftout"><span class="odv-robot "><img class="odv-robot-day" src="/robots/multi-brand.webp" alt="" loading="lazy"/><img class="odv-robot-night" src="/robots/multi-brand-dark.webp" alt="" loading="lazy"/></span><p><b>Not part of Multi-brand.</b> Customers manage plans; they do not analyse data. The examples use Multi-brand's tokens, to show how it would look if the design system added it.</p></div>
+<p class="odv-compstatus"><span class="odv-pill odv-pill-out">Left out of Multi-brand</span> Multi-brand draws on core, content and media families, not data. It admits only families in its roles. Its scenarios are signing up and managing a plan. <span class="odv-instead">Use instead: <a href="./card">Card</a>, <a href="./badge">Badge</a></span></p>
 
 ## See it live
 

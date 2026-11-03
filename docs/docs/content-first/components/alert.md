@@ -10,13 +10,15 @@ description: "Alert in Content first."
 
 A message that stays on the page with the content it is about.
 
-**In Content first.** A note or warning inside an article.
+<p class="odv-compstatus"><span class="odv-pill">In Content first</span></p>
 
 ## See it live
 
 <div class="odv-live"><span class="odv-wait">Start Storybook to see it live: <code>npm run storybook</code></span><iframe src="http://localhost:6006/iframe.html?id=components-alert--examples&viewMode=story&globals=scheme:content-first" title="Alert examples in Storybook" loading="lazy"></iframe><div class="bar"><span>Live from Storybook</span><a href="http://localhost:6006/?path=/docs/components-alert--docs">Open Alert in Storybook</a><a href="http://localhost:6006/iframe.html?id=components-alert--examples&viewMode=story&globals=scheme:content-first;mode:dark">See it in dark</a></div></div>
 
 ## When to use it
+
+**In Content first:** A note or warning inside an article.
 
 - **Use it when:** People need to read a standing notice or how to recover, on this page, tied to what they are doing.
 - **Not when:** A short confirmation that can go away by itself, or one notice for the whole site.

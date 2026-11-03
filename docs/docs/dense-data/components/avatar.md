@@ -11,7 +11,7 @@ sidebar_class_name: "ods-left-out"
 
 A small image or initials that stand for a person or account.
 
-<div class="odv-leftout"><span class="odv-robot "><img class="odv-robot-day" src="/robots/dense-data.webp" alt="" loading="lazy"/><img class="odv-robot-night" src="/robots/dense-data-dark.webp" alt="" loading="lazy"/></span><p><b>Not part of Dense data.</b> Its answers did not pick it. The examples use Dense data's tokens, to show how it would look if the design system added it.</p></div>
+<p class="odv-compstatus"><span class="odv-pill odv-pill-out">Left out of Dense data</span> Avatar is a media component. Dense data's components answer takes core and data families only, because records need tables, filters and fast ways to move between them. <span class="odv-instead">Use instead: <a href="./badge">Badge</a>, <a href="./card">Card</a></span></p>
 
 ## See it live
 

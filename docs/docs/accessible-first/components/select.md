@@ -11,7 +11,7 @@ sidebar_class_name: "ods-left-out"
 
 One choice from a list, in a menu.
 
-<div class="odv-leftout"><span class="odv-robot "><img class="odv-robot-day" src="/robots/accessible-first.webp" alt="" loading="lazy"/><img class="odv-robot-night" src="/robots/accessible-first-dark.webp" alt="" loading="lazy"/></span><p><b>Not part of Accessible first.</b> A custom listbox is harder for screen readers than the native select. The examples use Accessible first's tokens, to show how it would look if the design system added it.</p></div>
+<p class="odv-compstatus"><span class="odv-pill odv-pill-out">Left out of Accessible first</span> A component joins only when it works with any assistive technology. The native select covers the same choice and every assistive technology understands it. <span class="odv-instead">Use instead: <a href="./native-select">Native select</a>, <a href="./radio-group">Radio group</a></span></p>
 
 ## See it live
 

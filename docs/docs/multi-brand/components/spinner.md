@@ -10,13 +10,15 @@ description: "Spinner in Multi-brand."
 
 A small indicator that work is in progress when the time is unknown.
 
-**In Multi-brand.** A payment in progress.
+<p class="odv-compstatus"><span class="odv-pill">In Multi-brand</span></p>
 
 ## See it live
 
 <div class="odv-live"><span class="odv-wait">Start Storybook to see it live: <code>npm run storybook</code></span><iframe src="http://localhost:6006/iframe.html?id=components-spinner--examples&viewMode=story&globals=scheme:multi-brand--aster" title="Spinner examples in Storybook" loading="lazy"></iframe><div class="bar"><span>Live from Storybook</span><a href="http://localhost:6006/?path=/docs/components-spinner--docs">Open Spinner in Storybook</a><a href="http://localhost:6006/iframe.html?id=components-spinner--examples&viewMode=story&globals=scheme:multi-brand--aster;mode:dark">See it in dark</a></div></div>
 
 ## When to use it
+
+**In Multi-brand:** A payment in progress.
 
 - **Use it when:** Fetching a panel or syncing, a wait that is not the button itself.
 - **Not when:** A layout placeholder (skeleton), or known progress (progress).

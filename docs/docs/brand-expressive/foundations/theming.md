@@ -10,48 +10,9 @@ description: "Brand expressive: Modes and brands."
 
 Modes and brands.
 
-<div class="ods-specimen">
-<span class="ods-item"><span class="ods-tile" style="border-radius:var(--theme-radius-control)"></span><span class="ods-label">theme.radius.control</span></span>
-<span class="ods-item"><span class="ods-tile" style="border-radius:var(--theme-radius-badge)"></span><span class="ods-label">theme.radius.badge</span></span>
-<span class="ods-item"><span class="ods-tile" style="border-radius:var(--theme-radius-container)"></span><span class="ods-label">theme.radius.container</span></span>
-<span class="ods-item"><span class="ods-font" style="font-family:var(--theme-type-display-font-family)">Aa 123</span><span class="ods-label">theme.type.display.font-family</span></span>
-<span class="ods-item"><span class="ods-font" style="font-family:var(--theme-type-title-font-family)">Aa 123</span><span class="ods-label">theme.type.title.font-family</span></span>
-<span class="ods-item"><span class="ods-font" style="font-family:var(--theme-type-heading-font-family)">Aa 123</span><span class="ods-label">theme.type.heading.font-family</span></span>
-<span class="ods-item"><span class="ods-font" style="font-family:var(--theme-type-body-font-family)">Aa 123</span><span class="ods-label">theme.type.body.font-family</span></span>
-<span class="ods-item"><span class="ods-font" style="font-family:var(--theme-type-label-font-family)">Aa 123</span><span class="ods-label">theme.type.label.font-family</span></span>
-<span class="ods-item"><span class="ods-font" style="font-family:var(--theme-type-caption-font-family)">Aa 123</span><span class="ods-label">theme.type.caption.font-family</span></span>
-<span class="ods-item"><span class="ods-font" style="font-family:var(--theme-type-data-font-family)">Aa 123</span><span class="ods-label">theme.type.data.font-family</span></span>
-<span class="ods-item"><span class="ods-swatch" style="background:var(--theme-color-surface-canvas)"></span><span class="ods-label">theme.color.surface.canvas</span></span>
-<span class="ods-item"><span class="ods-swatch" style="background:var(--theme-color-surface-default)"></span><span class="ods-label">theme.color.surface.default</span></span>
-<span class="ods-item"><span class="ods-swatch" style="background:var(--theme-color-surface-raised)"></span><span class="ods-label">theme.color.surface.raised</span></span>
-<span class="ods-item"><span class="ods-swatch" style="background:var(--theme-color-surface-sunken)"></span><span class="ods-label">theme.color.surface.sunken</span></span>
-<span class="ods-item"><span class="ods-swatch" style="background:var(--theme-color-surface-selected)"></span><span class="ods-label">theme.color.surface.selected</span></span>
-<span class="ods-item"><span class="ods-swatch" style="background:var(--theme-color-surface-inverse)"></span><span class="ods-label">theme.color.surface.inverse</span></span>
-<span class="ods-item"><span class="ods-swatch" style="background:var(--theme-color-surface-scrim)"></span><span class="ods-label">theme.color.surface.scrim</span></span>
-<span class="ods-item"><span class="ods-swatch" style="background:var(--theme-color-text-primary)"></span><span class="ods-label">theme.color.text.primary</span></span>
-<span class="ods-item"><span class="ods-swatch" style="background:var(--theme-color-text-secondary)"></span><span class="ods-label">theme.color.text.secondary</span></span>
-<span class="ods-item"><span class="ods-swatch" style="background:var(--theme-color-text-muted)"></span><span class="ods-label">theme.color.text.muted</span></span>
-<span class="ods-item"><span class="ods-swatch" style="background:var(--theme-color-text-inverse)"></span><span class="ods-label">theme.color.text.inverse</span></span>
-<span class="ods-item"><span class="ods-swatch" style="background:var(--theme-color-text-on-action)"></span><span class="ods-label">theme.color.text.on-action</span></span>
-<span class="ods-item"><span class="ods-swatch" style="background:var(--theme-color-text-link)"></span><span class="ods-label">theme.color.text.link</span></span>
-<span class="ods-item"><span class="ods-swatch" style="background:var(--theme-color-border-default)"></span><span class="ods-label">theme.color.border.default</span></span>
-<span class="ods-item"><span class="ods-swatch" style="background:var(--theme-color-border-strong)"></span><span class="ods-label">theme.color.border.strong</span></span>
-<span class="ods-item"><span class="ods-swatch" style="background:var(--theme-color-border-focus)"></span><span class="ods-label">theme.color.border.focus</span></span>
-<span class="ods-item"><span class="ods-swatch" style="background:var(--theme-color-action-primary)"></span><span class="ods-label">theme.color.action.primary.@</span></span>
-<span class="ods-item"><span class="ods-swatch" style="background:var(--theme-color-action-primary-hover)"></span><span class="ods-label">theme.color.action.primary.hover</span></span>
-<span class="ods-item"><span class="ods-swatch" style="background:var(--theme-color-action-secondary)"></span><span class="ods-label">theme.color.action.secondary.@</span></span>
-<span class="ods-item"><span class="ods-swatch" style="background:var(--theme-color-action-secondary-hover)"></span><span class="ods-label">theme.color.action.secondary.hover</span></span>
-<span class="ods-item"><span class="ods-swatch" style="background:var(--theme-color-status-info)"></span><span class="ods-label">theme.color.status.info.@</span></span>
-<span class="ods-item"><span class="ods-swatch" style="background:var(--theme-color-status-info-subtle)"></span><span class="ods-label">theme.color.status.info.subtle</span></span>
-<span class="ods-item"><span class="ods-swatch" style="background:var(--theme-color-status-success)"></span><span class="ods-label">theme.color.status.success.@</span></span>
-<span class="ods-item"><span class="ods-swatch" style="background:var(--theme-color-status-success-subtle)"></span><span class="ods-label">theme.color.status.success.subtle</span></span>
-<span class="ods-item"><span class="ods-swatch" style="background:var(--theme-color-status-warning)"></span><span class="ods-label">theme.color.status.warning.@</span></span>
-<span class="ods-item"><span class="ods-swatch" style="background:var(--theme-color-status-warning-subtle)"></span><span class="ods-label">theme.color.status.warning.subtle</span></span>
-<span class="ods-item"><span class="ods-swatch" style="background:var(--theme-color-status-danger)"></span><span class="ods-label">theme.color.status.danger.@</span></span>
-<span class="ods-item"><span class="ods-swatch" style="background:var(--theme-color-status-danger-subtle)"></span><span class="ods-label">theme.color.status.danger.subtle</span></span>
-<span class="ods-item"><span class="ods-swatch" style="background:var(--theme-color-category-1)"></span><span class="ods-label">theme.color.category.1.@</span></span>
-<span class="ods-item"><span class="ods-swatch" style="background:var(--theme-color-category-1-subtle)"></span><span class="ods-label">theme.color.category.1.subtle</span></span>
-</div>
+Brand expressive has **2 modes** and **1 brand**. A mode swaps the colours; corners and type stay the same in every mode.
+
+<div class="odv-theming"><div class="odv-brandset" data-for-brand="default"><div class="odv-modes"><div class="odv-mode-prev" style="background:#FFF8F3;color:#1F1411;border-color:#F2DCCF"><div class="odv-mode-head"><span>Light</span></div><div class="odv-mode-surf" style="background:#FFFFFF;border-color:#F2DCCF;border-radius:1.5rem (24px)"><b>Brand expressive</b><span style="color:#4D3A33">A visitor lands on a launch page from a social post and joins the waiting list.</span><span class="odv-mode-row"><span class="odv-mode-pill" style="background:#E3F4EA;color:#1F7A3A;border-radius:9999px">On the list</span><span class="odv-mode-pill" style="background:#FFF3D6;color:#8A5600;border-radius:9999px">Almost gone</span></span><span class="odv-mode-row"><span class="odv-mode-btn" style="background:#D61F7A;color:#FFFFFF;border-radius:9999px">Go</span><span class="odv-mode-btn" style="background:#FCEFE6;color:#1F1411;border-radius:9999px">Not now</span></span></div></div><div class="odv-mode-prev" style="background:#120B09;color:#FFF8F3;border-color:#33241F"><div class="odv-mode-head"><span>Dark</span></div><div class="odv-mode-surf" style="background:#1F1411;border-color:#33241F;border-radius:1.5rem (24px)"><b>Brand expressive</b><span style="color:#E2C4B3">A visitor lands on a launch page from a social post and joins the waiting list.</span><span class="odv-mode-row"><span class="odv-mode-pill" style="background:#123322;color:#5CC283;border-radius:9999px">On the list</span><span class="odv-mode-pill" style="background:#3A2A05;color:#F2B84B;border-radius:9999px">Almost gone</span></span><span class="odv-mode-row"><span class="odv-mode-btn" style="background:#F59ACA;color:#120B09;border-radius:9999px">Go</span><span class="odv-mode-btn" style="background:#33241F;color:#FFF8F3;border-radius:9999px">Not now</span></span></div></div></div><h3>What a mode changes</h3><div class="odv-tscroll"><table class="odv-ttable"><thead><tr><th>Job</th><th>Light</th><th>Dark</th></tr></thead><tbody><tr class="odv-tgroup"><td colspan="3">Surface · 7</td></tr><tr><td><code>surface.canvas</code></td><td><span class="odv-tsw"><i style="background:#FFF8F3"></i><small>taupe.light.50</small></span></td><td><span class="odv-tsw"><i style="background:#120B09"></i><small>taupe.dark.0</small></span></td></tr><tr><td><code>surface.default</code></td><td><span class="odv-tsw"><i style="background:#FFFFFF"></i><small>taupe.light.0</small></span></td><td><span class="odv-tsw"><i style="background:#1F1411"></i><small>taupe.dark.50</small></span></td></tr><tr><td><code>surface.raised</code></td><td><span class="odv-tsw"><i style="background:#FFFFFF"></i><small>taupe.light.0</small></span></td><td><span class="odv-tsw"><i style="background:#33241F"></i><small>taupe.dark.100</small></span></td></tr><tr><td><code>surface.sunken</code></td><td><span class="odv-tsw"><i style="background:#FCEFE6"></i><small>taupe.light.100</small></span></td><td><span class="odv-tsw"><i style="background:#33241F"></i><small>taupe.dark.100</small></span></td></tr><tr><td><code>surface.selected</code></td><td><span class="odv-tsw"><i style="background:#FDE4F0"></i><small>pink.light.100</small></span></td><td><span class="odv-tsw"><i style="background:#7C1046"></i><small>pink.dark.100</small></span></td></tr><tr><td><code>surface.inverse</code></td><td><span class="odv-tsw"><i style="background:#1F1411"></i><small>taupe.light.900</small></span></td><td><span class="odv-tsw"><i style="background:#FFF8F3"></i><small>taupe.dark.900</small></span></td></tr><tr><td><code>surface.scrim</code></td><td><span class="odv-tsw"><i style="background:#0000008C"></i><small>black.light.scrim</small></span></td><td><span class="odv-tsw"><i style="background:#000000B3"></i><small>black.dark.scrim</small></span></td></tr><tr class="odv-tgroup"><td colspan="3">Text · 6</td></tr><tr><td><code>text.primary</code></td><td><span class="odv-tsw"><i style="background:#1F1411"></i><small>taupe.light.900</small></span></td><td><span class="odv-tsw"><i style="background:#FFF8F3"></i><small>taupe.dark.900</small></span></td></tr><tr><td><code>text.secondary</code></td><td><span class="odv-tsw"><i style="background:#4D3A33"></i><small>taupe.light.700</small></span></td><td><span class="odv-tsw"><i style="background:#E2C4B3"></i><small>taupe.dark.500</small></span></td></tr><tr><td><code>text.muted</code></td><td><span class="odv-tsw"><i style="background:#6B544A"></i><small>taupe.light.600</small></span></td><td><span class="odv-tsw"><i style="background:#B5988A"></i><small>taupe.dark.400</small></span></td></tr><tr><td><code>text.inverse</code></td><td><span class="odv-tsw"><i style="background:#FFFFFF"></i><small>taupe.light.0</small></span></td><td><span class="odv-tsw"><i style="background:#1F1411"></i><small>taupe.dark.50</small></span></td></tr><tr><td><code>text.on-action</code></td><td><span class="odv-tsw"><i style="background:#FFFFFF"></i><small>taupe.light.0</small></span></td><td><span class="odv-tsw"><i style="background:#120B09"></i><small>taupe.dark.0</small></span></td></tr><tr><td><code>text.link</code></td><td><span class="odv-tsw"><i style="background:#A8165F"></i><small>pink.light.700</small></span></td><td><span class="odv-tsw"><i style="background:#F59ACA"></i><small>pink.dark.700</small></span></td></tr><tr class="odv-tgroup"><td colspan="3">Border · 3</td></tr><tr><td><code>border.default</code></td><td><span class="odv-tsw"><i style="background:#F2DCCF"></i><small>taupe.light.200</small></span></td><td><span class="odv-tsw"><i style="background:#33241F"></i><small>taupe.dark.100</small></span></td></tr><tr><td><code>border.strong</code></td><td><span class="odv-tsw"><i style="background:#8A6F63"></i><small>taupe.light.500</small></span></td><td><span class="odv-tsw"><i style="background:#8A6F63"></i><small>taupe.dark.300</small></span></td></tr><tr><td><code>border.focus</code></td><td><span class="odv-tsw"><i style="background:#D61F7A"></i><small>pink.light.600</small></span></td><td><span class="odv-tsw"><i style="background:#F59ACA"></i><small>pink.dark.700</small></span></td></tr><tr class="odv-tgroup"><td colspan="3">Action · 4</td></tr><tr><td><code>action.primary</code></td><td><span class="odv-tsw"><i style="background:#D61F7A"></i><small>#D61F7A</small></span></td><td><span class="odv-tsw"><i style="background:#F59ACA"></i><small>#F59ACA</small></span></td></tr><tr><td><code>action.primary.hover</code></td><td><span class="odv-tsw"><i style="background:#A8165F"></i><small>pink.light.700</small></span></td><td><span class="odv-tsw"><i style="background:#FDE4F0"></i><small>pink.dark.800</small></span></td></tr><tr><td><code>action.secondary</code></td><td><span class="odv-tsw"><i style="background:#FFFFFF"></i><small>#FFFFFF</small></span></td><td><span class="odv-tsw"><i style="background:#1F1411"></i><small>#1F1411</small></span></td></tr><tr><td><code>action.secondary.hover</code></td><td><span class="odv-tsw"><i style="background:#FCEFE6"></i><small>taupe.light.100</small></span></td><td><span class="odv-tsw"><i style="background:#33241F"></i><small>taupe.dark.100</small></span></td></tr><tr class="odv-tgroup"><td colspan="3">Status · 8</td></tr><tr><td><code>status.info</code></td><td><span class="odv-tsw"><i style="background:#083C93"></i><small>#083C93</small></span></td><td><span class="odv-tsw"><i style="background:#8AB4F8"></i><small>#8AB4F8</small></span></td></tr><tr><td><code>status.info.subtle</code></td><td><span class="odv-tsw"><i style="background:#E1ECFF"></i><small>blue.light.100</small></span></td><td><span class="odv-tsw"><i style="background:#062C6E"></i><small>blue.dark.100</small></span></td></tr><tr><td><code>status.success</code></td><td><span class="odv-tsw"><i style="background:#1F7A3A"></i><small>#1F7A3A</small></span></td><td><span class="odv-tsw"><i style="background:#5CC283"></i><small>#5CC283</small></span></td></tr><tr><td><code>status.success.subtle</code></td><td><span class="odv-tsw"><i style="background:#E3F4EA"></i><small>green.light.100</small></span></td><td><span class="odv-tsw"><i style="background:#123322"></i><small>green.dark.100</small></span></td></tr><tr><td><code>status.warning</code></td><td><span class="odv-tsw"><i style="background:#8A5600"></i><small>#8A5600</small></span></td><td><span class="odv-tsw"><i style="background:#F2B84B"></i><small>#F2B84B</small></span></td></tr><tr><td><code>status.warning.subtle</code></td><td><span class="odv-tsw"><i style="background:#FFF3D6"></i><small>amber.light.100</small></span></td><td><span class="odv-tsw"><i style="background:#3A2A05"></i><small>amber.dark.100</small></span></td></tr><tr><td><code>status.danger</code></td><td><span class="odv-tsw"><i style="background:#C42B2B"></i><small>#C42B2B</small></span></td><td><span class="odv-tsw"><i style="background:#F28B8B"></i><small>#F28B8B</small></span></td></tr><tr><td><code>status.danger.subtle</code></td><td><span class="odv-tsw"><i style="background:#FDE7E7"></i><small>red.light.100</small></span></td><td><span class="odv-tsw"><i style="background:#3D1414"></i><small>red.dark.100</small></span></td></tr><tr class="odv-tgroup"><td colspan="3">Category · 10</td></tr><tr><td><code>category.1</code></td><td><span class="odv-tsw"><i style="background:#D61F7A"></i><small>#D61F7A</small></span></td><td><span class="odv-tsw"><i style="background:#F59ACA"></i><small>#F59ACA</small></span></td></tr><tr><td><code>category.1.subtle</code></td><td><span class="odv-tsw"><i style="background:#FDE4F0"></i><small>pink.light.100</small></span></td><td><span class="odv-tsw"><i style="background:#7C1046"></i><small>pink.dark.100</small></span></td></tr><tr><td><code>category.2</code></td><td><span class="odv-tsw"><i style="background:#0B4FC0"></i><small>#0B4FC0</small></span></td><td><span class="odv-tsw"><i style="background:#8AB4F8"></i><small>#8AB4F8</small></span></td></tr><tr><td><code>category.2.subtle</code></td><td><span class="odv-tsw"><i style="background:#E1ECFF"></i><small>blue.light.100</small></span></td><td><span class="odv-tsw"><i style="background:#062C6E"></i><small>blue.dark.100</small></span></td></tr><tr><td><code>category.3</code></td><td><span class="odv-tsw"><i style="background:#1F7A3A"></i><small>#1F7A3A</small></span></td><td><span class="odv-tsw"><i style="background:#5CC283"></i><small>#5CC283</small></span></td></tr><tr><td><code>category.3.subtle</code></td><td><span class="odv-tsw"><i style="background:#E3F4EA"></i><small>green.light.100</small></span></td><td><span class="odv-tsw"><i style="background:#123322"></i><small>green.dark.100</small></span></td></tr><tr><td><code>category.4</code></td><td><span class="odv-tsw"><i style="background:#8A5600"></i><small>#8A5600</small></span></td><td><span class="odv-tsw"><i style="background:#F2B84B"></i><small>#F2B84B</small></span></td></tr><tr><td><code>category.4.subtle</code></td><td><span class="odv-tsw"><i style="background:#FFF3D6"></i><small>amber.light.100</small></span></td><td><span class="odv-tsw"><i style="background:#3A2A05"></i><small>amber.dark.100</small></span></td></tr><tr><td><code>category.5</code></td><td><span class="odv-tsw"><i style="background:#8A6F63"></i><small>#8A6F63</small></span></td><td><span class="odv-tsw"><i style="background:#F2DCCF"></i><small>#F2DCCF</small></span></td></tr><tr><td><code>category.5.subtle</code></td><td><span class="odv-tsw"><i style="background:#FCEFE6"></i><small>taupe.light.100</small></span></td><td><span class="odv-tsw"><i style="background:#33241F"></i><small>taupe.dark.100</small></span></td></tr><tr class="odv-tgroup"><td colspan="3">Disabled · 3</td></tr><tr><td><code>disabled.text</code></td><td><span class="odv-tsw"><i style="background:#8A6F63"></i><small>taupe.light.500</small></span></td><td><span class="odv-tsw"><i style="background:#E2C4B3"></i><small>taupe.dark.500</small></span></td></tr><tr><td><code>disabled.surface</code></td><td><span class="odv-tsw"><i style="background:#FCEFE6"></i><small>taupe.light.100</small></span></td><td><span class="odv-tsw"><i style="background:#33241F"></i><small>taupe.dark.100</small></span></td></tr><tr><td><code>disabled.border</code></td><td><span class="odv-tsw"><i style="background:#F2DCCF"></i><small>taupe.light.200</small></span></td><td><span class="odv-tsw"><i style="background:#4D3A33"></i><small>taupe.dark.200</small></span></td></tr><tr class="odv-tgroup"><td colspan="3">Card · 1</td></tr><tr><td><code>card</code></td><td><span class="odv-tsw"><i style="background:#1F141124"></i><small>shadow.card</small></span></td><td><span class="odv-tsw"><i style="background:#00000080"></i><small>shadow.card-dark</small></span></td></tr><tr class="odv-tgroup"><td colspan="3">Overlay · 1</td></tr><tr><td><code>overlay</code></td><td><span class="odv-tsw"><i style="background:#1F141133"></i><small>shadow.overlay</small></span></td><td><span class="odv-tsw"><i style="background:#00000099"></i><small>shadow.overlay-dark</small></span></td></tr></tbody></table></div><h3>What stays the same in every mode</h3><div class="odv-same"><div class="odv-card"><b>Corners</b><div class="odv-corners"><span><i style="border-radius:9999px"></i>control · 9999px</span><span><i style="border-radius:9999px"></i>badge · 9999px</span><span><i style="border-radius:1.5rem (24px)"></i>container · 1.5rem (24px)</span></div></div><div class="odv-card"><b>Type families</b><div class="odv-fams"><div><span>Display, Title, Heading</span><span style="font-family:Bricolage Grotesque">Bricolage Grotesque</span></div><div><span>Body, Label, Caption, Data</span><span style="font-family:DM Sans">DM Sans</span></div></div></div></div></div></div>
 
 ## The five answers
 
@@ -62,66 +23,6 @@ Modes and brands.
 | How are brands handled? | One brand | One brand per campaign. |
 | Which modes ship? | Light and dark | Light and dark ship as standard. |
 | What changes when the theme changes? | Colors only | Only colors change. |
-
-## Tokens
-
-Each token points to another token. Values live only on primitives, below.
-
-| Token | Points to |
-| --- | --- |
-| `theme.radius.control` |  |
-| `theme.radius.badge` |  |
-| `theme.radius.container` |  |
-| `theme.type.display.font-family` |  |
-| `theme.type.title.font-family` |  |
-| `theme.type.heading.font-family` |  |
-| `theme.type.body.font-family` |  |
-| `theme.type.label.font-family` |  |
-| `theme.type.caption.font-family` |  |
-| `theme.type.data.font-family` |  |
-| `theme.color.surface.canvas` |  |
-| `theme.color.surface.default` |  |
-| `theme.color.surface.raised` |  |
-| `theme.color.surface.sunken` |  |
-| `theme.color.surface.selected` |  |
-| `theme.color.surface.inverse` |  |
-| `theme.color.surface.scrim` |  |
-| `theme.color.text.primary` |  |
-| `theme.color.text.secondary` |  |
-| `theme.color.text.muted` |  |
-| `theme.color.text.inverse` |  |
-| `theme.color.text.on-action` |  |
-| `theme.color.text.link` |  |
-| `theme.color.border.default` |  |
-| `theme.color.border.strong` |  |
-| `theme.color.border.focus` |  |
-| `theme.color.action.primary.@` |  |
-| `theme.color.action.primary.hover` |  |
-| `theme.color.action.secondary.@` |  |
-| `theme.color.action.secondary.hover` |  |
-| `theme.color.status.info.@` |  |
-| `theme.color.status.info.subtle` |  |
-| `theme.color.status.success.@` |  |
-| `theme.color.status.success.subtle` |  |
-| `theme.color.status.warning.@` |  |
-| `theme.color.status.warning.subtle` |  |
-| `theme.color.status.danger.@` |  |
-| `theme.color.status.danger.subtle` |  |
-| `theme.color.category.1.@` |  |
-| `theme.color.category.1.subtle` |  |
-| `theme.color.category.2.@` |  |
-| `theme.color.category.2.subtle` |  |
-| `theme.color.category.3.@` |  |
-| `theme.color.category.3.subtle` |  |
-| `theme.color.category.4.@` |  |
-| `theme.color.category.4.subtle` |  |
-| `theme.color.category.5.@` |  |
-| `theme.color.category.5.subtle` |  |
-| `theme.color.disabled.text` |  |
-| `theme.color.disabled.surface` |  |
-| `theme.color.disabled.border` |  |
-| `theme.elevation.card` |  |
-| `theme.elevation.overlay` |  |
 
 ## Where it lands
 

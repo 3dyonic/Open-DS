@@ -10,13 +10,15 @@ description: "Context menu in Dense data."
 
 A menu of actions on right-click or long-press.
 
-**In Dense data.** Right-click on a row, for experts.
+<p class="odv-compstatus"><span class="odv-pill">In Dense data</span></p>
 
 ## See it live
 
 <div class="odv-live"><span class="odv-wait">Start Storybook to see it live: <code>npm run storybook</code></span><iframe src="http://localhost:6006/iframe.html?id=components-context-menu--examples&viewMode=story&globals=scheme:dense-data" title="Context menu examples in Storybook" loading="lazy"></iframe><div class="bar"><span>Live from Storybook</span><a href="http://localhost:6006/?path=/docs/components-context-menu--docs">Open Context menu in Storybook</a><a href="http://localhost:6006/iframe.html?id=components-context-menu--examples&viewMode=story&globals=scheme:dense-data;mode:dark">See it in dark</a></div></div>
 
 ## When to use it
+
+**In Dense data:** Right-click on a row, for experts.
 
 - **Use it when:** Power users acting on an item in place, with the same actions also reachable elsewhere.
 - **Not when:** The only way to reach an action: people who don't know to right-click never find it.

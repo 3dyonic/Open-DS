@@ -11,7 +11,7 @@ sidebar_class_name: "ods-left-out"
 
 A dialog that interrupts to confirm an action that cannot be undone.
 
-<div class="odv-leftout"><span class="odv-robot "><img class="odv-robot-day" src="/robots/accessible-first.webp" alt="" loading="lazy"/><img class="odv-robot-night" src="/robots/accessible-first-dark.webp" alt="" loading="lazy"/></span><p><b>Not part of Accessible first.</b> Its answers did not pick it. The examples use Accessible first's tokens, to show how it would look if the design system added it.</p></div>
+<p class="odv-compstatus"><span class="odv-pill odv-pill-out">Left out of Accessible first</span> A destructive action here is a secondary button, then a confirm page. The dialog is kept only to confirm leaving with unsaved answers. <span class="odv-instead">Use instead: <a href="./button">Button</a>, <a href="./dialog">Dialog</a></span></p>
 
 ## See it live
 

@@ -11,7 +11,7 @@ sidebar_class_name: "ods-left-out"
 
 A panel that slides up from the bottom, for phones.
 
-<div class="odv-leftout"><span class="odv-robot "><img class="odv-robot-day" src="/robots/accessible-first.webp" alt="" loading="lazy"/><img class="odv-robot-night" src="/robots/accessible-first-dark.webp" alt="" loading="lazy"/></span><p><b>Not part of Accessible first.</b> Its answers did not pick it. The examples use Accessible first's tokens, to show how it would look if the design system added it.</p></div>
+<p class="odv-compstatus"><span class="odv-pill odv-pill-out">Left out of Accessible first</span> Only dialogs separate from the page here, with a dimmed page and a border. A sliding panel adds a second layer the scheme does not use. <span class="odv-instead">Use instead: <a href="./dialog">Dialog</a>, <a href="./collapsible">Collapsible</a></span></p>
 
 ## See it live
 

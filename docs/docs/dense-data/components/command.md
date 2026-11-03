@@ -10,13 +10,15 @@ description: "Command in Dense data."
 
 A search-first menu of actions and places, opened from the keyboard.
 
-**In Dense data.** Keyboard-first jump to any record or action.
+<p class="odv-compstatus"><span class="odv-pill">In Dense data</span></p>
 
 ## See it live
 
 <div class="odv-live"><span class="odv-wait">Start Storybook to see it live: <code>npm run storybook</code></span><iframe src="http://localhost:6006/iframe.html?id=components-command--examples&viewMode=story&globals=scheme:dense-data" title="Command examples in Storybook" loading="lazy"></iframe><div class="bar"><span>Live from Storybook</span><a href="http://localhost:6006/?path=/docs/components-command--docs">Open Command in Storybook</a><a href="http://localhost:6006/iframe.html?id=components-command--examples&viewMode=story&globals=scheme:dense-data;mode:dark">See it in dark</a></div></div>
 
 ## When to use it
+
+**In Dense data:** Keyboard-first jump to any record or action.
 
 - **Use it when:** Expert users who want to jump anywhere or run any action by typing.
 - **Not when:** The only way to reach an action, or people who visit now and then.

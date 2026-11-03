@@ -10,13 +10,15 @@ description: "Toast in Content first."
 
 A short message that confirms an action and goes away.
 
-**In Content first.** Confirms a saved article.
+<p class="odv-compstatus"><span class="odv-pill">In Content first</span></p>
 
 ## See it live
 
 <div class="odv-live"><span class="odv-wait">Start Storybook to see it live: <code>npm run storybook</code></span><iframe src="http://localhost:6006/iframe.html?id=components-toast--examples&viewMode=story&globals=scheme:content-first" title="Toast examples in Storybook" loading="lazy"></iframe><div class="bar"><span>Live from Storybook</span><a href="http://localhost:6006/?path=/docs/components-toast--docs">Open Toast in Storybook</a><a href="http://localhost:6006/iframe.html?id=components-toast--examples&viewMode=story&globals=scheme:content-first;mode:dark">See it in dark</a></div></div>
 
 ## When to use it
+
+**In Content first:** Confirms a saved article.
 
 - **Use it when:** Saved, sent, exported: something people should notice without stopping.
 - **Not when:** A failure people must understand (alert or dialog), or a notice that stays (alert).
@@ -44,7 +46,7 @@ What each variant is for in any design system, then what Content first decided a
 
 Toast looks the way it does because of 2 answers about this product. Each card is one answer, in three steps: the answer, what it decided for Toast, and what would move if it changed.
 
-<section class="odv-trail" id="why-voice-values"><div class="odv-trail-head"><b>How does it sound?</b><code>voice.values</code></div><div class="odv-steps"><div class="odv-step-col"><h5><i>1</i>The answer</h5><div class="odv-answer">Conversational</div><p>Talk to one reader, like a good editor.</p></div><div class="odv-step-col"><h5><i>2</i>So Toast</h5><ul><li><span class="y">✓</span><span>uses <b>neutral</b>: A calm note: You're all caught up.</span></li><li><span class="y">✓</span><span>uses <b>success</b>: Warm and brief, with what happens next.</span></li><li><span class="y">✓</span><span>uses <b>danger</b>: Calm and helpful: take the blame, offer the way forward.</span></li></ul></div><div class="odv-step-col change"><h5><i>3</i>If it changed</h5><div class="odv-big">3</div><small>Toast decisions would reopen</small><p>No other answer follows from it.</p></div></div></section>
+<section class="odv-trail" id="why-voice-values"><div class="odv-trail-head"><b>How does it sound?</b><code>voice.values</code></div><div class="odv-steps"><div class="odv-step-col"><h5><i>1</i>The answer</h5><div class="odv-answer">Conversational</div><p>Talk to one reader, like a good editor.</p></div><div class="odv-step-col"><h5><i>2</i>So Toast</h5><ul><li><span class="y">✓</span><span>uses <b>neutral</b>: A calm note: You're all caught up.</span></li><li><span class="y">✓</span><span>uses <b>success</b>: Warm and brief, with what happens next.</span></li><li><span class="y">✓</span><span>uses <b>danger</b>: Calm and helpful: take the blame, offer the way forward.</span></li></ul><div class="odv-also"><small>It also shapes</small> <code>Empty: icon</code></div></div><div class="odv-step-col change"><h5><i>3</i>If it changed</h5><div class="odv-big">3</div><small>Toast decisions would reopen</small><p>No other answer follows from it.</p></div></div></section>
 
 <section class="odv-trail" id="why-voice-count"><div class="odv-trail-head"><b>How many tones does it use?</b><code>voice.count</code></div><div class="odv-steps"><div class="odv-step-col"><h5><i>1</i>The answer</h5><div class="odv-answer">One per moment</div><p>Warm by default, calmer for errors.</p></div><div class="odv-step-col"><h5><i>2</i>So Toast</h5><ul><li><span class="y">✓</span><span>uses <b>danger</b>: Calm and helpful: take the blame, offer the way forward.</span></li></ul><div class="odv-also"><small>It also shapes</small> <code>Alert: destructive</code> <code>Badge: danger</code></div></div><div class="odv-step-col change"><h5><i>3</i>If it changed</h5><div class="odv-big">1</div><small>Toast decision would reopen</small><p>No other answer follows from it.</p></div></div></section>
 

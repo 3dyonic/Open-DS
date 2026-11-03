@@ -11,7 +11,7 @@ sidebar_class_name: "ods-left-out"
 
 A panel that slides up from the bottom, for phones.
 
-<div class="odv-leftout"><span class="odv-robot "><img class="odv-robot-day" src="/robots/content-first.webp" alt="" loading="lazy"/><img class="odv-robot-night" src="/robots/content-first-dark.webp" alt="" loading="lazy"/></span><p><b>Not part of Content first.</b> Its answers did not pick it. The examples use Content first's tokens, to show how it would look if the design system added it.</p></div>
+<p class="odv-compstatus"><span class="odv-pill odv-pill-out">Left out of Content first</span> Content first keeps few components, covered by today's pages. Sheet already holds the phone menu, and forms are rare and short. <span class="odv-instead">Use instead: <a href="./sheet">Sheet</a>, <a href="./dialog">Dialog</a></span></p>
 
 ## See it live
 

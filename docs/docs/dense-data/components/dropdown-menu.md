@@ -10,13 +10,15 @@ description: "Dropdown menu in Dense data."
 
 A menu of actions opened from a button.
 
-**In Dense data.** Row actions.
+<p class="odv-compstatus"><span class="odv-pill">In Dense data</span></p>
 
 ## See it live
 
 <div class="odv-live"><span class="odv-wait">Start Storybook to see it live: <code>npm run storybook</code></span><iframe src="http://localhost:6006/iframe.html?id=components-dropdown-menu--examples&viewMode=story&globals=scheme:dense-data" title="Dropdown menu examples in Storybook" loading="lazy"></iframe><div class="bar"><span>Live from Storybook</span><a href="http://localhost:6006/?path=/docs/components-dropdown-menu--docs">Open Dropdown menu in Storybook</a><a href="http://localhost:6006/iframe.html?id=components-dropdown-menu--examples&viewMode=story&globals=scheme:dense-data;mode:dark">See it in dark</a></div></div>
 
 ## When to use it
+
+**In Dense data:** Row actions.
 
 - **Use it when:** More actions than fit, or actions people use now and then.
 - **Not when:** Choosing a value for a field (select), or the one main action (a button).

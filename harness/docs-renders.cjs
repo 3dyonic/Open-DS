@@ -2,7 +2,7 @@
 // Opens the built repo docs in a browser (OD-207) and checks the scheme switch:
 //   - each scheme's button page sets html[data-scheme] and wears that scheme's primary colour
 //   - the switcher keeps the page: /<a>/components/button becomes /<b>/components/button
-//   - a component a scheme leaves out says "Not part of"
+//   - a component a scheme leaves out has the regular page, with a "Left out of" badge and what to use instead
 //   - no uncaught page error
 // Prints one JSON line: { pages, failed: [{ id, problem }] } or { missing } or { error }.
 // Usage: node harness/docs-renders.cjs <docs dir>
@@ -32,7 +32,14 @@ const primary = (id) =>
     .match(/--color-action-primary:\s*([^;]+);/)[1]
     .trim()
     .toLowerCase();
-const TYPES = { ".html": "text/html", ".js": "text/javascript", ".css": "text/css", ".json": "application/json", ".svg": "image/svg+xml", ".txt": "text/plain" };
+const TYPES = {
+  ".html": "text/html",
+  ".js": "text/javascript",
+  ".css": "text/css",
+  ".json": "application/json",
+  ".svg": "image/svg+xml",
+  ".txt": "text/plain",
+};
 
 const server = createServer((req, res) => {
   let p = join(out, decodeURIComponent(req.url.split("?")[0]));
@@ -58,7 +65,10 @@ server.listen(0, async () => {
     const state = () =>
       page.evaluate(() => ({
         scheme: document.documentElement.dataset.scheme ?? null,
-        primary: getComputedStyle(document.documentElement).getPropertyValue("--ifm-color-primary").trim().toLowerCase(),
+        primary: getComputedStyle(document.documentElement)
+          .getPropertyValue("--ifm-color-primary")
+          .trim()
+          .toLowerCase(),
         path: location.pathname.replace(/\/$/, ""),
       }));
     for (const [i, s] of schemes.entries()) {
@@ -66,22 +76,31 @@ server.listen(0, async () => {
       pages++;
       const st = await state();
       if (st.scheme !== s.id) failed.push({ id: s.id, problem: `data-scheme is ${st.scheme}` });
-      if (st.primary !== primary(s.id)) failed.push({ id: s.id, problem: `primary is ${st.primary}, not ${primary(s.id)}` });
+      if (st.primary !== primary(s.id))
+        failed.push({ id: s.id, problem: `primary is ${st.primary}, not ${primary(s.id)}` });
       // Switch to the next scheme from the navbar; the page must stay the button page.
       const next = schemes[(i + 1) % schemes.length].id;
       await page.selectOption('.navbar select[aria-label="Scheme"]', next);
-      await page.waitForFunction((n) => document.documentElement.dataset.scheme === n, next, { timeout: 5000 }).catch(() => {});
+      await page
+        .waitForFunction((n) => document.documentElement.dataset.scheme === n, next, { timeout: 5000 })
+        .catch(() => {});
       const after = await state();
-      if (after.path !== `/${next}/components/button`) failed.push({ id: s.id, problem: `switching to ${next} went to ${after.path}` });
+      if (after.path !== `/${next}/components/button`)
+        failed.push({ id: s.id, problem: `switching to ${next} went to ${after.path}` });
       if (after.scheme !== next) failed.push({ id: s.id, problem: `after the switch data-scheme is ${after.scheme}` });
     }
-    // A left-out component: Dense data does not carry the accordion.
+    // A left-out component (OD-211): Dense data leaves out the carousel. Its page is the regular one
+    // (it shows live), with a badge and what to use instead.
     const dense = schemes.find((s) => s.id === "dense-data");
     if (dense) {
-      await page.goto(`${base}/dense-data/components/accordion`, { waitUntil: "networkidle" });
+      await page.goto(`${base}/dense-data/components/carousel`, { waitUntil: "networkidle" });
       pages++;
-      if (!(await page.locator("text=Not part of Dense data").count()))
-        failed.push({ id: "dense-data/accordion", problem: 'no "Not part of Dense data" note' });
+      if (!(await page.locator("text=Left out of Dense data").count()))
+        failed.push({ id: "dense-data/carousel", problem: 'no "Left out of Dense data" badge' });
+      if (!(await page.locator(".odv-instead a").count()))
+        failed.push({ id: "dense-data/carousel", problem: "no component to use instead" });
+      if (!(await page.locator("h2:text('See it live')").count()))
+        failed.push({ id: "dense-data/carousel", problem: "not the regular component page" });
     }
     for (const e of errors) failed.push({ id: "page", problem: e.slice(0, 160) });
   } catch (e) {

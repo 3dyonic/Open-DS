@@ -10,13 +10,15 @@ description: "Progress in Accessible first."
 
 How far a task has come.
 
-**In Accessible first.** Shows how far through the steps a person is.
+<p class="odv-compstatus"><span class="odv-pill">In Accessible first</span></p>
 
 ## See it live
 
 <div class="odv-live"><span class="odv-wait">Start Storybook to see it live: <code>npm run storybook</code></span><iframe src="http://localhost:6006/iframe.html?id=components-progress--examples&viewMode=story&globals=scheme:accessible-first" title="Progress examples in Storybook" loading="lazy"></iframe><div class="bar"><span>Live from Storybook</span><a href="http://localhost:6006/?path=/docs/components-progress--docs">Open Progress in Storybook</a><a href="http://localhost:6006/iframe.html?id=components-progress--examples&viewMode=story&globals=scheme:accessible-first;mode:dark">See it in dark</a></div></div>
 
 ## When to use it
+
+**In Accessible first:** Shows how far through the steps a person is.
 
 - **Use it when:** A known amount of work: an upload, steps of a form.
 - **Not when:** A wait of unknown length (spinner), or a layout placeholder (skeleton).

@@ -11,7 +11,7 @@ sidebar_class_name: "ods-left-out"
 
 A keyboard key or shortcut, shown as text.
 
-<div class="odv-leftout"><span class="odv-robot "><img class="odv-robot-day" src="/robots/accessible-first.webp" alt="" loading="lazy"/><img class="odv-robot-night" src="/robots/accessible-first-dark.webp" alt="" loading="lazy"/></span><p><b>Not part of Accessible first.</b> Its answers did not pick it. The examples use Accessible first's tokens, to show how it would look if the design system added it.</p></div>
+<p class="odv-compstatus"><span class="odv-pill odv-pill-out">Left out of Accessible first</span> Kbd tells people the shortcut for an action. Here people do this once or twice a year, and nobody remembers the interface from last time. <span class="odv-instead">Use instead: <a href="./label">Label</a></span></p>
 
 ## See it live
 

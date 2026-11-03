@@ -104,7 +104,7 @@ export function ComponentInfo() {
         <strong>
           {inv ? "In" : "Not in"} the {s.name} inventory.
         </strong>{" "}
-        {inv?.why ?? out?.why ?? "Its answers did not pick it."}{" "}
+        {inv?.why ?? out?.why}{" "}
         {s.inventory.in.length} of {grammar.catalogue.items.length} catalogue
         components are in.
       </p>

@@ -10,13 +10,15 @@ description: "Empty in Dense data."
 
 What a region shows when it loaded and has nothing: why, and what to do next.
 
-**In Dense data.** An empty table says what to do next.
+<p class="odv-compstatus"><span class="odv-pill">In Dense data</span></p>
 
 ## See it live
 
 <div class="odv-live"><span class="odv-wait">Start Storybook to see it live: <code>npm run storybook</code></span><iframe src="http://localhost:6006/iframe.html?id=components-empty--examples&viewMode=story&globals=scheme:dense-data" title="Empty examples in Storybook" loading="lazy"></iframe><div class="bar"><span>Live from Storybook</span><a href="http://localhost:6006/?path=/docs/components-empty--docs">Open Empty in Storybook</a><a href="http://localhost:6006/iframe.html?id=components-empty--examples&viewMode=story&globals=scheme:dense-data;mode:dark">See it in dark</a></div></div>
 
 ## When to use it
+
+**In Dense data:** An empty table says what to do next.
 
 - **Use it when:** An empty list, a search with no results, or a first visit with no items yet.
 - **Not when:** Still loading (skeleton or spinner), or a load that failed (alert).
@@ -42,7 +44,7 @@ What each variant is for in any design system, then what Dense data decided and 
 
 Empty looks the way it does because of 4 answers about this product. Each card is one answer, in three steps: the answer, what it decided for Empty, and what would move if it changed.
 
-<section class="odv-trail" id="why-content-q1"><div class="odv-trail-head"><b>What is the main content?</b><code>content.q1</code></div><div class="odv-steps"><div class="odv-step-col"><h5><i>1</i>The answer</h5><div class="odv-answer">Numbers and records</div><p>Most of the screen is numbers and records.</p></div><div class="odv-step-col"><h5><i>2</i>So Empty</h5><ul><li><span class="n">–</span><span>does not use <b>default</b>: No pictures: an empty table needs the reason and the one action that fills it.</span></li></ul><div class="odv-also"><small>It also shapes</small> <code>Badge: neutral</code> <code>Badge: info</code> <code>Badge: success</code> <code>Badge: warning</code> <code>Badge: danger</code> <code>Sidebar: default</code> <code>Sidebar: outline</code></div></div><div class="odv-step-col change"><h5><i>3</i>If it changed</h5><div class="odv-big">2</div><small>Empty decisions would reopen</small><p>and 44 answers that follow from it: <b>A lot</b>, <b>Scan and compare</b>, <b>People keep their place</b>, and 41 more.</p></div></div></section>
+<section class="odv-trail" id="why-content-q1"><div class="odv-trail-head"><b>What is the main content?</b><code>content.q1</code></div><div class="odv-steps"><div class="odv-step-col"><h5><i>1</i>The answer</h5><div class="odv-answer">Numbers and records</div><p>Most of the screen is numbers and records.</p></div><div class="odv-step-col"><h5><i>2</i>So Empty</h5><ul><li><span class="n">–</span><span>does not use <b>default</b>: No pictures: an empty table needs the reason and the one action that fills it.</span></li></ul><div class="odv-also"><small>It also shapes</small> <code>Badge: neutral</code> <code>Badge: info</code> <code>Badge: success</code> <code>Badge: warning</code> <code>Badge: danger</code> <code>Sidebar: default</code> <code>Sidebar: outline</code> <code>Toggle: default</code> <code>Toggle: outline</code></div></div><div class="odv-step-col change"><h5><i>3</i>If it changed</h5><div class="odv-big">2</div><small>Empty decisions would reopen</small><p>and 44 answers that follow from it: <b>A lot</b>, <b>Scan and compare</b>, <b>People keep their place</b>, and 41 more.</p></div></div></section>
 
 <section class="odv-trail" id="why-voice-lands"><div class="odv-trail-head"><b>Where do the words matter most?</b><code>voice.lands</code></div><div class="odv-steps"><div class="odv-step-col"><h5><i>1</i>The answer</h5><div class="odv-answer">Errors and empty states</div><p>Errors and empty tables are where words decide the next action.</p></div><div class="odv-step-col"><h5><i>2</i>So Empty</h5><ul><li><span class="n">–</span><span>does not use <b>default</b>: No pictures: an empty table needs the reason and the one action that fills it.</span></li></ul><div class="odv-also"><small>It also shapes</small> <code>Toast: danger</code></div></div><div class="odv-step-col change"><h5><i>3</i>If it changed</h5><div class="odv-big">1</div><small>Empty decision would reopen</small><p>No other answer follows from it.</p></div></div></section>
 

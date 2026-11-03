@@ -11,7 +11,7 @@ sidebar_class_name: "ods-left-out"
 
 Stacked sections that expand and collapse without leaving the page.
 
-<div class="odv-leftout"><span class="odv-robot "><img class="odv-robot-day" src="/robots/dense-data.webp" alt="" loading="lazy"/><img class="odv-robot-night" src="/robots/dense-data-dark.webp" alt="" loading="lazy"/></span><p><b>Not part of Dense data.</b> Hiding fields slows people who use them all day. The examples use Dense data's tokens, to show how it would look if the design system added it.</p></div>
+<p class="odv-compstatus"><span class="odv-pill odv-pill-out">Left out of Dense data</span> Accordion is a content component. Dense data's components answer takes core and data families only, because records need tables, filters and fast ways to move between them. <span class="odv-instead">Use instead: <a href="./collapsible">Collapsible</a>, <a href="./tabs">Tabs</a></span></p>
 
 ## See it live
 

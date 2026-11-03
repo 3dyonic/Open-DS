@@ -11,7 +11,7 @@ sidebar_class_name: "ods-left-out"
 
 Many records in one view, with search, filters, sorting, column choice, selection and paging.
 
-<div class="odv-leftout"><span class="odv-robot "><img class="odv-robot-day" src="/robots/multi-brand.webp" alt="" loading="lazy"/><img class="odv-robot-night" src="/robots/multi-brand-dark.webp" alt="" loading="lazy"/></span><p><b>Not part of Multi-brand.</b> Its answers did not pick it. The examples use Multi-brand's tokens, to show how it would look if the design system added it.</p></div>
+<p class="odv-compstatus"><span class="odv-pill odv-pill-out">Left out of Multi-brand</span> Multi-brand draws on core, content and media families, not data. It avoids tools staff use all day and points those to Dense data. <span class="odv-instead">Use instead: <a href="./card">Card</a>, <a href="./tabs">Tabs</a></span></p>
 
 ## See it live
 

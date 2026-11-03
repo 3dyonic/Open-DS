@@ -11,7 +11,7 @@ sidebar_class_name: "ods-left-out"
 
 Slides that move left and right, one or a few at a time.
 
-<div class="odv-leftout"><span class="odv-robot "><img class="odv-robot-day" src="/robots/accessible-first.webp" alt="" loading="lazy"/><img class="odv-robot-night" src="/robots/accessible-first-dark.webp" alt="" loading="lazy"/></span><p><b>Not part of Accessible first.</b> Its answers did not pick it. The examples use Accessible first's tokens, to show how it would look if the design system added it.</p></div>
+<p class="odv-compstatus"><span class="odv-pill odv-pill-out">Left out of Accessible first</span> People must finish the form, and a carousel suits content where missing some is fine. Content people must see does not belong in slides. <span class="odv-instead">Use instead: <a href="./card">Card</a></span></p>
 
 ## See it live
 

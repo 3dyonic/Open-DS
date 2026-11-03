@@ -13,6 +13,7 @@ import { tmpdir } from "node:os";
 import { dirname, join } from "node:path";
 import test from "node:test";
 import { addComponent, deploy } from "../src/cli.mjs";
+import { builtComponents } from "../src/components.mjs";
 import {
   assetRoots,
   grammar,
@@ -127,8 +128,12 @@ test("init deploys tokens, components, AGENTS.md and the skill", () => {
       readFileSync(join(dir, ".claude/skills/open-ds/SKILL.md"), "utf8"),
       /^---\nname: open-ds\ndescription: /,
     );
-    // The scheme's inventory, plus what those components import (toggle-group brings toggle), and nothing else.
-    const inventory = loadScheme("dense-data").inventory.in.map((i) => i.id);
+    // The scheme's built inventory, plus what those components import (toggle-group brings toggle), and
+    // nothing else. A component in the inventory that is not built yet is not deployed (OD-211).
+    const built = builtComponents(assetRoots());
+    const inventory = loadScheme("dense-data")
+      .inventory.in.map((i) => i.id)
+      .filter((id) => built.includes(id));
     for (const id of inventory)
       assert.ok(record.components.includes(id), `missing ${id}`);
     assert.ok(record.components.includes("toggle"));

@@ -367,6 +367,17 @@
         "each Storybook component page ends with one text link to the same component in the docs, in the toolbar's scheme"
       ],
       "checks": ["site-docs-storybook", "docs-build", "site-build"]
+    },
+    {
+      "id": "OD-211",
+      "title": "Docs polish, and every scheme decides every component",
+      "in": [
+        "navbar room before the name; the scheme's name heads its sidebar",
+        "a Primitives index in the Foundations style",
+        "a Theming page with a preview per mode, one table of what a mode changes, and what stays the same",
+        "every catalogue component is in (a limited use says where it fits) or out, with the reason argued from the answers and what to use instead"
+      ],
+      "checks": ["inventory-decided", "docs-sections", "docs-build"]
     }
   ]
 }
