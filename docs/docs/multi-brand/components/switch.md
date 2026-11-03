@@ -14,7 +14,7 @@ An on or off setting that applies at once, with no submit.
 
 ## See it live
 
-<div class="odv-live"><span class="odv-wait">Start Storybook to see it live: <code>npm run storybook</code></span><iframe src="http://localhost:6006/iframe.html?id=components-switch--examples&viewMode=story&globals=scheme:multi-brand--aster" title="Switch examples in Storybook" loading="lazy"></iframe><div class="bar"><span>Live from Storybook</span><a href="http://localhost:6006/?path=/docs/components-switch--docs">Open Switch in Storybook</a><a href="http://localhost:6006/iframe.html?id=components-switch--examples&viewMode=story&globals=scheme:multi-brand--aster;mode:dark">See it in dark</a></div></div>
+<div class="odv-live"><span class="odv-wait">Start Storybook to see it live: <code>npm run storybook</code></span><iframe src="http://localhost:6006/iframe.html?id=components-switch--examples&viewMode=story&globals=scheme:multi-brand--aster;mode:light" title="Switch examples in Storybook" loading="lazy"></iframe><div class="bar"><span>Live from Storybook</span><a href="http://localhost:6006/?path=/docs/components-switch--docs">Open Switch in Storybook</a><a href="http://localhost:6006/iframe.html?id=components-switch--examples&viewMode=story&globals=scheme:multi-brand--aster;mode:dark">See it in dark</a></div></div>
 
 ## When to use it
 

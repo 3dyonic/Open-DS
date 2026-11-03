@@ -14,7 +14,7 @@ One or many independent on or off choices, usually sent with a form.
 
 ## See it live
 
-<div class="odv-live"><span class="odv-wait">Start Storybook to see it live: <code>npm run storybook</code></span><iframe src="http://localhost:6006/iframe.html?id=components-checkbox--examples&viewMode=story&globals=scheme:accessible-first" title="Checkbox examples in Storybook" loading="lazy"></iframe><div class="bar"><span>Live from Storybook</span><a href="http://localhost:6006/?path=/docs/components-checkbox--docs">Open Checkbox in Storybook</a><a href="http://localhost:6006/iframe.html?id=components-checkbox--examples&viewMode=story&globals=scheme:accessible-first;mode:dark">See it in dark</a></div></div>
+<div class="odv-live"><span class="odv-wait">Start Storybook to see it live: <code>npm run storybook</code></span><iframe src="http://localhost:6006/iframe.html?id=components-checkbox--examples&viewMode=story&globals=scheme:accessible-first;mode:light" title="Checkbox examples in Storybook" loading="lazy"></iframe><div class="bar"><span>Live from Storybook</span><a href="http://localhost:6006/?path=/docs/components-checkbox--docs">Open Checkbox in Storybook</a><a href="http://localhost:6006/iframe.html?id=components-checkbox--examples&viewMode=story&globals=scheme:accessible-first;mode:dark">See it in dark</a></div></div>
 
 ## When to use it
 

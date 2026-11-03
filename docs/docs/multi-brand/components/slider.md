@@ -14,7 +14,7 @@ A value picked by dragging along a track, when an exact number is not needed.
 
 ## See it live
 
-<div class="odv-live"><span class="odv-wait">Start Storybook to see it live: <code>npm run storybook</code></span><iframe src="http://localhost:6006/iframe.html?id=components-slider--examples&viewMode=story&globals=scheme:multi-brand--aster" title="Slider examples in Storybook" loading="lazy"></iframe><div class="bar"><span>Live from Storybook</span><a href="http://localhost:6006/?path=/docs/components-slider--docs">Open Slider in Storybook</a><a href="http://localhost:6006/iframe.html?id=components-slider--examples&viewMode=story&globals=scheme:multi-brand--aster;mode:dark">See it in dark</a></div></div>
+<div class="odv-live"><span class="odv-wait">Start Storybook to see it live: <code>npm run storybook</code></span><iframe src="http://localhost:6006/iframe.html?id=components-slider--examples&viewMode=story&globals=scheme:multi-brand--aster;mode:light" title="Slider examples in Storybook" loading="lazy"></iframe><div class="bar"><span>Live from Storybook</span><a href="http://localhost:6006/?path=/docs/components-slider--docs">Open Slider in Storybook</a><a href="http://localhost:6006/iframe.html?id=components-slider--examples&viewMode=story&globals=scheme:multi-brand--aster;mode:dark">See it in dark</a></div></div>
 
 ## When to use it
 

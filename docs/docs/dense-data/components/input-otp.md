@@ -14,7 +14,7 @@ Separate boxes for a one-time code.
 
 ## See it live
 
-<div class="odv-live"><span class="odv-wait">Start Storybook to see it live: <code>npm run storybook</code></span><iframe src="http://localhost:6006/iframe.html?id=components-input-otp--examples&viewMode=story&globals=scheme:dense-data" title="Input otp examples in Storybook" loading="lazy"></iframe><div class="bar"><span>Live from Storybook</span><a href="http://localhost:6006/?path=/docs/components-input-otp--docs">Open Input otp in Storybook</a><a href="http://localhost:6006/iframe.html?id=components-input-otp--examples&viewMode=story&globals=scheme:dense-data;mode:dark">See it in dark</a></div></div>
+<div class="odv-live"><span class="odv-wait">Start Storybook to see it live: <code>npm run storybook</code></span><iframe src="http://localhost:6006/iframe.html?id=components-input-otp--examples&viewMode=story&globals=scheme:dense-data;mode:light" title="Input otp examples in Storybook" loading="lazy"></iframe><div class="bar"><span>Live from Storybook</span><a href="http://localhost:6006/?path=/docs/components-input-otp--docs">Open Input otp in Storybook</a><a href="http://localhost:6006/iframe.html?id=components-input-otp--examples&viewMode=story&globals=scheme:dense-data;mode:dark">See it in dark</a></div></div>
 
 ## When to use it
 

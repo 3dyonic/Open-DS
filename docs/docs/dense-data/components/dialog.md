@@ -14,7 +14,7 @@ A window over the page that takes attention until people finish or close it.
 
 ## See it live
 
-<div class="odv-live"><span class="odv-wait">Start Storybook to see it live: <code>npm run storybook</code></span><iframe src="http://localhost:6006/iframe.html?id=components-dialog--examples&viewMode=story&globals=scheme:dense-data" title="Dialog examples in Storybook" loading="lazy"></iframe><div class="bar"><span>Live from Storybook</span><a href="http://localhost:6006/?path=/docs/components-dialog--docs">Open Dialog in Storybook</a><a href="http://localhost:6006/iframe.html?id=components-dialog--examples&viewMode=story&globals=scheme:dense-data;mode:dark">See it in dark</a></div></div>
+<div class="odv-live"><span class="odv-wait">Start Storybook to see it live: <code>npm run storybook</code></span><iframe src="http://localhost:6006/iframe.html?id=components-dialog--examples&viewMode=story&globals=scheme:dense-data;mode:light" title="Dialog examples in Storybook" loading="lazy"></iframe><div class="bar"><span>Live from Storybook</span><a href="http://localhost:6006/?path=/docs/components-dialog--docs">Open Dialog in Storybook</a><a href="http://localhost:6006/iframe.html?id=components-dialog--examples&viewMode=story&globals=scheme:dense-data;mode:dark">See it in dark</a></div></div>
 
 ## When to use it
 

@@ -1224,7 +1224,9 @@ export function docsPages(
         ? `<a class="odv-icard" href="./${c.id}">`
         : `<div class="odv-icard">`,
       `<span class="odv-icard-name">${title(c.id)}</span>`,
-      `<span class="odv-icard-why">${esc(inventory[c.id] ?? out ?? "")}</span>`,
+      // Every card says what the component is (OD-213). The scheme's rule, or why it leaves the
+      // component out, is on the component's page.
+      `<span class="odv-icard-why">${esc(c.description ?? "")}</span>`,
       `<span class="odv-pill${out ? " odv-pill-out" : ""}">${out ? "Left out" : built.includes(c.id) ? "In · built" : "In · not built yet"}</span>`,
       hasPage(c.id) ? `</a>` : `</div>`,
     );
@@ -1305,7 +1307,7 @@ export function docsPages(
     parts.push(
       `## See it live\n\n` +
         h(
-          `<div class="odv-live"><span class="odv-wait">Start Storybook to see it live: <code>npm run storybook</code></span><iframe src="${storybook}/iframe.html?id=components-${name}--examples&viewMode=story&globals=${sbScheme}" title="${title(name)} examples in Storybook" loading="lazy"></iframe>`,
+          `<div class="odv-live"><span class="odv-wait">Start Storybook to see it live: <code>npm run storybook</code></span><iframe src="${storybook}/iframe.html?id=components-${name}--examples&viewMode=story&globals=${sbScheme};mode:light" title="${title(name)} examples in Storybook" loading="lazy"></iframe>`,
           `<div class="bar"><span>Live from Storybook</span><a href="${storybook}/?path=/docs/components-${name}--docs">Open ${title(name)} in Storybook</a><a href="${storybook}/iframe.html?id=components-${name}--examples&viewMode=story&globals=${sbScheme};mode:dark">See it in dark</a></div></div>`,
         ),
     );
@@ -1343,7 +1345,7 @@ export function docsPages(
               const stage =
                 v.axis === "state"
                   ? ""
-                  : `<div class="odv-vstage"><span class="odv-wait">Start Storybook to see it live</span><iframe src="${storybook}/iframe.html?id=components-${name}--playground&viewMode=story&globals=${sbScheme}&args=${v.axis}:${v.id}" title="${title(name)} ${v.id}" loading="lazy" tabindex="-1"></iframe></div>`;
+                  : `<div class="odv-vstage"><span class="odv-wait">Start Storybook to see it live</span><iframe src="${storybook}/iframe.html?id=components-${name}--playground&viewMode=story&globals=${sbScheme};mode:light&args=${v.axis}:${v.id}" title="${title(name)} ${v.id}" loading="lazy" tabindex="-1"></iframe></div>`;
               return h(
                 `<section class="odv-variant${used || !d ? "" : " off"}${stage ? "" : " nostage"}">`,
                 `<header><code>${v.id}</code><span class="odv-axisname">${v.axis}</span>${pill}</header>`,
