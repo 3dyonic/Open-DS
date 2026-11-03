@@ -10,7 +10,7 @@ description: "Pagination in Dense data."
 
 Moves between pages of results.
 
-**In Dense data.** Moves through long result sets. Family: navigation. Reference: Open UX (pagination), MIT.
+**In Dense data.** Moves through long result sets.
 
 ## See it live
 

@@ -10,7 +10,7 @@ description: "Dialog in Accessible first."
 
 A window over the page that takes attention until people finish or close it.
 
-**In Accessible first.** Only to confirm leaving with unsaved answers. Family: overlay. Reference: Open UX (modal), MIT.
+**In Accessible first.** Only to confirm leaving with unsaved answers.
 
 ## See it live
 

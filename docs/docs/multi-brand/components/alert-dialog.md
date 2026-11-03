@@ -10,7 +10,7 @@ description: "Alert dialog in Multi-brand."
 
 A dialog that interrupts to confirm an action that cannot be undone.
 
-**In Multi-brand.** Cancel a plan. Family: overlay. Reference: Open DS, MIT.
+**In Multi-brand.** Cancel a plan.
 
 ## See it live
 

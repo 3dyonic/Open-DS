@@ -10,7 +10,7 @@ description: "Button in Brand expressive."
 
 A control that commits an action on this screen.
 
-**In Brand expressive.** The one action: sign up. Family: action. Reference: Open UX (button), MIT.
+**In Brand expressive.** The one action: sign up.
 
 ## See it live
 

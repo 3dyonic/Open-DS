@@ -408,4 +408,6 @@ html[data-scheme="brand-expressive"] {
   --ifm-color-info-contrast-foreground: var(--color-text-primary);
 }
 html[data-scheme="brand-expressive"] .navbar__logo img { content: url("/logo-brand-expressive.svg"); }
+html[data-scheme="brand-expressive"] .theme-doc-sidebar-container .menu::after { background-image: url("/robots/brand-expressive.webp"); }
+html[data-scheme="brand-expressive"][data-theme="dark"] .theme-doc-sidebar-container .menu::after { background-image: url("/robots/brand-expressive-dark.webp"); }
 html[data-scheme="brand-expressive"][data-theme="dark"] .navbar__logo img { content: url("/logo-brand-expressive-dark.svg"); }

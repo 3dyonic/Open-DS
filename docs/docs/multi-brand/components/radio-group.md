@@ -10,7 +10,7 @@ description: "Radio group in Multi-brand."
 
 One choice from a short list shown at once.
 
-**In Multi-brand.** Picks a plan. Family: form. Reference: Open UX (radio), MIT.
+**In Multi-brand.** Picks a plan.
 
 ## See it live
 

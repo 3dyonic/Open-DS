@@ -10,7 +10,7 @@ description: "Date picker in Dense data."
 
 A field-like button that opens a calendar for one date or a range.
 
-**In Dense data.** Picks a date range for reports and filters from a button in the toolbar. Family: form. Reference: Open DS, MIT.
+**In Dense data.** Picks a date range for reports and filters from a button in the toolbar.
 
 ## See it live
 

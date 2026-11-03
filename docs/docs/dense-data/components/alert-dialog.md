@@ -10,7 +10,7 @@ description: "Alert dialog in Dense data."
 
 A dialog that interrupts to confirm an action that cannot be undone.
 
-**In Dense data.** Confirms a delete. Family: overlay. Reference: Open DS, MIT.
+**In Dense data.** Confirms a delete.
 
 ## See it live
 

@@ -10,7 +10,7 @@ description: "Data table in Dense data."
 
 Many records in one view, with search, filters, sorting, column choice, selection and paging.
 
-**In Dense data.** Analysts scan hundreds of alerts, filter by status and asset group, sort by risk and act on many rows at once. Family: data. Reference: Open DS, MIT.
+**In Dense data.** Analysts scan hundreds of alerts, filter by status and asset group, sort by risk and act on many rows at once.
 
 ## See it live
 

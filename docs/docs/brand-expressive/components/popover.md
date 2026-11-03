@@ -10,7 +10,7 @@ description: "Popover in Brand expressive."
 
 Rich content in a floating panel, opened by click.
 
-**In Brand expressive.** A product preview that opens on tap. Family: overlay. Reference: Open DS, MIT.
+**In Brand expressive.** A product preview that opens on tap.
 
 ## See it live
 

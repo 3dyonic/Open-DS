@@ -10,7 +10,7 @@ description: "Card in Dense data."
 
 A bordered container for one item or group, with its title, content and actions.
 
-**In Dense data.** Dashboard figures. Family: layout. Reference: Open UX (content_card), MIT.
+**In Dense data.** Dashboard figures.
 
 ## See it live
 

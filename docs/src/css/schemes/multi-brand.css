@@ -1083,4 +1083,6 @@ html[data-scheme="multi-brand"] {
   --ifm-color-info-contrast-foreground: var(--color-text-primary);
 }
 html[data-scheme="multi-brand"] .navbar__logo img { content: url("/logo-multi-brand.svg"); }
+html[data-scheme="multi-brand"] .theme-doc-sidebar-container .menu::after { background-image: url("/robots/multi-brand.webp"); }
+html[data-scheme="multi-brand"][data-theme="dark"] .theme-doc-sidebar-container .menu::after { background-image: url("/robots/multi-brand-dark.webp"); }
 html[data-scheme="multi-brand"][data-theme="dark"] .navbar__logo img { content: url("/logo-multi-brand-dark.svg"); }

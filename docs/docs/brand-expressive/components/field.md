@@ -10,7 +10,7 @@ description: "Field in Brand expressive."
 
 A label, control, hint and error laid out together, the same way every time.
 
-**In Brand expressive.** Lays out the sign-up form. Family: form. Reference: Open DS, MIT.
+**In Brand expressive.** Lays out the sign-up form.
 
 ## See it live
 

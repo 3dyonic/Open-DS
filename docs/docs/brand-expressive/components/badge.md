@@ -10,7 +10,7 @@ description: "Badge in Brand expressive."
 
 A short label for a status, category or count, next to what it describes.
 
-**In Brand expressive.** New and limited labels. Family: feedback. Reference: Open DS, MIT.
+**In Brand expressive.** New and limited labels.
 
 ## See it live
 

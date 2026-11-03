@@ -11,7 +11,7 @@ sidebar_class_name: "ods-left-out"
 
 What a region shows when it loaded and has nothing: why, and what to do next.
 
-**Not part of Accessible first.** Its answers did not pick it. The examples use Accessible first's tokens, to show how it would look if the design system added it. Family: feedback. Reference: Open UX (empty_state), MIT.
+<div class="odv-leftout"><span class="odv-robot "><img class="odv-robot-day" src="/robots/accessible-first.webp" alt="" loading="lazy"/><img class="odv-robot-night" src="/robots/accessible-first-dark.webp" alt="" loading="lazy"/></span><p><b>Not part of Accessible first.</b> Its answers did not pick it. The examples use Accessible first's tokens, to show how it would look if the design system added it.</p></div>
 
 ## See it live
 

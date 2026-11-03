@@ -10,7 +10,7 @@ description: "Checkbox in Multi-brand."
 
 One or many independent on or off choices, usually sent with a form.
 
-**In Multi-brand.** Terms and preferences. Family: form. Reference: Open UX (checkbox), MIT.
+**In Multi-brand.** Terms and preferences.
 
 ## See it live
 

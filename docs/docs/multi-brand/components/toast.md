@@ -10,7 +10,7 @@ description: "Toast in Multi-brand."
 
 A short message that confirms an action and goes away.
 
-**In Multi-brand.** Confirms a saved change. Family: feedback. Reference: Open UX (toast), MIT.
+**In Multi-brand.** Confirms a saved change.
 
 ## See it live
 

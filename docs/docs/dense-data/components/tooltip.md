@@ -10,7 +10,7 @@ description: "Tooltip in Dense data."
 
 A short hint on hover or focus.
 
-**In Dense data.** Explains an icon button. Family: overlay. Reference: Open UX (tooltip), MIT.
+**In Dense data.** Explains an icon button.
 
 ## See it live
 

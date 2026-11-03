@@ -10,7 +10,7 @@ description: "Label in Content first."
 
 The visible name of a form control.
 
-**In Content first.** Names every field. Family: form. Reference: Open DS, MIT.
+**In Content first.** Names every field.
 
 ## See it live
 

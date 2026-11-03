@@ -10,7 +10,7 @@ description: "Radio group in Dense data."
 
 One choice from a short list shown at once.
 
-**In Dense data.** Picks one of two or three options, all visible at once. Family: form. Reference: Open UX (radio), MIT.
+**In Dense data.** Picks one of two or three options, all visible at once.
 
 ## See it live
 

@@ -10,7 +10,7 @@ description: "Command in Dense data."
 
 A search-first menu of actions and places, opened from the keyboard.
 
-**In Dense data.** Keyboard-first jump to any record or action. Family: navigation. Reference: Open DS, MIT.
+**In Dense data.** Keyboard-first jump to any record or action.
 
 ## See it live
 

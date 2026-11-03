@@ -10,7 +10,7 @@ description: "Native select in Accessible first."
 
 The browser's own select, styled.
 
-**In Accessible first.** A browser select that every assistive technology understands. Family: form. Reference: Open UX (select), MIT.
+**In Accessible first.** A browser select that every assistive technology understands.
 
 ## See it live
 

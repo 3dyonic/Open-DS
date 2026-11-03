@@ -10,7 +10,7 @@ description: "Badge in Dense data."
 
 A short label for a status, category or count, next to what it describes.
 
-**In Dense data.** Alert status in rows. Family: feedback. Reference: Open DS, MIT.
+**In Dense data.** Alert status in rows.
 
 ## See it live
 

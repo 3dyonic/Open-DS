@@ -11,7 +11,7 @@ sidebar_class_name: "ods-left-out"
 
 A month grid for picking a date or a range.
 
-**Not part of Accessible first.** Its answers did not pick it. The examples use Accessible first's tokens, to show how it would look if the design system added it. Family: form. Reference: Open DS, MIT.
+<div class="odv-leftout"><span class="odv-robot "><img class="odv-robot-day" src="/robots/accessible-first.webp" alt="" loading="lazy"/><img class="odv-robot-night" src="/robots/accessible-first-dark.webp" alt="" loading="lazy"/></span><p><b>Not part of Accessible first.</b> Its answers did not pick it. The examples use Accessible first's tokens, to show how it would look if the design system added it.</p></div>
 
 ## See it live
 

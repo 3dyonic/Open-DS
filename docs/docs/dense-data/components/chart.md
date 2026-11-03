@@ -10,7 +10,7 @@ description: "Chart in Dense data."
 
 A picture of numbers: comparison, trend, share or spread.
 
-**In Dense data.** Totals over time on dashboards. Family: data. Reference: Open UX (chart), MIT.
+**In Dense data.** Totals over time on dashboards.
 
 ## See it live
 

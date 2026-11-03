@@ -10,7 +10,7 @@ description: "Textarea in Accessible first."
 
 A field for free text over several lines.
 
-**In Accessible first.** Longer answers. Family: form. Reference: Open UX (textarea), MIT.
+**In Accessible first.** Longer answers.
 
 ## See it live
 

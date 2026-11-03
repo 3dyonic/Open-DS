@@ -11,7 +11,7 @@ sidebar_class_name: "ods-left-out"
 
 What a region shows when it loaded and has nothing: why, and what to do next.
 
-**Not part of Content first.** Its answers did not pick it. The examples use Content first's tokens, to show how it would look if the design system added it. Family: feedback. Reference: Open UX (empty_state), MIT.
+<div class="odv-leftout"><span class="odv-robot "><img class="odv-robot-day" src="/robots/content-first.webp" alt="" loading="lazy"/><img class="odv-robot-night" src="/robots/content-first-dark.webp" alt="" loading="lazy"/></span><p><b>Not part of Content first.</b> Its answers did not pick it. The examples use Content first's tokens, to show how it would look if the design system added it.</p></div>
 
 ## See it live
 

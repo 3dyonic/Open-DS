@@ -10,7 +10,7 @@ description: "Label in Multi-brand."
 
 The visible name of a form control.
 
-**In Multi-brand.** Names every control. Family: form. Reference: Open DS, MIT.
+**In Multi-brand.** Names every control.
 
 ## See it live
 

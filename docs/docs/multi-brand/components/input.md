@@ -10,7 +10,7 @@ description: "Input in Multi-brand."
 
 A labeled field for a short typed value.
 
-**In Multi-brand.** Sign-up and account fields. Family: form. Reference: Open UX (text_field), MIT.
+**In Multi-brand.** Sign-up and account fields.
 
 ## See it live
 

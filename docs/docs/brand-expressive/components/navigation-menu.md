@@ -10,7 +10,7 @@ description: "Navigation menu in Brand expressive."
 
 Site navigation with links and panels.
 
-**In Brand expressive.** The site sections. Family: navigation. Reference: Open DS, MIT.
+**In Brand expressive.** The site sections.
 
 ## See it live
 

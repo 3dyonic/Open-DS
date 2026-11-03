@@ -10,7 +10,7 @@ description: "Radio group in Accessible first."
 
 One choice from a short list shown at once.
 
-**In Accessible first.** One choice from a short, visible list. Family: form. Reference: Open UX (radio), MIT.
+**In Accessible first.** One choice from a short, visible list.
 
 ## See it live
 

@@ -10,7 +10,7 @@ description: "Combobox in Dense data."
 
 A text field that suggests and completes matches from a known list as people type.
 
-**In Dense data.** Picks an asset or a user from thousands. Family: form. Reference: Open UX (autocomplete), MIT.
+**In Dense data.** Picks an asset or a user from thousands.
 
 ## See it live
 

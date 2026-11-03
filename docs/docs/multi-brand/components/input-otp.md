@@ -10,7 +10,7 @@ description: "Input otp in Multi-brand."
 
 Separate boxes for a one-time code.
 
-**In Multi-brand.** The code that verifies an email or phone. Family: form. Reference: Open DS, MIT.
+**In Multi-brand.** The code that verifies an email or phone.
 
 ## See it live
 

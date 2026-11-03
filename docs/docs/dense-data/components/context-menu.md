@@ -10,7 +10,7 @@ description: "Context menu in Dense data."
 
 A menu of actions on right-click or long-press.
 
-**In Dense data.** Right-click on a row, for experts. Family: navigation. Reference: Open DS, MIT.
+**In Dense data.** Right-click on a row, for experts.
 
 ## See it live
 

@@ -10,7 +10,7 @@ description: "Input in Accessible first."
 
 A labeled field for a short typed value.
 
-**In Accessible first.** Text answers. Family: form. Reference: Open UX (text_field), MIT.
+**In Accessible first.** Text answers.
 
 ## See it live
 

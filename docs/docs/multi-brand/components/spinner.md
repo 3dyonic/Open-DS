@@ -10,7 +10,7 @@ description: "Spinner in Multi-brand."
 
 A small indicator that work is in progress when the time is unknown.
 
-**In Multi-brand.** A payment in progress. Family: feedback. Reference: Open UX (loading_indicator), MIT.
+**In Multi-brand.** A payment in progress.
 
 ## See it live
 

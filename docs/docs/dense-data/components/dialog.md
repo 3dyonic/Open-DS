@@ -10,7 +10,7 @@ description: "Dialog in Dense data."
 
 A window over the page that takes attention until people finish or close it.
 
-**In Dense data.** Edit one record without leaving the table. Family: overlay. Reference: Open UX (modal), MIT.
+**In Dense data.** Edit one record without leaving the table.
 
 ## See it live
 

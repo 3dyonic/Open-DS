@@ -10,7 +10,7 @@ description: "Input in Dense data."
 
 A labeled field for a short typed value.
 
-**In Dense data.** Search and edit fields. Family: form. Reference: Open UX (text_field), MIT.
+**In Dense data.** Search and edit fields.
 
 ## See it live
 

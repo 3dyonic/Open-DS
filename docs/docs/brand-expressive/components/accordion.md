@@ -11,7 +11,7 @@ sidebar_class_name: "ods-left-out"
 
 Stacked sections that expand and collapse without leaving the page.
 
-**Not part of Brand expressive.** Campaign sections show everything; nothing worth saying is hidden. The examples use Brand expressive's tokens, to show how it would look if the design system added it. Family: content. Reference: Open UX (accordion), MIT.
+<div class="odv-leftout"><span class="odv-robot "><img class="odv-robot-day" src="/robots/brand-expressive.webp" alt="" loading="lazy"/><img class="odv-robot-night" src="/robots/brand-expressive-dark.webp" alt="" loading="lazy"/></span><p><b>Not part of Brand expressive.</b> Campaign sections show everything; nothing worth saying is hidden. The examples use Brand expressive's tokens, to show how it would look if the design system added it.</p></div>
 
 ## See it live
 

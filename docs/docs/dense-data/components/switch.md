@@ -10,7 +10,7 @@ description: "Switch in Dense data."
 
 An on or off setting that applies at once, with no submit.
 
-**In Dense data.** Settings that apply at once. Family: form. Reference: Open UX (switch), MIT.
+**In Dense data.** Settings that apply at once.
 
 ## See it live
 

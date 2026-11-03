@@ -10,7 +10,7 @@ description: "Calendar in Dense data."
 
 A month grid for picking a date or a range.
 
-**In Dense data.** Date ranges for reports. Family: form. Reference: Open DS, MIT.
+**In Dense data.** Date ranges for reports.
 
 ## See it live
 

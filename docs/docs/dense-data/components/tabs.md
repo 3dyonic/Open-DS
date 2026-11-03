@@ -10,7 +10,7 @@ description: "Tabs in Dense data."
 
 Switches between views of the same thing on one page.
 
-**In Dense data.** Views of one record. Family: navigation. Reference: Open UX (tabs), MIT.
+**In Dense data.** Views of one record.
 
 ## See it live
 

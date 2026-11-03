@@ -10,7 +10,7 @@ description: "Aspect ratio in Content first."
 
 Keeps an image or video at a fixed shape while the layout resizes.
 
-**In Content first.** Keeps images in shape. Family: media. Reference: Open DS, MIT.
+**In Content first.** Keeps images in shape.
 
 ## See it live
 

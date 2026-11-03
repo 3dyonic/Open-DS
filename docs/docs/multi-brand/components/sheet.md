@@ -10,7 +10,7 @@ description: "Sheet in Multi-brand."
 
 A panel that slides in from an edge.
 
-**In Multi-brand.** The menu on a phone. Family: overlay. Reference: Open UX (drawer), MIT.
+**In Multi-brand.** The menu on a phone.
 
 ## See it live
 

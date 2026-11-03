@@ -10,7 +10,7 @@ description: "Spinner in Accessible first."
 
 A small indicator that work is in progress when the time is unknown.
 
-**In Accessible first.** Says that the page is working. Family: feedback. Reference: Open UX (loading_indicator), MIT.
+**In Accessible first.** Says that the page is working.
 
 ## See it live
 

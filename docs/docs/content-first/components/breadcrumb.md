@@ -10,7 +10,7 @@ description: "Breadcrumb in Content first."
 
 The trail of pages above this one, so people know where they are.
 
-**In Content first.** Shows where a guide sits. Family: navigation. Reference: Open UX (breadcrumb), MIT.
+**In Content first.** Shows where a guide sits.
 
 ## See it live
 

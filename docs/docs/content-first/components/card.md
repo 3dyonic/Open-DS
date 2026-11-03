@@ -10,7 +10,7 @@ description: "Card in Content first."
 
 A bordered container for one item or group, with its title, content and actions.
 
-**In Content first.** Article previews. Family: layout. Reference: Open UX (content_card), MIT.
+**In Content first.** Article previews.
 
 ## See it live
 

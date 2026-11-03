@@ -10,7 +10,7 @@ description: "Separator in Brand expressive."
 
 A line between groups.
 
-**In Brand expressive.** Breaks between sections. Family: layout. Reference: Open DS, MIT.
+**In Brand expressive.** Breaks between sections.
 
 ## See it live
 

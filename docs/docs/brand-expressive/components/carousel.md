@@ -10,7 +10,7 @@ description: "Carousel in Brand expressive."
 
 Slides that move left and right, one or a few at a time.
 
-**In Brand expressive.** Moves through campaign images. Family: media. Reference: Open DS, MIT.
+**In Brand expressive.** Moves through campaign images.
 
 ## See it live
 

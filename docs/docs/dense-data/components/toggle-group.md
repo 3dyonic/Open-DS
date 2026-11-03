@@ -10,7 +10,7 @@ description: "Toggle group in Dense data."
 
 A set of toggles where one or many stay pressed.
 
-**In Dense data.** Switches a table between views and densities. Family: action. Reference: Open DS, MIT.
+**In Dense data.** Switches a table between views and densities.
 
 ## See it live
 

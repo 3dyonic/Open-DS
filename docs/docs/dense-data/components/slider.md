@@ -10,7 +10,7 @@ description: "Slider in Dense data."
 
 A value picked by dragging along a track, when an exact number is not needed.
 
-**In Dense data.** Narrows a filter to a range of risk scores by dragging. Family: form. Reference: Open UX (slider), MIT.
+**In Dense data.** Narrows a filter to a range of risk scores by dragging.
 
 ## See it live
 

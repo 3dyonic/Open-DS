@@ -10,7 +10,7 @@ description: "Badge in Content first."
 
 A short label for a status, category or count, next to what it describes.
 
-**In Content first.** The topic of an article. Family: feedback. Reference: Open DS, MIT.
+**In Content first.** The topic of an article.
 
 ## See it live
 

@@ -408,4 +408,6 @@ html[data-scheme="content-first"] {
   --ifm-color-info-contrast-foreground: var(--color-text-primary);
 }
 html[data-scheme="content-first"] .navbar__logo img { content: url("/logo-content-first.svg"); }
+html[data-scheme="content-first"] .theme-doc-sidebar-container .menu::after { background-image: url("/robots/content-first.webp"); }
+html[data-scheme="content-first"][data-theme="dark"] .theme-doc-sidebar-container .menu::after { background-image: url("/robots/content-first-dark.webp"); }
 html[data-scheme="content-first"][data-theme="dark"] .navbar__logo img { content: url("/logo-content-first-dark.svg"); }

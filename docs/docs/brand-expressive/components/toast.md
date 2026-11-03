@@ -10,7 +10,7 @@ description: "Toast in Brand expressive."
 
 A short message that confirms an action and goes away.
 
-**In Brand expressive.** Confirms a place on the waitlist. Family: feedback. Reference: Open UX (toast), MIT.
+**In Brand expressive.** Confirms a place on the waitlist.
 
 ## See it live
 

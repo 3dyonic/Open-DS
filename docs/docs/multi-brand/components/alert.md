@@ -10,7 +10,7 @@ description: "Alert in Multi-brand."
 
 A message that stays on the page with the content it is about.
 
-**In Multi-brand.** Billing problems. Family: feedback. Reference: Open UX (alert), MIT.
+**In Multi-brand.** Billing problems.
 
 ## See it live
 

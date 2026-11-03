@@ -10,7 +10,7 @@ description: "Dropdown menu in Dense data."
 
 A menu of actions opened from a button.
 
-**In Dense data.** Row actions. Family: navigation. Reference: Open DS, MIT.
+**In Dense data.** Row actions.
 
 ## See it live
 

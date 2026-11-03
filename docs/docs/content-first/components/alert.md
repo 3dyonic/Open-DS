@@ -10,7 +10,7 @@ description: "Alert in Content first."
 
 A message that stays on the page with the content it is about.
 
-**In Content first.** A note or warning inside an article. Family: feedback. Reference: Open UX (alert), MIT.
+**In Content first.** A note or warning inside an article.
 
 ## See it live
 

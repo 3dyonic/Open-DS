@@ -10,7 +10,7 @@ description: "Breadcrumb in Multi-brand."
 
 The trail of pages above this one, so people know where they are.
 
-**In Multi-brand.** Where a page sits in the account area. Family: navigation. Reference: Open UX (breadcrumb), MIT.
+**In Multi-brand.** Where a page sits in the account area.
 
 ## See it live
 

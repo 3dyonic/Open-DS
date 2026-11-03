@@ -10,6 +10,7 @@ export const ROBOT_ALT: Record<string, string> = {
   "accessible-first": "A big tin robot with large blue buttons kneels to help a small robot up a wooden ramp.",
   "brand-expressive": "A tin robot leaps with a brass megaphone through pink confetti and streamers.",
   "multi-brand": "A tin robot with a paintbrush beside three identical small robots painted teal, violet and orange.",
+  slumber: "Slumber, a tin robot, sits curled up asleep with its wind-up key run down.",
 };
 
 export function Robot({ id, className = "" }: { id: string; className?: string }) {

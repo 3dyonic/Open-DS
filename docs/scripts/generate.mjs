@@ -127,7 +127,7 @@ const files = {};
 const index = [];
 for (const id of ids) {
   const scheme = loadScheme(id, roots);
-  const pages = docsPages(scheme, g, roots, { storybook: process.env.STORYBOOK_URL, all: true });
+  const pages = docsPages(scheme, g, roots, { storybook: process.env.STORYBOOK_URL, all: true, robots: true });
   // The tokens, scoped to this scheme's pages: :root becomes html[data-scheme="<id>"], and the dark
   // class becomes Docusaurus's data-theme="dark" on the same element.
   const scope = `html[data-scheme="${id}"]`;
@@ -147,6 +147,9 @@ for (const id of ids) {
       .map(([k, v]) => `  ${k}: var(--${v});`)
       .join("\n")}\n}\n` +
     `${scope} .navbar__logo img { content: url("/logo-${id}.svg"); }\n` +
+    // OD-209: the scheme's robot, small and quiet at the foot of its sidebar.
+    `${scope} .theme-doc-sidebar-container .menu::after { background-image: url("/robots/${id}.webp"); }\n` +
+    `${scope}[data-theme="dark"] .theme-doc-sidebar-container .menu::after { background-image: url("/robots/${id}-dark.webp"); }\n` +
     `${scope}[data-theme="dark"] .navbar__logo img { content: url("/logo-${id}-dark.svg"); }\n`;
   files[`static/logo-${id}.svg`] = logo(modeTokens("light"));
   files[`static/logo-${id}-dark.svg`] = logo(modeTokens("dark"));

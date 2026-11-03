@@ -10,7 +10,7 @@ description: "Form in Dense data."
 
 Form state and validation wired to the fields.
 
-**In Dense data.** Keeps validation and errors the same on every record edit. Family: form. Reference: Open DS, MIT.
+**In Dense data.** Keeps validation and errors the same on every record edit.
 
 ## See it live
 

@@ -10,7 +10,7 @@ description: "Toggle group in Multi-brand."
 
 A set of toggles where one or many stay pressed.
 
-**In Multi-brand.** Monthly or yearly prices. Family: action. Reference: Open DS, MIT.
+**In Multi-brand.** Monthly or yearly prices.
 
 ## See it live
 

@@ -10,7 +10,7 @@ description: "Label in Dense data."
 
 The visible name of a form control.
 
-**In Dense data.** Names every control. Family: form. Reference: Open DS, MIT.
+**In Dense data.** Names every control.
 
 ## See it live
 

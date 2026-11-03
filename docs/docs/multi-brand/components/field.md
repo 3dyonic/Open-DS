@@ -10,7 +10,7 @@ description: "Field in Multi-brand."
 
 A label, control, hint and error laid out together, the same way every time.
 
-**In Multi-brand.** Lays out every form the same way in every brand. Family: form. Reference: Open DS, MIT.
+**In Multi-brand.** Lays out every form the same way in every brand.
 
 ## See it live
 

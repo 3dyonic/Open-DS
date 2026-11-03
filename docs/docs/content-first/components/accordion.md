@@ -10,7 +10,7 @@ description: "Accordion in Content first."
 
 Stacked sections that expand and collapse without leaving the page.
 
-**In Content first.** Questions and answers in guides. Family: content. Reference: Open UX (accordion), MIT.
+**In Content first.** Questions and answers in guides.
 
 ## See it live
 

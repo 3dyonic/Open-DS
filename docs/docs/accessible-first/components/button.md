@@ -10,7 +10,7 @@ description: "Button in Accessible first."
 
 A control that commits an action on this screen.
 
-**In Accessible first.** Every action, with a large target. Family: action. Reference: Open UX (button), MIT.
+**In Accessible first.** Every action, with a large target.
 
 ## See it live
 

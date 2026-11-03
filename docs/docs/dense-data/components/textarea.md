@@ -10,7 +10,7 @@ description: "Textarea in Dense data."
 
 A field for free text over several lines.
 
-**In Dense data.** Notes on an alert, for the next analyst. Family: form. Reference: Open UX (textarea), MIT.
+**In Dense data.** Notes on an alert, for the next analyst.
 
 ## See it live
 

@@ -10,7 +10,7 @@ description: "Avatar in Multi-brand."
 
 A small image or initials that stand for a person or account.
 
-**In Multi-brand.** The customer in the account menu. Family: media. Reference: Open DS, MIT.
+**In Multi-brand.** The customer in the account menu.
 
 ## See it live
 

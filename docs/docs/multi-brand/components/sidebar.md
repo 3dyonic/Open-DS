@@ -10,7 +10,7 @@ description: "Sidebar in Multi-brand."
 
 The side navigation of an app, open while people work.
 
-**In Multi-brand.** Account area navigation. Family: navigation. Reference: Open DS, MIT.
+**In Multi-brand.** Account area navigation.
 
 ## See it live
 

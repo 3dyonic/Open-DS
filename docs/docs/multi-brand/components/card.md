@@ -10,7 +10,7 @@ description: "Card in Multi-brand."
 
 A bordered container for one item or group, with its title, content and actions.
 
-**In Multi-brand.** Plans and products. Family: layout. Reference: Open UX (content_card), MIT.
+**In Multi-brand.** Plans and products.
 
 ## See it live
 

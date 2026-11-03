@@ -10,7 +10,7 @@ description: "Input in Brand expressive."
 
 A labeled field for a short typed value.
 
-**In Brand expressive.** The sign-up email. Family: form. Reference: Open UX (text_field), MIT.
+**In Brand expressive.** The sign-up email.
 
 ## See it live
 

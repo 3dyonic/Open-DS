@@ -10,7 +10,7 @@ description: "Aspect ratio in Brand expressive."
 
 Keeps an image or video at a fixed shape while the layout resizes.
 
-**In Brand expressive.** Keeps campaign images in shape. Family: media. Reference: Open DS, MIT.
+**In Brand expressive.** Keeps campaign images in shape.
 
 ## See it live
 

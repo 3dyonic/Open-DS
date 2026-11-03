@@ -10,7 +10,7 @@ description: "Skeleton in Brand expressive."
 
 Placeholder shapes that match the final layout, so the page does not jump when content arrives.
 
-**In Brand expressive.** Images while they load. Family: feedback. Reference: Open UX (skeleton), MIT.
+**In Brand expressive.** Images while they load.
 
 ## See it live
 

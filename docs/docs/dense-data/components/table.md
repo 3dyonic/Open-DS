@@ -10,7 +10,7 @@ description: "Table in Dense data."
 
 Rows and columns of comparable records, with headers.
 
-**In Dense data.** The heart of the product: rows of records. Family: data. Reference: Open UX (table), MIT.
+**In Dense data.** The heart of the product: rows of records.
 
 ## See it live
 

@@ -10,7 +10,7 @@ description: "Navigation menu in Multi-brand."
 
 Site navigation with links and panels.
 
-**In Multi-brand.** Brand site navigation. Family: navigation. Reference: Open DS, MIT.
+**In Multi-brand.** Brand site navigation.
 
 ## See it live
 

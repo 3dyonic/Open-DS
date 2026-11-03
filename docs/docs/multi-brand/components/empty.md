@@ -10,7 +10,7 @@ description: "Empty in Multi-brand."
 
 What a region shows when it loaded and has nothing: why, and what to do next.
 
-**In Multi-brand.** No orders yet. Family: feedback. Reference: Open UX (empty_state), MIT.
+**In Multi-brand.** No orders yet.
 
 ## See it live
 

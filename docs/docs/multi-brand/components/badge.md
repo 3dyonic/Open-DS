@@ -10,7 +10,7 @@ description: "Badge in Multi-brand."
 
 A short label for a status, category or count, next to what it describes.
 
-**In Multi-brand.** Plan and status labels. Family: feedback. Reference: Open DS, MIT.
+**In Multi-brand.** Plan and status labels.
 
 ## See it live
 

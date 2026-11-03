@@ -10,7 +10,7 @@ description: "Button in Multi-brand."
 
 A control that commits an action on this screen.
 
-**In Multi-brand.** Every action. Family: action. Reference: Open UX (button), MIT.
+**In Multi-brand.** Every action.
 
 ## See it live
 

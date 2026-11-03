@@ -10,7 +10,7 @@ description: "Switch in Multi-brand."
 
 An on or off setting that applies at once, with no submit.
 
-**In Multi-brand.** Account settings. Family: form. Reference: Open UX (switch), MIT.
+**In Multi-brand.** Account settings.
 
 ## See it live
 
