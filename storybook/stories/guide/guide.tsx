@@ -9,7 +9,7 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import { useOf } from "@storybook/addon-docs/blocks";
 import { Component, useEffect, useRef, useState, type ReactNode } from "react";
-import { useGuideData } from "./guide-data";
+import { useGuideData, ABOUT_OPEN_DS } from "./guide-data";
 
 type Any = any;
 
@@ -154,6 +154,36 @@ export function Introduction() {
   return (
     <Frame>
       <div ref={ref}>
+        {ABOUT_OPEN_DS && (
+          // OD-216: the Open DS Storybook first says what Open DS is, then shows the scheme picked. The
+          // scheme's robot changes with the toolbar; Shelf keeps the components. Night editions in dark.
+          <section className="about" aria-labelledby="about-open-ds">
+            <div className="about-text">
+              <div className="eyebrow">Open DS</div>
+              <h2 id="about-open-ds">Five design systems. Same questions. Different answers.</h2>
+              <p>
+                Open DS is a set of design system schemes. Each scheme answers the same questions, such as who uses the
+                product, what they do all day and how it should feel, in its own way. Every token, component and rule
+                follows from those answers, and each one says why.
+              </p>
+              <p>
+                This Storybook shows every component in every scheme. Pick a scheme and a mode in the toolbar, and every
+                page and story changes with it. To start your own design system from {s.name}:
+              </p>
+              <pre>
+                <code>npx open-ds create my-ds --scheme {s.id}</code>
+              </pre>
+            </div>
+            <div className="about-robots" aria-hidden="true">
+              {[s.id, "shelf"].map((r) => (
+                <span key={r} className="about-robot">
+                  <img className="day" src={`robots/${r}.webp`} alt="" />
+                  <img className="night" src={`robots/${r}-dark.webp`} alt="" />
+                </span>
+              ))}
+            </div>
+          </section>
+        )}
         <div className="eyebrow">
           Open DS · {s.name} · v{s.version}
         </div>

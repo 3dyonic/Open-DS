@@ -286,10 +286,13 @@ export default async function SchemePage({ params }: { params: Promise<{ id: str
               <p className="text-[16px] leading-[1.45] text-body">{c.text}</p>
               <a
                 href={c.href}
+                target="_blank"
+                rel="noopener noreferrer"
                 aria-describedby={`place-${c.id}`}
                 className="mt-3 flex items-center gap-[10px] self-start rounded-[4px] border border-ink px-5 py-[14px] text-[17px] font-semibold"
               >
                 {c.cta}
+                <span className="sr-only"> (opens in a new tab)</span>
               </a>
             </div>
             <div aria-hidden className="hidden w-[112px] shrink-0 items-end sm:flex">

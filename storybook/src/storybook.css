@@ -44,3 +44,85 @@ body {
   text-decoration: underline;
   text-underline-offset: 2px;
 }
+
+/* OD-216: the Open DS introduction at the top of this Storybook, in the Open DS brand (paper, ink,
+   robots). Only this Storybook shows it, so created projects never get these colours. */
+.odg .about {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  gap: 24px;
+  align-items: center;
+  margin: 0 0 40px;
+  padding: 28px 32px;
+  border-radius: 16px;
+  background: #f6efe2;
+  color: #16140f;
+}
+.odg .about .eyebrow {
+  color: #8a5a00;
+}
+.odg .about h2 {
+  margin: 6px 0 0;
+  color: #16140f;
+  font-size: 28px;
+  line-height: 1.15;
+}
+.odg .about p {
+  max-width: 64ch;
+  margin: 10px 0 0;
+  color: #4a443a;
+}
+.odg .about pre {
+  margin: 14px 0 0;
+  padding: 8px 12px;
+  border-radius: 6px;
+  background: #fffaf1;
+  color: #16140f;
+  overflow-x: auto;
+  width: fit-content;
+  max-width: 100%;
+}
+.odg .about-robots {
+  display: flex;
+  align-items: flex-end;
+  gap: 8px;
+}
+.odg .about-robot img {
+  display: block;
+  height: 180px;
+  width: auto;
+}
+.odg .about-robot .night {
+  display: none;
+}
+.dark .odg .about {
+  background: #1c1a16;
+  color: #f3ecdf;
+}
+.dark .odg .about h2 {
+  color: #f3ecdf;
+}
+.dark .odg .about p {
+  color: #cfc6b6;
+}
+.dark .odg .about .eyebrow {
+  color: #f0c46b;
+}
+.dark .odg .about pre {
+  background: #0f0e0c;
+  color: #f3ecdf;
+}
+.dark .odg .about-robot .day {
+  display: none;
+}
+.dark .odg .about-robot .night {
+  display: block;
+}
+@media (max-width: 760px) {
+  .odg .about {
+    grid-template-columns: 1fr;
+  }
+  .odg .about-robot img {
+    height: 120px;
+  }
+}

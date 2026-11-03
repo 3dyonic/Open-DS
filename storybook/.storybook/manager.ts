@@ -17,6 +17,9 @@ addons.setConfig({
     // brandTitle may hold HTML; with no brandImage, Storybook shows it as the sidebar brand.
     brandTitle: `<span style="display:flex;align-items:center;gap:8px"><img src="${dark ? "logo-dark.svg" : "logo.svg"}" alt="" style="height:16px;width:auto"/><span style="font:800 15px 'Bricolage Grotesque',sans-serif;white-space:nowrap">Open DS</span><span style="${tag}">All schemes</span></span>`,
     brandImage: undefined,
+    // The brand opens Open DS itself (OD-216).
+    brandUrl: "https://open-ds.dev",
+    brandTarget: "_self",
     colorPrimary: "#ff5a1f",
     colorSecondary: c.accent,
     appBg: c.paper,
