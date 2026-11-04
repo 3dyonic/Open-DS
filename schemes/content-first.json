@@ -1799,7 +1799,7 @@
                 "adjust": {
                   "100": {
                     "C": 0.008,
-                    "why": "OD-231: status text on dark (text.<status>-on-dark) and the light tint share this step; at the curve's chroma the text read as white, so the step takes just enough chroma (0.04) to show its hue, lightness lowered only where sRGB had no room."
+                    "why": "This shade is the soft background of status messages in light mode and the status text in dark mode. As generated, the text looked white on dark backgrounds, so the shade got a little more colour, and blue and red a touch darker, until the colour showed. (OD-231)"
                   }
                 }
               },
@@ -1913,7 +1913,7 @@
                   "100": {
                     "L": -0.005,
                     "C": 0.013,
-                    "why": "OD-231: status text on dark (text.<status>-on-dark) and the light tint share this step; at the curve's chroma the text read as white, so the step takes just enough chroma (0.04) to show its hue, lightness lowered only where sRGB had no room."
+                    "why": "This shade is the soft background of status messages in light mode and the status text in dark mode. As generated, the text looked white on dark backgrounds, so the shade got a little more colour, and blue and red a touch darker, until the colour showed. (OD-231)"
                   }
                 }
               },
@@ -2027,7 +2027,7 @@
                   "100": {
                     "L": -0.03,
                     "C": 0.017,
-                    "why": "OD-231: status text on dark (text.<status>-on-dark) and the light tint share this step; at the curve's chroma the text read as white, so the step takes just enough chroma (0.04) to show its hue, lightness lowered only where sRGB had no room."
+                    "why": "This shade is the soft background of status messages in light mode and the status text in dark mode. As generated, the text looked white on dark backgrounds, so the shade got a little more colour, and blue and red a touch darker, until the colour showed. (OD-231)"
                   }
                 }
               },
@@ -2155,7 +2155,7 @@
                   "100": {
                     "L": -0.02,
                     "C": 0.011,
-                    "why": "OD-231: status text on dark (text.<status>-on-dark) and the light tint share this step; at the curve's chroma the text read as white, so the step takes just enough chroma (0.04) to show its hue, lightness lowered only where sRGB had no room."
+                    "why": "This shade is the soft background of status messages in light mode and the status text in dark mode. As generated, the text looked white on dark backgrounds, so the shade got a little more colour, and blue and red a touch darker, until the colour showed. (OD-231)"
                   }
                 }
               },

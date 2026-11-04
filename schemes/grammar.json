@@ -768,75 +768,89 @@
       ],
       "hints": [
         {
-          "id": "adjust-where-measured",
-          "when": "A generated step looks wrong in use.",
-          "do": "Name what to measure first, and adjust only the steps that fall short of it. A step that already meets the measure stays as generated.",
-          "measure": "Each recorded chroma move sits on a step whose generated chroma is below the target its reason names.",
-          "why": "A measure turns taste into a decision others can repeat, and keeps the scale generated wherever it already works.",
-          "from": ["OD-231"]
-        },
-        {
-          "id": "need-per-hue",
-          "when": "Deciding where an adjustment goes.",
-          "do": "Decide per hue, not per scheme. Schemes that share a hue share its need; adjust one scheme alone only when its colour differs.",
-          "why": "The same blue is the same colour in every scheme that uses it, so the same fix applies to all of them.",
-          "from": ["OD-231"]
-        },
-        {
-          "id": "whole-colour-space",
-          "when": "A step needs more or less colour.",
-          "do": "Use the whole colour space, in order: chroma first, where hue lives; then lightness, which also makes room for chroma near white; hue angle last.",
-          "why": "Lightness alone makes a colour darker, not more coloured. Chroma is what shows the hue.",
-          "from": ["OD-231"]
-        },
-        {
-          "id": "near-white-gamut",
-          "when": "Adding chroma to a light step (50 to 200).",
-          "do": "Expect blue and red to need a little less lightness before they can hold more chroma; green and amber usually take chroma as they are.",
-          "why": "Near white, a screen (sRGB) has little room for blue and red, so a chroma move alone does nothing.",
-          "from": ["OD-231"]
-        },
-        {
-          "id": "every-job-of-a-step",
-          "when": "Before adjusting a step.",
-          "do": "List every token that lands on it (open-ds scales, get_scales) and mock each one, in both themes. A step can be a light tint and a dark-mode text at once.",
-          "why": "An adjustment moves every job a step has, not only the one you are fixing.",
-          "from": ["OD-231", "OD-223"]
-        },
-        {
-          "id": "smallest-move",
-          "when": "Choosing the size of an adjustment.",
-          "do": "Find the smallest move that meets the measure, then ease it back by eye if it shows too much.",
-          "why": "The scale stays one family; a large move reads as a different colour.",
-          "from": ["OD-231"]
-        },
-        {
-          "id": "text-shows-its-colour",
-          "when": "Text on a coloured fill, such as a status label.",
-          "do": "Check that it shows its hue, not only that it passes contrast.",
-          "measure": "text.<status>-on-dark keeps chroma 0.04 or more and 7:1 or more on its dark tint, in every brand.",
-          "why": "Passing contrast with a colour that reads as white loses the meaning the colour carries.",
-          "from": ["OD-231"]
-        },
-        {
-          "id": "say-why",
-          "when": "Recording an adjustment.",
-          "do": "Write the reason a person can read, with its ticket. \"Chosen by eye\" is a valid reason when it is true.",
-          "why": "The next person can keep, change or remove it on purpose.",
-          "from": ["OD-223", "OD-231"]
-        },
-        {
-          "id": "same-move-is-a-curve",
-          "when": "The same move is about to go on every hue.",
-          "do": "Change the curve instead of adding the same adjustment everywhere.",
-          "why": "An adjustment is an exception; a move on every hue is the rule, and the curve is where rules live.",
+          "id": "what-a-scale-is-for",
+          "when": "Before you change any colour.",
+          "do": "Remember what a scale is: one colour as a family of shades, from almost white to almost black. Every shade should still look like the same colour, just lighter or darker.",
+          "why": "A family of shades lets every part of a screen use the same colour at the strength it needs, so the screen stays calm and consistent.",
           "from": ["OD-223"]
         },
         {
-          "id": "distance-by-use",
-          "when": "Two fills must stay apart, such as primary and danger.",
-          "do": "Decide the distance from where they meet in use, not from one number for every case.",
-          "why": "How far apart two colours must be depends on whether they sit side by side.",
+          "id": "each-shade-has-a-job",
+          "when": "You pick a shade for something.",
+          "do": "Use the lightest shades for backgrounds behind text, the middle shades for buttons, borders and focus rings, and the darkest shades for text on light backgrounds. In dark mode the roles swap ends.",
+          "why": "Text must stand out from what is behind it. Each end of the scale gives that for the other end.",
+          "from": ["OD-223"]
+        },
+        {
+          "id": "fix-only-what-is-wrong",
+          "when": "A shade looks wrong where it is used.",
+          "do": "Say exactly what is wrong first: too pale, too dull, too close to another colour. Then change only that shade, and leave the ones that work alone.",
+          "measure": "The harness checks that every shade that was changed really needed it.",
+          "why": "A small fix in the right place keeps the family together. Reworking a whole scale for one problem makes new problems.",
+          "from": ["OD-231"]
+        },
+        {
+          "id": "look-at-every-use",
+          "when": "Before you change a shade.",
+          "do": "Find everything that uses it, and look at each one in light and dark mode. One shade can be a soft background in light mode and a text colour in dark mode at the same time.",
+          "why": "A change made for one use moves every other use of that shade too.",
+          "from": ["OD-223", "OD-231"]
+        },
+        {
+          "id": "more-colour-before-darker",
+          "when": "A shade looks washed out or greyish.",
+          "do": "Make it more colourful first. If that is not enough, make it a little darker. Change the hue itself last.",
+          "why": "Darkening a pale colour makes it greyer, not more colourful. How colourful it is decides whether people recognise it.",
+          "from": ["OD-231"]
+        },
+        {
+          "id": "pale-blue-and-red",
+          "when": "You make a very pale shade more colourful.",
+          "do": "Expect blue and red to need a touch of darkening before they can take more colour. Green and yellow usually take it as they are.",
+          "why": "Screens can show only so much colour in very pale shades, and blue and red run out of room first.",
+          "from": ["OD-231"]
+        },
+        {
+          "id": "coloured-text-must-look-coloured",
+          "when": "Text is set in a colour, like an error message or a status label.",
+          "do": "Make sure it is easy to read and also clearly that colour. Text that is readable but looks white has lost its meaning.",
+          "measure": "The harness checks that status text on dark backgrounds is clearly coloured and easy to read, in every scheme.",
+          "why": "The colour tells people what kind of message it is before they read a word.",
+          "from": ["OD-231"]
+        },
+        {
+          "id": "change-a-little",
+          "when": "You decide how much to change.",
+          "do": "Change as little as solves the problem. Then compare it with the original side by side, in light and dark mode, and ease it back if it stands out.",
+          "why": "A big change makes the shade look like it belongs to another colour.",
+          "from": ["OD-231"]
+        },
+        {
+          "id": "fix-it-once",
+          "when": "The same problem shows up in several schemes.",
+          "do": "If the schemes use the same colour, fix it once for all of them. Fix one scheme alone only when its colour is different.",
+          "why": "The same blue is the same colour wherever it is used, so it has the same problem everywhere.",
+          "from": ["OD-231"]
+        },
+        {
+          "id": "same-fix-everywhere-is-a-new-rule",
+          "when": "Every colour seems to need the same fix.",
+          "do": "Change how all the scales are made, instead of fixing each colour one by one.",
+          "why": "A fix is for an exception. When every colour needs it, the rule itself is what needs to change.",
+          "from": ["OD-223"]
+        },
+        {
+          "id": "say-why",
+          "when": "You have changed a shade.",
+          "do": "Write down why, in a sentence anyone can follow. \"It looked too pale on dark backgrounds\" is a good reason.",
+          "why": "Whoever comes next can keep the change, adjust it, or undo it on purpose.",
+          "from": ["OD-223", "OD-231"]
+        },
+        {
+          "id": "apart-where-they-meet",
+          "when": "Two colours must never be confused, like the main button and a delete button.",
+          "do": "Decide how different they must be from where they appear together, not from one number for every case.",
+          "why": "Colours side by side need more difference than colours that never meet.",
           "from": ["OD-225"]
         }
       ]
