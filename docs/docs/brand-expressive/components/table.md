@@ -69,10 +69,10 @@ The CSS variable is the key with `/` replaced by `-` and the base `@` dropped. E
 
 | Key | What it controls | Points to, light | Points to, dark |
 | --- | --- | --- | --- |
-| `table/header-background` | Header row fill. | `color.surface.sunken` → `brand-expressive.theme.light.color.surface.sunken` → `color.taupe.light.100` | `color.surface.sunken` → `brand-expressive.theme.dark.color.surface.sunken` → `color.taupe.dark.100` |
+| `table/header-background` | Header row fill. | `color.surface.sunken` → `brand-expressive.theme.light.color.surface.sunken` → `color.neutral.100` → `brand-expressive.theme.light.color.neutral.100` → `color.taupe.light.100` | `color.surface.sunken` → `brand-expressive.theme.dark.color.surface.sunken` → `color.neutral.100` → `brand-expressive.theme.dark.color.neutral.100` → `color.taupe.dark.100` |
 | `table/row-height` | Height of one data row. | `size.row` → `size.52` | same |
 | `table/cell-padding-x` | Horizontal padding inside a cell. | `space.inset.cell-x` → `space.16` | same |
-| `table/row-border` | Line between rows. | `color.border.default` → `brand-expressive.theme.light.color.border.default` → `color.taupe.light.200` | `color.border.default` → `brand-expressive.theme.dark.color.border.default` → `color.taupe.dark.100` |
+| `table/row-border` | Line between rows. | `color.border.default` → `brand-expressive.theme.light.color.border.default` → `color.neutral.200` → `brand-expressive.theme.light.color.neutral.200` → `color.taupe.light.200` | `color.border.default` → `brand-expressive.theme.dark.color.border.default` → `color.neutral.100` → `brand-expressive.theme.dark.color.neutral.100` → `color.taupe.dark.100` |
 | `table/row-selected` | Fill of a selected row. | `color.surface.selected` → `brand-expressive.theme.light.color.surface.selected` → `color.pink.light.100` | `color.surface.selected` → `brand-expressive.theme.dark.color.surface.selected` → `color.pink.dark.100` |
 | `table/row-selected-edge` | Edge that marks a selected row, beside its fill. | `color.border.selected` → `brand-expressive.theme.light.color.border.selected` → `color.pink.light.600` | `color.border.selected` → `brand-expressive.theme.dark.color.border.selected` → `color.pink.dark.700` |
 | `table/font-size` | Cell text size. | `type.data.font-size` → `font.size.17` | same |

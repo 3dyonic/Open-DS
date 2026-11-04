@@ -69,8 +69,8 @@ The CSS variable is the key with `/` replaced by `-` and the base `@` dropped. E
 
 | Key | What it controls | Points to, light | Points to, dark |
 | --- | --- | --- | --- |
-| `card/background` | Card fill. | `color.surface.default` → `content-first.theme.light.color.surface.default` → `color.stone.light.0` | `color.surface.default` → `content-first.theme.dark.color.surface.default` → `color.stone.dark.50` |
-| `card/border` | Card border. | `color.border.default` → `content-first.theme.light.color.border.default` → `color.stone.light.200` | `color.border.default` → `content-first.theme.dark.color.border.default` → `color.stone.dark.100` |
+| `card/background` | Card fill. | `color.surface.default` → `content-first.theme.light.color.surface.default` → `color.neutral.0` → `content-first.theme.light.color.neutral.0` → `color.stone.light.0` | `color.surface.default` → `content-first.theme.dark.color.surface.default` → `color.neutral.50` → `content-first.theme.dark.color.neutral.50` → `color.stone.dark.50` |
+| `card/border` | Card border. | `color.border.default` → `content-first.theme.light.color.border.default` → `color.neutral.200` → `content-first.theme.light.color.neutral.200` → `color.stone.light.200` | `color.border.default` → `content-first.theme.dark.color.border.default` → `color.neutral.100` → `content-first.theme.dark.color.neutral.100` → `color.stone.dark.100` |
 | `card/radius` | Card corner radius. | `radius.container` → `content-first.theme.base.radius.container` → `radius.12` | same |
 | `card/padding` | Padding inside a card. | `space.inset.container` → `space.24` | same |
 | `card/shadow` | Card shadow. | `elevation.card` → `content-first.theme.light.elevation.card` → `shadow.none` | `elevation.card` → `content-first.theme.dark.elevation.card` → `shadow.none` |

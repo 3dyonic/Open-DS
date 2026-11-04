@@ -41,30 +41,27 @@ html[data-scheme="accessible-first"] {
   --motion-duration-feedback: 200ms; /** Feedback speed: moderate. Hover, press and small state changes. */
   --motion-duration-panels: 200ms; /** Panel speed: moderate. Dialogs, sheets, popovers and menus opening and closing. One speed: panels open at the feedback speed (motion.count). */
   --motion-easing-standard: cubic-bezier(0.2, 0, 0, 1); /** Feedback easing. */
-  --color-surface-canvas: #F7F7F7; /** The page background behind everything. */
-  --color-surface-default: #FFFFFF; /** The base fill for content. */
-  --color-surface-raised: #FFFFFF; /** Fills that float above content. */
-  --color-surface-sunken: #EDEDED; /** A recessed fill, a step below content. */
+  --color-neutral-0: #FFFFFF;
+  --color-neutral-50: #F7F7F7;
+  --color-neutral-100: #EDEDED;
+  --color-neutral-200: #D6D6D6;
+  --color-neutral-300: #949494;
+  --color-neutral-400: #767676;
+  --color-neutral-500: #595959;
+  --color-neutral-600: #464646;
+  --color-neutral-700: #333333;
+  --color-neutral-800: #222222;
+  --color-neutral-900: #141414;
+  --color-neutral-950: #0A0A0A;
   --color-surface-selected: #E1ECFF; /** The fill of a selected or current item. */
-  --color-surface-inverse: #141414; /** A reversed fill for small, short-lived messages. */
   --color-surface-scrim: #0000008C; /** The see-through layer behind a modal. */
-  --color-text-primary: #141414; /** Body text and headings. */
-  --color-text-secondary: #333333; /** Supporting text. */
-  --color-text-muted: #595959; /** The quietest text. */
-  --color-text-inverse: #FFFFFF; /** Text on an inverse fill. */
-  --color-text-on-action: #FFFFFF; /** Text and icons on the main action's fill. */
   --color-text-link: #083C93; /** Links in running text. */
-  --color-text-on-danger: #FFFFFF; /** Text on the danger fill: its tone's main text. */
   --color-text-on-light: #141414; /** Text on any fill whose tone is light, in either mode: the light mode's body text. */
   --color-text-on-dark: #FFFFFF; /** Text on any fill whose tone is dark, in either mode: white. */
-  --color-border-default: #D6D6D6; /** Quiet edges and dividers. Decorative, so it has no contrast minimum. */
-  --color-border-strong: #595959; /** The edge of a control people must find. */
   --color-border-focus: #0B4FC0; /** The focus ring. */
   --color-border-selected: #0B4FC0; /** The edge that marks a selected item, beside its fill, so selection is never colour alone. */
   --color-action-primary: #0B4FC0; /** The one main action in a view. */
   --color-action-primary-hover: #083C93; /** The main action under the pointer. */
-  --color-action-secondary: #FFFFFF; /** The fill of other actions. */
-  --color-action-secondary-hover: #EDEDED; /** Other actions under the pointer. */
   --color-action-danger: #C42B2B; /** The fill of a destructive commit: the confirm of a delete. */
   --color-action-danger-hover: #C42B2B; /** The danger fill on hover. */
   --color-status-info: #0B5B55; /** Neutral news: something changed and no action is needed. The lowest level of the urgency order. */
@@ -83,11 +80,6 @@ html[data-scheme="accessible-first"] {
   --color-category-3-subtle: #E3F4EA; /** Category 3: the fill of a tag. */
   --color-category-4: #8A5600; /** Category 4: tells one item or series from another. It carries no meaning. */
   --color-category-4-subtle: #FFF3D6; /** Category 4: the fill of a tag. */
-  --color-category-5: #595959; /** Category 5: tells one item or series from another. It carries no meaning. */
-  --color-category-5-subtle: #EDEDED; /** Category 5: the fill of a tag. */
-  --color-disabled-text: #595959; /** Text and icons of a control that cannot be used right now. */
-  --color-disabled-surface: #EDEDED; /** The fill of a control that cannot be used right now. */
-  --color-disabled-border: #D6D6D6; /** The edge of a control that cannot be used right now. */
   --radius-control: 0.375rem; /** Corner of buttons and inputs. */
   --radius-badge: 0.25rem; /** Corner of badges and checkboxes. */
   --radius-container: 0.5rem; /** Corner of cards, menus and dialogs. */
@@ -120,37 +112,16 @@ html[data-scheme="accessible-first"] {
   --transition-panels-duration: var(--motion-duration-panels); /** Duration of panels opening and closing: dialogs, sheets, popovers, menus. */
   --button-primary-background: var(--color-action-primary); /** Primary button fill. */
   --button-primary-background-hover: var(--color-action-primary-hover); /** Primary button fill on hover. */
-  --button-primary-label: var(--color-text-on-action); /** Primary button label color. */
-  --button-secondary-background: var(--color-action-secondary); /** Secondary button fill. */
-  --button-secondary-background-hover: var(--color-action-secondary-hover); /** Secondary button fill on hover. */
-  --button-secondary-label: var(--color-text-primary); /** Secondary button label color. */
-  --button-secondary-border: var(--color-border-strong); /** Secondary button border. */
   --button-danger-background: var(--color-action-danger); /** Danger button fill. */
   --button-danger-background-hover: var(--color-action-danger-hover); /** Danger button fill on hover. */
-  --button-danger-label: var(--color-text-on-danger); /** Danger button label color. */
-  --button-ghost-background-hover: var(--color-surface-sunken); /** Ghost button fill on hover. */
   --button-ghost-label: var(--color-text-link); /** Ghost button label color. */
   --button-radius: var(--radius-control); /** Button corner radius. */
   --button-focus-ring: var(--color-border-focus); /** Focus ring color on any button. */
-  --button-disabled-background: var(--color-disabled-surface); /** Fill of a disabled button. */
-  --button-disabled-label: var(--color-disabled-text); /** Label of a disabled button. */
-  --button-disabled-border: var(--color-disabled-border); /** Border of a disabled secondary button. */
-  --input-background: var(--color-surface-default); /** Input fill. */
-  --input-border: var(--color-border-strong); /** Input border at rest. */
   --input-border-focus: var(--color-border-focus); /** Input border when focused. */
-  --input-text: var(--color-text-primary); /** Typed text color. */
-  --input-placeholder: var(--color-text-muted); /** Placeholder text color. */
   --input-radius: var(--radius-control); /** Input corner radius. */
-  --input-disabled-background: var(--color-disabled-surface); /** Fill of a disabled input. */
-  --input-disabled-border: var(--color-disabled-border); /** Border of a disabled input. */
-  --input-disabled-text: var(--color-disabled-text); /** Text in a disabled input. */
   --control-checked: var(--color-action-primary); /** Fill of a checked checkbox or an on switch. */
-  --control-track: var(--color-border-strong); /** Track of an off switch. */
-  --control-thumb: var(--color-surface-default); /** Switch thumb and checkmark color. */
   --control-radius: var(--radius-badge); /** Checkbox corner radius. */
   --badge-radius: var(--radius-badge); /** Badge corner radius. */
-  --badge-neutral-background: var(--color-surface-sunken); /** Neutral badge fill. */
-  --badge-neutral-label: var(--color-text-secondary); /** Neutral badge label. */
   --badge-success-background: var(--color-status-success-subtle); /** Success badge fill. */
   --badge-success-label: var(--color-status-success); /** Success badge label. */
   --badge-warning-background: var(--color-status-warning-subtle); /** Warning badge fill. */
@@ -159,21 +130,62 @@ html[data-scheme="accessible-first"] {
   --badge-danger-label: var(--color-status-danger); /** Danger badge label. */
   --badge-info-background: var(--color-status-info-subtle); /** Info badge fill. */
   --badge-info-label: var(--color-status-info); /** Info badge label. */
-  --card-background: var(--color-surface-default); /** Card fill. */
-  --card-border: var(--color-border-default); /** Card border. */
   --card-radius: var(--radius-container); /** Card corner radius. */
   --card-shadow: var(--elevation-card); /** Card shadow. */
-  --table-header-background: var(--color-surface-sunken); /** Header row fill. */
-  --table-row-border: var(--color-border-default); /** Line between rows. */
   --table-row-selected: var(--color-surface-selected); /** Fill of a selected row. */
   --table-row-selected-edge: var(--color-border-selected); /** Edge that marks a selected row, beside its fill. */
   --tabs-indicator: var(--color-action-primary); /** Active tab indicator. */
-  --tabs-label: var(--color-text-secondary); /** Inactive tab label. */
-  --tabs-label-active: var(--color-text-primary); /** Active tab label. */
-  --overlay-background: var(--color-surface-raised); /** Fill of a dialog, menu or toast. */
   --overlay-radius: var(--radius-container); /** Corner radius of overlays. */
   --overlay-shadow: var(--elevation-overlay); /** Shadow of overlays. */
   --overlay-scrim: var(--color-surface-scrim); /** Color that dims the page behind a dialog. */
+  --color-surface-canvas: #F7F7F7; /** The page background behind everything. */
+  --color-surface-default: #FFFFFF; /** The base fill for content. */
+  --color-surface-raised: #FFFFFF; /** Fills that float above content. */
+  --color-surface-sunken: #EDEDED; /** A recessed fill, a step below content. */
+  --color-surface-inverse: #141414; /** A reversed fill for small, short-lived messages. */
+  --color-text-primary: #141414; /** Body text and headings. */
+  --color-text-secondary: #333333; /** Supporting text. */
+  --color-text-muted: #595959; /** The quietest text. */
+  --color-text-inverse: #FFFFFF; /** Text on an inverse fill. */
+  --color-text-on-action: #FFFFFF; /** Text and icons on the main action's fill. */
+  --color-text-on-danger: #FFFFFF; /** Text on the danger fill: its tone's main text. */
+  --color-border-default: #D6D6D6; /** Quiet edges and dividers. Decorative, so it has no contrast minimum. */
+  --color-border-strong: #595959; /** The edge of a control people must find. */
+  --color-action-secondary: #FFFFFF; /** The fill of other actions. */
+  --color-action-secondary-hover: #EDEDED; /** Other actions under the pointer. */
+  --color-category-5: #595959; /** Category 5: tells one item or series from another. It carries no meaning. */
+  --color-category-5-subtle: #EDEDED; /** Category 5: the fill of a tag. */
+  --color-disabled-text: #595959; /** Text and icons of a control that cannot be used right now. */
+  --color-disabled-surface: #EDEDED; /** The fill of a control that cannot be used right now. */
+  --color-disabled-border: #D6D6D6; /** The edge of a control that cannot be used right now. */
+  --button-primary-label: var(--color-text-on-action); /** Primary button label color. */
+  --button-secondary-background: var(--color-action-secondary); /** Secondary button fill. */
+  --button-secondary-background-hover: var(--color-action-secondary-hover); /** Secondary button fill on hover. */
+  --button-secondary-label: var(--color-text-primary); /** Secondary button label color. */
+  --button-secondary-border: var(--color-border-strong); /** Secondary button border. */
+  --button-danger-label: var(--color-text-on-danger); /** Danger button label color. */
+  --button-ghost-background-hover: var(--color-surface-sunken); /** Ghost button fill on hover. */
+  --button-disabled-background: var(--color-disabled-surface); /** Fill of a disabled button. */
+  --button-disabled-label: var(--color-disabled-text); /** Label of a disabled button. */
+  --button-disabled-border: var(--color-disabled-border); /** Border of a disabled secondary button. */
+  --input-background: var(--color-surface-default); /** Input fill. */
+  --input-border: var(--color-border-strong); /** Input border at rest. */
+  --input-text: var(--color-text-primary); /** Typed text color. */
+  --input-placeholder: var(--color-text-muted); /** Placeholder text color. */
+  --input-disabled-background: var(--color-disabled-surface); /** Fill of a disabled input. */
+  --input-disabled-border: var(--color-disabled-border); /** Border of a disabled input. */
+  --input-disabled-text: var(--color-disabled-text); /** Text in a disabled input. */
+  --control-track: var(--color-border-strong); /** Track of an off switch. */
+  --control-thumb: var(--color-surface-default); /** Switch thumb and checkmark color. */
+  --badge-neutral-background: var(--color-surface-sunken); /** Neutral badge fill. */
+  --badge-neutral-label: var(--color-text-secondary); /** Neutral badge label. */
+  --card-background: var(--color-surface-default); /** Card fill. */
+  --card-border: var(--color-border-default); /** Card border. */
+  --table-header-background: var(--color-surface-sunken); /** Header row fill. */
+  --table-row-border: var(--color-border-default); /** Line between rows. */
+  --tabs-label: var(--color-text-secondary); /** Inactive tab label. */
+  --tabs-label-active: var(--color-text-primary); /** Active tab label. */
+  --overlay-background: var(--color-surface-raised); /** Fill of a dialog, menu or toast. */
   --tooltip-background: var(--color-surface-inverse); /** Tooltip fill. */
   --tooltip-label: var(--color-text-inverse); /** Tooltip text. */
 }
@@ -219,30 +231,27 @@ html[data-scheme="accessible-first"][data-theme="dark"] {
   --motion-duration-feedback: 200ms; /** Feedback speed: moderate. Hover, press and small state changes. */
   --motion-duration-panels: 200ms; /** Panel speed: moderate. Dialogs, sheets, popovers and menus opening and closing. One speed: panels open at the feedback speed (motion.count). */
   --motion-easing-standard: cubic-bezier(0.2, 0, 0, 1); /** Feedback easing. */
-  --color-surface-canvas: #0A0A0A; /** The page background behind everything. */
-  --color-surface-default: #141414; /** The base fill for content. */
-  --color-surface-raised: #222222; /** Fills that float above content. */
-  --color-surface-sunken: #222222; /** A recessed fill, a step below content. */
+  --color-neutral-0: #0A0A0A;
+  --color-neutral-50: #141414;
+  --color-neutral-100: #222222;
+  --color-neutral-200: #333333;
+  --color-neutral-300: #595959;
+  --color-neutral-400: #767676;
+  --color-neutral-500: #949494;
+  --color-neutral-600: #B4B4B4;
+  --color-neutral-700: #D6D6D6;
+  --color-neutral-800: #EDEDED;
+  --color-neutral-900: #F7F7F7;
+  --color-neutral-950: #FFFFFF;
   --color-surface-selected: #062C6E; /** The fill of a selected or current item. */
-  --color-surface-inverse: #F7F7F7; /** A reversed fill for small, short-lived messages. */
   --color-surface-scrim: #000000B3; /** The see-through layer behind a modal. */
-  --color-text-primary: #F7F7F7; /** Body text and headings. */
-  --color-text-secondary: #B4B4B4; /** Supporting text. */
-  --color-text-muted: #949494; /** The quietest text. */
-  --color-text-inverse: #141414; /** Text on an inverse fill. */
-  --color-text-on-action: #141414; /** Text and icons on the main action's fill. */
   --color-text-link: #8AB4F8; /** Links in running text. */
-  --color-text-on-danger: #141414; /** Text on the danger fill: its tone's main text. */
   --color-text-on-light: #141414; /** Text on any fill whose tone is light, in either mode: the light mode's body text. */
   --color-text-on-dark: #FFFFFF; /** Text on any fill whose tone is dark, in either mode: white. */
-  --color-border-default: #222222; /** Quiet edges and dividers. Decorative, so it has no contrast minimum. */
-  --color-border-strong: #949494; /** The edge of a control people must find. */
   --color-border-focus: #8AB4F8; /** The focus ring. */
   --color-border-selected: #8AB4F8; /** The edge that marks a selected item, beside its fill, so selection is never colour alone. */
   --color-action-primary: #8AB4F8; /** The one main action in a view. */
   --color-action-primary-hover: #E1ECFF; /** The main action under the pointer. */
-  --color-action-secondary: #141414; /** The fill of other actions. */
-  --color-action-secondary-hover: #222222; /** Other actions under the pointer. */
   --color-action-danger: #F28B8B; /** The fill of a destructive commit: the confirm of a delete. */
   --color-action-danger-hover: #F28B8B; /** The danger fill on hover. */
   --color-status-info: #7FCFC6; /** Neutral news: something changed and no action is needed. The lowest level of the urgency order. */
@@ -261,11 +270,6 @@ html[data-scheme="accessible-first"][data-theme="dark"] {
   --color-category-3-subtle: #123322; /** Category 3: the fill of a tag. */
   --color-category-4: #F2B84B; /** Category 4: tells one item or series from another. It carries no meaning. */
   --color-category-4-subtle: #3A2A05; /** Category 4: the fill of a tag. */
-  --color-category-5: #D6D6D6; /** Category 5: tells one item or series from another. It carries no meaning. */
-  --color-category-5-subtle: #222222; /** Category 5: the fill of a tag. */
-  --color-disabled-text: #949494; /** Text and icons of a control that cannot be used right now. */
-  --color-disabled-surface: #222222; /** The fill of a control that cannot be used right now. */
-  --color-disabled-border: #333333; /** The edge of a control that cannot be used right now. */
   --radius-control: 0.375rem; /** Corner of buttons and inputs. */
   --radius-badge: 0.25rem; /** Corner of badges and checkboxes. */
   --radius-container: 0.5rem; /** Corner of cards, menus and dialogs. */
@@ -298,37 +302,16 @@ html[data-scheme="accessible-first"][data-theme="dark"] {
   --transition-panels-duration: var(--motion-duration-panels); /** Duration of panels opening and closing: dialogs, sheets, popovers, menus. */
   --button-primary-background: var(--color-action-primary); /** Primary button fill. */
   --button-primary-background-hover: var(--color-action-primary-hover); /** Primary button fill on hover. */
-  --button-primary-label: var(--color-text-on-action); /** Primary button label color. */
-  --button-secondary-background: var(--color-action-secondary); /** Secondary button fill. */
-  --button-secondary-background-hover: var(--color-action-secondary-hover); /** Secondary button fill on hover. */
-  --button-secondary-label: var(--color-text-primary); /** Secondary button label color. */
-  --button-secondary-border: var(--color-border-strong); /** Secondary button border. */
   --button-danger-background: var(--color-action-danger); /** Danger button fill. */
   --button-danger-background-hover: var(--color-action-danger-hover); /** Danger button fill on hover. */
-  --button-danger-label: var(--color-text-on-danger); /** Danger button label color. */
-  --button-ghost-background-hover: var(--color-surface-sunken); /** Ghost button fill on hover. */
   --button-ghost-label: var(--color-text-link); /** Ghost button label color. */
   --button-radius: var(--radius-control); /** Button corner radius. */
   --button-focus-ring: var(--color-border-focus); /** Focus ring color on any button. */
-  --button-disabled-background: var(--color-disabled-surface); /** Fill of a disabled button. */
-  --button-disabled-label: var(--color-disabled-text); /** Label of a disabled button. */
-  --button-disabled-border: var(--color-disabled-border); /** Border of a disabled secondary button. */
-  --input-background: var(--color-surface-default); /** Input fill. */
-  --input-border: var(--color-border-strong); /** Input border at rest. */
   --input-border-focus: var(--color-border-focus); /** Input border when focused. */
-  --input-text: var(--color-text-primary); /** Typed text color. */
-  --input-placeholder: var(--color-text-muted); /** Placeholder text color. */
   --input-radius: var(--radius-control); /** Input corner radius. */
-  --input-disabled-background: var(--color-disabled-surface); /** Fill of a disabled input. */
-  --input-disabled-border: var(--color-disabled-border); /** Border of a disabled input. */
-  --input-disabled-text: var(--color-disabled-text); /** Text in a disabled input. */
   --control-checked: var(--color-action-primary); /** Fill of a checked checkbox or an on switch. */
-  --control-track: var(--color-border-strong); /** Track of an off switch. */
-  --control-thumb: var(--color-surface-default); /** Switch thumb and checkmark color. */
   --control-radius: var(--radius-badge); /** Checkbox corner radius. */
   --badge-radius: var(--radius-badge); /** Badge corner radius. */
-  --badge-neutral-background: var(--color-surface-sunken); /** Neutral badge fill. */
-  --badge-neutral-label: var(--color-text-secondary); /** Neutral badge label. */
   --badge-success-background: var(--color-status-success-subtle); /** Success badge fill. */
   --badge-success-label: var(--color-status-success); /** Success badge label. */
   --badge-warning-background: var(--color-status-warning-subtle); /** Warning badge fill. */
@@ -337,21 +320,62 @@ html[data-scheme="accessible-first"][data-theme="dark"] {
   --badge-danger-label: var(--color-status-danger); /** Danger badge label. */
   --badge-info-background: var(--color-status-info-subtle); /** Info badge fill. */
   --badge-info-label: var(--color-status-info); /** Info badge label. */
-  --card-background: var(--color-surface-default); /** Card fill. */
-  --card-border: var(--color-border-default); /** Card border. */
   --card-radius: var(--radius-container); /** Card corner radius. */
   --card-shadow: var(--elevation-card); /** Card shadow. */
-  --table-header-background: var(--color-surface-sunken); /** Header row fill. */
-  --table-row-border: var(--color-border-default); /** Line between rows. */
   --table-row-selected: var(--color-surface-selected); /** Fill of a selected row. */
   --table-row-selected-edge: var(--color-border-selected); /** Edge that marks a selected row, beside its fill. */
   --tabs-indicator: var(--color-action-primary); /** Active tab indicator. */
-  --tabs-label: var(--color-text-secondary); /** Inactive tab label. */
-  --tabs-label-active: var(--color-text-primary); /** Active tab label. */
-  --overlay-background: var(--color-surface-raised); /** Fill of a dialog, menu or toast. */
   --overlay-radius: var(--radius-container); /** Corner radius of overlays. */
   --overlay-shadow: var(--elevation-overlay); /** Shadow of overlays. */
   --overlay-scrim: var(--color-surface-scrim); /** Color that dims the page behind a dialog. */
+  --color-surface-canvas: #0A0A0A; /** The page background behind everything. */
+  --color-surface-default: #141414; /** The base fill for content. */
+  --color-surface-raised: #222222; /** Fills that float above content. */
+  --color-surface-sunken: #222222; /** A recessed fill, a step below content. */
+  --color-surface-inverse: #F7F7F7; /** A reversed fill for small, short-lived messages. */
+  --color-text-primary: #F7F7F7; /** Body text and headings. */
+  --color-text-secondary: #B4B4B4; /** Supporting text. */
+  --color-text-muted: #949494; /** The quietest text. */
+  --color-text-inverse: #141414; /** Text on an inverse fill. */
+  --color-text-on-action: #141414; /** Text and icons on the main action's fill. */
+  --color-text-on-danger: #141414; /** Text on the danger fill: its tone's main text. */
+  --color-border-default: #222222; /** Quiet edges and dividers. Decorative, so it has no contrast minimum. */
+  --color-border-strong: #949494; /** The edge of a control people must find. */
+  --color-action-secondary: #141414; /** The fill of other actions. */
+  --color-action-secondary-hover: #222222; /** Other actions under the pointer. */
+  --color-category-5: #D6D6D6; /** Category 5: tells one item or series from another. It carries no meaning. */
+  --color-category-5-subtle: #222222; /** Category 5: the fill of a tag. */
+  --color-disabled-text: #949494; /** Text and icons of a control that cannot be used right now. */
+  --color-disabled-surface: #222222; /** The fill of a control that cannot be used right now. */
+  --color-disabled-border: #333333; /** The edge of a control that cannot be used right now. */
+  --button-primary-label: var(--color-text-on-action); /** Primary button label color. */
+  --button-secondary-background: var(--color-action-secondary); /** Secondary button fill. */
+  --button-secondary-background-hover: var(--color-action-secondary-hover); /** Secondary button fill on hover. */
+  --button-secondary-label: var(--color-text-primary); /** Secondary button label color. */
+  --button-secondary-border: var(--color-border-strong); /** Secondary button border. */
+  --button-danger-label: var(--color-text-on-danger); /** Danger button label color. */
+  --button-ghost-background-hover: var(--color-surface-sunken); /** Ghost button fill on hover. */
+  --button-disabled-background: var(--color-disabled-surface); /** Fill of a disabled button. */
+  --button-disabled-label: var(--color-disabled-text); /** Label of a disabled button. */
+  --button-disabled-border: var(--color-disabled-border); /** Border of a disabled secondary button. */
+  --input-background: var(--color-surface-default); /** Input fill. */
+  --input-border: var(--color-border-strong); /** Input border at rest. */
+  --input-text: var(--color-text-primary); /** Typed text color. */
+  --input-placeholder: var(--color-text-muted); /** Placeholder text color. */
+  --input-disabled-background: var(--color-disabled-surface); /** Fill of a disabled input. */
+  --input-disabled-border: var(--color-disabled-border); /** Border of a disabled input. */
+  --input-disabled-text: var(--color-disabled-text); /** Text in a disabled input. */
+  --control-track: var(--color-border-strong); /** Track of an off switch. */
+  --control-thumb: var(--color-surface-default); /** Switch thumb and checkmark color. */
+  --badge-neutral-background: var(--color-surface-sunken); /** Neutral badge fill. */
+  --badge-neutral-label: var(--color-text-secondary); /** Neutral badge label. */
+  --card-background: var(--color-surface-default); /** Card fill. */
+  --card-border: var(--color-border-default); /** Card border. */
+  --table-header-background: var(--color-surface-sunken); /** Header row fill. */
+  --table-row-border: var(--color-border-default); /** Line between rows. */
+  --tabs-label: var(--color-text-secondary); /** Inactive tab label. */
+  --tabs-label-active: var(--color-text-primary); /** Active tab label. */
+  --overlay-background: var(--color-surface-raised); /** Fill of a dialog, menu or toast. */
   --tooltip-background: var(--color-surface-inverse); /** Tooltip fill. */
   --tooltip-label: var(--color-text-inverse); /** Tooltip text. */
 }

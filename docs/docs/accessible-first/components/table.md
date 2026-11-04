@@ -69,10 +69,10 @@ The CSS variable is the key with `/` replaced by `-` and the base `@` dropped. E
 
 | Key | What it controls | Points to, light | Points to, dark |
 | --- | --- | --- | --- |
-| `table/header-background` | Header row fill. | `color.surface.sunken` → `accessible-first.theme.light.color.surface.sunken` → `color.gray.light.100` | `color.surface.sunken` → `accessible-first.theme.dark.color.surface.sunken` → `color.gray.dark.100` |
+| `table/header-background` | Header row fill. | `color.surface.sunken` → `accessible-first.theme.light.color.surface.sunken` → `color.neutral.100` → `accessible-first.theme.light.color.neutral.100` → `color.gray.light.100` | `color.surface.sunken` → `accessible-first.theme.dark.color.surface.sunken` → `color.neutral.100` → `accessible-first.theme.dark.color.neutral.100` → `color.gray.dark.100` |
 | `table/row-height` | Height of one data row. | `size.row` → `size.56` | same |
 | `table/cell-padding-x` | Horizontal padding inside a cell. | `space.inset.cell-x` → `space.16` | same |
-| `table/row-border` | Line between rows. | `color.border.default` → `accessible-first.theme.light.color.border.default` → `color.gray.light.200` | `color.border.default` → `accessible-first.theme.dark.color.border.default` → `color.gray.dark.100` |
+| `table/row-border` | Line between rows. | `color.border.default` → `accessible-first.theme.light.color.border.default` → `color.neutral.200` → `accessible-first.theme.light.color.neutral.200` → `color.gray.light.200` | `color.border.default` → `accessible-first.theme.dark.color.border.default` → `color.neutral.100` → `accessible-first.theme.dark.color.neutral.100` → `color.gray.dark.100` |
 | `table/row-selected` | Fill of a selected row. | `color.surface.selected` → `accessible-first.theme.light.color.surface.selected` → `color.blue.light.100` | `color.surface.selected` → `accessible-first.theme.dark.color.surface.selected` → `color.blue.dark.100` |
 | `table/row-selected-edge` | Edge that marks a selected row, beside its fill. | `color.border.selected` → `accessible-first.theme.light.color.border.selected` → `color.blue.light.600` | `color.border.selected` → `accessible-first.theme.dark.color.border.selected` → `color.blue.dark.700` |
 | `table/font-size` | Cell text size. | `type.data.font-size` → `font.size.19` | same |

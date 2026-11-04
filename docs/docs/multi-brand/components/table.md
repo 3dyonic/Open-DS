@@ -73,10 +73,10 @@ The CSS variable is the key with `/` replaced by `-` and the base `@` dropped. E
 
 | Key | What it controls | Points to, aster-light | Points to, aster-dark |
 | --- | --- | --- | --- |
-| `table/header-background` | Header row fill. | `color.surface.sunken` → `aster.theme.light.color.surface.sunken` → `color.slate.light.100` | `color.surface.sunken` → `aster.theme.dark.color.surface.sunken` → `color.slate.dark.100` |
+| `table/header-background` | Header row fill. | `color.surface.sunken` → `aster.theme.light.color.surface.sunken` → `color.neutral.100` → `aster.theme.light.color.neutral.100` → `color.slate-deep.light.100` | `color.surface.sunken` → `aster.theme.dark.color.surface.sunken` → `color.neutral.100` → `aster.theme.dark.color.neutral.100` → `color.slate-deep.dark.100` |
 | `table/row-height` | Height of one data row. | `size.row` → `size.48` | same |
 | `table/cell-padding-x` | Horizontal padding inside a cell. | `space.inset.cell-x` → `space.16` | same |
-| `table/row-border` | Line between rows. | `color.border.default` → `aster.theme.light.color.border.default` → `color.slate.light.200` | `color.border.default` → `aster.theme.dark.color.border.default` → `color.slate.dark.100` |
+| `table/row-border` | Line between rows. | `color.border.default` → `aster.theme.light.color.border.default` → `color.neutral.200` → `aster.theme.light.color.neutral.200` → `color.slate-deep.light.200` | `color.border.default` → `aster.theme.dark.color.border.default` → `color.neutral.100` → `aster.theme.dark.color.neutral.100` → `color.slate-deep.dark.100` |
 | `table/row-selected` | Fill of a selected row. | `color.surface.selected` → `aster.theme.light.color.surface.selected` → `color.teal.light.100` | `color.surface.selected` → `aster.theme.dark.color.surface.selected` → `color.teal.dark.100` |
 | `table/row-selected-edge` | Edge that marks a selected row, beside its fill. | `color.border.selected` → `aster.theme.light.color.border.selected` → `color.teal.light.600` | `color.border.selected` → `aster.theme.dark.color.border.selected` → `color.teal.dark.700` |
 | `table/font-size` | Cell text size. | `type.data.font-size` → `font.size.16` | same |
@@ -89,10 +89,10 @@ The CSS variable is the key with `/` replaced by `-` and the base `@` dropped. E
 
 | Key | What it controls | Points to, birch-light | Points to, birch-dark |
 | --- | --- | --- | --- |
-| `table/header-background` | Header row fill. | `color.surface.sunken` → `birch.theme.light.color.surface.sunken` → `color.slate.light.100` | `color.surface.sunken` → `birch.theme.dark.color.surface.sunken` → `color.slate.dark.100` |
+| `table/header-background` | Header row fill. | `color.surface.sunken` → `birch.theme.light.color.surface.sunken` → `color.neutral.100` → `birch.theme.light.color.neutral.100` → `color.slate-deep.light.100` | `color.surface.sunken` → `birch.theme.dark.color.surface.sunken` → `color.neutral.100` → `birch.theme.dark.color.neutral.100` → `color.slate-deep.dark.100` |
 | `table/row-height` | Height of one data row. | `size.row` → `size.48` | same |
 | `table/cell-padding-x` | Horizontal padding inside a cell. | `space.inset.cell-x` → `space.16` | same |
-| `table/row-border` | Line between rows. | `color.border.default` → `birch.theme.light.color.border.default` → `color.slate.light.200` | `color.border.default` → `birch.theme.dark.color.border.default` → `color.slate.dark.100` |
+| `table/row-border` | Line between rows. | `color.border.default` → `birch.theme.light.color.border.default` → `color.neutral.200` → `birch.theme.light.color.neutral.200` → `color.slate-deep.light.200` | `color.border.default` → `birch.theme.dark.color.border.default` → `color.neutral.100` → `birch.theme.dark.color.neutral.100` → `color.slate-deep.dark.100` |
 | `table/row-selected` | Fill of a selected row. | `color.surface.selected` → `birch.theme.light.color.surface.selected` → `color.purple.light.100` | `color.surface.selected` → `birch.theme.dark.color.surface.selected` → `color.purple.dark.100` |
 | `table/row-selected-edge` | Edge that marks a selected row, beside its fill. | `color.border.selected` → `birch.theme.light.color.border.selected` → `color.purple.light.600` | `color.border.selected` → `birch.theme.dark.color.border.selected` → `color.purple.dark.700` |
 | `table/font-size` | Cell text size. | `type.data.font-size` → `font.size.16` | same |
@@ -105,10 +105,10 @@ The CSS variable is the key with `/` replaced by `-` and the base `@` dropped. E
 
 | Key | What it controls | Points to, coral-light | Points to, coral-dark |
 | --- | --- | --- | --- |
-| `table/header-background` | Header row fill. | `color.surface.sunken` → `coral.theme.light.color.surface.sunken` → `color.slate.light.100` | `color.surface.sunken` → `coral.theme.dark.color.surface.sunken` → `color.slate.dark.100` |
+| `table/header-background` | Header row fill. | `color.surface.sunken` → `coral.theme.light.color.surface.sunken` → `color.neutral.100` → `coral.theme.light.color.neutral.100` → `color.slate-deep.light.100` | `color.surface.sunken` → `coral.theme.dark.color.surface.sunken` → `color.neutral.100` → `coral.theme.dark.color.neutral.100` → `color.slate-deep.dark.100` |
 | `table/row-height` | Height of one data row. | `size.row` → `size.48` | same |
 | `table/cell-padding-x` | Horizontal padding inside a cell. | `space.inset.cell-x` → `space.16` | same |
-| `table/row-border` | Line between rows. | `color.border.default` → `coral.theme.light.color.border.default` → `color.slate.light.200` | `color.border.default` → `coral.theme.dark.color.border.default` → `color.slate.dark.100` |
+| `table/row-border` | Line between rows. | `color.border.default` → `coral.theme.light.color.border.default` → `color.neutral.200` → `coral.theme.light.color.neutral.200` → `color.slate-deep.light.200` | `color.border.default` → `coral.theme.dark.color.border.default` → `color.neutral.100` → `coral.theme.dark.color.neutral.100` → `color.slate-deep.dark.100` |
 | `table/row-selected` | Fill of a selected row. | `color.surface.selected` → `coral.theme.light.color.surface.selected` → `color.orange.light.100` | `color.surface.selected` → `coral.theme.dark.color.surface.selected` → `color.orange.dark.100` |
 | `table/row-selected-edge` | Edge that marks a selected row, beside its fill. | `color.border.selected` → `coral.theme.light.color.border.selected` → `color.orange.light.600` | `color.border.selected` → `coral.theme.dark.color.border.selected` → `color.orange.dark.700` |
 | `table/font-size` | Cell text size. | `type.data.font-size` → `font.size.16` | same |

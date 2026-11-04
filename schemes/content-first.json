@@ -2609,10 +2609,60 @@
           },
           "light": {
             "color": {
+              "neutral": {
+                "0": {
+                  "$type": "color",
+                  "$value": "{color.stone.light.0}"
+                },
+                "50": {
+                  "$type": "color",
+                  "$value": "{color.stone.light.50}"
+                },
+                "100": {
+                  "$type": "color",
+                  "$value": "{color.stone.light.100}"
+                },
+                "200": {
+                  "$type": "color",
+                  "$value": "{color.stone.light.200}"
+                },
+                "300": {
+                  "$type": "color",
+                  "$value": "{color.stone.light.300}"
+                },
+                "400": {
+                  "$type": "color",
+                  "$value": "{color.stone.light.400}"
+                },
+                "500": {
+                  "$type": "color",
+                  "$value": "{color.stone.light.500}"
+                },
+                "600": {
+                  "$type": "color",
+                  "$value": "{color.stone.light.600}"
+                },
+                "700": {
+                  "$type": "color",
+                  "$value": "{color.stone.light.700}"
+                },
+                "800": {
+                  "$type": "color",
+                  "$value": "{color.stone.light.800}"
+                },
+                "900": {
+                  "$type": "color",
+                  "$value": "{color.stone.light.900}"
+                },
+                "950": {
+                  "$type": "color",
+                  "$value": "{color.stone.light.950}"
+                }
+              },
               "surface": {
                 "canvas": {
                   "$type": "color",
-                  "$value": "{color.stone.light.50}",
+                  "$value": "{color.neutral.50}",
                   "$extensions": {
                     "open-ds": {
                       "tone": "light"
@@ -2621,7 +2671,7 @@
                 },
                 "default": {
                   "$type": "color",
-                  "$value": "{color.stone.light.0}",
+                  "$value": "{color.neutral.0}",
                   "$extensions": {
                     "open-ds": {
                       "tone": "light"
@@ -2630,7 +2680,7 @@
                 },
                 "raised": {
                   "$type": "color",
-                  "$value": "{color.stone.light.0}",
+                  "$value": "{color.neutral.0}",
                   "$extensions": {
                     "open-ds": {
                       "tone": "light"
@@ -2639,7 +2689,7 @@
                 },
                 "sunken": {
                   "$type": "color",
-                  "$value": "{color.stone.light.100}",
+                  "$value": "{color.neutral.100}",
                   "$extensions": {
                     "open-ds": {
                       "tone": "light"
@@ -2657,7 +2707,7 @@
                 },
                 "inverse": {
                   "$type": "color",
-                  "$value": "{color.stone.light.900}",
+                  "$value": "{color.neutral.900}",
                   "$extensions": {
                     "open-ds": {
                       "tone": "dark"
@@ -2672,23 +2722,23 @@
               "text": {
                 "primary": {
                   "$type": "color",
-                  "$value": "{color.stone.light.900}"
+                  "$value": "{color.neutral.900}"
                 },
                 "secondary": {
                   "$type": "color",
-                  "$value": "{color.stone.light.700}"
+                  "$value": "{color.neutral.700}"
                 },
                 "muted": {
                   "$type": "color",
-                  "$value": "{color.stone.light.600}"
+                  "$value": "{color.neutral.600}"
                 },
                 "inverse": {
                   "$type": "color",
-                  "$value": "{color.stone.light.0}"
+                  "$value": "{color.text.on-dark}"
                 },
                 "on-action": {
                   "$type": "color",
-                  "$value": "{color.stone.light.0}"
+                  "$value": "{color.text.on-dark}"
                 },
                 "link": {
                   "$type": "color",
@@ -2696,17 +2746,17 @@
                 },
                 "on-danger": {
                   "$type": "color",
-                  "$value": "{color.stone.light.0}"
+                  "$value": "{color.text.on-dark}"
                 }
               },
               "border": {
                 "default": {
                   "$type": "color",
-                  "$value": "{color.stone.light.200}"
+                  "$value": "{color.neutral.200}"
                 },
                 "strong": {
                   "$type": "color",
-                  "$value": "{color.stone.light.500}"
+                  "$value": "{color.neutral.500}"
                 },
                 "focus": {
                   "$type": "color",
@@ -2741,7 +2791,7 @@
                 "secondary": {
                   "@": {
                     "$type": "color",
-                    "$value": "{color.stone.light.0}",
+                    "$value": "{color.neutral.0}",
                     "$extensions": {
                       "open-ds": {
                         "tone": "light"
@@ -2750,7 +2800,7 @@
                   },
                   "hover": {
                     "$type": "color",
-                    "$value": "{color.stone.light.100}",
+                    "$value": "{color.neutral.100}",
                     "$extensions": {
                       "open-ds": {
                         "tone": "light"
@@ -2886,26 +2936,26 @@
                 "5": {
                   "@": {
                     "$type": "color",
-                    "$value": "{color.stone.light.500}"
+                    "$value": "{color.neutral.500}"
                   },
                   "subtle": {
                     "$type": "color",
-                    "$value": "{color.stone.light.100}"
+                    "$value": "{color.neutral.100}"
                   }
                 }
               },
               "disabled": {
                 "text": {
                   "$type": "color",
-                  "$value": "{color.stone.light.500}"
+                  "$value": "{color.neutral.500}"
                 },
                 "surface": {
                   "$type": "color",
-                  "$value": "{color.stone.light.100}"
+                  "$value": "{color.neutral.100}"
                 },
                 "border": {
                   "$type": "color",
-                  "$value": "{color.stone.light.200}"
+                  "$value": "{color.neutral.200}"
                 }
               }
             },
@@ -2922,10 +2972,60 @@
           },
           "dark": {
             "color": {
+              "neutral": {
+                "0": {
+                  "$type": "color",
+                  "$value": "{color.stone.dark.0}"
+                },
+                "50": {
+                  "$type": "color",
+                  "$value": "{color.stone.dark.50}"
+                },
+                "100": {
+                  "$type": "color",
+                  "$value": "{color.stone.dark.100}"
+                },
+                "200": {
+                  "$type": "color",
+                  "$value": "{color.stone.dark.200}"
+                },
+                "300": {
+                  "$type": "color",
+                  "$value": "{color.stone.dark.300}"
+                },
+                "400": {
+                  "$type": "color",
+                  "$value": "{color.stone.dark.400}"
+                },
+                "500": {
+                  "$type": "color",
+                  "$value": "{color.stone.dark.500}"
+                },
+                "600": {
+                  "$type": "color",
+                  "$value": "{color.stone.dark.600}"
+                },
+                "700": {
+                  "$type": "color",
+                  "$value": "{color.stone.dark.700}"
+                },
+                "800": {
+                  "$type": "color",
+                  "$value": "{color.stone.dark.800}"
+                },
+                "900": {
+                  "$type": "color",
+                  "$value": "{color.stone.dark.900}"
+                },
+                "950": {
+                  "$type": "color",
+                  "$value": "{color.stone.dark.950}"
+                }
+              },
               "surface": {
                 "canvas": {
                   "$type": "color",
-                  "$value": "{color.stone.dark.0}",
+                  "$value": "{color.neutral.0}",
                   "$extensions": {
                     "open-ds": {
                       "tone": "dark"
@@ -2934,7 +3034,7 @@
                 },
                 "default": {
                   "$type": "color",
-                  "$value": "{color.stone.dark.50}",
+                  "$value": "{color.neutral.50}",
                   "$extensions": {
                     "open-ds": {
                       "tone": "dark"
@@ -2943,7 +3043,7 @@
                 },
                 "raised": {
                   "$type": "color",
-                  "$value": "{color.stone.dark.100}",
+                  "$value": "{color.neutral.100}",
                   "$extensions": {
                     "open-ds": {
                       "tone": "dark"
@@ -2952,7 +3052,7 @@
                 },
                 "sunken": {
                   "$type": "color",
-                  "$value": "{color.stone.dark.100}",
+                  "$value": "{color.neutral.100}",
                   "$extensions": {
                     "open-ds": {
                       "tone": "dark"
@@ -2970,7 +3070,7 @@
                 },
                 "inverse": {
                   "$type": "color",
-                  "$value": "{color.stone.dark.900}",
+                  "$value": "{color.neutral.900}",
                   "$extensions": {
                     "open-ds": {
                       "tone": "light"
@@ -2985,23 +3085,23 @@
               "text": {
                 "primary": {
                   "$type": "color",
-                  "$value": "{color.stone.dark.900}"
+                  "$value": "{color.neutral.900}"
                 },
                 "secondary": {
                   "$type": "color",
-                  "$value": "{color.stone.dark.500}"
+                  "$value": "{color.neutral.500}"
                 },
                 "muted": {
                   "$type": "color",
-                  "$value": "{color.stone.dark.400}"
+                  "$value": "{color.neutral.400}"
                 },
                 "inverse": {
                   "$type": "color",
-                  "$value": "{color.stone.light.900}"
+                  "$value": "{color.text.on-light}"
                 },
                 "on-action": {
                   "$type": "color",
-                  "$value": "{color.stone.light.900}"
+                  "$value": "{color.text.on-light}"
                 },
                 "link": {
                   "$type": "color",
@@ -3009,17 +3109,17 @@
                 },
                 "on-danger": {
                   "$type": "color",
-                  "$value": "{color.stone.light.900}"
+                  "$value": "{color.text.on-light}"
                 }
               },
               "border": {
                 "default": {
                   "$type": "color",
-                  "$value": "{color.stone.dark.100}"
+                  "$value": "{color.neutral.100}"
                 },
                 "strong": {
                   "$type": "color",
-                  "$value": "{color.stone.dark.400}"
+                  "$value": "{color.neutral.400}"
                 },
                 "focus": {
                   "$type": "color",
@@ -3054,7 +3154,7 @@
                 "secondary": {
                   "@": {
                     "$type": "color",
-                    "$value": "{color.stone.dark.50}",
+                    "$value": "{color.neutral.50}",
                     "$extensions": {
                       "open-ds": {
                         "tone": "dark"
@@ -3063,7 +3163,7 @@
                   },
                   "hover": {
                     "$type": "color",
-                    "$value": "{color.stone.dark.100}",
+                    "$value": "{color.neutral.100}",
                     "$extensions": {
                       "open-ds": {
                         "tone": "dark"
@@ -3199,26 +3299,26 @@
                 "5": {
                   "@": {
                     "$type": "color",
-                    "$value": "{color.stone.dark.700}"
+                    "$value": "{color.neutral.700}"
                   },
                   "subtle": {
                     "$type": "color",
-                    "$value": "{color.stone.dark.100}"
+                    "$value": "{color.neutral.100}"
                   }
                 }
               },
               "disabled": {
                 "text": {
                   "$type": "color",
-                  "$value": "{color.stone.dark.500}"
+                  "$value": "{color.neutral.500}"
                 },
                 "surface": {
                   "$type": "color",
-                  "$value": "{color.stone.dark.100}"
+                  "$value": "{color.neutral.100}"
                 },
                 "border": {
                   "$type": "color",
-                  "$value": "{color.stone.dark.200}"
+                  "$value": "{color.neutral.200}"
                 }
               }
             },
@@ -3232,6 +3332,15 @@
                 "$value": "{shadow.overlay-dark}"
               }
             }
+          },
+          "neutral": {
+            "gray": "stone",
+            "temperature": "warm",
+            "why": "A warm gray is calm, like paper, for long reading.",
+            "because": [
+              "color.values",
+              "color.definition"
+            ]
           }
         }
       }
@@ -3505,6 +3614,57 @@
         }
       },
       "color": {
+        "neutral": {
+          "0": {
+            "$type": "color",
+            "$value": "{theme.color.neutral.0}"
+          },
+          "50": {
+            "$type": "color",
+            "$value": "{theme.color.neutral.50}"
+          },
+          "100": {
+            "$type": "color",
+            "$value": "{theme.color.neutral.100}"
+          },
+          "200": {
+            "$type": "color",
+            "$value": "{theme.color.neutral.200}"
+          },
+          "300": {
+            "$type": "color",
+            "$value": "{theme.color.neutral.300}"
+          },
+          "400": {
+            "$type": "color",
+            "$value": "{theme.color.neutral.400}"
+          },
+          "500": {
+            "$type": "color",
+            "$value": "{theme.color.neutral.500}"
+          },
+          "600": {
+            "$type": "color",
+            "$value": "{theme.color.neutral.600}"
+          },
+          "700": {
+            "$type": "color",
+            "$value": "{theme.color.neutral.700}"
+          },
+          "800": {
+            "$type": "color",
+            "$value": "{theme.color.neutral.800}"
+          },
+          "900": {
+            "$type": "color",
+            "$value": "{theme.color.neutral.900}"
+          },
+          "950": {
+            "$type": "color",
+            "$value": "{theme.color.neutral.950}"
+          },
+          "$description": "The neutral scale: the scheme's gray, step by step. Surfaces, borders and text read it, never a gray directly."
+        },
         "surface": {
           "canvas": {
             "$type": "color",

@@ -11,6 +11,18 @@ description: "Accessible first: How color carries action, state and brand."
 How color carries action, state and brand.
 
 <div class="ods-specimen">
+<span class="ods-item"><span class="ods-swatch" style="background:var(--color-neutral-0)"></span><span class="ods-label">color.neutral.0</span></span>
+<span class="ods-item"><span class="ods-swatch" style="background:var(--color-neutral-50)"></span><span class="ods-label">color.neutral.50</span></span>
+<span class="ods-item"><span class="ods-swatch" style="background:var(--color-neutral-100)"></span><span class="ods-label">color.neutral.100</span></span>
+<span class="ods-item"><span class="ods-swatch" style="background:var(--color-neutral-200)"></span><span class="ods-label">color.neutral.200</span></span>
+<span class="ods-item"><span class="ods-swatch" style="background:var(--color-neutral-300)"></span><span class="ods-label">color.neutral.300</span></span>
+<span class="ods-item"><span class="ods-swatch" style="background:var(--color-neutral-400)"></span><span class="ods-label">color.neutral.400</span></span>
+<span class="ods-item"><span class="ods-swatch" style="background:var(--color-neutral-500)"></span><span class="ods-label">color.neutral.500</span></span>
+<span class="ods-item"><span class="ods-swatch" style="background:var(--color-neutral-600)"></span><span class="ods-label">color.neutral.600</span></span>
+<span class="ods-item"><span class="ods-swatch" style="background:var(--color-neutral-700)"></span><span class="ods-label">color.neutral.700</span></span>
+<span class="ods-item"><span class="ods-swatch" style="background:var(--color-neutral-800)"></span><span class="ods-label">color.neutral.800</span></span>
+<span class="ods-item"><span class="ods-swatch" style="background:var(--color-neutral-900)"></span><span class="ods-label">color.neutral.900</span></span>
+<span class="ods-item"><span class="ods-swatch" style="background:var(--color-neutral-950)"></span><span class="ods-label">color.neutral.950</span></span>
 <span class="ods-item"><span class="ods-swatch" style="background:var(--color-surface-canvas)"></span><span class="ods-label">color.surface.canvas</span></span>
 <span class="ods-item"><span class="ods-swatch" style="background:var(--color-surface-default)"></span><span class="ods-label">color.surface.default</span></span>
 <span class="ods-item"><span class="ods-swatch" style="background:var(--color-surface-raised)"></span><span class="ods-label">color.surface.raised</span></span>
@@ -39,18 +51,6 @@ How color carries action, state and brand.
 <span class="ods-item"><span class="ods-swatch" style="background:var(--color-action-danger-hover)"></span><span class="ods-label">color.action.danger.hover</span></span>
 <span class="ods-item"><span class="ods-swatch" style="background:var(--color-status-info)"></span><span class="ods-label">color.status.info.@</span></span>
 <span class="ods-item"><span class="ods-swatch" style="background:var(--color-status-info-subtle)"></span><span class="ods-label">color.status.info.subtle</span></span>
-<span class="ods-item"><span class="ods-swatch" style="background:var(--color-status-success)"></span><span class="ods-label">color.status.success.@</span></span>
-<span class="ods-item"><span class="ods-swatch" style="background:var(--color-status-success-subtle)"></span><span class="ods-label">color.status.success.subtle</span></span>
-<span class="ods-item"><span class="ods-swatch" style="background:var(--color-status-warning)"></span><span class="ods-label">color.status.warning.@</span></span>
-<span class="ods-item"><span class="ods-swatch" style="background:var(--color-status-warning-subtle)"></span><span class="ods-label">color.status.warning.subtle</span></span>
-<span class="ods-item"><span class="ods-swatch" style="background:var(--color-status-danger)"></span><span class="ods-label">color.status.danger.@</span></span>
-<span class="ods-item"><span class="ods-swatch" style="background:var(--color-status-danger-subtle)"></span><span class="ods-label">color.status.danger.subtle</span></span>
-<span class="ods-item"><span class="ods-swatch" style="background:var(--color-category-1)"></span><span class="ods-label">color.category.1.@</span></span>
-<span class="ods-item"><span class="ods-swatch" style="background:var(--color-category-1-subtle)"></span><span class="ods-label">color.category.1.subtle</span></span>
-<span class="ods-item"><span class="ods-swatch" style="background:var(--color-category-2)"></span><span class="ods-label">color.category.2.@</span></span>
-<span class="ods-item"><span class="ods-swatch" style="background:var(--color-category-2-subtle)"></span><span class="ods-label">color.category.2.subtle</span></span>
-<span class="ods-item"><span class="ods-swatch" style="background:var(--color-category-3)"></span><span class="ods-label">color.category.3.@</span></span>
-<span class="ods-item"><span class="ods-swatch" style="background:var(--color-category-3-subtle)"></span><span class="ods-label">color.category.3.subtle</span></span>
 </div>
 
 <div class="odv-band"><div style="background:var(--color-action-primary);color:#FFFFFF"><b>Action</b>action.primary</div><div style="background:var(--color-text-primary);color:#FFFFFF"><b>Text</b>text.primary</div><div style="background:var(--color-status-success);color:#FFFFFF"><b>Success</b>status.success</div><div style="background:var(--color-status-warning);color:#FFFFFF"><b>Warning</b>status.warning</div><div style="background:var(--color-status-danger);color:#FFFFFF"><b>Danger</b>status.danger</div><div style="background:var(--color-status-info);color:#FFFFFF"><b>Info</b>status.info</div></div>
@@ -83,30 +83,42 @@ Each token points to another token. Values live only on primitives, below.
 
 | Token | Points to, light | Points to, dark |
 | --- | --- | --- |
-| `color.surface.canvas` | `accessible-first.theme.light.color.surface.canvas` → `color.gray.light.50` | `accessible-first.theme.dark.color.surface.canvas` → `color.gray.dark.0` |
-| `color.surface.default` | `accessible-first.theme.light.color.surface.default` → `color.gray.light.0` | `accessible-first.theme.dark.color.surface.default` → `color.gray.dark.50` |
-| `color.surface.raised` | `accessible-first.theme.light.color.surface.raised` → `color.gray.light.0` | `accessible-first.theme.dark.color.surface.raised` → `color.gray.dark.100` |
-| `color.surface.sunken` | `accessible-first.theme.light.color.surface.sunken` → `color.gray.light.100` | `accessible-first.theme.dark.color.surface.sunken` → `color.gray.dark.100` |
+| `color.neutral.0` | `accessible-first.theme.light.color.neutral.0` → `color.gray.light.0` | `accessible-first.theme.dark.color.neutral.0` → `color.gray.dark.0` |
+| `color.neutral.50` | `accessible-first.theme.light.color.neutral.50` → `color.gray.light.50` | `accessible-first.theme.dark.color.neutral.50` → `color.gray.dark.50` |
+| `color.neutral.100` | `accessible-first.theme.light.color.neutral.100` → `color.gray.light.100` | `accessible-first.theme.dark.color.neutral.100` → `color.gray.dark.100` |
+| `color.neutral.200` | `accessible-first.theme.light.color.neutral.200` → `color.gray.light.200` | `accessible-first.theme.dark.color.neutral.200` → `color.gray.dark.200` |
+| `color.neutral.300` | `accessible-first.theme.light.color.neutral.300` → `color.gray.light.300` | `accessible-first.theme.dark.color.neutral.300` → `color.gray.dark.300` |
+| `color.neutral.400` | `accessible-first.theme.light.color.neutral.400` → `color.gray.light.400` | `accessible-first.theme.dark.color.neutral.400` → `color.gray.dark.400` |
+| `color.neutral.500` | `accessible-first.theme.light.color.neutral.500` → `color.gray.light.500` | `accessible-first.theme.dark.color.neutral.500` → `color.gray.dark.500` |
+| `color.neutral.600` | `accessible-first.theme.light.color.neutral.600` → `color.gray.light.600` | `accessible-first.theme.dark.color.neutral.600` → `color.gray.dark.600` |
+| `color.neutral.700` | `accessible-first.theme.light.color.neutral.700` → `color.gray.light.700` | `accessible-first.theme.dark.color.neutral.700` → `color.gray.dark.700` |
+| `color.neutral.800` | `accessible-first.theme.light.color.neutral.800` → `color.gray.light.800` | `accessible-first.theme.dark.color.neutral.800` → `color.gray.dark.800` |
+| `color.neutral.900` | `accessible-first.theme.light.color.neutral.900` → `color.gray.light.900` | `accessible-first.theme.dark.color.neutral.900` → `color.gray.dark.900` |
+| `color.neutral.950` | `accessible-first.theme.light.color.neutral.950` → `color.gray.light.950` | `accessible-first.theme.dark.color.neutral.950` → `color.gray.dark.950` |
+| `color.surface.canvas` | `accessible-first.theme.light.color.surface.canvas` → `color.neutral.50` → `accessible-first.theme.light.color.neutral.50` → `color.gray.light.50` | `accessible-first.theme.dark.color.surface.canvas` → `color.neutral.0` → `accessible-first.theme.dark.color.neutral.0` → `color.gray.dark.0` |
+| `color.surface.default` | `accessible-first.theme.light.color.surface.default` → `color.neutral.0` → `accessible-first.theme.light.color.neutral.0` → `color.gray.light.0` | `accessible-first.theme.dark.color.surface.default` → `color.neutral.50` → `accessible-first.theme.dark.color.neutral.50` → `color.gray.dark.50` |
+| `color.surface.raised` | `accessible-first.theme.light.color.surface.raised` → `color.neutral.0` → `accessible-first.theme.light.color.neutral.0` → `color.gray.light.0` | `accessible-first.theme.dark.color.surface.raised` → `color.neutral.100` → `accessible-first.theme.dark.color.neutral.100` → `color.gray.dark.100` |
+| `color.surface.sunken` | `accessible-first.theme.light.color.surface.sunken` → `color.neutral.100` → `accessible-first.theme.light.color.neutral.100` → `color.gray.light.100` | `accessible-first.theme.dark.color.surface.sunken` → `color.neutral.100` → `accessible-first.theme.dark.color.neutral.100` → `color.gray.dark.100` |
 | `color.surface.selected` | `accessible-first.theme.light.color.surface.selected` → `color.blue.light.100` | `accessible-first.theme.dark.color.surface.selected` → `color.blue.dark.100` |
-| `color.surface.inverse` | `accessible-first.theme.light.color.surface.inverse` → `color.gray.light.900` | `accessible-first.theme.dark.color.surface.inverse` → `color.gray.dark.900` |
+| `color.surface.inverse` | `accessible-first.theme.light.color.surface.inverse` → `color.neutral.900` → `accessible-first.theme.light.color.neutral.900` → `color.gray.light.900` | `accessible-first.theme.dark.color.surface.inverse` → `color.neutral.900` → `accessible-first.theme.dark.color.neutral.900` → `color.gray.dark.900` |
 | `color.surface.scrim` | `accessible-first.theme.light.color.surface.scrim` → `color.black.light.scrim` | `accessible-first.theme.dark.color.surface.scrim` → `color.black.dark.scrim` |
-| `color.text.primary` | `accessible-first.theme.light.color.text.primary` → `color.gray.light.900` | `accessible-first.theme.dark.color.text.primary` → `color.gray.dark.900` |
-| `color.text.secondary` | `accessible-first.theme.light.color.text.secondary` → `color.gray.light.700` | `accessible-first.theme.dark.color.text.secondary` → `color.gray.dark.600` |
-| `color.text.muted` | `accessible-first.theme.light.color.text.muted` → `color.gray.light.500` | `accessible-first.theme.dark.color.text.muted` → `color.gray.dark.500` |
-| `color.text.inverse` | `accessible-first.theme.light.color.text.inverse` → `color.gray.light.0` | `accessible-first.theme.dark.color.text.inverse` → `color.gray.light.900` |
-| `color.text.on-action` | `accessible-first.theme.light.color.text.on-action` → `color.gray.light.0` | `accessible-first.theme.dark.color.text.on-action` → `color.gray.light.900` |
+| `color.text.primary` | `accessible-first.theme.light.color.text.primary` → `color.neutral.900` → `accessible-first.theme.light.color.neutral.900` → `color.gray.light.900` | `accessible-first.theme.dark.color.text.primary` → `color.neutral.900` → `accessible-first.theme.dark.color.neutral.900` → `color.gray.dark.900` |
+| `color.text.secondary` | `accessible-first.theme.light.color.text.secondary` → `color.neutral.700` → `accessible-first.theme.light.color.neutral.700` → `color.gray.light.700` | `accessible-first.theme.dark.color.text.secondary` → `color.neutral.600` → `accessible-first.theme.dark.color.neutral.600` → `color.gray.dark.600` |
+| `color.text.muted` | `accessible-first.theme.light.color.text.muted` → `color.neutral.500` → `accessible-first.theme.light.color.neutral.500` → `color.gray.light.500` | `accessible-first.theme.dark.color.text.muted` → `color.neutral.500` → `accessible-first.theme.dark.color.neutral.500` → `color.gray.dark.500` |
+| `color.text.inverse` | `accessible-first.theme.light.color.text.inverse` → `color.text.on-dark` → `accessible-first.theme.base.color.text.on-dark` → `color.gray.light.0` | `accessible-first.theme.dark.color.text.inverse` → `color.text.on-light` → `accessible-first.theme.base.color.text.on-light` → `color.gray.light.900` |
+| `color.text.on-action` | `accessible-first.theme.light.color.text.on-action` → `color.text.on-dark` → `accessible-first.theme.base.color.text.on-dark` → `color.gray.light.0` | `accessible-first.theme.dark.color.text.on-action` → `color.text.on-light` → `accessible-first.theme.base.color.text.on-light` → `color.gray.light.900` |
 | `color.text.link` | `accessible-first.theme.light.color.text.link` → `color.blue.light.700` | `accessible-first.theme.dark.color.text.link` → `color.blue.dark.700` |
-| `color.text.on-danger` | `accessible-first.theme.light.color.text.on-danger` → `color.gray.light.0` | `accessible-first.theme.dark.color.text.on-danger` → `color.gray.light.900` |
+| `color.text.on-danger` | `accessible-first.theme.light.color.text.on-danger` → `color.text.on-dark` → `accessible-first.theme.base.color.text.on-dark` → `color.gray.light.0` | `accessible-first.theme.dark.color.text.on-danger` → `color.text.on-light` → `accessible-first.theme.base.color.text.on-light` → `color.gray.light.900` |
 | `color.text.on-light` | `accessible-first.theme.base.color.text.on-light` → `color.gray.light.900` | `accessible-first.theme.base.color.text.on-light` → `color.gray.light.900` |
 | `color.text.on-dark` | `accessible-first.theme.base.color.text.on-dark` → `color.gray.light.0` | `accessible-first.theme.base.color.text.on-dark` → `color.gray.light.0` |
-| `color.border.default` | `accessible-first.theme.light.color.border.default` → `color.gray.light.200` | `accessible-first.theme.dark.color.border.default` → `color.gray.dark.100` |
-| `color.border.strong` | `accessible-first.theme.light.color.border.strong` → `color.gray.light.500` | `accessible-first.theme.dark.color.border.strong` → `color.gray.dark.500` |
+| `color.border.default` | `accessible-first.theme.light.color.border.default` → `color.neutral.200` → `accessible-first.theme.light.color.neutral.200` → `color.gray.light.200` | `accessible-first.theme.dark.color.border.default` → `color.neutral.100` → `accessible-first.theme.dark.color.neutral.100` → `color.gray.dark.100` |
+| `color.border.strong` | `accessible-first.theme.light.color.border.strong` → `color.neutral.500` → `accessible-first.theme.light.color.neutral.500` → `color.gray.light.500` | `accessible-first.theme.dark.color.border.strong` → `color.neutral.500` → `accessible-first.theme.dark.color.neutral.500` → `color.gray.dark.500` |
 | `color.border.focus` | `accessible-first.theme.light.color.border.focus` → `color.blue.light.600` | `accessible-first.theme.dark.color.border.focus` → `color.blue.dark.700` |
 | `color.border.selected` | `accessible-first.theme.light.color.border.selected` → `color.blue.light.600` | `accessible-first.theme.dark.color.border.selected` → `color.blue.dark.700` |
 | `color.action.primary.@` | `accessible-first.theme.light.color.action.primary.@` → `color.blue.light.600` | `accessible-first.theme.dark.color.action.primary.@` → `color.blue.dark.700` |
 | `color.action.primary.hover` | `accessible-first.theme.light.color.action.primary.hover` → `color.blue.light.700` | `accessible-first.theme.dark.color.action.primary.hover` → `color.blue.dark.800` |
-| `color.action.secondary.@` | `accessible-first.theme.light.color.action.secondary.@` → `color.gray.light.0` | `accessible-first.theme.dark.color.action.secondary.@` → `color.gray.dark.50` |
-| `color.action.secondary.hover` | `accessible-first.theme.light.color.action.secondary.hover` → `color.gray.light.100` | `accessible-first.theme.dark.color.action.secondary.hover` → `color.gray.dark.100` |
+| `color.action.secondary.@` | `accessible-first.theme.light.color.action.secondary.@` → `color.neutral.0` → `accessible-first.theme.light.color.neutral.0` → `color.gray.light.0` | `accessible-first.theme.dark.color.action.secondary.@` → `color.neutral.50` → `accessible-first.theme.dark.color.neutral.50` → `color.gray.dark.50` |
+| `color.action.secondary.hover` | `accessible-first.theme.light.color.action.secondary.hover` → `color.neutral.100` → `accessible-first.theme.light.color.neutral.100` → `color.gray.light.100` | `accessible-first.theme.dark.color.action.secondary.hover` → `color.neutral.100` → `accessible-first.theme.dark.color.neutral.100` → `color.gray.dark.100` |
 | `color.action.danger.@` | `accessible-first.theme.light.color.action.danger.@` → `color.red.light.700` | `accessible-first.theme.dark.color.action.danger.@` → `color.red.dark.700` |
 | `color.action.danger.hover` | `accessible-first.theme.light.color.action.danger.hover` → `color.red.light.700` | `accessible-first.theme.dark.color.action.danger.hover` → `color.red.dark.700` |
 | `color.status.info.@` | `accessible-first.theme.light.color.status.info.@` → `color.teal.light.700` | `accessible-first.theme.dark.color.status.info.@` → `color.teal.dark.700` |
@@ -125,11 +137,11 @@ Each token points to another token. Values live only on primitives, below.
 | `color.category.3.subtle` | `accessible-first.theme.light.color.category.3.subtle` → `color.green.light.100` | `accessible-first.theme.dark.color.category.3.subtle` → `color.green.dark.100` |
 | `color.category.4.@` | `accessible-first.theme.light.color.category.4.@` → `color.amber.light.700` | `accessible-first.theme.dark.color.category.4.@` → `color.amber.dark.700` |
 | `color.category.4.subtle` | `accessible-first.theme.light.color.category.4.subtle` → `color.amber.light.100` | `accessible-first.theme.dark.color.category.4.subtle` → `color.amber.dark.100` |
-| `color.category.5.@` | `accessible-first.theme.light.color.category.5.@` → `color.gray.light.500` | `accessible-first.theme.dark.color.category.5.@` → `color.gray.dark.700` |
-| `color.category.5.subtle` | `accessible-first.theme.light.color.category.5.subtle` → `color.gray.light.100` | `accessible-first.theme.dark.color.category.5.subtle` → `color.gray.dark.100` |
-| `color.disabled.text` | `accessible-first.theme.light.color.disabled.text` → `color.gray.light.500` | `accessible-first.theme.dark.color.disabled.text` → `color.gray.dark.500` |
-| `color.disabled.surface` | `accessible-first.theme.light.color.disabled.surface` → `color.gray.light.100` | `accessible-first.theme.dark.color.disabled.surface` → `color.gray.dark.100` |
-| `color.disabled.border` | `accessible-first.theme.light.color.disabled.border` → `color.gray.light.200` | `accessible-first.theme.dark.color.disabled.border` → `color.gray.dark.200` |
+| `color.category.5.@` | `accessible-first.theme.light.color.category.5.@` → `color.neutral.500` → `accessible-first.theme.light.color.neutral.500` → `color.gray.light.500` | `accessible-first.theme.dark.color.category.5.@` → `color.neutral.700` → `accessible-first.theme.dark.color.neutral.700` → `color.gray.dark.700` |
+| `color.category.5.subtle` | `accessible-first.theme.light.color.category.5.subtle` → `color.neutral.100` → `accessible-first.theme.light.color.neutral.100` → `color.gray.light.100` | `accessible-first.theme.dark.color.category.5.subtle` → `color.neutral.100` → `accessible-first.theme.dark.color.neutral.100` → `color.gray.dark.100` |
+| `color.disabled.text` | `accessible-first.theme.light.color.disabled.text` → `color.neutral.500` → `accessible-first.theme.light.color.neutral.500` → `color.gray.light.500` | `accessible-first.theme.dark.color.disabled.text` → `color.neutral.500` → `accessible-first.theme.dark.color.neutral.500` → `color.gray.dark.500` |
+| `color.disabled.surface` | `accessible-first.theme.light.color.disabled.surface` → `color.neutral.100` → `accessible-first.theme.light.color.neutral.100` → `color.gray.light.100` | `accessible-first.theme.dark.color.disabled.surface` → `color.neutral.100` → `accessible-first.theme.dark.color.neutral.100` → `color.gray.dark.100` |
+| `color.disabled.border` | `accessible-first.theme.light.color.disabled.border` → `color.neutral.200` → `accessible-first.theme.light.color.neutral.200` → `color.gray.light.200` | `accessible-first.theme.dark.color.disabled.border` → `color.neutral.200` → `accessible-first.theme.dark.color.neutral.200` → `color.gray.dark.200` |
 
 ## Primitives
 
@@ -152,18 +164,27 @@ The raw values the tokens above end at.
 | `color.gray.dark.0` | #0A0A0A | <span class="ods-swatch" style="background:#0A0A0A"></span> |
 | `color.gray.dark.100` | #222222 | <span class="ods-swatch" style="background:#222222"></span> |
 | `color.gray.dark.200` | #333333 | <span class="ods-swatch" style="background:#333333"></span> |
+| `color.gray.dark.300` | #595959 | <span class="ods-swatch" style="background:#595959"></span> |
+| `color.gray.dark.400` | #767676 | <span class="ods-swatch" style="background:#767676"></span> |
 | `color.gray.dark.50` | #141414 | <span class="ods-swatch" style="background:#141414"></span> |
 | `color.gray.dark.500` | #949494 | <span class="ods-swatch" style="background:#949494"></span> |
 | `color.gray.dark.600` | #B4B4B4 | <span class="ods-swatch" style="background:#B4B4B4"></span> |
 | `color.gray.dark.700` | #D6D6D6 | <span class="ods-swatch" style="background:#D6D6D6"></span> |
+| `color.gray.dark.800` | #EDEDED | <span class="ods-swatch" style="background:#EDEDED"></span> |
 | `color.gray.dark.900` | #F7F7F7 | <span class="ods-swatch" style="background:#F7F7F7"></span> |
+| `color.gray.dark.950` | #FFFFFF | <span class="ods-swatch" style="background:#FFFFFF"></span> |
 | `color.gray.light.0` | #FFFFFF | <span class="ods-swatch" style="background:#FFFFFF"></span> |
 | `color.gray.light.100` | #EDEDED | <span class="ods-swatch" style="background:#EDEDED"></span> |
 | `color.gray.light.200` | #D6D6D6 | <span class="ods-swatch" style="background:#D6D6D6"></span> |
+| `color.gray.light.300` | #949494 | <span class="ods-swatch" style="background:#949494"></span> |
+| `color.gray.light.400` | #767676 | <span class="ods-swatch" style="background:#767676"></span> |
 | `color.gray.light.50` | #F7F7F7 | <span class="ods-swatch" style="background:#F7F7F7"></span> |
 | `color.gray.light.500` | #595959 | <span class="ods-swatch" style="background:#595959"></span> |
+| `color.gray.light.600` | #464646 | <span class="ods-swatch" style="background:#464646"></span> |
 | `color.gray.light.700` | #333333 | <span class="ods-swatch" style="background:#333333"></span> |
+| `color.gray.light.800` | #222222 | <span class="ods-swatch" style="background:#222222"></span> |
 | `color.gray.light.900` | #141414 | <span class="ods-swatch" style="background:#141414"></span> |
+| `color.gray.light.950` | #0A0A0A | <span class="ods-swatch" style="background:#0A0A0A"></span> |
 | `color.green.dark.100` | #123322 | <span class="ods-swatch" style="background:#123322"></span> |
 | `color.green.dark.700` | #5CC283 | <span class="ods-swatch" style="background:#5CC283"></span> |
 | `color.green.light.100` | #E3F4EA | <span class="ods-swatch" style="background:#E3F4EA"></span> |
