@@ -2,6 +2,7 @@ import type { Config } from "@docusaurus/types";
 import type * as Preset from "@docusaurus/preset-classic";
 import { readFileSync } from "node:fs";
 import { themes as prismThemes } from "prism-react-renderer";
+import { consentScript } from "../analytics/consent.mjs";
 
 // The repo's docs: every Open DS scheme in one site (OD-207), the way the repo Storybook shows every
 // scheme. scripts/generate.mjs writes docs/<scheme>/ for each one, its tokens scoped to its own pages
@@ -13,6 +14,9 @@ const STORYBOOK = process.env.STORYBOOK_URL ?? "http://localhost:6006";
 // Where the site lives (OD-210): "/" locally, "/docs/" on open-ds.dev, next to /storybook/.
 const BASE = process.env.DOCS_BASE_URL ?? "/";
 const ids = JSON.stringify(schemes.map((s) => s.id));
+// Google Tag Manager, only with consent, the same choice as the website's (analytics/consent.mjs).
+// Empty without NEXT_PUBLIC_GTM_ID at build time: no banner, nothing loads from Google.
+const consent = consentScript();
 
 const config: Config = {
   title: "Open DS docs",
@@ -33,6 +37,7 @@ const config: Config = {
       attributes: {},
       innerHTML: `(function(){var s=${ids},p=location.pathname.slice(${BASE.length}).split("/")[0],h=document.documentElement;if(s.indexOf(p)>=0)h.setAttribute("data-scheme",p);try{h.setAttribute("data-brand",localStorage.getItem("open-ds-brand")||"aster")}catch(e){h.setAttribute("data-brand","aster")}})();`,
     },
+    ...(consent ? [{ tagName: "script", attributes: {}, innerHTML: consent }] : []),
   ],
   clientModules: [
     "./src/clientModules/scheme.ts",
@@ -62,7 +67,7 @@ const config: Config = {
     },
     footer: {
       style: "light",
-      copyright: "Open DS docs: every scheme, each as the design system it builds. MIT.",
+      copyright: `Open DS docs: every scheme, each as the design system it builds. MIT.${consent ? ' <a href="#cookie-settings">Cookie settings</a>' : ""}`,
     },
     prism: { theme: prismThemes.github, darkTheme: prismThemes.dracula },
   } satisfies Preset.ThemeConfig,
