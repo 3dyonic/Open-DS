@@ -62,3 +62,28 @@ export const SHADCN_SCALE = {
   "--text-lg": "var(--type-heading-font-size)",
   "--text-lg--line-height": "var(--type-heading-line-height)",
 };
+
+// OD-235: named spacing utilities from the scheme's spacing, so code writes gap-section or p-container
+// and follows the scheme. Tailwind v4 makes p-*, m-*, gap-* and the rest from every --spacing-* theme
+// variable. Layout roles take their last name (gap.section → section, inset.control-x → control); the
+// component spacing map's steps take map-<step> (map-x6, map-hairline).
+export function spacingUtilities(scheme) {
+  const out = [];
+  const walk = (o, path) => {
+    for (const [k, v] of Object.entries(o ?? {})) {
+      if (k.startsWith("$")) continue;
+      const p = [...path, k];
+      if (v && typeof v === "object" && "$value" in v) out.push(p);
+      else if (v && typeof v === "object") walk(v, p);
+    }
+  };
+  walk(scheme.tokens.semantic.space, ["space"]);
+  walk(scheme.tokens.semantic["component-spacing-map"], [
+    "component-spacing-map",
+  ]);
+  return out.map((p) => {
+    const name =
+      p[0] === "space" ? p.at(-1).replace(/-x$/, "") : `map-${p.at(-1)}`;
+    return [`--spacing-${name}`, `var(--${p.join("-")})`];
+  });
+}

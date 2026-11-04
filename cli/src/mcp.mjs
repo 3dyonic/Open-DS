@@ -8,6 +8,8 @@
 // No authentication yet: the hosted server will add a key (OD-145).
 
 import { scales } from "./scale-map.mjs";
+import { spacingGuide } from "./spacing-map.mjs";
+import { tokenIndex, aliasChain } from "./lands.mjs";
 import { mkdtempSync, readFileSync, rmSync } from "node:fs";
 import { createServer as createHttpServer } from "node:http";
 import { tmpdir } from "node:os";
@@ -55,7 +57,7 @@ const VERSION = JSON.parse(
 // carry too (OD-205).
 const INSTRUCTIONS = `Open DS: design systems as answered questions. Every scheme answers the same questions and gives the reason for each answer; tokens, components, usage rules and voice follow from them.
 Choose: describe the product to fit_scheme, compare the top ones with compare_schemes, then plan_create (a new design system project) or plan_init (an existing app). They return the exact npx command; run it yourself.
-Build: call get_context build first, or get_context file=<path> for the file you edit. Before a component or variant, call get_component; before a token, find_token or when_to_use; to see which color step a token uses and which steps are free, get_scales. Before you finish, run check_ui on the files you changed and fix each finding.
+Build: call get_context build first, or get_context file=<path> for the file you edit. Before a component or variant, call get_component; before a token, find_token or when_to_use; to see which color step a token uses and which steps are free, get_scales; before you write any spacing, get_component_spacing_map. Before you finish, run check_ui on the files you changed and fix each finding.
 Write: get_context write holds the voice; get_scheme returns any part of a scheme in full. Check each label or message with check_copy. Change: call plan_change before you change an answer or a primitive. Review: run check_ui, then the review prompt.
 Explain any decision with why; get_answer shows one answer with every option, and what_moves shows what follows from an answer. The prompts open-ds-choose, open-ds-build, open-ds-write, open-ds-change and open-ds-review hold the step-by-step skills.
 The questions and answers are a starting point, not a standard.
@@ -607,6 +609,28 @@ export function createMcpServer({ roots = assetRoots() } = {}) {
           question_id ? { question: question_id, option } : { token, value },
         ),
       );
+    },
+  );
+
+  server.registerTool(
+    "get_component_spacing_map",
+    {
+      title: "Get the spacing",
+      description:
+        "The spacing a scheme decides: the rule (never a number), its rhythm and why, every layout role (gap-section, p-container…) and every step of the component spacing map (map-x6…), each with its px value, the primitive it ends at and the Tailwind utility to write, plus the rules of thumb. Call it before you write any spacing.",
+      inputSchema: { scheme_id: SchemeId },
+      annotations: { readOnlyHint: true },
+    },
+    async ({ scheme_id }) => {
+      const s = scheme(scheme_id);
+      return json({
+        scheme: s.id,
+        ...spacingGuide(s, {
+          index: tokenIndex(s),
+          chain: aliasChain,
+          hints: g.scopes.find((x) => x.id === "spacing")?.hints ?? [],
+        }),
+      });
     },
   );
 

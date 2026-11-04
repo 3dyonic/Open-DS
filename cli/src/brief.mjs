@@ -144,6 +144,14 @@ function taskSections(t) {
       items: t.components,
       item: (c) => `- ${c.id}: ${c.description} Keys: ${c.keys.join(", ")}`,
     });
+  if (t.spacing)
+    out.push({
+      name: "spacing",
+      label: "spacing roles and map steps",
+      items: [...t.spacing.roles, ...t.spacing.steps],
+      item: (x) =>
+        `- ${x.step ? `map-${x.step}` : x.utility}: ${x.token} = ${x.primitive}, ${x.px}px.${x.for ? ` ${x.for}` : ""}${x.fixed ? " Holds still in every scheme." : ""}`,
+    });
   if (t.answers)
     out.push({
       name: "answers",
@@ -373,7 +381,7 @@ function shortTask(t, g) {
     if (t.urgency) lines.push("", t.urgency.description);
     lines.push(
       "",
-      "Words and messages: tasks/write.md. Colors: one booklet each in context/colors/. Components: context/components/.",
+      "Words: tasks/write.md. Colors: context/colors/. Components: context/components/.",
     );
   }
   if (t.target === "review") {

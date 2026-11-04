@@ -189,6 +189,7 @@ export function agentsCore(scheme, g, { brand, components }) {
     "## Never",
     "",
     "- A raw value: a hex or rgb color, a px size, a Tailwind palette class. Use a token or a component key.",
+    "- A spacing as a number (p-6, gap-1.5, p-[10px]). Between things use a role (gap-section, p-container); inside a component, a map step (p-map-x6). See context/tasks/build.md, section spacing.",
     "- A component that is not listed below. If none fits, compose from these; see context/tasks/build.md.",
     "- A variant this scheme does not use. Each component's booklet says which variants it uses.",
     "- A status color one level up the urgency order to get attention.",

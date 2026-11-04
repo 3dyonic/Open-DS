@@ -26,6 +26,7 @@ const TOOLS = [
   "fit_scheme",
   "get_answer",
   "get_component",
+  "get_component_spacing_map",
   "get_context",
   "get_inventory",
   "get_key",

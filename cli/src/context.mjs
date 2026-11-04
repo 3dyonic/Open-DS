@@ -1,5 +1,7 @@
 // Context on demand: one call returns only the slice an agent needs for a target, built from the
 // scheme, the grammar and the built tokens. The CLI (open-ds context) and the MCP (get_context) share it.
+import { spacingGuide } from "./spacing-map.mjs";
+import { tokenIndex, aliasChain } from "./lands.mjs";
 import { componentGuide } from "./component.mjs";
 import { guidanceFor, guidanceId } from "./guidance.mjs";
 import { sitsOn } from "./tones.mjs";
@@ -55,7 +57,7 @@ function task(name, scheme, g, roots) {
   if (name === "build")
     return {
       ...base,
-      read: "Find the situation and follow its rule. Read only component keys and semantic tokens. Check a semantic's not_for before you use it.",
+      read: "Find the situation and follow its rule. Use only component keys and semantics; check each one's not_for.",
       components: g.components.map((c) => ({
         id: c.id,
         description: c.description,
@@ -64,6 +66,11 @@ function task(name, scheme, g, roots) {
       rules: rules(scheme, g),
       semantics: brief(g),
       urgency,
+      spacing: spacingGuide(scheme, {
+        index: tokenIndex(scheme),
+        chain: aliasChain,
+        hints: g.scopes.find((x) => x.id === "spacing")?.hints ?? [],
+      }),
     };
   if (name === "write")
     return {

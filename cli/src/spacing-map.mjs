@@ -67,7 +67,80 @@ export function mapTokens(spec) {
       },
     };
   }
-  return { group, primitives: [...new Set(Object.values(px))].sort((a, b) => a - b) };
+  return {
+    group,
+    primitives: [...new Set(Object.values(px))].sort((a, b) => a - b),
+  };
 }
 
 export const remOf = rem;
+
+/**
+ * The spacing guide for agents and the docs (OD-235), from one scheme: the rule, the rhythm and why,
+ * every step of the component spacing map and every layout role, each with its px value, the primitive
+ * it ends at and the named Tailwind utility to write. `index` is lands.mjs's tokenIndex(scheme);
+ * `chain` its aliasChain.
+ */
+export function spacingGuide(scheme, { index, chain, hints = [] }) {
+  const map = scheme.tokens.semantic["component-spacing-map"] ?? {};
+  const spec = map.$extensions?.["open-ds"] ?? {};
+  const row = (path, utility) => {
+    const c = chain(index, path);
+    const px = Math.round(parseFloat(String(c.value)) * 16 * 100) / 100;
+    return { token: path, primitive: c.hops.at(-1) ?? null, px, utility };
+  };
+  const steps = STEP_IDS.filter((id) => map[id]).map((id) => ({
+    ...row(`component-spacing-map.${id}`, `map-${id}`),
+    step: id,
+    multiplier: map[id].$extensions?.["open-ds"]?.multiplier ?? null,
+    fixed: id === "hairline" || (spec.fixed ?? []).includes(id),
+  }));
+  const roles = [];
+  const walk = (o, path) => {
+    for (const [k, v] of Object.entries(o ?? {})) {
+      if (k.startsWith("$")) continue;
+      const p = [...path, k];
+      if (v && typeof v === "object" && "$value" in v)
+        roles.push({
+          ...row(p.join("."), k.replace(/-x$/, "")),
+          for: v.$description ?? "",
+        });
+      else if (v && typeof v === "object") walk(v, p);
+    }
+  };
+  walk(scheme.tokens.semantic.space, ["space"]);
+  return {
+    rule: "Never write a spacing as a number. Between things and on the page, use a role. Inside a component, use a step of the component spacing map.",
+    unit: `${UNIT_PX}px`,
+    rhythm: spec.rhythm ?? null,
+    fixed: spec.fixed ?? [],
+    why: spec.why ?? "",
+    because: spec.because ?? [],
+    roles,
+    steps,
+    hints,
+  };
+}
+
+/** A spacing guide as plain text, for the CLI and the booklets. */
+export function spacingText(g) {
+  return [
+    g.rule,
+    `Rhythm ${g.rhythm}: ${g.why}${g.because.length ? ` (because ${g.because.join(", ")})` : ""}`,
+    "",
+    "Roles (between things and on the page):",
+    ...g.roles.map(
+      (r) =>
+        `- *-${r.utility} → ${r.token} = ${r.primitive} : ${r.px}px. ${r.for}`,
+    ),
+    "",
+    `The component spacing map (inside a component): ${g.unit} × multiplier × rhythm, a multiple of 4px, at most 64px.`,
+    ...g.steps.map(
+      (s) =>
+        `- *-map-${s.step} → ${s.token} = ${s.primitive} : ${s.px}px${s.fixed ? " (holds still)" : ""}`,
+    ),
+    ...(g.hints.length
+      ? ["", "Hints:", ...g.hints.map((h) => `- ${h.when} ${h.do}`)]
+      : []),
+  ].join("\n");
+}
