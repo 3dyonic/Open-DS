@@ -66,45 +66,7 @@ Each token points to another token. Values live only on primitives, below.
 
 </div>
 
-## Primitives
-
-The raw values the tokens above end at.
-
-<div class="odv-brandset" data-for-brand="aster">
-
-<p class="odv-brandname">Aster</p>
-
-| Primitive | Value | Sample |
-| --- | --- | --- |
-| `duration.moderate` | 200ms | <span class="ods-motion" style="--ods-d:200ms" title="Hover to play"><span></span></span> |
-| `duration.relaxed` | 320ms | <span class="ods-motion" style="--ods-d:320ms" title="Hover to play"><span></span></span> |
-| `easing.standard` | cubic-bezier(0.2, 0, 0, 1) | <span class="ods-motion" style="--ods-e:cubic-bezier(0.2,0,0,1)" title="Hover to play"><span></span></span> |
-
-</div>
-
-<div class="odv-brandset" data-for-brand="birch">
-
-<p class="odv-brandname">Birch</p>
-
-| Primitive | Value | Sample |
-| --- | --- | --- |
-| `duration.moderate` | 200ms | <span class="ods-motion" style="--ods-d:200ms" title="Hover to play"><span></span></span> |
-| `duration.relaxed` | 320ms | <span class="ods-motion" style="--ods-d:320ms" title="Hover to play"><span></span></span> |
-| `easing.standard` | cubic-bezier(0.2, 0, 0, 1) | <span class="ods-motion" style="--ods-e:cubic-bezier(0.2,0,0,1)" title="Hover to play"><span></span></span> |
-
-</div>
-
-<div class="odv-brandset" data-for-brand="coral">
-
-<p class="odv-brandname">Coral</p>
-
-| Primitive | Value | Sample |
-| --- | --- | --- |
-| `duration.moderate` | 200ms | <span class="ods-motion" style="--ods-d:200ms" title="Hover to play"><span></span></span> |
-| `duration.relaxed` | 320ms | <span class="ods-motion" style="--ods-d:320ms" title="Hover to play"><span></span></span> |
-| `easing.standard` | cubic-bezier(0.2, 0, 0, 1) | <span class="ods-motion" style="--ods-e:cubic-bezier(0.2,0,0,1)" title="Hover to play"><span></span></span> |
-
-</div>
+The raw values these tokens end at are on [Primitives › Motion](../primitives/motion).
 
 ## Where it lands
 

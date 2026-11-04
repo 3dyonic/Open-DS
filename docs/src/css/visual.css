@@ -1447,7 +1447,7 @@ a.odv-icard:hover {
 .odv-lane {
   display: grid;
   gap: 8px;
-  min-width: 760px;
+  min-width: 560px;
 }
 .odv-lane-h {
   margin: 0;
@@ -1458,7 +1458,6 @@ a.odv-icard:hover {
 }
 .odv-sts {
   display: grid;
-  grid-template-columns: repeat(var(--n), minmax(0, 1fr));
   gap: 4px;
 }
 .odv-st,
@@ -1472,9 +1471,14 @@ a.odv-icard:hover {
   font: 500 11px var(--type-data-font-family);
   transition: box-shadow 0.12s;
 }
+/* An empty slot: spaced dashes drawn with gradients, in the placeholder border colour. */
 .odv-sl {
   color: var(--odv-muted);
-  border: 1px dotted color-mix(in srgb, var(--odv-muted) 45%, transparent);
+  background:
+    linear-gradient(90deg, var(--odv-dash) 6px, transparent 6px) top / 11px 2px repeat-x,
+    linear-gradient(90deg, var(--odv-dash) 6px, transparent 6px) bottom / 11px 2px repeat-x,
+    linear-gradient(0deg, var(--odv-dash) 6px, transparent 6px) left / 2px 11px repeat-y,
+    linear-gradient(0deg, var(--odv-dash) 6px, transparent 6px) right / 2px 11px repeat-y;
 }
 .odv-sl i {
   margin-top: auto;
@@ -1491,6 +1495,10 @@ a.odv-icard:hover {
 .odv-st .x {
   font-size: 10px;
   opacity: 0.85;
+  overflow-wrap: anywhere;
+}
+.odv-st-bare {
+  background: color-mix(in srgb, var(--odv-muted) 10%, transparent);
 }
 .odv-st-bare .n,
 .odv-st-bare .x {

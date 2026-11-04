@@ -78,52 +78,7 @@ Each token points to another token. Values live only on primitives, below.
 
 </div>
 
-## Primitives
-
-The raw values the tokens above end at.
-
-<div class="odv-brandset" data-for-brand="aster">
-
-<p class="odv-brandname">Aster</p>
-
-| Primitive | Value | Sample |
-| --- | --- | --- |
-| `border-width.1` | 1px | <span class="ods-line" style="height:1px"></span> |
-| `border-width.2` | 2px | <span class="ods-line" style="height:2px"></span> |
-| `radius.4` | 0.25rem (4px) | <span class="ods-tile" style="border-radius:0.25rem"></span> |
-| `radius.8` | 0.5rem (8px) | <span class="ods-tile" style="border-radius:0.5rem"></span> |
-| `radius.full` | 9999px | <span class="ods-tile" style="border-radius:9999px"></span> |
-
-</div>
-
-<div class="odv-brandset" data-for-brand="birch">
-
-<p class="odv-brandname">Birch</p>
-
-| Primitive | Value | Sample |
-| --- | --- | --- |
-| `border-width.1` | 1px | <span class="ods-line" style="height:1px"></span> |
-| `border-width.2` | 2px | <span class="ods-line" style="height:2px"></span> |
-| `radius.12` | 0.75rem (12px) | <span class="ods-tile" style="border-radius:0.75rem"></span> |
-| `radius.16` | 1rem (16px) | <span class="ods-tile" style="border-radius:1rem"></span> |
-| `radius.999` | 9999px | <span class="ods-tile" style="border-radius:9999px"></span> |
-| `radius.full` | 9999px | <span class="ods-tile" style="border-radius:9999px"></span> |
-
-</div>
-
-<div class="odv-brandset" data-for-brand="coral">
-
-<p class="odv-brandname">Coral</p>
-
-| Primitive | Value | Sample |
-| --- | --- | --- |
-| `border-width.1` | 1px | <span class="ods-line" style="height:1px"></span> |
-| `border-width.2` | 2px | <span class="ods-line" style="height:2px"></span> |
-| `radius.20` | 1.25rem (20px) | <span class="ods-tile" style="border-radius:1.25rem"></span> |
-| `radius.999` | 9999px | <span class="ods-tile" style="border-radius:9999px"></span> |
-| `radius.full` | 9999px | <span class="ods-tile" style="border-radius:9999px"></span> |
-
-</div>
+The raw values these tokens end at are on [Primitives › Shape](../primitives/shape).
 
 ## Where it lands
 

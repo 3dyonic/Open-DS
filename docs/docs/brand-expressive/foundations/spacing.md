@@ -46,19 +46,7 @@ Each token points to another token. Values live only on primitives, below.
 | `space.inset.cell-x` | `space.16` |
 | `size.row` | `size.52` |
 
-## Primitives
-
-The raw values the tokens above end at.
-
-| Primitive | Value | Sample |
-| --- | --- | --- |
-| `size.52` | 3.25rem (52px) | <span class="ods-bar" style="width:3.25rem"></span> |
-| `space.16` | 1rem (16px) | <span class="ods-bar" style="width:1rem"></span> |
-| `space.28` | 1.75rem (28px) | <span class="ods-bar" style="width:1.75rem"></span> |
-| `space.32` | 2rem (32px) | <span class="ods-bar" style="width:2rem"></span> |
-| `space.40` | 2.5rem (40px) | <span class="ods-bar" style="width:2.5rem"></span> |
-| `space.8` | 0.5rem (8px) | <span class="ods-bar" style="width:0.5rem"></span> |
-| `space.96` | 6rem (96px) | <span class="ods-bar" style="width:6rem"></span> |
+The raw values these tokens end at are on [Primitives › Space and size](../primitives/space-and-size).
 
 ## Where it lands
 

@@ -32,13 +32,7 @@ Each token points to another token. Values live only on primitives, below.
 | --- | --- |
 | `size.icon` | `size.20` |
 
-## Primitives
-
-The raw values the tokens above end at.
-
-| Primitive | Value | Sample |
-| --- | --- | --- |
-| `size.20` | 1.25rem (20px) | <span class="ods-bar" style="width:1.25rem"></span> |
+The raw values these tokens end at are on [Primitives › all kinds](../primitives/).
 
 ## Where it lands
 

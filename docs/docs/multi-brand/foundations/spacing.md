@@ -86,54 +86,7 @@ Each token points to another token. Values live only on primitives, below.
 
 </div>
 
-## Primitives
-
-The raw values the tokens above end at.
-
-<div class="odv-brandset" data-for-brand="aster">
-
-<p class="odv-brandname">Aster</p>
-
-| Primitive | Value | Sample |
-| --- | --- | --- |
-| `size.48` | 3rem (48px) | <span class="ods-bar" style="width:3rem"></span> |
-| `space.12` | 0.75rem (12px) | <span class="ods-bar" style="width:0.75rem"></span> |
-| `space.16` | 1rem (16px) | <span class="ods-bar" style="width:1rem"></span> |
-| `space.24` | 1.5rem (24px) | <span class="ods-bar" style="width:1.5rem"></span> |
-| `space.48` | 3rem (48px) | <span class="ods-bar" style="width:3rem"></span> |
-| `space.8` | 0.5rem (8px) | <span class="ods-bar" style="width:0.5rem"></span> |
-
-</div>
-
-<div class="odv-brandset" data-for-brand="birch">
-
-<p class="odv-brandname">Birch</p>
-
-| Primitive | Value | Sample |
-| --- | --- | --- |
-| `size.48` | 3rem (48px) | <span class="ods-bar" style="width:3rem"></span> |
-| `space.12` | 0.75rem (12px) | <span class="ods-bar" style="width:0.75rem"></span> |
-| `space.16` | 1rem (16px) | <span class="ods-bar" style="width:1rem"></span> |
-| `space.24` | 1.5rem (24px) | <span class="ods-bar" style="width:1.5rem"></span> |
-| `space.48` | 3rem (48px) | <span class="ods-bar" style="width:3rem"></span> |
-| `space.8` | 0.5rem (8px) | <span class="ods-bar" style="width:0.5rem"></span> |
-
-</div>
-
-<div class="odv-brandset" data-for-brand="coral">
-
-<p class="odv-brandname">Coral</p>
-
-| Primitive | Value | Sample |
-| --- | --- | --- |
-| `size.48` | 3rem (48px) | <span class="ods-bar" style="width:3rem"></span> |
-| `space.12` | 0.75rem (12px) | <span class="ods-bar" style="width:0.75rem"></span> |
-| `space.16` | 1rem (16px) | <span class="ods-bar" style="width:1rem"></span> |
-| `space.24` | 1.5rem (24px) | <span class="ods-bar" style="width:1.5rem"></span> |
-| `space.48` | 3rem (48px) | <span class="ods-bar" style="width:3rem"></span> |
-| `space.8` | 0.5rem (8px) | <span class="ods-bar" style="width:0.5rem"></span> |
-
-</div>
+The raw values these tokens end at are on [Primitives › Space and size](../primitives/space-and-size).
 
 ## Where it lands
 

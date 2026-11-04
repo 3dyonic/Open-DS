@@ -145,75 +145,7 @@ Each token points to another token. Values live only on primitives, below.
 
 </div>
 
-## Primitives
-
-The raw values the tokens above end at.
-
-<div class="odv-brandset" data-for-brand="aster">
-
-<p class="odv-brandname">Aster</p>
-
-| Primitive | Value | Sample |
-| --- | --- | --- |
-| `font.family.inter` | Inter, system-ui, sans-serif | <span class="ods-font" style="font-family:Inter, system-ui, sans-serif">Aa 123</span> |
-| `font.line-height.1_2` | 1.2 | <span class="ods-leading" style="line-height:1.2" data-h="19px">Ag Ag Ag</span> |
-| `font.line-height.1_5` | 1.5 | <span class="ods-leading" style="line-height:1.5" data-h="24px">Ag Ag Ag</span> |
-| `font.line-height.1_8` | 1.8 | <span class="ods-leading" style="line-height:1.8" data-h="29px">Ag Ag Ag</span> |
-| `font.size.13` | 0.8125rem (13px) | <span class="ods-typesample" style="font-size:0.8125rem">Aa</span> |
-| `font.size.14` | 0.875rem (14px) | <span class="ods-typesample" style="font-size:0.875rem">Aa</span> |
-| `font.size.16` | 1rem (16px) | <span class="ods-typesample" style="font-size:1rem">Aa</span> |
-| `font.size.20` | 1.25rem (20px) | <span class="ods-typesample" style="font-size:1.25rem">Aa</span> |
-| `font.size.24` | 1.5rem (24px) | <span class="ods-typesample" style="font-size:1.5rem">Aa</span> |
-| `font.size.32` | 2rem (32px) | <span class="ods-typesample" style="font-size:2rem">Aa</span> |
-| `font.weight.400` | 400 | <span class="ods-typesample" style="font-weight:400">Aa</span> |
-| `font.weight.600` | 600 | <span class="ods-typesample" style="font-weight:600">Aa</span> |
-| `font.weight.700` | 700 | <span class="ods-typesample" style="font-weight:700">Aa</span> |
-
-</div>
-
-<div class="odv-brandset" data-for-brand="birch">
-
-<p class="odv-brandname">Birch</p>
-
-| Primitive | Value | Sample |
-| --- | --- | --- |
-| `font.family.plus-jakarta-sans` | "Plus Jakarta Sans", system-ui, sans-serif | <span class="ods-font" style="font-family:"Plus Jakarta Sans", system-ui, sans-serif">Aa 123</span> |
-| `font.line-height.1_2` | 1.2 | <span class="ods-leading" style="line-height:1.2" data-h="19px">Ag Ag Ag</span> |
-| `font.line-height.1_5` | 1.5 | <span class="ods-leading" style="line-height:1.5" data-h="24px">Ag Ag Ag</span> |
-| `font.line-height.1_8` | 1.8 | <span class="ods-leading" style="line-height:1.8" data-h="29px">Ag Ag Ag</span> |
-| `font.size.13` | 0.8125rem (13px) | <span class="ods-typesample" style="font-size:0.8125rem">Aa</span> |
-| `font.size.14` | 0.875rem (14px) | <span class="ods-typesample" style="font-size:0.875rem">Aa</span> |
-| `font.size.16` | 1rem (16px) | <span class="ods-typesample" style="font-size:1rem">Aa</span> |
-| `font.size.20` | 1.25rem (20px) | <span class="ods-typesample" style="font-size:1.25rem">Aa</span> |
-| `font.size.24` | 1.5rem (24px) | <span class="ods-typesample" style="font-size:1.5rem">Aa</span> |
-| `font.size.32` | 2rem (32px) | <span class="ods-typesample" style="font-size:2rem">Aa</span> |
-| `font.weight.400` | 400 | <span class="ods-typesample" style="font-weight:400">Aa</span> |
-| `font.weight.600` | 600 | <span class="ods-typesample" style="font-weight:600">Aa</span> |
-| `font.weight.700` | 700 | <span class="ods-typesample" style="font-weight:700">Aa</span> |
-
-</div>
-
-<div class="odv-brandset" data-for-brand="coral">
-
-<p class="odv-brandname">Coral</p>
-
-| Primitive | Value | Sample |
-| --- | --- | --- |
-| `font.family.poppins` | Poppins, system-ui, sans-serif | <span class="ods-font" style="font-family:Poppins, system-ui, sans-serif">Aa 123</span> |
-| `font.line-height.1_2` | 1.2 | <span class="ods-leading" style="line-height:1.2" data-h="19px">Ag Ag Ag</span> |
-| `font.line-height.1_5` | 1.5 | <span class="ods-leading" style="line-height:1.5" data-h="24px">Ag Ag Ag</span> |
-| `font.line-height.1_8` | 1.8 | <span class="ods-leading" style="line-height:1.8" data-h="29px">Ag Ag Ag</span> |
-| `font.size.13` | 0.8125rem (13px) | <span class="ods-typesample" style="font-size:0.8125rem">Aa</span> |
-| `font.size.14` | 0.875rem (14px) | <span class="ods-typesample" style="font-size:0.875rem">Aa</span> |
-| `font.size.16` | 1rem (16px) | <span class="ods-typesample" style="font-size:1rem">Aa</span> |
-| `font.size.20` | 1.25rem (20px) | <span class="ods-typesample" style="font-size:1.25rem">Aa</span> |
-| `font.size.24` | 1.5rem (24px) | <span class="ods-typesample" style="font-size:1.5rem">Aa</span> |
-| `font.size.32` | 2rem (32px) | <span class="ods-typesample" style="font-size:2rem">Aa</span> |
-| `font.weight.400` | 400 | <span class="ods-typesample" style="font-weight:400">Aa</span> |
-| `font.weight.600` | 600 | <span class="ods-typesample" style="font-weight:600">Aa</span> |
-| `font.weight.700` | 700 | <span class="ods-typesample" style="font-weight:700">Aa</span> |
-
-</div>
+The raw values these tokens end at are on [Primitives › Type](../primitives/type).
 
 ## Where it lands
 

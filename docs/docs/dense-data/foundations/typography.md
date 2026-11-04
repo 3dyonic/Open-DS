@@ -65,25 +65,7 @@ Each token points to another token. Values live only on primitives, below.
 | `type.data.line-height` | `font.line-height.1_45` |
 | `type.data.font-weight` | `font.weight.400` |
 
-## Primitives
-
-The raw values the tokens above end at.
-
-| Primitive | Value | Sample |
-| --- | --- | --- |
-| `font.family.ibm-plex-mono` | "IBM Plex Mono", ui-monospace, monospace | <span class="ods-font" style="font-family:"IBM Plex Mono", ui-monospace, monospace">Aa 123</span> |
-| `font.family.ibm-plex-sans` | "IBM Plex Sans", system-ui, sans-serif | <span class="ods-font" style="font-family:"IBM Plex Sans", system-ui, sans-serif">Aa 123</span> |
-| `font.line-height.1_2` | 1.2 | <span class="ods-leading" style="line-height:1.2" data-h="19px">Ag Ag Ag</span> |
-| `font.line-height.1_45` | 1.45 | <span class="ods-leading" style="line-height:1.45" data-h="23px">Ag Ag Ag</span> |
-| `font.size.12` | 0.75rem (12px) | <span class="ods-typesample" style="font-size:0.75rem">Aa</span> |
-| `font.size.13` | 0.8125rem (13px) | <span class="ods-typesample" style="font-size:0.8125rem">Aa</span> |
-| `font.size.14` | 0.875rem (14px) | <span class="ods-typesample" style="font-size:0.875rem">Aa</span> |
-| `font.size.16` | 1rem (16px) | <span class="ods-typesample" style="font-size:1rem">Aa</span> |
-| `font.size.20` | 1.25rem (20px) | <span class="ods-typesample" style="font-size:1.25rem">Aa</span> |
-| `font.size.24` | 1.5rem (24px) | <span class="ods-typesample" style="font-size:1.5rem">Aa</span> |
-| `font.weight.400` | 400 | <span class="ods-typesample" style="font-weight:400">Aa</span> |
-| `font.weight.500` | 500 | <span class="ods-typesample" style="font-weight:500">Aa</span> |
-| `font.weight.600` | 600 | <span class="ods-typesample" style="font-weight:600">Aa</span> |
+The raw values these tokens end at are on [Primitives › Type](../primitives/type).
 
 ## Where it lands
 

@@ -65,25 +65,7 @@ Each token points to another token. Values live only on primitives, below.
 | `type.data.line-height` | `font.line-height.1_65` |
 | `type.data.font-weight` | `font.weight.400` |
 
-## Primitives
-
-The raw values the tokens above end at.
-
-| Primitive | Value | Sample |
-| --- | --- | --- |
-| `font.family.inter` | Inter, system-ui, sans-serif | <span class="ods-font" style="font-family:Inter, system-ui, sans-serif">Aa 123</span> |
-| `font.family.source-serif-4` | "Source Serif 4", Georgia, serif | <span class="ods-font" style="font-family:"Source Serif 4", Georgia, serif">Aa 123</span> |
-| `font.line-height.1_15` | 1.15 | <span class="ods-leading" style="line-height:1.15" data-h="18px">Ag Ag Ag</span> |
-| `font.line-height.1_45` | 1.45 | <span class="ods-leading" style="line-height:1.45" data-h="23px">Ag Ag Ag</span> |
-| `font.line-height.1_65` | 1.65 | <span class="ods-leading" style="line-height:1.65" data-h="26px">Ag Ag Ag</span> |
-| `font.size.14` | 0.875rem (14px) | <span class="ods-typesample" style="font-size:0.875rem">Aa</span> |
-| `font.size.16` | 1rem (16px) | <span class="ods-typesample" style="font-size:1rem">Aa</span> |
-| `font.size.18` | 1.125rem (18px) | <span class="ods-typesample" style="font-size:1.125rem">Aa</span> |
-| `font.size.28` | 1.75rem (28px) | <span class="ods-typesample" style="font-size:1.75rem">Aa</span> |
-| `font.size.36` | 2.25rem (36px) | <span class="ods-typesample" style="font-size:2.25rem">Aa</span> |
-| `font.size.44` | 2.75rem (44px) | <span class="ods-typesample" style="font-size:2.75rem">Aa</span> |
-| `font.weight.400` | 400 | <span class="ods-typesample" style="font-weight:400">Aa</span> |
-| `font.weight.600` | 600 | <span class="ods-typesample" style="font-weight:600">Aa</span> |
+The raw values these tokens end at are on [Primitives › Type](../primitives/type).
 
 ## Where it lands
 

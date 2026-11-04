@@ -288,8 +288,8 @@ code {
   transition: left var(--ods-d, 320ms)
     var(--ods-e, var(--motion-easing-standard, ease));
 }
-/* OD-220: a duration or easing plays when you hover its row or the specimen. */
-.ods-specimen:hover .ods-motion > span,
+/* OD-220: a duration or easing plays when you hover it, or its row: only the one you point at. */
+.ods-item:hover .ods-motion > span,
 .markdown tr:hover .ods-motion > span {
   left: 2.25rem;
 }

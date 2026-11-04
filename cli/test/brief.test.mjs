@@ -28,30 +28,63 @@ test("brief: short Markdown with no values, sections on request, the full answer
   assert.doesNotMatch(b, /#[0-9A-Fa-f]{6}\b/);
   assert.match(b, /size large: not used/);
   assert.match(b, /^  keyboard\s+4 rules\s+\d+ B$/m);
-  assert.match(brief("dense-data", "button", { section: "values", roots, g }), /light #/);
-  assert.equal(JSON.parse(brief("dense-data", "button", { section: "all", roots, g })).kind, "component");
-  assert.throws(() => brief("dense-data", "button", { section: "nope", roots, g }), /Sections: keys/);
+  assert.match(
+    brief("dense-data", "button", { section: "values", roots, g }),
+    /light #/,
+  );
+  assert.equal(
+    JSON.parse(brief("dense-data", "button", { section: "all", roots, g }))
+      .kind,
+    "component",
+  );
+  assert.throws(
+    () => brief("dense-data", "button", { section: "nope", roots, g }),
+    /Sections: keys/,
+  );
   assert.equal(brief("dense-data", "nope", { roots, g }), null);
 });
 
 test("brief: a long section pages by size, never inside an item", () => {
   const one = brief("dense-data", "build", { section: "rules", roots, g });
-  const two = brief("dense-data", "build", { section: "rules", page: 2, roots, g });
-  assert.match(one, /Page 1 of 2\. Next: get_context target=build section=rules page=2/);
+  const two = brief("dense-data", "build", {
+    section: "rules",
+    page: 2,
+    roots,
+    g,
+  });
+  assert.match(
+    one,
+    /Page 1 of 2\. Next: get_context target=build section=rules page=2/,
+  );
   assert.match(two, /Page 2 of 2\.$/);
-  for (const p of [one, two]) assert.ok(Buffer.byteLength(p) < BUDGET.page + 200);
+  for (const p of [one, two])
+    assert.ok(Buffer.byteLength(p) < BUDGET.page + 200);
 });
 
 test("router: {id} routes a component file to its booklet; unknown ids fall through", () => {
   const s = loadScheme("dense-data", roots);
   const i = router(s, g, componentsFor(s, roots));
-  assert.deepEqual(routeFile(i, "src/components/ui/button.tsx"), ["components/button.md"]);
-  assert.deepEqual(routeFile(i, "./stories/dialog.stories.tsx"), ["components/dialog.md", "tasks/build.md"]);
-  assert.deepEqual(routeFile(i, "src/components/ui/nope.tsx"), ["tasks/build.md"]);
-  assert.deepEqual(routeFile(i, "tokens/src/semantic/color.tokens.json"), ["tasks/change.md"]);
+  assert.deepEqual(routeFile(i, "src/components/ui/button.tsx"), [
+    "components/button.md",
+  ]);
+  assert.deepEqual(routeFile(i, "./stories/dialog.stories.tsx"), [
+    "components/dialog.md",
+    "tasks/build.md",
+  ]);
+  assert.deepEqual(routeFile(i, "src/components/ui/nope.tsx"), [
+    "tasks/build.md",
+  ]);
+  assert.deepEqual(routeFile(i, "tokens/src/semantic/color.tokens.json"), [
+    "tasks/change.md",
+  ]);
   assert.deepEqual(routeFile(i, "README.md"), []);
-  assert.deepEqual(i.situations["destructive-action"], ["components/button.md", "components/dialog.md"]);
-  assert.deepEqual(i.situations["error-message"], ["colors/color.status.danger.md"]);
+  assert.deepEqual(i.situations["destructive-action"], [
+    "components/button.md",
+    "components/dialog.md",
+  ]);
+  assert.deepEqual(i.situations["error-message"], [
+    "colors/color.status.danger.md",
+  ]);
 });
 
 test("booklets: every scheme within budget, every route resolves, every booklet is reachable", () => {
@@ -61,10 +94,16 @@ test("booklets: every scheme within budget, every route resolves, every booklet 
     const set = booklets(s, g, comps, roots);
     const agents = agentsMd(s, g, { components: comps, project: true });
     assert.ok(Buffer.byteLength(agents) <= BUDGET.agents, `${id} AGENTS.md`);
-    assert.ok(agents.includes(READ_ONCE) && set["README.md"].includes(READ_ONCE), id);
+    assert.ok(
+      agents.includes(READ_ONCE) && set["README.md"].includes(READ_ONCE),
+      id,
+    );
     for (const [f, t] of Object.entries(set))
       if (f.endsWith(".md") && f !== "README.md")
-        assert.ok(Buffer.byteLength(t) <= BUDGET.booklet, `${id} ${f} ${Buffer.byteLength(t)}`);
+        assert.ok(
+          Buffer.byteLength(t) <= BUDGET.booklet,
+          `${id} ${f} ${Buffer.byteLength(t)}`,
+        );
     const index = JSON.parse(set["index.json"]);
     const reached = new Set();
     const lists = [
@@ -74,7 +113,9 @@ test("booklets: every scheme within budget, every route resolves, every booklet 
         routeFile(index, `src/components/ui/${c}.tsx`),
         routeFile(index, `stories/${c}.stories.tsx`),
       ]),
-      ...Object.keys(index.files).filter((k) => !k.includes("{id}")).map((k) => index.files[k]),
+      ...Object.keys(index.files)
+        .filter((k) => !k.includes("{id}"))
+        .map((k) => index.files[k]),
     ];
     for (const list of lists)
       for (const f of list) {
@@ -82,7 +123,8 @@ test("booklets: every scheme within budget, every route resolves, every booklet 
         reached.add(f);
       }
     for (const f of Object.keys(set))
-      if (f.startsWith("components/") || f.startsWith("tasks/")) assert.ok(reached.has(f), `${id}: ${f} unreachable`);
+      if (f.startsWith("components/") || f.startsWith("tasks/"))
+        assert.ok(reached.has(f), `${id}: ${f} unreachable`);
   }
 });
 
@@ -94,16 +136,28 @@ test("check_ui: every finding names a booklet section that exists", () => {
   const { findings } = checkUi(s, g, [
     {
       path: "src/x.tsx",
-      content: 'import { Button } from "@/components/ui/button";\nimport { Accordion } from "@/components/ui/accordion";\n<Button variant="ghost" className="bg-red-500 p-[3px]">x</Button>',
+      content:
+        'import { Button } from "@/components/ui/button";\nimport { Accordion } from "@/components/ui/accordion";\n<Button variant="ghost" className="bg-red-500 p-[3px]">x</Button>',
     },
   ]);
   const rules = new Set(findings.map((f) => f.rule));
-  for (const r of ["raw-colour", "raw-size", "not-in-inventory", "variant-not-used"]) assert.ok(rules.has(r), r);
+  for (const r of [
+    "raw-colour",
+    "raw-size",
+    "not-in-inventory",
+    "variant-not-used",
+  ])
+    assert.ok(rules.has(r), r);
   for (const f of findings) {
     const [file, section] = f.see.split(": ");
-    const text = file === "AGENTS.md" ? agents : set[file.replace(/^context\//, "")];
+    const text =
+      file === "AGENTS.md" ? agents : set[file.replace(/^context\//, "")];
     assert.ok(text, `${f.rule}: ${file} exists`);
-    if (section) assert.ok(text.includes(`## ${section}`), `${f.rule}: ${file} has ${section}`);
+    if (section)
+      assert.ok(
+        text.includes(`## ${section}`),
+        `${f.rule}: ${file} has ${section}`,
+      );
   }
   assert.ok(Object.keys(SEE).includes("context-drift"));
 });
@@ -119,7 +173,9 @@ test("create writes context/ and contextDrift reports changed, missing and extra
     writeFileSync(f, readFileSync(f, "utf8") + "x");
     writeFileSync(join(dir, "context/colors/extra.md"), "x");
     rmSync(join(dir, "context/tasks/write.md"));
-    const d = contextDrift(dir, s, g, comps, roots).map((x) => `${x.problem} ${x.file}`).sort();
+    const d = contextDrift(dir, s, g, comps, roots)
+      .map((x) => `${x.problem} ${x.file}`)
+      .sort();
     assert.deepEqual(d, [
       "changed context/colors/color.text.link.md",
       "extra context/colors/extra.md",

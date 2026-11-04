@@ -74,51 +74,7 @@ Each token points to another token. Values live only on primitives, below.
 
 </div>
 
-## Primitives
-
-The raw values the tokens above end at.
-
-<div class="odv-brandset" data-for-brand="aster">
-
-<p class="odv-brandname">Aster</p>
-
-| Primitive | Value | Sample |
-| --- | --- | --- |
-| `color.teal.dark.600` | #7FCFC6 | <span class="ods-swatch" style="background:#7FCFC6"></span> |
-| `color.teal.light.600` | #0F766E | <span class="ods-swatch" style="background:#0F766E"></span> |
-| `opacity.40` | 0.4 | <span class="ods-swatch" style="opacity:0.4"></span> |
-| `size.36` | 2.25rem (36px) | <span class="ods-bar" style="width:2.25rem"></span> |
-| `size.44` | 2.75rem (44px) | <span class="ods-bar" style="width:2.75rem"></span> |
-
-</div>
-
-<div class="odv-brandset" data-for-brand="birch">
-
-<p class="odv-brandname">Birch</p>
-
-| Primitive | Value | Sample |
-| --- | --- | --- |
-| `color.purple.dark.600` | #B79DF7 | <span class="ods-swatch" style="background:#B79DF7"></span> |
-| `color.purple.light.600` | #6D28D9 | <span class="ods-swatch" style="background:#6D28D9"></span> |
-| `opacity.40` | 0.4 | <span class="ods-swatch" style="opacity:0.4"></span> |
-| `size.36` | 2.25rem (36px) | <span class="ods-bar" style="width:2.25rem"></span> |
-| `size.44` | 2.75rem (44px) | <span class="ods-bar" style="width:2.75rem"></span> |
-
-</div>
-
-<div class="odv-brandset" data-for-brand="coral">
-
-<p class="odv-brandname">Coral</p>
-
-| Primitive | Value | Sample |
-| --- | --- | --- |
-| `color.orange.dark.600` | #F7A67F | <span class="ods-swatch" style="background:#F7A67F"></span> |
-| `color.orange.light.600` | #C2410C | <span class="ods-swatch" style="background:#C2410C"></span> |
-| `opacity.40` | 0.4 | <span class="ods-swatch" style="opacity:0.4"></span> |
-| `size.36` | 2.25rem (36px) | <span class="ods-bar" style="width:2.25rem"></span> |
-| `size.44` | 2.75rem (44px) | <span class="ods-bar" style="width:2.75rem"></span> |
-
-</div>
+The raw values these tokens end at are on [Primitives › all kinds](../primitives/).
 
 ## Where it lands
 

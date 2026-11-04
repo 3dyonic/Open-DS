@@ -7,6 +7,7 @@
 // and the files it writes; the agent runs it. The five skills are served as prompts.
 // No authentication yet: the hosted server will add a key (OD-145).
 
+import { scales } from "./scale-map.mjs";
 import { mkdtempSync, readFileSync, rmSync } from "node:fs";
 import { createServer as createHttpServer } from "node:http";
 import { tmpdir } from "node:os";
@@ -54,7 +55,7 @@ const VERSION = JSON.parse(
 // carry too (OD-205).
 const INSTRUCTIONS = `Open DS: design systems as answered questions. Every scheme answers the same questions and gives the reason for each answer; tokens, components, usage rules and voice follow from them.
 Choose: describe the product to fit_scheme, compare the top ones with compare_schemes, then plan_create (a new design system project) or plan_init (an existing app). They return the exact npx command; run it yourself.
-Build: call get_context build first, or get_context file=<path> for the file you edit. Before a component or variant, call get_component; before a token, find_token or when_to_use. Before you finish, run check_ui on the files you changed and fix each finding.
+Build: call get_context build first, or get_context file=<path> for the file you edit. Before a component or variant, call get_component; before a token, find_token or when_to_use; to see which colour step a token uses and which steps are free, get_scales. Before you finish, run check_ui on the files you changed and fix each finding.
 Write: get_context write holds the voice; get_scheme returns any part of a scheme in full. Check each label or message with check_copy. Change: call plan_change before you change an answer or a primitive. Review: run check_ui, then the review prompt.
 Explain any decision with why; get_answer shows one answer with every option, and what_moves shows what follows from an answer. The prompts open-ds-choose, open-ds-build, open-ds-write, open-ds-change and open-ds-review hold the step-by-step skills.
 The questions and answers are a starting point, not a standard.
@@ -607,6 +608,33 @@ export function createMcpServer({ roots = assetRoots() } = {}) {
         ),
       );
     },
+  );
+
+  server.registerTool(
+    "get_scales",
+    {
+      title: "Get the colour scales",
+      description:
+        "Each colour hue of a scheme as its whole scale in one brand and mode: every step, its value, and the tokens that land on it, by lane (backgrounds, edges and rings, text), with the neutral step a surface or text goes through. Use it to see which step a token uses and which steps are free.",
+      inputSchema: {
+        scheme_id: SchemeId,
+        brand: z
+          .string()
+          .optional()
+          .describe("The brand; the scheme's first when left out."),
+        mode: z
+          .enum(["light", "dark"])
+          .optional()
+          .describe("Light by default."),
+        hue: z
+          .string()
+          .optional()
+          .describe('One hue, for example "violet"; every hue when left out.'),
+      },
+      annotations: { readOnlyHint: true },
+    },
+    async ({ scheme_id, brand, mode, hue }) =>
+      json(scales(scheme(scheme_id), { brand, mode, hue })),
   );
 
   server.registerTool(

@@ -103,72 +103,7 @@ Each token points to another token. Values live only on primitives, below.
 | `component.transition.easing` | `motion.easing.standard` → `easing.spring` | `motion.easing.standard` → `easing.spring` |
 | `component.transition.panels-duration` | `motion.duration.panels` → `duration.moderate` | `motion.duration.panels` → `duration.moderate` |
 
-## Primitives
-
-The raw values the tokens above end at.
-
-| Primitive | Value | Sample |
-| --- | --- | --- |
-| `color.amber.dark.100` | #3B2701 | <span class="ods-swatch" style="background:#3B2701"></span> |
-| `color.amber.light.100` | #FAEBDA | <span class="ods-swatch" style="background:#FAEBDA"></span> |
-| `color.amber.light.50` | #FFF7EF | <span class="ods-swatch" style="background:#FFF7EF"></span> |
-| `color.amber.light.800` | #462A02 | <span class="ods-swatch" style="background:#462A02"></span> |
-| `color.black.dark.scrim` | #000000B3 | <span class="ods-swatch" style="background:#000000B3"></span> |
-| `color.black.light.scrim` | #0000008C | <span class="ods-swatch" style="background:#0000008C"></span> |
-| `color.blue.dark.100` | #13284B | <span class="ods-swatch" style="background:#13284B"></span> |
-| `color.blue.light.100` | #DEEAFE | <span class="ods-swatch" style="background:#DEEAFE"></span> |
-| `color.blue.light.50` | #F4F7FE | <span class="ods-swatch" style="background:#F4F7FE"></span> |
-| `color.blue.light.800` | #001A4E | <span class="ods-swatch" style="background:#001A4E"></span> |
-| `color.green.dark.100` | #013118 | <span class="ods-swatch" style="background:#013118"></span> |
-| `color.green.light.100` | #DFF5E2 | <span class="ods-swatch" style="background:#DFF5E2"></span> |
-| `color.green.light.50` | #F1FDF2 | <span class="ods-swatch" style="background:#F1FDF2"></span> |
-| `color.green.light.800` | #023E17 | <span class="ods-swatch" style="background:#023E17"></span> |
-| `color.pink.dark.100` | #451731 | <span class="ods-swatch" style="background:#451731"></span> |
-| `color.pink.dark.600` | #F59ACA | <span class="ods-swatch" style="background:#F59ACA"></span> |
-| `color.pink.dark.700` | #FBB4D8 | <span class="ods-swatch" style="background:#FBB4D8"></span> |
-| `color.pink.light.100` | #FFEAF0 | <span class="ods-swatch" style="background:#FFEAF0"></span> |
-| `color.pink.light.600` | #D61F7A | <span class="ods-swatch" style="background:#D61F7A"></span> |
-| `color.pink.light.700` | #A6025B | <span class="ods-swatch" style="background:#A6025B"></span> |
-| `color.red.dark.100` | #481316 | <span class="ods-swatch" style="background:#481316"></span> |
-| `color.red.dark.600` | #F28B8B | <span class="ods-swatch" style="background:#F28B8B"></span> |
-| `color.red.dark.700` | #FAA9A8 | <span class="ods-swatch" style="background:#FAA9A8"></span> |
-| `color.red.light.100` | #FEE9E7 | <span class="ods-swatch" style="background:#FEE9E7"></span> |
-| `color.red.light.50` | #FEF7F7 | <span class="ods-swatch" style="background:#FEF7F7"></span> |
-| `color.red.light.600` | #C42B2B | <span class="ods-swatch" style="background:#C42B2B"></span> |
-| `color.red.light.700` | #981519 | <span class="ods-swatch" style="background:#981519"></span> |
-| `color.red.light.800` | #6D0008 | <span class="ods-swatch" style="background:#6D0008"></span> |
-| `color.taupe.dark.100` | #33241F | <span class="ods-swatch" style="background:#33241F"></span> |
-| `color.taupe.dark.200` | #4D3A33 | <span class="ods-swatch" style="background:#4D3A33"></span> |
-| `color.taupe.dark.400` | #B5988A | <span class="ods-swatch" style="background:#B5988A"></span> |
-| `color.taupe.dark.50` | #1F1411 | <span class="ods-swatch" style="background:#1F1411"></span> |
-| `color.taupe.dark.500` | #E2C4B3 | <span class="ods-swatch" style="background:#E2C4B3"></span> |
-| `color.taupe.dark.900` | #FFF8F3 | <span class="ods-swatch" style="background:#FFF8F3"></span> |
-| `color.taupe.light.0` | #FFFFFF | <span class="ods-swatch" style="background:#FFFFFF"></span> |
-| `color.taupe.light.100` | #FCEFE6 | <span class="ods-swatch" style="background:#FCEFE6"></span> |
-| `color.taupe.light.200` | #F2DCCF | <span class="ods-swatch" style="background:#F2DCCF"></span> |
-| `color.taupe.light.500` | #8A6F63 | <span class="ods-swatch" style="background:#8A6F63"></span> |
-| `color.taupe.light.600` | #6B544A | <span class="ods-swatch" style="background:#6B544A"></span> |
-| `color.taupe.light.700` | #4D3A33 | <span class="ods-swatch" style="background:#4D3A33"></span> |
-| `color.taupe.light.900` | #1F1411 | <span class="ods-swatch" style="background:#1F1411"></span> |
-| `duration.fast` | 120ms | <span class="ods-motion" style="--ods-d:120ms" title="Hover to play"><span></span></span> |
-| `duration.moderate` | 200ms | <span class="ods-motion" style="--ods-d:200ms" title="Hover to play"><span></span></span> |
-| `easing.spring` | cubic-bezier(0.34, 1.56, 0.64, 1) | <span class="ods-motion" style="--ods-e:cubic-bezier(0.34,1.56,0.64,1)" title="Hover to play"><span></span></span> |
-| `font.size.14` | 0.875rem (14px) | <span class="ods-typesample" style="font-size:0.875rem">Aa</span> |
-| `font.size.15` | 0.9375rem (15px) | <span class="ods-typesample" style="font-size:0.9375rem">Aa</span> |
-| `font.size.17` | 1.0625rem (17px) | <span class="ods-typesample" style="font-size:1.0625rem">Aa</span> |
-| `font.weight.700` | 700 | <span class="ods-typesample" style="font-weight:700">Aa</span> |
-| `radius.24` | 1.5rem (24px) | <span class="ods-tile" style="border-radius:1.5rem"></span> |
-| `radius.999` | 9999px | <span class="ods-tile" style="border-radius:9999px"></span> |
-| `shadow.card` | 0px 12px 32px 0px #1F141124 | <span class="ods-card" style="box-shadow:0px 12px 32px 0px #1F141124"></span> |
-| `shadow.card-dark` | 0px 12px 32px 0px #00000080 | <span class="ods-card" style="box-shadow:0px 12px 32px 0px #00000080"></span> |
-| `shadow.overlay` | 0px 24px 48px 0px #1F141133 | <span class="ods-card" style="box-shadow:0px 24px 48px 0px #1F141133"></span> |
-| `shadow.overlay-dark` | 0px 24px 48px 0px #00000099 | <span class="ods-card" style="box-shadow:0px 24px 48px 0px #00000099"></span> |
-| `size.20` | 1.25rem (20px) | <span class="ods-bar" style="width:1.25rem"></span> |
-| `size.52` | 3.25rem (52px) | <span class="ods-bar" style="width:3.25rem"></span> |
-| `space.16` | 1rem (16px) | <span class="ods-bar" style="width:1rem"></span> |
-| `space.28` | 1.75rem (28px) | <span class="ods-bar" style="width:1.75rem"></span> |
-| `space.32` | 2rem (32px) | <span class="ods-bar" style="width:2rem"></span> |
-| `space.8` | 0.5rem (8px) | <span class="ods-bar" style="width:0.5rem"></span> |
+The raw values these tokens end at are on [Primitives › all kinds](../primitives/).
 
 ## Where it lands
 

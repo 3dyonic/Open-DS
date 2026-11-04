@@ -62,48 +62,7 @@ Each token points to another token. Values live only on primitives, below.
 
 </div>
 
-## Primitives
-
-The raw values the tokens above end at.
-
-<div class="odv-brandset" data-for-brand="aster">
-
-<p class="odv-brandname">Aster</p>
-
-| Primitive | Value | Sample |
-| --- | --- | --- |
-| `shadow.card` | 0px 2px 8px 0px #0F172A14 | <span class="ods-card" style="box-shadow:0px 2px 8px 0px #0F172A14"></span> |
-| `shadow.card-dark` | 0px 2px 8px 0px #00000066 | <span class="ods-card" style="box-shadow:0px 2px 8px 0px #00000066"></span> |
-| `shadow.overlay` | 0px 12px 32px 0px #0F172A29 | <span class="ods-card" style="box-shadow:0px 12px 32px 0px #0F172A29"></span> |
-| `shadow.overlay-dark` | 0px 12px 32px 0px #00000080 | <span class="ods-card" style="box-shadow:0px 12px 32px 0px #00000080"></span> |
-
-</div>
-
-<div class="odv-brandset" data-for-brand="birch">
-
-<p class="odv-brandname">Birch</p>
-
-| Primitive | Value | Sample |
-| --- | --- | --- |
-| `shadow.card` | 0px 2px 8px 0px #0F172A14 | <span class="ods-card" style="box-shadow:0px 2px 8px 0px #0F172A14"></span> |
-| `shadow.card-dark` | 0px 2px 8px 0px #00000066 | <span class="ods-card" style="box-shadow:0px 2px 8px 0px #00000066"></span> |
-| `shadow.overlay` | 0px 12px 32px 0px #0F172A29 | <span class="ods-card" style="box-shadow:0px 12px 32px 0px #0F172A29"></span> |
-| `shadow.overlay-dark` | 0px 12px 32px 0px #00000080 | <span class="ods-card" style="box-shadow:0px 12px 32px 0px #00000080"></span> |
-
-</div>
-
-<div class="odv-brandset" data-for-brand="coral">
-
-<p class="odv-brandname">Coral</p>
-
-| Primitive | Value | Sample |
-| --- | --- | --- |
-| `shadow.card` | 0px 2px 8px 0px #0F172A14 | <span class="ods-card" style="box-shadow:0px 2px 8px 0px #0F172A14"></span> |
-| `shadow.card-dark` | 0px 2px 8px 0px #00000066 | <span class="ods-card" style="box-shadow:0px 2px 8px 0px #00000066"></span> |
-| `shadow.overlay` | 0px 12px 32px 0px #0F172A29 | <span class="ods-card" style="box-shadow:0px 12px 32px 0px #0F172A29"></span> |
-| `shadow.overlay-dark` | 0px 12px 32px 0px #00000080 | <span class="ods-card" style="box-shadow:0px 12px 32px 0px #00000080"></span> |
-
-</div>
+The raw values these tokens end at are on [Primitives › Effects](../primitives/effects).
 
 ## Where it lands
 
