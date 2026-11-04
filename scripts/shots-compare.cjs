@@ -21,7 +21,9 @@ const THEMES = [
   "multi-brand--birch",
   "multi-brand--coral",
 ]
-  .flatMap((s) => [`${s}:light`, `${s}:dark`])
+  .flatMap((s) =>
+    process.env.LIGHT ? [`${s}:light`] : [`${s}:light`, `${s}:dark`],
+  )
   // THEMES=dense-data captures one scheme only
   .filter(
     (t) =>
@@ -53,28 +55,51 @@ function serve() {
   return new Promise((r) => server.listen(0, () => r(server)));
 }
 
+// STORIES=<regex> captures only matching story ids; PAGES=<n> pages work at once (default 8)
 async function capture(dir) {
   mkdirSync(dir, { recursive: true });
   const index = JSON.parse(readFileSync(join(STATIC, "index.json"), "utf8"));
+  const only = process.env.STORIES && new RegExp(process.env.STORIES);
   const stories = Object.values(index.entries).filter(
-    (e) => e.type === "story" && /^components-/.test(e.id),
+    (e) =>
+      e.type === "story" &&
+      /^components-/.test(e.id) &&
+      (!only || only.test(e.id)),
   );
+  const jobs = stories.flatMap((s) => THEMES.map((t) => [s, ...t.split(":")]));
   const server = await serve();
   const base = `http://localhost:${server.address().port}`;
   const b = await chromium.launch();
-  const page = await b.newPage({ viewport: { width: 900, height: 700 } });
-  for (const s of stories)
-    for (const t of THEMES) {
-      const [scheme, mode] = t.split(":");
+  const work = async () => {
+    const page = await b.newPage({ viewport: { width: 900, height: 700 } });
+    for (let job; (job = jobs.shift()); ) {
+      const [s, scheme, mode] = job;
       await page.goto(
         `${base}/iframe.html?id=${s.id}&viewMode=story&globals=scheme:${scheme};mode:${mode}`,
       );
-      await page.waitForTimeout(250);
+      // ready when Storybook shows the story, the fonts are in and two frames have painted
+      await page.waitForSelector("body.sb-show-main #storybook-root > *", {
+        timeout: 15000,
+      });
+      await page.evaluate(() =>
+        document.fonts.ready.then(
+          () =>
+            new Promise((r) =>
+              requestAnimationFrame(() => requestAnimationFrame(r)),
+            ),
+        ),
+      );
+      await page.waitForTimeout(80);
       await page.screenshot({
         path: join(dir, `${s.id}__${scheme}__${mode}.png`),
         fullPage: true,
       });
     }
+    await page.close();
+  };
+  await Promise.all(
+    Array.from({ length: Number(process.env.PAGES ?? 8) }, work),
+  );
   await b.close();
   server.close();
   console.log(`${stories.length} stories × ${THEMES.length} themes`);

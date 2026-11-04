@@ -1029,25 +1029,33 @@
           "description": "Open DS decisions on a group that are not values.",
           "properties": {
             "open-ds": {
-              "type": "object",
-              "additionalProperties": false,
-              "required": ["generated", "light", "dark"],
-              "description": "On a colored hue: how its scales are generated (OD-223). Each mode has a key color, kept exact at 600, and optional recorded adjustments per step.",
-              "properties": {
-                "generated": {
-                  "type": "string",
-                  "pattern": "^OD-\\d+$",
-                  "description": "The ticket that set the method."
+              "description": "Open DS decisions on a group: how a hue's scales are generated, or the component spacing map's rhythm.",
+              "anyOf": [
+                {
+                  "type": "object",
+                  "additionalProperties": false,
+                  "required": ["generated", "light", "dark"],
+                  "description": "On a colored hue: how its scales are generated (OD-223). Each mode has a key color, kept exact at 600, and optional recorded adjustments per step.",
+                  "properties": {
+                    "generated": {
+                      "type": "string",
+                      "pattern": "^OD-\\d+$",
+                      "description": "The ticket that set the method."
+                    },
+                    "light": {
+                      "$ref": "#/$defs/scaleSpec",
+                      "description": "The light scale's key and adjustments."
+                    },
+                    "dark": {
+                      "$ref": "#/$defs/scaleSpec",
+                      "description": "The dark scale's key and adjustments."
+                    }
+                  }
                 },
-                "light": {
-                  "$ref": "#/$defs/scaleSpec",
-                  "description": "The light scale's key and adjustments."
-                },
-                "dark": {
-                  "$ref": "#/$defs/scaleSpec",
-                  "description": "The dark scale's key and adjustments."
+                {
+                  "$ref": "#/$defs/spacingMapSpec"
                 }
-              }
+              ]
             }
           }
         },
@@ -1175,6 +1183,15 @@
                       "description": "What falls short and why."
                     }
                   }
+                },
+                "multiplier": {
+                  "type": "number",
+                  "exclusiveMinimum": 0,
+                  "description": "On a step of the component spacing map: its multiplier of space.unit."
+                },
+                "fixed": {
+                  "const": true,
+                  "description": "On a step of the component spacing map: it holds still in this scheme."
                 }
               }
             }
@@ -1201,6 +1218,42 @@
             "pattern": "^[a-z]+\\.(q\\d+|roles|count|definition|values|lands)$"
           },
           "description": "Question ids whose answers this text was written from."
+        }
+      }
+    },
+    "spacingMapSpec": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["rhythm", "fixed", "because", "why"],
+      "description": "On the component spacing map (OD-235): the scheme's rhythm and the steps that hold still. The steps' values are generated from it.",
+      "properties": {
+        "rhythm": {
+          "type": "number",
+          "minimum": 1,
+          "maximum": 3,
+          "description": "How much the steps grow in this scheme: a step is space.unit × its multiplier × the rhythm."
+        },
+        "fixed": {
+          "type": "array",
+          "items": {
+            "enum": ["x1", "x2", "x3", "x4", "x6", "x8", "x12"]
+          },
+          "uniqueItems": true,
+          "description": "Steps that hold still at space.unit × their multiplier."
+        },
+        "because": {
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "type": "string",
+            "pattern": "^[a-z-]+\\.[a-z0-9-]+$"
+          },
+          "description": "The answers the rhythm comes from."
+        },
+        "why": {
+          "type": "string",
+          "minLength": 1,
+          "description": "The reason, in plain words."
         }
       }
     }

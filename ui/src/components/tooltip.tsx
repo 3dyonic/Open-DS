@@ -23,7 +23,7 @@ export function TooltipContent({
         data-slot="tooltip-content"
         sideOffset={sideOffset}
         className={cn(
-          "z-50 rounded-[var(--tooltip-content-radius)] bg-[var(--tooltip-background)] text-[var(--tooltip-label)] px-[var(--tooltip-content-padding-x)] py-1",
+          "z-50 rounded-[var(--tooltip-content-radius)] bg-[var(--tooltip-background)] text-[var(--tooltip-label)] px-[var(--tooltip-content-padding-x)] py-[var(--tooltip-content-padding-y)]",
           "text-[length:var(--tooltip-content-font-size)] [font-family:var(--tooltip-content-font-family)]",
           className,
         )}

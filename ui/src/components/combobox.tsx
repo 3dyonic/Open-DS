@@ -124,7 +124,7 @@ function ComboboxList({ className, ...props }: ComboboxPrimitive.List.Props) {
     <ComboboxPrimitive.List
       data-slot="combobox-list"
       className={cn(
-        "max-h-[min(calc(--spacing(96)---spacing(9)),calc(var(--available-height)---spacing(9)))] scroll-py-1 overflow-y-auto p-1 data-empty:p-0",
+        "max-h-[min(calc(--spacing(96)---spacing(9)),calc(var(--available-height)---spacing(9)))] scroll-py-1 overflow-y-auto p-[var(--combobox-list-padding)] data-empty:p-0",
         className,
       )}
       {...props}
@@ -137,7 +137,7 @@ function ComboboxItem({ className, children, ...props }: ComboboxPrimitive.Item.
     <ComboboxPrimitive.Item
       data-slot="combobox-item"
       className={cn(
-        "relative flex w-full cursor-default items-center gap-[var(--combobox-item-gap)] rounded-[var(--combobox-item-radius)] py-1.5 pr-8 pl-2 text-[length:var(--combobox-item-font-size)]/[var(--combobox-item-line-height)] outline-hidden select-none data-highlighted:bg-[color:var(--combobox-item-background)] data-highlighted:text-[color:var(--combobox-item-label)] data-[disabled]:pointer-events-none data-[disabled]:opacity-[var(--combobox-item-disabled-opacity-disabled)] [&_svg]:pointer-events-none [&_svg]:shrink-0 [&_svg:not([class*='size-'])]:size-[var(--combobox-item-icon-size)]",
+        "relative flex w-full cursor-default items-center gap-[var(--combobox-item-gap)] rounded-[var(--combobox-item-radius)] py-[var(--combobox-item-padding-y)] pr-[var(--combobox-item-padding-right)] pl-[var(--combobox-item-padding-left)] text-[length:var(--combobox-item-font-size)]/[var(--combobox-item-line-height)] outline-hidden select-none data-highlighted:bg-[color:var(--combobox-item-background)] data-highlighted:text-[color:var(--combobox-item-label)] data-[disabled]:pointer-events-none data-[disabled]:opacity-[var(--combobox-item-disabled-opacity-disabled)] [&_svg]:pointer-events-none [&_svg]:shrink-0 [&_svg:not([class*='size-'])]:size-[var(--combobox-item-icon-size)]",
         className,
       )}
       {...props}
@@ -164,7 +164,7 @@ function ComboboxLabel({ className, ...props }: ComboboxPrimitive.GroupLabel.Pro
     <ComboboxPrimitive.GroupLabel
       data-slot="combobox-label"
       className={cn(
-        "px-2 py-1.5 text-[length:var(--combobox-label-font-size)]/[var(--combobox-label-line-height)] text-[color:var(--combobox-label-label)] pointer-coarse:px-[var(--combobox-label-padding-x)] pointer-coarse:py-2 pointer-coarse:text-[length:var(--combobox-label-font-size-2)]/[var(--combobox-label-line-height-2)]",
+        "px-[var(--combobox-label-padding-x)] py-[var(--combobox-label-padding-y)] text-[length:var(--combobox-label-font-size)]/[var(--combobox-label-line-height)] text-[color:var(--combobox-label-label)] pointer-coarse:px-[var(--combobox-label-padding-x-2)] pointer-coarse:py-[var(--combobox-label-padding-y)] pointer-coarse:text-[length:var(--combobox-label-font-size-2)]/[var(--combobox-label-line-height-2)]",
         className,
       )}
       {...props}
@@ -181,7 +181,7 @@ function ComboboxEmpty({ className, ...props }: ComboboxPrimitive.Empty.Props) {
     <ComboboxPrimitive.Empty
       data-slot="combobox-empty"
       className={cn(
-        "hidden w-full justify-center py-2 text-center text-[length:var(--combobox-empty-font-size)]/[var(--combobox-empty-line-height)] text-[color:var(--combobox-empty-label)] group-data-empty/combobox-content:flex",
+        "hidden w-full justify-center py-[var(--combobox-empty-padding-y)] text-center text-[length:var(--combobox-empty-font-size)]/[var(--combobox-empty-line-height)] text-[color:var(--combobox-empty-label)] group-data-empty/combobox-content:flex",
         className,
       )}
       {...props}
@@ -207,7 +207,7 @@ function ComboboxChips({
     <ComboboxPrimitive.Chips
       data-slot="combobox-chips"
       className={cn(
-        "flex min-h-9 flex-wrap items-center gap-1.5 rounded-[var(--combobox-chips-radius)] border border-[color:var(--combobox-chips-border)] bg-transparent bg-clip-padding px-2.5 py-1.5 text-[length:var(--combobox-chips-font-size)]/[var(--combobox-chips-line-height)] shadow-[var(--combobox-chips-shadow)] transition-[color,box-shadow] focus-within:border-[color:var(--combobox-chips-border-focus)] focus-within:ring-[3px] focus-within:ring-[color:var(--combobox-chips-focus-ring-focus)]/50 has-aria-invalid:border-[color:var(--combobox-chips-border-invalid)] has-aria-invalid:ring-[3px] has-aria-invalid:ring-[color:var(--combobox-chips-focus-ring-invalid)]/20 has-data-[slot=combobox-chip]:px-1.5",
+        "flex min-h-9 flex-wrap items-center gap-[var(--combobox-chips-gap)] rounded-[var(--combobox-chips-radius)] border border-[color:var(--combobox-chips-border)] bg-transparent bg-clip-padding px-[var(--combobox-chips-padding-x)] py-[var(--combobox-chips-padding-y)] text-[length:var(--combobox-chips-font-size)]/[var(--combobox-chips-line-height)] shadow-[var(--combobox-chips-shadow)] transition-[color,box-shadow] focus-within:border-[color:var(--combobox-chips-border-focus)] focus-within:ring-[3px] focus-within:ring-[color:var(--combobox-chips-focus-ring-focus)]/50 has-aria-invalid:border-[color:var(--combobox-chips-border-invalid)] has-aria-invalid:ring-[3px] has-aria-invalid:ring-[color:var(--combobox-chips-focus-ring-invalid)]/20 has-data-[slot=combobox-chip]:px-[var(--combobox-chips-padding-x-2)]",
         className,
       )}
       {...props}
@@ -227,7 +227,7 @@ function ComboboxChip({
     <ComboboxPrimitive.Chip
       data-slot="combobox-chip"
       className={cn(
-        "flex h-[calc(--spacing(5.5))] w-fit items-center justify-center gap-[var(--combobox-chip-gap)] rounded-[var(--combobox-chip-radius)] bg-[color:var(--combobox-chip-background)] px-1.5 text-[length:var(--combobox-chip-font-size)]/[var(--combobox-chip-line-height)] [font-weight:var(--combobox-chip-font-weight)] whitespace-nowrap text-[color:var(--combobox-chip-label)] has-disabled:pointer-events-none has-disabled:cursor-not-allowed has-disabled:opacity-[var(--combobox-chip-disabled-opacity)] has-data-[slot=combobox-chip-remove]:pr-0",
+        "flex h-[calc(--spacing(5.5))] w-fit items-center justify-center gap-[var(--combobox-chip-gap)] rounded-[var(--combobox-chip-radius)] bg-[color:var(--combobox-chip-background)] px-[var(--combobox-chip-padding-x)] text-[length:var(--combobox-chip-font-size)]/[var(--combobox-chip-line-height)] [font-weight:var(--combobox-chip-font-weight)] whitespace-nowrap text-[color:var(--combobox-chip-label)] has-disabled:pointer-events-none has-disabled:cursor-not-allowed has-disabled:opacity-[var(--combobox-chip-disabled-opacity)] has-data-[slot=combobox-chip-remove]:pr-0",
         className,
       )}
       {...props}

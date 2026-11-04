@@ -19,36 +19,63 @@
   "scenarios": [
     {
       "text": "A visitor lands on a launch page from a social post and joins the waiting list.",
-      "follows": ["scenarios.q1", "scenarios.q2", "outcomes.q1"]
+      "follows": [
+        "scenarios.q1",
+        "scenarios.q2",
+        "outcomes.q1"
+      ]
     },
     {
       "text": "An agency swaps the campaign colors for the next drop without changing the components.",
-      "follows": ["team.q1", "team.q2"]
+      "follows": [
+        "team.q1",
+        "team.q2"
+      ]
     }
   ],
   "voice": {
     "summary": {
       "text": "Playful and short. Big words, few of them.",
-      "follows": ["voice.values"]
+      "follows": [
+        "voice.values"
+      ]
     },
     "principles": [
       {
         "text": "Headlines are short and bold. Three to six words.",
-        "follows": ["voice.lands", "typography.roles"]
+        "follows": [
+          "voice.lands",
+          "typography.roles"
+        ]
       },
       {
         "text": "Verbs that move: Join, Try, Go.",
-        "follows": ["voice.values"]
+        "follows": [
+          "voice.values"
+        ]
       },
       {
         "text": "Playful in headlines, plain in errors.",
-        "follows": ["voice.count"]
+        "follows": [
+          "voice.count"
+        ]
       }
     ],
     "words": {
-      "use": ["Join", "Drop", "Go", "Love"],
-      "avoid": ["Synergy", "Leverage", "Kindly"],
-      "follows": ["voice.values"]
+      "use": [
+        "Join",
+        "Drop",
+        "Go",
+        "Love"
+      ],
+      "avoid": [
+        "Synergy",
+        "Leverage",
+        "Kindly"
+      ],
+      "follows": [
+        "voice.values"
+      ]
     }
   },
   "inventory": {
@@ -66,53 +93,78 @@
           "variant": {
             "primary": {
               "use": "One loud call to action per section.",
-              "because": ["outcomes.q1"]
+              "because": [
+                "outcomes.q1"
+              ]
             },
             "secondary": {
               "use": "The first step of a delete, before the confirm.",
-              "because": ["outcomes.q2"]
+              "because": [
+                "outcomes.q2"
+              ]
             },
             "danger": {
               "use": "The confirm of a delete. It stays red, apart from the brand's pink.",
-              "because": ["outcomes.q2"]
+              "because": [
+                "outcomes.q2"
+              ]
             },
             "ghost": {
               "use": "The alternative next to the primary, and row actions with a word.",
-              "because": ["color.count", "iconography.roles"]
+              "because": [
+                "color.count",
+                "iconography.roles"
+              ]
             }
           },
           "size": {
             "default": {
               "use": "Every button, at touch size: phones first.",
-              "because": ["accessibility.values"]
+              "because": [
+                "accessibility.values"
+              ]
             },
             "compact": {
               "not_used": true,
               "why": "Phones first: no compact controls.",
-              "because": ["accessibility.values"]
+              "because": [
+                "accessibility.values"
+              ]
             },
             "icon": {
               "not_used": true,
               "why": "Phones first: hover hints never show, so every button has a word.",
-              "because": ["accessibility.values", "iconography.roles"]
+              "because": [
+                "accessibility.values",
+                "iconography.roles"
+              ]
             },
             "large": {
               "use": "The one loud call to action per section.",
-              "because": ["outcomes.q1"]
+              "because": [
+                "outcomes.q1"
+              ]
             }
           },
           "state": {
             "hover": {
               "use": "Relaxed, springy feedback: motion is part of the brand.",
-              "because": ["motion.roles", "motion.values"]
+              "because": [
+                "motion.roles",
+                "motion.values"
+              ]
             },
             "focus": {
               "use": "Always shows, even on vivid color.",
-              "because": ["people.q2"]
+              "because": [
+                "people.q2"
+              ]
             },
             "disabled": {
               "use": "Only with a visible reason next to it.",
-              "because": ["people.q2"]
+              "because": [
+                "people.q2"
+              ]
             }
           }
         }
@@ -132,17 +184,24 @@
           "orientation": {
             "vertical": {
               "use": "The sign-up form: the label above the field.",
-              "because": ["scenarios.q1"]
+              "because": [
+                "scenarios.q1"
+              ]
             },
             "horizontal": {
               "not_used": true,
               "why": "Phones first: there is no room beside the field.",
-              "because": ["scenarios.q1", "accessibility.values"]
+              "because": [
+                "scenarios.q1",
+                "accessibility.values"
+              ]
             },
             "responsive": {
               "not_used": true,
               "why": "Phones first: one stacked layout.",
-              "because": ["scenarios.q1"]
+              "because": [
+                "scenarios.q1"
+              ]
             }
           }
         }
@@ -166,25 +225,36 @@
           "tone": {
             "neutral": {
               "use": "New: a label, not a state to fix.",
-              "because": ["accessibility.count"]
+              "because": [
+                "accessibility.count"
+              ]
             },
             "info": {
               "not_used": true,
               "why": "Campaign labels are a state or a nudge; there are no plain news labels.",
-              "because": ["content.q1"]
+              "because": [
+                "content.q1"
+              ]
             },
             "success": {
               "use": "On the list: you joined and your place is saved.",
-              "because": ["accessibility.count"]
+              "because": [
+                "accessibility.count"
+              ]
             },
             "warning": {
               "use": "Almost gone: few left, act soon.",
-              "because": ["accessibility.count", "outcomes.q1"]
+              "because": [
+                "accessibility.count",
+                "outcomes.q1"
+              ]
             },
             "danger": {
               "not_used": true,
               "why": "Nothing on a launch page is labeled as failed; errors are plain sentences.",
-              "because": ["voice.count"]
+              "because": [
+                "voice.count"
+              ]
             }
           }
         }
@@ -212,15 +282,22 @@
           "tone": {
             "neutral": {
               "use": "A light note that something changed.",
-              "because": ["voice.count"]
+              "because": [
+                "voice.count"
+              ]
             },
             "success": {
               "use": "Celebrate, briefly: You're on the list. See you at launch.",
-              "because": ["voice.values", "outcomes.q1"]
+              "because": [
+                "voice.values",
+                "outcomes.q1"
+              ]
             },
             "danger": {
               "use": "Plain first, a light touch after: That didn't go through.",
-              "because": ["voice.count"]
+              "because": [
+                "voice.count"
+              ]
             }
           }
         }
@@ -245,11 +322,18 @@
             "default": {
               "not_used": true,
               "why": "Alerts here only report a sign-up that did not go through; confirmations go in a toast.",
-              "because": ["tasks.q2", "voice.count"]
+              "because": [
+                "tasks.q2",
+                "voice.count"
+              ]
             },
             "destructive": {
               "use": "A sign-up that did not go through: plain first, then how to recover, with a word beside the color.",
-              "because": ["voice.count", "accessibility.count", "outcomes.q2"]
+              "because": [
+                "voice.count",
+                "accessibility.count",
+                "outcomes.q2"
+              ]
             }
           }
         }
@@ -297,11 +381,17 @@
           "variant": {
             "default": {
               "use": "A campaign image or illustration beside the playful words and a clear next step.",
-              "because": ["content.q1", "human.q1"]
+              "because": [
+                "content.q1",
+                "human.q1"
+              ]
             },
             "icon": {
               "use": "A two-tone icon in a tile, for a small region where a picture would push the words away.",
-              "because": ["iconography.definition", "iconography.roles"]
+              "because": [
+                "iconography.definition",
+                "iconography.roles"
+              ]
             }
           }
         }
@@ -317,21 +407,31 @@
           "align": {
             "inline-start": {
               "use": "The search icon before the text.",
-              "because": ["iconography.roles"]
+              "because": [
+                "iconography.roles"
+              ]
             },
             "inline-end": {
               "use": "The unit after the value, or the clear button with a word: hover hints never show on phones.",
-              "because": ["accessibility.values"]
+              "because": [
+                "accessibility.values"
+              ]
             },
             "block-start": {
               "not_used": true,
               "why": "Copy is short and sign-up is the one action, so fields stay one line.",
-              "because": ["content.q1", "tasks.q2"]
+              "because": [
+                "content.q1",
+                "tasks.q2"
+              ]
             },
             "block-end": {
               "not_used": true,
               "why": "Copy is short and sign-up is the one action, so fields stay one line.",
-              "because": ["content.q1", "tasks.q2"]
+              "because": [
+                "content.q1",
+                "tasks.q2"
+              ]
             }
           }
         }
@@ -347,27 +447,38 @@
           "variant": {
             "default": {
               "use": "Rows inside a card, which already gives the frame.",
-              "because": ["elevation.definition"]
+              "because": [
+                "elevation.definition"
+              ]
             },
             "outline": {
               "use": "Rows on a color block, with a border so each holds its edge on vivid color.",
-              "because": ["color.values"]
+              "because": [
+                "color.values"
+              ]
             },
             "muted": {
               "not_used": true,
               "why": "A quiet fill reads as bland on a loud page; color blocks already mark each section.",
-              "because": ["brand.q2", "outcomes.q2"]
+              "because": [
+                "brand.q2",
+                "outcomes.q2"
+              ]
             }
           },
           "size": {
             "default": {
               "use": "Every row, at touch size: phones first.",
-              "because": ["accessibility.values"]
+              "because": [
+                "accessibility.values"
+              ]
             },
             "sm": {
               "not_used": true,
               "why": "Phones first: no compact rows.",
-              "because": ["accessibility.values"]
+              "because": [
+                "accessibility.values"
+              ]
             }
           }
         }
@@ -420,27 +531,40 @@
             "default": {
               "not_used": true,
               "why": "Sections lead with media and color blocks, not toolbars; a toggle with no border is lost on vivid color.",
-              "because": ["components.roles", "color.values"]
+              "because": [
+                "components.roles",
+                "color.values"
+              ]
             },
             "outline": {
               "use": "A pill with a border, so the toggle reads as a control on vivid color.",
-              "because": ["shape.values", "color.values"]
+              "because": [
+                "shape.values",
+                "color.values"
+              ]
             }
           },
           "size": {
             "default": {
               "use": "Every toggle, at touch size: phones first.",
-              "because": ["accessibility.values"]
+              "because": [
+                "accessibility.values"
+              ]
             },
             "sm": {
               "not_used": true,
               "why": "Phones first: no compact controls.",
-              "because": ["accessibility.values"]
+              "because": [
+                "accessibility.values"
+              ]
             },
             "lg": {
               "not_used": true,
               "why": "Large is for the one call to action per section, and a toggle is not that action.",
-              "because": ["tasks.q2", "outcomes.q1"]
+              "because": [
+                "tasks.q2",
+                "outcomes.q1"
+              ]
             }
           }
         }
@@ -470,98 +594,183 @@
       {
         "id": "attachment",
         "why": "Brand expressive keeps only the parts in use for one action and a story, not a part for one campaign. Sharing files in a conversation is neither.",
-        "instead": ["card"],
-        "because": ["components.count", "tasks.q2"]
+        "instead": [
+          "card"
+        ],
+        "because": [
+          "components.count",
+          "tasks.q2"
+        ]
       },
       {
         "id": "bubble",
         "why": "Brand expressive keeps only the parts in use for one action and a story, not a part for one campaign. A back-and-forth chat is neither.",
-        "instead": ["card", "avatar"],
-        "because": ["components.count", "tasks.q2"]
+        "instead": [
+          "card",
+          "avatar"
+        ],
+        "because": [
+          "components.count",
+          "tasks.q2"
+        ]
       },
       {
         "id": "command",
         "why": "Command serves expert users who type to jump anywhere. Brand expressive serves new customers deciding if they care, who come from social posts on their phones.",
-        "instead": ["navigation-menu", "drawer"],
-        "because": ["people.q1", "scenarios.q1"]
+        "instead": [
+          "navigation-menu",
+          "drawer"
+        ],
+        "because": [
+          "people.q1",
+          "scenarios.q1"
+        ]
       },
       {
         "id": "context-menu",
         "why": "Context menu is for power users, and people who don't know to right-click never find it. Brand expressive serves new customers deciding if they care.",
-        "instead": ["button", "popover"],
-        "because": ["people.q1", "tasks.q2"]
+        "instead": [
+          "button",
+          "popover"
+        ],
+        "because": [
+          "people.q1",
+          "tasks.q2"
+        ]
       },
       {
         "id": "data-table",
         "why": "Brand expressive avoids tools people use for hours. Data table is for acting on many records in bulk; here people browse and explore the story.",
-        "instead": ["card"],
-        "because": ["tasks.q1", "people.q1"]
+        "instead": [
+          "card"
+        ],
+        "because": [
+          "tasks.q1",
+          "people.q1"
+        ]
       },
       {
         "id": "hover-card",
         "why": "Touch screens have no hover, and visitors come from social posts on their phones. Popover already opens a product preview on tap.",
-        "instead": ["popover"],
-        "because": ["scenarios.q1", "accessibility.values"]
+        "instead": [
+          "popover"
+        ],
+        "because": [
+          "scenarios.q1",
+          "accessibility.values"
+        ]
       },
       {
         "id": "kbd",
         "why": "Visitors come from social posts on their phones, and they are new customers deciding if they care. A keyboard shortcut serves neither.",
-        "instead": ["button"],
-        "because": ["scenarios.q1", "people.q1"]
+        "instead": [
+          "button"
+        ],
+        "because": [
+          "scenarios.q1",
+          "people.q1"
+        ]
       },
       {
         "id": "marker",
         "why": "Brand expressive keeps only the parts in use for one action and a story, and a visit lasts a few minutes. A long conversation split into days is neither.",
-        "instead": ["separator"],
-        "because": ["components.count", "scenarios.q2"]
+        "instead": [
+          "separator"
+        ],
+        "because": [
+          "components.count",
+          "scenarios.q2"
+        ]
       },
       {
         "id": "menubar",
         "why": "Menubar is for dense desktop tools and not phones. Visitors come from social posts on their phones, and the site sections use navigation menu.",
-        "instead": ["navigation-menu", "drawer"],
-        "because": ["scenarios.q1"]
+        "instead": [
+          "navigation-menu",
+          "drawer"
+        ],
+        "because": [
+          "scenarios.q1"
+        ]
       },
       {
         "id": "message-scroller",
         "why": "Brand expressive keeps only the parts in use for one action and a story, not a part for one campaign. A live conversation is neither.",
-        "instead": ["card"],
-        "because": ["components.count", "tasks.q2"]
+        "instead": [
+          "card"
+        ],
+        "because": [
+          "components.count",
+          "tasks.q2"
+        ]
       },
       {
         "id": "resizable",
         "why": "Resizable is for desktop tools and not phones. Visitors come from social posts on their phones, and Brand expressive avoids tools people use for hours.",
-        "instead": ["card"],
-        "because": ["scenarios.q1"]
+        "instead": [
+          "card"
+        ],
+        "because": [
+          "scenarios.q1"
+        ]
       },
       {
         "id": "select",
         "why": "Visitors come from social posts on their phones, where the system picker is best. Native select covers a closed list there.",
-        "instead": ["field", "popover"],
-        "because": ["scenarios.q1", "accessibility.values"]
+        "instead": [
+          "field",
+          "popover"
+        ],
+        "because": [
+          "scenarios.q1",
+          "accessibility.values"
+        ]
       },
       {
         "id": "sheet",
         "why": "Phones first: drawer is the bottom panel for phones and already holds the menu, and dialog holds the waitlist form.",
-        "instead": ["drawer", "dialog"],
-        "because": ["accessibility.values", "scenarios.q1"]
+        "instead": [
+          "drawer",
+          "dialog"
+        ],
+        "because": [
+          "accessibility.values",
+          "scenarios.q1"
+        ]
       },
       {
         "id": "sidebar",
         "why": "Sidebar is for apps people move around all session. Brand expressive avoids tools people use for hours, and a visit lasts a few minutes at most.",
-        "instead": ["navigation-menu", "drawer"],
-        "because": ["scenarios.q2"]
+        "instead": [
+          "navigation-menu",
+          "drawer"
+        ],
+        "because": [
+          "scenarios.q2"
+        ]
       },
       {
         "id": "tooltip",
         "why": "Visitors come from social posts on their phones, where hover hints never show. Every button has a word instead.",
-        "instead": ["button", "popover"],
-        "because": ["accessibility.values", "iconography.roles"]
+        "instead": [
+          "button",
+          "popover"
+        ],
+        "because": [
+          "accessibility.values",
+          "iconography.roles"
+        ]
       }
     ]
   },
   "samples": {
     "description": "Sample content for showing this system: written from its use scenarios, in its voice, with every status mapped to a meaning. Storybook, the site and the docs read it; it is never shared between schemes.",
-    "follows": ["scenarios.q1", "content.q1", "tasks.q1", "voice.values"],
+    "follows": [
+      "scenarios.q1",
+      "content.q1",
+      "tasks.q1",
+      "voice.values"
+    ],
     "screen": "The drop is coming",
     "conversation": {
       "title": "Drop 03 chat",
@@ -630,35 +839,67 @@
       ],
       "rows": [
         {
-          "cells": ["Night runner jacket", "Ink", "40"],
+          "cells": [
+            "Night runner jacket",
+            "Ink",
+            "40"
+          ],
           "status": "Almost gone"
         },
         {
-          "cells": ["Trail shell", "Volt", "220"],
+          "cells": [
+            "Trail shell",
+            "Volt",
+            "220"
+          ],
           "status": "New"
         },
         {
-          "cells": ["Studio hoodie", "Chalk", "180"],
+          "cells": [
+            "Studio hoodie",
+            "Chalk",
+            "180"
+          ],
           "status": "On the list"
         },
         {
-          "cells": ["Drift cap", "Ember", "35"],
+          "cells": [
+            "Drift cap",
+            "Ember",
+            "35"
+          ],
           "status": "Almost gone"
         },
         {
-          "cells": ["Loop tee", "Chalk", "300"],
+          "cells": [
+            "Loop tee",
+            "Chalk",
+            "300"
+          ],
           "status": "New"
         },
         {
-          "cells": ["Cargo short", "Ember", "150"],
+          "cells": [
+            "Cargo short",
+            "Ember",
+            "150"
+          ],
           "status": "On the list"
         },
         {
-          "cells": ["Pace sock", "Volt", "90"],
+          "cells": [
+            "Pace sock",
+            "Volt",
+            "90"
+          ],
           "status": "New"
         },
         {
-          "cells": ["Weekend tote", "Ink", "25"],
+          "cells": [
+            "Weekend tote",
+            "Ink",
+            "25"
+          ],
           "status": "Almost gone"
         }
       ]
@@ -695,10 +936,18 @@
     ],
     "select": {
       "label": "Your size",
-      "options": ["S", "M", "L", "XL"],
+      "options": [
+        "S",
+        "M",
+        "L",
+        "XL"
+      ],
       "value": "M"
     },
-    "switches": ["Launch reminder", "Drop news by email"],
+    "switches": [
+      "Launch reminder",
+      "Drop news by email"
+    ],
     "messages": {
       "success": "You're on the list. See you at launch.",
       "error": {
@@ -738,7 +987,10 @@
     ],
     "menu": {
       "trigger": "More for this piece",
-      "items": ["Share the drop", "Set a reminder"],
+      "items": [
+        "Share the drop",
+        "Set a reminder"
+      ],
       "destructive": "Leave the list"
     },
     "icon_action": "Share the drop"
@@ -772,85 +1024,113 @@
       "question": "people.q1",
       "option": "customers",
       "why": "New customers deciding if they care.",
-      "because": ["business.q1"]
+      "because": [
+        "business.q1"
+      ]
     },
     {
       "question": "people.q2",
       "option": "aa",
       "why": "AA, even when loud.",
-      "because": ["people.q1"]
+      "because": [
+        "people.q1"
+      ]
     },
     {
       "question": "content.q1",
       "option": "media",
       "why": "Images, campaigns and short punchy copy.",
-      "because": ["business.q1"]
+      "because": [
+        "business.q1"
+      ]
     },
     {
       "question": "content.q2",
       "option": "one-idea",
       "why": "One big idea per section.",
-      "because": ["content.q1"]
+      "because": [
+        "content.q1"
+      ]
     },
     {
       "question": "tasks.q1",
       "option": "explore",
       "why": "People browse and explore the story.",
-      "because": ["content.q1"]
+      "because": [
+        "content.q1"
+      ]
     },
     {
       "question": "tasks.q2",
       "option": "rarely",
       "why": "One action: sign up.",
-      "because": ["business.q1"]
+      "because": [
+        "business.q1"
+      ]
     },
     {
       "question": "human.q1",
       "option": "delight",
       "why": "Delight is the point.",
-      "because": ["business.q1"]
+      "because": [
+        "business.q1"
+      ]
     },
     {
       "question": "human.q2",
       "option": "fresh",
       "why": "Every visit should feel fresh.",
-      "because": ["people.q1"]
+      "because": [
+        "people.q1"
+      ]
     },
     {
       "question": "outcomes.q1",
       "option": "engagement",
       "why": "Engagement and sign-ups.",
-      "because": ["business.q1"]
+      "because": [
+        "business.q1"
+      ]
     },
     {
       "question": "outcomes.q2",
       "option": "off-brand",
       "why": "A bland page is the costly mistake.",
-      "because": ["business.q1"]
+      "because": [
+        "business.q1"
+      ]
     },
     {
       "question": "brand.q1",
       "option": "bold",
       "why": "Bold and confident.",
-      "because": ["business.q1"]
+      "because": [
+        "business.q1"
+      ]
     },
     {
       "question": "brand.q2",
       "option": "loud",
       "why": "The brand is loud everywhere.",
-      "because": ["brand.q1"]
+      "because": [
+        "brand.q1"
+      ]
     },
     {
       "question": "scenarios.q1",
       "option": "on-the-move",
       "why": "Visitors come from social posts on their phones.",
-      "because": ["people.q1"]
+      "because": [
+        "people.q1"
+      ]
     },
     {
       "question": "scenarios.q2",
       "option": "short",
       "why": "A visit lasts a few minutes at most.",
-      "because": ["outcomes.q1"]
+      "because": [
+        "outcomes.q1"
+      ]
     },
     {
       "question": "team.q1",
@@ -862,367 +1142,495 @@
       "question": "team.q2",
       "option": "campaign",
       "why": "Every campaign changes the look a little.",
-      "because": ["team.q1"]
+      "because": [
+        "team.q1"
+      ]
     },
     {
       "question": "typography.roles",
       "option": "core-expressive",
       "why": "A big expressive display role carries the brand.",
-      "because": ["brand.q2"]
+      "because": [
+        "brand.q2"
+      ]
     },
     {
       "question": "typography.count",
       "option": "many",
       "why": "Fine steps give big moments room.",
-      "because": ["brand.q2"]
+      "because": [
+        "brand.q2"
+      ]
     },
     {
       "question": "typography.definition",
       "option": "ratio-proportional",
       "why": "Ratios suit the big display sizes.",
-      "because": ["typography.roles"]
+      "because": [
+        "typography.roles"
+      ]
     },
     {
       "question": "typography.values",
       "option": "regular",
       "why": "Regular body; the display does the shouting.",
-      "because": ["content.q2"]
+      "because": [
+        "content.q2"
+      ]
     },
     {
       "question": "typography.lands",
       "option": "headlines",
       "why": "Type does its work in headlines.",
-      "because": ["brand.q2"]
+      "because": [
+        "brand.q2"
+      ]
     },
     {
       "question": "color.roles",
       "option": "core-brand",
       "why": "Brand accents are part of the message.",
-      "because": ["brand.q2"]
+      "because": [
+        "brand.q2"
+      ]
     },
     {
       "question": "color.count",
       "option": "three",
       "why": "Primary, secondary, ghost.",
-      "because": ["tasks.q2"]
+      "because": [
+        "tasks.q2"
+      ]
     },
     {
       "question": "color.definition",
       "option": "neutral-brand",
       "why": "Warm neutrals and one vivid ramp.",
-      "because": ["brand.q1"]
+      "because": [
+        "brand.q1"
+      ]
     },
     {
       "question": "color.values",
       "option": "vivid",
       "why": "Vivid color is the brand.",
-      "because": ["brand.q2"]
+      "because": [
+        "brand.q2"
+      ]
     },
     {
       "question": "color.lands",
       "option": "brand-moments",
       "why": "Color makes the launch moment.",
-      "because": ["outcomes.q1"]
+      "because": [
+        "outcomes.q1"
+      ]
     },
     {
       "question": "spacing.roles",
       "option": "gap-inset",
       "why": "Few tables; no row role needed.",
-      "because": ["content.q1"]
+      "because": [
+        "content.q1"
+      ]
     },
     {
       "question": "spacing.count",
       "option": "one",
       "why": "One generous density.",
-      "because": ["content.q2"]
+      "because": [
+        "content.q2"
+      ]
     },
     {
       "question": "spacing.definition",
       "option": "coarse",
       "why": "Big, even steps make big moments.",
-      "because": ["brand.q2"]
+      "because": [
+        "brand.q2"
+      ]
     },
     {
       "question": "spacing.values",
       "option": "spacious",
       "why": "Big space makes big moments.",
-      "because": ["content.q2"]
+      "because": [
+        "content.q2"
+      ]
     },
     {
       "question": "spacing.lands",
       "option": "sections",
       "why": "Space works between big sections.",
-      "because": ["content.q1"]
+      "because": [
+        "content.q1"
+      ]
     },
     {
       "question": "shape.roles",
       "option": "control-container",
       "why": "Pills everywhere; badges share the control corner.",
-      "because": ["brand.q1"]
+      "because": [
+        "brand.q1"
+      ]
     },
     {
       "question": "shape.count",
       "option": "two",
       "why": "Pill controls and large container corners.",
-      "because": ["shape.roles"]
+      "because": [
+        "shape.roles"
+      ]
     },
     {
       "question": "shape.definition",
       "option": "fixed",
       "why": "One brand, one set of corners.",
-      "because": ["business.q2"]
+      "because": [
+        "business.q2"
+      ]
     },
     {
       "question": "shape.values",
       "option": "pill",
       "why": "Pill controls feel playful.",
-      "because": ["brand.q1"]
+      "because": [
+        "brand.q1"
+      ]
     },
     {
       "question": "shape.lands",
       "option": "buttons-badges",
       "why": "Pill buttons are the signature shape.",
-      "because": ["brand.q2"]
+      "because": [
+        "brand.q2"
+      ]
     },
     {
       "question": "elevation.roles",
       "option": "cards-too",
       "why": "Cards lift to feel like objects.",
-      "because": ["brand.q2"]
+      "because": [
+        "brand.q2"
+      ]
     },
     {
       "question": "elevation.count",
       "option": "two",
       "why": "One shadow for cards, one for overlays.",
-      "because": ["elevation.roles"]
+      "because": [
+        "elevation.roles"
+      ]
     },
     {
       "question": "elevation.definition",
       "option": "cards",
       "why": "Cards hold each offer.",
-      "because": ["content.q1"]
+      "because": [
+        "content.q1"
+      ]
     },
     {
       "question": "elevation.values",
       "option": "pronounced",
       "why": "Pronounced shadows add depth.",
-      "because": ["brand.q2"]
+      "because": [
+        "brand.q2"
+      ]
     },
     {
       "question": "elevation.lands",
       "option": "cards-menus",
       "why": "Cards, menus and dialogs rise.",
-      "because": ["elevation.roles"]
+      "because": [
+        "elevation.roles"
+      ]
     },
     {
       "question": "motion.roles",
       "option": "expression",
       "why": "Motion carries personality.",
-      "because": ["brand.q2"]
+      "because": [
+        "brand.q2"
+      ]
     },
     {
       "question": "motion.count",
       "option": "three",
       "why": "Fast feedback, moderate panels, relaxed hero.",
-      "because": ["motion.roles"]
+      "because": [
+        "motion.roles"
+      ]
     },
     {
       "question": "motion.definition",
       "option": "spring",
       "why": "A spring that overshoots feels alive.",
-      "because": ["brand.q1"]
+      "because": [
+        "brand.q1"
+      ]
     },
     {
       "question": "motion.values",
       "option": "fast",
       "why": "Feedback stays fast; the personality shows in panels and hero moments, which move slower on a spring.",
-      "because": ["human.q1"]
+      "because": [
+        "human.q1"
+      ]
     },
     {
       "question": "motion.lands",
       "option": "hero",
       "why": "Motion shows in hero and launch moments.",
-      "because": ["outcomes.q1"]
+      "because": [
+        "outcomes.q1"
+      ]
     },
     {
       "question": "iconography.roles",
       "option": "decoration-too",
       "why": "Icons also decorate campaign pages.",
-      "because": ["brand.q2"]
+      "because": [
+        "brand.q2"
+      ]
     },
     {
       "question": "iconography.count",
       "option": "two",
       "why": "One size next to text, one for decoration.",
-      "because": ["iconography.roles"]
+      "because": [
+        "iconography.roles"
+      ]
     },
     {
       "question": "iconography.definition",
       "option": "duotone",
       "why": "Two-tone icons carry the brand color.",
-      "because": ["color.values"]
+      "because": [
+        "color.values"
+      ]
     },
     {
       "question": "iconography.values",
       "option": "larger",
       "why": "Larger icons hold their own next to big type.",
-      "because": ["typography.roles"]
+      "because": [
+        "typography.roles"
+      ]
     },
     {
       "question": "iconography.lands",
       "option": "buttons",
       "why": "Icons sit in calls to action.",
-      "because": ["outcomes.q1"]
+      "because": [
+        "outcomes.q1"
+      ]
     },
     {
       "question": "theming.roles",
       "option": "mode",
       "why": "One brand, so only the mode changes.",
-      "because": ["business.q2"]
+      "because": [
+        "business.q2"
+      ]
     },
     {
       "question": "theming.count",
       "option": "two",
       "why": "Light and dark.",
-      "because": ["theming.values"]
+      "because": [
+        "theming.values"
+      ]
     },
     {
       "question": "theming.definition",
       "option": "single",
       "why": "One brand per campaign.",
-      "because": ["business.q2"]
+      "because": [
+        "business.q2"
+      ]
     },
     {
       "question": "theming.values",
       "option": "light-dark",
       "why": "Light and dark ship as standard.",
-      "because": ["people.q1"]
+      "because": [
+        "people.q1"
+      ]
     },
     {
       "question": "theming.lands",
       "option": "colors",
       "why": "Only colors change.",
-      "because": ["theming.roles"]
+      "because": [
+        "theming.roles"
+      ]
     },
     {
       "question": "accessibility.roles",
       "option": "plus-pressed",
       "why": "Pressed for touch.",
-      "because": ["accessibility.values"]
+      "because": [
+        "accessibility.values"
+      ]
     },
     {
       "question": "accessibility.count",
       "option": "color-word",
       "why": "Color and word.",
-      "because": ["people.q2"]
+      "because": [
+        "people.q2"
+      ]
     },
     {
       "question": "accessibility.definition",
       "option": "aa",
       "why": "AA, checked on every vivid color.",
-      "because": ["people.q2"]
+      "because": [
+        "people.q2"
+      ]
     },
     {
       "question": "accessibility.values",
       "option": "touch",
       "why": "Visitors come from social posts on phones.",
-      "because": ["scenarios.q1"]
+      "because": [
+        "scenarios.q1"
+      ]
     },
     {
       "question": "accessibility.lands",
       "option": "brand-color",
       "why": "Vivid brand color is the hardest to keep readable.",
-      "because": ["color.values"]
+      "because": [
+        "color.values"
+      ]
     },
     {
       "question": "naming.roles",
       "option": "tokens-keys",
       "why": "Components get their own keys.",
-      "because": ["team.q2"]
+      "because": [
+        "team.q2"
+      ]
     },
     {
       "question": "naming.count",
       "option": "three",
       "why": "Primitives, semantics and component keys.",
-      "because": ["team.q2"]
+      "because": [
+        "team.q2"
+      ]
     },
     {
       "question": "naming.definition",
       "option": "by-role",
       "why": "Role names survive each campaign.",
-      "because": ["team.q2"]
+      "because": [
+        "team.q2"
+      ]
     },
     {
       "question": "naming.values",
       "option": "kebab-paths",
       "why": "Lowercase paths read the same everywhere.",
-      "because": ["team.q1"]
+      "because": [
+        "team.q1"
+      ]
     },
     {
       "question": "naming.lands",
       "option": "keys",
       "why": "Campaigns change primitives, never components.",
-      "because": ["team.q2"]
+      "because": [
+        "team.q2"
+      ]
     },
     {
       "question": "voice.roles",
       "option": "ui-marketing",
       "why": "Headlines carry the campaign.",
-      "because": ["business.q1"]
+      "because": [
+        "business.q1"
+      ]
     },
     {
       "question": "voice.count",
       "option": "per-moment",
       "why": "Playful in headlines, plain in errors.",
-      "because": ["outcomes.q2"]
+      "because": [
+        "outcomes.q2"
+      ]
     },
     {
       "question": "voice.definition",
       "option": "principles",
       "why": "Principles and examples guide each campaign's writers.",
-      "because": ["team.q1"]
+      "because": [
+        "team.q1"
+      ]
     },
     {
       "question": "voice.values",
       "option": "playful",
       "why": "Big words, few of them.",
-      "because": ["brand.q1", "brand.q2"]
+      "because": [
+        "brand.q1",
+        "brand.q2"
+      ]
     },
     {
       "question": "voice.lands",
       "option": "headlines",
       "why": "Words work hardest in headlines and buttons.",
-      "because": ["outcomes.q1"]
+      "because": [
+        "outcomes.q1"
+      ]
     },
     {
       "question": "components.roles",
       "option": "core-media",
       "why": "Campaigns lead with media and big sections.",
-      "because": ["content.q1", "brand.q2"]
+      "because": [
+        "content.q1",
+        "brand.q2"
+      ]
     },
     {
       "question": "components.count",
       "option": "few",
       "why": "One action and a story need only the parts in use; an agency keeps them fresh.",
-      "because": ["tasks.q2", "team.q1"]
+      "because": [
+        "tasks.q2",
+        "team.q1"
+      ]
     },
     {
       "question": "components.definition",
       "option": "brand-moment",
       "why": "A component joins when it gives the campaign a moment.",
-      "because": ["brand.q1", "outcomes.q1"]
+      "because": [
+        "brand.q1",
+        "outcomes.q1"
+      ]
     },
     {
       "question": "components.values",
       "option": "some",
       "why": "Variants for emphasis and size let each campaign look a little different.",
-      "because": ["team.q2", "brand.q2"]
+      "because": [
+        "team.q2",
+        "brand.q2"
+      ]
     },
     {
       "question": "components.lands",
       "option": "campaign-sections",
       "why": "Components sit inside big campaign sections.",
-      "because": ["content.q1", "tasks.q1"]
+      "because": [
+        "content.q1",
+        "tasks.q1"
+      ]
     }
   ],
   "usage": [
@@ -1231,56 +1639,74 @@
       "use": "type.display",
       "not": "type.title",
       "why": "The display role carries the brand in every hero.",
-      "because": ["typography.roles", "brand.q2"]
+      "because": [
+        "typography.roles",
+        "brand.q2"
+      ]
     },
     {
       "situation": "number-in-table",
       "use": "type.body",
       "not": "A mono font",
       "why": "Tables are rare; keep the brand voice.",
-      "because": ["content.q1"]
+      "because": [
+        "content.q1"
+      ]
     },
     {
       "situation": "paragraph",
       "use": "type.body, short",
       "not": "Long paragraphs",
       "why": "Short copy keeps the energy.",
-      "because": ["voice.values"]
+      "because": [
+        "voice.values"
+      ]
     },
     {
       "situation": "field-label",
       "use": "type.label",
       "not": "type.caption",
       "why": "Labels stay readable on vivid color.",
-      "because": ["people.q2"]
+      "because": [
+        "people.q2"
+      ]
     },
     {
       "situation": "selected-row",
       "use": "color.surface.selected (brand tint)",
       "not": "Grey",
       "why": "Selection carries the brand.",
-      "because": ["color.values"]
+      "because": [
+        "color.values"
+      ]
     },
     {
       "situation": "error-message",
       "use": "color.status.danger and a short sentence",
       "not": "The brand magenta",
       "why": "Errors must not look like the brand.",
-      "because": ["outcomes.q2", "accessibility.count"]
+      "because": [
+        "outcomes.q2",
+        "accessibility.count"
+      ]
     },
     {
       "situation": "link",
       "use": "color.text.link, underlined",
       "not": "Color only",
       "why": "Underline keeps links clear on vivid color.",
-      "because": ["people.q2"]
+      "because": [
+        "people.q2"
+      ]
     },
     {
       "situation": "status-label",
       "use": "Badge pill with a word",
       "not": "Color alone",
       "why": "A word keeps meaning on vivid backgrounds.",
-      "because": ["accessibility.count"],
+      "because": [
+        "accessibility.count"
+      ],
       "uses": [
         {
           "component": "badge"
@@ -1292,84 +1718,111 @@
       "use": "space.gap.default",
       "not": "space.gap.tight",
       "why": "Air keeps big type readable.",
-      "because": ["spacing.values"]
+      "because": [
+        "spacing.values"
+      ]
     },
     {
       "situation": "between-sections",
       "use": "space.gap.section and a color block",
       "not": "A thin line",
       "why": "Big space and color make each section a moment.",
-      "because": ["elevation.definition"]
+      "because": [
+        "elevation.definition"
+      ]
     },
     {
       "situation": "table-row",
       "use": "size.row (comfortable)",
       "not": "A compact row",
       "why": "Rare tables stay airy.",
-      "because": ["spacing.values"]
+      "because": [
+        "spacing.values"
+      ]
     },
     {
       "situation": "control-corner",
       "use": "radius.control (pill)",
       "not": "Sharp corners",
       "why": "Pills feel playful.",
-      "because": ["shape.values"]
+      "because": [
+        "shape.values"
+      ]
     },
     {
       "situation": "status-shape",
       "use": "radius.badge (pill)",
       "not": "A rectangle",
       "why": "Pills match the controls.",
-      "because": ["shape.roles"]
+      "because": [
+        "shape.roles"
+      ]
     },
     {
       "situation": "card",
       "use": "elevation.card (pronounced)",
       "not": "A flat card",
       "why": "Cards float to feel tactile.",
-      "because": ["elevation.roles", "elevation.values"]
+      "because": [
+        "elevation.roles",
+        "elevation.values"
+      ]
     },
     {
       "situation": "menu-or-dialog",
       "use": "elevation.overlay and a dimmed page",
       "not": "No shadow",
       "why": "Strong depth for floating things.",
-      "because": ["elevation.values"]
+      "because": [
+        "elevation.values"
+      ]
     },
     {
       "situation": "hover-feedback",
       "use": "motion.duration.feedback (fast)",
       "not": "An instant change",
       "why": "Fast feedback, on the brand's spring.",
-      "because": ["motion.roles", "motion.values"]
+      "because": [
+        "motion.roles",
+        "motion.values"
+      ]
     },
     {
       "situation": "reduced-motion",
       "use": "Reduced motion",
       "not": "Full motion",
       "why": "Motion is reduced when asked.",
-      "because": ["motion.roles"]
+      "because": [
+        "motion.roles"
+      ]
     },
     {
       "situation": "icon-alone",
       "use": "Not used: always add a word",
       "not": "An icon button with a hover hint",
       "why": "On phones, hover hints never show; a word says what will happen.",
-      "because": ["accessibility.values", "iconography.roles"]
+      "because": [
+        "accessibility.values",
+        "iconography.roles"
+      ]
     },
     {
       "situation": "dark-mode",
       "use": "The dark semantic mode",
       "not": "A separate campaign palette",
       "why": "Dark ships as standard; campaigns change values, not structure.",
-      "because": ["theming.values"]
+      "because": [
+        "theming.values"
+      ]
     },
     {
       "situation": "keyboard-focus",
       "use": "button/focus-ring at border-width.focus",
       "not": "Removing the outline",
       "why": "Focus must show on vivid color.",
-      "because": ["people.q2"],
+      "because": [
+        "people.q2"
+      ],
       "uses": [
         {
           "component": "button",
@@ -1383,14 +1836,18 @@
       "use": "size.control.default (touch)",
       "not": "A compact control",
       "why": "Phones first.",
-      "because": ["accessibility.values"]
+      "because": [
+        "accessibility.values"
+      ]
     },
     {
       "situation": "commit-action",
       "use": "Button primary, large, one per section",
       "not": "Two primaries",
       "why": "One loud call to action per section.",
-      "because": ["outcomes.q1"],
+      "because": [
+        "outcomes.q1"
+      ],
       "uses": [
         {
           "component": "button",
@@ -1409,7 +1866,9 @@
       "use": "Button ghost",
       "not": "A second primary",
       "why": "The alternative must not compete.",
-      "because": ["color.count"],
+      "because": [
+        "color.count"
+      ],
       "uses": [
         {
           "component": "button",
@@ -1423,7 +1882,9 @@
       "use": "Button secondary, then confirm with Button danger",
       "not": "Button primary",
       "why": "Confirm before destroying data.",
-      "because": ["outcomes.q2"],
+      "because": [
+        "outcomes.q2"
+      ],
       "uses": [
         {
           "component": "button",
@@ -1442,7 +1903,9 @@
       "use": "Button ghost with a word",
       "not": "An icon alone",
       "why": "A word keeps it clear.",
-      "because": ["iconography.roles"],
+      "because": [
+        "iconography.roles"
+      ],
       "uses": [
         {
           "component": "button",
@@ -1456,14 +1919,19 @@
       "use": "The closest semantic token, then ask for a new one",
       "not": "A raw value in the component",
       "why": "The next campaign changes primitives; raw values would stay behind.",
-      "because": ["naming.lands"]
+      "because": [
+        "naming.lands"
+      ]
     },
     {
       "situation": "button-label",
       "use": "A short verb that moves: Join, Try, Go",
       "not": "\"Learn more\"",
       "why": "Big moments need verbs with energy.",
-      "because": ["voice.values", "voice.lands"],
+      "because": [
+        "voice.values",
+        "voice.lands"
+      ],
       "example": "Join the drop"
     },
     {
@@ -1471,7 +1939,9 @@
       "use": "Plain first, a light touch after",
       "not": "A joke before the fix",
       "why": "Playful copy must never hide what went wrong.",
-      "because": ["voice.count"],
+      "because": [
+        "voice.count"
+      ],
       "example": "That email doesn't look right. Check it and try again."
     },
     {
@@ -1479,7 +1949,10 @@
       "use": "Celebrate, briefly",
       "not": "A long thank-you",
       "why": "A short celebration is remembered.",
-      "because": ["voice.values", "outcomes.q1"],
+      "because": [
+        "voice.values",
+        "outcomes.q1"
+      ],
       "example": "You're on the list. See you at launch."
     },
     {
@@ -1487,7 +1960,9 @@
       "use": "Playful, with a clear next step",
       "not": "A dead end",
       "why": "Playful words still need a way forward.",
-      "because": ["voice.values"],
+      "because": [
+        "voice.values"
+      ],
       "example": "Nothing here yet. Go find something you love."
     },
     {
@@ -1495,7 +1970,9 @@
       "use": "Plain. No jokes when something is lost.",
       "not": "Playful copy",
       "why": "Loss is never the moment for a joke.",
-      "because": ["voice.count"],
+      "because": [
+        "voice.count"
+      ],
       "example": "Remove this from your list? You can add it back later."
     },
     {
@@ -1503,7 +1980,10 @@
       "use": "One bold line and one button",
       "not": "A paragraph of copy",
       "why": "Visitors from a social post give a few seconds.",
-      "because": ["scenarios.q2", "voice.values"],
+      "because": [
+        "scenarios.q2",
+        "voice.values"
+      ],
       "example": "The drop is coming. Be first."
     },
     {
@@ -1511,7 +1991,10 @@
       "use": "a section built from the inventory with campaign tokens",
       "not": "a new component for one campaign",
       "why": "Campaigns change the look through tokens; new parts every drop are hard to keep working.",
-      "because": ["team.q2", "components.definition"]
+      "because": [
+        "team.q2",
+        "components.definition"
+      ]
     }
   ],
   "tokens": {
@@ -2180,6 +2663,14 @@
         }
       },
       "space": {
+        "2": {
+          "$type": "dimension",
+          "$value": "0.125rem"
+        },
+        "4": {
+          "$type": "dimension",
+          "$value": "0.25rem"
+        },
         "8": {
           "$type": "dimension",
           "$value": "0.5rem"
@@ -2187,6 +2678,10 @@
         "16": {
           "$type": "dimension",
           "$value": "1rem"
+        },
+        "24": {
+          "$type": "dimension",
+          "$value": "1.5rem"
         },
         "28": {
           "$type": "dimension",
@@ -2200,9 +2695,13 @@
           "$type": "dimension",
           "$value": "2.5rem"
         },
-        "96": {
+        "48": {
           "$type": "dimension",
-          "$value": "6rem"
+          "$value": "3rem"
+        },
+        "64": {
+          "$type": "dimension",
+          "$value": "4rem"
         },
         "$description": "Space options. Names give the size in pixels at the default text size; values are rem."
       },
@@ -2343,7 +2842,12 @@
       "easing": {
         "spring": {
           "$type": "cubicBezier",
-          "$value": [0.34, 1.56, 0.64, 1],
+          "$value": [
+            0.34,
+            1.56,
+            0.64,
+            1
+          ],
           "$description": "A spring that overshoots, for feedback, panels and hero moments."
         }
       },
@@ -3256,7 +3760,10 @@
             "gray": "taupe",
             "temperature": "warm-rosy",
             "why": "A warm, rosy gray sits under the vivid pink brand without competing.",
-            "because": ["color.values", "color.definition"]
+            "because": [
+              "color.values",
+              "color.definition"
+            ]
           }
         }
       }
@@ -3281,7 +3788,7 @@
           },
           "section": {
             "$type": "dimension",
-            "$value": "{space.96}",
+            "$value": "{space.64}",
             "$description": "Between page sections."
           }
         },
@@ -3911,6 +4418,92 @@
           "$type": "shadow",
           "$value": "{theme.elevation.overlay}"
         }
+      },
+      "component-spacing-map": {
+        "$description": "The steps components space by: 4px × a multiplier × this scheme's rhythm, rounded to a multiple of 4px, at most 64px. Steps the scheme holds still stay at 4px × their multiplier. The hairline is a fixed 2px.",
+        "$extensions": {
+          "open-ds": {
+            "rhythm": 2,
+            "fixed": [
+              "x1",
+              "x2"
+            ],
+            "because": [
+              "spacing.values"
+            ],
+            "why": "Spacious: big space makes big moments, so panels double their room; rows stay tight."
+          }
+        },
+        "hairline": {
+          "$type": "dimension",
+          "$value": "{space.2}",
+          "$description": "A fixed 2px optical nudge, the same in every scheme."
+        },
+        "x1": {
+          "$type": "dimension",
+          "$value": "{space.4}",
+          "$extensions": {
+            "open-ds": {
+              "multiplier": 1,
+              "fixed": true
+            }
+          }
+        },
+        "x2": {
+          "$type": "dimension",
+          "$value": "{space.8}",
+          "$extensions": {
+            "open-ds": {
+              "multiplier": 2,
+              "fixed": true
+            }
+          }
+        },
+        "x3": {
+          "$type": "dimension",
+          "$value": "{space.24}",
+          "$extensions": {
+            "open-ds": {
+              "multiplier": 3
+            }
+          }
+        },
+        "x4": {
+          "$type": "dimension",
+          "$value": "{space.32}",
+          "$extensions": {
+            "open-ds": {
+              "multiplier": 4
+            }
+          }
+        },
+        "x6": {
+          "$type": "dimension",
+          "$value": "{space.48}",
+          "$extensions": {
+            "open-ds": {
+              "multiplier": 6
+            }
+          }
+        },
+        "x8": {
+          "$type": "dimension",
+          "$value": "{space.64}",
+          "$extensions": {
+            "open-ds": {
+              "multiplier": 8
+            }
+          }
+        },
+        "x12": {
+          "$type": "dimension",
+          "$value": "{space.64}",
+          "$extensions": {
+            "open-ds": {
+              "multiplier": 12
+            }
+          }
+        }
       }
     },
     "component": {
@@ -4235,6 +4828,10 @@
           "$value": "{space.gap.tight}",
           "$description": "Gap of the badge."
         },
+        "padding-y": {
+          "$value": "{component-spacing-map.hairline}",
+          "$description": "Padding y of the badge."
+        },
         "font-weight": {
           "$value": "{type.label.font-weight}",
           "$description": "Font weight of the badge."
@@ -4494,6 +5091,10 @@
             "$value": "{space.gap.default}",
             "$description": "Content padding x of the tooltip."
           },
+          "padding-y": {
+            "$value": "{component-spacing-map.x1}",
+            "$description": "Content padding y of the tooltip."
+          },
           "font-size": {
             "$value": "{type.caption.font-size}",
             "$description": "Content font size of the tooltip."
@@ -4614,12 +5215,20 @@
             "$value": "{color.surface.canvas}",
             "$description": "Content background of the alert dialog."
           },
+          "padding": {
+            "$value": "{component-spacing-map.x6}",
+            "$description": "Content padding of the alert dialog."
+          },
           "shadow": {
             "$value": "{elevation.overlay}",
             "$description": "Content shadow of the alert dialog."
           }
         },
         "header": {
+          "gap": {
+            "$value": "{component-spacing-map.x2}",
+            "$description": "Header gap of the alert dialog."
+          },
           "gap-x": {
             "$value": "{space.gap.section}",
             "$description": "Header gap x of the alert dialog."
@@ -4675,6 +5284,10 @@
         }
       },
       "alert": {
+        "gap-y": {
+          "$value": "{component-spacing-map.hairline}",
+          "$description": "Gap y of the alert."
+        },
         "radius": {
           "$value": "{radius.container}",
           "$description": "Radius of the alert."
@@ -4683,6 +5296,10 @@
           "$value": "{space.inset.container}",
           "$description": "Padding x of the alert."
         },
+        "padding-y": {
+          "$value": "{component-spacing-map.x3}",
+          "$description": "Padding y of the alert."
+        },
         "font-size": {
           "$value": "{type.body.font-size}",
           "$description": "Font size of the alert."
@@ -4690,6 +5307,10 @@
         "line-height": {
           "$value": "{type.body.line-height}",
           "$description": "Line height of the alert."
+        },
+        "gap-x": {
+          "$value": "{component-spacing-map.x3}",
+          "$description": "Gap x of the alert."
         },
         "icon-size": {
           "$value": "{size.icon}",
@@ -4741,6 +5362,10 @@
         }
       },
       "attachment": {
+        "gap": {
+          "$value": "{component-spacing-map.x3}",
+          "$description": "Gap of the attachment."
+        },
         "radius": {
           "$value": "{radius.control}",
           "$description": "Radius of the attachment."
@@ -4748,6 +5373,14 @@
         "background": {
           "$value": "{color.surface.canvas}",
           "$description": "Background of the attachment."
+        },
+        "padding-x": {
+          "$value": "{component-spacing-map.x3}",
+          "$description": "Padding x of the attachment."
+        },
+        "padding-y": {
+          "$value": "{component-spacing-map.x2}",
+          "$description": "Padding y of the attachment."
         },
         "font-size": {
           "$value": "{type.body.font-size}",
@@ -4906,6 +5539,10 @@
       },
       "breadcrumb": {
         "list": {
+          "gap": {
+            "$value": "{component-spacing-map.x2}",
+            "$description": "List gap of the breadcrumb."
+          },
           "font-size": {
             "$value": "{type.body.font-size}",
             "$description": "List font size of the breadcrumb."
@@ -4917,6 +5554,16 @@
           "label": {
             "$value": "{color.text.muted}",
             "$description": "List label of the breadcrumb."
+          },
+          "gap-2": {
+            "$value": "{component-spacing-map.x3}",
+            "$description": "List gap 2 of the breadcrumb."
+          }
+        },
+        "item": {
+          "gap": {
+            "$value": "{component-spacing-map.x2}",
+            "$description": "Item gap of the breadcrumb."
           }
         },
         "link": {
@@ -4982,6 +5629,14 @@
             "$value": "{radius.container}",
             "$description": "Body radius of the bubble."
           },
+          "padding-x": {
+            "$value": "{component-spacing-map.x3}",
+            "$description": "Body padding x of the bubble."
+          },
+          "padding-y": {
+            "$value": "{component-spacing-map.x2}",
+            "$description": "Body padding y of the bubble."
+          },
           "font-size": {
             "$value": "{type.body.font-size}",
             "$description": "Body font size of the bubble."
@@ -5009,6 +5664,10 @@
           "background": {
             "$value": "{color.surface.sunken}",
             "$description": "Text background of the button group."
+          },
+          "padding-x": {
+            "$value": "{component-spacing-map.x4}",
+            "$description": "Text padding x of the button group."
           },
           "font-size": {
             "$value": "{type.body.font-size}",
@@ -5039,6 +5698,10 @@
           "$value": "{color.surface.canvas}",
           "$description": "Background of the calendar."
         },
+        "padding": {
+          "$value": "{component-spacing-map.x3}",
+          "$description": "Padding of the calendar."
+        },
         "gap": {
           "$value": "{space.gap.group}",
           "$description": "Gap of the calendar."
@@ -5050,6 +5713,10 @@
         "disabled-opacity-disabled": {
           "$value": "{opacity.disabled}",
           "$description": "Disabled opacity disabled of the calendar."
+        },
+        "gap-3": {
+          "$value": "{component-spacing-map.x2}",
+          "$description": "Gap 3 of the calendar."
         },
         "font-size": {
           "$value": "{type.body.font-size}",
@@ -5098,6 +5765,14 @@
         "height": {
           "$value": "{size.control.default}",
           "$description": "Height of the calendar."
+        },
+        "padding-right": {
+          "$value": "{component-spacing-map.x1}",
+          "$description": "Padding right of the calendar."
+        },
+        "padding-left": {
+          "$value": "{component-spacing-map.x2}",
+          "$description": "Padding left of the calendar."
         },
         "label": {
           "$value": "{color.text.muted}",
@@ -5153,6 +5828,16 @@
         }
       },
       "carousel": {
+        "item": {
+          "padding-left": {
+            "$value": "{component-spacing-map.x4}",
+            "$description": "Item padding left of the carousel."
+          },
+          "padding-top": {
+            "$value": "{component-spacing-map.x4}",
+            "$description": "Item padding top of the carousel."
+          }
+        },
         "previous": {
           "size": {
             "$value": "{size.control.default}",
@@ -5199,6 +5884,10 @@
           "$value": "{type.label.font-weight}",
           "$description": "Font weight of the chart."
         },
+        "gap": {
+          "$value": "{component-spacing-map.x2}",
+          "$description": "Gap of the chart."
+        },
         "radius": {
           "$value": "{radius.container}",
           "$description": "Radius of the chart."
@@ -5211,13 +5900,21 @@
           "$value": "{color.surface.canvas}",
           "$description": "Background of the chart."
         },
+        "padding-x": {
+          "$value": "{component-spacing-map.x3}",
+          "$description": "Padding x of the chart."
+        },
+        "padding-y": {
+          "$value": "{component-spacing-map.x2}",
+          "$description": "Padding y of the chart."
+        },
         "shadow": {
           "$value": "{elevation.overlay}",
           "$description": "Shadow of the chart."
         },
-        "gap": {
+        "gap-2": {
           "$value": "{space.gap.default}",
-          "$description": "Gap of the chart."
+          "$description": "Gap 2 of the chart."
         },
         "label": {
           "$value": "{color.text.muted}",
@@ -5227,9 +5924,17 @@
           "$value": "{color.text.primary}",
           "$description": "Label 2 of the chart."
         },
-        "gap-2": {
+        "gap-3": {
           "$value": "{space.gap.group}",
-          "$description": "Gap 2 of the chart."
+          "$description": "Gap 3 of the chart."
+        },
+        "padding-bottom": {
+          "$value": "{component-spacing-map.x3}",
+          "$description": "Padding bottom of the chart."
+        },
+        "padding-top": {
+          "$value": "{component-spacing-map.x3}",
+          "$description": "Padding top of the chart."
         }
       },
       "checkbox": {
@@ -5305,6 +6010,12 @@
             "$description": "Content background 2 of the combobox."
           }
         },
+        "list": {
+          "padding": {
+            "$value": "{component-spacing-map.x1}",
+            "$description": "List padding of the combobox."
+          }
+        },
         "item": {
           "gap": {
             "$value": "{space.gap.default}",
@@ -5313,6 +6024,18 @@
           "radius": {
             "$value": "{radius.badge}",
             "$description": "Item radius of the combobox."
+          },
+          "padding-y": {
+            "$value": "{component-spacing-map.x2}",
+            "$description": "Item padding y of the combobox."
+          },
+          "padding-right": {
+            "$value": "{component-spacing-map.x8}",
+            "$description": "Item padding right of the combobox."
+          },
+          "padding-left": {
+            "$value": "{component-spacing-map.x2}",
+            "$description": "Item padding left of the combobox."
           },
           "font-size": {
             "$value": "{type.body.font-size}",
@@ -5344,6 +6067,14 @@
           "$description": "Icon size of the combobox."
         },
         "label": {
+          "padding-x": {
+            "$value": "{component-spacing-map.x2}",
+            "$description": "Label padding x of the combobox."
+          },
+          "padding-y": {
+            "$value": "{component-spacing-map.x2}",
+            "$description": "Label padding y of the combobox."
+          },
           "font-size": {
             "$value": "{type.caption.font-size}",
             "$description": "Label font size of the combobox."
@@ -5356,9 +6087,9 @@
             "$value": "{color.text.muted}",
             "$description": "Label label of the combobox."
           },
-          "padding-x": {
+          "padding-x-2": {
             "$value": "{space.inset.control-x}",
-            "$description": "Label padding x of the combobox."
+            "$description": "Label padding x 2 of the combobox."
           },
           "font-size-2": {
             "$value": "{type.body.font-size}",
@@ -5370,6 +6101,10 @@
           }
         },
         "empty": {
+          "padding-y": {
+            "$value": "{component-spacing-map.x2}",
+            "$description": "Empty padding y of the combobox."
+          },
           "font-size": {
             "$value": "{type.body.font-size}",
             "$description": "Empty font size of the combobox."
@@ -5390,6 +6125,10 @@
           }
         },
         "chips": {
+          "gap": {
+            "$value": "{component-spacing-map.x2}",
+            "$description": "Chips gap of the combobox."
+          },
           "radius": {
             "$value": "{radius.control}",
             "$description": "Chips radius of the combobox."
@@ -5397,6 +6136,14 @@
           "border": {
             "$value": "{color.border.strong}",
             "$description": "Chips border of the combobox."
+          },
+          "padding-x": {
+            "$value": "{component-spacing-map.x3}",
+            "$description": "Chips padding x of the combobox."
+          },
+          "padding-y": {
+            "$value": "{component-spacing-map.x2}",
+            "$description": "Chips padding y of the combobox."
           },
           "font-size": {
             "$value": "{type.body.font-size}",
@@ -5425,6 +6172,10 @@
           "focus-ring-invalid": {
             "$value": "{color.status.danger.@}",
             "$description": "Chips focus ring invalid of the combobox."
+          },
+          "padding-x-2": {
+            "$value": "{component-spacing-map.x2}",
+            "$description": "Chips padding x 2 of the combobox."
           }
         },
         "chip": {
@@ -5439,6 +6190,10 @@
           "background": {
             "$value": "{color.surface.sunken}",
             "$description": "Chip background of the combobox."
+          },
+          "padding-x": {
+            "$value": "{component-spacing-map.x2}",
+            "$description": "Chip padding x of the combobox."
           },
           "font-size": {
             "$value": "{type.caption.font-size}",
@@ -5479,6 +6234,10 @@
           "$value": "{color.text.primary}",
           "$description": "Label of the command."
         },
+        "padding-x": {
+          "$value": "{component-spacing-map.x2}",
+          "$description": "Padding x of the command."
+        },
         "font-weight": {
           "$value": "{type.label.font-weight}",
           "$description": "Font weight of the command."
@@ -5487,16 +6246,28 @@
           "$value": "{color.text.muted}",
           "$description": "Label 2 of the command."
         },
+        "padding-y": {
+          "$value": "{component-spacing-map.x3}",
+          "$description": "Padding y of the command."
+        },
         "input": {
           "wrapper": {
             "gap": {
               "$value": "{space.gap.default}",
               "$description": "Input wrapper gap of the command."
+            },
+            "padding-x": {
+              "$value": "{component-spacing-map.x3}",
+              "$description": "Input wrapper padding x of the command."
             }
           },
           "radius": {
             "$value": "{radius.control}",
             "$description": "Input radius of the command."
+          },
+          "padding-y": {
+            "$value": "{component-spacing-map.x3}",
+            "$description": "Input padding y of the command."
           },
           "font-size": {
             "$value": "{type.body.font-size}",
@@ -5524,6 +6295,10 @@
           "$description": "Disabled opacity of the command."
         },
         "empty": {
+          "padding-y": {
+            "$value": "{component-spacing-map.x6}",
+            "$description": "Empty padding y of the command."
+          },
           "font-size": {
             "$value": "{type.body.font-size}",
             "$description": "Empty font size of the command."
@@ -5534,9 +6309,21 @@
           }
         },
         "group": {
+          "padding": {
+            "$value": "{component-spacing-map.x1}",
+            "$description": "Group padding of the command."
+          },
           "label": {
             "$value": "{color.text.primary}",
             "$description": "Group label of the command."
+          },
+          "padding-x": {
+            "$value": "{component-spacing-map.x2}",
+            "$description": "Group padding x of the command."
+          },
+          "padding-y": {
+            "$value": "{component-spacing-map.x2}",
+            "$description": "Group padding y of the command."
           },
           "font-size": {
             "$value": "{type.caption.font-size}",
@@ -5569,6 +6356,14 @@
           "radius": {
             "$value": "{radius.badge}",
             "$description": "Item radius of the command."
+          },
+          "padding-x": {
+            "$value": "{component-spacing-map.x2}",
+            "$description": "Item padding x of the command."
+          },
+          "padding-y": {
+            "$value": "{component-spacing-map.x2}",
+            "$description": "Item padding y of the command."
           },
           "font-size": {
             "$value": "{type.body.font-size}",
@@ -5621,6 +6416,14 @@
               "$value": "{radius.badge}",
               "$description": "Sub trigger radius of the context menu."
             },
+            "padding-x": {
+              "$value": "{component-spacing-map.x2}",
+              "$description": "Sub trigger padding x of the context menu."
+            },
+            "padding-y": {
+              "$value": "{component-spacing-map.x2}",
+              "$description": "Sub trigger padding y of the context menu."
+            },
             "font-size": {
               "$value": "{type.body.font-size}",
               "$description": "Sub trigger font size of the context menu."
@@ -5636,6 +6439,10 @@
             "label-focus": {
               "$value": "{color.text.primary}",
               "$description": "Sub trigger label focus of the context menu."
+            },
+            "padding-left": {
+              "$value": "{component-spacing-map.x8}",
+              "$description": "Sub trigger padding left of the context menu."
             },
             "background-open": {
               "$value": "{color.surface.sunken}",
@@ -5663,6 +6470,10 @@
               "$value": "{color.surface.raised}",
               "$description": "Sub content background of the context menu."
             },
+            "padding": {
+              "$value": "{component-spacing-map.x1}",
+              "$description": "Sub content padding of the context menu."
+            },
             "label": {
               "$value": "{color.text.primary}",
               "$description": "Sub content label of the context menu."
@@ -5682,6 +6493,10 @@
             "$value": "{color.surface.raised}",
             "$description": "Content background of the context menu."
           },
+          "padding": {
+            "$value": "{component-spacing-map.x1}",
+            "$description": "Content padding of the context menu."
+          },
           "label": {
             "$value": "{color.text.primary}",
             "$description": "Content label of the context menu."
@@ -5699,6 +6514,14 @@
           "radius": {
             "$value": "{radius.badge}",
             "$description": "Item radius of the context menu."
+          },
+          "padding-x": {
+            "$value": "{component-spacing-map.x2}",
+            "$description": "Item padding x of the context menu."
+          },
+          "padding-y": {
+            "$value": "{component-spacing-map.x2}",
+            "$description": "Item padding y of the context menu."
           },
           "font-size": {
             "$value": "{type.body.font-size}",
@@ -5719,6 +6542,10 @@
           "disabled-opacity-disabled": {
             "$value": "{opacity.disabled}",
             "$description": "Item disabled opacity disabled of the context menu."
+          },
+          "padding-left": {
+            "$value": "{component-spacing-map.x8}",
+            "$description": "Item padding left of the context menu."
           },
           "label": {
             "$value": "{color.status.danger.@}",
@@ -5750,6 +6577,18 @@
             "radius": {
               "$value": "{radius.badge}",
               "$description": "Checkbox item radius of the context menu."
+            },
+            "padding-y": {
+              "$value": "{component-spacing-map.x2}",
+              "$description": "Checkbox item padding y of the context menu."
+            },
+            "padding-right": {
+              "$value": "{component-spacing-map.x2}",
+              "$description": "Checkbox item padding right of the context menu."
+            },
+            "padding-left": {
+              "$value": "{component-spacing-map.x8}",
+              "$description": "Checkbox item padding left of the context menu."
             },
             "font-size": {
               "$value": "{type.body.font-size}",
@@ -5791,6 +6630,18 @@
               "$value": "{radius.badge}",
               "$description": "Radio item radius of the context menu."
             },
+            "padding-y": {
+              "$value": "{component-spacing-map.x2}",
+              "$description": "Radio item padding y of the context menu."
+            },
+            "padding-right": {
+              "$value": "{component-spacing-map.x2}",
+              "$description": "Radio item padding right of the context menu."
+            },
+            "padding-left": {
+              "$value": "{component-spacing-map.x8}",
+              "$description": "Radio item padding left of the context menu."
+            },
             "font-size": {
               "$value": "{type.body.font-size}",
               "$description": "Radio item font size of the context menu."
@@ -5818,6 +6669,14 @@
           }
         },
         "label": {
+          "padding-x": {
+            "$value": "{component-spacing-map.x2}",
+            "$description": "Label padding x of the context menu."
+          },
+          "padding-y": {
+            "$value": "{component-spacing-map.x2}",
+            "$description": "Label padding y of the context menu."
+          },
           "font-size": {
             "$value": "{type.body.font-size}",
             "$description": "Label font size of the context menu."
@@ -5833,6 +6692,10 @@
           "label": {
             "$value": "{color.text.primary}",
             "$description": "Label label of the context menu."
+          },
+          "padding-left": {
+            "$value": "{component-spacing-map.x8}",
+            "$description": "Label padding left of the context menu."
           }
         },
         "separator": {
@@ -5865,6 +6728,10 @@
           "$value": "{color.text.primary}",
           "$description": "Label hover of the data table."
         },
+        "padding": {
+          "$value": "{component-spacing-map.x2}",
+          "$description": "Padding of the data table."
+        },
         "gap-2": {
           "$value": "{space.gap.default}",
           "$description": "Gap 2 of the data table."
@@ -5872,6 +6739,14 @@
         "radius": {
           "$value": "{radius.badge}",
           "$description": "Radius of the data table."
+        },
+        "padding-x": {
+          "$value": "{component-spacing-map.x2}",
+          "$description": "Padding x of the data table."
+        },
+        "padding-y": {
+          "$value": "{component-spacing-map.x1}",
+          "$description": "Padding y of the data table."
         },
         "background-hover": {
           "$value": "{color.surface.sunken}",
@@ -5918,6 +6793,10 @@
         "radius": {
           "$value": "{radius.badge}",
           "$description": "Radius of the dialog."
+        },
+        "padding": {
+          "$value": "{component-spacing-map.x1}",
+          "$description": "Padding of the dialog."
         },
         "label": {
           "$value": "{color.text.secondary}",
@@ -5978,9 +6857,17 @@
           "$description": "Background of the drawer."
         },
         "header": {
+          "gap": {
+            "$value": "{component-spacing-map.hairline}",
+            "$description": "Header gap of the drawer."
+          },
           "padding": {
             "$value": "{space.inset.container}",
             "$description": "Header padding of the drawer."
+          },
+          "gap-2": {
+            "$value": "{component-spacing-map.x2}",
+            "$description": "Header gap 2 of the drawer."
           }
         },
         "footer": {
@@ -6020,6 +6907,10 @@
       },
       "dropdown-menu": {
         "content": {
+          "padding": {
+            "$value": "{component-spacing-map.x1}",
+            "$description": "Content padding of the dropdown menu."
+          },
           "label": {
             "$value": "{color.text.primary}",
             "$description": "Content label of the dropdown menu."
@@ -6080,6 +6971,14 @@
         "radius": {
           "$value": "{radius.container}",
           "$description": "Radius of the empty."
+        },
+        "padding": {
+          "$value": "{component-spacing-map.x6}",
+          "$description": "Padding of the empty."
+        },
+        "padding-2": {
+          "$value": "{component-spacing-map.x12}",
+          "$description": "Padding 2 of the empty."
         },
         "header": {
           "gap": {
@@ -6149,6 +7048,10 @@
           "gap": {
             "$value": "{space.gap.section}",
             "$description": "Set gap of the field."
+          },
+          "gap-2": {
+            "$value": "{component-spacing-map.x3}",
+            "$description": "Set gap 2 of the field."
           }
         },
         "legend": {
@@ -6167,13 +7070,31 @@
         },
         "group": {
           "gap": {
-            "$value": "{space.gap.group}",
+            "$value": "{component-spacing-map.x8}",
             "$description": "Group gap of the field."
+          },
+          "gap-2": {
+            "$value": "{component-spacing-map.x3}",
+            "$description": "Group gap 2 of the field."
+          },
+          "gap-3": {
+            "$value": "{space.gap.group}",
+            "$description": "Group gap 3 of the field."
           }
+        },
+        "gap": {
+          "$value": "{component-spacing-map.x3}",
+          "$description": "Gap of the field."
         },
         "label-invalid": {
           "$value": "{color.status.danger.@}",
           "$description": "Label invalid of the field."
+        },
+        "content": {
+          "gap": {
+            "$value": "{component-spacing-map.x2}",
+            "$description": "Content gap of the field."
+          }
         },
         "label": {
           "gap": {
@@ -6187,6 +7108,10 @@
           "radius": {
             "$value": "{radius.control}",
             "$description": "Label radius of the field."
+          },
+          "padding": {
+            "$value": "{component-spacing-map.x4}",
+            "$description": "Label padding of the field."
           },
           "font-size": {
             "$value": "{type.body.font-size}",
@@ -6249,9 +7174,13 @@
           "$value": "{color.surface.canvas}",
           "$description": "Background of the field."
         },
-        "gap": {
+        "padding-x": {
+          "$value": "{component-spacing-map.x2}",
+          "$description": "Padding x of the field."
+        },
+        "gap-2": {
           "$value": "{space.gap.tight}",
-          "$description": "Gap of the field."
+          "$description": "Gap 2 of the field."
         },
         "error": {
           "font-size": {
@@ -6351,6 +7280,14 @@
           "$value": "{elevation.card}",
           "$description": "Shadow of the input group."
         },
+        "padding-left": {
+          "$value": "{component-spacing-map.x2}",
+          "$description": "Padding left of the input group."
+        },
+        "padding-right": {
+          "$value": "{component-spacing-map.x2}",
+          "$description": "Padding right of the input group."
+        },
         "padding-bottom": {
           "$value": "{space.inset.control-x}",
           "$description": "Padding bottom of the input group."
@@ -6378,6 +7315,10 @@
         "gap": {
           "$value": "{space.gap.default}",
           "$description": "Gap of the input group."
+        },
+        "padding-y": {
+          "$value": "{component-spacing-map.x2}",
+          "$description": "Padding y of the input group."
         },
         "font-size": {
           "$value": "{type.body.font-size}",
@@ -6427,6 +7368,10 @@
               "$value": "{space.inset.control-x}",
               "$description": "Block start padding top of the input group."
             },
+            "padding-top-2": {
+              "$value": "{component-spacing-map.x3}",
+              "$description": "Block start padding top 2 of the input group."
+            },
             "padding-bottom": {
               "$value": "{space.inset.control-x}",
               "$description": "Block start padding bottom of the input group."
@@ -6440,6 +7385,10 @@
             "padding-bottom": {
               "$value": "{space.inset.control-x}",
               "$description": "Block end padding bottom of the input group."
+            },
+            "padding-bottom-2": {
+              "$value": "{component-spacing-map.x3}",
+              "$description": "Block end padding bottom 2 of the input group."
             },
             "padding-top": {
               "$value": "{space.inset.control-x}",
@@ -6455,6 +7404,10 @@
           "gap": {
             "$value": "{space.gap.tight}",
             "$description": "Xs gap of the input group."
+          },
+          "padding-x": {
+            "$value": "{component-spacing-map.x2}",
+            "$description": "Xs padding x of the input group."
           }
         },
         "sm": {
@@ -6462,9 +7415,17 @@
             "$value": "{size.control.default}",
             "$description": "Sm height of the input group."
           },
+          "gap": {
+            "$value": "{component-spacing-map.x2}",
+            "$description": "Sm gap of the input group."
+          },
           "radius": {
             "$value": "{radius.control}",
             "$description": "Sm radius of the input group."
+          },
+          "padding-x": {
+            "$value": "{component-spacing-map.x3}",
+            "$description": "Sm padding x of the input group."
           }
         },
         "icon": {
@@ -6598,9 +7559,17 @@
           }
         },
         "sm": {
+          "gap": {
+            "$value": "{component-spacing-map.x3}",
+            "$description": "Sm gap of the item."
+          },
           "padding-x": {
             "$value": "{space.inset.container}",
             "$description": "Sm padding x of the item."
+          },
+          "padding-y": {
+            "$value": "{component-spacing-map.x3}",
+            "$description": "Sm padding y of the item."
           }
         },
         "gap": {
@@ -6709,6 +7678,10 @@
           "$value": "{color.surface.sunken}",
           "$description": "Background of the kbd."
         },
+        "padding-x": {
+          "$value": "{component-spacing-map.x1}",
+          "$description": "Padding x of the kbd."
+        },
         "font-size": {
           "$value": "{type.caption.font-size}",
           "$description": "Font size of the kbd."
@@ -6767,6 +7740,10 @@
         }
       },
       "marker": {
+        "gap": {
+          "$value": "{component-spacing-map.x3}",
+          "$description": "Gap of the marker."
+        },
         "font-size": {
           "$value": "{type.caption.font-size}",
           "$description": "Font size of the marker."
@@ -6797,6 +7774,10 @@
           "$value": "{color.surface.canvas}",
           "$description": "Background of the menubar."
         },
+        "padding": {
+          "$value": "{component-spacing-map.x1}",
+          "$description": "Padding of the menubar."
+        },
         "shadow": {
           "$value": "{elevation.card}",
           "$description": "Shadow of the menubar."
@@ -6805,6 +7786,14 @@
           "radius": {
             "$value": "{radius.badge}",
             "$description": "Trigger radius of the menubar."
+          },
+          "padding-x": {
+            "$value": "{component-spacing-map.x2}",
+            "$description": "Trigger padding x of the menubar."
+          },
+          "padding-y": {
+            "$value": "{component-spacing-map.x1}",
+            "$description": "Trigger padding y of the menubar."
           },
           "font-size": {
             "$value": "{type.body.font-size}",
@@ -6844,6 +7833,10 @@
             "$value": "{color.surface.raised}",
             "$description": "Content background of the menubar."
           },
+          "padding": {
+            "$value": "{component-spacing-map.x1}",
+            "$description": "Content padding of the menubar."
+          },
           "label": {
             "$value": "{color.text.primary}",
             "$description": "Content label of the menubar."
@@ -6861,6 +7854,14 @@
           "radius": {
             "$value": "{radius.badge}",
             "$description": "Item radius of the menubar."
+          },
+          "padding-x": {
+            "$value": "{component-spacing-map.x2}",
+            "$description": "Item padding x of the menubar."
+          },
+          "padding-y": {
+            "$value": "{component-spacing-map.x2}",
+            "$description": "Item padding y of the menubar."
           },
           "font-size": {
             "$value": "{type.body.font-size}",
@@ -6881,6 +7882,10 @@
           "disabled-opacity-disabled": {
             "$value": "{opacity.disabled}",
             "$description": "Item disabled opacity disabled of the menubar."
+          },
+          "padding-left": {
+            "$value": "{component-spacing-map.x8}",
+            "$description": "Item padding left of the menubar."
           },
           "label": {
             "$value": "{color.status.danger.@}",
@@ -6912,6 +7917,18 @@
             "radius": {
               "$value": "{radius.badge}",
               "$description": "Checkbox item radius of the menubar."
+            },
+            "padding-y": {
+              "$value": "{component-spacing-map.x2}",
+              "$description": "Checkbox item padding y of the menubar."
+            },
+            "padding-right": {
+              "$value": "{component-spacing-map.x2}",
+              "$description": "Checkbox item padding right of the menubar."
+            },
+            "padding-left": {
+              "$value": "{component-spacing-map.x8}",
+              "$description": "Checkbox item padding left of the menubar."
             },
             "font-size": {
               "$value": "{type.body.font-size}",
@@ -6953,6 +7970,18 @@
               "$value": "{radius.badge}",
               "$description": "Radio item radius of the menubar."
             },
+            "padding-y": {
+              "$value": "{component-spacing-map.x2}",
+              "$description": "Radio item padding y of the menubar."
+            },
+            "padding-right": {
+              "$value": "{component-spacing-map.x2}",
+              "$description": "Radio item padding right of the menubar."
+            },
+            "padding-left": {
+              "$value": "{component-spacing-map.x8}",
+              "$description": "Radio item padding left of the menubar."
+            },
             "font-size": {
               "$value": "{type.body.font-size}",
               "$description": "Radio item font size of the menubar."
@@ -6980,6 +8009,14 @@
           }
         },
         "label": {
+          "padding-x": {
+            "$value": "{component-spacing-map.x2}",
+            "$description": "Label padding x of the menubar."
+          },
+          "padding-y": {
+            "$value": "{component-spacing-map.x2}",
+            "$description": "Label padding y of the menubar."
+          },
           "font-size": {
             "$value": "{type.body.font-size}",
             "$description": "Label font size of the menubar."
@@ -6991,6 +8028,10 @@
           "font-weight": {
             "$value": "{type.label.font-weight}",
             "$description": "Label font weight of the menubar."
+          },
+          "padding-left": {
+            "$value": "{component-spacing-map.x8}",
+            "$description": "Label padding left of the menubar."
           }
         },
         "separator": {
@@ -7019,6 +8060,14 @@
               "$value": "{radius.badge}",
               "$description": "Sub trigger radius of the menubar."
             },
+            "padding-x": {
+              "$value": "{component-spacing-map.x2}",
+              "$description": "Sub trigger padding x of the menubar."
+            },
+            "padding-y": {
+              "$value": "{component-spacing-map.x2}",
+              "$description": "Sub trigger padding y of the menubar."
+            },
             "font-size": {
               "$value": "{type.body.font-size}",
               "$description": "Sub trigger font size of the menubar."
@@ -7034,6 +8083,10 @@
             "label-focus": {
               "$value": "{color.text.primary}",
               "$description": "Sub trigger label focus of the menubar."
+            },
+            "padding-left": {
+              "$value": "{component-spacing-map.x8}",
+              "$description": "Sub trigger padding left of the menubar."
             },
             "background-open": {
               "$value": "{color.surface.sunken}",
@@ -7052,6 +8105,10 @@
             "background": {
               "$value": "{color.surface.raised}",
               "$description": "Sub content background of the menubar."
+            },
+            "padding": {
+              "$value": "{component-spacing-map.x1}",
+              "$description": "Sub content padding of the menubar."
             },
             "label": {
               "$value": "{color.text.primary}",
@@ -7091,6 +8148,10 @@
         }
       },
       "message": {
+        "gap": {
+          "$value": "{component-spacing-map.x3}",
+          "$description": "Gap of the message."
+        },
         "font-size": {
           "$value": "{type.body.font-size}",
           "$description": "Font size of the message."
@@ -7099,9 +8160,9 @@
           "$value": "{type.body.line-height}",
           "$description": "Line height of the message."
         },
-        "gap": {
+        "gap-2": {
           "$value": "{space.gap.tight}",
-          "$description": "Gap of the message."
+          "$description": "Gap 2 of the message."
         },
         "gap-x": {
           "$value": "{space.gap.default}",
@@ -7145,6 +8206,14 @@
           "$value": "{space.inset.control-x}",
           "$description": "Padding x of the native select."
         },
+        "padding-y": {
+          "$value": "{component-spacing-map.x2}",
+          "$description": "Padding y of the native select."
+        },
+        "padding-right": {
+          "$value": "{component-spacing-map.x8}",
+          "$description": "Padding right of the native select."
+        },
         "font-size": {
           "$value": "{type.body.font-size}",
           "$description": "Font size of the native select."
@@ -7172,6 +8241,10 @@
         "height": {
           "$value": "{size.control.default}",
           "$description": "Height of the native select."
+        },
+        "padding-y-2": {
+          "$value": "{component-spacing-map.x1}",
+          "$description": "Padding y 2 of the native select."
         },
         "border-focus": {
           "$value": "{color.border.focus}",
@@ -7224,6 +8297,10 @@
         "padding-x": {
           "$value": "{space.inset.container}",
           "$description": "Padding x of the navigation menu."
+        },
+        "padding-y": {
+          "$value": "{component-spacing-map.x2}",
+          "$description": "Padding y of the navigation menu."
         },
         "font-size": {
           "$value": "{type.body.font-size}",
@@ -7289,6 +8366,16 @@
           "$value": "{motion.duration.feedback}",
           "$description": "Duration of the navigation menu."
         },
+        "content": {
+          "padding": {
+            "$value": "{component-spacing-map.x2}",
+            "$description": "Content padding of the navigation menu."
+          },
+          "padding-right": {
+            "$value": "{component-spacing-map.x3}",
+            "$description": "Content padding right of the navigation menu."
+          }
+        },
         "background-2": {
           "$value": "{color.surface.raised}",
           "$description": "Background 2 of the navigation menu."
@@ -7327,6 +8414,10 @@
           "radius": {
             "$value": "{radius.badge}",
             "$description": "Link radius of the navigation menu."
+          },
+          "padding": {
+            "$value": "{component-spacing-map.x2}",
+            "$description": "Link padding of the navigation menu."
           },
           "font-size": {
             "$value": "{type.body.font-size}",
@@ -7405,6 +8496,18 @@
           "$value": "{space.gap.tight}",
           "$description": "Gap of the pagination."
         },
+        "padding-x": {
+          "$value": "{component-spacing-map.x3}",
+          "$description": "Padding x of the pagination."
+        },
+        "padding-left": {
+          "$value": "{component-spacing-map.x3}",
+          "$description": "Padding left of the pagination."
+        },
+        "padding-right": {
+          "$value": "{component-spacing-map.x3}",
+          "$description": "Padding right of the pagination."
+        },
         "icon-size": {
           "$value": "{size.icon}",
           "$description": "Icon size of the pagination."
@@ -7477,6 +8580,10 @@
         }
       },
       "radio-group": {
+        "gap": {
+          "$value": "{component-spacing-map.x3}",
+          "$description": "Gap of the radio group."
+        },
         "item": {
           "icon-size": {
             "$value": "{size.icon}",
@@ -7618,6 +8725,10 @@
           "$description": "Size of the select."
         },
         "content": {
+          "padding": {
+            "$value": "{component-spacing-map.x1}",
+            "$description": "Content padding of the select."
+          },
           "label": {
             "$value": "{color.text.primary}",
             "$description": "Content label of the select."
@@ -7639,6 +8750,10 @@
           "padding-left": {
             "$value": "{space.inset.cell-x}",
             "$description": "Item padding left of the select."
+          },
+          "padding-right": {
+            "$value": "{component-spacing-map.x8}",
+            "$description": "Item padding right of the select."
           },
           "radius": {
             "$value": "{radius.badge}",
@@ -7710,6 +8825,10 @@
           "$description": "Icon size of the sheet."
         },
         "header": {
+          "gap": {
+            "$value": "{component-spacing-map.x2}",
+            "$description": "Header gap of the sheet."
+          },
           "padding": {
             "$value": "{space.inset.container}",
             "$description": "Header padding of the sheet."
@@ -7781,6 +8900,10 @@
             "$description": "Container duration of the sidebar."
           }
         },
+        "padding": {
+          "$value": "{component-spacing-map.x2}",
+          "$description": "Padding of the sidebar."
+        },
         "inner": {
           "background": {
             "$value": "{color.surface.default}",
@@ -7837,12 +8960,20 @@
           "gap": {
             "$value": "{space.gap.default}",
             "$description": "Header gap of the sidebar."
+          },
+          "padding": {
+            "$value": "{component-spacing-map.x2}",
+            "$description": "Header padding of the sidebar."
           }
         },
         "footer": {
           "gap": {
             "$value": "{space.gap.default}",
             "$description": "Footer gap of the sidebar."
+          },
+          "padding": {
+            "$value": "{component-spacing-map.x2}",
+            "$description": "Footer padding of the sidebar."
           }
         },
         "separator": {
@@ -7858,6 +8989,10 @@
           }
         },
         "group": {
+          "padding": {
+            "$value": "{component-spacing-map.x2}",
+            "$description": "Group padding of the sidebar."
+          },
           "label": {
             "height": {
               "$value": "{size.control.default}",
@@ -7866,6 +9001,10 @@
             "radius": {
               "$value": "{radius.control}",
               "$description": "Group label radius of the sidebar."
+            },
+            "padding-x": {
+              "$value": "{component-spacing-map.x2}",
+              "$description": "Group label padding x of the sidebar."
             },
             "font-size": {
               "$value": "{type.caption.font-size}",
@@ -8005,6 +9144,10 @@
               "$value": "{radius.control}",
               "$description": "Menu badge radius of the sidebar."
             },
+            "padding-x": {
+              "$value": "{component-spacing-map.x1}",
+              "$description": "Menu badge padding x of the sidebar."
+            },
             "font-size": {
               "$value": "{type.caption.font-size}",
               "$description": "Menu badge font size of the sidebar."
@@ -8034,6 +9177,10 @@
             "radius": {
               "$value": "{radius.control}",
               "$description": "Menu skeleton radius of the sidebar."
+            },
+            "padding-x": {
+              "$value": "{component-spacing-map.x2}",
+              "$description": "Menu skeleton padding x of the sidebar."
             }
           },
           "sub": {
@@ -8045,6 +9192,14 @@
               "$value": "{color.border.default}",
               "$description": "Menu sub border of the sidebar."
             },
+            "padding-x": {
+              "$value": "{component-spacing-map.x3}",
+              "$description": "Menu sub padding x of the sidebar."
+            },
+            "padding-y": {
+              "$value": "{component-spacing-map.hairline}",
+              "$description": "Menu sub padding y of the sidebar."
+            },
             "button": {
               "gap": {
                 "$value": "{space.gap.default}",
@@ -8053,6 +9208,10 @@
               "radius": {
                 "$value": "{radius.control}",
                 "$description": "Menu sub button radius of the sidebar."
+              },
+              "padding-x": {
+                "$value": "{component-spacing-map.x2}",
+                "$description": "Menu sub button padding x of the sidebar."
               },
               "label": {
                 "$value": "{color.text.primary}",
@@ -8116,6 +9275,10 @@
         "focus-ring": {
           "$value": "{color.border.focus}",
           "$description": "Focus ring of the sidebar."
+        },
+        "padding-right": {
+          "$value": "{component-spacing-map.x8}",
+          "$description": "Padding right of the sidebar."
         },
         "size": {
           "$value": "{size.control.default}",
@@ -8335,6 +9498,10 @@
           "$value": "{radius.round}",
           "$description": "Radius of the switch."
         },
+        "padding": {
+          "$value": "{component-spacing-map.hairline}",
+          "$description": "Padding of the switch."
+        },
         "focus": {
           "$value": "{border-width.focus}",
           "$description": "Focus of the switch."
@@ -8368,6 +9535,10 @@
         "padding-x": {
           "$value": "{space.inset.control-x}",
           "$description": "Padding x of the textarea."
+        },
+        "padding-y": {
+          "$value": "{component-spacing-map.x2}",
+          "$description": "Padding y of the textarea."
         },
         "font-size": {
           "$value": "{type.body.font-size}",
@@ -8581,10 +9752,26 @@
             "$description": "Outline label hover of the toggle."
           }
         },
+        "default": {
+          "padding-x": {
+            "$value": "{component-spacing-map.x2}",
+            "$description": "Default padding x of the toggle."
+          }
+        },
         "sm": {
           "height": {
             "$value": "{size.control.default}",
             "$description": "Sm height of the toggle."
+          },
+          "padding-x": {
+            "$value": "{component-spacing-map.x2}",
+            "$description": "Sm padding x of the toggle."
+          }
+        },
+        "lg": {
+          "padding-x": {
+            "$value": "{component-spacing-map.x3}",
+            "$description": "Lg padding x of the toggle."
           }
         }
       }

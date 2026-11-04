@@ -6,6 +6,8 @@
 //   findToken  build: the token or component key for an intent, with its guidance
 //   fitScheme  choose: the schemes ranked against a product description, with the reasons
 
+import { spacingGuide } from "./spacing-map.mjs";
+import { tokenIndex, aliasChain } from "./lands.mjs";
 import { followers } from "./component.mjs";
 import { questions, when } from "./schemes.mjs";
 import { themeTokens } from "./tokens.mjs";
@@ -57,6 +59,26 @@ const ARBITRARY = /\b[a-z][a-z-]*-\[-?\d+(?:\.\d+)?(?:px|rem|em)\]/g;
  * Checks project files against a scheme. files: [{ path, content }]. Returns { pass, findings },
  * one finding per problem with the file, the line, the rule and the fix.
  */
+// A Tailwind spacing utility with a number (p-6, md:gap-1.5, -mt-2), never 0.
+const SPACING_NUMBER =
+  /(^|[\s"'`{])((?:[\w-]+:)*-?(?:p|px|py|pt|pb|pl|pr|ps|pe|m|mx|my|mt|mb|ml|mr|ms|me|gap|gap-x|gap-y|space-x|space-y)-(\d+(?:\.\d+)?))(?=[\s"'`}]|$)/g;
+
+// The role with this px value in the scheme, else the nearest step of the component spacing map.
+// (an inset for padding, a gap for gaps and margins)
+function spacingName(scheme, px, util) {
+  const g = spacingGuide(scheme, {
+    index: tokenIndex(scheme),
+    chain: aliasChain,
+  });
+  const kind = /^p[xytblrse]?$/.test(util) ? "space.inset." : "space.gap.";
+  const role = g.roles.find((r) => r.px === px && r.token.startsWith(kind));
+  if (role) return role;
+  const step = [...g.steps].sort(
+    (a, b) => Math.abs(a.px - px) - Math.abs(b.px - px),
+  )[0];
+  return { ...step, utility: `map-${step.step}` };
+}
+
 /**
  * Where each finding is answered (OD-205): a file in a created project and its section heading.
  * The harness checks that each one exists.
@@ -64,6 +86,7 @@ const ARBITRARY = /\b[a-z][a-z-]*-\[-?\d+(?:\.\d+)?(?:px|rem|em)\]/g;
 export const SEE = {
   "raw-color": "context/tasks/build.md: Situations",
   "raw-size": "context/tasks/build.md: Situations",
+  "raw-spacing": "AGENTS.md: Never",
   "not-in-inventory": "AGENTS.md: Components",
   "variant-not-used": "context/components/<id>.md: Variants here",
   "context-drift": "context/README.md",
@@ -114,6 +137,24 @@ export function checkUi(scheme, g, files) {
           `A palette color class: ${m[0]}`,
           "Use a class that reads the scheme's color variables, or a component key.",
         );
+    // Raw spacing (OD-235): a Tailwind spacing number. Name the role or map step with that value here.
+    if (!css)
+      for (const m of text.matchAll(SPACING_NUMBER)) {
+        if (Number(m[3]) === 0) continue;
+        const px = Number(m[3]) * 4;
+        const util = m[2]
+          .replace(/^(?:[\w-]+:)*-?/, "")
+          .replace(/-[\d.]+$/, "");
+        const name = spacingName(scheme, px, util);
+        add(
+          path,
+          text,
+          m.index + m[1].length,
+          "raw-spacing",
+          `A spacing as a number: ${m[2]} (${px}px)`,
+          `Use ${m[2].replace(/-\d+(?:\.\d+)?$/, `-${name.utility}`)}: ${name.token}, ${name.px}px in this scheme. Between things a role, inside a component a map step.`,
+        );
+      }
     // Raw sizes: arbitrary Tailwind values, and px in CSS declarations.
     for (const m of text.matchAll(ARBITRARY))
       add(
@@ -507,7 +548,34 @@ export function findToken(scheme, g, query, limit = 5) {
       matched: [...new Set([...head, ...body])],
     };
   });
-  const ranked = [...semantic, ...keys]
+  // Spacing (OD-235): the layout roles and the component spacing map's steps, with this scheme's px.
+  const sg = spacingGuide(scheme, {
+    index: tokenIndex(scheme),
+    chain: aliasChain,
+  });
+  const spacing = [
+    ...sg.roles.map((r) => ({
+      ...r,
+      text: `${r.for} spacing space between padding gap margin layout`,
+    })),
+    ...sg.steps.map((x) => ({
+      ...x,
+      text: `A step of the component spacing map, ${x.px}px here: spacing inside a component, padding gap within`,
+    })),
+  ].map((x) => {
+    const head = overlap(q, x.token.replace(/[.-]/g, " "));
+    const body = overlap(q, x.text);
+    return {
+      token: x.token,
+      kind: "spacing",
+      intent: x.for || x.text.split(":")[0],
+      utility: x.step ? `map-${x.step}` : x.utility,
+      px: x.px,
+      score: head.length * 2 + body.length,
+      matched: [...new Set([...head, ...body])],
+    };
+  });
+  const ranked = [...semantic, ...keys, ...spacing]
     .filter((r) => r.score > 0)
     .sort(
       (a, b) =>

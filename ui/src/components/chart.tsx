@@ -170,12 +170,12 @@ function ChartTooltipContent({
   return (
     <div
       className={cn(
-        "grid min-w-[8rem] items-start gap-1.5 rounded-[var(--chart-radius)] border border-[color:var(--chart-border)]/50 bg-[color:var(--chart-background)] px-2.5 py-1.5 text-[length:var(--chart-font-size)]/[var(--chart-line-height)] shadow-[var(--chart-shadow)]",
+        "grid min-w-[8rem] items-start gap-[var(--chart-gap)] rounded-[var(--chart-radius)] border border-[color:var(--chart-border)]/50 bg-[color:var(--chart-background)] px-[var(--chart-padding-x)] py-[var(--chart-padding-y)] text-[length:var(--chart-font-size)]/[var(--chart-line-height)] shadow-[var(--chart-shadow)]",
         className,
       )}
     >
       {!nestLabel ? tooltipLabel : null}
-      <div className="grid gap-1.5">
+      <div className="grid gap-[var(--chart-gap)]">
         {payload
           .filter((item) => item.type !== "none")
           .map((item, index) => {
@@ -187,7 +187,7 @@ function ChartTooltipContent({
               <div
                 key={index}
                 className={cn(
-                  "flex w-full flex-wrap items-stretch gap-[var(--chart-gap)] [&>svg]:h-2.5 [&>svg]:w-2.5 [&>svg]:text-[color:var(--chart-label)]",
+                  "flex w-full flex-wrap items-stretch gap-[var(--chart-gap-2)] [&>svg]:h-2.5 [&>svg]:w-2.5 [&>svg]:text-[color:var(--chart-label)]",
                   indicator === "dot" && "items-center",
                 )}
               >
@@ -221,7 +221,7 @@ function ChartTooltipContent({
                         nestLabel ? "items-end" : "items-center",
                       )}
                     >
-                      <div className="grid gap-1.5">
+                      <div className="grid gap-[var(--chart-gap)]">
                         {nestLabel ? tooltipLabel : null}
                         <span className="text-[color:var(--chart-label)]">{itemConfig?.label ?? item.name}</span>
                       </div>
@@ -262,8 +262,8 @@ function ChartLegendContent({
   return (
     <div
       className={cn(
-        "flex items-center justify-center gap-[var(--chart-gap-2)]",
-        verticalAlign === "top" ? "pb-3" : "pt-3",
+        "flex items-center justify-center gap-[var(--chart-gap-3)]",
+        verticalAlign === "top" ? "pb-[var(--chart-padding-bottom)]" : "pt-[var(--chart-padding-top)]",
         className,
       )}
     >
@@ -277,7 +277,7 @@ function ChartLegendContent({
             <div
               key={index}
               className={cn(
-                "flex items-center gap-1.5 [&>svg]:h-3 [&>svg]:w-3 [&>svg]:text-[color:var(--chart-label)]",
+                "flex items-center gap-[var(--chart-gap)] [&>svg]:h-3 [&>svg]:w-3 [&>svg]:text-[color:var(--chart-label)]",
               )}
             >
               {itemConfig?.icon && !hideIcon ? (

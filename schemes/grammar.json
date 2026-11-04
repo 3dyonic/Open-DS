@@ -31,9 +31,7 @@
     "used": {
       "say": "outside color ramps, keep only the options a semantic, theme or component key reads",
       "why": "An option nothing reads is a choice nobody made. Color ramps stay whole, because a ramp is one unit with meaning.",
-      "except": [
-        "color"
-      ]
+      "except": ["color"]
     },
     "rules": [
       {
@@ -527,9 +525,7 @@
       "kind": "scope",
       "title": "Typography",
       "description": "How text is set: roles, sizes and line height.",
-      "owns": [
-        "type"
-      ],
+      "owns": ["type"],
       "lands_in": [
         "accordion",
         "alert",
@@ -701,9 +697,7 @@
       "kind": "scope",
       "title": "Color",
       "description": "How color carries action, state and brand.",
-      "owns": [
-        "color"
-      ],
+      "owns": ["color"],
       "lands_in": [
         "accordion",
         "alert",
@@ -871,18 +865,14 @@
           "when": "Before you change any color.",
           "do": "A scale is one color in steps, from lightened (50) to darkened (950). The steps are made in OKLCH, a color space built around how the eye sees lightness, and each step mostly moves the color's lightness. The steps aren't evenly spaced in lightness: at the light and dark ends they are tweaked so that each gap means the same, one step more of use. The light tints sit close together, so there is a choice of soft backgrounds; the middle steps step out as fills, borders and buttons; the dark end gives strong text. Colorfulness eases toward the ends. Each scale starts from its own key color at 600 and keeps that hue's natural lightness and contrast: a yellow is light by nature and a blue is dark, so their steps sit around where each hue really is, not at the same values for every hue. So every step still reads as the same color.",
           "why": "When every step is one step of use, people can pick the right strength for each job, and the screen stays calm and consistent.",
-          "from": [
-            "OD-223"
-          ]
+          "from": ["OD-223"]
         },
         {
           "id": "each-step-has-a-job",
           "when": "You pick a step for something.",
           "do": "Use the lightest steps for backgrounds behind text, the middle steps for buttons, borders and focus rings, and the darkest steps for text on light backgrounds. In dark mode the roles swap ends.",
           "why": "Text must stand out from what is behind it. Each end of the scale gives that for the other end.",
-          "from": [
-            "OD-223"
-          ]
+          "from": ["OD-223"]
         },
         {
           "id": "fix-only-what-is-wrong",
@@ -890,37 +880,28 @@
           "do": "Say exactly what is wrong first: too pale, too dull, too close to another color. Then change only that step, and leave the ones that work alone.",
           "measure": "The harness checks that every step that was changed really needed it.",
           "why": "A small fix in the right place keeps the family together. Reworking a whole scale for one problem makes new problems.",
-          "from": [
-            "OD-231"
-          ]
+          "from": ["OD-231"]
         },
         {
           "id": "look-at-every-use",
           "when": "Before you change a step.",
           "do": "Find everything that uses it, and look at each one in light and dark mode. One step can be a soft background in light mode and a text color in dark mode at the same time.",
           "why": "A change made for one use moves every other use of that step too.",
-          "from": [
-            "OD-223",
-            "OD-231"
-          ]
+          "from": ["OD-223", "OD-231"]
         },
         {
           "id": "more-color-before-darker",
           "when": "A step looks washed out or greyish.",
           "do": "OKLCH gives a step three dials: lightness, colorfulness and hue. Turn colorfulness first. If that is not enough, make it a little darker. Turn the hue last.",
           "why": "Darkening a pale color makes it grayer, not more colorful. How colorful it is decides whether people recognize it.",
-          "from": [
-            "OD-231"
-          ]
+          "from": ["OD-231"]
         },
         {
           "id": "pale-blue-and-red",
           "when": "You make a very pale step more colorful.",
           "do": "Expect blue and red to need a touch of darkening before they can take more color. Green and yellow usually take it as they are.",
           "why": "Screens can show only so much color in very pale steps, and blue and red run out of room first.",
-          "from": [
-            "OD-231"
-          ]
+          "from": ["OD-231"]
         },
         {
           "id": "colored-text-must-look-colored",
@@ -928,55 +909,42 @@
           "do": "Make sure it is easy to read and also clearly that color. Text that is readable but looks white has lost its meaning.",
           "measure": "The harness checks that status text on dark backgrounds is clearly colored and easy to read, in every scheme.",
           "why": "The color tells people what kind of message it is before they read a word.",
-          "from": [
-            "OD-231"
-          ]
+          "from": ["OD-231"]
         },
         {
           "id": "change-a-little",
           "when": "You decide how much to change.",
           "do": "Change as little as solves the problem. Then compare it with the original side by side, in light and dark mode, and ease it back if it stands out.",
           "why": "A big change makes the step look like it belongs to another color.",
-          "from": [
-            "OD-231"
-          ]
+          "from": ["OD-231"]
         },
         {
           "id": "fix-it-once",
           "when": "The same problem shows up in several schemes.",
           "do": "If the schemes use the same color, fix it once for all of them. Fix one scheme alone only when its color is different.",
           "why": "The same blue is the same color wherever it is used, so it has the same problem everywhere.",
-          "from": [
-            "OD-231"
-          ]
+          "from": ["OD-231"]
         },
         {
           "id": "same-fix-everywhere-is-a-new-rule",
           "when": "Every color seems to need the same fix.",
           "do": "Change how all the scales are made, instead of fixing each color one by one.",
           "why": "A fix is for an exception. When every color needs it, the rule itself is what needs to change.",
-          "from": [
-            "OD-223"
-          ]
+          "from": ["OD-223"]
         },
         {
           "id": "say-why",
           "when": "You have changed a step.",
           "do": "Write down why, in a sentence anyone can follow. \"It looked too pale on dark backgrounds\" is a good reason.",
           "why": "Whoever comes next can keep the change, adjust it, or undo it on purpose.",
-          "from": [
-            "OD-223",
-            "OD-231"
-          ]
+          "from": ["OD-223", "OD-231"]
         },
         {
           "id": "apart-where-they-meet",
           "when": "Two colors must never be confused, like the main button and a delete button.",
           "do": "Decide how different they must be from where they appear together, not from one number for every case.",
           "why": "Colors side by side need more difference than colors that never meet.",
-          "from": [
-            "OD-225"
-          ]
+          "from": ["OD-225"]
         }
       ]
     },
@@ -985,20 +953,20 @@
       "kind": "scope",
       "title": "Spacing",
       "description": "How space shows what belongs together.",
-      "owns": [
-        "space",
-        "size.row"
-      ],
+      "owns": ["space", "size.row"],
       "lands_in": [
         "accordion",
         "alert",
         "alert-dialog",
+        "attachment",
         "badge",
+        "breadcrumb",
         "bubble",
         "button",
         "button-group",
         "calendar",
         "card",
+        "carousel",
         "chart",
         "combobox",
         "command",
@@ -1017,6 +985,7 @@
         "item",
         "kbd",
         "label",
+        "marker",
         "menubar",
         "message",
         "message-scroller",
@@ -1024,9 +993,11 @@
         "navigation-menu",
         "pagination",
         "popover",
+        "radio-group",
         "select",
         "sheet",
         "sidebar",
+        "switch",
         "table",
         "tabs",
         "textarea",
@@ -1035,11 +1006,7 @@
         "toggle-group",
         "tooltip"
       ],
-      "situations": [
-        "related-items",
-        "between-sections",
-        "table-row"
-      ],
+      "situations": ["related-items", "between-sections", "table-row"],
       "questions": [
         {
           "id": "spacing.roles",
@@ -1133,6 +1100,29 @@
             }
           ]
         }
+      ],
+      "hints": [
+        {
+          "id": "never-a-number",
+          "when": "Before you write any spacing.",
+          "do": "Never write a spacing as a number: not p-6, not gap-1.5, not p-[10px]. Every spacing has a name. Between things and on the page, use a role: gap-tight, gap-default, gap-group, gap-section, p-container, px-control, px-cell. Inside a component of your own, use a step of the component spacing map: gap-map-x2, p-map-x6.",
+          "why": "A number looks right in one scheme and wrong in the next. A name follows the scheme, so the screen keeps its density in every scheme.",
+          "from": ["OD-235"]
+        },
+        {
+          "id": "what-the-map-is",
+          "when": "When you space the inside of a component.",
+          "do": "The component spacing map is the steps components space by. Each step is 4px × its multiplier (x1, x2, x3, x4, x6, x8, x12) × the scheme's rhythm, rounded to a multiple of 4px, at most 64px. A compact scheme has rhythm 1 and a spacious one up to 2, so a dialog's padding (x6) is 24px in one and 48px in the other. The scheme decides which steps hold still: x1 and x2 are the fine spacing inside rows, so lists stay lists in a roomy scheme. The hairline is a fixed 2px nudge. Pick the step nearest the space you want.",
+          "why": "One unit keeps everything on one grid; the rhythm lets each scheme decide how roomy its components are.",
+          "from": ["OD-235"]
+        },
+        {
+          "id": "rhythm-is-the-scheme",
+          "when": "When one component looks too tight or too loose.",
+          "do": "Don't change the rhythm to fix one component. The rhythm is the whole scheme's density. Pick another step for that spacing instead, or ask for a new role if the same spacing repeats across components.",
+          "why": "A rhythm change moves every component in the scheme at once.",
+          "from": ["OD-235"]
+        }
       ]
     },
     {
@@ -1140,10 +1130,7 @@
       "kind": "scope",
       "title": "Shape",
       "description": "Corners and borders.",
-      "owns": [
-        "radius",
-        "border-width"
-      ],
+      "owns": ["radius", "border-width"],
       "lands_in": [
         "accordion",
         "alert",
@@ -1196,10 +1183,7 @@
         "toggle-group",
         "tooltip"
       ],
-      "situations": [
-        "control-corner",
-        "status-shape"
-      ],
+      "situations": ["control-corner", "status-shape"],
       "questions": [
         {
           "id": "shape.roles",
@@ -1300,9 +1284,7 @@
       "kind": "scope",
       "title": "Elevation",
       "description": "When something rises above the page, and what separates groups.",
-      "owns": [
-        "elevation"
-      ],
+      "owns": ["elevation"],
       "lands_in": [
         "alert-dialog",
         "calendar",
@@ -1329,10 +1311,7 @@
         "toggle",
         "toggle-group"
       ],
-      "situations": [
-        "card",
-        "menu-or-dialog"
-      ],
+      "situations": ["card", "menu-or-dialog"],
       "questions": [
         {
           "id": "elevation.roles",
@@ -1445,9 +1424,7 @@
       "kind": "scope",
       "title": "Motion",
       "description": "What moves, why and how fast.",
-      "owns": [
-        "motion"
-      ],
+      "owns": ["motion"],
       "lands_in": [
         "accordion",
         "alert-dialog",
@@ -1465,10 +1442,7 @@
         "sidebar",
         "switch"
       ],
-      "situations": [
-        "hover-feedback",
-        "reduced-motion"
-      ],
+      "situations": ["hover-feedback", "reduced-motion"],
       "questions": [
         {
           "id": "motion.roles",
@@ -1573,9 +1547,7 @@
       "kind": "scope",
       "title": "Iconography",
       "description": "When icons appear and how they look.",
-      "owns": [
-        "size.icon"
-      ],
+      "owns": ["size.icon"],
       "lands_in": [
         "accordion",
         "alert",
@@ -1608,10 +1580,7 @@
         "switch",
         "toggle"
       ],
-      "situations": [
-        "icon-alone",
-        "row-action"
-      ],
+      "situations": ["icon-alone", "row-action"],
       "questions": [
         {
           "id": "iconography.roles",
@@ -1716,9 +1685,7 @@
       "kind": "scope",
       "title": "Theming",
       "description": "Modes and brands.",
-      "owns": [
-        "theme"
-      ],
+      "owns": ["theme"],
       "lands_in": [
         "accordion",
         "alert",
@@ -1778,9 +1745,7 @@
         "toggle-group",
         "tooltip"
       ],
-      "situations": [
-        "dark-mode"
-      ],
+      "situations": ["dark-mode"],
       "questions": [
         {
           "id": "theming.roles",
@@ -1873,11 +1838,7 @@
       "kind": "scope",
       "title": "Accessibility",
       "description": "Floors the system must hold.",
-      "owns": [
-        "size.control",
-        "opacity",
-        "color.border.focus"
-      ],
+      "owns": ["size.control", "opacity", "color.border.focus"],
       "lands_in": [
         "accordion",
         "alert-dialog",
@@ -1912,10 +1873,7 @@
         "textarea",
         "toggle"
       ],
-      "situations": [
-        "keyboard-focus",
-        "smallest-target"
-      ],
+      "situations": ["keyboard-focus", "smallest-target"],
       "questions": [
         {
           "id": "accessibility.roles",
@@ -2020,9 +1978,7 @@
       "kind": "scope",
       "title": "Naming",
       "description": "How tokens and keys are named.",
-      "owns": [
-        "component"
-      ],
+      "owns": ["component"],
       "lands_in": [
         "accordion",
         "alert",
@@ -2085,9 +2041,7 @@
         "toggle-group",
         "tooltip"
       ],
-      "situations": [
-        "missing-token"
-      ],
+      "situations": ["missing-token"],
       "questions": [
         {
           "id": "naming.roles",
@@ -2176,9 +2130,7 @@
       "kind": "scope",
       "title": "Voice and tone",
       "description": "How the product speaks: the words in every component.",
-      "owns": [
-        "content"
-      ],
+      "owns": ["content"],
       "lands_in": [
         "accordion",
         "alert",
@@ -2371,9 +2323,7 @@
       "kind": "scope",
       "title": "Components",
       "description": "Which components the system carries: its inventory, picked from the catalogue.",
-      "owns": [
-        "component"
-      ],
+      "owns": ["component"],
       "lands_in": [
         "accordion",
         "alert",
@@ -2436,9 +2386,7 @@
         "toggle-group",
         "tooltip"
       ],
-      "situations": [
-        "missing-component"
-      ],
+      "situations": ["missing-component"],
       "questions": [
         {
           "id": "components.roles",
@@ -2853,6 +2801,7 @@
         "badge/danger/background",
         "badge/danger/label",
         "badge/gap",
+        "badge/padding-y",
         "badge/font-weight",
         "badge/font-family"
       ]
@@ -2936,10 +2885,7 @@
     {
       "id": "transition",
       "description": "Shared transition keys for hover and press feedback.",
-      "keys": [
-        "transition/duration",
-        "transition/easing"
-      ]
+      "keys": ["transition/duration", "transition/easing"]
     },
     {
       "id": "accordion",
@@ -2971,7 +2917,9 @@
         "alert-dialog/content/gap",
         "alert-dialog/content/radius",
         "alert-dialog/content/background",
+        "alert-dialog/content/padding",
         "alert-dialog/content/shadow",
+        "alert-dialog/header/gap",
         "alert-dialog/header/gap-x",
         "alert-dialog/footer/gap",
         "alert-dialog/title/font-size",
@@ -2989,10 +2937,13 @@
       "id": "alert",
       "description": "The alert component.",
       "keys": [
+        "alert/gap-y",
         "alert/radius",
         "alert/padding-x",
+        "alert/padding-y",
         "alert/font-size",
         "alert/line-height",
+        "alert/gap-x",
         "alert/icon-size",
         "alert/default/background",
         "alert/default/label",
@@ -3009,8 +2960,11 @@
       "id": "attachment",
       "description": "The attachment component.",
       "keys": [
+        "attachment/gap",
         "attachment/radius",
         "attachment/background",
+        "attachment/padding-x",
+        "attachment/padding-y",
         "attachment/font-size",
         "attachment/line-height",
         "attachment/background-hover",
@@ -3059,9 +3013,12 @@
       "id": "breadcrumb",
       "description": "The breadcrumb component.",
       "keys": [
+        "breadcrumb/list/gap",
         "breadcrumb/list/font-size",
         "breadcrumb/list/line-height",
         "breadcrumb/list/label",
+        "breadcrumb/list/gap-2",
+        "breadcrumb/item/gap",
         "breadcrumb/link/label-hover",
         "breadcrumb/page/font-weight",
         "breadcrumb/page/label",
@@ -3081,6 +3038,8 @@
         "bubble/line-height",
         "bubble/label",
         "bubble/body/radius",
+        "bubble/body/padding-x",
+        "bubble/body/padding-y",
         "bubble/body/font-size",
         "bubble/body/line-height"
       ]
@@ -3093,6 +3052,7 @@
         "button-group/text/gap",
         "button-group/text/radius",
         "button-group/text/background",
+        "button-group/text/padding-x",
         "button-group/text/font-size",
         "button-group/text/line-height",
         "button-group/text/font-weight",
@@ -3105,9 +3065,11 @@
       "description": "The calendar component.",
       "keys": [
         "calendar/background",
+        "calendar/padding",
         "calendar/gap",
         "calendar/gap-2",
         "calendar/disabled-opacity-disabled",
+        "calendar/gap-3",
         "calendar/font-size",
         "calendar/line-height",
         "calendar/font-weight",
@@ -3120,6 +3082,8 @@
         "calendar/focus-ring-offset",
         "calendar/background-2",
         "calendar/height",
+        "calendar/padding-right",
+        "calendar/padding-left",
         "calendar/label",
         "calendar/font-weight-2",
         "calendar/background-3",
@@ -3139,6 +3103,8 @@
       "id": "carousel",
       "description": "The carousel component.",
       "keys": [
+        "carousel/item/padding-left",
+        "carousel/item/padding-top",
         "carousel/previous/size",
         "carousel/previous/radius",
         "carousel/next/size",
@@ -3155,14 +3121,19 @@
         "chart/icon-2",
         "chart/icon-3",
         "chart/font-weight",
+        "chart/gap",
         "chart/radius",
         "chart/border",
         "chart/background",
+        "chart/padding-x",
+        "chart/padding-y",
         "chart/shadow",
-        "chart/gap",
+        "chart/gap-2",
         "chart/label",
         "chart/label-2",
-        "chart/gap-2"
+        "chart/gap-3",
+        "chart/padding-bottom",
+        "chart/padding-top"
       ]
     },
     {
@@ -3191,8 +3162,12 @@
         "combobox/content/height",
         "combobox/content/border",
         "combobox/content/background-2",
+        "combobox/list/padding",
         "combobox/item/gap",
         "combobox/item/radius",
+        "combobox/item/padding-y",
+        "combobox/item/padding-right",
+        "combobox/item/padding-left",
         "combobox/item/font-size",
         "combobox/item/line-height",
         "combobox/item/background",
@@ -3200,18 +3175,24 @@
         "combobox/item/disabled-opacity-disabled",
         "combobox/item/icon-size",
         "combobox/icon-size",
+        "combobox/label/padding-x",
+        "combobox/label/padding-y",
         "combobox/label/font-size",
         "combobox/label/line-height",
         "combobox/label/label",
-        "combobox/label/padding-x",
+        "combobox/label/padding-x-2",
         "combobox/label/font-size-2",
         "combobox/label/line-height-2",
+        "combobox/empty/padding-y",
         "combobox/empty/font-size",
         "combobox/empty/line-height",
         "combobox/empty/label",
         "combobox/separator/background",
+        "combobox/chips/gap",
         "combobox/chips/radius",
         "combobox/chips/border",
+        "combobox/chips/padding-x",
+        "combobox/chips/padding-y",
         "combobox/chips/font-size",
         "combobox/chips/line-height",
         "combobox/chips/shadow",
@@ -3219,9 +3200,11 @@
         "combobox/chips/focus-ring-focus",
         "combobox/chips/border-invalid",
         "combobox/chips/focus-ring-invalid",
+        "combobox/chips/padding-x-2",
         "combobox/chip/gap",
         "combobox/chip/radius",
         "combobox/chip/background",
+        "combobox/chip/padding-x",
         "combobox/chip/font-size",
         "combobox/chip/line-height",
         "combobox/chip/font-weight",
@@ -3237,19 +3220,27 @@
         "command/radius",
         "command/background",
         "command/label",
+        "command/padding-x",
         "command/font-weight",
         "command/label-2",
+        "command/padding-y",
         "command/input/wrapper/gap",
+        "command/input/wrapper/padding-x",
         "command/icon-size",
         "command/disabled-opacity",
         "command/input/radius",
+        "command/input/padding-y",
         "command/input/font-size",
         "command/input/line-height",
         "command/input/label-placeholder",
         "command/input/disabled-opacity-disabled",
+        "command/empty/padding-y",
         "command/empty/font-size",
         "command/empty/line-height",
+        "command/group/padding",
         "command/group/label",
+        "command/group/padding-x",
+        "command/group/padding-y",
         "command/group/font-size",
         "command/group/line-height",
         "command/group/font-weight",
@@ -3257,6 +3248,8 @@
         "command/separator/background",
         "command/item/gap",
         "command/item/radius",
+        "command/item/padding-x",
+        "command/item/padding-y",
         "command/item/font-size",
         "command/item/line-height",
         "command/item/disabled-opacity-disabled",
@@ -3274,29 +3267,37 @@
       "description": "The context menu component.",
       "keys": [
         "context-menu/sub/trigger/radius",
+        "context-menu/sub/trigger/padding-x",
+        "context-menu/sub/trigger/padding-y",
         "context-menu/sub/trigger/font-size",
         "context-menu/sub/trigger/line-height",
         "context-menu/sub/trigger/background-focus",
         "context-menu/sub/trigger/label-focus",
+        "context-menu/sub/trigger/padding-left",
         "context-menu/sub/trigger/background-open",
         "context-menu/sub/trigger/label-open",
         "context-menu/sub/trigger/icon-size",
         "context-menu/sub/trigger/label",
         "context-menu/sub/content/radius",
         "context-menu/sub/content/background",
+        "context-menu/sub/content/padding",
         "context-menu/sub/content/label",
         "context-menu/sub/content/shadow",
         "context-menu/content/radius",
         "context-menu/content/background",
+        "context-menu/content/padding",
         "context-menu/content/label",
         "context-menu/content/shadow",
         "context-menu/item/gap",
         "context-menu/item/radius",
+        "context-menu/item/padding-x",
+        "context-menu/item/padding-y",
         "context-menu/item/font-size",
         "context-menu/item/line-height",
         "context-menu/item/background-focus",
         "context-menu/item/label-focus",
         "context-menu/item/disabled-opacity-disabled",
+        "context-menu/item/padding-left",
         "context-menu/item/label",
         "context-menu/item/background-focus-2",
         "context-menu/item/label-focus-2",
@@ -3304,6 +3305,9 @@
         "context-menu/item/label-2",
         "context-menu/checkbox/item/gap",
         "context-menu/checkbox/item/radius",
+        "context-menu/checkbox/item/padding-y",
+        "context-menu/checkbox/item/padding-right",
+        "context-menu/checkbox/item/padding-left",
         "context-menu/checkbox/item/font-size",
         "context-menu/checkbox/item/line-height",
         "context-menu/checkbox/item/background-focus",
@@ -3313,16 +3317,22 @@
         "context-menu/icon-size",
         "context-menu/radio/item/gap",
         "context-menu/radio/item/radius",
+        "context-menu/radio/item/padding-y",
+        "context-menu/radio/item/padding-right",
+        "context-menu/radio/item/padding-left",
         "context-menu/radio/item/font-size",
         "context-menu/radio/item/line-height",
         "context-menu/radio/item/background-focus",
         "context-menu/radio/item/label-focus",
         "context-menu/radio/item/disabled-opacity-disabled",
         "context-menu/radio/item/icon-size",
+        "context-menu/label/padding-x",
+        "context-menu/label/padding-y",
         "context-menu/label/font-size",
         "context-menu/label/line-height",
         "context-menu/label/font-weight",
         "context-menu/label/label",
+        "context-menu/label/padding-left",
         "context-menu/separator/background",
         "context-menu/shortcut/font-size",
         "context-menu/shortcut/line-height",
@@ -3335,8 +3345,11 @@
       "keys": [
         "data-table/gap",
         "data-table/label-hover",
+        "data-table/padding",
         "data-table/gap-2",
         "data-table/radius",
+        "data-table/padding-x",
+        "data-table/padding-y",
         "data-table/background-hover",
         "data-table/label"
       ]
@@ -3344,10 +3357,7 @@
     {
       "id": "date-picker",
       "description": "The date picker component.",
-      "keys": [
-        "date-picker/font-weight",
-        "date-picker/label"
-      ]
+      "keys": ["date-picker/font-weight", "date-picker/label"]
     },
     {
       "id": "dialog",
@@ -3359,6 +3369,7 @@
         "dialog/border-width",
         "dialog/border",
         "dialog/radius",
+        "dialog/padding",
         "dialog/label",
         "dialog/sunken",
         "dialog/size",
@@ -3378,7 +3389,9 @@
         "drawer/content/background",
         "drawer/radius",
         "drawer/background",
+        "drawer/header/gap",
         "drawer/header/padding",
+        "drawer/header/gap-2",
         "drawer/footer/gap",
         "drawer/footer/padding",
         "drawer/title/font-weight",
@@ -3392,6 +3405,7 @@
       "id": "dropdown-menu",
       "description": "The dropdown menu component.",
       "keys": [
+        "dropdown-menu/content/padding",
         "dropdown-menu/content/label",
         "dropdown-menu/content/border-width",
         "dropdown-menu/content/border",
@@ -3412,6 +3426,8 @@
       "keys": [
         "empty/gap",
         "empty/radius",
+        "empty/padding",
+        "empty/padding-2",
         "empty/header/gap",
         "empty/icon/radius",
         "empty/icon/background",
@@ -3432,14 +3448,20 @@
       "description": "The field component.",
       "keys": [
         "field/set/gap",
+        "field/set/gap-2",
         "field/legend/font-weight",
         "field/legend/font-size",
         "field/legend/line-height",
         "field/group/gap",
+        "field/group/gap-2",
+        "field/group/gap-3",
+        "field/gap",
         "field/label-invalid",
+        "field/content/gap",
         "field/label/gap",
         "field/label/disabled-opacity-disabled",
         "field/label/radius",
+        "field/label/padding",
         "field/border-checked",
         "field/background-checked",
         "field/label/font-size",
@@ -3453,8 +3475,9 @@
         "field/separator/font-size",
         "field/separator/line-height",
         "field/background",
+        "field/padding-x",
         "field/label",
-        "field/gap",
+        "field/gap-2",
         "field/error/font-size",
         "field/error/line-height",
         "field/error/font-weight",
@@ -3493,6 +3516,8 @@
         "input-group/radius",
         "input-group/border",
         "input-group/shadow",
+        "input-group/padding-left",
+        "input-group/padding-right",
         "input-group/padding-bottom",
         "input-group/padding-top",
         "input-group/border-2",
@@ -3500,6 +3525,7 @@
         "input-group/border-invalid",
         "input-group/focus-ring-invalid",
         "input-group/gap",
+        "input-group/padding-y",
         "input-group/font-size",
         "input-group/line-height",
         "input-group/font-weight",
@@ -3510,14 +3536,19 @@
         "input-group/inline/end/padding-right",
         "input-group/block/start/padding-x",
         "input-group/block/start/padding-top",
+        "input-group/block/start/padding-top-2",
         "input-group/block/start/padding-bottom",
         "input-group/block/end/padding-x",
         "input-group/block/end/padding-bottom",
+        "input-group/block/end/padding-bottom-2",
         "input-group/block/end/padding-top",
         "input-group/xs/height",
         "input-group/xs/gap",
+        "input-group/xs/padding-x",
         "input-group/sm/height",
+        "input-group/sm/gap",
         "input-group/sm/radius",
+        "input-group/sm/padding-x",
         "input-group/icon/sm/size",
         "input-group/control/padding-y"
       ]
@@ -3558,7 +3589,9 @@
         "item/muted/background",
         "item/default/gap",
         "item/default/padding",
+        "item/sm/gap",
         "item/sm/padding-x",
+        "item/sm/padding-y",
         "item/gap",
         "item/icon/size",
         "item/icon/radius",
@@ -3587,6 +3620,7 @@
         "kbd/gap",
         "kbd/radius",
         "kbd/background",
+        "kbd/padding-x",
         "kbd/font-size",
         "kbd/line-height",
         "kbd/font-weight",
@@ -3612,6 +3646,7 @@
       "id": "marker",
       "description": "The marker component.",
       "keys": [
+        "marker/gap",
         "marker/font-size",
         "marker/line-height",
         "marker/label",
@@ -3625,8 +3660,11 @@
         "menubar/gap",
         "menubar/radius",
         "menubar/background",
+        "menubar/padding",
         "menubar/shadow",
         "menubar/trigger/radius",
+        "menubar/trigger/padding-x",
+        "menubar/trigger/padding-y",
         "menubar/trigger/font-size",
         "menubar/trigger/line-height",
         "menubar/trigger/font-weight",
@@ -3636,15 +3674,19 @@
         "menubar/trigger/label-open",
         "menubar/content/radius",
         "menubar/content/background",
+        "menubar/content/padding",
         "menubar/content/label",
         "menubar/content/shadow",
         "menubar/item/gap",
         "menubar/item/radius",
+        "menubar/item/padding-x",
+        "menubar/item/padding-y",
         "menubar/item/font-size",
         "menubar/item/line-height",
         "menubar/item/background-focus",
         "menubar/item/label-focus",
         "menubar/item/disabled-opacity-disabled",
+        "menubar/item/padding-left",
         "menubar/item/label",
         "menubar/item/background-focus-2",
         "menubar/item/label-focus-2",
@@ -3652,6 +3694,9 @@
         "menubar/item/label-2",
         "menubar/checkbox/item/gap",
         "menubar/checkbox/item/radius",
+        "menubar/checkbox/item/padding-y",
+        "menubar/checkbox/item/padding-right",
+        "menubar/checkbox/item/padding-left",
         "menubar/checkbox/item/font-size",
         "menubar/checkbox/item/line-height",
         "menubar/checkbox/item/background-focus",
@@ -3661,29 +3706,39 @@
         "menubar/icon-size",
         "menubar/radio/item/gap",
         "menubar/radio/item/radius",
+        "menubar/radio/item/padding-y",
+        "menubar/radio/item/padding-right",
+        "menubar/radio/item/padding-left",
         "menubar/radio/item/font-size",
         "menubar/radio/item/line-height",
         "menubar/radio/item/background-focus",
         "menubar/radio/item/label-focus",
         "menubar/radio/item/disabled-opacity-disabled",
         "menubar/radio/item/icon-size",
+        "menubar/label/padding-x",
+        "menubar/label/padding-y",
         "menubar/label/font-size",
         "menubar/label/line-height",
         "menubar/label/font-weight",
+        "menubar/label/padding-left",
         "menubar/separator/background",
         "menubar/shortcut/font-size",
         "menubar/shortcut/line-height",
         "menubar/shortcut/label",
         "menubar/sub/trigger/radius",
+        "menubar/sub/trigger/padding-x",
+        "menubar/sub/trigger/padding-y",
         "menubar/sub/trigger/font-size",
         "menubar/sub/trigger/line-height",
         "menubar/sub/trigger/background-focus",
         "menubar/sub/trigger/label-focus",
+        "menubar/sub/trigger/padding-left",
         "menubar/sub/trigger/background-open",
         "menubar/sub/trigger/label-open",
         "menubar/height",
         "menubar/sub/content/radius",
         "menubar/sub/content/background",
+        "menubar/sub/content/padding",
         "menubar/sub/content/label",
         "menubar/sub/content/shadow"
       ]
@@ -3703,9 +3758,10 @@
       "id": "message",
       "description": "The message component.",
       "keys": [
+        "message/gap",
         "message/font-size",
         "message/line-height",
-        "message/gap",
+        "message/gap-2",
         "message/gap-x",
         "message/author/font-weight",
         "message/time/font-size",
@@ -3721,6 +3777,8 @@
         "native-select/radius",
         "native-select/border",
         "native-select/padding-x",
+        "native-select/padding-y",
+        "native-select/padding-right",
         "native-select/font-size",
         "native-select/line-height",
         "native-select/shadow",
@@ -3728,6 +3786,7 @@
         "native-select/label",
         "native-select/label-placeholder",
         "native-select/height",
+        "native-select/padding-y-2",
         "native-select/border-focus",
         "native-select/focus",
         "native-select/focus-ring-focus",
@@ -3746,6 +3805,7 @@
         "navigation-menu/radius",
         "navigation-menu/background",
         "navigation-menu/padding-x",
+        "navigation-menu/padding-y",
         "navigation-menu/font-size",
         "navigation-menu/line-height",
         "navigation-menu/font-weight",
@@ -3762,6 +3822,8 @@
         "navigation-menu/focus-ring-focus",
         "navigation-menu/focus-ring-offset-focus",
         "navigation-menu/duration",
+        "navigation-menu/content/padding",
+        "navigation-menu/content/padding-right",
         "navigation-menu/background-2",
         "navigation-menu/label",
         "navigation-menu/shadow",
@@ -3771,6 +3833,7 @@
         "navigation-menu/viewport/shadow",
         "navigation-menu/link/gap",
         "navigation-menu/link/radius",
+        "navigation-menu/link/padding",
         "navigation-menu/link/font-size",
         "navigation-menu/link/line-height",
         "navigation-menu/link/background-hover",
@@ -3795,6 +3858,9 @@
       "keys": [
         "pagination/content/gap",
         "pagination/gap",
+        "pagination/padding-x",
+        "pagination/padding-left",
+        "pagination/padding-right",
         "pagination/icon-size"
       ]
     },
@@ -3827,6 +3893,7 @@
       "id": "radio-group",
       "description": "The radio group component.",
       "keys": [
+        "radio-group/gap",
         "radio-group/item/icon-size",
         "radio-group/item/radius",
         "radio-group/item/border",
@@ -3876,11 +3943,13 @@
         "select/focus",
         "select/canvas",
         "select/size",
+        "select/content/padding",
         "select/content/label",
         "select/content/border-width",
         "select/content/border",
         "select/item/gap",
         "select/item/padding-left",
+        "select/item/padding-right",
         "select/item/radius",
         "select/item/font-size",
         "select/item/sunken",
@@ -3890,9 +3959,7 @@
     {
       "id": "separator",
       "description": "The separator component.",
-      "keys": [
-        "separator/background"
-      ]
+      "keys": ["separator/background"]
     },
     {
       "id": "sheet",
@@ -3908,6 +3975,7 @@
         "sheet/focus-ring-focus",
         "sheet/background-open",
         "sheet/icon-size",
+        "sheet/header/gap",
         "sheet/header/padding",
         "sheet/footer/gap",
         "sheet/footer/padding",
@@ -3927,6 +3995,7 @@
         "sidebar/label",
         "sidebar/gap/duration",
         "sidebar/container/duration",
+        "sidebar/padding",
         "sidebar/inner/background",
         "sidebar/inner/radius",
         "sidebar/inner/border",
@@ -3939,11 +4008,15 @@
         "sidebar/input/height",
         "sidebar/input/background",
         "sidebar/header/gap",
+        "sidebar/header/padding",
         "sidebar/footer/gap",
+        "sidebar/footer/padding",
         "sidebar/separator/background",
         "sidebar/content/gap",
+        "sidebar/group/padding",
         "sidebar/group/label/height",
         "sidebar/group/label/radius",
+        "sidebar/group/label/padding-x",
         "sidebar/group/label/font-size",
         "sidebar/group/label/line-height",
         "sidebar/group/label/font-weight",
@@ -3971,6 +4044,7 @@
         "sidebar/font-size",
         "sidebar/line-height",
         "sidebar/focus-ring",
+        "sidebar/padding-right",
         "sidebar/size",
         "sidebar/background-hover-2",
         "sidebar/label-hover",
@@ -4008,6 +4082,7 @@
         "sidebar/menu/action/focus-ring-focus",
         "sidebar/menu/action/focus-ring-offset-focus",
         "sidebar/menu/badge/radius",
+        "sidebar/menu/badge/padding-x",
         "sidebar/menu/badge/font-size",
         "sidebar/menu/badge/line-height",
         "sidebar/menu/badge/font-weight",
@@ -4015,11 +4090,15 @@
         "sidebar/menu/skeleton/height",
         "sidebar/menu/skeleton/gap",
         "sidebar/menu/skeleton/radius",
+        "sidebar/menu/skeleton/padding-x",
         "sidebar/height",
         "sidebar/menu/sub/gap",
         "sidebar/menu/sub/border",
+        "sidebar/menu/sub/padding-x",
+        "sidebar/menu/sub/padding-y",
         "sidebar/menu/sub/button/gap",
         "sidebar/menu/sub/button/radius",
+        "sidebar/menu/sub/button/padding-x",
         "sidebar/menu/sub/button/label",
         "sidebar/menu/sub/button/focus-ring",
         "sidebar/menu/sub/button/background-hover",
@@ -4038,10 +4117,7 @@
     {
       "id": "skeleton",
       "description": "The skeleton component.",
-      "keys": [
-        "skeleton/radius",
-        "skeleton/background"
-      ]
+      "keys": ["skeleton/radius", "skeleton/background"]
     },
     {
       "id": "slider",
@@ -4065,9 +4141,7 @@
     {
       "id": "spinner",
       "description": "The spinner component.",
-      "keys": [
-        "spinner/icon-size"
-      ]
+      "keys": ["spinner/icon-size"]
     },
     {
       "id": "switch",
@@ -4076,6 +4150,7 @@
         "switch/height",
         "switch/width",
         "switch/radius",
+        "switch/padding",
         "switch/focus",
         "switch/disabled",
         "switch/canvas",
@@ -4090,6 +4165,7 @@
         "textarea/radius",
         "textarea/border",
         "textarea/padding-x",
+        "textarea/padding-y",
         "textarea/font-size",
         "textarea/line-height",
         "textarea/shadow",
@@ -4157,7 +4233,10 @@
         "toggle/outline/shadow",
         "toggle/outline/background-hover",
         "toggle/outline/label-hover",
-        "toggle/sm/height"
+        "toggle/default/padding-x",
+        "toggle/sm/height",
+        "toggle/sm/padding-x",
+        "toggle/lg/padding-x"
       ]
     },
     {
@@ -4166,6 +4245,7 @@
       "keys": [
         "tooltip/content/radius",
         "tooltip/content/padding-x",
+        "tooltip/content/padding-y",
         "tooltip/content/font-size",
         "tooltip/content/font-family"
       ]
@@ -4749,10 +4829,22 @@
       "default": "color.surface.canvas"
     },
     {
+      "id": "alert-dialog/content/padding",
+      "component": "alert-dialog",
+      "description": "Content padding of the alert dialog.",
+      "default": "component-spacing-map.x6"
+    },
+    {
       "id": "alert-dialog/content/shadow",
       "component": "alert-dialog",
       "description": "Content shadow of the alert dialog.",
       "default": "elevation.overlay"
+    },
+    {
+      "id": "alert-dialog/header/gap",
+      "component": "alert-dialog",
+      "description": "Header gap of the alert dialog.",
+      "default": "component-spacing-map.x2"
     },
     {
       "id": "alert-dialog/header/gap-x",
@@ -4821,6 +4913,12 @@
       "default": "size.control.default"
     },
     {
+      "id": "alert/gap-y",
+      "component": "alert",
+      "description": "Gap y of the alert.",
+      "default": "component-spacing-map.hairline"
+    },
+    {
       "id": "alert/radius",
       "component": "alert",
       "description": "Radius of the alert.",
@@ -4833,6 +4931,12 @@
       "default": "space.inset.container"
     },
     {
+      "id": "alert/padding-y",
+      "component": "alert",
+      "description": "Padding y of the alert.",
+      "default": "component-spacing-map.x3"
+    },
+    {
       "id": "alert/font-size",
       "component": "alert",
       "description": "Font size of the alert.",
@@ -4843,6 +4947,12 @@
       "component": "alert",
       "description": "Line height of the alert.",
       "default": "type.body.line-height"
+    },
+    {
+      "id": "alert/gap-x",
+      "component": "alert",
+      "description": "Gap x of the alert.",
+      "default": "component-spacing-map.x3"
     },
     {
       "id": "alert/icon-size",
@@ -4905,6 +5015,12 @@
       "default": "color.text.muted"
     },
     {
+      "id": "attachment/gap",
+      "component": "attachment",
+      "description": "Gap of the attachment.",
+      "default": "component-spacing-map.x3"
+    },
+    {
       "id": "attachment/radius",
       "component": "attachment",
       "description": "Radius of the attachment.",
@@ -4915,6 +5031,18 @@
       "component": "attachment",
       "description": "Background of the attachment.",
       "default": "color.surface.canvas"
+    },
+    {
+      "id": "attachment/padding-x",
+      "component": "attachment",
+      "description": "Padding x of the attachment.",
+      "default": "component-spacing-map.x3"
+    },
+    {
+      "id": "attachment/padding-y",
+      "component": "attachment",
+      "description": "Padding y of the attachment.",
+      "default": "component-spacing-map.x2"
     },
     {
       "id": "attachment/font-size",
@@ -5139,6 +5267,12 @@
       "default": "space.gap.tight"
     },
     {
+      "id": "badge/padding-y",
+      "component": "badge",
+      "description": "Padding y of the badge.",
+      "default": "component-spacing-map.hairline"
+    },
+    {
       "id": "badge/font-weight",
       "component": "badge",
       "description": "Font weight of the badge.",
@@ -5149,6 +5283,12 @@
       "component": "badge",
       "description": "Font family of the badge.",
       "default": "type.caption.font-family"
+    },
+    {
+      "id": "breadcrumb/list/gap",
+      "component": "breadcrumb",
+      "description": "List gap of the breadcrumb.",
+      "default": "component-spacing-map.x2"
     },
     {
       "id": "breadcrumb/list/font-size",
@@ -5167,6 +5307,18 @@
       "component": "breadcrumb",
       "description": "List label of the breadcrumb.",
       "default": "color.text.muted"
+    },
+    {
+      "id": "breadcrumb/list/gap-2",
+      "component": "breadcrumb",
+      "description": "List gap 2 of the breadcrumb.",
+      "default": "component-spacing-map.x3"
+    },
+    {
+      "id": "breadcrumb/item/gap",
+      "component": "breadcrumb",
+      "description": "Item gap of the breadcrumb.",
+      "default": "component-spacing-map.x2"
     },
     {
       "id": "breadcrumb/link/label-hover",
@@ -5247,6 +5399,18 @@
       "default": "radius.container"
     },
     {
+      "id": "bubble/body/padding-x",
+      "component": "bubble",
+      "description": "Body padding x of the bubble.",
+      "default": "component-spacing-map.x3"
+    },
+    {
+      "id": "bubble/body/padding-y",
+      "component": "bubble",
+      "description": "Body padding y of the bubble.",
+      "default": "component-spacing-map.x2"
+    },
+    {
       "id": "bubble/body/font-size",
       "component": "bubble",
       "description": "Body font size of the bubble.",
@@ -5281,6 +5445,12 @@
       "component": "button-group",
       "description": "Text background of the button group.",
       "default": "color.surface.sunken"
+    },
+    {
+      "id": "button-group/text/padding-x",
+      "component": "button-group",
+      "description": "Text padding x of the button group.",
+      "default": "component-spacing-map.x4"
     },
     {
       "id": "button-group/text/font-size",
@@ -5367,6 +5537,12 @@
       "default": "color.surface.canvas"
     },
     {
+      "id": "calendar/padding",
+      "component": "calendar",
+      "description": "Padding of the calendar.",
+      "default": "component-spacing-map.x3"
+    },
+    {
       "id": "calendar/gap",
       "component": "calendar",
       "description": "Gap of the calendar.",
@@ -5383,6 +5559,12 @@
       "component": "calendar",
       "description": "Disabled opacity disabled of the calendar.",
       "default": "opacity.disabled"
+    },
+    {
+      "id": "calendar/gap-3",
+      "component": "calendar",
+      "description": "Gap 3 of the calendar.",
+      "default": "component-spacing-map.x2"
     },
     {
       "id": "calendar/font-size",
@@ -5455,6 +5637,18 @@
       "component": "calendar",
       "description": "Height of the calendar.",
       "default": "size.control.default"
+    },
+    {
+      "id": "calendar/padding-right",
+      "component": "calendar",
+      "description": "Padding right of the calendar.",
+      "default": "component-spacing-map.x1"
+    },
+    {
+      "id": "calendar/padding-left",
+      "component": "calendar",
+      "description": "Padding left of the calendar.",
+      "default": "component-spacing-map.x2"
     },
     {
       "id": "calendar/label",
@@ -5607,6 +5801,18 @@
       "default": "space.gap.default"
     },
     {
+      "id": "carousel/item/padding-left",
+      "component": "carousel",
+      "description": "Item padding left of the carousel.",
+      "default": "component-spacing-map.x4"
+    },
+    {
+      "id": "carousel/item/padding-top",
+      "component": "carousel",
+      "description": "Item padding top of the carousel.",
+      "default": "component-spacing-map.x4"
+    },
+    {
       "id": "carousel/previous/size",
       "component": "carousel",
       "description": "Previous size of the carousel.",
@@ -5667,6 +5873,12 @@
       "default": "type.label.font-weight"
     },
     {
+      "id": "chart/gap",
+      "component": "chart",
+      "description": "Gap of the chart.",
+      "default": "component-spacing-map.x2"
+    },
+    {
       "id": "chart/radius",
       "component": "chart",
       "description": "Radius of the chart.",
@@ -5685,15 +5897,27 @@
       "default": "color.surface.canvas"
     },
     {
+      "id": "chart/padding-x",
+      "component": "chart",
+      "description": "Padding x of the chart.",
+      "default": "component-spacing-map.x3"
+    },
+    {
+      "id": "chart/padding-y",
+      "component": "chart",
+      "description": "Padding y of the chart.",
+      "default": "component-spacing-map.x2"
+    },
+    {
       "id": "chart/shadow",
       "component": "chart",
       "description": "Shadow of the chart.",
       "default": "elevation.overlay"
     },
     {
-      "id": "chart/gap",
+      "id": "chart/gap-2",
       "component": "chart",
-      "description": "Gap of the chart.",
+      "description": "Gap 2 of the chart.",
       "default": "space.gap.default"
     },
     {
@@ -5709,10 +5933,22 @@
       "default": "color.text.primary"
     },
     {
-      "id": "chart/gap-2",
+      "id": "chart/gap-3",
       "component": "chart",
-      "description": "Gap 2 of the chart.",
+      "description": "Gap 3 of the chart.",
       "default": "space.gap.group"
+    },
+    {
+      "id": "chart/padding-bottom",
+      "component": "chart",
+      "description": "Padding bottom of the chart.",
+      "default": "component-spacing-map.x3"
+    },
+    {
+      "id": "chart/padding-top",
+      "component": "chart",
+      "description": "Padding top of the chart.",
+      "default": "component-spacing-map.x3"
     },
     {
       "id": "checkbox/size",
@@ -5811,6 +6047,12 @@
       "default": "color.border.strong"
     },
     {
+      "id": "combobox/list/padding",
+      "component": "combobox",
+      "description": "List padding of the combobox.",
+      "default": "component-spacing-map.x1"
+    },
+    {
       "id": "combobox/item/gap",
       "component": "combobox",
       "description": "Item gap of the combobox.",
@@ -5821,6 +6063,24 @@
       "component": "combobox",
       "description": "Item radius of the combobox.",
       "default": "radius.badge"
+    },
+    {
+      "id": "combobox/item/padding-y",
+      "component": "combobox",
+      "description": "Item padding y of the combobox.",
+      "default": "component-spacing-map.x2"
+    },
+    {
+      "id": "combobox/item/padding-right",
+      "component": "combobox",
+      "description": "Item padding right of the combobox.",
+      "default": "component-spacing-map.x8"
+    },
+    {
+      "id": "combobox/item/padding-left",
+      "component": "combobox",
+      "description": "Item padding left of the combobox.",
+      "default": "component-spacing-map.x2"
     },
     {
       "id": "combobox/item/font-size",
@@ -5865,6 +6125,18 @@
       "default": "size.icon"
     },
     {
+      "id": "combobox/label/padding-x",
+      "component": "combobox",
+      "description": "Label padding x of the combobox.",
+      "default": "component-spacing-map.x2"
+    },
+    {
+      "id": "combobox/label/padding-y",
+      "component": "combobox",
+      "description": "Label padding y of the combobox.",
+      "default": "component-spacing-map.x2"
+    },
+    {
       "id": "combobox/label/font-size",
       "component": "combobox",
       "description": "Label font size of the combobox.",
@@ -5883,9 +6155,9 @@
       "default": "color.text.muted"
     },
     {
-      "id": "combobox/label/padding-x",
+      "id": "combobox/label/padding-x-2",
       "component": "combobox",
-      "description": "Label padding x of the combobox.",
+      "description": "Label padding x 2 of the combobox.",
       "default": "space.inset.control-x"
     },
     {
@@ -5899,6 +6171,12 @@
       "component": "combobox",
       "description": "Label line height 2 of the combobox.",
       "default": "type.body.line-height"
+    },
+    {
+      "id": "combobox/empty/padding-y",
+      "component": "combobox",
+      "description": "Empty padding y of the combobox.",
+      "default": "component-spacing-map.x2"
     },
     {
       "id": "combobox/empty/font-size",
@@ -5925,6 +6203,12 @@
       "default": "color.border.default"
     },
     {
+      "id": "combobox/chips/gap",
+      "component": "combobox",
+      "description": "Chips gap of the combobox.",
+      "default": "component-spacing-map.x2"
+    },
+    {
       "id": "combobox/chips/radius",
       "component": "combobox",
       "description": "Chips radius of the combobox.",
@@ -5935,6 +6219,18 @@
       "component": "combobox",
       "description": "Chips border of the combobox.",
       "default": "color.border.strong"
+    },
+    {
+      "id": "combobox/chips/padding-x",
+      "component": "combobox",
+      "description": "Chips padding x of the combobox.",
+      "default": "component-spacing-map.x3"
+    },
+    {
+      "id": "combobox/chips/padding-y",
+      "component": "combobox",
+      "description": "Chips padding y of the combobox.",
+      "default": "component-spacing-map.x2"
     },
     {
       "id": "combobox/chips/font-size",
@@ -5979,6 +6275,12 @@
       "default": "color.status.danger.@"
     },
     {
+      "id": "combobox/chips/padding-x-2",
+      "component": "combobox",
+      "description": "Chips padding x 2 of the combobox.",
+      "default": "component-spacing-map.x2"
+    },
+    {
       "id": "combobox/chip/gap",
       "component": "combobox",
       "description": "Chip gap of the combobox.",
@@ -5995,6 +6297,12 @@
       "component": "combobox",
       "description": "Chip background of the combobox.",
       "default": "color.surface.sunken"
+    },
+    {
+      "id": "combobox/chip/padding-x",
+      "component": "combobox",
+      "description": "Chip padding x of the combobox.",
+      "default": "component-spacing-map.x2"
     },
     {
       "id": "combobox/chip/font-size",
@@ -6051,6 +6359,12 @@
       "default": "color.text.primary"
     },
     {
+      "id": "command/padding-x",
+      "component": "command",
+      "description": "Padding x of the command.",
+      "default": "component-spacing-map.x2"
+    },
+    {
       "id": "command/font-weight",
       "component": "command",
       "description": "Font weight of the command.",
@@ -6063,10 +6377,22 @@
       "default": "color.text.muted"
     },
     {
+      "id": "command/padding-y",
+      "component": "command",
+      "description": "Padding y of the command.",
+      "default": "component-spacing-map.x3"
+    },
+    {
       "id": "command/input/wrapper/gap",
       "component": "command",
       "description": "Input wrapper gap of the command.",
       "default": "space.gap.default"
+    },
+    {
+      "id": "command/input/wrapper/padding-x",
+      "component": "command",
+      "description": "Input wrapper padding x of the command.",
+      "default": "component-spacing-map.x3"
     },
     {
       "id": "command/icon-size",
@@ -6085,6 +6411,12 @@
       "component": "command",
       "description": "Input radius of the command.",
       "default": "radius.control"
+    },
+    {
+      "id": "command/input/padding-y",
+      "component": "command",
+      "description": "Input padding y of the command.",
+      "default": "component-spacing-map.x3"
     },
     {
       "id": "command/input/font-size",
@@ -6111,6 +6443,12 @@
       "default": "opacity.disabled"
     },
     {
+      "id": "command/empty/padding-y",
+      "component": "command",
+      "description": "Empty padding y of the command.",
+      "default": "component-spacing-map.x6"
+    },
+    {
       "id": "command/empty/font-size",
       "component": "command",
       "description": "Empty font size of the command.",
@@ -6123,10 +6461,28 @@
       "default": "type.body.line-height"
     },
     {
+      "id": "command/group/padding",
+      "component": "command",
+      "description": "Group padding of the command.",
+      "default": "component-spacing-map.x1"
+    },
+    {
       "id": "command/group/label",
       "component": "command",
       "description": "Group label of the command.",
       "default": "color.text.primary"
+    },
+    {
+      "id": "command/group/padding-x",
+      "component": "command",
+      "description": "Group padding x of the command.",
+      "default": "component-spacing-map.x2"
+    },
+    {
+      "id": "command/group/padding-y",
+      "component": "command",
+      "description": "Group padding y of the command.",
+      "default": "component-spacing-map.x2"
     },
     {
       "id": "command/group/font-size",
@@ -6169,6 +6525,18 @@
       "component": "command",
       "description": "Item radius of the command.",
       "default": "radius.badge"
+    },
+    {
+      "id": "command/item/padding-x",
+      "component": "command",
+      "description": "Item padding x of the command.",
+      "default": "component-spacing-map.x2"
+    },
+    {
+      "id": "command/item/padding-y",
+      "component": "command",
+      "description": "Item padding y of the command.",
+      "default": "component-spacing-map.x2"
     },
     {
       "id": "command/item/font-size",
@@ -6237,6 +6605,18 @@
       "default": "radius.badge"
     },
     {
+      "id": "context-menu/sub/trigger/padding-x",
+      "component": "context-menu",
+      "description": "Sub trigger padding x of the context menu.",
+      "default": "component-spacing-map.x2"
+    },
+    {
+      "id": "context-menu/sub/trigger/padding-y",
+      "component": "context-menu",
+      "description": "Sub trigger padding y of the context menu.",
+      "default": "component-spacing-map.x2"
+    },
+    {
       "id": "context-menu/sub/trigger/font-size",
       "component": "context-menu",
       "description": "Sub trigger font size of the context menu.",
@@ -6259,6 +6639,12 @@
       "component": "context-menu",
       "description": "Sub trigger label focus of the context menu.",
       "default": "color.text.primary"
+    },
+    {
+      "id": "context-menu/sub/trigger/padding-left",
+      "component": "context-menu",
+      "description": "Sub trigger padding left of the context menu.",
+      "default": "component-spacing-map.x8"
     },
     {
       "id": "context-menu/sub/trigger/background-open",
@@ -6297,6 +6683,12 @@
       "default": "color.surface.raised"
     },
     {
+      "id": "context-menu/sub/content/padding",
+      "component": "context-menu",
+      "description": "Sub content padding of the context menu.",
+      "default": "component-spacing-map.x1"
+    },
+    {
       "id": "context-menu/sub/content/label",
       "component": "context-menu",
       "description": "Sub content label of the context menu.",
@@ -6321,6 +6713,12 @@
       "default": "color.surface.raised"
     },
     {
+      "id": "context-menu/content/padding",
+      "component": "context-menu",
+      "description": "Content padding of the context menu.",
+      "default": "component-spacing-map.x1"
+    },
+    {
       "id": "context-menu/content/label",
       "component": "context-menu",
       "description": "Content label of the context menu.",
@@ -6343,6 +6741,18 @@
       "component": "context-menu",
       "description": "Item radius of the context menu.",
       "default": "radius.badge"
+    },
+    {
+      "id": "context-menu/item/padding-x",
+      "component": "context-menu",
+      "description": "Item padding x of the context menu.",
+      "default": "component-spacing-map.x2"
+    },
+    {
+      "id": "context-menu/item/padding-y",
+      "component": "context-menu",
+      "description": "Item padding y of the context menu.",
+      "default": "component-spacing-map.x2"
     },
     {
       "id": "context-menu/item/font-size",
@@ -6373,6 +6783,12 @@
       "component": "context-menu",
       "description": "Item disabled opacity disabled of the context menu.",
       "default": "opacity.disabled"
+    },
+    {
+      "id": "context-menu/item/padding-left",
+      "component": "context-menu",
+      "description": "Item padding left of the context menu.",
+      "default": "component-spacing-map.x8"
     },
     {
       "id": "context-menu/item/label",
@@ -6415,6 +6831,24 @@
       "component": "context-menu",
       "description": "Checkbox item radius of the context menu.",
       "default": "radius.badge"
+    },
+    {
+      "id": "context-menu/checkbox/item/padding-y",
+      "component": "context-menu",
+      "description": "Checkbox item padding y of the context menu.",
+      "default": "component-spacing-map.x2"
+    },
+    {
+      "id": "context-menu/checkbox/item/padding-right",
+      "component": "context-menu",
+      "description": "Checkbox item padding right of the context menu.",
+      "default": "component-spacing-map.x2"
+    },
+    {
+      "id": "context-menu/checkbox/item/padding-left",
+      "component": "context-menu",
+      "description": "Checkbox item padding left of the context menu.",
+      "default": "component-spacing-map.x8"
     },
     {
       "id": "context-menu/checkbox/item/font-size",
@@ -6471,6 +6905,24 @@
       "default": "radius.badge"
     },
     {
+      "id": "context-menu/radio/item/padding-y",
+      "component": "context-menu",
+      "description": "Radio item padding y of the context menu.",
+      "default": "component-spacing-map.x2"
+    },
+    {
+      "id": "context-menu/radio/item/padding-right",
+      "component": "context-menu",
+      "description": "Radio item padding right of the context menu.",
+      "default": "component-spacing-map.x2"
+    },
+    {
+      "id": "context-menu/radio/item/padding-left",
+      "component": "context-menu",
+      "description": "Radio item padding left of the context menu.",
+      "default": "component-spacing-map.x8"
+    },
+    {
       "id": "context-menu/radio/item/font-size",
       "component": "context-menu",
       "description": "Radio item font size of the context menu.",
@@ -6507,6 +6959,18 @@
       "default": "size.icon"
     },
     {
+      "id": "context-menu/label/padding-x",
+      "component": "context-menu",
+      "description": "Label padding x of the context menu.",
+      "default": "component-spacing-map.x2"
+    },
+    {
+      "id": "context-menu/label/padding-y",
+      "component": "context-menu",
+      "description": "Label padding y of the context menu.",
+      "default": "component-spacing-map.x2"
+    },
+    {
       "id": "context-menu/label/font-size",
       "component": "context-menu",
       "description": "Label font size of the context menu.",
@@ -6529,6 +6993,12 @@
       "component": "context-menu",
       "description": "Label label of the context menu.",
       "default": "color.text.primary"
+    },
+    {
+      "id": "context-menu/label/padding-left",
+      "component": "context-menu",
+      "description": "Label padding left of the context menu.",
+      "default": "component-spacing-map.x8"
     },
     {
       "id": "context-menu/separator/background",
@@ -6567,6 +7037,12 @@
       "default": "color.text.primary"
     },
     {
+      "id": "data-table/padding",
+      "component": "data-table",
+      "description": "Padding of the data table.",
+      "default": "component-spacing-map.x2"
+    },
+    {
       "id": "data-table/gap-2",
       "component": "data-table",
       "description": "Gap 2 of the data table.",
@@ -6577,6 +7053,18 @@
       "component": "data-table",
       "description": "Radius of the data table.",
       "default": "radius.badge"
+    },
+    {
+      "id": "data-table/padding-x",
+      "component": "data-table",
+      "description": "Padding x of the data table.",
+      "default": "component-spacing-map.x2"
+    },
+    {
+      "id": "data-table/padding-y",
+      "component": "data-table",
+      "description": "Padding y of the data table.",
+      "default": "component-spacing-map.x1"
     },
     {
       "id": "data-table/background-hover",
@@ -6637,6 +7125,12 @@
       "component": "dialog",
       "description": "Radius of the dialog.",
       "default": "radius.badge"
+    },
+    {
+      "id": "dialog/padding",
+      "component": "dialog",
+      "description": "Padding of the dialog.",
+      "default": "component-spacing-map.x1"
     },
     {
       "id": "dialog/label",
@@ -6717,10 +7211,22 @@
       "default": "color.surface.sunken"
     },
     {
+      "id": "drawer/header/gap",
+      "component": "drawer",
+      "description": "Header gap of the drawer.",
+      "default": "component-spacing-map.hairline"
+    },
+    {
       "id": "drawer/header/padding",
       "component": "drawer",
       "description": "Header padding of the drawer.",
       "default": "space.inset.container"
+    },
+    {
+      "id": "drawer/header/gap-2",
+      "component": "drawer",
+      "description": "Header gap 2 of the drawer.",
+      "default": "component-spacing-map.x2"
     },
     {
       "id": "drawer/footer/gap",
@@ -6763,6 +7269,12 @@
       "component": "drawer",
       "description": "Description label of the drawer.",
       "default": "color.text.muted"
+    },
+    {
+      "id": "dropdown-menu/content/padding",
+      "component": "dropdown-menu",
+      "description": "Content padding of the dropdown menu.",
+      "default": "component-spacing-map.x1"
     },
     {
       "id": "dropdown-menu/content/label",
@@ -6849,6 +7361,18 @@
       "default": "radius.container"
     },
     {
+      "id": "empty/padding",
+      "component": "empty",
+      "description": "Padding of the empty.",
+      "default": "component-spacing-map.x6"
+    },
+    {
+      "id": "empty/padding-2",
+      "component": "empty",
+      "description": "Padding 2 of the empty.",
+      "default": "component-spacing-map.x12"
+    },
+    {
       "id": "empty/header/gap",
       "component": "empty",
       "description": "Header gap of the empty.",
@@ -6933,6 +7457,12 @@
       "default": "space.gap.section"
     },
     {
+      "id": "field/set/gap-2",
+      "component": "field",
+      "description": "Set gap 2 of the field.",
+      "default": "component-spacing-map.x3"
+    },
+    {
       "id": "field/legend/font-weight",
       "component": "field",
       "description": "Legend font weight of the field.",
@@ -6954,13 +7484,37 @@
       "id": "field/group/gap",
       "component": "field",
       "description": "Group gap of the field.",
+      "default": "component-spacing-map.x8"
+    },
+    {
+      "id": "field/group/gap-2",
+      "component": "field",
+      "description": "Group gap 2 of the field.",
+      "default": "component-spacing-map.x3"
+    },
+    {
+      "id": "field/group/gap-3",
+      "component": "field",
+      "description": "Group gap 3 of the field.",
       "default": "space.gap.group"
+    },
+    {
+      "id": "field/gap",
+      "component": "field",
+      "description": "Gap of the field.",
+      "default": "component-spacing-map.x3"
     },
     {
       "id": "field/label-invalid",
       "component": "field",
       "description": "Label invalid of the field.",
       "default": "color.status.danger.@"
+    },
+    {
+      "id": "field/content/gap",
+      "component": "field",
+      "description": "Content gap of the field.",
+      "default": "component-spacing-map.x2"
     },
     {
       "id": "field/label/gap",
@@ -6979,6 +7533,12 @@
       "component": "field",
       "description": "Label radius of the field.",
       "default": "radius.control"
+    },
+    {
+      "id": "field/label/padding",
+      "component": "field",
+      "description": "Label padding of the field.",
+      "default": "component-spacing-map.x4"
     },
     {
       "id": "field/border-checked",
@@ -7059,15 +7619,21 @@
       "default": "color.surface.canvas"
     },
     {
+      "id": "field/padding-x",
+      "component": "field",
+      "description": "Padding x of the field.",
+      "default": "component-spacing-map.x2"
+    },
+    {
       "id": "field/label",
       "component": "field",
       "description": "Label of the field.",
       "default": "color.text.muted"
     },
     {
-      "id": "field/gap",
+      "id": "field/gap-2",
       "component": "field",
-      "description": "Gap of the field.",
+      "description": "Gap 2 of the field.",
       "default": "space.gap.tight"
     },
     {
@@ -7191,6 +7757,18 @@
       "default": "elevation.card"
     },
     {
+      "id": "input-group/padding-left",
+      "component": "input-group",
+      "description": "Padding left of the input group.",
+      "default": "component-spacing-map.x2"
+    },
+    {
+      "id": "input-group/padding-right",
+      "component": "input-group",
+      "description": "Padding right of the input group.",
+      "default": "component-spacing-map.x2"
+    },
+    {
       "id": "input-group/padding-bottom",
       "component": "input-group",
       "description": "Padding bottom of the input group.",
@@ -7231,6 +7809,12 @@
       "component": "input-group",
       "description": "Gap of the input group.",
       "default": "space.gap.default"
+    },
+    {
+      "id": "input-group/padding-y",
+      "component": "input-group",
+      "description": "Padding y of the input group.",
+      "default": "component-spacing-map.x2"
     },
     {
       "id": "input-group/font-size",
@@ -7293,6 +7877,12 @@
       "default": "space.inset.control-x"
     },
     {
+      "id": "input-group/block/start/padding-top-2",
+      "component": "input-group",
+      "description": "Block start padding top 2 of the input group.",
+      "default": "component-spacing-map.x3"
+    },
+    {
       "id": "input-group/block/start/padding-bottom",
       "component": "input-group",
       "description": "Block start padding bottom of the input group.",
@@ -7309,6 +7899,12 @@
       "component": "input-group",
       "description": "Block end padding bottom of the input group.",
       "default": "space.inset.control-x"
+    },
+    {
+      "id": "input-group/block/end/padding-bottom-2",
+      "component": "input-group",
+      "description": "Block end padding bottom 2 of the input group.",
+      "default": "component-spacing-map.x3"
     },
     {
       "id": "input-group/block/end/padding-top",
@@ -7329,16 +7925,34 @@
       "default": "space.gap.tight"
     },
     {
+      "id": "input-group/xs/padding-x",
+      "component": "input-group",
+      "description": "Xs padding x of the input group.",
+      "default": "component-spacing-map.x2"
+    },
+    {
       "id": "input-group/sm/height",
       "component": "input-group",
       "description": "Sm height of the input group.",
       "default": "size.control.default"
     },
     {
+      "id": "input-group/sm/gap",
+      "component": "input-group",
+      "description": "Sm gap of the input group.",
+      "default": "component-spacing-map.x2"
+    },
+    {
       "id": "input-group/sm/radius",
       "component": "input-group",
       "description": "Sm radius of the input group.",
       "default": "radius.control"
+    },
+    {
+      "id": "input-group/sm/padding-x",
+      "component": "input-group",
+      "description": "Sm padding x of the input group.",
+      "default": "component-spacing-map.x3"
     },
     {
       "id": "input-group/icon/sm/size",
@@ -7539,10 +8153,22 @@
       "default": "space.inset.container"
     },
     {
+      "id": "item/sm/gap",
+      "component": "item",
+      "description": "Sm gap of the item.",
+      "default": "component-spacing-map.x3"
+    },
+    {
       "id": "item/sm/padding-x",
       "component": "item",
       "description": "Sm padding x of the item.",
       "default": "space.inset.container"
+    },
+    {
+      "id": "item/sm/padding-y",
+      "component": "item",
+      "description": "Sm padding y of the item.",
+      "default": "component-spacing-map.x3"
     },
     {
       "id": "item/gap",
@@ -7677,6 +8303,12 @@
       "default": "color.surface.sunken"
     },
     {
+      "id": "kbd/padding-x",
+      "component": "kbd",
+      "description": "Padding x of the kbd.",
+      "default": "component-spacing-map.x1"
+    },
+    {
       "id": "kbd/font-size",
       "component": "kbd",
       "description": "Font size of the kbd.",
@@ -7755,6 +8387,12 @@
       "default": "type.label.line-height"
     },
     {
+      "id": "marker/gap",
+      "component": "marker",
+      "description": "Gap of the marker.",
+      "default": "component-spacing-map.x3"
+    },
+    {
       "id": "marker/font-size",
       "component": "marker",
       "description": "Font size of the marker.",
@@ -7797,6 +8435,12 @@
       "default": "color.surface.canvas"
     },
     {
+      "id": "menubar/padding",
+      "component": "menubar",
+      "description": "Padding of the menubar.",
+      "default": "component-spacing-map.x1"
+    },
+    {
       "id": "menubar/shadow",
       "component": "menubar",
       "description": "Shadow of the menubar.",
@@ -7807,6 +8451,18 @@
       "component": "menubar",
       "description": "Trigger radius of the menubar.",
       "default": "radius.badge"
+    },
+    {
+      "id": "menubar/trigger/padding-x",
+      "component": "menubar",
+      "description": "Trigger padding x of the menubar.",
+      "default": "component-spacing-map.x2"
+    },
+    {
+      "id": "menubar/trigger/padding-y",
+      "component": "menubar",
+      "description": "Trigger padding y of the menubar.",
+      "default": "component-spacing-map.x1"
     },
     {
       "id": "menubar/trigger/font-size",
@@ -7863,6 +8519,12 @@
       "default": "color.surface.raised"
     },
     {
+      "id": "menubar/content/padding",
+      "component": "menubar",
+      "description": "Content padding of the menubar.",
+      "default": "component-spacing-map.x1"
+    },
+    {
       "id": "menubar/content/label",
       "component": "menubar",
       "description": "Content label of the menubar.",
@@ -7885,6 +8547,18 @@
       "component": "menubar",
       "description": "Item radius of the menubar.",
       "default": "radius.badge"
+    },
+    {
+      "id": "menubar/item/padding-x",
+      "component": "menubar",
+      "description": "Item padding x of the menubar.",
+      "default": "component-spacing-map.x2"
+    },
+    {
+      "id": "menubar/item/padding-y",
+      "component": "menubar",
+      "description": "Item padding y of the menubar.",
+      "default": "component-spacing-map.x2"
     },
     {
       "id": "menubar/item/font-size",
@@ -7915,6 +8589,12 @@
       "component": "menubar",
       "description": "Item disabled opacity disabled of the menubar.",
       "default": "opacity.disabled"
+    },
+    {
+      "id": "menubar/item/padding-left",
+      "component": "menubar",
+      "description": "Item padding left of the menubar.",
+      "default": "component-spacing-map.x8"
     },
     {
       "id": "menubar/item/label",
@@ -7957,6 +8637,24 @@
       "component": "menubar",
       "description": "Checkbox item radius of the menubar.",
       "default": "radius.badge"
+    },
+    {
+      "id": "menubar/checkbox/item/padding-y",
+      "component": "menubar",
+      "description": "Checkbox item padding y of the menubar.",
+      "default": "component-spacing-map.x2"
+    },
+    {
+      "id": "menubar/checkbox/item/padding-right",
+      "component": "menubar",
+      "description": "Checkbox item padding right of the menubar.",
+      "default": "component-spacing-map.x2"
+    },
+    {
+      "id": "menubar/checkbox/item/padding-left",
+      "component": "menubar",
+      "description": "Checkbox item padding left of the menubar.",
+      "default": "component-spacing-map.x8"
     },
     {
       "id": "menubar/checkbox/item/font-size",
@@ -8013,6 +8711,24 @@
       "default": "radius.badge"
     },
     {
+      "id": "menubar/radio/item/padding-y",
+      "component": "menubar",
+      "description": "Radio item padding y of the menubar.",
+      "default": "component-spacing-map.x2"
+    },
+    {
+      "id": "menubar/radio/item/padding-right",
+      "component": "menubar",
+      "description": "Radio item padding right of the menubar.",
+      "default": "component-spacing-map.x2"
+    },
+    {
+      "id": "menubar/radio/item/padding-left",
+      "component": "menubar",
+      "description": "Radio item padding left of the menubar.",
+      "default": "component-spacing-map.x8"
+    },
+    {
       "id": "menubar/radio/item/font-size",
       "component": "menubar",
       "description": "Radio item font size of the menubar.",
@@ -8049,6 +8765,18 @@
       "default": "size.icon"
     },
     {
+      "id": "menubar/label/padding-x",
+      "component": "menubar",
+      "description": "Label padding x of the menubar.",
+      "default": "component-spacing-map.x2"
+    },
+    {
+      "id": "menubar/label/padding-y",
+      "component": "menubar",
+      "description": "Label padding y of the menubar.",
+      "default": "component-spacing-map.x2"
+    },
+    {
       "id": "menubar/label/font-size",
       "component": "menubar",
       "description": "Label font size of the menubar.",
@@ -8065,6 +8793,12 @@
       "component": "menubar",
       "description": "Label font weight of the menubar.",
       "default": "type.label.font-weight"
+    },
+    {
+      "id": "menubar/label/padding-left",
+      "component": "menubar",
+      "description": "Label padding left of the menubar.",
+      "default": "component-spacing-map.x8"
     },
     {
       "id": "menubar/separator/background",
@@ -8097,6 +8831,18 @@
       "default": "radius.badge"
     },
     {
+      "id": "menubar/sub/trigger/padding-x",
+      "component": "menubar",
+      "description": "Sub trigger padding x of the menubar.",
+      "default": "component-spacing-map.x2"
+    },
+    {
+      "id": "menubar/sub/trigger/padding-y",
+      "component": "menubar",
+      "description": "Sub trigger padding y of the menubar.",
+      "default": "component-spacing-map.x2"
+    },
+    {
       "id": "menubar/sub/trigger/font-size",
       "component": "menubar",
       "description": "Sub trigger font size of the menubar.",
@@ -8119,6 +8865,12 @@
       "component": "menubar",
       "description": "Sub trigger label focus of the menubar.",
       "default": "color.text.primary"
+    },
+    {
+      "id": "menubar/sub/trigger/padding-left",
+      "component": "menubar",
+      "description": "Sub trigger padding left of the menubar.",
+      "default": "component-spacing-map.x8"
     },
     {
       "id": "menubar/sub/trigger/background-open",
@@ -8149,6 +8901,12 @@
       "component": "menubar",
       "description": "Sub content background of the menubar.",
       "default": "color.surface.raised"
+    },
+    {
+      "id": "menubar/sub/content/padding",
+      "component": "menubar",
+      "description": "Sub content padding of the menubar.",
+      "default": "component-spacing-map.x1"
     },
     {
       "id": "menubar/sub/content/label",
@@ -8193,6 +8951,12 @@
       "default": "color.surface.canvas"
     },
     {
+      "id": "message/gap",
+      "component": "message",
+      "description": "Gap of the message.",
+      "default": "component-spacing-map.x3"
+    },
+    {
       "id": "message/font-size",
       "component": "message",
       "description": "Font size of the message.",
@@ -8205,9 +8969,9 @@
       "default": "type.body.line-height"
     },
     {
-      "id": "message/gap",
+      "id": "message/gap-2",
       "component": "message",
-      "description": "Gap of the message.",
+      "description": "Gap 2 of the message.",
       "default": "space.gap.tight"
     },
     {
@@ -8265,6 +9029,18 @@
       "default": "space.inset.control-x"
     },
     {
+      "id": "native-select/padding-y",
+      "component": "native-select",
+      "description": "Padding y of the native select.",
+      "default": "component-spacing-map.x2"
+    },
+    {
+      "id": "native-select/padding-right",
+      "component": "native-select",
+      "description": "Padding right of the native select.",
+      "default": "component-spacing-map.x8"
+    },
+    {
       "id": "native-select/font-size",
       "component": "native-select",
       "description": "Font size of the native select.",
@@ -8305,6 +9081,12 @@
       "component": "native-select",
       "description": "Height of the native select.",
       "default": "size.control.default"
+    },
+    {
+      "id": "native-select/padding-y-2",
+      "component": "native-select",
+      "description": "Padding y 2 of the native select.",
+      "default": "component-spacing-map.x1"
     },
     {
       "id": "native-select/border-focus",
@@ -8377,6 +9159,12 @@
       "component": "navigation-menu",
       "description": "Padding x of the navigation menu.",
       "default": "space.inset.container"
+    },
+    {
+      "id": "navigation-menu/padding-y",
+      "component": "navigation-menu",
+      "description": "Padding y of the navigation menu.",
+      "default": "component-spacing-map.x2"
     },
     {
       "id": "navigation-menu/font-size",
@@ -8475,6 +9263,18 @@
       "default": "motion.duration.feedback"
     },
     {
+      "id": "navigation-menu/content/padding",
+      "component": "navigation-menu",
+      "description": "Content padding of the navigation menu.",
+      "default": "component-spacing-map.x2"
+    },
+    {
+      "id": "navigation-menu/content/padding-right",
+      "component": "navigation-menu",
+      "description": "Content padding right of the navigation menu.",
+      "default": "component-spacing-map.x3"
+    },
+    {
       "id": "navigation-menu/background-2",
       "component": "navigation-menu",
       "description": "Background 2 of the navigation menu.",
@@ -8527,6 +9327,12 @@
       "component": "navigation-menu",
       "description": "Link radius of the navigation menu.",
       "default": "radius.badge"
+    },
+    {
+      "id": "navigation-menu/link/padding",
+      "component": "navigation-menu",
+      "description": "Link padding of the navigation menu.",
+      "default": "component-spacing-map.x2"
     },
     {
       "id": "navigation-menu/link/font-size",
@@ -8637,6 +9443,24 @@
       "default": "space.gap.tight"
     },
     {
+      "id": "pagination/padding-x",
+      "component": "pagination",
+      "description": "Padding x of the pagination.",
+      "default": "component-spacing-map.x3"
+    },
+    {
+      "id": "pagination/padding-left",
+      "component": "pagination",
+      "description": "Padding left of the pagination.",
+      "default": "component-spacing-map.x3"
+    },
+    {
+      "id": "pagination/padding-right",
+      "component": "pagination",
+      "description": "Padding right of the pagination.",
+      "default": "component-spacing-map.x3"
+    },
+    {
       "id": "pagination/icon-size",
       "component": "pagination",
       "description": "Icon size of the pagination.",
@@ -8719,6 +9543,12 @@
       "component": "progress",
       "description": "Indicator background of the progress.",
       "default": "color.action.primary.@"
+    },
+    {
+      "id": "radio-group/gap",
+      "component": "radio-group",
+      "description": "Gap of the radio group.",
+      "default": "component-spacing-map.x3"
     },
     {
       "id": "radio-group/item/icon-size",
@@ -8907,6 +9737,12 @@
       "default": "size.icon"
     },
     {
+      "id": "select/content/padding",
+      "component": "select",
+      "description": "Content padding of the select.",
+      "default": "component-spacing-map.x1"
+    },
+    {
       "id": "select/content/label",
       "component": "select",
       "description": "Content label of the select.",
@@ -8935,6 +9771,12 @@
       "component": "select",
       "description": "Item padding left of the select.",
       "default": "space.inset.cell-x"
+    },
+    {
+      "id": "select/item/padding-right",
+      "component": "select",
+      "description": "Item padding right of the select.",
+      "default": "component-spacing-map.x8"
     },
     {
       "id": "select/item/radius",
@@ -9027,6 +9869,12 @@
       "default": "size.icon"
     },
     {
+      "id": "sheet/header/gap",
+      "component": "sheet",
+      "description": "Header gap of the sheet.",
+      "default": "component-spacing-map.x2"
+    },
+    {
       "id": "sheet/header/padding",
       "component": "sheet",
       "description": "Header padding of the sheet.",
@@ -9105,6 +9953,12 @@
       "default": "motion.duration.feedback"
     },
     {
+      "id": "sidebar/padding",
+      "component": "sidebar",
+      "description": "Padding of the sidebar.",
+      "default": "component-spacing-map.x2"
+    },
+    {
       "id": "sidebar/inner/background",
       "component": "sidebar",
       "description": "Inner background of the sidebar.",
@@ -9177,10 +10031,22 @@
       "default": "space.gap.default"
     },
     {
+      "id": "sidebar/header/padding",
+      "component": "sidebar",
+      "description": "Header padding of the sidebar.",
+      "default": "component-spacing-map.x2"
+    },
+    {
       "id": "sidebar/footer/gap",
       "component": "sidebar",
       "description": "Footer gap of the sidebar.",
       "default": "space.gap.default"
+    },
+    {
+      "id": "sidebar/footer/padding",
+      "component": "sidebar",
+      "description": "Footer padding of the sidebar.",
+      "default": "component-spacing-map.x2"
     },
     {
       "id": "sidebar/separator/background",
@@ -9195,6 +10061,12 @@
       "default": "space.gap.default"
     },
     {
+      "id": "sidebar/group/padding",
+      "component": "sidebar",
+      "description": "Group padding of the sidebar.",
+      "default": "component-spacing-map.x2"
+    },
+    {
       "id": "sidebar/group/label/height",
       "component": "sidebar",
       "description": "Group label height of the sidebar.",
@@ -9205,6 +10077,12 @@
       "component": "sidebar",
       "description": "Group label radius of the sidebar.",
       "default": "radius.control"
+    },
+    {
+      "id": "sidebar/group/label/padding-x",
+      "component": "sidebar",
+      "description": "Group label padding x of the sidebar.",
+      "default": "component-spacing-map.x2"
     },
     {
       "id": "sidebar/group/label/font-size",
@@ -9367,6 +10245,12 @@
       "component": "sidebar",
       "description": "Focus ring of the sidebar.",
       "default": "color.border.focus"
+    },
+    {
+      "id": "sidebar/padding-right",
+      "component": "sidebar",
+      "description": "Padding right of the sidebar.",
+      "default": "component-spacing-map.x8"
     },
     {
       "id": "sidebar/size",
@@ -9591,6 +10475,12 @@
       "default": "radius.control"
     },
     {
+      "id": "sidebar/menu/badge/padding-x",
+      "component": "sidebar",
+      "description": "Menu badge padding x of the sidebar.",
+      "default": "component-spacing-map.x1"
+    },
+    {
       "id": "sidebar/menu/badge/font-size",
       "component": "sidebar",
       "description": "Menu badge font size of the sidebar.",
@@ -9633,6 +10523,12 @@
       "default": "radius.control"
     },
     {
+      "id": "sidebar/menu/skeleton/padding-x",
+      "component": "sidebar",
+      "description": "Menu skeleton padding x of the sidebar.",
+      "default": "component-spacing-map.x2"
+    },
+    {
       "id": "sidebar/height",
       "component": "sidebar",
       "description": "Height of the sidebar.",
@@ -9651,6 +10547,18 @@
       "default": "color.border.default"
     },
     {
+      "id": "sidebar/menu/sub/padding-x",
+      "component": "sidebar",
+      "description": "Menu sub padding x of the sidebar.",
+      "default": "component-spacing-map.x3"
+    },
+    {
+      "id": "sidebar/menu/sub/padding-y",
+      "component": "sidebar",
+      "description": "Menu sub padding y of the sidebar.",
+      "default": "component-spacing-map.hairline"
+    },
+    {
       "id": "sidebar/menu/sub/button/gap",
       "component": "sidebar",
       "description": "Menu sub button gap of the sidebar.",
@@ -9661,6 +10569,12 @@
       "component": "sidebar",
       "description": "Menu sub button radius of the sidebar.",
       "default": "radius.control"
+    },
+    {
+      "id": "sidebar/menu/sub/button/padding-x",
+      "component": "sidebar",
+      "description": "Menu sub button padding x of the sidebar.",
+      "default": "component-spacing-map.x2"
     },
     {
       "id": "sidebar/menu/sub/button/label",
@@ -9855,6 +10769,12 @@
       "default": "radius.round"
     },
     {
+      "id": "switch/padding",
+      "component": "switch",
+      "description": "Padding of the switch.",
+      "default": "component-spacing-map.hairline"
+    },
+    {
       "id": "switch/focus",
       "component": "switch",
       "description": "Focus of the switch.",
@@ -10009,6 +10929,12 @@
       "component": "textarea",
       "description": "Padding x of the textarea.",
       "default": "space.inset.control-x"
+    },
+    {
+      "id": "textarea/padding-y",
+      "component": "textarea",
+      "description": "Padding y of the textarea.",
+      "default": "component-spacing-map.x2"
     },
     {
       "id": "textarea/font-size",
@@ -10305,10 +11231,28 @@
       "default": "color.text.primary"
     },
     {
+      "id": "toggle/default/padding-x",
+      "component": "toggle",
+      "description": "Default padding x of the toggle.",
+      "default": "component-spacing-map.x2"
+    },
+    {
       "id": "toggle/sm/height",
       "component": "toggle",
       "description": "Sm height of the toggle.",
       "default": "size.control.default"
+    },
+    {
+      "id": "toggle/sm/padding-x",
+      "component": "toggle",
+      "description": "Sm padding x of the toggle.",
+      "default": "component-spacing-map.x2"
+    },
+    {
+      "id": "toggle/lg/padding-x",
+      "component": "toggle",
+      "description": "Lg padding x of the toggle.",
+      "default": "component-spacing-map.x3"
     },
     {
       "id": "tooltip/content/radius",
@@ -10321,6 +11265,12 @@
       "component": "tooltip",
       "description": "Content padding x of the tooltip.",
       "default": "space.gap.default"
+    },
+    {
+      "id": "tooltip/content/padding-y",
+      "component": "tooltip",
+      "description": "Content padding y of the tooltip.",
+      "default": "component-spacing-map.x1"
     },
     {
       "id": "tooltip/content/font-size",
@@ -10360,9 +11310,7 @@
       {
         "id": "color.surface.canvas",
         "intent": "The page background behind everything.",
-        "use_for": [
-          "Page and app background"
-        ],
+        "use_for": ["Page and app background"],
         "not_for": [
           {
             "when": "Cards and panels on the page",
@@ -10373,12 +11321,7 @@
       {
         "id": "color.surface.default",
         "intent": "The base fill for content.",
-        "use_for": [
-          "Cards",
-          "Panels",
-          "Inputs",
-          "Table body"
-        ],
+        "use_for": ["Cards", "Panels", "Inputs", "Table body"],
         "not_for": [
           {
             "when": "The page behind content",
@@ -10393,11 +11336,7 @@
       {
         "id": "color.surface.raised",
         "intent": "Fills that float above content.",
-        "use_for": [
-          "Menus",
-          "Popovers",
-          "Dialogs"
-        ],
+        "use_for": ["Menus", "Popovers", "Dialogs"],
         "not_for": [
           {
             "when": "Cards in the page flow",
@@ -10408,11 +11347,7 @@
       {
         "id": "color.surface.sunken",
         "intent": "A recessed fill, a step below content.",
-        "use_for": [
-          "Table headers",
-          "Wells",
-          "Hover rows"
-        ],
+        "use_for": ["Table headers", "Wells", "Hover rows"],
         "not_for": [
           {
             "when": "A selected item",
@@ -10423,10 +11358,7 @@
       {
         "id": "color.surface.selected",
         "intent": "The fill of a selected or current item.",
-        "use_for": [
-          "Selected rows",
-          "Current menu item"
-        ],
+        "use_for": ["Selected rows", "Current menu item"],
         "not_for": [
           {
             "when": "Hover",
@@ -10441,10 +11373,7 @@
       {
         "id": "color.surface.inverse",
         "intent": "A reversed fill for small, short-lived messages.",
-        "use_for": [
-          "Tooltips",
-          "Toasts"
-        ],
+        "use_for": ["Tooltips", "Toasts"],
         "not_for": [
           {
             "when": "Large areas",
@@ -10455,9 +11384,7 @@
       {
         "id": "color.surface.scrim",
         "intent": "The see-through layer behind a modal.",
-        "use_for": [
-          "Behind dialogs and sheets"
-        ],
+        "use_for": ["Behind dialogs and sheets"],
         "not_for": [
           {
             "when": "A solid fill",
@@ -10468,11 +11395,7 @@
       {
         "id": "color.text.primary",
         "intent": "Body text and headings.",
-        "use_for": [
-          "Body text",
-          "Headings",
-          "Tag labels"
-        ],
+        "use_for": ["Body text", "Headings", "Tag labels"],
         "not_for": [
           {
             "when": "Text on the main action",
@@ -10491,11 +11414,7 @@
       {
         "id": "color.text.secondary",
         "intent": "Supporting text.",
-        "use_for": [
-          "Labels",
-          "Descriptions",
-          "Metadata"
-        ],
+        "use_for": ["Labels", "Descriptions", "Metadata"],
         "not_for": [
           {
             "when": "The main content",
@@ -10510,11 +11429,7 @@
       {
         "id": "color.text.muted",
         "intent": "The quietest text.",
-        "use_for": [
-          "Placeholders",
-          "Hints",
-          "Timestamps"
-        ],
+        "use_for": ["Placeholders", "Hints", "Timestamps"],
         "not_for": [
           {
             "when": "Anything people must read to act",
@@ -10533,9 +11448,7 @@
       {
         "id": "color.text.inverse",
         "intent": "Text on an inverse fill.",
-        "use_for": [
-          "Tooltip and toast text"
-        ],
+        "use_for": ["Tooltip and toast text"],
         "not_for": [
           {
             "when": "Text on the page",
@@ -10543,9 +11456,7 @@
           }
         ],
         "pairs": {
-          "on": [
-            "color.surface.inverse"
-          ],
+          "on": ["color.surface.inverse"],
           "contrast": 4.5
         }
       },
@@ -10588,9 +11499,7 @@
       {
         "id": "color.text.info-on-light",
         "intent": "The label on a light info fill, such as its tint in light mode: a fixed color from the light scale (800).",
-        "use_for": [
-          "The info badge"
-        ],
+        "use_for": ["The info badge"],
         "not_for": [
           {
             "when": "Info text on the page",
@@ -10605,9 +11514,7 @@
       {
         "id": "color.text.info-on-dark",
         "intent": "The label on a dark info fill, such as its tint in dark mode: a fixed color from the light scale (100, adjusted so its hue shows).",
-        "use_for": [
-          "The info badge"
-        ],
+        "use_for": ["The info badge"],
         "not_for": [
           {
             "when": "Info text on the page",
@@ -10622,9 +11529,7 @@
       {
         "id": "color.text.success-on-light",
         "intent": "The label on a light success fill, such as its tint in light mode: a fixed color from the light scale (800).",
-        "use_for": [
-          "The success badge"
-        ],
+        "use_for": ["The success badge"],
         "not_for": [
           {
             "when": "Success text on the page",
@@ -10639,9 +11544,7 @@
       {
         "id": "color.text.success-on-dark",
         "intent": "The label on a dark success fill, such as its tint in dark mode: a fixed color from the light scale (100, adjusted so its hue shows).",
-        "use_for": [
-          "The success badge"
-        ],
+        "use_for": ["The success badge"],
         "not_for": [
           {
             "when": "Success text on the page",
@@ -10656,9 +11559,7 @@
       {
         "id": "color.text.warning-on-light",
         "intent": "The label on a light warning fill, such as its tint in light mode: a fixed color from the light scale (800).",
-        "use_for": [
-          "The warning badge"
-        ],
+        "use_for": ["The warning badge"],
         "not_for": [
           {
             "when": "Warning text on the page",
@@ -10673,9 +11574,7 @@
       {
         "id": "color.text.warning-on-dark",
         "intent": "The label on a dark warning fill, such as its tint in dark mode: a fixed color from the light scale (100, adjusted so its hue shows).",
-        "use_for": [
-          "The warning badge"
-        ],
+        "use_for": ["The warning badge"],
         "not_for": [
           {
             "when": "Warning text on the page",
@@ -10690,9 +11589,7 @@
       {
         "id": "color.text.danger-on-light",
         "intent": "The label on a light danger fill, such as its tint in light mode: a fixed color from the light scale (800).",
-        "use_for": [
-          "The danger badge"
-        ],
+        "use_for": ["The danger badge"],
         "not_for": [
           {
             "when": "Danger text on the page",
@@ -10707,9 +11604,7 @@
       {
         "id": "color.text.danger-on-dark",
         "intent": "The label on a dark danger fill, such as its tint in dark mode: a fixed color from the light scale (100, adjusted so its hue shows).",
-        "use_for": [
-          "The danger badge"
-        ],
+        "use_for": ["The danger badge"],
         "not_for": [
           {
             "when": "Danger text on the page",
@@ -10724,9 +11619,7 @@
       {
         "id": "color.text.on-action",
         "intent": "Text and icons on the main action's fill.",
-        "use_for": [
-          "Primary button labels"
-        ],
+        "use_for": ["Primary button labels"],
         "not_for": [
           {
             "when": "Text on the page",
@@ -10734,19 +11627,14 @@
           }
         ],
         "pairs": {
-          "on": [
-            "color.action.primary.@",
-            "color.action.primary.hover"
-          ],
+          "on": ["color.action.primary.@", "color.action.primary.hover"],
           "contrast": 4.5
         }
       },
       {
         "id": "color.text.on-danger",
         "intent": "Text on the danger fill: its tone's main text.",
-        "use_for": [
-          "The danger button label"
-        ],
+        "use_for": ["The danger button label"],
         "not_for": [
           {
             "when": "Text on the main action",
@@ -10754,19 +11642,14 @@
           }
         ],
         "pairs": {
-          "on": [
-            "color.action.danger.@",
-            "color.action.danger.hover"
-          ],
+          "on": ["color.action.danger.@", "color.action.danger.hover"],
           "contrast": 4.5
         }
       },
       {
         "id": "color.text.link",
         "intent": "Links in running text.",
-        "use_for": [
-          "Inline links"
-        ],
+        "use_for": ["Inline links"],
         "not_for": [
           {
             "when": "Buttons",
@@ -10781,11 +11664,7 @@
       {
         "id": "color.border.default",
         "intent": "Quiet edges and dividers. Decorative, so it has no contrast minimum.",
-        "use_for": [
-          "Card edges",
-          "Dividers",
-          "Table rules"
-        ],
+        "use_for": ["Card edges", "Dividers", "Table rules"],
         "not_for": [
           {
             "when": "The edge of a control people must find",
@@ -10815,9 +11694,7 @@
       {
         "id": "color.border.focus",
         "intent": "The focus ring.",
-        "use_for": [
-          "Keyboard focus on any control"
-        ],
+        "use_for": ["Keyboard focus on any control"],
         "not_for": [
           {
             "when": "A selected item",
@@ -10878,19 +11755,14 @@
           }
         ],
         "pairs": {
-          "on": [
-            "color.surface.canvas",
-            "color.surface.default"
-          ],
+          "on": ["color.surface.canvas", "color.surface.default"],
           "contrast": 3
         }
       },
       {
         "id": "color.action.primary.hover",
         "intent": "The main action under the pointer.",
-        "use_for": [
-          "Primary button hover"
-        ],
+        "use_for": ["Primary button hover"],
         "not_for": [
           {
             "when": "The resting state",
@@ -10901,9 +11773,7 @@
       {
         "id": "color.action.secondary.@",
         "intent": "The fill of other actions.",
-        "use_for": [
-          "Secondary buttons"
-        ],
+        "use_for": ["Secondary buttons"],
         "not_for": [
           {
             "when": "The main action",
@@ -10914,9 +11784,7 @@
       {
         "id": "color.action.secondary.hover",
         "intent": "Other actions under the pointer.",
-        "use_for": [
-          "Secondary button hover"
-        ],
+        "use_for": ["Secondary button hover"],
         "not_for": [
           {
             "when": "The resting state",
@@ -10927,9 +11795,7 @@
       {
         "id": "color.action.danger.@",
         "intent": "The fill of a destructive commit: the confirm of a delete.",
-        "use_for": [
-          "The confirm button of a delete or remove"
-        ],
+        "use_for": ["The confirm button of a delete or remove"],
         "not_for": [
           {
             "when": "The first step of a delete",
@@ -10944,9 +11810,7 @@
       {
         "id": "color.action.danger.hover",
         "intent": "The danger fill on hover.",
-        "use_for": [
-          "Hover on the danger button"
-        ],
+        "use_for": ["Hover on the danger button"],
         "not_for": [
           {
             "when": "The resting fill",
@@ -10957,9 +11821,7 @@
       {
         "id": "color.status.info.@",
         "intent": "Neutral news: something changed and no action is needed. The lowest level of the urgency order.",
-        "use_for": [
-          "Status text and icons"
-        ],
+        "use_for": ["Status text and icons"],
         "not_for": [
           {
             "when": "Something needs a check",
@@ -10975,10 +11837,7 @@
           }
         ],
         "pairs": {
-          "on": [
-            "color.surface.canvas",
-            "color.surface.default"
-          ],
+          "on": ["color.surface.canvas", "color.surface.default"],
           "contrast": 4.5
         },
         "order": 1
@@ -10986,10 +11845,7 @@
       {
         "id": "color.status.info.subtle",
         "intent": "The fill behind info status.",
-        "use_for": [
-          "Info badges",
-          "Banners"
-        ],
+        "use_for": ["Info badges", "Banners"],
         "not_for": [
           {
             "when": "Large page areas",
@@ -11000,9 +11856,7 @@
       {
         "id": "color.status.warning.@",
         "intent": "Caution: something may go wrong or needs a check, and it can be fixed.",
-        "use_for": [
-          "Status text and icons"
-        ],
+        "use_for": ["Status text and icons"],
         "not_for": [
           {
             "when": "An error, or an action that cannot be undone",
@@ -11018,10 +11872,7 @@
           }
         ],
         "pairs": {
-          "on": [
-            "color.surface.canvas",
-            "color.surface.default"
-          ],
+          "on": ["color.surface.canvas", "color.surface.default"],
           "contrast": 4.5
         },
         "order": 2
@@ -11029,10 +11880,7 @@
       {
         "id": "color.status.warning.subtle",
         "intent": "The fill behind warning status.",
-        "use_for": [
-          "Warning badges",
-          "Banners"
-        ],
+        "use_for": ["Warning badges", "Banners"],
         "not_for": [
           {
             "when": "Large page areas",
@@ -11043,10 +11891,7 @@
       {
         "id": "color.status.danger.@",
         "intent": "Real risk: errors, failed checks, actions that cannot be undone. The top of the urgency order. Overuse wears it out.",
-        "use_for": [
-          "Error messages and status text",
-          "Icons"
-        ],
+        "use_for": ["Error messages and status text", "Icons"],
         "not_for": [
           {
             "when": "Caution or advice",
@@ -11062,10 +11907,7 @@
           }
         ],
         "pairs": {
-          "on": [
-            "color.surface.canvas",
-            "color.surface.default"
-          ],
+          "on": ["color.surface.canvas", "color.surface.default"],
           "contrast": 4.5
         },
         "order": 3
@@ -11073,10 +11915,7 @@
       {
         "id": "color.status.danger.subtle",
         "intent": "The fill behind danger status.",
-        "use_for": [
-          "Danger badges",
-          "Banners"
-        ],
+        "use_for": ["Danger badges", "Banners"],
         "not_for": [
           {
             "when": "Large page areas",
@@ -11087,9 +11926,7 @@
       {
         "id": "color.status.success.@",
         "intent": "Confirmation that something worked. It sits outside the urgency order.",
-        "use_for": [
-          "Status text and icons"
-        ],
+        "use_for": ["Status text and icons"],
         "not_for": [
           {
             "when": "The main action",
@@ -11105,20 +11942,14 @@
           }
         ],
         "pairs": {
-          "on": [
-            "color.surface.canvas",
-            "color.surface.default"
-          ],
+          "on": ["color.surface.canvas", "color.surface.default"],
           "contrast": 4.5
         }
       },
       {
         "id": "color.status.success.subtle",
         "intent": "The fill behind success status.",
-        "use_for": [
-          "Success badges",
-          "Banners"
-        ],
+        "use_for": ["Success badges", "Banners"],
         "not_for": [
           {
             "when": "Large page areas",
@@ -11129,10 +11960,7 @@
       {
         "id": "color.category.1.@",
         "intent": "Category 1: tells one item or series from another. It carries no meaning.",
-        "use_for": [
-          "Chart series",
-          "Tag dots and icons"
-        ],
+        "use_for": ["Chart series", "Tag dots and icons"],
         "not_for": [
           {
             "when": "Status or risk",
@@ -11144,19 +11972,14 @@
           }
         ],
         "pairs": {
-          "on": [
-            "color.surface.canvas",
-            "color.surface.default"
-          ],
+          "on": ["color.surface.canvas", "color.surface.default"],
           "contrast": 3
         }
       },
       {
         "id": "color.category.1.subtle",
         "intent": "Category 1: the fill of a tag.",
-        "use_for": [
-          "Tag and label fills"
-        ],
+        "use_for": ["Tag and label fills"],
         "not_for": [
           {
             "when": "A status badge",
@@ -11167,10 +11990,7 @@
       {
         "id": "color.category.2.@",
         "intent": "Category 2: tells one item or series from another. It carries no meaning.",
-        "use_for": [
-          "Chart series",
-          "Tag dots and icons"
-        ],
+        "use_for": ["Chart series", "Tag dots and icons"],
         "not_for": [
           {
             "when": "Status or risk",
@@ -11182,19 +12002,14 @@
           }
         ],
         "pairs": {
-          "on": [
-            "color.surface.canvas",
-            "color.surface.default"
-          ],
+          "on": ["color.surface.canvas", "color.surface.default"],
           "contrast": 3
         }
       },
       {
         "id": "color.category.2.subtle",
         "intent": "Category 2: the fill of a tag.",
-        "use_for": [
-          "Tag and label fills"
-        ],
+        "use_for": ["Tag and label fills"],
         "not_for": [
           {
             "when": "A status badge",
@@ -11205,10 +12020,7 @@
       {
         "id": "color.category.3.@",
         "intent": "Category 3: tells one item or series from another. It carries no meaning.",
-        "use_for": [
-          "Chart series",
-          "Tag dots and icons"
-        ],
+        "use_for": ["Chart series", "Tag dots and icons"],
         "not_for": [
           {
             "when": "Status or risk",
@@ -11220,19 +12032,14 @@
           }
         ],
         "pairs": {
-          "on": [
-            "color.surface.canvas",
-            "color.surface.default"
-          ],
+          "on": ["color.surface.canvas", "color.surface.default"],
           "contrast": 3
         }
       },
       {
         "id": "color.category.3.subtle",
         "intent": "Category 3: the fill of a tag.",
-        "use_for": [
-          "Tag and label fills"
-        ],
+        "use_for": ["Tag and label fills"],
         "not_for": [
           {
             "when": "A status badge",
@@ -11243,10 +12050,7 @@
       {
         "id": "color.category.4.@",
         "intent": "Category 4: tells one item or series from another. It carries no meaning.",
-        "use_for": [
-          "Chart series",
-          "Tag dots and icons"
-        ],
+        "use_for": ["Chart series", "Tag dots and icons"],
         "not_for": [
           {
             "when": "Status or risk",
@@ -11258,19 +12062,14 @@
           }
         ],
         "pairs": {
-          "on": [
-            "color.surface.canvas",
-            "color.surface.default"
-          ],
+          "on": ["color.surface.canvas", "color.surface.default"],
           "contrast": 3
         }
       },
       {
         "id": "color.category.4.subtle",
         "intent": "Category 4: the fill of a tag.",
-        "use_for": [
-          "Tag and label fills"
-        ],
+        "use_for": ["Tag and label fills"],
         "not_for": [
           {
             "when": "A status badge",
@@ -11281,10 +12080,7 @@
       {
         "id": "color.category.5.@",
         "intent": "Category 5: tells one item or series from another. It carries no meaning.",
-        "use_for": [
-          "Chart series",
-          "Tag dots and icons"
-        ],
+        "use_for": ["Chart series", "Tag dots and icons"],
         "not_for": [
           {
             "when": "Status or risk",
@@ -11296,19 +12092,14 @@
           }
         ],
         "pairs": {
-          "on": [
-            "color.surface.canvas",
-            "color.surface.default"
-          ],
+          "on": ["color.surface.canvas", "color.surface.default"],
           "contrast": 3
         }
       },
       {
         "id": "color.category.5.subtle",
         "intent": "Category 5: the fill of a tag.",
-        "use_for": [
-          "Tag and label fills"
-        ],
+        "use_for": ["Tag and label fills"],
         "not_for": [
           {
             "when": "A status badge",
@@ -11319,9 +12110,7 @@
       {
         "id": "color.disabled.text",
         "intent": "Text and icons of a control that cannot be used right now.",
-        "use_for": [
-          "Disabled labels and icons"
-        ],
+        "use_for": ["Disabled labels and icons"],
         "not_for": [
           {
             "when": "Quiet text that still works",
@@ -11329,9 +12118,7 @@
           }
         ],
         "pairs": {
-          "on": [
-            "color.disabled.surface"
-          ],
+          "on": ["color.disabled.surface"],
           "contrast": null
         },
         "exempt": "WCAG 1.4.3 does not ask for contrast on controls that cannot be used."
@@ -11339,9 +12126,7 @@
       {
         "id": "color.disabled.surface",
         "intent": "The fill of a control that cannot be used right now.",
-        "use_for": [
-          "Disabled buttons and inputs"
-        ],
+        "use_for": ["Disabled buttons and inputs"],
         "not_for": [
           {
             "when": "A quiet fill that still works",
@@ -11352,9 +12137,7 @@
       {
         "id": "color.disabled.border",
         "intent": "The edge of a control that cannot be used right now.",
-        "use_for": [
-          "Disabled inputs and checkboxes"
-        ],
+        "use_for": ["Disabled inputs and checkboxes"],
         "not_for": [
           {
             "when": "An enabled control",
@@ -11474,81 +12257,47 @@
         },
         {
           "id": "color.surface.inverse",
-          "carries": [
-            "text.primary",
-            "icon",
-            "focus"
-          ]
+          "carries": ["text.primary", "icon", "focus"]
         },
         {
           "id": "color.action.primary.@",
-          "carries": [
-            "text.primary"
-          ]
+          "carries": ["text.primary"]
         },
         {
           "id": "color.action.primary.hover",
-          "carries": [
-            "text.primary"
-          ]
+          "carries": ["text.primary"]
         },
         {
           "id": "color.action.danger.@",
-          "carries": [
-            "text.primary"
-          ]
+          "carries": ["text.primary"]
         },
         {
           "id": "color.action.danger.hover",
-          "carries": [
-            "text.primary"
-          ]
+          "carries": ["text.primary"]
         },
         {
           "id": "color.action.secondary.@",
-          "carries": [
-            "text.primary",
-            "icon"
-          ]
+          "carries": ["text.primary", "icon"]
         },
         {
           "id": "color.action.secondary.hover",
-          "carries": [
-            "text.primary",
-            "icon"
-          ]
+          "carries": ["text.primary", "icon"]
         },
         {
           "id": "color.status.info.subtle",
-          "carries": [
-            "text.primary",
-            "icon",
-            "text.info"
-          ]
+          "carries": ["text.primary", "icon", "text.info"]
         },
         {
           "id": "color.status.warning.subtle",
-          "carries": [
-            "text.primary",
-            "icon",
-            "text.warning"
-          ]
+          "carries": ["text.primary", "icon", "text.warning"]
         },
         {
           "id": "color.status.danger.subtle",
-          "carries": [
-            "text.primary",
-            "icon",
-            "text.danger"
-          ]
+          "carries": ["text.primary", "icon", "text.danger"]
         },
         {
           "id": "color.status.success.subtle",
-          "carries": [
-            "text.primary",
-            "icon",
-            "text.success"
-          ]
+          "carries": ["text.primary", "icon", "text.success"]
         }
       ]
     },
@@ -11649,14 +12398,7 @@
     ],
     "roles": {
       "description": "The families each components.roles option admits. Core is the families every system needs.",
-      "core": [
-        "action",
-        "form",
-        "feedback",
-        "overlay",
-        "layout",
-        "navigation"
-      ],
+      "core": ["action", "form", "feedback", "overlay", "layout", "navigation"],
       "core-data": [
         "action",
         "form",
@@ -11765,9 +12507,7 @@
             }
           ]
         },
-        "situations": [
-          "error-message"
-        ],
+        "situations": ["error-message"],
         "accessibility": [
           {
             "id": "role-alert",
@@ -11802,10 +12542,7 @@
             "why": "Undo after the fact, when the action can be reversed."
           }
         ],
-        "situations": [
-          "destructive-action",
-          "confirm-words"
-        ],
+        "situations": ["destructive-action", "confirm-words"],
         "accessibility": [
           {
             "id": "alertdialog-role",
@@ -11948,10 +12685,7 @@
             }
           ]
         },
-        "situations": [
-          "status-label",
-          "status-shape"
-        ],
+        "situations": ["status-label", "status-shape"],
         "accessibility": [
           {
             "id": "word",
@@ -12257,9 +12991,7 @@
             "why": "A compact row in a list."
           }
         ],
-        "situations": [
-          "card"
-        ],
+        "situations": ["card"],
         "accessibility": [
           {
             "id": "one-link",
@@ -12316,9 +13048,7 @@
             "why": "The numbers as rows; often needed beside the chart."
           }
         ],
-        "situations": [
-          "number-in-table"
-        ],
+        "situations": ["number-in-table"],
         "accessibility": [
           {
             "id": "alternative",
@@ -12585,9 +13315,7 @@
             "why": "Confirms something that cannot be undone."
           }
         ],
-        "situations": [
-          "menu-or-dialog"
-        ],
+        "situations": ["menu-or-dialog"],
         "accessibility": [
           {
             "id": "named",
@@ -12668,10 +13396,7 @@
             "why": "The same menu on right-click."
           }
         ],
-        "situations": [
-          "menu-or-dialog",
-          "row-action"
-        ],
+        "situations": ["menu-or-dialog", "row-action"],
         "accessibility": [
           {
             "id": "menu-role",
@@ -12722,9 +13447,7 @@
             }
           ]
         },
-        "situations": [
-          "empty-words"
-        ],
+        "situations": ["empty-words"],
         "source": {
           "name": "Open UX",
           "id": "empty_state",
@@ -12767,10 +13490,7 @@
             }
           ]
         },
-        "situations": [
-          "field-label",
-          "error-message"
-        ],
+        "situations": ["field-label", "error-message"],
         "accessibility": [
           {
             "id": "linked",
@@ -12795,10 +13515,7 @@
             "why": "How one control is laid out."
           }
         ],
-        "situations": [
-          "error-message",
-          "error-words"
-        ],
+        "situations": ["error-message", "error-words"],
         "accessibility": [
           {
             "id": "errors",
@@ -12849,9 +13566,7 @@
             "why": "A known list of options."
           }
         ],
-        "situations": [
-          "field-label"
-        ],
+        "situations": ["field-label"],
         "accessibility": [
           {
             "id": "label",
@@ -13030,9 +13745,7 @@
             "why": "The label laid out with hint and error."
           }
         ],
-        "situations": [
-          "field-label"
-        ],
+        "situations": ["field-label"],
         "accessibility": [
           {
             "id": "for",
@@ -13419,9 +14132,7 @@
             "why": "A container, when groups need a boundary."
           }
         ],
-        "situations": [
-          "between-sections"
-        ],
+        "situations": ["between-sections"],
         "source": {
           "name": "Open DS",
           "license": "MIT"
@@ -13444,9 +14155,7 @@
             "why": "The bottom panel for phones."
           }
         ],
-        "situations": [
-          "menu-or-dialog"
-        ],
+        "situations": ["menu-or-dialog"],
         "accessibility": [
           {
             "id": "dialog-semantics",
@@ -13679,11 +14388,7 @@
             "why": "The shape of the numbers."
           }
         ],
-        "situations": [
-          "number-in-table",
-          "table-row",
-          "selected-row"
-        ],
+        "situations": ["number-in-table", "table-row", "selected-row"],
         "accessibility": [
           {
             "id": "headers",
@@ -13746,9 +14451,7 @@
             "why": "One line."
           }
         ],
-        "situations": [
-          "field-label"
-        ],
+        "situations": ["field-label"],
         "accessibility": [
           {
             "id": "label",
@@ -13801,10 +14504,7 @@
             }
           ]
         },
-        "situations": [
-          "success-words",
-          "error-words"
-        ],
+        "situations": ["success-words", "error-words"],
         "accessibility": [
           {
             "id": "live",
@@ -13947,9 +14647,7 @@
             "why": "A richer preview."
           }
         ],
-        "situations": [
-          "icon-alone"
-        ],
+        "situations": ["icon-alone"],
         "accessibility": [
           {
             "id": "describedby",

@@ -28,14 +28,15 @@ const dist = join(here, "dist");
 const TRANSFORMS = ["attribute/cti", "name/kebab", "fontFamily/css", "cubicBezier/css", "shadow/css/shorthand"];
 
 // The shadcn mapping lives with the CLI (OD-215), so the docs show exactly what this build writes.
-import { SHADCN, SHADCN_SCALE } from "../cli/src/shadcn.mjs";
+import { SHADCN, SHADCN_SCALE, spacingUtilities } from "../cli/src/shadcn.mjs";
 export { SHADCN };
 
-export const shadcnCss = (name) =>
+export const shadcnCss = (name, scheme) =>
   [
-    `/* ${name}: shadcn/ui's radius, shadow and text scale, mapped onto the scheme's tokens. Generated. */`,
+    `/* ${name}: shadcn/ui's radius, shadow and text scale, mapped onto the scheme's tokens, and the named spacing utilities (gap-section, p-container, gap-map-x6). Generated. */`,
     "@theme inline {",
     ...Object.entries(SHADCN_SCALE).map(([k, v]) => `  ${k}: ${v};`),
+    ...(scheme ? spacingUtilities(scheme).map(([k, v]) => `  ${k}: ${v};`) : []),
     "}",
     "",
   ].join("\n");
@@ -136,7 +137,7 @@ export async function buildScheme(scheme) {
   writeFileSync(join(out, "tokens.css"), css);
   writeFileSync(join(out, "tokens.scoped.css"), scopedCss);
   writeFileSync(join(out, "theme.css"), themeCss(scheme));
-  writeFileSync(join(out, "shadcn.css"), shadcnCss(scheme.name));
+  writeFileSync(join(out, "shadcn.css"), shadcnCss(scheme.name, scheme));
   const first = scheme.themes[0];
   writeFileSync(join(out, "tokens.json"), JSON.stringify(themeTokens(scheme, first.brand, first.mode), null, 2) + "\n");
   writeFileSync(join(out, "content.json"), JSON.stringify({ content: scheme.tokens.content }, null, 2) + "\n");

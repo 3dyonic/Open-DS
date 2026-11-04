@@ -23,9 +23,9 @@ const toggleVariants = cva(
           "border border-[color:var(--toggle-outline-border)] bg-transparent shadow-[var(--toggle-outline-shadow)] hover:bg-[color:var(--toggle-outline-background-hover)] hover:text-[color:var(--toggle-outline-label-hover)]",
       },
       size: {
-        default: "h-9 min-w-9 px-2",
-        sm: "h-[var(--toggle-sm-height)] min-w-8 px-1.5",
-        lg: "h-10 min-w-10 px-2.5",
+        default: "h-9 min-w-9 px-[var(--toggle-default-padding-x)]",
+        sm: "h-[var(--toggle-sm-height)] min-w-8 px-[var(--toggle-sm-padding-x)]",
+        lg: "h-10 min-w-10 px-[var(--toggle-lg-padding-x)]",
       },
     },
     defaultVariants: {

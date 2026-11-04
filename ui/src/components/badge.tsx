@@ -11,7 +11,7 @@ import { cn } from "../lib/utils";
 
 export const badgeVariants = cva(
   [
-    "inline-flex items-center gap-[var(--badge-gap)] whitespace-nowrap rounded-[var(--badge-radius)] px-[var(--badge-padding-x)] py-0.5",
+    "inline-flex items-center gap-[var(--badge-gap)] whitespace-nowrap rounded-[var(--badge-radius)] px-[var(--badge-padding-x)] py-[var(--badge-padding-y)]",
     "text-[length:var(--badge-font-size)] [font-weight:var(--badge-font-weight)] [font-family:var(--badge-font-family)]",
     "[&_svg]:size-[1em]",
   ],

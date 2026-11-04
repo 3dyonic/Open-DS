@@ -523,6 +523,64 @@ export const CHECKS = {
     },
   },
 
+  "spacing-map-generated": {
+    requires: ["cli/src/spacing-map.mjs"],
+    run: async (c) => {
+      // OD-235: every scheme's component spacing map equals the generator's output from its rhythm
+      // and fixed steps; the rhythm names the answers it comes from. A hand-edited step fails.
+      const { steps, STEP_IDS } = await import(pathToFileURL(c.p("cli/src/spacing-map.mjs")).href);
+      const gaps = [];
+      for (const id of SCHEMES) {
+        const s = c.json("schemes", `${id}.json`);
+        const map = s.tokens.semantic["component-spacing-map"];
+        const spec = map?.$extensions?.["open-ds"];
+        if (!spec) {
+          gaps.push(`${id}: no component spacing map`);
+          continue;
+        }
+        for (const q of spec.because ?? [])
+          if (!s.answers.some((a) => `${a.question}` === q))
+            gaps.push(`${id}: the rhythm's because ${q} is not an answer`);
+        const all = flatten(themeTokens({ id, tokens: s.tokens }, Object.keys(s.tokens.brands)[0], "light"));
+        const want = steps(spec);
+        for (const st of STEP_IDS) {
+          const got = Math.round(parseFloat(String(resolve(all, `component-spacing-map.${st}`)?.value ?? "")) * 16);
+          if (got !== want[st])
+            gaps.push(`${id}: component-spacing-map.${st} is ${got}px, the rule gives ${want[st]}px`);
+        }
+      }
+      return gaps.length
+        ? bad(gaps.join("; "))
+        : ok(`the component spacing map in ${SCHEMES.length} schemes matches its rule`);
+    },
+  },
+  "spacing-on-grid": {
+    run: async (c) => {
+      // OD-235: every spacing a scheme decides is a multiple of 4px and at most 64px; the hairline (2px)
+      // is the one exception.
+      const gaps = [];
+      for (const id of SCHEMES) {
+        const s = c.json("schemes", `${id}.json`);
+        const all = flatten(themeTokens({ id, tokens: s.tokens }, Object.keys(s.tokens.brands)[0], "light"));
+        const walk = (o, path) => {
+          for (const [k, v] of Object.entries(o ?? {})) {
+            if (k.startsWith("$")) continue;
+            const p = path ? `${path}.${k}` : k;
+            if (v && typeof v === "object" && "$value" in v) {
+              if (p === "component-spacing-map.hairline") continue;
+              const px = Math.round(parseFloat(String(resolve(all, p)?.value ?? "")) * 16 * 1000) / 1000;
+              if (!(px % 4 === 0 && px <= 64)) gaps.push(`${id}: ${p} is ${px}px`);
+            } else if (v && typeof v === "object") walk(v, p);
+          }
+        };
+        walk(s.tokens.semantic.space, "space");
+        walk(s.tokens.semantic["component-spacing-map"], "component-spacing-map");
+      }
+      return gaps.length
+        ? bad(`off the 4px grid or over 64px: ${gaps.join("; ")}`)
+        : ok("every spacing in every scheme is a multiple of 4px, at most 64px (the 2px hairline aside)");
+    },
+  },
   "scales-generated": {
     requires: ["cli/src/ramps.mjs"],
     run: async (c) => {
@@ -1092,8 +1150,12 @@ export const CHECKS = {
       const { componentApi } = await import(pathToFileURL(c.p("cli/src/lands.mjs")).href);
       const scheme = c.json("schemes", "dense-data.json");
       const fixed = new Set(c.json("harness", "component-api-fixed.json").values.map((x) => x.split(" (")[0]));
-      const dir = c.p("ui/src/components");
+      // OD-235: spacing is never fixed any more; only sizes may wait on the list
       const gaps = [];
+      for (const x of fixed)
+        if (/: (p|px|py|pt|pb|pl|pr|gap|gap-x|gap-y)-/.test(x))
+          gaps.push(`${x} is a fixed spacing; it takes a step of the component spacing map`);
+      const dir = c.p("ui/src/components");
       let own = 0;
       let n = 0;
       for (const f of readdirSync(dir).filter((x) => x.endsWith(".tsx"))) {

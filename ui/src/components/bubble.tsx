@@ -44,7 +44,7 @@ function Bubble({
       <div
         data-slot="bubble-body"
         className={cn(
-          "w-fit max-w-[80%] rounded-[var(--bubble-body-radius)] px-3 py-2 text-[length:var(--bubble-body-font-size)]/[var(--bubble-body-line-height)] leading-normal",
+          "w-fit max-w-[80%] rounded-[var(--bubble-body-radius)] px-[var(--bubble-body-padding-x)] py-[var(--bubble-body-padding-y)] text-[length:var(--bubble-body-font-size)]/[var(--bubble-body-line-height)] leading-normal",
           SIDE[from],
         )}
       >

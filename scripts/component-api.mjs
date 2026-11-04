@@ -5,6 +5,7 @@
 // every scheme. Run once per change of the rules: node scripts/component-api.mjs [--dry]
 import { readFileSync, readdirSync, writeFileSync } from "node:fs";
 import { SHADCN, SHADCN_SCALE } from "../cli/src/shadcn.mjs";
+import { stepFor } from "../cli/src/spacing-map.mjs";
 
 const ROOT = new URL("..", import.meta.url).pathname;
 const UI = `${ROOT}ui/src/components/`;
@@ -58,6 +59,9 @@ const nearest = (want, kinds) => {
     .map((p) => ({ p, v: rem(valueOf(p)) }));
   const same = all.find((x) => Math.abs(x.v - want) < 1e-6);
   if (same) return { sem: same.p, moved: false };
+  // OD-235: no semantic of the same value → the step of the component spacing map
+  if (want > 0)
+    return { sem: `component-spacing-map.${stepFor(want * 16)}`, moved: false };
   const best = all.sort(
     (a, b) => Math.abs(a.v - want) - Math.abs(b.v - want),
   )[0];

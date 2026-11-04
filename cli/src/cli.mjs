@@ -50,6 +50,8 @@ const HELP = `open-ds: deploy an Open DS scheme as a full design system.
                                        plan a change: what it reopens, or the contrast it keeps; changes nothing
   open-ds scales <scheme> [--brand <b>] [--mode light|dark] [--hue <h>]
                                        which tokens land on each color step, by lane
+  open-ds spacing <scheme>             the spacing roles and the component spacing map,
+                                       with the rule (also: component-spacing-map)
   open-ds token <scheme> <words>       the tokens and component keys that fit an intent
   open-ds fit <words>                  rank the schemes against a product description
   open-ds create <dir> --scheme <id> [--brand <id>]
@@ -63,7 +65,7 @@ const HELP = `open-ds: deploy an Open DS scheme as a full design system.
                                        the Open DS MCP server: stdio for a local agent, or
                                        Streamable HTTP at /mcp (read-only, no authentication yet)
 
-Add --json to list, show, why, when, context, component, scales, check, copy, change, token and fit for machine-readable output.`;
+Add --json to list, show, why, when, context, component, scales, spacing, check, copy, change, token and fit for machine-readable output.`;
 
 function flag(args, name, fallback) {
   const i = args.indexOf(name);
@@ -381,6 +383,22 @@ export async function run(argv) {
           `${rule.title}\n  Use: ${rule.use}\n  Not: ${rule.not}\n  Why: ${rule.why}`,
         ),
       );
+      return 0;
+    }
+    // The spacing a scheme decides (OD-235): its roles and its component spacing map, with the rule.
+    if (cmd === "component-spacing-map" || cmd === "spacing") {
+      const { spacingGuide, spacingText } = await import("./spacing-map.mjs");
+      const { tokenIndex, aliasChain } = await import("./lands.mjs");
+      const s = loadScheme(args[0] ?? "");
+      const data = {
+        scheme: s.id,
+        ...spacingGuide(s, {
+          index: tokenIndex(s),
+          chain: aliasChain,
+          hints: grammar().scopes.find((x) => x.id === "spacing")?.hints ?? [],
+        }),
+      };
+      out(data, () => console.log(spacingText(data)));
       return 0;
     }
     // Which tokens land on each color step (OD-223), the map the docs and Storybook draw.

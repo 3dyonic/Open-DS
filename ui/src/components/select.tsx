@@ -46,7 +46,7 @@ export function SelectContent({
         data-slot="select-content"
         position={position}
         className={cn(
-          "z-50 min-w-[8rem] overflow-hidden p-1 rounded-[var(--overlay-radius)] bg-[var(--overlay-background)] text-[var(--select-content-label)]",
+          "z-50 min-w-[8rem] overflow-hidden p-[var(--select-content-padding)] rounded-[var(--overlay-radius)] bg-[var(--overlay-background)] text-[var(--select-content-label)]",
           "[box-shadow:var(--overlay-shadow)] border-[length:var(--select-content-border-width)] border-[var(--select-content-border)]",
           position === "popper" && "w-[var(--radix-select-trigger-width)] translate-y-1",
           className,
@@ -64,7 +64,7 @@ export function SelectItem({ className, children, ...props }: React.ComponentPro
     <SelectPrimitive.Item
       data-slot="select-item"
       className={cn(
-        "relative flex w-full cursor-default select-none items-center gap-[var(--select-item-gap)] pl-[var(--select-item-padding-left)] pr-8 min-h-[var(--overlay-item-height)] rounded-[var(--select-item-radius)]",
+        "relative flex w-full cursor-default select-none items-center gap-[var(--select-item-gap)] pl-[var(--select-item-padding-left)] pr-[var(--select-item-padding-right)] min-h-[var(--overlay-item-height)] rounded-[var(--select-item-radius)]",
         "text-[length:var(--select-item-font-size)] outline-none focus:bg-[var(--select-item-sunken)] data-[disabled]:opacity-[var(--select-item-disabled)]",
         className,
       )}
