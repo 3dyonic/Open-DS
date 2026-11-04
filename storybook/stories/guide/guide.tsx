@@ -899,7 +899,13 @@ function ColourScales({ s, brand, mode }: { s: Any; brand: string; mode: "light"
                 key={st}
                 className={`sc-st${on}`}
                 {...ev}
-                style={{ background: v, color: scLum(v) > 0.18 ? "#161B23" : "#FFFFFF" }}
+                style={{
+                  background: v,
+                  color:
+                    scContrast(surf(tab, "color.text.on-light"), v) >= scContrast(surf(tab, "color.text.on-dark"), v)
+                      ? surf(tab, "color.text.on-light")
+                      : surf(tab, "color.text.on-dark"),
+                }}
               >
                 <span className="sc-n">{st}</span>
                 <span className="sc-x">{v}</span>
@@ -976,7 +982,7 @@ function ColourScales({ s, brand, mode }: { s: Any; brand: string; mode: "light"
 }
 
 export function Primitives({ kind }: { kind: string }) {
-  const { scheme: s, key } = useGuideData();
+  const { scheme: s, brand, mode } = useGuideData();
   const used = primitiveUse(s);
   const k = PRIMITIVE_KINDS.find((x) => x.id === kind) ?? PRIMITIVE_KINDS[0];
   const every = primitiveLeaves(s.tokens.primitive);
@@ -1018,13 +1024,7 @@ export function Primitives({ kind }: { kind: string }) {
         <b>{all.length}</b> primitives. <b>{nUsed}</b> are used. <b>{all.length - nUsed}</b> are not used yet: they
         stay, so a brand or a changed answer can use them without adding a value. Hover one to see what points to it.
       </p>
-      {kind === "color" && (
-        <ColourScales
-          s={s}
-          brand={key.split("|")[1] || Object.keys(s.tokens.brands)[0]}
-          mode={key.split("|")[2] === "dark" ? "dark" : "light"}
-        />
-      )}
+      {kind === "color" && <ColourScales s={s} brand={brand} mode={mode} />}
       {kind === "color" && <h2>Every colour</h2>}
       {families.map((f) => {
         const list = all.filter((x) => family(x.path) === f);
