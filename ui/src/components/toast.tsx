@@ -17,16 +17,16 @@ import { cn } from "../lib/utils";
 
 export const toastVariants = cva(
   [
-    "pointer-events-auto flex w-full max-w-sm items-start gap-[var(--space-gap-default)] p-[var(--space-inset-container)]",
-    "rounded-[var(--overlay-radius)] bg-[var(--overlay-background)] text-[var(--color-text-primary)] [box-shadow:var(--overlay-shadow)]",
-    "border-[length:var(--border-width-default)] border-l-4",
+    "pointer-events-auto flex w-full max-w-sm items-start gap-[var(--toast-gap)] p-[var(--toast-padding)]",
+    "rounded-[var(--overlay-radius)] bg-[var(--overlay-background)] text-[var(--toast-label)] [box-shadow:var(--overlay-shadow)]",
+    "border-[length:var(--toast-border-width)] border-l-4",
   ],
   {
     variants: {
       tone: {
-        neutral: "border-[var(--color-border-default)]",
-        success: "border-[var(--color-border-default)] border-l-[var(--color-status-success)]",
-        danger: "border-[var(--color-border-default)] border-l-[var(--color-status-danger)]",
+        neutral: "border-[var(--toast-neutral-border)]",
+        success: "border-[var(--toast-success-border)] border-l-[var(--toast-success-border-2)]",
+        danger: "border-[var(--toast-danger-border)] border-l-[var(--toast-danger-border-2)]",
       },
     },
     defaultVariants: { tone: "neutral" },
@@ -50,12 +50,10 @@ export function Toast({ className, tone, title, description, live = true, childr
       className={cn(toastVariants({ tone }), className)}
       {...props}
     >
-      <div className="flex flex-1 flex-col gap-1">
-        <p className="[font-weight:var(--type-label-font-weight)] text-[length:var(--type-body-font-size)]">{title}</p>
+      <div className="flex flex-1 flex-col gap-[var(--toast-gap-2)]">
+        <p className="[font-weight:var(--toast-font-weight)] text-[length:var(--toast-font-size)]">{title}</p>
         {description ? (
-          <p className="text-[var(--color-text-secondary)] text-[length:var(--type-caption-font-size)]">
-            {description}
-          </p>
+          <p className="text-[var(--toast-label-2)] text-[length:var(--toast-font-size-2)]">{description}</p>
         ) : null}
       </div>
       {children}

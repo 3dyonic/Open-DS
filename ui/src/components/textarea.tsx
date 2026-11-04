@@ -14,7 +14,7 @@ function Textarea({ className, ...props }: React.ComponentProps<"textarea">) {
     <textarea
       data-slot="textarea"
       className={cn(
-        "flex field-sizing-content min-h-16 w-full rounded-md border border-input bg-transparent px-3 py-2 text-base shadow-xs transition-[color,box-shadow] outline-none placeholder:text-muted-foreground focus-visible:border-ring disabled:cursor-not-allowed disabled:opacity-50 aria-invalid:border-destructive aria-invalid:ring-destructive/20 md:text-sm focus-visible:ring-[length:var(--border-width-focus)] focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:ring-offset-background",
+        "flex field-sizing-content min-h-16 w-full rounded-[var(--textarea-radius)] border border-[color:var(--textarea-border)] bg-transparent px-[var(--textarea-padding-x)] py-2 text-[length:var(--textarea-font-size)]/[var(--textarea-line-height)] shadow-[var(--textarea-shadow)] transition-[color,box-shadow] outline-none placeholder:text-[color:var(--textarea-label-placeholder)] focus-visible:border-[color:var(--textarea-border-focus)] disabled:cursor-not-allowed disabled:opacity-[var(--textarea-disabled-opacity-disabled)] aria-invalid:border-[color:var(--textarea-border-invalid)] aria-invalid:ring-[color:var(--textarea-focus-ring-invalid)]/20 md:text-[length:var(--textarea-font-size)]/[var(--textarea-line-height)] focus-visible:ring-[length:var(--textarea-focus)] focus-visible:ring-[color:var(--textarea-focus-ring-focus)] focus-visible:ring-offset-2 focus-visible:ring-offset-[color:var(--textarea-focus-ring-offset-focus)]",
         className,
       )}
       {...props}

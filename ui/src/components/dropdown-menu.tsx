@@ -23,8 +23,8 @@ export function DropdownMenuContent({
         data-slot="dropdown-menu-content"
         sideOffset={sideOffset}
         className={cn(
-          "z-50 min-w-[10rem] p-1 rounded-[var(--overlay-radius)] bg-[var(--overlay-background)] text-[var(--color-text-primary)]",
-          "[box-shadow:var(--overlay-shadow)] border-[length:var(--border-width-default)] border-[var(--color-border-default)]",
+          "z-50 min-w-[10rem] p-1 rounded-[var(--overlay-radius)] bg-[var(--overlay-background)] text-[var(--dropdown-menu-content-label)]",
+          "[box-shadow:var(--overlay-shadow)] border-[length:var(--dropdown-menu-content-border-width)] border-[var(--dropdown-menu-content-border)]",
           className,
         )}
         {...props}
@@ -42,10 +42,10 @@ export function DropdownMenuItem({
     <MenuPrimitive.Item
       data-slot="dropdown-menu-item"
       className={cn(
-        "flex cursor-default select-none items-center gap-2 px-[var(--space-inset-cell-x)] min-h-[var(--overlay-item-height)] rounded-[var(--radius-badge)]",
-        "text-[length:var(--type-body-font-size)] outline-none focus:bg-[var(--color-surface-sunken)] data-[disabled]:opacity-[var(--opacity-disabled)]",
-        "[&_svg]:size-[var(--size-icon)]",
-        tone === "danger" && "text-[var(--color-status-danger)]",
+        "flex cursor-default select-none items-center gap-[var(--dropdown-menu-item-gap)] px-[var(--dropdown-menu-item-padding-x)] min-h-[var(--overlay-item-height)] rounded-[var(--dropdown-menu-item-radius)]",
+        "text-[length:var(--dropdown-menu-item-font-size)] outline-none focus:bg-[var(--dropdown-menu-item-sunken)] data-[disabled]:opacity-[var(--dropdown-menu-item-disabled)]",
+        "[&_svg]:size-[var(--dropdown-menu-item-icon)]",
+        tone === "danger" && "text-[var(--dropdown-menu-label)]",
         className,
       )}
       {...props}
@@ -54,5 +54,7 @@ export function DropdownMenuItem({
 }
 
 export function DropdownMenuSeparator({ className, ...props }: React.ComponentProps<typeof MenuPrimitive.Separator>) {
-  return <MenuPrimitive.Separator className={cn("my-1 h-px bg-[var(--color-border-default)]", className)} {...props} />;
+  return (
+    <MenuPrimitive.Separator className={cn("my-1 h-px bg-[var(--dropdown-menu-background)]", className)} {...props} />
+  );
 }

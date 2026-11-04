@@ -29,7 +29,7 @@ function MessageScroller({ className, children, ...props }: React.ComponentProps
       tabIndex={0}
       data-slot="message-scroller"
       className={cn(
-        "flex max-h-80 flex-col gap-4 overflow-y-auto rounded-md outline-none focus-visible:ring-[length:var(--border-width-focus)] focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:ring-offset-background",
+        "flex max-h-80 flex-col gap-[var(--message-scroller-gap)] overflow-y-auto rounded-[var(--message-scroller-radius)] outline-none focus-visible:ring-[length:var(--message-scroller-focus)] focus-visible:ring-[color:var(--message-scroller-focus-ring-focus)] focus-visible:ring-offset-2 focus-visible:ring-offset-[color:var(--message-scroller-focus-ring-offset-focus)]",
         className,
       )}
       {...props}

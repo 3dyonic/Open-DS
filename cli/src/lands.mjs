@@ -49,12 +49,14 @@ export function directReads(src, index) {
     const p = index.byCss.get(m[1]);
     if (p) start.add(p);
   }
-  for (const m of src.matchAll(UTIL)) {
+  // utilities, read with every var(--…) taken out so a variable's own name never counts as a class
+  const plain = src.replace(/var\(--[a-z0-9-]+\)/g, "");
+  for (const m of plain.matchAll(UTIL)) {
     const css = SHADCN[m[1]];
     const p = css && index.byCss.get(css);
     if (p) start.add(p);
   }
-  for (const m of src.matchAll(SCALE)) {
+  for (const m of plain.matchAll(SCALE)) {
     const v = SHADCN_SCALE[`--${m[1] === "rounded" ? "radius" : m[1]}-${m[2]}`];
     const css = v && v.match(/var\(--([a-z0-9-]+)\)/)?.[1];
     const p = css && index.byCss.get(css);
@@ -152,4 +154,49 @@ export function aliasChain(index, path) {
     p = r;
   }
   return { hops, value: null, end: p };
+}
+
+/**
+ * A component's token API (OD-234), for agents (get_component, get_context, open-ds component): every
+ * token its code reads, the semantic each aliases, its CSS variable, and the primitive and value it ends
+ * at in every theme, with whether it changes with the theme. The same data the docs' "Tokens it reads"
+ * table shows.
+ */
+export function componentApi(scheme, comp, roots) {
+  const file = join(roots.ui, "components", `${comp}.tsx`);
+  if (!existsSync(file)) return [];
+  const src = readFileSync(file, "utf8");
+  const all = tokenIndex(scheme);
+  const brands = Object.keys(scheme.tokens.brands);
+  const themes = (scheme.themes ?? []).map((t) => ({
+    id: t.id,
+    ix: tokenIndex(scheme, {
+      brand: t.brand ?? brands[0],
+      mode: t.mode ?? t.id,
+    }),
+  }));
+  return [...directReads(src, all)]
+    .sort(
+      (a, b) =>
+        Number(!a.startsWith("component.")) -
+          Number(!b.startsWith("component.")) || a.localeCompare(b),
+    )
+    .map((p) => {
+      const values = Object.fromEntries(
+        themes.map((t) => {
+          const ch = aliasChain(t.ix, p);
+          return [t.id, { primitive: ch.end, value: ch.value }];
+        }),
+      );
+      const first = themes[0] && aliasChain(themes[0].ix, p).hops[0];
+      const vs = Object.values(values).map((v) => JSON.stringify(v.value));
+      return {
+        token: p.replace(/\.@$/, ""),
+        own: p.startsWith("component."),
+        aliases: first ? first.replace(/\.@$/, "") : null,
+        css: `--${cssName(p.replace(/^component\./, ""))}`,
+        changes_with_theme: new Set(vs).size > 1,
+        values,
+      };
+    });
 }

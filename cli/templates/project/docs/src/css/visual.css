@@ -1777,3 +1777,165 @@ tr.odv-for td {
   color: inherit;
   border: 0;
 }
+.odv-chain .tok.own {
+  background: var(--color-surface-sunken);
+  color: var(--color-text-primary);
+}
+.odv-css {
+  color: var(--color-text-muted);
+}
+.odv-css code {
+  font-size: 11px;
+}
+.odv-vpair {
+  display: grid;
+  gap: 0;
+}
+.odv-vpair > span + span {
+  border-top: 1px solid color-mix(in srgb, var(--color-text-muted) 22%, transparent);
+  margin-top: 6px;
+  padding-top: 6px;
+}
+.odv-vpair > span {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+}
+.odv-vpair em {
+  font: 500 10px var(--type-data-font-family);
+  font-style: normal;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: var(--color-text-muted);
+  width: 3.6em;
+  white-space: nowrap;
+  flex: none;
+}
+.odv-api-tok {
+  display: grid;
+  gap: 2px;
+  justify-items: start;
+}
+.odv-api-tok .tok {
+  font: 12px var(--type-data-font-family);
+  padding: 2px 6px;
+  border-radius: 4px;
+  background: var(--color-surface-selected);
+  color: var(--color-text-link);
+}
+.odv-api-tok .tok.own {
+  font-weight: 600;
+  background: var(--color-surface-sunken);
+  color: var(--color-text-primary);
+}
+/* the token's branches: a soft tree line from the token to its alias and its CSS variable */
+.odv-branch {
+  position: relative;
+  display: flex;
+  gap: 6px;
+  align-items: center;
+  margin-left: 8px;
+  padding: 2px 0 2px 16px;
+  font-size: 12px;
+}
+.odv-branch::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  border-left: 1px solid color-mix(in srgb, var(--color-text-muted) 35%, transparent);
+}
+.odv-branch-last::before {
+  bottom: 50%;
+}
+.odv-branch::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 50%;
+  width: 10px;
+  border-top: 1px solid color-mix(in srgb, var(--color-text-muted) 35%, transparent);
+}
+.odv-branch small {
+  color: var(--color-text-muted);
+  font-size: 11px;
+}
+.odv-branch code {
+  font-size: 11px;
+}
+.odv-themed {
+  display: inline-block;
+  margin-top: 4px;
+  padding: 0 6px;
+  border-radius: 999px;
+  font: 500 10px var(--type-data-font-family);
+  letter-spacing: 0.04em;
+  color: var(--color-text-muted);
+  box-shadow: inset 0 0 0 1px color-mix(in srgb, var(--color-text-muted) 30%, transparent);
+  cursor: help;
+}
+.odv-api .odv-ptok {
+  font: 12px var(--type-data-font-family);
+  padding: 1px 6px;
+  border-radius: 4px;
+  background: var(--color-surface-sunken);
+  color: var(--color-text-primary);
+}
+.odv-api .odv-kvsep {
+  margin: 0 8px 0 2px;
+  color: var(--color-text-muted);
+}
+.odv-api .odv-raw {
+  font: 13px var(--type-body-font-family);
+  color: var(--color-text-secondary);
+}
+.odv-api .odv-api-tok .tok,
+.odv-api .odv-branch code,
+.odv-api .odv-ptok {
+  white-space: nowrap;
+}
+.odv-api td:nth-child(2) {
+  min-width: 0;
+}
+.odv-api .odv-vpair em {
+  width: 3em;
+}
+.odv-api td:first-child {
+  width: 11em;
+}
+.odv-api .odv-tsw,
+.odv-api .odv-tsw small {
+  flex-wrap: wrap;
+  white-space: normal;
+}
+.odv-api .odv-ptok {
+  font-size: 11px;
+}
+.odv-api td:nth-child(3) {
+  min-width: 15em;
+}
+.odv-api td:nth-child(3) {
+  min-width: 14em;
+}
+.odv-api .odv-vpair em {
+  width: 2.8em;
+}
+.odv-tlegend {
+  display: flex;
+  gap: 10px;
+  align-items: baseline;
+  margin: 0 0 12px;
+  padding: 10px 12px;
+  border-radius: var(--radius-container);
+  background: var(--color-surface-default);
+}
+.odv-tlegend .odv-themed {
+  margin: 0;
+  flex: none;
+}
+.odv-tlegend p {
+  margin: 0;
+  font-size: var(--type-caption-font-size);
+  color: var(--color-text-secondary);
+}

@@ -37,7 +37,10 @@ function NavigationMenuList({ className, ...props }: React.ComponentProps<typeof
   return (
     <NavigationMenuPrimitive.List
       data-slot="navigation-menu-list"
-      className={cn("group flex flex-1 list-none items-center justify-center gap-1", className)}
+      className={cn(
+        "group flex flex-1 list-none items-center justify-center gap-[var(--navigation-menu-list-gap)]",
+        className,
+      )}
       {...props}
     />
   );
@@ -50,7 +53,7 @@ function NavigationMenuItem({ className, ...props }: React.ComponentProps<typeof
 }
 
 const navigationMenuTriggerStyle = cva(
-  "group inline-flex h-9 w-max items-center justify-center rounded-md bg-background px-4 py-2 text-sm font-medium transition-[color,box-shadow] outline-none hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground disabled:pointer-events-none disabled:opacity-50 data-[state=open]:bg-accent/50 data-[state=open]:text-accent-foreground data-[state=open]:hover:bg-accent data-[state=open]:focus:bg-accent focus-visible:ring-[length:var(--border-width-focus)] focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:ring-offset-background",
+  "group inline-flex h-9 w-max items-center justify-center rounded-[var(--navigation-menu-radius)] bg-[color:var(--navigation-menu-background)] px-[var(--navigation-menu-padding-x)] py-2 text-[length:var(--navigation-menu-font-size)]/[var(--navigation-menu-line-height)] [font-weight:var(--navigation-menu-font-weight)] transition-[color,box-shadow] outline-none hover:bg-[color:var(--navigation-menu-background-hover)] hover:text-[color:var(--navigation-menu-label-hover)] focus:bg-[color:var(--navigation-menu-background-focus)] focus:text-[color:var(--navigation-menu-label-focus)] disabled:pointer-events-none disabled:opacity-[var(--navigation-menu-disabled-opacity-disabled)] data-[state=open]:bg-[color:var(--navigation-menu-background-open)]/50 data-[state=open]:text-[color:var(--navigation-menu-label-open)] data-[state=open]:hover:bg-[color:var(--navigation-menu-background-open-hover)] data-[state=open]:focus:bg-[color:var(--navigation-menu-background-open-focus)] focus-visible:ring-[length:var(--navigation-menu-focus)] focus-visible:ring-[color:var(--navigation-menu-focus-ring-focus)] focus-visible:ring-offset-2 focus-visible:ring-offset-[color:var(--navigation-menu-focus-ring-offset-focus)]",
 );
 
 function NavigationMenuTrigger({
@@ -66,7 +69,7 @@ function NavigationMenuTrigger({
     >
       {children}{" "}
       <ChevronDownIcon
-        className="relative top-[1px] ml-1 size-3 transition duration-300 group-data-[state=open]:rotate-180"
+        className="relative top-[1px] ml-1 size-3 transition duration-[var(--navigation-menu-duration)] group-data-[state=open]:rotate-180"
         aria-hidden="true"
       />
     </NavigationMenuPrimitive.Trigger>
@@ -79,7 +82,7 @@ function NavigationMenuContent({ className, ...props }: React.ComponentProps<typ
       data-slot="navigation-menu-content"
       className={cn(
         "top-0 left-0 w-full p-2 pr-2.5 data-[motion=from-end]:slide-in-from-right-52 data-[motion=from-start]:slide-in-from-left-52 data-[motion=to-end]:slide-out-to-right-52 data-[motion=to-start]:slide-out-to-left-52 data-[motion^=from-]:animate-in data-[motion^=from-]:fade-in data-[motion^=to-]:animate-out data-[motion^=to-]:fade-out md:absolute md:w-auto duration-[var(--transition-panels-duration)]",
-        "group-data-[viewport=false]/navigation-menu:top-full group-data-[viewport=false]/navigation-menu:mt-1.5 group-data-[viewport=false]/navigation-menu:overflow-hidden group-data-[viewport=false]/navigation-menu:rounded-md group-data-[viewport=false]/navigation-menu:border group-data-[viewport=false]/navigation-menu:bg-popover group-data-[viewport=false]/navigation-menu:text-popover-foreground group-data-[viewport=false]/navigation-menu:shadow group-data-[viewport=false]/navigation-menu: **:data-[slot=navigation-menu-link]:focus:ring-0 **:data-[slot=navigation-menu-link]:focus:outline-none group-data-[viewport=false]/navigation-menu:data-[state=closed]:animate-out group-data-[viewport=false]/navigation-menu:data-[state=closed]:fade-out-0 group-data-[viewport=false]/navigation-menu:data-[state=closed]:zoom-out-95 group-data-[viewport=false]/navigation-menu:data-[state=open]:animate-in group-data-[viewport=false]/navigation-menu:data-[state=open]:fade-in-0 group-data-[viewport=false]/navigation-menu:data-[state=open]:zoom-in-95 duration-[var(--transition-panels-duration)]",
+        "group-data-[viewport=false]/navigation-menu:top-full group-data-[viewport=false]/navigation-menu:mt-1.5 group-data-[viewport=false]/navigation-menu:overflow-hidden group-data-[viewport=false]/navigation-menu:rounded-[var(--navigation-menu-radius)] group-data-[viewport=false]/navigation-menu:border group-data-[viewport=false]/navigation-menu:bg-[color:var(--navigation-menu-background-2)] group-data-[viewport=false]/navigation-menu:text-[color:var(--navigation-menu-label)] group-data-[viewport=false]/navigation-menu:shadow-[var(--navigation-menu-shadow)] group-data-[viewport=false]/navigation-menu: **:data-[slot=navigation-menu-link]:focus:ring-0 **:data-[slot=navigation-menu-link]:focus:outline-none group-data-[viewport=false]/navigation-menu:data-[state=closed]:animate-out group-data-[viewport=false]/navigation-menu:data-[state=closed]:fade-out-0 group-data-[viewport=false]/navigation-menu:data-[state=closed]:zoom-out-95 group-data-[viewport=false]/navigation-menu:data-[state=open]:animate-in group-data-[viewport=false]/navigation-menu:data-[state=open]:fade-in-0 group-data-[viewport=false]/navigation-menu:data-[state=open]:zoom-in-95 duration-[var(--transition-panels-duration)]",
         className,
       )}
       {...props}
@@ -96,7 +99,7 @@ function NavigationMenuViewport({
       <NavigationMenuPrimitive.Viewport
         data-slot="navigation-menu-viewport"
         className={cn(
-          "origin-top-center relative mt-1.5 h-[var(--radix-navigation-menu-viewport-height)] w-full overflow-hidden rounded-md border bg-popover text-popover-foreground shadow data-[state=closed]:animate-out data-[state=closed]:zoom-out-95 data-[state=open]:animate-in data-[state=open]:zoom-in-90 md:w-[var(--radix-navigation-menu-viewport-width)] duration-[var(--transition-panels-duration)]",
+          "origin-top-center relative mt-1.5 h-[var(--radix-navigation-menu-viewport-height)] w-full overflow-hidden rounded-[var(--navigation-menu-viewport-radius)] border bg-[color:var(--navigation-menu-viewport-background)] text-[color:var(--navigation-menu-viewport-label)] shadow-[var(--navigation-menu-viewport-shadow)] data-[state=closed]:animate-out data-[state=closed]:zoom-out-95 data-[state=open]:animate-in data-[state=open]:zoom-in-90 md:w-[var(--radix-navigation-menu-viewport-width)] duration-[var(--transition-panels-duration)]",
           className,
         )}
         {...props}
@@ -110,7 +113,7 @@ function NavigationMenuLink({ className, ...props }: React.ComponentProps<typeof
     <NavigationMenuPrimitive.Link
       data-slot="navigation-menu-link"
       className={cn(
-        "flex flex-col gap-1 rounded-sm p-2 text-sm transition-all outline-none hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground data-[active=true]:bg-accent/50 data-[active=true]:shadow-[inset_var(--border-width-focus)_0_0_0_var(--color-border-selected)] data-[active=true]:text-accent-foreground data-[active=true]:hover:bg-accent data-[active=true]:focus:bg-accent [&_svg:not([class*='size-'])]:size-4 [&_svg:not([class*='text-'])]:text-muted-foreground focus-visible:ring-[length:var(--border-width-focus)] focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:ring-offset-background",
+        "flex flex-col gap-[var(--navigation-menu-link-gap)] rounded-[var(--navigation-menu-link-radius)] p-2 text-[length:var(--navigation-menu-link-font-size)]/[var(--navigation-menu-link-line-height)] transition-all outline-none hover:bg-[color:var(--navigation-menu-link-background-hover)] hover:text-[color:var(--navigation-menu-link-label-hover)] focus:bg-[color:var(--navigation-menu-link-background-focus)] focus:text-[color:var(--navigation-menu-link-label-focus)] data-[active=true]:bg-[color:var(--navigation-menu-link-background)]/50 data-[active=true]:shadow-[inset_var(--navigation-menu-link-focus)_0_0_0_var(--navigation-menu-link-selected)] data-[active=true]:text-[color:var(--navigation-menu-link-label)] data-[active=true]:hover:bg-[color:var(--navigation-menu-link-background-hover)] data-[active=true]:focus:bg-[color:var(--navigation-menu-link-background-focus)] [&_svg:not([class*='size-'])]:size-[var(--navigation-menu-link-icon-size)] [&_svg:not([class*='text-'])]:text-[color:var(--navigation-menu-link-label-2)] focus-visible:ring-[length:var(--navigation-menu-link-focus)] focus-visible:ring-[color:var(--navigation-menu-link-focus-ring-focus)] focus-visible:ring-offset-2 focus-visible:ring-offset-[color:var(--navigation-menu-link-focus-ring-offset-focus)]",
         className,
       )}
       {...props}
@@ -131,7 +134,7 @@ function NavigationMenuIndicator({
       )}
       {...props}
     >
-      <div className="relative top-[60%] h-2 w-2 rotate-45 rounded-tl-sm bg-border shadow-md" />
+      <div className="relative top-[60%] h-2 w-2 rotate-45 rounded-tl-sm bg-[color:var(--navigation-menu-background-3)] shadow-[var(--navigation-menu-shadow-2)]" />
     </NavigationMenuPrimitive.Indicator>
   );
 }

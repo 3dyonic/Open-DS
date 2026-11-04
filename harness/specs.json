@@ -495,6 +495,17 @@
         "Foundations pages no longer list where a scope lands or the component keys"
       ],
       "checks": ["lands-in-traced", "scopes-uniform-template", "docs-sections", "docs-build"]
+    },
+    {
+      "id": "OD-234",
+      "title": "Every component has its own token API",
+      "in": [
+        "every component reads its own tokens (component.<id>.<part>.<name>), each aliasing a semantic; no class reads a system token or a fixed spacing or size directly",
+        "a fixed value with no semantic of the same value stays fixed and is listed for a new semantic, never moved to the nearest one",
+        "get_component, get_context and open-ds component give agents the whole API: each token, its semantic, its primitive and value per theme, and whether a theme changes it",
+        "the component docs page lists the tokens by part, as a tree from its token to the semantic and the CSS variable, with the primitive and value in light and dark"
+      ],
+      "checks": ["components-own-api", "components-reference", "context-booklets", "lands-in-traced", "docs-build"]
     }
   ]
 }

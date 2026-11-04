@@ -29,17 +29,20 @@ function Attachment({
       data-slot="attachment"
       aria-label={`${name}, ${type}, ${size}`}
       className={cn(
-        "flex w-fit max-w-full items-center gap-3 rounded-md border bg-background px-3 py-2 text-sm outline-none hover:bg-accent focus-visible:ring-[length:var(--border-width-focus)] focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:ring-offset-background",
+        "flex w-fit max-w-full items-center gap-3 rounded-[var(--attachment-radius)] border bg-[color:var(--attachment-background)] px-3 py-2 text-[length:var(--attachment-font-size)]/[var(--attachment-line-height)] outline-none hover:bg-[color:var(--attachment-background-hover)] focus-visible:ring-[length:var(--attachment-focus)] focus-visible:ring-[color:var(--attachment-focus-ring-focus)] focus-visible:ring-offset-2 focus-visible:ring-offset-[color:var(--attachment-focus-ring-offset-focus)]",
         className,
       )}
       {...props}
     >
-      <span className="flex size-8 shrink-0 items-center justify-center rounded-sm bg-muted" aria-hidden>
-        <FileTextIcon className="size-4 text-muted-foreground" />
+      <span
+        className="flex size-[var(--attachment-size)] shrink-0 items-center justify-center rounded-[var(--attachment-radius-2)] bg-[color:var(--attachment-background-2)]"
+        aria-hidden
+      >
+        <FileTextIcon className="size-[var(--attachment-icon-size)] text-[color:var(--attachment-label)]" />
       </span>
       <span className="flex min-w-0 flex-col">
-        <span className="truncate font-medium">{name}</span>
-        <span className="text-xs text-muted-foreground">
+        <span className="truncate [font-weight:var(--attachment-font-weight)]">{name}</span>
+        <span className="text-[length:var(--attachment-font-size-2)]/[var(--attachment-line-height-2)] text-[color:var(--attachment-label)]">
           {type} · {size}
         </span>
       </span>

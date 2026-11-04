@@ -82,7 +82,7 @@ function FormItem({ className, ...props }: React.ComponentProps<"div">) {
 
   return (
     <FormItemContext.Provider value={{ id }}>
-      <div data-slot="form-item" className={cn("grid gap-2", className)} {...props} />
+      <div data-slot="form-item" className={cn("grid gap-[var(--form-item-gap)]", className)} {...props} />
     </FormItemContext.Provider>
   );
 }
@@ -94,7 +94,7 @@ function FormLabel({ className, ...props }: React.ComponentProps<typeof LabelPri
     <Label
       data-slot="form-label"
       data-error={!!error}
-      className={cn("data-[error=true]:text-destructive", className)}
+      className={cn("data-[error=true]:text-[color:var(--form-label-label)]", className)}
       htmlFor={formItemId}
       {...props}
     />
@@ -122,7 +122,10 @@ function FormDescription({ className, ...props }: React.ComponentProps<"p">) {
     <p
       data-slot="form-description"
       id={formDescriptionId}
-      className={cn("text-sm text-muted-foreground", className)}
+      className={cn(
+        "text-[length:var(--form-description-font-size)]/[var(--form-description-line-height)] text-[color:var(--form-description-label)]",
+        className,
+      )}
       {...props}
     />
   );
@@ -137,7 +140,15 @@ function FormMessage({ className, ...props }: React.ComponentProps<"p">) {
   }
 
   return (
-    <p data-slot="form-message" id={formMessageId} className={cn("text-sm text-destructive", className)} {...props}>
+    <p
+      data-slot="form-message"
+      id={formMessageId}
+      className={cn(
+        "text-[length:var(--form-message-font-size)]/[var(--form-message-line-height)] text-[color:var(--form-message-label)]",
+        className,
+      )}
+      {...props}
+    >
       {body}
     </p>
   );

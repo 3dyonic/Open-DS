@@ -129,7 +129,7 @@ export function DataTableSortHeader({
     <button
       type="button"
       onClick={onSort}
-      className="inline-flex items-center gap-1 font-[inherit] hover:text-foreground"
+      className="inline-flex items-center gap-[var(--data-table-gap)] font-[inherit] hover:text-[color:var(--data-table-label-hover)]"
     >
       {label}
       <Icon className="size-3.5" aria-hidden />
@@ -168,10 +168,10 @@ function FacetFilter<TData>({
             .sort(([a], [b]) => String(a).localeCompare(String(b)))
             .map(([value, count]) => (
               <li key={String(value)}>
-                <label className="flex cursor-pointer items-center gap-2 rounded-sm px-2 py-1 hover:bg-accent">
+                <label className="flex cursor-pointer items-center gap-[var(--data-table-gap-2)] rounded-[var(--data-table-radius)] px-2 py-1 hover:bg-[color:var(--data-table-background-hover)]">
                   <Checkbox checked={chosen.has(String(value))} onCheckedChange={() => toggle(String(value))} />
                   <span className="flex-1">{String(value)}</span>
-                  <span className="text-muted-foreground tabular-nums">{count}</span>
+                  <span className="text-[color:var(--data-table-label)] tabular-nums">{count}</span>
                 </label>
               </li>
             ))}
@@ -231,8 +231,8 @@ export function DataTable<TData>({
   const pages = Math.max(table.getPageCount(), 1);
 
   return (
-    <div data-slot="data-table" className={cn("flex flex-col gap-[var(--space-gap-default)]", className)}>
-      <div className="flex flex-wrap items-center gap-[var(--space-gap-default)]">
+    <div data-slot="data-table" className={cn("flex flex-col gap-[var(--data-table-gap-2)]", className)}>
+      <div className="flex flex-wrap items-center gap-[var(--data-table-gap-2)]">
         <Input
           aria-label={l.search}
           placeholder={l.search}
@@ -244,12 +244,12 @@ export function DataTable<TData>({
           <FacetFilter key={f.column} facet={f} table={table} />
         ))}
         {selected.length > 0 && bulkActions && (
-          <div className="flex items-center gap-[var(--space-gap-default)]">
-            <span className="text-muted-foreground tabular-nums">{l.selected(selected.length)}</span>
+          <div className="flex items-center gap-[var(--data-table-gap-2)]">
+            <span className="text-[color:var(--data-table-label)] tabular-nums">{l.selected(selected.length)}</span>
             {bulkActions(selected)}
           </div>
         )}
-        <div className="ml-auto flex items-center gap-[var(--space-gap-default)]">
+        <div className="ml-auto flex items-center gap-[var(--data-table-gap-2)]">
           <ToggleGroup
             type="single"
             variant="outline"
@@ -274,7 +274,7 @@ export function DataTable<TData>({
                   .filter((c) => c.getCanHide())
                   .map((c) => (
                     <li key={c.id}>
-                      <label className="flex cursor-pointer items-center gap-2 rounded-sm px-2 py-1 hover:bg-accent">
+                      <label className="flex cursor-pointer items-center gap-[var(--data-table-gap-2)] rounded-[var(--data-table-radius)] px-2 py-1 hover:bg-[color:var(--data-table-background-hover)]">
                         <Checkbox checked={c.getIsVisible()} onCheckedChange={(v) => c.toggleVisibility(!!v)} />
                         {c.columnDef.meta?.label ?? c.id}
                       </label>
@@ -324,7 +324,10 @@ export function DataTable<TData>({
               ))
             ) : (
               <TableRow>
-                <TableCell colSpan={table.getVisibleLeafColumns().length} className="text-center text-muted-foreground">
+                <TableCell
+                  colSpan={table.getVisibleLeafColumns().length}
+                  className="text-center text-[color:var(--data-table-label)]"
+                >
                   {l.noResults}
                 </TableCell>
               </TableRow>
@@ -333,8 +336,8 @@ export function DataTable<TData>({
         </Table>
       </div>
 
-      <div className="flex items-center justify-end gap-[var(--space-gap-default)]">
-        <span className="text-muted-foreground tabular-nums">
+      <div className="flex items-center justify-end gap-[var(--data-table-gap-2)]">
+        <span className="text-[color:var(--data-table-label)] tabular-nums">
           {l.page(table.getState().pagination.pageIndex + 1, pages)}
         </span>
         <Button
