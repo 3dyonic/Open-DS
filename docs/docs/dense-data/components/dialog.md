@@ -31,7 +31,7 @@ Instead:
 
 ## How Dense data uses it
 
-<div class="odv-grid two"><div class="odv-dd"><div class="stage"><div class="odv-eyebrow">A menu or dialog</div><div style="margin-top:6px"><b style="color:var(--color-status-success)">Use</b> elevation.overlay and a dimmed page for dialogs</div><div><b style="color:var(--color-status-danger)">Not</b> A border only</div></div><div class="cap">Floating things need a shadow so they read as on top.</div></div><div class="odv-dd"><div class="stage"><div class="odv-eyebrow">Delete or remove</div><div style="margin-top:6px"><b style="color:var(--color-status-success)">Use</b> Button secondary, then confirm in a dialog</div><div><b style="color:var(--color-status-danger)">Not</b> Button primary as the first step</div></div><div class="cap">Deleting is rare and costly; a confirm step catches mistakes.</div></div></div>
+<div class="odv-grid two"><div class="odv-dd"><div class="stage"><div class="odv-eyebrow">A menu or dialog</div><div style="margin-top:6px"><b style="color:var(--color-status-success)">Use</b> elevation.overlay and a dimmed page for dialogs</div><div><b style="color:var(--color-status-danger)">Not</b> A border only</div></div><div class="cap">Floating things need a shadow so they read as on top.</div></div><div class="odv-dd"><div class="stage"><div class="odv-eyebrow">Delete or remove</div><div style="margin-top:6px"><b style="color:var(--color-status-success)">Use</b> Button secondary, then confirm in a dialog with Button danger</div><div><b style="color:var(--color-status-danger)">Not</b> Button primary as the first step</div></div><div class="cap">Deleting is rare and costly; a confirm step catches mistakes.</div></div></div>
 
 ## Words
 

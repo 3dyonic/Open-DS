@@ -29,7 +29,7 @@ function Attachment({
       data-slot="attachment"
       aria-label={`${name}, ${type}, ${size}`}
       className={cn(
-        "flex w-fit max-w-full items-center gap-3 rounded-md border bg-background px-3 py-2 text-sm outline-none hover:bg-accent focus-visible:ring-[3px] focus-visible:ring-ring/50",
+        "flex w-fit max-w-full items-center gap-3 rounded-md border bg-background px-3 py-2 text-sm outline-none hover:bg-accent focus-visible:ring-[length:var(--border-width-focus)] focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:ring-offset-background",
         className,
       )}
       {...props}

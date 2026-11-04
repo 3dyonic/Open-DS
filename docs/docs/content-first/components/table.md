@@ -74,4 +74,5 @@ The CSS variable is the key with `/` replaced by `-` and the base `@` dropped. E
 | `table/cell-padding-x` | Horizontal padding inside a cell. | `space.inset.cell-x` → `space.16` | same |
 | `table/row-border` | Line between rows. | `color.border.default` → `content-first.theme.light.color.border.default` → `color.stone.light.200` | `color.border.default` → `content-first.theme.dark.color.border.default` → `color.stone.dark.100` |
 | `table/row-selected` | Fill of a selected row. | `color.surface.selected` → `content-first.theme.light.color.surface.selected` → `color.navy.light.100` | `color.surface.selected` → `content-first.theme.dark.color.surface.selected` → `color.navy.dark.100` |
+| `table/row-selected-edge` | Edge that marks a selected row, beside its fill. | `color.border.selected` → `content-first.theme.light.color.border.selected` → `color.navy.light.600` | `color.border.selected` → `content-first.theme.dark.color.border.selected` → `color.navy.dark.700` |
 | `table/font-size` | Cell text size. | `type.data.font-size` → `font.size.18` | same |

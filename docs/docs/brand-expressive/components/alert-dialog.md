@@ -30,7 +30,7 @@ Instead:
 
 ## How Brand expressive uses it
 
-<div class="odv-grid two"><div class="odv-dd"><div class="stage"><div class="odv-eyebrow">Delete or remove</div><div style="margin-top:6px"><b style="color:var(--color-status-success)">Use</b> Button secondary, then confirm</div><div><b style="color:var(--color-status-danger)">Not</b> Button primary</div></div><div class="cap">Confirm before destroying data.</div></div><div class="odv-dd"><div class="stage"><div class="odv-eyebrow">A confirmation question</div><div style="margin-top:6px"><b style="color:var(--color-status-success)">Use</b> Plain. No jokes when something is lost.</div><div><b style="color:var(--color-status-danger)">Not</b> Playful copy</div></div><div class="cap">Loss is never the moment for a joke. Example: “Remove this from your list? You can add it back later.”</div></div></div>
+<div class="odv-grid two"><div class="odv-dd"><div class="stage"><div class="odv-eyebrow">Delete or remove</div><div style="margin-top:6px"><b style="color:var(--color-status-success)">Use</b> Button secondary, then confirm with Button danger</div><div><b style="color:var(--color-status-danger)">Not</b> Button primary</div></div><div class="cap">Confirm before destroying data.</div></div><div class="odv-dd"><div class="stage"><div class="odv-eyebrow">A confirmation question</div><div style="margin-top:6px"><b style="color:var(--color-status-success)">Use</b> Plain. No jokes when something is lost.</div><div><b style="color:var(--color-status-danger)">Not</b> Playful copy</div></div><div class="cap">Loss is never the moment for a joke. Example: “Remove this from your list? You can add it back later.”</div></div></div>
 
 ## Words
 

@@ -107,6 +107,13 @@
                 "outcomes.q2"
               ]
             },
+            "danger": {
+              "use": "The confirm of a delete, always with the verb and an icon, so colour is never the only cue.",
+              "because": [
+                "outcomes.q2",
+                "people.q2"
+              ]
+            },
             "ghost": {
               "not_used": true,
               "why": "Every action looks like a button people can find.",
@@ -967,7 +974,8 @@
       "title": "Do you want to cancel your application?",
       "body": "Your answers will be deleted.",
       "confirm": "Yes, cancel it",
-      "cancel": "No, go back"
+      "cancel": "No, go back",
+      "destroys": true
     },
     "card": {
       "title": "Step 2 of 4: Your home",
@@ -1869,7 +1877,7 @@
     },
     {
       "situation": "destructive-action",
-      "use": "Button secondary, then a confirm page",
+      "use": "Button secondary, then a confirm page with Button danger",
       "not": "Button primary",
       "why": "A confirm step prevents a costly error.",
       "because": [
@@ -1880,6 +1888,11 @@
           "component": "button",
           "axis": "variant",
           "variant": "secondary"
+        },
+        {
+          "component": "button",
+          "axis": "variant",
+          "variant": "danger"
         }
       ]
     },
@@ -2664,6 +2677,10 @@
                 "link": {
                   "$type": "color",
                   "$value": "{color.blue.light.700}"
+                },
+                "on-danger": {
+                  "$type": "color",
+                  "$value": "{color.gray.dark.900}"
                 }
               },
               "border": {
@@ -2676,6 +2693,10 @@
                   "$value": "{color.gray.light.500}"
                 },
                 "focus": {
+                  "$type": "color",
+                  "$value": "{color.blue.light.600}"
+                },
+                "selected": {
                   "$type": "color",
                   "$value": "{color.blue.light.600}"
                 }
@@ -2719,6 +2740,27 @@
                         "tone": "light"
                       }
                     }
+                  }
+                },
+                "danger": {
+                  "@": {
+                    "$type": "color",
+                    "$value": "{color.red.light.700}",
+                    "$extensions": {
+                      "open-ds": {
+                        "tone": "dark"
+                      }
+                    }
+                  },
+                  "hover": {
+                    "$type": "color",
+                    "$value": "{color.red.light.700}",
+                    "$extensions": {
+                      "open-ds": {
+                        "tone": "dark"
+                      }
+                    },
+                    "$description": "The same as the fill until whole ramps (OD-223) add the step between."
                   }
                 }
               },
@@ -2952,6 +2994,10 @@
                 "link": {
                   "$type": "color",
                   "$value": "{color.blue.dark.700}"
+                },
+                "on-danger": {
+                  "$type": "color",
+                  "$value": "{color.gray.light.900}"
                 }
               },
               "border": {
@@ -2964,6 +3010,10 @@
                   "$value": "{color.gray.dark.500}"
                 },
                 "focus": {
+                  "$type": "color",
+                  "$value": "{color.blue.dark.700}"
+                },
+                "selected": {
                   "$type": "color",
                   "$value": "{color.blue.dark.700}"
                 }
@@ -3007,6 +3057,27 @@
                         "tone": "dark"
                       }
                     }
+                  }
+                },
+                "danger": {
+                  "@": {
+                    "$type": "color",
+                    "$value": "{color.red.dark.700}",
+                    "$extensions": {
+                      "open-ds": {
+                        "tone": "light"
+                      }
+                    }
+                  },
+                  "hover": {
+                    "$type": "color",
+                    "$value": "{color.red.dark.700}",
+                    "$extensions": {
+                      "open-ds": {
+                        "tone": "light"
+                      }
+                    },
+                    "$description": "The same as the fill until whole ramps (OD-223) add the step between."
                   }
                 }
               },
@@ -3489,6 +3560,11 @@
             "$type": "color",
             "$description": "Links.",
             "$value": "{theme.color.text.link}"
+          },
+          "on-danger": {
+            "$type": "color",
+            "$description": "Text on the danger fill.",
+            "$value": "{theme.color.text.on-danger}"
           }
         },
         "border": {
@@ -3506,6 +3582,11 @@
             "$type": "color",
             "$description": "The keyboard focus ring.",
             "$value": "{theme.color.border.focus}"
+          },
+          "selected": {
+            "$type": "color",
+            "$description": "The edge that marks a selected item, so selection is never colour alone.",
+            "$value": "{theme.color.border.selected}"
           }
         },
         "action": {
@@ -3531,6 +3612,18 @@
               "$type": "color",
               "$description": "Secondary action on hover.",
               "$value": "{theme.color.action.secondary.hover}"
+            }
+          },
+          "danger": {
+            "@": {
+              "$type": "color",
+              "$description": "The fill of a destructive commit: the confirm of a delete.",
+              "$value": "{theme.color.action.danger.@}"
+            },
+            "hover": {
+              "$type": "color",
+              "$description": "The danger fill on hover.",
+              "$value": "{theme.color.action.danger.hover}"
             }
           }
         },
@@ -3797,6 +3890,22 @@
             "$description": "Secondary button border."
           }
         },
+        "danger": {
+          "background": {
+            "@": {
+              "$value": "{color.action.danger.@}",
+              "$description": "Danger button fill."
+            },
+            "hover": {
+              "$value": "{color.action.danger.hover}",
+              "$description": "Danger button fill on hover."
+            }
+          },
+          "label": {
+            "$value": "{color.text.on-danger}",
+            "$description": "Danger button label color."
+          }
+        },
         "ghost": {
           "background-hover": {
             "$value": "{color.surface.sunken}",
@@ -4032,6 +4141,10 @@
         "font-size": {
           "$value": "{type.data.font-size}",
           "$description": "Cell text size."
+        },
+        "row-selected-edge": {
+          "$value": "{color.border.selected}",
+          "$description": "Edge that marks a selected row, beside its fill."
         }
       },
       "tabs": {

@@ -74,4 +74,5 @@ The CSS variable is the key with `/` replaced by `-` and the base `@` dropped. E
 | `table/cell-padding-x` | Horizontal padding inside a cell. | `space.inset.cell-x` → `space.16` | same |
 | `table/row-border` | Line between rows. | `color.border.default` → `brand-expressive.theme.light.color.border.default` → `color.taupe.light.200` | `color.border.default` → `brand-expressive.theme.dark.color.border.default` → `color.taupe.dark.100` |
 | `table/row-selected` | Fill of a selected row. | `color.surface.selected` → `brand-expressive.theme.light.color.surface.selected` → `color.pink.light.100` | `color.surface.selected` → `brand-expressive.theme.dark.color.surface.selected` → `color.pink.dark.100` |
+| `table/row-selected-edge` | Edge that marks a selected row, beside its fill. | `color.border.selected` → `brand-expressive.theme.light.color.border.selected` → `color.pink.light.600` | `color.border.selected` → `brand-expressive.theme.dark.color.border.selected` → `color.pink.dark.700` |
 | `table/font-size` | Cell text size. | `type.data.font-size` → `font.size.17` | same |

@@ -15,7 +15,7 @@ export function Switch({ className, ...props }: React.ComponentProps<typeof Swit
         "peer inline-flex h-[calc(var(--size-icon)*1.25)] w-[calc(var(--size-icon)*2.25)] shrink-0 items-center rounded-[var(--radius-round)] p-0.5",
         "bg-[var(--control-track)] data-[state=checked]:bg-[var(--control-checked)]",
         "transition-colors duration-[var(--transition-duration)] ease-[var(--transition-easing)]",
-        "outline-none focus-visible:ring-[length:var(--border-width-focus)] focus-visible:ring-[color:var(--button-focus-ring)] disabled:opacity-[var(--opacity-disabled)]",
+        "outline-none focus-visible:ring-[length:var(--border-width-focus)] focus-visible:ring-[color:var(--button-focus-ring)] disabled:opacity-[var(--opacity-disabled)] focus-visible:ring-offset-2 focus-visible:ring-offset-[color:var(--color-surface-canvas)]",
         className,
       )}
       {...props}

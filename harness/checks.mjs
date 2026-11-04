@@ -510,6 +510,83 @@ export const CHECKS = {
     },
   },
 
+  "focus-ring-gap": {
+    requires: ["ui/src/components"],
+    run: (c) => {
+      // OD-222: the focus ring is the accent, often the colour of the fill it surrounds, so every ring
+      // keeps a 2px gap in the canvas colour between it and the control.
+      const gaps = [];
+      for (const f of c.walk("ui/src/components", (x) => x.endsWith(".tsx")))
+        for (const cls of c.read(f).match(/"[^"\n]*"/g) ?? []) {
+          const draws = /(focus-visible|has-focus|focus):ring-(?!0\b|offset)/.test(cls);
+          if (draws && !/ring-offset-2\b/.test(cls)) gaps.push(`${f}: a focus ring with no gap`);
+        }
+      return gaps.length ? bad(gaps.slice(0, 6).join("; ")) : ok("every focus ring keeps a 2px gap from its control");
+    },
+  },
+
+  "selection-not-colour-alone": {
+    requires: ["ui/src/components"],
+    run: (c) => {
+      // OD-222: a selected or current item shows an edge as well as a fill, so selection is never colour alone.
+      const gaps = [];
+      for (const f of c.walk("ui/src/components", (x) => x.endsWith(".tsx")))
+        for (const cls of c.read(f).match(/"[^"\n]*"/g) ?? []) {
+          const fill = cls.match(/(data-\[(?:state=selected|active=true)\]):bg-/);
+          if (fill && !cls.includes(`${fill[1]}:shadow-[inset_`)) gaps.push(`${f}: ${fill[1]} has a fill and no edge`);
+        }
+      return gaps.length
+        ? bad(gaps.slice(0, 6).join("; "))
+        : ok("every selected or current item has an edge beside its fill");
+    },
+  },
+
+  "danger-apart": {
+    requires: ["schemes/grammar.json"],
+    run: (c) => {
+      // OD-222: the primary and danger fills stay clearly apart in every brand and mode.
+      const rule = c.json("schemes", "grammar.json").semantics?.danger_apart;
+      if (!rule) return bad("the grammar has no danger_apart rule");
+      const lab = (hex) => {
+        const [r, g, b] = [1, 3, 5]
+          .map((i) => parseInt(hex.slice(i, i + 2), 16) / 255)
+          .map((v) => (v <= 0.04045 ? v / 12.92 : ((v + 0.055) / 1.055) ** 2.4));
+        const l = Math.cbrt(0.4122214708 * r + 0.5363325363 * g + 0.0514459929 * b);
+        const m = Math.cbrt(0.2119034982 * r + 0.6806995451 * g + 0.1073969566 * b);
+        const s = Math.cbrt(0.0883024619 * r + 0.2817188376 * g + 0.6299787005 * b);
+        return [
+          0.2104542553 * l + 0.793617785 * m - 0.0040720468 * s,
+          1.9779984951 * l - 2.428592205 * m + 0.4505937099 * s,
+          0.0259040371 * l + 0.7827717662 * m - 0.808675766 * s,
+        ];
+      };
+      const dE = (a, b) => Math.hypot(...lab(a).map((v, i) => v - lab(b)[i])) * 100;
+      const gaps = [];
+      const waiting = [];
+      for (const s of SCHEMES) {
+        const t = c.json("schemes", `${s}.json`).tokens;
+        for (const brand of Object.keys(t.brands))
+          for (const mode of ["light", "dark"]) {
+            const all = flatten(themeTokens({ id: s, tokens: t }, brand, mode));
+            const [p, d] = ["color.action.primary.@", "color.action.danger.@"].map((x) => resolve(all, x).value);
+            if (!/^#/.test(p ?? "") || !/^#/.test(d ?? "")) {
+              gaps.push(`${s}/${brand}/${mode}: no primary or danger fill`);
+              continue;
+            }
+            const v = dE(p, d);
+            if (v >= rule.min_delta_e) continue;
+            const w = toneOf(t.brands[brand].theme, mode, "color.action.primary.@")?.waits;
+            const what = `${s}/${brand}/${mode}: primary and danger are ${v.toFixed(1)} apart`;
+            if (w) waiting.push(`${what} (${w.for})`);
+            else gaps.push(`${what}, need ${rule.min_delta_e}`);
+          }
+      }
+      return gaps.length
+        ? bad(gaps.slice(0, 6).join("; "))
+        : ok(`${rule.say}` + (waiting.length ? `, except where a fix waits: ${waiting.join("; ")}` : ""));
+    },
+  },
+
   "catalogue-built": {
     requires: ["schemes/grammar.json", "ui/src/components"],
     run: (c) => {

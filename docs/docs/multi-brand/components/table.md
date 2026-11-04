@@ -78,6 +78,7 @@ The CSS variable is the key with `/` replaced by `-` and the base `@` dropped. E
 | `table/cell-padding-x` | Horizontal padding inside a cell. | `space.inset.cell-x` → `space.16` | same |
 | `table/row-border` | Line between rows. | `color.border.default` → `aster.theme.light.color.border.default` → `color.slate.light.200` | `color.border.default` → `aster.theme.dark.color.border.default` → `color.slate.dark.100` |
 | `table/row-selected` | Fill of a selected row. | `color.surface.selected` → `aster.theme.light.color.surface.selected` → `color.teal.light.100` | `color.surface.selected` → `aster.theme.dark.color.surface.selected` → `color.teal.dark.100` |
+| `table/row-selected-edge` | Edge that marks a selected row, beside its fill. | `color.border.selected` → `aster.theme.light.color.border.selected` → `color.teal.light.600` | `color.border.selected` → `aster.theme.dark.color.border.selected` → `color.teal.dark.700` |
 | `table/font-size` | Cell text size. | `type.data.font-size` → `font.size.16` | same |
 
 </div>
@@ -93,6 +94,7 @@ The CSS variable is the key with `/` replaced by `-` and the base `@` dropped. E
 | `table/cell-padding-x` | Horizontal padding inside a cell. | `space.inset.cell-x` → `space.16` | same |
 | `table/row-border` | Line between rows. | `color.border.default` → `birch.theme.light.color.border.default` → `color.slate.light.200` | `color.border.default` → `birch.theme.dark.color.border.default` → `color.slate.dark.100` |
 | `table/row-selected` | Fill of a selected row. | `color.surface.selected` → `birch.theme.light.color.surface.selected` → `color.purple.light.100` | `color.surface.selected` → `birch.theme.dark.color.surface.selected` → `color.purple.dark.100` |
+| `table/row-selected-edge` | Edge that marks a selected row, beside its fill. | `color.border.selected` → `birch.theme.light.color.border.selected` → `color.purple.light.600` | `color.border.selected` → `birch.theme.dark.color.border.selected` → `color.purple.dark.700` |
 | `table/font-size` | Cell text size. | `type.data.font-size` → `font.size.16` | same |
 
 </div>
@@ -108,6 +110,7 @@ The CSS variable is the key with `/` replaced by `-` and the base `@` dropped. E
 | `table/cell-padding-x` | Horizontal padding inside a cell. | `space.inset.cell-x` → `space.16` | same |
 | `table/row-border` | Line between rows. | `color.border.default` → `coral.theme.light.color.border.default` → `color.slate.light.200` | `color.border.default` → `coral.theme.dark.color.border.default` → `color.slate.dark.100` |
 | `table/row-selected` | Fill of a selected row. | `color.surface.selected` → `coral.theme.light.color.surface.selected` → `color.orange.light.100` | `color.surface.selected` → `coral.theme.dark.color.surface.selected` → `color.orange.dark.100` |
+| `table/row-selected-edge` | Edge that marks a selected row, beside its fill. | `color.border.selected` → `coral.theme.light.color.border.selected` → `color.orange.light.600` | `color.border.selected` → `coral.theme.dark.color.border.selected` → `color.orange.dark.700` |
 | `table/font-size` | Cell text size. | `type.data.font-size` → `font.size.16` | same |
 
 </div>

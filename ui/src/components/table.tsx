@@ -37,7 +37,7 @@ export function TableRow({ className, ...props }: React.HTMLAttributes<HTMLTable
       data-slot="table-row"
       className={cn(
         "h-[var(--table-row-height)] border-b-[length:var(--border-width-default)] border-[var(--table-row-border)]",
-        "data-[state=selected]:bg-[var(--table-row-selected)]",
+        "data-[state=selected]:bg-[var(--table-row-selected)] data-[state=selected]:shadow-[inset_var(--border-width-focus)_0_0_0_var(--table-row-selected-edge)]",
         className,
       )}
       {...props}

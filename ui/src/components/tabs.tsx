@@ -30,7 +30,7 @@ export function TabsTrigger({ className, ...props }: React.ComponentProps<typeof
         "-mb-px inline-flex h-[var(--size-control-default)] items-center border-b-2 border-transparent text-[var(--tabs-label)]",
         "[font-family:var(--type-label-font-family)] text-[length:var(--type-label-font-size)] [font-weight:var(--type-label-font-weight)]",
         "data-[state=active]:border-[var(--tabs-indicator)] data-[state=active]:text-[var(--tabs-label-active)]",
-        "outline-none focus-visible:ring-[length:var(--border-width-focus)] focus-visible:ring-[color:var(--button-focus-ring)]",
+        "outline-none focus-visible:ring-[length:var(--border-width-focus)] focus-visible:ring-[color:var(--button-focus-ring)] focus-visible:ring-offset-2 focus-visible:ring-offset-[color:var(--color-surface-canvas)]",
         className,
       )}
       {...props}

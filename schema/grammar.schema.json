@@ -235,6 +235,29 @@
           "minLength": 1,
           "description": "What this list is and how to read it."
         },
+        "danger_apart": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["min_delta_e", "say", "why"],
+          "description": "How far apart the primary and danger fills stay, in every brand and mode (OD-222).",
+          "properties": {
+            "min_delta_e": {
+              "type": "number",
+              "exclusiveMinimum": 0,
+              "description": "The smallest colour difference, ΔE in OKLab ×100."
+            },
+            "say": {
+              "type": "string",
+              "minLength": 1,
+              "description": "The rule in a few words."
+            },
+            "why": {
+              "type": "string",
+              "minLength": 1,
+              "description": "Why the rule exists."
+            }
+          }
+        },
         "tones": {
           "type": "object",
           "additionalProperties": false,

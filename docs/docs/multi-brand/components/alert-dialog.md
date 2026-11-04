@@ -30,7 +30,7 @@ Instead:
 
 ## How Multi-brand uses it
 
-<div class="odv-grid two"><div class="odv-dd"><div class="stage"><div class="odv-eyebrow">Delete or remove</div><div style="margin-top:6px"><b style="color:var(--color-status-success)">Use</b> Button secondary, then confirm</div><div><b style="color:var(--color-status-danger)">Not</b> Button primary</div></div><div class="cap">Confirm before destroying data.</div></div><div class="odv-dd"><div class="stage"><div class="odv-eyebrow">A confirmation question</div><div style="margin-top:6px"><b style="color:var(--color-status-success)">Use</b> Shared across brands: plain and specific</div><div><b style="color:var(--color-status-danger)">Not</b> Brand tone when something is lost</div></div><div class="cap">Loss is never the moment for personality. Example: “Cancel your plan? It stays active until the end of the month.”</div></div></div>
+<div class="odv-grid two"><div class="odv-dd"><div class="stage"><div class="odv-eyebrow">Delete or remove</div><div style="margin-top:6px"><b style="color:var(--color-status-success)">Use</b> Button secondary, then confirm with Button danger</div><div><b style="color:var(--color-status-danger)">Not</b> Button primary</div></div><div class="cap">Confirm before destroying data.</div></div><div class="odv-dd"><div class="stage"><div class="odv-eyebrow">A confirmation question</div><div style="margin-top:6px"><b style="color:var(--color-status-success)">Use</b> Shared across brands: plain and specific</div><div><b style="color:var(--color-status-danger)">Not</b> Brand tone when something is lost</div></div><div class="cap">Loss is never the moment for personality. Example: “Cancel your plan? It stays active until the end of the month.”</div></div></div>
 
 ## Words
 

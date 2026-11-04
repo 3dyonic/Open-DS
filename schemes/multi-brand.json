@@ -125,6 +125,12 @@
                 "outcomes.q2"
               ]
             },
+            "danger": {
+              "use": "The confirm of a delete, the same red in every brand: danger never follows the brand.",
+              "because": [
+                "outcomes.q2"
+              ]
+            },
             "ghost": {
               "use": "Row actions, with a word.",
               "because": [
@@ -988,7 +994,8 @@
       "title": "Cancel your plan?",
       "body": "It stays active until the end of the month.",
       "confirm": "Cancel plan",
-      "cancel": "Keep my plan"
+      "cancel": "Keep my plan",
+      "destroys": false
     },
     "card": {
       "title": "Standard plan",
@@ -1925,7 +1932,7 @@
     },
     {
       "situation": "destructive-action",
-      "use": "Button secondary, then confirm",
+      "use": "Button secondary, then confirm with Button danger",
       "not": "Button primary",
       "why": "Confirm before destroying data.",
       "because": [
@@ -1936,6 +1943,11 @@
           "component": "button",
           "axis": "variant",
           "variant": "secondary"
+        },
+        {
+          "component": "button",
+          "axis": "variant",
+          "variant": "danger"
         }
       ]
     },
@@ -2876,6 +2888,10 @@
                 "link": {
                   "$type": "color",
                   "$value": "{color.teal.light.700}"
+                },
+                "on-danger": {
+                  "$type": "color",
+                  "$value": "{color.slate.dark.900}"
                 }
               },
               "border": {
@@ -2888,6 +2904,10 @@
                   "$value": "{color.slate.light.500}"
                 },
                 "focus": {
+                  "$type": "color",
+                  "$value": "{color.teal.light.600}"
+                },
+                "selected": {
                   "$type": "color",
                   "$value": "{color.teal.light.600}"
                 }
@@ -2931,6 +2951,27 @@
                         "tone": "light"
                       }
                     }
+                  }
+                },
+                "danger": {
+                  "@": {
+                    "$type": "color",
+                    "$value": "{color.red.light.700}",
+                    "$extensions": {
+                      "open-ds": {
+                        "tone": "dark"
+                      }
+                    }
+                  },
+                  "hover": {
+                    "$type": "color",
+                    "$value": "{color.red.light.700}",
+                    "$extensions": {
+                      "open-ds": {
+                        "tone": "dark"
+                      }
+                    },
+                    "$description": "The same as the fill until whole ramps (OD-223) add the step between."
                   }
                 }
               },
@@ -3164,6 +3205,10 @@
                 "link": {
                   "$type": "color",
                   "$value": "{color.teal.dark.700}"
+                },
+                "on-danger": {
+                  "$type": "color",
+                  "$value": "{color.slate.light.900}"
                 }
               },
               "border": {
@@ -3176,6 +3221,10 @@
                   "$value": "{color.slate.dark.400}"
                 },
                 "focus": {
+                  "$type": "color",
+                  "$value": "{color.teal.dark.700}"
+                },
+                "selected": {
                   "$type": "color",
                   "$value": "{color.teal.dark.700}"
                 }
@@ -3219,6 +3268,27 @@
                         "tone": "dark"
                       }
                     }
+                  }
+                },
+                "danger": {
+                  "@": {
+                    "$type": "color",
+                    "$value": "{color.red.dark.700}",
+                    "$extensions": {
+                      "open-ds": {
+                        "tone": "light"
+                      }
+                    }
+                  },
+                  "hover": {
+                    "$type": "color",
+                    "$value": "{color.red.dark.700}",
+                    "$extensions": {
+                      "open-ds": {
+                        "tone": "light"
+                      }
+                    },
+                    "$description": "The same as the fill until whole ramps (OD-223) add the step between."
                   }
                 }
               },
@@ -3583,6 +3653,10 @@
                 "link": {
                   "$type": "color",
                   "$value": "{color.purple.light.700}"
+                },
+                "on-danger": {
+                  "$type": "color",
+                  "$value": "{color.slate.dark.900}"
                 }
               },
               "border": {
@@ -3595,6 +3669,10 @@
                   "$value": "{color.slate.light.500}"
                 },
                 "focus": {
+                  "$type": "color",
+                  "$value": "{color.purple.light.600}"
+                },
+                "selected": {
                   "$type": "color",
                   "$value": "{color.purple.light.600}"
                 }
@@ -3638,6 +3716,27 @@
                         "tone": "light"
                       }
                     }
+                  }
+                },
+                "danger": {
+                  "@": {
+                    "$type": "color",
+                    "$value": "{color.red.light.700}",
+                    "$extensions": {
+                      "open-ds": {
+                        "tone": "dark"
+                      }
+                    }
+                  },
+                  "hover": {
+                    "$type": "color",
+                    "$value": "{color.red.light.700}",
+                    "$extensions": {
+                      "open-ds": {
+                        "tone": "dark"
+                      }
+                    },
+                    "$description": "The same as the fill until whole ramps (OD-223) add the step between."
                   }
                 }
               },
@@ -3867,6 +3966,10 @@
                 "link": {
                   "$type": "color",
                   "$value": "{color.purple.dark.700}"
+                },
+                "on-danger": {
+                  "$type": "color",
+                  "$value": "{color.slate.light.900}"
                 }
               },
               "border": {
@@ -3879,6 +3982,10 @@
                   "$value": "{color.slate.dark.400}"
                 },
                 "focus": {
+                  "$type": "color",
+                  "$value": "{color.purple.dark.700}"
+                },
+                "selected": {
                   "$type": "color",
                   "$value": "{color.purple.dark.700}"
                 }
@@ -3922,6 +4029,27 @@
                         "tone": "dark"
                       }
                     }
+                  }
+                },
+                "danger": {
+                  "@": {
+                    "$type": "color",
+                    "$value": "{color.red.dark.700}",
+                    "$extensions": {
+                      "open-ds": {
+                        "tone": "light"
+                      }
+                    }
+                  },
+                  "hover": {
+                    "$type": "color",
+                    "$value": "{color.red.dark.700}",
+                    "$extensions": {
+                      "open-ds": {
+                        "tone": "light"
+                      }
+                    },
+                    "$description": "The same as the fill until whole ramps (OD-223) add the step between."
                   }
                 }
               },
@@ -4286,6 +4414,10 @@
                 "link": {
                   "$type": "color",
                   "$value": "{color.orange.light.700}"
+                },
+                "on-danger": {
+                  "$type": "color",
+                  "$value": "{color.slate.dark.900}"
                 }
               },
               "border": {
@@ -4300,6 +4432,10 @@
                 "focus": {
                   "$type": "color",
                   "$value": "{color.orange.light.600}"
+                },
+                "selected": {
+                  "$type": "color",
+                  "$value": "{color.orange.light.600}"
                 }
               },
               "action": {
@@ -4309,7 +4445,11 @@
                     "$value": "{color.orange.light.600}",
                     "$extensions": {
                       "open-ds": {
-                        "tone": "dark"
+                        "tone": "dark",
+                        "waits": {
+                          "for": "OD-225",
+                          "why": "Coral's primary is almost the shared danger red (under 10 apart); which one moves is a brand decision."
+                        }
                       }
                     }
                   },
@@ -4341,6 +4481,27 @@
                         "tone": "light"
                       }
                     }
+                  }
+                },
+                "danger": {
+                  "@": {
+                    "$type": "color",
+                    "$value": "{color.red.light.700}",
+                    "$extensions": {
+                      "open-ds": {
+                        "tone": "dark"
+                      }
+                    }
+                  },
+                  "hover": {
+                    "$type": "color",
+                    "$value": "{color.red.light.700}",
+                    "$extensions": {
+                      "open-ds": {
+                        "tone": "dark"
+                      }
+                    },
+                    "$description": "The same as the fill until whole ramps (OD-223) add the step between."
                   }
                 }
               },
@@ -4574,6 +4735,10 @@
                 "link": {
                   "$type": "color",
                   "$value": "{color.orange.dark.700}"
+                },
+                "on-danger": {
+                  "$type": "color",
+                  "$value": "{color.slate.light.900}"
                 }
               },
               "border": {
@@ -4588,6 +4753,10 @@
                 "focus": {
                   "$type": "color",
                   "$value": "{color.orange.dark.700}"
+                },
+                "selected": {
+                  "$type": "color",
+                  "$value": "{color.orange.dark.700}"
                 }
               },
               "action": {
@@ -4597,7 +4766,11 @@
                     "$value": "{color.orange.dark.700}",
                     "$extensions": {
                       "open-ds": {
-                        "tone": "light"
+                        "tone": "light",
+                        "waits": {
+                          "for": "OD-225",
+                          "why": "Coral's primary is almost the shared danger red (under 10 apart); which one moves is a brand decision."
+                        }
                       }
                     }
                   },
@@ -4629,6 +4802,27 @@
                         "tone": "dark"
                       }
                     }
+                  }
+                },
+                "danger": {
+                  "@": {
+                    "$type": "color",
+                    "$value": "{color.red.dark.700}",
+                    "$extensions": {
+                      "open-ds": {
+                        "tone": "light"
+                      }
+                    }
+                  },
+                  "hover": {
+                    "$type": "color",
+                    "$value": "{color.red.dark.700}",
+                    "$extensions": {
+                      "open-ds": {
+                        "tone": "light"
+                      }
+                    },
+                    "$description": "The same as the fill until whole ramps (OD-223) add the step between."
                   }
                 }
               },
@@ -5111,6 +5305,11 @@
             "$type": "color",
             "$description": "Links.",
             "$value": "{theme.color.text.link}"
+          },
+          "on-danger": {
+            "$type": "color",
+            "$description": "Text on the danger fill.",
+            "$value": "{theme.color.text.on-danger}"
           }
         },
         "border": {
@@ -5128,6 +5327,11 @@
             "$type": "color",
             "$description": "The keyboard focus ring.",
             "$value": "{theme.color.border.focus}"
+          },
+          "selected": {
+            "$type": "color",
+            "$description": "The edge that marks a selected item, so selection is never colour alone.",
+            "$value": "{theme.color.border.selected}"
           }
         },
         "action": {
@@ -5153,6 +5357,18 @@
               "$type": "color",
               "$description": "Secondary action on hover.",
               "$value": "{theme.color.action.secondary.hover}"
+            }
+          },
+          "danger": {
+            "@": {
+              "$type": "color",
+              "$description": "The fill of a destructive commit: the confirm of a delete.",
+              "$value": "{theme.color.action.danger.@}"
+            },
+            "hover": {
+              "$type": "color",
+              "$description": "The danger fill on hover.",
+              "$value": "{theme.color.action.danger.hover}"
             }
           }
         },
@@ -5417,6 +5633,22 @@
             "$description": "Secondary button border."
           }
         },
+        "danger": {
+          "background": {
+            "@": {
+              "$value": "{color.action.danger.@}",
+              "$description": "Danger button fill."
+            },
+            "hover": {
+              "$value": "{color.action.danger.hover}",
+              "$description": "Danger button fill on hover."
+            }
+          },
+          "label": {
+            "$value": "{color.text.on-danger}",
+            "$description": "Danger button label color."
+          }
+        },
         "ghost": {
           "background-hover": {
             "$value": "{color.surface.sunken}",
@@ -5652,6 +5884,10 @@
         "font-size": {
           "$value": "{type.data.font-size}",
           "$description": "Cell text size."
+        },
+        "row-selected-edge": {
+          "$value": "{color.border.selected}",
+          "$description": "Edge that marks a selected row, beside its fill."
         }
       },
       "tabs": {
