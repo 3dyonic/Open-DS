@@ -54,7 +54,7 @@ test("help names every scheme command", () => {
 
 test("why follows the because chain back to the reasons", () => {
   const w = why(loadScheme("dense-data"), "typography.definition");
-  assert.equal(w.answer, "A ratio, line heights on the grid");
+  assert.equal(w.answer, "A ratio, line heights in proportion");
   assert.ok(w.because.length > 0);
   assert.ok(
     w.because.some(
@@ -119,7 +119,7 @@ test("init deploys tokens, components, AGENTS.md and the skill", () => {
       agents.match(/^\| (?!Situation|---|Token|`)/gm).length,
       grammar().situations.length,
     );
-    // The colour guidance: one row per semantic key, from the grammar.
+    // The color guidance: one row per semantic key, from the grammar.
     assert.equal(
       agents.match(/^\| `color\./gm).length,
       grammar().semantics.keys.length,
@@ -381,7 +381,7 @@ test("add brings the components a component imports and names the packages it ne
   }
 });
 
-test("guidance: every colour key has intent and not_for; pairs and urgency read back", async () => {
+test("guidance: every color key has intent and not_for; pairs and urgency read back", async () => {
   const { guidanceFor, withGuidance } = await import("../src/guidance.mjs");
   const { grammar, loadScheme } = await import("../src/schemes.mjs");
   const g = grammar();

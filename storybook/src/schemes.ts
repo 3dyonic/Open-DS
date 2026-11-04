@@ -29,7 +29,7 @@ export interface Samples {
   select?: { label: string; options: string[]; value: string };
   switches?: string[];
   messages?: { success: string; error: { title: string; description: string }; neutral: string };
-  confirm?: { trigger: string; title: string; body: string; confirm: string; cancel: string };
+  confirm?: { trigger: string; title: string; body: string; confirm: string; cancel: string; destroys: boolean };
   card?: { title: string; description: string; status: string; primary: string; secondary: string };
   tabs?: { label: string; content: string }[];
   menu?: { trigger: string; items: string[]; destructive: string };

@@ -1,3 +1,4 @@
+import { sitsOn } from "./tones.mjs";
 // What each semantic key is for, read from the grammar's "semantics" list. Pure functions: no files.
 
 const ids = (g) => new Map((g.semantics?.keys ?? []).map((k) => [k.id, k]));
@@ -19,7 +20,7 @@ export function guidanceFor(g, path) {
   if (!id) return null;
   const k = ids(g).get(id);
   const takes = (g.semantics.keys ?? [])
-    .filter((x) => x.pairs?.on.includes(id))
+    .filter((x) => x.pairs && sitsOn(g, x).includes(id))
     .map((x) => ({ key: x.id, contrast: x.pairs.contrast }));
   const order = g.semantics.urgency?.order ?? [];
   return {
@@ -27,7 +28,8 @@ export function guidanceFor(g, path) {
     intent: k.intent,
     use_for: k.use_for,
     not_for: k.not_for,
-    ...(k.pairs && { sits_on: k.pairs.on, contrast: k.pairs.contrast }),
+    ...(k.pairs && { sits_on: sitsOn(g, k), contrast: k.pairs.contrast }),
+    ...(k.pairs?.tone && { by_tone: true }),
     ...(k.exempt && { exempt: k.exempt }),
     ...(takes.length && { takes }),
     ...(order.includes(id) && {

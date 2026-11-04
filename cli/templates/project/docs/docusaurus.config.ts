@@ -5,7 +5,7 @@ import { themes as prismThemes } from "prism-react-renderer";
 
 // The docs of this design system. The pages in docs/docs come from its scheme (scheme.json).
 // The site wears the system: build/docusaurus.css holds its tokens, and build/brand/ (npm run
-// tokens) holds the Open DS mark in the system's own colours, served as the logo and favicon.
+// tokens) holds the Open DS mark in the system's own colors, served as the logo and favicon.
 const scheme = JSON.parse(
   readFileSync(new URL("../scheme.json", import.meta.url), "utf8"),
 ) as {
@@ -29,7 +29,10 @@ const config: Config = {
   markdown: { format: "detect", hooks: { onBrokenMarkdownLinks: "throw" } },
   i18n: { defaultLocale: "en", locales: ["en"] },
   // The live Storybook embeds follow the docs theme (OD-213).
-  clientModules: ["./src/clientModules/embed-mode.ts"],
+  clientModules: [
+    "./src/clientModules/embed-mode.ts",
+    "./src/clientModules/scales.ts",
+  ],
   presets: [
     [
       "classic",
@@ -42,8 +45,8 @@ const config: Config = {
   ],
   themeConfig: {
     colorMode: { respectPrefersColorScheme: true },
-    // The top bar wears the design system (OD-182): its name, then its sections, with Open DS as
-    // the maker on the right.
+    // The top bar wears the design system (OD-182): its name and version, with Storybook and Open DS
+    // on the right. Its sections live in the sidebar, so the top bar does not repeat them (OD-216).
     navbar: {
       title: scheme.name,
       logo: { src: "logo.svg", srcDark: "logo-dark.svg", alt: scheme.name },
@@ -53,27 +56,6 @@ const config: Config = {
           position: "left",
           value: `<span class="ods-docs-tag">v${scheme.version}</span>`,
         },
-        {
-          type: "doc",
-          docId: "primitives/index",
-          label: "Primitives",
-          position: "left",
-        },
-        {
-          type: "doc",
-          docId: "foundations/index",
-          label: "Foundations",
-          position: "left",
-        },
-        {
-          type: "doc",
-          docId: "components/inventory",
-          label: "Components",
-          position: "left",
-        },
-        { type: "doc", docId: "voice", label: "Voice", position: "left" },
-        { type: "doc", docId: "themes", label: "Themes", position: "left" },
-        { type: "doc", docId: "agents", label: "For agents", position: "left" },
         { href: STORYBOOK, label: "Storybook", position: "right" },
         { href: "pathname:///llms.txt", label: "llms.txt", position: "right" },
         {

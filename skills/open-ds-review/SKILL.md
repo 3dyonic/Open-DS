@@ -35,10 +35,10 @@ A review catches a choice that breaks a rule before people see it. Each finding 
 5. Components: check that each one is in the inventory with `get_inventory`. Flag look-alikes.
 6. Variants: call `get_component` for each component. Flag each variant that the scheme marks as not used.
 7. Variants: check each used variant against what the scheme says it is for.
-8. Tokens: flag raw colours, sizes, spacing, radii and shadows.
+8. Tokens: flag raw colors, sizes, spacing, radii and shadows.
 9. Rules: check each choice against its situation with `when_to_use`.
 10. Voice: check labels and messages with `open-ds-write`.
-11. Meaning: check each colour against its guidance. Flag a colour used for a case in its `not_for`.
+11. Meaning: check each color against its guidance. Flag a color used for a case in its `not_for`.
 12. Urgency: check that each status matches the real risk: info, then warning, then danger.
 13. Pairs: check that text and icons sit only on the fills in their `sits_on`.
 14. Access: check visible focus, a label on every control, target size and WCAG AA contrast.

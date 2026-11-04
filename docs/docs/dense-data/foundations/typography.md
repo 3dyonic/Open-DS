@@ -11,13 +11,13 @@ description: "Dense data: How text is set: roles, sizes and line height."
 How text is set: roles, sizes and line height.
 
 <div class="ods-specimen">
-<div class="ods-type"><span class="ods-label">display</span><span style="font-family:var(--type-display-font-family);font-size:var(--type-display-font-size);line-height:var(--type-display-line-height);font-weight:var(--type-display-font-weight)">A security analyst opens the alert queue at 8:00 and scans 200 rows for escalated threats.</span></div>
-<div class="ods-type"><span class="ods-label">title</span><span style="font-family:var(--type-title-font-family);font-size:var(--type-title-font-size);line-height:var(--type-title-line-height);font-weight:var(--type-title-font-weight)">A security analyst opens the alert queue at 8:00 and scans 200 rows for escalated threats.</span></div>
-<div class="ods-type"><span class="ods-label">heading</span><span style="font-family:var(--type-heading-font-family);font-size:var(--type-heading-font-size);line-height:var(--type-heading-line-height);font-weight:var(--type-heading-font-weight)">A security analyst opens the alert queue at 8:00 and scans 200 rows for escalated threats.</span></div>
-<div class="ods-type"><span class="ods-label">body</span><span style="font-family:var(--type-body-font-family);font-size:var(--type-body-font-size);line-height:var(--type-body-line-height);font-weight:var(--type-body-font-weight)">A security analyst opens the alert queue at 8:00 and scans 200 rows for escalated threats.</span></div>
-<div class="ods-type"><span class="ods-label">label</span><span style="font-family:var(--type-label-font-family);font-size:var(--type-label-font-size);line-height:var(--type-label-line-height);font-weight:var(--type-label-font-weight)">A security analyst opens the alert queue at 8:00 and scans 200 rows for escalated threats.</span></div>
-<div class="ods-type"><span class="ods-label">caption</span><span style="font-family:var(--type-caption-font-family);font-size:var(--type-caption-font-size);line-height:var(--type-caption-line-height);font-weight:var(--type-caption-font-weight)">A security analyst opens the alert queue at 8:00 and scans 200 rows for escalated threats.</span></div>
-<div class="ods-type"><span class="ods-label">data</span><span style="font-family:var(--type-data-font-family);font-size:var(--type-data-font-size);line-height:var(--type-data-line-height);font-weight:var(--type-data-font-weight)">A security analyst opens the alert queue at 8:00 and scans 200 rows for escalated threats.</span></div>
+<div class="ods-type"><span class="ods-label"><b>display</b><span>24px · 1.2 · 600</span></span><span class="ods-typeline" style="font-family:var(--type-display-font-family);font-size:var(--type-display-font-size);line-height:var(--type-display-line-height);font-weight:var(--type-display-font-weight)">Open alerts</span></div>
+<div class="ods-type"><span class="ods-label"><b>title</b><span>20px · 1.2 · 600</span></span><span class="ods-typeline" style="font-family:var(--type-title-font-family);font-size:var(--type-title-font-size);line-height:var(--type-title-line-height);font-weight:var(--type-title-font-weight)">Open alerts</span></div>
+<div class="ods-type"><span class="ods-label"><b>heading</b><span>16px · 1.2 · 600</span></span><span class="ods-typeline" style="font-family:var(--type-heading-font-family);font-size:var(--type-heading-font-size);line-height:var(--type-heading-line-height);font-weight:var(--type-heading-font-weight)">Alert ALR-2043</span></div>
+<div class="ods-type"><span class="ods-label"><b>body</b><span>14px · 1.45 · 400</span></span><span class="ods-typeline" style="font-family:var(--type-body-font-family);font-size:var(--type-body-font-size);line-height:var(--type-body-line-height);font-weight:var(--type-body-font-weight)">A security analyst opens the alert queue at 8:00 and scans 200 rows for escalated threats.</span></div>
+<div class="ods-type"><span class="ods-label"><b>label</b><span>12px · 1.2 · 500</span></span><span class="ods-typeline" style="font-family:var(--type-label-font-family);font-size:var(--type-label-font-size);line-height:var(--type-label-line-height);font-weight:var(--type-label-font-weight)">Investigate</span></div>
+<div class="ods-type"><span class="ods-label"><b>caption</b><span>12px · 1.45 · 400</span></span><span class="ods-typeline" style="font-family:var(--type-caption-font-family);font-size:var(--type-caption-font-size);line-height:var(--type-caption-line-height);font-weight:var(--type-caption-font-weight)">A security analyst opens the alert queue at 8:00 and scans 200 rows for escalated threats.</span></div>
+<div class="ods-type"><span class="ods-label"><b>data</b><span>13px · 1.45 · 400</span></span><span class="ods-typeline" style="font-family:var(--type-data-font-family);font-size:var(--type-data-font-size);line-height:var(--type-data-line-height);font-weight:var(--type-data-font-weight)">Open alerts 142 · Escalated 7 · Model precision 96.4% · Mean time to contain 38 min</span></div>
 </div>
 
 ## The five answers
@@ -26,7 +26,7 @@ How text is set: roles, sizes and line height.
 | --- | --- | --- |
 | Which text roles does it need? | Core and data | A data role keeps numbers in aligned columns. |
 | How many steps does the type scale take? | Only the steps the screens need | A screen full of records stays calm with only the sizes it needs. |
-| How are sizes and line heights defined? | A ratio, line heights on the grid | Lines stay on the grid so rows align, and grow with the user's text size. |
+| How are sizes and line heights defined? | A ratio, line heights in proportion | Line height is a ratio of each text's own size, so it follows the text. Two steps: tight for headings and labels, open for body, data and captions. |
 | How large is body text? | Small | Small body text fits more rows on the screen. |
 | Where does type do the most work? | Tables and inputs | Most text sits in table cells and inputs. |
 
@@ -38,61 +38,34 @@ Each token points to another token. Values live only on primitives, below.
 | --- | --- |
 | `type.display.font-family` | `dense-data.theme.base.type.display.font-family` → `font.family.ibm-plex-sans` |
 | `type.display.font-size` | `font.size.24` |
-| `type.display.line-height` | `font.line-height.28` |
+| `type.display.line-height` | `font.line-height.1_2` |
 | `type.display.font-weight` | `font.weight.600` |
 | `type.title.font-family` | `dense-data.theme.base.type.title.font-family` → `font.family.ibm-plex-sans` |
 | `type.title.font-size` | `font.size.20` |
-| `type.title.line-height` | `font.line-height.24` |
+| `type.title.line-height` | `font.line-height.1_2` |
 | `type.title.font-weight` | `font.weight.600` |
 | `type.heading.font-family` | `dense-data.theme.base.type.heading.font-family` → `font.family.ibm-plex-sans` |
 | `type.heading.font-size` | `font.size.16` |
-| `type.heading.line-height` | `font.line-height.20` |
+| `type.heading.line-height` | `font.line-height.1_2` |
 | `type.heading.font-weight` | `font.weight.600` |
 | `type.body.font-family` | `dense-data.theme.base.type.body.font-family` → `font.family.ibm-plex-sans` |
 | `type.body.font-size` | `font.size.14` |
-| `type.body.line-height` | `font.line-height.20` |
+| `type.body.line-height` | `font.line-height.1_45` |
 | `type.body.font-weight` | `font.weight.400` |
 | `type.label.font-family` | `dense-data.theme.base.type.label.font-family` → `font.family.ibm-plex-sans` |
 | `type.label.font-size` | `font.size.12` |
-| `type.label.line-height` | `font.line-height.16` |
+| `type.label.line-height` | `font.line-height.1_2` |
 | `type.label.font-weight` | `font.weight.500` |
 | `type.caption.font-family` | `dense-data.theme.base.type.caption.font-family` → `font.family.ibm-plex-sans` |
 | `type.caption.font-size` | `font.size.12` |
-| `type.caption.line-height` | `font.line-height.16` |
+| `type.caption.line-height` | `font.line-height.1_45` |
 | `type.caption.font-weight` | `font.weight.400` |
 | `type.data.font-family` | `dense-data.theme.base.type.data.font-family` → `font.family.ibm-plex-mono` |
 | `type.data.font-size` | `font.size.13` |
-| `type.data.line-height` | `font.line-height.16` |
+| `type.data.line-height` | `font.line-height.1_45` |
 | `type.data.font-weight` | `font.weight.400` |
 
-## Primitives
-
-The raw values the tokens above end at.
-
-| Primitive | Value | Sample |
-| --- | --- | --- |
-| `font.family.ibm-plex-mono` | "IBM Plex Mono", ui-monospace, monospace | <span class="ods-font" style="font-family:"IBM Plex Mono", ui-monospace, monospace">Aa 123</span> |
-| `font.family.ibm-plex-sans` | "IBM Plex Sans", system-ui, sans-serif | <span class="ods-font" style="font-family:"IBM Plex Sans", system-ui, sans-serif">Aa 123</span> |
-| `font.line-height.16` | 1rem (16px) |  |
-| `font.line-height.20` | 1.25rem (20px) |  |
-| `font.line-height.24` | 1.5rem (24px) |  |
-| `font.line-height.28` | 1.75rem (28px) |  |
-| `font.size.12` | 0.75rem (12px) | <span class="ods-bar" style="width:0.75rem"></span> |
-| `font.size.13` | 0.8125rem (13px) | <span class="ods-bar" style="width:0.8125rem"></span> |
-| `font.size.14` | 0.875rem (14px) | <span class="ods-bar" style="width:0.875rem"></span> |
-| `font.size.16` | 1rem (16px) | <span class="ods-bar" style="width:1rem"></span> |
-| `font.size.20` | 1.25rem (20px) | <span class="ods-bar" style="width:1.25rem"></span> |
-| `font.size.24` | 1.5rem (24px) | <span class="ods-bar" style="width:1.5rem"></span> |
-| `font.weight.400` | 400 |  |
-| `font.weight.500` | 500 |  |
-| `font.weight.600` | 600 |  |
-
-## Where it lands
-
-- Button
-- Input
-- Badge
-- Table
+The raw values these tokens end at are on [Primitives › Type](../primitives/type).
 
 ## When to use what
 

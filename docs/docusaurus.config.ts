@@ -26,7 +26,7 @@ const config: Config = {
   i18n: { defaultLocale: "en", locales: ["en"] },
   customFields: { schemes, storybook: STORYBOOK },
   // Sets the scheme (and the multi-brand brand) on <html> before the first paint, so a page never
-  // flashes in another scheme's colours. clientModules/scheme.ts keeps it right as you navigate.
+  // flashes in another scheme's colors. clientModules/scheme.ts keeps it right as you navigate.
   headTags: [
     {
       tagName: "script",
@@ -34,7 +34,11 @@ const config: Config = {
       innerHTML: `(function(){var s=${ids},p=location.pathname.slice(${BASE.length}).split("/")[0],h=document.documentElement;if(s.indexOf(p)>=0)h.setAttribute("data-scheme",p);try{h.setAttribute("data-brand",localStorage.getItem("open-ds-brand")||"aster")}catch(e){h.setAttribute("data-brand","aster")}})();`,
     },
   ],
-  clientModules: ["./src/clientModules/scheme.ts", "./src/clientModules/embed-mode.ts"],
+  clientModules: [
+    "./src/clientModules/scheme.ts",
+    "./src/clientModules/embed-mode.ts",
+    "./src/clientModules/scales.ts",
+  ],
   presets: [
     [
       "classic",
@@ -47,12 +51,11 @@ const config: Config = {
   ],
   themeConfig: {
     colorMode: { respectPrefersColorScheme: true },
-    // The top bar: the current scheme's sections on the left, the switcher on the right.
+    // The top bar: the brand, then the switcher on the right. A scheme's sections live in its sidebar (OD-216).
     navbar: {
       title: "Open DS docs",
       logo: { src: "logo.svg", alt: "Open DS" },
       items: [
-        { type: "custom-schemeLinks", position: "left" },
         { type: "custom-schemeSwitcher", position: "right" },
         { href: STORYBOOK, label: "Storybook", position: "right" },
       ],

@@ -89,7 +89,7 @@
     "primary": "#D61F7A",
     "corners": "9999px",
     "font": "\"Bricolage Grotesque\", system-ui, sans-serif",
-    "motion": "320ms"
+    "motion": "120ms"
   },
   {
     "id": "multi-brand",
@@ -107,7 +107,7 @@
       "White-label platform",
       "Agency client portfolio"
     ],
-    "components": 50,
+    "components": 49,
     "answers": 78,
     "themes": 6,
     "primary": "#0F766E",

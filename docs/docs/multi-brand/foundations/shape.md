@@ -33,6 +33,10 @@ Corners and borders.
 
 Each token points to another token. Values live only on primitives, below.
 
+<div class="odv-brandset" data-for-brand="aster">
+
+<p class="odv-brandname">Aster</p>
+
 | Token | Points to |
 | --- | --- |
 | `radius.control` | `aster.theme.base.radius.control` → `radius.4` |
@@ -42,26 +46,39 @@ Each token points to another token. Values live only on primitives, below.
 | `border-width.default` | `border-width.1` |
 | `border-width.focus` | `border-width.2` |
 
-## Primitives
+</div>
 
-The raw values the tokens above end at.
+<div class="odv-brandset" data-for-brand="birch">
 
-| Primitive | Value | Sample |
-| --- | --- | --- |
-| `border-width.1` | 1px | <span class="ods-line" style="height:1px"></span> |
-| `border-width.2` | 2px | <span class="ods-line" style="height:2px"></span> |
-| `radius.4` | 0.25rem (4px) | <span class="ods-tile" style="border-radius:0.25rem"></span> |
-| `radius.8` | 0.5rem (8px) | <span class="ods-tile" style="border-radius:0.5rem"></span> |
-| `radius.full` | 9999px | <span class="ods-tile" style="border-radius:9999px"></span> |
+<p class="odv-brandname">Birch</p>
 
-## Where it lands
+| Token | Points to |
+| --- | --- |
+| `radius.control` | `birch.theme.base.radius.control` → `radius.12` |
+| `radius.badge` | `birch.theme.base.radius.badge` → `radius.999` |
+| `radius.container` | `birch.theme.base.radius.container` → `radius.16` |
+| `radius.round` | `radius.full` |
+| `border-width.default` | `border-width.1` |
+| `border-width.focus` | `border-width.2` |
 
-- Button
-- Input
-- Control
-- Badge
-- Card
-- Overlay
+</div>
+
+<div class="odv-brandset" data-for-brand="coral">
+
+<p class="odv-brandname">Coral</p>
+
+| Token | Points to |
+| --- | --- |
+| `radius.control` | `coral.theme.base.radius.control` → `radius.999` |
+| `radius.badge` | `coral.theme.base.radius.badge` → `radius.999` |
+| `radius.container` | `coral.theme.base.radius.container` → `radius.20` |
+| `radius.round` | `radius.full` |
+| `border-width.default` | `border-width.1` |
+| `border-width.focus` | `border-width.2` |
+
+</div>
+
+The raw values these tokens end at are on [Primitives › Shape](../primitives/shape).
 
 ## When to use what
 

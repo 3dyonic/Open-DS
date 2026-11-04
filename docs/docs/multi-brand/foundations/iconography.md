@@ -28,21 +28,37 @@ When icons appear and how they look.
 
 Each token points to another token. Values live only on primitives, below.
 
+<div class="odv-brandset" data-for-brand="aster">
+
+<p class="odv-brandname">Aster</p>
+
 | Token | Points to |
 | --- | --- |
 | `size.icon` | `size.16` |
 
-## Primitives
+</div>
 
-The raw values the tokens above end at.
+<div class="odv-brandset" data-for-brand="birch">
 
-| Primitive | Value | Sample |
-| --- | --- | --- |
-| `size.16` | 1rem (16px) | <span class="ods-bar" style="width:1rem"></span> |
+<p class="odv-brandname">Birch</p>
 
-## Where it lands
+| Token | Points to |
+| --- | --- |
+| `size.icon` | `size.16` |
 
-- Button
+</div>
+
+<div class="odv-brandset" data-for-brand="coral">
+
+<p class="odv-brandname">Coral</p>
+
+| Token | Points to |
+| --- | --- |
+| `size.icon` | `size.16` |
+
+</div>
+
+The raw values these tokens end at are on [Primitives › all kinds](../primitives/).
 
 ## When to use what
 

@@ -34,21 +34,7 @@ Each token points to another token. Values live only on primitives, below.
 | `elevation.card` | `brand-expressive.theme.light.elevation.card` → `shadow.card` | `brand-expressive.theme.dark.elevation.card` → `shadow.card-dark` |
 | `elevation.overlay` | `brand-expressive.theme.light.elevation.overlay` → `shadow.overlay` | `brand-expressive.theme.dark.elevation.overlay` → `shadow.overlay-dark` |
 
-## Primitives
-
-The raw values the tokens above end at.
-
-| Primitive | Value | Sample |
-| --- | --- | --- |
-| `shadow.card` | 0px 12px 32px 0px #1F141124 | <span class="ods-card" style="box-shadow:0px 12px 32px 0px #1F141124"></span> |
-| `shadow.card-dark` | 0px 12px 32px 0px #00000080 | <span class="ods-card" style="box-shadow:0px 12px 32px 0px #00000080"></span> |
-| `shadow.overlay` | 0px 24px 48px 0px #1F141133 | <span class="ods-card" style="box-shadow:0px 24px 48px 0px #1F141133"></span> |
-| `shadow.overlay-dark` | 0px 24px 48px 0px #00000099 | <span class="ods-card" style="box-shadow:0px 24px 48px 0px #00000099"></span> |
-
-## Where it lands
-
-- Card
-- Overlay
+The raw values these tokens end at are on [Primitives › Effects](../primitives/effects).
 
 ## When to use what
 

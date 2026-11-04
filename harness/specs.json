@@ -155,7 +155,7 @@
       "in": [
         "tokens/src DTCG source and a Style Dictionary build (npm run tokens) to build/",
         "the components, Storybook for the scheme with mode and brand toggles and usage rules",
-        "Docusaurus docs from the scheme, in its own colours and fonts",
+        "Docusaurus docs from the scheme, in its own colors and fonts",
         "scheme.json, AGENTS.md, the skill, llms.txt, CI and a README",
         "the project depends on the open-ds package for why and when",
         "pnpm test:create: pack, create, npm install, build tokens, Storybook and docs"
@@ -275,9 +275,9 @@
       "in": [
         "the top bar carries the design system's name, version and sections, with Built with Open DS on the right",
         "the home shows a product screen from the system's own components and samples, the answers it cites most, and tiles into every section",
-        "the colour page shows the key colours, the surfaces in light and dark, and each status in use with its contrast",
+        "the color page shows the key colors, the surfaces in light and dark, and each status in use with its contrast",
         "component pages show the live story, each variant live with its decision and answers, the rules as do and don't, and the answers as cards",
-        "primitive colours show as ramps; the same visual styles ship in a created project's docs"
+        "primitive colors show as ramps; the same visual styles ship in a created project's docs"
       ],
       "checks": ["docs-sections", "docs-build", "cli-create-works"]
     },
@@ -308,7 +308,7 @@
       "in": [
         "each tool is one engine, served as an MCP tool and a CLI command (check, copy, change, token, fit)",
         "check_ui finds raw values, components the scheme does not carry and variants it does not use; a created project comes back clean",
-        "plan_change changes nothing: it lists what an answer reopens, or the contrast a new colour keeps in every theme",
+        "plan_change changes nothing: it lists what an answer reopens, or the contrast a new color keeps in every theme",
         "the skills use the tools: review and build run check_ui, write check_copy, change plan_change, build find_token, choose fit_scheme"
       ],
       "checks": ["skills-shape", "llm-mcp-docstrings", "cli-create-works"]
@@ -327,7 +327,7 @@
       "id": "OD-205",
       "title": "Context booklets and a router in created projects, from the context engine",
       "in": [
-        "a created project has context/: one Markdown booklet per component, colour and task, a router (index.json) and a README",
+        "a created project has context/: one Markdown booklet per component, color and task, a router (index.json) and a README",
         "AGENTS.md in a project holds the read-once text and the core rules, within 4 KB",
         "get_context and open-ds context return the short form by default, with named sections, pages for long sections, and the full answer on request",
         "get_context file=<path> and open-ds context --file return the booklets the router lists",
@@ -383,11 +383,140 @@
       "id": "OD-214",
       "title": "Every catalogue component is built: In or Left out, nothing else",
       "in": [
-        "attachment, bubble, button-group, hover-card, item, marker, menubar, message, message-scroller and sonner are built, with stories, docs pages and agent context",
+        "attachment, bubble, button-group, hover-card, item, marker, menubar, message and message-scroller are built, with stories, docs pages and agent context",
         "each scheme's samples hold a short conversation for the conversation components",
         "the roles answer names the families an inventory draws from first; a component from another family can be in when its entry says where it fits"
       ],
       "checks": ["catalogue-built", "schemes-inventory", "schemes-samples", "storybook-renders", "docs-build"]
+    },
+    {
+      "id": "OD-223",
+      "title": "Whole color scales in OKLCH, roles on fixed steps, and the status text pair",
+      "in": [
+        "every colored hue has light and dark scales, 50 to 950, generated from a key color exact at 600; the dark scale has its own curve",
+        "roles sit on the same step in every color: tints 100, bases 600, hover and links 700",
+        "each status has text.<status>-on-light (800) and -on-dark (50), fixed colors; the badge label names its tint and the build picks by tone",
+        "steps that carry text are nudged, and the move is recorded on the hue"
+      ],
+      "checks": ["scales-generated", "semantics-guidance", "options-used", "docs-build", "storybook-renders"]
+    },
+    {
+      "id": "OD-228",
+      "title": "Neutral as a semantic scale: roles read neutral, neutral points at a gray",
+      "in": [
+        "primitives hold the grays, each a whole ramp; the grammar keeps the menu with each gray's temperature",
+        "color.neutral.0 to 950 is a semantic scale each scheme or brand points at one gray, with why and because",
+        "surfaces, borders, text, secondary and disabled read only color.neutral, never a gray directly"
+      ],
+      "checks": ["neutral-semantic", "semantics-guidance", "docs-build", "storybook-renders"]
+    },
+    {
+      "id": "OD-227",
+      "title": "Two neutral text tokens: text on a light fill and text on a dark fill",
+      "in": [
+        "color.text.on-light (the light mode's body text) and color.text.on-dark (white) are the same in both modes",
+        "the text on every fill is the one its tone picks; the 14 tone-set tokens are gone",
+        "color.text.inverse, color.text.on-action and color.text.on-danger point at the pair by their fill's tone"
+      ],
+      "checks": ["semantics-guidance", "docs-build", "storybook-renders"]
+    },
+    {
+      "id": "OD-222",
+      "title": "Options match the decisions: only what is read, motion as answered, text paired by tone, focus, selected and danger",
+      "in": [
+        "outside color ramps, every primitive is read by a semantic, a theme or a component key",
+        "the motion tokens hold as many speeds as each scheme's motion.count answer; panels read their own speed",
+        "the agent context carries the rule, generated from the grammar",
+        "every fill states its tone, light or dark, in every brand and mode; what sits on it comes from color.on-light or color.on-dark, and keeps its contrast there",
+        "a known shortfall waits on its fill with the ticket that fixes it, and the check names it",
+        "every focus ring keeps a 2px gap in the canvas color from its control",
+        "a selected or current item shows an edge beside its fill, so selection is never color alone",
+        "a danger fill, with its own label, for the confirm of a delete; primary and danger stay clearly apart in every brand and mode"
+      ],
+      "checks": [
+        "options-used",
+        "answers-match-tokens",
+        "semantics-guidance",
+        "focus-ring-gap",
+        "selection-not-color-alone",
+        "danger-apart",
+        "docs-build",
+        "storybook-renders"
+      ]
+    },
+    {
+      "id": "OD-221",
+      "title": "Line heights: ratios in every scheme, one step per job, steps at least 0.2 apart",
+      "in": [
+        "the grammar's options rules say each option looks clearly different; line heights are ratios at least 0.2 apart",
+        "every scheme's line heights follow them, with one step per job",
+        "the agent context carries the rule, generated from the grammar",
+        "the line-height sample is one line on a band exactly one line height tall, in the docs and Storybook"
+      ],
+      "checks": ["options-distinct", "docs-build", "storybook-renders"]
+    },
+    {
+      "id": "OD-215",
+      "title": "Docs: every component shows the tokens it reads, from its classes to the scheme's values",
+      "in": [
+        "the shadcn mapping lives in cli/src/shadcn.mjs; the token build and the docs read the same table",
+        "each component built on shadcn lists every part it styles: class, shadcn variable, the scheme's token, and the primitive and value in every theme, with states",
+        "the harness fails when a component reads a shadcn variable no scheme token maps"
+      ],
+      "checks": ["components-tokens-mapped", "docs-sections", "docs-build"]
+    },
+    {
+      "id": "OD-230",
+      "title": "Decision hints: rules of thumb in the grammar, for agents and the harness",
+      "in": [
+        "each scope can carry hints: when, do, what to measure, why, and the decisions they came from",
+        "get_scales and open-ds scales return the color hints, for agents",
+        "the harness checks the hints that can be measured",
+        "the docs do not show them yet: the human-facing form is refined in OD-232"
+      ],
+      "checks": ["hints-measured", "json-schemas-2020-12"]
+    },
+    {
+      "id": "OD-231",
+      "title": "Status text on dark shows its hue: on-dark to step 100, adjusted where needed",
+      "in": [
+        "text.<status>-on-dark points at the status hue's light.100 in every scheme",
+        "each status hue's light.100 takes just enough chroma (0.04) to show its hue, lightness lowered only where sRGB has no room, recorded with its reason",
+        "the light tint shares the step and keeps 7:1 or more with its 800 text"
+      ],
+      "checks": ["hints-measured", "scales-generated", "semantics-guidance"]
+    },
+    {
+      "id": "OD-233",
+      "title": "Pairs and tones as pictures; where scopes land, traced from code",
+      "in": [
+        "Foundations › Color shows each fill in its color with the text that may sit on it, per theme, grouped by tone; then each fill's tone in both modes",
+        "each scope's lands_in is traced from the components' code and never hand-written",
+        "Foundations pages no longer list where a scope lands or the component keys"
+      ],
+      "checks": ["lands-in-traced", "scopes-uniform-template", "docs-sections", "docs-build"]
+    },
+    {
+      "id": "OD-234",
+      "title": "Every component has its own token API",
+      "in": [
+        "every component reads its own tokens (component.<id>.<part>.<name>), each aliasing a semantic; no class reads a system token or a fixed spacing or size directly",
+        "a fixed value with no semantic of the same value stays fixed and is listed for a new semantic, never moved to the nearest one",
+        "get_component, get_context and open-ds component give agents the whole API: each token, its semantic, its primitive and value per theme, and whether a theme changes it",
+        "the component docs page lists the tokens by part, as a tree from its token to the semantic and the CSS variable, with the primitive and value in light and dark"
+      ],
+      "checks": ["components-own-api", "components-reference", "context-booklets", "lands-in-traced", "docs-build"]
+    },
+    {
+      "id": "OD-235",
+      "title": "The component spacing map: the spacing components hard-code follows each scheme's rhythm",
+      "in": [
+        "every spacing inside a component reads a token that links to a semantic or a step of the component spacing map; no component uses a raw spacing class",
+        "a step is 4px × its multiplier × the scheme's rhythm, a multiple of 4px and at most 64px; the scheme decides its rhythm and which steps hold still; the hairline is a fixed 2px",
+        "the values are computed once when the scheme is written and stored as links to space primitives; no CSS calc",
+        "every spacing a scheme decides sits on the 4px grid, at most 64px"
+      ],
+      "checks": ["spacing-map-generated", "spacing-on-grid", "components-own-api", "json-files-validate"]
     }
   ]
 }

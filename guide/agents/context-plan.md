@@ -1,7 +1,7 @@
 ---
 sidebar_position: 3
 title: "Token guidance and context on demand"
-description: "What each colour is for, which fills it may sit on, the status urgency order, and one call that returns only the context a task needs. How it is built and checked."
+description: "What each color is for, which fills it may sit on, the status urgency order, and one call that returns only the context a task needs. How it is built and checked."
 ---
 
 # Token guidance and context on demand
@@ -14,7 +14,7 @@ Agents could find the right situation, but they could not ask a token what it is
 
 1. **Meaning per semantic key.** One line said what a key is, not when to use it, when not to, and what to use instead.
 2. **Pairs.** Which text goes on which fill.
-3. **Order.** Status colours have an urgency order. Nothing stopped an agent from raising the level to get attention.
+3. **Order.** Status colors have an urgency order. Nothing stopped an agent from raising the level to get attention.
 
 ## Four rules
 
@@ -27,7 +27,7 @@ Agents could find the right situation, but they could not ask a token what it is
 
 ### Guidance in the grammar
 
-`semantics.keys[]` has one entry per colour semantic key:
+`semantics.keys[]` has one entry per color semantic key:
 
 | Field     | What it says                                                                                                  |
 | --------- | ------------------------------------------------------------------------------------------------------------- |
@@ -44,7 +44,7 @@ Agents could find the right situation, but they could not ask a token what it is
 
 `semantics-guidance` in the harness checks four things:
 
-- every colour semantic in every scheme has guidance;
+- every color semantic in every scheme has guidance;
 - every key that guidance names exists;
 - every pair keeps its contrast in every brand and mode;
 - the urgency order names real keys.
@@ -54,7 +54,7 @@ Agents could find the right situation, but they could not ask a token what it is
 ### The gaps, filled in every scheme, light and dark
 
 - **Info status:** `color.status.info.@` and `.subtle`. It lands in Badge as the `info` tone.
-- **Category colours:** `color.category.1` to `.5`, each with `@` and `.subtle`, for tags and chart series. They carry no meaning. shadcn's `chart-1` to `chart-5` read them. Tag text is `color.text.primary` on the subtle fill.
+- **Category colors:** `color.category.1` to `.5`, each with `@` and `.subtle`, for tags and chart series. They carry no meaning. shadcn's `chart-1` to `chart-5` read them. Tag text is `color.text.primary` on the subtle fill.
 - **Disabled set:** `color.disabled.text`, `.surface` and `.border`. Button and Input read it through `button/disabled/*` and `input/disabled/*`, instead of fading with opacity.
 
 Info and categories borrow existing ramps (blue, teal) rather than inventing values. Each theme says why it picked its hues.
@@ -81,13 +81,13 @@ Measuring the pairs found two real problems:
 
 ### Where the guidance shows up
 
-| Place                             | What it gets                                                           |
-| --------------------------------- | ---------------------------------------------------------------------- |
-| Token `$description` (CSS, JSON)  | The grammar's `intent`, applied by the build and by `open-ds create`.  |
-| MCP `get_key`, `when_to_use`      | The guidance next to the value.                                        |
-| Deployed `AGENTS.md`              | A colour table: what each key is for and what not to use it for.       |
-| `open-ds-review`, `open-ds-build` | Check `not_for`, pairs and urgency. Start with `get_context`.          |
-| `llms-full.txt`, docs colour page | The urgency order, what each colour is for, and the pairs at a glance. |
+| Place                             | What it gets                                                          |
+| --------------------------------- | --------------------------------------------------------------------- |
+| Token `$description` (CSS, JSON)  | The grammar's `intent`, applied by the build and by `open-ds create`. |
+| MCP `get_key`, `when_to_use`      | The guidance next to the value.                                       |
+| Deployed `AGENTS.md`              | A color table: what each key is for and what not to use it for.       |
+| `open-ds-review`, `open-ds-build` | Check `not_for`, pairs and urgency. Start with `get_context`.         |
+| `llms-full.txt`, docs color page  | The urgency order, what each color is for, and the pairs at a glance. |
 
 ### Context on demand
 
@@ -104,7 +104,7 @@ It returns only that slice: rules, guidance, pairs and resolved values in every 
 ## Next
 
 - Guidance for space, size and type keys, if agents misuse them.
-- Category colours in more components (tags, avatars), when a scheme's inventory needs them.
+- Category colors in more components (tags, avatars), when a scheme's inventory needs them.
 
 ## Short form and booklets (OD-205)
 

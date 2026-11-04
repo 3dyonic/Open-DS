@@ -2,10 +2,15 @@
 // Docusaurus. The docs site (docs/) and `open-ds init --docs` both use this, so a team that takes
 // a scheme gets the same pages Open DS builds.
 
-import { cssName, semanticView, themeTokens } from "./tokens.mjs";
+import { cssName, flatTokens, semanticView, themeTokens } from "./tokens.mjs";
 import { existsSync, readFileSync, readdirSync } from "node:fs";
 import { join } from "node:path";
 import { questions } from "./schemes.mjs";
+import { SHADCN, SHADCN_SCALE } from "./shadcn.mjs";
+import { pairsIn, sitsOn, toneOf, toneRole } from "./tones.mjs";
+import { LANES, follow, laneOf, scaleMap } from "./scale-map.mjs";
+import { aliasChain, tokenIndex } from "./lands.mjs";
+import { spacingGuide } from "./spacing-map.mjs";
 import { componentGuide, followers } from "./component.mjs";
 
 // Which component keys each shipped component reads.
@@ -146,7 +151,7 @@ const STATUS_CLASS = {
 };
 const badgeHtml = (label, meaning) =>
   `<span class="odv-badge odv-t-${STATUS_CLASS[meaning] ?? "neutral"}">${attr(label)}</span>`;
-/** WCAG contrast between two hex colours, for the ratios the colour page prints. */
+/** WCAG contrast between two hex colors, for the ratios the color page prints. */
 function contrast(a, b) {
   const lum = (hex) => {
     const c = String(hex).replace("#", "").slice(0, 6).match(/../g);
@@ -209,6 +214,13 @@ const PRIMITIVE_PAGES = [
   },
 ];
 
+// A line height, as the line box it makes (OD-221): one line of Ag at a fixed 16px on a band exactly
+// one line height tall, with that height in px.
+const leading = (v) => {
+  const m = String(v).match(/^([\d.]+)(rem|px)?$/);
+  const px = m ? Math.round(Number(m[1]) * (m[2] === "px" ? 1 : 16)) : "";
+  return `<span class="ods-leading" style="line-height:${v}" data-h="${px ? `${px}px` : ""}">Ag Ag Ag</span>`;
+};
 function sample(path, type, raw) {
   // Primitives are not CSS variables (only semantic tokens and component keys are), so a primitive's
   // sample draws its own value.
@@ -216,11 +228,21 @@ function sample(path, type, raw) {
   if (type === "color")
     return `<span class="ods-swatch" style="background:${v}"></span>`;
   if (type === "fontFamily")
-    return `<span class="ods-font" style="font-family:${v}">Aa 123</span>`;
+    // single quotes inside: a family name in double quotes would close the attribute
+    return `<span class="ods-font" style="font-family:${String(v).replace(/"/g, "'")}">Aa 123</span>`;
+  if (type === "fontWeight" || /font[.-]weight/.test(path))
+    return `<span class="ods-typesample" style="font-weight:${v}">Aa</span>`;
+  if (/line-height/.test(path) && type !== "dimension") return leading(v);
+  if (/letter/.test(path) && type !== "dimension")
+    return `<span class="ods-typesample" style="letter-spacing:${v}">Aa Aa</span>`;
   if (type === "shadow")
     return `<span class="ods-card" style="box-shadow:${v}"></span>`;
+  // Motion plays when you hover its row (OD-220): a duration at the standard easing, an easing at a
+  // relaxed speed.
   if (type === "duration")
-    return `<span class="ods-motion" style="--ods-d:${v}"><span></span></span>`;
+    return `<span class="ods-motion" style="--ods-d:${v}" title="Hover to play"><span></span></span>`;
+  if (type === "cubicBezier")
+    return `<span class="ods-motion" style="--ods-e:${v}" title="Hover to play"><span></span></span>`;
   if (type === "number" && /opacity/.test(path))
     return `<span class="ods-swatch" style="opacity:${v}"></span>`;
   if (type === "dimension") {
@@ -228,14 +250,28 @@ function sample(path, type, raw) {
       return `<span class="ods-tile" style="border-radius:${v}"></span>`;
     if (/border-width/.test(path))
       return `<span class="ods-line" style="height:${v}"></span>`;
-    if (/font-size|line-height|letter/.test(path)) return "";
+    // A type size shows type at that size (OD-217), not a bar.
+    if (/font[.-]size/.test(path))
+      return `<span class="ods-typesample" style="font-size:${v}">Aa</span>`;
+    if (/letter/.test(path))
+      return `<span class="ods-typesample" style="letter-spacing:${v}">Aa Aa</span>`;
+    if (/line-height/.test(path)) return leading(v);
     return `<span class="ods-bar" style="width:${v}"></span>`;
   }
   return "";
 }
 
 /** The specimen at the top of a foundation page: the scope's semantic tokens, drawn live. */
-function specimen(tokens, text) {
+// The type specimen shows each role with its own kind of content (OD-218): headings the screen title,
+// running text the scenario, a label the main action, data a number. Values come from the theme.
+const ROLE_TEXT = {
+  display: (x) => x.smp.screen,
+  title: (x) => x.smp.screen,
+  heading: (x) => x.smp.card?.title ?? x.smp.screen,
+  label: (x) => x.smp.actions?.primary,
+  data: (x) => x.smp.metrics?.map((m) => `${m.label} ${m.value}`).join(" · "),
+};
+function specimen(tokens, text, x = {}) {
   const roles = [
     ...new Set(
       tokens
@@ -250,7 +286,17 @@ function specimen(tokens, text) {
         .map((r) => {
           const p = `type.${r}`;
           const style = `font-family:${cssVar(`${p}.font-family`)};font-size:${cssVar(`${p}.font-size`)};line-height:${cssVar(`${p}.line-height`)};font-weight:${cssVar(`${p}.font-weight`)}`;
-          return `<div class="ods-type"><span class="ods-label">${r}</span><span style="${style}">${attr(text)}</span></div>`;
+          const line = (x.smp && ROLE_TEXT[r]?.(x)) || text;
+          const values = x.val
+            ? [
+                x.val(`${p}.font-size`),
+                x.val(`${p}.line-height`),
+                x.val(`${p}.font-weight`),
+              ]
+                .filter(Boolean)
+                .join(" · ")
+            : "";
+          return `<div class="ods-type"><span class="ods-label"><b>${r}</b>${values ? `<span>${attr(values)}</span>` : ""}</span><span class="ods-typeline" style="${style}">${attr(line)}</span></div>`;
         })
         .join("\n") +
       `\n</div>\n\n`
@@ -292,26 +338,232 @@ function componentIntro(uiDir, name) {
  * Every page of one scheme's docs, as { "relative/path.md": text }.
  * roots: { tokens, ui } from assetRoots(). storybook: the Storybook URL to link to.
  */
-/** The colour scope's guidance, from the grammar: the urgency order, what each key is for, and its pairs. */
-function colourGuidance(g) {
+/** Where a tone key sits, in words. */
+const toneWords = (id) => {
+  const r = toneRole(id);
+  return r?.tone === "own"
+    ? "The page's own fills"
+    : `Fills whose tone is ${r?.tone}`;
+};
+
+// The Primitives page each Foundations scope's values are on.
+const PRIM_PAGE_OF = {
+  color: { id: "color", title: "Color" },
+  spacing: { id: "space-and-size", title: "Space and size" },
+  typography: { id: "type", title: "Type" },
+  shape: { id: "shape", title: "Shape" },
+  elevation: { id: "effects", title: "Effects" },
+  motion: { id: "motion", title: "Motion" },
+};
+/**
+ * The Themes page's key colors (OD-223): the tokens the grammar names, in every theme, each as the
+ * primitive it points at, the neutral step it goes through, and its value. The scheme's gray first.
+ */
+function themeColors(scheme, g) {
+  const t = scheme.tokens;
+  const brands = Object.keys(t.brands);
+  const kc = g.semantics?.key_colors;
+  if (!kc) return "";
+  const at = (p) =>
+    p.split(".").reduce((n, k) => n && n[k], t.primitive)?.$value;
+  const grays = brands
+    .map((b) => ({ b, n: t.brands[b].theme.neutral }))
+    .filter((x) => x.n);
+  const same = new Set(grays.map((x) => x.n.gray)).size === 1;
+  const gray = grays.length
+    ? (same ? grays.slice(0, 1) : grays)
+        .map(
+          (x) =>
+            `- ${brands.length > 1 ? (same ? "**Every brand**: " : `**${t.brands[x.b].label ?? x.b}**: `) : ""}the neutral is \`${x.n.gray}\` (${x.n.temperature}). ${esc(x.n.why)}`,
+        )
+        .join("\n") + "\n\n"
+    : "";
+  const cell = (th, path) => {
+    const f = follow(t, th.brand ?? brands[0], th.mode ?? th.id, path);
+    if (!f) return "—";
+    const v = String(at(f.prim) ?? "")
+      .slice(0, 9)
+      .toUpperCase();
+    return `<span class="odv-tc"><i style="background:${v};color:${ink(v)}">Aa</i><span><code>${f.prim.replace(/^color\./, "")}</code><small>${f.via ? `via ${f.via.replace(/^color\./, "")} · ` : ""}${v}</small></span></span>`;
+  };
+  return (
+    `## Key colors in each theme\n\n${esc(kc.description)} Each shows the primitive it points at, then its value.\n\n` +
+    gray +
+    `| Token | ${scheme.themes.map((x) => x.id).join(" | ")} |\n| --- | ${scheme.themes.map(() => "---").join(" | ")} |\n` +
+    kc.tokens
+      .map(
+        (p) =>
+          `| \`${p.replace(/\.@$/, "")}\` | ${scheme.themes.map((x) => cell(x, p)).join(" | ")} |`,
+      )
+      .join("\n") +
+    "\n"
+  );
+}
+
+/**
+ * The scale view (OD-223): for each hue, a light and a dark tab. Each tab shows the lanes that hue's
+ * tokens paint (backgrounds, edges and rings, text), each as the whole scale, the used steps filled and
+ * the rest empty slots, then one row per token: its color, its name, the step and the value. A row and
+ * its step light up together on hover (src/clientModules/scales.ts). A row links to the token's guidance.
+ */
+// OD-235: the component spacing map on Foundations › Spacing, from the same guide agents read.
+function spacingMap(scheme, g) {
+  const sg = spacingGuide(scheme, {
+    index: tokenIndex(scheme),
+    chain: aliasChain,
+    hints: g.scopes.find((x) => x.id === "spacing")?.hints ?? [],
+  });
+  const val = (r) =>
+    `<span class="odv-ptok">${r.primitive}</span><span class="odv-kvsep">:</span><span class="odv-raw">${r.px}px</span>`;
+  return (
+    `\n\n## The component spacing map\n\n` +
+    `Inside a component, spacing is a step of this map. Each step is 4px × its multiplier × the scheme's rhythm, rounded to a multiple of 4px, at most 64px. In ${scheme.name} the rhythm is ${sg.rhythm}. ${esc(sg.why)}\n\n` +
+    `Steps that hold still stay at 4px × their multiplier in every scheme. The hairline is a fixed 2px nudge. In code, write the step's utility: \`p-map-x6\`, \`gap-map-x2\`.\n\n` +
+    `| Step | Multiplier | Utility | Token and value |\n| --- | --- | --- | --- |\n` +
+    sg.steps
+      .map(
+        (x) =>
+          `| ${x.step}${x.fixed ? " (holds still)" : ""} | ${x.multiplier ? `×${x.multiplier}` : "fixed"} | \`*-map-${x.step}\` | <span class="tok">${x.token}</span> ${val(x)} |`,
+      )
+      .join("\n") +
+    `\n\nBetween things and on the page, use a role instead: ` +
+    sg.roles.map((r) => `\`*-${r.utility}\` (${r.px}px)`).join(", ") +
+    `. A spacing is never a number.`
+  );
+}
+
+function colorScales(scheme, g, fams) {
+  const t = scheme.tokens;
+  const brands = Object.keys(t.brands);
+  const many = brands.length > 1;
+  const at = (p) =>
+    t.primitive &&
+    p.split(".").reduce((n, k) => n && n[k], t.primitive)?.$value;
+  const hex = (p) =>
+    String(at(p) ?? "")
+      .slice(0, 9)
+      .toUpperCase();
+  const maps = {};
+  for (const b of brands)
+    for (const m of ["light", "dark"]) maps[`${b}|${m}`] = scaleMap(t, b, m);
+  const guided = new Set(
+    (g.semantics?.keys ?? []).map((k) => k.id.replace(/\.@$/, "")),
+  );
+  const surf = (m, path) => {
+    const f = follow(t, brands[0], m, path);
+    return f ? hex(f.prim) : "";
+  };
+  // a token, with the brands it lands in when not every brand
+  const entries = (hue, m, side) => {
+    const rows = new Map();
+    for (const b of brands)
+      for (const [prim, list] of Object.entries(maps[`${b}|${m}`])) {
+        const [, h, mm, st] = prim.split(".");
+        if (h !== hue || (side === "own") !== (mm === m)) continue;
+        for (const x of list) {
+          const key = `${x.token}|${prim}`;
+          const r = rows.get(key) ?? { ...x, prim, step: st, brands: [] };
+          r.brands.push(b);
+          rows.set(key, r);
+        }
+      }
+    return [...rows.values()];
+  };
+  const row = (r, lane) => {
+    const name = `<span class="odv-kv-k">${r.token}</span>`;
+    const tag =
+      many && r.brands.length < brands.length
+        ? `<span class="odv-kv-tag">${r.brands.join(", ")}</span>`
+        : "";
+    const val = `<span class="odv-kv-v"><b>${r.prim.replace(/^color\./, "")}</b>${r.via ? `<small>via ${r.via}</small>` : ""}<small>${hex(r.prim)}</small></span>`;
+    const inner = `<i class="odv-kv-sw" style="background:${hex(r.prim)}"></i><span>${name}${tag}</span>${val}`;
+    const link = lane ? ` data-link="${lane}-${r.step}"` : "";
+    const id = `color.${r.token}`;
+    return guided.has(id)
+      ? `<a class="odv-kv"${link} href="../foundations/color?for=${cssId(id)}#what-each-color-is-for">${inner}</a>`
+      : `<div class="odv-kv"${link} tabindex="0">${inner}</div>`;
+  };
+  const hues = [
+    ...new Set(
+      fams.filter((f) => f.startsWith("color.")).map((f) => f.split(".")[1]),
+    ),
+  ];
+  const out = [];
+  for (const hue of hues) {
+    const modes = ["light", "dark"].filter(
+      (m) => t.primitive?.color?.[hue]?.[m],
+    );
+    if (!modes.length) continue;
+    const panels = modes.map((m) => {
+      const steps = Object.keys(t.primitive.color[hue][m]).filter(
+        (k) => !k.startsWith("$"),
+      );
+      const own = entries(hue, m, "own");
+      const canvas = surf(m, "color.surface.canvas");
+      const fixed = entries(hue, m, "other");
+      // used steps get the room; empty slots stay narrow
+      const cols = (steps, on) =>
+        steps
+          .map((st) => (on.has(st) ? "minmax(56px, 3fr)" : "minmax(30px, 1fr)"))
+          .join(" ");
+      const slot = (st) =>
+        `<div class="odv-sl"><span class="n">${st}</span><i style="background:${hex(`color.${hue}.${m}.${st}`)}"></i></div>`;
+      const filled = {
+        fill: (st, v) =>
+          `<div class="odv-st" data-link="fill-${st}" style="background:${v};color:${ink(v)}"><span class="n">${st}</span><span class="x">${v}</span></div>`,
+        edge: (st, v) =>
+          `<div class="odv-st odv-st-bare" data-link="edge-${st}"><span class="n">${st}</span><span class="x">${v}</span><span class="mk"><i style="background:${v}"></i><b style="background:${v}"></b></span></div>`,
+        // text shows on the page, or on the page's text color when it is a label for dark fills
+        text: (st, v) =>
+          `<div class="odv-st odv-st-bare" data-link="text-${st}" style="color:${v}${contrast(v, canvas) < 3 ? `;background:${contrast(v, surf(m, "color.text.primary")) >= 3 ? surf(m, "color.text.primary") : surf(m, "color.surface.inverse")}` : ""}"><span class="n">${st}</span><span class="x">${v}</span><span class="aa">Aa</span></div>`,
+      };
+      const lanes = LANES.map(({ id, title }) => {
+        const list = own
+          .filter((r) => laneOf(r.token) === id)
+          .sort((a, b) => steps.indexOf(a.step) - steps.indexOf(b.step));
+        if (!list.length) return "";
+        const on = new Set(list.map((r) => r.step));
+        return `<div class="odv-lane"><p class="odv-lane-h">${title}</p><div class="odv-sts" style="grid-template-columns:${cols(steps, on)}">${steps.map((st) => (on.has(st) ? filled[id](st, hex(`color.${hue}.${m}.${st}`)) : slot(st))).join("")}</div><div class="odv-kvs">${list.map((r) => row(r, id)).join("")}</div></div>`;
+      }).join("");
+      const empty = own.length
+        ? ""
+        : `<div class="odv-lane"><p class="odv-lane-h">Not used yet in this theme</p><div class="odv-sts" style="grid-template-columns:${cols(steps, new Set())}">${steps.map(slot).join("")}</div></div>`;
+      const other = m === "light" ? "dark" : "light";
+      const fx = fixed.length
+        ? `<div class="odv-lane"><p class="odv-lane-h">From the ${other} scale, fixed colors</p><div class="odv-kvs">${fixed.map((r) => row(r, null)).join("")}</div></div>`
+        : "";
+      const style = `background:${surf(m, "color.surface.canvas")};color:${surf(m, "color.text.primary")};--odv-muted:${surf(m, "color.text.muted")};--odv-edge:${surf(m, "color.border.default")};--odv-ring:${surf(m, "color.text.primary")};--odv-dash:${surf(m, "color.border.placeholder") || surf(m, "color.border.default")}`;
+      return `<div class="odv-scale-p" data-mode="${m}" role="tabpanel" style="${style}">${lanes}${empty}${fx}</div>`;
+    });
+    const n = (m) => entries(hue, m, "own").length;
+    out.push(
+      `## ${title(hue)}\n\n${modes.map((m) => `${n(m)} tokens in ${m}`).join(", ")}.\n\n` +
+        `<div class="odv-scale" data-scale><div class="odv-scale-tabs" role="tablist">${modes.map((m, i) => `<button type="button" role="tab" data-mode="${m}" aria-selected="${i === 0}">${title(m)} theme</button>`).join("")}</div>${panels.join("")}</div>`,
+    );
+  }
+  return (
+    `Each color is a whole scale in each theme. The lanes show what its tokens paint: backgrounds, edges and rings, and text. A filled step is in use; an empty slot waits for one. Under each scale, one row per token: its color, its name, the step it points at and the value. Point at a row to find its step. A row links to the token's guidance in [Foundations](../foundations/color).\n\n` +
+    out.join("\n\n")
+  );
+}
+const cssId = (id) =>
+  id
+    .replaceAll(".@", "")
+    .replace(/[^a-z0-9-]+/gi, "-")
+    .toLowerCase();
+
+/** The color scope's guidance, from the grammar: the urgency order, what each key is for, and its pairs. */
+function colorGuidance(g) {
   const s = g.semantics;
   if (!s) return "";
   const keys = s.keys;
   return (
     `\n## Status urgency\n\n${s.urgency.description}\n\n${s.urgency.order.map((id) => `\`${id}\``).join(" → ")}\n` +
-    `\n## What each colour is for\n\n| Token | What it is for | Not for |\n| --- | --- | --- |\n` +
+    `\n## What each color is for\n\n| Token | What it is for | Not for |\n| --- | --- | --- |\n` +
     keys
       .map(
         (k) =>
-          `| \`${k.id}\` | ${esc(k.intent)} | ${k.not_for.map((n) => `${esc(n.when)}: \`${n.use}\``).join("<br />") || "—"} |`,
-      )
-      .join("\n") +
-    `\n\n## Pairs at a glance\n\nWhich colour may sit on which fill, and the contrast it keeps there in every brand and mode. The harness checks every pair.\n\n| Token | Sits on | Contrast |\n| --- | --- | --- |\n` +
-    keys
-      .filter((k) => k.pairs)
-      .map(
-        (k) =>
-          `| \`${k.id}\` | ${k.pairs.on.map((o) => `\`${o}\``).join(", ")} | ${k.pairs.contrast ? `${k.pairs.contrast}:1` : esc(k.exempt ?? "exempt")} |`,
+          `| <span id="for-${cssId(k.id)}"></span>\`${k.id}\` | ${esc(k.intent)} | ${k.not_for.map((n) => `${esc(n.when)}: \`${n.use}\``).join("<br />") || "—"} |`,
       )
       .join("\n") +
     "\n"
@@ -322,7 +574,12 @@ export function docsPages(
   scheme,
   g,
   roots,
-  { storybook = "http://localhost:6006", all = false, robots = false, base = "/" } = {},
+  {
+    storybook = "http://localhost:6006",
+    all = false,
+    robots = false,
+    base = "/",
+  } = {},
 ) {
   // robots: the Open DS robot illustrations (OD-209), in the repo docs only. A scope's robot on its
   // Foundations card, the scheme's robot on its home page and in "Not part of" notes, Shelf on the
@@ -378,16 +635,143 @@ export function docsPages(
     const { steps } = chain(trees[theme.id], path);
     return steps.length && isPrimitive(steps.at(-1)) ? steps.at(-1) : undefined;
   };
-  const primitiveRows = (paths) =>
-    `| Primitive | Value | Sample |\n| --- | --- | --- |\n` +
-    [...new Set(paths)]
-      .filter(Boolean)
-      .sort()
-      .map(
-        (p) =>
-          `| \`${p}\` | ${esc(value(first, p, ""))} | ${sample(p, get(primitiveTree, p)?.$type ?? primitiveType(p), get(primitiveTree, p)?.$value)} |`,
-      )
-      .join("\n");
+  // OD-217: in a scheme with several brands, a table that names tokens or values is written once per
+  // brand. The brand picked in the top bar shows (generate.mjs scopes .odv-brandset); with one brand
+  // the table is written once, as before. Headings stay outside, so the page's contents do not repeat.
+  const brandList = Object.keys(scheme.tokens.brands ?? {});
+  const pairOf = (b) => {
+    const l =
+      scheme.themes.find((t) => t.brand === b && t.mode === "light") ??
+      scheme.themes.find((t) => t.brand === b);
+    return [
+      l,
+      scheme.themes.find((t) => t.brand === b && t.mode === "dark") ?? l,
+    ];
+  };
+  const perBrand = (fn) =>
+    brandsOf.length < 2
+      ? fn(first, dark)
+      : brandsOf
+          .map((b) => {
+            const [l, d] = pairOf(b);
+            return `<div class="odv-brandset" data-for-brand="${b}">\n\n<p class="odv-brandname">${attr(scheme.tokens.brands[b]?.label ?? b)}</p>\n\n${fn(l, d)}\n\n</div>`;
+          })
+          .join("\n\n");
+  // OD-233: pairs and tones as pictures. For each brand and mode, every fill painted in its color with
+  // the text that may sit on it, its step and the contrast it keeps there, grouped by the fill's tone; then
+  // each fill in both modes with the text its tone picks. From pairsIn and toneOf, which the harness checks.
+  const colorBrands = Object.keys(scheme.tokens.brands);
+  const prim = (p) =>
+    String(
+      p.split(".").reduce((n, k) => n && n[k], scheme.tokens.primitive)
+        ?.$value ?? "",
+    )
+      .slice(0, 7)
+      .toUpperCase();
+  const at = (b, m, path) => {
+    const f =
+      follow(scheme.tokens, b, m, path) ??
+      follow(scheme.tokens, b, m, `${path}.@`);
+    return f
+      ? { hex: prim(f.prim), prim: f.prim.replace(/^color\./, "") }
+      : null;
+  };
+  const short = (p) => p.replace(/^color\./, "").replace(/\.@$/, "");
+  const forBrands = (fn) =>
+    colorBrands.length === 1
+      ? fn(colorBrands[0])
+      : colorBrands
+          .map(
+            (b) =>
+              `<div class="odv-brandset" data-for-brand="${b}">\n\n<p class="odv-brandname">${attr(scheme.tokens.brands[b]?.label ?? b)}</p>\n\n${fn(b)}\n\n</div>`,
+          )
+          .join("\n\n");
+  const panelStyle = (b, m) =>
+    `background:${at(b, m, "color.surface.canvas")?.hex};color:${at(b, m, "color.text.primary")?.hex};--odv-muted:${at(b, m, "color.text.muted")?.hex};--odv-edge:${at(b, m, "color.border.default")?.hex}`;
+  const tabs = (modes) =>
+    `<div class="odv-scale-tabs" role="tablist">${modes.map((m, i) => `<button type="button" role="tab" data-mode="${m}" aria-selected="${i === 0}">${cap(m)} theme</button>`).join("")}</div>`;
+  const cap = (x) => x.charAt(0).toUpperCase() + x.slice(1);
+  const pairsPicture = () => {
+    const tones = g.semantics?.tones;
+    if (!tones) return "";
+    const fills = tones.fills.map((f) => f.id);
+    const own = /^color\.surface\.(canvas|default|raised|sunken|selected)$/;
+    const panel = (b, m) => {
+      const th = scheme.tokens.brands[b].theme;
+      const byFill = {};
+      for (const p of pairsIn(g, scheme, b, m))
+        if (p.key.startsWith("color.text.")) (byFill[p.on] ??= []).push(p);
+      const pageTone = toneOf(th, m, "color.surface.canvas")?.tone;
+      const tile = (fill) => {
+        const bg = at(b, m, fill);
+        if (!bg) return "";
+        const lines = (byFill[fill] ?? [])
+          .map((p) => {
+            const t = at(b, m, p.key);
+            if (!t) return "";
+            const cr = contrast(t.hex, bg.hex);
+            return `<div class="odv-pr"><span class="odv-pr-aa" style="color:${t.hex}">Aa</span><span class="odv-pr-k" style="color:${t.hex}">${short(p.key)}<small>${t.prim}</small></span><span class="odv-pr-c${cr >= p.contrast ? "" : " no"}" style="color:${t.hex}">${cr.toFixed(1)}:1</span></div>`;
+          })
+          .join("");
+        const first = (byFill[fill] ?? [])[0];
+        return `<div class="odv-tile" style="background:${bg.hex}"><p class="odv-tile-h" style="color:${first ? at(b, m, first.key)?.hex : "inherit"}">${short(fill)}<small>${bg.prim}</small></p>${lines}</div>`;
+      };
+      const group = (title, note, list) =>
+        list.length
+          ? `<div class="odv-pgroup"><p class="odv-lane-h">${title}</p><p class="odv-pgroup-n">${note}</p><div class="odv-tiles">${list.map(tile).join("")}</div></div>`
+          : "";
+      const ownFills = fills.filter(
+        (f) => own.test(f) && toneOf(th, m, f)?.tone === pageTone,
+      );
+      const rest = fills.filter((f) => !ownFills.includes(f));
+      return `<div class="odv-scale-p" data-mode="${m}" role="tabpanel" style="${panelStyle(b, m)}">${group("The page's own surfaces", "The page's own text sits on them: primary, secondary, muted and links.", ownFills)}${group(
+        "Light fills",
+        "Their tone is light, so the text on them is <code>text.on-light</code>, or a status's <code>-on-light</code> text.",
+        rest.filter((f) => toneOf(th, m, f)?.tone === "light"),
+      )}${group(
+        "Dark fills",
+        "Their tone is dark, so the text on them is <code>text.on-dark</code>, or a status's <code>-on-dark</code> text.",
+        rest.filter((f) => toneOf(th, m, f)?.tone === "dark"),
+      )}</div>`;
+    };
+    return (
+      `\n## Pairs at a glance\n\nWhich text may sit on which fill, and the contrast it keeps there. Each fill is shown in its own color, with every text that may sit on it. Fills are grouped by their tone in each mode: light fills take \`color.text.on-light\`, dark fills take \`color.text.on-dark\`. The harness checks every pair.\n\n` +
+      forBrands(
+        (b) =>
+          `<div class="odv-scale" data-scale>${tabs(["light", "dark"])}${["light", "dark"].map((m) => panel(b, m)).join("")}</div>`,
+      ) +
+      "\n"
+    );
+  };
+  const tonePicture = () => {
+    const tones = g.semantics?.tones;
+    if (!tones) return "";
+    return (
+      `\n## The tone of each fill\n\nEvery fill says whether it is light or dark, in each mode, and that picks the text on it. A fill can change tone between modes: the same token, the other text.\n\n` +
+      forBrands((b) => {
+        const th = scheme.tokens.brands[b].theme;
+        const rows = tones.fills
+          .map((f) => ({
+            id: f.id,
+            l: toneOf(th, "light", f.id),
+            d: toneOf(th, "dark", f.id),
+          }))
+          .filter((x) => x.l && x.d);
+        const flips = rows.filter((x) => x.l.tone !== x.d.tone).length;
+        const chip = (m, t, id) => {
+          const bg = at(b, m, id);
+          const fg = at(
+            b,
+            m,
+            t.tone === "light" ? "color.text.on-light" : "color.text.on-dark",
+          );
+          return `<span class="odv-tchip" style="background:${bg?.hex};color:${fg?.hex}"><b>Aa</b>${t.tone}${t.waits ? ` · waits for ${attr(t.waits.for)}` : ""}</span>`;
+        };
+        return `<p class="odv-tsum">${flips === rows.length ? `Every fill changes tone between light and dark mode.` : `${flips} of ${rows.length} fills change tone between light and dark mode.`}</p><div class="odv-trows"><div class="odv-trow odv-trow-h"><span>Fill</span><span>Light mode</span><span>Dark mode</span></div>${rows.map((x) => `<div class="odv-trow"><code>${short(x.id)}</code>${chip("light", x.l, x.id)}${chip("dark", x.d, x.id)}</div>`).join("")}</div>`;
+      }) +
+      "\n"
+    );
+  };
   const rule = (u) =>
     `| ${esc(sits[u.situation].title)} | ${esc(u.use)} | ${esc(u.not)} | ${esc(u.why)}${u.example ? ` Example: “${esc(u.example)}”` : ""} |`;
   const RULES = "| Situation | Use | Not | Why |\n| --- | --- | --- | --- |\n";
@@ -435,7 +819,9 @@ export function docsPages(
     : "";
   // The hero shows the scheme's own sample screen (OD-209): a table where the scheme carries one,
   // otherwise its sample card, in its voice, with its status, actions and figures.
-  const carriesTable = (scheme.inventory?.in ?? []).some((c) => c.id === "table" || c.id === "data-table");
+  const carriesTable = (scheme.inventory?.in ?? []).some(
+    (c) => c.id === "table" || c.id === "data-table",
+  );
   const cardHtml = smp.card
     ? h(
         `<div class="odv-app odv-app-card"><div class="odv-app-bar"><b>${attr(smp.screen ?? "")}</b></div>`,
@@ -443,13 +829,22 @@ export function docsPages(
         `<div class="odv-samplecard-head"><b>${attr(smp.card.title)}</b>${smp.card.status ? badgeHtml(smp.card.status, meaning[smp.card.status]) : ""}</div>`,
         smp.card.description ? `<p>${attr(smp.card.description)}</p>` : "",
         `<div class="odv-samplecard-act">`,
-        smp.card.primary ? `<span class="odv-btn primary">${attr(smp.card.primary)}</span>` : "",
-        smp.card.secondary ? `<span class="odv-btn secondary">${attr(smp.card.secondary)}</span>` : "",
+        smp.card.primary
+          ? `<span class="odv-btn primary">${attr(smp.card.primary)}</span>`
+          : "",
+        smp.card.secondary
+          ? `<span class="odv-btn secondary">${attr(smp.card.secondary)}</span>`
+          : "",
         `</div></div>`,
         smp.metrics?.length
           ? h(
               `<div class="odv-samplemetrics">`,
-              smp.metrics.slice(0, 4).map((m) => `<div><b>${attr(m.value)}</b><span>${attr(m.label)}</span></div>`),
+              smp.metrics
+                .slice(0, 4)
+                .map(
+                  (m) =>
+                    `<div><b>${attr(m.value)}</b><span>${attr(m.label)}</span></div>`,
+                ),
               `</div>`,
             )
           : "",
@@ -460,12 +855,14 @@ export function docsPages(
   // brands: compare shows the table, read an article opening, complete a form step (or the same card
   // in every brand), explore a launch sign-up. Every word is the scheme's sample content.
   const task = answer("tasks.q1")?.option;
-  const brandList = Object.keys(scheme.tokens.brands ?? {});
+  const brandsOf = Object.keys(scheme.tokens.brands ?? {});
   const fieldHtml = (f) =>
     f
       ? h(
           `<label class="odv-samplefield"><span class="odv-samplefield-label">${attr(f.label)}</span>`,
-          f.hint ? `<span class="odv-samplefield-hint">${attr(f.hint)}</span>` : "",
+          f.hint
+            ? `<span class="odv-samplefield-hint">${attr(f.hint)}</span>`
+            : "",
           `<span class="odv-samplefield-input">${attr(f.placeholder ?? "")}</span></label>`,
         )
       : "";
@@ -478,8 +875,12 @@ export function docsPages(
         `<span class="odv-preview-headline">${attr(smp.card.title)}</span>`,
         smp.tabs?.[0]?.content ? `<p>${attr(smp.tabs[0].content)}</p>` : "",
         `<div class="odv-samplecard-act">`,
-        smp.card.primary ? `<span class="odv-btn primary">${attr(smp.card.primary)}</span>` : "",
-        smp.card.secondary ? `<span class="odv-btn secondary">${attr(smp.card.secondary)}</span>` : "",
+        smp.card.primary
+          ? `<span class="odv-btn primary">${attr(smp.card.primary)}</span>`
+          : "",
+        smp.card.secondary
+          ? `<span class="odv-btn secondary">${attr(smp.card.secondary)}</span>`
+          : "",
         `</div></div>`,
       ),
     complete: () =>
@@ -492,8 +893,12 @@ export function docsPages(
                 `<div class="odv-samplecard" data-brand="${attr(b)}">`,
                 `<span class="odv-eyebrow">${attr(scheme.tokens.brands[b]?.label ?? b)}</span>`,
                 `<div class="odv-samplecard-head"><b>${attr(smp.card.title)}</b>${smp.card.status ? badgeHtml(smp.card.status, meaning[smp.card.status]) : ""}</div>`,
-                smp.card.description ? `<p>${attr(smp.card.description)}</p>` : "",
-                smp.card.primary ? `<div class="odv-samplecard-act"><span class="odv-btn primary">${attr(smp.card.primary)}</span></div>` : "",
+                smp.card.description
+                  ? `<p>${attr(smp.card.description)}</p>`
+                  : "",
+                smp.card.primary
+                  ? `<div class="odv-samplecard-act"><span class="odv-btn primary">${attr(smp.card.primary)}</span></div>`
+                  : "",
                 `</div>`,
               ),
             ),
@@ -505,9 +910,13 @@ export function docsPages(
             `<span class="odv-eyebrow">${attr(smp.card.title)}</span>`,
             fieldHtml(smp.field),
             `<div class="odv-samplecard-act">`,
-            smp.card.primary ? `<span class="odv-btn primary">${attr(smp.card.primary)}</span>` : "",
+            smp.card.primary
+              ? `<span class="odv-btn primary">${attr(smp.card.primary)}</span>`
+              : "",
             `</div>`,
-            smp.card.secondary ? `<span class="odv-preview-link">${attr(smp.card.secondary)}</span>` : "",
+            smp.card.secondary
+              ? `<span class="odv-preview-link">${attr(smp.card.secondary)}</span>`
+              : "",
             `</div></div>`,
           ),
     explore: () =>
@@ -515,10 +924,21 @@ export function docsPages(
         `<div class="odv-preview odv-preview-launch">`,
         `<span class="odv-preview-headline">${attr(smp.screen ?? "")}</span>`,
         smp.metrics?.length
-          ? h(`<div class="odv-preview-count">`, smp.metrics.slice(0, 2).map((m) => `<div><b>${attr(m.value)}</b><span>${attr(m.label)}</span></div>`), `</div>`)
+          ? h(
+              `<div class="odv-preview-count">`,
+              smp.metrics
+                .slice(0, 2)
+                .map(
+                  (m) =>
+                    `<div><b>${attr(m.value)}</b><span>${attr(m.label)}</span></div>`,
+                ),
+              `</div>`,
+            )
           : "",
         fieldHtml(smp.field),
-        smp.actions?.primary ? `<div class="odv-samplecard-act"><span class="odv-btn primary">${attr(smp.actions.primary)}</span></div>` : "",
+        smp.actions?.primary
+          ? `<div class="odv-samplecard-act"><span class="odv-btn primary">${attr(smp.actions.primary)}</span></div>`
+          : "",
         `</div>`,
       ),
   };
@@ -682,7 +1102,11 @@ export function docsPages(
   // The foundations overview: every scope in one compact table, with the answer that sets its values.
   // The Foundations index (OD-209): a card per scope in three groups, each with its answer for the
   // values, why, and a small specimen drawn in the scheme's own tokens.
-  const SCOPE_ROBOT = { color: "swatch", spacing: "measure", components: "shelf" };
+  const SCOPE_ROBOT = {
+    color: "swatch",
+    spacing: "measure",
+    components: "shelf",
+  };
   const scopeRobot = (id) => robot(SCOPE_ROBOT[id] ?? `scopes/${id}`);
   const scopeSpecimen = {
     typography: `<div class="odv-spec"><span style="font-size:var(--type-title-font-size);font-family:var(--type-display-font-family)">Aa</span><span style="font-size:var(--type-body-font-size)">Aa</span><span style="font-size:var(--type-caption-font-size)">Aa</span></div>`,
@@ -700,15 +1124,22 @@ export function docsPages(
   };
   const SCOPE_GROUPS = [
     ["How it looks", ["typography", "color", "shape", "elevation"]],
-    ["How it feels to use", ["spacing", "motion", "iconography", "accessibility"]],
-    ["Where it runs and how it speaks", ["theming", "naming", "voice", "components"]],
+    [
+      "How it feels to use",
+      ["spacing", "motion", "iconography", "accessibility"],
+    ],
+    [
+      "Where it runs and how it speaks",
+      ["theming", "naming", "voice", "components"],
+    ],
   ];
   const grouped = new Set(SCOPE_GROUPS.flatMap(([, ids]) => ids));
   const rest = g.scopes.filter((sc) => !grouped.has(sc.id)).map((sc) => sc.id);
   const scopeCard = (id) => {
     const sc = g.scopes.find((x) => x.id === id);
     if (!sc) return "";
-    const q = sc.questions.find((x) => x.method === "values") ?? sc.questions[3];
+    const q =
+      sc.questions.find((x) => x.method === "values") ?? sc.questions[3];
     return h(
       `<a class="odv-scard" href="./${sc.id}">`,
       robots ? `<span class="odv-scard-art">${scopeRobot(sc.id)}</span>` : "",
@@ -728,10 +1159,14 @@ export function docsPages(
     NOTE +
     `# Foundations\n\nEvery scope answers the same five questions. This is the answer that sets each scope's values; open a scope for all five, its tokens and its specimen.\n\n` +
     [...SCOPE_GROUPS, ...(rest.length ? [["More", rest]] : [])]
-      .map(([title, ids]) => `## ${title}\n\n` + h(`<div class="odv-scards">`, ids.map(scopeCard), `</div>`))
+      .map(
+        ([title, ids]) =>
+          `## ${title}\n\n` +
+          h(`<div class="odv-scards">`, ids.map(scopeCard), `</div>`),
+      )
       .join("\n\n") +
     "\n";
-  // The colour page leads with the colours in use (OD-182): the key colours as a band, the surfaces
+  // The color page leads with the colors in use (OD-182): the key colors as a band, the surfaces
   // as a stack in light and dark, and each status in use with its contrast, computed from the tokens.
   const colorVisuals = () => {
     const band = [
@@ -766,51 +1201,60 @@ export function docsPages(
         all.findIndex((y) => y.meaning === x.meaning) === j,
     );
     return (
-      h(
-        `<div class="odv-band">`,
-        band.map(([n, p]) => {
-          const c = hex(first, p);
-          return `<div style="background:${cssVar(p)};color:${ink(c)}"><b>${n}</b>${p.replace(/^color\./, "")}</div>`;
-        }),
-        `</div>`,
+      perBrand((F) =>
+        h(
+          `<div class="odv-band">`,
+          band.map(([n, p]) => {
+            const c = hex(F, p);
+            return `<div style="background:${cssVar(p)};color:${ink(c)}"><b>${n}</b>${p.replace(/^color\./, "")}</div>`;
+          }),
+          `</div>`,
+        ),
       ) +
       `\n\n## Surfaces\n\nThe canvas, then the surfaces content sits on, in ${scheme.themes.map((th) => th.id).join(" and ")}.\n\n` +
-      h(
-        `<div class="odv-grid two">`,
-        [first, dark].filter(Boolean).map(stack),
-        `</div>`,
+      perBrand((F, D) =>
+        h(
+          `<div class="odv-grid two">`,
+          [F, D].filter(Boolean).map(stack),
+          `</div>`,
+        ),
       ) +
       (sts.length
-        ? `\n\n## Status colours in use\n\nEach status label always gets the same colour, with its dot, so colour is never the only cue. The ratio is the status colour on its subtle fill, computed from the tokens.\n\n` +
-          h(
-            `<div class="odv-card">`,
-            sts.map((x) => {
-              const k = `color.status.${x.meaning}`;
-              const r = (th) =>
-                th
-                  ? contrast(hex(th, k), hex(th, `${k}.subtle`)).toFixed(1)
-                  : "";
-              return `<div class="odv-status"><div>${badgeHtml(x.label, x.meaning)}</div><div class="odv-alert odv-t-${x.meaning}"><b>${attr(x.label)}.</b> ${attr(x.why)}</div><div><span class="odv-ratio">${first.id} ${r(first)}:1</span> <span class="odv-ratio">${dark?.id ?? ""} ${r(dark)}:1</span></div></div>`;
-            }),
-            `</div>`,
+        ? `\n\n## Status colors in use\n\nEach status label always gets the same color, with its dot, so color is never the only cue. The ratio is the status color on its subtle fill, computed from the tokens.\n\n` +
+          perBrand((F, D) =>
+            h(
+              `<div class="odv-card">`,
+              sts.map((x) => {
+                const k = `color.status.${x.meaning}`;
+                const r = (th) =>
+                  th
+                    ? contrast(hex(th, k), hex(th, `${k}.subtle`)).toFixed(1)
+                    : "";
+                return `<div class="odv-status"><div>${badgeHtml(x.label, x.meaning)}</div><div class="odv-alert odv-t-${x.meaning}"><b>${attr(x.label)}.</b> ${attr(x.why)}</div><div><span class="odv-ratio">${F.id} ${r(F)}:1</span> <span class="odv-ratio">${D?.id ?? ""} ${r(D)}:1</span></div></div>`;
+              }),
+              `</div>`,
+            ),
           )
         : "") +
       "\n\n"
     );
   };
   // The Theming page (OD-211): what a mode is, shown not listed. A live preview per mode from its
-  // real colours, then what a mode changes (a table per job group, every mode side by side), then
+  // real colors, then what a mode changes (a table per job group, every mode side by side), then
   // what stays the same in every mode. Multi-brand gets one set per brand; the brand picked in the
   // top bar shows (generate.mjs scopes it), and without that CSS every brand shows.
   const themingVisuals = () => {
     const brandIds = Object.keys(scheme.tokens.brands ?? {});
     const modes = [...new Set(scheme.themes.map((t) => t.mode))];
-    const hexOf = (th, p) => String(value(th, p, "")).match(/#[0-9a-f]{6,8}/i)?.[0] ?? "";
+    const hexOf = (th, p) =>
+      String(value(th, p, "")).match(/#[0-9a-f]{6,8}/i)?.[0] ?? "";
     const semPath = (p) => p.replace(/^\./, "").replace(/\.@$/, "");
     const cap = (x) => x.charAt(0).toUpperCase() + x.slice(1);
     const brandLabel = (b) => scheme.tokens.brands[b]?.label ?? cap(b);
     const radius = (th, k) => value(th, `radius.${k}`, "0");
-    const sts = (smp.statuses ?? []).filter((x) => STATUS_CLASS[x.meaning]).slice(0, 2);
+    const sts = (smp.statuses ?? [])
+      .filter((x) => STATUS_CLASS[x.meaning])
+      .slice(0, 2);
     const commit = scheme.tokens.content?.action?.commit?.$value ?? "Save";
     const cancel = scheme.tokens.content?.action?.cancel?.$value ?? "Cancel";
     const preview = (th) => {
@@ -830,11 +1274,17 @@ export function docsPages(
     const sameBlock = (b) => {
       const base = scheme.tokens.brands[b]?.theme?.base ?? {};
       const th = scheme.themes.find((t) => t.brand === b) ?? first;
-      const radii = leaves(base.radius ?? {}, "").map((x) => x.path.replace(/^\./, ""));
+      const radii = leaves(base.radius ?? {}, "").map((x) =>
+        x.path.replace(/^\./, ""),
+      );
       const fams = {};
       for (const x of leaves(base.type ?? {}, "")) {
         const role = x.path.replace(/^\./, "").split(".")[0];
-        const v = String(cssValue(value(th, `type.${role}.font-family`, "")) || "").split(",")[0].replaceAll('"', "");
+        const v = String(
+          cssValue(value(th, `type.${role}.font-family`, "")) || "",
+        )
+          .split(",")[0]
+          .replaceAll('"', "");
         if (v) (fams[v] ??= []).push(role);
       }
       return h(
@@ -843,7 +1293,14 @@ export function docsPages(
           ? `<div class="odv-card"><b>Corners</b><div class="odv-corners">${radii.map((r) => `<span><i style="border-radius:${radius(th, r)}"></i>${attr(r)} · ${attr(radius(th, r))}</span>`).join("")}</div></div>`
           : "",
         Object.keys(fams).length
-          ? `<div class="odv-card"><b>Type families</b><div class="odv-fams">${Object.entries(fams).map(([f, roles]) => `<div><span>${attr(roles.map(cap).join(", "))}</span><span style="font-family:${attr(f)}">${attr(f)}</span></div>`).join("")}</div></div>`
+          ? `<div class="odv-card"><b>Type families</b><div class="odv-fams">${Object.entries(
+              fams,
+            )
+              .map(
+                ([f, roles]) =>
+                  `<div><span>${attr(roles.map(cap).join(", "))}</span><span style="font-family:${attr(f)}">${attr(f)}</span></div>`,
+              )
+              .join("")}</div></div>`
           : "",
         `</div>`,
       );
@@ -851,14 +1308,26 @@ export function docsPages(
     const brandSet = (b) => {
       const ths = scheme.themes.filter((t) => t.brand === b);
       const tree = scheme.tokens.brands[b]?.theme ?? {};
-      const jobs = leaves(tree[ths[0]?.mode] ?? {}, "").map((x) => semPath(x.path));
-      const groups = [...new Set(jobs.map((p) => p.split(".").slice(0, 2).join(".")))];
+      // The neutral steps are the scale behind the jobs, not jobs: they show as "via" on the jobs.
+      const jobs = leaves(tree[ths[0]?.mode] ?? {}, "")
+        .map((x) => semPath(x.path))
+        .filter((p) => !p.startsWith("color.neutral."));
+      const groups = [
+        ...new Set(jobs.map((p) => p.split(".").slice(0, 2).join("."))),
+      ];
+      // Every color cell follows its token to the primitive, the way the scale view does (OD-223):
+      // the primitive's name, the neutral step it goes through, and a swatch. Never a bare value.
       const cell = (th, p) => {
-        const hx = hexOf(th, p);
-        const prim = primitiveOf(th, p)?.replace(/^color\./, "");
-        return hx
-          ? `<span class="odv-tsw"><i style="background:${hx}"></i><small>${attr(prim ?? hx)}</small></span>`
-          : `<code>${attr(value(th, p, ""))}</code>`;
+        const f = p.startsWith("color.")
+          ? (follow(scheme.tokens, b, th.mode, p) ??
+            follow(scheme.tokens, b, th.mode, `${p}.@`))
+          : null;
+        if (!f) return `<code>${attr(value(th, p, ""))}</code>`;
+        const hx = String(
+          f.prim.split(".").reduce((n, k) => n && n[k], scheme.tokens.primitive)
+            ?.$value ?? "",
+        );
+        return `<span class="odv-tsw"><i style="background:${hx}" title="${attr(hx)}"></i><small>${attr(f.prim.replace(/^color\./, ""))}${f.via ? ` · via ${attr(f.via.replace(/^color\./, ""))}` : ""}</small></span>`;
       };
       return h(
         `<div class="odv-brandset" data-for-brand="${b}">`,
@@ -873,7 +1342,10 @@ export function docsPages(
             const list = jobs.filter((p) => p.startsWith(`${gr}.`) || p === gr);
             return h(
               `<tr class="odv-tgroup"><td colspan="${ths.length + 1}">${attr(cap(gr.split(".").pop()))} · ${list.length}</td></tr>`,
-              list.map((p) => `<tr><td><code>${attr(p.split(".").slice(1).join("."))}</code></td>${ths.map((t) => `<td>${cell(t, p)}</td>`).join("")}</tr>`),
+              list.map(
+                (p) =>
+                  `<tr><td><code>${attr(p.split(".").slice(1).join("."))}</code></td>${ths.map((t) => `<td>${cell(t, p)}</td>`).join("")}</tr>`,
+              ),
             );
           }),
           `</tbody></table></div>`,
@@ -883,7 +1355,7 @@ export function docsPages(
       );
     };
     return (
-      `${esc(scheme.name)} has **${modes.length} mode${modes.length === 1 ? "" : "s"}** and **${brandIds.length} brand${brandIds.length === 1 ? "" : "s"}**. A mode swaps the colours; corners and type stay the same in every mode.${brandIds.length > 1 ? " Pick a brand in the top bar to see its set." : ""}\n\n` +
+      `${esc(scheme.name)} has **${modes.length} mode${modes.length === 1 ? "" : "s"}** and **${brandIds.length} brand${brandIds.length === 1 ? "" : "s"}**. A mode swaps the colors; corners and type stay the same in every mode.${brandIds.length > 1 ? " Pick a brand in the top bar to see its set." : ""}\n\n` +
       h(`<div class="odv-theming">`, brandIds.map(brandSet), `</div>`) +
       "\n\n"
     );
@@ -894,24 +1366,43 @@ export function docsPages(
     // Paths for the component scope start with component.; the key itself is the rest.
     const key = (p) => p.replace(/^component\./, "");
     const semantics = tokens.filter((t) => !isPrimitive(t.path));
-    const darkDiffers = semantics.some(
-      (t) => link(first, key(t.path)) !== link(dark, key(t.path)),
-    );
-    const prims = [
+    const darkDiffers = (F, D) =>
+      semantics.some((t) => link(F, key(t.path)) !== link(D, key(t.path)));
+    const primsOf = (F, D) => [
       ...tokens.filter((t) => isPrimitive(t.path)).map((t) => t.path),
       ...semantics.flatMap((t) => [
-        primitiveOf(first, key(t.path)),
-        primitiveOf(dark, key(t.path)),
+        primitiveOf(F, key(t.path)),
+        primitiveOf(D, key(t.path)),
       ]),
     ];
-    const SPECIMEN = sc.id === "theming"
-      ? themingVisuals()
-      : ["components", "naming", "voice"].includes(sc.id)
-      ? ""
-      : specimen(
-          semantics.length ? semantics : tokens,
-          scheme.scenarios[0].text,
-        );
+    const tokenTable = (F, D) =>
+      (darkDiffers(F, D)
+        ? "| Token | Points to, light | Points to, dark |\n| --- | --- | --- |\n"
+        : "| Token | Points to |\n| --- | --- |\n") +
+      semantics
+        .map((t) =>
+          darkDiffers(F, D)
+            ? `| \`${t.path}\` | ${link(F, key(t.path))} | ${link(D, key(t.path))} |`
+            : `| \`${t.path}\` | ${link(F, key(t.path))} |`,
+        )
+        .join("\n");
+    const hasPrims = primsOf(first, dark).filter(Boolean).length > 0;
+    const SPECIMEN =
+      sc.id === "theming"
+        ? themingVisuals()
+        : ["components", "naming", "voice"].includes(sc.id)
+          ? ""
+          : specimen(
+              semantics.length ? semantics : tokens,
+              scheme.scenarios[0].text,
+              {
+                smp,
+                val: (path) => {
+                  const v = String(value(first, path, ""));
+                  return v.match(/\((\d+(?:\.\d+)?px)\)/)?.[1] ?? v;
+                },
+              },
+            );
     pages[`foundations/${sc.id}.md`] =
       fm({
         sidebar_position: i + 1,
@@ -927,28 +1418,26 @@ export function docsPages(
         )
         .join("\n") +
       // Theming shows its tokens as the mode table above (OD-211), so it skips the flat lists.
-      (sc.id === "theming"
+      // Theming shows its tokens as the mode table above (OD-211); the component scopes' keys are on
+      // each component's page, as its variables (OD-233).
+      (sc.id === "theming" || (sc.owns ?? []).includes("component")
         ? ""
         : `\n\n## Tokens\n\n` +
-      (semantics.length
-        ? `Each token points to another token. Values live only on primitives, below.\n\n` +
-          (darkDiffers
-            ? "| Token | Points to, light | Points to, dark |\n| --- | --- | --- |\n"
-            : "| Token | Points to |\n| --- | --- |\n") +
-          semantics
-            .map((t) =>
-              darkDiffers
-                ? `| \`${t.path}\` | ${link(first, key(t.path))} | ${link(dark, key(t.path))} |`
-                : `| \`${t.path}\` | ${link(first, key(t.path))} |`,
-            )
-            .join("\n")
-        : "This scope sets primitives directly.") +
-      (prims.filter(Boolean).length
-        ? `\n\n## Primitives\n\nThe raw values the tokens above end at.\n\n${primitiveRows(prims)}`
-        : "")) +
-      `\n\n## Where it lands\n\n${(sc.lands_in ?? []).map((c) => `- ${title(c)}`).join("\n")}\n\n` +
+          (semantics.length
+            ? `Each token points to another token. Values live only on primitives, below.\n\n` +
+              perBrand(tokenTable)
+            : "This scope sets primitives directly.") +
+          // The raw values live on the Primitives pages (OD-223), not repeated here.
+          (hasPrims
+            ? `\n\nThe raw values these tokens end at are on [Primitives › ${PRIM_PAGE_OF[sc.id]?.title ?? "all kinds"}](../primitives/${PRIM_PAGE_OF[sc.id]?.id ?? ""}).`
+            : "")) +
+      (sc.id === "spacing" ? spacingMap(scheme, g) : "") +
+      // What lands where is shown per component, in its anatomy (OD-229), not as a list here.
+      `\n\n` +
       `## When to use what\n\n${RULES}${usage.map(rule).join("\n")}\n` +
-      (sc.id === "color" ? colourGuidance(g) : "");
+      (sc.id === "color"
+        ? colorGuidance(g) + pairsPicture() + tonePicture()
+        : "");
   });
 
   // Primitives (OD-184): every raw value, and what points to it in which mode. Unused primitives stay
@@ -996,6 +1485,50 @@ export function docsPages(
         return `| \`${x.path}\` | ${esc(value(first, x.path, x.ref))} | ${sample(x.path, x.type ?? primitiveType(x.path), x.ref)} | ${u.length ? u.map((y) => `\`${y.token}\` (${y.where})`).join("<br />") : "Not used yet"} |`;
       })
       .join("\n");
+  // A small specimen per font family (above its table): a large Aa, the alphabet and figures, the
+  // weights this scheme uses with it, the roles that read it and its fallback stack.
+  const WEIGHT = {
+    300: "Light",
+    400: "Regular",
+    500: "Medium",
+    600: "Semibold",
+    700: "Bold",
+  };
+  const specIndex = tokenIndex(scheme);
+  const fontSpecimens = (list) =>
+    `<div class="odv-fonts">${list
+      .map((x) => {
+        const stack = String(value(first, x.path, x.ref));
+        const css = stack.replace(/"/g, "'");
+        const roles = [
+          ...new Set(
+            (usedBy[x.path] ?? [])
+              .map((y) => y.token.match(/^type\.([a-z-]+)\.font-family$/)?.[1])
+              .filter(Boolean),
+          ),
+        ];
+        const weights = [
+          ...new Set(
+            roles
+              .map((r) =>
+                Number(aliasChain(specIndex, `type.${r}.font-weight`).value),
+              )
+              .filter((w) => w > 0),
+          ),
+        ].sort((a, b) => a - b);
+        return (
+          `<div class="odv-font" style="font-family:${css}">` +
+          `<div class="odv-font-top"><span class="odv-font-aa">Aa</span><span class="tok">${x.path}</span></div>` +
+          `<div class="odv-font-abc">Aa Bb Cc Dd Ee Ff Gg Hh Ii Jj Kk Ll Mm<br />0123456789 · &amp; ? !</div>` +
+          (weights.length
+            ? `<div class="odv-font-weights">${weights.map((w) => `<span style="font-weight:${w}">${WEIGHT[w] ?? w}<small>${w}</small></span>`).join("")}</div>`
+            : "") +
+          `<div class="odv-font-roles">${roles.length ? `Read by ${roles.map((r) => `<code>type.${r}.font-family</code>`).join(" ")}` : "Not used yet"}</div>` +
+          `<div class="odv-font-stack">${esc(stack)}</div>` +
+          `</div>`
+        );
+      })
+      .join("")}</div>\n\n`;
   const kinds = [
     ...PRIMITIVE_PAGES,
     {
@@ -1019,7 +1552,7 @@ export function docsPages(
   // The Primitives index (OD-211), in the Foundations style: a card per kind in groups, each with a
   // robot, a specimen drawn from the raw values, and how many are in use. The table closes the page.
   const PRIM_GROUPS = [
-    ["Colour", ["color"]],
+    ["Color", ["color"]],
     ["Space and shape", ["space-and-size", "shape"]],
     ["Type, motion and effects", ["type", "motion", "effects"]],
   ];
@@ -1042,20 +1575,28 @@ export function docsPages(
     if (k.id === "color") {
       // One used step from each family, so the specimen is the palette in use.
       const hues = {};
-      for (const x of pick.filter((y) => /^#/.test(String(y.ref)) && !/\.dark\./.test(y.path))) {
+      for (const x of pick.filter(
+        (y) => /^#/.test(String(y.ref)) && !/\.dark\./.test(y.path),
+      )) {
         const hue = x.path.split(".")[1];
         const step = Number(x.path.split(".").pop());
         const best = hues[hue];
-        if (!best || Math.abs(step - 600) < Math.abs(best.step - 600)) hues[hue] = { ...x, step };
+        if (!best || Math.abs(step - 600) < Math.abs(best.step - 600))
+          hues[hue] = { ...x, step };
       }
       const sws = Object.values(hues);
       return `<div class="odv-spec">${sws
         .slice(0, 8)
-        .map((x) => `<i class="odv-sw" style="background:${x.ref}" title="${attr(x.path)}"></i>`)
+        .map(
+          (x) =>
+            `<i class="odv-sw" style="background:${x.ref}" title="${attr(x.path)}"></i>`,
+        )
         .join("")}</div>`;
     }
     if (k.id === "space-and-size") {
-      const px = [...new Set(pick.map((x) => rem(x.ref)).filter((n) => n > 0))].sort((a, b) => a - b).slice(0, 7);
+      const px = [...new Set(pick.map((x) => rem(x.ref)).filter((n) => n > 0))]
+        .sort((a, b) => a - b)
+        .slice(0, 7);
       const top = Math.max(...px);
       return `<div class="odv-spec odv-spec-cols">${px.map((n) => `<i style="height:${Math.max(3, Math.round((n / top) * 30))}px" title="${n}px"></i>`).join("")}</div>`;
     }
@@ -1071,17 +1612,28 @@ export function docsPages(
       return `<div class="odv-spec">${rs.map((v) => `<i class="odv-shape" style="border-radius:${v}" title="${attr(v)}"></i>`).join("")}</div>`;
     }
     if (k.id === "type") {
-      const fams = pick.filter((x) => x.path.startsWith("font.family.")).slice(0, 2);
+      const fams = pick
+        .filter((x) => x.path.startsWith("font.family."))
+        .slice(0, 2);
       return `<div class="odv-spec">${fams
-        .map((x) => `<span class="odv-aa" style="font-family:${attr(cssValue(x.ref))}" title="${attr(x.path)}">Aa</span>`)
-        .join("")}<span class="odv-spec-note">${fams.map((x) => attr(String(cssValue(x.ref)).split(",")[0].replaceAll('"', ""))).join(" · ")}</span></div>`;
+        .map(
+          (x) =>
+            `<span class="odv-aa" style="font-family:${attr(cssValue(x.ref))}" title="${attr(x.path)}">Aa</span>`,
+        )
+        .join(
+          "",
+        )}<span class="odv-spec-note">${fams.map((x) => attr(String(cssValue(x.ref)).split(",")[0].replaceAll('"', ""))).join(" · ")}</span></div>`;
     }
     if (k.id === "motion") {
-      const ds = pick.filter((x) => x.path.startsWith("duration.")).map((x) => String(x.ref));
+      const ds = pick
+        .filter((x) => x.path.startsWith("duration."))
+        .map((x) => String(x.ref));
       return `<div class="odv-spec"><i class="odv-dot"></i><span class="odv-spec-note">${ds.slice(0, 3).map(attr).join(" · ")}</span></div>`;
     }
     if (k.id === "effects") {
-      const sh = pick.filter((x) => x.path.startsWith("shadow.") && !/none/.test(x.path)).slice(0, 3);
+      const sh = pick
+        .filter((x) => x.path.startsWith("shadow.") && !/none/.test(x.path))
+        .slice(0, 3);
       return `<div class="odv-spec odv-spec-lift">${sh.map((x) => `<i class="odv-lift" style="box-shadow:${attr(cssValue(x.ref))}" title="${attr(x.path)}"></i>`).join("")}</div>`;
     }
     return "";
@@ -1090,7 +1642,9 @@ export function docsPages(
     const n = k.list.filter((x) => usedBy[x.path]).length;
     return h(
       `<a class="odv-scard" href="./${k.id}">`,
-      robots ? `<span class="odv-scard-art">${robot(PRIM_ROBOT[k.id] ?? PRIM_ROBOT.other)}</span>` : "",
+      robots
+        ? `<span class="odv-scard-art">${robot(PRIM_ROBOT[k.id] ?? PRIM_ROBOT.other)}</span>`
+        : "",
       `<span class="odv-scard-body"><span class="odv-scard-title">${attr(k.title)}</span>`,
       primSpecimen(k),
       `<span class="odv-scard-why">${k.list.length} primitives · ${n} in use</span>`,
@@ -1110,7 +1664,7 @@ export function docsPages(
     `# Primitives\n\n` +
     h(
       `<div class="odv-pagehero"><div><p>`,
-      `The raw values of ${esc(scheme.name)}. Primitives hold the values; semantic tokens give them a job (see <a href="../foundations/">Foundations</a>), and components read only the jobs. Spare values stay, so a brand or a changed answer can use them without adding a value.`,
+      `The raw values of ${esc(scheme.name)}. Primitives hold the values; semantic tokens give them a job (see <a href="../foundations/">Foundations</a>), and components read only the jobs. Color ramps stay whole, so some color steps wait for a use; every other primitive is read by something.`,
       `</p><div class="odv-stats"><span><b>${prims.length}</b>Primitives</span><span><b>${nUsed}</b>In use</span><span><b>${prims.length - nUsed}</b>Spare</span></div></div>`,
       robot(scheme.id, "odv-pagehero-robot"),
       `</div>`,
@@ -1118,8 +1672,13 @@ export function docsPages(
     "\n\n" +
     [...PRIM_GROUPS, ...(primRest.length ? [["More", primRest]] : [])]
       .map(([t, ids]) => {
-        const cards = ids.map((id) => kinds.find((k) => k.id === id)).filter(Boolean);
-        return cards.length ? `## ${t}\n\n` + h(`<div class="odv-scards">`, cards.map(primCard), `</div>`) : "";
+        const cards = ids
+          .map((id) => kinds.find((k) => k.id === id))
+          .filter(Boolean);
+        return cards.length
+          ? `## ${t}\n\n` +
+              h(`<div class="odv-scards">`, cards.map(primCard), `</div>`)
+          : "";
       })
       .filter(Boolean)
       .join("\n\n") +
@@ -1142,38 +1701,352 @@ export function docsPages(
       }) +
       NOTE +
       `# ${k.title}\n\n${k.list.length} primitives, ${k.list.filter((x) => usedBy[x.path]).length} used.\n\n` +
-      // Colours lead with each family as a ramp (OD-182): every step, its value, and how many tokens
+      // Colors lead with each family as a ramp (OD-182): every step, its value, and how many tokens
       // use it. Hover a step for the list; the table under it has the detail.
       (k.id === "color"
-        ? `<div class="odv-legend"><span>● used by a token</span><span>◌ not used yet</span></div>\n\n` +
-          fams
-            .map((f) => {
-              const list = k.list.filter(
-                (x) => family(x.path) === f && /^#/.test(String(x.ref)),
-              );
-              if (!list.length) return "";
-              return h(
-                `<div class="odv-ramp-h"><code>${f}</code><span>${list.filter((x) => usedBy[x.path]).length} of ${list.length} used</span></div><div class="odv-ramp">`,
-                list.map((x) => {
-                  const u = usedBy[x.path] ?? [];
-                  return `<div class="odv-step${u.length ? "" : " unused"}" style="background:${x.ref};color:${ink(x.ref)}" title="${attr(u.map((y) => `${y.token} (${y.where})`).join(", ") || "Not used yet")}"><span>${x.path.split(".").pop()}</span><span><span class="use">${u.length || ""}</span><br>${x.ref}</span></div>`;
-                }),
-                `</div>`,
-              );
-            })
-            .join("\n\n") +
-          `\n\n## Every colour\n\n`
+        ? colorScales(scheme, g, fams) + `\n\n## Every color\n\n`
         : "") +
       (fams.length > 1
         ? fams
             .map(
               (f) =>
-                `## \`${f}\`\n\n${table(k.list.filter((x) => family(x.path) === f))}`,
+                `## \`${f}\`\n\n${f === "font.family" ? fontSpecimens(k.list.filter((x) => family(x.path) === f)) : ""}${table(k.list.filter((x) => family(x.path) === f))}`,
             )
             .join("\n\n")
         : table(k.list)) +
       "\n";
   });
+
+  // What a component built on shadcn reads (OD-215): each class it uses, the shadcn variable, the
+  // scheme's token behind it, and the primitive and value that token ends at in every theme. Read from
+  // the component's own source and the mapping the token build writes, so it cannot drift.
+  const tokenPaths = Object.fromEntries(
+    leaves(trees[first.id], "").map((x) => {
+      const path = x.path.replace(/^\./, "");
+      return [cssName(path), path];
+    }),
+  );
+  const PART = {
+    bg: "Fill",
+    text: "Text",
+    border: "Edge",
+    "border-t": "Edge",
+    "border-b": "Edge",
+    "border-l": "Edge",
+    "border-r": "Edge",
+    "border-x": "Edge",
+    "border-y": "Edge",
+    ring: "Focus ring",
+    "ring-offset": "Focus ring offset",
+    outline: "Outline",
+    fill: "Icon fill",
+    stroke: "Icon stroke",
+    placeholder: "Placeholder",
+    caret: "Caret",
+    divide: "Divider",
+    accent: "Accent",
+    decoration: "Underline",
+  };
+  const WHEN = [
+    [/^hover$|^\[a\]:hover$/, "on hover"],
+    [/^focus(-visible|-within)?$/, "on focus"],
+    [/state=open|^open$/, "when open"],
+    [/state=checked|^checked$|state=on/, "when on"],
+    [/selected/, "when selected"],
+    [/^disabled$|disabled/, "when disabled"],
+    [/invalid/, "when invalid"],
+    [/variant=destructive/, "destructive"],
+    [/placeholder/, ""],
+  ];
+  // A component's own tokens by their CSS name (OD-234): --accordion-trigger-padding-y →
+  // component.accordion.trigger.padding-y, with what each aliases.
+  const compByCss = new Map();
+  for (const [p, tok] of flatTokens(scheme.tokens.component ?? {}))
+    compByCss.set(cssName(p), {
+      path: `component.${p}`,
+      alias: String(tok.$value).replace(/^\{|\}$/g, ""),
+    });
+  const NAMES = {
+    "padding-y": "Padding, top and bottom",
+    "padding-x": "Padding, left and right",
+    "padding-bottom": "Padding, bottom",
+    "padding-top": "Padding, top",
+    "font-size": "Text size",
+    "font-weight": "Weight",
+    radius: "Corner",
+    gap: "Gap",
+    size: "Size",
+    duration: "Speed",
+    opacity: "Opacity",
+    width: "Width",
+    label: "Text",
+    background: "Fill",
+  };
+  const human = (x) =>
+    NAMES[x] ?? x.charAt(0).toUpperCase() + x.slice(1).replaceAll("-", " ");
+  // the part of the component a token belongs to, and its name there: trigger.padding-y → Trigger ·
+  // Padding, top and bottom; icon.@ (a color) → Icon · Color; divider → Accordion · Divider
+  const anatomyOf = (path, comp, alias) => {
+    // a token every component shares (component.transition.*) sits under Shared
+    if (!path.startsWith(`component.${comp}.`))
+      return {
+        group: "Shared",
+        name: human(path.split(".").slice(1).join(" ")),
+      };
+    const seg = path.replace(`component.${comp}.`, "").split(".");
+    const kind = alias.startsWith("color.") ? "Color" : "Value";
+    if (seg.length === 1) return { group: title(comp), name: human(seg[0]) };
+    // primary.background.@ → Primary · Background, beside its hover; icon.@ → Icon · Color
+    if (seg.at(-1) === "@" && seg.length > 2)
+      return { group: human(seg[0]), name: human(seg.slice(1, -1).join(" ")) };
+    if (seg.at(-1) === "@")
+      return { group: human(seg.slice(0, -1).join(" ")), name: kind };
+    return { group: human(seg[0]), name: human(seg.slice(1).join(" ")) };
+  };
+  const readsOf = (name) => {
+    const file = join(roots.ui, "components", `${name}.tsx`);
+    if (!existsSync(file)) return [];
+    const src = readFileSync(file, "utf8");
+    const rows = new Map();
+    for (const cls of src.match(/[!\w:[\]=&>*()+.,'"\/-]+/g) ?? []) {
+      // Variants before the last colon outside brackets; the utility after it.
+      const segs = [];
+      let depth = 0;
+      let cur = "";
+      for (const ch of cls) {
+        if (ch === "[") depth++;
+        if (ch === "]") depth--;
+        if (ch === ":" && depth === 0) {
+          segs.push(cur);
+          cur = "";
+        } else cur += ch;
+      }
+      const util = cur.replace(/^!/, "").replace(/\/\d+$/, "");
+      const states = segs;
+      let row;
+      const own = util.match(/var\(--([a-z0-9-]+)\)/);
+      const comp = own && compByCss.get(own[1]);
+      if (comp) {
+        const a = anatomyOf(comp.path, name, comp.alias);
+        row = {
+          part: a.name,
+          group: a.group,
+          variable: own[1],
+          own: true,
+          alias: comp.alias,
+          cls: util,
+          lookup: comp.path,
+          path: comp.path,
+        };
+      }
+      const color =
+        !row &&
+        util.match(
+          /^(bg|text|border(?:-[tblrxy])?|ring-offset|ring|outline|fill|stroke|divide|placeholder|caret|accent|decoration)-([a-z0-9-]+)$/,
+        );
+      if (color && SHADCN[color[2]])
+        row = {
+          part: PART[color[1]],
+          variable: color[2],
+          token: SHADCN[color[2]],
+        };
+      else if (/^border(-[tblrxy])?$/.test(util))
+        row = {
+          part: "Edge",
+          variable: "border",
+          token: SHADCN.border,
+          cls: util,
+        };
+      else {
+        const scale = util.match(
+          /^(rounded(?:-[tblrse]{1,2})?|shadow|text)-(xs|sm|md|lg|xl|base)$/,
+        );
+        const key =
+          scale &&
+          `--${scale[1].startsWith("rounded") ? "radius" : scale[1]}-${scale[2]}`;
+        if (key && SHADCN_SCALE[key])
+          row = {
+            part: key.startsWith("--radius")
+              ? "Corner"
+              : key.startsWith("--shadow")
+                ? "Shadow"
+                : "Text size",
+            variable: key.slice(2),
+            token: SHADCN_SCALE[key].replace(/^var\(--(.+)\)$/, "$1"),
+          };
+      }
+      if (!row || (!row.own && !tokenPaths[row.token])) continue;
+      const when = states
+        .map((st) => WHEN.find(([re]) => re.test(st))?.[1])
+        .filter(Boolean);
+      row.when = [...new Set(when)].join(", ");
+      row.cls = row.cls ?? util;
+      // The lookup keeps a base's @; the page shows the token without it.
+      row.lookup = row.lookup ?? tokenPaths[row.token];
+      row.path = row.path ?? row.lookup.replace(/\.@$/, "");
+      // A token of its own shows once, in its plainest state (disabled covers disabled and hovered).
+      const k = row.own ? row.path : `${row.part}|${row.path}|${row.when}`;
+      const had = rows.get(k);
+      if (!had || (row.own && row.when.length < had.when.length))
+        rows.set(k, row);
+    }
+    const order = [
+      "Fill",
+      "Text",
+      "Edge",
+      "Divider",
+      "Focus ring",
+      "Focus ring offset",
+      "Outline",
+      "Icon fill",
+      "Icon stroke",
+      "Placeholder",
+      "Caret",
+      "Accent",
+      "Underline",
+      "Corner",
+      "Shadow",
+      "Text size",
+    ];
+    return [...rows.values()].sort(
+      (a, b) =>
+        order.indexOf(a.part) - order.indexOf(b.part) ||
+        (a.when ? 1 : 0) - (b.when ? 1 : 0) ||
+        a.cls.localeCompare(b.cls),
+    );
+  };
+  const brandName = (b) => scheme.tokens.brands?.[b]?.label ?? b;
+  const themeLabel = (t) =>
+    `${Object.keys(scheme.tokens.brands ?? {}).length > 1 ? `${brandName(t.brand)} ` : ""}${t.mode.charAt(0).toUpperCase()}${t.mode.slice(1)}`;
+  // own tokens resolve through the theme's alias chain (cli/src/lands.mjs), the same one get_scales uses
+  const themeIx = {};
+  const ownEnd = (row, t) => {
+    themeIx[t.id] ??= tokenIndex(scheme, {
+      brand: t.brand ?? Object.keys(scheme.tokens.brands)[0],
+      mode: t.mode ?? t.id,
+    });
+    const ch = aliasChain(themeIx[t.id], row.path);
+    return { raw: String(cssValue(ch.value) ?? ""), prim: ch.end };
+  };
+  const readCell = (row, t) => {
+    const own = row.own ? ownEnd(row, t) : null;
+    const raw = own ? own.raw : String(value(t, row.lookup, ""));
+    const prim =
+      (own ? own.prim : primitiveOf(t, row.lookup))?.replace(/^color\./, "") ??
+      "";
+    const hex = raw.match(/#[0-9a-f]{6,8}/i)?.[0];
+    // an own token's value: the primitive as a token, its raw value as plain text beside it (OD-234)
+    const shown = row.own
+      ? `${prim ? `<span class="odv-ptok">${attr(prim)}</span><span class="odv-kvsep">:</span>` : ""}<span class="odv-raw">${attr(raw)}</span>`
+      : `${attr(prim)}${prim && raw ? " · " : ""}${attr(row.part === "Shadow" ? "" : raw)}`.replace(
+          / · $/,
+          "",
+        );
+    if (row.part === "Shadow")
+      return `<span class="odv-tsw"><i class="odv-tlift" style="box-shadow:${attr(raw)}"></i><small>${attr(prim || raw)}</small></span>`;
+    if (row.part === "Corner")
+      return `<span class="odv-tsw"><i class="odv-tshape" style="border-radius:${attr(raw)}"></i><small>${shown}</small></span>`;
+    if (hex)
+      return `<span class="odv-tsw"><i style="background:${hex}"></i><small>${shown}</small></span>`;
+    return `<span class="odv-tsw"><small>${shown}</small></span>`;
+  };
+  // own tokens in the order the component defines them, grouped by part; system reads after
+  const compOrder = [...compByCss.values()].map((x) => x.path);
+  const orderRows = (rows) => {
+    if (!rows.some((r) => r.own)) return rows;
+    const groups = [
+      ...new Set(
+        rows
+          .filter((r) => r.own)
+          .sort((a, b) => compOrder.indexOf(a.path) - compOrder.indexOf(b.path))
+          .map((r) => r.group),
+      ),
+    ];
+    return [
+      ...groups.flatMap((g) =>
+        rows
+          .filter((r) => r.own && r.group === g)
+          .sort(
+            (a, b) => compOrder.indexOf(a.path) - compOrder.indexOf(b.path),
+          ),
+      ),
+      ...rows
+        .filter((r) => !r.own)
+        .map((r) => ({ ...r, group: "From the system" })),
+    ];
+  };
+  const tokensRead = (name) => {
+    const rows = readsOf(name);
+    if (!rows.length)
+      return `## Tokens it reads\n\n${title(name)} sets no colors, corners or shadows of its own; it takes them from the components inside it.`;
+    const ths = scheme.themes;
+    const tokens = new Set(rows.map((r) => r.path)).size;
+    return (
+      `## Tokens it reads\n\n${
+        rows.some((r) => r.own)
+          ? `${title(name)} reads ${new Set(rows.filter((r) => r.own).map((r) => r.path)).size} tokens of its own, each an alias of a semantic token. Each row is one part: its own token, the semantic it aliases, and the value it ends at. Change a semantic and every component that reads it follows; override one of ${title(name)}'s tokens to change ${title(name)} alone.`
+          : `${title(name)} reads ${tokens} of ${esc(scheme.name)}'s tokens. Each row follows one part of the component from its class to the value it ends at, in every theme. Change a token in the scheme and every component that reads it follows.`
+      }\n\n` +
+      (rows.some((r) => r.own) ? ownTable(rows, ths) : classTable(rows, ths))
+    );
+  };
+  // A component with its own tokens (OD-234): Part · its token → the semantic, with the CSS variable
+  // under it · one Value column. Colors show each theme side by side; everything else has one value.
+  // the legend (OD-234): the scheme decides what a theme switch changes; the marked rows are the ones it moves
+  const themeLegend = () => {
+    const brands = Object.keys(scheme.tokens.brands).length;
+    const lands = answer("theming.lands")
+      ? label("theming.lands").toLowerCase()
+      : "colors";
+    const between =
+      brands > 1
+        ? "between its brands and between light and dark"
+        : "between light and dark";
+    return `<div class="odv-tlegend"><span class="odv-themed">Changes with theme</span><p>${esc(scheme.name)} decides what changes when you switch theme. Here a switch changes ${esc(lands)}, so the marked rows differ ${between}; everything else holds steady.</p></div>`;
+  };
+  const ownTable = (rows, ths) =>
+    themeLegend() +
+    h(
+      `<div class="odv-tscroll"><table class="odv-ttable odv-reads odv-api"><thead><tr><th>Part</th><th>Its token and the semantic it aliases</th><th>Value</th></tr></thead><tbody>`,
+      orderRows(rows).map((r, i, all) => {
+        const cells = ths.map((t) => readCell(r, t));
+        const same = cells.every((c) => c === cells[0]);
+        const head =
+          r.group && r.group !== all[i - 1]?.group
+            ? `<tr class="odv-vgroup"><td colspan="3">${attr(r.group)}</td></tr>`
+            : "";
+        const chain = r.own
+          ? `<span class="odv-api-tok"><span class="tok own">${attr(r.path.replace(/\.@$/, ""))}</span><span class="odv-branch"><span class="tok">${attr(r.alias.replace(/\.@$/, ""))}</span></span><span class="odv-branch odv-branch-css odv-branch-last"><code>var(--${attr(r.variable)})</code></span></span>`
+          : `<span class="odv-chain"><span class="tok">${attr(r.path)}</span></span><br/><small class="odv-css">straight from the system, through <code>--${attr(r.variable)}</code></small>`;
+        const value = same
+          ? cells[0]
+          : `<span class="odv-vpair">${ths.map((t, j) => `<span><em>${attr(themeLabel(t))}</em>${cells[j]}</span>`).join("")}</span>`;
+        return (
+          head +
+          `<tr><td><b>${attr(r.part)}</b>${same ? "" : `<br/><span class="odv-themed" title="${attr(scheme.name)} gives it a different value in each theme">Changes with theme</span>`}${r.when ? `<br/><small>${attr(r.when)}</small>` : ""}</td><td>${chain}</td><td>${value}</td></tr>`
+        );
+      }),
+      `</tbody></table></div>`,
+    );
+  // A component that reads system tokens straight through its classes: Part · class → variable → token ·
+  // a column per theme.
+  const classTable = (rows, ths) =>
+    h(
+      `<div class="odv-tscroll"><table class="odv-ttable odv-reads"><thead><tr><th>Part</th><th>From the class to the token</th>${ths.map((t) => `<th>${attr(themeLabel(t))}</th>`).join("")}</tr></thead><tbody>`,
+      rows.map((r) => {
+        const cells = ths.map((t) => readCell(r, t));
+        const same = cells.every((c) => c === cells[0]);
+        return (
+          `<tr><td><b>${attr(r.part)}</b>${r.when ? `<br/><small>${attr(r.when)}</small>` : ""}</td>` +
+          `<td><span class="odv-chain"><span>${attr(r.cls)}</span><i>→</i><span>--${attr(r.variable)}</span><i>→</i><span class="tok">${attr(r.path)}</span></span></td>` +
+          (same && ths.length > 1
+            ? `<td colspan="${ths.length}">${cells[0].replace("</small>", ", every theme</small>")}</td>`
+            : cells.map((c) => `<td>${c}</td>`).join("")) +
+          `</tr>`
+        );
+      }),
+      `</tbody></table></div>`,
+    );
 
   // Components
   pages["components/_category_.json"] =
@@ -1214,8 +2087,20 @@ export function docsPages(
     content: "Ways to show more content.",
     media: "Pictures and slides.",
   };
-  const FAMILY_ORDER = ["action", "form", "data", "feedback", "navigation", "overlay", "layout", "content", "media"];
-  const families = [...new Set([...FAMILY_ORDER, ...catalogue.map((c) => c.family)])];
+  const FAMILY_ORDER = [
+    "action",
+    "form",
+    "data",
+    "feedback",
+    "navigation",
+    "overlay",
+    "layout",
+    "content",
+    "media",
+  ];
+  const families = [
+    ...new Set([...FAMILY_ORDER, ...catalogue.map((c) => c.family)]),
+  ];
   // Only a component with a page links to it: built, and in the inventory unless every page is made.
   const hasPage = (id) => built.includes(id) && (all || id in inventory);
   const icard = (c, out) =>
@@ -1253,23 +2138,36 @@ export function docsPages(
     "\n\n" +
     families
       .map((f) => {
-        const list = inItems.filter((c) => c.family === f).sort((a, b) => a.id.localeCompare(b.id));
+        const list = inItems
+          .filter((c) => c.family === f)
+          .sort((a, b) => a.id.localeCompare(b.id));
         if (!list.length) return "";
-        return `## ${title(f)}\n\n${FAMILY_TEXT[f] ?? ""} ${list.length} in ${esc(scheme.name)}.\n\n` + h(`<div class="odv-icards">`, list.map((c) => icard(c)), `</div>`);
+        return (
+          `## ${title(f)}\n\n${FAMILY_TEXT[f] ?? ""} ${list.length} in ${esc(scheme.name)}.\n\n` +
+          h(
+            `<div class="odv-icards">`,
+            list.map((c) => icard(c)),
+            `</div>`,
+          )
+        );
       })
       .filter(Boolean)
       .join("\n\n") +
     (outItems.length
       ? `\n\n## Left out\n\nThe components answers did not pick these.${all ? " Each page still shows how it would look." : ""}\n\n` +
-        h(`<div class="odv-icards">`, outItems.sort((a, b) => a.id.localeCompare(b.id)).map((c) => icard(c, out[c.id] ?? "Left out.")), `</div>`)
+        h(
+          `<div class="odv-icards">`,
+          outItems
+            .sort((a, b) => a.id.localeCompare(b.id))
+            .map((c) => icard(c, out[c.id] ?? "Left out.")),
+          `</div>`,
+        )
       : "") +
     "\n";
   // A page per component that is in the inventory and built (OD-194). It reads the same engine as the
   // CLI's component command and the MCP's get_component, so the docs, Storybook and agents agree, and
   // adds what Storybook cannot: the answers behind each decision and what a change would move.
-  const names = built.filter(
-    (n) => all || !scheme.inventory || n in inventory,
-  );
+  const names = built.filter((n) => all || !scheme.inventory || n in inventory);
   const leftOut = (n) => Boolean(scheme.inventory) && !(n in inventory);
   // Embeds open the story in this design system: the Open DS Storybook reads the scheme (and the first
   // brand) from its toolbar global; a created project's Storybook has one scheme and ignores it.
@@ -1318,7 +2216,9 @@ export function docsPages(
       parts.push(
         `## When to use it\n\n` +
           (ownUse ? `**In ${esc(scheme.name)}:** ${esc(ownUse)}\n\n` : "") +
-          (r.apply_when ? `- **Use it when:** ${esc(r.apply_when)}\n- **Not when:** ${esc(r.not_when)}` : "") +
+          (r.apply_when
+            ? `- **Use it when:** ${esc(r.apply_when)}\n- **Not when:** ${esc(r.not_when)}`
+            : "") +
           (r.vs?.length
             ? `\n\nInstead:\n\n${r.vs.map((v) => `- ${v.outside ? esc(title(v.id)) : pageOf(v.id)}: ${esc(v.why)}`).join("\n")}`
             : ""),
@@ -1466,17 +2366,21 @@ export function docsPages(
         `The component reads only component keys and semantic tokens, so it follows the brand and mode on \`<html>\`.`,
     );
     parts.push(
-      keys.length
-        ? `## Component keys\n\nThe CSS variable is the key with \`/\` replaced by \`-\` and the base \`@\` dropped. Each key points to a token; values live only on primitives.\n\n| Key | What it controls | Points to, ${first.id} | Points to, ${dark.id} |\n| --- | --- | --- | --- |\n` +
-            keys
-              .map((k) => {
-                const p = k.id.replaceAll("/", ".");
-                const l = link(first, p);
-                const d = link(dark, p);
-                return `| \`${k.id}\` | ${esc(k.description)} | ${l} | ${d === l ? "same" : d} |`;
-              })
-              .join("\n")
-        : `## Tokens it reads\n\nFrom shadcn/ui. It reads shadcn's variables, which theme.css maps onto this system's semantic tokens, and the radius, shadow and text scale in shadcn.css.`,
+      keys.length && !readsOf(name).some((r) => r.own)
+        ? `## Component keys\n\nThe CSS variable is the key with \`/\` replaced by \`-\` and the base \`@\` dropped. Each key points to a token; values live only on primitives.\n\n` +
+            perBrand(
+              (F, D) =>
+                `| Key | What it controls | Points to, ${F.id} | Points to, ${D.id} |\n| --- | --- | --- | --- |\n` +
+                keys
+                  .map((k) => {
+                    const p = k.id.replaceAll("/", ".");
+                    const l = link(F, p);
+                    const d = link(D, p);
+                    return `| \`${k.id}\` | ${esc(k.description)} | ${l} | ${d === l ? "same" : d} |`;
+                  })
+                  .join("\n"),
+            )
+        : tokensRead(name),
     );
     pages[`components/${name}.md`] =
       fm({
@@ -1505,20 +2409,7 @@ export function docsPages(
       ? `- Brand: set \`data-brand\` on \`<html>\` to ${brands.map(([b]) => `\`${b}\``).join(", ")}.\n`
       : "") +
     `\n## Brands\n\n${brands.map(([b, x]) => `- **${x.label}** (\`${b}\`): ${x.description}`).join("\n")}\n\n` +
-    `## Key colors in each theme\n\n| Token | ${scheme.themes.map((t) => t.id).join(" | ")} |\n| --- | ${scheme.themes.map(() => "---").join(" | ")} |\n` +
-    [
-      "color.surface.canvas",
-      "color.surface.default",
-      "color.text.primary",
-      "color.action.primary",
-      "color.border.focus",
-    ]
-      .map(
-        (p) =>
-          `| \`${p}\` | ${scheme.themes.map((t) => esc(value(t, p, ""))).join(" | ")} |`,
-      )
-      .join("\n") +
-    "\n";
+    themeColors(scheme, g);
 
   // For agents
   pages["agents.md"] =
@@ -1529,7 +2420,7 @@ export function docsPages(
     }) +
     NOTE +
     `# For agents\n\nThis design system ships an agent layer, so an AI builds the way the system would and can say why.\n\n` +
-    `- **AGENTS.md** in the project root: the rules that always apply. In a design system project it is short, and \`context/\` holds one booklet per component, colour and task, with a router (\`context/index.json\`) that says what to load for a file.\n` +
+    `- **AGENTS.md** in the project root: the rules that always apply. In a design system project it is short, and \`context/\` holds one booklet per component, color and task, with a router (\`context/index.json\`) that says what to load for a file.\n` +
     `- **The agent skill** in \`.claude/skills/open-ds/SKILL.md\`: how to pick, read and follow the scheme.\n` +
     `- **The full scheme** in \`.open-ds/scheme.json\`: every answer with its reason.\n` +
     `- **llms.txt** next to these docs: an index of these pages for agents.\n\n` +

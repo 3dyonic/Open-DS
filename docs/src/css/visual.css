@@ -1,5 +1,5 @@
 /* The visual blocks of the docs (OD-182): the home hero and product screen, answer cards, section
-   tiles, live variant cards, do and don't, colour bands, surface stacks and primitive ramps. The
+   tiles, live variant cards, do and don't, color bands, surface stacks and primitive ramps. The
    pages come from cli/src/docs.mjs as HTML inside Markdown; these rules dress them in the design
    system's own tokens and component keys, so each scheme's docs look like that scheme. The same file
    ships in a created project (cli/templates/project/docs/src/css/visual.css); the harness keeps the
@@ -318,7 +318,7 @@
   font-size: var(--type-label-font-size);
 }
 
-/* Colour: the key colours as a band, surfaces as a stack, statuses in use. */
+/* Color: the key colors as a band, surfaces as a stack, statuses in use. */
 .odv-band {
   display: grid;
   grid-template-columns: repeat(6, minmax(0, 1fr));
@@ -1218,7 +1218,7 @@ a.odv-icard:hover {
   background: var(--color-action-primary);
 }
 
-/* OD-211: the Theming page. A preview per mode in its own colours, the mode table, what stays. */
+/* OD-211: the Theming page. A preview per mode in its own colors, the mode table, what stays. */
 .odv-theming {
   display: grid;
   gap: 1.25rem;
@@ -1349,3 +1349,607 @@ a.odv-icard:hover {
   font-size: 0.8125rem;
   color: var(--color-text-secondary);
 }
+
+/* OD-215: "Tokens it reads": each part, from its class to the scheme's token, and the value per theme. */
+.odv-reads {
+  min-width: 760px;
+}
+.odv-reads td:first-child {
+  white-space: nowrap;
+}
+.odv-reads td:first-child small {
+  font-weight: 400;
+  color: var(--color-text-secondary);
+}
+.odv-chain {
+  display: inline-flex;
+  flex-wrap: wrap;
+  gap: 4px;
+  align-items: center;
+  font: 0.75rem/1.5 var(--type-data-font-family, ui-monospace, monospace);
+}
+.odv-chain span {
+  white-space: nowrap;
+  padding: 1px 6px;
+  border-radius: 4px;
+  background: var(--color-surface-sunken, var(--color-surface-canvas));
+}
+.odv-chain span.tok {
+  font-weight: 600;
+  color: var(--color-action-primary);
+  background: var(--color-surface-selected, var(--color-surface-sunken));
+}
+.odv-chain i {
+  font-style: normal;
+  color: var(--color-text-secondary);
+}
+.odv-tsw .odv-tshape {
+  width: 30px;
+  height: 20px;
+  background: none;
+  border: 2px solid var(--color-action-primary);
+}
+.odv-tsw .odv-tlift {
+  width: 34px;
+  height: 20px;
+  border: 0;
+  background: var(--color-surface-raised, var(--color-surface-default));
+}
+
+/* OD-217: which brand a table belongs to, in a scheme with several brands. */
+.odv-brandname {
+  margin: 0 0 0.5rem;
+  font: 500 0.6875rem/1.4 var(--type-data-font-family, ui-monospace, monospace);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--color-text-secondary);
+}
+
+/* OD-220: anything with a hover hint shows the help cursor, so people know there is one. */
+.theme-doc-markdown [title]:not(a) {
+  cursor: help;
+}
+
+/* The scale view (OD-223): lanes of whole scales, then one row per token. */
+.odv-scale {
+  display: grid;
+  gap: 8px;
+  margin: 0 0 24px;
+}
+/* The light/dark switcher: one segmented control, the picked side raised. */
+.odv-scale-tabs {
+  display: inline-flex;
+  gap: 2px;
+  padding: 3px;
+  border-radius: 999px;
+  background: var(--color-surface-sunken);
+  justify-self: start;
+}
+.odv-scale-tabs button {
+  font: 500 13px var(--type-body-font-family);
+  padding: 5px 14px;
+  border-radius: 999px;
+  border: 0;
+  background: transparent;
+  color: var(--color-text-secondary);
+  cursor: pointer;
+}
+.odv-scale-tabs button[aria-selected="true"] {
+  background: var(--color-surface-default);
+  color: var(--color-text-primary);
+  box-shadow: 0 1px 2px color-mix(in srgb, var(--color-text-primary) 18%, transparent);
+}
+.odv-scale-p {
+  border-radius: var(--radius-container);
+  border: var(--border-width-default) solid var(--odv-edge);
+  padding: 16px;
+  display: grid;
+  gap: 22px;
+  overflow-x: auto;
+}
+.odv-scale-p[hidden] {
+  display: none;
+}
+.odv-lane {
+  display: grid;
+  gap: 8px;
+  min-width: 560px;
+}
+.odv-lane-h {
+  margin: 0;
+  font: 600 10px var(--type-data-font-family);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--odv-muted);
+}
+.odv-sts {
+  display: grid;
+  gap: 4px;
+}
+.odv-st,
+.odv-sl {
+  border-radius: 6px;
+  padding: 8px 6px;
+  min-height: 96px;
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+  font: 500 11px var(--type-data-font-family);
+  transition: box-shadow 0.12s;
+}
+/* An empty slot: spaced dashes drawn with gradients, in the placeholder border color. */
+.odv-sl {
+  color: var(--odv-muted);
+  background:
+    linear-gradient(90deg, var(--odv-dash) 6px, transparent 6px) top / 11px 2px repeat-x,
+    linear-gradient(90deg, var(--odv-dash) 6px, transparent 6px) bottom / 11px 2px repeat-x,
+    linear-gradient(0deg, var(--odv-dash) 6px, transparent 6px) left / 2px 11px repeat-y,
+    linear-gradient(0deg, var(--odv-dash) 6px, transparent 6px) right / 2px 11px repeat-y;
+}
+.odv-sl i {
+  margin-top: auto;
+  width: 18px;
+  height: 18px;
+  border-radius: 4px;
+  display: block;
+}
+.odv-st .n,
+.odv-sl .n {
+  font-weight: 600;
+  font-size: 12px;
+}
+.odv-st .x {
+  font-size: 10px;
+  opacity: 0.85;
+  overflow-wrap: anywhere;
+}
+.odv-st-bare {
+  background: color-mix(in srgb, var(--odv-muted) 10%, transparent);
+}
+.odv-st-bare .n,
+.odv-st-bare .x {
+  color: var(--odv-muted);
+}
+.odv-st .mk {
+  margin-top: auto;
+  display: flex;
+  gap: 8px;
+  align-items: center;
+}
+.odv-st .mk i {
+  width: 4px;
+  height: 24px;
+  border-radius: 2px;
+}
+.odv-st .mk b {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+}
+.odv-st .aa {
+  margin-top: auto;
+  font: 700 24px var(--type-body-font-family);
+  line-height: 1.1;
+}
+.odv-st.hl {
+  box-shadow:
+    0 0 0 2px transparent,
+    0 0 0 3px var(--odv-ring);
+}
+.odv-kvs {
+  display: grid;
+  max-width: 640px;
+}
+.odv-kv {
+  display: grid;
+  grid-template-columns: 22px minmax(0, 15em) minmax(0, 1fr);
+  gap: 12px;
+  align-items: center;
+  padding: 5px 4px;
+  border-radius: 4px;
+  border-bottom: 1px solid color-mix(in srgb, var(--odv-muted) 20%, transparent);
+  font: 12px var(--type-data-font-family);
+  color: inherit;
+  text-decoration: none;
+}
+a.odv-kv:hover {
+  color: inherit;
+  text-decoration: none;
+}
+.odv-kv.hl,
+.odv-kv:focus-visible {
+  background: color-mix(in srgb, var(--odv-ring) 12%, transparent);
+  outline: none;
+}
+.odv-kv-sw {
+  width: 22px;
+  height: 22px;
+  border-radius: 4px;
+  display: block;
+  box-shadow: inset 0 0 0 1px color-mix(in srgb, var(--odv-muted) 30%, transparent);
+}
+.odv-kv-k {
+  font-weight: 500;
+  overflow-wrap: anywhere;
+}
+.odv-kv-tag {
+  margin-left: 6px;
+  font-size: 10px;
+  color: var(--odv-muted);
+}
+.odv-kv-v {
+  display: flex;
+  gap: 8px;
+  align-items: baseline;
+  flex-wrap: wrap;
+}
+.odv-kv-v b {
+  font-weight: 500;
+}
+.odv-kv-v small {
+  color: var(--odv-muted);
+}
+tr.odv-for td {
+  background: var(--color-surface-selected);
+}
+.odv-tc {
+  display: inline-flex;
+  gap: 10px;
+  align-items: center;
+  white-space: nowrap;
+}
+.odv-tc > i {
+  width: 36px;
+  height: 28px;
+  border-radius: 6px;
+  display: grid;
+  place-items: center;
+  font: 600 11px var(--type-body-font-family);
+  font-style: normal;
+  box-shadow: inset 0 0 0 1px color-mix(in srgb, var(--color-text-muted) 30%, transparent);
+  flex: none;
+}
+.odv-tc > span {
+  display: grid;
+}
+.odv-tc small {
+  font: 11px var(--type-data-font-family);
+  color: var(--color-text-muted);
+}
+
+/* Pairs and tones as pictures (OD-233). */
+.odv-pgroup {
+  display: grid;
+  gap: 8px;
+}
+.odv-pgroup-n {
+  margin: 0;
+  font-size: var(--type-caption-font-size);
+  color: var(--odv-muted);
+}
+.odv-tiles {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(210px, 1fr));
+  gap: 8px;
+}
+.odv-tile {
+  border-radius: 10px;
+  padding: 12px;
+  display: grid;
+  gap: 6px;
+  align-content: start;
+  box-shadow: inset 0 0 0 1px color-mix(in srgb, var(--odv-muted) 18%, transparent);
+}
+.odv-tile-h {
+  margin: 0 0 4px;
+  font: 600 12px var(--type-data-font-family);
+  display: grid;
+}
+.odv-tile-h small,
+.odv-pr-k small {
+  font-weight: 400;
+  font-size: 10px;
+  opacity: 0.8;
+}
+.odv-pr {
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr) auto;
+  gap: 8px;
+  align-items: center;
+}
+.odv-pr-aa {
+  font: 700 20px var(--type-body-font-family);
+  line-height: 1;
+}
+.odv-pr-k {
+  font: 11px var(--type-data-font-family);
+  display: grid;
+  overflow-wrap: anywhere;
+}
+.odv-pr-c {
+  font: 600 10px var(--type-data-font-family);
+  border: 1px solid currentColor;
+  border-radius: 999px;
+  padding: 1px 6px;
+}
+.odv-pr-c.no {
+  text-decoration: line-through;
+}
+.odv-tsum {
+  font-weight: 600;
+}
+.odv-trows {
+  display: grid;
+  gap: 6px;
+  margin: 0 0 24px;
+  overflow-x: auto;
+}
+.odv-trow {
+  display: grid;
+  grid-template-columns: minmax(12em, 16em) minmax(120px, 160px) minmax(120px, 160px);
+  gap: 10px;
+  align-items: center;
+}
+.odv-trow-h span {
+  font: 500 11px var(--type-data-font-family);
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: var(--color-text-muted);
+}
+.odv-tchip {
+  border-radius: 8px;
+  padding: 7px 10px;
+  display: flex;
+  gap: 8px;
+  align-items: center;
+  font: 11px var(--type-data-font-family);
+  box-shadow: inset 0 0 0 1px color-mix(in srgb, var(--color-text-muted) 25%, transparent);
+}
+.odv-tchip b {
+  font: 700 16px var(--type-body-font-family);
+}
+.odv-vars {
+  font-size: 12px;
+}
+.odv-vars td,
+.odv-vars th {
+  padding: 6px 8px;
+}
+.odv-vars code {
+  font-size: 11px;
+  white-space: nowrap;
+}
+.odv-vars small {
+  font-size: 10px;
+}
+.odv-vars .odv-tsw small {
+  white-space: normal;
+  overflow-wrap: anywhere;
+}
+.odv-vars td:nth-child(n + 3) {
+  min-width: 8.5em;
+}
+.odv-vars-p {
+  padding: 8px;
+}
+.odv-vars-p .odv-ttable {
+  background: transparent;
+  color: inherit;
+}
+.odv-vars-p .odv-ttable th {
+  background: transparent;
+  color: var(--odv-muted);
+}
+.odv-vars-p .odv-ttable td {
+  border-color: color-mix(in srgb, var(--odv-muted) 18%, transparent);
+}
+.odv-vars-p small {
+  color: var(--odv-muted);
+}
+.odv-vgroup td {
+  padding-top: 14px !important;
+  font: 600 10px var(--type-data-font-family);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--odv-muted);
+  border-bottom: 0 !important;
+}
+.odv-vars-p .odv-ttable thead tr,
+.odv-vars-p .odv-ttable thead th {
+  background: transparent;
+}
+.odv-vars-p code {
+  background: color-mix(in srgb, var(--odv-muted) 16%, transparent);
+  color: inherit;
+  border: 0;
+}
+.odv-vars-p .odv-ttable tr,
+.odv-vars-p .odv-ttable td,
+.odv-vars-p .odv-ttable th {
+  border-color: color-mix(in srgb, var(--odv-muted) 18%, transparent);
+}
+.odv-vars-p table thead tr,
+.odv-vars-p table tbody tr {
+  background: transparent !important;
+}
+.odv-scale-p code {
+  background: color-mix(in srgb, var(--odv-muted) 16%, transparent);
+  color: inherit;
+  border: 0;
+}
+.odv-chain .tok.own {
+  background: var(--color-surface-sunken);
+  color: var(--color-text-primary);
+}
+.odv-css {
+  color: var(--color-text-muted);
+}
+.odv-css code {
+  font-size: 11px;
+}
+.odv-vpair {
+  display: grid;
+  gap: 0;
+}
+.odv-vpair > span + span {
+  border-top: 1px solid color-mix(in srgb, var(--color-text-muted) 22%, transparent);
+  margin-top: 6px;
+  padding-top: 6px;
+}
+.odv-vpair > span {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+}
+.odv-vpair em {
+  font: 500 10px var(--type-data-font-family);
+  font-style: normal;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: var(--color-text-muted);
+  width: 3.6em;
+  white-space: nowrap;
+  flex: none;
+}
+.odv-api-tok {
+  display: grid;
+  gap: 2px;
+  justify-items: start;
+}
+.odv-api-tok .tok {
+  font: 12px var(--type-data-font-family);
+  padding: 2px 6px;
+  border-radius: 4px;
+  background: var(--color-surface-selected);
+  color: var(--color-text-link);
+}
+.odv-api-tok .tok.own {
+  font-weight: 600;
+  background: var(--color-surface-sunken);
+  color: var(--color-text-primary);
+}
+/* the token's branches: a soft tree line from the token to its alias and its CSS variable */
+.odv-branch {
+  position: relative;
+  display: flex;
+  gap: 6px;
+  align-items: center;
+  margin-left: 8px;
+  padding: 2px 0 2px 16px;
+  font-size: 12px;
+}
+.odv-branch::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  border-left: 1px solid color-mix(in srgb, var(--color-text-muted) 35%, transparent);
+}
+.odv-branch-last::before {
+  bottom: 50%;
+}
+.odv-branch::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 50%;
+  width: 10px;
+  border-top: 1px solid color-mix(in srgb, var(--color-text-muted) 35%, transparent);
+}
+.odv-branch small {
+  color: var(--color-text-muted);
+  font-size: 11px;
+}
+.odv-branch code {
+  font-size: 11px;
+}
+.odv-themed {
+  display: inline-block;
+  margin-top: 4px;
+  padding: 0 6px;
+  border-radius: 999px;
+  font: 500 10px var(--type-data-font-family);
+  letter-spacing: 0.04em;
+  color: var(--color-text-muted);
+  box-shadow: inset 0 0 0 1px color-mix(in srgb, var(--color-text-muted) 30%, transparent);
+  cursor: help;
+}
+.odv-api .odv-ptok {
+  font: 12px var(--type-data-font-family);
+  padding: 1px 6px;
+  border-radius: 4px;
+  background: var(--color-surface-sunken);
+  color: var(--color-text-primary);
+}
+.odv-api .odv-kvsep {
+  margin: 0 8px 0 2px;
+  color: var(--color-text-muted);
+}
+.odv-api .odv-raw {
+  font: 13px var(--type-body-font-family);
+  color: var(--color-text-secondary);
+}
+.odv-api .odv-api-tok .tok,
+.odv-api .odv-branch code,
+.odv-api .odv-ptok {
+  white-space: nowrap;
+}
+.odv-api td:nth-child(2) {
+  min-width: 0;
+}
+.odv-api .odv-vpair em {
+  width: 3em;
+}
+.odv-api td:first-child {
+  width: 11em;
+}
+.odv-api .odv-tsw,
+.odv-api .odv-tsw small {
+  flex-wrap: wrap;
+  white-space: normal;
+}
+.odv-api .odv-ptok {
+  font-size: 11px;
+}
+.odv-api td:nth-child(3) {
+  min-width: 15em;
+}
+.odv-api td:nth-child(3) {
+  min-width: 14em;
+}
+.odv-api .odv-vpair em {
+  width: 2.8em;
+}
+.odv-tlegend {
+  display: flex;
+  gap: 10px;
+  align-items: baseline;
+  margin: 0 0 12px;
+  padding: 10px 12px;
+  border-radius: var(--radius-container);
+  background: var(--color-surface-default);
+}
+.odv-tlegend .odv-themed {
+  margin: 0;
+  flex: none;
+}
+.odv-tlegend p {
+  margin: 0;
+  font-size: var(--type-caption-font-size);
+  color: var(--color-text-secondary);
+}
+
+/* Font family specimens on Primitives › Type */
+.odv-fonts { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 12px; margin: 0 0 18px; }
+.odv-font { border: 1px solid var(--ifm-color-emphasis-300); border-radius: 10px; padding: 16px; display: grid; gap: 10px; background: var(--ifm-background-surface-color); }
+.odv-font-top { display: flex; align-items: flex-end; justify-content: space-between; gap: 12px; }
+.odv-font-aa { font-size: 56px; line-height: 1; }
+.odv-font-top .tok { font-family: var(--ifm-font-family-monospace); font-size: 12px; white-space: nowrap; }
+.odv-font-abc { font-size: 17px; line-height: 1.4; overflow-wrap: anywhere; }
+.odv-font-weights { display: flex; gap: 16px; flex-wrap: wrap; font-size: 15px; }
+.odv-font-weights small { display: block; font-family: var(--ifm-font-family-monospace); font-size: 11px; font-weight: 400; color: var(--ifm-color-emphasis-700); }
+.odv-font-roles { font-family: var(--ifm-font-family-base); font-size: 13px; color: var(--ifm-color-emphasis-700); }
+.odv-font-roles code { font-size: 12px; }
+.odv-font-stack { font-family: var(--ifm-font-family-monospace); font-size: 12px; color: var(--ifm-color-emphasis-700); }
+.odv-font-roles code { display: inline-block; margin: 2px 4px 2px 0; }

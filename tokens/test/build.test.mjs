@@ -114,7 +114,7 @@ test("only semantic and component keys ship as CSS variables, with primitives an
     const css = read(s.id, "tokens.css");
     const name = s.brands.length > 1 ? s.brands[0].id : s.id;
     assert.ok(!new RegExp(`--${name}-theme-`).test(css), `${s.id}: no theme variables`);
-    assert.ok(!/--color-[a-z]+-(light|dark)-\d+/.test(css), `${s.id}: no colour primitive variables`);
+    assert.ok(!/--color-[a-z]+-(light|dark)-\d+/.test(css), `${s.id}: no color primitive variables`);
     assert.ok(!/var\(--color-[a-z]+-(light|dark)-/.test(css), `${s.id}: no reference to a primitive`);
     assert.match(css, /--color-action-primary: #[0-9A-F]{6}/i, `${s.id}: a semantic resolves to its value`);
     assert.ok(

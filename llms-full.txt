@@ -2,9 +2,9 @@
 
 > Generated from schemes/*.json. Each scheme lists its answers (question: answer. why), its usage rules (situation: use; not; why) and its voice.
 
-## Colour guidance, for every scheme
+## Color guidance, for every scheme
 
-Status colours go up in urgency: info, then warning, then danger. Pick the level that matches the real risk. Never go up a level to get attention. Success sits outside the order.
+Status colors go up in urgency: info, then warning, then danger. Pick the level that matches the real risk. Never go up a level to get attention. Success sits outside the order.
 Urgency order: color.status.info.@ → color.status.warning.@ → color.status.danger.@
 
 - color.surface.canvas: The page background behind everything. Use for: Page and app background. Not for: Cards and panels on the page (use color.surface.default).
@@ -14,26 +14,40 @@ Urgency order: color.status.info.@ → color.status.warning.@ → color.status.d
 - color.surface.selected: The fill of a selected or current item. Use for: Selected rows, Current menu item. Not for: Hover (use color.surface.sunken); The main action (use color.action.primary.@).
 - color.surface.inverse: A reversed fill for small, short-lived messages. Use for: Tooltips, Toasts. Not for: Large areas (use color.surface.default).
 - color.surface.scrim: The see-through layer behind a modal. Use for: Behind dialogs and sheets. Not for: A solid fill (use color.surface.raised).
-- color.text.primary: Body text and headings. Use for: Body text, Headings, Tag labels. Not for: Text on the main action (use color.text.on-action); Text on an inverse fill (use color.text.inverse). Sits on: color.surface.canvas, color.surface.default, color.surface.raised, color.surface.sunken, color.surface.selected, color.action.secondary.@, color.action.secondary.hover, color.category.1.subtle, color.category.2.subtle, color.category.3.subtle, color.category.4.subtle, color.category.5.subtle at 4.5:1 or more.
-- color.text.secondary: Supporting text. Use for: Labels, Descriptions, Metadata. Not for: The main content (use color.text.primary). Sits on: color.surface.canvas, color.surface.default, color.surface.raised, color.surface.sunken at 4.5:1 or more.
-- color.text.muted: The quietest text. Use for: Placeholders, Hints, Timestamps. Not for: Anything people must read to act (use color.text.secondary); A disabled control (use color.disabled.text). Sits on: color.surface.canvas, color.surface.default, color.surface.sunken at 4.5:1 or more.
+- color.text.primary: Body text and headings. Use for: Body text, Headings, Tag labels. Not for: Text on the main action (use color.text.on-action); Text on an inverse fill (use color.text.inverse). Sits on: fills of its tone: color.surface.canvas, color.surface.default, color.surface.raised, color.surface.sunken, color.surface.selected, color.surface.inverse, color.action.primary.@, color.action.primary.hover, color.action.danger.@, color.action.danger.hover, color.action.secondary.@, color.action.secondary.hover, color.status.info.subtle, color.status.warning.subtle, color.status.danger.subtle, color.status.success.subtle at 4.5:1 or more.
+- color.text.secondary: Supporting text. Use for: Labels, Descriptions, Metadata. Not for: The main content (use color.text.primary). Sits on: fills of its tone: color.surface.canvas, color.surface.default, color.surface.raised, color.surface.sunken, color.surface.selected at 4.5:1 or more.
+- color.text.muted: The quietest text. Use for: Placeholders, Hints, Timestamps. Not for: Anything people must read to act (use color.text.secondary); A disabled control (use color.disabled.text). Sits on: fills of its tone: color.surface.canvas, color.surface.default, color.surface.raised, color.surface.sunken, color.surface.selected at 4.5:1 or more.
 - color.text.inverse: Text on an inverse fill. Use for: Tooltip and toast text. Not for: Text on the page (use color.text.primary). Sits on: color.surface.inverse at 4.5:1 or more.
+- color.text.on-light: Text on any fill whose tone is light, in either mode: the light mode's body text. Use for: Labels on light fills, The danger and primary buttons in dark mode. Not for: Text on the page's own surfaces (use color.text.primary). Sits on: fills of its tone: color.surface.canvas, color.surface.default, color.surface.raised, color.surface.sunken, color.surface.selected, color.surface.inverse, color.action.primary.@, color.action.primary.hover, color.action.danger.@, color.action.danger.hover, color.action.secondary.@, color.action.secondary.hover, color.status.info.subtle, color.status.warning.subtle, color.status.danger.subtle, color.status.success.subtle at 4.5:1 or more.
+- color.text.on-dark: Text on any fill whose tone is dark, in either mode: white. Use for: Labels on dark fills, The primary and danger buttons in light mode. Not for: Text on the page's own surfaces (use color.text.primary). Sits on: fills of its tone: color.surface.canvas, color.surface.default, color.surface.raised, color.surface.sunken, color.surface.selected, color.surface.inverse, color.action.primary.@, color.action.primary.hover, color.action.danger.@, color.action.danger.hover, color.action.secondary.@, color.action.secondary.hover, color.status.info.subtle, color.status.warning.subtle, color.status.danger.subtle, color.status.success.subtle at 4.5:1 or more.
+- color.text.info-on-light: The label on a light info fill, such as its tint in light mode: a fixed color from the light scale (800). Use for: The info badge. Not for: Info text on the page (use color.status.info.@). Sits on: fills of its tone: color.status.info.subtle at 4.5:1 or more.
+- color.text.info-on-dark: The label on a dark info fill, such as its tint in dark mode: a fixed color from the light scale (100, adjusted so its hue shows). Use for: The info badge. Not for: Info text on the page (use color.status.info.@). Sits on: fills of its tone: color.status.info.subtle at 4.5:1 or more.
+- color.text.success-on-light: The label on a light success fill, such as its tint in light mode: a fixed color from the light scale (800). Use for: The success badge. Not for: Success text on the page (use color.status.success.@). Sits on: fills of its tone: color.status.success.subtle at 4.5:1 or more.
+- color.text.success-on-dark: The label on a dark success fill, such as its tint in dark mode: a fixed color from the light scale (100, adjusted so its hue shows). Use for: The success badge. Not for: Success text on the page (use color.status.success.@). Sits on: fills of its tone: color.status.success.subtle at 4.5:1 or more.
+- color.text.warning-on-light: The label on a light warning fill, such as its tint in light mode: a fixed color from the light scale (800). Use for: The warning badge. Not for: Warning text on the page (use color.status.warning.@). Sits on: fills of its tone: color.status.warning.subtle at 4.5:1 or more.
+- color.text.warning-on-dark: The label on a dark warning fill, such as its tint in dark mode: a fixed color from the light scale (100, adjusted so its hue shows). Use for: The warning badge. Not for: Warning text on the page (use color.status.warning.@). Sits on: fills of its tone: color.status.warning.subtle at 4.5:1 or more.
+- color.text.danger-on-light: The label on a light danger fill, such as its tint in light mode: a fixed color from the light scale (800). Use for: The danger badge. Not for: Danger text on the page (use color.status.danger.@). Sits on: fills of its tone: color.status.danger.subtle at 4.5:1 or more.
+- color.text.danger-on-dark: The label on a dark danger fill, such as its tint in dark mode: a fixed color from the light scale (100, adjusted so its hue shows). Use for: The danger badge. Not for: Danger text on the page (use color.status.danger.@). Sits on: fills of its tone: color.status.danger.subtle at 4.5:1 or more.
 - color.text.on-action: Text and icons on the main action's fill. Use for: Primary button labels. Not for: Text on the page (use color.text.primary). Sits on: color.action.primary.@, color.action.primary.hover at 4.5:1 or more.
-- color.text.link: Links in running text. Use for: Inline links. Not for: Buttons (use color.action.primary.@). Sits on: color.surface.canvas, color.surface.default at 4.5:1 or more.
+- color.text.on-danger: Text on the danger fill: its tone's main text. Use for: The danger button label. Not for: Text on the main action (use color.text.on-action). Sits on: color.action.danger.@, color.action.danger.hover at 4.5:1 or more.
+- color.text.link: Links in running text. Use for: Inline links. Not for: Buttons (use color.action.primary.@). Sits on: fills of its tone: color.surface.canvas, color.surface.default, color.surface.raised, color.surface.sunken, color.surface.selected at 4.5:1 or more.
 - color.border.default: Quiet edges and dividers. Decorative, so it has no contrast minimum. Use for: Card edges, Dividers, Table rules. Not for: The edge of a control people must find (use color.border.strong).
-- color.border.strong: The edge of a control people must find. Use for: Input borders, Checkbox borders, Secondary button borders. Not for: A divider (use color.border.default). Sits on: color.surface.canvas, color.surface.default at 3:1 or more.
-- color.border.focus: The focus ring. Use for: Keyboard focus on any control. Not for: A selected item (use color.surface.selected). Sits on: color.surface.canvas, color.surface.default at 3:1 or more.
+- color.border.strong: The edge of a control people must find. Use for: Input borders, Checkbox borders, Secondary button borders. Not for: A divider (use color.border.default). Sits on: fills of its tone: color.surface.canvas, color.surface.default, color.surface.raised, color.surface.sunken, color.surface.selected at 3:1 or more.
+- color.border.focus: The focus ring. Use for: Keyboard focus on any control. Not for: A selected item (use color.surface.selected). Sits on: fills of its tone: color.surface.canvas, color.surface.default, color.surface.raised, color.surface.sunken, color.surface.selected, color.surface.inverse at 3:1 or more.
+- color.border.selected: The edge that marks a selected item, beside its fill, so selection is never color alone. Use for: A selected table row, The current item in a sidebar or menu. Not for: Keyboard focus (use color.border.focus); The fill of a selected item (use color.surface.selected). Sits on: color.surface.canvas, color.surface.default, color.surface.selected at 3:1 or more.
 - color.action.primary.@: The one main action in a view. Use for: Primary button fill, Checked controls, Active tab indicator. Not for: A second action in the same view (use color.action.secondary.@); Links in text (use color.text.link); News or status (use color.status.info.@). Sits on: color.surface.canvas, color.surface.default at 3:1 or more.
 - color.action.primary.hover: The main action under the pointer. Use for: Primary button hover. Not for: The resting state (use color.action.primary.@).
 - color.action.secondary.@: The fill of other actions. Use for: Secondary buttons. Not for: The main action (use color.action.primary.@).
 - color.action.secondary.hover: Other actions under the pointer. Use for: Secondary button hover. Not for: The resting state (use color.action.secondary.@).
-- color.status.info.@: Neutral news: something changed and no action is needed. The lowest level of the urgency order. Use for: Status text and icons, Badge labels. Not for: Something needs a check (use color.status.warning.@); The main action (use color.action.primary.@). Sits on: color.surface.canvas, color.surface.default, color.status.info.subtle at 4.5:1 or more.
+- color.action.danger.@: The fill of a destructive commit: the confirm of a delete. Use for: The confirm button of a delete or remove. Not for: The first step of a delete (use color.action.secondary.@); An error message (use color.status.danger.@).
+- color.action.danger.hover: The danger fill on hover. Use for: Hover on the danger button. Not for: The resting fill (use color.action.danger.@).
+- color.status.info.@: Neutral news: something changed and no action is needed. The lowest level of the urgency order. Use for: Status text and icons. Not for: Something needs a check (use color.status.warning.@); The main action (use color.action.primary.@); The info badge label (use color.text.info-on-light). Sits on: color.surface.canvas, color.surface.default at 4.5:1 or more.
 - color.status.info.subtle: The fill behind info status. Use for: Info badges, Banners. Not for: Large page areas (use color.surface.default).
-- color.status.warning.@: Caution: something may go wrong or needs a check, and it can be fixed. Use for: Status text and icons, Badge labels. Not for: An error, or an action that cannot be undone (use color.status.danger.@); News that needs no action (use color.status.info.@). Sits on: color.surface.canvas, color.surface.default, color.status.warning.subtle at 4.5:1 or more.
+- color.status.warning.@: Caution: something may go wrong or needs a check, and it can be fixed. Use for: Status text and icons. Not for: An error, or an action that cannot be undone (use color.status.danger.@); News that needs no action (use color.status.info.@); The warning badge label (use color.text.warning-on-light). Sits on: color.surface.canvas, color.surface.default at 4.5:1 or more.
 - color.status.warning.subtle: The fill behind warning status. Use for: Warning badges, Banners. Not for: Large page areas (use color.surface.default).
-- color.status.danger.@: Real risk: errors, failed checks, actions that cannot be undone. The top of the urgency order. Overuse wears it out. Use for: Status text and icons, Badge labels. Not for: Caution or advice (use color.status.warning.@); Getting attention (use color.status.info.@). Sits on: color.surface.canvas, color.surface.default, color.status.danger.subtle at 4.5:1 or more.
+- color.status.danger.@: Real risk: errors, failed checks, actions that cannot be undone. The top of the urgency order. Overuse wears it out. Use for: Error messages and status text, Icons. Not for: Caution or advice (use color.status.warning.@); Getting attention (use color.status.info.@); The danger badge label (use color.text.danger-on-light). Sits on: color.surface.canvas, color.surface.default at 4.5:1 or more.
 - color.status.danger.subtle: The fill behind danger status. Use for: Danger badges, Banners. Not for: Large page areas (use color.surface.default).
-- color.status.success.@: Confirmation that something worked. It sits outside the urgency order. Use for: Status text and icons, Badge labels. Not for: The main action (use color.action.primary.@); Brand colour (use color.action.primary.@). Sits on: color.surface.canvas, color.surface.default, color.status.success.subtle at 4.5:1 or more.
+- color.status.success.@: Confirmation that something worked. It sits outside the urgency order. Use for: Status text and icons. Not for: The main action (use color.action.primary.@); Brand color (use color.action.primary.@); The success badge label (use color.text.success-on-light). Sits on: color.surface.canvas, color.surface.default at 4.5:1 or more.
 - color.status.success.subtle: The fill behind success status. Use for: Success badges, Banners. Not for: Large page areas (use color.surface.default).
 - color.category.1.@: Category 1: tells one item or series from another. It carries no meaning. Use for: Chart series, Tag dots and icons. Not for: Status or risk (use color.status.warning.@); Tag text (use color.text.primary). Sits on: color.surface.canvas, color.surface.default at 3:1 or more.
 - color.category.1.subtle: Category 1: the fill of a tag. Use for: Tag and label fills. Not for: A status badge (use color.status.info.subtle).
@@ -89,7 +103,7 @@ Themes: light, dark
 - color.lands Where does color carry meaning first? Links and actions. Links and actions must be found by everyone. (because outcomes.q1)
 - spacing.roles Which spacing roles does it need? Gaps, insets and row heights. Large rows matter for touch and zoom. (because people.q1)
 - spacing.count How many densities exist? One. One density; no compact mode to fail people. (because people.q1)
-- spacing.definition How are spacing steps defined? A coarse base unit. Big, even steps lower effort. (because human.q1)
+- spacing.definition How are spacing steps defined? Big, even steps. Big, even steps lower effort. (because human.q1)
 - spacing.values How dense is the layout? Spacious. Space lowers effort and mis-taps. (because human.q1)
 - spacing.lands Where does spacing matter most? Between fields. Space between fields prevents mis-taps. (because content.q1)
 - shape.roles Which shape roles does it need? Controls, badges and containers. Badges keep a clear rectangle. (because human.q1)
@@ -163,7 +177,7 @@ Themes: light, dark
 - The smallest clickable thing (smallest-target): use size.control.default (large); not Touch-minimum size; Large targets help people with motor needs.
 - The action that completes the task (commit-action): use Button primary, one per page; not Two primaries; One clear next step.
 - An alternative or cancel (alternative-action): use Button secondary; not A text link; Every action looks like a button people can find.
-- Delete or remove (destructive-action): use Button secondary, then a confirm page; not Button primary; A confirm step prevents a costly error.
+- Delete or remove (destructive-action): use Button secondary, then a confirm page with Button danger; not Button primary; A confirm step prevents a costly error.
 - An action on one row or item (row-action): use Button secondary with a word; not An icon on its own; A word says what will happen.
 - A value with no token (missing-token): use The closest semantic token, then ask for a new one; not A raw value in the component; A raw value skips the contrast checks every token passed.
 - A button label (button-label): use A common verb that says what happens next; not "Submit" or "Proceed"; Common words are understood by the most people. Example: "Continue"
@@ -228,7 +242,7 @@ Themes: light, dark
 - color.lands Where does color carry meaning first? Brand moments. Color makes the launch moment. (because outcomes.q1)
 - spacing.roles Which spacing roles does it need? Gaps and insets. Few tables; no row role needed. (because content.q1)
 - spacing.count How many densities exist? One. One generous density. (because content.q2)
-- spacing.definition How are spacing steps defined? A coarse base unit. Big, even steps make big moments. (because brand.q2)
+- spacing.definition How are spacing steps defined? Big, even steps. Big, even steps make big moments. (because brand.q2)
 - spacing.values How dense is the layout? Spacious. Big space makes big moments. (because content.q2)
 - spacing.lands Where does spacing matter most? Between big sections. Space works between big sections. (because content.q1)
 - shape.roles Which shape roles does it need? Controls and containers. Pills everywhere; badges share the control corner. (because brand.q1)
@@ -244,7 +258,7 @@ Themes: light, dark
 - motion.roles What is motion for? Feedback and expression. Motion carries personality. (because brand.q2)
 - motion.count How many speeds exist? Three. Fast feedback, moderate panels, relaxed hero. (because motion.roles)
 - motion.definition How is easing defined? A spring. A spring that overshoots feels alive. (because brand.q1)
-- motion.values How fast does feedback feel? Relaxed. Relaxed, springy motion. (because human.q1)
+- motion.values How fast does feedback feel? Fast. Feedback stays fast; the personality shows in panels and hero moments, which move slower on a spring. (because human.q1)
 - motion.lands Where does motion show? Hero and launch moments. Motion shows in hero and launch moments. (because outcomes.q1)
 - iconography.roles What do icons do? Those and decoration. Icons also decorate campaign pages. (because brand.q2)
 - iconography.count How many icon sizes exist? Two. One size next to text, one for decoration. (because iconography.roles)
@@ -294,7 +308,7 @@ Themes: light, dark
 - Shape of a status badge (status-shape): use radius.badge (pill); not A rectangle; Pills match the controls.
 - A card on the page (card): use elevation.card (pronounced); not A flat card; Cards float to feel tactile.
 - A menu or dialog (menu-or-dialog): use elevation.overlay and a dimmed page; not No shadow; Strong depth for floating things.
-- Hover and press feedback (hover-feedback): use motion.duration.feedback (relaxed); not An instant change; Springy motion is part of the brand.
+- Hover and press feedback (hover-feedback): use motion.duration.feedback (fast); not An instant change; Fast feedback, on the brand's spring.
 - Someone asked for less motion (reduced-motion): use Reduced motion; not Full motion; Motion is reduced when asked.
 - An icon with no label (icon-alone): use Not used: always add a word; not An icon button with a hover hint; On phones, hover hints never show; a word says what will happen.
 - Someone switches to dark (dark-mode): use The dark semantic mode; not A separate campaign palette; Dark ships as standard; campaigns change values, not structure.
@@ -302,7 +316,7 @@ Themes: light, dark
 - The smallest clickable thing (smallest-target): use size.control.default (touch); not A compact control; Phones first.
 - The action that completes the task (commit-action): use Button primary, large, one per section; not Two primaries; One loud call to action per section.
 - An alternative or cancel (alternative-action): use Button ghost; not A second primary; The alternative must not compete.
-- Delete or remove (destructive-action): use Button secondary, then confirm; not Button primary; Confirm before destroying data.
+- Delete or remove (destructive-action): use Button secondary, then confirm with Button danger; not Button primary; Confirm before destroying data.
 - An action on one row or item (row-action): use Button ghost with a word; not An icon alone; A word keeps it clear.
 - A value with no token (missing-token): use The closest semantic token, then ask for a new one; not A raw value in the component; The next campaign changes primitives; raw values would stay behind.
 - A button label (button-label): use A short verb that moves: Join, Try, Go; not "Learn more"; Big moments need verbs with energy. Example: "Join the drop"
@@ -367,7 +381,7 @@ Themes: light, dark
 - color.lands Where does color carry meaning first? Links and actions. Color marks links inside the text. (because tasks.q1)
 - spacing.roles Which spacing roles does it need? Gaps and insets. No dense tables, so no row role. (because content.q1)
 - spacing.count How many densities exist? One. One calm density. (because content.q2)
-- spacing.definition How are spacing steps defined? A coarse base unit. Big, even steps suit long reading. (because outcomes.q1)
+- spacing.definition How are spacing steps defined? Big, even steps. Big, even steps suit long reading. (because outcomes.q1)
 - spacing.values How dense is the layout? Spacious. Room around the text helps reading. (because outcomes.q1)
 - spacing.lands Where does spacing matter most? Between paragraphs. Space is spent between paragraphs and sections. (because content.q1)
 - shape.roles Which shape roles does it need? Controls, badges and containers. Pill badges differ from controls. (because brand.q1)
@@ -441,7 +455,7 @@ Themes: light, dark
 - The smallest clickable thing (smallest-target): use size.control.default (touch); not A compact control; Many readers are on phones.
 - The action that completes the task (commit-action): use Button primary, one per section; not Two primaries side by side; One clear action per section.
 - An alternative or cancel (alternative-action): use Button ghost as a text link; not A second boxed button; A link feels lighter and does not compete.
-- Delete or remove (destructive-action): use Button secondary with the full verb, then confirm; not Button primary; Naming the verb and confirming prevents a mistake.
+- Delete or remove (destructive-action): use Button secondary with the full verb, then confirm with Button danger; not Button primary; Naming the verb and confirming prevents a mistake.
 - An action on one row or item (row-action): use Button ghost with a word; not An icon on its own; Occasional visitors need the word.
 - A value with no token (missing-token): use The closest semantic token, then ask for a new one; not A raw value in the component; Raw values break dark mode and the next redesign.
 - A button label (button-label): use A warm verb a reader would say; not "Submit" or "Click here"; Buttons are part of the reading voice. Example: "Subscribe"
@@ -485,7 +499,7 @@ Themes: light, dark
 - tasks.q1 What is the main task? Scan and compare. People scan rows and compare values. (because content.q1)
 - tasks.q2 How often do people repeat actions? Constantly. The same actions repeat many times an hour. (because people.q1)
 - human.q1 What must the interface protect? People keep their place. Losing your place in a long table costs time and errors. (because tasks.q1)
-- human.q2 How do people recall the interface? They learn it and recognise it. Daily users learn the interface and recognise it. (because people.q1)
+- human.q2 How do people recall the interface? They learn it and recognize it. Daily users learn the interface and recognize it. (because people.q1)
 - outcomes.q1 Which outcome matters most? Time on task. Speed on repeated tasks is the measure. (because tasks.q2)
 - outcomes.q2 What is a costly mistake? Acting on the wrong record. Acting on the wrong row is the costly error. (because tasks.q1)
 - brand.q1 What should the brand feel like? Precise. The interface must feel exact and trustworthy. (because content.q1)
@@ -496,7 +510,7 @@ Themes: light, dark
 - team.q2 How fast does it change? Every month. Features ship every month; the system must keep up.
 - typography.roles Which text roles does it need? Core and data. A data role keeps numbers in aligned columns. (because content.q1, tasks.q1)
 - typography.count How many steps does the type scale take? Only the steps the screens need. A screen full of records stays calm with only the sizes it needs. (because content.q2)
-- typography.definition How are sizes and line heights defined? A ratio, line heights on the grid. Lines stay on the grid so rows align, and grow with the user's text size. (because tasks.q1, people.q2)
+- typography.definition How are sizes and line heights defined? A ratio, line heights in proportion. Line height is a ratio of each text's own size, so it follows the text. Two steps: tight for headings and labels, open for body, data and captions. (because tasks.q1, people.q2)
 - typography.values How large is body text? Small. Small body text fits more rows on the screen. (because content.q2)
 - typography.lands Where does type do the most work? Tables and inputs. Most text sits in table cells and inputs. (because content.q1)
 - color.roles Which color roles does it need? Surface, text, action and status. Surface, text, action and status cover an operations tool. (because brand.q2)
@@ -506,7 +520,7 @@ Themes: light, dark
 - color.lands Where does color carry meaning first? Status in tables. Color earns its place by marking late and failed records. (because outcomes.q2)
 - spacing.roles Which spacing roles does it need? Gaps, insets and row heights. Row height is a decision of its own in a table product. (because content.q1)
 - spacing.count How many densities exist? Two. A second, denser size serves tables and toolbars. (because tasks.q1)
-- spacing.definition How are spacing steps defined? A fine base unit. A fine base unit gives the small steps dense screens need. (because content.q2)
+- spacing.definition How are spacing steps defined? Small steps, on a 4px grid. Steps on a 4px grid give the small gaps dense screens need. (because content.q2)
 - spacing.values How dense is the layout? Compact. Compact spacing shows more records. (because content.q2)
 - spacing.lands Where does spacing matter most? Rows and cells. Space is spent inside rows and cells. (because tasks.q1)
 - shape.roles Which shape roles does it need? Controls, badges and containers. Badges sit in columns and need their own corner. (because tasks.q1)
@@ -580,7 +594,7 @@ Themes: light, dark
 - The smallest clickable thing (smallest-target): use size.control.compact; not Anything smaller; Compact still fits a mouse. Touch is not this product's input.
 - The action that completes the task (commit-action): use Button primary, one per view; not Two primaries side by side; One primary makes the committing action obvious.
 - An alternative or cancel (alternative-action): use Button secondary; not Button ghost; Cancel must be easy to find next to the primary.
-- Delete or remove (destructive-action): use Button secondary, then confirm in a dialog; not Button primary as the first step; Deleting is rare and costly; a confirm step catches mistakes.
+- Delete or remove (destructive-action): use Button secondary, then confirm in a dialog with Button danger; not Button primary as the first step; Deleting is rare and costly; a confirm step catches mistakes.
 - An action on one row or item (row-action): use Icon button, ghost, compact; not Button secondary in every row; Rows repeat dozens of times; a quiet icon keeps the table readable.
 - A value with no token (missing-token): use The closest semantic token, then ask for a new one; not A raw value in the component; Raw values break dark mode and the next redesign.
 - A button label (button-label): use One verb from the word list; not A sentence or "Please"; Labels repeat on every screen; one verb reads fastest. Example: "Export"
@@ -627,7 +641,7 @@ Themes: aster-light, aster-dark, birch-light, birch-dark, coral-light, coral-dar
 - human.q2 How do people recall the interface? They see it fresh each time. Customers see it fresh each time. (because tasks.q2)
 - outcomes.q1 Which outcome matters most? Completion without errors. Finished sign-ups and orders. (because tasks.q1)
 - outcomes.q2 What is a costly mistake? Looking off-brand. A page that looks like the wrong brand loses trust. (because business.q2)
-- brand.q1 What should the brand feel like? Neutral and adaptable. A neutral base each brand can colour. (because business.q2)
+- brand.q1 What should the brand feel like? Neutral and adaptable. A neutral base each brand can color. (because business.q2)
 - brand.q2 How visible is the brand in the interface? Present. Each brand is clearly present. (because business.q2)
 - scenarios.q1 Where do people use it? Anywhere, on any device. Customers sign up on phones and manage plans on laptops. (because people.q1)
 - scenarios.q2 How long is one visit? A few minutes. Most visits are a few minutes: sign up, check, change. (because tasks.q1)
@@ -645,7 +659,7 @@ Themes: aster-light, aster-dark, birch-light, birch-dark, coral-light, coral-dar
 - color.lands Where does color carry meaning first? Brand moments. Brand color shows on actions and headlines. (because brand.q2)
 - spacing.roles Which spacing roles does it need? Gaps, insets and row heights. Account tables need a row height. (because content.q1)
 - spacing.count How many densities exist? One. One density across brands. (because business.q2)
-- spacing.definition How are spacing steps defined? A fine base unit. A fine base unit fits every brand. (because business.q2)
+- spacing.definition How are spacing steps defined? Small steps, on a 4px grid. Every brand shares one set of steps, so they sit on a 4px grid: small enough for account forms, with big ones for product pages. (because business.q2)
 - spacing.values How dense is the layout? Comfortable. Comfortable spacing in every brand. (because content.q2)
 - spacing.lands Where does spacing matter most? Between fields. Space matters most between form fields. (because tasks.q1)
 - shape.roles Which shape roles does it need? Controls, badges and containers. Each brand sets three corners. (because business.q2)
@@ -719,7 +733,7 @@ Themes: aster-light, aster-dark, birch-light, birch-dark, coral-light, coral-dar
 - The smallest clickable thing (smallest-target): use size.control.default (touch); not A compact control; Customers are often on phones.
 - The action that completes the task (commit-action): use Button primary, one per view; not Two primaries; One clear action per view.
 - An alternative or cancel (alternative-action): use Button secondary; not A second primary; The alternative steps back.
-- Delete or remove (destructive-action): use Button secondary, then confirm; not Button primary; Confirm before destroying data.
+- Delete or remove (destructive-action): use Button secondary, then confirm with Button danger; not Button primary; Confirm before destroying data.
 - An action on one row or item (row-action): use Button ghost with a word; not An icon alone; A word says what will happen.
 - A value with no token (missing-token): use The closest semantic token, then ask for a new one; not A raw value or a brand primitive in the component; A raw value shows the same in every brand, so it breaks the theme.
 - A button label (button-label): use A shared verb; the brand may choose the headline verb; not Brand slang on account actions; Shared labels keep the account area the same in every brand. Example: "Get started"

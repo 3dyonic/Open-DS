@@ -29,26 +29,40 @@ When something rises above the page, and what separates groups.
 
 Each token points to another token. Values live only on primitives, below.
 
+<div class="odv-brandset" data-for-brand="aster">
+
+<p class="odv-brandname">Aster</p>
+
 | Token | Points to, light | Points to, dark |
 | --- | --- | --- |
 | `elevation.card` | `aster.theme.light.elevation.card` → `shadow.card` | `aster.theme.dark.elevation.card` → `shadow.card-dark` |
 | `elevation.overlay` | `aster.theme.light.elevation.overlay` → `shadow.overlay` | `aster.theme.dark.elevation.overlay` → `shadow.overlay-dark` |
 
-## Primitives
+</div>
 
-The raw values the tokens above end at.
+<div class="odv-brandset" data-for-brand="birch">
 
-| Primitive | Value | Sample |
+<p class="odv-brandname">Birch</p>
+
+| Token | Points to, light | Points to, dark |
 | --- | --- | --- |
-| `shadow.card` | 0px 2px 8px 0px #0F172A14 | <span class="ods-card" style="box-shadow:0px 2px 8px 0px #0F172A14"></span> |
-| `shadow.card-dark` | 0px 2px 8px 0px #00000066 | <span class="ods-card" style="box-shadow:0px 2px 8px 0px #00000066"></span> |
-| `shadow.overlay` | 0px 12px 32px 0px #0F172A29 | <span class="ods-card" style="box-shadow:0px 12px 32px 0px #0F172A29"></span> |
-| `shadow.overlay-dark` | 0px 12px 32px 0px #00000080 | <span class="ods-card" style="box-shadow:0px 12px 32px 0px #00000080"></span> |
+| `elevation.card` | `birch.theme.light.elevation.card` → `shadow.card` | `birch.theme.dark.elevation.card` → `shadow.card-dark` |
+| `elevation.overlay` | `birch.theme.light.elevation.overlay` → `shadow.overlay` | `birch.theme.dark.elevation.overlay` → `shadow.overlay-dark` |
 
-## Where it lands
+</div>
 
-- Card
-- Overlay
+<div class="odv-brandset" data-for-brand="coral">
+
+<p class="odv-brandname">Coral</p>
+
+| Token | Points to, light | Points to, dark |
+| --- | --- | --- |
+| `elevation.card` | `coral.theme.light.elevation.card` → `shadow.card` | `coral.theme.dark.elevation.card` → `shadow.card-dark` |
+| `elevation.overlay` | `coral.theme.light.elevation.overlay` → `shadow.overlay` | `coral.theme.dark.elevation.overlay` → `shadow.overlay-dark` |
+
+</div>
+
+The raw values these tokens end at are on [Primitives › Effects](../primitives/effects).
 
 ## When to use what
 

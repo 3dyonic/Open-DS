@@ -59,7 +59,7 @@ export const Examples: Story = {
                 <DialogClose asChild>
                   <Button variant="secondary">{s.confirm!.cancel}</Button>
                 </DialogClose>
-                <Button>{s.confirm!.confirm}</Button>
+                <Button variant={s.confirm!.destroys ? "danger" : "primary"}>{s.confirm!.confirm}</Button>
               </DialogFooter>
             </DialogContent>
           </Dialog>

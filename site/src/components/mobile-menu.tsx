@@ -83,8 +83,9 @@ export function MobileMenu({
             {links.map(([label, href]) => (
               <li key={href}>
                 {leavesApp(href) ? (
-                  <a href={href} className={item}>
+                  <a href={href} className={item} target="_blank" rel="noopener noreferrer">
                     {label}
+                    <span className="sr-only"> (opens in a new tab)</span>
                   </a>
                 ) : (
                   <Link

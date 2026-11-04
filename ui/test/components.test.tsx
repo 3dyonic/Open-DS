@@ -134,5 +134,5 @@ test("a disabled Button stays focusable and announced, and its click is blocked 
   }>;
   el.props.onClick({ preventDefault() {}, stopPropagation() {} });
   assert.equal(clicked, false);
-  assert.match(renderToStaticMarkup(<UI.Button size="large">Join</UI.Button>), /var\(--size-control-large\)/);
+  assert.match(renderToStaticMarkup(<UI.Button size="large">Join</UI.Button>), /var\(--button-large-height\)/);
 });

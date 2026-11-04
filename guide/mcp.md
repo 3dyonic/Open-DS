@@ -26,7 +26,7 @@ Every tool is read-only. Taking, initialising and adding return the exact `npx o
 | `get_scheme`      | One scheme, or one part: summary, answers, usage, voice, inventory, tokens, all. |
 | `get_answer`      | One answer with every option, the chosen one, why and because.                   |
 | `why`             | The chain of reasons, or a component key's value in every theme.                 |
-| `when_to_use`     | What to use, what not to use and why, for a situation, with the colour guidance. |
+| `when_to_use`     | What to use, what not to use and why, for a situation, with the color guidance.  |
 | `compare_schemes` | Two schemes side by side: shared and different answers.                          |
 | `get_inventory`   | The components a scheme carries and why, and the ones it leaves out.             |
 | `what_moves`      | The answers that follow from one answer, and the tokens its scope owns.          |
@@ -35,7 +35,7 @@ Every tool is read-only. Taking, initialising and adding return the exact `npx o
 | `get_context`     | Short context as Markdown for a target or a file; `section`, `page`, `all`.      |
 | `check_ui`        | Raw values, components the scheme does not carry and variants it does not use.   |
 | `check_copy`      | A label or message against the voice and the rule for its situation.             |
-| `plan_change`     | A change planned, not made: what an answer reopens, or a colour's contrast.      |
+| `plan_change`     | A change planned, not made: what an answer reopens, or a color's contrast.       |
 | `find_token`      | The tokens and component keys that fit an intent, with their guidance.           |
 | `fit_scheme`      | The schemes ranked against a product description, with the reasons.              |
 | `plan_create`     | The `npx open-ds create` command and the files it writes.                        |

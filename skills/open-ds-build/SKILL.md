@@ -8,6 +8,7 @@ tools:
   - get_inventory
   - plan_add
   - find_token
+  - get_component_spacing_map
   - check_ui
   - why
 ---
@@ -42,8 +43,8 @@ Each component and variant has a decision behind it. Build with those decisions,
 10. If a component is missing, add it with `plan_add` or `npx open-ds add <component>`.
 11. Do not build a look-alike of a component.
 12. To find the token or key for an intent, call `find_token` or run `open-ds token <scheme> <words>`.
-13. Before you use a colour, read its guidance with `get_context <token>`.
-14. Use only the scheme's CSS variables and component keys. Write no raw colours, sizes or spacing.
+13. Before you use a color, read its guidance with `get_context <token>`.
+14. Use only the scheme's CSS variables and component keys. Write no raw colors, sizes or spacing. Spacing is never a number: between things use a role (`gap-section`, `p-container`), inside a component a map step (`p-map-x6`). See them with `get_component_spacing_map` or `open-ds spacing <scheme>`.
 15. To change a look, change its component key, for example `--button-radius`.
 16. Build the light theme first. Then check the dark theme.
 17. Write the words with `open-ds-write`.

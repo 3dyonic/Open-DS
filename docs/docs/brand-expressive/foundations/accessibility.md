@@ -38,26 +38,9 @@ Each token points to another token. Values live only on primitives, below.
 | `size.control.compact` | `size.44` | `size.44` |
 | `size.control.large` | `size.60` | `size.60` |
 | `opacity.disabled` | `opacity.40` | `opacity.40` |
-| `color.border.focus` | `brand-expressive.theme.light.color.border.focus` → `color.pink.light.600` | `brand-expressive.theme.dark.color.border.focus` → `color.pink.dark.700` |
+| `color.border.focus` | `brand-expressive.theme.light.color.border.focus` → `color.pink.light.600` | `brand-expressive.theme.dark.color.border.focus` → `color.pink.dark.600` |
 
-## Primitives
-
-The raw values the tokens above end at.
-
-| Primitive | Value | Sample |
-| --- | --- | --- |
-| `color.pink.dark.700` | #F59ACA | <span class="ods-swatch" style="background:#F59ACA"></span> |
-| `color.pink.light.600` | #D61F7A | <span class="ods-swatch" style="background:#D61F7A"></span> |
-| `opacity.40` | 0.4 | <span class="ods-swatch" style="opacity:0.4"></span> |
-| `size.44` | 2.75rem (44px) | <span class="ods-bar" style="width:2.75rem"></span> |
-| `size.52` | 3.25rem (52px) | <span class="ods-bar" style="width:3.25rem"></span> |
-| `size.60` | 3.75rem (60px) | <span class="ods-bar" style="width:3.75rem"></span> |
-
-## Where it lands
-
-- Button
-- Input
-- Overlay
+The raw values these tokens end at are on [Primitives › all kinds](../primitives/).
 
 ## When to use what
 

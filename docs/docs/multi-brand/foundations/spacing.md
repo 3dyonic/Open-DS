@@ -27,13 +27,17 @@ How space shows what belongs together.
 | --- | --- | --- |
 | Which spacing roles does it need? | Gaps, insets and row heights | Account tables need a row height. |
 | How many densities exist? | One | One density across brands. |
-| How are spacing steps defined? | A fine base unit | A fine base unit fits every brand. |
+| How are spacing steps defined? | Small steps, on a 4px grid | Every brand shares one set of steps, so they sit on a 4px grid: small enough for account forms, with big ones for product pages. |
 | How dense is the layout? | Comfortable | Comfortable spacing in every brand. |
 | Where does spacing matter most? | Between fields | Space matters most between form fields. |
 
 ## Tokens
 
 Each token points to another token. Values live only on primitives, below.
+
+<div class="odv-brandset" data-for-brand="aster">
+
+<p class="odv-brandname">Aster</p>
 
 | Token | Points to |
 | --- | --- |
@@ -46,26 +50,62 @@ Each token points to another token. Values live only on primitives, below.
 | `space.inset.cell-x` | `space.16` |
 | `size.row` | `size.48` |
 
-## Primitives
+</div>
 
-The raw values the tokens above end at.
+<div class="odv-brandset" data-for-brand="birch">
 
-| Primitive | Value | Sample |
-| --- | --- | --- |
-| `size.48` | 3rem (48px) | <span class="ods-bar" style="width:3rem"></span> |
-| `space.12` | 0.75rem (12px) | <span class="ods-bar" style="width:0.75rem"></span> |
-| `space.16` | 1rem (16px) | <span class="ods-bar" style="width:1rem"></span> |
-| `space.24` | 1.5rem (24px) | <span class="ods-bar" style="width:1.5rem"></span> |
-| `space.48` | 3rem (48px) | <span class="ods-bar" style="width:3rem"></span> |
-| `space.8` | 0.5rem (8px) | <span class="ods-bar" style="width:0.5rem"></span> |
+<p class="odv-brandname">Birch</p>
 
-## Where it lands
+| Token | Points to |
+| --- | --- |
+| `space.gap.tight` | `space.8` |
+| `space.gap.default` | `space.12` |
+| `space.gap.group` | `space.24` |
+| `space.gap.section` | `space.48` |
+| `space.inset.control-x` | `space.16` |
+| `space.inset.container` | `space.24` |
+| `space.inset.cell-x` | `space.16` |
+| `size.row` | `size.48` |
 
-- Button
-- Input
-- Badge
-- Card
-- Table
+</div>
+
+<div class="odv-brandset" data-for-brand="coral">
+
+<p class="odv-brandname">Coral</p>
+
+| Token | Points to |
+| --- | --- |
+| `space.gap.tight` | `space.8` |
+| `space.gap.default` | `space.12` |
+| `space.gap.group` | `space.24` |
+| `space.gap.section` | `space.48` |
+| `space.inset.control-x` | `space.16` |
+| `space.inset.container` | `space.24` |
+| `space.inset.cell-x` | `space.16` |
+| `size.row` | `size.48` |
+
+</div>
+
+The raw values these tokens end at are on [Primitives › Space and size](../primitives/space-and-size).
+
+## The component spacing map
+
+Inside a component, spacing is a step of this map. Each step is 4px × its multiplier × the scheme's rhythm, rounded to a multiple of 4px, at most 64px. In Multi-brand the rhythm is 1.5. Comfortable in every brand: panels and fields breathe; rows stay tight.
+
+Steps that hold still stay at 4px × their multiplier in every scheme. The hairline is a fixed 2px nudge. In code, write the step's utility: `p-map-x6`, `gap-map-x2`.
+
+| Step | Multiplier | Utility | Token and value |
+| --- | --- | --- | --- |
+| hairline (holds still) | fixed | `*-map-hairline` | <span class="tok">component-spacing-map.hairline</span> <span class="odv-ptok">space.2</span><span class="odv-kvsep">:</span><span class="odv-raw">2px</span> |
+| x1 (holds still) | ×1 | `*-map-x1` | <span class="tok">component-spacing-map.x1</span> <span class="odv-ptok">space.4</span><span class="odv-kvsep">:</span><span class="odv-raw">4px</span> |
+| x2 (holds still) | ×2 | `*-map-x2` | <span class="tok">component-spacing-map.x2</span> <span class="odv-ptok">space.8</span><span class="odv-kvsep">:</span><span class="odv-raw">8px</span> |
+| x3 | ×3 | `*-map-x3` | <span class="tok">component-spacing-map.x3</span> <span class="odv-ptok">space.20</span><span class="odv-kvsep">:</span><span class="odv-raw">20px</span> |
+| x4 | ×4 | `*-map-x4` | <span class="tok">component-spacing-map.x4</span> <span class="odv-ptok">space.24</span><span class="odv-kvsep">:</span><span class="odv-raw">24px</span> |
+| x6 | ×6 | `*-map-x6` | <span class="tok">component-spacing-map.x6</span> <span class="odv-ptok">space.36</span><span class="odv-kvsep">:</span><span class="odv-raw">36px</span> |
+| x8 | ×8 | `*-map-x8` | <span class="tok">component-spacing-map.x8</span> <span class="odv-ptok">space.48</span><span class="odv-kvsep">:</span><span class="odv-raw">48px</span> |
+| x12 | ×12 | `*-map-x12` | <span class="tok">component-spacing-map.x12</span> <span class="odv-ptok">space.64</span><span class="odv-kvsep">:</span><span class="odv-raw">64px</span> |
+
+Between things and on the page, use a role instead: `*-tight` (8px), `*-default` (12px), `*-group` (24px), `*-section` (48px), `*-control` (16px), `*-container` (24px), `*-cell` (16px). A spacing is never a number.
 
 ## When to use what
 

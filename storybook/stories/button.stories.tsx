@@ -14,7 +14,7 @@ const meta = {
   component: Button,
   args: { children: "Continue", variant: "primary", size: "default" },
   argTypes: {
-    variant: { control: "inline-radio", options: ["primary", "secondary", "ghost"] },
+    variant: { control: "inline-radio", options: ["primary", "secondary", "danger", "ghost"] },
     size: { control: "inline-radio", options: ["default", "compact", "icon", "large"] },
   },
 } satisfies Meta<typeof Button>;
@@ -34,6 +34,7 @@ export const Examples: Story = {
               <Download /> {s.actions.secondary}
             </Button>
             {s.confirm && <Button variant="ghost">{s.confirm.cancel}</Button>}
+            {s.confirm?.destroys && <Button variant="danger">{s.confirm.confirm}</Button>}
             <Button variant="ghost" size="icon" aria-label={s.menu?.trigger ?? "More actions"}>
               <MoreHorizontal />
             </Button>

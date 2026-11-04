@@ -4,6 +4,7 @@
 // The CLI's component and context commands and the MCP's get_component and get_context use it.
 
 import { assetRoots, grammar, loadScheme } from "./schemes.mjs";
+import { componentApi } from "./lands.mjs";
 
 /** The reference and this scheme's decisions for one catalogue component, or null if there is none. */
 export function componentGuide(
@@ -83,6 +84,8 @@ export function componentGuide(
       : { overview: item.description },
     variants,
     rules,
+    // Its token API (OD-234): every token it reads, what each aliases, and its value in every theme.
+    tokens: componentApi(scheme, id, roots),
   };
 }
 
@@ -135,6 +138,23 @@ export function componentText(guide) {
     for (const u of guide.rules) {
       const use = /^not used/i.test(u.use) ? u.use : `use ${u.use}`;
       lines.push(`  ${u.title}: ${use}. Not: ${u.not}. ${u.why}`);
+    }
+  }
+  if (guide.tokens?.length) {
+    lines.push("", "Tokens it reads:");
+    for (const t of guide.tokens) {
+      const vals = [
+        ...new Set(
+          Object.values(t.values).map(
+            (v) =>
+              `${v.primitive} ${typeof v.value === "object" ? JSON.stringify(v.value) : v.value}`,
+          ),
+        ),
+      ];
+      lines.push(
+        `  ${t.token}${t.aliases ? ` → ${t.aliases}` : ""}  (${t.css})${t.changes_with_theme ? "  changes with theme" : ""}`,
+        `      ${vals.join(" | ")}`,
+      );
     }
   }
   if (r.source)

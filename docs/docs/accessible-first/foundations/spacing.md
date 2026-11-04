@@ -27,7 +27,7 @@ How space shows what belongs together.
 | --- | --- | --- |
 | Which spacing roles does it need? | Gaps, insets and row heights | Large rows matter for touch and zoom. |
 | How many densities exist? | One | One density; no compact mode to fail people. |
-| How are spacing steps defined? | A coarse base unit | Big, even steps lower effort. |
+| How are spacing steps defined? | Big, even steps | Big, even steps lower effort. |
 | How dense is the layout? | Spacious | Space lowers effort and mis-taps. |
 | Where does spacing matter most? | Between fields | Space between fields prevents mis-taps. |
 
@@ -46,26 +46,26 @@ Each token points to another token. Values live only on primitives, below.
 | `space.inset.cell-x` | `space.16` |
 | `size.row` | `size.56` |
 
-## Primitives
+The raw values these tokens end at are on [Primitives › Space and size](../primitives/space-and-size).
 
-The raw values the tokens above end at.
+## The component spacing map
 
-| Primitive | Value | Sample |
-| --- | --- | --- |
-| `size.56` | 3.5rem (56px) | <span class="ods-bar" style="width:3.5rem"></span> |
-| `space.12` | 0.75rem (12px) | <span class="ods-bar" style="width:0.75rem"></span> |
-| `space.16` | 1rem (16px) | <span class="ods-bar" style="width:1rem"></span> |
-| `space.24` | 1.5rem (24px) | <span class="ods-bar" style="width:1.5rem"></span> |
-| `space.32` | 2rem (32px) | <span class="ods-bar" style="width:2rem"></span> |
-| `space.48` | 3rem (48px) | <span class="ods-bar" style="width:3rem"></span> |
+Inside a component, spacing is a step of this map. Each step is 4px × its multiplier × the scheme's rhythm, rounded to a multiple of 4px, at most 64px. In Accessible first the rhythm is 1.75. Spacious: space lowers effort and mis-taps, so components get the most room short of the brand scheme; rows stay tight.
 
-## Where it lands
+Steps that hold still stay at 4px × their multiplier in every scheme. The hairline is a fixed 2px nudge. In code, write the step's utility: `p-map-x6`, `gap-map-x2`.
 
-- Button
-- Input
-- Badge
-- Card
-- Table
+| Step | Multiplier | Utility | Token and value |
+| --- | --- | --- | --- |
+| hairline (holds still) | fixed | `*-map-hairline` | <span class="tok">component-spacing-map.hairline</span> <span class="odv-ptok">space.2</span><span class="odv-kvsep">:</span><span class="odv-raw">2px</span> |
+| x1 (holds still) | ×1 | `*-map-x1` | <span class="tok">component-spacing-map.x1</span> <span class="odv-ptok">space.4</span><span class="odv-kvsep">:</span><span class="odv-raw">4px</span> |
+| x2 (holds still) | ×2 | `*-map-x2` | <span class="tok">component-spacing-map.x2</span> <span class="odv-ptok">space.8</span><span class="odv-kvsep">:</span><span class="odv-raw">8px</span> |
+| x3 | ×3 | `*-map-x3` | <span class="tok">component-spacing-map.x3</span> <span class="odv-ptok">space.20</span><span class="odv-kvsep">:</span><span class="odv-raw">20px</span> |
+| x4 | ×4 | `*-map-x4` | <span class="tok">component-spacing-map.x4</span> <span class="odv-ptok">space.28</span><span class="odv-kvsep">:</span><span class="odv-raw">28px</span> |
+| x6 | ×6 | `*-map-x6` | <span class="tok">component-spacing-map.x6</span> <span class="odv-ptok">space.44</span><span class="odv-kvsep">:</span><span class="odv-raw">44px</span> |
+| x8 | ×8 | `*-map-x8` | <span class="tok">component-spacing-map.x8</span> <span class="odv-ptok">space.56</span><span class="odv-kvsep">:</span><span class="odv-raw">56px</span> |
+| x12 | ×12 | `*-map-x12` | <span class="tok">component-spacing-map.x12</span> <span class="odv-ptok">space.64</span><span class="odv-kvsep">:</span><span class="odv-raw">64px</span> |
+
+Between things and on the page, use a role instead: `*-tight` (12px), `*-default` (16px), `*-group` (32px), `*-section` (48px), `*-control` (24px), `*-container` (24px), `*-cell` (16px). A spacing is never a number.
 
 ## When to use what
 

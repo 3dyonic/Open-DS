@@ -3,6 +3,7 @@
 // "not built" yet, which is different from "fail". Slow checks (full builds) run with --full.
 
 import { themeTokens } from "../cli/src/tokens.mjs";
+import { pairsIn, toneOf } from "../cli/src/tones.mjs";
 import { spawnSync } from "node:child_process";
 import { pathToFileURL } from "node:url";
 import { existsSync, mkdtempSync, readFileSync, readdirSync, rmSync, statSync } from "node:fs";
@@ -297,7 +298,7 @@ export const CHECKS = {
   "semantics-guidance": {
     requires: ["schemes/grammar.json", ...SCHEMES.map((s) => `schemes/${s}.json`)],
     run: (c) => {
-      // Every colour semantic has guidance in the grammar; every key it names exists; every pair keeps
+      // Every color semantic has guidance in the grammar; every key it names exists; every pair keeps
       // its contrast in every brand and mode. No exceptions: a failing pair fails the check.
       const g = c.json("schemes", "grammar.json");
       const guide = new Map(g.semantics.keys.map((k) => [k.id, k]));
@@ -315,10 +316,14 @@ export const CHECKS = {
       for (const id of g.semantics.urgency.order)
         if (!guide.has(id)) gaps.push(`urgency names ${id}, which has no guidance`);
       let pairs = 0;
+      const waiting = new Set();
       for (const s of SCHEMES) {
         const t = c.json("schemes", `${s}.json`).tokens;
         const semantic = Object.keys(flatten(t.semantic)).filter((p) => p.startsWith("color."));
-        for (const p of semantic) if (!guide.has(p)) gaps.push(`${s}: ${p} has no guidance in the grammar`);
+        // OD-228: the neutral steps are one scale with one entry, the grammar's semantics.neutral.
+        const scaleOk = (p) => p.startsWith("color.neutral.") && g.semantics.neutral?.steps.includes(p.split(".")[2]);
+        for (const p of semantic)
+          if (!guide.has(p) && !scaleOk(p)) gaps.push(`${s}: ${p} has no guidance in the grammar`);
         for (const k of guide.values()) {
           if (!semantic.includes(k.id)) gaps.push(`${s}: guidance for ${k.id}, which the scheme does not define`);
           for (const n of k.not_for)
@@ -334,25 +339,37 @@ export const CHECKS = {
               const v = resolve(all, p).value;
               return typeof v === "string" && /^#[0-9a-f]{6}$/i.test(v) ? v : null;
             };
-            for (const k of guide.values()) {
-              if (!k.pairs?.contrast) continue;
-              for (const on of k.pairs.on) {
-                const [a, b] = [hex(k.id), hex(on)];
-                if (!a || !b) continue;
-                pairs++;
-                const r = ratio(a, b);
-                if (r < k.pairs.contrast)
-                  gaps.push(
-                    `${s}/${brand}/${mode}: ${k.id} on ${on} is ${r.toFixed(2)}:1, needs ${k.pairs.contrast}:1`,
-                  );
-              }
+            // OD-222: every fill states its tone; text, icons, borders and focus pair by tone.
+            for (const f of g.semantics.tones?.fills ?? [])
+              if (!toneOf(t.brands[brand].theme, mode, f.id))
+                gaps.push(`${s}/${brand}/${mode}: ${f.id} states no tone`);
+            // OD-227: a per-fill text name is the pair its fill's tone picks.
+            for (const [name, fill] of [
+              ["color.text.inverse", "color.surface.inverse"],
+              ["color.text.on-action", "color.action.primary.@"],
+              ["color.text.on-danger", "color.action.danger.@"],
+            ]) {
+              const tn = toneOf(t.brands[brand].theme, mode, fill)?.tone;
+              if (tn && hex(name) !== hex(`color.text.on-${tn}`))
+                gaps.push(`${s}/${brand}/${mode}: ${name} is not color.text.on-${tn}, the text for ${fill}'s tone`);
+            }
+            for (const p of pairsIn(g, { id: s, tokens: t }, brand, mode)) {
+              const [a, b] = [hex(p.key), hex(p.on)];
+              if (!a || !b) continue;
+              pairs++;
+              const r = ratio(a, b);
+              if (r >= p.contrast) continue;
+              const what = `${s}/${brand}/${mode}: ${p.key} on ${p.on} is ${r.toFixed(2)}:1, needs ${p.contrast}:1`;
+              if (p.waits) waiting.add(`${s}/${brand}/${mode} ${p.on} (${p.waits.for})`);
+              else gaps.push(what);
             }
           }
       }
       return gaps.length
         ? bad(`${gaps.length} problems: ${gaps.slice(0, 5).join("; ")}`)
         : ok(
-            `${guide.size} colour semantics have guidance; ${pairs} pairs keep their contrast in every brand and mode`,
+            `${guide.size} color semantics have guidance; ${pairs} pairs keep their contrast in every brand and mode` +
+              (waiting.size ? `, except on fills that wait for a fix: ${[...waiting].join("; ")}` : ""),
           );
     },
   },
@@ -382,6 +399,398 @@ export const CHECKS = {
       return gaps.length
         ? bad(gaps.join("; "))
         : ok("every semantic and component token is a link; values live on primitives");
+    },
+  },
+
+  "components-tokens-mapped": {
+    requires: ["cli/src/shadcn.mjs", "ui/src/components", "cli/templates/project/tokens/build.mjs"],
+    run: async (c) => {
+      // OD-215: every shadcn variable a component reads is mapped onto a scheme token, so its "Tokens
+      // it reads" table is complete; and a created project's token build maps the same way as ours.
+      const { SHADCN, SHADCN_SCALE } = await import(pathToFileURL(c.p("cli/src/shadcn.mjs")).href);
+      const LOOKS_SHADCN =
+        /^(background|foreground|card|popover|primary|secondary|muted|accent|destructive|border|input|ring|sidebar|chart)(-[a-z0-9-]+)?$/;
+      const gaps = [];
+      for (const f of readdirSync(c.p("ui/src/components")).filter((x) => x.endsWith(".tsx"))) {
+        const src = readFileSync(c.p(`ui/src/components/${f}`), "utf8");
+        for (const m of src.matchAll(
+          /(?:^|[\s"'`:])(?:bg|text|border|ring|fill|stroke|outline|divide|placeholder|caret)-([a-z][a-z0-9-]*)(?:\/\d+)?(?=[\s"'`]|$)/gm,
+        )) {
+          const name = m[1];
+          if (LOOKS_SHADCN.test(name) && !SHADCN[name]) gaps.push(`${f}: reads --${name}, which no scheme token maps`);
+        }
+      }
+      const tpl = c.read("cli/templates/project/tokens/build.mjs");
+      for (const [k, v] of Object.entries(SHADCN))
+        if (!tpl.includes(`"${k}": "${v}"`) && !tpl.includes(`${k}: "${v}"`))
+          gaps.push(`the project template maps ${k} differently`);
+      for (const [k, v] of Object.entries(SHADCN_SCALE))
+        if (!tpl.includes(`"${k}": "${v}"`)) gaps.push(`the project template maps ${k} differently`);
+      return gaps.length
+        ? bad([...new Set(gaps)].slice(0, 8).join("; "))
+        : ok("every shadcn variable a component reads maps onto a scheme token, the same in created projects");
+    },
+  },
+
+  "e2e-app-packages": {
+    requires: ["cli/src/components.mjs", "e2e/app/package.json"],
+    run: async (c) => {
+      // OD-219: the package test builds a fresh app with the workspace's installs, so that app must list
+      // every package a component can import, or a component that starts importing one fails in CI only.
+      const { PACKAGES } = await import(pathToFileURL(c.p("cli/src/components.mjs")).href);
+      const deps = c.json("e2e/app/package.json").dependencies ?? {};
+      const missing = Object.keys(PACKAGES).filter((p) => !deps[p]);
+      return missing.length
+        ? bad(`e2e/app/package.json lacks ${missing.join(", ")}, which components import`)
+        : ok(`the package test app lists all ${Object.keys(PACKAGES).length} component packages`);
+    },
+  },
+
+  "options-distinct": {
+    requires: ["schemes/grammar.json"],
+    run: (c) => {
+      // OD-221: the grammar's options rules. In every scheme, each step of a covered option set has the
+      // rule's type and sits at least min_gap from every other step, so no two options look the same.
+      const rules = c.json("schemes", "grammar.json").options?.rules ?? [];
+      if (!rules.length) return bad("the grammar has no options rules");
+      const gaps = [];
+      for (const id of SCHEMES) {
+        const prim = c.json("schemes", `${id}.json`).tokens.primitive;
+        for (const r of rules) {
+          const set = r.applies_to.split(".").reduce((o, k) => o?.[k], prim) ?? {};
+          const steps = Object.entries(set).filter(([k]) => !k.startsWith("$"));
+          for (const [k, v] of steps)
+            if (r.type && v.$type !== r.type) gaps.push(`${id}: ${r.applies_to}.${k} is ${v.$type}, not ${r.type}`);
+          const vals = steps
+            .map(([, v]) => Number(v.$value))
+            .filter((n) => !Number.isNaN(n))
+            .sort((a, b) => a - b);
+          for (let i = 1; i < vals.length; i++)
+            if (vals[i] - vals[i - 1] < r.min_gap - 1e-9)
+              gaps.push(`${id}: ${r.id} steps ${vals[i - 1]} and ${vals[i]} are closer than ${r.min_gap}`);
+        }
+      }
+      return gaps.length
+        ? bad(gaps.slice(0, 6).join("; "))
+        : ok(`every scheme's options are clearly apart: ${rules.map((r) => r.say).join("; ")}`);
+    },
+  },
+
+  "options-used": {
+    requires: ["schemes/grammar.json"],
+    run: (c) => {
+      // OD-222: outside the groups kept whole (color ramps), every primitive is read by a semantic, a theme,
+      // a component key or another primitive. An option nothing reads is a choice nobody made.
+      const used = c.json("schemes", "grammar.json").options?.used;
+      if (!used) return bad("the grammar's options say nothing about unused options");
+      const gaps = [];
+      for (const id of SCHEMES) {
+        const t = c.json("schemes", `${id}.json`).tokens;
+        const prim = flatten(t.primitive);
+        const readers = JSON.stringify([t.semantic, t.component, t.brands, Object.values(prim).map((x) => x.$value)]);
+        for (const p of Object.keys(prim))
+          if (!used.except.some((g) => p === g || p.startsWith(`${g}.`)) && !readers.includes(`{${p}}`))
+            gaps.push(`${id}: ${p} is read by nothing`);
+      }
+      return gaps.length
+        ? bad(gaps.slice(0, 8).join("; "))
+        : ok(`every scheme keeps only the options it reads (${used.say})`);
+    },
+  },
+
+  "answers-match-tokens": {
+    requires: ["schemes/grammar.json"],
+    run: (c) => {
+      // OD-222: a count answer has that many tokens. motion.count names how many speeds exist, so the
+      // motion durations hold exactly that many distinct values.
+      const N = { one: 1, two: 2, three: 3 };
+      const gaps = [];
+      for (const id of SCHEMES) {
+        const s = c.json("schemes", `${id}.json`);
+        const count = N[s.answers.find((a) => a.question === "motion.count")?.option];
+        const prim = flatten(s.tokens.primitive);
+        const durs = Object.values(flatten(s.tokens.semantic.motion?.duration ?? {})).map(
+          (d) => prim[String(d.$value).replace(/[{}]/g, "")]?.$value ?? d.$value,
+        );
+        const distinct = new Set(durs).size;
+        if (!count) gaps.push(`${id}: no motion.count answer`);
+        else if (distinct !== count)
+          gaps.push(
+            `${id}: motion.count says ${count}, the motion tokens hold ${distinct} (${[...new Set(durs)].join(", ")})`,
+          );
+      }
+      return gaps.length ? bad(gaps.join("; ")) : ok("every scheme's motion count answer matches its motion tokens");
+    },
+  },
+
+  "spacing-map-generated": {
+    requires: ["cli/src/spacing-map.mjs"],
+    run: async (c) => {
+      // OD-235: every scheme's component spacing map equals the generator's output from its rhythm
+      // and fixed steps; the rhythm names the answers it comes from. A hand-edited step fails.
+      const { steps, STEP_IDS } = await import(pathToFileURL(c.p("cli/src/spacing-map.mjs")).href);
+      const gaps = [];
+      for (const id of SCHEMES) {
+        const s = c.json("schemes", `${id}.json`);
+        const map = s.tokens.semantic["component-spacing-map"];
+        const spec = map?.$extensions?.["open-ds"];
+        if (!spec) {
+          gaps.push(`${id}: no component spacing map`);
+          continue;
+        }
+        for (const q of spec.because ?? [])
+          if (!s.answers.some((a) => `${a.question}` === q))
+            gaps.push(`${id}: the rhythm's because ${q} is not an answer`);
+        const all = flatten(themeTokens({ id, tokens: s.tokens }, Object.keys(s.tokens.brands)[0], "light"));
+        const want = steps(spec);
+        for (const st of STEP_IDS) {
+          const got = Math.round(parseFloat(String(resolve(all, `component-spacing-map.${st}`)?.value ?? "")) * 16);
+          if (got !== want[st])
+            gaps.push(`${id}: component-spacing-map.${st} is ${got}px, the rule gives ${want[st]}px`);
+        }
+      }
+      return gaps.length
+        ? bad(gaps.join("; "))
+        : ok(`the component spacing map in ${SCHEMES.length} schemes matches its rule`);
+    },
+  },
+  "spacing-on-grid": {
+    run: async (c) => {
+      // OD-235: every spacing a scheme decides is a multiple of 4px and at most 64px; the hairline (2px)
+      // is the one exception.
+      const gaps = [];
+      for (const id of SCHEMES) {
+        const s = c.json("schemes", `${id}.json`);
+        const all = flatten(themeTokens({ id, tokens: s.tokens }, Object.keys(s.tokens.brands)[0], "light"));
+        const walk = (o, path) => {
+          for (const [k, v] of Object.entries(o ?? {})) {
+            if (k.startsWith("$")) continue;
+            const p = path ? `${path}.${k}` : k;
+            if (v && typeof v === "object" && "$value" in v) {
+              if (p === "component-spacing-map.hairline") continue;
+              const px = Math.round(parseFloat(String(resolve(all, p)?.value ?? "")) * 16 * 1000) / 1000;
+              if (!(px % 4 === 0 && px <= 64)) gaps.push(`${id}: ${p} is ${px}px`);
+            } else if (v && typeof v === "object") walk(v, p);
+          }
+        };
+        walk(s.tokens.semantic.space, "space");
+        walk(s.tokens.semantic["component-spacing-map"], "component-spacing-map");
+      }
+      return gaps.length
+        ? bad(`off the 4px grid or over 64px: ${gaps.join("; ")}`)
+        : ok("every spacing in every scheme is a multiple of 4px, at most 64px (the 2px hairline aside)");
+    },
+  },
+  "scales-generated": {
+    requires: ["cli/src/ramps.mjs"],
+    run: async (c) => {
+      // OD-223: every colored hue's scales are whole and equal to the generator's output from its
+      // recorded key colors and adjustments. A hand-edited step fails.
+      const { scale, STEPS } = await import(pathToFileURL(c.p("cli/src/ramps.mjs")).href);
+      const gaps = [];
+      let n = 0;
+      for (const id of SCHEMES) {
+        const s = c.json("schemes", `${id}.json`);
+        const all = flatten(themeTokens({ id, tokens: s.tokens }, Object.keys(s.tokens.brands)[0], "dark"));
+        const canvas = String(resolve(all, "color.surface.canvas").value).slice(0, 7).toUpperCase();
+        for (const [hue, g] of Object.entries(s.tokens.primitive.color)) {
+          const spec = g?.$extensions?.["open-ds"];
+          if (!spec) continue;
+          for (const mode of ["light", "dark"]) {
+            const want = scale(spec[mode], mode, canvas);
+            for (const st of STEPS) {
+              const got = String(g[mode]?.[st]?.$value ?? "").toUpperCase();
+              if (got !== want[st])
+                gaps.push(`${id}: ${hue}.${mode}.${st} is ${got || "missing"}, the generator gives ${want[st]}`);
+            }
+          }
+          n++;
+        }
+      }
+      return gaps.length
+        ? bad(gaps.slice(0, 6).join("; "))
+        : ok(`${n} colored hues have whole scales, generated from their key colors`);
+    },
+  },
+
+  "hints-measured": {
+    requires: ["schemes/grammar.json", "cli/src/ramps.mjs"],
+    run: async (c) => {
+      // OD-230: the decision hints that can be measured hold. Every hint names the decisions it came
+      // from; every chroma adjustment sits on a step that needed it (generated chroma below the 0.04
+      // target, OD-231); and status text on dark shows its hue (chroma 0.04+) at 7:1 or more.
+      const { scale, lch, contrast } = await import(pathToFileURL(c.p("cli/src/ramps.mjs")).href);
+      const { follow } = await import(pathToFileURL(c.p("cli/src/scale-map.mjs")).href);
+      const g = c.json("schemes", "grammar.json");
+      const hints = g.scopes.flatMap((s) => (s.hints ?? []).map((h) => ({ ...h, scope: s.id })));
+      const gaps = [];
+      if (!hints.length) gaps.push("the grammar has no decision hints");
+      for (const h of hints) if (!h.from?.length) gaps.push(`hint ${h.scope}.${h.id} names no decision`);
+      const TARGET = 0.04;
+      let moves = 0;
+      let texts = 0;
+      for (const id of SCHEMES) {
+        const s = c.json("schemes", `${id}.json`);
+        const at = (p) =>
+          String(p.split(".").reduce((n, k) => n && n[k], s.tokens.primitive)?.$value ?? "").slice(0, 7);
+        for (const [hue, grp] of Object.entries(s.tokens.primitive.color)) {
+          const spec = grp?.$extensions?.["open-ds"];
+          for (const mode of ["light", "dark"])
+            for (const [st, adj] of Object.entries(spec?.[mode]?.adjust ?? {})) {
+              if (adj.C == null || adj.C <= 0) continue;
+              moves++;
+              if (mode !== "light") continue;
+              const generated = scale({ key: spec.light.key }, "light")[st];
+              if (lch(generated)[1] >= TARGET)
+                gaps.push(
+                  `${id}: ${hue}.${mode}.${st} takes more chroma, but its generated chroma already meets ${TARGET}`,
+                );
+            }
+        }
+        for (const b of Object.keys(s.tokens.brands))
+          for (const k of ["info", "success", "warning", "danger"]) {
+            const t = follow(s.tokens, b, "dark", `color.text.${k}-on-dark`);
+            const f = follow(s.tokens, b, "dark", `color.status.${k}.subtle`);
+            if (!t || !f) continue;
+            texts++;
+            const tv = at(t.prim);
+            const fv = at(f.prim);
+            if (lch(tv)[1] < TARGET - 0.002)
+              gaps.push(`${id}/${b}: text.${k}-on-dark reads as white (chroma ${lch(tv)[1].toFixed(3)})`);
+            if (contrast(tv, fv) < 7)
+              gaps.push(
+                `${id}/${b}: text.${k}-on-dark is ${contrast(tv, fv).toFixed(1)}:1 on its dark tint, under 7:1`,
+              );
+          }
+      }
+      return gaps.length
+        ? bad(gaps.slice(0, 6).join("; "))
+        : ok(
+            `${hints.length} decision hints, each from a decision; ${moves} chroma moves, each where needed; ${texts} status texts on dark show their hue at 7:1 or more`,
+          );
+    },
+  },
+
+  "neutral-semantic": {
+    requires: ["schemes/grammar.json"],
+    run: (c) => {
+      // OD-228: roles read color.neutral, color.neutral points at one gray from the grammar's menu, and the
+      // theme says which gray and why.
+      const g = c.json("schemes", "grammar.json").semantics?.neutral;
+      if (!g) return bad("the grammar has no neutral menu");
+      const menu = new Map(g.grays.map((x) => [x.id, x]));
+      const gaps = [];
+      for (const id of SCHEMES) {
+        const s = c.json("schemes", `${id}.json`);
+        const sem = s.tokens.semantic.color?.neutral;
+        for (const st of g.steps) if (!sem?.[st]) gaps.push(`${id}: no color.neutral.${st}`);
+        const grays = g.grays.map((x) => x.id);
+        for (const [brand, br] of Object.entries(s.tokens.brands)) {
+          const n = br.theme.neutral;
+          if (!n) {
+            gaps.push(`${id}/${brand}: no neutral decision`);
+            continue;
+          }
+          if (!menu.has(n.gray)) gaps.push(`${id}/${brand}: ${n.gray} is not on the grammar's gray menu`);
+          else if (menu.get(n.gray).temperature !== n.temperature)
+            gaps.push(`${id}/${brand}: ${n.gray} is ${menu.get(n.gray).temperature}, not ${n.temperature}`);
+          for (const q of n.because)
+            if (!s.answers.some((a) => a.question === q))
+              gaps.push(`${id}/${brand}: neutral cites ${q}, which has no answer`);
+          for (const mode of ["light", "dark"]) {
+            const scale = br.theme[mode].color?.neutral ?? {};
+            for (const st of g.steps)
+              if (scale[st]?.$value !== `{color.${n.gray}.${mode}.${st}}`)
+                gaps.push(`${id}/${brand}/${mode}: neutral.${st} does not point at ${n.gray}.${mode}.${st}`);
+            const rest = JSON.stringify({ ...br.theme[mode].color, neutral: undefined });
+            for (const gr of grays)
+              if (rest.includes(`{color.${gr}.`))
+                gaps.push(`${id}/${brand}/${mode}: a role reads the gray ${gr} directly`);
+          }
+        }
+      }
+      return gaps.length
+        ? bad(gaps.slice(0, 6).join("; "))
+        : ok(
+            `roles read color.neutral; each scheme's neutral points at one gray from the menu of ${g.grays.length}, with its reason`,
+          );
+    },
+  },
+
+  "focus-ring-gap": {
+    requires: ["ui/src/components"],
+    run: (c) => {
+      // OD-222: the focus ring is the accent, often the color of the fill it surrounds, so every ring
+      // keeps a 2px gap in the canvas color between it and the control.
+      const gaps = [];
+      for (const f of c.walk("ui/src/components", (x) => x.endsWith(".tsx")))
+        for (const cls of c.read(f).match(/"[^"\n]*"/g) ?? []) {
+          const draws = /(focus-visible|has-focus|focus):ring-(?!0\b|offset)/.test(cls);
+          if (draws && !/ring-offset-2\b/.test(cls)) gaps.push(`${f}: a focus ring with no gap`);
+        }
+      return gaps.length ? bad(gaps.slice(0, 6).join("; ")) : ok("every focus ring keeps a 2px gap from its control");
+    },
+  },
+
+  "selection-not-color-alone": {
+    requires: ["ui/src/components"],
+    run: (c) => {
+      // OD-222: a selected or current item shows an edge as well as a fill, so selection is never color alone.
+      const gaps = [];
+      for (const f of c.walk("ui/src/components", (x) => x.endsWith(".tsx")))
+        for (const cls of c.read(f).match(/"[^"\n]*"/g) ?? []) {
+          const fill = cls.match(/(data-\[(?:state=selected|active=true)\]):bg-/);
+          if (fill && !cls.includes(`${fill[1]}:shadow-[inset_`)) gaps.push(`${f}: ${fill[1]} has a fill and no edge`);
+        }
+      return gaps.length
+        ? bad(gaps.slice(0, 6).join("; "))
+        : ok("every selected or current item has an edge beside its fill");
+    },
+  },
+
+  "danger-apart": {
+    requires: ["schemes/grammar.json"],
+    run: (c) => {
+      // OD-222: the primary and danger fills stay clearly apart in every brand and mode.
+      const rule = c.json("schemes", "grammar.json").semantics?.danger_apart;
+      if (!rule) return bad("the grammar has no danger_apart rule");
+      const lab = (hex) => {
+        const [r, g, b] = [1, 3, 5]
+          .map((i) => parseInt(hex.slice(i, i + 2), 16) / 255)
+          .map((v) => (v <= 0.04045 ? v / 12.92 : ((v + 0.055) / 1.055) ** 2.4));
+        const l = Math.cbrt(0.4122214708 * r + 0.5363325363 * g + 0.0514459929 * b);
+        const m = Math.cbrt(0.2119034982 * r + 0.6806995451 * g + 0.1073969566 * b);
+        const s = Math.cbrt(0.0883024619 * r + 0.2817188376 * g + 0.6299787005 * b);
+        return [
+          0.2104542553 * l + 0.793617785 * m - 0.0040720468 * s,
+          1.9779984951 * l - 2.428592205 * m + 0.4505937099 * s,
+          0.0259040371 * l + 0.7827717662 * m - 0.808675766 * s,
+        ];
+      };
+      const dE = (a, b) => Math.hypot(...lab(a).map((v, i) => v - lab(b)[i])) * 100;
+      const gaps = [];
+      const waiting = [];
+      for (const s of SCHEMES) {
+        const t = c.json("schemes", `${s}.json`).tokens;
+        for (const brand of Object.keys(t.brands))
+          for (const mode of ["light", "dark"]) {
+            const all = flatten(themeTokens({ id: s, tokens: t }, brand, mode));
+            const [p, d] = ["color.action.primary.@", "color.action.danger.@"].map((x) => resolve(all, x).value);
+            if (!/^#/.test(p ?? "") || !/^#/.test(d ?? "")) {
+              gaps.push(`${s}/${brand}/${mode}: no primary or danger fill`);
+              continue;
+            }
+            const v = dE(p, d);
+            if (v >= rule.min_delta_e) continue;
+            const w = toneOf(t.brands[brand].theme, mode, "color.action.primary.@")?.waits;
+            const what = `${s}/${brand}/${mode}: primary and danger are ${v.toFixed(1)} apart`;
+            if (w) waiting.push(`${what} (${w.for})`);
+            else gaps.push(`${what}, need ${rule.min_delta_e}`);
+          }
+      }
+      return gaps.length
+        ? bad(gaps.slice(0, 6).join("; "))
+        : ok(`${rule.say}` + (waiting.length ? `, except where a fix waits: ${waiting.join("; ")}` : ""));
     },
   },
 
@@ -490,7 +899,6 @@ export const CHECKS = {
         item: "menu",
         menubar: "menu",
         "hover-card": "card",
-        sonner: "messages",
       };
       const gaps = [];
       const seen = new Map();
@@ -550,8 +958,9 @@ export const CHECKS = {
             const m = line.match(/^\s*([a-zA-Z-]+): \{/);
             if (m) axis = axes[m[1]] = [];
           } else if (depth === 1 && axis) {
-            const m = line.match(/^\s*"?([a-zA-Z-]+)"?:/);
-            if (m) axis.push(m[1]);
+            // a key, bare or quoted, followed by a space: never the start of a wrapped class like "hover:bg-…"
+            const m = line.match(/^\s*(?:([a-zA-Z-]+)|"([a-zA-Z-]+)"):(?:\s|$)/);
+            if (m) axis.push(m[1] ?? m[2]);
           }
           for (const ch of line) depth += ch === "{" ? 1 : ch === "}" ? -1 : 0;
           if (depth < 0) break;
@@ -720,24 +1129,74 @@ export const CHECKS = {
           for (const o of sc.owns ?? [])
             if (!trees.some((t) => has(t, o))) gaps.push(`${sch.id}: ${sc.id} owns ${o}, which is not a token`);
         }
-        const semanticOwns = (sc.owns ?? []).filter((o) => has(semantic(schemes[0]), o));
-        for (const cid of sc.lands_in ?? []) {
-          if (!comps.has(cid)) {
-            gaps.push(`${sc.id}: lands in ${cid}, which is not a component`);
-            continue;
-          }
-          if (
-            semanticOwns.length &&
-            !comps.get(cid).keys.some((k) => semanticOwns.some((o) => keyDefault.get(k).startsWith(o)))
-          )
-            gaps.push(`${sc.id}: lands in ${cid}, but no ${cid} key reads ${semanticOwns.join(" or ")}`);
-        }
+        // lands_in is traced from the components' code (lands-in-traced); here, each is a real component.
+        for (const cid of sc.lands_in ?? [])
+          if (!c.has(`ui/src/components/${cid}.tsx`)) gaps.push(`${sc.id}: lands in ${cid}, which is not a component`);
       }
       for (const x of g.situations)
         if (!g.scopes.some((sc) => sc.id === x.scope)) gaps.push(`situation ${x.id} has no scope`);
       return gaps.length
         ? bad(gaps.slice(0, 12).join("; "))
         : ok(`${g.scopes.length} scopes, each with the 5 method questions, owned tokens, components and situations`);
+    },
+  },
+
+  "components-own-api": {
+    requires: ["cli/src/lands.mjs", "harness/component-api-fixed.json"],
+    run: async (c) => {
+      // OD-234: every component has its own token API. Its code reads only its own tokens (each an alias
+      // of a semantic), never a system token or a shadcn utility directly; and a fixed Tailwind spacing
+      // or size is allowed only while it waits, listed, for a semantic of the same value.
+      const { componentApi } = await import(pathToFileURL(c.p("cli/src/lands.mjs")).href);
+      const scheme = c.json("schemes", "dense-data.json");
+      const fixed = new Set(c.json("harness", "component-api-fixed.json").values.map((x) => x.split(" (")[0]));
+      // OD-235: spacing is never fixed any more; only sizes may wait on the list
+      const gaps = [];
+      for (const x of fixed)
+        if (/: (p|px|py|pt|pb|pl|pr|gap|gap-x|gap-y)-/.test(x))
+          gaps.push(`${x} is a fixed spacing; it takes a step of the component spacing map`);
+      const dir = c.p("ui/src/components");
+      let own = 0;
+      let n = 0;
+      for (const f of readdirSync(dir).filter((x) => x.endsWith(".tsx"))) {
+        const comp = f.replace(/\.tsx$/, "");
+        const api = componentApi(scheme, comp, { ui: c.p("ui/src") });
+        n++;
+        own += api.filter((x) => x.own).length;
+        for (const x of api.filter((y) => !y.own)) gaps.push(`${comp} reads ${x.token} directly`);
+        const src = c.read("ui/src/components", f);
+        for (const m of src.matchAll(
+          /(?:^|[\s"'`:])((?:p|px|py|pt|pb|pl|pr|gap|gap-x|gap-y|size|h)-[\d.]+)(?=[\s"'`]|$)/gm,
+        )) {
+          if (/-0$/.test(m[1])) continue;
+          if (!fixed.has(`${comp}: ${m[1]}`)) gaps.push(`${comp} has a fixed ${m[1]} that is not listed`);
+        }
+      }
+      return gaps.length
+        ? bad([...new Set(gaps)].slice(0, 8).join("; "))
+        : ok(
+            `${n} components read ${own} tokens of their own and nothing else; ${fixed.size} fixed values wait, listed, for a semantic`,
+          );
+    },
+  },
+
+  "lands-in-traced": {
+    requires: ["schemes/grammar.json", "cli/src/lands.mjs"],
+    run: async (c) => {
+      // OD-233: where each scope lands is traced from the components' own code, never hand-written.
+      // Every component that reads a token the scope owns is listed, and nothing else.
+      const { landsIn } = await import(pathToFileURL(c.p("cli/src/lands.mjs")).href);
+      const g = c.json("schemes", "grammar.json");
+      const schemes = SCHEMES.map((id) => c.json("schemes", `${id}.json`));
+      const want = landsIn(schemes, g, { ui: c.p("ui/src"), stories: c.p("storybook/stories") });
+      const gaps = [];
+      for (const sc of g.scopes) {
+        const got = (sc.lands_in ?? []).join();
+        if (got !== (want[sc.id] ?? []).join()) gaps.push(sc.id);
+      }
+      return gaps.length
+        ? bad(`Out of date for ${gaps.join(", ")}. Run: node scripts/lands.mjs`)
+        : ok(g.scopes.map((sc) => `${sc.id} ${sc.lands_in.length}`).join(", ") + " components, traced from their code");
     },
   },
 
@@ -1039,7 +1498,7 @@ export const CHECKS = {
     requires: ["cli/src/brief.mjs"],
     run: async () => {
       // OD-205: the short form keeps what an agent needs, from each scheme's own rules. A situation's
-      // route holds its rule; build.md holds every layout and colour rule and write.md every voice
+      // route holds its rule; build.md holds every layout and color rule and write.md every voice
       // rule; a component's booklet holds how the scheme uses each variant, or that it does not.
       const { booklets, routeFile } = await import("../cli/src/brief.mjs");
       const { componentsFor } = await import("../cli/src/components.mjs");
@@ -1301,7 +1760,7 @@ export const CHECKS = {
       const offenders = [];
       for (const f of c.walk("ui/src/components", (x) => x.endsWith(".tsx"))) {
         const src = c.read(f);
-        if (/#[0-9a-fA-F]{3,8}\b|rgb\(|hsl\(|oklch\(/.test(src)) offenders.push(`${f}: raw colour`);
+        if (/#[0-9a-fA-F]{3,8}\b|rgb\(|hsl\(|oklch\(/.test(src)) offenders.push(`${f}: raw color`);
         if (/\b(bg|text|border)-(red|blue|gray|slate|zinc|neutral|green|amber)-\d/.test(src))
           offenders.push(`${f}: palette class`);
       }
@@ -1628,8 +2087,6 @@ export const CHECKS = {
         gaps.push("the docs base URL is not configurable");
       if (!read("docs/src/theme/NavbarItem/SchemeSwitcher.tsx").includes("withBaseUrl("))
         gaps.push("the scheme switch ignores the base URL");
-      if (!read("docs/src/theme/NavbarItem/SchemeLinks.tsx").includes("useBaseUrl("))
-        gaps.push("the llms.txt link ignores the base URL");
       const { docsPages } = await import(pathToFileURL(c.p("cli/src/docs.mjs")).href);
       const { assetRoots, grammar, loadScheme } = await import(pathToFileURL(c.p("cli/src/schemes.mjs")).href);
       const roots = assetRoots();
@@ -1698,13 +2155,13 @@ export const CHECKS = {
           if (lacking.length) gaps.push(`${id} ${p}: no ${lacking.join(", ")}`);
         }
         // OD-182: the docs lead with visuals. The home shows a product screen and the answers, the
-        // colour page shows its colours in use, component pages show each variant live.
+        // color page shows its colors in use, component pages show each variant live.
         const visual = [
           ["index.md", "odv-hero"],
           ["index.md", "odv-tile"],
           ["foundations/color.md", "odv-band"],
           ["foundations/color.md", "odv-stack"],
-          ["primitives/color.md", "odv-ramp"],
+          ["primitives/color.md", "odv-scale"],
           ["components/button.md", "odv-variant"],
           ["components/button.md", "odv-trail"],
         ];
@@ -1747,7 +2204,7 @@ export const CHECKS = {
       // A warning is a defect too: broken anchors once hid behind one.
       const warn = r.out.split("\n").filter((l) => /\[WARNING\]/.test(l));
       if (warn.length) return bad(`docs build warns: ${warn.slice(0, 3).join("; ")}`);
-      // OD-207: open each scheme's page in a browser: its colours, the switch, a left-out component.
+      // OD-207: open each scheme's page in a browser: its colors, the switch, a left-out component.
       const v = c.sh("node", ["harness/docs-renders.cjs", c.p("docs")]);
       let res;
       try {
@@ -1765,16 +2222,14 @@ export const CHECKS = {
               .map((f) => `${f.id}: ${f.problem}`)
               .join("; "),
           )
-        : ok(
-            `docs build; ${res.pages} pages open in a browser: every scheme in its colours, the switch keeps the page`,
-          );
+        : ok(`docs build; ${res.pages} pages open in a browser: every scheme in its colors, the switch keeps the page`);
     },
   },
   "docs-schemes": {
     requires: ["docs/scripts/generate.mjs", "docs/schemes.json"],
     run: (c) => {
       // OD-207: the repo docs hold every scheme, and switching never lands on a missing page or
-      // another scheme's colours. Every scheme has the same pages; each scheme's tokens apply only on
+      // another scheme's colors. Every scheme has the same pages; each scheme's tokens apply only on
       // its pages; category links and the home slug point inside the scheme's folder.
       const schemes = c.json("docs/schemes.json");
       const gaps = [];

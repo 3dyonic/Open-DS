@@ -12,12 +12,15 @@ function Marker({ className, children, ...props }: React.ComponentProps<"div">) 
   return (
     <div
       data-slot="marker"
-      className={cn("flex items-center gap-3 text-xs text-muted-foreground", className)}
+      className={cn(
+        "flex items-center gap-[var(--marker-gap)] text-[length:var(--marker-font-size)]/[var(--marker-line-height)] text-[color:var(--marker-label)]",
+        className,
+      )}
       {...props}
     >
-      <span aria-hidden className="h-px flex-1 bg-border" />
+      <span aria-hidden className="h-px flex-1 bg-[color:var(--marker-background)]" />
       <span>{children}</span>
-      <span aria-hidden className="h-px flex-1 bg-border" />
+      <span aria-hidden className="h-px flex-1 bg-[color:var(--marker-background)]" />
     </div>
   );
 }

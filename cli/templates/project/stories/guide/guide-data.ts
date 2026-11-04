@@ -4,7 +4,17 @@
 import grammar from "../../.open-ds/grammar.json";
 import scheme from "../../scheme.json";
 
-export function useGuideData(): { scheme: any; grammar: any; key: string } {
+/** This Storybook is one design system's own, so its introduction starts with it, not with Open DS. */
+export const ABOUT_OPEN_DS: { schemes: number } | null = null;
+
+/** The guide's data, the same shape as in the Open DS Storybook (OD-223). */
+export function useGuideData(): {
+  scheme: any;
+  grammar: any;
+  key: string;
+  brand: string;
+  mode: "light" | "dark";
+} {
   const dark =
     typeof document !== "undefined" &&
     document.documentElement.classList.contains("dark");
@@ -12,5 +22,14 @@ export function useGuideData(): { scheme: any; grammar: any; key: string } {
     typeof document !== "undefined"
       ? (document.documentElement.dataset.brand ?? "")
       : "";
-  return { scheme, grammar, key: `${brand}|${dark}` };
+  return {
+    scheme,
+    grammar,
+    key: `${brand}|${dark}`,
+    brand:
+      brand && (scheme.tokens.brands as Record<string, unknown>)[brand]
+        ? brand
+        : Object.keys(scheme.tokens.brands)[0],
+    mode: dark ? "dark" : "light",
+  };
 }

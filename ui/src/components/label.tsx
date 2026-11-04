@@ -12,8 +12,8 @@ export function Label({ className, ...props }: React.ComponentProps<typeof Label
     <LabelPrimitive.Root
       data-slot="label"
       className={cn(
-        "inline-flex items-center gap-2 text-[var(--color-text-primary)] [font-family:var(--type-label-font-family)]",
-        "text-[length:var(--type-label-font-size)] [font-weight:var(--type-label-font-weight)] leading-[var(--type-label-line-height)]",
+        "inline-flex items-center gap-[var(--label-gap)] text-[var(--label-label)] [font-family:var(--label-font-family)]",
+        "text-[length:var(--label-font-size)] [font-weight:var(--label-font-weight)] leading-[var(--label-line-height)]",
         className,
       )}
       {...props}

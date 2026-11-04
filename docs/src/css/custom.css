@@ -161,14 +161,33 @@ code {
   gap: var(--space-gap-default, 0.5rem);
   min-width: 13rem;
 }
+/* The type specimen (OD-218): one row per role, its name and values on the left, one line of the
+   scheme's own content on the right. */
 .ods-type {
-  display: flex;
-  align-items: baseline;
+  display: grid;
+  grid-template-columns: 9rem minmax(0, 1fr);
   gap: var(--space-gap-group, 1rem);
+  align-items: baseline;
   width: 100%;
+  padding: 0.5rem 0;
+  border-bottom: 1px solid var(--color-border-default);
+}
+.ods-type:last-child {
+  border-bottom: 0;
 }
 .ods-type .ods-label {
-  flex: 0 0 5rem;
+  display: grid;
+  gap: 0.125rem;
+}
+.ods-type .ods-label b {
+  font-family: var(--type-label-font-family, inherit);
+  font-weight: 600;
+  color: var(--color-text-primary);
+}
+.ods-type .ods-typeline {
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
 }
 .ods-label {
   font-family: var(--type-data-font-family, monospace);
@@ -211,6 +230,45 @@ code {
 .ods-font {
   font-size: 1.125rem;
 }
+/* A type primitive's sample (OD-217, OD-218): Aa at that size, weight or spacing, or two lines at that
+   line height. */
+.ods-typesample {
+  display: inline-block;
+  font-weight: 600;
+  line-height: 1;
+}
+.ods-leading {
+  position: relative;
+  display: inline-block;
+  margin: 0 3.5rem 0 0.5rem;
+  white-space: nowrap;
+  font-size: 1rem;
+  font-weight: 400;
+  isolation: isolate;
+}
+/* The line box: a band exactly one line height tall, with an accent edge, and its height in px. */
+.ods-leading::before {
+  content: "";
+  position: absolute;
+  inset: 0 -0.375rem auto -0.375rem;
+  height: 1lh;
+  border-left: 3px solid var(--color-action-primary);
+  background: var(--color-surface-selected, var(--color-surface-sunken));
+  z-index: -1;
+}
+.ods-leading::after {
+  content: attr(data-h);
+  position: absolute;
+  top: 0;
+  right: -0.375rem;
+  height: 1lh;
+  display: flex;
+  align-items: center;
+  padding-left: 0.375rem;
+  transform: translateX(100%);
+  font: 500 0.625rem/1 var(--type-data-font-family, ui-monospace, monospace);
+  color: var(--color-action-primary);
+}
 .ods-motion {
   display: inline-block;
   width: 3rem;
@@ -227,9 +285,11 @@ code {
   height: 0.75rem;
   border-radius: 9999px;
   background: var(--color-action-primary);
-  transition: left var(--ods-d) var(--motion-easing-standard, ease);
+  transition: left var(--ods-d, 320ms) var(--ods-e, var(--motion-easing-standard, ease));
 }
-.ods-specimen:hover .ods-motion > span {
+/* OD-220: a duration or easing plays when you hover it, or its row: only the one you point at. */
+.ods-item:hover .ods-motion > span,
+.markdown tr:hover .ods-motion > span {
   left: 2.25rem;
 }
 @media (prefers-reduced-motion: reduce) {
@@ -243,11 +303,11 @@ code {
   vertical-align: middle;
 }
 
-/* The brand: the Open DS mark in this system's colours, its name in the title type, and a tag
+/* The brand: the Open DS mark in this system's colors, its name in the title type, and a tag
    that says these are its docs. */
 .navbar__brand {
   /* OD-211: room between the mark and the name, even in the tightest scheme. */
-  gap: max(var(--space-gap-default), 0.75rem);
+  gap: max(var(--space-gap-default, 0px), 0.75rem);
 }
 .navbar__logo {
   height: 1.25rem;
@@ -669,11 +729,6 @@ html:not([data-scheme])[data-theme="dark"] .navbar__logo img {
     height: 1px;
     overflow: hidden;
     clip: rect(0 0 0 0);
-  }
-}
-@media (max-width: 1280px) {
-  .navbar__title {
-    display: none;
   }
 }
 /* A component the scheme leaves out (OD-211): the same entry as any other, with a small badge. */

@@ -18,7 +18,7 @@ Each layer of the system feeds the next. A change at the right layer moves only 
 ## When
 
 - The product differs from the scheme.
-- A value, a colour, a size or a rule must change.
+- A value, a color, a size or a rule must change.
 
 ## Input
 

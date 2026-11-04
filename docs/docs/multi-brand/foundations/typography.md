@@ -11,13 +11,13 @@ description: "Multi-brand: How text is set: roles, sizes and line height."
 How text is set: roles, sizes and line height.
 
 <div class="ods-specimen">
-<div class="ods-type"><span class="ods-label">display</span><span style="font-family:var(--type-display-font-family);font-size:var(--type-display-font-size);line-height:var(--type-display-line-height);font-weight:var(--type-display-font-weight)">A customer signs up for a plan on the Birch site, then manages it in the shared account area.</span></div>
-<div class="ods-type"><span class="ods-label">title</span><span style="font-family:var(--type-title-font-family);font-size:var(--type-title-font-size);line-height:var(--type-title-line-height);font-weight:var(--type-title-font-weight)">A customer signs up for a plan on the Birch site, then manages it in the shared account area.</span></div>
-<div class="ods-type"><span class="ods-label">heading</span><span style="font-family:var(--type-heading-font-family);font-size:var(--type-heading-font-size);line-height:var(--type-heading-line-height);font-weight:var(--type-heading-font-weight)">A customer signs up for a plan on the Birch site, then manages it in the shared account area.</span></div>
-<div class="ods-type"><span class="ods-label">body</span><span style="font-family:var(--type-body-font-family);font-size:var(--type-body-font-size);line-height:var(--type-body-line-height);font-weight:var(--type-body-font-weight)">A customer signs up for a plan on the Birch site, then manages it in the shared account area.</span></div>
-<div class="ods-type"><span class="ods-label">label</span><span style="font-family:var(--type-label-font-family);font-size:var(--type-label-font-size);line-height:var(--type-label-line-height);font-weight:var(--type-label-font-weight)">A customer signs up for a plan on the Birch site, then manages it in the shared account area.</span></div>
-<div class="ods-type"><span class="ods-label">caption</span><span style="font-family:var(--type-caption-font-family);font-size:var(--type-caption-font-size);line-height:var(--type-caption-line-height);font-weight:var(--type-caption-font-weight)">A customer signs up for a plan on the Birch site, then manages it in the shared account area.</span></div>
-<div class="ods-type"><span class="ods-label">data</span><span style="font-family:var(--type-data-font-family);font-size:var(--type-data-font-size);line-height:var(--type-data-line-height);font-weight:var(--type-data-font-weight)">A customer signs up for a plan on the Birch site, then manages it in the shared account area.</span></div>
+<div class="ods-type"><span class="ods-label"><b>display</b><span>32px · 1.8 · 700</span></span><span class="ods-typeline" style="font-family:var(--type-display-font-family);font-size:var(--type-display-font-size);line-height:var(--type-display-line-height);font-weight:var(--type-display-font-weight)">Your plan</span></div>
+<div class="ods-type"><span class="ods-label"><b>title</b><span>24px · 1.2 · 600</span></span><span class="ods-typeline" style="font-family:var(--type-title-font-family);font-size:var(--type-title-font-size);line-height:var(--type-title-line-height);font-weight:var(--type-title-font-weight)">Your plan</span></div>
+<div class="ods-type"><span class="ods-label"><b>heading</b><span>20px · 1.2 · 600</span></span><span class="ods-typeline" style="font-family:var(--type-heading-font-family);font-size:var(--type-heading-font-size);line-height:var(--type-heading-line-height);font-weight:var(--type-heading-font-weight)">Standard plan</span></div>
+<div class="ods-type"><span class="ods-label"><b>body</b><span>16px · 1.5 · 400</span></span><span class="ods-typeline" style="font-family:var(--type-body-font-family);font-size:var(--type-body-font-size);line-height:var(--type-body-line-height);font-weight:var(--type-body-font-weight)">A customer signs up for a plan on the Birch site, then manages it in the shared account area.</span></div>
+<div class="ods-type"><span class="ods-label"><b>label</b><span>14px · 1.2 · 600</span></span><span class="ods-typeline" style="font-family:var(--type-label-font-family);font-size:var(--type-label-font-size);line-height:var(--type-label-line-height);font-weight:var(--type-label-font-weight)">Get started</span></div>
+<div class="ods-type"><span class="ods-label"><b>caption</b><span>13px · 1.5 · 400</span></span><span class="ods-typeline" style="font-family:var(--type-caption-font-family);font-size:var(--type-caption-font-size);line-height:var(--type-caption-line-height);font-weight:var(--type-caption-font-weight)">A customer signs up for a plan on the Birch site, then manages it in the shared account area.</span></div>
+<div class="ods-type"><span class="ods-label"><b>data</b><span>16px · 1.5 · 400</span></span><span class="ods-typeline" style="font-family:var(--type-data-font-family);font-size:var(--type-data-font-size);line-height:var(--type-data-line-height);font-weight:var(--type-data-font-weight)">Plan Standard · Next payment 12.00 · Orders this year 9 · Member since 2024</span></div>
 </div>
 
 ## The five answers
@@ -34,19 +34,23 @@ How text is set: roles, sizes and line height.
 
 Each token points to another token. Values live only on primitives, below.
 
+<div class="odv-brandset" data-for-brand="aster">
+
+<p class="odv-brandname">Aster</p>
+
 | Token | Points to |
 | --- | --- |
 | `type.display.font-family` | `aster.theme.base.type.display.font-family` → `font.family.inter` |
 | `type.display.font-size` | `font.size.32` |
-| `type.display.line-height` | `font.line-height.1_2` |
+| `type.display.line-height` | `font.line-height.1_8` |
 | `type.display.font-weight` | `font.weight.700` |
 | `type.title.font-family` | `aster.theme.base.type.title.font-family` → `font.family.inter` |
 | `type.title.font-size` | `font.size.24` |
-| `type.title.line-height` | `font.line-height.1_25` |
+| `type.title.line-height` | `font.line-height.1_2` |
 | `type.title.font-weight` | `font.weight.600` |
 | `type.heading.font-family` | `aster.theme.base.type.heading.font-family` → `font.family.inter` |
 | `type.heading.font-size` | `font.size.20` |
-| `type.heading.line-height` | `font.line-height.1_3` |
+| `type.heading.line-height` | `font.line-height.1_2` |
 | `type.heading.font-weight` | `font.weight.600` |
 | `type.body.font-family` | `aster.theme.base.type.body.font-family` → `font.family.inter` |
 | `type.body.font-size` | `font.size.16` |
@@ -54,45 +58,94 @@ Each token points to another token. Values live only on primitives, below.
 | `type.body.font-weight` | `font.weight.400` |
 | `type.label.font-family` | `aster.theme.base.type.label.font-family` → `font.family.inter` |
 | `type.label.font-size` | `font.size.14` |
-| `type.label.line-height` | `font.line-height.1_4` |
+| `type.label.line-height` | `font.line-height.1_2` |
 | `type.label.font-weight` | `font.weight.600` |
 | `type.caption.font-family` | `aster.theme.base.type.caption.font-family` → `font.family.inter` |
 | `type.caption.font-size` | `font.size.13` |
-| `type.caption.line-height` | `font.line-height.1_4` |
+| `type.caption.line-height` | `font.line-height.1_5` |
 | `type.caption.font-weight` | `font.weight.400` |
 | `type.data.font-family` | `aster.theme.base.type.data.font-family` → `font.family.inter` |
 | `type.data.font-size` | `font.size.16` |
 | `type.data.line-height` | `font.line-height.1_5` |
 | `type.data.font-weight` | `font.weight.400` |
 
-## Primitives
+</div>
 
-The raw values the tokens above end at.
+<div class="odv-brandset" data-for-brand="birch">
 
-| Primitive | Value | Sample |
-| --- | --- | --- |
-| `font.family.inter` | Inter, system-ui, sans-serif | <span class="ods-font" style="font-family:Inter, system-ui, sans-serif">Aa 123</span> |
-| `font.line-height.1_2` | 1.2 |  |
-| `font.line-height.1_25` | 1.25 |  |
-| `font.line-height.1_3` | 1.3 |  |
-| `font.line-height.1_4` | 1.4 |  |
-| `font.line-height.1_5` | 1.5 |  |
-| `font.size.13` | 0.8125rem (13px) | <span class="ods-bar" style="width:0.8125rem"></span> |
-| `font.size.14` | 0.875rem (14px) | <span class="ods-bar" style="width:0.875rem"></span> |
-| `font.size.16` | 1rem (16px) | <span class="ods-bar" style="width:1rem"></span> |
-| `font.size.20` | 1.25rem (20px) | <span class="ods-bar" style="width:1.25rem"></span> |
-| `font.size.24` | 1.5rem (24px) | <span class="ods-bar" style="width:1.5rem"></span> |
-| `font.size.32` | 2rem (32px) | <span class="ods-bar" style="width:2rem"></span> |
-| `font.weight.400` | 400 |  |
-| `font.weight.600` | 600 |  |
-| `font.weight.700` | 700 |  |
+<p class="odv-brandname">Birch</p>
 
-## Where it lands
+| Token | Points to |
+| --- | --- |
+| `type.display.font-family` | `birch.theme.base.type.display.font-family` → `font.family.plus-jakarta-sans` |
+| `type.display.font-size` | `font.size.32` |
+| `type.display.line-height` | `font.line-height.1_8` |
+| `type.display.font-weight` | `font.weight.700` |
+| `type.title.font-family` | `birch.theme.base.type.title.font-family` → `font.family.plus-jakarta-sans` |
+| `type.title.font-size` | `font.size.24` |
+| `type.title.line-height` | `font.line-height.1_2` |
+| `type.title.font-weight` | `font.weight.600` |
+| `type.heading.font-family` | `birch.theme.base.type.heading.font-family` → `font.family.plus-jakarta-sans` |
+| `type.heading.font-size` | `font.size.20` |
+| `type.heading.line-height` | `font.line-height.1_2` |
+| `type.heading.font-weight` | `font.weight.600` |
+| `type.body.font-family` | `birch.theme.base.type.body.font-family` → `font.family.plus-jakarta-sans` |
+| `type.body.font-size` | `font.size.16` |
+| `type.body.line-height` | `font.line-height.1_5` |
+| `type.body.font-weight` | `font.weight.400` |
+| `type.label.font-family` | `birch.theme.base.type.label.font-family` → `font.family.plus-jakarta-sans` |
+| `type.label.font-size` | `font.size.14` |
+| `type.label.line-height` | `font.line-height.1_2` |
+| `type.label.font-weight` | `font.weight.600` |
+| `type.caption.font-family` | `birch.theme.base.type.caption.font-family` → `font.family.plus-jakarta-sans` |
+| `type.caption.font-size` | `font.size.13` |
+| `type.caption.line-height` | `font.line-height.1_5` |
+| `type.caption.font-weight` | `font.weight.400` |
+| `type.data.font-family` | `birch.theme.base.type.data.font-family` → `font.family.plus-jakarta-sans` |
+| `type.data.font-size` | `font.size.16` |
+| `type.data.line-height` | `font.line-height.1_5` |
+| `type.data.font-weight` | `font.weight.400` |
 
-- Button
-- Input
-- Badge
-- Table
+</div>
+
+<div class="odv-brandset" data-for-brand="coral">
+
+<p class="odv-brandname">Coral</p>
+
+| Token | Points to |
+| --- | --- |
+| `type.display.font-family` | `coral.theme.base.type.display.font-family` → `font.family.poppins` |
+| `type.display.font-size` | `font.size.32` |
+| `type.display.line-height` | `font.line-height.1_8` |
+| `type.display.font-weight` | `font.weight.700` |
+| `type.title.font-family` | `coral.theme.base.type.title.font-family` → `font.family.poppins` |
+| `type.title.font-size` | `font.size.24` |
+| `type.title.line-height` | `font.line-height.1_2` |
+| `type.title.font-weight` | `font.weight.600` |
+| `type.heading.font-family` | `coral.theme.base.type.heading.font-family` → `font.family.poppins` |
+| `type.heading.font-size` | `font.size.20` |
+| `type.heading.line-height` | `font.line-height.1_2` |
+| `type.heading.font-weight` | `font.weight.600` |
+| `type.body.font-family` | `coral.theme.base.type.body.font-family` → `font.family.poppins` |
+| `type.body.font-size` | `font.size.16` |
+| `type.body.line-height` | `font.line-height.1_5` |
+| `type.body.font-weight` | `font.weight.400` |
+| `type.label.font-family` | `coral.theme.base.type.label.font-family` → `font.family.poppins` |
+| `type.label.font-size` | `font.size.14` |
+| `type.label.line-height` | `font.line-height.1_2` |
+| `type.label.font-weight` | `font.weight.600` |
+| `type.caption.font-family` | `coral.theme.base.type.caption.font-family` → `font.family.poppins` |
+| `type.caption.font-size` | `font.size.13` |
+| `type.caption.line-height` | `font.line-height.1_5` |
+| `type.caption.font-weight` | `font.weight.400` |
+| `type.data.font-family` | `coral.theme.base.type.data.font-family` → `font.family.poppins` |
+| `type.data.font-size` | `font.size.16` |
+| `type.data.line-height` | `font.line-height.1_5` |
+| `type.data.font-weight` | `font.weight.400` |
+
+</div>
+
+The raw values these tokens end at are on [Primitives › Type](../primitives/type).
 
 ## When to use what
 

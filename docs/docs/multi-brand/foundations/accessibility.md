@@ -32,31 +32,49 @@ Floors the system must hold.
 
 Each token points to another token. Values live only on primitives, below.
 
+<div class="odv-brandset" data-for-brand="aster">
+
+<p class="odv-brandname">Aster</p>
+
 | Token | Points to, light | Points to, dark |
 | --- | --- | --- |
 | `size.control.default` | `size.44` | `size.44` |
 | `size.control.compact` | `size.36` | `size.36` |
 | `size.control.large` | `size.44` | `size.44` |
 | `opacity.disabled` | `opacity.40` | `opacity.40` |
-| `color.border.focus` | `aster.theme.light.color.border.focus` → `color.teal.light.600` | `aster.theme.dark.color.border.focus` → `color.teal.dark.700` |
+| `color.border.focus` | `aster.theme.light.color.border.focus` → `color.teal.light.600` | `aster.theme.dark.color.border.focus` → `color.teal.dark.600` |
 
-## Primitives
+</div>
 
-The raw values the tokens above end at.
+<div class="odv-brandset" data-for-brand="birch">
 
-| Primitive | Value | Sample |
+<p class="odv-brandname">Birch</p>
+
+| Token | Points to, light | Points to, dark |
 | --- | --- | --- |
-| `color.teal.dark.700` | #7FCFC6 | <span class="ods-swatch" style="background:#7FCFC6"></span> |
-| `color.teal.light.600` | #0F766E | <span class="ods-swatch" style="background:#0F766E"></span> |
-| `opacity.40` | 0.4 | <span class="ods-swatch" style="opacity:0.4"></span> |
-| `size.36` | 2.25rem (36px) | <span class="ods-bar" style="width:2.25rem"></span> |
-| `size.44` | 2.75rem (44px) | <span class="ods-bar" style="width:2.75rem"></span> |
+| `size.control.default` | `size.44` | `size.44` |
+| `size.control.compact` | `size.36` | `size.36` |
+| `size.control.large` | `size.44` | `size.44` |
+| `opacity.disabled` | `opacity.40` | `opacity.40` |
+| `color.border.focus` | `birch.theme.light.color.border.focus` → `color.purple.light.600` | `birch.theme.dark.color.border.focus` → `color.purple.dark.600` |
 
-## Where it lands
+</div>
 
-- Button
-- Input
-- Overlay
+<div class="odv-brandset" data-for-brand="coral">
+
+<p class="odv-brandname">Coral</p>
+
+| Token | Points to, light | Points to, dark |
+| --- | --- | --- |
+| `size.control.default` | `size.44` | `size.44` |
+| `size.control.compact` | `size.36` | `size.36` |
+| `size.control.large` | `size.44` | `size.44` |
+| `opacity.disabled` | `opacity.40` | `opacity.40` |
+| `color.border.focus` | `coral.theme.light.color.border.focus` → `color.orange.light.600` | `coral.theme.dark.color.border.focus` → `color.orange.dark.600` |
+
+</div>
+
+The raw values these tokens end at are on [Primitives › all kinds](../primitives/).
 
 ## When to use what
 

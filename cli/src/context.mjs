@@ -1,7 +1,10 @@
 // Context on demand: one call returns only the slice an agent needs for a target, built from the
 // scheme, the grammar and the built tokens. The CLI (open-ds context) and the MCP (get_context) share it.
+import { spacingGuide } from "./spacing-map.mjs";
+import { tokenIndex, aliasChain } from "./lands.mjs";
 import { componentGuide } from "./component.mjs";
 import { guidanceFor, guidanceId } from "./guidance.mjs";
+import { sitsOn } from "./tones.mjs";
 import {
   assetRoots,
   grammar,
@@ -19,7 +22,7 @@ const brief = (g) =>
     id: k.id,
     intent: k.intent,
     not_for: k.not_for.map((n) => `${n.when}: use ${n.use}`),
-    ...(k.pairs && { sits_on: k.pairs.on, contrast: k.pairs.contrast }),
+    ...(k.pairs && { sits_on: sitsOn(g, k), contrast: k.pairs.contrast }),
   }));
 
 const rules = (scheme, g) =>
@@ -54,7 +57,7 @@ function task(name, scheme, g, roots) {
   if (name === "build")
     return {
       ...base,
-      read: "Find the situation and follow its rule. Read only component keys and semantic tokens. Check a semantic's not_for before you use it.",
+      read: "Find the situation and follow its rule. Use only component keys and semantics; check each one's not_for.",
       components: g.components.map((c) => ({
         id: c.id,
         description: c.description,
@@ -63,6 +66,11 @@ function task(name, scheme, g, roots) {
       rules: rules(scheme, g),
       semantics: brief(g),
       urgency,
+      spacing: spacingGuide(scheme, {
+        index: tokenIndex(scheme),
+        chain: aliasChain,
+        hints: g.scopes.find((x) => x.id === "spacing")?.hints ?? [],
+      }),
     };
   if (name === "write")
     return {
@@ -83,7 +91,7 @@ function task(name, scheme, g, roots) {
     };
   return {
     ...base,
-    read: "Check each colour against its not_for and its pairs, each status against the urgency order, and each situation against its rule.",
+    read: "Check each color against its not_for and its pairs, each status against the urgency order, and each situation against its rule.",
     rules: rules(scheme, g),
     semantics: brief(g),
     urgency,

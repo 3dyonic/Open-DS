@@ -73,14 +73,14 @@ function readme(scheme, name, brands) {
     "",
     "| Folder | What it holds |",
     "| --- | --- |",
-    "| `tokens/src/` | The DTCG token source, one file per group: `primitive/` (steps only: colour by hue with light and dark ramps; space, size, radius, font, shadow, motion), `theme/` (each brand's decisions per mode, on the semantic paths, with a base `@` per concept), `semantic/`, `component/` and content. Each folder has a README. Only semantic and component keys ship as CSS variables. |",
+    "| `tokens/src/` | The DTCG token source, one file per group: `primitive/` (steps only: color by hue with light and dark ramps; space, size, radius, font, shadow, motion), `theme/` (each brand's decisions per mode, on the semantic paths, with a base `@` per concept), `semantic/`, `component/` and content. Each folder has a README. Only semantic and component keys ship as CSS variables. |",
     "| `tokens/build.mjs` | The Style Dictionary build. `npm run tokens` writes CSS, the shadcn and Tailwind theme and JSON to `build/`. |",
     "| `src/components/ui/` | The components. Each reads only component keys such as `--button-primary-background`. |",
     "| `src/styles/index.css` | Tailwind, the built tokens, the theme and the base styles. |",
     "| `stories/` | Storybook stories, with the usage rules next to each component. |",
     "| `docs/` | The Docusaurus docs: reasons, voice, foundations, components, themes. |",
     "| `scheme.json` | The answer map: every decision with why and because, every usage rule, the voice. |",
-    "| `AGENTS.md`, `context/`, `.claude/skills/` | What a coding agent reads before it writes UI. AGENTS.md holds the rules that always apply; `context/` holds one short booklet per component, colour and task, and a router (`index.json`) that says what to load for a file. |",
+    "| `AGENTS.md`, `context/`, `.claude/skills/` | What a coding agent reads before it writes UI. AGENTS.md holds the rules that always apply; `context/` holds one short booklet per component, color and task, and a router (`index.json`) that says what to load for a file. |",
     "",
     `Themes: ${scheme.themes.map((t) => t.id).join(", ")}.${brands.length > 1 ? ` Set \`data-brand\` on \`<html>\` to pick a brand.` : ""} Add the class \`dark\` for dark mode.`,
     "",
@@ -295,7 +295,22 @@ export function createProject(
     for (const f of readdirSync(guideDir).filter(
       (x) => x.endsWith(".stories.tsx") || x === "guide.tsx",
     ))
-      write(`stories/guide/${f}`, readFileSync(join(guideDir, f), "utf8"));
+      write(
+        `stories/guide/${f}`,
+        readFileSync(join(guideDir, f), "utf8").replaceAll(
+          `from "../../../cli/src/scale-map.mjs"`,
+          `from "./scale-map.mjs"`,
+        ),
+      );
+  // The scale map (OD-223) the guide reads: the same file the docs, the CLI and the MCP use.
+  for (const f of ["scale-map.mjs", "scale-map.d.mts"])
+    write(
+      `stories/guide/${f}`,
+      readFileSync(
+        join(dirname(fileURLToPath(import.meta.url)), "..", "src", f),
+        "utf8",
+      ),
+    );
 
   // The answer map and the situations the usage rules name.
   write("scheme.json", json(scheme));
@@ -331,7 +346,9 @@ export function createProject(
     agentsMd(scheme, g, { brand: defaultBrand, components, project: true }),
   );
   // The booklets and the router (OD-205): the context engine's short answers, as files.
-  for (const [rel, text] of Object.entries(booklets(scheme, g, components, roots)))
+  for (const [rel, text] of Object.entries(
+    booklets(scheme, g, components, roots),
+  ))
     write(`context/${rel}`, text);
   write(
     ".claude/skills/open-ds/SKILL.md",

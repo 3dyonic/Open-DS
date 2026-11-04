@@ -567,8 +567,15 @@
         "confirm": {
           "type": "object",
           "additionalProperties": false,
-          "required": ["trigger", "title", "body", "confirm", "cancel"],
-          "description": "A confirm dialog for a destructive action.",
+          "required": [
+            "trigger",
+            "title",
+            "body",
+            "confirm",
+            "cancel",
+            "destroys"
+          ],
+          "description": "A confirm dialog for an action that is hard to undo.",
           "properties": {
             "trigger": {
               "type": "string",
@@ -594,6 +601,10 @@
               "type": "string",
               "minLength": 1,
               "description": "The safe button."
+            },
+            "destroys": {
+              "type": "boolean",
+              "description": "True when confirming destroys data, so the confirm is Button danger. False when it can be undone, so the confirm is Button primary (OD-222)."
             }
           }
         },
@@ -902,13 +913,13 @@
     },
     "tokens": {
       "type": "object",
-      "description": "DTCG tokens in four tiers. Primitives are the raw options, steps only (colour by hue, mode and step: color.<hue>.light.<step>, color.<hue>.dark.<step>). Each brand's theme picks from them, per mode, and decides each concept's base (@). Semantics are the plain keys components read, on the same paths as the theme; a brand-dependent one points at {theme.<path>}, which the build resolves to the active brand and mode. Only semantic and component keys ship as CSS variables. Component keys point to semantics. content holds the voice scope's words.",
+      "description": "DTCG tokens in four tiers. Primitives are the raw options, steps only (color by hue, mode and step: color.<hue>.light.<step>, color.<hue>.dark.<step>). Each brand's theme picks from them, per mode, and decides each concept's base (@). Semantics are the plain keys components read, on the same paths as the theme; a brand-dependent one points at {theme.<path>}, which the build resolves to the active brand and mode. Only semantic and component keys ship as CSS variables. Component keys point to semantics. content holds the voice scope's words.",
       "additionalProperties": false,
       "required": ["primitive", "brands", "semantic", "component", "content"],
       "properties": {
         "primitive": {
           "$ref": "#/$defs/group",
-          "description": "Raw options shared by every brand: colour hues (light ramp and dark ramp, steps only), space, size, radius, border width, font families, sizes, weights and line heights, shadows, durations, easing and opacity. Components never read them."
+          "description": "Raw options shared by every brand: color hues (light ramp and dark ramp, steps only), space, size, radius, border width, font families, sizes, weights and line heights, shadows, durations, easing and opacity. Components never read them."
         },
         "brands": {
           "type": "object",
@@ -937,13 +948,43 @@
                     "type": "string",
                     "description": "What this theme is."
                   },
+                  "neutral": {
+                    "type": "object",
+                    "additionalProperties": false,
+                    "required": ["gray", "temperature", "why", "because"],
+                    "description": "The decision behind color.neutral (OD-228): which gray from the grammar's menu the neutral scale points at, and why.",
+                    "properties": {
+                      "gray": {
+                        "type": "string",
+                        "pattern": "^[a-z]+(-[a-z]+)?$",
+                        "description": "A gray from the grammar's semantics.neutral.grays."
+                      },
+                      "temperature": {
+                        "enum": ["cool", "pure", "warm", "warm-rosy"],
+                        "description": "The gray's temperature, as the menu names it."
+                      },
+                      "why": {
+                        "type": "string",
+                        "minLength": 1,
+                        "description": "Why this scheme picks this gray."
+                      },
+                      "because": {
+                        "type": "array",
+                        "minItems": 1,
+                        "items": {
+                          "type": "string"
+                        },
+                        "description": "The answers it follows from."
+                      }
+                    }
+                  },
                   "base": {
                     "$ref": "#/$defs/group",
                     "description": "Mode-free picks: font families and corners."
                   },
                   "light": {
                     "$ref": "#/$defs/group",
-                    "description": "Light mode picks: colours and shadows."
+                    "description": "Light mode picks: colors and shadows."
                   },
                   "dark": {
                     "$ref": "#/$defs/group",
@@ -956,7 +997,7 @@
         },
         "semantic": {
           "$ref": "#/$defs/group",
-          "description": "The plain keys components and agents read: colour, space, size, radius, type, motion, elevation. A brand- or mode-dependent key's value is {theme.<its own path>}. A concept with variants has a base, @, beside them: color.action.primary.@ and color.action.primary.hover."
+          "description": "The plain keys components and agents read: color, space, size, radius, type, motion, elevation. A brand- or mode-dependent key's value is {theme.<its own path>}. A concept with variants has a base, @, beside them: color.action.primary.@ and color.action.primary.hover."
         },
         "component": {
           "$ref": "#/$defs/group",
@@ -982,6 +1023,42 @@
           "$ref": "#/$defs/token/properties/$type",
           "description": "Type inherited by every token in the group."
         },
+        "$extensions": {
+          "type": "object",
+          "additionalProperties": false,
+          "description": "Open DS decisions on a group that are not values.",
+          "properties": {
+            "open-ds": {
+              "description": "Open DS decisions on a group: how a hue's scales are generated, or the component spacing map's rhythm.",
+              "anyOf": [
+                {
+                  "type": "object",
+                  "additionalProperties": false,
+                  "required": ["generated", "light", "dark"],
+                  "description": "On a colored hue: how its scales are generated (OD-223). Each mode has a key color, kept exact at 600, and optional recorded adjustments per step.",
+                  "properties": {
+                    "generated": {
+                      "type": "string",
+                      "pattern": "^OD-\\d+$",
+                      "description": "The ticket that set the method."
+                    },
+                    "light": {
+                      "$ref": "#/$defs/scaleSpec",
+                      "description": "The light scale's key and adjustments."
+                    },
+                    "dark": {
+                      "$ref": "#/$defs/scaleSpec",
+                      "description": "The dark scale's key and adjustments."
+                    }
+                  }
+                },
+                {
+                  "$ref": "#/$defs/spacingMapSpec"
+                }
+              ]
+            }
+          }
+        },
         "@": {
           "$ref": "#/$defs/token",
           "description": "The concept's base value, beside its variants, for example color.action.primary.@ next to color.action.primary.hover. The build drops the @ from the name: it becomes --color-action-primary. A reference names it: {color.action.primary.@}. Not used on primitives, which are steps only."
@@ -1001,6 +1078,47 @@
         }
       },
       "additionalProperties": false
+    },
+    "scaleSpec": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["key"],
+      "description": "One mode's scale of a hue: its key color and any adjustments.",
+      "properties": {
+        "key": {
+          "type": "string",
+          "pattern": "^#[0-9A-Fa-f]{6}$",
+          "description": "The key color, exact at step 600."
+        },
+        "adjust": {
+          "type": "object",
+          "description": "Recorded moves per step: L in OKLCH lightness, C in chroma, H in degrees, and why.",
+          "additionalProperties": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": ["why"],
+            "properties": {
+              "L": {
+                "type": "number",
+                "description": "The move in OKLCH lightness."
+              },
+              "H": {
+                "type": "number",
+                "description": "The move in hue, in degrees."
+              },
+              "C": {
+                "type": "number",
+                "description": "The move in OKLCH chroma: more or less color, kept inside sRGB."
+              },
+              "why": {
+                "type": "string",
+                "minLength": 1,
+                "description": "Why the step moved."
+              }
+            }
+          }
+        }
+      }
     },
     "token": {
       "type": "object",
@@ -1028,6 +1146,56 @@
         "$description": {
           "type": "string",
           "description": "What the token is for."
+        },
+        "$extensions": {
+          "type": "object",
+          "additionalProperties": false,
+          "description": "Open DS decisions on a token that are not values.",
+          "properties": {
+            "open-ds": {
+              "type": "object",
+              "additionalProperties": false,
+              "description": "On a fill in a theme: its tone, which decides the text on it (OD-222, OD-227). On a component key: the fill it sits on, so the build picks its text by that fill's tone (OD-223).",
+              "properties": {
+                "tone": {
+                  "enum": ["light", "dark"],
+                  "description": "Light: the text on it is color.text.on-light. Dark: color.text.on-dark."
+                },
+                "on": {
+                  "type": "string",
+                  "pattern": "^color(\\.[a-z0-9-]+)+(\\.@)?$",
+                  "description": "On a component key: the fill it sits on. The build turns a -on-light or -on-dark value into the one that fill's tone picks in each mode."
+                },
+                "waits": {
+                  "type": "object",
+                  "additionalProperties": false,
+                  "required": ["for", "why"],
+                  "description": "A known shortfall on this fill, with the ticket that fixes it. The harness reports it.",
+                  "properties": {
+                    "for": {
+                      "type": "string",
+                      "pattern": "^OD-\\d+$",
+                      "description": "The ticket."
+                    },
+                    "why": {
+                      "type": "string",
+                      "minLength": 1,
+                      "description": "What falls short and why."
+                    }
+                  }
+                },
+                "multiplier": {
+                  "type": "number",
+                  "exclusiveMinimum": 0,
+                  "description": "On a step of the component spacing map: its multiplier of space.unit."
+                },
+                "fixed": {
+                  "const": true,
+                  "description": "On a step of the component spacing map: it holds still in this scheme."
+                }
+              }
+            }
+          }
         }
       }
     },
@@ -1050,6 +1218,42 @@
             "pattern": "^[a-z]+\\.(q\\d+|roles|count|definition|values|lands)$"
           },
           "description": "Question ids whose answers this text was written from."
+        }
+      }
+    },
+    "spacingMapSpec": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["rhythm", "fixed", "because", "why"],
+      "description": "On the component spacing map (OD-235): the scheme's rhythm and the steps that hold still. The steps' values are generated from it.",
+      "properties": {
+        "rhythm": {
+          "type": "number",
+          "minimum": 1,
+          "maximum": 3,
+          "description": "How much the steps grow in this scheme: a step is space.unit × its multiplier × the rhythm."
+        },
+        "fixed": {
+          "type": "array",
+          "items": {
+            "enum": ["x1", "x2", "x3", "x4", "x6", "x8", "x12"]
+          },
+          "uniqueItems": true,
+          "description": "Steps that hold still at space.unit × their multiplier."
+        },
+        "because": {
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "type": "string",
+            "pattern": "^[a-z-]+\\.[a-z0-9-]+$"
+          },
+          "description": "The answers the rhythm comes from."
+        },
+        "why": {
+          "type": "string",
+          "minLength": 1,
+          "description": "The reason, in plain words."
         }
       }
     }

@@ -11,7 +11,9 @@ description: "Multi-brand: What moves, why and how fast."
 What moves, why and how fast.
 
 <div class="ods-specimen">
-<span class="ods-item"><span class="ods-motion" style="--ods-d:var(--motion-duration-feedback)"><span></span></span><span class="ods-label">motion.duration.feedback</span></span>
+<span class="ods-item"><span class="ods-motion" style="--ods-d:var(--motion-duration-feedback)" title="Hover to play"><span></span></span><span class="ods-label">motion.duration.feedback</span></span>
+<span class="ods-item"><span class="ods-motion" style="--ods-d:var(--motion-duration-panels)" title="Hover to play"><span></span></span><span class="ods-label">motion.duration.panels</span></span>
+<span class="ods-item"><span class="ods-motion" style="--ods-e:var(--motion-easing-standard)" title="Hover to play"><span></span></span><span class="ods-label">motion.easing.standard</span></span>
 </div>
 
 ## The five answers
@@ -28,23 +30,43 @@ What moves, why and how fast.
 
 Each token points to another token. Values live only on primitives, below.
 
+<div class="odv-brandset" data-for-brand="aster">
+
+<p class="odv-brandname">Aster</p>
+
 | Token | Points to |
 | --- | --- |
 | `motion.duration.feedback` | `duration.moderate` |
+| `motion.duration.panels` | `duration.relaxed` |
 | `motion.easing.standard` | `easing.standard` |
 
-## Primitives
+</div>
 
-The raw values the tokens above end at.
+<div class="odv-brandset" data-for-brand="birch">
 
-| Primitive | Value | Sample |
-| --- | --- | --- |
-| `duration.moderate` | 200ms | <span class="ods-motion" style="--ods-d:200ms"><span></span></span> |
-| `easing.standard` | cubic-bezier(0.2, 0, 0, 1) |  |
+<p class="odv-brandname">Birch</p>
 
-## Where it lands
+| Token | Points to |
+| --- | --- |
+| `motion.duration.feedback` | `duration.moderate` |
+| `motion.duration.panels` | `duration.relaxed` |
+| `motion.easing.standard` | `easing.standard` |
 
-- Transition
+</div>
+
+<div class="odv-brandset" data-for-brand="coral">
+
+<p class="odv-brandname">Coral</p>
+
+| Token | Points to |
+| --- | --- |
+| `motion.duration.feedback` | `duration.moderate` |
+| `motion.duration.panels` | `duration.relaxed` |
+| `motion.easing.standard` | `easing.standard` |
+
+</div>
+
+The raw values these tokens end at are on [Primitives › Motion](../primitives/motion).
 
 ## When to use what
 

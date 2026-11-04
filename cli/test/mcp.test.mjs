@@ -26,9 +26,11 @@ const TOOLS = [
   "fit_scheme",
   "get_answer",
   "get_component",
+  "get_component_spacing_map",
   "get_context",
   "get_inventory",
   "get_key",
+  "get_scales",
   "get_scheme",
   "list_schemes",
   "plan_add",
@@ -316,7 +318,10 @@ test("get_context is short by default, with sections, pages and file routes (OD-
       .text;
   const button = await text({ scheme_id: "dense-data", target: "button" });
   assert.match(button, /^# button \(dense-data\)/);
-  assert.match(button, /secondary, then confirm in a dialog/);
+  assert.match(
+    button,
+    /secondary, then confirm in a dialog with Button danger/,
+  );
   assert.doesNotMatch(button, /#[0-9A-Fa-f]{6}\b/, "no values by default");
   assert.match(button, /More, ask by section:/);
   assert.match(button, /get_context target=button section=/);
@@ -480,4 +485,18 @@ test("every server sends its instructions when an agent connects (OD-204)", asyn
   // The read-once text, the same as in AGENTS.md and context/README.md (OD-205).
   const { READ_ONCE } = await import("../src/brief.mjs");
   assert.ok(text.endsWith(READ_ONCE));
+});
+
+test("get_scales returns a hue's steps and the tokens on them", async () => {
+  const client = await connect();
+  const out = await call(client, "get_scales", {
+    scheme_id: "dense-data",
+    hue: "violet",
+  });
+  assert.equal(out.hues[0].hue, "violet");
+  assert.ok(
+    out.hues[0].steps.some((x) =>
+      x.tokens.some((t) => t.token === "action.primary"),
+    ),
+  );
 });

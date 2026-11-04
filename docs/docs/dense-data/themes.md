@@ -20,10 +20,15 @@ Dense data ships 2 themes: light, dark. Only semantic tokens change between them
 
 ## Key colors in each theme
 
+The page, its main surface and text, the main action at rest and on hover, and the focus ring: the colors that show a theme at a glance. Each shows the primitive it points at, then its value.
+
+- the neutral is `slate` (cool). Muted color keeps attention on the data; a cool gray reads as precise.
+
 | Token | light | dark |
 | --- | --- | --- |
-| `color.surface.canvas` | #F7F8FA | #0D1117 |
-| `color.surface.default` | #FFFFFF | #161B23 |
-| `color.text.primary` | #161B23 | #F7F8FA |
-| `color.action.primary` | #4B3FD9 #3B31B0 | #A9A3F6 #EEEDFE |
-| `color.border.focus` | #4B3FD9 | #A9A3F6 |
+| `color.surface.canvas` | <span class="odv-tc"><i style="background:#F7F8FA;color:#000000">Aa</i><span><code>slate.light.50</code><small>via neutral.50 · #F7F8FA</small></span></span> | <span class="odv-tc"><i style="background:#0D1117;color:#FFFFFF">Aa</i><span><code>slate.dark.0</code><small>via neutral.0 · #0D1117</small></span></span> |
+| `color.surface.default` | <span class="odv-tc"><i style="background:#FFFFFF;color:#000000">Aa</i><span><code>slate.light.0</code><small>via neutral.0 · #FFFFFF</small></span></span> | <span class="odv-tc"><i style="background:#161B23;color:#FFFFFF">Aa</i><span><code>slate.dark.50</code><small>via neutral.50 · #161B23</small></span></span> |
+| `color.text.primary` | <span class="odv-tc"><i style="background:#161B23;color:#FFFFFF">Aa</i><span><code>slate.light.900</code><small>via neutral.900 · #161B23</small></span></span> | <span class="odv-tc"><i style="background:#F7F8FA;color:#000000">Aa</i><span><code>slate.dark.900</code><small>via neutral.900 · #F7F8FA</small></span></span> |
+| `color.action.primary` | <span class="odv-tc"><i style="background:#4B3FD9;color:#FFFFFF">Aa</i><span><code>violet.light.600</code><small>#4B3FD9</small></span></span> | <span class="odv-tc"><i style="background:#A9A3F6;color:#000000">Aa</i><span><code>violet.dark.600</code><small>#A9A3F6</small></span></span> |
+| `color.action.primary.hover` | <span class="odv-tc"><i style="background:#3729AA;color:#FFFFFF">Aa</i><span><code>violet.light.700</code><small>#3729AA</small></span></span> | <span class="odv-tc"><i style="background:#BEBBFB;color:#000000">Aa</i><span><code>violet.dark.700</code><small>#BEBBFB</small></span></span> |
+| `color.border.focus` | <span class="odv-tc"><i style="background:#4B3FD9;color:#FFFFFF">Aa</i><span><code>violet.light.600</code><small>#4B3FD9</small></span></span> | <span class="odv-tc"><i style="background:#A9A3F6;color:#000000">Aa</i><span><code>violet.dark.600</code><small>#A9A3F6</small></span></span> |

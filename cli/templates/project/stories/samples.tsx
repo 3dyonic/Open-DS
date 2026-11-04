@@ -39,6 +39,7 @@ export interface Samples {
     body: string;
     confirm: string;
     cancel: string;
+    destroys: boolean;
   };
   card?: {
     title: string;
@@ -108,7 +109,6 @@ const PART: Record<string, keyof Samples> = {
   item: "menu",
   menubar: "menu",
   "hover-card": "card",
-  sonner: "messages",
 };
 
 export function Show({
