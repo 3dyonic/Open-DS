@@ -2174,7 +2174,7 @@
   "components": [
     {
       "id": "button",
-      "description": "Triggers an action. Variants: primary, secondary, ghost.",
+      "description": "Triggers an action. Variants: primary, secondary, danger, ghost.",
       "keys": [
         "button/primary/background/@",
         "button/primary/background/hover",
@@ -2183,6 +2183,9 @@
         "button/secondary/background/hover",
         "button/secondary/label",
         "button/secondary/border",
+        "button/danger/background/@",
+        "button/danger/background/hover",
+        "button/danger/label",
         "button/ghost/background-hover",
         "button/ghost/label",
         "button/height",
@@ -2264,6 +2267,7 @@
         "table/cell-padding-x",
         "table/row-border",
         "table/row-selected",
+        "table/row-selected-edge",
         "table/font-size"
       ]
     },
@@ -2340,6 +2344,24 @@
       "component": "button",
       "description": "Secondary button border.",
       "default": "color.border.strong"
+    },
+    {
+      "id": "button/danger/background/@",
+      "component": "button",
+      "description": "Danger button fill.",
+      "default": "color.action.danger.@"
+    },
+    {
+      "id": "button/danger/background/hover",
+      "component": "button",
+      "description": "Danger button fill on hover.",
+      "default": "color.action.danger.hover"
+    },
+    {
+      "id": "button/danger/label",
+      "component": "button",
+      "description": "Danger button label color.",
+      "default": "color.text.on-danger"
     },
     {
       "id": "button/ghost/background-hover",
@@ -2646,6 +2668,12 @@
       "component": "table",
       "description": "Fill of a selected row.",
       "default": "color.surface.selected"
+    },
+    {
+      "id": "table/row-selected-edge",
+      "component": "table",
+      "description": "Edge that marks a selected row, beside its fill.",
+      "default": "color.border.selected"
     },
     {
       "id": "table/font-size",
@@ -2956,6 +2984,26 @@
         }
       },
       {
+        "id": "color.text.on-danger",
+        "intent": "Text on the danger fill: its tone's main text.",
+        "use_for": [
+          "The danger button label"
+        ],
+        "not_for": [
+          {
+            "when": "Text on the main action",
+            "use": "color.text.on-action"
+          }
+        ],
+        "pairs": {
+          "on": [
+            "color.action.danger.@",
+            "color.action.danger.hover"
+          ],
+          "contrast": 4.5
+        }
+      },
+      {
         "id": "color.text.link",
         "intent": "Links in running text.",
         "use_for": [
@@ -3020,6 +3068,32 @@
         ],
         "pairs": {
           "tone": true,
+          "contrast": 3
+        }
+      },
+      {
+        "id": "color.border.selected",
+        "intent": "The edge that marks a selected item, beside its fill, so selection is never colour alone.",
+        "use_for": [
+          "A selected table row",
+          "The current item in a sidebar or menu"
+        ],
+        "not_for": [
+          {
+            "when": "Keyboard focus",
+            "use": "color.border.focus"
+          },
+          {
+            "when": "The fill of a selected item",
+            "use": "color.surface.selected"
+          }
+        ],
+        "pairs": {
+          "on": [
+            "color.surface.canvas",
+            "color.surface.default",
+            "color.surface.selected"
+          ],
           "contrast": 3
         }
       },
@@ -3089,6 +3163,36 @@
           {
             "when": "The resting state",
             "use": "color.action.secondary.@"
+          }
+        ]
+      },
+      {
+        "id": "color.action.danger.@",
+        "intent": "The fill of a destructive commit: the confirm of a delete.",
+        "use_for": [
+          "The confirm button of a delete or remove"
+        ],
+        "not_for": [
+          {
+            "when": "The first step of a delete",
+            "use": "color.action.secondary.@"
+          },
+          {
+            "when": "An error message",
+            "use": "color.status.danger.@"
+          }
+        ]
+      },
+      {
+        "id": "color.action.danger.hover",
+        "intent": "The danger fill on hover.",
+        "use_for": [
+          "Hover on the danger button"
+        ],
+        "not_for": [
+          {
+            "when": "The resting fill",
+            "use": "color.action.danger.@"
           }
         ]
       },
@@ -3844,6 +3948,18 @@
           ]
         },
         {
+          "id": "color.action.danger.@",
+          "carries": [
+            "text.primary"
+          ]
+        },
+        {
+          "id": "color.action.danger.hover",
+          "carries": [
+            "text.primary"
+          ]
+        },
+        {
           "id": "color.action.secondary.@",
           "carries": [
             "text.primary",
@@ -3886,6 +4002,11 @@
           ]
         }
       ]
+    },
+    "danger_apart": {
+      "min_delta_e": 10,
+      "say": "the primary and danger fills stay at least 10 apart (ΔE in OKLab, ×100) in every brand and mode",
+      "why": "A destructive commit must never look like the everyday one."
     }
   },
   "catalogue": {
@@ -4328,6 +4449,12 @@
               "overview": "A real action, quieter than the commit.",
               "apply_when": "Cancel, Back or Reset next to a primary, or an action with no commit beside it.",
               "not_when": "It is the only action; then it is primary."
+            },
+            {
+              "id": "danger",
+              "overview": "A destructive commit, after a confirm.",
+              "apply_when": "The confirm step of a delete or remove, with the verb: Delete 40 alerts.",
+              "not_when": "The first step of a delete; that is secondary. Anything that does not destroy data."
             },
             {
               "id": "ghost",

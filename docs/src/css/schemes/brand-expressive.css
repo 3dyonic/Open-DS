@@ -55,13 +55,17 @@ html[data-scheme="brand-expressive"] {
   --color-text-inverse: #FFFFFF; /** Text on an inverse fill. */
   --color-text-on-action: #FFFFFF; /** Text and icons on the main action's fill. */
   --color-text-link: #A8165F; /** Links in running text. */
+  --color-text-on-danger: #FFF8F3; /** Text on the danger fill: its tone's main text. */
   --color-border-default: #F2DCCF; /** Quiet edges and dividers. Decorative, so it has no contrast minimum. */
   --color-border-strong: #8A6F63; /** The edge of a control people must find. */
   --color-border-focus: #D61F7A; /** The focus ring. */
+  --color-border-selected: #D61F7A; /** The edge that marks a selected item, beside its fill, so selection is never colour alone. */
   --color-action-primary: #D61F7A; /** The one main action in a view. */
   --color-action-primary-hover: #A8165F; /** The main action under the pointer. */
   --color-action-secondary: #FFFFFF; /** The fill of other actions. */
   --color-action-secondary-hover: #FCEFE6; /** Other actions under the pointer. */
+  --color-action-danger: #C42B2B; /** The fill of a destructive commit: the confirm of a delete. */
+  --color-action-danger-hover: #C42B2B; /** The danger fill on hover. */
   --color-status-info: #083C93; /** Neutral news: something changed and no action is needed. The lowest level of the urgency order. */
   --color-status-info-subtle: #E1ECFF; /** The fill behind info status. */
   --color-status-success: #1F7A3A; /** Confirmation that something worked. It sits outside the urgency order. */
@@ -134,6 +138,9 @@ html[data-scheme="brand-expressive"] {
   --button-secondary-background-hover: var(--color-action-secondary-hover); /** Secondary button fill on hover. */
   --button-secondary-label: var(--color-text-primary); /** Secondary button label color. */
   --button-secondary-border: var(--color-border-strong); /** Secondary button border. */
+  --button-danger-background: var(--color-action-danger); /** Danger button fill. */
+  --button-danger-background-hover: var(--color-action-danger-hover); /** Danger button fill on hover. */
+  --button-danger-label: var(--color-text-on-danger); /** Danger button label color. */
   --button-ghost-background-hover: var(--color-surface-sunken); /** Ghost button fill on hover. */
   --button-ghost-label: var(--color-text-link); /** Ghost button label color. */
   --button-radius: var(--radius-control); /** Button corner radius. */
@@ -172,6 +179,7 @@ html[data-scheme="brand-expressive"] {
   --table-header-background: var(--color-surface-sunken); /** Header row fill. */
   --table-row-border: var(--color-border-default); /** Line between rows. */
   --table-row-selected: var(--color-surface-selected); /** Fill of a selected row. */
+  --table-row-selected-edge: var(--color-border-selected); /** Edge that marks a selected row, beside its fill. */
   --tabs-indicator: var(--color-action-primary); /** Active tab indicator. */
   --tabs-label: var(--color-text-secondary); /** Inactive tab label. */
   --tabs-label-active: var(--color-text-primary); /** Active tab label. */
@@ -238,13 +246,17 @@ html[data-scheme="brand-expressive"][data-theme="dark"] {
   --color-text-inverse: #1F1411; /** Text on an inverse fill. */
   --color-text-on-action: #120B09; /** Text and icons on the main action's fill. */
   --color-text-link: #F59ACA; /** Links in running text. */
+  --color-text-on-danger: #1F1411; /** Text on the danger fill: its tone's main text. */
   --color-border-default: #33241F; /** Quiet edges and dividers. Decorative, so it has no contrast minimum. */
   --color-border-strong: #B5988A; /** The edge of a control people must find. */
   --color-border-focus: #F59ACA; /** The focus ring. */
+  --color-border-selected: #F59ACA; /** The edge that marks a selected item, beside its fill, so selection is never colour alone. */
   --color-action-primary: #F59ACA; /** The one main action in a view. */
   --color-action-primary-hover: #FDE4F0; /** The main action under the pointer. */
   --color-action-secondary: #1F1411; /** The fill of other actions. */
   --color-action-secondary-hover: #33241F; /** Other actions under the pointer. */
+  --color-action-danger: #F28B8B; /** The fill of a destructive commit: the confirm of a delete. */
+  --color-action-danger-hover: #F28B8B; /** The danger fill on hover. */
   --color-status-info: #8AB4F8; /** Neutral news: something changed and no action is needed. The lowest level of the urgency order. */
   --color-status-info-subtle: #062C6E; /** The fill behind info status. */
   --color-status-success: #5CC283; /** Confirmation that something worked. It sits outside the urgency order. */
@@ -317,6 +329,9 @@ html[data-scheme="brand-expressive"][data-theme="dark"] {
   --button-secondary-background-hover: var(--color-action-secondary-hover); /** Secondary button fill on hover. */
   --button-secondary-label: var(--color-text-primary); /** Secondary button label color. */
   --button-secondary-border: var(--color-border-strong); /** Secondary button border. */
+  --button-danger-background: var(--color-action-danger); /** Danger button fill. */
+  --button-danger-background-hover: var(--color-action-danger-hover); /** Danger button fill on hover. */
+  --button-danger-label: var(--color-text-on-danger); /** Danger button label color. */
   --button-ghost-background-hover: var(--color-surface-sunken); /** Ghost button fill on hover. */
   --button-ghost-label: var(--color-text-link); /** Ghost button label color. */
   --button-radius: var(--radius-control); /** Button corner radius. */
@@ -355,6 +370,7 @@ html[data-scheme="brand-expressive"][data-theme="dark"] {
   --table-header-background: var(--color-surface-sunken); /** Header row fill. */
   --table-row-border: var(--color-border-default); /** Line between rows. */
   --table-row-selected: var(--color-surface-selected); /** Fill of a selected row. */
+  --table-row-selected-edge: var(--color-border-selected); /** Edge that marks a selected row, beside its fill. */
   --tabs-indicator: var(--color-action-primary); /** Active tab indicator. */
   --tabs-label: var(--color-text-secondary); /** Inactive tab label. */
   --tabs-label-active: var(--color-text-primary); /** Active tab label. */

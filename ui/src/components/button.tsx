@@ -34,6 +34,8 @@ export const buttonVariants = cva(
           "bg-[var(--button-primary-background)] text-[var(--button-primary-label)] hover:bg-[var(--button-primary-background-hover)]",
         secondary:
           "bg-[var(--button-secondary-background)] text-[var(--button-secondary-label)] border-[length:var(--border-width-default)] border-[var(--button-secondary-border)] hover:bg-[var(--button-secondary-background-hover)]",
+        danger:
+          "bg-[var(--button-danger-background)] text-[var(--button-danger-label)] hover:bg-[var(--button-danger-background-hover)]",
         ghost: "bg-transparent text-[var(--button-ghost-label)] hover:bg-[var(--button-ghost-background-hover)]",
       },
       size: {

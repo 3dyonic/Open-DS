@@ -463,30 +463,44 @@ export function docsPages(
           })
           .join("\n\n");
   // OD-222: each fill's tone, per brand and mode, and the set that sits on it.
-  const fillTones = () =>
-    g.semantics?.tones
-      ? `\n## The tone of each fill\n\nEvery fill says whether it is light or dark. What sits on it reads that tone's set: \`color.on-light\` or \`color.on-dark\`.\n\n` +
-        perBrand((F, D) => {
-          const brand = F.brand;
-          const th = scheme.tokens.brands[brand].theme;
-          const cell = (mode, id) => {
-            const t = toneOf(th, mode, id);
-            return t
-              ? `${t.tone}${t.waits ? ` (waits for ${t.waits.for}: ${esc(t.waits.why)})` : ""}`
-              : "—";
-          };
-          return (
-            `| Fill | Light mode | Dark mode | Carries |\n| --- | --- | --- | --- |\n` +
-            g.semantics.tones.fills
-              .map(
-                (f) =>
-                  `| \`${f.id}\` | ${cell("light", f.id)} | ${cell("dark", f.id)} | ${f.carries.join(", ")} |`,
-              )
-              .join("\n")
+  const fillTones = () => {
+    const tones = g.semantics?.tones;
+    if (!tones) return "";
+    const all = tones.sets.map((x) => x.role);
+    const carries = (f) =>
+      all.every((r) => f.carries.includes(r))
+        ? "Everything"
+        : f.carries.join(", ");
+    return (
+      `\n## The tone of each fill\n\nEvery fill says whether it is light or dark. What sits on it reads that tone's set: \`color.on-light\` or \`color.on-dark\`. "Everything" means ${all.join(", ")}.\n\n` +
+      perBrand((F) => {
+        const th = scheme.tokens.brands[F.brand].theme;
+        const notes = [];
+        const cell = (mode, id) => {
+          const t = toneOf(th, mode, id);
+          if (!t) return "—";
+          if (!t.waits) return t.tone;
+          notes.push(
+            `\`${id}\` in ${mode} mode waits for ${t.waits.for}: ${esc(t.waits.why)}`,
           );
-        }) +
-        "\n"
-      : "";
+          return `${t.tone} (waits for ${t.waits.for})`;
+        };
+        const table =
+          `| Fill | Light mode | Dark mode | What sits on it |\n| --- | --- | --- | --- |\n` +
+          tones.fills
+            .map(
+              (f) =>
+                `| \`${f.id}\` | ${cell("light", f.id)} | ${cell("dark", f.id)} | ${carries(f)} |`,
+            )
+            .join("\n");
+        return (
+          table +
+          (notes.length ? `\n\n${notes.map((n) => `- ${n}`).join("\n")}` : "")
+        );
+      }) +
+      "\n"
+    );
+  };
   const primitiveRows = (paths, F = first) =>
     `| Primitive | Value | Sample |\n| --- | --- | --- |\n` +
     [...new Set(paths)]

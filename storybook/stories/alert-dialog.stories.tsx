@@ -55,7 +55,11 @@ export const Examples: Story = {
             </AlertDialogHeader>
             <AlertDialogFooter>
               <AlertDialogCancel>{s.confirm?.cancel ?? "Cancel"}</AlertDialogCancel>
-              <AlertDialogAction>{s.confirm?.confirm ?? s.actions.primary}</AlertDialogAction>
+              <AlertDialogAction asChild>
+                <Button variant={s.confirm?.destroys ? "danger" : "primary"}>
+                  {s.confirm?.confirm ?? s.actions.primary}
+                </Button>
+              </AlertDialogAction>
             </AlertDialogFooter>
           </AlertDialogContent>
         </AlertDialog>

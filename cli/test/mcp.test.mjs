@@ -316,7 +316,7 @@ test("get_context is short by default, with sections, pages and file routes (OD-
       .text;
   const button = await text({ scheme_id: "dense-data", target: "button" });
   assert.match(button, /^# button \(dense-data\)/);
-  assert.match(button, /secondary, then confirm in a dialog/);
+  assert.match(button, /secondary, then confirm in a dialog with Button danger/);
   assert.doesNotMatch(button, /#[0-9A-Fa-f]{6}\b/, "no values by default");
   assert.match(button, /More, ask by section:/);
   assert.match(button, /get_context target=button section=/);

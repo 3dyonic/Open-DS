@@ -567,8 +567,15 @@
         "confirm": {
           "type": "object",
           "additionalProperties": false,
-          "required": ["trigger", "title", "body", "confirm", "cancel"],
-          "description": "A confirm dialog for a destructive action.",
+          "required": [
+            "trigger",
+            "title",
+            "body",
+            "confirm",
+            "cancel",
+            "destroys"
+          ],
+          "description": "A confirm dialog for an action that is hard to undo.",
           "properties": {
             "trigger": {
               "type": "string",
@@ -594,6 +601,10 @@
               "type": "string",
               "minLength": 1,
               "description": "The safe button."
+            },
+            "destroys": {
+              "type": "boolean",
+              "description": "True when confirming destroys data, so the confirm is Button danger. False when it can be undone, so the confirm is Button primary (OD-222)."
             }
           }
         },

@@ -39,6 +39,7 @@ export interface Samples {
     body: string;
     confirm: string;
     cancel: string;
+    destroys: boolean;
   };
   card?: {
     title: string;

@@ -397,9 +397,21 @@
         "the motion tokens hold as many speeds as each scheme's motion.count answer; panels read their own speed",
         "the agent context carries the rule, generated from the grammar",
         "every fill states its tone, light or dark, in every brand and mode; what sits on it comes from color.on-light or color.on-dark, and keeps its contrast there",
-        "a known shortfall waits on its fill with the ticket that fixes it, and the check names it"
+        "a known shortfall waits on its fill with the ticket that fixes it, and the check names it",
+        "every focus ring keeps a 2px gap in the canvas colour from its control",
+        "a selected or current item shows an edge beside its fill, so selection is never colour alone",
+        "a danger fill, with its own label, for the confirm of a delete; primary and danger stay clearly apart in every brand and mode"
       ],
-      "checks": ["options-used", "answers-match-tokens", "semantics-guidance", "docs-build", "storybook-renders"]
+      "checks": [
+        "options-used",
+        "answers-match-tokens",
+        "semantics-guidance",
+        "focus-ring-gap",
+        "selection-not-colour-alone",
+        "danger-apart",
+        "docs-build",
+        "storybook-renders"
+      ]
     },
     {
       "id": "OD-221",
