@@ -228,7 +228,8 @@ function sample(path, type, raw) {
   if (type === "color")
     return `<span class="ods-swatch" style="background:${v}"></span>`;
   if (type === "fontFamily")
-    return `<span class="ods-font" style="font-family:${v}">Aa 123</span>`;
+    // single quotes inside: a family name in double quotes would close the attribute
+    return `<span class="ods-font" style="font-family:${String(v).replace(/"/g, "'")}">Aa 123</span>`;
   if (type === "fontWeight" || /font[.-]weight/.test(path))
     return `<span class="ods-typesample" style="font-weight:${v}">Aa</span>`;
   if (/line-height/.test(path) && type !== "dimension") return leading(v);
@@ -1484,6 +1485,50 @@ export function docsPages(
         return `| \`${x.path}\` | ${esc(value(first, x.path, x.ref))} | ${sample(x.path, x.type ?? primitiveType(x.path), x.ref)} | ${u.length ? u.map((y) => `\`${y.token}\` (${y.where})`).join("<br />") : "Not used yet"} |`;
       })
       .join("\n");
+  // A small specimen per font family (above its table): a large Aa, the alphabet and figures, the
+  // weights this scheme uses with it, the roles that read it and its fallback stack.
+  const WEIGHT = {
+    300: "Light",
+    400: "Regular",
+    500: "Medium",
+    600: "Semibold",
+    700: "Bold",
+  };
+  const specIndex = tokenIndex(scheme);
+  const fontSpecimens = (list) =>
+    `<div class="odv-fonts">${list
+      .map((x) => {
+        const stack = String(value(first, x.path, x.ref));
+        const css = stack.replace(/"/g, "'");
+        const roles = [
+          ...new Set(
+            (usedBy[x.path] ?? [])
+              .map((y) => y.token.match(/^type\.([a-z-]+)\.font-family$/)?.[1])
+              .filter(Boolean),
+          ),
+        ];
+        const weights = [
+          ...new Set(
+            roles
+              .map((r) =>
+                Number(aliasChain(specIndex, `type.${r}.font-weight`).value),
+              )
+              .filter((w) => w > 0),
+          ),
+        ].sort((a, b) => a - b);
+        return (
+          `<div class="odv-font" style="font-family:${css}">` +
+          `<div class="odv-font-top"><span class="odv-font-aa">Aa</span><span class="tok">${x.path}</span></div>` +
+          `<div class="odv-font-abc">Aa Bb Cc Dd Ee Ff Gg Hh Ii Jj Kk Ll Mm<br />0123456789 · &amp; ? !</div>` +
+          (weights.length
+            ? `<div class="odv-font-weights">${weights.map((w) => `<span style="font-weight:${w}">${WEIGHT[w] ?? w}<small>${w}</small></span>`).join("")}</div>`
+            : "") +
+          `<div class="odv-font-roles">${roles.length ? `Read by ${roles.map((r) => `<code>type.${r}.font-family</code>`).join(" ")}` : "Not used yet"}</div>` +
+          `<div class="odv-font-stack">${esc(stack)}</div>` +
+          `</div>`
+        );
+      })
+      .join("")}</div>\n\n`;
   const kinds = [
     ...PRIMITIVE_PAGES,
     {
@@ -1665,7 +1710,7 @@ export function docsPages(
         ? fams
             .map(
               (f) =>
-                `## \`${f}\`\n\n${table(k.list.filter((x) => family(x.path) === f))}`,
+                `## \`${f}\`\n\n${f === "font.family" ? fontSpecimens(k.list.filter((x) => family(x.path) === f)) : ""}${table(k.list.filter((x) => family(x.path) === f))}`,
             )
             .join("\n\n")
         : table(k.list)) +
