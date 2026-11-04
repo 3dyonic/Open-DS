@@ -637,61 +637,61 @@ Status colours go up in urgency: info, then warning, then danger. Pick the level
 
 | Token | What it is for | Not for |
 | --- | --- | --- |
-| `color.surface.canvas` | The page background behind everything. | Cards and panels on the page: `color.surface.default` |
-| `color.surface.default` | The base fill for content. | The page behind content: `color.surface.canvas`<br />Menus and popovers above content: `color.surface.raised` |
-| `color.surface.raised` | Fills that float above content. | Cards in the page flow: `color.surface.default` |
-| `color.surface.sunken` | A recessed fill, a step below content. | A selected item: `color.surface.selected` |
-| `color.surface.selected` | The fill of a selected or current item. | Hover: `color.surface.sunken`<br />The main action: `color.action.primary.@` |
-| `color.surface.inverse` | A reversed fill for small, short-lived messages. | Large areas: `color.surface.default` |
-| `color.surface.scrim` | The see-through layer behind a modal. | A solid fill: `color.surface.raised` |
-| `color.text.primary` | Body text and headings. | Text on the main action: `color.text.on-action`<br />Text on an inverse fill: `color.text.inverse` |
-| `color.text.secondary` | Supporting text. | The main content: `color.text.primary` |
-| `color.text.muted` | The quietest text. | Anything people must read to act: `color.text.secondary`<br />A disabled control: `color.disabled.text` |
-| `color.text.inverse` | Text on an inverse fill. | Text on the page: `color.text.primary` |
-| `color.text.on-light` | Text on any fill whose tone is light, in either mode: the light mode's body text. | Text on the page's own surfaces: `color.text.primary` |
-| `color.text.on-dark` | Text on any fill whose tone is dark, in either mode: white. | Text on the page's own surfaces: `color.text.primary` |
-| `color.text.info-on-light` | The label on a light info fill, such as its tint in light mode: a fixed colour from the light scale (800). | Info text on the page: `color.status.info.@` |
-| `color.text.info-on-dark` | The label on a dark info fill, such as its tint in dark mode: a fixed colour from the light scale (50). | Info text on the page: `color.status.info.@` |
-| `color.text.success-on-light` | The label on a light success fill, such as its tint in light mode: a fixed colour from the light scale (800). | Success text on the page: `color.status.success.@` |
-| `color.text.success-on-dark` | The label on a dark success fill, such as its tint in dark mode: a fixed colour from the light scale (50). | Success text on the page: `color.status.success.@` |
-| `color.text.warning-on-light` | The label on a light warning fill, such as its tint in light mode: a fixed colour from the light scale (800). | Warning text on the page: `color.status.warning.@` |
-| `color.text.warning-on-dark` | The label on a dark warning fill, such as its tint in dark mode: a fixed colour from the light scale (50). | Warning text on the page: `color.status.warning.@` |
-| `color.text.danger-on-light` | The label on a light danger fill, such as its tint in light mode: a fixed colour from the light scale (800). | Danger text on the page: `color.status.danger.@` |
-| `color.text.danger-on-dark` | The label on a dark danger fill, such as its tint in dark mode: a fixed colour from the light scale (50). | Danger text on the page: `color.status.danger.@` |
-| `color.text.on-action` | Text and icons on the main action's fill. | Text on the page: `color.text.primary` |
-| `color.text.on-danger` | Text on the danger fill: its tone's main text. | Text on the main action: `color.text.on-action` |
-| `color.text.link` | Links in running text. | Buttons: `color.action.primary.@` |
-| `color.border.default` | Quiet edges and dividers. Decorative, so it has no contrast minimum. | The edge of a control people must find: `color.border.strong` |
-| `color.border.strong` | The edge of a control people must find. | A divider: `color.border.default` |
-| `color.border.focus` | The focus ring. | A selected item: `color.surface.selected` |
-| `color.border.selected` | The edge that marks a selected item, beside its fill, so selection is never colour alone. | Keyboard focus: `color.border.focus`<br />The fill of a selected item: `color.surface.selected` |
-| `color.action.primary.@` | The one main action in a view. | A second action in the same view: `color.action.secondary.@`<br />Links in text: `color.text.link`<br />News or status: `color.status.info.@` |
-| `color.action.primary.hover` | The main action under the pointer. | The resting state: `color.action.primary.@` |
-| `color.action.secondary.@` | The fill of other actions. | The main action: `color.action.primary.@` |
-| `color.action.secondary.hover` | Other actions under the pointer. | The resting state: `color.action.secondary.@` |
-| `color.action.danger.@` | The fill of a destructive commit: the confirm of a delete. | The first step of a delete: `color.action.secondary.@`<br />An error message: `color.status.danger.@` |
-| `color.action.danger.hover` | The danger fill on hover. | The resting fill: `color.action.danger.@` |
-| `color.status.info.@` | Neutral news: something changed and no action is needed. The lowest level of the urgency order. | Something needs a check: `color.status.warning.@`<br />The main action: `color.action.primary.@`<br />The info badge label: `color.text.info-on-light` |
-| `color.status.info.subtle` | The fill behind info status. | Large page areas: `color.surface.default` |
-| `color.status.warning.@` | Caution: something may go wrong or needs a check, and it can be fixed. | An error, or an action that cannot be undone: `color.status.danger.@`<br />News that needs no action: `color.status.info.@`<br />The warning badge label: `color.text.warning-on-light` |
-| `color.status.warning.subtle` | The fill behind warning status. | Large page areas: `color.surface.default` |
-| `color.status.danger.@` | Real risk: errors, failed checks, actions that cannot be undone. The top of the urgency order. Overuse wears it out. | Caution or advice: `color.status.warning.@`<br />Getting attention: `color.status.info.@`<br />The danger badge label: `color.text.danger-on-light` |
-| `color.status.danger.subtle` | The fill behind danger status. | Large page areas: `color.surface.default` |
-| `color.status.success.@` | Confirmation that something worked. It sits outside the urgency order. | The main action: `color.action.primary.@`<br />Brand colour: `color.action.primary.@`<br />The success badge label: `color.text.success-on-light` |
-| `color.status.success.subtle` | The fill behind success status. | Large page areas: `color.surface.default` |
-| `color.category.1.@` | Category 1: tells one item or series from another. It carries no meaning. | Status or risk: `color.status.warning.@`<br />Tag text: `color.text.primary` |
-| `color.category.1.subtle` | Category 1: the fill of a tag. | A status badge: `color.status.info.subtle` |
-| `color.category.2.@` | Category 2: tells one item or series from another. It carries no meaning. | Status or risk: `color.status.warning.@`<br />Tag text: `color.text.primary` |
-| `color.category.2.subtle` | Category 2: the fill of a tag. | A status badge: `color.status.info.subtle` |
-| `color.category.3.@` | Category 3: tells one item or series from another. It carries no meaning. | Status or risk: `color.status.warning.@`<br />Tag text: `color.text.primary` |
-| `color.category.3.subtle` | Category 3: the fill of a tag. | A status badge: `color.status.info.subtle` |
-| `color.category.4.@` | Category 4: tells one item or series from another. It carries no meaning. | Status or risk: `color.status.warning.@`<br />Tag text: `color.text.primary` |
-| `color.category.4.subtle` | Category 4: the fill of a tag. | A status badge: `color.status.info.subtle` |
-| `color.category.5.@` | Category 5: tells one item or series from another. It carries no meaning. | Status or risk: `color.status.warning.@`<br />Tag text: `color.text.primary` |
-| `color.category.5.subtle` | Category 5: the fill of a tag. | A status badge: `color.status.info.subtle` |
-| `color.disabled.text` | Text and icons of a control that cannot be used right now. | Quiet text that still works: `color.text.muted` |
-| `color.disabled.surface` | The fill of a control that cannot be used right now. | A quiet fill that still works: `color.surface.sunken` |
-| `color.disabled.border` | The edge of a control that cannot be used right now. | An enabled control: `color.border.strong` |
+| <span id="for-color-surface-canvas"></span>`color.surface.canvas` | The page background behind everything. | Cards and panels on the page: `color.surface.default` |
+| <span id="for-color-surface-default"></span>`color.surface.default` | The base fill for content. | The page behind content: `color.surface.canvas`<br />Menus and popovers above content: `color.surface.raised` |
+| <span id="for-color-surface-raised"></span>`color.surface.raised` | Fills that float above content. | Cards in the page flow: `color.surface.default` |
+| <span id="for-color-surface-sunken"></span>`color.surface.sunken` | A recessed fill, a step below content. | A selected item: `color.surface.selected` |
+| <span id="for-color-surface-selected"></span>`color.surface.selected` | The fill of a selected or current item. | Hover: `color.surface.sunken`<br />The main action: `color.action.primary.@` |
+| <span id="for-color-surface-inverse"></span>`color.surface.inverse` | A reversed fill for small, short-lived messages. | Large areas: `color.surface.default` |
+| <span id="for-color-surface-scrim"></span>`color.surface.scrim` | The see-through layer behind a modal. | A solid fill: `color.surface.raised` |
+| <span id="for-color-text-primary"></span>`color.text.primary` | Body text and headings. | Text on the main action: `color.text.on-action`<br />Text on an inverse fill: `color.text.inverse` |
+| <span id="for-color-text-secondary"></span>`color.text.secondary` | Supporting text. | The main content: `color.text.primary` |
+| <span id="for-color-text-muted"></span>`color.text.muted` | The quietest text. | Anything people must read to act: `color.text.secondary`<br />A disabled control: `color.disabled.text` |
+| <span id="for-color-text-inverse"></span>`color.text.inverse` | Text on an inverse fill. | Text on the page: `color.text.primary` |
+| <span id="for-color-text-on-light"></span>`color.text.on-light` | Text on any fill whose tone is light, in either mode: the light mode's body text. | Text on the page's own surfaces: `color.text.primary` |
+| <span id="for-color-text-on-dark"></span>`color.text.on-dark` | Text on any fill whose tone is dark, in either mode: white. | Text on the page's own surfaces: `color.text.primary` |
+| <span id="for-color-text-info-on-light"></span>`color.text.info-on-light` | The label on a light info fill, such as its tint in light mode: a fixed colour from the light scale (800). | Info text on the page: `color.status.info.@` |
+| <span id="for-color-text-info-on-dark"></span>`color.text.info-on-dark` | The label on a dark info fill, such as its tint in dark mode: a fixed colour from the light scale (50). | Info text on the page: `color.status.info.@` |
+| <span id="for-color-text-success-on-light"></span>`color.text.success-on-light` | The label on a light success fill, such as its tint in light mode: a fixed colour from the light scale (800). | Success text on the page: `color.status.success.@` |
+| <span id="for-color-text-success-on-dark"></span>`color.text.success-on-dark` | The label on a dark success fill, such as its tint in dark mode: a fixed colour from the light scale (50). | Success text on the page: `color.status.success.@` |
+| <span id="for-color-text-warning-on-light"></span>`color.text.warning-on-light` | The label on a light warning fill, such as its tint in light mode: a fixed colour from the light scale (800). | Warning text on the page: `color.status.warning.@` |
+| <span id="for-color-text-warning-on-dark"></span>`color.text.warning-on-dark` | The label on a dark warning fill, such as its tint in dark mode: a fixed colour from the light scale (50). | Warning text on the page: `color.status.warning.@` |
+| <span id="for-color-text-danger-on-light"></span>`color.text.danger-on-light` | The label on a light danger fill, such as its tint in light mode: a fixed colour from the light scale (800). | Danger text on the page: `color.status.danger.@` |
+| <span id="for-color-text-danger-on-dark"></span>`color.text.danger-on-dark` | The label on a dark danger fill, such as its tint in dark mode: a fixed colour from the light scale (50). | Danger text on the page: `color.status.danger.@` |
+| <span id="for-color-text-on-action"></span>`color.text.on-action` | Text and icons on the main action's fill. | Text on the page: `color.text.primary` |
+| <span id="for-color-text-on-danger"></span>`color.text.on-danger` | Text on the danger fill: its tone's main text. | Text on the main action: `color.text.on-action` |
+| <span id="for-color-text-link"></span>`color.text.link` | Links in running text. | Buttons: `color.action.primary.@` |
+| <span id="for-color-border-default"></span>`color.border.default` | Quiet edges and dividers. Decorative, so it has no contrast minimum. | The edge of a control people must find: `color.border.strong` |
+| <span id="for-color-border-strong"></span>`color.border.strong` | The edge of a control people must find. | A divider: `color.border.default` |
+| <span id="for-color-border-focus"></span>`color.border.focus` | The focus ring. | A selected item: `color.surface.selected` |
+| <span id="for-color-border-selected"></span>`color.border.selected` | The edge that marks a selected item, beside its fill, so selection is never colour alone. | Keyboard focus: `color.border.focus`<br />The fill of a selected item: `color.surface.selected` |
+| <span id="for-color-action-primary"></span>`color.action.primary.@` | The one main action in a view. | A second action in the same view: `color.action.secondary.@`<br />Links in text: `color.text.link`<br />News or status: `color.status.info.@` |
+| <span id="for-color-action-primary-hover"></span>`color.action.primary.hover` | The main action under the pointer. | The resting state: `color.action.primary.@` |
+| <span id="for-color-action-secondary"></span>`color.action.secondary.@` | The fill of other actions. | The main action: `color.action.primary.@` |
+| <span id="for-color-action-secondary-hover"></span>`color.action.secondary.hover` | Other actions under the pointer. | The resting state: `color.action.secondary.@` |
+| <span id="for-color-action-danger"></span>`color.action.danger.@` | The fill of a destructive commit: the confirm of a delete. | The first step of a delete: `color.action.secondary.@`<br />An error message: `color.status.danger.@` |
+| <span id="for-color-action-danger-hover"></span>`color.action.danger.hover` | The danger fill on hover. | The resting fill: `color.action.danger.@` |
+| <span id="for-color-status-info"></span>`color.status.info.@` | Neutral news: something changed and no action is needed. The lowest level of the urgency order. | Something needs a check: `color.status.warning.@`<br />The main action: `color.action.primary.@`<br />The info badge label: `color.text.info-on-light` |
+| <span id="for-color-status-info-subtle"></span>`color.status.info.subtle` | The fill behind info status. | Large page areas: `color.surface.default` |
+| <span id="for-color-status-warning"></span>`color.status.warning.@` | Caution: something may go wrong or needs a check, and it can be fixed. | An error, or an action that cannot be undone: `color.status.danger.@`<br />News that needs no action: `color.status.info.@`<br />The warning badge label: `color.text.warning-on-light` |
+| <span id="for-color-status-warning-subtle"></span>`color.status.warning.subtle` | The fill behind warning status. | Large page areas: `color.surface.default` |
+| <span id="for-color-status-danger"></span>`color.status.danger.@` | Real risk: errors, failed checks, actions that cannot be undone. The top of the urgency order. Overuse wears it out. | Caution or advice: `color.status.warning.@`<br />Getting attention: `color.status.info.@`<br />The danger badge label: `color.text.danger-on-light` |
+| <span id="for-color-status-danger-subtle"></span>`color.status.danger.subtle` | The fill behind danger status. | Large page areas: `color.surface.default` |
+| <span id="for-color-status-success"></span>`color.status.success.@` | Confirmation that something worked. It sits outside the urgency order. | The main action: `color.action.primary.@`<br />Brand colour: `color.action.primary.@`<br />The success badge label: `color.text.success-on-light` |
+| <span id="for-color-status-success-subtle"></span>`color.status.success.subtle` | The fill behind success status. | Large page areas: `color.surface.default` |
+| <span id="for-color-category-1"></span>`color.category.1.@` | Category 1: tells one item or series from another. It carries no meaning. | Status or risk: `color.status.warning.@`<br />Tag text: `color.text.primary` |
+| <span id="for-color-category-1-subtle"></span>`color.category.1.subtle` | Category 1: the fill of a tag. | A status badge: `color.status.info.subtle` |
+| <span id="for-color-category-2"></span>`color.category.2.@` | Category 2: tells one item or series from another. It carries no meaning. | Status or risk: `color.status.warning.@`<br />Tag text: `color.text.primary` |
+| <span id="for-color-category-2-subtle"></span>`color.category.2.subtle` | Category 2: the fill of a tag. | A status badge: `color.status.info.subtle` |
+| <span id="for-color-category-3"></span>`color.category.3.@` | Category 3: tells one item or series from another. It carries no meaning. | Status or risk: `color.status.warning.@`<br />Tag text: `color.text.primary` |
+| <span id="for-color-category-3-subtle"></span>`color.category.3.subtle` | Category 3: the fill of a tag. | A status badge: `color.status.info.subtle` |
+| <span id="for-color-category-4"></span>`color.category.4.@` | Category 4: tells one item or series from another. It carries no meaning. | Status or risk: `color.status.warning.@`<br />Tag text: `color.text.primary` |
+| <span id="for-color-category-4-subtle"></span>`color.category.4.subtle` | Category 4: the fill of a tag. | A status badge: `color.status.info.subtle` |
+| <span id="for-color-category-5"></span>`color.category.5.@` | Category 5: tells one item or series from another. It carries no meaning. | Status or risk: `color.status.warning.@`<br />Tag text: `color.text.primary` |
+| <span id="for-color-category-5-subtle"></span>`color.category.5.subtle` | Category 5: the fill of a tag. | A status badge: `color.status.info.subtle` |
+| <span id="for-color-disabled-text"></span>`color.disabled.text` | Text and icons of a control that cannot be used right now. | Quiet text that still works: `color.text.muted` |
+| <span id="for-color-disabled-surface"></span>`color.disabled.surface` | The fill of a control that cannot be used right now. | A quiet fill that still works: `color.surface.sunken` |
+| <span id="for-color-disabled-border"></span>`color.disabled.border` | The edge of a control that cannot be used right now. | An enabled control: `color.border.strong` |
 
 ## Pairs at a glance
 

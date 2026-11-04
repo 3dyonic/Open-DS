@@ -29,7 +29,8 @@ function useHtmlScheme() {
 /** This Storybook shows every Open DS scheme, so its introduction first says what Open DS is (OD-216). */
 export const ABOUT_OPEN_DS: { schemes: number } | null = { schemes: Object.keys(SCHEMES).length };
 
-export function useGuideData(): { scheme: any; grammar: any; key: string } {
+/** The guide's data, the same shape in this Storybook and in a created project's (OD-223). */
+export function useGuideData(): { scheme: any; grammar: any; key: string; brand: string; mode: "light" | "dark" } {
   const ctx = useContext(SchemeContext);
   const html = useHtmlScheme();
   // Inside a story the decorator's choice is the source; on a docs page, <html> is.
@@ -37,5 +38,12 @@ export function useGuideData(): { scheme: any; grammar: any; key: string } {
   const id = story ? ctx.scheme : html.scheme;
   const brand = story ? ctx.brand : html.brand;
   const mode = story ? ctx.mode : html.dark ? "dark" : "light";
-  return { scheme: SCHEMES[id] ?? SCHEMES["dense-data"], grammar, key: `${id}|${brand ?? ""}|${mode}` };
+  const scheme = SCHEMES[id] ?? SCHEMES["dense-data"];
+  return {
+    scheme,
+    grammar,
+    key: `${id}|${brand ?? ""}|${mode}`,
+    brand: brand && scheme.tokens.brands[brand] ? brand : Object.keys(scheme.tokens.brands)[0],
+    mode: mode === "dark" ? "dark" : "light",
+  };
 }

@@ -20,10 +20,15 @@ Accessible first ships 2 themes: light, dark. Only semantic tokens change betwee
 
 ## Key colors in each theme
 
+The page, its main surface and text, the main action at rest and on hover, and the focus ring: the colours that show a theme at a glance. Each shows the primitive it points at, then its value.
+
+- the neutral is `gray` (pure). A pure gray adds no hue that could lower contrast or carry a meaning.
+
 | Token | light | dark |
 | --- | --- | --- |
-| `color.surface.canvas` | #F7F7F7 | #0A0A0A |
-| `color.surface.default` | #FFFFFF | #141414 |
-| `color.text.primary` | #141414 | #F7F7F7 |
-| `color.action.primary` | #0B4FC0 #013895 | #8AB4F8 #A7C8FC |
-| `color.border.focus` | #0B4FC0 | #8AB4F8 |
+| `color.surface.canvas` | <span class="odv-tc"><i style="background:#F7F7F7;color:#000000">Aa</i><span><code>gray.light.50</code><small>via neutral.50 · #F7F7F7</small></span></span> | <span class="odv-tc"><i style="background:#0A0A0A;color:#FFFFFF">Aa</i><span><code>gray.dark.0</code><small>via neutral.0 · #0A0A0A</small></span></span> |
+| `color.surface.default` | <span class="odv-tc"><i style="background:#FFFFFF;color:#000000">Aa</i><span><code>gray.light.0</code><small>via neutral.0 · #FFFFFF</small></span></span> | <span class="odv-tc"><i style="background:#141414;color:#FFFFFF">Aa</i><span><code>gray.dark.50</code><small>via neutral.50 · #141414</small></span></span> |
+| `color.text.primary` | <span class="odv-tc"><i style="background:#141414;color:#FFFFFF">Aa</i><span><code>gray.light.900</code><small>via neutral.900 · #141414</small></span></span> | <span class="odv-tc"><i style="background:#F7F7F7;color:#000000">Aa</i><span><code>gray.dark.900</code><small>via neutral.900 · #F7F7F7</small></span></span> |
+| `color.action.primary` | <span class="odv-tc"><i style="background:#0B4FC0;color:#FFFFFF">Aa</i><span><code>blue.light.600</code><small>#0B4FC0</small></span></span> | <span class="odv-tc"><i style="background:#8AB4F8;color:#000000">Aa</i><span><code>blue.dark.600</code><small>#8AB4F8</small></span></span> |
+| `color.action.primary.hover` | <span class="odv-tc"><i style="background:#013895;color:#FFFFFF">Aa</i><span><code>blue.light.700</code><small>#013895</small></span></span> | <span class="odv-tc"><i style="background:#A7C8FC;color:#000000">Aa</i><span><code>blue.dark.700</code><small>#A7C8FC</small></span></span> |
+| `color.border.focus` | <span class="odv-tc"><i style="background:#0B4FC0;color:#FFFFFF">Aa</i><span><code>blue.light.600</code><small>#0B4FC0</small></span></span> | <span class="odv-tc"><i style="background:#8AB4F8;color:#000000">Aa</i><span><code>blue.dark.600</code><small>#8AB4F8</small></span></span> |

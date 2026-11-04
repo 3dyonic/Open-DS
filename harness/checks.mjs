@@ -1994,7 +1994,7 @@ export const CHECKS = {
           ["index.md", "odv-tile"],
           ["foundations/color.md", "odv-band"],
           ["foundations/color.md", "odv-stack"],
-          ["primitives/color.md", "odv-ramp"],
+          ["primitives/color.md", "odv-scale"],
           ["components/button.md", "odv-variant"],
           ["components/button.md", "odv-trail"],
         ];
