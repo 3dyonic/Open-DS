@@ -1,8 +1,8 @@
 import type { StorybookConfig } from "@storybook/react-vite";
 import tailwindcss from "@tailwindcss/vite";
-import { consentScript } from "../../analytics/consent.mjs";
+import { consentScript } from "../../scripts/consent.mjs";
 
-// Google Tag Manager, only with consent, the same choice as the website's (analytics/consent.mjs).
+// Google Tag Manager, only with consent, the same choice as the website's (scripts/consent.mjs).
 // Empty without NEXT_PUBLIC_GTM_ID at build time: no banner, nothing loads from Google.
 const consent = consentScript();
 
