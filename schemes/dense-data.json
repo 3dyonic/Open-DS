@@ -3978,10 +3978,11 @@
         }
       },
       "component-spacing-map": {
-        "$description": "The steps components space by: space.unit (4px) × a multiplier × this scheme's rhythm, rounded to a multiple of 4px, at most 64px. The hairline is a fixed 2px.",
+        "$description": "The steps components space by: space.unit (4px) × a multiplier × this scheme's rhythm, rounded to a multiple of 4px, at most 64px. The scheme decides which steps hold still: here x1 and x2, the fine spacing inside rows. The hairline is a fixed 2px.",
         "$extensions": {
           "open-ds": {
-            "rhythm": 1
+            "rhythm": 1,
+            "fixed": ["x1", "x2"]
           }
         },
         "hairline": {
