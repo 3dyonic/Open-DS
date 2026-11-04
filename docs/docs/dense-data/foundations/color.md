@@ -328,15 +328,15 @@ Which colour may sit on which fill, and the contrast it keeps there in every bra
 
 ## The tone of each fill
 
-Every fill says whether it is light or dark. What sits on it reads that tone's set: `color.on-light` or `color.on-dark`.
+Every fill says whether it is light or dark. What sits on it reads that tone's set: `color.on-light` or `color.on-dark`. "Everything" means text.primary, text.secondary, text.muted, link, icon, border, focus.
 
-| Fill | Light mode | Dark mode | Carries |
+| Fill | Light mode | Dark mode | What sits on it |
 | --- | --- | --- | --- |
-| `color.surface.canvas` | light | dark | text.primary, text.secondary, text.muted, link, icon, border, focus |
-| `color.surface.default` | light | dark | text.primary, text.secondary, text.muted, link, icon, border, focus |
-| `color.surface.raised` | light | dark | text.primary, text.secondary, text.muted, link, icon, border, focus |
-| `color.surface.sunken` | light | dark | text.primary, text.secondary, text.muted, link, icon, border, focus |
-| `color.surface.selected` | light | dark | text.primary, text.secondary, text.muted, link, icon, border, focus |
+| `color.surface.canvas` | light | dark | Everything |
+| `color.surface.default` | light | dark | Everything |
+| `color.surface.raised` | light | dark | Everything |
+| `color.surface.sunken` | light | dark | Everything |
+| `color.surface.selected` | light | dark | Everything |
 | `color.surface.inverse` | dark | light | text.primary, icon, focus |
 | `color.action.primary.@` | dark | light | text.primary |
 | `color.action.primary.hover` | dark | light | text.primary |

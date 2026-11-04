@@ -438,7 +438,7 @@ export function FoundationsColor() {
         <Why s={s} scope="color" />
         {groups.map(([g, node]) => (
           <div key={g}>
-            <h2 style={{ textTransform: "capitalize" }}>{g}</h2>
+            <h2 style={{ textTransform: "capitalize" }}>{g.replace(/-/g, " ")}</h2>
             <div className="grid4">
               {leaves(node, ["color", g]).map((t) => (
                 <div key={t.path} className="sw" title={t.description}>
