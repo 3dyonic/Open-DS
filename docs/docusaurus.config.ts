@@ -2,7 +2,7 @@ import type { Config } from "@docusaurus/types";
 import type * as Preset from "@docusaurus/preset-classic";
 import { readFileSync } from "node:fs";
 import { themes as prismThemes } from "prism-react-renderer";
-import { consentScript } from "../analytics/consent.mjs";
+import { consentScript } from "../scripts/consent.mjs";
 
 // The repo's docs: every Open DS scheme in one site (OD-207), the way the repo Storybook shows every
 // scheme. scripts/generate.mjs writes docs/<scheme>/ for each one, its tokens scoped to its own pages
@@ -14,7 +14,7 @@ const STORYBOOK = process.env.STORYBOOK_URL ?? "http://localhost:6006";
 // Where the site lives (OD-210): "/" locally, "/docs/" on open-ds.dev, next to /storybook/.
 const BASE = process.env.DOCS_BASE_URL ?? "/";
 const ids = JSON.stringify(schemes.map((s) => s.id));
-// Google Tag Manager, only with consent, the same choice as the website's (analytics/consent.mjs).
+// Google Tag Manager, only with consent, the same choice as the website's (scripts/consent.mjs).
 // Empty without NEXT_PUBLIC_GTM_ID at build time: no banner, nothing loads from Google.
 const consent = consentScript();
 
