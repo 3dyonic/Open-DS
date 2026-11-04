@@ -2,13 +2,14 @@
 // Docusaurus. The docs site (docs/) and `open-ds init --docs` both use this, so a team that takes
 // a scheme gets the same pages Open DS builds.
 
-import { cssName, semanticView, themeTokens } from "./tokens.mjs";
+import { cssName, flatTokens, semanticView, themeTokens } from "./tokens.mjs";
 import { existsSync, readFileSync, readdirSync } from "node:fs";
 import { join } from "node:path";
 import { questions } from "./schemes.mjs";
 import { SHADCN, SHADCN_SCALE } from "./shadcn.mjs";
 import { pairsIn, sitsOn, toneOf, toneRole } from "./tones.mjs";
 import { LANES, follow, laneOf, scaleMap } from "./scale-map.mjs";
+import { aliasChain, tokenIndex } from "./lands.mjs";
 import { componentGuide, followers } from "./component.mjs";
 
 // Which component keys each shipped component reads.
@@ -1684,6 +1685,42 @@ export function docsPages(
     [/variant=destructive/, "destructive"],
     [/placeholder/, ""],
   ];
+  // A component's own tokens by their CSS name (OD-234): --accordion-trigger-padding-y →
+  // component.accordion.trigger.padding-y, with what each aliases.
+  const compByCss = new Map();
+  for (const [p, tok] of flatTokens(scheme.tokens.component ?? {}))
+    compByCss.set(cssName(p), {
+      path: `component.${p}`,
+      alias: String(tok.$value).replace(/^\{|\}$/g, ""),
+    });
+  const NAMES = {
+    "padding-y": "Padding, top and bottom",
+    "padding-x": "Padding, left and right",
+    "padding-bottom": "Padding, bottom",
+    "padding-top": "Padding, top",
+    "font-size": "Text size",
+    "font-weight": "Weight",
+    radius: "Corner",
+    gap: "Gap",
+    size: "Size",
+    duration: "Speed",
+    opacity: "Opacity",
+    width: "Width",
+    label: "Text",
+    background: "Fill",
+  };
+  const human = (x) =>
+    NAMES[x] ?? x.charAt(0).toUpperCase() + x.slice(1).replaceAll("-", " ");
+  // the part of the component a token belongs to, and its name there: trigger.padding-y → Trigger ·
+  // Padding, top and bottom; icon.@ (a color) → Icon · Color; divider → Accordion · Divider
+  const anatomyOf = (path, comp, alias) => {
+    const seg = path.replace(`component.${comp}.`, "").split(".");
+    const kind = alias.startsWith("color.") ? "Color" : "Value";
+    if (seg.length === 1) return { group: title(comp), name: human(seg[0]) };
+    if (seg.at(-1) === "@")
+      return { group: human(seg.slice(0, -1).join(" ")), name: kind };
+    return { group: human(seg[0]), name: human(seg.slice(1).join(" ")) };
+  };
   const readsOf = (name) => {
     const file = join(roots.ui, "components", `${name}.tsx`);
     if (!existsSync(file)) return [];
@@ -1705,9 +1742,26 @@ export function docsPages(
       const util = cur.replace(/^!/, "").replace(/\/\d+$/, "");
       const states = segs;
       let row;
-      const color = util.match(
-        /^(bg|text|border(?:-[tblrxy])?|ring-offset|ring|outline|fill|stroke|divide|placeholder|caret|accent|decoration)-([a-z0-9-]+)$/,
-      );
+      const own = util.match(/var\(--([a-z0-9-]+)\)/);
+      const comp = own && compByCss.get(own[1]);
+      if (comp) {
+        const a = anatomyOf(comp.path, name, comp.alias);
+        row = {
+          part: a.name,
+          group: a.group,
+          variable: own[1],
+          own: true,
+          alias: comp.alias,
+          cls: util,
+          lookup: comp.path,
+          path: comp.path,
+        };
+      }
+      const color =
+        !row &&
+        util.match(
+          /^(bg|text|border(?:-[tblrxy])?|ring-offset|ring|outline|fill|stroke|divide|placeholder|caret|accent|decoration)-([a-z0-9-]+)$/,
+        );
       if (color && SHADCN[color[2]])
         row = {
           part: PART[color[1]],
@@ -1739,15 +1793,15 @@ export function docsPages(
             token: SHADCN_SCALE[key].replace(/^var\(--(.+)\)$/, "$1"),
           };
       }
-      if (!row || !tokenPaths[row.token]) continue;
+      if (!row || (!row.own && !tokenPaths[row.token])) continue;
       const when = states
         .map((st) => WHEN.find(([re]) => re.test(st))?.[1])
         .filter(Boolean);
       row.when = [...new Set(when)].join(", ");
       row.cls = row.cls ?? util;
       // The lookup keeps a base's @; the page shows the token without it.
-      row.lookup = tokenPaths[row.token];
-      row.path = row.lookup.replace(/\.@$/, "");
+      row.lookup = row.lookup ?? tokenPaths[row.token];
+      row.path = row.path ?? row.lookup.replace(/\.@$/, "");
       const k = `${row.part}|${row.path}|${row.when}`;
       if (!rows.has(k)) rows.set(k, row);
     }
@@ -1779,9 +1833,22 @@ export function docsPages(
   const brandName = (b) => scheme.tokens.brands?.[b]?.label ?? b;
   const themeLabel = (t) =>
     `${Object.keys(scheme.tokens.brands ?? {}).length > 1 ? `${brandName(t.brand)} ` : ""}${t.mode.charAt(0).toUpperCase()}${t.mode.slice(1)}`;
+  // own tokens resolve through the theme's alias chain (cli/src/lands.mjs), the same one get_scales uses
+  const themeIx = {};
+  const ownEnd = (row, t) => {
+    themeIx[t.id] ??= tokenIndex(scheme, {
+      brand: t.brand ?? Object.keys(scheme.tokens.brands)[0],
+      mode: t.mode ?? t.id,
+    });
+    const ch = aliasChain(themeIx[t.id], row.path);
+    return { raw: String(cssValue(ch.value) ?? ""), prim: ch.end };
+  };
   const readCell = (row, t) => {
-    const raw = String(value(t, row.lookup, ""));
-    const prim = primitiveOf(t, row.lookup)?.replace(/^color\./, "") ?? "";
+    const own = row.own ? ownEnd(row, t) : null;
+    const raw = own ? own.raw : String(value(t, row.lookup, ""));
+    const prim =
+      (own ? own.prim : primitiveOf(t, row.lookup))?.replace(/^color\./, "") ??
+      "";
     const hex = raw.match(/#[0-9a-f]{6,8}/i)?.[0];
     const shown =
       `${attr(prim)}${prim && raw ? " · " : ""}${attr(row.part === "Shadow" ? "" : raw)}`.replace(
@@ -1796,6 +1863,31 @@ export function docsPages(
       return `<span class="odv-tsw"><i style="background:${hex}"></i><small>${shown}</small></span>`;
     return `<span class="odv-tsw"><small>${shown}</small></span>`;
   };
+  // own tokens in the order the component defines them, grouped by part; system reads after
+  const compOrder = [...compByCss.values()].map((x) => x.path);
+  const orderRows = (rows) => {
+    if (!rows.some((r) => r.own)) return rows;
+    const groups = [
+      ...new Set(
+        rows
+          .filter((r) => r.own)
+          .sort((a, b) => compOrder.indexOf(a.path) - compOrder.indexOf(b.path))
+          .map((r) => r.group),
+      ),
+    ];
+    return [
+      ...groups.flatMap((g) =>
+        rows
+          .filter((r) => r.own && r.group === g)
+          .sort(
+            (a, b) => compOrder.indexOf(a.path) - compOrder.indexOf(b.path),
+          ),
+      ),
+      ...rows
+        .filter((r) => !r.own)
+        .map((r) => ({ ...r, group: "From the system" })),
+    ];
+  };
   const tokensRead = (name) => {
     const rows = readsOf(name);
     if (!rows.length)
@@ -1803,25 +1895,58 @@ export function docsPages(
     const ths = scheme.themes;
     const tokens = new Set(rows.map((r) => r.path)).size;
     return (
-      `## Tokens it reads\n\n${title(name)} reads ${tokens} of ${esc(scheme.name)}'s tokens. Each row follows one part of the component from its class to the value it ends at, in every theme. Change a token in the scheme and every component that reads it follows.\n\n` +
-      h(
-        `<div class="odv-tscroll"><table class="odv-ttable odv-reads"><thead><tr><th>Part</th><th>From the class to the token</th>${ths.map((t) => `<th>${attr(themeLabel(t))}</th>`).join("")}</tr></thead><tbody>`,
-        rows.map((r) => {
-          const cells = ths.map((t) => readCell(r, t));
-          const same = cells.every((c) => c === cells[0]);
-          return (
-            `<tr><td><b>${attr(r.part)}</b>${r.when ? `<br/><small>${attr(r.when)}</small>` : ""}</td>` +
-            `<td><span class="odv-chain"><span>${attr(r.cls)}</span><i>→</i><span>--${attr(r.variable)}</span><i>→</i><span class="tok">${attr(r.path)}</span></span></td>` +
-            (same && ths.length > 1
-              ? `<td colspan="${ths.length}">${cells[0].replace("</small>", ", every theme</small>")}</td>`
-              : cells.map((c) => `<td>${c}</td>`).join("")) +
-            `</tr>`
-          );
-        }),
-        `</tbody></table></div>`,
-      )
+      `## Tokens it reads\n\n${
+        rows.some((r) => r.own)
+          ? `${title(name)} reads ${new Set(rows.filter((r) => r.own).map((r) => r.path)).size} tokens of its own, each an alias of a semantic token. Each row is one part: its own token, the semantic it aliases, and the value it ends at. A row marked Themeable changes between light and dark. Change a semantic and every component that reads it follows; override one of ${title(name)}'s tokens to change ${title(name)} alone.`
+          : `${title(name)} reads ${tokens} of ${esc(scheme.name)}'s tokens. Each row follows one part of the component from its class to the value it ends at, in every theme. Change a token in the scheme and every component that reads it follows.`
+      }\n\n` +
+      (rows.some((r) => r.own) ? ownTable(rows, ths) : classTable(rows, ths))
     );
   };
+  // A component with its own tokens (OD-234): Part · its token → the semantic, with the CSS variable
+  // under it · one Value column. Colors show each theme side by side; everything else has one value.
+  const ownTable = (rows, ths) =>
+    h(
+      `<div class="odv-tscroll"><table class="odv-ttable odv-reads odv-api"><thead><tr><th>Part</th><th>Its token and the semantic it aliases</th><th>Value</th></tr></thead><tbody>`,
+      orderRows(rows).map((r, i, all) => {
+        const cells = ths.map((t) => readCell(r, t));
+        const same = cells.every((c) => c === cells[0]);
+        const head =
+          r.group && r.group !== all[i - 1]?.group
+            ? `<tr class="odv-vgroup"><td colspan="3">${attr(r.group)}</td></tr>`
+            : "";
+        const chain = r.own
+          ? `<span class="odv-api-tok"><span class="tok own">${attr(r.path.replace(/\.@$/, ""))}</span><span class="odv-branch"><span class="tok">${attr(r.alias.replace(/\.@$/, ""))}</span></span><span class="odv-branch odv-branch-css odv-branch-last"><code>var(--${attr(r.variable)})</code></span></span>`
+          : `<span class="odv-chain"><span class="tok">${attr(r.path)}</span></span><br/><small class="odv-css">straight from the system, through <code>--${attr(r.variable)}</code></small>`;
+        const value = same
+          ? cells[0]
+          : `<span class="odv-vpair">${ths.map((t, j) => `<span><em>${attr(themeLabel(t))}</em>${cells[j]}</span>`).join("")}</span>`;
+        return (
+          head +
+          `<tr><td><b>${attr(r.part)}</b>${same ? "" : `<br/><span class="odv-themed" title="Its value changes between light and dark">Themeable</span>`}${r.when ? `<br/><small>${attr(r.when)}</small>` : ""}</td><td>${chain}</td><td>${value}</td></tr>`
+        );
+      }),
+      `</tbody></table></div>`,
+    );
+  // A component that reads system tokens straight through its classes: Part · class → variable → token ·
+  // a column per theme.
+  const classTable = (rows, ths) =>
+    h(
+      `<div class="odv-tscroll"><table class="odv-ttable odv-reads"><thead><tr><th>Part</th><th>From the class to the token</th>${ths.map((t) => `<th>${attr(themeLabel(t))}</th>`).join("")}</tr></thead><tbody>`,
+      rows.map((r) => {
+        const cells = ths.map((t) => readCell(r, t));
+        const same = cells.every((c) => c === cells[0]);
+        return (
+          `<tr><td><b>${attr(r.part)}</b>${r.when ? `<br/><small>${attr(r.when)}</small>` : ""}</td>` +
+          `<td><span class="odv-chain"><span>${attr(r.cls)}</span><i>→</i><span>--${attr(r.variable)}</span><i>→</i><span class="tok">${attr(r.path)}</span></span></td>` +
+          (same && ths.length > 1
+            ? `<td colspan="${ths.length}">${cells[0].replace("</small>", ", every theme</small>")}</td>`
+            : cells.map((c) => `<td>${c}</td>`).join("")) +
+          `</tr>`
+        );
+      }),
+      `</tbody></table></div>`,
+    );
 
   // Components
   pages["components/_category_.json"] =
@@ -2141,7 +2266,7 @@ export function docsPages(
         `The component reads only component keys and semantic tokens, so it follows the brand and mode on \`<html>\`.`,
     );
     parts.push(
-      keys.length
+      keys.length && !readsOf(name).some((r) => r.own)
         ? `## Component keys\n\nThe CSS variable is the key with \`/\` replaced by \`-\` and the base \`@\` dropped. Each key points to a token; values live only on primitives.\n\n` +
             perBrand(
               (F, D) =>

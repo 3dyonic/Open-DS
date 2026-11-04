@@ -66,54 +66,8 @@ npx open-ds add tooltip
 
 The component reads only component keys and semantic tokens, so it follows the brand and mode on `<html>`.
 
-## Component keys
+## Tokens it reads
 
-The CSS variable is the key with `/` replaced by `-` and the base `@` dropped. Each key points to a token; values live only on primitives.
+Tooltip reads 2 tokens of its own, each an alias of a semantic token. Each row is one part: its own token, the semantic it aliases, and the value it ends at. A row marked Themeable changes between light and dark. Change a semantic and every component that reads it follows; override one of Tooltip's tokens to change Tooltip alone.
 
-<div class="odv-brandset" data-for-brand="aster">
-
-<p class="odv-brandname">Aster</p>
-
-| Key | What it controls | Points to, aster-light | Points to, aster-dark |
-| --- | --- | --- | --- |
-| `overlay/background` | Fill of a dialog, menu or toast. | `color.surface.raised` → `aster.theme.light.color.surface.raised` → `color.neutral.0` → `aster.theme.light.color.neutral.0` → `color.slate-deep.light.0` | `color.surface.raised` → `aster.theme.dark.color.surface.raised` → `color.neutral.100` → `aster.theme.dark.color.neutral.100` → `color.slate-deep.dark.100` |
-| `overlay/radius` | Corner radius of overlays. | `radius.container` → `aster.theme.base.radius.container` → `radius.8` | same |
-| `overlay/shadow` | Shadow of overlays. | `elevation.overlay` → `aster.theme.light.elevation.overlay` → `shadow.overlay` | `elevation.overlay` → `aster.theme.dark.elevation.overlay` → `shadow.overlay-dark` |
-| `overlay/scrim` | Color that dims the page behind a dialog. | `color.surface.scrim` → `aster.theme.light.color.surface.scrim` → `color.black.light.scrim` | `color.surface.scrim` → `aster.theme.dark.color.surface.scrim` → `color.black.dark.scrim` |
-| `overlay/item-height` | Height of a menu item. | `size.control.default` → `size.44` | same |
-| `tooltip/background` | Tooltip fill. | `color.surface.inverse` → `aster.theme.light.color.surface.inverse` → `color.neutral.900` → `aster.theme.light.color.neutral.900` → `color.slate-deep.light.900` | `color.surface.inverse` → `aster.theme.dark.color.surface.inverse` → `color.neutral.900` → `aster.theme.dark.color.neutral.900` → `color.slate-deep.dark.900` |
-| `tooltip/label` | Tooltip text. | `color.text.inverse` → `aster.theme.light.color.text.inverse` → `color.text.on-dark` → `aster.theme.base.color.text.on-dark` → `color.slate-deep.light.0` | `color.text.inverse` → `aster.theme.dark.color.text.inverse` → `color.text.on-light` → `aster.theme.base.color.text.on-light` → `color.slate-deep.light.900` |
-
-</div>
-
-<div class="odv-brandset" data-for-brand="birch">
-
-<p class="odv-brandname">Birch</p>
-
-| Key | What it controls | Points to, birch-light | Points to, birch-dark |
-| --- | --- | --- | --- |
-| `overlay/background` | Fill of a dialog, menu or toast. | `color.surface.raised` → `birch.theme.light.color.surface.raised` → `color.neutral.0` → `birch.theme.light.color.neutral.0` → `color.slate-deep.light.0` | `color.surface.raised` → `birch.theme.dark.color.surface.raised` → `color.neutral.100` → `birch.theme.dark.color.neutral.100` → `color.slate-deep.dark.100` |
-| `overlay/radius` | Corner radius of overlays. | `radius.container` → `birch.theme.base.radius.container` → `radius.16` | same |
-| `overlay/shadow` | Shadow of overlays. | `elevation.overlay` → `birch.theme.light.elevation.overlay` → `shadow.overlay` | `elevation.overlay` → `birch.theme.dark.elevation.overlay` → `shadow.overlay-dark` |
-| `overlay/scrim` | Color that dims the page behind a dialog. | `color.surface.scrim` → `birch.theme.light.color.surface.scrim` → `color.black.light.scrim` | `color.surface.scrim` → `birch.theme.dark.color.surface.scrim` → `color.black.dark.scrim` |
-| `overlay/item-height` | Height of a menu item. | `size.control.default` → `size.44` | same |
-| `tooltip/background` | Tooltip fill. | `color.surface.inverse` → `birch.theme.light.color.surface.inverse` → `color.neutral.900` → `birch.theme.light.color.neutral.900` → `color.slate-deep.light.900` | `color.surface.inverse` → `birch.theme.dark.color.surface.inverse` → `color.neutral.900` → `birch.theme.dark.color.neutral.900` → `color.slate-deep.dark.900` |
-| `tooltip/label` | Tooltip text. | `color.text.inverse` → `birch.theme.light.color.text.inverse` → `color.text.on-dark` → `birch.theme.base.color.text.on-dark` → `color.slate-deep.light.0` | `color.text.inverse` → `birch.theme.dark.color.text.inverse` → `color.text.on-light` → `birch.theme.base.color.text.on-light` → `color.slate-deep.light.900` |
-
-</div>
-
-<div class="odv-brandset" data-for-brand="coral">
-
-<p class="odv-brandname">Coral</p>
-
-| Key | What it controls | Points to, coral-light | Points to, coral-dark |
-| --- | --- | --- | --- |
-| `overlay/background` | Fill of a dialog, menu or toast. | `color.surface.raised` → `coral.theme.light.color.surface.raised` → `color.neutral.0` → `coral.theme.light.color.neutral.0` → `color.slate-deep.light.0` | `color.surface.raised` → `coral.theme.dark.color.surface.raised` → `color.neutral.100` → `coral.theme.dark.color.neutral.100` → `color.slate-deep.dark.100` |
-| `overlay/radius` | Corner radius of overlays. | `radius.container` → `coral.theme.base.radius.container` → `radius.20` | same |
-| `overlay/shadow` | Shadow of overlays. | `elevation.overlay` → `coral.theme.light.elevation.overlay` → `shadow.overlay` | `elevation.overlay` → `coral.theme.dark.elevation.overlay` → `shadow.overlay-dark` |
-| `overlay/scrim` | Color that dims the page behind a dialog. | `color.surface.scrim` → `coral.theme.light.color.surface.scrim` → `color.black.light.scrim` | `color.surface.scrim` → `coral.theme.dark.color.surface.scrim` → `color.black.dark.scrim` |
-| `overlay/item-height` | Height of a menu item. | `size.control.default` → `size.44` | same |
-| `tooltip/background` | Tooltip fill. | `color.surface.inverse` → `coral.theme.light.color.surface.inverse` → `color.neutral.900` → `coral.theme.light.color.neutral.900` → `color.slate-deep.light.900` | `color.surface.inverse` → `coral.theme.dark.color.surface.inverse` → `color.neutral.900` → `coral.theme.dark.color.neutral.900` → `color.slate-deep.dark.900` |
-| `tooltip/label` | Tooltip text. | `color.text.inverse` → `coral.theme.light.color.text.inverse` → `color.text.on-dark` → `coral.theme.base.color.text.on-dark` → `color.slate-deep.light.0` | `color.text.inverse` → `coral.theme.dark.color.text.inverse` → `color.text.on-light` → `coral.theme.base.color.text.on-light` → `color.slate-deep.light.900` |
-
-</div>
+<div class="odv-tscroll"><table class="odv-ttable odv-reads odv-api"><thead><tr><th>Part</th><th>Its token and the semantic it aliases</th><th>Value</th></tr></thead><tbody><tr class="odv-vgroup"><td colspan="3">Tooltip</td></tr><tr><td><b>Fill</b><br/><span class="odv-themed" title="Its value changes between light and dark">Themeable</span></td><td><span class="odv-api-tok"><span class="tok own">component.tooltip.background</span><span class="odv-branch"><span class="tok">color.surface.inverse</span></span><span class="odv-branch odv-branch-css odv-branch-last"><code>var(--tooltip-background)</code></span></span></td><td><span class="odv-vpair"><span><em>Aster Light</em><span class="odv-tsw"><i style="background:#0F172A"></i><small>slate-deep.light.900 · #0F172A</small></span></span><span><em>Aster Dark</em><span class="odv-tsw"><i style="background:#F8FAFC"></i><small>slate-deep.dark.900 · #F8FAFC</small></span></span><span><em>Birch Light</em><span class="odv-tsw"><i style="background:#0F172A"></i><small>slate-deep.light.900 · #0F172A</small></span></span><span><em>Birch Dark</em><span class="odv-tsw"><i style="background:#F8FAFC"></i><small>slate-deep.dark.900 · #F8FAFC</small></span></span><span><em>Coral Light</em><span class="odv-tsw"><i style="background:#0F172A"></i><small>slate-deep.light.900 · #0F172A</small></span></span><span><em>Coral Dark</em><span class="odv-tsw"><i style="background:#F8FAFC"></i><small>slate-deep.dark.900 · #F8FAFC</small></span></span></span></td></tr><tr><td><b>Text</b><br/><span class="odv-themed" title="Its value changes between light and dark">Themeable</span></td><td><span class="odv-api-tok"><span class="tok own">component.tooltip.label</span><span class="odv-branch"><span class="tok">color.text.inverse</span></span><span class="odv-branch odv-branch-css odv-branch-last"><code>var(--tooltip-label)</code></span></span></td><td><span class="odv-vpair"><span><em>Aster Light</em><span class="odv-tsw"><i style="background:#FFFFFF"></i><small>slate-deep.light.0 · #FFFFFF</small></span></span><span><em>Aster Dark</em><span class="odv-tsw"><i style="background:#0F172A"></i><small>slate-deep.light.900 · #0F172A</small></span></span><span><em>Birch Light</em><span class="odv-tsw"><i style="background:#FFFFFF"></i><small>slate-deep.light.0 · #FFFFFF</small></span></span><span><em>Birch Dark</em><span class="odv-tsw"><i style="background:#0F172A"></i><small>slate-deep.light.900 · #0F172A</small></span></span><span><em>Coral Light</em><span class="odv-tsw"><i style="background:#FFFFFF"></i><small>slate-deep.light.0 · #FFFFFF</small></span></span><span><em>Coral Dark</em><span class="odv-tsw"><i style="background:#0F172A"></i><small>slate-deep.light.900 · #0F172A</small></span></span></span></td></tr></tbody></table></div>

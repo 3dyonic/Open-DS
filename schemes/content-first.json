@@ -19,36 +19,65 @@
   "scenarios": [
     {
       "text": "A reader arrives from search on a phone and reads a long guide in one sitting.",
-      "follows": ["scenarios.q1", "scenarios.q2", "people.q1"]
+      "follows": [
+        "scenarios.q1",
+        "scenarios.q2",
+        "people.q1"
+      ]
     },
     {
       "text": "A returning reader saves an article to finish on the train.",
-      "follows": ["scenarios.q1", "content.q1"]
+      "follows": [
+        "scenarios.q1",
+        "content.q1"
+      ]
     }
   ],
   "voice": {
     "summary": {
       "text": "Conversational and warm. Talk to one reader, like a good editor would.",
-      "follows": ["voice.values", "voice.roles"]
+      "follows": [
+        "voice.values",
+        "voice.roles"
+      ]
     },
     "principles": [
       {
         "text": "Write to one person: \"you\", not \"users\".",
-        "follows": ["voice.values"]
+        "follows": [
+          "voice.values"
+        ]
       },
       {
         "text": "Short sentences with room to breathe.",
-        "follows": ["outcomes.q1"]
+        "follows": [
+          "outcomes.q1"
+        ]
       },
       {
         "text": "Explain why before asking for anything.",
-        "follows": ["people.q1", "voice.definition"]
+        "follows": [
+          "people.q1",
+          "voice.definition"
+        ]
       }
     ],
     "words": {
-      "use": ["Read", "Save for later", "You", "Next issue"],
-      "avoid": ["Click here", "Submit", "Users", "Content"],
-      "follows": ["voice.values"]
+      "use": [
+        "Read",
+        "Save for later",
+        "You",
+        "Next issue"
+      ],
+      "avoid": [
+        "Click here",
+        "Submit",
+        "Users",
+        "Content"
+      ],
+      "follows": [
+        "voice.values"
+      ]
     }
   },
   "inventory": {
@@ -66,55 +95,81 @@
           "variant": {
             "primary": {
               "use": "One clear action per section.",
-              "because": ["tasks.q2"]
+              "because": [
+                "tasks.q2"
+              ]
             },
             "secondary": {
               "use": "The first step of a delete, with the full verb, before the confirm.",
-              "because": ["outcomes.q2"]
+              "because": [
+                "outcomes.q2"
+              ]
             },
             "danger": {
               "use": "The confirm of a delete, with the full verb. Deleting a draft is rare and final.",
-              "because": ["outcomes.q2"]
+              "because": [
+                "outcomes.q2"
+              ]
             },
             "ghost": {
               "use": "Alternatives as a text link, and row actions with a word.",
-              "because": ["brand.q1", "human.q2"]
+              "because": [
+                "brand.q1",
+                "human.q2"
+              ]
             }
           },
           "size": {
             "default": {
               "use": "Every button, at touch size: many readers are on phones.",
-              "because": ["accessibility.values"]
+              "because": [
+                "accessibility.values"
+              ]
             },
             "compact": {
               "not_used": true,
               "why": "Many readers are on phones: no compact controls.",
-              "because": ["accessibility.values"]
+              "because": [
+                "accessibility.values"
+              ]
             },
             "icon": {
               "not_used": true,
               "why": "Occasional visitors do not know icons: always add a word.",
-              "because": ["iconography.roles", "human.q2"]
+              "because": [
+                "iconography.roles",
+                "human.q2"
+              ]
             },
             "large": {
               "not_used": true,
               "why": "Attention belongs to the text: one clear action per section, at the normal size.",
-              "because": ["human.q1", "tasks.q2"]
+              "because": [
+                "human.q1",
+                "tasks.q2"
+              ]
             }
           },
           "state": {
             "hover": {
               "use": "Moderate feedback that feels calm.",
-              "because": ["motion.values"]
+              "because": [
+                "motion.values"
+              ]
             },
             "focus": {
               "use": "Always visible.",
-              "because": ["people.q2"]
+              "because": [
+                "people.q2"
+              ]
             },
             "disabled": {
               "not_used": true,
               "why": "Keep it enabled and explain on press: visitors see the interface fresh each time.",
-              "because": ["human.q2", "people.q2"]
+              "because": [
+                "human.q2",
+                "people.q2"
+              ]
             }
           }
         }
@@ -134,17 +189,24 @@
           "orientation": {
             "vertical": {
               "use": "Newsletter and search forms: the label above.",
-              "because": ["people.q2"]
+              "because": [
+                "people.q2"
+              ]
             },
             "horizontal": {
               "not_used": true,
               "why": "Forms are rare and short; stacking keeps the reading column.",
-              "because": ["tasks.q2", "human.q1"]
+              "because": [
+                "tasks.q2",
+                "human.q1"
+              ]
             },
             "responsive": {
               "not_used": true,
               "why": "One stacked layout reads the same on phones and laptops.",
-              "because": ["scenarios.q1"]
+              "because": [
+                "scenarios.q1"
+              ]
             }
           }
         }
@@ -156,11 +218,16 @@
           "variant": {
             "default": {
               "use": "A note or a warning inside an article.",
-              "because": ["content.q1"]
+              "because": [
+                "content.q1"
+              ]
             },
             "destructive": {
               "use": "A failed save or sign-up: calm, take the blame, offer the way forward.",
-              "because": ["accessibility.count", "voice.count"]
+              "because": [
+                "accessibility.count",
+                "voice.count"
+              ]
             }
           }
         }
@@ -172,15 +239,22 @@
           "tone": {
             "neutral": {
               "use": "A calm note: You're all caught up.",
-              "because": ["voice.values"]
+              "because": [
+                "voice.values"
+              ]
             },
             "success": {
               "use": "Warm and brief, with what happens next.",
-              "because": ["voice.values"]
+              "because": [
+                "voice.values"
+              ]
             },
             "danger": {
               "use": "Calm and helpful: take the blame, offer the way forward.",
-              "because": ["voice.count", "voice.values"]
+              "because": [
+                "voice.count",
+                "voice.values"
+              ]
             }
           }
         }
@@ -232,25 +306,36 @@
           "tone": {
             "neutral": {
               "use": "Saved: waiting for you; nothing is wrong.",
-              "because": ["accessibility.count"]
+              "because": [
+                "accessibility.count"
+              ]
             },
             "info": {
               "not_used": true,
               "why": "Topics and reading states need no news tone; status is rare.",
-              "because": ["accessibility.count"]
+              "because": [
+                "accessibility.count"
+              ]
             },
             "success": {
               "use": "Finished: you read it to the end.",
-              "because": ["accessibility.count"]
+              "because": [
+                "accessibility.count"
+              ]
             },
             "warning": {
               "use": "Out of date: the facts may have changed since it was written.",
-              "because": ["accessibility.count"]
+              "because": [
+                "accessibility.count"
+              ]
             },
             "danger": {
               "not_used": true,
               "why": "Nothing in an article fails; errors are calm sentences, not labels.",
-              "because": ["accessibility.count", "voice.count"]
+              "because": [
+                "accessibility.count",
+                "voice.count"
+              ]
             }
           }
         }
@@ -287,11 +372,17 @@
             "default": {
               "not_used": true,
               "why": "Attention belongs to the text: the invitation is in words, not a picture.",
-              "because": ["human.q1", "brand.q2"]
+              "because": [
+                "human.q1",
+                "brand.q2"
+              ]
             },
             "icon": {
               "use": "A quiet outline icon in a small tile, above a warm invitation to save an article.",
-              "because": ["iconography.definition", "voice.values"]
+              "because": [
+                "iconography.definition",
+                "voice.values"
+              ]
             }
           }
         }
@@ -307,21 +398,30 @@
           "align": {
             "inline-start": {
               "use": "The search icon before the text, with the visible label above the field.",
-              "because": ["iconography.roles", "human.q2"]
+              "because": [
+                "iconography.roles",
+                "human.q2"
+              ]
             },
             "inline-end": {
               "use": "The clear button after the text, with a word: occasional visitors do not know icons.",
-              "because": ["human.q2"]
+              "because": [
+                "human.q2"
+              ]
             },
             "block-start": {
               "not_used": true,
               "why": "Search is one line, and forms are rare and short.",
-              "because": ["tasks.q2"]
+              "because": [
+                "tasks.q2"
+              ]
             },
             "block-end": {
               "not_used": true,
               "why": "Search is one line, and forms are rare and short.",
-              "because": ["tasks.q2"]
+              "because": [
+                "tasks.q2"
+              ]
             }
           }
         }
@@ -333,28 +433,40 @@
           "variant": {
             "default": {
               "use": "Rows in the reading list, separated by space, not lines.",
-              "because": ["elevation.definition", "spacing.values"]
+              "because": [
+                "elevation.definition",
+                "spacing.values"
+              ]
             },
             "outline": {
               "not_used": true,
               "why": "Borders would interrupt reading; space separates the rows.",
-              "because": ["elevation.definition"]
+              "because": [
+                "elevation.definition"
+              ]
             },
             "muted": {
               "not_used": true,
               "why": "Every row in the reading list weighs the same; attention belongs to the text.",
-              "because": ["human.q1"]
+              "because": [
+                "human.q1"
+              ]
             }
           },
           "size": {
             "default": {
               "use": "Every row, at touch size: many readers are on phones.",
-              "because": ["accessibility.values"]
+              "because": [
+                "accessibility.values"
+              ]
             },
             "sm": {
               "not_used": true,
               "why": "Many readers are on phones, and rows are read, not scanned.",
-              "because": ["accessibility.values", "tasks.q1"]
+              "because": [
+                "accessibility.values",
+                "tasks.q1"
+              ]
             }
           }
         }
@@ -400,164 +512,311 @@
       {
         "id": "attachment",
         "why": "Readers need sections, navigation and little else. Files attach to messages, and Content first carries no conversations: people read from start to end.",
-        "instead": ["button"],
-        "because": ["components.roles", "tasks.q1"]
+        "instead": [
+          "button"
+        ],
+        "because": [
+          "components.roles",
+          "tasks.q1"
+        ]
       },
       {
         "id": "bubble",
         "why": "Readers need sections, navigation and little else. Bubbles are for back-and-forth chat, and the catalogue rules them out for long text.",
-        "instead": ["card"],
-        "because": ["components.roles", "content.q1"]
+        "instead": [
+          "card"
+        ],
+        "because": [
+          "components.roles",
+          "content.q1"
+        ]
       },
       {
         "id": "button-group",
         "why": "Content first keeps one clear action per section, and alternatives are text links so they do not compete. Joined buttons work against that.",
-        "instead": ["button", "pagination"],
-        "because": ["tasks.q2", "brand.q1"]
+        "instead": [
+          "button",
+          "pagination"
+        ],
+        "because": [
+          "tasks.q2",
+          "brand.q1"
+        ]
       },
       {
         "id": "calendar",
         "why": "Readers need sections, navigation and little else. Actions are rare: subscribe, share, save. Picking dates is not one of them.",
-        "instead": ["input"],
-        "because": ["components.roles", "tasks.q2"]
+        "instead": [
+          "input"
+        ],
+        "because": [
+          "components.roles",
+          "tasks.q2"
+        ]
       },
       {
         "id": "combobox",
         "why": "Readers need sections, navigation and little else. Actions are rare: subscribe, share, save. The catalogue rules combobox out for searching a whole site; search is a plain input.",
-        "instead": ["input"],
-        "because": ["components.roles", "tasks.q2"]
+        "instead": [
+          "input"
+        ],
+        "because": [
+          "components.roles",
+          "tasks.q2"
+        ]
       },
       {
         "id": "command",
         "why": "Command suits expert users who type to jump anywhere. Most readers visit now and then, and the catalogue rules it out for them.",
-        "instead": ["navigation-menu", "input"],
-        "because": ["people.q1", "human.q2"]
+        "instead": [
+          "navigation-menu",
+          "input"
+        ],
+        "because": [
+          "people.q1",
+          "human.q2"
+        ]
       },
       {
         "id": "context-menu",
         "why": "Right-click menus suit power users. Readers are occasional visitors who see the interface fresh each time, and arrive on phones too.",
-        "instead": ["button"],
-        "because": ["people.q1", "human.q2", "scenarios.q1"]
+        "instead": [
+          "button"
+        ],
+        "because": [
+          "people.q1",
+          "human.q2",
+          "scenarios.q1"
+        ]
       },
       {
         "id": "data-table",
         "why": "Content first avoids data-heavy tools. It has no dense tables, and its rows are read, not scanned.",
-        "instead": ["card", "pagination"],
-        "because": ["spacing.roles", "tasks.q1"]
+        "instead": [
+          "card",
+          "pagination"
+        ],
+        "because": [
+          "spacing.roles",
+          "tasks.q1"
+        ]
       },
       {
         "id": "date-picker",
         "why": "Readers need sections, navigation and little else. Actions are rare: subscribe, share, save. Picking a date or range is not one of them.",
-        "instead": ["input"],
-        "because": ["components.roles", "tasks.q2"]
+        "instead": [
+          "input"
+        ],
+        "because": [
+          "components.roles",
+          "tasks.q2"
+        ]
       },
       {
         "id": "drawer",
         "why": "Content first keeps few components, covered by today's pages. Sheet already holds the phone menu, and forms are rare and short.",
-        "instead": ["sheet", "dialog"],
-        "because": ["components.count", "tasks.q2"]
+        "instead": [
+          "sheet",
+          "dialog"
+        ],
+        "because": [
+          "components.count",
+          "tasks.q2"
+        ]
       },
       {
         "id": "hover-card",
         "why": "Readers arrive on phones and laptops alike, and touch screens have no hover. Occasional visitors need visible words, not hidden previews.",
-        "instead": ["card", "collapsible"],
-        "because": ["scenarios.q1", "human.q2"]
+        "instead": [
+          "card",
+          "collapsible"
+        ],
+        "because": [
+          "scenarios.q1",
+          "human.q2"
+        ]
       },
       {
         "id": "input-otp",
         "why": "Forms are rare and short: newsletter and search. Actions are rare: subscribe, share, save. No step asks for a one-time code.",
-        "instead": ["input"],
-        "because": ["tasks.q2", "components.roles"]
+        "instead": [
+          "input"
+        ],
+        "because": [
+          "tasks.q2",
+          "components.roles"
+        ]
       },
       {
         "id": "kbd",
         "why": "Most readers visit now and then and see the interface fresh each time. Shortcuts serve repeat experts, and command is left out too.",
-        "instead": ["button"],
-        "because": ["people.q1", "human.q2"]
+        "instead": [
+          "button"
+        ],
+        "because": [
+          "people.q1",
+          "human.q2"
+        ]
       },
       {
         "id": "marker",
         "why": "Readers need sections, navigation and little else. Markers split conversations, and Content first separates sections with space, not lines.",
-        "instead": ["separator"],
-        "because": ["components.roles", "elevation.definition"]
+        "instead": [
+          "separator"
+        ],
+        "because": [
+          "components.roles",
+          "elevation.definition"
+        ]
       },
       {
         "id": "menubar",
         "why": "Menubar is for dense desktop-style tools, not website navigation or phones. Content first avoids screens with many actions, and readers arrive on phones.",
-        "instead": ["navigation-menu", "sheet"],
-        "because": ["tasks.q2", "scenarios.q1"]
+        "instead": [
+          "navigation-menu",
+          "sheet"
+        ],
+        "because": [
+          "tasks.q2",
+          "scenarios.q1"
+        ]
       },
       {
         "id": "message",
         "why": "Readers need sections, navigation and little else. People read from start to end; actions are rare: subscribe, share, save. No comments or feeds are among them.",
-        "instead": ["card", "alert"],
-        "because": ["components.roles", "tasks.q2"]
+        "instead": [
+          "card",
+          "alert"
+        ],
+        "because": [
+          "components.roles",
+          "tasks.q2"
+        ]
       },
       {
         "id": "message-scroller",
         "why": "Readers need sections, navigation and little else. It keeps live chat in view, and people here read from start to end.",
-        "instead": ["pagination"],
-        "because": ["components.roles", "tasks.q1"]
+        "instead": [
+          "pagination"
+        ],
+        "because": [
+          "components.roles",
+          "tasks.q1"
+        ]
       },
       {
         "id": "popover",
         "why": "Only menus and dialogs float in Content first. A long aside opens in place with collapsible instead.",
-        "instead": ["collapsible", "dialog"],
-        "because": ["elevation.roles", "elevation.lands"]
+        "instead": [
+          "collapsible",
+          "dialog"
+        ],
+        "because": [
+          "elevation.roles",
+          "elevation.lands"
+        ]
       },
       {
         "id": "progress",
         "why": "Forms are rare and short, so there are no steps to count. Skeleton already holds article text while it loads.",
-        "instead": ["skeleton"],
-        "because": ["tasks.q2", "components.count"]
+        "instead": [
+          "skeleton"
+        ],
+        "because": [
+          "tasks.q2",
+          "components.count"
+        ]
       },
       {
         "id": "resizable",
         "why": "Resizable panels are for desktop tools, not phones. Content first readers arrive on phones and laptops alike, and it avoids data-heavy tools.",
-        "instead": ["sheet"],
-        "because": ["scenarios.q1", "accessibility.values"]
+        "instead": [
+          "sheet"
+        ],
+        "because": [
+          "scenarios.q1",
+          "accessibility.values"
+        ]
       },
       {
         "id": "sidebar",
         "why": "Sidebar is app navigation, not a website's main navigation. Content first is a public site; navigation menu carries the site sections and sheet the phone menu.",
-        "instead": ["navigation-menu", "sheet"],
-        "because": ["people.q2", "components.roles"]
+        "instead": [
+          "navigation-menu",
+          "sheet"
+        ],
+        "because": [
+          "people.q2",
+          "components.roles"
+        ]
       },
       {
         "id": "slider",
         "why": "Readers need sections, navigation and little else. Actions are rare: subscribe, share, save. Dragging a value is not one of them.",
-        "instead": ["input"],
-        "because": ["components.roles", "tasks.q2"]
+        "instead": [
+          "input"
+        ],
+        "because": [
+          "components.roles",
+          "tasks.q2"
+        ]
       },
       {
         "id": "textarea",
         "why": "Forms are rare and short: newsletter and search, both one line. Actions are rare: subscribe, share, save. None calls for long text entry.",
-        "instead": ["input"],
-        "because": ["tasks.q2", "components.roles"]
+        "instead": [
+          "input"
+        ],
+        "because": [
+          "tasks.q2",
+          "components.roles"
+        ]
       },
       {
         "id": "toggle",
         "why": "Readers need sections, navigation and little else. Toggles format text in a toolbar, and Content first avoids screens with many actions.",
-        "instead": ["button"],
-        "because": ["components.roles", "tasks.q2"]
+        "instead": [
+          "button"
+        ],
+        "because": [
+          "components.roles",
+          "tasks.q2"
+        ]
       },
       {
         "id": "toggle-group",
         "why": "Readers need sections, navigation and little else. Actions are rare: subscribe, share, save. Switching views between modes is not one of them.",
-        "instead": ["button"],
-        "because": ["components.roles", "tasks.q2"]
+        "instead": [
+          "button"
+        ],
+        "because": [
+          "components.roles",
+          "tasks.q2"
+        ]
       },
       {
         "id": "tooltip",
         "why": "Readers arrive on any device, and on touch screens hover hints never show. Icons always carry a visible word instead.",
-        "instead": ["button", "label"],
-        "because": ["scenarios.q1", "iconography.roles", "human.q2"]
+        "instead": [
+          "button",
+          "label"
+        ],
+        "because": [
+          "scenarios.q1",
+          "iconography.roles",
+          "human.q2"
+        ]
       }
     ]
   },
   "samples": {
     "description": "Sample content for showing this system: written from its use scenarios, in its voice, with every status mapped to a meaning. Storybook, the site and the docs read it; it is never shared between schemes.",
-    "follows": ["scenarios.q1", "scenarios.q2", "content.q1", "voice.values"],
+    "follows": [
+      "scenarios.q1",
+      "scenarios.q2",
+      "content.q1",
+      "voice.values"
+    ],
     "screen": "Your reading list",
     "conversation": {
       "title": "Comments on Planting a winter garden",
@@ -626,35 +885,67 @@
       ],
       "rows": [
         {
-          "cells": ["Planting a winter garden", "Home and garden", "12"],
+          "cells": [
+            "Planting a winter garden",
+            "Home and garden",
+            "12"
+          ],
           "status": "Saved"
         },
         {
-          "cells": ["Bread without a mixer", "Food", "9"],
+          "cells": [
+            "Bread without a mixer",
+            "Food",
+            "9"
+          ],
           "status": "Finished"
         },
         {
-          "cells": ["Fixing a dripping tap", "Home and garden", "6"],
+          "cells": [
+            "Fixing a dripping tap",
+            "Home and garden",
+            "6"
+          ],
           "status": "Out of date"
         },
         {
-          "cells": ["A weekend in Lisbon", "Travel", "14"],
+          "cells": [
+            "A weekend in Lisbon",
+            "Travel",
+            "14"
+          ],
           "status": "Saved"
         },
         {
-          "cells": ["Starting to run at 40", "Health", "11"],
+          "cells": [
+            "Starting to run at 40",
+            "Health",
+            "11"
+          ],
           "status": "Finished"
         },
         {
-          "cells": ["Keeping basil alive", "Home and garden", "5"],
+          "cells": [
+            "Keeping basil alive",
+            "Home and garden",
+            "5"
+          ],
           "status": "Finished"
         },
         {
-          "cells": ["The quiet history of maps", "Ideas", "18"],
+          "cells": [
+            "The quiet history of maps",
+            "Ideas",
+            "18"
+          ],
           "status": "Saved"
         },
         {
-          "cells": ["Choosing a first bike", "Health", "8"],
+          "cells": [
+            "Choosing a first bike",
+            "Health",
+            "8"
+          ],
           "status": "Out of date"
         }
       ]
@@ -684,13 +975,24 @@
       "error": "We could not save your email. Check it and try again.",
       "invalid": "reader-at-home"
     },
-    "checkbox": ["Home and garden", "Food", "Travel"],
+    "checkbox": [
+      "Home and garden",
+      "Food",
+      "Travel"
+    ],
     "select": {
       "label": "Sort your list",
-      "options": ["Newest first", "Shortest read first", "By topic"],
+      "options": [
+        "Newest first",
+        "Shortest read first",
+        "By topic"
+      ],
       "value": "Newest first"
     },
-    "switches": ["Larger text", "Email me the weekly letter"],
+    "switches": [
+      "Larger text",
+      "Email me the weekly letter"
+    ],
     "messages": {
       "success": "You're in. The next issue arrives on Friday.",
       "error": {
@@ -730,7 +1032,10 @@
     ],
     "menu": {
       "trigger": "Options for this guide",
-      "items": ["Save for later", "Share"],
+      "items": [
+        "Save for later",
+        "Share"
+      ],
       "destructive": "Remove from your list"
     },
     "icon_action": "Save for later"
@@ -764,85 +1069,113 @@
       "question": "people.q1",
       "option": "occasional",
       "why": "Most readers arrive from search and visit now and then.",
-      "because": ["business.q1"]
+      "because": [
+        "business.q1"
+      ]
     },
     {
       "question": "people.q2",
       "option": "aa",
       "why": "AA is the commitment for a public site.",
-      "because": ["people.q1"]
+      "because": [
+        "people.q1"
+      ]
     },
     {
       "question": "content.q1",
       "option": "long-text",
       "why": "The content is long-form text.",
-      "because": ["business.q1"]
+      "because": [
+        "business.q1"
+      ]
     },
     {
       "question": "content.q2",
       "option": "one-idea",
       "why": "One idea per screen keeps reading calm.",
-      "because": ["content.q1"]
+      "because": [
+        "content.q1"
+      ]
     },
     {
       "question": "tasks.q1",
       "option": "read",
       "why": "People read from start to end.",
-      "because": ["content.q1"]
+      "because": [
+        "content.q1"
+      ]
     },
     {
       "question": "tasks.q2",
       "option": "rarely",
       "why": "Actions are rare: subscribe, share, save.",
-      "because": ["tasks.q1"]
+      "because": [
+        "tasks.q1"
+      ]
     },
     {
       "question": "human.q1",
       "option": "attention",
       "why": "Attention belongs to the text.",
-      "because": ["tasks.q1"]
+      "because": [
+        "tasks.q1"
+      ]
     },
     {
       "question": "human.q2",
       "option": "fresh",
       "why": "Visitors see the interface fresh each time.",
-      "because": ["people.q1"]
+      "because": [
+        "people.q1"
+      ]
     },
     {
       "question": "outcomes.q1",
       "option": "reading-comfort",
       "why": "Comfortable reading is the measure.",
-      "because": ["tasks.q1"]
+      "because": [
+        "tasks.q1"
+      ]
     },
     {
       "question": "outcomes.q2",
       "option": "lost-place",
       "why": "Losing your place in an article breaks the read.",
-      "because": ["tasks.q1"]
+      "because": [
+        "tasks.q1"
+      ]
     },
     {
       "question": "brand.q1",
       "option": "warm",
       "why": "Warm and considered, like a good magazine.",
-      "because": ["business.q1"]
+      "because": [
+        "business.q1"
+      ]
     },
     {
       "question": "brand.q2",
       "option": "present",
       "why": "The brand shows in type, not in color.",
-      "because": ["brand.q1"]
+      "because": [
+        "brand.q1"
+      ]
     },
     {
       "question": "scenarios.q1",
       "option": "anywhere",
       "why": "Readers arrive on phones and laptops alike.",
-      "because": ["people.q1"]
+      "because": [
+        "people.q1"
+      ]
     },
     {
       "question": "scenarios.q2",
       "option": "one-sitting",
       "why": "A guide is read in one sitting.",
-      "because": ["content.q1"]
+      "because": [
+        "content.q1"
+      ]
     },
     {
       "question": "team.q1",
@@ -860,361 +1193,488 @@
       "question": "typography.roles",
       "option": "core-editorial",
       "why": "A lead and a display role open articles.",
-      "because": ["content.q1"]
+      "because": [
+        "content.q1"
+      ]
     },
     {
       "question": "typography.count",
       "option": "many",
       "why": "Long pages need a clear hierarchy of headings, with fine steps between them.",
-      "because": ["content.q1"]
+      "because": [
+        "content.q1"
+      ]
     },
     {
       "question": "typography.definition",
       "option": "ratio-proportional",
       "why": "Line height is a ratio, so it grows with the text.",
-      "because": ["tasks.q1", "people.q2"]
+      "because": [
+        "tasks.q1",
+        "people.q2"
+      ]
     },
     {
       "question": "typography.values",
       "option": "large",
       "why": "Large body text is easy on the eyes.",
-      "because": ["outcomes.q1"]
+      "because": [
+        "outcomes.q1"
+      ]
     },
     {
       "question": "typography.lands",
       "option": "articles",
       "why": "Type does its work in articles.",
-      "because": ["content.q1"]
+      "because": [
+        "content.q1"
+      ]
     },
     {
       "question": "color.roles",
       "option": "core",
       "why": "Reading needs few color roles.",
-      "because": ["human.q1"]
+      "because": [
+        "human.q1"
+      ]
     },
     {
       "question": "color.count",
       "option": "three",
       "why": "Primary, secondary and a text link.",
-      "because": ["tasks.q2"]
+      "because": [
+        "tasks.q2"
+      ]
     },
     {
       "question": "color.definition",
       "option": "neutral-brand",
       "why": "Warm paper neutrals and one ink ramp.",
-      "because": ["brand.q1"]
+      "because": [
+        "brand.q1"
+      ]
     },
     {
       "question": "color.values",
       "option": "balanced",
       "why": "A calm, balanced palette.",
-      "because": ["brand.q1"]
+      "because": [
+        "brand.q1"
+      ]
     },
     {
       "question": "color.lands",
       "option": "links-actions",
       "why": "Color marks links inside the text.",
-      "because": ["tasks.q1"]
+      "because": [
+        "tasks.q1"
+      ]
     },
     {
       "question": "spacing.roles",
       "option": "gap-inset",
       "why": "No dense tables, so no row role.",
-      "because": ["content.q1"]
+      "because": [
+        "content.q1"
+      ]
     },
     {
       "question": "spacing.count",
       "option": "one",
       "why": "One calm density.",
-      "because": ["content.q2"]
+      "because": [
+        "content.q2"
+      ]
     },
     {
       "question": "spacing.definition",
       "option": "coarse",
       "why": "Big, even steps suit long reading.",
-      "because": ["outcomes.q1"]
+      "because": [
+        "outcomes.q1"
+      ]
     },
     {
       "question": "spacing.values",
       "option": "spacious",
       "why": "Room around the text helps reading.",
-      "because": ["outcomes.q1"]
+      "because": [
+        "outcomes.q1"
+      ]
     },
     {
       "question": "spacing.lands",
       "option": "reading",
       "why": "Space is spent between paragraphs and sections.",
-      "because": ["content.q1"]
+      "because": [
+        "content.q1"
+      ]
     },
     {
       "question": "shape.roles",
       "option": "control-badge-container",
       "why": "Pill badges differ from controls.",
-      "because": ["brand.q1"]
+      "because": [
+        "brand.q1"
+      ]
     },
     {
       "question": "shape.count",
       "option": "three",
       "why": "Control, badge and container corners differ.",
-      "because": ["shape.roles"]
+      "because": [
+        "shape.roles"
+      ]
     },
     {
       "question": "shape.definition",
       "option": "fixed",
       "why": "One brand, one set of corners.",
-      "because": ["business.q2"]
+      "because": [
+        "business.q2"
+      ]
     },
     {
       "question": "shape.values",
       "option": "rounded",
       "why": "Rounded corners feel friendly.",
-      "because": ["brand.q1"]
+      "because": [
+        "brand.q1"
+      ]
     },
     {
       "question": "shape.lands",
       "option": "controls-cards",
       "why": "Corners show on buttons and article cards.",
-      "because": ["content.q1"]
+      "because": [
+        "content.q1"
+      ]
     },
     {
       "question": "elevation.roles",
       "option": "floating-only",
       "why": "Only menus and dialogs float.",
-      "because": ["human.q1"]
+      "because": [
+        "human.q1"
+      ]
     },
     {
       "question": "elevation.count",
       "option": "one",
       "why": "One shadow for floating things.",
-      "because": ["elevation.roles"]
+      "because": [
+        "elevation.roles"
+      ]
     },
     {
       "question": "elevation.definition",
       "option": "space",
       "why": "Space separates groups; lines would interrupt reading.",
-      "because": ["outcomes.q1"]
+      "because": [
+        "outcomes.q1"
+      ]
     },
     {
       "question": "elevation.values",
       "option": "soft",
       "why": "Soft shadows suit warm paper.",
-      "because": ["brand.q1"]
+      "because": [
+        "brand.q1"
+      ]
     },
     {
       "question": "elevation.lands",
       "option": "menus-dialogs",
       "why": "Menus and dialogs are the only layers.",
-      "because": ["elevation.roles"]
+      "because": [
+        "elevation.roles"
+      ]
     },
     {
       "question": "motion.roles",
       "option": "feedback-guidance",
       "why": "Motion confirms actions and guides between pages.",
-      "because": ["people.q1"]
+      "because": [
+        "people.q1"
+      ]
     },
     {
       "question": "motion.count",
       "option": "two",
       "why": "One speed for feedback, one for panels.",
-      "because": ["motion.roles"]
+      "because": [
+        "motion.roles"
+      ]
     },
     {
       "question": "motion.definition",
       "option": "standard",
       "why": "A standard ease-out is calm.",
-      "because": ["brand.q1"]
+      "because": [
+        "brand.q1"
+      ]
     },
     {
       "question": "motion.values",
       "option": "moderate",
       "why": "Moderate speed feels calm.",
-      "because": ["brand.q1"]
+      "because": [
+        "brand.q1"
+      ]
     },
     {
       "question": "motion.lands",
       "option": "state-panels",
       "why": "State changes and opening panels move.",
-      "because": ["motion.roles"]
+      "because": [
+        "motion.roles"
+      ]
     },
     {
       "question": "iconography.roles",
       "option": "actions-status-nav",
       "why": "Occasional readers need icons for save, share and navigation.",
-      "because": ["people.q1"]
+      "because": [
+        "people.q1"
+      ]
     },
     {
       "question": "iconography.count",
       "option": "one",
       "why": "One size next to text.",
-      "because": ["iconography.values"]
+      "because": [
+        "iconography.values"
+      ]
     },
     {
       "question": "iconography.definition",
       "option": "outline",
       "why": "Outline icons stay quiet beside text.",
-      "because": ["human.q1"]
+      "because": [
+        "human.q1"
+      ]
     },
     {
       "question": "iconography.values",
       "option": "match-text",
       "why": "Icons match the text size.",
-      "because": ["human.q1"]
+      "because": [
+        "human.q1"
+      ]
     },
     {
       "question": "iconography.lands",
       "option": "navigation",
       "why": "Icons help most in navigation.",
-      "because": ["people.q1"]
+      "because": [
+        "people.q1"
+      ]
     },
     {
       "question": "theming.roles",
       "option": "mode",
       "why": "One brand, so only the mode changes.",
-      "because": ["business.q2"]
+      "because": [
+        "business.q2"
+      ]
     },
     {
       "question": "theming.count",
       "option": "two",
       "why": "Light and dark.",
-      "because": ["theming.values"]
+      "because": [
+        "theming.values"
+      ]
     },
     {
       "question": "theming.definition",
       "option": "single",
       "why": "One publication, one brand.",
-      "because": ["business.q2"]
+      "because": [
+        "business.q2"
+      ]
     },
     {
       "question": "theming.values",
       "option": "light-dark",
       "why": "Light and dark ship as standard; dark helps night reading.",
-      "because": ["scenarios.q1"]
+      "because": [
+        "scenarios.q1"
+      ]
     },
     {
       "question": "theming.lands",
       "option": "colors",
       "why": "Only colors change.",
-      "because": ["theming.roles"]
+      "because": [
+        "theming.roles"
+      ]
     },
     {
       "question": "accessibility.roles",
       "option": "plus-pressed",
       "why": "Pressed gets its own value for touch.",
-      "because": ["accessibility.values"]
+      "because": [
+        "accessibility.values"
+      ]
     },
     {
       "question": "accessibility.count",
       "option": "color-word",
       "why": "Status is rare; color and a word are enough.",
-      "because": ["people.q2"]
+      "because": [
+        "people.q2"
+      ]
     },
     {
       "question": "accessibility.definition",
       "option": "aa",
       "why": "AA contrast, with large text helping further.",
-      "because": ["people.q2"]
+      "because": [
+        "people.q2"
+      ]
     },
     {
       "question": "accessibility.values",
       "option": "touch",
       "why": "Readers are often on phones.",
-      "because": ["scenarios.q1"]
+      "because": [
+        "scenarios.q1"
+      ]
     },
     {
       "question": "accessibility.lands",
       "option": "long-text",
       "why": "Long text needs steady contrast and line length.",
-      "because": ["content.q1"]
+      "because": [
+        "content.q1"
+      ]
     },
     {
       "question": "naming.roles",
       "option": "tokens-keys",
       "why": "Components get their own keys.",
-      "because": ["team.q2"]
+      "because": [
+        "team.q2"
+      ]
     },
     {
       "question": "naming.count",
       "option": "three",
       "why": "Primitives, semantics and component keys.",
-      "because": ["team.q2"]
+      "because": [
+        "team.q2"
+      ]
     },
     {
       "question": "naming.definition",
       "option": "by-role",
       "why": "Role names survive a redesign.",
-      "because": ["team.q1"]
+      "because": [
+        "team.q1"
+      ]
     },
     {
       "question": "naming.values",
       "option": "kebab-paths",
       "why": "Lowercase paths read the same everywhere.",
-      "because": ["team.q1"]
+      "because": [
+        "team.q1"
+      ]
     },
     {
       "question": "naming.lands",
       "option": "keys",
       "why": "A component API keeps changes local.",
-      "because": ["team.q2"]
+      "because": [
+        "team.q2"
+      ]
     },
     {
       "question": "voice.roles",
       "option": "ui-editorial",
       "why": "Articles are the product; the UI copy must match them.",
-      "because": ["content.q1"]
+      "because": [
+        "content.q1"
+      ]
     },
     {
       "question": "voice.count",
       "option": "per-moment",
       "why": "Warm by default, calmer for errors.",
-      "because": ["human.q1"]
+      "because": [
+        "human.q1"
+      ]
     },
     {
       "question": "voice.definition",
       "option": "principles",
       "why": "Editors work from principles and examples, not word lists.",
-      "because": ["team.q1", "content.q1"]
+      "because": [
+        "team.q1",
+        "content.q1"
+      ]
     },
     {
       "question": "voice.values",
       "option": "conversational",
       "why": "Talk to one reader, like a good editor.",
-      "because": ["people.q1", "brand.q1"]
+      "because": [
+        "people.q1",
+        "brand.q1"
+      ]
     },
     {
       "question": "voice.lands",
       "option": "articles",
       "why": "Most words are in articles and guides.",
-      "because": ["content.q1"]
+      "because": [
+        "content.q1"
+      ]
     },
     {
       "question": "components.roles",
       "option": "core-content",
       "why": "Readers need sections, navigation and little else.",
-      "because": ["content.q1", "tasks.q1"]
+      "because": [
+        "content.q1",
+        "tasks.q1"
+      ]
     },
     {
       "question": "components.count",
       "option": "few",
       "why": "Actions are rare, so the components today's pages use cover them.",
-      "because": ["tasks.q2", "team.q1"]
+      "because": [
+        "tasks.q2",
+        "team.q1"
+      ]
     },
     {
       "question": "components.definition",
       "option": "scenario",
       "why": "A component joins only when reading needs it.",
-      "because": ["scenarios.q2", "tasks.q1"]
+      "because": [
+        "scenarios.q2",
+        "tasks.q1"
+      ]
     },
     {
       "question": "components.values",
       "option": "few",
       "why": "Pages stay calm when a component changes only with its meaning.",
-      "because": ["brand.q2", "outcomes.q1"]
+      "because": [
+        "brand.q2",
+        "outcomes.q1"
+      ]
     },
     {
       "question": "components.lands",
       "option": "articles",
       "why": "Components sit inside and around articles.",
-      "because": ["content.q1"]
+      "because": [
+        "content.q1"
+      ]
     }
   ],
   "usage": [
@@ -1223,56 +1683,72 @@
       "use": "type.title",
       "not": "type.display (landing only)",
       "why": "Display is kept for the landing moment; article titles stay calm.",
-      "because": ["typography.roles"]
+      "because": [
+        "typography.roles"
+      ]
     },
     {
       "situation": "number-in-table",
       "use": "type.body",
       "not": "A mono font",
       "why": "Tables are rare and read row by row.",
-      "because": ["tasks.q1"]
+      "because": [
+        "tasks.q1"
+      ]
     },
     {
       "situation": "paragraph",
       "use": "type.body, at most 65 characters a line",
       "not": "type.caption",
       "why": "A large size and short lines make long text easy on the eyes.",
-      "because": ["outcomes.q1"]
+      "because": [
+        "outcomes.q1"
+      ]
     },
     {
       "situation": "field-label",
       "use": "type.label",
       "not": "type.caption",
       "why": "Caption is too faint for a label people must read.",
-      "because": ["people.q2"]
+      "because": [
+        "people.q2"
+      ]
     },
     {
       "situation": "selected-row",
       "use": "color.surface.selected",
       "not": "Bold text only",
       "why": "A tint shows the choice clearly on warm paper.",
-      "because": ["human.q2"]
+      "because": [
+        "human.q2"
+      ]
     },
     {
       "situation": "error-message",
       "use": "color.status.danger and a plain sentence",
       "not": "Color alone",
       "why": "The sentence says what to fix; color only draws the eye.",
-      "because": ["accessibility.count"]
+      "because": [
+        "accessibility.count"
+      ]
     },
     {
       "situation": "link",
       "use": "color.text.link, underlined",
       "not": "Color without underline",
       "why": "Readers expect links to be underlined inside text.",
-      "because": ["human.q2"]
+      "because": [
+        "human.q2"
+      ]
     },
     {
       "situation": "status-label",
       "use": "Badge pill with a word",
       "not": "An icon alone",
       "why": "Status is rare; a word is clear.",
-      "because": ["accessibility.count"],
+      "because": [
+        "accessibility.count"
+      ],
       "uses": [
         {
           "component": "badge"
@@ -1284,84 +1760,109 @@
       "use": "space.gap.default",
       "not": "space.gap.tight",
       "why": "Text needs air even inside a group.",
-      "because": ["spacing.values"]
+      "because": [
+        "spacing.values"
+      ]
     },
     {
       "situation": "between-sections",
       "use": "space.gap.section, no line",
       "not": "A divider line",
       "why": "Space alone separates sections; lines add noise.",
-      "because": ["elevation.definition"]
+      "because": [
+        "elevation.definition"
+      ]
     },
     {
       "situation": "table-row",
       "use": "size.row (comfortable)",
       "not": "A compact row",
       "why": "Rows are read, not scanned.",
-      "because": ["tasks.q1"]
+      "because": [
+        "tasks.q1"
+      ]
     },
     {
       "situation": "control-corner",
       "use": "radius.control (rounded)",
       "not": "Sharp corners",
       "why": "Rounded corners feel friendly.",
-      "because": ["shape.values"]
+      "because": [
+        "shape.values"
+      ]
     },
     {
       "situation": "status-shape",
       "use": "radius.badge (pill)",
       "not": "A rectangle",
       "why": "Pills sit softly next to text.",
-      "because": ["shape.roles"]
+      "because": [
+        "shape.roles"
+      ]
     },
     {
       "situation": "card",
       "use": "A border, no shadow",
       "not": "A strong shadow",
       "why": "Cards stay flat on the page; shadows are for floating things.",
-      "because": ["elevation.roles"]
+      "because": [
+        "elevation.roles"
+      ]
     },
     {
       "situation": "menu-or-dialog",
       "use": "elevation.overlay and a dimmed page",
       "not": "No shadow",
       "why": "The dimmed page focuses the reader on the dialog.",
-      "because": ["elevation.lands"]
+      "because": [
+        "elevation.lands"
+      ]
     },
     {
       "situation": "hover-feedback",
       "use": "motion.duration.feedback (moderate)",
       "not": "A fast flash",
       "why": "Moderate speed feels calm.",
-      "because": ["motion.values"]
+      "because": [
+        "motion.values"
+      ]
     },
     {
       "situation": "reduced-motion",
       "use": "No motion",
       "not": "Reduced motion",
       "why": "When people ask for less motion, nothing moves.",
-      "because": ["motion.roles"]
+      "because": [
+        "motion.roles"
+      ]
     },
     {
       "situation": "icon-alone",
       "use": "Not used: always add a word",
       "not": "An icon button",
       "why": "Occasional visitors do not know icons.",
-      "because": ["iconography.roles", "human.q2"]
+      "because": [
+        "iconography.roles",
+        "human.q2"
+      ]
     },
     {
       "situation": "dark-mode",
       "use": "The dark semantic mode",
       "not": "Inverting images",
       "why": "Only semantic colors change; the reading layout stays.",
-      "because": ["theming.values"]
+      "because": [
+        "theming.values"
+      ]
     },
     {
       "situation": "keyboard-focus",
       "use": "button/focus-ring at border-width.focus",
       "not": "Removing the outline",
       "why": "Keyboard users must always see where they are.",
-      "because": ["people.q2"],
+      "because": [
+        "people.q2"
+      ],
       "uses": [
         {
           "component": "button",
@@ -1375,14 +1876,18 @@
       "use": "size.control.default (touch)",
       "not": "A compact control",
       "why": "Many readers are on phones.",
-      "because": ["accessibility.values"]
+      "because": [
+        "accessibility.values"
+      ]
     },
     {
       "situation": "commit-action",
       "use": "Button primary, one per section",
       "not": "Two primaries side by side",
       "why": "One clear action per section.",
-      "because": ["tasks.q2"],
+      "because": [
+        "tasks.q2"
+      ],
       "uses": [
         {
           "component": "button",
@@ -1396,7 +1901,9 @@
       "use": "Button ghost as a text link",
       "not": "A second boxed button",
       "why": "A link feels lighter and does not compete.",
-      "because": ["brand.q1"],
+      "because": [
+        "brand.q1"
+      ],
       "uses": [
         {
           "component": "button",
@@ -1410,7 +1917,9 @@
       "use": "Button secondary with the full verb, then confirm with Button danger",
       "not": "Button primary",
       "why": "Naming the verb and confirming prevents a mistake.",
-      "because": ["outcomes.q2"],
+      "because": [
+        "outcomes.q2"
+      ],
       "uses": [
         {
           "component": "button",
@@ -1429,7 +1938,9 @@
       "use": "Button ghost with a word",
       "not": "An icon on its own",
       "why": "Occasional visitors need the word.",
-      "because": ["human.q2"],
+      "because": [
+        "human.q2"
+      ],
       "uses": [
         {
           "component": "button",
@@ -1443,14 +1954,18 @@
       "use": "The closest semantic token, then ask for a new one",
       "not": "A raw value in the component",
       "why": "Raw values break dark mode and the next redesign.",
-      "because": ["naming.lands"]
+      "because": [
+        "naming.lands"
+      ]
     },
     {
       "situation": "button-label",
       "use": "A warm verb a reader would say",
       "not": "\"Submit\" or \"Click here\"",
       "why": "Buttons are part of the reading voice.",
-      "because": ["voice.values"],
+      "because": [
+        "voice.values"
+      ],
       "example": "Subscribe"
     },
     {
@@ -1458,7 +1973,10 @@
       "use": "Calm and helpful. Take the blame, offer the way forward.",
       "not": "Blaming the reader",
       "why": "A calm error keeps the reader's trust.",
-      "because": ["voice.count", "voice.values"],
+      "because": [
+        "voice.count",
+        "voice.values"
+      ],
       "example": "We could not save your email. Check it and try again."
     },
     {
@@ -1466,7 +1984,9 @@
       "use": "Warm and brief, with what happens next",
       "not": "A bare \"Done\"",
       "why": "A warm close invites the reader back.",
-      "because": ["voice.values"],
+      "because": [
+        "voice.values"
+      ],
       "example": "You're in. The next issue arrives on Friday."
     },
     {
@@ -1474,7 +1994,10 @@
       "use": "An invitation, not a dead end",
       "not": "\"No items\"",
       "why": "An empty list is a chance to show what the product offers.",
-      "because": ["voice.values", "people.q1"],
+      "because": [
+        "voice.values",
+        "people.q1"
+      ],
       "example": "Nothing saved yet. Tap Save on any article to read it later."
     },
     {
@@ -1482,7 +2005,9 @@
       "use": "Gentle and clear about what changes",
       "not": "Guilt or pressure",
       "why": "Readers come back when leaving felt respectful.",
-      "because": ["voice.values"],
+      "because": [
+        "voice.values"
+      ],
       "example": "Unsubscribe from the weekly letter? You can come back any time."
     },
     {
@@ -1490,7 +2015,10 @@
       "use": "One sentence on what is here and why it is worth reading",
       "not": "A sign-up wall",
       "why": "Occasional readers decide in seconds whether to stay.",
-      "because": ["people.q1", "scenarios.q2"],
+      "because": [
+        "people.q1",
+        "scenarios.q2"
+      ],
       "example": "Practical guides, one a week. Start with the most read."
     },
     {
@@ -1498,7 +2026,10 @@
       "use": "plain text, a link or a heading",
       "not": "a new component for one article",
       "why": "Readers come for the words; extra parts pull the eye away from them.",
-      "because": ["tasks.q1", "outcomes.q1"]
+      "because": [
+        "tasks.q1",
+        "outcomes.q1"
+      ]
     }
   ],
   "tokens": {
@@ -2321,7 +2852,12 @@
       "easing": {
         "standard": {
           "$type": "cubicBezier",
-          "$value": [0.2, 0, 0, 1],
+          "$value": [
+            0.2,
+            0,
+            0,
+            1
+          ],
           "$description": "The easing for feedback transitions."
         }
       },
@@ -3219,7 +3755,10 @@
             "gray": "stone",
             "temperature": "warm",
             "why": "A warm gray is calm, like paper, for long reading.",
-            "because": ["color.values", "color.definition"]
+            "because": [
+              "color.values",
+              "color.definition"
+            ]
           }
         }
       }
@@ -4247,6 +4786,78 @@
         "panels-duration": {
           "$value": "{motion.duration.panels}",
           "$description": "Duration of panels opening and closing: dialogs, sheets, popovers, menus."
+        }
+      },
+      "accordion": {
+        "divider": {
+          "$value": "{color.border.default}",
+          "$description": "The line between items."
+        },
+        "trigger": {
+          "label": {
+            "$value": "{color.text.primary}",
+            "$description": "The trigger's text color."
+          },
+          "font-size": {
+            "$value": "{type.body.font-size}",
+            "$description": "The trigger's text size."
+          },
+          "font-weight": {
+            "$value": "{type.label.font-weight}",
+            "$description": "The trigger's text weight."
+          },
+          "padding-y": {
+            "$value": "{space.inset.container}",
+            "$description": "Space above and below the trigger's text."
+          },
+          "gap": {
+            "$value": "{space.gap.group}",
+            "$description": "Space between the trigger's text and its icon."
+          },
+          "radius": {
+            "$value": "{radius.control}",
+            "$description": "The trigger's corner, seen on focus."
+          }
+        },
+        "focus-ring": {
+          "@": {
+            "$value": "{color.border.focus}",
+            "$description": "The focus ring's color."
+          },
+          "width": {
+            "$value": "{border-width.focus}",
+            "$description": "The focus ring's width."
+          }
+        },
+        "disabled": {
+          "opacity": {
+            "$value": "{opacity.disabled}",
+            "$description": "How faint a disabled trigger is."
+          }
+        },
+        "icon": {
+          "@": {
+            "$value": "{color.text.muted}",
+            "$description": "The chevron's color."
+          },
+          "size": {
+            "$value": "{size.icon}",
+            "$description": "The chevron's size."
+          },
+          "duration": {
+            "$value": "{motion.duration.feedback}",
+            "$description": "How fast the chevron turns."
+          }
+        },
+        "content": {
+          "font-size": {
+            "$value": "{type.body.font-size}",
+            "$description": "The content's text size."
+          },
+          "padding-bottom": {
+            "$value": "{space.inset.container}",
+            "$description": "Space below the content."
+          }
         }
       }
     },

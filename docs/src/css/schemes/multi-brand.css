@@ -122,6 +122,16 @@ html[data-scheme="multi-brand"] [data-brand="aster"] {
   --transition-duration: var(--motion-duration-feedback); /** Duration of feedback transitions. */
   --transition-easing: var(--motion-easing-standard); /** Easing of feedback transitions. */
   --transition-panels-duration: var(--motion-duration-panels); /** Duration of panels opening and closing: dialogs, sheets, popovers, menus. */
+  --accordion-trigger-font-size: var(--type-body-font-size); /** The trigger's text size. */
+  --accordion-trigger-font-weight: var(--type-label-font-weight); /** The trigger's text weight. */
+  --accordion-trigger-padding-y: var(--space-inset-container); /** Space above and below the trigger's text. */
+  --accordion-trigger-gap: var(--space-gap-group); /** Space between the trigger's text and its icon. */
+  --accordion-focus-ring-width: var(--border-width-focus); /** The focus ring's width. */
+  --accordion-disabled-opacity: var(--opacity-disabled); /** How faint a disabled trigger is. */
+  --accordion-icon-size: var(--size-icon); /** The chevron's size. */
+  --accordion-icon-duration: var(--motion-duration-feedback); /** How fast the chevron turns. */
+  --accordion-content-font-size: var(--type-body-font-size); /** The content's text size. */
+  --accordion-content-padding-bottom: var(--space-inset-container); /** Space below the content. */
   --button-primary-background: var(--color-action-primary); /** Primary button fill. */
   --button-primary-background-hover: var(--color-action-primary-hover); /** Primary button fill on hover. */
   --button-danger-background: var(--color-action-danger); /** Danger button fill. */
@@ -150,6 +160,8 @@ html[data-scheme="multi-brand"] [data-brand="aster"] {
   --overlay-radius: var(--radius-container); /** Corner radius of overlays. */
   --overlay-shadow: var(--elevation-overlay); /** Shadow of overlays. */
   --overlay-scrim: var(--color-surface-scrim); /** Color that dims the page behind a dialog. */
+  --accordion-trigger-radius: var(--radius-control); /** The trigger's corner, seen on focus. */
+  --accordion-focus-ring: var(--color-border-focus); /** The focus ring's color. */
   --color-surface-canvas: #F8FAFC; /** The page background behind everything. */
   --color-surface-default: #FFFFFF; /** The base fill for content. */
   --color-surface-raised: #FFFFFF; /** Fills that float above content. */
@@ -198,6 +210,9 @@ html[data-scheme="multi-brand"] [data-brand="aster"] {
   --overlay-background: var(--color-surface-raised); /** Fill of a dialog, menu or toast. */
   --tooltip-background: var(--color-surface-inverse); /** Tooltip fill. */
   --tooltip-label: var(--color-text-inverse); /** Tooltip text. */
+  --accordion-divider: var(--color-border-default); /** The line between items. */
+  --accordion-trigger-label: var(--color-text-primary); /** The trigger's text color. */
+  --accordion-icon: var(--color-text-muted); /** The chevron's color. */
 }
 
 html[data-scheme="multi-brand"][data-theme="dark"],
@@ -323,6 +338,16 @@ html[data-scheme="multi-brand"][data-theme="dark"] [data-brand="aster"],
   --transition-duration: var(--motion-duration-feedback); /** Duration of feedback transitions. */
   --transition-easing: var(--motion-easing-standard); /** Easing of feedback transitions. */
   --transition-panels-duration: var(--motion-duration-panels); /** Duration of panels opening and closing: dialogs, sheets, popovers, menus. */
+  --accordion-trigger-font-size: var(--type-body-font-size); /** The trigger's text size. */
+  --accordion-trigger-font-weight: var(--type-label-font-weight); /** The trigger's text weight. */
+  --accordion-trigger-padding-y: var(--space-inset-container); /** Space above and below the trigger's text. */
+  --accordion-trigger-gap: var(--space-gap-group); /** Space between the trigger's text and its icon. */
+  --accordion-focus-ring-width: var(--border-width-focus); /** The focus ring's width. */
+  --accordion-disabled-opacity: var(--opacity-disabled); /** How faint a disabled trigger is. */
+  --accordion-icon-size: var(--size-icon); /** The chevron's size. */
+  --accordion-icon-duration: var(--motion-duration-feedback); /** How fast the chevron turns. */
+  --accordion-content-font-size: var(--type-body-font-size); /** The content's text size. */
+  --accordion-content-padding-bottom: var(--space-inset-container); /** Space below the content. */
   --button-primary-background: var(--color-action-primary); /** Primary button fill. */
   --button-primary-background-hover: var(--color-action-primary-hover); /** Primary button fill on hover. */
   --button-danger-background: var(--color-action-danger); /** Danger button fill. */
@@ -351,6 +376,8 @@ html[data-scheme="multi-brand"][data-theme="dark"] [data-brand="aster"],
   --overlay-radius: var(--radius-container); /** Corner radius of overlays. */
   --overlay-shadow: var(--elevation-overlay); /** Shadow of overlays. */
   --overlay-scrim: var(--color-surface-scrim); /** Color that dims the page behind a dialog. */
+  --accordion-trigger-radius: var(--radius-control); /** The trigger's corner, seen on focus. */
+  --accordion-focus-ring: var(--color-border-focus); /** The focus ring's color. */
   --color-surface-canvas: #020617; /** The page background behind everything. */
   --color-surface-default: #0F172A; /** The base fill for content. */
   --color-surface-raised: #1E293B; /** Fills that float above content. */
@@ -399,6 +426,9 @@ html[data-scheme="multi-brand"][data-theme="dark"] [data-brand="aster"],
   --overlay-background: var(--color-surface-raised); /** Fill of a dialog, menu or toast. */
   --tooltip-background: var(--color-surface-inverse); /** Tooltip fill. */
   --tooltip-label: var(--color-text-inverse); /** Tooltip text. */
+  --accordion-divider: var(--color-border-default); /** The line between items. */
+  --accordion-trigger-label: var(--color-text-primary); /** The trigger's text color. */
+  --accordion-icon: var(--color-text-muted); /** The chevron's color. */
 }
 
 html[data-scheme="multi-brand"][data-brand="birch"],
@@ -522,6 +552,16 @@ html[data-scheme="multi-brand"] [data-brand="birch"] {
   --transition-duration: var(--motion-duration-feedback); /** Duration of feedback transitions. */
   --transition-easing: var(--motion-easing-standard); /** Easing of feedback transitions. */
   --transition-panels-duration: var(--motion-duration-panels); /** Duration of panels opening and closing: dialogs, sheets, popovers, menus. */
+  --accordion-trigger-font-size: var(--type-body-font-size); /** The trigger's text size. */
+  --accordion-trigger-font-weight: var(--type-label-font-weight); /** The trigger's text weight. */
+  --accordion-trigger-padding-y: var(--space-inset-container); /** Space above and below the trigger's text. */
+  --accordion-trigger-gap: var(--space-gap-group); /** Space between the trigger's text and its icon. */
+  --accordion-focus-ring-width: var(--border-width-focus); /** The focus ring's width. */
+  --accordion-disabled-opacity: var(--opacity-disabled); /** How faint a disabled trigger is. */
+  --accordion-icon-size: var(--size-icon); /** The chevron's size. */
+  --accordion-icon-duration: var(--motion-duration-feedback); /** How fast the chevron turns. */
+  --accordion-content-font-size: var(--type-body-font-size); /** The content's text size. */
+  --accordion-content-padding-bottom: var(--space-inset-container); /** Space below the content. */
   --button-primary-background: var(--color-action-primary); /** Primary button fill. */
   --button-primary-background-hover: var(--color-action-primary-hover); /** Primary button fill on hover. */
   --button-danger-background: var(--color-action-danger); /** Danger button fill. */
@@ -550,6 +590,8 @@ html[data-scheme="multi-brand"] [data-brand="birch"] {
   --overlay-radius: var(--radius-container); /** Corner radius of overlays. */
   --overlay-shadow: var(--elevation-overlay); /** Shadow of overlays. */
   --overlay-scrim: var(--color-surface-scrim); /** Color that dims the page behind a dialog. */
+  --accordion-trigger-radius: var(--radius-control); /** The trigger's corner, seen on focus. */
+  --accordion-focus-ring: var(--color-border-focus); /** The focus ring's color. */
   --color-surface-canvas: #F8FAFC; /** The page background behind everything. */
   --color-surface-default: #FFFFFF; /** The base fill for content. */
   --color-surface-raised: #FFFFFF; /** Fills that float above content. */
@@ -598,6 +640,9 @@ html[data-scheme="multi-brand"] [data-brand="birch"] {
   --overlay-background: var(--color-surface-raised); /** Fill of a dialog, menu or toast. */
   --tooltip-background: var(--color-surface-inverse); /** Tooltip fill. */
   --tooltip-label: var(--color-text-inverse); /** Tooltip text. */
+  --accordion-divider: var(--color-border-default); /** The line between items. */
+  --accordion-trigger-label: var(--color-text-primary); /** The trigger's text color. */
+  --accordion-icon: var(--color-text-muted); /** The chevron's color. */
 }
 
 html[data-scheme="multi-brand"][data-theme="dark"][data-brand="birch"],
@@ -722,6 +767,16 @@ html[data-scheme="multi-brand"][data-theme="dark"] [data-brand="birch"],
   --transition-duration: var(--motion-duration-feedback); /** Duration of feedback transitions. */
   --transition-easing: var(--motion-easing-standard); /** Easing of feedback transitions. */
   --transition-panels-duration: var(--motion-duration-panels); /** Duration of panels opening and closing: dialogs, sheets, popovers, menus. */
+  --accordion-trigger-font-size: var(--type-body-font-size); /** The trigger's text size. */
+  --accordion-trigger-font-weight: var(--type-label-font-weight); /** The trigger's text weight. */
+  --accordion-trigger-padding-y: var(--space-inset-container); /** Space above and below the trigger's text. */
+  --accordion-trigger-gap: var(--space-gap-group); /** Space between the trigger's text and its icon. */
+  --accordion-focus-ring-width: var(--border-width-focus); /** The focus ring's width. */
+  --accordion-disabled-opacity: var(--opacity-disabled); /** How faint a disabled trigger is. */
+  --accordion-icon-size: var(--size-icon); /** The chevron's size. */
+  --accordion-icon-duration: var(--motion-duration-feedback); /** How fast the chevron turns. */
+  --accordion-content-font-size: var(--type-body-font-size); /** The content's text size. */
+  --accordion-content-padding-bottom: var(--space-inset-container); /** Space below the content. */
   --button-primary-background: var(--color-action-primary); /** Primary button fill. */
   --button-primary-background-hover: var(--color-action-primary-hover); /** Primary button fill on hover. */
   --button-danger-background: var(--color-action-danger); /** Danger button fill. */
@@ -750,6 +805,8 @@ html[data-scheme="multi-brand"][data-theme="dark"] [data-brand="birch"],
   --overlay-radius: var(--radius-container); /** Corner radius of overlays. */
   --overlay-shadow: var(--elevation-overlay); /** Shadow of overlays. */
   --overlay-scrim: var(--color-surface-scrim); /** Color that dims the page behind a dialog. */
+  --accordion-trigger-radius: var(--radius-control); /** The trigger's corner, seen on focus. */
+  --accordion-focus-ring: var(--color-border-focus); /** The focus ring's color. */
   --color-surface-canvas: #020617; /** The page background behind everything. */
   --color-surface-default: #0F172A; /** The base fill for content. */
   --color-surface-raised: #1E293B; /** Fills that float above content. */
@@ -798,6 +855,9 @@ html[data-scheme="multi-brand"][data-theme="dark"] [data-brand="birch"],
   --overlay-background: var(--color-surface-raised); /** Fill of a dialog, menu or toast. */
   --tooltip-background: var(--color-surface-inverse); /** Tooltip fill. */
   --tooltip-label: var(--color-text-inverse); /** Tooltip text. */
+  --accordion-divider: var(--color-border-default); /** The line between items. */
+  --accordion-trigger-label: var(--color-text-primary); /** The trigger's text color. */
+  --accordion-icon: var(--color-text-muted); /** The chevron's color. */
 }
 
 html[data-scheme="multi-brand"][data-brand="coral"],
@@ -921,6 +981,16 @@ html[data-scheme="multi-brand"] [data-brand="coral"] {
   --transition-duration: var(--motion-duration-feedback); /** Duration of feedback transitions. */
   --transition-easing: var(--motion-easing-standard); /** Easing of feedback transitions. */
   --transition-panels-duration: var(--motion-duration-panels); /** Duration of panels opening and closing: dialogs, sheets, popovers, menus. */
+  --accordion-trigger-font-size: var(--type-body-font-size); /** The trigger's text size. */
+  --accordion-trigger-font-weight: var(--type-label-font-weight); /** The trigger's text weight. */
+  --accordion-trigger-padding-y: var(--space-inset-container); /** Space above and below the trigger's text. */
+  --accordion-trigger-gap: var(--space-gap-group); /** Space between the trigger's text and its icon. */
+  --accordion-focus-ring-width: var(--border-width-focus); /** The focus ring's width. */
+  --accordion-disabled-opacity: var(--opacity-disabled); /** How faint a disabled trigger is. */
+  --accordion-icon-size: var(--size-icon); /** The chevron's size. */
+  --accordion-icon-duration: var(--motion-duration-feedback); /** How fast the chevron turns. */
+  --accordion-content-font-size: var(--type-body-font-size); /** The content's text size. */
+  --accordion-content-padding-bottom: var(--space-inset-container); /** Space below the content. */
   --button-primary-background: var(--color-action-primary); /** Primary button fill. */
   --button-primary-background-hover: var(--color-action-primary-hover); /** Primary button fill on hover. */
   --button-danger-background: var(--color-action-danger); /** Danger button fill. */
@@ -949,6 +1019,8 @@ html[data-scheme="multi-brand"] [data-brand="coral"] {
   --overlay-radius: var(--radius-container); /** Corner radius of overlays. */
   --overlay-shadow: var(--elevation-overlay); /** Shadow of overlays. */
   --overlay-scrim: var(--color-surface-scrim); /** Color that dims the page behind a dialog. */
+  --accordion-trigger-radius: var(--radius-control); /** The trigger's corner, seen on focus. */
+  --accordion-focus-ring: var(--color-border-focus); /** The focus ring's color. */
   --color-surface-canvas: #F8FAFC; /** The page background behind everything. */
   --color-surface-default: #FFFFFF; /** The base fill for content. */
   --color-surface-raised: #FFFFFF; /** Fills that float above content. */
@@ -997,6 +1069,9 @@ html[data-scheme="multi-brand"] [data-brand="coral"] {
   --overlay-background: var(--color-surface-raised); /** Fill of a dialog, menu or toast. */
   --tooltip-background: var(--color-surface-inverse); /** Tooltip fill. */
   --tooltip-label: var(--color-text-inverse); /** Tooltip text. */
+  --accordion-divider: var(--color-border-default); /** The line between items. */
+  --accordion-trigger-label: var(--color-text-primary); /** The trigger's text color. */
+  --accordion-icon: var(--color-text-muted); /** The chevron's color. */
 }
 
 html[data-scheme="multi-brand"][data-theme="dark"][data-brand="coral"],
@@ -1121,6 +1196,16 @@ html[data-scheme="multi-brand"][data-theme="dark"] [data-brand="coral"],
   --transition-duration: var(--motion-duration-feedback); /** Duration of feedback transitions. */
   --transition-easing: var(--motion-easing-standard); /** Easing of feedback transitions. */
   --transition-panels-duration: var(--motion-duration-panels); /** Duration of panels opening and closing: dialogs, sheets, popovers, menus. */
+  --accordion-trigger-font-size: var(--type-body-font-size); /** The trigger's text size. */
+  --accordion-trigger-font-weight: var(--type-label-font-weight); /** The trigger's text weight. */
+  --accordion-trigger-padding-y: var(--space-inset-container); /** Space above and below the trigger's text. */
+  --accordion-trigger-gap: var(--space-gap-group); /** Space between the trigger's text and its icon. */
+  --accordion-focus-ring-width: var(--border-width-focus); /** The focus ring's width. */
+  --accordion-disabled-opacity: var(--opacity-disabled); /** How faint a disabled trigger is. */
+  --accordion-icon-size: var(--size-icon); /** The chevron's size. */
+  --accordion-icon-duration: var(--motion-duration-feedback); /** How fast the chevron turns. */
+  --accordion-content-font-size: var(--type-body-font-size); /** The content's text size. */
+  --accordion-content-padding-bottom: var(--space-inset-container); /** Space below the content. */
   --button-primary-background: var(--color-action-primary); /** Primary button fill. */
   --button-primary-background-hover: var(--color-action-primary-hover); /** Primary button fill on hover. */
   --button-danger-background: var(--color-action-danger); /** Danger button fill. */
@@ -1149,6 +1234,8 @@ html[data-scheme="multi-brand"][data-theme="dark"] [data-brand="coral"],
   --overlay-radius: var(--radius-container); /** Corner radius of overlays. */
   --overlay-shadow: var(--elevation-overlay); /** Shadow of overlays. */
   --overlay-scrim: var(--color-surface-scrim); /** Color that dims the page behind a dialog. */
+  --accordion-trigger-radius: var(--radius-control); /** The trigger's corner, seen on focus. */
+  --accordion-focus-ring: var(--color-border-focus); /** The focus ring's color. */
   --color-surface-canvas: #020617; /** The page background behind everything. */
   --color-surface-default: #0F172A; /** The base fill for content. */
   --color-surface-raised: #1E293B; /** Fills that float above content. */
@@ -1197,6 +1284,9 @@ html[data-scheme="multi-brand"][data-theme="dark"] [data-brand="coral"],
   --overlay-background: var(--color-surface-raised); /** Fill of a dialog, menu or toast. */
   --tooltip-background: var(--color-surface-inverse); /** Tooltip fill. */
   --tooltip-label: var(--color-text-inverse); /** Tooltip text. */
+  --accordion-divider: var(--color-border-default); /** The line between items. */
+  --accordion-trigger-label: var(--color-text-primary); /** The trigger's text color. */
+  --accordion-icon: var(--color-text-muted); /** The chevron's color. */
 }
 html[data-scheme="multi-brand"] {
   --ifm-color-primary: var(--color-action-primary);

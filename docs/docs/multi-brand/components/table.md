@@ -63,54 +63,8 @@ npx open-ds add table
 
 The component reads only component keys and semantic tokens, so it follows the brand and mode on `<html>`.
 
-## Component keys
+## Tokens it reads
 
-The CSS variable is the key with `/` replaced by `-` and the base `@` dropped. Each key points to a token; values live only on primitives.
+Table reads 6 tokens of its own, each an alias of a semantic token. Each row is one part: its own token, the semantic it aliases, and the value it ends at. A row marked Themeable changes between light and dark. Change a semantic and every component that reads it follows; override one of Table's tokens to change Table alone.
 
-<div class="odv-brandset" data-for-brand="aster">
-
-<p class="odv-brandname">Aster</p>
-
-| Key | What it controls | Points to, aster-light | Points to, aster-dark |
-| --- | --- | --- | --- |
-| `table/header-background` | Header row fill. | `color.surface.sunken` → `aster.theme.light.color.surface.sunken` → `color.neutral.100` → `aster.theme.light.color.neutral.100` → `color.slate-deep.light.100` | `color.surface.sunken` → `aster.theme.dark.color.surface.sunken` → `color.neutral.100` → `aster.theme.dark.color.neutral.100` → `color.slate-deep.dark.100` |
-| `table/row-height` | Height of one data row. | `size.row` → `size.48` | same |
-| `table/cell-padding-x` | Horizontal padding inside a cell. | `space.inset.cell-x` → `space.16` | same |
-| `table/row-border` | Line between rows. | `color.border.default` → `aster.theme.light.color.border.default` → `color.neutral.200` → `aster.theme.light.color.neutral.200` → `color.slate-deep.light.200` | `color.border.default` → `aster.theme.dark.color.border.default` → `color.neutral.100` → `aster.theme.dark.color.neutral.100` → `color.slate-deep.dark.100` |
-| `table/row-selected` | Fill of a selected row. | `color.surface.selected` → `aster.theme.light.color.surface.selected` → `color.teal.light.100` | `color.surface.selected` → `aster.theme.dark.color.surface.selected` → `color.teal.dark.100` |
-| `table/row-selected-edge` | Edge that marks a selected row, beside its fill. | `color.border.selected` → `aster.theme.light.color.border.selected` → `color.teal.light.600` | `color.border.selected` → `aster.theme.dark.color.border.selected` → `color.teal.dark.600` |
-| `table/font-size` | Cell text size. | `type.data.font-size` → `font.size.16` | same |
-
-</div>
-
-<div class="odv-brandset" data-for-brand="birch">
-
-<p class="odv-brandname">Birch</p>
-
-| Key | What it controls | Points to, birch-light | Points to, birch-dark |
-| --- | --- | --- | --- |
-| `table/header-background` | Header row fill. | `color.surface.sunken` → `birch.theme.light.color.surface.sunken` → `color.neutral.100` → `birch.theme.light.color.neutral.100` → `color.slate-deep.light.100` | `color.surface.sunken` → `birch.theme.dark.color.surface.sunken` → `color.neutral.100` → `birch.theme.dark.color.neutral.100` → `color.slate-deep.dark.100` |
-| `table/row-height` | Height of one data row. | `size.row` → `size.48` | same |
-| `table/cell-padding-x` | Horizontal padding inside a cell. | `space.inset.cell-x` → `space.16` | same |
-| `table/row-border` | Line between rows. | `color.border.default` → `birch.theme.light.color.border.default` → `color.neutral.200` → `birch.theme.light.color.neutral.200` → `color.slate-deep.light.200` | `color.border.default` → `birch.theme.dark.color.border.default` → `color.neutral.100` → `birch.theme.dark.color.neutral.100` → `color.slate-deep.dark.100` |
-| `table/row-selected` | Fill of a selected row. | `color.surface.selected` → `birch.theme.light.color.surface.selected` → `color.purple.light.100` | `color.surface.selected` → `birch.theme.dark.color.surface.selected` → `color.purple.dark.100` |
-| `table/row-selected-edge` | Edge that marks a selected row, beside its fill. | `color.border.selected` → `birch.theme.light.color.border.selected` → `color.purple.light.600` | `color.border.selected` → `birch.theme.dark.color.border.selected` → `color.purple.dark.600` |
-| `table/font-size` | Cell text size. | `type.data.font-size` → `font.size.16` | same |
-
-</div>
-
-<div class="odv-brandset" data-for-brand="coral">
-
-<p class="odv-brandname">Coral</p>
-
-| Key | What it controls | Points to, coral-light | Points to, coral-dark |
-| --- | --- | --- | --- |
-| `table/header-background` | Header row fill. | `color.surface.sunken` → `coral.theme.light.color.surface.sunken` → `color.neutral.100` → `coral.theme.light.color.neutral.100` → `color.slate-deep.light.100` | `color.surface.sunken` → `coral.theme.dark.color.surface.sunken` → `color.neutral.100` → `coral.theme.dark.color.neutral.100` → `color.slate-deep.dark.100` |
-| `table/row-height` | Height of one data row. | `size.row` → `size.48` | same |
-| `table/cell-padding-x` | Horizontal padding inside a cell. | `space.inset.cell-x` → `space.16` | same |
-| `table/row-border` | Line between rows. | `color.border.default` → `coral.theme.light.color.border.default` → `color.neutral.200` → `coral.theme.light.color.neutral.200` → `color.slate-deep.light.200` | `color.border.default` → `coral.theme.dark.color.border.default` → `color.neutral.100` → `coral.theme.dark.color.neutral.100` → `color.slate-deep.dark.100` |
-| `table/row-selected` | Fill of a selected row. | `color.surface.selected` → `coral.theme.light.color.surface.selected` → `color.orange.light.100` | `color.surface.selected` → `coral.theme.dark.color.surface.selected` → `color.orange.dark.100` |
-| `table/row-selected-edge` | Edge that marks a selected row, beside its fill. | `color.border.selected` → `coral.theme.light.color.border.selected` → `color.orange.light.600` | `color.border.selected` → `coral.theme.dark.color.border.selected` → `color.orange.dark.600` |
-| `table/font-size` | Cell text size. | `type.data.font-size` → `font.size.16` | same |
-
-</div>
+<div class="odv-tscroll"><table class="odv-ttable odv-reads odv-api"><thead><tr><th>Part</th><th>Its token and the semantic it aliases</th><th>Value</th></tr></thead><tbody><tr class="odv-vgroup"><td colspan="3">Table</td></tr><tr><td><b>Header background</b><br/><span class="odv-themed" title="Its value changes between light and dark">Themeable</span></td><td><span class="odv-api-tok"><span class="tok own">component.table.header-background</span><span class="odv-branch"><span class="tok">color.surface.sunken</span></span><span class="odv-branch odv-branch-css odv-branch-last"><code>var(--table-header-background)</code></span></span></td><td><span class="odv-vpair"><span><em>Aster Light</em><span class="odv-tsw"><i style="background:#F1F5F9"></i><small>slate-deep.light.100 · #F1F5F9</small></span></span><span><em>Aster Dark</em><span class="odv-tsw"><i style="background:#1E293B"></i><small>slate-deep.dark.100 · #1E293B</small></span></span><span><em>Birch Light</em><span class="odv-tsw"><i style="background:#F1F5F9"></i><small>slate-deep.light.100 · #F1F5F9</small></span></span><span><em>Birch Dark</em><span class="odv-tsw"><i style="background:#1E293B"></i><small>slate-deep.dark.100 · #1E293B</small></span></span><span><em>Coral Light</em><span class="odv-tsw"><i style="background:#F1F5F9"></i><small>slate-deep.light.100 · #F1F5F9</small></span></span><span><em>Coral Dark</em><span class="odv-tsw"><i style="background:#1E293B"></i><small>slate-deep.dark.100 · #1E293B</small></span></span></span></td></tr><tr><td><b>Row height</b></td><td><span class="odv-api-tok"><span class="tok own">component.table.row-height</span><span class="odv-branch"><span class="tok">size.row</span></span><span class="odv-branch odv-branch-css odv-branch-last"><code>var(--table-row-height)</code></span></span></td><td><span class="odv-tsw"><small>size.48 · 3rem</small></span></td></tr><tr><td><b>Cell padding x</b></td><td><span class="odv-api-tok"><span class="tok own">component.table.cell-padding-x</span><span class="odv-branch"><span class="tok">space.inset.cell-x</span></span><span class="odv-branch odv-branch-css odv-branch-last"><code>var(--table-cell-padding-x)</code></span></span></td><td><span class="odv-tsw"><small>space.16 · 1rem</small></span></td></tr><tr><td><b>Row border</b><br/><span class="odv-themed" title="Its value changes between light and dark">Themeable</span></td><td><span class="odv-api-tok"><span class="tok own">component.table.row-border</span><span class="odv-branch"><span class="tok">color.border.default</span></span><span class="odv-branch odv-branch-css odv-branch-last"><code>var(--table-row-border)</code></span></span></td><td><span class="odv-vpair"><span><em>Aster Light</em><span class="odv-tsw"><i style="background:#E2E8F0"></i><small>slate-deep.light.200 · #E2E8F0</small></span></span><span><em>Aster Dark</em><span class="odv-tsw"><i style="background:#1E293B"></i><small>slate-deep.dark.100 · #1E293B</small></span></span><span><em>Birch Light</em><span class="odv-tsw"><i style="background:#E2E8F0"></i><small>slate-deep.light.200 · #E2E8F0</small></span></span><span><em>Birch Dark</em><span class="odv-tsw"><i style="background:#1E293B"></i><small>slate-deep.dark.100 · #1E293B</small></span></span><span><em>Coral Light</em><span class="odv-tsw"><i style="background:#E2E8F0"></i><small>slate-deep.light.200 · #E2E8F0</small></span></span><span><em>Coral Dark</em><span class="odv-tsw"><i style="background:#1E293B"></i><small>slate-deep.dark.100 · #1E293B</small></span></span></span></td></tr><tr><td><b>Row selected</b><br/><span class="odv-themed" title="Its value changes between light and dark">Themeable</span><br/><small>when selected</small></td><td><span class="odv-api-tok"><span class="tok own">component.table.row-selected</span><span class="odv-branch"><span class="tok">color.surface.selected</span></span><span class="odv-branch odv-branch-css odv-branch-last"><code>var(--table-row-selected)</code></span></span></td><td><span class="odv-vpair"><span><em>Aster Light</em><span class="odv-tsw"><i style="background:#DEF3F0"></i><small>teal.light.100 · #DEF3F0</small></span></span><span><em>Aster Dark</em><span class="odv-tsw"><i style="background:#012C28"></i><small>teal.dark.100 · #012C28</small></span></span><span><em>Birch Light</em><span class="odv-tsw"><i style="background:#EDEAFE"></i><small>purple.light.100 · #EDEAFE</small></span></span><span><em>Birch Dark</em><span class="odv-tsw"><i style="background:#271745"></i><small>purple.dark.100 · #271745</small></span></span><span><em>Coral Light</em><span class="odv-tsw"><i style="background:#FEEBE4"></i><small>orange.light.100 · #FEEBE4</small></span></span><span><em>Coral Dark</em><span class="odv-tsw"><i style="background:#3F1702"></i><small>orange.dark.100 · #3F1702</small></span></span></span></td></tr><tr><td><b>Text size</b></td><td><span class="odv-api-tok"><span class="tok own">component.table.font-size</span><span class="odv-branch"><span class="tok">type.data.font-size</span></span><span class="odv-branch odv-branch-css odv-branch-last"><code>var(--table-font-size)</code></span></span></td><td><span class="odv-tsw"><small>font.size.16 · 1rem</small></span></td></tr></tbody></table></div>
