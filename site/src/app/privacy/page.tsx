@@ -113,11 +113,10 @@ export default function PrivacyPage() {
 
       <Section id="cookies" title="Cookies">
         <p>
-          If you accept, Google Analytics sets two cookies on this site, its docs and its
-          Storybook: <code>_ga</code>, which
-          tells one visitor from another, and <code>_ga_&lt;id&gt;</code>, which keeps the visit
-          together. Both last up to 2 years unless you clear them or withdraw. If you reject, none
-          are set.
+          If you accept, Google Analytics sets two cookies on this site, its docs and its Storybook:{" "}
+          <code>_ga</code>, which tells one visitor from another, and <code>_ga_&lt;id&gt;</code>,
+          which keeps the visit together. Both last up to 2 years unless you clear them or withdraw.
+          If you reject, none are set.
         </p>
         <p>
           One choice covers the site, the docs and Storybook. You can change your mind any time:
