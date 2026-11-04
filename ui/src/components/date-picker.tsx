@@ -51,7 +51,10 @@ export function DatePicker(props: DatePickerProps) {
           variant="secondary"
           data-slot="date-picker"
           data-empty={!value}
-          className={cn("justify-start text-left font-normal data-[empty=true]:text-muted-foreground", className)}
+          className={cn(
+            "justify-start text-left [font-weight:var(--date-picker-font-weight)] data-[empty=true]:text-[color:var(--date-picker-label)]",
+            className,
+          )}
         >
           <CalendarIcon />
           {label}

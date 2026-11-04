@@ -282,12 +282,23 @@ function shortComponent(c, carried) {
   if (c.keys?.length) {
     // Keys by name; a key family (…/@, …/hover) once, with its semantic.
     lines.push("", "## Keys");
-    lines.push(
-      c.keys
-        .filter((k) => !/\/hover$/.test(k.key))
-        .map((k) => k.key.replace(/\/@$/, ""))
-        .join(", "),
-    );
+    const names = c.keys
+      .filter((k) => !/\/hover$/.test(k.key))
+      .map((k) => k.key.replace(/\/@$/, ""));
+    // a long API by part (OD-234): its tokens grouped by the part they style; every name is in section keys
+    if (names.join(", ").length > 400) {
+      const parts = {};
+      for (const n of names) {
+        const seg = n.split("/");
+        const part = seg.length > 2 ? seg[1] : "root";
+        parts[part] = (parts[part] ?? 0) + 1;
+      }
+      lines.push(
+        `${c.keys.length} tokens of its own, by part: ${Object.entries(parts)
+          .map(([p, n]) => `${p} (${n})`)
+          .join(", ")}. Every name, with the semantic it reads: section keys.`,
+      );
+    } else lines.push(names.join(", "));
     if (c.keys.some((k) => /\/hover$/.test(k.key)))
       lines.push(
         "Hover keys add /hover. Which semantic each reads: section keys.",

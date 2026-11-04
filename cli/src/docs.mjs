@@ -1714,9 +1714,18 @@ export function docsPages(
   // the part of the component a token belongs to, and its name there: trigger.padding-y → Trigger ·
   // Padding, top and bottom; icon.@ (a color) → Icon · Color; divider → Accordion · Divider
   const anatomyOf = (path, comp, alias) => {
+    // a token every component shares (component.transition.*) sits under Shared
+    if (!path.startsWith(`component.${comp}.`))
+      return {
+        group: "Shared",
+        name: human(path.split(".").slice(1).join(" ")),
+      };
     const seg = path.replace(`component.${comp}.`, "").split(".");
     const kind = alias.startsWith("color.") ? "Color" : "Value";
     if (seg.length === 1) return { group: title(comp), name: human(seg[0]) };
+    // primary.background.@ → Primary · Background, beside its hover; icon.@ → Icon · Color
+    if (seg.at(-1) === "@" && seg.length > 2)
+      return { group: human(seg[0]), name: human(seg.slice(1, -1).join(" ")) };
     if (seg.at(-1) === "@")
       return { group: human(seg.slice(0, -1).join(" ")), name: kind };
     return { group: human(seg[0]), name: human(seg.slice(1).join(" ")) };
@@ -1802,8 +1811,11 @@ export function docsPages(
       // The lookup keeps a base's @; the page shows the token without it.
       row.lookup = row.lookup ?? tokenPaths[row.token];
       row.path = row.path ?? row.lookup.replace(/\.@$/, "");
-      const k = `${row.part}|${row.path}|${row.when}`;
-      if (!rows.has(k)) rows.set(k, row);
+      // A token of its own shows once, in its plainest state (disabled covers disabled and hovered).
+      const k = row.own ? row.path : `${row.part}|${row.path}|${row.when}`;
+      const had = rows.get(k);
+      if (!had || (row.own && row.when.length < had.when.length))
+        rows.set(k, row);
     }
     const order = [
       "Fill",

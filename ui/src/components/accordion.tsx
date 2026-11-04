@@ -33,7 +33,7 @@ function AccordionTrigger({ className, children, ...props }: React.ComponentProp
       <AccordionPrimitive.Trigger
         data-slot="accordion-trigger"
         className={cn(
-          "flex flex-1 items-start justify-between gap-[var(--accordion-trigger-gap)] rounded-[var(--accordion-trigger-radius)] py-[var(--accordion-trigger-padding-y)] text-left text-[length:var(--accordion-trigger-font-size)] [font-weight:var(--accordion-trigger-font-weight)] text-[color:var(--accordion-trigger-label)] transition-all outline-none hover:underline focus-visible:border-[color:var(--accordion-focus-ring)] disabled:pointer-events-none disabled:opacity-[var(--accordion-disabled-opacity)] [&[data-state=open]>svg]:rotate-180 focus-visible:ring-[length:var(--accordion-focus-ring-width)] focus-visible:ring-[color:var(--accordion-focus-ring)] focus-visible:ring-offset-2 focus-visible:ring-offset-background",
+          "flex flex-1 items-start justify-between gap-[var(--accordion-trigger-gap)] rounded-[var(--accordion-trigger-radius)] py-[var(--accordion-trigger-padding-y)] text-left text-[length:var(--accordion-trigger-font-size)] [font-weight:var(--accordion-trigger-font-weight)] text-[color:var(--accordion-trigger-label)] transition-all outline-none hover:underline focus-visible:border-[color:var(--accordion-focus-ring)] disabled:pointer-events-none disabled:opacity-[var(--accordion-disabled-opacity)] [&[data-state=open]>svg]:rotate-180 focus-visible:ring-[length:var(--accordion-focus-ring-width)] focus-visible:ring-[color:var(--accordion-focus-ring)] focus-visible:ring-offset-2 focus-visible:ring-offset-[color:var(--accordion-trigger-focus-ring-offset-focus)]",
           className,
         )}
         {...props}

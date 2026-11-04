@@ -491,7 +491,7 @@ export function createMcpServer({ roots = assetRoots() } = {}) {
     {
       title: "Component",
       description:
-        "One component in one scheme: the reference (what the component and each of its variants are for, the same in every design system, and what to use instead) next to this scheme's decisions (whether it carries the component and why, how it uses each variant or that it does not, and its usage rules). Read this before you build with a component or pick a variant.",
+        "One component in one scheme: the reference (what the component and each of its variants are for, the same in every design system, and what to use instead) next to this scheme's decisions (whether it carries the component and why, how it uses each variant or that it does not, and its usage rules), and its token API: every token it reads, the semantic each aliases, its CSS variable, and its value in every theme. Read this before you build with a component, pick a variant, or override one of its tokens.",
       inputSchema: {
         scheme_id: SchemeId,
         component: z

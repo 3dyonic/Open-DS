@@ -14,7 +14,7 @@ export function TabsList({ className, ...props }: React.ComponentProps<typeof Ta
     <TabsPrimitive.List
       data-slot="tabs-list"
       className={cn(
-        "inline-flex items-center gap-[var(--space-gap-group)] border-b-[length:var(--border-width-default)] border-[var(--color-border-default)]",
+        "inline-flex items-center gap-[var(--tabs-list-gap)] border-b-[length:var(--tabs-list-border-width)] border-[var(--tabs-list-border)]",
         className,
       )}
       {...props}
@@ -27,10 +27,10 @@ export function TabsTrigger({ className, ...props }: React.ComponentProps<typeof
     <TabsPrimitive.Trigger
       data-slot="tabs-trigger"
       className={cn(
-        "-mb-px inline-flex h-[var(--size-control-default)] items-center border-b-2 border-transparent text-[var(--tabs-label)]",
-        "[font-family:var(--type-label-font-family)] text-[length:var(--type-label-font-size)] [font-weight:var(--type-label-font-weight)]",
+        "-mb-px inline-flex h-[var(--tabs-trigger-height)] items-center border-b-2 border-transparent text-[var(--tabs-label)]",
+        "[font-family:var(--tabs-trigger-font-family)] text-[length:var(--tabs-trigger-font-size)] [font-weight:var(--tabs-trigger-font-weight)]",
         "data-[state=active]:border-[var(--tabs-indicator)] data-[state=active]:text-[var(--tabs-label-active)]",
-        "outline-none focus-visible:ring-[length:var(--border-width-focus)] focus-visible:ring-[color:var(--button-focus-ring)] focus-visible:ring-offset-2 focus-visible:ring-offset-[color:var(--color-surface-canvas)]",
+        "outline-none focus-visible:ring-[length:var(--tabs-focus)] focus-visible:ring-[color:var(--button-focus-ring)] focus-visible:ring-offset-2 focus-visible:ring-offset-[color:var(--tabs-canvas)]",
         className,
       )}
       {...props}
@@ -42,7 +42,7 @@ export function TabsContent({ className, ...props }: React.ComponentProps<typeof
   return (
     <TabsPrimitive.Content
       data-slot="tabs-content"
-      className={cn("pt-[var(--space-gap-default)] outline-none", className)}
+      className={cn("pt-[var(--tabs-content-padding-top)] outline-none", className)}
       {...props}
     />
   );

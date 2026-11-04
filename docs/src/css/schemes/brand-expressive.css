@@ -101,21 +101,53 @@ html[data-scheme="brand-expressive"] {
   --type-data-font-family: "DM Sans", system-ui, sans-serif;
   --elevation-card: 0px 12px 32px 0px #1F141124;
   --elevation-overlay: 0px 24px 48px 0px #1F141133;
+  --button-secondary-border-width: var(--border-width-default); /** Secondary border width of the button. */
   --button-height: var(--size-control-default); /** Button height. */
   --button-padding-x: var(--space-inset-control-x); /** Horizontal padding inside a button. */
   --button-font-size: var(--type-label-font-size); /** Button label size. */
   --button-font-weight: var(--type-label-font-weight); /** Button label weight. */
   --button-icon-size: var(--size-icon); /** Size of an icon inside a button. */
+  --button-gap: var(--space-gap-default); /** Gap of the button. */
+  --button-focus: var(--border-width-focus); /** Focus of the button. */
+  --button-compact-height: var(--size-control-compact); /** Compact height of the button. */
+  --button-compact-padding-x: var(--space-inset-cell-x); /** Compact padding x of the button. */
+  --button-large-height: var(--size-control-large); /** Large height of the button. */
   --input-height: var(--size-control-default); /** Input height. */
   --input-padding-x: var(--space-inset-control-x); /** Horizontal padding inside an input. */
   --input-font-size: var(--type-body-font-size); /** Typed text size. */
+  --input-border-width: var(--border-width-default); /** Border width of the input. */
+  --input-focus: var(--border-width-focus); /** Focus of the input. */
   --badge-padding-x: var(--space-gap-tight); /** Horizontal padding inside a badge. */
   --badge-font-size: var(--type-caption-font-size); /** Badge label size. */
+  --badge-gap: var(--space-gap-tight); /** Gap of the badge. */
+  --badge-font-weight: var(--type-label-font-weight); /** Font weight of the badge. */
   --card-padding: var(--space-inset-container); /** Padding inside a card. */
+  --card-gap: var(--space-gap-default); /** Gap of the card. */
+  --card-border-width: var(--border-width-default); /** Border width of the card. */
+  --card-header-gap: var(--space-gap-tight); /** Header gap of the card. */
+  --card-title-font-size: var(--type-heading-font-size); /** Title font size of the card. */
+  --card-title-font-weight: var(--type-heading-font-weight); /** Title font weight of the card. */
+  --card-title-line-height: var(--type-heading-line-height); /** Title line height of the card. */
+  --card-description-font-size: var(--type-body-font-size); /** Description font size of the card. */
+  --card-content-gap: var(--space-gap-default); /** Content gap of the card. */
+  --card-footer-gap: var(--space-gap-default); /** Footer gap of the card. */
   --table-row-height: var(--size-row); /** Height of one data row. */
   --table-cell-padding-x: var(--space-inset-cell-x); /** Horizontal padding inside a cell. */
   --table-font-size: var(--type-data-font-size); /** Cell text size. */
+  --table-row-border-width: var(--border-width-default); /** Row border width of the table. */
+  --table-row-focus: var(--border-width-focus); /** Row focus of the table. */
+  --table-head-font-size: var(--type-label-font-size); /** Head font size of the table. */
+  --table-head-font-weight: var(--type-label-font-weight); /** Head font weight of the table. */
+  --tabs-list-gap: var(--space-gap-group); /** List gap of the tabs. */
+  --tabs-list-border-width: var(--border-width-default); /** List border width of the tabs. */
+  --tabs-trigger-height: var(--size-control-default); /** Trigger height of the tabs. */
+  --tabs-trigger-font-size: var(--type-label-font-size); /** Trigger font size of the tabs. */
+  --tabs-trigger-font-weight: var(--type-label-font-weight); /** Trigger font weight of the tabs. */
+  --tabs-focus: var(--border-width-focus); /** Focus of the tabs. */
+  --tabs-content-padding-top: var(--space-gap-default); /** Content padding top of the tabs. */
   --overlay-item-height: var(--size-control-default); /** Height of a menu item. */
+  --tooltip-content-padding-x: var(--space-gap-default); /** Content padding x of the tooltip. */
+  --tooltip-content-font-size: var(--type-caption-font-size); /** Content font size of the tooltip. */
   --transition-duration: var(--motion-duration-feedback); /** Duration of feedback transitions. */
   --transition-easing: var(--motion-easing-standard); /** Easing of feedback transitions. */
   --transition-panels-duration: var(--motion-duration-panels); /** Duration of panels opening and closing: dialogs, sheets, popovers, menus. */
@@ -129,6 +161,371 @@ html[data-scheme="brand-expressive"] {
   --accordion-icon-duration: var(--motion-duration-feedback); /** How fast the chevron turns. */
   --accordion-content-font-size: var(--type-body-font-size); /** The content's text size. */
   --accordion-content-padding-bottom: var(--space-inset-container); /** Space below the content. */
+  --alert-dialog-content-gap: var(--space-gap-group); /** Content gap of the alert dialog. */
+  --alert-dialog-header-gap-x: var(--space-gap-section); /** Header gap x of the alert dialog. */
+  --alert-dialog-footer-gap: var(--space-gap-default); /** Footer gap of the alert dialog. */
+  --alert-dialog-title-font-size: var(--type-heading-font-size); /** Title font size of the alert dialog. */
+  --alert-dialog-title-font-weight: var(--type-title-font-weight); /** Title font weight of the alert dialog. */
+  --alert-dialog-description-font-size: var(--type-body-font-size); /** Description font size of the alert dialog. */
+  --alert-dialog-media-size: var(--size-control-default); /** Media size of the alert dialog. */
+  --alert-padding-x: var(--space-inset-container); /** Padding x of the alert. */
+  --alert-font-size: var(--type-body-font-size); /** Font size of the alert. */
+  --alert-icon-size: var(--size-icon); /** Icon size of the alert. */
+  --alert-title-font-weight: var(--type-label-font-weight); /** Title font weight of the alert. */
+  --alert-description-gap: var(--space-gap-tight); /** Description gap of the alert. */
+  --alert-description-font-size: var(--type-body-font-size); /** Description font size of the alert. */
+  --attachment-font-size: var(--type-body-font-size); /** Font size of the attachment. */
+  --attachment-focus: var(--border-width-focus); /** Focus of the attachment. */
+  --attachment-size: var(--size-control-default); /** Size of the attachment. */
+  --attachment-icon-size: var(--size-icon); /** Icon size of the attachment. */
+  --attachment-font-weight: var(--type-label-font-weight); /** Font weight of the attachment. */
+  --attachment-font-size-2: var(--type-caption-font-size); /** Font size 2 of the attachment. */
+  --avatar-size: var(--size-control-default); /** Size of the avatar. */
+  --avatar-radius: var(--radius-round); /** Radius of the avatar. */
+  --avatar-fallback-radius: var(--radius-round); /** Fallback radius of the avatar. */
+  --avatar-fallback-font-size: var(--type-body-font-size); /** Fallback font size of the avatar. */
+  --avatar-fallback-font-size-2: var(--type-caption-font-size); /** Fallback font size 2 of the avatar. */
+  --avatar-badge-radius: var(--radius-round); /** Badge radius of the avatar. */
+  --avatar-group-count-size: var(--size-control-default); /** Group count size of the avatar. */
+  --avatar-group-count-radius: var(--radius-round); /** Group count radius of the avatar. */
+  --avatar-group-count-font-size: var(--type-body-font-size); /** Group count font size of the avatar. */
+  --avatar-group-count-icon-size: var(--size-icon); /** Group count icon size of the avatar. */
+  --breadcrumb-list-font-size: var(--type-body-font-size); /** List font size of the breadcrumb. */
+  --breadcrumb-page-font-weight: var(--type-body-font-weight); /** Page font weight of the breadcrumb. */
+  --breadcrumb-icon-size: var(--size-icon); /** Icon size of the breadcrumb. */
+  --bubble-gap: var(--space-gap-tight); /** Gap of the bubble. */
+  --bubble-font-size: var(--type-caption-font-size); /** Font size of the bubble. */
+  --bubble-body-font-size: var(--type-body-font-size); /** Body font size of the bubble. */
+  --button-group-gap: var(--space-gap-default); /** Gap of the button group. */
+  --button-group-text-gap: var(--space-gap-default); /** Text gap of the button group. */
+  --button-group-text-font-size: var(--type-body-font-size); /** Text font size of the button group. */
+  --button-group-text-font-weight: var(--type-label-font-weight); /** Text font weight of the button group. */
+  --button-group-text-icon-size: var(--size-icon); /** Text icon size of the button group. */
+  --calendar-gap: var(--space-gap-group); /** Gap of the calendar. */
+  --calendar-gap-2: var(--space-gap-tight); /** Gap 2 of the calendar. */
+  --calendar-disabled-opacity-disabled: var(--opacity-disabled); /** Disabled opacity disabled of the calendar. */
+  --calendar-font-size: var(--type-body-font-size); /** Font size of the calendar. */
+  --calendar-font-weight: var(--type-label-font-weight); /** Font weight of the calendar. */
+  --calendar-focus: var(--border-width-focus); /** Focus of the calendar. */
+  --calendar-height: var(--size-control-default); /** Height of the calendar. */
+  --calendar-font-weight-2: var(--type-body-font-weight); /** Font weight 2 of the calendar. */
+  --calendar-disabled-opacity: var(--opacity-disabled); /** Disabled opacity of the calendar. */
+  --calendar-icon-size: var(--size-icon); /** Icon size of the calendar. */
+  --calendar-font-size-2: var(--type-caption-font-size); /** Font size 2 of the calendar. */
+  --carousel-previous-size: var(--size-control-default); /** Previous size of the carousel. */
+  --carousel-previous-radius: var(--radius-round); /** Previous radius of the carousel. */
+  --carousel-next-size: var(--size-control-default); /** Next size of the carousel. */
+  --carousel-next-radius: var(--radius-round); /** Next radius of the carousel. */
+  --chart-font-size: var(--type-caption-font-size); /** Font size of the chart. */
+  --chart-font-weight: var(--type-label-font-weight); /** Font weight of the chart. */
+  --chart-gap: var(--space-gap-default); /** Gap of the chart. */
+  --chart-gap-2: var(--space-gap-group); /** Gap 2 of the chart. */
+  --checkbox-size: var(--size-icon); /** Size of the checkbox. */
+  --checkbox-border-width: var(--border-width-default); /** Border width of the checkbox. */
+  --checkbox-focus: var(--border-width-focus); /** Focus of the checkbox. */
+  --checkbox-disabled: var(--opacity-disabled); /** Disabled of the checkbox. */
+  --combobox-trigger-icon-size: var(--size-icon); /** Trigger icon size of the combobox. */
+  --combobox-trigger-icon-icon-size: var(--size-icon); /** Trigger icon icon size of the combobox. */
+  --combobox-content-height: var(--size-control-default); /** Content height of the combobox. */
+  --combobox-item-gap: var(--space-gap-default); /** Item gap of the combobox. */
+  --combobox-item-font-size: var(--type-body-font-size); /** Item font size of the combobox. */
+  --combobox-item-disabled-opacity-disabled: var(--opacity-disabled); /** Item disabled opacity disabled of the combobox. */
+  --combobox-item-icon-size: var(--size-icon); /** Item icon size of the combobox. */
+  --combobox-icon-size: var(--size-icon); /** Icon size of the combobox. */
+  --combobox-label-font-size: var(--type-caption-font-size); /** Label font size of the combobox. */
+  --combobox-label-padding-x: var(--space-inset-control-x); /** Label padding x of the combobox. */
+  --combobox-label-font-size-2: var(--type-body-font-size); /** Label font size 2 of the combobox. */
+  --combobox-empty-font-size: var(--type-body-font-size); /** Empty font size of the combobox. */
+  --combobox-chips-font-size: var(--type-body-font-size); /** Chips font size of the combobox. */
+  --combobox-chip-gap: var(--space-gap-tight); /** Chip gap of the combobox. */
+  --combobox-chip-font-size: var(--type-caption-font-size); /** Chip font size of the combobox. */
+  --combobox-chip-font-weight: var(--type-label-font-weight); /** Chip font weight of the combobox. */
+  --combobox-chip-disabled-opacity: var(--opacity-disabled); /** Chip disabled opacity of the combobox. */
+  --combobox-disabled-opacity: var(--opacity-disabled); /** Disabled opacity of the combobox. */
+  --command-font-weight: var(--type-label-font-weight); /** Font weight of the command. */
+  --command-input-wrapper-gap: var(--space-gap-default); /** Input wrapper gap of the command. */
+  --command-input-font-size: var(--type-body-font-size); /** Input font size of the command. */
+  --command-input-disabled-opacity-disabled: var(--opacity-disabled); /** Input disabled opacity disabled of the command. */
+  --command-icon-size: var(--size-icon); /** Icon size of the command. */
+  --command-disabled-opacity: var(--opacity-disabled); /** Disabled opacity of the command. */
+  --command-empty-font-size: var(--type-body-font-size); /** Empty font size of the command. */
+  --command-group-font-size: var(--type-caption-font-size); /** Group font size of the command. */
+  --command-group-font-weight: var(--type-label-font-weight); /** Group font weight of the command. */
+  --command-item-gap: var(--space-gap-default); /** Item gap of the command. */
+  --command-item-font-size: var(--type-body-font-size); /** Item font size of the command. */
+  --command-item-disabled-opacity-disabled: var(--opacity-disabled); /** Item disabled opacity disabled of the command. */
+  --command-item-icon-size: var(--size-icon); /** Item icon size of the command. */
+  --command-shortcut-font-size: var(--type-caption-font-size); /** Shortcut font size of the command. */
+  --context-menu-sub-trigger-font-size: var(--type-body-font-size); /** Sub trigger font size of the context menu. */
+  --context-menu-sub-trigger-icon-size: var(--size-icon); /** Sub trigger icon size of the context menu. */
+  --context-menu-item-gap: var(--space-gap-default); /** Item gap of the context menu. */
+  --context-menu-item-font-size: var(--type-body-font-size); /** Item font size of the context menu. */
+  --context-menu-item-disabled-opacity-disabled: var(--opacity-disabled); /** Item disabled opacity disabled of the context menu. */
+  --context-menu-item-icon-size: var(--size-icon); /** Item icon size of the context menu. */
+  --context-menu-checkbox-item-gap: var(--space-gap-default); /** Checkbox item gap of the context menu. */
+  --context-menu-checkbox-item-font-size: var(--type-body-font-size); /** Checkbox item font size of the context menu. */
+  --context-menu-checkbox-item-disabled-opacity-disabled: var(--opacity-disabled); /** Checkbox item disabled opacity disabled of the context menu. */
+  --context-menu-checkbox-item-icon-size: var(--size-icon); /** Checkbox item icon size of the context menu. */
+  --context-menu-icon-size: var(--size-icon); /** Icon size of the context menu. */
+  --context-menu-radio-item-gap: var(--space-gap-default); /** Radio item gap of the context menu. */
+  --context-menu-radio-item-font-size: var(--type-body-font-size); /** Radio item font size of the context menu. */
+  --context-menu-radio-item-disabled-opacity-disabled: var(--opacity-disabled); /** Radio item disabled opacity disabled of the context menu. */
+  --context-menu-radio-item-icon-size: var(--size-icon); /** Radio item icon size of the context menu. */
+  --context-menu-label-font-size: var(--type-body-font-size); /** Label font size of the context menu. */
+  --context-menu-label-font-weight: var(--type-label-font-weight); /** Label font weight of the context menu. */
+  --context-menu-shortcut-font-size: var(--type-caption-font-size); /** Shortcut font size of the context menu. */
+  --data-table-gap: var(--space-gap-tight); /** Gap of the data table. */
+  --data-table-gap-2: var(--space-gap-default); /** Gap 2 of the data table. */
+  --date-picker-font-weight: var(--type-body-font-weight); /** Font weight of the date picker. */
+  --dialog-content-gap: var(--space-gap-group); /** Content gap of the dialog. */
+  --dialog-content-padding: var(--space-inset-container); /** Content padding of the dialog. */
+  --dialog-border-width: var(--border-width-default); /** Border width of the dialog. */
+  --dialog-size: var(--size-icon); /** Size of the dialog. */
+  --dialog-gap: var(--space-gap-tight); /** Gap of the dialog. */
+  --dialog-gap-2: var(--space-gap-default); /** Gap 2 of the dialog. */
+  --dialog-font-size: var(--type-heading-font-size); /** Font size of the dialog. */
+  --dialog-font-weight: var(--type-heading-font-weight); /** Font weight of the dialog. */
+  --dialog-font-size-2: var(--type-body-font-size); /** Font size 2 of the dialog. */
+  --drawer-radius: var(--radius-round); /** Radius of the drawer. */
+  --drawer-header-padding: var(--space-inset-container); /** Header padding of the drawer. */
+  --drawer-footer-gap: var(--space-gap-default); /** Footer gap of the drawer. */
+  --drawer-footer-padding: var(--space-inset-container); /** Footer padding of the drawer. */
+  --drawer-title-font-weight: var(--type-title-font-weight); /** Title font weight of the drawer. */
+  --drawer-description-font-size: var(--type-body-font-size); /** Description font size of the drawer. */
+  --dropdown-menu-content-border-width: var(--border-width-default); /** Content border width of the dropdown menu. */
+  --dropdown-menu-item-gap: var(--space-gap-default); /** Item gap of the dropdown menu. */
+  --dropdown-menu-item-padding-x: var(--space-inset-cell-x); /** Item padding x of the dropdown menu. */
+  --dropdown-menu-item-font-size: var(--type-body-font-size); /** Item font size of the dropdown menu. */
+  --dropdown-menu-item-disabled: var(--opacity-disabled); /** Item disabled of the dropdown menu. */
+  --dropdown-menu-item-icon: var(--size-icon); /** Item icon of the dropdown menu. */
+  --empty-gap: var(--space-gap-section); /** Gap of the empty. */
+  --empty-header-gap: var(--space-gap-default); /** Header gap of the empty. */
+  --empty-title-font-size: var(--type-heading-font-size); /** Title font size of the empty. */
+  --empty-title-font-weight: var(--type-label-font-weight); /** Title font weight of the empty. */
+  --empty-description-font-size: var(--type-body-font-size); /** Description font size of the empty. */
+  --empty-content-gap: var(--space-gap-group); /** Content gap of the empty. */
+  --empty-content-font-size: var(--type-body-font-size); /** Content font size of the empty. */
+  --field-set-gap: var(--space-gap-section); /** Set gap of the field. */
+  --field-legend-font-weight: var(--type-label-font-weight); /** Legend font weight of the field. */
+  --field-legend-font-size: var(--type-body-font-size); /** Legend font size of the field. */
+  --field-group-gap: var(--space-gap-group); /** Group gap of the field. */
+  --field-label-gap: var(--space-gap-default); /** Label gap of the field. */
+  --field-label-disabled-opacity-disabled: var(--opacity-disabled); /** Label disabled opacity disabled of the field. */
+  --field-label-font-size: var(--type-body-font-size); /** Label font size of the field. */
+  --field-label-font-weight: var(--type-label-font-weight); /** Label font weight of the field. */
+  --field-description-font-size: var(--type-body-font-size); /** Description font size of the field. */
+  --field-description-font-weight: var(--type-body-font-weight); /** Description font weight of the field. */
+  --field-separator-font-size: var(--type-body-font-size); /** Separator font size of the field. */
+  --field-gap: var(--space-gap-tight); /** Gap of the field. */
+  --field-error-font-size: var(--type-body-font-size); /** Error font size of the field. */
+  --field-error-font-weight: var(--type-body-font-weight); /** Error font weight of the field. */
+  --form-item-gap: var(--space-gap-default); /** Item gap of the form. */
+  --form-description-font-size: var(--type-body-font-size); /** Description font size of the form. */
+  --form-message-font-size: var(--type-body-font-size); /** Message font size of the form. */
+  --hover-card-content-padding: var(--space-inset-container); /** Content padding of the hover card. */
+  --input-group-padding-bottom: var(--space-inset-control-x); /** Padding bottom of the input group. */
+  --input-group-padding-top: var(--space-inset-control-x); /** Padding top of the input group. */
+  --input-group-gap: var(--space-gap-default); /** Gap of the input group. */
+  --input-group-font-size: var(--type-body-font-size); /** Font size of the input group. */
+  --input-group-font-weight: var(--type-label-font-weight); /** Font weight of the input group. */
+  --input-group-disabled-opacity-disabled: var(--opacity-disabled); /** Disabled opacity disabled of the input group. */
+  --input-group-icon-size: var(--size-icon); /** Icon size of the input group. */
+  --input-group-inline-start-padding-left: var(--space-inset-control-x); /** Inline start padding left of the input group. */
+  --input-group-inline-end-padding-right: var(--space-inset-control-x); /** Inline end padding right of the input group. */
+  --input-group-block-start-padding-x: var(--space-inset-control-x); /** Block start padding x of the input group. */
+  --input-group-block-start-padding-top: var(--space-inset-control-x); /** Block start padding top of the input group. */
+  --input-group-block-start-padding-bottom: var(--space-inset-control-x); /** Block start padding bottom of the input group. */
+  --input-group-block-end-padding-x: var(--space-inset-control-x); /** Block end padding x of the input group. */
+  --input-group-block-end-padding-bottom: var(--space-inset-control-x); /** Block end padding bottom of the input group. */
+  --input-group-block-end-padding-top: var(--space-inset-control-x); /** Block end padding top of the input group. */
+  --input-group-xs-height: var(--size-control-compact); /** Xs height of the input group. */
+  --input-group-xs-gap: var(--space-gap-tight); /** Xs gap of the input group. */
+  --input-group-sm-height: var(--size-control-default); /** Sm height of the input group. */
+  --input-group-icon-sm-size: var(--size-control-default); /** Icon sm size of the input group. */
+  --input-group-control-padding-y: var(--space-inset-control-x); /** Control padding y of the input group. */
+  --input-otp-gap: var(--space-gap-default); /** Gap of the input otp. */
+  --input-otp-disabled-opacity: var(--opacity-disabled); /** Disabled opacity of the input otp. */
+  --input-otp-slot-font-size: var(--type-body-font-size); /** Slot font size of the input otp. */
+  --input-otp-height: var(--size-icon); /** Height of the input otp. */
+  --input-otp-duration: var(--motion-duration-feedback); /** Duration of the input otp. */
+  --item-font-size: var(--type-body-font-size); /** Font size of the item. */
+  --item-duration: var(--motion-duration-feedback); /** Duration of the item. */
+  --item-focus: var(--border-width-focus); /** Focus of the item. */
+  --item-default-gap: var(--space-gap-group); /** Default gap of the item. */
+  --item-default-padding: var(--space-inset-container); /** Default padding of the item. */
+  --item-sm-padding-x: var(--space-inset-container); /** Sm padding x of the item. */
+  --item-gap: var(--space-gap-default); /** Gap of the item. */
+  --item-icon-size: var(--size-control-default); /** Icon size of the item. */
+  --item-icon-icon-size: var(--size-icon); /** Icon icon size of the item. */
+  --item-content-gap: var(--space-gap-tight); /** Content gap of the item. */
+  --item-title-gap: var(--space-gap-default); /** Title gap of the item. */
+  --item-title-font-size: var(--type-body-font-size); /** Title font size of the item. */
+  --item-title-font-weight: var(--type-label-font-weight); /** Title font weight of the item. */
+  --item-description-font-size: var(--type-body-font-size); /** Description font size of the item. */
+  --item-description-font-weight: var(--type-body-font-weight); /** Description font weight of the item. */
+  --item-actions-gap: var(--space-gap-default); /** Actions gap of the item. */
+  --item-header-gap: var(--space-gap-default); /** Header gap of the item. */
+  --item-footer-gap: var(--space-gap-default); /** Footer gap of the item. */
+  --kbd-gap: var(--space-gap-tight); /** Gap of the kbd. */
+  --kbd-font-size: var(--type-caption-font-size); /** Font size of the kbd. */
+  --kbd-font-weight: var(--type-label-font-weight); /** Font weight of the kbd. */
+  --kbd-group-gap: var(--space-gap-tight); /** Group gap of the kbd. */
+  --label-gap: var(--space-gap-default); /** Gap of the label. */
+  --label-font-size: var(--type-label-font-size); /** Font size of the label. */
+  --label-font-weight: var(--type-label-font-weight); /** Font weight of the label. */
+  --label-line-height: var(--type-label-line-height); /** Line height of the label. */
+  --marker-font-size: var(--type-caption-font-size); /** Font size of the marker. */
+  --menubar-gap: var(--space-gap-tight); /** Gap of the menubar. */
+  --menubar-trigger-font-size: var(--type-body-font-size); /** Trigger font size of the menubar. */
+  --menubar-trigger-font-weight: var(--type-label-font-weight); /** Trigger font weight of the menubar. */
+  --menubar-item-gap: var(--space-gap-default); /** Item gap of the menubar. */
+  --menubar-item-font-size: var(--type-body-font-size); /** Item font size of the menubar. */
+  --menubar-item-disabled-opacity-disabled: var(--opacity-disabled); /** Item disabled opacity disabled of the menubar. */
+  --menubar-item-icon-size: var(--size-icon); /** Item icon size of the menubar. */
+  --menubar-checkbox-item-gap: var(--space-gap-default); /** Checkbox item gap of the menubar. */
+  --menubar-checkbox-item-font-size: var(--type-body-font-size); /** Checkbox item font size of the menubar. */
+  --menubar-checkbox-item-disabled-opacity-disabled: var(--opacity-disabled); /** Checkbox item disabled opacity disabled of the menubar. */
+  --menubar-checkbox-item-icon-size: var(--size-icon); /** Checkbox item icon size of the menubar. */
+  --menubar-icon-size: var(--size-icon); /** Icon size of the menubar. */
+  --menubar-radio-item-gap: var(--space-gap-default); /** Radio item gap of the menubar. */
+  --menubar-radio-item-font-size: var(--type-body-font-size); /** Radio item font size of the menubar. */
+  --menubar-radio-item-disabled-opacity-disabled: var(--opacity-disabled); /** Radio item disabled opacity disabled of the menubar. */
+  --menubar-radio-item-icon-size: var(--size-icon); /** Radio item icon size of the menubar. */
+  --menubar-label-font-size: var(--type-body-font-size); /** Label font size of the menubar. */
+  --menubar-label-font-weight: var(--type-label-font-weight); /** Label font weight of the menubar. */
+  --menubar-shortcut-font-size: var(--type-caption-font-size); /** Shortcut font size of the menubar. */
+  --menubar-sub-trigger-font-size: var(--type-body-font-size); /** Sub trigger font size of the menubar. */
+  --menubar-height: var(--size-icon); /** Height of the menubar. */
+  --message-scroller-gap: var(--space-gap-group); /** Gap of the message scroller. */
+  --message-scroller-focus: var(--border-width-focus); /** Focus of the message scroller. */
+  --message-font-size: var(--type-body-font-size); /** Font size of the message. */
+  --message-gap: var(--space-gap-tight); /** Gap of the message. */
+  --message-gap-x: var(--space-gap-default); /** Gap x of the message. */
+  --message-author-font-weight: var(--type-label-font-weight); /** Author font weight of the message. */
+  --message-time-font-size: var(--type-caption-font-size); /** Time font size of the message. */
+  --native-select-disabled-opacity: var(--opacity-disabled); /** Disabled opacity of the native select. */
+  --native-select-padding-x: var(--space-inset-control-x); /** Padding x of the native select. */
+  --native-select-font-size: var(--type-body-font-size); /** Font size of the native select. */
+  --native-select-height: var(--size-control-default); /** Height of the native select. */
+  --native-select-focus: var(--border-width-focus); /** Focus of the native select. */
+  --native-select-icon-size: var(--size-icon); /** Icon size of the native select. */
+  --navigation-menu-list-gap: var(--space-gap-tight); /** List gap of the navigation menu. */
+  --navigation-menu-padding-x: var(--space-inset-container); /** Padding x of the navigation menu. */
+  --navigation-menu-font-size: var(--type-body-font-size); /** Font size of the navigation menu. */
+  --navigation-menu-font-weight: var(--type-label-font-weight); /** Font weight of the navigation menu. */
+  --navigation-menu-disabled-opacity-disabled: var(--opacity-disabled); /** Disabled opacity disabled of the navigation menu. */
+  --navigation-menu-focus: var(--border-width-focus); /** Focus of the navigation menu. */
+  --navigation-menu-duration: var(--motion-duration-feedback); /** Duration of the navigation menu. */
+  --navigation-menu-link-gap: var(--space-gap-tight); /** Link gap of the navigation menu. */
+  --navigation-menu-link-font-size: var(--type-body-font-size); /** Link font size of the navigation menu. */
+  --navigation-menu-link-focus: var(--border-width-focus); /** Link focus of the navigation menu. */
+  --navigation-menu-link-icon-size: var(--size-icon); /** Link icon size of the navigation menu. */
+  --pagination-content-gap: var(--space-gap-tight); /** Content gap of the pagination. */
+  --pagination-gap: var(--space-gap-tight); /** Gap of the pagination. */
+  --pagination-icon-size: var(--size-icon); /** Icon size of the pagination. */
+  --popover-content-padding: var(--space-inset-container); /** Content padding of the popover. */
+  --popover-header-gap: var(--space-gap-tight); /** Header gap of the popover. */
+  --popover-header-font-size: var(--type-body-font-size); /** Header font size of the popover. */
+  --popover-title-font-weight: var(--type-label-font-weight); /** Title font weight of the popover. */
+  --progress-radius: var(--radius-round); /** Radius of the progress. */
+  --radio-group-item-icon-size: var(--size-icon); /** Item icon size of the radio group. */
+  --radio-group-item-radius: var(--radius-round); /** Item radius of the radio group. */
+  --radio-group-item-disabled-opacity-disabled: var(--opacity-disabled); /** Item disabled opacity disabled of the radio group. */
+  --radio-group-item-focus: var(--border-width-focus); /** Item focus of the radio group. */
+  --resizable-handle-focus: var(--border-width-focus); /** Handle focus of the resizable. */
+  --resizable-height: var(--size-icon); /** Height of the resizable. */
+  --scroll-area-viewport-focus: var(--border-width-focus); /** Viewport focus of the scroll area. */
+  --scroll-area-thumb-radius: var(--radius-round); /** Thumb radius of the scroll area. */
+  --select-trigger-gap: var(--space-gap-default); /** Trigger gap of the select. */
+  --select-trigger-border-width: var(--border-width-default); /** Trigger border width of the select. */
+  --select-focus: var(--border-width-focus); /** Focus of the select. */
+  --select-size: var(--size-icon); /** Size of the select. */
+  --select-content-border-width: var(--border-width-default); /** Content border width of the select. */
+  --select-item-gap: var(--space-gap-default); /** Item gap of the select. */
+  --select-item-padding-left: var(--space-inset-cell-x); /** Item padding left of the select. */
+  --select-item-font-size: var(--type-body-font-size); /** Item font size of the select. */
+  --select-item-disabled: var(--opacity-disabled); /** Item disabled of the select. */
+  --sheet-content-gap: var(--space-gap-group); /** Content gap of the sheet. */
+  --sheet-focus: var(--border-width-focus); /** Focus of the sheet. */
+  --sheet-icon-size: var(--size-icon); /** Icon size of the sheet. */
+  --sheet-header-padding: var(--space-inset-container); /** Header padding of the sheet. */
+  --sheet-footer-gap: var(--space-gap-default); /** Footer gap of the sheet. */
+  --sheet-footer-padding: var(--space-inset-container); /** Footer padding of the sheet. */
+  --sheet-title-font-weight: var(--type-title-font-weight); /** Title font weight of the sheet. */
+  --sheet-description-font-size: var(--type-body-font-size); /** Description font size of the sheet. */
+  --sidebar-gap-duration: var(--motion-duration-feedback); /** Gap duration of the sidebar. */
+  --sidebar-gap: var(--space-gap-default); /** Gap of the sidebar. */
+  --sidebar-container-duration: var(--motion-duration-feedback); /** Container duration of the sidebar. */
+  --sidebar-input-height: var(--size-control-default); /** Input height of the sidebar. */
+  --sidebar-header-gap: var(--space-gap-default); /** Header gap of the sidebar. */
+  --sidebar-footer-gap: var(--space-gap-default); /** Footer gap of the sidebar. */
+  --sidebar-content-gap: var(--space-gap-default); /** Content gap of the sidebar. */
+  --sidebar-group-label-height: var(--size-control-default); /** Group label height of the sidebar. */
+  --sidebar-group-label-font-size: var(--type-caption-font-size); /** Group label font size of the sidebar. */
+  --sidebar-group-label-font-weight: var(--type-label-font-weight); /** Group label font weight of the sidebar. */
+  --sidebar-group-label-duration: var(--motion-duration-feedback); /** Group label duration of the sidebar. */
+  --sidebar-group-label-icon-size: var(--size-icon); /** Group label icon size of the sidebar. */
+  --sidebar-group-label-focus: var(--border-width-focus); /** Group label focus of the sidebar. */
+  --sidebar-group-action-icon-size: var(--size-icon); /** Group action icon size of the sidebar. */
+  --sidebar-group-action-focus: var(--border-width-focus); /** Group action focus of the sidebar. */
+  --sidebar-group-content-font-size: var(--type-body-font-size); /** Group content font size of the sidebar. */
+  --sidebar-menu-gap: var(--space-gap-tight); /** Menu gap of the sidebar. */
+  --sidebar-menu-action-icon-size: var(--size-icon); /** Menu action icon size of the sidebar. */
+  --sidebar-menu-action-focus: var(--border-width-focus); /** Menu action focus of the sidebar. */
+  --sidebar-menu-badge-font-size: var(--type-caption-font-size); /** Menu badge font size of the sidebar. */
+  --sidebar-menu-badge-font-weight: var(--type-label-font-weight); /** Menu badge font weight of the sidebar. */
+  --sidebar-menu-skeleton-height: var(--size-control-default); /** Menu skeleton height of the sidebar. */
+  --sidebar-menu-skeleton-gap: var(--space-gap-default); /** Menu skeleton gap of the sidebar. */
+  --sidebar-menu-sub-gap: var(--space-gap-tight); /** Menu sub gap of the sidebar. */
+  --sidebar-menu-sub-button-gap: var(--space-gap-default); /** Menu sub button gap of the sidebar. */
+  --sidebar-menu-sub-button-disabled-opacity-disabled: var(--opacity-disabled); /** Menu sub button disabled opacity disabled of the sidebar. */
+  --sidebar-menu-sub-button-icon-size: var(--size-icon); /** Menu sub button icon size of the sidebar. */
+  --sidebar-menu-sub-button-focus: var(--border-width-focus); /** Menu sub button focus of the sidebar. */
+  --sidebar-font-size: var(--type-body-font-size); /** Font size of the sidebar. */
+  --sidebar-size: var(--size-control-default); /** Size of the sidebar. */
+  --sidebar-disabled-opacity-disabled: var(--opacity-disabled); /** Disabled opacity disabled of the sidebar. */
+  --sidebar-font-weight: var(--type-label-font-weight); /** Font weight of the sidebar. */
+  --sidebar-focus: var(--border-width-focus); /** Focus of the sidebar. */
+  --sidebar-icon-size: var(--size-icon); /** Icon size of the sidebar. */
+  --sidebar-default-height: var(--size-control-default); /** Default height of the sidebar. */
+  --sidebar-default-font-size: var(--type-body-font-size); /** Default font size of the sidebar. */
+  --sidebar-sm-font-size: var(--type-caption-font-size); /** Sm font size of the sidebar. */
+  --sidebar-lg-font-size: var(--type-body-font-size); /** Lg font size of the sidebar. */
+  --sidebar-height: var(--size-icon); /** Height of the sidebar. */
+  --sidebar-font-size-2: var(--type-caption-font-size); /** Font size 2 of the sidebar. */
+  --slider-disabled-opacity-disabled: var(--opacity-disabled); /** Disabled opacity disabled of the slider. */
+  --slider-track-radius: var(--radius-round); /** Track radius of the slider. */
+  --slider-thumb-icon-size: var(--size-icon); /** Thumb icon size of the slider. */
+  --slider-thumb-radius: var(--radius-round); /** Thumb radius of the slider. */
+  --slider-thumb-disabled-opacity-disabled: var(--opacity-disabled); /** Thumb disabled opacity disabled of the slider. */
+  --slider-thumb-focus: var(--border-width-focus); /** Thumb focus of the slider. */
+  --spinner-icon-size: var(--size-icon); /** Icon size of the spinner. */
+  --switch-height: var(--size-icon); /** Height of the switch. */
+  --switch-width: var(--size-icon); /** Width of the switch. */
+  --switch-radius: var(--radius-round); /** Radius of the switch. */
+  --switch-focus: var(--border-width-focus); /** Focus of the switch. */
+  --switch-disabled: var(--opacity-disabled); /** Disabled of the switch. */
+  --switch-size: var(--size-icon); /** Size of the switch. */
+  --switch-icon: var(--size-icon); /** Icon of the switch. */
+  --textarea-padding-x: var(--space-inset-control-x); /** Padding x of the textarea. */
+  --textarea-font-size: var(--type-body-font-size); /** Font size of the textarea. */
+  --textarea-disabled-opacity-disabled: var(--opacity-disabled); /** Disabled opacity disabled of the textarea. */
+  --textarea-focus: var(--border-width-focus); /** Focus of the textarea. */
+  --toast-gap: var(--space-gap-default); /** Gap of the toast. */
+  --toast-padding: var(--space-inset-container); /** Padding of the toast. */
+  --toast-border-width: var(--border-width-default); /** Border width of the toast. */
+  --toast-gap-2: var(--space-gap-tight); /** Gap 2 of the toast. */
+  --toast-font-weight: var(--type-label-font-weight); /** Font weight of the toast. */
+  --toast-font-size: var(--type-body-font-size); /** Font size of the toast. */
+  --toast-font-size-2: var(--type-caption-font-size); /** Font size 2 of the toast. */
+  --toggle-group-item-padding-x: var(--space-inset-control-x); /** Item padding x of the toggle group. */
+  --toggle-gap: var(--space-gap-default); /** Gap of the toggle. */
+  --toggle-font-size: var(--type-body-font-size); /** Font size of the toggle. */
+  --toggle-font-weight: var(--type-label-font-weight); /** Font weight of the toggle. */
+  --toggle-disabled-opacity-disabled: var(--opacity-disabled); /** Disabled opacity disabled of the toggle. */
+  --toggle-icon-size: var(--size-icon); /** Icon size of the toggle. */
+  --toggle-focus: var(--border-width-focus); /** Focus of the toggle. */
+  --toggle-sm-height: var(--size-control-default); /** Sm height of the toggle. */
   --button-primary-background: var(--color-action-primary); /** Primary button fill. */
   --button-primary-background-hover: var(--color-action-primary-hover); /** Primary button fill on hover. */
   --button-danger-background: var(--color-action-danger); /** Danger button fill. */
@@ -136,8 +533,11 @@ html[data-scheme="brand-expressive"] {
   --button-ghost-label: var(--color-text-link); /** Ghost button label color. */
   --button-radius: var(--radius-control); /** Button corner radius. */
   --button-focus-ring: var(--color-border-focus); /** Focus ring color on any button. */
+  --button-font-family: var(--type-label-font-family); /** Font family of the button. */
   --input-border-focus: var(--color-border-focus); /** Input border when focused. */
   --input-radius: var(--radius-control); /** Input corner radius. */
+  --input-font-family: var(--type-body-font-family); /** Font family of the input. */
+  --input-danger: var(--color-status-danger); /** Danger of the input. */
   --control-checked: var(--color-action-primary); /** Fill of a checked checkbox or an on switch. */
   --control-radius: var(--radius-badge); /** Checkbox corner radius. */
   --badge-radius: var(--radius-badge); /** Badge corner radius. */
@@ -149,16 +549,203 @@ html[data-scheme="brand-expressive"] {
   --badge-danger-label: var(--color-text-danger-on-light); /** Danger badge label. */
   --badge-info-background: var(--color-status-info-subtle); /** Info badge fill. */
   --badge-info-label: var(--color-text-info-on-light); /** Info badge label. */
+  --badge-font-family: var(--type-caption-font-family); /** Font family of the badge. */
   --card-radius: var(--radius-container); /** Card corner radius. */
   --card-shadow: var(--elevation-card); /** Card shadow. */
+  --card-title-font-family: var(--type-heading-font-family); /** Title font family of the card. */
   --table-row-selected: var(--color-surface-selected); /** Fill of a selected row. */
   --table-row-selected-edge: var(--color-border-selected); /** Edge that marks a selected row, beside its fill. */
+  --table-head-font-family: var(--type-label-font-family); /** Head font family of the table. */
+  --table-cell-font-family: var(--type-data-font-family); /** Cell font family of the table. */
   --tabs-indicator: var(--color-action-primary); /** Active tab indicator. */
+  --tabs-trigger-font-family: var(--type-label-font-family); /** Trigger font family of the tabs. */
   --overlay-radius: var(--radius-container); /** Corner radius of overlays. */
   --overlay-shadow: var(--elevation-overlay); /** Shadow of overlays. */
   --overlay-scrim: var(--color-surface-scrim); /** Color that dims the page behind a dialog. */
+  --tooltip-content-radius: var(--radius-badge); /** Content radius of the tooltip. */
+  --tooltip-content-font-family: var(--type-caption-font-family); /** Content font family of the tooltip. */
   --accordion-trigger-radius: var(--radius-control); /** The trigger's corner, seen on focus. */
   --accordion-focus-ring: var(--color-border-focus); /** The focus ring's color. */
+  --alert-dialog-overlay-background: var(--color-surface-scrim); /** Overlay background of the alert dialog. */
+  --alert-dialog-content-radius: var(--radius-container); /** Content radius of the alert dialog. */
+  --alert-dialog-content-shadow: var(--elevation-overlay); /** Content shadow of the alert dialog. */
+  --alert-dialog-media-radius: var(--radius-control); /** Media radius of the alert dialog. */
+  --alert-radius: var(--radius-container); /** Radius of the alert. */
+  --alert-destructive-label: var(--color-status-danger); /** Destructive label of the alert. */
+  --attachment-radius: var(--radius-control); /** Radius of the attachment. */
+  --attachment-focus-ring-focus: var(--color-border-focus); /** Focus ring focus of the attachment. */
+  --attachment-radius-2: var(--radius-badge); /** Radius 2 of the attachment. */
+  --avatar-badge-background: var(--color-action-primary); /** Badge background of the avatar. */
+  --bubble-me-background: var(--color-action-primary); /** Me background of the bubble. */
+  --bubble-body-radius: var(--radius-container); /** Body radius of the bubble. */
+  --button-group-text-radius: var(--radius-control); /** Text radius of the button group. */
+  --calendar-radius: var(--radius-control); /** Radius of the calendar. */
+  --calendar-shadow: var(--elevation-card); /** Shadow of the calendar. */
+  --calendar-border-2: var(--color-border-focus); /** Border 2 of the calendar. */
+  --calendar-focus-ring: var(--color-border-focus); /** Focus ring of the calendar. */
+  --calendar-background-4: var(--color-action-primary); /** Background 4 of the calendar. */
+  --calendar-background-selected: var(--color-action-primary); /** Background selected of the calendar. */
+  --chart-radius: var(--radius-container); /** Radius of the chart. */
+  --chart-shadow: var(--elevation-overlay); /** Shadow of the chart. */
+  --combobox-content-radius: var(--radius-control); /** Content radius of the combobox. */
+  --combobox-content-shadow: var(--elevation-overlay); /** Content shadow of the combobox. */
+  --combobox-item-radius: var(--radius-badge); /** Item radius of the combobox. */
+  --combobox-chips-radius: var(--radius-control); /** Chips radius of the combobox. */
+  --combobox-chips-shadow: var(--elevation-card); /** Chips shadow of the combobox. */
+  --combobox-chips-border-focus: var(--color-border-focus); /** Chips border focus of the combobox. */
+  --combobox-chips-focus-ring-focus: var(--color-border-focus); /** Chips focus ring focus of the combobox. */
+  --combobox-chips-border-invalid: var(--color-status-danger); /** Chips border invalid of the combobox. */
+  --combobox-chips-focus-ring-invalid: var(--color-status-danger); /** Chips focus ring invalid of the combobox. */
+  --combobox-chip-radius: var(--radius-badge); /** Chip radius of the combobox. */
+  --command-radius: var(--radius-control); /** Radius of the command. */
+  --command-input-radius: var(--radius-control); /** Input radius of the command. */
+  --command-item-radius: var(--radius-badge); /** Item radius of the command. */
+  --context-menu-sub-trigger-radius: var(--radius-badge); /** Sub trigger radius of the context menu. */
+  --context-menu-sub-content-radius: var(--radius-control); /** Sub content radius of the context menu. */
+  --context-menu-sub-content-shadow: var(--elevation-overlay); /** Sub content shadow of the context menu. */
+  --context-menu-content-radius: var(--radius-control); /** Content radius of the context menu. */
+  --context-menu-content-shadow: var(--elevation-overlay); /** Content shadow of the context menu. */
+  --context-menu-item-radius: var(--radius-badge); /** Item radius of the context menu. */
+  --context-menu-item-label: var(--color-status-danger); /** Item label of the context menu. */
+  --context-menu-item-background-focus-2: var(--color-status-danger); /** Item background focus 2 of the context menu. */
+  --context-menu-item-label-focus-2: var(--color-status-danger); /** Item label focus 2 of the context menu. */
+  --context-menu-checkbox-item-radius: var(--radius-badge); /** Checkbox item radius of the context menu. */
+  --context-menu-radio-item-radius: var(--radius-badge); /** Radio item radius of the context menu. */
+  --data-table-radius: var(--radius-badge); /** Radius of the data table. */
+  --dialog-radius: var(--radius-badge); /** Radius of the dialog. */
+  --dialog-font-family: var(--type-heading-font-family); /** Font family of the dialog. */
+  --drawer-overlay-background: var(--color-surface-scrim); /** Overlay background of the drawer. */
+  --dropdown-menu-item-radius: var(--radius-badge); /** Item radius of the dropdown menu. */
+  --dropdown-menu-label: var(--color-status-danger); /** Label of the dropdown menu. */
+  --empty-radius: var(--radius-container); /** Radius of the empty. */
+  --empty-icon-radius: var(--radius-container); /** Icon radius of the empty. */
+  --empty-description-label-2: var(--color-action-primary); /** Description label 2 of the empty. */
+  --field-label-invalid: var(--color-status-danger); /** Label invalid of the field. */
+  --field-label-radius: var(--radius-control); /** Label radius of the field. */
+  --field-border-checked: var(--color-action-primary); /** Border checked of the field. */
+  --field-background-checked: var(--color-action-primary); /** Background checked of the field. */
+  --field-description-label-2: var(--color-action-primary); /** Description label 2 of the field. */
+  --field-error-label: var(--color-status-danger); /** Error label of the field. */
+  --form-label-label: var(--color-status-danger); /** Label label of the form. */
+  --form-message-label: var(--color-status-danger); /** Message label of the form. */
+  --hover-card-content-radius: var(--radius-control); /** Content radius of the hover card. */
+  --hover-card-content-shadow: var(--elevation-overlay); /** Content shadow of the hover card. */
+  --input-group-radius: var(--radius-control); /** Radius of the input group. */
+  --input-group-shadow: var(--elevation-card); /** Shadow of the input group. */
+  --input-group-border-2: var(--color-border-focus); /** Border 2 of the input group. */
+  --input-group-focus-ring: var(--color-border-focus); /** Focus ring of the input group. */
+  --input-group-border-invalid: var(--color-status-danger); /** Border invalid of the input group. */
+  --input-group-focus-ring-invalid: var(--color-status-danger); /** Focus ring invalid of the input group. */
+  --input-group-sm-radius: var(--radius-control); /** Sm radius of the input group. */
+  --input-otp-slot-shadow: var(--elevation-card); /** Slot shadow of the input otp. */
+  --input-otp-slot-border-invalid: var(--color-status-danger); /** Slot border invalid of the input otp. */
+  --input-otp-slot-border-2: var(--color-border-focus); /** Slot border 2 of the input otp. */
+  --input-otp-slot-focus-ring: var(--color-border-focus); /** Slot focus ring of the input otp. */
+  --input-otp-slot-focus-ring-invalid: var(--color-status-danger); /** Slot focus ring invalid of the input otp. */
+  --item-radius: var(--radius-control); /** Radius of the item. */
+  --item-border-focus: var(--color-border-focus); /** Border focus of the item. */
+  --item-focus-ring-focus: var(--color-border-focus); /** Focus ring focus of the item. */
+  --item-icon-radius: var(--radius-badge); /** Icon radius of the item. */
+  --item-image-radius: var(--radius-badge); /** Image radius of the item. */
+  --item-description-label-2: var(--color-action-primary); /** Description label 2 of the item. */
+  --kbd-radius: var(--radius-badge); /** Radius of the kbd. */
+  --label-font-family: var(--type-label-font-family); /** Font family of the label. */
+  --menubar-radius: var(--radius-control); /** Radius of the menubar. */
+  --menubar-shadow: var(--elevation-card); /** Shadow of the menubar. */
+  --menubar-trigger-radius: var(--radius-badge); /** Trigger radius of the menubar. */
+  --menubar-content-radius: var(--radius-control); /** Content radius of the menubar. */
+  --menubar-content-shadow: var(--elevation-overlay); /** Content shadow of the menubar. */
+  --menubar-item-radius: var(--radius-badge); /** Item radius of the menubar. */
+  --menubar-item-label: var(--color-status-danger); /** Item label of the menubar. */
+  --menubar-item-background-focus-2: var(--color-status-danger); /** Item background focus 2 of the menubar. */
+  --menubar-item-label-focus-2: var(--color-status-danger); /** Item label focus 2 of the menubar. */
+  --menubar-checkbox-item-radius: var(--radius-badge); /** Checkbox item radius of the menubar. */
+  --menubar-radio-item-radius: var(--radius-badge); /** Radio item radius of the menubar. */
+  --menubar-sub-trigger-radius: var(--radius-badge); /** Sub trigger radius of the menubar. */
+  --menubar-sub-content-radius: var(--radius-control); /** Sub content radius of the menubar. */
+  --menubar-sub-content-shadow: var(--elevation-overlay); /** Sub content shadow of the menubar. */
+  --message-scroller-radius: var(--radius-control); /** Radius of the message scroller. */
+  --message-scroller-focus-ring-focus: var(--color-border-focus); /** Focus ring focus of the message scroller. */
+  --native-select-radius: var(--radius-control); /** Radius of the native select. */
+  --native-select-shadow: var(--elevation-card); /** Shadow of the native select. */
+  --native-select-background: var(--color-action-primary); /** Background of the native select. */
+  --native-select-border-focus: var(--color-border-focus); /** Border focus of the native select. */
+  --native-select-focus-ring-focus: var(--color-border-focus); /** Focus ring focus of the native select. */
+  --native-select-border-invalid: var(--color-status-danger); /** Border invalid of the native select. */
+  --native-select-focus-ring-invalid: var(--color-status-danger); /** Focus ring invalid of the native select. */
+  --navigation-menu-radius: var(--radius-control); /** Radius of the navigation menu. */
+  --navigation-menu-focus-ring-focus: var(--color-border-focus); /** Focus ring focus of the navigation menu. */
+  --navigation-menu-shadow: var(--elevation-card); /** Shadow of the navigation menu. */
+  --navigation-menu-viewport-radius: var(--radius-control); /** Viewport radius of the navigation menu. */
+  --navigation-menu-viewport-shadow: var(--elevation-card); /** Viewport shadow of the navigation menu. */
+  --navigation-menu-link-radius: var(--radius-badge); /** Link radius of the navigation menu. */
+  --navigation-menu-link-selected: var(--color-border-selected); /** Link selected of the navigation menu. */
+  --navigation-menu-link-focus-ring-focus: var(--color-border-focus); /** Link focus ring focus of the navigation menu. */
+  --navigation-menu-shadow-2: var(--elevation-overlay); /** Shadow 2 of the navigation menu. */
+  --popover-content-radius: var(--radius-control); /** Content radius of the popover. */
+  --popover-content-shadow: var(--elevation-overlay); /** Content shadow of the popover. */
+  --progress-background: var(--color-action-primary); /** Background of the progress. */
+  --progress-indicator-background: var(--color-action-primary); /** Indicator background of the progress. */
+  --radio-group-item-label: var(--color-action-primary); /** Item label of the radio group. */
+  --radio-group-item-shadow: var(--elevation-card); /** Item shadow of the radio group. */
+  --radio-group-item-border-focus: var(--color-border-focus); /** Item border focus of the radio group. */
+  --radio-group-item-border-invalid: var(--color-status-danger); /** Item border invalid of the radio group. */
+  --radio-group-item-focus-ring-invalid: var(--color-status-danger); /** Item focus ring invalid of the radio group. */
+  --radio-group-item-focus-ring-focus: var(--color-border-focus); /** Item focus ring focus of the radio group. */
+  --radio-group-icon: var(--color-action-primary); /** Icon of the radio group. */
+  --resizable-handle-focus-ring-focus: var(--color-border-focus); /** Handle focus ring focus of the resizable. */
+  --resizable-radius: var(--radius-badge); /** Radius of the resizable. */
+  --scroll-area-viewport-focus-ring-focus: var(--color-border-focus); /** Viewport focus ring focus of the scroll area. */
+  --select-trigger-font-family: var(--type-body-font-family); /** Trigger font family of the select. */
+  --select-item-radius: var(--radius-badge); /** Item radius of the select. */
+  --sheet-overlay-background: var(--color-surface-scrim); /** Overlay background of the sheet. */
+  --sheet-content-shadow: var(--elevation-overlay); /** Content shadow of the sheet. */
+  --sheet-radius: var(--radius-badge); /** Radius of the sheet. */
+  --sheet-focus-ring-focus: var(--color-border-focus); /** Focus ring focus of the sheet. */
+  --sidebar-inner-radius: var(--radius-container); /** Inner radius of the sidebar. */
+  --sidebar-inner-shadow: var(--elevation-card); /** Inner shadow of the sidebar. */
+  --sidebar-inset-radius: var(--radius-container); /** Inset radius of the sidebar. */
+  --sidebar-inset-shadow: var(--elevation-card); /** Inset shadow of the sidebar. */
+  --sidebar-group-label-radius: var(--radius-control); /** Group label radius of the sidebar. */
+  --sidebar-group-label-focus-ring: var(--color-border-focus); /** Group label focus ring of the sidebar. */
+  --sidebar-group-label-focus-ring-focus: var(--color-border-focus); /** Group label focus ring focus of the sidebar. */
+  --sidebar-group-action-radius: var(--radius-control); /** Group action radius of the sidebar. */
+  --sidebar-group-action-focus-ring: var(--color-border-focus); /** Group action focus ring of the sidebar. */
+  --sidebar-group-action-focus-ring-focus: var(--color-border-focus); /** Group action focus ring focus of the sidebar. */
+  --sidebar-menu-action-radius: var(--radius-control); /** Menu action radius of the sidebar. */
+  --sidebar-menu-action-focus-ring: var(--color-border-focus); /** Menu action focus ring of the sidebar. */
+  --sidebar-menu-action-focus-ring-focus: var(--color-border-focus); /** Menu action focus ring focus of the sidebar. */
+  --sidebar-menu-badge-radius: var(--radius-control); /** Menu badge radius of the sidebar. */
+  --sidebar-menu-skeleton-radius: var(--radius-control); /** Menu skeleton radius of the sidebar. */
+  --sidebar-menu-sub-button-radius: var(--radius-control); /** Menu sub button radius of the sidebar. */
+  --sidebar-menu-sub-button-focus-ring: var(--color-border-focus); /** Menu sub button focus ring of the sidebar. */
+  --sidebar-menu-sub-button-focus-ring-focus: var(--color-border-focus); /** Menu sub button focus ring focus of the sidebar. */
+  --sidebar-radius: var(--radius-control); /** Radius of the sidebar. */
+  --sidebar-focus-ring: var(--color-border-focus); /** Focus ring of the sidebar. */
+  --sidebar-selected: var(--color-border-selected); /** Selected of the sidebar. */
+  --sidebar-focus-ring-focus: var(--color-border-focus); /** Focus ring focus of the sidebar. */
+  --skeleton-radius: var(--radius-control); /** Radius of the skeleton. */
+  --slider-range-background: var(--color-action-primary); /** Range background of the slider. */
+  --slider-thumb-border: var(--color-action-primary); /** Thumb border of the slider. */
+  --slider-thumb-shadow: var(--elevation-card); /** Thumb shadow of the slider. */
+  --slider-thumb-focus-ring: var(--color-border-focus); /** Thumb focus ring of the slider. */
+  --slider-thumb-focus-ring-focus: var(--color-border-focus); /** Thumb focus ring focus of the slider. */
+  --textarea-radius: var(--radius-control); /** Radius of the textarea. */
+  --textarea-shadow: var(--elevation-card); /** Shadow of the textarea. */
+  --textarea-border-focus: var(--color-border-focus); /** Border focus of the textarea. */
+  --textarea-border-invalid: var(--color-status-danger); /** Border invalid of the textarea. */
+  --textarea-focus-ring-invalid: var(--color-status-danger); /** Focus ring invalid of the textarea. */
+  --textarea-focus-ring-focus: var(--color-border-focus); /** Focus ring focus of the textarea. */
+  --toast-success-border-2: var(--color-status-success); /** Success border 2 of the toast. */
+  --toast-danger-border-2: var(--color-status-danger); /** Danger border 2 of the toast. */
+  --toggle-group-radius: var(--radius-control); /** Radius of the toggle group. */
+  --toggle-group-shadow: var(--elevation-card); /** Shadow of the toggle group. */
+  --toggle-radius: var(--radius-control); /** Radius of the toggle. */
+  --toggle-border-focus: var(--color-border-focus); /** Border focus of the toggle. */
+  --toggle-border-invalid: var(--color-status-danger); /** Border invalid of the toggle. */
+  --toggle-focus-ring-invalid: var(--color-status-danger); /** Focus ring invalid of the toggle. */
+  --toggle-focus-ring-focus: var(--color-border-focus); /** Focus ring focus of the toggle. */
+  --toggle-outline-shadow: var(--elevation-card); /** Outline shadow of the toggle. */
   --color-surface-canvas: #FFF8F3; /** The page background behind everything. */
   --color-surface-default: #FFFFFF; /** The base fill for content. */
   --color-surface-raised: #FFFFFF; /** Fills that float above content. */
@@ -189,6 +776,7 @@ html[data-scheme="brand-expressive"] {
   --button-disabled-background: var(--color-disabled-surface); /** Fill of a disabled button. */
   --button-disabled-label: var(--color-disabled-text); /** Label of a disabled button. */
   --button-disabled-border: var(--color-disabled-border); /** Border of a disabled secondary button. */
+  --button-canvas: var(--color-surface-canvas); /** Canvas of the button. */
   --input-background: var(--color-surface-default); /** Input fill. */
   --input-border: var(--color-border-strong); /** Input border at rest. */
   --input-text: var(--color-text-primary); /** Typed text color. */
@@ -196,22 +784,296 @@ html[data-scheme="brand-expressive"] {
   --input-disabled-background: var(--color-disabled-surface); /** Fill of a disabled input. */
   --input-disabled-border: var(--color-disabled-border); /** Border of a disabled input. */
   --input-disabled-text: var(--color-disabled-text); /** Text in a disabled input. */
+  --input-canvas: var(--color-surface-canvas); /** Canvas of the input. */
   --control-track: var(--color-border-strong); /** Track of an off switch. */
   --control-thumb: var(--color-surface-default); /** Switch thumb and checkmark color. */
   --badge-neutral-background: var(--color-surface-sunken); /** Neutral badge fill. */
   --badge-neutral-label: var(--color-text-secondary); /** Neutral badge label. */
   --card-background: var(--color-surface-default); /** Card fill. */
   --card-border: var(--color-border-default); /** Card border. */
+  --card-label: var(--color-text-primary); /** Label of the card. */
+  --card-description-label: var(--color-text-secondary); /** Description label of the card. */
   --table-header-background: var(--color-surface-sunken); /** Header row fill. */
   --table-row-border: var(--color-border-default); /** Line between rows. */
+  --table-label: var(--color-text-primary); /** Label of the table. */
+  --table-head-label: var(--color-text-secondary); /** Head label of the table. */
   --tabs-label: var(--color-text-secondary); /** Inactive tab label. */
   --tabs-label-active: var(--color-text-primary); /** Active tab label. */
+  --tabs-list-border: var(--color-border-default); /** List border of the tabs. */
+  --tabs-canvas: var(--color-surface-canvas); /** Canvas of the tabs. */
   --overlay-background: var(--color-surface-raised); /** Fill of a dialog, menu or toast. */
   --tooltip-background: var(--color-surface-inverse); /** Tooltip fill. */
   --tooltip-label: var(--color-text-inverse); /** Tooltip text. */
   --accordion-divider: var(--color-border-default); /** The line between items. */
   --accordion-trigger-label: var(--color-text-primary); /** The trigger's text color. */
+  --accordion-trigger-focus-ring-offset-focus: var(--color-surface-canvas); /** Trigger focus ring offset focus of the accordion. */
   --accordion-icon: var(--color-text-muted); /** The chevron's color. */
+  --alert-dialog-content-background: var(--color-surface-canvas); /** Content background of the alert dialog. */
+  --alert-dialog-description-label: var(--color-text-muted); /** Description label of the alert dialog. */
+  --alert-dialog-media-background: var(--color-surface-sunken); /** Media background of the alert dialog. */
+  --alert-default-background: var(--color-surface-default); /** Default background of the alert. */
+  --alert-default-label: var(--color-text-primary); /** Default label of the alert. */
+  --alert-destructive-background: var(--color-surface-default); /** Destructive background of the alert. */
+  --alert-description-label: var(--color-text-muted); /** Description label of the alert. */
+  --attachment-background: var(--color-surface-canvas); /** Background of the attachment. */
+  --attachment-background-hover: var(--color-surface-sunken); /** Background hover of the attachment. */
+  --attachment-focus-ring-offset-focus: var(--color-surface-canvas); /** Focus ring offset focus of the attachment. */
+  --attachment-background-2: var(--color-surface-sunken); /** Background 2 of the attachment. */
+  --attachment-label: var(--color-text-muted); /** Label of the attachment. */
+  --avatar-fallback-background: var(--color-surface-sunken); /** Fallback background of the avatar. */
+  --avatar-fallback-label: var(--color-text-muted); /** Fallback label of the avatar. */
+  --avatar-badge-label: var(--color-text-on-action); /** Badge label of the avatar. */
+  --avatar-badge-focus-ring: var(--color-surface-canvas); /** Badge focus ring of the avatar. */
+  --avatar-group-focus-ring: var(--color-surface-canvas); /** Group focus ring of the avatar. */
+  --avatar-group-count-background: var(--color-surface-sunken); /** Group count background of the avatar. */
+  --avatar-group-count-label: var(--color-text-muted); /** Group count label of the avatar. */
+  --avatar-group-count-focus-ring: var(--color-surface-canvas); /** Group count focus ring of the avatar. */
+  --breadcrumb-list-label: var(--color-text-muted); /** List label of the breadcrumb. */
+  --breadcrumb-link-label-hover: var(--color-text-primary); /** Link label hover of the breadcrumb. */
+  --breadcrumb-page-label: var(--color-text-primary); /** Page label of the breadcrumb. */
+  --bubble-them-background: var(--color-surface-sunken); /** Them background of the bubble. */
+  --bubble-them-label: var(--color-text-primary); /** Them label of the bubble. */
+  --bubble-me-label: var(--color-text-on-action); /** Me label of the bubble. */
+  --bubble-label: var(--color-text-muted); /** Label of the bubble. */
+  --button-group-text-background: var(--color-surface-sunken); /** Text background of the button group. */
+  --button-group-separator-background: var(--color-border-strong); /** Separator background of the button group. */
+  --calendar-background: var(--color-surface-canvas); /** Background of the calendar. */
+  --calendar-border: var(--color-border-strong); /** Border of the calendar. */
+  --calendar-focus-ring-offset: var(--color-surface-canvas); /** Focus ring offset of the calendar. */
+  --calendar-background-2: var(--color-surface-raised); /** Background 2 of the calendar. */
+  --calendar-label: var(--color-text-muted); /** Label of the calendar. */
+  --calendar-background-3: var(--color-surface-sunken); /** Background 3 of the calendar. */
+  --calendar-label-2: var(--color-text-primary); /** Label 2 of the calendar. */
+  --calendar-label-selected: var(--color-text-muted); /** Label selected of the calendar. */
+  --calendar-label-3: var(--color-text-on-action); /** Label 3 of the calendar. */
+  --calendar-label-selected-2: var(--color-text-on-action); /** Label selected 2 of the calendar. */
+  --chart-icon: var(--color-text-muted); /** Icon of the chart. */
+  --chart-icon-2: var(--color-border-default); /** Icon 2 of the chart. */
+  --chart-icon-3: var(--color-surface-sunken); /** Icon 3 of the chart. */
+  --chart-border: var(--color-border-default); /** Border of the chart. */
+  --chart-background: var(--color-surface-canvas); /** Background of the chart. */
+  --chart-label: var(--color-text-muted); /** Label of the chart. */
+  --chart-label-2: var(--color-text-primary); /** Label 2 of the chart. */
+  --checkbox-canvas: var(--color-surface-canvas); /** Canvas of the checkbox. */
+  --combobox-trigger-icon-label: var(--color-text-muted); /** Trigger icon label of the combobox. */
+  --combobox-content-background: var(--color-surface-raised); /** Content background of the combobox. */
+  --combobox-content-label: var(--color-text-primary); /** Content label of the combobox. */
+  --combobox-content-focus-ring: var(--color-text-primary); /** Content focus ring of the combobox. */
+  --combobox-content-border: var(--color-border-strong); /** Content border of the combobox. */
+  --combobox-content-background-2: var(--color-border-strong); /** Content background 2 of the combobox. */
+  --combobox-item-background: var(--color-surface-sunken); /** Item background of the combobox. */
+  --combobox-item-label: var(--color-text-primary); /** Item label of the combobox. */
+  --combobox-label-label: var(--color-text-muted); /** Label label of the combobox. */
+  --combobox-empty-label: var(--color-text-muted); /** Empty label of the combobox. */
+  --combobox-separator-background: var(--color-border-default); /** Separator background of the combobox. */
+  --combobox-chips-border: var(--color-border-strong); /** Chips border of the combobox. */
+  --combobox-chip-background: var(--color-surface-sunken); /** Chip background of the combobox. */
+  --combobox-chip-label: var(--color-text-primary); /** Chip label of the combobox. */
+  --command-background: var(--color-surface-raised); /** Background of the command. */
+  --command-label: var(--color-text-primary); /** Label of the command. */
+  --command-label-2: var(--color-text-muted); /** Label 2 of the command. */
+  --command-input-label-placeholder: var(--color-text-muted); /** Input label placeholder of the command. */
+  --command-group-label: var(--color-text-primary); /** Group label of the command. */
+  --command-group-label-2: var(--color-text-muted); /** Group label 2 of the command. */
+  --command-separator-background: var(--color-border-default); /** Separator background of the command. */
+  --command-item-background-selected: var(--color-surface-sunken); /** Item background selected of the command. */
+  --command-item-label-selected: var(--color-text-primary); /** Item label selected of the command. */
+  --command-item-label: var(--color-text-muted); /** Item label of the command. */
+  --command-shortcut-label: var(--color-text-muted); /** Shortcut label of the command. */
+  --context-menu-sub-trigger-background-focus: var(--color-surface-sunken); /** Sub trigger background focus of the context menu. */
+  --context-menu-sub-trigger-label-focus: var(--color-text-primary); /** Sub trigger label focus of the context menu. */
+  --context-menu-sub-trigger-background-open: var(--color-surface-sunken); /** Sub trigger background open of the context menu. */
+  --context-menu-sub-trigger-label-open: var(--color-text-primary); /** Sub trigger label open of the context menu. */
+  --context-menu-sub-trigger-label: var(--color-text-muted); /** Sub trigger label of the context menu. */
+  --context-menu-sub-content-background: var(--color-surface-raised); /** Sub content background of the context menu. */
+  --context-menu-sub-content-label: var(--color-text-primary); /** Sub content label of the context menu. */
+  --context-menu-content-background: var(--color-surface-raised); /** Content background of the context menu. */
+  --context-menu-content-label: var(--color-text-primary); /** Content label of the context menu. */
+  --context-menu-item-background-focus: var(--color-surface-sunken); /** Item background focus of the context menu. */
+  --context-menu-item-label-focus: var(--color-text-primary); /** Item label focus of the context menu. */
+  --context-menu-item-label-2: var(--color-text-muted); /** Item label 2 of the context menu. */
+  --context-menu-checkbox-item-background-focus: var(--color-surface-sunken); /** Checkbox item background focus of the context menu. */
+  --context-menu-checkbox-item-label-focus: var(--color-text-primary); /** Checkbox item label focus of the context menu. */
+  --context-menu-radio-item-background-focus: var(--color-surface-sunken); /** Radio item background focus of the context menu. */
+  --context-menu-radio-item-label-focus: var(--color-text-primary); /** Radio item label focus of the context menu. */
+  --context-menu-label-label: var(--color-text-primary); /** Label label of the context menu. */
+  --context-menu-separator-background: var(--color-border-default); /** Separator background of the context menu. */
+  --context-menu-shortcut-label: var(--color-text-muted); /** Shortcut label of the context menu. */
+  --data-table-label-hover: var(--color-text-primary); /** Label hover of the data table. */
+  --data-table-background-hover: var(--color-surface-sunken); /** Background hover of the data table. */
+  --data-table-label: var(--color-text-muted); /** Label of the data table. */
+  --date-picker-label: var(--color-text-muted); /** Label of the date picker. */
+  --dialog-content-label: var(--color-text-primary); /** Content label of the dialog. */
+  --dialog-border: var(--color-border-default); /** Border of the dialog. */
+  --dialog-label: var(--color-text-secondary); /** Label of the dialog. */
+  --dialog-sunken: var(--color-surface-sunken); /** Sunken of the dialog. */
+  --drawer-content-background: var(--color-surface-canvas); /** Content background of the drawer. */
+  --drawer-background: var(--color-surface-sunken); /** Background of the drawer. */
+  --drawer-title-label: var(--color-text-primary); /** Title label of the drawer. */
+  --drawer-description-label: var(--color-text-muted); /** Description label of the drawer. */
+  --dropdown-menu-content-label: var(--color-text-primary); /** Content label of the dropdown menu. */
+  --dropdown-menu-content-border: var(--color-border-default); /** Content border of the dropdown menu. */
+  --dropdown-menu-item-sunken: var(--color-surface-sunken); /** Item sunken of the dropdown menu. */
+  --dropdown-menu-background: var(--color-border-default); /** Background of the dropdown menu. */
+  --empty-icon-background: var(--color-surface-sunken); /** Icon background of the empty. */
+  --empty-icon-label: var(--color-text-primary); /** Icon label of the empty. */
+  --empty-description-label: var(--color-text-muted); /** Description label of the empty. */
+  --field-label: var(--color-text-muted); /** Label of the field. */
+  --field-description-label: var(--color-text-muted); /** Description label of the field. */
+  --field-background: var(--color-surface-canvas); /** Background of the field. */
+  --form-description-label: var(--color-text-muted); /** Description label of the form. */
+  --hover-card-content-background: var(--color-surface-raised); /** Content background of the hover card. */
+  --hover-card-content-label: var(--color-text-primary); /** Content label of the hover card. */
+  --input-group-border: var(--color-border-strong); /** Border of the input group. */
+  --input-group-label: var(--color-text-muted); /** Label of the input group. */
+  --input-otp-slot-border: var(--color-border-strong); /** Slot border of the input otp. */
+  --input-otp-background: var(--color-text-primary); /** Background of the input otp. */
+  --item-background-hover: var(--color-surface-sunken); /** Background hover of the item. */
+  --item-focus-ring-offset-focus: var(--color-surface-canvas); /** Focus ring offset focus of the item. */
+  --item-outline-border: var(--color-border-default); /** Outline border of the item. */
+  --item-muted-background: var(--color-surface-sunken); /** Muted background of the item. */
+  --item-icon-background: var(--color-surface-sunken); /** Icon background of the item. */
+  --item-description-label: var(--color-text-muted); /** Description label of the item. */
+  --kbd-background: var(--color-surface-sunken); /** Background of the kbd. */
+  --kbd-label: var(--color-text-muted); /** Label of the kbd. */
+  --kbd-background-2: var(--color-surface-canvas); /** Background 2 of the kbd. */
+  --kbd-label-2: var(--color-surface-canvas); /** Label 2 of the kbd. */
+  --label-label: var(--color-text-primary); /** Label of the label. */
+  --marker-label: var(--color-text-muted); /** Label of the marker. */
+  --marker-background: var(--color-border-default); /** Background of the marker. */
+  --menubar-background: var(--color-surface-canvas); /** Background of the menubar. */
+  --menubar-trigger-background-focus: var(--color-surface-sunken); /** Trigger background focus of the menubar. */
+  --menubar-trigger-label-focus: var(--color-text-primary); /** Trigger label focus of the menubar. */
+  --menubar-trigger-background-open: var(--color-surface-sunken); /** Trigger background open of the menubar. */
+  --menubar-trigger-label-open: var(--color-text-primary); /** Trigger label open of the menubar. */
+  --menubar-content-background: var(--color-surface-raised); /** Content background of the menubar. */
+  --menubar-content-label: var(--color-text-primary); /** Content label of the menubar. */
+  --menubar-item-background-focus: var(--color-surface-sunken); /** Item background focus of the menubar. */
+  --menubar-item-label-focus: var(--color-text-primary); /** Item label focus of the menubar. */
+  --menubar-item-label-2: var(--color-text-muted); /** Item label 2 of the menubar. */
+  --menubar-checkbox-item-background-focus: var(--color-surface-sunken); /** Checkbox item background focus of the menubar. */
+  --menubar-checkbox-item-label-focus: var(--color-text-primary); /** Checkbox item label focus of the menubar. */
+  --menubar-radio-item-background-focus: var(--color-surface-sunken); /** Radio item background focus of the menubar. */
+  --menubar-radio-item-label-focus: var(--color-text-primary); /** Radio item label focus of the menubar. */
+  --menubar-separator-background: var(--color-border-default); /** Separator background of the menubar. */
+  --menubar-shortcut-label: var(--color-text-muted); /** Shortcut label of the menubar. */
+  --menubar-sub-trigger-background-focus: var(--color-surface-sunken); /** Sub trigger background focus of the menubar. */
+  --menubar-sub-trigger-label-focus: var(--color-text-primary); /** Sub trigger label focus of the menubar. */
+  --menubar-sub-trigger-background-open: var(--color-surface-sunken); /** Sub trigger background open of the menubar. */
+  --menubar-sub-trigger-label-open: var(--color-text-primary); /** Sub trigger label open of the menubar. */
+  --menubar-sub-content-background: var(--color-surface-raised); /** Sub content background of the menubar. */
+  --menubar-sub-content-label: var(--color-text-primary); /** Sub content label of the menubar. */
+  --message-scroller-focus-ring-offset-focus: var(--color-surface-canvas); /** Focus ring offset focus of the message scroller. */
+  --message-time-label: var(--color-text-muted); /** Time label of the message. */
+  --native-select-border: var(--color-border-strong); /** Border of the native select. */
+  --native-select-label: var(--color-text-on-action); /** Label of the native select. */
+  --native-select-label-placeholder: var(--color-text-muted); /** Label placeholder of the native select. */
+  --native-select-focus-ring-offset-focus: var(--color-surface-canvas); /** Focus ring offset focus of the native select. */
+  --native-select-label-2: var(--color-text-muted); /** Label 2 of the native select. */
+  --navigation-menu-background: var(--color-surface-canvas); /** Background of the navigation menu. */
+  --navigation-menu-background-hover: var(--color-surface-sunken); /** Background hover of the navigation menu. */
+  --navigation-menu-label-hover: var(--color-text-primary); /** Label hover of the navigation menu. */
+  --navigation-menu-background-focus: var(--color-surface-sunken); /** Background focus of the navigation menu. */
+  --navigation-menu-label-focus: var(--color-text-primary); /** Label focus of the navigation menu. */
+  --navigation-menu-background-open: var(--color-surface-sunken); /** Background open of the navigation menu. */
+  --navigation-menu-label-open: var(--color-text-primary); /** Label open of the navigation menu. */
+  --navigation-menu-background-open-hover: var(--color-surface-sunken); /** Background open hover of the navigation menu. */
+  --navigation-menu-background-open-focus: var(--color-surface-sunken); /** Background open focus of the navigation menu. */
+  --navigation-menu-focus-ring-offset-focus: var(--color-surface-canvas); /** Focus ring offset focus of the navigation menu. */
+  --navigation-menu-background-2: var(--color-surface-raised); /** Background 2 of the navigation menu. */
+  --navigation-menu-label: var(--color-text-primary); /** Label of the navigation menu. */
+  --navigation-menu-viewport-background: var(--color-surface-raised); /** Viewport background of the navigation menu. */
+  --navigation-menu-viewport-label: var(--color-text-primary); /** Viewport label of the navigation menu. */
+  --navigation-menu-link-background-hover: var(--color-surface-sunken); /** Link background hover of the navigation menu. */
+  --navigation-menu-link-label-hover: var(--color-text-primary); /** Link label hover of the navigation menu. */
+  --navigation-menu-link-background-focus: var(--color-surface-sunken); /** Link background focus of the navigation menu. */
+  --navigation-menu-link-label-focus: var(--color-text-primary); /** Link label focus of the navigation menu. */
+  --navigation-menu-link-background: var(--color-surface-sunken); /** Link background of the navigation menu. */
+  --navigation-menu-link-label: var(--color-text-primary); /** Link label of the navigation menu. */
+  --navigation-menu-link-label-2: var(--color-text-muted); /** Link label 2 of the navigation menu. */
+  --navigation-menu-link-focus-ring-offset-focus: var(--color-surface-canvas); /** Link focus ring offset focus of the navigation menu. */
+  --navigation-menu-background-3: var(--color-border-default); /** Background 3 of the navigation menu. */
+  --popover-content-background: var(--color-surface-raised); /** Content background of the popover. */
+  --popover-content-label: var(--color-text-primary); /** Content label of the popover. */
+  --popover-description-label: var(--color-text-muted); /** Description label of the popover. */
+  --radio-group-item-border: var(--color-border-strong); /** Item border of the radio group. */
+  --radio-group-item-focus-ring-offset-focus: var(--color-surface-canvas); /** Item focus ring offset focus of the radio group. */
+  --resizable-handle-background: var(--color-border-default); /** Handle background of the resizable. */
+  --resizable-handle-focus-ring-offset-focus: var(--color-surface-canvas); /** Handle focus ring offset focus of the resizable. */
+  --resizable-background: var(--color-border-default); /** Background of the resizable. */
+  --scroll-area-viewport-focus-ring-offset-focus: var(--color-surface-canvas); /** Viewport focus ring offset focus of the scroll area. */
+  --scroll-area-thumb-background: var(--color-border-default); /** Thumb background of the scroll area. */
+  --select-canvas: var(--color-surface-canvas); /** Canvas of the select. */
+  --select-content-label: var(--color-text-primary); /** Content label of the select. */
+  --select-content-border: var(--color-border-default); /** Content border of the select. */
+  --select-item-sunken: var(--color-surface-sunken); /** Item sunken of the select. */
+  --separator-background: var(--color-border-default); /** Background of the separator. */
+  --sheet-content-background: var(--color-surface-canvas); /** Content background of the sheet. */
+  --sheet-focus-ring-offset: var(--color-surface-canvas); /** Focus ring offset of the sheet. */
+  --sheet-background-open: var(--color-action-secondary); /** Background open of the sheet. */
+  --sheet-title-label: var(--color-text-primary); /** Title label of the sheet. */
+  --sheet-description-label: var(--color-text-muted); /** Description label of the sheet. */
+  --sidebar-wrapper-background: var(--color-surface-default); /** Wrapper background of the sidebar. */
+  --sidebar-background: var(--color-surface-default); /** Background of the sidebar. */
+  --sidebar-label: var(--color-text-primary); /** Label of the sidebar. */
+  --sidebar-inner-background: var(--color-surface-default); /** Inner background of the sidebar. */
+  --sidebar-inner-border: var(--color-border-default); /** Inner border of the sidebar. */
+  --sidebar-rail-background-hover: var(--color-border-default); /** Rail background hover of the sidebar. */
+  --sidebar-background-hover: var(--color-surface-default); /** Background hover of the sidebar. */
+  --sidebar-inset-background: var(--color-surface-canvas); /** Inset background of the sidebar. */
+  --sidebar-input-background: var(--color-surface-canvas); /** Input background of the sidebar. */
+  --sidebar-separator-background: var(--color-border-default); /** Separator background of the sidebar. */
+  --sidebar-group-label-label: var(--color-text-primary); /** Group label label of the sidebar. */
+  --sidebar-group-label-focus-ring-offset-focus: var(--color-surface-canvas); /** Group label focus ring offset focus of the sidebar. */
+  --sidebar-group-action-label: var(--color-text-primary); /** Group action label of the sidebar. */
+  --sidebar-group-action-background-hover: var(--color-surface-sunken); /** Group action background hover of the sidebar. */
+  --sidebar-group-action-label-hover: var(--color-text-primary); /** Group action label hover of the sidebar. */
+  --sidebar-group-action-focus-ring-offset-focus: var(--color-surface-canvas); /** Group action focus ring offset focus of the sidebar. */
+  --sidebar-menu-action-label: var(--color-text-primary); /** Menu action label of the sidebar. */
+  --sidebar-menu-action-background-hover: var(--color-surface-sunken); /** Menu action background hover of the sidebar. */
+  --sidebar-menu-action-label-hover: var(--color-text-primary); /** Menu action label hover of the sidebar. */
+  --sidebar-menu-action-focus-ring-offset-focus: var(--color-surface-canvas); /** Menu action focus ring offset focus of the sidebar. */
+  --sidebar-menu-badge-label: var(--color-text-primary); /** Menu badge label of the sidebar. */
+  --sidebar-menu-sub-border: var(--color-border-default); /** Menu sub border of the sidebar. */
+  --sidebar-menu-sub-button-label: var(--color-text-primary); /** Menu sub button label of the sidebar. */
+  --sidebar-menu-sub-button-background-hover: var(--color-surface-sunken); /** Menu sub button background hover of the sidebar. */
+  --sidebar-menu-sub-button-label-hover: var(--color-text-primary); /** Menu sub button label hover of the sidebar. */
+  --sidebar-menu-sub-button-background-active: var(--color-surface-sunken); /** Menu sub button background active of the sidebar. */
+  --sidebar-menu-sub-button-label-active: var(--color-text-primary); /** Menu sub button label active of the sidebar. */
+  --sidebar-menu-sub-button-focus-ring-offset-focus: var(--color-surface-canvas); /** Menu sub button focus ring offset focus of the sidebar. */
+  --sidebar-background-hover-2: var(--color-surface-sunken); /** Background hover 2 of the sidebar. */
+  --sidebar-label-hover: var(--color-text-primary); /** Label hover of the sidebar. */
+  --sidebar-background-active: var(--color-surface-sunken); /** Background active of the sidebar. */
+  --sidebar-label-active: var(--color-text-primary); /** Label active of the sidebar. */
+  --sidebar-background-2: var(--color-surface-sunken); /** Background 2 of the sidebar. */
+  --sidebar-background-open-hover: var(--color-surface-sunken); /** Background open hover of the sidebar. */
+  --sidebar-label-open-hover: var(--color-text-primary); /** Label open hover of the sidebar. */
+  --sidebar-focus-ring-offset-focus: var(--color-surface-canvas); /** Focus ring offset focus of the sidebar. */
+  --sidebar-default-background-hover: var(--color-surface-sunken); /** Default background hover of the sidebar. */
+  --sidebar-default-label-hover: var(--color-text-primary); /** Default label hover of the sidebar. */
+  --sidebar-outline-background: var(--color-surface-canvas); /** Outline background of the sidebar. */
+  --sidebar-outline-background-hover: var(--color-surface-sunken); /** Outline background hover of the sidebar. */
+  --sidebar-outline-label-hover: var(--color-text-primary); /** Outline label hover of the sidebar. */
+  --skeleton-background: var(--color-surface-sunken); /** Background of the skeleton. */
+  --slider-track-background: var(--color-surface-sunken); /** Track background of the slider. */
+  --slider-thumb-focus-ring-offset-focus: var(--color-surface-canvas); /** Thumb focus ring offset focus of the slider. */
+  --switch-canvas: var(--color-surface-canvas); /** Canvas of the switch. */
+  --textarea-border: var(--color-border-strong); /** Border of the textarea. */
+  --textarea-label-placeholder: var(--color-text-muted); /** Label placeholder of the textarea. */
+  --textarea-focus-ring-offset-focus: var(--color-surface-canvas); /** Focus ring offset focus of the textarea. */
+  --toast-label: var(--color-text-primary); /** Label of the toast. */
+  --toast-neutral-border: var(--color-border-default); /** Neutral border of the toast. */
+  --toast-success-border: var(--color-border-default); /** Success border of the toast. */
+  --toast-danger-border: var(--color-border-default); /** Danger border of the toast. */
+  --toast-label-2: var(--color-text-secondary); /** Label 2 of the toast. */
+  --toggle-background-hover: var(--color-surface-sunken); /** Background hover of the toggle. */
+  --toggle-label-hover: var(--color-text-muted); /** Label hover of the toggle. */
+  --toggle-background-on: var(--color-surface-sunken); /** Background on of the toggle. */
+  --toggle-label-on: var(--color-text-primary); /** Label on of the toggle. */
+  --toggle-focus-ring-offset-focus: var(--color-surface-canvas); /** Focus ring offset focus of the toggle. */
+  --toggle-outline-border: var(--color-border-strong); /** Outline border of the toggle. */
+  --toggle-outline-background-hover: var(--color-surface-sunken); /** Outline background hover of the toggle. */
+  --toggle-outline-label-hover: var(--color-text-primary); /** Outline label hover of the toggle. */
 }
 
 html[data-scheme="brand-expressive"][data-theme="dark"] {
@@ -315,21 +1177,53 @@ html[data-scheme="brand-expressive"][data-theme="dark"] {
   --type-data-font-family: "DM Sans", system-ui, sans-serif;
   --elevation-card: 0px 12px 32px 0px #00000080;
   --elevation-overlay: 0px 24px 48px 0px #00000099;
+  --button-secondary-border-width: var(--border-width-default); /** Secondary border width of the button. */
   --button-height: var(--size-control-default); /** Button height. */
   --button-padding-x: var(--space-inset-control-x); /** Horizontal padding inside a button. */
   --button-font-size: var(--type-label-font-size); /** Button label size. */
   --button-font-weight: var(--type-label-font-weight); /** Button label weight. */
   --button-icon-size: var(--size-icon); /** Size of an icon inside a button. */
+  --button-gap: var(--space-gap-default); /** Gap of the button. */
+  --button-focus: var(--border-width-focus); /** Focus of the button. */
+  --button-compact-height: var(--size-control-compact); /** Compact height of the button. */
+  --button-compact-padding-x: var(--space-inset-cell-x); /** Compact padding x of the button. */
+  --button-large-height: var(--size-control-large); /** Large height of the button. */
   --input-height: var(--size-control-default); /** Input height. */
   --input-padding-x: var(--space-inset-control-x); /** Horizontal padding inside an input. */
   --input-font-size: var(--type-body-font-size); /** Typed text size. */
+  --input-border-width: var(--border-width-default); /** Border width of the input. */
+  --input-focus: var(--border-width-focus); /** Focus of the input. */
   --badge-padding-x: var(--space-gap-tight); /** Horizontal padding inside a badge. */
   --badge-font-size: var(--type-caption-font-size); /** Badge label size. */
+  --badge-gap: var(--space-gap-tight); /** Gap of the badge. */
+  --badge-font-weight: var(--type-label-font-weight); /** Font weight of the badge. */
   --card-padding: var(--space-inset-container); /** Padding inside a card. */
+  --card-gap: var(--space-gap-default); /** Gap of the card. */
+  --card-border-width: var(--border-width-default); /** Border width of the card. */
+  --card-header-gap: var(--space-gap-tight); /** Header gap of the card. */
+  --card-title-font-size: var(--type-heading-font-size); /** Title font size of the card. */
+  --card-title-font-weight: var(--type-heading-font-weight); /** Title font weight of the card. */
+  --card-title-line-height: var(--type-heading-line-height); /** Title line height of the card. */
+  --card-description-font-size: var(--type-body-font-size); /** Description font size of the card. */
+  --card-content-gap: var(--space-gap-default); /** Content gap of the card. */
+  --card-footer-gap: var(--space-gap-default); /** Footer gap of the card. */
   --table-row-height: var(--size-row); /** Height of one data row. */
   --table-cell-padding-x: var(--space-inset-cell-x); /** Horizontal padding inside a cell. */
   --table-font-size: var(--type-data-font-size); /** Cell text size. */
+  --table-row-border-width: var(--border-width-default); /** Row border width of the table. */
+  --table-row-focus: var(--border-width-focus); /** Row focus of the table. */
+  --table-head-font-size: var(--type-label-font-size); /** Head font size of the table. */
+  --table-head-font-weight: var(--type-label-font-weight); /** Head font weight of the table. */
+  --tabs-list-gap: var(--space-gap-group); /** List gap of the tabs. */
+  --tabs-list-border-width: var(--border-width-default); /** List border width of the tabs. */
+  --tabs-trigger-height: var(--size-control-default); /** Trigger height of the tabs. */
+  --tabs-trigger-font-size: var(--type-label-font-size); /** Trigger font size of the tabs. */
+  --tabs-trigger-font-weight: var(--type-label-font-weight); /** Trigger font weight of the tabs. */
+  --tabs-focus: var(--border-width-focus); /** Focus of the tabs. */
+  --tabs-content-padding-top: var(--space-gap-default); /** Content padding top of the tabs. */
   --overlay-item-height: var(--size-control-default); /** Height of a menu item. */
+  --tooltip-content-padding-x: var(--space-gap-default); /** Content padding x of the tooltip. */
+  --tooltip-content-font-size: var(--type-caption-font-size); /** Content font size of the tooltip. */
   --transition-duration: var(--motion-duration-feedback); /** Duration of feedback transitions. */
   --transition-easing: var(--motion-easing-standard); /** Easing of feedback transitions. */
   --transition-panels-duration: var(--motion-duration-panels); /** Duration of panels opening and closing: dialogs, sheets, popovers, menus. */
@@ -343,6 +1237,371 @@ html[data-scheme="brand-expressive"][data-theme="dark"] {
   --accordion-icon-duration: var(--motion-duration-feedback); /** How fast the chevron turns. */
   --accordion-content-font-size: var(--type-body-font-size); /** The content's text size. */
   --accordion-content-padding-bottom: var(--space-inset-container); /** Space below the content. */
+  --alert-dialog-content-gap: var(--space-gap-group); /** Content gap of the alert dialog. */
+  --alert-dialog-header-gap-x: var(--space-gap-section); /** Header gap x of the alert dialog. */
+  --alert-dialog-footer-gap: var(--space-gap-default); /** Footer gap of the alert dialog. */
+  --alert-dialog-title-font-size: var(--type-heading-font-size); /** Title font size of the alert dialog. */
+  --alert-dialog-title-font-weight: var(--type-title-font-weight); /** Title font weight of the alert dialog. */
+  --alert-dialog-description-font-size: var(--type-body-font-size); /** Description font size of the alert dialog. */
+  --alert-dialog-media-size: var(--size-control-default); /** Media size of the alert dialog. */
+  --alert-padding-x: var(--space-inset-container); /** Padding x of the alert. */
+  --alert-font-size: var(--type-body-font-size); /** Font size of the alert. */
+  --alert-icon-size: var(--size-icon); /** Icon size of the alert. */
+  --alert-title-font-weight: var(--type-label-font-weight); /** Title font weight of the alert. */
+  --alert-description-gap: var(--space-gap-tight); /** Description gap of the alert. */
+  --alert-description-font-size: var(--type-body-font-size); /** Description font size of the alert. */
+  --attachment-font-size: var(--type-body-font-size); /** Font size of the attachment. */
+  --attachment-focus: var(--border-width-focus); /** Focus of the attachment. */
+  --attachment-size: var(--size-control-default); /** Size of the attachment. */
+  --attachment-icon-size: var(--size-icon); /** Icon size of the attachment. */
+  --attachment-font-weight: var(--type-label-font-weight); /** Font weight of the attachment. */
+  --attachment-font-size-2: var(--type-caption-font-size); /** Font size 2 of the attachment. */
+  --avatar-size: var(--size-control-default); /** Size of the avatar. */
+  --avatar-radius: var(--radius-round); /** Radius of the avatar. */
+  --avatar-fallback-radius: var(--radius-round); /** Fallback radius of the avatar. */
+  --avatar-fallback-font-size: var(--type-body-font-size); /** Fallback font size of the avatar. */
+  --avatar-fallback-font-size-2: var(--type-caption-font-size); /** Fallback font size 2 of the avatar. */
+  --avatar-badge-radius: var(--radius-round); /** Badge radius of the avatar. */
+  --avatar-group-count-size: var(--size-control-default); /** Group count size of the avatar. */
+  --avatar-group-count-radius: var(--radius-round); /** Group count radius of the avatar. */
+  --avatar-group-count-font-size: var(--type-body-font-size); /** Group count font size of the avatar. */
+  --avatar-group-count-icon-size: var(--size-icon); /** Group count icon size of the avatar. */
+  --breadcrumb-list-font-size: var(--type-body-font-size); /** List font size of the breadcrumb. */
+  --breadcrumb-page-font-weight: var(--type-body-font-weight); /** Page font weight of the breadcrumb. */
+  --breadcrumb-icon-size: var(--size-icon); /** Icon size of the breadcrumb. */
+  --bubble-gap: var(--space-gap-tight); /** Gap of the bubble. */
+  --bubble-font-size: var(--type-caption-font-size); /** Font size of the bubble. */
+  --bubble-body-font-size: var(--type-body-font-size); /** Body font size of the bubble. */
+  --button-group-gap: var(--space-gap-default); /** Gap of the button group. */
+  --button-group-text-gap: var(--space-gap-default); /** Text gap of the button group. */
+  --button-group-text-font-size: var(--type-body-font-size); /** Text font size of the button group. */
+  --button-group-text-font-weight: var(--type-label-font-weight); /** Text font weight of the button group. */
+  --button-group-text-icon-size: var(--size-icon); /** Text icon size of the button group. */
+  --calendar-gap: var(--space-gap-group); /** Gap of the calendar. */
+  --calendar-gap-2: var(--space-gap-tight); /** Gap 2 of the calendar. */
+  --calendar-disabled-opacity-disabled: var(--opacity-disabled); /** Disabled opacity disabled of the calendar. */
+  --calendar-font-size: var(--type-body-font-size); /** Font size of the calendar. */
+  --calendar-font-weight: var(--type-label-font-weight); /** Font weight of the calendar. */
+  --calendar-focus: var(--border-width-focus); /** Focus of the calendar. */
+  --calendar-height: var(--size-control-default); /** Height of the calendar. */
+  --calendar-font-weight-2: var(--type-body-font-weight); /** Font weight 2 of the calendar. */
+  --calendar-disabled-opacity: var(--opacity-disabled); /** Disabled opacity of the calendar. */
+  --calendar-icon-size: var(--size-icon); /** Icon size of the calendar. */
+  --calendar-font-size-2: var(--type-caption-font-size); /** Font size 2 of the calendar. */
+  --carousel-previous-size: var(--size-control-default); /** Previous size of the carousel. */
+  --carousel-previous-radius: var(--radius-round); /** Previous radius of the carousel. */
+  --carousel-next-size: var(--size-control-default); /** Next size of the carousel. */
+  --carousel-next-radius: var(--radius-round); /** Next radius of the carousel. */
+  --chart-font-size: var(--type-caption-font-size); /** Font size of the chart. */
+  --chart-font-weight: var(--type-label-font-weight); /** Font weight of the chart. */
+  --chart-gap: var(--space-gap-default); /** Gap of the chart. */
+  --chart-gap-2: var(--space-gap-group); /** Gap 2 of the chart. */
+  --checkbox-size: var(--size-icon); /** Size of the checkbox. */
+  --checkbox-border-width: var(--border-width-default); /** Border width of the checkbox. */
+  --checkbox-focus: var(--border-width-focus); /** Focus of the checkbox. */
+  --checkbox-disabled: var(--opacity-disabled); /** Disabled of the checkbox. */
+  --combobox-trigger-icon-size: var(--size-icon); /** Trigger icon size of the combobox. */
+  --combobox-trigger-icon-icon-size: var(--size-icon); /** Trigger icon icon size of the combobox. */
+  --combobox-content-height: var(--size-control-default); /** Content height of the combobox. */
+  --combobox-item-gap: var(--space-gap-default); /** Item gap of the combobox. */
+  --combobox-item-font-size: var(--type-body-font-size); /** Item font size of the combobox. */
+  --combobox-item-disabled-opacity-disabled: var(--opacity-disabled); /** Item disabled opacity disabled of the combobox. */
+  --combobox-item-icon-size: var(--size-icon); /** Item icon size of the combobox. */
+  --combobox-icon-size: var(--size-icon); /** Icon size of the combobox. */
+  --combobox-label-font-size: var(--type-caption-font-size); /** Label font size of the combobox. */
+  --combobox-label-padding-x: var(--space-inset-control-x); /** Label padding x of the combobox. */
+  --combobox-label-font-size-2: var(--type-body-font-size); /** Label font size 2 of the combobox. */
+  --combobox-empty-font-size: var(--type-body-font-size); /** Empty font size of the combobox. */
+  --combobox-chips-font-size: var(--type-body-font-size); /** Chips font size of the combobox. */
+  --combobox-chip-gap: var(--space-gap-tight); /** Chip gap of the combobox. */
+  --combobox-chip-font-size: var(--type-caption-font-size); /** Chip font size of the combobox. */
+  --combobox-chip-font-weight: var(--type-label-font-weight); /** Chip font weight of the combobox. */
+  --combobox-chip-disabled-opacity: var(--opacity-disabled); /** Chip disabled opacity of the combobox. */
+  --combobox-disabled-opacity: var(--opacity-disabled); /** Disabled opacity of the combobox. */
+  --command-font-weight: var(--type-label-font-weight); /** Font weight of the command. */
+  --command-input-wrapper-gap: var(--space-gap-default); /** Input wrapper gap of the command. */
+  --command-input-font-size: var(--type-body-font-size); /** Input font size of the command. */
+  --command-input-disabled-opacity-disabled: var(--opacity-disabled); /** Input disabled opacity disabled of the command. */
+  --command-icon-size: var(--size-icon); /** Icon size of the command. */
+  --command-disabled-opacity: var(--opacity-disabled); /** Disabled opacity of the command. */
+  --command-empty-font-size: var(--type-body-font-size); /** Empty font size of the command. */
+  --command-group-font-size: var(--type-caption-font-size); /** Group font size of the command. */
+  --command-group-font-weight: var(--type-label-font-weight); /** Group font weight of the command. */
+  --command-item-gap: var(--space-gap-default); /** Item gap of the command. */
+  --command-item-font-size: var(--type-body-font-size); /** Item font size of the command. */
+  --command-item-disabled-opacity-disabled: var(--opacity-disabled); /** Item disabled opacity disabled of the command. */
+  --command-item-icon-size: var(--size-icon); /** Item icon size of the command. */
+  --command-shortcut-font-size: var(--type-caption-font-size); /** Shortcut font size of the command. */
+  --context-menu-sub-trigger-font-size: var(--type-body-font-size); /** Sub trigger font size of the context menu. */
+  --context-menu-sub-trigger-icon-size: var(--size-icon); /** Sub trigger icon size of the context menu. */
+  --context-menu-item-gap: var(--space-gap-default); /** Item gap of the context menu. */
+  --context-menu-item-font-size: var(--type-body-font-size); /** Item font size of the context menu. */
+  --context-menu-item-disabled-opacity-disabled: var(--opacity-disabled); /** Item disabled opacity disabled of the context menu. */
+  --context-menu-item-icon-size: var(--size-icon); /** Item icon size of the context menu. */
+  --context-menu-checkbox-item-gap: var(--space-gap-default); /** Checkbox item gap of the context menu. */
+  --context-menu-checkbox-item-font-size: var(--type-body-font-size); /** Checkbox item font size of the context menu. */
+  --context-menu-checkbox-item-disabled-opacity-disabled: var(--opacity-disabled); /** Checkbox item disabled opacity disabled of the context menu. */
+  --context-menu-checkbox-item-icon-size: var(--size-icon); /** Checkbox item icon size of the context menu. */
+  --context-menu-icon-size: var(--size-icon); /** Icon size of the context menu. */
+  --context-menu-radio-item-gap: var(--space-gap-default); /** Radio item gap of the context menu. */
+  --context-menu-radio-item-font-size: var(--type-body-font-size); /** Radio item font size of the context menu. */
+  --context-menu-radio-item-disabled-opacity-disabled: var(--opacity-disabled); /** Radio item disabled opacity disabled of the context menu. */
+  --context-menu-radio-item-icon-size: var(--size-icon); /** Radio item icon size of the context menu. */
+  --context-menu-label-font-size: var(--type-body-font-size); /** Label font size of the context menu. */
+  --context-menu-label-font-weight: var(--type-label-font-weight); /** Label font weight of the context menu. */
+  --context-menu-shortcut-font-size: var(--type-caption-font-size); /** Shortcut font size of the context menu. */
+  --data-table-gap: var(--space-gap-tight); /** Gap of the data table. */
+  --data-table-gap-2: var(--space-gap-default); /** Gap 2 of the data table. */
+  --date-picker-font-weight: var(--type-body-font-weight); /** Font weight of the date picker. */
+  --dialog-content-gap: var(--space-gap-group); /** Content gap of the dialog. */
+  --dialog-content-padding: var(--space-inset-container); /** Content padding of the dialog. */
+  --dialog-border-width: var(--border-width-default); /** Border width of the dialog. */
+  --dialog-size: var(--size-icon); /** Size of the dialog. */
+  --dialog-gap: var(--space-gap-tight); /** Gap of the dialog. */
+  --dialog-gap-2: var(--space-gap-default); /** Gap 2 of the dialog. */
+  --dialog-font-size: var(--type-heading-font-size); /** Font size of the dialog. */
+  --dialog-font-weight: var(--type-heading-font-weight); /** Font weight of the dialog. */
+  --dialog-font-size-2: var(--type-body-font-size); /** Font size 2 of the dialog. */
+  --drawer-radius: var(--radius-round); /** Radius of the drawer. */
+  --drawer-header-padding: var(--space-inset-container); /** Header padding of the drawer. */
+  --drawer-footer-gap: var(--space-gap-default); /** Footer gap of the drawer. */
+  --drawer-footer-padding: var(--space-inset-container); /** Footer padding of the drawer. */
+  --drawer-title-font-weight: var(--type-title-font-weight); /** Title font weight of the drawer. */
+  --drawer-description-font-size: var(--type-body-font-size); /** Description font size of the drawer. */
+  --dropdown-menu-content-border-width: var(--border-width-default); /** Content border width of the dropdown menu. */
+  --dropdown-menu-item-gap: var(--space-gap-default); /** Item gap of the dropdown menu. */
+  --dropdown-menu-item-padding-x: var(--space-inset-cell-x); /** Item padding x of the dropdown menu. */
+  --dropdown-menu-item-font-size: var(--type-body-font-size); /** Item font size of the dropdown menu. */
+  --dropdown-menu-item-disabled: var(--opacity-disabled); /** Item disabled of the dropdown menu. */
+  --dropdown-menu-item-icon: var(--size-icon); /** Item icon of the dropdown menu. */
+  --empty-gap: var(--space-gap-section); /** Gap of the empty. */
+  --empty-header-gap: var(--space-gap-default); /** Header gap of the empty. */
+  --empty-title-font-size: var(--type-heading-font-size); /** Title font size of the empty. */
+  --empty-title-font-weight: var(--type-label-font-weight); /** Title font weight of the empty. */
+  --empty-description-font-size: var(--type-body-font-size); /** Description font size of the empty. */
+  --empty-content-gap: var(--space-gap-group); /** Content gap of the empty. */
+  --empty-content-font-size: var(--type-body-font-size); /** Content font size of the empty. */
+  --field-set-gap: var(--space-gap-section); /** Set gap of the field. */
+  --field-legend-font-weight: var(--type-label-font-weight); /** Legend font weight of the field. */
+  --field-legend-font-size: var(--type-body-font-size); /** Legend font size of the field. */
+  --field-group-gap: var(--space-gap-group); /** Group gap of the field. */
+  --field-label-gap: var(--space-gap-default); /** Label gap of the field. */
+  --field-label-disabled-opacity-disabled: var(--opacity-disabled); /** Label disabled opacity disabled of the field. */
+  --field-label-font-size: var(--type-body-font-size); /** Label font size of the field. */
+  --field-label-font-weight: var(--type-label-font-weight); /** Label font weight of the field. */
+  --field-description-font-size: var(--type-body-font-size); /** Description font size of the field. */
+  --field-description-font-weight: var(--type-body-font-weight); /** Description font weight of the field. */
+  --field-separator-font-size: var(--type-body-font-size); /** Separator font size of the field. */
+  --field-gap: var(--space-gap-tight); /** Gap of the field. */
+  --field-error-font-size: var(--type-body-font-size); /** Error font size of the field. */
+  --field-error-font-weight: var(--type-body-font-weight); /** Error font weight of the field. */
+  --form-item-gap: var(--space-gap-default); /** Item gap of the form. */
+  --form-description-font-size: var(--type-body-font-size); /** Description font size of the form. */
+  --form-message-font-size: var(--type-body-font-size); /** Message font size of the form. */
+  --hover-card-content-padding: var(--space-inset-container); /** Content padding of the hover card. */
+  --input-group-padding-bottom: var(--space-inset-control-x); /** Padding bottom of the input group. */
+  --input-group-padding-top: var(--space-inset-control-x); /** Padding top of the input group. */
+  --input-group-gap: var(--space-gap-default); /** Gap of the input group. */
+  --input-group-font-size: var(--type-body-font-size); /** Font size of the input group. */
+  --input-group-font-weight: var(--type-label-font-weight); /** Font weight of the input group. */
+  --input-group-disabled-opacity-disabled: var(--opacity-disabled); /** Disabled opacity disabled of the input group. */
+  --input-group-icon-size: var(--size-icon); /** Icon size of the input group. */
+  --input-group-inline-start-padding-left: var(--space-inset-control-x); /** Inline start padding left of the input group. */
+  --input-group-inline-end-padding-right: var(--space-inset-control-x); /** Inline end padding right of the input group. */
+  --input-group-block-start-padding-x: var(--space-inset-control-x); /** Block start padding x of the input group. */
+  --input-group-block-start-padding-top: var(--space-inset-control-x); /** Block start padding top of the input group. */
+  --input-group-block-start-padding-bottom: var(--space-inset-control-x); /** Block start padding bottom of the input group. */
+  --input-group-block-end-padding-x: var(--space-inset-control-x); /** Block end padding x of the input group. */
+  --input-group-block-end-padding-bottom: var(--space-inset-control-x); /** Block end padding bottom of the input group. */
+  --input-group-block-end-padding-top: var(--space-inset-control-x); /** Block end padding top of the input group. */
+  --input-group-xs-height: var(--size-control-compact); /** Xs height of the input group. */
+  --input-group-xs-gap: var(--space-gap-tight); /** Xs gap of the input group. */
+  --input-group-sm-height: var(--size-control-default); /** Sm height of the input group. */
+  --input-group-icon-sm-size: var(--size-control-default); /** Icon sm size of the input group. */
+  --input-group-control-padding-y: var(--space-inset-control-x); /** Control padding y of the input group. */
+  --input-otp-gap: var(--space-gap-default); /** Gap of the input otp. */
+  --input-otp-disabled-opacity: var(--opacity-disabled); /** Disabled opacity of the input otp. */
+  --input-otp-slot-font-size: var(--type-body-font-size); /** Slot font size of the input otp. */
+  --input-otp-height: var(--size-icon); /** Height of the input otp. */
+  --input-otp-duration: var(--motion-duration-feedback); /** Duration of the input otp. */
+  --item-font-size: var(--type-body-font-size); /** Font size of the item. */
+  --item-duration: var(--motion-duration-feedback); /** Duration of the item. */
+  --item-focus: var(--border-width-focus); /** Focus of the item. */
+  --item-default-gap: var(--space-gap-group); /** Default gap of the item. */
+  --item-default-padding: var(--space-inset-container); /** Default padding of the item. */
+  --item-sm-padding-x: var(--space-inset-container); /** Sm padding x of the item. */
+  --item-gap: var(--space-gap-default); /** Gap of the item. */
+  --item-icon-size: var(--size-control-default); /** Icon size of the item. */
+  --item-icon-icon-size: var(--size-icon); /** Icon icon size of the item. */
+  --item-content-gap: var(--space-gap-tight); /** Content gap of the item. */
+  --item-title-gap: var(--space-gap-default); /** Title gap of the item. */
+  --item-title-font-size: var(--type-body-font-size); /** Title font size of the item. */
+  --item-title-font-weight: var(--type-label-font-weight); /** Title font weight of the item. */
+  --item-description-font-size: var(--type-body-font-size); /** Description font size of the item. */
+  --item-description-font-weight: var(--type-body-font-weight); /** Description font weight of the item. */
+  --item-actions-gap: var(--space-gap-default); /** Actions gap of the item. */
+  --item-header-gap: var(--space-gap-default); /** Header gap of the item. */
+  --item-footer-gap: var(--space-gap-default); /** Footer gap of the item. */
+  --kbd-gap: var(--space-gap-tight); /** Gap of the kbd. */
+  --kbd-font-size: var(--type-caption-font-size); /** Font size of the kbd. */
+  --kbd-font-weight: var(--type-label-font-weight); /** Font weight of the kbd. */
+  --kbd-group-gap: var(--space-gap-tight); /** Group gap of the kbd. */
+  --label-gap: var(--space-gap-default); /** Gap of the label. */
+  --label-font-size: var(--type-label-font-size); /** Font size of the label. */
+  --label-font-weight: var(--type-label-font-weight); /** Font weight of the label. */
+  --label-line-height: var(--type-label-line-height); /** Line height of the label. */
+  --marker-font-size: var(--type-caption-font-size); /** Font size of the marker. */
+  --menubar-gap: var(--space-gap-tight); /** Gap of the menubar. */
+  --menubar-trigger-font-size: var(--type-body-font-size); /** Trigger font size of the menubar. */
+  --menubar-trigger-font-weight: var(--type-label-font-weight); /** Trigger font weight of the menubar. */
+  --menubar-item-gap: var(--space-gap-default); /** Item gap of the menubar. */
+  --menubar-item-font-size: var(--type-body-font-size); /** Item font size of the menubar. */
+  --menubar-item-disabled-opacity-disabled: var(--opacity-disabled); /** Item disabled opacity disabled of the menubar. */
+  --menubar-item-icon-size: var(--size-icon); /** Item icon size of the menubar. */
+  --menubar-checkbox-item-gap: var(--space-gap-default); /** Checkbox item gap of the menubar. */
+  --menubar-checkbox-item-font-size: var(--type-body-font-size); /** Checkbox item font size of the menubar. */
+  --menubar-checkbox-item-disabled-opacity-disabled: var(--opacity-disabled); /** Checkbox item disabled opacity disabled of the menubar. */
+  --menubar-checkbox-item-icon-size: var(--size-icon); /** Checkbox item icon size of the menubar. */
+  --menubar-icon-size: var(--size-icon); /** Icon size of the menubar. */
+  --menubar-radio-item-gap: var(--space-gap-default); /** Radio item gap of the menubar. */
+  --menubar-radio-item-font-size: var(--type-body-font-size); /** Radio item font size of the menubar. */
+  --menubar-radio-item-disabled-opacity-disabled: var(--opacity-disabled); /** Radio item disabled opacity disabled of the menubar. */
+  --menubar-radio-item-icon-size: var(--size-icon); /** Radio item icon size of the menubar. */
+  --menubar-label-font-size: var(--type-body-font-size); /** Label font size of the menubar. */
+  --menubar-label-font-weight: var(--type-label-font-weight); /** Label font weight of the menubar. */
+  --menubar-shortcut-font-size: var(--type-caption-font-size); /** Shortcut font size of the menubar. */
+  --menubar-sub-trigger-font-size: var(--type-body-font-size); /** Sub trigger font size of the menubar. */
+  --menubar-height: var(--size-icon); /** Height of the menubar. */
+  --message-scroller-gap: var(--space-gap-group); /** Gap of the message scroller. */
+  --message-scroller-focus: var(--border-width-focus); /** Focus of the message scroller. */
+  --message-font-size: var(--type-body-font-size); /** Font size of the message. */
+  --message-gap: var(--space-gap-tight); /** Gap of the message. */
+  --message-gap-x: var(--space-gap-default); /** Gap x of the message. */
+  --message-author-font-weight: var(--type-label-font-weight); /** Author font weight of the message. */
+  --message-time-font-size: var(--type-caption-font-size); /** Time font size of the message. */
+  --native-select-disabled-opacity: var(--opacity-disabled); /** Disabled opacity of the native select. */
+  --native-select-padding-x: var(--space-inset-control-x); /** Padding x of the native select. */
+  --native-select-font-size: var(--type-body-font-size); /** Font size of the native select. */
+  --native-select-height: var(--size-control-default); /** Height of the native select. */
+  --native-select-focus: var(--border-width-focus); /** Focus of the native select. */
+  --native-select-icon-size: var(--size-icon); /** Icon size of the native select. */
+  --navigation-menu-list-gap: var(--space-gap-tight); /** List gap of the navigation menu. */
+  --navigation-menu-padding-x: var(--space-inset-container); /** Padding x of the navigation menu. */
+  --navigation-menu-font-size: var(--type-body-font-size); /** Font size of the navigation menu. */
+  --navigation-menu-font-weight: var(--type-label-font-weight); /** Font weight of the navigation menu. */
+  --navigation-menu-disabled-opacity-disabled: var(--opacity-disabled); /** Disabled opacity disabled of the navigation menu. */
+  --navigation-menu-focus: var(--border-width-focus); /** Focus of the navigation menu. */
+  --navigation-menu-duration: var(--motion-duration-feedback); /** Duration of the navigation menu. */
+  --navigation-menu-link-gap: var(--space-gap-tight); /** Link gap of the navigation menu. */
+  --navigation-menu-link-font-size: var(--type-body-font-size); /** Link font size of the navigation menu. */
+  --navigation-menu-link-focus: var(--border-width-focus); /** Link focus of the navigation menu. */
+  --navigation-menu-link-icon-size: var(--size-icon); /** Link icon size of the navigation menu. */
+  --pagination-content-gap: var(--space-gap-tight); /** Content gap of the pagination. */
+  --pagination-gap: var(--space-gap-tight); /** Gap of the pagination. */
+  --pagination-icon-size: var(--size-icon); /** Icon size of the pagination. */
+  --popover-content-padding: var(--space-inset-container); /** Content padding of the popover. */
+  --popover-header-gap: var(--space-gap-tight); /** Header gap of the popover. */
+  --popover-header-font-size: var(--type-body-font-size); /** Header font size of the popover. */
+  --popover-title-font-weight: var(--type-label-font-weight); /** Title font weight of the popover. */
+  --progress-radius: var(--radius-round); /** Radius of the progress. */
+  --radio-group-item-icon-size: var(--size-icon); /** Item icon size of the radio group. */
+  --radio-group-item-radius: var(--radius-round); /** Item radius of the radio group. */
+  --radio-group-item-disabled-opacity-disabled: var(--opacity-disabled); /** Item disabled opacity disabled of the radio group. */
+  --radio-group-item-focus: var(--border-width-focus); /** Item focus of the radio group. */
+  --resizable-handle-focus: var(--border-width-focus); /** Handle focus of the resizable. */
+  --resizable-height: var(--size-icon); /** Height of the resizable. */
+  --scroll-area-viewport-focus: var(--border-width-focus); /** Viewport focus of the scroll area. */
+  --scroll-area-thumb-radius: var(--radius-round); /** Thumb radius of the scroll area. */
+  --select-trigger-gap: var(--space-gap-default); /** Trigger gap of the select. */
+  --select-trigger-border-width: var(--border-width-default); /** Trigger border width of the select. */
+  --select-focus: var(--border-width-focus); /** Focus of the select. */
+  --select-size: var(--size-icon); /** Size of the select. */
+  --select-content-border-width: var(--border-width-default); /** Content border width of the select. */
+  --select-item-gap: var(--space-gap-default); /** Item gap of the select. */
+  --select-item-padding-left: var(--space-inset-cell-x); /** Item padding left of the select. */
+  --select-item-font-size: var(--type-body-font-size); /** Item font size of the select. */
+  --select-item-disabled: var(--opacity-disabled); /** Item disabled of the select. */
+  --sheet-content-gap: var(--space-gap-group); /** Content gap of the sheet. */
+  --sheet-focus: var(--border-width-focus); /** Focus of the sheet. */
+  --sheet-icon-size: var(--size-icon); /** Icon size of the sheet. */
+  --sheet-header-padding: var(--space-inset-container); /** Header padding of the sheet. */
+  --sheet-footer-gap: var(--space-gap-default); /** Footer gap of the sheet. */
+  --sheet-footer-padding: var(--space-inset-container); /** Footer padding of the sheet. */
+  --sheet-title-font-weight: var(--type-title-font-weight); /** Title font weight of the sheet. */
+  --sheet-description-font-size: var(--type-body-font-size); /** Description font size of the sheet. */
+  --sidebar-gap-duration: var(--motion-duration-feedback); /** Gap duration of the sidebar. */
+  --sidebar-gap: var(--space-gap-default); /** Gap of the sidebar. */
+  --sidebar-container-duration: var(--motion-duration-feedback); /** Container duration of the sidebar. */
+  --sidebar-input-height: var(--size-control-default); /** Input height of the sidebar. */
+  --sidebar-header-gap: var(--space-gap-default); /** Header gap of the sidebar. */
+  --sidebar-footer-gap: var(--space-gap-default); /** Footer gap of the sidebar. */
+  --sidebar-content-gap: var(--space-gap-default); /** Content gap of the sidebar. */
+  --sidebar-group-label-height: var(--size-control-default); /** Group label height of the sidebar. */
+  --sidebar-group-label-font-size: var(--type-caption-font-size); /** Group label font size of the sidebar. */
+  --sidebar-group-label-font-weight: var(--type-label-font-weight); /** Group label font weight of the sidebar. */
+  --sidebar-group-label-duration: var(--motion-duration-feedback); /** Group label duration of the sidebar. */
+  --sidebar-group-label-icon-size: var(--size-icon); /** Group label icon size of the sidebar. */
+  --sidebar-group-label-focus: var(--border-width-focus); /** Group label focus of the sidebar. */
+  --sidebar-group-action-icon-size: var(--size-icon); /** Group action icon size of the sidebar. */
+  --sidebar-group-action-focus: var(--border-width-focus); /** Group action focus of the sidebar. */
+  --sidebar-group-content-font-size: var(--type-body-font-size); /** Group content font size of the sidebar. */
+  --sidebar-menu-gap: var(--space-gap-tight); /** Menu gap of the sidebar. */
+  --sidebar-menu-action-icon-size: var(--size-icon); /** Menu action icon size of the sidebar. */
+  --sidebar-menu-action-focus: var(--border-width-focus); /** Menu action focus of the sidebar. */
+  --sidebar-menu-badge-font-size: var(--type-caption-font-size); /** Menu badge font size of the sidebar. */
+  --sidebar-menu-badge-font-weight: var(--type-label-font-weight); /** Menu badge font weight of the sidebar. */
+  --sidebar-menu-skeleton-height: var(--size-control-default); /** Menu skeleton height of the sidebar. */
+  --sidebar-menu-skeleton-gap: var(--space-gap-default); /** Menu skeleton gap of the sidebar. */
+  --sidebar-menu-sub-gap: var(--space-gap-tight); /** Menu sub gap of the sidebar. */
+  --sidebar-menu-sub-button-gap: var(--space-gap-default); /** Menu sub button gap of the sidebar. */
+  --sidebar-menu-sub-button-disabled-opacity-disabled: var(--opacity-disabled); /** Menu sub button disabled opacity disabled of the sidebar. */
+  --sidebar-menu-sub-button-icon-size: var(--size-icon); /** Menu sub button icon size of the sidebar. */
+  --sidebar-menu-sub-button-focus: var(--border-width-focus); /** Menu sub button focus of the sidebar. */
+  --sidebar-font-size: var(--type-body-font-size); /** Font size of the sidebar. */
+  --sidebar-size: var(--size-control-default); /** Size of the sidebar. */
+  --sidebar-disabled-opacity-disabled: var(--opacity-disabled); /** Disabled opacity disabled of the sidebar. */
+  --sidebar-font-weight: var(--type-label-font-weight); /** Font weight of the sidebar. */
+  --sidebar-focus: var(--border-width-focus); /** Focus of the sidebar. */
+  --sidebar-icon-size: var(--size-icon); /** Icon size of the sidebar. */
+  --sidebar-default-height: var(--size-control-default); /** Default height of the sidebar. */
+  --sidebar-default-font-size: var(--type-body-font-size); /** Default font size of the sidebar. */
+  --sidebar-sm-font-size: var(--type-caption-font-size); /** Sm font size of the sidebar. */
+  --sidebar-lg-font-size: var(--type-body-font-size); /** Lg font size of the sidebar. */
+  --sidebar-height: var(--size-icon); /** Height of the sidebar. */
+  --sidebar-font-size-2: var(--type-caption-font-size); /** Font size 2 of the sidebar. */
+  --slider-disabled-opacity-disabled: var(--opacity-disabled); /** Disabled opacity disabled of the slider. */
+  --slider-track-radius: var(--radius-round); /** Track radius of the slider. */
+  --slider-thumb-icon-size: var(--size-icon); /** Thumb icon size of the slider. */
+  --slider-thumb-radius: var(--radius-round); /** Thumb radius of the slider. */
+  --slider-thumb-disabled-opacity-disabled: var(--opacity-disabled); /** Thumb disabled opacity disabled of the slider. */
+  --slider-thumb-focus: var(--border-width-focus); /** Thumb focus of the slider. */
+  --spinner-icon-size: var(--size-icon); /** Icon size of the spinner. */
+  --switch-height: var(--size-icon); /** Height of the switch. */
+  --switch-width: var(--size-icon); /** Width of the switch. */
+  --switch-radius: var(--radius-round); /** Radius of the switch. */
+  --switch-focus: var(--border-width-focus); /** Focus of the switch. */
+  --switch-disabled: var(--opacity-disabled); /** Disabled of the switch. */
+  --switch-size: var(--size-icon); /** Size of the switch. */
+  --switch-icon: var(--size-icon); /** Icon of the switch. */
+  --textarea-padding-x: var(--space-inset-control-x); /** Padding x of the textarea. */
+  --textarea-font-size: var(--type-body-font-size); /** Font size of the textarea. */
+  --textarea-disabled-opacity-disabled: var(--opacity-disabled); /** Disabled opacity disabled of the textarea. */
+  --textarea-focus: var(--border-width-focus); /** Focus of the textarea. */
+  --toast-gap: var(--space-gap-default); /** Gap of the toast. */
+  --toast-padding: var(--space-inset-container); /** Padding of the toast. */
+  --toast-border-width: var(--border-width-default); /** Border width of the toast. */
+  --toast-gap-2: var(--space-gap-tight); /** Gap 2 of the toast. */
+  --toast-font-weight: var(--type-label-font-weight); /** Font weight of the toast. */
+  --toast-font-size: var(--type-body-font-size); /** Font size of the toast. */
+  --toast-font-size-2: var(--type-caption-font-size); /** Font size 2 of the toast. */
+  --toggle-group-item-padding-x: var(--space-inset-control-x); /** Item padding x of the toggle group. */
+  --toggle-gap: var(--space-gap-default); /** Gap of the toggle. */
+  --toggle-font-size: var(--type-body-font-size); /** Font size of the toggle. */
+  --toggle-font-weight: var(--type-label-font-weight); /** Font weight of the toggle. */
+  --toggle-disabled-opacity-disabled: var(--opacity-disabled); /** Disabled opacity disabled of the toggle. */
+  --toggle-icon-size: var(--size-icon); /** Icon size of the toggle. */
+  --toggle-focus: var(--border-width-focus); /** Focus of the toggle. */
+  --toggle-sm-height: var(--size-control-default); /** Sm height of the toggle. */
   --button-primary-background: var(--color-action-primary); /** Primary button fill. */
   --button-primary-background-hover: var(--color-action-primary-hover); /** Primary button fill on hover. */
   --button-danger-background: var(--color-action-danger); /** Danger button fill. */
@@ -350,8 +1609,11 @@ html[data-scheme="brand-expressive"][data-theme="dark"] {
   --button-ghost-label: var(--color-text-link); /** Ghost button label color. */
   --button-radius: var(--radius-control); /** Button corner radius. */
   --button-focus-ring: var(--color-border-focus); /** Focus ring color on any button. */
+  --button-font-family: var(--type-label-font-family); /** Font family of the button. */
   --input-border-focus: var(--color-border-focus); /** Input border when focused. */
   --input-radius: var(--radius-control); /** Input corner radius. */
+  --input-font-family: var(--type-body-font-family); /** Font family of the input. */
+  --input-danger: var(--color-status-danger); /** Danger of the input. */
   --control-checked: var(--color-action-primary); /** Fill of a checked checkbox or an on switch. */
   --control-radius: var(--radius-badge); /** Checkbox corner radius. */
   --badge-radius: var(--radius-badge); /** Badge corner radius. */
@@ -363,16 +1625,203 @@ html[data-scheme="brand-expressive"][data-theme="dark"] {
   --badge-danger-label: var(--color-text-danger-on-dark); /** Danger badge label. */
   --badge-info-background: var(--color-status-info-subtle); /** Info badge fill. */
   --badge-info-label: var(--color-text-info-on-dark); /** Info badge label. */
+  --badge-font-family: var(--type-caption-font-family); /** Font family of the badge. */
   --card-radius: var(--radius-container); /** Card corner radius. */
   --card-shadow: var(--elevation-card); /** Card shadow. */
+  --card-title-font-family: var(--type-heading-font-family); /** Title font family of the card. */
   --table-row-selected: var(--color-surface-selected); /** Fill of a selected row. */
   --table-row-selected-edge: var(--color-border-selected); /** Edge that marks a selected row, beside its fill. */
+  --table-head-font-family: var(--type-label-font-family); /** Head font family of the table. */
+  --table-cell-font-family: var(--type-data-font-family); /** Cell font family of the table. */
   --tabs-indicator: var(--color-action-primary); /** Active tab indicator. */
+  --tabs-trigger-font-family: var(--type-label-font-family); /** Trigger font family of the tabs. */
   --overlay-radius: var(--radius-container); /** Corner radius of overlays. */
   --overlay-shadow: var(--elevation-overlay); /** Shadow of overlays. */
   --overlay-scrim: var(--color-surface-scrim); /** Color that dims the page behind a dialog. */
+  --tooltip-content-radius: var(--radius-badge); /** Content radius of the tooltip. */
+  --tooltip-content-font-family: var(--type-caption-font-family); /** Content font family of the tooltip. */
   --accordion-trigger-radius: var(--radius-control); /** The trigger's corner, seen on focus. */
   --accordion-focus-ring: var(--color-border-focus); /** The focus ring's color. */
+  --alert-dialog-overlay-background: var(--color-surface-scrim); /** Overlay background of the alert dialog. */
+  --alert-dialog-content-radius: var(--radius-container); /** Content radius of the alert dialog. */
+  --alert-dialog-content-shadow: var(--elevation-overlay); /** Content shadow of the alert dialog. */
+  --alert-dialog-media-radius: var(--radius-control); /** Media radius of the alert dialog. */
+  --alert-radius: var(--radius-container); /** Radius of the alert. */
+  --alert-destructive-label: var(--color-status-danger); /** Destructive label of the alert. */
+  --attachment-radius: var(--radius-control); /** Radius of the attachment. */
+  --attachment-focus-ring-focus: var(--color-border-focus); /** Focus ring focus of the attachment. */
+  --attachment-radius-2: var(--radius-badge); /** Radius 2 of the attachment. */
+  --avatar-badge-background: var(--color-action-primary); /** Badge background of the avatar. */
+  --bubble-me-background: var(--color-action-primary); /** Me background of the bubble. */
+  --bubble-body-radius: var(--radius-container); /** Body radius of the bubble. */
+  --button-group-text-radius: var(--radius-control); /** Text radius of the button group. */
+  --calendar-radius: var(--radius-control); /** Radius of the calendar. */
+  --calendar-shadow: var(--elevation-card); /** Shadow of the calendar. */
+  --calendar-border-2: var(--color-border-focus); /** Border 2 of the calendar. */
+  --calendar-focus-ring: var(--color-border-focus); /** Focus ring of the calendar. */
+  --calendar-background-4: var(--color-action-primary); /** Background 4 of the calendar. */
+  --calendar-background-selected: var(--color-action-primary); /** Background selected of the calendar. */
+  --chart-radius: var(--radius-container); /** Radius of the chart. */
+  --chart-shadow: var(--elevation-overlay); /** Shadow of the chart. */
+  --combobox-content-radius: var(--radius-control); /** Content radius of the combobox. */
+  --combobox-content-shadow: var(--elevation-overlay); /** Content shadow of the combobox. */
+  --combobox-item-radius: var(--radius-badge); /** Item radius of the combobox. */
+  --combobox-chips-radius: var(--radius-control); /** Chips radius of the combobox. */
+  --combobox-chips-shadow: var(--elevation-card); /** Chips shadow of the combobox. */
+  --combobox-chips-border-focus: var(--color-border-focus); /** Chips border focus of the combobox. */
+  --combobox-chips-focus-ring-focus: var(--color-border-focus); /** Chips focus ring focus of the combobox. */
+  --combobox-chips-border-invalid: var(--color-status-danger); /** Chips border invalid of the combobox. */
+  --combobox-chips-focus-ring-invalid: var(--color-status-danger); /** Chips focus ring invalid of the combobox. */
+  --combobox-chip-radius: var(--radius-badge); /** Chip radius of the combobox. */
+  --command-radius: var(--radius-control); /** Radius of the command. */
+  --command-input-radius: var(--radius-control); /** Input radius of the command. */
+  --command-item-radius: var(--radius-badge); /** Item radius of the command. */
+  --context-menu-sub-trigger-radius: var(--radius-badge); /** Sub trigger radius of the context menu. */
+  --context-menu-sub-content-radius: var(--radius-control); /** Sub content radius of the context menu. */
+  --context-menu-sub-content-shadow: var(--elevation-overlay); /** Sub content shadow of the context menu. */
+  --context-menu-content-radius: var(--radius-control); /** Content radius of the context menu. */
+  --context-menu-content-shadow: var(--elevation-overlay); /** Content shadow of the context menu. */
+  --context-menu-item-radius: var(--radius-badge); /** Item radius of the context menu. */
+  --context-menu-item-label: var(--color-status-danger); /** Item label of the context menu. */
+  --context-menu-item-background-focus-2: var(--color-status-danger); /** Item background focus 2 of the context menu. */
+  --context-menu-item-label-focus-2: var(--color-status-danger); /** Item label focus 2 of the context menu. */
+  --context-menu-checkbox-item-radius: var(--radius-badge); /** Checkbox item radius of the context menu. */
+  --context-menu-radio-item-radius: var(--radius-badge); /** Radio item radius of the context menu. */
+  --data-table-radius: var(--radius-badge); /** Radius of the data table. */
+  --dialog-radius: var(--radius-badge); /** Radius of the dialog. */
+  --dialog-font-family: var(--type-heading-font-family); /** Font family of the dialog. */
+  --drawer-overlay-background: var(--color-surface-scrim); /** Overlay background of the drawer. */
+  --dropdown-menu-item-radius: var(--radius-badge); /** Item radius of the dropdown menu. */
+  --dropdown-menu-label: var(--color-status-danger); /** Label of the dropdown menu. */
+  --empty-radius: var(--radius-container); /** Radius of the empty. */
+  --empty-icon-radius: var(--radius-container); /** Icon radius of the empty. */
+  --empty-description-label-2: var(--color-action-primary); /** Description label 2 of the empty. */
+  --field-label-invalid: var(--color-status-danger); /** Label invalid of the field. */
+  --field-label-radius: var(--radius-control); /** Label radius of the field. */
+  --field-border-checked: var(--color-action-primary); /** Border checked of the field. */
+  --field-background-checked: var(--color-action-primary); /** Background checked of the field. */
+  --field-description-label-2: var(--color-action-primary); /** Description label 2 of the field. */
+  --field-error-label: var(--color-status-danger); /** Error label of the field. */
+  --form-label-label: var(--color-status-danger); /** Label label of the form. */
+  --form-message-label: var(--color-status-danger); /** Message label of the form. */
+  --hover-card-content-radius: var(--radius-control); /** Content radius of the hover card. */
+  --hover-card-content-shadow: var(--elevation-overlay); /** Content shadow of the hover card. */
+  --input-group-radius: var(--radius-control); /** Radius of the input group. */
+  --input-group-shadow: var(--elevation-card); /** Shadow of the input group. */
+  --input-group-border-2: var(--color-border-focus); /** Border 2 of the input group. */
+  --input-group-focus-ring: var(--color-border-focus); /** Focus ring of the input group. */
+  --input-group-border-invalid: var(--color-status-danger); /** Border invalid of the input group. */
+  --input-group-focus-ring-invalid: var(--color-status-danger); /** Focus ring invalid of the input group. */
+  --input-group-sm-radius: var(--radius-control); /** Sm radius of the input group. */
+  --input-otp-slot-shadow: var(--elevation-card); /** Slot shadow of the input otp. */
+  --input-otp-slot-border-invalid: var(--color-status-danger); /** Slot border invalid of the input otp. */
+  --input-otp-slot-border-2: var(--color-border-focus); /** Slot border 2 of the input otp. */
+  --input-otp-slot-focus-ring: var(--color-border-focus); /** Slot focus ring of the input otp. */
+  --input-otp-slot-focus-ring-invalid: var(--color-status-danger); /** Slot focus ring invalid of the input otp. */
+  --item-radius: var(--radius-control); /** Radius of the item. */
+  --item-border-focus: var(--color-border-focus); /** Border focus of the item. */
+  --item-focus-ring-focus: var(--color-border-focus); /** Focus ring focus of the item. */
+  --item-icon-radius: var(--radius-badge); /** Icon radius of the item. */
+  --item-image-radius: var(--radius-badge); /** Image radius of the item. */
+  --item-description-label-2: var(--color-action-primary); /** Description label 2 of the item. */
+  --kbd-radius: var(--radius-badge); /** Radius of the kbd. */
+  --label-font-family: var(--type-label-font-family); /** Font family of the label. */
+  --menubar-radius: var(--radius-control); /** Radius of the menubar. */
+  --menubar-shadow: var(--elevation-card); /** Shadow of the menubar. */
+  --menubar-trigger-radius: var(--radius-badge); /** Trigger radius of the menubar. */
+  --menubar-content-radius: var(--radius-control); /** Content radius of the menubar. */
+  --menubar-content-shadow: var(--elevation-overlay); /** Content shadow of the menubar. */
+  --menubar-item-radius: var(--radius-badge); /** Item radius of the menubar. */
+  --menubar-item-label: var(--color-status-danger); /** Item label of the menubar. */
+  --menubar-item-background-focus-2: var(--color-status-danger); /** Item background focus 2 of the menubar. */
+  --menubar-item-label-focus-2: var(--color-status-danger); /** Item label focus 2 of the menubar. */
+  --menubar-checkbox-item-radius: var(--radius-badge); /** Checkbox item radius of the menubar. */
+  --menubar-radio-item-radius: var(--radius-badge); /** Radio item radius of the menubar. */
+  --menubar-sub-trigger-radius: var(--radius-badge); /** Sub trigger radius of the menubar. */
+  --menubar-sub-content-radius: var(--radius-control); /** Sub content radius of the menubar. */
+  --menubar-sub-content-shadow: var(--elevation-overlay); /** Sub content shadow of the menubar. */
+  --message-scroller-radius: var(--radius-control); /** Radius of the message scroller. */
+  --message-scroller-focus-ring-focus: var(--color-border-focus); /** Focus ring focus of the message scroller. */
+  --native-select-radius: var(--radius-control); /** Radius of the native select. */
+  --native-select-shadow: var(--elevation-card); /** Shadow of the native select. */
+  --native-select-background: var(--color-action-primary); /** Background of the native select. */
+  --native-select-border-focus: var(--color-border-focus); /** Border focus of the native select. */
+  --native-select-focus-ring-focus: var(--color-border-focus); /** Focus ring focus of the native select. */
+  --native-select-border-invalid: var(--color-status-danger); /** Border invalid of the native select. */
+  --native-select-focus-ring-invalid: var(--color-status-danger); /** Focus ring invalid of the native select. */
+  --navigation-menu-radius: var(--radius-control); /** Radius of the navigation menu. */
+  --navigation-menu-focus-ring-focus: var(--color-border-focus); /** Focus ring focus of the navigation menu. */
+  --navigation-menu-shadow: var(--elevation-card); /** Shadow of the navigation menu. */
+  --navigation-menu-viewport-radius: var(--radius-control); /** Viewport radius of the navigation menu. */
+  --navigation-menu-viewport-shadow: var(--elevation-card); /** Viewport shadow of the navigation menu. */
+  --navigation-menu-link-radius: var(--radius-badge); /** Link radius of the navigation menu. */
+  --navigation-menu-link-selected: var(--color-border-selected); /** Link selected of the navigation menu. */
+  --navigation-menu-link-focus-ring-focus: var(--color-border-focus); /** Link focus ring focus of the navigation menu. */
+  --navigation-menu-shadow-2: var(--elevation-overlay); /** Shadow 2 of the navigation menu. */
+  --popover-content-radius: var(--radius-control); /** Content radius of the popover. */
+  --popover-content-shadow: var(--elevation-overlay); /** Content shadow of the popover. */
+  --progress-background: var(--color-action-primary); /** Background of the progress. */
+  --progress-indicator-background: var(--color-action-primary); /** Indicator background of the progress. */
+  --radio-group-item-label: var(--color-action-primary); /** Item label of the radio group. */
+  --radio-group-item-shadow: var(--elevation-card); /** Item shadow of the radio group. */
+  --radio-group-item-border-focus: var(--color-border-focus); /** Item border focus of the radio group. */
+  --radio-group-item-border-invalid: var(--color-status-danger); /** Item border invalid of the radio group. */
+  --radio-group-item-focus-ring-invalid: var(--color-status-danger); /** Item focus ring invalid of the radio group. */
+  --radio-group-item-focus-ring-focus: var(--color-border-focus); /** Item focus ring focus of the radio group. */
+  --radio-group-icon: var(--color-action-primary); /** Icon of the radio group. */
+  --resizable-handle-focus-ring-focus: var(--color-border-focus); /** Handle focus ring focus of the resizable. */
+  --resizable-radius: var(--radius-badge); /** Radius of the resizable. */
+  --scroll-area-viewport-focus-ring-focus: var(--color-border-focus); /** Viewport focus ring focus of the scroll area. */
+  --select-trigger-font-family: var(--type-body-font-family); /** Trigger font family of the select. */
+  --select-item-radius: var(--radius-badge); /** Item radius of the select. */
+  --sheet-overlay-background: var(--color-surface-scrim); /** Overlay background of the sheet. */
+  --sheet-content-shadow: var(--elevation-overlay); /** Content shadow of the sheet. */
+  --sheet-radius: var(--radius-badge); /** Radius of the sheet. */
+  --sheet-focus-ring-focus: var(--color-border-focus); /** Focus ring focus of the sheet. */
+  --sidebar-inner-radius: var(--radius-container); /** Inner radius of the sidebar. */
+  --sidebar-inner-shadow: var(--elevation-card); /** Inner shadow of the sidebar. */
+  --sidebar-inset-radius: var(--radius-container); /** Inset radius of the sidebar. */
+  --sidebar-inset-shadow: var(--elevation-card); /** Inset shadow of the sidebar. */
+  --sidebar-group-label-radius: var(--radius-control); /** Group label radius of the sidebar. */
+  --sidebar-group-label-focus-ring: var(--color-border-focus); /** Group label focus ring of the sidebar. */
+  --sidebar-group-label-focus-ring-focus: var(--color-border-focus); /** Group label focus ring focus of the sidebar. */
+  --sidebar-group-action-radius: var(--radius-control); /** Group action radius of the sidebar. */
+  --sidebar-group-action-focus-ring: var(--color-border-focus); /** Group action focus ring of the sidebar. */
+  --sidebar-group-action-focus-ring-focus: var(--color-border-focus); /** Group action focus ring focus of the sidebar. */
+  --sidebar-menu-action-radius: var(--radius-control); /** Menu action radius of the sidebar. */
+  --sidebar-menu-action-focus-ring: var(--color-border-focus); /** Menu action focus ring of the sidebar. */
+  --sidebar-menu-action-focus-ring-focus: var(--color-border-focus); /** Menu action focus ring focus of the sidebar. */
+  --sidebar-menu-badge-radius: var(--radius-control); /** Menu badge radius of the sidebar. */
+  --sidebar-menu-skeleton-radius: var(--radius-control); /** Menu skeleton radius of the sidebar. */
+  --sidebar-menu-sub-button-radius: var(--radius-control); /** Menu sub button radius of the sidebar. */
+  --sidebar-menu-sub-button-focus-ring: var(--color-border-focus); /** Menu sub button focus ring of the sidebar. */
+  --sidebar-menu-sub-button-focus-ring-focus: var(--color-border-focus); /** Menu sub button focus ring focus of the sidebar. */
+  --sidebar-radius: var(--radius-control); /** Radius of the sidebar. */
+  --sidebar-focus-ring: var(--color-border-focus); /** Focus ring of the sidebar. */
+  --sidebar-selected: var(--color-border-selected); /** Selected of the sidebar. */
+  --sidebar-focus-ring-focus: var(--color-border-focus); /** Focus ring focus of the sidebar. */
+  --skeleton-radius: var(--radius-control); /** Radius of the skeleton. */
+  --slider-range-background: var(--color-action-primary); /** Range background of the slider. */
+  --slider-thumb-border: var(--color-action-primary); /** Thumb border of the slider. */
+  --slider-thumb-shadow: var(--elevation-card); /** Thumb shadow of the slider. */
+  --slider-thumb-focus-ring: var(--color-border-focus); /** Thumb focus ring of the slider. */
+  --slider-thumb-focus-ring-focus: var(--color-border-focus); /** Thumb focus ring focus of the slider. */
+  --textarea-radius: var(--radius-control); /** Radius of the textarea. */
+  --textarea-shadow: var(--elevation-card); /** Shadow of the textarea. */
+  --textarea-border-focus: var(--color-border-focus); /** Border focus of the textarea. */
+  --textarea-border-invalid: var(--color-status-danger); /** Border invalid of the textarea. */
+  --textarea-focus-ring-invalid: var(--color-status-danger); /** Focus ring invalid of the textarea. */
+  --textarea-focus-ring-focus: var(--color-border-focus); /** Focus ring focus of the textarea. */
+  --toast-success-border-2: var(--color-status-success); /** Success border 2 of the toast. */
+  --toast-danger-border-2: var(--color-status-danger); /** Danger border 2 of the toast. */
+  --toggle-group-radius: var(--radius-control); /** Radius of the toggle group. */
+  --toggle-group-shadow: var(--elevation-card); /** Shadow of the toggle group. */
+  --toggle-radius: var(--radius-control); /** Radius of the toggle. */
+  --toggle-border-focus: var(--color-border-focus); /** Border focus of the toggle. */
+  --toggle-border-invalid: var(--color-status-danger); /** Border invalid of the toggle. */
+  --toggle-focus-ring-invalid: var(--color-status-danger); /** Focus ring invalid of the toggle. */
+  --toggle-focus-ring-focus: var(--color-border-focus); /** Focus ring focus of the toggle. */
+  --toggle-outline-shadow: var(--elevation-card); /** Outline shadow of the toggle. */
   --color-surface-canvas: #120B09; /** The page background behind everything. */
   --color-surface-default: #1F1411; /** The base fill for content. */
   --color-surface-raised: #33241F; /** Fills that float above content. */
@@ -403,6 +1852,7 @@ html[data-scheme="brand-expressive"][data-theme="dark"] {
   --button-disabled-background: var(--color-disabled-surface); /** Fill of a disabled button. */
   --button-disabled-label: var(--color-disabled-text); /** Label of a disabled button. */
   --button-disabled-border: var(--color-disabled-border); /** Border of a disabled secondary button. */
+  --button-canvas: var(--color-surface-canvas); /** Canvas of the button. */
   --input-background: var(--color-surface-default); /** Input fill. */
   --input-border: var(--color-border-strong); /** Input border at rest. */
   --input-text: var(--color-text-primary); /** Typed text color. */
@@ -410,22 +1860,296 @@ html[data-scheme="brand-expressive"][data-theme="dark"] {
   --input-disabled-background: var(--color-disabled-surface); /** Fill of a disabled input. */
   --input-disabled-border: var(--color-disabled-border); /** Border of a disabled input. */
   --input-disabled-text: var(--color-disabled-text); /** Text in a disabled input. */
+  --input-canvas: var(--color-surface-canvas); /** Canvas of the input. */
   --control-track: var(--color-border-strong); /** Track of an off switch. */
   --control-thumb: var(--color-surface-default); /** Switch thumb and checkmark color. */
   --badge-neutral-background: var(--color-surface-sunken); /** Neutral badge fill. */
   --badge-neutral-label: var(--color-text-secondary); /** Neutral badge label. */
   --card-background: var(--color-surface-default); /** Card fill. */
   --card-border: var(--color-border-default); /** Card border. */
+  --card-label: var(--color-text-primary); /** Label of the card. */
+  --card-description-label: var(--color-text-secondary); /** Description label of the card. */
   --table-header-background: var(--color-surface-sunken); /** Header row fill. */
   --table-row-border: var(--color-border-default); /** Line between rows. */
+  --table-label: var(--color-text-primary); /** Label of the table. */
+  --table-head-label: var(--color-text-secondary); /** Head label of the table. */
   --tabs-label: var(--color-text-secondary); /** Inactive tab label. */
   --tabs-label-active: var(--color-text-primary); /** Active tab label. */
+  --tabs-list-border: var(--color-border-default); /** List border of the tabs. */
+  --tabs-canvas: var(--color-surface-canvas); /** Canvas of the tabs. */
   --overlay-background: var(--color-surface-raised); /** Fill of a dialog, menu or toast. */
   --tooltip-background: var(--color-surface-inverse); /** Tooltip fill. */
   --tooltip-label: var(--color-text-inverse); /** Tooltip text. */
   --accordion-divider: var(--color-border-default); /** The line between items. */
   --accordion-trigger-label: var(--color-text-primary); /** The trigger's text color. */
+  --accordion-trigger-focus-ring-offset-focus: var(--color-surface-canvas); /** Trigger focus ring offset focus of the accordion. */
   --accordion-icon: var(--color-text-muted); /** The chevron's color. */
+  --alert-dialog-content-background: var(--color-surface-canvas); /** Content background of the alert dialog. */
+  --alert-dialog-description-label: var(--color-text-muted); /** Description label of the alert dialog. */
+  --alert-dialog-media-background: var(--color-surface-sunken); /** Media background of the alert dialog. */
+  --alert-default-background: var(--color-surface-default); /** Default background of the alert. */
+  --alert-default-label: var(--color-text-primary); /** Default label of the alert. */
+  --alert-destructive-background: var(--color-surface-default); /** Destructive background of the alert. */
+  --alert-description-label: var(--color-text-muted); /** Description label of the alert. */
+  --attachment-background: var(--color-surface-canvas); /** Background of the attachment. */
+  --attachment-background-hover: var(--color-surface-sunken); /** Background hover of the attachment. */
+  --attachment-focus-ring-offset-focus: var(--color-surface-canvas); /** Focus ring offset focus of the attachment. */
+  --attachment-background-2: var(--color-surface-sunken); /** Background 2 of the attachment. */
+  --attachment-label: var(--color-text-muted); /** Label of the attachment. */
+  --avatar-fallback-background: var(--color-surface-sunken); /** Fallback background of the avatar. */
+  --avatar-fallback-label: var(--color-text-muted); /** Fallback label of the avatar. */
+  --avatar-badge-label: var(--color-text-on-action); /** Badge label of the avatar. */
+  --avatar-badge-focus-ring: var(--color-surface-canvas); /** Badge focus ring of the avatar. */
+  --avatar-group-focus-ring: var(--color-surface-canvas); /** Group focus ring of the avatar. */
+  --avatar-group-count-background: var(--color-surface-sunken); /** Group count background of the avatar. */
+  --avatar-group-count-label: var(--color-text-muted); /** Group count label of the avatar. */
+  --avatar-group-count-focus-ring: var(--color-surface-canvas); /** Group count focus ring of the avatar. */
+  --breadcrumb-list-label: var(--color-text-muted); /** List label of the breadcrumb. */
+  --breadcrumb-link-label-hover: var(--color-text-primary); /** Link label hover of the breadcrumb. */
+  --breadcrumb-page-label: var(--color-text-primary); /** Page label of the breadcrumb. */
+  --bubble-them-background: var(--color-surface-sunken); /** Them background of the bubble. */
+  --bubble-them-label: var(--color-text-primary); /** Them label of the bubble. */
+  --bubble-me-label: var(--color-text-on-action); /** Me label of the bubble. */
+  --bubble-label: var(--color-text-muted); /** Label of the bubble. */
+  --button-group-text-background: var(--color-surface-sunken); /** Text background of the button group. */
+  --button-group-separator-background: var(--color-border-strong); /** Separator background of the button group. */
+  --calendar-background: var(--color-surface-canvas); /** Background of the calendar. */
+  --calendar-border: var(--color-border-strong); /** Border of the calendar. */
+  --calendar-focus-ring-offset: var(--color-surface-canvas); /** Focus ring offset of the calendar. */
+  --calendar-background-2: var(--color-surface-raised); /** Background 2 of the calendar. */
+  --calendar-label: var(--color-text-muted); /** Label of the calendar. */
+  --calendar-background-3: var(--color-surface-sunken); /** Background 3 of the calendar. */
+  --calendar-label-2: var(--color-text-primary); /** Label 2 of the calendar. */
+  --calendar-label-selected: var(--color-text-muted); /** Label selected of the calendar. */
+  --calendar-label-3: var(--color-text-on-action); /** Label 3 of the calendar. */
+  --calendar-label-selected-2: var(--color-text-on-action); /** Label selected 2 of the calendar. */
+  --chart-icon: var(--color-text-muted); /** Icon of the chart. */
+  --chart-icon-2: var(--color-border-default); /** Icon 2 of the chart. */
+  --chart-icon-3: var(--color-surface-sunken); /** Icon 3 of the chart. */
+  --chart-border: var(--color-border-default); /** Border of the chart. */
+  --chart-background: var(--color-surface-canvas); /** Background of the chart. */
+  --chart-label: var(--color-text-muted); /** Label of the chart. */
+  --chart-label-2: var(--color-text-primary); /** Label 2 of the chart. */
+  --checkbox-canvas: var(--color-surface-canvas); /** Canvas of the checkbox. */
+  --combobox-trigger-icon-label: var(--color-text-muted); /** Trigger icon label of the combobox. */
+  --combobox-content-background: var(--color-surface-raised); /** Content background of the combobox. */
+  --combobox-content-label: var(--color-text-primary); /** Content label of the combobox. */
+  --combobox-content-focus-ring: var(--color-text-primary); /** Content focus ring of the combobox. */
+  --combobox-content-border: var(--color-border-strong); /** Content border of the combobox. */
+  --combobox-content-background-2: var(--color-border-strong); /** Content background 2 of the combobox. */
+  --combobox-item-background: var(--color-surface-sunken); /** Item background of the combobox. */
+  --combobox-item-label: var(--color-text-primary); /** Item label of the combobox. */
+  --combobox-label-label: var(--color-text-muted); /** Label label of the combobox. */
+  --combobox-empty-label: var(--color-text-muted); /** Empty label of the combobox. */
+  --combobox-separator-background: var(--color-border-default); /** Separator background of the combobox. */
+  --combobox-chips-border: var(--color-border-strong); /** Chips border of the combobox. */
+  --combobox-chip-background: var(--color-surface-sunken); /** Chip background of the combobox. */
+  --combobox-chip-label: var(--color-text-primary); /** Chip label of the combobox. */
+  --command-background: var(--color-surface-raised); /** Background of the command. */
+  --command-label: var(--color-text-primary); /** Label of the command. */
+  --command-label-2: var(--color-text-muted); /** Label 2 of the command. */
+  --command-input-label-placeholder: var(--color-text-muted); /** Input label placeholder of the command. */
+  --command-group-label: var(--color-text-primary); /** Group label of the command. */
+  --command-group-label-2: var(--color-text-muted); /** Group label 2 of the command. */
+  --command-separator-background: var(--color-border-default); /** Separator background of the command. */
+  --command-item-background-selected: var(--color-surface-sunken); /** Item background selected of the command. */
+  --command-item-label-selected: var(--color-text-primary); /** Item label selected of the command. */
+  --command-item-label: var(--color-text-muted); /** Item label of the command. */
+  --command-shortcut-label: var(--color-text-muted); /** Shortcut label of the command. */
+  --context-menu-sub-trigger-background-focus: var(--color-surface-sunken); /** Sub trigger background focus of the context menu. */
+  --context-menu-sub-trigger-label-focus: var(--color-text-primary); /** Sub trigger label focus of the context menu. */
+  --context-menu-sub-trigger-background-open: var(--color-surface-sunken); /** Sub trigger background open of the context menu. */
+  --context-menu-sub-trigger-label-open: var(--color-text-primary); /** Sub trigger label open of the context menu. */
+  --context-menu-sub-trigger-label: var(--color-text-muted); /** Sub trigger label of the context menu. */
+  --context-menu-sub-content-background: var(--color-surface-raised); /** Sub content background of the context menu. */
+  --context-menu-sub-content-label: var(--color-text-primary); /** Sub content label of the context menu. */
+  --context-menu-content-background: var(--color-surface-raised); /** Content background of the context menu. */
+  --context-menu-content-label: var(--color-text-primary); /** Content label of the context menu. */
+  --context-menu-item-background-focus: var(--color-surface-sunken); /** Item background focus of the context menu. */
+  --context-menu-item-label-focus: var(--color-text-primary); /** Item label focus of the context menu. */
+  --context-menu-item-label-2: var(--color-text-muted); /** Item label 2 of the context menu. */
+  --context-menu-checkbox-item-background-focus: var(--color-surface-sunken); /** Checkbox item background focus of the context menu. */
+  --context-menu-checkbox-item-label-focus: var(--color-text-primary); /** Checkbox item label focus of the context menu. */
+  --context-menu-radio-item-background-focus: var(--color-surface-sunken); /** Radio item background focus of the context menu. */
+  --context-menu-radio-item-label-focus: var(--color-text-primary); /** Radio item label focus of the context menu. */
+  --context-menu-label-label: var(--color-text-primary); /** Label label of the context menu. */
+  --context-menu-separator-background: var(--color-border-default); /** Separator background of the context menu. */
+  --context-menu-shortcut-label: var(--color-text-muted); /** Shortcut label of the context menu. */
+  --data-table-label-hover: var(--color-text-primary); /** Label hover of the data table. */
+  --data-table-background-hover: var(--color-surface-sunken); /** Background hover of the data table. */
+  --data-table-label: var(--color-text-muted); /** Label of the data table. */
+  --date-picker-label: var(--color-text-muted); /** Label of the date picker. */
+  --dialog-content-label: var(--color-text-primary); /** Content label of the dialog. */
+  --dialog-border: var(--color-border-default); /** Border of the dialog. */
+  --dialog-label: var(--color-text-secondary); /** Label of the dialog. */
+  --dialog-sunken: var(--color-surface-sunken); /** Sunken of the dialog. */
+  --drawer-content-background: var(--color-surface-canvas); /** Content background of the drawer. */
+  --drawer-background: var(--color-surface-sunken); /** Background of the drawer. */
+  --drawer-title-label: var(--color-text-primary); /** Title label of the drawer. */
+  --drawer-description-label: var(--color-text-muted); /** Description label of the drawer. */
+  --dropdown-menu-content-label: var(--color-text-primary); /** Content label of the dropdown menu. */
+  --dropdown-menu-content-border: var(--color-border-default); /** Content border of the dropdown menu. */
+  --dropdown-menu-item-sunken: var(--color-surface-sunken); /** Item sunken of the dropdown menu. */
+  --dropdown-menu-background: var(--color-border-default); /** Background of the dropdown menu. */
+  --empty-icon-background: var(--color-surface-sunken); /** Icon background of the empty. */
+  --empty-icon-label: var(--color-text-primary); /** Icon label of the empty. */
+  --empty-description-label: var(--color-text-muted); /** Description label of the empty. */
+  --field-label: var(--color-text-muted); /** Label of the field. */
+  --field-description-label: var(--color-text-muted); /** Description label of the field. */
+  --field-background: var(--color-surface-canvas); /** Background of the field. */
+  --form-description-label: var(--color-text-muted); /** Description label of the form. */
+  --hover-card-content-background: var(--color-surface-raised); /** Content background of the hover card. */
+  --hover-card-content-label: var(--color-text-primary); /** Content label of the hover card. */
+  --input-group-border: var(--color-border-strong); /** Border of the input group. */
+  --input-group-label: var(--color-text-muted); /** Label of the input group. */
+  --input-otp-slot-border: var(--color-border-strong); /** Slot border of the input otp. */
+  --input-otp-background: var(--color-text-primary); /** Background of the input otp. */
+  --item-background-hover: var(--color-surface-sunken); /** Background hover of the item. */
+  --item-focus-ring-offset-focus: var(--color-surface-canvas); /** Focus ring offset focus of the item. */
+  --item-outline-border: var(--color-border-default); /** Outline border of the item. */
+  --item-muted-background: var(--color-surface-sunken); /** Muted background of the item. */
+  --item-icon-background: var(--color-surface-sunken); /** Icon background of the item. */
+  --item-description-label: var(--color-text-muted); /** Description label of the item. */
+  --kbd-background: var(--color-surface-sunken); /** Background of the kbd. */
+  --kbd-label: var(--color-text-muted); /** Label of the kbd. */
+  --kbd-background-2: var(--color-surface-canvas); /** Background 2 of the kbd. */
+  --kbd-label-2: var(--color-surface-canvas); /** Label 2 of the kbd. */
+  --label-label: var(--color-text-primary); /** Label of the label. */
+  --marker-label: var(--color-text-muted); /** Label of the marker. */
+  --marker-background: var(--color-border-default); /** Background of the marker. */
+  --menubar-background: var(--color-surface-canvas); /** Background of the menubar. */
+  --menubar-trigger-background-focus: var(--color-surface-sunken); /** Trigger background focus of the menubar. */
+  --menubar-trigger-label-focus: var(--color-text-primary); /** Trigger label focus of the menubar. */
+  --menubar-trigger-background-open: var(--color-surface-sunken); /** Trigger background open of the menubar. */
+  --menubar-trigger-label-open: var(--color-text-primary); /** Trigger label open of the menubar. */
+  --menubar-content-background: var(--color-surface-raised); /** Content background of the menubar. */
+  --menubar-content-label: var(--color-text-primary); /** Content label of the menubar. */
+  --menubar-item-background-focus: var(--color-surface-sunken); /** Item background focus of the menubar. */
+  --menubar-item-label-focus: var(--color-text-primary); /** Item label focus of the menubar. */
+  --menubar-item-label-2: var(--color-text-muted); /** Item label 2 of the menubar. */
+  --menubar-checkbox-item-background-focus: var(--color-surface-sunken); /** Checkbox item background focus of the menubar. */
+  --menubar-checkbox-item-label-focus: var(--color-text-primary); /** Checkbox item label focus of the menubar. */
+  --menubar-radio-item-background-focus: var(--color-surface-sunken); /** Radio item background focus of the menubar. */
+  --menubar-radio-item-label-focus: var(--color-text-primary); /** Radio item label focus of the menubar. */
+  --menubar-separator-background: var(--color-border-default); /** Separator background of the menubar. */
+  --menubar-shortcut-label: var(--color-text-muted); /** Shortcut label of the menubar. */
+  --menubar-sub-trigger-background-focus: var(--color-surface-sunken); /** Sub trigger background focus of the menubar. */
+  --menubar-sub-trigger-label-focus: var(--color-text-primary); /** Sub trigger label focus of the menubar. */
+  --menubar-sub-trigger-background-open: var(--color-surface-sunken); /** Sub trigger background open of the menubar. */
+  --menubar-sub-trigger-label-open: var(--color-text-primary); /** Sub trigger label open of the menubar. */
+  --menubar-sub-content-background: var(--color-surface-raised); /** Sub content background of the menubar. */
+  --menubar-sub-content-label: var(--color-text-primary); /** Sub content label of the menubar. */
+  --message-scroller-focus-ring-offset-focus: var(--color-surface-canvas); /** Focus ring offset focus of the message scroller. */
+  --message-time-label: var(--color-text-muted); /** Time label of the message. */
+  --native-select-border: var(--color-border-strong); /** Border of the native select. */
+  --native-select-label: var(--color-text-on-action); /** Label of the native select. */
+  --native-select-label-placeholder: var(--color-text-muted); /** Label placeholder of the native select. */
+  --native-select-focus-ring-offset-focus: var(--color-surface-canvas); /** Focus ring offset focus of the native select. */
+  --native-select-label-2: var(--color-text-muted); /** Label 2 of the native select. */
+  --navigation-menu-background: var(--color-surface-canvas); /** Background of the navigation menu. */
+  --navigation-menu-background-hover: var(--color-surface-sunken); /** Background hover of the navigation menu. */
+  --navigation-menu-label-hover: var(--color-text-primary); /** Label hover of the navigation menu. */
+  --navigation-menu-background-focus: var(--color-surface-sunken); /** Background focus of the navigation menu. */
+  --navigation-menu-label-focus: var(--color-text-primary); /** Label focus of the navigation menu. */
+  --navigation-menu-background-open: var(--color-surface-sunken); /** Background open of the navigation menu. */
+  --navigation-menu-label-open: var(--color-text-primary); /** Label open of the navigation menu. */
+  --navigation-menu-background-open-hover: var(--color-surface-sunken); /** Background open hover of the navigation menu. */
+  --navigation-menu-background-open-focus: var(--color-surface-sunken); /** Background open focus of the navigation menu. */
+  --navigation-menu-focus-ring-offset-focus: var(--color-surface-canvas); /** Focus ring offset focus of the navigation menu. */
+  --navigation-menu-background-2: var(--color-surface-raised); /** Background 2 of the navigation menu. */
+  --navigation-menu-label: var(--color-text-primary); /** Label of the navigation menu. */
+  --navigation-menu-viewport-background: var(--color-surface-raised); /** Viewport background of the navigation menu. */
+  --navigation-menu-viewport-label: var(--color-text-primary); /** Viewport label of the navigation menu. */
+  --navigation-menu-link-background-hover: var(--color-surface-sunken); /** Link background hover of the navigation menu. */
+  --navigation-menu-link-label-hover: var(--color-text-primary); /** Link label hover of the navigation menu. */
+  --navigation-menu-link-background-focus: var(--color-surface-sunken); /** Link background focus of the navigation menu. */
+  --navigation-menu-link-label-focus: var(--color-text-primary); /** Link label focus of the navigation menu. */
+  --navigation-menu-link-background: var(--color-surface-sunken); /** Link background of the navigation menu. */
+  --navigation-menu-link-label: var(--color-text-primary); /** Link label of the navigation menu. */
+  --navigation-menu-link-label-2: var(--color-text-muted); /** Link label 2 of the navigation menu. */
+  --navigation-menu-link-focus-ring-offset-focus: var(--color-surface-canvas); /** Link focus ring offset focus of the navigation menu. */
+  --navigation-menu-background-3: var(--color-border-default); /** Background 3 of the navigation menu. */
+  --popover-content-background: var(--color-surface-raised); /** Content background of the popover. */
+  --popover-content-label: var(--color-text-primary); /** Content label of the popover. */
+  --popover-description-label: var(--color-text-muted); /** Description label of the popover. */
+  --radio-group-item-border: var(--color-border-strong); /** Item border of the radio group. */
+  --radio-group-item-focus-ring-offset-focus: var(--color-surface-canvas); /** Item focus ring offset focus of the radio group. */
+  --resizable-handle-background: var(--color-border-default); /** Handle background of the resizable. */
+  --resizable-handle-focus-ring-offset-focus: var(--color-surface-canvas); /** Handle focus ring offset focus of the resizable. */
+  --resizable-background: var(--color-border-default); /** Background of the resizable. */
+  --scroll-area-viewport-focus-ring-offset-focus: var(--color-surface-canvas); /** Viewport focus ring offset focus of the scroll area. */
+  --scroll-area-thumb-background: var(--color-border-default); /** Thumb background of the scroll area. */
+  --select-canvas: var(--color-surface-canvas); /** Canvas of the select. */
+  --select-content-label: var(--color-text-primary); /** Content label of the select. */
+  --select-content-border: var(--color-border-default); /** Content border of the select. */
+  --select-item-sunken: var(--color-surface-sunken); /** Item sunken of the select. */
+  --separator-background: var(--color-border-default); /** Background of the separator. */
+  --sheet-content-background: var(--color-surface-canvas); /** Content background of the sheet. */
+  --sheet-focus-ring-offset: var(--color-surface-canvas); /** Focus ring offset of the sheet. */
+  --sheet-background-open: var(--color-action-secondary); /** Background open of the sheet. */
+  --sheet-title-label: var(--color-text-primary); /** Title label of the sheet. */
+  --sheet-description-label: var(--color-text-muted); /** Description label of the sheet. */
+  --sidebar-wrapper-background: var(--color-surface-default); /** Wrapper background of the sidebar. */
+  --sidebar-background: var(--color-surface-default); /** Background of the sidebar. */
+  --sidebar-label: var(--color-text-primary); /** Label of the sidebar. */
+  --sidebar-inner-background: var(--color-surface-default); /** Inner background of the sidebar. */
+  --sidebar-inner-border: var(--color-border-default); /** Inner border of the sidebar. */
+  --sidebar-rail-background-hover: var(--color-border-default); /** Rail background hover of the sidebar. */
+  --sidebar-background-hover: var(--color-surface-default); /** Background hover of the sidebar. */
+  --sidebar-inset-background: var(--color-surface-canvas); /** Inset background of the sidebar. */
+  --sidebar-input-background: var(--color-surface-canvas); /** Input background of the sidebar. */
+  --sidebar-separator-background: var(--color-border-default); /** Separator background of the sidebar. */
+  --sidebar-group-label-label: var(--color-text-primary); /** Group label label of the sidebar. */
+  --sidebar-group-label-focus-ring-offset-focus: var(--color-surface-canvas); /** Group label focus ring offset focus of the sidebar. */
+  --sidebar-group-action-label: var(--color-text-primary); /** Group action label of the sidebar. */
+  --sidebar-group-action-background-hover: var(--color-surface-sunken); /** Group action background hover of the sidebar. */
+  --sidebar-group-action-label-hover: var(--color-text-primary); /** Group action label hover of the sidebar. */
+  --sidebar-group-action-focus-ring-offset-focus: var(--color-surface-canvas); /** Group action focus ring offset focus of the sidebar. */
+  --sidebar-menu-action-label: var(--color-text-primary); /** Menu action label of the sidebar. */
+  --sidebar-menu-action-background-hover: var(--color-surface-sunken); /** Menu action background hover of the sidebar. */
+  --sidebar-menu-action-label-hover: var(--color-text-primary); /** Menu action label hover of the sidebar. */
+  --sidebar-menu-action-focus-ring-offset-focus: var(--color-surface-canvas); /** Menu action focus ring offset focus of the sidebar. */
+  --sidebar-menu-badge-label: var(--color-text-primary); /** Menu badge label of the sidebar. */
+  --sidebar-menu-sub-border: var(--color-border-default); /** Menu sub border of the sidebar. */
+  --sidebar-menu-sub-button-label: var(--color-text-primary); /** Menu sub button label of the sidebar. */
+  --sidebar-menu-sub-button-background-hover: var(--color-surface-sunken); /** Menu sub button background hover of the sidebar. */
+  --sidebar-menu-sub-button-label-hover: var(--color-text-primary); /** Menu sub button label hover of the sidebar. */
+  --sidebar-menu-sub-button-background-active: var(--color-surface-sunken); /** Menu sub button background active of the sidebar. */
+  --sidebar-menu-sub-button-label-active: var(--color-text-primary); /** Menu sub button label active of the sidebar. */
+  --sidebar-menu-sub-button-focus-ring-offset-focus: var(--color-surface-canvas); /** Menu sub button focus ring offset focus of the sidebar. */
+  --sidebar-background-hover-2: var(--color-surface-sunken); /** Background hover 2 of the sidebar. */
+  --sidebar-label-hover: var(--color-text-primary); /** Label hover of the sidebar. */
+  --sidebar-background-active: var(--color-surface-sunken); /** Background active of the sidebar. */
+  --sidebar-label-active: var(--color-text-primary); /** Label active of the sidebar. */
+  --sidebar-background-2: var(--color-surface-sunken); /** Background 2 of the sidebar. */
+  --sidebar-background-open-hover: var(--color-surface-sunken); /** Background open hover of the sidebar. */
+  --sidebar-label-open-hover: var(--color-text-primary); /** Label open hover of the sidebar. */
+  --sidebar-focus-ring-offset-focus: var(--color-surface-canvas); /** Focus ring offset focus of the sidebar. */
+  --sidebar-default-background-hover: var(--color-surface-sunken); /** Default background hover of the sidebar. */
+  --sidebar-default-label-hover: var(--color-text-primary); /** Default label hover of the sidebar. */
+  --sidebar-outline-background: var(--color-surface-canvas); /** Outline background of the sidebar. */
+  --sidebar-outline-background-hover: var(--color-surface-sunken); /** Outline background hover of the sidebar. */
+  --sidebar-outline-label-hover: var(--color-text-primary); /** Outline label hover of the sidebar. */
+  --skeleton-background: var(--color-surface-sunken); /** Background of the skeleton. */
+  --slider-track-background: var(--color-surface-sunken); /** Track background of the slider. */
+  --slider-thumb-focus-ring-offset-focus: var(--color-surface-canvas); /** Thumb focus ring offset focus of the slider. */
+  --switch-canvas: var(--color-surface-canvas); /** Canvas of the switch. */
+  --textarea-border: var(--color-border-strong); /** Border of the textarea. */
+  --textarea-label-placeholder: var(--color-text-muted); /** Label placeholder of the textarea. */
+  --textarea-focus-ring-offset-focus: var(--color-surface-canvas); /** Focus ring offset focus of the textarea. */
+  --toast-label: var(--color-text-primary); /** Label of the toast. */
+  --toast-neutral-border: var(--color-border-default); /** Neutral border of the toast. */
+  --toast-success-border: var(--color-border-default); /** Success border of the toast. */
+  --toast-danger-border: var(--color-border-default); /** Danger border of the toast. */
+  --toast-label-2: var(--color-text-secondary); /** Label 2 of the toast. */
+  --toggle-background-hover: var(--color-surface-sunken); /** Background hover of the toggle. */
+  --toggle-label-hover: var(--color-text-muted); /** Label hover of the toggle. */
+  --toggle-background-on: var(--color-surface-sunken); /** Background on of the toggle. */
+  --toggle-label-on: var(--color-text-primary); /** Label on of the toggle. */
+  --toggle-focus-ring-offset-focus: var(--color-surface-canvas); /** Focus ring offset focus of the toggle. */
+  --toggle-outline-border: var(--color-border-strong); /** Outline border of the toggle. */
+  --toggle-outline-background-hover: var(--color-surface-sunken); /** Outline background hover of the toggle. */
+  --toggle-outline-label-hover: var(--color-text-primary); /** Outline label hover of the toggle. */
 }
 html[data-scheme="brand-expressive"] {
   --ifm-color-primary: var(--color-action-primary);

@@ -67,7 +67,7 @@ function ChartContainer({
         data-slot="chart"
         data-chart={chartId}
         className={cn(
-          "flex aspect-video justify-center text-xs [&_.recharts-cartesian-axis-tick_text]:fill-muted-foreground [&_.recharts-cartesian-grid_line]:stroke-border/50 [&_.recharts-curve.recharts-tooltip-cursor]:stroke-border [&_.recharts-dot]:stroke-transparent [&_.recharts-layer]:outline-hidden [&_.recharts-polar-grid]:stroke-border [&_.recharts-radial-bar-background-sector]:fill-muted [&_.recharts-rectangle.recharts-tooltip-cursor]:fill-muted [&_.recharts-reference-line]:stroke-border [&_.recharts-sector]:outline-hidden [&_.recharts-sector]:stroke-transparent [&_.recharts-surface]:outline-hidden",
+          "flex aspect-video justify-center text-[length:var(--chart-font-size)] [&_.recharts-cartesian-axis-tick_text]:fill-[color:var(--chart-icon)] [&_.recharts-cartesian-grid_line]:stroke-[color:var(--chart-icon-2)]/50 [&_.recharts-curve.recharts-tooltip-cursor]:stroke-[color:var(--chart-icon-2)] [&_.recharts-dot]:stroke-transparent [&_.recharts-layer]:outline-hidden [&_.recharts-polar-grid]:stroke-[color:var(--chart-icon-2)] [&_.recharts-radial-bar-background-sector]:fill-[color:var(--chart-icon-3)] [&_.recharts-rectangle.recharts-tooltip-cursor]:fill-[color:var(--chart-icon-3)] [&_.recharts-reference-line]:stroke-[color:var(--chart-icon-2)] [&_.recharts-sector]:outline-hidden [&_.recharts-sector]:stroke-transparent [&_.recharts-surface]:outline-hidden",
           className,
         )}
         {...props}
@@ -147,14 +147,18 @@ function ChartTooltipContent({
     const value = !labelKey && typeof label === "string" ? (config[label]?.label ?? label) : itemConfig?.label;
 
     if (labelFormatter) {
-      return <div className={cn("font-medium", labelClassName)}>{labelFormatter(value, payload)}</div>;
+      return (
+        <div className={cn("[font-weight:var(--chart-font-weight)]", labelClassName)}>
+          {labelFormatter(value, payload)}
+        </div>
+      );
     }
 
     if (!value) {
       return null;
     }
 
-    return <div className={cn("font-medium", labelClassName)}>{value}</div>;
+    return <div className={cn("[font-weight:var(--chart-font-weight)]", labelClassName)}>{value}</div>;
   }, [label, labelFormatter, payload, hideLabel, labelClassName, config, labelKey]);
 
   if (!active || !payload?.length) {
@@ -166,7 +170,7 @@ function ChartTooltipContent({
   return (
     <div
       className={cn(
-        "grid min-w-[8rem] items-start gap-1.5 rounded-lg border border-border/50 bg-background px-2.5 py-1.5 text-xs shadow-xl",
+        "grid min-w-[8rem] items-start gap-1.5 rounded-[var(--chart-radius)] border border-[color:var(--chart-border)]/50 bg-[color:var(--chart-background)] px-2.5 py-1.5 text-[length:var(--chart-font-size)] shadow-[var(--chart-shadow)]",
         className,
       )}
     >
@@ -183,7 +187,7 @@ function ChartTooltipContent({
               <div
                 key={index}
                 className={cn(
-                  "flex w-full flex-wrap items-stretch gap-2 [&>svg]:h-2.5 [&>svg]:w-2.5 [&>svg]:text-muted-foreground",
+                  "flex w-full flex-wrap items-stretch gap-[var(--chart-gap)] [&>svg]:h-2.5 [&>svg]:w-2.5 [&>svg]:text-[color:var(--chart-label)]",
                   indicator === "dot" && "items-center",
                 )}
               >
@@ -219,10 +223,10 @@ function ChartTooltipContent({
                     >
                       <div className="grid gap-1.5">
                         {nestLabel ? tooltipLabel : null}
-                        <span className="text-muted-foreground">{itemConfig?.label ?? item.name}</span>
+                        <span className="text-[color:var(--chart-label)]">{itemConfig?.label ?? item.name}</span>
                       </div>
                       {item.value != null && (
-                        <span className="font-mono font-medium text-foreground tabular-nums">
+                        <span className="font-mono [font-weight:var(--chart-font-weight)] text-[color:var(--chart-label-2)] tabular-nums">
                           {typeof item.value === "number" ? item.value.toLocaleString() : String(item.value)}
                         </span>
                       )}
@@ -256,7 +260,13 @@ function ChartLegendContent({
   }
 
   return (
-    <div className={cn("flex items-center justify-center gap-4", verticalAlign === "top" ? "pb-3" : "pt-3", className)}>
+    <div
+      className={cn(
+        "flex items-center justify-center gap-[var(--chart-gap-2)]",
+        verticalAlign === "top" ? "pb-3" : "pt-3",
+        className,
+      )}
+    >
       {payload
         .filter((item) => item.type !== "none")
         .map((item, index) => {
@@ -266,7 +276,9 @@ function ChartLegendContent({
           return (
             <div
               key={index}
-              className={cn("flex items-center gap-1.5 [&>svg]:h-3 [&>svg]:w-3 [&>svg]:text-muted-foreground")}
+              className={cn(
+                "flex items-center gap-1.5 [&>svg]:h-3 [&>svg]:w-3 [&>svg]:text-[color:var(--chart-label)]",
+              )}
             >
               {itemConfig?.icon && !hideIcon ? (
                 <itemConfig.icon />

@@ -900,8 +900,9 @@ export const CHECKS = {
             const m = line.match(/^\s*([a-zA-Z-]+): \{/);
             if (m) axis = axes[m[1]] = [];
           } else if (depth === 1 && axis) {
-            const m = line.match(/^\s*"?([a-zA-Z-]+)"?:/);
-            if (m) axis.push(m[1]);
+            // a key, bare or quoted, followed by a space: never the start of a wrapped class like "hover:bg-…"
+            const m = line.match(/^\s*(?:([a-zA-Z-]+)|"([a-zA-Z-]+)"):(?:\s|$)/);
+            if (m) axis.push(m[1] ?? m[2]);
           }
           for (const ch of line) depth += ch === "{" ? 1 : ch === "}" ? -1 : 0;
           if (depth < 0) break;
@@ -1079,6 +1080,41 @@ export const CHECKS = {
       return gaps.length
         ? bad(gaps.slice(0, 12).join("; "))
         : ok(`${g.scopes.length} scopes, each with the 5 method questions, owned tokens, components and situations`);
+    },
+  },
+
+  "components-own-api": {
+    requires: ["cli/src/lands.mjs", "harness/component-api-fixed.json"],
+    run: async (c) => {
+      // OD-234: every component has its own token API. Its code reads only its own tokens (each an alias
+      // of a semantic), never a system token or a shadcn utility directly; and a fixed Tailwind spacing
+      // or size is allowed only while it waits, listed, for a semantic of the same value.
+      const { componentApi } = await import(pathToFileURL(c.p("cli/src/lands.mjs")).href);
+      const scheme = c.json("schemes", "dense-data.json");
+      const fixed = new Set(c.json("harness", "component-api-fixed.json").values.map((x) => x.split(" (")[0]));
+      const dir = c.p("ui/src/components");
+      const gaps = [];
+      let own = 0;
+      let n = 0;
+      for (const f of readdirSync(dir).filter((x) => x.endsWith(".tsx"))) {
+        const comp = f.replace(/\.tsx$/, "");
+        const api = componentApi(scheme, comp, { ui: c.p("ui/src") });
+        n++;
+        own += api.filter((x) => x.own).length;
+        for (const x of api.filter((y) => !y.own)) gaps.push(`${comp} reads ${x.token} directly`);
+        const src = c.read("ui/src/components", f);
+        for (const m of src.matchAll(
+          /(?:^|[\s"'`:])((?:p|px|py|pt|pb|pl|pr|gap|gap-x|gap-y|size|h)-[\d.]+)(?=[\s"'`]|$)/gm,
+        )) {
+          if (/-0$/.test(m[1])) continue;
+          if (!fixed.has(`${comp}: ${m[1]}`)) gaps.push(`${comp} has a fixed ${m[1]} that is not listed`);
+        }
+      }
+      return gaps.length
+        ? bad([...new Set(gaps)].slice(0, 8).join("; "))
+        : ok(
+            `${n} components read ${own} tokens of their own and nothing else; ${fixed.size} fixed values wait, listed, for a semantic`,
+          );
     },
   },
 

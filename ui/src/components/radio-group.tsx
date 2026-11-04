@@ -22,7 +22,7 @@ function RadioGroupItem({ className, ...props }: React.ComponentProps<typeof Rad
     <RadioGroupPrimitive.Item
       data-slot="radio-group-item"
       className={cn(
-        "aspect-square size-4 shrink-0 rounded-full border border-input text-primary shadow-xs transition-[color,box-shadow] outline-none focus-visible:border-ring disabled:cursor-not-allowed disabled:opacity-50 aria-invalid:border-destructive aria-invalid:ring-destructive/20 focus-visible:ring-[length:var(--border-width-focus)] focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:ring-offset-background",
+        "aspect-square size-[var(--radio-group-item-icon-size)] shrink-0 rounded-[var(--radio-group-item-radius)] border border-[color:var(--radio-group-item-border)] text-[color:var(--radio-group-item-label)] shadow-[var(--radio-group-item-shadow)] transition-[color,box-shadow] outline-none focus-visible:border-[color:var(--radio-group-item-border-focus)] disabled:cursor-not-allowed disabled:opacity-[var(--radio-group-item-disabled-opacity-disabled)] aria-invalid:border-[color:var(--radio-group-item-border-invalid)] aria-invalid:ring-[color:var(--radio-group-item-focus-ring-invalid)]/20 focus-visible:ring-[length:var(--radio-group-item-focus)] focus-visible:ring-[color:var(--radio-group-item-focus-ring-focus)] focus-visible:ring-offset-2 focus-visible:ring-offset-[color:var(--radio-group-item-focus-ring-offset-focus)]",
         className,
       )}
       {...props}
@@ -31,7 +31,7 @@ function RadioGroupItem({ className, ...props }: React.ComponentProps<typeof Rad
         data-slot="radio-group-indicator"
         className="relative flex items-center justify-center"
       >
-        <CircleIcon className="absolute top-1/2 left-1/2 size-2 -translate-x-1/2 -translate-y-1/2 fill-primary" />
+        <CircleIcon className="absolute top-1/2 left-1/2 size-2 -translate-x-1/2 -translate-y-1/2 fill-[color:var(--radio-group-icon)]" />
       </RadioGroupPrimitive.Indicator>
     </RadioGroupPrimitive.Item>
   );

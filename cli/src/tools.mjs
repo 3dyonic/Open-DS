@@ -493,9 +493,11 @@ export function findToken(scheme, g, query, limit = 5) {
       matched: [...new Set([...head, ...body])],
     };
   });
+  // A component key ranks only when the query names its component (OD-234: every component has its own keys).
   const keys = g.component_keys.map((k) => {
-    const head = overlap(q, k.id.replace(/[/@-]/g, " "));
-    const body = overlap(q, k.description);
+    const named = overlap(q, k.component.replace(/-/g, " ")).length > 0;
+    const head = named ? overlap(q, k.id.replace(/[/@-]/g, " ")) : [];
+    const body = named ? overlap(q, k.description) : [];
     return {
       token: k.id,
       kind: "component key",

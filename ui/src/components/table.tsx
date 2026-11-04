@@ -14,7 +14,7 @@ export function Table({ className, ...props }: React.TableHTMLAttributes<HTMLTab
       <table
         data-slot="table"
         className={cn(
-          "w-full border-collapse text-[length:var(--table-font-size)] text-[var(--color-text-primary)]",
+          "w-full border-collapse text-[length:var(--table-font-size)] text-[var(--table-label)]",
           className,
         )}
         {...props}
@@ -36,8 +36,8 @@ export function TableRow({ className, ...props }: React.HTMLAttributes<HTMLTable
     <tr
       data-slot="table-row"
       className={cn(
-        "h-[var(--table-row-height)] border-b-[length:var(--border-width-default)] border-[var(--table-row-border)]",
-        "data-[state=selected]:bg-[var(--table-row-selected)] data-[state=selected]:shadow-[inset_var(--border-width-focus)_0_0_0_var(--table-row-selected-edge)]",
+        "h-[var(--table-row-height)] border-b-[length:var(--table-row-border-width)] border-[var(--table-row-border)]",
+        "data-[state=selected]:bg-[var(--table-row-selected)] data-[state=selected]:shadow-[inset_var(--table-row-focus)_0_0_0_var(--table-row-selected-edge)]",
         className,
       )}
       {...props}
@@ -50,8 +50,8 @@ export function TableHead({ className, ...props }: React.ThHTMLAttributes<HTMLTa
     <th
       data-slot="table-head"
       className={cn(
-        "px-[var(--table-cell-padding-x)] text-left align-middle text-[var(--color-text-secondary)]",
-        "[font-family:var(--type-label-font-family)] text-[length:var(--type-label-font-size)] [font-weight:var(--type-label-font-weight)]",
+        "px-[var(--table-cell-padding-x)] text-left align-middle text-[var(--table-head-label)]",
+        "[font-family:var(--table-head-font-family)] text-[length:var(--table-head-font-size)] [font-weight:var(--table-head-font-weight)]",
         className,
       )}
       {...props}
@@ -69,7 +69,7 @@ export function TableCell({
       data-slot="table-cell"
       className={cn(
         "px-[var(--table-cell-padding-x)] align-middle",
-        numeric && "text-right tabular-nums [font-family:var(--type-data-font-family)]",
+        numeric && "text-right tabular-nums [font-family:var(--table-cell-font-family)]",
         className,
       )}
       {...props}

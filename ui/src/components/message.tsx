@@ -24,15 +24,22 @@ function Message({
   avatar?: React.ReactNode;
 }) {
   return (
-    <article data-slot="message" className={cn("flex items-start gap-3 text-sm", className)} {...props}>
+    <article
+      data-slot="message"
+      className={cn("flex items-start gap-3 text-[length:var(--message-font-size)]", className)}
+      {...props}
+    >
       {avatar}
-      <div className="flex min-w-0 flex-1 flex-col gap-1">
-        <header className="flex flex-wrap items-baseline gap-x-2">
-          <span data-slot="message-author" className="font-medium">
+      <div className="flex min-w-0 flex-1 flex-col gap-[var(--message-gap)]">
+        <header className="flex flex-wrap items-baseline gap-x-[var(--message-gap-x)]">
+          <span data-slot="message-author" className="[font-weight:var(--message-author-font-weight)]">
             {author}
           </span>
           {time && (
-            <time data-slot="message-time" className="text-xs text-muted-foreground">
+            <time
+              data-slot="message-time"
+              className="text-[length:var(--message-time-font-size)] text-[color:var(--message-time-label)]"
+            >
               {time}
             </time>
           )}

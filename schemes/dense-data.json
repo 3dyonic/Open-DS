@@ -19,67 +19,36 @@
   "scenarios": [
     {
       "text": "A security analyst opens the alert queue at 8:00 and scans 200 rows for escalated threats.",
-      "follows": [
-        "scenarios.q1",
-        "scenarios.q2",
-        "tasks.q1"
-      ]
+      "follows": ["scenarios.q1", "scenarios.q2", "tasks.q1"]
     },
     {
       "text": "An analyst compares this week's detections with last week's, model by model and column by column.",
-      "follows": [
-        "tasks.q1",
-        "content.q1"
-      ]
+      "follows": ["tasks.q1", "content.q1"]
     }
   ],
   "voice": {
     "summary": {
       "text": "Terse and exact. Say what happened and what to do, in as few words as possible.",
-      "follows": [
-        "voice.values",
-        "people.q1"
-      ]
+      "follows": ["voice.values", "people.q1"]
     },
     "principles": [
       {
         "text": "Lead with the object, then the state: \"Alert 2041 contained.\"",
-        "follows": [
-          "voice.values",
-          "content.q1"
-        ]
+        "follows": ["voice.values", "content.q1"]
       },
       {
         "text": "Use numbers, not words for numbers.",
-        "follows": [
-          "content.q1"
-        ]
+        "follows": ["content.q1"]
       },
       {
         "text": "One verb per button. No \"please\", no exclamation marks.",
-        "follows": [
-          "voice.definition",
-          "voice.values"
-        ]
+        "follows": ["voice.definition", "voice.values"]
       }
     ],
     "words": {
-      "use": [
-        "Investigate",
-        "Filter",
-        "Assign",
-        "Escalated",
-        "Resolved"
-      ],
-      "avoid": [
-        "Oops",
-        "Awesome",
-        "Please",
-        "Simply"
-      ],
-      "follows": [
-        "voice.definition"
-      ]
+      "use": ["Investigate", "Filter", "Assign", "Escalated", "Resolved"],
+      "avoid": ["Oops", "Awesome", "Please", "Simply"],
+      "follows": ["voice.definition"]
     }
   },
   "inventory": {
@@ -97,79 +66,52 @@
           "variant": {
             "primary": {
               "use": "The one commit in a view.",
-              "because": [
-                "color.count",
-                "outcomes.q2"
-              ]
+              "because": ["color.count", "outcomes.q2"]
             },
             "secondary": {
               "use": "Alternatives and cancel next to the primary, and the first step of a delete.",
-              "because": [
-                "human.q2",
-                "outcomes.q2"
-              ]
+              "because": ["human.q2", "outcomes.q2"]
             },
             "danger": {
               "use": "The confirm of a bulk delete. Many records go at once, so the last press must not look like the everyday primary.",
-              "because": [
-                "outcomes.q2"
-              ]
+              "because": ["outcomes.q2"]
             },
             "ghost": {
               "use": "Row actions, as compact icon buttons. Never for cancel.",
-              "because": [
-                "tasks.q2",
-                "human.q2"
-              ]
+              "because": ["tasks.q2", "human.q2"]
             }
           },
           "size": {
             "default": {
               "use": "Actions outside tables: forms, dialogs, page actions.",
-              "because": [
-                "content.q2",
-                "accessibility.values"
-              ]
+              "because": ["content.q2", "accessibility.values"]
             },
             "compact": {
               "use": "Table rows and toolbars. Compact still fits a mouse.",
-              "because": [
-                "content.q2",
-                "accessibility.values"
-              ]
+              "because": ["content.q2", "accessibility.values"]
             },
             "icon": {
               "use": "Known row and toolbar actions, always with a tooltip.",
-              "because": [
-                "iconography.roles"
-              ]
+              "because": ["iconography.roles"]
             },
             "large": {
               "not_used": true,
               "why": "Controls stay small so more records fit on one screen.",
-              "because": [
-                "content.q2"
-              ]
+              "because": ["content.q2"]
             }
           },
           "state": {
             "hover": {
               "use": "Fast feedback that confirms the pointer.",
-              "because": [
-                "motion.values"
-              ]
+              "because": ["motion.values"]
             },
             "focus": {
               "use": "Always visible: the focus ring at border-width.focus.",
-              "because": [
-                "people.q2"
-              ]
+              "because": ["people.q2"]
             },
             "disabled": {
               "use": "Only with a visible reason next to it.",
-              "because": [
-                "people.q2"
-              ]
+              "because": ["people.q2"]
             }
           }
         }
@@ -189,29 +131,21 @@
           "align": {
             "inline-start": {
               "use": "The search icon before the text.",
-              "because": [
-                "iconography.roles"
-              ]
+              "because": ["iconography.roles"]
             },
             "inline-end": {
               "use": "The clear button after the text, for searches people repeat all day.",
-              "because": [
-                "tasks.q2"
-              ]
+              "because": ["tasks.q2"]
             },
             "block-start": {
               "not_used": true,
               "why": "Inputs stay one line high in toolbars and filter bars.",
-              "because": [
-                "content.q2"
-              ]
+              "because": ["content.q2"]
             },
             "block-end": {
               "not_used": true,
               "why": "Inputs stay one line high in toolbars and filter bars.",
-              "because": [
-                "content.q2"
-              ]
+              "because": ["content.q2"]
             }
           }
         }
@@ -251,23 +185,16 @@
           "orientation": {
             "vertical": {
               "use": "Forms in dialogs and sheets: the label above.",
-              "because": [
-                "tasks.q1"
-              ]
+              "because": ["tasks.q1"]
             },
             "horizontal": {
               "use": "Settings and filter panels: switches and short controls with the label beside.",
-              "because": [
-                "content.q2",
-                "spacing.count"
-              ]
+              "because": ["content.q2", "spacing.count"]
             },
             "responsive": {
               "not_used": true,
               "why": "A desk with a mouse and keyboard: there is no narrow screen to adapt to.",
-              "because": [
-                "scenarios.q1"
-              ]
+              "because": ["scenarios.q1"]
             }
           }
         }
@@ -307,38 +234,23 @@
           "tone": {
             "neutral": {
               "use": "New and False positive: not triaged yet, or a finished outcome that is not a failure.",
-              "because": [
-                "accessibility.count",
-                "content.q1"
-              ]
+              "because": ["accessibility.count", "content.q1"]
             },
             "info": {
               "use": "Investigating: an analyst is on it; news, nothing to act on.",
-              "because": [
-                "accessibility.count",
-                "content.q1"
-              ]
+              "because": ["accessibility.count", "content.q1"]
             },
             "success": {
               "use": "Resolved: contained and closed.",
-              "because": [
-                "accessibility.count",
-                "content.q1"
-              ]
+              "because": ["accessibility.count", "content.q1"]
             },
             "warning": {
               "use": "Escalated: needs a senior analyst soon, still containable.",
-              "because": [
-                "accessibility.count",
-                "content.q1"
-              ]
+              "because": ["accessibility.count", "content.q1"]
             },
             "danger": {
               "use": "Breach confirmed: a real loss.",
-              "because": [
-                "accessibility.count",
-                "content.q1"
-              ]
+              "because": ["accessibility.count", "content.q1"]
             }
           }
         }
@@ -382,37 +294,27 @@
           "variant": {
             "default": {
               "use": "Menu items with no border, quiet beside dense data.",
-              "because": [
-                "content.q1"
-              ]
+              "because": ["content.q1"]
             },
             "outline": {
               "not_used": true,
               "why": "Borders on every item would compete with the data.",
-              "because": [
-                "content.q1"
-              ]
+              "because": ["content.q1"]
             }
           },
           "size": {
             "default": {
               "use": "Every section of the app.",
-              "because": [
-                "tasks.q2"
-              ]
+              "because": ["tasks.q2"]
             },
             "sm": {
               "use": "Long secondary lists, at the denser size.",
-              "because": [
-                "spacing.count"
-              ]
+              "because": ["spacing.count"]
             },
             "lg": {
               "not_used": true,
               "why": "Rows stay small so the whole navigation fits the screen all shift.",
-              "because": [
-                "content.q2"
-              ]
+              "because": ["content.q2"]
             }
           }
         }
@@ -429,18 +331,11 @@
             "default": {
               "not_used": true,
               "why": "Alerts here are for problems that stay on the page; news goes in a toast or a badge.",
-              "because": [
-                "outcomes.q2",
-                "tasks.q2"
-              ]
+              "because": ["outcomes.q2", "tasks.q2"]
             },
             "destructive": {
               "use": "A record that was not saved or an action that failed: name the record, then the fix, with an icon.",
-              "because": [
-                "outcomes.q2",
-                "accessibility.count",
-                "voice.values"
-              ]
+              "because": ["outcomes.q2", "accessibility.count", "voice.values"]
             }
           }
         }
@@ -452,24 +347,15 @@
           "tone": {
             "neutral": {
               "use": "A plain confirmation: Filters cleared.",
-              "because": [
-                "voice.values"
-              ]
+              "because": ["voice.values"]
             },
             "success": {
               "use": "A short confirmation with the count: 12 alerts exported.",
-              "because": [
-                "voice.values",
-                "tasks.q2"
-              ]
+              "because": ["voice.values", "tasks.q2"]
             },
             "danger": {
               "use": "A background failure: name the record, then the fix.",
-              "because": [
-                "voice.values",
-                "voice.lands",
-                "outcomes.q2"
-              ]
+              "because": ["voice.values", "voice.lands", "outcomes.q2"]
             }
           }
         }
@@ -486,17 +372,11 @@
             "default": {
               "not_used": true,
               "why": "No pictures: an empty table needs the reason and the one action that fills it.",
-              "because": [
-                "content.q1",
-                "voice.lands"
-              ]
+              "because": ["content.q1", "voice.lands"]
             },
             "icon": {
               "use": "An outline icon in a small tile beside the reason and the action.",
-              "because": [
-                "iconography.roles",
-                "iconography.definition"
-              ]
+              "because": ["iconography.roles", "iconography.definition"]
             }
           }
         }
@@ -560,39 +440,26 @@
           "variant": {
             "default": {
               "use": "Users and settings in a panel or menu, with no border, quiet beside the data.",
-              "because": [
-                "content.q1"
-              ]
+              "because": ["content.q1"]
             },
             "outline": {
               "not_used": true,
               "why": "Borders on every row would compete with the data; hairlines between sections do that work.",
-              "because": [
-                "content.q1",
-                "elevation.definition"
-              ]
+              "because": ["content.q1", "elevation.definition"]
             },
             "muted": {
               "use": "The current user or setting, with a soft fill so people keep their place.",
-              "because": [
-                "tasks.q1",
-                "human.q1"
-              ]
+              "because": ["tasks.q1", "human.q1"]
             }
           },
           "size": {
             "default": {
               "use": "Settings and user lists outside the table, at the standard row.",
-              "because": [
-                "spacing.count"
-              ]
+              "because": ["spacing.count"]
             },
             "sm": {
               "use": "Long lists in a side panel, at the denser size. It still fits a mouse.",
-              "because": [
-                "spacing.count",
-                "accessibility.values"
-              ]
+              "because": ["spacing.count", "accessibility.values"]
             }
           }
         }
@@ -616,40 +483,28 @@
           "variant": {
             "default": {
               "use": "In the table toolbar, with no border; the pressed state shows as a fill, quiet beside the data.",
-              "because": [
-                "content.q1",
-                "tasks.q2"
-              ]
+              "because": ["content.q1", "tasks.q2"]
             },
             "outline": {
               "not_used": true,
               "why": "Borders on every toggle would compete with the data.",
-              "because": [
-                "content.q1"
-              ]
+              "because": ["content.q1"]
             }
           },
           "size": {
             "default": {
               "not_used": true,
               "why": "Toggles sit in the table toolbar, at the smaller size like compact buttons.",
-              "because": [
-                "content.q2"
-              ]
+              "because": ["content.q2"]
             },
             "sm": {
               "use": "The table toolbar, matching compact buttons. It still fits a mouse.",
-              "because": [
-                "content.q2",
-                "accessibility.values"
-              ]
+              "because": ["content.q2", "accessibility.values"]
             },
             "lg": {
               "not_used": true,
               "why": "Controls stay small so more records fit on one screen.",
-              "because": [
-                "content.q2"
-              ]
+              "because": ["content.q2"]
             }
           }
         }
@@ -683,51 +538,26 @@
       {
         "id": "carousel",
         "why": "Slides hide items, and most people never reach the later ones. Dense data's experts want many records on one screen.",
-        "instead": [
-          "table",
-          "card"
-        ],
-        "because": [
-          "content.q2",
-          "people.q1"
-        ]
+        "instead": ["table", "card"],
+        "because": ["content.q2", "people.q1"]
       },
       {
         "id": "drawer",
         "why": "A drawer is for phones. Dense data's experts work at a desk with a mouse and keyboard, and the scheme avoids first-time visitors on phones.",
-        "instead": [
-          "sheet",
-          "dialog"
-        ],
-        "because": [
-          "scenarios.q1",
-          "accessibility.values"
-        ]
+        "instead": ["sheet", "dialog"],
+        "because": ["scenarios.q1", "accessibility.values"]
       },
       {
         "id": "native-select",
         "why": "Native select is best on phones, and Dense data runs at a desk. Its select already picks one value. A small team keeps fewer parts right.",
-        "instead": [
-          "select",
-          "radio-group"
-        ],
-        "because": [
-          "scenarios.q1",
-          "team.q1",
-          "components.definition"
-        ]
+        "instead": ["select", "radio-group"],
+        "because": ["scenarios.q1", "team.q1", "components.definition"]
       },
       {
         "id": "navigation-menu",
         "why": "Navigation menu is for the sections of a website. Dense data avoids public sites, and its app navigation stays open all shift in a sidebar.",
-        "instead": [
-          "sidebar",
-          "tabs"
-        ],
-        "because": [
-          "business.q2",
-          "scenarios.q2"
-        ]
+        "instead": ["sidebar", "tabs"],
+        "because": ["business.q2", "scenarios.q2"]
       }
     ]
   },
@@ -825,219 +655,99 @@
       ],
       "rows": [
         {
-          "cells": [
-            "ALR-2041",
-            "api-gateway-01",
-            "08:30",
-            "92"
-          ],
+          "cells": ["ALR-2041", "api-gateway-01", "08:30", "92"],
           "status": "Resolved"
         },
         {
-          "cells": [
-            "ALR-2042",
-            "llm-inference-02",
-            "09:10",
-            "78"
-          ],
+          "cells": ["ALR-2042", "llm-inference-02", "09:10", "78"],
           "status": "Escalated"
         },
         {
-          "cells": [
-            "ALR-2043",
-            "vpn-edge-03",
-            "09:45",
-            "99"
-          ],
+          "cells": ["ALR-2043", "vpn-edge-03", "09:45", "99"],
           "status": "Breach confirmed"
         },
         {
-          "cells": [
-            "ALR-2044",
-            "model-registry",
-            "10:20",
-            "31"
-          ],
+          "cells": ["ALR-2044", "model-registry", "10:20", "31"],
           "status": "False positive"
         },
         {
-          "cells": [
-            "ALR-2045",
-            "auth-service",
-            "11:00",
-            "64"
-          ],
+          "cells": ["ALR-2045", "auth-service", "11:00", "64"],
           "status": "Investigating"
         },
         {
-          "cells": [
-            "ALR-2046",
-            "db-primary",
-            "11:30",
-            "81"
-          ],
+          "cells": ["ALR-2046", "db-primary", "11:30", "81"],
           "status": "Escalated"
         },
         {
-          "cells": [
-            "ALR-2047",
-            "build-runner-07",
-            "11:45",
-            "57"
-          ],
+          "cells": ["ALR-2047", "build-runner-07", "11:45", "57"],
           "status": "Resolved"
         },
         {
-          "cells": [
-            "ALR-2048",
-            "llm-inference-04",
-            "12:00",
-            "45"
-          ],
+          "cells": ["ALR-2048", "llm-inference-04", "12:00", "45"],
           "status": "New"
         },
         {
-          "cells": [
-            "ALR-2049",
-            "api-gateway-01",
-            "12:15",
-            "70"
-          ],
+          "cells": ["ALR-2049", "api-gateway-01", "12:15", "70"],
           "status": "Resolved"
         },
         {
-          "cells": [
-            "ALR-2050",
-            "llm-inference-02",
-            "12:30",
-            "97"
-          ],
+          "cells": ["ALR-2050", "llm-inference-02", "12:30", "97"],
           "status": "Breach confirmed"
         },
         {
-          "cells": [
-            "ALR-2051",
-            "vpn-edge-03",
-            "12:45",
-            "52"
-          ],
+          "cells": ["ALR-2051", "vpn-edge-03", "12:45", "52"],
           "status": "Resolved"
         },
         {
-          "cells": [
-            "ALR-2052",
-            "model-registry",
-            "13:00",
-            "84"
-          ],
+          "cells": ["ALR-2052", "model-registry", "13:00", "84"],
           "status": "Escalated"
         },
         {
-          "cells": [
-            "ALR-2053",
-            "auth-service",
-            "13:15",
-            "28"
-          ],
+          "cells": ["ALR-2053", "auth-service", "13:15", "28"],
           "status": "False positive"
         },
         {
-          "cells": [
-            "ALR-2054",
-            "db-primary",
-            "13:30",
-            "49"
-          ],
+          "cells": ["ALR-2054", "db-primary", "13:30", "49"],
           "status": "New"
         },
         {
-          "cells": [
-            "ALR-2055",
-            "build-runner-07",
-            "13:45",
-            "66"
-          ],
+          "cells": ["ALR-2055", "build-runner-07", "13:45", "66"],
           "status": "Resolved"
         },
         {
-          "cells": [
-            "ALR-2056",
-            "llm-inference-04",
-            "14:00",
-            "73"
-          ],
+          "cells": ["ALR-2056", "llm-inference-04", "14:00", "73"],
           "status": "Resolved"
         },
         {
-          "cells": [
-            "ALR-2057",
-            "api-gateway-01",
-            "14:15",
-            "88"
-          ],
+          "cells": ["ALR-2057", "api-gateway-01", "14:15", "88"],
           "status": "Escalated"
         },
         {
-          "cells": [
-            "ALR-2058",
-            "llm-inference-02",
-            "14:30",
-            "61"
-          ],
+          "cells": ["ALR-2058", "llm-inference-02", "14:30", "61"],
           "status": "Resolved"
         },
         {
-          "cells": [
-            "ALR-2059",
-            "vpn-edge-03",
-            "14:45",
-            "55"
-          ],
+          "cells": ["ALR-2059", "vpn-edge-03", "14:45", "55"],
           "status": "Investigating"
         },
         {
-          "cells": [
-            "ALR-2060",
-            "model-registry",
-            "15:00",
-            "69"
-          ],
+          "cells": ["ALR-2060", "model-registry", "15:00", "69"],
           "status": "Resolved"
         },
         {
-          "cells": [
-            "ALR-2061",
-            "auth-service",
-            "15:15",
-            "22"
-          ],
+          "cells": ["ALR-2061", "auth-service", "15:15", "22"],
           "status": "False positive"
         },
         {
-          "cells": [
-            "ALR-2062",
-            "db-primary",
-            "15:30",
-            "74"
-          ],
+          "cells": ["ALR-2062", "db-primary", "15:30", "74"],
           "status": "Resolved"
         },
         {
-          "cells": [
-            "ALR-2063",
-            "build-runner-07",
-            "15:45",
-            "86"
-          ],
+          "cells": ["ALR-2063", "build-runner-07", "15:45", "86"],
           "status": "Escalated"
         },
         {
-          "cells": [
-            "ALR-2064",
-            "llm-inference-04",
-            "16:00",
-            "43"
-          ],
+          "cells": ["ALR-2064", "llm-inference-04", "16:00", "43"],
           "status": "New"
         }
       ]
@@ -1067,24 +777,13 @@
       "error": "Threshold must be between 0 and 100.",
       "invalid": "140"
     },
-    "checkbox": [
-      "Escalated only",
-      "Assigned to me",
-      "Archived"
-    ],
+    "checkbox": ["Escalated only", "Assigned to me", "Archived"],
     "select": {
       "label": "Asset group",
-      "options": [
-        "Production",
-        "Staging",
-        "Model endpoints"
-      ],
+      "options": ["Production", "Staging", "Model endpoints"],
       "value": "Model endpoints"
     },
-    "switches": [
-      "Compact rows",
-      "Live updates"
-    ],
+    "switches": ["Compact rows", "Live updates"],
     "messages": {
       "success": "12 alerts exported.",
       "error": {
@@ -1124,10 +823,7 @@
     ],
     "menu": {
       "trigger": "Actions for alert ALR-2041",
-      "items": [
-        "Assign",
-        "Add note"
-      ],
+      "items": ["Assign", "Add note"],
       "destructive": "Dismiss"
     },
     "icon_action": "Filter"
@@ -1161,114 +857,85 @@
       "question": "people.q1",
       "option": "experts",
       "why": "The same people use it all day, every day.",
-      "because": [
-        "business.q1"
-      ]
+      "because": ["business.q1"]
     },
     {
       "question": "people.q2",
       "option": "aa",
       "why": "AA is the floor for an internal tool used by trained staff.",
-      "because": [
-        "people.q1"
-      ]
+      "because": ["people.q1"]
     },
     {
       "question": "content.q1",
       "option": "numbers",
       "why": "Most of the screen is numbers and records.",
-      "because": [
-        "business.q1"
-      ]
+      "because": ["business.q1"]
     },
     {
       "question": "content.q2",
       "option": "a-lot",
       "why": "Experts want many records on one screen.",
-      "because": [
-        "people.q1",
-        "content.q1"
-      ]
+      "because": ["people.q1", "content.q1"]
     },
     {
       "question": "tasks.q1",
       "option": "compare",
       "why": "People scan rows and compare values.",
-      "because": [
-        "content.q1"
-      ]
+      "because": ["content.q1"]
     },
     {
       "question": "tasks.q2",
       "option": "constantly",
       "why": "The same actions repeat many times an hour.",
-      "because": [
-        "people.q1"
-      ]
+      "because": ["people.q1"]
     },
     {
       "question": "human.q1",
       "option": "place",
       "why": "Losing your place in a long table costs time and errors.",
-      "because": [
-        "tasks.q1"
-      ]
+      "because": ["tasks.q1"]
     },
     {
       "question": "human.q2",
       "option": "learned",
       "why": "Daily users learn the interface and recognize it.",
-      "because": [
-        "people.q1"
-      ]
+      "because": ["people.q1"]
     },
     {
       "question": "outcomes.q1",
       "option": "time-on-task",
       "why": "Speed on repeated tasks is the measure.",
-      "because": [
-        "tasks.q2"
-      ]
+      "because": ["tasks.q2"]
     },
     {
       "question": "outcomes.q2",
       "option": "wrong-record",
       "why": "Acting on the wrong row is the costly error.",
-      "because": [
-        "tasks.q1"
-      ]
+      "because": ["tasks.q1"]
     },
     {
       "question": "brand.q1",
       "option": "precise",
       "why": "The interface must feel exact and trustworthy.",
-      "because": [
-        "content.q1"
-      ]
+      "because": ["content.q1"]
     },
     {
       "question": "brand.q2",
       "option": "quiet",
       "why": "The data is the hero; the brand steps back.",
-      "because": [
-        "content.q2"
-      ]
+      "because": ["content.q2"]
     },
     {
       "question": "scenarios.q1",
       "option": "desk",
       "why": "Experts work at a desk with a mouse and keyboard.",
-      "because": [
-        "people.q1"
-      ]
+      "because": ["people.q1"]
     },
     {
       "question": "scenarios.q2",
       "option": "all-day",
       "why": "The tool stays open for the whole shift.",
-      "because": [
-        "tasks.q2"
-      ]
+      "because": ["tasks.q2"]
     },
     {
       "question": "team.q1",
@@ -1286,491 +953,361 @@
       "question": "typography.roles",
       "option": "core-data",
       "why": "A data role keeps numbers in aligned columns.",
-      "because": [
-        "content.q1",
-        "tasks.q1"
-      ]
+      "because": ["content.q1", "tasks.q1"]
     },
     {
       "question": "typography.count",
       "option": "few",
       "why": "A screen full of records stays calm with only the sizes it needs.",
-      "because": [
-        "content.q2"
-      ]
+      "because": ["content.q2"]
     },
     {
       "question": "typography.definition",
       "option": "ratio-proportional",
       "why": "Line height is a ratio of each text's own size, so it follows the text. Two steps: tight for headings and labels, open for body, data and captions.",
-      "because": [
-        "tasks.q1",
-        "people.q2"
-      ]
+      "because": ["tasks.q1", "people.q2"]
     },
     {
       "question": "typography.values",
       "option": "small",
       "why": "Small body text fits more rows on the screen.",
-      "because": [
-        "content.q2"
-      ]
+      "because": ["content.q2"]
     },
     {
       "question": "typography.lands",
       "option": "tables-inputs",
       "why": "Most text sits in table cells and inputs.",
-      "because": [
-        "content.q1"
-      ]
+      "because": ["content.q1"]
     },
     {
       "question": "color.roles",
       "option": "core",
       "why": "Surface, text, action and status cover an operations tool.",
-      "because": [
-        "brand.q2"
-      ]
+      "because": ["brand.q2"]
     },
     {
       "question": "color.count",
       "option": "three",
       "why": "One primary per view; the rest step back.",
-      "because": [
-        "tasks.q2"
-      ]
+      "because": ["tasks.q2"]
     },
     {
       "question": "color.definition",
       "option": "neutral-brand",
       "why": "One product, one brand ramp on cool neutrals.",
-      "because": [
-        "business.q2"
-      ]
+      "because": ["business.q2"]
     },
     {
       "question": "color.values",
       "option": "muted",
       "why": "Muted color keeps attention on the data.",
-      "because": [
-        "brand.q2"
-      ]
+      "because": ["brand.q2"]
     },
     {
       "question": "color.lands",
       "option": "status",
       "why": "Color earns its place by marking late and failed records.",
-      "because": [
-        "outcomes.q2"
-      ]
+      "because": ["outcomes.q2"]
     },
     {
       "question": "spacing.roles",
       "option": "gap-inset-row",
       "why": "Row height is a decision of its own in a table product.",
-      "because": [
-        "content.q1"
-      ]
+      "because": ["content.q1"]
     },
     {
       "question": "spacing.count",
       "option": "two",
       "why": "A second, denser size serves tables and toolbars.",
-      "because": [
-        "tasks.q1"
-      ]
+      "because": ["tasks.q1"]
     },
     {
       "question": "spacing.definition",
       "option": "fine",
       "why": "Steps on a 4px grid give the small gaps dense screens need.",
-      "because": [
-        "content.q2"
-      ]
+      "because": ["content.q2"]
     },
     {
       "question": "spacing.values",
       "option": "compact",
       "why": "Compact spacing shows more records.",
-      "because": [
-        "content.q2"
-      ]
+      "because": ["content.q2"]
     },
     {
       "question": "spacing.lands",
       "option": "rows-cells",
       "why": "Space is spent inside rows and cells.",
-      "because": [
-        "tasks.q1"
-      ]
+      "because": ["tasks.q1"]
     },
     {
       "question": "shape.roles",
       "option": "control-badge-container",
       "why": "Badges sit in columns and need their own corner.",
-      "because": [
-        "tasks.q1"
-      ]
+      "because": ["tasks.q1"]
     },
     {
       "question": "shape.count",
       "option": "three",
       "why": "Control, badge and container corners differ.",
-      "because": [
-        "shape.roles"
-      ]
+      "because": ["shape.roles"]
     },
     {
       "question": "shape.definition",
       "option": "fixed",
       "why": "One brand, one fixed set of corners.",
-      "because": [
-        "business.q2"
-      ]
+      "because": ["business.q2"]
     },
     {
       "question": "shape.values",
       "option": "slightly-rounded",
       "why": "Small corners keep dense rows straight.",
-      "because": [
-        "brand.q1"
-      ]
+      "because": ["brand.q1"]
     },
     {
       "question": "shape.lands",
       "option": "controls",
       "why": "Corners show most on controls in dense rows.",
-      "because": [
-        "content.q2"
-      ]
+      "because": ["content.q2"]
     },
     {
       "question": "elevation.roles",
       "option": "floating-only",
       "why": "Only menus and dialogs float; cards use lines.",
-      "because": [
-        "elevation.definition"
-      ]
+      "because": ["elevation.definition"]
     },
     {
       "question": "elevation.count",
       "option": "one",
       "why": "One shadow for everything that floats.",
-      "because": [
-        "elevation.roles"
-      ]
+      "because": ["elevation.roles"]
     },
     {
       "question": "elevation.definition",
       "option": "lines",
       "why": "Thin lines guide the eye along rows.",
-      "because": [
-        "human.q1"
-      ]
+      "because": ["human.q1"]
     },
     {
       "question": "elevation.values",
       "option": "subtle",
       "why": "Subtle shadows keep the grid crisp.",
-      "because": [
-        "brand.q1"
-      ]
+      "because": ["brand.q1"]
     },
     {
       "question": "elevation.lands",
       "option": "menus-dialogs",
       "why": "Menus and dialogs are the only layers.",
-      "because": [
-        "elevation.roles"
-      ]
+      "because": ["elevation.roles"]
     },
     {
       "question": "motion.roles",
       "option": "feedback",
       "why": "Motion confirms an action; nothing else moves.",
-      "because": [
-        "human.q1"
-      ]
+      "because": ["human.q1"]
     },
     {
       "question": "motion.count",
       "option": "one",
       "why": "One speed is enough for feedback.",
-      "because": [
-        "motion.roles"
-      ]
+      "because": ["motion.roles"]
     },
     {
       "question": "motion.definition",
       "option": "standard",
       "why": "A standard ease-out never draws attention.",
-      "because": [
-        "brand.q1"
-      ]
+      "because": ["brand.q1"]
     },
     {
       "question": "motion.values",
       "option": "fast",
       "why": "Fast feedback keeps up with experts.",
-      "because": [
-        "outcomes.q1"
-      ]
+      "because": ["outcomes.q1"]
     },
     {
       "question": "motion.lands",
       "option": "state-only",
       "why": "Only state changes move.",
-      "because": [
-        "motion.roles"
-      ]
+      "because": ["motion.roles"]
     },
     {
       "question": "iconography.roles",
       "option": "actions-status",
       "why": "Icons mark row actions and status.",
-      "because": [
-        "tasks.q2"
-      ]
+      "because": ["tasks.q2"]
     },
     {
       "question": "iconography.count",
       "option": "one",
       "why": "One size, matched to the small text.",
-      "because": [
-        "typography.values"
-      ]
+      "because": ["typography.values"]
     },
     {
       "question": "iconography.definition",
       "option": "outline",
       "why": "Outline icons stay light next to dense text.",
-      "because": [
-        "content.q2"
-      ]
+      "because": ["content.q2"]
     },
     {
       "question": "iconography.values",
       "option": "match-text",
       "why": "Icons match the label so they do not outweigh it.",
-      "because": [
-        "content.q2"
-      ]
+      "because": ["content.q2"]
     },
     {
       "question": "iconography.lands",
       "option": "toolbars-rows",
       "why": "Icons work hardest in toolbars and row actions.",
-      "because": [
-        "tasks.q2"
-      ]
+      "because": ["tasks.q2"]
     },
     {
       "question": "theming.roles",
       "option": "mode",
       "why": "One brand, so only the mode changes.",
-      "because": [
-        "business.q2"
-      ]
+      "because": ["business.q2"]
     },
     {
       "question": "theming.count",
       "option": "two",
       "why": "Light and dark.",
-      "because": [
-        "theming.values"
-      ]
+      "because": ["theming.values"]
     },
     {
       "question": "theming.definition",
       "option": "single",
       "why": "One product, one brand.",
-      "because": [
-        "business.q2"
-      ]
+      "because": ["business.q2"]
     },
     {
       "question": "theming.values",
       "option": "light-dark",
       "why": "Light first, always; dark ships as standard for night shifts.",
-      "because": [
-        "scenarios.q2"
-      ]
+      "because": ["scenarios.q2"]
     },
     {
       "question": "theming.lands",
       "option": "colors",
       "why": "A mode switch changes colors only, so layout never moves.",
-      "because": [
-        "human.q1"
-      ]
+      "because": ["human.q1"]
     },
     {
       "question": "accessibility.roles",
       "option": "hover-focus-disabled",
       "why": "Pressed reuses hover; experts do not need more.",
-      "because": [
-        "people.q1"
-      ]
+      "because": ["people.q1"]
     },
     {
       "question": "accessibility.count",
       "option": "color-icon-word",
       "why": "Many statuses share one table; color alone is not enough.",
-      "because": [
-        "people.q2",
-        "content.q1"
-      ]
+      "because": ["people.q2", "content.q1"]
     },
     {
       "question": "accessibility.definition",
       "option": "aa",
       "why": "AA contrast for every text.",
-      "because": [
-        "people.q2"
-      ]
+      "because": ["people.q2"]
     },
     {
       "question": "accessibility.values",
       "option": "pointer",
       "why": "Mouse and keyboard; compact targets are enough.",
-      "because": [
-        "scenarios.q1"
-      ]
+      "because": ["scenarios.q1"]
     },
     {
       "question": "accessibility.lands",
       "option": "dense-tables",
       "why": "Small text and thin lines in tables need the most care.",
-      "because": [
-        "content.q2"
-      ]
+      "because": ["content.q2"]
     },
     {
       "question": "naming.roles",
       "option": "tokens-keys",
       "why": "Components get their own keys.",
-      "because": [
-        "team.q2"
-      ]
+      "because": ["team.q2"]
     },
     {
       "question": "naming.count",
       "option": "three",
       "why": "Primitives, semantics and component keys.",
-      "because": [
-        "team.q2"
-      ]
+      "because": ["team.q2"]
     },
     {
       "question": "naming.definition",
       "option": "by-role",
       "why": "Role names survive a redesign.",
-      "because": [
-        "team.q1"
-      ]
+      "because": ["team.q1"]
     },
     {
       "question": "naming.values",
       "option": "kebab-paths",
       "why": "Lowercase paths read the same in CSS, JSON and Figma.",
-      "because": [
-        "team.q1"
-      ]
+      "because": ["team.q1"]
     },
     {
       "question": "naming.lands",
       "option": "keys",
       "why": "A component API keeps changes local.",
-      "because": [
-        "team.q2"
-      ]
+      "because": ["team.q2"]
     },
     {
       "question": "voice.roles",
       "option": "ui",
       "why": "Labels and messages are all the copy an operations tool needs.",
-      "because": [
-        "business.q1"
-      ]
+      "because": ["business.q1"]
     },
     {
       "question": "voice.count",
       "option": "one",
       "why": "One flat tone everywhere; experts want no surprises.",
-      "because": [
-        "people.q1"
-      ]
+      "because": ["people.q1"]
     },
     {
       "question": "voice.definition",
       "option": "word-list",
       "why": "A word list keeps labels identical across screens.",
-      "because": [
-        "team.q1",
-        "tasks.q2"
-      ]
+      "because": ["team.q1", "tasks.q2"]
     },
     {
       "question": "voice.values",
       "option": "terse",
       "why": "Experts want short labels and short messages.",
-      "because": [
-        "people.q1",
-        "brand.q1"
-      ]
+      "because": ["people.q1", "brand.q1"]
     },
     {
       "question": "voice.lands",
       "option": "errors-empty",
       "why": "Errors and empty tables are where words decide the next action.",
-      "because": [
-        "outcomes.q2"
-      ]
+      "because": ["outcomes.q2"]
     },
     {
       "question": "components.roles",
       "option": "core-data",
       "why": "Records need tables, filters and fast ways to move between them.",
-      "because": [
-        "content.q1",
-        "tasks.q1"
-      ]
+      "because": ["content.q1", "tasks.q1"]
     },
     {
       "question": "components.count",
       "option": "some",
       "why": "A full operations tool with the parts its next screens will need, still few enough for a small team to keep right.",
-      "because": [
-        "content.q2",
-        "team.q1"
-      ]
+      "because": ["content.q2", "team.q1"]
     },
     {
       "question": "components.definition",
       "option": "scenario",
       "why": "A component joins only when a daily task needs it.",
-      "because": [
-        "scenarios.q1",
-        "tasks.q2"
-      ]
+      "because": ["scenarios.q1", "tasks.q2"]
     },
     {
       "question": "components.values",
       "option": "few",
       "why": "Repeated screens stay identical when a component changes only with its meaning.",
-      "because": [
-        "brand.q2",
-        "tasks.q2"
-      ]
+      "because": ["brand.q2", "tasks.q2"]
     },
     {
       "question": "components.lands",
       "option": "tables-forms",
       "why": "Most work happens in tables and the forms that edit them.",
-      "because": [
-        "content.q1",
-        "tasks.q1"
-      ]
+      "because": ["content.q1", "tasks.q1"]
     }
   ],
   "usage": [
@@ -1779,75 +1316,56 @@
       "use": "type.title",
       "not": "type.display",
       "why": "Titles stay small so the table starts higher on the screen.",
-      "because": [
-        "content.q2"
-      ]
+      "because": ["content.q2"]
     },
     {
       "situation": "number-in-table",
       "use": "type.data",
       "not": "type.body",
       "why": "Mono digits line up in columns, so values compare at a glance.",
-      "because": [
-        "typography.roles",
-        "tasks.q1"
-      ]
+      "because": ["typography.roles", "tasks.q1"]
     },
     {
       "situation": "paragraph",
       "use": "type.body",
       "not": "type.label",
       "why": "Help text is read in passing; body size keeps it quick.",
-      "because": [
-        "outcomes.q1"
-      ]
+      "because": ["outcomes.q1"]
     },
     {
       "situation": "field-label",
       "use": "type.label",
       "not": "type.heading",
       "why": "Headers repeat on every column; a heavy style would compete with the data.",
-      "because": [
-        "tasks.q1"
-      ]
+      "because": ["tasks.q1"]
     },
     {
       "situation": "selected-row",
       "use": "color.surface.selected",
       "not": "color.action.primary as a fill",
       "why": "A light tint shows selection without hiding the data.",
-      "because": [
-        "tasks.q1"
-      ]
+      "because": ["tasks.q1"]
     },
     {
       "situation": "error-message",
       "use": "color.status.danger with an icon",
       "not": "color.status.warning",
       "why": "Red always means fix this, and the icon says it without color.",
-      "because": [
-        "accessibility.count",
-        "outcomes.q2"
-      ]
+      "because": ["accessibility.count", "outcomes.q2"]
     },
     {
       "situation": "link",
       "use": "color.text.link",
       "not": "color.action.primary",
       "why": "Links and buttons look different, so people know which one navigates.",
-      "because": [
-        "human.q2"
-      ]
+      "because": ["human.q2"]
     },
     {
       "situation": "status-label",
       "use": "Badge with a subtle fill, an icon and a word",
       "not": "A full-strength fill",
       "why": "Subtle fills let many statuses share one table.",
-      "because": [
-        "accessibility.count",
-        "content.q1"
-      ],
+      "because": ["accessibility.count", "content.q1"],
       "uses": [
         {
           "component": "badge"
@@ -1859,92 +1377,70 @@
       "use": "space.gap.tight",
       "not": "space.gap.group",
       "why": "Things that belong together sit close.",
-      "because": [
-        "human.q2"
-      ]
+      "because": ["human.q2"]
     },
     {
       "situation": "between-sections",
       "use": "space.gap.section and a hairline",
       "not": "A card around every section",
       "why": "Lines separate without taking room from the data.",
-      "because": [
-        "elevation.definition",
-        "content.q2"
-      ]
+      "because": ["elevation.definition", "content.q2"]
     },
     {
       "situation": "table-row",
       "use": "size.row (compact)",
       "not": "The comfortable row",
       "why": "Compact rows show more records without scrolling.",
-      "because": [
-        "content.q2",
-        "spacing.count"
-      ]
+      "because": ["content.q2", "spacing.count"]
     },
     {
       "situation": "control-corner",
       "use": "radius.control",
       "not": "radius.round",
       "why": "Small corners keep dense rows straight.",
-      "because": [
-        "shape.values"
-      ]
+      "because": ["shape.values"]
     },
     {
       "situation": "status-shape",
       "use": "radius.badge (rectangle)",
       "not": "A pill",
       "why": "Rectangles line up in a column.",
-      "because": [
-        "shape.roles"
-      ]
+      "because": ["shape.roles"]
     },
     {
       "situation": "card",
       "use": "A hairline border, no shadow",
       "not": "A shadow",
       "why": "On a busy grid, lines separate. Shadows blur the edges.",
-      "because": [
-        "elevation.roles"
-      ]
+      "because": ["elevation.roles"]
     },
     {
       "situation": "menu-or-dialog",
       "use": "elevation.overlay and a dimmed page for dialogs",
       "not": "A border only",
       "why": "Floating things need a shadow so they read as on top.",
-      "because": [
-        "elevation.lands"
-      ]
+      "because": ["elevation.lands"]
     },
     {
       "situation": "hover-feedback",
       "use": "motion.duration.feedback (fast)",
       "not": "No transition",
       "why": "Fast feedback confirms the pointer without slowing experts.",
-      "because": [
-        "motion.values"
-      ]
+      "because": ["motion.values"]
     },
     {
       "situation": "reduced-motion",
       "use": "No motion",
       "not": "A shorter version of the motion",
       "why": "When people ask for less motion, nothing moves.",
-      "because": [
-        "motion.roles"
-      ]
+      "because": ["motion.roles"]
     },
     {
       "situation": "icon-alone",
       "use": "Icon button with a tooltip",
       "not": "A bare icon",
       "why": "Experts learn icons; the tooltip covers the first uses.",
-      "because": [
-        "iconography.roles"
-      ],
+      "because": ["iconography.roles"],
       "uses": [
         {
           "component": "button",
@@ -1961,18 +1457,14 @@
       "use": "The dark semantic mode",
       "not": "A second palette in components",
       "why": "Only semantic colors change, so layout never moves.",
-      "because": [
-        "theming.values"
-      ]
+      "because": ["theming.values"]
     },
     {
       "situation": "keyboard-focus",
       "use": "button/focus-ring at border-width.focus",
       "not": "Removing the outline",
       "why": "Keyboard users must always see where they are.",
-      "because": [
-        "people.q2"
-      ],
+      "because": ["people.q2"],
       "uses": [
         {
           "component": "button",
@@ -1986,19 +1478,14 @@
       "use": "size.control.compact",
       "not": "Anything smaller",
       "why": "Compact still fits a mouse. Touch is not this product's input.",
-      "because": [
-        "accessibility.values"
-      ]
+      "because": ["accessibility.values"]
     },
     {
       "situation": "commit-action",
       "use": "Button primary, one per view",
       "not": "Two primaries side by side",
       "why": "One primary makes the committing action obvious.",
-      "because": [
-        "color.count",
-        "outcomes.q2"
-      ],
+      "because": ["color.count", "outcomes.q2"],
       "uses": [
         {
           "component": "button",
@@ -2012,9 +1499,7 @@
       "use": "Button secondary",
       "not": "Button ghost",
       "why": "Cancel must be easy to find next to the primary.",
-      "because": [
-        "human.q2"
-      ],
+      "because": ["human.q2"],
       "uses": [
         {
           "component": "button",
@@ -2028,9 +1513,7 @@
       "use": "Button secondary, then confirm in a dialog with Button danger",
       "not": "Button primary as the first step",
       "why": "Deleting is rare and costly; a confirm step catches mistakes.",
-      "because": [
-        "outcomes.q2"
-      ],
+      "because": ["outcomes.q2"],
       "uses": [
         {
           "component": "button",
@@ -2052,9 +1535,7 @@
       "use": "Icon button, ghost, compact",
       "not": "Button secondary in every row",
       "why": "Rows repeat dozens of times; a quiet icon keeps the table readable.",
-      "because": [
-        "tasks.q2"
-      ],
+      "because": ["tasks.q2"],
       "uses": [
         {
           "component": "button",
@@ -2073,19 +1554,14 @@
       "use": "The closest semantic token, then ask for a new one",
       "not": "A raw value in the component",
       "why": "Raw values break dark mode and the next redesign.",
-      "because": [
-        "naming.lands"
-      ]
+      "because": ["naming.lands"]
     },
     {
       "situation": "button-label",
       "use": "One verb from the word list",
       "not": "A sentence or \"Please\"",
       "why": "Labels repeat on every screen; one verb reads fastest.",
-      "because": [
-        "voice.values",
-        "voice.definition"
-      ],
+      "because": ["voice.values", "voice.definition"],
       "example": "Export"
     },
     {
@@ -2093,10 +1569,7 @@
       "use": "Name the record, then the fix. Flat and specific.",
       "not": "\"Oops\" or a vague apology",
       "why": "Experts act on the message; the record and the fix are all they need.",
-      "because": [
-        "voice.values",
-        "voice.lands"
-      ],
+      "because": ["voice.values", "voice.lands"],
       "example": "Alert ALR-2042 not saved. Threshold must be between 0 and 100."
     },
     {
@@ -2104,10 +1577,7 @@
       "use": "A short confirmation with the count",
       "not": "Celebration",
       "why": "Confirm and get out of the way; the next task is waiting.",
-      "because": [
-        "voice.values",
-        "tasks.q2"
-      ],
+      "because": ["voice.values", "tasks.q2"],
       "example": "12 alerts exported."
     },
     {
@@ -2115,9 +1585,7 @@
       "use": "Why it is empty and the one action that fills it",
       "not": "A blank table",
       "why": "An empty table with no words looks like an error.",
-      "because": [
-        "voice.lands"
-      ],
+      "because": ["voice.lands"],
       "example": "No escalated alerts. Change the date range to see older ones.",
       "uses": [
         {
@@ -2130,9 +1598,7 @@
       "use": "Name the exact object and the consequence",
       "not": "\"Are you sure?\"",
       "why": "Acting on the wrong record is the costly mistake.",
-      "because": [
-        "outcomes.q2"
-      ],
+      "because": ["outcomes.q2"],
       "example": "Dismiss 3 alerts? This cannot be undone."
     },
     {
@@ -2140,10 +1606,7 @@
       "use": "No tour. Show the data, with a tooltip where needed.",
       "not": "A welcome tour",
       "why": "Daily experts skip tours; tooltips cover the first uses.",
-      "because": [
-        "people.q1",
-        "voice.count"
-      ],
+      "because": ["people.q1", "voice.count"],
       "example": "Hover any column header to see what it counts."
     },
     {
@@ -2151,10 +1614,7 @@
       "use": "a component from the inventory, composed (for example a popover with a command list)",
       "not": "a one-off component built for one screen",
       "why": "A small team keeps fewer parts right, and experts expect the same parts everywhere.",
-      "because": [
-        "team.q1",
-        "components.definition"
-      ]
+      "because": ["team.q1", "components.definition"]
     }
   ],
   "tokens": {
@@ -2967,12 +2427,7 @@
       "easing": {
         "standard": {
           "$type": "cubicBezier",
-          "$value": [
-            0.2,
-            0,
-            0,
-            1
-          ],
+          "$value": [0.2, 0, 0, 1],
           "$description": "The easing for feedback transitions."
         }
       },
@@ -3870,10 +3325,7 @@
             "gray": "slate",
             "temperature": "cool",
             "why": "Muted color keeps attention on the data; a cool gray reads as precise.",
-            "because": [
-              "color.values",
-              "color.definition"
-            ]
+            "because": ["color.values", "color.definition"]
           }
         }
       }
@@ -4562,6 +4014,10 @@
           "border": {
             "$value": "{color.border.strong}",
             "$description": "Secondary button border."
+          },
+          "border-width": {
+            "$value": "{border-width.default}",
+            "$description": "Secondary border width of the button."
           }
         },
         "danger": {
@@ -4631,6 +4087,38 @@
             "$value": "{color.disabled.border}",
             "$description": "Border of a disabled secondary button."
           }
+        },
+        "gap": {
+          "$value": "{space.gap.default}",
+          "$description": "Gap of the button."
+        },
+        "font-family": {
+          "$value": "{type.label.font-family}",
+          "$description": "Font family of the button."
+        },
+        "focus": {
+          "$value": "{border-width.focus}",
+          "$description": "Focus of the button."
+        },
+        "canvas": {
+          "$value": "{color.surface.canvas}",
+          "$description": "Canvas of the button."
+        },
+        "compact": {
+          "height": {
+            "$value": "{size.control.compact}",
+            "$description": "Compact height of the button."
+          },
+          "padding-x": {
+            "$value": "{space.inset.cell-x}",
+            "$description": "Compact padding x of the button."
+          }
+        },
+        "large": {
+          "height": {
+            "$value": "{size.control.large}",
+            "$description": "Large height of the button."
+          }
         }
       },
       "input": {
@@ -4685,6 +4173,26 @@
             "$value": "{color.disabled.text}",
             "$description": "Text in a disabled input."
           }
+        },
+        "font-family": {
+          "$value": "{type.body.font-family}",
+          "$description": "Font family of the input."
+        },
+        "border-width": {
+          "$value": "{border-width.default}",
+          "$description": "Border width of the input."
+        },
+        "focus": {
+          "$value": "{border-width.focus}",
+          "$description": "Focus of the input."
+        },
+        "canvas": {
+          "$value": "{color.surface.canvas}",
+          "$description": "Canvas of the input."
+        },
+        "danger": {
+          "$value": "{color.status.danger.@}",
+          "$description": "Danger of the input."
         }
       },
       "control": {
@@ -4787,6 +4295,18 @@
               }
             }
           }
+        },
+        "gap": {
+          "$value": "{space.gap.tight}",
+          "$description": "Gap of the badge."
+        },
+        "font-weight": {
+          "$value": "{type.label.font-weight}",
+          "$description": "Font weight of the badge."
+        },
+        "font-family": {
+          "$value": "{type.caption.font-family}",
+          "$description": "Font family of the badge."
         }
       },
       "card": {
@@ -4809,6 +4329,64 @@
         "shadow": {
           "$value": "{elevation.card}",
           "$description": "Card shadow."
+        },
+        "gap": {
+          "$value": "{space.gap.default}",
+          "$description": "Gap of the card."
+        },
+        "label": {
+          "$value": "{color.text.primary}",
+          "$description": "Label of the card."
+        },
+        "border-width": {
+          "$value": "{border-width.default}",
+          "$description": "Border width of the card."
+        },
+        "header": {
+          "gap": {
+            "$value": "{space.gap.tight}",
+            "$description": "Header gap of the card."
+          }
+        },
+        "title": {
+          "font-family": {
+            "$value": "{type.heading.font-family}",
+            "$description": "Title font family of the card."
+          },
+          "font-size": {
+            "$value": "{type.heading.font-size}",
+            "$description": "Title font size of the card."
+          },
+          "font-weight": {
+            "$value": "{type.heading.font-weight}",
+            "$description": "Title font weight of the card."
+          },
+          "line-height": {
+            "$value": "{type.heading.line-height}",
+            "$description": "Title line height of the card."
+          }
+        },
+        "description": {
+          "label": {
+            "$value": "{color.text.secondary}",
+            "$description": "Description label of the card."
+          },
+          "font-size": {
+            "$value": "{type.body.font-size}",
+            "$description": "Description font size of the card."
+          }
+        },
+        "content": {
+          "gap": {
+            "$value": "{space.gap.default}",
+            "$description": "Content gap of the card."
+          }
+        },
+        "footer": {
+          "gap": {
+            "$value": "{space.gap.default}",
+            "$description": "Footer gap of the card."
+          }
         }
       },
       "table": {
@@ -4839,6 +4417,44 @@
         "row-selected-edge": {
           "$value": "{color.border.selected}",
           "$description": "Edge that marks a selected row, beside its fill."
+        },
+        "label": {
+          "$value": "{color.text.primary}",
+          "$description": "Label of the table."
+        },
+        "row": {
+          "border-width": {
+            "$value": "{border-width.default}",
+            "$description": "Row border width of the table."
+          },
+          "focus": {
+            "$value": "{border-width.focus}",
+            "$description": "Row focus of the table."
+          }
+        },
+        "head": {
+          "label": {
+            "$value": "{color.text.secondary}",
+            "$description": "Head label of the table."
+          },
+          "font-family": {
+            "$value": "{type.label.font-family}",
+            "$description": "Head font family of the table."
+          },
+          "font-size": {
+            "$value": "{type.label.font-size}",
+            "$description": "Head font size of the table."
+          },
+          "font-weight": {
+            "$value": "{type.label.font-weight}",
+            "$description": "Head font weight of the table."
+          }
+        },
+        "cell": {
+          "font-family": {
+            "$value": "{type.data.font-family}",
+            "$description": "Cell font family of the table."
+          }
         }
       },
       "tabs": {
@@ -4854,6 +4470,52 @@
           "active": {
             "$value": "{color.text.primary}",
             "$description": "Active tab label."
+          }
+        },
+        "list": {
+          "gap": {
+            "$value": "{space.gap.group}",
+            "$description": "List gap of the tabs."
+          },
+          "border-width": {
+            "$value": "{border-width.default}",
+            "$description": "List border width of the tabs."
+          },
+          "border": {
+            "$value": "{color.border.default}",
+            "$description": "List border of the tabs."
+          }
+        },
+        "trigger": {
+          "height": {
+            "$value": "{size.control.default}",
+            "$description": "Trigger height of the tabs."
+          },
+          "font-family": {
+            "$value": "{type.label.font-family}",
+            "$description": "Trigger font family of the tabs."
+          },
+          "font-size": {
+            "$value": "{type.label.font-size}",
+            "$description": "Trigger font size of the tabs."
+          },
+          "font-weight": {
+            "$value": "{type.label.font-weight}",
+            "$description": "Trigger font weight of the tabs."
+          }
+        },
+        "focus": {
+          "$value": "{border-width.focus}",
+          "$description": "Focus of the tabs."
+        },
+        "canvas": {
+          "$value": "{color.surface.canvas}",
+          "$description": "Canvas of the tabs."
+        },
+        "content": {
+          "padding-top": {
+            "$value": "{space.gap.default}",
+            "$description": "Content padding top of the tabs."
           }
         }
       },
@@ -4887,6 +4549,24 @@
         "label": {
           "$value": "{color.text.inverse}",
           "$description": "Tooltip text."
+        },
+        "content": {
+          "radius": {
+            "$value": "{radius.badge}",
+            "$description": "Content radius of the tooltip."
+          },
+          "padding-x": {
+            "$value": "{space.gap.default}",
+            "$description": "Content padding x of the tooltip."
+          },
+          "font-size": {
+            "$value": "{type.caption.font-size}",
+            "$description": "Content font size of the tooltip."
+          },
+          "font-family": {
+            "$value": "{type.caption.font-family}",
+            "$description": "Content font family of the tooltip."
+          }
         }
       },
       "transition": {
@@ -4932,6 +4612,10 @@
           "radius": {
             "$value": "{radius.control}",
             "$description": "The trigger's corner, seen on focus."
+          },
+          "focus-ring-offset-focus": {
+            "$value": "{color.surface.canvas}",
+            "$description": "Trigger focus ring offset focus of the accordion."
           }
         },
         "focus-ring": {
@@ -4972,6 +4656,3704 @@
           "padding-bottom": {
             "$value": "{space.inset.container}",
             "$description": "Space below the content."
+          }
+        }
+      },
+      "alert-dialog": {
+        "overlay": {
+          "background": {
+            "$value": "{color.surface.scrim}",
+            "$description": "Overlay background of the alert dialog."
+          }
+        },
+        "content": {
+          "gap": {
+            "$value": "{space.gap.group}",
+            "$description": "Content gap of the alert dialog."
+          },
+          "radius": {
+            "$value": "{radius.container}",
+            "$description": "Content radius of the alert dialog."
+          },
+          "background": {
+            "$value": "{color.surface.canvas}",
+            "$description": "Content background of the alert dialog."
+          },
+          "shadow": {
+            "$value": "{elevation.overlay}",
+            "$description": "Content shadow of the alert dialog."
+          }
+        },
+        "header": {
+          "gap-x": {
+            "$value": "{space.gap.section}",
+            "$description": "Header gap x of the alert dialog."
+          }
+        },
+        "footer": {
+          "gap": {
+            "$value": "{space.gap.default}",
+            "$description": "Footer gap of the alert dialog."
+          }
+        },
+        "title": {
+          "font-size": {
+            "$value": "{type.heading.font-size}",
+            "$description": "Title font size of the alert dialog."
+          },
+          "font-weight": {
+            "$value": "{type.title.font-weight}",
+            "$description": "Title font weight of the alert dialog."
+          }
+        },
+        "description": {
+          "font-size": {
+            "$value": "{type.body.font-size}",
+            "$description": "Description font size of the alert dialog."
+          },
+          "label": {
+            "$value": "{color.text.muted}",
+            "$description": "Description label of the alert dialog."
+          }
+        },
+        "media": {
+          "radius": {
+            "$value": "{radius.control}",
+            "$description": "Media radius of the alert dialog."
+          },
+          "background": {
+            "$value": "{color.surface.sunken}",
+            "$description": "Media background of the alert dialog."
+          },
+          "size": {
+            "$value": "{size.control.default}",
+            "$description": "Media size of the alert dialog."
+          }
+        }
+      },
+      "alert": {
+        "radius": {
+          "$value": "{radius.container}",
+          "$description": "Radius of the alert."
+        },
+        "padding-x": {
+          "$value": "{space.inset.container}",
+          "$description": "Padding x of the alert."
+        },
+        "font-size": {
+          "$value": "{type.body.font-size}",
+          "$description": "Font size of the alert."
+        },
+        "icon-size": {
+          "$value": "{size.icon}",
+          "$description": "Icon size of the alert."
+        },
+        "default": {
+          "background": {
+            "$value": "{color.surface.default}",
+            "$description": "Default background of the alert."
+          },
+          "label": {
+            "$value": "{color.text.primary}",
+            "$description": "Default label of the alert."
+          }
+        },
+        "destructive": {
+          "background": {
+            "$value": "{color.surface.default}",
+            "$description": "Destructive background of the alert."
+          },
+          "label": {
+            "$value": "{color.status.danger.@}",
+            "$description": "Destructive label of the alert."
+          }
+        },
+        "title": {
+          "font-weight": {
+            "$value": "{type.label.font-weight}",
+            "$description": "Title font weight of the alert."
+          }
+        },
+        "description": {
+          "gap": {
+            "$value": "{space.gap.tight}",
+            "$description": "Description gap of the alert."
+          },
+          "font-size": {
+            "$value": "{type.body.font-size}",
+            "$description": "Description font size of the alert."
+          },
+          "label": {
+            "$value": "{color.text.muted}",
+            "$description": "Description label of the alert."
+          }
+        }
+      },
+      "attachment": {
+        "radius": {
+          "$value": "{radius.control}",
+          "$description": "Radius of the attachment."
+        },
+        "background": {
+          "$value": "{color.surface.canvas}",
+          "$description": "Background of the attachment."
+        },
+        "font-size": {
+          "$value": "{type.body.font-size}",
+          "$description": "Font size of the attachment."
+        },
+        "background-hover": {
+          "$value": "{color.surface.sunken}",
+          "$description": "Background hover of the attachment."
+        },
+        "focus": {
+          "$value": "{border-width.focus}",
+          "$description": "Focus of the attachment."
+        },
+        "focus-ring-focus": {
+          "$value": "{color.border.focus}",
+          "$description": "Focus ring focus of the attachment."
+        },
+        "focus-ring-offset-focus": {
+          "$value": "{color.surface.canvas}",
+          "$description": "Focus ring offset focus of the attachment."
+        },
+        "size": {
+          "$value": "{size.control.default}",
+          "$description": "Size of the attachment."
+        },
+        "radius-2": {
+          "$value": "{radius.badge}",
+          "$description": "Radius 2 of the attachment."
+        },
+        "background-2": {
+          "$value": "{color.surface.sunken}",
+          "$description": "Background 2 of the attachment."
+        },
+        "icon-size": {
+          "$value": "{size.icon}",
+          "$description": "Icon size of the attachment."
+        },
+        "label": {
+          "$value": "{color.text.muted}",
+          "$description": "Label of the attachment."
+        },
+        "font-weight": {
+          "$value": "{type.label.font-weight}",
+          "$description": "Font weight of the attachment."
+        },
+        "font-size-2": {
+          "$value": "{type.caption.font-size}",
+          "$description": "Font size 2 of the attachment."
+        }
+      },
+      "avatar": {
+        "size": {
+          "$value": "{size.control.default}",
+          "$description": "Size of the avatar."
+        },
+        "radius": {
+          "$value": "{radius.round}",
+          "$description": "Radius of the avatar."
+        },
+        "fallback": {
+          "radius": {
+            "$value": "{radius.round}",
+            "$description": "Fallback radius of the avatar."
+          },
+          "background": {
+            "$value": "{color.surface.sunken}",
+            "$description": "Fallback background of the avatar."
+          },
+          "font-size": {
+            "$value": "{type.body.font-size}",
+            "$description": "Fallback font size of the avatar."
+          },
+          "label": {
+            "$value": "{color.text.muted}",
+            "$description": "Fallback label of the avatar."
+          },
+          "font-size-2": {
+            "$value": "{type.caption.font-size}",
+            "$description": "Fallback font size 2 of the avatar."
+          }
+        },
+        "badge": {
+          "radius": {
+            "$value": "{radius.round}",
+            "$description": "Badge radius of the avatar."
+          },
+          "background": {
+            "$value": "{color.action.primary.@}",
+            "$description": "Badge background of the avatar."
+          },
+          "label": {
+            "$value": "{color.text.on-action}",
+            "$description": "Badge label of the avatar."
+          },
+          "focus-ring": {
+            "$value": "{color.surface.canvas}",
+            "$description": "Badge focus ring of the avatar."
+          }
+        },
+        "group": {
+          "focus-ring": {
+            "$value": "{color.surface.canvas}",
+            "$description": "Group focus ring of the avatar."
+          },
+          "count": {
+            "size": {
+              "$value": "{size.control.default}",
+              "$description": "Group count size of the avatar."
+            },
+            "radius": {
+              "$value": "{radius.round}",
+              "$description": "Group count radius of the avatar."
+            },
+            "background": {
+              "$value": "{color.surface.sunken}",
+              "$description": "Group count background of the avatar."
+            },
+            "font-size": {
+              "$value": "{type.body.font-size}",
+              "$description": "Group count font size of the avatar."
+            },
+            "label": {
+              "$value": "{color.text.muted}",
+              "$description": "Group count label of the avatar."
+            },
+            "focus-ring": {
+              "$value": "{color.surface.canvas}",
+              "$description": "Group count focus ring of the avatar."
+            },
+            "icon-size": {
+              "$value": "{size.icon}",
+              "$description": "Group count icon size of the avatar."
+            }
+          }
+        }
+      },
+      "breadcrumb": {
+        "list": {
+          "font-size": {
+            "$value": "{type.body.font-size}",
+            "$description": "List font size of the breadcrumb."
+          },
+          "label": {
+            "$value": "{color.text.muted}",
+            "$description": "List label of the breadcrumb."
+          }
+        },
+        "link": {
+          "label-hover": {
+            "$value": "{color.text.primary}",
+            "$description": "Link label hover of the breadcrumb."
+          }
+        },
+        "page": {
+          "font-weight": {
+            "$value": "{type.body.font-weight}",
+            "$description": "Page font weight of the breadcrumb."
+          },
+          "label": {
+            "$value": "{color.text.primary}",
+            "$description": "Page label of the breadcrumb."
+          }
+        },
+        "icon-size": {
+          "$value": "{size.icon}",
+          "$description": "Icon size of the breadcrumb."
+        }
+      },
+      "bubble": {
+        "them": {
+          "background": {
+            "$value": "{color.surface.sunken}",
+            "$description": "Them background of the bubble."
+          },
+          "label": {
+            "$value": "{color.text.primary}",
+            "$description": "Them label of the bubble."
+          }
+        },
+        "me": {
+          "background": {
+            "$value": "{color.action.primary.@}",
+            "$description": "Me background of the bubble."
+          },
+          "label": {
+            "$value": "{color.text.on-action}",
+            "$description": "Me label of the bubble."
+          }
+        },
+        "gap": {
+          "$value": "{space.gap.tight}",
+          "$description": "Gap of the bubble."
+        },
+        "font-size": {
+          "$value": "{type.caption.font-size}",
+          "$description": "Font size of the bubble."
+        },
+        "label": {
+          "$value": "{color.text.muted}",
+          "$description": "Label of the bubble."
+        },
+        "body": {
+          "radius": {
+            "$value": "{radius.container}",
+            "$description": "Body radius of the bubble."
+          },
+          "font-size": {
+            "$value": "{type.body.font-size}",
+            "$description": "Body font size of the bubble."
+          }
+        }
+      },
+      "button-group": {
+        "gap": {
+          "$value": "{space.gap.default}",
+          "$description": "Gap of the button group."
+        },
+        "text": {
+          "gap": {
+            "$value": "{space.gap.default}",
+            "$description": "Text gap of the button group."
+          },
+          "radius": {
+            "$value": "{radius.control}",
+            "$description": "Text radius of the button group."
+          },
+          "background": {
+            "$value": "{color.surface.sunken}",
+            "$description": "Text background of the button group."
+          },
+          "font-size": {
+            "$value": "{type.body.font-size}",
+            "$description": "Text font size of the button group."
+          },
+          "font-weight": {
+            "$value": "{type.label.font-weight}",
+            "$description": "Text font weight of the button group."
+          },
+          "icon-size": {
+            "$value": "{size.icon}",
+            "$description": "Text icon size of the button group."
+          }
+        },
+        "separator": {
+          "background": {
+            "$value": "{color.border.strong}",
+            "$description": "Separator background of the button group."
+          }
+        }
+      },
+      "calendar": {
+        "background": {
+          "$value": "{color.surface.canvas}",
+          "$description": "Background of the calendar."
+        },
+        "gap": {
+          "$value": "{space.gap.group}",
+          "$description": "Gap of the calendar."
+        },
+        "gap-2": {
+          "$value": "{space.gap.tight}",
+          "$description": "Gap 2 of the calendar."
+        },
+        "disabled-opacity-disabled": {
+          "$value": "{opacity.disabled}",
+          "$description": "Disabled opacity disabled of the calendar."
+        },
+        "font-size": {
+          "$value": "{type.body.font-size}",
+          "$description": "Font size of the calendar."
+        },
+        "font-weight": {
+          "$value": "{type.label.font-weight}",
+          "$description": "Font weight of the calendar."
+        },
+        "radius": {
+          "$value": "{radius.control}",
+          "$description": "Radius of the calendar."
+        },
+        "border": {
+          "$value": "{color.border.strong}",
+          "$description": "Border of the calendar."
+        },
+        "shadow": {
+          "$value": "{elevation.card}",
+          "$description": "Shadow of the calendar."
+        },
+        "border-2": {
+          "$value": "{color.border.focus}",
+          "$description": "Border 2 of the calendar."
+        },
+        "focus": {
+          "$value": "{border-width.focus}",
+          "$description": "Focus of the calendar."
+        },
+        "focus-ring": {
+          "$value": "{color.border.focus}",
+          "$description": "Focus ring of the calendar."
+        },
+        "focus-ring-offset": {
+          "$value": "{color.surface.canvas}",
+          "$description": "Focus ring offset of the calendar."
+        },
+        "background-2": {
+          "$value": "{color.surface.raised}",
+          "$description": "Background 2 of the calendar."
+        },
+        "height": {
+          "$value": "{size.control.default}",
+          "$description": "Height of the calendar."
+        },
+        "label": {
+          "$value": "{color.text.muted}",
+          "$description": "Label of the calendar."
+        },
+        "font-weight-2": {
+          "$value": "{type.body.font-weight}",
+          "$description": "Font weight 2 of the calendar."
+        },
+        "background-3": {
+          "$value": "{color.surface.sunken}",
+          "$description": "Background 3 of the calendar."
+        },
+        "label-2": {
+          "$value": "{color.text.primary}",
+          "$description": "Label 2 of the calendar."
+        },
+        "label-selected": {
+          "$value": "{color.text.muted}",
+          "$description": "Label selected of the calendar."
+        },
+        "disabled-opacity": {
+          "$value": "{opacity.disabled}",
+          "$description": "Disabled opacity of the calendar."
+        },
+        "icon-size": {
+          "$value": "{size.icon}",
+          "$description": "Icon size of the calendar."
+        },
+        "background-4": {
+          "$value": "{color.action.primary.@}",
+          "$description": "Background 4 of the calendar."
+        },
+        "label-3": {
+          "$value": "{color.text.on-action}",
+          "$description": "Label 3 of the calendar."
+        },
+        "background-selected": {
+          "$value": "{color.action.primary.@}",
+          "$description": "Background selected of the calendar."
+        },
+        "label-selected-2": {
+          "$value": "{color.text.on-action}",
+          "$description": "Label selected 2 of the calendar."
+        },
+        "font-size-2": {
+          "$value": "{type.caption.font-size}",
+          "$description": "Font size 2 of the calendar."
+        }
+      },
+      "carousel": {
+        "previous": {
+          "size": {
+            "$value": "{size.control.default}",
+            "$description": "Previous size of the carousel."
+          },
+          "radius": {
+            "$value": "{radius.round}",
+            "$description": "Previous radius of the carousel."
+          }
+        },
+        "next": {
+          "size": {
+            "$value": "{size.control.default}",
+            "$description": "Next size of the carousel."
+          },
+          "radius": {
+            "$value": "{radius.round}",
+            "$description": "Next radius of the carousel."
+          }
+        }
+      },
+      "chart": {
+        "font-size": {
+          "$value": "{type.caption.font-size}",
+          "$description": "Font size of the chart."
+        },
+        "icon": {
+          "$value": "{color.text.muted}",
+          "$description": "Icon of the chart."
+        },
+        "icon-2": {
+          "$value": "{color.border.default}",
+          "$description": "Icon 2 of the chart."
+        },
+        "icon-3": {
+          "$value": "{color.surface.sunken}",
+          "$description": "Icon 3 of the chart."
+        },
+        "font-weight": {
+          "$value": "{type.label.font-weight}",
+          "$description": "Font weight of the chart."
+        },
+        "radius": {
+          "$value": "{radius.container}",
+          "$description": "Radius of the chart."
+        },
+        "border": {
+          "$value": "{color.border.default}",
+          "$description": "Border of the chart."
+        },
+        "background": {
+          "$value": "{color.surface.canvas}",
+          "$description": "Background of the chart."
+        },
+        "shadow": {
+          "$value": "{elevation.overlay}",
+          "$description": "Shadow of the chart."
+        },
+        "gap": {
+          "$value": "{space.gap.default}",
+          "$description": "Gap of the chart."
+        },
+        "label": {
+          "$value": "{color.text.muted}",
+          "$description": "Label of the chart."
+        },
+        "label-2": {
+          "$value": "{color.text.primary}",
+          "$description": "Label 2 of the chart."
+        },
+        "gap-2": {
+          "$value": "{space.gap.group}",
+          "$description": "Gap 2 of the chart."
+        }
+      },
+      "checkbox": {
+        "size": {
+          "$value": "{size.icon}",
+          "$description": "Size of the checkbox."
+        },
+        "border-width": {
+          "$value": "{border-width.default}",
+          "$description": "Border width of the checkbox."
+        },
+        "focus": {
+          "$value": "{border-width.focus}",
+          "$description": "Focus of the checkbox."
+        },
+        "disabled": {
+          "$value": "{opacity.disabled}",
+          "$description": "Disabled of the checkbox."
+        },
+        "canvas": {
+          "$value": "{color.surface.canvas}",
+          "$description": "Canvas of the checkbox."
+        }
+      },
+      "combobox": {
+        "trigger": {
+          "icon-size": {
+            "$value": "{size.icon}",
+            "$description": "Trigger icon size of the combobox."
+          },
+          "icon": {
+            "icon-size": {
+              "$value": "{size.icon}",
+              "$description": "Trigger icon icon size of the combobox."
+            },
+            "label": {
+              "$value": "{color.text.muted}",
+              "$description": "Trigger icon label of the combobox."
+            }
+          }
+        },
+        "content": {
+          "radius": {
+            "$value": "{radius.control}",
+            "$description": "Content radius of the combobox."
+          },
+          "background": {
+            "$value": "{color.surface.raised}",
+            "$description": "Content background of the combobox."
+          },
+          "label": {
+            "$value": "{color.text.primary}",
+            "$description": "Content label of the combobox."
+          },
+          "shadow": {
+            "$value": "{elevation.overlay}",
+            "$description": "Content shadow of the combobox."
+          },
+          "focus-ring": {
+            "$value": "{color.text.primary}",
+            "$description": "Content focus ring of the combobox."
+          },
+          "height": {
+            "$value": "{size.control.default}",
+            "$description": "Content height of the combobox."
+          },
+          "border": {
+            "$value": "{color.border.strong}",
+            "$description": "Content border of the combobox."
+          },
+          "background-2": {
+            "$value": "{color.border.strong}",
+            "$description": "Content background 2 of the combobox."
+          }
+        },
+        "item": {
+          "gap": {
+            "$value": "{space.gap.default}",
+            "$description": "Item gap of the combobox."
+          },
+          "radius": {
+            "$value": "{radius.badge}",
+            "$description": "Item radius of the combobox."
+          },
+          "font-size": {
+            "$value": "{type.body.font-size}",
+            "$description": "Item font size of the combobox."
+          },
+          "background": {
+            "$value": "{color.surface.sunken}",
+            "$description": "Item background of the combobox."
+          },
+          "label": {
+            "$value": "{color.text.primary}",
+            "$description": "Item label of the combobox."
+          },
+          "disabled-opacity-disabled": {
+            "$value": "{opacity.disabled}",
+            "$description": "Item disabled opacity disabled of the combobox."
+          },
+          "icon-size": {
+            "$value": "{size.icon}",
+            "$description": "Item icon size of the combobox."
+          }
+        },
+        "icon-size": {
+          "$value": "{size.icon}",
+          "$description": "Icon size of the combobox."
+        },
+        "label": {
+          "font-size": {
+            "$value": "{type.caption.font-size}",
+            "$description": "Label font size of the combobox."
+          },
+          "label": {
+            "$value": "{color.text.muted}",
+            "$description": "Label label of the combobox."
+          },
+          "padding-x": {
+            "$value": "{space.inset.control-x}",
+            "$description": "Label padding x of the combobox."
+          },
+          "font-size-2": {
+            "$value": "{type.body.font-size}",
+            "$description": "Label font size 2 of the combobox."
+          }
+        },
+        "empty": {
+          "font-size": {
+            "$value": "{type.body.font-size}",
+            "$description": "Empty font size of the combobox."
+          },
+          "label": {
+            "$value": "{color.text.muted}",
+            "$description": "Empty label of the combobox."
+          }
+        },
+        "separator": {
+          "background": {
+            "$value": "{color.border.default}",
+            "$description": "Separator background of the combobox."
+          }
+        },
+        "chips": {
+          "radius": {
+            "$value": "{radius.control}",
+            "$description": "Chips radius of the combobox."
+          },
+          "border": {
+            "$value": "{color.border.strong}",
+            "$description": "Chips border of the combobox."
+          },
+          "font-size": {
+            "$value": "{type.body.font-size}",
+            "$description": "Chips font size of the combobox."
+          },
+          "shadow": {
+            "$value": "{elevation.card}",
+            "$description": "Chips shadow of the combobox."
+          },
+          "border-focus": {
+            "$value": "{color.border.focus}",
+            "$description": "Chips border focus of the combobox."
+          },
+          "focus-ring-focus": {
+            "$value": "{color.border.focus}",
+            "$description": "Chips focus ring focus of the combobox."
+          },
+          "border-invalid": {
+            "$value": "{color.status.danger.@}",
+            "$description": "Chips border invalid of the combobox."
+          },
+          "focus-ring-invalid": {
+            "$value": "{color.status.danger.@}",
+            "$description": "Chips focus ring invalid of the combobox."
+          }
+        },
+        "chip": {
+          "gap": {
+            "$value": "{space.gap.tight}",
+            "$description": "Chip gap of the combobox."
+          },
+          "radius": {
+            "$value": "{radius.badge}",
+            "$description": "Chip radius of the combobox."
+          },
+          "background": {
+            "$value": "{color.surface.sunken}",
+            "$description": "Chip background of the combobox."
+          },
+          "font-size": {
+            "$value": "{type.caption.font-size}",
+            "$description": "Chip font size of the combobox."
+          },
+          "font-weight": {
+            "$value": "{type.label.font-weight}",
+            "$description": "Chip font weight of the combobox."
+          },
+          "label": {
+            "$value": "{color.text.primary}",
+            "$description": "Chip label of the combobox."
+          },
+          "disabled-opacity": {
+            "$value": "{opacity.disabled}",
+            "$description": "Chip disabled opacity of the combobox."
+          }
+        },
+        "disabled-opacity": {
+          "$value": "{opacity.disabled}",
+          "$description": "Disabled opacity of the combobox."
+        }
+      },
+      "command": {
+        "radius": {
+          "$value": "{radius.control}",
+          "$description": "Radius of the command."
+        },
+        "background": {
+          "$value": "{color.surface.raised}",
+          "$description": "Background of the command."
+        },
+        "label": {
+          "$value": "{color.text.primary}",
+          "$description": "Label of the command."
+        },
+        "font-weight": {
+          "$value": "{type.label.font-weight}",
+          "$description": "Font weight of the command."
+        },
+        "label-2": {
+          "$value": "{color.text.muted}",
+          "$description": "Label 2 of the command."
+        },
+        "input": {
+          "wrapper": {
+            "gap": {
+              "$value": "{space.gap.default}",
+              "$description": "Input wrapper gap of the command."
+            }
+          },
+          "radius": {
+            "$value": "{radius.control}",
+            "$description": "Input radius of the command."
+          },
+          "font-size": {
+            "$value": "{type.body.font-size}",
+            "$description": "Input font size of the command."
+          },
+          "label-placeholder": {
+            "$value": "{color.text.muted}",
+            "$description": "Input label placeholder of the command."
+          },
+          "disabled-opacity-disabled": {
+            "$value": "{opacity.disabled}",
+            "$description": "Input disabled opacity disabled of the command."
+          }
+        },
+        "icon-size": {
+          "$value": "{size.icon}",
+          "$description": "Icon size of the command."
+        },
+        "disabled-opacity": {
+          "$value": "{opacity.disabled}",
+          "$description": "Disabled opacity of the command."
+        },
+        "empty": {
+          "font-size": {
+            "$value": "{type.body.font-size}",
+            "$description": "Empty font size of the command."
+          }
+        },
+        "group": {
+          "label": {
+            "$value": "{color.text.primary}",
+            "$description": "Group label of the command."
+          },
+          "font-size": {
+            "$value": "{type.caption.font-size}",
+            "$description": "Group font size of the command."
+          },
+          "font-weight": {
+            "$value": "{type.label.font-weight}",
+            "$description": "Group font weight of the command."
+          },
+          "label-2": {
+            "$value": "{color.text.muted}",
+            "$description": "Group label 2 of the command."
+          }
+        },
+        "separator": {
+          "background": {
+            "$value": "{color.border.default}",
+            "$description": "Separator background of the command."
+          }
+        },
+        "item": {
+          "gap": {
+            "$value": "{space.gap.default}",
+            "$description": "Item gap of the command."
+          },
+          "radius": {
+            "$value": "{radius.badge}",
+            "$description": "Item radius of the command."
+          },
+          "font-size": {
+            "$value": "{type.body.font-size}",
+            "$description": "Item font size of the command."
+          },
+          "disabled-opacity-disabled": {
+            "$value": "{opacity.disabled}",
+            "$description": "Item disabled opacity disabled of the command."
+          },
+          "background-selected": {
+            "$value": "{color.surface.sunken}",
+            "$description": "Item background selected of the command."
+          },
+          "label-selected": {
+            "$value": "{color.text.primary}",
+            "$description": "Item label selected of the command."
+          },
+          "icon-size": {
+            "$value": "{size.icon}",
+            "$description": "Item icon size of the command."
+          },
+          "label": {
+            "$value": "{color.text.muted}",
+            "$description": "Item label of the command."
+          }
+        },
+        "shortcut": {
+          "font-size": {
+            "$value": "{type.caption.font-size}",
+            "$description": "Shortcut font size of the command."
+          },
+          "label": {
+            "$value": "{color.text.muted}",
+            "$description": "Shortcut label of the command."
+          }
+        }
+      },
+      "context-menu": {
+        "sub": {
+          "trigger": {
+            "radius": {
+              "$value": "{radius.badge}",
+              "$description": "Sub trigger radius of the context menu."
+            },
+            "font-size": {
+              "$value": "{type.body.font-size}",
+              "$description": "Sub trigger font size of the context menu."
+            },
+            "background-focus": {
+              "$value": "{color.surface.sunken}",
+              "$description": "Sub trigger background focus of the context menu."
+            },
+            "label-focus": {
+              "$value": "{color.text.primary}",
+              "$description": "Sub trigger label focus of the context menu."
+            },
+            "background-open": {
+              "$value": "{color.surface.sunken}",
+              "$description": "Sub trigger background open of the context menu."
+            },
+            "label-open": {
+              "$value": "{color.text.primary}",
+              "$description": "Sub trigger label open of the context menu."
+            },
+            "icon-size": {
+              "$value": "{size.icon}",
+              "$description": "Sub trigger icon size of the context menu."
+            },
+            "label": {
+              "$value": "{color.text.muted}",
+              "$description": "Sub trigger label of the context menu."
+            }
+          },
+          "content": {
+            "radius": {
+              "$value": "{radius.control}",
+              "$description": "Sub content radius of the context menu."
+            },
+            "background": {
+              "$value": "{color.surface.raised}",
+              "$description": "Sub content background of the context menu."
+            },
+            "label": {
+              "$value": "{color.text.primary}",
+              "$description": "Sub content label of the context menu."
+            },
+            "shadow": {
+              "$value": "{elevation.overlay}",
+              "$description": "Sub content shadow of the context menu."
+            }
+          }
+        },
+        "content": {
+          "radius": {
+            "$value": "{radius.control}",
+            "$description": "Content radius of the context menu."
+          },
+          "background": {
+            "$value": "{color.surface.raised}",
+            "$description": "Content background of the context menu."
+          },
+          "label": {
+            "$value": "{color.text.primary}",
+            "$description": "Content label of the context menu."
+          },
+          "shadow": {
+            "$value": "{elevation.overlay}",
+            "$description": "Content shadow of the context menu."
+          }
+        },
+        "item": {
+          "gap": {
+            "$value": "{space.gap.default}",
+            "$description": "Item gap of the context menu."
+          },
+          "radius": {
+            "$value": "{radius.badge}",
+            "$description": "Item radius of the context menu."
+          },
+          "font-size": {
+            "$value": "{type.body.font-size}",
+            "$description": "Item font size of the context menu."
+          },
+          "background-focus": {
+            "$value": "{color.surface.sunken}",
+            "$description": "Item background focus of the context menu."
+          },
+          "label-focus": {
+            "$value": "{color.text.primary}",
+            "$description": "Item label focus of the context menu."
+          },
+          "disabled-opacity-disabled": {
+            "$value": "{opacity.disabled}",
+            "$description": "Item disabled opacity disabled of the context menu."
+          },
+          "label": {
+            "$value": "{color.status.danger.@}",
+            "$description": "Item label of the context menu."
+          },
+          "background-focus-2": {
+            "$value": "{color.status.danger.@}",
+            "$description": "Item background focus 2 of the context menu."
+          },
+          "label-focus-2": {
+            "$value": "{color.status.danger.@}",
+            "$description": "Item label focus 2 of the context menu."
+          },
+          "icon-size": {
+            "$value": "{size.icon}",
+            "$description": "Item icon size of the context menu."
+          },
+          "label-2": {
+            "$value": "{color.text.muted}",
+            "$description": "Item label 2 of the context menu."
+          }
+        },
+        "checkbox": {
+          "item": {
+            "gap": {
+              "$value": "{space.gap.default}",
+              "$description": "Checkbox item gap of the context menu."
+            },
+            "radius": {
+              "$value": "{radius.badge}",
+              "$description": "Checkbox item radius of the context menu."
+            },
+            "font-size": {
+              "$value": "{type.body.font-size}",
+              "$description": "Checkbox item font size of the context menu."
+            },
+            "background-focus": {
+              "$value": "{color.surface.sunken}",
+              "$description": "Checkbox item background focus of the context menu."
+            },
+            "label-focus": {
+              "$value": "{color.text.primary}",
+              "$description": "Checkbox item label focus of the context menu."
+            },
+            "disabled-opacity-disabled": {
+              "$value": "{opacity.disabled}",
+              "$description": "Checkbox item disabled opacity disabled of the context menu."
+            },
+            "icon-size": {
+              "$value": "{size.icon}",
+              "$description": "Checkbox item icon size of the context menu."
+            }
+          }
+        },
+        "icon-size": {
+          "$value": "{size.icon}",
+          "$description": "Icon size of the context menu."
+        },
+        "radio": {
+          "item": {
+            "gap": {
+              "$value": "{space.gap.default}",
+              "$description": "Radio item gap of the context menu."
+            },
+            "radius": {
+              "$value": "{radius.badge}",
+              "$description": "Radio item radius of the context menu."
+            },
+            "font-size": {
+              "$value": "{type.body.font-size}",
+              "$description": "Radio item font size of the context menu."
+            },
+            "background-focus": {
+              "$value": "{color.surface.sunken}",
+              "$description": "Radio item background focus of the context menu."
+            },
+            "label-focus": {
+              "$value": "{color.text.primary}",
+              "$description": "Radio item label focus of the context menu."
+            },
+            "disabled-opacity-disabled": {
+              "$value": "{opacity.disabled}",
+              "$description": "Radio item disabled opacity disabled of the context menu."
+            },
+            "icon-size": {
+              "$value": "{size.icon}",
+              "$description": "Radio item icon size of the context menu."
+            }
+          }
+        },
+        "label": {
+          "font-size": {
+            "$value": "{type.body.font-size}",
+            "$description": "Label font size of the context menu."
+          },
+          "font-weight": {
+            "$value": "{type.label.font-weight}",
+            "$description": "Label font weight of the context menu."
+          },
+          "label": {
+            "$value": "{color.text.primary}",
+            "$description": "Label label of the context menu."
+          }
+        },
+        "separator": {
+          "background": {
+            "$value": "{color.border.default}",
+            "$description": "Separator background of the context menu."
+          }
+        },
+        "shortcut": {
+          "font-size": {
+            "$value": "{type.caption.font-size}",
+            "$description": "Shortcut font size of the context menu."
+          },
+          "label": {
+            "$value": "{color.text.muted}",
+            "$description": "Shortcut label of the context menu."
+          }
+        }
+      },
+      "data-table": {
+        "gap": {
+          "$value": "{space.gap.tight}",
+          "$description": "Gap of the data table."
+        },
+        "label-hover": {
+          "$value": "{color.text.primary}",
+          "$description": "Label hover of the data table."
+        },
+        "gap-2": {
+          "$value": "{space.gap.default}",
+          "$description": "Gap 2 of the data table."
+        },
+        "radius": {
+          "$value": "{radius.badge}",
+          "$description": "Radius of the data table."
+        },
+        "background-hover": {
+          "$value": "{color.surface.sunken}",
+          "$description": "Background hover of the data table."
+        },
+        "label": {
+          "$value": "{color.text.muted}",
+          "$description": "Label of the data table."
+        }
+      },
+      "date-picker": {
+        "font-weight": {
+          "$value": "{type.body.font-weight}",
+          "$description": "Font weight of the date picker."
+        },
+        "label": {
+          "$value": "{color.text.muted}",
+          "$description": "Label of the date picker."
+        }
+      },
+      "dialog": {
+        "content": {
+          "gap": {
+            "$value": "{space.gap.group}",
+            "$description": "Content gap of the dialog."
+          },
+          "padding": {
+            "$value": "{space.inset.container}",
+            "$description": "Content padding of the dialog."
+          },
+          "label": {
+            "$value": "{color.text.primary}",
+            "$description": "Content label of the dialog."
+          }
+        },
+        "border-width": {
+          "$value": "{border-width.default}",
+          "$description": "Border width of the dialog."
+        },
+        "border": {
+          "$value": "{color.border.default}",
+          "$description": "Border of the dialog."
+        },
+        "radius": {
+          "$value": "{radius.badge}",
+          "$description": "Radius of the dialog."
+        },
+        "label": {
+          "$value": "{color.text.secondary}",
+          "$description": "Label of the dialog."
+        },
+        "sunken": {
+          "$value": "{color.surface.sunken}",
+          "$description": "Sunken of the dialog."
+        },
+        "size": {
+          "$value": "{size.icon}",
+          "$description": "Size of the dialog."
+        },
+        "gap": {
+          "$value": "{space.gap.tight}",
+          "$description": "Gap of the dialog."
+        },
+        "gap-2": {
+          "$value": "{space.gap.default}",
+          "$description": "Gap 2 of the dialog."
+        },
+        "font-family": {
+          "$value": "{type.heading.font-family}",
+          "$description": "Font family of the dialog."
+        },
+        "font-size": {
+          "$value": "{type.heading.font-size}",
+          "$description": "Font size of the dialog."
+        },
+        "font-weight": {
+          "$value": "{type.heading.font-weight}",
+          "$description": "Font weight of the dialog."
+        },
+        "font-size-2": {
+          "$value": "{type.body.font-size}",
+          "$description": "Font size 2 of the dialog."
+        }
+      },
+      "drawer": {
+        "overlay": {
+          "background": {
+            "$value": "{color.surface.scrim}",
+            "$description": "Overlay background of the drawer."
+          }
+        },
+        "content": {
+          "background": {
+            "$value": "{color.surface.canvas}",
+            "$description": "Content background of the drawer."
+          }
+        },
+        "radius": {
+          "$value": "{radius.round}",
+          "$description": "Radius of the drawer."
+        },
+        "background": {
+          "$value": "{color.surface.sunken}",
+          "$description": "Background of the drawer."
+        },
+        "header": {
+          "padding": {
+            "$value": "{space.inset.container}",
+            "$description": "Header padding of the drawer."
+          }
+        },
+        "footer": {
+          "gap": {
+            "$value": "{space.gap.default}",
+            "$description": "Footer gap of the drawer."
+          },
+          "padding": {
+            "$value": "{space.inset.container}",
+            "$description": "Footer padding of the drawer."
+          }
+        },
+        "title": {
+          "font-weight": {
+            "$value": "{type.title.font-weight}",
+            "$description": "Title font weight of the drawer."
+          },
+          "label": {
+            "$value": "{color.text.primary}",
+            "$description": "Title label of the drawer."
+          }
+        },
+        "description": {
+          "font-size": {
+            "$value": "{type.body.font-size}",
+            "$description": "Description font size of the drawer."
+          },
+          "label": {
+            "$value": "{color.text.muted}",
+            "$description": "Description label of the drawer."
+          }
+        }
+      },
+      "dropdown-menu": {
+        "content": {
+          "label": {
+            "$value": "{color.text.primary}",
+            "$description": "Content label of the dropdown menu."
+          },
+          "border-width": {
+            "$value": "{border-width.default}",
+            "$description": "Content border width of the dropdown menu."
+          },
+          "border": {
+            "$value": "{color.border.default}",
+            "$description": "Content border of the dropdown menu."
+          }
+        },
+        "item": {
+          "gap": {
+            "$value": "{space.gap.default}",
+            "$description": "Item gap of the dropdown menu."
+          },
+          "padding-x": {
+            "$value": "{space.inset.cell-x}",
+            "$description": "Item padding x of the dropdown menu."
+          },
+          "radius": {
+            "$value": "{radius.badge}",
+            "$description": "Item radius of the dropdown menu."
+          },
+          "font-size": {
+            "$value": "{type.body.font-size}",
+            "$description": "Item font size of the dropdown menu."
+          },
+          "sunken": {
+            "$value": "{color.surface.sunken}",
+            "$description": "Item sunken of the dropdown menu."
+          },
+          "disabled": {
+            "$value": "{opacity.disabled}",
+            "$description": "Item disabled of the dropdown menu."
+          },
+          "icon": {
+            "$value": "{size.icon}",
+            "$description": "Item icon of the dropdown menu."
+          }
+        },
+        "label": {
+          "$value": "{color.status.danger.@}",
+          "$description": "Label of the dropdown menu."
+        },
+        "background": {
+          "$value": "{color.border.default}",
+          "$description": "Background of the dropdown menu."
+        }
+      },
+      "empty": {
+        "gap": {
+          "$value": "{space.gap.section}",
+          "$description": "Gap of the empty."
+        },
+        "radius": {
+          "$value": "{radius.container}",
+          "$description": "Radius of the empty."
+        },
+        "header": {
+          "gap": {
+            "$value": "{space.gap.default}",
+            "$description": "Header gap of the empty."
+          }
+        },
+        "icon": {
+          "radius": {
+            "$value": "{radius.container}",
+            "$description": "Icon radius of the empty."
+          },
+          "background": {
+            "$value": "{color.surface.sunken}",
+            "$description": "Icon background of the empty."
+          },
+          "label": {
+            "$value": "{color.text.primary}",
+            "$description": "Icon label of the empty."
+          }
+        },
+        "title": {
+          "font-size": {
+            "$value": "{type.heading.font-size}",
+            "$description": "Title font size of the empty."
+          },
+          "font-weight": {
+            "$value": "{type.label.font-weight}",
+            "$description": "Title font weight of the empty."
+          }
+        },
+        "description": {
+          "font-size": {
+            "$value": "{type.body.font-size}",
+            "$description": "Description font size of the empty."
+          },
+          "label": {
+            "$value": "{color.text.muted}",
+            "$description": "Description label of the empty."
+          },
+          "label-2": {
+            "$value": "{color.action.primary.@}",
+            "$description": "Description label 2 of the empty."
+          }
+        },
+        "content": {
+          "gap": {
+            "$value": "{space.gap.group}",
+            "$description": "Content gap of the empty."
+          },
+          "font-size": {
+            "$value": "{type.body.font-size}",
+            "$description": "Content font size of the empty."
+          }
+        }
+      },
+      "field": {
+        "set": {
+          "gap": {
+            "$value": "{space.gap.section}",
+            "$description": "Set gap of the field."
+          }
+        },
+        "legend": {
+          "font-weight": {
+            "$value": "{type.label.font-weight}",
+            "$description": "Legend font weight of the field."
+          },
+          "font-size": {
+            "$value": "{type.body.font-size}",
+            "$description": "Legend font size of the field."
+          }
+        },
+        "group": {
+          "gap": {
+            "$value": "{space.gap.group}",
+            "$description": "Group gap of the field."
+          }
+        },
+        "label-invalid": {
+          "$value": "{color.status.danger.@}",
+          "$description": "Label invalid of the field."
+        },
+        "label": {
+          "gap": {
+            "$value": "{space.gap.default}",
+            "$description": "Label gap of the field."
+          },
+          "disabled-opacity-disabled": {
+            "$value": "{opacity.disabled}",
+            "$description": "Label disabled opacity disabled of the field."
+          },
+          "radius": {
+            "$value": "{radius.control}",
+            "$description": "Label radius of the field."
+          },
+          "font-size": {
+            "$value": "{type.body.font-size}",
+            "$description": "Label font size of the field."
+          },
+          "font-weight": {
+            "$value": "{type.label.font-weight}",
+            "$description": "Label font weight of the field."
+          },
+          "@": {
+            "$value": "{color.text.muted}",
+            "$description": "Label of the field."
+          }
+        },
+        "border-checked": {
+          "$value": "{color.action.primary.@}",
+          "$description": "Border checked of the field."
+        },
+        "background-checked": {
+          "$value": "{color.action.primary.@}",
+          "$description": "Background checked of the field."
+        },
+        "description": {
+          "font-size": {
+            "$value": "{type.body.font-size}",
+            "$description": "Description font size of the field."
+          },
+          "font-weight": {
+            "$value": "{type.body.font-weight}",
+            "$description": "Description font weight of the field."
+          },
+          "label": {
+            "$value": "{color.text.muted}",
+            "$description": "Description label of the field."
+          },
+          "label-2": {
+            "$value": "{color.action.primary.@}",
+            "$description": "Description label 2 of the field."
+          }
+        },
+        "separator": {
+          "font-size": {
+            "$value": "{type.body.font-size}",
+            "$description": "Separator font size of the field."
+          }
+        },
+        "background": {
+          "$value": "{color.surface.canvas}",
+          "$description": "Background of the field."
+        },
+        "gap": {
+          "$value": "{space.gap.tight}",
+          "$description": "Gap of the field."
+        },
+        "error": {
+          "font-size": {
+            "$value": "{type.body.font-size}",
+            "$description": "Error font size of the field."
+          },
+          "font-weight": {
+            "$value": "{type.body.font-weight}",
+            "$description": "Error font weight of the field."
+          },
+          "label": {
+            "$value": "{color.status.danger.@}",
+            "$description": "Error label of the field."
+          }
+        }
+      },
+      "form": {
+        "item": {
+          "gap": {
+            "$value": "{space.gap.default}",
+            "$description": "Item gap of the form."
+          }
+        },
+        "label": {
+          "label": {
+            "$value": "{color.status.danger.@}",
+            "$description": "Label label of the form."
+          }
+        },
+        "description": {
+          "font-size": {
+            "$value": "{type.body.font-size}",
+            "$description": "Description font size of the form."
+          },
+          "label": {
+            "$value": "{color.text.muted}",
+            "$description": "Description label of the form."
+          }
+        },
+        "message": {
+          "font-size": {
+            "$value": "{type.body.font-size}",
+            "$description": "Message font size of the form."
+          },
+          "label": {
+            "$value": "{color.status.danger.@}",
+            "$description": "Message label of the form."
+          }
+        }
+      },
+      "hover-card": {
+        "content": {
+          "radius": {
+            "$value": "{radius.control}",
+            "$description": "Content radius of the hover card."
+          },
+          "background": {
+            "$value": "{color.surface.raised}",
+            "$description": "Content background of the hover card."
+          },
+          "padding": {
+            "$value": "{space.inset.container}",
+            "$description": "Content padding of the hover card."
+          },
+          "label": {
+            "$value": "{color.text.primary}",
+            "$description": "Content label of the hover card."
+          },
+          "shadow": {
+            "$value": "{elevation.overlay}",
+            "$description": "Content shadow of the hover card."
+          }
+        }
+      },
+      "input-group": {
+        "radius": {
+          "$value": "{radius.control}",
+          "$description": "Radius of the input group."
+        },
+        "border": {
+          "$value": "{color.border.strong}",
+          "$description": "Border of the input group."
+        },
+        "shadow": {
+          "$value": "{elevation.card}",
+          "$description": "Shadow of the input group."
+        },
+        "padding-bottom": {
+          "$value": "{space.inset.control-x}",
+          "$description": "Padding bottom of the input group."
+        },
+        "padding-top": {
+          "$value": "{space.inset.control-x}",
+          "$description": "Padding top of the input group."
+        },
+        "border-2": {
+          "$value": "{color.border.focus}",
+          "$description": "Border 2 of the input group."
+        },
+        "focus-ring": {
+          "$value": "{color.border.focus}",
+          "$description": "Focus ring of the input group."
+        },
+        "border-invalid": {
+          "$value": "{color.status.danger.@}",
+          "$description": "Border invalid of the input group."
+        },
+        "focus-ring-invalid": {
+          "$value": "{color.status.danger.@}",
+          "$description": "Focus ring invalid of the input group."
+        },
+        "gap": {
+          "$value": "{space.gap.default}",
+          "$description": "Gap of the input group."
+        },
+        "font-size": {
+          "$value": "{type.body.font-size}",
+          "$description": "Font size of the input group."
+        },
+        "font-weight": {
+          "$value": "{type.label.font-weight}",
+          "$description": "Font weight of the input group."
+        },
+        "label": {
+          "$value": "{color.text.muted}",
+          "$description": "Label of the input group."
+        },
+        "disabled-opacity-disabled": {
+          "$value": "{opacity.disabled}",
+          "$description": "Disabled opacity disabled of the input group."
+        },
+        "icon-size": {
+          "$value": "{size.icon}",
+          "$description": "Icon size of the input group."
+        },
+        "inline": {
+          "start": {
+            "padding-left": {
+              "$value": "{space.inset.control-x}",
+              "$description": "Inline start padding left of the input group."
+            }
+          },
+          "end": {
+            "padding-right": {
+              "$value": "{space.inset.control-x}",
+              "$description": "Inline end padding right of the input group."
+            }
+          }
+        },
+        "block": {
+          "start": {
+            "padding-x": {
+              "$value": "{space.inset.control-x}",
+              "$description": "Block start padding x of the input group."
+            },
+            "padding-top": {
+              "$value": "{space.inset.control-x}",
+              "$description": "Block start padding top of the input group."
+            },
+            "padding-bottom": {
+              "$value": "{space.inset.control-x}",
+              "$description": "Block start padding bottom of the input group."
+            }
+          },
+          "end": {
+            "padding-x": {
+              "$value": "{space.inset.control-x}",
+              "$description": "Block end padding x of the input group."
+            },
+            "padding-bottom": {
+              "$value": "{space.inset.control-x}",
+              "$description": "Block end padding bottom of the input group."
+            },
+            "padding-top": {
+              "$value": "{space.inset.control-x}",
+              "$description": "Block end padding top of the input group."
+            }
+          }
+        },
+        "xs": {
+          "height": {
+            "$value": "{size.control.compact}",
+            "$description": "Xs height of the input group."
+          },
+          "gap": {
+            "$value": "{space.gap.tight}",
+            "$description": "Xs gap of the input group."
+          }
+        },
+        "sm": {
+          "height": {
+            "$value": "{size.control.default}",
+            "$description": "Sm height of the input group."
+          },
+          "radius": {
+            "$value": "{radius.control}",
+            "$description": "Sm radius of the input group."
+          }
+        },
+        "icon": {
+          "sm": {
+            "size": {
+              "$value": "{size.control.default}",
+              "$description": "Icon sm size of the input group."
+            }
+          }
+        },
+        "control": {
+          "padding-y": {
+            "$value": "{space.inset.control-x}",
+            "$description": "Control padding y of the input group."
+          }
+        }
+      },
+      "input-otp": {
+        "gap": {
+          "$value": "{space.gap.default}",
+          "$description": "Gap of the input otp."
+        },
+        "disabled-opacity": {
+          "$value": "{opacity.disabled}",
+          "$description": "Disabled opacity of the input otp."
+        },
+        "slot": {
+          "border": {
+            "$value": "{color.border.strong}",
+            "$description": "Slot border of the input otp."
+          },
+          "font-size": {
+            "$value": "{type.body.font-size}",
+            "$description": "Slot font size of the input otp."
+          },
+          "shadow": {
+            "$value": "{elevation.card}",
+            "$description": "Slot shadow of the input otp."
+          },
+          "border-invalid": {
+            "$value": "{color.status.danger.@}",
+            "$description": "Slot border invalid of the input otp."
+          },
+          "border-2": {
+            "$value": "{color.border.focus}",
+            "$description": "Slot border 2 of the input otp."
+          },
+          "focus-ring": {
+            "$value": "{color.border.focus}",
+            "$description": "Slot focus ring of the input otp."
+          },
+          "focus-ring-invalid": {
+            "$value": "{color.status.danger.@}",
+            "$description": "Slot focus ring invalid of the input otp."
+          }
+        },
+        "height": {
+          "$value": "{size.icon}",
+          "$description": "Height of the input otp."
+        },
+        "background": {
+          "$value": "{color.text.primary}",
+          "$description": "Background of the input otp."
+        },
+        "duration": {
+          "$value": "{motion.duration.feedback}",
+          "$description": "Duration of the input otp."
+        }
+      },
+      "item": {
+        "radius": {
+          "$value": "{radius.control}",
+          "$description": "Radius of the item."
+        },
+        "font-size": {
+          "$value": "{type.body.font-size}",
+          "$description": "Font size of the item."
+        },
+        "duration": {
+          "$value": "{motion.duration.feedback}",
+          "$description": "Duration of the item."
+        },
+        "border-focus": {
+          "$value": "{color.border.focus}",
+          "$description": "Border focus of the item."
+        },
+        "background-hover": {
+          "$value": "{color.surface.sunken}",
+          "$description": "Background hover of the item."
+        },
+        "focus": {
+          "$value": "{border-width.focus}",
+          "$description": "Focus of the item."
+        },
+        "focus-ring-focus": {
+          "$value": "{color.border.focus}",
+          "$description": "Focus ring focus of the item."
+        },
+        "focus-ring-offset-focus": {
+          "$value": "{color.surface.canvas}",
+          "$description": "Focus ring offset focus of the item."
+        },
+        "outline": {
+          "border": {
+            "$value": "{color.border.default}",
+            "$description": "Outline border of the item."
+          }
+        },
+        "muted": {
+          "background": {
+            "$value": "{color.surface.sunken}",
+            "$description": "Muted background of the item."
+          }
+        },
+        "default": {
+          "gap": {
+            "$value": "{space.gap.group}",
+            "$description": "Default gap of the item."
+          },
+          "padding": {
+            "$value": "{space.inset.container}",
+            "$description": "Default padding of the item."
+          }
+        },
+        "sm": {
+          "padding-x": {
+            "$value": "{space.inset.container}",
+            "$description": "Sm padding x of the item."
+          }
+        },
+        "gap": {
+          "$value": "{space.gap.default}",
+          "$description": "Gap of the item."
+        },
+        "icon": {
+          "size": {
+            "$value": "{size.control.default}",
+            "$description": "Icon size of the item."
+          },
+          "radius": {
+            "$value": "{radius.badge}",
+            "$description": "Icon radius of the item."
+          },
+          "background": {
+            "$value": "{color.surface.sunken}",
+            "$description": "Icon background of the item."
+          },
+          "icon-size": {
+            "$value": "{size.icon}",
+            "$description": "Icon icon size of the item."
+          }
+        },
+        "image": {
+          "radius": {
+            "$value": "{radius.badge}",
+            "$description": "Image radius of the item."
+          }
+        },
+        "content": {
+          "gap": {
+            "$value": "{space.gap.tight}",
+            "$description": "Content gap of the item."
+          }
+        },
+        "title": {
+          "gap": {
+            "$value": "{space.gap.default}",
+            "$description": "Title gap of the item."
+          },
+          "font-size": {
+            "$value": "{type.body.font-size}",
+            "$description": "Title font size of the item."
+          },
+          "font-weight": {
+            "$value": "{type.label.font-weight}",
+            "$description": "Title font weight of the item."
+          }
+        },
+        "description": {
+          "font-size": {
+            "$value": "{type.body.font-size}",
+            "$description": "Description font size of the item."
+          },
+          "font-weight": {
+            "$value": "{type.body.font-weight}",
+            "$description": "Description font weight of the item."
+          },
+          "label": {
+            "$value": "{color.text.muted}",
+            "$description": "Description label of the item."
+          },
+          "label-2": {
+            "$value": "{color.action.primary.@}",
+            "$description": "Description label 2 of the item."
+          }
+        },
+        "actions": {
+          "gap": {
+            "$value": "{space.gap.default}",
+            "$description": "Actions gap of the item."
+          }
+        },
+        "header": {
+          "gap": {
+            "$value": "{space.gap.default}",
+            "$description": "Header gap of the item."
+          }
+        },
+        "footer": {
+          "gap": {
+            "$value": "{space.gap.default}",
+            "$description": "Footer gap of the item."
+          }
+        }
+      },
+      "kbd": {
+        "gap": {
+          "$value": "{space.gap.tight}",
+          "$description": "Gap of the kbd."
+        },
+        "radius": {
+          "$value": "{radius.badge}",
+          "$description": "Radius of the kbd."
+        },
+        "background": {
+          "$value": "{color.surface.sunken}",
+          "$description": "Background of the kbd."
+        },
+        "font-size": {
+          "$value": "{type.caption.font-size}",
+          "$description": "Font size of the kbd."
+        },
+        "font-weight": {
+          "$value": "{type.label.font-weight}",
+          "$description": "Font weight of the kbd."
+        },
+        "label": {
+          "$value": "{color.text.muted}",
+          "$description": "Label of the kbd."
+        },
+        "background-2": {
+          "$value": "{color.surface.canvas}",
+          "$description": "Background 2 of the kbd."
+        },
+        "label-2": {
+          "$value": "{color.surface.canvas}",
+          "$description": "Label 2 of the kbd."
+        },
+        "group": {
+          "gap": {
+            "$value": "{space.gap.tight}",
+            "$description": "Group gap of the kbd."
+          }
+        }
+      },
+      "label": {
+        "gap": {
+          "$value": "{space.gap.default}",
+          "$description": "Gap of the label."
+        },
+        "label": {
+          "$value": "{color.text.primary}",
+          "$description": "Label of the label."
+        },
+        "font-family": {
+          "$value": "{type.label.font-family}",
+          "$description": "Font family of the label."
+        },
+        "font-size": {
+          "$value": "{type.label.font-size}",
+          "$description": "Font size of the label."
+        },
+        "font-weight": {
+          "$value": "{type.label.font-weight}",
+          "$description": "Font weight of the label."
+        },
+        "line-height": {
+          "$value": "{type.label.line-height}",
+          "$description": "Line height of the label."
+        }
+      },
+      "marker": {
+        "font-size": {
+          "$value": "{type.caption.font-size}",
+          "$description": "Font size of the marker."
+        },
+        "label": {
+          "$value": "{color.text.muted}",
+          "$description": "Label of the marker."
+        },
+        "background": {
+          "$value": "{color.border.default}",
+          "$description": "Background of the marker."
+        }
+      },
+      "menubar": {
+        "gap": {
+          "$value": "{space.gap.tight}",
+          "$description": "Gap of the menubar."
+        },
+        "radius": {
+          "$value": "{radius.control}",
+          "$description": "Radius of the menubar."
+        },
+        "background": {
+          "$value": "{color.surface.canvas}",
+          "$description": "Background of the menubar."
+        },
+        "shadow": {
+          "$value": "{elevation.card}",
+          "$description": "Shadow of the menubar."
+        },
+        "trigger": {
+          "radius": {
+            "$value": "{radius.badge}",
+            "$description": "Trigger radius of the menubar."
+          },
+          "font-size": {
+            "$value": "{type.body.font-size}",
+            "$description": "Trigger font size of the menubar."
+          },
+          "font-weight": {
+            "$value": "{type.label.font-weight}",
+            "$description": "Trigger font weight of the menubar."
+          },
+          "background-focus": {
+            "$value": "{color.surface.sunken}",
+            "$description": "Trigger background focus of the menubar."
+          },
+          "label-focus": {
+            "$value": "{color.text.primary}",
+            "$description": "Trigger label focus of the menubar."
+          },
+          "background-open": {
+            "$value": "{color.surface.sunken}",
+            "$description": "Trigger background open of the menubar."
+          },
+          "label-open": {
+            "$value": "{color.text.primary}",
+            "$description": "Trigger label open of the menubar."
+          }
+        },
+        "content": {
+          "radius": {
+            "$value": "{radius.control}",
+            "$description": "Content radius of the menubar."
+          },
+          "background": {
+            "$value": "{color.surface.raised}",
+            "$description": "Content background of the menubar."
+          },
+          "label": {
+            "$value": "{color.text.primary}",
+            "$description": "Content label of the menubar."
+          },
+          "shadow": {
+            "$value": "{elevation.overlay}",
+            "$description": "Content shadow of the menubar."
+          }
+        },
+        "item": {
+          "gap": {
+            "$value": "{space.gap.default}",
+            "$description": "Item gap of the menubar."
+          },
+          "radius": {
+            "$value": "{radius.badge}",
+            "$description": "Item radius of the menubar."
+          },
+          "font-size": {
+            "$value": "{type.body.font-size}",
+            "$description": "Item font size of the menubar."
+          },
+          "background-focus": {
+            "$value": "{color.surface.sunken}",
+            "$description": "Item background focus of the menubar."
+          },
+          "label-focus": {
+            "$value": "{color.text.primary}",
+            "$description": "Item label focus of the menubar."
+          },
+          "disabled-opacity-disabled": {
+            "$value": "{opacity.disabled}",
+            "$description": "Item disabled opacity disabled of the menubar."
+          },
+          "label": {
+            "$value": "{color.status.danger.@}",
+            "$description": "Item label of the menubar."
+          },
+          "background-focus-2": {
+            "$value": "{color.status.danger.@}",
+            "$description": "Item background focus 2 of the menubar."
+          },
+          "label-focus-2": {
+            "$value": "{color.status.danger.@}",
+            "$description": "Item label focus 2 of the menubar."
+          },
+          "icon-size": {
+            "$value": "{size.icon}",
+            "$description": "Item icon size of the menubar."
+          },
+          "label-2": {
+            "$value": "{color.text.muted}",
+            "$description": "Item label 2 of the menubar."
+          }
+        },
+        "checkbox": {
+          "item": {
+            "gap": {
+              "$value": "{space.gap.default}",
+              "$description": "Checkbox item gap of the menubar."
+            },
+            "radius": {
+              "$value": "{radius.badge}",
+              "$description": "Checkbox item radius of the menubar."
+            },
+            "font-size": {
+              "$value": "{type.body.font-size}",
+              "$description": "Checkbox item font size of the menubar."
+            },
+            "background-focus": {
+              "$value": "{color.surface.sunken}",
+              "$description": "Checkbox item background focus of the menubar."
+            },
+            "label-focus": {
+              "$value": "{color.text.primary}",
+              "$description": "Checkbox item label focus of the menubar."
+            },
+            "disabled-opacity-disabled": {
+              "$value": "{opacity.disabled}",
+              "$description": "Checkbox item disabled opacity disabled of the menubar."
+            },
+            "icon-size": {
+              "$value": "{size.icon}",
+              "$description": "Checkbox item icon size of the menubar."
+            }
+          }
+        },
+        "icon-size": {
+          "$value": "{size.icon}",
+          "$description": "Icon size of the menubar."
+        },
+        "radio": {
+          "item": {
+            "gap": {
+              "$value": "{space.gap.default}",
+              "$description": "Radio item gap of the menubar."
+            },
+            "radius": {
+              "$value": "{radius.badge}",
+              "$description": "Radio item radius of the menubar."
+            },
+            "font-size": {
+              "$value": "{type.body.font-size}",
+              "$description": "Radio item font size of the menubar."
+            },
+            "background-focus": {
+              "$value": "{color.surface.sunken}",
+              "$description": "Radio item background focus of the menubar."
+            },
+            "label-focus": {
+              "$value": "{color.text.primary}",
+              "$description": "Radio item label focus of the menubar."
+            },
+            "disabled-opacity-disabled": {
+              "$value": "{opacity.disabled}",
+              "$description": "Radio item disabled opacity disabled of the menubar."
+            },
+            "icon-size": {
+              "$value": "{size.icon}",
+              "$description": "Radio item icon size of the menubar."
+            }
+          }
+        },
+        "label": {
+          "font-size": {
+            "$value": "{type.body.font-size}",
+            "$description": "Label font size of the menubar."
+          },
+          "font-weight": {
+            "$value": "{type.label.font-weight}",
+            "$description": "Label font weight of the menubar."
+          }
+        },
+        "separator": {
+          "background": {
+            "$value": "{color.border.default}",
+            "$description": "Separator background of the menubar."
+          }
+        },
+        "shortcut": {
+          "font-size": {
+            "$value": "{type.caption.font-size}",
+            "$description": "Shortcut font size of the menubar."
+          },
+          "label": {
+            "$value": "{color.text.muted}",
+            "$description": "Shortcut label of the menubar."
+          }
+        },
+        "sub": {
+          "trigger": {
+            "radius": {
+              "$value": "{radius.badge}",
+              "$description": "Sub trigger radius of the menubar."
+            },
+            "font-size": {
+              "$value": "{type.body.font-size}",
+              "$description": "Sub trigger font size of the menubar."
+            },
+            "background-focus": {
+              "$value": "{color.surface.sunken}",
+              "$description": "Sub trigger background focus of the menubar."
+            },
+            "label-focus": {
+              "$value": "{color.text.primary}",
+              "$description": "Sub trigger label focus of the menubar."
+            },
+            "background-open": {
+              "$value": "{color.surface.sunken}",
+              "$description": "Sub trigger background open of the menubar."
+            },
+            "label-open": {
+              "$value": "{color.text.primary}",
+              "$description": "Sub trigger label open of the menubar."
+            }
+          },
+          "content": {
+            "radius": {
+              "$value": "{radius.control}",
+              "$description": "Sub content radius of the menubar."
+            },
+            "background": {
+              "$value": "{color.surface.raised}",
+              "$description": "Sub content background of the menubar."
+            },
+            "label": {
+              "$value": "{color.text.primary}",
+              "$description": "Sub content label of the menubar."
+            },
+            "shadow": {
+              "$value": "{elevation.overlay}",
+              "$description": "Sub content shadow of the menubar."
+            }
+          }
+        },
+        "height": {
+          "$value": "{size.icon}",
+          "$description": "Height of the menubar."
+        }
+      },
+      "message-scroller": {
+        "gap": {
+          "$value": "{space.gap.group}",
+          "$description": "Gap of the message scroller."
+        },
+        "radius": {
+          "$value": "{radius.control}",
+          "$description": "Radius of the message scroller."
+        },
+        "focus": {
+          "$value": "{border-width.focus}",
+          "$description": "Focus of the message scroller."
+        },
+        "focus-ring-focus": {
+          "$value": "{color.border.focus}",
+          "$description": "Focus ring focus of the message scroller."
+        },
+        "focus-ring-offset-focus": {
+          "$value": "{color.surface.canvas}",
+          "$description": "Focus ring offset focus of the message scroller."
+        }
+      },
+      "message": {
+        "font-size": {
+          "$value": "{type.body.font-size}",
+          "$description": "Font size of the message."
+        },
+        "gap": {
+          "$value": "{space.gap.tight}",
+          "$description": "Gap of the message."
+        },
+        "gap-x": {
+          "$value": "{space.gap.default}",
+          "$description": "Gap x of the message."
+        },
+        "author": {
+          "font-weight": {
+            "$value": "{type.label.font-weight}",
+            "$description": "Author font weight of the message."
+          }
+        },
+        "time": {
+          "font-size": {
+            "$value": "{type.caption.font-size}",
+            "$description": "Time font size of the message."
+          },
+          "label": {
+            "$value": "{color.text.muted}",
+            "$description": "Time label of the message."
+          }
+        }
+      },
+      "native-select": {
+        "disabled-opacity": {
+          "$value": "{opacity.disabled}",
+          "$description": "Disabled opacity of the native select."
+        },
+        "radius": {
+          "$value": "{radius.control}",
+          "$description": "Radius of the native select."
+        },
+        "border": {
+          "$value": "{color.border.strong}",
+          "$description": "Border of the native select."
+        },
+        "padding-x": {
+          "$value": "{space.inset.control-x}",
+          "$description": "Padding x of the native select."
+        },
+        "font-size": {
+          "$value": "{type.body.font-size}",
+          "$description": "Font size of the native select."
+        },
+        "shadow": {
+          "$value": "{elevation.card}",
+          "$description": "Shadow of the native select."
+        },
+        "background": {
+          "$value": "{color.action.primary.@}",
+          "$description": "Background of the native select."
+        },
+        "label": {
+          "$value": "{color.text.on-action}",
+          "$description": "Label of the native select."
+        },
+        "label-placeholder": {
+          "$value": "{color.text.muted}",
+          "$description": "Label placeholder of the native select."
+        },
+        "height": {
+          "$value": "{size.control.default}",
+          "$description": "Height of the native select."
+        },
+        "border-focus": {
+          "$value": "{color.border.focus}",
+          "$description": "Border focus of the native select."
+        },
+        "focus": {
+          "$value": "{border-width.focus}",
+          "$description": "Focus of the native select."
+        },
+        "focus-ring-focus": {
+          "$value": "{color.border.focus}",
+          "$description": "Focus ring focus of the native select."
+        },
+        "focus-ring-offset-focus": {
+          "$value": "{color.surface.canvas}",
+          "$description": "Focus ring offset focus of the native select."
+        },
+        "border-invalid": {
+          "$value": "{color.status.danger.@}",
+          "$description": "Border invalid of the native select."
+        },
+        "focus-ring-invalid": {
+          "$value": "{color.status.danger.@}",
+          "$description": "Focus ring invalid of the native select."
+        },
+        "icon-size": {
+          "$value": "{size.icon}",
+          "$description": "Icon size of the native select."
+        },
+        "label-2": {
+          "$value": "{color.text.muted}",
+          "$description": "Label 2 of the native select."
+        }
+      },
+      "navigation-menu": {
+        "list": {
+          "gap": {
+            "$value": "{space.gap.tight}",
+            "$description": "List gap of the navigation menu."
+          }
+        },
+        "radius": {
+          "$value": "{radius.control}",
+          "$description": "Radius of the navigation menu."
+        },
+        "background": {
+          "$value": "{color.surface.canvas}",
+          "$description": "Background of the navigation menu."
+        },
+        "padding-x": {
+          "$value": "{space.inset.container}",
+          "$description": "Padding x of the navigation menu."
+        },
+        "font-size": {
+          "$value": "{type.body.font-size}",
+          "$description": "Font size of the navigation menu."
+        },
+        "font-weight": {
+          "$value": "{type.label.font-weight}",
+          "$description": "Font weight of the navigation menu."
+        },
+        "background-hover": {
+          "$value": "{color.surface.sunken}",
+          "$description": "Background hover of the navigation menu."
+        },
+        "label-hover": {
+          "$value": "{color.text.primary}",
+          "$description": "Label hover of the navigation menu."
+        },
+        "background-focus": {
+          "$value": "{color.surface.sunken}",
+          "$description": "Background focus of the navigation menu."
+        },
+        "label-focus": {
+          "$value": "{color.text.primary}",
+          "$description": "Label focus of the navigation menu."
+        },
+        "disabled-opacity-disabled": {
+          "$value": "{opacity.disabled}",
+          "$description": "Disabled opacity disabled of the navigation menu."
+        },
+        "background-open": {
+          "$value": "{color.surface.sunken}",
+          "$description": "Background open of the navigation menu."
+        },
+        "label-open": {
+          "$value": "{color.text.primary}",
+          "$description": "Label open of the navigation menu."
+        },
+        "background-open-hover": {
+          "$value": "{color.surface.sunken}",
+          "$description": "Background open hover of the navigation menu."
+        },
+        "background-open-focus": {
+          "$value": "{color.surface.sunken}",
+          "$description": "Background open focus of the navigation menu."
+        },
+        "focus": {
+          "$value": "{border-width.focus}",
+          "$description": "Focus of the navigation menu."
+        },
+        "focus-ring-focus": {
+          "$value": "{color.border.focus}",
+          "$description": "Focus ring focus of the navigation menu."
+        },
+        "focus-ring-offset-focus": {
+          "$value": "{color.surface.canvas}",
+          "$description": "Focus ring offset focus of the navigation menu."
+        },
+        "duration": {
+          "$value": "{motion.duration.feedback}",
+          "$description": "Duration of the navigation menu."
+        },
+        "background-2": {
+          "$value": "{color.surface.raised}",
+          "$description": "Background 2 of the navigation menu."
+        },
+        "label": {
+          "$value": "{color.text.primary}",
+          "$description": "Label of the navigation menu."
+        },
+        "shadow": {
+          "$value": "{elevation.card}",
+          "$description": "Shadow of the navigation menu."
+        },
+        "viewport": {
+          "radius": {
+            "$value": "{radius.control}",
+            "$description": "Viewport radius of the navigation menu."
+          },
+          "background": {
+            "$value": "{color.surface.raised}",
+            "$description": "Viewport background of the navigation menu."
+          },
+          "label": {
+            "$value": "{color.text.primary}",
+            "$description": "Viewport label of the navigation menu."
+          },
+          "shadow": {
+            "$value": "{elevation.card}",
+            "$description": "Viewport shadow of the navigation menu."
+          }
+        },
+        "link": {
+          "gap": {
+            "$value": "{space.gap.tight}",
+            "$description": "Link gap of the navigation menu."
+          },
+          "radius": {
+            "$value": "{radius.badge}",
+            "$description": "Link radius of the navigation menu."
+          },
+          "font-size": {
+            "$value": "{type.body.font-size}",
+            "$description": "Link font size of the navigation menu."
+          },
+          "background-hover": {
+            "$value": "{color.surface.sunken}",
+            "$description": "Link background hover of the navigation menu."
+          },
+          "label-hover": {
+            "$value": "{color.text.primary}",
+            "$description": "Link label hover of the navigation menu."
+          },
+          "background-focus": {
+            "$value": "{color.surface.sunken}",
+            "$description": "Link background focus of the navigation menu."
+          },
+          "label-focus": {
+            "$value": "{color.text.primary}",
+            "$description": "Link label focus of the navigation menu."
+          },
+          "background": {
+            "$value": "{color.surface.sunken}",
+            "$description": "Link background of the navigation menu."
+          },
+          "focus": {
+            "$value": "{border-width.focus}",
+            "$description": "Link focus of the navigation menu."
+          },
+          "selected": {
+            "$value": "{color.border.selected}",
+            "$description": "Link selected of the navigation menu."
+          },
+          "label": {
+            "$value": "{color.text.primary}",
+            "$description": "Link label of the navigation menu."
+          },
+          "icon-size": {
+            "$value": "{size.icon}",
+            "$description": "Link icon size of the navigation menu."
+          },
+          "label-2": {
+            "$value": "{color.text.muted}",
+            "$description": "Link label 2 of the navigation menu."
+          },
+          "focus-ring-focus": {
+            "$value": "{color.border.focus}",
+            "$description": "Link focus ring focus of the navigation menu."
+          },
+          "focus-ring-offset-focus": {
+            "$value": "{color.surface.canvas}",
+            "$description": "Link focus ring offset focus of the navigation menu."
+          }
+        },
+        "background-3": {
+          "$value": "{color.border.default}",
+          "$description": "Background 3 of the navigation menu."
+        },
+        "shadow-2": {
+          "$value": "{elevation.overlay}",
+          "$description": "Shadow 2 of the navigation menu."
+        }
+      },
+      "pagination": {
+        "content": {
+          "gap": {
+            "$value": "{space.gap.tight}",
+            "$description": "Content gap of the pagination."
+          }
+        },
+        "gap": {
+          "$value": "{space.gap.tight}",
+          "$description": "Gap of the pagination."
+        },
+        "icon-size": {
+          "$value": "{size.icon}",
+          "$description": "Icon size of the pagination."
+        }
+      },
+      "popover": {
+        "content": {
+          "radius": {
+            "$value": "{radius.control}",
+            "$description": "Content radius of the popover."
+          },
+          "background": {
+            "$value": "{color.surface.raised}",
+            "$description": "Content background of the popover."
+          },
+          "padding": {
+            "$value": "{space.inset.container}",
+            "$description": "Content padding of the popover."
+          },
+          "label": {
+            "$value": "{color.text.primary}",
+            "$description": "Content label of the popover."
+          },
+          "shadow": {
+            "$value": "{elevation.overlay}",
+            "$description": "Content shadow of the popover."
+          }
+        },
+        "header": {
+          "gap": {
+            "$value": "{space.gap.tight}",
+            "$description": "Header gap of the popover."
+          },
+          "font-size": {
+            "$value": "{type.body.font-size}",
+            "$description": "Header font size of the popover."
+          }
+        },
+        "title": {
+          "font-weight": {
+            "$value": "{type.label.font-weight}",
+            "$description": "Title font weight of the popover."
+          }
+        },
+        "description": {
+          "label": {
+            "$value": "{color.text.muted}",
+            "$description": "Description label of the popover."
+          }
+        }
+      },
+      "progress": {
+        "radius": {
+          "$value": "{radius.round}",
+          "$description": "Radius of the progress."
+        },
+        "background": {
+          "$value": "{color.action.primary.@}",
+          "$description": "Background of the progress."
+        },
+        "indicator": {
+          "background": {
+            "$value": "{color.action.primary.@}",
+            "$description": "Indicator background of the progress."
+          }
+        }
+      },
+      "radio-group": {
+        "item": {
+          "icon-size": {
+            "$value": "{size.icon}",
+            "$description": "Item icon size of the radio group."
+          },
+          "radius": {
+            "$value": "{radius.round}",
+            "$description": "Item radius of the radio group."
+          },
+          "border": {
+            "$value": "{color.border.strong}",
+            "$description": "Item border of the radio group."
+          },
+          "label": {
+            "$value": "{color.action.primary.@}",
+            "$description": "Item label of the radio group."
+          },
+          "shadow": {
+            "$value": "{elevation.card}",
+            "$description": "Item shadow of the radio group."
+          },
+          "border-focus": {
+            "$value": "{color.border.focus}",
+            "$description": "Item border focus of the radio group."
+          },
+          "disabled-opacity-disabled": {
+            "$value": "{opacity.disabled}",
+            "$description": "Item disabled opacity disabled of the radio group."
+          },
+          "border-invalid": {
+            "$value": "{color.status.danger.@}",
+            "$description": "Item border invalid of the radio group."
+          },
+          "focus-ring-invalid": {
+            "$value": "{color.status.danger.@}",
+            "$description": "Item focus ring invalid of the radio group."
+          },
+          "focus": {
+            "$value": "{border-width.focus}",
+            "$description": "Item focus of the radio group."
+          },
+          "focus-ring-focus": {
+            "$value": "{color.border.focus}",
+            "$description": "Item focus ring focus of the radio group."
+          },
+          "focus-ring-offset-focus": {
+            "$value": "{color.surface.canvas}",
+            "$description": "Item focus ring offset focus of the radio group."
+          }
+        },
+        "icon": {
+          "$value": "{color.action.primary.@}",
+          "$description": "Icon of the radio group."
+        }
+      },
+      "resizable": {
+        "handle": {
+          "background": {
+            "$value": "{color.border.default}",
+            "$description": "Handle background of the resizable."
+          },
+          "focus": {
+            "$value": "{border-width.focus}",
+            "$description": "Handle focus of the resizable."
+          },
+          "focus-ring-focus": {
+            "$value": "{color.border.focus}",
+            "$description": "Handle focus ring focus of the resizable."
+          },
+          "focus-ring-offset-focus": {
+            "$value": "{color.surface.canvas}",
+            "$description": "Handle focus ring offset focus of the resizable."
+          }
+        },
+        "height": {
+          "$value": "{size.icon}",
+          "$description": "Height of the resizable."
+        },
+        "radius": {
+          "$value": "{radius.badge}",
+          "$description": "Radius of the resizable."
+        },
+        "background": {
+          "$value": "{color.border.default}",
+          "$description": "Background of the resizable."
+        }
+      },
+      "scroll-area": {
+        "viewport": {
+          "focus": {
+            "$value": "{border-width.focus}",
+            "$description": "Viewport focus of the scroll area."
+          },
+          "focus-ring-focus": {
+            "$value": "{color.border.focus}",
+            "$description": "Viewport focus ring focus of the scroll area."
+          },
+          "focus-ring-offset-focus": {
+            "$value": "{color.surface.canvas}",
+            "$description": "Viewport focus ring offset focus of the scroll area."
+          }
+        },
+        "thumb": {
+          "radius": {
+            "$value": "{radius.round}",
+            "$description": "Thumb radius of the scroll area."
+          },
+          "background": {
+            "$value": "{color.border.default}",
+            "$description": "Thumb background of the scroll area."
+          }
+        }
+      },
+      "select": {
+        "trigger": {
+          "gap": {
+            "$value": "{space.gap.default}",
+            "$description": "Trigger gap of the select."
+          },
+          "font-family": {
+            "$value": "{type.body.font-family}",
+            "$description": "Trigger font family of the select."
+          },
+          "border-width": {
+            "$value": "{border-width.default}",
+            "$description": "Trigger border width of the select."
+          }
+        },
+        "focus": {
+          "$value": "{border-width.focus}",
+          "$description": "Focus of the select."
+        },
+        "canvas": {
+          "$value": "{color.surface.canvas}",
+          "$description": "Canvas of the select."
+        },
+        "size": {
+          "$value": "{size.icon}",
+          "$description": "Size of the select."
+        },
+        "content": {
+          "label": {
+            "$value": "{color.text.primary}",
+            "$description": "Content label of the select."
+          },
+          "border-width": {
+            "$value": "{border-width.default}",
+            "$description": "Content border width of the select."
+          },
+          "border": {
+            "$value": "{color.border.default}",
+            "$description": "Content border of the select."
+          }
+        },
+        "item": {
+          "gap": {
+            "$value": "{space.gap.default}",
+            "$description": "Item gap of the select."
+          },
+          "padding-left": {
+            "$value": "{space.inset.cell-x}",
+            "$description": "Item padding left of the select."
+          },
+          "radius": {
+            "$value": "{radius.badge}",
+            "$description": "Item radius of the select."
+          },
+          "font-size": {
+            "$value": "{type.body.font-size}",
+            "$description": "Item font size of the select."
+          },
+          "sunken": {
+            "$value": "{color.surface.sunken}",
+            "$description": "Item sunken of the select."
+          },
+          "disabled": {
+            "$value": "{opacity.disabled}",
+            "$description": "Item disabled of the select."
+          }
+        }
+      },
+      "separator": {
+        "background": {
+          "$value": "{color.border.default}",
+          "$description": "Background of the separator."
+        }
+      },
+      "sheet": {
+        "overlay": {
+          "background": {
+            "$value": "{color.surface.scrim}",
+            "$description": "Overlay background of the sheet."
+          }
+        },
+        "content": {
+          "gap": {
+            "$value": "{space.gap.group}",
+            "$description": "Content gap of the sheet."
+          },
+          "background": {
+            "$value": "{color.surface.canvas}",
+            "$description": "Content background of the sheet."
+          },
+          "shadow": {
+            "$value": "{elevation.overlay}",
+            "$description": "Content shadow of the sheet."
+          }
+        },
+        "radius": {
+          "$value": "{radius.badge}",
+          "$description": "Radius of the sheet."
+        },
+        "focus-ring-offset": {
+          "$value": "{color.surface.canvas}",
+          "$description": "Focus ring offset of the sheet."
+        },
+        "focus": {
+          "$value": "{border-width.focus}",
+          "$description": "Focus of the sheet."
+        },
+        "focus-ring-focus": {
+          "$value": "{color.border.focus}",
+          "$description": "Focus ring focus of the sheet."
+        },
+        "background-open": {
+          "$value": "{color.action.secondary.@}",
+          "$description": "Background open of the sheet."
+        },
+        "icon-size": {
+          "$value": "{size.icon}",
+          "$description": "Icon size of the sheet."
+        },
+        "header": {
+          "padding": {
+            "$value": "{space.inset.container}",
+            "$description": "Header padding of the sheet."
+          }
+        },
+        "footer": {
+          "gap": {
+            "$value": "{space.gap.default}",
+            "$description": "Footer gap of the sheet."
+          },
+          "padding": {
+            "$value": "{space.inset.container}",
+            "$description": "Footer padding of the sheet."
+          }
+        },
+        "title": {
+          "font-weight": {
+            "$value": "{type.title.font-weight}",
+            "$description": "Title font weight of the sheet."
+          },
+          "label": {
+            "$value": "{color.text.primary}",
+            "$description": "Title label of the sheet."
+          }
+        },
+        "description": {
+          "font-size": {
+            "$value": "{type.body.font-size}",
+            "$description": "Description font size of the sheet."
+          },
+          "label": {
+            "$value": "{color.text.muted}",
+            "$description": "Description label of the sheet."
+          }
+        }
+      },
+      "sidebar": {
+        "wrapper": {
+          "background": {
+            "$value": "{color.surface.default}",
+            "$description": "Wrapper background of the sidebar."
+          }
+        },
+        "background": {
+          "$value": "{color.surface.default}",
+          "$description": "Background of the sidebar."
+        },
+        "label": {
+          "$value": "{color.text.primary}",
+          "$description": "Label of the sidebar."
+        },
+        "gap": {
+          "duration": {
+            "$value": "{motion.duration.feedback}",
+            "$description": "Gap duration of the sidebar."
+          },
+          "@": {
+            "$value": "{space.gap.default}",
+            "$description": "Gap of the sidebar."
+          }
+        },
+        "container": {
+          "duration": {
+            "$value": "{motion.duration.feedback}",
+            "$description": "Container duration of the sidebar."
+          }
+        },
+        "inner": {
+          "background": {
+            "$value": "{color.surface.default}",
+            "$description": "Inner background of the sidebar."
+          },
+          "radius": {
+            "$value": "{radius.container}",
+            "$description": "Inner radius of the sidebar."
+          },
+          "border": {
+            "$value": "{color.border.default}",
+            "$description": "Inner border of the sidebar."
+          },
+          "shadow": {
+            "$value": "{elevation.card}",
+            "$description": "Inner shadow of the sidebar."
+          }
+        },
+        "rail": {
+          "background-hover": {
+            "$value": "{color.border.default}",
+            "$description": "Rail background hover of the sidebar."
+          }
+        },
+        "background-hover": {
+          "$value": "{color.surface.default}",
+          "$description": "Background hover of the sidebar."
+        },
+        "inset": {
+          "background": {
+            "$value": "{color.surface.canvas}",
+            "$description": "Inset background of the sidebar."
+          },
+          "radius": {
+            "$value": "{radius.container}",
+            "$description": "Inset radius of the sidebar."
+          },
+          "shadow": {
+            "$value": "{elevation.card}",
+            "$description": "Inset shadow of the sidebar."
+          }
+        },
+        "input": {
+          "height": {
+            "$value": "{size.control.default}",
+            "$description": "Input height of the sidebar."
+          },
+          "background": {
+            "$value": "{color.surface.canvas}",
+            "$description": "Input background of the sidebar."
+          }
+        },
+        "header": {
+          "gap": {
+            "$value": "{space.gap.default}",
+            "$description": "Header gap of the sidebar."
+          }
+        },
+        "footer": {
+          "gap": {
+            "$value": "{space.gap.default}",
+            "$description": "Footer gap of the sidebar."
+          }
+        },
+        "separator": {
+          "background": {
+            "$value": "{color.border.default}",
+            "$description": "Separator background of the sidebar."
+          }
+        },
+        "content": {
+          "gap": {
+            "$value": "{space.gap.default}",
+            "$description": "Content gap of the sidebar."
+          }
+        },
+        "group": {
+          "label": {
+            "height": {
+              "$value": "{size.control.default}",
+              "$description": "Group label height of the sidebar."
+            },
+            "radius": {
+              "$value": "{radius.control}",
+              "$description": "Group label radius of the sidebar."
+            },
+            "font-size": {
+              "$value": "{type.caption.font-size}",
+              "$description": "Group label font size of the sidebar."
+            },
+            "font-weight": {
+              "$value": "{type.label.font-weight}",
+              "$description": "Group label font weight of the sidebar."
+            },
+            "label": {
+              "$value": "{color.text.primary}",
+              "$description": "Group label label of the sidebar."
+            },
+            "focus-ring": {
+              "$value": "{color.border.focus}",
+              "$description": "Group label focus ring of the sidebar."
+            },
+            "duration": {
+              "$value": "{motion.duration.feedback}",
+              "$description": "Group label duration of the sidebar."
+            },
+            "icon-size": {
+              "$value": "{size.icon}",
+              "$description": "Group label icon size of the sidebar."
+            },
+            "focus": {
+              "$value": "{border-width.focus}",
+              "$description": "Group label focus of the sidebar."
+            },
+            "focus-ring-focus": {
+              "$value": "{color.border.focus}",
+              "$description": "Group label focus ring focus of the sidebar."
+            },
+            "focus-ring-offset-focus": {
+              "$value": "{color.surface.canvas}",
+              "$description": "Group label focus ring offset focus of the sidebar."
+            }
+          },
+          "action": {
+            "radius": {
+              "$value": "{radius.control}",
+              "$description": "Group action radius of the sidebar."
+            },
+            "label": {
+              "$value": "{color.text.primary}",
+              "$description": "Group action label of the sidebar."
+            },
+            "focus-ring": {
+              "$value": "{color.border.focus}",
+              "$description": "Group action focus ring of the sidebar."
+            },
+            "background-hover": {
+              "$value": "{color.surface.sunken}",
+              "$description": "Group action background hover of the sidebar."
+            },
+            "label-hover": {
+              "$value": "{color.text.primary}",
+              "$description": "Group action label hover of the sidebar."
+            },
+            "icon-size": {
+              "$value": "{size.icon}",
+              "$description": "Group action icon size of the sidebar."
+            },
+            "focus": {
+              "$value": "{border-width.focus}",
+              "$description": "Group action focus of the sidebar."
+            },
+            "focus-ring-focus": {
+              "$value": "{color.border.focus}",
+              "$description": "Group action focus ring focus of the sidebar."
+            },
+            "focus-ring-offset-focus": {
+              "$value": "{color.surface.canvas}",
+              "$description": "Group action focus ring offset focus of the sidebar."
+            }
+          },
+          "content": {
+            "font-size": {
+              "$value": "{type.body.font-size}",
+              "$description": "Group content font size of the sidebar."
+            }
+          }
+        },
+        "menu": {
+          "gap": {
+            "$value": "{space.gap.tight}",
+            "$description": "Menu gap of the sidebar."
+          },
+          "action": {
+            "radius": {
+              "$value": "{radius.control}",
+              "$description": "Menu action radius of the sidebar."
+            },
+            "label": {
+              "$value": "{color.text.primary}",
+              "$description": "Menu action label of the sidebar."
+            },
+            "focus-ring": {
+              "$value": "{color.border.focus}",
+              "$description": "Menu action focus ring of the sidebar."
+            },
+            "background-hover": {
+              "$value": "{color.surface.sunken}",
+              "$description": "Menu action background hover of the sidebar."
+            },
+            "label-hover": {
+              "$value": "{color.text.primary}",
+              "$description": "Menu action label hover of the sidebar."
+            },
+            "icon-size": {
+              "$value": "{size.icon}",
+              "$description": "Menu action icon size of the sidebar."
+            },
+            "focus": {
+              "$value": "{border-width.focus}",
+              "$description": "Menu action focus of the sidebar."
+            },
+            "focus-ring-focus": {
+              "$value": "{color.border.focus}",
+              "$description": "Menu action focus ring focus of the sidebar."
+            },
+            "focus-ring-offset-focus": {
+              "$value": "{color.surface.canvas}",
+              "$description": "Menu action focus ring offset focus of the sidebar."
+            }
+          },
+          "badge": {
+            "radius": {
+              "$value": "{radius.control}",
+              "$description": "Menu badge radius of the sidebar."
+            },
+            "font-size": {
+              "$value": "{type.caption.font-size}",
+              "$description": "Menu badge font size of the sidebar."
+            },
+            "font-weight": {
+              "$value": "{type.label.font-weight}",
+              "$description": "Menu badge font weight of the sidebar."
+            },
+            "label": {
+              "$value": "{color.text.primary}",
+              "$description": "Menu badge label of the sidebar."
+            }
+          },
+          "skeleton": {
+            "height": {
+              "$value": "{size.control.default}",
+              "$description": "Menu skeleton height of the sidebar."
+            },
+            "gap": {
+              "$value": "{space.gap.default}",
+              "$description": "Menu skeleton gap of the sidebar."
+            },
+            "radius": {
+              "$value": "{radius.control}",
+              "$description": "Menu skeleton radius of the sidebar."
+            }
+          },
+          "sub": {
+            "gap": {
+              "$value": "{space.gap.tight}",
+              "$description": "Menu sub gap of the sidebar."
+            },
+            "border": {
+              "$value": "{color.border.default}",
+              "$description": "Menu sub border of the sidebar."
+            },
+            "button": {
+              "gap": {
+                "$value": "{space.gap.default}",
+                "$description": "Menu sub button gap of the sidebar."
+              },
+              "radius": {
+                "$value": "{radius.control}",
+                "$description": "Menu sub button radius of the sidebar."
+              },
+              "label": {
+                "$value": "{color.text.primary}",
+                "$description": "Menu sub button label of the sidebar."
+              },
+              "focus-ring": {
+                "$value": "{color.border.focus}",
+                "$description": "Menu sub button focus ring of the sidebar."
+              },
+              "background-hover": {
+                "$value": "{color.surface.sunken}",
+                "$description": "Menu sub button background hover of the sidebar."
+              },
+              "label-hover": {
+                "$value": "{color.text.primary}",
+                "$description": "Menu sub button label hover of the sidebar."
+              },
+              "background-active": {
+                "$value": "{color.surface.sunken}",
+                "$description": "Menu sub button background active of the sidebar."
+              },
+              "label-active": {
+                "$value": "{color.text.primary}",
+                "$description": "Menu sub button label active of the sidebar."
+              },
+              "disabled-opacity-disabled": {
+                "$value": "{opacity.disabled}",
+                "$description": "Menu sub button disabled opacity disabled of the sidebar."
+              },
+              "icon-size": {
+                "$value": "{size.icon}",
+                "$description": "Menu sub button icon size of the sidebar."
+              },
+              "focus": {
+                "$value": "{border-width.focus}",
+                "$description": "Menu sub button focus of the sidebar."
+              },
+              "focus-ring-focus": {
+                "$value": "{color.border.focus}",
+                "$description": "Menu sub button focus ring focus of the sidebar."
+              },
+              "focus-ring-offset-focus": {
+                "$value": "{color.surface.canvas}",
+                "$description": "Menu sub button focus ring offset focus of the sidebar."
+              }
+            }
+          }
+        },
+        "radius": {
+          "$value": "{radius.control}",
+          "$description": "Radius of the sidebar."
+        },
+        "font-size": {
+          "$value": "{type.body.font-size}",
+          "$description": "Font size of the sidebar."
+        },
+        "focus-ring": {
+          "$value": "{color.border.focus}",
+          "$description": "Focus ring of the sidebar."
+        },
+        "size": {
+          "$value": "{size.control.default}",
+          "$description": "Size of the sidebar."
+        },
+        "background-hover-2": {
+          "$value": "{color.surface.sunken}",
+          "$description": "Background hover 2 of the sidebar."
+        },
+        "label-hover": {
+          "$value": "{color.text.primary}",
+          "$description": "Label hover of the sidebar."
+        },
+        "background-active": {
+          "$value": "{color.surface.sunken}",
+          "$description": "Background active of the sidebar."
+        },
+        "label-active": {
+          "$value": "{color.text.primary}",
+          "$description": "Label active of the sidebar."
+        },
+        "disabled-opacity-disabled": {
+          "$value": "{opacity.disabled}",
+          "$description": "Disabled opacity disabled of the sidebar."
+        },
+        "background-2": {
+          "$value": "{color.surface.sunken}",
+          "$description": "Background 2 of the sidebar."
+        },
+        "font-weight": {
+          "$value": "{type.label.font-weight}",
+          "$description": "Font weight of the sidebar."
+        },
+        "focus": {
+          "$value": "{border-width.focus}",
+          "$description": "Focus of the sidebar."
+        },
+        "selected": {
+          "$value": "{color.border.selected}",
+          "$description": "Selected of the sidebar."
+        },
+        "background-open-hover": {
+          "$value": "{color.surface.sunken}",
+          "$description": "Background open hover of the sidebar."
+        },
+        "label-open-hover": {
+          "$value": "{color.text.primary}",
+          "$description": "Label open hover of the sidebar."
+        },
+        "icon-size": {
+          "$value": "{size.icon}",
+          "$description": "Icon size of the sidebar."
+        },
+        "focus-ring-focus": {
+          "$value": "{color.border.focus}",
+          "$description": "Focus ring focus of the sidebar."
+        },
+        "focus-ring-offset-focus": {
+          "$value": "{color.surface.canvas}",
+          "$description": "Focus ring offset focus of the sidebar."
+        },
+        "default": {
+          "background-hover": {
+            "$value": "{color.surface.sunken}",
+            "$description": "Default background hover of the sidebar."
+          },
+          "label-hover": {
+            "$value": "{color.text.primary}",
+            "$description": "Default label hover of the sidebar."
+          },
+          "height": {
+            "$value": "{size.control.default}",
+            "$description": "Default height of the sidebar."
+          },
+          "font-size": {
+            "$value": "{type.body.font-size}",
+            "$description": "Default font size of the sidebar."
+          }
+        },
+        "outline": {
+          "background": {
+            "$value": "{color.surface.canvas}",
+            "$description": "Outline background of the sidebar."
+          },
+          "background-hover": {
+            "$value": "{color.surface.sunken}",
+            "$description": "Outline background hover of the sidebar."
+          },
+          "label-hover": {
+            "$value": "{color.text.primary}",
+            "$description": "Outline label hover of the sidebar."
+          }
+        },
+        "sm": {
+          "font-size": {
+            "$value": "{type.caption.font-size}",
+            "$description": "Sm font size of the sidebar."
+          }
+        },
+        "lg": {
+          "font-size": {
+            "$value": "{type.body.font-size}",
+            "$description": "Lg font size of the sidebar."
+          }
+        },
+        "height": {
+          "$value": "{size.icon}",
+          "$description": "Height of the sidebar."
+        },
+        "font-size-2": {
+          "$value": "{type.caption.font-size}",
+          "$description": "Font size 2 of the sidebar."
+        }
+      },
+      "skeleton": {
+        "radius": {
+          "$value": "{radius.control}",
+          "$description": "Radius of the skeleton."
+        },
+        "background": {
+          "$value": "{color.surface.sunken}",
+          "$description": "Background of the skeleton."
+        }
+      },
+      "slider": {
+        "disabled-opacity-disabled": {
+          "$value": "{opacity.disabled}",
+          "$description": "Disabled opacity disabled of the slider."
+        },
+        "track": {
+          "radius": {
+            "$value": "{radius.round}",
+            "$description": "Track radius of the slider."
+          },
+          "background": {
+            "$value": "{color.surface.sunken}",
+            "$description": "Track background of the slider."
+          }
+        },
+        "range": {
+          "background": {
+            "$value": "{color.action.primary.@}",
+            "$description": "Range background of the slider."
+          }
+        },
+        "thumb": {
+          "icon-size": {
+            "$value": "{size.icon}",
+            "$description": "Thumb icon size of the slider."
+          },
+          "radius": {
+            "$value": "{radius.round}",
+            "$description": "Thumb radius of the slider."
+          },
+          "border": {
+            "$value": "{color.action.primary.@}",
+            "$description": "Thumb border of the slider."
+          },
+          "shadow": {
+            "$value": "{elevation.card}",
+            "$description": "Thumb shadow of the slider."
+          },
+          "focus-ring": {
+            "$value": "{color.border.focus}",
+            "$description": "Thumb focus ring of the slider."
+          },
+          "disabled-opacity-disabled": {
+            "$value": "{opacity.disabled}",
+            "$description": "Thumb disabled opacity disabled of the slider."
+          },
+          "focus": {
+            "$value": "{border-width.focus}",
+            "$description": "Thumb focus of the slider."
+          },
+          "focus-ring-focus": {
+            "$value": "{color.border.focus}",
+            "$description": "Thumb focus ring focus of the slider."
+          },
+          "focus-ring-offset-focus": {
+            "$value": "{color.surface.canvas}",
+            "$description": "Thumb focus ring offset focus of the slider."
+          }
+        }
+      },
+      "spinner": {
+        "icon-size": {
+          "$value": "{size.icon}",
+          "$description": "Icon size of the spinner."
+        }
+      },
+      "switch": {
+        "height": {
+          "$value": "{size.icon}",
+          "$description": "Height of the switch."
+        },
+        "width": {
+          "$value": "{size.icon}",
+          "$description": "Width of the switch."
+        },
+        "radius": {
+          "$value": "{radius.round}",
+          "$description": "Radius of the switch."
+        },
+        "focus": {
+          "$value": "{border-width.focus}",
+          "$description": "Focus of the switch."
+        },
+        "disabled": {
+          "$value": "{opacity.disabled}",
+          "$description": "Disabled of the switch."
+        },
+        "canvas": {
+          "$value": "{color.surface.canvas}",
+          "$description": "Canvas of the switch."
+        },
+        "size": {
+          "$value": "{size.icon}",
+          "$description": "Size of the switch."
+        },
+        "icon": {
+          "$value": "{size.icon}",
+          "$description": "Icon of the switch."
+        }
+      },
+      "textarea": {
+        "radius": {
+          "$value": "{radius.control}",
+          "$description": "Radius of the textarea."
+        },
+        "border": {
+          "$value": "{color.border.strong}",
+          "$description": "Border of the textarea."
+        },
+        "padding-x": {
+          "$value": "{space.inset.control-x}",
+          "$description": "Padding x of the textarea."
+        },
+        "font-size": {
+          "$value": "{type.body.font-size}",
+          "$description": "Font size of the textarea."
+        },
+        "shadow": {
+          "$value": "{elevation.card}",
+          "$description": "Shadow of the textarea."
+        },
+        "label-placeholder": {
+          "$value": "{color.text.muted}",
+          "$description": "Label placeholder of the textarea."
+        },
+        "border-focus": {
+          "$value": "{color.border.focus}",
+          "$description": "Border focus of the textarea."
+        },
+        "disabled-opacity-disabled": {
+          "$value": "{opacity.disabled}",
+          "$description": "Disabled opacity disabled of the textarea."
+        },
+        "border-invalid": {
+          "$value": "{color.status.danger.@}",
+          "$description": "Border invalid of the textarea."
+        },
+        "focus-ring-invalid": {
+          "$value": "{color.status.danger.@}",
+          "$description": "Focus ring invalid of the textarea."
+        },
+        "focus": {
+          "$value": "{border-width.focus}",
+          "$description": "Focus of the textarea."
+        },
+        "focus-ring-focus": {
+          "$value": "{color.border.focus}",
+          "$description": "Focus ring focus of the textarea."
+        },
+        "focus-ring-offset-focus": {
+          "$value": "{color.surface.canvas}",
+          "$description": "Focus ring offset focus of the textarea."
+        }
+      },
+      "toast": {
+        "gap": {
+          "$value": "{space.gap.default}",
+          "$description": "Gap of the toast."
+        },
+        "padding": {
+          "$value": "{space.inset.container}",
+          "$description": "Padding of the toast."
+        },
+        "label": {
+          "$value": "{color.text.primary}",
+          "$description": "Label of the toast."
+        },
+        "border-width": {
+          "$value": "{border-width.default}",
+          "$description": "Border width of the toast."
+        },
+        "neutral": {
+          "border": {
+            "$value": "{color.border.default}",
+            "$description": "Neutral border of the toast."
+          }
+        },
+        "success": {
+          "border": {
+            "$value": "{color.border.default}",
+            "$description": "Success border of the toast."
+          },
+          "border-2": {
+            "$value": "{color.status.success.@}",
+            "$description": "Success border 2 of the toast."
+          }
+        },
+        "danger": {
+          "border": {
+            "$value": "{color.border.default}",
+            "$description": "Danger border of the toast."
+          },
+          "border-2": {
+            "$value": "{color.status.danger.@}",
+            "$description": "Danger border 2 of the toast."
+          }
+        },
+        "gap-2": {
+          "$value": "{space.gap.tight}",
+          "$description": "Gap 2 of the toast."
+        },
+        "font-weight": {
+          "$value": "{type.label.font-weight}",
+          "$description": "Font weight of the toast."
+        },
+        "font-size": {
+          "$value": "{type.body.font-size}",
+          "$description": "Font size of the toast."
+        },
+        "label-2": {
+          "$value": "{color.text.secondary}",
+          "$description": "Label 2 of the toast."
+        },
+        "font-size-2": {
+          "$value": "{type.caption.font-size}",
+          "$description": "Font size 2 of the toast."
+        }
+      },
+      "toggle-group": {
+        "radius": {
+          "$value": "{radius.control}",
+          "$description": "Radius of the toggle group."
+        },
+        "shadow": {
+          "$value": "{elevation.card}",
+          "$description": "Shadow of the toggle group."
+        },
+        "item": {
+          "padding-x": {
+            "$value": "{space.inset.control-x}",
+            "$description": "Item padding x of the toggle group."
+          }
+        }
+      },
+      "toggle": {
+        "gap": {
+          "$value": "{space.gap.default}",
+          "$description": "Gap of the toggle."
+        },
+        "radius": {
+          "$value": "{radius.control}",
+          "$description": "Radius of the toggle."
+        },
+        "font-size": {
+          "$value": "{type.body.font-size}",
+          "$description": "Font size of the toggle."
+        },
+        "font-weight": {
+          "$value": "{type.label.font-weight}",
+          "$description": "Font weight of the toggle."
+        },
+        "background-hover": {
+          "$value": "{color.surface.sunken}",
+          "$description": "Background hover of the toggle."
+        },
+        "label-hover": {
+          "$value": "{color.text.muted}",
+          "$description": "Label hover of the toggle."
+        },
+        "border-focus": {
+          "$value": "{color.border.focus}",
+          "$description": "Border focus of the toggle."
+        },
+        "disabled-opacity-disabled": {
+          "$value": "{opacity.disabled}",
+          "$description": "Disabled opacity disabled of the toggle."
+        },
+        "border-invalid": {
+          "$value": "{color.status.danger.@}",
+          "$description": "Border invalid of the toggle."
+        },
+        "focus-ring-invalid": {
+          "$value": "{color.status.danger.@}",
+          "$description": "Focus ring invalid of the toggle."
+        },
+        "background-on": {
+          "$value": "{color.surface.sunken}",
+          "$description": "Background on of the toggle."
+        },
+        "label-on": {
+          "$value": "{color.text.primary}",
+          "$description": "Label on of the toggle."
+        },
+        "icon-size": {
+          "$value": "{size.icon}",
+          "$description": "Icon size of the toggle."
+        },
+        "focus": {
+          "$value": "{border-width.focus}",
+          "$description": "Focus of the toggle."
+        },
+        "focus-ring-focus": {
+          "$value": "{color.border.focus}",
+          "$description": "Focus ring focus of the toggle."
+        },
+        "focus-ring-offset-focus": {
+          "$value": "{color.surface.canvas}",
+          "$description": "Focus ring offset focus of the toggle."
+        },
+        "outline": {
+          "border": {
+            "$value": "{color.border.strong}",
+            "$description": "Outline border of the toggle."
+          },
+          "shadow": {
+            "$value": "{elevation.card}",
+            "$description": "Outline shadow of the toggle."
+          },
+          "background-hover": {
+            "$value": "{color.surface.sunken}",
+            "$description": "Outline background hover of the toggle."
+          },
+          "label-hover": {
+            "$value": "{color.text.primary}",
+            "$description": "Outline label hover of the toggle."
+          }
+        },
+        "sm": {
+          "height": {
+            "$value": "{size.control.default}",
+            "$description": "Sm height of the toggle."
           }
         }
       }

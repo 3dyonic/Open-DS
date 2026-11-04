@@ -1,6 +1,6 @@
 /**
  * Card. Groups content inside a page. Whether it has a shadow is a scheme decision
- * (elevation.roles, elevation.definition): --card-shadow is "no shadow" in schemes that separate with lines.
+ * (elevation.roles, elevation.definition): --card-shadow is "no shadow-[var(--card-shadow)]" in schemes that separate with lines.
  *
  * Reads only component keys: --card-*.
  */
@@ -12,9 +12,9 @@ export function Card({ className, ...props }: React.HTMLAttributes<HTMLDivElemen
     <div
       data-slot="card"
       className={cn(
-        "flex flex-col gap-[var(--space-gap-default)] p-[var(--card-padding)] rounded-[var(--card-radius)]",
-        "bg-[var(--card-background)] text-[var(--color-text-primary)] [box-shadow:var(--card-shadow)]",
-        "border-[length:var(--border-width-default)] border-[var(--card-border)]",
+        "flex flex-col gap-[var(--card-gap)] p-[var(--card-padding)] rounded-[var(--card-radius)]",
+        "bg-[var(--card-background)] text-[var(--card-label)] [box-shadow:var(--card-shadow)]",
+        "border-[length:var(--card-border-width)] border-[var(--card-border)]",
         className,
       )}
       {...props}
@@ -24,7 +24,7 @@ export function Card({ className, ...props }: React.HTMLAttributes<HTMLDivElemen
 
 export function CardHeader({ className, ...props }: React.HTMLAttributes<HTMLDivElement>) {
   return (
-    <div data-slot="card-header" className={cn("flex flex-col gap-[var(--space-gap-tight)]", className)} {...props} />
+    <div data-slot="card-header" className={cn("flex flex-col gap-[var(--card-header-gap)]", className)} {...props} />
   );
 }
 
@@ -33,7 +33,7 @@ export function CardTitle({ className, ...props }: React.HTMLAttributes<HTMLHead
     <h3
       data-slot="card-title"
       className={cn(
-        "[font-family:var(--type-heading-font-family)] text-[length:var(--type-heading-font-size)] [font-weight:var(--type-heading-font-weight)] leading-[var(--type-heading-line-height)]",
+        "[font-family:var(--card-title-font-family)] text-[length:var(--card-title-font-size)] [font-weight:var(--card-title-font-weight)] leading-[var(--card-title-line-height)]",
         className,
       )}
       {...props}
@@ -45,7 +45,7 @@ export function CardDescription({ className, ...props }: React.HTMLAttributes<HT
   return (
     <p
       data-slot="card-description"
-      className={cn("text-[var(--color-text-secondary)] text-[length:var(--type-body-font-size)]", className)}
+      className={cn("text-[var(--card-description-label)] text-[length:var(--card-description-font-size)]", className)}
       {...props}
     />
   );
@@ -53,11 +53,7 @@ export function CardDescription({ className, ...props }: React.HTMLAttributes<HT
 
 export function CardContent({ className, ...props }: React.HTMLAttributes<HTMLDivElement>) {
   return (
-    <div
-      data-slot="card-content"
-      className={cn("flex flex-col gap-[var(--space-gap-default)]", className)}
-      {...props}
-    />
+    <div data-slot="card-content" className={cn("flex flex-col gap-[var(--card-content-gap)]", className)} {...props} />
   );
 }
 
@@ -65,7 +61,7 @@ export function CardFooter({ className, ...props }: React.HTMLAttributes<HTMLDiv
   return (
     <div
       data-slot="card-footer"
-      className={cn("flex items-center gap-[var(--space-gap-default)]", className)}
+      className={cn("flex items-center gap-[var(--card-footer-gap)]", className)}
       {...props}
     />
   );
