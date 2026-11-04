@@ -1875,3 +1875,35 @@ tr.odv-for td {
   box-shadow: inset 0 0 0 1px color-mix(in srgb, var(--color-text-muted) 30%, transparent);
   cursor: help;
 }
+/* samples of a primitive, by kind (OD-234) */
+.odv-sop {
+  width: 22px;
+  height: 22px;
+  border-radius: 4px;
+  background: var(--color-text-primary);
+  flex: none;
+}
+.odv-sbar {
+  height: 10px;
+  border-radius: 2px;
+  background: var(--color-surface-selected);
+  box-shadow: inset 0 0 0 1px var(--color-border-focus);
+  flex: none;
+}
+.odv-ssq {
+  border-radius: 2px;
+  box-shadow: inset 0 0 0 1px var(--color-border-focus);
+  background: var(--color-surface-selected);
+  flex: none;
+}
+.odv-saa {
+  line-height: 1;
+  color: var(--color-text-primary);
+  min-width: 22px;
+  flex: none;
+}
+.odv-sline {
+  width: 22px;
+  background: var(--color-text-primary);
+  flex: none;
+}
