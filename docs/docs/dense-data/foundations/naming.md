@@ -28,14 +28,14 @@ Each token points to another token. Values live only on primitives, below.
 | --- | --- | --- |
 | `component.button.primary.background.@` | `color.action.primary.@` → `dense-data.theme.light.color.action.primary.@` → `color.violet.light.600` | `color.action.primary.@` → `dense-data.theme.dark.color.action.primary.@` → `color.violet.dark.700` |
 | `component.button.primary.background.hover` | `color.action.primary.hover` → `dense-data.theme.light.color.action.primary.hover` → `color.violet.light.700` | `color.action.primary.hover` → `dense-data.theme.dark.color.action.primary.hover` → `color.violet.dark.800` |
-| `component.button.primary.label` | `color.text.on-action` → `dense-data.theme.light.color.text.on-action` → `color.slate.light.0` | `color.text.on-action` → `dense-data.theme.dark.color.text.on-action` → `color.slate.dark.0` |
+| `component.button.primary.label` | `color.text.on-action` → `dense-data.theme.light.color.text.on-action` → `color.slate.light.0` | `color.text.on-action` → `dense-data.theme.dark.color.text.on-action` → `color.slate.light.900` |
 | `component.button.secondary.background.@` | `color.action.secondary.@` → `dense-data.theme.light.color.action.secondary.@` → `color.slate.light.0` | `color.action.secondary.@` → `dense-data.theme.dark.color.action.secondary.@` → `color.slate.dark.50` |
 | `component.button.secondary.background.hover` | `color.action.secondary.hover` → `dense-data.theme.light.color.action.secondary.hover` → `color.slate.light.100` | `color.action.secondary.hover` → `dense-data.theme.dark.color.action.secondary.hover` → `color.slate.dark.100` |
 | `component.button.secondary.label` | `color.text.primary` → `dense-data.theme.light.color.text.primary` → `color.slate.light.900` | `color.text.primary` → `dense-data.theme.dark.color.text.primary` → `color.slate.dark.900` |
 | `component.button.secondary.border` | `color.border.strong` → `dense-data.theme.light.color.border.strong` → `color.slate.light.500` | `color.border.strong` → `dense-data.theme.dark.color.border.strong` → `color.slate.dark.400` |
 | `component.button.danger.background.@` | `color.action.danger.@` → `dense-data.theme.light.color.action.danger.@` → `color.red.light.700` | `color.action.danger.@` → `dense-data.theme.dark.color.action.danger.@` → `color.red.dark.700` |
 | `component.button.danger.background.hover` | `color.action.danger.hover` → `dense-data.theme.light.color.action.danger.hover` → `color.red.light.700` | `color.action.danger.hover` → `dense-data.theme.dark.color.action.danger.hover` → `color.red.dark.700` |
-| `component.button.danger.label` | `color.text.on-danger` → `dense-data.theme.light.color.text.on-danger` → `color.slate.dark.900` | `color.text.on-danger` → `dense-data.theme.dark.color.text.on-danger` → `color.slate.light.900` |
+| `component.button.danger.label` | `color.text.on-danger` → `dense-data.theme.light.color.text.on-danger` → `color.slate.light.0` | `color.text.on-danger` → `dense-data.theme.dark.color.text.on-danger` → `color.slate.light.900` |
 | `component.button.ghost.background-hover` | `color.surface.sunken` → `dense-data.theme.light.color.surface.sunken` → `color.slate.light.100` | `color.surface.sunken` → `dense-data.theme.dark.color.surface.sunken` → `color.slate.dark.100` |
 | `component.button.ghost.label` | `color.text.link` → `dense-data.theme.light.color.text.link` → `color.violet.light.700` | `color.text.link` → `dense-data.theme.dark.color.text.link` → `color.violet.dark.700` |
 | `component.button.height` | `size.control.default` → `size.32` | `size.control.default` → `size.32` |
@@ -98,7 +98,7 @@ Each token points to another token. Values live only on primitives, below.
 | `component.overlay.scrim` | `color.surface.scrim` → `dense-data.theme.light.color.surface.scrim` → `color.black.light.scrim` | `color.surface.scrim` → `dense-data.theme.dark.color.surface.scrim` → `color.black.dark.scrim` |
 | `component.overlay.item-height` | `size.control.default` → `size.32` | `size.control.default` → `size.32` |
 | `component.tooltip.background` | `color.surface.inverse` → `dense-data.theme.light.color.surface.inverse` → `color.slate.light.900` | `color.surface.inverse` → `dense-data.theme.dark.color.surface.inverse` → `color.slate.dark.900` |
-| `component.tooltip.label` | `color.text.inverse` → `dense-data.theme.light.color.text.inverse` → `color.slate.light.0` | `color.text.inverse` → `dense-data.theme.dark.color.text.inverse` → `color.slate.dark.50` |
+| `component.tooltip.label` | `color.text.inverse` → `dense-data.theme.light.color.text.inverse` → `color.slate.light.0` | `color.text.inverse` → `dense-data.theme.dark.color.text.inverse` → `color.slate.light.900` |
 | `component.transition.duration` | `motion.duration.feedback` → `duration.fast` | `motion.duration.feedback` → `duration.fast` |
 | `component.transition.easing` | `motion.easing.standard` → `easing.standard` | `motion.easing.standard` → `easing.standard` |
 | `component.transition.panels-duration` | `motion.duration.panels` → `duration.fast` | `motion.duration.panels` → `duration.fast` |
@@ -127,7 +127,6 @@ The raw values the tokens above end at.
 | `color.red.dark.700` | #F28B8B | <span class="ods-swatch" style="background:#F28B8B"></span> |
 | `color.red.light.100` | #FDE7E7 | <span class="ods-swatch" style="background:#FDE7E7"></span> |
 | `color.red.light.700` | #C42B2B | <span class="ods-swatch" style="background:#C42B2B"></span> |
-| `color.slate.dark.0` | #0D1117 | <span class="ods-swatch" style="background:#0D1117"></span> |
 | `color.slate.dark.100` | #262D38 | <span class="ods-swatch" style="background:#262D38"></span> |
 | `color.slate.dark.200` | #3D4655 | <span class="ods-swatch" style="background:#3D4655"></span> |
 | `color.slate.dark.400` | #969FAD | <span class="ods-swatch" style="background:#969FAD"></span> |

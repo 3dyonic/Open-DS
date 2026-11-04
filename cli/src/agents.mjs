@@ -25,7 +25,7 @@ export const optionsRule = (g) =>
 /** OD-222: what sits on a fill comes from the fill's tone, generated from the grammar. */
 export const toneRule = (g) =>
   g.semantics?.tones
-    ? "Text, icons, borders and focus on a fill read that fill's tone set: `color.on-light.*` on a light fill, `color.on-dark.*` on a dark one. Each fill's tone is decided in the theme (`$extensions.open-ds.tone`). On the page's own surfaces, use `color.text.*`."
+    ? "Text on a fill follows the fill's tone: `color.text.on-light` on a light fill, `color.text.on-dark` on a dark one, the same two colours in both modes. Each fill's tone is decided in the theme (`$extensions.open-ds.tone`). On the page's own surfaces, use `color.text.*`."
     : "";
 
 export function agentsMd(scheme, g, { brand, components, project = false }) {

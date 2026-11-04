@@ -502,9 +502,7 @@ export async function run(argv) {
         walk("");
         const result = tools.checkUi(loadScheme(id), g, files);
         // context/ must match what the engine prints for this scheme (OD-205).
-        const { contextDrift, projectComponents } = await import(
-          "./brief.mjs"
-        );
+        const { contextDrift, projectComponents } = await import("./brief.mjs");
         for (const d of contextDrift(
           dir,
           loadScheme(id),

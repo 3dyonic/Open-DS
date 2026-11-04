@@ -28,14 +28,14 @@ Each token points to another token. Values live only on primitives, below.
 | --- | --- | --- |
 | `component.button.primary.background.@` | `color.action.primary.@` → `brand-expressive.theme.light.color.action.primary.@` → `color.pink.light.600` | `color.action.primary.@` → `brand-expressive.theme.dark.color.action.primary.@` → `color.pink.dark.700` |
 | `component.button.primary.background.hover` | `color.action.primary.hover` → `brand-expressive.theme.light.color.action.primary.hover` → `color.pink.light.700` | `color.action.primary.hover` → `brand-expressive.theme.dark.color.action.primary.hover` → `color.pink.dark.800` |
-| `component.button.primary.label` | `color.text.on-action` → `brand-expressive.theme.light.color.text.on-action` → `color.taupe.light.0` | `color.text.on-action` → `brand-expressive.theme.dark.color.text.on-action` → `color.taupe.dark.0` |
+| `component.button.primary.label` | `color.text.on-action` → `brand-expressive.theme.light.color.text.on-action` → `color.taupe.light.0` | `color.text.on-action` → `brand-expressive.theme.dark.color.text.on-action` → `color.taupe.light.900` |
 | `component.button.secondary.background.@` | `color.action.secondary.@` → `brand-expressive.theme.light.color.action.secondary.@` → `color.taupe.light.0` | `color.action.secondary.@` → `brand-expressive.theme.dark.color.action.secondary.@` → `color.taupe.dark.50` |
 | `component.button.secondary.background.hover` | `color.action.secondary.hover` → `brand-expressive.theme.light.color.action.secondary.hover` → `color.taupe.light.100` | `color.action.secondary.hover` → `brand-expressive.theme.dark.color.action.secondary.hover` → `color.taupe.dark.100` |
 | `component.button.secondary.label` | `color.text.primary` → `brand-expressive.theme.light.color.text.primary` → `color.taupe.light.900` | `color.text.primary` → `brand-expressive.theme.dark.color.text.primary` → `color.taupe.dark.900` |
 | `component.button.secondary.border` | `color.border.strong` → `brand-expressive.theme.light.color.border.strong` → `color.taupe.light.500` | `color.border.strong` → `brand-expressive.theme.dark.color.border.strong` → `color.taupe.dark.400` |
 | `component.button.danger.background.@` | `color.action.danger.@` → `brand-expressive.theme.light.color.action.danger.@` → `color.red.light.700` | `color.action.danger.@` → `brand-expressive.theme.dark.color.action.danger.@` → `color.red.dark.700` |
 | `component.button.danger.background.hover` | `color.action.danger.hover` → `brand-expressive.theme.light.color.action.danger.hover` → `color.red.light.700` | `color.action.danger.hover` → `brand-expressive.theme.dark.color.action.danger.hover` → `color.red.dark.700` |
-| `component.button.danger.label` | `color.text.on-danger` → `brand-expressive.theme.light.color.text.on-danger` → `color.taupe.dark.900` | `color.text.on-danger` → `brand-expressive.theme.dark.color.text.on-danger` → `color.taupe.light.900` |
+| `component.button.danger.label` | `color.text.on-danger` → `brand-expressive.theme.light.color.text.on-danger` → `color.taupe.light.0` | `color.text.on-danger` → `brand-expressive.theme.dark.color.text.on-danger` → `color.taupe.light.900` |
 | `component.button.ghost.background-hover` | `color.surface.sunken` → `brand-expressive.theme.light.color.surface.sunken` → `color.taupe.light.100` | `color.surface.sunken` → `brand-expressive.theme.dark.color.surface.sunken` → `color.taupe.dark.100` |
 | `component.button.ghost.label` | `color.text.link` → `brand-expressive.theme.light.color.text.link` → `color.pink.light.700` | `color.text.link` → `brand-expressive.theme.dark.color.text.link` → `color.pink.dark.700` |
 | `component.button.height` | `size.control.default` → `size.52` | `size.control.default` → `size.52` |
@@ -98,7 +98,7 @@ Each token points to another token. Values live only on primitives, below.
 | `component.overlay.scrim` | `color.surface.scrim` → `brand-expressive.theme.light.color.surface.scrim` → `color.black.light.scrim` | `color.surface.scrim` → `brand-expressive.theme.dark.color.surface.scrim` → `color.black.dark.scrim` |
 | `component.overlay.item-height` | `size.control.default` → `size.52` | `size.control.default` → `size.52` |
 | `component.tooltip.background` | `color.surface.inverse` → `brand-expressive.theme.light.color.surface.inverse` → `color.taupe.light.900` | `color.surface.inverse` → `brand-expressive.theme.dark.color.surface.inverse` → `color.taupe.dark.900` |
-| `component.tooltip.label` | `color.text.inverse` → `brand-expressive.theme.light.color.text.inverse` → `color.taupe.light.0` | `color.text.inverse` → `brand-expressive.theme.dark.color.text.inverse` → `color.taupe.dark.50` |
+| `component.tooltip.label` | `color.text.inverse` → `brand-expressive.theme.light.color.text.inverse` → `color.taupe.light.0` | `color.text.inverse` → `brand-expressive.theme.dark.color.text.inverse` → `color.taupe.light.900` |
 | `component.transition.duration` | `motion.duration.feedback` → `duration.fast` | `motion.duration.feedback` → `duration.fast` |
 | `component.transition.easing` | `motion.easing.standard` → `easing.spring` | `motion.easing.standard` → `easing.spring` |
 | `component.transition.panels-duration` | `motion.duration.panels` → `duration.moderate` | `motion.duration.panels` → `duration.moderate` |
@@ -133,7 +133,6 @@ The raw values the tokens above end at.
 | `color.red.dark.700` | #F28B8B | <span class="ods-swatch" style="background:#F28B8B"></span> |
 | `color.red.light.100` | #FDE7E7 | <span class="ods-swatch" style="background:#FDE7E7"></span> |
 | `color.red.light.700` | #C42B2B | <span class="ods-swatch" style="background:#C42B2B"></span> |
-| `color.taupe.dark.0` | #120B09 | <span class="ods-swatch" style="background:#120B09"></span> |
 | `color.taupe.dark.100` | #33241F | <span class="ods-swatch" style="background:#33241F"></span> |
 | `color.taupe.dark.200` | #4D3A33 | <span class="ods-swatch" style="background:#4D3A33"></span> |
 | `color.taupe.dark.400` | #B5988A | <span class="ods-swatch" style="background:#B5988A"></span> |
