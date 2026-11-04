@@ -770,7 +770,7 @@
         {
           "id": "what-a-scale-is-for",
           "when": "Before you change any color.",
-          "do": "A scale is one color in steps, from lightened (50) to darkened (950). The steps are made in OKLCH, a color space built around how the eye sees lightness: each step mostly moves the color's lightness, evenly as the eye sees it, and eases its colorfulness toward the ends. Each scale starts from its own key color at 600 and keeps that hue's natural lightness and contrast: a yellow is light by nature and a blue is dark, so their steps sit around where each hue really is, not at the same values for every hue. So every step still reads as the same color.",
+          "do": "A scale is one color in steps, from lightened (50) to darkened (950). The steps are made in OKLCH, a color space built around how the eye sees lightness. Each step mostly moves the color's lightness. Through the middle the steps are even; at the light and dark ends the curve is tweaked a little, so the gaps still look equal there and those steps stay useful as backgrounds and text. Colorfulness eases toward the ends. Each scale starts from its own key color at 600 and keeps that hue's natural lightness and contrast: a yellow is light by nature and a blue is dark, so their steps sit around where each hue really is, not at the same values for every hue. So every step still reads as the same color.",
           "why": "Even steps let every part of a screen use the same color at the strength it needs, so the screen stays calm and consistent.",
           "from": ["OD-223"]
         },
