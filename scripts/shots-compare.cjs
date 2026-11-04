@@ -21,7 +21,7 @@ const THEMES = [
   "multi-brand--birch",
   "multi-brand--coral",
 ]
-  .flatMap((s) => [`${s}:light`, `${s}:dark`])
+  .flatMap((s) => (process.env.LIGHT ? [`${s}:light`] : [`${s}:light`, `${s}:dark`]))
   // THEMES=dense-data captures one scheme only
   .filter(
     (t) =>

@@ -26,8 +26,8 @@ function InputGroup({ className, ...props }: React.ComponentProps<"div">) {
         "h-9 min-w-0 has-[>textarea]:h-auto",
 
         // Variants based on alignment.
-        "has-[>[data-align=inline-start]]:[&>input]:pl-2",
-        "has-[>[data-align=inline-end]]:[&>input]:pr-2",
+        "has-[>[data-align=inline-start]]:[&>input]:pl-[var(--input-group-padding-left)]",
+        "has-[>[data-align=inline-end]]:[&>input]:pr-[var(--input-group-padding-right)]",
         "has-[>[data-align=block-start]]:h-auto has-[>[data-align=block-start]]:flex-col has-[>[data-align=block-start]]:[&>input]:pb-[var(--input-group-padding-bottom)]",
         "has-[>[data-align=block-end]]:h-auto has-[>[data-align=block-end]]:flex-col has-[>[data-align=block-end]]:[&>input]:pt-[var(--input-group-padding-top)]",
 
@@ -45,7 +45,7 @@ function InputGroup({ className, ...props }: React.ComponentProps<"div">) {
 }
 
 const inputGroupAddonVariants = cva(
-  "flex h-auto cursor-text items-center justify-center gap-[var(--input-group-gap)] py-1.5 text-[length:var(--input-group-font-size)]/[var(--input-group-line-height)] [font-weight:var(--input-group-font-weight)] text-[color:var(--input-group-label)] select-none group-data-[disabled=true]/input-group:opacity-[var(--input-group-disabled-opacity-disabled)] [&>kbd]:rounded-[calc(var(--radius)-5px)] [&>svg:not([class*='size-'])]:size-[var(--input-group-icon-size)]",
+  "flex h-auto cursor-text items-center justify-center gap-[var(--input-group-gap)] py-[var(--input-group-padding-y)] text-[length:var(--input-group-font-size)]/[var(--input-group-line-height)] [font-weight:var(--input-group-font-weight)] text-[color:var(--input-group-label)] select-none group-data-[disabled=true]/input-group:opacity-[var(--input-group-disabled-opacity-disabled)] [&>kbd]:rounded-[calc(var(--radius)-5px)] [&>svg:not([class*='size-'])]:size-[var(--input-group-icon-size)]",
   {
     variants: {
       align: {
@@ -54,9 +54,9 @@ const inputGroupAddonVariants = cva(
         "inline-end":
           "order-last pr-[var(--input-group-inline-end-padding-right)] has-[>button]:mr-[-0.45rem] has-[>kbd]:mr-[-0.35rem]",
         "block-start":
-          "order-first w-full justify-start px-[var(--input-group-block-start-padding-x)] pt-[var(--input-group-block-start-padding-top)] group-has-[>input]/input-group:pt-2.5 [.border-b]:pb-[var(--input-group-block-start-padding-bottom)]",
+          "order-first w-full justify-start px-[var(--input-group-block-start-padding-x)] pt-[var(--input-group-block-start-padding-top)] group-has-[>input]/input-group:pt-[var(--input-group-block-start-padding-top-2)] [.border-b]:pb-[var(--input-group-block-start-padding-bottom)]",
         "block-end":
-          "order-last w-full justify-start px-[var(--input-group-block-end-padding-x)] pb-[var(--input-group-block-end-padding-bottom)] group-has-[>input]/input-group:pb-2.5 [.border-t]:pt-[var(--input-group-block-end-padding-top)]",
+          "order-last w-full justify-start px-[var(--input-group-block-end-padding-x)] pb-[var(--input-group-block-end-padding-bottom)] group-has-[>input]/input-group:pb-[var(--input-group-block-end-padding-bottom-2)] [.border-t]:pt-[var(--input-group-block-end-padding-top)]",
       },
     },
     defaultVariants: {
@@ -92,8 +92,8 @@ const inputGroupButtonVariants = cva(
   {
     variants: {
       size: {
-        xs: "h-[var(--input-group-xs-height)] gap-[var(--input-group-xs-gap)] rounded-[calc(var(--radius)-5px)] px-2 has-[>svg]:px-2 [&>svg:not([class*='size-'])]:size-3.5",
-        sm: "h-[var(--input-group-sm-height)] gap-1.5 rounded-[var(--input-group-sm-radius)] px-2.5 has-[>svg]:px-2.5",
+        xs: "h-[var(--input-group-xs-height)] gap-[var(--input-group-xs-gap)] rounded-[calc(var(--radius)-5px)] px-[var(--input-group-xs-padding-x)] has-[>svg]:px-[var(--input-group-xs-padding-x)] [&>svg:not([class*='size-'])]:size-3.5",
+        sm: "h-[var(--input-group-sm-height)] gap-[var(--input-group-sm-gap)] rounded-[var(--input-group-sm-radius)] px-[var(--input-group-sm-padding-x)] has-[>svg]:px-[var(--input-group-sm-padding-x)]",
         "icon-xs": "size-6 rounded-[calc(var(--radius)-5px)] p-0 has-[>svg]:p-0",
         "icon-sm": "size-[var(--input-group-icon-sm-size)] p-0 has-[>svg]:p-0",
       },

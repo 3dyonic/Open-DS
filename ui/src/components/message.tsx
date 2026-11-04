@@ -27,13 +27,13 @@ function Message({
     <article
       data-slot="message"
       className={cn(
-        "flex items-start gap-3 text-[length:var(--message-font-size)]/[var(--message-line-height)]",
+        "flex items-start gap-[var(--message-gap)] text-[length:var(--message-font-size)]/[var(--message-line-height)]",
         className,
       )}
       {...props}
     >
       {avatar}
-      <div className="flex min-w-0 flex-1 flex-col gap-[var(--message-gap)]">
+      <div className="flex min-w-0 flex-1 flex-col gap-[var(--message-gap-2)]">
         <header className="flex flex-wrap items-baseline gap-x-[var(--message-gap-x)]">
           <span data-slot="message-author" className="[font-weight:var(--message-author-font-weight)]">
             {author}

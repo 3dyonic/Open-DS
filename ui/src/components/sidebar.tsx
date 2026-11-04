@@ -229,7 +229,7 @@ function Sidebar({
             : "right-0 group-data-[collapsible=offcanvas]:right-[calc(var(--sidebar-width)*-1)]",
           // Adjust the padding for floating and inset variants.
           variant === "floating" || variant === "inset"
-            ? "p-2 group-data-[collapsible=icon]:w-[calc(var(--sidebar-width-icon)+(--spacing(4))+2px)]"
+            ? "p-[var(--sidebar-padding)] group-data-[collapsible=icon]:w-[calc(var(--sidebar-width-icon)+(--spacing(4))+2px)]"
             : "group-data-[collapsible=icon]:w-(--sidebar-width-icon) group-data-[side=left]:border-r group-data-[side=right]:border-l",
           className,
         )}
@@ -327,7 +327,7 @@ function SidebarHeader({ className, ...props }: React.ComponentProps<"div">) {
     <div
       data-slot="sidebar-header"
       data-sidebar="header"
-      className={cn("flex flex-col gap-[var(--sidebar-header-gap)] p-2", className)}
+      className={cn("flex flex-col gap-[var(--sidebar-header-gap)] p-[var(--sidebar-header-padding)]", className)}
       {...props}
     />
   );
@@ -338,7 +338,7 @@ function SidebarFooter({ className, ...props }: React.ComponentProps<"div">) {
     <div
       data-slot="sidebar-footer"
       data-sidebar="footer"
-      className={cn("flex flex-col gap-[var(--sidebar-footer-gap)] p-2", className)}
+      className={cn("flex flex-col gap-[var(--sidebar-footer-gap)] p-[var(--sidebar-footer-padding)]", className)}
       {...props}
     />
   );
@@ -374,7 +374,7 @@ function SidebarGroup({ className, ...props }: React.ComponentProps<"div">) {
     <div
       data-slot="sidebar-group"
       data-sidebar="group"
-      className={cn("relative flex w-full min-w-0 flex-col p-2", className)}
+      className={cn("relative flex w-full min-w-0 flex-col p-[var(--sidebar-group-padding)]", className)}
       {...props}
     />
   );
@@ -392,7 +392,7 @@ function SidebarGroupLabel({
       data-slot="sidebar-group-label"
       data-sidebar="group-label"
       className={cn(
-        "flex h-[var(--sidebar-group-label-height)] shrink-0 items-center rounded-[var(--sidebar-group-label-radius)] px-2 text-[length:var(--sidebar-group-label-font-size)]/[var(--sidebar-group-label-line-height)] [font-weight:var(--sidebar-group-label-font-weight)] text-[color:var(--sidebar-group-label-label)]/70 ring-[color:var(--sidebar-group-label-focus-ring)] outline-hidden transition-[margin,opacity] duration-[var(--sidebar-group-label-duration)] ease-linear [&>svg]:size-[var(--sidebar-group-label-icon-size)] [&>svg]:shrink-0 focus-visible:ring-[length:var(--sidebar-group-label-focus)] focus-visible:ring-[color:var(--sidebar-group-label-focus-ring-focus)] focus-visible:ring-offset-2 focus-visible:ring-offset-[color:var(--sidebar-group-label-focus-ring-offset-focus)]",
+        "flex h-[var(--sidebar-group-label-height)] shrink-0 items-center rounded-[var(--sidebar-group-label-radius)] px-[var(--sidebar-group-label-padding-x)] text-[length:var(--sidebar-group-label-font-size)]/[var(--sidebar-group-label-line-height)] [font-weight:var(--sidebar-group-label-font-weight)] text-[color:var(--sidebar-group-label-label)]/70 ring-[color:var(--sidebar-group-label-focus-ring)] outline-hidden transition-[margin,opacity] duration-[var(--sidebar-group-label-duration)] ease-linear [&>svg]:size-[var(--sidebar-group-label-icon-size)] [&>svg]:shrink-0 focus-visible:ring-[length:var(--sidebar-group-label-focus)] focus-visible:ring-[color:var(--sidebar-group-label-focus-ring-focus)] focus-visible:ring-offset-2 focus-visible:ring-offset-[color:var(--sidebar-group-label-focus-ring-offset-focus)]",
         "group-data-[collapsible=icon]:-mt-8 group-data-[collapsible=icon]:opacity-0",
         className,
       )}
@@ -461,7 +461,7 @@ function SidebarMenuItem({ className, ...props }: React.ComponentProps<"li">) {
 }
 
 const sidebarMenuButtonVariants = cva(
-  "peer/menu-button flex w-full items-center gap-[var(--sidebar-gap)] overflow-hidden rounded-[var(--sidebar-radius)] p-2 text-left text-[length:var(--sidebar-font-size)]/[var(--sidebar-line-height)] ring-[color:var(--sidebar-focus-ring)] outline-hidden transition-[width,height,padding] group-has-data-[sidebar=menu-action]/menu-item:pr-8 group-data-[collapsible=icon]:size-[var(--sidebar-size)]! group-data-[collapsible=icon]:p-2! hover:bg-[color:var(--sidebar-background-hover-2)] hover:text-[color:var(--sidebar-label-hover)] active:bg-[color:var(--sidebar-background-active)] active:text-[color:var(--sidebar-label-active)] disabled:pointer-events-none disabled:opacity-[var(--sidebar-disabled-opacity-disabled)] aria-disabled:pointer-events-none aria-disabled:opacity-[var(--sidebar-disabled-opacity-disabled)] data-[active=true]:bg-[color:var(--sidebar-background-2)] data-[active=true]:[font-weight:var(--sidebar-font-weight)] data-[active=true]:shadow-[inset_var(--sidebar-focus)_0_0_0_var(--sidebar-selected)] data-[active=true]:text-[color:var(--sidebar-label)] data-[state=open]:hover:bg-[color:var(--sidebar-background-open-hover)] data-[state=open]:hover:text-[color:var(--sidebar-label-open-hover)] [&>span:last-child]:truncate [&>svg]:size-[var(--sidebar-icon-size)] [&>svg]:shrink-0 focus-visible:ring-[length:var(--sidebar-focus)] focus-visible:ring-[color:var(--sidebar-focus-ring-focus)] focus-visible:ring-offset-2 focus-visible:ring-offset-[color:var(--sidebar-focus-ring-offset-focus)]",
+  "peer/menu-button flex w-full items-center gap-[var(--sidebar-gap)] overflow-hidden rounded-[var(--sidebar-radius)] p-[var(--sidebar-padding)] text-left text-[length:var(--sidebar-font-size)]/[var(--sidebar-line-height)] ring-[color:var(--sidebar-focus-ring)] outline-hidden transition-[width,height,padding] group-has-data-[sidebar=menu-action]/menu-item:pr-[var(--sidebar-padding-right)] group-data-[collapsible=icon]:size-[var(--sidebar-size)]! group-data-[collapsible=icon]:p-[var(--sidebar-padding)]! hover:bg-[color:var(--sidebar-background-hover-2)] hover:text-[color:var(--sidebar-label-hover)] active:bg-[color:var(--sidebar-background-active)] active:text-[color:var(--sidebar-label-active)] disabled:pointer-events-none disabled:opacity-[var(--sidebar-disabled-opacity-disabled)] aria-disabled:pointer-events-none aria-disabled:opacity-[var(--sidebar-disabled-opacity-disabled)] data-[active=true]:bg-[color:var(--sidebar-background-2)] data-[active=true]:[font-weight:var(--sidebar-font-weight)] data-[active=true]:shadow-[inset_var(--sidebar-focus)_0_0_0_var(--sidebar-selected)] data-[active=true]:text-[color:var(--sidebar-label)] data-[state=open]:hover:bg-[color:var(--sidebar-background-open-hover)] data-[state=open]:hover:text-[color:var(--sidebar-label-open-hover)] [&>span:last-child]:truncate [&>svg]:size-[var(--sidebar-icon-size)] [&>svg]:shrink-0 focus-visible:ring-[length:var(--sidebar-focus)] focus-visible:ring-[color:var(--sidebar-focus-ring-focus)] focus-visible:ring-offset-2 focus-visible:ring-offset-[color:var(--sidebar-focus-ring-offset-focus)]",
   {
     variants: {
       variant: {
@@ -567,7 +567,7 @@ function SidebarMenuBadge({ className, ...props }: React.ComponentProps<"div">) 
       data-slot="sidebar-menu-badge"
       data-sidebar="menu-badge"
       className={cn(
-        "pointer-events-none absolute right-1 flex h-5 min-w-5 items-center justify-center rounded-[var(--sidebar-menu-badge-radius)] px-1 text-[length:var(--sidebar-menu-badge-font-size)]/[var(--sidebar-menu-badge-line-height)] [font-weight:var(--sidebar-menu-badge-font-weight)] text-[color:var(--sidebar-menu-badge-label)] tabular-nums select-none",
+        "pointer-events-none absolute right-1 flex h-5 min-w-5 items-center justify-center rounded-[var(--sidebar-menu-badge-radius)] px-[var(--sidebar-menu-badge-padding-x)] text-[length:var(--sidebar-menu-badge-font-size)]/[var(--sidebar-menu-badge-line-height)] [font-weight:var(--sidebar-menu-badge-font-weight)] text-[color:var(--sidebar-menu-badge-label)] tabular-nums select-none",
         "peer-hover/menu-button:text-[color:var(--sidebar-menu-badge-label)] peer-data-[active=true]/menu-button:text-[color:var(--sidebar-menu-badge-label)]",
         "peer-data-[size=sm]/menu-button:top-1",
         "peer-data-[size=default]/menu-button:top-1.5",
@@ -597,7 +597,7 @@ function SidebarMenuSkeleton({
       data-slot="sidebar-menu-skeleton"
       data-sidebar="menu-skeleton"
       className={cn(
-        "flex h-[var(--sidebar-menu-skeleton-height)] items-center gap-[var(--sidebar-menu-skeleton-gap)] rounded-[var(--sidebar-menu-skeleton-radius)] px-2",
+        "flex h-[var(--sidebar-menu-skeleton-height)] items-center gap-[var(--sidebar-menu-skeleton-gap)] rounded-[var(--sidebar-menu-skeleton-radius)] px-[var(--sidebar-menu-skeleton-padding-x)]",
         className,
       )}
       {...props}
@@ -627,7 +627,7 @@ function SidebarMenuSub({ className, ...props }: React.ComponentProps<"ul">) {
       data-slot="sidebar-menu-sub"
       data-sidebar="menu-sub"
       className={cn(
-        "mx-3.5 flex min-w-0 translate-x-px flex-col gap-[var(--sidebar-menu-sub-gap)] border-l border-[color:var(--sidebar-menu-sub-border)] px-2.5 py-0.5",
+        "mx-3.5 flex min-w-0 translate-x-px flex-col gap-[var(--sidebar-menu-sub-gap)] border-l border-[color:var(--sidebar-menu-sub-border)] px-[var(--sidebar-menu-sub-padding-x)] py-[var(--sidebar-menu-sub-padding-y)]",
         "group-data-[collapsible=icon]:hidden",
         className,
       )}
@@ -667,7 +667,7 @@ function SidebarMenuSubButton({
       data-size={size}
       data-active={isActive}
       className={cn(
-        "flex h-7 min-w-0 -translate-x-px items-center gap-[var(--sidebar-menu-sub-button-gap)] overflow-hidden rounded-[var(--sidebar-menu-sub-button-radius)] px-2 text-[color:var(--sidebar-menu-sub-button-label)] ring-[color:var(--sidebar-menu-sub-button-focus-ring)] outline-hidden hover:bg-[color:var(--sidebar-menu-sub-button-background-hover)] hover:text-[color:var(--sidebar-menu-sub-button-label-hover)] active:bg-[color:var(--sidebar-menu-sub-button-background-active)] active:text-[color:var(--sidebar-menu-sub-button-label-active)] disabled:pointer-events-none disabled:opacity-[var(--sidebar-menu-sub-button-disabled-opacity-disabled)] aria-disabled:pointer-events-none aria-disabled:opacity-[var(--sidebar-menu-sub-button-disabled-opacity-disabled)] [&>span:last-child]:truncate [&>svg]:size-[var(--sidebar-menu-sub-button-icon-size)] [&>svg]:shrink-0 [&>svg]:text-[color:var(--sidebar-menu-sub-button-label)] focus-visible:ring-[length:var(--sidebar-menu-sub-button-focus)] focus-visible:ring-[color:var(--sidebar-menu-sub-button-focus-ring-focus)] focus-visible:ring-offset-2 focus-visible:ring-offset-[color:var(--sidebar-menu-sub-button-focus-ring-offset-focus)]",
+        "flex h-7 min-w-0 -translate-x-px items-center gap-[var(--sidebar-menu-sub-button-gap)] overflow-hidden rounded-[var(--sidebar-menu-sub-button-radius)] px-[var(--sidebar-menu-sub-button-padding-x)] text-[color:var(--sidebar-menu-sub-button-label)] ring-[color:var(--sidebar-menu-sub-button-focus-ring)] outline-hidden hover:bg-[color:var(--sidebar-menu-sub-button-background-hover)] hover:text-[color:var(--sidebar-menu-sub-button-label-hover)] active:bg-[color:var(--sidebar-menu-sub-button-background-active)] active:text-[color:var(--sidebar-menu-sub-button-label-active)] disabled:pointer-events-none disabled:opacity-[var(--sidebar-menu-sub-button-disabled-opacity-disabled)] aria-disabled:pointer-events-none aria-disabled:opacity-[var(--sidebar-menu-sub-button-disabled-opacity-disabled)] [&>span:last-child]:truncate [&>svg]:size-[var(--sidebar-menu-sub-button-icon-size)] [&>svg]:shrink-0 [&>svg]:text-[color:var(--sidebar-menu-sub-button-label)] focus-visible:ring-[length:var(--sidebar-menu-sub-button-focus)] focus-visible:ring-[color:var(--sidebar-menu-sub-button-focus-ring-focus)] focus-visible:ring-offset-2 focus-visible:ring-offset-[color:var(--sidebar-menu-sub-button-focus-ring-offset-focus)]",
         "data-[active=true]:bg-[color:var(--sidebar-background-2)] data-[active=true]:text-[color:var(--sidebar-label)] data-[active=true]:shadow-[inset_var(--sidebar-focus)_0_0_0_var(--sidebar-selected)]",
         size === "sm" && "text-[length:var(--sidebar-font-size-2)]/[var(--sidebar-line-height-2)]",
         size === "md" && "text-[length:var(--sidebar-font-size)]/[var(--sidebar-line-height)]",

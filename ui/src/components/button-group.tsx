@@ -50,7 +50,7 @@ function ButtonGroupText({
     <Comp
       data-slot="button-group-text"
       className={cn(
-        "flex items-center gap-[var(--button-group-text-gap)] rounded-[var(--button-group-text-radius)] border bg-[color:var(--button-group-text-background)] px-4 text-[length:var(--button-group-text-font-size)]/[var(--button-group-text-line-height)] [font-weight:var(--button-group-text-font-weight)] [&_svg]:pointer-events-none [&_svg:not([class*='size-'])]:size-[var(--button-group-text-icon-size)]",
+        "flex items-center gap-[var(--button-group-text-gap)] rounded-[var(--button-group-text-radius)] border bg-[color:var(--button-group-text-background)] px-[var(--button-group-text-padding-x)] text-[length:var(--button-group-text-font-size)]/[var(--button-group-text-line-height)] [font-weight:var(--button-group-text-font-weight)] [&_svg]:pointer-events-none [&_svg:not([class*='size-'])]:size-[var(--button-group-text-icon-size)]",
         className,
       )}
       {...props}

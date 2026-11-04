@@ -5904,6 +5904,82 @@
           "$type": "shadow",
           "$value": "{theme.elevation.overlay}"
         }
+      },
+      "component-spacing-map": {
+        "$description": "The steps components space by: space.unit (4px) × a multiplier × this scheme's rhythm, rounded to a multiple of 4px, at most 64px. The hairline is a fixed 2px.",
+        "$extensions": {
+          "open-ds": {
+            "rhythm": 1.5
+          }
+        },
+        "hairline": {
+          "$type": "dimension",
+          "$value": "0.125rem",
+          "$description": "A fixed 2px optical nudge. It does not follow the rhythm."
+        },
+        "x1": {
+          "$type": "dimension",
+          "$value": "0.5rem",
+          "$extensions": {
+            "open-ds": {
+              "multiplier": 1
+            }
+          }
+        },
+        "x2": {
+          "$type": "dimension",
+          "$value": "0.75rem",
+          "$extensions": {
+            "open-ds": {
+              "multiplier": 2
+            }
+          }
+        },
+        "x3": {
+          "$type": "dimension",
+          "$value": "1.25rem",
+          "$extensions": {
+            "open-ds": {
+              "multiplier": 3
+            }
+          }
+        },
+        "x4": {
+          "$type": "dimension",
+          "$value": "1.5rem",
+          "$extensions": {
+            "open-ds": {
+              "multiplier": 4
+            }
+          }
+        },
+        "x6": {
+          "$type": "dimension",
+          "$value": "2.25rem",
+          "$extensions": {
+            "open-ds": {
+              "multiplier": 6
+            }
+          }
+        },
+        "x8": {
+          "$type": "dimension",
+          "$value": "3rem",
+          "$extensions": {
+            "open-ds": {
+              "multiplier": 8
+            }
+          }
+        },
+        "x12": {
+          "$type": "dimension",
+          "$value": "4rem",
+          "$extensions": {
+            "open-ds": {
+              "multiplier": 12
+            }
+          }
+        }
       }
     },
     "component": {
@@ -6228,6 +6304,10 @@
           "$value": "{space.gap.tight}",
           "$description": "Gap of the badge."
         },
+        "padding-y": {
+          "$value": "{component-spacing-map.hairline}",
+          "$description": "Padding y of the badge."
+        },
         "font-weight": {
           "$value": "{type.label.font-weight}",
           "$description": "Font weight of the badge."
@@ -6487,6 +6567,10 @@
             "$value": "{space.gap.default}",
             "$description": "Content padding x of the tooltip."
           },
+          "padding-y": {
+            "$value": "{component-spacing-map.x1}",
+            "$description": "Content padding y of the tooltip."
+          },
           "font-size": {
             "$value": "{type.caption.font-size}",
             "$description": "Content font size of the tooltip."
@@ -6607,12 +6691,20 @@
             "$value": "{color.surface.canvas}",
             "$description": "Content background of the alert dialog."
           },
+          "padding": {
+            "$value": "{component-spacing-map.x6}",
+            "$description": "Content padding of the alert dialog."
+          },
           "shadow": {
             "$value": "{elevation.overlay}",
             "$description": "Content shadow of the alert dialog."
           }
         },
         "header": {
+          "gap": {
+            "$value": "{component-spacing-map.x2}",
+            "$description": "Header gap of the alert dialog."
+          },
           "gap-x": {
             "$value": "{space.gap.section}",
             "$description": "Header gap x of the alert dialog."
@@ -6668,6 +6760,10 @@
         }
       },
       "alert": {
+        "gap-y": {
+          "$value": "{component-spacing-map.hairline}",
+          "$description": "Gap y of the alert."
+        },
         "radius": {
           "$value": "{radius.container}",
           "$description": "Radius of the alert."
@@ -6676,6 +6772,10 @@
           "$value": "{space.inset.container}",
           "$description": "Padding x of the alert."
         },
+        "padding-y": {
+          "$value": "{component-spacing-map.x3}",
+          "$description": "Padding y of the alert."
+        },
         "font-size": {
           "$value": "{type.body.font-size}",
           "$description": "Font size of the alert."
@@ -6683,6 +6783,10 @@
         "line-height": {
           "$value": "{type.body.line-height}",
           "$description": "Line height of the alert."
+        },
+        "gap-x": {
+          "$value": "{component-spacing-map.x3}",
+          "$description": "Gap x of the alert."
         },
         "icon-size": {
           "$value": "{size.icon}",
@@ -6734,6 +6838,10 @@
         }
       },
       "attachment": {
+        "gap": {
+          "$value": "{component-spacing-map.x3}",
+          "$description": "Gap of the attachment."
+        },
         "radius": {
           "$value": "{radius.control}",
           "$description": "Radius of the attachment."
@@ -6741,6 +6849,14 @@
         "background": {
           "$value": "{color.surface.canvas}",
           "$description": "Background of the attachment."
+        },
+        "padding-x": {
+          "$value": "{component-spacing-map.x3}",
+          "$description": "Padding x of the attachment."
+        },
+        "padding-y": {
+          "$value": "{component-spacing-map.x2}",
+          "$description": "Padding y of the attachment."
         },
         "font-size": {
           "$value": "{type.body.font-size}",
@@ -6899,6 +7015,10 @@
       },
       "breadcrumb": {
         "list": {
+          "gap": {
+            "$value": "{component-spacing-map.x2}",
+            "$description": "List gap of the breadcrumb."
+          },
           "font-size": {
             "$value": "{type.body.font-size}",
             "$description": "List font size of the breadcrumb."
@@ -6910,6 +7030,16 @@
           "label": {
             "$value": "{color.text.muted}",
             "$description": "List label of the breadcrumb."
+          },
+          "gap-2": {
+            "$value": "{component-spacing-map.x3}",
+            "$description": "List gap 2 of the breadcrumb."
+          }
+        },
+        "item": {
+          "gap": {
+            "$value": "{component-spacing-map.x2}",
+            "$description": "Item gap of the breadcrumb."
           }
         },
         "link": {
@@ -6975,6 +7105,14 @@
             "$value": "{radius.container}",
             "$description": "Body radius of the bubble."
           },
+          "padding-x": {
+            "$value": "{component-spacing-map.x3}",
+            "$description": "Body padding x of the bubble."
+          },
+          "padding-y": {
+            "$value": "{component-spacing-map.x2}",
+            "$description": "Body padding y of the bubble."
+          },
           "font-size": {
             "$value": "{type.body.font-size}",
             "$description": "Body font size of the bubble."
@@ -7002,6 +7140,10 @@
           "background": {
             "$value": "{color.surface.sunken}",
             "$description": "Text background of the button group."
+          },
+          "padding-x": {
+            "$value": "{component-spacing-map.x4}",
+            "$description": "Text padding x of the button group."
           },
           "font-size": {
             "$value": "{type.body.font-size}",
@@ -7032,6 +7174,10 @@
           "$value": "{color.surface.canvas}",
           "$description": "Background of the calendar."
         },
+        "padding": {
+          "$value": "{component-spacing-map.x3}",
+          "$description": "Padding of the calendar."
+        },
         "gap": {
           "$value": "{space.gap.group}",
           "$description": "Gap of the calendar."
@@ -7043,6 +7189,10 @@
         "disabled-opacity-disabled": {
           "$value": "{opacity.disabled}",
           "$description": "Disabled opacity disabled of the calendar."
+        },
+        "gap-3": {
+          "$value": "{component-spacing-map.x2}",
+          "$description": "Gap 3 of the calendar."
         },
         "font-size": {
           "$value": "{type.body.font-size}",
@@ -7091,6 +7241,14 @@
         "height": {
           "$value": "{size.control.default}",
           "$description": "Height of the calendar."
+        },
+        "padding-right": {
+          "$value": "{component-spacing-map.x1}",
+          "$description": "Padding right of the calendar."
+        },
+        "padding-left": {
+          "$value": "{component-spacing-map.x2}",
+          "$description": "Padding left of the calendar."
         },
         "label": {
           "$value": "{color.text.muted}",
@@ -7146,6 +7304,16 @@
         }
       },
       "carousel": {
+        "item": {
+          "padding-left": {
+            "$value": "{component-spacing-map.x4}",
+            "$description": "Item padding left of the carousel."
+          },
+          "padding-top": {
+            "$value": "{component-spacing-map.x4}",
+            "$description": "Item padding top of the carousel."
+          }
+        },
         "previous": {
           "size": {
             "$value": "{size.control.default}",
@@ -7192,6 +7360,10 @@
           "$value": "{type.label.font-weight}",
           "$description": "Font weight of the chart."
         },
+        "gap": {
+          "$value": "{component-spacing-map.x2}",
+          "$description": "Gap of the chart."
+        },
         "radius": {
           "$value": "{radius.container}",
           "$description": "Radius of the chart."
@@ -7204,13 +7376,21 @@
           "$value": "{color.surface.canvas}",
           "$description": "Background of the chart."
         },
+        "padding-x": {
+          "$value": "{component-spacing-map.x3}",
+          "$description": "Padding x of the chart."
+        },
+        "padding-y": {
+          "$value": "{component-spacing-map.x2}",
+          "$description": "Padding y of the chart."
+        },
         "shadow": {
           "$value": "{elevation.overlay}",
           "$description": "Shadow of the chart."
         },
-        "gap": {
+        "gap-2": {
           "$value": "{space.gap.default}",
-          "$description": "Gap of the chart."
+          "$description": "Gap 2 of the chart."
         },
         "label": {
           "$value": "{color.text.muted}",
@@ -7220,9 +7400,17 @@
           "$value": "{color.text.primary}",
           "$description": "Label 2 of the chart."
         },
-        "gap-2": {
+        "gap-3": {
           "$value": "{space.gap.group}",
-          "$description": "Gap 2 of the chart."
+          "$description": "Gap 3 of the chart."
+        },
+        "padding-bottom": {
+          "$value": "{component-spacing-map.x3}",
+          "$description": "Padding bottom of the chart."
+        },
+        "padding-top": {
+          "$value": "{component-spacing-map.x3}",
+          "$description": "Padding top of the chart."
         }
       },
       "checkbox": {
@@ -7298,6 +7486,12 @@
             "$description": "Content background 2 of the combobox."
           }
         },
+        "list": {
+          "padding": {
+            "$value": "{component-spacing-map.x1}",
+            "$description": "List padding of the combobox."
+          }
+        },
         "item": {
           "gap": {
             "$value": "{space.gap.default}",
@@ -7306,6 +7500,18 @@
           "radius": {
             "$value": "{radius.badge}",
             "$description": "Item radius of the combobox."
+          },
+          "padding-y": {
+            "$value": "{component-spacing-map.x2}",
+            "$description": "Item padding y of the combobox."
+          },
+          "padding-right": {
+            "$value": "{component-spacing-map.x8}",
+            "$description": "Item padding right of the combobox."
+          },
+          "padding-left": {
+            "$value": "{component-spacing-map.x2}",
+            "$description": "Item padding left of the combobox."
           },
           "font-size": {
             "$value": "{type.body.font-size}",
@@ -7337,6 +7543,14 @@
           "$description": "Icon size of the combobox."
         },
         "label": {
+          "padding-x": {
+            "$value": "{component-spacing-map.x2}",
+            "$description": "Label padding x of the combobox."
+          },
+          "padding-y": {
+            "$value": "{component-spacing-map.x2}",
+            "$description": "Label padding y of the combobox."
+          },
           "font-size": {
             "$value": "{type.caption.font-size}",
             "$description": "Label font size of the combobox."
@@ -7349,9 +7563,9 @@
             "$value": "{color.text.muted}",
             "$description": "Label label of the combobox."
           },
-          "padding-x": {
+          "padding-x-2": {
             "$value": "{space.inset.control-x}",
-            "$description": "Label padding x of the combobox."
+            "$description": "Label padding x 2 of the combobox."
           },
           "font-size-2": {
             "$value": "{type.body.font-size}",
@@ -7363,6 +7577,10 @@
           }
         },
         "empty": {
+          "padding-y": {
+            "$value": "{component-spacing-map.x2}",
+            "$description": "Empty padding y of the combobox."
+          },
           "font-size": {
             "$value": "{type.body.font-size}",
             "$description": "Empty font size of the combobox."
@@ -7383,6 +7601,10 @@
           }
         },
         "chips": {
+          "gap": {
+            "$value": "{component-spacing-map.x2}",
+            "$description": "Chips gap of the combobox."
+          },
           "radius": {
             "$value": "{radius.control}",
             "$description": "Chips radius of the combobox."
@@ -7390,6 +7612,14 @@
           "border": {
             "$value": "{color.border.strong}",
             "$description": "Chips border of the combobox."
+          },
+          "padding-x": {
+            "$value": "{component-spacing-map.x3}",
+            "$description": "Chips padding x of the combobox."
+          },
+          "padding-y": {
+            "$value": "{component-spacing-map.x2}",
+            "$description": "Chips padding y of the combobox."
           },
           "font-size": {
             "$value": "{type.body.font-size}",
@@ -7418,6 +7648,10 @@
           "focus-ring-invalid": {
             "$value": "{color.status.danger.@}",
             "$description": "Chips focus ring invalid of the combobox."
+          },
+          "padding-x-2": {
+            "$value": "{component-spacing-map.x2}",
+            "$description": "Chips padding x 2 of the combobox."
           }
         },
         "chip": {
@@ -7432,6 +7666,10 @@
           "background": {
             "$value": "{color.surface.sunken}",
             "$description": "Chip background of the combobox."
+          },
+          "padding-x": {
+            "$value": "{component-spacing-map.x2}",
+            "$description": "Chip padding x of the combobox."
           },
           "font-size": {
             "$value": "{type.caption.font-size}",
@@ -7472,6 +7710,10 @@
           "$value": "{color.text.primary}",
           "$description": "Label of the command."
         },
+        "padding-x": {
+          "$value": "{component-spacing-map.x2}",
+          "$description": "Padding x of the command."
+        },
         "font-weight": {
           "$value": "{type.label.font-weight}",
           "$description": "Font weight of the command."
@@ -7480,16 +7722,28 @@
           "$value": "{color.text.muted}",
           "$description": "Label 2 of the command."
         },
+        "padding-y": {
+          "$value": "{component-spacing-map.x3}",
+          "$description": "Padding y of the command."
+        },
         "input": {
           "wrapper": {
             "gap": {
               "$value": "{space.gap.default}",
               "$description": "Input wrapper gap of the command."
+            },
+            "padding-x": {
+              "$value": "{component-spacing-map.x3}",
+              "$description": "Input wrapper padding x of the command."
             }
           },
           "radius": {
             "$value": "{radius.control}",
             "$description": "Input radius of the command."
+          },
+          "padding-y": {
+            "$value": "{component-spacing-map.x3}",
+            "$description": "Input padding y of the command."
           },
           "font-size": {
             "$value": "{type.body.font-size}",
@@ -7517,6 +7771,10 @@
           "$description": "Disabled opacity of the command."
         },
         "empty": {
+          "padding-y": {
+            "$value": "{component-spacing-map.x6}",
+            "$description": "Empty padding y of the command."
+          },
           "font-size": {
             "$value": "{type.body.font-size}",
             "$description": "Empty font size of the command."
@@ -7527,9 +7785,21 @@
           }
         },
         "group": {
+          "padding": {
+            "$value": "{component-spacing-map.x1}",
+            "$description": "Group padding of the command."
+          },
           "label": {
             "$value": "{color.text.primary}",
             "$description": "Group label of the command."
+          },
+          "padding-x": {
+            "$value": "{component-spacing-map.x2}",
+            "$description": "Group padding x of the command."
+          },
+          "padding-y": {
+            "$value": "{component-spacing-map.x2}",
+            "$description": "Group padding y of the command."
           },
           "font-size": {
             "$value": "{type.caption.font-size}",
@@ -7562,6 +7832,14 @@
           "radius": {
             "$value": "{radius.badge}",
             "$description": "Item radius of the command."
+          },
+          "padding-x": {
+            "$value": "{component-spacing-map.x2}",
+            "$description": "Item padding x of the command."
+          },
+          "padding-y": {
+            "$value": "{component-spacing-map.x2}",
+            "$description": "Item padding y of the command."
           },
           "font-size": {
             "$value": "{type.body.font-size}",
@@ -7614,6 +7892,14 @@
               "$value": "{radius.badge}",
               "$description": "Sub trigger radius of the context menu."
             },
+            "padding-x": {
+              "$value": "{component-spacing-map.x2}",
+              "$description": "Sub trigger padding x of the context menu."
+            },
+            "padding-y": {
+              "$value": "{component-spacing-map.x2}",
+              "$description": "Sub trigger padding y of the context menu."
+            },
             "font-size": {
               "$value": "{type.body.font-size}",
               "$description": "Sub trigger font size of the context menu."
@@ -7629,6 +7915,10 @@
             "label-focus": {
               "$value": "{color.text.primary}",
               "$description": "Sub trigger label focus of the context menu."
+            },
+            "padding-left": {
+              "$value": "{component-spacing-map.x8}",
+              "$description": "Sub trigger padding left of the context menu."
             },
             "background-open": {
               "$value": "{color.surface.sunken}",
@@ -7656,6 +7946,10 @@
               "$value": "{color.surface.raised}",
               "$description": "Sub content background of the context menu."
             },
+            "padding": {
+              "$value": "{component-spacing-map.x1}",
+              "$description": "Sub content padding of the context menu."
+            },
             "label": {
               "$value": "{color.text.primary}",
               "$description": "Sub content label of the context menu."
@@ -7675,6 +7969,10 @@
             "$value": "{color.surface.raised}",
             "$description": "Content background of the context menu."
           },
+          "padding": {
+            "$value": "{component-spacing-map.x1}",
+            "$description": "Content padding of the context menu."
+          },
           "label": {
             "$value": "{color.text.primary}",
             "$description": "Content label of the context menu."
@@ -7692,6 +7990,14 @@
           "radius": {
             "$value": "{radius.badge}",
             "$description": "Item radius of the context menu."
+          },
+          "padding-x": {
+            "$value": "{component-spacing-map.x2}",
+            "$description": "Item padding x of the context menu."
+          },
+          "padding-y": {
+            "$value": "{component-spacing-map.x2}",
+            "$description": "Item padding y of the context menu."
           },
           "font-size": {
             "$value": "{type.body.font-size}",
@@ -7712,6 +8018,10 @@
           "disabled-opacity-disabled": {
             "$value": "{opacity.disabled}",
             "$description": "Item disabled opacity disabled of the context menu."
+          },
+          "padding-left": {
+            "$value": "{component-spacing-map.x8}",
+            "$description": "Item padding left of the context menu."
           },
           "label": {
             "$value": "{color.status.danger.@}",
@@ -7743,6 +8053,18 @@
             "radius": {
               "$value": "{radius.badge}",
               "$description": "Checkbox item radius of the context menu."
+            },
+            "padding-y": {
+              "$value": "{component-spacing-map.x2}",
+              "$description": "Checkbox item padding y of the context menu."
+            },
+            "padding-right": {
+              "$value": "{component-spacing-map.x2}",
+              "$description": "Checkbox item padding right of the context menu."
+            },
+            "padding-left": {
+              "$value": "{component-spacing-map.x8}",
+              "$description": "Checkbox item padding left of the context menu."
             },
             "font-size": {
               "$value": "{type.body.font-size}",
@@ -7784,6 +8106,18 @@
               "$value": "{radius.badge}",
               "$description": "Radio item radius of the context menu."
             },
+            "padding-y": {
+              "$value": "{component-spacing-map.x2}",
+              "$description": "Radio item padding y of the context menu."
+            },
+            "padding-right": {
+              "$value": "{component-spacing-map.x2}",
+              "$description": "Radio item padding right of the context menu."
+            },
+            "padding-left": {
+              "$value": "{component-spacing-map.x8}",
+              "$description": "Radio item padding left of the context menu."
+            },
             "font-size": {
               "$value": "{type.body.font-size}",
               "$description": "Radio item font size of the context menu."
@@ -7811,6 +8145,14 @@
           }
         },
         "label": {
+          "padding-x": {
+            "$value": "{component-spacing-map.x2}",
+            "$description": "Label padding x of the context menu."
+          },
+          "padding-y": {
+            "$value": "{component-spacing-map.x2}",
+            "$description": "Label padding y of the context menu."
+          },
           "font-size": {
             "$value": "{type.body.font-size}",
             "$description": "Label font size of the context menu."
@@ -7826,6 +8168,10 @@
           "label": {
             "$value": "{color.text.primary}",
             "$description": "Label label of the context menu."
+          },
+          "padding-left": {
+            "$value": "{component-spacing-map.x8}",
+            "$description": "Label padding left of the context menu."
           }
         },
         "separator": {
@@ -7858,6 +8204,10 @@
           "$value": "{color.text.primary}",
           "$description": "Label hover of the data table."
         },
+        "padding": {
+          "$value": "{component-spacing-map.x2}",
+          "$description": "Padding of the data table."
+        },
         "gap-2": {
           "$value": "{space.gap.default}",
           "$description": "Gap 2 of the data table."
@@ -7865,6 +8215,14 @@
         "radius": {
           "$value": "{radius.badge}",
           "$description": "Radius of the data table."
+        },
+        "padding-x": {
+          "$value": "{component-spacing-map.x2}",
+          "$description": "Padding x of the data table."
+        },
+        "padding-y": {
+          "$value": "{component-spacing-map.x1}",
+          "$description": "Padding y of the data table."
         },
         "background-hover": {
           "$value": "{color.surface.sunken}",
@@ -7911,6 +8269,10 @@
         "radius": {
           "$value": "{radius.badge}",
           "$description": "Radius of the dialog."
+        },
+        "padding": {
+          "$value": "{component-spacing-map.x1}",
+          "$description": "Padding of the dialog."
         },
         "label": {
           "$value": "{color.text.secondary}",
@@ -7971,9 +8333,17 @@
           "$description": "Background of the drawer."
         },
         "header": {
+          "gap": {
+            "$value": "{component-spacing-map.hairline}",
+            "$description": "Header gap of the drawer."
+          },
           "padding": {
             "$value": "{space.inset.container}",
             "$description": "Header padding of the drawer."
+          },
+          "gap-2": {
+            "$value": "{component-spacing-map.x2}",
+            "$description": "Header gap 2 of the drawer."
           }
         },
         "footer": {
@@ -8013,6 +8383,10 @@
       },
       "dropdown-menu": {
         "content": {
+          "padding": {
+            "$value": "{component-spacing-map.x1}",
+            "$description": "Content padding of the dropdown menu."
+          },
           "label": {
             "$value": "{color.text.primary}",
             "$description": "Content label of the dropdown menu."
@@ -8073,6 +8447,14 @@
         "radius": {
           "$value": "{radius.container}",
           "$description": "Radius of the empty."
+        },
+        "padding": {
+          "$value": "{component-spacing-map.x6}",
+          "$description": "Padding of the empty."
+        },
+        "padding-2": {
+          "$value": "{component-spacing-map.x12}",
+          "$description": "Padding 2 of the empty."
         },
         "header": {
           "gap": {
@@ -8142,6 +8524,10 @@
           "gap": {
             "$value": "{space.gap.section}",
             "$description": "Set gap of the field."
+          },
+          "gap-2": {
+            "$value": "{component-spacing-map.x3}",
+            "$description": "Set gap 2 of the field."
           }
         },
         "legend": {
@@ -8160,13 +8546,31 @@
         },
         "group": {
           "gap": {
-            "$value": "{space.gap.group}",
+            "$value": "{component-spacing-map.x8}",
             "$description": "Group gap of the field."
+          },
+          "gap-2": {
+            "$value": "{component-spacing-map.x3}",
+            "$description": "Group gap 2 of the field."
+          },
+          "gap-3": {
+            "$value": "{space.gap.group}",
+            "$description": "Group gap 3 of the field."
           }
+        },
+        "gap": {
+          "$value": "{component-spacing-map.x3}",
+          "$description": "Gap of the field."
         },
         "label-invalid": {
           "$value": "{color.status.danger.@}",
           "$description": "Label invalid of the field."
+        },
+        "content": {
+          "gap": {
+            "$value": "{component-spacing-map.x2}",
+            "$description": "Content gap of the field."
+          }
         },
         "label": {
           "gap": {
@@ -8180,6 +8584,10 @@
           "radius": {
             "$value": "{radius.control}",
             "$description": "Label radius of the field."
+          },
+          "padding": {
+            "$value": "{component-spacing-map.x4}",
+            "$description": "Label padding of the field."
           },
           "font-size": {
             "$value": "{type.body.font-size}",
@@ -8242,9 +8650,13 @@
           "$value": "{color.surface.canvas}",
           "$description": "Background of the field."
         },
-        "gap": {
+        "padding-x": {
+          "$value": "{component-spacing-map.x2}",
+          "$description": "Padding x of the field."
+        },
+        "gap-2": {
           "$value": "{space.gap.tight}",
-          "$description": "Gap of the field."
+          "$description": "Gap 2 of the field."
         },
         "error": {
           "font-size": {
@@ -8344,6 +8756,14 @@
           "$value": "{elevation.card}",
           "$description": "Shadow of the input group."
         },
+        "padding-left": {
+          "$value": "{component-spacing-map.x2}",
+          "$description": "Padding left of the input group."
+        },
+        "padding-right": {
+          "$value": "{component-spacing-map.x2}",
+          "$description": "Padding right of the input group."
+        },
         "padding-bottom": {
           "$value": "{space.inset.control-x}",
           "$description": "Padding bottom of the input group."
@@ -8371,6 +8791,10 @@
         "gap": {
           "$value": "{space.gap.default}",
           "$description": "Gap of the input group."
+        },
+        "padding-y": {
+          "$value": "{component-spacing-map.x2}",
+          "$description": "Padding y of the input group."
         },
         "font-size": {
           "$value": "{type.body.font-size}",
@@ -8420,6 +8844,10 @@
               "$value": "{space.inset.control-x}",
               "$description": "Block start padding top of the input group."
             },
+            "padding-top-2": {
+              "$value": "{component-spacing-map.x3}",
+              "$description": "Block start padding top 2 of the input group."
+            },
             "padding-bottom": {
               "$value": "{space.inset.control-x}",
               "$description": "Block start padding bottom of the input group."
@@ -8433,6 +8861,10 @@
             "padding-bottom": {
               "$value": "{space.inset.control-x}",
               "$description": "Block end padding bottom of the input group."
+            },
+            "padding-bottom-2": {
+              "$value": "{component-spacing-map.x3}",
+              "$description": "Block end padding bottom 2 of the input group."
             },
             "padding-top": {
               "$value": "{space.inset.control-x}",
@@ -8448,6 +8880,10 @@
           "gap": {
             "$value": "{space.gap.tight}",
             "$description": "Xs gap of the input group."
+          },
+          "padding-x": {
+            "$value": "{component-spacing-map.x2}",
+            "$description": "Xs padding x of the input group."
           }
         },
         "sm": {
@@ -8455,9 +8891,17 @@
             "$value": "{size.control.default}",
             "$description": "Sm height of the input group."
           },
+          "gap": {
+            "$value": "{component-spacing-map.x2}",
+            "$description": "Sm gap of the input group."
+          },
           "radius": {
             "$value": "{radius.control}",
             "$description": "Sm radius of the input group."
+          },
+          "padding-x": {
+            "$value": "{component-spacing-map.x3}",
+            "$description": "Sm padding x of the input group."
           }
         },
         "icon": {
@@ -8591,9 +9035,17 @@
           }
         },
         "sm": {
+          "gap": {
+            "$value": "{component-spacing-map.x3}",
+            "$description": "Sm gap of the item."
+          },
           "padding-x": {
             "$value": "{space.inset.container}",
             "$description": "Sm padding x of the item."
+          },
+          "padding-y": {
+            "$value": "{component-spacing-map.x3}",
+            "$description": "Sm padding y of the item."
           }
         },
         "gap": {
@@ -8702,6 +9154,10 @@
           "$value": "{color.surface.sunken}",
           "$description": "Background of the kbd."
         },
+        "padding-x": {
+          "$value": "{component-spacing-map.x1}",
+          "$description": "Padding x of the kbd."
+        },
         "font-size": {
           "$value": "{type.caption.font-size}",
           "$description": "Font size of the kbd."
@@ -8760,6 +9216,10 @@
         }
       },
       "marker": {
+        "gap": {
+          "$value": "{component-spacing-map.x3}",
+          "$description": "Gap of the marker."
+        },
         "font-size": {
           "$value": "{type.caption.font-size}",
           "$description": "Font size of the marker."
@@ -8790,6 +9250,10 @@
           "$value": "{color.surface.canvas}",
           "$description": "Background of the menubar."
         },
+        "padding": {
+          "$value": "{component-spacing-map.x1}",
+          "$description": "Padding of the menubar."
+        },
         "shadow": {
           "$value": "{elevation.card}",
           "$description": "Shadow of the menubar."
@@ -8798,6 +9262,14 @@
           "radius": {
             "$value": "{radius.badge}",
             "$description": "Trigger radius of the menubar."
+          },
+          "padding-x": {
+            "$value": "{component-spacing-map.x2}",
+            "$description": "Trigger padding x of the menubar."
+          },
+          "padding-y": {
+            "$value": "{component-spacing-map.x1}",
+            "$description": "Trigger padding y of the menubar."
           },
           "font-size": {
             "$value": "{type.body.font-size}",
@@ -8837,6 +9309,10 @@
             "$value": "{color.surface.raised}",
             "$description": "Content background of the menubar."
           },
+          "padding": {
+            "$value": "{component-spacing-map.x1}",
+            "$description": "Content padding of the menubar."
+          },
           "label": {
             "$value": "{color.text.primary}",
             "$description": "Content label of the menubar."
@@ -8854,6 +9330,14 @@
           "radius": {
             "$value": "{radius.badge}",
             "$description": "Item radius of the menubar."
+          },
+          "padding-x": {
+            "$value": "{component-spacing-map.x2}",
+            "$description": "Item padding x of the menubar."
+          },
+          "padding-y": {
+            "$value": "{component-spacing-map.x2}",
+            "$description": "Item padding y of the menubar."
           },
           "font-size": {
             "$value": "{type.body.font-size}",
@@ -8874,6 +9358,10 @@
           "disabled-opacity-disabled": {
             "$value": "{opacity.disabled}",
             "$description": "Item disabled opacity disabled of the menubar."
+          },
+          "padding-left": {
+            "$value": "{component-spacing-map.x8}",
+            "$description": "Item padding left of the menubar."
           },
           "label": {
             "$value": "{color.status.danger.@}",
@@ -8905,6 +9393,18 @@
             "radius": {
               "$value": "{radius.badge}",
               "$description": "Checkbox item radius of the menubar."
+            },
+            "padding-y": {
+              "$value": "{component-spacing-map.x2}",
+              "$description": "Checkbox item padding y of the menubar."
+            },
+            "padding-right": {
+              "$value": "{component-spacing-map.x2}",
+              "$description": "Checkbox item padding right of the menubar."
+            },
+            "padding-left": {
+              "$value": "{component-spacing-map.x8}",
+              "$description": "Checkbox item padding left of the menubar."
             },
             "font-size": {
               "$value": "{type.body.font-size}",
@@ -8946,6 +9446,18 @@
               "$value": "{radius.badge}",
               "$description": "Radio item radius of the menubar."
             },
+            "padding-y": {
+              "$value": "{component-spacing-map.x2}",
+              "$description": "Radio item padding y of the menubar."
+            },
+            "padding-right": {
+              "$value": "{component-spacing-map.x2}",
+              "$description": "Radio item padding right of the menubar."
+            },
+            "padding-left": {
+              "$value": "{component-spacing-map.x8}",
+              "$description": "Radio item padding left of the menubar."
+            },
             "font-size": {
               "$value": "{type.body.font-size}",
               "$description": "Radio item font size of the menubar."
@@ -8973,6 +9485,14 @@
           }
         },
         "label": {
+          "padding-x": {
+            "$value": "{component-spacing-map.x2}",
+            "$description": "Label padding x of the menubar."
+          },
+          "padding-y": {
+            "$value": "{component-spacing-map.x2}",
+            "$description": "Label padding y of the menubar."
+          },
           "font-size": {
             "$value": "{type.body.font-size}",
             "$description": "Label font size of the menubar."
@@ -8984,6 +9504,10 @@
           "font-weight": {
             "$value": "{type.label.font-weight}",
             "$description": "Label font weight of the menubar."
+          },
+          "padding-left": {
+            "$value": "{component-spacing-map.x8}",
+            "$description": "Label padding left of the menubar."
           }
         },
         "separator": {
@@ -9012,6 +9536,14 @@
               "$value": "{radius.badge}",
               "$description": "Sub trigger radius of the menubar."
             },
+            "padding-x": {
+              "$value": "{component-spacing-map.x2}",
+              "$description": "Sub trigger padding x of the menubar."
+            },
+            "padding-y": {
+              "$value": "{component-spacing-map.x2}",
+              "$description": "Sub trigger padding y of the menubar."
+            },
             "font-size": {
               "$value": "{type.body.font-size}",
               "$description": "Sub trigger font size of the menubar."
@@ -9027,6 +9559,10 @@
             "label-focus": {
               "$value": "{color.text.primary}",
               "$description": "Sub trigger label focus of the menubar."
+            },
+            "padding-left": {
+              "$value": "{component-spacing-map.x8}",
+              "$description": "Sub trigger padding left of the menubar."
             },
             "background-open": {
               "$value": "{color.surface.sunken}",
@@ -9045,6 +9581,10 @@
             "background": {
               "$value": "{color.surface.raised}",
               "$description": "Sub content background of the menubar."
+            },
+            "padding": {
+              "$value": "{component-spacing-map.x1}",
+              "$description": "Sub content padding of the menubar."
             },
             "label": {
               "$value": "{color.text.primary}",
@@ -9084,6 +9624,10 @@
         }
       },
       "message": {
+        "gap": {
+          "$value": "{component-spacing-map.x3}",
+          "$description": "Gap of the message."
+        },
         "font-size": {
           "$value": "{type.body.font-size}",
           "$description": "Font size of the message."
@@ -9092,9 +9636,9 @@
           "$value": "{type.body.line-height}",
           "$description": "Line height of the message."
         },
-        "gap": {
+        "gap-2": {
           "$value": "{space.gap.tight}",
-          "$description": "Gap of the message."
+          "$description": "Gap 2 of the message."
         },
         "gap-x": {
           "$value": "{space.gap.default}",
@@ -9138,6 +9682,14 @@
           "$value": "{space.inset.control-x}",
           "$description": "Padding x of the native select."
         },
+        "padding-y": {
+          "$value": "{component-spacing-map.x2}",
+          "$description": "Padding y of the native select."
+        },
+        "padding-right": {
+          "$value": "{component-spacing-map.x8}",
+          "$description": "Padding right of the native select."
+        },
         "font-size": {
           "$value": "{type.body.font-size}",
           "$description": "Font size of the native select."
@@ -9165,6 +9717,10 @@
         "height": {
           "$value": "{size.control.default}",
           "$description": "Height of the native select."
+        },
+        "padding-y-2": {
+          "$value": "{component-spacing-map.x1}",
+          "$description": "Padding y 2 of the native select."
         },
         "border-focus": {
           "$value": "{color.border.focus}",
@@ -9217,6 +9773,10 @@
         "padding-x": {
           "$value": "{space.inset.container}",
           "$description": "Padding x of the navigation menu."
+        },
+        "padding-y": {
+          "$value": "{component-spacing-map.x2}",
+          "$description": "Padding y of the navigation menu."
         },
         "font-size": {
           "$value": "{type.body.font-size}",
@@ -9282,6 +9842,16 @@
           "$value": "{motion.duration.feedback}",
           "$description": "Duration of the navigation menu."
         },
+        "content": {
+          "padding": {
+            "$value": "{component-spacing-map.x2}",
+            "$description": "Content padding of the navigation menu."
+          },
+          "padding-right": {
+            "$value": "{component-spacing-map.x3}",
+            "$description": "Content padding right of the navigation menu."
+          }
+        },
         "background-2": {
           "$value": "{color.surface.raised}",
           "$description": "Background 2 of the navigation menu."
@@ -9320,6 +9890,10 @@
           "radius": {
             "$value": "{radius.badge}",
             "$description": "Link radius of the navigation menu."
+          },
+          "padding": {
+            "$value": "{component-spacing-map.x2}",
+            "$description": "Link padding of the navigation menu."
           },
           "font-size": {
             "$value": "{type.body.font-size}",
@@ -9398,6 +9972,18 @@
           "$value": "{space.gap.tight}",
           "$description": "Gap of the pagination."
         },
+        "padding-x": {
+          "$value": "{component-spacing-map.x3}",
+          "$description": "Padding x of the pagination."
+        },
+        "padding-left": {
+          "$value": "{component-spacing-map.x3}",
+          "$description": "Padding left of the pagination."
+        },
+        "padding-right": {
+          "$value": "{component-spacing-map.x3}",
+          "$description": "Padding right of the pagination."
+        },
         "icon-size": {
           "$value": "{size.icon}",
           "$description": "Icon size of the pagination."
@@ -9470,6 +10056,10 @@
         }
       },
       "radio-group": {
+        "gap": {
+          "$value": "{component-spacing-map.x3}",
+          "$description": "Gap of the radio group."
+        },
         "item": {
           "icon-size": {
             "$value": "{size.icon}",
@@ -9611,6 +10201,10 @@
           "$description": "Size of the select."
         },
         "content": {
+          "padding": {
+            "$value": "{component-spacing-map.x1}",
+            "$description": "Content padding of the select."
+          },
           "label": {
             "$value": "{color.text.primary}",
             "$description": "Content label of the select."
@@ -9632,6 +10226,10 @@
           "padding-left": {
             "$value": "{space.inset.cell-x}",
             "$description": "Item padding left of the select."
+          },
+          "padding-right": {
+            "$value": "{component-spacing-map.x8}",
+            "$description": "Item padding right of the select."
           },
           "radius": {
             "$value": "{radius.badge}",
@@ -9703,6 +10301,10 @@
           "$description": "Icon size of the sheet."
         },
         "header": {
+          "gap": {
+            "$value": "{component-spacing-map.x2}",
+            "$description": "Header gap of the sheet."
+          },
           "padding": {
             "$value": "{space.inset.container}",
             "$description": "Header padding of the sheet."
@@ -9774,6 +10376,10 @@
             "$description": "Container duration of the sidebar."
           }
         },
+        "padding": {
+          "$value": "{component-spacing-map.x2}",
+          "$description": "Padding of the sidebar."
+        },
         "inner": {
           "background": {
             "$value": "{color.surface.default}",
@@ -9830,12 +10436,20 @@
           "gap": {
             "$value": "{space.gap.default}",
             "$description": "Header gap of the sidebar."
+          },
+          "padding": {
+            "$value": "{component-spacing-map.x2}",
+            "$description": "Header padding of the sidebar."
           }
         },
         "footer": {
           "gap": {
             "$value": "{space.gap.default}",
             "$description": "Footer gap of the sidebar."
+          },
+          "padding": {
+            "$value": "{component-spacing-map.x2}",
+            "$description": "Footer padding of the sidebar."
           }
         },
         "separator": {
@@ -9851,6 +10465,10 @@
           }
         },
         "group": {
+          "padding": {
+            "$value": "{component-spacing-map.x2}",
+            "$description": "Group padding of the sidebar."
+          },
           "label": {
             "height": {
               "$value": "{size.control.default}",
@@ -9859,6 +10477,10 @@
             "radius": {
               "$value": "{radius.control}",
               "$description": "Group label radius of the sidebar."
+            },
+            "padding-x": {
+              "$value": "{component-spacing-map.x2}",
+              "$description": "Group label padding x of the sidebar."
             },
             "font-size": {
               "$value": "{type.caption.font-size}",
@@ -9998,6 +10620,10 @@
               "$value": "{radius.control}",
               "$description": "Menu badge radius of the sidebar."
             },
+            "padding-x": {
+              "$value": "{component-spacing-map.x1}",
+              "$description": "Menu badge padding x of the sidebar."
+            },
             "font-size": {
               "$value": "{type.caption.font-size}",
               "$description": "Menu badge font size of the sidebar."
@@ -10027,6 +10653,10 @@
             "radius": {
               "$value": "{radius.control}",
               "$description": "Menu skeleton radius of the sidebar."
+            },
+            "padding-x": {
+              "$value": "{component-spacing-map.x2}",
+              "$description": "Menu skeleton padding x of the sidebar."
             }
           },
           "sub": {
@@ -10038,6 +10668,14 @@
               "$value": "{color.border.default}",
               "$description": "Menu sub border of the sidebar."
             },
+            "padding-x": {
+              "$value": "{component-spacing-map.x3}",
+              "$description": "Menu sub padding x of the sidebar."
+            },
+            "padding-y": {
+              "$value": "{component-spacing-map.hairline}",
+              "$description": "Menu sub padding y of the sidebar."
+            },
             "button": {
               "gap": {
                 "$value": "{space.gap.default}",
@@ -10046,6 +10684,10 @@
               "radius": {
                 "$value": "{radius.control}",
                 "$description": "Menu sub button radius of the sidebar."
+              },
+              "padding-x": {
+                "$value": "{component-spacing-map.x2}",
+                "$description": "Menu sub button padding x of the sidebar."
               },
               "label": {
                 "$value": "{color.text.primary}",
@@ -10109,6 +10751,10 @@
         "focus-ring": {
           "$value": "{color.border.focus}",
           "$description": "Focus ring of the sidebar."
+        },
+        "padding-right": {
+          "$value": "{component-spacing-map.x8}",
+          "$description": "Padding right of the sidebar."
         },
         "size": {
           "$value": "{size.control.default}",
@@ -10328,6 +10974,10 @@
           "$value": "{radius.round}",
           "$description": "Radius of the switch."
         },
+        "padding": {
+          "$value": "{component-spacing-map.hairline}",
+          "$description": "Padding of the switch."
+        },
         "focus": {
           "$value": "{border-width.focus}",
           "$description": "Focus of the switch."
@@ -10361,6 +11011,10 @@
         "padding-x": {
           "$value": "{space.inset.control-x}",
           "$description": "Padding x of the textarea."
+        },
+        "padding-y": {
+          "$value": "{component-spacing-map.x2}",
+          "$description": "Padding y of the textarea."
         },
         "font-size": {
           "$value": "{type.body.font-size}",
@@ -10574,10 +11228,26 @@
             "$description": "Outline label hover of the toggle."
           }
         },
+        "default": {
+          "padding-x": {
+            "$value": "{component-spacing-map.x2}",
+            "$description": "Default padding x of the toggle."
+          }
+        },
         "sm": {
           "height": {
             "$value": "{size.control.default}",
             "$description": "Sm height of the toggle."
+          },
+          "padding-x": {
+            "$value": "{component-spacing-map.x2}",
+            "$description": "Sm padding x of the toggle."
+          }
+        },
+        "lg": {
+          "padding-x": {
+            "$value": "{component-spacing-map.x3}",
+            "$description": "Lg padding x of the toggle."
           }
         }
       }

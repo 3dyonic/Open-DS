@@ -29,7 +29,7 @@ function Attachment({
       data-slot="attachment"
       aria-label={`${name}, ${type}, ${size}`}
       className={cn(
-        "flex w-fit max-w-full items-center gap-3 rounded-[var(--attachment-radius)] border bg-[color:var(--attachment-background)] px-3 py-2 text-[length:var(--attachment-font-size)]/[var(--attachment-line-height)] outline-none hover:bg-[color:var(--attachment-background-hover)] focus-visible:ring-[length:var(--attachment-focus)] focus-visible:ring-[color:var(--attachment-focus-ring-focus)] focus-visible:ring-offset-2 focus-visible:ring-offset-[color:var(--attachment-focus-ring-offset-focus)]",
+        "flex w-fit max-w-full items-center gap-[var(--attachment-gap)] rounded-[var(--attachment-radius)] border bg-[color:var(--attachment-background)] px-[var(--attachment-padding-x)] py-[var(--attachment-padding-y)] text-[length:var(--attachment-font-size)]/[var(--attachment-line-height)] outline-none hover:bg-[color:var(--attachment-background-hover)] focus-visible:ring-[length:var(--attachment-focus)] focus-visible:ring-[color:var(--attachment-focus-ring-focus)] focus-visible:ring-offset-2 focus-visible:ring-offset-[color:var(--attachment-focus-ring-offset-focus)]",
         className,
       )}
       {...props}

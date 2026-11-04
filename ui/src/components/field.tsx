@@ -21,7 +21,7 @@ function FieldSet({ className, ...props }: React.ComponentProps<"fieldset">) {
       data-slot="field-set"
       className={cn(
         "flex flex-col gap-[var(--field-set-gap)]",
-        "has-[>[data-slot=checkbox-group]]:gap-3 has-[>[data-slot=radio-group]]:gap-3",
+        "has-[>[data-slot=checkbox-group]]:gap-[var(--field-set-gap-2)] has-[>[data-slot=radio-group]]:gap-[var(--field-set-gap-2)]",
         className,
       )}
       {...props}
@@ -54,7 +54,7 @@ function FieldGroup({ className, ...props }: React.ComponentProps<"div">) {
     <div
       data-slot="field-group"
       className={cn(
-        "group/field-group @container/field-group flex w-full flex-col gap-7 data-[slot=checkbox-group]:gap-3 [&>[data-slot=field-group]]:gap-[var(--field-group-gap)]",
+        "group/field-group @container/field-group flex w-full flex-col gap-[var(--field-group-gap)] data-[slot=checkbox-group]:gap-[var(--field-group-gap-2)] [&>[data-slot=field-group]]:gap-[var(--field-group-gap-3)]",
         className,
       )}
       {...props}
@@ -62,26 +62,29 @@ function FieldGroup({ className, ...props }: React.ComponentProps<"div">) {
   );
 }
 
-const fieldVariants = cva("group/field flex w-full gap-3 data-[invalid=true]:text-[color:var(--field-label-invalid)]", {
-  variants: {
-    orientation: {
-      vertical: ["flex-col [&>*]:w-full [&>.sr-only]:w-auto"],
-      horizontal: [
-        "flex-row items-center",
-        "[&>[data-slot=field-label]]:flex-auto",
-        "has-[>[data-slot=field-content]]:items-start has-[>[data-slot=field-content]]:[&>[role=checkbox],[role=radio]]:mt-px",
-      ],
-      responsive: [
-        "flex-col @md/field-group:flex-row @md/field-group:items-center [&>*]:w-full @md/field-group:[&>*]:w-auto [&>.sr-only]:w-auto",
-        "@md/field-group:[&>[data-slot=field-label]]:flex-auto",
-        "@md/field-group:has-[>[data-slot=field-content]]:items-start @md/field-group:has-[>[data-slot=field-content]]:[&>[role=checkbox],[role=radio]]:mt-px",
-      ],
+const fieldVariants = cva(
+  "group/field flex w-full gap-[var(--field-gap)] data-[invalid=true]:text-[color:var(--field-label-invalid)]",
+  {
+    variants: {
+      orientation: {
+        vertical: ["flex-col [&>*]:w-full [&>.sr-only]:w-auto"],
+        horizontal: [
+          "flex-row items-center",
+          "[&>[data-slot=field-label]]:flex-auto",
+          "has-[>[data-slot=field-content]]:items-start has-[>[data-slot=field-content]]:[&>[role=checkbox],[role=radio]]:mt-px",
+        ],
+        responsive: [
+          "flex-col @md/field-group:flex-row @md/field-group:items-center [&>*]:w-full @md/field-group:[&>*]:w-auto [&>.sr-only]:w-auto",
+          "@md/field-group:[&>[data-slot=field-label]]:flex-auto",
+          "@md/field-group:has-[>[data-slot=field-content]]:items-start @md/field-group:has-[>[data-slot=field-content]]:[&>[role=checkbox],[role=radio]]:mt-px",
+        ],
+      },
+    },
+    defaultVariants: {
+      orientation: "vertical",
     },
   },
-  defaultVariants: {
-    orientation: "vertical",
-  },
-});
+);
 
 function Field({
   className,
@@ -103,7 +106,7 @@ function FieldContent({ className, ...props }: React.ComponentProps<"div">) {
   return (
     <div
       data-slot="field-content"
-      className={cn("group/field-content flex flex-1 flex-col gap-1.5 leading-snug", className)}
+      className={cn("group/field-content flex flex-1 flex-col gap-[var(--field-content-gap)] leading-snug", className)}
       {...props}
     />
   );
@@ -115,7 +118,7 @@ function FieldLabel({ className, ...props }: React.ComponentProps<typeof Label>)
       data-slot="field-label"
       className={cn(
         "group/field-label peer/field-label flex w-fit gap-[var(--field-label-gap)] leading-snug group-data-[disabled=true]/field:opacity-[var(--field-label-disabled-opacity-disabled)]",
-        "has-[>[data-slot=field]]:w-full has-[>[data-slot=field]]:flex-col has-[>[data-slot=field]]:rounded-[var(--field-label-radius)] has-[>[data-slot=field]]:border [&>*]:data-[slot=field]:p-4",
+        "has-[>[data-slot=field]]:w-full has-[>[data-slot=field]]:flex-col has-[>[data-slot=field]]:rounded-[var(--field-label-radius)] has-[>[data-slot=field]]:border [&>*]:data-[slot=field]:p-[var(--field-label-padding)]",
         "has-data-[state=checked]:border-[color:var(--field-border-checked)] has-data-[state=checked]:bg-[color:var(--field-background-checked)]/5",
         className,
       )}
@@ -172,7 +175,7 @@ function FieldSeparator({
       <Separator className="absolute inset-0 top-1/2" />
       {children && (
         <span
-          className="relative mx-auto block w-fit bg-[color:var(--field-background)] px-2 text-[color:var(--field-label)]"
+          className="relative mx-auto block w-fit bg-[color:var(--field-background)] px-[var(--field-padding-x)] text-[color:var(--field-label)]"
           data-slot="field-separator-content"
         >
           {children}
@@ -206,7 +209,7 @@ function FieldError({
     }
 
     return (
-      <ul className="ml-4 flex list-disc flex-col gap-[var(--field-gap)]">
+      <ul className="ml-4 flex list-disc flex-col gap-[var(--field-gap-2)]">
         {uniqueErrors.map((error, index) => error?.message && <li key={index}>{error.message}</li>)}
       </ul>
     );

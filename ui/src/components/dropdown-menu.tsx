@@ -23,7 +23,7 @@ export function DropdownMenuContent({
         data-slot="dropdown-menu-content"
         sideOffset={sideOffset}
         className={cn(
-          "z-50 min-w-[10rem] p-1 rounded-[var(--overlay-radius)] bg-[var(--overlay-background)] text-[var(--dropdown-menu-content-label)]",
+          "z-50 min-w-[10rem] p-[var(--dropdown-menu-content-padding)] rounded-[var(--overlay-radius)] bg-[var(--overlay-background)] text-[var(--dropdown-menu-content-label)]",
           "[box-shadow:var(--overlay-shadow)] border-[length:var(--dropdown-menu-content-border-width)] border-[var(--dropdown-menu-content-border)]",
           className,
         )}

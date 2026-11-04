@@ -33,7 +33,7 @@ const itemVariants = cva(
       },
       size: {
         default: "gap-[var(--item-default-gap)] p-[var(--item-default-padding)]",
-        sm: "gap-2.5 px-[var(--item-sm-padding-x)] py-3",
+        sm: "gap-[var(--item-sm-gap)] px-[var(--item-sm-padding-x)] py-[var(--item-sm-padding-y)]",
       },
     },
     defaultVariants: { variant: "default", size: "default" },

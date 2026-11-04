@@ -33,7 +33,7 @@ function Calendar({
     <DayPicker
       showOutsideDays={showOutsideDays}
       className={cn(
-        "group/calendar bg-[color:var(--calendar-background)] p-3 [--cell-size:--spacing(8)] [[data-slot=card-content]_&]:bg-transparent [[data-slot=popover-content]_&]:bg-transparent",
+        "group/calendar bg-[color:var(--calendar-background)] p-[var(--calendar-padding)] [--cell-size:--spacing(8)] [[data-slot=card-content]_&]:bg-transparent [[data-slot=popover-content]_&]:bg-transparent",
         String.raw`rtl:**:[.rdp-button\_next>svg]:rotate-180`,
         String.raw`rtl:**:[.rdp-button\_previous>svg]:rotate-180`,
         className,
@@ -66,7 +66,7 @@ function Calendar({
           defaultClassNames.month_caption,
         ),
         dropdowns: cn(
-          "flex h-(--cell-size) w-full items-center justify-center gap-1.5 text-[length:var(--calendar-font-size)]/[var(--calendar-line-height)] [font-weight:var(--calendar-font-weight)]",
+          "flex h-(--cell-size) w-full items-center justify-center gap-[var(--calendar-gap-3)] text-[length:var(--calendar-font-size)]/[var(--calendar-line-height)] [font-weight:var(--calendar-font-weight)]",
           defaultClassNames.dropdowns,
         ),
         dropdown_root: cn(
@@ -78,7 +78,7 @@ function Calendar({
           "[font-weight:var(--calendar-font-weight)] select-none",
           captionLayout === "label"
             ? "text-[length:var(--calendar-font-size)]/[var(--calendar-line-height)]"
-            : "flex h-[var(--calendar-height)] items-center gap-[var(--calendar-gap-2)] rounded-[var(--calendar-radius)] pr-1 pl-2 text-[length:var(--calendar-font-size)]/[var(--calendar-line-height)] [&>svg]:size-3.5 [&>svg]:text-[color:var(--calendar-label)]",
+            : "flex h-[var(--calendar-height)] items-center gap-[var(--calendar-gap-2)] rounded-[var(--calendar-radius)] pr-[var(--calendar-padding-right)] pl-[var(--calendar-padding-left)] text-[length:var(--calendar-font-size)]/[var(--calendar-line-height)] [&>svg]:size-3.5 [&>svg]:text-[color:var(--calendar-label)]",
           defaultClassNames.caption_label,
         ),
         month_grid: cn("w-full border-collapse", defaultClassNames.month_grid),

@@ -162,13 +162,13 @@ function FacetFilter<TData>({
           {chosen.size > 0 && <span className="tabular-nums">· {chosen.size}</span>}
         </Button>
       </PopoverTrigger>
-      <PopoverContent align="start" className="w-56 p-2">
+      <PopoverContent align="start" className="w-56 p-[var(--data-table-padding)]">
         <ul className="flex flex-col">
           {[...counts.entries()]
             .sort(([a], [b]) => String(a).localeCompare(String(b)))
             .map(([value, count]) => (
               <li key={String(value)}>
-                <label className="flex cursor-pointer items-center gap-[var(--data-table-gap-2)] rounded-[var(--data-table-radius)] px-2 py-1 hover:bg-[color:var(--data-table-background-hover)]">
+                <label className="flex cursor-pointer items-center gap-[var(--data-table-gap-2)] rounded-[var(--data-table-radius)] px-[var(--data-table-padding-x)] py-[var(--data-table-padding-y)] hover:bg-[color:var(--data-table-background-hover)]">
                   <Checkbox checked={chosen.has(String(value))} onCheckedChange={() => toggle(String(value))} />
                   <span className="flex-1">{String(value)}</span>
                   <span className="text-[color:var(--data-table-label)] tabular-nums">{count}</span>
@@ -267,14 +267,14 @@ export function DataTable<TData>({
                 <Columns3 /> {l.columns}
               </Button>
             </PopoverTrigger>
-            <PopoverContent align="end" className="w-52 p-2">
+            <PopoverContent align="end" className="w-52 p-[var(--data-table-padding)]">
               <ul className="flex flex-col">
                 {table
                   .getAllLeafColumns()
                   .filter((c) => c.getCanHide())
                   .map((c) => (
                     <li key={c.id}>
-                      <label className="flex cursor-pointer items-center gap-[var(--data-table-gap-2)] rounded-[var(--data-table-radius)] px-2 py-1 hover:bg-[color:var(--data-table-background-hover)]">
+                      <label className="flex cursor-pointer items-center gap-[var(--data-table-gap-2)] rounded-[var(--data-table-radius)] px-[var(--data-table-padding-x)] py-[var(--data-table-padding-y)] hover:bg-[color:var(--data-table-background-hover)]">
                         <Checkbox checked={c.getIsVisible()} onCheckedChange={(v) => c.toggleVisibility(!!v)} />
                         {c.columnDef.meta?.label ?? c.id}
                       </label>

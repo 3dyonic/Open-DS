@@ -48,7 +48,7 @@ function CommandDialog({
         <DialogDescription>{description}</DialogDescription>
       </DialogHeader>
       <DialogContent className={cn("overflow-hidden p-0", className)}>
-        <Command className="**:data-[slot=command-input-wrapper]:h-12 [&_[cmdk-group-heading]]:px-2 [&_[cmdk-group-heading]]:[font-weight:var(--command-font-weight)] [&_[cmdk-group-heading]]:text-[color:var(--command-label-2)] [&_[cmdk-group]]:px-2 [&_[cmdk-group]:not([hidden])_~[cmdk-group]]:pt-0 [&_[cmdk-input-wrapper]_svg]:h-5 [&_[cmdk-input-wrapper]_svg]:w-5 [&_[cmdk-input]]:h-12 [&_[cmdk-item]]:px-2 [&_[cmdk-item]]:py-3 [&_[cmdk-item]_svg]:h-5 [&_[cmdk-item]_svg]:w-5">
+        <Command className="**:data-[slot=command-input-wrapper]:h-12 [&_[cmdk-group-heading]]:px-[var(--command-padding-x)] [&_[cmdk-group-heading]]:[font-weight:var(--command-font-weight)] [&_[cmdk-group-heading]]:text-[color:var(--command-label-2)] [&_[cmdk-group]]:px-[var(--command-padding-x)] [&_[cmdk-group]:not([hidden])_~[cmdk-group]]:pt-0 [&_[cmdk-input-wrapper]_svg]:h-5 [&_[cmdk-input-wrapper]_svg]:w-5 [&_[cmdk-input]]:h-12 [&_[cmdk-item]]:px-[var(--command-padding-x)] [&_[cmdk-item]]:py-[var(--command-padding-y)] [&_[cmdk-item]_svg]:h-5 [&_[cmdk-item]_svg]:w-5">
           {children}
         </Command>
       </DialogContent>
@@ -60,13 +60,13 @@ function CommandInput({ className, ...props }: React.ComponentProps<typeof Comma
   return (
     <div
       data-slot="command-input-wrapper"
-      className="flex h-9 items-center gap-[var(--command-input-wrapper-gap)] border-b px-3"
+      className="flex h-9 items-center gap-[var(--command-input-wrapper-gap)] border-b px-[var(--command-input-wrapper-padding-x)]"
     >
       <SearchIcon className="size-[var(--command-icon-size)] shrink-0 opacity-[var(--command-disabled-opacity)]" />
       <CommandPrimitive.Input
         data-slot="command-input"
         className={cn(
-          "flex h-10 w-full rounded-[var(--command-input-radius)] bg-transparent py-3 text-[length:var(--command-input-font-size)]/[var(--command-input-line-height)] outline-hidden placeholder:text-[color:var(--command-input-label-placeholder)] disabled:cursor-not-allowed disabled:opacity-[var(--command-input-disabled-opacity-disabled)]",
+          "flex h-10 w-full rounded-[var(--command-input-radius)] bg-transparent py-[var(--command-input-padding-y)] text-[length:var(--command-input-font-size)]/[var(--command-input-line-height)] outline-hidden placeholder:text-[color:var(--command-input-label-placeholder)] disabled:cursor-not-allowed disabled:opacity-[var(--command-input-disabled-opacity-disabled)]",
           className,
         )}
         {...props}
@@ -89,7 +89,7 @@ function CommandEmpty({ ...props }: React.ComponentProps<typeof CommandPrimitive
   return (
     <CommandPrimitive.Empty
       data-slot="command-empty"
-      className="py-6 text-center text-[length:var(--command-empty-font-size)]/[var(--command-empty-line-height)]"
+      className="py-[var(--command-empty-padding-y)] text-center text-[length:var(--command-empty-font-size)]/[var(--command-empty-line-height)]"
       {...props}
     />
   );
@@ -100,7 +100,7 @@ function CommandGroup({ className, ...props }: React.ComponentProps<typeof Comma
     <CommandPrimitive.Group
       data-slot="command-group"
       className={cn(
-        "overflow-hidden p-1 text-[color:var(--command-group-label)] [&_[cmdk-group-heading]]:px-2 [&_[cmdk-group-heading]]:py-1.5 [&_[cmdk-group-heading]]:text-[length:var(--command-group-font-size)]/[var(--command-group-line-height)] [&_[cmdk-group-heading]]:[font-weight:var(--command-group-font-weight)] [&_[cmdk-group-heading]]:text-[color:var(--command-group-label-2)]",
+        "overflow-hidden p-[var(--command-group-padding)] text-[color:var(--command-group-label)] [&_[cmdk-group-heading]]:px-[var(--command-group-padding-x)] [&_[cmdk-group-heading]]:py-[var(--command-group-padding-y)] [&_[cmdk-group-heading]]:text-[length:var(--command-group-font-size)]/[var(--command-group-line-height)] [&_[cmdk-group-heading]]:[font-weight:var(--command-group-font-weight)] [&_[cmdk-group-heading]]:text-[color:var(--command-group-label-2)]",
         className,
       )}
       {...props}
@@ -123,7 +123,7 @@ function CommandItem({ className, ...props }: React.ComponentProps<typeof Comman
     <CommandPrimitive.Item
       data-slot="command-item"
       className={cn(
-        "relative flex cursor-default items-center gap-[var(--command-item-gap)] rounded-[var(--command-item-radius)] px-2 py-1.5 text-[length:var(--command-item-font-size)]/[var(--command-item-line-height)] outline-hidden select-none data-[disabled=true]:pointer-events-none data-[disabled=true]:opacity-[var(--command-item-disabled-opacity-disabled)] data-[selected=true]:bg-[color:var(--command-item-background-selected)] data-[selected=true]:text-[color:var(--command-item-label-selected)] [&_svg]:pointer-events-none [&_svg]:shrink-0 [&_svg:not([class*='size-'])]:size-[var(--command-item-icon-size)] [&_svg:not([class*='text-'])]:text-[color:var(--command-item-label)]",
+        "relative flex cursor-default items-center gap-[var(--command-item-gap)] rounded-[var(--command-item-radius)] px-[var(--command-item-padding-x)] py-[var(--command-item-padding-y)] text-[length:var(--command-item-font-size)]/[var(--command-item-line-height)] outline-hidden select-none data-[disabled=true]:pointer-events-none data-[disabled=true]:opacity-[var(--command-item-disabled-opacity-disabled)] data-[selected=true]:bg-[color:var(--command-item-background-selected)] data-[selected=true]:text-[color:var(--command-item-label-selected)] [&_svg]:pointer-events-none [&_svg]:shrink-0 [&_svg:not([class*='size-'])]:size-[var(--command-item-icon-size)] [&_svg:not([class*='text-'])]:text-[color:var(--command-item-label)]",
         className,
       )}
       {...props}
