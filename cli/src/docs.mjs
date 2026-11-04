@@ -1899,7 +1899,7 @@ export function docsPages(
     return (
       `## Tokens it reads\n\n${
         rows.some((r) => r.own)
-          ? `${title(name)} reads ${new Set(rows.filter((r) => r.own).map((r) => r.path)).size} tokens of its own, each an alias of a semantic token. Each row is one part: its own token, the semantic it aliases, and the value it ends at. A row marked Themeable changes between light and dark. Change a semantic and every component that reads it follows; override one of ${title(name)}'s tokens to change ${title(name)} alone.`
+          ? `${title(name)} reads ${new Set(rows.filter((r) => r.own).map((r) => r.path)).size} tokens of its own, each an alias of a semantic token. Each row is one part: its own token, the semantic it aliases, and the value it ends at. Change a semantic and every component that reads it follows; override one of ${title(name)}'s tokens to change ${title(name)} alone.`
           : `${title(name)} reads ${tokens} of ${esc(scheme.name)}'s tokens. Each row follows one part of the component from its class to the value it ends at, in every theme. Change a token in the scheme and every component that reads it follows.`
       }\n\n` +
       (rows.some((r) => r.own) ? ownTable(rows, ths) : classTable(rows, ths))
@@ -1907,7 +1907,24 @@ export function docsPages(
   };
   // A component with its own tokens (OD-234): Part · its token → the semantic, with the CSS variable
   // under it · one Value column. Colors show each theme side by side; everything else has one value.
+  // the legend, in the scheme's own words: which themes it has and what a theme switch changes
+  const themeLegend = () => {
+    const why = (q) => answer(q)?.why;
+    const names = scheme.themes.map((t) => themeLabel(t).toLowerCase());
+    const list =
+      names.length > 1
+        ? `${names.slice(0, -1).join(", ")} and ${names.at(-1)}`
+        : names[0];
+    const quotes = ["theming.values", "theming.roles", "theming.lands"]
+      .map(why)
+      .filter(Boolean)
+      .filter((x, i, a) => a.indexOf(x) === i)
+      .map((x) => `“${esc(x)}”`)
+      .join(" ");
+    return `<div class="odv-tlegend"><span class="odv-themed">Changes with theme</span><p>This part gets its own value in ${esc(list)}. ${esc(scheme.name)}'s call: ${quotes}</p></div>`;
+  };
   const ownTable = (rows, ths) =>
+    themeLegend() +
     h(
       `<div class="odv-tscroll"><table class="odv-ttable odv-reads odv-api"><thead><tr><th>Part</th><th>Its token and the semantic it aliases</th><th>Value</th></tr></thead><tbody>`,
       orderRows(rows).map((r, i, all) => {
@@ -1925,7 +1942,7 @@ export function docsPages(
           : `<span class="odv-vpair">${ths.map((t, j) => `<span><em>${attr(themeLabel(t))}</em>${cells[j]}</span>`).join("")}</span>`;
         return (
           head +
-          `<tr><td><b>${attr(r.part)}</b>${same ? "" : `<br/><span class="odv-themed" title="Its value changes between light and dark">Themeable</span>`}${r.when ? `<br/><small>${attr(r.when)}</small>` : ""}</td><td>${chain}</td><td>${value}</td></tr>`
+          `<tr><td><b>${attr(r.part)}</b>${same ? "" : `<br/><span class="odv-themed" title="${attr(scheme.name)} gives it a different value in each theme">Changes with theme</span>`}${r.when ? `<br/><small>${attr(r.when)}</small>` : ""}</td><td>${chain}</td><td>${value}</td></tr>`
         );
       }),
       `</tbody></table></div>`,

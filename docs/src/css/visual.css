@@ -1896,5 +1896,46 @@ tr.odv-for td {
   white-space: nowrap;
 }
 .odv-api td:nth-child(2) {
-  min-width: 22em;
+  min-width: 0;
+}
+.odv-api .odv-vpair em {
+  width: 3em;
+}
+.odv-api td:first-child {
+  width: 11em;
+}
+.odv-api .odv-tsw,
+.odv-api .odv-tsw small {
+  flex-wrap: wrap;
+  white-space: normal;
+}
+.odv-api .odv-ptok {
+  font-size: 11px;
+}
+.odv-api td:nth-child(3) {
+  min-width: 15em;
+}
+.odv-api td:nth-child(3) {
+  min-width: 14em;
+}
+.odv-api .odv-vpair em {
+  width: 2.8em;
+}
+.odv-tlegend {
+  display: flex;
+  gap: 10px;
+  align-items: baseline;
+  margin: 0 0 12px;
+  padding: 10px 12px;
+  border-radius: var(--radius-container);
+  background: var(--color-surface-default);
+}
+.odv-tlegend .odv-themed {
+  margin: 0;
+  flex: none;
+}
+.odv-tlegend p {
+  margin: 0;
+  font-size: var(--type-caption-font-size);
+  color: var(--color-text-secondary);
 }
