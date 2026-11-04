@@ -82,7 +82,7 @@ The CSS variable is the key with `/` replaced by `-` and the base `@` dropped. E
 | `overlay/scrim` | Color that dims the page behind a dialog. | `color.surface.scrim` → `aster.theme.light.color.surface.scrim` → `color.black.light.scrim` | `color.surface.scrim` → `aster.theme.dark.color.surface.scrim` → `color.black.dark.scrim` |
 | `overlay/item-height` | Height of a menu item. | `size.control.default` → `size.44` | same |
 | `tooltip/background` | Tooltip fill. | `color.surface.inverse` → `aster.theme.light.color.surface.inverse` → `color.slate.light.900` | `color.surface.inverse` → `aster.theme.dark.color.surface.inverse` → `color.slate.dark.900` |
-| `tooltip/label` | Tooltip text. | `color.text.inverse` → `aster.theme.light.color.text.inverse` → `color.slate.light.0` | `color.text.inverse` → `aster.theme.dark.color.text.inverse` → `color.slate.dark.50` |
+| `tooltip/label` | Tooltip text. | `color.text.inverse` → `aster.theme.light.color.text.inverse` → `color.slate.light.0` | `color.text.inverse` → `aster.theme.dark.color.text.inverse` → `color.slate.light.900` |
 
 </div>
 
@@ -98,7 +98,7 @@ The CSS variable is the key with `/` replaced by `-` and the base `@` dropped. E
 | `overlay/scrim` | Color that dims the page behind a dialog. | `color.surface.scrim` → `birch.theme.light.color.surface.scrim` → `color.black.light.scrim` | `color.surface.scrim` → `birch.theme.dark.color.surface.scrim` → `color.black.dark.scrim` |
 | `overlay/item-height` | Height of a menu item. | `size.control.default` → `size.44` | same |
 | `tooltip/background` | Tooltip fill. | `color.surface.inverse` → `birch.theme.light.color.surface.inverse` → `color.slate.light.900` | `color.surface.inverse` → `birch.theme.dark.color.surface.inverse` → `color.slate.dark.900` |
-| `tooltip/label` | Tooltip text. | `color.text.inverse` → `birch.theme.light.color.text.inverse` → `color.slate.light.0` | `color.text.inverse` → `birch.theme.dark.color.text.inverse` → `color.slate.dark.50` |
+| `tooltip/label` | Tooltip text. | `color.text.inverse` → `birch.theme.light.color.text.inverse` → `color.slate.light.0` | `color.text.inverse` → `birch.theme.dark.color.text.inverse` → `color.slate.light.900` |
 
 </div>
 
@@ -114,6 +114,6 @@ The CSS variable is the key with `/` replaced by `-` and the base `@` dropped. E
 | `overlay/scrim` | Color that dims the page behind a dialog. | `color.surface.scrim` → `coral.theme.light.color.surface.scrim` → `color.black.light.scrim` | `color.surface.scrim` → `coral.theme.dark.color.surface.scrim` → `color.black.dark.scrim` |
 | `overlay/item-height` | Height of a menu item. | `size.control.default` → `size.44` | same |
 | `tooltip/background` | Tooltip fill. | `color.surface.inverse` → `coral.theme.light.color.surface.inverse` → `color.slate.light.900` | `color.surface.inverse` → `coral.theme.dark.color.surface.inverse` → `color.slate.dark.900` |
-| `tooltip/label` | Tooltip text. | `color.text.inverse` → `coral.theme.light.color.text.inverse` → `color.slate.light.0` | `color.text.inverse` → `coral.theme.dark.color.text.inverse` → `color.slate.dark.50` |
+| `tooltip/label` | Tooltip text. | `color.text.inverse` → `coral.theme.light.color.text.inverse` → `color.slate.light.0` | `color.text.inverse` → `coral.theme.dark.color.text.inverse` → `color.slate.light.900` |
 
 </div>

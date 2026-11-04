@@ -331,7 +331,9 @@ export function createProject(
     agentsMd(scheme, g, { brand: defaultBrand, components, project: true }),
   );
   // The booklets and the router (OD-205): the context engine's short answers, as files.
-  for (const [rel, text] of Object.entries(booklets(scheme, g, components, roots)))
+  for (const [rel, text] of Object.entries(
+    booklets(scheme, g, components, roots),
+  ))
     write(`context/${rel}`, text);
   write(
     ".claude/skills/open-ds/SKILL.md",

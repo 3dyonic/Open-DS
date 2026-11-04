@@ -1,9 +1,10 @@
 // How foregrounds pair with fills (OD-222), shared by the harness, the CLI, the MCP and the docs.
 //
 // Every fill states its tone, light or dark, in each brand and mode: a decision, written on the fill in
-// the theme as $extensions["open-ds"].tone. What sits on a fill comes from its tone's set,
-// color.on-light or color.on-dark. color.text.*, color.text.link, color.border.strong and
-// color.border.focus are the mode's own set: the one that sits on the page's own surfaces.
+// the theme as $extensions["open-ds"].tone. Text on a fill is color.text.on-light (a light fill) or
+// color.text.on-dark (a dark fill), the same two colours in both modes (OD-227). color.text.*,
+// color.text.link, color.border.strong and color.border.focus are the mode's own set: the one that
+// sits on the page's own surfaces.
 // The grammar's semantics.tones lists the roles, their contrast and what each fill carries.
 
 const OWN = {
@@ -17,8 +18,8 @@ const OWN = {
 
 /** The tone and role of a key in a tone set, or null. tone is "light", "dark" or "own" (the mode's own set). */
 export function toneRole(id) {
-  const m = id.match(/^color\.on-(light|dark)\.(.+)$/);
-  if (m) return { tone: m[1], role: m[2] };
+  const m = id.match(/^color\.text\.on-(light|dark)$/);
+  if (m) return { tone: m[1], role: "text.primary" };
   return OWN[id] ? { tone: "own", role: OWN[id] } : null;
 }
 

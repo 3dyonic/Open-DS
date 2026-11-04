@@ -475,7 +475,8 @@ export function createMcpServer({ roots = assetRoots() } = {}) {
       const text = (t) => ({ content: [{ type: "text", text: t }] });
       if (file)
         return text(briefForFile(s, g, componentsFor(s, roots), file, roots));
-      const out = target && brief(scheme_id, target, { section, page, roots, g });
+      const out =
+        target && brief(scheme_id, target, { section, page, roots, g });
       if (!out)
         throw new Error(
           `Nothing called "${target ?? ""}". Give a task (${TASKS.join(", ")}), a component (${g.components.map((c) => c.id).join(", ")}), a component key, a semantic token such as color.status.danger, a situation id, or file.`,

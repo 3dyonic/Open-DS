@@ -356,7 +356,7 @@ function colourGuidance(g) {
           `| \`${k.id}\` | ${esc(k.intent)} | ${k.not_for.map((n) => `${esc(n.when)}: \`${n.use}\``).join("<br />") || "—"} |`,
       )
       .join("\n") +
-    `\n\n## Pairs at a glance\n\nWhich colour may sit on which fill, and the contrast it keeps there in every brand and mode. Text, links, icons, borders and focus pair by tone: every fill says whether it is light or dark, and what sits on it comes from that tone's set, \`color.on-light\` or \`color.on-dark\`. The page's own text is the set of its own surfaces. The harness checks every pair.\n\n| Token | Sits on | Contrast |\n| --- | --- | --- |\n` +
+    `\n\n## Pairs at a glance\n\nWhich colour may sit on which fill, and the contrast it keeps there in every brand and mode. Text pairs by tone: every fill says whether it is light or dark, and the text on it is \`color.text.on-light\` or \`color.text.on-dark\`. The page's own text is the set of its own surfaces. The harness checks every pair.\n\n| Token | Sits on | Contrast |\n| --- | --- | --- |\n` +
     keys
       .filter((k) => k.pairs)
       .map(
@@ -472,7 +472,7 @@ export function docsPages(
         ? "Everything"
         : f.carries.join(", ");
     return (
-      `\n## The tone of each fill\n\nEvery fill says whether it is light or dark. What sits on it reads that tone's set: \`color.on-light\` or \`color.on-dark\`. "Everything" means ${all.join(", ")}.\n\n` +
+      `\n## The tone of each fill\n\nEvery fill says whether it is light or dark. Text on it is \`color.text.on-light\` on a light fill, \`color.text.on-dark\` on a dark one. "Everything" means ${all.join(", ")}.\n\n` +
       perBrand((F) => {
         const th = scheme.tokens.brands[F.brand].theme;
         const notes = [];

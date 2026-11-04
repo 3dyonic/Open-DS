@@ -204,7 +204,11 @@ function words(tree, path = []) {
     if (k.startsWith("$") || !v || typeof v !== "object") return [];
     if ("$value" in v)
       return [
-        { path: [...path, k].join("."), value: v.$value, description: v.$description },
+        {
+          path: [...path, k].join("."),
+          value: v.$value,
+          description: v.$description,
+        },
       ];
     return words(v, [...path, k]);
   });
@@ -241,8 +245,8 @@ function hints(c, sections) {
   return [
     "",
     "More, ask by section:",
-    ...rows.map(
-      ([n, l, s]) => `  ${n.padEnd(w0)}  ${l.padEnd(w1)}  ${s}`.trimEnd(),
+    ...rows.map(([n, l, s]) =>
+      `  ${n.padEnd(w0)}  ${l.padEnd(w1)}  ${s}`.trimEnd(),
     ),
     `Example: ${call(c.target, ` section=${sections[0]?.name ?? "all"}`)}`,
   ];
@@ -272,7 +276,8 @@ function shortComponent(c, carried) {
   }
   if (c.rules?.length) {
     lines.push("", "## Situations");
-    for (const x of c.rules) lines.push(`- ${x.title}: ${x.use}. Not ${x.not}.`);
+    for (const x of c.rules)
+      lines.push(`- ${x.title}: ${x.use}. Not ${x.not}.`);
   }
   if (c.keys?.length) {
     // Keys by name; a key family (…/@, …/hover) once, with its semantic.
@@ -284,7 +289,9 @@ function shortComponent(c, carried) {
         .join(", "),
     );
     if (c.keys.some((k) => /\/hover$/.test(k.key)))
-      lines.push("Hover keys add /hover. Which semantic each reads: section keys.");
+      lines.push(
+        "Hover keys add /hover. Which semantic each reads: section keys.",
+      );
   }
   const related = [
     ...new Set([
@@ -302,14 +309,17 @@ function shortSemantic(c) {
   const x = c.guidance ?? {};
   const lines = [`# ${c.target} (${c.scheme})`, HEAD, "", x.intent ?? ""];
   if (x.use_for?.length) lines.push(`Use for: ${x.use_for.join("; ")}`);
-  for (const n of x.not_for ?? []) lines.push(`Not for ${n.when}: use ${n.use}`);
+  for (const n of x.not_for ?? [])
+    lines.push(`Not for ${n.when}: use ${n.use}`);
   if (x.sits_on?.length)
     lines.push(
       `Sits on: ${x.sits_on.join(", ")}${x.contrast ? ` (contrast ${x.contrast})` : ""}`,
     );
   if (x.takes?.length) lines.push(`Takes: ${x.takes.join(", ")}`);
   if (x.urgency)
-    lines.push(`Urgency ${x.urgency.level} of ${x.urgency.of.length}. ${x.urgency.rule}`);
+    lines.push(
+      `Urgency ${x.urgency.level} of ${x.urgency.of.length}. ${x.urgency.rule}`,
+    );
   if (c.read_by?.length) lines.push(`Read by: ${c.read_by.join(", ")}`);
   return lines;
 }
@@ -342,7 +352,9 @@ function shortTask(t, g) {
     lines.push("", "## Schemes");
     for (const s of t.schemes) lines.push(`- ${s.id}: ${s.summary}`);
   }
-  const voice = new Set(g.situations.filter((x) => x.scope === "voice").map((x) => x.id));
+  const voice = new Set(
+    g.situations.filter((x) => x.scope === "voice").map((x) => x.id),
+  );
   if (t.target === "build") {
     lines.push("", "## Situations");
     for (const r of t.rules.filter((r) => r.use && !voice.has(r.situation)))
@@ -366,18 +378,29 @@ function shortTask(t, g) {
   }
   if (t.target === "write") {
     const v = t.voice;
-    lines.push("", v.summary.text, "", ...v.principles.map((p) => `- ${p.text}`));
+    lines.push(
+      "",
+      v.summary.text,
+      "",
+      ...v.principles.map((p) => `- ${p.text}`),
+    );
     if (v.brands)
-      lines.push(...Object.entries(v.brands).map(([b, x]) => `- Brand ${b}: ${x.text}`));
+      lines.push(
+        ...Object.entries(v.brands).map(([b, x]) => `- Brand ${b}: ${x.text}`),
+      );
     lines.push(
       "",
       `Use: ${v.words.use.join(", ")}. Avoid: ${v.words.avoid.join(", ")}.`,
     );
-    const moments = (t.rules ?? []).filter((r) => r.use && voice.has(r.situation));
+    const moments = (t.rules ?? []).filter(
+      (r) => r.use && voice.has(r.situation),
+    );
     if (moments.length) {
       lines.push("", "## Situations");
       for (const r of moments)
-        lines.push(`- ${r.title}: ${r.use}${/[.!?]$/.test(r.use) ? "" : "."} Not ${r.not}.${r.example ? ` Example: "${r.example}"` : ""}`);
+        lines.push(
+          `- ${r.title}: ${r.use}${/[.!?]$/.test(r.use) ? "" : "."} Not ${r.not}.${r.example ? ` Example: "${r.example}"` : ""}`,
+        );
     }
     lines.push("", "Check each label or message with check_copy.");
   }
@@ -476,7 +499,9 @@ export function router(scheme, g, components) {
           .filter((id) => components.includes(id))
           .map(comp),
         ...colors
-          .filter((id) => new RegExp(`\\b${id.replace(/\./g, "\\.")}\\b`).test(u.use ?? ""))
+          .filter((id) =>
+            new RegExp(`\\b${id.replace(/\./g, "\\.")}\\b`).test(u.use ?? ""),
+          )
           .map((id) => bookletPath("semantic", id)),
       ]),
     ];
@@ -509,7 +534,9 @@ const weight = (p) => p.replace(/\{id\}|\*\*|\*/g, "").length;
 /** The booklets the router lists for a file path: the most specific pattern that matches. */
 export function routeFile(index, path) {
   const p = path.replace(/^\.\//, "");
-  for (const k of Object.keys(index.files).sort((a, b) => weight(b) - weight(a))) {
+  for (const k of Object.keys(index.files).sort(
+    (a, b) => weight(b) - weight(a),
+  )) {
     const m = p.match(glob(k));
     if (!m) continue;
     const id = k.includes("{id}") ? m[1] : null;
@@ -550,13 +577,20 @@ export function booklets(scheme, g, components, roots = assetRoots()) {
   for (const id of components) put("component", id);
   for (const id of colorIds(g)) put("semantic", id);
   for (const t of TASKS) put("task", t);
-  out["index.json"] = `${JSON.stringify(router(scheme, g, components), null, 2)}\n`;
+  out["index.json"] =
+    `${JSON.stringify(router(scheme, g, components), null, 2)}\n`;
   out["README.md"] = contextReadme(scheme);
   return out;
 }
 
 /** The booklets for a file, joined into one answer, as the MCP get_context file=<path> returns it. */
-export function briefForFile(scheme, g, components, path, roots = assetRoots()) {
+export function briefForFile(
+  scheme,
+  g,
+  components,
+  path,
+  roots = assetRoots(),
+) {
   const index = router(scheme, g, components);
   const list = routeFile(index, path);
   if (!list.length)
@@ -606,7 +640,8 @@ export function contextDrift(dir, scheme, g, components, roots = assetRoots()) {
   const have = new Set(listFiles(root));
   const out = [];
   for (const [rel, text] of Object.entries(set)) {
-    if (!have.has(rel)) out.push({ file: `context/${rel}`, problem: "missing" });
+    if (!have.has(rel))
+      out.push({ file: `context/${rel}`, problem: "missing" });
     else if (readFileSync(join(root, rel), "utf8") !== text)
       out.push({ file: `context/${rel}`, problem: "changed" });
   }

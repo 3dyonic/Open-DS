@@ -2964,6 +2964,42 @@
         }
       },
       {
+        "id": "color.text.on-light",
+        "intent": "Text on any fill whose tone is light, in either mode: the light mode's body text.",
+        "use_for": [
+          "Labels on light fills",
+          "The danger and primary buttons in dark mode"
+        ],
+        "not_for": [
+          {
+            "when": "Text on the page's own surfaces",
+            "use": "color.text.primary"
+          }
+        ],
+        "pairs": {
+          "tone": true,
+          "contrast": 4.5
+        }
+      },
+      {
+        "id": "color.text.on-dark",
+        "intent": "Text on any fill whose tone is dark, in either mode: white.",
+        "use_for": [
+          "Labels on dark fills",
+          "The primary and danger buttons in light mode"
+        ],
+        "not_for": [
+          {
+            "when": "Text on the page's own surfaces",
+            "use": "color.text.primary"
+          }
+        ],
+        "pairs": {
+          "tone": true,
+          "contrast": 4.5
+        }
+      },
+      {
         "id": "color.text.on-action",
         "intent": "Text and icons on the main action's fill.",
         "use_for": [
@@ -3594,248 +3630,10 @@
             "use": "color.border.strong"
           }
         ]
-      },
-      {
-        "id": "color.on-light.text.primary",
-        "intent": "Main text on a fill whose tone is light.",
-        "use_for": [
-          "Body text, headings and labels on a toned fill"
-        ],
-        "not_for": [
-          {
-            "when": "On the page's own surfaces",
-            "use": "color.text.primary"
-          }
-        ],
-        "pairs": {
-          "tone": true,
-          "contrast": 4.5
-        }
-      },
-      {
-        "id": "color.on-light.text.secondary",
-        "intent": "Supporting text on a fill whose tone is light.",
-        "use_for": [
-          "Supporting text on a toned fill"
-        ],
-        "not_for": [
-          {
-            "when": "On the page's own surfaces",
-            "use": "color.text.secondary"
-          }
-        ],
-        "pairs": {
-          "tone": true,
-          "contrast": 4.5
-        }
-      },
-      {
-        "id": "color.on-light.text.muted",
-        "intent": "The quietest text on a fill whose tone is light.",
-        "use_for": [
-          "Hints and timestamps on a toned fill"
-        ],
-        "not_for": [
-          {
-            "when": "On the page's own surfaces",
-            "use": "color.text.muted"
-          }
-        ],
-        "pairs": {
-          "tone": true,
-          "contrast": 4.5
-        }
-      },
-      {
-        "id": "color.on-light.link",
-        "intent": "Links on a fill whose tone is light.",
-        "use_for": [
-          "Links on a toned fill"
-        ],
-        "not_for": [
-          {
-            "when": "On the page's own surfaces",
-            "use": "color.text.link"
-          }
-        ],
-        "pairs": {
-          "tone": true,
-          "contrast": 4.5
-        }
-      },
-      {
-        "id": "color.on-light.icon",
-        "intent": "Icons on a fill whose tone is light.",
-        "use_for": [
-          "Icons on a toned fill"
-        ],
-        "not_for": [
-          {
-            "when": "On the page's own surfaces",
-            "use": "color.text.secondary"
-          }
-        ],
-        "pairs": {
-          "tone": true,
-          "contrast": 3
-        }
-      },
-      {
-        "id": "color.on-light.border",
-        "intent": "Control edges on a fill whose tone is light.",
-        "use_for": [
-          "Control edges on a toned fill"
-        ],
-        "not_for": [
-          {
-            "when": "On the page's own surfaces",
-            "use": "color.border.strong"
-          }
-        ],
-        "pairs": {
-          "tone": true,
-          "contrast": 3
-        }
-      },
-      {
-        "id": "color.on-light.focus",
-        "intent": "The focus ring on a fill whose tone is light.",
-        "use_for": [
-          "The focus ring on a toned fill"
-        ],
-        "not_for": [
-          {
-            "when": "On the page's own surfaces",
-            "use": "color.border.focus"
-          }
-        ],
-        "pairs": {
-          "tone": true,
-          "contrast": 3
-        }
-      },
-      {
-        "id": "color.on-dark.text.primary",
-        "intent": "Main text on a fill whose tone is dark.",
-        "use_for": [
-          "Body text, headings and labels on a toned fill"
-        ],
-        "not_for": [
-          {
-            "when": "On the page's own surfaces",
-            "use": "color.text.primary"
-          }
-        ],
-        "pairs": {
-          "tone": true,
-          "contrast": 4.5
-        }
-      },
-      {
-        "id": "color.on-dark.text.secondary",
-        "intent": "Supporting text on a fill whose tone is dark.",
-        "use_for": [
-          "Supporting text on a toned fill"
-        ],
-        "not_for": [
-          {
-            "when": "On the page's own surfaces",
-            "use": "color.text.secondary"
-          }
-        ],
-        "pairs": {
-          "tone": true,
-          "contrast": 4.5
-        }
-      },
-      {
-        "id": "color.on-dark.text.muted",
-        "intent": "The quietest text on a fill whose tone is dark.",
-        "use_for": [
-          "Hints and timestamps on a toned fill"
-        ],
-        "not_for": [
-          {
-            "when": "On the page's own surfaces",
-            "use": "color.text.muted"
-          }
-        ],
-        "pairs": {
-          "tone": true,
-          "contrast": 4.5
-        }
-      },
-      {
-        "id": "color.on-dark.link",
-        "intent": "Links on a fill whose tone is dark.",
-        "use_for": [
-          "Links on a toned fill"
-        ],
-        "not_for": [
-          {
-            "when": "On the page's own surfaces",
-            "use": "color.text.link"
-          }
-        ],
-        "pairs": {
-          "tone": true,
-          "contrast": 4.5
-        }
-      },
-      {
-        "id": "color.on-dark.icon",
-        "intent": "Icons on a fill whose tone is dark.",
-        "use_for": [
-          "Icons on a toned fill"
-        ],
-        "not_for": [
-          {
-            "when": "On the page's own surfaces",
-            "use": "color.text.secondary"
-          }
-        ],
-        "pairs": {
-          "tone": true,
-          "contrast": 3
-        }
-      },
-      {
-        "id": "color.on-dark.border",
-        "intent": "Control edges on a fill whose tone is dark.",
-        "use_for": [
-          "Control edges on a toned fill"
-        ],
-        "not_for": [
-          {
-            "when": "On the page's own surfaces",
-            "use": "color.border.strong"
-          }
-        ],
-        "pairs": {
-          "tone": true,
-          "contrast": 3
-        }
-      },
-      {
-        "id": "color.on-dark.focus",
-        "intent": "The focus ring on a fill whose tone is dark.",
-        "use_for": [
-          "The focus ring on a toned fill"
-        ],
-        "not_for": [
-          {
-            "when": "On the page's own surfaces",
-            "use": "color.border.focus"
-          }
-        ],
-        "pairs": {
-          "tone": true,
-          "contrast": 3
-        }
       }
     ],
     "tones": {
-      "description": "Text, icons, borders and focus pair with fills by tone (OD-222). Every fill states its tone, light or dark, in each brand and mode: a decision, written on the fill as $extensions.open-ds.tone. What sits on a fill comes from its tone's set: color.on-light or color.on-dark. color.text, color.text.inverse and color.text.on-action are those sets as seen from their own fills. The harness checks every fill against its tone's set.",
+      "description": "Text pairs with fills by tone (OD-222, OD-227). Every fill states its tone, light or dark, in each brand and mode: a decision, written on the fill as $extensions.open-ds.tone. Two text tokens serve every fill: color.text.on-light (the light mode's body text) on a light fill, color.text.on-dark (white) on a dark one, the same in both modes. Per-fill names (color.text.inverse, color.text.on-action, color.text.on-danger) point at the one their fill's tone picks. color.text.* and the page's own borders and focus ring are the mode's own set, for the page's own surfaces. The harness checks every fill against what sits on it.",
       "sets": [
         {
           "role": "text.primary",

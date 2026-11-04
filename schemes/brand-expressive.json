@@ -2578,70 +2578,16 @@
               }
             },
             "color": {
-              "on-light": {
-                "$description": "What sits on a light fill, in either mode.",
-                "text": {
-                  "primary": {
-                    "$type": "color",
-                    "$value": "{color.taupe.light.900}"
-                  },
-                  "secondary": {
-                    "$type": "color",
-                    "$value": "{color.taupe.light.700}"
-                  },
-                  "muted": {
-                    "$type": "color",
-                    "$value": "{color.taupe.light.600}"
-                  }
-                },
-                "link": {
+              "text": {
+                "on-light": {
                   "$type": "color",
-                  "$value": "{color.pink.light.700}"
+                  "$value": "{color.taupe.light.900}",
+                  "$description": "Text on any light fill, in either mode: the light mode's body text."
                 },
-                "icon": {
+                "on-dark": {
                   "$type": "color",
-                  "$value": "{color.taupe.light.700}"
-                },
-                "border": {
-                  "$type": "color",
-                  "$value": "{color.taupe.light.500}"
-                },
-                "focus": {
-                  "$type": "color",
-                  "$value": "{color.pink.light.600}"
-                }
-              },
-              "on-dark": {
-                "$description": "What sits on a dark fill, in either mode.",
-                "text": {
-                  "primary": {
-                    "$type": "color",
-                    "$value": "{color.taupe.dark.900}"
-                  },
-                  "secondary": {
-                    "$type": "color",
-                    "$value": "{color.taupe.dark.500}"
-                  },
-                  "muted": {
-                    "$type": "color",
-                    "$value": "{color.taupe.dark.400}"
-                  }
-                },
-                "link": {
-                  "$type": "color",
-                  "$value": "{color.pink.dark.700}"
-                },
-                "icon": {
-                  "$type": "color",
-                  "$value": "{color.taupe.dark.500}"
-                },
-                "border": {
-                  "$type": "color",
-                  "$value": "{color.taupe.dark.400}"
-                },
-                "focus": {
-                  "$type": "color",
-                  "$value": "{color.pink.dark.700}"
+                  "$value": "{color.taupe.light.0}",
+                  "$description": "Text on any dark fill, in either mode: white."
                 }
               }
             }
@@ -2735,7 +2681,7 @@
                 },
                 "on-danger": {
                   "$type": "color",
-                  "$value": "{color.taupe.dark.900}"
+                  "$value": "{color.taupe.light.0}"
                 }
               },
               "border": {
@@ -3040,11 +2986,11 @@
                 },
                 "inverse": {
                   "$type": "color",
-                  "$value": "{color.taupe.dark.50}"
+                  "$value": "{color.taupe.light.900}"
                 },
                 "on-action": {
                   "$type": "color",
-                  "$value": "{color.taupe.dark.0}"
+                  "$value": "{color.taupe.light.900}"
                 },
                 "link": {
                   "$type": "color",
@@ -3629,6 +3575,16 @@
             "$type": "color",
             "$description": "Text on the danger fill.",
             "$value": "{theme.color.text.on-danger}"
+          },
+          "on-light": {
+            "$type": "color",
+            "$description": "Text on any light fill, in either mode.",
+            "$value": "{theme.color.text.on-light}"
+          },
+          "on-dark": {
+            "$type": "color",
+            "$description": "Text on any dark fill, in either mode.",
+            "$value": "{theme.color.text.on-dark}"
           }
         },
         "border": {
@@ -3820,86 +3776,6 @@
             "$type": "color",
             "$description": "Border of a disabled control.",
             "$value": "{theme.color.disabled.border}"
-          }
-        },
-        "on-light": {
-          "$description": "What sits on a fill whose tone is light. The fill states its tone.",
-          "text": {
-            "primary": {
-              "$type": "color",
-              "$description": "Main text on a light fill.",
-              "$value": "{theme.color.on-light.text.primary}"
-            },
-            "secondary": {
-              "$type": "color",
-              "$description": "Supporting text on a light fill.",
-              "$value": "{theme.color.on-light.text.secondary}"
-            },
-            "muted": {
-              "$type": "color",
-              "$description": "The quietest text on a light fill.",
-              "$value": "{theme.color.on-light.text.muted}"
-            }
-          },
-          "link": {
-            "$type": "color",
-            "$description": "Links on a light fill.",
-            "$value": "{theme.color.on-light.link}"
-          },
-          "icon": {
-            "$type": "color",
-            "$description": "Icons on a light fill.",
-            "$value": "{theme.color.on-light.icon}"
-          },
-          "border": {
-            "$type": "color",
-            "$description": "Control edges on a light fill.",
-            "$value": "{theme.color.on-light.border}"
-          },
-          "focus": {
-            "$type": "color",
-            "$description": "The focus ring on a light fill.",
-            "$value": "{theme.color.on-light.focus}"
-          }
-        },
-        "on-dark": {
-          "$description": "What sits on a fill whose tone is dark. The fill states its tone.",
-          "text": {
-            "primary": {
-              "$type": "color",
-              "$description": "Main text on a dark fill.",
-              "$value": "{theme.color.on-dark.text.primary}"
-            },
-            "secondary": {
-              "$type": "color",
-              "$description": "Supporting text on a dark fill.",
-              "$value": "{theme.color.on-dark.text.secondary}"
-            },
-            "muted": {
-              "$type": "color",
-              "$description": "The quietest text on a dark fill.",
-              "$value": "{theme.color.on-dark.text.muted}"
-            }
-          },
-          "link": {
-            "$type": "color",
-            "$description": "Links on a dark fill.",
-            "$value": "{theme.color.on-dark.link}"
-          },
-          "icon": {
-            "$type": "color",
-            "$description": "Icons on a dark fill.",
-            "$value": "{theme.color.on-dark.icon}"
-          },
-          "border": {
-            "$type": "color",
-            "$description": "Control edges on a dark fill.",
-            "$value": "{theme.color.on-dark.border}"
-          },
-          "focus": {
-            "$type": "color",
-            "$description": "The focus ring on a dark fill.",
-            "$value": "{theme.color.on-dark.focus}"
           }
         }
       },

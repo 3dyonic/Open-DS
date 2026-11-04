@@ -340,6 +340,16 @@ export const CHECKS = {
             for (const f of g.semantics.tones?.fills ?? [])
               if (!toneOf(t.brands[brand].theme, mode, f.id))
                 gaps.push(`${s}/${brand}/${mode}: ${f.id} states no tone`);
+            // OD-227: a per-fill text name is the pair its fill's tone picks.
+            for (const [name, fill] of [
+              ["color.text.inverse", "color.surface.inverse"],
+              ["color.text.on-action", "color.action.primary.@"],
+              ["color.text.on-danger", "color.action.danger.@"],
+            ]) {
+              const tn = toneOf(t.brands[brand].theme, mode, fill)?.tone;
+              if (tn && hex(name) !== hex(`color.text.on-${tn}`))
+                gaps.push(`${s}/${brand}/${mode}: ${name} is not color.text.on-${tn}, the text for ${fill}'s tone`);
+            }
             for (const p of pairsIn(g, { id: s, tokens: t }, brand, mode)) {
               const [a, b] = [hex(p.key), hex(p.on)];
               if (!a || !b) continue;

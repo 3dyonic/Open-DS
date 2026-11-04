@@ -78,4 +78,4 @@ The CSS variable is the key with `/` replaced by `-` and the base `@` dropped. E
 | `overlay/scrim` | Color that dims the page behind a dialog. | `color.surface.scrim` → `accessible-first.theme.light.color.surface.scrim` → `color.black.light.scrim` | `color.surface.scrim` → `accessible-first.theme.dark.color.surface.scrim` → `color.black.dark.scrim` |
 | `overlay/item-height` | Height of a menu item. | `size.control.default` → `size.52` | same |
 | `tooltip/background` | Tooltip fill. | `color.surface.inverse` → `accessible-first.theme.light.color.surface.inverse` → `color.gray.light.900` | `color.surface.inverse` → `accessible-first.theme.dark.color.surface.inverse` → `color.gray.dark.900` |
-| `tooltip/label` | Tooltip text. | `color.text.inverse` → `accessible-first.theme.light.color.text.inverse` → `color.gray.light.0` | `color.text.inverse` → `accessible-first.theme.dark.color.text.inverse` → `color.gray.dark.50` |
+| `tooltip/label` | Tooltip text. | `color.text.inverse` → `accessible-first.theme.light.color.text.inverse` → `color.gray.light.0` | `color.text.inverse` → `accessible-first.theme.dark.color.text.inverse` → `color.gray.light.900` |

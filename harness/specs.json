@@ -390,6 +390,16 @@
       "checks": ["catalogue-built", "schemes-inventory", "schemes-samples", "storybook-renders", "docs-build"]
     },
     {
+      "id": "OD-227",
+      "title": "Two neutral text tokens: text on a light fill and text on a dark fill",
+      "in": [
+        "color.text.on-light (the light mode's body text) and color.text.on-dark (white) are the same in both modes",
+        "the text on every fill is the one its tone picks; the 14 tone-set tokens are gone",
+        "color.text.inverse, color.text.on-action and color.text.on-danger point at the pair by their fill's tone"
+      ],
+      "checks": ["semantics-guidance", "docs-build", "storybook-renders"]
+    },
+    {
       "id": "OD-222",
       "title": "Options match the decisions: only what is read, motion as answered, text paired by tone, focus, selected and danger",
       "in": [

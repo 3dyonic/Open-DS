@@ -62,4 +62,3 @@ export const SHADCN_SCALE = {
   "--text-lg": "var(--type-heading-font-size)",
   "--text-lg--line-height": "var(--type-heading-line-height)",
 };
-
