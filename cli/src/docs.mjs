@@ -1907,21 +1907,17 @@ export function docsPages(
   };
   // A component with its own tokens (OD-234): Part · its token → the semantic, with the CSS variable
   // under it · one Value column. Colors show each theme side by side; everything else has one value.
-  // the legend, in the scheme's own words: which themes it has and what a theme switch changes
+  // the legend (OD-234): the scheme decides what a theme switch changes; the marked rows are the ones it moves
   const themeLegend = () => {
-    const why = (q) => answer(q)?.why;
-    const names = scheme.themes.map((t) => themeLabel(t).toLowerCase());
-    const list =
-      names.length > 1
-        ? `${names.slice(0, -1).join(", ")} and ${names.at(-1)}`
-        : names[0];
-    const quotes = ["theming.values", "theming.roles", "theming.lands"]
-      .map(why)
-      .filter(Boolean)
-      .filter((x, i, a) => a.indexOf(x) === i)
-      .map((x) => `“${esc(x)}”`)
-      .join(" ");
-    return `<div class="odv-tlegend"><span class="odv-themed">Changes with theme</span><p>This part gets its own value in ${esc(list)}. ${esc(scheme.name)}'s call: ${quotes}</p></div>`;
+    const brands = Object.keys(scheme.tokens.brands).length;
+    const lands = answer("theming.lands")
+      ? label("theming.lands").toLowerCase()
+      : "colors";
+    const between =
+      brands > 1
+        ? "between its brands and between light and dark"
+        : "between light and dark";
+    return `<div class="odv-tlegend"><span class="odv-themed">Changes with theme</span><p>${esc(scheme.name)} decides what changes when you switch theme. Here a switch changes ${esc(lands)}, so the marked rows differ ${between}; everything else holds steady.</p></div>`;
   };
   const ownTable = (rows, ths) =>
     themeLegend() +
