@@ -24,12 +24,6 @@ Multi-brand has **2 modes** and **3 brands**. A mode swaps the colors; corners a
 | Which modes ship? | Light and dark | Light and dark ship for every brand. |
 | What changes when the theme changes? | Colors, type and shape | A brand switch changes colors, fonts and corners. |
 
-## Where it lands
-
-- Button
-- Card
-- Overlay
-
 ## When to use what
 
 | Situation | Use | Not | Why |

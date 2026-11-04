@@ -1070,24 +1070,35 @@ export const CHECKS = {
           for (const o of sc.owns ?? [])
             if (!trees.some((t) => has(t, o))) gaps.push(`${sch.id}: ${sc.id} owns ${o}, which is not a token`);
         }
-        const semanticOwns = (sc.owns ?? []).filter((o) => has(semantic(schemes[0]), o));
-        for (const cid of sc.lands_in ?? []) {
-          if (!comps.has(cid)) {
-            gaps.push(`${sc.id}: lands in ${cid}, which is not a component`);
-            continue;
-          }
-          if (
-            semanticOwns.length &&
-            !comps.get(cid).keys.some((k) => semanticOwns.some((o) => keyDefault.get(k).startsWith(o)))
-          )
-            gaps.push(`${sc.id}: lands in ${cid}, but no ${cid} key reads ${semanticOwns.join(" or ")}`);
-        }
+        // lands_in is traced from the components' code (lands-in-traced); here, each is a real component.
+        for (const cid of sc.lands_in ?? [])
+          if (!c.has(`ui/src/components/${cid}.tsx`)) gaps.push(`${sc.id}: lands in ${cid}, which is not a component`);
       }
       for (const x of g.situations)
         if (!g.scopes.some((sc) => sc.id === x.scope)) gaps.push(`situation ${x.id} has no scope`);
       return gaps.length
         ? bad(gaps.slice(0, 12).join("; "))
         : ok(`${g.scopes.length} scopes, each with the 5 method questions, owned tokens, components and situations`);
+    },
+  },
+
+  "lands-in-traced": {
+    requires: ["schemes/grammar.json", "cli/src/lands.mjs"],
+    run: async (c) => {
+      // OD-233: where each scope lands is traced from the components' own code, never hand-written.
+      // Every component that reads a token the scope owns is listed, and nothing else.
+      const { landsIn } = await import(pathToFileURL(c.p("cli/src/lands.mjs")).href);
+      const g = c.json("schemes", "grammar.json");
+      const schemes = SCHEMES.map((id) => c.json("schemes", `${id}.json`));
+      const want = landsIn(schemes, g, { ui: c.p("ui/src"), stories: c.p("storybook/stories") });
+      const gaps = [];
+      for (const sc of g.scopes) {
+        const got = (sc.lands_in ?? []).join();
+        if (got !== (want[sc.id] ?? []).join()) gaps.push(sc.id);
+      }
+      return gaps.length
+        ? bad(`Out of date for ${gaps.join(", ")}. Run: node scripts/lands.mjs`)
+        : ok(g.scopes.map((sc) => `${sc.id} ${sc.lands_in.length}`).join(", ") + " components, traced from their code");
     },
   },
 

@@ -24,12 +24,6 @@ Dense data has **2 modes** and **1 brand**. A mode swaps the colors; corners and
 | Which modes ship? | Light and dark | Light first, always; dark ships as standard for night shifts. |
 | What changes when the theme changes? | Colors only | A mode switch changes colors only, so layout never moves. |
 
-## Where it lands
-
-- Button
-- Card
-- Overlay
-
 ## When to use what
 
 | Situation | Use | Not | Why |

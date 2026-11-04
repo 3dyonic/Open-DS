@@ -1,0 +1,155 @@
+// Where each scope lands (OD-233): every component whose source reads a token the scope owns, traced
+// from the component's own code. A component reads its component keys (var(--button-padding-x)) and
+// shadcn's utilities (bg-primary, rounded-md); each leads, through the keys and the semantics, to the
+// tokens a scope owns. Copy is read by the stories from the scheme's samples, so the voice scope lands
+// in every component whose story reads them. The grammar's lands_in is written from this, and the
+// harness fails when the two differ.
+import { existsSync, readFileSync, readdirSync } from "node:fs";
+import { join } from "node:path";
+import { SHADCN, SHADCN_SCALE } from "./shadcn.mjs";
+import { cssName, flatTokens } from "./tokens.mjs";
+
+const REF = /\{([^}]+)\}/g;
+const UTIL =
+  /\b(?:bg|text|border|border-[tblrxy]|ring|ring-offset|fill|stroke|outline|divide|placeholder|caret|accent|decoration)-([a-z0-9-]+)/g;
+const SCALE = /\b(rounded|shadow|text)-(xs|sm|md|lg|xl|base|2xl)\b/g;
+
+/**
+ * Every token of a scheme by its CSS name, and by its path, with the theme under "theme.". With a brand
+ * and mode, the theme is that brand's base and mode only, so references resolve as in that theme.
+ */
+export function tokenIndex(scheme, { brand, mode } = {}) {
+  const t = scheme.tokens;
+  const byPath = new Map();
+  const add = (tree, prefix = []) => {
+    for (const [p, tok] of flatTokens(tree, prefix)) byPath.set(p, tok);
+  };
+  add(t.primitive);
+  add(t.semantic);
+  add({ component: t.component });
+  if (brand && mode) {
+    const th = t.brands[brand].theme;
+    add(th.base ?? {}, ["theme"]);
+    add(th[mode] ?? {}, ["theme"]);
+  } else
+    for (const b of Object.values(t.brands ?? {}))
+      for (const m of Object.keys(b.theme ?? {})) add(b.theme[m], ["theme"]);
+  const byCss = new Map();
+  for (const p of byPath.keys()) {
+    byCss.set(cssName(p), p);
+    if (p.startsWith("component.")) byCss.set(cssName(p.slice(10)), p);
+  }
+  return { byPath, byCss };
+}
+
+/** The token paths a component's source names directly: its component keys and shadcn's utilities. */
+export function directReads(src, index) {
+  const start = new Set();
+  for (const m of src.matchAll(/var\(--([a-z0-9-]+)\)/g)) {
+    const p = index.byCss.get(m[1]);
+    if (p) start.add(p);
+  }
+  for (const m of src.matchAll(UTIL)) {
+    const css = SHADCN[m[1]];
+    const p = css && index.byCss.get(css);
+    if (p) start.add(p);
+  }
+  for (const m of src.matchAll(SCALE)) {
+    const v = SHADCN_SCALE[`--${m[1] === "rounded" ? "radius" : m[1]}-${m[2]}`];
+    const css = v && v.match(/var\(--([a-z0-9-]+)\)/)?.[1];
+    const p = css && index.byCss.get(css);
+    if (p) start.add(p);
+  }
+  return start;
+}
+
+/** The token paths a component's source reads, followed through every reference. */
+export function readsOfSource(src, index) {
+  const start = directReads(src, index);
+  const seen = new Set();
+  const walk = (p) => {
+    if (seen.has(p)) return;
+    seen.add(p);
+    const v = index.byPath.get(p)?.$value;
+    for (const m of JSON.stringify(v ?? "").matchAll(REF)) {
+      const r = m[1];
+      if (index.byPath.has(r)) walk(r);
+      else if (index.byPath.has(`theme.${r.replace(/^theme\./, "")}`))
+        walk(`theme.${r.replace(/^theme\./, "")}`);
+    }
+  };
+  for (const p of start) walk(p);
+  return seen;
+}
+
+const owns = (path, o) => {
+  const p = path.replace(/^theme\./, "");
+  return (
+    path === o ||
+    path.startsWith(`${o}.`) ||
+    p === o ||
+    p.startsWith(`${o}.`) ||
+    (o === "theme" && path.startsWith("theme."))
+  );
+};
+
+/**
+ * { scopeId: [component, …] }: every component (by file name in ui/src/components) that reads a token
+ * the scope owns, in any scheme; and for scopes that own copy (content), every component whose story
+ * reads the scheme's samples.
+ */
+export function landsIn(schemes, grammar, roots) {
+  const dir = join(roots.ui, "components");
+  const names = readdirSync(dir)
+    .filter((f) => f.endsWith(".tsx"))
+    .map((f) => f.replace(/\.tsx$/, ""))
+    .sort();
+  const reads = Object.fromEntries(names.map((n) => [n, new Set()]));
+  for (const s of schemes) {
+    const index = tokenIndex(s);
+    for (const n of names)
+      for (const p of readsOfSource(
+        readFileSync(join(dir, `${n}.tsx`), "utf8"),
+        index,
+      ))
+        reads[n].add(p);
+  }
+  const story = (n) => {
+    const f = roots.stories && join(roots.stories, `${n}.stories.tsx`);
+    return f && existsSync(f) ? readFileSync(f, "utf8") : "";
+  };
+  const out = {};
+  for (const sc of grammar.scopes) {
+    const list = names.filter((n) => {
+      if ((sc.owns ?? []).some((o) => o === "content"))
+        return /\bsamples\b|\bcontent\b/.test(story(n));
+      return [...reads[n]].some((p) => (sc.owns ?? []).some((o) => owns(p, o)));
+    });
+    out[sc.id] = list;
+  }
+  return out;
+}
+
+/**
+ * A token's alias chain in one brand and mode, as a reader sees it: the named tokens it passes through
+ * (the theme's internal hops left out), the neutral step if it goes through one, and the value it ends at.
+ * { hops: [path, …], value }
+ */
+export function aliasChain(index, path) {
+  const hops = [];
+  let p = path;
+  for (let i = 0; i < 16; i++) {
+    const v = index.byPath.get(p)?.$value;
+    const m = typeof v === "string" && v.match(/^\{([^}]+)\}$/);
+    if (!m) return { hops, value: v ?? null, end: p };
+    let r = m[1];
+    if (
+      !index.byPath.has(r) &&
+      index.byPath.has(`theme.${r.replace(/^theme\./, "")}`)
+    )
+      r = `theme.${r.replace(/^theme\./, "")}`;
+    if (!r.startsWith("theme.")) hops.push(r);
+    p = r;
+  }
+  return { hops, value: null, end: p };
+}

@@ -64,11 +64,6 @@ Each token points to another token. Values live only on primitives, below.
 
 The raw values these tokens end at are on [Primitives › Effects](../primitives/effects).
 
-## Where it lands
-
-- Card
-- Overlay
-
 ## When to use what
 
 | Situation | Use | Not | Why |

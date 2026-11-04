@@ -485,6 +485,16 @@
         "the light tint shares the step and keeps 7:1 or more with its 800 text"
       ],
       "checks": ["hints-measured", "scales-generated", "semantics-guidance"]
+    },
+    {
+      "id": "OD-233",
+      "title": "Pairs and tones as pictures; where scopes land, traced from code",
+      "in": [
+        "Foundations › Color shows each fill in its color with the text that may sit on it, per theme, grouped by tone; then each fill's tone in both modes",
+        "each scope's lands_in is traced from the components' code and never hand-written",
+        "Foundations pages no longer list where a scope lands or the component keys"
+      ],
+      "checks": ["lands-in-traced", "scopes-uniform-template", "docs-sections", "docs-build"]
     }
   ]
 }
