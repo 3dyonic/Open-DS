@@ -38,7 +38,7 @@ Each token points to another token. Values live only on primitives, below.
 | `size.control.compact` | `size.24` | `size.24` |
 | `size.control.large` | `size.32` | `size.32` |
 | `opacity.disabled` | `opacity.40` | `opacity.40` |
-| `color.border.focus` | `dense-data.theme.light.color.border.focus` → `color.violet.light.600` | `dense-data.theme.dark.color.border.focus` → `color.violet.dark.700` |
+| `color.border.focus` | `dense-data.theme.light.color.border.focus` → `color.violet.light.600` | `dense-data.theme.dark.color.border.focus` → `color.violet.dark.600` |
 
 ## Primitives
 
@@ -46,7 +46,7 @@ The raw values the tokens above end at.
 
 | Primitive | Value | Sample |
 | --- | --- | --- |
-| `color.violet.dark.700` | #A9A3F6 | <span class="ods-swatch" style="background:#A9A3F6"></span> |
+| `color.violet.dark.600` | #A9A3F6 | <span class="ods-swatch" style="background:#A9A3F6"></span> |
 | `color.violet.light.600` | #4B3FD9 | <span class="ods-swatch" style="background:#4B3FD9"></span> |
 | `opacity.40` | 0.4 | <span class="ods-swatch" style="opacity:0.4"></span> |
 | `size.24` | 1.5rem (24px) | <span class="ods-bar" style="width:1.5rem"></span> |

@@ -28,5 +28,5 @@ Multi-brand ships 6 themes: aster-light, aster-dark, birch-light, birch-dark, co
 | `color.surface.canvas` | #F8FAFC | #020617 | #F8FAFC | #020617 | #F8FAFC | #020617 |
 | `color.surface.default` | #FFFFFF | #0F172A | #FFFFFF | #0F172A | #FFFFFF | #0F172A |
 | `color.text.primary` | #0F172A | #F8FAFC | #0F172A | #F8FAFC | #0F172A | #F8FAFC |
-| `color.action.primary` | #0F766E #0B5B55 | #7FCFC6 #E0F2F1 | #6D28D9 #5520AA | #B79DF7 #EDE7FE | #C2410C #9A330A | #F7A67F #FFEDE5 |
+| `color.action.primary` | #0F766E #015852 | #7FCFC6 #A1DCD4 | #6D28D9 #5212AA | #B79DF7 #C9B7FC | #C2410C #942D02 | #F7A67F #FCBD9F |
 | `color.border.focus` | #0F766E | #7FCFC6 | #6D28D9 | #B79DF7 | #C2410C | #F7A67F |

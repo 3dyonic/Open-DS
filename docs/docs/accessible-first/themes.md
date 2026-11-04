@@ -25,5 +25,5 @@ Accessible first ships 2 themes: light, dark. Only semantic tokens change betwee
 | `color.surface.canvas` | #F7F7F7 | #0A0A0A |
 | `color.surface.default` | #FFFFFF | #141414 |
 | `color.text.primary` | #141414 | #F7F7F7 |
-| `color.action.primary` | #0B4FC0 #083C93 | #8AB4F8 #E1ECFF |
+| `color.action.primary` | #0B4FC0 #013895 | #8AB4F8 #A7C8FC |
 | `color.border.focus` | #0B4FC0 | #8AB4F8 |

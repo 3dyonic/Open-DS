@@ -971,7 +971,9 @@
                       "because": {
                         "type": "array",
                         "minItems": 1,
-                        "items": { "type": "string" },
+                        "items": {
+                          "type": "string"
+                        },
                         "description": "The answers it follows from."
                       }
                     }
@@ -1021,6 +1023,34 @@
           "$ref": "#/$defs/token/properties/$type",
           "description": "Type inherited by every token in the group."
         },
+        "$extensions": {
+          "type": "object",
+          "additionalProperties": false,
+          "description": "Open DS decisions on a group that are not values.",
+          "properties": {
+            "open-ds": {
+              "type": "object",
+              "additionalProperties": false,
+              "required": ["generated", "light", "dark"],
+              "description": "On a coloured hue: how its scales are generated (OD-223). Each mode has a key colour, kept exact at 600, and optional recorded adjustments per step.",
+              "properties": {
+                "generated": {
+                  "type": "string",
+                  "pattern": "^OD-\\d+$",
+                  "description": "The ticket that set the method."
+                },
+                "light": {
+                  "$ref": "#/$defs/scaleSpec",
+                  "description": "The light scale's key and adjustments."
+                },
+                "dark": {
+                  "$ref": "#/$defs/scaleSpec",
+                  "description": "The dark scale's key and adjustments."
+                }
+              }
+            }
+          }
+        },
         "@": {
           "$ref": "#/$defs/token",
           "description": "The concept's base value, beside its variants, for example color.action.primary.@ next to color.action.primary.hover. The build drops the @ from the name: it becomes --color-action-primary. A reference names it: {color.action.primary.@}. Not used on primitives, which are steps only."
@@ -1040,6 +1070,43 @@
         }
       },
       "additionalProperties": false
+    },
+    "scaleSpec": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["key"],
+      "description": "One mode's scale of a hue: its key colour and any adjustments.",
+      "properties": {
+        "key": {
+          "type": "string",
+          "pattern": "^#[0-9A-Fa-f]{6}$",
+          "description": "The key colour, exact at step 600."
+        },
+        "adjust": {
+          "type": "object",
+          "description": "Recorded moves per step: L in OKLCH lightness, H in degrees, and why.",
+          "additionalProperties": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": ["why"],
+            "properties": {
+              "L": {
+                "type": "number",
+                "description": "The move in OKLCH lightness."
+              },
+              "H": {
+                "type": "number",
+                "description": "The move in hue, in degrees."
+              },
+              "why": {
+                "type": "string",
+                "minLength": 1,
+                "description": "Why the step moved."
+              }
+            }
+          }
+        }
+      }
     },
     "token": {
       "type": "object",
@@ -1076,12 +1143,16 @@
             "open-ds": {
               "type": "object",
               "additionalProperties": false,
-              "required": ["tone"],
-              "description": "On a fill in a theme: its tone, which decides what sits on it (OD-222).",
+              "description": "On a fill in a theme: its tone, which decides the text on it (OD-222, OD-227). On a component key: the fill it sits on, so the build picks its text by that fill's tone (OD-223).",
               "properties": {
                 "tone": {
                   "enum": ["light", "dark"],
-                  "description": "Light: what sits on it reads color.on-light. Dark: color.on-dark."
+                  "description": "Light: the text on it is color.text.on-light. Dark: color.text.on-dark."
+                },
+                "on": {
+                  "type": "string",
+                  "pattern": "^color(\\.[a-z0-9-]+)+(\\.@)?$",
+                  "description": "On a component key: the fill it sits on. The build turns a -on-light or -on-dark value into the one that fill's tone picks in each mode."
                 },
                 "waits": {
                   "type": "object",

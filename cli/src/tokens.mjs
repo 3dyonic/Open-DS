@@ -90,8 +90,31 @@ export function themeTokens(scheme, brand, mode) {
     t.primitive,
     themeTree,
     pointAtTheme(t.semantic, name, theme, mode),
-    t.component,
+    pickByTone(t.component, theme, mode),
   );
+}
+
+/**
+ * Component keys that name the fill they sit on ($extensions["open-ds"].on) take the text pair its
+ * tone picks in this mode: a -on-light or -on-dark key becomes the one that fill's tone calls for (OD-223).
+ */
+function pickByTone(tree, theme, mode) {
+  const out = {};
+  for (const [k, v] of Object.entries(tree ?? {})) {
+    if (isObject(v) && "$value" in v) {
+      const on = v.$extensions?.["open-ds"]?.on;
+      const tone =
+        on && tokenAt(theme[mode], on)?.$extensions?.["open-ds"]?.tone;
+      out[k] =
+        tone && typeof v.$value === "string"
+          ? {
+              ...v,
+              $value: v.$value.replace(/-on-(light|dark)\}$/, `-on-${tone}}`),
+            }
+          : v;
+    } else out[k] = isObject(v) ? pickByTone(v, theme, mode) : v;
+  }
+  return out;
 }
 
 /** The semantic tree in one mode, each {theme.key} replaced by what a brand's theme picks (the first brand by default). */

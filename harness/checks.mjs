@@ -523,6 +523,38 @@ export const CHECKS = {
     },
   },
 
+  "scales-generated": {
+    requires: ["cli/src/ramps.mjs"],
+    run: async (c) => {
+      // OD-223: every coloured hue's scales are whole and equal to the generator's output from its
+      // recorded key colours and adjustments. A hand-edited step fails.
+      const { scale, STEPS } = await import(pathToFileURL(c.p("cli/src/ramps.mjs")).href);
+      const gaps = [];
+      let n = 0;
+      for (const id of SCHEMES) {
+        const s = c.json("schemes", `${id}.json`);
+        const all = flatten(themeTokens({ id, tokens: s.tokens }, Object.keys(s.tokens.brands)[0], "dark"));
+        const canvas = String(resolve(all, "color.surface.canvas").value).slice(0, 7).toUpperCase();
+        for (const [hue, g] of Object.entries(s.tokens.primitive.color)) {
+          const spec = g?.$extensions?.["open-ds"];
+          if (!spec) continue;
+          for (const mode of ["light", "dark"]) {
+            const want = scale(spec[mode], mode, canvas);
+            for (const st of STEPS) {
+              const got = String(g[mode]?.[st]?.$value ?? "").toUpperCase();
+              if (got !== want[st])
+                gaps.push(`${id}: ${hue}.${mode}.${st} is ${got || "missing"}, the generator gives ${want[st]}`);
+            }
+          }
+          n++;
+        }
+      }
+      return gaps.length
+        ? bad(gaps.slice(0, 6).join("; "))
+        : ok(`${n} coloured hues have whole scales, generated from their key colours`);
+    },
+  },
+
   "neutral-semantic": {
     requires: ["schemes/grammar.json"],
     run: (c) => {

@@ -53,33 +53,41 @@ html[data-scheme="accessible-first"] {
   --color-neutral-800: #222222;
   --color-neutral-900: #141414;
   --color-neutral-950: #0A0A0A;
-  --color-surface-selected: #E1ECFF; /** The fill of a selected or current item. */
+  --color-surface-selected: #E2EDFF; /** The fill of a selected or current item. */
   --color-surface-scrim: #0000008C; /** The see-through layer behind a modal. */
-  --color-text-link: #083C93; /** Links in running text. */
+  --color-text-link: #013895; /** Links in running text. */
   --color-text-on-light: #141414; /** Text on any fill whose tone is light, in either mode: the light mode's body text. */
   --color-text-on-dark: #FFFFFF; /** Text on any fill whose tone is dark, in either mode: white. */
+  --color-text-info-on-light: #022C29; /** The label on a light info fill, such as its tint in light mode: a fixed colour from the light scale (800). */
+  --color-text-info-on-dark: #F1FAF9; /** The label on a dark info fill, such as its tint in dark mode: a fixed colour from the light scale (50). */
+  --color-text-success-on-light: #023E17; /** The label on a light success fill, such as its tint in light mode: a fixed colour from the light scale (800). */
+  --color-text-success-on-dark: #F1FDF2; /** The label on a dark success fill, such as its tint in dark mode: a fixed colour from the light scale (50). */
+  --color-text-warning-on-light: #462A02; /** The label on a light warning fill, such as its tint in light mode: a fixed colour from the light scale (800). */
+  --color-text-warning-on-dark: #FFF7EF; /** The label on a dark warning fill, such as its tint in dark mode: a fixed colour from the light scale (50). */
+  --color-text-danger-on-light: #6D0008; /** The label on a light danger fill, such as its tint in light mode: a fixed colour from the light scale (800). */
+  --color-text-danger-on-dark: #FEF7F7; /** The label on a dark danger fill, such as its tint in dark mode: a fixed colour from the light scale (50). */
   --color-border-focus: #0B4FC0; /** The focus ring. */
   --color-border-selected: #0B4FC0; /** The edge that marks a selected item, beside its fill, so selection is never colour alone. */
   --color-action-primary: #0B4FC0; /** The one main action in a view. */
-  --color-action-primary-hover: #083C93; /** The main action under the pointer. */
+  --color-action-primary-hover: #013895; /** The main action under the pointer. */
   --color-action-danger: #C42B2B; /** The fill of a destructive commit: the confirm of a delete. */
-  --color-action-danger-hover: #C42B2B; /** The danger fill on hover. */
+  --color-action-danger-hover: #981519; /** The danger fill on hover. */
   --color-status-info: #0B5B55; /** Neutral news: something changed and no action is needed. The lowest level of the urgency order. */
-  --color-status-info-subtle: #E0F2F1; /** The fill behind info status. */
+  --color-status-info-subtle: #DEEFED; /** The fill behind info status. */
   --color-status-success: #1F7A3A; /** Confirmation that something worked. It sits outside the urgency order. */
-  --color-status-success-subtle: #E3F4EA; /** The fill behind success status. */
+  --color-status-success-subtle: #DFF5E2; /** The fill behind success status. */
   --color-status-warning: #8A5600; /** Caution: something may go wrong or needs a check, and it can be fixed. */
-  --color-status-warning-subtle: #FFF3D6; /** The fill behind warning status. */
+  --color-status-warning-subtle: #FAEBDA; /** The fill behind warning status. */
   --color-status-danger: #C42B2B; /** Real risk: errors, failed checks, actions that cannot be undone. The top of the urgency order. Overuse wears it out. */
-  --color-status-danger-subtle: #FDE7E7; /** The fill behind danger status. */
+  --color-status-danger-subtle: #FEE9E7; /** The fill behind danger status. */
   --color-category-1: #0B4FC0; /** Category 1: tells one item or series from another. It carries no meaning. */
-  --color-category-1-subtle: #E1ECFF; /** Category 1: the fill of a tag. */
-  --color-category-2: #0F766E; /** Category 2: tells one item or series from another. It carries no meaning. */
-  --color-category-2-subtle: #E0F2F1; /** Category 2: the fill of a tag. */
+  --color-category-1-subtle: #E2EDFF; /** Category 1: the fill of a tag. */
+  --color-category-2: #0B5B55; /** Category 2: tells one item or series from another. It carries no meaning. */
+  --color-category-2-subtle: #DEEFED; /** Category 2: the fill of a tag. */
   --color-category-3: #1F7A3A; /** Category 3: tells one item or series from another. It carries no meaning. */
-  --color-category-3-subtle: #E3F4EA; /** Category 3: the fill of a tag. */
+  --color-category-3-subtle: #DFF5E2; /** Category 3: the fill of a tag. */
   --color-category-4: #8A5600; /** Category 4: tells one item or series from another. It carries no meaning. */
-  --color-category-4-subtle: #FFF3D6; /** Category 4: the fill of a tag. */
+  --color-category-4-subtle: #FAEBDA; /** Category 4: the fill of a tag. */
   --radius-control: 0.375rem; /** Corner of buttons and inputs. */
   --radius-badge: 0.25rem; /** Corner of badges and checkboxes. */
   --radius-container: 0.5rem; /** Corner of cards, menus and dialogs. */
@@ -123,13 +131,13 @@ html[data-scheme="accessible-first"] {
   --control-radius: var(--radius-badge); /** Checkbox corner radius. */
   --badge-radius: var(--radius-badge); /** Badge corner radius. */
   --badge-success-background: var(--color-status-success-subtle); /** Success badge fill. */
-  --badge-success-label: var(--color-status-success); /** Success badge label. */
+  --badge-success-label: var(--color-text-success-on-light); /** Success badge label. */
   --badge-warning-background: var(--color-status-warning-subtle); /** Warning badge fill. */
-  --badge-warning-label: var(--color-status-warning); /** Warning badge label. */
+  --badge-warning-label: var(--color-text-warning-on-light); /** Warning badge label. */
   --badge-danger-background: var(--color-status-danger-subtle); /** Danger badge fill. */
-  --badge-danger-label: var(--color-status-danger); /** Danger badge label. */
+  --badge-danger-label: var(--color-text-danger-on-light); /** Danger badge label. */
   --badge-info-background: var(--color-status-info-subtle); /** Info badge fill. */
-  --badge-info-label: var(--color-status-info); /** Info badge label. */
+  --badge-info-label: var(--color-text-info-on-light); /** Info badge label. */
   --card-radius: var(--radius-container); /** Card corner radius. */
   --card-shadow: var(--elevation-card); /** Card shadow. */
   --table-row-selected: var(--color-surface-selected); /** Fill of a selected row. */
@@ -243,33 +251,41 @@ html[data-scheme="accessible-first"][data-theme="dark"] {
   --color-neutral-800: #EDEDED;
   --color-neutral-900: #F7F7F7;
   --color-neutral-950: #FFFFFF;
-  --color-surface-selected: #062C6E; /** The fill of a selected or current item. */
+  --color-surface-selected: #102547; /** The fill of a selected or current item. */
   --color-surface-scrim: #000000B3; /** The see-through layer behind a modal. */
-  --color-text-link: #8AB4F8; /** Links in running text. */
+  --color-text-link: #A7C8FC; /** Links in running text. */
   --color-text-on-light: #141414; /** Text on any fill whose tone is light, in either mode: the light mode's body text. */
   --color-text-on-dark: #FFFFFF; /** Text on any fill whose tone is dark, in either mode: white. */
+  --color-text-info-on-light: #022C29; /** The label on a light info fill, such as its tint in light mode: a fixed colour from the light scale (800). */
+  --color-text-info-on-dark: #F1FAF9; /** The label on a dark info fill, such as its tint in dark mode: a fixed colour from the light scale (50). */
+  --color-text-success-on-light: #023E17; /** The label on a light success fill, such as its tint in light mode: a fixed colour from the light scale (800). */
+  --color-text-success-on-dark: #F1FDF2; /** The label on a dark success fill, such as its tint in dark mode: a fixed colour from the light scale (50). */
+  --color-text-warning-on-light: #462A02; /** The label on a light warning fill, such as its tint in light mode: a fixed colour from the light scale (800). */
+  --color-text-warning-on-dark: #FFF7EF; /** The label on a dark warning fill, such as its tint in dark mode: a fixed colour from the light scale (50). */
+  --color-text-danger-on-light: #6D0008; /** The label on a light danger fill, such as its tint in light mode: a fixed colour from the light scale (800). */
+  --color-text-danger-on-dark: #FEF7F7; /** The label on a dark danger fill, such as its tint in dark mode: a fixed colour from the light scale (50). */
   --color-border-focus: #8AB4F8; /** The focus ring. */
   --color-border-selected: #8AB4F8; /** The edge that marks a selected item, beside its fill, so selection is never colour alone. */
   --color-action-primary: #8AB4F8; /** The one main action in a view. */
-  --color-action-primary-hover: #E1ECFF; /** The main action under the pointer. */
+  --color-action-primary-hover: #A7C8FC; /** The main action under the pointer. */
   --color-action-danger: #F28B8B; /** The fill of a destructive commit: the confirm of a delete. */
-  --color-action-danger-hover: #F28B8B; /** The danger fill on hover. */
+  --color-action-danger-hover: #FAA9A8; /** The danger fill on hover. */
   --color-status-info: #7FCFC6; /** Neutral news: something changed and no action is needed. The lowest level of the urgency order. */
-  --color-status-info-subtle: #08423E; /** The fill behind info status. */
+  --color-status-info-subtle: #012F2C; /** The fill behind info status. */
   --color-status-success: #5CC283; /** Confirmation that something worked. It sits outside the urgency order. */
-  --color-status-success-subtle: #123322; /** The fill behind success status. */
+  --color-status-success-subtle: #012E16; /** The fill behind success status. */
   --color-status-warning: #F2B84B; /** Caution: something may go wrong or needs a check, and it can be fixed. */
-  --color-status-warning-subtle: #3A2A05; /** The fill behind warning status. */
+  --color-status-warning-subtle: #372500; /** The fill behind warning status. */
   --color-status-danger: #F28B8B; /** Real risk: errors, failed checks, actions that cannot be undone. The top of the urgency order. Overuse wears it out. */
-  --color-status-danger-subtle: #3D1414; /** The fill behind danger status. */
+  --color-status-danger-subtle: #451014; /** The fill behind danger status. */
   --color-category-1: #8AB4F8; /** Category 1: tells one item or series from another. It carries no meaning. */
-  --color-category-1-subtle: #062C6E; /** Category 1: the fill of a tag. */
+  --color-category-1-subtle: #102547; /** Category 1: the fill of a tag. */
   --color-category-2: #7FCFC6; /** Category 2: tells one item or series from another. It carries no meaning. */
-  --color-category-2-subtle: #08423E; /** Category 2: the fill of a tag. */
+  --color-category-2-subtle: #012F2C; /** Category 2: the fill of a tag. */
   --color-category-3: #5CC283; /** Category 3: tells one item or series from another. It carries no meaning. */
-  --color-category-3-subtle: #123322; /** Category 3: the fill of a tag. */
+  --color-category-3-subtle: #012E16; /** Category 3: the fill of a tag. */
   --color-category-4: #F2B84B; /** Category 4: tells one item or series from another. It carries no meaning. */
-  --color-category-4-subtle: #3A2A05; /** Category 4: the fill of a tag. */
+  --color-category-4-subtle: #372500; /** Category 4: the fill of a tag. */
   --radius-control: 0.375rem; /** Corner of buttons and inputs. */
   --radius-badge: 0.25rem; /** Corner of badges and checkboxes. */
   --radius-container: 0.5rem; /** Corner of cards, menus and dialogs. */
@@ -313,13 +329,13 @@ html[data-scheme="accessible-first"][data-theme="dark"] {
   --control-radius: var(--radius-badge); /** Checkbox corner radius. */
   --badge-radius: var(--radius-badge); /** Badge corner radius. */
   --badge-success-background: var(--color-status-success-subtle); /** Success badge fill. */
-  --badge-success-label: var(--color-status-success); /** Success badge label. */
+  --badge-success-label: var(--color-text-success-on-dark); /** Success badge label. */
   --badge-warning-background: var(--color-status-warning-subtle); /** Warning badge fill. */
-  --badge-warning-label: var(--color-status-warning); /** Warning badge label. */
+  --badge-warning-label: var(--color-text-warning-on-dark); /** Warning badge label. */
   --badge-danger-background: var(--color-status-danger-subtle); /** Danger badge fill. */
-  --badge-danger-label: var(--color-status-danger); /** Danger badge label. */
+  --badge-danger-label: var(--color-text-danger-on-dark); /** Danger badge label. */
   --badge-info-background: var(--color-status-info-subtle); /** Info badge fill. */
-  --badge-info-label: var(--color-status-info); /** Info badge label. */
+  --badge-info-label: var(--color-text-info-on-dark); /** Info badge label. */
   --card-radius: var(--radius-container); /** Card corner radius. */
   --card-shadow: var(--elevation-card); /** Card shadow. */
   --table-row-selected: var(--color-surface-selected); /** Fill of a selected row. */

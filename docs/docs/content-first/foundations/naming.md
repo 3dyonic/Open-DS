@@ -26,14 +26,14 @@ Each token points to another token. Values live only on primitives, below.
 
 | Token | Points to, light | Points to, dark |
 | --- | --- | --- |
-| `component.button.primary.background.@` | `color.action.primary.@` → `content-first.theme.light.color.action.primary.@` → `color.navy.light.600` | `color.action.primary.@` → `content-first.theme.dark.color.action.primary.@` → `color.navy.dark.700` |
-| `component.button.primary.background.hover` | `color.action.primary.hover` → `content-first.theme.light.color.action.primary.hover` → `color.navy.light.700` | `color.action.primary.hover` → `content-first.theme.dark.color.action.primary.hover` → `color.navy.dark.800` |
+| `component.button.primary.background.@` | `color.action.primary.@` → `content-first.theme.light.color.action.primary.@` → `color.navy.light.600` | `color.action.primary.@` → `content-first.theme.dark.color.action.primary.@` → `color.navy.dark.600` |
+| `component.button.primary.background.hover` | `color.action.primary.hover` → `content-first.theme.light.color.action.primary.hover` → `color.navy.light.700` | `color.action.primary.hover` → `content-first.theme.dark.color.action.primary.hover` → `color.navy.dark.700` |
 | `component.button.primary.label` | `color.text.on-action` → `content-first.theme.light.color.text.on-action` → `color.text.on-dark` → `content-first.theme.base.color.text.on-dark` → `color.stone.light.0` | `color.text.on-action` → `content-first.theme.dark.color.text.on-action` → `color.text.on-light` → `content-first.theme.base.color.text.on-light` → `color.stone.light.900` |
 | `component.button.secondary.background.@` | `color.action.secondary.@` → `content-first.theme.light.color.action.secondary.@` → `color.neutral.0` → `content-first.theme.light.color.neutral.0` → `color.stone.light.0` | `color.action.secondary.@` → `content-first.theme.dark.color.action.secondary.@` → `color.neutral.50` → `content-first.theme.dark.color.neutral.50` → `color.stone.dark.50` |
 | `component.button.secondary.background.hover` | `color.action.secondary.hover` → `content-first.theme.light.color.action.secondary.hover` → `color.neutral.100` → `content-first.theme.light.color.neutral.100` → `color.stone.light.100` | `color.action.secondary.hover` → `content-first.theme.dark.color.action.secondary.hover` → `color.neutral.100` → `content-first.theme.dark.color.neutral.100` → `color.stone.dark.100` |
 | `component.button.secondary.label` | `color.text.primary` → `content-first.theme.light.color.text.primary` → `color.neutral.900` → `content-first.theme.light.color.neutral.900` → `color.stone.light.900` | `color.text.primary` → `content-first.theme.dark.color.text.primary` → `color.neutral.900` → `content-first.theme.dark.color.neutral.900` → `color.stone.dark.900` |
 | `component.button.secondary.border` | `color.border.strong` → `content-first.theme.light.color.border.strong` → `color.neutral.500` → `content-first.theme.light.color.neutral.500` → `color.stone.light.500` | `color.border.strong` → `content-first.theme.dark.color.border.strong` → `color.neutral.400` → `content-first.theme.dark.color.neutral.400` → `color.stone.dark.400` |
-| `component.button.danger.background.@` | `color.action.danger.@` → `content-first.theme.light.color.action.danger.@` → `color.red.light.700` | `color.action.danger.@` → `content-first.theme.dark.color.action.danger.@` → `color.red.dark.700` |
+| `component.button.danger.background.@` | `color.action.danger.@` → `content-first.theme.light.color.action.danger.@` → `color.red.light.600` | `color.action.danger.@` → `content-first.theme.dark.color.action.danger.@` → `color.red.dark.600` |
 | `component.button.danger.background.hover` | `color.action.danger.hover` → `content-first.theme.light.color.action.danger.hover` → `color.red.light.700` | `color.action.danger.hover` → `content-first.theme.dark.color.action.danger.hover` → `color.red.dark.700` |
 | `component.button.danger.label` | `color.text.on-danger` → `content-first.theme.light.color.text.on-danger` → `color.text.on-dark` → `content-first.theme.base.color.text.on-dark` → `color.stone.light.0` | `color.text.on-danger` → `content-first.theme.dark.color.text.on-danger` → `color.text.on-light` → `content-first.theme.base.color.text.on-light` → `color.stone.light.900` |
 | `component.button.ghost.background-hover` | `color.surface.sunken` → `content-first.theme.light.color.surface.sunken` → `color.neutral.100` → `content-first.theme.light.color.neutral.100` → `color.stone.light.100` | `color.surface.sunken` → `content-first.theme.dark.color.surface.sunken` → `color.neutral.100` → `content-first.theme.dark.color.neutral.100` → `color.stone.dark.100` |
@@ -43,14 +43,14 @@ Each token points to another token. Values live only on primitives, below.
 | `component.button.radius` | `radius.control` → `content-first.theme.base.radius.control` → `radius.8` | `radius.control` → `content-first.theme.base.radius.control` → `radius.8` |
 | `component.button.font-size` | `type.label.font-size` → `font.size.16` | `type.label.font-size` → `font.size.16` |
 | `component.button.font-weight` | `type.label.font-weight` → `font.weight.600` | `type.label.font-weight` → `font.weight.600` |
-| `component.button.focus-ring` | `color.border.focus` → `content-first.theme.light.color.border.focus` → `color.navy.light.600` | `color.border.focus` → `content-first.theme.dark.color.border.focus` → `color.navy.dark.700` |
+| `component.button.focus-ring` | `color.border.focus` → `content-first.theme.light.color.border.focus` → `color.navy.light.600` | `color.border.focus` → `content-first.theme.dark.color.border.focus` → `color.navy.dark.600` |
 | `component.button.icon-size` | `size.icon` → `size.16` | `size.icon` → `size.16` |
 | `component.button.disabled.background` | `color.disabled.surface` → `content-first.theme.light.color.disabled.surface` → `color.neutral.100` → `content-first.theme.light.color.neutral.100` → `color.stone.light.100` | `color.disabled.surface` → `content-first.theme.dark.color.disabled.surface` → `color.neutral.100` → `content-first.theme.dark.color.neutral.100` → `color.stone.dark.100` |
 | `component.button.disabled.label` | `color.disabled.text` → `content-first.theme.light.color.disabled.text` → `color.neutral.500` → `content-first.theme.light.color.neutral.500` → `color.stone.light.500` | `color.disabled.text` → `content-first.theme.dark.color.disabled.text` → `color.neutral.500` → `content-first.theme.dark.color.neutral.500` → `color.stone.dark.500` |
 | `component.button.disabled.border` | `color.disabled.border` → `content-first.theme.light.color.disabled.border` → `color.neutral.200` → `content-first.theme.light.color.neutral.200` → `color.stone.light.200` | `color.disabled.border` → `content-first.theme.dark.color.disabled.border` → `color.neutral.200` → `content-first.theme.dark.color.neutral.200` → `color.stone.dark.200` |
 | `component.input.background` | `color.surface.default` → `content-first.theme.light.color.surface.default` → `color.neutral.0` → `content-first.theme.light.color.neutral.0` → `color.stone.light.0` | `color.surface.default` → `content-first.theme.dark.color.surface.default` → `color.neutral.50` → `content-first.theme.dark.color.neutral.50` → `color.stone.dark.50` |
 | `component.input.border.@` | `color.border.strong` → `content-first.theme.light.color.border.strong` → `color.neutral.500` → `content-first.theme.light.color.neutral.500` → `color.stone.light.500` | `color.border.strong` → `content-first.theme.dark.color.border.strong` → `color.neutral.400` → `content-first.theme.dark.color.neutral.400` → `color.stone.dark.400` |
-| `component.input.border.focus` | `color.border.focus` → `content-first.theme.light.color.border.focus` → `color.navy.light.600` | `color.border.focus` → `content-first.theme.dark.color.border.focus` → `color.navy.dark.700` |
+| `component.input.border.focus` | `color.border.focus` → `content-first.theme.light.color.border.focus` → `color.navy.light.600` | `color.border.focus` → `content-first.theme.dark.color.border.focus` → `color.navy.dark.600` |
 | `component.input.text` | `color.text.primary` → `content-first.theme.light.color.text.primary` → `color.neutral.900` → `content-first.theme.light.color.neutral.900` → `color.stone.light.900` | `color.text.primary` → `content-first.theme.dark.color.text.primary` → `color.neutral.900` → `content-first.theme.dark.color.neutral.900` → `color.stone.dark.900` |
 | `component.input.placeholder` | `color.text.muted` → `content-first.theme.light.color.text.muted` → `color.neutral.600` → `content-first.theme.light.color.neutral.600` → `color.stone.light.600` | `color.text.muted` → `content-first.theme.dark.color.text.muted` → `color.neutral.400` → `content-first.theme.dark.color.neutral.400` → `color.stone.dark.400` |
 | `component.input.height` | `size.control.default` → `size.48` | `size.control.default` → `size.48` |
@@ -60,7 +60,7 @@ Each token points to another token. Values live only on primitives, below.
 | `component.input.disabled.background` | `color.disabled.surface` → `content-first.theme.light.color.disabled.surface` → `color.neutral.100` → `content-first.theme.light.color.neutral.100` → `color.stone.light.100` | `color.disabled.surface` → `content-first.theme.dark.color.disabled.surface` → `color.neutral.100` → `content-first.theme.dark.color.neutral.100` → `color.stone.dark.100` |
 | `component.input.disabled.border` | `color.disabled.border` → `content-first.theme.light.color.disabled.border` → `color.neutral.200` → `content-first.theme.light.color.neutral.200` → `color.stone.light.200` | `color.disabled.border` → `content-first.theme.dark.color.disabled.border` → `color.neutral.200` → `content-first.theme.dark.color.neutral.200` → `color.stone.dark.200` |
 | `component.input.disabled.text` | `color.disabled.text` → `content-first.theme.light.color.disabled.text` → `color.neutral.500` → `content-first.theme.light.color.neutral.500` → `color.stone.light.500` | `color.disabled.text` → `content-first.theme.dark.color.disabled.text` → `color.neutral.500` → `content-first.theme.dark.color.neutral.500` → `color.stone.dark.500` |
-| `component.control.checked` | `color.action.primary.@` → `content-first.theme.light.color.action.primary.@` → `color.navy.light.600` | `color.action.primary.@` → `content-first.theme.dark.color.action.primary.@` → `color.navy.dark.700` |
+| `component.control.checked` | `color.action.primary.@` → `content-first.theme.light.color.action.primary.@` → `color.navy.light.600` | `color.action.primary.@` → `content-first.theme.dark.color.action.primary.@` → `color.navy.dark.600` |
 | `component.control.track` | `color.border.strong` → `content-first.theme.light.color.border.strong` → `color.neutral.500` → `content-first.theme.light.color.neutral.500` → `color.stone.light.500` | `color.border.strong` → `content-first.theme.dark.color.border.strong` → `color.neutral.400` → `content-first.theme.dark.color.neutral.400` → `color.stone.dark.400` |
 | `component.control.thumb` | `color.surface.default` → `content-first.theme.light.color.surface.default` → `color.neutral.0` → `content-first.theme.light.color.neutral.0` → `color.stone.light.0` | `color.surface.default` → `content-first.theme.dark.color.surface.default` → `color.neutral.50` → `content-first.theme.dark.color.neutral.50` → `color.stone.dark.50` |
 | `component.control.radius` | `radius.badge` → `content-first.theme.base.radius.badge` → `radius.999` | `radius.badge` → `content-first.theme.base.radius.badge` → `radius.999` |
@@ -70,13 +70,13 @@ Each token points to another token. Values live only on primitives, below.
 | `component.badge.neutral.background` | `color.surface.sunken` → `content-first.theme.light.color.surface.sunken` → `color.neutral.100` → `content-first.theme.light.color.neutral.100` → `color.stone.light.100` | `color.surface.sunken` → `content-first.theme.dark.color.surface.sunken` → `color.neutral.100` → `content-first.theme.dark.color.neutral.100` → `color.stone.dark.100` |
 | `component.badge.neutral.label` | `color.text.secondary` → `content-first.theme.light.color.text.secondary` → `color.neutral.700` → `content-first.theme.light.color.neutral.700` → `color.stone.light.700` | `color.text.secondary` → `content-first.theme.dark.color.text.secondary` → `color.neutral.500` → `content-first.theme.dark.color.neutral.500` → `color.stone.dark.500` |
 | `component.badge.success.background` | `color.status.success.subtle` → `content-first.theme.light.color.status.success.subtle` → `color.green.light.100` | `color.status.success.subtle` → `content-first.theme.dark.color.status.success.subtle` → `color.green.dark.100` |
-| `component.badge.success.label` | `color.status.success.@` → `content-first.theme.light.color.status.success.@` → `color.green.light.700` | `color.status.success.@` → `content-first.theme.dark.color.status.success.@` → `color.green.dark.700` |
+| `component.badge.success.label` | `color.text.success-on-light` → `content-first.theme.base.color.text.success-on-light` → `color.green.light.800` | `color.text.success-on-dark` → `content-first.theme.base.color.text.success-on-dark` → `color.green.light.50` |
 | `component.badge.warning.background` | `color.status.warning.subtle` → `content-first.theme.light.color.status.warning.subtle` → `color.amber.light.100` | `color.status.warning.subtle` → `content-first.theme.dark.color.status.warning.subtle` → `color.amber.dark.100` |
-| `component.badge.warning.label` | `color.status.warning.@` → `content-first.theme.light.color.status.warning.@` → `color.amber.light.700` | `color.status.warning.@` → `content-first.theme.dark.color.status.warning.@` → `color.amber.dark.700` |
+| `component.badge.warning.label` | `color.text.warning-on-light` → `content-first.theme.base.color.text.warning-on-light` → `color.amber.light.800` | `color.text.warning-on-dark` → `content-first.theme.base.color.text.warning-on-dark` → `color.amber.light.50` |
 | `component.badge.danger.background` | `color.status.danger.subtle` → `content-first.theme.light.color.status.danger.subtle` → `color.red.light.100` | `color.status.danger.subtle` → `content-first.theme.dark.color.status.danger.subtle` → `color.red.dark.100` |
-| `component.badge.danger.label` | `color.status.danger.@` → `content-first.theme.light.color.status.danger.@` → `color.red.light.700` | `color.status.danger.@` → `content-first.theme.dark.color.status.danger.@` → `color.red.dark.700` |
+| `component.badge.danger.label` | `color.text.danger-on-light` → `content-first.theme.base.color.text.danger-on-light` → `color.red.light.800` | `color.text.danger-on-dark` → `content-first.theme.base.color.text.danger-on-dark` → `color.red.light.50` |
 | `component.badge.info.background` | `color.status.info.subtle` → `content-first.theme.light.color.status.info.subtle` → `color.blue.light.100` | `color.status.info.subtle` → `content-first.theme.dark.color.status.info.subtle` → `color.blue.dark.100` |
-| `component.badge.info.label` | `color.status.info.@` → `content-first.theme.light.color.status.info.@` → `color.blue.light.700` | `color.status.info.@` → `content-first.theme.dark.color.status.info.@` → `color.blue.dark.700` |
+| `component.badge.info.label` | `color.text.info-on-light` → `content-first.theme.base.color.text.info-on-light` → `color.blue.light.800` | `color.text.info-on-dark` → `content-first.theme.base.color.text.info-on-dark` → `color.blue.light.50` |
 | `component.card.background` | `color.surface.default` → `content-first.theme.light.color.surface.default` → `color.neutral.0` → `content-first.theme.light.color.neutral.0` → `color.stone.light.0` | `color.surface.default` → `content-first.theme.dark.color.surface.default` → `color.neutral.50` → `content-first.theme.dark.color.neutral.50` → `color.stone.dark.50` |
 | `component.card.border` | `color.border.default` → `content-first.theme.light.color.border.default` → `color.neutral.200` → `content-first.theme.light.color.neutral.200` → `color.stone.light.200` | `color.border.default` → `content-first.theme.dark.color.border.default` → `color.neutral.100` → `content-first.theme.dark.color.neutral.100` → `color.stone.dark.100` |
 | `component.card.radius` | `radius.container` → `content-first.theme.base.radius.container` → `radius.12` | `radius.container` → `content-first.theme.base.radius.container` → `radius.12` |
@@ -88,8 +88,8 @@ Each token points to another token. Values live only on primitives, below.
 | `component.table.row-border` | `color.border.default` → `content-first.theme.light.color.border.default` → `color.neutral.200` → `content-first.theme.light.color.neutral.200` → `color.stone.light.200` | `color.border.default` → `content-first.theme.dark.color.border.default` → `color.neutral.100` → `content-first.theme.dark.color.neutral.100` → `color.stone.dark.100` |
 | `component.table.row-selected` | `color.surface.selected` → `content-first.theme.light.color.surface.selected` → `color.navy.light.100` | `color.surface.selected` → `content-first.theme.dark.color.surface.selected` → `color.navy.dark.100` |
 | `component.table.font-size` | `type.data.font-size` → `font.size.18` | `type.data.font-size` → `font.size.18` |
-| `component.table.row-selected-edge` | `color.border.selected` → `content-first.theme.light.color.border.selected` → `color.navy.light.600` | `color.border.selected` → `content-first.theme.dark.color.border.selected` → `color.navy.dark.700` |
-| `component.tabs.indicator` | `color.action.primary.@` → `content-first.theme.light.color.action.primary.@` → `color.navy.light.600` | `color.action.primary.@` → `content-first.theme.dark.color.action.primary.@` → `color.navy.dark.700` |
+| `component.table.row-selected-edge` | `color.border.selected` → `content-first.theme.light.color.border.selected` → `color.navy.light.600` | `color.border.selected` → `content-first.theme.dark.color.border.selected` → `color.navy.dark.600` |
+| `component.tabs.indicator` | `color.action.primary.@` → `content-first.theme.light.color.action.primary.@` → `color.navy.light.600` | `color.action.primary.@` → `content-first.theme.dark.color.action.primary.@` → `color.navy.dark.600` |
 | `component.tabs.label.@` | `color.text.secondary` → `content-first.theme.light.color.text.secondary` → `color.neutral.700` → `content-first.theme.light.color.neutral.700` → `color.stone.light.700` | `color.text.secondary` → `content-first.theme.dark.color.text.secondary` → `color.neutral.500` → `content-first.theme.dark.color.neutral.500` → `color.stone.dark.500` |
 | `component.tabs.label.active` | `color.text.primary` → `content-first.theme.light.color.text.primary` → `color.neutral.900` → `content-first.theme.light.color.neutral.900` → `color.stone.light.900` | `color.text.primary` → `content-first.theme.dark.color.text.primary` → `color.neutral.900` → `content-first.theme.dark.color.neutral.900` → `color.stone.dark.900` |
 | `component.overlay.background` | `color.surface.raised` → `content-first.theme.light.color.surface.raised` → `color.neutral.0` → `content-first.theme.light.color.neutral.0` → `color.stone.light.0` | `color.surface.raised` → `content-first.theme.dark.color.surface.raised` → `color.neutral.100` → `content-first.theme.dark.color.neutral.100` → `color.stone.dark.100` |
@@ -109,30 +109,34 @@ The raw values the tokens above end at.
 
 | Primitive | Value | Sample |
 | --- | --- | --- |
-| `color.amber.dark.100` | #3A2A05 | <span class="ods-swatch" style="background:#3A2A05"></span> |
-| `color.amber.dark.700` | #F2B84B | <span class="ods-swatch" style="background:#F2B84B"></span> |
-| `color.amber.light.100` | #FFF3D6 | <span class="ods-swatch" style="background:#FFF3D6"></span> |
-| `color.amber.light.700` | #8A5600 | <span class="ods-swatch" style="background:#8A5600"></span> |
+| `color.amber.dark.100` | #402B00 | <span class="ods-swatch" style="background:#402B00"></span> |
+| `color.amber.light.100` | #FAEBDA | <span class="ods-swatch" style="background:#FAEBDA"></span> |
+| `color.amber.light.50` | #FFF7EF | <span class="ods-swatch" style="background:#FFF7EF"></span> |
+| `color.amber.light.800` | #462A02 | <span class="ods-swatch" style="background:#462A02"></span> |
 | `color.black.dark.scrim` | #000000B3 | <span class="ods-swatch" style="background:#000000B3"></span> |
 | `color.black.light.scrim` | #0000008C | <span class="ods-swatch" style="background:#0000008C"></span> |
-| `color.blue.dark.100` | #062C6E | <span class="ods-swatch" style="background:#062C6E"></span> |
-| `color.blue.dark.700` | #8AB4F8 | <span class="ods-swatch" style="background:#8AB4F8"></span> |
-| `color.blue.light.100` | #E1ECFF | <span class="ods-swatch" style="background:#E1ECFF"></span> |
-| `color.blue.light.700` | #083C93 | <span class="ods-swatch" style="background:#083C93"></span> |
-| `color.green.dark.100` | #123322 | <span class="ods-swatch" style="background:#123322"></span> |
-| `color.green.dark.700` | #5CC283 | <span class="ods-swatch" style="background:#5CC283"></span> |
-| `color.green.light.100` | #E3F4EA | <span class="ods-swatch" style="background:#E3F4EA"></span> |
-| `color.green.light.700` | #1F7A3A | <span class="ods-swatch" style="background:#1F7A3A"></span> |
-| `color.navy.dark.100` | #0F2036 | <span class="ods-swatch" style="background:#0F2036"></span> |
-| `color.navy.dark.700` | #8FA6C4 | <span class="ods-swatch" style="background:#8FA6C4"></span> |
-| `color.navy.dark.800` | #E3EAF3 | <span class="ods-swatch" style="background:#E3EAF3"></span> |
-| `color.navy.light.100` | #E3EAF3 | <span class="ods-swatch" style="background:#E3EAF3"></span> |
+| `color.blue.dark.100` | #172C4F | <span class="ods-swatch" style="background:#172C4F"></span> |
+| `color.blue.light.100` | #DEEAFE | <span class="ods-swatch" style="background:#DEEAFE"></span> |
+| `color.blue.light.50` | #F4F7FE | <span class="ods-swatch" style="background:#F4F7FE"></span> |
+| `color.blue.light.800` | #001A4E | <span class="ods-swatch" style="background:#001A4E"></span> |
+| `color.green.dark.100` | #02351B | <span class="ods-swatch" style="background:#02351B"></span> |
+| `color.green.light.100` | #DFF5E2 | <span class="ods-swatch" style="background:#DFF5E2"></span> |
+| `color.green.light.50` | #F1FDF2 | <span class="ods-swatch" style="background:#F1FDF2"></span> |
+| `color.green.light.800` | #023E17 | <span class="ods-swatch" style="background:#023E17"></span> |
+| `color.navy.dark.100` | #202B3B | <span class="ods-swatch" style="background:#202B3B"></span> |
+| `color.navy.dark.600` | #8FA6C4 | <span class="ods-swatch" style="background:#8FA6C4"></span> |
+| `color.navy.dark.700` | #ACBDD5 | <span class="ods-swatch" style="background:#ACBDD5"></span> |
+| `color.navy.light.100` | #E0E9F5 | <span class="ods-swatch" style="background:#E0E9F5"></span> |
 | `color.navy.light.600` | #1E3A5F | <span class="ods-swatch" style="background:#1E3A5F"></span> |
-| `color.navy.light.700` | #162C49 | <span class="ods-swatch" style="background:#162C49"></span> |
-| `color.red.dark.100` | #3D1414 | <span class="ods-swatch" style="background:#3D1414"></span> |
-| `color.red.dark.700` | #F28B8B | <span class="ods-swatch" style="background:#F28B8B"></span> |
-| `color.red.light.100` | #FDE7E7 | <span class="ods-swatch" style="background:#FDE7E7"></span> |
-| `color.red.light.700` | #C42B2B | <span class="ods-swatch" style="background:#C42B2B"></span> |
+| `color.navy.light.700` | #122948 | <span class="ods-swatch" style="background:#122948"></span> |
+| `color.red.dark.100` | #4D181A | <span class="ods-swatch" style="background:#4D181A"></span> |
+| `color.red.dark.600` | #F28B8B | <span class="ods-swatch" style="background:#F28B8B"></span> |
+| `color.red.dark.700` | #FAA9A8 | <span class="ods-swatch" style="background:#FAA9A8"></span> |
+| `color.red.light.100` | #FEE9E7 | <span class="ods-swatch" style="background:#FEE9E7"></span> |
+| `color.red.light.50` | #FEF7F7 | <span class="ods-swatch" style="background:#FEF7F7"></span> |
+| `color.red.light.600` | #C42B2B | <span class="ods-swatch" style="background:#C42B2B"></span> |
+| `color.red.light.700` | #981519 | <span class="ods-swatch" style="background:#981519"></span> |
+| `color.red.light.800` | #6D0008 | <span class="ods-swatch" style="background:#6D0008"></span> |
 | `color.stone.dark.100` | #2E2A24 | <span class="ods-swatch" style="background:#2E2A24"></span> |
 | `color.stone.dark.200` | #4A4339 | <span class="ods-swatch" style="background:#4A4339"></span> |
 | `color.stone.dark.400` | #A39A8B | <span class="ods-swatch" style="background:#A39A8B"></span> |

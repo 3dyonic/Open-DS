@@ -73,7 +73,7 @@ The CSS variable is the key with `/` replaced by `-` and the base `@` dropped. E
 
 | Key | What it controls | Points to, aster-light | Points to, aster-dark |
 | --- | --- | --- | --- |
-| `tabs/indicator` | Active tab indicator. | `color.action.primary.@` → `aster.theme.light.color.action.primary.@` → `color.teal.light.600` | `color.action.primary.@` → `aster.theme.dark.color.action.primary.@` → `color.teal.dark.700` |
+| `tabs/indicator` | Active tab indicator. | `color.action.primary.@` → `aster.theme.light.color.action.primary.@` → `color.teal.light.600` | `color.action.primary.@` → `aster.theme.dark.color.action.primary.@` → `color.teal.dark.600` |
 | `tabs/label/@` | Inactive tab label. | `color.text.secondary` → `aster.theme.light.color.text.secondary` → `color.neutral.700` → `aster.theme.light.color.neutral.700` → `color.slate-deep.light.700` | `color.text.secondary` → `aster.theme.dark.color.text.secondary` → `color.neutral.500` → `aster.theme.dark.color.neutral.500` → `color.slate-deep.dark.500` |
 | `tabs/label/active` | Active tab label. | `color.text.primary` → `aster.theme.light.color.text.primary` → `color.neutral.900` → `aster.theme.light.color.neutral.900` → `color.slate-deep.light.900` | `color.text.primary` → `aster.theme.dark.color.text.primary` → `color.neutral.900` → `aster.theme.dark.color.neutral.900` → `color.slate-deep.dark.900` |
 
@@ -85,7 +85,7 @@ The CSS variable is the key with `/` replaced by `-` and the base `@` dropped. E
 
 | Key | What it controls | Points to, birch-light | Points to, birch-dark |
 | --- | --- | --- | --- |
-| `tabs/indicator` | Active tab indicator. | `color.action.primary.@` → `birch.theme.light.color.action.primary.@` → `color.purple.light.600` | `color.action.primary.@` → `birch.theme.dark.color.action.primary.@` → `color.purple.dark.700` |
+| `tabs/indicator` | Active tab indicator. | `color.action.primary.@` → `birch.theme.light.color.action.primary.@` → `color.purple.light.600` | `color.action.primary.@` → `birch.theme.dark.color.action.primary.@` → `color.purple.dark.600` |
 | `tabs/label/@` | Inactive tab label. | `color.text.secondary` → `birch.theme.light.color.text.secondary` → `color.neutral.700` → `birch.theme.light.color.neutral.700` → `color.slate-deep.light.700` | `color.text.secondary` → `birch.theme.dark.color.text.secondary` → `color.neutral.500` → `birch.theme.dark.color.neutral.500` → `color.slate-deep.dark.500` |
 | `tabs/label/active` | Active tab label. | `color.text.primary` → `birch.theme.light.color.text.primary` → `color.neutral.900` → `birch.theme.light.color.neutral.900` → `color.slate-deep.light.900` | `color.text.primary` → `birch.theme.dark.color.text.primary` → `color.neutral.900` → `birch.theme.dark.color.neutral.900` → `color.slate-deep.dark.900` |
 
@@ -97,7 +97,7 @@ The CSS variable is the key with `/` replaced by `-` and the base `@` dropped. E
 
 | Key | What it controls | Points to, coral-light | Points to, coral-dark |
 | --- | --- | --- | --- |
-| `tabs/indicator` | Active tab indicator. | `color.action.primary.@` → `coral.theme.light.color.action.primary.@` → `color.orange.light.600` | `color.action.primary.@` → `coral.theme.dark.color.action.primary.@` → `color.orange.dark.700` |
+| `tabs/indicator` | Active tab indicator. | `color.action.primary.@` → `coral.theme.light.color.action.primary.@` → `color.orange.light.600` | `color.action.primary.@` → `coral.theme.dark.color.action.primary.@` → `color.orange.dark.600` |
 | `tabs/label/@` | Inactive tab label. | `color.text.secondary` → `coral.theme.light.color.text.secondary` → `color.neutral.700` → `coral.theme.light.color.neutral.700` → `color.slate-deep.light.700` | `color.text.secondary` → `coral.theme.dark.color.text.secondary` → `color.neutral.500` → `coral.theme.dark.color.neutral.500` → `color.slate-deep.dark.500` |
 | `tabs/label/active` | Active tab label. | `color.text.primary` → `coral.theme.light.color.text.primary` → `color.neutral.900` → `coral.theme.light.color.neutral.900` → `color.slate-deep.light.900` | `color.text.primary` → `coral.theme.dark.color.text.primary` → `color.neutral.900` → `coral.theme.dark.color.neutral.900` → `color.slate-deep.dark.900` |
 

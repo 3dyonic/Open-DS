@@ -69,6 +69,6 @@ The CSS variable is the key with `/` replaced by `-` and the base `@` dropped. E
 
 | Key | What it controls | Points to, light | Points to, dark |
 | --- | --- | --- | --- |
-| `tabs/indicator` | Active tab indicator. | `color.action.primary.@` → `content-first.theme.light.color.action.primary.@` → `color.navy.light.600` | `color.action.primary.@` → `content-first.theme.dark.color.action.primary.@` → `color.navy.dark.700` |
+| `tabs/indicator` | Active tab indicator. | `color.action.primary.@` → `content-first.theme.light.color.action.primary.@` → `color.navy.light.600` | `color.action.primary.@` → `content-first.theme.dark.color.action.primary.@` → `color.navy.dark.600` |
 | `tabs/label/@` | Inactive tab label. | `color.text.secondary` → `content-first.theme.light.color.text.secondary` → `color.neutral.700` → `content-first.theme.light.color.neutral.700` → `color.stone.light.700` | `color.text.secondary` → `content-first.theme.dark.color.text.secondary` → `color.neutral.500` → `content-first.theme.dark.color.neutral.500` → `color.stone.dark.500` |
 | `tabs/label/active` | Active tab label. | `color.text.primary` → `content-first.theme.light.color.text.primary` → `color.neutral.900` → `content-first.theme.light.color.neutral.900` → `color.stone.light.900` | `color.text.primary` → `content-first.theme.dark.color.text.primary` → `color.neutral.900` → `content-first.theme.dark.color.neutral.900` → `color.stone.dark.900` |

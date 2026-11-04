@@ -39,18 +39,18 @@ How color carries action, state and brand.
 <span class="ods-item"><span class="ods-swatch" style="background:var(--color-text-on-danger)"></span><span class="ods-label">color.text.on-danger</span></span>
 <span class="ods-item"><span class="ods-swatch" style="background:var(--color-text-on-light)"></span><span class="ods-label">color.text.on-light</span></span>
 <span class="ods-item"><span class="ods-swatch" style="background:var(--color-text-on-dark)"></span><span class="ods-label">color.text.on-dark</span></span>
+<span class="ods-item"><span class="ods-swatch" style="background:var(--color-text-info-on-light)"></span><span class="ods-label">color.text.info-on-light</span></span>
+<span class="ods-item"><span class="ods-swatch" style="background:var(--color-text-info-on-dark)"></span><span class="ods-label">color.text.info-on-dark</span></span>
+<span class="ods-item"><span class="ods-swatch" style="background:var(--color-text-success-on-light)"></span><span class="ods-label">color.text.success-on-light</span></span>
+<span class="ods-item"><span class="ods-swatch" style="background:var(--color-text-success-on-dark)"></span><span class="ods-label">color.text.success-on-dark</span></span>
+<span class="ods-item"><span class="ods-swatch" style="background:var(--color-text-warning-on-light)"></span><span class="ods-label">color.text.warning-on-light</span></span>
+<span class="ods-item"><span class="ods-swatch" style="background:var(--color-text-warning-on-dark)"></span><span class="ods-label">color.text.warning-on-dark</span></span>
+<span class="ods-item"><span class="ods-swatch" style="background:var(--color-text-danger-on-light)"></span><span class="ods-label">color.text.danger-on-light</span></span>
+<span class="ods-item"><span class="ods-swatch" style="background:var(--color-text-danger-on-dark)"></span><span class="ods-label">color.text.danger-on-dark</span></span>
 <span class="ods-item"><span class="ods-swatch" style="background:var(--color-border-default)"></span><span class="ods-label">color.border.default</span></span>
 <span class="ods-item"><span class="ods-swatch" style="background:var(--color-border-strong)"></span><span class="ods-label">color.border.strong</span></span>
 <span class="ods-item"><span class="ods-swatch" style="background:var(--color-border-focus)"></span><span class="ods-label">color.border.focus</span></span>
 <span class="ods-item"><span class="ods-swatch" style="background:var(--color-border-selected)"></span><span class="ods-label">color.border.selected</span></span>
-<span class="ods-item"><span class="ods-swatch" style="background:var(--color-action-primary)"></span><span class="ods-label">color.action.primary.@</span></span>
-<span class="ods-item"><span class="ods-swatch" style="background:var(--color-action-primary-hover)"></span><span class="ods-label">color.action.primary.hover</span></span>
-<span class="ods-item"><span class="ods-swatch" style="background:var(--color-action-secondary)"></span><span class="ods-label">color.action.secondary.@</span></span>
-<span class="ods-item"><span class="ods-swatch" style="background:var(--color-action-secondary-hover)"></span><span class="ods-label">color.action.secondary.hover</span></span>
-<span class="ods-item"><span class="ods-swatch" style="background:var(--color-action-danger)"></span><span class="ods-label">color.action.danger.@</span></span>
-<span class="ods-item"><span class="ods-swatch" style="background:var(--color-action-danger-hover)"></span><span class="ods-label">color.action.danger.hover</span></span>
-<span class="ods-item"><span class="ods-swatch" style="background:var(--color-status-info)"></span><span class="ods-label">color.status.info.@</span></span>
-<span class="ods-item"><span class="ods-swatch" style="background:var(--color-status-info-subtle)"></span><span class="ods-label">color.status.info.subtle</span></span>
 </div>
 
 <div class="odv-band"><div style="background:var(--color-action-primary);color:#FFFFFF"><b>Action</b>action.primary</div><div style="background:var(--color-text-primary);color:#FFFFFF"><b>Text</b>text.primary</div><div style="background:var(--color-status-success);color:#FFFFFF"><b>Success</b>status.success</div><div style="background:var(--color-status-warning);color:#FFFFFF"><b>Warning</b>status.warning</div><div style="background:var(--color-status-danger);color:#FFFFFF"><b>Danger</b>status.danger</div><div style="background:var(--color-status-info);color:#FFFFFF"><b>Info</b>status.info</div></div>
@@ -65,7 +65,7 @@ The canvas, then the surfaces content sits on, in light and dark.
 
 Each status label always gets the same colour, with its dot, so colour is never the only cue. The ratio is the status colour on its subtle fill, computed from the tokens.
 
-<div class="odv-card"><div class="odv-status"><div><span class="odv-badge odv-t-success">On the list</span></div><div class="odv-alert odv-t-success"><b>On the list.</b> You joined and your place is saved.</div><div><span class="odv-ratio">light 4.7:1</span> <span class="odv-ratio">dark 6.2:1</span></div></div><div class="odv-status"><div><span class="odv-badge odv-t-warning">Almost gone</span></div><div class="odv-alert odv-t-warning"><b>Almost gone.</b> Few left; act soon.</div><div><span class="odv-ratio">light 5.6:1</span> <span class="odv-ratio">dark 7.8:1</span></div></div></div>
+<div class="odv-card"><div class="odv-status"><div><span class="odv-badge odv-t-success">On the list</span></div><div class="odv-alert odv-t-success"><b>On the list.</b> You joined and your place is saved.</div><div><span class="odv-ratio">light 4.7:1</span> <span class="odv-ratio">dark 6.5:1</span></div></div><div class="odv-status"><div><span class="odv-badge odv-t-warning">Almost gone</span></div><div class="odv-alert odv-t-warning"><b>Almost gone.</b> Few left; act soon.</div><div><span class="odv-ratio">light 5.3:1</span> <span class="odv-ratio">dark 7.9:1</span></div></div></div>
 
 ## The five answers
 
@@ -111,31 +111,39 @@ Each token points to another token. Values live only on primitives, below.
 | `color.text.on-danger` | `brand-expressive.theme.light.color.text.on-danger` → `color.text.on-dark` → `brand-expressive.theme.base.color.text.on-dark` → `color.taupe.light.0` | `brand-expressive.theme.dark.color.text.on-danger` → `color.text.on-light` → `brand-expressive.theme.base.color.text.on-light` → `color.taupe.light.900` |
 | `color.text.on-light` | `brand-expressive.theme.base.color.text.on-light` → `color.taupe.light.900` | `brand-expressive.theme.base.color.text.on-light` → `color.taupe.light.900` |
 | `color.text.on-dark` | `brand-expressive.theme.base.color.text.on-dark` → `color.taupe.light.0` | `brand-expressive.theme.base.color.text.on-dark` → `color.taupe.light.0` |
+| `color.text.info-on-light` | `brand-expressive.theme.base.color.text.info-on-light` → `color.blue.light.800` | `brand-expressive.theme.base.color.text.info-on-light` → `color.blue.light.800` |
+| `color.text.info-on-dark` | `brand-expressive.theme.base.color.text.info-on-dark` → `color.blue.light.50` | `brand-expressive.theme.base.color.text.info-on-dark` → `color.blue.light.50` |
+| `color.text.success-on-light` | `brand-expressive.theme.base.color.text.success-on-light` → `color.green.light.800` | `brand-expressive.theme.base.color.text.success-on-light` → `color.green.light.800` |
+| `color.text.success-on-dark` | `brand-expressive.theme.base.color.text.success-on-dark` → `color.green.light.50` | `brand-expressive.theme.base.color.text.success-on-dark` → `color.green.light.50` |
+| `color.text.warning-on-light` | `brand-expressive.theme.base.color.text.warning-on-light` → `color.amber.light.800` | `brand-expressive.theme.base.color.text.warning-on-light` → `color.amber.light.800` |
+| `color.text.warning-on-dark` | `brand-expressive.theme.base.color.text.warning-on-dark` → `color.amber.light.50` | `brand-expressive.theme.base.color.text.warning-on-dark` → `color.amber.light.50` |
+| `color.text.danger-on-light` | `brand-expressive.theme.base.color.text.danger-on-light` → `color.red.light.800` | `brand-expressive.theme.base.color.text.danger-on-light` → `color.red.light.800` |
+| `color.text.danger-on-dark` | `brand-expressive.theme.base.color.text.danger-on-dark` → `color.red.light.50` | `brand-expressive.theme.base.color.text.danger-on-dark` → `color.red.light.50` |
 | `color.border.default` | `brand-expressive.theme.light.color.border.default` → `color.neutral.200` → `brand-expressive.theme.light.color.neutral.200` → `color.taupe.light.200` | `brand-expressive.theme.dark.color.border.default` → `color.neutral.100` → `brand-expressive.theme.dark.color.neutral.100` → `color.taupe.dark.100` |
 | `color.border.strong` | `brand-expressive.theme.light.color.border.strong` → `color.neutral.500` → `brand-expressive.theme.light.color.neutral.500` → `color.taupe.light.500` | `brand-expressive.theme.dark.color.border.strong` → `color.neutral.400` → `brand-expressive.theme.dark.color.neutral.400` → `color.taupe.dark.400` |
-| `color.border.focus` | `brand-expressive.theme.light.color.border.focus` → `color.pink.light.600` | `brand-expressive.theme.dark.color.border.focus` → `color.pink.dark.700` |
-| `color.border.selected` | `brand-expressive.theme.light.color.border.selected` → `color.pink.light.600` | `brand-expressive.theme.dark.color.border.selected` → `color.pink.dark.700` |
-| `color.action.primary.@` | `brand-expressive.theme.light.color.action.primary.@` → `color.pink.light.600` | `brand-expressive.theme.dark.color.action.primary.@` → `color.pink.dark.700` |
-| `color.action.primary.hover` | `brand-expressive.theme.light.color.action.primary.hover` → `color.pink.light.700` | `brand-expressive.theme.dark.color.action.primary.hover` → `color.pink.dark.800` |
+| `color.border.focus` | `brand-expressive.theme.light.color.border.focus` → `color.pink.light.600` | `brand-expressive.theme.dark.color.border.focus` → `color.pink.dark.600` |
+| `color.border.selected` | `brand-expressive.theme.light.color.border.selected` → `color.pink.light.600` | `brand-expressive.theme.dark.color.border.selected` → `color.pink.dark.600` |
+| `color.action.primary.@` | `brand-expressive.theme.light.color.action.primary.@` → `color.pink.light.600` | `brand-expressive.theme.dark.color.action.primary.@` → `color.pink.dark.600` |
+| `color.action.primary.hover` | `brand-expressive.theme.light.color.action.primary.hover` → `color.pink.light.700` | `brand-expressive.theme.dark.color.action.primary.hover` → `color.pink.dark.700` |
 | `color.action.secondary.@` | `brand-expressive.theme.light.color.action.secondary.@` → `color.neutral.0` → `brand-expressive.theme.light.color.neutral.0` → `color.taupe.light.0` | `brand-expressive.theme.dark.color.action.secondary.@` → `color.neutral.50` → `brand-expressive.theme.dark.color.neutral.50` → `color.taupe.dark.50` |
 | `color.action.secondary.hover` | `brand-expressive.theme.light.color.action.secondary.hover` → `color.neutral.100` → `brand-expressive.theme.light.color.neutral.100` → `color.taupe.light.100` | `brand-expressive.theme.dark.color.action.secondary.hover` → `color.neutral.100` → `brand-expressive.theme.dark.color.neutral.100` → `color.taupe.dark.100` |
-| `color.action.danger.@` | `brand-expressive.theme.light.color.action.danger.@` → `color.red.light.700` | `brand-expressive.theme.dark.color.action.danger.@` → `color.red.dark.700` |
+| `color.action.danger.@` | `brand-expressive.theme.light.color.action.danger.@` → `color.red.light.600` | `brand-expressive.theme.dark.color.action.danger.@` → `color.red.dark.600` |
 | `color.action.danger.hover` | `brand-expressive.theme.light.color.action.danger.hover` → `color.red.light.700` | `brand-expressive.theme.dark.color.action.danger.hover` → `color.red.dark.700` |
-| `color.status.info.@` | `brand-expressive.theme.light.color.status.info.@` → `color.blue.light.700` | `brand-expressive.theme.dark.color.status.info.@` → `color.blue.dark.700` |
+| `color.status.info.@` | `brand-expressive.theme.light.color.status.info.@` → `color.blue.light.600` | `brand-expressive.theme.dark.color.status.info.@` → `color.blue.dark.600` |
 | `color.status.info.subtle` | `brand-expressive.theme.light.color.status.info.subtle` → `color.blue.light.100` | `brand-expressive.theme.dark.color.status.info.subtle` → `color.blue.dark.100` |
-| `color.status.success.@` | `brand-expressive.theme.light.color.status.success.@` → `color.green.light.700` | `brand-expressive.theme.dark.color.status.success.@` → `color.green.dark.700` |
+| `color.status.success.@` | `brand-expressive.theme.light.color.status.success.@` → `color.green.light.600` | `brand-expressive.theme.dark.color.status.success.@` → `color.green.dark.600` |
 | `color.status.success.subtle` | `brand-expressive.theme.light.color.status.success.subtle` → `color.green.light.100` | `brand-expressive.theme.dark.color.status.success.subtle` → `color.green.dark.100` |
-| `color.status.warning.@` | `brand-expressive.theme.light.color.status.warning.@` → `color.amber.light.700` | `brand-expressive.theme.dark.color.status.warning.@` → `color.amber.dark.700` |
+| `color.status.warning.@` | `brand-expressive.theme.light.color.status.warning.@` → `color.amber.light.600` | `brand-expressive.theme.dark.color.status.warning.@` → `color.amber.dark.600` |
 | `color.status.warning.subtle` | `brand-expressive.theme.light.color.status.warning.subtle` → `color.amber.light.100` | `brand-expressive.theme.dark.color.status.warning.subtle` → `color.amber.dark.100` |
-| `color.status.danger.@` | `brand-expressive.theme.light.color.status.danger.@` → `color.red.light.700` | `brand-expressive.theme.dark.color.status.danger.@` → `color.red.dark.700` |
+| `color.status.danger.@` | `brand-expressive.theme.light.color.status.danger.@` → `color.red.light.600` | `brand-expressive.theme.dark.color.status.danger.@` → `color.red.dark.600` |
 | `color.status.danger.subtle` | `brand-expressive.theme.light.color.status.danger.subtle` → `color.red.light.100` | `brand-expressive.theme.dark.color.status.danger.subtle` → `color.red.dark.100` |
-| `color.category.1.@` | `brand-expressive.theme.light.color.category.1.@` → `color.pink.light.600` | `brand-expressive.theme.dark.color.category.1.@` → `color.pink.dark.700` |
+| `color.category.1.@` | `brand-expressive.theme.light.color.category.1.@` → `color.pink.light.600` | `brand-expressive.theme.dark.color.category.1.@` → `color.pink.dark.600` |
 | `color.category.1.subtle` | `brand-expressive.theme.light.color.category.1.subtle` → `color.pink.light.100` | `brand-expressive.theme.dark.color.category.1.subtle` → `color.pink.dark.100` |
-| `color.category.2.@` | `brand-expressive.theme.light.color.category.2.@` → `color.blue.light.600` | `brand-expressive.theme.dark.color.category.2.@` → `color.blue.dark.700` |
+| `color.category.2.@` | `brand-expressive.theme.light.color.category.2.@` → `color.blue.light.600` | `brand-expressive.theme.dark.color.category.2.@` → `color.blue.dark.600` |
 | `color.category.2.subtle` | `brand-expressive.theme.light.color.category.2.subtle` → `color.blue.light.100` | `brand-expressive.theme.dark.color.category.2.subtle` → `color.blue.dark.100` |
-| `color.category.3.@` | `brand-expressive.theme.light.color.category.3.@` → `color.green.light.700` | `brand-expressive.theme.dark.color.category.3.@` → `color.green.dark.700` |
+| `color.category.3.@` | `brand-expressive.theme.light.color.category.3.@` → `color.green.light.600` | `brand-expressive.theme.dark.color.category.3.@` → `color.green.dark.600` |
 | `color.category.3.subtle` | `brand-expressive.theme.light.color.category.3.subtle` → `color.green.light.100` | `brand-expressive.theme.dark.color.category.3.subtle` → `color.green.dark.100` |
-| `color.category.4.@` | `brand-expressive.theme.light.color.category.4.@` → `color.amber.light.700` | `brand-expressive.theme.dark.color.category.4.@` → `color.amber.dark.700` |
+| `color.category.4.@` | `brand-expressive.theme.light.color.category.4.@` → `color.amber.light.600` | `brand-expressive.theme.dark.color.category.4.@` → `color.amber.dark.600` |
 | `color.category.4.subtle` | `brand-expressive.theme.light.color.category.4.subtle` → `color.amber.light.100` | `brand-expressive.theme.dark.color.category.4.subtle` → `color.amber.dark.100` |
 | `color.category.5.@` | `brand-expressive.theme.light.color.category.5.@` → `color.neutral.500` → `brand-expressive.theme.light.color.neutral.500` → `color.taupe.light.500` | `brand-expressive.theme.dark.color.category.5.@` → `color.neutral.700` → `brand-expressive.theme.dark.color.neutral.700` → `color.taupe.dark.700` |
 | `color.category.5.subtle` | `brand-expressive.theme.light.color.category.5.subtle` → `color.neutral.100` → `brand-expressive.theme.light.color.neutral.100` → `color.taupe.light.100` | `brand-expressive.theme.dark.color.category.5.subtle` → `color.neutral.100` → `brand-expressive.theme.dark.color.neutral.100` → `color.taupe.dark.100` |
@@ -149,31 +157,40 @@ The raw values the tokens above end at.
 
 | Primitive | Value | Sample |
 | --- | --- | --- |
-| `color.amber.dark.100` | #3A2A05 | <span class="ods-swatch" style="background:#3A2A05"></span> |
-| `color.amber.dark.700` | #F2B84B | <span class="ods-swatch" style="background:#F2B84B"></span> |
-| `color.amber.light.100` | #FFF3D6 | <span class="ods-swatch" style="background:#FFF3D6"></span> |
-| `color.amber.light.700` | #8A5600 | <span class="ods-swatch" style="background:#8A5600"></span> |
+| `color.amber.dark.100` | #3B2701 | <span class="ods-swatch" style="background:#3B2701"></span> |
+| `color.amber.dark.600` | #F2B84B | <span class="ods-swatch" style="background:#F2B84B"></span> |
+| `color.amber.light.100` | #FAEBDA | <span class="ods-swatch" style="background:#FAEBDA"></span> |
+| `color.amber.light.50` | #FFF7EF | <span class="ods-swatch" style="background:#FFF7EF"></span> |
+| `color.amber.light.600` | #8A5600 | <span class="ods-swatch" style="background:#8A5600"></span> |
+| `color.amber.light.800` | #462A02 | <span class="ods-swatch" style="background:#462A02"></span> |
 | `color.black.dark.scrim` | #000000B3 | <span class="ods-swatch" style="background:#000000B3"></span> |
 | `color.black.light.scrim` | #0000008C | <span class="ods-swatch" style="background:#0000008C"></span> |
-| `color.blue.dark.100` | #062C6E | <span class="ods-swatch" style="background:#062C6E"></span> |
-| `color.blue.dark.700` | #8AB4F8 | <span class="ods-swatch" style="background:#8AB4F8"></span> |
-| `color.blue.light.100` | #E1ECFF | <span class="ods-swatch" style="background:#E1ECFF"></span> |
-| `color.blue.light.600` | #0B4FC0 | <span class="ods-swatch" style="background:#0B4FC0"></span> |
-| `color.blue.light.700` | #083C93 | <span class="ods-swatch" style="background:#083C93"></span> |
-| `color.green.dark.100` | #123322 | <span class="ods-swatch" style="background:#123322"></span> |
-| `color.green.dark.700` | #5CC283 | <span class="ods-swatch" style="background:#5CC283"></span> |
-| `color.green.light.100` | #E3F4EA | <span class="ods-swatch" style="background:#E3F4EA"></span> |
-| `color.green.light.700` | #1F7A3A | <span class="ods-swatch" style="background:#1F7A3A"></span> |
-| `color.pink.dark.100` | #7C1046 | <span class="ods-swatch" style="background:#7C1046"></span> |
-| `color.pink.dark.700` | #F59ACA | <span class="ods-swatch" style="background:#F59ACA"></span> |
-| `color.pink.dark.800` | #FDE4F0 | <span class="ods-swatch" style="background:#FDE4F0"></span> |
-| `color.pink.light.100` | #FDE4F0 | <span class="ods-swatch" style="background:#FDE4F0"></span> |
+| `color.blue.dark.100` | #13284B | <span class="ods-swatch" style="background:#13284B"></span> |
+| `color.blue.dark.600` | #8AB4F8 | <span class="ods-swatch" style="background:#8AB4F8"></span> |
+| `color.blue.light.100` | #DEEAFE | <span class="ods-swatch" style="background:#DEEAFE"></span> |
+| `color.blue.light.50` | #F4F7FE | <span class="ods-swatch" style="background:#F4F7FE"></span> |
+| `color.blue.light.600` | #083C93 | <span class="ods-swatch" style="background:#083C93"></span> |
+| `color.blue.light.800` | #001A4E | <span class="ods-swatch" style="background:#001A4E"></span> |
+| `color.green.dark.100` | #013118 | <span class="ods-swatch" style="background:#013118"></span> |
+| `color.green.dark.600` | #5CC283 | <span class="ods-swatch" style="background:#5CC283"></span> |
+| `color.green.light.100` | #DFF5E2 | <span class="ods-swatch" style="background:#DFF5E2"></span> |
+| `color.green.light.50` | #F1FDF2 | <span class="ods-swatch" style="background:#F1FDF2"></span> |
+| `color.green.light.600` | #1F7A3A | <span class="ods-swatch" style="background:#1F7A3A"></span> |
+| `color.green.light.800` | #023E17 | <span class="ods-swatch" style="background:#023E17"></span> |
+| `color.pink.dark.100` | #451731 | <span class="ods-swatch" style="background:#451731"></span> |
+| `color.pink.dark.600` | #F59ACA | <span class="ods-swatch" style="background:#F59ACA"></span> |
+| `color.pink.dark.700` | #FBB4D8 | <span class="ods-swatch" style="background:#FBB4D8"></span> |
+| `color.pink.light.100` | #FFEAF0 | <span class="ods-swatch" style="background:#FFEAF0"></span> |
 | `color.pink.light.600` | #D61F7A | <span class="ods-swatch" style="background:#D61F7A"></span> |
-| `color.pink.light.700` | #A8165F | <span class="ods-swatch" style="background:#A8165F"></span> |
-| `color.red.dark.100` | #3D1414 | <span class="ods-swatch" style="background:#3D1414"></span> |
-| `color.red.dark.700` | #F28B8B | <span class="ods-swatch" style="background:#F28B8B"></span> |
-| `color.red.light.100` | #FDE7E7 | <span class="ods-swatch" style="background:#FDE7E7"></span> |
-| `color.red.light.700` | #C42B2B | <span class="ods-swatch" style="background:#C42B2B"></span> |
+| `color.pink.light.700` | #A6025B | <span class="ods-swatch" style="background:#A6025B"></span> |
+| `color.red.dark.100` | #481316 | <span class="ods-swatch" style="background:#481316"></span> |
+| `color.red.dark.600` | #F28B8B | <span class="ods-swatch" style="background:#F28B8B"></span> |
+| `color.red.dark.700` | #FAA9A8 | <span class="ods-swatch" style="background:#FAA9A8"></span> |
+| `color.red.light.100` | #FEE9E7 | <span class="ods-swatch" style="background:#FEE9E7"></span> |
+| `color.red.light.50` | #FEF7F7 | <span class="ods-swatch" style="background:#FEF7F7"></span> |
+| `color.red.light.600` | #C42B2B | <span class="ods-swatch" style="background:#C42B2B"></span> |
+| `color.red.light.700` | #981519 | <span class="ods-swatch" style="background:#981519"></span> |
+| `color.red.light.800` | #6D0008 | <span class="ods-swatch" style="background:#6D0008"></span> |
 | `color.taupe.dark.0` | #120B09 | <span class="ods-swatch" style="background:#120B09"></span> |
 | `color.taupe.dark.100` | #33241F | <span class="ods-swatch" style="background:#33241F"></span> |
 | `color.taupe.dark.200` | #4D3A33 | <span class="ods-swatch" style="background:#4D3A33"></span> |
@@ -245,6 +262,14 @@ Status colours go up in urgency: info, then warning, then danger. Pick the level
 | `color.text.inverse` | Text on an inverse fill. | Text on the page: `color.text.primary` |
 | `color.text.on-light` | Text on any fill whose tone is light, in either mode: the light mode's body text. | Text on the page's own surfaces: `color.text.primary` |
 | `color.text.on-dark` | Text on any fill whose tone is dark, in either mode: white. | Text on the page's own surfaces: `color.text.primary` |
+| `color.text.info-on-light` | The label on a light info fill, such as its tint in light mode: a fixed colour from the light scale (800). | Info text on the page: `color.status.info.@` |
+| `color.text.info-on-dark` | The label on a dark info fill, such as its tint in dark mode: a fixed colour from the light scale (50). | Info text on the page: `color.status.info.@` |
+| `color.text.success-on-light` | The label on a light success fill, such as its tint in light mode: a fixed colour from the light scale (800). | Success text on the page: `color.status.success.@` |
+| `color.text.success-on-dark` | The label on a dark success fill, such as its tint in dark mode: a fixed colour from the light scale (50). | Success text on the page: `color.status.success.@` |
+| `color.text.warning-on-light` | The label on a light warning fill, such as its tint in light mode: a fixed colour from the light scale (800). | Warning text on the page: `color.status.warning.@` |
+| `color.text.warning-on-dark` | The label on a dark warning fill, such as its tint in dark mode: a fixed colour from the light scale (50). | Warning text on the page: `color.status.warning.@` |
+| `color.text.danger-on-light` | The label on a light danger fill, such as its tint in light mode: a fixed colour from the light scale (800). | Danger text on the page: `color.status.danger.@` |
+| `color.text.danger-on-dark` | The label on a dark danger fill, such as its tint in dark mode: a fixed colour from the light scale (50). | Danger text on the page: `color.status.danger.@` |
 | `color.text.on-action` | Text and icons on the main action's fill. | Text on the page: `color.text.primary` |
 | `color.text.on-danger` | Text on the danger fill: its tone's main text. | Text on the main action: `color.text.on-action` |
 | `color.text.link` | Links in running text. | Buttons: `color.action.primary.@` |
@@ -258,13 +283,13 @@ Status colours go up in urgency: info, then warning, then danger. Pick the level
 | `color.action.secondary.hover` | Other actions under the pointer. | The resting state: `color.action.secondary.@` |
 | `color.action.danger.@` | The fill of a destructive commit: the confirm of a delete. | The first step of a delete: `color.action.secondary.@`<br />An error message: `color.status.danger.@` |
 | `color.action.danger.hover` | The danger fill on hover. | The resting fill: `color.action.danger.@` |
-| `color.status.info.@` | Neutral news: something changed and no action is needed. The lowest level of the urgency order. | Something needs a check: `color.status.warning.@`<br />The main action: `color.action.primary.@` |
+| `color.status.info.@` | Neutral news: something changed and no action is needed. The lowest level of the urgency order. | Something needs a check: `color.status.warning.@`<br />The main action: `color.action.primary.@`<br />The info badge label: `color.text.info-on-light` |
 | `color.status.info.subtle` | The fill behind info status. | Large page areas: `color.surface.default` |
-| `color.status.warning.@` | Caution: something may go wrong or needs a check, and it can be fixed. | An error, or an action that cannot be undone: `color.status.danger.@`<br />News that needs no action: `color.status.info.@` |
+| `color.status.warning.@` | Caution: something may go wrong or needs a check, and it can be fixed. | An error, or an action that cannot be undone: `color.status.danger.@`<br />News that needs no action: `color.status.info.@`<br />The warning badge label: `color.text.warning-on-light` |
 | `color.status.warning.subtle` | The fill behind warning status. | Large page areas: `color.surface.default` |
-| `color.status.danger.@` | Real risk: errors, failed checks, actions that cannot be undone. The top of the urgency order. Overuse wears it out. | Caution or advice: `color.status.warning.@`<br />Getting attention: `color.status.info.@` |
+| `color.status.danger.@` | Real risk: errors, failed checks, actions that cannot be undone. The top of the urgency order. Overuse wears it out. | Caution or advice: `color.status.warning.@`<br />Getting attention: `color.status.info.@`<br />The danger badge label: `color.text.danger-on-light` |
 | `color.status.danger.subtle` | The fill behind danger status. | Large page areas: `color.surface.default` |
-| `color.status.success.@` | Confirmation that something worked. It sits outside the urgency order. | The main action: `color.action.primary.@`<br />Brand colour: `color.action.primary.@` |
+| `color.status.success.@` | Confirmation that something worked. It sits outside the urgency order. | The main action: `color.action.primary.@`<br />Brand colour: `color.action.primary.@`<br />The success badge label: `color.text.success-on-light` |
 | `color.status.success.subtle` | The fill behind success status. | Large page areas: `color.surface.default` |
 | `color.category.1.@` | Category 1: tells one item or series from another. It carries no meaning. | Status or risk: `color.status.warning.@`<br />Tag text: `color.text.primary` |
 | `color.category.1.subtle` | Category 1: the fill of a tag. | A status badge: `color.status.info.subtle` |
@@ -292,6 +317,14 @@ Which colour may sit on which fill, and the contrast it keeps there in every bra
 | `color.text.inverse` | `color.surface.inverse` | 4.5:1 |
 | `color.text.on-light` | Fills whose tone is light: `color.surface.canvas`, `color.surface.default`, `color.surface.raised`, `color.surface.sunken`, `color.surface.selected`, `color.surface.inverse`, `color.action.primary.@`, `color.action.primary.hover`, `color.action.danger.@`, `color.action.danger.hover`, `color.action.secondary.@`, `color.action.secondary.hover`, `color.status.info.subtle`, `color.status.warning.subtle`, `color.status.danger.subtle`, `color.status.success.subtle` | 4.5:1 |
 | `color.text.on-dark` | Fills whose tone is dark: `color.surface.canvas`, `color.surface.default`, `color.surface.raised`, `color.surface.sunken`, `color.surface.selected`, `color.surface.inverse`, `color.action.primary.@`, `color.action.primary.hover`, `color.action.danger.@`, `color.action.danger.hover`, `color.action.secondary.@`, `color.action.secondary.hover`, `color.status.info.subtle`, `color.status.warning.subtle`, `color.status.danger.subtle`, `color.status.success.subtle` | 4.5:1 |
+| `color.text.info-on-light` | Fills whose tone is light: `color.status.info.subtle` | 4.5:1 |
+| `color.text.info-on-dark` | Fills whose tone is dark: `color.status.info.subtle` | 4.5:1 |
+| `color.text.success-on-light` | Fills whose tone is light: `color.status.success.subtle` | 4.5:1 |
+| `color.text.success-on-dark` | Fills whose tone is dark: `color.status.success.subtle` | 4.5:1 |
+| `color.text.warning-on-light` | Fills whose tone is light: `color.status.warning.subtle` | 4.5:1 |
+| `color.text.warning-on-dark` | Fills whose tone is dark: `color.status.warning.subtle` | 4.5:1 |
+| `color.text.danger-on-light` | Fills whose tone is light: `color.status.danger.subtle` | 4.5:1 |
+| `color.text.danger-on-dark` | Fills whose tone is dark: `color.status.danger.subtle` | 4.5:1 |
 | `color.text.on-action` | `color.action.primary.@`, `color.action.primary.hover` | 4.5:1 |
 | `color.text.on-danger` | `color.action.danger.@`, `color.action.danger.hover` | 4.5:1 |
 | `color.text.link` | The page's own fills: `color.surface.canvas`, `color.surface.default`, `color.surface.raised`, `color.surface.sunken`, `color.surface.selected` | 4.5:1 |
@@ -299,10 +332,10 @@ Which colour may sit on which fill, and the contrast it keeps there in every bra
 | `color.border.focus` | The page's own fills: `color.surface.canvas`, `color.surface.default`, `color.surface.raised`, `color.surface.sunken`, `color.surface.selected`, `color.surface.inverse` | 3:1 |
 | `color.border.selected` | `color.surface.canvas`, `color.surface.default`, `color.surface.selected` | 3:1 |
 | `color.action.primary.@` | `color.surface.canvas`, `color.surface.default` | 3:1 |
-| `color.status.info.@` | `color.surface.canvas`, `color.surface.default`, `color.status.info.subtle` | 4.5:1 |
-| `color.status.warning.@` | `color.surface.canvas`, `color.surface.default`, `color.status.warning.subtle` | 4.5:1 |
-| `color.status.danger.@` | `color.surface.canvas`, `color.surface.default`, `color.status.danger.subtle` | 4.5:1 |
-| `color.status.success.@` | `color.surface.canvas`, `color.surface.default`, `color.status.success.subtle` | 4.5:1 |
+| `color.status.info.@` | `color.surface.canvas`, `color.surface.default` | 4.5:1 |
+| `color.status.warning.@` | `color.surface.canvas`, `color.surface.default` | 4.5:1 |
+| `color.status.danger.@` | `color.surface.canvas`, `color.surface.default` | 4.5:1 |
+| `color.status.success.@` | `color.surface.canvas`, `color.surface.default` | 4.5:1 |
 | `color.category.1.@` | `color.surface.canvas`, `color.surface.default` | 3:1 |
 | `color.category.2.@` | `color.surface.canvas`, `color.surface.default` | 3:1 |
 | `color.category.3.@` | `color.surface.canvas`, `color.surface.default` | 3:1 |
@@ -312,15 +345,15 @@ Which colour may sit on which fill, and the contrast it keeps there in every bra
 
 ## The tone of each fill
 
-Every fill says whether it is light or dark. Text on it is `color.text.on-light` on a light fill, `color.text.on-dark` on a dark one. "Everything" means text.primary, text.secondary, text.muted, link, icon, border, focus.
+Every fill says whether it is light or dark. Text on it is `color.text.on-light` on a light fill, `color.text.on-dark` on a dark one. "Everything" means text.primary, text.secondary, text.muted, link, icon, border, focus, text.info, text.success, text.warning, text.danger.
 
 | Fill | Light mode | Dark mode | What sits on it |
 | --- | --- | --- | --- |
-| `color.surface.canvas` | light | dark | Everything |
-| `color.surface.default` | light | dark | Everything |
-| `color.surface.raised` | light | dark | Everything |
-| `color.surface.sunken` | light | dark | Everything |
-| `color.surface.selected` | light | dark (waits for OD-223) | Everything |
+| `color.surface.canvas` | light | dark | text.primary, text.secondary, text.muted, link, icon, border, focus |
+| `color.surface.default` | light | dark | text.primary, text.secondary, text.muted, link, icon, border, focus |
+| `color.surface.raised` | light | dark | text.primary, text.secondary, text.muted, link, icon, border, focus |
+| `color.surface.sunken` | light | dark | text.primary, text.secondary, text.muted, link, icon, border, focus |
+| `color.surface.selected` | light | dark | text.primary, text.secondary, text.muted, link, icon, border, focus |
 | `color.surface.inverse` | dark | light | text.primary, icon, focus |
 | `color.action.primary.@` | dark | light (waits for OD-225) | text.primary |
 | `color.action.primary.hover` | dark | light | text.primary |
@@ -328,10 +361,9 @@ Every fill says whether it is light or dark. Text on it is `color.text.on-light`
 | `color.action.danger.hover` | dark | light | text.primary |
 | `color.action.secondary.@` | light | dark | text.primary, icon |
 | `color.action.secondary.hover` | light | dark | text.primary, icon |
-| `color.status.info.subtle` | light | dark | text.primary, icon |
-| `color.status.warning.subtle` | light | dark | text.primary, icon |
-| `color.status.danger.subtle` | light | dark | text.primary, icon |
-| `color.status.success.subtle` | light | dark | text.primary, icon |
+| `color.status.info.subtle` | light | dark | text.primary, icon, text.info |
+| `color.status.warning.subtle` | light | dark | text.primary, icon, text.warning |
+| `color.status.danger.subtle` | light | dark | text.primary, icon, text.danger |
+| `color.status.success.subtle` | light | dark | text.primary, icon, text.success |
 
-- `color.surface.selected` in dark mode waits for OD-223: Its ramp has no step that passes yet (text.muted 3.87:1); whole ramps add one.
 - `color.action.primary.@` in dark mode waits for OD-225: In dark mode the brand's pink is close to the danger red (under 10 apart); which one moves is a brand decision.

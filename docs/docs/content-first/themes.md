@@ -25,5 +25,5 @@ Content first ships 2 themes: light, dark. Only semantic tokens change between t
 | `color.surface.canvas` | #FFFDF8 | #14110D |
 | `color.surface.default` | #FFFFFF | #1F1B16 |
 | `color.text.primary` | #1F1B16 | #FFFDF8 |
-| `color.action.primary` | #1E3A5F #162C49 | #8FA6C4 #E3EAF3 |
+| `color.action.primary` | #1E3A5F #122948 | #8FA6C4 #ACBDD5 |
 | `color.border.focus` | #1E3A5F | #8FA6C4 |
