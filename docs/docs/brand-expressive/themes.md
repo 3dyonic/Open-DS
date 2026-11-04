@@ -25,5 +25,5 @@ Brand expressive ships 2 themes: light, dark. Only semantic tokens change betwee
 | `color.surface.canvas` | #FFF8F3 | #120B09 |
 | `color.surface.default` | #FFFFFF | #1F1411 |
 | `color.text.primary` | #1F1411 | #FFF8F3 |
-| `color.action.primary` | #D61F7A #A8165F | #F59ACA #FDE4F0 |
+| `color.action.primary` | #D61F7A #A6025B | #F59ACA #FBB4D8 |
 | `color.border.focus` | #D61F7A | #F59ACA |

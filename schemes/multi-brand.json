@@ -2146,43 +2146,106 @@
           "$type": "color",
           "$description": "The teal hue: a light ramp, a dark ramp and its base value.",
           "light": {
+            "50": {
+              "$type": "color",
+              "$value": "#F0FCFA"
+            },
             "100": {
-              "$value": "#E0F2F1"
+              "$type": "color",
+              "$value": "#DEF3F0"
+            },
+            "200": {
+              "$type": "color",
+              "$value": "#C9E7E3"
             },
             "300": {
-              "$value": "#7FCFC6"
+              "$type": "color",
+              "$value": "#BADED9"
+            },
+            "400": {
+              "$type": "color",
+              "$value": "#7EB6AF"
             },
             "500": {
-              "$value": "#14918A"
+              "$type": "color",
+              "$value": "#3D8B83"
             },
             "600": {
+              "$type": "color",
               "$value": "#0F766E"
             },
             "700": {
-              "$value": "#0B5B55"
+              "$type": "color",
+              "$value": "#015852"
             },
             "800": {
-              "$value": "#08423E"
+              "$type": "color",
+              "$value": "#003C37"
+            },
+            "900": {
+              "$type": "color",
+              "$value": "#012421"
+            },
+            "950": {
+              "$type": "color",
+              "$value": "#000E0D"
             }
           },
           "dark": {
+            "50": {
+              "$type": "color",
+              "$value": "#001A18"
+            },
             "100": {
-              "$value": "#08423E"
+              "$type": "color",
+              "$value": "#012C28"
+            },
+            "200": {
+              "$type": "color",
+              "$value": "#0C443F"
             },
             "300": {
-              "$value": "#0B5B55"
+              "$type": "color",
+              "$value": "#255F59"
+            },
+            "400": {
+              "$type": "color",
+              "$value": "#3F7F78"
             },
             "500": {
-              "$value": "#0F766E"
+              "$type": "color",
+              "$value": "#5CA39B"
             },
             "600": {
-              "$value": "#14918A"
-            },
-            "700": {
+              "$type": "color",
               "$value": "#7FCFC6"
             },
+            "700": {
+              "$type": "color",
+              "$value": "#A1DCD4"
+            },
             "800": {
-              "$value": "#E0F2F1"
+              "$type": "color",
+              "$value": "#BCE6E1"
+            },
+            "900": {
+              "$type": "color",
+              "$value": "#D3F0EC"
+            },
+            "950": {
+              "$type": "color",
+              "$value": "#EAF9F7"
+            }
+          },
+          "$extensions": {
+            "open-ds": {
+              "generated": "OD-223",
+              "light": {
+                "key": "#0F766E"
+              },
+              "dark": {
+                "key": "#7FCFC6"
+              }
             }
           }
         },
@@ -2190,43 +2253,106 @@
           "$type": "color",
           "$description": "The purple hue: a light ramp, a dark ramp and its base value.",
           "light": {
+            "50": {
+              "$type": "color",
+              "$value": "#F8F7FF"
+            },
             "100": {
-              "$value": "#EDE7FE"
+              "$type": "color",
+              "$value": "#EDEAFE"
+            },
+            "200": {
+              "$type": "color",
+              "$value": "#DFD9FF"
             },
             "300": {
-              "$value": "#B79DF7"
+              "$type": "color",
+              "$value": "#D4CCFE"
+            },
+            "400": {
+              "$type": "color",
+              "$value": "#AA91FF"
             },
             "500": {
-              "$value": "#7C4DEB"
+              "$type": "color",
+              "$value": "#8050E9"
             },
             "600": {
+              "$type": "color",
               "$value": "#6D28D9"
             },
             "700": {
-              "$value": "#5520AA"
+              "$type": "color",
+              "$value": "#5212AA"
             },
             "800": {
-              "$value": "#3E177D"
+              "$type": "color",
+              "$value": "#38017B"
+            },
+            "900": {
+              "$type": "color",
+              "$value": "#22014E"
+            },
+            "950": {
+              "$type": "color",
+              "$value": "#0D0027"
             }
           },
           "dark": {
+            "50": {
+              "$type": "color",
+              "$value": "#190831"
+            },
             "100": {
-              "$value": "#3E177D"
+              "$type": "color",
+              "$value": "#271745"
+            },
+            "200": {
+              "$type": "color",
+              "$value": "#3C2A5F"
             },
             "300": {
-              "$value": "#5520AA"
+              "$type": "color",
+              "$value": "#53417D"
+            },
+            "400": {
+              "$type": "color",
+              "$value": "#705BA0"
             },
             "500": {
-              "$value": "#6D28D9"
+              "$type": "color",
+              "$value": "#9079C7"
             },
             "600": {
-              "$value": "#7C4DEB"
-            },
-            "700": {
+              "$type": "color",
               "$value": "#B79DF7"
             },
+            "700": {
+              "$type": "color",
+              "$value": "#C9B7FC"
+            },
             "800": {
-              "$value": "#EDE7FE"
+              "$type": "color",
+              "$value": "#D9CCFF"
+            },
+            "900": {
+              "$type": "color",
+              "$value": "#E7E0FE"
+            },
+            "950": {
+              "$type": "color",
+              "$value": "#F6F3FF"
+            }
+          },
+          "$extensions": {
+            "open-ds": {
+              "generated": "OD-223",
+              "light": {
+                "key": "#6D28D9"
+              },
+              "dark": {
+                "key": "#B79DF7"
+              }
             }
           }
         },
@@ -2234,43 +2360,106 @@
           "$type": "color",
           "$description": "The orange hue: a light ramp, a dark ramp and its base value.",
           "light": {
+            "50": {
+              "$type": "color",
+              "$value": "#FFF8F5"
+            },
             "100": {
-              "$value": "#FFEDE5"
+              "$type": "color",
+              "$value": "#FEEBE4"
+            },
+            "200": {
+              "$type": "color",
+              "$value": "#FED9CD"
             },
             "300": {
-              "$value": "#F7A67F"
+              "$type": "color",
+              "$value": "#FFCBBB"
+            },
+            "400": {
+              "$type": "color",
+              "$value": "#F29578"
             },
             "500": {
-              "$value": "#E2571D"
+              "$type": "color",
+              "$value": "#D35E38"
             },
             "600": {
+              "$type": "color",
               "$value": "#C2410C"
             },
             "700": {
-              "$value": "#9A330A"
+              "$type": "color",
+              "$value": "#942D02"
             },
             "800": {
-              "$value": "#732607"
+              "$type": "color",
+              "$value": "#661D01"
+            },
+            "900": {
+              "$type": "color",
+              "$value": "#410F01"
+            },
+            "950": {
+              "$type": "color",
+              "$value": "#1F0400"
             }
           },
           "dark": {
+            "50": {
+              "$type": "color",
+              "$value": "#270B00"
+            },
             "100": {
-              "$value": "#732607"
+              "$type": "color",
+              "$value": "#3F1702"
+            },
+            "200": {
+              "$type": "color",
+              "$value": "#5A2C13"
             },
             "300": {
-              "$value": "#9A330A"
+              "$type": "color",
+              "$value": "#784328"
+            },
+            "400": {
+              "$type": "color",
+              "$value": "#9D5F41"
             },
             "500": {
-              "$value": "#C2410C"
+              "$type": "color",
+              "$value": "#C57F5D"
             },
             "600": {
-              "$value": "#E2571D"
-            },
-            "700": {
+              "$type": "color",
               "$value": "#F7A67F"
             },
+            "700": {
+              "$type": "color",
+              "$value": "#FCBD9F"
+            },
             "800": {
-              "$value": "#FFEDE5"
+              "$type": "color",
+              "$value": "#FFD0B9"
+            },
+            "900": {
+              "$type": "color",
+              "$value": "#FFE1D4"
+            },
+            "950": {
+              "$type": "color",
+              "$value": "#FFF2EC"
+            }
+          },
+          "$extensions": {
+            "open-ds": {
+              "generated": "OD-223",
+              "light": {
+                "key": "#C2410C"
+              },
+              "dark": {
+                "key": "#F7A67F"
+              }
             }
           }
         },
@@ -2278,31 +2467,106 @@
           "$type": "color",
           "$description": "The green hue: a light ramp, a dark ramp and its base value.",
           "light": {
+            "50": {
+              "$type": "color",
+              "$value": "#F1FDF2"
+            },
             "100": {
-              "$value": "#E3F4EA"
+              "$type": "color",
+              "$value": "#DFF5E2"
+            },
+            "200": {
+              "$type": "color",
+              "$value": "#CBE9CF"
             },
             "300": {
-              "$value": "#5CC283"
+              "$type": "color",
+              "$value": "#BCE0C1"
             },
-            "700": {
+            "400": {
+              "$type": "color",
+              "$value": "#82BA8B"
+            },
+            "500": {
+              "$type": "color",
+              "$value": "#448F54"
+            },
+            "600": {
+              "$type": "color",
               "$value": "#1F7A3A"
             },
+            "700": {
+              "$type": "color",
+              "$value": "#0B5C27"
+            },
+            "800": {
+              "$type": "color",
+              "$value": "#023E17"
+            },
             "900": {
-              "$value": "#123322"
+              "$type": "color",
+              "$value": "#01260B"
+            },
+            "950": {
+              "$type": "color",
+              "$value": "#001003"
             }
           },
           "dark": {
+            "50": {
+              "$type": "color",
+              "$value": "#001A0A"
+            },
             "100": {
-              "$value": "#123322"
+              "$type": "color",
+              "$value": "#012A14"
+            },
+            "200": {
+              "$type": "color",
+              "$value": "#024121"
             },
             "300": {
-              "$value": "#1F7A3A"
+              "$type": "color",
+              "$value": "#065B31"
             },
-            "700": {
+            "400": {
+              "$type": "color",
+              "$value": "#247948"
+            },
+            "500": {
+              "$type": "color",
+              "$value": "#3E9A63"
+            },
+            "600": {
+              "$type": "color",
               "$value": "#5CC283"
             },
+            "700": {
+              "$type": "color",
+              "$value": "#8AD3A2"
+            },
+            "800": {
+              "$type": "color",
+              "$value": "#ADE2BD"
+            },
             "900": {
-              "$value": "#E3F4EA"
+              "$type": "color",
+              "$value": "#CBEFD5"
+            },
+            "950": {
+              "$type": "color",
+              "$value": "#E8FBED"
+            }
+          },
+          "$extensions": {
+            "open-ds": {
+              "generated": "OD-223",
+              "light": {
+                "key": "#1F7A3A"
+              },
+              "dark": {
+                "key": "#5CC283"
+              }
             }
           }
         },
@@ -2310,31 +2574,106 @@
           "$type": "color",
           "$description": "The amber hue: a light ramp, a dark ramp and its base value.",
           "light": {
+            "50": {
+              "$type": "color",
+              "$value": "#FFF7EF"
+            },
             "100": {
-              "$value": "#FFF3D6"
+              "$type": "color",
+              "$value": "#FAEBDA"
+            },
+            "200": {
+              "$type": "color",
+              "$value": "#F1DBC3"
             },
             "300": {
-              "$value": "#F2B84B"
+              "$type": "color",
+              "$value": "#EACFB3"
             },
-            "700": {
+            "400": {
+              "$type": "color",
+              "$value": "#C7A074"
+            },
+            "500": {
+              "$type": "color",
+              "$value": "#9E6E32"
+            },
+            "600": {
+              "$type": "color",
               "$value": "#8A5600"
             },
+            "700": {
+              "$type": "color",
+              "$value": "#673F01"
+            },
+            "800": {
+              "$type": "color",
+              "$value": "#462A02"
+            },
             "900": {
-              "$value": "#3A2A05"
+              "$type": "color",
+              "$value": "#2B1800"
+            },
+            "950": {
+              "$type": "color",
+              "$value": "#130800"
             }
           },
           "dark": {
+            "50": {
+              "$type": "color",
+              "$value": "#1F1301"
+            },
             "100": {
-              "$value": "#3A2A05"
+              "$type": "color",
+              "$value": "#332201"
+            },
+            "200": {
+              "$type": "color",
+              "$value": "#503700"
             },
             "300": {
-              "$value": "#8A5600"
+              "$type": "color",
+              "$value": "#704F03"
             },
-            "700": {
+            "400": {
+              "$type": "color",
+              "$value": "#986C06"
+            },
+            "500": {
+              "$type": "color",
+              "$value": "#C18E28"
+            },
+            "600": {
+              "$type": "color",
               "$value": "#F2B84B"
             },
+            "700": {
+              "$type": "color",
+              "$value": "#F6CA7F"
+            },
+            "800": {
+              "$type": "color",
+              "$value": "#FAD9A3"
+            },
             "900": {
-              "$value": "#FFF3D6"
+              "$type": "color",
+              "$value": "#FDE7C3"
+            },
+            "950": {
+              "$type": "color",
+              "$value": "#FFF4E2"
+            }
+          },
+          "$extensions": {
+            "open-ds": {
+              "generated": "OD-223",
+              "light": {
+                "key": "#8A5600"
+              },
+              "dark": {
+                "key": "#F2B84B"
+              }
             }
           }
         },
@@ -2342,31 +2681,106 @@
           "$type": "color",
           "$description": "The red hue: a light ramp, a dark ramp and its base value.",
           "light": {
+            "50": {
+              "$type": "color",
+              "$value": "#FEF7F7"
+            },
             "100": {
-              "$value": "#FDE7E7"
+              "$type": "color",
+              "$value": "#FEE9E7"
+            },
+            "200": {
+              "$type": "color",
+              "$value": "#FED7D2"
             },
             "300": {
-              "$value": "#F28B8B"
+              "$type": "color",
+              "$value": "#FEC8C2"
             },
-            "700": {
+            "400": {
+              "$type": "color",
+              "$value": "#F68C82"
+            },
+            "500": {
+              "$type": "color",
+              "$value": "#D64F48"
+            },
+            "600": {
+              "$type": "color",
               "$value": "#C42B2B"
             },
+            "700": {
+              "$type": "color",
+              "$value": "#981519"
+            },
+            "800": {
+              "$type": "color",
+              "$value": "#6D0008"
+            },
             "900": {
-              "$value": "#3D1414"
+              "$type": "color",
+              "$value": "#450003"
+            },
+            "950": {
+              "$type": "color",
+              "$value": "#210001"
             }
           },
           "dark": {
+            "50": {
+              "$type": "color",
+              "$value": "#2E0105"
+            },
             "100": {
-              "$value": "#3D1414"
+              "$type": "color",
+              "$value": "#410C11"
+            },
+            "200": {
+              "$type": "color",
+              "$value": "#5B1F22"
             },
             "300": {
-              "$value": "#C42B2B"
+              "$type": "color",
+              "$value": "#783436"
             },
-            "700": {
+            "400": {
+              "$type": "color",
+              "$value": "#9C4D4E"
+            },
+            "500": {
+              "$type": "color",
+              "$value": "#C26969"
+            },
+            "600": {
+              "$type": "color",
               "$value": "#F28B8B"
             },
+            "700": {
+              "$type": "color",
+              "$value": "#FAA9A8"
+            },
+            "800": {
+              "$type": "color",
+              "$value": "#FEC3C1"
+            },
             "900": {
-              "$value": "#FDE7E7"
+              "$type": "color",
+              "$value": "#FEDBDA"
+            },
+            "950": {
+              "$type": "color",
+              "$value": "#FEF2F1"
+            }
+          },
+          "$extensions": {
+            "open-ds": {
+              "generated": "OD-223",
+              "light": {
+                "key": "#C42B2B"
+              },
+              "dark": {
+                "key": "#F28B8B"
+              }
             }
           }
         },
@@ -2388,43 +2802,106 @@
           "$type": "color",
           "$description": "Blue ramp for the info status and categories. Same values as the accessible-first blue ramp: borrowed, not invented.",
           "light": {
+            "50": {
+              "$type": "color",
+              "$value": "#F4F7FE"
+            },
             "100": {
-              "$value": "#E1ECFF"
+              "$type": "color",
+              "$value": "#DEEAFE"
+            },
+            "200": {
+              "$type": "color",
+              "$value": "#C3D9FE"
             },
             "300": {
-              "$value": "#8AB4F8"
+              "$type": "color",
+              "$value": "#B2CCF8"
+            },
+            "400": {
+              "$type": "color",
+              "$value": "#6F95D6"
             },
             "500": {
-              "$value": "#1A5DD0"
+              "$type": "color",
+              "$value": "#2C5AAA"
             },
             "600": {
-              "$value": "#0B4FC0"
-            },
-            "700": {
+              "$type": "color",
               "$value": "#083C93"
             },
+            "700": {
+              "$type": "color",
+              "$value": "#012A72"
+            },
             "800": {
-              "$value": "#062C6E"
+              "$type": "color",
+              "$value": "#001A4E"
+            },
+            "900": {
+              "$type": "color",
+              "$value": "#000D31"
+            },
+            "950": {
+              "$type": "color",
+              "$value": "#000316"
             }
           },
           "dark": {
+            "50": {
+              "$type": "color",
+              "$value": "#031331"
+            },
             "100": {
-              "$value": "#062C6E"
+              "$type": "color",
+              "$value": "#0D2244"
+            },
+            "200": {
+              "$type": "color",
+              "$value": "#1F375E"
             },
             "300": {
-              "$value": "#083C93"
+              "$type": "color",
+              "$value": "#344F7C"
+            },
+            "400": {
+              "$type": "color",
+              "$value": "#4C6CA0"
             },
             "500": {
-              "$value": "#0B4FC0"
+              "$type": "color",
+              "$value": "#688CC8"
             },
             "600": {
-              "$value": "#1A5DD0"
-            },
-            "700": {
+              "$type": "color",
               "$value": "#8AB4F8"
             },
+            "700": {
+              "$type": "color",
+              "$value": "#A7C8FC"
+            },
             "800": {
-              "$value": "#E1ECFF"
+              "$type": "color",
+              "$value": "#C1D8FE"
+            },
+            "900": {
+              "$type": "color",
+              "$value": "#D9E7FE"
+            },
+            "950": {
+              "$type": "color",
+              "$value": "#F0F6FF"
+            }
+          },
+          "$extensions": {
+            "open-ds": {
+              "generated": "OD-223",
+              "light": {
+                "key": "#083C93"
+              },
+              "dark": {
+                "key": "#8AB4F8"
+              }
             }
           }
         }
@@ -2744,6 +3221,46 @@
                   "$type": "color",
                   "$value": "{color.slate-deep.light.0}",
                   "$description": "Text on any dark fill, in either mode: white."
+                },
+                "info-on-light": {
+                  "$type": "color",
+                  "$value": "{color.blue.light.800}",
+                  "$description": "info text on a light info fill, in either mode."
+                },
+                "info-on-dark": {
+                  "$type": "color",
+                  "$value": "{color.blue.light.50}",
+                  "$description": "info text on a dark info fill, in either mode."
+                },
+                "success-on-light": {
+                  "$type": "color",
+                  "$value": "{color.green.light.800}",
+                  "$description": "success text on a light success fill, in either mode."
+                },
+                "success-on-dark": {
+                  "$type": "color",
+                  "$value": "{color.green.light.50}",
+                  "$description": "success text on a dark success fill, in either mode."
+                },
+                "warning-on-light": {
+                  "$type": "color",
+                  "$value": "{color.amber.light.800}",
+                  "$description": "warning text on a light warning fill, in either mode."
+                },
+                "warning-on-dark": {
+                  "$type": "color",
+                  "$value": "{color.amber.light.50}",
+                  "$description": "warning text on a dark warning fill, in either mode."
+                },
+                "danger-on-light": {
+                  "$type": "color",
+                  "$value": "{color.red.light.800}",
+                  "$description": "danger text on a light danger fill, in either mode."
+                },
+                "danger-on-dark": {
+                  "$type": "color",
+                  "$value": "{color.red.light.50}",
+                  "$description": "danger text on a dark danger fill, in either mode."
                 }
               }
             }
@@ -2952,7 +3469,7 @@
                 "danger": {
                   "@": {
                     "$type": "color",
-                    "$value": "{color.red.light.700}",
+                    "$value": "{color.red.light.600}",
                     "$extensions": {
                       "open-ds": {
                         "tone": "dark"
@@ -2975,7 +3492,7 @@
                 "info": {
                   "@": {
                     "$type": "color",
-                    "$value": "{color.blue.light.700}"
+                    "$value": "{color.blue.light.600}"
                   },
                   "subtle": {
                     "$type": "color",
@@ -2990,7 +3507,7 @@
                 "success": {
                   "@": {
                     "$type": "color",
-                    "$value": "{color.green.light.700}"
+                    "$value": "{color.green.light.600}"
                   },
                   "subtle": {
                     "$type": "color",
@@ -3005,7 +3522,7 @@
                 "warning": {
                   "@": {
                     "$type": "color",
-                    "$value": "{color.amber.light.700}"
+                    "$value": "{color.amber.light.600}"
                   },
                   "subtle": {
                     "$type": "color",
@@ -3020,7 +3537,7 @@
                 "danger": {
                   "@": {
                     "$type": "color",
-                    "$value": "{color.red.light.700}"
+                    "$value": "{color.red.light.600}"
                   },
                   "subtle": {
                     "$type": "color",
@@ -3077,7 +3594,7 @@
                 "5": {
                   "@": {
                     "$type": "color",
-                    "$value": "{color.green.light.700}"
+                    "$value": "{color.green.light.600}"
                   },
                   "subtle": {
                     "$type": "color",
@@ -3205,11 +3722,7 @@
                   "$value": "{color.teal.dark.100}",
                   "$extensions": {
                     "open-ds": {
-                      "tone": "dark",
-                      "waits": {
-                        "for": "OD-223",
-                        "why": "Its ramp has no step that passes yet (text.muted 4.41:1); whole ramps add one."
-                      }
+                      "tone": "dark"
                     }
                   }
                 },
@@ -3268,18 +3781,18 @@
                 },
                 "focus": {
                   "$type": "color",
-                  "$value": "{color.teal.dark.700}"
+                  "$value": "{color.teal.dark.600}"
                 },
                 "selected": {
                   "$type": "color",
-                  "$value": "{color.teal.dark.700}"
+                  "$value": "{color.teal.dark.600}"
                 }
               },
               "action": {
                 "primary": {
                   "@": {
                     "$type": "color",
-                    "$value": "{color.teal.dark.700}",
+                    "$value": "{color.teal.dark.600}",
                     "$extensions": {
                       "open-ds": {
                         "tone": "light"
@@ -3288,7 +3801,7 @@
                   },
                   "hover": {
                     "$type": "color",
-                    "$value": "{color.teal.dark.800}",
+                    "$value": "{color.teal.dark.700}",
                     "$extensions": {
                       "open-ds": {
                         "tone": "light"
@@ -3319,7 +3832,7 @@
                 "danger": {
                   "@": {
                     "$type": "color",
-                    "$value": "{color.red.dark.700}",
+                    "$value": "{color.red.dark.600}",
                     "$extensions": {
                       "open-ds": {
                         "tone": "light"
@@ -3342,7 +3855,7 @@
                 "info": {
                   "@": {
                     "$type": "color",
-                    "$value": "{color.blue.dark.700}"
+                    "$value": "{color.blue.dark.600}"
                   },
                   "subtle": {
                     "$type": "color",
@@ -3357,7 +3870,7 @@
                 "success": {
                   "@": {
                     "$type": "color",
-                    "$value": "{color.green.dark.700}"
+                    "$value": "{color.green.dark.600}"
                   },
                   "subtle": {
                     "$type": "color",
@@ -3372,7 +3885,7 @@
                 "warning": {
                   "@": {
                     "$type": "color",
-                    "$value": "{color.amber.dark.700}"
+                    "$value": "{color.amber.dark.600}"
                   },
                   "subtle": {
                     "$type": "color",
@@ -3387,7 +3900,7 @@
                 "danger": {
                   "@": {
                     "$type": "color",
-                    "$value": "{color.red.dark.700}"
+                    "$value": "{color.red.dark.600}"
                   },
                   "subtle": {
                     "$type": "color",
@@ -3404,7 +3917,7 @@
                 "1": {
                   "@": {
                     "$type": "color",
-                    "$value": "{color.teal.dark.700}"
+                    "$value": "{color.teal.dark.600}"
                   },
                   "subtle": {
                     "$type": "color",
@@ -3414,7 +3927,7 @@
                 "2": {
                   "@": {
                     "$type": "color",
-                    "$value": "{color.purple.dark.700}"
+                    "$value": "{color.purple.dark.600}"
                   },
                   "subtle": {
                     "$type": "color",
@@ -3424,7 +3937,7 @@
                 "3": {
                   "@": {
                     "$type": "color",
-                    "$value": "{color.orange.dark.700}"
+                    "$value": "{color.orange.dark.600}"
                   },
                   "subtle": {
                     "$type": "color",
@@ -3434,7 +3947,7 @@
                 "4": {
                   "@": {
                     "$type": "color",
-                    "$value": "{color.blue.dark.700}"
+                    "$value": "{color.blue.dark.600}"
                   },
                   "subtle": {
                     "$type": "color",
@@ -3444,7 +3957,7 @@
                 "5": {
                   "@": {
                     "$type": "color",
-                    "$value": "{color.green.dark.700}"
+                    "$value": "{color.green.dark.600}"
                   },
                   "subtle": {
                     "$type": "color",
@@ -3564,6 +4077,46 @@
                   "$type": "color",
                   "$value": "{color.slate-deep.light.0}",
                   "$description": "Text on any dark fill, in either mode: white."
+                },
+                "info-on-light": {
+                  "$type": "color",
+                  "$value": "{color.blue.light.800}",
+                  "$description": "info text on a light info fill, in either mode."
+                },
+                "info-on-dark": {
+                  "$type": "color",
+                  "$value": "{color.blue.light.50}",
+                  "$description": "info text on a dark info fill, in either mode."
+                },
+                "success-on-light": {
+                  "$type": "color",
+                  "$value": "{color.green.light.800}",
+                  "$description": "success text on a light success fill, in either mode."
+                },
+                "success-on-dark": {
+                  "$type": "color",
+                  "$value": "{color.green.light.50}",
+                  "$description": "success text on a dark success fill, in either mode."
+                },
+                "warning-on-light": {
+                  "$type": "color",
+                  "$value": "{color.amber.light.800}",
+                  "$description": "warning text on a light warning fill, in either mode."
+                },
+                "warning-on-dark": {
+                  "$type": "color",
+                  "$value": "{color.amber.light.50}",
+                  "$description": "warning text on a dark warning fill, in either mode."
+                },
+                "danger-on-light": {
+                  "$type": "color",
+                  "$value": "{color.red.light.800}",
+                  "$description": "danger text on a light danger fill, in either mode."
+                },
+                "danger-on-dark": {
+                  "$type": "color",
+                  "$value": "{color.red.light.50}",
+                  "$description": "danger text on a dark danger fill, in either mode."
                 }
               }
             }
@@ -3772,7 +4325,7 @@
                 "danger": {
                   "@": {
                     "$type": "color",
-                    "$value": "{color.red.light.700}",
+                    "$value": "{color.red.light.600}",
                     "$extensions": {
                       "open-ds": {
                         "tone": "dark"
@@ -3795,7 +4348,7 @@
                 "info": {
                   "@": {
                     "$type": "color",
-                    "$value": "{color.blue.light.700}"
+                    "$value": "{color.blue.light.600}"
                   },
                   "subtle": {
                     "$type": "color",
@@ -3810,7 +4363,7 @@
                 "success": {
                   "@": {
                     "$type": "color",
-                    "$value": "{color.green.light.700}"
+                    "$value": "{color.green.light.600}"
                   },
                   "subtle": {
                     "$type": "color",
@@ -3825,7 +4378,7 @@
                 "warning": {
                   "@": {
                     "$type": "color",
-                    "$value": "{color.amber.light.700}"
+                    "$value": "{color.amber.light.600}"
                   },
                   "subtle": {
                     "$type": "color",
@@ -3840,7 +4393,7 @@
                 "danger": {
                   "@": {
                     "$type": "color",
-                    "$value": "{color.red.light.700}"
+                    "$value": "{color.red.light.600}"
                   },
                   "subtle": {
                     "$type": "color",
@@ -3897,7 +4450,7 @@
                 "5": {
                   "@": {
                     "$type": "color",
-                    "$value": "{color.green.light.700}"
+                    "$value": "{color.green.light.600}"
                   },
                   "subtle": {
                     "$type": "color",
@@ -4084,18 +4637,18 @@
                 },
                 "focus": {
                   "$type": "color",
-                  "$value": "{color.purple.dark.700}"
+                  "$value": "{color.purple.dark.600}"
                 },
                 "selected": {
                   "$type": "color",
-                  "$value": "{color.purple.dark.700}"
+                  "$value": "{color.purple.dark.600}"
                 }
               },
               "action": {
                 "primary": {
                   "@": {
                     "$type": "color",
-                    "$value": "{color.purple.dark.700}",
+                    "$value": "{color.purple.dark.600}",
                     "$extensions": {
                       "open-ds": {
                         "tone": "light"
@@ -4104,7 +4657,7 @@
                   },
                   "hover": {
                     "$type": "color",
-                    "$value": "{color.purple.dark.800}",
+                    "$value": "{color.purple.dark.700}",
                     "$extensions": {
                       "open-ds": {
                         "tone": "light"
@@ -4135,7 +4688,7 @@
                 "danger": {
                   "@": {
                     "$type": "color",
-                    "$value": "{color.red.dark.700}",
+                    "$value": "{color.red.dark.600}",
                     "$extensions": {
                       "open-ds": {
                         "tone": "light"
@@ -4158,7 +4711,7 @@
                 "info": {
                   "@": {
                     "$type": "color",
-                    "$value": "{color.blue.dark.700}"
+                    "$value": "{color.blue.dark.600}"
                   },
                   "subtle": {
                     "$type": "color",
@@ -4173,7 +4726,7 @@
                 "success": {
                   "@": {
                     "$type": "color",
-                    "$value": "{color.green.dark.700}"
+                    "$value": "{color.green.dark.600}"
                   },
                   "subtle": {
                     "$type": "color",
@@ -4188,7 +4741,7 @@
                 "warning": {
                   "@": {
                     "$type": "color",
-                    "$value": "{color.amber.dark.700}"
+                    "$value": "{color.amber.dark.600}"
                   },
                   "subtle": {
                     "$type": "color",
@@ -4203,7 +4756,7 @@
                 "danger": {
                   "@": {
                     "$type": "color",
-                    "$value": "{color.red.dark.700}"
+                    "$value": "{color.red.dark.600}"
                   },
                   "subtle": {
                     "$type": "color",
@@ -4220,7 +4773,7 @@
                 "1": {
                   "@": {
                     "$type": "color",
-                    "$value": "{color.teal.dark.700}"
+                    "$value": "{color.teal.dark.600}"
                   },
                   "subtle": {
                     "$type": "color",
@@ -4230,7 +4783,7 @@
                 "2": {
                   "@": {
                     "$type": "color",
-                    "$value": "{color.purple.dark.700}"
+                    "$value": "{color.purple.dark.600}"
                   },
                   "subtle": {
                     "$type": "color",
@@ -4240,7 +4793,7 @@
                 "3": {
                   "@": {
                     "$type": "color",
-                    "$value": "{color.orange.dark.700}"
+                    "$value": "{color.orange.dark.600}"
                   },
                   "subtle": {
                     "$type": "color",
@@ -4250,7 +4803,7 @@
                 "4": {
                   "@": {
                     "$type": "color",
-                    "$value": "{color.blue.dark.700}"
+                    "$value": "{color.blue.dark.600}"
                   },
                   "subtle": {
                     "$type": "color",
@@ -4260,7 +4813,7 @@
                 "5": {
                   "@": {
                     "$type": "color",
-                    "$value": "{color.green.dark.700}"
+                    "$value": "{color.green.dark.600}"
                   },
                   "subtle": {
                     "$type": "color",
@@ -4380,6 +4933,46 @@
                   "$type": "color",
                   "$value": "{color.slate-deep.light.0}",
                   "$description": "Text on any dark fill, in either mode: white."
+                },
+                "info-on-light": {
+                  "$type": "color",
+                  "$value": "{color.blue.light.800}",
+                  "$description": "info text on a light info fill, in either mode."
+                },
+                "info-on-dark": {
+                  "$type": "color",
+                  "$value": "{color.blue.light.50}",
+                  "$description": "info text on a dark info fill, in either mode."
+                },
+                "success-on-light": {
+                  "$type": "color",
+                  "$value": "{color.green.light.800}",
+                  "$description": "success text on a light success fill, in either mode."
+                },
+                "success-on-dark": {
+                  "$type": "color",
+                  "$value": "{color.green.light.50}",
+                  "$description": "success text on a dark success fill, in either mode."
+                },
+                "warning-on-light": {
+                  "$type": "color",
+                  "$value": "{color.amber.light.800}",
+                  "$description": "warning text on a light warning fill, in either mode."
+                },
+                "warning-on-dark": {
+                  "$type": "color",
+                  "$value": "{color.amber.light.50}",
+                  "$description": "warning text on a dark warning fill, in either mode."
+                },
+                "danger-on-light": {
+                  "$type": "color",
+                  "$value": "{color.red.light.800}",
+                  "$description": "danger text on a light danger fill, in either mode."
+                },
+                "danger-on-dark": {
+                  "$type": "color",
+                  "$value": "{color.red.light.50}",
+                  "$description": "danger text on a dark danger fill, in either mode."
                 }
               }
             }
@@ -4592,7 +5185,7 @@
                 "danger": {
                   "@": {
                     "$type": "color",
-                    "$value": "{color.red.light.700}",
+                    "$value": "{color.red.light.600}",
                     "$extensions": {
                       "open-ds": {
                         "tone": "dark"
@@ -4615,7 +5208,7 @@
                 "info": {
                   "@": {
                     "$type": "color",
-                    "$value": "{color.blue.light.700}"
+                    "$value": "{color.blue.light.600}"
                   },
                   "subtle": {
                     "$type": "color",
@@ -4630,7 +5223,7 @@
                 "success": {
                   "@": {
                     "$type": "color",
-                    "$value": "{color.green.light.700}"
+                    "$value": "{color.green.light.600}"
                   },
                   "subtle": {
                     "$type": "color",
@@ -4645,7 +5238,7 @@
                 "warning": {
                   "@": {
                     "$type": "color",
-                    "$value": "{color.amber.light.700}"
+                    "$value": "{color.amber.light.600}"
                   },
                   "subtle": {
                     "$type": "color",
@@ -4660,7 +5253,7 @@
                 "danger": {
                   "@": {
                     "$type": "color",
-                    "$value": "{color.red.light.700}"
+                    "$value": "{color.red.light.600}"
                   },
                   "subtle": {
                     "$type": "color",
@@ -4717,7 +5310,7 @@
                 "5": {
                   "@": {
                     "$type": "color",
-                    "$value": "{color.green.light.700}"
+                    "$value": "{color.green.light.600}"
                   },
                   "subtle": {
                     "$type": "color",
@@ -4845,11 +5438,7 @@
                   "$value": "{color.orange.dark.100}",
                   "$extensions": {
                     "open-ds": {
-                      "tone": "dark",
-                      "waits": {
-                        "for": "OD-223",
-                        "why": "Its ramp has no step that passes yet (text.muted 4.08:1); whole ramps add one."
-                      }
+                      "tone": "dark"
                     }
                   }
                 },
@@ -4908,18 +5497,18 @@
                 },
                 "focus": {
                   "$type": "color",
-                  "$value": "{color.orange.dark.700}"
+                  "$value": "{color.orange.dark.600}"
                 },
                 "selected": {
                   "$type": "color",
-                  "$value": "{color.orange.dark.700}"
+                  "$value": "{color.orange.dark.600}"
                 }
               },
               "action": {
                 "primary": {
                   "@": {
                     "$type": "color",
-                    "$value": "{color.orange.dark.700}",
+                    "$value": "{color.orange.dark.600}",
                     "$extensions": {
                       "open-ds": {
                         "tone": "light",
@@ -4932,7 +5521,7 @@
                   },
                   "hover": {
                     "$type": "color",
-                    "$value": "{color.orange.dark.800}",
+                    "$value": "{color.orange.dark.700}",
                     "$extensions": {
                       "open-ds": {
                         "tone": "light"
@@ -4963,7 +5552,7 @@
                 "danger": {
                   "@": {
                     "$type": "color",
-                    "$value": "{color.red.dark.700}",
+                    "$value": "{color.red.dark.600}",
                     "$extensions": {
                       "open-ds": {
                         "tone": "light"
@@ -4986,7 +5575,7 @@
                 "info": {
                   "@": {
                     "$type": "color",
-                    "$value": "{color.blue.dark.700}"
+                    "$value": "{color.blue.dark.600}"
                   },
                   "subtle": {
                     "$type": "color",
@@ -5001,7 +5590,7 @@
                 "success": {
                   "@": {
                     "$type": "color",
-                    "$value": "{color.green.dark.700}"
+                    "$value": "{color.green.dark.600}"
                   },
                   "subtle": {
                     "$type": "color",
@@ -5016,7 +5605,7 @@
                 "warning": {
                   "@": {
                     "$type": "color",
-                    "$value": "{color.amber.dark.700}"
+                    "$value": "{color.amber.dark.600}"
                   },
                   "subtle": {
                     "$type": "color",
@@ -5031,7 +5620,7 @@
                 "danger": {
                   "@": {
                     "$type": "color",
-                    "$value": "{color.red.dark.700}"
+                    "$value": "{color.red.dark.600}"
                   },
                   "subtle": {
                     "$type": "color",
@@ -5048,7 +5637,7 @@
                 "1": {
                   "@": {
                     "$type": "color",
-                    "$value": "{color.teal.dark.700}"
+                    "$value": "{color.teal.dark.600}"
                   },
                   "subtle": {
                     "$type": "color",
@@ -5058,7 +5647,7 @@
                 "2": {
                   "@": {
                     "$type": "color",
-                    "$value": "{color.purple.dark.700}"
+                    "$value": "{color.purple.dark.600}"
                   },
                   "subtle": {
                     "$type": "color",
@@ -5068,7 +5657,7 @@
                 "3": {
                   "@": {
                     "$type": "color",
-                    "$value": "{color.orange.dark.700}"
+                    "$value": "{color.orange.dark.600}"
                   },
                   "subtle": {
                     "$type": "color",
@@ -5078,7 +5667,7 @@
                 "4": {
                   "@": {
                     "$type": "color",
-                    "$value": "{color.blue.dark.700}"
+                    "$value": "{color.blue.dark.600}"
                   },
                   "subtle": {
                     "$type": "color",
@@ -5088,7 +5677,7 @@
                 "5": {
                   "@": {
                     "$type": "color",
-                    "$value": "{color.green.dark.700}"
+                    "$value": "{color.green.dark.600}"
                   },
                   "subtle": {
                     "$type": "color",
@@ -5536,6 +6125,46 @@
             "$type": "color",
             "$description": "Text on any dark fill, in either mode.",
             "$value": "{theme.color.text.on-dark}"
+          },
+          "info-on-light": {
+            "$type": "color",
+            "$description": "Info text on a light info fill, such as its tint in light mode.",
+            "$value": "{theme.color.text.info-on-light}"
+          },
+          "info-on-dark": {
+            "$type": "color",
+            "$description": "Info text on a dark info fill, such as its tint in dark mode.",
+            "$value": "{theme.color.text.info-on-dark}"
+          },
+          "success-on-light": {
+            "$type": "color",
+            "$description": "Success text on a light success fill, such as its tint in light mode.",
+            "$value": "{theme.color.text.success-on-light}"
+          },
+          "success-on-dark": {
+            "$type": "color",
+            "$description": "Success text on a dark success fill, such as its tint in dark mode.",
+            "$value": "{theme.color.text.success-on-dark}"
+          },
+          "warning-on-light": {
+            "$type": "color",
+            "$description": "Warning text on a light warning fill, such as its tint in light mode.",
+            "$value": "{theme.color.text.warning-on-light}"
+          },
+          "warning-on-dark": {
+            "$type": "color",
+            "$description": "Warning text on a dark warning fill, such as its tint in dark mode.",
+            "$value": "{theme.color.text.warning-on-dark}"
+          },
+          "danger-on-light": {
+            "$type": "color",
+            "$description": "Danger text on a light danger fill, such as its tint in light mode.",
+            "$value": "{theme.color.text.danger-on-light}"
+          },
+          "danger-on-dark": {
+            "$type": "color",
+            "$description": "Danger text on a dark danger fill, such as its tint in dark mode.",
+            "$value": "{theme.color.text.danger-on-dark}"
           }
         },
         "border": {
@@ -5949,8 +6578,13 @@
             "$description": "Success badge fill."
           },
           "label": {
-            "$value": "{color.status.success.@}",
-            "$description": "Success badge label."
+            "$value": "{color.text.success-on-light}",
+            "$description": "Success badge label.",
+            "$extensions": {
+              "open-ds": {
+                "on": "color.status.success.subtle"
+              }
+            }
           }
         },
         "warning": {
@@ -5959,8 +6593,13 @@
             "$description": "Warning badge fill."
           },
           "label": {
-            "$value": "{color.status.warning.@}",
-            "$description": "Warning badge label."
+            "$value": "{color.text.warning-on-light}",
+            "$description": "Warning badge label.",
+            "$extensions": {
+              "open-ds": {
+                "on": "color.status.warning.subtle"
+              }
+            }
           }
         },
         "danger": {
@@ -5969,8 +6608,13 @@
             "$description": "Danger badge fill."
           },
           "label": {
-            "$value": "{color.status.danger.@}",
-            "$description": "Danger badge label."
+            "$value": "{color.text.danger-on-light}",
+            "$description": "Danger badge label.",
+            "$extensions": {
+              "open-ds": {
+                "on": "color.status.danger.subtle"
+              }
+            }
           }
         },
         "info": {
@@ -5979,8 +6623,13 @@
             "$description": "Info badge fill."
           },
           "label": {
-            "$value": "{color.status.info.@}",
-            "$description": "Info badge label."
+            "$value": "{color.text.info-on-light}",
+            "$description": "Info badge label.",
+            "$extensions": {
+              "open-ds": {
+                "on": "color.status.info.subtle"
+              }
+            }
           }
         }
       },

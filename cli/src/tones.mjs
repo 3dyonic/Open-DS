@@ -20,6 +20,8 @@ const OWN = {
 export function toneRole(id) {
   const m = id.match(/^color\.text\.on-(light|dark)$/);
   if (m) return { tone: m[1], role: "text.primary" };
+  const k = id.match(/^color\.text\.(info|success|warning|danger)-on-(light|dark)$/);
+  if (k) return { tone: k[2], role: `text.${k[1]}` };
   return OWN[id] ? { tone: "own", role: OWN[id] } : null;
 }
 

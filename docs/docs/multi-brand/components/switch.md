@@ -73,7 +73,7 @@ The CSS variable is the key with `/` replaced by `-` and the base `@` dropped. E
 
 | Key | What it controls | Points to, aster-light | Points to, aster-dark |
 | --- | --- | --- | --- |
-| `control/checked` | Fill of a checked checkbox or an on switch. | `color.action.primary.@` → `aster.theme.light.color.action.primary.@` → `color.teal.light.600` | `color.action.primary.@` → `aster.theme.dark.color.action.primary.@` → `color.teal.dark.700` |
+| `control/checked` | Fill of a checked checkbox or an on switch. | `color.action.primary.@` → `aster.theme.light.color.action.primary.@` → `color.teal.light.600` | `color.action.primary.@` → `aster.theme.dark.color.action.primary.@` → `color.teal.dark.600` |
 | `control/track` | Track of an off switch. | `color.border.strong` → `aster.theme.light.color.border.strong` → `color.neutral.500` → `aster.theme.light.color.neutral.500` → `color.slate-deep.light.500` | `color.border.strong` → `aster.theme.dark.color.border.strong` → `color.neutral.400` → `aster.theme.dark.color.neutral.400` → `color.slate-deep.dark.400` |
 | `control/thumb` | Switch thumb and checkmark color. | `color.surface.default` → `aster.theme.light.color.surface.default` → `color.neutral.0` → `aster.theme.light.color.neutral.0` → `color.slate-deep.light.0` | `color.surface.default` → `aster.theme.dark.color.surface.default` → `color.neutral.50` → `aster.theme.dark.color.neutral.50` → `color.slate-deep.dark.50` |
 | `control/radius` | Checkbox corner radius. | `radius.badge` → `aster.theme.base.radius.badge` → `radius.4` | same |
@@ -86,7 +86,7 @@ The CSS variable is the key with `/` replaced by `-` and the base `@` dropped. E
 
 | Key | What it controls | Points to, birch-light | Points to, birch-dark |
 | --- | --- | --- | --- |
-| `control/checked` | Fill of a checked checkbox or an on switch. | `color.action.primary.@` → `birch.theme.light.color.action.primary.@` → `color.purple.light.600` | `color.action.primary.@` → `birch.theme.dark.color.action.primary.@` → `color.purple.dark.700` |
+| `control/checked` | Fill of a checked checkbox or an on switch. | `color.action.primary.@` → `birch.theme.light.color.action.primary.@` → `color.purple.light.600` | `color.action.primary.@` → `birch.theme.dark.color.action.primary.@` → `color.purple.dark.600` |
 | `control/track` | Track of an off switch. | `color.border.strong` → `birch.theme.light.color.border.strong` → `color.neutral.500` → `birch.theme.light.color.neutral.500` → `color.slate-deep.light.500` | `color.border.strong` → `birch.theme.dark.color.border.strong` → `color.neutral.400` → `birch.theme.dark.color.neutral.400` → `color.slate-deep.dark.400` |
 | `control/thumb` | Switch thumb and checkmark color. | `color.surface.default` → `birch.theme.light.color.surface.default` → `color.neutral.0` → `birch.theme.light.color.neutral.0` → `color.slate-deep.light.0` | `color.surface.default` → `birch.theme.dark.color.surface.default` → `color.neutral.50` → `birch.theme.dark.color.neutral.50` → `color.slate-deep.dark.50` |
 | `control/radius` | Checkbox corner radius. | `radius.badge` → `birch.theme.base.radius.badge` → `radius.999` | same |
@@ -99,7 +99,7 @@ The CSS variable is the key with `/` replaced by `-` and the base `@` dropped. E
 
 | Key | What it controls | Points to, coral-light | Points to, coral-dark |
 | --- | --- | --- | --- |
-| `control/checked` | Fill of a checked checkbox or an on switch. | `color.action.primary.@` → `coral.theme.light.color.action.primary.@` → `color.orange.light.600` | `color.action.primary.@` → `coral.theme.dark.color.action.primary.@` → `color.orange.dark.700` |
+| `control/checked` | Fill of a checked checkbox or an on switch. | `color.action.primary.@` → `coral.theme.light.color.action.primary.@` → `color.orange.light.600` | `color.action.primary.@` → `coral.theme.dark.color.action.primary.@` → `color.orange.dark.600` |
 | `control/track` | Track of an off switch. | `color.border.strong` → `coral.theme.light.color.border.strong` → `color.neutral.500` → `coral.theme.light.color.neutral.500` → `color.slate-deep.light.500` | `color.border.strong` → `coral.theme.dark.color.border.strong` → `color.neutral.400` → `coral.theme.dark.color.neutral.400` → `color.slate-deep.dark.400` |
 | `control/thumb` | Switch thumb and checkmark color. | `color.surface.default` → `coral.theme.light.color.surface.default` → `color.neutral.0` → `coral.theme.light.color.neutral.0` → `color.slate-deep.light.0` | `color.surface.default` → `coral.theme.dark.color.surface.default` → `color.neutral.50` → `coral.theme.dark.color.neutral.50` → `color.slate-deep.dark.50` |
 | `control/radius` | Checkbox corner radius. | `radius.badge` → `coral.theme.base.radius.badge` → `radius.999` | same |

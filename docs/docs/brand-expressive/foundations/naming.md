@@ -26,14 +26,14 @@ Each token points to another token. Values live only on primitives, below.
 
 | Token | Points to, light | Points to, dark |
 | --- | --- | --- |
-| `component.button.primary.background.@` | `color.action.primary.@` → `brand-expressive.theme.light.color.action.primary.@` → `color.pink.light.600` | `color.action.primary.@` → `brand-expressive.theme.dark.color.action.primary.@` → `color.pink.dark.700` |
-| `component.button.primary.background.hover` | `color.action.primary.hover` → `brand-expressive.theme.light.color.action.primary.hover` → `color.pink.light.700` | `color.action.primary.hover` → `brand-expressive.theme.dark.color.action.primary.hover` → `color.pink.dark.800` |
+| `component.button.primary.background.@` | `color.action.primary.@` → `brand-expressive.theme.light.color.action.primary.@` → `color.pink.light.600` | `color.action.primary.@` → `brand-expressive.theme.dark.color.action.primary.@` → `color.pink.dark.600` |
+| `component.button.primary.background.hover` | `color.action.primary.hover` → `brand-expressive.theme.light.color.action.primary.hover` → `color.pink.light.700` | `color.action.primary.hover` → `brand-expressive.theme.dark.color.action.primary.hover` → `color.pink.dark.700` |
 | `component.button.primary.label` | `color.text.on-action` → `brand-expressive.theme.light.color.text.on-action` → `color.text.on-dark` → `brand-expressive.theme.base.color.text.on-dark` → `color.taupe.light.0` | `color.text.on-action` → `brand-expressive.theme.dark.color.text.on-action` → `color.text.on-light` → `brand-expressive.theme.base.color.text.on-light` → `color.taupe.light.900` |
 | `component.button.secondary.background.@` | `color.action.secondary.@` → `brand-expressive.theme.light.color.action.secondary.@` → `color.neutral.0` → `brand-expressive.theme.light.color.neutral.0` → `color.taupe.light.0` | `color.action.secondary.@` → `brand-expressive.theme.dark.color.action.secondary.@` → `color.neutral.50` → `brand-expressive.theme.dark.color.neutral.50` → `color.taupe.dark.50` |
 | `component.button.secondary.background.hover` | `color.action.secondary.hover` → `brand-expressive.theme.light.color.action.secondary.hover` → `color.neutral.100` → `brand-expressive.theme.light.color.neutral.100` → `color.taupe.light.100` | `color.action.secondary.hover` → `brand-expressive.theme.dark.color.action.secondary.hover` → `color.neutral.100` → `brand-expressive.theme.dark.color.neutral.100` → `color.taupe.dark.100` |
 | `component.button.secondary.label` | `color.text.primary` → `brand-expressive.theme.light.color.text.primary` → `color.neutral.900` → `brand-expressive.theme.light.color.neutral.900` → `color.taupe.light.900` | `color.text.primary` → `brand-expressive.theme.dark.color.text.primary` → `color.neutral.900` → `brand-expressive.theme.dark.color.neutral.900` → `color.taupe.dark.900` |
 | `component.button.secondary.border` | `color.border.strong` → `brand-expressive.theme.light.color.border.strong` → `color.neutral.500` → `brand-expressive.theme.light.color.neutral.500` → `color.taupe.light.500` | `color.border.strong` → `brand-expressive.theme.dark.color.border.strong` → `color.neutral.400` → `brand-expressive.theme.dark.color.neutral.400` → `color.taupe.dark.400` |
-| `component.button.danger.background.@` | `color.action.danger.@` → `brand-expressive.theme.light.color.action.danger.@` → `color.red.light.700` | `color.action.danger.@` → `brand-expressive.theme.dark.color.action.danger.@` → `color.red.dark.700` |
+| `component.button.danger.background.@` | `color.action.danger.@` → `brand-expressive.theme.light.color.action.danger.@` → `color.red.light.600` | `color.action.danger.@` → `brand-expressive.theme.dark.color.action.danger.@` → `color.red.dark.600` |
 | `component.button.danger.background.hover` | `color.action.danger.hover` → `brand-expressive.theme.light.color.action.danger.hover` → `color.red.light.700` | `color.action.danger.hover` → `brand-expressive.theme.dark.color.action.danger.hover` → `color.red.dark.700` |
 | `component.button.danger.label` | `color.text.on-danger` → `brand-expressive.theme.light.color.text.on-danger` → `color.text.on-dark` → `brand-expressive.theme.base.color.text.on-dark` → `color.taupe.light.0` | `color.text.on-danger` → `brand-expressive.theme.dark.color.text.on-danger` → `color.text.on-light` → `brand-expressive.theme.base.color.text.on-light` → `color.taupe.light.900` |
 | `component.button.ghost.background-hover` | `color.surface.sunken` → `brand-expressive.theme.light.color.surface.sunken` → `color.neutral.100` → `brand-expressive.theme.light.color.neutral.100` → `color.taupe.light.100` | `color.surface.sunken` → `brand-expressive.theme.dark.color.surface.sunken` → `color.neutral.100` → `brand-expressive.theme.dark.color.neutral.100` → `color.taupe.dark.100` |
@@ -43,14 +43,14 @@ Each token points to another token. Values live only on primitives, below.
 | `component.button.radius` | `radius.control` → `brand-expressive.theme.base.radius.control` → `radius.999` | `radius.control` → `brand-expressive.theme.base.radius.control` → `radius.999` |
 | `component.button.font-size` | `type.label.font-size` → `font.size.15` | `type.label.font-size` → `font.size.15` |
 | `component.button.font-weight` | `type.label.font-weight` → `font.weight.700` | `type.label.font-weight` → `font.weight.700` |
-| `component.button.focus-ring` | `color.border.focus` → `brand-expressive.theme.light.color.border.focus` → `color.pink.light.600` | `color.border.focus` → `brand-expressive.theme.dark.color.border.focus` → `color.pink.dark.700` |
+| `component.button.focus-ring` | `color.border.focus` → `brand-expressive.theme.light.color.border.focus` → `color.pink.light.600` | `color.border.focus` → `brand-expressive.theme.dark.color.border.focus` → `color.pink.dark.600` |
 | `component.button.icon-size` | `size.icon` → `size.20` | `size.icon` → `size.20` |
 | `component.button.disabled.background` | `color.disabled.surface` → `brand-expressive.theme.light.color.disabled.surface` → `color.neutral.100` → `brand-expressive.theme.light.color.neutral.100` → `color.taupe.light.100` | `color.disabled.surface` → `brand-expressive.theme.dark.color.disabled.surface` → `color.neutral.100` → `brand-expressive.theme.dark.color.neutral.100` → `color.taupe.dark.100` |
 | `component.button.disabled.label` | `color.disabled.text` → `brand-expressive.theme.light.color.disabled.text` → `color.neutral.500` → `brand-expressive.theme.light.color.neutral.500` → `color.taupe.light.500` | `color.disabled.text` → `brand-expressive.theme.dark.color.disabled.text` → `color.neutral.500` → `brand-expressive.theme.dark.color.neutral.500` → `color.taupe.dark.500` |
 | `component.button.disabled.border` | `color.disabled.border` → `brand-expressive.theme.light.color.disabled.border` → `color.neutral.200` → `brand-expressive.theme.light.color.neutral.200` → `color.taupe.light.200` | `color.disabled.border` → `brand-expressive.theme.dark.color.disabled.border` → `color.neutral.200` → `brand-expressive.theme.dark.color.neutral.200` → `color.taupe.dark.200` |
 | `component.input.background` | `color.surface.default` → `brand-expressive.theme.light.color.surface.default` → `color.neutral.0` → `brand-expressive.theme.light.color.neutral.0` → `color.taupe.light.0` | `color.surface.default` → `brand-expressive.theme.dark.color.surface.default` → `color.neutral.50` → `brand-expressive.theme.dark.color.neutral.50` → `color.taupe.dark.50` |
 | `component.input.border.@` | `color.border.strong` → `brand-expressive.theme.light.color.border.strong` → `color.neutral.500` → `brand-expressive.theme.light.color.neutral.500` → `color.taupe.light.500` | `color.border.strong` → `brand-expressive.theme.dark.color.border.strong` → `color.neutral.400` → `brand-expressive.theme.dark.color.neutral.400` → `color.taupe.dark.400` |
-| `component.input.border.focus` | `color.border.focus` → `brand-expressive.theme.light.color.border.focus` → `color.pink.light.600` | `color.border.focus` → `brand-expressive.theme.dark.color.border.focus` → `color.pink.dark.700` |
+| `component.input.border.focus` | `color.border.focus` → `brand-expressive.theme.light.color.border.focus` → `color.pink.light.600` | `color.border.focus` → `brand-expressive.theme.dark.color.border.focus` → `color.pink.dark.600` |
 | `component.input.text` | `color.text.primary` → `brand-expressive.theme.light.color.text.primary` → `color.neutral.900` → `brand-expressive.theme.light.color.neutral.900` → `color.taupe.light.900` | `color.text.primary` → `brand-expressive.theme.dark.color.text.primary` → `color.neutral.900` → `brand-expressive.theme.dark.color.neutral.900` → `color.taupe.dark.900` |
 | `component.input.placeholder` | `color.text.muted` → `brand-expressive.theme.light.color.text.muted` → `color.neutral.600` → `brand-expressive.theme.light.color.neutral.600` → `color.taupe.light.600` | `color.text.muted` → `brand-expressive.theme.dark.color.text.muted` → `color.neutral.400` → `brand-expressive.theme.dark.color.neutral.400` → `color.taupe.dark.400` |
 | `component.input.height` | `size.control.default` → `size.52` | `size.control.default` → `size.52` |
@@ -60,7 +60,7 @@ Each token points to another token. Values live only on primitives, below.
 | `component.input.disabled.background` | `color.disabled.surface` → `brand-expressive.theme.light.color.disabled.surface` → `color.neutral.100` → `brand-expressive.theme.light.color.neutral.100` → `color.taupe.light.100` | `color.disabled.surface` → `brand-expressive.theme.dark.color.disabled.surface` → `color.neutral.100` → `brand-expressive.theme.dark.color.neutral.100` → `color.taupe.dark.100` |
 | `component.input.disabled.border` | `color.disabled.border` → `brand-expressive.theme.light.color.disabled.border` → `color.neutral.200` → `brand-expressive.theme.light.color.neutral.200` → `color.taupe.light.200` | `color.disabled.border` → `brand-expressive.theme.dark.color.disabled.border` → `color.neutral.200` → `brand-expressive.theme.dark.color.neutral.200` → `color.taupe.dark.200` |
 | `component.input.disabled.text` | `color.disabled.text` → `brand-expressive.theme.light.color.disabled.text` → `color.neutral.500` → `brand-expressive.theme.light.color.neutral.500` → `color.taupe.light.500` | `color.disabled.text` → `brand-expressive.theme.dark.color.disabled.text` → `color.neutral.500` → `brand-expressive.theme.dark.color.neutral.500` → `color.taupe.dark.500` |
-| `component.control.checked` | `color.action.primary.@` → `brand-expressive.theme.light.color.action.primary.@` → `color.pink.light.600` | `color.action.primary.@` → `brand-expressive.theme.dark.color.action.primary.@` → `color.pink.dark.700` |
+| `component.control.checked` | `color.action.primary.@` → `brand-expressive.theme.light.color.action.primary.@` → `color.pink.light.600` | `color.action.primary.@` → `brand-expressive.theme.dark.color.action.primary.@` → `color.pink.dark.600` |
 | `component.control.track` | `color.border.strong` → `brand-expressive.theme.light.color.border.strong` → `color.neutral.500` → `brand-expressive.theme.light.color.neutral.500` → `color.taupe.light.500` | `color.border.strong` → `brand-expressive.theme.dark.color.border.strong` → `color.neutral.400` → `brand-expressive.theme.dark.color.neutral.400` → `color.taupe.dark.400` |
 | `component.control.thumb` | `color.surface.default` → `brand-expressive.theme.light.color.surface.default` → `color.neutral.0` → `brand-expressive.theme.light.color.neutral.0` → `color.taupe.light.0` | `color.surface.default` → `brand-expressive.theme.dark.color.surface.default` → `color.neutral.50` → `brand-expressive.theme.dark.color.neutral.50` → `color.taupe.dark.50` |
 | `component.control.radius` | `radius.badge` → `brand-expressive.theme.base.radius.badge` → `radius.999` | `radius.badge` → `brand-expressive.theme.base.radius.badge` → `radius.999` |
@@ -70,13 +70,13 @@ Each token points to another token. Values live only on primitives, below.
 | `component.badge.neutral.background` | `color.surface.sunken` → `brand-expressive.theme.light.color.surface.sunken` → `color.neutral.100` → `brand-expressive.theme.light.color.neutral.100` → `color.taupe.light.100` | `color.surface.sunken` → `brand-expressive.theme.dark.color.surface.sunken` → `color.neutral.100` → `brand-expressive.theme.dark.color.neutral.100` → `color.taupe.dark.100` |
 | `component.badge.neutral.label` | `color.text.secondary` → `brand-expressive.theme.light.color.text.secondary` → `color.neutral.700` → `brand-expressive.theme.light.color.neutral.700` → `color.taupe.light.700` | `color.text.secondary` → `brand-expressive.theme.dark.color.text.secondary` → `color.neutral.500` → `brand-expressive.theme.dark.color.neutral.500` → `color.taupe.dark.500` |
 | `component.badge.success.background` | `color.status.success.subtle` → `brand-expressive.theme.light.color.status.success.subtle` → `color.green.light.100` | `color.status.success.subtle` → `brand-expressive.theme.dark.color.status.success.subtle` → `color.green.dark.100` |
-| `component.badge.success.label` | `color.status.success.@` → `brand-expressive.theme.light.color.status.success.@` → `color.green.light.700` | `color.status.success.@` → `brand-expressive.theme.dark.color.status.success.@` → `color.green.dark.700` |
+| `component.badge.success.label` | `color.text.success-on-light` → `brand-expressive.theme.base.color.text.success-on-light` → `color.green.light.800` | `color.text.success-on-dark` → `brand-expressive.theme.base.color.text.success-on-dark` → `color.green.light.50` |
 | `component.badge.warning.background` | `color.status.warning.subtle` → `brand-expressive.theme.light.color.status.warning.subtle` → `color.amber.light.100` | `color.status.warning.subtle` → `brand-expressive.theme.dark.color.status.warning.subtle` → `color.amber.dark.100` |
-| `component.badge.warning.label` | `color.status.warning.@` → `brand-expressive.theme.light.color.status.warning.@` → `color.amber.light.700` | `color.status.warning.@` → `brand-expressive.theme.dark.color.status.warning.@` → `color.amber.dark.700` |
+| `component.badge.warning.label` | `color.text.warning-on-light` → `brand-expressive.theme.base.color.text.warning-on-light` → `color.amber.light.800` | `color.text.warning-on-dark` → `brand-expressive.theme.base.color.text.warning-on-dark` → `color.amber.light.50` |
 | `component.badge.danger.background` | `color.status.danger.subtle` → `brand-expressive.theme.light.color.status.danger.subtle` → `color.red.light.100` | `color.status.danger.subtle` → `brand-expressive.theme.dark.color.status.danger.subtle` → `color.red.dark.100` |
-| `component.badge.danger.label` | `color.status.danger.@` → `brand-expressive.theme.light.color.status.danger.@` → `color.red.light.700` | `color.status.danger.@` → `brand-expressive.theme.dark.color.status.danger.@` → `color.red.dark.700` |
+| `component.badge.danger.label` | `color.text.danger-on-light` → `brand-expressive.theme.base.color.text.danger-on-light` → `color.red.light.800` | `color.text.danger-on-dark` → `brand-expressive.theme.base.color.text.danger-on-dark` → `color.red.light.50` |
 | `component.badge.info.background` | `color.status.info.subtle` → `brand-expressive.theme.light.color.status.info.subtle` → `color.blue.light.100` | `color.status.info.subtle` → `brand-expressive.theme.dark.color.status.info.subtle` → `color.blue.dark.100` |
-| `component.badge.info.label` | `color.status.info.@` → `brand-expressive.theme.light.color.status.info.@` → `color.blue.light.700` | `color.status.info.@` → `brand-expressive.theme.dark.color.status.info.@` → `color.blue.dark.700` |
+| `component.badge.info.label` | `color.text.info-on-light` → `brand-expressive.theme.base.color.text.info-on-light` → `color.blue.light.800` | `color.text.info-on-dark` → `brand-expressive.theme.base.color.text.info-on-dark` → `color.blue.light.50` |
 | `component.card.background` | `color.surface.default` → `brand-expressive.theme.light.color.surface.default` → `color.neutral.0` → `brand-expressive.theme.light.color.neutral.0` → `color.taupe.light.0` | `color.surface.default` → `brand-expressive.theme.dark.color.surface.default` → `color.neutral.50` → `brand-expressive.theme.dark.color.neutral.50` → `color.taupe.dark.50` |
 | `component.card.border` | `color.border.default` → `brand-expressive.theme.light.color.border.default` → `color.neutral.200` → `brand-expressive.theme.light.color.neutral.200` → `color.taupe.light.200` | `color.border.default` → `brand-expressive.theme.dark.color.border.default` → `color.neutral.100` → `brand-expressive.theme.dark.color.neutral.100` → `color.taupe.dark.100` |
 | `component.card.radius` | `radius.container` → `brand-expressive.theme.base.radius.container` → `radius.24` | `radius.container` → `brand-expressive.theme.base.radius.container` → `radius.24` |
@@ -88,8 +88,8 @@ Each token points to another token. Values live only on primitives, below.
 | `component.table.row-border` | `color.border.default` → `brand-expressive.theme.light.color.border.default` → `color.neutral.200` → `brand-expressive.theme.light.color.neutral.200` → `color.taupe.light.200` | `color.border.default` → `brand-expressive.theme.dark.color.border.default` → `color.neutral.100` → `brand-expressive.theme.dark.color.neutral.100` → `color.taupe.dark.100` |
 | `component.table.row-selected` | `color.surface.selected` → `brand-expressive.theme.light.color.surface.selected` → `color.pink.light.100` | `color.surface.selected` → `brand-expressive.theme.dark.color.surface.selected` → `color.pink.dark.100` |
 | `component.table.font-size` | `type.data.font-size` → `font.size.17` | `type.data.font-size` → `font.size.17` |
-| `component.table.row-selected-edge` | `color.border.selected` → `brand-expressive.theme.light.color.border.selected` → `color.pink.light.600` | `color.border.selected` → `brand-expressive.theme.dark.color.border.selected` → `color.pink.dark.700` |
-| `component.tabs.indicator` | `color.action.primary.@` → `brand-expressive.theme.light.color.action.primary.@` → `color.pink.light.600` | `color.action.primary.@` → `brand-expressive.theme.dark.color.action.primary.@` → `color.pink.dark.700` |
+| `component.table.row-selected-edge` | `color.border.selected` → `brand-expressive.theme.light.color.border.selected` → `color.pink.light.600` | `color.border.selected` → `brand-expressive.theme.dark.color.border.selected` → `color.pink.dark.600` |
+| `component.tabs.indicator` | `color.action.primary.@` → `brand-expressive.theme.light.color.action.primary.@` → `color.pink.light.600` | `color.action.primary.@` → `brand-expressive.theme.dark.color.action.primary.@` → `color.pink.dark.600` |
 | `component.tabs.label.@` | `color.text.secondary` → `brand-expressive.theme.light.color.text.secondary` → `color.neutral.700` → `brand-expressive.theme.light.color.neutral.700` → `color.taupe.light.700` | `color.text.secondary` → `brand-expressive.theme.dark.color.text.secondary` → `color.neutral.500` → `brand-expressive.theme.dark.color.neutral.500` → `color.taupe.dark.500` |
 | `component.tabs.label.active` | `color.text.primary` → `brand-expressive.theme.light.color.text.primary` → `color.neutral.900` → `brand-expressive.theme.light.color.neutral.900` → `color.taupe.light.900` | `color.text.primary` → `brand-expressive.theme.dark.color.text.primary` → `color.neutral.900` → `brand-expressive.theme.dark.color.neutral.900` → `color.taupe.dark.900` |
 | `component.overlay.background` | `color.surface.raised` → `brand-expressive.theme.light.color.surface.raised` → `color.neutral.0` → `brand-expressive.theme.light.color.neutral.0` → `color.taupe.light.0` | `color.surface.raised` → `brand-expressive.theme.dark.color.surface.raised` → `color.neutral.100` → `brand-expressive.theme.dark.color.neutral.100` → `color.taupe.dark.100` |
@@ -109,30 +109,34 @@ The raw values the tokens above end at.
 
 | Primitive | Value | Sample |
 | --- | --- | --- |
-| `color.amber.dark.100` | #3A2A05 | <span class="ods-swatch" style="background:#3A2A05"></span> |
-| `color.amber.dark.700` | #F2B84B | <span class="ods-swatch" style="background:#F2B84B"></span> |
-| `color.amber.light.100` | #FFF3D6 | <span class="ods-swatch" style="background:#FFF3D6"></span> |
-| `color.amber.light.700` | #8A5600 | <span class="ods-swatch" style="background:#8A5600"></span> |
+| `color.amber.dark.100` | #3B2701 | <span class="ods-swatch" style="background:#3B2701"></span> |
+| `color.amber.light.100` | #FAEBDA | <span class="ods-swatch" style="background:#FAEBDA"></span> |
+| `color.amber.light.50` | #FFF7EF | <span class="ods-swatch" style="background:#FFF7EF"></span> |
+| `color.amber.light.800` | #462A02 | <span class="ods-swatch" style="background:#462A02"></span> |
 | `color.black.dark.scrim` | #000000B3 | <span class="ods-swatch" style="background:#000000B3"></span> |
 | `color.black.light.scrim` | #0000008C | <span class="ods-swatch" style="background:#0000008C"></span> |
-| `color.blue.dark.100` | #062C6E | <span class="ods-swatch" style="background:#062C6E"></span> |
-| `color.blue.dark.700` | #8AB4F8 | <span class="ods-swatch" style="background:#8AB4F8"></span> |
-| `color.blue.light.100` | #E1ECFF | <span class="ods-swatch" style="background:#E1ECFF"></span> |
-| `color.blue.light.700` | #083C93 | <span class="ods-swatch" style="background:#083C93"></span> |
-| `color.green.dark.100` | #123322 | <span class="ods-swatch" style="background:#123322"></span> |
-| `color.green.dark.700` | #5CC283 | <span class="ods-swatch" style="background:#5CC283"></span> |
-| `color.green.light.100` | #E3F4EA | <span class="ods-swatch" style="background:#E3F4EA"></span> |
-| `color.green.light.700` | #1F7A3A | <span class="ods-swatch" style="background:#1F7A3A"></span> |
-| `color.pink.dark.100` | #7C1046 | <span class="ods-swatch" style="background:#7C1046"></span> |
-| `color.pink.dark.700` | #F59ACA | <span class="ods-swatch" style="background:#F59ACA"></span> |
-| `color.pink.dark.800` | #FDE4F0 | <span class="ods-swatch" style="background:#FDE4F0"></span> |
-| `color.pink.light.100` | #FDE4F0 | <span class="ods-swatch" style="background:#FDE4F0"></span> |
+| `color.blue.dark.100` | #13284B | <span class="ods-swatch" style="background:#13284B"></span> |
+| `color.blue.light.100` | #DEEAFE | <span class="ods-swatch" style="background:#DEEAFE"></span> |
+| `color.blue.light.50` | #F4F7FE | <span class="ods-swatch" style="background:#F4F7FE"></span> |
+| `color.blue.light.800` | #001A4E | <span class="ods-swatch" style="background:#001A4E"></span> |
+| `color.green.dark.100` | #013118 | <span class="ods-swatch" style="background:#013118"></span> |
+| `color.green.light.100` | #DFF5E2 | <span class="ods-swatch" style="background:#DFF5E2"></span> |
+| `color.green.light.50` | #F1FDF2 | <span class="ods-swatch" style="background:#F1FDF2"></span> |
+| `color.green.light.800` | #023E17 | <span class="ods-swatch" style="background:#023E17"></span> |
+| `color.pink.dark.100` | #451731 | <span class="ods-swatch" style="background:#451731"></span> |
+| `color.pink.dark.600` | #F59ACA | <span class="ods-swatch" style="background:#F59ACA"></span> |
+| `color.pink.dark.700` | #FBB4D8 | <span class="ods-swatch" style="background:#FBB4D8"></span> |
+| `color.pink.light.100` | #FFEAF0 | <span class="ods-swatch" style="background:#FFEAF0"></span> |
 | `color.pink.light.600` | #D61F7A | <span class="ods-swatch" style="background:#D61F7A"></span> |
-| `color.pink.light.700` | #A8165F | <span class="ods-swatch" style="background:#A8165F"></span> |
-| `color.red.dark.100` | #3D1414 | <span class="ods-swatch" style="background:#3D1414"></span> |
-| `color.red.dark.700` | #F28B8B | <span class="ods-swatch" style="background:#F28B8B"></span> |
-| `color.red.light.100` | #FDE7E7 | <span class="ods-swatch" style="background:#FDE7E7"></span> |
-| `color.red.light.700` | #C42B2B | <span class="ods-swatch" style="background:#C42B2B"></span> |
+| `color.pink.light.700` | #A6025B | <span class="ods-swatch" style="background:#A6025B"></span> |
+| `color.red.dark.100` | #481316 | <span class="ods-swatch" style="background:#481316"></span> |
+| `color.red.dark.600` | #F28B8B | <span class="ods-swatch" style="background:#F28B8B"></span> |
+| `color.red.dark.700` | #FAA9A8 | <span class="ods-swatch" style="background:#FAA9A8"></span> |
+| `color.red.light.100` | #FEE9E7 | <span class="ods-swatch" style="background:#FEE9E7"></span> |
+| `color.red.light.50` | #FEF7F7 | <span class="ods-swatch" style="background:#FEF7F7"></span> |
+| `color.red.light.600` | #C42B2B | <span class="ods-swatch" style="background:#C42B2B"></span> |
+| `color.red.light.700` | #981519 | <span class="ods-swatch" style="background:#981519"></span> |
+| `color.red.light.800` | #6D0008 | <span class="ods-swatch" style="background:#6D0008"></span> |
 | `color.taupe.dark.100` | #33241F | <span class="ods-swatch" style="background:#33241F"></span> |
 | `color.taupe.dark.200` | #4D3A33 | <span class="ods-swatch" style="background:#4D3A33"></span> |
 | `color.taupe.dark.400` | #B5988A | <span class="ods-swatch" style="background:#B5988A"></span> |

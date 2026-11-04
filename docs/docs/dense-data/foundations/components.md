@@ -26,14 +26,14 @@ Each token points to another token. Values live only on primitives, below.
 
 | Token | Points to, light | Points to, dark |
 | --- | --- | --- |
-| `component.button.primary.background.@` | `color.action.primary.@` → `dense-data.theme.light.color.action.primary.@` → `color.violet.light.600` | `color.action.primary.@` → `dense-data.theme.dark.color.action.primary.@` → `color.violet.dark.700` |
-| `component.button.primary.background.hover` | `color.action.primary.hover` → `dense-data.theme.light.color.action.primary.hover` → `color.violet.light.700` | `color.action.primary.hover` → `dense-data.theme.dark.color.action.primary.hover` → `color.violet.dark.800` |
+| `component.button.primary.background.@` | `color.action.primary.@` → `dense-data.theme.light.color.action.primary.@` → `color.violet.light.600` | `color.action.primary.@` → `dense-data.theme.dark.color.action.primary.@` → `color.violet.dark.600` |
+| `component.button.primary.background.hover` | `color.action.primary.hover` → `dense-data.theme.light.color.action.primary.hover` → `color.violet.light.700` | `color.action.primary.hover` → `dense-data.theme.dark.color.action.primary.hover` → `color.violet.dark.700` |
 | `component.button.primary.label` | `color.text.on-action` → `dense-data.theme.light.color.text.on-action` → `color.text.on-dark` → `dense-data.theme.base.color.text.on-dark` → `color.slate.light.0` | `color.text.on-action` → `dense-data.theme.dark.color.text.on-action` → `color.text.on-light` → `dense-data.theme.base.color.text.on-light` → `color.slate.light.900` |
 | `component.button.secondary.background.@` | `color.action.secondary.@` → `dense-data.theme.light.color.action.secondary.@` → `color.neutral.0` → `dense-data.theme.light.color.neutral.0` → `color.slate.light.0` | `color.action.secondary.@` → `dense-data.theme.dark.color.action.secondary.@` → `color.neutral.50` → `dense-data.theme.dark.color.neutral.50` → `color.slate.dark.50` |
 | `component.button.secondary.background.hover` | `color.action.secondary.hover` → `dense-data.theme.light.color.action.secondary.hover` → `color.neutral.100` → `dense-data.theme.light.color.neutral.100` → `color.slate.light.100` | `color.action.secondary.hover` → `dense-data.theme.dark.color.action.secondary.hover` → `color.neutral.100` → `dense-data.theme.dark.color.neutral.100` → `color.slate.dark.100` |
 | `component.button.secondary.label` | `color.text.primary` → `dense-data.theme.light.color.text.primary` → `color.neutral.900` → `dense-data.theme.light.color.neutral.900` → `color.slate.light.900` | `color.text.primary` → `dense-data.theme.dark.color.text.primary` → `color.neutral.900` → `dense-data.theme.dark.color.neutral.900` → `color.slate.dark.900` |
 | `component.button.secondary.border` | `color.border.strong` → `dense-data.theme.light.color.border.strong` → `color.neutral.500` → `dense-data.theme.light.color.neutral.500` → `color.slate.light.500` | `color.border.strong` → `dense-data.theme.dark.color.border.strong` → `color.neutral.400` → `dense-data.theme.dark.color.neutral.400` → `color.slate.dark.400` |
-| `component.button.danger.background.@` | `color.action.danger.@` → `dense-data.theme.light.color.action.danger.@` → `color.red.light.700` | `color.action.danger.@` → `dense-data.theme.dark.color.action.danger.@` → `color.red.dark.700` |
+| `component.button.danger.background.@` | `color.action.danger.@` → `dense-data.theme.light.color.action.danger.@` → `color.red.light.600` | `color.action.danger.@` → `dense-data.theme.dark.color.action.danger.@` → `color.red.dark.600` |
 | `component.button.danger.background.hover` | `color.action.danger.hover` → `dense-data.theme.light.color.action.danger.hover` → `color.red.light.700` | `color.action.danger.hover` → `dense-data.theme.dark.color.action.danger.hover` → `color.red.dark.700` |
 | `component.button.danger.label` | `color.text.on-danger` → `dense-data.theme.light.color.text.on-danger` → `color.text.on-dark` → `dense-data.theme.base.color.text.on-dark` → `color.slate.light.0` | `color.text.on-danger` → `dense-data.theme.dark.color.text.on-danger` → `color.text.on-light` → `dense-data.theme.base.color.text.on-light` → `color.slate.light.900` |
 | `component.button.ghost.background-hover` | `color.surface.sunken` → `dense-data.theme.light.color.surface.sunken` → `color.neutral.100` → `dense-data.theme.light.color.neutral.100` → `color.slate.light.100` | `color.surface.sunken` → `dense-data.theme.dark.color.surface.sunken` → `color.neutral.100` → `dense-data.theme.dark.color.neutral.100` → `color.slate.dark.100` |
@@ -43,14 +43,14 @@ Each token points to another token. Values live only on primitives, below.
 | `component.button.radius` | `radius.control` → `dense-data.theme.base.radius.control` → `radius.2` | `radius.control` → `dense-data.theme.base.radius.control` → `radius.2` |
 | `component.button.font-size` | `type.label.font-size` → `font.size.12` | `type.label.font-size` → `font.size.12` |
 | `component.button.font-weight` | `type.label.font-weight` → `font.weight.500` | `type.label.font-weight` → `font.weight.500` |
-| `component.button.focus-ring` | `color.border.focus` → `dense-data.theme.light.color.border.focus` → `color.violet.light.600` | `color.border.focus` → `dense-data.theme.dark.color.border.focus` → `color.violet.dark.700` |
+| `component.button.focus-ring` | `color.border.focus` → `dense-data.theme.light.color.border.focus` → `color.violet.light.600` | `color.border.focus` → `dense-data.theme.dark.color.border.focus` → `color.violet.dark.600` |
 | `component.button.icon-size` | `size.icon` → `size.16` | `size.icon` → `size.16` |
 | `component.button.disabled.background` | `color.disabled.surface` → `dense-data.theme.light.color.disabled.surface` → `color.neutral.100` → `dense-data.theme.light.color.neutral.100` → `color.slate.light.100` | `color.disabled.surface` → `dense-data.theme.dark.color.disabled.surface` → `color.neutral.100` → `dense-data.theme.dark.color.neutral.100` → `color.slate.dark.100` |
 | `component.button.disabled.label` | `color.disabled.text` → `dense-data.theme.light.color.disabled.text` → `color.neutral.500` → `dense-data.theme.light.color.neutral.500` → `color.slate.light.500` | `color.disabled.text` → `dense-data.theme.dark.color.disabled.text` → `color.neutral.500` → `dense-data.theme.dark.color.neutral.500` → `color.slate.dark.500` |
 | `component.button.disabled.border` | `color.disabled.border` → `dense-data.theme.light.color.disabled.border` → `color.neutral.200` → `dense-data.theme.light.color.neutral.200` → `color.slate.light.200` | `color.disabled.border` → `dense-data.theme.dark.color.disabled.border` → `color.neutral.200` → `dense-data.theme.dark.color.neutral.200` → `color.slate.dark.200` |
 | `component.input.background` | `color.surface.default` → `dense-data.theme.light.color.surface.default` → `color.neutral.0` → `dense-data.theme.light.color.neutral.0` → `color.slate.light.0` | `color.surface.default` → `dense-data.theme.dark.color.surface.default` → `color.neutral.50` → `dense-data.theme.dark.color.neutral.50` → `color.slate.dark.50` |
 | `component.input.border.@` | `color.border.strong` → `dense-data.theme.light.color.border.strong` → `color.neutral.500` → `dense-data.theme.light.color.neutral.500` → `color.slate.light.500` | `color.border.strong` → `dense-data.theme.dark.color.border.strong` → `color.neutral.400` → `dense-data.theme.dark.color.neutral.400` → `color.slate.dark.400` |
-| `component.input.border.focus` | `color.border.focus` → `dense-data.theme.light.color.border.focus` → `color.violet.light.600` | `color.border.focus` → `dense-data.theme.dark.color.border.focus` → `color.violet.dark.700` |
+| `component.input.border.focus` | `color.border.focus` → `dense-data.theme.light.color.border.focus` → `color.violet.light.600` | `color.border.focus` → `dense-data.theme.dark.color.border.focus` → `color.violet.dark.600` |
 | `component.input.text` | `color.text.primary` → `dense-data.theme.light.color.text.primary` → `color.neutral.900` → `dense-data.theme.light.color.neutral.900` → `color.slate.light.900` | `color.text.primary` → `dense-data.theme.dark.color.text.primary` → `color.neutral.900` → `dense-data.theme.dark.color.neutral.900` → `color.slate.dark.900` |
 | `component.input.placeholder` | `color.text.muted` → `dense-data.theme.light.color.text.muted` → `color.neutral.600` → `dense-data.theme.light.color.neutral.600` → `color.slate.light.600` | `color.text.muted` → `dense-data.theme.dark.color.text.muted` → `color.neutral.400` → `dense-data.theme.dark.color.neutral.400` → `color.slate.dark.400` |
 | `component.input.height` | `size.control.default` → `size.32` | `size.control.default` → `size.32` |
@@ -60,7 +60,7 @@ Each token points to another token. Values live only on primitives, below.
 | `component.input.disabled.background` | `color.disabled.surface` → `dense-data.theme.light.color.disabled.surface` → `color.neutral.100` → `dense-data.theme.light.color.neutral.100` → `color.slate.light.100` | `color.disabled.surface` → `dense-data.theme.dark.color.disabled.surface` → `color.neutral.100` → `dense-data.theme.dark.color.neutral.100` → `color.slate.dark.100` |
 | `component.input.disabled.border` | `color.disabled.border` → `dense-data.theme.light.color.disabled.border` → `color.neutral.200` → `dense-data.theme.light.color.neutral.200` → `color.slate.light.200` | `color.disabled.border` → `dense-data.theme.dark.color.disabled.border` → `color.neutral.200` → `dense-data.theme.dark.color.neutral.200` → `color.slate.dark.200` |
 | `component.input.disabled.text` | `color.disabled.text` → `dense-data.theme.light.color.disabled.text` → `color.neutral.500` → `dense-data.theme.light.color.neutral.500` → `color.slate.light.500` | `color.disabled.text` → `dense-data.theme.dark.color.disabled.text` → `color.neutral.500` → `dense-data.theme.dark.color.neutral.500` → `color.slate.dark.500` |
-| `component.control.checked` | `color.action.primary.@` → `dense-data.theme.light.color.action.primary.@` → `color.violet.light.600` | `color.action.primary.@` → `dense-data.theme.dark.color.action.primary.@` → `color.violet.dark.700` |
+| `component.control.checked` | `color.action.primary.@` → `dense-data.theme.light.color.action.primary.@` → `color.violet.light.600` | `color.action.primary.@` → `dense-data.theme.dark.color.action.primary.@` → `color.violet.dark.600` |
 | `component.control.track` | `color.border.strong` → `dense-data.theme.light.color.border.strong` → `color.neutral.500` → `dense-data.theme.light.color.neutral.500` → `color.slate.light.500` | `color.border.strong` → `dense-data.theme.dark.color.border.strong` → `color.neutral.400` → `dense-data.theme.dark.color.neutral.400` → `color.slate.dark.400` |
 | `component.control.thumb` | `color.surface.default` → `dense-data.theme.light.color.surface.default` → `color.neutral.0` → `dense-data.theme.light.color.neutral.0` → `color.slate.light.0` | `color.surface.default` → `dense-data.theme.dark.color.surface.default` → `color.neutral.50` → `dense-data.theme.dark.color.neutral.50` → `color.slate.dark.50` |
 | `component.control.radius` | `radius.badge` → `dense-data.theme.base.radius.badge` → `radius.0` | `radius.badge` → `dense-data.theme.base.radius.badge` → `radius.0` |
@@ -70,13 +70,13 @@ Each token points to another token. Values live only on primitives, below.
 | `component.badge.neutral.background` | `color.surface.sunken` → `dense-data.theme.light.color.surface.sunken` → `color.neutral.100` → `dense-data.theme.light.color.neutral.100` → `color.slate.light.100` | `color.surface.sunken` → `dense-data.theme.dark.color.surface.sunken` → `color.neutral.100` → `dense-data.theme.dark.color.neutral.100` → `color.slate.dark.100` |
 | `component.badge.neutral.label` | `color.text.secondary` → `dense-data.theme.light.color.text.secondary` → `color.neutral.700` → `dense-data.theme.light.color.neutral.700` → `color.slate.light.700` | `color.text.secondary` → `dense-data.theme.dark.color.text.secondary` → `color.neutral.500` → `dense-data.theme.dark.color.neutral.500` → `color.slate.dark.500` |
 | `component.badge.success.background` | `color.status.success.subtle` → `dense-data.theme.light.color.status.success.subtle` → `color.green.light.100` | `color.status.success.subtle` → `dense-data.theme.dark.color.status.success.subtle` → `color.green.dark.100` |
-| `component.badge.success.label` | `color.status.success.@` → `dense-data.theme.light.color.status.success.@` → `color.green.light.700` | `color.status.success.@` → `dense-data.theme.dark.color.status.success.@` → `color.green.dark.700` |
+| `component.badge.success.label` | `color.text.success-on-light` → `dense-data.theme.base.color.text.success-on-light` → `color.green.light.800` | `color.text.success-on-dark` → `dense-data.theme.base.color.text.success-on-dark` → `color.green.light.50` |
 | `component.badge.warning.background` | `color.status.warning.subtle` → `dense-data.theme.light.color.status.warning.subtle` → `color.amber.light.100` | `color.status.warning.subtle` → `dense-data.theme.dark.color.status.warning.subtle` → `color.amber.dark.100` |
-| `component.badge.warning.label` | `color.status.warning.@` → `dense-data.theme.light.color.status.warning.@` → `color.amber.light.700` | `color.status.warning.@` → `dense-data.theme.dark.color.status.warning.@` → `color.amber.dark.700` |
+| `component.badge.warning.label` | `color.text.warning-on-light` → `dense-data.theme.base.color.text.warning-on-light` → `color.amber.light.800` | `color.text.warning-on-dark` → `dense-data.theme.base.color.text.warning-on-dark` → `color.amber.light.50` |
 | `component.badge.danger.background` | `color.status.danger.subtle` → `dense-data.theme.light.color.status.danger.subtle` → `color.red.light.100` | `color.status.danger.subtle` → `dense-data.theme.dark.color.status.danger.subtle` → `color.red.dark.100` |
-| `component.badge.danger.label` | `color.status.danger.@` → `dense-data.theme.light.color.status.danger.@` → `color.red.light.700` | `color.status.danger.@` → `dense-data.theme.dark.color.status.danger.@` → `color.red.dark.700` |
+| `component.badge.danger.label` | `color.text.danger-on-light` → `dense-data.theme.base.color.text.danger-on-light` → `color.red.light.800` | `color.text.danger-on-dark` → `dense-data.theme.base.color.text.danger-on-dark` → `color.red.light.50` |
 | `component.badge.info.background` | `color.status.info.subtle` → `dense-data.theme.light.color.status.info.subtle` → `color.blue.light.100` | `color.status.info.subtle` → `dense-data.theme.dark.color.status.info.subtle` → `color.blue.dark.100` |
-| `component.badge.info.label` | `color.status.info.@` → `dense-data.theme.light.color.status.info.@` → `color.blue.light.700` | `color.status.info.@` → `dense-data.theme.dark.color.status.info.@` → `color.blue.dark.700` |
+| `component.badge.info.label` | `color.text.info-on-light` → `dense-data.theme.base.color.text.info-on-light` → `color.blue.light.800` | `color.text.info-on-dark` → `dense-data.theme.base.color.text.info-on-dark` → `color.blue.light.50` |
 | `component.card.background` | `color.surface.default` → `dense-data.theme.light.color.surface.default` → `color.neutral.0` → `dense-data.theme.light.color.neutral.0` → `color.slate.light.0` | `color.surface.default` → `dense-data.theme.dark.color.surface.default` → `color.neutral.50` → `dense-data.theme.dark.color.neutral.50` → `color.slate.dark.50` |
 | `component.card.border` | `color.border.default` → `dense-data.theme.light.color.border.default` → `color.neutral.200` → `dense-data.theme.light.color.neutral.200` → `color.slate.light.200` | `color.border.default` → `dense-data.theme.dark.color.border.default` → `color.neutral.100` → `dense-data.theme.dark.color.neutral.100` → `color.slate.dark.100` |
 | `component.card.radius` | `radius.container` → `dense-data.theme.base.radius.container` → `radius.4` | `radius.container` → `dense-data.theme.base.radius.container` → `radius.4` |
@@ -88,8 +88,8 @@ Each token points to another token. Values live only on primitives, below.
 | `component.table.row-border` | `color.border.default` → `dense-data.theme.light.color.border.default` → `color.neutral.200` → `dense-data.theme.light.color.neutral.200` → `color.slate.light.200` | `color.border.default` → `dense-data.theme.dark.color.border.default` → `color.neutral.100` → `dense-data.theme.dark.color.neutral.100` → `color.slate.dark.100` |
 | `component.table.row-selected` | `color.surface.selected` → `dense-data.theme.light.color.surface.selected` → `color.violet.light.100` | `color.surface.selected` → `dense-data.theme.dark.color.surface.selected` → `color.violet.dark.100` |
 | `component.table.font-size` | `type.data.font-size` → `font.size.13` | `type.data.font-size` → `font.size.13` |
-| `component.table.row-selected-edge` | `color.border.selected` → `dense-data.theme.light.color.border.selected` → `color.violet.light.600` | `color.border.selected` → `dense-data.theme.dark.color.border.selected` → `color.violet.dark.700` |
-| `component.tabs.indicator` | `color.action.primary.@` → `dense-data.theme.light.color.action.primary.@` → `color.violet.light.600` | `color.action.primary.@` → `dense-data.theme.dark.color.action.primary.@` → `color.violet.dark.700` |
+| `component.table.row-selected-edge` | `color.border.selected` → `dense-data.theme.light.color.border.selected` → `color.violet.light.600` | `color.border.selected` → `dense-data.theme.dark.color.border.selected` → `color.violet.dark.600` |
+| `component.tabs.indicator` | `color.action.primary.@` → `dense-data.theme.light.color.action.primary.@` → `color.violet.light.600` | `color.action.primary.@` → `dense-data.theme.dark.color.action.primary.@` → `color.violet.dark.600` |
 | `component.tabs.label.@` | `color.text.secondary` → `dense-data.theme.light.color.text.secondary` → `color.neutral.700` → `dense-data.theme.light.color.neutral.700` → `color.slate.light.700` | `color.text.secondary` → `dense-data.theme.dark.color.text.secondary` → `color.neutral.500` → `dense-data.theme.dark.color.neutral.500` → `color.slate.dark.500` |
 | `component.tabs.label.active` | `color.text.primary` → `dense-data.theme.light.color.text.primary` → `color.neutral.900` → `dense-data.theme.light.color.neutral.900` → `color.slate.light.900` | `color.text.primary` → `dense-data.theme.dark.color.text.primary` → `color.neutral.900` → `dense-data.theme.dark.color.neutral.900` → `color.slate.dark.900` |
 | `component.overlay.background` | `color.surface.raised` → `dense-data.theme.light.color.surface.raised` → `color.neutral.0` → `dense-data.theme.light.color.neutral.0` → `color.slate.light.0` | `color.surface.raised` → `dense-data.theme.dark.color.surface.raised` → `color.neutral.100` → `dense-data.theme.dark.color.neutral.100` → `color.slate.dark.100` |
@@ -109,24 +109,28 @@ The raw values the tokens above end at.
 
 | Primitive | Value | Sample |
 | --- | --- | --- |
-| `color.amber.dark.100` | #3A2A05 | <span class="ods-swatch" style="background:#3A2A05"></span> |
-| `color.amber.dark.700` | #F2B84B | <span class="ods-swatch" style="background:#F2B84B"></span> |
-| `color.amber.light.100` | #FFF3D6 | <span class="ods-swatch" style="background:#FFF3D6"></span> |
-| `color.amber.light.700` | #8A5600 | <span class="ods-swatch" style="background:#8A5600"></span> |
+| `color.amber.dark.100` | #3F2B02 | <span class="ods-swatch" style="background:#3F2B02"></span> |
+| `color.amber.light.100` | #FAEBDA | <span class="ods-swatch" style="background:#FAEBDA"></span> |
+| `color.amber.light.50` | #FFF7EF | <span class="ods-swatch" style="background:#FFF7EF"></span> |
+| `color.amber.light.800` | #462A02 | <span class="ods-swatch" style="background:#462A02"></span> |
 | `color.black.dark.scrim` | #000000B3 | <span class="ods-swatch" style="background:#000000B3"></span> |
 | `color.black.light.scrim` | #0000008C | <span class="ods-swatch" style="background:#0000008C"></span> |
-| `color.blue.dark.100` | #062C6E | <span class="ods-swatch" style="background:#062C6E"></span> |
-| `color.blue.dark.700` | #8AB4F8 | <span class="ods-swatch" style="background:#8AB4F8"></span> |
-| `color.blue.light.100` | #E1ECFF | <span class="ods-swatch" style="background:#E1ECFF"></span> |
-| `color.blue.light.700` | #083C93 | <span class="ods-swatch" style="background:#083C93"></span> |
-| `color.green.dark.100` | #123322 | <span class="ods-swatch" style="background:#123322"></span> |
-| `color.green.dark.700` | #5CC283 | <span class="ods-swatch" style="background:#5CC283"></span> |
-| `color.green.light.100` | #E3F4EA | <span class="ods-swatch" style="background:#E3F4EA"></span> |
-| `color.green.light.700` | #1F7A3A | <span class="ods-swatch" style="background:#1F7A3A"></span> |
-| `color.red.dark.100` | #3D1414 | <span class="ods-swatch" style="background:#3D1414"></span> |
-| `color.red.dark.700` | #F28B8B | <span class="ods-swatch" style="background:#F28B8B"></span> |
-| `color.red.light.100` | #FDE7E7 | <span class="ods-swatch" style="background:#FDE7E7"></span> |
-| `color.red.light.700` | #C42B2B | <span class="ods-swatch" style="background:#C42B2B"></span> |
+| `color.blue.dark.100` | #162C4F | <span class="ods-swatch" style="background:#162C4F"></span> |
+| `color.blue.light.100` | #DEEAFE | <span class="ods-swatch" style="background:#DEEAFE"></span> |
+| `color.blue.light.50` | #F4F7FE | <span class="ods-swatch" style="background:#F4F7FE"></span> |
+| `color.blue.light.800` | #001A4E | <span class="ods-swatch" style="background:#001A4E"></span> |
+| `color.green.dark.100` | #01351A | <span class="ods-swatch" style="background:#01351A"></span> |
+| `color.green.light.100` | #DFF5E2 | <span class="ods-swatch" style="background:#DFF5E2"></span> |
+| `color.green.light.50` | #F1FDF2 | <span class="ods-swatch" style="background:#F1FDF2"></span> |
+| `color.green.light.800` | #023E17 | <span class="ods-swatch" style="background:#023E17"></span> |
+| `color.red.dark.100` | #4C171A | <span class="ods-swatch" style="background:#4C171A"></span> |
+| `color.red.dark.600` | #F28B8B | <span class="ods-swatch" style="background:#F28B8B"></span> |
+| `color.red.dark.700` | #FAA9A8 | <span class="ods-swatch" style="background:#FAA9A8"></span> |
+| `color.red.light.100` | #FEE9E7 | <span class="ods-swatch" style="background:#FEE9E7"></span> |
+| `color.red.light.50` | #FEF7F7 | <span class="ods-swatch" style="background:#FEF7F7"></span> |
+| `color.red.light.600` | #C42B2B | <span class="ods-swatch" style="background:#C42B2B"></span> |
+| `color.red.light.700` | #981519 | <span class="ods-swatch" style="background:#981519"></span> |
+| `color.red.light.800` | #6D0008 | <span class="ods-swatch" style="background:#6D0008"></span> |
 | `color.slate.dark.100` | #262D38 | <span class="ods-swatch" style="background:#262D38"></span> |
 | `color.slate.dark.200` | #3D4655 | <span class="ods-swatch" style="background:#3D4655"></span> |
 | `color.slate.dark.400` | #969FAD | <span class="ods-swatch" style="background:#969FAD"></span> |
@@ -140,12 +144,12 @@ The raw values the tokens above end at.
 | `color.slate.light.600` | #535D6D | <span class="ods-swatch" style="background:#535D6D"></span> |
 | `color.slate.light.700` | #3D4655 | <span class="ods-swatch" style="background:#3D4655"></span> |
 | `color.slate.light.900` | #161B23 | <span class="ods-swatch" style="background:#161B23"></span> |
-| `color.violet.dark.100` | #2C2588 | <span class="ods-swatch" style="background:#2C2588"></span> |
-| `color.violet.dark.700` | #A9A3F6 | <span class="ods-swatch" style="background:#A9A3F6"></span> |
-| `color.violet.dark.800` | #EEEDFE | <span class="ods-swatch" style="background:#EEEDFE"></span> |
-| `color.violet.light.100` | #EEEDFE | <span class="ods-swatch" style="background:#EEEDFE"></span> |
+| `color.violet.dark.100` | #2A244F | <span class="ods-swatch" style="background:#2A244F"></span> |
+| `color.violet.dark.600` | #A9A3F6 | <span class="ods-swatch" style="background:#A9A3F6"></span> |
+| `color.violet.dark.700` | #BEBBFB | <span class="ods-swatch" style="background:#BEBBFB"></span> |
+| `color.violet.light.100` | #E8ECFF | <span class="ods-swatch" style="background:#E8ECFF"></span> |
 | `color.violet.light.600` | #4B3FD9 | <span class="ods-swatch" style="background:#4B3FD9"></span> |
-| `color.violet.light.700` | #3B31B0 | <span class="ods-swatch" style="background:#3B31B0"></span> |
+| `color.violet.light.700` | #3729AA | <span class="ods-swatch" style="background:#3729AA"></span> |
 | `duration.fast` | 120ms | <span class="ods-motion" style="--ods-d:120ms" title="Hover to play"><span></span></span> |
 | `easing.standard` | cubic-bezier(0.2, 0, 0, 1) | <span class="ods-motion" style="--ods-e:cubic-bezier(0.2,0,0,1)" title="Hover to play"><span></span></span> |
 | `font.size.12` | 0.75rem (12px) | <span class="ods-typesample" style="font-size:0.75rem">Aa</span> |

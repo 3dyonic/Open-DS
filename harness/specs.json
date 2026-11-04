@@ -390,6 +390,17 @@
       "checks": ["catalogue-built", "schemes-inventory", "schemes-samples", "storybook-renders", "docs-build"]
     },
     {
+      "id": "OD-223",
+      "title": "Whole colour scales in OKLCH, roles on fixed steps, and the status text pair",
+      "in": [
+        "every coloured hue has light and dark scales, 50 to 950, generated from a key colour exact at 600; the dark scale has its own curve",
+        "roles sit on the same step in every colour: tints 100, bases 600, hover and links 700",
+        "each status has text.<status>-on-light (800) and -on-dark (50), fixed colours; the badge label names its tint and the build picks by tone",
+        "steps that carry text are nudged, and the move is recorded on the hue"
+      ],
+      "checks": ["scales-generated", "semantics-guidance", "options-used", "docs-build", "storybook-renders"]
+    },
+    {
       "id": "OD-228",
       "title": "Neutral as a semantic scale: roles read neutral, neutral points at a gray",
       "in": [

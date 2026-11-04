@@ -26,14 +26,14 @@ Each token points to another token. Values live only on primitives, below.
 
 | Token | Points to, light | Points to, dark |
 | --- | --- | --- |
-| `component.button.primary.background.@` | `color.action.primary.@` → `accessible-first.theme.light.color.action.primary.@` → `color.blue.light.600` | `color.action.primary.@` → `accessible-first.theme.dark.color.action.primary.@` → `color.blue.dark.700` |
-| `component.button.primary.background.hover` | `color.action.primary.hover` → `accessible-first.theme.light.color.action.primary.hover` → `color.blue.light.700` | `color.action.primary.hover` → `accessible-first.theme.dark.color.action.primary.hover` → `color.blue.dark.800` |
+| `component.button.primary.background.@` | `color.action.primary.@` → `accessible-first.theme.light.color.action.primary.@` → `color.blue.light.600` | `color.action.primary.@` → `accessible-first.theme.dark.color.action.primary.@` → `color.blue.dark.600` |
+| `component.button.primary.background.hover` | `color.action.primary.hover` → `accessible-first.theme.light.color.action.primary.hover` → `color.blue.light.700` | `color.action.primary.hover` → `accessible-first.theme.dark.color.action.primary.hover` → `color.blue.dark.700` |
 | `component.button.primary.label` | `color.text.on-action` → `accessible-first.theme.light.color.text.on-action` → `color.text.on-dark` → `accessible-first.theme.base.color.text.on-dark` → `color.gray.light.0` | `color.text.on-action` → `accessible-first.theme.dark.color.text.on-action` → `color.text.on-light` → `accessible-first.theme.base.color.text.on-light` → `color.gray.light.900` |
 | `component.button.secondary.background.@` | `color.action.secondary.@` → `accessible-first.theme.light.color.action.secondary.@` → `color.neutral.0` → `accessible-first.theme.light.color.neutral.0` → `color.gray.light.0` | `color.action.secondary.@` → `accessible-first.theme.dark.color.action.secondary.@` → `color.neutral.50` → `accessible-first.theme.dark.color.neutral.50` → `color.gray.dark.50` |
 | `component.button.secondary.background.hover` | `color.action.secondary.hover` → `accessible-first.theme.light.color.action.secondary.hover` → `color.neutral.100` → `accessible-first.theme.light.color.neutral.100` → `color.gray.light.100` | `color.action.secondary.hover` → `accessible-first.theme.dark.color.action.secondary.hover` → `color.neutral.100` → `accessible-first.theme.dark.color.neutral.100` → `color.gray.dark.100` |
 | `component.button.secondary.label` | `color.text.primary` → `accessible-first.theme.light.color.text.primary` → `color.neutral.900` → `accessible-first.theme.light.color.neutral.900` → `color.gray.light.900` | `color.text.primary` → `accessible-first.theme.dark.color.text.primary` → `color.neutral.900` → `accessible-first.theme.dark.color.neutral.900` → `color.gray.dark.900` |
 | `component.button.secondary.border` | `color.border.strong` → `accessible-first.theme.light.color.border.strong` → `color.neutral.500` → `accessible-first.theme.light.color.neutral.500` → `color.gray.light.500` | `color.border.strong` → `accessible-first.theme.dark.color.border.strong` → `color.neutral.500` → `accessible-first.theme.dark.color.neutral.500` → `color.gray.dark.500` |
-| `component.button.danger.background.@` | `color.action.danger.@` → `accessible-first.theme.light.color.action.danger.@` → `color.red.light.700` | `color.action.danger.@` → `accessible-first.theme.dark.color.action.danger.@` → `color.red.dark.700` |
+| `component.button.danger.background.@` | `color.action.danger.@` → `accessible-first.theme.light.color.action.danger.@` → `color.red.light.600` | `color.action.danger.@` → `accessible-first.theme.dark.color.action.danger.@` → `color.red.dark.600` |
 | `component.button.danger.background.hover` | `color.action.danger.hover` → `accessible-first.theme.light.color.action.danger.hover` → `color.red.light.700` | `color.action.danger.hover` → `accessible-first.theme.dark.color.action.danger.hover` → `color.red.dark.700` |
 | `component.button.danger.label` | `color.text.on-danger` → `accessible-first.theme.light.color.text.on-danger` → `color.text.on-dark` → `accessible-first.theme.base.color.text.on-dark` → `color.gray.light.0` | `color.text.on-danger` → `accessible-first.theme.dark.color.text.on-danger` → `color.text.on-light` → `accessible-first.theme.base.color.text.on-light` → `color.gray.light.900` |
 | `component.button.ghost.background-hover` | `color.surface.sunken` → `accessible-first.theme.light.color.surface.sunken` → `color.neutral.100` → `accessible-first.theme.light.color.neutral.100` → `color.gray.light.100` | `color.surface.sunken` → `accessible-first.theme.dark.color.surface.sunken` → `color.neutral.100` → `accessible-first.theme.dark.color.neutral.100` → `color.gray.dark.100` |
@@ -43,14 +43,14 @@ Each token points to another token. Values live only on primitives, below.
 | `component.button.radius` | `radius.control` → `accessible-first.theme.base.radius.control` → `radius.6` | `radius.control` → `accessible-first.theme.base.radius.control` → `radius.6` |
 | `component.button.font-size` | `type.label.font-size` → `font.size.18` | `type.label.font-size` → `font.size.18` |
 | `component.button.font-weight` | `type.label.font-weight` → `font.weight.700` | `type.label.font-weight` → `font.weight.700` |
-| `component.button.focus-ring` | `color.border.focus` → `accessible-first.theme.light.color.border.focus` → `color.blue.light.600` | `color.border.focus` → `accessible-first.theme.dark.color.border.focus` → `color.blue.dark.700` |
+| `component.button.focus-ring` | `color.border.focus` → `accessible-first.theme.light.color.border.focus` → `color.blue.light.600` | `color.border.focus` → `accessible-first.theme.dark.color.border.focus` → `color.blue.dark.600` |
 | `component.button.icon-size` | `size.icon` → `size.20` | `size.icon` → `size.20` |
 | `component.button.disabled.background` | `color.disabled.surface` → `accessible-first.theme.light.color.disabled.surface` → `color.neutral.100` → `accessible-first.theme.light.color.neutral.100` → `color.gray.light.100` | `color.disabled.surface` → `accessible-first.theme.dark.color.disabled.surface` → `color.neutral.100` → `accessible-first.theme.dark.color.neutral.100` → `color.gray.dark.100` |
 | `component.button.disabled.label` | `color.disabled.text` → `accessible-first.theme.light.color.disabled.text` → `color.neutral.500` → `accessible-first.theme.light.color.neutral.500` → `color.gray.light.500` | `color.disabled.text` → `accessible-first.theme.dark.color.disabled.text` → `color.neutral.500` → `accessible-first.theme.dark.color.neutral.500` → `color.gray.dark.500` |
 | `component.button.disabled.border` | `color.disabled.border` → `accessible-first.theme.light.color.disabled.border` → `color.neutral.200` → `accessible-first.theme.light.color.neutral.200` → `color.gray.light.200` | `color.disabled.border` → `accessible-first.theme.dark.color.disabled.border` → `color.neutral.200` → `accessible-first.theme.dark.color.neutral.200` → `color.gray.dark.200` |
 | `component.input.background` | `color.surface.default` → `accessible-first.theme.light.color.surface.default` → `color.neutral.0` → `accessible-first.theme.light.color.neutral.0` → `color.gray.light.0` | `color.surface.default` → `accessible-first.theme.dark.color.surface.default` → `color.neutral.50` → `accessible-first.theme.dark.color.neutral.50` → `color.gray.dark.50` |
 | `component.input.border.@` | `color.border.strong` → `accessible-first.theme.light.color.border.strong` → `color.neutral.500` → `accessible-first.theme.light.color.neutral.500` → `color.gray.light.500` | `color.border.strong` → `accessible-first.theme.dark.color.border.strong` → `color.neutral.500` → `accessible-first.theme.dark.color.neutral.500` → `color.gray.dark.500` |
-| `component.input.border.focus` | `color.border.focus` → `accessible-first.theme.light.color.border.focus` → `color.blue.light.600` | `color.border.focus` → `accessible-first.theme.dark.color.border.focus` → `color.blue.dark.700` |
+| `component.input.border.focus` | `color.border.focus` → `accessible-first.theme.light.color.border.focus` → `color.blue.light.600` | `color.border.focus` → `accessible-first.theme.dark.color.border.focus` → `color.blue.dark.600` |
 | `component.input.text` | `color.text.primary` → `accessible-first.theme.light.color.text.primary` → `color.neutral.900` → `accessible-first.theme.light.color.neutral.900` → `color.gray.light.900` | `color.text.primary` → `accessible-first.theme.dark.color.text.primary` → `color.neutral.900` → `accessible-first.theme.dark.color.neutral.900` → `color.gray.dark.900` |
 | `component.input.placeholder` | `color.text.muted` → `accessible-first.theme.light.color.text.muted` → `color.neutral.500` → `accessible-first.theme.light.color.neutral.500` → `color.gray.light.500` | `color.text.muted` → `accessible-first.theme.dark.color.text.muted` → `color.neutral.500` → `accessible-first.theme.dark.color.neutral.500` → `color.gray.dark.500` |
 | `component.input.height` | `size.control.default` → `size.52` | `size.control.default` → `size.52` |
@@ -60,7 +60,7 @@ Each token points to another token. Values live only on primitives, below.
 | `component.input.disabled.background` | `color.disabled.surface` → `accessible-first.theme.light.color.disabled.surface` → `color.neutral.100` → `accessible-first.theme.light.color.neutral.100` → `color.gray.light.100` | `color.disabled.surface` → `accessible-first.theme.dark.color.disabled.surface` → `color.neutral.100` → `accessible-first.theme.dark.color.neutral.100` → `color.gray.dark.100` |
 | `component.input.disabled.border` | `color.disabled.border` → `accessible-first.theme.light.color.disabled.border` → `color.neutral.200` → `accessible-first.theme.light.color.neutral.200` → `color.gray.light.200` | `color.disabled.border` → `accessible-first.theme.dark.color.disabled.border` → `color.neutral.200` → `accessible-first.theme.dark.color.neutral.200` → `color.gray.dark.200` |
 | `component.input.disabled.text` | `color.disabled.text` → `accessible-first.theme.light.color.disabled.text` → `color.neutral.500` → `accessible-first.theme.light.color.neutral.500` → `color.gray.light.500` | `color.disabled.text` → `accessible-first.theme.dark.color.disabled.text` → `color.neutral.500` → `accessible-first.theme.dark.color.neutral.500` → `color.gray.dark.500` |
-| `component.control.checked` | `color.action.primary.@` → `accessible-first.theme.light.color.action.primary.@` → `color.blue.light.600` | `color.action.primary.@` → `accessible-first.theme.dark.color.action.primary.@` → `color.blue.dark.700` |
+| `component.control.checked` | `color.action.primary.@` → `accessible-first.theme.light.color.action.primary.@` → `color.blue.light.600` | `color.action.primary.@` → `accessible-first.theme.dark.color.action.primary.@` → `color.blue.dark.600` |
 | `component.control.track` | `color.border.strong` → `accessible-first.theme.light.color.border.strong` → `color.neutral.500` → `accessible-first.theme.light.color.neutral.500` → `color.gray.light.500` | `color.border.strong` → `accessible-first.theme.dark.color.border.strong` → `color.neutral.500` → `accessible-first.theme.dark.color.neutral.500` → `color.gray.dark.500` |
 | `component.control.thumb` | `color.surface.default` → `accessible-first.theme.light.color.surface.default` → `color.neutral.0` → `accessible-first.theme.light.color.neutral.0` → `color.gray.light.0` | `color.surface.default` → `accessible-first.theme.dark.color.surface.default` → `color.neutral.50` → `accessible-first.theme.dark.color.neutral.50` → `color.gray.dark.50` |
 | `component.control.radius` | `radius.badge` → `accessible-first.theme.base.radius.badge` → `radius.4` | `radius.badge` → `accessible-first.theme.base.radius.badge` → `radius.4` |
@@ -70,13 +70,13 @@ Each token points to another token. Values live only on primitives, below.
 | `component.badge.neutral.background` | `color.surface.sunken` → `accessible-first.theme.light.color.surface.sunken` → `color.neutral.100` → `accessible-first.theme.light.color.neutral.100` → `color.gray.light.100` | `color.surface.sunken` → `accessible-first.theme.dark.color.surface.sunken` → `color.neutral.100` → `accessible-first.theme.dark.color.neutral.100` → `color.gray.dark.100` |
 | `component.badge.neutral.label` | `color.text.secondary` → `accessible-first.theme.light.color.text.secondary` → `color.neutral.700` → `accessible-first.theme.light.color.neutral.700` → `color.gray.light.700` | `color.text.secondary` → `accessible-first.theme.dark.color.text.secondary` → `color.neutral.600` → `accessible-first.theme.dark.color.neutral.600` → `color.gray.dark.600` |
 | `component.badge.success.background` | `color.status.success.subtle` → `accessible-first.theme.light.color.status.success.subtle` → `color.green.light.100` | `color.status.success.subtle` → `accessible-first.theme.dark.color.status.success.subtle` → `color.green.dark.100` |
-| `component.badge.success.label` | `color.status.success.@` → `accessible-first.theme.light.color.status.success.@` → `color.green.light.700` | `color.status.success.@` → `accessible-first.theme.dark.color.status.success.@` → `color.green.dark.700` |
+| `component.badge.success.label` | `color.text.success-on-light` → `accessible-first.theme.base.color.text.success-on-light` → `color.green.light.800` | `color.text.success-on-dark` → `accessible-first.theme.base.color.text.success-on-dark` → `color.green.light.50` |
 | `component.badge.warning.background` | `color.status.warning.subtle` → `accessible-first.theme.light.color.status.warning.subtle` → `color.amber.light.100` | `color.status.warning.subtle` → `accessible-first.theme.dark.color.status.warning.subtle` → `color.amber.dark.100` |
-| `component.badge.warning.label` | `color.status.warning.@` → `accessible-first.theme.light.color.status.warning.@` → `color.amber.light.700` | `color.status.warning.@` → `accessible-first.theme.dark.color.status.warning.@` → `color.amber.dark.700` |
+| `component.badge.warning.label` | `color.text.warning-on-light` → `accessible-first.theme.base.color.text.warning-on-light` → `color.amber.light.800` | `color.text.warning-on-dark` → `accessible-first.theme.base.color.text.warning-on-dark` → `color.amber.light.50` |
 | `component.badge.danger.background` | `color.status.danger.subtle` → `accessible-first.theme.light.color.status.danger.subtle` → `color.red.light.100` | `color.status.danger.subtle` → `accessible-first.theme.dark.color.status.danger.subtle` → `color.red.dark.100` |
-| `component.badge.danger.label` | `color.status.danger.@` → `accessible-first.theme.light.color.status.danger.@` → `color.red.light.700` | `color.status.danger.@` → `accessible-first.theme.dark.color.status.danger.@` → `color.red.dark.700` |
+| `component.badge.danger.label` | `color.text.danger-on-light` → `accessible-first.theme.base.color.text.danger-on-light` → `color.red.light.800` | `color.text.danger-on-dark` → `accessible-first.theme.base.color.text.danger-on-dark` → `color.red.light.50` |
 | `component.badge.info.background` | `color.status.info.subtle` → `accessible-first.theme.light.color.status.info.subtle` → `color.teal.light.100` | `color.status.info.subtle` → `accessible-first.theme.dark.color.status.info.subtle` → `color.teal.dark.100` |
-| `component.badge.info.label` | `color.status.info.@` → `accessible-first.theme.light.color.status.info.@` → `color.teal.light.700` | `color.status.info.@` → `accessible-first.theme.dark.color.status.info.@` → `color.teal.dark.700` |
+| `component.badge.info.label` | `color.text.info-on-light` → `accessible-first.theme.base.color.text.info-on-light` → `color.teal.light.800` | `color.text.info-on-dark` → `accessible-first.theme.base.color.text.info-on-dark` → `color.teal.light.50` |
 | `component.card.background` | `color.surface.default` → `accessible-first.theme.light.color.surface.default` → `color.neutral.0` → `accessible-first.theme.light.color.neutral.0` → `color.gray.light.0` | `color.surface.default` → `accessible-first.theme.dark.color.surface.default` → `color.neutral.50` → `accessible-first.theme.dark.color.neutral.50` → `color.gray.dark.50` |
 | `component.card.border` | `color.border.default` → `accessible-first.theme.light.color.border.default` → `color.neutral.200` → `accessible-first.theme.light.color.neutral.200` → `color.gray.light.200` | `color.border.default` → `accessible-first.theme.dark.color.border.default` → `color.neutral.100` → `accessible-first.theme.dark.color.neutral.100` → `color.gray.dark.100` |
 | `component.card.radius` | `radius.container` → `accessible-first.theme.base.radius.container` → `radius.8` | `radius.container` → `accessible-first.theme.base.radius.container` → `radius.8` |
@@ -88,8 +88,8 @@ Each token points to another token. Values live only on primitives, below.
 | `component.table.row-border` | `color.border.default` → `accessible-first.theme.light.color.border.default` → `color.neutral.200` → `accessible-first.theme.light.color.neutral.200` → `color.gray.light.200` | `color.border.default` → `accessible-first.theme.dark.color.border.default` → `color.neutral.100` → `accessible-first.theme.dark.color.neutral.100` → `color.gray.dark.100` |
 | `component.table.row-selected` | `color.surface.selected` → `accessible-first.theme.light.color.surface.selected` → `color.blue.light.100` | `color.surface.selected` → `accessible-first.theme.dark.color.surface.selected` → `color.blue.dark.100` |
 | `component.table.font-size` | `type.data.font-size` → `font.size.19` | `type.data.font-size` → `font.size.19` |
-| `component.table.row-selected-edge` | `color.border.selected` → `accessible-first.theme.light.color.border.selected` → `color.blue.light.600` | `color.border.selected` → `accessible-first.theme.dark.color.border.selected` → `color.blue.dark.700` |
-| `component.tabs.indicator` | `color.action.primary.@` → `accessible-first.theme.light.color.action.primary.@` → `color.blue.light.600` | `color.action.primary.@` → `accessible-first.theme.dark.color.action.primary.@` → `color.blue.dark.700` |
+| `component.table.row-selected-edge` | `color.border.selected` → `accessible-first.theme.light.color.border.selected` → `color.blue.light.600` | `color.border.selected` → `accessible-first.theme.dark.color.border.selected` → `color.blue.dark.600` |
+| `component.tabs.indicator` | `color.action.primary.@` → `accessible-first.theme.light.color.action.primary.@` → `color.blue.light.600` | `color.action.primary.@` → `accessible-first.theme.dark.color.action.primary.@` → `color.blue.dark.600` |
 | `component.tabs.label.@` | `color.text.secondary` → `accessible-first.theme.light.color.text.secondary` → `color.neutral.700` → `accessible-first.theme.light.color.neutral.700` → `color.gray.light.700` | `color.text.secondary` → `accessible-first.theme.dark.color.text.secondary` → `color.neutral.600` → `accessible-first.theme.dark.color.neutral.600` → `color.gray.dark.600` |
 | `component.tabs.label.active` | `color.text.primary` → `accessible-first.theme.light.color.text.primary` → `color.neutral.900` → `accessible-first.theme.light.color.neutral.900` → `color.gray.light.900` | `color.text.primary` → `accessible-first.theme.dark.color.text.primary` → `color.neutral.900` → `accessible-first.theme.dark.color.neutral.900` → `color.gray.dark.900` |
 | `component.overlay.background` | `color.surface.raised` → `accessible-first.theme.light.color.surface.raised` → `color.neutral.0` → `accessible-first.theme.light.color.neutral.0` → `color.gray.light.0` | `color.surface.raised` → `accessible-first.theme.dark.color.surface.raised` → `color.neutral.100` → `accessible-first.theme.dark.color.neutral.100` → `color.gray.dark.100` |
@@ -109,18 +109,18 @@ The raw values the tokens above end at.
 
 | Primitive | Value | Sample |
 | --- | --- | --- |
-| `color.amber.dark.100` | #3A2A05 | <span class="ods-swatch" style="background:#3A2A05"></span> |
-| `color.amber.dark.700` | #F2B84B | <span class="ods-swatch" style="background:#F2B84B"></span> |
-| `color.amber.light.100` | #FFF3D6 | <span class="ods-swatch" style="background:#FFF3D6"></span> |
-| `color.amber.light.700` | #8A5600 | <span class="ods-swatch" style="background:#8A5600"></span> |
+| `color.amber.dark.100` | #372500 | <span class="ods-swatch" style="background:#372500"></span> |
+| `color.amber.light.100` | #FAEBDA | <span class="ods-swatch" style="background:#FAEBDA"></span> |
+| `color.amber.light.50` | #FFF7EF | <span class="ods-swatch" style="background:#FFF7EF"></span> |
+| `color.amber.light.800` | #462A02 | <span class="ods-swatch" style="background:#462A02"></span> |
 | `color.black.dark.scrim` | #000000B3 | <span class="ods-swatch" style="background:#000000B3"></span> |
 | `color.black.light.scrim` | #0000008C | <span class="ods-swatch" style="background:#0000008C"></span> |
-| `color.blue.dark.100` | #062C6E | <span class="ods-swatch" style="background:#062C6E"></span> |
-| `color.blue.dark.700` | #8AB4F8 | <span class="ods-swatch" style="background:#8AB4F8"></span> |
-| `color.blue.dark.800` | #E1ECFF | <span class="ods-swatch" style="background:#E1ECFF"></span> |
-| `color.blue.light.100` | #E1ECFF | <span class="ods-swatch" style="background:#E1ECFF"></span> |
+| `color.blue.dark.100` | #102547 | <span class="ods-swatch" style="background:#102547"></span> |
+| `color.blue.dark.600` | #8AB4F8 | <span class="ods-swatch" style="background:#8AB4F8"></span> |
+| `color.blue.dark.700` | #A7C8FC | <span class="ods-swatch" style="background:#A7C8FC"></span> |
+| `color.blue.light.100` | #E2EDFF | <span class="ods-swatch" style="background:#E2EDFF"></span> |
 | `color.blue.light.600` | #0B4FC0 | <span class="ods-swatch" style="background:#0B4FC0"></span> |
-| `color.blue.light.700` | #083C93 | <span class="ods-swatch" style="background:#083C93"></span> |
+| `color.blue.light.700` | #013895 | <span class="ods-swatch" style="background:#013895"></span> |
 | `color.gray.dark.100` | #222222 | <span class="ods-swatch" style="background:#222222"></span> |
 | `color.gray.dark.200` | #333333 | <span class="ods-swatch" style="background:#333333"></span> |
 | `color.gray.dark.50` | #141414 | <span class="ods-swatch" style="background:#141414"></span> |
@@ -133,18 +133,22 @@ The raw values the tokens above end at.
 | `color.gray.light.500` | #595959 | <span class="ods-swatch" style="background:#595959"></span> |
 | `color.gray.light.700` | #333333 | <span class="ods-swatch" style="background:#333333"></span> |
 | `color.gray.light.900` | #141414 | <span class="ods-swatch" style="background:#141414"></span> |
-| `color.green.dark.100` | #123322 | <span class="ods-swatch" style="background:#123322"></span> |
-| `color.green.dark.700` | #5CC283 | <span class="ods-swatch" style="background:#5CC283"></span> |
-| `color.green.light.100` | #E3F4EA | <span class="ods-swatch" style="background:#E3F4EA"></span> |
-| `color.green.light.700` | #1F7A3A | <span class="ods-swatch" style="background:#1F7A3A"></span> |
-| `color.red.dark.100` | #3D1414 | <span class="ods-swatch" style="background:#3D1414"></span> |
-| `color.red.dark.700` | #F28B8B | <span class="ods-swatch" style="background:#F28B8B"></span> |
-| `color.red.light.100` | #FDE7E7 | <span class="ods-swatch" style="background:#FDE7E7"></span> |
-| `color.red.light.700` | #C42B2B | <span class="ods-swatch" style="background:#C42B2B"></span> |
-| `color.teal.dark.100` | #08423E | <span class="ods-swatch" style="background:#08423E"></span> |
-| `color.teal.dark.700` | #7FCFC6 | <span class="ods-swatch" style="background:#7FCFC6"></span> |
-| `color.teal.light.100` | #E0F2F1 | <span class="ods-swatch" style="background:#E0F2F1"></span> |
-| `color.teal.light.700` | #0B5B55 | <span class="ods-swatch" style="background:#0B5B55"></span> |
+| `color.green.dark.100` | #012E16 | <span class="ods-swatch" style="background:#012E16"></span> |
+| `color.green.light.100` | #DFF5E2 | <span class="ods-swatch" style="background:#DFF5E2"></span> |
+| `color.green.light.50` | #F1FDF2 | <span class="ods-swatch" style="background:#F1FDF2"></span> |
+| `color.green.light.800` | #023E17 | <span class="ods-swatch" style="background:#023E17"></span> |
+| `color.red.dark.100` | #451014 | <span class="ods-swatch" style="background:#451014"></span> |
+| `color.red.dark.600` | #F28B8B | <span class="ods-swatch" style="background:#F28B8B"></span> |
+| `color.red.dark.700` | #FAA9A8 | <span class="ods-swatch" style="background:#FAA9A8"></span> |
+| `color.red.light.100` | #FEE9E7 | <span class="ods-swatch" style="background:#FEE9E7"></span> |
+| `color.red.light.50` | #FEF7F7 | <span class="ods-swatch" style="background:#FEF7F7"></span> |
+| `color.red.light.600` | #C42B2B | <span class="ods-swatch" style="background:#C42B2B"></span> |
+| `color.red.light.700` | #981519 | <span class="ods-swatch" style="background:#981519"></span> |
+| `color.red.light.800` | #6D0008 | <span class="ods-swatch" style="background:#6D0008"></span> |
+| `color.teal.dark.100` | #012F2C | <span class="ods-swatch" style="background:#012F2C"></span> |
+| `color.teal.light.100` | #DEEFED | <span class="ods-swatch" style="background:#DEEFED"></span> |
+| `color.teal.light.50` | #F1FAF9 | <span class="ods-swatch" style="background:#F1FAF9"></span> |
+| `color.teal.light.800` | #022C29 | <span class="ods-swatch" style="background:#022C29"></span> |
 | `duration.moderate` | 200ms | <span class="ods-motion" style="--ods-d:200ms" title="Hover to play"><span></span></span> |
 | `easing.standard` | cubic-bezier(0.2, 0, 0, 1) | <span class="ods-motion" style="--ods-e:cubic-bezier(0.2,0,0,1)" title="Hover to play"><span></span></span> |
 | `font.size.16` | 1rem (16px) | <span class="ods-typesample" style="font-size:1rem">Aa</span> |

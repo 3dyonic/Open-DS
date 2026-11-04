@@ -42,7 +42,7 @@ Each token points to another token. Values live only on primitives, below.
 | `size.control.compact` | `size.36` | `size.36` |
 | `size.control.large` | `size.44` | `size.44` |
 | `opacity.disabled` | `opacity.40` | `opacity.40` |
-| `color.border.focus` | `aster.theme.light.color.border.focus` → `color.teal.light.600` | `aster.theme.dark.color.border.focus` → `color.teal.dark.700` |
+| `color.border.focus` | `aster.theme.light.color.border.focus` → `color.teal.light.600` | `aster.theme.dark.color.border.focus` → `color.teal.dark.600` |
 
 </div>
 
@@ -56,7 +56,7 @@ Each token points to another token. Values live only on primitives, below.
 | `size.control.compact` | `size.36` | `size.36` |
 | `size.control.large` | `size.44` | `size.44` |
 | `opacity.disabled` | `opacity.40` | `opacity.40` |
-| `color.border.focus` | `birch.theme.light.color.border.focus` → `color.purple.light.600` | `birch.theme.dark.color.border.focus` → `color.purple.dark.700` |
+| `color.border.focus` | `birch.theme.light.color.border.focus` → `color.purple.light.600` | `birch.theme.dark.color.border.focus` → `color.purple.dark.600` |
 
 </div>
 
@@ -70,7 +70,7 @@ Each token points to another token. Values live only on primitives, below.
 | `size.control.compact` | `size.36` | `size.36` |
 | `size.control.large` | `size.44` | `size.44` |
 | `opacity.disabled` | `opacity.40` | `opacity.40` |
-| `color.border.focus` | `coral.theme.light.color.border.focus` → `color.orange.light.600` | `coral.theme.dark.color.border.focus` → `color.orange.dark.700` |
+| `color.border.focus` | `coral.theme.light.color.border.focus` → `color.orange.light.600` | `coral.theme.dark.color.border.focus` → `color.orange.dark.600` |
 
 </div>
 
@@ -84,7 +84,7 @@ The raw values the tokens above end at.
 
 | Primitive | Value | Sample |
 | --- | --- | --- |
-| `color.teal.dark.700` | #7FCFC6 | <span class="ods-swatch" style="background:#7FCFC6"></span> |
+| `color.teal.dark.600` | #7FCFC6 | <span class="ods-swatch" style="background:#7FCFC6"></span> |
 | `color.teal.light.600` | #0F766E | <span class="ods-swatch" style="background:#0F766E"></span> |
 | `opacity.40` | 0.4 | <span class="ods-swatch" style="opacity:0.4"></span> |
 | `size.36` | 2.25rem (36px) | <span class="ods-bar" style="width:2.25rem"></span> |
@@ -98,7 +98,7 @@ The raw values the tokens above end at.
 
 | Primitive | Value | Sample |
 | --- | --- | --- |
-| `color.purple.dark.700` | #B79DF7 | <span class="ods-swatch" style="background:#B79DF7"></span> |
+| `color.purple.dark.600` | #B79DF7 | <span class="ods-swatch" style="background:#B79DF7"></span> |
 | `color.purple.light.600` | #6D28D9 | <span class="ods-swatch" style="background:#6D28D9"></span> |
 | `opacity.40` | 0.4 | <span class="ods-swatch" style="opacity:0.4"></span> |
 | `size.36` | 2.25rem (36px) | <span class="ods-bar" style="width:2.25rem"></span> |
@@ -112,7 +112,7 @@ The raw values the tokens above end at.
 
 | Primitive | Value | Sample |
 | --- | --- | --- |
-| `color.orange.dark.700` | #F7A67F | <span class="ods-swatch" style="background:#F7A67F"></span> |
+| `color.orange.dark.600` | #F7A67F | <span class="ods-swatch" style="background:#F7A67F"></span> |
 | `color.orange.light.600` | #C2410C | <span class="ods-swatch" style="background:#C2410C"></span> |
 | `opacity.40` | 0.4 | <span class="ods-swatch" style="opacity:0.4"></span> |
 | `size.36` | 2.25rem (36px) | <span class="ods-bar" style="width:2.25rem"></span> |

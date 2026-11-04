@@ -3000,6 +3000,142 @@
         }
       },
       {
+        "id": "color.text.info-on-light",
+        "intent": "The label on a light info fill, such as its tint in light mode: a fixed colour from the light scale (800).",
+        "use_for": [
+          "The info badge"
+        ],
+        "not_for": [
+          {
+            "when": "Info text on the page",
+            "use": "color.status.info.@"
+          }
+        ],
+        "pairs": {
+          "tone": true,
+          "contrast": 4.5
+        }
+      },
+      {
+        "id": "color.text.info-on-dark",
+        "intent": "The label on a dark info fill, such as its tint in dark mode: a fixed colour from the light scale (50).",
+        "use_for": [
+          "The info badge"
+        ],
+        "not_for": [
+          {
+            "when": "Info text on the page",
+            "use": "color.status.info.@"
+          }
+        ],
+        "pairs": {
+          "tone": true,
+          "contrast": 4.5
+        }
+      },
+      {
+        "id": "color.text.success-on-light",
+        "intent": "The label on a light success fill, such as its tint in light mode: a fixed colour from the light scale (800).",
+        "use_for": [
+          "The success badge"
+        ],
+        "not_for": [
+          {
+            "when": "Success text on the page",
+            "use": "color.status.success.@"
+          }
+        ],
+        "pairs": {
+          "tone": true,
+          "contrast": 4.5
+        }
+      },
+      {
+        "id": "color.text.success-on-dark",
+        "intent": "The label on a dark success fill, such as its tint in dark mode: a fixed colour from the light scale (50).",
+        "use_for": [
+          "The success badge"
+        ],
+        "not_for": [
+          {
+            "when": "Success text on the page",
+            "use": "color.status.success.@"
+          }
+        ],
+        "pairs": {
+          "tone": true,
+          "contrast": 4.5
+        }
+      },
+      {
+        "id": "color.text.warning-on-light",
+        "intent": "The label on a light warning fill, such as its tint in light mode: a fixed colour from the light scale (800).",
+        "use_for": [
+          "The warning badge"
+        ],
+        "not_for": [
+          {
+            "when": "Warning text on the page",
+            "use": "color.status.warning.@"
+          }
+        ],
+        "pairs": {
+          "tone": true,
+          "contrast": 4.5
+        }
+      },
+      {
+        "id": "color.text.warning-on-dark",
+        "intent": "The label on a dark warning fill, such as its tint in dark mode: a fixed colour from the light scale (50).",
+        "use_for": [
+          "The warning badge"
+        ],
+        "not_for": [
+          {
+            "when": "Warning text on the page",
+            "use": "color.status.warning.@"
+          }
+        ],
+        "pairs": {
+          "tone": true,
+          "contrast": 4.5
+        }
+      },
+      {
+        "id": "color.text.danger-on-light",
+        "intent": "The label on a light danger fill, such as its tint in light mode: a fixed colour from the light scale (800).",
+        "use_for": [
+          "The danger badge"
+        ],
+        "not_for": [
+          {
+            "when": "Danger text on the page",
+            "use": "color.status.danger.@"
+          }
+        ],
+        "pairs": {
+          "tone": true,
+          "contrast": 4.5
+        }
+      },
+      {
+        "id": "color.text.danger-on-dark",
+        "intent": "The label on a dark danger fill, such as its tint in dark mode: a fixed colour from the light scale (50).",
+        "use_for": [
+          "The danger badge"
+        ],
+        "not_for": [
+          {
+            "when": "Danger text on the page",
+            "use": "color.status.danger.@"
+          }
+        ],
+        "pairs": {
+          "tone": true,
+          "contrast": 4.5
+        }
+      },
+      {
         "id": "color.text.on-action",
         "intent": "Text and icons on the main action's fill.",
         "use_for": [
@@ -3236,8 +3372,7 @@
         "id": "color.status.info.@",
         "intent": "Neutral news: something changed and no action is needed. The lowest level of the urgency order.",
         "use_for": [
-          "Status text and icons",
-          "Badge labels"
+          "Status text and icons"
         ],
         "not_for": [
           {
@@ -3247,13 +3382,16 @@
           {
             "when": "The main action",
             "use": "color.action.primary.@"
+          },
+          {
+            "when": "The info badge label",
+            "use": "color.text.info-on-light"
           }
         ],
         "pairs": {
           "on": [
             "color.surface.canvas",
-            "color.surface.default",
-            "color.status.info.subtle"
+            "color.surface.default"
           ],
           "contrast": 4.5
         },
@@ -3277,8 +3415,7 @@
         "id": "color.status.warning.@",
         "intent": "Caution: something may go wrong or needs a check, and it can be fixed.",
         "use_for": [
-          "Status text and icons",
-          "Badge labels"
+          "Status text and icons"
         ],
         "not_for": [
           {
@@ -3288,13 +3425,16 @@
           {
             "when": "News that needs no action",
             "use": "color.status.info.@"
+          },
+          {
+            "when": "The warning badge label",
+            "use": "color.text.warning-on-light"
           }
         ],
         "pairs": {
           "on": [
             "color.surface.canvas",
-            "color.surface.default",
-            "color.status.warning.subtle"
+            "color.surface.default"
           ],
           "contrast": 4.5
         },
@@ -3318,8 +3458,8 @@
         "id": "color.status.danger.@",
         "intent": "Real risk: errors, failed checks, actions that cannot be undone. The top of the urgency order. Overuse wears it out.",
         "use_for": [
-          "Status text and icons",
-          "Badge labels"
+          "Error messages and status text",
+          "Icons"
         ],
         "not_for": [
           {
@@ -3329,13 +3469,16 @@
           {
             "when": "Getting attention",
             "use": "color.status.info.@"
+          },
+          {
+            "when": "The danger badge label",
+            "use": "color.text.danger-on-light"
           }
         ],
         "pairs": {
           "on": [
             "color.surface.canvas",
-            "color.surface.default",
-            "color.status.danger.subtle"
+            "color.surface.default"
           ],
           "contrast": 4.5
         },
@@ -3359,8 +3502,7 @@
         "id": "color.status.success.@",
         "intent": "Confirmation that something worked. It sits outside the urgency order.",
         "use_for": [
-          "Status text and icons",
-          "Badge labels"
+          "Status text and icons"
         ],
         "not_for": [
           {
@@ -3370,13 +3512,16 @@
           {
             "when": "Brand colour",
             "use": "color.action.primary.@"
+          },
+          {
+            "when": "The success badge label",
+            "use": "color.text.success-on-light"
           }
         ],
         "pairs": {
           "on": [
             "color.surface.canvas",
-            "color.surface.default",
-            "color.status.success.subtle"
+            "color.surface.default"
           ],
           "contrast": 4.5
         }
@@ -3662,6 +3807,22 @@
         {
           "role": "focus",
           "contrast": 3
+        },
+        {
+          "role": "text.info",
+          "contrast": 4.5
+        },
+        {
+          "role": "text.success",
+          "contrast": 4.5
+        },
+        {
+          "role": "text.warning",
+          "contrast": 4.5
+        },
+        {
+          "role": "text.danger",
+          "contrast": 4.5
         }
       ],
       "fills": [
@@ -3775,28 +3936,32 @@
           "id": "color.status.info.subtle",
           "carries": [
             "text.primary",
-            "icon"
+            "icon",
+            "text.info"
           ]
         },
         {
           "id": "color.status.warning.subtle",
           "carries": [
             "text.primary",
-            "icon"
+            "icon",
+            "text.warning"
           ]
         },
         {
           "id": "color.status.danger.subtle",
           "carries": [
             "text.primary",
-            "icon"
+            "icon",
+            "text.danger"
           ]
         },
         {
           "id": "color.status.success.subtle",
           "carries": [
             "text.primary",
-            "icon"
+            "icon",
+            "text.success"
           ]
         }
       ]

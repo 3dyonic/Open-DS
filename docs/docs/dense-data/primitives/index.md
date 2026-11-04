@@ -8,11 +8,11 @@ hide_table_of_contents: true
 
 # Primitives
 
-<div class="odv-pagehero"><div><p>The raw values of Dense data. Primitives hold the values; semantic tokens give them a job (see <a href="../foundations/">Foundations</a>), and components read only the jobs. Colour ramps stay whole, so some colour steps wait for a use; every other primitive is read by something.</p><div class="odv-stats"><span><b>107</b>Primitives</span><span><b>82</b>In use</span><span><b>25</b>Spare</span></div></div><span class="odv-robot odv-pagehero-robot"><img class="odv-robot-day" src="/robots/dense-data.webp" alt="" loading="lazy"/><img class="odv-robot-night" src="/robots/dense-data-dark.webp" alt="" loading="lazy"/></span></div>
+<div class="odv-pagehero"><div><p>The raw values of Dense data. Primitives hold the values; semantic tokens give them a job (see <a href="../foundations/">Foundations</a>), and components read only the jobs. Colour ramps stay whole, so some colour steps wait for a use; every other primitive is read by something.</p><div class="odv-stats"><span><b>169</b>Primitives</span><span><b>91</b>In use</span><span><b>78</b>Spare</span></div></div><span class="odv-robot odv-pagehero-robot"><img class="odv-robot-day" src="/robots/dense-data.webp" alt="" loading="lazy"/><img class="odv-robot-night" src="/robots/dense-data-dark.webp" alt="" loading="lazy"/></span></div>
 
 ## Colour
 
-<div class="odv-scards"><a class="odv-scard" href="./color"><span class="odv-scard-art"><span class="odv-robot "><img class="odv-robot-day" src="/robots/swatch.webp" alt="" loading="lazy"/><img class="odv-robot-night" src="/robots/swatch-dark.webp" alt="" loading="lazy"/></span></span><span class="odv-scard-body"><span class="odv-scard-title">Color</span><div class="odv-spec"><i class="odv-sw" style="background:#535D6D" title="color.slate.light.600"></i><i class="odv-sw" style="background:#4B3FD9" title="color.violet.light.600"></i><i class="odv-sw" style="background:#1F7A3A" title="color.green.light.700"></i><i class="odv-sw" style="background:#8A5600" title="color.amber.light.700"></i><i class="odv-sw" style="background:#C42B2B" title="color.red.light.700"></i><i class="odv-sw" style="background:#0000008C" title="color.black.light.scrim"></i><i class="odv-sw" style="background:#0B4FC0" title="color.blue.light.600"></i></div><span class="odv-scard-why">74 primitives · 49 in use</span><span class="odv-meter" role="img" aria-label="49 of 74 in use"><i style="width:66%"></i></span></span></a></div>
+<div class="odv-scards"><a class="odv-scard" href="./color"><span class="odv-scard-art"><span class="odv-robot "><img class="odv-robot-day" src="/robots/swatch.webp" alt="" loading="lazy"/><img class="odv-robot-night" src="/robots/swatch-dark.webp" alt="" loading="lazy"/></span></span><span class="odv-scard-body"><span class="odv-scard-title">Color</span><div class="odv-spec"><i class="odv-sw" style="background:#535D6D" title="color.slate.light.600"></i><i class="odv-sw" style="background:#4B3FD9" title="color.violet.light.600"></i><i class="odv-sw" style="background:#1F7A3A" title="color.green.light.600"></i><i class="odv-sw" style="background:#8A5600" title="color.amber.light.600"></i><i class="odv-sw" style="background:#C42B2B" title="color.red.light.600"></i><i class="odv-sw" style="background:#0000008C" title="color.black.light.scrim"></i><i class="odv-sw" style="background:#083C93" title="color.blue.light.600"></i></div><span class="odv-scard-why">136 primitives · 58 in use</span><span class="odv-meter" role="img" aria-label="58 of 136 in use"><i style="width:43%"></i></span></span></a></div>
 
 ## Space and shape
 
@@ -24,11 +24,11 @@ hide_table_of_contents: true
 
 ## Every kind
 
-**107** primitives. **82** are used by a semantic token, a theme or a component key. **25** are not used yet.
+**169** primitives. **91** are used by a semantic token, a theme or a component key. **78** are not used yet.
 
 | Kind | Primitives | Used |
 | --- | --- | --- |
-| [Color](./color.md) | 74 | 49 |
+| [Color](./color.md) | 136 | 58 |
 | [Space and size](./space-and-size.md) | 8 | 8 |
 | [Shape](./shape.md) | 6 | 6 |
 | [Type](./type.md) | 13 | 13 |
