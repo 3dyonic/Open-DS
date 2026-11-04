@@ -1855,24 +1855,6 @@ export function docsPages(
         / · $/,
         "",
       );
-    // own tokens show a sample of what their primitive is, by its kind (OD-234)
-    if (row.own && !hex) {
-      const kind = (prim.split(".")[0] ?? "").replace(
-        /^font$/,
-        prim.split(".")[1] === "weight" ? "weight" : "font",
-      );
-      const sample = {
-        opacity: `<i class="odv-sop" style="opacity:${attr(raw)}"></i>`,
-        space: `<i class="odv-sbar" style="width:${attr(raw)}"></i>`,
-        size: `<i class="odv-ssq" style="width:${attr(raw)};height:${attr(raw)}"></i>`,
-        font: `<b class="odv-saa" style="font-size:${attr(raw)}">Aa</b>`,
-        weight: `<b class="odv-saa" style="font-weight:${attr(raw)}">Aa</b>`,
-        "border-width": `<i class="odv-sline" style="height:${attr(raw)}"></i>`,
-        radius: `<i class="odv-tshape" style="border-radius:${attr(raw)}"></i>`,
-      }[kind];
-      if (sample)
-        return `<span class="odv-tsw">${sample}<small>${shown}</small></span>`;
-    }
     if (row.part === "Shadow")
       return `<span class="odv-tsw"><i class="odv-tlift" style="box-shadow:${attr(raw)}"></i><small>${attr(prim || raw)}</small></span>`;
     if (row.part === "Corner")
