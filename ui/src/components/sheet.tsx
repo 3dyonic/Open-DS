@@ -118,7 +118,7 @@ function SheetDescription({ className, ...props }: React.ComponentProps<typeof S
     <SheetPrimitive.Description
       data-slot="sheet-description"
       className={cn(
-        "text-[length:var(--sheet-description-font-size)] text-[color:var(--sheet-description-label)]",
+        "text-[length:var(--sheet-description-font-size)]/[var(--sheet-description-line-height)] text-[color:var(--sheet-description-label)]",
         className,
       )}
       {...props}

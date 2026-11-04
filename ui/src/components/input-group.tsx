@@ -45,7 +45,7 @@ function InputGroup({ className, ...props }: React.ComponentProps<"div">) {
 }
 
 const inputGroupAddonVariants = cva(
-  "flex h-auto cursor-text items-center justify-center gap-[var(--input-group-gap)] py-1.5 text-[length:var(--input-group-font-size)] [font-weight:var(--input-group-font-weight)] text-[color:var(--input-group-label)] select-none group-data-[disabled=true]/input-group:opacity-[var(--input-group-disabled-opacity-disabled)] [&>kbd]:rounded-[calc(var(--radius)-5px)] [&>svg:not([class*='size-'])]:size-[var(--input-group-icon-size)]",
+  "flex h-auto cursor-text items-center justify-center gap-[var(--input-group-gap)] py-1.5 text-[length:var(--input-group-font-size)]/[var(--input-group-line-height)] [font-weight:var(--input-group-font-weight)] text-[color:var(--input-group-label)] select-none group-data-[disabled=true]/input-group:opacity-[var(--input-group-disabled-opacity-disabled)] [&>kbd]:rounded-[calc(var(--radius)-5px)] [&>svg:not([class*='size-'])]:size-[var(--input-group-icon-size)]",
   {
     variants: {
       align: {
@@ -88,7 +88,7 @@ function InputGroupAddon({
 }
 
 const inputGroupButtonVariants = cva(
-  "flex items-center gap-[var(--input-group-gap)] text-[length:var(--input-group-font-size)] shadow-none",
+  "flex items-center gap-[var(--input-group-gap)] text-[length:var(--input-group-font-size)]/[var(--input-group-line-height)] shadow-none",
   {
     variants: {
       size: {
@@ -126,7 +126,7 @@ function InputGroupText({ className, ...props }: React.ComponentProps<"span">) {
   return (
     <span
       className={cn(
-        "flex items-center gap-[var(--input-group-gap)] text-[length:var(--input-group-font-size)] text-[color:var(--input-group-label)] [&_svg]:pointer-events-none [&_svg:not([class*='size-'])]:size-[var(--input-group-icon-size)]",
+        "flex items-center gap-[var(--input-group-gap)] text-[length:var(--input-group-font-size)]/[var(--input-group-line-height)] text-[color:var(--input-group-label)] [&_svg]:pointer-events-none [&_svg:not([class*='size-'])]:size-[var(--input-group-icon-size)]",
         className,
       )}
       {...props}

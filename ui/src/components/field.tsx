@@ -40,8 +40,8 @@ function FieldLegend({
       data-variant={variant}
       className={cn(
         "mb-3 [font-weight:var(--field-legend-font-weight)]",
-        "data-[variant=legend]:text-[length:var(--field-legend-font-size)]",
-        "data-[variant=label]:text-[length:var(--field-legend-font-size)]",
+        "data-[variant=legend]:text-[length:var(--field-legend-font-size)]/[var(--field-legend-line-height)]",
+        "data-[variant=label]:text-[length:var(--field-legend-font-size)]/[var(--field-legend-line-height)]",
         className,
       )}
       {...props}
@@ -129,7 +129,7 @@ function FieldTitle({ className, ...props }: React.ComponentProps<"div">) {
     <div
       data-slot="field-label"
       className={cn(
-        "flex w-fit items-center gap-[var(--field-label-gap)] text-[length:var(--field-label-font-size)] leading-snug [font-weight:var(--field-label-font-weight)] group-data-[disabled=true]/field:opacity-[var(--field-label-disabled-opacity-disabled)]",
+        "flex w-fit items-center gap-[var(--field-label-gap)] text-[length:var(--field-label-font-size)]/[var(--field-label-line-height)] leading-snug [font-weight:var(--field-label-font-weight)] group-data-[disabled=true]/field:opacity-[var(--field-label-disabled-opacity-disabled)]",
         className,
       )}
       {...props}
@@ -142,7 +142,7 @@ function FieldDescription({ className, ...props }: React.ComponentProps<"p">) {
     <p
       data-slot="field-description"
       className={cn(
-        "text-[length:var(--field-description-font-size)] leading-normal [font-weight:var(--field-description-font-weight)] text-[color:var(--field-description-label)] group-has-[[data-orientation=horizontal]]/field:text-balance",
+        "text-[length:var(--field-description-font-size)]/[var(--field-description-line-height)] leading-normal [font-weight:var(--field-description-font-weight)] text-[color:var(--field-description-label)] group-has-[[data-orientation=horizontal]]/field:text-balance",
         "last:mt-0 nth-last-2:-mt-1 [[data-variant=legend]+&]:-mt-1.5",
         "[&>a]:underline [&>a]:underline-offset-4 [&>a:hover]:text-[color:var(--field-description-label-2)]",
         className,
@@ -164,7 +164,7 @@ function FieldSeparator({
       data-slot="field-separator"
       data-content={!!children}
       className={cn(
-        "relative -my-2 h-5 text-[length:var(--field-separator-font-size)] group-data-[variant=outline]/field-group:-mb-2",
+        "relative -my-2 h-5 text-[length:var(--field-separator-font-size)]/[var(--field-separator-line-height)] group-data-[variant=outline]/field-group:-mb-2",
         className,
       )}
       {...props}
@@ -221,7 +221,7 @@ function FieldError({
       role="alert"
       data-slot="field-error"
       className={cn(
-        "text-[length:var(--field-error-font-size)] [font-weight:var(--field-error-font-weight)] text-[color:var(--field-error-label)]",
+        "text-[length:var(--field-error-font-size)]/[var(--field-error-line-height)] [font-weight:var(--field-error-font-weight)] text-[color:var(--field-error-label)]",
         className,
       )}
       {...props}

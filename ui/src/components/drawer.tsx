@@ -102,7 +102,7 @@ function DrawerDescription({ className, ...props }: React.ComponentProps<typeof 
     <DrawerPrimitive.Description
       data-slot="drawer-description"
       className={cn(
-        "text-[length:var(--drawer-description-font-size)] text-[color:var(--drawer-description-label)]",
+        "text-[length:var(--drawer-description-font-size)]/[var(--drawer-description-line-height)] text-[color:var(--drawer-description-label)]",
         className,
       )}
       {...props}

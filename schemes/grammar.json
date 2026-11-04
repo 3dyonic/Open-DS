@@ -2975,8 +2975,10 @@
         "alert-dialog/header/gap-x",
         "alert-dialog/footer/gap",
         "alert-dialog/title/font-size",
+        "alert-dialog/title/line-height",
         "alert-dialog/title/font-weight",
         "alert-dialog/description/font-size",
+        "alert-dialog/description/line-height",
         "alert-dialog/description/label",
         "alert-dialog/media/radius",
         "alert-dialog/media/background",
@@ -2990,6 +2992,7 @@
         "alert/radius",
         "alert/padding-x",
         "alert/font-size",
+        "alert/line-height",
         "alert/icon-size",
         "alert/default/background",
         "alert/default/label",
@@ -2998,6 +3001,7 @@
         "alert/title/font-weight",
         "alert/description/gap",
         "alert/description/font-size",
+        "alert/description/line-height",
         "alert/description/label"
       ]
     },
@@ -3008,6 +3012,7 @@
         "attachment/radius",
         "attachment/background",
         "attachment/font-size",
+        "attachment/line-height",
         "attachment/background-hover",
         "attachment/focus",
         "attachment/focus-ring-focus",
@@ -3018,7 +3023,8 @@
         "attachment/icon-size",
         "attachment/label",
         "attachment/font-weight",
-        "attachment/font-size-2"
+        "attachment/font-size-2",
+        "attachment/line-height-2"
       ]
     },
     {
@@ -3030,8 +3036,10 @@
         "avatar/fallback/radius",
         "avatar/fallback/background",
         "avatar/fallback/font-size",
+        "avatar/fallback/line-height",
         "avatar/fallback/label",
         "avatar/fallback/font-size-2",
+        "avatar/fallback/line-height-2",
         "avatar/badge/radius",
         "avatar/badge/background",
         "avatar/badge/label",
@@ -3041,6 +3049,7 @@
         "avatar/group/count/radius",
         "avatar/group/count/background",
         "avatar/group/count/font-size",
+        "avatar/group/count/line-height",
         "avatar/group/count/label",
         "avatar/group/count/focus-ring",
         "avatar/group/count/icon-size"
@@ -3051,6 +3060,7 @@
       "description": "The breadcrumb component.",
       "keys": [
         "breadcrumb/list/font-size",
+        "breadcrumb/list/line-height",
         "breadcrumb/list/label",
         "breadcrumb/link/label-hover",
         "breadcrumb/page/font-weight",
@@ -3068,9 +3078,11 @@
         "bubble/me/label",
         "bubble/gap",
         "bubble/font-size",
+        "bubble/line-height",
         "bubble/label",
         "bubble/body/radius",
-        "bubble/body/font-size"
+        "bubble/body/font-size",
+        "bubble/body/line-height"
       ]
     },
     {
@@ -3082,6 +3094,7 @@
         "button-group/text/radius",
         "button-group/text/background",
         "button-group/text/font-size",
+        "button-group/text/line-height",
         "button-group/text/font-weight",
         "button-group/text/icon-size",
         "button-group/separator/background"
@@ -3096,6 +3109,7 @@
         "calendar/gap-2",
         "calendar/disabled-opacity-disabled",
         "calendar/font-size",
+        "calendar/line-height",
         "calendar/font-weight",
         "calendar/radius",
         "calendar/border",
@@ -3117,7 +3131,8 @@
         "calendar/label-3",
         "calendar/background-selected",
         "calendar/label-selected-2",
-        "calendar/font-size-2"
+        "calendar/font-size-2",
+        "calendar/line-height-2"
       ]
     },
     {
@@ -3135,6 +3150,7 @@
       "description": "The chart component.",
       "keys": [
         "chart/font-size",
+        "chart/line-height",
         "chart/icon",
         "chart/icon-2",
         "chart/icon-3",
@@ -3178,21 +3194,26 @@
         "combobox/item/gap",
         "combobox/item/radius",
         "combobox/item/font-size",
+        "combobox/item/line-height",
         "combobox/item/background",
         "combobox/item/label",
         "combobox/item/disabled-opacity-disabled",
         "combobox/item/icon-size",
         "combobox/icon-size",
         "combobox/label/font-size",
+        "combobox/label/line-height",
         "combobox/label/label",
         "combobox/label/padding-x",
         "combobox/label/font-size-2",
+        "combobox/label/line-height-2",
         "combobox/empty/font-size",
+        "combobox/empty/line-height",
         "combobox/empty/label",
         "combobox/separator/background",
         "combobox/chips/radius",
         "combobox/chips/border",
         "combobox/chips/font-size",
+        "combobox/chips/line-height",
         "combobox/chips/shadow",
         "combobox/chips/border-focus",
         "combobox/chips/focus-ring-focus",
@@ -3202,6 +3223,7 @@
         "combobox/chip/radius",
         "combobox/chip/background",
         "combobox/chip/font-size",
+        "combobox/chip/line-height",
         "combobox/chip/font-weight",
         "combobox/chip/label",
         "combobox/chip/disabled-opacity",
@@ -3222,23 +3244,28 @@
         "command/disabled-opacity",
         "command/input/radius",
         "command/input/font-size",
+        "command/input/line-height",
         "command/input/label-placeholder",
         "command/input/disabled-opacity-disabled",
         "command/empty/font-size",
+        "command/empty/line-height",
         "command/group/label",
         "command/group/font-size",
+        "command/group/line-height",
         "command/group/font-weight",
         "command/group/label-2",
         "command/separator/background",
         "command/item/gap",
         "command/item/radius",
         "command/item/font-size",
+        "command/item/line-height",
         "command/item/disabled-opacity-disabled",
         "command/item/background-selected",
         "command/item/label-selected",
         "command/item/icon-size",
         "command/item/label",
         "command/shortcut/font-size",
+        "command/shortcut/line-height",
         "command/shortcut/label"
       ]
     },
@@ -3248,6 +3275,7 @@
       "keys": [
         "context-menu/sub/trigger/radius",
         "context-menu/sub/trigger/font-size",
+        "context-menu/sub/trigger/line-height",
         "context-menu/sub/trigger/background-focus",
         "context-menu/sub/trigger/label-focus",
         "context-menu/sub/trigger/background-open",
@@ -3265,6 +3293,7 @@
         "context-menu/item/gap",
         "context-menu/item/radius",
         "context-menu/item/font-size",
+        "context-menu/item/line-height",
         "context-menu/item/background-focus",
         "context-menu/item/label-focus",
         "context-menu/item/disabled-opacity-disabled",
@@ -3276,6 +3305,7 @@
         "context-menu/checkbox/item/gap",
         "context-menu/checkbox/item/radius",
         "context-menu/checkbox/item/font-size",
+        "context-menu/checkbox/item/line-height",
         "context-menu/checkbox/item/background-focus",
         "context-menu/checkbox/item/label-focus",
         "context-menu/checkbox/item/disabled-opacity-disabled",
@@ -3284,15 +3314,18 @@
         "context-menu/radio/item/gap",
         "context-menu/radio/item/radius",
         "context-menu/radio/item/font-size",
+        "context-menu/radio/item/line-height",
         "context-menu/radio/item/background-focus",
         "context-menu/radio/item/label-focus",
         "context-menu/radio/item/disabled-opacity-disabled",
         "context-menu/radio/item/icon-size",
         "context-menu/label/font-size",
+        "context-menu/label/line-height",
         "context-menu/label/font-weight",
         "context-menu/label/label",
         "context-menu/separator/background",
         "context-menu/shortcut/font-size",
+        "context-menu/shortcut/line-height",
         "context-menu/shortcut/label"
       ]
     },
@@ -3351,6 +3384,7 @@
         "drawer/title/font-weight",
         "drawer/title/label",
         "drawer/description/font-size",
+        "drawer/description/line-height",
         "drawer/description/label"
       ]
     },
@@ -3383,12 +3417,14 @@
         "empty/icon/background",
         "empty/icon/label",
         "empty/title/font-size",
+        "empty/title/line-height",
         "empty/title/font-weight",
         "empty/description/font-size",
         "empty/description/label",
         "empty/description/label-2",
         "empty/content/gap",
-        "empty/content/font-size"
+        "empty/content/font-size",
+        "empty/content/line-height"
       ]
     },
     {
@@ -3398,6 +3434,7 @@
         "field/set/gap",
         "field/legend/font-weight",
         "field/legend/font-size",
+        "field/legend/line-height",
         "field/group/gap",
         "field/label-invalid",
         "field/label/gap",
@@ -3406,16 +3443,20 @@
         "field/border-checked",
         "field/background-checked",
         "field/label/font-size",
+        "field/label/line-height",
         "field/label/font-weight",
         "field/description/font-size",
+        "field/description/line-height",
         "field/description/font-weight",
         "field/description/label",
         "field/description/label-2",
         "field/separator/font-size",
+        "field/separator/line-height",
         "field/background",
         "field/label",
         "field/gap",
         "field/error/font-size",
+        "field/error/line-height",
         "field/error/font-weight",
         "field/error/label"
       ]
@@ -3427,8 +3468,10 @@
         "form/item/gap",
         "form/label/label",
         "form/description/font-size",
+        "form/description/line-height",
         "form/description/label",
         "form/message/font-size",
+        "form/message/line-height",
         "form/message/label"
       ]
     },
@@ -3458,6 +3501,7 @@
         "input-group/focus-ring-invalid",
         "input-group/gap",
         "input-group/font-size",
+        "input-group/line-height",
         "input-group/font-weight",
         "input-group/label",
         "input-group/disabled-opacity-disabled",
@@ -3486,6 +3530,7 @@
         "input-otp/disabled-opacity",
         "input-otp/slot/border",
         "input-otp/slot/font-size",
+        "input-otp/slot/line-height",
         "input-otp/slot/shadow",
         "input-otp/slot/border-invalid",
         "input-otp/slot/border-2",
@@ -3502,6 +3547,7 @@
       "keys": [
         "item/radius",
         "item/font-size",
+        "item/line-height",
         "item/duration",
         "item/border-focus",
         "item/background-hover",
@@ -3522,8 +3568,10 @@
         "item/content/gap",
         "item/title/gap",
         "item/title/font-size",
+        "item/title/line-height",
         "item/title/font-weight",
         "item/description/font-size",
+        "item/description/line-height",
         "item/description/font-weight",
         "item/description/label",
         "item/description/label-2",
@@ -3540,6 +3588,7 @@
         "kbd/radius",
         "kbd/background",
         "kbd/font-size",
+        "kbd/line-height",
         "kbd/font-weight",
         "kbd/label",
         "kbd/background-2",
@@ -3564,6 +3613,7 @@
       "description": "The marker component.",
       "keys": [
         "marker/font-size",
+        "marker/line-height",
         "marker/label",
         "marker/background"
       ]
@@ -3578,6 +3628,7 @@
         "menubar/shadow",
         "menubar/trigger/radius",
         "menubar/trigger/font-size",
+        "menubar/trigger/line-height",
         "menubar/trigger/font-weight",
         "menubar/trigger/background-focus",
         "menubar/trigger/label-focus",
@@ -3590,6 +3641,7 @@
         "menubar/item/gap",
         "menubar/item/radius",
         "menubar/item/font-size",
+        "menubar/item/line-height",
         "menubar/item/background-focus",
         "menubar/item/label-focus",
         "menubar/item/disabled-opacity-disabled",
@@ -3601,6 +3653,7 @@
         "menubar/checkbox/item/gap",
         "menubar/checkbox/item/radius",
         "menubar/checkbox/item/font-size",
+        "menubar/checkbox/item/line-height",
         "menubar/checkbox/item/background-focus",
         "menubar/checkbox/item/label-focus",
         "menubar/checkbox/item/disabled-opacity-disabled",
@@ -3609,17 +3662,21 @@
         "menubar/radio/item/gap",
         "menubar/radio/item/radius",
         "menubar/radio/item/font-size",
+        "menubar/radio/item/line-height",
         "menubar/radio/item/background-focus",
         "menubar/radio/item/label-focus",
         "menubar/radio/item/disabled-opacity-disabled",
         "menubar/radio/item/icon-size",
         "menubar/label/font-size",
+        "menubar/label/line-height",
         "menubar/label/font-weight",
         "menubar/separator/background",
         "menubar/shortcut/font-size",
+        "menubar/shortcut/line-height",
         "menubar/shortcut/label",
         "menubar/sub/trigger/radius",
         "menubar/sub/trigger/font-size",
+        "menubar/sub/trigger/line-height",
         "menubar/sub/trigger/background-focus",
         "menubar/sub/trigger/label-focus",
         "menubar/sub/trigger/background-open",
@@ -3647,10 +3704,12 @@
       "description": "The message component.",
       "keys": [
         "message/font-size",
+        "message/line-height",
         "message/gap",
         "message/gap-x",
         "message/author/font-weight",
         "message/time/font-size",
+        "message/time/line-height",
         "message/time/label"
       ]
     },
@@ -3663,6 +3722,7 @@
         "native-select/border",
         "native-select/padding-x",
         "native-select/font-size",
+        "native-select/line-height",
         "native-select/shadow",
         "native-select/background",
         "native-select/label",
@@ -3687,6 +3747,7 @@
         "navigation-menu/background",
         "navigation-menu/padding-x",
         "navigation-menu/font-size",
+        "navigation-menu/line-height",
         "navigation-menu/font-weight",
         "navigation-menu/background-hover",
         "navigation-menu/label-hover",
@@ -3711,6 +3772,7 @@
         "navigation-menu/link/gap",
         "navigation-menu/link/radius",
         "navigation-menu/link/font-size",
+        "navigation-menu/link/line-height",
         "navigation-menu/link/background-hover",
         "navigation-menu/link/label-hover",
         "navigation-menu/link/background-focus",
@@ -3747,6 +3809,7 @@
         "popover/content/shadow",
         "popover/header/gap",
         "popover/header/font-size",
+        "popover/header/line-height",
         "popover/title/font-weight",
         "popover/description/label"
       ]
@@ -3851,6 +3914,7 @@
         "sheet/title/font-weight",
         "sheet/title/label",
         "sheet/description/font-size",
+        "sheet/description/line-height",
         "sheet/description/label"
       ]
     },
@@ -3881,6 +3945,7 @@
         "sidebar/group/label/height",
         "sidebar/group/label/radius",
         "sidebar/group/label/font-size",
+        "sidebar/group/label/line-height",
         "sidebar/group/label/font-weight",
         "sidebar/group/label/label",
         "sidebar/group/label/focus-ring",
@@ -3899,10 +3964,12 @@
         "sidebar/group/action/focus-ring-focus",
         "sidebar/group/action/focus-ring-offset-focus",
         "sidebar/group/content/font-size",
+        "sidebar/group/content/line-height",
         "sidebar/menu/gap",
         "sidebar/gap",
         "sidebar/radius",
         "sidebar/font-size",
+        "sidebar/line-height",
         "sidebar/focus-ring",
         "sidebar/size",
         "sidebar/background-hover-2",
@@ -3926,8 +3993,11 @@
         "sidebar/outline/label-hover",
         "sidebar/default/height",
         "sidebar/default/font-size",
+        "sidebar/default/line-height",
         "sidebar/sm/font-size",
+        "sidebar/sm/line-height",
         "sidebar/lg/font-size",
+        "sidebar/lg/line-height",
         "sidebar/menu/action/radius",
         "sidebar/menu/action/label",
         "sidebar/menu/action/focus-ring",
@@ -3939,6 +4009,7 @@
         "sidebar/menu/action/focus-ring-offset-focus",
         "sidebar/menu/badge/radius",
         "sidebar/menu/badge/font-size",
+        "sidebar/menu/badge/line-height",
         "sidebar/menu/badge/font-weight",
         "sidebar/menu/badge/label",
         "sidebar/menu/skeleton/height",
@@ -3960,7 +4031,8 @@
         "sidebar/menu/sub/button/focus",
         "sidebar/menu/sub/button/focus-ring-focus",
         "sidebar/menu/sub/button/focus-ring-offset-focus",
-        "sidebar/font-size-2"
+        "sidebar/font-size-2",
+        "sidebar/line-height-2"
       ]
     },
     {
@@ -4019,6 +4091,7 @@
         "textarea/border",
         "textarea/padding-x",
         "textarea/font-size",
+        "textarea/line-height",
         "textarea/shadow",
         "textarea/label-placeholder",
         "textarea/border-focus",
@@ -4066,6 +4139,7 @@
         "toggle/gap",
         "toggle/radius",
         "toggle/font-size",
+        "toggle/line-height",
         "toggle/font-weight",
         "toggle/background-hover",
         "toggle/label-hover",
@@ -4699,6 +4773,12 @@
       "default": "type.heading.font-size"
     },
     {
+      "id": "alert-dialog/title/line-height",
+      "component": "alert-dialog",
+      "description": "Title line height of the alert dialog.",
+      "default": "type.heading.line-height"
+    },
+    {
       "id": "alert-dialog/title/font-weight",
       "component": "alert-dialog",
       "description": "Title font weight of the alert dialog.",
@@ -4709,6 +4789,12 @@
       "component": "alert-dialog",
       "description": "Description font size of the alert dialog.",
       "default": "type.body.font-size"
+    },
+    {
+      "id": "alert-dialog/description/line-height",
+      "component": "alert-dialog",
+      "description": "Description line height of the alert dialog.",
+      "default": "type.body.line-height"
     },
     {
       "id": "alert-dialog/description/label",
@@ -4751,6 +4837,12 @@
       "component": "alert",
       "description": "Font size of the alert.",
       "default": "type.body.font-size"
+    },
+    {
+      "id": "alert/line-height",
+      "component": "alert",
+      "description": "Line height of the alert.",
+      "default": "type.body.line-height"
     },
     {
       "id": "alert/icon-size",
@@ -4801,6 +4893,12 @@
       "default": "type.body.font-size"
     },
     {
+      "id": "alert/description/line-height",
+      "component": "alert",
+      "description": "Description line height of the alert.",
+      "default": "type.body.line-height"
+    },
+    {
       "id": "alert/description/label",
       "component": "alert",
       "description": "Description label of the alert.",
@@ -4823,6 +4921,12 @@
       "component": "attachment",
       "description": "Font size of the attachment.",
       "default": "type.body.font-size"
+    },
+    {
+      "id": "attachment/line-height",
+      "component": "attachment",
+      "description": "Line height of the attachment.",
+      "default": "type.body.line-height"
     },
     {
       "id": "attachment/background-hover",
@@ -4891,6 +4995,12 @@
       "default": "type.caption.font-size"
     },
     {
+      "id": "attachment/line-height-2",
+      "component": "attachment",
+      "description": "Line height 2 of the attachment.",
+      "default": "type.caption.line-height"
+    },
+    {
       "id": "avatar/size",
       "component": "avatar",
       "description": "Size of the avatar.",
@@ -4921,6 +5031,12 @@
       "default": "type.body.font-size"
     },
     {
+      "id": "avatar/fallback/line-height",
+      "component": "avatar",
+      "description": "Fallback line height of the avatar.",
+      "default": "type.body.line-height"
+    },
+    {
       "id": "avatar/fallback/label",
       "component": "avatar",
       "description": "Fallback label of the avatar.",
@@ -4931,6 +5047,12 @@
       "component": "avatar",
       "description": "Fallback font size 2 of the avatar.",
       "default": "type.caption.font-size"
+    },
+    {
+      "id": "avatar/fallback/line-height-2",
+      "component": "avatar",
+      "description": "Fallback line height 2 of the avatar.",
+      "default": "type.caption.line-height"
     },
     {
       "id": "avatar/badge/radius",
@@ -4987,6 +5109,12 @@
       "default": "type.body.font-size"
     },
     {
+      "id": "avatar/group/count/line-height",
+      "component": "avatar",
+      "description": "Group count line height of the avatar.",
+      "default": "type.body.line-height"
+    },
+    {
       "id": "avatar/group/count/label",
       "component": "avatar",
       "description": "Group count label of the avatar.",
@@ -5027,6 +5155,12 @@
       "component": "breadcrumb",
       "description": "List font size of the breadcrumb.",
       "default": "type.body.font-size"
+    },
+    {
+      "id": "breadcrumb/list/line-height",
+      "component": "breadcrumb",
+      "description": "List line height of the breadcrumb.",
+      "default": "type.body.line-height"
     },
     {
       "id": "breadcrumb/list/label",
@@ -5095,6 +5229,12 @@
       "default": "type.caption.font-size"
     },
     {
+      "id": "bubble/line-height",
+      "component": "bubble",
+      "description": "Line height of the bubble.",
+      "default": "type.caption.line-height"
+    },
+    {
       "id": "bubble/label",
       "component": "bubble",
       "description": "Label of the bubble.",
@@ -5111,6 +5251,12 @@
       "component": "bubble",
       "description": "Body font size of the bubble.",
       "default": "type.body.font-size"
+    },
+    {
+      "id": "bubble/body/line-height",
+      "component": "bubble",
+      "description": "Body line height of the bubble.",
+      "default": "type.body.line-height"
     },
     {
       "id": "button-group/gap",
@@ -5141,6 +5287,12 @@
       "component": "button-group",
       "description": "Text font size of the button group.",
       "default": "type.body.font-size"
+    },
+    {
+      "id": "button-group/text/line-height",
+      "component": "button-group",
+      "description": "Text line height of the button group.",
+      "default": "type.body.line-height"
     },
     {
       "id": "button-group/text/font-weight",
@@ -5237,6 +5389,12 @@
       "component": "calendar",
       "description": "Font size of the calendar.",
       "default": "type.body.font-size"
+    },
+    {
+      "id": "calendar/line-height",
+      "component": "calendar",
+      "description": "Line height of the calendar.",
+      "default": "type.body.line-height"
     },
     {
       "id": "calendar/font-weight",
@@ -5371,6 +5529,12 @@
       "default": "type.caption.font-size"
     },
     {
+      "id": "calendar/line-height-2",
+      "component": "calendar",
+      "description": "Line height 2 of the calendar.",
+      "default": "type.caption.line-height"
+    },
+    {
       "id": "card/gap",
       "component": "card",
       "description": "Gap of the card.",
@@ -5471,6 +5635,12 @@
       "component": "chart",
       "description": "Font size of the chart.",
       "default": "type.caption.font-size"
+    },
+    {
+      "id": "chart/line-height",
+      "component": "chart",
+      "description": "Line height of the chart.",
+      "default": "type.caption.line-height"
     },
     {
       "id": "chart/icon",
@@ -5659,6 +5829,12 @@
       "default": "type.body.font-size"
     },
     {
+      "id": "combobox/item/line-height",
+      "component": "combobox",
+      "description": "Item line height of the combobox.",
+      "default": "type.body.line-height"
+    },
+    {
       "id": "combobox/item/background",
       "component": "combobox",
       "description": "Item background of the combobox.",
@@ -5695,6 +5871,12 @@
       "default": "type.caption.font-size"
     },
     {
+      "id": "combobox/label/line-height",
+      "component": "combobox",
+      "description": "Label line height of the combobox.",
+      "default": "type.caption.line-height"
+    },
+    {
       "id": "combobox/label/label",
       "component": "combobox",
       "description": "Label label of the combobox.",
@@ -5713,10 +5895,22 @@
       "default": "type.body.font-size"
     },
     {
+      "id": "combobox/label/line-height-2",
+      "component": "combobox",
+      "description": "Label line height 2 of the combobox.",
+      "default": "type.body.line-height"
+    },
+    {
       "id": "combobox/empty/font-size",
       "component": "combobox",
       "description": "Empty font size of the combobox.",
       "default": "type.body.font-size"
+    },
+    {
+      "id": "combobox/empty/line-height",
+      "component": "combobox",
+      "description": "Empty line height of the combobox.",
+      "default": "type.body.line-height"
     },
     {
       "id": "combobox/empty/label",
@@ -5747,6 +5941,12 @@
       "component": "combobox",
       "description": "Chips font size of the combobox.",
       "default": "type.body.font-size"
+    },
+    {
+      "id": "combobox/chips/line-height",
+      "component": "combobox",
+      "description": "Chips line height of the combobox.",
+      "default": "type.body.line-height"
     },
     {
       "id": "combobox/chips/shadow",
@@ -5801,6 +6001,12 @@
       "component": "combobox",
       "description": "Chip font size of the combobox.",
       "default": "type.caption.font-size"
+    },
+    {
+      "id": "combobox/chip/line-height",
+      "component": "combobox",
+      "description": "Chip line height of the combobox.",
+      "default": "type.caption.line-height"
     },
     {
       "id": "combobox/chip/font-weight",
@@ -5887,6 +6093,12 @@
       "default": "type.body.font-size"
     },
     {
+      "id": "command/input/line-height",
+      "component": "command",
+      "description": "Input line height of the command.",
+      "default": "type.body.line-height"
+    },
+    {
       "id": "command/input/label-placeholder",
       "component": "command",
       "description": "Input label placeholder of the command.",
@@ -5905,6 +6117,12 @@
       "default": "type.body.font-size"
     },
     {
+      "id": "command/empty/line-height",
+      "component": "command",
+      "description": "Empty line height of the command.",
+      "default": "type.body.line-height"
+    },
+    {
       "id": "command/group/label",
       "component": "command",
       "description": "Group label of the command.",
@@ -5915,6 +6133,12 @@
       "component": "command",
       "description": "Group font size of the command.",
       "default": "type.caption.font-size"
+    },
+    {
+      "id": "command/group/line-height",
+      "component": "command",
+      "description": "Group line height of the command.",
+      "default": "type.caption.line-height"
     },
     {
       "id": "command/group/font-weight",
@@ -5953,6 +6177,12 @@
       "default": "type.body.font-size"
     },
     {
+      "id": "command/item/line-height",
+      "component": "command",
+      "description": "Item line height of the command.",
+      "default": "type.body.line-height"
+    },
+    {
       "id": "command/item/disabled-opacity-disabled",
       "component": "command",
       "description": "Item disabled opacity disabled of the command.",
@@ -5989,6 +6219,12 @@
       "default": "type.caption.font-size"
     },
     {
+      "id": "command/shortcut/line-height",
+      "component": "command",
+      "description": "Shortcut line height of the command.",
+      "default": "type.caption.line-height"
+    },
+    {
       "id": "command/shortcut/label",
       "component": "command",
       "description": "Shortcut label of the command.",
@@ -6005,6 +6241,12 @@
       "component": "context-menu",
       "description": "Sub trigger font size of the context menu.",
       "default": "type.body.font-size"
+    },
+    {
+      "id": "context-menu/sub/trigger/line-height",
+      "component": "context-menu",
+      "description": "Sub trigger line height of the context menu.",
+      "default": "type.body.line-height"
     },
     {
       "id": "context-menu/sub/trigger/background-focus",
@@ -6109,6 +6351,12 @@
       "default": "type.body.font-size"
     },
     {
+      "id": "context-menu/item/line-height",
+      "component": "context-menu",
+      "description": "Item line height of the context menu.",
+      "default": "type.body.line-height"
+    },
+    {
       "id": "context-menu/item/background-focus",
       "component": "context-menu",
       "description": "Item background focus of the context menu.",
@@ -6175,6 +6423,12 @@
       "default": "type.body.font-size"
     },
     {
+      "id": "context-menu/checkbox/item/line-height",
+      "component": "context-menu",
+      "description": "Checkbox item line height of the context menu.",
+      "default": "type.body.line-height"
+    },
+    {
       "id": "context-menu/checkbox/item/background-focus",
       "component": "context-menu",
       "description": "Checkbox item background focus of the context menu.",
@@ -6223,6 +6477,12 @@
       "default": "type.body.font-size"
     },
     {
+      "id": "context-menu/radio/item/line-height",
+      "component": "context-menu",
+      "description": "Radio item line height of the context menu.",
+      "default": "type.body.line-height"
+    },
+    {
       "id": "context-menu/radio/item/background-focus",
       "component": "context-menu",
       "description": "Radio item background focus of the context menu.",
@@ -6253,6 +6513,12 @@
       "default": "type.body.font-size"
     },
     {
+      "id": "context-menu/label/line-height",
+      "component": "context-menu",
+      "description": "Label line height of the context menu.",
+      "default": "type.body.line-height"
+    },
+    {
       "id": "context-menu/label/font-weight",
       "component": "context-menu",
       "description": "Label font weight of the context menu.",
@@ -6275,6 +6541,12 @@
       "component": "context-menu",
       "description": "Shortcut font size of the context menu.",
       "default": "type.caption.font-size"
+    },
+    {
+      "id": "context-menu/shortcut/line-height",
+      "component": "context-menu",
+      "description": "Shortcut line height of the context menu.",
+      "default": "type.caption.line-height"
     },
     {
       "id": "context-menu/shortcut/label",
@@ -6481,6 +6753,12 @@
       "default": "type.body.font-size"
     },
     {
+      "id": "drawer/description/line-height",
+      "component": "drawer",
+      "description": "Description line height of the drawer.",
+      "default": "type.body.line-height"
+    },
+    {
       "id": "drawer/description/label",
       "component": "drawer",
       "description": "Description label of the drawer.",
@@ -6601,6 +6879,12 @@
       "default": "type.heading.font-size"
     },
     {
+      "id": "empty/title/line-height",
+      "component": "empty",
+      "description": "Title line height of the empty.",
+      "default": "type.heading.line-height"
+    },
+    {
       "id": "empty/title/font-weight",
       "component": "empty",
       "description": "Title font weight of the empty.",
@@ -6637,6 +6921,12 @@
       "default": "type.body.font-size"
     },
     {
+      "id": "empty/content/line-height",
+      "component": "empty",
+      "description": "Content line height of the empty.",
+      "default": "type.body.line-height"
+    },
+    {
       "id": "field/set/gap",
       "component": "field",
       "description": "Set gap of the field.",
@@ -6653,6 +6943,12 @@
       "component": "field",
       "description": "Legend font size of the field.",
       "default": "type.body.font-size"
+    },
+    {
+      "id": "field/legend/line-height",
+      "component": "field",
+      "description": "Legend line height of the field.",
+      "default": "type.body.line-height"
     },
     {
       "id": "field/group/gap",
@@ -6703,6 +6999,12 @@
       "default": "type.body.font-size"
     },
     {
+      "id": "field/label/line-height",
+      "component": "field",
+      "description": "Label line height of the field.",
+      "default": "type.body.line-height"
+    },
+    {
       "id": "field/label/font-weight",
       "component": "field",
       "description": "Label font weight of the field.",
@@ -6713,6 +7015,12 @@
       "component": "field",
       "description": "Description font size of the field.",
       "default": "type.body.font-size"
+    },
+    {
+      "id": "field/description/line-height",
+      "component": "field",
+      "description": "Description line height of the field.",
+      "default": "type.body.line-height"
     },
     {
       "id": "field/description/font-weight",
@@ -6739,6 +7047,12 @@
       "default": "type.body.font-size"
     },
     {
+      "id": "field/separator/line-height",
+      "component": "field",
+      "description": "Separator line height of the field.",
+      "default": "type.body.line-height"
+    },
+    {
       "id": "field/background",
       "component": "field",
       "description": "Background of the field.",
@@ -6761,6 +7075,12 @@
       "component": "field",
       "description": "Error font size of the field.",
       "default": "type.body.font-size"
+    },
+    {
+      "id": "field/error/line-height",
+      "component": "field",
+      "description": "Error line height of the field.",
+      "default": "type.body.line-height"
     },
     {
       "id": "field/error/font-weight",
@@ -6793,6 +7113,12 @@
       "default": "type.body.font-size"
     },
     {
+      "id": "form/description/line-height",
+      "component": "form",
+      "description": "Description line height of the form.",
+      "default": "type.body.line-height"
+    },
+    {
       "id": "form/description/label",
       "component": "form",
       "description": "Description label of the form.",
@@ -6803,6 +7129,12 @@
       "component": "form",
       "description": "Message font size of the form.",
       "default": "type.body.font-size"
+    },
+    {
+      "id": "form/message/line-height",
+      "component": "form",
+      "description": "Message line height of the form.",
+      "default": "type.body.line-height"
     },
     {
       "id": "form/message/label",
@@ -6905,6 +7237,12 @@
       "component": "input-group",
       "description": "Font size of the input group.",
       "default": "type.body.font-size"
+    },
+    {
+      "id": "input-group/line-height",
+      "component": "input-group",
+      "description": "Line height of the input group.",
+      "default": "type.body.line-height"
     },
     {
       "id": "input-group/font-weight",
@@ -7039,6 +7377,12 @@
       "default": "type.body.font-size"
     },
     {
+      "id": "input-otp/slot/line-height",
+      "component": "input-otp",
+      "description": "Slot line height of the input otp.",
+      "default": "type.body.line-height"
+    },
+    {
       "id": "input-otp/slot/shadow",
       "component": "input-otp",
       "description": "Slot shadow of the input otp.",
@@ -7127,6 +7471,12 @@
       "component": "item",
       "description": "Font size of the item.",
       "default": "type.body.font-size"
+    },
+    {
+      "id": "item/line-height",
+      "component": "item",
+      "description": "Line height of the item.",
+      "default": "type.body.line-height"
     },
     {
       "id": "item/duration",
@@ -7249,6 +7599,12 @@
       "default": "type.body.font-size"
     },
     {
+      "id": "item/title/line-height",
+      "component": "item",
+      "description": "Title line height of the item.",
+      "default": "type.body.line-height"
+    },
+    {
       "id": "item/title/font-weight",
       "component": "item",
       "description": "Title font weight of the item.",
@@ -7259,6 +7615,12 @@
       "component": "item",
       "description": "Description font size of the item.",
       "default": "type.body.font-size"
+    },
+    {
+      "id": "item/description/line-height",
+      "component": "item",
+      "description": "Description line height of the item.",
+      "default": "type.body.line-height"
     },
     {
       "id": "item/description/font-weight",
@@ -7319,6 +7681,12 @@
       "component": "kbd",
       "description": "Font size of the kbd.",
       "default": "type.caption.font-size"
+    },
+    {
+      "id": "kbd/line-height",
+      "component": "kbd",
+      "description": "Line height of the kbd.",
+      "default": "type.caption.line-height"
     },
     {
       "id": "kbd/font-weight",
@@ -7393,6 +7761,12 @@
       "default": "type.caption.font-size"
     },
     {
+      "id": "marker/line-height",
+      "component": "marker",
+      "description": "Line height of the marker.",
+      "default": "type.caption.line-height"
+    },
+    {
       "id": "marker/label",
       "component": "marker",
       "description": "Label of the marker.",
@@ -7439,6 +7813,12 @@
       "component": "menubar",
       "description": "Trigger font size of the menubar.",
       "default": "type.body.font-size"
+    },
+    {
+      "id": "menubar/trigger/line-height",
+      "component": "menubar",
+      "description": "Trigger line height of the menubar.",
+      "default": "type.body.line-height"
     },
     {
       "id": "menubar/trigger/font-weight",
@@ -7513,6 +7893,12 @@
       "default": "type.body.font-size"
     },
     {
+      "id": "menubar/item/line-height",
+      "component": "menubar",
+      "description": "Item line height of the menubar.",
+      "default": "type.body.line-height"
+    },
+    {
       "id": "menubar/item/background-focus",
       "component": "menubar",
       "description": "Item background focus of the menubar.",
@@ -7579,6 +7965,12 @@
       "default": "type.body.font-size"
     },
     {
+      "id": "menubar/checkbox/item/line-height",
+      "component": "menubar",
+      "description": "Checkbox item line height of the menubar.",
+      "default": "type.body.line-height"
+    },
+    {
       "id": "menubar/checkbox/item/background-focus",
       "component": "menubar",
       "description": "Checkbox item background focus of the menubar.",
@@ -7627,6 +8019,12 @@
       "default": "type.body.font-size"
     },
     {
+      "id": "menubar/radio/item/line-height",
+      "component": "menubar",
+      "description": "Radio item line height of the menubar.",
+      "default": "type.body.line-height"
+    },
+    {
       "id": "menubar/radio/item/background-focus",
       "component": "menubar",
       "description": "Radio item background focus of the menubar.",
@@ -7657,6 +8055,12 @@
       "default": "type.body.font-size"
     },
     {
+      "id": "menubar/label/line-height",
+      "component": "menubar",
+      "description": "Label line height of the menubar.",
+      "default": "type.body.line-height"
+    },
+    {
       "id": "menubar/label/font-weight",
       "component": "menubar",
       "description": "Label font weight of the menubar.",
@@ -7675,6 +8079,12 @@
       "default": "type.caption.font-size"
     },
     {
+      "id": "menubar/shortcut/line-height",
+      "component": "menubar",
+      "description": "Shortcut line height of the menubar.",
+      "default": "type.caption.line-height"
+    },
+    {
       "id": "menubar/shortcut/label",
       "component": "menubar",
       "description": "Shortcut label of the menubar.",
@@ -7691,6 +8101,12 @@
       "component": "menubar",
       "description": "Sub trigger font size of the menubar.",
       "default": "type.body.font-size"
+    },
+    {
+      "id": "menubar/sub/trigger/line-height",
+      "component": "menubar",
+      "description": "Sub trigger line height of the menubar.",
+      "default": "type.body.line-height"
     },
     {
       "id": "menubar/sub/trigger/background-focus",
@@ -7783,6 +8199,12 @@
       "default": "type.body.font-size"
     },
     {
+      "id": "message/line-height",
+      "component": "message",
+      "description": "Line height of the message.",
+      "default": "type.body.line-height"
+    },
+    {
       "id": "message/gap",
       "component": "message",
       "description": "Gap of the message.",
@@ -7805,6 +8227,12 @@
       "component": "message",
       "description": "Time font size of the message.",
       "default": "type.caption.font-size"
+    },
+    {
+      "id": "message/time/line-height",
+      "component": "message",
+      "description": "Time line height of the message.",
+      "default": "type.caption.line-height"
     },
     {
       "id": "message/time/label",
@@ -7841,6 +8269,12 @@
       "component": "native-select",
       "description": "Font size of the native select.",
       "default": "type.body.font-size"
+    },
+    {
+      "id": "native-select/line-height",
+      "component": "native-select",
+      "description": "Line height of the native select.",
+      "default": "type.body.line-height"
     },
     {
       "id": "native-select/shadow",
@@ -7949,6 +8383,12 @@
       "component": "navigation-menu",
       "description": "Font size of the navigation menu.",
       "default": "type.body.font-size"
+    },
+    {
+      "id": "navigation-menu/line-height",
+      "component": "navigation-menu",
+      "description": "Line height of the navigation menu.",
+      "default": "type.body.line-height"
     },
     {
       "id": "navigation-menu/font-weight",
@@ -8095,6 +8535,12 @@
       "default": "type.body.font-size"
     },
     {
+      "id": "navigation-menu/link/line-height",
+      "component": "navigation-menu",
+      "description": "Link line height of the navigation menu.",
+      "default": "type.body.line-height"
+    },
+    {
       "id": "navigation-menu/link/background-hover",
       "component": "navigation-menu",
       "description": "Link background hover of the navigation menu.",
@@ -8237,6 +8683,12 @@
       "component": "popover",
       "description": "Header font size of the popover.",
       "default": "type.body.font-size"
+    },
+    {
+      "id": "popover/header/line-height",
+      "component": "popover",
+      "description": "Header line height of the popover.",
+      "default": "type.body.line-height"
     },
     {
       "id": "popover/title/font-weight",
@@ -8611,6 +9063,12 @@
       "default": "type.body.font-size"
     },
     {
+      "id": "sheet/description/line-height",
+      "component": "sheet",
+      "description": "Description line height of the sheet.",
+      "default": "type.body.line-height"
+    },
+    {
       "id": "sheet/description/label",
       "component": "sheet",
       "description": "Description label of the sheet.",
@@ -8755,6 +9213,12 @@
       "default": "type.caption.font-size"
     },
     {
+      "id": "sidebar/group/label/line-height",
+      "component": "sidebar",
+      "description": "Group label line height of the sidebar.",
+      "default": "type.caption.line-height"
+    },
+    {
       "id": "sidebar/group/label/font-weight",
       "component": "sidebar",
       "description": "Group label font weight of the sidebar.",
@@ -8863,6 +9327,12 @@
       "default": "type.body.font-size"
     },
     {
+      "id": "sidebar/group/content/line-height",
+      "component": "sidebar",
+      "description": "Group content line height of the sidebar.",
+      "default": "type.body.line-height"
+    },
+    {
       "id": "sidebar/menu/gap",
       "component": "sidebar",
       "description": "Menu gap of the sidebar.",
@@ -8885,6 +9355,12 @@
       "component": "sidebar",
       "description": "Font size of the sidebar.",
       "default": "type.body.font-size"
+    },
+    {
+      "id": "sidebar/line-height",
+      "component": "sidebar",
+      "description": "Line height of the sidebar.",
+      "default": "type.body.line-height"
     },
     {
       "id": "sidebar/focus-ring",
@@ -9025,16 +9501,34 @@
       "default": "type.body.font-size"
     },
     {
+      "id": "sidebar/default/line-height",
+      "component": "sidebar",
+      "description": "Default line height of the sidebar.",
+      "default": "type.body.line-height"
+    },
+    {
       "id": "sidebar/sm/font-size",
       "component": "sidebar",
       "description": "Sm font size of the sidebar.",
       "default": "type.caption.font-size"
     },
     {
+      "id": "sidebar/sm/line-height",
+      "component": "sidebar",
+      "description": "Sm line height of the sidebar.",
+      "default": "type.caption.line-height"
+    },
+    {
       "id": "sidebar/lg/font-size",
       "component": "sidebar",
       "description": "Lg font size of the sidebar.",
       "default": "type.body.font-size"
+    },
+    {
+      "id": "sidebar/lg/line-height",
+      "component": "sidebar",
+      "description": "Lg line height of the sidebar.",
+      "default": "type.body.line-height"
     },
     {
       "id": "sidebar/menu/action/radius",
@@ -9101,6 +9595,12 @@
       "component": "sidebar",
       "description": "Menu badge font size of the sidebar.",
       "default": "type.caption.font-size"
+    },
+    {
+      "id": "sidebar/menu/badge/line-height",
+      "component": "sidebar",
+      "description": "Menu badge line height of the sidebar.",
+      "default": "type.caption.line-height"
     },
     {
       "id": "sidebar/menu/badge/font-weight",
@@ -9233,6 +9733,12 @@
       "component": "sidebar",
       "description": "Font size 2 of the sidebar.",
       "default": "type.caption.font-size"
+    },
+    {
+      "id": "sidebar/line-height-2",
+      "component": "sidebar",
+      "description": "Line height 2 of the sidebar.",
+      "default": "type.caption.line-height"
     },
     {
       "id": "skeleton/radius",
@@ -9511,6 +10017,12 @@
       "default": "type.body.font-size"
     },
     {
+      "id": "textarea/line-height",
+      "component": "textarea",
+      "description": "Line height of the textarea.",
+      "default": "type.body.line-height"
+    },
+    {
       "id": "textarea/shadow",
       "component": "textarea",
       "description": "Shadow of the textarea.",
@@ -9683,6 +10195,12 @@
       "component": "toggle",
       "description": "Font size of the toggle.",
       "default": "type.body.font-size"
+    },
+    {
+      "id": "toggle/line-height",
+      "component": "toggle",
+      "description": "Line height of the toggle.",
+      "default": "type.body.line-height"
     },
     {
       "id": "toggle/font-weight",

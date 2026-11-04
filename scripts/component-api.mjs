@@ -159,8 +159,16 @@ function map(util, comp) {
     // shadcn's text sizes already point at the scheme's type tokens (SHADCN_SCALE): same value
     const v = SHADCN_SCALE[`--text-${m[1]}`]?.match(/var\(--(.+)\)/)?.[1];
     const sem = v && css2path(v);
+    const lh =
+      SHADCN_SCALE[`--text-${m[1]}--line-height`]?.match(/var\(--(.+)\)/)?.[1];
+    const lsem = lh && css2path(lh);
     return sem
-      ? { name: "font-size", sem, out: (x) => `text-[length:var(${x})]` }
+      ? {
+          name: "font-size",
+          sem,
+          ...(lsem && { also: { name: "line-height", sem: lsem } }),
+          out: (x) => `text-[length:var(${x})]`,
+        }
       : null;
   }
   if ((m = util.match(/^font-(normal|medium|semibold|bold)$/))) {
@@ -436,22 +444,28 @@ for (const f of files) {
         .filter(Boolean)
         .map((v) => STATE.find(([re]) => re.test(v))?.[1])
         .filter(Boolean);
-      const name = [hit.name, ...new Set(states)].join("-");
-      const base = [
-        "component",
-        comp,
-        ...(part ? part.split("-") : []),
-        name,
-      ].join(".");
-      let path = keyOf.get(`${base}|${hit.sem}`);
-      if (!path) {
-        path = base;
-        for (let n = 2; made.has(path) && made.get(path) !== hit.sem; n++)
-          path = `${base}-${n}`;
-        made.set(path, hit.sem);
-        keyOf.set(`${base}|${hit.sem}`, path);
-      }
+      const own = (hname, sem) => {
+        const base = [
+          "component",
+          comp,
+          ...(part ? part.split("-") : []),
+          [hname, ...new Set(states)].join("-"),
+        ].join(".");
+        let path = keyOf.get(`${base}|${sem}`);
+        if (!path) {
+          path = base;
+          for (let n = 2; made.has(path) && made.get(path) !== sem; n++)
+            path = `${base}-${n}`;
+          made.set(path, sem);
+          keyOf.set(`${base}|${sem}`, path);
+        }
+        return path;
+      };
+      const path = own(hit.name, hit.sem);
       changed = true;
+      // a text size brings its line height (text-sm sets both); an explicit /leading on the class wins
+      if (hit.also && !tint)
+        return `${prefix}${hit.out(cssVar(path))}/[var(${cssVar(own(hit.also.name, hit.also.sem))})]${important}`;
       return `${prefix}${hit.out(cssVar(path))}${tint ? `/${tint}` : ""}${important}`;
     });
     if (!changed) continue;

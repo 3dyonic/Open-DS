@@ -29,7 +29,7 @@ function Attachment({
       data-slot="attachment"
       aria-label={`${name}, ${type}, ${size}`}
       className={cn(
-        "flex w-fit max-w-full items-center gap-3 rounded-[var(--attachment-radius)] border bg-[color:var(--attachment-background)] px-3 py-2 text-[length:var(--attachment-font-size)] outline-none hover:bg-[color:var(--attachment-background-hover)] focus-visible:ring-[length:var(--attachment-focus)] focus-visible:ring-[color:var(--attachment-focus-ring-focus)] focus-visible:ring-offset-2 focus-visible:ring-offset-[color:var(--attachment-focus-ring-offset-focus)]",
+        "flex w-fit max-w-full items-center gap-3 rounded-[var(--attachment-radius)] border bg-[color:var(--attachment-background)] px-3 py-2 text-[length:var(--attachment-font-size)]/[var(--attachment-line-height)] outline-none hover:bg-[color:var(--attachment-background-hover)] focus-visible:ring-[length:var(--attachment-focus)] focus-visible:ring-[color:var(--attachment-focus-ring-focus)] focus-visible:ring-offset-2 focus-visible:ring-offset-[color:var(--attachment-focus-ring-offset-focus)]",
         className,
       )}
       {...props}
@@ -42,7 +42,7 @@ function Attachment({
       </span>
       <span className="flex min-w-0 flex-col">
         <span className="truncate [font-weight:var(--attachment-font-weight)]">{name}</span>
-        <span className="text-[length:var(--attachment-font-size-2)] text-[color:var(--attachment-label)]">
+        <span className="text-[length:var(--attachment-font-size-2)]/[var(--attachment-line-height-2)] text-[color:var(--attachment-label)]">
           {type} · {size}
         </span>
       </span>

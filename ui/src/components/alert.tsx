@@ -11,7 +11,7 @@ import { cva, type VariantProps } from "class-variance-authority";
 import { cn } from "../lib/utils";
 
 const alertVariants = cva(
-  "relative grid w-full grid-cols-[0_1fr] items-start gap-y-0.5 rounded-[var(--alert-radius)] border px-[var(--alert-padding-x)] py-3 text-[length:var(--alert-font-size)] has-[>svg]:grid-cols-[calc(var(--spacing)*4)_1fr] has-[>svg]:gap-x-3 [&>svg]:size-[var(--alert-icon-size)] [&>svg]:translate-y-0.5 [&>svg]:text-current",
+  "relative grid w-full grid-cols-[0_1fr] items-start gap-y-0.5 rounded-[var(--alert-radius)] border px-[var(--alert-padding-x)] py-3 text-[length:var(--alert-font-size)]/[var(--alert-line-height)] has-[>svg]:grid-cols-[calc(var(--spacing)*4)_1fr] has-[>svg]:gap-x-3 [&>svg]:size-[var(--alert-icon-size)] [&>svg]:translate-y-0.5 [&>svg]:text-current",
   {
     variants: {
       variant: {
@@ -48,7 +48,7 @@ function AlertDescription({ className, ...props }: React.ComponentProps<"div">) 
     <div
       data-slot="alert-description"
       className={cn(
-        "col-start-2 grid justify-items-start gap-[var(--alert-description-gap)] text-[length:var(--alert-description-font-size)] text-[color:var(--alert-description-label)] [&_p]:leading-relaxed",
+        "col-start-2 grid justify-items-start gap-[var(--alert-description-gap)] text-[length:var(--alert-description-font-size)]/[var(--alert-description-line-height)] text-[color:var(--alert-description-label)] [&_p]:leading-relaxed",
         className,
       )}
       {...props}

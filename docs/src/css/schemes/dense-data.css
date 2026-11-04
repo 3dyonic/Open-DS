@@ -164,46 +164,60 @@ html[data-scheme="dense-data"] {
   --alert-dialog-header-gap-x: var(--space-gap-section); /** Header gap x of the alert dialog. */
   --alert-dialog-footer-gap: var(--space-gap-default); /** Footer gap of the alert dialog. */
   --alert-dialog-title-font-size: var(--type-heading-font-size); /** Title font size of the alert dialog. */
+  --alert-dialog-title-line-height: var(--type-heading-line-height); /** Title line height of the alert dialog. */
   --alert-dialog-title-font-weight: var(--type-title-font-weight); /** Title font weight of the alert dialog. */
   --alert-dialog-description-font-size: var(--type-body-font-size); /** Description font size of the alert dialog. */
+  --alert-dialog-description-line-height: var(--type-body-line-height); /** Description line height of the alert dialog. */
   --alert-dialog-media-size: var(--size-control-default); /** Media size of the alert dialog. */
   --alert-padding-x: var(--space-inset-container); /** Padding x of the alert. */
   --alert-font-size: var(--type-body-font-size); /** Font size of the alert. */
+  --alert-line-height: var(--type-body-line-height); /** Line height of the alert. */
   --alert-icon-size: var(--size-icon); /** Icon size of the alert. */
   --alert-title-font-weight: var(--type-label-font-weight); /** Title font weight of the alert. */
   --alert-description-gap: var(--space-gap-tight); /** Description gap of the alert. */
   --alert-description-font-size: var(--type-body-font-size); /** Description font size of the alert. */
+  --alert-description-line-height: var(--type-body-line-height); /** Description line height of the alert. */
   --attachment-font-size: var(--type-body-font-size); /** Font size of the attachment. */
+  --attachment-line-height: var(--type-body-line-height); /** Line height of the attachment. */
   --attachment-focus: var(--border-width-focus); /** Focus of the attachment. */
   --attachment-size: var(--size-control-default); /** Size of the attachment. */
   --attachment-icon-size: var(--size-icon); /** Icon size of the attachment. */
   --attachment-font-weight: var(--type-label-font-weight); /** Font weight of the attachment. */
   --attachment-font-size-2: var(--type-caption-font-size); /** Font size 2 of the attachment. */
+  --attachment-line-height-2: var(--type-caption-line-height); /** Line height 2 of the attachment. */
   --avatar-size: var(--size-control-default); /** Size of the avatar. */
   --avatar-radius: var(--radius-round); /** Radius of the avatar. */
   --avatar-fallback-radius: var(--radius-round); /** Fallback radius of the avatar. */
   --avatar-fallback-font-size: var(--type-body-font-size); /** Fallback font size of the avatar. */
+  --avatar-fallback-line-height: var(--type-body-line-height); /** Fallback line height of the avatar. */
   --avatar-fallback-font-size-2: var(--type-caption-font-size); /** Fallback font size 2 of the avatar. */
+  --avatar-fallback-line-height-2: var(--type-caption-line-height); /** Fallback line height 2 of the avatar. */
   --avatar-badge-radius: var(--radius-round); /** Badge radius of the avatar. */
   --avatar-group-count-size: var(--size-control-default); /** Group count size of the avatar. */
   --avatar-group-count-radius: var(--radius-round); /** Group count radius of the avatar. */
   --avatar-group-count-font-size: var(--type-body-font-size); /** Group count font size of the avatar. */
+  --avatar-group-count-line-height: var(--type-body-line-height); /** Group count line height of the avatar. */
   --avatar-group-count-icon-size: var(--size-icon); /** Group count icon size of the avatar. */
   --breadcrumb-list-font-size: var(--type-body-font-size); /** List font size of the breadcrumb. */
+  --breadcrumb-list-line-height: var(--type-body-line-height); /** List line height of the breadcrumb. */
   --breadcrumb-page-font-weight: var(--type-body-font-weight); /** Page font weight of the breadcrumb. */
   --breadcrumb-icon-size: var(--size-icon); /** Icon size of the breadcrumb. */
   --bubble-gap: var(--space-gap-tight); /** Gap of the bubble. */
   --bubble-font-size: var(--type-caption-font-size); /** Font size of the bubble. */
+  --bubble-line-height: var(--type-caption-line-height); /** Line height of the bubble. */
   --bubble-body-font-size: var(--type-body-font-size); /** Body font size of the bubble. */
+  --bubble-body-line-height: var(--type-body-line-height); /** Body line height of the bubble. */
   --button-group-gap: var(--space-gap-default); /** Gap of the button group. */
   --button-group-text-gap: var(--space-gap-default); /** Text gap of the button group. */
   --button-group-text-font-size: var(--type-body-font-size); /** Text font size of the button group. */
+  --button-group-text-line-height: var(--type-body-line-height); /** Text line height of the button group. */
   --button-group-text-font-weight: var(--type-label-font-weight); /** Text font weight of the button group. */
   --button-group-text-icon-size: var(--size-icon); /** Text icon size of the button group. */
   --calendar-gap: var(--space-gap-group); /** Gap of the calendar. */
   --calendar-gap-2: var(--space-gap-tight); /** Gap 2 of the calendar. */
   --calendar-disabled-opacity-disabled: var(--opacity-disabled); /** Disabled opacity disabled of the calendar. */
   --calendar-font-size: var(--type-body-font-size); /** Font size of the calendar. */
+  --calendar-line-height: var(--type-body-line-height); /** Line height of the calendar. */
   --calendar-font-weight: var(--type-label-font-weight); /** Font weight of the calendar. */
   --calendar-focus: var(--border-width-focus); /** Focus of the calendar. */
   --calendar-height: var(--size-control-default); /** Height of the calendar. */
@@ -211,11 +225,13 @@ html[data-scheme="dense-data"] {
   --calendar-disabled-opacity: var(--opacity-disabled); /** Disabled opacity of the calendar. */
   --calendar-icon-size: var(--size-icon); /** Icon size of the calendar. */
   --calendar-font-size-2: var(--type-caption-font-size); /** Font size 2 of the calendar. */
+  --calendar-line-height-2: var(--type-caption-line-height); /** Line height 2 of the calendar. */
   --carousel-previous-size: var(--size-control-default); /** Previous size of the carousel. */
   --carousel-previous-radius: var(--radius-round); /** Previous radius of the carousel. */
   --carousel-next-size: var(--size-control-default); /** Next size of the carousel. */
   --carousel-next-radius: var(--radius-round); /** Next radius of the carousel. */
   --chart-font-size: var(--type-caption-font-size); /** Font size of the chart. */
+  --chart-line-height: var(--type-caption-line-height); /** Line height of the chart. */
   --chart-font-weight: var(--type-label-font-weight); /** Font weight of the chart. */
   --chart-gap: var(--space-gap-default); /** Gap of the chart. */
   --chart-gap-2: var(--space-gap-group); /** Gap 2 of the chart. */
@@ -228,51 +244,68 @@ html[data-scheme="dense-data"] {
   --combobox-content-height: var(--size-control-default); /** Content height of the combobox. */
   --combobox-item-gap: var(--space-gap-default); /** Item gap of the combobox. */
   --combobox-item-font-size: var(--type-body-font-size); /** Item font size of the combobox. */
+  --combobox-item-line-height: var(--type-body-line-height); /** Item line height of the combobox. */
   --combobox-item-disabled-opacity-disabled: var(--opacity-disabled); /** Item disabled opacity disabled of the combobox. */
   --combobox-item-icon-size: var(--size-icon); /** Item icon size of the combobox. */
   --combobox-icon-size: var(--size-icon); /** Icon size of the combobox. */
   --combobox-label-font-size: var(--type-caption-font-size); /** Label font size of the combobox. */
+  --combobox-label-line-height: var(--type-caption-line-height); /** Label line height of the combobox. */
   --combobox-label-padding-x: var(--space-inset-control-x); /** Label padding x of the combobox. */
   --combobox-label-font-size-2: var(--type-body-font-size); /** Label font size 2 of the combobox. */
+  --combobox-label-line-height-2: var(--type-body-line-height); /** Label line height 2 of the combobox. */
   --combobox-empty-font-size: var(--type-body-font-size); /** Empty font size of the combobox. */
+  --combobox-empty-line-height: var(--type-body-line-height); /** Empty line height of the combobox. */
   --combobox-chips-font-size: var(--type-body-font-size); /** Chips font size of the combobox. */
+  --combobox-chips-line-height: var(--type-body-line-height); /** Chips line height of the combobox. */
   --combobox-chip-gap: var(--space-gap-tight); /** Chip gap of the combobox. */
   --combobox-chip-font-size: var(--type-caption-font-size); /** Chip font size of the combobox. */
+  --combobox-chip-line-height: var(--type-caption-line-height); /** Chip line height of the combobox. */
   --combobox-chip-font-weight: var(--type-label-font-weight); /** Chip font weight of the combobox. */
   --combobox-chip-disabled-opacity: var(--opacity-disabled); /** Chip disabled opacity of the combobox. */
   --combobox-disabled-opacity: var(--opacity-disabled); /** Disabled opacity of the combobox. */
   --command-font-weight: var(--type-label-font-weight); /** Font weight of the command. */
   --command-input-wrapper-gap: var(--space-gap-default); /** Input wrapper gap of the command. */
   --command-input-font-size: var(--type-body-font-size); /** Input font size of the command. */
+  --command-input-line-height: var(--type-body-line-height); /** Input line height of the command. */
   --command-input-disabled-opacity-disabled: var(--opacity-disabled); /** Input disabled opacity disabled of the command. */
   --command-icon-size: var(--size-icon); /** Icon size of the command. */
   --command-disabled-opacity: var(--opacity-disabled); /** Disabled opacity of the command. */
   --command-empty-font-size: var(--type-body-font-size); /** Empty font size of the command. */
+  --command-empty-line-height: var(--type-body-line-height); /** Empty line height of the command. */
   --command-group-font-size: var(--type-caption-font-size); /** Group font size of the command. */
+  --command-group-line-height: var(--type-caption-line-height); /** Group line height of the command. */
   --command-group-font-weight: var(--type-label-font-weight); /** Group font weight of the command. */
   --command-item-gap: var(--space-gap-default); /** Item gap of the command. */
   --command-item-font-size: var(--type-body-font-size); /** Item font size of the command. */
+  --command-item-line-height: var(--type-body-line-height); /** Item line height of the command. */
   --command-item-disabled-opacity-disabled: var(--opacity-disabled); /** Item disabled opacity disabled of the command. */
   --command-item-icon-size: var(--size-icon); /** Item icon size of the command. */
   --command-shortcut-font-size: var(--type-caption-font-size); /** Shortcut font size of the command. */
+  --command-shortcut-line-height: var(--type-caption-line-height); /** Shortcut line height of the command. */
   --context-menu-sub-trigger-font-size: var(--type-body-font-size); /** Sub trigger font size of the context menu. */
+  --context-menu-sub-trigger-line-height: var(--type-body-line-height); /** Sub trigger line height of the context menu. */
   --context-menu-sub-trigger-icon-size: var(--size-icon); /** Sub trigger icon size of the context menu. */
   --context-menu-item-gap: var(--space-gap-default); /** Item gap of the context menu. */
   --context-menu-item-font-size: var(--type-body-font-size); /** Item font size of the context menu. */
+  --context-menu-item-line-height: var(--type-body-line-height); /** Item line height of the context menu. */
   --context-menu-item-disabled-opacity-disabled: var(--opacity-disabled); /** Item disabled opacity disabled of the context menu. */
   --context-menu-item-icon-size: var(--size-icon); /** Item icon size of the context menu. */
   --context-menu-checkbox-item-gap: var(--space-gap-default); /** Checkbox item gap of the context menu. */
   --context-menu-checkbox-item-font-size: var(--type-body-font-size); /** Checkbox item font size of the context menu. */
+  --context-menu-checkbox-item-line-height: var(--type-body-line-height); /** Checkbox item line height of the context menu. */
   --context-menu-checkbox-item-disabled-opacity-disabled: var(--opacity-disabled); /** Checkbox item disabled opacity disabled of the context menu. */
   --context-menu-checkbox-item-icon-size: var(--size-icon); /** Checkbox item icon size of the context menu. */
   --context-menu-icon-size: var(--size-icon); /** Icon size of the context menu. */
   --context-menu-radio-item-gap: var(--space-gap-default); /** Radio item gap of the context menu. */
   --context-menu-radio-item-font-size: var(--type-body-font-size); /** Radio item font size of the context menu. */
+  --context-menu-radio-item-line-height: var(--type-body-line-height); /** Radio item line height of the context menu. */
   --context-menu-radio-item-disabled-opacity-disabled: var(--opacity-disabled); /** Radio item disabled opacity disabled of the context menu. */
   --context-menu-radio-item-icon-size: var(--size-icon); /** Radio item icon size of the context menu. */
   --context-menu-label-font-size: var(--type-body-font-size); /** Label font size of the context menu. */
+  --context-menu-label-line-height: var(--type-body-line-height); /** Label line height of the context menu. */
   --context-menu-label-font-weight: var(--type-label-font-weight); /** Label font weight of the context menu. */
   --context-menu-shortcut-font-size: var(--type-caption-font-size); /** Shortcut font size of the context menu. */
+  --context-menu-shortcut-line-height: var(--type-caption-line-height); /** Shortcut line height of the context menu. */
   --data-table-gap: var(--space-gap-tight); /** Gap of the data table. */
   --data-table-gap-2: var(--space-gap-default); /** Gap 2 of the data table. */
   --date-picker-font-weight: var(--type-body-font-weight); /** Font weight of the date picker. */
@@ -291,6 +324,7 @@ html[data-scheme="dense-data"] {
   --drawer-footer-padding: var(--space-inset-container); /** Footer padding of the drawer. */
   --drawer-title-font-weight: var(--type-title-font-weight); /** Title font weight of the drawer. */
   --drawer-description-font-size: var(--type-body-font-size); /** Description font size of the drawer. */
+  --drawer-description-line-height: var(--type-body-line-height); /** Description line height of the drawer. */
   --dropdown-menu-content-border-width: var(--border-width-default); /** Content border width of the dropdown menu. */
   --dropdown-menu-item-gap: var(--space-gap-default); /** Item gap of the dropdown menu. */
   --dropdown-menu-item-padding-x: var(--space-inset-cell-x); /** Item padding x of the dropdown menu. */
@@ -300,32 +334,42 @@ html[data-scheme="dense-data"] {
   --empty-gap: var(--space-gap-section); /** Gap of the empty. */
   --empty-header-gap: var(--space-gap-default); /** Header gap of the empty. */
   --empty-title-font-size: var(--type-heading-font-size); /** Title font size of the empty. */
+  --empty-title-line-height: var(--type-heading-line-height); /** Title line height of the empty. */
   --empty-title-font-weight: var(--type-label-font-weight); /** Title font weight of the empty. */
   --empty-description-font-size: var(--type-body-font-size); /** Description font size of the empty. */
   --empty-content-gap: var(--space-gap-group); /** Content gap of the empty. */
   --empty-content-font-size: var(--type-body-font-size); /** Content font size of the empty. */
+  --empty-content-line-height: var(--type-body-line-height); /** Content line height of the empty. */
   --field-set-gap: var(--space-gap-section); /** Set gap of the field. */
   --field-legend-font-weight: var(--type-label-font-weight); /** Legend font weight of the field. */
   --field-legend-font-size: var(--type-body-font-size); /** Legend font size of the field. */
+  --field-legend-line-height: var(--type-body-line-height); /** Legend line height of the field. */
   --field-group-gap: var(--space-gap-group); /** Group gap of the field. */
   --field-label-gap: var(--space-gap-default); /** Label gap of the field. */
   --field-label-disabled-opacity-disabled: var(--opacity-disabled); /** Label disabled opacity disabled of the field. */
   --field-label-font-size: var(--type-body-font-size); /** Label font size of the field. */
+  --field-label-line-height: var(--type-body-line-height); /** Label line height of the field. */
   --field-label-font-weight: var(--type-label-font-weight); /** Label font weight of the field. */
   --field-description-font-size: var(--type-body-font-size); /** Description font size of the field. */
+  --field-description-line-height: var(--type-body-line-height); /** Description line height of the field. */
   --field-description-font-weight: var(--type-body-font-weight); /** Description font weight of the field. */
   --field-separator-font-size: var(--type-body-font-size); /** Separator font size of the field. */
+  --field-separator-line-height: var(--type-body-line-height); /** Separator line height of the field. */
   --field-gap: var(--space-gap-tight); /** Gap of the field. */
   --field-error-font-size: var(--type-body-font-size); /** Error font size of the field. */
+  --field-error-line-height: var(--type-body-line-height); /** Error line height of the field. */
   --field-error-font-weight: var(--type-body-font-weight); /** Error font weight of the field. */
   --form-item-gap: var(--space-gap-default); /** Item gap of the form. */
   --form-description-font-size: var(--type-body-font-size); /** Description font size of the form. */
+  --form-description-line-height: var(--type-body-line-height); /** Description line height of the form. */
   --form-message-font-size: var(--type-body-font-size); /** Message font size of the form. */
+  --form-message-line-height: var(--type-body-line-height); /** Message line height of the form. */
   --hover-card-content-padding: var(--space-inset-container); /** Content padding of the hover card. */
   --input-group-padding-bottom: var(--space-inset-control-x); /** Padding bottom of the input group. */
   --input-group-padding-top: var(--space-inset-control-x); /** Padding top of the input group. */
   --input-group-gap: var(--space-gap-default); /** Gap of the input group. */
   --input-group-font-size: var(--type-body-font-size); /** Font size of the input group. */
+  --input-group-line-height: var(--type-body-line-height); /** Line height of the input group. */
   --input-group-font-weight: var(--type-label-font-weight); /** Font weight of the input group. */
   --input-group-disabled-opacity-disabled: var(--opacity-disabled); /** Disabled opacity disabled of the input group. */
   --input-group-icon-size: var(--size-icon); /** Icon size of the input group. */
@@ -345,9 +389,11 @@ html[data-scheme="dense-data"] {
   --input-otp-gap: var(--space-gap-default); /** Gap of the input otp. */
   --input-otp-disabled-opacity: var(--opacity-disabled); /** Disabled opacity of the input otp. */
   --input-otp-slot-font-size: var(--type-body-font-size); /** Slot font size of the input otp. */
+  --input-otp-slot-line-height: var(--type-body-line-height); /** Slot line height of the input otp. */
   --input-otp-height: var(--size-icon); /** Height of the input otp. */
   --input-otp-duration: var(--motion-duration-feedback); /** Duration of the input otp. */
   --item-font-size: var(--type-body-font-size); /** Font size of the item. */
+  --item-line-height: var(--type-body-line-height); /** Line height of the item. */
   --item-duration: var(--motion-duration-feedback); /** Duration of the item. */
   --item-focus: var(--border-width-focus); /** Focus of the item. */
   --item-default-gap: var(--space-gap-group); /** Default gap of the item. */
@@ -359,14 +405,17 @@ html[data-scheme="dense-data"] {
   --item-content-gap: var(--space-gap-tight); /** Content gap of the item. */
   --item-title-gap: var(--space-gap-default); /** Title gap of the item. */
   --item-title-font-size: var(--type-body-font-size); /** Title font size of the item. */
+  --item-title-line-height: var(--type-body-line-height); /** Title line height of the item. */
   --item-title-font-weight: var(--type-label-font-weight); /** Title font weight of the item. */
   --item-description-font-size: var(--type-body-font-size); /** Description font size of the item. */
+  --item-description-line-height: var(--type-body-line-height); /** Description line height of the item. */
   --item-description-font-weight: var(--type-body-font-weight); /** Description font weight of the item. */
   --item-actions-gap: var(--space-gap-default); /** Actions gap of the item. */
   --item-header-gap: var(--space-gap-default); /** Header gap of the item. */
   --item-footer-gap: var(--space-gap-default); /** Footer gap of the item. */
   --kbd-gap: var(--space-gap-tight); /** Gap of the kbd. */
   --kbd-font-size: var(--type-caption-font-size); /** Font size of the kbd. */
+  --kbd-line-height: var(--type-caption-line-height); /** Line height of the kbd. */
   --kbd-font-weight: var(--type-label-font-weight); /** Font weight of the kbd. */
   --kbd-group-gap: var(--space-gap-tight); /** Group gap of the kbd. */
   --label-gap: var(--space-gap-default); /** Gap of the label. */
@@ -374,49 +423,62 @@ html[data-scheme="dense-data"] {
   --label-font-weight: var(--type-label-font-weight); /** Font weight of the label. */
   --label-line-height: var(--type-label-line-height); /** Line height of the label. */
   --marker-font-size: var(--type-caption-font-size); /** Font size of the marker. */
+  --marker-line-height: var(--type-caption-line-height); /** Line height of the marker. */
   --menubar-gap: var(--space-gap-tight); /** Gap of the menubar. */
   --menubar-trigger-font-size: var(--type-body-font-size); /** Trigger font size of the menubar. */
+  --menubar-trigger-line-height: var(--type-body-line-height); /** Trigger line height of the menubar. */
   --menubar-trigger-font-weight: var(--type-label-font-weight); /** Trigger font weight of the menubar. */
   --menubar-item-gap: var(--space-gap-default); /** Item gap of the menubar. */
   --menubar-item-font-size: var(--type-body-font-size); /** Item font size of the menubar. */
+  --menubar-item-line-height: var(--type-body-line-height); /** Item line height of the menubar. */
   --menubar-item-disabled-opacity-disabled: var(--opacity-disabled); /** Item disabled opacity disabled of the menubar. */
   --menubar-item-icon-size: var(--size-icon); /** Item icon size of the menubar. */
   --menubar-checkbox-item-gap: var(--space-gap-default); /** Checkbox item gap of the menubar. */
   --menubar-checkbox-item-font-size: var(--type-body-font-size); /** Checkbox item font size of the menubar. */
+  --menubar-checkbox-item-line-height: var(--type-body-line-height); /** Checkbox item line height of the menubar. */
   --menubar-checkbox-item-disabled-opacity-disabled: var(--opacity-disabled); /** Checkbox item disabled opacity disabled of the menubar. */
   --menubar-checkbox-item-icon-size: var(--size-icon); /** Checkbox item icon size of the menubar. */
   --menubar-icon-size: var(--size-icon); /** Icon size of the menubar. */
   --menubar-radio-item-gap: var(--space-gap-default); /** Radio item gap of the menubar. */
   --menubar-radio-item-font-size: var(--type-body-font-size); /** Radio item font size of the menubar. */
+  --menubar-radio-item-line-height: var(--type-body-line-height); /** Radio item line height of the menubar. */
   --menubar-radio-item-disabled-opacity-disabled: var(--opacity-disabled); /** Radio item disabled opacity disabled of the menubar. */
   --menubar-radio-item-icon-size: var(--size-icon); /** Radio item icon size of the menubar. */
   --menubar-label-font-size: var(--type-body-font-size); /** Label font size of the menubar. */
+  --menubar-label-line-height: var(--type-body-line-height); /** Label line height of the menubar. */
   --menubar-label-font-weight: var(--type-label-font-weight); /** Label font weight of the menubar. */
   --menubar-shortcut-font-size: var(--type-caption-font-size); /** Shortcut font size of the menubar. */
+  --menubar-shortcut-line-height: var(--type-caption-line-height); /** Shortcut line height of the menubar. */
   --menubar-sub-trigger-font-size: var(--type-body-font-size); /** Sub trigger font size of the menubar. */
+  --menubar-sub-trigger-line-height: var(--type-body-line-height); /** Sub trigger line height of the menubar. */
   --menubar-height: var(--size-icon); /** Height of the menubar. */
   --message-scroller-gap: var(--space-gap-group); /** Gap of the message scroller. */
   --message-scroller-focus: var(--border-width-focus); /** Focus of the message scroller. */
   --message-font-size: var(--type-body-font-size); /** Font size of the message. */
+  --message-line-height: var(--type-body-line-height); /** Line height of the message. */
   --message-gap: var(--space-gap-tight); /** Gap of the message. */
   --message-gap-x: var(--space-gap-default); /** Gap x of the message. */
   --message-author-font-weight: var(--type-label-font-weight); /** Author font weight of the message. */
   --message-time-font-size: var(--type-caption-font-size); /** Time font size of the message. */
+  --message-time-line-height: var(--type-caption-line-height); /** Time line height of the message. */
   --native-select-disabled-opacity: var(--opacity-disabled); /** Disabled opacity of the native select. */
   --native-select-padding-x: var(--space-inset-control-x); /** Padding x of the native select. */
   --native-select-font-size: var(--type-body-font-size); /** Font size of the native select. */
+  --native-select-line-height: var(--type-body-line-height); /** Line height of the native select. */
   --native-select-height: var(--size-control-default); /** Height of the native select. */
   --native-select-focus: var(--border-width-focus); /** Focus of the native select. */
   --native-select-icon-size: var(--size-icon); /** Icon size of the native select. */
   --navigation-menu-list-gap: var(--space-gap-tight); /** List gap of the navigation menu. */
   --navigation-menu-padding-x: var(--space-inset-container); /** Padding x of the navigation menu. */
   --navigation-menu-font-size: var(--type-body-font-size); /** Font size of the navigation menu. */
+  --navigation-menu-line-height: var(--type-body-line-height); /** Line height of the navigation menu. */
   --navigation-menu-font-weight: var(--type-label-font-weight); /** Font weight of the navigation menu. */
   --navigation-menu-disabled-opacity-disabled: var(--opacity-disabled); /** Disabled opacity disabled of the navigation menu. */
   --navigation-menu-focus: var(--border-width-focus); /** Focus of the navigation menu. */
   --navigation-menu-duration: var(--motion-duration-feedback); /** Duration of the navigation menu. */
   --navigation-menu-link-gap: var(--space-gap-tight); /** Link gap of the navigation menu. */
   --navigation-menu-link-font-size: var(--type-body-font-size); /** Link font size of the navigation menu. */
+  --navigation-menu-link-line-height: var(--type-body-line-height); /** Link line height of the navigation menu. */
   --navigation-menu-link-focus: var(--border-width-focus); /** Link focus of the navigation menu. */
   --navigation-menu-link-icon-size: var(--size-icon); /** Link icon size of the navigation menu. */
   --pagination-content-gap: var(--space-gap-tight); /** Content gap of the pagination. */
@@ -425,6 +487,7 @@ html[data-scheme="dense-data"] {
   --popover-content-padding: var(--space-inset-container); /** Content padding of the popover. */
   --popover-header-gap: var(--space-gap-tight); /** Header gap of the popover. */
   --popover-header-font-size: var(--type-body-font-size); /** Header font size of the popover. */
+  --popover-header-line-height: var(--type-body-line-height); /** Header line height of the popover. */
   --popover-title-font-weight: var(--type-label-font-weight); /** Title font weight of the popover. */
   --progress-radius: var(--radius-round); /** Radius of the progress. */
   --radio-group-item-icon-size: var(--size-icon); /** Item icon size of the radio group. */
@@ -452,6 +515,7 @@ html[data-scheme="dense-data"] {
   --sheet-footer-padding: var(--space-inset-container); /** Footer padding of the sheet. */
   --sheet-title-font-weight: var(--type-title-font-weight); /** Title font weight of the sheet. */
   --sheet-description-font-size: var(--type-body-font-size); /** Description font size of the sheet. */
+  --sheet-description-line-height: var(--type-body-line-height); /** Description line height of the sheet. */
   --sidebar-gap-duration: var(--motion-duration-feedback); /** Gap duration of the sidebar. */
   --sidebar-gap: var(--space-gap-default); /** Gap of the sidebar. */
   --sidebar-container-duration: var(--motion-duration-feedback); /** Container duration of the sidebar. */
@@ -461,6 +525,7 @@ html[data-scheme="dense-data"] {
   --sidebar-content-gap: var(--space-gap-default); /** Content gap of the sidebar. */
   --sidebar-group-label-height: var(--size-control-default); /** Group label height of the sidebar. */
   --sidebar-group-label-font-size: var(--type-caption-font-size); /** Group label font size of the sidebar. */
+  --sidebar-group-label-line-height: var(--type-caption-line-height); /** Group label line height of the sidebar. */
   --sidebar-group-label-font-weight: var(--type-label-font-weight); /** Group label font weight of the sidebar. */
   --sidebar-group-label-duration: var(--motion-duration-feedback); /** Group label duration of the sidebar. */
   --sidebar-group-label-icon-size: var(--size-icon); /** Group label icon size of the sidebar. */
@@ -468,10 +533,12 @@ html[data-scheme="dense-data"] {
   --sidebar-group-action-icon-size: var(--size-icon); /** Group action icon size of the sidebar. */
   --sidebar-group-action-focus: var(--border-width-focus); /** Group action focus of the sidebar. */
   --sidebar-group-content-font-size: var(--type-body-font-size); /** Group content font size of the sidebar. */
+  --sidebar-group-content-line-height: var(--type-body-line-height); /** Group content line height of the sidebar. */
   --sidebar-menu-gap: var(--space-gap-tight); /** Menu gap of the sidebar. */
   --sidebar-menu-action-icon-size: var(--size-icon); /** Menu action icon size of the sidebar. */
   --sidebar-menu-action-focus: var(--border-width-focus); /** Menu action focus of the sidebar. */
   --sidebar-menu-badge-font-size: var(--type-caption-font-size); /** Menu badge font size of the sidebar. */
+  --sidebar-menu-badge-line-height: var(--type-caption-line-height); /** Menu badge line height of the sidebar. */
   --sidebar-menu-badge-font-weight: var(--type-label-font-weight); /** Menu badge font weight of the sidebar. */
   --sidebar-menu-skeleton-height: var(--size-control-default); /** Menu skeleton height of the sidebar. */
   --sidebar-menu-skeleton-gap: var(--space-gap-default); /** Menu skeleton gap of the sidebar. */
@@ -481,6 +548,7 @@ html[data-scheme="dense-data"] {
   --sidebar-menu-sub-button-icon-size: var(--size-icon); /** Menu sub button icon size of the sidebar. */
   --sidebar-menu-sub-button-focus: var(--border-width-focus); /** Menu sub button focus of the sidebar. */
   --sidebar-font-size: var(--type-body-font-size); /** Font size of the sidebar. */
+  --sidebar-line-height: var(--type-body-line-height); /** Line height of the sidebar. */
   --sidebar-size: var(--size-control-default); /** Size of the sidebar. */
   --sidebar-disabled-opacity-disabled: var(--opacity-disabled); /** Disabled opacity disabled of the sidebar. */
   --sidebar-font-weight: var(--type-label-font-weight); /** Font weight of the sidebar. */
@@ -488,10 +556,14 @@ html[data-scheme="dense-data"] {
   --sidebar-icon-size: var(--size-icon); /** Icon size of the sidebar. */
   --sidebar-default-height: var(--size-control-default); /** Default height of the sidebar. */
   --sidebar-default-font-size: var(--type-body-font-size); /** Default font size of the sidebar. */
+  --sidebar-default-line-height: var(--type-body-line-height); /** Default line height of the sidebar. */
   --sidebar-sm-font-size: var(--type-caption-font-size); /** Sm font size of the sidebar. */
+  --sidebar-sm-line-height: var(--type-caption-line-height); /** Sm line height of the sidebar. */
   --sidebar-lg-font-size: var(--type-body-font-size); /** Lg font size of the sidebar. */
+  --sidebar-lg-line-height: var(--type-body-line-height); /** Lg line height of the sidebar. */
   --sidebar-height: var(--size-icon); /** Height of the sidebar. */
   --sidebar-font-size-2: var(--type-caption-font-size); /** Font size 2 of the sidebar. */
+  --sidebar-line-height-2: var(--type-caption-line-height); /** Line height 2 of the sidebar. */
   --slider-disabled-opacity-disabled: var(--opacity-disabled); /** Disabled opacity disabled of the slider. */
   --slider-track-radius: var(--radius-round); /** Track radius of the slider. */
   --slider-thumb-icon-size: var(--size-icon); /** Thumb icon size of the slider. */
@@ -508,6 +580,7 @@ html[data-scheme="dense-data"] {
   --switch-icon: var(--size-icon); /** Icon of the switch. */
   --textarea-padding-x: var(--space-inset-control-x); /** Padding x of the textarea. */
   --textarea-font-size: var(--type-body-font-size); /** Font size of the textarea. */
+  --textarea-line-height: var(--type-body-line-height); /** Line height of the textarea. */
   --textarea-disabled-opacity-disabled: var(--opacity-disabled); /** Disabled opacity disabled of the textarea. */
   --textarea-focus: var(--border-width-focus); /** Focus of the textarea. */
   --toast-gap: var(--space-gap-default); /** Gap of the toast. */
@@ -520,6 +593,7 @@ html[data-scheme="dense-data"] {
   --toggle-group-item-padding-x: var(--space-inset-control-x); /** Item padding x of the toggle group. */
   --toggle-gap: var(--space-gap-default); /** Gap of the toggle. */
   --toggle-font-size: var(--type-body-font-size); /** Font size of the toggle. */
+  --toggle-line-height: var(--type-body-line-height); /** Line height of the toggle. */
   --toggle-font-weight: var(--type-label-font-weight); /** Font weight of the toggle. */
   --toggle-disabled-opacity-disabled: var(--opacity-disabled); /** Disabled opacity disabled of the toggle. */
   --toggle-icon-size: var(--size-icon); /** Icon size of the toggle. */
@@ -1239,46 +1313,60 @@ html[data-scheme="dense-data"][data-theme="dark"] {
   --alert-dialog-header-gap-x: var(--space-gap-section); /** Header gap x of the alert dialog. */
   --alert-dialog-footer-gap: var(--space-gap-default); /** Footer gap of the alert dialog. */
   --alert-dialog-title-font-size: var(--type-heading-font-size); /** Title font size of the alert dialog. */
+  --alert-dialog-title-line-height: var(--type-heading-line-height); /** Title line height of the alert dialog. */
   --alert-dialog-title-font-weight: var(--type-title-font-weight); /** Title font weight of the alert dialog. */
   --alert-dialog-description-font-size: var(--type-body-font-size); /** Description font size of the alert dialog. */
+  --alert-dialog-description-line-height: var(--type-body-line-height); /** Description line height of the alert dialog. */
   --alert-dialog-media-size: var(--size-control-default); /** Media size of the alert dialog. */
   --alert-padding-x: var(--space-inset-container); /** Padding x of the alert. */
   --alert-font-size: var(--type-body-font-size); /** Font size of the alert. */
+  --alert-line-height: var(--type-body-line-height); /** Line height of the alert. */
   --alert-icon-size: var(--size-icon); /** Icon size of the alert. */
   --alert-title-font-weight: var(--type-label-font-weight); /** Title font weight of the alert. */
   --alert-description-gap: var(--space-gap-tight); /** Description gap of the alert. */
   --alert-description-font-size: var(--type-body-font-size); /** Description font size of the alert. */
+  --alert-description-line-height: var(--type-body-line-height); /** Description line height of the alert. */
   --attachment-font-size: var(--type-body-font-size); /** Font size of the attachment. */
+  --attachment-line-height: var(--type-body-line-height); /** Line height of the attachment. */
   --attachment-focus: var(--border-width-focus); /** Focus of the attachment. */
   --attachment-size: var(--size-control-default); /** Size of the attachment. */
   --attachment-icon-size: var(--size-icon); /** Icon size of the attachment. */
   --attachment-font-weight: var(--type-label-font-weight); /** Font weight of the attachment. */
   --attachment-font-size-2: var(--type-caption-font-size); /** Font size 2 of the attachment. */
+  --attachment-line-height-2: var(--type-caption-line-height); /** Line height 2 of the attachment. */
   --avatar-size: var(--size-control-default); /** Size of the avatar. */
   --avatar-radius: var(--radius-round); /** Radius of the avatar. */
   --avatar-fallback-radius: var(--radius-round); /** Fallback radius of the avatar. */
   --avatar-fallback-font-size: var(--type-body-font-size); /** Fallback font size of the avatar. */
+  --avatar-fallback-line-height: var(--type-body-line-height); /** Fallback line height of the avatar. */
   --avatar-fallback-font-size-2: var(--type-caption-font-size); /** Fallback font size 2 of the avatar. */
+  --avatar-fallback-line-height-2: var(--type-caption-line-height); /** Fallback line height 2 of the avatar. */
   --avatar-badge-radius: var(--radius-round); /** Badge radius of the avatar. */
   --avatar-group-count-size: var(--size-control-default); /** Group count size of the avatar. */
   --avatar-group-count-radius: var(--radius-round); /** Group count radius of the avatar. */
   --avatar-group-count-font-size: var(--type-body-font-size); /** Group count font size of the avatar. */
+  --avatar-group-count-line-height: var(--type-body-line-height); /** Group count line height of the avatar. */
   --avatar-group-count-icon-size: var(--size-icon); /** Group count icon size of the avatar. */
   --breadcrumb-list-font-size: var(--type-body-font-size); /** List font size of the breadcrumb. */
+  --breadcrumb-list-line-height: var(--type-body-line-height); /** List line height of the breadcrumb. */
   --breadcrumb-page-font-weight: var(--type-body-font-weight); /** Page font weight of the breadcrumb. */
   --breadcrumb-icon-size: var(--size-icon); /** Icon size of the breadcrumb. */
   --bubble-gap: var(--space-gap-tight); /** Gap of the bubble. */
   --bubble-font-size: var(--type-caption-font-size); /** Font size of the bubble. */
+  --bubble-line-height: var(--type-caption-line-height); /** Line height of the bubble. */
   --bubble-body-font-size: var(--type-body-font-size); /** Body font size of the bubble. */
+  --bubble-body-line-height: var(--type-body-line-height); /** Body line height of the bubble. */
   --button-group-gap: var(--space-gap-default); /** Gap of the button group. */
   --button-group-text-gap: var(--space-gap-default); /** Text gap of the button group. */
   --button-group-text-font-size: var(--type-body-font-size); /** Text font size of the button group. */
+  --button-group-text-line-height: var(--type-body-line-height); /** Text line height of the button group. */
   --button-group-text-font-weight: var(--type-label-font-weight); /** Text font weight of the button group. */
   --button-group-text-icon-size: var(--size-icon); /** Text icon size of the button group. */
   --calendar-gap: var(--space-gap-group); /** Gap of the calendar. */
   --calendar-gap-2: var(--space-gap-tight); /** Gap 2 of the calendar. */
   --calendar-disabled-opacity-disabled: var(--opacity-disabled); /** Disabled opacity disabled of the calendar. */
   --calendar-font-size: var(--type-body-font-size); /** Font size of the calendar. */
+  --calendar-line-height: var(--type-body-line-height); /** Line height of the calendar. */
   --calendar-font-weight: var(--type-label-font-weight); /** Font weight of the calendar. */
   --calendar-focus: var(--border-width-focus); /** Focus of the calendar. */
   --calendar-height: var(--size-control-default); /** Height of the calendar. */
@@ -1286,11 +1374,13 @@ html[data-scheme="dense-data"][data-theme="dark"] {
   --calendar-disabled-opacity: var(--opacity-disabled); /** Disabled opacity of the calendar. */
   --calendar-icon-size: var(--size-icon); /** Icon size of the calendar. */
   --calendar-font-size-2: var(--type-caption-font-size); /** Font size 2 of the calendar. */
+  --calendar-line-height-2: var(--type-caption-line-height); /** Line height 2 of the calendar. */
   --carousel-previous-size: var(--size-control-default); /** Previous size of the carousel. */
   --carousel-previous-radius: var(--radius-round); /** Previous radius of the carousel. */
   --carousel-next-size: var(--size-control-default); /** Next size of the carousel. */
   --carousel-next-radius: var(--radius-round); /** Next radius of the carousel. */
   --chart-font-size: var(--type-caption-font-size); /** Font size of the chart. */
+  --chart-line-height: var(--type-caption-line-height); /** Line height of the chart. */
   --chart-font-weight: var(--type-label-font-weight); /** Font weight of the chart. */
   --chart-gap: var(--space-gap-default); /** Gap of the chart. */
   --chart-gap-2: var(--space-gap-group); /** Gap 2 of the chart. */
@@ -1303,51 +1393,68 @@ html[data-scheme="dense-data"][data-theme="dark"] {
   --combobox-content-height: var(--size-control-default); /** Content height of the combobox. */
   --combobox-item-gap: var(--space-gap-default); /** Item gap of the combobox. */
   --combobox-item-font-size: var(--type-body-font-size); /** Item font size of the combobox. */
+  --combobox-item-line-height: var(--type-body-line-height); /** Item line height of the combobox. */
   --combobox-item-disabled-opacity-disabled: var(--opacity-disabled); /** Item disabled opacity disabled of the combobox. */
   --combobox-item-icon-size: var(--size-icon); /** Item icon size of the combobox. */
   --combobox-icon-size: var(--size-icon); /** Icon size of the combobox. */
   --combobox-label-font-size: var(--type-caption-font-size); /** Label font size of the combobox. */
+  --combobox-label-line-height: var(--type-caption-line-height); /** Label line height of the combobox. */
   --combobox-label-padding-x: var(--space-inset-control-x); /** Label padding x of the combobox. */
   --combobox-label-font-size-2: var(--type-body-font-size); /** Label font size 2 of the combobox. */
+  --combobox-label-line-height-2: var(--type-body-line-height); /** Label line height 2 of the combobox. */
   --combobox-empty-font-size: var(--type-body-font-size); /** Empty font size of the combobox. */
+  --combobox-empty-line-height: var(--type-body-line-height); /** Empty line height of the combobox. */
   --combobox-chips-font-size: var(--type-body-font-size); /** Chips font size of the combobox. */
+  --combobox-chips-line-height: var(--type-body-line-height); /** Chips line height of the combobox. */
   --combobox-chip-gap: var(--space-gap-tight); /** Chip gap of the combobox. */
   --combobox-chip-font-size: var(--type-caption-font-size); /** Chip font size of the combobox. */
+  --combobox-chip-line-height: var(--type-caption-line-height); /** Chip line height of the combobox. */
   --combobox-chip-font-weight: var(--type-label-font-weight); /** Chip font weight of the combobox. */
   --combobox-chip-disabled-opacity: var(--opacity-disabled); /** Chip disabled opacity of the combobox. */
   --combobox-disabled-opacity: var(--opacity-disabled); /** Disabled opacity of the combobox. */
   --command-font-weight: var(--type-label-font-weight); /** Font weight of the command. */
   --command-input-wrapper-gap: var(--space-gap-default); /** Input wrapper gap of the command. */
   --command-input-font-size: var(--type-body-font-size); /** Input font size of the command. */
+  --command-input-line-height: var(--type-body-line-height); /** Input line height of the command. */
   --command-input-disabled-opacity-disabled: var(--opacity-disabled); /** Input disabled opacity disabled of the command. */
   --command-icon-size: var(--size-icon); /** Icon size of the command. */
   --command-disabled-opacity: var(--opacity-disabled); /** Disabled opacity of the command. */
   --command-empty-font-size: var(--type-body-font-size); /** Empty font size of the command. */
+  --command-empty-line-height: var(--type-body-line-height); /** Empty line height of the command. */
   --command-group-font-size: var(--type-caption-font-size); /** Group font size of the command. */
+  --command-group-line-height: var(--type-caption-line-height); /** Group line height of the command. */
   --command-group-font-weight: var(--type-label-font-weight); /** Group font weight of the command. */
   --command-item-gap: var(--space-gap-default); /** Item gap of the command. */
   --command-item-font-size: var(--type-body-font-size); /** Item font size of the command. */
+  --command-item-line-height: var(--type-body-line-height); /** Item line height of the command. */
   --command-item-disabled-opacity-disabled: var(--opacity-disabled); /** Item disabled opacity disabled of the command. */
   --command-item-icon-size: var(--size-icon); /** Item icon size of the command. */
   --command-shortcut-font-size: var(--type-caption-font-size); /** Shortcut font size of the command. */
+  --command-shortcut-line-height: var(--type-caption-line-height); /** Shortcut line height of the command. */
   --context-menu-sub-trigger-font-size: var(--type-body-font-size); /** Sub trigger font size of the context menu. */
+  --context-menu-sub-trigger-line-height: var(--type-body-line-height); /** Sub trigger line height of the context menu. */
   --context-menu-sub-trigger-icon-size: var(--size-icon); /** Sub trigger icon size of the context menu. */
   --context-menu-item-gap: var(--space-gap-default); /** Item gap of the context menu. */
   --context-menu-item-font-size: var(--type-body-font-size); /** Item font size of the context menu. */
+  --context-menu-item-line-height: var(--type-body-line-height); /** Item line height of the context menu. */
   --context-menu-item-disabled-opacity-disabled: var(--opacity-disabled); /** Item disabled opacity disabled of the context menu. */
   --context-menu-item-icon-size: var(--size-icon); /** Item icon size of the context menu. */
   --context-menu-checkbox-item-gap: var(--space-gap-default); /** Checkbox item gap of the context menu. */
   --context-menu-checkbox-item-font-size: var(--type-body-font-size); /** Checkbox item font size of the context menu. */
+  --context-menu-checkbox-item-line-height: var(--type-body-line-height); /** Checkbox item line height of the context menu. */
   --context-menu-checkbox-item-disabled-opacity-disabled: var(--opacity-disabled); /** Checkbox item disabled opacity disabled of the context menu. */
   --context-menu-checkbox-item-icon-size: var(--size-icon); /** Checkbox item icon size of the context menu. */
   --context-menu-icon-size: var(--size-icon); /** Icon size of the context menu. */
   --context-menu-radio-item-gap: var(--space-gap-default); /** Radio item gap of the context menu. */
   --context-menu-radio-item-font-size: var(--type-body-font-size); /** Radio item font size of the context menu. */
+  --context-menu-radio-item-line-height: var(--type-body-line-height); /** Radio item line height of the context menu. */
   --context-menu-radio-item-disabled-opacity-disabled: var(--opacity-disabled); /** Radio item disabled opacity disabled of the context menu. */
   --context-menu-radio-item-icon-size: var(--size-icon); /** Radio item icon size of the context menu. */
   --context-menu-label-font-size: var(--type-body-font-size); /** Label font size of the context menu. */
+  --context-menu-label-line-height: var(--type-body-line-height); /** Label line height of the context menu. */
   --context-menu-label-font-weight: var(--type-label-font-weight); /** Label font weight of the context menu. */
   --context-menu-shortcut-font-size: var(--type-caption-font-size); /** Shortcut font size of the context menu. */
+  --context-menu-shortcut-line-height: var(--type-caption-line-height); /** Shortcut line height of the context menu. */
   --data-table-gap: var(--space-gap-tight); /** Gap of the data table. */
   --data-table-gap-2: var(--space-gap-default); /** Gap 2 of the data table. */
   --date-picker-font-weight: var(--type-body-font-weight); /** Font weight of the date picker. */
@@ -1366,6 +1473,7 @@ html[data-scheme="dense-data"][data-theme="dark"] {
   --drawer-footer-padding: var(--space-inset-container); /** Footer padding of the drawer. */
   --drawer-title-font-weight: var(--type-title-font-weight); /** Title font weight of the drawer. */
   --drawer-description-font-size: var(--type-body-font-size); /** Description font size of the drawer. */
+  --drawer-description-line-height: var(--type-body-line-height); /** Description line height of the drawer. */
   --dropdown-menu-content-border-width: var(--border-width-default); /** Content border width of the dropdown menu. */
   --dropdown-menu-item-gap: var(--space-gap-default); /** Item gap of the dropdown menu. */
   --dropdown-menu-item-padding-x: var(--space-inset-cell-x); /** Item padding x of the dropdown menu. */
@@ -1375,32 +1483,42 @@ html[data-scheme="dense-data"][data-theme="dark"] {
   --empty-gap: var(--space-gap-section); /** Gap of the empty. */
   --empty-header-gap: var(--space-gap-default); /** Header gap of the empty. */
   --empty-title-font-size: var(--type-heading-font-size); /** Title font size of the empty. */
+  --empty-title-line-height: var(--type-heading-line-height); /** Title line height of the empty. */
   --empty-title-font-weight: var(--type-label-font-weight); /** Title font weight of the empty. */
   --empty-description-font-size: var(--type-body-font-size); /** Description font size of the empty. */
   --empty-content-gap: var(--space-gap-group); /** Content gap of the empty. */
   --empty-content-font-size: var(--type-body-font-size); /** Content font size of the empty. */
+  --empty-content-line-height: var(--type-body-line-height); /** Content line height of the empty. */
   --field-set-gap: var(--space-gap-section); /** Set gap of the field. */
   --field-legend-font-weight: var(--type-label-font-weight); /** Legend font weight of the field. */
   --field-legend-font-size: var(--type-body-font-size); /** Legend font size of the field. */
+  --field-legend-line-height: var(--type-body-line-height); /** Legend line height of the field. */
   --field-group-gap: var(--space-gap-group); /** Group gap of the field. */
   --field-label-gap: var(--space-gap-default); /** Label gap of the field. */
   --field-label-disabled-opacity-disabled: var(--opacity-disabled); /** Label disabled opacity disabled of the field. */
   --field-label-font-size: var(--type-body-font-size); /** Label font size of the field. */
+  --field-label-line-height: var(--type-body-line-height); /** Label line height of the field. */
   --field-label-font-weight: var(--type-label-font-weight); /** Label font weight of the field. */
   --field-description-font-size: var(--type-body-font-size); /** Description font size of the field. */
+  --field-description-line-height: var(--type-body-line-height); /** Description line height of the field. */
   --field-description-font-weight: var(--type-body-font-weight); /** Description font weight of the field. */
   --field-separator-font-size: var(--type-body-font-size); /** Separator font size of the field. */
+  --field-separator-line-height: var(--type-body-line-height); /** Separator line height of the field. */
   --field-gap: var(--space-gap-tight); /** Gap of the field. */
   --field-error-font-size: var(--type-body-font-size); /** Error font size of the field. */
+  --field-error-line-height: var(--type-body-line-height); /** Error line height of the field. */
   --field-error-font-weight: var(--type-body-font-weight); /** Error font weight of the field. */
   --form-item-gap: var(--space-gap-default); /** Item gap of the form. */
   --form-description-font-size: var(--type-body-font-size); /** Description font size of the form. */
+  --form-description-line-height: var(--type-body-line-height); /** Description line height of the form. */
   --form-message-font-size: var(--type-body-font-size); /** Message font size of the form. */
+  --form-message-line-height: var(--type-body-line-height); /** Message line height of the form. */
   --hover-card-content-padding: var(--space-inset-container); /** Content padding of the hover card. */
   --input-group-padding-bottom: var(--space-inset-control-x); /** Padding bottom of the input group. */
   --input-group-padding-top: var(--space-inset-control-x); /** Padding top of the input group. */
   --input-group-gap: var(--space-gap-default); /** Gap of the input group. */
   --input-group-font-size: var(--type-body-font-size); /** Font size of the input group. */
+  --input-group-line-height: var(--type-body-line-height); /** Line height of the input group. */
   --input-group-font-weight: var(--type-label-font-weight); /** Font weight of the input group. */
   --input-group-disabled-opacity-disabled: var(--opacity-disabled); /** Disabled opacity disabled of the input group. */
   --input-group-icon-size: var(--size-icon); /** Icon size of the input group. */
@@ -1420,9 +1538,11 @@ html[data-scheme="dense-data"][data-theme="dark"] {
   --input-otp-gap: var(--space-gap-default); /** Gap of the input otp. */
   --input-otp-disabled-opacity: var(--opacity-disabled); /** Disabled opacity of the input otp. */
   --input-otp-slot-font-size: var(--type-body-font-size); /** Slot font size of the input otp. */
+  --input-otp-slot-line-height: var(--type-body-line-height); /** Slot line height of the input otp. */
   --input-otp-height: var(--size-icon); /** Height of the input otp. */
   --input-otp-duration: var(--motion-duration-feedback); /** Duration of the input otp. */
   --item-font-size: var(--type-body-font-size); /** Font size of the item. */
+  --item-line-height: var(--type-body-line-height); /** Line height of the item. */
   --item-duration: var(--motion-duration-feedback); /** Duration of the item. */
   --item-focus: var(--border-width-focus); /** Focus of the item. */
   --item-default-gap: var(--space-gap-group); /** Default gap of the item. */
@@ -1434,14 +1554,17 @@ html[data-scheme="dense-data"][data-theme="dark"] {
   --item-content-gap: var(--space-gap-tight); /** Content gap of the item. */
   --item-title-gap: var(--space-gap-default); /** Title gap of the item. */
   --item-title-font-size: var(--type-body-font-size); /** Title font size of the item. */
+  --item-title-line-height: var(--type-body-line-height); /** Title line height of the item. */
   --item-title-font-weight: var(--type-label-font-weight); /** Title font weight of the item. */
   --item-description-font-size: var(--type-body-font-size); /** Description font size of the item. */
+  --item-description-line-height: var(--type-body-line-height); /** Description line height of the item. */
   --item-description-font-weight: var(--type-body-font-weight); /** Description font weight of the item. */
   --item-actions-gap: var(--space-gap-default); /** Actions gap of the item. */
   --item-header-gap: var(--space-gap-default); /** Header gap of the item. */
   --item-footer-gap: var(--space-gap-default); /** Footer gap of the item. */
   --kbd-gap: var(--space-gap-tight); /** Gap of the kbd. */
   --kbd-font-size: var(--type-caption-font-size); /** Font size of the kbd. */
+  --kbd-line-height: var(--type-caption-line-height); /** Line height of the kbd. */
   --kbd-font-weight: var(--type-label-font-weight); /** Font weight of the kbd. */
   --kbd-group-gap: var(--space-gap-tight); /** Group gap of the kbd. */
   --label-gap: var(--space-gap-default); /** Gap of the label. */
@@ -1449,49 +1572,62 @@ html[data-scheme="dense-data"][data-theme="dark"] {
   --label-font-weight: var(--type-label-font-weight); /** Font weight of the label. */
   --label-line-height: var(--type-label-line-height); /** Line height of the label. */
   --marker-font-size: var(--type-caption-font-size); /** Font size of the marker. */
+  --marker-line-height: var(--type-caption-line-height); /** Line height of the marker. */
   --menubar-gap: var(--space-gap-tight); /** Gap of the menubar. */
   --menubar-trigger-font-size: var(--type-body-font-size); /** Trigger font size of the menubar. */
+  --menubar-trigger-line-height: var(--type-body-line-height); /** Trigger line height of the menubar. */
   --menubar-trigger-font-weight: var(--type-label-font-weight); /** Trigger font weight of the menubar. */
   --menubar-item-gap: var(--space-gap-default); /** Item gap of the menubar. */
   --menubar-item-font-size: var(--type-body-font-size); /** Item font size of the menubar. */
+  --menubar-item-line-height: var(--type-body-line-height); /** Item line height of the menubar. */
   --menubar-item-disabled-opacity-disabled: var(--opacity-disabled); /** Item disabled opacity disabled of the menubar. */
   --menubar-item-icon-size: var(--size-icon); /** Item icon size of the menubar. */
   --menubar-checkbox-item-gap: var(--space-gap-default); /** Checkbox item gap of the menubar. */
   --menubar-checkbox-item-font-size: var(--type-body-font-size); /** Checkbox item font size of the menubar. */
+  --menubar-checkbox-item-line-height: var(--type-body-line-height); /** Checkbox item line height of the menubar. */
   --menubar-checkbox-item-disabled-opacity-disabled: var(--opacity-disabled); /** Checkbox item disabled opacity disabled of the menubar. */
   --menubar-checkbox-item-icon-size: var(--size-icon); /** Checkbox item icon size of the menubar. */
   --menubar-icon-size: var(--size-icon); /** Icon size of the menubar. */
   --menubar-radio-item-gap: var(--space-gap-default); /** Radio item gap of the menubar. */
   --menubar-radio-item-font-size: var(--type-body-font-size); /** Radio item font size of the menubar. */
+  --menubar-radio-item-line-height: var(--type-body-line-height); /** Radio item line height of the menubar. */
   --menubar-radio-item-disabled-opacity-disabled: var(--opacity-disabled); /** Radio item disabled opacity disabled of the menubar. */
   --menubar-radio-item-icon-size: var(--size-icon); /** Radio item icon size of the menubar. */
   --menubar-label-font-size: var(--type-body-font-size); /** Label font size of the menubar. */
+  --menubar-label-line-height: var(--type-body-line-height); /** Label line height of the menubar. */
   --menubar-label-font-weight: var(--type-label-font-weight); /** Label font weight of the menubar. */
   --menubar-shortcut-font-size: var(--type-caption-font-size); /** Shortcut font size of the menubar. */
+  --menubar-shortcut-line-height: var(--type-caption-line-height); /** Shortcut line height of the menubar. */
   --menubar-sub-trigger-font-size: var(--type-body-font-size); /** Sub trigger font size of the menubar. */
+  --menubar-sub-trigger-line-height: var(--type-body-line-height); /** Sub trigger line height of the menubar. */
   --menubar-height: var(--size-icon); /** Height of the menubar. */
   --message-scroller-gap: var(--space-gap-group); /** Gap of the message scroller. */
   --message-scroller-focus: var(--border-width-focus); /** Focus of the message scroller. */
   --message-font-size: var(--type-body-font-size); /** Font size of the message. */
+  --message-line-height: var(--type-body-line-height); /** Line height of the message. */
   --message-gap: var(--space-gap-tight); /** Gap of the message. */
   --message-gap-x: var(--space-gap-default); /** Gap x of the message. */
   --message-author-font-weight: var(--type-label-font-weight); /** Author font weight of the message. */
   --message-time-font-size: var(--type-caption-font-size); /** Time font size of the message. */
+  --message-time-line-height: var(--type-caption-line-height); /** Time line height of the message. */
   --native-select-disabled-opacity: var(--opacity-disabled); /** Disabled opacity of the native select. */
   --native-select-padding-x: var(--space-inset-control-x); /** Padding x of the native select. */
   --native-select-font-size: var(--type-body-font-size); /** Font size of the native select. */
+  --native-select-line-height: var(--type-body-line-height); /** Line height of the native select. */
   --native-select-height: var(--size-control-default); /** Height of the native select. */
   --native-select-focus: var(--border-width-focus); /** Focus of the native select. */
   --native-select-icon-size: var(--size-icon); /** Icon size of the native select. */
   --navigation-menu-list-gap: var(--space-gap-tight); /** List gap of the navigation menu. */
   --navigation-menu-padding-x: var(--space-inset-container); /** Padding x of the navigation menu. */
   --navigation-menu-font-size: var(--type-body-font-size); /** Font size of the navigation menu. */
+  --navigation-menu-line-height: var(--type-body-line-height); /** Line height of the navigation menu. */
   --navigation-menu-font-weight: var(--type-label-font-weight); /** Font weight of the navigation menu. */
   --navigation-menu-disabled-opacity-disabled: var(--opacity-disabled); /** Disabled opacity disabled of the navigation menu. */
   --navigation-menu-focus: var(--border-width-focus); /** Focus of the navigation menu. */
   --navigation-menu-duration: var(--motion-duration-feedback); /** Duration of the navigation menu. */
   --navigation-menu-link-gap: var(--space-gap-tight); /** Link gap of the navigation menu. */
   --navigation-menu-link-font-size: var(--type-body-font-size); /** Link font size of the navigation menu. */
+  --navigation-menu-link-line-height: var(--type-body-line-height); /** Link line height of the navigation menu. */
   --navigation-menu-link-focus: var(--border-width-focus); /** Link focus of the navigation menu. */
   --navigation-menu-link-icon-size: var(--size-icon); /** Link icon size of the navigation menu. */
   --pagination-content-gap: var(--space-gap-tight); /** Content gap of the pagination. */
@@ -1500,6 +1636,7 @@ html[data-scheme="dense-data"][data-theme="dark"] {
   --popover-content-padding: var(--space-inset-container); /** Content padding of the popover. */
   --popover-header-gap: var(--space-gap-tight); /** Header gap of the popover. */
   --popover-header-font-size: var(--type-body-font-size); /** Header font size of the popover. */
+  --popover-header-line-height: var(--type-body-line-height); /** Header line height of the popover. */
   --popover-title-font-weight: var(--type-label-font-weight); /** Title font weight of the popover. */
   --progress-radius: var(--radius-round); /** Radius of the progress. */
   --radio-group-item-icon-size: var(--size-icon); /** Item icon size of the radio group. */
@@ -1527,6 +1664,7 @@ html[data-scheme="dense-data"][data-theme="dark"] {
   --sheet-footer-padding: var(--space-inset-container); /** Footer padding of the sheet. */
   --sheet-title-font-weight: var(--type-title-font-weight); /** Title font weight of the sheet. */
   --sheet-description-font-size: var(--type-body-font-size); /** Description font size of the sheet. */
+  --sheet-description-line-height: var(--type-body-line-height); /** Description line height of the sheet. */
   --sidebar-gap-duration: var(--motion-duration-feedback); /** Gap duration of the sidebar. */
   --sidebar-gap: var(--space-gap-default); /** Gap of the sidebar. */
   --sidebar-container-duration: var(--motion-duration-feedback); /** Container duration of the sidebar. */
@@ -1536,6 +1674,7 @@ html[data-scheme="dense-data"][data-theme="dark"] {
   --sidebar-content-gap: var(--space-gap-default); /** Content gap of the sidebar. */
   --sidebar-group-label-height: var(--size-control-default); /** Group label height of the sidebar. */
   --sidebar-group-label-font-size: var(--type-caption-font-size); /** Group label font size of the sidebar. */
+  --sidebar-group-label-line-height: var(--type-caption-line-height); /** Group label line height of the sidebar. */
   --sidebar-group-label-font-weight: var(--type-label-font-weight); /** Group label font weight of the sidebar. */
   --sidebar-group-label-duration: var(--motion-duration-feedback); /** Group label duration of the sidebar. */
   --sidebar-group-label-icon-size: var(--size-icon); /** Group label icon size of the sidebar. */
@@ -1543,10 +1682,12 @@ html[data-scheme="dense-data"][data-theme="dark"] {
   --sidebar-group-action-icon-size: var(--size-icon); /** Group action icon size of the sidebar. */
   --sidebar-group-action-focus: var(--border-width-focus); /** Group action focus of the sidebar. */
   --sidebar-group-content-font-size: var(--type-body-font-size); /** Group content font size of the sidebar. */
+  --sidebar-group-content-line-height: var(--type-body-line-height); /** Group content line height of the sidebar. */
   --sidebar-menu-gap: var(--space-gap-tight); /** Menu gap of the sidebar. */
   --sidebar-menu-action-icon-size: var(--size-icon); /** Menu action icon size of the sidebar. */
   --sidebar-menu-action-focus: var(--border-width-focus); /** Menu action focus of the sidebar. */
   --sidebar-menu-badge-font-size: var(--type-caption-font-size); /** Menu badge font size of the sidebar. */
+  --sidebar-menu-badge-line-height: var(--type-caption-line-height); /** Menu badge line height of the sidebar. */
   --sidebar-menu-badge-font-weight: var(--type-label-font-weight); /** Menu badge font weight of the sidebar. */
   --sidebar-menu-skeleton-height: var(--size-control-default); /** Menu skeleton height of the sidebar. */
   --sidebar-menu-skeleton-gap: var(--space-gap-default); /** Menu skeleton gap of the sidebar. */
@@ -1556,6 +1697,7 @@ html[data-scheme="dense-data"][data-theme="dark"] {
   --sidebar-menu-sub-button-icon-size: var(--size-icon); /** Menu sub button icon size of the sidebar. */
   --sidebar-menu-sub-button-focus: var(--border-width-focus); /** Menu sub button focus of the sidebar. */
   --sidebar-font-size: var(--type-body-font-size); /** Font size of the sidebar. */
+  --sidebar-line-height: var(--type-body-line-height); /** Line height of the sidebar. */
   --sidebar-size: var(--size-control-default); /** Size of the sidebar. */
   --sidebar-disabled-opacity-disabled: var(--opacity-disabled); /** Disabled opacity disabled of the sidebar. */
   --sidebar-font-weight: var(--type-label-font-weight); /** Font weight of the sidebar. */
@@ -1563,10 +1705,14 @@ html[data-scheme="dense-data"][data-theme="dark"] {
   --sidebar-icon-size: var(--size-icon); /** Icon size of the sidebar. */
   --sidebar-default-height: var(--size-control-default); /** Default height of the sidebar. */
   --sidebar-default-font-size: var(--type-body-font-size); /** Default font size of the sidebar. */
+  --sidebar-default-line-height: var(--type-body-line-height); /** Default line height of the sidebar. */
   --sidebar-sm-font-size: var(--type-caption-font-size); /** Sm font size of the sidebar. */
+  --sidebar-sm-line-height: var(--type-caption-line-height); /** Sm line height of the sidebar. */
   --sidebar-lg-font-size: var(--type-body-font-size); /** Lg font size of the sidebar. */
+  --sidebar-lg-line-height: var(--type-body-line-height); /** Lg line height of the sidebar. */
   --sidebar-height: var(--size-icon); /** Height of the sidebar. */
   --sidebar-font-size-2: var(--type-caption-font-size); /** Font size 2 of the sidebar. */
+  --sidebar-line-height-2: var(--type-caption-line-height); /** Line height 2 of the sidebar. */
   --slider-disabled-opacity-disabled: var(--opacity-disabled); /** Disabled opacity disabled of the slider. */
   --slider-track-radius: var(--radius-round); /** Track radius of the slider. */
   --slider-thumb-icon-size: var(--size-icon); /** Thumb icon size of the slider. */
@@ -1583,6 +1729,7 @@ html[data-scheme="dense-data"][data-theme="dark"] {
   --switch-icon: var(--size-icon); /** Icon of the switch. */
   --textarea-padding-x: var(--space-inset-control-x); /** Padding x of the textarea. */
   --textarea-font-size: var(--type-body-font-size); /** Font size of the textarea. */
+  --textarea-line-height: var(--type-body-line-height); /** Line height of the textarea. */
   --textarea-disabled-opacity-disabled: var(--opacity-disabled); /** Disabled opacity disabled of the textarea. */
   --textarea-focus: var(--border-width-focus); /** Focus of the textarea. */
   --toast-gap: var(--space-gap-default); /** Gap of the toast. */
@@ -1595,6 +1742,7 @@ html[data-scheme="dense-data"][data-theme="dark"] {
   --toggle-group-item-padding-x: var(--space-inset-control-x); /** Item padding x of the toggle group. */
   --toggle-gap: var(--space-gap-default); /** Gap of the toggle. */
   --toggle-font-size: var(--type-body-font-size); /** Font size of the toggle. */
+  --toggle-line-height: var(--type-body-line-height); /** Line height of the toggle. */
   --toggle-font-weight: var(--type-label-font-weight); /** Font weight of the toggle. */
   --toggle-disabled-opacity-disabled: var(--opacity-disabled); /** Disabled opacity disabled of the toggle. */
   --toggle-icon-size: var(--size-icon); /** Icon size of the toggle. */

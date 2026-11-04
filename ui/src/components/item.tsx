@@ -23,7 +23,7 @@ function ItemSeparator({ className, ...props }: React.ComponentProps<typeof Sepa
 }
 
 const itemVariants = cva(
-  "group/item flex flex-wrap items-center rounded-[var(--item-radius)] border border-transparent text-[length:var(--item-font-size)] outline-none transition-colors duration-[var(--item-duration)] focus-visible:border-[color:var(--item-border-focus)] [a]:transition-colors [a]:hover:bg-[color:var(--item-background-hover)]/50 focus-visible:ring-[length:var(--item-focus)] focus-visible:ring-[color:var(--item-focus-ring-focus)] focus-visible:ring-offset-2 focus-visible:ring-offset-[color:var(--item-focus-ring-offset-focus)]",
+  "group/item flex flex-wrap items-center rounded-[var(--item-radius)] border border-transparent text-[length:var(--item-font-size)]/[var(--item-line-height)] outline-none transition-colors duration-[var(--item-duration)] focus-visible:border-[color:var(--item-border-focus)] [a]:transition-colors [a]:hover:bg-[color:var(--item-background-hover)]/50 focus-visible:ring-[length:var(--item-focus)] focus-visible:ring-[color:var(--item-focus-ring-focus)] focus-visible:ring-offset-2 focus-visible:ring-offset-[color:var(--item-focus-ring-offset-focus)]",
   {
     variants: {
       variant: {
@@ -106,7 +106,7 @@ function ItemTitle({ className, ...props }: React.ComponentProps<"div">) {
     <div
       data-slot="item-title"
       className={cn(
-        "flex w-fit items-center gap-[var(--item-title-gap)] text-[length:var(--item-title-font-size)] leading-snug [font-weight:var(--item-title-font-weight)]",
+        "flex w-fit items-center gap-[var(--item-title-gap)] text-[length:var(--item-title-font-size)]/[var(--item-title-line-height)] leading-snug [font-weight:var(--item-title-font-weight)]",
         className,
       )}
       {...props}
@@ -119,7 +119,7 @@ function ItemDescription({ className, ...props }: React.ComponentProps<"p">) {
     <p
       data-slot="item-description"
       className={cn(
-        "line-clamp-2 text-[length:var(--item-description-font-size)] leading-normal [font-weight:var(--item-description-font-weight)] text-balance text-[color:var(--item-description-label)] [&>a]:underline [&>a]:underline-offset-4 [&>a:hover]:text-[color:var(--item-description-label-2)]",
+        "line-clamp-2 text-[length:var(--item-description-font-size)]/[var(--item-description-line-height)] leading-normal [font-weight:var(--item-description-font-weight)] text-balance text-[color:var(--item-description-label)] [&>a]:underline [&>a]:underline-offset-4 [&>a:hover]:text-[color:var(--item-description-label-2)]",
         className,
       )}
       {...props}

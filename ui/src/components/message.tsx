@@ -26,7 +26,10 @@ function Message({
   return (
     <article
       data-slot="message"
-      className={cn("flex items-start gap-3 text-[length:var(--message-font-size)]", className)}
+      className={cn(
+        "flex items-start gap-3 text-[length:var(--message-font-size)]/[var(--message-line-height)]",
+        className,
+      )}
       {...props}
     >
       {avatar}
@@ -38,7 +41,7 @@ function Message({
           {time && (
             <time
               data-slot="message-time"
-              className="text-[length:var(--message-time-font-size)] text-[color:var(--message-time-label)]"
+              className="text-[length:var(--message-time-font-size)]/[var(--message-time-line-height)] text-[color:var(--message-time-label)]"
             >
               {time}
             </time>

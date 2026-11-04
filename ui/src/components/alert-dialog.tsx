@@ -93,7 +93,7 @@ function AlertDialogTitle({ className, ...props }: React.ComponentProps<typeof A
     <AlertDialogPrimitive.Title
       data-slot="alert-dialog-title"
       className={cn(
-        "text-[length:var(--alert-dialog-title-font-size)] [font-weight:var(--alert-dialog-title-font-weight)] sm:group-data-[size=default]/alert-dialog-content:group-has-data-[slot=alert-dialog-media]/alert-dialog-content:col-start-2",
+        "text-[length:var(--alert-dialog-title-font-size)]/[var(--alert-dialog-title-line-height)] [font-weight:var(--alert-dialog-title-font-weight)] sm:group-data-[size=default]/alert-dialog-content:group-has-data-[slot=alert-dialog-media]/alert-dialog-content:col-start-2",
         className,
       )}
       {...props}
@@ -109,7 +109,7 @@ function AlertDialogDescription({
     <AlertDialogPrimitive.Description
       data-slot="alert-dialog-description"
       className={cn(
-        "text-[length:var(--alert-dialog-description-font-size)] text-[color:var(--alert-dialog-description-label)]",
+        "text-[length:var(--alert-dialog-description-font-size)]/[var(--alert-dialog-description-line-height)] text-[color:var(--alert-dialog-description-label)]",
         className,
       )}
       {...props}

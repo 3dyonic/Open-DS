@@ -66,7 +66,7 @@ function Calendar({
           defaultClassNames.month_caption,
         ),
         dropdowns: cn(
-          "flex h-(--cell-size) w-full items-center justify-center gap-1.5 text-[length:var(--calendar-font-size)] [font-weight:var(--calendar-font-weight)]",
+          "flex h-(--cell-size) w-full items-center justify-center gap-1.5 text-[length:var(--calendar-font-size)]/[var(--calendar-line-height)] [font-weight:var(--calendar-font-weight)]",
           defaultClassNames.dropdowns,
         ),
         dropdown_root: cn(
@@ -77,8 +77,8 @@ function Calendar({
         caption_label: cn(
           "[font-weight:var(--calendar-font-weight)] select-none",
           captionLayout === "label"
-            ? "text-[length:var(--calendar-font-size)]"
-            : "flex h-[var(--calendar-height)] items-center gap-[var(--calendar-gap-2)] rounded-[var(--calendar-radius)] pr-1 pl-2 text-[length:var(--calendar-font-size)] [&>svg]:size-3.5 [&>svg]:text-[color:var(--calendar-label)]",
+            ? "text-[length:var(--calendar-font-size)]/[var(--calendar-line-height)]"
+            : "flex h-[var(--calendar-height)] items-center gap-[var(--calendar-gap-2)] rounded-[var(--calendar-radius)] pr-1 pl-2 text-[length:var(--calendar-font-size)]/[var(--calendar-line-height)] [&>svg]:size-3.5 [&>svg]:text-[color:var(--calendar-label)]",
           defaultClassNames.caption_label,
         ),
         month_grid: cn("w-full border-collapse", defaultClassNames.month_grid),
@@ -166,7 +166,7 @@ function CalendarDayButton({ className, day, modifiers, ...props }: React.Compon
       data-range-end={modifiers.range_end}
       data-range-middle={modifiers.range_middle}
       className={cn(
-        "flex aspect-square size-auto w-full min-w-(--cell-size) flex-col gap-[var(--calendar-gap-2)] leading-none [font-weight:var(--calendar-font-weight-2)] group-data-[focused=true]/day:relative group-data-[focused=true]/day:z-10 group-data-[focused=true]/day:border-[color:var(--calendar-border-2)] group-data-[focused=true]/day:ring-[3px] group-data-[focused=true]/day:ring-[color:var(--calendar-focus-ring)]/50 data-[range-end=true]:rounded-[var(--calendar-radius)] data-[range-end=true]:rounded-r-md data-[range-end=true]:bg-[color:var(--calendar-background-4)] data-[range-end=true]:text-[color:var(--calendar-label-3)] data-[range-middle=true]:rounded-none data-[range-middle=true]:bg-[color:var(--calendar-background-3)] data-[range-middle=true]:text-[color:var(--calendar-label-2)] data-[range-start=true]:rounded-[var(--calendar-radius)] data-[range-start=true]:rounded-l-md data-[range-start=true]:bg-[color:var(--calendar-background-4)] data-[range-start=true]:text-[color:var(--calendar-label-3)] data-[selected-single=true]:bg-[color:var(--calendar-background-selected)] data-[selected-single=true]:text-[color:var(--calendar-label-selected-2)] [&>span]:text-[length:var(--calendar-font-size-2)] [&>span]:opacity-70",
+        "flex aspect-square size-auto w-full min-w-(--cell-size) flex-col gap-[var(--calendar-gap-2)] leading-none [font-weight:var(--calendar-font-weight-2)] group-data-[focused=true]/day:relative group-data-[focused=true]/day:z-10 group-data-[focused=true]/day:border-[color:var(--calendar-border-2)] group-data-[focused=true]/day:ring-[3px] group-data-[focused=true]/day:ring-[color:var(--calendar-focus-ring)]/50 data-[range-end=true]:rounded-[var(--calendar-radius)] data-[range-end=true]:rounded-r-md data-[range-end=true]:bg-[color:var(--calendar-background-4)] data-[range-end=true]:text-[color:var(--calendar-label-3)] data-[range-middle=true]:rounded-none data-[range-middle=true]:bg-[color:var(--calendar-background-3)] data-[range-middle=true]:text-[color:var(--calendar-label-2)] data-[range-start=true]:rounded-[var(--calendar-radius)] data-[range-start=true]:rounded-l-md data-[range-start=true]:bg-[color:var(--calendar-background-4)] data-[range-start=true]:text-[color:var(--calendar-label-3)] data-[selected-single=true]:bg-[color:var(--calendar-background-selected)] data-[selected-single=true]:text-[color:var(--calendar-label-selected-2)] [&>span]:text-[length:var(--calendar-font-size-2)]/[var(--calendar-line-height-2)] [&>span]:opacity-70",
         defaultClassNames.day,
         className,
       )}

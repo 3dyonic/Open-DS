@@ -67,7 +67,7 @@ function EmptyTitle({ className, ...props }: React.ComponentProps<"div">) {
     <div
       data-slot="empty-title"
       className={cn(
-        "text-[length:var(--empty-title-font-size)] [font-weight:var(--empty-title-font-weight)] tracking-tight",
+        "text-[length:var(--empty-title-font-size)]/[var(--empty-title-line-height)] [font-weight:var(--empty-title-font-weight)] tracking-tight",
         className,
       )}
       {...props}
@@ -93,7 +93,7 @@ function EmptyContent({ className, ...props }: React.ComponentProps<"div">) {
     <div
       data-slot="empty-content"
       className={cn(
-        "flex w-full max-w-sm min-w-0 flex-col items-center gap-[var(--empty-content-gap)] text-[length:var(--empty-content-font-size)] text-balance",
+        "flex w-full max-w-sm min-w-0 flex-col items-center gap-[var(--empty-content-gap)] text-[length:var(--empty-content-font-size)]/[var(--empty-content-line-height)] text-balance",
         className,
       )}
       {...props}

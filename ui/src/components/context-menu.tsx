@@ -50,7 +50,7 @@ function ContextMenuSubTrigger({
       data-slot="context-menu-sub-trigger"
       data-inset={inset}
       className={cn(
-        "flex cursor-default items-center rounded-[var(--context-menu-sub-trigger-radius)] px-2 py-1.5 text-[length:var(--context-menu-sub-trigger-font-size)] outline-hidden select-none focus:bg-[color:var(--context-menu-sub-trigger-background-focus)] focus:text-[color:var(--context-menu-sub-trigger-label-focus)] data-[inset]:pl-8 data-[state=open]:bg-[color:var(--context-menu-sub-trigger-background-open)] data-[state=open]:text-[color:var(--context-menu-sub-trigger-label-open)] [&_svg]:pointer-events-none [&_svg]:shrink-0 [&_svg:not([class*='size-'])]:size-[var(--context-menu-sub-trigger-icon-size)] [&_svg:not([class*='text-'])]:text-[color:var(--context-menu-sub-trigger-label)]",
+        "flex cursor-default items-center rounded-[var(--context-menu-sub-trigger-radius)] px-2 py-1.5 text-[length:var(--context-menu-sub-trigger-font-size)]/[var(--context-menu-sub-trigger-line-height)] outline-hidden select-none focus:bg-[color:var(--context-menu-sub-trigger-background-focus)] focus:text-[color:var(--context-menu-sub-trigger-label-focus)] data-[inset]:pl-8 data-[state=open]:bg-[color:var(--context-menu-sub-trigger-background-open)] data-[state=open]:text-[color:var(--context-menu-sub-trigger-label-open)] [&_svg]:pointer-events-none [&_svg]:shrink-0 [&_svg:not([class*='size-'])]:size-[var(--context-menu-sub-trigger-icon-size)] [&_svg:not([class*='text-'])]:text-[color:var(--context-menu-sub-trigger-label)]",
         className,
       )}
       {...props}
@@ -104,7 +104,7 @@ function ContextMenuItem({
       data-inset={inset}
       data-variant={variant}
       className={cn(
-        "relative flex cursor-default items-center gap-[var(--context-menu-item-gap)] rounded-[var(--context-menu-item-radius)] px-2 py-1.5 text-[length:var(--context-menu-item-font-size)] outline-hidden select-none focus:bg-[color:var(--context-menu-item-background-focus)] focus:text-[color:var(--context-menu-item-label-focus)] data-[disabled]:pointer-events-none data-[disabled]:opacity-[var(--context-menu-item-disabled-opacity-disabled)] data-[inset]:pl-8 data-[variant=destructive]:text-[color:var(--context-menu-item-label)] data-[variant=destructive]:focus:bg-[color:var(--context-menu-item-background-focus-2)]/10 data-[variant=destructive]:focus:text-[color:var(--context-menu-item-label-focus-2)] [&_svg]:pointer-events-none [&_svg]:shrink-0 [&_svg:not([class*='size-'])]:size-[var(--context-menu-item-icon-size)] [&_svg:not([class*='text-'])]:text-[color:var(--context-menu-item-label-2)] data-[variant=destructive]:*:[svg]:text-[color:var(--context-menu-item-label)]!",
+        "relative flex cursor-default items-center gap-[var(--context-menu-item-gap)] rounded-[var(--context-menu-item-radius)] px-2 py-1.5 text-[length:var(--context-menu-item-font-size)]/[var(--context-menu-item-line-height)] outline-hidden select-none focus:bg-[color:var(--context-menu-item-background-focus)] focus:text-[color:var(--context-menu-item-label-focus)] data-[disabled]:pointer-events-none data-[disabled]:opacity-[var(--context-menu-item-disabled-opacity-disabled)] data-[inset]:pl-8 data-[variant=destructive]:text-[color:var(--context-menu-item-label)] data-[variant=destructive]:focus:bg-[color:var(--context-menu-item-background-focus-2)]/10 data-[variant=destructive]:focus:text-[color:var(--context-menu-item-label-focus-2)] [&_svg]:pointer-events-none [&_svg]:shrink-0 [&_svg:not([class*='size-'])]:size-[var(--context-menu-item-icon-size)] [&_svg:not([class*='text-'])]:text-[color:var(--context-menu-item-label-2)] data-[variant=destructive]:*:[svg]:text-[color:var(--context-menu-item-label)]!",
         className,
       )}
       {...props}
@@ -122,7 +122,7 @@ function ContextMenuCheckboxItem({
     <ContextMenuPrimitive.CheckboxItem
       data-slot="context-menu-checkbox-item"
       className={cn(
-        "relative flex cursor-default items-center gap-[var(--context-menu-checkbox-item-gap)] rounded-[var(--context-menu-checkbox-item-radius)] py-1.5 pr-2 pl-8 text-[length:var(--context-menu-checkbox-item-font-size)] outline-hidden select-none focus:bg-[color:var(--context-menu-checkbox-item-background-focus)] focus:text-[color:var(--context-menu-checkbox-item-label-focus)] data-[disabled]:pointer-events-none data-[disabled]:opacity-[var(--context-menu-checkbox-item-disabled-opacity-disabled)] [&_svg]:pointer-events-none [&_svg]:shrink-0 [&_svg:not([class*='size-'])]:size-[var(--context-menu-checkbox-item-icon-size)]",
+        "relative flex cursor-default items-center gap-[var(--context-menu-checkbox-item-gap)] rounded-[var(--context-menu-checkbox-item-radius)] py-1.5 pr-2 pl-8 text-[length:var(--context-menu-checkbox-item-font-size)]/[var(--context-menu-checkbox-item-line-height)] outline-hidden select-none focus:bg-[color:var(--context-menu-checkbox-item-background-focus)] focus:text-[color:var(--context-menu-checkbox-item-label-focus)] data-[disabled]:pointer-events-none data-[disabled]:opacity-[var(--context-menu-checkbox-item-disabled-opacity-disabled)] [&_svg]:pointer-events-none [&_svg]:shrink-0 [&_svg:not([class*='size-'])]:size-[var(--context-menu-checkbox-item-icon-size)]",
         className,
       )}
       checked={checked}
@@ -147,7 +147,7 @@ function ContextMenuRadioItem({
     <ContextMenuPrimitive.RadioItem
       data-slot="context-menu-radio-item"
       className={cn(
-        "relative flex cursor-default items-center gap-[var(--context-menu-radio-item-gap)] rounded-[var(--context-menu-radio-item-radius)] py-1.5 pr-2 pl-8 text-[length:var(--context-menu-radio-item-font-size)] outline-hidden select-none focus:bg-[color:var(--context-menu-radio-item-background-focus)] focus:text-[color:var(--context-menu-radio-item-label-focus)] data-[disabled]:pointer-events-none data-[disabled]:opacity-[var(--context-menu-radio-item-disabled-opacity-disabled)] [&_svg]:pointer-events-none [&_svg]:shrink-0 [&_svg:not([class*='size-'])]:size-[var(--context-menu-radio-item-icon-size)]",
+        "relative flex cursor-default items-center gap-[var(--context-menu-radio-item-gap)] rounded-[var(--context-menu-radio-item-radius)] py-1.5 pr-2 pl-8 text-[length:var(--context-menu-radio-item-font-size)]/[var(--context-menu-radio-item-line-height)] outline-hidden select-none focus:bg-[color:var(--context-menu-radio-item-background-focus)] focus:text-[color:var(--context-menu-radio-item-label-focus)] data-[disabled]:pointer-events-none data-[disabled]:opacity-[var(--context-menu-radio-item-disabled-opacity-disabled)] [&_svg]:pointer-events-none [&_svg]:shrink-0 [&_svg:not([class*='size-'])]:size-[var(--context-menu-radio-item-icon-size)]",
         className,
       )}
       {...props}
@@ -174,7 +174,7 @@ function ContextMenuLabel({
       data-slot="context-menu-label"
       data-inset={inset}
       className={cn(
-        "px-2 py-1.5 text-[length:var(--context-menu-label-font-size)] [font-weight:var(--context-menu-label-font-weight)] text-[color:var(--context-menu-label-label)] data-[inset]:pl-8",
+        "px-2 py-1.5 text-[length:var(--context-menu-label-font-size)]/[var(--context-menu-label-line-height)] [font-weight:var(--context-menu-label-font-weight)] text-[color:var(--context-menu-label-label)] data-[inset]:pl-8",
         className,
       )}
       {...props}
@@ -197,7 +197,7 @@ function ContextMenuShortcut({ className, ...props }: React.ComponentProps<"span
     <span
       data-slot="context-menu-shortcut"
       className={cn(
-        "ml-auto text-[length:var(--context-menu-shortcut-font-size)] tracking-widest text-[color:var(--context-menu-shortcut-label)]",
+        "ml-auto text-[length:var(--context-menu-shortcut-font-size)]/[var(--context-menu-shortcut-line-height)] tracking-widest text-[color:var(--context-menu-shortcut-label)]",
         className,
       )}
       {...props}

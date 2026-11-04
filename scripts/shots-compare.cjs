@@ -20,7 +20,14 @@ const THEMES = [
   "multi-brand--aster",
   "multi-brand--birch",
   "multi-brand--coral",
-].flatMap((s) => [`${s}:light`, `${s}:dark`]);
+]
+  .flatMap((s) => [`${s}:light`, `${s}:dark`])
+  // THEMES=dense-data captures one scheme only
+  .filter(
+    (t) =>
+      !process.env.THEMES ||
+      process.env.THEMES.split(",").some((x) => t.startsWith(`${x}:`)),
+  );
 
 function serve() {
   const types = {
@@ -77,7 +84,7 @@ async function compare(before, after) {
   const b = await chromium.launch();
   const page = await b.newPage();
   const out = [];
-  for (const f of readdirSync(before).filter((x) => x.endsWith(".png"))) {
+  for (const f of readdirSync(after).filter((x) => x.endsWith(".png"))) {
     const A = readFileSync(join(before, f));
     const B = existsSync(join(after, f)) ? readFileSync(join(after, f)) : null;
     if (B && A.equals(B)) continue;

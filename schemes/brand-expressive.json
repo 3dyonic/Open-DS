@@ -4636,6 +4636,10 @@
             "$value": "{type.heading.font-size}",
             "$description": "Title font size of the alert dialog."
           },
+          "line-height": {
+            "$value": "{type.heading.line-height}",
+            "$description": "Title line height of the alert dialog."
+          },
           "font-weight": {
             "$value": "{type.title.font-weight}",
             "$description": "Title font weight of the alert dialog."
@@ -4645,6 +4649,10 @@
           "font-size": {
             "$value": "{type.body.font-size}",
             "$description": "Description font size of the alert dialog."
+          },
+          "line-height": {
+            "$value": "{type.body.line-height}",
+            "$description": "Description line height of the alert dialog."
           },
           "label": {
             "$value": "{color.text.muted}",
@@ -4678,6 +4686,10 @@
         "font-size": {
           "$value": "{type.body.font-size}",
           "$description": "Font size of the alert."
+        },
+        "line-height": {
+          "$value": "{type.body.line-height}",
+          "$description": "Line height of the alert."
         },
         "icon-size": {
           "$value": "{size.icon}",
@@ -4718,6 +4730,10 @@
             "$value": "{type.body.font-size}",
             "$description": "Description font size of the alert."
           },
+          "line-height": {
+            "$value": "{type.body.line-height}",
+            "$description": "Description line height of the alert."
+          },
           "label": {
             "$value": "{color.text.muted}",
             "$description": "Description label of the alert."
@@ -4736,6 +4752,10 @@
         "font-size": {
           "$value": "{type.body.font-size}",
           "$description": "Font size of the attachment."
+        },
+        "line-height": {
+          "$value": "{type.body.line-height}",
+          "$description": "Line height of the attachment."
         },
         "background-hover": {
           "$value": "{color.surface.sunken}",
@@ -4780,6 +4800,10 @@
         "font-size-2": {
           "$value": "{type.caption.font-size}",
           "$description": "Font size 2 of the attachment."
+        },
+        "line-height-2": {
+          "$value": "{type.caption.line-height}",
+          "$description": "Line height 2 of the attachment."
         }
       },
       "avatar": {
@@ -4804,6 +4828,10 @@
             "$value": "{type.body.font-size}",
             "$description": "Fallback font size of the avatar."
           },
+          "line-height": {
+            "$value": "{type.body.line-height}",
+            "$description": "Fallback line height of the avatar."
+          },
           "label": {
             "$value": "{color.text.muted}",
             "$description": "Fallback label of the avatar."
@@ -4811,6 +4839,10 @@
           "font-size-2": {
             "$value": "{type.caption.font-size}",
             "$description": "Fallback font size 2 of the avatar."
+          },
+          "line-height-2": {
+            "$value": "{type.caption.line-height}",
+            "$description": "Fallback line height 2 of the avatar."
           }
         },
         "badge": {
@@ -4853,6 +4885,10 @@
               "$value": "{type.body.font-size}",
               "$description": "Group count font size of the avatar."
             },
+            "line-height": {
+              "$value": "{type.body.line-height}",
+              "$description": "Group count line height of the avatar."
+            },
             "label": {
               "$value": "{color.text.muted}",
               "$description": "Group count label of the avatar."
@@ -4873,6 +4909,10 @@
           "font-size": {
             "$value": "{type.body.font-size}",
             "$description": "List font size of the breadcrumb."
+          },
+          "line-height": {
+            "$value": "{type.body.line-height}",
+            "$description": "List line height of the breadcrumb."
           },
           "label": {
             "$value": "{color.text.muted}",
@@ -4929,6 +4969,10 @@
           "$value": "{type.caption.font-size}",
           "$description": "Font size of the bubble."
         },
+        "line-height": {
+          "$value": "{type.caption.line-height}",
+          "$description": "Line height of the bubble."
+        },
         "label": {
           "$value": "{color.text.muted}",
           "$description": "Label of the bubble."
@@ -4941,6 +4985,10 @@
           "font-size": {
             "$value": "{type.body.font-size}",
             "$description": "Body font size of the bubble."
+          },
+          "line-height": {
+            "$value": "{type.body.line-height}",
+            "$description": "Body line height of the bubble."
           }
         }
       },
@@ -4965,6 +5013,10 @@
           "font-size": {
             "$value": "{type.body.font-size}",
             "$description": "Text font size of the button group."
+          },
+          "line-height": {
+            "$value": "{type.body.line-height}",
+            "$description": "Text line height of the button group."
           },
           "font-weight": {
             "$value": "{type.label.font-weight}",
@@ -5002,6 +5054,10 @@
         "font-size": {
           "$value": "{type.body.font-size}",
           "$description": "Font size of the calendar."
+        },
+        "line-height": {
+          "$value": "{type.body.line-height}",
+          "$description": "Line height of the calendar."
         },
         "font-weight": {
           "$value": "{type.label.font-weight}",
@@ -5090,6 +5146,10 @@
         "font-size-2": {
           "$value": "{type.caption.font-size}",
           "$description": "Font size 2 of the calendar."
+        },
+        "line-height-2": {
+          "$value": "{type.caption.line-height}",
+          "$description": "Line height 2 of the calendar."
         }
       },
       "carousel": {
@@ -5118,6 +5178,10 @@
         "font-size": {
           "$value": "{type.caption.font-size}",
           "$description": "Font size of the chart."
+        },
+        "line-height": {
+          "$value": "{type.caption.line-height}",
+          "$description": "Line height of the chart."
         },
         "icon": {
           "$value": "{color.text.muted}",
@@ -5254,6 +5318,10 @@
             "$value": "{type.body.font-size}",
             "$description": "Item font size of the combobox."
           },
+          "line-height": {
+            "$value": "{type.body.line-height}",
+            "$description": "Item line height of the combobox."
+          },
           "background": {
             "$value": "{color.surface.sunken}",
             "$description": "Item background of the combobox."
@@ -5280,6 +5348,10 @@
             "$value": "{type.caption.font-size}",
             "$description": "Label font size of the combobox."
           },
+          "line-height": {
+            "$value": "{type.caption.line-height}",
+            "$description": "Label line height of the combobox."
+          },
           "label": {
             "$value": "{color.text.muted}",
             "$description": "Label label of the combobox."
@@ -5291,12 +5363,20 @@
           "font-size-2": {
             "$value": "{type.body.font-size}",
             "$description": "Label font size 2 of the combobox."
+          },
+          "line-height-2": {
+            "$value": "{type.body.line-height}",
+            "$description": "Label line height 2 of the combobox."
           }
         },
         "empty": {
           "font-size": {
             "$value": "{type.body.font-size}",
             "$description": "Empty font size of the combobox."
+          },
+          "line-height": {
+            "$value": "{type.body.line-height}",
+            "$description": "Empty line height of the combobox."
           },
           "label": {
             "$value": "{color.text.muted}",
@@ -5321,6 +5401,10 @@
           "font-size": {
             "$value": "{type.body.font-size}",
             "$description": "Chips font size of the combobox."
+          },
+          "line-height": {
+            "$value": "{type.body.line-height}",
+            "$description": "Chips line height of the combobox."
           },
           "shadow": {
             "$value": "{elevation.card}",
@@ -5359,6 +5443,10 @@
           "font-size": {
             "$value": "{type.caption.font-size}",
             "$description": "Chip font size of the combobox."
+          },
+          "line-height": {
+            "$value": "{type.caption.line-height}",
+            "$description": "Chip line height of the combobox."
           },
           "font-weight": {
             "$value": "{type.label.font-weight}",
@@ -5414,6 +5502,10 @@
             "$value": "{type.body.font-size}",
             "$description": "Input font size of the command."
           },
+          "line-height": {
+            "$value": "{type.body.line-height}",
+            "$description": "Input line height of the command."
+          },
           "label-placeholder": {
             "$value": "{color.text.muted}",
             "$description": "Input label placeholder of the command."
@@ -5435,6 +5527,10 @@
           "font-size": {
             "$value": "{type.body.font-size}",
             "$description": "Empty font size of the command."
+          },
+          "line-height": {
+            "$value": "{type.body.line-height}",
+            "$description": "Empty line height of the command."
           }
         },
         "group": {
@@ -5445,6 +5541,10 @@
           "font-size": {
             "$value": "{type.caption.font-size}",
             "$description": "Group font size of the command."
+          },
+          "line-height": {
+            "$value": "{type.caption.line-height}",
+            "$description": "Group line height of the command."
           },
           "font-weight": {
             "$value": "{type.label.font-weight}",
@@ -5474,6 +5574,10 @@
             "$value": "{type.body.font-size}",
             "$description": "Item font size of the command."
           },
+          "line-height": {
+            "$value": "{type.body.line-height}",
+            "$description": "Item line height of the command."
+          },
           "disabled-opacity-disabled": {
             "$value": "{opacity.disabled}",
             "$description": "Item disabled opacity disabled of the command."
@@ -5500,6 +5604,10 @@
             "$value": "{type.caption.font-size}",
             "$description": "Shortcut font size of the command."
           },
+          "line-height": {
+            "$value": "{type.caption.line-height}",
+            "$description": "Shortcut line height of the command."
+          },
           "label": {
             "$value": "{color.text.muted}",
             "$description": "Shortcut label of the command."
@@ -5516,6 +5624,10 @@
             "font-size": {
               "$value": "{type.body.font-size}",
               "$description": "Sub trigger font size of the context menu."
+            },
+            "line-height": {
+              "$value": "{type.body.line-height}",
+              "$description": "Sub trigger line height of the context menu."
             },
             "background-focus": {
               "$value": "{color.surface.sunken}",
@@ -5592,6 +5704,10 @@
             "$value": "{type.body.font-size}",
             "$description": "Item font size of the context menu."
           },
+          "line-height": {
+            "$value": "{type.body.line-height}",
+            "$description": "Item line height of the context menu."
+          },
           "background-focus": {
             "$value": "{color.surface.sunken}",
             "$description": "Item background focus of the context menu."
@@ -5639,6 +5755,10 @@
               "$value": "{type.body.font-size}",
               "$description": "Checkbox item font size of the context menu."
             },
+            "line-height": {
+              "$value": "{type.body.line-height}",
+              "$description": "Checkbox item line height of the context menu."
+            },
             "background-focus": {
               "$value": "{color.surface.sunken}",
               "$description": "Checkbox item background focus of the context menu."
@@ -5675,6 +5795,10 @@
               "$value": "{type.body.font-size}",
               "$description": "Radio item font size of the context menu."
             },
+            "line-height": {
+              "$value": "{type.body.line-height}",
+              "$description": "Radio item line height of the context menu."
+            },
             "background-focus": {
               "$value": "{color.surface.sunken}",
               "$description": "Radio item background focus of the context menu."
@@ -5698,6 +5822,10 @@
             "$value": "{type.body.font-size}",
             "$description": "Label font size of the context menu."
           },
+          "line-height": {
+            "$value": "{type.body.line-height}",
+            "$description": "Label line height of the context menu."
+          },
           "font-weight": {
             "$value": "{type.label.font-weight}",
             "$description": "Label font weight of the context menu."
@@ -5717,6 +5845,10 @@
           "font-size": {
             "$value": "{type.caption.font-size}",
             "$description": "Shortcut font size of the context menu."
+          },
+          "line-height": {
+            "$value": "{type.caption.line-height}",
+            "$description": "Shortcut line height of the context menu."
           },
           "label": {
             "$value": "{color.text.muted}",
@@ -5876,6 +6008,10 @@
             "$value": "{type.body.font-size}",
             "$description": "Description font size of the drawer."
           },
+          "line-height": {
+            "$value": "{type.body.line-height}",
+            "$description": "Description line height of the drawer."
+          },
           "label": {
             "$value": "{color.text.muted}",
             "$description": "Description label of the drawer."
@@ -5970,6 +6106,10 @@
             "$value": "{type.heading.font-size}",
             "$description": "Title font size of the empty."
           },
+          "line-height": {
+            "$value": "{type.heading.line-height}",
+            "$description": "Title line height of the empty."
+          },
           "font-weight": {
             "$value": "{type.label.font-weight}",
             "$description": "Title font weight of the empty."
@@ -5997,6 +6137,10 @@
           "font-size": {
             "$value": "{type.body.font-size}",
             "$description": "Content font size of the empty."
+          },
+          "line-height": {
+            "$value": "{type.body.line-height}",
+            "$description": "Content line height of the empty."
           }
         }
       },
@@ -6015,6 +6159,10 @@
           "font-size": {
             "$value": "{type.body.font-size}",
             "$description": "Legend font size of the field."
+          },
+          "line-height": {
+            "$value": "{type.body.line-height}",
+            "$description": "Legend line height of the field."
           }
         },
         "group": {
@@ -6044,6 +6192,10 @@
             "$value": "{type.body.font-size}",
             "$description": "Label font size of the field."
           },
+          "line-height": {
+            "$value": "{type.body.line-height}",
+            "$description": "Label line height of the field."
+          },
           "font-weight": {
             "$value": "{type.label.font-weight}",
             "$description": "Label font weight of the field."
@@ -6066,6 +6218,10 @@
             "$value": "{type.body.font-size}",
             "$description": "Description font size of the field."
           },
+          "line-height": {
+            "$value": "{type.body.line-height}",
+            "$description": "Description line height of the field."
+          },
           "font-weight": {
             "$value": "{type.body.font-weight}",
             "$description": "Description font weight of the field."
@@ -6083,6 +6239,10 @@
           "font-size": {
             "$value": "{type.body.font-size}",
             "$description": "Separator font size of the field."
+          },
+          "line-height": {
+            "$value": "{type.body.line-height}",
+            "$description": "Separator line height of the field."
           }
         },
         "background": {
@@ -6097,6 +6257,10 @@
           "font-size": {
             "$value": "{type.body.font-size}",
             "$description": "Error font size of the field."
+          },
+          "line-height": {
+            "$value": "{type.body.line-height}",
+            "$description": "Error line height of the field."
           },
           "font-weight": {
             "$value": "{type.body.font-weight}",
@@ -6126,6 +6290,10 @@
             "$value": "{type.body.font-size}",
             "$description": "Description font size of the form."
           },
+          "line-height": {
+            "$value": "{type.body.line-height}",
+            "$description": "Description line height of the form."
+          },
           "label": {
             "$value": "{color.text.muted}",
             "$description": "Description label of the form."
@@ -6135,6 +6303,10 @@
           "font-size": {
             "$value": "{type.body.font-size}",
             "$description": "Message font size of the form."
+          },
+          "line-height": {
+            "$value": "{type.body.line-height}",
+            "$description": "Message line height of the form."
           },
           "label": {
             "$value": "{color.status.danger.@}",
@@ -6210,6 +6382,10 @@
         "font-size": {
           "$value": "{type.body.font-size}",
           "$description": "Font size of the input group."
+        },
+        "line-height": {
+          "$value": "{type.body.line-height}",
+          "$description": "Line height of the input group."
         },
         "font-weight": {
           "$value": "{type.label.font-weight}",
@@ -6324,6 +6500,10 @@
             "$value": "{type.body.font-size}",
             "$description": "Slot font size of the input otp."
           },
+          "line-height": {
+            "$value": "{type.body.line-height}",
+            "$description": "Slot line height of the input otp."
+          },
           "shadow": {
             "$value": "{elevation.card}",
             "$description": "Slot shadow of the input otp."
@@ -6366,6 +6546,10 @@
         "font-size": {
           "$value": "{type.body.font-size}",
           "$description": "Font size of the item."
+        },
+        "line-height": {
+          "$value": "{type.body.line-height}",
+          "$description": "Line height of the item."
         },
         "duration": {
           "$value": "{motion.duration.feedback}",
@@ -6462,6 +6646,10 @@
             "$value": "{type.body.font-size}",
             "$description": "Title font size of the item."
           },
+          "line-height": {
+            "$value": "{type.body.line-height}",
+            "$description": "Title line height of the item."
+          },
           "font-weight": {
             "$value": "{type.label.font-weight}",
             "$description": "Title font weight of the item."
@@ -6471,6 +6659,10 @@
           "font-size": {
             "$value": "{type.body.font-size}",
             "$description": "Description font size of the item."
+          },
+          "line-height": {
+            "$value": "{type.body.line-height}",
+            "$description": "Description line height of the item."
           },
           "font-weight": {
             "$value": "{type.body.font-weight}",
@@ -6520,6 +6712,10 @@
         "font-size": {
           "$value": "{type.caption.font-size}",
           "$description": "Font size of the kbd."
+        },
+        "line-height": {
+          "$value": "{type.caption.line-height}",
+          "$description": "Line height of the kbd."
         },
         "font-weight": {
           "$value": "{type.label.font-weight}",
@@ -6575,6 +6771,10 @@
           "$value": "{type.caption.font-size}",
           "$description": "Font size of the marker."
         },
+        "line-height": {
+          "$value": "{type.caption.line-height}",
+          "$description": "Line height of the marker."
+        },
         "label": {
           "$value": "{color.text.muted}",
           "$description": "Label of the marker."
@@ -6609,6 +6809,10 @@
           "font-size": {
             "$value": "{type.body.font-size}",
             "$description": "Trigger font size of the menubar."
+          },
+          "line-height": {
+            "$value": "{type.body.line-height}",
+            "$description": "Trigger line height of the menubar."
           },
           "font-weight": {
             "$value": "{type.label.font-weight}",
@@ -6662,6 +6866,10 @@
             "$value": "{type.body.font-size}",
             "$description": "Item font size of the menubar."
           },
+          "line-height": {
+            "$value": "{type.body.line-height}",
+            "$description": "Item line height of the menubar."
+          },
           "background-focus": {
             "$value": "{color.surface.sunken}",
             "$description": "Item background focus of the menubar."
@@ -6709,6 +6917,10 @@
               "$value": "{type.body.font-size}",
               "$description": "Checkbox item font size of the menubar."
             },
+            "line-height": {
+              "$value": "{type.body.line-height}",
+              "$description": "Checkbox item line height of the menubar."
+            },
             "background-focus": {
               "$value": "{color.surface.sunken}",
               "$description": "Checkbox item background focus of the menubar."
@@ -6745,6 +6957,10 @@
               "$value": "{type.body.font-size}",
               "$description": "Radio item font size of the menubar."
             },
+            "line-height": {
+              "$value": "{type.body.line-height}",
+              "$description": "Radio item line height of the menubar."
+            },
             "background-focus": {
               "$value": "{color.surface.sunken}",
               "$description": "Radio item background focus of the menubar."
@@ -6768,6 +6984,10 @@
             "$value": "{type.body.font-size}",
             "$description": "Label font size of the menubar."
           },
+          "line-height": {
+            "$value": "{type.body.line-height}",
+            "$description": "Label line height of the menubar."
+          },
           "font-weight": {
             "$value": "{type.label.font-weight}",
             "$description": "Label font weight of the menubar."
@@ -6784,6 +7004,10 @@
             "$value": "{type.caption.font-size}",
             "$description": "Shortcut font size of the menubar."
           },
+          "line-height": {
+            "$value": "{type.caption.line-height}",
+            "$description": "Shortcut line height of the menubar."
+          },
           "label": {
             "$value": "{color.text.muted}",
             "$description": "Shortcut label of the menubar."
@@ -6798,6 +7022,10 @@
             "font-size": {
               "$value": "{type.body.font-size}",
               "$description": "Sub trigger font size of the menubar."
+            },
+            "line-height": {
+              "$value": "{type.body.line-height}",
+              "$description": "Sub trigger line height of the menubar."
             },
             "background-focus": {
               "$value": "{color.surface.sunken}",
@@ -6867,6 +7095,10 @@
           "$value": "{type.body.font-size}",
           "$description": "Font size of the message."
         },
+        "line-height": {
+          "$value": "{type.body.line-height}",
+          "$description": "Line height of the message."
+        },
         "gap": {
           "$value": "{space.gap.tight}",
           "$description": "Gap of the message."
@@ -6885,6 +7117,10 @@
           "font-size": {
             "$value": "{type.caption.font-size}",
             "$description": "Time font size of the message."
+          },
+          "line-height": {
+            "$value": "{type.caption.line-height}",
+            "$description": "Time line height of the message."
           },
           "label": {
             "$value": "{color.text.muted}",
@@ -6912,6 +7148,10 @@
         "font-size": {
           "$value": "{type.body.font-size}",
           "$description": "Font size of the native select."
+        },
+        "line-height": {
+          "$value": "{type.body.line-height}",
+          "$description": "Line height of the native select."
         },
         "shadow": {
           "$value": "{elevation.card}",
@@ -6988,6 +7228,10 @@
         "font-size": {
           "$value": "{type.body.font-size}",
           "$description": "Font size of the navigation menu."
+        },
+        "line-height": {
+          "$value": "{type.body.line-height}",
+          "$description": "Line height of the navigation menu."
         },
         "font-weight": {
           "$value": "{type.label.font-weight}",
@@ -7087,6 +7331,10 @@
           "font-size": {
             "$value": "{type.body.font-size}",
             "$description": "Link font size of the navigation menu."
+          },
+          "line-height": {
+            "$value": "{type.body.line-height}",
+            "$description": "Link line height of the navigation menu."
           },
           "background-hover": {
             "$value": "{color.surface.sunken}",
@@ -7193,6 +7441,10 @@
           "font-size": {
             "$value": "{type.body.font-size}",
             "$description": "Header font size of the popover."
+          },
+          "line-height": {
+            "$value": "{type.body.line-height}",
+            "$description": "Header line height of the popover."
           }
         },
         "title": {
@@ -7488,6 +7740,10 @@
             "$value": "{type.body.font-size}",
             "$description": "Description font size of the sheet."
           },
+          "line-height": {
+            "$value": "{type.body.line-height}",
+            "$description": "Description line height of the sheet."
+          },
           "label": {
             "$value": "{color.text.muted}",
             "$description": "Description label of the sheet."
@@ -7615,6 +7871,10 @@
               "$value": "{type.caption.font-size}",
               "$description": "Group label font size of the sidebar."
             },
+            "line-height": {
+              "$value": "{type.caption.line-height}",
+              "$description": "Group label line height of the sidebar."
+            },
             "font-weight": {
               "$value": "{type.label.font-weight}",
               "$description": "Group label font weight of the sidebar."
@@ -7690,6 +7950,10 @@
             "font-size": {
               "$value": "{type.body.font-size}",
               "$description": "Group content font size of the sidebar."
+            },
+            "line-height": {
+              "$value": "{type.body.line-height}",
+              "$description": "Group content line height of the sidebar."
             }
           }
         },
@@ -7744,6 +8008,10 @@
             "font-size": {
               "$value": "{type.caption.font-size}",
               "$description": "Menu badge font size of the sidebar."
+            },
+            "line-height": {
+              "$value": "{type.caption.line-height}",
+              "$description": "Menu badge line height of the sidebar."
             },
             "font-weight": {
               "$value": "{type.label.font-weight}",
@@ -7841,6 +8109,10 @@
           "$value": "{type.body.font-size}",
           "$description": "Font size of the sidebar."
         },
+        "line-height": {
+          "$value": "{type.body.line-height}",
+          "$description": "Line height of the sidebar."
+        },
         "focus-ring": {
           "$value": "{color.border.focus}",
           "$description": "Focus ring of the sidebar."
@@ -7921,6 +8193,10 @@
           "font-size": {
             "$value": "{type.body.font-size}",
             "$description": "Default font size of the sidebar."
+          },
+          "line-height": {
+            "$value": "{type.body.line-height}",
+            "$description": "Default line height of the sidebar."
           }
         },
         "outline": {
@@ -7941,12 +8217,20 @@
           "font-size": {
             "$value": "{type.caption.font-size}",
             "$description": "Sm font size of the sidebar."
+          },
+          "line-height": {
+            "$value": "{type.caption.line-height}",
+            "$description": "Sm line height of the sidebar."
           }
         },
         "lg": {
           "font-size": {
             "$value": "{type.body.font-size}",
             "$description": "Lg font size of the sidebar."
+          },
+          "line-height": {
+            "$value": "{type.body.line-height}",
+            "$description": "Lg line height of the sidebar."
           }
         },
         "height": {
@@ -7956,6 +8240,10 @@
         "font-size-2": {
           "$value": "{type.caption.font-size}",
           "$description": "Font size 2 of the sidebar."
+        },
+        "line-height-2": {
+          "$value": "{type.caption.line-height}",
+          "$description": "Line height 2 of the sidebar."
         }
       },
       "skeleton": {
@@ -8084,6 +8372,10 @@
         "font-size": {
           "$value": "{type.body.font-size}",
           "$description": "Font size of the textarea."
+        },
+        "line-height": {
+          "$value": "{type.body.line-height}",
+          "$description": "Line height of the textarea."
         },
         "shadow": {
           "$value": "{elevation.card}",
@@ -8214,6 +8506,10 @@
         "font-size": {
           "$value": "{type.body.font-size}",
           "$description": "Font size of the toggle."
+        },
+        "line-height": {
+          "$value": "{type.body.line-height}",
+          "$description": "Line height of the toggle."
         },
         "font-weight": {
           "$value": "{type.label.font-weight}",

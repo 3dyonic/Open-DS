@@ -37,14 +37,14 @@ function Bubble({
       className={cn("flex flex-col gap-[var(--bubble-gap)]", from === "me" ? "items-end" : "items-start", className)}
       {...props}
     >
-      <span className="text-[length:var(--bubble-font-size)] text-[color:var(--bubble-label)]">
+      <span className="text-[length:var(--bubble-font-size)]/[var(--bubble-line-height)] text-[color:var(--bubble-label)]">
         {author}
         {time && <> · {time}</>}
       </span>
       <div
         data-slot="bubble-body"
         className={cn(
-          "w-fit max-w-[80%] rounded-[var(--bubble-body-radius)] px-3 py-2 text-[length:var(--bubble-body-font-size)] leading-normal",
+          "w-fit max-w-[80%] rounded-[var(--bubble-body-radius)] px-3 py-2 text-[length:var(--bubble-body-font-size)]/[var(--bubble-body-line-height)] leading-normal",
           SIDE[from],
         )}
       >
