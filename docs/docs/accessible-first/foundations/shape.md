@@ -44,15 +44,6 @@ Each token points to another token. Values live only on primitives, below.
 
 The raw values these tokens end at are on [Primitives › Shape](../primitives/shape).
 
-## Where it lands
-
-- Button
-- Input
-- Control
-- Badge
-- Card
-- Overlay
-
 ## When to use what
 
 | Situation | Use | Not | Why |

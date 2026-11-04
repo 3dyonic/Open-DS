@@ -56,8 +56,12 @@ npx open-ds add separator
 
 The component reads only component keys and semantic tokens, so it follows the brand and mode on `<html>`.
 
-## Tokens it reads
+## Variables
 
-Separator reads 1 of Brand expressive's tokens. Each row follows one part of the component from its class to the value it ends at, in every theme. Change a token in the scheme and every component that reads it follows.
+Every token Separator reads, from its code: the variable, the semantic token it aliases, and where that ends in the theme.
 
-<div class="odv-tscroll"><table class="odv-ttable odv-reads"><thead><tr><th>Part</th><th>From the class to the token</th><th>Light</th><th>Dark</th></tr></thead><tbody><tr><td><b>Fill</b></td><td><span class="odv-chain"><span>bg-border</span><i>→</i><span>--border</span><i>→</i><span class="tok">color.border.default</span></span></td><td><span class="odv-tsw"><i style="background:#F2DCCF"></i><small>taupe.light.200 · #F2DCCF</small></span></td><td><span class="odv-tsw"><i style="background:#33241F"></i><small>taupe.dark.100 · #33241F</small></span></td></tr></tbody></table></div>
+### Read straight from the system
+
+Separator has no variables of its own yet; it reads these system tokens directly.
+
+<div class="odv-scale" data-scale><div class="odv-scale-tabs" role="tablist"><button type="button" role="tab" data-mode="light" aria-selected="true">Light theme</button><button type="button" role="tab" data-mode="dark" aria-selected="false">Dark theme</button></div><div class="odv-scale-p odv-vars-p" data-mode="light" role="tabpanel" style="background:#FFF8F3;color:#1F1411;--odv-muted:#6B544A;--odv-edge:#F2DCCF"><div class="odv-tscroll"><table class="odv-ttable odv-vars"><thead><tr><th>Variable</th><th>Alias</th><th>Value</th></tr></thead><tbody><tr><td><code>--color-border-default</code></td><td><code>var(--color-neutral-200)</code></td><td><span class="odv-tsw"><i style="background:#F2DCCF" title="#F2DCCF"></i><small>taupe.light.200</small></span></td></tr></tbody></table></div></div><div class="odv-scale-p odv-vars-p" data-mode="dark" role="tabpanel" style="background:#120B09;color:#FFF8F3;--odv-muted:#B5988A;--odv-edge:#33241F"><div class="odv-tscroll"><table class="odv-ttable odv-vars"><thead><tr><th>Variable</th><th>Alias</th><th>Value</th></tr></thead><tbody><tr><td><code>--color-border-default</code></td><td><code>var(--color-neutral-100)</code></td><td><span class="odv-tsw"><i style="background:#33241F" title="#33241F"></i><small>taupe.dark.100</small></span></td></tr></tbody></table></div></div></div>

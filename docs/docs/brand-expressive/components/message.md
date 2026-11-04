@@ -53,6 +53,12 @@ npx open-ds add message
 
 The component reads only component keys and semantic tokens, so it follows the brand and mode on `<html>`.
 
-## Tokens it reads
+## Variables
 
-Message sets no colors, corners or shadows of its own; it takes them from the components inside it.
+Every token Message reads, from its code: the variable, the semantic token it aliases, and where that ends in the theme.
+
+### Read straight from the system
+
+Message has no variables of its own yet; it reads these system tokens directly.
+
+<div class="odv-scale" data-scale><div class="odv-scale-tabs" role="tablist"><button type="button" role="tab" data-mode="light" aria-selected="true">Light theme</button><button type="button" role="tab" data-mode="dark" aria-selected="false">Dark theme</button></div><div class="odv-scale-p odv-vars-p" data-mode="light" role="tabpanel" style="background:#FFF8F3;color:#1F1411;--odv-muted:#6B544A;--odv-edge:#F2DCCF"><div class="odv-tscroll"><table class="odv-ttable odv-vars"><thead><tr><th>Variable</th><th>Alias</th><th>Value</th></tr></thead><tbody><tr><td><code>--color-text-muted</code></td><td><code>var(--color-neutral-600)</code></td><td><span class="odv-tsw"><i style="background:#6B544A" title="#6B544A"></i><small>taupe.light.600</small></span></td></tr><tr><td><code>--type-body-font-size</code></td><td><code>var(--font-size-17)</code></td><td><code>font.size.17</code> <small>1.0625rem</small></td></tr><tr><td><code>--type-caption-font-size</code></td><td><code>var(--font-size-14)</code></td><td><code>font.size.14</code> <small>0.875rem</small></td></tr></tbody></table></div></div><div class="odv-scale-p odv-vars-p" data-mode="dark" role="tabpanel" style="background:#120B09;color:#FFF8F3;--odv-muted:#B5988A;--odv-edge:#33241F"><div class="odv-tscroll"><table class="odv-ttable odv-vars"><thead><tr><th>Variable</th><th>Alias</th><th>Value</th></tr></thead><tbody><tr><td><code>--color-text-muted</code></td><td><code>var(--color-neutral-400)</code></td><td><span class="odv-tsw"><i style="background:#B5988A" title="#B5988A"></i><small>taupe.dark.400</small></span></td></tr><tr><td><code>--type-body-font-size</code></td><td><code>var(--font-size-17)</code></td><td><code>font.size.17</code> <small>1.0625rem</small></td></tr><tr><td><code>--type-caption-font-size</code></td><td><code>var(--font-size-14)</code></td><td><code>font.size.14</code> <small>0.875rem</small></td></tr></tbody></table></div></div></div>

@@ -24,12 +24,6 @@ Accessible first has **2 modes** and **1 brand**. A mode swaps the colors; corne
 | Which modes ship? | Light and dark | Light and dark ship as standard; both hold AAA text. |
 | What changes when the theme changes? | Colors only | Only colors change. |
 
-## Where it lands
-
-- Button
-- Card
-- Overlay
-
 ## When to use what
 
 | Situation | Use | Not | Why |

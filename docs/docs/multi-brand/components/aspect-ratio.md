@@ -52,6 +52,6 @@ npx open-ds add aspect-ratio
 
 The component reads only component keys and semantic tokens, so it follows the brand and mode on `<html>`.
 
-## Tokens it reads
+## Variables
 
-Aspect ratio sets no colors, corners or shadows of its own; it takes them from the components inside it.
+Aspect ratio names no tokens of its own; it takes them from the components inside it.

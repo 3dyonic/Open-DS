@@ -67,13 +67,6 @@ Each token points to another token. Values live only on primitives, below.
 
 The raw values these tokens end at are on [Primitives › Type](../primitives/type).
 
-## Where it lands
-
-- Button
-- Input
-- Badge
-- Table
-
 ## When to use what
 
 | Situation | Use | Not | Why |

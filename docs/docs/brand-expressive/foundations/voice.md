@@ -32,13 +32,6 @@ Each token points to another token. Values live only on primitives, below.
 | `content.action.retry` |  |
 | `content.action.empty-action` |  |
 
-## Where it lands
-
-- Button
-- Input
-- Overlay
-- Table
-
 ## When to use what
 
 | Situation | Use | Not | Why |

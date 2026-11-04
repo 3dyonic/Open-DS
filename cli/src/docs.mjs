@@ -7,8 +7,9 @@ import { existsSync, readFileSync, readdirSync } from "node:fs";
 import { join } from "node:path";
 import { questions } from "./schemes.mjs";
 import { SHADCN, SHADCN_SCALE } from "./shadcn.mjs";
-import { sitsOn, toneOf, toneRole } from "./tones.mjs";
+import { pairsIn, sitsOn, toneOf, toneRole } from "./tones.mjs";
 import { LANES, follow, laneOf, scaleMap } from "./scale-map.mjs";
+import { aliasChain, directReads, tokenIndex } from "./lands.mjs";
 import { componentGuide, followers } from "./component.mjs";
 
 // Which component keys each shipped component reads.
@@ -537,21 +538,6 @@ function colorGuidance(g) {
           `| <span id="for-${cssId(k.id)}"></span>\`${k.id}\` | ${esc(k.intent)} | ${k.not_for.map((n) => `${esc(n.when)}: \`${n.use}\``).join("<br />") || "—"} |`,
       )
       .join("\n") +
-    `\n\n## Pairs at a glance\n\nWhich color may sit on which fill, and the contrast it keeps there in every brand and mode. Text pairs by tone: every fill says whether it is light or dark, and the text on it is \`color.text.on-light\` or \`color.text.on-dark\`. The page's own text is the set of its own surfaces. The harness checks every pair.\n\n| Token | Sits on | Contrast |\n| --- | --- | --- |\n` +
-    keys
-      .filter((k) => k.pairs)
-      .map(
-        (k) =>
-          `| \`${k.id}\` | ${k.pairs.tone ? `${toneWords(k.id)}: ` : ""}${sitsOn(
-            g,
-            k,
-          )
-            .map((o) => `\`${o}\``)
-            .join(
-              ", ",
-            )} | ${k.pairs.contrast ? `${k.pairs.contrast}:1` : esc(k.exempt ?? "exempt")} |`,
-      )
-      .join("\n") +
     "\n"
   );
 }
@@ -643,41 +629,117 @@ export function docsPages(
             return `<div class="odv-brandset" data-for-brand="${b}">\n\n<p class="odv-brandname">${attr(scheme.tokens.brands[b]?.label ?? b)}</p>\n\n${fn(l, d)}\n\n</div>`;
           })
           .join("\n\n");
-  // OD-222: each fill's tone, per brand and mode, and the set that sits on it.
-  const fillTones = () => {
+  // OD-233: pairs and tones as pictures. For each brand and mode, every fill painted in its color with
+  // the text that may sit on it, its step and the contrast it keeps there, grouped by the fill's tone; then
+  // each fill in both modes with the text its tone picks. From pairsIn and toneOf, which the harness checks.
+  const colorBrands = Object.keys(scheme.tokens.brands);
+  const prim = (p) =>
+    String(
+      p.split(".").reduce((n, k) => n && n[k], scheme.tokens.primitive)
+        ?.$value ?? "",
+    )
+      .slice(0, 7)
+      .toUpperCase();
+  const at = (b, m, path) => {
+    const f =
+      follow(scheme.tokens, b, m, path) ??
+      follow(scheme.tokens, b, m, `${path}.@`);
+    return f
+      ? { hex: prim(f.prim), prim: f.prim.replace(/^color\./, "") }
+      : null;
+  };
+  const short = (p) => p.replace(/^color\./, "").replace(/\.@$/, "");
+  const forBrands = (fn) =>
+    colorBrands.length === 1
+      ? fn(colorBrands[0])
+      : colorBrands
+          .map(
+            (b) =>
+              `<div class="odv-brandset" data-for-brand="${b}">\n\n<p class="odv-brandname">${attr(scheme.tokens.brands[b]?.label ?? b)}</p>\n\n${fn(b)}\n\n</div>`,
+          )
+          .join("\n\n");
+  const panelStyle = (b, m) =>
+    `background:${at(b, m, "color.surface.canvas")?.hex};color:${at(b, m, "color.text.primary")?.hex};--odv-muted:${at(b, m, "color.text.muted")?.hex};--odv-edge:${at(b, m, "color.border.default")?.hex}`;
+  const tabs = (modes) =>
+    `<div class="odv-scale-tabs" role="tablist">${modes.map((m, i) => `<button type="button" role="tab" data-mode="${m}" aria-selected="${i === 0}">${cap(m)} theme</button>`).join("")}</div>`;
+  const cap = (x) => x.charAt(0).toUpperCase() + x.slice(1);
+  const pairsPicture = () => {
     const tones = g.semantics?.tones;
     if (!tones) return "";
-    const all = tones.sets.map((x) => x.role);
-    const carries = (f) =>
-      all.every((r) => f.carries.includes(r))
-        ? "Everything"
-        : f.carries.join(", ");
+    const fills = tones.fills.map((f) => f.id);
+    const own = /^color\.surface\.(canvas|default|raised|sunken|selected)$/;
+    const panel = (b, m) => {
+      const th = scheme.tokens.brands[b].theme;
+      const byFill = {};
+      for (const p of pairsIn(g, scheme, b, m))
+        if (p.key.startsWith("color.text.")) (byFill[p.on] ??= []).push(p);
+      const pageTone = toneOf(th, m, "color.surface.canvas")?.tone;
+      const tile = (fill) => {
+        const bg = at(b, m, fill);
+        if (!bg) return "";
+        const lines = (byFill[fill] ?? [])
+          .map((p) => {
+            const t = at(b, m, p.key);
+            if (!t) return "";
+            const cr = contrast(t.hex, bg.hex);
+            return `<div class="odv-pr"><span class="odv-pr-aa" style="color:${t.hex}">Aa</span><span class="odv-pr-k" style="color:${t.hex}">${short(p.key)}<small>${t.prim}</small></span><span class="odv-pr-c${cr >= p.contrast ? "" : " no"}" style="color:${t.hex}">${cr.toFixed(1)}:1</span></div>`;
+          })
+          .join("");
+        const first = (byFill[fill] ?? [])[0];
+        return `<div class="odv-tile" style="background:${bg.hex}"><p class="odv-tile-h" style="color:${first ? at(b, m, first.key)?.hex : "inherit"}">${short(fill)}<small>${bg.prim}</small></p>${lines}</div>`;
+      };
+      const group = (title, note, list) =>
+        list.length
+          ? `<div class="odv-pgroup"><p class="odv-lane-h">${title}</p><p class="odv-pgroup-n">${note}</p><div class="odv-tiles">${list.map(tile).join("")}</div></div>`
+          : "";
+      const ownFills = fills.filter(
+        (f) => own.test(f) && toneOf(th, m, f)?.tone === pageTone,
+      );
+      const rest = fills.filter((f) => !ownFills.includes(f));
+      return `<div class="odv-scale-p" data-mode="${m}" role="tabpanel" style="${panelStyle(b, m)}">${group("The page's own surfaces", "The page's own text sits on them: primary, secondary, muted and links.", ownFills)}${group(
+        "Light fills",
+        "Their tone is light, so the text on them is <code>text.on-light</code>, or a status's <code>-on-light</code> text.",
+        rest.filter((f) => toneOf(th, m, f)?.tone === "light"),
+      )}${group(
+        "Dark fills",
+        "Their tone is dark, so the text on them is <code>text.on-dark</code>, or a status's <code>-on-dark</code> text.",
+        rest.filter((f) => toneOf(th, m, f)?.tone === "dark"),
+      )}</div>`;
+    };
     return (
-      `\n## The tone of each fill\n\nEvery fill says whether it is light or dark. Text on it is \`color.text.on-light\` on a light fill, \`color.text.on-dark\` on a dark one. "Everything" means ${all.join(", ")}.\n\n` +
-      perBrand((F) => {
-        const th = scheme.tokens.brands[F.brand].theme;
-        const notes = [];
-        const cell = (mode, id) => {
-          const t = toneOf(th, mode, id);
-          if (!t) return "—";
-          if (!t.waits) return t.tone;
-          notes.push(
-            `\`${id}\` in ${mode} mode waits for ${t.waits.for}: ${esc(t.waits.why)}`,
+      `\n## Pairs at a glance\n\nWhich text may sit on which fill, and the contrast it keeps there. Each fill is shown in its own color, with every text that may sit on it. Fills are grouped by their tone in each mode: light fills take \`color.text.on-light\`, dark fills take \`color.text.on-dark\`. The harness checks every pair.\n\n` +
+      forBrands(
+        (b) =>
+          `<div class="odv-scale" data-scale>${tabs(["light", "dark"])}${["light", "dark"].map((m) => panel(b, m)).join("")}</div>`,
+      ) +
+      "\n"
+    );
+  };
+  const tonePicture = () => {
+    const tones = g.semantics?.tones;
+    if (!tones) return "";
+    return (
+      `\n## The tone of each fill\n\nEvery fill says whether it is light or dark, in each mode, and that picks the text on it. A fill can change tone between modes: the same token, the other text.\n\n` +
+      forBrands((b) => {
+        const th = scheme.tokens.brands[b].theme;
+        const rows = tones.fills
+          .map((f) => ({
+            id: f.id,
+            l: toneOf(th, "light", f.id),
+            d: toneOf(th, "dark", f.id),
+          }))
+          .filter((x) => x.l && x.d);
+        const flips = rows.filter((x) => x.l.tone !== x.d.tone).length;
+        const chip = (m, t, id) => {
+          const bg = at(b, m, id);
+          const fg = at(
+            b,
+            m,
+            t.tone === "light" ? "color.text.on-light" : "color.text.on-dark",
           );
-          return `${t.tone} (waits for ${t.waits.for})`;
+          return `<span class="odv-tchip" style="background:${bg?.hex};color:${fg?.hex}"><b>Aa</b>${t.tone}${t.waits ? ` · waits for ${attr(t.waits.for)}` : ""}</span>`;
         };
-        const table =
-          `| Fill | Light mode | Dark mode | What sits on it |\n| --- | --- | --- | --- |\n` +
-          tones.fills
-            .map(
-              (f) =>
-                `| \`${f.id}\` | ${cell("light", f.id)} | ${cell("dark", f.id)} | ${carries(f)} |`,
-            )
-            .join("\n");
-        return (
-          table +
-          (notes.length ? `\n\n${notes.map((n) => `- ${n}`).join("\n")}` : "")
-        );
+        return `<p class="odv-tsum">${flips === rows.length ? `Every fill changes tone between light and dark mode.` : `${flips} of ${rows.length} fills change tone between light and dark mode.`}</p><div class="odv-trows"><div class="odv-trow odv-trow-h"><span>Fill</span><span>Light mode</span><span>Dark mode</span></div>${rows.map((x) => `<div class="odv-trow"><code>${short(x.id)}</code>${chip("light", x.l, x.id)}${chip("dark", x.d, x.id)}</div>`).join("")}</div>`;
       }) +
       "\n"
     );
@@ -1328,7 +1390,9 @@ export function docsPages(
         )
         .join("\n") +
       // Theming shows its tokens as the mode table above (OD-211), so it skips the flat lists.
-      (sc.id === "theming"
+      // Theming shows its tokens as the mode table above (OD-211); the component scopes' keys are on
+      // each component's page, as its variables (OD-233).
+      (sc.id === "theming" || (sc.owns ?? []).includes("component")
         ? ""
         : `\n\n## Tokens\n\n` +
           (semantics.length
@@ -1339,9 +1403,12 @@ export function docsPages(
           (hasPrims
             ? `\n\nThe raw values these tokens end at are on [Primitives › ${PRIM_PAGE_OF[sc.id]?.title ?? "all kinds"}](../primitives/${PRIM_PAGE_OF[sc.id]?.id ?? ""}).`
             : "")) +
-      `\n\n## Where it lands\n\n${(sc.lands_in ?? []).map((c) => `- ${title(c)}`).join("\n")}\n\n` +
+      // What lands where is shown per component, in its anatomy (OD-229), not as a list here.
+      `\n\n` +
       `## When to use what\n\n${RULES}${usage.map(rule).join("\n")}\n` +
-      (sc.id === "color" ? colorGuidance(g) + fillTones() : "");
+      (sc.id === "color"
+        ? colorGuidance(g) + pairsPicture() + tonePicture()
+        : "");
   });
 
   // Primitives (OD-184): every raw value, and what points to it in which mode. Unused primitives stay
@@ -1757,6 +1824,113 @@ export function docsPages(
     );
   };
 
+  // A component's variables (OD-233), like a CSS framework's variable list: every token its source
+  // names, its own component keys first, each with the token it aliases and the value it ends at in
+  // every theme. Traced from the component's code (cli/src/lands.mjs), so it can't drift.
+  const allIndex = tokenIndex(scheme);
+  const themeIndex = Object.fromEntries(
+    scheme.themes.map((t) => [
+      t.id,
+      tokenIndex(scheme, {
+        brand: t.brand ?? Object.keys(scheme.tokens.brands)[0],
+        mode: t.mode ?? t.id,
+      }),
+    ]),
+  );
+  const varName = (p) => `--${cssName(p.replace(/^component\./, ""))}`;
+  const variables = (name, keys) => {
+    const file = join(roots.ui, "components", `${name}.tsx`);
+    if (!existsSync(file)) return "";
+    const paths = [...directReads(readFileSync(file, "utf8"), allIndex)].sort(
+      (a, b) =>
+        Number(!a.startsWith("component.")) -
+          Number(!b.startsWith("component.")) || a.localeCompare(b),
+    );
+    if (!paths.length)
+      return `## Variables\n\n${title(name)} names no tokens of its own; it takes them from the components inside it.`;
+    const about = Object.fromEntries(
+      (keys ?? []).map((k) => [
+        `component.${k.id.replaceAll("/", ".")}`,
+        k.description,
+      ]),
+    );
+    const brandIds = Object.keys(scheme.tokens.brands);
+    const themeOf = (b, m) =>
+      scheme.themes.find(
+        (t) => (t.brand ?? brandIds[0]) === b && (t.mode ?? t.id) === m,
+      );
+    const valueCell = (t, p) => {
+      const ch = aliasChain(themeIndex[t.id], p);
+      const v = ch.value;
+      const end = ch.end.replace(/^color\./, "");
+      if (typeof v === "string" && /^#/.test(v))
+        return `<span class="odv-tsw"><i style="background:${v}" title="${attr(v)}"></i><small>${attr(end)}</small></span>`;
+      return `<code>${attr(end)}</code> <small>${attr(cssValue(v))}</small>`;
+    };
+    // the variant a key belongs to: component.button.primary.background → primary; shared keys first
+    const variantOf = (p) => {
+      const seg = p.split(".");
+      return p.startsWith("component.") && seg.length > 3 ? seg[2] : "";
+    };
+    const row = (t, p) => {
+      const first = aliasChain(themeIndex[t.id], p).hops[0];
+      const alias = first ? `var(${varName(first)})` : "—";
+      return `<tr><td><code>${attr(varName(p))}</code>${about[p] ? `<br/><small>${attr(about[p])}</small>` : ""}</td><td><code>${attr(alias)}</code></td><td>${valueCell(t, p)}</td></tr>`;
+    };
+    const rows = (t, list) => {
+      const groups = [...new Set(list.map(variantOf))].sort(
+        (x, y) => (x ? 1 : 0) - (y ? 1 : 0),
+      );
+      return groups
+        .map((gname) => {
+          const inGroup = list.filter((p) => variantOf(p) === gname);
+          const head =
+            groups.length > 1
+              ? `<tr class="odv-vgroup"><td colspan="3">${gname ? attr(gname) : "Shared"}</td></tr>`
+              : "";
+          return head + inGroup.map((p) => row(t, p)).join("");
+        })
+        .join("");
+    };
+    const table = (t, list) =>
+      `<div class="odv-tscroll"><table class="odv-ttable odv-vars"><thead><tr><th>Variable</th><th>Alias</th><th>Value</th></tr></thead><tbody>${rows(t, list)}</tbody></table></div>`;
+    const own = paths.filter((p) => p.startsWith("component."));
+    const direct = paths.filter((p) => !p.startsWith("component."));
+    const tabbed = (list) => {
+      const one = (b) => {
+        const modes = ["light", "dark"].filter((m) => themeOf(b, m));
+        const tabs = `<div class="odv-scale-tabs" role="tablist">${modes.map((m, i) => `<button type="button" role="tab" data-mode="${m}" aria-selected="${i === 0}">${m === "light" ? "Light" : "Dark"} theme</button>`).join("")}</div>`;
+        const panels = modes
+          .map((m) => {
+            const t = themeOf(b, m);
+            const ix = themeIndex[t.id];
+            const hex = (q) => {
+              const c = aliasChain(ix, q).value;
+              return typeof c === "string" ? c : "";
+            };
+            return `<div class="odv-scale-p odv-vars-p" data-mode="${m}" role="tabpanel" style="background:${hex("color.surface.canvas")};color:${hex("color.text.primary")};--odv-muted:${hex("color.text.muted")};--odv-edge:${hex("color.border.default")}">${table(t, list)}</div>`;
+          })
+          .join("");
+        return `<div class="odv-scale" data-scale>${tabs}${panels}</div>`;
+      };
+      return brandIds.length === 1
+        ? one(brandIds[0])
+        : brandIds
+            .map(
+              (b) =>
+                `<div class="odv-brandset" data-for-brand="${b}">\n\n<p class="odv-brandname">${attr(scheme.tokens.brands[b]?.label ?? b)}</p>\n\n${one(b)}\n\n</div>`,
+            )
+            .join("\n\n");
+    };
+    return (
+      `## Variables\n\nEvery token ${title(name)} reads, from its code: the variable, the semantic token it aliases, and where that ends in the theme.\n\n` +
+      (own.length ? `### Its own variables\n\n${tabbed(own)}\n\n` : "") +
+      (direct.length
+        ? `### Read straight from the system\n\n${own.length ? "" : `${title(name)} has no variables of its own yet; it reads these system tokens directly.\n\n`}${tabbed(direct)}`
+        : "")
+    );
+  };
+
   // Components
   pages["components/_category_.json"] =
     JSON.stringify(
@@ -2074,23 +2248,7 @@ export function docsPages(
       `## Use it in code\n\n\`\`\`bash\nnpx open-ds add ${name}\n\`\`\`\n\n` +
         `The component reads only component keys and semantic tokens, so it follows the brand and mode on \`<html>\`.`,
     );
-    parts.push(
-      keys.length
-        ? `## Component keys\n\nThe CSS variable is the key with \`/\` replaced by \`-\` and the base \`@\` dropped. Each key points to a token; values live only on primitives.\n\n` +
-            perBrand(
-              (F, D) =>
-                `| Key | What it controls | Points to, ${F.id} | Points to, ${D.id} |\n| --- | --- | --- | --- |\n` +
-                keys
-                  .map((k) => {
-                    const p = k.id.replaceAll("/", ".");
-                    const l = link(F, p);
-                    const d = link(D, p);
-                    return `| \`${k.id}\` | ${esc(k.description)} | ${l} | ${d === l ? "same" : d} |`;
-                  })
-                  .join("\n"),
-            )
-        : tokensRead(name),
-    );
+    parts.push(variables(name, keys));
     pages[`components/${name}.md`] =
       fm({
         sidebar_position: i + 1,

@@ -66,13 +66,6 @@ Each token points to another token. Values live only on primitives, below.
 
 </div>
 
-## Where it lands
-
-- Button
-- Input
-- Overlay
-- Table
-
 ## When to use what
 
 | Situation | Use | Not | Why |

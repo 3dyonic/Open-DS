@@ -48,14 +48,6 @@ Each token points to another token. Values live only on primitives, below.
 
 The raw values these tokens end at are on [Primitives › Space and size](../primitives/space-and-size).
 
-## Where it lands
-
-- Button
-- Input
-- Badge
-- Card
-- Table
-
 ## When to use what
 
 | Situation | Use | Not | Why |

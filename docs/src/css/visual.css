@@ -1416,22 +1416,28 @@ a.odv-icard:hover {
   gap: 8px;
   margin: 0 0 24px;
 }
+/* The light/dark switcher: one segmented control, the picked side raised. */
 .odv-scale-tabs {
-  display: flex;
-  gap: 6px;
+  display: inline-flex;
+  gap: 2px;
+  padding: 3px;
+  border-radius: 999px;
+  background: var(--color-surface-sunken);
+  justify-self: start;
 }
 .odv-scale-tabs button {
   font: 500 13px var(--type-body-font-family);
-  padding: 6px 12px;
-  border-radius: var(--radius-control);
+  padding: 5px 14px;
+  border-radius: 999px;
   border: 0;
-  background: var(--color-surface-sunken);
-  color: var(--color-text-primary);
+  background: transparent;
+  color: var(--color-text-secondary);
   cursor: pointer;
 }
 .odv-scale-tabs button[aria-selected="true"] {
-  background: var(--color-action-primary);
-  color: var(--color-text-on-action);
+  background: var(--color-surface-default);
+  color: var(--color-text-primary);
+  box-shadow: 0 1px 2px color-mix(in srgb, var(--color-text-primary) 18%, transparent);
 }
 .odv-scale-p {
   border-radius: var(--radius-container);
@@ -1609,4 +1615,165 @@ tr.odv-for td {
 .odv-tc small {
   font: 11px var(--type-data-font-family);
   color: var(--color-text-muted);
+}
+
+/* Pairs and tones as pictures (OD-233). */
+.odv-pgroup {
+  display: grid;
+  gap: 8px;
+}
+.odv-pgroup-n {
+  margin: 0;
+  font-size: var(--type-caption-font-size);
+  color: var(--odv-muted);
+}
+.odv-tiles {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(210px, 1fr));
+  gap: 8px;
+}
+.odv-tile {
+  border-radius: 10px;
+  padding: 12px;
+  display: grid;
+  gap: 6px;
+  align-content: start;
+  box-shadow: inset 0 0 0 1px color-mix(in srgb, var(--odv-muted) 18%, transparent);
+}
+.odv-tile-h {
+  margin: 0 0 4px;
+  font: 600 12px var(--type-data-font-family);
+  display: grid;
+}
+.odv-tile-h small,
+.odv-pr-k small {
+  font-weight: 400;
+  font-size: 10px;
+  opacity: 0.8;
+}
+.odv-pr {
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr) auto;
+  gap: 8px;
+  align-items: center;
+}
+.odv-pr-aa {
+  font: 700 20px var(--type-body-font-family);
+  line-height: 1;
+}
+.odv-pr-k {
+  font: 11px var(--type-data-font-family);
+  display: grid;
+  overflow-wrap: anywhere;
+}
+.odv-pr-c {
+  font: 600 10px var(--type-data-font-family);
+  border: 1px solid currentColor;
+  border-radius: 999px;
+  padding: 1px 6px;
+}
+.odv-pr-c.no {
+  text-decoration: line-through;
+}
+.odv-tsum {
+  font-weight: 600;
+}
+.odv-trows {
+  display: grid;
+  gap: 6px;
+  margin: 0 0 24px;
+  overflow-x: auto;
+}
+.odv-trow {
+  display: grid;
+  grid-template-columns: minmax(12em, 16em) minmax(120px, 160px) minmax(120px, 160px);
+  gap: 10px;
+  align-items: center;
+}
+.odv-trow-h span {
+  font: 500 11px var(--type-data-font-family);
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: var(--color-text-muted);
+}
+.odv-tchip {
+  border-radius: 8px;
+  padding: 7px 10px;
+  display: flex;
+  gap: 8px;
+  align-items: center;
+  font: 11px var(--type-data-font-family);
+  box-shadow: inset 0 0 0 1px color-mix(in srgb, var(--color-text-muted) 25%, transparent);
+}
+.odv-tchip b {
+  font: 700 16px var(--type-body-font-family);
+}
+.odv-vars {
+  font-size: 12px;
+}
+.odv-vars td,
+.odv-vars th {
+  padding: 6px 8px;
+}
+.odv-vars code {
+  font-size: 11px;
+  white-space: nowrap;
+}
+.odv-vars small {
+  font-size: 10px;
+}
+.odv-vars .odv-tsw small {
+  white-space: normal;
+  overflow-wrap: anywhere;
+}
+.odv-vars td:nth-child(n + 3) {
+  min-width: 8.5em;
+}
+.odv-vars-p {
+  padding: 8px;
+}
+.odv-vars-p .odv-ttable {
+  background: transparent;
+  color: inherit;
+}
+.odv-vars-p .odv-ttable th {
+  background: transparent;
+  color: var(--odv-muted);
+}
+.odv-vars-p .odv-ttable td {
+  border-color: color-mix(in srgb, var(--odv-muted) 18%, transparent);
+}
+.odv-vars-p small {
+  color: var(--odv-muted);
+}
+.odv-vgroup td {
+  padding-top: 14px !important;
+  font: 600 10px var(--type-data-font-family);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--odv-muted);
+  border-bottom: 0 !important;
+}
+.odv-vars-p .odv-ttable thead tr,
+.odv-vars-p .odv-ttable thead th {
+  background: transparent;
+}
+.odv-vars-p code {
+  background: color-mix(in srgb, var(--odv-muted) 16%, transparent);
+  color: inherit;
+  border: 0;
+}
+.odv-vars-p .odv-ttable tr,
+.odv-vars-p .odv-ttable td,
+.odv-vars-p .odv-ttable th {
+  border-color: color-mix(in srgb, var(--odv-muted) 18%, transparent);
+}
+.odv-vars-p table thead tr,
+.odv-vars-p table tbody tr {
+  background: transparent !important;
+}
+.odv-scale-p code {
+  background: color-mix(in srgb, var(--odv-muted) 16%, transparent);
+  color: inherit;
+  border: 0;
 }

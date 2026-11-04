@@ -34,10 +34,6 @@ Each token points to another token. Values live only on primitives, below.
 
 The raw values these tokens end at are on [Primitives › all kinds](../primitives/).
 
-## Where it lands
-
-- Button
-
 ## When to use what
 
 | Situation | Use | Not | Why |

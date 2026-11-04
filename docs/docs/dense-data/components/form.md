@@ -62,6 +62,12 @@ npx open-ds add form
 
 The component reads only component keys and semantic tokens, so it follows the brand and mode on `<html>`.
 
-## Tokens it reads
+## Variables
 
-Form sets no colors, corners or shadows of its own; it takes them from the components inside it.
+Every token Form reads, from its code: the variable, the semantic token it aliases, and where that ends in the theme.
+
+### Read straight from the system
+
+Form has no variables of its own yet; it reads these system tokens directly.
+
+<div class="odv-scale" data-scale><div class="odv-scale-tabs" role="tablist"><button type="button" role="tab" data-mode="light" aria-selected="true">Light theme</button><button type="button" role="tab" data-mode="dark" aria-selected="false">Dark theme</button></div><div class="odv-scale-p odv-vars-p" data-mode="light" role="tabpanel" style="background:#F7F8FA;color:#161B23;--odv-muted:#535D6D;--odv-edge:#DDE2EA"><div class="odv-tscroll"><table class="odv-ttable odv-vars"><thead><tr><th>Variable</th><th>Alias</th><th>Value</th></tr></thead><tbody><tr><td><code>--color-status-danger</code></td><td><code>var(--color-red-light-600)</code></td><td><span class="odv-tsw"><i style="background:#C42B2B" title="#C42B2B"></i><small>red.light.600</small></span></td></tr><tr><td><code>--color-text-muted</code></td><td><code>var(--color-neutral-600)</code></td><td><span class="odv-tsw"><i style="background:#535D6D" title="#535D6D"></i><small>slate.light.600</small></span></td></tr><tr><td><code>--type-body-font-size</code></td><td><code>var(--font-size-14)</code></td><td><code>font.size.14</code> <small>0.875rem</small></td></tr></tbody></table></div></div><div class="odv-scale-p odv-vars-p" data-mode="dark" role="tabpanel" style="background:#0D1117;color:#F7F8FA;--odv-muted:#969FAD;--odv-edge:#262D38"><div class="odv-tscroll"><table class="odv-ttable odv-vars"><thead><tr><th>Variable</th><th>Alias</th><th>Value</th></tr></thead><tbody><tr><td><code>--color-status-danger</code></td><td><code>var(--color-red-dark-600)</code></td><td><span class="odv-tsw"><i style="background:#F28B8B" title="#F28B8B"></i><small>red.dark.600</small></span></td></tr><tr><td><code>--color-text-muted</code></td><td><code>var(--color-neutral-400)</code></td><td><span class="odv-tsw"><i style="background:#969FAD" title="#969FAD"></i><small>slate.dark.400</small></span></td></tr><tr><td><code>--type-body-font-size</code></td><td><code>var(--font-size-14)</code></td><td><code>font.size.14</code> <small>0.875rem</small></td></tr></tbody></table></div></div></div>

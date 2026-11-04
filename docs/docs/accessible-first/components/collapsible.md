@@ -62,6 +62,6 @@ npx open-ds add collapsible
 
 The component reads only component keys and semantic tokens, so it follows the brand and mode on `<html>`.
 
-## Tokens it reads
+## Variables
 
-Collapsible sets no colors, corners or shadows of its own; it takes them from the components inside it.
+Collapsible names no tokens of its own; it takes them from the components inside it.

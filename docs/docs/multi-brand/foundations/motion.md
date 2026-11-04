@@ -68,10 +68,6 @@ Each token points to another token. Values live only on primitives, below.
 
 The raw values these tokens end at are on [Primitives › Motion](../primitives/motion).
 
-## Where it lands
-
-- Transition
-
 ## When to use what
 
 | Situation | Use | Not | Why |
