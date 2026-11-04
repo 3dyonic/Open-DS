@@ -5,6 +5,7 @@
 ## Pages
 
 - [Brand expressive](/)
+- [How it was decided](/decided)
 - [Voice and tone](/voice)
 - [Foundations](/foundations/index)
 - [Typography](/foundations/typography)

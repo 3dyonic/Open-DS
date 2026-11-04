@@ -65,6 +65,44 @@ function arrive() {
 }
 
 export function onRouteDidUpdate() {
+  decidedRoute();
   start();
   setTimeout(arrive, 120);
+}
+
+// How it was decided (OD-239): a link to a section or a question opens its fold, and the side menu
+// marks the section in view.
+function openFor(hash: string) {
+  const el = hash ? document.getElementById(decodeURIComponent(hash.slice(1))) : null;
+  const fold = el?.closest("details") ?? (el instanceof HTMLDetailsElement ? el : null);
+  if (fold) fold.open = true;
+  if (el) requestAnimationFrame(() => el.scrollIntoView({ block: "start" }));
+}
+
+function markMenu() {
+  const nav = document.querySelector(".odv-qnav");
+  if (!nav) return;
+  const ids = [...nav.querySelectorAll<HTMLAnchorElement>("a")].map((a) => a.hash.slice(1));
+  let current = ids[0];
+  for (const id of ids) {
+    const el = document.getElementById(id);
+    if (el && el.getBoundingClientRect().top < 140) current = id;
+  }
+  for (const a of nav.querySelectorAll<HTMLAnchorElement>("a"))
+    a.classList.toggle("on", a.hash.slice(1) === current);
+}
+
+if (typeof window !== "undefined") {
+  document.addEventListener("click", (e) => {
+    const a = (e.target as Element).closest<HTMLAnchorElement>('a[href^="#"]');
+    if (a && document.querySelector(".odv-decided")) openFor(a.hash);
+  });
+  window.addEventListener("scroll", markMenu, { passive: true });
+  window.addEventListener("hashchange", () => openFor(location.hash));
+}
+
+function decidedRoute() {
+  if (!document.querySelector(".odv-decided")) return;
+  openFor(location.hash);
+  markMenu();
 }

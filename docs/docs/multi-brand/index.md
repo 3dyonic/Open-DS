@@ -13,7 +13,7 @@ hide_table_of_contents: true
 
 ## Why it looks like this
 
-Every decision follows from an answer. These are the answers its components and rules cite most.
+Every decision follows from an answer. These are the answers its components and rules cite most. Follow them all in [How it was decided](decided).
 
 <div class="odv-grid"><div class="odv-card"><div class="odv-eyebrow">How are brands handled?</div><q>Brands as modes</q><p>Brands are theme modes over shared semantics.</p><span class="odv-ans">theming.definition</span></div><div class="odv-card"><div class="odv-eyebrow">What is the smallest target?</div><q>Touch size</q><p>Customers sign up on phones.</p><span class="odv-ans">accessibility.values</span></div><div class="odv-card"><div class="odv-eyebrow">How many signals carry each meaning?</div><q>Two: color and word</q><p>Brand colors vary, so meaning needs a word.</p><span class="odv-ans">accessibility.count</span></div></div>
 
@@ -35,49 +35,4 @@ Every decision follows from an answer. These are the answers its components and 
 
 ## Every answer
 
-Every decision in this system follows from these answers.
-
-### Business and product
-
-- **What does the product do for the business?** Sells and converts. A company sells several products under several brands.
-- **How many brands or products share the system?** Many. Three brands share one system today, more tomorrow. Because: What does the product do for the business? Sells and converts.
-
-### People and work context
-
-- **Who uses it most?** Customers who choose us. Customers who chose one of our brands. Because: What does the product do for the business? Sells and converts.
-- **What accessibility level do we commit to?** AA. AA in every brand. Because: Who uses it most? Customers who choose us.
-
-### Content and data
-
-- **What is the main content?** Forms and tasks. Product pages, sign-up and account forms. Because: What does the product do for the business? Sells and converts.
-- **How much is on one screen?** A moderate amount. A moderate amount per screen. Because: What is the main content? Forms and tasks.
-
-### Tasks and flows
-
-- **What is the main task?** Complete a form. Customers sign up and buy. Because: What does the product do for the business? Sells and converts.
-- **How often do people repeat actions?** Sometimes. Customers return now and then. Because: Who uses it most? Customers who choose us.
-
-### Human factors
-
-- **What must the interface protect?** Low effort to understand. Low effort, whichever brand they see. Because: Who uses it most? Customers who choose us.
-- **How do people recall the interface?** They see it fresh each time. Customers see it fresh each time. Because: How often do people repeat actions? Sometimes.
-
-### Outcomes
-
-- **Which outcome matters most?** Completion without errors. Finished sign-ups and orders. Because: What is the main task? Complete a form.
-- **What is a costly mistake?** Looking off-brand. A page that looks like the wrong brand loses trust. Because: How many brands or products share the system? Many.
-
-### Brand
-
-- **What should the brand feel like?** Neutral and adaptable. A neutral base each brand can color. Because: How many brands or products share the system? Many.
-- **How visible is the brand in the interface?** Present. Each brand is clearly present. Because: How many brands or products share the system? Many.
-
-### Use scenarios
-
-- **Where do people use it?** Anywhere, on any device. Customers sign up on phones and manage plans on laptops. Because: Who uses it most? Customers who choose us.
-- **How long is one visit?** A few minutes. Most visits are a few minutes: sign up, check, change. Because: What is the main task? Complete a form.
-
-### Team and delivery
-
-- **Who maintains the system?** A platform team. A platform team serves three product teams. Because: How many brands or products share the system? Many.
-- **How fast does it change?** Every month. Brands ship every month. Because: How many brands or products share the system? Many.
+All 78 answers, and the design decisions each one made: [How it was decided](decided).

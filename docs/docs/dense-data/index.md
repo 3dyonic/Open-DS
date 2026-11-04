@@ -13,7 +13,7 @@ hide_table_of_contents: true
 
 ## Why it looks like this
 
-Every decision follows from an answer. These are the answers its components and rules cite most.
+Every decision follows from an answer. These are the answers its components and rules cite most. Follow them all in [How it was decided](decided).
 
 <div class="odv-grid"><div class="odv-card"><div class="odv-eyebrow">What is the main content?</div><q>Numbers and records</q><p>Most of the screen is numbers and records.</p><span class="odv-ans">content.q1</span></div><div class="odv-card"><div class="odv-eyebrow">How much is on one screen?</div><q>A lot</q><p>Experts want many records on one screen.</p><span class="odv-ans">content.q2</span></div><div class="odv-card"><div class="odv-eyebrow">What is a costly mistake?</div><q>Acting on the wrong record</q><p>Acting on the wrong row is the costly error.</p><span class="odv-ans">outcomes.q2</span></div></div>
 
@@ -35,49 +35,4 @@ Every decision follows from an answer. These are the answers its components and 
 
 ## Every answer
 
-Every decision in this system follows from these answers.
-
-### Business and product
-
-- **What does the product do for the business?** Runs daily operations. The product runs daily security operations: alerts, incidents and the assets they touch.
-- **How many brands or products share the system?** One. One internal product, one brand.
-
-### People and work context
-
-- **Who uses it most?** Daily experts. The same people use it all day, every day. Because: What does the product do for the business? Runs daily operations.
-- **What accessibility level do we commit to?** AA. AA is the floor for an internal tool used by trained staff. Because: Who uses it most? Daily experts.
-
-### Content and data
-
-- **What is the main content?** Numbers and records. Most of the screen is numbers and records. Because: What does the product do for the business? Runs daily operations.
-- **How much is on one screen?** A lot. Experts want many records on one screen. Because: Who uses it most? Daily experts; What is the main content? Numbers and records.
-
-### Tasks and flows
-
-- **What is the main task?** Scan and compare. People scan rows and compare values. Because: What is the main content? Numbers and records.
-- **How often do people repeat actions?** Constantly. The same actions repeat many times an hour. Because: Who uses it most? Daily experts.
-
-### Human factors
-
-- **What must the interface protect?** People keep their place. Losing your place in a long table costs time and errors. Because: What is the main task? Scan and compare.
-- **How do people recall the interface?** They learn it and recognize it. Daily users learn the interface and recognize it. Because: Who uses it most? Daily experts.
-
-### Outcomes
-
-- **Which outcome matters most?** Time on task. Speed on repeated tasks is the measure. Because: How often do people repeat actions? Constantly.
-- **What is a costly mistake?** Acting on the wrong record. Acting on the wrong row is the costly error. Because: What is the main task? Scan and compare.
-
-### Brand
-
-- **What should the brand feel like?** Precise. The interface must feel exact and trustworthy. Because: What is the main content? Numbers and records.
-- **How visible is the brand in the interface?** Quiet. The data is the hero; the brand steps back. Because: How much is on one screen? A lot.
-
-### Use scenarios
-
-- **Where do people use it?** At a desk. Experts work at a desk with a mouse and keyboard. Because: Who uses it most? Daily experts.
-- **How long is one visit?** All day. The tool stays open for the whole shift. Because: How often do people repeat actions? Constantly.
-
-### Team and delivery
-
-- **Who maintains the system?** A small team. A small team keeps the system right.
-- **How fast does it change?** Every month. Features ship every month; the system must keep up.
+All 78 answers, and the design decisions each one made: [How it was decided](decided).

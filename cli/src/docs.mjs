@@ -1032,7 +1032,7 @@ export function docsPages(
       `<div class="odv-facts"><div><b>${(scheme.inventory?.in ?? []).length}</b><span>components</span></div><div><b>${primCount}</b><span>primitives</span></div><div><b>${scheme.themes.length}</b><span>themes</span></div></div>`,
       `</div>${heroSample}</div>`,
     ) +
-    `\n\n## Why it looks like this\n\nEvery decision follows from an answer. These are the answers its components and rules cite most.\n\n` +
+    `\n\n## Why it looks like this\n\nEvery decision follows from an answer. These are the answers its components and rules cite most. Follow them all in [How it was decided](decided).\n\n` +
     h(
       `<div class="odv-grid">`,
       top.map(
@@ -1053,19 +1053,191 @@ export function docsPages(
     `\n\n## Who it is for\n\n` +
     `- **Use it for:** ${scheme.ai.use_when}\n- **Not for:** ${scheme.ai.avoid_when}\n- **Products like:** ${scheme.ai.example_products.join(", ")}\n- **Themes:** ${scheme.themes.map((t) => t.id).join(", ")}\n\n` +
     `## Use scenarios\n\n${scheme.scenarios.map((s) => `- ${s.text}`).join("\n")}\n\n` +
-    `## Every answer\n\nEvery decision in this system follows from these answers.\n\n` +
-    g.reasons
-      .map(
-        (r) =>
-          `### ${r.title}\n\n${r.questions
-            .map((q) => {
-              const a = answer(q.id);
-              return `- **${q.text}** ${label(q.id)}. ${a.why}${a.because.length ? ` Because: ${because(a.because)}.` : ""}`;
-            })
-            .join("\n")}`,
+    `## Every answer\n\nAll ${scheme.answers.length} answers, and the design decisions each one made: [How it was decided](decided).\n`;
+
+  // How it was decided (OD-239): the way in from the questions to the design. Each question, its
+  // answer, the design decisions it made (a rule, a component variant, a later answer, a foundation's
+  // values) and the page that goes deeper. Generated from the answers, their because links, the usage
+  // rules and the components' variants. No comparison with other schemes.
+  {
+    const he = (x) =>
+      String(x ?? "")
+        .replaceAll("&", "&amp;")
+        .replaceAll("<", "&lt;")
+        .replaceAll(">", "&gt;")
+        .replaceAll('"', "&quot;");
+    const sections = [
+      ...g.reasons.map((r) => ({ ...r, group: "Reasons", scope: null })),
+      ...g.scopes.map((r) => ({ ...r, group: "Scopes", scope: r.id })),
+    ].filter((r) => (r.questions ?? []).length);
+    const secOf = {};
+    for (const r of sections) for (const q of r.questions) secOf[q.id] = r;
+    const inv = new Set((scheme.inventory?.in ?? []).map((c) => c.id));
+    const title = (id) => id[0].toUpperCase() + id.slice(1).replace(/-/g, " ");
+    // every decision, by the answer it cites
+    const made = {};
+    const add = (q, d) => (made[q] ??= []).push(d);
+    for (const u of scheme.usage)
+      for (const q of u.because ?? [])
+        add(q, {
+          kind: "Rule",
+          text: `${sits[u.situation].title}: ${u.use}`,
+          small: u.not ? `Not ${u.not}.` : "",
+          href: `foundations/${sits[u.situation].scope}`,
+          go: title(sits[u.situation].scope),
+        });
+    for (const c of scheme.inventory?.in ?? [])
+      for (const [axis, opts] of Object.entries(c.variants ?? {}))
+        for (const [v, d] of Object.entries(opts))
+          for (const q of d.because ?? [])
+            add(q, {
+              kind: "Variant",
+              text: `${title(c.id)} ${axis} ${v}${d.not_used ? ": not used" : ""}`,
+              small: d.use ?? d.why ?? "",
+              href: inv.has(c.id) ? `components/${c.id}` : null,
+              go: title(c.id),
+            });
+    for (const a of scheme.answers)
+      for (const q of a.because ?? []) {
+        const sec = secOf[a.question];
+        add(q, {
+          kind: "Answer",
+          text: `${sec.scope ? `${sec.title}: ` : ""}${qs[a.question].text} ${label(a.question)}`,
+          small: "",
+          href: sec.scope
+            ? `foundations/${sec.scope}`
+            : `#${a.question.replace(/\./g, "-")}`,
+          go: sec.scope ? sec.title : "Below",
+          answer: a.question,
+        });
+      }
+    const n = (q) => (made[q] ?? []).length;
+    const decisionRow = (d) =>
+      `<div class="odv-dec"><span class="odv-dec-what"><span class="odv-kind">${d.kind}</span>${he(d.text)}${d.small ? `<small>${he(d.small)}</small>` : ""}</span>${d.href ? `<a class="odv-go" href="${d.href}">${he(d.go)} →</a>` : "<span></span>"}</div>`;
+    const decisions = (q, limit) => {
+      const all = made[q] ?? [];
+      const list = limit ? all.slice(0, limit) : all;
+      return all.length
+        ? `<div class="odv-decs">${list.map(decisionRow).join("")}${limit && all.length > limit ? `<div class="odv-more">And ${all.length - limit} more: <a href="#${secOf[q].id}">${he(secOf[q].title)}</a>, below.</div>` : ""}</div>`
+        : "";
+    };
+    const pill = (q) => `<span class="odv-pill">${he(label(q))}</span>`;
+    const cameFrom = (q) =>
+      answer(q).because.length
+        ? `Because: ${answer(q)
+            .because.map((b) => he(label(b)))
+            .join(", ")}.`
+        : "The first answer: nothing comes before it.";
+    // Where it starts: the answer cited most, the answers before it in steps, then the foundation
+    // answers it led to, with the values their tokens take.
+    const top = scheme.answers
+      .map((a) => a.question)
+      .filter((q) => !secOf[q].scope)
+      .sort((a, b) => n(b) - n(a) || a.localeCompare(b))[0];
+    const depth = {};
+    const dep = (q) =>
+      (depth[q] ??= answer(q).because.length
+        ? 1 + Math.max(...answer(q).because.map(dep))
+        : 0);
+    const before = new Set();
+    const up = (q) =>
+      answer(q).because.forEach((b) => {
+        if (!before.has(b)) {
+          before.add(b);
+          up(b);
+        }
+      });
+    up(top);
+    const steps = [];
+    for (const q of [...before, top]) (steps[dep(q)] ??= []).push(q);
+    const after = (made[top] ?? [])
+      .filter(
+        (d) => d.answer && secOf[d.answer].scope && /\.values$/.test(d.answer),
       )
-      .join("\n\n") +
-    "\n";
+      .map((d) => d.answer);
+    const ix = tokenIndex(scheme);
+    const valuesOf = (scope) =>
+      (g.scopes.find((x) => x.id === scope)?.owns ?? [])
+        .flatMap((o) =>
+          flatTokens(scheme.tokens.semantic)
+            .map(([p]) => p)
+            .filter((p) => p === o || p.startsWith(`${o}.`)),
+        )
+        .slice(0, 3)
+        .map((p) => {
+          const c = aliasChain(ix, p);
+          return `<div class="odv-dec"><span class="odv-dec-what"><span class="tok">${p}</span> <span class="odv-ptok">${c.hops.at(-1) ?? ""}</span><span class="odv-kvsep">:</span><span class="odv-raw">${he(c.value)}</span></span><a class="odv-go" href="foundations/${scope}">${he(title(scope))} →</a></div>`;
+        })
+        .join("");
+    const node = (q, opts = {}) => {
+      const sec = secOf[q];
+      return `<div class="odv-node"><div class="odv-sec">${he(sec.title)}</div><div class="odv-q">${he(qs[q].text)}</div>${pill(q)}<div class="odv-why">${he(answer(q).why)}</div><div class="odv-meta">${cameFrom(q)}${opts.count ? ` ${n(q)} decisions cite it, the most of any answer.` : ""}</div>${opts.values ? `<div class="odv-decs">${valuesOf(sec.scope)}</div>` : decisions(q, opts.limit)}</div>`;
+    };
+    const chain = [
+      ...steps
+        .filter(Boolean)
+        .map((qsAt) =>
+          qsAt.map((q) =>
+            node(q, q === top ? { count: true, limit: 5 } : { limit: 0 }),
+          ),
+        ),
+      ...(after.length ? [after.map((q) => node(q, { values: true }))] : []),
+    ];
+    const chainHtml = `<div class="odv-chain">${chain
+      .map(
+        (row, i) =>
+          `<div class="odv-step"><span class="odv-num">${i + 1}</span><div class="odv-row">${row.join("")}</div></div>`,
+      )
+      .join("")}</div>`;
+    // the side menu, like the questions pages: the sections with the decisions each made
+    const navGroup = (grp) =>
+      `<p>${grp}</p>` +
+      sections
+        .filter((r) => r.group === grp)
+        .map(
+          (r) =>
+            `<a href="#${r.id}">${he(r.title)}<span>${r.questions.reduce((t, q) => t + n(q.id), 0)}</span></a>`,
+        )
+        .join("");
+    const nav = `<nav class="odv-qnav" aria-label="Sections"><a href="#where-it-starts">Where it starts</a>${navGroup("Reasons")}${navGroup("Scopes")}</nav>`;
+    const every = ["Reasons", "Scopes"]
+      .map(
+        (grp) =>
+          `<h3 class="odv-grp">${grp}</h3>` +
+          sections
+            .filter((r) => r.group === grp)
+            .map((r) => {
+              const total = r.questions.reduce((t, q) => t + n(q.id), 0);
+              return `<details class="odv-qsec" id="${r.id}"><summary>${he(r.title)}<span>${r.questions.length} answers · ${total} decisions</span></summary>${r.questions
+                .map(
+                  (q) =>
+                    `<div class="odv-qa" id="${q.id.replace(/\./g, "-")}"><div class="odv-q">${he(q.text)}</div>${pill(q.id)}<div class="odv-why">${he(answer(q.id).why)} ${cameFrom(q.id)}</div>${decisions(q.id) || (r.scope ? `<div class="odv-more">It sets the values of the ${he(r.title.toLowerCase())} tokens: <a href="foundations/${r.scope}">${he(r.title)}</a>.</div>` : "")}</div>`,
+                )
+                .join("")}</details>`;
+            })
+            .join(""),
+      )
+      .join("");
+    pages["decided.md"] =
+      fm({
+        sidebar_position: 1.5,
+        title: "How it was decided",
+        description: `${scheme.name}: each question, its answer, and the design decisions it made.`,
+        hide_table_of_contents: true,
+      }) +
+      NOTE +
+      `# How it was decided\n\n` +
+      h(
+        `<div class="odv-decided"><div class="odv-decided-main">`,
+        `<p class="odv-lede">${he(scheme.name)} is ${scheme.answers.length} answers to the questions every scheme answers. Each answer made design decisions: a rule, a component variant, a foundation's values, or a later answer. Follow any decision to its page for the detail.</p>`,
+        `<h2 id="where-it-starts">Where it starts</h2><p>The path the most decisions come from. Each step's answer led to the next.</p>`,
+        chainHtml,
+        `<h2 id="every-question">Every question</h2><p>All ${scheme.answers.length}, by section, in the order every scheme answers them. The menu jumps to a section; its number is how many decisions that section made.</p>`,
+        every,
+        `</div>${nav}</div>`,
+      ) +
+      "\n";
+  }
 
   // Voice and tone
   const v = scheme.voice;
