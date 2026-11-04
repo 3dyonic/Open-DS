@@ -26,13 +26,19 @@ export interface ScaleStep {
 }
 export function scales(
   scheme: any,
-  options?: { brand?: string; mode?: "light" | "dark"; hue?: string },
+  options?: {
+    brand?: string;
+    mode?: "light" | "dark";
+    hue?: string;
+    hints?: any[];
+  },
 ): {
   scheme: string;
   brand: string;
   mode: "light" | "dark";
   neutral: any;
   lanes: readonly { id: Lane; title: string }[];
+  hints: any[];
   hues: {
     hue: string;
     used: number;

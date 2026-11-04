@@ -464,6 +464,27 @@
         "the harness fails when a component reads a shadcn variable no scheme token maps"
       ],
       "checks": ["components-tokens-mapped", "docs-sections", "docs-build"]
+    },
+    {
+      "id": "OD-230",
+      "title": "Decision hints: rules of thumb in the grammar, for agents and the harness",
+      "in": [
+        "each scope can carry hints: when, do, what to measure, why, and the decisions they came from",
+        "get_scales and open-ds scales return the colour hints, for agents",
+        "the harness checks the hints that can be measured",
+        "the docs do not show them yet: the human-facing form is refined in OD-232"
+      ],
+      "checks": ["hints-measured", "json-schemas-2020-12"]
+    },
+    {
+      "id": "OD-231",
+      "title": "Status text on dark shows its hue: on-dark to step 100, adjusted where needed",
+      "in": [
+        "text.<status>-on-dark points at the status hue's light.100 in every scheme",
+        "each status hue's light.100 takes just enough chroma (0.04) to show its hue, lightness lowered only where sRGB has no room, recorded with its reason",
+        "the light tint shares the step and keeps 7:1 or more with its 800 text"
+      ],
+      "checks": ["hints-measured", "scales-generated", "semantics-guidance"]
     }
   ]
 }

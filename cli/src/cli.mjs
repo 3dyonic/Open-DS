@@ -388,6 +388,7 @@ export async function run(argv) {
       const { scales } = await import("./scale-map.mjs");
       const [id] = args;
       const data = scales(loadScheme(id ?? ""), {
+        hints: grammar().scopes.find((x) => x.id === "color")?.hints ?? [],
         brand: flag(args, "--brand", undefined),
         mode: flag(args, "--mode", "light"),
         hue: flag(args, "--hue", undefined),

@@ -271,7 +271,9 @@
             },
             "steps": {
               "type": "array",
-              "items": { "type": "string" },
+              "items": {
+                "type": "string"
+              },
               "description": "The steps of color.neutral."
             },
             "grays": {
@@ -352,7 +354,9 @@
                   "carries": {
                     "type": "array",
                     "minItems": 1,
-                    "items": { "type": "string" },
+                    "items": {
+                      "type": "string"
+                    },
                     "description": "The roles that sit on it."
                   }
                 }
@@ -793,7 +797,10 @@
             },
             "except": {
               "type": "array",
-              "items": { "type": "string", "minLength": 1 },
+              "items": {
+                "type": "string",
+                "minLength": 1
+              },
               "description": "Primitive groups kept whole even where a step is unused, such as colour ramps."
             }
           }
@@ -1002,6 +1009,52 @@
             "pattern": "^[a-z0-9-]+$"
           },
           "description": "Situation ids that belong to this scope. Each scheme answers them with a usage rule."
+        },
+        "hints": {
+          "type": "array",
+          "description": "Rules of thumb this scope's decisions taught (OD-230): hints for the next decision, for people and agents.",
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": ["id", "when", "do", "why", "from"],
+            "properties": {
+              "id": {
+                "type": "string",
+                "pattern": "^[a-z0-9-]+$",
+                "description": "A short id, for example adjust-where-measured."
+              },
+              "when": {
+                "type": "string",
+                "minLength": 1,
+                "description": "When the hint applies."
+              },
+              "do": {
+                "type": "string",
+                "minLength": 1,
+                "description": "What to do."
+              },
+              "measure": {
+                "type": "string",
+                "minLength": 1,
+                "description": "What to measure, when the hint can be measured; the harness checks the measured ones."
+              },
+              "why": {
+                "type": "string",
+                "minLength": 1,
+                "description": "Why, in plain words."
+              },
+              "from": {
+                "type": "array",
+                "minItems": 1,
+                "items": {
+                  "type": "string",
+                  "pattern": "^OD-\\d+$",
+                  "description": "A ticket key."
+                },
+                "description": "The decisions the hint came from."
+              }
+            }
+          }
         }
       }
     },

@@ -555,6 +555,64 @@ export const CHECKS = {
     },
   },
 
+  "hints-measured": {
+    requires: ["schemes/grammar.json", "cli/src/ramps.mjs"],
+    run: async (c) => {
+      // OD-230: the decision hints that can be measured hold. Every hint names the decisions it came
+      // from; every chroma adjustment sits on a step that needed it (generated chroma below the 0.04
+      // target, OD-231); and status text on dark shows its hue (chroma 0.04+) at 7:1 or more.
+      const { scale, lch, contrast } = await import(pathToFileURL(c.p("cli/src/ramps.mjs")).href);
+      const { follow } = await import(pathToFileURL(c.p("cli/src/scale-map.mjs")).href);
+      const g = c.json("schemes", "grammar.json");
+      const hints = g.scopes.flatMap((s) => (s.hints ?? []).map((h) => ({ ...h, scope: s.id })));
+      const gaps = [];
+      if (!hints.length) gaps.push("the grammar has no decision hints");
+      for (const h of hints) if (!h.from?.length) gaps.push(`hint ${h.scope}.${h.id} names no decision`);
+      const TARGET = 0.04;
+      let moves = 0;
+      let texts = 0;
+      for (const id of SCHEMES) {
+        const s = c.json("schemes", `${id}.json`);
+        const at = (p) =>
+          String(p.split(".").reduce((n, k) => n && n[k], s.tokens.primitive)?.$value ?? "").slice(0, 7);
+        for (const [hue, grp] of Object.entries(s.tokens.primitive.color)) {
+          const spec = grp?.$extensions?.["open-ds"];
+          for (const mode of ["light", "dark"])
+            for (const [st, adj] of Object.entries(spec?.[mode]?.adjust ?? {})) {
+              if (adj.C == null || adj.C <= 0) continue;
+              moves++;
+              if (mode !== "light") continue;
+              const generated = scale({ key: spec.light.key }, "light")[st];
+              if (lch(generated)[1] >= TARGET)
+                gaps.push(
+                  `${id}: ${hue}.${mode}.${st} takes more chroma, but its generated chroma already meets ${TARGET}`,
+                );
+            }
+        }
+        for (const b of Object.keys(s.tokens.brands))
+          for (const k of ["info", "success", "warning", "danger"]) {
+            const t = follow(s.tokens, b, "dark", `color.text.${k}-on-dark`);
+            const f = follow(s.tokens, b, "dark", `color.status.${k}.subtle`);
+            if (!t || !f) continue;
+            texts++;
+            const tv = at(t.prim);
+            const fv = at(f.prim);
+            if (lch(tv)[1] < TARGET - 0.002)
+              gaps.push(`${id}/${b}: text.${k}-on-dark reads as white (chroma ${lch(tv)[1].toFixed(3)})`);
+            if (contrast(tv, fv) < 7)
+              gaps.push(
+                `${id}/${b}: text.${k}-on-dark is ${contrast(tv, fv).toFixed(1)}:1 on its dark tint, under 7:1`,
+              );
+          }
+      }
+      return gaps.length
+        ? bad(gaps.slice(0, 6).join("; "))
+        : ok(
+            `${hints.length} decision hints, each from a decision; ${moves} chroma moves, each where needed; ${texts} status texts on dark show their hue at 7:1 or more`,
+          );
+    },
+  },
+
   "neutral-semantic": {
     requires: ["schemes/grammar.json"],
     run: (c) => {

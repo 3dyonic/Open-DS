@@ -765,6 +765,80 @@
             }
           ]
         }
+      ],
+      "hints": [
+        {
+          "id": "adjust-where-measured",
+          "when": "A generated step looks wrong in use.",
+          "do": "Name what to measure first, and adjust only the steps that fall short of it. A step that already meets the measure stays as generated.",
+          "measure": "Each recorded chroma move sits on a step whose generated chroma is below the target its reason names.",
+          "why": "A measure turns taste into a decision others can repeat, and keeps the scale generated wherever it already works.",
+          "from": ["OD-231"]
+        },
+        {
+          "id": "need-per-hue",
+          "when": "Deciding where an adjustment goes.",
+          "do": "Decide per hue, not per scheme. Schemes that share a hue share its need; adjust one scheme alone only when its colour differs.",
+          "why": "The same blue is the same colour in every scheme that uses it, so the same fix applies to all of them.",
+          "from": ["OD-231"]
+        },
+        {
+          "id": "whole-colour-space",
+          "when": "A step needs more or less colour.",
+          "do": "Use the whole colour space, in order: chroma first, where hue lives; then lightness, which also makes room for chroma near white; hue angle last.",
+          "why": "Lightness alone makes a colour darker, not more coloured. Chroma is what shows the hue.",
+          "from": ["OD-231"]
+        },
+        {
+          "id": "near-white-gamut",
+          "when": "Adding chroma to a light step (50 to 200).",
+          "do": "Expect blue and red to need a little less lightness before they can hold more chroma; green and amber usually take chroma as they are.",
+          "why": "Near white, a screen (sRGB) has little room for blue and red, so a chroma move alone does nothing.",
+          "from": ["OD-231"]
+        },
+        {
+          "id": "every-job-of-a-step",
+          "when": "Before adjusting a step.",
+          "do": "List every token that lands on it (open-ds scales, get_scales) and mock each one, in both themes. A step can be a light tint and a dark-mode text at once.",
+          "why": "An adjustment moves every job a step has, not only the one you are fixing.",
+          "from": ["OD-231", "OD-223"]
+        },
+        {
+          "id": "smallest-move",
+          "when": "Choosing the size of an adjustment.",
+          "do": "Find the smallest move that meets the measure, then ease it back by eye if it shows too much.",
+          "why": "The scale stays one family; a large move reads as a different colour.",
+          "from": ["OD-231"]
+        },
+        {
+          "id": "text-shows-its-colour",
+          "when": "Text on a coloured fill, such as a status label.",
+          "do": "Check that it shows its hue, not only that it passes contrast.",
+          "measure": "text.<status>-on-dark keeps chroma 0.04 or more and 7:1 or more on its dark tint, in every brand.",
+          "why": "Passing contrast with a colour that reads as white loses the meaning the colour carries.",
+          "from": ["OD-231"]
+        },
+        {
+          "id": "say-why",
+          "when": "Recording an adjustment.",
+          "do": "Write the reason a person can read, with its ticket. \"Chosen by eye\" is a valid reason when it is true.",
+          "why": "The next person can keep, change or remove it on purpose.",
+          "from": ["OD-223", "OD-231"]
+        },
+        {
+          "id": "same-move-is-a-curve",
+          "when": "The same move is about to go on every hue.",
+          "do": "Change the curve instead of adding the same adjustment everywhere.",
+          "why": "An adjustment is an exception; a move on every hue is the rule, and the curve is where rules live.",
+          "from": ["OD-223"]
+        },
+        {
+          "id": "distance-by-use",
+          "when": "Two fills must stay apart, such as primary and danger.",
+          "do": "Decide the distance from where they meet in use, not from one number for every case.",
+          "why": "How far apart two colours must be depends on whether they sit side by side.",
+          "from": ["OD-225"]
+        }
       ]
     },
     {
@@ -2888,7 +2962,7 @@
       },
       {
         "id": "color.text.info-on-dark",
-        "intent": "The label on a dark info fill, such as its tint in dark mode: a fixed colour from the light scale (50).",
+        "intent": "The label on a dark info fill, such as its tint in dark mode: a fixed colour from the light scale (100, adjusted so its hue shows).",
         "use_for": ["The info badge"],
         "not_for": [
           {
@@ -2918,7 +2992,7 @@
       },
       {
         "id": "color.text.success-on-dark",
-        "intent": "The label on a dark success fill, such as its tint in dark mode: a fixed colour from the light scale (50).",
+        "intent": "The label on a dark success fill, such as its tint in dark mode: a fixed colour from the light scale (100, adjusted so its hue shows).",
         "use_for": ["The success badge"],
         "not_for": [
           {
@@ -2948,7 +3022,7 @@
       },
       {
         "id": "color.text.warning-on-dark",
-        "intent": "The label on a dark warning fill, such as its tint in dark mode: a fixed colour from the light scale (50).",
+        "intent": "The label on a dark warning fill, such as its tint in dark mode: a fixed colour from the light scale (100, adjusted so its hue shows).",
         "use_for": ["The warning badge"],
         "not_for": [
           {
@@ -2978,7 +3052,7 @@
       },
       {
         "id": "color.text.danger-on-dark",
-        "intent": "The label on a dark danger fill, such as its tint in dark mode: a fixed colour from the light scale (50).",
+        "intent": "The label on a dark danger fill, such as its tint in dark mode: a fixed colour from the light scale (100, adjusted so its hue shows).",
         "use_for": ["The danger badge"],
         "not_for": [
           {

@@ -72,7 +72,10 @@ export function scaleMap(tokens, brandKey, mode) {
  * mode, each hue's steps with their values and the tokens that land on each, by lane, plus the tokens
  * whose colour is fixed from the other mode's scale. Filter by hue to get one.
  */
-export function scales(scheme, { brand, mode = "light", hue } = {}) {
+export function scales(
+  scheme,
+  { brand, mode = "light", hue, hints = [] } = {},
+) {
   const t = scheme.tokens;
   const brandKey = brand ?? Object.keys(t.brands)[0];
   if (!t.brands[brandKey])
@@ -95,6 +98,7 @@ export function scales(scheme, { brand, mode = "light", hue } = {}) {
     mode,
     neutral: t.brands[brandKey].theme.neutral ?? null,
     lanes: LANES,
+    hints,
     hues: hues
       .filter((h) => t.primitive.color[h][mode])
       .map((h) => {

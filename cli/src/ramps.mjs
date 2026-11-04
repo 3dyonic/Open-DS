@@ -145,10 +145,14 @@ export function darkScale(key, canvas) {
     }),
   );
 }
-/** A step moved by a recorded adjustment: { L, H } in OKLCH lightness and degrees. */
+/** A step moved by a recorded adjustment: { L, C, H } in OKLCH lightness, chroma and degrees. */
 export function adjusted(h, adj) {
   const [L, C, H] = lch(h);
-  return fromLch(L + (adj.L ?? 0), C, (H + (adj.H ?? 0) + 360) % 360);
+  return fromLch(
+    L + (adj.L ?? 0),
+    Math.max(0, C + (adj.C ?? 0)),
+    (H + (adj.H ?? 0) + 360) % 360,
+  );
 }
 /** A hue's scale for one mode, with its recorded adjustments. */
 export function scale(spec, mode, canvas) {

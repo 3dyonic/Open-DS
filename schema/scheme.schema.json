@@ -1084,7 +1084,7 @@
         },
         "adjust": {
           "type": "object",
-          "description": "Recorded moves per step: L in OKLCH lightness, H in degrees, and why.",
+          "description": "Recorded moves per step: L in OKLCH lightness, C in chroma, H in degrees, and why.",
           "additionalProperties": {
             "type": "object",
             "additionalProperties": false,
@@ -1097,6 +1097,10 @@
               "H": {
                 "type": "number",
                 "description": "The move in hue, in degrees."
+              },
+              "C": {
+                "type": "number",
+                "description": "The move in OKLCH chroma: more or less colour, kept inside sRGB."
               },
               "why": {
                 "type": "string",

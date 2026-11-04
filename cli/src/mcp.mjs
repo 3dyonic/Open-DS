@@ -615,7 +615,7 @@ export function createMcpServer({ roots = assetRoots() } = {}) {
     {
       title: "Get the colour scales",
       description:
-        "Each colour hue of a scheme as its whole scale in one brand and mode: every step, its value, and the tokens that land on it, by lane (backgrounds, edges and rings, text), with the neutral step a surface or text goes through. Use it to see which step a token uses and which steps are free.",
+        "Each colour hue of a scheme as its whole scale in one brand and mode: every step, its value, and the tokens that land on it, by lane (backgrounds, edges and rings, text), with the neutral step a surface or text goes through, plus the rules of thumb for changing a scale. Use it to see which step a token uses, which steps are free, and how to decide an adjustment.",
       inputSchema: {
         scheme_id: SchemeId,
         brand: z
@@ -634,7 +634,14 @@ export function createMcpServer({ roots = assetRoots() } = {}) {
       annotations: { readOnlyHint: true },
     },
     async ({ scheme_id, brand, mode, hue }) =>
-      json(scales(scheme(scheme_id), { brand, mode, hue })),
+      json(
+        scales(scheme(scheme_id), {
+          brand,
+          mode,
+          hue,
+          hints: g.scopes.find((x) => x.id === "color")?.hints ?? [],
+        }),
+      ),
   );
 
   server.registerTool(
