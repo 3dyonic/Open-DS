@@ -73,8 +73,8 @@ The CSS variable is the key with `/` replaced by `-` and the base `@` dropped. E
 
 | Key | What it controls | Points to, aster-light | Points to, aster-dark |
 | --- | --- | --- | --- |
-| `card/background` | Card fill. | `color.surface.default` → `aster.theme.light.color.surface.default` → `color.slate.light.0` | `color.surface.default` → `aster.theme.dark.color.surface.default` → `color.slate.dark.50` |
-| `card/border` | Card border. | `color.border.default` → `aster.theme.light.color.border.default` → `color.slate.light.200` | `color.border.default` → `aster.theme.dark.color.border.default` → `color.slate.dark.100` |
+| `card/background` | Card fill. | `color.surface.default` → `aster.theme.light.color.surface.default` → `color.neutral.0` → `aster.theme.light.color.neutral.0` → `color.slate-deep.light.0` | `color.surface.default` → `aster.theme.dark.color.surface.default` → `color.neutral.50` → `aster.theme.dark.color.neutral.50` → `color.slate-deep.dark.50` |
+| `card/border` | Card border. | `color.border.default` → `aster.theme.light.color.border.default` → `color.neutral.200` → `aster.theme.light.color.neutral.200` → `color.slate-deep.light.200` | `color.border.default` → `aster.theme.dark.color.border.default` → `color.neutral.100` → `aster.theme.dark.color.neutral.100` → `color.slate-deep.dark.100` |
 | `card/radius` | Card corner radius. | `radius.container` → `aster.theme.base.radius.container` → `radius.8` | same |
 | `card/padding` | Padding inside a card. | `space.inset.container` → `space.24` | same |
 | `card/shadow` | Card shadow. | `elevation.card` → `aster.theme.light.elevation.card` → `shadow.card` | `elevation.card` → `aster.theme.dark.elevation.card` → `shadow.card-dark` |
@@ -87,8 +87,8 @@ The CSS variable is the key with `/` replaced by `-` and the base `@` dropped. E
 
 | Key | What it controls | Points to, birch-light | Points to, birch-dark |
 | --- | --- | --- | --- |
-| `card/background` | Card fill. | `color.surface.default` → `birch.theme.light.color.surface.default` → `color.slate.light.0` | `color.surface.default` → `birch.theme.dark.color.surface.default` → `color.slate.dark.50` |
-| `card/border` | Card border. | `color.border.default` → `birch.theme.light.color.border.default` → `color.slate.light.200` | `color.border.default` → `birch.theme.dark.color.border.default` → `color.slate.dark.100` |
+| `card/background` | Card fill. | `color.surface.default` → `birch.theme.light.color.surface.default` → `color.neutral.0` → `birch.theme.light.color.neutral.0` → `color.slate-deep.light.0` | `color.surface.default` → `birch.theme.dark.color.surface.default` → `color.neutral.50` → `birch.theme.dark.color.neutral.50` → `color.slate-deep.dark.50` |
+| `card/border` | Card border. | `color.border.default` → `birch.theme.light.color.border.default` → `color.neutral.200` → `birch.theme.light.color.neutral.200` → `color.slate-deep.light.200` | `color.border.default` → `birch.theme.dark.color.border.default` → `color.neutral.100` → `birch.theme.dark.color.neutral.100` → `color.slate-deep.dark.100` |
 | `card/radius` | Card corner radius. | `radius.container` → `birch.theme.base.radius.container` → `radius.16` | same |
 | `card/padding` | Padding inside a card. | `space.inset.container` → `space.24` | same |
 | `card/shadow` | Card shadow. | `elevation.card` → `birch.theme.light.elevation.card` → `shadow.card` | `elevation.card` → `birch.theme.dark.elevation.card` → `shadow.card-dark` |
@@ -101,8 +101,8 @@ The CSS variable is the key with `/` replaced by `-` and the base `@` dropped. E
 
 | Key | What it controls | Points to, coral-light | Points to, coral-dark |
 | --- | --- | --- | --- |
-| `card/background` | Card fill. | `color.surface.default` → `coral.theme.light.color.surface.default` → `color.slate.light.0` | `color.surface.default` → `coral.theme.dark.color.surface.default` → `color.slate.dark.50` |
-| `card/border` | Card border. | `color.border.default` → `coral.theme.light.color.border.default` → `color.slate.light.200` | `color.border.default` → `coral.theme.dark.color.border.default` → `color.slate.dark.100` |
+| `card/background` | Card fill. | `color.surface.default` → `coral.theme.light.color.surface.default` → `color.neutral.0` → `coral.theme.light.color.neutral.0` → `color.slate-deep.light.0` | `color.surface.default` → `coral.theme.dark.color.surface.default` → `color.neutral.50` → `coral.theme.dark.color.neutral.50` → `color.slate-deep.dark.50` |
+| `card/border` | Card border. | `color.border.default` → `coral.theme.light.color.border.default` → `color.neutral.200` → `coral.theme.light.color.neutral.200` → `color.slate-deep.light.200` | `color.border.default` → `coral.theme.dark.color.border.default` → `color.neutral.100` → `coral.theme.dark.color.neutral.100` → `color.slate-deep.dark.100` |
 | `card/radius` | Card corner radius. | `radius.container` → `coral.theme.base.radius.container` → `radius.20` | same |
 | `card/padding` | Padding inside a card. | `space.inset.container` → `space.24` | same |
 | `card/shadow` | Card shadow. | `elevation.card` → `coral.theme.light.elevation.card` → `shadow.card` | `elevation.card` → `coral.theme.dark.elevation.card` → `shadow.card-dark` |

@@ -948,6 +948,34 @@
                     "type": "string",
                     "description": "What this theme is."
                   },
+                  "neutral": {
+                    "type": "object",
+                    "additionalProperties": false,
+                    "required": ["gray", "temperature", "why", "because"],
+                    "description": "The decision behind color.neutral (OD-228): which gray from the grammar's menu the neutral scale points at, and why.",
+                    "properties": {
+                      "gray": {
+                        "type": "string",
+                        "pattern": "^[a-z]+(-[a-z]+)?$",
+                        "description": "A gray from the grammar's semantics.neutral.grays."
+                      },
+                      "temperature": {
+                        "enum": ["cool", "pure", "warm", "warm-rosy"],
+                        "description": "The gray's temperature, as the menu names it."
+                      },
+                      "why": {
+                        "type": "string",
+                        "minLength": 1,
+                        "description": "Why this scheme picks this gray."
+                      },
+                      "because": {
+                        "type": "array",
+                        "minItems": 1,
+                        "items": { "type": "string" },
+                        "description": "The answers it follows from."
+                      }
+                    }
+                  },
                   "base": {
                     "$ref": "#/$defs/group",
                     "description": "Mode-free picks: font families and corners."

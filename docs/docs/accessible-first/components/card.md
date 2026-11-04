@@ -69,8 +69,8 @@ The CSS variable is the key with `/` replaced by `-` and the base `@` dropped. E
 
 | Key | What it controls | Points to, light | Points to, dark |
 | --- | --- | --- | --- |
-| `card/background` | Card fill. | `color.surface.default` → `accessible-first.theme.light.color.surface.default` → `color.gray.light.0` | `color.surface.default` → `accessible-first.theme.dark.color.surface.default` → `color.gray.dark.50` |
-| `card/border` | Card border. | `color.border.default` → `accessible-first.theme.light.color.border.default` → `color.gray.light.200` | `color.border.default` → `accessible-first.theme.dark.color.border.default` → `color.gray.dark.100` |
+| `card/background` | Card fill. | `color.surface.default` → `accessible-first.theme.light.color.surface.default` → `color.neutral.0` → `accessible-first.theme.light.color.neutral.0` → `color.gray.light.0` | `color.surface.default` → `accessible-first.theme.dark.color.surface.default` → `color.neutral.50` → `accessible-first.theme.dark.color.neutral.50` → `color.gray.dark.50` |
+| `card/border` | Card border. | `color.border.default` → `accessible-first.theme.light.color.border.default` → `color.neutral.200` → `accessible-first.theme.light.color.neutral.200` → `color.gray.light.200` | `color.border.default` → `accessible-first.theme.dark.color.border.default` → `color.neutral.100` → `accessible-first.theme.dark.color.neutral.100` → `color.gray.dark.100` |
 | `card/radius` | Card corner radius. | `radius.container` → `accessible-first.theme.base.radius.container` → `radius.8` | same |
 | `card/padding` | Padding inside a card. | `space.inset.container` → `space.24` | same |
 | `card/shadow` | Card shadow. | `elevation.card` → `accessible-first.theme.light.elevation.card` → `shadow.none` | `elevation.card` → `accessible-first.theme.dark.elevation.card` → `shadow.none` |

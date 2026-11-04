@@ -3805,6 +3805,50 @@
       "min_delta_e": 10,
       "say": "the primary and danger fills stay at least 10 apart (ΔE in OKLab, ×100) in every brand and mode",
       "why": "A destructive commit must never look like the everyday one."
+    },
+    "neutral": {
+      "description": "The neutral scale (OD-228). Primitives hold the grays below, each a whole ramp in light and dark. color.neutral.<step> is a semantic scale: each scheme or brand points it at one gray, recorded in its theme as neutral { gray, temperature, why, because }. Surfaces, borders, text, the secondary button and disabled read only color.neutral steps, never a gray directly. A scheme keeps only the gray it picked; this list is the menu.",
+      "steps": [
+        "0",
+        "50",
+        "100",
+        "200",
+        "300",
+        "400",
+        "500",
+        "600",
+        "700",
+        "800",
+        "900",
+        "950"
+      ],
+      "grays": [
+        {
+          "id": "slate",
+          "temperature": "cool",
+          "description": "A cool blue-gray, barely tinted: reads as precise."
+        },
+        {
+          "id": "slate-deep",
+          "temperature": "cool",
+          "description": "A deeper, bluer gray, about twice as tinted as slate: cool and firm."
+        },
+        {
+          "id": "gray",
+          "temperature": "pure",
+          "description": "No hue at all: nothing can lower contrast or carry a meaning."
+        },
+        {
+          "id": "stone",
+          "temperature": "warm",
+          "description": "A warm, yellowish gray, like paper."
+        },
+        {
+          "id": "taupe",
+          "temperature": "warm-rosy",
+          "description": "A warm, rosy gray that sits under a vivid brand."
+        }
+      ]
     }
   },
   "catalogue": {

@@ -11,6 +11,18 @@ description: "Content first: How color carries action, state and brand."
 How color carries action, state and brand.
 
 <div class="ods-specimen">
+<span class="ods-item"><span class="ods-swatch" style="background:var(--color-neutral-0)"></span><span class="ods-label">color.neutral.0</span></span>
+<span class="ods-item"><span class="ods-swatch" style="background:var(--color-neutral-50)"></span><span class="ods-label">color.neutral.50</span></span>
+<span class="ods-item"><span class="ods-swatch" style="background:var(--color-neutral-100)"></span><span class="ods-label">color.neutral.100</span></span>
+<span class="ods-item"><span class="ods-swatch" style="background:var(--color-neutral-200)"></span><span class="ods-label">color.neutral.200</span></span>
+<span class="ods-item"><span class="ods-swatch" style="background:var(--color-neutral-300)"></span><span class="ods-label">color.neutral.300</span></span>
+<span class="ods-item"><span class="ods-swatch" style="background:var(--color-neutral-400)"></span><span class="ods-label">color.neutral.400</span></span>
+<span class="ods-item"><span class="ods-swatch" style="background:var(--color-neutral-500)"></span><span class="ods-label">color.neutral.500</span></span>
+<span class="ods-item"><span class="ods-swatch" style="background:var(--color-neutral-600)"></span><span class="ods-label">color.neutral.600</span></span>
+<span class="ods-item"><span class="ods-swatch" style="background:var(--color-neutral-700)"></span><span class="ods-label">color.neutral.700</span></span>
+<span class="ods-item"><span class="ods-swatch" style="background:var(--color-neutral-800)"></span><span class="ods-label">color.neutral.800</span></span>
+<span class="ods-item"><span class="ods-swatch" style="background:var(--color-neutral-900)"></span><span class="ods-label">color.neutral.900</span></span>
+<span class="ods-item"><span class="ods-swatch" style="background:var(--color-neutral-950)"></span><span class="ods-label">color.neutral.950</span></span>
 <span class="ods-item"><span class="ods-swatch" style="background:var(--color-surface-canvas)"></span><span class="ods-label">color.surface.canvas</span></span>
 <span class="ods-item"><span class="ods-swatch" style="background:var(--color-surface-default)"></span><span class="ods-label">color.surface.default</span></span>
 <span class="ods-item"><span class="ods-swatch" style="background:var(--color-surface-raised)"></span><span class="ods-label">color.surface.raised</span></span>
@@ -39,18 +51,6 @@ How color carries action, state and brand.
 <span class="ods-item"><span class="ods-swatch" style="background:var(--color-action-danger-hover)"></span><span class="ods-label">color.action.danger.hover</span></span>
 <span class="ods-item"><span class="ods-swatch" style="background:var(--color-status-info)"></span><span class="ods-label">color.status.info.@</span></span>
 <span class="ods-item"><span class="ods-swatch" style="background:var(--color-status-info-subtle)"></span><span class="ods-label">color.status.info.subtle</span></span>
-<span class="ods-item"><span class="ods-swatch" style="background:var(--color-status-success)"></span><span class="ods-label">color.status.success.@</span></span>
-<span class="ods-item"><span class="ods-swatch" style="background:var(--color-status-success-subtle)"></span><span class="ods-label">color.status.success.subtle</span></span>
-<span class="ods-item"><span class="ods-swatch" style="background:var(--color-status-warning)"></span><span class="ods-label">color.status.warning.@</span></span>
-<span class="ods-item"><span class="ods-swatch" style="background:var(--color-status-warning-subtle)"></span><span class="ods-label">color.status.warning.subtle</span></span>
-<span class="ods-item"><span class="ods-swatch" style="background:var(--color-status-danger)"></span><span class="ods-label">color.status.danger.@</span></span>
-<span class="ods-item"><span class="ods-swatch" style="background:var(--color-status-danger-subtle)"></span><span class="ods-label">color.status.danger.subtle</span></span>
-<span class="ods-item"><span class="ods-swatch" style="background:var(--color-category-1)"></span><span class="ods-label">color.category.1.@</span></span>
-<span class="ods-item"><span class="ods-swatch" style="background:var(--color-category-1-subtle)"></span><span class="ods-label">color.category.1.subtle</span></span>
-<span class="ods-item"><span class="ods-swatch" style="background:var(--color-category-2)"></span><span class="ods-label">color.category.2.@</span></span>
-<span class="ods-item"><span class="ods-swatch" style="background:var(--color-category-2-subtle)"></span><span class="ods-label">color.category.2.subtle</span></span>
-<span class="ods-item"><span class="ods-swatch" style="background:var(--color-category-3)"></span><span class="ods-label">color.category.3.@</span></span>
-<span class="ods-item"><span class="ods-swatch" style="background:var(--color-category-3-subtle)"></span><span class="ods-label">color.category.3.subtle</span></span>
 </div>
 
 <div class="odv-band"><div style="background:var(--color-action-primary);color:#FFFFFF"><b>Action</b>action.primary</div><div style="background:var(--color-text-primary);color:#FFFFFF"><b>Text</b>text.primary</div><div style="background:var(--color-status-success);color:#FFFFFF"><b>Success</b>status.success</div><div style="background:var(--color-status-warning);color:#FFFFFF"><b>Warning</b>status.warning</div><div style="background:var(--color-status-danger);color:#FFFFFF"><b>Danger</b>status.danger</div><div style="background:var(--color-status-info);color:#FFFFFF"><b>Info</b>status.info</div></div>
@@ -83,30 +83,42 @@ Each token points to another token. Values live only on primitives, below.
 
 | Token | Points to, light | Points to, dark |
 | --- | --- | --- |
-| `color.surface.canvas` | `content-first.theme.light.color.surface.canvas` → `color.stone.light.50` | `content-first.theme.dark.color.surface.canvas` → `color.stone.dark.0` |
-| `color.surface.default` | `content-first.theme.light.color.surface.default` → `color.stone.light.0` | `content-first.theme.dark.color.surface.default` → `color.stone.dark.50` |
-| `color.surface.raised` | `content-first.theme.light.color.surface.raised` → `color.stone.light.0` | `content-first.theme.dark.color.surface.raised` → `color.stone.dark.100` |
-| `color.surface.sunken` | `content-first.theme.light.color.surface.sunken` → `color.stone.light.100` | `content-first.theme.dark.color.surface.sunken` → `color.stone.dark.100` |
+| `color.neutral.0` | `content-first.theme.light.color.neutral.0` → `color.stone.light.0` | `content-first.theme.dark.color.neutral.0` → `color.stone.dark.0` |
+| `color.neutral.50` | `content-first.theme.light.color.neutral.50` → `color.stone.light.50` | `content-first.theme.dark.color.neutral.50` → `color.stone.dark.50` |
+| `color.neutral.100` | `content-first.theme.light.color.neutral.100` → `color.stone.light.100` | `content-first.theme.dark.color.neutral.100` → `color.stone.dark.100` |
+| `color.neutral.200` | `content-first.theme.light.color.neutral.200` → `color.stone.light.200` | `content-first.theme.dark.color.neutral.200` → `color.stone.dark.200` |
+| `color.neutral.300` | `content-first.theme.light.color.neutral.300` → `color.stone.light.300` | `content-first.theme.dark.color.neutral.300` → `color.stone.dark.300` |
+| `color.neutral.400` | `content-first.theme.light.color.neutral.400` → `color.stone.light.400` | `content-first.theme.dark.color.neutral.400` → `color.stone.dark.400` |
+| `color.neutral.500` | `content-first.theme.light.color.neutral.500` → `color.stone.light.500` | `content-first.theme.dark.color.neutral.500` → `color.stone.dark.500` |
+| `color.neutral.600` | `content-first.theme.light.color.neutral.600` → `color.stone.light.600` | `content-first.theme.dark.color.neutral.600` → `color.stone.dark.600` |
+| `color.neutral.700` | `content-first.theme.light.color.neutral.700` → `color.stone.light.700` | `content-first.theme.dark.color.neutral.700` → `color.stone.dark.700` |
+| `color.neutral.800` | `content-first.theme.light.color.neutral.800` → `color.stone.light.800` | `content-first.theme.dark.color.neutral.800` → `color.stone.dark.800` |
+| `color.neutral.900` | `content-first.theme.light.color.neutral.900` → `color.stone.light.900` | `content-first.theme.dark.color.neutral.900` → `color.stone.dark.900` |
+| `color.neutral.950` | `content-first.theme.light.color.neutral.950` → `color.stone.light.950` | `content-first.theme.dark.color.neutral.950` → `color.stone.dark.950` |
+| `color.surface.canvas` | `content-first.theme.light.color.surface.canvas` → `color.neutral.50` → `content-first.theme.light.color.neutral.50` → `color.stone.light.50` | `content-first.theme.dark.color.surface.canvas` → `color.neutral.0` → `content-first.theme.dark.color.neutral.0` → `color.stone.dark.0` |
+| `color.surface.default` | `content-first.theme.light.color.surface.default` → `color.neutral.0` → `content-first.theme.light.color.neutral.0` → `color.stone.light.0` | `content-first.theme.dark.color.surface.default` → `color.neutral.50` → `content-first.theme.dark.color.neutral.50` → `color.stone.dark.50` |
+| `color.surface.raised` | `content-first.theme.light.color.surface.raised` → `color.neutral.0` → `content-first.theme.light.color.neutral.0` → `color.stone.light.0` | `content-first.theme.dark.color.surface.raised` → `color.neutral.100` → `content-first.theme.dark.color.neutral.100` → `color.stone.dark.100` |
+| `color.surface.sunken` | `content-first.theme.light.color.surface.sunken` → `color.neutral.100` → `content-first.theme.light.color.neutral.100` → `color.stone.light.100` | `content-first.theme.dark.color.surface.sunken` → `color.neutral.100` → `content-first.theme.dark.color.neutral.100` → `color.stone.dark.100` |
 | `color.surface.selected` | `content-first.theme.light.color.surface.selected` → `color.navy.light.100` | `content-first.theme.dark.color.surface.selected` → `color.navy.dark.100` |
-| `color.surface.inverse` | `content-first.theme.light.color.surface.inverse` → `color.stone.light.900` | `content-first.theme.dark.color.surface.inverse` → `color.stone.dark.900` |
+| `color.surface.inverse` | `content-first.theme.light.color.surface.inverse` → `color.neutral.900` → `content-first.theme.light.color.neutral.900` → `color.stone.light.900` | `content-first.theme.dark.color.surface.inverse` → `color.neutral.900` → `content-first.theme.dark.color.neutral.900` → `color.stone.dark.900` |
 | `color.surface.scrim` | `content-first.theme.light.color.surface.scrim` → `color.black.light.scrim` | `content-first.theme.dark.color.surface.scrim` → `color.black.dark.scrim` |
-| `color.text.primary` | `content-first.theme.light.color.text.primary` → `color.stone.light.900` | `content-first.theme.dark.color.text.primary` → `color.stone.dark.900` |
-| `color.text.secondary` | `content-first.theme.light.color.text.secondary` → `color.stone.light.700` | `content-first.theme.dark.color.text.secondary` → `color.stone.dark.500` |
-| `color.text.muted` | `content-first.theme.light.color.text.muted` → `color.stone.light.600` | `content-first.theme.dark.color.text.muted` → `color.stone.dark.400` |
-| `color.text.inverse` | `content-first.theme.light.color.text.inverse` → `color.stone.light.0` | `content-first.theme.dark.color.text.inverse` → `color.stone.light.900` |
-| `color.text.on-action` | `content-first.theme.light.color.text.on-action` → `color.stone.light.0` | `content-first.theme.dark.color.text.on-action` → `color.stone.light.900` |
+| `color.text.primary` | `content-first.theme.light.color.text.primary` → `color.neutral.900` → `content-first.theme.light.color.neutral.900` → `color.stone.light.900` | `content-first.theme.dark.color.text.primary` → `color.neutral.900` → `content-first.theme.dark.color.neutral.900` → `color.stone.dark.900` |
+| `color.text.secondary` | `content-first.theme.light.color.text.secondary` → `color.neutral.700` → `content-first.theme.light.color.neutral.700` → `color.stone.light.700` | `content-first.theme.dark.color.text.secondary` → `color.neutral.500` → `content-first.theme.dark.color.neutral.500` → `color.stone.dark.500` |
+| `color.text.muted` | `content-first.theme.light.color.text.muted` → `color.neutral.600` → `content-first.theme.light.color.neutral.600` → `color.stone.light.600` | `content-first.theme.dark.color.text.muted` → `color.neutral.400` → `content-first.theme.dark.color.neutral.400` → `color.stone.dark.400` |
+| `color.text.inverse` | `content-first.theme.light.color.text.inverse` → `color.text.on-dark` → `content-first.theme.base.color.text.on-dark` → `color.stone.light.0` | `content-first.theme.dark.color.text.inverse` → `color.text.on-light` → `content-first.theme.base.color.text.on-light` → `color.stone.light.900` |
+| `color.text.on-action` | `content-first.theme.light.color.text.on-action` → `color.text.on-dark` → `content-first.theme.base.color.text.on-dark` → `color.stone.light.0` | `content-first.theme.dark.color.text.on-action` → `color.text.on-light` → `content-first.theme.base.color.text.on-light` → `color.stone.light.900` |
 | `color.text.link` | `content-first.theme.light.color.text.link` → `color.navy.light.700` | `content-first.theme.dark.color.text.link` → `color.navy.dark.700` |
-| `color.text.on-danger` | `content-first.theme.light.color.text.on-danger` → `color.stone.light.0` | `content-first.theme.dark.color.text.on-danger` → `color.stone.light.900` |
+| `color.text.on-danger` | `content-first.theme.light.color.text.on-danger` → `color.text.on-dark` → `content-first.theme.base.color.text.on-dark` → `color.stone.light.0` | `content-first.theme.dark.color.text.on-danger` → `color.text.on-light` → `content-first.theme.base.color.text.on-light` → `color.stone.light.900` |
 | `color.text.on-light` | `content-first.theme.base.color.text.on-light` → `color.stone.light.900` | `content-first.theme.base.color.text.on-light` → `color.stone.light.900` |
 | `color.text.on-dark` | `content-first.theme.base.color.text.on-dark` → `color.stone.light.0` | `content-first.theme.base.color.text.on-dark` → `color.stone.light.0` |
-| `color.border.default` | `content-first.theme.light.color.border.default` → `color.stone.light.200` | `content-first.theme.dark.color.border.default` → `color.stone.dark.100` |
-| `color.border.strong` | `content-first.theme.light.color.border.strong` → `color.stone.light.500` | `content-first.theme.dark.color.border.strong` → `color.stone.dark.400` |
+| `color.border.default` | `content-first.theme.light.color.border.default` → `color.neutral.200` → `content-first.theme.light.color.neutral.200` → `color.stone.light.200` | `content-first.theme.dark.color.border.default` → `color.neutral.100` → `content-first.theme.dark.color.neutral.100` → `color.stone.dark.100` |
+| `color.border.strong` | `content-first.theme.light.color.border.strong` → `color.neutral.500` → `content-first.theme.light.color.neutral.500` → `color.stone.light.500` | `content-first.theme.dark.color.border.strong` → `color.neutral.400` → `content-first.theme.dark.color.neutral.400` → `color.stone.dark.400` |
 | `color.border.focus` | `content-first.theme.light.color.border.focus` → `color.navy.light.600` | `content-first.theme.dark.color.border.focus` → `color.navy.dark.700` |
 | `color.border.selected` | `content-first.theme.light.color.border.selected` → `color.navy.light.600` | `content-first.theme.dark.color.border.selected` → `color.navy.dark.700` |
 | `color.action.primary.@` | `content-first.theme.light.color.action.primary.@` → `color.navy.light.600` | `content-first.theme.dark.color.action.primary.@` → `color.navy.dark.700` |
 | `color.action.primary.hover` | `content-first.theme.light.color.action.primary.hover` → `color.navy.light.700` | `content-first.theme.dark.color.action.primary.hover` → `color.navy.dark.800` |
-| `color.action.secondary.@` | `content-first.theme.light.color.action.secondary.@` → `color.stone.light.0` | `content-first.theme.dark.color.action.secondary.@` → `color.stone.dark.50` |
-| `color.action.secondary.hover` | `content-first.theme.light.color.action.secondary.hover` → `color.stone.light.100` | `content-first.theme.dark.color.action.secondary.hover` → `color.stone.dark.100` |
+| `color.action.secondary.@` | `content-first.theme.light.color.action.secondary.@` → `color.neutral.0` → `content-first.theme.light.color.neutral.0` → `color.stone.light.0` | `content-first.theme.dark.color.action.secondary.@` → `color.neutral.50` → `content-first.theme.dark.color.neutral.50` → `color.stone.dark.50` |
+| `color.action.secondary.hover` | `content-first.theme.light.color.action.secondary.hover` → `color.neutral.100` → `content-first.theme.light.color.neutral.100` → `color.stone.light.100` | `content-first.theme.dark.color.action.secondary.hover` → `color.neutral.100` → `content-first.theme.dark.color.neutral.100` → `color.stone.dark.100` |
 | `color.action.danger.@` | `content-first.theme.light.color.action.danger.@` → `color.red.light.700` | `content-first.theme.dark.color.action.danger.@` → `color.red.dark.700` |
 | `color.action.danger.hover` | `content-first.theme.light.color.action.danger.hover` → `color.red.light.700` | `content-first.theme.dark.color.action.danger.hover` → `color.red.dark.700` |
 | `color.status.info.@` | `content-first.theme.light.color.status.info.@` → `color.blue.light.700` | `content-first.theme.dark.color.status.info.@` → `color.blue.dark.700` |
@@ -125,11 +137,11 @@ Each token points to another token. Values live only on primitives, below.
 | `color.category.3.subtle` | `content-first.theme.light.color.category.3.subtle` → `color.green.light.100` | `content-first.theme.dark.color.category.3.subtle` → `color.green.dark.100` |
 | `color.category.4.@` | `content-first.theme.light.color.category.4.@` → `color.amber.light.700` | `content-first.theme.dark.color.category.4.@` → `color.amber.dark.700` |
 | `color.category.4.subtle` | `content-first.theme.light.color.category.4.subtle` → `color.amber.light.100` | `content-first.theme.dark.color.category.4.subtle` → `color.amber.dark.100` |
-| `color.category.5.@` | `content-first.theme.light.color.category.5.@` → `color.stone.light.500` | `content-first.theme.dark.color.category.5.@` → `color.stone.dark.700` |
-| `color.category.5.subtle` | `content-first.theme.light.color.category.5.subtle` → `color.stone.light.100` | `content-first.theme.dark.color.category.5.subtle` → `color.stone.dark.100` |
-| `color.disabled.text` | `content-first.theme.light.color.disabled.text` → `color.stone.light.500` | `content-first.theme.dark.color.disabled.text` → `color.stone.dark.500` |
-| `color.disabled.surface` | `content-first.theme.light.color.disabled.surface` → `color.stone.light.100` | `content-first.theme.dark.color.disabled.surface` → `color.stone.dark.100` |
-| `color.disabled.border` | `content-first.theme.light.color.disabled.border` → `color.stone.light.200` | `content-first.theme.dark.color.disabled.border` → `color.stone.dark.200` |
+| `color.category.5.@` | `content-first.theme.light.color.category.5.@` → `color.neutral.500` → `content-first.theme.light.color.neutral.500` → `color.stone.light.500` | `content-first.theme.dark.color.category.5.@` → `color.neutral.700` → `content-first.theme.dark.color.neutral.700` → `color.stone.dark.700` |
+| `color.category.5.subtle` | `content-first.theme.light.color.category.5.subtle` → `color.neutral.100` → `content-first.theme.light.color.neutral.100` → `color.stone.light.100` | `content-first.theme.dark.color.category.5.subtle` → `color.neutral.100` → `content-first.theme.dark.color.neutral.100` → `color.stone.dark.100` |
+| `color.disabled.text` | `content-first.theme.light.color.disabled.text` → `color.neutral.500` → `content-first.theme.light.color.neutral.500` → `color.stone.light.500` | `content-first.theme.dark.color.disabled.text` → `color.neutral.500` → `content-first.theme.dark.color.neutral.500` → `color.stone.dark.500` |
+| `color.disabled.surface` | `content-first.theme.light.color.disabled.surface` → `color.neutral.100` → `content-first.theme.light.color.neutral.100` → `color.stone.light.100` | `content-first.theme.dark.color.disabled.surface` → `color.neutral.100` → `content-first.theme.dark.color.neutral.100` → `color.stone.dark.100` |
+| `color.disabled.border` | `content-first.theme.light.color.disabled.border` → `color.neutral.200` → `content-first.theme.light.color.neutral.200` → `color.stone.light.200` | `content-first.theme.dark.color.disabled.border` → `color.neutral.200` → `content-first.theme.dark.color.neutral.200` → `color.stone.dark.200` |
 
 ## Primitives
 
@@ -165,19 +177,27 @@ The raw values the tokens above end at.
 | `color.stone.dark.0` | #14110D | <span class="ods-swatch" style="background:#14110D"></span> |
 | `color.stone.dark.100` | #2E2A24 | <span class="ods-swatch" style="background:#2E2A24"></span> |
 | `color.stone.dark.200` | #4A4339 | <span class="ods-swatch" style="background:#4A4339"></span> |
+| `color.stone.dark.300` | #7A7062 | <span class="ods-swatch" style="background:#7A7062"></span> |
 | `color.stone.dark.400` | #A39A8B | <span class="ods-swatch" style="background:#A39A8B"></span> |
 | `color.stone.dark.50` | #1F1B16 | <span class="ods-swatch" style="background:#1F1B16"></span> |
 | `color.stone.dark.500` | #CFC6B6 | <span class="ods-swatch" style="background:#CFC6B6"></span> |
+| `color.stone.dark.600` | #D9D1C3 | <span class="ods-swatch" style="background:#D9D1C3"></span> |
 | `color.stone.dark.700` | #E4DDD0 | <span class="ods-swatch" style="background:#E4DDD0"></span> |
+| `color.stone.dark.800` | #F6F2EA | <span class="ods-swatch" style="background:#F6F2EA"></span> |
 | `color.stone.dark.900` | #FFFDF8 | <span class="ods-swatch" style="background:#FFFDF8"></span> |
+| `color.stone.dark.950` | #FFFFFF | <span class="ods-swatch" style="background:#FFFFFF"></span> |
 | `color.stone.light.0` | #FFFFFF | <span class="ods-swatch" style="background:#FFFFFF"></span> |
 | `color.stone.light.100` | #F6F2EA | <span class="ods-swatch" style="background:#F6F2EA"></span> |
 | `color.stone.light.200` | #E4DDD0 | <span class="ods-swatch" style="background:#E4DDD0"></span> |
+| `color.stone.light.300` | #CFC6B6 | <span class="ods-swatch" style="background:#CFC6B6"></span> |
+| `color.stone.light.400` | #A39A8B | <span class="ods-swatch" style="background:#A39A8B"></span> |
 | `color.stone.light.50` | #FFFDF8 | <span class="ods-swatch" style="background:#FFFDF8"></span> |
 | `color.stone.light.500` | #7A7062 | <span class="ods-swatch" style="background:#7A7062"></span> |
 | `color.stone.light.600` | #61594D | <span class="ods-swatch" style="background:#61594D"></span> |
 | `color.stone.light.700` | #4A4339 | <span class="ods-swatch" style="background:#4A4339"></span> |
+| `color.stone.light.800` | #2E2A24 | <span class="ods-swatch" style="background:#2E2A24"></span> |
 | `color.stone.light.900` | #1F1B16 | <span class="ods-swatch" style="background:#1F1B16"></span> |
+| `color.stone.light.950` | #14110D | <span class="ods-swatch" style="background:#14110D"></span> |
 
 ## Where it lands
 

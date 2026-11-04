@@ -320,7 +320,10 @@ export const CHECKS = {
       for (const s of SCHEMES) {
         const t = c.json("schemes", `${s}.json`).tokens;
         const semantic = Object.keys(flatten(t.semantic)).filter((p) => p.startsWith("color."));
-        for (const p of semantic) if (!guide.has(p)) gaps.push(`${s}: ${p} has no guidance in the grammar`);
+        // OD-228: the neutral steps are one scale with one entry, the grammar's semantics.neutral.
+        const scaleOk = (p) => p.startsWith("color.neutral.") && g.semantics.neutral?.steps.includes(p.split(".")[2]);
+        for (const p of semantic)
+          if (!guide.has(p) && !scaleOk(p)) gaps.push(`${s}: ${p} has no guidance in the grammar`);
         for (const k of guide.values()) {
           if (!semantic.includes(k.id)) gaps.push(`${s}: guidance for ${k.id}, which the scheme does not define`);
           for (const n of k.not_for)
@@ -517,6 +520,52 @@ export const CHECKS = {
           );
       }
       return gaps.length ? bad(gaps.join("; ")) : ok("every scheme's motion count answer matches its motion tokens");
+    },
+  },
+
+  "neutral-semantic": {
+    requires: ["schemes/grammar.json"],
+    run: (c) => {
+      // OD-228: roles read color.neutral, color.neutral points at one gray from the grammar's menu, and the
+      // theme says which gray and why.
+      const g = c.json("schemes", "grammar.json").semantics?.neutral;
+      if (!g) return bad("the grammar has no neutral menu");
+      const menu = new Map(g.grays.map((x) => [x.id, x]));
+      const gaps = [];
+      for (const id of SCHEMES) {
+        const s = c.json("schemes", `${id}.json`);
+        const sem = s.tokens.semantic.color?.neutral;
+        for (const st of g.steps) if (!sem?.[st]) gaps.push(`${id}: no color.neutral.${st}`);
+        const grays = g.grays.map((x) => x.id);
+        for (const [brand, br] of Object.entries(s.tokens.brands)) {
+          const n = br.theme.neutral;
+          if (!n) {
+            gaps.push(`${id}/${brand}: no neutral decision`);
+            continue;
+          }
+          if (!menu.has(n.gray)) gaps.push(`${id}/${brand}: ${n.gray} is not on the grammar's gray menu`);
+          else if (menu.get(n.gray).temperature !== n.temperature)
+            gaps.push(`${id}/${brand}: ${n.gray} is ${menu.get(n.gray).temperature}, not ${n.temperature}`);
+          for (const q of n.because)
+            if (!s.answers.some((a) => a.question === q))
+              gaps.push(`${id}/${brand}: neutral cites ${q}, which has no answer`);
+          for (const mode of ["light", "dark"]) {
+            const scale = br.theme[mode].color?.neutral ?? {};
+            for (const st of g.steps)
+              if (scale[st]?.$value !== `{color.${n.gray}.${mode}.${st}}`)
+                gaps.push(`${id}/${brand}/${mode}: neutral.${st} does not point at ${n.gray}.${mode}.${st}`);
+            const rest = JSON.stringify({ ...br.theme[mode].color, neutral: undefined });
+            for (const gr of grays)
+              if (rest.includes(`{color.${gr}.`))
+                gaps.push(`${id}/${brand}/${mode}: a role reads the gray ${gr} directly`);
+          }
+        }
+      }
+      return gaps.length
+        ? bad(gaps.slice(0, 6).join("; "))
+        : ok(
+            `roles read color.neutral; each scheme's neutral points at one gray from the menu of ${g.grays.length}, with its reason`,
+          );
     },
   },
 

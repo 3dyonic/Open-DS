@@ -11,6 +11,18 @@ description: "Brand expressive: How color carries action, state and brand."
 How color carries action, state and brand.
 
 <div class="ods-specimen">
+<span class="ods-item"><span class="ods-swatch" style="background:var(--color-neutral-0)"></span><span class="ods-label">color.neutral.0</span></span>
+<span class="ods-item"><span class="ods-swatch" style="background:var(--color-neutral-50)"></span><span class="ods-label">color.neutral.50</span></span>
+<span class="ods-item"><span class="ods-swatch" style="background:var(--color-neutral-100)"></span><span class="ods-label">color.neutral.100</span></span>
+<span class="ods-item"><span class="ods-swatch" style="background:var(--color-neutral-200)"></span><span class="ods-label">color.neutral.200</span></span>
+<span class="ods-item"><span class="ods-swatch" style="background:var(--color-neutral-300)"></span><span class="ods-label">color.neutral.300</span></span>
+<span class="ods-item"><span class="ods-swatch" style="background:var(--color-neutral-400)"></span><span class="ods-label">color.neutral.400</span></span>
+<span class="ods-item"><span class="ods-swatch" style="background:var(--color-neutral-500)"></span><span class="ods-label">color.neutral.500</span></span>
+<span class="ods-item"><span class="ods-swatch" style="background:var(--color-neutral-600)"></span><span class="ods-label">color.neutral.600</span></span>
+<span class="ods-item"><span class="ods-swatch" style="background:var(--color-neutral-700)"></span><span class="ods-label">color.neutral.700</span></span>
+<span class="ods-item"><span class="ods-swatch" style="background:var(--color-neutral-800)"></span><span class="ods-label">color.neutral.800</span></span>
+<span class="ods-item"><span class="ods-swatch" style="background:var(--color-neutral-900)"></span><span class="ods-label">color.neutral.900</span></span>
+<span class="ods-item"><span class="ods-swatch" style="background:var(--color-neutral-950)"></span><span class="ods-label">color.neutral.950</span></span>
 <span class="ods-item"><span class="ods-swatch" style="background:var(--color-surface-canvas)"></span><span class="ods-label">color.surface.canvas</span></span>
 <span class="ods-item"><span class="ods-swatch" style="background:var(--color-surface-default)"></span><span class="ods-label">color.surface.default</span></span>
 <span class="ods-item"><span class="ods-swatch" style="background:var(--color-surface-raised)"></span><span class="ods-label">color.surface.raised</span></span>
@@ -39,18 +51,6 @@ How color carries action, state and brand.
 <span class="ods-item"><span class="ods-swatch" style="background:var(--color-action-danger-hover)"></span><span class="ods-label">color.action.danger.hover</span></span>
 <span class="ods-item"><span class="ods-swatch" style="background:var(--color-status-info)"></span><span class="ods-label">color.status.info.@</span></span>
 <span class="ods-item"><span class="ods-swatch" style="background:var(--color-status-info-subtle)"></span><span class="ods-label">color.status.info.subtle</span></span>
-<span class="ods-item"><span class="ods-swatch" style="background:var(--color-status-success)"></span><span class="ods-label">color.status.success.@</span></span>
-<span class="ods-item"><span class="ods-swatch" style="background:var(--color-status-success-subtle)"></span><span class="ods-label">color.status.success.subtle</span></span>
-<span class="ods-item"><span class="ods-swatch" style="background:var(--color-status-warning)"></span><span class="ods-label">color.status.warning.@</span></span>
-<span class="ods-item"><span class="ods-swatch" style="background:var(--color-status-warning-subtle)"></span><span class="ods-label">color.status.warning.subtle</span></span>
-<span class="ods-item"><span class="ods-swatch" style="background:var(--color-status-danger)"></span><span class="ods-label">color.status.danger.@</span></span>
-<span class="ods-item"><span class="ods-swatch" style="background:var(--color-status-danger-subtle)"></span><span class="ods-label">color.status.danger.subtle</span></span>
-<span class="ods-item"><span class="ods-swatch" style="background:var(--color-category-1)"></span><span class="ods-label">color.category.1.@</span></span>
-<span class="ods-item"><span class="ods-swatch" style="background:var(--color-category-1-subtle)"></span><span class="ods-label">color.category.1.subtle</span></span>
-<span class="ods-item"><span class="ods-swatch" style="background:var(--color-category-2)"></span><span class="ods-label">color.category.2.@</span></span>
-<span class="ods-item"><span class="ods-swatch" style="background:var(--color-category-2-subtle)"></span><span class="ods-label">color.category.2.subtle</span></span>
-<span class="ods-item"><span class="ods-swatch" style="background:var(--color-category-3)"></span><span class="ods-label">color.category.3.@</span></span>
-<span class="ods-item"><span class="ods-swatch" style="background:var(--color-category-3-subtle)"></span><span class="ods-label">color.category.3.subtle</span></span>
 </div>
 
 <div class="odv-band"><div style="background:var(--color-action-primary);color:#FFFFFF"><b>Action</b>action.primary</div><div style="background:var(--color-text-primary);color:#FFFFFF"><b>Text</b>text.primary</div><div style="background:var(--color-status-success);color:#FFFFFF"><b>Success</b>status.success</div><div style="background:var(--color-status-warning);color:#FFFFFF"><b>Warning</b>status.warning</div><div style="background:var(--color-status-danger);color:#FFFFFF"><b>Danger</b>status.danger</div><div style="background:var(--color-status-info);color:#FFFFFF"><b>Info</b>status.info</div></div>
@@ -83,30 +83,42 @@ Each token points to another token. Values live only on primitives, below.
 
 | Token | Points to, light | Points to, dark |
 | --- | --- | --- |
-| `color.surface.canvas` | `brand-expressive.theme.light.color.surface.canvas` → `color.taupe.light.50` | `brand-expressive.theme.dark.color.surface.canvas` → `color.taupe.dark.0` |
-| `color.surface.default` | `brand-expressive.theme.light.color.surface.default` → `color.taupe.light.0` | `brand-expressive.theme.dark.color.surface.default` → `color.taupe.dark.50` |
-| `color.surface.raised` | `brand-expressive.theme.light.color.surface.raised` → `color.taupe.light.0` | `brand-expressive.theme.dark.color.surface.raised` → `color.taupe.dark.100` |
-| `color.surface.sunken` | `brand-expressive.theme.light.color.surface.sunken` → `color.taupe.light.100` | `brand-expressive.theme.dark.color.surface.sunken` → `color.taupe.dark.100` |
+| `color.neutral.0` | `brand-expressive.theme.light.color.neutral.0` → `color.taupe.light.0` | `brand-expressive.theme.dark.color.neutral.0` → `color.taupe.dark.0` |
+| `color.neutral.50` | `brand-expressive.theme.light.color.neutral.50` → `color.taupe.light.50` | `brand-expressive.theme.dark.color.neutral.50` → `color.taupe.dark.50` |
+| `color.neutral.100` | `brand-expressive.theme.light.color.neutral.100` → `color.taupe.light.100` | `brand-expressive.theme.dark.color.neutral.100` → `color.taupe.dark.100` |
+| `color.neutral.200` | `brand-expressive.theme.light.color.neutral.200` → `color.taupe.light.200` | `brand-expressive.theme.dark.color.neutral.200` → `color.taupe.dark.200` |
+| `color.neutral.300` | `brand-expressive.theme.light.color.neutral.300` → `color.taupe.light.300` | `brand-expressive.theme.dark.color.neutral.300` → `color.taupe.dark.300` |
+| `color.neutral.400` | `brand-expressive.theme.light.color.neutral.400` → `color.taupe.light.400` | `brand-expressive.theme.dark.color.neutral.400` → `color.taupe.dark.400` |
+| `color.neutral.500` | `brand-expressive.theme.light.color.neutral.500` → `color.taupe.light.500` | `brand-expressive.theme.dark.color.neutral.500` → `color.taupe.dark.500` |
+| `color.neutral.600` | `brand-expressive.theme.light.color.neutral.600` → `color.taupe.light.600` | `brand-expressive.theme.dark.color.neutral.600` → `color.taupe.dark.600` |
+| `color.neutral.700` | `brand-expressive.theme.light.color.neutral.700` → `color.taupe.light.700` | `brand-expressive.theme.dark.color.neutral.700` → `color.taupe.dark.700` |
+| `color.neutral.800` | `brand-expressive.theme.light.color.neutral.800` → `color.taupe.light.800` | `brand-expressive.theme.dark.color.neutral.800` → `color.taupe.dark.800` |
+| `color.neutral.900` | `brand-expressive.theme.light.color.neutral.900` → `color.taupe.light.900` | `brand-expressive.theme.dark.color.neutral.900` → `color.taupe.dark.900` |
+| `color.neutral.950` | `brand-expressive.theme.light.color.neutral.950` → `color.taupe.light.950` | `brand-expressive.theme.dark.color.neutral.950` → `color.taupe.dark.950` |
+| `color.surface.canvas` | `brand-expressive.theme.light.color.surface.canvas` → `color.neutral.50` → `brand-expressive.theme.light.color.neutral.50` → `color.taupe.light.50` | `brand-expressive.theme.dark.color.surface.canvas` → `color.neutral.0` → `brand-expressive.theme.dark.color.neutral.0` → `color.taupe.dark.0` |
+| `color.surface.default` | `brand-expressive.theme.light.color.surface.default` → `color.neutral.0` → `brand-expressive.theme.light.color.neutral.0` → `color.taupe.light.0` | `brand-expressive.theme.dark.color.surface.default` → `color.neutral.50` → `brand-expressive.theme.dark.color.neutral.50` → `color.taupe.dark.50` |
+| `color.surface.raised` | `brand-expressive.theme.light.color.surface.raised` → `color.neutral.0` → `brand-expressive.theme.light.color.neutral.0` → `color.taupe.light.0` | `brand-expressive.theme.dark.color.surface.raised` → `color.neutral.100` → `brand-expressive.theme.dark.color.neutral.100` → `color.taupe.dark.100` |
+| `color.surface.sunken` | `brand-expressive.theme.light.color.surface.sunken` → `color.neutral.100` → `brand-expressive.theme.light.color.neutral.100` → `color.taupe.light.100` | `brand-expressive.theme.dark.color.surface.sunken` → `color.neutral.100` → `brand-expressive.theme.dark.color.neutral.100` → `color.taupe.dark.100` |
 | `color.surface.selected` | `brand-expressive.theme.light.color.surface.selected` → `color.pink.light.100` | `brand-expressive.theme.dark.color.surface.selected` → `color.pink.dark.100` |
-| `color.surface.inverse` | `brand-expressive.theme.light.color.surface.inverse` → `color.taupe.light.900` | `brand-expressive.theme.dark.color.surface.inverse` → `color.taupe.dark.900` |
+| `color.surface.inverse` | `brand-expressive.theme.light.color.surface.inverse` → `color.neutral.900` → `brand-expressive.theme.light.color.neutral.900` → `color.taupe.light.900` | `brand-expressive.theme.dark.color.surface.inverse` → `color.neutral.900` → `brand-expressive.theme.dark.color.neutral.900` → `color.taupe.dark.900` |
 | `color.surface.scrim` | `brand-expressive.theme.light.color.surface.scrim` → `color.black.light.scrim` | `brand-expressive.theme.dark.color.surface.scrim` → `color.black.dark.scrim` |
-| `color.text.primary` | `brand-expressive.theme.light.color.text.primary` → `color.taupe.light.900` | `brand-expressive.theme.dark.color.text.primary` → `color.taupe.dark.900` |
-| `color.text.secondary` | `brand-expressive.theme.light.color.text.secondary` → `color.taupe.light.700` | `brand-expressive.theme.dark.color.text.secondary` → `color.taupe.dark.500` |
-| `color.text.muted` | `brand-expressive.theme.light.color.text.muted` → `color.taupe.light.600` | `brand-expressive.theme.dark.color.text.muted` → `color.taupe.dark.400` |
-| `color.text.inverse` | `brand-expressive.theme.light.color.text.inverse` → `color.taupe.light.0` | `brand-expressive.theme.dark.color.text.inverse` → `color.taupe.light.900` |
-| `color.text.on-action` | `brand-expressive.theme.light.color.text.on-action` → `color.taupe.light.0` | `brand-expressive.theme.dark.color.text.on-action` → `color.taupe.light.900` |
+| `color.text.primary` | `brand-expressive.theme.light.color.text.primary` → `color.neutral.900` → `brand-expressive.theme.light.color.neutral.900` → `color.taupe.light.900` | `brand-expressive.theme.dark.color.text.primary` → `color.neutral.900` → `brand-expressive.theme.dark.color.neutral.900` → `color.taupe.dark.900` |
+| `color.text.secondary` | `brand-expressive.theme.light.color.text.secondary` → `color.neutral.700` → `brand-expressive.theme.light.color.neutral.700` → `color.taupe.light.700` | `brand-expressive.theme.dark.color.text.secondary` → `color.neutral.500` → `brand-expressive.theme.dark.color.neutral.500` → `color.taupe.dark.500` |
+| `color.text.muted` | `brand-expressive.theme.light.color.text.muted` → `color.neutral.600` → `brand-expressive.theme.light.color.neutral.600` → `color.taupe.light.600` | `brand-expressive.theme.dark.color.text.muted` → `color.neutral.400` → `brand-expressive.theme.dark.color.neutral.400` → `color.taupe.dark.400` |
+| `color.text.inverse` | `brand-expressive.theme.light.color.text.inverse` → `color.text.on-dark` → `brand-expressive.theme.base.color.text.on-dark` → `color.taupe.light.0` | `brand-expressive.theme.dark.color.text.inverse` → `color.text.on-light` → `brand-expressive.theme.base.color.text.on-light` → `color.taupe.light.900` |
+| `color.text.on-action` | `brand-expressive.theme.light.color.text.on-action` → `color.text.on-dark` → `brand-expressive.theme.base.color.text.on-dark` → `color.taupe.light.0` | `brand-expressive.theme.dark.color.text.on-action` → `color.text.on-light` → `brand-expressive.theme.base.color.text.on-light` → `color.taupe.light.900` |
 | `color.text.link` | `brand-expressive.theme.light.color.text.link` → `color.pink.light.700` | `brand-expressive.theme.dark.color.text.link` → `color.pink.dark.700` |
-| `color.text.on-danger` | `brand-expressive.theme.light.color.text.on-danger` → `color.taupe.light.0` | `brand-expressive.theme.dark.color.text.on-danger` → `color.taupe.light.900` |
+| `color.text.on-danger` | `brand-expressive.theme.light.color.text.on-danger` → `color.text.on-dark` → `brand-expressive.theme.base.color.text.on-dark` → `color.taupe.light.0` | `brand-expressive.theme.dark.color.text.on-danger` → `color.text.on-light` → `brand-expressive.theme.base.color.text.on-light` → `color.taupe.light.900` |
 | `color.text.on-light` | `brand-expressive.theme.base.color.text.on-light` → `color.taupe.light.900` | `brand-expressive.theme.base.color.text.on-light` → `color.taupe.light.900` |
 | `color.text.on-dark` | `brand-expressive.theme.base.color.text.on-dark` → `color.taupe.light.0` | `brand-expressive.theme.base.color.text.on-dark` → `color.taupe.light.0` |
-| `color.border.default` | `brand-expressive.theme.light.color.border.default` → `color.taupe.light.200` | `brand-expressive.theme.dark.color.border.default` → `color.taupe.dark.100` |
-| `color.border.strong` | `brand-expressive.theme.light.color.border.strong` → `color.taupe.light.500` | `brand-expressive.theme.dark.color.border.strong` → `color.taupe.dark.400` |
+| `color.border.default` | `brand-expressive.theme.light.color.border.default` → `color.neutral.200` → `brand-expressive.theme.light.color.neutral.200` → `color.taupe.light.200` | `brand-expressive.theme.dark.color.border.default` → `color.neutral.100` → `brand-expressive.theme.dark.color.neutral.100` → `color.taupe.dark.100` |
+| `color.border.strong` | `brand-expressive.theme.light.color.border.strong` → `color.neutral.500` → `brand-expressive.theme.light.color.neutral.500` → `color.taupe.light.500` | `brand-expressive.theme.dark.color.border.strong` → `color.neutral.400` → `brand-expressive.theme.dark.color.neutral.400` → `color.taupe.dark.400` |
 | `color.border.focus` | `brand-expressive.theme.light.color.border.focus` → `color.pink.light.600` | `brand-expressive.theme.dark.color.border.focus` → `color.pink.dark.700` |
 | `color.border.selected` | `brand-expressive.theme.light.color.border.selected` → `color.pink.light.600` | `brand-expressive.theme.dark.color.border.selected` → `color.pink.dark.700` |
 | `color.action.primary.@` | `brand-expressive.theme.light.color.action.primary.@` → `color.pink.light.600` | `brand-expressive.theme.dark.color.action.primary.@` → `color.pink.dark.700` |
 | `color.action.primary.hover` | `brand-expressive.theme.light.color.action.primary.hover` → `color.pink.light.700` | `brand-expressive.theme.dark.color.action.primary.hover` → `color.pink.dark.800` |
-| `color.action.secondary.@` | `brand-expressive.theme.light.color.action.secondary.@` → `color.taupe.light.0` | `brand-expressive.theme.dark.color.action.secondary.@` → `color.taupe.dark.50` |
-| `color.action.secondary.hover` | `brand-expressive.theme.light.color.action.secondary.hover` → `color.taupe.light.100` | `brand-expressive.theme.dark.color.action.secondary.hover` → `color.taupe.dark.100` |
+| `color.action.secondary.@` | `brand-expressive.theme.light.color.action.secondary.@` → `color.neutral.0` → `brand-expressive.theme.light.color.neutral.0` → `color.taupe.light.0` | `brand-expressive.theme.dark.color.action.secondary.@` → `color.neutral.50` → `brand-expressive.theme.dark.color.neutral.50` → `color.taupe.dark.50` |
+| `color.action.secondary.hover` | `brand-expressive.theme.light.color.action.secondary.hover` → `color.neutral.100` → `brand-expressive.theme.light.color.neutral.100` → `color.taupe.light.100` | `brand-expressive.theme.dark.color.action.secondary.hover` → `color.neutral.100` → `brand-expressive.theme.dark.color.neutral.100` → `color.taupe.dark.100` |
 | `color.action.danger.@` | `brand-expressive.theme.light.color.action.danger.@` → `color.red.light.700` | `brand-expressive.theme.dark.color.action.danger.@` → `color.red.dark.700` |
 | `color.action.danger.hover` | `brand-expressive.theme.light.color.action.danger.hover` → `color.red.light.700` | `brand-expressive.theme.dark.color.action.danger.hover` → `color.red.dark.700` |
 | `color.status.info.@` | `brand-expressive.theme.light.color.status.info.@` → `color.blue.light.700` | `brand-expressive.theme.dark.color.status.info.@` → `color.blue.dark.700` |
@@ -125,11 +137,11 @@ Each token points to another token. Values live only on primitives, below.
 | `color.category.3.subtle` | `brand-expressive.theme.light.color.category.3.subtle` → `color.green.light.100` | `brand-expressive.theme.dark.color.category.3.subtle` → `color.green.dark.100` |
 | `color.category.4.@` | `brand-expressive.theme.light.color.category.4.@` → `color.amber.light.700` | `brand-expressive.theme.dark.color.category.4.@` → `color.amber.dark.700` |
 | `color.category.4.subtle` | `brand-expressive.theme.light.color.category.4.subtle` → `color.amber.light.100` | `brand-expressive.theme.dark.color.category.4.subtle` → `color.amber.dark.100` |
-| `color.category.5.@` | `brand-expressive.theme.light.color.category.5.@` → `color.taupe.light.500` | `brand-expressive.theme.dark.color.category.5.@` → `color.taupe.dark.700` |
-| `color.category.5.subtle` | `brand-expressive.theme.light.color.category.5.subtle` → `color.taupe.light.100` | `brand-expressive.theme.dark.color.category.5.subtle` → `color.taupe.dark.100` |
-| `color.disabled.text` | `brand-expressive.theme.light.color.disabled.text` → `color.taupe.light.500` | `brand-expressive.theme.dark.color.disabled.text` → `color.taupe.dark.500` |
-| `color.disabled.surface` | `brand-expressive.theme.light.color.disabled.surface` → `color.taupe.light.100` | `brand-expressive.theme.dark.color.disabled.surface` → `color.taupe.dark.100` |
-| `color.disabled.border` | `brand-expressive.theme.light.color.disabled.border` → `color.taupe.light.200` | `brand-expressive.theme.dark.color.disabled.border` → `color.taupe.dark.200` |
+| `color.category.5.@` | `brand-expressive.theme.light.color.category.5.@` → `color.neutral.500` → `brand-expressive.theme.light.color.neutral.500` → `color.taupe.light.500` | `brand-expressive.theme.dark.color.category.5.@` → `color.neutral.700` → `brand-expressive.theme.dark.color.neutral.700` → `color.taupe.dark.700` |
+| `color.category.5.subtle` | `brand-expressive.theme.light.color.category.5.subtle` → `color.neutral.100` → `brand-expressive.theme.light.color.neutral.100` → `color.taupe.light.100` | `brand-expressive.theme.dark.color.category.5.subtle` → `color.neutral.100` → `brand-expressive.theme.dark.color.neutral.100` → `color.taupe.dark.100` |
+| `color.disabled.text` | `brand-expressive.theme.light.color.disabled.text` → `color.neutral.500` → `brand-expressive.theme.light.color.neutral.500` → `color.taupe.light.500` | `brand-expressive.theme.dark.color.disabled.text` → `color.neutral.500` → `brand-expressive.theme.dark.color.neutral.500` → `color.taupe.dark.500` |
+| `color.disabled.surface` | `brand-expressive.theme.light.color.disabled.surface` → `color.neutral.100` → `brand-expressive.theme.light.color.neutral.100` → `color.taupe.light.100` | `brand-expressive.theme.dark.color.disabled.surface` → `color.neutral.100` → `brand-expressive.theme.dark.color.neutral.100` → `color.taupe.dark.100` |
+| `color.disabled.border` | `brand-expressive.theme.light.color.disabled.border` → `color.neutral.200` → `brand-expressive.theme.light.color.neutral.200` → `color.taupe.light.200` | `brand-expressive.theme.dark.color.disabled.border` → `color.neutral.200` → `brand-expressive.theme.dark.color.neutral.200` → `color.taupe.dark.200` |
 
 ## Primitives
 
@@ -165,19 +177,27 @@ The raw values the tokens above end at.
 | `color.taupe.dark.0` | #120B09 | <span class="ods-swatch" style="background:#120B09"></span> |
 | `color.taupe.dark.100` | #33241F | <span class="ods-swatch" style="background:#33241F"></span> |
 | `color.taupe.dark.200` | #4D3A33 | <span class="ods-swatch" style="background:#4D3A33"></span> |
+| `color.taupe.dark.300` | #8A6F63 | <span class="ods-swatch" style="background:#8A6F63"></span> |
 | `color.taupe.dark.400` | #B5988A | <span class="ods-swatch" style="background:#B5988A"></span> |
 | `color.taupe.dark.50` | #1F1411 | <span class="ods-swatch" style="background:#1F1411"></span> |
 | `color.taupe.dark.500` | #E2C4B3 | <span class="ods-swatch" style="background:#E2C4B3"></span> |
+| `color.taupe.dark.600` | #EAD0C1 | <span class="ods-swatch" style="background:#EAD0C1"></span> |
 | `color.taupe.dark.700` | #F2DCCF | <span class="ods-swatch" style="background:#F2DCCF"></span> |
+| `color.taupe.dark.800` | #FCEFE6 | <span class="ods-swatch" style="background:#FCEFE6"></span> |
 | `color.taupe.dark.900` | #FFF8F3 | <span class="ods-swatch" style="background:#FFF8F3"></span> |
+| `color.taupe.dark.950` | #FFFFFF | <span class="ods-swatch" style="background:#FFFFFF"></span> |
 | `color.taupe.light.0` | #FFFFFF | <span class="ods-swatch" style="background:#FFFFFF"></span> |
 | `color.taupe.light.100` | #FCEFE6 | <span class="ods-swatch" style="background:#FCEFE6"></span> |
 | `color.taupe.light.200` | #F2DCCF | <span class="ods-swatch" style="background:#F2DCCF"></span> |
+| `color.taupe.light.300` | #E2C4B3 | <span class="ods-swatch" style="background:#E2C4B3"></span> |
+| `color.taupe.light.400` | #B5988A | <span class="ods-swatch" style="background:#B5988A"></span> |
 | `color.taupe.light.50` | #FFF8F3 | <span class="ods-swatch" style="background:#FFF8F3"></span> |
 | `color.taupe.light.500` | #8A6F63 | <span class="ods-swatch" style="background:#8A6F63"></span> |
 | `color.taupe.light.600` | #6B544A | <span class="ods-swatch" style="background:#6B544A"></span> |
 | `color.taupe.light.700` | #4D3A33 | <span class="ods-swatch" style="background:#4D3A33"></span> |
+| `color.taupe.light.800` | #33241F | <span class="ods-swatch" style="background:#33241F"></span> |
 | `color.taupe.light.900` | #1F1411 | <span class="ods-swatch" style="background:#1F1411"></span> |
+| `color.taupe.light.950` | #120B09 | <span class="ods-swatch" style="background:#120B09"></span> |
 
 ## Where it lands
 

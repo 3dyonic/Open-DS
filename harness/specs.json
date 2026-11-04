@@ -390,6 +390,16 @@
       "checks": ["catalogue-built", "schemes-inventory", "schemes-samples", "storybook-renders", "docs-build"]
     },
     {
+      "id": "OD-228",
+      "title": "Neutral as a semantic scale: roles read neutral, neutral points at a gray",
+      "in": [
+        "primitives hold the grays, each a whole ramp; the grammar keeps the menu with each gray's temperature",
+        "color.neutral.0 to 950 is a semantic scale each scheme or brand points at one gray, with why and because",
+        "surfaces, borders, text, secondary and disabled read only color.neutral, never a gray directly"
+      ],
+      "checks": ["neutral-semantic", "semantics-guidance", "docs-build", "storybook-renders"]
+    },
+    {
       "id": "OD-227",
       "title": "Two neutral text tokens: text on a light fill and text on a dark fill",
       "in": [

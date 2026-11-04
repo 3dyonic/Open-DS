@@ -69,8 +69,8 @@ The CSS variable is the key with `/` replaced by `-` and the base `@` dropped. E
 
 | Key | What it controls | Points to, light | Points to, dark |
 | --- | --- | --- | --- |
-| `card/background` | Card fill. | `color.surface.default` → `brand-expressive.theme.light.color.surface.default` → `color.taupe.light.0` | `color.surface.default` → `brand-expressive.theme.dark.color.surface.default` → `color.taupe.dark.50` |
-| `card/border` | Card border. | `color.border.default` → `brand-expressive.theme.light.color.border.default` → `color.taupe.light.200` | `color.border.default` → `brand-expressive.theme.dark.color.border.default` → `color.taupe.dark.100` |
+| `card/background` | Card fill. | `color.surface.default` → `brand-expressive.theme.light.color.surface.default` → `color.neutral.0` → `brand-expressive.theme.light.color.neutral.0` → `color.taupe.light.0` | `color.surface.default` → `brand-expressive.theme.dark.color.surface.default` → `color.neutral.50` → `brand-expressive.theme.dark.color.neutral.50` → `color.taupe.dark.50` |
+| `card/border` | Card border. | `color.border.default` → `brand-expressive.theme.light.color.border.default` → `color.neutral.200` → `brand-expressive.theme.light.color.neutral.200` → `color.taupe.light.200` | `color.border.default` → `brand-expressive.theme.dark.color.border.default` → `color.neutral.100` → `brand-expressive.theme.dark.color.neutral.100` → `color.taupe.dark.100` |
 | `card/radius` | Card corner radius. | `radius.container` → `brand-expressive.theme.base.radius.container` → `radius.24` | same |
 | `card/padding` | Padding inside a card. | `space.inset.container` → `space.32` | same |
 | `card/shadow` | Card shadow. | `elevation.card` → `brand-expressive.theme.light.elevation.card` → `shadow.card` | `elevation.card` → `brand-expressive.theme.dark.elevation.card` → `shadow.card-dark` |

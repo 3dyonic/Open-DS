@@ -258,6 +258,50 @@
             }
           }
         },
+        "neutral": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["description", "steps", "grays"],
+          "description": "The neutral scale and the menu of grays it can point at (OD-228).",
+          "properties": {
+            "description": {
+              "type": "string",
+              "minLength": 1,
+              "description": "How the neutral scale works."
+            },
+            "steps": {
+              "type": "array",
+              "items": { "type": "string" },
+              "description": "The steps of color.neutral."
+            },
+            "grays": {
+              "type": "array",
+              "minItems": 1,
+              "description": "The menu of gray primitives.",
+              "items": {
+                "type": "object",
+                "additionalProperties": false,
+                "required": ["id", "temperature", "description"],
+                "properties": {
+                  "id": {
+                    "type": "string",
+                    "pattern": "^[a-z]+(-[a-z]+)?$",
+                    "description": "The primitive's hue name."
+                  },
+                  "temperature": {
+                    "enum": ["cool", "pure", "warm", "warm-rosy"],
+                    "description": "How warm it is."
+                  },
+                  "description": {
+                    "type": "string",
+                    "minLength": 1,
+                    "description": "What it looks like and what it suits."
+                  }
+                }
+              }
+            }
+          }
+        },
         "tones": {
           "type": "object",
           "additionalProperties": false,
