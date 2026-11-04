@@ -1850,11 +1850,13 @@ export function docsPages(
       (own ? own.prim : primitiveOf(t, row.lookup))?.replace(/^color\./, "") ??
       "";
     const hex = raw.match(/#[0-9a-f]{6,8}/i)?.[0];
-    const shown =
-      `${attr(prim)}${prim && raw ? " · " : ""}${attr(row.part === "Shadow" ? "" : raw)}`.replace(
-        / · $/,
-        "",
-      );
+    // an own token's value: the primitive as a token, its raw value as plain text beside it (OD-234)
+    const shown = row.own
+      ? `${prim ? `<span class="odv-ptok">${attr(prim)}</span><span class="odv-kvsep">:</span>` : ""}<span class="odv-raw">${attr(raw)}</span>`
+      : `${attr(prim)}${prim && raw ? " · " : ""}${attr(row.part === "Shadow" ? "" : raw)}`.replace(
+          / · $/,
+          "",
+        );
     if (row.part === "Shadow")
       return `<span class="odv-tsw"><i class="odv-tlift" style="box-shadow:${attr(raw)}"></i><small>${attr(prim || raw)}</small></span>`;
     if (row.part === "Corner")
