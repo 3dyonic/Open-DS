@@ -32,7 +32,7 @@ export const SHADCN = {
   "sidebar-accent-foreground": "color-text-primary",
   "sidebar-border": "color-border-default",
   "sidebar-ring": "color-border-focus",
-  // Chart series use the category colours: distinct hues that carry no meaning, so no series reads as an error.
+  // Chart series use the category colors: distinct hues that carry no meaning, so no series reads as an error.
   "chart-1": "color-category-1",
   "chart-2": "color-category-2",
   "chart-3": "color-category-3",

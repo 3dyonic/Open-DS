@@ -40,7 +40,7 @@ const HELP = `open-ds: deploy an Open DS scheme as a full design system.
   open-ds context --write              in a project: regenerate context/ from the scheme
   open-ds component <scheme> <id>      what a component and each variant are for, and how this scheme
                                        uses each one (or does not), with its rules
-  open-ds check [dir] [--scheme <id>]  check UI code against the scheme: raw colours and sizes, components it
+  open-ds check [dir] [--scheme <id>]  check UI code against the scheme: raw colors and sizes, components it
                                        does not carry, variants it does not use, and a context/ that no
                                        longer matches the scheme; exits 1 when it finds any
   open-ds copy <scheme> <kind> <text>  check a label or message against the voice; kind: button, error,
@@ -49,7 +49,7 @@ const HELP = `open-ds: deploy an Open DS scheme as a full design system.
   open-ds change <scheme> --token <path> <value>
                                        plan a change: what it reopens, or the contrast it keeps; changes nothing
   open-ds scales <scheme> [--brand <b>] [--mode light|dark] [--hue <h>]
-                                       which tokens land on each colour step, by lane
+                                       which tokens land on each color step, by lane
   open-ds token <scheme> <words>       the tokens and component keys that fit an intent
   open-ds fit <words>                  rank the schemes against a product description
   open-ds create <dir> --scheme <id> [--brand <id>]
@@ -383,11 +383,12 @@ export async function run(argv) {
       );
       return 0;
     }
-    // Which tokens land on each colour step (OD-223), the map the docs and Storybook draw.
+    // Which tokens land on each color step (OD-223), the map the docs and Storybook draw.
     if (cmd === "scales") {
       const { scales } = await import("./scale-map.mjs");
       const [id] = args;
       const data = scales(loadScheme(id ?? ""), {
+        hints: grammar().scopes.find((x) => x.id === "color")?.hints ?? [],
         brand: flag(args, "--brand", undefined),
         mode: flag(args, "--mode", "light"),
         hue: flag(args, "--hue", undefined),
@@ -602,8 +603,8 @@ export async function run(argv) {
           if (plan.kind === "token")
             console.log(
               plan.pass
-                ? "Every colour pair keeps its contrast."
-                : "Some colour pairs would fail.",
+                ? "Every color pair keeps its contrast."
+                : "Some color pairs would fail.",
             );
         });
         return 0;

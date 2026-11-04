@@ -45,7 +45,7 @@ body {
   text-underline-offset: 2px;
 }
 
-/* OD-216: the Open DS introduction at the top of this Storybook, in the Open DS brand. The colours are
+/* OD-216: the Open DS introduction at the top of this Storybook, in the Open DS brand. The colors are
    the --od-* variables from .storybook/brand.ts; only this Storybook shows it, so created projects
    never get them. */
 .odg .about {

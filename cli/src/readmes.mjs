@@ -39,7 +39,7 @@ A concept with variants has a base, \`@\`, beside them: \`color.action.primary.@
 `,
     "primitive/": `# Primitives
 
-The raw options every brand picks from: colour, space, size, radius, border width, font, shadow, duration, easing and opacity. One file per group. Colour has one folder per hue.
+The raw options every brand picks from: color, space, size, radius, border width, font, shadow, duration, easing and opacity. One file per group. Color has one folder per hue.
 
 ## Rules
 
@@ -47,7 +47,7 @@ The raw options every brand picks from: colour, space, size, radius, border widt
 - Values live here and nowhere else.
 - Components and products never read a primitive. They do not ship as CSS variables.
 `,
-    "primitive/color/": `# Colour primitives
+    "primitive/color/": `# Color primitives
 
 One file per hue. Each hue has a light ramp and a dark ramp: the same steps, tuned for light and for dark backgrounds.
 

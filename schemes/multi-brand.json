@@ -18,84 +18,49 @@
   "scenarios": [
     {
       "text": "A customer signs up for a plan on the Birch site, then manages it in the shared account area.",
-      "follows": [
-        "scenarios.q1",
-        "scenarios.q2",
-        "business.q2"
-      ]
+      "follows": ["scenarios.q1", "scenarios.q2", "business.q2"]
     },
     {
       "text": "A product team launches a fourth brand by adding brand primitives, without touching components.",
-      "follows": [
-        "business.q2",
-        "team.q2"
-      ]
+      "follows": ["business.q2", "team.q2"]
     }
   ],
   "voice": {
     "summary": {
       "text": "A plain shared voice. Each brand adds its own tone on top, never its own structure.",
-      "follows": [
-        "voice.definition",
-        "voice.count"
-      ]
+      "follows": ["voice.definition", "voice.count"]
     },
     "principles": [
       {
         "text": "Shared structure: object, state, next step.",
-        "follows": [
-          "voice.definition"
-        ]
+        "follows": ["voice.definition"]
       },
       {
         "text": "Brand tone lives in headlines and marketing copy, not in errors.",
-        "follows": [
-          "voice.lands",
-          "voice.count"
-        ]
+        "follows": ["voice.lands", "voice.count"]
       },
       {
         "text": "Errors and confirmations read the same in every brand.",
-        "follows": [
-          "voice.definition"
-        ]
+        "follows": ["voice.definition"]
       }
     ],
     "words": {
-      "use": [
-        "Get started",
-        "Plan",
-        "Order"
-      ],
-      "avoid": [
-        "Brand-specific words in errors",
-        "Jargon"
-      ],
-      "follows": [
-        "voice.definition"
-      ]
+      "use": ["Get started", "Plan", "Order"],
+      "avoid": ["Brand-specific words in errors", "Jargon"],
+      "follows": ["voice.definition"]
     },
     "brands": {
       "aster": {
         "text": "Calm and precise.",
-        "follows": [
-          "voice.count",
-          "theming.definition"
-        ]
+        "follows": ["voice.count", "theming.definition"]
       },
       "birch": {
         "text": "Friendly and helpful.",
-        "follows": [
-          "voice.count",
-          "theming.definition"
-        ]
+        "follows": ["voice.count", "theming.definition"]
       },
       "coral": {
         "text": "Upbeat and energetic.",
-        "follows": [
-          "voice.count",
-          "theming.definition"
-        ]
+        "follows": ["voice.count", "theming.definition"]
       }
     }
   },
@@ -114,78 +79,54 @@
           "variant": {
             "primary": {
               "use": "One clear action per view.",
-              "because": [
-                "outcomes.q1"
-              ]
+              "because": ["outcomes.q1"]
             },
             "secondary": {
               "use": "The alternative that steps back, and the first step of a delete.",
-              "because": [
-                "color.count",
-                "outcomes.q2"
-              ]
+              "because": ["color.count", "outcomes.q2"]
             },
             "danger": {
               "use": "The confirm of a delete, the same red in every brand: danger never follows the brand.",
-              "because": [
-                "outcomes.q2"
-              ]
+              "because": ["outcomes.q2"]
             },
             "ghost": {
               "use": "Row actions, with a word.",
-              "because": [
-                "human.q2"
-              ]
+              "because": ["human.q2"]
             }
           },
           "size": {
             "default": {
               "use": "Every button, at touch size: customers are often on phones.",
-              "because": [
-                "accessibility.values"
-              ]
+              "because": ["accessibility.values"]
             },
             "compact": {
               "not_used": true,
               "why": "Customers are often on phones: no compact controls.",
-              "because": [
-                "accessibility.values"
-              ]
+              "because": ["accessibility.values"]
             },
             "icon": {
               "not_used": true,
               "why": "Customers use any device and hover hints never show on touch, so every button has a word.",
-              "because": [
-                "accessibility.values",
-                "iconography.roles"
-              ]
+              "because": ["accessibility.values", "iconography.roles"]
             },
             "large": {
               "not_used": true,
               "why": "One clear action per view, at the normal size, in every brand.",
-              "because": [
-                "outcomes.q1"
-              ]
+              "because": ["outcomes.q1"]
             }
           },
           "state": {
             "hover": {
               "use": "Moderate feedback, shared across brands.",
-              "because": [
-                "motion.values"
-              ]
+              "because": ["motion.values"]
             },
             "focus": {
               "use": "Follows the brand, but always shows.",
-              "because": [
-                "people.q2"
-              ]
+              "because": ["people.q2"]
             },
             "disabled": {
               "use": "Only with a visible reason next to it.",
-              "because": [
-                "people.q2"
-              ]
+              "because": ["people.q2"]
             }
           }
         }
@@ -229,23 +170,16 @@
           "orientation": {
             "vertical": {
               "use": "Sign-up and checkout forms: the label above, in every brand.",
-              "because": [
-                "people.q2",
-                "scenarios.q1"
-              ]
+              "because": ["people.q2", "scenarios.q1"]
             },
             "horizontal": {
               "not_used": true,
               "why": "Customers sign up on phones: labels stay above.",
-              "because": [
-                "accessibility.values"
-              ]
+              "because": ["accessibility.values"]
             },
             "responsive": {
               "use": "Account settings: stacked on phones, label beside on laptops.",
-              "because": [
-                "scenarios.q1"
-              ]
+              "because": ["scenarios.q1"]
             }
           }
         }
@@ -265,36 +199,24 @@
           "tone": {
             "neutral": {
               "use": "Trial: the plan works and billing has not started.",
-              "because": [
-                "accessibility.count"
-              ]
+              "because": ["accessibility.count"]
             },
             "info": {
               "use": "Renews in 3 days: a payment is coming; nothing has gone wrong.",
-              "because": [
-                "accessibility.count"
-              ]
+              "because": ["accessibility.count"]
             },
             "success": {
               "use": "Active: the plan is paid and running.",
-              "because": [
-                "accessibility.count"
-              ]
+              "because": ["accessibility.count"]
             },
             "warning": {
               "not_used": true,
               "why": "No plan or order state sits between running and failed; a coming renewal is news, not a warning.",
-              "because": [
-                "content.q1",
-                "accessibility.count"
-              ]
+              "because": ["content.q1", "accessibility.count"]
             },
             "danger": {
               "use": "Card declined: the payment failed, so the plan will stop.",
-              "because": [
-                "accessibility.count",
-                "outcomes.q2"
-              ]
+              "because": ["accessibility.count", "outcomes.q2"]
             }
           }
         }
@@ -326,38 +248,28 @@
           "variant": {
             "default": {
               "use": "Account-area menu items, the same in every brand.",
-              "because": [
-                "theming.definition"
-              ]
+              "because": ["theming.definition"]
             },
             "outline": {
               "not_used": true,
               "why": "Brands change color and corners, not the structure of the menu.",
-              "because": [
-                "theming.definition"
-              ]
+              "because": ["theming.definition"]
             }
           },
           "size": {
             "default": {
               "use": "Every account-area menu item.",
-              "because": [
-                "spacing.count"
-              ]
+              "because": ["spacing.count"]
             },
             "sm": {
               "not_used": true,
               "why": "One density across brands.",
-              "because": [
-                "spacing.count"
-              ]
+              "because": ["spacing.count"]
             },
             "lg": {
               "not_used": true,
               "why": "One density across brands.",
-              "because": [
-                "spacing.count"
-              ]
+              "because": ["spacing.count"]
             }
           }
         }
@@ -370,10 +282,7 @@
             "default": {
               "not_used": true,
               "why": "Alerts here are for billing problems; news is a badge or a toast.",
-              "because": [
-                "content.q1",
-                "outcomes.q1"
-              ]
+              "because": ["content.q1", "outcomes.q1"]
             },
             "destructive": {
               "use": "A billing problem such as a declined card: plain and specific, the same in every brand.",
@@ -393,22 +302,15 @@
           "tone": {
             "neutral": {
               "use": "A shared line with brand words.",
-              "because": [
-                "voice.definition"
-              ]
+              "because": ["voice.definition"]
             },
             "success": {
               "use": "Brand tone allowed: Aster calm, Birch friendly, Coral upbeat.",
-              "because": [
-                "voice.count"
-              ]
+              "because": ["voice.count"]
             },
             "danger": {
               "use": "Shared across brands: plain and specific.",
-              "because": [
-                "voice.definition",
-                "voice.values"
-              ]
+              "because": ["voice.definition", "voice.values"]
             }
           }
         }
@@ -429,16 +331,11 @@
             "default": {
               "not_used": true,
               "why": "Shared structure in every brand: no brand pictures in empty states.",
-              "because": [
-                "voice.definition",
-                "theming.definition"
-              ]
+              "because": ["voice.definition", "theming.definition"]
             },
             "icon": {
               "use": "An icon in a small tile, from the one outline set every brand shares.",
-              "because": [
-                "iconography.definition"
-              ]
+              "because": ["iconography.definition"]
             }
           }
         }
@@ -510,33 +407,21 @@
           "align": {
             "inline-start": {
               "use": "A currency sign or a search icon before the text, from the outline set every brand shares.",
-              "because": [
-                "iconography.definition",
-                "content.q1"
-              ]
+              "because": ["iconography.definition", "content.q1"]
             },
             "inline-end": {
               "use": "A unit after the value, the same in every brand.",
-              "because": [
-                "content.q1",
-                "naming.lands"
-              ]
+              "because": ["content.q1", "naming.lands"]
             },
             "block-start": {
               "not_used": true,
               "why": "Sign-up and account fields stay one line; field puts the label above, outside the input.",
-              "because": [
-                "content.q1",
-                "people.q2"
-              ]
+              "because": ["content.q1", "people.q2"]
             },
             "block-end": {
               "not_used": true,
               "why": "Sign-up and account fields stay one line; field shows the hint and error below.",
-              "because": [
-                "content.q1",
-                "people.q2"
-              ]
+              "because": ["content.q1", "people.q2"]
             }
           }
         }
@@ -548,38 +433,26 @@
           "variant": {
             "default": {
               "use": "Settings inside a card or menu, which already gives the frame.",
-              "because": [
-                "elevation.definition"
-              ]
+              "because": ["elevation.definition"]
             },
             "outline": {
               "use": "Account settings on their own page, with a border and the corner each brand sets.",
-              "because": [
-                "content.q1",
-                "shape.definition"
-              ]
+              "because": ["content.q1", "shape.definition"]
             },
             "muted": {
               "use": "The current setting, with a soft fill from the brand.",
-              "because": [
-                "theming.definition"
-              ]
+              "because": ["theming.definition"]
             }
           },
           "size": {
             "default": {
               "use": "Every row, at touch size: customers are often on phones.",
-              "because": [
-                "accessibility.values"
-              ]
+              "because": ["accessibility.values"]
             },
             "sm": {
               "not_used": true,
               "why": "One density across brands, at touch size.",
-              "because": [
-                "spacing.count",
-                "accessibility.values"
-              ]
+              "because": ["spacing.count", "accessibility.values"]
             }
           }
         }
@@ -616,38 +489,27 @@
             "default": {
               "not_used": true,
               "why": "Toggles that sit together, like monthly or yearly prices, use toggle-group.",
-              "because": [
-                "components.definition"
-              ]
+              "because": ["components.definition"]
             },
             "outline": {
               "use": "A single toggle, with a border so it reads as a control in every brand.",
-              "because": [
-                "human.q2",
-                "theming.definition"
-              ]
+              "because": ["human.q2", "theming.definition"]
             }
           },
           "size": {
             "default": {
               "use": "Every toggle, at touch size: customers are often on phones.",
-              "because": [
-                "accessibility.values"
-              ]
+              "because": ["accessibility.values"]
             },
             "sm": {
               "not_used": true,
               "why": "Customers are often on phones: no compact controls.",
-              "because": [
-                "accessibility.values"
-              ]
+              "because": ["accessibility.values"]
             },
             "lg": {
               "not_used": true,
               "why": "One density across brands.",
-              "because": [
-                "spacing.count"
-              ]
+              "because": ["spacing.count"]
             }
           }
         }
@@ -661,150 +523,80 @@
       {
         "id": "attachment",
         "why": "Multi-brand draws on core, content and media families, not conversation. It admits only families in its roles. Its only messages go to support through a textarea.",
-        "instead": [
-          "textarea"
-        ],
-        "because": [
-          "components.roles",
-          "components.definition"
-        ]
+        "instead": ["textarea"],
+        "because": ["components.roles", "components.definition"]
       },
       {
         "id": "bubble",
         "why": "Multi-brand draws on core, content and media families, not conversation. It admits only families in its roles. Its only messages go to support through a textarea.",
-        "instead": [
-          "textarea"
-        ],
-        "because": [
-          "components.roles",
-          "components.definition"
-        ]
+        "instead": ["textarea"],
+        "because": ["components.roles", "components.definition"]
       },
       {
         "id": "chart",
         "why": "Multi-brand draws on core, content and media families, not data. It admits only families in its roles. Its scenarios are signing up and managing a plan.",
-        "instead": [
-          "card",
-          "badge"
-        ],
-        "because": [
-          "components.roles",
-          "components.definition"
-        ]
+        "instead": ["card", "badge"],
+        "because": ["components.roles", "components.definition"]
       },
       {
         "id": "command",
         "why": "Command suits expert users who jump anywhere by typing, not people who visit now and then. Multi-brand's customers return now and then, and most visits last a few minutes.",
-        "instead": [
-          "navigation-menu",
-          "dropdown-menu"
-        ],
-        "because": [
-          "tasks.q2",
-          "scenarios.q2"
-        ]
+        "instead": ["navigation-menu", "dropdown-menu"],
+        "because": ["tasks.q2", "scenarios.q2"]
       },
       {
         "id": "context-menu",
         "why": "Right-click menus suit power users, and people who don't know to right-click never find them. Multi-brand's customers see it fresh each time. Plan actions sit in a visible menu.",
-        "instead": [
-          "dropdown-menu"
-        ],
-        "because": [
-          "tasks.q2",
-          "human.q2"
-        ]
+        "instead": ["dropdown-menu"],
+        "because": ["tasks.q2", "human.q2"]
       },
       {
         "id": "data-table",
         "why": "Multi-brand draws on core, content and media families, not data. It avoids tools staff use all day and points those to Dense data.",
-        "instead": [
-          "card",
-          "tabs"
-        ],
-        "because": [
-          "components.roles",
-          "components.definition"
-        ]
+        "instead": ["card", "tabs"],
+        "because": ["components.roles", "components.definition"]
       },
       {
         "id": "hover-card",
         "why": "Hover cards need a mouse, and touch screens have no hover. Multi-brand's customers use any device. A popover opens plan details by tap.",
-        "instead": [
-          "popover"
-        ],
-        "because": [
-          "accessibility.values",
-          "scenarios.q1"
-        ]
+        "instead": ["popover"],
+        "because": ["accessibility.values", "scenarios.q1"]
       },
       {
         "id": "marker",
         "why": "Multi-brand draws on core, content and media families, not conversation. It admits only families in its roles. Its only messages go to support through a textarea.",
-        "instead": [
-          "separator"
-        ],
-        "because": [
-          "components.roles",
-          "components.definition"
-        ]
+        "instead": ["separator"],
+        "because": ["components.roles", "components.definition"]
       },
       {
         "id": "menubar",
         "why": "Menubar suits dense desktop tools, not website navigation or phones. Brand sites use navigation-menu, and customers sign up on phones.",
-        "instead": [
-          "navigation-menu",
-          "dropdown-menu"
-        ],
-        "because": [
-          "scenarios.q1",
-          "people.q1"
-        ]
+        "instead": ["navigation-menu", "dropdown-menu"],
+        "because": ["scenarios.q1", "people.q1"]
       },
       {
         "id": "message",
         "why": "Multi-brand draws on core, content and media families, not conversation. It admits only families in its roles. Its only messages go to support through a textarea.",
-        "instead": [
-          "textarea"
-        ],
-        "because": [
-          "components.roles",
-          "components.definition"
-        ]
+        "instead": ["textarea"],
+        "because": ["components.roles", "components.definition"]
       },
       {
         "id": "message-scroller",
         "why": "Multi-brand draws on core, content and media families, not conversation. It admits only families in its roles. Its only messages go to support through a textarea.",
-        "instead": [
-          "textarea"
-        ],
-        "because": [
-          "components.roles",
-          "components.definition"
-        ]
+        "instead": ["textarea"],
+        "because": ["components.roles", "components.definition"]
       },
       {
         "id": "resizable",
         "why": "Resizable suits desktop tools where people size panels, not phones. Multi-brand avoids tools staff use all day, and customers sign up on phones.",
-        "instead": [
-          "sidebar",
-          "sheet"
-        ],
-        "because": [
-          "scenarios.q1",
-          "people.q1"
-        ]
+        "instead": ["sidebar", "sheet"],
+        "because": ["scenarios.q1", "people.q1"]
       },
       {
         "id": "tooltip",
         "why": "Customers use any device, and on touch screens hover hints never show; a popover explains a fee instead.",
-        "instead": [
-          "popover"
-        ],
-        "because": [
-          "accessibility.values",
-          "iconography.roles"
-        ]
+        "instead": ["popover"],
+        "because": ["accessibility.values", "iconography.roles"]
       }
     ]
   },
@@ -889,51 +681,27 @@
       ],
       "rows": [
         {
-          "cells": [
-            "Standard plan",
-            "14 Mar 2024",
-            "12.00"
-          ],
+          "cells": ["Standard plan", "14 Mar 2024", "12.00"],
           "status": "Active"
         },
         {
-          "cells": [
-            "Cloud storage",
-            "2 Jan 2025",
-            "3.00"
-          ],
+          "cells": ["Cloud storage", "2 Jan 2025", "3.00"],
           "status": "Renews in 3 days"
         },
         {
-          "cells": [
-            "Device cover",
-            "20 May 2025",
-            "5.00"
-          ],
+          "cells": ["Device cover", "20 May 2025", "5.00"],
           "status": "Card declined"
         },
         {
-          "cells": [
-            "Music add-on",
-            "1 Jun 2025",
-            "4.00"
-          ],
+          "cells": ["Music add-on", "1 Jun 2025", "4.00"],
           "status": "Trial"
         },
         {
-          "cells": [
-            "Family member",
-            "9 Feb 2025",
-            "6.00"
-          ],
+          "cells": ["Family member", "9 Feb 2025", "6.00"],
           "status": "Active"
         },
         {
-          "cells": [
-            "Extra data",
-            "18 Apr 2025",
-            "2.00"
-          ],
+          "cells": ["Extra data", "18 Apr 2025", "2.00"],
           "status": "Active"
         }
       ]
@@ -970,17 +738,10 @@
     ],
     "select": {
       "label": "Plan",
-      "options": [
-        "Basic",
-        "Standard",
-        "Plus"
-      ],
+      "options": ["Basic", "Standard", "Plus"],
       "value": "Standard"
     },
-    "switches": [
-      "Renew automatically",
-      "Paperless invoices"
-    ],
+    "switches": ["Renew automatically", "Paperless invoices"],
     "messages": {
       "success": "Your plan is active.",
       "error": {
@@ -1020,10 +781,7 @@
     ],
     "menu": {
       "trigger": "Plan actions",
-      "items": [
-        "Change plan",
-        "Download invoice"
-      ],
+      "items": ["Change plan", "Download invoice"],
       "destructive": "Cancel plan"
     },
     "icon_action": "Download invoice"
@@ -1071,624 +829,463 @@
       "question": "business.q2",
       "option": "many",
       "why": "Three brands share one system today, more tomorrow.",
-      "because": [
-        "business.q1"
-      ]
+      "because": ["business.q1"]
     },
     {
       "question": "people.q1",
       "option": "customers",
       "why": "Customers who chose one of our brands.",
-      "because": [
-        "business.q1"
-      ]
+      "because": ["business.q1"]
     },
     {
       "question": "people.q2",
       "option": "aa",
       "why": "AA in every brand.",
-      "because": [
-        "people.q1"
-      ]
+      "because": ["people.q1"]
     },
     {
       "question": "content.q1",
       "option": "forms",
       "why": "Product pages, sign-up and account forms.",
-      "because": [
-        "business.q1"
-      ]
+      "because": ["business.q1"]
     },
     {
       "question": "content.q2",
       "option": "moderate",
       "why": "A moderate amount per screen.",
-      "because": [
-        "content.q1"
-      ]
+      "because": ["content.q1"]
     },
     {
       "question": "tasks.q1",
       "option": "complete",
       "why": "Customers sign up and buy.",
-      "because": [
-        "business.q1"
-      ]
+      "because": ["business.q1"]
     },
     {
       "question": "tasks.q2",
       "option": "sometimes",
       "why": "Customers return now and then.",
-      "because": [
-        "people.q1"
-      ]
+      "because": ["people.q1"]
     },
     {
       "question": "human.q1",
       "option": "effort",
       "why": "Low effort, whichever brand they see.",
-      "because": [
-        "people.q1"
-      ]
+      "because": ["people.q1"]
     },
     {
       "question": "human.q2",
       "option": "fresh",
       "why": "Customers see it fresh each time.",
-      "because": [
-        "tasks.q2"
-      ]
+      "because": ["tasks.q2"]
     },
     {
       "question": "outcomes.q1",
       "option": "completion",
       "why": "Finished sign-ups and orders.",
-      "because": [
-        "tasks.q1"
-      ]
+      "because": ["tasks.q1"]
     },
     {
       "question": "outcomes.q2",
       "option": "off-brand",
       "why": "A page that looks like the wrong brand loses trust.",
-      "because": [
-        "business.q2"
-      ]
+      "because": ["business.q2"]
     },
     {
       "question": "brand.q1",
       "option": "neutral",
-      "why": "A neutral base each brand can colour.",
-      "because": [
-        "business.q2"
-      ]
+      "why": "A neutral base each brand can color.",
+      "because": ["business.q2"]
     },
     {
       "question": "brand.q2",
       "option": "present",
       "why": "Each brand is clearly present.",
-      "because": [
-        "business.q2"
-      ]
+      "because": ["business.q2"]
     },
     {
       "question": "scenarios.q1",
       "option": "anywhere",
       "why": "Customers sign up on phones and manage plans on laptops.",
-      "because": [
-        "people.q1"
-      ]
+      "because": ["people.q1"]
     },
     {
       "question": "scenarios.q2",
       "option": "short",
       "why": "Most visits are a few minutes: sign up, check, change.",
-      "because": [
-        "tasks.q1"
-      ]
+      "because": ["tasks.q1"]
     },
     {
       "question": "team.q1",
       "option": "platform",
       "why": "A platform team serves three product teams.",
-      "because": [
-        "business.q2"
-      ]
+      "because": ["business.q2"]
     },
     {
       "question": "team.q2",
       "option": "monthly",
       "why": "Brands ship every month.",
-      "because": [
-        "business.q2"
-      ]
+      "because": ["business.q2"]
     },
     {
       "question": "typography.roles",
       "option": "core",
       "why": "One set of roles across brands.",
-      "because": [
-        "business.q2"
-      ]
+      "because": ["business.q2"]
     },
     {
       "question": "typography.count",
       "option": "some",
       "why": "One size per kind of text suits every brand font.",
-      "because": [
-        "business.q2"
-      ]
+      "because": ["business.q2"]
     },
     {
       "question": "typography.definition",
       "option": "ratio-proportional",
       "why": "Ratios work with every brand font.",
-      "because": [
-        "business.q2"
-      ]
+      "because": ["business.q2"]
     },
     {
       "question": "typography.values",
       "option": "regular",
       "why": "Regular body size suits all brands.",
-      "because": [
-        "brand.q1"
-      ]
+      "because": ["brand.q1"]
     },
     {
       "question": "typography.lands",
       "option": "forms",
       "why": "Sign-up and account forms carry most text.",
-      "because": [
-        "tasks.q1"
-      ]
+      "because": ["tasks.q1"]
     },
     {
       "question": "color.roles",
       "option": "core-brand",
       "why": "Each brand brings its own accent ramp.",
-      "because": [
-        "business.q2"
-      ]
+      "because": ["business.q2"]
     },
     {
       "question": "color.count",
       "option": "three",
       "why": "Primary, secondary and ghost in every brand.",
-      "because": [
-        "tasks.q1"
-      ]
+      "because": ["tasks.q1"]
     },
     {
       "question": "color.definition",
       "option": "ramp-per-brand",
       "why": "Shared neutrals; each brand sets its own ramp.",
-      "because": [
-        "business.q2"
-      ]
+      "because": ["business.q2"]
     },
     {
       "question": "color.values",
       "option": "balanced",
       "why": "Balanced, so any brand hue works.",
-      "because": [
-        "brand.q1"
-      ]
+      "because": ["brand.q1"]
     },
     {
       "question": "color.lands",
       "option": "brand-moments",
       "why": "Brand color shows on actions and headlines.",
-      "because": [
-        "brand.q2"
-      ]
+      "because": ["brand.q2"]
     },
     {
       "question": "spacing.roles",
       "option": "gap-inset-row",
       "why": "Account tables need a row height.",
-      "because": [
-        "content.q1"
-      ]
+      "because": ["content.q1"]
     },
     {
       "question": "spacing.count",
       "option": "one",
       "why": "One density across brands.",
-      "because": [
-        "business.q2"
-      ]
+      "because": ["business.q2"]
     },
     {
       "question": "spacing.definition",
       "option": "fine",
       "why": "Every brand shares one set of steps, so they sit on a 4px grid: small enough for account forms, with big ones for product pages.",
-      "because": [
-        "business.q2"
-      ]
+      "because": ["business.q2"]
     },
     {
       "question": "spacing.values",
       "option": "comfortable",
       "why": "Comfortable spacing in every brand.",
-      "because": [
-        "content.q2"
-      ]
+      "because": ["content.q2"]
     },
     {
       "question": "spacing.lands",
       "option": "fields",
       "why": "Space matters most between form fields.",
-      "because": [
-        "tasks.q1"
-      ]
+      "because": ["tasks.q1"]
     },
     {
       "question": "shape.roles",
       "option": "control-badge-container",
       "why": "Each brand sets three corners.",
-      "because": [
-        "business.q2"
-      ]
+      "because": ["business.q2"]
     },
     {
       "question": "shape.count",
       "option": "three",
       "why": "Control, badge and container.",
-      "because": [
-        "shape.roles"
-      ]
+      "because": ["shape.roles"]
     },
     {
       "question": "shape.definition",
       "option": "per-brand",
       "why": "Each brand sets its own corners.",
-      "because": [
-        "business.q2"
-      ]
+      "because": ["business.q2"]
     },
     {
       "question": "shape.values",
       "option": "rounded",
       "why": "Rounded by default; each brand sets its own corner.",
-      "because": [
-        "business.q2"
-      ]
+      "because": ["business.q2"]
     },
     {
       "question": "shape.lands",
       "option": "buttons-badges",
       "why": "Corners are the most visible brand difference.",
-      "because": [
-        "brand.q2"
-      ]
+      "because": ["brand.q2"]
     },
     {
       "question": "elevation.roles",
       "option": "cards-too",
       "why": "Cards lift slightly to group offers.",
-      "because": [
-        "elevation.definition"
-      ]
+      "because": ["elevation.definition"]
     },
     {
       "question": "elevation.count",
       "option": "two",
       "why": "One shadow for cards, one for overlays.",
-      "because": [
-        "elevation.roles"
-      ]
+      "because": ["elevation.roles"]
     },
     {
       "question": "elevation.definition",
       "option": "cards",
       "why": "Cards group plans and offers.",
-      "because": [
-        "content.q1"
-      ]
+      "because": ["content.q1"]
     },
     {
       "question": "elevation.values",
       "option": "soft",
       "why": "Soft shadows fit every brand.",
-      "because": [
-        "brand.q1"
-      ]
+      "because": ["brand.q1"]
     },
     {
       "question": "elevation.lands",
       "option": "cards-menus",
       "why": "Cards, menus and dialogs rise.",
-      "because": [
-        "elevation.roles"
-      ]
+      "because": ["elevation.roles"]
     },
     {
       "question": "motion.roles",
       "option": "feedback-guidance",
       "why": "Feedback and guidance through sign-up.",
-      "because": [
-        "tasks.q1"
-      ]
+      "because": ["tasks.q1"]
     },
     {
       "question": "motion.count",
       "option": "two",
       "why": "One speed for feedback, one for panels.",
-      "because": [
-        "motion.roles"
-      ]
+      "because": ["motion.roles"]
     },
     {
       "question": "motion.definition",
       "option": "standard",
       "why": "A standard ease-out across brands.",
-      "because": [
-        "business.q2"
-      ]
+      "because": ["business.q2"]
     },
     {
       "question": "motion.values",
       "option": "moderate",
       "why": "Moderate speed across brands.",
-      "because": [
-        "brand.q1"
-      ]
+      "because": ["brand.q1"]
     },
     {
       "question": "motion.lands",
       "option": "state-panels",
       "why": "State changes and panels move.",
-      "because": [
-        "motion.roles"
-      ]
+      "because": ["motion.roles"]
     },
     {
       "question": "iconography.roles",
       "option": "actions-status-nav",
       "why": "Icons for actions, status and navigation.",
-      "because": [
-        "people.q1"
-      ]
+      "because": ["people.q1"]
     },
     {
       "question": "iconography.count",
       "option": "one",
       "why": "One size next to text.",
-      "because": [
-        "iconography.values"
-      ]
+      "because": ["iconography.values"]
     },
     {
       "question": "iconography.definition",
       "option": "outline",
       "why": "One outline set for every brand.",
-      "because": [
-        "business.q2"
-      ]
+      "because": ["business.q2"]
     },
     {
       "question": "iconography.values",
       "option": "match-text",
       "why": "Icons match the text.",
-      "because": [
-        "business.q2"
-      ]
+      "because": ["business.q2"]
     },
     {
       "question": "iconography.lands",
       "option": "navigation",
       "why": "Icons help most in navigation.",
-      "because": [
-        "people.q1"
-      ]
+      "because": ["people.q1"]
     },
     {
       "question": "theming.roles",
       "option": "mode-brand",
       "why": "Brand and mode both change.",
-      "because": [
-        "business.q2"
-      ]
+      "because": ["business.q2"]
     },
     {
       "question": "theming.count",
       "option": "several",
       "why": "Three brands in light and dark: six themes.",
-      "because": [
-        "business.q2",
-        "theming.values"
-      ]
+      "because": ["business.q2", "theming.values"]
     },
     {
       "question": "theming.definition",
       "option": "brand-modes",
       "why": "Brands are theme modes over shared semantics.",
-      "because": [
-        "business.q2"
-      ]
+      "because": ["business.q2"]
     },
     {
       "question": "theming.values",
       "option": "light-dark",
       "why": "Light and dark ship for every brand.",
-      "because": [
-        "business.q2"
-      ]
+      "because": ["business.q2"]
     },
     {
       "question": "theming.lands",
       "option": "colors-type-shape",
       "why": "A brand switch changes colors, fonts and corners.",
-      "because": [
-        "theming.roles"
-      ]
+      "because": ["theming.roles"]
     },
     {
       "question": "accessibility.roles",
       "option": "plus-pressed",
       "why": "Pressed for touch.",
-      "because": [
-        "accessibility.values"
-      ]
+      "because": ["accessibility.values"]
     },
     {
       "question": "accessibility.count",
       "option": "color-word",
       "why": "Brand colors vary, so meaning needs a word.",
-      "because": [
-        "business.q2"
-      ]
+      "because": ["business.q2"]
     },
     {
       "question": "accessibility.definition",
       "option": "aa",
       "why": "AA in every brand and mode.",
-      "because": [
-        "people.q2"
-      ]
+      "because": ["people.q2"]
     },
     {
       "question": "accessibility.values",
       "option": "touch",
       "why": "Customers sign up on phones.",
-      "because": [
-        "scenarios.q1"
-      ]
+      "because": ["scenarios.q1"]
     },
     {
       "question": "accessibility.lands",
       "option": "brand-color",
       "why": "Brand colors must pass in every mode.",
-      "because": [
-        "business.q2"
-      ]
+      "because": ["business.q2"]
     },
     {
       "question": "naming.roles",
       "option": "tokens-keys",
       "why": "Components get their own keys, shared by every brand.",
-      "because": [
-        "business.q2"
-      ]
+      "because": ["business.q2"]
     },
     {
       "question": "naming.count",
       "option": "three",
       "why": "Primitives, semantics and component keys.",
-      "because": [
-        "team.q2"
-      ]
+      "because": ["team.q2"]
     },
     {
       "question": "naming.definition",
       "option": "by-role",
       "why": "Role names stay the same in every brand.",
-      "because": [
-        "business.q2"
-      ]
+      "because": ["business.q2"]
     },
     {
       "question": "naming.values",
       "option": "kebab-paths",
       "why": "Lowercase paths read the same everywhere.",
-      "because": [
-        "team.q1"
-      ]
+      "because": ["team.q1"]
     },
     {
       "question": "naming.lands",
       "option": "keys",
       "why": "Components never change; brand primitives do.",
-      "because": [
-        "business.q2"
-      ]
+      "because": ["business.q2"]
     },
     {
       "question": "voice.roles",
       "option": "ui-marketing",
       "why": "Each brand has headlines on top of shared UI copy.",
-      "because": [
-        "business.q2"
-      ]
+      "because": ["business.q2"]
     },
     {
       "question": "voice.count",
       "option": "per-brand",
       "why": "A shared core, with a tone per brand.",
-      "because": [
-        "business.q2"
-      ]
+      "because": ["business.q2"]
     },
     {
       "question": "voice.definition",
       "option": "shared-core",
       "why": "Errors and confirmations are shared; brand tone sits on top.",
-      "because": [
-        "business.q2",
-        "team.q1"
-      ]
+      "because": ["business.q2", "team.q1"]
     },
     {
       "question": "voice.values",
       "option": "plain",
       "why": "The shared core is plain and direct.",
-      "because": [
-        "brand.q1"
-      ]
+      "because": ["brand.q1"]
     },
     {
       "question": "voice.lands",
       "option": "headlines",
       "why": "Brand tone shows in headlines and buttons.",
-      "because": [
-        "brand.q2"
-      ]
+      "because": ["brand.q2"]
     },
     {
       "question": "components.roles",
       "option": "core-content",
       "why": "Product teams build sign-up and account forms, plus product pages with questions and faces.",
-      "because": [
-        "content.q1",
-        "team.q1"
-      ]
+      "because": ["content.q1", "team.q1"]
     },
     {
       "question": "components.count",
       "option": "some",
       "why": "Three product teams find their next parts ready, kept by one platform team.",
-      "because": [
-        "team.q1",
-        "team.q2"
-      ]
+      "because": ["team.q1", "team.q2"]
     },
     {
       "question": "components.definition",
       "option": "family",
       "why": "Product teams find a whole family ready instead of asking one by one.",
-      "because": [
-        "team.q1",
-        "team.q2"
-      ]
+      "because": ["team.q1", "team.q2"]
     },
     {
       "question": "components.values",
       "option": "some",
       "why": "Variants for emphasis and size let each brand feel present without new components.",
-      "because": [
-        "brand.q2",
-        "outcomes.q2"
-      ]
+      "because": ["brand.q2", "outcomes.q2"]
     },
     {
       "question": "components.lands",
       "option": "sign-up-account",
       "why": "Most components sit in sign-up and account pages.",
-      "because": [
-        "content.q1",
-        "tasks.q1"
-      ]
+      "because": ["content.q1", "tasks.q1"]
     }
   ],
   "usage": [
@@ -1697,74 +1294,56 @@
       "use": "type.title in the brand font",
       "not": "A brand-specific style",
       "why": "Roles stay shared; only the brand font changes.",
-      "because": [
-        "typography.roles",
-        "theming.definition"
-      ]
+      "because": ["typography.roles", "theming.definition"]
     },
     {
       "situation": "number-in-table",
       "use": "type.body",
       "not": "A mono font",
       "why": "Numbers read like text in every brand.",
-      "because": [
-        "content.q1"
-      ]
+      "because": ["content.q1"]
     },
     {
       "situation": "paragraph",
       "use": "type.body",
       "not": "type.caption",
       "why": "Regular body size suits every brand.",
-      "because": [
-        "typography.values"
-      ]
+      "because": ["typography.values"]
     },
     {
       "situation": "field-label",
       "use": "type.label",
       "not": "type.caption",
       "why": "Labels stay readable in every brand.",
-      "because": [
-        "people.q2"
-      ]
+      "because": ["people.q2"]
     },
     {
       "situation": "selected-row",
       "use": "color.surface.selected (from the brand)",
       "not": "A fixed blue",
       "why": "Selection follows the brand color.",
-      "because": [
-        "theming.definition"
-      ]
+      "because": ["theming.definition"]
     },
     {
       "situation": "error-message",
       "use": "color.status.danger and a sentence",
       "not": "The brand color",
       "why": "Status colors are shared, never branded.",
-      "because": [
-        "accessibility.count",
-        "outcomes.q2"
-      ]
+      "because": ["accessibility.count", "outcomes.q2"]
     },
     {
       "situation": "link",
       "use": "color.text.link (from the brand)",
       "not": "A fixed blue",
       "why": "Links follow the brand.",
-      "because": [
-        "theming.definition"
-      ]
+      "because": ["theming.definition"]
     },
     {
       "situation": "status-label",
       "use": "Badge with a word",
       "not": "A brand color as status",
       "why": "Brand hues vary, so meaning needs a word.",
-      "because": [
-        "accessibility.count"
-      ],
+      "because": ["accessibility.count"],
       "uses": [
         {
           "component": "badge"
@@ -1776,111 +1355,84 @@
       "use": "space.gap.default",
       "not": "Brand-specific spacing",
       "why": "Spacing is shared across brands.",
-      "because": [
-        "spacing.count"
-      ]
+      "because": ["spacing.count"]
     },
     {
       "situation": "between-sections",
       "use": "space.gap.section and cards",
       "not": "Lines",
       "why": "Cards group offers in every brand.",
-      "because": [
-        "elevation.definition"
-      ]
+      "because": ["elevation.definition"]
     },
     {
       "situation": "table-row",
       "use": "size.row (comfortable)",
       "not": "A compact row",
       "why": "Comfortable rows in every brand.",
-      "because": [
-        "spacing.values"
-      ]
+      "because": ["spacing.values"]
     },
     {
       "situation": "control-corner",
       "use": "radius.control (set by the brand)",
       "not": "A hard-coded radius",
       "why": "Each brand sets its own corner through the theme.",
-      "because": [
-        "shape.values",
-        "theming.definition"
-      ]
+      "because": ["shape.values", "theming.definition"]
     },
     {
       "situation": "status-shape",
       "use": "radius.badge (set by the brand)",
       "not": "A hard-coded shape",
       "why": "The brand sets the badge shape.",
-      "because": [
-        "theming.definition"
-      ]
+      "because": ["theming.definition"]
     },
     {
       "situation": "card",
       "use": "elevation.card",
       "not": "A border only",
       "why": "Cards lift slightly to group offers.",
-      "because": [
-        "elevation.roles"
-      ]
+      "because": ["elevation.roles"]
     },
     {
       "situation": "menu-or-dialog",
       "use": "elevation.overlay and a dimmed page",
       "not": "No shadow",
       "why": "Same overlay in every brand.",
-      "because": [
-        "elevation.lands"
-      ]
+      "because": ["elevation.lands"]
     },
     {
       "situation": "hover-feedback",
       "use": "motion.duration.feedback (moderate)",
       "not": "Brand-specific motion",
       "why": "Motion is shared across brands.",
-      "because": [
-        "motion.values"
-      ]
+      "because": ["motion.values"]
     },
     {
       "situation": "reduced-motion",
       "use": "Reduced motion",
       "not": "Full motion",
       "why": "Motion is reduced, not removed.",
-      "because": [
-        "motion.roles"
-      ]
+      "because": ["motion.roles"]
     },
     {
       "situation": "icon-alone",
       "use": "Not used: always add a word; a popover explains a fee",
       "not": "An icon button with a hover hint",
       "why": "On touch screens hover hints never show; a word says what will happen.",
-      "because": [
-        "accessibility.values",
-        "iconography.roles"
-      ]
+      "because": ["accessibility.values", "iconography.roles"]
     },
     {
       "situation": "dark-mode",
       "use": "The dark mode of the active brand",
       "not": "One dark theme for all brands",
       "why": "Every brand ships light and dark.",
-      "because": [
-        "theming.values",
-        "theming.definition"
-      ]
+      "because": ["theming.values", "theming.definition"]
     },
     {
       "situation": "keyboard-focus",
       "use": "button/focus-ring (from the brand)",
       "not": "Removing the outline",
       "why": "Focus follows the brand but always shows.",
-      "because": [
-        "people.q2"
-      ],
+      "because": ["people.q2"],
       "uses": [
         {
           "component": "button",
@@ -1894,18 +1446,14 @@
       "use": "size.control.default (touch)",
       "not": "A compact control",
       "why": "Customers are often on phones.",
-      "because": [
-        "accessibility.values"
-      ]
+      "because": ["accessibility.values"]
     },
     {
       "situation": "commit-action",
       "use": "Button primary, one per view",
       "not": "Two primaries",
       "why": "One clear action per view.",
-      "because": [
-        "outcomes.q1"
-      ],
+      "because": ["outcomes.q1"],
       "uses": [
         {
           "component": "button",
@@ -1919,9 +1467,7 @@
       "use": "Button secondary",
       "not": "A second primary",
       "why": "The alternative steps back.",
-      "because": [
-        "color.count"
-      ],
+      "because": ["color.count"],
       "uses": [
         {
           "component": "button",
@@ -1935,9 +1481,7 @@
       "use": "Button secondary, then confirm with Button danger",
       "not": "Button primary",
       "why": "Confirm before destroying data.",
-      "because": [
-        "outcomes.q2"
-      ],
+      "because": ["outcomes.q2"],
       "uses": [
         {
           "component": "button",
@@ -1956,9 +1500,7 @@
       "use": "Button ghost with a word",
       "not": "An icon alone",
       "why": "A word says what will happen.",
-      "because": [
-        "human.q2"
-      ],
+      "because": ["human.q2"],
       "uses": [
         {
           "component": "button",
@@ -1972,19 +1514,14 @@
       "use": "The closest semantic token, then ask for a new one",
       "not": "A raw value or a brand primitive in the component",
       "why": "A raw value shows the same in every brand, so it breaks the theme.",
-      "because": [
-        "naming.lands",
-        "theming.definition"
-      ]
+      "because": ["naming.lands", "theming.definition"]
     },
     {
       "situation": "button-label",
       "use": "A shared verb; the brand may choose the headline verb",
       "not": "Brand slang on account actions",
       "why": "Shared labels keep the account area the same in every brand.",
-      "because": [
-        "voice.definition"
-      ],
+      "because": ["voice.definition"],
       "example": "Get started"
     },
     {
@@ -1992,10 +1529,7 @@
       "use": "Shared across brands: plain and specific",
       "not": "Brand tone in errors",
       "why": "Errors read the same in every brand, so support can help anyone.",
-      "because": [
-        "voice.definition",
-        "voice.values"
-      ],
+      "because": ["voice.definition", "voice.values"],
       "example": "Your card was declined. Try another card or contact your bank."
     },
     {
@@ -2003,9 +1537,7 @@
       "use": "Brand tone allowed: Aster calm, Birch friendly, Coral upbeat",
       "not": "The same flat line in every brand",
       "why": "Success is a safe moment for brand tone.",
-      "because": [
-        "voice.count"
-      ],
+      "because": ["voice.count"],
       "example": "Aster: Your plan is active. · Birch: You're all set! · Coral: Let's go, your plan is live."
     },
     {
@@ -2013,9 +1545,7 @@
       "use": "Shared structure, brand words",
       "not": "A different structure per brand",
       "why": "The structure is the shared core; words carry the brand.",
-      "because": [
-        "voice.definition"
-      ],
+      "because": ["voice.definition"],
       "example": "No orders yet. Your first order will appear here.",
       "uses": [
         {
@@ -2028,9 +1558,7 @@
       "use": "Shared across brands: plain and specific",
       "not": "Brand tone when something is lost",
       "why": "Loss is never the moment for personality.",
-      "because": [
-        "voice.definition"
-      ],
+      "because": ["voice.definition"],
       "example": "Cancel your plan? It stays active until the end of the month."
     },
     {
@@ -2038,9 +1566,7 @@
       "use": "Brand tone in the first headline only",
       "not": "Brand tone in every line",
       "why": "One headline carries the brand; the rest stays shared.",
-      "because": [
-        "voice.lands"
-      ],
+      "because": ["voice.lands"],
       "example": "Birch: Hi! Let's set up your plan."
     },
     {
@@ -2048,16 +1574,13 @@
       "use": "a component from the inventory with brand tokens",
       "not": "a component made for one brand",
       "why": "Brands change primitives, never components; one brand-only part breaks the shared library.",
-      "because": [
-        "brand.q1",
-        "outcomes.q2"
-      ]
+      "because": ["brand.q1", "outcomes.q2"]
     }
   ],
   "tokens": {
     "primitive": {
       "color": {
-        "$description": "Colour options: raw hue ramps. Each hue has a light ramp and a dark ramp (the same steps tuned for dark backgrounds). Steps only: each theme decides its own base (@). Themes pick from these; components never read them.",
+        "$description": "Color options: raw hue ramps. Each hue has a light ramp and a dark ramp (the same steps tuned for dark backgrounds). Steps only: each theme decides its own base (@). Themes pick from these; components never read them.",
         "slate-deep": {
           "$type": "color",
           "$description": "The slate-deep hue: a light ramp, a dark ramp and its base value.",
@@ -2473,7 +1996,7 @@
             },
             "100": {
               "$type": "color",
-              "$value": "#DFF5E2"
+              "$value": "#DBF7DF"
             },
             "200": {
               "$type": "color",
@@ -2562,7 +2085,13 @@
             "open-ds": {
               "generated": "OD-223",
               "light": {
-                "key": "#1F7A3A"
+                "key": "#1F7A3A",
+                "adjust": {
+                  "100": {
+                    "C": 0.008,
+                    "why": "This step is the soft background of status messages in light mode and the status text in dark mode. As generated, the text looked white on dark backgrounds, so the step got a little more color, and blue and red a touch darker, until the color showed. (OD-231)"
+                  }
+                }
               },
               "dark": {
                 "key": "#5CC283"
@@ -2580,7 +2109,7 @@
             },
             "100": {
               "$type": "color",
-              "$value": "#FAEBDA"
+              "$value": "#FEE8CF"
             },
             "200": {
               "$type": "color",
@@ -2669,7 +2198,14 @@
             "open-ds": {
               "generated": "OD-223",
               "light": {
-                "key": "#8A5600"
+                "key": "#8A5600",
+                "adjust": {
+                  "100": {
+                    "L": -0.005,
+                    "C": 0.013,
+                    "why": "This step is the soft background of status messages in light mode and the status text in dark mode. As generated, the text looked white on dark backgrounds, so the step got a little more color, and blue and red a touch darker, until the color showed. (OD-231)"
+                  }
+                }
               },
               "dark": {
                 "key": "#F2B84B"
@@ -2687,7 +2223,7 @@
             },
             "100": {
               "$type": "color",
-              "$value": "#FEE9E7"
+              "$value": "#FFDBD8"
             },
             "200": {
               "$type": "color",
@@ -2776,7 +2312,14 @@
             "open-ds": {
               "generated": "OD-223",
               "light": {
-                "key": "#C42B2B"
+                "key": "#C42B2B",
+                "adjust": {
+                  "100": {
+                    "L": -0.03,
+                    "C": 0.017,
+                    "why": "This step is the soft background of status messages in light mode and the status text in dark mode. As generated, the text looked white on dark backgrounds, so the step got a little more color, and blue and red a touch darker, until the color showed. (OD-231)"
+                  }
+                }
               },
               "dark": {
                 "key": "#F28B8B"
@@ -2808,7 +2351,7 @@
             },
             "100": {
               "$type": "color",
-              "$value": "#DEEAFE"
+              "$value": "#D3E4FF"
             },
             "200": {
               "$type": "color",
@@ -2897,7 +2440,14 @@
             "open-ds": {
               "generated": "OD-223",
               "light": {
-                "key": "#083C93"
+                "key": "#083C93",
+                "adjust": {
+                  "100": {
+                    "L": -0.02,
+                    "C": 0.011,
+                    "why": "This step is the soft background of status messages in light mode and the status text in dark mode. As generated, the text looked white on dark backgrounds, so the step got a little more color, and blue and red a touch darker, until the color showed. (OD-231)"
+                  }
+                }
               },
               "dark": {
                 "key": "#8AB4F8"
@@ -3081,12 +2631,7 @@
       "easing": {
         "standard": {
           "$type": "cubicBezier",
-          "$value": [
-            0.2,
-            0,
-            0,
-            1
-          ],
+          "$value": [0.2, 0, 0, 1],
           "$description": "The easing for feedback transitions."
         }
       },
@@ -3150,7 +2695,7 @@
         "label": "Aster",
         "description": "Calm and precise: teal, Inter, small corners.",
         "theme": {
-          "$description": "The Aster theme: what each brand-dependent semantic key picks, in light and dark, plus mode-free picks (fonts, corners) in base. Info uses blue, kept apart from the brand colour so it never reads as an action. Categories 1 to 5 are teal, purple, orange, blue, green: distinct hues for tags and chart series, with no meaning. Disabled uses the neutral slate.",
+          "$description": "The Aster theme: what each brand-dependent semantic key picks, in light and dark, plus mode-free picks (fonts, corners) in base. Info uses blue, kept apart from the brand color so it never reads as an action. Categories 1 to 5 are teal, purple, orange, blue, green: distinct hues for tags and chart series, with no meaning. Disabled uses the neutral slate.",
           "base": {
             "radius": {
               "control": {
@@ -3229,7 +2774,7 @@
                 },
                 "info-on-dark": {
                   "$type": "color",
-                  "$value": "{color.blue.light.50}",
+                  "$value": "{color.blue.light.100}",
                   "$description": "info text on a dark info fill, in either mode."
                 },
                 "success-on-light": {
@@ -3239,7 +2784,7 @@
                 },
                 "success-on-dark": {
                   "$type": "color",
-                  "$value": "{color.green.light.50}",
+                  "$value": "{color.green.light.100}",
                   "$description": "success text on a dark success fill, in either mode."
                 },
                 "warning-on-light": {
@@ -3249,7 +2794,7 @@
                 },
                 "warning-on-dark": {
                   "$type": "color",
-                  "$value": "{color.amber.light.50}",
+                  "$value": "{color.amber.light.100}",
                   "$description": "warning text on a dark warning fill, in either mode."
                 },
                 "danger-on-light": {
@@ -3259,7 +2804,7 @@
                 },
                 "danger-on-dark": {
                   "$type": "color",
-                  "$value": "{color.red.light.50}",
+                  "$value": "{color.red.light.100}",
                   "$description": "danger text on a dark danger fill, in either mode."
                 }
               }
@@ -3995,10 +3540,7 @@
             "gray": "slate-deep",
             "temperature": "cool",
             "why": "A cool, firm gray stays out of the way of every brand's accent.",
-            "because": [
-              "color.values",
-              "color.definition"
-            ]
+            "because": ["color.values", "color.definition"]
           }
         }
       },
@@ -4006,7 +3548,7 @@
         "label": "Birch",
         "description": "Friendly and helpful: violet, Plus Jakarta Sans, soft corners.",
         "theme": {
-          "$description": "The Birch theme: what each brand-dependent semantic key picks, in light and dark, plus mode-free picks (fonts, corners) in base. Info uses blue, kept apart from the brand colour so it never reads as an action. Categories 1 to 5 are teal, purple, orange, blue, green: distinct hues for tags and chart series, with no meaning. Disabled uses the neutral slate.",
+          "$description": "The Birch theme: what each brand-dependent semantic key picks, in light and dark, plus mode-free picks (fonts, corners) in base. Info uses blue, kept apart from the brand color so it never reads as an action. Categories 1 to 5 are teal, purple, orange, blue, green: distinct hues for tags and chart series, with no meaning. Disabled uses the neutral slate.",
           "base": {
             "radius": {
               "control": {
@@ -4085,7 +3627,7 @@
                 },
                 "info-on-dark": {
                   "$type": "color",
-                  "$value": "{color.blue.light.50}",
+                  "$value": "{color.blue.light.100}",
                   "$description": "info text on a dark info fill, in either mode."
                 },
                 "success-on-light": {
@@ -4095,7 +3637,7 @@
                 },
                 "success-on-dark": {
                   "$type": "color",
-                  "$value": "{color.green.light.50}",
+                  "$value": "{color.green.light.100}",
                   "$description": "success text on a dark success fill, in either mode."
                 },
                 "warning-on-light": {
@@ -4105,7 +3647,7 @@
                 },
                 "warning-on-dark": {
                   "$type": "color",
-                  "$value": "{color.amber.light.50}",
+                  "$value": "{color.amber.light.100}",
                   "$description": "warning text on a dark warning fill, in either mode."
                 },
                 "danger-on-light": {
@@ -4115,7 +3657,7 @@
                 },
                 "danger-on-dark": {
                   "$type": "color",
-                  "$value": "{color.red.light.50}",
+                  "$value": "{color.red.light.100}",
                   "$description": "danger text on a dark danger fill, in either mode."
                 }
               }
@@ -4851,10 +4393,7 @@
             "gray": "slate-deep",
             "temperature": "cool",
             "why": "A cool, firm gray stays out of the way of every brand's accent.",
-            "because": [
-              "color.values",
-              "color.definition"
-            ]
+            "because": ["color.values", "color.definition"]
           }
         }
       },
@@ -4862,7 +4401,7 @@
         "label": "Coral",
         "description": "Upbeat and energetic: coral orange, Poppins, pill controls.",
         "theme": {
-          "$description": "The Coral theme: what each brand-dependent semantic key picks, in light and dark, plus mode-free picks (fonts, corners) in base. Info uses blue, kept apart from the brand colour so it never reads as an action. Categories 1 to 5 are teal, purple, orange, blue, green: distinct hues for tags and chart series, with no meaning. Disabled uses the neutral slate.",
+          "$description": "The Coral theme: what each brand-dependent semantic key picks, in light and dark, plus mode-free picks (fonts, corners) in base. Info uses blue, kept apart from the brand color so it never reads as an action. Categories 1 to 5 are teal, purple, orange, blue, green: distinct hues for tags and chart series, with no meaning. Disabled uses the neutral slate.",
           "base": {
             "radius": {
               "control": {
@@ -4941,7 +4480,7 @@
                 },
                 "info-on-dark": {
                   "$type": "color",
-                  "$value": "{color.blue.light.50}",
+                  "$value": "{color.blue.light.100}",
                   "$description": "info text on a dark info fill, in either mode."
                 },
                 "success-on-light": {
@@ -4951,7 +4490,7 @@
                 },
                 "success-on-dark": {
                   "$type": "color",
-                  "$value": "{color.green.light.50}",
+                  "$value": "{color.green.light.100}",
                   "$description": "success text on a dark success fill, in either mode."
                 },
                 "warning-on-light": {
@@ -4961,7 +4500,7 @@
                 },
                 "warning-on-dark": {
                   "$type": "color",
-                  "$value": "{color.amber.light.50}",
+                  "$value": "{color.amber.light.100}",
                   "$description": "warning text on a dark warning fill, in either mode."
                 },
                 "danger-on-light": {
@@ -4971,7 +4510,7 @@
                 },
                 "danger-on-dark": {
                   "$type": "color",
-                  "$value": "{color.red.light.50}",
+                  "$value": "{color.red.light.100}",
                   "$description": "danger text on a dark danger fill, in either mode."
                 }
               }
@@ -5715,10 +5254,7 @@
             "gray": "slate-deep",
             "temperature": "cool",
             "why": "A cool, firm gray stays out of the way of every brand's accent.",
-            "because": [
-              "color.values",
-              "color.definition"
-            ]
+            "because": ["color.values", "color.definition"]
           }
         }
       }
@@ -6185,7 +5721,7 @@
           },
           "selected": {
             "$type": "color",
-            "$description": "The edge that marks a selected item, so selection is never colour alone.",
+            "$description": "The edge that marks a selected item, so selection is never color alone.",
             "$value": "{theme.color.border.selected}"
           }
         },
@@ -6338,7 +5874,7 @@
               "$value": "{theme.color.category.5.subtle}"
             }
           },
-          "$description": "Identity colours for tags, labels and chart series. They tell items apart and carry no meaning."
+          "$description": "Identity colors for tags, labels and chart series. They tell items apart and carry no meaning."
         },
         "disabled": {
           "$description": "The shared look of controls that cannot be used right now.",

@@ -105,15 +105,15 @@ The canvas, then the surfaces content sits on, in aster-light and aster-dark and
 
 </div>
 
-## Status colours in use
+## Status colors in use
 
-Each status label always gets the same colour, with its dot, so colour is never the only cue. The ratio is the status colour on its subtle fill, computed from the tokens.
+Each status label always gets the same color, with its dot, so color is never the only cue. The ratio is the status color on its subtle fill, computed from the tokens.
 
 <div class="odv-brandset" data-for-brand="aster">
 
 <p class="odv-brandname">Aster</p>
 
-<div class="odv-card"><div class="odv-status"><div><span class="odv-badge odv-t-success">Active</span></div><div class="odv-alert odv-t-success"><b>Active.</b> The plan is paid and running.</div><div><span class="odv-ratio">aster-light 4.7:1</span> <span class="odv-ratio">aster-dark 7.1:1</span></div></div><div class="odv-status"><div><span class="odv-badge odv-t-info">Renews in 3 days</span></div><div class="odv-alert odv-t-info"><b>Renews in 3 days.</b> A payment is coming: news, nothing has gone wrong.</div><div><span class="odv-ratio">aster-light 8.3:1</span> <span class="odv-ratio">aster-dark 7.5:1</span></div></div><div class="odv-status"><div><span class="odv-badge odv-t-danger">Card declined</span></div><div class="odv-alert odv-t-danger"><b>Card declined.</b> The payment failed, so the plan will stop.</div><div><span class="odv-ratio">aster-light 4.8:1</span> <span class="odv-ratio">aster-dark 6.9:1</span></div></div></div>
+<div class="odv-card"><div class="odv-status"><div><span class="odv-badge odv-t-success">Active</span></div><div class="odv-alert odv-t-success"><b>Active.</b> The plan is paid and running.</div><div><span class="odv-ratio">aster-light 4.7:1</span> <span class="odv-ratio">aster-dark 7.1:1</span></div></div><div class="odv-status"><div><span class="odv-badge odv-t-info">Renews in 3 days</span></div><div class="odv-alert odv-t-info"><b>Renews in 3 days.</b> A payment is coming: news, nothing has gone wrong.</div><div><span class="odv-ratio">aster-light 7.8:1</span> <span class="odv-ratio">aster-dark 7.5:1</span></div></div><div class="odv-status"><div><span class="odv-badge odv-t-danger">Card declined</span></div><div class="odv-alert odv-t-danger"><b>Card declined.</b> The payment failed, so the plan will stop.</div><div><span class="odv-ratio">aster-light 4.4:1</span> <span class="odv-ratio">aster-dark 6.9:1</span></div></div></div>
 
 </div>
 
@@ -121,7 +121,7 @@ Each status label always gets the same colour, with its dot, so colour is never 
 
 <p class="odv-brandname">Birch</p>
 
-<div class="odv-card"><div class="odv-status"><div><span class="odv-badge odv-t-success">Active</span></div><div class="odv-alert odv-t-success"><b>Active.</b> The plan is paid and running.</div><div><span class="odv-ratio">birch-light 4.7:1</span> <span class="odv-ratio">birch-dark 7.1:1</span></div></div><div class="odv-status"><div><span class="odv-badge odv-t-info">Renews in 3 days</span></div><div class="odv-alert odv-t-info"><b>Renews in 3 days.</b> A payment is coming: news, nothing has gone wrong.</div><div><span class="odv-ratio">birch-light 8.3:1</span> <span class="odv-ratio">birch-dark 7.5:1</span></div></div><div class="odv-status"><div><span class="odv-badge odv-t-danger">Card declined</span></div><div class="odv-alert odv-t-danger"><b>Card declined.</b> The payment failed, so the plan will stop.</div><div><span class="odv-ratio">birch-light 4.8:1</span> <span class="odv-ratio">birch-dark 6.9:1</span></div></div></div>
+<div class="odv-card"><div class="odv-status"><div><span class="odv-badge odv-t-success">Active</span></div><div class="odv-alert odv-t-success"><b>Active.</b> The plan is paid and running.</div><div><span class="odv-ratio">birch-light 4.7:1</span> <span class="odv-ratio">birch-dark 7.1:1</span></div></div><div class="odv-status"><div><span class="odv-badge odv-t-info">Renews in 3 days</span></div><div class="odv-alert odv-t-info"><b>Renews in 3 days.</b> A payment is coming: news, nothing has gone wrong.</div><div><span class="odv-ratio">birch-light 7.8:1</span> <span class="odv-ratio">birch-dark 7.5:1</span></div></div><div class="odv-status"><div><span class="odv-badge odv-t-danger">Card declined</span></div><div class="odv-alert odv-t-danger"><b>Card declined.</b> The payment failed, so the plan will stop.</div><div><span class="odv-ratio">birch-light 4.4:1</span> <span class="odv-ratio">birch-dark 6.9:1</span></div></div></div>
 
 </div>
 
@@ -129,7 +129,7 @@ Each status label always gets the same colour, with its dot, so colour is never 
 
 <p class="odv-brandname">Coral</p>
 
-<div class="odv-card"><div class="odv-status"><div><span class="odv-badge odv-t-success">Active</span></div><div class="odv-alert odv-t-success"><b>Active.</b> The plan is paid and running.</div><div><span class="odv-ratio">coral-light 4.7:1</span> <span class="odv-ratio">coral-dark 7.1:1</span></div></div><div class="odv-status"><div><span class="odv-badge odv-t-info">Renews in 3 days</span></div><div class="odv-alert odv-t-info"><b>Renews in 3 days.</b> A payment is coming: news, nothing has gone wrong.</div><div><span class="odv-ratio">coral-light 8.3:1</span> <span class="odv-ratio">coral-dark 7.5:1</span></div></div><div class="odv-status"><div><span class="odv-badge odv-t-danger">Card declined</span></div><div class="odv-alert odv-t-danger"><b>Card declined.</b> The payment failed, so the plan will stop.</div><div><span class="odv-ratio">coral-light 4.8:1</span> <span class="odv-ratio">coral-dark 6.9:1</span></div></div></div>
+<div class="odv-card"><div class="odv-status"><div><span class="odv-badge odv-t-success">Active</span></div><div class="odv-alert odv-t-success"><b>Active.</b> The plan is paid and running.</div><div><span class="odv-ratio">coral-light 4.7:1</span> <span class="odv-ratio">coral-dark 7.1:1</span></div></div><div class="odv-status"><div><span class="odv-badge odv-t-info">Renews in 3 days</span></div><div class="odv-alert odv-t-info"><b>Renews in 3 days.</b> A payment is coming: news, nothing has gone wrong.</div><div><span class="odv-ratio">coral-light 7.8:1</span> <span class="odv-ratio">coral-dark 7.5:1</span></div></div><div class="odv-status"><div><span class="odv-badge odv-t-danger">Card declined</span></div><div class="odv-alert odv-t-danger"><b>Card declined.</b> The payment failed, so the plan will stop.</div><div><span class="odv-ratio">coral-light 4.4:1</span> <span class="odv-ratio">coral-dark 6.9:1</span></div></div></div>
 
 </div>
 
@@ -182,13 +182,13 @@ Each token points to another token. Values live only on primitives, below.
 | `color.text.on-light` | `aster.theme.base.color.text.on-light` → `color.slate-deep.light.900` | `aster.theme.base.color.text.on-light` → `color.slate-deep.light.900` |
 | `color.text.on-dark` | `aster.theme.base.color.text.on-dark` → `color.slate-deep.light.0` | `aster.theme.base.color.text.on-dark` → `color.slate-deep.light.0` |
 | `color.text.info-on-light` | `aster.theme.base.color.text.info-on-light` → `color.blue.light.800` | `aster.theme.base.color.text.info-on-light` → `color.blue.light.800` |
-| `color.text.info-on-dark` | `aster.theme.base.color.text.info-on-dark` → `color.blue.light.50` | `aster.theme.base.color.text.info-on-dark` → `color.blue.light.50` |
+| `color.text.info-on-dark` | `aster.theme.base.color.text.info-on-dark` → `color.blue.light.100` | `aster.theme.base.color.text.info-on-dark` → `color.blue.light.100` |
 | `color.text.success-on-light` | `aster.theme.base.color.text.success-on-light` → `color.green.light.800` | `aster.theme.base.color.text.success-on-light` → `color.green.light.800` |
-| `color.text.success-on-dark` | `aster.theme.base.color.text.success-on-dark` → `color.green.light.50` | `aster.theme.base.color.text.success-on-dark` → `color.green.light.50` |
+| `color.text.success-on-dark` | `aster.theme.base.color.text.success-on-dark` → `color.green.light.100` | `aster.theme.base.color.text.success-on-dark` → `color.green.light.100` |
 | `color.text.warning-on-light` | `aster.theme.base.color.text.warning-on-light` → `color.amber.light.800` | `aster.theme.base.color.text.warning-on-light` → `color.amber.light.800` |
-| `color.text.warning-on-dark` | `aster.theme.base.color.text.warning-on-dark` → `color.amber.light.50` | `aster.theme.base.color.text.warning-on-dark` → `color.amber.light.50` |
+| `color.text.warning-on-dark` | `aster.theme.base.color.text.warning-on-dark` → `color.amber.light.100` | `aster.theme.base.color.text.warning-on-dark` → `color.amber.light.100` |
 | `color.text.danger-on-light` | `aster.theme.base.color.text.danger-on-light` → `color.red.light.800` | `aster.theme.base.color.text.danger-on-light` → `color.red.light.800` |
-| `color.text.danger-on-dark` | `aster.theme.base.color.text.danger-on-dark` → `color.red.light.50` | `aster.theme.base.color.text.danger-on-dark` → `color.red.light.50` |
+| `color.text.danger-on-dark` | `aster.theme.base.color.text.danger-on-dark` → `color.red.light.100` | `aster.theme.base.color.text.danger-on-dark` → `color.red.light.100` |
 | `color.border.default` | `aster.theme.light.color.border.default` → `color.neutral.200` → `aster.theme.light.color.neutral.200` → `color.slate-deep.light.200` | `aster.theme.dark.color.border.default` → `color.neutral.100` → `aster.theme.dark.color.neutral.100` → `color.slate-deep.dark.100` |
 | `color.border.strong` | `aster.theme.light.color.border.strong` → `color.neutral.500` → `aster.theme.light.color.neutral.500` → `color.slate-deep.light.500` | `aster.theme.dark.color.border.strong` → `color.neutral.400` → `aster.theme.dark.color.neutral.400` → `color.slate-deep.dark.400` |
 | `color.border.focus` | `aster.theme.light.color.border.focus` → `color.teal.light.600` | `aster.theme.dark.color.border.focus` → `color.teal.dark.600` |
@@ -258,13 +258,13 @@ Each token points to another token. Values live only on primitives, below.
 | `color.text.on-light` | `birch.theme.base.color.text.on-light` → `color.slate-deep.light.900` | `birch.theme.base.color.text.on-light` → `color.slate-deep.light.900` |
 | `color.text.on-dark` | `birch.theme.base.color.text.on-dark` → `color.slate-deep.light.0` | `birch.theme.base.color.text.on-dark` → `color.slate-deep.light.0` |
 | `color.text.info-on-light` | `birch.theme.base.color.text.info-on-light` → `color.blue.light.800` | `birch.theme.base.color.text.info-on-light` → `color.blue.light.800` |
-| `color.text.info-on-dark` | `birch.theme.base.color.text.info-on-dark` → `color.blue.light.50` | `birch.theme.base.color.text.info-on-dark` → `color.blue.light.50` |
+| `color.text.info-on-dark` | `birch.theme.base.color.text.info-on-dark` → `color.blue.light.100` | `birch.theme.base.color.text.info-on-dark` → `color.blue.light.100` |
 | `color.text.success-on-light` | `birch.theme.base.color.text.success-on-light` → `color.green.light.800` | `birch.theme.base.color.text.success-on-light` → `color.green.light.800` |
-| `color.text.success-on-dark` | `birch.theme.base.color.text.success-on-dark` → `color.green.light.50` | `birch.theme.base.color.text.success-on-dark` → `color.green.light.50` |
+| `color.text.success-on-dark` | `birch.theme.base.color.text.success-on-dark` → `color.green.light.100` | `birch.theme.base.color.text.success-on-dark` → `color.green.light.100` |
 | `color.text.warning-on-light` | `birch.theme.base.color.text.warning-on-light` → `color.amber.light.800` | `birch.theme.base.color.text.warning-on-light` → `color.amber.light.800` |
-| `color.text.warning-on-dark` | `birch.theme.base.color.text.warning-on-dark` → `color.amber.light.50` | `birch.theme.base.color.text.warning-on-dark` → `color.amber.light.50` |
+| `color.text.warning-on-dark` | `birch.theme.base.color.text.warning-on-dark` → `color.amber.light.100` | `birch.theme.base.color.text.warning-on-dark` → `color.amber.light.100` |
 | `color.text.danger-on-light` | `birch.theme.base.color.text.danger-on-light` → `color.red.light.800` | `birch.theme.base.color.text.danger-on-light` → `color.red.light.800` |
-| `color.text.danger-on-dark` | `birch.theme.base.color.text.danger-on-dark` → `color.red.light.50` | `birch.theme.base.color.text.danger-on-dark` → `color.red.light.50` |
+| `color.text.danger-on-dark` | `birch.theme.base.color.text.danger-on-dark` → `color.red.light.100` | `birch.theme.base.color.text.danger-on-dark` → `color.red.light.100` |
 | `color.border.default` | `birch.theme.light.color.border.default` → `color.neutral.200` → `birch.theme.light.color.neutral.200` → `color.slate-deep.light.200` | `birch.theme.dark.color.border.default` → `color.neutral.100` → `birch.theme.dark.color.neutral.100` → `color.slate-deep.dark.100` |
 | `color.border.strong` | `birch.theme.light.color.border.strong` → `color.neutral.500` → `birch.theme.light.color.neutral.500` → `color.slate-deep.light.500` | `birch.theme.dark.color.border.strong` → `color.neutral.400` → `birch.theme.dark.color.neutral.400` → `color.slate-deep.dark.400` |
 | `color.border.focus` | `birch.theme.light.color.border.focus` → `color.purple.light.600` | `birch.theme.dark.color.border.focus` → `color.purple.dark.600` |
@@ -334,13 +334,13 @@ Each token points to another token. Values live only on primitives, below.
 | `color.text.on-light` | `coral.theme.base.color.text.on-light` → `color.slate-deep.light.900` | `coral.theme.base.color.text.on-light` → `color.slate-deep.light.900` |
 | `color.text.on-dark` | `coral.theme.base.color.text.on-dark` → `color.slate-deep.light.0` | `coral.theme.base.color.text.on-dark` → `color.slate-deep.light.0` |
 | `color.text.info-on-light` | `coral.theme.base.color.text.info-on-light` → `color.blue.light.800` | `coral.theme.base.color.text.info-on-light` → `color.blue.light.800` |
-| `color.text.info-on-dark` | `coral.theme.base.color.text.info-on-dark` → `color.blue.light.50` | `coral.theme.base.color.text.info-on-dark` → `color.blue.light.50` |
+| `color.text.info-on-dark` | `coral.theme.base.color.text.info-on-dark` → `color.blue.light.100` | `coral.theme.base.color.text.info-on-dark` → `color.blue.light.100` |
 | `color.text.success-on-light` | `coral.theme.base.color.text.success-on-light` → `color.green.light.800` | `coral.theme.base.color.text.success-on-light` → `color.green.light.800` |
-| `color.text.success-on-dark` | `coral.theme.base.color.text.success-on-dark` → `color.green.light.50` | `coral.theme.base.color.text.success-on-dark` → `color.green.light.50` |
+| `color.text.success-on-dark` | `coral.theme.base.color.text.success-on-dark` → `color.green.light.100` | `coral.theme.base.color.text.success-on-dark` → `color.green.light.100` |
 | `color.text.warning-on-light` | `coral.theme.base.color.text.warning-on-light` → `color.amber.light.800` | `coral.theme.base.color.text.warning-on-light` → `color.amber.light.800` |
-| `color.text.warning-on-dark` | `coral.theme.base.color.text.warning-on-dark` → `color.amber.light.50` | `coral.theme.base.color.text.warning-on-dark` → `color.amber.light.50` |
+| `color.text.warning-on-dark` | `coral.theme.base.color.text.warning-on-dark` → `color.amber.light.100` | `coral.theme.base.color.text.warning-on-dark` → `color.amber.light.100` |
 | `color.text.danger-on-light` | `coral.theme.base.color.text.danger-on-light` → `color.red.light.800` | `coral.theme.base.color.text.danger-on-light` → `color.red.light.800` |
-| `color.text.danger-on-dark` | `coral.theme.base.color.text.danger-on-dark` → `color.red.light.50` | `coral.theme.base.color.text.danger-on-dark` → `color.red.light.50` |
+| `color.text.danger-on-dark` | `coral.theme.base.color.text.danger-on-dark` → `color.red.light.100` | `coral.theme.base.color.text.danger-on-dark` → `color.red.light.100` |
 | `color.border.default` | `coral.theme.light.color.border.default` → `color.neutral.200` → `coral.theme.light.color.neutral.200` → `color.slate-deep.light.200` | `coral.theme.dark.color.border.default` → `color.neutral.100` → `coral.theme.dark.color.neutral.100` → `color.slate-deep.dark.100` |
 | `color.border.strong` | `coral.theme.light.color.border.strong` → `color.neutral.500` → `coral.theme.light.color.neutral.500` → `color.slate-deep.light.500` | `coral.theme.dark.color.border.strong` → `color.neutral.400` → `coral.theme.dark.color.neutral.400` → `color.slate-deep.dark.400` |
 | `color.border.focus` | `coral.theme.light.color.border.focus` → `color.orange.light.600` | `coral.theme.dark.color.border.focus` → `color.orange.dark.600` |
@@ -402,11 +402,11 @@ The raw values these tokens end at are on [Primitives › Color](../primitives/c
 
 ## Status urgency
 
-Status colours go up in urgency: info, then warning, then danger. Pick the level that matches the real risk. Never go up a level to get attention. Success sits outside the order.
+Status colors go up in urgency: info, then warning, then danger. Pick the level that matches the real risk. Never go up a level to get attention. Success sits outside the order.
 
 `color.status.info.@` → `color.status.warning.@` → `color.status.danger.@`
 
-## What each colour is for
+## What each color is for
 
 | Token | What it is for | Not for |
 | --- | --- | --- |
@@ -423,21 +423,21 @@ Status colours go up in urgency: info, then warning, then danger. Pick the level
 | <span id="for-color-text-inverse"></span>`color.text.inverse` | Text on an inverse fill. | Text on the page: `color.text.primary` |
 | <span id="for-color-text-on-light"></span>`color.text.on-light` | Text on any fill whose tone is light, in either mode: the light mode's body text. | Text on the page's own surfaces: `color.text.primary` |
 | <span id="for-color-text-on-dark"></span>`color.text.on-dark` | Text on any fill whose tone is dark, in either mode: white. | Text on the page's own surfaces: `color.text.primary` |
-| <span id="for-color-text-info-on-light"></span>`color.text.info-on-light` | The label on a light info fill, such as its tint in light mode: a fixed colour from the light scale (800). | Info text on the page: `color.status.info.@` |
-| <span id="for-color-text-info-on-dark"></span>`color.text.info-on-dark` | The label on a dark info fill, such as its tint in dark mode: a fixed colour from the light scale (50). | Info text on the page: `color.status.info.@` |
-| <span id="for-color-text-success-on-light"></span>`color.text.success-on-light` | The label on a light success fill, such as its tint in light mode: a fixed colour from the light scale (800). | Success text on the page: `color.status.success.@` |
-| <span id="for-color-text-success-on-dark"></span>`color.text.success-on-dark` | The label on a dark success fill, such as its tint in dark mode: a fixed colour from the light scale (50). | Success text on the page: `color.status.success.@` |
-| <span id="for-color-text-warning-on-light"></span>`color.text.warning-on-light` | The label on a light warning fill, such as its tint in light mode: a fixed colour from the light scale (800). | Warning text on the page: `color.status.warning.@` |
-| <span id="for-color-text-warning-on-dark"></span>`color.text.warning-on-dark` | The label on a dark warning fill, such as its tint in dark mode: a fixed colour from the light scale (50). | Warning text on the page: `color.status.warning.@` |
-| <span id="for-color-text-danger-on-light"></span>`color.text.danger-on-light` | The label on a light danger fill, such as its tint in light mode: a fixed colour from the light scale (800). | Danger text on the page: `color.status.danger.@` |
-| <span id="for-color-text-danger-on-dark"></span>`color.text.danger-on-dark` | The label on a dark danger fill, such as its tint in dark mode: a fixed colour from the light scale (50). | Danger text on the page: `color.status.danger.@` |
+| <span id="for-color-text-info-on-light"></span>`color.text.info-on-light` | The label on a light info fill, such as its tint in light mode: a fixed color from the light scale (800). | Info text on the page: `color.status.info.@` |
+| <span id="for-color-text-info-on-dark"></span>`color.text.info-on-dark` | The label on a dark info fill, such as its tint in dark mode: a fixed color from the light scale (100, adjusted so its hue shows). | Info text on the page: `color.status.info.@` |
+| <span id="for-color-text-success-on-light"></span>`color.text.success-on-light` | The label on a light success fill, such as its tint in light mode: a fixed color from the light scale (800). | Success text on the page: `color.status.success.@` |
+| <span id="for-color-text-success-on-dark"></span>`color.text.success-on-dark` | The label on a dark success fill, such as its tint in dark mode: a fixed color from the light scale (100, adjusted so its hue shows). | Success text on the page: `color.status.success.@` |
+| <span id="for-color-text-warning-on-light"></span>`color.text.warning-on-light` | The label on a light warning fill, such as its tint in light mode: a fixed color from the light scale (800). | Warning text on the page: `color.status.warning.@` |
+| <span id="for-color-text-warning-on-dark"></span>`color.text.warning-on-dark` | The label on a dark warning fill, such as its tint in dark mode: a fixed color from the light scale (100, adjusted so its hue shows). | Warning text on the page: `color.status.warning.@` |
+| <span id="for-color-text-danger-on-light"></span>`color.text.danger-on-light` | The label on a light danger fill, such as its tint in light mode: a fixed color from the light scale (800). | Danger text on the page: `color.status.danger.@` |
+| <span id="for-color-text-danger-on-dark"></span>`color.text.danger-on-dark` | The label on a dark danger fill, such as its tint in dark mode: a fixed color from the light scale (100, adjusted so its hue shows). | Danger text on the page: `color.status.danger.@` |
 | <span id="for-color-text-on-action"></span>`color.text.on-action` | Text and icons on the main action's fill. | Text on the page: `color.text.primary` |
 | <span id="for-color-text-on-danger"></span>`color.text.on-danger` | Text on the danger fill: its tone's main text. | Text on the main action: `color.text.on-action` |
 | <span id="for-color-text-link"></span>`color.text.link` | Links in running text. | Buttons: `color.action.primary.@` |
 | <span id="for-color-border-default"></span>`color.border.default` | Quiet edges and dividers. Decorative, so it has no contrast minimum. | The edge of a control people must find: `color.border.strong` |
 | <span id="for-color-border-strong"></span>`color.border.strong` | The edge of a control people must find. | A divider: `color.border.default` |
 | <span id="for-color-border-focus"></span>`color.border.focus` | The focus ring. | A selected item: `color.surface.selected` |
-| <span id="for-color-border-selected"></span>`color.border.selected` | The edge that marks a selected item, beside its fill, so selection is never colour alone. | Keyboard focus: `color.border.focus`<br />The fill of a selected item: `color.surface.selected` |
+| <span id="for-color-border-selected"></span>`color.border.selected` | The edge that marks a selected item, beside its fill, so selection is never color alone. | Keyboard focus: `color.border.focus`<br />The fill of a selected item: `color.surface.selected` |
 | <span id="for-color-action-primary"></span>`color.action.primary.@` | The one main action in a view. | A second action in the same view: `color.action.secondary.@`<br />Links in text: `color.text.link`<br />News or status: `color.status.info.@` |
 | <span id="for-color-action-primary-hover"></span>`color.action.primary.hover` | The main action under the pointer. | The resting state: `color.action.primary.@` |
 | <span id="for-color-action-secondary"></span>`color.action.secondary.@` | The fill of other actions. | The main action: `color.action.primary.@` |
@@ -450,7 +450,7 @@ Status colours go up in urgency: info, then warning, then danger. Pick the level
 | <span id="for-color-status-warning-subtle"></span>`color.status.warning.subtle` | The fill behind warning status. | Large page areas: `color.surface.default` |
 | <span id="for-color-status-danger"></span>`color.status.danger.@` | Real risk: errors, failed checks, actions that cannot be undone. The top of the urgency order. Overuse wears it out. | Caution or advice: `color.status.warning.@`<br />Getting attention: `color.status.info.@`<br />The danger badge label: `color.text.danger-on-light` |
 | <span id="for-color-status-danger-subtle"></span>`color.status.danger.subtle` | The fill behind danger status. | Large page areas: `color.surface.default` |
-| <span id="for-color-status-success"></span>`color.status.success.@` | Confirmation that something worked. It sits outside the urgency order. | The main action: `color.action.primary.@`<br />Brand colour: `color.action.primary.@`<br />The success badge label: `color.text.success-on-light` |
+| <span id="for-color-status-success"></span>`color.status.success.@` | Confirmation that something worked. It sits outside the urgency order. | The main action: `color.action.primary.@`<br />Brand color: `color.action.primary.@`<br />The success badge label: `color.text.success-on-light` |
 | <span id="for-color-status-success-subtle"></span>`color.status.success.subtle` | The fill behind success status. | Large page areas: `color.surface.default` |
 | <span id="for-color-category-1"></span>`color.category.1.@` | Category 1: tells one item or series from another. It carries no meaning. | Status or risk: `color.status.warning.@`<br />Tag text: `color.text.primary` |
 | <span id="for-color-category-1-subtle"></span>`color.category.1.subtle` | Category 1: the fill of a tag. | A status badge: `color.status.info.subtle` |
@@ -468,7 +468,7 @@ Status colours go up in urgency: info, then warning, then danger. Pick the level
 
 ## Pairs at a glance
 
-Which colour may sit on which fill, and the contrast it keeps there in every brand and mode. Text pairs by tone: every fill says whether it is light or dark, and the text on it is `color.text.on-light` or `color.text.on-dark`. The page's own text is the set of its own surfaces. The harness checks every pair.
+Which color may sit on which fill, and the contrast it keeps there in every brand and mode. Text pairs by tone: every fill says whether it is light or dark, and the text on it is `color.text.on-light` or `color.text.on-dark`. The page's own text is the set of its own surfaces. The harness checks every pair.
 
 | Token | Sits on | Contrast |
 | --- | --- | --- |

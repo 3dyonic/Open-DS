@@ -142,7 +142,7 @@ test("check_ui: every finding names a booklet section that exists", () => {
   ]);
   const rules = new Set(findings.map((f) => f.rule));
   for (const r of [
-    "raw-colour",
+    "raw-color",
     "raw-size",
     "not-in-inventory",
     "variant-not-used",

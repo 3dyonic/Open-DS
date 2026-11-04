@@ -8,11 +8,11 @@ hide_table_of_contents: true
 
 # Primitives
 
-<div class="odv-pagehero"><div><p>The raw values of Multi-brand. Primitives hold the values; semantic tokens give them a job (see <a href="../foundations/">Foundations</a>), and components read only the jobs. Colour ramps stay whole, so some colour steps wait for a use; every other primitive is read by something.</p><div class="odv-stats"><span><b>221</b>Primitives</span><span><b>111</b>In use</span><span><b>110</b>Spare</span></div></div><span class="odv-robot odv-pagehero-robot"><img class="odv-robot-day" src="/robots/multi-brand.webp" alt="" loading="lazy"/><img class="odv-robot-night" src="/robots/multi-brand-dark.webp" alt="" loading="lazy"/></span></div>
+<div class="odv-pagehero"><div><p>The raw values of Multi-brand. Primitives hold the values; semantic tokens give them a job (see <a href="../foundations/">Foundations</a>), and components read only the jobs. Color ramps stay whole, so some color steps wait for a use; every other primitive is read by something.</p><div class="odv-stats"><span><b>221</b>Primitives</span><span><b>107</b>In use</span><span><b>114</b>Spare</span></div></div><span class="odv-robot odv-pagehero-robot"><img class="odv-robot-day" src="/robots/multi-brand.webp" alt="" loading="lazy"/><img class="odv-robot-night" src="/robots/multi-brand-dark.webp" alt="" loading="lazy"/></span></div>
 
-## Colour
+## Color
 
-<div class="odv-scards"><a class="odv-scard" href="./color"><span class="odv-scard-art"><span class="odv-robot "><img class="odv-robot-day" src="/robots/swatch.webp" alt="" loading="lazy"/><img class="odv-robot-night" src="/robots/swatch-dark.webp" alt="" loading="lazy"/></span></span><span class="odv-scard-body"><span class="odv-scard-title">Color</span><div class="odv-spec"><i class="odv-sw" style="background:#4B5A6F" title="color.slate-deep.light.600"></i><i class="odv-sw" style="background:#0F766E" title="color.teal.light.600"></i><i class="odv-sw" style="background:#6D28D9" title="color.purple.light.600"></i><i class="odv-sw" style="background:#C2410C" title="color.orange.light.600"></i><i class="odv-sw" style="background:#1F7A3A" title="color.green.light.600"></i><i class="odv-sw" style="background:#8A5600" title="color.amber.light.600"></i><i class="odv-sw" style="background:#C42B2B" title="color.red.light.600"></i><i class="odv-sw" style="background:#0000008C" title="color.black.light.scrim"></i></div><span class="odv-scard-why">180 primitives · 70 in use</span><span class="odv-meter" role="img" aria-label="70 of 180 in use"><i style="width:39%"></i></span></span></a></div>
+<div class="odv-scards"><a class="odv-scard" href="./color"><span class="odv-scard-art"><span class="odv-robot "><img class="odv-robot-day" src="/robots/swatch.webp" alt="" loading="lazy"/><img class="odv-robot-night" src="/robots/swatch-dark.webp" alt="" loading="lazy"/></span></span><span class="odv-scard-body"><span class="odv-scard-title">Color</span><div class="odv-spec"><i class="odv-sw" style="background:#4B5A6F" title="color.slate-deep.light.600"></i><i class="odv-sw" style="background:#0F766E" title="color.teal.light.600"></i><i class="odv-sw" style="background:#6D28D9" title="color.purple.light.600"></i><i class="odv-sw" style="background:#C2410C" title="color.orange.light.600"></i><i class="odv-sw" style="background:#1F7A3A" title="color.green.light.600"></i><i class="odv-sw" style="background:#8A5600" title="color.amber.light.600"></i><i class="odv-sw" style="background:#C42B2B" title="color.red.light.600"></i><i class="odv-sw" style="background:#0000008C" title="color.black.light.scrim"></i></div><span class="odv-scard-why">180 primitives · 66 in use</span><span class="odv-meter" role="img" aria-label="66 of 180 in use"><i style="width:37%"></i></span></span></a></div>
 
 ## Space and shape
 
@@ -24,11 +24,11 @@ hide_table_of_contents: true
 
 ## Every kind
 
-**221** primitives. **111** are used by a semantic token, a theme or a component key. **110** are not used yet.
+**221** primitives. **107** are used by a semantic token, a theme or a component key. **114** are not used yet.
 
 | Kind | Primitives | Used |
 | --- | --- | --- |
-| [Color](./color.md) | 180 | 70 |
+| [Color](./color.md) | 180 | 66 |
 | [Space and size](./space-and-size.md) | 9 | 9 |
 | [Shape](./shape.md) | 9 | 9 |
 | [Type](./type.md) | 15 | 15 |

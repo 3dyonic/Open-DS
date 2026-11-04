@@ -36,8 +36,8 @@ test("checkUi: raw values, components the scheme does not carry, variants it doe
   assert.deepEqual(rules, [
     "src/app/page.css:2 raw-size",
     "src/app/page.tsx:2 not-in-inventory",
-    "src/app/page.tsx:3 raw-colour",
-    "src/app/page.tsx:3 raw-colour",
+    "src/app/page.tsx:3 raw-color",
+    "src/app/page.tsx:3 raw-color",
     "src/app/page.tsx:3 raw-size",
     "src/app/page.tsx:4 variant-not-used",
   ]);
@@ -115,7 +115,7 @@ test("planChange: a new answer lists what follows and the decisions it reopens",
   );
 });
 
-test("planChange: a new colour primitive reaches its tokens and checks every pair's contrast", () => {
+test("planChange: a new color primitive reaches its tokens and checks every pair's contrast", () => {
   const p = planChange(dense, g, {
     token: "color.violet.light.600",
     value: "#9C93F5",

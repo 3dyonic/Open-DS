@@ -5,7 +5,7 @@ import { themes as prismThemes } from "prism-react-renderer";
 
 // The docs of this design system. The pages in docs/docs come from its scheme (scheme.json).
 // The site wears the system: build/docusaurus.css holds its tokens, and build/brand/ (npm run
-// tokens) holds the Open DS mark in the system's own colours, served as the logo and favicon.
+// tokens) holds the Open DS mark in the system's own colors, served as the logo and favicon.
 const scheme = JSON.parse(
   readFileSync(new URL("../scheme.json", import.meta.url), "utf8"),
 ) as {
@@ -29,7 +29,10 @@ const config: Config = {
   markdown: { format: "detect", hooks: { onBrokenMarkdownLinks: "throw" } },
   i18n: { defaultLocale: "en", locales: ["en"] },
   // The live Storybook embeds follow the docs theme (OD-213).
-  clientModules: ["./src/clientModules/embed-mode.ts", "./src/clientModules/scales.ts"],
+  clientModules: [
+    "./src/clientModules/embed-mode.ts",
+    "./src/clientModules/scales.ts",
+  ],
   presets: [
     [
       "classic",

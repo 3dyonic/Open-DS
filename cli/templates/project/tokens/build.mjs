@@ -72,7 +72,7 @@ const SHADCN = {
   "sidebar-accent-foreground": "color-text-primary",
   "sidebar-border": "color-border-default",
   "sidebar-ring": "color-border-focus",
-  // Chart series use the category colours: distinct hues that carry no meaning, so no series reads as an error.
+  // Chart series use the category colors: distinct hues that carry no meaning, so no series reads as an error.
   "chart-1": "color-category-1",
   "chart-2": "color-category-2",
   "chart-3": "color-category-3",
@@ -327,7 +327,7 @@ const INFIMA = {
   "--ifm-card-horizontal-spacing": "card-padding",
   "--ifm-button-padding-horizontal": "button-padding-x",
   "--ifm-badge-border-radius": "badge-radius",
-  // Callouts use the status colours.
+  // Callouts use the status colors.
   "--ifm-color-success": "color-status-success",
   "--ifm-color-success-dark": "color-status-success",
   "--ifm-color-success-contrast-background": "color-status-success-subtle",
@@ -391,7 +391,7 @@ if (existsSync(join(src, "content.tokens.json")))
 writeFileSync(join(out, "docusaurus.css"), await docusaurusCss(brands[0].id));
 
 // The brand of this design system's docs and Storybook, in the default brand's resolved tokens:
-// the Open DS mark (a 6 by 5 pixel grid, one cell lit) in the system's ink and primary colour,
+// the Open DS mark (a 6 by 5 pixel grid, one cell lit) in the system's ink and primary color,
 // for light and dark, and the Storybook theme. Docusaurus and Storybook serve build/brand/.
 // A concept with variants is a group: its base value sits under @ (color.action.primary.@).
 const pick = (tree, path) => {

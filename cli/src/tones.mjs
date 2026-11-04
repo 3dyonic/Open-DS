@@ -2,7 +2,7 @@
 //
 // Every fill states its tone, light or dark, in each brand and mode: a decision, written on the fill in
 // the theme as $extensions["open-ds"].tone. Text on a fill is color.text.on-light (a light fill) or
-// color.text.on-dark (a dark fill), the same two colours in both modes (OD-227). color.text.*,
+// color.text.on-dark (a dark fill), the same two colors in both modes (OD-227). color.text.*,
 // color.text.link, color.border.strong and color.border.focus are the mode's own set: the one that
 // sits on the page's own surfaces.
 // The grammar's semantics.tones lists the roles, their contrast and what each fill carries.

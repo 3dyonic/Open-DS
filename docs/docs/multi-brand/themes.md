@@ -23,7 +23,7 @@ Multi-brand ships 6 themes: aster-light, aster-dark, birch-light, birch-dark, co
 
 ## Key colors in each theme
 
-The page, its main surface and text, the main action at rest and on hover, and the focus ring: the colours that show a theme at a glance. Each shows the primitive it points at, then its value.
+The page, its main surface and text, the main action at rest and on hover, and the focus ring: the colors that show a theme at a glance. Each shows the primitive it points at, then its value.
 
 - **Every brand**: the neutral is `slate-deep` (cool). A cool, firm gray stays out of the way of every brand's accent.
 

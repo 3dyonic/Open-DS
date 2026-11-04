@@ -1,4 +1,4 @@
-// The scale view's map (OD-223): every colour token lands on a primitive step in every brand and mode,
+// The scale view's map (OD-223): every color token lands on a primitive step in every brand and mode,
 // so the docs and Storybook scale views show every token and nothing is lost.
 import { test } from "node:test";
 import assert from "node:assert/strict";
@@ -11,18 +11,18 @@ const schemes = readdirSync(dir)
   .filter((f) => f.endsWith(".json") && f !== "grammar.json")
   .map((f) => JSON.parse(readFileSync(join(dir, f), "utf8")));
 
-const colourPaths = (node, path = []) =>
+const colorPaths = (node, path = []) =>
   !node || typeof node !== "object"
     ? []
     : "$value" in node
       ? [path.join(".")]
       : Object.entries(node)
           .filter(([k]) => !k.startsWith("$"))
-          .flatMap(([k, v]) => colourPaths(v, [...path, k]));
+          .flatMap(([k, v]) => colorPaths(v, [...path, k]));
 
-test("every colour token lands on a primitive step in every brand and mode", () => {
+test("every color token lands on a primitive step in every brand and mode", () => {
   for (const s of schemes) {
-    const want = colourPaths(s.tokens.semantic).filter(
+    const want = colorPaths(s.tokens.semantic).filter(
       (p) => p.startsWith("color.") && !p.startsWith("color.neutral."),
     );
     for (const b of Object.keys(s.tokens.brands))

@@ -20,7 +20,7 @@ Brand expressive ships 2 themes: light, dark. Only semantic tokens change betwee
 
 ## Key colors in each theme
 
-The page, its main surface and text, the main action at rest and on hover, and the focus ring: the colours that show a theme at a glance. Each shows the primitive it points at, then its value.
+The page, its main surface and text, the main action at rest and on hover, and the focus ring: the colors that show a theme at a glance. Each shows the primitive it points at, then its value.
 
 - the neutral is `taupe` (warm-rosy). A warm, rosy gray sits under the vivid pink brand without competing.
 

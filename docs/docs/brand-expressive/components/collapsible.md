@@ -64,4 +64,4 @@ The component reads only component keys and semantic tokens, so it follows the b
 
 ## Tokens it reads
 
-Collapsible sets no colours, corners or shadows of its own; it takes them from the components inside it.
+Collapsible sets no colors, corners or shadows of its own; it takes them from the components inside it.

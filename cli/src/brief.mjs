@@ -26,7 +26,7 @@ export const READ_ONCE = [
   "1. Start with AGENTS.md. It holds the rules that always apply.",
   "2. For the file you edit, load what context/index.json lists, or call get_context file=<path>.",
   "3. Each answer is short. It ends with sections you can ask for, their size and the exact call. Ask only if you need more.",
-  "4. One thing (a component, a colour, a task) has sections. A long list has pages.",
+  "4. One thing (a component, a color, a task) has sections. A long list has pages.",
   "5. Write token names and components, never values. Every decision is an answered question: ask why before you change it.",
   "6. Before you finish, run check_ui. Each finding names the booklet section that answers it.",
 ].join("\n");
@@ -70,7 +70,7 @@ function componentSections(c) {
   if (c.guidance?.length)
     out.push({
       name: "colors",
-      label: plural(c.guidance.length, "colour"),
+      label: plural(c.guidance.length, "color"),
       items: c.guidance,
       item: (x) =>
         `- ${x.id}: ${x.intent}${(x.not_for ?? []).map((n) => ` Not for ${n.when}: ${n.use}.`).join("")}`,
@@ -132,7 +132,7 @@ function taskSections(t) {
   if (t.semantics)
     out.push({
       name: "colors",
-      label: "every colour, what it is for and not for",
+      label: "every color, what it is for and not for",
       items: t.semantics,
       item: (s) =>
         `- ${s.id}: ${s.intent}${s.not_for.length ? ` Not for ${s.not_for.join("; ")}.` : ""}`,
@@ -362,7 +362,7 @@ function shortTask(t, g) {
     if (t.urgency) lines.push("", t.urgency.description);
     lines.push(
       "",
-      "Words and messages: tasks/write.md. Colours: one booklet each in context/colors/. Components: context/components/.",
+      "Words and messages: tasks/write.md. Colors: one booklet each in context/colors/. Components: context/components/.",
     );
   }
   if (t.target === "review") {
@@ -370,8 +370,8 @@ function shortTask(t, g) {
       "",
       "## Steps",
       "1. Run check_ui on the changed files. Fix each finding; it names the booklet section that answers it.",
-      "2. Check each situation against its rule: tasks/build.md for layout and colour, tasks/write.md for words.",
-      "3. Check each colour against its not_for and what it may sit on: context/colors/.",
+      "2. Check each situation against its rule: tasks/build.md for layout and color, tasks/write.md for words.",
+      "3. Check each color against its not_for and what it may sit on: context/colors/.",
       "4. Check each status against the urgency order.",
     );
     if (t.urgency) lines.push("", t.urgency.description);
@@ -466,7 +466,7 @@ export function brief(
   return [...body, ...hints(c, sections)].join("\n") + "\n";
 }
 
-/** The colour semantics that get a booklet: the grammar's semantic keys, without the base @. */
+/** The color semantics that get a booklet: the grammar's semantic keys, without the base @. */
 export function colorIds(g) {
   return (g.semantics?.keys ?? []).map((k) => k.id.replace(/\.@$/, ""));
 }
@@ -474,7 +474,7 @@ export function colorIds(g) {
 /**
  * The router: which booklets to load for a file or a task. Built from facts: the project's
  * component files and stories, the token folders, the tasks and the situations whose rules name
- * components or colours.
+ * components or colors.
  */
 export function router(scheme, g, components) {
   const colors = colorIds(g);
@@ -559,7 +559,7 @@ export function contextReadme(scheme) {
     "",
     "- `index.json`: what to load for a file (`files`), a task (`tasks`) or a situation (`situations`).",
     "- `components/<id>.md`: what a component is for and how this scheme uses each variant.",
-    "- `colors/<token>.md`: what a colour is for, what not to use it for, and what it may sit on.",
+    "- `colors/<token>.md`: what a color is for, what not to use it for, and what it may sit on.",
     "- `tasks/<task>.md`: what a task needs: choose, build, write, change, review.",
     "",
     "The same text comes from the MCP (`get_context target=<id>`, `section=<name>`, `file=<path>`) and the CLI (`open-ds context <scheme> <id> --section <name>`, `--file <path>`, `--json` for the full answer).",

@@ -25,7 +25,7 @@ export const optionsRule = (g) =>
 /** OD-222: what sits on a fill comes from the fill's tone, generated from the grammar. */
 export const toneRule = (g) =>
   g.semantics?.tones
-    ? "Text on a fill follows the fill's tone: `color.text.on-light` on a light fill, `color.text.on-dark` on a dark one, the same two colours in both modes. Each fill's tone is decided in the theme (`$extensions.open-ds.tone`). On the page's own surfaces, use `color.text.*`."
+    ? "Text on a fill follows the fill's tone: `color.text.on-light` on a light fill, `color.text.on-dark` on a dark one, the same two colors in both modes. Each fill's tone is decided in the theme (`$extensions.open-ds.tone`). On the page's own surfaces, use `color.text.*`."
     : "";
 
 export function agentsMd(scheme, g, { brand, components, project = false }) {
@@ -52,7 +52,7 @@ export function agentsMd(scheme, g, { brand, components, project = false }) {
     "",
     ...(project
       ? [
-          `- \`tokens/src/\`: the DTCG token source, one file per group. \`primitive/\` holds the raw options, steps only (colour by hue: \`color.<hue>.light.<step>\`, \`color.<hue>.dark.<step>\`). \`theme/<brand>\` is the decision layer: each brand's picks in light and dark, on the same paths as the semantics, with a base \`@\` per concept (\`color.action.primary.@\` beside \`color.action.primary.hover\`). \`semantic/\` holds the plain keys; a brand-dependent one says \`{theme.<its path>}\`. Only semantic and component keys ship as CSS variables, and the \`@\` drops out of the name (\`--color-action-primary\`). Each folder has a README. Edit a token, then run \`npm run tokens\`. Style Dictionary (\`tokens/build.mjs\`) writes \`build/\`. ${optionsRule(g)} ${toneRule(g)}`,
+          `- \`tokens/src/\`: the DTCG token source, one file per group. \`primitive/\` holds the raw options, steps only (color by hue: \`color.<hue>.light.<step>\`, \`color.<hue>.dark.<step>\`). \`theme/<brand>\` is the decision layer: each brand's picks in light and dark, on the same paths as the semantics, with a base \`@\` per concept (\`color.action.primary.@\` beside \`color.action.primary.hover\`). \`semantic/\` holds the plain keys; a brand-dependent one says \`{theme.<its path>}\`. Only semantic and component keys ship as CSS variables, and the \`@\` drops out of the name (\`--color-action-primary\`). Each folder has a README. Edit a token, then run \`npm run tokens\`. Style Dictionary (\`tokens/build.mjs\`) writes \`build/\`. ${optionsRule(g)} ${toneRule(g)}`,
           "- `src/styles/index.css`: Tailwind, the built tokens (light and dark; add the class `dark` for dark mode), the shadcn and Tailwind theme and the base styles.",
           "- `stories/`: Storybook (`npm run storybook`). `docs/`: the Docusaurus docs (`npm run docs`).",
         ]
@@ -76,7 +76,7 @@ export function agentsMd(scheme, g, { brand, components, project = false }) {
       (u) => `| ${sit[u.situation].title} | ${u.use} | ${u.not} | ${u.why} |`,
     ),
     "",
-    "## Colour: what each one is for",
+    "## Color: what each one is for",
     "",
     ...(g.semantics
       ? [
@@ -167,7 +167,7 @@ export function skillSection(scheme, { project = false } = {}) {
 
 /**
  * AGENTS.md in a created project (OD-205): the read-once text and the rules that always apply,
- * within BUDGET.agents. The detail lives in context/, one booklet per component, colour and task.
+ * within BUDGET.agents. The detail lives in context/, one booklet per component, color and task.
  */
 export function agentsCore(scheme, g, { brand, components }) {
   const groups = {};
@@ -188,16 +188,16 @@ export function agentsCore(scheme, g, { brand, components }) {
     "",
     "## Never",
     "",
-    "- A raw value: a hex or rgb colour, a px size, a Tailwind palette class. Use a token or a component key.",
+    "- A raw value: a hex or rgb color, a px size, a Tailwind palette class. Use a token or a component key.",
     "- A component that is not listed below. If none fits, compose from these; see context/tasks/build.md.",
     "- A variant this scheme does not use. Each component's booklet says which variants it uses.",
-    "- A status colour one level up the urgency order to get attention.",
+    "- A status color one level up the urgency order to get attention.",
     "",
     `## Components (${inventory.length})`,
     "",
     inventory.join(", "),
     "",
-    "## Colours",
+    "## Colors",
     "",
     "One booklet each in context/colors/. By group:",
     ...Object.entries(groups).map(([k, v]) => `- color.${k}: ${v.join(", ")}`),

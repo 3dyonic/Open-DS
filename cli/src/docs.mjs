@@ -149,7 +149,7 @@ const STATUS_CLASS = {
 };
 const badgeHtml = (label, meaning) =>
   `<span class="odv-badge odv-t-${STATUS_CLASS[meaning] ?? "neutral"}">${attr(label)}</span>`;
-/** WCAG contrast between two hex colours, for the ratios the colour page prints. */
+/** WCAG contrast between two hex colors, for the ratios the color page prints. */
 function contrast(a, b) {
   const lum = (hex) => {
     const c = String(hex).replace("#", "").slice(0, 6).match(/../g);
@@ -353,13 +353,13 @@ const PRIM_PAGE_OF = {
   motion: { id: "motion", title: "Motion" },
 };
 /**
- * The Themes page's key colours (OD-223): the tokens the grammar names, in every theme, each as the
+ * The Themes page's key colors (OD-223): the tokens the grammar names, in every theme, each as the
  * primitive it points at, the neutral step it goes through, and its value. The scheme's gray first.
  */
-function themeColours(scheme, g) {
+function themeColors(scheme, g) {
   const t = scheme.tokens;
   const brands = Object.keys(t.brands);
-  const kc = g.semantics?.key_colours;
+  const kc = g.semantics?.key_colors;
   if (!kc) return "";
   const at = (p) =>
     p.split(".").reduce((n, k) => n && n[k], t.primitive)?.$value;
@@ -400,10 +400,10 @@ function themeColours(scheme, g) {
 /**
  * The scale view (OD-223): for each hue, a light and a dark tab. Each tab shows the lanes that hue's
  * tokens paint (backgrounds, edges and rings, text), each as the whole scale, the used steps filled and
- * the rest empty slots, then one row per token: its colour, its name, the step and the value. A row and
+ * the rest empty slots, then one row per token: its color, its name, the step and the value. A row and
  * its step light up together on hover (src/clientModules/scales.ts). A row links to the token's guidance.
  */
-function colourScales(scheme, g, fams) {
+function colorScales(scheme, g, fams) {
   const t = scheme.tokens;
   const brands = Object.keys(t.brands);
   const many = brands.length > 1;
@@ -451,7 +451,7 @@ function colourScales(scheme, g, fams) {
     const link = lane ? ` data-link="${lane}-${r.step}"` : "";
     const id = `color.${r.token}`;
     return guided.has(id)
-      ? `<a class="odv-kv"${link} href="../foundations/color?for=${cssId(id)}#what-each-colour-is-for">${inner}</a>`
+      ? `<a class="odv-kv"${link} href="../foundations/color?for=${cssId(id)}#what-each-color-is-for">${inner}</a>`
       : `<div class="odv-kv"${link} tabindex="0">${inner}</div>`;
   };
   const hues = [
@@ -484,7 +484,7 @@ function colourScales(scheme, g, fams) {
           `<div class="odv-st" data-link="fill-${st}" style="background:${v};color:${ink(v)}"><span class="n">${st}</span><span class="x">${v}</span></div>`,
         edge: (st, v) =>
           `<div class="odv-st odv-st-bare" data-link="edge-${st}"><span class="n">${st}</span><span class="x">${v}</span><span class="mk"><i style="background:${v}"></i><b style="background:${v}"></b></span></div>`,
-        // text shows on the page, or on the page's text colour when it is a label for dark fills
+        // text shows on the page, or on the page's text color when it is a label for dark fills
         text: (st, v) =>
           `<div class="odv-st odv-st-bare" data-link="text-${st}" style="color:${v}${contrast(v, canvas) < 3 ? `;background:${contrast(v, surf(m, "color.text.primary")) >= 3 ? surf(m, "color.text.primary") : surf(m, "color.surface.inverse")}` : ""}"><span class="n">${st}</span><span class="x">${v}</span><span class="aa">Aa</span></div>`,
       };
@@ -501,7 +501,7 @@ function colourScales(scheme, g, fams) {
         : `<div class="odv-lane"><p class="odv-lane-h">Not used yet in this theme</p><div class="odv-sts" style="grid-template-columns:${cols(steps, new Set())}">${steps.map(slot).join("")}</div></div>`;
       const other = m === "light" ? "dark" : "light";
       const fx = fixed.length
-        ? `<div class="odv-lane"><p class="odv-lane-h">From the ${other} scale, fixed colours</p><div class="odv-kvs">${fixed.map((r) => row(r, null)).join("")}</div></div>`
+        ? `<div class="odv-lane"><p class="odv-lane-h">From the ${other} scale, fixed colors</p><div class="odv-kvs">${fixed.map((r) => row(r, null)).join("")}</div></div>`
         : "";
       const style = `background:${surf(m, "color.surface.canvas")};color:${surf(m, "color.text.primary")};--odv-muted:${surf(m, "color.text.muted")};--odv-edge:${surf(m, "color.border.default")};--odv-ring:${surf(m, "color.text.primary")};--odv-dash:${surf(m, "color.border.placeholder") || surf(m, "color.border.default")}`;
       return `<div class="odv-scale-p" data-mode="${m}" role="tabpanel" style="${style}">${lanes}${empty}${fx}</div>`;
@@ -513,7 +513,7 @@ function colourScales(scheme, g, fams) {
     );
   }
   return (
-    `Each colour is a whole scale in each theme. The lanes show what its tokens paint: backgrounds, edges and rings, and text. A filled step is in use; an empty slot waits for one. Under each scale, one row per token: its colour, its name, the step it points at and the value. Point at a row to find its step. A row links to the token's guidance in [Foundations](../foundations/color).\n\n` +
+    `Each color is a whole scale in each theme. The lanes show what its tokens paint: backgrounds, edges and rings, and text. A filled step is in use; an empty slot waits for one. Under each scale, one row per token: its color, its name, the step it points at and the value. Point at a row to find its step. A row links to the token's guidance in [Foundations](../foundations/color).\n\n` +
     out.join("\n\n")
   );
 }
@@ -523,21 +523,21 @@ const cssId = (id) =>
     .replace(/[^a-z0-9-]+/gi, "-")
     .toLowerCase();
 
-/** The colour scope's guidance, from the grammar: the urgency order, what each key is for, and its pairs. */
-function colourGuidance(g) {
+/** The color scope's guidance, from the grammar: the urgency order, what each key is for, and its pairs. */
+function colorGuidance(g) {
   const s = g.semantics;
   if (!s) return "";
   const keys = s.keys;
   return (
     `\n## Status urgency\n\n${s.urgency.description}\n\n${s.urgency.order.map((id) => `\`${id}\``).join(" → ")}\n` +
-    `\n## What each colour is for\n\n| Token | What it is for | Not for |\n| --- | --- | --- |\n` +
+    `\n## What each color is for\n\n| Token | What it is for | Not for |\n| --- | --- | --- |\n` +
     keys
       .map(
         (k) =>
           `| <span id="for-${cssId(k.id)}"></span>\`${k.id}\` | ${esc(k.intent)} | ${k.not_for.map((n) => `${esc(n.when)}: \`${n.use}\``).join("<br />") || "—"} |`,
       )
       .join("\n") +
-    `\n\n## Pairs at a glance\n\nWhich colour may sit on which fill, and the contrast it keeps there in every brand and mode. Text pairs by tone: every fill says whether it is light or dark, and the text on it is \`color.text.on-light\` or \`color.text.on-dark\`. The page's own text is the set of its own surfaces. The harness checks every pair.\n\n| Token | Sits on | Contrast |\n| --- | --- | --- |\n` +
+    `\n\n## Pairs at a glance\n\nWhich color may sit on which fill, and the contrast it keeps there in every brand and mode. Text pairs by tone: every fill says whether it is light or dark, and the text on it is \`color.text.on-light\` or \`color.text.on-dark\`. The page's own text is the set of its own surfaces. The harness checks every pair.\n\n| Token | Sits on | Contrast |\n| --- | --- | --- |\n` +
     keys
       .filter((k) => k.pairs)
       .map(
@@ -1076,7 +1076,7 @@ export function docsPages(
       )
       .join("\n\n") +
     "\n";
-  // The colour page leads with the colours in use (OD-182): the key colours as a band, the surfaces
+  // The color page leads with the colors in use (OD-182): the key colors as a band, the surfaces
   // as a stack in light and dark, and each status in use with its contrast, computed from the tokens.
   const colorVisuals = () => {
     const band = [
@@ -1130,7 +1130,7 @@ export function docsPages(
         ),
       ) +
       (sts.length
-        ? `\n\n## Status colours in use\n\nEach status label always gets the same colour, with its dot, so colour is never the only cue. The ratio is the status colour on its subtle fill, computed from the tokens.\n\n` +
+        ? `\n\n## Status colors in use\n\nEach status label always gets the same color, with its dot, so color is never the only cue. The ratio is the status color on its subtle fill, computed from the tokens.\n\n` +
           perBrand((F, D) =>
             h(
               `<div class="odv-card">`,
@@ -1150,7 +1150,7 @@ export function docsPages(
     );
   };
   // The Theming page (OD-211): what a mode is, shown not listed. A live preview per mode from its
-  // real colours, then what a mode changes (a table per job group, every mode side by side), then
+  // real colors, then what a mode changes (a table per job group, every mode side by side), then
   // what stays the same in every mode. Multi-brand gets one set per brand; the brand picked in the
   // top bar shows (generate.mjs scopes it), and without that CSS every brand shows.
   const themingVisuals = () => {
@@ -1225,7 +1225,7 @@ export function docsPages(
       const groups = [
         ...new Set(jobs.map((p) => p.split(".").slice(0, 2).join("."))),
       ];
-      // Every colour cell follows its token to the primitive, the way the scale view does (OD-223):
+      // Every color cell follows its token to the primitive, the way the scale view does (OD-223):
       // the primitive's name, the neutral step it goes through, and a swatch. Never a bare value.
       const cell = (th, p) => {
         const f = p.startsWith("color.")
@@ -1265,7 +1265,7 @@ export function docsPages(
       );
     };
     return (
-      `${esc(scheme.name)} has **${modes.length} mode${modes.length === 1 ? "" : "s"}** and **${brandIds.length} brand${brandIds.length === 1 ? "" : "s"}**. A mode swaps the colours; corners and type stay the same in every mode.${brandIds.length > 1 ? " Pick a brand in the top bar to see its set." : ""}\n\n` +
+      `${esc(scheme.name)} has **${modes.length} mode${modes.length === 1 ? "" : "s"}** and **${brandIds.length} brand${brandIds.length === 1 ? "" : "s"}**. A mode swaps the colors; corners and type stay the same in every mode.${brandIds.length > 1 ? " Pick a brand in the top bar to see its set." : ""}\n\n` +
       h(`<div class="odv-theming">`, brandIds.map(brandSet), `</div>`) +
       "\n\n"
     );
@@ -1341,7 +1341,7 @@ export function docsPages(
             : "")) +
       `\n\n## Where it lands\n\n${(sc.lands_in ?? []).map((c) => `- ${title(c)}`).join("\n")}\n\n` +
       `## When to use what\n\n${RULES}${usage.map(rule).join("\n")}\n` +
-      (sc.id === "color" ? colourGuidance(g) + fillTones() : "");
+      (sc.id === "color" ? colorGuidance(g) + fillTones() : "");
   });
 
   // Primitives (OD-184): every raw value, and what points to it in which mode. Unused primitives stay
@@ -1412,7 +1412,7 @@ export function docsPages(
   // The Primitives index (OD-211), in the Foundations style: a card per kind in groups, each with a
   // robot, a specimen drawn from the raw values, and how many are in use. The table closes the page.
   const PRIM_GROUPS = [
-    ["Colour", ["color"]],
+    ["Color", ["color"]],
     ["Space and shape", ["space-and-size", "shape"]],
     ["Type, motion and effects", ["type", "motion", "effects"]],
   ];
@@ -1524,7 +1524,7 @@ export function docsPages(
     `# Primitives\n\n` +
     h(
       `<div class="odv-pagehero"><div><p>`,
-      `The raw values of ${esc(scheme.name)}. Primitives hold the values; semantic tokens give them a job (see <a href="../foundations/">Foundations</a>), and components read only the jobs. Colour ramps stay whole, so some colour steps wait for a use; every other primitive is read by something.`,
+      `The raw values of ${esc(scheme.name)}. Primitives hold the values; semantic tokens give them a job (see <a href="../foundations/">Foundations</a>), and components read only the jobs. Color ramps stay whole, so some color steps wait for a use; every other primitive is read by something.`,
       `</p><div class="odv-stats"><span><b>${prims.length}</b>Primitives</span><span><b>${nUsed}</b>In use</span><span><b>${prims.length - nUsed}</b>Spare</span></div></div>`,
       robot(scheme.id, "odv-pagehero-robot"),
       `</div>`,
@@ -1561,10 +1561,10 @@ export function docsPages(
       }) +
       NOTE +
       `# ${k.title}\n\n${k.list.length} primitives, ${k.list.filter((x) => usedBy[x.path]).length} used.\n\n` +
-      // Colours lead with each family as a ramp (OD-182): every step, its value, and how many tokens
+      // Colors lead with each family as a ramp (OD-182): every step, its value, and how many tokens
       // use it. Hover a step for the list; the table under it has the detail.
       (k.id === "color"
-        ? colourScales(scheme, g, fams) + `\n\n## Every colour\n\n`
+        ? colorScales(scheme, g, fams) + `\n\n## Every color\n\n`
         : "") +
       (fams.length > 1
         ? fams
@@ -1733,7 +1733,7 @@ export function docsPages(
   const tokensRead = (name) => {
     const rows = readsOf(name);
     if (!rows.length)
-      return `## Tokens it reads\n\n${title(name)} sets no colours, corners or shadows of its own; it takes them from the components inside it.`;
+      return `## Tokens it reads\n\n${title(name)} sets no colors, corners or shadows of its own; it takes them from the components inside it.`;
     const ths = scheme.themes;
     const tokens = new Set(rows.map((r) => r.path)).size;
     return (
@@ -2118,7 +2118,7 @@ export function docsPages(
       ? `- Brand: set \`data-brand\` on \`<html>\` to ${brands.map(([b]) => `\`${b}\``).join(", ")}.\n`
       : "") +
     `\n## Brands\n\n${brands.map(([b, x]) => `- **${x.label}** (\`${b}\`): ${x.description}`).join("\n")}\n\n` +
-    themeColours(scheme, g);
+    themeColors(scheme, g);
 
   // For agents
   pages["agents.md"] =
@@ -2129,7 +2129,7 @@ export function docsPages(
     }) +
     NOTE +
     `# For agents\n\nThis design system ships an agent layer, so an AI builds the way the system would and can say why.\n\n` +
-    `- **AGENTS.md** in the project root: the rules that always apply. In a design system project it is short, and \`context/\` holds one booklet per component, colour and task, with a router (\`context/index.json\`) that says what to load for a file.\n` +
+    `- **AGENTS.md** in the project root: the rules that always apply. In a design system project it is short, and \`context/\` holds one booklet per component, color and task, with a router (\`context/index.json\`) that says what to load for a file.\n` +
     `- **The agent skill** in \`.claude/skills/open-ds/SKILL.md\`: how to pick, read and follow the scheme.\n` +
     `- **The full scheme** in \`.open-ds/scheme.json\`: every answer with its reason.\n` +
     `- **llms.txt** next to these docs: an index of these pages for agents.\n\n` +

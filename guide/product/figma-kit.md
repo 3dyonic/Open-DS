@@ -11,9 +11,9 @@ Each scheme has a Figma kit (OD-149). It is generated from the scheme, like the 
 
 - **Variables.** Two collections, Semantic and Component, with one mode per theme (Light and Dark; for Multi-brand, light and dark for each brand). Component variables alias semantic ones, as in `tokens.css`. Every variable carries its CSS name as its web code syntax, for example `var(--button-primary-background)`, and a scope, so it shows only where it fits.
 - **Styles.** A text style per type role, in the scheme's font (Inter when Figma does not have it), and effect styles for elevation.
-- **Foundations.** Every colour in every theme, the type roles, and the spacing, size and radius scale, all bound to the variables.
+- **Foundations.** Every color in every theme, the type roles, and the spacing, size and radius scale, all bound to the variables.
 - **Components.** The ones with component keys: button, input, checkbox and switch, badge, card, table, tabs, menu and tooltip. They read only component variables. The full inventory is listed on the Scheme page.
-- **The cover.** The scheme's name and summary in its own colours, a button from the kit, and its themes and counts.
+- **The cover.** The scheme's name and summary in its own colors, a button from the kit, and its themes and counts.
 - **The Scheme page.** Every question with its answer, why and because, then the voice, when to use what, and the inventory.
 
 ## Make or update a kit

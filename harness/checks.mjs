@@ -298,7 +298,7 @@ export const CHECKS = {
   "semantics-guidance": {
     requires: ["schemes/grammar.json", ...SCHEMES.map((s) => `schemes/${s}.json`)],
     run: (c) => {
-      // Every colour semantic has guidance in the grammar; every key it names exists; every pair keeps
+      // Every color semantic has guidance in the grammar; every key it names exists; every pair keeps
       // its contrast in every brand and mode. No exceptions: a failing pair fails the check.
       const g = c.json("schemes", "grammar.json");
       const guide = new Map(g.semantics.keys.map((k) => [k.id, k]));
@@ -368,7 +368,7 @@ export const CHECKS = {
       return gaps.length
         ? bad(`${gaps.length} problems: ${gaps.slice(0, 5).join("; ")}`)
         : ok(
-            `${guide.size} colour semantics have guidance; ${pairs} pairs keep their contrast in every brand and mode` +
+            `${guide.size} color semantics have guidance; ${pairs} pairs keep their contrast in every brand and mode` +
               (waiting.size ? `, except on fills that wait for a fix: ${[...waiting].join("; ")}` : ""),
           );
     },
@@ -479,7 +479,7 @@ export const CHECKS = {
   "options-used": {
     requires: ["schemes/grammar.json"],
     run: (c) => {
-      // OD-222: outside the groups kept whole (colour ramps), every primitive is read by a semantic, a theme,
+      // OD-222: outside the groups kept whole (color ramps), every primitive is read by a semantic, a theme,
       // a component key or another primitive. An option nothing reads is a choice nobody made.
       const used = c.json("schemes", "grammar.json").options?.used;
       if (!used) return bad("the grammar's options say nothing about unused options");
@@ -526,8 +526,8 @@ export const CHECKS = {
   "scales-generated": {
     requires: ["cli/src/ramps.mjs"],
     run: async (c) => {
-      // OD-223: every coloured hue's scales are whole and equal to the generator's output from its
-      // recorded key colours and adjustments. A hand-edited step fails.
+      // OD-223: every colored hue's scales are whole and equal to the generator's output from its
+      // recorded key colors and adjustments. A hand-edited step fails.
       const { scale, STEPS } = await import(pathToFileURL(c.p("cli/src/ramps.mjs")).href);
       const gaps = [];
       let n = 0;
@@ -551,7 +551,65 @@ export const CHECKS = {
       }
       return gaps.length
         ? bad(gaps.slice(0, 6).join("; "))
-        : ok(`${n} coloured hues have whole scales, generated from their key colours`);
+        : ok(`${n} colored hues have whole scales, generated from their key colors`);
+    },
+  },
+
+  "hints-measured": {
+    requires: ["schemes/grammar.json", "cli/src/ramps.mjs"],
+    run: async (c) => {
+      // OD-230: the decision hints that can be measured hold. Every hint names the decisions it came
+      // from; every chroma adjustment sits on a step that needed it (generated chroma below the 0.04
+      // target, OD-231); and status text on dark shows its hue (chroma 0.04+) at 7:1 or more.
+      const { scale, lch, contrast } = await import(pathToFileURL(c.p("cli/src/ramps.mjs")).href);
+      const { follow } = await import(pathToFileURL(c.p("cli/src/scale-map.mjs")).href);
+      const g = c.json("schemes", "grammar.json");
+      const hints = g.scopes.flatMap((s) => (s.hints ?? []).map((h) => ({ ...h, scope: s.id })));
+      const gaps = [];
+      if (!hints.length) gaps.push("the grammar has no decision hints");
+      for (const h of hints) if (!h.from?.length) gaps.push(`hint ${h.scope}.${h.id} names no decision`);
+      const TARGET = 0.04;
+      let moves = 0;
+      let texts = 0;
+      for (const id of SCHEMES) {
+        const s = c.json("schemes", `${id}.json`);
+        const at = (p) =>
+          String(p.split(".").reduce((n, k) => n && n[k], s.tokens.primitive)?.$value ?? "").slice(0, 7);
+        for (const [hue, grp] of Object.entries(s.tokens.primitive.color)) {
+          const spec = grp?.$extensions?.["open-ds"];
+          for (const mode of ["light", "dark"])
+            for (const [st, adj] of Object.entries(spec?.[mode]?.adjust ?? {})) {
+              if (adj.C == null || adj.C <= 0) continue;
+              moves++;
+              if (mode !== "light") continue;
+              const generated = scale({ key: spec.light.key }, "light")[st];
+              if (lch(generated)[1] >= TARGET)
+                gaps.push(
+                  `${id}: ${hue}.${mode}.${st} takes more chroma, but its generated chroma already meets ${TARGET}`,
+                );
+            }
+        }
+        for (const b of Object.keys(s.tokens.brands))
+          for (const k of ["info", "success", "warning", "danger"]) {
+            const t = follow(s.tokens, b, "dark", `color.text.${k}-on-dark`);
+            const f = follow(s.tokens, b, "dark", `color.status.${k}.subtle`);
+            if (!t || !f) continue;
+            texts++;
+            const tv = at(t.prim);
+            const fv = at(f.prim);
+            if (lch(tv)[1] < TARGET - 0.002)
+              gaps.push(`${id}/${b}: text.${k}-on-dark reads as white (chroma ${lch(tv)[1].toFixed(3)})`);
+            if (contrast(tv, fv) < 7)
+              gaps.push(
+                `${id}/${b}: text.${k}-on-dark is ${contrast(tv, fv).toFixed(1)}:1 on its dark tint, under 7:1`,
+              );
+          }
+      }
+      return gaps.length
+        ? bad(gaps.slice(0, 6).join("; "))
+        : ok(
+            `${hints.length} decision hints, each from a decision; ${moves} chroma moves, each where needed; ${texts} status texts on dark show their hue at 7:1 or more`,
+          );
     },
   },
 
@@ -604,8 +662,8 @@ export const CHECKS = {
   "focus-ring-gap": {
     requires: ["ui/src/components"],
     run: (c) => {
-      // OD-222: the focus ring is the accent, often the colour of the fill it surrounds, so every ring
-      // keeps a 2px gap in the canvas colour between it and the control.
+      // OD-222: the focus ring is the accent, often the color of the fill it surrounds, so every ring
+      // keeps a 2px gap in the canvas color between it and the control.
       const gaps = [];
       for (const f of c.walk("ui/src/components", (x) => x.endsWith(".tsx")))
         for (const cls of c.read(f).match(/"[^"\n]*"/g) ?? []) {
@@ -616,10 +674,10 @@ export const CHECKS = {
     },
   },
 
-  "selection-not-colour-alone": {
+  "selection-not-color-alone": {
     requires: ["ui/src/components"],
     run: (c) => {
-      // OD-222: a selected or current item shows an edge as well as a fill, so selection is never colour alone.
+      // OD-222: a selected or current item shows an edge as well as a fill, so selection is never color alone.
       const gaps = [];
       for (const f of c.walk("ui/src/components", (x) => x.endsWith(".tsx")))
         for (const cls of c.read(f).match(/"[^"\n]*"/g) ?? []) {
@@ -1331,7 +1389,7 @@ export const CHECKS = {
     requires: ["cli/src/brief.mjs"],
     run: async () => {
       // OD-205: the short form keeps what an agent needs, from each scheme's own rules. A situation's
-      // route holds its rule; build.md holds every layout and colour rule and write.md every voice
+      // route holds its rule; build.md holds every layout and color rule and write.md every voice
       // rule; a component's booklet holds how the scheme uses each variant, or that it does not.
       const { booklets, routeFile } = await import("../cli/src/brief.mjs");
       const { componentsFor } = await import("../cli/src/components.mjs");
@@ -1593,7 +1651,7 @@ export const CHECKS = {
       const offenders = [];
       for (const f of c.walk("ui/src/components", (x) => x.endsWith(".tsx"))) {
         const src = c.read(f);
-        if (/#[0-9a-fA-F]{3,8}\b|rgb\(|hsl\(|oklch\(/.test(src)) offenders.push(`${f}: raw colour`);
+        if (/#[0-9a-fA-F]{3,8}\b|rgb\(|hsl\(|oklch\(/.test(src)) offenders.push(`${f}: raw color`);
         if (/\b(bg|text|border)-(red|blue|gray|slate|zinc|neutral|green|amber)-\d/.test(src))
           offenders.push(`${f}: palette class`);
       }
@@ -1988,7 +2046,7 @@ export const CHECKS = {
           if (lacking.length) gaps.push(`${id} ${p}: no ${lacking.join(", ")}`);
         }
         // OD-182: the docs lead with visuals. The home shows a product screen and the answers, the
-        // colour page shows its colours in use, component pages show each variant live.
+        // color page shows its colors in use, component pages show each variant live.
         const visual = [
           ["index.md", "odv-hero"],
           ["index.md", "odv-tile"],
@@ -2037,7 +2095,7 @@ export const CHECKS = {
       // A warning is a defect too: broken anchors once hid behind one.
       const warn = r.out.split("\n").filter((l) => /\[WARNING\]/.test(l));
       if (warn.length) return bad(`docs build warns: ${warn.slice(0, 3).join("; ")}`);
-      // OD-207: open each scheme's page in a browser: its colours, the switch, a left-out component.
+      // OD-207: open each scheme's page in a browser: its colors, the switch, a left-out component.
       const v = c.sh("node", ["harness/docs-renders.cjs", c.p("docs")]);
       let res;
       try {
@@ -2055,16 +2113,14 @@ export const CHECKS = {
               .map((f) => `${f.id}: ${f.problem}`)
               .join("; "),
           )
-        : ok(
-            `docs build; ${res.pages} pages open in a browser: every scheme in its colours, the switch keeps the page`,
-          );
+        : ok(`docs build; ${res.pages} pages open in a browser: every scheme in its colors, the switch keeps the page`);
     },
   },
   "docs-schemes": {
     requires: ["docs/scripts/generate.mjs", "docs/schemes.json"],
     run: (c) => {
       // OD-207: the repo docs hold every scheme, and switching never lands on a missing page or
-      // another scheme's colours. Every scheme has the same pages; each scheme's tokens apply only on
+      // another scheme's colors. Every scheme has the same pages; each scheme's tokens apply only on
       // its pages; category links and the home slug point inside the scheme's folder.
       const schemes = c.json("docs/schemes.json");
       const gaps = [];

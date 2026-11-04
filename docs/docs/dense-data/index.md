@@ -60,7 +60,7 @@ Every decision in this system follows from these answers.
 ### Human factors
 
 - **What must the interface protect?** People keep their place. Losing your place in a long table costs time and errors. Because: What is the main task? Scan and compare.
-- **How do people recall the interface?** They learn it and recognise it. Daily users learn the interface and recognise it. Because: Who uses it most? Daily experts.
+- **How do people recall the interface?** They learn it and recognize it. Daily users learn the interface and recognize it. Because: Who uses it most? Daily experts.
 
 ### Outcomes
 

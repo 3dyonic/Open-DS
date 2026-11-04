@@ -8,11 +8,11 @@ hide_table_of_contents: true
 
 # Primitives
 
-<div class="odv-pagehero"><div><p>The raw values of Brand expressive. Primitives hold the values; semantic tokens give them a job (see <a href="../foundations/">Foundations</a>), and components read only the jobs. Colour ramps stay whole, so some colour steps wait for a use; every other primitive is read by something.</p><div class="odv-stats"><span><b>174</b>Primitives</span><span><b>96</b>In use</span><span><b>78</b>Spare</span></div></div><span class="odv-robot odv-pagehero-robot"><img class="odv-robot-day" src="/robots/brand-expressive.webp" alt="" loading="lazy"/><img class="odv-robot-night" src="/robots/brand-expressive-dark.webp" alt="" loading="lazy"/></span></div>
+<div class="odv-pagehero"><div><p>The raw values of Brand expressive. Primitives hold the values; semantic tokens give them a job (see <a href="../foundations/">Foundations</a>), and components read only the jobs. Color ramps stay whole, so some color steps wait for a use; every other primitive is read by something.</p><div class="odv-stats"><span><b>174</b>Primitives</span><span><b>92</b>In use</span><span><b>82</b>Spare</span></div></div><span class="odv-robot odv-pagehero-robot"><img class="odv-robot-day" src="/robots/brand-expressive.webp" alt="" loading="lazy"/><img class="odv-robot-night" src="/robots/brand-expressive-dark.webp" alt="" loading="lazy"/></span></div>
 
-## Colour
+## Color
 
-<div class="odv-scards"><a class="odv-scard" href="./color"><span class="odv-scard-art"><span class="odv-robot "><img class="odv-robot-day" src="/robots/swatch.webp" alt="" loading="lazy"/><img class="odv-robot-night" src="/robots/swatch-dark.webp" alt="" loading="lazy"/></span></span><span class="odv-scard-body"><span class="odv-scard-title">Color</span><div class="odv-spec"><i class="odv-sw" style="background:#6B544A" title="color.taupe.light.600"></i><i class="odv-sw" style="background:#D61F7A" title="color.pink.light.600"></i><i class="odv-sw" style="background:#1F7A3A" title="color.green.light.600"></i><i class="odv-sw" style="background:#8A5600" title="color.amber.light.600"></i><i class="odv-sw" style="background:#C42B2B" title="color.red.light.600"></i><i class="odv-sw" style="background:#0000008C" title="color.black.light.scrim"></i><i class="odv-sw" style="background:#083C93" title="color.blue.light.600"></i></div><span class="odv-scard-why">136 primitives · 58 in use</span><span class="odv-meter" role="img" aria-label="58 of 136 in use"><i style="width:43%"></i></span></span></a></div>
+<div class="odv-scards"><a class="odv-scard" href="./color"><span class="odv-scard-art"><span class="odv-robot "><img class="odv-robot-day" src="/robots/swatch.webp" alt="" loading="lazy"/><img class="odv-robot-night" src="/robots/swatch-dark.webp" alt="" loading="lazy"/></span></span><span class="odv-scard-body"><span class="odv-scard-title">Color</span><div class="odv-spec"><i class="odv-sw" style="background:#6B544A" title="color.taupe.light.600"></i><i class="odv-sw" style="background:#D61F7A" title="color.pink.light.600"></i><i class="odv-sw" style="background:#1F7A3A" title="color.green.light.600"></i><i class="odv-sw" style="background:#8A5600" title="color.amber.light.600"></i><i class="odv-sw" style="background:#C42B2B" title="color.red.light.600"></i><i class="odv-sw" style="background:#0000008C" title="color.black.light.scrim"></i><i class="odv-sw" style="background:#083C93" title="color.blue.light.600"></i></div><span class="odv-scard-why">136 primitives · 54 in use</span><span class="odv-meter" role="img" aria-label="54 of 136 in use"><i style="width:40%"></i></span></span></a></div>
 
 ## Space and shape
 
@@ -24,11 +24,11 @@ hide_table_of_contents: true
 
 ## Every kind
 
-**174** primitives. **96** are used by a semantic token, a theme or a component key. **78** are not used yet.
+**174** primitives. **92** are used by a semantic token, a theme or a component key. **82** are not used yet.
 
 | Kind | Primitives | Used |
 | --- | --- | --- |
-| [Color](./color.md) | 136 | 58 |
+| [Color](./color.md) | 136 | 54 |
 | [Space and size](./space-and-size.md) | 10 | 10 |
 | [Shape](./shape.md) | 5 | 5 |
 | [Type](./type.md) | 14 | 14 |

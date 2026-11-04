@@ -69,7 +69,7 @@ Every decision in this system follows from these answers.
 
 ### Brand
 
-- **What should the brand feel like?** Neutral and adaptable. A neutral base each brand can colour. Because: How many brands or products share the system? Many.
+- **What should the brand feel like?** Neutral and adaptable. A neutral base each brand can color. Because: How many brands or products share the system? Many.
 - **How visible is the brand in the interface?** Present. Each brand is clearly present. Because: How many brands or products share the system? Many.
 
 ### Use scenarios
