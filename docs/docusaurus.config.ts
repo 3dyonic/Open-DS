@@ -34,7 +34,11 @@ const config: Config = {
       innerHTML: `(function(){var s=${ids},p=location.pathname.slice(${BASE.length}).split("/")[0],h=document.documentElement;if(s.indexOf(p)>=0)h.setAttribute("data-scheme",p);try{h.setAttribute("data-brand",localStorage.getItem("open-ds-brand")||"aster")}catch(e){h.setAttribute("data-brand","aster")}})();`,
     },
   ],
-  clientModules: ["./src/clientModules/scheme.ts", "./src/clientModules/embed-mode.ts"],
+  clientModules: [
+    "./src/clientModules/scheme.ts",
+    "./src/clientModules/embed-mode.ts",
+    "./src/clientModules/scales.ts",
+  ],
   presets: [
     [
       "classic",

@@ -8,6 +8,7 @@ import { join } from "node:path";
 import { questions } from "./schemes.mjs";
 import { SHADCN, SHADCN_SCALE } from "./shadcn.mjs";
 import { sitsOn, toneOf, toneRole } from "./tones.mjs";
+import { LANES, follow, laneOf, scaleMap } from "./scale-map.mjs";
 import { componentGuide, followers } from "./component.mjs";
 
 // Which component keys each shipped component reads.
@@ -342,6 +343,172 @@ const toneWords = (id) => {
     : `Fills whose tone is ${r?.tone}`;
 };
 
+/**
+ * The Themes page's key colours (OD-223): the tokens the grammar names, in every theme, each as the
+ * primitive it points at, the neutral step it goes through, and its value. The scheme's gray first.
+ */
+function themeColours(scheme, g) {
+  const t = scheme.tokens;
+  const brands = Object.keys(t.brands);
+  const kc = g.semantics?.key_colours;
+  if (!kc) return "";
+  const at = (p) =>
+    p.split(".").reduce((n, k) => n && n[k], t.primitive)?.$value;
+  const grays = brands
+    .map((b) => ({ b, n: t.brands[b].theme.neutral }))
+    .filter((x) => x.n);
+  const same = new Set(grays.map((x) => x.n.gray)).size === 1;
+  const gray = grays.length
+    ? (same ? grays.slice(0, 1) : grays)
+        .map(
+          (x) =>
+            `- ${brands.length > 1 ? (same ? "**Every brand**: " : `**${t.brands[x.b].label ?? x.b}**: `) : ""}the neutral is \`${x.n.gray}\` (${x.n.temperature}). ${esc(x.n.why)}`,
+        )
+        .join("\n") + "\n\n"
+    : "";
+  const cell = (th, path) => {
+    const f = follow(t, th.brand ?? brands[0], th.mode ?? th.id, path);
+    if (!f) return "—";
+    const v = String(at(f.prim) ?? "")
+      .slice(0, 9)
+      .toUpperCase();
+    return `<span class="odv-tc"><i style="background:${v};color:${ink(v)}">Aa</i><span><code>${f.prim.replace(/^color\./, "")}</code><small>${f.via ? `via ${f.via.replace(/^color\./, "")} · ` : ""}${v}</small></span></span>`;
+  };
+  return (
+    `## Key colors in each theme\n\n${esc(kc.description)} Each shows the primitive it points at, then its value.\n\n` +
+    gray +
+    `| Token | ${scheme.themes.map((x) => x.id).join(" | ")} |\n| --- | ${scheme.themes.map(() => "---").join(" | ")} |\n` +
+    kc.tokens
+      .map(
+        (p) =>
+          `| \`${p.replace(/\.@$/, "")}\` | ${scheme.themes.map((x) => cell(x, p)).join(" | ")} |`,
+      )
+      .join("\n") +
+    "\n"
+  );
+}
+
+/**
+ * The scale view (OD-223): for each hue, a light and a dark tab. Each tab shows the lanes that hue's
+ * tokens paint (backgrounds, edges and rings, text), each as the whole scale, the used steps filled and
+ * the rest empty slots, then one row per token: its colour, its name, the step and the value. A row and
+ * its step light up together on hover (src/clientModules/scales.ts). A row links to the token's guidance.
+ */
+function colourScales(scheme, g, fams) {
+  const t = scheme.tokens;
+  const brands = Object.keys(t.brands);
+  const many = brands.length > 1;
+  const at = (p) =>
+    t.primitive &&
+    p.split(".").reduce((n, k) => n && n[k], t.primitive)?.$value;
+  const hex = (p) =>
+    String(at(p) ?? "")
+      .slice(0, 9)
+      .toUpperCase();
+  const maps = {};
+  for (const b of brands)
+    for (const m of ["light", "dark"]) maps[`${b}|${m}`] = scaleMap(t, b, m);
+  const guided = new Set(
+    (g.semantics?.keys ?? []).map((k) => k.id.replace(/\.@$/, "")),
+  );
+  const surf = (m, path) => {
+    const f = follow(t, brands[0], m, path);
+    return f ? hex(f.prim) : "";
+  };
+  // a token, with the brands it lands in when not every brand
+  const entries = (hue, m, side) => {
+    const rows = new Map();
+    for (const b of brands)
+      for (const [prim, list] of Object.entries(maps[`${b}|${m}`])) {
+        const [, h, mm, st] = prim.split(".");
+        if (h !== hue || (side === "own") !== (mm === m)) continue;
+        for (const x of list) {
+          const key = `${x.token}|${prim}`;
+          const r = rows.get(key) ?? { ...x, prim, step: st, brands: [] };
+          r.brands.push(b);
+          rows.set(key, r);
+        }
+      }
+    return [...rows.values()];
+  };
+  const row = (r, lane) => {
+    const name = `<span class="odv-kv-k">${r.token}</span>`;
+    const tag =
+      many && r.brands.length < brands.length
+        ? `<span class="odv-kv-tag">${r.brands.join(", ")}</span>`
+        : "";
+    const val = `<span class="odv-kv-v"><b>${r.prim.replace(/^color\./, "")}</b>${r.via ? `<small>via ${r.via}</small>` : ""}<small>${hex(r.prim)}</small></span>`;
+    const inner = `<i class="odv-kv-sw" style="background:${hex(r.prim)}"></i><span>${name}${tag}</span>${val}`;
+    const link = lane ? ` data-link="${lane}-${r.step}"` : "";
+    const id = `color.${r.token}`;
+    return guided.has(id)
+      ? `<a class="odv-kv"${link} href="../foundations/color?for=${cssId(id)}#what-each-colour-is-for">${inner}</a>`
+      : `<div class="odv-kv"${link} tabindex="0">${inner}</div>`;
+  };
+  const hues = [
+    ...new Set(
+      fams.filter((f) => f.startsWith("color.")).map((f) => f.split(".")[1]),
+    ),
+  ];
+  const out = [];
+  for (const hue of hues) {
+    const modes = ["light", "dark"].filter(
+      (m) => t.primitive?.color?.[hue]?.[m],
+    );
+    if (!modes.length) continue;
+    const panels = modes.map((m) => {
+      const steps = Object.keys(t.primitive.color[hue][m]).filter(
+        (k) => !k.startsWith("$"),
+      );
+      const own = entries(hue, m, "own");
+      const canvas = surf(m, "color.surface.canvas");
+      const fixed = entries(hue, m, "other");
+      const slot = (st) =>
+        `<div class="odv-sl"><span class="n">${st}</span><i style="background:${hex(`color.${hue}.${m}.${st}`)}"></i></div>`;
+      const filled = {
+        fill: (st, v) =>
+          `<div class="odv-st" data-link="fill-${st}" style="background:${v};color:${ink(v)}"><span class="n">${st}</span><span class="x">${v}</span></div>`,
+        edge: (st, v) =>
+          `<div class="odv-st odv-st-bare" data-link="edge-${st}"><span class="n">${st}</span><span class="x">${v}</span><span class="mk"><i style="background:${v}"></i><b style="background:${v}"></b></span></div>`,
+        // text shows on the page, or on the page's text colour when it is a label for dark fills
+        text: (st, v) =>
+          `<div class="odv-st odv-st-bare" data-link="text-${st}" style="color:${v}${contrast(v, canvas) < 3 ? `;background:${contrast(v, surf(m, "color.text.primary")) >= 3 ? surf(m, "color.text.primary") : surf(m, "color.surface.inverse")}` : ""}"><span class="n">${st}</span><span class="x">${v}</span><span class="aa">Aa</span></div>`,
+      };
+      const lanes = LANES.map(({ id, title }) => {
+        const list = own
+          .filter((r) => laneOf(r.token) === id)
+          .sort((a, b) => steps.indexOf(a.step) - steps.indexOf(b.step));
+        if (!list.length) return "";
+        const on = new Set(list.map((r) => r.step));
+        return `<div class="odv-lane"><p class="odv-lane-h">${title}</p><div class="odv-sts" style="--n:${steps.length}">${steps.map((st) => (on.has(st) ? filled[id](st, hex(`color.${hue}.${m}.${st}`)) : slot(st))).join("")}</div><div class="odv-kvs">${list.map((r) => row(r, id)).join("")}</div></div>`;
+      }).join("");
+      const empty = own.length
+        ? ""
+        : `<div class="odv-lane"><p class="odv-lane-h">Not used yet in this theme</p><div class="odv-sts" style="--n:${steps.length}">${steps.map(slot).join("")}</div></div>`;
+      const other = m === "light" ? "dark" : "light";
+      const fx = fixed.length
+        ? `<div class="odv-lane"><p class="odv-lane-h">From the ${other} scale, fixed colours</p><div class="odv-kvs">${fixed.map((r) => row(r, null)).join("")}</div></div>`
+        : "";
+      const style = `background:${surf(m, "color.surface.canvas")};color:${surf(m, "color.text.primary")};--odv-muted:${surf(m, "color.text.muted")};--odv-edge:${surf(m, "color.border.default")};--odv-ring:${surf(m, "color.text.primary")}`;
+      return `<div class="odv-scale-p" data-mode="${m}" role="tabpanel" style="${style}">${lanes}${empty}${fx}</div>`;
+    });
+    const n = (m) => entries(hue, m, "own").length;
+    out.push(
+      `## ${title(hue)}\n\n${modes.map((m) => `${n(m)} tokens in ${m}`).join(", ")}.\n\n` +
+        `<div class="odv-scale" data-scale><div class="odv-scale-tabs" role="tablist">${modes.map((m, i) => `<button type="button" role="tab" data-mode="${m}" aria-selected="${i === 0}">${title(m)} theme</button>`).join("")}</div>${panels.join("")}</div>`,
+    );
+  }
+  return (
+    `Each colour is a whole scale in each theme. The lanes show what its tokens paint: backgrounds, edges and rings, and text. A filled step is in use; an empty slot waits for one. Under each scale, one row per token: its colour, its name, the step it points at and the value. Point at a row to find its step. A row links to the token's guidance in [Foundations](../foundations/color).\n\n` +
+    out.join("\n\n")
+  );
+}
+const cssId = (id) =>
+  id
+    .replaceAll(".@", "")
+    .replace(/[^a-z0-9-]+/gi, "-")
+    .toLowerCase();
+
 /** The colour scope's guidance, from the grammar: the urgency order, what each key is for, and its pairs. */
 function colourGuidance(g) {
   const s = g.semantics;
@@ -353,7 +520,7 @@ function colourGuidance(g) {
     keys
       .map(
         (k) =>
-          `| \`${k.id}\` | ${esc(k.intent)} | ${k.not_for.map((n) => `${esc(n.when)}: \`${n.use}\``).join("<br />") || "—"} |`,
+          `| <span id="for-${cssId(k.id)}"></span>\`${k.id}\` | ${esc(k.intent)} | ${k.not_for.map((n) => `${esc(n.when)}: \`${n.use}\``).join("<br />") || "—"} |`,
       )
       .join("\n") +
     `\n\n## Pairs at a glance\n\nWhich colour may sit on which fill, and the contrast it keeps there in every brand and mode. Text pairs by tone: every fill says whether it is light or dark, and the text on it is \`color.text.on-light\` or \`color.text.on-dark\`. The page's own text is the set of its own surfaces. The harness checks every pair.\n\n| Token | Sits on | Contrast |\n| --- | --- | --- |\n` +
@@ -1384,24 +1551,7 @@ export function docsPages(
       // Colours lead with each family as a ramp (OD-182): every step, its value, and how many tokens
       // use it. Hover a step for the list; the table under it has the detail.
       (k.id === "color"
-        ? `<div class="odv-legend"><span>● used by a token</span><span>◌ not used yet</span></div>\n\n` +
-          fams
-            .map((f) => {
-              const list = k.list.filter(
-                (x) => family(x.path) === f && /^#/.test(String(x.ref)),
-              );
-              if (!list.length) return "";
-              return h(
-                `<div class="odv-ramp-h"><code>${f}</code><span>${list.filter((x) => usedBy[x.path]).length} of ${list.length} used</span></div><div class="odv-ramp">`,
-                list.map((x) => {
-                  const u = usedBy[x.path] ?? [];
-                  return `<div class="odv-step${u.length ? "" : " unused"}" style="background:${x.ref};color:${ink(x.ref)}" title="${attr(u.map((y) => `${y.token} (${y.where})`).join(", ") || "Not used yet")}"><span>${x.path.split(".").pop()}</span><span><span class="use">${u.length || ""}</span><br>${x.ref}</span></div>`;
-                }),
-                `</div>`,
-              );
-            })
-            .join("\n\n") +
-          `\n\n## Every colour\n\n`
+        ? colourScales(scheme, g, fams) + `\n\n## Every colour\n\n`
         : "") +
       (fams.length > 1
         ? fams
@@ -1955,20 +2105,7 @@ export function docsPages(
       ? `- Brand: set \`data-brand\` on \`<html>\` to ${brands.map(([b]) => `\`${b}\``).join(", ")}.\n`
       : "") +
     `\n## Brands\n\n${brands.map(([b, x]) => `- **${x.label}** (\`${b}\`): ${x.description}`).join("\n")}\n\n` +
-    `## Key colors in each theme\n\n| Token | ${scheme.themes.map((t) => t.id).join(" | ")} |\n| --- | ${scheme.themes.map(() => "---").join(" | ")} |\n` +
-    [
-      "color.surface.canvas",
-      "color.surface.default",
-      "color.text.primary",
-      "color.action.primary",
-      "color.border.focus",
-    ]
-      .map(
-        (p) =>
-          `| \`${p}\` | ${scheme.themes.map((t) => esc(value(t, p, ""))).join(" | ")} |`,
-      )
-      .join("\n") +
-    "\n";
+    themeColours(scheme, g);
 
   // For agents
   pages["agents.md"] =

@@ -31,9 +31,7 @@
     "used": {
       "say": "outside colour ramps, keep only the options a semantic, theme or component key reads",
       "why": "An option nothing reads is a choice nobody made. Colour ramps stay whole, because a ramp is one unit with meaning.",
-      "except": [
-        "color"
-      ]
+      "except": ["color"]
     },
     "rules": [
       {
@@ -527,15 +525,8 @@
       "kind": "scope",
       "title": "Typography",
       "description": "How text is set: roles, sizes and line height.",
-      "owns": [
-        "type"
-      ],
-      "lands_in": [
-        "button",
-        "input",
-        "badge",
-        "table"
-      ],
+      "owns": ["type"],
+      "lands_in": ["button", "input", "badge", "table"],
       "situations": [
         "page-title",
         "number-in-table",
@@ -661,9 +652,7 @@
       "kind": "scope",
       "title": "Color",
       "description": "How color carries action, state and brand.",
-      "owns": [
-        "color"
-      ],
+      "owns": ["color"],
       "lands_in": [
         "button",
         "input",
@@ -783,22 +772,9 @@
       "kind": "scope",
       "title": "Spacing",
       "description": "How space shows what belongs together.",
-      "owns": [
-        "space",
-        "size.row"
-      ],
-      "lands_in": [
-        "button",
-        "input",
-        "badge",
-        "card",
-        "table"
-      ],
-      "situations": [
-        "related-items",
-        "between-sections",
-        "table-row"
-      ],
+      "owns": ["space", "size.row"],
+      "lands_in": ["button", "input", "badge", "card", "table"],
+      "situations": ["related-items", "between-sections", "table-row"],
       "questions": [
         {
           "id": "spacing.roles",
@@ -899,22 +875,9 @@
       "kind": "scope",
       "title": "Shape",
       "description": "Corners and borders.",
-      "owns": [
-        "radius",
-        "border-width"
-      ],
-      "lands_in": [
-        "button",
-        "input",
-        "control",
-        "badge",
-        "card",
-        "overlay"
-      ],
-      "situations": [
-        "control-corner",
-        "status-shape"
-      ],
+      "owns": ["radius", "border-width"],
+      "lands_in": ["button", "input", "control", "badge", "card", "overlay"],
+      "situations": ["control-corner", "status-shape"],
       "questions": [
         {
           "id": "shape.roles",
@@ -1015,17 +978,9 @@
       "kind": "scope",
       "title": "Elevation",
       "description": "When something rises above the page, and what separates groups.",
-      "owns": [
-        "elevation"
-      ],
-      "lands_in": [
-        "card",
-        "overlay"
-      ],
-      "situations": [
-        "card",
-        "menu-or-dialog"
-      ],
+      "owns": ["elevation"],
+      "lands_in": ["card", "overlay"],
+      "situations": ["card", "menu-or-dialog"],
       "questions": [
         {
           "id": "elevation.roles",
@@ -1138,16 +1093,9 @@
       "kind": "scope",
       "title": "Motion",
       "description": "What moves, why and how fast.",
-      "owns": [
-        "motion"
-      ],
-      "lands_in": [
-        "transition"
-      ],
-      "situations": [
-        "hover-feedback",
-        "reduced-motion"
-      ],
+      "owns": ["motion"],
+      "lands_in": ["transition"],
+      "situations": ["hover-feedback", "reduced-motion"],
       "questions": [
         {
           "id": "motion.roles",
@@ -1252,16 +1200,9 @@
       "kind": "scope",
       "title": "Iconography",
       "description": "When icons appear and how they look.",
-      "owns": [
-        "size.icon"
-      ],
-      "lands_in": [
-        "button"
-      ],
-      "situations": [
-        "icon-alone",
-        "row-action"
-      ],
+      "owns": ["size.icon"],
+      "lands_in": ["button"],
+      "situations": ["icon-alone", "row-action"],
       "questions": [
         {
           "id": "iconography.roles",
@@ -1366,17 +1307,9 @@
       "kind": "scope",
       "title": "Theming",
       "description": "Modes and brands.",
-      "owns": [
-        "theme"
-      ],
-      "lands_in": [
-        "button",
-        "card",
-        "overlay"
-      ],
-      "situations": [
-        "dark-mode"
-      ],
+      "owns": ["theme"],
+      "lands_in": ["button", "card", "overlay"],
+      "situations": ["dark-mode"],
       "questions": [
         {
           "id": "theming.roles",
@@ -1469,20 +1402,9 @@
       "kind": "scope",
       "title": "Accessibility",
       "description": "Floors the system must hold.",
-      "owns": [
-        "size.control",
-        "opacity",
-        "color.border.focus"
-      ],
-      "lands_in": [
-        "button",
-        "input",
-        "overlay"
-      ],
-      "situations": [
-        "keyboard-focus",
-        "smallest-target"
-      ],
+      "owns": ["size.control", "opacity", "color.border.focus"],
+      "lands_in": ["button", "input", "overlay"],
+      "situations": ["keyboard-focus", "smallest-target"],
       "questions": [
         {
           "id": "accessibility.roles",
@@ -1587,9 +1509,7 @@
       "kind": "scope",
       "title": "Naming",
       "description": "How tokens and keys are named.",
-      "owns": [
-        "component"
-      ],
+      "owns": ["component"],
       "lands_in": [
         "button",
         "input",
@@ -1601,9 +1521,7 @@
         "overlay",
         "transition"
       ],
-      "situations": [
-        "missing-token"
-      ],
+      "situations": ["missing-token"],
       "questions": [
         {
           "id": "naming.roles",
@@ -1692,15 +1610,8 @@
       "kind": "scope",
       "title": "Voice and tone",
       "description": "How the product speaks: the words in every component.",
-      "owns": [
-        "content"
-      ],
-      "lands_in": [
-        "button",
-        "input",
-        "overlay",
-        "table"
-      ],
+      "owns": ["content"],
+      "lands_in": ["button", "input", "overlay", "table"],
       "situations": [
         "button-label",
         "error-words",
@@ -1829,9 +1740,7 @@
       "kind": "scope",
       "title": "Components",
       "description": "Which components the system carries: its inventory, picked from the catalogue.",
-      "owns": [
-        "component"
-      ],
+      "owns": ["component"],
       "lands_in": [
         "button",
         "input",
@@ -1842,9 +1751,7 @@
         "tabs",
         "overlay"
       ],
-      "situations": [
-        "missing-component"
-      ],
+      "situations": ["missing-component"],
       "questions": [
         {
           "id": "components.roles",
@@ -2274,11 +2181,7 @@
     {
       "id": "tabs",
       "description": "Switches between views.",
-      "keys": [
-        "tabs/indicator",
-        "tabs/label/@",
-        "tabs/label/active"
-      ]
+      "keys": ["tabs/indicator", "tabs/label/@", "tabs/label/active"]
     },
     {
       "id": "overlay",
@@ -2296,10 +2199,7 @@
     {
       "id": "transition",
       "description": "Shared transition keys for hover and press feedback.",
-      "keys": [
-        "transition/duration",
-        "transition/easing"
-      ]
+      "keys": ["transition/duration", "transition/easing"]
     }
   ],
   "component_keys": [
@@ -2762,6 +2662,17 @@
   ],
   "semantics": {
     "description": "What each semantic key is for, written once for every scheme. Each entry says its intent, what to use it for, what not to use it for (and what to use instead) and, where it matters, which fills it may sit on and the contrast it must keep there. Words only; values come from each scheme. The harness checks every rule.",
+    "key_colours": {
+      "description": "The page, its main surface and text, the main action at rest and on hover, and the focus ring: the colours that show a theme at a glance.",
+      "tokens": [
+        "color.surface.canvas",
+        "color.surface.default",
+        "color.text.primary",
+        "color.action.primary.@",
+        "color.action.primary.hover",
+        "color.border.focus"
+      ]
+    },
     "urgency": {
       "description": "Status colours go up in urgency: info, then warning, then danger. Pick the level that matches the real risk. Never go up a level to get attention. Success sits outside the order.",
       "order": [
@@ -2774,9 +2685,7 @@
       {
         "id": "color.surface.canvas",
         "intent": "The page background behind everything.",
-        "use_for": [
-          "Page and app background"
-        ],
+        "use_for": ["Page and app background"],
         "not_for": [
           {
             "when": "Cards and panels on the page",
@@ -2787,12 +2696,7 @@
       {
         "id": "color.surface.default",
         "intent": "The base fill for content.",
-        "use_for": [
-          "Cards",
-          "Panels",
-          "Inputs",
-          "Table body"
-        ],
+        "use_for": ["Cards", "Panels", "Inputs", "Table body"],
         "not_for": [
           {
             "when": "The page behind content",
@@ -2807,11 +2711,7 @@
       {
         "id": "color.surface.raised",
         "intent": "Fills that float above content.",
-        "use_for": [
-          "Menus",
-          "Popovers",
-          "Dialogs"
-        ],
+        "use_for": ["Menus", "Popovers", "Dialogs"],
         "not_for": [
           {
             "when": "Cards in the page flow",
@@ -2822,11 +2722,7 @@
       {
         "id": "color.surface.sunken",
         "intent": "A recessed fill, a step below content.",
-        "use_for": [
-          "Table headers",
-          "Wells",
-          "Hover rows"
-        ],
+        "use_for": ["Table headers", "Wells", "Hover rows"],
         "not_for": [
           {
             "when": "A selected item",
@@ -2837,10 +2733,7 @@
       {
         "id": "color.surface.selected",
         "intent": "The fill of a selected or current item.",
-        "use_for": [
-          "Selected rows",
-          "Current menu item"
-        ],
+        "use_for": ["Selected rows", "Current menu item"],
         "not_for": [
           {
             "when": "Hover",
@@ -2855,10 +2748,7 @@
       {
         "id": "color.surface.inverse",
         "intent": "A reversed fill for small, short-lived messages.",
-        "use_for": [
-          "Tooltips",
-          "Toasts"
-        ],
+        "use_for": ["Tooltips", "Toasts"],
         "not_for": [
           {
             "when": "Large areas",
@@ -2869,9 +2759,7 @@
       {
         "id": "color.surface.scrim",
         "intent": "The see-through layer behind a modal.",
-        "use_for": [
-          "Behind dialogs and sheets"
-        ],
+        "use_for": ["Behind dialogs and sheets"],
         "not_for": [
           {
             "when": "A solid fill",
@@ -2882,11 +2770,7 @@
       {
         "id": "color.text.primary",
         "intent": "Body text and headings.",
-        "use_for": [
-          "Body text",
-          "Headings",
-          "Tag labels"
-        ],
+        "use_for": ["Body text", "Headings", "Tag labels"],
         "not_for": [
           {
             "when": "Text on the main action",
@@ -2905,11 +2789,7 @@
       {
         "id": "color.text.secondary",
         "intent": "Supporting text.",
-        "use_for": [
-          "Labels",
-          "Descriptions",
-          "Metadata"
-        ],
+        "use_for": ["Labels", "Descriptions", "Metadata"],
         "not_for": [
           {
             "when": "The main content",
@@ -2924,11 +2804,7 @@
       {
         "id": "color.text.muted",
         "intent": "The quietest text.",
-        "use_for": [
-          "Placeholders",
-          "Hints",
-          "Timestamps"
-        ],
+        "use_for": ["Placeholders", "Hints", "Timestamps"],
         "not_for": [
           {
             "when": "Anything people must read to act",
@@ -2947,9 +2823,7 @@
       {
         "id": "color.text.inverse",
         "intent": "Text on an inverse fill.",
-        "use_for": [
-          "Tooltip and toast text"
-        ],
+        "use_for": ["Tooltip and toast text"],
         "not_for": [
           {
             "when": "Text on the page",
@@ -2957,9 +2831,7 @@
           }
         ],
         "pairs": {
-          "on": [
-            "color.surface.inverse"
-          ],
+          "on": ["color.surface.inverse"],
           "contrast": 4.5
         }
       },
@@ -3002,9 +2874,7 @@
       {
         "id": "color.text.info-on-light",
         "intent": "The label on a light info fill, such as its tint in light mode: a fixed colour from the light scale (800).",
-        "use_for": [
-          "The info badge"
-        ],
+        "use_for": ["The info badge"],
         "not_for": [
           {
             "when": "Info text on the page",
@@ -3019,9 +2889,7 @@
       {
         "id": "color.text.info-on-dark",
         "intent": "The label on a dark info fill, such as its tint in dark mode: a fixed colour from the light scale (50).",
-        "use_for": [
-          "The info badge"
-        ],
+        "use_for": ["The info badge"],
         "not_for": [
           {
             "when": "Info text on the page",
@@ -3036,9 +2904,7 @@
       {
         "id": "color.text.success-on-light",
         "intent": "The label on a light success fill, such as its tint in light mode: a fixed colour from the light scale (800).",
-        "use_for": [
-          "The success badge"
-        ],
+        "use_for": ["The success badge"],
         "not_for": [
           {
             "when": "Success text on the page",
@@ -3053,9 +2919,7 @@
       {
         "id": "color.text.success-on-dark",
         "intent": "The label on a dark success fill, such as its tint in dark mode: a fixed colour from the light scale (50).",
-        "use_for": [
-          "The success badge"
-        ],
+        "use_for": ["The success badge"],
         "not_for": [
           {
             "when": "Success text on the page",
@@ -3070,9 +2934,7 @@
       {
         "id": "color.text.warning-on-light",
         "intent": "The label on a light warning fill, such as its tint in light mode: a fixed colour from the light scale (800).",
-        "use_for": [
-          "The warning badge"
-        ],
+        "use_for": ["The warning badge"],
         "not_for": [
           {
             "when": "Warning text on the page",
@@ -3087,9 +2949,7 @@
       {
         "id": "color.text.warning-on-dark",
         "intent": "The label on a dark warning fill, such as its tint in dark mode: a fixed colour from the light scale (50).",
-        "use_for": [
-          "The warning badge"
-        ],
+        "use_for": ["The warning badge"],
         "not_for": [
           {
             "when": "Warning text on the page",
@@ -3104,9 +2964,7 @@
       {
         "id": "color.text.danger-on-light",
         "intent": "The label on a light danger fill, such as its tint in light mode: a fixed colour from the light scale (800).",
-        "use_for": [
-          "The danger badge"
-        ],
+        "use_for": ["The danger badge"],
         "not_for": [
           {
             "when": "Danger text on the page",
@@ -3121,9 +2979,7 @@
       {
         "id": "color.text.danger-on-dark",
         "intent": "The label on a dark danger fill, such as its tint in dark mode: a fixed colour from the light scale (50).",
-        "use_for": [
-          "The danger badge"
-        ],
+        "use_for": ["The danger badge"],
         "not_for": [
           {
             "when": "Danger text on the page",
@@ -3138,9 +2994,7 @@
       {
         "id": "color.text.on-action",
         "intent": "Text and icons on the main action's fill.",
-        "use_for": [
-          "Primary button labels"
-        ],
+        "use_for": ["Primary button labels"],
         "not_for": [
           {
             "when": "Text on the page",
@@ -3148,19 +3002,14 @@
           }
         ],
         "pairs": {
-          "on": [
-            "color.action.primary.@",
-            "color.action.primary.hover"
-          ],
+          "on": ["color.action.primary.@", "color.action.primary.hover"],
           "contrast": 4.5
         }
       },
       {
         "id": "color.text.on-danger",
         "intent": "Text on the danger fill: its tone's main text.",
-        "use_for": [
-          "The danger button label"
-        ],
+        "use_for": ["The danger button label"],
         "not_for": [
           {
             "when": "Text on the main action",
@@ -3168,19 +3017,14 @@
           }
         ],
         "pairs": {
-          "on": [
-            "color.action.danger.@",
-            "color.action.danger.hover"
-          ],
+          "on": ["color.action.danger.@", "color.action.danger.hover"],
           "contrast": 4.5
         }
       },
       {
         "id": "color.text.link",
         "intent": "Links in running text.",
-        "use_for": [
-          "Inline links"
-        ],
+        "use_for": ["Inline links"],
         "not_for": [
           {
             "when": "Buttons",
@@ -3195,11 +3039,7 @@
       {
         "id": "color.border.default",
         "intent": "Quiet edges and dividers. Decorative, so it has no contrast minimum.",
-        "use_for": [
-          "Card edges",
-          "Dividers",
-          "Table rules"
-        ],
+        "use_for": ["Card edges", "Dividers", "Table rules"],
         "not_for": [
           {
             "when": "The edge of a control people must find",
@@ -3229,9 +3069,7 @@
       {
         "id": "color.border.focus",
         "intent": "The focus ring.",
-        "use_for": [
-          "Keyboard focus on any control"
-        ],
+        "use_for": ["Keyboard focus on any control"],
         "not_for": [
           {
             "when": "A selected item",
@@ -3292,19 +3130,14 @@
           }
         ],
         "pairs": {
-          "on": [
-            "color.surface.canvas",
-            "color.surface.default"
-          ],
+          "on": ["color.surface.canvas", "color.surface.default"],
           "contrast": 3
         }
       },
       {
         "id": "color.action.primary.hover",
         "intent": "The main action under the pointer.",
-        "use_for": [
-          "Primary button hover"
-        ],
+        "use_for": ["Primary button hover"],
         "not_for": [
           {
             "when": "The resting state",
@@ -3315,9 +3148,7 @@
       {
         "id": "color.action.secondary.@",
         "intent": "The fill of other actions.",
-        "use_for": [
-          "Secondary buttons"
-        ],
+        "use_for": ["Secondary buttons"],
         "not_for": [
           {
             "when": "The main action",
@@ -3328,9 +3159,7 @@
       {
         "id": "color.action.secondary.hover",
         "intent": "Other actions under the pointer.",
-        "use_for": [
-          "Secondary button hover"
-        ],
+        "use_for": ["Secondary button hover"],
         "not_for": [
           {
             "when": "The resting state",
@@ -3341,9 +3170,7 @@
       {
         "id": "color.action.danger.@",
         "intent": "The fill of a destructive commit: the confirm of a delete.",
-        "use_for": [
-          "The confirm button of a delete or remove"
-        ],
+        "use_for": ["The confirm button of a delete or remove"],
         "not_for": [
           {
             "when": "The first step of a delete",
@@ -3358,9 +3185,7 @@
       {
         "id": "color.action.danger.hover",
         "intent": "The danger fill on hover.",
-        "use_for": [
-          "Hover on the danger button"
-        ],
+        "use_for": ["Hover on the danger button"],
         "not_for": [
           {
             "when": "The resting fill",
@@ -3371,9 +3196,7 @@
       {
         "id": "color.status.info.@",
         "intent": "Neutral news: something changed and no action is needed. The lowest level of the urgency order.",
-        "use_for": [
-          "Status text and icons"
-        ],
+        "use_for": ["Status text and icons"],
         "not_for": [
           {
             "when": "Something needs a check",
@@ -3389,10 +3212,7 @@
           }
         ],
         "pairs": {
-          "on": [
-            "color.surface.canvas",
-            "color.surface.default"
-          ],
+          "on": ["color.surface.canvas", "color.surface.default"],
           "contrast": 4.5
         },
         "order": 1
@@ -3400,10 +3220,7 @@
       {
         "id": "color.status.info.subtle",
         "intent": "The fill behind info status.",
-        "use_for": [
-          "Info badges",
-          "Banners"
-        ],
+        "use_for": ["Info badges", "Banners"],
         "not_for": [
           {
             "when": "Large page areas",
@@ -3414,9 +3231,7 @@
       {
         "id": "color.status.warning.@",
         "intent": "Caution: something may go wrong or needs a check, and it can be fixed.",
-        "use_for": [
-          "Status text and icons"
-        ],
+        "use_for": ["Status text and icons"],
         "not_for": [
           {
             "when": "An error, or an action that cannot be undone",
@@ -3432,10 +3247,7 @@
           }
         ],
         "pairs": {
-          "on": [
-            "color.surface.canvas",
-            "color.surface.default"
-          ],
+          "on": ["color.surface.canvas", "color.surface.default"],
           "contrast": 4.5
         },
         "order": 2
@@ -3443,10 +3255,7 @@
       {
         "id": "color.status.warning.subtle",
         "intent": "The fill behind warning status.",
-        "use_for": [
-          "Warning badges",
-          "Banners"
-        ],
+        "use_for": ["Warning badges", "Banners"],
         "not_for": [
           {
             "when": "Large page areas",
@@ -3457,10 +3266,7 @@
       {
         "id": "color.status.danger.@",
         "intent": "Real risk: errors, failed checks, actions that cannot be undone. The top of the urgency order. Overuse wears it out.",
-        "use_for": [
-          "Error messages and status text",
-          "Icons"
-        ],
+        "use_for": ["Error messages and status text", "Icons"],
         "not_for": [
           {
             "when": "Caution or advice",
@@ -3476,10 +3282,7 @@
           }
         ],
         "pairs": {
-          "on": [
-            "color.surface.canvas",
-            "color.surface.default"
-          ],
+          "on": ["color.surface.canvas", "color.surface.default"],
           "contrast": 4.5
         },
         "order": 3
@@ -3487,10 +3290,7 @@
       {
         "id": "color.status.danger.subtle",
         "intent": "The fill behind danger status.",
-        "use_for": [
-          "Danger badges",
-          "Banners"
-        ],
+        "use_for": ["Danger badges", "Banners"],
         "not_for": [
           {
             "when": "Large page areas",
@@ -3501,9 +3301,7 @@
       {
         "id": "color.status.success.@",
         "intent": "Confirmation that something worked. It sits outside the urgency order.",
-        "use_for": [
-          "Status text and icons"
-        ],
+        "use_for": ["Status text and icons"],
         "not_for": [
           {
             "when": "The main action",
@@ -3519,20 +3317,14 @@
           }
         ],
         "pairs": {
-          "on": [
-            "color.surface.canvas",
-            "color.surface.default"
-          ],
+          "on": ["color.surface.canvas", "color.surface.default"],
           "contrast": 4.5
         }
       },
       {
         "id": "color.status.success.subtle",
         "intent": "The fill behind success status.",
-        "use_for": [
-          "Success badges",
-          "Banners"
-        ],
+        "use_for": ["Success badges", "Banners"],
         "not_for": [
           {
             "when": "Large page areas",
@@ -3543,10 +3335,7 @@
       {
         "id": "color.category.1.@",
         "intent": "Category 1: tells one item or series from another. It carries no meaning.",
-        "use_for": [
-          "Chart series",
-          "Tag dots and icons"
-        ],
+        "use_for": ["Chart series", "Tag dots and icons"],
         "not_for": [
           {
             "when": "Status or risk",
@@ -3558,19 +3347,14 @@
           }
         ],
         "pairs": {
-          "on": [
-            "color.surface.canvas",
-            "color.surface.default"
-          ],
+          "on": ["color.surface.canvas", "color.surface.default"],
           "contrast": 3
         }
       },
       {
         "id": "color.category.1.subtle",
         "intent": "Category 1: the fill of a tag.",
-        "use_for": [
-          "Tag and label fills"
-        ],
+        "use_for": ["Tag and label fills"],
         "not_for": [
           {
             "when": "A status badge",
@@ -3581,10 +3365,7 @@
       {
         "id": "color.category.2.@",
         "intent": "Category 2: tells one item or series from another. It carries no meaning.",
-        "use_for": [
-          "Chart series",
-          "Tag dots and icons"
-        ],
+        "use_for": ["Chart series", "Tag dots and icons"],
         "not_for": [
           {
             "when": "Status or risk",
@@ -3596,19 +3377,14 @@
           }
         ],
         "pairs": {
-          "on": [
-            "color.surface.canvas",
-            "color.surface.default"
-          ],
+          "on": ["color.surface.canvas", "color.surface.default"],
           "contrast": 3
         }
       },
       {
         "id": "color.category.2.subtle",
         "intent": "Category 2: the fill of a tag.",
-        "use_for": [
-          "Tag and label fills"
-        ],
+        "use_for": ["Tag and label fills"],
         "not_for": [
           {
             "when": "A status badge",
@@ -3619,10 +3395,7 @@
       {
         "id": "color.category.3.@",
         "intent": "Category 3: tells one item or series from another. It carries no meaning.",
-        "use_for": [
-          "Chart series",
-          "Tag dots and icons"
-        ],
+        "use_for": ["Chart series", "Tag dots and icons"],
         "not_for": [
           {
             "when": "Status or risk",
@@ -3634,19 +3407,14 @@
           }
         ],
         "pairs": {
-          "on": [
-            "color.surface.canvas",
-            "color.surface.default"
-          ],
+          "on": ["color.surface.canvas", "color.surface.default"],
           "contrast": 3
         }
       },
       {
         "id": "color.category.3.subtle",
         "intent": "Category 3: the fill of a tag.",
-        "use_for": [
-          "Tag and label fills"
-        ],
+        "use_for": ["Tag and label fills"],
         "not_for": [
           {
             "when": "A status badge",
@@ -3657,10 +3425,7 @@
       {
         "id": "color.category.4.@",
         "intent": "Category 4: tells one item or series from another. It carries no meaning.",
-        "use_for": [
-          "Chart series",
-          "Tag dots and icons"
-        ],
+        "use_for": ["Chart series", "Tag dots and icons"],
         "not_for": [
           {
             "when": "Status or risk",
@@ -3672,19 +3437,14 @@
           }
         ],
         "pairs": {
-          "on": [
-            "color.surface.canvas",
-            "color.surface.default"
-          ],
+          "on": ["color.surface.canvas", "color.surface.default"],
           "contrast": 3
         }
       },
       {
         "id": "color.category.4.subtle",
         "intent": "Category 4: the fill of a tag.",
-        "use_for": [
-          "Tag and label fills"
-        ],
+        "use_for": ["Tag and label fills"],
         "not_for": [
           {
             "when": "A status badge",
@@ -3695,10 +3455,7 @@
       {
         "id": "color.category.5.@",
         "intent": "Category 5: tells one item or series from another. It carries no meaning.",
-        "use_for": [
-          "Chart series",
-          "Tag dots and icons"
-        ],
+        "use_for": ["Chart series", "Tag dots and icons"],
         "not_for": [
           {
             "when": "Status or risk",
@@ -3710,19 +3467,14 @@
           }
         ],
         "pairs": {
-          "on": [
-            "color.surface.canvas",
-            "color.surface.default"
-          ],
+          "on": ["color.surface.canvas", "color.surface.default"],
           "contrast": 3
         }
       },
       {
         "id": "color.category.5.subtle",
         "intent": "Category 5: the fill of a tag.",
-        "use_for": [
-          "Tag and label fills"
-        ],
+        "use_for": ["Tag and label fills"],
         "not_for": [
           {
             "when": "A status badge",
@@ -3733,9 +3485,7 @@
       {
         "id": "color.disabled.text",
         "intent": "Text and icons of a control that cannot be used right now.",
-        "use_for": [
-          "Disabled labels and icons"
-        ],
+        "use_for": ["Disabled labels and icons"],
         "not_for": [
           {
             "when": "Quiet text that still works",
@@ -3743,9 +3493,7 @@
           }
         ],
         "pairs": {
-          "on": [
-            "color.disabled.surface"
-          ],
+          "on": ["color.disabled.surface"],
           "contrast": null
         },
         "exempt": "WCAG 1.4.3 does not ask for contrast on controls that cannot be used."
@@ -3753,9 +3501,7 @@
       {
         "id": "color.disabled.surface",
         "intent": "The fill of a control that cannot be used right now.",
-        "use_for": [
-          "Disabled buttons and inputs"
-        ],
+        "use_for": ["Disabled buttons and inputs"],
         "not_for": [
           {
             "when": "A quiet fill that still works",
@@ -3766,9 +3512,7 @@
       {
         "id": "color.disabled.border",
         "intent": "The edge of a control that cannot be used right now.",
-        "use_for": [
-          "Disabled inputs and checkboxes"
-        ],
+        "use_for": ["Disabled inputs and checkboxes"],
         "not_for": [
           {
             "when": "An enabled control",
@@ -3888,81 +3632,47 @@
         },
         {
           "id": "color.surface.inverse",
-          "carries": [
-            "text.primary",
-            "icon",
-            "focus"
-          ]
+          "carries": ["text.primary", "icon", "focus"]
         },
         {
           "id": "color.action.primary.@",
-          "carries": [
-            "text.primary"
-          ]
+          "carries": ["text.primary"]
         },
         {
           "id": "color.action.primary.hover",
-          "carries": [
-            "text.primary"
-          ]
+          "carries": ["text.primary"]
         },
         {
           "id": "color.action.danger.@",
-          "carries": [
-            "text.primary"
-          ]
+          "carries": ["text.primary"]
         },
         {
           "id": "color.action.danger.hover",
-          "carries": [
-            "text.primary"
-          ]
+          "carries": ["text.primary"]
         },
         {
           "id": "color.action.secondary.@",
-          "carries": [
-            "text.primary",
-            "icon"
-          ]
+          "carries": ["text.primary", "icon"]
         },
         {
           "id": "color.action.secondary.hover",
-          "carries": [
-            "text.primary",
-            "icon"
-          ]
+          "carries": ["text.primary", "icon"]
         },
         {
           "id": "color.status.info.subtle",
-          "carries": [
-            "text.primary",
-            "icon",
-            "text.info"
-          ]
+          "carries": ["text.primary", "icon", "text.info"]
         },
         {
           "id": "color.status.warning.subtle",
-          "carries": [
-            "text.primary",
-            "icon",
-            "text.warning"
-          ]
+          "carries": ["text.primary", "icon", "text.warning"]
         },
         {
           "id": "color.status.danger.subtle",
-          "carries": [
-            "text.primary",
-            "icon",
-            "text.danger"
-          ]
+          "carries": ["text.primary", "icon", "text.danger"]
         },
         {
           "id": "color.status.success.subtle",
-          "carries": [
-            "text.primary",
-            "icon",
-            "text.success"
-          ]
+          "carries": ["text.primary", "icon", "text.success"]
         }
       ]
     },
@@ -4063,14 +3773,7 @@
     ],
     "roles": {
       "description": "The families each components.roles option admits. Core is the families every system needs.",
-      "core": [
-        "action",
-        "form",
-        "feedback",
-        "overlay",
-        "layout",
-        "navigation"
-      ],
+      "core": ["action", "form", "feedback", "overlay", "layout", "navigation"],
       "core-data": [
         "action",
         "form",
@@ -4179,9 +3882,7 @@
             }
           ]
         },
-        "situations": [
-          "error-message"
-        ],
+        "situations": ["error-message"],
         "accessibility": [
           {
             "id": "role-alert",
@@ -4216,10 +3917,7 @@
             "why": "Undo after the fact, when the action can be reversed."
           }
         ],
-        "situations": [
-          "destructive-action",
-          "confirm-words"
-        ],
+        "situations": ["destructive-action", "confirm-words"],
         "accessibility": [
           {
             "id": "alertdialog-role",
@@ -4362,10 +4060,7 @@
             }
           ]
         },
-        "situations": [
-          "status-label",
-          "status-shape"
-        ],
+        "situations": ["status-label", "status-shape"],
         "accessibility": [
           {
             "id": "word",
@@ -4671,9 +4366,7 @@
             "why": "A compact row in a list."
           }
         ],
-        "situations": [
-          "card"
-        ],
+        "situations": ["card"],
         "accessibility": [
           {
             "id": "one-link",
@@ -4730,9 +4423,7 @@
             "why": "The numbers as rows; often needed beside the chart."
           }
         ],
-        "situations": [
-          "number-in-table"
-        ],
+        "situations": ["number-in-table"],
         "accessibility": [
           {
             "id": "alternative",
@@ -4999,9 +4690,7 @@
             "why": "Confirms something that cannot be undone."
           }
         ],
-        "situations": [
-          "menu-or-dialog"
-        ],
+        "situations": ["menu-or-dialog"],
         "accessibility": [
           {
             "id": "named",
@@ -5082,10 +4771,7 @@
             "why": "The same menu on right-click."
           }
         ],
-        "situations": [
-          "menu-or-dialog",
-          "row-action"
-        ],
+        "situations": ["menu-or-dialog", "row-action"],
         "accessibility": [
           {
             "id": "menu-role",
@@ -5136,9 +4822,7 @@
             }
           ]
         },
-        "situations": [
-          "empty-words"
-        ],
+        "situations": ["empty-words"],
         "source": {
           "name": "Open UX",
           "id": "empty_state",
@@ -5181,10 +4865,7 @@
             }
           ]
         },
-        "situations": [
-          "field-label",
-          "error-message"
-        ],
+        "situations": ["field-label", "error-message"],
         "accessibility": [
           {
             "id": "linked",
@@ -5209,10 +4890,7 @@
             "why": "How one control is laid out."
           }
         ],
-        "situations": [
-          "error-message",
-          "error-words"
-        ],
+        "situations": ["error-message", "error-words"],
         "accessibility": [
           {
             "id": "errors",
@@ -5263,9 +4941,7 @@
             "why": "A known list of options."
           }
         ],
-        "situations": [
-          "field-label"
-        ],
+        "situations": ["field-label"],
         "accessibility": [
           {
             "id": "label",
@@ -5444,9 +5120,7 @@
             "why": "The label laid out with hint and error."
           }
         ],
-        "situations": [
-          "field-label"
-        ],
+        "situations": ["field-label"],
         "accessibility": [
           {
             "id": "for",
@@ -5833,9 +5507,7 @@
             "why": "A container, when groups need a boundary."
           }
         ],
-        "situations": [
-          "between-sections"
-        ],
+        "situations": ["between-sections"],
         "source": {
           "name": "Open DS",
           "license": "MIT"
@@ -5858,9 +5530,7 @@
             "why": "The bottom panel for phones."
           }
         ],
-        "situations": [
-          "menu-or-dialog"
-        ],
+        "situations": ["menu-or-dialog"],
         "accessibility": [
           {
             "id": "dialog-semantics",
@@ -6093,11 +5763,7 @@
             "why": "The shape of the numbers."
           }
         ],
-        "situations": [
-          "number-in-table",
-          "table-row",
-          "selected-row"
-        ],
+        "situations": ["number-in-table", "table-row", "selected-row"],
         "accessibility": [
           {
             "id": "headers",
@@ -6160,9 +5826,7 @@
             "why": "One line."
           }
         ],
-        "situations": [
-          "field-label"
-        ],
+        "situations": ["field-label"],
         "accessibility": [
           {
             "id": "label",
@@ -6215,10 +5879,7 @@
             }
           ]
         },
-        "situations": [
-          "success-words",
-          "error-words"
-        ],
+        "situations": ["success-words", "error-words"],
         "accessibility": [
           {
             "id": "live",
@@ -6361,9 +6022,7 @@
             "why": "A richer preview."
           }
         ],
-        "situations": [
-          "icon-alone"
-        ],
+        "situations": ["icon-alone"],
         "accessibility": [
           {
             "id": "describedby",
