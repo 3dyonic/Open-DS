@@ -48,6 +48,8 @@ const HELP = `open-ds: deploy an Open DS scheme as a full design system.
   open-ds change <scheme> <question-id> <option>
   open-ds change <scheme> --token <path> <value>
                                        plan a change: what it reopens, or the contrast it keeps; changes nothing
+  open-ds scales <scheme> [--brand <b>] [--mode light|dark] [--hue <h>]
+                                       which tokens land on each colour step, by lane
   open-ds token <scheme> <words>       the tokens and component keys that fit an intent
   open-ds fit <words>                  rank the schemes against a product description
   open-ds create <dir> --scheme <id> [--brand <id>]
@@ -61,7 +63,7 @@ const HELP = `open-ds: deploy an Open DS scheme as a full design system.
                                        the Open DS MCP server: stdio for a local agent, or
                                        Streamable HTTP at /mcp (read-only, no authentication yet)
 
-Add --json to list, show, why, when, context, component, check, copy, change, token and fit for machine-readable output.`;
+Add --json to list, show, why, when, context, component, scales, check, copy, change, token and fit for machine-readable output.`;
 
 function flag(args, name, fallback) {
   const i = args.indexOf(name);
@@ -379,6 +381,32 @@ export async function run(argv) {
           `${rule.title}\n  Use: ${rule.use}\n  Not: ${rule.not}\n  Why: ${rule.why}`,
         ),
       );
+      return 0;
+    }
+    // Which tokens land on each colour step (OD-223), the map the docs and Storybook draw.
+    if (cmd === "scales") {
+      const { scales } = await import("./scale-map.mjs");
+      const [id] = args;
+      const data = scales(loadScheme(id ?? ""), {
+        brand: flag(args, "--brand", undefined),
+        mode: flag(args, "--mode", "light"),
+        hue: flag(args, "--hue", undefined),
+      });
+      out(data, () => {
+        console.log(
+          `${data.scheme}, ${data.brand}, ${data.mode}${data.neutral ? `. Neutral: ${data.neutral.gray}` : ""}`,
+        );
+        for (const h of data.hues) {
+          console.log(`\n${h.hue}: ${h.used} of ${h.steps.length} steps used`);
+          for (const st of h.steps)
+            for (const x of st.tokens)
+              console.log(
+                `  ${st.step.padEnd(6)} ${st.value}  ${x.token} (${x.lane})${x.via ? ` via ${x.via}` : ""}`,
+              );
+          for (const x of h.fixed)
+            console.log(`  fixed  ${x.value}  ${x.token} (${x.primitive})`);
+        }
+      });
       return 0;
     }
     if (cmd === "component") {

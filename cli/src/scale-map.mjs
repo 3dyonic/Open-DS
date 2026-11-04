@@ -66,3 +66,62 @@ export function scaleMap(tokens, brandKey, mode) {
   }
   return out;
 }
+
+/**
+ * The scales of a scheme, for the CLI (`open-ds scales`) and the MCP (`get_scales`): for a brand and
+ * mode, each hue's steps with their values and the tokens that land on each, by lane, plus the tokens
+ * whose colour is fixed from the other mode's scale. Filter by hue to get one.
+ */
+export function scales(scheme, { brand, mode = "light", hue } = {}) {
+  const t = scheme.tokens;
+  const brandKey = brand ?? Object.keys(t.brands)[0];
+  if (!t.brands[brandKey])
+    throw new Error(
+      `No brand ${brandKey} in ${scheme.id}. Brands: ${Object.keys(t.brands).join(", ")}.`,
+    );
+  if (mode !== "light" && mode !== "dark")
+    throw new Error("mode is light or dark.");
+  const map = scaleMap(t, brandKey, mode);
+  const value = (p) => get(t.primitive, p)?.$value ?? null;
+  const hues = Object.keys(t.primitive?.color ?? {}).filter(
+    (h) => !h.startsWith("$") && (!hue || h === hue),
+  );
+  if (hue && !hues.length) throw new Error(`No hue ${hue} in ${scheme.id}.`);
+  const land = (list) =>
+    list.map((x) => ({ token: x.token, lane: laneOf(x.token), via: x.via }));
+  return {
+    scheme: scheme.id,
+    brand: brandKey,
+    mode,
+    neutral: t.brands[brandKey].theme.neutral ?? null,
+    lanes: LANES,
+    hues: hues
+      .filter((h) => t.primitive.color[h][mode])
+      .map((h) => {
+        const ramp = t.primitive.color[h][mode];
+        const steps = Object.keys(ramp)
+          .filter((k) => !k.startsWith("$"))
+          .map((st) => {
+            const prim = `color.${h}.${mode}.${st}`;
+            return {
+              step: st,
+              primitive: prim,
+              value: value(prim),
+              tokens: land(map[prim] ?? []),
+            };
+          });
+        const other = mode === "light" ? "dark" : "light";
+        const fixed = Object.entries(map)
+          .filter(([p]) => p.startsWith(`color.${h}.${other}.`))
+          .flatMap(([p, list]) =>
+            land(list).map((x) => ({ ...x, primitive: p, value: value(p) })),
+          );
+        return {
+          hue: h,
+          used: steps.filter((s) => s.tokens.length).length,
+          steps,
+          fixed,
+        };
+      }),
+  };
+}

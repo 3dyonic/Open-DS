@@ -295,7 +295,22 @@ export function createProject(
     for (const f of readdirSync(guideDir).filter(
       (x) => x.endsWith(".stories.tsx") || x === "guide.tsx",
     ))
-      write(`stories/guide/${f}`, readFileSync(join(guideDir, f), "utf8"));
+      write(
+        `stories/guide/${f}`,
+        readFileSync(join(guideDir, f), "utf8").replaceAll(
+          `from "../../../cli/src/scale-map.mjs"`,
+          `from "./scale-map.mjs"`,
+        ),
+      );
+  // The scale map (OD-223) the guide reads: the same file the docs, the CLI and the MCP use.
+  for (const f of ["scale-map.mjs", "scale-map.d.mts"])
+    write(
+      `stories/guide/${f}`,
+      readFileSync(
+        join(dirname(fileURLToPath(import.meta.url)), "..", "src", f),
+        "utf8",
+      ),
+    );
 
   // The answer map and the situations the usage rules name.
   write("scheme.json", json(scheme));

@@ -58,39 +58,7 @@ Each token points to another token. Values live only on primitives, below.
 
 </div>
 
-## Primitives
-
-The raw values the tokens above end at.
-
-<div class="odv-brandset" data-for-brand="aster">
-
-<p class="odv-brandname">Aster</p>
-
-| Primitive | Value | Sample |
-| --- | --- | --- |
-| `size.16` | 1rem (16px) | <span class="ods-bar" style="width:1rem"></span> |
-
-</div>
-
-<div class="odv-brandset" data-for-brand="birch">
-
-<p class="odv-brandname">Birch</p>
-
-| Primitive | Value | Sample |
-| --- | --- | --- |
-| `size.16` | 1rem (16px) | <span class="ods-bar" style="width:1rem"></span> |
-
-</div>
-
-<div class="odv-brandset" data-for-brand="coral">
-
-<p class="odv-brandname">Coral</p>
-
-| Primitive | Value | Sample |
-| --- | --- | --- |
-| `size.16` | 1rem (16px) | <span class="ods-bar" style="width:1rem"></span> |
-
-</div>
+The raw values these tokens end at are on [Primitives › all kinds](../primitives/).
 
 ## Where it lands
 

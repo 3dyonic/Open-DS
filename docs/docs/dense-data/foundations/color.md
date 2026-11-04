@@ -151,70 +151,7 @@ Each token points to another token. Values live only on primitives, below.
 | `color.disabled.surface` | `dense-data.theme.light.color.disabled.surface` → `color.neutral.100` → `dense-data.theme.light.color.neutral.100` → `color.slate.light.100` | `dense-data.theme.dark.color.disabled.surface` → `color.neutral.100` → `dense-data.theme.dark.color.neutral.100` → `color.slate.dark.100` |
 | `color.disabled.border` | `dense-data.theme.light.color.disabled.border` → `color.neutral.200` → `dense-data.theme.light.color.neutral.200` → `color.slate.light.200` | `dense-data.theme.dark.color.disabled.border` → `color.neutral.200` → `dense-data.theme.dark.color.neutral.200` → `color.slate.dark.200` |
 
-## Primitives
-
-The raw values the tokens above end at.
-
-| Primitive | Value | Sample |
-| --- | --- | --- |
-| `color.amber.dark.100` | #3F2B02 | <span class="ods-swatch" style="background:#3F2B02"></span> |
-| `color.amber.dark.600` | #F2B84B | <span class="ods-swatch" style="background:#F2B84B"></span> |
-| `color.amber.light.100` | #FAEBDA | <span class="ods-swatch" style="background:#FAEBDA"></span> |
-| `color.amber.light.50` | #FFF7EF | <span class="ods-swatch" style="background:#FFF7EF"></span> |
-| `color.amber.light.600` | #8A5600 | <span class="ods-swatch" style="background:#8A5600"></span> |
-| `color.amber.light.800` | #462A02 | <span class="ods-swatch" style="background:#462A02"></span> |
-| `color.black.dark.scrim` | #000000B3 | <span class="ods-swatch" style="background:#000000B3"></span> |
-| `color.black.light.scrim` | #0000008C | <span class="ods-swatch" style="background:#0000008C"></span> |
-| `color.blue.dark.100` | #162C4F | <span class="ods-swatch" style="background:#162C4F"></span> |
-| `color.blue.dark.600` | #8AB4F8 | <span class="ods-swatch" style="background:#8AB4F8"></span> |
-| `color.blue.light.100` | #DEEAFE | <span class="ods-swatch" style="background:#DEEAFE"></span> |
-| `color.blue.light.50` | #F4F7FE | <span class="ods-swatch" style="background:#F4F7FE"></span> |
-| `color.blue.light.600` | #083C93 | <span class="ods-swatch" style="background:#083C93"></span> |
-| `color.blue.light.800` | #001A4E | <span class="ods-swatch" style="background:#001A4E"></span> |
-| `color.green.dark.100` | #01351A | <span class="ods-swatch" style="background:#01351A"></span> |
-| `color.green.dark.600` | #5CC283 | <span class="ods-swatch" style="background:#5CC283"></span> |
-| `color.green.light.100` | #DFF5E2 | <span class="ods-swatch" style="background:#DFF5E2"></span> |
-| `color.green.light.50` | #F1FDF2 | <span class="ods-swatch" style="background:#F1FDF2"></span> |
-| `color.green.light.600` | #1F7A3A | <span class="ods-swatch" style="background:#1F7A3A"></span> |
-| `color.green.light.800` | #023E17 | <span class="ods-swatch" style="background:#023E17"></span> |
-| `color.red.dark.100` | #4C171A | <span class="ods-swatch" style="background:#4C171A"></span> |
-| `color.red.dark.600` | #F28B8B | <span class="ods-swatch" style="background:#F28B8B"></span> |
-| `color.red.dark.700` | #FAA9A8 | <span class="ods-swatch" style="background:#FAA9A8"></span> |
-| `color.red.light.100` | #FEE9E7 | <span class="ods-swatch" style="background:#FEE9E7"></span> |
-| `color.red.light.50` | #FEF7F7 | <span class="ods-swatch" style="background:#FEF7F7"></span> |
-| `color.red.light.600` | #C42B2B | <span class="ods-swatch" style="background:#C42B2B"></span> |
-| `color.red.light.700` | #981519 | <span class="ods-swatch" style="background:#981519"></span> |
-| `color.red.light.800` | #6D0008 | <span class="ods-swatch" style="background:#6D0008"></span> |
-| `color.slate.dark.0` | #0D1117 | <span class="ods-swatch" style="background:#0D1117"></span> |
-| `color.slate.dark.100` | #262D38 | <span class="ods-swatch" style="background:#262D38"></span> |
-| `color.slate.dark.200` | #3D4655 | <span class="ods-swatch" style="background:#3D4655"></span> |
-| `color.slate.dark.300` | #6B7585 | <span class="ods-swatch" style="background:#6B7585"></span> |
-| `color.slate.dark.400` | #969FAD | <span class="ods-swatch" style="background:#969FAD"></span> |
-| `color.slate.dark.50` | #161B23 | <span class="ods-swatch" style="background:#161B23"></span> |
-| `color.slate.dark.500` | #C4CBD6 | <span class="ods-swatch" style="background:#C4CBD6"></span> |
-| `color.slate.dark.600` | #D0D6E0 | <span class="ods-swatch" style="background:#D0D6E0"></span> |
-| `color.slate.dark.700` | #DDE2EA | <span class="ods-swatch" style="background:#DDE2EA"></span> |
-| `color.slate.dark.800` | #EEF1F5 | <span class="ods-swatch" style="background:#EEF1F5"></span> |
-| `color.slate.dark.900` | #F7F8FA | <span class="ods-swatch" style="background:#F7F8FA"></span> |
-| `color.slate.dark.950` | #FFFFFF | <span class="ods-swatch" style="background:#FFFFFF"></span> |
-| `color.slate.light.0` | #FFFFFF | <span class="ods-swatch" style="background:#FFFFFF"></span> |
-| `color.slate.light.100` | #EEF1F5 | <span class="ods-swatch" style="background:#EEF1F5"></span> |
-| `color.slate.light.200` | #DDE2EA | <span class="ods-swatch" style="background:#DDE2EA"></span> |
-| `color.slate.light.300` | #C4CBD6 | <span class="ods-swatch" style="background:#C4CBD6"></span> |
-| `color.slate.light.400` | #969FAD | <span class="ods-swatch" style="background:#969FAD"></span> |
-| `color.slate.light.50` | #F7F8FA | <span class="ods-swatch" style="background:#F7F8FA"></span> |
-| `color.slate.light.500` | #6B7585 | <span class="ods-swatch" style="background:#6B7585"></span> |
-| `color.slate.light.600` | #535D6D | <span class="ods-swatch" style="background:#535D6D"></span> |
-| `color.slate.light.700` | #3D4655 | <span class="ods-swatch" style="background:#3D4655"></span> |
-| `color.slate.light.800` | #262D38 | <span class="ods-swatch" style="background:#262D38"></span> |
-| `color.slate.light.900` | #161B23 | <span class="ods-swatch" style="background:#161B23"></span> |
-| `color.slate.light.950` | #0D1117 | <span class="ods-swatch" style="background:#0D1117"></span> |
-| `color.violet.dark.100` | #2A244F | <span class="ods-swatch" style="background:#2A244F"></span> |
-| `color.violet.dark.600` | #A9A3F6 | <span class="ods-swatch" style="background:#A9A3F6"></span> |
-| `color.violet.dark.700` | #BEBBFB | <span class="ods-swatch" style="background:#BEBBFB"></span> |
-| `color.violet.light.100` | #E8ECFF | <span class="ods-swatch" style="background:#E8ECFF"></span> |
-| `color.violet.light.600` | #4B3FD9 | <span class="ods-swatch" style="background:#4B3FD9"></span> |
-| `color.violet.light.700` | #3729AA | <span class="ods-swatch" style="background:#3729AA"></span> |
+The raw values these tokens end at are on [Primitives › Color](../primitives/color).
 
 ## Where it lands
 

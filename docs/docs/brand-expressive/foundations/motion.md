@@ -38,16 +38,7 @@ Each token points to another token. Values live only on primitives, below.
 | `motion.duration.hero` | `duration.relaxed` |
 | `motion.easing.standard` | `easing.spring` |
 
-## Primitives
-
-The raw values the tokens above end at.
-
-| Primitive | Value | Sample |
-| --- | --- | --- |
-| `duration.fast` | 120ms | <span class="ods-motion" style="--ods-d:120ms" title="Hover to play"><span></span></span> |
-| `duration.moderate` | 200ms | <span class="ods-motion" style="--ods-d:200ms" title="Hover to play"><span></span></span> |
-| `duration.relaxed` | 320ms | <span class="ods-motion" style="--ods-d:320ms" title="Hover to play"><span></span></span> |
-| `easing.spring` | cubic-bezier(0.34, 1.56, 0.64, 1) | <span class="ods-motion" style="--ods-e:cubic-bezier(0.34,1.56,0.64,1)" title="Hover to play"><span></span></span> |
+The raw values these tokens end at are on [Primitives › Motion](../primitives/motion).
 
 ## Where it lands
 

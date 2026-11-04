@@ -343,6 +343,15 @@ const toneWords = (id) => {
     : `Fills whose tone is ${r?.tone}`;
 };
 
+// The Primitives page each Foundations scope's values are on.
+const PRIM_PAGE_OF = {
+  color: { id: "color", title: "Color" },
+  spacing: { id: "space-and-size", title: "Space and size" },
+  typography: { id: "type", title: "Type" },
+  shape: { id: "shape", title: "Shape" },
+  elevation: { id: "effects", title: "Effects" },
+  motion: { id: "motion", title: "Motion" },
+};
 /**
  * The Themes page's key colours (OD-223): the tokens the grammar names, in every theme, each as the
  * primitive it points at, the neutral step it goes through, and its value. The scheme's gray first.
@@ -463,6 +472,11 @@ function colourScales(scheme, g, fams) {
       const own = entries(hue, m, "own");
       const canvas = surf(m, "color.surface.canvas");
       const fixed = entries(hue, m, "other");
+      // used steps get the room; empty slots stay narrow
+      const cols = (steps, on) =>
+        steps
+          .map((st) => (on.has(st) ? "minmax(56px, 3fr)" : "minmax(30px, 1fr)"))
+          .join(" ");
       const slot = (st) =>
         `<div class="odv-sl"><span class="n">${st}</span><i style="background:${hex(`color.${hue}.${m}.${st}`)}"></i></div>`;
       const filled = {
@@ -480,16 +494,16 @@ function colourScales(scheme, g, fams) {
           .sort((a, b) => steps.indexOf(a.step) - steps.indexOf(b.step));
         if (!list.length) return "";
         const on = new Set(list.map((r) => r.step));
-        return `<div class="odv-lane"><p class="odv-lane-h">${title}</p><div class="odv-sts" style="--n:${steps.length}">${steps.map((st) => (on.has(st) ? filled[id](st, hex(`color.${hue}.${m}.${st}`)) : slot(st))).join("")}</div><div class="odv-kvs">${list.map((r) => row(r, id)).join("")}</div></div>`;
+        return `<div class="odv-lane"><p class="odv-lane-h">${title}</p><div class="odv-sts" style="grid-template-columns:${cols(steps, on)}">${steps.map((st) => (on.has(st) ? filled[id](st, hex(`color.${hue}.${m}.${st}`)) : slot(st))).join("")}</div><div class="odv-kvs">${list.map((r) => row(r, id)).join("")}</div></div>`;
       }).join("");
       const empty = own.length
         ? ""
-        : `<div class="odv-lane"><p class="odv-lane-h">Not used yet in this theme</p><div class="odv-sts" style="--n:${steps.length}">${steps.map(slot).join("")}</div></div>`;
+        : `<div class="odv-lane"><p class="odv-lane-h">Not used yet in this theme</p><div class="odv-sts" style="grid-template-columns:${cols(steps, new Set())}">${steps.map(slot).join("")}</div></div>`;
       const other = m === "light" ? "dark" : "light";
       const fx = fixed.length
         ? `<div class="odv-lane"><p class="odv-lane-h">From the ${other} scale, fixed colours</p><div class="odv-kvs">${fixed.map((r) => row(r, null)).join("")}</div></div>`
         : "";
-      const style = `background:${surf(m, "color.surface.canvas")};color:${surf(m, "color.text.primary")};--odv-muted:${surf(m, "color.text.muted")};--odv-edge:${surf(m, "color.border.default")};--odv-ring:${surf(m, "color.text.primary")}`;
+      const style = `background:${surf(m, "color.surface.canvas")};color:${surf(m, "color.text.primary")};--odv-muted:${surf(m, "color.text.muted")};--odv-edge:${surf(m, "color.border.default")};--odv-ring:${surf(m, "color.text.primary")};--odv-dash:${surf(m, "color.border.placeholder") || surf(m, "color.border.default")}`;
       return `<div class="odv-scale-p" data-mode="${m}" role="tabpanel" style="${style}">${lanes}${empty}${fx}</div>`;
     });
     const n = (m) => entries(hue, m, "own").length;
@@ -668,16 +682,6 @@ export function docsPages(
       "\n"
     );
   };
-  const primitiveRows = (paths, F = first) =>
-    `| Primitive | Value | Sample |\n| --- | --- | --- |\n` +
-    [...new Set(paths)]
-      .filter(Boolean)
-      .sort()
-      .map(
-        (p) =>
-          `| \`${p}\` | ${esc(value(F, p, ""))} | ${sample(p, get(primitiveTree, p)?.$type ?? primitiveType(p), get(primitiveTree, p)?.$value)} |`,
-      )
-      .join("\n");
   const rule = (u) =>
     `| ${esc(sits[u.situation].title)} | ${esc(u.use)} | ${esc(u.not)} | ${esc(u.why)}${u.example ? ` Example: “${esc(u.example)}”` : ""} |`;
   const RULES = "| Situation | Use | Not | Why |\n| --- | --- | --- | --- |\n";
@@ -1214,18 +1218,26 @@ export function docsPages(
     const brandSet = (b) => {
       const ths = scheme.themes.filter((t) => t.brand === b);
       const tree = scheme.tokens.brands[b]?.theme ?? {};
-      const jobs = leaves(tree[ths[0]?.mode] ?? {}, "").map((x) =>
-        semPath(x.path),
-      );
+      // The neutral steps are the scale behind the jobs, not jobs: they show as "via" on the jobs.
+      const jobs = leaves(tree[ths[0]?.mode] ?? {}, "")
+        .map((x) => semPath(x.path))
+        .filter((p) => !p.startsWith("color.neutral."));
       const groups = [
         ...new Set(jobs.map((p) => p.split(".").slice(0, 2).join("."))),
       ];
+      // Every colour cell follows its token to the primitive, the way the scale view does (OD-223):
+      // the primitive's name, the neutral step it goes through, and a swatch. Never a bare value.
       const cell = (th, p) => {
-        const hx = hexOf(th, p);
-        const prim = primitiveOf(th, p)?.replace(/^color\./, "");
-        return hx
-          ? `<span class="odv-tsw"><i style="background:${hx}"></i><small>${attr(prim ?? hx)}</small></span>`
-          : `<code>${attr(value(th, p, ""))}</code>`;
+        const f = p.startsWith("color.")
+          ? (follow(scheme.tokens, b, th.mode, p) ??
+            follow(scheme.tokens, b, th.mode, `${p}.@`))
+          : null;
+        if (!f) return `<code>${attr(value(th, p, ""))}</code>`;
+        const hx = String(
+          f.prim.split(".").reduce((n, k) => n && n[k], scheme.tokens.primitive)
+            ?.$value ?? "",
+        );
+        return `<span class="odv-tsw"><i style="background:${hx}" title="${attr(hx)}"></i><small>${attr(f.prim.replace(/^color\./, ""))}${f.via ? ` · via ${attr(f.via.replace(/^color\./, ""))}` : ""}</small></span>`;
       };
       return h(
         `<div class="odv-brandset" data-for-brand="${b}">`,
@@ -1323,8 +1335,9 @@ export function docsPages(
             ? `Each token points to another token. Values live only on primitives, below.\n\n` +
               perBrand(tokenTable)
             : "This scope sets primitives directly.") +
+          // The raw values live on the Primitives pages (OD-223), not repeated here.
           (hasPrims
-            ? `\n\n## Primitives\n\nThe raw values the tokens above end at.\n\n${perBrand((F, D) => primitiveRows(primsOf(F, D), F))}`
+            ? `\n\nThe raw values these tokens end at are on [Primitives › ${PRIM_PAGE_OF[sc.id]?.title ?? "all kinds"}](../primitives/${PRIM_PAGE_OF[sc.id]?.id ?? ""}).`
             : "")) +
       `\n\n## Where it lands\n\n${(sc.lands_in ?? []).map((c) => `- ${title(c)}`).join("\n")}\n\n` +
       `## When to use what\n\n${RULES}${usage.map(rule).join("\n")}\n` +

@@ -42,18 +42,7 @@ Each token points to another token. Values live only on primitives, below.
 | `border-width.default` | `border-width.1` |
 | `border-width.focus` | `border-width.2` |
 
-## Primitives
-
-The raw values the tokens above end at.
-
-| Primitive | Value | Sample |
-| --- | --- | --- |
-| `border-width.1` | 1px | <span class="ods-line" style="height:1px"></span> |
-| `border-width.2` | 2px | <span class="ods-line" style="height:2px"></span> |
-| `radius.12` | 0.75rem (12px) | <span class="ods-tile" style="border-radius:0.75rem"></span> |
-| `radius.8` | 0.5rem (8px) | <span class="ods-tile" style="border-radius:0.5rem"></span> |
-| `radius.999` | 9999px | <span class="ods-tile" style="border-radius:9999px"></span> |
-| `radius.full` | 9999px | <span class="ods-tile" style="border-radius:9999px"></span> |
+The raw values these tokens end at are on [Primitives › Shape](../primitives/shape).
 
 ## Where it lands
 

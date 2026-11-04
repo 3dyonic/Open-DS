@@ -10,16 +10,17 @@
 import { useOf } from "@storybook/addon-docs/blocks";
 import { Component, useEffect, useRef, useState, type ReactNode } from "react";
 import { useGuideData, ABOUT_OPEN_DS } from "./guide-data";
+import { LANES, follow, laneOf, scaleMap } from "../../../cli/src/scale-map.mjs";
 
 type Any = any;
 
 const CSS = `
 .odg .sc-tabs{display:flex;gap:6px;margin:10px 0 8px}.odg .sc-tabs button{font:500 13px var(--type-body-font-family);padding:6px 12px;border-radius:var(--radius-control);border:0;background:var(--color-surface-sunken);color:var(--color-text-primary);cursor:pointer}.odg .sc-tabs button[aria-selected=true]{background:var(--color-action-primary);color:var(--color-text-on-action)}
 .odg .sc-p{border-radius:var(--radius-container);padding:16px;display:grid;gap:22px;overflow-x:auto}
-.odg .sc-lane{display:grid;gap:8px;min-width:760px}.odg .sc-h{margin:0;font:600 10px var(--type-data-font-family);text-transform:uppercase;letter-spacing:.08em;color:var(--sc-muted)}
+.odg .sc-lane{display:grid;gap:8px;min-width:560px}.odg .sc-h{margin:0;font:600 10px var(--type-data-font-family);text-transform:uppercase;letter-spacing:.08em;color:var(--sc-muted)}
 .odg .sc-sts{display:grid;gap:4px}.odg .sc-st,.odg .sc-sl{border-radius:6px;padding:8px 6px;min-height:96px;display:flex;flex-direction:column;gap:3px;font:500 11px var(--type-data-font-family)}
-.odg .sc-sl{color:var(--sc-muted);border:1px dotted color-mix(in srgb,var(--sc-muted) 45%,transparent)}.odg .sc-sl i{margin-top:auto;width:18px;height:18px;border-radius:4px;display:block}
-.odg .sc-n{font-weight:600;font-size:12px}.odg .sc-x{font-size:10px;opacity:.85}.odg .sc-bare .sc-n,.odg .sc-bare .sc-x{color:var(--sc-muted)}
+.odg .sc-sl{color:var(--sc-muted);background:linear-gradient(90deg,var(--sc-dash) 6px,transparent 6px) top/11px 2px repeat-x,linear-gradient(90deg,var(--sc-dash) 6px,transparent 6px) bottom/11px 2px repeat-x,linear-gradient(0deg,var(--sc-dash) 6px,transparent 6px) left/2px 11px repeat-y,linear-gradient(0deg,var(--sc-dash) 6px,transparent 6px) right/2px 11px repeat-y}.odg .sc-sl i{margin-top:auto;width:18px;height:18px;border-radius:4px;display:block}
+.odg .sc-n{font-weight:600;font-size:12px}.odg .sc-x{font-size:10px;opacity:.85}.odg .sc-bare{background:color-mix(in srgb,var(--sc-muted) 10%,transparent)}.odg .sc-bare .sc-n,.odg .sc-bare .sc-x{color:var(--sc-muted)}
 .odg .sc-mk{margin-top:auto;display:flex;gap:8px;align-items:center}.odg .sc-mk i{width:4px;height:24px;border-radius:2px}.odg .sc-mk b{width:10px;height:10px;border-radius:50%}.odg .sc-aa{margin-top:auto;font:700 24px var(--type-body-font-family);line-height:1.1}
 .odg .sc-st.hl{box-shadow:0 0 0 3px var(--sc-ring)}
 .odg .sc-kvs{display:grid;max-width:640px}.odg .sc-kv{display:grid;grid-template-columns:22px minmax(0,15em) minmax(0,1fr);gap:12px;align-items:center;padding:5px 4px;border-radius:4px;border-bottom:1px solid color-mix(in srgb,var(--sc-muted) 20%,transparent);font:12px var(--type-data-font-family)}
@@ -766,42 +767,9 @@ export const PRIMITIVE_KINDS: { id: string; title: string; match: (p: string) =>
 
 // The scale view (OD-223), the same as the docs' colour primitives page: for each hue, light and dark
 // tabs; in each, the lanes its tokens paint as whole scales, then one row per token. A row and its step
-// light up together. Built from the scheme alone, the same way as cli/src/scale-map.mjs.
-const SC_LANES = [
-  { id: "fill", title: "Backgrounds" },
-  { id: "edge", title: "Edges and rings" },
-  { id: "text", title: "Text" },
-] as const;
-const scLane = (t: string) => {
-  const parts = t.split(".");
-  if (parts.includes("text")) return "text";
-  return parts.includes("border") || /^status\.[a-z]+$/.test(t) ? "edge" : "fill";
-};
+// light up together. The map is cli/src/scale-map.mjs, the one the docs, the CLI and the MCP read too;
+// open-ds create copies it next to this file.
 const scGet = (o: Any, p: string) => p.split(".").reduce((n: Any, k) => n && n[k], o);
-const scRef = (v: Any): string | null => (typeof v === "string" && v.match(/^\{([^}]+)\}$/)?.[1]) || null;
-function scFollow(t: Any, brand: string, mode: string, path: string) {
-  const th = t.brands[brand].theme;
-  const inTheme = (p: string) => (scGet(th[mode], p) ?? scGet(th.base ?? {}, p))?.$value;
-  let r = scRef(scGet(t.semantic, path)?.$value);
-  let via: string | null = null;
-  for (let i = 0; r && i < 10; i++) {
-    if (/^color\.[a-z-]+\.(light|dark)\.[a-z0-9-]+$/.test(r) && !r.startsWith("color.neutral."))
-      return { prim: r, via };
-    if (r.startsWith("theme.")) r = scRef(inTheme(r.slice(6)));
-    else {
-      if (/^color\.neutral\.\d+$/.test(r)) via ??= r;
-      r = scRef(scGet(t.semantic, r)?.$value);
-    }
-  }
-  return null;
-}
-function scLeaves(node: Any, path: string[] = []): string[] {
-  if (!node || typeof node !== "object") return [];
-  if ("$value" in node) return [path.join(".")];
-  return Object.entries(node)
-    .filter(([k]) => !k.startsWith("$"))
-    .flatMap(([k, v]) => scLeaves(v, [...path, k]));
-}
 function scLum(h: string) {
   const c = [1, 3, 5].map((i) => {
     const v = parseInt(h.slice(i, i + 2), 16) / 255;
@@ -813,6 +781,9 @@ const scContrast = (a: string, b: string) => {
   const [x, y] = [scLum(a), scLum(b)].sort((p, q) => q - p);
   return (x + 0.05) / (y + 0.05);
 };
+// used steps get the room; empty slots stay narrow
+const cols = (steps: string[], on: Set<string>) =>
+  steps.map((st) => (on.has(st) ? "minmax(56px,3fr)" : "minmax(30px,1fr)")).join(" ");
 function ColourScales({ s, brand, mode }: { s: Any; brand: string; mode: "light" | "dark" }) {
   const t = s.tokens;
   const [tab, setTab] = useState<"light" | "dark">(mode);
@@ -823,16 +794,13 @@ function ColourScales({ s, brand, mode }: { s: Any; brand: string; mode: "light"
       .slice(0, 9)
       .toUpperCase();
   const surf = (m: string, p: string) => {
-    const f = scFollow(t, brand, m, p);
+    const f = follow(t, brand, m, p);
     return f ? hex(f.prim) : "";
   };
-  const paths = scLeaves(t.semantic).filter((p) => p.startsWith("color.") && !p.startsWith("color.neutral."));
-  const rows = (m: string) =>
-    paths.flatMap((p) => {
-      const f = scFollow(t, brand, m, p);
-      if (!f) return [];
-      const [, hue, mm, step] = f.prim.split(".");
-      return [{ token: p.replace(/^color\./, "").replace(/\.@$/, ""), prim: f.prim, via: f.via, hue, mm, step }];
+  const rows = (m: "light" | "dark") =>
+    Object.entries(scaleMap(t, brand, m)).flatMap(([prim, list]) => {
+      const [, hue, mm, step] = prim.split(".");
+      return list.map((x) => ({ ...x, prim, hue, mm, step }));
     });
   const hues = Object.keys(t.primitive.color).filter((h) => !h.startsWith("$"));
   const kv = (r: Any, lane: string | null, id: string) => (
@@ -882,6 +850,7 @@ function ColourScales({ s, brand, mode }: { s: Any; brand: string; mode: "light"
           border: `1px solid ${surf(tab, "color.border.default")}`,
           ["--sc-muted" as Any]: surf(tab, "color.text.muted"),
           ["--sc-ring" as Any]: ink,
+          ["--sc-dash" as Any]: surf(tab, "color.border.placeholder") || surf(tab, "color.border.default"),
         };
         const slot = (st: string) => (
           <div key={st} className="sc-sl">
@@ -943,16 +912,16 @@ function ColourScales({ s, brand, mode }: { s: Any; brand: string; mode: "light"
               {own.length} tokens in the {tab} theme
             </p>
             <div className="sc-p" style={style}>
-              {SC_LANES.map(({ id, title }) => {
+              {LANES.map(({ id, title }) => {
                 const list = own
-                  .filter((r) => scLane(r.token) === id)
+                  .filter((r) => laneOf(r.token) === id)
                   .sort((a, b) => steps.indexOf(a.step) - steps.indexOf(b.step));
                 if (!list.length) return null;
                 const used = new Set(list.map((r) => r.step));
                 return (
                   <div key={id} className="sc-lane">
                     <p className="sc-h">{title}</p>
-                    <div className="sc-sts" style={{ gridTemplateColumns: `repeat(${steps.length},minmax(0,1fr))` }}>
+                    <div className="sc-sts" style={{ gridTemplateColumns: cols(steps, used) }}>
                       {steps.map((st) => (used.has(st) ? step(id, st) : slot(st)))}
                     </div>
                     <div className="sc-kvs">{list.map((r) => kv(r, id, `${hue}-${id}-${r.step}`))}</div>
@@ -962,7 +931,7 @@ function ColourScales({ s, brand, mode }: { s: Any; brand: string; mode: "light"
               {!own.length && (
                 <div className="sc-lane">
                   <p className="sc-h">Not used yet in this theme</p>
-                  <div className="sc-sts" style={{ gridTemplateColumns: `repeat(${steps.length},minmax(0,1fr))` }}>
+                  <div className="sc-sts" style={{ gridTemplateColumns: cols(steps, new Set()) }}>
                     {steps.map(slot)}
                   </div>
                 </div>

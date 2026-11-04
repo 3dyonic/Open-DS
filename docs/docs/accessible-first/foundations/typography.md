@@ -65,23 +65,7 @@ Each token points to another token. Values live only on primitives, below.
 | `type.data.line-height` | `font.line-height.1_6` |
 | `type.data.font-weight` | `font.weight.400` |
 
-## Primitives
-
-The raw values the tokens above end at.
-
-| Primitive | Value | Sample |
-| --- | --- | --- |
-| `font.family.atkinson-hyperlegible` | "Atkinson Hyperlegible", Verdana, sans-serif | <span class="ods-font" style="font-family:"Atkinson Hyperlegible", Verdana, sans-serif">Aa 123</span> |
-| `font.line-height.1_25` | 1.25 | <span class="ods-leading" style="line-height:1.25" data-h="20px">Ag Ag Ag</span> |
-| `font.line-height.1_6` | 1.6 | <span class="ods-leading" style="line-height:1.6" data-h="26px">Ag Ag Ag</span> |
-| `font.size.16` | 1rem (16px) | <span class="ods-typesample" style="font-size:1rem">Aa</span> |
-| `font.size.18` | 1.125rem (18px) | <span class="ods-typesample" style="font-size:1.125rem">Aa</span> |
-| `font.size.19` | 1.1875rem (19px) | <span class="ods-typesample" style="font-size:1.1875rem">Aa</span> |
-| `font.size.22` | 1.375rem (22px) | <span class="ods-typesample" style="font-size:1.375rem">Aa</span> |
-| `font.size.28` | 1.75rem (28px) | <span class="ods-typesample" style="font-size:1.75rem">Aa</span> |
-| `font.size.36` | 2.25rem (36px) | <span class="ods-typesample" style="font-size:2.25rem">Aa</span> |
-| `font.weight.400` | 400 | <span class="ods-typesample" style="font-weight:400">Aa</span> |
-| `font.weight.700` | 700 | <span class="ods-typesample" style="font-weight:700">Aa</span> |
+The raw values these tokens end at are on [Primitives › Type](../primitives/type).
 
 ## Where it lands
 

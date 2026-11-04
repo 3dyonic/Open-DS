@@ -40,17 +40,7 @@ Each token points to another token. Values live only on primitives, below.
 | `opacity.disabled` | `opacity.40` | `opacity.40` |
 | `color.border.focus` | `content-first.theme.light.color.border.focus` → `color.navy.light.600` | `content-first.theme.dark.color.border.focus` → `color.navy.dark.600` |
 
-## Primitives
-
-The raw values the tokens above end at.
-
-| Primitive | Value | Sample |
-| --- | --- | --- |
-| `color.navy.dark.600` | #8FA6C4 | <span class="ods-swatch" style="background:#8FA6C4"></span> |
-| `color.navy.light.600` | #1E3A5F | <span class="ods-swatch" style="background:#1E3A5F"></span> |
-| `opacity.40` | 0.4 | <span class="ods-swatch" style="opacity:0.4"></span> |
-| `size.40` | 2.5rem (40px) | <span class="ods-bar" style="width:2.5rem"></span> |
-| `size.48` | 3rem (48px) | <span class="ods-bar" style="width:3rem"></span> |
+The raw values these tokens end at are on [Primitives › all kinds](../primitives/).
 
 ## Where it lands
 

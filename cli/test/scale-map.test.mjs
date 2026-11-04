@@ -44,3 +44,16 @@ test("a token's lane is what it paints", () => {
   assert.equal(laneOf("status.danger"), "edge");
   assert.equal(laneOf("status.danger.subtle"), "fill");
 });
+
+test("scales gives each hue's steps with the tokens on them, for the CLI and the MCP", async () => {
+  const { scales } = await import("../src/scale-map.mjs");
+  const s = schemes.find((x) => x.id === "dense-data");
+  const out = scales(s, { mode: "dark", hue: "violet" });
+  assert.equal(out.hues.length, 1);
+  const st600 = out.hues[0].steps.find((x) => x.step === "600");
+  assert.ok(
+    st600.tokens.some((x) => x.token === "action.primary" && x.lane === "fill"),
+  );
+  assert.throws(() => scales(s, { brand: "nope" }), /No brand/);
+  assert.throws(() => scales(s, { hue: "nope" }), /No hue/);
+});
