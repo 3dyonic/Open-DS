@@ -18,7 +18,11 @@
 import { mkdirSync, readFileSync, rmSync, writeFileSync } from "node:fs";
 import { dirname, join } from "node:path";
 import { fileURLToPath } from "node:url";
-import { COMPONENT_HELPERS, FAMILIES, RECIPES } from "./figma-kit-components.mjs";
+import {
+  COMPONENT_HELPERS,
+  FAMILIES,
+  RECIPES,
+} from "./figma-kit-components.mjs";
 
 const ROOT = join(dirname(fileURLToPath(import.meta.url)), "..");
 const MAX_SCRIPT = 48_000; // use_figma takes up to 50,000 characters per call.
@@ -38,18 +42,29 @@ export function parseCss(css, scheme) {
     const sel = selector.trim();
     const brand = sel.match(/data-brand="([^"]+)"/)?.[1];
     const dark = /\.dark/.test(sel);
-    const name = brand ? `${brand[0].toUpperCase()}${brand.slice(1)} ${dark ? "dark" : "light"}` : dark ? "Dark" : "Light";
-    modes.push({ name, brand: brand ?? "default", mode: dark ? "dark" : "light" });
+    const name = brand
+      ? `${brand[0].toUpperCase()}${brand.slice(1)} ${dark ? "dark" : "light"}`
+      : dark
+        ? "Dark"
+        : "Light";
+    modes.push({
+      name,
+      brand: brand ?? "default",
+      mode: dark ? "dark" : "light",
+    });
     for (const line of body.split("\n")) {
-      const m = line.match(/^\s*--([a-z0-9-]+):\s*(.+?);\s*(?:\/\*\*\s*(.*?)\s*\*\/)?\s*$/);
+      const m = line.match(
+        /^\s*--([a-z0-9-]+):\s*(.+?);\s*(?:\/\*\*\s*(.*?)\s*\*\/)?\s*$/,
+      );
       if (!m) continue;
       const [, n, v, d] = m;
-      if (!vars[n]) (vars[n] = {}), order.push(n);
+      if (!vars[n]) ((vars[n] = {}), order.push(n));
       vars[n][name] = v;
       if (d && !desc[n]) desc[n] = d;
     }
   }
-  if (!modes.length) throw new Error(`No variables in tokens.css for ${scheme}.`);
+  if (!modes.length)
+    throw new Error(`No variables in tokens.css for ${scheme}.`);
   return { modes, vars, desc, order };
 }
 
@@ -62,7 +77,8 @@ function figmaNames(tokens) {
       out[css] = path.map((k) => (k === "@" ? "default" : k)).join("/");
       return;
     }
-    for (const [k, v] of Object.entries(o)) if (!k.startsWith("$")) walk(v, [...path, k]);
+    for (const [k, v] of Object.entries(o))
+      if (!k.startsWith("$")) walk(v, [...path, k]);
   };
   walk(tokens, []);
   return out;
@@ -78,7 +94,8 @@ const isShadow = (v) => /^-?\d+(px)? -?\d+(px)? /.test(v) && /#/.test(v);
 /** A line height for Figma: px stays px, a plain ratio (1.55) becomes a percentage. */
 function lineHeightOf(v) {
   if (v == null) return null;
-  if (/^[\d.]+$/.test(String(v)) && Number(v) < 4) return { unit: "PERCENT", value: Math.round(Number(v) * 1000) / 10 };
+  if (/^[\d.]+$/.test(String(v)) && Number(v) < 4)
+    return { unit: "PERCENT", value: Math.round(Number(v) * 1000) / 10 };
   const n = px(v);
   return n === null ? null : { unit: "PIXELS", value: n };
 }
@@ -99,7 +116,8 @@ function valueOf(v) {
   if (isShadow(v)) return { kind: "shadow", value: v };
   const n = px(v);
   if (n !== null) return { kind: "FLOAT", value: n };
-  if (/^\d+ms$/.test(v)) return { kind: "FLOAT", value: Number.parseInt(v, 10) };
+  if (/^\d+ms$/.test(v))
+    return { kind: "FLOAT", value: Number.parseInt(v, 10) };
   const fam = v.match(/^"([^"]+)"/);
   if (fam) return { kind: "STRING", value: fam[1], font: true };
   return { kind: "STRING", value: v };
@@ -110,7 +128,8 @@ function scopesFor(name, type) {
   if (type === "COLOR") {
     if (/(text|label|placeholder)/.test(n)) return ["TEXT_FILL"];
     if (/(border|ring|focus|outline)/.test(n)) return ["STROKE_COLOR"];
-    if (/(indicator|track|thumb|checked)/.test(n)) return ["FRAME_FILL", "SHAPE_FILL", "STROKE_COLOR"];
+    if (/(indicator|track|thumb|checked)/.test(n))
+      return ["FRAME_FILL", "SHAPE_FILL", "STROKE_COLOR"];
     return ["FRAME_FILL", "SHAPE_FILL"];
   }
   if (type === "FLOAT") {
@@ -131,28 +150,63 @@ function scopesFor(name, type) {
 
 /** Everything a kit needs, from the scheme's files. */
 export function kitData(id) {
-  const scheme = JSON.parse(readFileSync(join(ROOT, "schemes", `${id}.json`), "utf8"));
-  const grammar = JSON.parse(readFileSync(join(ROOT, "schemes", "grammar.json"), "utf8"));
+  const scheme = JSON.parse(
+    readFileSync(join(ROOT, "schemes", `${id}.json`), "utf8"),
+  );
+  const grammar = JSON.parse(
+    readFileSync(join(ROOT, "schemes", "grammar.json"), "utf8"),
+  );
   const css = readFileSync(join(ROOT, "tokens/dist", id, "tokens.css"), "utf8");
   const { modes, vars, desc, order } = parseCss(css, id);
   const firstTheme = scheme.themes[0].id;
-  const names = figmaNames(JSON.parse(readFileSync(join(ROOT, "tokens/dist", id, `${firstTheme}.tokens.json`), "utf8")));
-  const componentRoots = new Set(grammar.component_keys.map((k) => k.component));
-  for (const extra of ["transition", "tooltip", "overlay", "control", "tabs", "table", "card", "badge", "input", "button"]) componentRoots.add(extra);
+  const names = figmaNames(
+    JSON.parse(
+      readFileSync(
+        join(ROOT, "tokens/dist", id, `${firstTheme}.tokens.json`),
+        "utf8",
+      ),
+    ),
+  );
+  const componentRoots = new Set(
+    grammar.component_keys.map((k) => k.component),
+  );
+  for (const extra of [
+    "transition",
+    "tooltip",
+    "overlay",
+    "control",
+    "tabs",
+    "table",
+    "card",
+    "badge",
+    "input",
+    "button",
+  ])
+    componentRoots.add(extra);
 
   const variables = [];
   const shadows = {};
   for (const cssName of order) {
     const perMode = vars[cssName];
-    const kinds = Object.fromEntries(Object.entries(perMode).map(([m, v]) => [m, valueOf(v)]));
+    const kinds = Object.fromEntries(
+      Object.entries(perMode).map(([m, v]) => [m, valueOf(v)]),
+    );
     const first = Object.values(kinds)[0];
     if (first.kind === "shadow") {
-      shadows[cssName] = Object.fromEntries(Object.entries(kinds).map(([m, k]) => [m, k.value]));
+      shadows[cssName] = Object.fromEntries(
+        Object.entries(kinds).map(([m, k]) => [m, k.value]),
+      );
       continue;
     }
     const name = names[cssName] ?? cssName.replace(/-/g, "/");
     const root = name.split("/")[0];
-    variables.push({ css: cssName, name, collection: componentRoots.has(root) ? "Component" : "Semantic", values: kinds, description: desc[cssName] ?? "" });
+    variables.push({
+      css: cssName,
+      name,
+      collection: componentRoots.has(root) ? "Component" : "Semantic",
+      values: kinds,
+      description: desc[cssName] ?? "",
+    });
   }
 
   // Resolve types through aliases; drop variables whose alias ends at a shadow or nothing.
@@ -177,19 +231,32 @@ export function kitData(id) {
     v.type = t;
     v.scopes = scopesFor(v.name, t);
     // A unitless ratio (1.55) is not a pixel line height: keep it, but offer it nowhere.
-    if (/line-height/.test(v.css) && Object.values(v.values).some((k) => k.kind === "FLOAT" && k.value < 4)) v.scopes = [];
+    if (
+      /line-height/.test(v.css) &&
+      Object.values(v.values).some((k) => k.kind === "FLOAT" && k.value < 4)
+    )
+      v.scopes = [];
     kept.push(v);
   }
   const keptSet = new Set(kept.map((v) => v.css));
   for (const v of kept)
-    for (const k of Object.values(v.values)) if (k.kind === "alias" && !keptSet.has(k.to)) throw new Error(`${v.css} aliases a missing ${k.to}`);
+    for (const k of Object.values(v.values))
+      if (k.kind === "alias" && !keptSet.has(k.to))
+        throw new Error(`${v.css} aliases a missing ${k.to}`);
 
   // Type roles for text styles.
-  const roles = [...new Set(order.map((n) => n.match(/^type-([a-z]+)-font-size$/)?.[1]).filter(Boolean))];
+  const roles = [
+    ...new Set(
+      order
+        .map((n) => n.match(/^type-([a-z]+)-font-size$/)?.[1])
+        .filter(Boolean),
+    ),
+  ];
   const light = modes[0].name;
   const resolve = (cssName) => {
     let v = vars[cssName]?.[light];
-    for (let i = 0; i < 5 && v && v.startsWith("var("); i++) v = vars[v.slice(6, -1)]?.[light];
+    for (let i = 0; i < 5 && v && v.startsWith("var("); i++)
+      v = vars[v.slice(6, -1)]?.[light];
     return v;
   };
   const textStyles = roles.map((r) => ({
@@ -205,7 +272,13 @@ export function kitData(id) {
   // Questions and answers, grouped by reason and scope.
   const questions = {};
   for (const group of [...grammar.reasons, ...grammar.scopes])
-    for (const q of group.questions) questions[q.id] = { group: group.id, groupTitle: group.title, kind: group.kind, q };
+    for (const q of group.questions)
+      questions[q.id] = {
+        group: group.id,
+        groupTitle: group.title,
+        kind: group.kind,
+        q,
+      };
   const answers = scheme.answers.map((a) => {
     const g = questions[a.question];
     const opt = g?.q.options?.find((o) => o.id === a.option);
@@ -222,7 +295,17 @@ export function kitData(id) {
 
   const present = new Set(order.map((n) => n.split("-")[0]));
   const inventory = scheme.inventory.in.map((c) => ({ id: c.id, why: c.why }));
-  const components = ["button", "input", "control", "badge", "card", "table", "tabs", "overlay", "tooltip"].filter((c) => present.has(c));
+  const components = [
+    "button",
+    "input",
+    "control",
+    "badge",
+    "card",
+    "table",
+    "tabs",
+    "overlay",
+    "tooltip",
+  ].filter((c) => present.has(c));
 
   return {
     id,
@@ -231,15 +314,22 @@ export function kitData(id) {
     summary: scheme.summary,
     description: scheme.description,
     modes: modes.map((m) => m.name),
-    variables: kept.map(({ css, name, collection, type, scopes, values, description }) => ({
-      css,
-      name,
-      collection,
-      type,
-      scopes,
-      description,
-      values: Object.fromEntries(Object.entries(values).map(([m, k]) => [m, k.kind === "alias" ? { alias: k.to } : k.value])),
-    })),
+    variables: kept.map(
+      ({ css, name, collection, type, scopes, values, description }) => ({
+        css,
+        name,
+        collection,
+        type,
+        scopes,
+        description,
+        values: Object.fromEntries(
+          Object.entries(values).map(([m, k]) => [
+            m,
+            k.kind === "alias" ? { alias: k.to } : k.value,
+          ]),
+        ),
+      }),
+    ),
     shadows,
     shadowAliases,
     textStyles,
@@ -253,7 +343,10 @@ export function kitData(id) {
 
 // ---------- the scripts ----------
 
-const HEADER = (d, step) => `// Open DS Figma kit · ${d.name} (${d.id} ${d.version}) · ${step}
+const HEADER = (
+  d,
+  step,
+) => `// Open DS Figma kit · ${d.name} (${d.id} ${d.version}) · ${step}
 // Generated by scripts/figma-kit.mjs from the scheme. Do not edit: regenerate.
 `;
 
@@ -309,7 +402,11 @@ function variablesScripts(d) {
   const parts = [];
   let cur = [];
   for (const v of d.variables) {
-    if (cur.length && JSON.stringify(cur).length + JSON.stringify(v).length > (PART || 34_000)) (parts.push(cur), (cur = []));
+    if (
+      cur.length &&
+      JSON.stringify(cur).length + JSON.stringify(v).length > (PART || 34_000)
+    )
+      (parts.push(cur), (cur = []));
     cur.push(v);
   }
   parts.push(cur);
@@ -317,8 +414,19 @@ function variablesScripts(d) {
     const first = i === 0;
     const last = i === parts.length - 1;
     const aliasTargets = {};
-    for (const v of vars) for (const val of Object.values(v.values)) if (val && typeof val === "object") aliasTargets[val.alias] = css2name[val.alias];
-    const data = { modes: d.modes, variables: vars, aliasTargets, first, last, textStyles: last ? d.textStyles : [], shadows: last ? d.shadows : {} };
+    for (const v of vars)
+      for (const val of Object.values(v.values))
+        if (val && typeof val === "object")
+          aliasTargets[val.alias] = css2name[val.alias];
+    const data = {
+      modes: d.modes,
+      variables: vars,
+      aliasTargets,
+      first,
+      last,
+      textStyles: last ? d.textStyles : [],
+      shadows: last ? d.shadows : {},
+    };
     return `${HEADER(d, `01 variables, part ${i + 1} of ${parts.length}`)}const D = ${JSON.stringify(data)};
 ${HELPERS}
 // Regenerate: the kit's own collections and styles are replaced, nothing else is touched.
@@ -392,9 +500,34 @@ return { part: ${i + 1}, collections: Object.fromEntries(Object.entries(cols).ma
 }
 
 function foundationsScript(d) {
-  const colors = d.variables.filter((v) => v.collection === "Semantic" && v.type === "COLOR").map((v) => v.name);
-  const floats = d.variables.filter((v) => v.collection === "Semantic" && v.type === "FLOAT" && /^(space|radius|size)\//.test(v.name)).map((v) => v.name);
-  const data = { name: d.name, id: d.id, version: d.version, summary: d.summary, description: d.description, modes: d.modes, colors, floats, styles: d.textStyles.map((t) => t.name), counts: { variables: d.variables.length, components: kitCount(d), answers: d.answers.length }, inventory: kitCount(d) };
+  const colors = d.variables
+    .filter((v) => v.collection === "Semantic" && v.type === "COLOR")
+    .map((v) => v.name);
+  const floats = d.variables
+    .filter(
+      (v) =>
+        v.collection === "Semantic" &&
+        v.type === "FLOAT" &&
+        /^(space|radius|size)\//.test(v.name),
+    )
+    .map((v) => v.name);
+  const data = {
+    name: d.name,
+    id: d.id,
+    version: d.version,
+    summary: d.summary,
+    description: d.description,
+    modes: d.modes,
+    colors,
+    floats,
+    styles: d.textStyles.map((t) => t.name),
+    counts: {
+      variables: d.variables.length,
+      components: kitCount(d),
+      answers: d.answers.length,
+    },
+    inventory: kitCount(d),
+  };
   return `${HEADER(d, "02 intro and foundations")}const D = ${JSON.stringify(data)};
 ${HELPERS}
 const sans = await load({ family: 'Inter', style: 'Regular' }), bold = await load({ family: 'Inter', style: 'Bold' }), semi = await load({ family: 'Inter', style: 'Semi Bold' });
@@ -527,7 +660,10 @@ const kitCount = (d) => d.inventory.filter((c) => RECIPES[c.id]).length;
 /** The scheme's inventory, in family order, as [family, [ids]] — only components with a recipe. */
 function inventoryByFamily(d) {
   const have = new Set(d.inventory.map((c) => c.id));
-  return FAMILIES.map(([f, ids]) => [f, ids.filter((id) => have.has(id) && RECIPES[id])]).filter(([, ids]) => ids.length);
+  return FAMILIES.map(([f, ids]) => [
+    f,
+    ids.filter((id) => have.has(id) && RECIPES[id]),
+  ]).filter(([, ids]) => ids.length);
 }
 
 function componentsScripts(d) {
@@ -538,8 +674,13 @@ function componentsScripts(d) {
   const chunks = [];
   let cur = [];
   for (const fam of fams) {
-    const size = (x) => x.reduce((n, [, ids]) => n + ids.reduce((m, id) => m + RECIPES[id][2].length, 0), 0);
-    if (cur.length && size(cur) + size([fam]) > (PART || 22_000)) (chunks.push(cur), (cur = []));
+    const size = (x) =>
+      x.reduce(
+        (n, [, ids]) => n + ids.reduce((m, id) => m + RECIPES[id][2].length, 0),
+        0,
+      );
+    if (cur.length && size(cur) + size([fam]) > (PART || 22_000))
+      (chunks.push(cur), (cur = []));
     cur.push(fam);
   }
   if (cur.length) chunks.push(cur);
@@ -548,7 +689,10 @@ function componentsScripts(d) {
     const last = i === chunks.length - 1;
     const recipes = part
       .flatMap(([, ids]) => ids)
-      .map((id) => `  ${JSON.stringify(id)}: [${JSON.stringify(RECIPES[id][0])}, ${JSON.stringify(RECIPES[id][1])}, async () => {${RECIPES[id][2]}\n  }],`)
+      .map(
+        (id) =>
+          `  ${JSON.stringify(id)}: [${JSON.stringify(RECIPES[id][0])}, ${JSON.stringify(RECIPES[id][1])}, async () => {${RECIPES[id][2]}\n  }],`,
+      )
       .join("\n");
     const data = { name: d.name, first, last, families: part, count, missing };
     return `${HEADER(d, `03 components, part ${i + 1} of ${chunks.length}`)}const D = ${JSON.stringify(data)};
@@ -612,14 +756,21 @@ function schemeScripts(d) {
   let cur = [];
   const size = (x) => JSON.stringify(x).length;
   for (const g of groups) {
-    if (cur.length && size(cur) + size(g) > (PART || 30_000)) (chunks.push(cur), (cur = []));
+    if (cur.length && size(cur) + size(g) > (PART || 30_000))
+      (chunks.push(cur), (cur = []));
     cur.push(g);
   }
   if (cur.length) chunks.push(cur);
   return chunks.map((part, i) => {
     const first = i === 0;
     const last = i === chunks.length - 1;
-    const data = { name: d.name, part, extras: last ? extras : null, first, x: i * 1040 };
+    const data = {
+      name: d.name,
+      part,
+      extras: last ? extras : null,
+      first,
+      x: i * 1040,
+    };
     return `${HEADER(d, `04 scheme page, part ${i + 1} of ${chunks.length}`)}const D = ${JSON.stringify(data)};
 ${HELPERS}
 const sans = await load({ family: 'Inter', style: 'Regular' }), bold = await load({ family: 'Inter', style: 'Bold' }), semi = await load({ family: 'Inter', style: 'Semi Bold' }), mono = families.has('Roboto Mono') ? await load({ family: 'Roboto Mono', style: 'Regular' }) : sans;
@@ -678,7 +829,18 @@ return { id: col.id, groups: D.part.length, answers: D.part.reduce((n, g) => n +
 }
 
 function coverScript(d) {
-  const data = { name: d.name, id: d.id, version: d.version, summary: d.summary, modes: d.modes, counts: { variables: d.variables.length, components: kitCount(d), answers: d.answers.length } };
+  const data = {
+    name: d.name,
+    id: d.id,
+    version: d.version,
+    summary: d.summary,
+    modes: d.modes,
+    counts: {
+      variables: d.variables.length,
+      components: kitCount(d),
+      answers: d.answers.length,
+    },
+  };
   return `${HEADER(d, "05 cover")}const D = ${JSON.stringify(data)};
 ${HELPERS}
 // The cover: the scheme in its own colours, bound to the kit's variables. It is the file's thumbnail.
@@ -720,13 +882,26 @@ return { cover: cv.id };
 export function kitScripts(id) {
   const d = kitData(id);
   const scripts = [
-    ...variablesScripts(d).map((code, i) => ({ file: `01-variables-${i + 1}.js`, code })),
+    ...variablesScripts(d).map((code, i) => ({
+      file: `01-variables-${i + 1}.js`,
+      code,
+    })),
     { file: "02-foundations.js", code: foundationsScript(d) },
-    ...componentsScripts(d).map((code, i) => ({ file: `03-components-${i + 1}.js`, code })),
-    ...schemeScripts(d).map((code, i) => ({ file: `04-scheme-${i + 1}.js`, code })),
+    ...componentsScripts(d).map((code, i) => ({
+      file: `03-components-${i + 1}.js`,
+      code,
+    })),
+    ...schemeScripts(d).map((code, i) => ({
+      file: `04-scheme-${i + 1}.js`,
+      code,
+    })),
     { file: "05-cover.js", code: coverScript(d) },
   ];
-  for (const s of scripts) if (s.code.length > MAX_SCRIPT) throw new Error(`${id}/${s.file} is ${s.code.length} characters, over ${MAX_SCRIPT}.`);
+  for (const s of scripts)
+    if (s.code.length > MAX_SCRIPT)
+      throw new Error(
+        `${id}/${s.file} is ${s.code.length} characters, over ${MAX_SCRIPT}.`,
+      );
   return { data: d, scripts };
 }
 
@@ -735,11 +910,29 @@ export function writePlugin(dir, ids) {
   mkdirSync(dir, { recursive: true });
   writeFileSync(
     join(dir, "manifest.json"),
-    JSON.stringify({ name: "Open DS kits", id: "open-ds-kits", api: "1.0.0", main: "code.js", ui: "ui.html", editorType: ["figma"], documentAccess: "dynamic-page", networkAccess: { allowedDomains: ["none"] } }, null, 2) + "\n",
+    JSON.stringify(
+      {
+        name: "Open DS kits",
+        id: "open-ds-kits",
+        api: "1.0.0",
+        main: "code.js",
+        ui: "ui.html",
+        editorType: ["figma"],
+        documentAccess: "dynamic-page",
+        networkAccess: { allowedDomains: ["none"] },
+      },
+      null,
+      2,
+    ) + "\n",
   );
   const kits = ids.map((id) => {
     const { data, scripts } = kitScripts(id);
-    const steps = scripts.map((x) => `    [${JSON.stringify(x.file)}, async () => {\n${x.code.replaceAll("figma.createAutoLayout(", "createAutoLayout(")}\n    }],`).join("\n");
+    const steps = scripts
+      .map(
+        (x) =>
+          `    [${JSON.stringify(x.file)}, async () => {\n${x.code.replaceAll("figma.createAutoLayout(", "createAutoLayout(")}\n    }],`,
+      )
+      .join("\n");
     return `  ${JSON.stringify(id)}: { name: ${JSON.stringify(data.name)}, steps: [\n${steps}\n  ] },`;
   });
   writeFileSync(
@@ -796,18 +989,29 @@ document.getElementById("run").onclick = () => parent.postMessage({ pluginMessag
 }
 
 if (import.meta.url === `file://${process.argv[1]}`) {
-  const ids = process.argv[2] && process.argv[2] !== "all" ? [process.argv[2]] : JSON.parse(readFileSync(join(ROOT, "tokens/dist/index.json"), "utf8")).schemes.map((s) => s.id);
+  const ids =
+    process.argv[2] && process.argv[2] !== "all"
+      ? [process.argv[2]]
+      : JSON.parse(
+          readFileSync(join(ROOT, "tokens/dist/index.json"), "utf8"),
+        ).schemes.map((s) => s.id);
   for (const id of ids) {
     const out = process.argv[3] ?? join(ROOT, "figma/kits", id);
     rmSync(out, { recursive: true, force: true });
     mkdirSync(out, { recursive: true });
     const { data, scripts } = kitScripts(id);
     for (const s of scripts) writeFileSync(join(out, s.file), s.code);
-    console.log(`${id}: ${data.variables.length} variables, ${data.modes.length} modes, ${data.textStyles.length} text styles, ${data.components.length} components, ${data.answers.length} answers → ${scripts.length} scripts in ${out}`);
+    console.log(
+      `${id}: ${data.variables.length} variables, ${data.modes.length} modes, ${data.textStyles.length} text styles, ${data.components.length} components, ${data.answers.length} answers → ${scripts.length} scripts in ${out}`,
+    );
   }
   if (!process.argv[3]) {
-    const all = JSON.parse(readFileSync(join(ROOT, "tokens/dist/index.json"), "utf8")).schemes.map((s) => s.id);
+    const all = JSON.parse(
+      readFileSync(join(ROOT, "tokens/dist/index.json"), "utf8"),
+    ).schemes.map((s) => s.id);
     writePlugin(join(ROOT, "figma/plugin"), all);
-    console.log(`Figma plugin with every kit → figma/plugin (Plugins, Development, Import plugin from manifest).`);
+    console.log(
+      `Figma plugin with every kit → figma/plugin (Plugins, Development, Import plugin from manifest).`,
+    );
   }
 }

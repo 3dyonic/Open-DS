@@ -8,7 +8,7 @@ hide_table_of_contents: true
 
 # Primitives
 
-<div class="odv-pagehero"><div><p>The raw values of Accessible first. Primitives hold the values; semantic tokens give them a job (see <a href="../foundations/">Foundations</a>), and components read only the jobs. Color ramps stay whole, so some color steps wait for a use; every other primitive is read by something.</p><div class="odv-stats"><span><b>166</b>Primitives</span><span><b>84</b>In use</span><span><b>82</b>Spare</span></div></div><span class="odv-robot odv-pagehero-robot"><img class="odv-robot-day" src="/robots/accessible-first.webp" alt="" loading="lazy"/><img class="odv-robot-night" src="/robots/accessible-first-dark.webp" alt="" loading="lazy"/></span></div>
+<div class="odv-pagehero"><div><p>The raw values of Accessible first. Primitives hold the values; semantic tokens give them a job (see <a href="../foundations/">Foundations</a>), and components read only the jobs. Color ramps stay whole, so some color steps wait for a use; every other primitive is read by something.</p><div class="odv-stats"><span><b>174</b>Primitives</span><span><b>92</b>In use</span><span><b>82</b>Spare</span></div></div><span class="odv-robot odv-pagehero-robot"><img class="odv-robot-day" src="/robots/accessible-first.webp" alt="" loading="lazy"/><img class="odv-robot-night" src="/robots/accessible-first-dark.webp" alt="" loading="lazy"/></span></div>
 
 ## Color
 
@@ -16,7 +16,7 @@ hide_table_of_contents: true
 
 ## Space and shape
 
-<div class="odv-scards"><a class="odv-scard" href="./space-and-size"><span class="odv-scard-art"><span class="odv-robot "><img class="odv-robot-day" src="/robots/measure.webp" alt="" loading="lazy"/><img class="odv-robot-night" src="/robots/measure-dark.webp" alt="" loading="lazy"/></span></span><span class="odv-scard-body"><span class="odv-scard-title">Space and size</span><div class="odv-spec odv-spec-cols"><i style="height:7px" title="12px"></i><i style="height:9px" title="16px"></i><i style="height:12px" title="20px"></i><i style="height:14px" title="24px"></i><i style="height:18px" title="32px"></i><i style="height:28px" title="48px"></i><i style="height:30px" title="52px"></i></div><span class="odv-scard-why">9 primitives · 9 in use</span><span class="odv-meter" role="img" aria-label="9 of 9 in use"><i style="width:100%"></i></span></span></a><a class="odv-scard" href="./shape"><span class="odv-scard-art"><span class="odv-robot "><img class="odv-robot-day" src="/robots/scopes/shape.webp" alt="" loading="lazy"/><img class="odv-robot-night" src="/robots/scopes/shape-dark.webp" alt="" loading="lazy"/></span></span><span class="odv-scard-body"><span class="odv-scard-title">Shape</span><div class="odv-spec"><i class="odv-shape" style="border-radius:0.25rem" title="0.25rem"></i><i class="odv-shape" style="border-radius:0.375rem" title="0.375rem"></i><i class="odv-shape" style="border-radius:0.5rem" title="0.5rem"></i></div><span class="odv-scard-why">6 primitives · 6 in use</span><span class="odv-meter" role="img" aria-label="6 of 6 in use"><i style="width:100%"></i></span></span></a></div>
+<div class="odv-scards"><a class="odv-scard" href="./space-and-size"><span class="odv-scard-art"><span class="odv-robot "><img class="odv-robot-day" src="/robots/measure.webp" alt="" loading="lazy"/><img class="odv-robot-night" src="/robots/measure-dark.webp" alt="" loading="lazy"/></span></span><span class="odv-scard-body"><span class="odv-scard-title">Space and size</span><div class="odv-spec odv-spec-cols"><i style="height:3px" title="2px"></i><i style="height:5px" title="4px"></i><i style="height:10px" title="8px"></i><i style="height:15px" title="12px"></i><i style="height:20px" title="16px"></i><i style="height:25px" title="20px"></i><i style="height:30px" title="24px"></i></div><span class="odv-scard-why">17 primitives · 17 in use</span><span class="odv-meter" role="img" aria-label="17 of 17 in use"><i style="width:100%"></i></span></span></a><a class="odv-scard" href="./shape"><span class="odv-scard-art"><span class="odv-robot "><img class="odv-robot-day" src="/robots/scopes/shape.webp" alt="" loading="lazy"/><img class="odv-robot-night" src="/robots/scopes/shape-dark.webp" alt="" loading="lazy"/></span></span><span class="odv-scard-body"><span class="odv-scard-title">Shape</span><div class="odv-spec"><i class="odv-shape" style="border-radius:0.25rem" title="0.25rem"></i><i class="odv-shape" style="border-radius:0.375rem" title="0.375rem"></i><i class="odv-shape" style="border-radius:0.5rem" title="0.5rem"></i></div><span class="odv-scard-why">6 primitives · 6 in use</span><span class="odv-meter" role="img" aria-label="6 of 6 in use"><i style="width:100%"></i></span></span></a></div>
 
 ## Type, motion and effects
 
@@ -24,12 +24,12 @@ hide_table_of_contents: true
 
 ## Every kind
 
-**166** primitives. **84** are used by a semantic token, a theme or a component key. **82** are not used yet.
+**174** primitives. **92** are used by a semantic token, a theme or a component key. **82** are not used yet.
 
 | Kind | Primitives | Used |
 | --- | --- | --- |
 | [Color](./color.md) | 136 | 54 |
-| [Space and size](./space-and-size.md) | 9 | 9 |
+| [Space and size](./space-and-size.md) | 17 | 17 |
 | [Shape](./shape.md) | 6 | 6 |
 | [Type](./type.md) | 11 | 11 |
 | [Motion](./motion.md) | 2 | 2 |

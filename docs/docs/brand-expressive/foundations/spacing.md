@@ -40,7 +40,7 @@ Each token points to another token. Values live only on primitives, below.
 | `space.gap.tight` | `space.8` |
 | `space.gap.default` | `space.16` |
 | `space.gap.group` | `space.40` |
-| `space.gap.section` | `space.96` |
+| `space.gap.section` | `space.64` |
 | `space.inset.control-x` | `space.28` |
 | `space.inset.container` | `space.32` |
 | `space.inset.cell-x` | `space.16` |

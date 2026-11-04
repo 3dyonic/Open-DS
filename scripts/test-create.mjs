@@ -157,7 +157,11 @@ step("Ask why through the installed package", () => {
 
 step("Check the project's UI with the installed CLI", () => {
   // OD-202: a created project follows its own scheme, so open-ds check finds nothing.
-  const out = run("npx", ["--no-install", "open-ds", "check", ".", "--json"], project);
+  const out = run(
+    "npx",
+    ["--no-install", "open-ds", "check", ".", "--json"],
+    project,
+  );
   const res = JSON.parse(out);
   must(
     res.pass,

@@ -5,6 +5,7 @@
 // every scheme. Run once per change of the rules: node scripts/component-api.mjs [--dry]
 import { readFileSync, readdirSync, writeFileSync } from "node:fs";
 import { SHADCN, SHADCN_SCALE } from "../cli/src/shadcn.mjs";
+import { stepFor } from "../cli/src/spacing-map.mjs";
 
 const ROOT = new URL("..", import.meta.url).pathname;
 const UI = `${ROOT}ui/src/components/`;
@@ -58,13 +59,9 @@ const nearest = (want, kinds) => {
     .map((p) => ({ p, v: rem(valueOf(p)) }));
   const same = all.find((x) => Math.abs(x.v - want) < 1e-6);
   if (same) return { sem: same.p, moved: false };
-  // OD-235 spike: no semantic of the same value → the component spacing map (2px is the hairline;
-  // else the nearest whole step, a tie rounds up)
-  const px = want * 16;
-  if (Math.abs(px - 2) < 1e-6) return { sem: "component-spacing-map.hairline", moved: false };
-  const steps = [1, 2, 3, 4, 6, 8, 12];
-  const k = steps.reduce((b, s) => (Math.abs(s - px / 4) <= Math.abs(b - px / 4) ? s : b), steps[0]);
-  if (px > 0) return { sem: `component-spacing-map.x${k}`, moved: false };
+  // OD-235: no semantic of the same value → the step of the component spacing map
+  if (want > 0)
+    return { sem: `component-spacing-map.${stepFor(want * 16)}`, moved: false };
   const best = all.sort(
     (a, b) => Math.abs(a.v - want) - Math.abs(b.v - want),
   )[0];

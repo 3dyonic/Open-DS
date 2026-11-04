@@ -506,6 +506,17 @@
         "the component docs page lists the tokens by part, as a tree from its token to the semantic and the CSS variable, with the primitive and value in light and dark"
       ],
       "checks": ["components-own-api", "components-reference", "context-booklets", "lands-in-traced", "docs-build"]
+    },
+    {
+      "id": "OD-235",
+      "title": "The component spacing map: the spacing components hard-code follows each scheme's rhythm",
+      "in": [
+        "every spacing inside a component reads a token that links to a semantic or a step of the component spacing map; no component uses a raw spacing class",
+        "a step is 4px × its multiplier × the scheme's rhythm, a multiple of 4px and at most 64px; the scheme decides its rhythm and which steps hold still; the hairline is a fixed 2px",
+        "the values are computed once when the scheme is written and stored as links to space primitives; no CSS calc",
+        "every spacing a scheme decides sits on the 4px grid, at most 64px"
+      ],
+      "checks": ["spacing-map-generated", "spacing-on-grid", "components-own-api", "json-files-validate"]
     }
   ]
 }
