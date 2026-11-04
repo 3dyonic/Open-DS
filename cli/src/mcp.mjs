@@ -55,7 +55,7 @@ const VERSION = JSON.parse(
 // carry too (OD-205).
 const INSTRUCTIONS = `Open DS: design systems as answered questions. Every scheme answers the same questions and gives the reason for each answer; tokens, components, usage rules and voice follow from them.
 Choose: describe the product to fit_scheme, compare the top ones with compare_schemes, then plan_create (a new design system project) or plan_init (an existing app). They return the exact npx command; run it yourself.
-Build: call get_context build first, or get_context file=<path> for the file you edit. Before a component or variant, call get_component; before a token, find_token or when_to_use; to see which colour step a token uses and which steps are free, get_scales. Before you finish, run check_ui on the files you changed and fix each finding.
+Build: call get_context build first, or get_context file=<path> for the file you edit. Before a component or variant, call get_component; before a token, find_token or when_to_use; to see which color step a token uses and which steps are free, get_scales. Before you finish, run check_ui on the files you changed and fix each finding.
 Write: get_context write holds the voice; get_scheme returns any part of a scheme in full. Check each label or message with check_copy. Change: call plan_change before you change an answer or a primitive. Review: run check_ui, then the review prompt.
 Explain any decision with why; get_answer shows one answer with every option, and what_moves shows what follows from an answer. The prompts open-ds-choose, open-ds-build, open-ds-write, open-ds-change and open-ds-review hold the step-by-step skills.
 The questions and answers are a starting point, not a standard.
@@ -519,7 +519,7 @@ export function createMcpServer({ roots = assetRoots() } = {}) {
     {
       title: "Check UI",
       description:
-        "Checks UI code against a scheme and lists each problem with its file, line, rule, fix and see (the booklet section in a created project that answers it): raw colours and sizes instead of tokens, components the scheme does not carry, and variants it decided not to use (for example the large Button size in Dense data). Pass the contents of the files; this server never reads your disk. A review passes only when this returns no findings. The CLI runs the same check on a folder: open-ds check.",
+        "Checks UI code against a scheme and lists each problem with its file, line, rule, fix and see (the booklet section in a created project that answers it): raw colors and sizes instead of tokens, components the scheme does not carry, and variants it decided not to use (for example the large Button size in Dense data). Pass the contents of the files; this server never reads your disk. A review passes only when this returns no findings. The CLI runs the same check on a folder: open-ds check.",
       inputSchema: {
         scheme_id: SchemeId,
         files: z
@@ -570,7 +570,7 @@ export function createMcpServer({ roots = assetRoots() } = {}) {
     {
       title: "Plan a change",
       description:
-        "Plans a change without making it. For a new answer (question_id and option): the edits, the answers that follow, and the variant decisions and rules it reopens. For a new primitive value (token and value): the semantic tokens and component keys it reaches in each theme, and the contrast of every colour pair before and after, with the pairs that would fail.",
+        "Plans a change without making it. For a new answer (question_id and option): the edits, the answers that follow, and the variant decisions and rules it reopens. For a new primitive value (token and value): the semantic tokens and component keys it reaches in each theme, and the contrast of every color pair before and after, with the pairs that would fail.",
       inputSchema: {
         scheme_id: SchemeId,
         question_id: z
@@ -613,9 +613,9 @@ export function createMcpServer({ roots = assetRoots() } = {}) {
   server.registerTool(
     "get_scales",
     {
-      title: "Get the colour scales",
+      title: "Get the color scales",
       description:
-        "Each colour hue of a scheme as its whole scale in one brand and mode: every step, its value, and the tokens that land on it, by lane (backgrounds, edges and rings, text), with the neutral step a surface or text goes through, plus the rules of thumb for changing a scale. Use it to see which step a token uses, which steps are free, and how to decide an adjustment.",
+        "Each color hue of a scheme as its whole scale in one brand and mode: every step, its value, and the tokens that land on it, by lane (backgrounds, edges and rings, text), with the neutral step a surface or text goes through, plus the rules of thumb for changing a scale. Use it to see which step a token uses, which steps are free, and how to decide an adjustment.",
       inputSchema: {
         scheme_id: SchemeId,
         brand: z
@@ -649,7 +649,7 @@ export function createMcpServer({ roots = assetRoots() } = {}) {
     {
       title: "Find a token",
       description:
-        "Finds the semantic tokens and component keys that fit an intent in plain words, best first, with what each is for, what not to use it for and the fills it may sit on, plus the matching situation rule. Use it before you pick a colour or a key.",
+        "Finds the semantic tokens and component keys that fit an intent in plain words, best first, with what each is for, what not to use it for and the fills it may sit on, plus the matching situation rule. Use it before you pick a color or a key.",
       inputSchema: {
         scheme_id: SchemeId,
         query: z

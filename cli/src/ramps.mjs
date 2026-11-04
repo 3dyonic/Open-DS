@@ -1,7 +1,7 @@
-// Whole colour scales, generated in OKLCH (OD-223). Shared by the scheme writer and the harness.
+// Whole color scales, generated in OKLCH (OD-223). Shared by the scheme writer and the harness.
 //
-// Every coloured hue has a light scale and a dark scale, steps 50 to 950. Each is generated from one
-// key colour, kept exact at 600: the light scale on a shared lightness curve around it, the dark scale
+// Every colored hue has a light scale and a dark scale, steps 50 to 950. Each is generated from one
+// key color, kept exact at 600: the light scale on a shared lightness curve around it, the dark scale
 // on its own curve, from just above the dark canvas to near white. A step can carry an adjustment, a
 // small recorded move in lightness or hue, for a step whose text must pass or two fills that must stay
 // apart. Grays are not generated: they are the neutral scale's options (OD-228).
@@ -77,7 +77,7 @@ function fromLab([L, a, b]) {
     -0.0041960863 * l - 0.7034186147 * m + 1.707614701 * s,
   ].map(gam);
 }
-/** OKLCH of a hex colour: [L, C, H in degrees]. */
+/** OKLCH of a hex color: [L, C, H in degrees]. */
 export function lch(h) {
   const [L, a, b] = toLab(h);
   return [
@@ -86,7 +86,7 @@ export function lch(h) {
     ((Math.atan2(b, a) * 180) / Math.PI + 360) % 360,
   ];
 }
-/** The hex colour of an OKLCH point, chroma reduced until it fits sRGB. */
+/** The hex color of an OKLCH point, chroma reduced until it fits sRGB. */
 export function fromLch(L, C, H) {
   const t = (H * Math.PI) / 180;
   for (let c = C; c >= 0; c -= 0.002) {
@@ -95,7 +95,7 @@ export function fromLch(L, C, H) {
   }
   return hex(fromLab([L, 0, 0]));
 }
-/** WCAG contrast of two hex colours. */
+/** WCAG contrast of two hex colors. */
 export function contrast(a, b) {
   const y = (h) => {
     const [r, g, bb] = rgb(h).map(lin);
@@ -104,14 +104,14 @@ export function contrast(a, b) {
   const [x, z] = [y(a), y(b)].sort((p, q) => q - p);
   return (x + 0.05) / (z + 0.05);
 }
-/** Colour difference, ΔE in OKLab ×100. */
+/** Color difference, ΔE in OKLab ×100. */
 export function deltaE(a, b) {
   const p = toLab(a),
     q = toLab(b);
   return Math.hypot(p[0] - q[0], p[1] - q[1], p[2] - q[2]) * 100;
 }
 
-/** The light scale of a key colour, the key exact at 600. */
+/** The light scale of a key color, the key exact at 600. */
 export function lightScale(key) {
   const [Lk, Ck, H] = lch(key);
   return Object.fromEntries(
@@ -129,7 +129,7 @@ export function lightScale(key) {
     }),
   );
 }
-/** The dark scale of a key colour over a dark canvas, the key exact at 600. */
+/** The dark scale of a key color over a dark canvas, the key exact at 600. */
 export function darkScale(key, canvas) {
   const [Lk, Ck, H] = lch(key);
   const Lc = lch(canvas)[0];

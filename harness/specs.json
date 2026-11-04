@@ -155,7 +155,7 @@
       "in": [
         "tokens/src DTCG source and a Style Dictionary build (npm run tokens) to build/",
         "the components, Storybook for the scheme with mode and brand toggles and usage rules",
-        "Docusaurus docs from the scheme, in its own colours and fonts",
+        "Docusaurus docs from the scheme, in its own colors and fonts",
         "scheme.json, AGENTS.md, the skill, llms.txt, CI and a README",
         "the project depends on the open-ds package for why and when",
         "pnpm test:create: pack, create, npm install, build tokens, Storybook and docs"
@@ -275,9 +275,9 @@
       "in": [
         "the top bar carries the design system's name, version and sections, with Built with Open DS on the right",
         "the home shows a product screen from the system's own components and samples, the answers it cites most, and tiles into every section",
-        "the colour page shows the key colours, the surfaces in light and dark, and each status in use with its contrast",
+        "the color page shows the key colors, the surfaces in light and dark, and each status in use with its contrast",
         "component pages show the live story, each variant live with its decision and answers, the rules as do and don't, and the answers as cards",
-        "primitive colours show as ramps; the same visual styles ship in a created project's docs"
+        "primitive colors show as ramps; the same visual styles ship in a created project's docs"
       ],
       "checks": ["docs-sections", "docs-build", "cli-create-works"]
     },
@@ -308,7 +308,7 @@
       "in": [
         "each tool is one engine, served as an MCP tool and a CLI command (check, copy, change, token, fit)",
         "check_ui finds raw values, components the scheme does not carry and variants it does not use; a created project comes back clean",
-        "plan_change changes nothing: it lists what an answer reopens, or the contrast a new colour keeps in every theme",
+        "plan_change changes nothing: it lists what an answer reopens, or the contrast a new color keeps in every theme",
         "the skills use the tools: review and build run check_ui, write check_copy, change plan_change, build find_token, choose fit_scheme"
       ],
       "checks": ["skills-shape", "llm-mcp-docstrings", "cli-create-works"]
@@ -327,7 +327,7 @@
       "id": "OD-205",
       "title": "Context booklets and a router in created projects, from the context engine",
       "in": [
-        "a created project has context/: one Markdown booklet per component, colour and task, a router (index.json) and a README",
+        "a created project has context/: one Markdown booklet per component, color and task, a router (index.json) and a README",
         "AGENTS.md in a project holds the read-once text and the core rules, within 4 KB",
         "get_context and open-ds context return the short form by default, with named sections, pages for long sections, and the full answer on request",
         "get_context file=<path> and open-ds context --file return the booklets the router lists",
@@ -391,11 +391,11 @@
     },
     {
       "id": "OD-223",
-      "title": "Whole colour scales in OKLCH, roles on fixed steps, and the status text pair",
+      "title": "Whole color scales in OKLCH, roles on fixed steps, and the status text pair",
       "in": [
-        "every coloured hue has light and dark scales, 50 to 950, generated from a key colour exact at 600; the dark scale has its own curve",
-        "roles sit on the same step in every colour: tints 100, bases 600, hover and links 700",
-        "each status has text.<status>-on-light (800) and -on-dark (50), fixed colours; the badge label names its tint and the build picks by tone",
+        "every colored hue has light and dark scales, 50 to 950, generated from a key color exact at 600; the dark scale has its own curve",
+        "roles sit on the same step in every color: tints 100, bases 600, hover and links 700",
+        "each status has text.<status>-on-light (800) and -on-dark (50), fixed colors; the badge label names its tint and the build picks by tone",
         "steps that carry text are nudged, and the move is recorded on the hue"
       ],
       "checks": ["scales-generated", "semantics-guidance", "options-used", "docs-build", "storybook-renders"]
@@ -424,13 +424,13 @@
       "id": "OD-222",
       "title": "Options match the decisions: only what is read, motion as answered, text paired by tone, focus, selected and danger",
       "in": [
-        "outside colour ramps, every primitive is read by a semantic, a theme or a component key",
+        "outside color ramps, every primitive is read by a semantic, a theme or a component key",
         "the motion tokens hold as many speeds as each scheme's motion.count answer; panels read their own speed",
         "the agent context carries the rule, generated from the grammar",
         "every fill states its tone, light or dark, in every brand and mode; what sits on it comes from color.on-light or color.on-dark, and keeps its contrast there",
         "a known shortfall waits on its fill with the ticket that fixes it, and the check names it",
-        "every focus ring keeps a 2px gap in the canvas colour from its control",
-        "a selected or current item shows an edge beside its fill, so selection is never colour alone",
+        "every focus ring keeps a 2px gap in the canvas color from its control",
+        "a selected or current item shows an edge beside its fill, so selection is never color alone",
         "a danger fill, with its own label, for the confirm of a delete; primary and danger stay clearly apart in every brand and mode"
       ],
       "checks": [
@@ -438,7 +438,7 @@
         "answers-match-tokens",
         "semantics-guidance",
         "focus-ring-gap",
-        "selection-not-colour-alone",
+        "selection-not-color-alone",
         "danger-apart",
         "docs-build",
         "storybook-renders"
@@ -470,7 +470,7 @@
       "title": "Decision hints: rules of thumb in the grammar, for agents and the harness",
       "in": [
         "each scope can carry hints: when, do, what to measure, why, and the decisions they came from",
-        "get_scales and open-ds scales return the colour hints, for agents",
+        "get_scales and open-ds scales return the color hints, for agents",
         "the harness checks the hints that can be measured",
         "the docs do not show them yet: the human-facing form is refined in OD-232"
       ],

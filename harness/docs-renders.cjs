@@ -1,6 +1,6 @@
 #!/usr/bin/env node
 // Opens the built repo docs in a browser (OD-207) and checks the scheme switch:
-//   - each scheme's button page sets html[data-scheme] and wears that scheme's primary colour
+//   - each scheme's button page sets html[data-scheme] and wears that scheme's primary color
 //   - the switcher keeps the page: /<a>/components/button becomes /<b>/components/button
 //   - a component a scheme leaves out has the regular page, with a "Left out of" badge and what to use instead
 //   - no uncaught page error

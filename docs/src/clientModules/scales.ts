@@ -1,5 +1,5 @@
-// The scale view on the colour primitives page (OD-223). Light and dark tabs, one choice for every
-// colour on the page, starting from the docs theme. Pointing at a token row lights up its step, and the
+// The scale view on the color primitives page (OD-223). Light and dark tabs, one choice for every
+// color on the page, starting from the docs theme. Pointing at a token row lights up its step, and the
 // other way round.
 const KEY = "odv-scale-mode";
 

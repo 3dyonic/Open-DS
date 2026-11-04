@@ -304,7 +304,7 @@ code {
   vertical-align: middle;
 }
 
-/* The brand: the Open DS mark in this system's colours, its name in the title type, and a tag
+/* The brand: the Open DS mark in this system's colors, its name in the title type, and a tag
    that says these are its docs. */
 .navbar__brand {
   gap: max(var(--space-gap-default, 0px), 0.75rem);

@@ -46,9 +46,9 @@ The MCP server serves the same five skills as prompts.
 7. Do what the rule says. Never do what its "not" says.
 8. Before you use a component, call `get_component` or run `open-ds component <scheme> <id>`.
 9. Use only the variants the scheme uses. Never use a variant it marks as not used.
-10. Before you use a colour, read its booklet with `get_context` or `open-ds context <scheme> <token>`.
+10. Before you use a color, read its booklet with `get_context` or `open-ds context <scheme> <token>`.
 11. Use only components in `src/components/ui` and the scheme's CSS variables.
-12. Write no raw colours, sizes or spacing.
+12. Write no raw colors, sizes or spacing.
 13. To change a look, change its component key, for example `--button-radius`. Do not edit the component.
 14. To explain a decision, call `why` or run `open-ds why <scheme> <id>`. Quote the answer and its reason.
 15. Before you finish, call `check_ui` or run `open-ds check`. Fix each finding.
@@ -56,7 +56,7 @@ The MCP server serves the same five skills as prompts.
 ## Done
 
 - Every component, variant and token follows a rule of the scheme.
-- Colour is never the only signal, and focus rings stay.
+- Color is never the only signal, and focus rings stay.
 - Light and dark both work.
 - The product uses one scheme only.
 - `open-ds-review` finds no failures.

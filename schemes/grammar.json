@@ -29,8 +29,8 @@
   "options": {
     "description": "Rules every scheme's primitives follow (OD-221, OD-222). An option set exists to offer distinct choices, so each option looks clearly different from the others: two steps you cannot tell apart are one step. Prefer fewer steps that each do a job over one step per role. And keep only the options something reads: an option nothing reads is a choice nobody made.",
     "used": {
-      "say": "outside colour ramps, keep only the options a semantic, theme or component key reads",
-      "why": "An option nothing reads is a choice nobody made. Colour ramps stay whole, because a ramp is one unit with meaning.",
+      "say": "outside color ramps, keep only the options a semantic, theme or component key reads",
+      "why": "An option nothing reads is a choice nobody made. Color ramps stay whole, because a ramp is one unit with meaning.",
       "except": ["color"]
     },
     "rules": [
@@ -308,7 +308,7 @@
           "options": [
             {
               "id": "learned",
-              "label": "They learn it and recognise it"
+              "label": "They learn it and recognize it"
             },
             {
               "id": "fresh",
@@ -769,88 +769,88 @@
       "hints": [
         {
           "id": "what-a-scale-is-for",
-          "when": "Before you change any colour.",
-          "do": "Remember what a scale is: one colour as a family of shades, from almost white to almost black. Every shade should still look like the same colour, just lighter or darker.",
-          "why": "A family of shades lets every part of a screen use the same colour at the strength it needs, so the screen stays calm and consistent.",
+          "when": "Before you change any color.",
+          "do": "A scale is one color in steps, from lightened (50) to darkened (950). The steps are made in OKLCH, a color space built around how the eye sees lightness: each step mostly moves the color's lightness, evenly as the eye sees it, and eases its colorfulness toward the ends. Each scale starts from its own key color at 600 and keeps that hue's natural lightness and contrast: a yellow is light by nature and a blue is dark, so their steps sit around where each hue really is, not at the same values for every hue. So every step still reads as the same color.",
+          "why": "Even steps let every part of a screen use the same color at the strength it needs, so the screen stays calm and consistent.",
           "from": ["OD-223"]
         },
         {
-          "id": "each-shade-has-a-job",
-          "when": "You pick a shade for something.",
-          "do": "Use the lightest shades for backgrounds behind text, the middle shades for buttons, borders and focus rings, and the darkest shades for text on light backgrounds. In dark mode the roles swap ends.",
+          "id": "each-step-has-a-job",
+          "when": "You pick a step for something.",
+          "do": "Use the lightest steps for backgrounds behind text, the middle steps for buttons, borders and focus rings, and the darkest steps for text on light backgrounds. In dark mode the roles swap ends.",
           "why": "Text must stand out from what is behind it. Each end of the scale gives that for the other end.",
           "from": ["OD-223"]
         },
         {
           "id": "fix-only-what-is-wrong",
-          "when": "A shade looks wrong where it is used.",
-          "do": "Say exactly what is wrong first: too pale, too dull, too close to another colour. Then change only that shade, and leave the ones that work alone.",
-          "measure": "The harness checks that every shade that was changed really needed it.",
+          "when": "A step looks wrong where it is used.",
+          "do": "Say exactly what is wrong first: too pale, too dull, too close to another color. Then change only that step, and leave the ones that work alone.",
+          "measure": "The harness checks that every step that was changed really needed it.",
           "why": "A small fix in the right place keeps the family together. Reworking a whole scale for one problem makes new problems.",
           "from": ["OD-231"]
         },
         {
           "id": "look-at-every-use",
-          "when": "Before you change a shade.",
-          "do": "Find everything that uses it, and look at each one in light and dark mode. One shade can be a soft background in light mode and a text colour in dark mode at the same time.",
-          "why": "A change made for one use moves every other use of that shade too.",
+          "when": "Before you change a step.",
+          "do": "Find everything that uses it, and look at each one in light and dark mode. One step can be a soft background in light mode and a text color in dark mode at the same time.",
+          "why": "A change made for one use moves every other use of that step too.",
           "from": ["OD-223", "OD-231"]
         },
         {
-          "id": "more-colour-before-darker",
-          "when": "A shade looks washed out or greyish.",
-          "do": "Make it more colourful first. If that is not enough, make it a little darker. Change the hue itself last.",
-          "why": "Darkening a pale colour makes it greyer, not more colourful. How colourful it is decides whether people recognise it.",
+          "id": "more-color-before-darker",
+          "when": "A step looks washed out or greyish.",
+          "do": "OKLCH gives a step three dials: lightness, colorfulness and hue. Turn colorfulness first. If that is not enough, make it a little darker. Turn the hue last.",
+          "why": "Darkening a pale color makes it grayer, not more colorful. How colorful it is decides whether people recognize it.",
           "from": ["OD-231"]
         },
         {
           "id": "pale-blue-and-red",
-          "when": "You make a very pale shade more colourful.",
-          "do": "Expect blue and red to need a touch of darkening before they can take more colour. Green and yellow usually take it as they are.",
-          "why": "Screens can show only so much colour in very pale shades, and blue and red run out of room first.",
+          "when": "You make a very pale step more colorful.",
+          "do": "Expect blue and red to need a touch of darkening before they can take more color. Green and yellow usually take it as they are.",
+          "why": "Screens can show only so much color in very pale steps, and blue and red run out of room first.",
           "from": ["OD-231"]
         },
         {
-          "id": "coloured-text-must-look-coloured",
-          "when": "Text is set in a colour, like an error message or a status label.",
-          "do": "Make sure it is easy to read and also clearly that colour. Text that is readable but looks white has lost its meaning.",
-          "measure": "The harness checks that status text on dark backgrounds is clearly coloured and easy to read, in every scheme.",
-          "why": "The colour tells people what kind of message it is before they read a word.",
+          "id": "colored-text-must-look-colored",
+          "when": "Text is set in a color, like an error message or a status label.",
+          "do": "Make sure it is easy to read and also clearly that color. Text that is readable but looks white has lost its meaning.",
+          "measure": "The harness checks that status text on dark backgrounds is clearly colored and easy to read, in every scheme.",
+          "why": "The color tells people what kind of message it is before they read a word.",
           "from": ["OD-231"]
         },
         {
           "id": "change-a-little",
           "when": "You decide how much to change.",
           "do": "Change as little as solves the problem. Then compare it with the original side by side, in light and dark mode, and ease it back if it stands out.",
-          "why": "A big change makes the shade look like it belongs to another colour.",
+          "why": "A big change makes the step look like it belongs to another color.",
           "from": ["OD-231"]
         },
         {
           "id": "fix-it-once",
           "when": "The same problem shows up in several schemes.",
-          "do": "If the schemes use the same colour, fix it once for all of them. Fix one scheme alone only when its colour is different.",
-          "why": "The same blue is the same colour wherever it is used, so it has the same problem everywhere.",
+          "do": "If the schemes use the same color, fix it once for all of them. Fix one scheme alone only when its color is different.",
+          "why": "The same blue is the same color wherever it is used, so it has the same problem everywhere.",
           "from": ["OD-231"]
         },
         {
           "id": "same-fix-everywhere-is-a-new-rule",
-          "when": "Every colour seems to need the same fix.",
-          "do": "Change how all the scales are made, instead of fixing each colour one by one.",
-          "why": "A fix is for an exception. When every colour needs it, the rule itself is what needs to change.",
+          "when": "Every color seems to need the same fix.",
+          "do": "Change how all the scales are made, instead of fixing each color one by one.",
+          "why": "A fix is for an exception. When every color needs it, the rule itself is what needs to change.",
           "from": ["OD-223"]
         },
         {
           "id": "say-why",
-          "when": "You have changed a shade.",
+          "when": "You have changed a step.",
           "do": "Write down why, in a sentence anyone can follow. \"It looked too pale on dark backgrounds\" is a good reason.",
           "why": "Whoever comes next can keep the change, adjust it, or undo it on purpose.",
           "from": ["OD-223", "OD-231"]
         },
         {
           "id": "apart-where-they-meet",
-          "when": "Two colours must never be confused, like the main button and a delete button.",
+          "when": "Two colors must never be confused, like the main button and a delete button.",
           "do": "Decide how different they must be from where they appear together, not from one number for every case.",
-          "why": "Colours side by side need more difference than colours that never meet.",
+          "why": "Colors side by side need more difference than colors that never meet.",
           "from": ["OD-225"]
         }
       ]
@@ -2750,8 +2750,8 @@
   ],
   "semantics": {
     "description": "What each semantic key is for, written once for every scheme. Each entry says its intent, what to use it for, what not to use it for (and what to use instead) and, where it matters, which fills it may sit on and the contrast it must keep there. Words only; values come from each scheme. The harness checks every rule.",
-    "key_colours": {
-      "description": "The page, its main surface and text, the main action at rest and on hover, and the focus ring: the colours that show a theme at a glance.",
+    "key_colors": {
+      "description": "The page, its main surface and text, the main action at rest and on hover, and the focus ring: the colors that show a theme at a glance.",
       "tokens": [
         "color.surface.canvas",
         "color.surface.default",
@@ -2762,7 +2762,7 @@
       ]
     },
     "urgency": {
-      "description": "Status colours go up in urgency: info, then warning, then danger. Pick the level that matches the real risk. Never go up a level to get attention. Success sits outside the order.",
+      "description": "Status colors go up in urgency: info, then warning, then danger. Pick the level that matches the real risk. Never go up a level to get attention. Success sits outside the order.",
       "order": [
         "color.status.info.@",
         "color.status.warning.@",
@@ -2961,7 +2961,7 @@
       },
       {
         "id": "color.text.info-on-light",
-        "intent": "The label on a light info fill, such as its tint in light mode: a fixed colour from the light scale (800).",
+        "intent": "The label on a light info fill, such as its tint in light mode: a fixed color from the light scale (800).",
         "use_for": ["The info badge"],
         "not_for": [
           {
@@ -2976,7 +2976,7 @@
       },
       {
         "id": "color.text.info-on-dark",
-        "intent": "The label on a dark info fill, such as its tint in dark mode: a fixed colour from the light scale (100, adjusted so its hue shows).",
+        "intent": "The label on a dark info fill, such as its tint in dark mode: a fixed color from the light scale (100, adjusted so its hue shows).",
         "use_for": ["The info badge"],
         "not_for": [
           {
@@ -2991,7 +2991,7 @@
       },
       {
         "id": "color.text.success-on-light",
-        "intent": "The label on a light success fill, such as its tint in light mode: a fixed colour from the light scale (800).",
+        "intent": "The label on a light success fill, such as its tint in light mode: a fixed color from the light scale (800).",
         "use_for": ["The success badge"],
         "not_for": [
           {
@@ -3006,7 +3006,7 @@
       },
       {
         "id": "color.text.success-on-dark",
-        "intent": "The label on a dark success fill, such as its tint in dark mode: a fixed colour from the light scale (100, adjusted so its hue shows).",
+        "intent": "The label on a dark success fill, such as its tint in dark mode: a fixed color from the light scale (100, adjusted so its hue shows).",
         "use_for": ["The success badge"],
         "not_for": [
           {
@@ -3021,7 +3021,7 @@
       },
       {
         "id": "color.text.warning-on-light",
-        "intent": "The label on a light warning fill, such as its tint in light mode: a fixed colour from the light scale (800).",
+        "intent": "The label on a light warning fill, such as its tint in light mode: a fixed color from the light scale (800).",
         "use_for": ["The warning badge"],
         "not_for": [
           {
@@ -3036,7 +3036,7 @@
       },
       {
         "id": "color.text.warning-on-dark",
-        "intent": "The label on a dark warning fill, such as its tint in dark mode: a fixed colour from the light scale (100, adjusted so its hue shows).",
+        "intent": "The label on a dark warning fill, such as its tint in dark mode: a fixed color from the light scale (100, adjusted so its hue shows).",
         "use_for": ["The warning badge"],
         "not_for": [
           {
@@ -3051,7 +3051,7 @@
       },
       {
         "id": "color.text.danger-on-light",
-        "intent": "The label on a light danger fill, such as its tint in light mode: a fixed colour from the light scale (800).",
+        "intent": "The label on a light danger fill, such as its tint in light mode: a fixed color from the light scale (800).",
         "use_for": ["The danger badge"],
         "not_for": [
           {
@@ -3066,7 +3066,7 @@
       },
       {
         "id": "color.text.danger-on-dark",
-        "intent": "The label on a dark danger fill, such as its tint in dark mode: a fixed colour from the light scale (100, adjusted so its hue shows).",
+        "intent": "The label on a dark danger fill, such as its tint in dark mode: a fixed color from the light scale (100, adjusted so its hue shows).",
         "use_for": ["The danger badge"],
         "not_for": [
           {
@@ -3171,7 +3171,7 @@
       },
       {
         "id": "color.border.selected",
-        "intent": "The edge that marks a selected item, beside its fill, so selection is never colour alone.",
+        "intent": "The edge that marks a selected item, beside its fill, so selection is never color alone.",
         "use_for": [
           "A selected table row",
           "The current item in a sidebar or menu"
@@ -3396,7 +3396,7 @@
             "use": "color.action.primary.@"
           },
           {
-            "when": "Brand colour",
+            "when": "Brand color",
             "use": "color.action.primary.@"
           },
           {
@@ -3848,7 +3848,7 @@
       },
       {
         "id": "content",
-        "description": "Accordions and sections that organise long text."
+        "description": "Accordions and sections that organize long text."
       },
       {
         "id": "media",

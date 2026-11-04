@@ -62,7 +62,7 @@ const ARBITRARY = /\b[a-z][a-z-]*-\[-?\d+(?:\.\d+)?(?:px|rem|em)\]/g;
  * The harness checks that each one exists.
  */
 export const SEE = {
-  "raw-colour": "context/tasks/build.md: Situations",
+  "raw-color": "context/tasks/build.md: Situations",
   "raw-size": "context/tasks/build.md: Situations",
   "not-in-inventory": "AGENTS.md: Components",
   "variant-not-used": "context/components/<id>.md: Variants here",
@@ -81,7 +81,7 @@ export function checkUi(scheme, g, files) {
       continue;
     const text = String(content);
     const css = path.endsWith(".css");
-    // Raw colours: hex, colour functions and Tailwind palette classes.
+    // Raw colors: hex, color functions and Tailwind palette classes.
     for (const re of [HEX, FUNC]) {
       re.lastIndex = 0;
       for (const m of text.matchAll(re)) {
@@ -98,9 +98,9 @@ export function checkUi(scheme, g, files) {
           path,
           text,
           m.index,
-          "raw-colour",
-          `A raw colour: ${m[0]}`,
-          "Use a semantic colour token or a component key. Find it with find_token.",
+          "raw-color",
+          `A raw color: ${m[0]}`,
+          "Use a semantic color token or a component key. Find it with find_token.",
         );
       }
     }
@@ -110,9 +110,9 @@ export function checkUi(scheme, g, files) {
           path,
           text,
           m.index,
-          "raw-colour",
-          `A palette colour class: ${m[0]}`,
-          "Use a class that reads the scheme's colour variables, or a component key.",
+          "raw-color",
+          `A palette color class: ${m[0]}`,
+          "Use a class that reads the scheme's color variables, or a component key.",
         );
     // Raw sizes: arbitrary Tailwind values, and px in CSS declarations.
     for (const m of text.matchAll(ARBITRARY))
@@ -287,7 +287,7 @@ function contrast(a, b) {
 
 /**
  * The plan for one change, without making it. change is { question, option } for a decision, or
- * { token, value } for a primitive. Returns the edits, what they reopen or touch, and, for a colour,
+ * { token, value } for a primitive. Returns the edits, what they reopen or touch, and, for a color,
  * the contrast of every pair it reaches in every theme, before and after.
  */
 export function planChange(scheme, g, change) {

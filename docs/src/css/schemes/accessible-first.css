@@ -58,16 +58,16 @@ html[data-scheme="accessible-first"] {
   --color-text-link: #013895; /** Links in running text. */
   --color-text-on-light: #141414; /** Text on any fill whose tone is light, in either mode: the light mode's body text. */
   --color-text-on-dark: #FFFFFF; /** Text on any fill whose tone is dark, in either mode: white. */
-  --color-text-info-on-light: #022C29; /** The label on a light info fill, such as its tint in light mode: a fixed colour from the light scale (800). */
-  --color-text-info-on-dark: #CDF4F0; /** The label on a dark info fill, such as its tint in dark mode: a fixed colour from the light scale (100, adjusted so its hue shows). */
-  --color-text-success-on-light: #023E17; /** The label on a light success fill, such as its tint in light mode: a fixed colour from the light scale (800). */
-  --color-text-success-on-dark: #DBF7DF; /** The label on a dark success fill, such as its tint in dark mode: a fixed colour from the light scale (100, adjusted so its hue shows). */
-  --color-text-warning-on-light: #462A02; /** The label on a light warning fill, such as its tint in light mode: a fixed colour from the light scale (800). */
-  --color-text-warning-on-dark: #FEE8CF; /** The label on a dark warning fill, such as its tint in dark mode: a fixed colour from the light scale (100, adjusted so its hue shows). */
-  --color-text-danger-on-light: #6D0008; /** The label on a light danger fill, such as its tint in light mode: a fixed colour from the light scale (800). */
-  --color-text-danger-on-dark: #FFDBD8; /** The label on a dark danger fill, such as its tint in dark mode: a fixed colour from the light scale (100, adjusted so its hue shows). */
+  --color-text-info-on-light: #022C29; /** The label on a light info fill, such as its tint in light mode: a fixed color from the light scale (800). */
+  --color-text-info-on-dark: #CDF4F0; /** The label on a dark info fill, such as its tint in dark mode: a fixed color from the light scale (100, adjusted so its hue shows). */
+  --color-text-success-on-light: #023E17; /** The label on a light success fill, such as its tint in light mode: a fixed color from the light scale (800). */
+  --color-text-success-on-dark: #DBF7DF; /** The label on a dark success fill, such as its tint in dark mode: a fixed color from the light scale (100, adjusted so its hue shows). */
+  --color-text-warning-on-light: #462A02; /** The label on a light warning fill, such as its tint in light mode: a fixed color from the light scale (800). */
+  --color-text-warning-on-dark: #FEE8CF; /** The label on a dark warning fill, such as its tint in dark mode: a fixed color from the light scale (100, adjusted so its hue shows). */
+  --color-text-danger-on-light: #6D0008; /** The label on a light danger fill, such as its tint in light mode: a fixed color from the light scale (800). */
+  --color-text-danger-on-dark: #FFDBD8; /** The label on a dark danger fill, such as its tint in dark mode: a fixed color from the light scale (100, adjusted so its hue shows). */
   --color-border-focus: #0B4FC0; /** The focus ring. */
-  --color-border-selected: #0B4FC0; /** The edge that marks a selected item, beside its fill, so selection is never colour alone. */
+  --color-border-selected: #0B4FC0; /** The edge that marks a selected item, beside its fill, so selection is never color alone. */
   --color-action-primary: #0B4FC0; /** The one main action in a view. */
   --color-action-primary-hover: #013895; /** The main action under the pointer. */
   --color-action-danger: #C42B2B; /** The fill of a destructive commit: the confirm of a delete. */
@@ -256,16 +256,16 @@ html[data-scheme="accessible-first"][data-theme="dark"] {
   --color-text-link: #A7C8FC; /** Links in running text. */
   --color-text-on-light: #141414; /** Text on any fill whose tone is light, in either mode: the light mode's body text. */
   --color-text-on-dark: #FFFFFF; /** Text on any fill whose tone is dark, in either mode: white. */
-  --color-text-info-on-light: #022C29; /** The label on a light info fill, such as its tint in light mode: a fixed colour from the light scale (800). */
-  --color-text-info-on-dark: #CDF4F0; /** The label on a dark info fill, such as its tint in dark mode: a fixed colour from the light scale (100, adjusted so its hue shows). */
-  --color-text-success-on-light: #023E17; /** The label on a light success fill, such as its tint in light mode: a fixed colour from the light scale (800). */
-  --color-text-success-on-dark: #DBF7DF; /** The label on a dark success fill, such as its tint in dark mode: a fixed colour from the light scale (100, adjusted so its hue shows). */
-  --color-text-warning-on-light: #462A02; /** The label on a light warning fill, such as its tint in light mode: a fixed colour from the light scale (800). */
-  --color-text-warning-on-dark: #FEE8CF; /** The label on a dark warning fill, such as its tint in dark mode: a fixed colour from the light scale (100, adjusted so its hue shows). */
-  --color-text-danger-on-light: #6D0008; /** The label on a light danger fill, such as its tint in light mode: a fixed colour from the light scale (800). */
-  --color-text-danger-on-dark: #FFDBD8; /** The label on a dark danger fill, such as its tint in dark mode: a fixed colour from the light scale (100, adjusted so its hue shows). */
+  --color-text-info-on-light: #022C29; /** The label on a light info fill, such as its tint in light mode: a fixed color from the light scale (800). */
+  --color-text-info-on-dark: #CDF4F0; /** The label on a dark info fill, such as its tint in dark mode: a fixed color from the light scale (100, adjusted so its hue shows). */
+  --color-text-success-on-light: #023E17; /** The label on a light success fill, such as its tint in light mode: a fixed color from the light scale (800). */
+  --color-text-success-on-dark: #DBF7DF; /** The label on a dark success fill, such as its tint in dark mode: a fixed color from the light scale (100, adjusted so its hue shows). */
+  --color-text-warning-on-light: #462A02; /** The label on a light warning fill, such as its tint in light mode: a fixed color from the light scale (800). */
+  --color-text-warning-on-dark: #FEE8CF; /** The label on a dark warning fill, such as its tint in dark mode: a fixed color from the light scale (100, adjusted so its hue shows). */
+  --color-text-danger-on-light: #6D0008; /** The label on a light danger fill, such as its tint in light mode: a fixed color from the light scale (800). */
+  --color-text-danger-on-dark: #FFDBD8; /** The label on a dark danger fill, such as its tint in dark mode: a fixed color from the light scale (100, adjusted so its hue shows). */
   --color-border-focus: #8AB4F8; /** The focus ring. */
-  --color-border-selected: #8AB4F8; /** The edge that marks a selected item, beside its fill, so selection is never colour alone. */
+  --color-border-selected: #8AB4F8; /** The edge that marks a selected item, beside its fill, so selection is never color alone. */
   --color-action-primary: #8AB4F8; /** The one main action in a view. */
   --color-action-primary-hover: #A7C8FC; /** The main action under the pointer. */
   --color-action-danger: #F28B8B; /** The fill of a destructive commit: the confirm of a delete. */

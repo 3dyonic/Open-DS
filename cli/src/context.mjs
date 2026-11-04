@@ -84,7 +84,7 @@ function task(name, scheme, g, roots) {
     };
   return {
     ...base,
-    read: "Check each colour against its not_for and its pairs, each status against the urgency order, and each situation against its rule.",
+    read: "Check each color against its not_for and its pairs, each status against the urgency order, and each situation against its rule.",
     rules: rules(scheme, g),
     semantics: brief(g),
     urgency,

@@ -244,7 +244,7 @@
             "min_delta_e": {
               "type": "number",
               "exclusiveMinimum": 0,
-              "description": "The smallest colour difference, ΔE in OKLab ×100."
+              "description": "The smallest color difference, ΔE in OKLab ×100."
             },
             "say": {
               "type": "string",
@@ -364,16 +364,16 @@
             }
           }
         },
-        "key_colours": {
+        "key_colors": {
           "type": "object",
           "additionalProperties": false,
           "required": ["description", "tokens"],
-          "description": "The few colours that show a theme at a glance, listed on each scheme's Themes page (OD-223).",
+          "description": "The few colors that show a theme at a glance, listed on each scheme's Themes page (OD-223).",
           "properties": {
             "description": {
               "type": "string",
               "minLength": 1,
-              "description": "Why these colours, in one sentence."
+              "description": "Why these colors, in one sentence."
             },
             "tokens": {
               "type": "array",
@@ -391,7 +391,7 @@
           "type": "object",
           "additionalProperties": false,
           "required": ["description", "order"],
-          "description": "The order of status colours from least to most urgent.",
+          "description": "The order of status colors from least to most urgent.",
           "properties": {
             "description": {
               "type": "string",
@@ -801,7 +801,7 @@
                 "type": "string",
                 "minLength": 1
               },
-              "description": "Primitive groups kept whole even where a step is unused, such as colour ramps."
+              "description": "Primitive groups kept whole even where a step is unused, such as color ramps."
             }
           }
         },

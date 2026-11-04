@@ -1,15 +1,18 @@
-// The scale view on the colour primitives page (OD-223). Light and dark tabs, one choice for every
-// colour on the page, starting from the docs theme. Pointing at a token row lights up its step, and the
+// The scale view on the color primitives page (OD-223). Light and dark tabs, one choice for every
+// color on the page, starting from the docs theme. Pointing at a token row lights up its step, and the
 // other way round.
 const KEY = "odv-scale-mode";
 
 function show(mode: string) {
   for (const box of document.querySelectorAll<HTMLElement>("[data-scale]")) {
     const has = box.querySelector(`.odv-scale-p[data-mode="${mode}"]`);
-    const m = has ? mode : (box.querySelector<HTMLElement>(".odv-scale-p")?.dataset.mode ?? mode);
+    const m = has
+      ? mode
+      : (box.querySelector<HTMLElement>(".odv-scale-p")?.dataset.mode ?? mode);
     for (const b of box.querySelectorAll<HTMLElement>(".odv-scale-tabs button"))
       b.setAttribute("aria-selected", String(b.dataset.mode === m));
-    for (const p of box.querySelectorAll<HTMLElement>(".odv-scale-p")) p.hidden = p.dataset.mode !== m;
+    for (const p of box.querySelectorAll<HTMLElement>(".odv-scale-p"))
+      p.hidden = p.dataset.mode !== m;
   }
 }
 
@@ -21,19 +24,25 @@ function start() {
   } catch {
     mode = null;
   }
-  show(mode ?? (document.documentElement.dataset.theme === "dark" ? "dark" : "light"));
+  show(
+    mode ??
+      (document.documentElement.dataset.theme === "dark" ? "dark" : "light"),
+  );
 }
 
 function light(el: Element, on: boolean) {
   const k = (el as HTMLElement).dataset.link;
   const panel = el.closest(".odv-lane");
   if (!k || !panel) return;
-  for (const x of panel.querySelectorAll(`[data-link="${k}"]`)) x.classList.toggle("hl", on);
+  for (const x of panel.querySelectorAll(`[data-link="${k}"]`))
+    x.classList.toggle("hl", on);
 }
 
 if (typeof window !== "undefined") {
   document.addEventListener("click", (e) => {
-    const b = (e.target as Element).closest<HTMLElement>(".odv-scale-tabs button");
+    const b = (e.target as Element).closest<HTMLElement>(
+      ".odv-scale-tabs button",
+    );
     if (!b?.dataset.mode) return;
     try {
       sessionStorage.setItem(KEY, b.dataset.mode);

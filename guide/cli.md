@@ -33,12 +33,12 @@ node cli/bin/open-ds.js add dialog --dir ./my-app
 
 These commands do the steps the agent skills would otherwise judge by eye (OD-202). The MCP server has the same tools.
 
-| Command                       | MCP tool      | What it does                                                                                                                |
-| ----------------------------- | ------------- | --------------------------------------------------------------------------------------------------------------------------- |
-| `check [dir]`                 | `check_ui`    | Lists raw colours and sizes, components the scheme does not carry, and variants it does not use. Exits 1 when it finds any. |
-| `copy <scheme> <kind> <text>` | `check_copy`  | Checks a label or message against the voice and the rule for its situation.                                                 |
-| `change <scheme> …`           | `plan_change` | Plans a change without making it: what a new answer reopens, or the contrast a new colour keeps.                            |
-| `token <scheme> <words>`      | `find_token`  | The tokens and component keys that fit an intent, with their guidance.                                                      |
-| `fit <words>`                 | `fit_scheme`  | Ranks the schemes against a product description, with the reasons.                                                          |
+| Command                       | MCP tool      | What it does                                                                                                               |
+| ----------------------------- | ------------- | -------------------------------------------------------------------------------------------------------------------------- |
+| `check [dir]`                 | `check_ui`    | Lists raw colors and sizes, components the scheme does not carry, and variants it does not use. Exits 1 when it finds any. |
+| `copy <scheme> <kind> <text>` | `check_copy`  | Checks a label or message against the voice and the rule for its situation.                                                |
+| `change <scheme> …`           | `plan_change` | Plans a change without making it: what a new answer reopens, or the contrast a new color keeps.                            |
+| `token <scheme> <words>`      | `find_token`  | The tokens and component keys that fit an intent, with their guidance.                                                     |
+| `fit <words>`                 | `fit_scheme`  | Ranks the schemes against a product description, with the reasons.                                                         |
 
 After `init`, install the packages it prints and import `src/styles/open-ds.css` after Tailwind. Dark mode: add the class `dark`. Multi-brand: set `data-brand` on `<html>`.

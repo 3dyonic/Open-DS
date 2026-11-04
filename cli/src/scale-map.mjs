@@ -1,5 +1,5 @@
-// Which semantic tokens land on each primitive colour step (OD-223). The scale view in the docs and the
-// Storybook guide reads this: for a brand and mode, every colour semantic followed through the theme and
+// Which semantic tokens land on each primitive color step (OD-223). The scale view in the docs and the
+// Storybook guide reads this: for a brand and mode, every color semantic followed through the theme and
 // the neutral scale to the primitive step it ends at.
 
 const REF = /^\{([^}]+)\}$/;
@@ -28,7 +28,7 @@ export const LANES = [
   { id: "text", title: "Text" },
 ];
 
-/** Follow one semantic colour to its primitive in a brand and mode: { prim, via } or null. */
+/** Follow one semantic color to its primitive in a brand and mode: { prim, via } or null. */
 export function follow(tokens, brandKey, mode, path) {
   const th = tokens.brands[brandKey].theme;
   const inTheme = (p) => (get(th[mode], p) ?? get(th.base ?? {}, p))?.$value;
@@ -47,7 +47,7 @@ export function follow(tokens, brandKey, mode, path) {
 }
 
 /**
- * Every colour semantic in one brand and mode, by the primitive step it ends at:
+ * Every color semantic in one brand and mode, by the primitive step it ends at:
  * { "color.violet.light.600": [{ token, via }] }. The neutral steps themselves are left out: they show as
  * the "via" of the roles that read them.
  */
@@ -70,7 +70,7 @@ export function scaleMap(tokens, brandKey, mode) {
 /**
  * The scales of a scheme, for the CLI (`open-ds scales`) and the MCP (`get_scales`): for a brand and
  * mode, each hue's steps with their values and the tokens that land on each, by lane, plus the tokens
- * whose colour is fixed from the other mode's scale. Filter by hue to get one.
+ * whose color is fixed from the other mode's scale. Filter by hue to get one.
  */
 export function scales(
   scheme,

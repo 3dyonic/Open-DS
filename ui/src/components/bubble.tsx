@@ -4,7 +4,7 @@
  *
  * Made by Open DS (MIT). Reads the shadcn variables, which theme.css maps onto the scheme's
  * semantic tokens, and the radius and text scale that shadcn.css maps onto the scheme's tokens.
- * The sender is in the text, not only in the side or colour.
+ * The sender is in the text, not only in the side or color.
  */
 import * as React from "react";
 import { cn } from "../lib/utils";

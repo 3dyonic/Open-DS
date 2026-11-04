@@ -26,7 +26,7 @@ const config: Config = {
   i18n: { defaultLocale: "en", locales: ["en"] },
   customFields: { schemes, storybook: STORYBOOK },
   // Sets the scheme (and the multi-brand brand) on <html> before the first paint, so a page never
-  // flashes in another scheme's colours. clientModules/scheme.ts keeps it right as you navigate.
+  // flashes in another scheme's colors. clientModules/scheme.ts keeps it right as you navigate.
   headTags: [
     {
       tagName: "script",

@@ -93,7 +93,7 @@ const INFIMA = {
   "--ifm-card-horizontal-spacing": "card-padding",
   "--ifm-button-padding-horizontal": "button-padding-x",
   "--ifm-badge-border-radius": "badge-radius",
-  // Callouts use the status colours.
+  // Callouts use the status colors.
   "--ifm-color-success": "color-status-success",
   "--ifm-color-success-dark": "color-status-success",
   "--ifm-color-success-contrast-background": "color-status-success-subtle",
@@ -112,7 +112,7 @@ const INFIMA = {
   "--ifm-color-info-contrast-foreground": "color-text-primary",
 };
 
-// The Open DS mark (a 6 by 5 pixel grid, one cell lit) in a scheme's ink and primary colour. The same
+// The Open DS mark (a 6 by 5 pixel grid, one cell lit) in a scheme's ink and primary color. The same
 // mark the CLI's project template draws (cli/templates/project/tokens/build.mjs).
 const MARK = ["110111", "101010", "1l1011", "101001", "110111"];
 const logo = (t) =>

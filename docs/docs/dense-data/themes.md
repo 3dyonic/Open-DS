@@ -20,9 +20,9 @@ Dense data ships 2 themes: light, dark. Only semantic tokens change between them
 
 ## Key colors in each theme
 
-The page, its main surface and text, the main action at rest and on hover, and the focus ring: the colours that show a theme at a glance. Each shows the primitive it points at, then its value.
+The page, its main surface and text, the main action at rest and on hover, and the focus ring: the colors that show a theme at a glance. Each shows the primitive it points at, then its value.
 
-- the neutral is `slate` (cool). Muted colour keeps attention on the data; a cool gray reads as precise.
+- the neutral is `slate` (cool). Muted color keeps attention on the data; a cool gray reads as precise.
 
 | Token | light | dark |
 | --- | --- | --- |

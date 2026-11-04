@@ -15,14 +15,14 @@ npx open-ds create my-ds --scheme dense-data
 
 `create` writes a full design system project for one scheme:
 
-| Folder | What it holds |
-| --- | --- |
+| Folder                            | What it holds                                                                                                                         |
+| --------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------- |
 | `tokens/src/`, `tokens/build.mjs` | The DTCG token source and its Style Dictionary build: CSS for every brand in light and dark, the shadcn and Tailwind theme, and JSON. |
-| `src/components/ui/` | The scheme's components, built on shadcn/ui and Radix and themed by its tokens. |
-| `stories/` | A Storybook of every component, with the scheme's own content. |
-| `docs/` | Docusaurus docs: reasons, voice, foundations, components and themes. |
-| `scheme.json` | Every answer with its why and because, every usage rule and the voice. |
-| `AGENTS.md`, `.claude/skills/` | What a coding agent reads before it writes UI. |
+| `src/components/ui/`              | The scheme's components, built on shadcn/ui and Radix and themed by its tokens.                                                       |
+| `stories/`                        | A Storybook of every component, with the scheme's own content.                                                                        |
+| `docs/`                           | Docusaurus docs: reasons, voice, foundations, components and themes.                                                                  |
+| `scheme.json`                     | Every answer with its why and because, every usage rule and the voice.                                                                |
+| `AGENTS.md`, `.claude/skills/`    | What a coding agent reads before it writes UI.                                                                                        |
 
 Then `npm install` and `npm run storybook` or `npm run docs`. The code is copied into your project: you own it.
 
@@ -47,7 +47,7 @@ npx open-ds context dense-data button                 # short, ends with its sec
 npx open-ds context dense-data button --section keyboard
 ```
 
-A created project has `context/`: one short booklet per component, colour and task, and a router (`context/index.json`) that says what to load for a file. `npx open-ds context --file <path>` prints that; `npx open-ds context --write` regenerates the folder.
+A created project has `context/`: one short booklet per component, color and task, and a router (`context/index.json`) that says what to load for a file. `npx open-ds context --file <path>` prints that; `npx open-ds context --write` regenerates the folder.
 
 ## Check and plan
 
@@ -59,19 +59,19 @@ npx open-ds token dense-data "border of a field with an error"
 npx open-ds fit "a console where analysts triage alerts all day"
 ```
 
-`check` lists raw colours and sizes, components the scheme does not carry, variants it does not use and a `context/` that no longer matches the scheme, and exits 1 when it finds any. Each finding names the booklet section that answers it. `copy` checks a label or message against the voice. `change` plans a change without making it. `token` finds the token for an intent. `fit` ranks the schemes against a product.
+`check` lists raw colors and sizes, components the scheme does not carry, variants it does not use and a `context/` that no longer matches the scheme, and exits 1 when it finds any. Each finding names the booklet section that answers it. `copy` checks a label or message against the voice. `change` plans a change without making it. `token` finds the token for an intent. `fit` ranks the schemes against a product.
 
 Add `--json` to any of these, and to `list`, `show`, `why`, `when` and `context`, for machine-readable output.
 
 ## Schemes
 
-| Scheme | For |
-| --- | --- |
-| `dense-data` | Security operations and data-heavy tools for daily experts. |
-| `content-first` | Long reading and publishing. |
-| `accessible-first` | Public services that everyone must be able to use. |
-| `multi-brand` | Several brands on one platform. |
-| `brand-expressive` | Campaigns and launches. |
+| Scheme             | For                                                         |
+| ------------------ | ----------------------------------------------------------- |
+| `dense-data`       | Security operations and data-heavy tools for daily experts. |
+| `content-first`    | Long reading and publishing.                                |
+| `accessible-first` | Public services that everyone must be able to use.          |
+| `multi-brand`      | Several brands on one platform.                             |
+| `brand-expressive` | Campaigns and launches.                                     |
 
 The questions and answers are a starting point, not a standard: change any answer in your own scheme.
 

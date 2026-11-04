@@ -765,7 +765,7 @@ export const PRIMITIVE_KINDS: { id: string; title: string; match: (p: string) =>
   { id: "effects", title: "Effects", match: (p) => /^(opacity|shadow)\./.test(p) },
 ];
 
-// The scale view (OD-223), the same as the docs' colour primitives page: for each hue, light and dark
+// The scale view (OD-223), the same as the docs' color primitives page: for each hue, light and dark
 // tabs; in each, the lanes its tokens paint as whole scales, then one row per token. A row and its step
 // light up together. The map is cli/src/scale-map.mjs, the one the docs, the CLI and the MCP read too;
 // open-ds create copies it next to this file.
@@ -784,7 +784,7 @@ const scContrast = (a: string, b: string) => {
 // used steps get the room; empty slots stay narrow
 const cols = (steps: string[], on: Set<string>) =>
   steps.map((st) => (on.has(st) ? "minmax(56px,3fr)" : "minmax(30px,1fr)")).join(" ");
-function ColourScales({ s, brand, mode }: { s: Any; brand: string; mode: "light" | "dark" }) {
+function ColorScales({ s, brand, mode }: { s: Any; brand: string; mode: "light" | "dark" }) {
   const t = s.tokens;
   const [tab, setTab] = useState<"light" | "dark">(mode);
   const [hl, setHl] = useState("");
@@ -826,8 +826,8 @@ function ColourScales({ s, brand, mode }: { s: Any; brand: string; mode: "light"
   return (
     <div>
       <p>
-        Each colour is a whole scale in each theme. The lanes show what its tokens paint. A filled step is in use; an
-        empty slot waits for one. Under each scale, one row per token: its colour, its name, the step and the value.
+        Each color is a whole scale in each theme. The lanes show what its tokens paint. A filled step is in use; an
+        empty slot waits for one. Under each scale, one row per token: its color, its name, the step and the value.
       </p>
       <div className="sc-tabs" role="tablist">
         {(["light", "dark"] as const).map((m) => (
@@ -938,7 +938,7 @@ function ColourScales({ s, brand, mode }: { s: Any; brand: string; mode: "light"
               )}
               {fixed.length > 0 && (
                 <div className="sc-lane">
-                  <p className="sc-h">From the {tab === "light" ? "dark" : "light"} scale, fixed colours</p>
+                  <p className="sc-h">From the {tab === "light" ? "dark" : "light"} scale, fixed colors</p>
                   <div className="sc-kvs">{fixed.map((r) => kv(r, null, ""))}</div>
                 </div>
               )}
@@ -993,8 +993,8 @@ export function Primitives({ kind }: { kind: string }) {
         <b>{all.length}</b> primitives. <b>{nUsed}</b> are used. <b>{all.length - nUsed}</b> are not used yet: they
         stay, so a brand or a changed answer can use them without adding a value. Hover one to see what points to it.
       </p>
-      {kind === "color" && <ColourScales s={s} brand={brand} mode={mode} />}
-      {kind === "color" && <h2>Every colour</h2>}
+      {kind === "color" && <ColorScales s={s} brand={brand} mode={mode} />}
+      {kind === "color" && <h2>Every color</h2>}
       {families.map((f) => {
         const list = all.filter((x) => family(x.path) === f);
         const max = Math.max(1, ...list.map((x) => rem(x.value) ?? 0));

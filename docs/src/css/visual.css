@@ -1,5 +1,5 @@
 /* The visual blocks of the docs (OD-182): the home hero and product screen, answer cards, section
-   tiles, live variant cards, do and don't, colour bands, surface stacks and primitive ramps. The
+   tiles, live variant cards, do and don't, color bands, surface stacks and primitive ramps. The
    pages come from cli/src/docs.mjs as HTML inside Markdown; these rules dress them in the design
    system's own tokens and component keys, so each scheme's docs look like that scheme. The same file
    ships in a created project (cli/templates/project/docs/src/css/visual.css); the harness keeps the
@@ -318,7 +318,7 @@
   font-size: var(--type-label-font-size);
 }
 
-/* Colour: the key colours as a band, surfaces as a stack, statuses in use. */
+/* Color: the key colors as a band, surfaces as a stack, statuses in use. */
 .odv-band {
   display: grid;
   grid-template-columns: repeat(6, minmax(0, 1fr));
@@ -1218,7 +1218,7 @@ a.odv-icard:hover {
   background: var(--color-action-primary);
 }
 
-/* OD-211: the Theming page. A preview per mode in its own colours, the mode table, what stays. */
+/* OD-211: the Theming page. A preview per mode in its own colors, the mode table, what stays. */
 .odv-theming {
   display: grid;
   gap: 1.25rem;
@@ -1471,7 +1471,7 @@ a.odv-icard:hover {
   font: 500 11px var(--type-data-font-family);
   transition: box-shadow 0.12s;
 }
-/* An empty slot: spaced dashes drawn with gradients, in the placeholder border colour. */
+/* An empty slot: spaced dashes drawn with gradients, in the placeholder border color. */
 .odv-sl {
   color: var(--odv-muted);
   background:

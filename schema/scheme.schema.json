@@ -913,13 +913,13 @@
     },
     "tokens": {
       "type": "object",
-      "description": "DTCG tokens in four tiers. Primitives are the raw options, steps only (colour by hue, mode and step: color.<hue>.light.<step>, color.<hue>.dark.<step>). Each brand's theme picks from them, per mode, and decides each concept's base (@). Semantics are the plain keys components read, on the same paths as the theme; a brand-dependent one points at {theme.<path>}, which the build resolves to the active brand and mode. Only semantic and component keys ship as CSS variables. Component keys point to semantics. content holds the voice scope's words.",
+      "description": "DTCG tokens in four tiers. Primitives are the raw options, steps only (color by hue, mode and step: color.<hue>.light.<step>, color.<hue>.dark.<step>). Each brand's theme picks from them, per mode, and decides each concept's base (@). Semantics are the plain keys components read, on the same paths as the theme; a brand-dependent one points at {theme.<path>}, which the build resolves to the active brand and mode. Only semantic and component keys ship as CSS variables. Component keys point to semantics. content holds the voice scope's words.",
       "additionalProperties": false,
       "required": ["primitive", "brands", "semantic", "component", "content"],
       "properties": {
         "primitive": {
           "$ref": "#/$defs/group",
-          "description": "Raw options shared by every brand: colour hues (light ramp and dark ramp, steps only), space, size, radius, border width, font families, sizes, weights and line heights, shadows, durations, easing and opacity. Components never read them."
+          "description": "Raw options shared by every brand: color hues (light ramp and dark ramp, steps only), space, size, radius, border width, font families, sizes, weights and line heights, shadows, durations, easing and opacity. Components never read them."
         },
         "brands": {
           "type": "object",
@@ -984,7 +984,7 @@
                   },
                   "light": {
                     "$ref": "#/$defs/group",
-                    "description": "Light mode picks: colours and shadows."
+                    "description": "Light mode picks: colors and shadows."
                   },
                   "dark": {
                     "$ref": "#/$defs/group",
@@ -997,7 +997,7 @@
         },
         "semantic": {
           "$ref": "#/$defs/group",
-          "description": "The plain keys components and agents read: colour, space, size, radius, type, motion, elevation. A brand- or mode-dependent key's value is {theme.<its own path>}. A concept with variants has a base, @, beside them: color.action.primary.@ and color.action.primary.hover."
+          "description": "The plain keys components and agents read: color, space, size, radius, type, motion, elevation. A brand- or mode-dependent key's value is {theme.<its own path>}. A concept with variants has a base, @, beside them: color.action.primary.@ and color.action.primary.hover."
         },
         "component": {
           "$ref": "#/$defs/group",
@@ -1032,7 +1032,7 @@
               "type": "object",
               "additionalProperties": false,
               "required": ["generated", "light", "dark"],
-              "description": "On a coloured hue: how its scales are generated (OD-223). Each mode has a key colour, kept exact at 600, and optional recorded adjustments per step.",
+              "description": "On a colored hue: how its scales are generated (OD-223). Each mode has a key color, kept exact at 600, and optional recorded adjustments per step.",
               "properties": {
                 "generated": {
                   "type": "string",
@@ -1075,12 +1075,12 @@
       "type": "object",
       "additionalProperties": false,
       "required": ["key"],
-      "description": "One mode's scale of a hue: its key colour and any adjustments.",
+      "description": "One mode's scale of a hue: its key color and any adjustments.",
       "properties": {
         "key": {
           "type": "string",
           "pattern": "^#[0-9A-Fa-f]{6}$",
-          "description": "The key colour, exact at step 600."
+          "description": "The key color, exact at step 600."
         },
         "adjust": {
           "type": "object",
@@ -1100,7 +1100,7 @@
               },
               "C": {
                 "type": "number",
-                "description": "The move in OKLCH chroma: more or less colour, kept inside sRGB."
+                "description": "The move in OKLCH chroma: more or less color, kept inside sRGB."
               },
               "why": {
                 "type": "string",

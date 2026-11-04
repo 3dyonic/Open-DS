@@ -64,4 +64,4 @@ The component reads only component keys and semantic tokens, so it follows the b
 
 ## Tokens it reads
 
-Form sets no colours, corners or shadows of its own; it takes them from the components inside it.
+Form sets no colors, corners or shadows of its own; it takes them from the components inside it.

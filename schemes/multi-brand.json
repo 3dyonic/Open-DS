@@ -894,7 +894,7 @@
     {
       "question": "brand.q1",
       "option": "neutral",
-      "why": "A neutral base each brand can colour.",
+      "why": "A neutral base each brand can color.",
       "because": ["business.q2"]
     },
     {
@@ -1580,7 +1580,7 @@
   "tokens": {
     "primitive": {
       "color": {
-        "$description": "Colour options: raw hue ramps. Each hue has a light ramp and a dark ramp (the same steps tuned for dark backgrounds). Steps only: each theme decides its own base (@). Themes pick from these; components never read them.",
+        "$description": "Color options: raw hue ramps. Each hue has a light ramp and a dark ramp (the same steps tuned for dark backgrounds). Steps only: each theme decides its own base (@). Themes pick from these; components never read them.",
         "slate-deep": {
           "$type": "color",
           "$description": "The slate-deep hue: a light ramp, a dark ramp and its base value.",
@@ -2089,7 +2089,7 @@
                 "adjust": {
                   "100": {
                     "C": 0.008,
-                    "why": "This shade is the soft background of status messages in light mode and the status text in dark mode. As generated, the text looked white on dark backgrounds, so the shade got a little more colour, and blue and red a touch darker, until the colour showed. (OD-231)"
+                    "why": "This step is the soft background of status messages in light mode and the status text in dark mode. As generated, the text looked white on dark backgrounds, so the step got a little more color, and blue and red a touch darker, until the color showed. (OD-231)"
                   }
                 }
               },
@@ -2203,7 +2203,7 @@
                   "100": {
                     "L": -0.005,
                     "C": 0.013,
-                    "why": "This shade is the soft background of status messages in light mode and the status text in dark mode. As generated, the text looked white on dark backgrounds, so the shade got a little more colour, and blue and red a touch darker, until the colour showed. (OD-231)"
+                    "why": "This step is the soft background of status messages in light mode and the status text in dark mode. As generated, the text looked white on dark backgrounds, so the step got a little more color, and blue and red a touch darker, until the color showed. (OD-231)"
                   }
                 }
               },
@@ -2317,7 +2317,7 @@
                   "100": {
                     "L": -0.03,
                     "C": 0.017,
-                    "why": "This shade is the soft background of status messages in light mode and the status text in dark mode. As generated, the text looked white on dark backgrounds, so the shade got a little more colour, and blue and red a touch darker, until the colour showed. (OD-231)"
+                    "why": "This step is the soft background of status messages in light mode and the status text in dark mode. As generated, the text looked white on dark backgrounds, so the step got a little more color, and blue and red a touch darker, until the color showed. (OD-231)"
                   }
                 }
               },
@@ -2445,7 +2445,7 @@
                   "100": {
                     "L": -0.02,
                     "C": 0.011,
-                    "why": "This shade is the soft background of status messages in light mode and the status text in dark mode. As generated, the text looked white on dark backgrounds, so the shade got a little more colour, and blue and red a touch darker, until the colour showed. (OD-231)"
+                    "why": "This step is the soft background of status messages in light mode and the status text in dark mode. As generated, the text looked white on dark backgrounds, so the step got a little more color, and blue and red a touch darker, until the color showed. (OD-231)"
                   }
                 }
               },
@@ -2695,7 +2695,7 @@
         "label": "Aster",
         "description": "Calm and precise: teal, Inter, small corners.",
         "theme": {
-          "$description": "The Aster theme: what each brand-dependent semantic key picks, in light and dark, plus mode-free picks (fonts, corners) in base. Info uses blue, kept apart from the brand colour so it never reads as an action. Categories 1 to 5 are teal, purple, orange, blue, green: distinct hues for tags and chart series, with no meaning. Disabled uses the neutral slate.",
+          "$description": "The Aster theme: what each brand-dependent semantic key picks, in light and dark, plus mode-free picks (fonts, corners) in base. Info uses blue, kept apart from the brand color so it never reads as an action. Categories 1 to 5 are teal, purple, orange, blue, green: distinct hues for tags and chart series, with no meaning. Disabled uses the neutral slate.",
           "base": {
             "radius": {
               "control": {
@@ -3548,7 +3548,7 @@
         "label": "Birch",
         "description": "Friendly and helpful: violet, Plus Jakarta Sans, soft corners.",
         "theme": {
-          "$description": "The Birch theme: what each brand-dependent semantic key picks, in light and dark, plus mode-free picks (fonts, corners) in base. Info uses blue, kept apart from the brand colour so it never reads as an action. Categories 1 to 5 are teal, purple, orange, blue, green: distinct hues for tags and chart series, with no meaning. Disabled uses the neutral slate.",
+          "$description": "The Birch theme: what each brand-dependent semantic key picks, in light and dark, plus mode-free picks (fonts, corners) in base. Info uses blue, kept apart from the brand color so it never reads as an action. Categories 1 to 5 are teal, purple, orange, blue, green: distinct hues for tags and chart series, with no meaning. Disabled uses the neutral slate.",
           "base": {
             "radius": {
               "control": {
@@ -4401,7 +4401,7 @@
         "label": "Coral",
         "description": "Upbeat and energetic: coral orange, Poppins, pill controls.",
         "theme": {
-          "$description": "The Coral theme: what each brand-dependent semantic key picks, in light and dark, plus mode-free picks (fonts, corners) in base. Info uses blue, kept apart from the brand colour so it never reads as an action. Categories 1 to 5 are teal, purple, orange, blue, green: distinct hues for tags and chart series, with no meaning. Disabled uses the neutral slate.",
+          "$description": "The Coral theme: what each brand-dependent semantic key picks, in light and dark, plus mode-free picks (fonts, corners) in base. Info uses blue, kept apart from the brand color so it never reads as an action. Categories 1 to 5 are teal, purple, orange, blue, green: distinct hues for tags and chart series, with no meaning. Disabled uses the neutral slate.",
           "base": {
             "radius": {
               "control": {
@@ -5721,7 +5721,7 @@
           },
           "selected": {
             "$type": "color",
-            "$description": "The edge that marks a selected item, so selection is never colour alone.",
+            "$description": "The edge that marks a selected item, so selection is never color alone.",
             "$value": "{theme.color.border.selected}"
           }
         },
@@ -5874,7 +5874,7 @@
               "$value": "{theme.color.category.5.subtle}"
             }
           },
-          "$description": "Identity colours for tags, labels and chart series. They tell items apart and carry no meaning."
+          "$description": "Identity colors for tags, labels and chart series. They tell items apart and carry no meaning."
         },
         "disabled": {
           "$description": "The shared look of controls that cannot be used right now.",

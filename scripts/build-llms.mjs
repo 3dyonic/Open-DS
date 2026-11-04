@@ -62,7 +62,7 @@ export function buildLlms(repo) {
     "",
     "> Generated from schemes/*.json. Each scheme lists its answers (question: answer. why), its usage rules (situation: use; not; why) and its voice.",
     "",
-    "## Colour guidance, for every scheme",
+    "## Color guidance, for every scheme",
     "",
     g.semantics.urgency.description,
     `Urgency order: ${g.semantics.urgency.order.join(" → ")}`,

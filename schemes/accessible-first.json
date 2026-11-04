@@ -73,7 +73,7 @@
               "because": ["human.q2", "outcomes.q2"]
             },
             "danger": {
-              "use": "The confirm of a delete, always with the verb and an icon, so colour is never the only cue.",
+              "use": "The confirm of a delete, always with the verb and an icon, so color is never the only cue.",
               "because": ["outcomes.q2", "people.q2"]
             },
             "ghost": {
@@ -1499,7 +1499,7 @@
   "tokens": {
     "primitive": {
       "color": {
-        "$description": "Colour options: raw hue ramps. Each hue has a light ramp and a dark ramp (the same steps tuned for dark backgrounds). Steps only: each theme decides its own base (@). Themes pick from these; components never read them.",
+        "$description": "Color options: raw hue ramps. Each hue has a light ramp and a dark ramp (the same steps tuned for dark backgrounds). Steps only: each theme decides its own base (@). Themes pick from these; components never read them.",
         "gray": {
           "$type": "color",
           "$description": "The gray hue: a light ramp, a dark ramp and its base value.",
@@ -1794,7 +1794,7 @@
                 "adjust": {
                   "100": {
                     "C": 0.008,
-                    "why": "This shade is the soft background of status messages in light mode and the status text in dark mode. As generated, the text looked white on dark backgrounds, so the shade got a little more colour, and blue and red a touch darker, until the colour showed. (OD-231)"
+                    "why": "This step is the soft background of status messages in light mode and the status text in dark mode. As generated, the text looked white on dark backgrounds, so the step got a little more color, and blue and red a touch darker, until the color showed. (OD-231)"
                   }
                 }
               },
@@ -1908,7 +1908,7 @@
                   "100": {
                     "L": -0.005,
                     "C": 0.013,
-                    "why": "This shade is the soft background of status messages in light mode and the status text in dark mode. As generated, the text looked white on dark backgrounds, so the shade got a little more colour, and blue and red a touch darker, until the colour showed. (OD-231)"
+                    "why": "This step is the soft background of status messages in light mode and the status text in dark mode. As generated, the text looked white on dark backgrounds, so the step got a little more color, and blue and red a touch darker, until the color showed. (OD-231)"
                   }
                 }
               },
@@ -2022,7 +2022,7 @@
                   "100": {
                     "L": -0.03,
                     "C": 0.017,
-                    "why": "This shade is the soft background of status messages in light mode and the status text in dark mode. As generated, the text looked white on dark backgrounds, so the shade got a little more colour, and blue and red a touch darker, until the colour showed. (OD-231)"
+                    "why": "This step is the soft background of status messages in light mode and the status text in dark mode. As generated, the text looked white on dark backgrounds, so the step got a little more color, and blue and red a touch darker, until the color showed. (OD-231)"
                   }
                 }
               },
@@ -2149,7 +2149,7 @@
                 "adjust": {
                   "100": {
                     "C": 0.023,
-                    "why": "This shade is the soft background of status messages in light mode and the status text in dark mode. As generated, the text looked white on dark backgrounds, so the shade got a little more colour, and blue and red a touch darker, until the colour showed. (OD-231)"
+                    "why": "This step is the soft background of status messages in light mode and the status text in dark mode. As generated, the text looked white on dark backgrounds, so the step got a little more color, and blue and red a touch darker, until the color showed. (OD-231)"
                   }
                 }
               },
@@ -2332,7 +2332,7 @@
         "label": "Accessible first",
         "description": "The single brand: strong blue on true neutral, high contrast everywhere.",
         "theme": {
-          "$description": "The Accessible first theme: what each brand-dependent semantic key picks, in light and dark, plus mode-free picks (fonts, corners) in base. Info uses teal, kept apart from the brand colour so it never reads as an action. Categories 1 to 5 are blue, teal, green, amber, gray: distinct hues for tags and chart series, with no meaning. Disabled uses the neutral gray.",
+          "$description": "The Accessible first theme: what each brand-dependent semantic key picks, in light and dark, plus mode-free picks (fonts, corners) in base. Info uses teal, kept apart from the brand color so it never reads as an action. Categories 1 to 5 are blue, teal, green, amber, gray: distinct hues for tags and chart series, with no meaning. Disabled uses the neutral gray.",
           "base": {
             "radius": {
               "control": {
@@ -3644,7 +3644,7 @@
           },
           "selected": {
             "$type": "color",
-            "$description": "The edge that marks a selected item, so selection is never colour alone.",
+            "$description": "The edge that marks a selected item, so selection is never color alone.",
             "$value": "{theme.color.border.selected}"
           }
         },
@@ -3797,7 +3797,7 @@
               "$value": "{theme.color.category.5.subtle}"
             }
           },
-          "$description": "Identity colours for tags, labels and chart series. They tell items apart and carry no meaning."
+          "$description": "Identity colors for tags, labels and chart series. They tell items apart and carry no meaning."
         },
         "disabled": {
           "$description": "The shared look of controls that cannot be used right now.",
