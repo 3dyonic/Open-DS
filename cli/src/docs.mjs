@@ -10,6 +10,7 @@ import { SHADCN, SHADCN_SCALE } from "./shadcn.mjs";
 import { pairsIn, sitsOn, toneOf, toneRole } from "./tones.mjs";
 import { LANES, follow, laneOf, scaleMap } from "./scale-map.mjs";
 import { aliasChain, tokenIndex } from "./lands.mjs";
+import { spacingGuide } from "./spacing-map.mjs";
 import { componentGuide, followers } from "./component.mjs";
 
 // Which component keys each shipped component reads.
@@ -404,6 +405,32 @@ function themeColors(scheme, g) {
  * the rest empty slots, then one row per token: its color, its name, the step and the value. A row and
  * its step light up together on hover (src/clientModules/scales.ts). A row links to the token's guidance.
  */
+// OD-235: the component spacing map on Foundations › Spacing, from the same guide agents read.
+function spacingMap(scheme, g) {
+  const sg = spacingGuide(scheme, {
+    index: tokenIndex(scheme),
+    chain: aliasChain,
+    hints: g.scopes.find((x) => x.id === "spacing")?.hints ?? [],
+  });
+  const val = (r) =>
+    `<span class="odv-ptok">${r.primitive}</span><span class="odv-kvsep">:</span><span class="odv-raw">${r.px}px</span>`;
+  return (
+    `\n\n## The component spacing map\n\n` +
+    `Inside a component, spacing is a step of this map. Each step is 4px × its multiplier × the scheme's rhythm, rounded to a multiple of 4px, at most 64px. In ${scheme.name} the rhythm is ${sg.rhythm}. ${esc(sg.why)}\n\n` +
+    `Steps that hold still stay at 4px × their multiplier in every scheme. The hairline is a fixed 2px nudge. In code, write the step's utility: \`p-map-x6\`, \`gap-map-x2\`.\n\n` +
+    `| Step | Multiplier | Utility | Token and value |\n| --- | --- | --- | --- |\n` +
+    sg.steps
+      .map(
+        (x) =>
+          `| ${x.step}${x.fixed ? " (holds still)" : ""} | ${x.multiplier ? `×${x.multiplier}` : "fixed"} | \`*-map-${x.step}\` | <span class="tok">${x.token}</span> ${val(x)} |`,
+      )
+      .join("\n") +
+    `\n\nBetween things and on the page, use a role instead: ` +
+    sg.roles.map((r) => `\`*-${r.utility}\` (${r.px}px)`).join(", ") +
+    `. A spacing is never a number.`
+  );
+}
+
 function colorScales(scheme, g, fams) {
   const t = scheme.tokens;
   const brands = Object.keys(t.brands);
@@ -1403,6 +1430,7 @@ export function docsPages(
           (hasPrims
             ? `\n\nThe raw values these tokens end at are on [Primitives › ${PRIM_PAGE_OF[sc.id]?.title ?? "all kinds"}](../primitives/${PRIM_PAGE_OF[sc.id]?.id ?? ""}).`
             : "")) +
+      (sc.id === "spacing" ? spacingMap(scheme, g) : "") +
       // What lands where is shown per component, in its anatomy (OD-229), not as a list here.
       `\n\n` +
       `## When to use what\n\n${RULES}${usage.map(rule).join("\n")}\n` +
