@@ -53,12 +53,6 @@ npx open-ds add message
 
 The component reads only component keys and semantic tokens, so it follows the brand and mode on `<html>`.
 
-## Variables
+## Tokens it reads
 
-Every token Message reads, from its code: the variable, the semantic token it aliases, and where that ends in the theme.
-
-### Read straight from the system
-
-Message has no variables of its own yet; it reads these system tokens directly.
-
-<div class="odv-scale" data-scale><div class="odv-scale-tabs" role="tablist"><button type="button" role="tab" data-mode="light" aria-selected="true">Light theme</button><button type="button" role="tab" data-mode="dark" aria-selected="false">Dark theme</button></div><div class="odv-scale-p odv-vars-p" data-mode="light" role="tabpanel" style="background:#F7F7F7;color:#141414;--odv-muted:#595959;--odv-edge:#D6D6D6"><div class="odv-tscroll"><table class="odv-ttable odv-vars"><thead><tr><th>Variable</th><th>Alias</th><th>Value</th></tr></thead><tbody><tr><td><code>--color-text-muted</code></td><td><code>var(--color-neutral-500)</code></td><td><span class="odv-tsw"><i style="background:#595959" title="#595959"></i><small>gray.light.500</small></span></td></tr><tr><td><code>--type-body-font-size</code></td><td><code>var(--font-size-19)</code></td><td><code>font.size.19</code> <small>1.1875rem</small></td></tr><tr><td><code>--type-caption-font-size</code></td><td><code>var(--font-size-16)</code></td><td><code>font.size.16</code> <small>1rem</small></td></tr></tbody></table></div></div><div class="odv-scale-p odv-vars-p" data-mode="dark" role="tabpanel" style="background:#0A0A0A;color:#F7F7F7;--odv-muted:#949494;--odv-edge:#222222"><div class="odv-tscroll"><table class="odv-ttable odv-vars"><thead><tr><th>Variable</th><th>Alias</th><th>Value</th></tr></thead><tbody><tr><td><code>--color-text-muted</code></td><td><code>var(--color-neutral-500)</code></td><td><span class="odv-tsw"><i style="background:#949494" title="#949494"></i><small>gray.dark.500</small></span></td></tr><tr><td><code>--type-body-font-size</code></td><td><code>var(--font-size-19)</code></td><td><code>font.size.19</code> <small>1.1875rem</small></td></tr><tr><td><code>--type-caption-font-size</code></td><td><code>var(--font-size-16)</code></td><td><code>font.size.16</code> <small>1rem</small></td></tr></tbody></table></div></div></div>
+Message sets no colors, corners or shadows of its own; it takes them from the components inside it.

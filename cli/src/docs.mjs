@@ -9,7 +9,6 @@ import { questions } from "./schemes.mjs";
 import { SHADCN, SHADCN_SCALE } from "./shadcn.mjs";
 import { pairsIn, sitsOn, toneOf, toneRole } from "./tones.mjs";
 import { LANES, follow, laneOf, scaleMap } from "./scale-map.mjs";
-import { aliasChain, directReads, tokenIndex } from "./lands.mjs";
 import { componentGuide, followers } from "./component.mjs";
 
 // Which component keys each shipped component reads.
@@ -1824,113 +1823,6 @@ export function docsPages(
     );
   };
 
-  // A component's variables (OD-233), like a CSS framework's variable list: every token its source
-  // names, its own component keys first, each with the token it aliases and the value it ends at in
-  // every theme. Traced from the component's code (cli/src/lands.mjs), so it can't drift.
-  const allIndex = tokenIndex(scheme);
-  const themeIndex = Object.fromEntries(
-    scheme.themes.map((t) => [
-      t.id,
-      tokenIndex(scheme, {
-        brand: t.brand ?? Object.keys(scheme.tokens.brands)[0],
-        mode: t.mode ?? t.id,
-      }),
-    ]),
-  );
-  const varName = (p) => `--${cssName(p.replace(/^component\./, ""))}`;
-  const variables = (name, keys) => {
-    const file = join(roots.ui, "components", `${name}.tsx`);
-    if (!existsSync(file)) return "";
-    const paths = [...directReads(readFileSync(file, "utf8"), allIndex)].sort(
-      (a, b) =>
-        Number(!a.startsWith("component.")) -
-          Number(!b.startsWith("component.")) || a.localeCompare(b),
-    );
-    if (!paths.length)
-      return `## Variables\n\n${title(name)} names no tokens of its own; it takes them from the components inside it.`;
-    const about = Object.fromEntries(
-      (keys ?? []).map((k) => [
-        `component.${k.id.replaceAll("/", ".")}`,
-        k.description,
-      ]),
-    );
-    const brandIds = Object.keys(scheme.tokens.brands);
-    const themeOf = (b, m) =>
-      scheme.themes.find(
-        (t) => (t.brand ?? brandIds[0]) === b && (t.mode ?? t.id) === m,
-      );
-    const valueCell = (t, p) => {
-      const ch = aliasChain(themeIndex[t.id], p);
-      const v = ch.value;
-      const end = ch.end.replace(/^color\./, "");
-      if (typeof v === "string" && /^#/.test(v))
-        return `<span class="odv-tsw"><i style="background:${v}" title="${attr(v)}"></i><small>${attr(end)}</small></span>`;
-      return `<code>${attr(end)}</code> <small>${attr(cssValue(v))}</small>`;
-    };
-    // the variant a key belongs to: component.button.primary.background → primary; shared keys first
-    const variantOf = (p) => {
-      const seg = p.split(".");
-      return p.startsWith("component.") && seg.length > 3 ? seg[2] : "";
-    };
-    const row = (t, p) => {
-      const first = aliasChain(themeIndex[t.id], p).hops[0];
-      const alias = first ? `var(${varName(first)})` : "—";
-      return `<tr><td><code>${attr(varName(p))}</code>${about[p] ? `<br/><small>${attr(about[p])}</small>` : ""}</td><td><code>${attr(alias)}</code></td><td>${valueCell(t, p)}</td></tr>`;
-    };
-    const rows = (t, list) => {
-      const groups = [...new Set(list.map(variantOf))].sort(
-        (x, y) => (x ? 1 : 0) - (y ? 1 : 0),
-      );
-      return groups
-        .map((gname) => {
-          const inGroup = list.filter((p) => variantOf(p) === gname);
-          const head =
-            groups.length > 1
-              ? `<tr class="odv-vgroup"><td colspan="3">${gname ? attr(gname) : "Shared"}</td></tr>`
-              : "";
-          return head + inGroup.map((p) => row(t, p)).join("");
-        })
-        .join("");
-    };
-    const table = (t, list) =>
-      `<div class="odv-tscroll"><table class="odv-ttable odv-vars"><thead><tr><th>Variable</th><th>Alias</th><th>Value</th></tr></thead><tbody>${rows(t, list)}</tbody></table></div>`;
-    const own = paths.filter((p) => p.startsWith("component."));
-    const direct = paths.filter((p) => !p.startsWith("component."));
-    const tabbed = (list) => {
-      const one = (b) => {
-        const modes = ["light", "dark"].filter((m) => themeOf(b, m));
-        const tabs = `<div class="odv-scale-tabs" role="tablist">${modes.map((m, i) => `<button type="button" role="tab" data-mode="${m}" aria-selected="${i === 0}">${m === "light" ? "Light" : "Dark"} theme</button>`).join("")}</div>`;
-        const panels = modes
-          .map((m) => {
-            const t = themeOf(b, m);
-            const ix = themeIndex[t.id];
-            const hex = (q) => {
-              const c = aliasChain(ix, q).value;
-              return typeof c === "string" ? c : "";
-            };
-            return `<div class="odv-scale-p odv-vars-p" data-mode="${m}" role="tabpanel" style="background:${hex("color.surface.canvas")};color:${hex("color.text.primary")};--odv-muted:${hex("color.text.muted")};--odv-edge:${hex("color.border.default")}">${table(t, list)}</div>`;
-          })
-          .join("");
-        return `<div class="odv-scale" data-scale>${tabs}${panels}</div>`;
-      };
-      return brandIds.length === 1
-        ? one(brandIds[0])
-        : brandIds
-            .map(
-              (b) =>
-                `<div class="odv-brandset" data-for-brand="${b}">\n\n<p class="odv-brandname">${attr(scheme.tokens.brands[b]?.label ?? b)}</p>\n\n${one(b)}\n\n</div>`,
-            )
-            .join("\n\n");
-    };
-    return (
-      `## Variables\n\nEvery token ${title(name)} reads, from its code: the variable, the semantic token it aliases, and where that ends in the theme.\n\n` +
-      (own.length ? `### Its own variables\n\n${tabbed(own)}\n\n` : "") +
-      (direct.length
-        ? `### Read straight from the system\n\n${own.length ? "" : `${title(name)} has no variables of its own yet; it reads these system tokens directly.\n\n`}${tabbed(direct)}`
-        : "")
-    );
-  };
-
   // Components
   pages["components/_category_.json"] =
     JSON.stringify(
@@ -2248,7 +2140,23 @@ export function docsPages(
       `## Use it in code\n\n\`\`\`bash\nnpx open-ds add ${name}\n\`\`\`\n\n` +
         `The component reads only component keys and semantic tokens, so it follows the brand and mode on \`<html>\`.`,
     );
-    parts.push(variables(name, keys));
+    parts.push(
+      keys.length
+        ? `## Component keys\n\nThe CSS variable is the key with \`/\` replaced by \`-\` and the base \`@\` dropped. Each key points to a token; values live only on primitives.\n\n` +
+            perBrand(
+              (F, D) =>
+                `| Key | What it controls | Points to, ${F.id} | Points to, ${D.id} |\n| --- | --- | --- | --- |\n` +
+                keys
+                  .map((k) => {
+                    const p = k.id.replaceAll("/", ".");
+                    const l = link(F, p);
+                    const d = link(D, p);
+                    return `| \`${k.id}\` | ${esc(k.description)} | ${l} | ${d === l ? "same" : d} |`;
+                  })
+                  .join("\n"),
+            )
+        : tokensRead(name),
+    );
     pages[`components/${name}.md`] =
       fm({
         sidebar_position: i + 1,

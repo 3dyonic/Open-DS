@@ -58,12 +58,6 @@ npx open-ds add date-picker
 
 The component reads only component keys and semantic tokens, so it follows the brand and mode on `<html>`.
 
-## Variables
+## Tokens it reads
 
-Every token Date picker reads, from its code: the variable, the semantic token it aliases, and where that ends in the theme.
-
-### Read straight from the system
-
-Date picker has no variables of its own yet; it reads these system tokens directly.
-
-<div class="odv-scale" data-scale><div class="odv-scale-tabs" role="tablist"><button type="button" role="tab" data-mode="light" aria-selected="true">Light theme</button><button type="button" role="tab" data-mode="dark" aria-selected="false">Dark theme</button></div><div class="odv-scale-p odv-vars-p" data-mode="light" role="tabpanel" style="background:#FFFDF8;color:#1F1B16;--odv-muted:#61594D;--odv-edge:#E4DDD0"><div class="odv-tscroll"><table class="odv-ttable odv-vars"><thead><tr><th>Variable</th><th>Alias</th><th>Value</th></tr></thead><tbody><tr><td><code>--color-text-muted</code></td><td><code>var(--color-neutral-600)</code></td><td><span class="odv-tsw"><i style="background:#61594D" title="#61594D"></i><small>stone.light.600</small></span></td></tr></tbody></table></div></div><div class="odv-scale-p odv-vars-p" data-mode="dark" role="tabpanel" style="background:#14110D;color:#FFFDF8;--odv-muted:#A39A8B;--odv-edge:#2E2A24"><div class="odv-tscroll"><table class="odv-ttable odv-vars"><thead><tr><th>Variable</th><th>Alias</th><th>Value</th></tr></thead><tbody><tr><td><code>--color-text-muted</code></td><td><code>var(--color-neutral-400)</code></td><td><span class="odv-tsw"><i style="background:#A39A8B" title="#A39A8B"></i><small>stone.dark.400</small></span></td></tr></tbody></table></div></div></div>
+Date picker sets no colors, corners or shadows of its own; it takes them from the components inside it.

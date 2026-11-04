@@ -62,6 +62,6 @@ npx open-ds add carousel
 
 The component reads only component keys and semantic tokens, so it follows the brand and mode on `<html>`.
 
-## Variables
+## Tokens it reads
 
-Carousel names no tokens of its own; it takes them from the components inside it.
+Carousel sets no colors, corners or shadows of its own; it takes them from the components inside it.

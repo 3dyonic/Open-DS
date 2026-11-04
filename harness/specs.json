@@ -488,10 +488,9 @@
     },
     {
       "id": "OD-233",
-      "title": "Pairs and tones as pictures; components' variables; where scopes land, traced from code",
+      "title": "Pairs and tones as pictures; where scopes land, traced from code",
       "in": [
         "Foundations › Color shows each fill in its color with the text that may sit on it, per theme, grouped by tone; then each fill's tone in both modes",
-        "each component page lists its variables: the token, its alias and the value it ends at in each theme, traced from its code",
         "each scope's lands_in is traced from the components' code and never hand-written",
         "Foundations pages no longer list where a scope lands or the component keys"
       ],

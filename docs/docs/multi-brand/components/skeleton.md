@@ -59,34 +59,8 @@ npx open-ds add skeleton
 
 The component reads only component keys and semantic tokens, so it follows the brand and mode on `<html>`.
 
-## Variables
+## Tokens it reads
 
-Every token Skeleton reads, from its code: the variable, the semantic token it aliases, and where that ends in the theme.
+Skeleton reads 1 of Multi-brand's tokens. Each row follows one part of the component from its class to the value it ends at, in every theme. Change a token in the scheme and every component that reads it follows.
 
-### Read straight from the system
-
-Skeleton has no variables of its own yet; it reads these system tokens directly.
-
-<div class="odv-brandset" data-for-brand="aster">
-
-<p class="odv-brandname">Aster</p>
-
-<div class="odv-scale" data-scale><div class="odv-scale-tabs" role="tablist"><button type="button" role="tab" data-mode="light" aria-selected="true">Light theme</button><button type="button" role="tab" data-mode="dark" aria-selected="false">Dark theme</button></div><div class="odv-scale-p odv-vars-p" data-mode="light" role="tabpanel" style="background:#F8FAFC;color:#0F172A;--odv-muted:#4B5A6F;--odv-edge:#E2E8F0"><div class="odv-tscroll"><table class="odv-ttable odv-vars"><thead><tr><th>Variable</th><th>Alias</th><th>Value</th></tr></thead><tbody><tr><td><code>--color-surface-sunken</code></td><td><code>var(--color-neutral-100)</code></td><td><span class="odv-tsw"><i style="background:#F1F5F9" title="#F1F5F9"></i><small>slate-deep.light.100</small></span></td></tr><tr><td><code>--radius-control</code></td><td><code>var(--radius-4)</code></td><td><code>radius.4</code> <small>0.25rem</small></td></tr></tbody></table></div></div><div class="odv-scale-p odv-vars-p" data-mode="dark" role="tabpanel" style="background:#020617;color:#F8FAFC;--odv-muted:#96A3B5;--odv-edge:#1E293B"><div class="odv-tscroll"><table class="odv-ttable odv-vars"><thead><tr><th>Variable</th><th>Alias</th><th>Value</th></tr></thead><tbody><tr><td><code>--color-surface-sunken</code></td><td><code>var(--color-neutral-100)</code></td><td><span class="odv-tsw"><i style="background:#1E293B" title="#1E293B"></i><small>slate-deep.dark.100</small></span></td></tr><tr><td><code>--radius-control</code></td><td><code>var(--radius-4)</code></td><td><code>radius.4</code> <small>0.25rem</small></td></tr></tbody></table></div></div></div>
-
-</div>
-
-<div class="odv-brandset" data-for-brand="birch">
-
-<p class="odv-brandname">Birch</p>
-
-<div class="odv-scale" data-scale><div class="odv-scale-tabs" role="tablist"><button type="button" role="tab" data-mode="light" aria-selected="true">Light theme</button><button type="button" role="tab" data-mode="dark" aria-selected="false">Dark theme</button></div><div class="odv-scale-p odv-vars-p" data-mode="light" role="tabpanel" style="background:#F8FAFC;color:#0F172A;--odv-muted:#4B5A6F;--odv-edge:#E2E8F0"><div class="odv-tscroll"><table class="odv-ttable odv-vars"><thead><tr><th>Variable</th><th>Alias</th><th>Value</th></tr></thead><tbody><tr><td><code>--color-surface-sunken</code></td><td><code>var(--color-neutral-100)</code></td><td><span class="odv-tsw"><i style="background:#F1F5F9" title="#F1F5F9"></i><small>slate-deep.light.100</small></span></td></tr><tr><td><code>--radius-control</code></td><td><code>var(--radius-12)</code></td><td><code>radius.12</code> <small>0.75rem</small></td></tr></tbody></table></div></div><div class="odv-scale-p odv-vars-p" data-mode="dark" role="tabpanel" style="background:#020617;color:#F8FAFC;--odv-muted:#96A3B5;--odv-edge:#1E293B"><div class="odv-tscroll"><table class="odv-ttable odv-vars"><thead><tr><th>Variable</th><th>Alias</th><th>Value</th></tr></thead><tbody><tr><td><code>--color-surface-sunken</code></td><td><code>var(--color-neutral-100)</code></td><td><span class="odv-tsw"><i style="background:#1E293B" title="#1E293B"></i><small>slate-deep.dark.100</small></span></td></tr><tr><td><code>--radius-control</code></td><td><code>var(--radius-12)</code></td><td><code>radius.12</code> <small>0.75rem</small></td></tr></tbody></table></div></div></div>
-
-</div>
-
-<div class="odv-brandset" data-for-brand="coral">
-
-<p class="odv-brandname">Coral</p>
-
-<div class="odv-scale" data-scale><div class="odv-scale-tabs" role="tablist"><button type="button" role="tab" data-mode="light" aria-selected="true">Light theme</button><button type="button" role="tab" data-mode="dark" aria-selected="false">Dark theme</button></div><div class="odv-scale-p odv-vars-p" data-mode="light" role="tabpanel" style="background:#F8FAFC;color:#0F172A;--odv-muted:#4B5A6F;--odv-edge:#E2E8F0"><div class="odv-tscroll"><table class="odv-ttable odv-vars"><thead><tr><th>Variable</th><th>Alias</th><th>Value</th></tr></thead><tbody><tr><td><code>--color-surface-sunken</code></td><td><code>var(--color-neutral-100)</code></td><td><span class="odv-tsw"><i style="background:#F1F5F9" title="#F1F5F9"></i><small>slate-deep.light.100</small></span></td></tr><tr><td><code>--radius-control</code></td><td><code>var(--radius-999)</code></td><td><code>radius.999</code> <small>9999px</small></td></tr></tbody></table></div></div><div class="odv-scale-p odv-vars-p" data-mode="dark" role="tabpanel" style="background:#020617;color:#F8FAFC;--odv-muted:#96A3B5;--odv-edge:#1E293B"><div class="odv-tscroll"><table class="odv-ttable odv-vars"><thead><tr><th>Variable</th><th>Alias</th><th>Value</th></tr></thead><tbody><tr><td><code>--color-surface-sunken</code></td><td><code>var(--color-neutral-100)</code></td><td><span class="odv-tsw"><i style="background:#1E293B" title="#1E293B"></i><small>slate-deep.dark.100</small></span></td></tr><tr><td><code>--radius-control</code></td><td><code>var(--radius-999)</code></td><td><code>radius.999</code> <small>9999px</small></td></tr></tbody></table></div></div></div>
-
-</div>
+<div class="odv-tscroll"><table class="odv-ttable odv-reads"><thead><tr><th>Part</th><th>From the class to the token</th><th>Aster Light</th><th>Aster Dark</th><th>Birch Light</th><th>Birch Dark</th><th>Coral Light</th><th>Coral Dark</th></tr></thead><tbody><tr><td><b>Corner</b></td><td><span class="odv-chain"><span>rounded-md</span><i>→</i><span>--radius-md</span><i>→</i><span class="tok">radius.control</span></span></td><td><span class="odv-tsw"><i class="odv-tshape" style="border-radius:0.25rem (4px)"></i><small>radius.4 · 0.25rem (4px)</small></span></td><td><span class="odv-tsw"><i class="odv-tshape" style="border-radius:0.25rem (4px)"></i><small>radius.4 · 0.25rem (4px)</small></span></td><td><span class="odv-tsw"><i class="odv-tshape" style="border-radius:0.75rem (12px)"></i><small>radius.12 · 0.75rem (12px)</small></span></td><td><span class="odv-tsw"><i class="odv-tshape" style="border-radius:0.75rem (12px)"></i><small>radius.12 · 0.75rem (12px)</small></span></td><td><span class="odv-tsw"><i class="odv-tshape" style="border-radius:9999px"></i><small>radius.999 · 9999px</small></span></td><td><span class="odv-tsw"><i class="odv-tshape" style="border-radius:9999px"></i><small>radius.999 · 9999px</small></span></td></tr></tbody></table></div>

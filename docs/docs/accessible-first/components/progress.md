@@ -59,12 +59,8 @@ npx open-ds add progress
 
 The component reads only component keys and semantic tokens, so it follows the brand and mode on `<html>`.
 
-## Variables
+## Tokens it reads
 
-Every token Progress reads, from its code: the variable, the semantic token it aliases, and where that ends in the theme.
+Progress reads 1 of Accessible first's tokens. Each row follows one part of the component from its class to the value it ends at, in every theme. Change a token in the scheme and every component that reads it follows.
 
-### Read straight from the system
-
-Progress has no variables of its own yet; it reads these system tokens directly.
-
-<div class="odv-scale" data-scale><div class="odv-scale-tabs" role="tablist"><button type="button" role="tab" data-mode="light" aria-selected="true">Light theme</button><button type="button" role="tab" data-mode="dark" aria-selected="false">Dark theme</button></div><div class="odv-scale-p odv-vars-p" data-mode="light" role="tabpanel" style="background:#F7F7F7;color:#141414;--odv-muted:#595959;--odv-edge:#D6D6D6"><div class="odv-tscroll"><table class="odv-ttable odv-vars"><thead><tr><th>Variable</th><th>Alias</th><th>Value</th></tr></thead><tbody><tr><td><code>--color-action-primary</code></td><td><code>var(--color-blue-light-600)</code></td><td><span class="odv-tsw"><i style="background:#0B4FC0" title="#0B4FC0"></i><small>blue.light.600</small></span></td></tr></tbody></table></div></div><div class="odv-scale-p odv-vars-p" data-mode="dark" role="tabpanel" style="background:#0A0A0A;color:#F7F7F7;--odv-muted:#949494;--odv-edge:#222222"><div class="odv-tscroll"><table class="odv-ttable odv-vars"><thead><tr><th>Variable</th><th>Alias</th><th>Value</th></tr></thead><tbody><tr><td><code>--color-action-primary</code></td><td><code>var(--color-blue-dark-600)</code></td><td><span class="odv-tsw"><i style="background:#8AB4F8" title="#8AB4F8"></i><small>blue.dark.600</small></span></td></tr></tbody></table></div></div></div>
+<div class="odv-tscroll"><table class="odv-ttable odv-reads"><thead><tr><th>Part</th><th>From the class to the token</th><th>Light</th><th>Dark</th></tr></thead><tbody><tr><td><b>Fill</b></td><td><span class="odv-chain"><span>bg-primary</span><i>→</i><span>--primary</span><i>→</i><span class="tok">color.action.primary</span></span></td><td><span class="odv-tsw"><i style="background:#0B4FC0"></i><small>blue.light.600 · #0B4FC0</small></span></td><td><span class="odv-tsw"><i style="background:#8AB4F8"></i><small>blue.dark.600 · #8AB4F8</small></span></td></tr></tbody></table></div>
