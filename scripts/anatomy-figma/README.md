@@ -21,6 +21,12 @@ The stage is the whole component. Each card draws the stage again with only its 
 its own tree: `"image": { "tree": NODE }` on the card (use it when the part needs a state the stage
 doesn't show, or is lost in the whole).
 
+A card's image is cropped to its own parts (OD-248): the box around its numbered parts and their
+numbers, with the padding the scheme puts inside a card (`space.inset.container`) as margin. When a part needs a
+neighbor to make sense (the button beside a focused one, the row above a selected one), the card says
+so: `"image": { "context": [n, …] }` frames those parts with it without numbering them. Choose
+context per card; nothing adds it on its own.
+
 A NODE:
 
 | Key | Value |

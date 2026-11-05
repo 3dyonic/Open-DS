@@ -208,6 +208,8 @@ const B = {
   },
   tree: recipe === "tree" ? treeBindings(spec) : null,
 }[recipe];
+// The card's margin around its parts: the padding the scheme puts inside a card (OD-248).
+B.plateMargin = bind("space.inset.container", "number");
 // A binding that resolves to nothing is a mistake in this file, not a gap in the kit.
 for (const [role, b] of Object.entries(B)) if (b.value === null || b.value === undefined || Number.isNaN(b.value)) throw new Error(`${component}: ${role} (${b.path}) resolves to no value.`);
 
@@ -217,6 +219,12 @@ const iconNames = recipe === "menu"
   : recipe === "tree"
     ? treeNodes(spec).filter((d) => d.t === "icon").map((d) => d.icon)
     : [...spec.drawing.toolbar.map((t) => t.icon).filter(Boolean), "search", "arrow-up-down", "check"];
+// A card's context (image.context) names other parts it is framed with: real parts, not its own.
+for (const c of spec.cards) {
+  const nums = new Set(flat(spec.parts).map((p) => p.n).filter(Boolean));
+  for (const n of c.image?.context ?? [])
+    if (!nums.has(n) || c.parts.includes(n)) throw new Error(`${component}: card ${c.title}: context ${n} is ${nums.has(n) ? "its own part" : "not a part"}.`);
+}
 if (recipe === "tree") {
   // Every numbered part is shown somewhere: on the stage or on its card's own drawing.
   const shown = new Set(treeNodes(spec).flatMap((d) => [].concat(d.n ?? [], d.ring?.n ?? [], (d.marks ?? []).map((m) => m[0]))));

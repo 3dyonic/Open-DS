@@ -132,7 +132,10 @@ export async function dryRun(component, scheme = "dense-data") {
   // loadKit names variables "<collection>/<name>"; the stand-in has one collection holding full names.
   const src = renderer().replace("vars.set(`${c.name}/${v.name}`, v.key)", "vars.set(v.key, v.key)");
   // Positions are read inside plate(); lay the drawing out just before.
-  const hooked = src.replace("function plate(name, built, w) {", "function plate(name, built, w) {\n  __layout(built.node);");
+  // Lay the drawing out before plate() reads positions. If the hook stops matching, fail: without it
+  // every position is 0 and the checks below see nothing.
+  const hooked = src.replace(/function plate\(([^)]*)\) \{/, (m) => `${m}\n  __layout(built.node);`);
+  if (hooked === src) throw new Error("dry run: plate() not found in the renderer; the layout hook does not apply.");
   const run = new Function("figma", "SPEC", "__layout", `return (async () => {\n${hooked}\nreturn await renderAnatomy(SPEC, await loadKit(SPEC.library));\n})();`);
   const result = await run(figma, SPEC, layout);
   // Checks: every number placed once per frame, none on top of another.
@@ -153,6 +156,15 @@ export async function dryRun(component, scheme = "dense-data") {
     for (const n of c.parts) if (!names.has(n)) problems.push(`card ${c.title}: part ${n} has no number on the drawing`);
   });
   const stage = drawn.children.find((f) => f.name.endsWith("/stage"));
+  // OD-248: a card shows its own parts large. Its frame is the box around its numbered parts, their
+  // numbers and its context parts, with the scheme's card padding as margin, or a minimum card.
+  SPEC.cards.forEach((c, i) => {
+    const f = card(i);
+    const crop = result.crops.find((x) => x.frame === f.name);
+    if (!crop) return problems.push(`card ${c.title}: not cropped to its parts`);
+    const w = Math.max(crop.focus[0] + 2 * crop.margin, crop.min[0]), h = Math.max(crop.focus[1] + 2 * crop.margin, crop.min[1]);
+    if (f.width > w + 1 || f.height > h + 1) problems.push(`card ${c.title}: ${Math.round(f.width)}×${Math.round(f.height)} for parts that take ${Math.round(crop.focus[0])}×${Math.round(crop.focus[1])}`);
+  });
   const onStage = new Set(stage.children.filter((k) => k.name.startsWith("Number ")).map((k) => +k.name.slice(7)));
   const cardNums = new Set(SPEC.cards.flatMap((c) => c.parts));
   for (const p of SPEC.parts) if (!onStage.has(p.n) && !cardNums.has(p.n)) problems.push(`part ${p.n} ${p.label} is numbered nowhere`);
