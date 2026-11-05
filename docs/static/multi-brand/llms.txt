@@ -59,7 +59,6 @@
 - [Field](/components/field)
 - [Form](/components/form)
 - [Hover card](/components/hover-card)
-- [Anatomy reference](/components/input-anatomy)
 - [Input](/components/input)
 - [Input group](/components/input-group)
 - [Input otp](/components/input-otp)

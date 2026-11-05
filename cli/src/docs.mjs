@@ -2448,11 +2448,6 @@ export function docsPages(
     // One engine with open-ds anatomy and get_anatomy: the cards' answers, rules and tokens come from it.
     const ref = anatomyReference(scheme, g, roots, name);
     const refCard = Object.fromEntries(ref.cards.map((c) => [c.title, c]));
-    // A live drawing (OD-229): the component itself from Storybook, with a number on each part placed
-    // on the element its data-slot names (storybook/src/anatomy-marks.tsx). A card shows only its own.
-    const live = spec.drawing?.kind === "live";
-    const liveFrame = (nums, tall) =>
-      `<div class="odv-live odv-am-livebox${tall ? " tall" : ""}"><span class="odv-wait">Start Storybook to see it live: <code>npm run storybook</code></span><iframe src="${storybook}/iframe.html?id=components-${name}--${spec.drawing.story ?? "examples"}&viewMode=story&globals=${sbScheme};mode:light;anatomy:${name}${nums ? `;anatomyparts:${[...nums].join("-")}` : ""}" title="${attr(title(name))}, its parts numbered" loading="lazy" tabindex="-1"></iframe></div>`;
     const roleOf = Object.fromEntries(
       (g.anatomy?.roles ?? []).map((r) => [r.id, r]),
     );
@@ -2621,7 +2616,7 @@ export function docsPages(
     const card = (c) => {
       const nums = new Set(c.parts);
       // A card can name its own image: one row, with the card's numbers placed on it.
-      if (live || spec.drawing.kind === "table") {
+      if (spec.drawing.kind === "table") {
         const d = refCard[c.title];
         const steps = [
           ...d.answers.map(answerStep),
@@ -2629,7 +2624,7 @@ export function docsPages(
           ...d.tokens.map(tokenStep),
         ].filter(Boolean);
         return h(
-          `<section class="odv-am-card" id="part-${c.parts.join("-")}"><div class="odv-am-img wide">${live ? liveFrame(nums) : tableDrawing(c.image?.sections ?? [], nums)}</div><div class="odv-am-body">`,
+          `<section class="odv-am-card" id="part-${c.parts.join("-")}"><div class="odv-am-img wide">${tableDrawing(c.image?.sections ?? [], nums)}</div><div class="odv-am-body">`,
           `<header>${c.parts.map((n) => num(n)).join("")}<b>${attr(c.title)}</b>${c.roles.map(chip).join("")}</header>`,
           `<ul class="odv-am-tree">${steps.join("")}</ul></div></section>`,
         );
@@ -2662,7 +2657,7 @@ export function docsPages(
     );
     const roles = `<div class="odv-am-rolelist">${(g.anatomy?.roles ?? []).map((r) => `<span class="odv-am-role big"><b>${attr(r.label)}</b> ${attr(r.ask)}</span>`).join("")}</div>`;
     const partsBlock = h(
-      `<div class="odv-am-parts"><figure class="odv-am-stage">${live ? liveFrame(null, true) : spec.drawing.kind === "table" ? `${tableDrawing(["toolbar", "table"], allNums)}` : drawing(spec.drawing.rows, allNums, true)}<figcaption>${live ? `${attr(scheme.name)}, light: the live component from Storybook, with a number on each part.` : spec.drawing.kind === "table" ? tableCaption : caption}</figcaption></figure>`,
+      `<div class="odv-am-parts"><figure class="odv-am-stage">${spec.drawing.kind === "table" ? `${tableDrawing(["toolbar", "table"], allNums)}` : drawing(spec.drawing.rows, allNums, true)}<figcaption>${spec.drawing.kind === "table" ? tableCaption : caption}</figcaption></figure>`,
       `<div class="odv-am-legend"><p class="odv-am-legend-t">Legend: every part and its roles. The numbers match the drawing; a part without one isn't in this example.</p><p class="odv-am-legend-k">${byTag} Its value changes by scheme. The part is the same in every scheme.</p><ul>${legend(spec.parts)}</ul></div></div>`,
     );
     return (

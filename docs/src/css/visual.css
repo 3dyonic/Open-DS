@@ -2134,8 +2134,3 @@ tr.odv-for td {
 .odv-anatref-b b { font-weight: 600; color: var(--color-text-primary); }
 .odv-anatref-b span { color: var(--color-text-secondary); font-size: 0.9em; }
 .odv-anatref-go { color: var(--color-action-primary); font-size: 1.1em; }
-
-/* The Anatomy reference's live drawing (OD-229): the component from Storybook, its parts numbered. */
-.odv-am-livebox { position: relative; min-height: 200px; border: 0; background: transparent; }
-.odv-am-livebox iframe { width: 100%; height: 220px; border: 0; display: block; }
-.odv-am-livebox.tall iframe { height: 420px; }

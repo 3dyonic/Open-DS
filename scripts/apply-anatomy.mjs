@@ -1,6 +1,5 @@
 // Put components' parts layers (OD-229) into the grammar's catalogue, after checking each one: every
-// numbered part's data-slot exists in the component's source, every token is a component key that
-// exists, every answer is a question the schemes answer, every rule a situation, every role a role.
+// token is a component key that exists, every answer is a question the schemes answer, every rule a situation, every role a role.
 // A part layer that fails is refused whole. Used to merge the parts layers parallel workers write.
 //
 //   node scripts/apply-anatomy.mjs anatomy-sidebar.json [anatomy-field.json …]
@@ -46,13 +45,6 @@ export function checkAnatomy(component, spec) {
     if (p.n) {
       if (nums.has(p.n)) errs.push(`number ${p.n} is used twice`);
       nums.add(p.n);
-      if (spec.drawing?.kind === "live") {
-        if (!p.slot) errs.push(`part ${p.id}: a numbered part needs a slot`);
-        else if (!src.includes(`data-slot="${p.slot}"`))
-          errs.push(
-            `part ${p.id}: data-slot="${p.slot}" is not in ${component}.tsx`,
-          );
-      }
     }
   }
   for (const c of spec.cards ?? []) {

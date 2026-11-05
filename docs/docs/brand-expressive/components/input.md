@@ -28,8 +28,6 @@ Instead:
 - [Textarea](./textarea.md): Several lines.
 - [Select](./select.md): A known list of options.
 
-<a class="odv-anatref" href="./input/anatomy"><span class="odv-anatref-b"><b>Anatomy reference</b><span>Every part of the input, the job it does, and the decisions behind it. 5 parts.</span></span><span class="odv-anatref-go" aria-hidden="true">→</span></a>
-
 ## How Brand expressive uses it
 
 <div class="odv-grid two"><div class="odv-dd"><div class="stage"><div class="odv-eyebrow">Field label or column header</div><div style="margin-top:6px"><b style="color:var(--color-status-success)">Use</b> type.label</div><div><b style="color:var(--color-status-danger)">Not</b> type.caption</div></div><div class="cap">Labels stay readable on vivid color.</div></div></div>
