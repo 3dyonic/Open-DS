@@ -6152,7 +6152,7 @@
       "id": "combobox/content/radius",
       "component": "combobox",
       "description": "Content radius of the combobox.",
-      "default": "radius.control"
+      "default": "radius.container"
     },
     {
       "id": "combobox/content/background",
@@ -6212,7 +6212,7 @@
       "id": "combobox/item/radius",
       "component": "combobox",
       "description": "Item radius of the combobox.",
-      "default": "radius.badge"
+      "default": "radius.option"
     },
     {
       "id": "combobox/item/padding-y",
@@ -6674,7 +6674,7 @@
       "id": "command/item/radius",
       "component": "command",
       "description": "Item radius of the command.",
-      "default": "radius.badge"
+      "default": "radius.option"
     },
     {
       "id": "command/item/padding-x",
@@ -6759,7 +6759,7 @@
       "id": "context-menu/sub/trigger/radius",
       "component": "context-menu",
       "description": "Sub trigger radius of the context menu.",
-      "default": "radius.badge"
+      "default": "radius.option"
     },
     {
       "id": "context-menu/sub/trigger/padding-x",
@@ -6838,7 +6838,7 @@
       "id": "context-menu/sub/content/radius",
       "component": "context-menu",
       "description": "Sub content radius of the context menu.",
-      "default": "radius.control"
+      "default": "radius.container"
     },
     {
       "id": "context-menu/sub/content/background",
@@ -6868,7 +6868,7 @@
       "id": "context-menu/content/radius",
       "component": "context-menu",
       "description": "Content radius of the context menu.",
-      "default": "radius.control"
+      "default": "radius.container"
     },
     {
       "id": "context-menu/content/background",
@@ -6904,7 +6904,7 @@
       "id": "context-menu/item/radius",
       "component": "context-menu",
       "description": "Item radius of the context menu.",
-      "default": "radius.badge"
+      "default": "radius.option"
     },
     {
       "id": "context-menu/item/padding-x",
@@ -7001,7 +7001,7 @@
       "id": "context-menu/checkbox/item/radius",
       "component": "context-menu",
       "description": "Checkbox item radius of the context menu.",
-      "default": "radius.badge"
+      "default": "radius.option"
     },
     {
       "id": "context-menu/checkbox/item/padding-y",
@@ -7080,7 +7080,7 @@
       "id": "context-menu/radio/item/radius",
       "component": "context-menu",
       "description": "Radio item radius of the context menu.",
-      "default": "radius.badge"
+      "default": "radius.option"
     },
     {
       "id": "context-menu/radio/item/padding-y",
@@ -7527,7 +7527,7 @@
       "id": "dropdown-menu/item/radius",
       "component": "dropdown-menu",
       "description": "Item radius of the dropdown menu.",
-      "default": "radius.badge"
+      "default": "radius.option"
     },
     {
       "id": "dropdown-menu/item/font-size",
@@ -8755,7 +8755,7 @@
       "id": "menubar/content/radius",
       "component": "menubar",
       "description": "Content radius of the menubar.",
-      "default": "radius.control"
+      "default": "radius.container"
     },
     {
       "id": "menubar/content/background",
@@ -8791,7 +8791,7 @@
       "id": "menubar/item/radius",
       "component": "menubar",
       "description": "Item radius of the menubar.",
-      "default": "radius.badge"
+      "default": "radius.option"
     },
     {
       "id": "menubar/item/padding-x",
@@ -8888,7 +8888,7 @@
       "id": "menubar/checkbox/item/radius",
       "component": "menubar",
       "description": "Checkbox item radius of the menubar.",
-      "default": "radius.badge"
+      "default": "radius.option"
     },
     {
       "id": "menubar/checkbox/item/padding-y",
@@ -8967,7 +8967,7 @@
       "id": "menubar/radio/item/radius",
       "component": "menubar",
       "description": "Radio item radius of the menubar.",
-      "default": "radius.badge"
+      "default": "radius.option"
     },
     {
       "id": "menubar/radio/item/padding-y",
@@ -9094,7 +9094,7 @@
       "id": "menubar/sub/trigger/radius",
       "component": "menubar",
       "description": "Sub trigger radius of the menubar.",
-      "default": "radius.badge"
+      "default": "radius.option"
     },
     {
       "id": "menubar/sub/trigger/padding-x",
@@ -9167,7 +9167,7 @@
       "id": "menubar/sub/content/radius",
       "component": "menubar",
       "description": "Sub content radius of the menubar.",
-      "default": "radius.control"
+      "default": "radius.container"
     },
     {
       "id": "menubar/sub/content/background",
@@ -10104,7 +10104,7 @@
       "id": "select/item/radius",
       "component": "select",
       "description": "Item radius of the select.",
-      "default": "radius.badge"
+      "default": "radius.option"
     },
     {
       "id": "select/item/font-size",
@@ -13730,12 +13730,11 @@
                 "n": 5
               }
             ],
-            "frame": 6,
             "header": {
-              "row": 7,
-              "label": 8,
-              "sort": 9,
-              "check": 15
+              "row": 6,
+              "label": 7,
+              "sort": 8,
+              "check": 13
             },
             "columns": [
               {
@@ -13755,16 +13754,15 @@
               {
                 "cells": ["REC-1042", "Open", "1,240.00"],
                 "marks": {
-                  "row": 10,
-                  "cell": 11,
-                  "number": 12
+                  "row": 9,
+                  "cell": 10
                 }
               },
               {
                 "cells": ["REC-1043", "Late", "86.50"],
                 "state": "highlight",
                 "marks": {
-                  "row": 13
+                  "row": 11
                 }
               },
               {
@@ -13772,17 +13770,14 @@
                 "state": "selected",
                 "checked": true,
                 "marks": {
-                  "row": 14
+                  "row": 12,
+                  "check": 13
                 }
               },
               {
                 "cells": ["REC-1045", "Open", "412.00"]
               }
-            ],
-            "empty": {
-              "label": "No records match these filters.",
-              "n": 16
-            }
+            ]
           },
           "parts": [
             {
@@ -13837,24 +13832,13 @@
               ]
             },
             {
-              "n": 6,
-              "id": "frame",
-              "label": "Table frame",
-              "need": "required",
-              "roles": ["containment"],
-              "tokens": [
-                "component.data-table.container.border",
-                "component.data-table.container.radius"
-              ]
-            },
-            {
               "id": "header",
               "label": "Header",
               "need": "required",
               "roles": ["hierarchy"],
               "children": [
                 {
-                  "n": 7,
+                  "n": 6,
                   "id": "header-row",
                   "label": "Header row",
                   "need": "required",
@@ -13862,7 +13846,7 @@
                   "tokens": ["component.table.header-background"]
                 },
                 {
-                  "n": 8,
+                  "n": 7,
                   "id": "header-label",
                   "label": "Header label",
                   "need": "required",
@@ -13873,7 +13857,7 @@
                   ]
                 },
                 {
-                  "n": 9,
+                  "n": 8,
                   "id": "sort",
                   "label": "Sort control",
                   "need": "optional",
@@ -13889,7 +13873,7 @@
               "roles": ["readability", "reach"],
               "children": [
                 {
-                  "n": 10,
+                  "n": 9,
                   "id": "row-line",
                   "label": "Row and its line",
                   "need": "required",
@@ -13900,26 +13884,19 @@
                   ]
                 },
                 {
-                  "n": 11,
+                  "n": 10,
                   "id": "cell",
                   "label": "Cell",
                   "need": "required",
                   "roles": ["readability"],
                   "tokens": [
                     "component.table.label",
-                    "component.table.font-size"
+                    "component.table.font-size",
+                    "component.table.cell.font-family"
                   ]
                 },
                 {
-                  "n": 12,
-                  "id": "number-cell",
-                  "label": "Number cell",
-                  "need": "optional",
-                  "roles": ["readability"],
-                  "tokens": ["component.table.cell.font-family"]
-                },
-                {
-                  "n": 13,
+                  "n": 11,
                   "id": "highlight-row",
                   "label": "Highlight row",
                   "need": "state",
@@ -13927,7 +13904,7 @@
                   "tokens": ["component.data-table.row.background.hover"]
                 },
                 {
-                  "n": 14,
+                  "n": 12,
                   "id": "selected-row",
                   "label": "Selected row",
                   "need": "state",
@@ -13938,7 +13915,7 @@
                   ]
                 },
                 {
-                  "n": 15,
+                  "n": 13,
                   "id": "select-box",
                   "label": "Select box",
                   "need": "optional",
@@ -13948,12 +13925,12 @@
               ]
             },
             {
-              "n": 16,
               "id": "empty",
               "label": "Empty state",
               "need": "state",
+              "note": "shown by Empty",
               "roles": ["feedback"],
-              "tokens": ["component.data-table.label"]
+              "tokens": []
             }
           ],
           "cards": [
@@ -13973,23 +13950,8 @@
               ]
             },
             {
-              "title": "Table frame",
-              "parts": [6],
-              "image": {
-                "sections": ["frame"]
-              },
-              "roles": ["containment"],
-              "answers": ["elevation.definition", "shape.values"],
-              "rules": ["card"],
-              "tokens": [
-                "component.data-table.container.border",
-                "component.data-table.container.border-width",
-                "component.data-table.container.radius"
-              ]
-            },
-            {
               "title": "Header",
-              "parts": [7, 8, 9],
+              "parts": [6, 7, 8],
               "image": {
                 "sections": ["header"]
               },
@@ -14004,33 +13966,23 @@
             },
             {
               "title": "Row",
-              "parts": [10, 11],
+              "parts": [9, 10],
               "image": {
-                "sections": ["header", "row:0"]
+                "sections": ["row:0"]
               },
               "roles": ["readability", "reach"],
               "answers": ["content.q2", "spacing.values"],
-              "rules": ["table-row"],
+              "rules": ["table-row", "number-in-table"],
               "tokens": [
                 "component.table.row-height",
                 "component.table.row-border",
-                "component.table.label"
+                "component.table.label",
+                "component.table.cell.font-family"
               ]
             },
             {
-              "title": "Number cell",
-              "parts": [12],
-              "image": {
-                "sections": ["header", "row:0"]
-              },
-              "roles": ["readability"],
-              "answers": ["typography.roles", "tasks.q1"],
-              "rules": ["number-in-table"],
-              "tokens": ["component.table.cell.font-family"]
-            },
-            {
               "title": "Highlight row",
-              "parts": [13],
+              "parts": [11],
               "image": {
                 "sections": ["row:1"]
               },
@@ -14041,7 +13993,7 @@
             },
             {
               "title": "Selected row",
-              "parts": [14, 15],
+              "parts": [12, 13],
               "image": {
                 "sections": ["row:2"]
               },
@@ -14053,17 +14005,6 @@
                 "component.table.row-selected-edge",
                 "component.checkbox.size"
               ]
-            },
-            {
-              "title": "Empty state",
-              "parts": [16],
-              "image": {
-                "sections": ["empty"]
-              },
-              "roles": ["feedback"],
-              "answers": ["voice.lands"],
-              "rules": ["empty-words"],
-              "tokens": ["component.data-table.label"]
             }
           ]
         }

@@ -1352,7 +1352,7 @@ export function docsPages(
     typography: `<div class="odv-spec"><span style="font-size:var(--type-title-font-size);font-family:var(--type-display-font-family)">Aa</span><span style="font-size:var(--type-body-font-size)">Aa</span><span style="font-size:var(--type-caption-font-size)">Aa</span></div>`,
     color: `<div class="odv-spec">${["color-action-primary", "color-text-primary", "color-text-secondary", "color-border-default", "color-status-danger", "color-status-success"].map((v) => `<i class="odv-sw" style="background:var(--${v})"></i>`).join("")}</div>`,
     spacing: `<div class="odv-spec odv-spec-bars">${["space-gap-tight", "space-gap-default", "space-gap-group", "space-gap-section"].map((v) => `<i style="width:var(--${v})"></i>`).join("")}</div>`,
-    shape: `<div class="odv-spec">${["radius-badge", "radius-control", "radius-container"].map((v) => `<i class="odv-shape" style="border-radius:var(--${v})"></i>`).join("")}</div>`,
+    shape: `<div class="odv-spec">${["radius-badge", "radius-option", "radius-control", "radius-container"].map((v) => `<i class="odv-shape" style="border-radius:var(--${v})"></i>`).join("")}</div>`,
     elevation: `<div class="odv-spec">${["elevation-card", "elevation-overlay"].map((v) => `<i class="odv-lift" style="box-shadow:var(--${v})"></i>`).join("")}</div>`,
     motion: `<div class="odv-spec"><i class="odv-dot"></i></div>`,
     iconography: `<div class="odv-spec"><span class="odv-iconlabel">&#9888;&#xFE0E; ${attr(scheme.tokens.content?.action?.destroy?.$value ?? "Delete")}</span></div>`,
@@ -2471,7 +2471,8 @@ export function docsPages(
       const corner = whole ? `${spec.drawing.surface.map((n) => (show.has(n) ? `<span class="odv-am-at corner">${num(n)}</span>` : "")).join("")}${spec.drawing.shadow.map((n) => (show.has(n) ? `<span class="odv-am-at shadow">${num(n)}</span>` : "")).join("")}` : "";
       return `<div class="odv-am-menu${whole ? "" : " part"}">${body}${corner}</div>`;
     };
-    // A table, from the table's and the data table's own variables: toolbar, frame, header, rows, empty.
+    // A table, from the table's and the data table's own variables: toolbar, frame, header, rows. The
+    // empty state is the Empty component's, so it is not drawn here.
     const tableDrawing = (sections, show) => {
       const d = spec.drawing;
       const m = (n) => (n && show.has(n) ? num(n) : "");
@@ -2493,16 +2494,16 @@ export function docsPages(
         `<tr class="odv-at-head"><th class="chk">${box(false)}${m(d.header.check)}</th>${d.columns
           .map((c, k) => `<th class="${c.numeric ? "num" : ""}">${attr(c.label)}${k === 0 ? m(d.header.label) : ""}${c.sort ? icon("sort") : ""}${k === 0 && c.sort ? m(d.header.sort) : ""}</th>`)
           .join("")}<th class="end">${m(d.header.row)}</th></tr>`;
-      const row = (r) =>
-        `<tr class="odv-at-row${r.state ? ` is-${r.state}` : ""}"><td class="chk">${box(r.checked)}</td>${r.cells
+      // The select box is numbered on the header when the header is drawn, else on its own row.
+      const row = (r, withHead) =>
+        `<tr class="odv-at-row${r.state ? ` is-${r.state}` : ""}"><td class="chk">${box(r.checked)}${withHead ? "" : m(r.marks?.check)}</td>${r.cells
           .map((c, k) => `<td class="${d.columns[k]?.numeric ? "num" : ""}">${attr(c)}${k === 0 ? m(r.marks?.cell) : ""}${d.columns[k]?.numeric ? m(r.marks?.number) : ""}</td>`)
           .join("")}<td class="end">${m(r.marks?.row)}</td></tr>`;
       const frame = (rows, withHead) =>
-        `<div class="odv-at-frame">${withHead === "corner" || sections.includes("frame") ? `<span class="odv-am-at corner">${m(d.frame)}</span>` : ""}<table class="odv-at-table">${withHead ? `<thead>${head()}</thead>` : ""}<tbody>${rows.map(row).join("")}</tbody></table></div>`;
+        `<div class="odv-at-frame">${withHead === "corner" || sections.includes("frame") ? `<span class="odv-am-at corner">${m(d.frame)}</span>` : ""}<table class="odv-at-table">${withHead ? `<thead>${head()}</thead>` : ""}<tbody>${rows.map((r) => row(r, withHead)).join("")}</tbody></table></div>`;
       for (const sec of sections) {
         if (sec === "toolbar") out.push(bar());
         else if (sec === "frame" || sec === "table") out.push(frame(d.rows, sec === "table" ? "corner" : true));
-        else if (sec === "empty") out.push(`<div class="odv-at-frame"><table class="odv-at-table"><tbody><tr class="odv-at-row"><td class="odv-at-empty" colspan="${d.columns.length + 2}">${attr(d.empty.label)}${m(d.empty.n)}</td></tr></tbody></table></div>`);
       }
       const head2 = sections.includes("header");
       const picked = sections.filter((x) => x.startsWith("row:")).map((x) => d.rows[+x.split(":")[1]]);
@@ -2583,7 +2584,7 @@ export function docsPages(
     );
     const roles = `<div class="odv-am-rolelist">${(g.anatomy?.roles ?? []).map((r) => `<span class="odv-am-role big"><b>${attr(r.label)}</b> ${attr(r.ask)}</span>`).join("")}</div>`;
     const partsBlock = h(
-      `<div class="odv-am-parts"><figure class="odv-am-stage">${spec.drawing.kind === "table" ? `${tableDrawing(["toolbar", "table"], allNums)}${tableDrawing(["empty"], allNums)}` : drawing(spec.drawing.rows, allNums, true)}<figcaption>${spec.drawing.kind === "table" ? tableCaption : caption}</figcaption></figure>`,
+      `<div class="odv-am-parts"><figure class="odv-am-stage">${spec.drawing.kind === "table" ? `${tableDrawing(["toolbar", "table"], allNums)}` : drawing(spec.drawing.rows, allNums, true)}<figcaption>${spec.drawing.kind === "table" ? tableCaption : caption}</figcaption></figure>`,
       `<div class="odv-am-legend"><p class="odv-am-legend-t">Legend: every part and its roles. The numbers match the drawing; a part without one isn't in this example.</p><p class="odv-am-legend-k">${byTag} Its value changes by scheme. The part is the same in every scheme.</p><ul>${legend(spec.parts)}</ul></div></div>`,
     );
     return (

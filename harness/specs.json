@@ -481,6 +481,7 @@
       ],
       "checks": [
         "answers-consider",
+        "picks-cite-answers",
         "schemes-answer-every-question",
         "gaps-only-go-down"
       ]

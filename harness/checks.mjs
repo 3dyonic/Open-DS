@@ -573,7 +573,12 @@ export const CHECKS = {
       // The floors are the lightest pairs the light themes already ship: a fill at 1.08:1, a 1px line at 1.15:1.
       const MEETS = [
         // OD-241: the state fill is color.surface.highlight; sunken is depth only, a well on content.
-        { key: "color.surface.highlight", job: "highlight fill", min: 1.08, on: ["color.surface.default", "color.surface.raised"] },
+        {
+          key: "color.surface.highlight",
+          job: "highlight fill",
+          min: 1.08,
+          on: ["color.surface.default", "color.surface.raised"],
+        },
         { key: "color.surface.sunken", job: "well", min: 1.08, on: ["color.surface.default"] },
         {
           key: "color.border.default",
@@ -637,10 +642,44 @@ export const CHECKS = {
             else gaps.push(`${s}: ${q.id} does not say how it meets ${k.label.toLowerCase()}`);
           }
           for (const id of Object.keys(a.considers ?? {}))
-            if (!q.considers.some((k) => k.id === id)) gaps.push(`${s}: ${q.id} answers ${id}, which the question does not ask`);
+            if (!q.considers.some((k) => k.id === id))
+              gaps.push(`${s}: ${q.id} answers ${id}, which the question does not ask`);
         }
       }
-      return gaps.length ? bad(gaps.slice(0, 6).join("; ")) : ok(`${n} considerations met in words, across ${qs.length} question in ${SCHEMES.length} schemes`);
+      return gaps.length
+        ? bad(gaps.slice(0, 6).join("; "))
+        : ok(`${n} considerations met in words, across ${qs.length} question in ${SCHEMES.length} schemes`);
+    },
+  },
+  "picks-cite-answers": {
+    requires: SCHEMES.map((s) => `schemes/${s}.json`),
+    run: (c) => {
+      // A theme pick's reason cites the answers it follows from (because). Each must be a question this
+      // scheme answers, or the trace from answer to value breaks where nobody looks. The schema only
+      // checks the shape of the id (it once refused brand.q3); this checks that it lands.
+      const gaps = [];
+      let n = 0;
+      const walk = (o, p, cb) => {
+        if (!o || typeof o !== "object") return;
+        if ("$value" in o) return cb(p, o);
+        for (const [k, v] of Object.entries(o)) if (k[0] !== "$") walk(v, [...p, k], cb);
+      };
+      for (const id of SCHEMES) {
+        const s = c.json("schemes", `${id}.json`);
+        const answered = new Set(s.answers.map((a) => a.question));
+        for (const [brand, def] of Object.entries(s.tokens.brands))
+          for (const mode of ["base", "light", "dark"])
+            walk(def.theme[mode], [], (p, node) => {
+              for (const q of node.$extensions?.["open-ds"]?.because ?? []) {
+                n++;
+                if (!answered.has(q))
+                  gaps.push(`${id}/${brand}/${mode} ${p.join(".")} cites ${q}, which this scheme does not answer`);
+              }
+            });
+      }
+      return gaps.length
+        ? bad(`${gaps.length} broken: ${gaps.slice(0, 5).join("; ")}`)
+        : ok(`${n} answers cited by theme picks, each one this scheme answers`);
     },
   },
   "gaps-only-go-down": {
@@ -2369,6 +2408,17 @@ export const CHECKS = {
         for (const [p, text] of Object.entries(pages)) {
           const m = p.match(/^components\/(.+)\.md$/);
           if (!m || m[1] === "inventory") continue;
+          // An Anatomy reference (OD-229) is its own kind of page: the parts, the cards, the way in.
+          if (m[1].endsWith("-anatomy")) {
+            const lacking = [
+              "## Design roles",
+              "## The parts",
+              "## How the decisions reach each part",
+              "## For agents",
+            ].filter((h) => !text.includes(h));
+            if (lacking.length) gaps.push(`${id} ${p}: no ${lacking.join(", ")}`);
+            continue;
+          }
           const item = g.catalogue.items.find((i) => i.id === m[1]);
           const want = ["## See it live", "## Use it in code"];
           if (item?.apply_when) want.push("## When to use it");

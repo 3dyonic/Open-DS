@@ -10,10 +10,14 @@ const g = grammar(roots);
 const gaps = (id) => componentGaps(loadScheme(id, roots), g, roots);
 
 test("nested-corner: a pill option inside a rounded menu, and not where corners are concentric", () => {
-  const cf = gaps("content-first").filter((x) => x.kind === "nested-corner");
+  // The known case, as it was before radius.option (OD-246): Content first's menu item on the pill.
+  const pill = structuredClone(loadScheme("content-first", roots));
+  pill.id = "content-first-pill";
+  pill.tokens.component["dropdown-menu"].item.radius.$value = "{radius.badge}";
+  const cf = componentGaps(pill, g, roots).filter((x) => x.kind === "nested-corner");
   assert.ok(cf.some((x) => x.component === "dropdown-menu" && x.part === "item"), "Content first's pill menu item");
-  const dd = gaps("dense-data").filter((x) => x.kind === "nested-corner" && x.component === "dropdown-menu");
-  assert.equal(dd.length, 0, "Dense data: a 4px menu, 4px padding, square items");
+  for (const id of ["dense-data", "content-first", "accessible-first", "brand-expressive", "multi-brand"])
+    assert.equal(gaps(id).filter((x) => x.kind === "nested-corner").length, 0, `${id}: options nest in their panels`);
 });
 
 test("borrows-a-key: a component that reads another component's own key", () => {

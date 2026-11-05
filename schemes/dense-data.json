@@ -3091,6 +3091,19 @@
                   }
                 }
               },
+              "option": {
+                "$type": "dimension",
+                "$value": "{radius.0}",
+                "$extensions": {
+                  "open-ds": {
+                    "why": "radius.0: square, because the panel's 4px corner is used up by its 4px padding.",
+                    "because": [
+                      "shape.roles",
+                      "spacing.values"
+                    ]
+                  }
+                }
+              },
               "container": {
                 "$type": "dimension",
                 "$value": "{radius.4}",
@@ -5228,7 +5241,12 @@
         "badge": {
           "$type": "dimension",
           "$value": "{theme.radius.badge}",
-          "$description": "Corner of badges, checkboxes and menu items."
+          "$description": "Corner of badges and checkboxes."
+        },
+        "option": {
+          "$type": "dimension",
+          "$value": "{theme.radius.option}",
+          "$description": "Corner of options in menus and lists: the panel's corner less its padding, so the corners nest."
         },
         "container": {
           "$type": "dimension",
@@ -7368,7 +7386,7 @@
         },
         "content": {
           "radius": {
-            "$value": "{radius.control}",
+            "$value": "{radius.container}",
             "$description": "Content radius of the combobox."
           },
           "background": {
@@ -7412,7 +7430,7 @@
             "$description": "Item gap of the combobox."
           },
           "radius": {
-            "$value": "{radius.badge}",
+            "$value": "{radius.option}",
             "$description": "Item radius of the combobox."
           },
           "padding-y": {
@@ -7744,7 +7762,7 @@
             "$description": "Item gap of the command."
           },
           "radius": {
-            "$value": "{radius.badge}",
+            "$value": "{radius.option}",
             "$description": "Item radius of the command."
           },
           "padding-x": {
@@ -7810,7 +7828,7 @@
         "sub": {
           "trigger": {
             "radius": {
-              "$value": "{radius.badge}",
+              "$value": "{radius.option}",
               "$description": "Sub trigger radius of the context menu."
             },
             "padding-x": {
@@ -7867,7 +7885,7 @@
           },
           "content": {
             "radius": {
-              "$value": "{radius.control}",
+              "$value": "{radius.container}",
               "$description": "Sub content radius of the context menu."
             },
             "background": {
@@ -7890,7 +7908,7 @@
         },
         "content": {
           "radius": {
-            "$value": "{radius.control}",
+            "$value": "{radius.container}",
             "$description": "Content radius of the context menu."
           },
           "background": {
@@ -7916,7 +7934,7 @@
             "$description": "Item gap of the context menu."
           },
           "radius": {
-            "$value": "{radius.badge}",
+            "$value": "{radius.option}",
             "$description": "Item radius of the context menu."
           },
           "padding-x": {
@@ -7986,7 +8004,7 @@
               "$description": "Checkbox item gap of the context menu."
             },
             "radius": {
-              "$value": "{radius.badge}",
+              "$value": "{radius.option}",
               "$description": "Checkbox item radius of the context menu."
             },
             "padding-y": {
@@ -8045,7 +8063,7 @@
               "$description": "Radio item gap of the context menu."
             },
             "radius": {
-              "$value": "{radius.badge}",
+              "$value": "{radius.option}",
               "$description": "Radio item radius of the context menu."
             },
             "padding-y": {
@@ -8391,7 +8409,7 @@
             "$description": "Item padding x of the dropdown menu."
           },
           "radius": {
-            "$value": "{radius.badge}",
+            "$value": "{radius.option}",
             "$description": "Item radius of the dropdown menu."
           },
           "font-size": {
@@ -9313,7 +9331,7 @@
         },
         "content": {
           "radius": {
-            "$value": "{radius.control}",
+            "$value": "{radius.container}",
             "$description": "Content radius of the menubar."
           },
           "background": {
@@ -9339,7 +9357,7 @@
             "$description": "Item gap of the menubar."
           },
           "radius": {
-            "$value": "{radius.badge}",
+            "$value": "{radius.option}",
             "$description": "Item radius of the menubar."
           },
           "padding-x": {
@@ -9409,7 +9427,7 @@
               "$description": "Checkbox item gap of the menubar."
             },
             "radius": {
-              "$value": "{radius.badge}",
+              "$value": "{radius.option}",
               "$description": "Checkbox item radius of the menubar."
             },
             "padding-y": {
@@ -9468,7 +9486,7 @@
               "$description": "Radio item gap of the menubar."
             },
             "radius": {
-              "$value": "{radius.badge}",
+              "$value": "{radius.option}",
               "$description": "Radio item radius of the menubar."
             },
             "padding-y": {
@@ -9565,7 +9583,7 @@
         "sub": {
           "trigger": {
             "radius": {
-              "$value": "{radius.badge}",
+              "$value": "{radius.option}",
               "$description": "Sub trigger radius of the menubar."
             },
             "padding-x": {
@@ -9614,7 +9632,7 @@
           },
           "content": {
             "radius": {
-              "$value": "{radius.control}",
+              "$value": "{radius.container}",
               "$description": "Sub content radius of the menubar."
             },
             "background": {
@@ -10312,7 +10330,7 @@
             "$description": "Item padding right of the select."
           },
           "radius": {
-            "$value": "{radius.badge}",
+            "$value": "{radius.option}",
             "$description": "Item radius of the select."
           },
           "font-size": {

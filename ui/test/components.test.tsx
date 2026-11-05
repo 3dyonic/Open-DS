@@ -8,14 +8,17 @@ import * as UI from "../src/index";
 
 const here = join(import.meta.dirname, "..");
 const files: string[] = readdirSync(join(here, "src", "components")).filter((f: string) => f.endsWith(".tsx"));
-const keys = JSON.parse(readFileSync(join(here, "..", "schemes", "grammar.json"), "utf8")).component_keys.map(
-  // The CSS name drops a base (@): button/primary/background/@ is --button-primary-background.
-  (k: { id: string }) =>
-    `--${k.id
-      .split("/")
-      .filter((p) => p !== "@")
-      .join("-")}`,
-);
+// A deprecated key (replaced_by) stays only so old code keeps working; no component reads it.
+const keys = JSON.parse(readFileSync(join(here, "..", "schemes", "grammar.json"), "utf8"))
+  .component_keys.filter((k: { replaced_by?: string }) => !k.replaced_by)
+  .map(
+    // The CSS name drops a base (@): button/primary/background/@ is --button-primary-background.
+    (k: { id: string }) =>
+      `--${k.id
+        .split("/")
+        .filter((p) => p !== "@")
+        .join("-")}`,
+  );
 
 test("every component file explains itself to people and agents", () => {
   for (const f of files) {

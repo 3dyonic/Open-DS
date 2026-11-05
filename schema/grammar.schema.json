@@ -891,7 +891,8 @@
       "properties": {
         "description": {
           "type": "string",
-          "minLength": 1
+          "minLength": 1,
+          "description": "What the parts layer is, for an agent."
         },
         "roles": {
           "type": "array",
@@ -902,16 +903,20 @@
             "properties": {
               "id": {
                 "type": "string",
-                "pattern": "^[a-z-]+$"
+                "pattern": "^[a-z-]+$",
+                "description": "The role's id, which parts and cards cite."
               },
               "label": {
-                "type": "string"
+                "type": "string",
+                "description": "The role's name, as the page shows it."
               },
               "ask": {
-                "type": "string"
+                "type": "string",
+                "description": "The question the role answers for a person."
               }
             }
-          }
+          },
+          "description": "The jobs a part can do for a person."
         }
       }
     }
@@ -958,7 +963,8 @@
             "properties": {
               "id": {
                 "type": "string",
-                "pattern": "^[a-z-]+$"
+                "pattern": "^[a-z-]+$",
+                "description": "The consideration's id, which an answer's considers map uses as its key."
               },
               "group": {
                 "type": "string",
@@ -967,7 +973,8 @@
               },
               "label": {
                 "type": "string",
-                "minLength": 1
+                "minLength": 1,
+                "description": "The consideration's name, as the decision reference shows it."
               },
               "ask": {
                 "type": "string",

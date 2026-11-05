@@ -101,7 +101,8 @@ html[data-scheme="multi-brand"] [data-brand="aster"] {
   --color-category-5: #1F7A3A; /** Category 5: tells one item or series from another. It carries no meaning. */
   --color-category-5-subtle: #DBF7DF; /** Category 5: the fill of a tag. */
   --radius-control: 0.25rem; /** Corner of buttons and inputs. */
-  --radius-badge: 0.25rem; /** Corner of badges, checkboxes and menu items. */
+  --radius-badge: 0.25rem; /** Corner of badges and checkboxes. */
+  --radius-option: 0.25rem; /** Corner of options in menus and lists: the panel's corner less its padding, so the corners nest. */
   --radius-container: 0.5rem; /** Corner of cards, menus and dialogs. */
   --type-display-font-family: Inter, system-ui, sans-serif;
   --type-title-font-family: Inter, system-ui, sans-serif;
@@ -818,9 +819,9 @@ html[data-scheme="multi-brand"] [data-brand="aster"] {
   --calendar-background-selected: var(--color-action-primary); /** Background selected of the calendar. */
   --chart-radius: var(--radius-container); /** Radius of the chart. */
   --chart-shadow: var(--elevation-overlay); /** Shadow of the chart. */
-  --combobox-content-radius: var(--radius-control); /** Content radius of the combobox. */
+  --combobox-content-radius: var(--radius-container); /** Content radius of the combobox. */
   --combobox-content-shadow: var(--elevation-overlay); /** Content shadow of the combobox. */
-  --combobox-item-radius: var(--radius-badge); /** Item radius of the combobox. */
+  --combobox-item-radius: var(--radius-option); /** Item radius of the combobox. */
   --combobox-chips-radius: var(--radius-control); /** Chips radius of the combobox. */
   --combobox-chips-shadow: var(--elevation-card); /** Chips shadow of the combobox. */
   --combobox-chips-border-focus: var(--color-border-focus); /** Chips border focus of the combobox. */
@@ -830,24 +831,24 @@ html[data-scheme="multi-brand"] [data-brand="aster"] {
   --combobox-chip-radius: var(--radius-badge); /** Chip radius of the combobox. */
   --command-radius: var(--radius-control); /** Radius of the command. */
   --command-input-radius: var(--radius-control); /** Input radius of the command. */
-  --command-item-radius: var(--radius-badge); /** Item radius of the command. */
-  --context-menu-sub-trigger-radius: var(--radius-badge); /** Sub trigger radius of the context menu. */
-  --context-menu-sub-content-radius: var(--radius-control); /** Sub content radius of the context menu. */
+  --command-item-radius: var(--radius-option); /** Item radius of the command. */
+  --context-menu-sub-trigger-radius: var(--radius-option); /** Sub trigger radius of the context menu. */
+  --context-menu-sub-content-radius: var(--radius-container); /** Sub content radius of the context menu. */
   --context-menu-sub-content-shadow: var(--elevation-overlay); /** Sub content shadow of the context menu. */
-  --context-menu-content-radius: var(--radius-control); /** Content radius of the context menu. */
+  --context-menu-content-radius: var(--radius-container); /** Content radius of the context menu. */
   --context-menu-content-shadow: var(--elevation-overlay); /** Content shadow of the context menu. */
-  --context-menu-item-radius: var(--radius-badge); /** Item radius of the context menu. */
+  --context-menu-item-radius: var(--radius-option); /** Item radius of the context menu. */
   --context-menu-item-label: var(--color-status-danger); /** Item label of the context menu. */
   --context-menu-item-background-focus-2: var(--color-status-danger); /** Item background focus 2 of the context menu. */
   --context-menu-item-label-focus-2: var(--color-status-danger); /** Item label focus 2 of the context menu. */
-  --context-menu-checkbox-item-radius: var(--radius-badge); /** Checkbox item radius of the context menu. */
-  --context-menu-radio-item-radius: var(--radius-badge); /** Radio item radius of the context menu. */
+  --context-menu-checkbox-item-radius: var(--radius-option); /** Checkbox item radius of the context menu. */
+  --context-menu-radio-item-radius: var(--radius-option); /** Radio item radius of the context menu. */
   --data-table-radius: var(--radius-badge); /** Radius of the data table. */
   --data-table-container-radius: var(--radius-container); /** Corner of the table frame, of the data table. */
   --dialog-radius: var(--radius-badge); /** Radius of the dialog. */
   --dialog-font-family: var(--type-heading-font-family); /** Font family of the dialog. */
   --drawer-overlay-background: var(--color-surface-scrim); /** Overlay background of the drawer. */
-  --dropdown-menu-item-radius: var(--radius-badge); /** Item radius of the dropdown menu. */
+  --dropdown-menu-item-radius: var(--radius-option); /** Item radius of the dropdown menu. */
   --dropdown-menu-item-label-destructive: var(--color-status-danger); /** Item label when destructive, of the dropdown menu. */
   --empty-radius: var(--radius-container); /** Radius of the empty. */
   --empty-icon-radius: var(--radius-container); /** Icon radius of the empty. */
@@ -885,16 +886,16 @@ html[data-scheme="multi-brand"] [data-brand="aster"] {
   --menubar-radius: var(--radius-control); /** Radius of the menubar. */
   --menubar-shadow: var(--elevation-card); /** Shadow of the menubar. */
   --menubar-trigger-radius: var(--radius-badge); /** Trigger radius of the menubar. */
-  --menubar-content-radius: var(--radius-control); /** Content radius of the menubar. */
+  --menubar-content-radius: var(--radius-container); /** Content radius of the menubar. */
   --menubar-content-shadow: var(--elevation-overlay); /** Content shadow of the menubar. */
-  --menubar-item-radius: var(--radius-badge); /** Item radius of the menubar. */
+  --menubar-item-radius: var(--radius-option); /** Item radius of the menubar. */
   --menubar-item-label: var(--color-status-danger); /** Item label of the menubar. */
   --menubar-item-background-focus-2: var(--color-status-danger); /** Item background focus 2 of the menubar. */
   --menubar-item-label-focus-2: var(--color-status-danger); /** Item label focus 2 of the menubar. */
-  --menubar-checkbox-item-radius: var(--radius-badge); /** Checkbox item radius of the menubar. */
-  --menubar-radio-item-radius: var(--radius-badge); /** Radio item radius of the menubar. */
-  --menubar-sub-trigger-radius: var(--radius-badge); /** Sub trigger radius of the menubar. */
-  --menubar-sub-content-radius: var(--radius-control); /** Sub content radius of the menubar. */
+  --menubar-checkbox-item-radius: var(--radius-option); /** Checkbox item radius of the menubar. */
+  --menubar-radio-item-radius: var(--radius-option); /** Radio item radius of the menubar. */
+  --menubar-sub-trigger-radius: var(--radius-option); /** Sub trigger radius of the menubar. */
+  --menubar-sub-content-radius: var(--radius-container); /** Sub content radius of the menubar. */
   --menubar-sub-content-shadow: var(--elevation-overlay); /** Sub content shadow of the menubar. */
   --message-scroller-radius: var(--radius-control); /** Radius of the message scroller. */
   --message-scroller-focus-ring-focus: var(--color-border-focus); /** Focus ring focus of the message scroller. */
@@ -930,7 +931,7 @@ html[data-scheme="multi-brand"] [data-brand="aster"] {
   --resizable-radius: var(--radius-badge); /** Radius of the resizable. */
   --scroll-area-viewport-focus-ring-focus: var(--color-border-focus); /** Viewport focus ring focus of the scroll area. */
   --select-trigger-font-family: var(--type-body-font-family); /** Trigger font family of the select. */
-  --select-item-radius: var(--radius-badge); /** Item radius of the select. */
+  --select-item-radius: var(--radius-option); /** Item radius of the select. */
   --sheet-overlay-background: var(--color-surface-scrim); /** Overlay background of the sheet. */
   --sheet-content-shadow: var(--elevation-overlay); /** Content shadow of the sheet. */
   --sheet-radius: var(--radius-badge); /** Radius of the sheet. */
@@ -1440,7 +1441,8 @@ html[data-scheme="multi-brand"][data-theme="dark"] [data-brand="aster"],
   --color-category-5: #5CC283; /** Category 5: tells one item or series from another. It carries no meaning. */
   --color-category-5-subtle: #012A14; /** Category 5: the fill of a tag. */
   --radius-control: 0.25rem; /** Corner of buttons and inputs. */
-  --radius-badge: 0.25rem; /** Corner of badges, checkboxes and menu items. */
+  --radius-badge: 0.25rem; /** Corner of badges and checkboxes. */
+  --radius-option: 0.25rem; /** Corner of options in menus and lists: the panel's corner less its padding, so the corners nest. */
   --radius-container: 0.5rem; /** Corner of cards, menus and dialogs. */
   --type-display-font-family: Inter, system-ui, sans-serif;
   --type-title-font-family: Inter, system-ui, sans-serif;
@@ -2157,9 +2159,9 @@ html[data-scheme="multi-brand"][data-theme="dark"] [data-brand="aster"],
   --calendar-background-selected: var(--color-action-primary); /** Background selected of the calendar. */
   --chart-radius: var(--radius-container); /** Radius of the chart. */
   --chart-shadow: var(--elevation-overlay); /** Shadow of the chart. */
-  --combobox-content-radius: var(--radius-control); /** Content radius of the combobox. */
+  --combobox-content-radius: var(--radius-container); /** Content radius of the combobox. */
   --combobox-content-shadow: var(--elevation-overlay); /** Content shadow of the combobox. */
-  --combobox-item-radius: var(--radius-badge); /** Item radius of the combobox. */
+  --combobox-item-radius: var(--radius-option); /** Item radius of the combobox. */
   --combobox-chips-radius: var(--radius-control); /** Chips radius of the combobox. */
   --combobox-chips-shadow: var(--elevation-card); /** Chips shadow of the combobox. */
   --combobox-chips-border-focus: var(--color-border-focus); /** Chips border focus of the combobox. */
@@ -2169,24 +2171,24 @@ html[data-scheme="multi-brand"][data-theme="dark"] [data-brand="aster"],
   --combobox-chip-radius: var(--radius-badge); /** Chip radius of the combobox. */
   --command-radius: var(--radius-control); /** Radius of the command. */
   --command-input-radius: var(--radius-control); /** Input radius of the command. */
-  --command-item-radius: var(--radius-badge); /** Item radius of the command. */
-  --context-menu-sub-trigger-radius: var(--radius-badge); /** Sub trigger radius of the context menu. */
-  --context-menu-sub-content-radius: var(--radius-control); /** Sub content radius of the context menu. */
+  --command-item-radius: var(--radius-option); /** Item radius of the command. */
+  --context-menu-sub-trigger-radius: var(--radius-option); /** Sub trigger radius of the context menu. */
+  --context-menu-sub-content-radius: var(--radius-container); /** Sub content radius of the context menu. */
   --context-menu-sub-content-shadow: var(--elevation-overlay); /** Sub content shadow of the context menu. */
-  --context-menu-content-radius: var(--radius-control); /** Content radius of the context menu. */
+  --context-menu-content-radius: var(--radius-container); /** Content radius of the context menu. */
   --context-menu-content-shadow: var(--elevation-overlay); /** Content shadow of the context menu. */
-  --context-menu-item-radius: var(--radius-badge); /** Item radius of the context menu. */
+  --context-menu-item-radius: var(--radius-option); /** Item radius of the context menu. */
   --context-menu-item-label: var(--color-status-danger); /** Item label of the context menu. */
   --context-menu-item-background-focus-2: var(--color-status-danger); /** Item background focus 2 of the context menu. */
   --context-menu-item-label-focus-2: var(--color-status-danger); /** Item label focus 2 of the context menu. */
-  --context-menu-checkbox-item-radius: var(--radius-badge); /** Checkbox item radius of the context menu. */
-  --context-menu-radio-item-radius: var(--radius-badge); /** Radio item radius of the context menu. */
+  --context-menu-checkbox-item-radius: var(--radius-option); /** Checkbox item radius of the context menu. */
+  --context-menu-radio-item-radius: var(--radius-option); /** Radio item radius of the context menu. */
   --data-table-radius: var(--radius-badge); /** Radius of the data table. */
   --data-table-container-radius: var(--radius-container); /** Corner of the table frame, of the data table. */
   --dialog-radius: var(--radius-badge); /** Radius of the dialog. */
   --dialog-font-family: var(--type-heading-font-family); /** Font family of the dialog. */
   --drawer-overlay-background: var(--color-surface-scrim); /** Overlay background of the drawer. */
-  --dropdown-menu-item-radius: var(--radius-badge); /** Item radius of the dropdown menu. */
+  --dropdown-menu-item-radius: var(--radius-option); /** Item radius of the dropdown menu. */
   --dropdown-menu-item-label-destructive: var(--color-status-danger); /** Item label when destructive, of the dropdown menu. */
   --empty-radius: var(--radius-container); /** Radius of the empty. */
   --empty-icon-radius: var(--radius-container); /** Icon radius of the empty. */
@@ -2224,16 +2226,16 @@ html[data-scheme="multi-brand"][data-theme="dark"] [data-brand="aster"],
   --menubar-radius: var(--radius-control); /** Radius of the menubar. */
   --menubar-shadow: var(--elevation-card); /** Shadow of the menubar. */
   --menubar-trigger-radius: var(--radius-badge); /** Trigger radius of the menubar. */
-  --menubar-content-radius: var(--radius-control); /** Content radius of the menubar. */
+  --menubar-content-radius: var(--radius-container); /** Content radius of the menubar. */
   --menubar-content-shadow: var(--elevation-overlay); /** Content shadow of the menubar. */
-  --menubar-item-radius: var(--radius-badge); /** Item radius of the menubar. */
+  --menubar-item-radius: var(--radius-option); /** Item radius of the menubar. */
   --menubar-item-label: var(--color-status-danger); /** Item label of the menubar. */
   --menubar-item-background-focus-2: var(--color-status-danger); /** Item background focus 2 of the menubar. */
   --menubar-item-label-focus-2: var(--color-status-danger); /** Item label focus 2 of the menubar. */
-  --menubar-checkbox-item-radius: var(--radius-badge); /** Checkbox item radius of the menubar. */
-  --menubar-radio-item-radius: var(--radius-badge); /** Radio item radius of the menubar. */
-  --menubar-sub-trigger-radius: var(--radius-badge); /** Sub trigger radius of the menubar. */
-  --menubar-sub-content-radius: var(--radius-control); /** Sub content radius of the menubar. */
+  --menubar-checkbox-item-radius: var(--radius-option); /** Checkbox item radius of the menubar. */
+  --menubar-radio-item-radius: var(--radius-option); /** Radio item radius of the menubar. */
+  --menubar-sub-trigger-radius: var(--radius-option); /** Sub trigger radius of the menubar. */
+  --menubar-sub-content-radius: var(--radius-container); /** Sub content radius of the menubar. */
   --menubar-sub-content-shadow: var(--elevation-overlay); /** Sub content shadow of the menubar. */
   --message-scroller-radius: var(--radius-control); /** Radius of the message scroller. */
   --message-scroller-focus-ring-focus: var(--color-border-focus); /** Focus ring focus of the message scroller. */
@@ -2269,7 +2271,7 @@ html[data-scheme="multi-brand"][data-theme="dark"] [data-brand="aster"],
   --resizable-radius: var(--radius-badge); /** Radius of the resizable. */
   --scroll-area-viewport-focus-ring-focus: var(--color-border-focus); /** Viewport focus ring focus of the scroll area. */
   --select-trigger-font-family: var(--type-body-font-family); /** Trigger font family of the select. */
-  --select-item-radius: var(--radius-badge); /** Item radius of the select. */
+  --select-item-radius: var(--radius-option); /** Item radius of the select. */
   --sheet-overlay-background: var(--color-surface-scrim); /** Overlay background of the sheet. */
   --sheet-content-shadow: var(--elevation-overlay); /** Content shadow of the sheet. */
   --sheet-radius: var(--radius-badge); /** Radius of the sheet. */
@@ -2777,7 +2779,8 @@ html[data-scheme="multi-brand"] [data-brand="birch"] {
   --color-category-5: #1F7A3A; /** Category 5: tells one item or series from another. It carries no meaning. */
   --color-category-5-subtle: #DBF7DF; /** Category 5: the fill of a tag. */
   --radius-control: 0.75rem; /** Corner of buttons and inputs. */
-  --radius-badge: 9999px; /** Corner of badges, checkboxes and menu items. */
+  --radius-badge: 9999px; /** Corner of badges and checkboxes. */
+  --radius-option: 0.75rem; /** Corner of options in menus and lists: the panel's corner less its padding, so the corners nest. */
   --radius-container: 1rem; /** Corner of cards, menus and dialogs. */
   --type-display-font-family: "Plus Jakarta Sans", system-ui, sans-serif;
   --type-title-font-family: "Plus Jakarta Sans", system-ui, sans-serif;
@@ -3494,9 +3497,9 @@ html[data-scheme="multi-brand"] [data-brand="birch"] {
   --calendar-background-selected: var(--color-action-primary); /** Background selected of the calendar. */
   --chart-radius: var(--radius-container); /** Radius of the chart. */
   --chart-shadow: var(--elevation-overlay); /** Shadow of the chart. */
-  --combobox-content-radius: var(--radius-control); /** Content radius of the combobox. */
+  --combobox-content-radius: var(--radius-container); /** Content radius of the combobox. */
   --combobox-content-shadow: var(--elevation-overlay); /** Content shadow of the combobox. */
-  --combobox-item-radius: var(--radius-badge); /** Item radius of the combobox. */
+  --combobox-item-radius: var(--radius-option); /** Item radius of the combobox. */
   --combobox-chips-radius: var(--radius-control); /** Chips radius of the combobox. */
   --combobox-chips-shadow: var(--elevation-card); /** Chips shadow of the combobox. */
   --combobox-chips-border-focus: var(--color-border-focus); /** Chips border focus of the combobox. */
@@ -3506,24 +3509,24 @@ html[data-scheme="multi-brand"] [data-brand="birch"] {
   --combobox-chip-radius: var(--radius-badge); /** Chip radius of the combobox. */
   --command-radius: var(--radius-control); /** Radius of the command. */
   --command-input-radius: var(--radius-control); /** Input radius of the command. */
-  --command-item-radius: var(--radius-badge); /** Item radius of the command. */
-  --context-menu-sub-trigger-radius: var(--radius-badge); /** Sub trigger radius of the context menu. */
-  --context-menu-sub-content-radius: var(--radius-control); /** Sub content radius of the context menu. */
+  --command-item-radius: var(--radius-option); /** Item radius of the command. */
+  --context-menu-sub-trigger-radius: var(--radius-option); /** Sub trigger radius of the context menu. */
+  --context-menu-sub-content-radius: var(--radius-container); /** Sub content radius of the context menu. */
   --context-menu-sub-content-shadow: var(--elevation-overlay); /** Sub content shadow of the context menu. */
-  --context-menu-content-radius: var(--radius-control); /** Content radius of the context menu. */
+  --context-menu-content-radius: var(--radius-container); /** Content radius of the context menu. */
   --context-menu-content-shadow: var(--elevation-overlay); /** Content shadow of the context menu. */
-  --context-menu-item-radius: var(--radius-badge); /** Item radius of the context menu. */
+  --context-menu-item-radius: var(--radius-option); /** Item radius of the context menu. */
   --context-menu-item-label: var(--color-status-danger); /** Item label of the context menu. */
   --context-menu-item-background-focus-2: var(--color-status-danger); /** Item background focus 2 of the context menu. */
   --context-menu-item-label-focus-2: var(--color-status-danger); /** Item label focus 2 of the context menu. */
-  --context-menu-checkbox-item-radius: var(--radius-badge); /** Checkbox item radius of the context menu. */
-  --context-menu-radio-item-radius: var(--radius-badge); /** Radio item radius of the context menu. */
+  --context-menu-checkbox-item-radius: var(--radius-option); /** Checkbox item radius of the context menu. */
+  --context-menu-radio-item-radius: var(--radius-option); /** Radio item radius of the context menu. */
   --data-table-radius: var(--radius-badge); /** Radius of the data table. */
   --data-table-container-radius: var(--radius-container); /** Corner of the table frame, of the data table. */
   --dialog-radius: var(--radius-badge); /** Radius of the dialog. */
   --dialog-font-family: var(--type-heading-font-family); /** Font family of the dialog. */
   --drawer-overlay-background: var(--color-surface-scrim); /** Overlay background of the drawer. */
-  --dropdown-menu-item-radius: var(--radius-badge); /** Item radius of the dropdown menu. */
+  --dropdown-menu-item-radius: var(--radius-option); /** Item radius of the dropdown menu. */
   --dropdown-menu-item-label-destructive: var(--color-status-danger); /** Item label when destructive, of the dropdown menu. */
   --empty-radius: var(--radius-container); /** Radius of the empty. */
   --empty-icon-radius: var(--radius-container); /** Icon radius of the empty. */
@@ -3561,16 +3564,16 @@ html[data-scheme="multi-brand"] [data-brand="birch"] {
   --menubar-radius: var(--radius-control); /** Radius of the menubar. */
   --menubar-shadow: var(--elevation-card); /** Shadow of the menubar. */
   --menubar-trigger-radius: var(--radius-badge); /** Trigger radius of the menubar. */
-  --menubar-content-radius: var(--radius-control); /** Content radius of the menubar. */
+  --menubar-content-radius: var(--radius-container); /** Content radius of the menubar. */
   --menubar-content-shadow: var(--elevation-overlay); /** Content shadow of the menubar. */
-  --menubar-item-radius: var(--radius-badge); /** Item radius of the menubar. */
+  --menubar-item-radius: var(--radius-option); /** Item radius of the menubar. */
   --menubar-item-label: var(--color-status-danger); /** Item label of the menubar. */
   --menubar-item-background-focus-2: var(--color-status-danger); /** Item background focus 2 of the menubar. */
   --menubar-item-label-focus-2: var(--color-status-danger); /** Item label focus 2 of the menubar. */
-  --menubar-checkbox-item-radius: var(--radius-badge); /** Checkbox item radius of the menubar. */
-  --menubar-radio-item-radius: var(--radius-badge); /** Radio item radius of the menubar. */
-  --menubar-sub-trigger-radius: var(--radius-badge); /** Sub trigger radius of the menubar. */
-  --menubar-sub-content-radius: var(--radius-control); /** Sub content radius of the menubar. */
+  --menubar-checkbox-item-radius: var(--radius-option); /** Checkbox item radius of the menubar. */
+  --menubar-radio-item-radius: var(--radius-option); /** Radio item radius of the menubar. */
+  --menubar-sub-trigger-radius: var(--radius-option); /** Sub trigger radius of the menubar. */
+  --menubar-sub-content-radius: var(--radius-container); /** Sub content radius of the menubar. */
   --menubar-sub-content-shadow: var(--elevation-overlay); /** Sub content shadow of the menubar. */
   --message-scroller-radius: var(--radius-control); /** Radius of the message scroller. */
   --message-scroller-focus-ring-focus: var(--color-border-focus); /** Focus ring focus of the message scroller. */
@@ -3606,7 +3609,7 @@ html[data-scheme="multi-brand"] [data-brand="birch"] {
   --resizable-radius: var(--radius-badge); /** Radius of the resizable. */
   --scroll-area-viewport-focus-ring-focus: var(--color-border-focus); /** Viewport focus ring focus of the scroll area. */
   --select-trigger-font-family: var(--type-body-font-family); /** Trigger font family of the select. */
-  --select-item-radius: var(--radius-badge); /** Item radius of the select. */
+  --select-item-radius: var(--radius-option); /** Item radius of the select. */
   --sheet-overlay-background: var(--color-surface-scrim); /** Overlay background of the sheet. */
   --sheet-content-shadow: var(--elevation-overlay); /** Content shadow of the sheet. */
   --sheet-radius: var(--radius-badge); /** Radius of the sheet. */
@@ -4115,7 +4118,8 @@ html[data-scheme="multi-brand"][data-theme="dark"] [data-brand="birch"],
   --color-category-5: #5CC283; /** Category 5: tells one item or series from another. It carries no meaning. */
   --color-category-5-subtle: #012A14; /** Category 5: the fill of a tag. */
   --radius-control: 0.75rem; /** Corner of buttons and inputs. */
-  --radius-badge: 9999px; /** Corner of badges, checkboxes and menu items. */
+  --radius-badge: 9999px; /** Corner of badges and checkboxes. */
+  --radius-option: 0.75rem; /** Corner of options in menus and lists: the panel's corner less its padding, so the corners nest. */
   --radius-container: 1rem; /** Corner of cards, menus and dialogs. */
   --type-display-font-family: "Plus Jakarta Sans", system-ui, sans-serif;
   --type-title-font-family: "Plus Jakarta Sans", system-ui, sans-serif;
@@ -4832,9 +4836,9 @@ html[data-scheme="multi-brand"][data-theme="dark"] [data-brand="birch"],
   --calendar-background-selected: var(--color-action-primary); /** Background selected of the calendar. */
   --chart-radius: var(--radius-container); /** Radius of the chart. */
   --chart-shadow: var(--elevation-overlay); /** Shadow of the chart. */
-  --combobox-content-radius: var(--radius-control); /** Content radius of the combobox. */
+  --combobox-content-radius: var(--radius-container); /** Content radius of the combobox. */
   --combobox-content-shadow: var(--elevation-overlay); /** Content shadow of the combobox. */
-  --combobox-item-radius: var(--radius-badge); /** Item radius of the combobox. */
+  --combobox-item-radius: var(--radius-option); /** Item radius of the combobox. */
   --combobox-chips-radius: var(--radius-control); /** Chips radius of the combobox. */
   --combobox-chips-shadow: var(--elevation-card); /** Chips shadow of the combobox. */
   --combobox-chips-border-focus: var(--color-border-focus); /** Chips border focus of the combobox. */
@@ -4844,24 +4848,24 @@ html[data-scheme="multi-brand"][data-theme="dark"] [data-brand="birch"],
   --combobox-chip-radius: var(--radius-badge); /** Chip radius of the combobox. */
   --command-radius: var(--radius-control); /** Radius of the command. */
   --command-input-radius: var(--radius-control); /** Input radius of the command. */
-  --command-item-radius: var(--radius-badge); /** Item radius of the command. */
-  --context-menu-sub-trigger-radius: var(--radius-badge); /** Sub trigger radius of the context menu. */
-  --context-menu-sub-content-radius: var(--radius-control); /** Sub content radius of the context menu. */
+  --command-item-radius: var(--radius-option); /** Item radius of the command. */
+  --context-menu-sub-trigger-radius: var(--radius-option); /** Sub trigger radius of the context menu. */
+  --context-menu-sub-content-radius: var(--radius-container); /** Sub content radius of the context menu. */
   --context-menu-sub-content-shadow: var(--elevation-overlay); /** Sub content shadow of the context menu. */
-  --context-menu-content-radius: var(--radius-control); /** Content radius of the context menu. */
+  --context-menu-content-radius: var(--radius-container); /** Content radius of the context menu. */
   --context-menu-content-shadow: var(--elevation-overlay); /** Content shadow of the context menu. */
-  --context-menu-item-radius: var(--radius-badge); /** Item radius of the context menu. */
+  --context-menu-item-radius: var(--radius-option); /** Item radius of the context menu. */
   --context-menu-item-label: var(--color-status-danger); /** Item label of the context menu. */
   --context-menu-item-background-focus-2: var(--color-status-danger); /** Item background focus 2 of the context menu. */
   --context-menu-item-label-focus-2: var(--color-status-danger); /** Item label focus 2 of the context menu. */
-  --context-menu-checkbox-item-radius: var(--radius-badge); /** Checkbox item radius of the context menu. */
-  --context-menu-radio-item-radius: var(--radius-badge); /** Radio item radius of the context menu. */
+  --context-menu-checkbox-item-radius: var(--radius-option); /** Checkbox item radius of the context menu. */
+  --context-menu-radio-item-radius: var(--radius-option); /** Radio item radius of the context menu. */
   --data-table-radius: var(--radius-badge); /** Radius of the data table. */
   --data-table-container-radius: var(--radius-container); /** Corner of the table frame, of the data table. */
   --dialog-radius: var(--radius-badge); /** Radius of the dialog. */
   --dialog-font-family: var(--type-heading-font-family); /** Font family of the dialog. */
   --drawer-overlay-background: var(--color-surface-scrim); /** Overlay background of the drawer. */
-  --dropdown-menu-item-radius: var(--radius-badge); /** Item radius of the dropdown menu. */
+  --dropdown-menu-item-radius: var(--radius-option); /** Item radius of the dropdown menu. */
   --dropdown-menu-item-label-destructive: var(--color-status-danger); /** Item label when destructive, of the dropdown menu. */
   --empty-radius: var(--radius-container); /** Radius of the empty. */
   --empty-icon-radius: var(--radius-container); /** Icon radius of the empty. */
@@ -4899,16 +4903,16 @@ html[data-scheme="multi-brand"][data-theme="dark"] [data-brand="birch"],
   --menubar-radius: var(--radius-control); /** Radius of the menubar. */
   --menubar-shadow: var(--elevation-card); /** Shadow of the menubar. */
   --menubar-trigger-radius: var(--radius-badge); /** Trigger radius of the menubar. */
-  --menubar-content-radius: var(--radius-control); /** Content radius of the menubar. */
+  --menubar-content-radius: var(--radius-container); /** Content radius of the menubar. */
   --menubar-content-shadow: var(--elevation-overlay); /** Content shadow of the menubar. */
-  --menubar-item-radius: var(--radius-badge); /** Item radius of the menubar. */
+  --menubar-item-radius: var(--radius-option); /** Item radius of the menubar. */
   --menubar-item-label: var(--color-status-danger); /** Item label of the menubar. */
   --menubar-item-background-focus-2: var(--color-status-danger); /** Item background focus 2 of the menubar. */
   --menubar-item-label-focus-2: var(--color-status-danger); /** Item label focus 2 of the menubar. */
-  --menubar-checkbox-item-radius: var(--radius-badge); /** Checkbox item radius of the menubar. */
-  --menubar-radio-item-radius: var(--radius-badge); /** Radio item radius of the menubar. */
-  --menubar-sub-trigger-radius: var(--radius-badge); /** Sub trigger radius of the menubar. */
-  --menubar-sub-content-radius: var(--radius-control); /** Sub content radius of the menubar. */
+  --menubar-checkbox-item-radius: var(--radius-option); /** Checkbox item radius of the menubar. */
+  --menubar-radio-item-radius: var(--radius-option); /** Radio item radius of the menubar. */
+  --menubar-sub-trigger-radius: var(--radius-option); /** Sub trigger radius of the menubar. */
+  --menubar-sub-content-radius: var(--radius-container); /** Sub content radius of the menubar. */
   --menubar-sub-content-shadow: var(--elevation-overlay); /** Sub content shadow of the menubar. */
   --message-scroller-radius: var(--radius-control); /** Radius of the message scroller. */
   --message-scroller-focus-ring-focus: var(--color-border-focus); /** Focus ring focus of the message scroller. */
@@ -4944,7 +4948,7 @@ html[data-scheme="multi-brand"][data-theme="dark"] [data-brand="birch"],
   --resizable-radius: var(--radius-badge); /** Radius of the resizable. */
   --scroll-area-viewport-focus-ring-focus: var(--color-border-focus); /** Viewport focus ring focus of the scroll area. */
   --select-trigger-font-family: var(--type-body-font-family); /** Trigger font family of the select. */
-  --select-item-radius: var(--radius-badge); /** Item radius of the select. */
+  --select-item-radius: var(--radius-option); /** Item radius of the select. */
   --sheet-overlay-background: var(--color-surface-scrim); /** Overlay background of the sheet. */
   --sheet-content-shadow: var(--elevation-overlay); /** Content shadow of the sheet. */
   --sheet-radius: var(--radius-badge); /** Radius of the sheet. */
@@ -5452,7 +5456,8 @@ html[data-scheme="multi-brand"] [data-brand="coral"] {
   --color-category-5: #1F7A3A; /** Category 5: tells one item or series from another. It carries no meaning. */
   --color-category-5-subtle: #DBF7DF; /** Category 5: the fill of a tag. */
   --radius-control: 9999px; /** Corner of buttons and inputs. */
-  --radius-badge: 9999px; /** Corner of badges, checkboxes and menu items. */
+  --radius-badge: 9999px; /** Corner of badges and checkboxes. */
+  --radius-option: 1rem; /** Corner of options in menus and lists: the panel's corner less its padding, so the corners nest. */
   --radius-container: 1.25rem; /** Corner of cards, menus and dialogs. */
   --type-display-font-family: Poppins, system-ui, sans-serif;
   --type-title-font-family: Poppins, system-ui, sans-serif;
@@ -6169,9 +6174,9 @@ html[data-scheme="multi-brand"] [data-brand="coral"] {
   --calendar-background-selected: var(--color-action-primary); /** Background selected of the calendar. */
   --chart-radius: var(--radius-container); /** Radius of the chart. */
   --chart-shadow: var(--elevation-overlay); /** Shadow of the chart. */
-  --combobox-content-radius: var(--radius-control); /** Content radius of the combobox. */
+  --combobox-content-radius: var(--radius-container); /** Content radius of the combobox. */
   --combobox-content-shadow: var(--elevation-overlay); /** Content shadow of the combobox. */
-  --combobox-item-radius: var(--radius-badge); /** Item radius of the combobox. */
+  --combobox-item-radius: var(--radius-option); /** Item radius of the combobox. */
   --combobox-chips-radius: var(--radius-control); /** Chips radius of the combobox. */
   --combobox-chips-shadow: var(--elevation-card); /** Chips shadow of the combobox. */
   --combobox-chips-border-focus: var(--color-border-focus); /** Chips border focus of the combobox. */
@@ -6181,24 +6186,24 @@ html[data-scheme="multi-brand"] [data-brand="coral"] {
   --combobox-chip-radius: var(--radius-badge); /** Chip radius of the combobox. */
   --command-radius: var(--radius-control); /** Radius of the command. */
   --command-input-radius: var(--radius-control); /** Input radius of the command. */
-  --command-item-radius: var(--radius-badge); /** Item radius of the command. */
-  --context-menu-sub-trigger-radius: var(--radius-badge); /** Sub trigger radius of the context menu. */
-  --context-menu-sub-content-radius: var(--radius-control); /** Sub content radius of the context menu. */
+  --command-item-radius: var(--radius-option); /** Item radius of the command. */
+  --context-menu-sub-trigger-radius: var(--radius-option); /** Sub trigger radius of the context menu. */
+  --context-menu-sub-content-radius: var(--radius-container); /** Sub content radius of the context menu. */
   --context-menu-sub-content-shadow: var(--elevation-overlay); /** Sub content shadow of the context menu. */
-  --context-menu-content-radius: var(--radius-control); /** Content radius of the context menu. */
+  --context-menu-content-radius: var(--radius-container); /** Content radius of the context menu. */
   --context-menu-content-shadow: var(--elevation-overlay); /** Content shadow of the context menu. */
-  --context-menu-item-radius: var(--radius-badge); /** Item radius of the context menu. */
+  --context-menu-item-radius: var(--radius-option); /** Item radius of the context menu. */
   --context-menu-item-label: var(--color-status-danger); /** Item label of the context menu. */
   --context-menu-item-background-focus-2: var(--color-status-danger); /** Item background focus 2 of the context menu. */
   --context-menu-item-label-focus-2: var(--color-status-danger); /** Item label focus 2 of the context menu. */
-  --context-menu-checkbox-item-radius: var(--radius-badge); /** Checkbox item radius of the context menu. */
-  --context-menu-radio-item-radius: var(--radius-badge); /** Radio item radius of the context menu. */
+  --context-menu-checkbox-item-radius: var(--radius-option); /** Checkbox item radius of the context menu. */
+  --context-menu-radio-item-radius: var(--radius-option); /** Radio item radius of the context menu. */
   --data-table-radius: var(--radius-badge); /** Radius of the data table. */
   --data-table-container-radius: var(--radius-container); /** Corner of the table frame, of the data table. */
   --dialog-radius: var(--radius-badge); /** Radius of the dialog. */
   --dialog-font-family: var(--type-heading-font-family); /** Font family of the dialog. */
   --drawer-overlay-background: var(--color-surface-scrim); /** Overlay background of the drawer. */
-  --dropdown-menu-item-radius: var(--radius-badge); /** Item radius of the dropdown menu. */
+  --dropdown-menu-item-radius: var(--radius-option); /** Item radius of the dropdown menu. */
   --dropdown-menu-item-label-destructive: var(--color-status-danger); /** Item label when destructive, of the dropdown menu. */
   --empty-radius: var(--radius-container); /** Radius of the empty. */
   --empty-icon-radius: var(--radius-container); /** Icon radius of the empty. */
@@ -6236,16 +6241,16 @@ html[data-scheme="multi-brand"] [data-brand="coral"] {
   --menubar-radius: var(--radius-control); /** Radius of the menubar. */
   --menubar-shadow: var(--elevation-card); /** Shadow of the menubar. */
   --menubar-trigger-radius: var(--radius-badge); /** Trigger radius of the menubar. */
-  --menubar-content-radius: var(--radius-control); /** Content radius of the menubar. */
+  --menubar-content-radius: var(--radius-container); /** Content radius of the menubar. */
   --menubar-content-shadow: var(--elevation-overlay); /** Content shadow of the menubar. */
-  --menubar-item-radius: var(--radius-badge); /** Item radius of the menubar. */
+  --menubar-item-radius: var(--radius-option); /** Item radius of the menubar. */
   --menubar-item-label: var(--color-status-danger); /** Item label of the menubar. */
   --menubar-item-background-focus-2: var(--color-status-danger); /** Item background focus 2 of the menubar. */
   --menubar-item-label-focus-2: var(--color-status-danger); /** Item label focus 2 of the menubar. */
-  --menubar-checkbox-item-radius: var(--radius-badge); /** Checkbox item radius of the menubar. */
-  --menubar-radio-item-radius: var(--radius-badge); /** Radio item radius of the menubar. */
-  --menubar-sub-trigger-radius: var(--radius-badge); /** Sub trigger radius of the menubar. */
-  --menubar-sub-content-radius: var(--radius-control); /** Sub content radius of the menubar. */
+  --menubar-checkbox-item-radius: var(--radius-option); /** Checkbox item radius of the menubar. */
+  --menubar-radio-item-radius: var(--radius-option); /** Radio item radius of the menubar. */
+  --menubar-sub-trigger-radius: var(--radius-option); /** Sub trigger radius of the menubar. */
+  --menubar-sub-content-radius: var(--radius-container); /** Sub content radius of the menubar. */
   --menubar-sub-content-shadow: var(--elevation-overlay); /** Sub content shadow of the menubar. */
   --message-scroller-radius: var(--radius-control); /** Radius of the message scroller. */
   --message-scroller-focus-ring-focus: var(--color-border-focus); /** Focus ring focus of the message scroller. */
@@ -6281,7 +6286,7 @@ html[data-scheme="multi-brand"] [data-brand="coral"] {
   --resizable-radius: var(--radius-badge); /** Radius of the resizable. */
   --scroll-area-viewport-focus-ring-focus: var(--color-border-focus); /** Viewport focus ring focus of the scroll area. */
   --select-trigger-font-family: var(--type-body-font-family); /** Trigger font family of the select. */
-  --select-item-radius: var(--radius-badge); /** Item radius of the select. */
+  --select-item-radius: var(--radius-option); /** Item radius of the select. */
   --sheet-overlay-background: var(--color-surface-scrim); /** Overlay background of the sheet. */
   --sheet-content-shadow: var(--elevation-overlay); /** Content shadow of the sheet. */
   --sheet-radius: var(--radius-badge); /** Radius of the sheet. */
@@ -6790,7 +6795,8 @@ html[data-scheme="multi-brand"][data-theme="dark"] [data-brand="coral"],
   --color-category-5: #5CC283; /** Category 5: tells one item or series from another. It carries no meaning. */
   --color-category-5-subtle: #012A14; /** Category 5: the fill of a tag. */
   --radius-control: 9999px; /** Corner of buttons and inputs. */
-  --radius-badge: 9999px; /** Corner of badges, checkboxes and menu items. */
+  --radius-badge: 9999px; /** Corner of badges and checkboxes. */
+  --radius-option: 1rem; /** Corner of options in menus and lists: the panel's corner less its padding, so the corners nest. */
   --radius-container: 1.25rem; /** Corner of cards, menus and dialogs. */
   --type-display-font-family: Poppins, system-ui, sans-serif;
   --type-title-font-family: Poppins, system-ui, sans-serif;
@@ -7507,9 +7513,9 @@ html[data-scheme="multi-brand"][data-theme="dark"] [data-brand="coral"],
   --calendar-background-selected: var(--color-action-primary); /** Background selected of the calendar. */
   --chart-radius: var(--radius-container); /** Radius of the chart. */
   --chart-shadow: var(--elevation-overlay); /** Shadow of the chart. */
-  --combobox-content-radius: var(--radius-control); /** Content radius of the combobox. */
+  --combobox-content-radius: var(--radius-container); /** Content radius of the combobox. */
   --combobox-content-shadow: var(--elevation-overlay); /** Content shadow of the combobox. */
-  --combobox-item-radius: var(--radius-badge); /** Item radius of the combobox. */
+  --combobox-item-radius: var(--radius-option); /** Item radius of the combobox. */
   --combobox-chips-radius: var(--radius-control); /** Chips radius of the combobox. */
   --combobox-chips-shadow: var(--elevation-card); /** Chips shadow of the combobox. */
   --combobox-chips-border-focus: var(--color-border-focus); /** Chips border focus of the combobox. */
@@ -7519,24 +7525,24 @@ html[data-scheme="multi-brand"][data-theme="dark"] [data-brand="coral"],
   --combobox-chip-radius: var(--radius-badge); /** Chip radius of the combobox. */
   --command-radius: var(--radius-control); /** Radius of the command. */
   --command-input-radius: var(--radius-control); /** Input radius of the command. */
-  --command-item-radius: var(--radius-badge); /** Item radius of the command. */
-  --context-menu-sub-trigger-radius: var(--radius-badge); /** Sub trigger radius of the context menu. */
-  --context-menu-sub-content-radius: var(--radius-control); /** Sub content radius of the context menu. */
+  --command-item-radius: var(--radius-option); /** Item radius of the command. */
+  --context-menu-sub-trigger-radius: var(--radius-option); /** Sub trigger radius of the context menu. */
+  --context-menu-sub-content-radius: var(--radius-container); /** Sub content radius of the context menu. */
   --context-menu-sub-content-shadow: var(--elevation-overlay); /** Sub content shadow of the context menu. */
-  --context-menu-content-radius: var(--radius-control); /** Content radius of the context menu. */
+  --context-menu-content-radius: var(--radius-container); /** Content radius of the context menu. */
   --context-menu-content-shadow: var(--elevation-overlay); /** Content shadow of the context menu. */
-  --context-menu-item-radius: var(--radius-badge); /** Item radius of the context menu. */
+  --context-menu-item-radius: var(--radius-option); /** Item radius of the context menu. */
   --context-menu-item-label: var(--color-status-danger); /** Item label of the context menu. */
   --context-menu-item-background-focus-2: var(--color-status-danger); /** Item background focus 2 of the context menu. */
   --context-menu-item-label-focus-2: var(--color-status-danger); /** Item label focus 2 of the context menu. */
-  --context-menu-checkbox-item-radius: var(--radius-badge); /** Checkbox item radius of the context menu. */
-  --context-menu-radio-item-radius: var(--radius-badge); /** Radio item radius of the context menu. */
+  --context-menu-checkbox-item-radius: var(--radius-option); /** Checkbox item radius of the context menu. */
+  --context-menu-radio-item-radius: var(--radius-option); /** Radio item radius of the context menu. */
   --data-table-radius: var(--radius-badge); /** Radius of the data table. */
   --data-table-container-radius: var(--radius-container); /** Corner of the table frame, of the data table. */
   --dialog-radius: var(--radius-badge); /** Radius of the dialog. */
   --dialog-font-family: var(--type-heading-font-family); /** Font family of the dialog. */
   --drawer-overlay-background: var(--color-surface-scrim); /** Overlay background of the drawer. */
-  --dropdown-menu-item-radius: var(--radius-badge); /** Item radius of the dropdown menu. */
+  --dropdown-menu-item-radius: var(--radius-option); /** Item radius of the dropdown menu. */
   --dropdown-menu-item-label-destructive: var(--color-status-danger); /** Item label when destructive, of the dropdown menu. */
   --empty-radius: var(--radius-container); /** Radius of the empty. */
   --empty-icon-radius: var(--radius-container); /** Icon radius of the empty. */
@@ -7574,16 +7580,16 @@ html[data-scheme="multi-brand"][data-theme="dark"] [data-brand="coral"],
   --menubar-radius: var(--radius-control); /** Radius of the menubar. */
   --menubar-shadow: var(--elevation-card); /** Shadow of the menubar. */
   --menubar-trigger-radius: var(--radius-badge); /** Trigger radius of the menubar. */
-  --menubar-content-radius: var(--radius-control); /** Content radius of the menubar. */
+  --menubar-content-radius: var(--radius-container); /** Content radius of the menubar. */
   --menubar-content-shadow: var(--elevation-overlay); /** Content shadow of the menubar. */
-  --menubar-item-radius: var(--radius-badge); /** Item radius of the menubar. */
+  --menubar-item-radius: var(--radius-option); /** Item radius of the menubar. */
   --menubar-item-label: var(--color-status-danger); /** Item label of the menubar. */
   --menubar-item-background-focus-2: var(--color-status-danger); /** Item background focus 2 of the menubar. */
   --menubar-item-label-focus-2: var(--color-status-danger); /** Item label focus 2 of the menubar. */
-  --menubar-checkbox-item-radius: var(--radius-badge); /** Checkbox item radius of the menubar. */
-  --menubar-radio-item-radius: var(--radius-badge); /** Radio item radius of the menubar. */
-  --menubar-sub-trigger-radius: var(--radius-badge); /** Sub trigger radius of the menubar. */
-  --menubar-sub-content-radius: var(--radius-control); /** Sub content radius of the menubar. */
+  --menubar-checkbox-item-radius: var(--radius-option); /** Checkbox item radius of the menubar. */
+  --menubar-radio-item-radius: var(--radius-option); /** Radio item radius of the menubar. */
+  --menubar-sub-trigger-radius: var(--radius-option); /** Sub trigger radius of the menubar. */
+  --menubar-sub-content-radius: var(--radius-container); /** Sub content radius of the menubar. */
   --menubar-sub-content-shadow: var(--elevation-overlay); /** Sub content shadow of the menubar. */
   --message-scroller-radius: var(--radius-control); /** Radius of the message scroller. */
   --message-scroller-focus-ring-focus: var(--color-border-focus); /** Focus ring focus of the message scroller. */
@@ -7619,7 +7625,7 @@ html[data-scheme="multi-brand"][data-theme="dark"] [data-brand="coral"],
   --resizable-radius: var(--radius-badge); /** Radius of the resizable. */
   --scroll-area-viewport-focus-ring-focus: var(--color-border-focus); /** Viewport focus ring focus of the scroll area. */
   --select-trigger-font-family: var(--type-body-font-family); /** Trigger font family of the select. */
-  --select-item-radius: var(--radius-badge); /** Item radius of the select. */
+  --select-item-radius: var(--radius-option); /** Item radius of the select. */
   --sheet-overlay-background: var(--color-surface-scrim); /** Overlay background of the sheet. */
   --sheet-content-shadow: var(--elevation-overlay); /** Content shadow of the sheet. */
   --sheet-radius: var(--radius-badge); /** Radius of the sheet. */

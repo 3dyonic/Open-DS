@@ -13,6 +13,7 @@ Corners and borders.
 <div class="ods-specimen">
 <span class="ods-item"><span class="ods-tile" style="border-radius:var(--radius-control)"></span><span class="ods-label">radius.control</span></span>
 <span class="ods-item"><span class="ods-tile" style="border-radius:var(--radius-badge)"></span><span class="ods-label">radius.badge</span></span>
+<span class="ods-item"><span class="ods-tile" style="border-radius:var(--radius-option)"></span><span class="ods-label">radius.option</span></span>
 <span class="ods-item"><span class="ods-tile" style="border-radius:var(--radius-container)"></span><span class="ods-label">radius.container</span></span>
 <span class="ods-item"><span class="ods-tile" style="border-radius:var(--radius-round)"></span><span class="ods-label">radius.round</span></span>
 <span class="ods-item"><span class="ods-line" style="height:var(--border-width-default)"></span><span class="ods-label">border-width.default</span></span>
@@ -37,6 +38,7 @@ Each token points to another token. Values live only on primitives, below.
 | --- | --- |
 | `radius.control` | `brand-expressive.theme.base.radius.control` → `radius.999` |
 | `radius.badge` | `brand-expressive.theme.base.radius.badge` → `radius.999` |
+| `radius.option` | `brand-expressive.theme.base.radius.option` → `radius.20` |
 | `radius.container` | `brand-expressive.theme.base.radius.container` → `radius.24` |
 | `radius.round` | `radius.full` |
 | `border-width.default` | `border-width.2` |

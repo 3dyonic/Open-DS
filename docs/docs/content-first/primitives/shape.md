@@ -14,7 +14,7 @@ description: "Shape primitives in Content first."
 
 | Primitive | Value | Sample | Used by |
 | --- | --- | --- | --- |
-| `radius.8` | 0.5rem (8px) | <span class="ods-tile" style="border-radius:0.5rem"></span> | `radius.control` (every mode) |
+| `radius.8` | 0.5rem (8px) | <span class="ods-tile" style="border-radius:0.5rem"></span> | `radius.control` (every mode)<br />`radius.option` (every mode) |
 | `radius.12` | 0.75rem (12px) | <span class="ods-tile" style="border-radius:0.75rem"></span> | `radius.container` (every mode) |
 | `radius.999` | 9999px | <span class="ods-tile" style="border-radius:9999px"></span> | `radius.badge` (every mode) |
 | `radius.full` | 9999px | <span class="ods-tile" style="border-radius:9999px"></span> | `radius.round` (semantic) |
