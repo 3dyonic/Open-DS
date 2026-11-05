@@ -27,6 +27,8 @@ Instead:
 
 - [Field](./field.md): How one control is laid out.
 
+<a class="odv-anatref" href="./form/anatomy"><span class="odv-anatref-b"><b>Anatomy reference</b><span>Every part of the form field, the job it does, and the decisions behind it. 4 parts.</span></span><span class="odv-anatref-go" aria-hidden="true">→</span></a>
+
 ## How Content first uses it
 
 <div class="odv-grid two"><div class="odv-dd"><div class="stage"><div class="odv-eyebrow">An error message</div><div style="margin-top:6px"><b style="color:var(--color-status-success)">Use</b> color.status.danger and a plain sentence</div><div><b style="color:var(--color-status-danger)">Not</b> Color alone</div></div><div class="cap">The sentence says what to fix; color only draws the eye.</div></div><div class="odv-dd"><div class="stage"><div class="odv-eyebrow">The words of an error</div><div style="margin-top:6px"><b style="color:var(--color-status-success)">Use</b> Calm and helpful. Take the blame, offer the way forward.</div><div><b style="color:var(--color-status-danger)">Not</b> Blaming the reader</div></div><div class="cap">A calm error keeps the reader's trust. Example: “We could not save your email. Check it and try again.”</div></div></div>

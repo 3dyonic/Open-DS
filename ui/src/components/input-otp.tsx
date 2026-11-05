@@ -2,9 +2,9 @@
  * Input otp. Separate boxes for a one-time code.
  *
  * From shadcn/ui (new-york-v4, MIT), carried by the schemes whose inventory names it.
- * Reads the shadcn variables, which theme.css maps onto the scheme's semantic tokens, and the
- * radius, shadow and text scale that shadcn.css maps onto the scheme's tokens. Dark mode comes
- * from the tokens, so no dark: classes.
+ * Reads only component keys: --input-otp-*. Each slot is a field like the input: a square at the
+ * field height, the surface fill, the disabled roles, no card shadow; the active slot keeps the
+ * focus ring's gap. Dark mode comes from the tokens, so no dark: classes.
  */
 "use client";
 
@@ -24,7 +24,7 @@ function InputOTP({
     <OTPInput
       data-slot="input-otp"
       containerClassName={cn(
-        "flex items-center gap-[var(--input-otp-gap)] has-disabled:opacity-[var(--input-otp-disabled-opacity)]",
+        "group/input-otp flex items-center gap-[var(--input-otp-gap)]",
         containerClassName,
       )}
       className={cn("disabled:cursor-not-allowed", className)}
@@ -52,7 +52,9 @@ function InputOTPSlot({
       data-slot="input-otp-slot"
       data-active={isActive}
       className={cn(
-        "relative flex h-9 w-9 items-center justify-center border-y border-r border-[color:var(--input-otp-slot-border)] text-[length:var(--input-otp-slot-font-size)]/[var(--input-otp-slot-line-height)] shadow-[var(--input-otp-slot-shadow)] transition-all outline-none first:rounded-l-md first:border-l last:rounded-r-md aria-invalid:border-[color:var(--input-otp-slot-border-invalid)] data-[active=true]:z-10 data-[active=true]:border-[color:var(--input-otp-slot-border-2)] data-[active=true]:ring-[3px] data-[active=true]:ring-[color:var(--input-otp-slot-focus-ring)]/50 data-[active=true]:aria-invalid:border-[color:var(--input-otp-slot-border-invalid)] data-[active=true]:aria-invalid:ring-[color:var(--input-otp-slot-focus-ring-invalid)]/20",
+        "relative flex size-[var(--input-otp-slot-size)] items-center justify-center border-y-[length:var(--input-otp-slot-border-width)] border-r-[length:var(--input-otp-slot-border-width)] border-[color:var(--input-otp-slot-border)] bg-[color:var(--input-otp-slot-background)] text-[length:var(--input-otp-slot-font-size)]/[var(--input-otp-slot-line-height)] transition-[color,box-shadow] duration-[var(--input-otp-slot-duration)] ease-[var(--input-otp-slot-easing)] outline-none first:rounded-l-[var(--input-otp-slot-radius)] first:border-l-[length:var(--input-otp-slot-border-width)] last:rounded-r-[var(--input-otp-slot-radius)] aria-invalid:border-[color:var(--input-otp-slot-border-invalid)]",
+        "data-[active=true]:z-10 data-[active=true]:border-[color:var(--input-otp-slot-border-highlight)] data-[active=true]:ring-[length:var(--input-otp-slot-focus-width)] data-[active=true]:ring-[color:var(--input-otp-slot-focus-ring-highlight)] data-[active=true]:ring-offset-[length:var(--input-otp-slot-focus-offset)] data-[active=true]:ring-offset-[color:var(--input-otp-slot-focus-ring-offset)] data-[active=true]:aria-invalid:border-[color:var(--input-otp-slot-border-invalid)] data-[active=true]:aria-invalid:ring-[color:var(--input-otp-slot-focus-ring-invalid)]",
+        "group-has-[input:disabled]/input-otp:bg-[color:var(--input-otp-slot-disabled-background)] group-has-[input:disabled]/input-otp:border-[color:var(--input-otp-slot-disabled-border)] group-has-[input:disabled]/input-otp:text-[color:var(--input-otp-slot-disabled-text)]",
         className,
       )}
       {...props}
@@ -60,7 +62,7 @@ function InputOTPSlot({
       {char}
       {hasFakeCaret && (
         <div className="pointer-events-none absolute inset-0 flex items-center justify-center">
-          <div className="h-[var(--input-otp-height)] w-px animate-caret-blink bg-[color:var(--input-otp-background)] duration-[var(--input-otp-duration)]" />
+          <div className="h-[var(--input-otp-caret-height)] w-[var(--input-otp-caret-width)] animate-caret-blink bg-[color:var(--input-otp-caret-background)] duration-[var(--input-otp-caret-duration)]" />
         </div>
       )}
     </div>
@@ -70,7 +72,7 @@ function InputOTPSlot({
 function InputOTPSeparator({ ...props }: React.ComponentProps<"div">) {
   return (
     <div data-slot="input-otp-separator" role="separator" {...props}>
-      <MinusIcon />
+      <MinusIcon className="size-[var(--input-otp-separator-icon-size)]" />
     </div>
   );
 }

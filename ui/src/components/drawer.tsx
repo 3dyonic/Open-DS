@@ -48,16 +48,19 @@ function DrawerContent({ className, children, ...props }: React.ComponentProps<t
       <DrawerPrimitive.Content
         data-slot="drawer-content"
         className={cn(
-          "group/drawer-content fixed z-50 flex h-auto flex-col bg-[color:var(--drawer-content-background)]",
-          "data-[vaul-drawer-direction=top]:inset-x-0 data-[vaul-drawer-direction=top]:top-0 data-[vaul-drawer-direction=top]:mb-24 data-[vaul-drawer-direction=top]:max-h-[80vh] data-[vaul-drawer-direction=top]:rounded-b-lg data-[vaul-drawer-direction=top]:border-b",
-          "data-[vaul-drawer-direction=bottom]:inset-x-0 data-[vaul-drawer-direction=bottom]:bottom-0 data-[vaul-drawer-direction=bottom]:mt-24 data-[vaul-drawer-direction=bottom]:max-h-[80vh] data-[vaul-drawer-direction=bottom]:rounded-t-lg data-[vaul-drawer-direction=bottom]:border-t",
-          "data-[vaul-drawer-direction=right]:inset-y-0 data-[vaul-drawer-direction=right]:right-0 data-[vaul-drawer-direction=right]:w-3/4 data-[vaul-drawer-direction=right]:border-l data-[vaul-drawer-direction=right]:sm:max-w-sm",
-          "data-[vaul-drawer-direction=left]:inset-y-0 data-[vaul-drawer-direction=left]:left-0 data-[vaul-drawer-direction=left]:w-3/4 data-[vaul-drawer-direction=left]:border-r data-[vaul-drawer-direction=left]:sm:max-w-sm",
+          "group/drawer-content fixed z-50 flex h-auto flex-col bg-[color:var(--drawer-content-background)] border-[color:var(--drawer-content-border)] shadow-[var(--drawer-content-shadow)]",
+          "data-[vaul-drawer-direction=top]:inset-x-0 data-[vaul-drawer-direction=top]:top-0 data-[vaul-drawer-direction=top]:max-h-[80vh] data-[vaul-drawer-direction=top]:rounded-b-[var(--drawer-content-radius)] data-[vaul-drawer-direction=top]:border-b-[length:var(--drawer-content-border-width)]",
+          "data-[vaul-drawer-direction=bottom]:inset-x-0 data-[vaul-drawer-direction=bottom]:bottom-0 data-[vaul-drawer-direction=bottom]:max-h-[80vh] data-[vaul-drawer-direction=bottom]:rounded-t-[var(--drawer-content-radius)] data-[vaul-drawer-direction=bottom]:border-t-[length:var(--drawer-content-border-width)]",
+          "data-[vaul-drawer-direction=right]:inset-y-0 data-[vaul-drawer-direction=right]:right-0 data-[vaul-drawer-direction=right]:w-3/4 data-[vaul-drawer-direction=right]:border-l-[length:var(--drawer-content-border-width)] data-[vaul-drawer-direction=right]:sm:max-w-sm",
+          "data-[vaul-drawer-direction=left]:inset-y-0 data-[vaul-drawer-direction=left]:left-0 data-[vaul-drawer-direction=left]:w-3/4 data-[vaul-drawer-direction=left]:border-r-[length:var(--drawer-content-border-width)] data-[vaul-drawer-direction=left]:sm:max-w-sm",
           className,
         )}
         {...props}
       >
-        <div className="mx-auto mt-4 hidden h-2 w-[100px] shrink-0 rounded-[var(--drawer-radius)] bg-[color:var(--drawer-background)] group-data-[vaul-drawer-direction=bottom]/drawer-content:block" />
+        <div
+          data-slot="drawer-handle"
+          className="mx-auto mt-[var(--drawer-handle-margin-top)] hidden h-2 w-[100px] shrink-0 rounded-[var(--drawer-handle-radius)] bg-[color:var(--drawer-handle-background)] group-data-[vaul-drawer-direction=bottom]/drawer-content:block"
+        />
         {children}
       </DrawerPrimitive.Content>
     </DrawerPortal>
@@ -91,7 +94,10 @@ function DrawerTitle({ className, ...props }: React.ComponentProps<typeof Drawer
   return (
     <DrawerPrimitive.Title
       data-slot="drawer-title"
-      className={cn("[font-weight:var(--drawer-title-font-weight)] text-[color:var(--drawer-title-label)]", className)}
+      className={cn(
+        "[font-family:var(--drawer-title-font-family)] text-[length:var(--drawer-title-font-size)]/[var(--drawer-title-line-height)] [font-weight:var(--drawer-title-font-weight)] text-[color:var(--drawer-title-label)]",
+        className,
+      )}
       {...props}
     />
   );

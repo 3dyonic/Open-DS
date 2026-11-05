@@ -554,6 +554,233 @@ export const CHECKS = {
         : ok(`the component spacing map in ${SCHEMES.length} schemes matches its rule`);
     },
   },
+  "visible-where-it-meets": {
+    requires: ["schemes/grammar.json", ...SCHEMES.map((s) => `schemes/${s}.json`)],
+    run: (c) => {
+      // OD-242: decorative means no contrast floor, not invisible. In dark, every scheme once picked one
+      // neutral step for the menu, its hover and its divider, so both read 1.00:1 and no check asked.
+      // Each hover fill and default edge needs a minimum difference from every surface it sits on.
+      const lum = (hex) => {
+        const [r, gr, b] = [1, 3, 5]
+          .map((i) => parseInt(hex.slice(i, i + 2), 16) / 255)
+          .map((v) => (v <= 0.04045 ? v / 12.92 : ((v + 0.055) / 1.055) ** 2.4));
+        return 0.2126 * r + 0.7152 * gr + 0.0722 * b;
+      };
+      const ratio = (a, b) => {
+        const [x, y] = [lum(a), lum(b)].sort((m, n) => n - m);
+        return (x + 0.05) / (y + 0.05);
+      };
+      // The floors are the lightest pairs the light themes already ship: a fill at 1.08:1, a 1px line at 1.15:1.
+      const MEETS = [
+        // OD-241: the state fill is color.surface.highlight; sunken is depth only, a well on content.
+        {
+          key: "color.surface.highlight",
+          job: "highlight fill",
+          min: 1.08,
+          on: ["color.surface.default", "color.surface.raised"],
+        },
+        { key: "color.surface.sunken", job: "well", min: 1.08, on: ["color.surface.default"] },
+        {
+          key: "color.border.default",
+          job: "divider",
+          min: 1.15,
+          on: ["color.surface.canvas", "color.surface.default", "color.surface.raised"],
+        },
+      ];
+      const gaps = [];
+      let pairs = 0;
+      let lowest = Infinity;
+      for (const s of SCHEMES) {
+        const t = c.json("schemes", `${s}.json`).tokens;
+        for (const brand of Object.keys(t.brands))
+          for (const mode of ["light", "dark"]) {
+            const all = flatten(themeTokens({ id: s, tokens: t }, brand, mode));
+            const hex = (p) => {
+              const v = resolve(all, p).value;
+              return typeof v === "string" && /^#[0-9a-f]{6}$/i.test(v) ? v : null;
+            };
+            for (const m of MEETS)
+              for (const on of m.on) {
+                const [a, b] = [hex(m.key), hex(on)];
+                if (!a || !b) {
+                  gaps.push(`${s}/${brand}/${mode}: ${m.key} or ${on} has no color`);
+                  continue;
+                }
+                pairs++;
+                const r = ratio(a, b);
+                lowest = Math.min(lowest, r);
+                if (r < m.min)
+                  gaps.push(
+                    `${s}/${brand}/${mode}: the ${m.job} ${m.key} on ${on} is ${r.toFixed(2)}:1, needs ${m.min}:1`,
+                  );
+              }
+          }
+      }
+      return gaps.length
+        ? bad(`${gaps.length} problems: ${gaps.slice(0, 5).join("; ")}`)
+        : ok(`${pairs} hover fills and dividers are visible where they meet; the lowest is ${lowest.toFixed(2)}:1`);
+    },
+  },
+  "answers-consider": {
+    requires: ["schemes/grammar.json", ...SCHEMES.map((s) => `schemes/${s}.json`)],
+    run: (c) => {
+      // OD-245: a question that lists what an answer must weigh (the typeface: readability, legibility,
+      // scalability, numerals, scripts, recognition, familiarity, personality, performance, licensing,
+      // fallback) gets an answer that meets each one in words. A skipped consideration is a decision
+      // nobody made.
+      const g = c.json("schemes", "grammar.json");
+      const qs = [...g.reasons, ...g.scopes].flatMap((x) => x.questions).filter((q) => q.considers?.length);
+      const gaps = [];
+      let n = 0;
+      for (const s of SCHEMES) {
+        const answers = c.json("schemes", `${s}.json`).answers;
+        for (const q of qs) {
+          const a = answers.find((x) => x.question === q.id);
+          if (!a) continue;
+          for (const k of q.considers) {
+            if (a.considers?.[k.id]?.trim()) n++;
+            else gaps.push(`${s}: ${q.id} does not say how it meets ${k.label.toLowerCase()}`);
+          }
+          for (const id of Object.keys(a.considers ?? {}))
+            if (!q.considers.some((k) => k.id === id))
+              gaps.push(`${s}: ${q.id} answers ${id}, which the question does not ask`);
+        }
+      }
+      return gaps.length
+        ? bad(gaps.slice(0, 6).join("; "))
+        : ok(`${n} considerations met in words, across ${qs.length} question in ${SCHEMES.length} schemes`);
+    },
+  },
+  "anatomy-assets": {
+    requires: ["schemes/grammar.json"],
+    run: (c) => {
+      // OD-229: an Anatomy reference drawn as Figma assets ships every image it shows, for every
+      // scheme: the stage and one per card, each exported from a frame whose node id the parts layer
+      // records, so the drawing can be opened and changed in Figma.
+      const g = c.json("schemes", "grammar.json");
+      const gaps = [];
+      let n = 0;
+      for (const item of g.catalogue.items.filter((i) => i.anatomy?.drawing?.kind === "asset")) {
+        const a = item.anatomy;
+        if (!a.drawing.figma?.file) gaps.push(`${item.id}: no Figma file`);
+        for (const s of SCHEMES) {
+          const want = [
+            ["stage", a.drawing.figma?.stage?.[s]],
+            ...a.cards.map((card, i) => [`card-${i + 1}`, card.figma?.[s]]),
+          ];
+          for (const [file, node] of want) {
+            n++;
+            if (!node) gaps.push(`${item.id}/${s}/${file}: no Figma node`);
+            if (!existsSync(c.p(`docs/static/anatomy/${s}/${item.id}/${file}.png`)))
+              gaps.push(`${item.id}/${s}/${file}.png is missing`);
+          }
+        }
+      }
+      return gaps.length
+        ? bad(`${gaps.length}: ${gaps.slice(0, 6).join("; ")}`)
+        : ok(`${n} anatomy images, each exported from a Figma frame, in ${SCHEMES.length} schemes`);
+    },
+  },
+  "floating-panels-agree": {
+    requires: ["schemes/grammar.json", "ui/src/components"],
+    run: (c) => {
+      // OD-243: a panel that floats over the page (a menu, a list, a popover, a dialog) is one kind of
+      // surface, so it reads one decision: the overlay corner, the overlay elevation and a border of
+      // its own. shadcn decided each one apart, and they drifted (control corners, card shadows). A
+      // sheet or a drawer sits on an edge, and a tooltip is a label: they decide their own.
+      const g = c.json("schemes", "grammar.json");
+      const floats = c
+        .walk("ui/src/components", (x) => x.endsWith(".tsx"))
+        .filter((f) => /Portal|Viewport/.test(c.read(f)))
+        .map((f) =>
+          f
+            .split("/")
+            .pop()
+            .replace(/\.tsx$/, ""),
+        )
+        .filter((x) => !["sheet", "drawer", "tooltip"].includes(x));
+      const want = { radius: "radius.container", shadow: "elevation.overlay" };
+      const gaps = [];
+      let n = 0;
+      for (const comp of floats) {
+        const keys = g.component_keys.filter(
+          (e) => !e.replaced_by && new RegExp(`^${comp}/(content|sub/content|viewport|popup)/`).test(e.id),
+        );
+        const panels = [...new Set(keys.map((e) => e.id.replace(/\/[^/]+$/, "")))];
+        for (const p of panels) {
+          if (!keys.some((e) => e.id === `${p}/radius`)) continue; // not a surface of its own
+          n++;
+          for (const [prop, sem] of Object.entries(want)) {
+            const e = keys.find((x) => x.id === `${p}/${prop}`);
+            if (e && e.default !== sem) gaps.push(`${p}/${prop} reads ${e.default}, not ${sem}`);
+          }
+          if (!keys.some((e) => e.id === `${p}/border`)) gaps.push(`${p} has no border key of its own`);
+        }
+      }
+      return gaps.length
+        ? bad(`${gaps.length}: ${gaps.slice(0, 8).join("; ")}`)
+        : ok(
+            `${n} floating panels in ${floats.length} components read the overlay corner, elevation and a border of their own`,
+          );
+    },
+  },
+  "picks-cite-answers": {
+    requires: SCHEMES.map((s) => `schemes/${s}.json`),
+    run: (c) => {
+      // A theme pick's reason cites the answers it follows from (because). Each must be a question this
+      // scheme answers, or the trace from answer to value breaks where nobody looks. The schema only
+      // checks the shape of the id (it once refused brand.q3); this checks that it lands.
+      const gaps = [];
+      let n = 0;
+      const walk = (o, p, cb) => {
+        if (!o || typeof o !== "object") return;
+        if ("$value" in o) return cb(p, o);
+        for (const [k, v] of Object.entries(o)) if (k[0] !== "$") walk(v, [...p, k], cb);
+      };
+      for (const id of SCHEMES) {
+        const s = c.json("schemes", `${id}.json`);
+        const answered = new Set(s.answers.map((a) => a.question));
+        for (const [brand, def] of Object.entries(s.tokens.brands))
+          for (const mode of ["base", "light", "dark"])
+            walk(def.theme[mode], [], (p, node) => {
+              for (const q of node.$extensions?.["open-ds"]?.because ?? []) {
+                n++;
+                if (!answered.has(q))
+                  gaps.push(`${id}/${brand}/${mode} ${p.join(".")} cites ${q}, which this scheme does not answer`);
+              }
+            });
+      }
+      return gaps.length
+        ? bad(`${gaps.length} broken: ${gaps.slice(0, 5).join("; ")}`)
+        : ok(`${n} answers cited by theme picks, each one this scheme answers`);
+    },
+  },
+  "gaps-only-go-down": {
+    requires: ["schemes/grammar.json", "cli/src/gaps.mjs", "harness/gaps-baseline.json"],
+    run: async (c) => {
+      // OD-243: the gap ledger is the measured baseline of where the decision trace breaks. Each count,
+      // per scheme and kind, may only go down. A fix lowers the baseline in the same change (node
+      // scripts/gaps.mjs --baseline), so every drop is on record; a new gap fails here.
+      const { gapCounts } = await import(pathToFileURL(c.p("scripts/gaps.mjs")).href);
+      const base = c.json("harness", "gaps-baseline.json").counts;
+      const now = gapCounts();
+      const rose = [];
+      const fell = [];
+      let total = 0;
+      for (const [s, kinds] of Object.entries(now))
+        for (const [k, n] of Object.entries(kinds)) {
+          total += n;
+          const was = base[s]?.[k];
+          if (was === undefined) rose.push(`${s} ${k}: ${n}, not in the baseline`);
+          else if (n > was) rose.push(`${s} ${k}: ${was} → ${n}`);
+          else if (n < was) fell.push(`${s} ${k}: ${was} → ${n}`);
+        }
+      if (rose.length) return bad(`new gaps: ${rose.slice(0, 6).join("; ")}. open-ds gaps <scheme> lists them.`);
+      if (fell.length)
+        return bad(`gaps fell (good): ${fell.slice(0, 6).join("; ")}. Record it: node scripts/gaps.mjs --baseline.`);
+      return ok(`${total} gaps across ${Object.keys(now).length} schemes, none new; each count may only go down`);
+    },
+  },
   "scheme-order": {
     requires: ["schemes/grammar.json", "storybook/src/scheme-context.tsx", "site/src/lib/home.ts"],
     run: (c) => {
@@ -594,6 +821,8 @@ export const CHECKS = {
         "color.surface.default",
         "color.surface.raised",
         "color.surface.sunken",
+        "color.surface.highlight",
+        "color.surface.pressed",
       ]);
       const css = (id) => `--${id.replace(/\.@$/, "").replaceAll(".", "-")}`;
       const fills = (g.semantics.tones?.fills ?? [])
@@ -826,14 +1055,19 @@ export const CHECKS = {
     requires: ["ui/src/components"],
     run: (c) => {
       // OD-222: the focus ring is the accent, often the color of the fill it surrounds, so every ring
-      // keeps a 2px gap in the canvas color between it and the control.
+      // keeps a gap in the canvas color between it and the control. OD-243: the gap is a decision,
+      // border-width.focus-offset, read through the component's own focus-offset key.
       const gaps = [];
       for (const f of c.walk("ui/src/components", (x) => x.endsWith(".tsx")))
         for (const cls of c.read(f).match(/"[^"\n]*"/g) ?? []) {
-          const draws = /(focus-visible|has-focus|focus):ring-(?!0\b|offset)/.test(cls);
-          if (draws && !/ring-offset-2\b/.test(cls)) gaps.push(`${f}: a focus ring with no gap`);
+          // A ring drawn on focus, on focus inside (focus-within), or through has-[…:focus-visible].
+          const draws = /(focus-visible\]?|focus-within|has-focus|focus):ring-(?!0\b|offset)/.test(cls);
+          if (draws && !/ring-offset-\[length:var\(--[a-z0-9-]+-focus-offset\)\]/.test(cls))
+            gaps.push(`${f}: a focus ring with no gap, or a gap not read from its focus-offset key`);
         }
-      return gaps.length ? bad(gaps.slice(0, 6).join("; ")) : ok("every focus ring keeps a 2px gap from its control");
+      return gaps.length
+        ? bad(gaps.slice(0, 6).join("; "))
+        : ok("every focus ring keeps its gap from the control, read from border-width.focus-offset");
     },
   },
 
@@ -1276,6 +1510,13 @@ export const CHECKS = {
           if (/-0$/.test(m[1])) continue;
           if (!fixed.has(`${comp}: ${m[1]}`)) gaps.push(`${comp} has a fixed ${m[1]} that is not listed`);
         }
+        // OD-243: a focus ring's width and gap are decisions (border-width.focus, .focus-offset). shadcn
+        // wrote them by hand (ring-2, ring-[3px], ring-offset-2); none may come back unlisted.
+        for (const m of src.matchAll(
+          /(?:^|[\s"'`:])((?:ring|ring-offset|outline|outline-offset)-(?:[1-9]\d*|\[\d+px\]))(?=[\s"'`]|$)/gm,
+        ))
+          if (!fixed.has(`${comp}: ${m[1]}`))
+            gaps.push(`${comp} has a hand-written ${m[1]}; read border-width.focus or .focus-offset through a key`);
       }
       return gaps.length
         ? bad([...new Set(gaps)].slice(0, 8).join("; "))
@@ -2252,6 +2493,17 @@ export const CHECKS = {
         for (const [p, text] of Object.entries(pages)) {
           const m = p.match(/^components\/(.+)\.md$/);
           if (!m || m[1] === "inventory") continue;
+          // An Anatomy reference (OD-229) is its own kind of page: the parts, the cards, the way in.
+          if (m[1].endsWith("-anatomy")) {
+            const lacking = [
+              "## Design roles",
+              "## The parts",
+              "## How the decisions reach each part",
+              "## For agents",
+            ].filter((h) => !text.includes(h));
+            if (lacking.length) gaps.push(`${id} ${p}: no ${lacking.join(", ")}`);
+            continue;
+          }
           const item = g.catalogue.items.find((i) => i.id === m[1]);
           const want = ["## See it live", "## Use it in code"];
           if (item?.apply_when) want.push("## When to use it");

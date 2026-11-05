@@ -535,19 +535,22 @@ export function findToken(scheme, g, query, limit = 5) {
     };
   });
   // A component key ranks only when the query names its component (OD-234: every component has its own keys).
-  const keys = g.component_keys.map((k) => {
-    const named = overlap(q, k.component.replace(/-/g, " ")).length > 0;
-    const head = named ? overlap(q, k.id.replace(/[/@-]/g, " ")) : [];
-    const body = named ? overlap(q, k.description) : [];
-    return {
-      token: k.id,
-      kind: "component key",
-      intent: k.description,
-      reads: k.default,
-      score: head.length * 2 + body.length,
-      matched: [...new Set([...head, ...body])],
-    };
-  });
+  // A deprecated key (replaced_by) is never offered; its replacement is.
+  const keys = g.component_keys
+    .filter((k) => !k.replaced_by)
+    .map((k) => {
+      const named = overlap(q, k.component.replace(/-/g, " ")).length > 0;
+      const head = named ? overlap(q, k.id.replace(/[/@-]/g, " ")) : [];
+      const body = named ? overlap(q, k.description) : [];
+      return {
+        token: k.id,
+        kind: "component key",
+        intent: k.description,
+        reads: k.default,
+        score: head.length * 2 + body.length,
+        matched: [...new Set([...head, ...body])],
+      };
+    });
   // Spacing (OD-235): the layout roles and the component spacing map's steps, with this scheme's px.
   const sg = spacingGuide(scheme, {
     index: tokenIndex(scheme),

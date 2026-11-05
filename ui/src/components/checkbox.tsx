@@ -1,7 +1,7 @@
 /**
  * Checkbox. Turns one option on or off inside a form.
  *
- * Reads only component keys: --control-*.
+ * Reads only component keys: --checkbox-*.
  */
 import { Check } from "lucide-react";
 import { Checkbox as CheckboxPrimitive } from "radix-ui";
@@ -13,15 +13,20 @@ export function Checkbox({ className, ...props }: React.ComponentProps<typeof Ch
     <CheckboxPrimitive.Root
       data-slot="checkbox"
       className={cn(
-        "peer size-[var(--checkbox-size)] shrink-0 rounded-[var(--control-radius)] bg-[var(--input-background)]",
-        "border-[length:var(--checkbox-border-width)] border-[var(--control-track)]",
-        "data-[state=checked]:bg-[var(--control-checked)] data-[state=checked]:border-[var(--control-checked)] data-[state=checked]:text-[var(--control-thumb)]",
-        "outline-none focus-visible:ring-[length:var(--checkbox-focus)] focus-visible:ring-[color:var(--button-focus-ring)] disabled:opacity-[var(--checkbox-disabled)] focus-visible:ring-offset-2 focus-visible:ring-offset-[color:var(--checkbox-canvas)]",
+        "peer size-[var(--checkbox-size)] shrink-0 rounded-[var(--checkbox-radius)] bg-[var(--checkbox-background)]",
+        // Checked, the fill is the box: its edge steps aside (transparent shows the fill under it).
+        "border-[length:var(--checkbox-border-width)] border-[var(--checkbox-border)] data-[state=checked]:border-transparent",
+        "data-[state=checked]:bg-[var(--checkbox-background-checked)]",
+        "outline-none focus-visible:ring-[length:var(--checkbox-focus)] focus-visible:ring-[color:var(--checkbox-focus-ring)] disabled:opacity-[var(--checkbox-disabled)] focus-visible:ring-offset-[length:var(--checkbox-focus-offset)] focus-visible:ring-offset-[color:var(--checkbox-focus-ring-offset)]",
         className,
       )}
       {...props}
     >
-      <CheckboxPrimitive.Indicator className="flex items-center justify-center">
+      {/* The indicator is there only while the box is checked, so its color needs no state. */}
+      <CheckboxPrimitive.Indicator
+        data-slot="checkbox-indicator"
+        className="flex items-center justify-center text-[var(--checkbox-indicator-icon)]"
+      >
         <Check className="size-[calc(var(--checkbox-size)*0.8)]" strokeWidth={3} />
       </CheckboxPrimitive.Indicator>
     </CheckboxPrimitive.Root>

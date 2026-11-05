@@ -374,7 +374,7 @@ code {
   transition: background var(--motion-duration-feedback, 120ms);
 }
 .ods-picker-trigger:hover {
-  background: var(--color-surface-sunken, var(--ifm-color-emphasis-100));
+  background: var(--color-surface-highlight, var(--ifm-color-emphasis-100));
 }
 .ods-picker-trigger:focus-visible,
 .ods-picker-list:focus-visible {
@@ -417,7 +417,8 @@ code {
   min-width: 100%;
   background: var(--color-surface-raised, var(--ifm-background-surface-color));
   border: 1px solid var(--color-border-default, var(--ifm-color-emphasis-300));
-  border-radius: var(--radius-control, 0.25rem);
+  /* A panel of options: the overlay corner; its options nest inside it (radius.option, OD-246). */
+  border-radius: var(--radius-container, 0.375rem);
   box-shadow: var(--elevation-overlay, 0 8px 24px rgb(0 0 0 / 16%));
 }
 .ods-picker-list--wide {
@@ -430,7 +431,8 @@ code {
   gap: 2px 0.625rem;
   align-items: center;
   padding: 0.5rem 0.625rem;
-  border-radius: var(--radius-control, 0.25rem);
+  position: relative;
+  border-radius: var(--radius-option, 0.25rem);
   cursor: pointer;
   color: var(--ifm-font-color-base);
 }
@@ -452,14 +454,25 @@ code {
   visibility: hidden;
 }
 .ods-picker-opt.is-active {
-  background: var(--color-surface-sunken, var(--ifm-color-emphasis-100));
+  background: var(--color-surface-highlight, var(--ifm-color-emphasis-100));
 }
 /* Selected: the selected fill and its edge, so selection is never color alone, and text from the
    fill's tone (--ods-text-on-selected, generated per scheme and mode). Never the link color on it. */
 .ods-picker-opt[aria-selected="true"] {
   background: var(--color-surface-selected, var(--ifm-color-emphasis-100));
-  box-shadow: inset 2px 0 0 var(--color-border-selected, var(--ifm-color-primary));
   color: var(--ods-text-on-selected, var(--ifm-font-color-base));
+}
+/* The selected edge is its own bar, so it stays straight whatever the corner (an inset shadow curls
+   into a crescent on a pill). Selection is never color alone. */
+.ods-picker-opt[aria-selected="true"]::before {
+  content: "";
+  position: absolute;
+  left: 3px;
+  top: 25%;
+  bottom: 25%;
+  width: 2px;
+  border-radius: 1px;
+  background: var(--color-border-selected, var(--ifm-color-primary));
 }
 .ods-picker-opt[aria-selected="true"] b {
   font-weight: 600;
@@ -922,3 +935,12 @@ html[data-theme="dark"] .ods-row {
   text-transform: uppercase;
   color: var(--ifm-color-emphasis-600);
 }
+
+/* The Anatomy reference sits under its component in the sidebar (OD-229); Docusaurus indents it. It
+   shows only while the component or its reference is the page you are on, and closes when you leave:
+   the list follows the active page, not a remembered open state, and the category has no caret. */
+.menu__list-item.ods-anatomy > .menu__link { font-size: 0.9em; }
+.menu__list-item.ods-has-anatomy > .menu__list-item-collapsible > .menu__caret,
+.menu__list-item.ods-has-anatomy > .menu__list-item-collapsible > .menu__link--sublist-caret::after { display: none; }
+.menu__list-item.ods-has-anatomy:not(:has(.menu__link--active)) > .menu__list { display: none !important; }
+.menu__list-item.ods-has-anatomy:has(.menu__link--active) > .menu__list { display: block !important; height: auto !important; overflow: visible !important; }

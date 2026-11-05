@@ -23,7 +23,7 @@ function PopoverTrigger({ ...props }: React.ComponentProps<typeof PopoverPrimiti
 function PopoverContent({
   className,
   align = "center",
-  sideOffset = 4,
+  sideOffset = 0, // the gap is overlay/offset, a margin on the side it opens to (OD-243)
   ...props
 }: React.ComponentProps<typeof PopoverPrimitive.Content>) {
   return (
@@ -33,7 +33,7 @@ function PopoverContent({
         align={align}
         sideOffset={sideOffset}
         className={cn(
-          "z-50 w-72 origin-(--radix-popover-content-transform-origin) rounded-[var(--popover-content-radius)] border bg-[color:var(--popover-content-background)] p-[var(--popover-content-padding)] text-[color:var(--popover-content-label)] shadow-[var(--popover-content-shadow)] outline-hidden data-[side=bottom]:slide-in-from-top-2 data-[side=left]:slide-in-from-right-2 data-[side=right]:slide-in-from-left-2 data-[side=top]:slide-in-from-bottom-2 data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=closed]:zoom-out-95 data-[state=open]:animate-in data-[state=open]:fade-in-0 data-[state=open]:zoom-in-95 duration-[var(--transition-panels-duration)]",
+          "data-[side=bottom]:mt-[var(--overlay-offset)] data-[side=top]:mb-[var(--overlay-offset)] data-[side=left]:mr-[var(--overlay-offset)] data-[side=right]:ml-[var(--overlay-offset)] z-50 w-72 origin-(--radix-popover-content-transform-origin) rounded-[var(--popover-content-radius)] border-[length:var(--popover-content-border-width)] border-[color:var(--popover-content-border)] bg-[color:var(--popover-content-background)] p-[var(--popover-content-padding)] text-[color:var(--popover-content-label)] shadow-[var(--popover-content-shadow)] outline-hidden data-[side=bottom]:slide-in-from-top-2 data-[side=left]:slide-in-from-right-2 data-[side=right]:slide-in-from-left-2 data-[side=top]:slide-in-from-bottom-2 data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=closed]:zoom-out-95 data-[state=open]:animate-in data-[state=open]:fade-in-0 data-[state=open]:zoom-in-95 duration-[var(--popover-content-duration)]",
           className,
         )}
         {...props}

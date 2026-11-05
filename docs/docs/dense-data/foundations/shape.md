@@ -13,10 +13,12 @@ Corners and borders.
 <div class="ods-specimen">
 <span class="ods-item"><span class="ods-tile" style="border-radius:var(--radius-control)"></span><span class="ods-label">radius.control</span></span>
 <span class="ods-item"><span class="ods-tile" style="border-radius:var(--radius-badge)"></span><span class="ods-label">radius.badge</span></span>
+<span class="ods-item"><span class="ods-tile" style="border-radius:var(--radius-option)"></span><span class="ods-label">radius.option</span></span>
 <span class="ods-item"><span class="ods-tile" style="border-radius:var(--radius-container)"></span><span class="ods-label">radius.container</span></span>
 <span class="ods-item"><span class="ods-tile" style="border-radius:var(--radius-round)"></span><span class="ods-label">radius.round</span></span>
 <span class="ods-item"><span class="ods-line" style="height:var(--border-width-default)"></span><span class="ods-label">border-width.default</span></span>
 <span class="ods-item"><span class="ods-line" style="height:var(--border-width-focus)"></span><span class="ods-label">border-width.focus</span></span>
+<span class="ods-item"><span class="ods-line" style="height:var(--border-width-focus-offset)"></span><span class="ods-label">border-width.focus-offset</span></span>
 </div>
 
 ## The five answers
@@ -37,10 +39,12 @@ Each token points to another token. Values live only on primitives, below.
 | --- | --- |
 | `radius.control` | `dense-data.theme.base.radius.control` → `radius.2` |
 | `radius.badge` | `dense-data.theme.base.radius.badge` → `radius.0` |
+| `radius.option` | `dense-data.theme.base.radius.option` → `radius.0` |
 | `radius.container` | `dense-data.theme.base.radius.container` → `radius.4` |
 | `radius.round` | `radius.full` |
 | `border-width.default` | `border-width.1` |
 | `border-width.focus` | `border-width.2` |
+| `border-width.focus-offset` | `border-width.2` |
 
 The raw values these tokens end at are on [Primitives › Shape](../primitives/shape).
 

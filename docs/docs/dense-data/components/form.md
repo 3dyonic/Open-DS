@@ -27,6 +27,8 @@ Instead:
 
 - [Field](./field.md): How one control is laid out.
 
+<a class="odv-anatref" href="./form/anatomy"><span class="odv-anatref-b"><b>Anatomy reference</b><span>Every part of the form field, the job it does, and the decisions behind it. 4 parts.</span></span><span class="odv-anatref-go" aria-hidden="true">→</span></a>
+
 ## How Dense data uses it
 
 <div class="odv-grid two"><div class="odv-dd"><div class="stage"><div class="odv-eyebrow">An error message</div><div style="margin-top:6px"><b style="color:var(--color-status-success)">Use</b> color.status.danger with an icon</div><div><b style="color:var(--color-status-danger)">Not</b> color.status.warning</div></div><div class="cap">Red always means fix this, and the icon says it without color.</div></div><div class="odv-dd"><div class="stage"><div class="odv-eyebrow">The words of an error</div><div style="margin-top:6px"><b style="color:var(--color-status-success)">Use</b> Name the record, then the fix. Flat and specific.</div><div><b style="color:var(--color-status-danger)">Not</b> &quot;Oops&quot; or a vague apology</div></div><div class="cap">Experts act on the message; the record and the fix are all they need. Example: “Alert ALR-2042 not saved. Threshold must be between 0 and 100.”</div></div></div>

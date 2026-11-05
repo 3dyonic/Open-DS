@@ -5,6 +5,7 @@
 
 import { assetRoots, grammar, loadScheme } from "./schemes.mjs";
 import { componentApi } from "./lands.mjs";
+import { componentLedger } from "./gaps.mjs";
 
 /** The reference and this scheme's decisions for one catalogue component, or null if there is none. */
 export function componentGuide(
@@ -86,6 +87,15 @@ export function componentGuide(
     rules,
     // Its token API (OD-234): every token it reads, what each aliases, and its value in every theme.
     tokens: componentApi(scheme, id, roots),
+    // Its gaps (OD-243): where its decision trace breaks. Where a gap stands, the scheme has no answer
+    // yet; say so instead of inventing one.
+    gaps: componentLedger(scheme, g, roots, id),
+    // Its anatomy is its own tool (OD-229): get_anatomy, or open-ds anatomy. Here only whether the
+    // parts people see are described yet.
+    anatomy: {
+      parts_layer: Boolean(item.anatomy),
+      see: `get_anatomy ${id}`,
+    },
   };
 }
 
@@ -156,6 +166,11 @@ export function componentText(guide) {
         `      ${vals.join(" | ")}`,
       );
     }
+  }
+  lines.push("", `Anatomy: open-ds anatomy ${guide.scheme} ${guide.component}${guide.anatomy?.parts_layer ? "" : " (its parts layer isn't written yet)"}.`);
+  if (guide.gaps?.length) {
+    lines.push("", `Gaps (${guide.gaps.length}): where the decision trace breaks. No answer here yet.`);
+    for (const x of guide.gaps) lines.push(`  [${x.kind}] ${x.says}${x.ticket ? ` (${x.ticket})` : ""}`);
   }
   if (r.source)
     lines.push(

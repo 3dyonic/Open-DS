@@ -67,7 +67,7 @@ function ChartContainer({
         data-slot="chart"
         data-chart={chartId}
         className={cn(
-          "flex aspect-video justify-center text-[length:var(--chart-font-size)]/[var(--chart-line-height)] [&_.recharts-cartesian-axis-tick_text]:fill-[color:var(--chart-icon)] [&_.recharts-cartesian-grid_line]:stroke-[color:var(--chart-icon-2)]/50 [&_.recharts-curve.recharts-tooltip-cursor]:stroke-[color:var(--chart-icon-2)] [&_.recharts-dot]:stroke-transparent [&_.recharts-layer]:outline-hidden [&_.recharts-polar-grid]:stroke-[color:var(--chart-icon-2)] [&_.recharts-radial-bar-background-sector]:fill-[color:var(--chart-icon-3)] [&_.recharts-rectangle.recharts-tooltip-cursor]:fill-[color:var(--chart-icon-3)] [&_.recharts-reference-line]:stroke-[color:var(--chart-icon-2)] [&_.recharts-sector]:outline-hidden [&_.recharts-sector]:stroke-transparent [&_.recharts-surface]:outline-hidden",
+          "flex aspect-video justify-center text-[length:var(--chart-font-size)]/[var(--chart-line-height)] [&_.recharts-cartesian-axis-tick_text]:fill-[color:var(--chart-axis-label)] [&_.recharts-cartesian-grid_line]:stroke-[color:var(--chart-grid-line)] [&_.recharts-curve.recharts-tooltip-cursor]:stroke-[color:var(--chart-cursor-line)] [&_.recharts-dot]:stroke-transparent [&_.recharts-layer]:outline-hidden [&_.recharts-polar-grid]:stroke-[color:var(--chart-grid-line)] [&_.recharts-radial-bar-background-sector]:fill-[color:var(--chart-track-fill)] [&_.recharts-rectangle.recharts-tooltip-cursor]:fill-[color:var(--chart-cursor-fill)] [&_.recharts-reference-line]:stroke-[color:var(--chart-grid-line)] [&_.recharts-sector]:outline-hidden [&_.recharts-sector]:stroke-transparent [&_.recharts-surface]:outline-hidden",
           className,
         )}
         {...props}
@@ -169,8 +169,9 @@ function ChartTooltipContent({
 
   return (
     <div
+      data-slot="chart-tooltip"
       className={cn(
-        "grid min-w-[8rem] items-start gap-[var(--chart-gap)] rounded-[var(--chart-radius)] border border-[color:var(--chart-border)]/50 bg-[color:var(--chart-background)] px-[var(--chart-padding-x)] py-[var(--chart-padding-y)] text-[length:var(--chart-font-size)]/[var(--chart-line-height)] shadow-[var(--chart-shadow)]",
+        "grid min-w-[8rem] items-start gap-[var(--chart-tooltip-gap)] rounded-[var(--chart-tooltip-radius)] border-[length:var(--chart-tooltip-border-width)] border-[color:var(--chart-tooltip-border)] bg-[color:var(--chart-tooltip-background)] px-[var(--chart-tooltip-padding-x)] py-[var(--chart-tooltip-padding-y)] text-[length:var(--chart-tooltip-font-size)]/[var(--chart-tooltip-line-height)] shadow-[var(--chart-tooltip-shadow)]",
         className,
       )}
     >
@@ -261,9 +262,10 @@ function ChartLegendContent({
 
   return (
     <div
+      data-slot="chart-legend"
       className={cn(
-        "flex items-center justify-center gap-[var(--chart-gap-3)]",
-        verticalAlign === "top" ? "pb-[var(--chart-padding-bottom)]" : "pt-[var(--chart-padding-top)]",
+        "flex items-center justify-center gap-[var(--chart-legend-gap)]",
+        verticalAlign === "top" ? "pb-[var(--chart-legend-padding-bottom)]" : "pt-[var(--chart-legend-padding-top)]",
         className,
       )}
     >

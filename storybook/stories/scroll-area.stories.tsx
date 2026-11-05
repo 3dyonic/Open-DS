@@ -25,7 +25,10 @@ export const Examples: Story = {
   render: () => (
     <Show component="scroll-area">
       {(s) => (
-        <ScrollArea className="h-40 max-w-sm rounded-[var(--radius-container)] border border-[var(--color-border-default)]">
+        <ScrollArea
+          type="always"
+          className="h-40 max-w-sm rounded-[var(--radius-container)] border border-[var(--color-border-default)]"
+        >
           <ul className="p-[var(--space-inset-container)]">
             {[...Array(s.table && s.table.rows.length > 12 ? 1 : 4)].flatMap((_, i) =>
               (s.table?.rows.map((r) => r.cells.join(" · ")) ?? s.metrics.map((m) => `${m.label} · ${m.value}`)).map(

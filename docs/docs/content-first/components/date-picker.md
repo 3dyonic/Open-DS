@@ -27,6 +27,8 @@ Instead:
 - [Calendar](./calendar.md): The calendar on its own, always shown.
 - [Input](./input.md): A known date typed in.
 
+<a class="odv-anatref" href="./date-picker/anatomy"><span class="odv-anatref-b"><b>Anatomy reference</b><span>Every part of the date picker, the job it does, and the decisions behind it. 4 parts.</span></span><span class="odv-anatref-go" aria-hidden="true">→</span></a>
+
 ## Words
 
 - Write to one person: "you", not "users".

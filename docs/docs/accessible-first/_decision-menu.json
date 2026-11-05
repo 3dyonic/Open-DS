@@ -12,12 +12,12 @@
         {
           "id": "people",
           "title": "People and work context",
-          "count": 42
+          "count": 43
         },
         {
           "id": "content",
           "title": "Content and data",
-          "count": 8
+          "count": 9
         },
         {
           "id": "tasks",
@@ -37,7 +37,7 @@
         {
           "id": "brand",
           "title": "Brand",
-          "count": 5
+          "count": 13
         },
         {
           "id": "scenarios",
@@ -62,22 +62,22 @@
         {
           "id": "color",
           "title": "Color",
-          "count": 2
+          "count": 90
         },
         {
           "id": "spacing",
           "title": "Spacing",
-          "count": 2
+          "count": 3
         },
         {
           "id": "shape",
           "title": "Shape",
-          "count": 3
+          "count": 10
         },
         {
           "id": "elevation",
           "title": "Elevation",
-          "count": 12
+          "count": 32
         },
         {
           "id": "motion",
@@ -97,7 +97,7 @@
         {
           "id": "accessibility",
           "title": "Accessibility",
-          "count": 21
+          "count": 111
         },
         {
           "id": "naming",

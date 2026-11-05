@@ -36,6 +36,7 @@
     "test:create": "node scripts/test-create.mjs",
     "shots": "node scripts/shots.mjs",
     "figma-kit": "node scripts/figma-kit.mjs",
+    "figma-anatomy": "node scripts/figma-anatomy.mjs",
     "release": "node scripts/release.mjs"
   },
   "pnpm": {

@@ -11,8 +11,8 @@ import { cn } from "../lib/utils";
 
 // Who sent it decides the side and the fill. It is content, not a design variant.
 const SIDE = {
-  them: "self-start bg-[color:var(--bubble-them-background)] text-[color:var(--bubble-them-label)]",
-  me: "self-end bg-[color:var(--bubble-me-background)] text-[color:var(--bubble-me-label)]",
+  them: "self-start bg-[color:var(--bubble-body-them-background)] text-[color:var(--bubble-body-them-label)]",
+  me: "self-end bg-[color:var(--bubble-body-me-background)] text-[color:var(--bubble-body-me-label)]",
 };
 
 function Bubble({
@@ -37,14 +37,17 @@ function Bubble({
       className={cn("flex flex-col gap-[var(--bubble-gap)]", from === "me" ? "items-end" : "items-start", className)}
       {...props}
     >
-      <span className="text-[length:var(--bubble-font-size)]/[var(--bubble-line-height)] text-[color:var(--bubble-label)]">
+      <span
+        data-slot="bubble-byline"
+        className="text-[length:var(--bubble-byline-font-size)]/[var(--bubble-byline-line-height)] text-[color:var(--bubble-byline-label)]"
+      >
         {author}
         {time && <> · {time}</>}
       </span>
       <div
         data-slot="bubble-body"
         className={cn(
-          "w-fit max-w-[80%] rounded-[var(--bubble-body-radius)] px-[var(--bubble-body-padding-x)] py-[var(--bubble-body-padding-y)] text-[length:var(--bubble-body-font-size)]/[var(--bubble-body-line-height)] leading-normal",
+          "w-fit max-w-[80%] rounded-[var(--bubble-body-radius)] px-[var(--bubble-body-padding-x)] py-[var(--bubble-body-padding-y)] text-[length:var(--bubble-body-font-size)]/[var(--bubble-body-line-height)]",
           SIDE[from],
         )}
       >

@@ -6,7 +6,7 @@
  * <Toaster /> once. The behaviour, stacking, timing, dismissing and announcing politely without taking
  * focus, comes from shadcn/ui's Sonner (MIT); the look is this scheme's (OD-219).
  *
- * Tones: neutral, success, danger. Reads only component keys: --overlay-*.
+ * Tones: neutral, success, danger. Reads only component keys: --toast-*.
  */
 "use client";
 
@@ -18,15 +18,15 @@ import { cn } from "../lib/utils";
 export const toastVariants = cva(
   [
     "pointer-events-auto flex w-full max-w-sm items-start gap-[var(--toast-gap)] p-[var(--toast-padding)]",
-    "rounded-[var(--overlay-radius)] bg-[var(--overlay-background)] text-[var(--toast-label)] [box-shadow:var(--overlay-shadow)]",
+    "rounded-[var(--toast-radius)] bg-[color:var(--toast-background)] text-[var(--toast-label)] [box-shadow:var(--toast-shadow)]",
     "border-[length:var(--toast-border-width)] border-l-4",
   ],
   {
     variants: {
       tone: {
         neutral: "border-[var(--toast-neutral-border)]",
-        success: "border-[var(--toast-success-border)] border-l-[var(--toast-success-border-2)]",
-        danger: "border-[var(--toast-danger-border)] border-l-[var(--toast-danger-border-2)]",
+        success: "border-[var(--toast-success-border)] border-l-[var(--toast-success-edge)]",
+        danger: "border-[var(--toast-danger-border)] border-l-[var(--toast-danger-edge)]",
       },
     },
     defaultVariants: { tone: "neutral" },
@@ -50,10 +50,20 @@ export function Toast({ className, tone, title, description, live = true, childr
       className={cn(toastVariants({ tone }), className)}
       {...props}
     >
-      <div className="flex flex-1 flex-col gap-[var(--toast-gap-2)]">
-        <p className="[font-weight:var(--toast-font-weight)] text-[length:var(--toast-font-size)]">{title}</p>
+      <div className="flex flex-1 flex-col gap-[var(--toast-content-gap)]">
+        <p
+          data-slot="toast-title"
+          className="[font-weight:var(--toast-title-font-weight)] text-[length:var(--toast-title-font-size)]"
+        >
+          {title}
+        </p>
         {description ? (
-          <p className="text-[var(--toast-label-2)] text-[length:var(--toast-font-size-2)]">{description}</p>
+          <p
+            data-slot="toast-description"
+            className="text-[var(--toast-description-label)] text-[length:var(--toast-description-font-size)]"
+          >
+            {description}
+          </p>
         ) : null}
       </div>
       {children}

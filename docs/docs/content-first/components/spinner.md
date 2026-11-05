@@ -28,6 +28,8 @@ Instead:
 - [Skeleton](./skeleton.md): Keeps the final layout.
 - [Progress](./progress.md): A known amount of work.
 
+<a class="odv-anatref" href="./spinner/anatomy"><span class="odv-anatref-b"><b>Anatomy reference</b><span>Every part of the spinner, the job it does, and the decisions behind it. 2 parts.</span></span><span class="odv-anatref-go" aria-hidden="true">→</span></a>
+
 ## Words
 
 - Write to one person: "you", not "users".

@@ -53,7 +53,7 @@ function AlertDialogContent({
         data-slot="alert-dialog-content"
         data-size={size}
         className={cn(
-          "group/alert-dialog-content fixed top-[50%] left-[50%] z-50 grid w-full max-w-[calc(100%-2rem)] translate-x-[-50%] translate-y-[-50%] gap-[var(--alert-dialog-content-gap)] rounded-[var(--alert-dialog-content-radius)] border bg-[color:var(--alert-dialog-content-background)] p-[var(--alert-dialog-content-padding)] shadow-[var(--alert-dialog-content-shadow)] data-[size=sm]:max-w-xs data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=closed]:zoom-out-95 data-[state=open]:animate-in data-[state=open]:fade-in-0 data-[state=open]:zoom-in-95 data-[size=default]:sm:max-w-lg duration-[var(--transition-panels-duration)]",
+          "group/alert-dialog-content fixed top-[50%] left-[50%] z-50 grid w-full max-w-[calc(100%-2rem)] translate-x-[-50%] translate-y-[-50%] gap-[var(--alert-dialog-content-gap)] rounded-[var(--alert-dialog-content-radius)] border-[length:var(--alert-dialog-content-border-width)] border-[color:var(--alert-dialog-content-border)] bg-[color:var(--alert-dialog-content-background)] text-[color:var(--alert-dialog-content-label)] p-[var(--alert-dialog-content-padding)] shadow-[var(--alert-dialog-content-shadow)] data-[size=sm]:max-w-xs data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=closed]:zoom-out-95 data-[state=open]:animate-in data-[state=open]:fade-in-0 data-[state=open]:zoom-in-95 data-[size=default]:sm:max-w-lg duration-[var(--transition-panels-duration)]",
           className,
         )}
         {...props}
@@ -93,7 +93,7 @@ function AlertDialogTitle({ className, ...props }: React.ComponentProps<typeof A
     <AlertDialogPrimitive.Title
       data-slot="alert-dialog-title"
       className={cn(
-        "text-[length:var(--alert-dialog-title-font-size)]/[var(--alert-dialog-title-line-height)] [font-weight:var(--alert-dialog-title-font-weight)] sm:group-data-[size=default]/alert-dialog-content:group-has-data-[slot=alert-dialog-media]/alert-dialog-content:col-start-2",
+        "[font-family:var(--alert-dialog-title-font-family)] text-[length:var(--alert-dialog-title-font-size)]/[var(--alert-dialog-title-line-height)] [font-weight:var(--alert-dialog-title-font-weight)] sm:group-data-[size=default]/alert-dialog-content:group-has-data-[slot=alert-dialog-media]/alert-dialog-content:col-start-2",
         className,
       )}
       {...props}
@@ -122,7 +122,7 @@ function AlertDialogMedia({ className, ...props }: React.ComponentProps<"div">) 
     <div
       data-slot="alert-dialog-media"
       className={cn(
-        "mb-2 inline-flex size-16 items-center justify-center rounded-[var(--alert-dialog-media-radius)] bg-[color:var(--alert-dialog-media-background)] sm:group-data-[size=default]/alert-dialog-content:row-span-2 *:[svg:not([class*='size-'])]:size-[var(--alert-dialog-media-size)]",
+        "mb-[var(--alert-dialog-media-margin-bottom)] inline-flex size-16 items-center justify-center rounded-[var(--alert-dialog-media-radius)] bg-[color:var(--alert-dialog-media-background)] sm:group-data-[size=default]/alert-dialog-content:row-span-2 *:[svg:not([class*='size-'])]:size-[var(--alert-dialog-media-size)]",
         className,
       )}
       {...props}

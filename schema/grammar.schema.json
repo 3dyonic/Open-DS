@@ -36,7 +36,10 @@
       "properties": {
         "order": {
           "type": "array",
-          "items": { "type": "string", "pattern": "^[a-z0-9-]+$" },
+          "items": {
+            "type": "string",
+            "pattern": "^[a-z0-9-]+$"
+          },
           "uniqueItems": true,
           "description": "Scheme ids, first to last."
         },
@@ -245,6 +248,11 @@
             "type": "string",
             "description": "The semantic token path the key points to by default.",
             "examples": ["color.action.primary"]
+          },
+          "replaced_by": {
+            "type": "string",
+            "pattern": "^[a-z-]+(/([a-z0-9-]+|@))+$",
+            "description": "A deprecated key: the key that replaces it. It stays one minor release as an alias of that key (OD-241)."
           }
         }
       }
@@ -787,6 +795,10 @@
                     "description": "Where the source record lives."
                   }
                 }
+              },
+              "anatomy": {
+                "type": "object",
+                "description": "The component's parts (OD-229): the drawing, every part with its roles, and the cards that follow each decision to its part. Its Anatomy reference page is generated from it."
               }
             }
           }
@@ -871,6 +883,42 @@
           }
         }
       }
+    },
+    "anatomy": {
+      "type": "object",
+      "description": "The parts layer (OD-229): the roles a part can play, as the questions they answer.",
+      "required": ["description", "roles"],
+      "properties": {
+        "description": {
+          "type": "string",
+          "minLength": 1,
+          "description": "What the parts layer is, for an agent."
+        },
+        "roles": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": ["id", "label", "ask"],
+            "properties": {
+              "id": {
+                "type": "string",
+                "pattern": "^[a-z-]+$",
+                "description": "The role's id, which parts and cards cite."
+              },
+              "label": {
+                "type": "string",
+                "description": "The role's name, as the page shows it."
+              },
+              "ask": {
+                "type": "string",
+                "description": "The question the role answers for a person."
+              }
+            }
+          },
+          "description": "The jobs a part can do for a person."
+        }
+      }
     }
   },
   "$defs": {
@@ -903,6 +951,38 @@
             "$ref": "#/$defs/option"
           },
           "description": "The possible answers. Answers are semantic words, never raw values."
+        },
+        "considers": {
+          "type": "array",
+          "minItems": 1,
+          "description": "What every answer must weigh (OD-245). Each scheme's answer says, for each one, how its choice meets it.",
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": ["id", "group", "label", "ask"],
+            "properties": {
+              "id": {
+                "type": "string",
+                "pattern": "^[a-z-]+$",
+                "description": "The consideration's id, which an answer's considers map uses as its key."
+              },
+              "group": {
+                "type": "string",
+                "minLength": 1,
+                "description": "The family it belongs to, for reading it in groups."
+              },
+              "label": {
+                "type": "string",
+                "minLength": 1,
+                "description": "The consideration's name, as the decision reference shows it."
+              },
+              "ask": {
+                "type": "string",
+                "minLength": 1,
+                "description": "The question to answer for this consideration."
+              }
+            }
+          }
         }
       }
     },

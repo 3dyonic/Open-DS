@@ -17,7 +17,7 @@
         {
           "id": "content",
           "title": "Content and data",
-          "count": 17
+          "count": 18
         },
         {
           "id": "tasks",
@@ -37,7 +37,7 @@
         {
           "id": "brand",
           "title": "Brand",
-          "count": 13
+          "count": 22
         },
         {
           "id": "scenarios",
@@ -62,22 +62,22 @@
         {
           "id": "color",
           "title": "Color",
-          "count": 0
+          "count": 88
         },
         {
           "id": "spacing",
           "title": "Spacing",
-          "count": 2
+          "count": 3
         },
         {
           "id": "shape",
           "title": "Shape",
-          "count": 3
+          "count": 10
         },
         {
           "id": "elevation",
           "title": "Elevation",
-          "count": 7
+          "count": 27
         },
         {
           "id": "motion",
@@ -97,7 +97,7 @@
         {
           "id": "accessibility",
           "title": "Accessibility",
-          "count": 14
+          "count": 104
         },
         {
           "id": "naming",

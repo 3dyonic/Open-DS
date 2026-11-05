@@ -33,8 +33,8 @@ function Message({
       {...props}
     >
       {avatar}
-      <div className="flex min-w-0 flex-1 flex-col gap-[var(--message-gap-2)]">
-        <header className="flex flex-wrap items-baseline gap-x-[var(--message-gap-x)]">
+      <div className="flex min-w-0 flex-1 flex-col gap-[var(--message-content-gap)]">
+        <header className="flex flex-wrap items-baseline gap-x-[var(--message-header-gap)]">
           <span data-slot="message-author" className="[font-weight:var(--message-author-font-weight)]">
             {author}
           </span>
@@ -47,9 +47,7 @@ function Message({
             </time>
           )}
         </header>
-        <div data-slot="message-body" className="leading-normal">
-          {children}
-        </div>
+        <div data-slot="message-body">{children}</div>
       </div>
     </article>
   );

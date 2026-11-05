@@ -55,7 +55,7 @@ export function decisionReference(scheme, g) {
   const answerText = (q) =>
     `${secOf[q].scope ? `${secOf[q].title} · ` : ""}${qs[q].text} → ${label(q)}`;
   const decided = {};
-  const at = (q) => (decided[q] ??= { answers: [], rules: [], variants: [] });
+  const at = (q) => (decided[q] ??= { answers: [], rules: [], variants: [], picks: [] });
   for (const a of scheme.answers)
     for (const q of a.because ?? []) {
       const sec = secOf[a.question];
@@ -93,9 +93,40 @@ export function decisionReference(scheme, g) {
             page: inv.has(c.id) ? `components/${c.id}` : null,
             page_title: title(c.id),
           });
+  // The theme picks an answer sets (OD-241, OD-245): each pick names the answers it follows from, so
+  // the reference shows the cascade from the decision's side. The first brand speaks for the scheme.
+  const firstBrand = Object.values(scheme.tokens?.brands ?? {})[0];
+  const pageOf = (path) =>
+    path.startsWith("color.") ? ["foundations/color", "Color"]
+    : path.startsWith("type.") ? ["foundations/typography", "Typography"]
+    : path.startsWith("radius.") ? ["foundations/shape", "Shape"]
+    : path.startsWith("elevation.") ? ["foundations/elevation", "Elevation"]
+    : [null, null];
+  const walk = (o, p = [], acc = []) => {
+    if (!o || typeof o !== "object") return acc;
+    if ("$value" in o) return (acc.push([p.join("."), o]), acc);
+    for (const [k, v] of Object.entries(o)) if (k[0] !== "$") walk(v, [...p, k], acc);
+    return acc;
+  };
+  for (const mode of ["base", "light", "dark"])
+    for (const [path, node] of walk(firstBrand?.theme?.[mode]))
+      for (const q of node.$extensions?.["open-ds"]?.because ?? []) {
+        if (!qs[q]) continue;
+        const sem = path.replace(/\.@$/, "");
+        const [page, page_title] = pageOf(sem);
+        at(q).picks.push({
+          token: sem,
+          mode: mode === "base" ? "every mode" : mode,
+          pick: String(node.$value).replace(/^\{|\}$/g, ""),
+          why: node.$extensions["open-ds"].why ?? null,
+          text: `${sem}${mode === "base" ? "" : ` in ${mode}`}: ${node.$extensions["open-ds"].why ?? String(node.$value)}`,
+          page,
+          page_title,
+        });
+      }
   const count = (q) => {
     const d = decided[q];
-    return d ? d.answers.length + d.rules.length + d.variants.length : 0;
+    return d ? d.answers.length + d.rules.length + d.variants.length + d.picks.length : 0;
   };
   return {
     scheme: scheme.id,
@@ -118,7 +149,11 @@ export function decisionReference(scheme, g) {
           answer: label(b),
           line: answerText(b),
         })),
-        decided: decided[q.id] ?? { answers: [], rules: [], variants: [] },
+        decided: decided[q.id] ?? { answers: [], rules: [], variants: [], picks: [] },
+        // What the answer must weigh, and how this scheme meets each one (OD-245).
+        ...(q.considers && {
+          considers: q.considers.map((k) => ({ ...k, how: answer(q.id).considers?.[k.id] ?? null })),
+        }),
       })),
     })),
   };
@@ -131,6 +166,8 @@ export function decisionText(ref, only) {
     for (const q of s.questions) {
       if (only && q.id !== only) continue;
       out.push(`${s.title} · ${q.text}`, `  ${q.answer}`, `  Why: ${q.why}`);
+      if (q.considers)
+        out.push("  Considers:", ...q.considers.map((k) => `    - ${k.label}: ${k.how ?? "not answered"}`));
       out.push(
         `  Because of: ${q.because.length ? q.because.map((b) => b.line).join("; ") : "nothing before it, a first answer"}`,
       );
@@ -138,6 +175,7 @@ export function decisionText(ref, only) {
         ["answers", "Answers it led to"],
         ["rules", "Rules it sets"],
         ["variants", "Variants it picks"],
+        ["picks", "Theme picks it sets"],
       ])
         if (q.decided[k].length)
           out.push(
