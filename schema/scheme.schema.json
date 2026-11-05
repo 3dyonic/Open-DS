@@ -1167,6 +1167,10 @@
                   "minLength": 1,
                   "description": "On a theme pick: why this step carries the semantic's rule in this brand and mode (OD-241, OD-243)."
                 },
+                "generated": {
+                  "const": true,
+                  "description": "The why was computed by scripts/theme-reasons.mjs from the values the pick meets. Run it again after the pick changes; a why written by hand has no flag and is kept."
+                },
                 "because": {
                   "type": "array",
                   "minItems": 1,

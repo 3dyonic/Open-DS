@@ -11,6 +11,7 @@ const SCHEMES = ["dense-data", "content-first", "accessible-first", "brand-expre
 const roots = assetRoots();
 const lum = (h) => [1, 3, 5].map((i) => parseInt(h.slice(i, i + 2), 16) / 255).map((v) => (v <= 0.04045 ? v / 12.92 : ((v + 0.055) / 1.055) ** 2.4)).reduce((a, v, i) => a + v * [0.2126, 0.7152, 0.0722][i], 0);
 const ratio = (a, b) => { const [x, y] = [lum(a), lum(b)].sort((m, n) => n - m); return (x + 0.05) / (y + 0.05); };
+const vs = (r, floor) => `${r >= floor ? "above" : "under"} the ${floor}:1 floor`;
 const r1 = (n) => `${n.toFixed(2).replace(/0$/, "")}:1`;
 const stepOf = (ref) => ref.replace(/^\{color\.|\}$/g, "");
 
@@ -40,7 +41,7 @@ const REASONS = [
   {
     path: ["color", "text", "primary"],
     because: ["accessibility.definition"],
-    why: ({ v, pick, floor }) => `${pick}: the strongest text step, ${r1(ratio(v("color.text.primary"), v("color.surface.default")))} on content, above the ${floor}:1 floor.`,
+    why: ({ v, pick, floor }) => { const r = ratio(v("color.text.primary"), v("color.surface.default")); return `${pick}: the strongest text step, ${r1(r)} on content, ${vs(r, floor)}.`; },
   },
   {
     path: ["color", "border", "focus"],
@@ -50,7 +51,7 @@ const REASONS = [
   {
     path: ["color", "status", "danger", "@"],
     because: ["accessibility.definition", "color.lands"],
-    why: ({ v, pick, floor }) => `${pick}: real risk reads as text, ${r1(ratio(v("color.status.danger.@"), v("color.surface.default")))} on content, above the ${floor}:1 floor.`,
+    why: ({ v, pick, floor }) => { const r = ratio(v("color.status.danger.@"), v("color.surface.default")); return `${pick}: real risk reads as text, ${r1(r)} on content, ${vs(r, floor)}.`; },
   },
 ];
 
@@ -61,7 +62,7 @@ for (const id of SCHEMES) {
   const file = `schemes/${id}.json`;
   const raw = JSON.parse(readFileSync(ROOT + file, "utf8"));
   const s = loadScheme(id, roots);
-  const floor = { aa: 4.5, aaa: 7 }[raw.answers.find((a) => a.question === "accessibility.definition")?.option] ?? 4.5;
+  const floor = { aa: 4.5, "aaa-text": 7, aaa: 7 }[raw.answers.find((a) => a.question === "accessibility.definition")?.option] ?? 4.5;
   for (const [brand, def] of Object.entries(raw.tokens.brands))
     for (const mode of ["light", "dark"]) {
       const ix = tokenIndex(s, { brand, mode });
@@ -72,7 +73,13 @@ for (const id of SCHEMES) {
         const ext = (node.$extensions ??= {});
         const od = (ext["open-ds"] ??= {});
         if (od.why && !od.generated) continue;
-        od.why = r.why({ v, pick: stepOf(node.$value), mode, floor });
+        const why = r.why({ v, pick: stepOf(node.$value), mode, floor });
+        // A pick that breaks the scheme's own floor gets no reason: it is a gap to fix, not to explain.
+        if (/under the [\d.]+:1 floor/.test(why)) {
+          console.error(`${id}/${brand}/${mode} ${r.path.join(".")}: ${why} Left without a reason.`);
+          continue;
+        }
+        od.why = why;
         od.because = r.because;
         od.generated = true;
         added++;

@@ -3102,7 +3102,13 @@
                   "$value": "{color.neutral.0}",
                   "$extensions": {
                     "open-ds": {
-                      "tone": "light"
+                      "tone": "light",
+                      "why": "neutral.0, the same as content (surface.default): a menu stands out by its edge and its one shadow, not by its fill.",
+                      "because": [
+                        "elevation.roles",
+                        "elevation.definition"
+                      ],
+                      "generated": true
                     }
                   }
                 },
@@ -3155,7 +3161,16 @@
               "text": {
                 "primary": {
                   "$type": "color",
-                  "$value": "{color.neutral.900}"
+                  "$value": "{color.neutral.900}",
+                  "$extensions": {
+                    "open-ds": {
+                      "why": "neutral.900: the strongest text step, 18.0:1 on content, above the 4.5:1 floor.",
+                      "because": [
+                        "accessibility.definition"
+                      ],
+                      "generated": true
+                    }
+                  }
                 },
                 "secondary": {
                   "$type": "color",
@@ -3185,7 +3200,17 @@
               "border": {
                 "default": {
                   "$type": "color",
-                  "$value": "{color.neutral.200}"
+                  "$value": "{color.neutral.200}",
+                  "$extensions": {
+                    "open-ds": {
+                      "why": "neutral.200: a quiet line that stays visible on every surface it meets (lowest 1.26:1, on surface.canvas). It decorates, so it holds no contrast minimum.",
+                      "because": [
+                        "elevation.definition",
+                        "accessibility.definition"
+                      ],
+                      "generated": true
+                    }
+                  }
                 },
                 "strong": {
                   "$type": "color",
@@ -3193,7 +3218,17 @@
                 },
                 "focus": {
                   "$type": "color",
-                  "$value": "{color.pink.light.600}"
+                  "$value": "{color.pink.light.600}",
+                  "$extensions": {
+                    "open-ds": {
+                      "why": "pink.light.600: the ring keeps 4.84:1 on content, over the 3:1 a focus ring needs, so the keyboard's place is never lost.",
+                      "because": [
+                        "accessibility.definition",
+                        "color.definition"
+                      ],
+                      "generated": true
+                    }
+                  }
                 },
                 "selected": {
                   "$type": "color",
@@ -3312,7 +3347,17 @@
                 "danger": {
                   "@": {
                     "$type": "color",
-                    "$value": "{color.red.light.600}"
+                    "$value": "{color.red.light.600}",
+                    "$extensions": {
+                      "open-ds": {
+                        "why": "red.light.600: real risk reads as text, 5.63:1 on content, above the 4.5:1 floor.",
+                        "because": [
+                          "accessibility.definition",
+                          "color.lands"
+                        ],
+                        "generated": true
+                      }
+                    }
                   },
                   "subtle": {
                     "$type": "color",
@@ -3479,7 +3524,13 @@
                   "$value": "{color.neutral.50}",
                   "$extensions": {
                     "open-ds": {
-                      "tone": "dark"
+                      "tone": "dark",
+                      "why": "neutral.50, the same as content (surface.default): a menu stands out by its edge and its one shadow, not by its fill, as in light.",
+                      "because": [
+                        "elevation.roles",
+                        "elevation.definition"
+                      ],
+                      "generated": true
                     }
                   }
                 },
@@ -3532,7 +3583,16 @@
               "text": {
                 "primary": {
                   "$type": "color",
-                  "$value": "{color.neutral.900}"
+                  "$value": "{color.neutral.900}",
+                  "$extensions": {
+                    "open-ds": {
+                      "why": "neutral.900: the strongest text step, 17.12:1 on content, above the 4.5:1 floor.",
+                      "because": [
+                        "accessibility.definition"
+                      ],
+                      "generated": true
+                    }
+                  }
                 },
                 "secondary": {
                   "$type": "color",
@@ -3562,7 +3622,17 @@
               "border": {
                 "default": {
                   "$type": "color",
-                  "$value": "{color.neutral.200}"
+                  "$value": "{color.neutral.200}",
+                  "$extensions": {
+                    "open-ds": {
+                      "why": "neutral.200: a quiet line that stays visible on every surface it meets (lowest 1.69:1, on surface.default). It decorates, so it holds no contrast minimum.",
+                      "because": [
+                        "elevation.definition",
+                        "accessibility.definition"
+                      ],
+                      "generated": true
+                    }
+                  }
                 },
                 "strong": {
                   "$type": "color",
@@ -3570,7 +3640,17 @@
                 },
                 "focus": {
                   "$type": "color",
-                  "$value": "{color.pink.dark.600}"
+                  "$value": "{color.pink.dark.600}",
+                  "$extensions": {
+                    "open-ds": {
+                      "why": "pink.dark.600: the ring keeps 8.88:1 on content, over the 3:1 a focus ring needs, so the keyboard's place is never lost.",
+                      "because": [
+                        "accessibility.definition",
+                        "color.definition"
+                      ],
+                      "generated": true
+                    }
+                  }
                 },
                 "selected": {
                   "$type": "color",
@@ -3693,7 +3773,17 @@
                 "danger": {
                   "@": {
                     "$type": "color",
-                    "$value": "{color.red.dark.600}"
+                    "$value": "{color.red.dark.600}",
+                    "$extensions": {
+                      "open-ds": {
+                        "why": "red.dark.600: real risk reads as text, 7.58:1 on content, above the 4.5:1 floor.",
+                        "because": [
+                          "accessibility.definition",
+                          "color.lands"
+                        ],
+                        "generated": true
+                      }
+                    }
                   },
                   "subtle": {
                     "$type": "color",
@@ -3876,7 +3966,7 @@
         "badge": {
           "$type": "dimension",
           "$value": "{theme.radius.badge}",
-          "$description": "Corner of badges and checkboxes."
+          "$description": "Corner of badges, checkboxes and menu items."
         },
         "container": {
           "$type": "dimension",

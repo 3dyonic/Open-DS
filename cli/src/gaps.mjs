@@ -240,7 +240,12 @@ export function componentGaps(scheme, g, roots) {
       // A role whose written rule names this component is not borrowed: radius.badge is "Corner of
       // badges and checkboxes", so the checkbox reads its own rule.
       const roleRule = role ? t.aliases.split(".").reduce((n, k) => n?.[k], scheme.tokens.semantic)?.$description ?? "" : "";
-      const named = new RegExp(`\\b${comp.replace(/-/g, "[ -]")}(e?s)?\\b`, "i").test(roleRule);
+      // "menu items" names the items of every menu (dropdown-menu, context-menu): the component's last
+      // word and the part.
+      const part = key.split(".").find((w) => w === "item" || w === "items");
+      const named =
+        new RegExp(`\\b${comp.replace(/-/g, "[ -]")}(e?s)?\\b`, "i").test(roleRule) ||
+        (part && new RegExp(`\\b${comp.split("-").pop()} items\\b`, "i").test(roleRule));
       if (role && catalogue.has(role) && role !== comp && !comp.startsWith(role) && !named)
         gaps.push({
           ...base,
@@ -259,7 +264,8 @@ export function componentGaps(scheme, g, roots) {
         for (const u of uses.filter((x) => x.property === "background" && x.state !== "disabled")) {
           // States the semantic's own rule covers are one job: surface.highlight's rule covers the
           // pointer (hover) and the keyboard (highlight); surface.selected's covers selected and current.
-          const job = u.state && RULE_WORDS[u.state].test(rule.get(t.aliases) ?? "") ? "its rule" : (u.state ?? "rest");
+          // Its own rule's states are the semantic's job, the same as its use at rest.
+          const job = !u.state || RULE_WORDS[u.state].test(rule.get(t.aliases) ?? "") ? "its job" : u.state;
           const j = jobs.get(t.aliases) ?? new Map();
           j.set(job, [...new Set([...(j.get(job) ?? []), t.token])]);
           jobs.set(t.aliases, j);
