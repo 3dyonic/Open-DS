@@ -14,6 +14,27 @@ const schemes = JSON.parse(readFileSync(new URL("./schemes.json", import.meta.ur
 const STORYBOOK = process.env.STORYBOOK_URL ?? "http://localhost:6006";
 // Where the site lives (OD-210): "/" locally, "/docs/" on open-ds.dev, next to /storybook/.
 const BASE = process.env.DOCS_BASE_URL ?? "/";
+// The generated pages write images from docs/static as root paths (/anatomy/…), and Docusaurus does
+// not rewrite paths in raw HTML. Under a base URL (open-ds.dev serves the docs at /docs/) those would
+// miss, so every root-relative image gets the base in front: as an element, as a JSX element, or
+// still as raw HTML. Paths that already start with the base are left alone.
+function rehypeBaseUrlImages({ base }: { base: string }) {
+  const prefix = base.replace(/\/$/, "");
+  const fix = (src: unknown) =>
+    typeof src === "string" && prefix && src.startsWith("/") && !src.startsWith("//") && !src.startsWith(`${prefix}/`) ? prefix + src : src;
+  type Node = { type: string; tagName?: string; name?: string; value?: string; properties?: Record<string, unknown>; attributes?: { name?: string; value?: unknown }[]; children?: Node[] };
+  return (tree: Node) => {
+    const walk = (n: Node) => {
+      if (n.type === "element" && n.tagName === "img" && n.properties) n.properties.src = fix(n.properties.src);
+      if ((n.type === "mdxJsxFlowElement" || n.type === "mdxJsxTextElement") && n.name === "img")
+        for (const a of n.attributes ?? []) if (a.name === "src") a.value = fix(a.value);
+      if (n.type === "raw" && typeof n.value === "string" && prefix)
+        n.value = n.value.replace(/(<img\b[^>]*?\bsrc=")(\/[^"]*)/g, (m, a: string, src: string) => `${a}${fix(src)}`);
+      for (const c of n.children ?? []) walk(c);
+    };
+    walk(tree);
+  };
+}
 const ids = JSON.stringify(schemes.map((s) => s.id));
 // Google Tag Manager, only with consent, the same choice as the website's (scripts/consent.mjs).
 // Empty without NEXT_PUBLIC_GTM_ID at build time: no banner, nothing loads from Google.
@@ -49,7 +70,12 @@ const config: Config = {
     [
       "classic",
       {
-        docs: { routeBasePath: "/", sidebarPath: "./sidebars.ts", sidebarItemsGenerator: decisionMenu(BASE) },
+        docs: {
+          routeBasePath: "/",
+          sidebarPath: "./sidebars.ts",
+          sidebarItemsGenerator: decisionMenu(BASE),
+          rehypePlugins: [[rehypeBaseUrlImages, { base: BASE }]],
+        },
         blog: false,
         theme: { customCss: "./src/css/custom.css" },
       } satisfies Preset.Options,
