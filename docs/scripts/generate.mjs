@@ -26,6 +26,18 @@ for (const id of ids)
     process.exit(1);
   }
 
+// Code (commands, token names) is set in a monospace. The scheme's data face when it is one (Dense
+// data's IBM Plex Mono); otherwise the system's, because a reading serif or a sans hides the spaces
+// in a command and the shape of a token name.
+const MONO = "ui-monospace, SFMono-Regular, Menlo, Consolas, monospace";
+const codeFont = (scheme) => {
+  const b = Object.values(scheme.tokens.brands)[0];
+  const ref = b?.theme?.base?.type?.data?.["font-family"]?.$value ?? "";
+  const key = ref.match(/^\{font\.family\.([a-z0-9-]+)\}$/)?.[1];
+  const stack = key ? scheme.tokens.primitive?.font?.family?.[key]?.$value ?? "" : "";
+  return /monospace\s*$/.test(stack) ? "var(--type-data-font-family)" : MONO;
+};
+
 // Infima's variables, pointed at the scheme's tokens, so Docusaurus wears the design system.
 const INFIMA = {
   "--ifm-color-primary": "color-action-primary",
@@ -55,7 +67,6 @@ const INFIMA = {
   "--ifm-color-emphasis-300": "color-border-default",
   "--ifm-font-family-base": "type-body-font-family",
   "--ifm-heading-font-family": "type-heading-font-family",
-  "--ifm-font-family-monospace": "type-data-font-family",
   "--ifm-heading-font-weight": "type-heading-font-weight",
   "--ifm-font-weight-bold": "type-label-font-weight",
   "--ifm-global-radius": "radius-container",
@@ -172,7 +183,7 @@ for (const id of ids) {
     tokenCss +
     `${scope} {\n${Object.entries(INFIMA)
       .map(([k, v]) => `  ${k}: var(--${v});`)
-      .join("\n")}\n}\n` +
+      .join("\n")}\n  --ifm-font-family-monospace: ${codeFont(scheme)};\n}\n` +
     // OD-222: text on a fill follows the fill's tone. The docs' own selected rows (the pickers, the
     // menus) read --ods-text-on-selected: on-light or on-dark, from the tone this scheme gives
     // color.surface.selected in each mode and brand.

@@ -2695,7 +2695,6 @@ html[data-scheme="brand-expressive"] {
   --ifm-color-emphasis-300: var(--color-border-default);
   --ifm-font-family-base: var(--type-body-font-family);
   --ifm-heading-font-family: var(--type-heading-font-family);
-  --ifm-font-family-monospace: var(--type-data-font-family);
   --ifm-heading-font-weight: var(--type-heading-font-weight);
   --ifm-font-weight-bold: var(--type-label-font-weight);
   --ifm-global-radius: var(--radius-container);
@@ -2742,6 +2741,7 @@ html[data-scheme="brand-expressive"] {
   --ifm-color-info-dark: var(--color-action-primary);
   --ifm-color-info-contrast-background: var(--color-surface-selected);
   --ifm-color-info-contrast-foreground: var(--color-text-primary);
+  --ifm-font-family-monospace: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
 }
 html[data-scheme="brand-expressive"] { --ods-text-on-selected: var(--color-text-on-light); --ods-text-on-info-subtle: var(--color-text-info-on-light); --ods-text-on-success-subtle: var(--color-text-success-on-light); --ods-text-on-warning-subtle: var(--color-text-warning-on-light); --ods-text-on-danger-subtle: var(--color-text-danger-on-light); }
 html[data-scheme="brand-expressive"][data-theme="dark"] { --ods-text-on-selected: var(--color-text-on-dark); --ods-text-on-info-subtle: var(--color-text-info-on-dark); --ods-text-on-success-subtle: var(--color-text-success-on-dark); --ods-text-on-warning-subtle: var(--color-text-warning-on-dark); --ods-text-on-danger-subtle: var(--color-text-danger-on-dark); }

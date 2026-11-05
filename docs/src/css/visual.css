@@ -2080,7 +2080,7 @@ tr.odv-for td {
 .odv-am-lrow { display: flex; align-items: center; gap: 6px; padding: 6px 0; flex-wrap: wrap; }
 .odv-am-lrow.d1 { padding-left: 20px; }
 .odv-am-lrow.d2 { padding-left: 40px; }
-.odv-am-glyph { color: var(--color-text-muted); font-family: var(--type-data-font-family, monospace); }
+.odv-am-glyph { color: var(--color-text-muted); font-family: var(--ifm-font-family-monospace); }
 .odv-am-need { color: var(--color-text-secondary); font-size: 12px; }
 .odv-am-roles { margin-left: auto; display: inline-flex; gap: 6px; flex-wrap: wrap; }
 .odv-am-card { display: grid; grid-template-columns: 300px minmax(0, 1fr); gap: 24px; margin: 0 0 16px; padding: 18px 20px; border: 1px solid var(--color-border-default); border-radius: var(--radius-container, 8px); background: var(--color-surface-default); }
@@ -2095,7 +2095,7 @@ tr.odv-for td {
 .odv-am-why { color: var(--color-text-secondary); font-size: 13px; }
 .odv-am-chain { display: flex; flex-wrap: wrap; align-items: center; gap: 6px; }
 .odv-am-chain > span { color: var(--color-text-muted); }
-.odv-am-val { color: var(--color-text-secondary); font-family: var(--type-data-font-family, monospace); font-size: 0.85em; }
+.odv-am-val { color: var(--color-text-secondary); font-family: var(--ifm-font-family-monospace); font-size: 0.85em; }
 .odv-am-nokey { font-size: 12px; }
 .odv-am-lines { margin-top: 4px; display: grid; gap: 2px; color: var(--color-text-secondary); font-size: 13px; }
 .odv-am-lines b { color: var(--color-text-primary); margin-right: 6px; }
