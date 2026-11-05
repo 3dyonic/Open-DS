@@ -12,7 +12,7 @@ const esc = (s: string) =>
   s.replaceAll("&", "&amp;").replaceAll("<", "&lt;").replaceAll(">", "&gt;").replaceAll('"', "&quot;");
 
 export function decisionMenu(baseUrl: string) {
-  return async ({ defaultSidebarItemsGenerator, ...args }: any) => {
+  return async ({ defaultSidebarItemsGenerator, ...args }: any): Promise<any> => {
     const items: Item[] = await defaultSidebarItemsGenerator(args);
     const dir: string = args.item.dirName;
     const file = join(args.version.contentPath, dir, "_decision-menu.json");
