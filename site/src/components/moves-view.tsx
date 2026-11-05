@@ -6,6 +6,7 @@ import { Button } from "@open-ds/ui";
 import { useMemo, useState } from "react";
 import type { AnswerBook } from "@/lib/answers";
 import { followers } from "@/lib/follow";
+import { Picker } from "./picker";
 
 export function MovesView({
   book,
@@ -61,23 +62,20 @@ export function MovesView({
       <section className="inverse flex flex-col gap-6 rounded-[8px] bg-ink p-7 text-paper lg:flex-row lg:items-center">
         <div className="flex flex-col gap-3">
           <label
+            id="mv-q-label"
             htmlFor="mv-q"
             className="font-mono text-[12px] uppercase tracking-[0.48px] text-line"
           >
             {question} · {qv.text}
           </label>
-          <select
+          <Picker
             id="mv-q"
+            labelledBy="mv-q-label"
             value={question}
-            onChange={(e) => setQuestion(e.target.value)}
+            onChange={setQuestion}
+            options={book.questions.map((x) => ({ id: x.id, label: `${x.id} · ${x.text}` }))}
             className="max-w-[420px] rounded-[4px] border border-muted bg-ink px-3 py-2 text-[15px]"
-          >
-            {book.questions.map((x) => (
-              <option key={x.id} value={x.id}>
-                {x.id} · {x.text}
-              </option>
-            ))}
-          </select>
+          />
           <div className="flex flex-wrap items-center gap-3">
             <span className="rounded-[4px] border border-muted px-3 py-2 text-[20px] font-semibold text-line">
               {qv.options[me.answers[question].option]}
@@ -85,23 +83,16 @@ export function MovesView({
             <span aria-hidden className="text-[22px] text-accent">
               →
             </span>
-            <label htmlFor="mv-o" className="sr-only">
-              New answer
-            </label>
-            <select
+            <Picker
               id="mv-o"
+              label="New answer"
               value={chosen}
-              onChange={(e) => setOption(e.target.value)}
-              className="max-w-full rounded-[4px] bg-accent px-3 py-2 text-[20px] font-semibold text-ink"
-            >
-              {Object.entries(qv.options)
+              onChange={setOption}
+              options={Object.entries(qv.options)
                 .filter(([id]) => id !== me.answers[question].option)
-                .map(([id, label]) => (
-                  <option key={id} value={id}>
-                    {label}
-                  </option>
-                ))}
-            </select>
+                .map(([id, label]) => ({ id, label }))}
+              className="max-w-full rounded-[4px] bg-accent px-3 py-2 text-[20px] font-semibold text-ink"
+            />
           </div>
         </div>
         <div className="flex flex-wrap gap-8 lg:ml-auto">

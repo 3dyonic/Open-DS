@@ -623,12 +623,12 @@ export const CHECKS = {
           else if (/\.(tsx|jsx|ts|js|mdx|md|html)$/.test(e.name) && /<select[\s>]/.test(c.read(rel))) gaps.push(rel);
         }
       };
-      for (const d of ["docs/src", "cli/templates/project/docs/src"]) if (c.has(d)) walk(d);
+      for (const d of ["docs/src", "cli/templates/project/docs/src", "site/src"]) if (c.has(d)) walk(d);
       return gaps.length
         ? bad(
-            `a native <select> in ${gaps.join(", ")}: use the docs picker (docs/src/theme/NavbarItem/SchemeSwitcher.tsx)`,
+            `a native <select> in ${gaps.join(", ")}: use the picker (docs/src/theme/NavbarItem/SchemeSwitcher.tsx, site/src/components/picker.tsx)`,
           )
-        : ok("no native select in the docs or the created project's docs");
+        : ok("no native select in the docs, the created project's docs or the website");
     },
   },
 
