@@ -308,7 +308,9 @@ function componentGapsNow(scheme, g, roots) {
     // The same detection as the docs' "From the system" rows.
     const sysSeen = new Set();
     for (const cls of src.match(/[!\w:[\]=&>*()+.,'"\/-]+/g) ?? []) {
+      // A class keeps no quote or comma of the string around it ("border … at the start, first:border-l",).
       const util = cls
+        .replace(/^["'`,]+|["'`,]+$/g, "")
         .split(":")
         .pop()
         .replace(/^!/, "")

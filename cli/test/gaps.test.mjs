@@ -46,9 +46,31 @@ test("borrows-a-key: a component that reads another component's own key", () => 
   );
 });
 
-test("reads-the-system: a bare utility that reads a system variable", () => {
+test("reads-the-system: a bare utility that reads a system variable", async () => {
+  // A fixture: the components as they are, with the alert given back a bare \`border\` (it read
+  // --border from the system before OD-243).
+  const {
+    cpSync,
+    mkdtempSync,
+    readFileSync: read,
+    writeFileSync: write,
+  } = await import("node:fs");
+  const { tmpdir } = await import("node:os");
+  const { join } = await import("node:path");
+  const ui = join(mkdtempSync(join(tmpdir(), "od-gaps-")), "src");
+  cpSync(roots.ui, ui, { recursive: true });
+  const f = join(ui, "components", "alert.tsx");
+  write(
+    f,
+    read(f, "utf8")
+      .replace('data-slot="alert"', 'data-slot="alert" data-x="border"')
+      .replace(/className=\{cn\(\s*"/, (m) => `${m}border `),
+  );
+  const r = { ...roots, ui };
+  const fake = structuredClone(loadScheme("dense-data", roots));
+  fake.id = "dense-data-fixture";
   assert.ok(
-    gaps("dense-data").some(
+    componentGaps(fake, g, r).some(
       (x) =>
         x.kind === "reads-the-system" &&
         x.component === "alert" &&

@@ -98,7 +98,7 @@ html[data-scheme="content-first"] {
   --color-category-4: #8A5600; /** Category 4: tells one item or series from another. It carries no meaning. */
   --color-category-4-subtle: #FEE8CF; /** Category 4: the fill of a tag. */
   --radius-control: 0.5rem; /** Corner of buttons and inputs. */
-  --radius-badge: 9999px; /** Corner of badges, chips, tooltips and checkboxes: small labels and marks. */
+  --radius-badge: 9999px; /** Corner of badges, chips, tooltips, keyboard keys (kbd) and checkboxes: small labels and marks. */
   --radius-option: 0.5rem; /** Corner of options in menus and lists: the panel's corner less its padding, so the corners nest. */
   --radius-container: 0.75rem; /** Corner of cards, menus and dialogs. */
   --type-display-font-family: "Source Serif 4", Georgia, serif;
@@ -170,13 +170,14 @@ html[data-scheme="content-first"] {
   --accordion-trigger-font-weight: var(--type-label-font-weight); /** The trigger's text weight. */
   --accordion-trigger-padding-y: var(--space-inset-container); /** Space above and below the trigger's text. */
   --accordion-trigger-gap: var(--space-gap-group); /** Space between the trigger's text and its icon. */
-  --accordion-focus-ring-width: var(--border-width-focus); /** The focus ring's width. */
-  --accordion-disabled-opacity: var(--opacity-disabled); /** How faint a disabled trigger is. */
+  --accordion-trigger-disabled-opacity: var(--opacity-disabled); /** How faint a disabled trigger is. */
+  --accordion-trigger-focus-ring-width: var(--border-width-focus); /** The trigger's focus ring width. */
+  --accordion-trigger-focus-offset: var(--border-width-focus-offset); /** Gap between the trigger and its focus ring. */
   --accordion-icon-size: var(--size-icon); /** The chevron's size. */
   --accordion-icon-duration: var(--motion-duration-feedback); /** How fast the chevron turns. */
   --accordion-content-font-size: var(--type-body-font-size); /** The content's text size. */
   --accordion-content-padding-bottom: var(--space-inset-container); /** Space below the content. */
-  --accordion-focus-offset: var(--border-width-focus-offset); /** Gap between the accordion and its focus ring. */
+  --accordion-item-divider-width: var(--border-width-default); /** The width of the line between items. */
   --alert-dialog-content-gap: var(--space-gap-group); /** Content gap of the alert dialog. */
   --alert-dialog-content-padding: var(--component-spacing-map-x6); /** Content padding of the alert dialog. */
   --alert-dialog-content-border-width: var(--border-width-default); /** Content border width of the alert dialog. */
@@ -200,18 +201,20 @@ html[data-scheme="content-first"] {
   --alert-description-gap: var(--space-gap-tight); /** Description gap of the alert. */
   --alert-description-font-size: var(--type-body-font-size); /** Description font size of the alert. */
   --alert-description-line-height: var(--type-body-line-height); /** Description line height of the alert. */
+  --alert-border-width: var(--border-width-default); /** The width of the alert's edge. */
   --attachment-gap: var(--component-spacing-map-x3); /** Gap of the attachment. */
   --attachment-padding-x: var(--component-spacing-map-x3); /** Padding x of the attachment. */
   --attachment-padding-y: var(--component-spacing-map-x2); /** Padding y of the attachment. */
   --attachment-font-size: var(--type-body-font-size); /** Font size of the attachment. */
   --attachment-line-height: var(--type-body-line-height); /** Line height of the attachment. */
   --attachment-focus: var(--border-width-focus); /** Focus of the attachment. */
-  --attachment-size: var(--size-control-default); /** Size of the attachment. */
-  --attachment-icon-size: var(--size-icon); /** Icon size of the attachment. */
-  --attachment-font-weight: var(--type-label-font-weight); /** Font weight of the attachment. */
-  --attachment-font-size-2: var(--type-caption-font-size); /** Font size 2 of the attachment. */
-  --attachment-line-height-2: var(--type-caption-line-height); /** Line height 2 of the attachment. */
   --attachment-focus-offset: var(--border-width-focus-offset); /** Gap between the attachment and its focus ring. */
+  --attachment-border-width: var(--border-width-default); /** The width of the attachment's edge. */
+  --attachment-media-size: var(--size-control-default); /** The size of the square that holds the file icon. */
+  --attachment-media-icon-size: var(--size-icon); /** The file icon's size. */
+  --attachment-meta-font-size: var(--type-caption-font-size); /** The size of the file's type and size text. */
+  --attachment-meta-line-height: var(--type-caption-line-height); /** The line height of the file's type and size text. */
+  --attachment-name-font-weight: var(--type-label-font-weight); /** The weight of the file's name. */
   --avatar-size: var(--size-control-default); /** Size of the avatar. */
   --avatar-radius: var(--radius-round); /** Radius of the avatar. */
   --avatar-fallback-radius: var(--radius-round); /** Fallback radius of the avatar. */
@@ -444,6 +447,7 @@ html[data-scheme="content-first"] {
   --empty-padding: var(--component-spacing-map-x6); /** Padding of the empty. */
   --empty-padding-2: var(--component-spacing-map-x12); /** Padding 2 of the empty. */
   --empty-header-gap: var(--space-gap-default); /** Header gap of the empty. */
+  --empty-icon-margin-bottom: var(--component-spacing-map-x2); /** Space below the icon, before the title: a step of the component spacing, added to the header's gap. */
   --empty-title-font-size: var(--type-heading-font-size); /** Title font size of the empty. */
   --empty-title-line-height: var(--type-heading-line-height); /** Title line height of the empty. */
   --empty-title-font-weight: var(--type-label-font-weight); /** Title font weight of the empty. */
@@ -862,16 +866,25 @@ html[data-scheme="content-first"] {
   --tooltip-content-radius: var(--radius-badge); /** Content radius of the tooltip. */
   --tooltip-content-font-family: var(--type-caption-font-family); /** Content font family of the tooltip. */
   --accordion-trigger-radius: var(--radius-control); /** The trigger's corner, seen on focus. */
-  --accordion-focus-ring: var(--color-border-focus); /** The focus ring's color. */
+  --accordion-trigger-focus-ring: var(--color-border-focus); /** The trigger's focus ring color, at full strength. */
+  --accordion-focus-ring-width: var(--accordion-trigger-focus-ring-width); /** Deprecated: use component.accordion.trigger.focus-ring.width (OD-243). The focus ring's width. */
+  --accordion-disabled-opacity: var(--accordion-trigger-disabled-opacity); /** Deprecated: use component.accordion.trigger.disabled.opacity (OD-243). How faint a disabled trigger is. */
+  --accordion-focus-offset: var(--accordion-trigger-focus-offset); /** Deprecated: use component.accordion.trigger.focus-offset (OD-243). Gap between the accordion and its focus ring. */
   --alert-dialog-overlay-background: var(--color-surface-scrim); /** Overlay background of the alert dialog. */
   --alert-dialog-content-radius: var(--radius-container); /** Content radius of the alert dialog. */
   --alert-dialog-content-shadow: var(--elevation-overlay); /** Content shadow of the alert dialog. */
   --alert-dialog-media-radius: var(--radius-control); /** Media radius of the alert dialog. */
   --alert-radius: var(--radius-container); /** Radius of the alert. */
   --alert-destructive-label: var(--color-status-danger); /** Destructive label of the alert. */
+  --alert-destructive-description-label: var(--color-status-danger); /** The description's text in a destructive alert: error text, at full strength, like the title. */
   --attachment-radius: var(--radius-control); /** Radius of the attachment. */
   --attachment-focus-ring-focus: var(--color-border-focus); /** Focus ring focus of the attachment. */
-  --attachment-radius-2: var(--radius-badge); /** Radius 2 of the attachment. */
+  --attachment-size: var(--attachment-media-size); /** Deprecated: use component.attachment.media.size (OD-243). Size of the attachment. */
+  --attachment-icon-size: var(--attachment-media-icon-size); /** Deprecated: use component.attachment.media.icon.size (OD-243). Icon size of the attachment. */
+  --attachment-font-weight: var(--attachment-name-font-weight); /** Deprecated: use component.attachment.name.font-weight (OD-243). Font weight of the attachment. */
+  --attachment-font-size-2: var(--attachment-meta-font-size); /** Deprecated: use component.attachment.meta.font-size (OD-243). Font size 2 of the attachment. */
+  --attachment-line-height-2: var(--attachment-meta-line-height); /** Deprecated: use component.attachment.meta.line-height (OD-243). Line height 2 of the attachment. */
+  --attachment-media-radius: var(--radius-control); /** Corner of the attachment's file tile: a media tile, like the item's. */
   --avatar-badge-background: var(--color-action-primary); /** Badge background of the avatar. */
   --bubble-me-background: var(--color-action-primary); /** Me background of the bubble. */
   --bubble-body-radius: var(--radius-container); /** Body radius of the bubble. */
@@ -1103,6 +1116,8 @@ html[data-scheme="content-first"] {
   --color-disabled-surface: #F6F2EA; /** The fill of a control that cannot be used right now. */
   --color-disabled-border: #E4DDD0; /** The edge of a control that cannot be used right now. */
   --input-danger: var(--input-border-invalid); /** Deprecated: use component.input.border.invalid (OD-243). Danger of the input. */
+  --accordion-focus-ring: var(--accordion-trigger-focus-ring); /** Deprecated: use component.accordion.trigger.focus-ring.@ (OD-243). The focus ring's color. */
+  --attachment-radius-2: var(--attachment-media-radius); /** Deprecated: use component.attachment.media.radius (OD-243). Radius 2 of the attachment. */
   --combobox-chips-focus-ring-focus: var(--combobox-chips-focus-ring-highlight); /** Deprecated: use component.combobox.chips.focus-ring.highlight (OD-243). Chips focus ring focus of the combobox. */
   --context-menu-item-label: var(--context-menu-item-label-destructive); /** Deprecated: use component.context-menu.item.label.destructive (OD-243). Item label of the context menu. */
   --context-menu-item-background-focus-2: var(--context-menu-item-background-destructive-highlight); /** Deprecated: use component.context-menu.item.background.destructive-highlight (OD-243). Item background focus 2 of the context menu. */
@@ -1160,10 +1175,10 @@ html[data-scheme="content-first"] {
   --overlay-background: var(--color-surface-raised); /** Fill of a dialog, menu or toast. */
   --tooltip-content-background: var(--color-surface-inverse); /** Content background of the tooltip. */
   --tooltip-content-label: var(--color-text-inverse); /** Content text of the tooltip. */
-  --accordion-divider: var(--color-border-default); /** The line between items. */
   --accordion-trigger-label: var(--color-text-primary); /** The trigger's text color. */
   --accordion-trigger-focus-ring-offset-focus: var(--color-surface-canvas); /** Trigger focus ring offset focus of the accordion. */
   --accordion-icon: var(--color-text-muted); /** The chevron's color. */
+  --accordion-item-divider: var(--color-border-default); /** The line between items, on each item's bottom edge. */
   --alert-dialog-content-background: var(--color-surface-canvas); /** Content background of the alert dialog. */
   --alert-dialog-content-border: var(--color-border-default); /** Content border of the alert dialog, like every floating panel's. */
   --alert-dialog-description-label: var(--color-text-muted); /** Description label of the alert dialog. */
@@ -1172,11 +1187,14 @@ html[data-scheme="content-first"] {
   --alert-default-label: var(--color-text-primary); /** Default label of the alert. */
   --alert-destructive-background: var(--color-surface-default); /** Destructive background of the alert. */
   --alert-description-label: var(--color-text-muted); /** Description label of the alert. */
+  --alert-border: var(--color-border-default); /** The alert's edge: a quiet, decorative line. */
   --attachment-background: var(--color-surface-canvas); /** Background of the attachment. */
   --attachment-background-hover: var(--color-surface-highlight); /** Background under the pointer, of the attachment. */
   --attachment-focus-ring-offset-focus: var(--color-surface-canvas); /** Focus ring offset focus of the attachment. */
-  --attachment-background-2: var(--color-surface-sunken); /** Background 2 of the attachment. */
-  --attachment-label: var(--color-text-muted); /** Label of the attachment. */
+  --attachment-border: var(--color-border-default); /** The attachment's edge: a quiet line around the file. */
+  --attachment-media-background: var(--color-surface-sunken); /** The fill of the square that holds the file icon: a recessed step below the attachment. */
+  --attachment-media-icon-label: var(--color-text-muted); /** The file icon's color: quiet, like the type and size beside it. */
+  --attachment-meta-label: var(--color-text-muted); /** The color of the file's type and size: the quietest text. */
   --avatar-fallback-background: var(--color-surface-sunken); /** Fallback background of the avatar. */
   --avatar-fallback-label: var(--color-text-muted); /** Fallback label of the avatar. */
   --avatar-badge-label: var(--color-text-on-action); /** Badge label of the avatar. */
@@ -1303,8 +1321,8 @@ html[data-scheme="content-first"] {
   --item-background-hover: var(--color-surface-highlight); /** Background under the pointer, of a linked item. */
   --kbd-background: var(--color-surface-sunken); /** Background of the kbd. */
   --kbd-label: var(--color-text-muted); /** Label of the kbd. */
-  --kbd-background-2: var(--color-surface-canvas); /** Background 2 of the kbd. */
-  --kbd-label-2: var(--color-surface-canvas); /** Label 2 of the kbd. */
+  --kbd-inverse-label: var(--color-text-inverse); /** The key's text when it sits on an inverse fill, as in a tooltip: text on an inverse fill. */
+  --kbd-inverse-background: var(--color-surface-inverse); /** The key's fill when it sits on an inverse fill, as in a tooltip: the same inverse fill, so the key reads by its text. */
   --label-label: var(--color-text-primary); /** Label of the label. */
   --marker-label: var(--color-text-muted); /** Label of the marker. */
   --marker-line-background: var(--color-border-default); /** Color of the marker's lines: a quiet divider. */
@@ -1452,6 +1470,9 @@ html[data-scheme="content-first"] {
   --input-canvas: var(--input-focus-ring-offset); /** Deprecated: use component.input.focus-ring-offset (OD-243). Canvas of the input. */
   --tooltip-background: var(--tooltip-content-background); /** Deprecated: use component.tooltip.content.background (OD-243). Tooltip fill. */
   --tooltip-label: var(--tooltip-content-label); /** Deprecated: use component.tooltip.content.label (OD-243). Tooltip text. */
+  --accordion-divider: var(--accordion-item-divider); /** Deprecated: use component.accordion.item.divider.@ (OD-243). The line between items. */
+  --attachment-background-2: var(--attachment-media-background); /** Deprecated: use component.attachment.media.background (OD-243). Background 2 of the attachment. */
+  --attachment-label: var(--attachment-meta-label); /** Deprecated: use component.attachment.meta.label (OD-243). Label of the attachment. */
   --combobox-content-focus-ring: var(--combobox-content-border); /** Deprecated: use component.combobox.content.border (OD-243). Content focus ring of the combobox. */
   --combobox-content-background-2: var(--combobox-input-background); /** Deprecated: use component.combobox.input.background (OD-243). Content background 2 of the combobox. */
   --command-item-background-selected: var(--command-item-background-highlight); /** Deprecated: use component.command.item.background.highlight (OD-241). Item background selected of the command. */
@@ -1465,6 +1486,8 @@ html[data-scheme="content-first"] {
   --dropdown-menu-item-sunken: var(--dropdown-menu-item-background-highlight); /** Deprecated: use component.dropdown-menu.item.background.highlight (OD-241). Item sunken of the dropdown menu. */
   --dropdown-menu-background: var(--dropdown-menu-separator-background); /** Deprecated: use component.dropdown-menu.separator.background (OD-241). Background of the dropdown menu. */
   --input-group-label: var(--input-group-addon-label); /** Deprecated: use component.input-group.addon.label (OD-243). Label of the input group. */
+  --kbd-background-2: var(--kbd-inverse-background); /** Deprecated: use component.kbd.inverse.background (OD-243). Background 2 of the kbd. */
+  --kbd-label-2: var(--kbd-inverse-label); /** Deprecated: use component.kbd.inverse.label (OD-243). Label 2 of the kbd. */
   --marker-background: var(--marker-line-background); /** Deprecated: use component.marker.line.background (OD-243). Background of the marker. */
   --menubar-trigger-background-focus: var(--menubar-trigger-background-highlight); /** Deprecated: use component.menubar.trigger.background.highlight (OD-241). Trigger background focus of the menubar. */
   --menubar-item-background-focus: var(--menubar-item-background-highlight); /** Deprecated: use component.menubar.item.background.highlight (OD-241). Item background focus of the menubar. */
@@ -1595,7 +1618,7 @@ html[data-scheme="content-first"][data-theme="dark"] {
   --color-category-4: #F2B84B; /** Category 4: tells one item or series from another. It carries no meaning. */
   --color-category-4-subtle: #402B00; /** Category 4: the fill of a tag. */
   --radius-control: 0.5rem; /** Corner of buttons and inputs. */
-  --radius-badge: 9999px; /** Corner of badges, chips, tooltips and checkboxes: small labels and marks. */
+  --radius-badge: 9999px; /** Corner of badges, chips, tooltips, keyboard keys (kbd) and checkboxes: small labels and marks. */
   --radius-option: 0.5rem; /** Corner of options in menus and lists: the panel's corner less its padding, so the corners nest. */
   --radius-container: 0.75rem; /** Corner of cards, menus and dialogs. */
   --type-display-font-family: "Source Serif 4", Georgia, serif;
@@ -1667,13 +1690,14 @@ html[data-scheme="content-first"][data-theme="dark"] {
   --accordion-trigger-font-weight: var(--type-label-font-weight); /** The trigger's text weight. */
   --accordion-trigger-padding-y: var(--space-inset-container); /** Space above and below the trigger's text. */
   --accordion-trigger-gap: var(--space-gap-group); /** Space between the trigger's text and its icon. */
-  --accordion-focus-ring-width: var(--border-width-focus); /** The focus ring's width. */
-  --accordion-disabled-opacity: var(--opacity-disabled); /** How faint a disabled trigger is. */
+  --accordion-trigger-disabled-opacity: var(--opacity-disabled); /** How faint a disabled trigger is. */
+  --accordion-trigger-focus-ring-width: var(--border-width-focus); /** The trigger's focus ring width. */
+  --accordion-trigger-focus-offset: var(--border-width-focus-offset); /** Gap between the trigger and its focus ring. */
   --accordion-icon-size: var(--size-icon); /** The chevron's size. */
   --accordion-icon-duration: var(--motion-duration-feedback); /** How fast the chevron turns. */
   --accordion-content-font-size: var(--type-body-font-size); /** The content's text size. */
   --accordion-content-padding-bottom: var(--space-inset-container); /** Space below the content. */
-  --accordion-focus-offset: var(--border-width-focus-offset); /** Gap between the accordion and its focus ring. */
+  --accordion-item-divider-width: var(--border-width-default); /** The width of the line between items. */
   --alert-dialog-content-gap: var(--space-gap-group); /** Content gap of the alert dialog. */
   --alert-dialog-content-padding: var(--component-spacing-map-x6); /** Content padding of the alert dialog. */
   --alert-dialog-content-border-width: var(--border-width-default); /** Content border width of the alert dialog. */
@@ -1697,18 +1721,20 @@ html[data-scheme="content-first"][data-theme="dark"] {
   --alert-description-gap: var(--space-gap-tight); /** Description gap of the alert. */
   --alert-description-font-size: var(--type-body-font-size); /** Description font size of the alert. */
   --alert-description-line-height: var(--type-body-line-height); /** Description line height of the alert. */
+  --alert-border-width: var(--border-width-default); /** The width of the alert's edge. */
   --attachment-gap: var(--component-spacing-map-x3); /** Gap of the attachment. */
   --attachment-padding-x: var(--component-spacing-map-x3); /** Padding x of the attachment. */
   --attachment-padding-y: var(--component-spacing-map-x2); /** Padding y of the attachment. */
   --attachment-font-size: var(--type-body-font-size); /** Font size of the attachment. */
   --attachment-line-height: var(--type-body-line-height); /** Line height of the attachment. */
   --attachment-focus: var(--border-width-focus); /** Focus of the attachment. */
-  --attachment-size: var(--size-control-default); /** Size of the attachment. */
-  --attachment-icon-size: var(--size-icon); /** Icon size of the attachment. */
-  --attachment-font-weight: var(--type-label-font-weight); /** Font weight of the attachment. */
-  --attachment-font-size-2: var(--type-caption-font-size); /** Font size 2 of the attachment. */
-  --attachment-line-height-2: var(--type-caption-line-height); /** Line height 2 of the attachment. */
   --attachment-focus-offset: var(--border-width-focus-offset); /** Gap between the attachment and its focus ring. */
+  --attachment-border-width: var(--border-width-default); /** The width of the attachment's edge. */
+  --attachment-media-size: var(--size-control-default); /** The size of the square that holds the file icon. */
+  --attachment-media-icon-size: var(--size-icon); /** The file icon's size. */
+  --attachment-meta-font-size: var(--type-caption-font-size); /** The size of the file's type and size text. */
+  --attachment-meta-line-height: var(--type-caption-line-height); /** The line height of the file's type and size text. */
+  --attachment-name-font-weight: var(--type-label-font-weight); /** The weight of the file's name. */
   --avatar-size: var(--size-control-default); /** Size of the avatar. */
   --avatar-radius: var(--radius-round); /** Radius of the avatar. */
   --avatar-fallback-radius: var(--radius-round); /** Fallback radius of the avatar. */
@@ -1941,6 +1967,7 @@ html[data-scheme="content-first"][data-theme="dark"] {
   --empty-padding: var(--component-spacing-map-x6); /** Padding of the empty. */
   --empty-padding-2: var(--component-spacing-map-x12); /** Padding 2 of the empty. */
   --empty-header-gap: var(--space-gap-default); /** Header gap of the empty. */
+  --empty-icon-margin-bottom: var(--component-spacing-map-x2); /** Space below the icon, before the title: a step of the component spacing, added to the header's gap. */
   --empty-title-font-size: var(--type-heading-font-size); /** Title font size of the empty. */
   --empty-title-line-height: var(--type-heading-line-height); /** Title line height of the empty. */
   --empty-title-font-weight: var(--type-label-font-weight); /** Title font weight of the empty. */
@@ -2359,16 +2386,25 @@ html[data-scheme="content-first"][data-theme="dark"] {
   --tooltip-content-radius: var(--radius-badge); /** Content radius of the tooltip. */
   --tooltip-content-font-family: var(--type-caption-font-family); /** Content font family of the tooltip. */
   --accordion-trigger-radius: var(--radius-control); /** The trigger's corner, seen on focus. */
-  --accordion-focus-ring: var(--color-border-focus); /** The focus ring's color. */
+  --accordion-trigger-focus-ring: var(--color-border-focus); /** The trigger's focus ring color, at full strength. */
+  --accordion-focus-ring-width: var(--accordion-trigger-focus-ring-width); /** Deprecated: use component.accordion.trigger.focus-ring.width (OD-243). The focus ring's width. */
+  --accordion-disabled-opacity: var(--accordion-trigger-disabled-opacity); /** Deprecated: use component.accordion.trigger.disabled.opacity (OD-243). How faint a disabled trigger is. */
+  --accordion-focus-offset: var(--accordion-trigger-focus-offset); /** Deprecated: use component.accordion.trigger.focus-offset (OD-243). Gap between the accordion and its focus ring. */
   --alert-dialog-overlay-background: var(--color-surface-scrim); /** Overlay background of the alert dialog. */
   --alert-dialog-content-radius: var(--radius-container); /** Content radius of the alert dialog. */
   --alert-dialog-content-shadow: var(--elevation-overlay); /** Content shadow of the alert dialog. */
   --alert-dialog-media-radius: var(--radius-control); /** Media radius of the alert dialog. */
   --alert-radius: var(--radius-container); /** Radius of the alert. */
   --alert-destructive-label: var(--color-status-danger); /** Destructive label of the alert. */
+  --alert-destructive-description-label: var(--color-status-danger); /** The description's text in a destructive alert: error text, at full strength, like the title. */
   --attachment-radius: var(--radius-control); /** Radius of the attachment. */
   --attachment-focus-ring-focus: var(--color-border-focus); /** Focus ring focus of the attachment. */
-  --attachment-radius-2: var(--radius-badge); /** Radius 2 of the attachment. */
+  --attachment-size: var(--attachment-media-size); /** Deprecated: use component.attachment.media.size (OD-243). Size of the attachment. */
+  --attachment-icon-size: var(--attachment-media-icon-size); /** Deprecated: use component.attachment.media.icon.size (OD-243). Icon size of the attachment. */
+  --attachment-font-weight: var(--attachment-name-font-weight); /** Deprecated: use component.attachment.name.font-weight (OD-243). Font weight of the attachment. */
+  --attachment-font-size-2: var(--attachment-meta-font-size); /** Deprecated: use component.attachment.meta.font-size (OD-243). Font size 2 of the attachment. */
+  --attachment-line-height-2: var(--attachment-meta-line-height); /** Deprecated: use component.attachment.meta.line-height (OD-243). Line height 2 of the attachment. */
+  --attachment-media-radius: var(--radius-control); /** Corner of the attachment's file tile: a media tile, like the item's. */
   --avatar-badge-background: var(--color-action-primary); /** Badge background of the avatar. */
   --bubble-me-background: var(--color-action-primary); /** Me background of the bubble. */
   --bubble-body-radius: var(--radius-container); /** Body radius of the bubble. */
@@ -2600,6 +2636,8 @@ html[data-scheme="content-first"][data-theme="dark"] {
   --color-disabled-surface: #2E2A24; /** The fill of a control that cannot be used right now. */
   --color-disabled-border: #4A4339; /** The edge of a control that cannot be used right now. */
   --input-danger: var(--input-border-invalid); /** Deprecated: use component.input.border.invalid (OD-243). Danger of the input. */
+  --accordion-focus-ring: var(--accordion-trigger-focus-ring); /** Deprecated: use component.accordion.trigger.focus-ring.@ (OD-243). The focus ring's color. */
+  --attachment-radius-2: var(--attachment-media-radius); /** Deprecated: use component.attachment.media.radius (OD-243). Radius 2 of the attachment. */
   --combobox-chips-focus-ring-focus: var(--combobox-chips-focus-ring-highlight); /** Deprecated: use component.combobox.chips.focus-ring.highlight (OD-243). Chips focus ring focus of the combobox. */
   --context-menu-item-label: var(--context-menu-item-label-destructive); /** Deprecated: use component.context-menu.item.label.destructive (OD-243). Item label of the context menu. */
   --context-menu-item-background-focus-2: var(--context-menu-item-background-destructive-highlight); /** Deprecated: use component.context-menu.item.background.destructive-highlight (OD-243). Item background focus 2 of the context menu. */
@@ -2657,10 +2695,10 @@ html[data-scheme="content-first"][data-theme="dark"] {
   --overlay-background: var(--color-surface-raised); /** Fill of a dialog, menu or toast. */
   --tooltip-content-background: var(--color-surface-inverse); /** Content background of the tooltip. */
   --tooltip-content-label: var(--color-text-inverse); /** Content text of the tooltip. */
-  --accordion-divider: var(--color-border-default); /** The line between items. */
   --accordion-trigger-label: var(--color-text-primary); /** The trigger's text color. */
   --accordion-trigger-focus-ring-offset-focus: var(--color-surface-canvas); /** Trigger focus ring offset focus of the accordion. */
   --accordion-icon: var(--color-text-muted); /** The chevron's color. */
+  --accordion-item-divider: var(--color-border-default); /** The line between items, on each item's bottom edge. */
   --alert-dialog-content-background: var(--color-surface-canvas); /** Content background of the alert dialog. */
   --alert-dialog-content-border: var(--color-border-default); /** Content border of the alert dialog, like every floating panel's. */
   --alert-dialog-description-label: var(--color-text-muted); /** Description label of the alert dialog. */
@@ -2669,11 +2707,14 @@ html[data-scheme="content-first"][data-theme="dark"] {
   --alert-default-label: var(--color-text-primary); /** Default label of the alert. */
   --alert-destructive-background: var(--color-surface-default); /** Destructive background of the alert. */
   --alert-description-label: var(--color-text-muted); /** Description label of the alert. */
+  --alert-border: var(--color-border-default); /** The alert's edge: a quiet, decorative line. */
   --attachment-background: var(--color-surface-canvas); /** Background of the attachment. */
   --attachment-background-hover: var(--color-surface-highlight); /** Background under the pointer, of the attachment. */
   --attachment-focus-ring-offset-focus: var(--color-surface-canvas); /** Focus ring offset focus of the attachment. */
-  --attachment-background-2: var(--color-surface-sunken); /** Background 2 of the attachment. */
-  --attachment-label: var(--color-text-muted); /** Label of the attachment. */
+  --attachment-border: var(--color-border-default); /** The attachment's edge: a quiet line around the file. */
+  --attachment-media-background: var(--color-surface-sunken); /** The fill of the square that holds the file icon: a recessed step below the attachment. */
+  --attachment-media-icon-label: var(--color-text-muted); /** The file icon's color: quiet, like the type and size beside it. */
+  --attachment-meta-label: var(--color-text-muted); /** The color of the file's type and size: the quietest text. */
   --avatar-fallback-background: var(--color-surface-sunken); /** Fallback background of the avatar. */
   --avatar-fallback-label: var(--color-text-muted); /** Fallback label of the avatar. */
   --avatar-badge-label: var(--color-text-on-action); /** Badge label of the avatar. */
@@ -2800,8 +2841,8 @@ html[data-scheme="content-first"][data-theme="dark"] {
   --item-background-hover: var(--color-surface-highlight); /** Background under the pointer, of a linked item. */
   --kbd-background: var(--color-surface-sunken); /** Background of the kbd. */
   --kbd-label: var(--color-text-muted); /** Label of the kbd. */
-  --kbd-background-2: var(--color-surface-canvas); /** Background 2 of the kbd. */
-  --kbd-label-2: var(--color-surface-canvas); /** Label 2 of the kbd. */
+  --kbd-inverse-label: var(--color-text-inverse); /** The key's text when it sits on an inverse fill, as in a tooltip: text on an inverse fill. */
+  --kbd-inverse-background: var(--color-surface-inverse); /** The key's fill when it sits on an inverse fill, as in a tooltip: the same inverse fill, so the key reads by its text. */
   --label-label: var(--color-text-primary); /** Label of the label. */
   --marker-label: var(--color-text-muted); /** Label of the marker. */
   --marker-line-background: var(--color-border-default); /** Color of the marker's lines: a quiet divider. */
@@ -2949,6 +2990,9 @@ html[data-scheme="content-first"][data-theme="dark"] {
   --input-canvas: var(--input-focus-ring-offset); /** Deprecated: use component.input.focus-ring-offset (OD-243). Canvas of the input. */
   --tooltip-background: var(--tooltip-content-background); /** Deprecated: use component.tooltip.content.background (OD-243). Tooltip fill. */
   --tooltip-label: var(--tooltip-content-label); /** Deprecated: use component.tooltip.content.label (OD-243). Tooltip text. */
+  --accordion-divider: var(--accordion-item-divider); /** Deprecated: use component.accordion.item.divider.@ (OD-243). The line between items. */
+  --attachment-background-2: var(--attachment-media-background); /** Deprecated: use component.attachment.media.background (OD-243). Background 2 of the attachment. */
+  --attachment-label: var(--attachment-meta-label); /** Deprecated: use component.attachment.meta.label (OD-243). Label of the attachment. */
   --combobox-content-focus-ring: var(--combobox-content-border); /** Deprecated: use component.combobox.content.border (OD-243). Content focus ring of the combobox. */
   --combobox-content-background-2: var(--combobox-input-background); /** Deprecated: use component.combobox.input.background (OD-243). Content background 2 of the combobox. */
   --command-item-background-selected: var(--command-item-background-highlight); /** Deprecated: use component.command.item.background.highlight (OD-241). Item background selected of the command. */
@@ -2962,6 +3006,8 @@ html[data-scheme="content-first"][data-theme="dark"] {
   --dropdown-menu-item-sunken: var(--dropdown-menu-item-background-highlight); /** Deprecated: use component.dropdown-menu.item.background.highlight (OD-241). Item sunken of the dropdown menu. */
   --dropdown-menu-background: var(--dropdown-menu-separator-background); /** Deprecated: use component.dropdown-menu.separator.background (OD-241). Background of the dropdown menu. */
   --input-group-label: var(--input-group-addon-label); /** Deprecated: use component.input-group.addon.label (OD-243). Label of the input group. */
+  --kbd-background-2: var(--kbd-inverse-background); /** Deprecated: use component.kbd.inverse.background (OD-243). Background 2 of the kbd. */
+  --kbd-label-2: var(--kbd-inverse-label); /** Deprecated: use component.kbd.inverse.label (OD-243). Label 2 of the kbd. */
   --marker-background: var(--marker-line-background); /** Deprecated: use component.marker.line.background (OD-243). Background of the marker. */
   --menubar-trigger-background-focus: var(--menubar-trigger-background-highlight); /** Deprecated: use component.menubar.trigger.background.highlight (OD-241). Trigger background focus of the menubar. */
   --menubar-item-background-focus: var(--menubar-item-background-highlight); /** Deprecated: use component.menubar.item.background.highlight (OD-241). Item background focus of the menubar. */

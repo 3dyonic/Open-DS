@@ -1,5 +1,6 @@
 import type { Meta, StoryObj } from "@storybook/react-vite";
-import { Empty, EmptyHeader, EmptyTitle, EmptyDescription, EmptyContent, Button } from "@open-ds/ui";
+import { Empty, EmptyHeader, EmptyMedia, EmptyTitle, EmptyDescription, EmptyContent, Button } from "@open-ds/ui";
+import { InboxIcon } from "lucide-react";
 import { Show } from "../src/samples";
 
 const meta = {
@@ -26,6 +27,9 @@ export const Examples: Story = {
       {(s) => (
         <Empty className="max-w-lg border border-dashed border-[var(--color-border-strong)]">
           <EmptyHeader>
+            <EmptyMedia variant="icon">
+              <InboxIcon />
+            </EmptyMedia>
             <EmptyTitle>{s.messages?.neutral ?? s.screen}</EmptyTitle>
             <EmptyDescription>{s.field.hint}</EmptyDescription>
           </EmptyHeader>

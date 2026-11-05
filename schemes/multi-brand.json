@@ -9617,7 +9617,7 @@
         "badge": {
           "$type": "dimension",
           "$value": "{theme.radius.badge}",
-          "$description": "Corner of badges, chips, tooltips and checkboxes: small labels and marks."
+          "$description": "Corner of badges, chips, tooltips, keyboard keys (kbd) and checkboxes: small labels and marks."
         },
         "option": {
           "$type": "dimension",
@@ -10943,8 +10943,9 @@
       },
       "accordion": {
         "divider": {
-          "$value": "{color.border.default}",
-          "$description": "The line between items."
+          "$value": "{accordion.item.divider.@}",
+          "$description": "Deprecated: use component.accordion.item.divider.@ (OD-243). The line between items.",
+          "$deprecated": "Use component.accordion.item.divider.@. Removed in the next minor release."
         },
         "trigger": {
           "label": {
@@ -10974,22 +10975,45 @@
           "focus-ring-offset-focus": {
             "$value": "{color.surface.canvas}",
             "$description": "Trigger focus ring offset focus of the accordion."
+          },
+          "disabled": {
+            "opacity": {
+              "$value": "{opacity.disabled}",
+              "$description": "How faint a disabled trigger is."
+            }
+          },
+          "focus-ring": {
+            "@": {
+              "$value": "{color.border.focus}",
+              "$description": "The trigger's focus ring color, at full strength."
+            },
+            "width": {
+              "$value": "{border-width.focus}",
+              "$description": "The trigger's focus ring width."
+            }
+          },
+          "focus-offset": {
+            "$value": "{border-width.focus-offset}",
+            "$description": "Gap between the trigger and its focus ring."
           }
         },
         "focus-ring": {
           "@": {
-            "$value": "{color.border.focus}",
-            "$description": "The focus ring's color."
+            "$value": "{accordion.trigger.focus-ring.@}",
+            "$description": "Deprecated: use component.accordion.trigger.focus-ring.@ (OD-243). The focus ring's color.",
+            "$deprecated": "Use component.accordion.trigger.focus-ring.@. Removed in the next minor release."
           },
           "width": {
-            "$value": "{border-width.focus}",
-            "$description": "The focus ring's width."
+            "$value": "{accordion.trigger.focus-ring.width}",
+            "$description": "Deprecated: use component.accordion.trigger.focus-ring.width (OD-243). The focus ring's width.",
+            "$deprecated": "Use component.accordion.trigger.focus-ring.width. Removed in the next minor release."
           }
         },
         "disabled": {
           "opacity": {
-            "$value": "{opacity.disabled}",
-            "$description": "How faint a disabled trigger is."
+            "$value": "{accordion.trigger.disabled.opacity}",
+            "$description": "Deprecated: use component.accordion.trigger.disabled.opacity (OD-243). How faint a disabled trigger is.",
+            "$deprecated": "Use component.accordion.trigger.disabled.opacity. Removed in the next minor release."
           }
         },
         "icon": {
@@ -11017,8 +11041,21 @@
           }
         },
         "focus-offset": {
-          "$value": "{border-width.focus-offset}",
-          "$description": "Gap between the accordion and its focus ring."
+          "$value": "{accordion.trigger.focus-offset}",
+          "$description": "Deprecated: use component.accordion.trigger.focus-offset (OD-243). Gap between the accordion and its focus ring.",
+          "$deprecated": "Use component.accordion.trigger.focus-offset. Removed in the next minor release."
+        },
+        "item": {
+          "divider": {
+            "@": {
+              "$value": "{color.border.default}",
+              "$description": "The line between items, on each item's bottom edge."
+            },
+            "width": {
+              "$value": "{border-width.default}",
+              "$description": "The width of the line between items."
+            }
+          }
         }
       },
       "alert-dialog": {
@@ -11168,6 +11205,12 @@
           "label": {
             "$value": "{color.status.danger.@}",
             "$description": "Destructive label of the alert."
+          },
+          "description": {
+            "label": {
+              "$value": "{color.status.danger.@}",
+              "$description": "The description's text in a destructive alert: error text, at full strength, like the title."
+            }
           }
         },
         "title": {
@@ -11193,6 +11236,14 @@
             "$value": "{color.text.muted}",
             "$description": "Description label of the alert."
           }
+        },
+        "border": {
+          "$value": "{color.border.default}",
+          "$description": "The alert's edge: a quiet, decorative line."
+        },
+        "border-width": {
+          "$value": "{border-width.default}",
+          "$description": "The width of the alert's edge."
         }
       },
       "attachment": {
@@ -11243,40 +11294,100 @@
           "$description": "Focus ring offset focus of the attachment."
         },
         "size": {
-          "$value": "{size.control.default}",
-          "$description": "Size of the attachment."
+          "$value": "{attachment.media.size}",
+          "$description": "Deprecated: use component.attachment.media.size (OD-243). Size of the attachment.",
+          "$deprecated": "Use component.attachment.media.size. Removed in the next minor release."
         },
         "radius-2": {
-          "$value": "{radius.badge}",
-          "$description": "Radius 2 of the attachment."
+          "$value": "{attachment.media.radius}",
+          "$description": "Deprecated: use component.attachment.media.radius (OD-243). Radius 2 of the attachment.",
+          "$deprecated": "Use component.attachment.media.radius. Removed in the next minor release."
         },
         "background-2": {
-          "$value": "{color.surface.sunken}",
-          "$description": "Background 2 of the attachment."
+          "$value": "{attachment.media.background}",
+          "$description": "Deprecated: use component.attachment.media.background (OD-243). Background 2 of the attachment.",
+          "$deprecated": "Use component.attachment.media.background. Removed in the next minor release."
         },
         "icon-size": {
-          "$value": "{size.icon}",
-          "$description": "Icon size of the attachment."
+          "$value": "{attachment.media.icon.size}",
+          "$description": "Deprecated: use component.attachment.media.icon.size (OD-243). Icon size of the attachment.",
+          "$deprecated": "Use component.attachment.media.icon.size. Removed in the next minor release."
         },
         "label": {
-          "$value": "{color.text.muted}",
-          "$description": "Label of the attachment."
+          "$value": "{attachment.meta.label}",
+          "$description": "Deprecated: use component.attachment.meta.label (OD-243). Label of the attachment.",
+          "$deprecated": "Use component.attachment.meta.label. Removed in the next minor release."
         },
         "font-weight": {
-          "$value": "{type.label.font-weight}",
-          "$description": "Font weight of the attachment."
+          "$value": "{attachment.name.font-weight}",
+          "$description": "Deprecated: use component.attachment.name.font-weight (OD-243). Font weight of the attachment.",
+          "$deprecated": "Use component.attachment.name.font-weight. Removed in the next minor release."
         },
         "font-size-2": {
-          "$value": "{type.caption.font-size}",
-          "$description": "Font size 2 of the attachment."
+          "$value": "{attachment.meta.font-size}",
+          "$description": "Deprecated: use component.attachment.meta.font-size (OD-243). Font size 2 of the attachment.",
+          "$deprecated": "Use component.attachment.meta.font-size. Removed in the next minor release."
         },
         "line-height-2": {
-          "$value": "{type.caption.line-height}",
-          "$description": "Line height 2 of the attachment."
+          "$value": "{attachment.meta.line-height}",
+          "$description": "Deprecated: use component.attachment.meta.line-height (OD-243). Line height 2 of the attachment.",
+          "$deprecated": "Use component.attachment.meta.line-height. Removed in the next minor release."
         },
         "focus-offset": {
           "$value": "{border-width.focus-offset}",
           "$description": "Gap between the attachment and its focus ring."
+        },
+        "border": {
+          "$value": "{color.border.default}",
+          "$description": "The attachment's edge: a quiet line around the file."
+        },
+        "border-width": {
+          "$value": "{border-width.default}",
+          "$description": "The width of the attachment's edge."
+        },
+        "media": {
+          "size": {
+            "$value": "{size.control.default}",
+            "$description": "The size of the square that holds the file icon."
+          },
+          "radius": {
+            "$value": "{radius.control}",
+            "$description": "Corner of the attachment's file tile: a media tile, like the item's."
+          },
+          "background": {
+            "$value": "{color.surface.sunken}",
+            "$description": "The fill of the square that holds the file icon: a recessed step below the attachment."
+          },
+          "icon": {
+            "size": {
+              "$value": "{size.icon}",
+              "$description": "The file icon's size."
+            },
+            "label": {
+              "$value": "{color.text.muted}",
+              "$description": "The file icon's color: quiet, like the type and size beside it."
+            }
+          }
+        },
+        "meta": {
+          "label": {
+            "$value": "{color.text.muted}",
+            "$description": "The color of the file's type and size: the quietest text."
+          },
+          "font-size": {
+            "$value": "{type.caption.font-size}",
+            "$description": "The size of the file's type and size text."
+          },
+          "line-height": {
+            "$value": "{type.caption.line-height}",
+            "$description": "The line height of the file's type and size text."
+          }
+        },
+        "name": {
+          "font-weight": {
+            "$value": "{type.label.font-weight}",
+            "$description": "The weight of the file's name."
+          }
         }
       },
       "avatar": {
@@ -13078,6 +13189,10 @@
           "label": {
             "$value": "{color.text.primary}",
             "$description": "Icon label of the empty."
+          },
+          "margin-bottom": {
+            "$value": "{component-spacing-map.x2}",
+            "$description": "Space below the icon, before the title: a step of the component spacing, added to the header's gap."
           }
         },
         "title": {
@@ -13952,17 +14067,29 @@
           "$description": "Label of the kbd."
         },
         "background-2": {
-          "$value": "{color.surface.canvas}",
-          "$description": "Background 2 of the kbd."
+          "$value": "{kbd.inverse.background}",
+          "$description": "Deprecated: use component.kbd.inverse.background (OD-243). Background 2 of the kbd.",
+          "$deprecated": "Use component.kbd.inverse.background. Removed in the next minor release."
         },
         "label-2": {
-          "$value": "{color.surface.canvas}",
-          "$description": "Label 2 of the kbd."
+          "$value": "{kbd.inverse.label}",
+          "$description": "Deprecated: use component.kbd.inverse.label (OD-243). Label 2 of the kbd.",
+          "$deprecated": "Use component.kbd.inverse.label. Removed in the next minor release."
         },
         "group": {
           "gap": {
             "$value": "{space.gap.tight}",
             "$description": "Group gap of the kbd."
+          }
+        },
+        "inverse": {
+          "label": {
+            "$value": "{color.text.inverse}",
+            "$description": "The key's text when it sits on an inverse fill, as in a tooltip: text on an inverse fill."
+          },
+          "background": {
+            "$value": "{color.surface.inverse}",
+            "$description": "The key's fill when it sits on an inverse fill, as in a tooltip: the same inverse fill, so the key reads by its text."
           }
         }
       },

@@ -11,13 +11,13 @@ import { cva, type VariantProps } from "class-variance-authority";
 import { cn } from "../lib/utils";
 
 const alertVariants = cva(
-  "relative grid w-full grid-cols-[0_1fr] items-start gap-y-[var(--alert-gap-y)] rounded-[var(--alert-radius)] border px-[var(--alert-padding-x)] py-[var(--alert-padding-y)] text-[length:var(--alert-font-size)]/[var(--alert-line-height)] has-[>svg]:grid-cols-[calc(var(--spacing)*4)_1fr] has-[>svg]:gap-x-[var(--alert-gap-x)] [&>svg]:size-[var(--alert-icon-size)] [&>svg]:translate-y-0.5 [&>svg]:text-current",
+  "relative grid w-full grid-cols-[0_1fr] items-start gap-y-[var(--alert-gap-y)] rounded-[var(--alert-radius)] border-[length:var(--alert-border-width)] border-[color:var(--alert-border)] px-[var(--alert-padding-x)] py-[var(--alert-padding-y)] text-[length:var(--alert-font-size)]/[var(--alert-line-height)] has-[>svg]:grid-cols-[calc(var(--spacing)*4)_1fr] has-[>svg]:gap-x-[var(--alert-gap-x)] [&>svg]:size-[var(--alert-icon-size)] [&>svg]:translate-y-0.5 [&>svg]:text-current",
   {
     variants: {
       variant: {
         default: "bg-[color:var(--alert-default-background)] text-[color:var(--alert-default-label)]",
         destructive:
-          "bg-[color:var(--alert-destructive-background)] text-[color:var(--alert-destructive-label)] *:data-[slot=alert-description]:text-[color:var(--alert-destructive-label)]/90 [&>svg]:text-current",
+          "bg-[color:var(--alert-destructive-background)] text-[color:var(--alert-destructive-label)] *:data-[slot=alert-description]:text-[color:var(--alert-destructive-description-label)] [&>svg]:text-current",
       },
     },
     defaultVariants: {
@@ -27,7 +27,15 @@ const alertVariants = cva(
 );
 
 function Alert({ className, variant, ...props }: React.ComponentProps<"div"> & VariantProps<typeof alertVariants>) {
-  return <div data-slot="alert" role="alert" className={cn(alertVariants({ variant }), className)} {...props} />;
+  return (
+    <div
+      data-slot="alert"
+      data-variant={variant ?? "default"}
+      role="alert"
+      className={cn(alertVariants({ variant }), className)}
+      {...props}
+    />
+  );
 }
 
 function AlertTitle({ className, ...props }: React.ComponentProps<"div">) {

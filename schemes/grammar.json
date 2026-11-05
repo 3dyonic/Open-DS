@@ -3110,6 +3110,7 @@
       "id": "accordion",
       "description": "Stacked sections that open one at a time.",
       "keys": [
+        "accordion/item/divider/@",
         "accordion/divider",
         "accordion/trigger/label",
         "accordion/trigger/font-size",
@@ -3117,8 +3118,11 @@
         "accordion/trigger/padding-y",
         "accordion/trigger/gap",
         "accordion/trigger/radius",
+        "accordion/trigger/focus-ring/@",
         "accordion/focus-ring/@",
+        "accordion/trigger/focus-ring/width",
         "accordion/focus-ring/width",
+        "accordion/trigger/disabled/opacity",
         "accordion/disabled/opacity",
         "accordion/icon/@",
         "accordion/icon/size",
@@ -3126,7 +3130,9 @@
         "accordion/content/font-size",
         "accordion/content/padding-bottom",
         "accordion/trigger/focus-ring-offset-focus",
-        "accordion/focus-offset"
+        "accordion/trigger/focus-offset",
+        "accordion/focus-offset",
+        "accordion/item/divider/width"
       ]
     },
     {
@@ -3175,7 +3181,10 @@
         "alert/description/gap",
         "alert/description/font-size",
         "alert/description/line-height",
-        "alert/description/label"
+        "alert/description/label",
+        "alert/destructive/description/label",
+        "alert/border",
+        "alert/border-width"
       ]
     },
     {
@@ -3193,15 +3202,26 @@
         "attachment/focus",
         "attachment/focus-ring-focus",
         "attachment/focus-ring-offset-focus",
+        "attachment/media/size",
         "attachment/size",
+        "attachment/media/radius",
         "attachment/radius-2",
+        "attachment/media/background",
         "attachment/background-2",
+        "attachment/media/icon/size",
         "attachment/icon-size",
+        "attachment/meta/label",
         "attachment/label",
+        "attachment/name/font-weight",
         "attachment/font-weight",
+        "attachment/meta/font-size",
         "attachment/font-size-2",
+        "attachment/meta/line-height",
         "attachment/line-height-2",
-        "attachment/focus-offset"
+        "attachment/focus-offset",
+        "attachment/border",
+        "attachment/border-width",
+        "attachment/media/icon/label"
       ]
     },
     {
@@ -3712,7 +3732,8 @@
         "empty/description/label-2",
         "empty/content/gap",
         "empty/content/font-size",
-        "empty/content/line-height"
+        "empty/content/line-height",
+        "empty/icon/margin-bottom"
       ]
     },
     {
@@ -3929,7 +3950,9 @@
         "kbd/line-height",
         "kbd/font-weight",
         "kbd/label",
+        "kbd/inverse/background",
         "kbd/background-2",
+        "kbd/inverse/label",
         "kbd/label-2",
         "kbd/group/gap"
       ]
@@ -5141,10 +5164,17 @@
       "default": "motion.duration.panels"
     },
     {
+      "id": "accordion/item/divider/@",
+      "component": "accordion",
+      "description": "The line between items, on each item's bottom edge.",
+      "default": "color.border.default"
+    },
+    {
       "id": "accordion/divider",
       "component": "accordion",
-      "description": "The line between items.",
-      "default": "color.border.default"
+      "description": "Deprecated: use accordion/item/divider/@ (OD-243). The line between items.",
+      "default": "color.border.default",
+      "replaced_by": "accordion/item/divider/@"
     },
     {
       "id": "accordion/trigger/label",
@@ -5183,22 +5213,43 @@
       "default": "radius.control"
     },
     {
+      "id": "accordion/trigger/focus-ring/@",
+      "component": "accordion",
+      "description": "The trigger's focus ring color, at full strength.",
+      "default": "color.border.focus"
+    },
+    {
       "id": "accordion/focus-ring/@",
       "component": "accordion",
-      "description": "The focus ring's color.",
-      "default": "color.border.focus"
+      "description": "Deprecated: use accordion/trigger/focus-ring/@ (OD-243). The focus ring's color.",
+      "default": "color.border.focus",
+      "replaced_by": "accordion/trigger/focus-ring/@"
+    },
+    {
+      "id": "accordion/trigger/focus-ring/width",
+      "component": "accordion",
+      "description": "The trigger's focus ring width.",
+      "default": "border-width.focus"
     },
     {
       "id": "accordion/focus-ring/width",
       "component": "accordion",
-      "description": "The focus ring's width.",
-      "default": "border-width.focus"
+      "description": "Deprecated: use accordion/trigger/focus-ring/width (OD-243). The focus ring's width.",
+      "default": "border-width.focus",
+      "replaced_by": "accordion/trigger/focus-ring/width"
+    },
+    {
+      "id": "accordion/trigger/disabled/opacity",
+      "component": "accordion",
+      "description": "How faint a disabled trigger is.",
+      "default": "opacity.disabled"
     },
     {
       "id": "accordion/disabled/opacity",
       "component": "accordion",
-      "description": "How faint a disabled trigger is.",
-      "default": "opacity.disabled"
+      "description": "Deprecated: use accordion/trigger/disabled/opacity (OD-243). How faint a disabled trigger is.",
+      "default": "opacity.disabled",
+      "replaced_by": "accordion/trigger/disabled/opacity"
     },
     {
       "id": "accordion/icon/@",
@@ -5237,10 +5288,23 @@
       "default": "color.surface.canvas"
     },
     {
+      "id": "accordion/trigger/focus-offset",
+      "component": "accordion",
+      "description": "Gap between the trigger and its focus ring.",
+      "default": "border-width.focus-offset"
+    },
+    {
       "id": "accordion/focus-offset",
       "component": "accordion",
-      "description": "Gap between the accordion and its focus ring.",
-      "default": "border-width.focus-offset"
+      "description": "Deprecated: use accordion/trigger/focus-offset (OD-243). Gap between the accordion and its focus ring.",
+      "default": "border-width.focus-offset",
+      "replaced_by": "accordion/trigger/focus-offset"
+    },
+    {
+      "id": "accordion/item/divider/width",
+      "component": "accordion",
+      "description": "The width of the line between items.",
+      "default": "border-width.default"
     },
     {
       "id": "alert-dialog/overlay/background",
@@ -5465,6 +5529,24 @@
       "default": "color.text.muted"
     },
     {
+      "id": "alert/destructive/description/label",
+      "component": "alert",
+      "description": "The description's text in a destructive alert: error text, at full strength, like the title.",
+      "default": "color.status.danger.@"
+    },
+    {
+      "id": "alert/border",
+      "component": "alert",
+      "description": "The alert's edge: a quiet, decorative line.",
+      "default": "color.border.default"
+    },
+    {
+      "id": "alert/border-width",
+      "component": "alert",
+      "description": "The width of the alert's edge.",
+      "default": "border-width.default"
+    },
+    {
       "id": "attachment/gap",
       "component": "attachment",
       "description": "Gap of the attachment.",
@@ -5531,58 +5613,132 @@
       "default": "color.surface.canvas"
     },
     {
+      "id": "attachment/media/size",
+      "component": "attachment",
+      "description": "The size of the square that holds the file icon.",
+      "default": "size.control.default"
+    },
+    {
       "id": "attachment/size",
       "component": "attachment",
-      "description": "Size of the attachment.",
-      "default": "size.control.default"
+      "description": "Deprecated: use attachment/media/size (OD-243). Size of the attachment.",
+      "default": "size.control.default",
+      "replaced_by": "attachment/media/size"
+    },
+    {
+      "id": "attachment/media/radius",
+      "component": "attachment",
+      "description": "Corner of the attachment's file tile: a media tile, like the item's.",
+      "default": "radius.control"
     },
     {
       "id": "attachment/radius-2",
       "component": "attachment",
-      "description": "Radius 2 of the attachment.",
-      "default": "radius.badge"
+      "description": "Deprecated: use attachment/media/radius (OD-243). Radius 2 of the attachment.",
+      "default": "radius.badge",
+      "replaced_by": "attachment/media/radius"
+    },
+    {
+      "id": "attachment/media/background",
+      "component": "attachment",
+      "description": "The fill of the square that holds the file icon: a recessed step below the attachment.",
+      "default": "color.surface.sunken"
     },
     {
       "id": "attachment/background-2",
       "component": "attachment",
-      "description": "Background 2 of the attachment.",
-      "default": "color.surface.sunken"
+      "description": "Deprecated: use attachment/media/background (OD-243). Background 2 of the attachment.",
+      "default": "color.surface.sunken",
+      "replaced_by": "attachment/media/background"
+    },
+    {
+      "id": "attachment/media/icon/size",
+      "component": "attachment",
+      "description": "The file icon's size.",
+      "default": "size.icon"
     },
     {
       "id": "attachment/icon-size",
       "component": "attachment",
-      "description": "Icon size of the attachment.",
-      "default": "size.icon"
+      "description": "Deprecated: use attachment/media/icon/size (OD-243). Icon size of the attachment.",
+      "default": "size.icon",
+      "replaced_by": "attachment/media/icon/size"
+    },
+    {
+      "id": "attachment/meta/label",
+      "component": "attachment",
+      "description": "The color of the file's type and size: the quietest text.",
+      "default": "color.text.muted"
     },
     {
       "id": "attachment/label",
       "component": "attachment",
-      "description": "Label of the attachment.",
-      "default": "color.text.muted"
+      "description": "Deprecated: use attachment/meta/label (OD-243). Label of the attachment.",
+      "default": "color.text.muted",
+      "replaced_by": "attachment/meta/label"
+    },
+    {
+      "id": "attachment/name/font-weight",
+      "component": "attachment",
+      "description": "The weight of the file's name.",
+      "default": "type.label.font-weight"
     },
     {
       "id": "attachment/font-weight",
       "component": "attachment",
-      "description": "Font weight of the attachment.",
-      "default": "type.label.font-weight"
+      "description": "Deprecated: use attachment/name/font-weight (OD-243). Font weight of the attachment.",
+      "default": "type.label.font-weight",
+      "replaced_by": "attachment/name/font-weight"
+    },
+    {
+      "id": "attachment/meta/font-size",
+      "component": "attachment",
+      "description": "The size of the file's type and size text.",
+      "default": "type.caption.font-size"
     },
     {
       "id": "attachment/font-size-2",
       "component": "attachment",
-      "description": "Font size 2 of the attachment.",
-      "default": "type.caption.font-size"
+      "description": "Deprecated: use attachment/meta/font-size (OD-243). Font size 2 of the attachment.",
+      "default": "type.caption.font-size",
+      "replaced_by": "attachment/meta/font-size"
+    },
+    {
+      "id": "attachment/meta/line-height",
+      "component": "attachment",
+      "description": "The line height of the file's type and size text.",
+      "default": "type.caption.line-height"
     },
     {
       "id": "attachment/line-height-2",
       "component": "attachment",
-      "description": "Line height 2 of the attachment.",
-      "default": "type.caption.line-height"
+      "description": "Deprecated: use attachment/meta/line-height (OD-243). Line height 2 of the attachment.",
+      "default": "type.caption.line-height",
+      "replaced_by": "attachment/meta/line-height"
     },
     {
       "id": "attachment/focus-offset",
       "component": "attachment",
       "description": "Gap between the attachment and its focus ring.",
       "default": "border-width.focus-offset"
+    },
+    {
+      "id": "attachment/border",
+      "component": "attachment",
+      "description": "The attachment's edge: a quiet line around the file.",
+      "default": "color.border.default"
+    },
+    {
+      "id": "attachment/border-width",
+      "component": "attachment",
+      "description": "The width of the attachment's edge.",
+      "default": "border-width.default"
+    },
+    {
+      "id": "attachment/media/icon/label",
+      "component": "attachment",
+      "description": "The file icon's color: quiet, like the type and size beside it.",
+      "default": "color.text.muted"
     },
     {
       "id": "avatar/size",
@@ -8209,6 +8365,12 @@
       "default": "type.body.line-height"
     },
     {
+      "id": "empty/icon/margin-bottom",
+      "component": "empty",
+      "description": "Space below the icon, before the title: a step of the component spacing, added to the header's gap.",
+      "default": "component-spacing-map.x2"
+    },
+    {
       "id": "field/set/gap",
       "component": "field",
       "description": "Set gap of the field.",
@@ -9324,16 +9486,30 @@
       "default": "color.text.muted"
     },
     {
+      "id": "kbd/inverse/background",
+      "component": "kbd",
+      "description": "The key's fill when it sits on an inverse fill, as in a tooltip: the same inverse fill, so the key reads by its text.",
+      "default": "color.surface.inverse"
+    },
+    {
       "id": "kbd/background-2",
       "component": "kbd",
-      "description": "Background 2 of the kbd.",
-      "default": "color.surface.canvas"
+      "description": "Deprecated: use kbd/inverse/background (OD-243). Background 2 of the kbd.",
+      "default": "color.surface.canvas",
+      "replaced_by": "kbd/inverse/background"
+    },
+    {
+      "id": "kbd/inverse/label",
+      "component": "kbd",
+      "description": "The key's text when it sits on an inverse fill, as in a tooltip: text on an inverse fill.",
+      "default": "color.text.inverse"
     },
     {
       "id": "kbd/label-2",
       "component": "kbd",
-      "description": "Label 2 of the kbd.",
-      "default": "color.surface.canvas"
+      "description": "Deprecated: use kbd/inverse/label (OD-243). Label 2 of the kbd.",
+      "default": "color.surface.canvas",
+      "replaced_by": "kbd/inverse/label"
     },
     {
       "id": "kbd/group/gap",

@@ -29,20 +29,23 @@ function Attachment({
       data-slot="attachment"
       aria-label={`${name}, ${type}, ${size}`}
       className={cn(
-        "flex w-fit max-w-full items-center gap-[var(--attachment-gap)] rounded-[var(--attachment-radius)] border bg-[color:var(--attachment-background)] px-[var(--attachment-padding-x)] py-[var(--attachment-padding-y)] text-[length:var(--attachment-font-size)]/[var(--attachment-line-height)] outline-none hover:bg-[color:var(--attachment-background-hover)] focus-visible:ring-[length:var(--attachment-focus)] focus-visible:ring-[color:var(--attachment-focus-ring-focus)] focus-visible:ring-offset-[length:var(--attachment-focus-offset)] focus-visible:ring-offset-[color:var(--attachment-focus-ring-offset-focus)]",
+        "flex w-fit max-w-full items-center gap-[var(--attachment-gap)] rounded-[var(--attachment-radius)] border-[length:var(--attachment-border-width)] border-[color:var(--attachment-border)] bg-[color:var(--attachment-background)] px-[var(--attachment-padding-x)] py-[var(--attachment-padding-y)] text-[length:var(--attachment-font-size)]/[var(--attachment-line-height)] outline-none hover:bg-[color:var(--attachment-background-hover)] focus-visible:ring-[length:var(--attachment-focus)] focus-visible:ring-[color:var(--attachment-focus-ring-focus)] focus-visible:ring-offset-[length:var(--attachment-focus-offset)] focus-visible:ring-offset-[color:var(--attachment-focus-ring-offset-focus)]",
         className,
       )}
       {...props}
     >
       <span
-        className="flex size-[var(--attachment-size)] shrink-0 items-center justify-center rounded-[var(--attachment-radius-2)] bg-[color:var(--attachment-background-2)]"
+        data-slot="attachment-media"
+        className="flex size-[var(--attachment-media-size)] shrink-0 items-center justify-center rounded-[var(--attachment-media-radius)] bg-[color:var(--attachment-media-background)]"
         aria-hidden
       >
-        <FileTextIcon className="size-[var(--attachment-icon-size)] text-[color:var(--attachment-label)]" />
+        <FileTextIcon className="size-[var(--attachment-media-icon-size)] text-[color:var(--attachment-media-icon-label)]" />
       </span>
       <span className="flex min-w-0 flex-col">
-        <span className="truncate [font-weight:var(--attachment-font-weight)]">{name}</span>
-        <span className="text-[length:var(--attachment-font-size-2)]/[var(--attachment-line-height-2)] text-[color:var(--attachment-label)]">
+        <span data-slot="attachment-name" className="truncate [font-weight:var(--attachment-name-font-weight)]">{name}</span>
+        <span
+          data-slot="attachment-meta"
+          className="text-[length:var(--attachment-meta-font-size)]/[var(--attachment-meta-line-height)] text-[color:var(--attachment-meta-label)]">
           {type} · {size}
         </span>
       </span>
