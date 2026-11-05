@@ -156,13 +156,13 @@ export async function dryRun(component, scheme = "dense-data") {
     for (const n of c.parts) if (!names.has(n)) problems.push(`card ${c.title}: part ${n} has no number on the drawing`);
   });
   const stage = drawn.children.find((f) => f.name.endsWith("/stage"));
-  // OD-248: a card shows its own parts large. Its frame is the box around its numbered parts and
-  // their numbers, with a 24px margin, or a minimum card: no bigger.
+  // OD-248: a card shows its own parts large. Its frame is the box around its numbered parts, their
+  // numbers and its context parts, with the scheme's card padding as margin, or a minimum card.
   SPEC.cards.forEach((c, i) => {
     const f = card(i);
     const crop = result.crops.find((x) => x.frame === f.name);
     if (!crop) return problems.push(`card ${c.title}: not cropped to its parts`);
-    const w = Math.max(crop.focus[0] + 48, 220), h = Math.max(crop.focus[1] + 48, 120);
+    const w = Math.max(crop.focus[0] + 2 * crop.margin, crop.min[0]), h = Math.max(crop.focus[1] + 2 * crop.margin, crop.min[1]);
     if (f.width > w + 1 || f.height > h + 1) problems.push(`card ${c.title}: ${Math.round(f.width)}×${Math.round(f.height)} for parts that take ${Math.round(crop.focus[0])}×${Math.round(crop.focus[1])}`);
   });
   const onStage = new Set(stage.children.filter((k) => k.name.startsWith("Number ")).map((k) => +k.name.slice(7)));

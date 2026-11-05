@@ -180,7 +180,7 @@ function menu(rows, show, whole) {
     for (const [k, n] of Object.entries(r.marks ?? {})) if (["row", "focus"].includes(k)) marks.push([n, row, "right"]);
   }
   if (whole) { for (const n of SPEC.drawing.surface ?? []) marks.push([n, panel, "corner"]); for (const n of SPEC.drawing.shadow ?? []) marks.push([n, panel, "shadow"]); }
-  return { node: panel, marks: marks.filter(([n]) => !show || show.has(n)) };
+  return { node: panel, marks: marks.filter(([n]) => !show || show.has(n)), all: marks };
 }
 
 // A frame on the scheme's canvas holding a drawing, with the numbers placed on it (the template's badges).
@@ -305,7 +305,7 @@ function table(sections, show) {
     }
     wrap.appendChild(fr);
   }
-  return { node: wrap, marks: marks.filter(([n]) => !show || show.has(n)) };
+  return { node: wrap, marks: marks.filter(([n]) => !show || show.has(n)), all: marks };
 }
 
 // The tree recipe: any component, drawn from a tree of nodes in its parts layer. Every look a node has
@@ -438,9 +438,10 @@ function treeDraw(root, show) {
   const marks = [];
   const node = tnode(root, marks, show);
   sizeTree(node);
-  return { node, marks: marks.filter(([n]) => !show || show.has(n)) };
+  return { node, marks: marks.filter(([n]) => !show || show.has(n)), all: marks };
 }
 
+// crop: false for the stage; for a card, { context: [part numbers framed with it, not numbered] }.
 function plate(name, built, w, crop = false) {
   const f = figma.createFrame();
   f.name = name;
@@ -485,17 +486,23 @@ function plate(name, built, w, crop = false) {
   // stays; the export draws the card at a larger scale, so the part fills the card in the docs.
   if (crop && built.marks.length) {
     const fb = f.absoluteBoundingBox;
-    const boxes = [...built.marks.map(([, node]) => node.absoluteBoundingBox), ...badges.map((b) => b.absoluteBoundingBox)];
+    // The card's own parts, their numbers, and the parts it names as context (image.context): framed
+    // with it, not numbered.
+    const context = (built.all ?? []).filter(([n]) => crop.context.includes(n)).map(([, node]) => node);
+    const boxes = [...built.marks.map(([, node]) => node), ...context, ...badges].map((x) => x.absoluteBoundingBox);
     let x0 = Math.min(...boxes.map((b) => b.x)) - fb.x, y0 = Math.min(...boxes.map((b) => b.y)) - fb.y;
     let x1 = Math.max(...boxes.map((b) => b.x + b.width)) - fb.x, y1 = Math.max(...boxes.map((b) => b.y + b.height)) - fb.y;
-    const M = 24, MIN_W = 220, MIN_H = 120;
+    // The margin is the padding the scheme puts inside a card (space.inset.container): the image is a
+    // card, so it breathes as the scheme's cards do (16px in Dense data, 32px in Brand expressive). The minimum keeps a one-line part (a separator, a caret) a readable card:
+    // room for its number and the margin on each side.
+    const M = V.plateMargin.value, MIN_W = 220, MIN_H = 120;
     const [bx0, by0, bx1, by1] = [x0, y0, x1, y1];
     x0 -= M; y0 -= M; x1 += M; y1 += M;
     // Not smaller than a readable card, centered on the parts; never larger than the stage drawn.
     if (x1 - x0 < MIN_W) { const c = (x0 + x1) / 2; x0 = c - MIN_W / 2; x1 = c + MIN_W / 2; }
     if (y1 - y0 < MIN_H) { const c = (y0 + y1) / 2; y0 = c - MIN_H / 2; y1 = c + MIN_H / 2; }
     x0 = Math.max(0, x0); y0 = Math.max(0, y0); x1 = Math.min(f.width, x1); y1 = Math.min(f.height, y1);
-    report.crops.push({ frame: f.name, focus: [bx1 - bx0, by1 - by0] });
+    report.crops.push({ frame: f.name, focus: [bx1 - bx0, by1 - by0], margin: M, min: [MIN_W, MIN_H] });
     for (const k of f.children) { k.x -= x0; k.y -= y0; }
     f.resize(Math.max(1, x1 - x0), Math.max(1, y1 - y0));
     f.clipsContent = true;
@@ -527,7 +534,7 @@ stage.x = 0; stage.y = 0;
 const ids = { page: page.id, stage: stage.id, cards: [] };
 let x = stage.width + 64;
 SPEC.cards.forEach((c, i) => {
-  const f = plate(`${SPEC.component}/${SPEC.scheme}/card-${i + 1}`, draw(c, new Set(c.parts)), 280, true);
+  const f = plate(`${SPEC.component}/${SPEC.scheme}/card-${i + 1}`, draw(c, new Set(c.parts)), 280, { context: c.image?.context ?? [] });
   f.x = x; f.y = 0;
   x += f.width + 32;
   ids.cards.push(f.id);
