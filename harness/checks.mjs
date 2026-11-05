@@ -616,6 +616,33 @@ export const CHECKS = {
         : ok(`${pairs} hover fills and dividers are visible where they meet; the lowest is ${lowest.toFixed(2)}:1`);
     },
   },
+  "answers-consider": {
+    requires: ["schemes/grammar.json", ...SCHEMES.map((s) => `schemes/${s}.json`)],
+    run: (c) => {
+      // OD-245: a question that lists what an answer must weigh (the typeface: readability, legibility,
+      // scalability, numerals, scripts, recognition, familiarity, personality, performance, licensing,
+      // fallback) gets an answer that meets each one in words. A skipped consideration is a decision
+      // nobody made.
+      const g = c.json("schemes", "grammar.json");
+      const qs = [...g.reasons, ...g.scopes].flatMap((x) => x.questions).filter((q) => q.considers?.length);
+      const gaps = [];
+      let n = 0;
+      for (const s of SCHEMES) {
+        const answers = c.json("schemes", `${s}.json`).answers;
+        for (const q of qs) {
+          const a = answers.find((x) => x.question === q.id);
+          if (!a) continue;
+          for (const k of q.considers) {
+            if (a.considers?.[k.id]?.trim()) n++;
+            else gaps.push(`${s}: ${q.id} does not say how it meets ${k.label.toLowerCase()}`);
+          }
+          for (const id of Object.keys(a.considers ?? {}))
+            if (!q.considers.some((k) => k.id === id)) gaps.push(`${s}: ${q.id} answers ${id}, which the question does not ask`);
+        }
+      }
+      return gaps.length ? bad(gaps.slice(0, 6).join("; ")) : ok(`${n} considerations met in words, across ${qs.length} question in ${SCHEMES.length} schemes`);
+    },
+  },
   "gaps-only-go-down": {
     requires: ["schemes/grammar.json", "cli/src/gaps.mjs", "harness/gaps-baseline.json"],
     run: async (c) => {

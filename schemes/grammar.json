@@ -433,6 +433,106 @@
               "label": "Loud"
             }
           ]
+        },
+        {
+          "id": "brand.q3",
+          "text": "Which typefaces carry the product, and why?",
+          "description": "The faces for every text role, and how they meet what a typeface decision must consider: reading, range, brand and delivery.",
+          "options": [
+            {
+              "id": "grotesque-mono",
+              "label": "A neutral grotesque, with a monospace for data",
+              "description": "For products where numbers and records are the content."
+            },
+            {
+              "id": "serif-sans",
+              "label": "A reading serif, with a sans for the interface",
+              "description": "For long-form reading; the interface steps back."
+            },
+            {
+              "id": "hyperlegible",
+              "label": "One face drawn for legibility",
+              "description": "For products where nobody may be left out."
+            },
+            {
+              "id": "display-text",
+              "label": "A display face for brand moments, with a sans for text",
+              "description": "For brands that lead with type."
+            },
+            {
+              "id": "per-brand",
+              "label": "Each brand brings its own face, on one shared scale",
+              "description": "For several brands on one system."
+            }
+          ],
+          "considers": [
+            {
+              "id": "readability",
+              "group": "Reading",
+              "label": "Readability",
+              "ask": "Does long text read easily at body size: open shapes, a comfortable x-height, even spacing?"
+            },
+            {
+              "id": "legibility",
+              "group": "Reading",
+              "label": "Legibility",
+              "ask": "Can people tell confusable characters apart, such as I, l and 1, or 0 and O, in data, codes and IDs?"
+            },
+            {
+              "id": "scalability",
+              "group": "Range",
+              "label": "Scalability",
+              "ask": "Does it hold from the smallest caption to display, with a weight or an optical size for every role in the scale?"
+            },
+            {
+              "id": "numerals",
+              "group": "Range",
+              "label": "Numerals",
+              "ask": "Do numbers read clearly and line up in tables?"
+            },
+            {
+              "id": "scripts",
+              "group": "Range",
+              "label": "Scripts and languages",
+              "ask": "Does it cover every language the product ships, and what fills the gaps?"
+            },
+            {
+              "id": "recognition",
+              "group": "Brand",
+              "label": "Recognition",
+              "ask": "Do people know the product by its type?"
+            },
+            {
+              "id": "familiarity",
+              "group": "Brand",
+              "label": "Familiarity",
+              "ask": "Does it feel known and trusted to its audience, not strange?"
+            },
+            {
+              "id": "personality",
+              "group": "Brand",
+              "label": "Personality",
+              "ask": "Does it sound like the voice the brand answers ask for?"
+            },
+            {
+              "id": "performance",
+              "group": "Delivery",
+              "label": "Performance",
+              "ask": "How many families and files load, and is that in proportion?"
+            },
+            {
+              "id": "licensing",
+              "group": "Delivery",
+              "label": "Licensing",
+              "ask": "Is it free to embed in apps and on the web, or what does it cost?"
+            },
+            {
+              "id": "fallback",
+              "group": "Delivery",
+              "label": "Fallback and pairing",
+              "ask": "What shows before it loads or where it can't, and which face pairs with it?"
+            }
+          ]
         }
       ]
     },

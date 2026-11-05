@@ -7,7 +7,7 @@
       "wrong-semantic": 26,
       "two-jobs": 3,
       "rule-not-written": 9,
-      "pick-without-reason": 7
+      "pick-without-reason": 0
     },
     "content-first": {
       "key-hides-part": 107,
@@ -15,7 +15,7 @@
       "wrong-semantic": 26,
       "two-jobs": 3,
       "rule-not-written": 9,
-      "pick-without-reason": 7
+      "pick-without-reason": 0
     },
     "accessible-first": {
       "key-hides-part": 107,
@@ -23,7 +23,7 @@
       "wrong-semantic": 26,
       "two-jobs": 3,
       "rule-not-written": 9,
-      "pick-without-reason": 7
+      "pick-without-reason": 0
     },
     "brand-expressive": {
       "key-hides-part": 107,
@@ -31,7 +31,7 @@
       "wrong-semantic": 26,
       "two-jobs": 3,
       "rule-not-written": 9,
-      "pick-without-reason": 7
+      "pick-without-reason": 0
     },
     "multi-brand": {
       "key-hides-part": 107,
@@ -39,7 +39,7 @@
       "wrong-semantic": 26,
       "two-jobs": 3,
       "rule-not-written": 9,
-      "pick-without-reason": 21
+      "pick-without-reason": 0
     }
   }
 }

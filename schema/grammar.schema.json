@@ -908,6 +908,30 @@
             "$ref": "#/$defs/option"
           },
           "description": "The possible answers. Answers are semantic words, never raw values."
+        },
+        "considers": {
+          "type": "array",
+          "minItems": 1,
+          "description": "What every answer must weigh (OD-245). Each scheme's answer says, for each one, how its choice meets it.",
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": ["id", "group", "label", "ask"],
+            "properties": {
+              "id": { "type": "string", "pattern": "^[a-z-]+$" },
+              "group": {
+                "type": "string",
+                "minLength": 1,
+                "description": "The family it belongs to, for reading it in groups."
+              },
+              "label": { "type": "string", "minLength": 1 },
+              "ask": {
+                "type": "string",
+                "minLength": 1,
+                "description": "The question to answer for this consideration."
+              }
+            }
+          }
         }
       }
     },

@@ -209,6 +209,17 @@ const RULES = [
     },
   },
   {
+    // OD-245: the typeface is the brand.q3 answer; the pick quotes it, with the role it serves.
+    test: /^type\.[a-z]+\.font-family$/,
+    because: ["brand.q3"],
+    why: (c) => {
+      const a = c.answers["brand.q3"];
+      if (!a) return null;
+      const role = c.path.split(".")[1];
+      return `${c.pick.replace(/^font\.family\./, "")} for ${role} text: ${a.why}`;
+    },
+  },
+  {
     test: /^radius\.(control|badge|container)$/,
     because: ["shape.roles", "shape.values"],
     why: (c) => `${c.pick}: ${c.answer("shape.values")}`,
@@ -254,6 +265,7 @@ for (const id of SCHEMES) {
           v: (p) => aliasChain(ix, p).value,
           ref: (p) => leaves(def.theme[m]).find(([q]) => q === p)?.[1]?.$value ?? "",
           answer: (q) => answers[q]?.why ?? "",
+          answers,
         };
         const why = rule.why(c);
         if (why === BROKE) {

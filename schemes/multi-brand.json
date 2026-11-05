@@ -1172,6 +1172,29 @@
       ]
     },
     {
+      "question": "brand.q3",
+      "option": "per-brand",
+      "why": "Each brand brings its own face, Inter, Plus Jakarta Sans or Poppins, on one shared type scale, so brands differ and the system stays one.",
+      "because": [
+        "business.q2",
+        "brand.q1",
+        "brand.q2"
+      ],
+      "considers": {
+        "readability": "All three are screen sans faces with open shapes; the shared scale keeps body size and line height the same in every brand.",
+        "legibility": "Each brand checks its face's confusable characters in its own data; the scale gives every brand the same sizes to check at.",
+        "scalability": "All three have a wide range of weights, so every role in the shared scale has a weight in every brand.",
+        "numerals": "Inter has tabular figures; the brands that show tables lean on it.",
+        "scripts": "Latin, with accents, in all three; Poppins also covers Devanagari. Other scripts need a face per brand.",
+        "recognition": "The face is how each brand is known on a shared system.",
+        "familiarity": "Inter, Plus Jakarta Sans and Poppins are widely seen on the web, so none feels strange.",
+        "personality": "A neutral base each brand can color: the face carries the brand, the scale stays neutral.",
+        "performance": "One family per brand: a page loads only its own brand's face.",
+        "licensing": "SIL Open Font License, all three: free to embed in apps and on the web.",
+        "fallback": "Each falls back to system-ui, as its tokens say; the shared scale keeps the layout steady while a face loads."
+      }
+    },
+    {
       "question": "scenarios.q1",
       "option": "anywhere",
       "why": "Customers sign up on phones and manage plans on laptops.",
@@ -3247,43 +3270,106 @@
               "display": {
                 "font-family": {
                   "$type": "fontFamily",
-                  "$value": "{font.family.inter}"
+                  "$value": "{font.family.inter}",
+                  "$extensions": {
+                    "open-ds": {
+                      "why": "inter for display text: Each brand brings its own face, Inter, Plus Jakarta Sans or Poppins, on one shared type scale, so brands differ and the system stays one.",
+                      "because": [
+                        "brand.q3"
+                      ],
+                      "generated": true
+                    }
+                  }
                 }
               },
               "title": {
                 "font-family": {
                   "$type": "fontFamily",
-                  "$value": "{font.family.inter}"
+                  "$value": "{font.family.inter}",
+                  "$extensions": {
+                    "open-ds": {
+                      "why": "inter for title text: Each brand brings its own face, Inter, Plus Jakarta Sans or Poppins, on one shared type scale, so brands differ and the system stays one.",
+                      "because": [
+                        "brand.q3"
+                      ],
+                      "generated": true
+                    }
+                  }
                 }
               },
               "heading": {
                 "font-family": {
                   "$type": "fontFamily",
-                  "$value": "{font.family.inter}"
+                  "$value": "{font.family.inter}",
+                  "$extensions": {
+                    "open-ds": {
+                      "why": "inter for heading text: Each brand brings its own face, Inter, Plus Jakarta Sans or Poppins, on one shared type scale, so brands differ and the system stays one.",
+                      "because": [
+                        "brand.q3"
+                      ],
+                      "generated": true
+                    }
+                  }
                 }
               },
               "body": {
                 "font-family": {
                   "$type": "fontFamily",
-                  "$value": "{font.family.inter}"
+                  "$value": "{font.family.inter}",
+                  "$extensions": {
+                    "open-ds": {
+                      "why": "inter for body text: Each brand brings its own face, Inter, Plus Jakarta Sans or Poppins, on one shared type scale, so brands differ and the system stays one.",
+                      "because": [
+                        "brand.q3"
+                      ],
+                      "generated": true
+                    }
+                  }
                 }
               },
               "label": {
                 "font-family": {
                   "$type": "fontFamily",
-                  "$value": "{font.family.inter}"
+                  "$value": "{font.family.inter}",
+                  "$extensions": {
+                    "open-ds": {
+                      "why": "inter for label text: Each brand brings its own face, Inter, Plus Jakarta Sans or Poppins, on one shared type scale, so brands differ and the system stays one.",
+                      "because": [
+                        "brand.q3"
+                      ],
+                      "generated": true
+                    }
+                  }
                 }
               },
               "caption": {
                 "font-family": {
                   "$type": "fontFamily",
-                  "$value": "{font.family.inter}"
+                  "$value": "{font.family.inter}",
+                  "$extensions": {
+                    "open-ds": {
+                      "why": "inter for caption text: Each brand brings its own face, Inter, Plus Jakarta Sans or Poppins, on one shared type scale, so brands differ and the system stays one.",
+                      "because": [
+                        "brand.q3"
+                      ],
+                      "generated": true
+                    }
+                  }
                 }
               },
               "data": {
                 "font-family": {
                   "$type": "fontFamily",
-                  "$value": "{font.family.inter}"
+                  "$value": "{font.family.inter}",
+                  "$extensions": {
+                    "open-ds": {
+                      "why": "inter for data text: Each brand brings its own face, Inter, Plus Jakarta Sans or Poppins, on one shared type scale, so brands differ and the system stays one.",
+                      "because": [
+                        "brand.q3"
+                      ],
+                      "generated": true
+                    }
+                  }
                 }
               }
             },
@@ -5275,43 +5361,106 @@
               "display": {
                 "font-family": {
                   "$type": "fontFamily",
-                  "$value": "{font.family.plus-jakarta-sans}"
+                  "$value": "{font.family.plus-jakarta-sans}",
+                  "$extensions": {
+                    "open-ds": {
+                      "why": "plus-jakarta-sans for display text: Each brand brings its own face, Inter, Plus Jakarta Sans or Poppins, on one shared type scale, so brands differ and the system stays one.",
+                      "because": [
+                        "brand.q3"
+                      ],
+                      "generated": true
+                    }
+                  }
                 }
               },
               "title": {
                 "font-family": {
                   "$type": "fontFamily",
-                  "$value": "{font.family.plus-jakarta-sans}"
+                  "$value": "{font.family.plus-jakarta-sans}",
+                  "$extensions": {
+                    "open-ds": {
+                      "why": "plus-jakarta-sans for title text: Each brand brings its own face, Inter, Plus Jakarta Sans or Poppins, on one shared type scale, so brands differ and the system stays one.",
+                      "because": [
+                        "brand.q3"
+                      ],
+                      "generated": true
+                    }
+                  }
                 }
               },
               "heading": {
                 "font-family": {
                   "$type": "fontFamily",
-                  "$value": "{font.family.plus-jakarta-sans}"
+                  "$value": "{font.family.plus-jakarta-sans}",
+                  "$extensions": {
+                    "open-ds": {
+                      "why": "plus-jakarta-sans for heading text: Each brand brings its own face, Inter, Plus Jakarta Sans or Poppins, on one shared type scale, so brands differ and the system stays one.",
+                      "because": [
+                        "brand.q3"
+                      ],
+                      "generated": true
+                    }
+                  }
                 }
               },
               "body": {
                 "font-family": {
                   "$type": "fontFamily",
-                  "$value": "{font.family.plus-jakarta-sans}"
+                  "$value": "{font.family.plus-jakarta-sans}",
+                  "$extensions": {
+                    "open-ds": {
+                      "why": "plus-jakarta-sans for body text: Each brand brings its own face, Inter, Plus Jakarta Sans or Poppins, on one shared type scale, so brands differ and the system stays one.",
+                      "because": [
+                        "brand.q3"
+                      ],
+                      "generated": true
+                    }
+                  }
                 }
               },
               "label": {
                 "font-family": {
                   "$type": "fontFamily",
-                  "$value": "{font.family.plus-jakarta-sans}"
+                  "$value": "{font.family.plus-jakarta-sans}",
+                  "$extensions": {
+                    "open-ds": {
+                      "why": "plus-jakarta-sans for label text: Each brand brings its own face, Inter, Plus Jakarta Sans or Poppins, on one shared type scale, so brands differ and the system stays one.",
+                      "because": [
+                        "brand.q3"
+                      ],
+                      "generated": true
+                    }
+                  }
                 }
               },
               "caption": {
                 "font-family": {
                   "$type": "fontFamily",
-                  "$value": "{font.family.plus-jakarta-sans}"
+                  "$value": "{font.family.plus-jakarta-sans}",
+                  "$extensions": {
+                    "open-ds": {
+                      "why": "plus-jakarta-sans for caption text: Each brand brings its own face, Inter, Plus Jakarta Sans or Poppins, on one shared type scale, so brands differ and the system stays one.",
+                      "because": [
+                        "brand.q3"
+                      ],
+                      "generated": true
+                    }
+                  }
                 }
               },
               "data": {
                 "font-family": {
                   "$type": "fontFamily",
-                  "$value": "{font.family.plus-jakarta-sans}"
+                  "$value": "{font.family.plus-jakarta-sans}",
+                  "$extensions": {
+                    "open-ds": {
+                      "why": "plus-jakarta-sans for data text: Each brand brings its own face, Inter, Plus Jakarta Sans or Poppins, on one shared type scale, so brands differ and the system stays one.",
+                      "because": [
+                        "brand.q3"
+                      ],
+                      "generated": true
+                    }
+                  }
                 }
               }
             },
@@ -7303,43 +7452,106 @@
               "display": {
                 "font-family": {
                   "$type": "fontFamily",
-                  "$value": "{font.family.poppins}"
+                  "$value": "{font.family.poppins}",
+                  "$extensions": {
+                    "open-ds": {
+                      "why": "poppins for display text: Each brand brings its own face, Inter, Plus Jakarta Sans or Poppins, on one shared type scale, so brands differ and the system stays one.",
+                      "because": [
+                        "brand.q3"
+                      ],
+                      "generated": true
+                    }
+                  }
                 }
               },
               "title": {
                 "font-family": {
                   "$type": "fontFamily",
-                  "$value": "{font.family.poppins}"
+                  "$value": "{font.family.poppins}",
+                  "$extensions": {
+                    "open-ds": {
+                      "why": "poppins for title text: Each brand brings its own face, Inter, Plus Jakarta Sans or Poppins, on one shared type scale, so brands differ and the system stays one.",
+                      "because": [
+                        "brand.q3"
+                      ],
+                      "generated": true
+                    }
+                  }
                 }
               },
               "heading": {
                 "font-family": {
                   "$type": "fontFamily",
-                  "$value": "{font.family.poppins}"
+                  "$value": "{font.family.poppins}",
+                  "$extensions": {
+                    "open-ds": {
+                      "why": "poppins for heading text: Each brand brings its own face, Inter, Plus Jakarta Sans or Poppins, on one shared type scale, so brands differ and the system stays one.",
+                      "because": [
+                        "brand.q3"
+                      ],
+                      "generated": true
+                    }
+                  }
                 }
               },
               "body": {
                 "font-family": {
                   "$type": "fontFamily",
-                  "$value": "{font.family.poppins}"
+                  "$value": "{font.family.poppins}",
+                  "$extensions": {
+                    "open-ds": {
+                      "why": "poppins for body text: Each brand brings its own face, Inter, Plus Jakarta Sans or Poppins, on one shared type scale, so brands differ and the system stays one.",
+                      "because": [
+                        "brand.q3"
+                      ],
+                      "generated": true
+                    }
+                  }
                 }
               },
               "label": {
                 "font-family": {
                   "$type": "fontFamily",
-                  "$value": "{font.family.poppins}"
+                  "$value": "{font.family.poppins}",
+                  "$extensions": {
+                    "open-ds": {
+                      "why": "poppins for label text: Each brand brings its own face, Inter, Plus Jakarta Sans or Poppins, on one shared type scale, so brands differ and the system stays one.",
+                      "because": [
+                        "brand.q3"
+                      ],
+                      "generated": true
+                    }
+                  }
                 }
               },
               "caption": {
                 "font-family": {
                   "$type": "fontFamily",
-                  "$value": "{font.family.poppins}"
+                  "$value": "{font.family.poppins}",
+                  "$extensions": {
+                    "open-ds": {
+                      "why": "poppins for caption text: Each brand brings its own face, Inter, Plus Jakarta Sans or Poppins, on one shared type scale, so brands differ and the system stays one.",
+                      "because": [
+                        "brand.q3"
+                      ],
+                      "generated": true
+                    }
+                  }
                 }
               },
               "data": {
                 "font-family": {
                   "$type": "fontFamily",
-                  "$value": "{font.family.poppins}"
+                  "$value": "{font.family.poppins}",
+                  "$extensions": {
+                    "open-ds": {
+                      "why": "poppins for data text: Each brand brings its own face, Inter, Plus Jakarta Sans or Poppins, on one shared type scale, so brands differ and the system stays one.",
+                      "because": [
+                        "brand.q3"
+                      ],
+                      "generated": true
+                    }
+                  }
                 }
               }
             },

@@ -812,6 +812,11 @@
         "additionalProperties": false,
         "required": ["question", "option", "why", "because"],
         "properties": {
+          "considers": {
+            "type": "object",
+            "description": "For a question that lists what an answer must weigh (OD-245): how this answer meets each one, by its id.",
+            "additionalProperties": { "type": "string", "minLength": 1 }
+          },
           "question": {
             "type": "string",
             "pattern": "^[a-z]+\\.(q\\d+|roles|count|definition|values|lands)$",

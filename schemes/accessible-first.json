@@ -1130,6 +1130,29 @@
       ]
     },
     {
+      "question": "brand.q3",
+      "option": "hyperlegible",
+      "why": "Atkinson Hyperlegible for everything: it was drawn so letters can't be mistaken, and nobody is left out.",
+      "because": [
+        "brand.q1",
+        "people.q2",
+        "content.q1"
+      ],
+      "considers": {
+        "readability": "Atkinson Hyperlegible was designed by the Braille Institute for readers with low vision.",
+        "legibility": "Its letters are drawn to stay apart: I, l and 1, 0 and O, b and d don't look alike.",
+        "scalability": "Regular and bold carry the hierarchy; size does the rest, so every role stays readable.",
+        "numerals": "Its digits are drawn to be told apart; figures line up when columns align to the right.",
+        "scripts": "Latin, with accents for many languages; other scripts need a face chosen for the same legibility.",
+        "recognition": "Accessibility is the brand promise, and the face says it.",
+        "familiarity": "A plain, open sans feels familiar and calm in forms and steps.",
+        "personality": "Calm and clear, never clever, as the brand answer asks.",
+        "performance": "One family, two weights: the lightest load of all five schemes.",
+        "licensing": "SIL Open Font License: free to embed in apps and on the web.",
+        "fallback": "Falls back to Verdana, a wide, legible system face, as its token says; no second face is needed."
+      }
+    },
+    {
       "question": "scenarios.q1",
       "option": "anywhere",
       "why": "Public services are used on any device, with any assistive technology.",
@@ -2921,43 +2944,106 @@
               "display": {
                 "font-family": {
                   "$type": "fontFamily",
-                  "$value": "{font.family.atkinson-hyperlegible}"
+                  "$value": "{font.family.atkinson-hyperlegible}",
+                  "$extensions": {
+                    "open-ds": {
+                      "why": "atkinson-hyperlegible for display text: Atkinson Hyperlegible for everything: it was drawn so letters can't be mistaken, and nobody is left out.",
+                      "because": [
+                        "brand.q3"
+                      ],
+                      "generated": true
+                    }
+                  }
                 }
               },
               "title": {
                 "font-family": {
                   "$type": "fontFamily",
-                  "$value": "{font.family.atkinson-hyperlegible}"
+                  "$value": "{font.family.atkinson-hyperlegible}",
+                  "$extensions": {
+                    "open-ds": {
+                      "why": "atkinson-hyperlegible for title text: Atkinson Hyperlegible for everything: it was drawn so letters can't be mistaken, and nobody is left out.",
+                      "because": [
+                        "brand.q3"
+                      ],
+                      "generated": true
+                    }
+                  }
                 }
               },
               "heading": {
                 "font-family": {
                   "$type": "fontFamily",
-                  "$value": "{font.family.atkinson-hyperlegible}"
+                  "$value": "{font.family.atkinson-hyperlegible}",
+                  "$extensions": {
+                    "open-ds": {
+                      "why": "atkinson-hyperlegible for heading text: Atkinson Hyperlegible for everything: it was drawn so letters can't be mistaken, and nobody is left out.",
+                      "because": [
+                        "brand.q3"
+                      ],
+                      "generated": true
+                    }
+                  }
                 }
               },
               "body": {
                 "font-family": {
                   "$type": "fontFamily",
-                  "$value": "{font.family.atkinson-hyperlegible}"
+                  "$value": "{font.family.atkinson-hyperlegible}",
+                  "$extensions": {
+                    "open-ds": {
+                      "why": "atkinson-hyperlegible for body text: Atkinson Hyperlegible for everything: it was drawn so letters can't be mistaken, and nobody is left out.",
+                      "because": [
+                        "brand.q3"
+                      ],
+                      "generated": true
+                    }
+                  }
                 }
               },
               "label": {
                 "font-family": {
                   "$type": "fontFamily",
-                  "$value": "{font.family.atkinson-hyperlegible}"
+                  "$value": "{font.family.atkinson-hyperlegible}",
+                  "$extensions": {
+                    "open-ds": {
+                      "why": "atkinson-hyperlegible for label text: Atkinson Hyperlegible for everything: it was drawn so letters can't be mistaken, and nobody is left out.",
+                      "because": [
+                        "brand.q3"
+                      ],
+                      "generated": true
+                    }
+                  }
                 }
               },
               "caption": {
                 "font-family": {
                   "$type": "fontFamily",
-                  "$value": "{font.family.atkinson-hyperlegible}"
+                  "$value": "{font.family.atkinson-hyperlegible}",
+                  "$extensions": {
+                    "open-ds": {
+                      "why": "atkinson-hyperlegible for caption text: Atkinson Hyperlegible for everything: it was drawn so letters can't be mistaken, and nobody is left out.",
+                      "because": [
+                        "brand.q3"
+                      ],
+                      "generated": true
+                    }
+                  }
                 }
               },
               "data": {
                 "font-family": {
                   "$type": "fontFamily",
-                  "$value": "{font.family.atkinson-hyperlegible}"
+                  "$value": "{font.family.atkinson-hyperlegible}",
+                  "$extensions": {
+                    "open-ds": {
+                      "why": "atkinson-hyperlegible for data text: Atkinson Hyperlegible for everything: it was drawn so letters can't be mistaken, and nobody is left out.",
+                      "because": [
+                        "brand.q3"
+                      ],
+                      "generated": true
+                    }
+                  }
                 }
               }
             },

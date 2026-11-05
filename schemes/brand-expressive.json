@@ -1117,6 +1117,29 @@
       ]
     },
     {
+      "question": "brand.q3",
+      "option": "display-text",
+      "why": "Bricolage Grotesque for display and headings, DM Sans for text: loud where the brand speaks, easy where people read.",
+      "because": [
+        "brand.q1",
+        "brand.q2",
+        "content.q1"
+      ],
+      "considers": {
+        "readability": "Body text sits in DM Sans, a low-contrast sans that reads easily in short copy.",
+        "legibility": "DM Sans keeps simple, open shapes at small sizes; the display face never sets small text.",
+        "scalability": "Both are variable: Bricolage Grotesque has optical size, width and weight axes, and DM Sans optical size and weight.",
+        "numerals": "Numbers are few and set in DM Sans, in short copy rather than tables.",
+        "scripts": "Latin, with accents; other scripts need faces chosen for the same voice.",
+        "recognition": "Bricolage Grotesque's character is the brand's: people know it by its headlines.",
+        "familiarity": "DM Sans for text keeps reading familiar while the display face takes the risks.",
+        "personality": "Bold and confident, as the brand answer asks.",
+        "performance": "Two variable families, one file each.",
+        "licensing": "SIL Open Font License, both: free to embed in apps and on the web.",
+        "fallback": "Falls back to system-ui, as its tokens say; DM Sans is the display face's text pair."
+      }
+    },
+    {
       "question": "scenarios.q1",
       "option": "on-the-move",
       "why": "Visitors come from social posts on their phones.",
@@ -2961,43 +2984,106 @@
               "display": {
                 "font-family": {
                   "$type": "fontFamily",
-                  "$value": "{font.family.bricolage-grotesque}"
+                  "$value": "{font.family.bricolage-grotesque}",
+                  "$extensions": {
+                    "open-ds": {
+                      "why": "bricolage-grotesque for display text: Bricolage Grotesque for display and headings, DM Sans for text: loud where the brand speaks, easy where people read.",
+                      "because": [
+                        "brand.q3"
+                      ],
+                      "generated": true
+                    }
+                  }
                 }
               },
               "title": {
                 "font-family": {
                   "$type": "fontFamily",
-                  "$value": "{font.family.bricolage-grotesque}"
+                  "$value": "{font.family.bricolage-grotesque}",
+                  "$extensions": {
+                    "open-ds": {
+                      "why": "bricolage-grotesque for title text: Bricolage Grotesque for display and headings, DM Sans for text: loud where the brand speaks, easy where people read.",
+                      "because": [
+                        "brand.q3"
+                      ],
+                      "generated": true
+                    }
+                  }
                 }
               },
               "heading": {
                 "font-family": {
                   "$type": "fontFamily",
-                  "$value": "{font.family.bricolage-grotesque}"
+                  "$value": "{font.family.bricolage-grotesque}",
+                  "$extensions": {
+                    "open-ds": {
+                      "why": "bricolage-grotesque for heading text: Bricolage Grotesque for display and headings, DM Sans for text: loud where the brand speaks, easy where people read.",
+                      "because": [
+                        "brand.q3"
+                      ],
+                      "generated": true
+                    }
+                  }
                 }
               },
               "body": {
                 "font-family": {
                   "$type": "fontFamily",
-                  "$value": "{font.family.dm-sans}"
+                  "$value": "{font.family.dm-sans}",
+                  "$extensions": {
+                    "open-ds": {
+                      "why": "dm-sans for body text: Bricolage Grotesque for display and headings, DM Sans for text: loud where the brand speaks, easy where people read.",
+                      "because": [
+                        "brand.q3"
+                      ],
+                      "generated": true
+                    }
+                  }
                 }
               },
               "label": {
                 "font-family": {
                   "$type": "fontFamily",
-                  "$value": "{font.family.dm-sans}"
+                  "$value": "{font.family.dm-sans}",
+                  "$extensions": {
+                    "open-ds": {
+                      "why": "dm-sans for label text: Bricolage Grotesque for display and headings, DM Sans for text: loud where the brand speaks, easy where people read.",
+                      "because": [
+                        "brand.q3"
+                      ],
+                      "generated": true
+                    }
+                  }
                 }
               },
               "caption": {
                 "font-family": {
                   "$type": "fontFamily",
-                  "$value": "{font.family.dm-sans}"
+                  "$value": "{font.family.dm-sans}",
+                  "$extensions": {
+                    "open-ds": {
+                      "why": "dm-sans for caption text: Bricolage Grotesque for display and headings, DM Sans for text: loud where the brand speaks, easy where people read.",
+                      "because": [
+                        "brand.q3"
+                      ],
+                      "generated": true
+                    }
+                  }
                 }
               },
               "data": {
                 "font-family": {
                   "$type": "fontFamily",
-                  "$value": "{font.family.dm-sans}"
+                  "$value": "{font.family.dm-sans}",
+                  "$extensions": {
+                    "open-ds": {
+                      "why": "dm-sans for data text: Bricolage Grotesque for display and headings, DM Sans for text: loud where the brand speaks, easy where people read.",
+                      "because": [
+                        "brand.q3"
+                      ],
+                      "generated": true
+                    }
+                  }
                 }
               }
             },

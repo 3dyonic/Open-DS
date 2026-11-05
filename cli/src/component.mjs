@@ -6,6 +6,7 @@
 import { assetRoots, grammar, loadScheme } from "./schemes.mjs";
 import { componentApi } from "./lands.mjs";
 import { componentLedger } from "./gaps.mjs";
+import { anatomy } from "./anatomy.mjs";
 
 /** The reference and this scheme's decisions for one catalogue component, or null if there is none. */
 export function componentGuide(
@@ -90,6 +91,8 @@ export function componentGuide(
     // Its gaps (OD-243): where its decision trace breaks. Where a gap stands, the scheme has no answer
     // yet; say so instead of inventing one.
     gaps: componentLedger(scheme, g, roots, id),
+    // Its anatomy (OD-229): each part, the tokens it reads, and the chain from each decision to its value.
+    anatomy: anatomy(scheme, g, roots, id),
   };
 }
 
@@ -159,6 +162,14 @@ export function componentText(guide) {
         `  ${t.token}${t.aliases ? ` → ${t.aliases}` : ""}  (${t.css})${t.changes_with_theme ? "  changes with theme" : ""}`,
         `      ${vals.join(" | ")}`,
       );
+    }
+  }
+  if (guide.anatomy?.parts?.length) {
+    lines.push("", `Anatomy: ${guide.anatomy.parts.length} parts, ${guide.anatomy.by_scheme} change their value by scheme.`);
+    for (const p of guide.anatomy.parts) {
+      lines.push(`  ${p.part}${p.by_scheme ? "  (by scheme)" : ""}`);
+      for (const t of p.tokens)
+        lines.push(`    ${t.semantic} → ${t.key}  ${t.light.value}${t.dark.value !== t.light.value ? ` · dark ${t.dark.value}` : ""}`, ...(t.light.why ? [`      Why: ${t.light.why}`] : []));
     }
   }
   if (guide.gaps?.length) {

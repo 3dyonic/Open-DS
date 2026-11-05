@@ -13,6 +13,7 @@ import { LANES, follow, laneOf, scaleMap } from "./scale-map.mjs";
 import { aliasChain, tokenIndex } from "./lands.mjs";
 import { spacingGuide } from "./spacing-map.mjs";
 import { componentGuide, followers } from "./component.mjs";
+import { anatomy } from "./anatomy.mjs";
 
 // Which component keys each shipped component reads.
 const KEY_GROUP = {
@@ -560,7 +561,17 @@ function colorGuidance(g) {
   const keys = s.keys;
   return (
     `\n## Status urgency\n\n${s.urgency.description}\n\n${s.urgency.order.map((id) => `\`${id}\``).join(" → ")}\n` +
-    `\n## What each color is for\n\n| Token | What it is for | Not for |\n| --- | --- | --- |\n` +
+    // Surfaces: when, and for what effect (OD-241). Each surface has one job; the state fills
+    // (highlight, pressed, selected) are surfaces too, so the table shows where each one belongs.
+    `\n## Surfaces: when, and for what effect\n\nA surface tells people where they are in depth, or which item they are on. Each one has a job; using the wrong one breaks the reading order.\n\n| Surface | Its job | Use it for | Not for |\n| --- | --- | --- | --- |\n` +
+    keys
+      .filter((k) => k.id.startsWith("color.surface."))
+      .map(
+        (k) =>
+          `| <span class="odv-surface-swatch" style="background:var(--${cssId(k.id)})"></span> **${esc(k.id.split(".").pop().replace(/^./, (c) => c.toUpperCase()))}** | ${esc(k.intent)} | ${esc((k.use_for ?? []).join(", "))} | ${k.not_for.map((n) => `${esc(n.when)}: \`${n.use}\``).join("<br />") || "—"} |`,
+      )
+      .join("\n") +
+    `\n\n## What each color is for\n\n| Token | What it is for | Not for |\n| --- | --- | --- |\n` +
     keys
       .map(
         (k) =>
@@ -1104,6 +1115,12 @@ export function docsPages(
             href: d.page,
             go: d.page_title,
           })),
+          ...(q.decided.picks ?? []).map((d) => ({
+            kind: "Pick",
+            text: d.text,
+            href: d.page,
+            go: d.page_title,
+          })),
         ];
     const n = (q) => (made[q] ?? []).length;
     const total = (r) => r.questions.reduce((t, q) => t + n(q.id), 0);
@@ -1133,6 +1150,14 @@ export function docsPages(
         ),
       ],
     ];
+    // Lucide "brush" (24px grid), scaled to the 16px grid of the other kind icons.
+    KINDS.push([
+      "Pick",
+      "Theme picks it sets",
+      svg(
+        '<g transform="scale(0.6667)"><path d="m11 10 3 3"/><path d="M6.5 21A3.5 3.5 0 1 0 3 17.5a2.62 2.62 0 0 1-.708 1.792A1 1 0 0 0 3 21z"/><path d="M9.969 17.031 21.378 5.624a1 1 0 0 0-3.002-3.002L6.967 14.031"/></g>',
+      ),
+    ]);
     const pill = (q) => `<span class="odv-apill">${he(label(q))}</span>`;
     const lbl = (t) => `<b class="odv-lbl">${he(t)}</b>`;
     const item = (d) =>
@@ -1160,9 +1185,24 @@ export function docsPages(
           : `<p class="odv-why">Nothing before it. It's one of the first answers.</p>`
       }</li>`;
     };
+    // What the answer had to weigh, and this scheme's words for each (OD-245), in their groups.
+    const considers = (q) => {
+      if (!q.considers?.length) return "";
+      const a = answer(q.id).considers ?? {};
+      const groups = [...new Set(q.considers.map((k) => k.group))];
+      return `<li>${lbl(`What it weighs (${q.considers.length})`)}${groups
+        .map(
+          (gr) =>
+            `<div class="odv-dgroup"><div class="odv-dgroup-t">${he(gr)}</div><ul class="odv-tree">${q.considers
+              .filter((k) => k.group === gr)
+              .map((k) => `<li><span class="odv-dec-what"><b>${he(k.label)}.</b> ${he(a[k.id] ?? "Not answered yet.")}</span></li>`)
+              .join("")}</ul></div>`,
+        )
+        .join("")}</li>`;
+    };
     const qa = (q, r) =>
       `<div class="odv-qa" id="${he(q.id.replace(/\./g, "-"))}"><div class="odv-q">${he(q.text)}</div><ul class="odv-tree odv-tree-root"><li>${pill(q.id)}<ul class="odv-tree">` +
-      `<li>${lbl("Why")}<p class="odv-why">${he(sentence(answer(q.id).why))}</p></li>${because(q.id)}${decided(q.id, r)}</ul></li></ul></div>`;
+      `<li>${lbl("Why")}<p class="odv-why">${he(sentence(answer(q.id).why))}</p></li>${considers(q)}${because(q.id)}${decided(q.id, r)}</ul></li></ul></div>`;
     // Where it starts: a simple process tree. The first answers (nothing before them), each later
     // answer under the first answer it came from, and at the leaves the foundation values they set.
     const reasons = scheme.answers
@@ -2376,6 +2416,72 @@ export function docsPages(
   const pageOf = (id) =>
     names.includes(id) ? `[${title(id)}](./${id}.md)` : title(id);
   const qText = (id) => qs[id]?.text ?? id;
+  // The Anatomy reference (OD-229): the component taken apart, part by part, from the anatomy engine
+  // that get_component also returns. A part whose value changes between schemes carries a "By scheme"
+  // tag; each token follows the decision to the value: the semantic's rule, the pick and its reason in
+  // light and dark, what else picks the same step, and the answers it follows from.
+  const BRUSH =
+    '<svg viewBox="0 0 24 24" width="11" height="11" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m11 10 3 3"/><path d="M6.5 21A3.5 3.5 0 1 0 3 17.5a2.62 2.62 0 0 1-.708 1.792A1 1 0 0 0 3 21z"/><path d="M9.969 17.031 21.378 5.624a1 1 0 0 0-3.002-3.002L6.967 14.031"/></svg>';
+  const byTag = `<span class="odv-byscheme" title="Its value changes by scheme. The part is the same in every scheme.">${BRUSH}By scheme</span>`;
+  const partName = (p) => (p === "root" ? "The component" : p.replace(/-/g, " ").replace(/^./, (c) => c.toUpperCase()));
+  function anatomyPage(name, i) {
+    const a = anatomy(scheme, g, roots, name);
+    if (!a || !a.parts.length) return null;
+    const T = title(name);
+    const row = (t) => {
+      const lines = [];
+      if (t.rule) lines.push(`<div><b>Rule</b> ${attr(t.rule)}</div>`);
+      // A reason starts with its pick ("neutral.200: …"); show the pick alone only when there is no reason.
+      const said = (x) => (x.why ? attr(x.why) : attr(x.pick));
+      lines.push(`<div><b>Pick</b> ${said(t.light)}</div>`);
+      if (t.dark.value && t.dark.value !== t.light.value) lines.push(`<div><b>Dark</b> ${said(t.dark)}</div>`);
+      if (t.shares.length)
+        lines.push(`<div><b>Shares the step with</b> ${t.shares.map((x) => `<code>${attr(x)}</code>`).join(" ")}. Changing this pick moves only what reads <code>${attr(t.semantic)}</code>.</div>`);
+      if (t.set_by.length)
+        lines.push(`<div><b>Set by</b> ${t.set_by.map((x) => `${attr(x.text)} → ${attr(x.answer)}`).join("; ")}</div>`);
+      const dark = t.dark.value && t.dark.value !== t.light.value ? ` · dark ${attr(t.dark.value)}` : "";
+      return h(
+        `<li class="odv-anat-token"><div class="odv-anat-chain"><code>${attr(t.semantic)}</code><span>→</span><code>${attr(t.key)}</code><span class="odv-anat-val">${attr(t.light.value)}${dark}</span>${t.by_scheme ? byTag : ""}${t.states.length ? `<span class="odv-anat-state">${attr(t.states.join(", "))}</span>` : ""}</div>`,
+        `<div class="odv-anat-lines">${lines.join("")}</div></li>`,
+      );
+    };
+    const intro = h(
+      `<div class="odv-intro">${robot("anatomy", "odv-intro-robot")}<div class="odv-intro-body"><h2 class="odv-intro-t">Look closer, when you want to</h2>`,
+      `<p>This page takes ${attr(T)} apart to show how design decisions become the parts you see. You don't need it to use ${attr(T)}: <a href="./${name}">its own page</a> has everything you need to build.</p>`,
+      `<b class="odv-intro-sub">Three easy ways in</b><ul><li>Start with the parts. Each one lists the tokens it reads.</li><li>Want to know why a part looks the way it does? Its card follows the decision from the answer about the product, through the rule and the token, to what you see.</li><li>Look for ${byTag}: that part's value changes from scheme to scheme. The part itself is the same in every one.</li></ul>`,
+      `<p class="odv-intro-end">Come back whenever a part makes you wonder why.</p></div></div>`,
+    );
+    const list = h(
+      `<table class="odv-anat-parts"><thead><tr><th>Part</th><th>Tokens it reads</th><th>States</th><th></th></tr></thead><tbody>`,
+      a.parts.map((p) => `<tr><td><a href="#part-${p.part}">${attr(partName(p.part))}</a></td><td>${p.tokens.length}</td><td>${attr(p.states.join(", ") || "at rest")}</td><td>${p.by_scheme ? byTag : ""}</td></tr>`),
+      `</tbody></table>`,
+    );
+    const cards = a.parts
+      .map((p) =>
+        h(
+          `<section class="odv-anat-card" id="part-${p.part}"><header><b>${attr(partName(p.part))}</b>${p.by_scheme ? byTag : ""}</header>`,
+          `<ul class="odv-anat-tokens">${p.tokens.map(row).join("")}</ul></section>`,
+        ),
+      )
+      .join("\n\n");
+    return (
+      fm({
+        sidebar_position: i + 1.5,
+        sidebar_label: "Anatomy",
+        sidebar_class_name: "ods-anatomy",
+        title: `${T}: anatomy reference`,
+        description: `How the design decisions reach each part of ${T} in ${scheme.name}.`,
+      }) +
+      NOTE +
+      [
+        intro,
+        `## The parts\n\n${a.parts.length} part${a.parts.length === 1 ? "" : "s"}, from the code's data-slots. ${a.by_scheme} of them change their value by scheme.\n\n${list}`,
+        `## How the decisions reach each part\n\n${cards}`,
+        `## For agents\n\nThe same anatomy reaches agents: \`get_component\` returns it, part by part, and \`open-ds component ${scheme.id} ${name}\` prints it.`,
+      ].join("\n\n") +
+      "\n"
+    );
+  }
   const contentWords = Object.entries(scheme.tokens.content?.action ?? {})
     .filter(([k]) => !k.startsWith("$"))
     .map(([k, v]) => `- \`content.action.${k}\`: ${esc(v.$value)}`);
@@ -2561,6 +2667,11 @@ export function docsPages(
             ? `Test before you ship:\n\n${a11y.map((x) => `- [ ] ${esc(x.overview)} ${esc(x.apply_when)}`).join("\n")}`
             : ""),
       );
+    const anat = anatomyPage(name, i);
+    if (anat)
+      parts.push(
+        `## Look closer\n\n${h(`<div class="odv-anat-link"><a href="./${name}-anatomy">Anatomy reference →</a><span>Each part of ${attr(title(name))}, and how the design decisions reach it: the answer, the rule, the token and the value you see.</span></div>`)}`,
+      );
     parts.push(
       `## Use it in code\n\n\`\`\`bash\nnpx open-ds add ${name}\n\`\`\`\n\n` +
         `The component reads only component keys and semantic tokens, so it follows the brand and mode on \`<html>\`.`,
@@ -2582,6 +2693,7 @@ export function docsPages(
             )
         : tokensRead(name),
     );
+    if (anat) pages[`components/${name}-anatomy.md`] = anat;
     pages[`components/${name}.md`] =
       fm({
         sidebar_position: i + 1,

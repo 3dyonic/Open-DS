@@ -404,15 +404,14 @@ test("get_gaps and get_component: where the decision trace breaks (OD-243)", asy
     ["key-hides-part", "key-hides-state", "wrong-semantic", "two-jobs", "rule-not-written", "pick-without-reason"],
   );
   for (const k of all.kinds) assert.equal(all.counts[k.id], all.gaps.filter((x) => x.kind === k.id).length);
-  // The menu's highlight borrows the depth token: the key hides the state, and sunken carries many jobs.
+  // OD-241 fixed the menu: its keys name their part and state, and link the semantic whose rule covers them.
   const menu = await call(c, "get_gaps", { scheme_id: "dense-data", component: "dropdown-menu" });
-  assert.ok(menu.gaps.some((x) => x.kind === "key-hides-state" && x.key === "component.dropdown-menu.item.sunken" && x.state === "highlight"));
-  assert.ok(menu.gaps.some((x) => x.kind === "key-hides-part" && x.key === "component.dropdown-menu.background" && x.part === "separator"));
-  assert.ok(menu.gaps.some((x) => x.kind === "two-jobs" && x.semantic === "color.surface.sunken"));
-  // A written rule the code breaks: the grammar says a current item uses color.surface.selected.
-  const side = await call(c, "get_gaps", { scheme_id: "dense-data", component: "sidebar", kind: "wrong-semantic" });
-  assert.ok(side.gaps.some((x) => x.state === "current" && x.should?.includes("color.surface.selected")));
-  assert.ok(side.gaps.every((x) => x.kind === "wrong-semantic"));
+  assert.equal(menu.gaps.filter((x) => x.component === "dropdown-menu").length, 0);
+  // A shared gap still names the components it touches: border.default also paints the sidebar rail.
+  for (const x of menu.gaps) assert.ok(x.kind === "two-jobs" || x.kind === "rule-not-written");
+  // A filter by kind returns only that kind.
+  const wrong = await call(c, "get_gaps", { scheme_id: "dense-data", kind: "wrong-semantic" });
+  assert.ok(wrong.gaps.length > 0 && wrong.gaps.every((x) => x.kind === "wrong-semantic"));
   // get_component carries the same gaps, so an agent sees them before it builds.
   const comp = await call(c, "get_component", { scheme_id: "dense-data", component: "dropdown-menu" });
   assert.equal(comp.gaps.length, menu.gaps.length);

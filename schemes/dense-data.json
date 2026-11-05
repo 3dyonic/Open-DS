@@ -1255,6 +1255,29 @@
       ]
     },
     {
+      "question": "brand.q3",
+      "option": "grotesque-mono",
+      "why": "IBM Plex Sans for every text role and IBM Plex Mono for data: exact and quiet, so the numbers stay the hero.",
+      "because": [
+        "brand.q1",
+        "brand.q2",
+        "content.q1"
+      ],
+      "considers": {
+        "readability": "Plex Sans is a neutral grotesque with open shapes, made for screens; it reads at the small body size dense rows need.",
+        "legibility": "Data, codes and IDs sit in Plex Mono, where each character holds its own fixed cell, so they read character by character.",
+        "scalability": "Plex ships a full range of weights, so every role in the type scale has its own weight without a second sans.",
+        "numerals": "Digits in Plex Mono are all one width, so columns of numbers line up.",
+        "scripts": "Plex Sans covers Latin, Cyrillic and Greek; Hebrew, Arabic and other scripts come as sister families of IBM Plex, drawn to match.",
+        "recognition": "One family with a matching mono gives the product an engineered, consistent voice.",
+        "familiarity": "A grotesque reads as standard and trusted in operations tools.",
+        "personality": "Precise, as the brand answer asks, and quiet, so the brand steps back.",
+        "performance": "Two families; load only the weights the scale uses.",
+        "licensing": "SIL Open Font License: free to embed in apps and on the web.",
+        "fallback": "Falls back to system-ui and ui-monospace, as its tokens say; Plex Mono is its own pair."
+      }
+    },
+    {
       "question": "scenarios.q1",
       "option": "desk",
       "why": "Experts work at a desk with a mouse and keyboard.",
@@ -3087,43 +3110,106 @@
               "display": {
                 "font-family": {
                   "$type": "fontFamily",
-                  "$value": "{font.family.ibm-plex-sans}"
+                  "$value": "{font.family.ibm-plex-sans}",
+                  "$extensions": {
+                    "open-ds": {
+                      "why": "ibm-plex-sans for display text: IBM Plex Sans for every text role and IBM Plex Mono for data: exact and quiet, so the numbers stay the hero.",
+                      "because": [
+                        "brand.q3"
+                      ],
+                      "generated": true
+                    }
+                  }
                 }
               },
               "title": {
                 "font-family": {
                   "$type": "fontFamily",
-                  "$value": "{font.family.ibm-plex-sans}"
+                  "$value": "{font.family.ibm-plex-sans}",
+                  "$extensions": {
+                    "open-ds": {
+                      "why": "ibm-plex-sans for title text: IBM Plex Sans for every text role and IBM Plex Mono for data: exact and quiet, so the numbers stay the hero.",
+                      "because": [
+                        "brand.q3"
+                      ],
+                      "generated": true
+                    }
+                  }
                 }
               },
               "heading": {
                 "font-family": {
                   "$type": "fontFamily",
-                  "$value": "{font.family.ibm-plex-sans}"
+                  "$value": "{font.family.ibm-plex-sans}",
+                  "$extensions": {
+                    "open-ds": {
+                      "why": "ibm-plex-sans for heading text: IBM Plex Sans for every text role and IBM Plex Mono for data: exact and quiet, so the numbers stay the hero.",
+                      "because": [
+                        "brand.q3"
+                      ],
+                      "generated": true
+                    }
+                  }
                 }
               },
               "body": {
                 "font-family": {
                   "$type": "fontFamily",
-                  "$value": "{font.family.ibm-plex-sans}"
+                  "$value": "{font.family.ibm-plex-sans}",
+                  "$extensions": {
+                    "open-ds": {
+                      "why": "ibm-plex-sans for body text: IBM Plex Sans for every text role and IBM Plex Mono for data: exact and quiet, so the numbers stay the hero.",
+                      "because": [
+                        "brand.q3"
+                      ],
+                      "generated": true
+                    }
+                  }
                 }
               },
               "label": {
                 "font-family": {
                   "$type": "fontFamily",
-                  "$value": "{font.family.ibm-plex-sans}"
+                  "$value": "{font.family.ibm-plex-sans}",
+                  "$extensions": {
+                    "open-ds": {
+                      "why": "ibm-plex-sans for label text: IBM Plex Sans for every text role and IBM Plex Mono for data: exact and quiet, so the numbers stay the hero.",
+                      "because": [
+                        "brand.q3"
+                      ],
+                      "generated": true
+                    }
+                  }
                 }
               },
               "caption": {
                 "font-family": {
                   "$type": "fontFamily",
-                  "$value": "{font.family.ibm-plex-sans}"
+                  "$value": "{font.family.ibm-plex-sans}",
+                  "$extensions": {
+                    "open-ds": {
+                      "why": "ibm-plex-sans for caption text: IBM Plex Sans for every text role and IBM Plex Mono for data: exact and quiet, so the numbers stay the hero.",
+                      "because": [
+                        "brand.q3"
+                      ],
+                      "generated": true
+                    }
+                  }
                 }
               },
               "data": {
                 "font-family": {
                   "$type": "fontFamily",
-                  "$value": "{font.family.ibm-plex-mono}"
+                  "$value": "{font.family.ibm-plex-mono}",
+                  "$extensions": {
+                    "open-ds": {
+                      "why": "ibm-plex-mono for data text: IBM Plex Sans for every text role and IBM Plex Mono for data: exact and quiet, so the numbers stay the hero.",
+                      "because": [
+                        "brand.q3"
+                      ],
+                      "generated": true
+                    }
+                  }
                 }
               }
             },
