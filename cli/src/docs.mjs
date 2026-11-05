@@ -2455,7 +2455,12 @@ export function docsPages(
     // and its frames are exported to the same place. Until they are, the page says so in their place.
     const tree = spec.drawing?.kind === "tree";
     const asset = spec.drawing?.kind === "asset" || tree;
-    const exported = (file) => existsSync(join(roots.schemes, "..", "docs", "static", "anatomy", scheme.id, name, `${file}.png`));
+    const exportedIn = (id, file) => existsSync(join(roots.schemes, "..", "docs", "static", "anatomy", id, name, `${file}.png`));
+    // Until a scheme's own drawings are exported, its page borrows Dense data's and says so.
+    const FALLBACK = "dense-data";
+    const imgScheme = (file) => (exportedIn(scheme.id, file) ? scheme.id : tree && exportedIn(FALLBACK, file) ? FALLBACK : null);
+    const exported = (file) => imgScheme(file) !== null;
+    const borrowed = tree && scheme.id !== FALLBACK && imgScheme("stage") === FALLBACK;
     const figmaLink = (node) =>
       node && spec.drawing.figma?.file
         ? `<a class="odv-am-figma" href="https://www.figma.com/design/${spec.drawing.figma.file}/?node-id=${node.replace(":", "-")}">Open in Figma</a>`
@@ -2463,7 +2468,7 @@ export function docsPages(
     const assetImg = (file, node, alt) =>
       tree && !exported(file)
         ? `<span class="odv-am-assetbox odv-am-pending">Drawn in Figma by the Open DS anatomy plugin; the image is not exported yet.</span>`
-        : `<span class="odv-am-assetbox"><img class="odv-am-asset" src="/anatomy/${scheme.id}/${name}/${file}.png" alt="${attr(alt)}" loading="lazy"/>${figmaLink(node)}</span>`;
+        : `<span class="odv-am-assetbox"><img class="odv-am-asset" src="/anatomy/${imgScheme(file) ?? scheme.id}/${name}/${file}.png" alt="${attr(alt)}" loading="lazy"/>${figmaLink(node)}</span>`;
     const roleOf = Object.fromEntries(
       (g.anatomy?.roles ?? []).map((r) => [r.id, r]),
     );
@@ -2673,7 +2678,7 @@ export function docsPages(
     );
     const roles = `<div class="odv-am-rolelist">${(g.anatomy?.roles ?? []).map((r) => `<span class="odv-am-role big"><b>${attr(r.label)}</b> ${attr(r.ask)}</span>`).join("")}</div>`;
     const partsBlock = h(
-      `<div class="odv-am-parts"><figure class="odv-am-stage">${asset ? assetImg("stage", spec.drawing.figma?.stage?.[scheme.id], `${T}, every part numbered`) : spec.drawing.kind === "table" ? `${tableDrawing(["toolbar", "table"], allNums)}` : drawing(spec.drawing.rows, allNums, true)}<figcaption>${asset ? `${attr(scheme.name)}, light, drawn in Figma from the scheme's tokens.` : spec.drawing.kind === "table" ? tableCaption : caption}</figcaption></figure>`,
+      `<div class="odv-am-parts"><figure class="odv-am-stage">${asset ? assetImg("stage", spec.drawing.figma?.stage?.[scheme.id], `${T}, every part numbered`) : spec.drawing.kind === "table" ? `${tableDrawing(["toolbar", "table"], allNums)}` : drawing(spec.drawing.rows, allNums, true)}<figcaption>${asset ? (borrowed ? `Dense data's drawing, shown until ${attr(scheme.name)}'s own is exported; the parts and the decisions below are ${attr(scheme.name)}'s.` : `${attr(scheme.name)}, light, drawn in Figma from the scheme's tokens.`) : spec.drawing.kind === "table" ? tableCaption : caption}</figcaption></figure>`,
       `<div class="odv-am-legend"><p class="odv-am-legend-t">Legend: every part and its roles. The numbers match the drawing; a part without one isn't in this example.</p><p class="odv-am-legend-k">${byTag} Its value changes by scheme. The part is the same in every scheme.</p><ul>${legend(spec.parts)}</ul></div></div>`,
     );
     return (
