@@ -2455,7 +2455,7 @@ export function docsPages(
     // and its frames are exported to the same place. Until they are, the page says so in their place.
     const tree = spec.drawing?.kind === "tree";
     const asset = spec.drawing?.kind === "asset" || tree;
-    const exported = (file) => existsSync(join(roots.ui, "..", "docs", "static", "anatomy", scheme.id, name, `${file}.png`));
+    const exported = (file) => existsSync(join(roots.schemes, "..", "docs", "static", "anatomy", scheme.id, name, `${file}.png`));
     const figmaLink = (node) =>
       node && spec.drawing.figma?.file
         ? `<a class="odv-am-figma" href="https://www.figma.com/design/${spec.drawing.figma.file}/?node-id=${node.replace(":", "-")}">Open in Figma</a>`
