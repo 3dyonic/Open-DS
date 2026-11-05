@@ -89,7 +89,7 @@ const TICKET = {
 const STATES = [
   [
     "disabled",
-    /^(disabled|aria-disabled|data-\[disabled(?:=true)?\]|group-data-\[disabled(?:=true)?\]|peer-disabled)$/,
+    /^(disabled|aria-disabled|data-\[disabled(?:=true)?\]|group-data-\[disabled(?:=true)?\](?:\/[\w-]+)?|peer-disabled|(?:group-)?has-\[[^\]]*disabled[^\]]*\](?:\/[\w-]+)?|has-disabled)$/,
   ],
   ["destructive", /variant=destructive|data-\[tone=danger\]/],
   ["invalid", /^aria-invalid$|data-\[invalid/],
@@ -161,13 +161,29 @@ export function usages(src, comp, cssVar) {
   const out = [];
   for (const m of src.matchAll(re)) {
     const cls = m[1];
-    const variants = cls.split(":");
+    // Split on the colons between variants, never on one inside brackets (has-[select:disabled]:).
+    const variants = [];
+    let depth = 0;
+    let cur = "";
+    for (const ch of cls) {
+      if (ch === "[" || ch === "(") depth++;
+      if (ch === "]" || ch === ")") depth--;
+      if (ch === ":" && depth === 0) {
+        variants.push(cur);
+        cur = "";
+      } else cur += ch;
+    }
+    variants.push(cur);
     const util = variants.pop();
     const property = PROPERTY.find(([r]) => r.test(util))?.[1] ?? null;
     let state = null;
     for (const v of variants) {
       // cmdk marks the option the pointer or the keyboard is on data-[selected=true]: a highlight there.
-      if (comp === "command" && v === "data-[selected=true]") {
+      // The OTP input marks the slot the keyboard is on data-[active=true]: a highlight there too.
+      if (
+        (comp === "command" && v === "data-[selected=true]") ||
+        (comp === "input-otp" && v === "data-[active=true]")
+      ) {
         state = "highlight";
         continue;
       }
@@ -486,6 +502,15 @@ function componentGapsNow(scheme, g, roots) {
             });
         }
       }
+      // A value borrowed for its number: the disabled opacity read with no disabled state (shadcn's
+      // opacity-50 on a chevron at rest, linked to opacity.disabled because the values matched).
+      if (t.aliases === "opacity.disabled")
+        for (const u of uses.filter((x) => x.state !== "disabled"))
+          gaps.push({
+            ...base,
+            kind: "wrong-semantic",
+            says: `${t.token} reads opacity.disabled on the ${u.part} at rest; nothing about it is disabled, so a change to how disabled things look would move it.`,
+          });
       // 3. Borrowed: another component's role (radius.badge in a menu).
       const role = t.aliases.match(/^(radius|size)\.([a-z-]+)$/)?.[2];
       // A role whose written rule names this component is not borrowed: radius.badge is "Corner of

@@ -5966,6 +5966,10 @@
           "focus": {
             "$value": "{color.border.focus}",
             "$description": "Input border when focused."
+          },
+          "invalid": {
+            "$value": "{color.status.danger.@}",
+            "$description": "Input border when invalid."
           }
         },
         "text": {
@@ -6019,16 +6023,22 @@
           "$description": "Focus of the input."
         },
         "canvas": {
-          "$value": "{color.surface.canvas}",
-          "$description": "Canvas of the input."
+          "$value": "{input.focus-ring-offset}",
+          "$description": "Deprecated: use component.input.focus-ring-offset (OD-243). Canvas of the input.",
+          "$deprecated": "Use component.input.focus-ring-offset. Removed in the next minor release."
         },
         "danger": {
-          "$value": "{color.status.danger.@}",
-          "$description": "Danger of the input."
+          "$value": "{input.border.invalid}",
+          "$description": "Deprecated: use component.input.border.invalid (OD-243). Danger of the input.",
+          "$deprecated": "Use component.input.border.invalid. Removed in the next minor release."
         },
         "focus-offset": {
           "$value": "{border-width.focus-offset}",
           "$description": "Gap between the input and its focus ring."
+        },
+        "focus-ring-offset": {
+          "$value": "{color.surface.canvas}",
+          "$description": "The gap behind the input's focus ring: the page canvas."
         }
       },
       "control": {
@@ -7558,6 +7568,14 @@
           "border-width": {
             "$value": "{border-width.default}",
             "$description": "Border width of the chips field."
+          },
+          "focus-offset": {
+            "$value": "{border-width.focus-offset}",
+            "$description": "Gap between the chips field and its focus ring."
+          },
+          "focus-ring-offset": {
+            "$value": "{color.surface.canvas}",
+            "$description": "The gap behind the chips field's focus ring: the page canvas."
           }
         },
         "chip": {
@@ -7601,12 +7619,21 @@
             "pull": {
               "$value": "{component-spacing-map.x1}",
               "$description": "How far the chip's remove button sits into its padding."
+            },
+            "label": {
+              "$value": "{color.text.muted}",
+              "$description": "The chip's remove icon: quiet, the muted text color."
+            },
+            "label-hover": {
+              "$value": "{color.text.primary}",
+              "$description": "The chip's remove icon on hover."
             }
           }
         },
         "disabled-opacity": {
           "$value": "{opacity.disabled}",
-          "$description": "Disabled opacity of the combobox."
+          "$description": "Deprecated: use combobox/chip/remove/label (OD-243). Disabled opacity of the combobox.",
+          "$deprecated": "Use component.combobox.chip.remove.label. Removed in the next minor release."
         },
         "input": {
           "border": {
@@ -7673,6 +7700,10 @@
             "border-width": {
               "$value": "{border-width.default}",
               "$description": "Width of the line under the command's search field."
+            },
+            "icon": {
+              "$value": "{color.text.muted}",
+              "$description": "The search icon of the command: quiet, the muted text color."
             }
           },
           "radius": {
@@ -7706,7 +7737,8 @@
         },
         "disabled-opacity": {
           "$value": "{opacity.disabled}",
-          "$description": "Disabled opacity of the command."
+          "$description": "Deprecated: use command/input/wrapper/icon (OD-243). Disabled opacity of the command.",
+          "$deprecated": "Use component.command.input.wrapper.icon. Removed in the next minor release."
         },
         "empty": {
           "padding-y": {
@@ -8871,8 +8903,15 @@
           "$description": "Border 2 of the input group."
         },
         "focus-ring": {
-          "$value": "{color.border.focus}",
-          "$description": "Focus ring of the input group."
+          "highlight": {
+            "$value": "{color.border.focus}",
+            "$description": "Focus ring of the input group when the keyboard is in it: the keyboard-focus rule, at full strength."
+          },
+          "@": {
+            "$value": "{input-group.focus-ring.highlight}",
+            "$description": "Deprecated: use component.input-group.focus-ring.highlight (OD-243). Focus ring of the input group.",
+            "$deprecated": "Use component.input-group.focus-ring.highlight. Removed in the next minor release."
+          }
         },
         "border-invalid": {
           "$value": "{color.status.danger.@}",
@@ -8883,86 +8922,104 @@
           "$description": "Focus ring invalid of the input group."
         },
         "gap": {
-          "$value": "{space.gap.default}",
-          "$description": "Gap of the input group."
+          "$value": "{input-group.addon.gap}",
+          "$description": "Deprecated: use component.input-group.addon.gap (OD-243). Gap of the input group.",
+          "$deprecated": "Use component.input-group.addon.gap. Removed in the next minor release."
         },
         "padding-y": {
-          "$value": "{component-spacing-map.x2}",
-          "$description": "Padding y of the input group."
+          "$value": "{input-group.addon.padding-y}",
+          "$description": "Deprecated: use component.input-group.addon.padding-y (OD-243). Padding y of the input group.",
+          "$deprecated": "Use component.input-group.addon.padding-y. Removed in the next minor release."
         },
         "font-size": {
-          "$value": "{type.body.font-size}",
-          "$description": "Font size of the input group."
+          "$value": "{input-group.addon.font-size}",
+          "$description": "Deprecated: use component.input-group.addon.font-size (OD-243). Font size of the input group.",
+          "$deprecated": "Use component.input-group.addon.font-size. Removed in the next minor release."
         },
         "line-height": {
-          "$value": "{type.body.line-height}",
-          "$description": "Line height of the input group."
+          "$value": "{input-group.addon.line-height}",
+          "$description": "Deprecated: use component.input-group.addon.line-height (OD-243). Line height of the input group.",
+          "$deprecated": "Use component.input-group.addon.line-height. Removed in the next minor release."
         },
         "font-weight": {
-          "$value": "{type.label.font-weight}",
-          "$description": "Font weight of the input group."
+          "$value": "{input-group.addon.font-weight}",
+          "$description": "Deprecated: use component.input-group.addon.font-weight (OD-243). Font weight of the input group.",
+          "$deprecated": "Use component.input-group.addon.font-weight. Removed in the next minor release."
         },
         "label": {
-          "$value": "{color.text.muted}",
-          "$description": "Label of the input group."
+          "$value": "{input-group.addon.label}",
+          "$description": "Deprecated: use component.input-group.addon.label (OD-243). Label of the input group.",
+          "$deprecated": "Use component.input-group.addon.label. Removed in the next minor release."
         },
         "disabled-opacity-disabled": {
-          "$value": "{opacity.disabled}",
-          "$description": "Disabled opacity disabled of the input group."
+          "$value": "{input-group.addon.disabled-opacity-disabled}",
+          "$description": "Deprecated: use component.input-group.addon.disabled-opacity-disabled (OD-243). Disabled opacity disabled of the input group.",
+          "$deprecated": "Use component.input-group.addon.disabled-opacity-disabled. Removed in the next minor release."
         },
         "icon-size": {
-          "$value": "{size.icon}",
-          "$description": "Icon size of the input group."
+          "$value": "{input-group.addon.icon-size}",
+          "$description": "Deprecated: use component.input-group.addon.icon-size (OD-243). Icon size of the input group.",
+          "$deprecated": "Use component.input-group.addon.icon-size. Removed in the next minor release."
         },
         "inline": {
           "start": {
             "padding-left": {
-              "$value": "{space.inset.control-x}",
-              "$description": "Inline start padding left of the input group."
+              "$value": "{input-group.addon.inline.start.padding-left}",
+              "$description": "Deprecated: use component.input-group.addon.inline.start.padding-left (OD-243). Inline start padding left of the input group.",
+              "$deprecated": "Use component.input-group.addon.inline.start.padding-left. Removed in the next minor release."
             }
           },
           "end": {
             "padding-right": {
-              "$value": "{space.inset.control-x}",
-              "$description": "Inline end padding right of the input group."
+              "$value": "{input-group.addon.inline.end.padding-right}",
+              "$description": "Deprecated: use component.input-group.addon.inline.end.padding-right (OD-243). Inline end padding right of the input group.",
+              "$deprecated": "Use component.input-group.addon.inline.end.padding-right. Removed in the next minor release."
             }
           }
         },
         "block": {
           "start": {
             "padding-x": {
-              "$value": "{space.inset.control-x}",
-              "$description": "Block start padding x of the input group."
+              "$value": "{input-group.addon.block.start.padding-x}",
+              "$description": "Deprecated: use component.input-group.addon.block.start.padding-x (OD-243). Block start padding x of the input group.",
+              "$deprecated": "Use component.input-group.addon.block.start.padding-x. Removed in the next minor release."
             },
             "padding-top": {
-              "$value": "{space.inset.control-x}",
-              "$description": "Block start padding top of the input group."
+              "$value": "{input-group.addon.block.start.padding-top}",
+              "$description": "Deprecated: use component.input-group.addon.block.start.padding-top (OD-243). Block start padding top of the input group.",
+              "$deprecated": "Use component.input-group.addon.block.start.padding-top. Removed in the next minor release."
             },
             "padding-top-2": {
-              "$value": "{component-spacing-map.x3}",
-              "$description": "Block start padding top 2 of the input group."
+              "$value": "{input-group.addon.block.start.padding-top-2}",
+              "$description": "Deprecated: use component.input-group.addon.block.start.padding-top-2 (OD-243). Block start padding top 2 of the input group.",
+              "$deprecated": "Use component.input-group.addon.block.start.padding-top-2. Removed in the next minor release."
             },
             "padding-bottom": {
-              "$value": "{space.inset.control-x}",
-              "$description": "Block start padding bottom of the input group."
+              "$value": "{input-group.addon.block.start.padding-bottom}",
+              "$description": "Deprecated: use component.input-group.addon.block.start.padding-bottom (OD-243). Block start padding bottom of the input group.",
+              "$deprecated": "Use component.input-group.addon.block.start.padding-bottom. Removed in the next minor release."
             }
           },
           "end": {
             "padding-x": {
-              "$value": "{space.inset.control-x}",
-              "$description": "Block end padding x of the input group."
+              "$value": "{input-group.addon.block.end.padding-x}",
+              "$description": "Deprecated: use component.input-group.addon.block.end.padding-x (OD-243). Block end padding x of the input group.",
+              "$deprecated": "Use component.input-group.addon.block.end.padding-x. Removed in the next minor release."
             },
             "padding-bottom": {
-              "$value": "{space.inset.control-x}",
-              "$description": "Block end padding bottom of the input group."
+              "$value": "{input-group.addon.block.end.padding-bottom}",
+              "$description": "Deprecated: use component.input-group.addon.block.end.padding-bottom (OD-243). Block end padding bottom of the input group.",
+              "$deprecated": "Use component.input-group.addon.block.end.padding-bottom. Removed in the next minor release."
             },
             "padding-bottom-2": {
-              "$value": "{component-spacing-map.x3}",
-              "$description": "Block end padding bottom 2 of the input group."
+              "$value": "{input-group.addon.block.end.padding-bottom-2}",
+              "$description": "Deprecated: use component.input-group.addon.block.end.padding-bottom-2 (OD-243). Block end padding bottom 2 of the input group.",
+              "$deprecated": "Use component.input-group.addon.block.end.padding-bottom-2. Removed in the next minor release."
             },
             "padding-top": {
-              "$value": "{space.inset.control-x}",
-              "$description": "Block end padding top of the input group."
+              "$value": "{input-group.addon.block.end.padding-top}",
+              "$description": "Deprecated: use component.input-group.addon.block.end.padding-top (OD-243). Block end padding top of the input group.",
+              "$deprecated": "Use component.input-group.addon.block.end.padding-top. Removed in the next minor release."
             }
           }
         },
@@ -9011,6 +9068,108 @@
             "$value": "{space.inset.control-x}",
             "$description": "Control padding y of the input group."
           }
+        },
+        "addon": {
+          "block": {
+            "end": {
+              "padding-bottom": {
+                "$value": "{space.inset.control-x}",
+                "$description": "Addon block end padding-bottom of the input group."
+              },
+              "padding-bottom-2": {
+                "$value": "{component-spacing-map.x3}",
+                "$description": "Addon block end padding-bottom-2 of the input group."
+              },
+              "padding-top": {
+                "$value": "{space.inset.control-x}",
+                "$description": "Addon block end padding-top of the input group."
+              },
+              "padding-x": {
+                "$value": "{space.inset.control-x}",
+                "$description": "Addon block end padding-x of the input group."
+              }
+            },
+            "start": {
+              "padding-bottom": {
+                "$value": "{space.inset.control-x}",
+                "$description": "Addon block start padding-bottom of the input group."
+              },
+              "padding-top": {
+                "$value": "{space.inset.control-x}",
+                "$description": "Addon block start padding-top of the input group."
+              },
+              "padding-top-2": {
+                "$value": "{component-spacing-map.x3}",
+                "$description": "Addon block start padding-top-2 of the input group."
+              },
+              "padding-x": {
+                "$value": "{space.inset.control-x}",
+                "$description": "Addon block start padding-x of the input group."
+              }
+            }
+          },
+          "disabled-opacity-disabled": {
+            "$value": "{opacity.disabled}",
+            "$description": "Addon disabled-opacity-disabled of the input group."
+          },
+          "font-size": {
+            "$value": "{type.body.font-size}",
+            "$description": "Addon font-size of the input group."
+          },
+          "font-weight": {
+            "$value": "{type.label.font-weight}",
+            "$description": "Addon font-weight of the input group."
+          },
+          "gap": {
+            "$value": "{space.gap.default}",
+            "$description": "Addon gap of the input group."
+          },
+          "icon-size": {
+            "$value": "{size.icon}",
+            "$description": "Addon icon-size of the input group."
+          },
+          "inline": {
+            "end": {
+              "padding-right": {
+                "$value": "{space.inset.control-x}",
+                "$description": "Addon inline end padding-right of the input group."
+              }
+            },
+            "start": {
+              "padding-left": {
+                "$value": "{space.inset.control-x}",
+                "$description": "Addon inline start padding-left of the input group."
+              }
+            }
+          },
+          "label": {
+            "$value": "{color.text.muted}",
+            "$description": "Addon label of the input group."
+          },
+          "line-height": {
+            "$value": "{type.body.line-height}",
+            "$description": "Addon line-height of the input group."
+          },
+          "padding-y": {
+            "$value": "{component-spacing-map.x2}",
+            "$description": "Addon padding-y of the input group."
+          }
+        },
+        "border-width": {
+          "$value": "{border-width.default}",
+          "$description": "Border width of the input group."
+        },
+        "focus-width": {
+          "$value": "{border-width.focus}",
+          "$description": "Focus ring width of the input group, like the input's."
+        },
+        "focus-offset": {
+          "$value": "{border-width.focus-offset}",
+          "$description": "Gap between the input group and its focus ring."
+        },
+        "focus-ring-offset": {
+          "$value": "{color.surface.canvas}",
+          "$description": "The gap behind the input group's focus ring: the page canvas."
         }
       },
       "input-otp": {
@@ -9024,8 +9183,14 @@
         },
         "slot": {
           "border": {
-            "$value": "{color.border.strong}",
-            "$description": "Slot border of the input otp."
+            "@": {
+              "$value": "{color.border.strong}",
+              "$description": "Slot border of the input otp."
+            },
+            "highlight": {
+              "$value": "{color.border.focus}",
+              "$description": "Border of the slot the keyboard is on."
+            }
           },
           "font-size": {
             "$value": "{type.body.font-size}",
@@ -9044,16 +9209,36 @@
             "$description": "Slot border invalid of the input otp."
           },
           "border-2": {
-            "$value": "{color.border.focus}",
-            "$description": "Slot border 2 of the input otp."
+            "$value": "{input-otp.slot.border.highlight}",
+            "$description": "Deprecated: use component.input-otp.slot.border.highlight (OD-243). Slot border 2 of the input otp.",
+            "$deprecated": "Use component.input-otp.slot.border.highlight. Removed in the next minor release."
           },
           "focus-ring": {
-            "$value": "{color.border.focus}",
-            "$description": "Slot focus ring of the input otp."
+            "highlight": {
+              "$value": "{color.border.focus}",
+              "$description": "Focus ring of the slot the keyboard is on: full strength."
+            },
+            "@": {
+              "$value": "{input-otp.slot.focus-ring.highlight}",
+              "$description": "Deprecated: use component.input-otp.slot.focus-ring.highlight (OD-243). Slot focus ring of the input otp.",
+              "$deprecated": "Use component.input-otp.slot.focus-ring.highlight. Removed in the next minor release."
+            }
           },
           "focus-ring-invalid": {
             "$value": "{color.status.danger.@}",
             "$description": "Slot focus ring invalid of the input otp."
+          },
+          "border-width": {
+            "$value": "{border-width.default}",
+            "$description": "Border width of an OTP slot."
+          },
+          "radius": {
+            "$value": "{radius.control}",
+            "$description": "Corner of the OTP group's ends: the slots read as one field, with a field's corner."
+          },
+          "focus-width": {
+            "$value": "{border-width.focus}",
+            "$description": "Focus ring width of the active slot, like the input's."
           }
         },
         "height": {
@@ -9067,6 +9252,12 @@
         "duration": {
           "$value": "{motion.duration.feedback}",
           "$description": "Duration of the input otp."
+        },
+        "caret": {
+          "width": {
+            "$value": "{border-width.default}",
+            "$description": "Width of the fake caret: a line."
+          }
         }
       },
       "item": {
@@ -9859,8 +10050,9 @@
       },
       "native-select": {
         "disabled-opacity": {
-          "$value": "{opacity.disabled}",
-          "$description": "Disabled opacity of the native select."
+          "$value": "{native-select.wrapper.disabled-opacity}",
+          "$description": "Deprecated: use component.native-select.wrapper.disabled-opacity (OD-243). Disabled opacity of the native select.",
+          "$deprecated": "Use component.native-select.wrapper.disabled-opacity. Removed in the next minor release."
         },
         "radius": {
           "$value": "{radius.control}",
@@ -9943,12 +10135,29 @@
           "$description": "Icon size of the native select."
         },
         "label-2": {
-          "$value": "{color.text.muted}",
-          "$description": "Label 2 of the native select."
+          "$value": "{native-select.icon.label}",
+          "$description": "Deprecated: use component.native-select.icon.label (OD-243). Label 2 of the native select.",
+          "$deprecated": "Use component.native-select.icon.label. Removed in the next minor release."
         },
         "focus-offset": {
           "$value": "{border-width.focus-offset}",
           "$description": "Gap between the native select and its focus ring."
+        },
+        "border-width": {
+          "$value": "{border-width.default}",
+          "$description": "Border width of the native select."
+        },
+        "icon": {
+          "label": {
+            "$value": "{color.text.muted}",
+            "$description": "The chevron of the native select: the muted text color."
+          }
+        },
+        "wrapper": {
+          "disabled-opacity": {
+            "$value": "{opacity.disabled}",
+            "$description": "The whole select dims when it can't be used."
+          }
         }
       },
       "navigation-menu": {
@@ -11601,6 +11810,10 @@
         "focus-offset": {
           "$value": "{border-width.focus-offset}",
           "$description": "Gap between the textarea and its focus ring."
+        },
+        "border-width": {
+          "$value": "{border-width.default}",
+          "$description": "Border width of the textarea."
         }
       },
       "toast": {

@@ -41,7 +41,9 @@
     "used": {
       "say": "outside color ramps, keep only the options a semantic, theme or component key reads",
       "why": "An option nothing reads is a choice nobody made. Color ramps stay whole, because a ramp is one unit with meaning.",
-      "except": ["color"]
+      "except": [
+        "color"
+      ]
     },
     "rules": [
       {
@@ -635,7 +637,9 @@
       "kind": "scope",
       "title": "Typography",
       "description": "How text is set: roles, sizes and line height.",
-      "owns": ["type"],
+      "owns": [
+        "type"
+      ],
       "lands_in": [
         "accordion",
         "alert",
@@ -807,7 +811,9 @@
       "kind": "scope",
       "title": "Color",
       "description": "How color carries action, state and brand.",
-      "owns": ["color"],
+      "owns": [
+        "color"
+      ],
       "lands_in": [
         "accordion",
         "alert",
@@ -975,14 +981,18 @@
           "when": "Before you change any color.",
           "do": "A scale is one color in steps, from lightened (50) to darkened (950). The steps are made in OKLCH, a color space built around how the eye sees lightness, and each step mostly moves the color's lightness. The steps aren't evenly spaced in lightness: at the light and dark ends they are tweaked so that each gap means the same, one step more of use. The light tints sit close together, so there is a choice of soft backgrounds; the middle steps step out as fills, borders and buttons; the dark end gives strong text. Colorfulness eases toward the ends. Each scale starts from its own key color at 600 and keeps that hue's natural lightness and contrast: a yellow is light by nature and a blue is dark, so their steps sit around where each hue really is, not at the same values for every hue. So every step still reads as the same color.",
           "why": "When every step is one step of use, people can pick the right strength for each job, and the screen stays calm and consistent.",
-          "from": ["OD-223"]
+          "from": [
+            "OD-223"
+          ]
         },
         {
           "id": "each-step-has-a-job",
           "when": "You pick a step for something.",
           "do": "Use the lightest steps for backgrounds behind text, the middle steps for buttons, borders and focus rings, and the darkest steps for text on light backgrounds. In dark mode the roles swap ends.",
           "why": "Text must stand out from what is behind it. Each end of the scale gives that for the other end.",
-          "from": ["OD-223"]
+          "from": [
+            "OD-223"
+          ]
         },
         {
           "id": "fix-only-what-is-wrong",
@@ -990,28 +1000,37 @@
           "do": "Say exactly what is wrong first: too pale, too dull, too close to another color. Then change only that step, and leave the ones that work alone.",
           "measure": "The harness checks that every step that was changed really needed it.",
           "why": "A small fix in the right place keeps the family together. Reworking a whole scale for one problem makes new problems.",
-          "from": ["OD-231"]
+          "from": [
+            "OD-231"
+          ]
         },
         {
           "id": "look-at-every-use",
           "when": "Before you change a step.",
           "do": "Find everything that uses it, and look at each one in light and dark mode. One step can be a soft background in light mode and a text color in dark mode at the same time.",
           "why": "A change made for one use moves every other use of that step too.",
-          "from": ["OD-223", "OD-231"]
+          "from": [
+            "OD-223",
+            "OD-231"
+          ]
         },
         {
           "id": "more-color-before-darker",
           "when": "A step looks washed out or greyish.",
           "do": "OKLCH gives a step three dials: lightness, colorfulness and hue. Turn colorfulness first. If that is not enough, make it a little darker. Turn the hue last.",
           "why": "Darkening a pale color makes it grayer, not more colorful. How colorful it is decides whether people recognize it.",
-          "from": ["OD-231"]
+          "from": [
+            "OD-231"
+          ]
         },
         {
           "id": "pale-blue-and-red",
           "when": "You make a very pale step more colorful.",
           "do": "Expect blue and red to need a touch of darkening before they can take more color. Green and yellow usually take it as they are.",
           "why": "Screens can show only so much color in very pale steps, and blue and red run out of room first.",
-          "from": ["OD-231"]
+          "from": [
+            "OD-231"
+          ]
         },
         {
           "id": "colored-text-must-look-colored",
@@ -1019,42 +1038,55 @@
           "do": "Make sure it is easy to read and also clearly that color. Text that is readable but looks white has lost its meaning.",
           "measure": "The harness checks that status text on dark backgrounds is clearly colored and easy to read, in every scheme.",
           "why": "The color tells people what kind of message it is before they read a word.",
-          "from": ["OD-231"]
+          "from": [
+            "OD-231"
+          ]
         },
         {
           "id": "change-a-little",
           "when": "You decide how much to change.",
           "do": "Change as little as solves the problem. Then compare it with the original side by side, in light and dark mode, and ease it back if it stands out.",
           "why": "A big change makes the step look like it belongs to another color.",
-          "from": ["OD-231"]
+          "from": [
+            "OD-231"
+          ]
         },
         {
           "id": "fix-it-once",
           "when": "The same problem shows up in several schemes.",
           "do": "If the schemes use the same color, fix it once for all of them. Fix one scheme alone only when its color is different.",
           "why": "The same blue is the same color wherever it is used, so it has the same problem everywhere.",
-          "from": ["OD-231"]
+          "from": [
+            "OD-231"
+          ]
         },
         {
           "id": "same-fix-everywhere-is-a-new-rule",
           "when": "Every color seems to need the same fix.",
           "do": "Change how all the scales are made, instead of fixing each color one by one.",
           "why": "A fix is for an exception. When every color needs it, the rule itself is what needs to change.",
-          "from": ["OD-223"]
+          "from": [
+            "OD-223"
+          ]
         },
         {
           "id": "say-why",
           "when": "You have changed a step.",
           "do": "Write down why, in a sentence anyone can follow. \"It looked too pale on dark backgrounds\" is a good reason.",
           "why": "Whoever comes next can keep the change, adjust it, or undo it on purpose.",
-          "from": ["OD-223", "OD-231"]
+          "from": [
+            "OD-223",
+            "OD-231"
+          ]
         },
         {
           "id": "apart-where-they-meet",
           "when": "Two colors must never be confused, like the main button and a delete button.",
           "do": "Decide how different they must be from where they appear together, not from one number for every case.",
           "why": "Colors side by side need more difference than colors that never meet.",
-          "from": ["OD-225"]
+          "from": [
+            "OD-225"
+          ]
         }
       ]
     },
@@ -1063,7 +1095,10 @@
       "kind": "scope",
       "title": "Spacing",
       "description": "How space shows what belongs together.",
-      "owns": ["space", "size.row"],
+      "owns": [
+        "space",
+        "size.row"
+      ],
       "lands_in": [
         "accordion",
         "alert",
@@ -1116,7 +1151,11 @@
         "toggle-group",
         "tooltip"
       ],
-      "situations": ["related-items", "between-sections", "table-row"],
+      "situations": [
+        "related-items",
+        "between-sections",
+        "table-row"
+      ],
       "questions": [
         {
           "id": "spacing.roles",
@@ -1217,21 +1256,27 @@
           "when": "Before you write any spacing.",
           "do": "Never write a spacing as a number: not p-6, not gap-1.5, not p-[10px]. Every spacing has a name. Between things and on the page, use a role: gap-tight, gap-default, gap-group, gap-section, p-container, px-control, px-cell. Inside a component of your own, use a step of the component spacing map: gap-map-x2, p-map-x6.",
           "why": "A number looks right in one scheme and wrong in the next. A name follows the scheme, so the screen keeps its density in every scheme.",
-          "from": ["OD-235"]
+          "from": [
+            "OD-235"
+          ]
         },
         {
           "id": "what-the-map-is",
           "when": "When you space the inside of a component.",
           "do": "The component spacing map is the steps components space by. Each step is 4px × its multiplier (x1, x2, x3, x4, x6, x8, x12) × the scheme's rhythm, rounded to a multiple of 4px, at most 64px. A compact scheme has rhythm 1 and a spacious one up to 2, so a dialog's padding (x6) is 24px in one and 48px in the other. The scheme decides which steps hold still: x1 and x2 are the fine spacing inside rows, so lists stay lists in a roomy scheme. The hairline is a fixed 2px nudge. Pick the step nearest the space you want.",
           "why": "One unit keeps everything on one grid; the rhythm lets each scheme decide how roomy its components are.",
-          "from": ["OD-235"]
+          "from": [
+            "OD-235"
+          ]
         },
         {
           "id": "rhythm-is-the-scheme",
           "when": "When one component looks too tight or too loose.",
           "do": "Don't change the rhythm to fix one component. The rhythm is the whole scheme's density. Pick another step for that spacing instead, or ask for a new role if the same spacing repeats across components.",
           "why": "A rhythm change moves every component in the scheme at once.",
-          "from": ["OD-235"]
+          "from": [
+            "OD-235"
+          ]
         }
       ]
     },
@@ -1240,7 +1285,10 @@
       "kind": "scope",
       "title": "Shape",
       "description": "Corners and borders.",
-      "owns": ["radius", "border-width"],
+      "owns": [
+        "radius",
+        "border-width"
+      ],
       "lands_in": [
         "accordion",
         "alert",
@@ -1268,6 +1316,7 @@
         "hover-card",
         "input",
         "input-group",
+        "input-otp",
         "item",
         "kbd",
         "menubar",
@@ -1293,7 +1342,10 @@
         "toggle-group",
         "tooltip"
       ],
-      "situations": ["control-corner", "status-shape"],
+      "situations": [
+        "control-corner",
+        "status-shape"
+      ],
       "questions": [
         {
           "id": "shape.roles",
@@ -1394,7 +1446,9 @@
       "kind": "scope",
       "title": "Elevation",
       "description": "When something rises above the page, and what separates groups.",
-      "owns": ["elevation"],
+      "owns": [
+        "elevation"
+      ],
       "lands_in": [
         "alert-dialog",
         "calendar",
@@ -1421,7 +1475,10 @@
         "toggle",
         "toggle-group"
       ],
-      "situations": ["card", "menu-or-dialog"],
+      "situations": [
+        "card",
+        "menu-or-dialog"
+      ],
       "questions": [
         {
           "id": "elevation.roles",
@@ -1534,7 +1591,9 @@
       "kind": "scope",
       "title": "Motion",
       "description": "What moves, why and how fast.",
-      "owns": ["motion"],
+      "owns": [
+        "motion"
+      ],
       "lands_in": [
         "accordion",
         "alert-dialog",
@@ -1552,7 +1611,10 @@
         "sidebar",
         "switch"
       ],
-      "situations": ["hover-feedback", "reduced-motion"],
+      "situations": [
+        "hover-feedback",
+        "reduced-motion"
+      ],
       "questions": [
         {
           "id": "motion.roles",
@@ -1657,7 +1719,9 @@
       "kind": "scope",
       "title": "Iconography",
       "description": "When icons appear and how they look.",
-      "owns": ["size.icon"],
+      "owns": [
+        "size.icon"
+      ],
       "lands_in": [
         "accordion",
         "alert",
@@ -1690,7 +1754,10 @@
         "switch",
         "toggle"
       ],
-      "situations": ["icon-alone", "row-action"],
+      "situations": [
+        "icon-alone",
+        "row-action"
+      ],
       "questions": [
         {
           "id": "iconography.roles",
@@ -1795,7 +1862,9 @@
       "kind": "scope",
       "title": "Theming",
       "description": "Modes and brands.",
-      "owns": ["theme"],
+      "owns": [
+        "theme"
+      ],
       "lands_in": [
         "accordion",
         "alert",
@@ -1855,7 +1924,9 @@
         "toggle-group",
         "tooltip"
       ],
-      "situations": ["dark-mode"],
+      "situations": [
+        "dark-mode"
+      ],
       "questions": [
         {
           "id": "theming.roles",
@@ -1948,7 +2019,11 @@
       "kind": "scope",
       "title": "Accessibility",
       "description": "Floors the system must hold.",
-      "owns": ["size.control", "opacity", "color.border.focus"],
+      "owns": [
+        "size.control",
+        "opacity",
+        "color.border.focus"
+      ],
       "lands_in": [
         "accordion",
         "alert-dialog",
@@ -1983,7 +2058,10 @@
         "textarea",
         "toggle"
       ],
-      "situations": ["keyboard-focus", "smallest-target"],
+      "situations": [
+        "keyboard-focus",
+        "smallest-target"
+      ],
       "questions": [
         {
           "id": "accessibility.roles",
@@ -2088,7 +2166,9 @@
       "kind": "scope",
       "title": "Naming",
       "description": "How tokens and keys are named.",
-      "owns": ["component"],
+      "owns": [
+        "component"
+      ],
       "lands_in": [
         "accordion",
         "alert",
@@ -2151,7 +2231,9 @@
         "toggle-group",
         "tooltip"
       ],
-      "situations": ["missing-token"],
+      "situations": [
+        "missing-token"
+      ],
       "questions": [
         {
           "id": "naming.roles",
@@ -2240,7 +2322,9 @@
       "kind": "scope",
       "title": "Voice and tone",
       "description": "How the product speaks: the words in every component.",
-      "owns": ["content"],
+      "owns": [
+        "content"
+      ],
       "lands_in": [
         "accordion",
         "alert",
@@ -2433,7 +2517,9 @@
       "kind": "scope",
       "title": "Components",
       "description": "Which components the system carries: its inventory, picked from the catalogue.",
-      "owns": ["component"],
+      "owns": [
+        "component"
+      ],
       "lands_in": [
         "accordion",
         "alert",
@@ -2496,7 +2582,9 @@
         "toggle-group",
         "tooltip"
       ],
-      "situations": ["missing-component"],
+      "situations": [
+        "missing-component"
+      ],
       "questions": [
         {
           "id": "components.roles",
@@ -2888,7 +2976,9 @@
         "input/font-family",
         "input/border-width",
         "input/focus",
+        "input/focus-ring-offset",
         "input/canvas",
+        "input/border/invalid",
         "input/danger",
         "input/focus-offset"
       ]
@@ -3009,7 +3099,10 @@
     {
       "id": "transition",
       "description": "Shared transition keys for hover and press feedback.",
-      "keys": ["transition/duration", "transition/easing"]
+      "keys": [
+        "transition/duration",
+        "transition/easing"
+      ]
     },
     {
       "id": "accordion",
@@ -3351,7 +3444,11 @@
         "combobox/separator/margin-y",
         "combobox/separator/thickness",
         "combobox/input/margin",
-        "combobox/chip/remove/pull"
+        "combobox/chip/remove/pull",
+        "combobox/chip/remove/label",
+        "combobox/chip/remove/label-hover",
+        "combobox/chips/focus-offset",
+        "combobox/chips/focus-ring-offset"
       ]
     },
     {
@@ -3405,7 +3502,8 @@
         "command/shortcut/label",
         "command/input/wrapper/border",
         "command/input/wrapper/border-width",
-        "command/separator/thickness"
+        "command/separator/thickness",
+        "command/input/wrapper/icon"
       ]
     },
     {
@@ -3520,7 +3618,10 @@
     {
       "id": "date-picker",
       "description": "The date picker component.",
-      "keys": ["date-picker/font-weight", "date-picker/label"]
+      "keys": [
+        "date-picker/font-weight",
+        "date-picker/label"
+      ]
     },
     {
       "id": "dialog",
@@ -3692,26 +3793,45 @@
         "input-group/padding-bottom",
         "input-group/padding-top",
         "input-group/border-2",
-        "input-group/focus-ring",
+        "input-group/focus-ring/highlight",
+        "input-group/focus-ring/@",
         "input-group/border-invalid",
-        "input-group/focus-ring-invalid",
+        "input-group/focus-ring/invalid",
+        "input-group/addon/gap",
         "input-group/gap",
+        "input-group/addon/padding-y",
         "input-group/padding-y",
+        "input-group/addon/font-size",
         "input-group/font-size",
+        "input-group/addon/line-height",
         "input-group/line-height",
+        "input-group/addon/font-weight",
         "input-group/font-weight",
+        "input-group/addon/label",
         "input-group/label",
+        "input-group/addon/disabled-opacity-disabled",
         "input-group/disabled-opacity-disabled",
+        "input-group/addon/icon-size",
         "input-group/icon-size",
+        "input-group/addon/inline/start/padding-left",
         "input-group/inline/start/padding-left",
+        "input-group/addon/inline/end/padding-right",
         "input-group/inline/end/padding-right",
+        "input-group/addon/block/start/padding-x",
         "input-group/block/start/padding-x",
+        "input-group/addon/block/start/padding-top",
         "input-group/block/start/padding-top",
+        "input-group/addon/block/start/padding-top-2",
         "input-group/block/start/padding-top-2",
+        "input-group/addon/block/start/padding-bottom",
         "input-group/block/start/padding-bottom",
+        "input-group/addon/block/end/padding-x",
         "input-group/block/end/padding-x",
+        "input-group/addon/block/end/padding-bottom",
         "input-group/block/end/padding-bottom",
+        "input-group/addon/block/end/padding-bottom-2",
         "input-group/block/end/padding-bottom-2",
+        "input-group/addon/block/end/padding-top",
         "input-group/block/end/padding-top",
         "input-group/xs/height",
         "input-group/xs/gap",
@@ -3721,7 +3841,11 @@
         "input-group/sm/radius",
         "input-group/sm/padding-x",
         "input-group/icon/sm/size",
-        "input-group/control/padding-y"
+        "input-group/control/padding-y",
+        "input-group/border-width",
+        "input-group/focus-width",
+        "input-group/focus-offset",
+        "input-group/focus-ring-offset"
       ]
     },
     {
@@ -3730,17 +3854,23 @@
       "keys": [
         "input-otp/gap",
         "input-otp/disabled-opacity",
-        "input-otp/slot/border",
+        "input-otp/slot/border/@",
         "input-otp/slot/font-size",
         "input-otp/slot/line-height",
         "input-otp/slot/shadow",
         "input-otp/slot/border-invalid",
+        "input-otp/slot/border/highlight",
         "input-otp/slot/border-2",
-        "input-otp/slot/focus-ring",
-        "input-otp/slot/focus-ring-invalid",
+        "input-otp/slot/focus-ring/highlight",
+        "input-otp/slot/focus-ring/@",
+        "input-otp/slot/focus-ring/invalid",
         "input-otp/height",
         "input-otp/background",
-        "input-otp/duration"
+        "input-otp/duration",
+        "input-otp/slot/border-width",
+        "input-otp/slot/radius",
+        "input-otp/slot/focus-width",
+        "input-otp/caret/width"
       ]
     },
     {
@@ -3963,6 +4093,7 @@
       "id": "native-select",
       "description": "The native select component.",
       "keys": [
+        "native-select/wrapper/disabled-opacity",
         "native-select/disabled-opacity",
         "native-select/radius",
         "native-select/border",
@@ -3982,10 +4113,12 @@
         "native-select/focus-ring-focus",
         "native-select/focus-ring-offset-focus",
         "native-select/border-invalid",
-        "native-select/focus-ring-invalid",
+        "native-select/focus-ring/invalid",
         "native-select/icon-size",
+        "native-select/icon/label",
         "native-select/label-2",
-        "native-select/focus-offset"
+        "native-select/focus-offset",
+        "native-select/border-width"
       ]
     },
     {
@@ -4206,7 +4339,9 @@
     {
       "id": "separator",
       "description": "The separator component.",
-      "keys": ["separator/background"]
+      "keys": [
+        "separator/background"
+      ]
     },
     {
       "id": "sheet",
@@ -4372,7 +4507,10 @@
     {
       "id": "skeleton",
       "description": "The skeleton component.",
-      "keys": ["skeleton/radius", "skeleton/background"]
+      "keys": [
+        "skeleton/radius",
+        "skeleton/background"
+      ]
     },
     {
       "id": "slider",
@@ -4397,7 +4535,9 @@
     {
       "id": "spinner",
       "description": "The spinner component.",
-      "keys": ["spinner/icon-size"]
+      "keys": [
+        "spinner/icon-size"
+      ]
     },
     {
       "id": "switch",
@@ -4430,11 +4570,12 @@
         "textarea/border-focus",
         "textarea/disabled-opacity-disabled",
         "textarea/border-invalid",
-        "textarea/focus-ring-invalid",
+        "textarea/focus-ring/invalid",
         "textarea/focus",
         "textarea/focus-ring-focus",
         "textarea/focus-ring-offset-focus",
-        "textarea/focus-offset"
+        "textarea/focus-offset",
+        "textarea/border-width"
       ]
     },
     {
@@ -6686,8 +6827,9 @@
     {
       "id": "combobox/disabled-opacity",
       "component": "combobox",
-      "description": "Disabled opacity of the combobox.",
-      "default": "opacity.disabled"
+      "description": "Deprecated: use combobox/chip/remove/label (OD-243). Disabled opacity of the combobox.",
+      "default": "opacity.disabled",
+      "replaced_by": "combobox/chip/remove/label"
     },
     {
       "id": "combobox/content/border-width",
@@ -6730,6 +6872,30 @@
       "component": "combobox",
       "description": "How far the chip's remove button sits into its padding.",
       "default": "component-spacing-map.x1"
+    },
+    {
+      "id": "combobox/chip/remove/label",
+      "component": "combobox",
+      "description": "The chip's remove icon: quiet, the muted text color.",
+      "default": "color.text.muted"
+    },
+    {
+      "id": "combobox/chip/remove/label-hover",
+      "component": "combobox",
+      "description": "The chip's remove icon on hover.",
+      "default": "color.text.primary"
+    },
+    {
+      "id": "combobox/chips/focus-offset",
+      "component": "combobox",
+      "description": "Gap between the chips field and its focus ring.",
+      "default": "border-width.focus-offset"
+    },
+    {
+      "id": "combobox/chips/focus-ring-offset",
+      "component": "combobox",
+      "description": "The gap behind the chips field's focus ring: the page canvas.",
+      "default": "color.surface.canvas"
     },
     {
       "id": "command/radius",
@@ -6794,8 +6960,9 @@
     {
       "id": "command/disabled-opacity",
       "component": "command",
-      "description": "Disabled opacity of the command.",
-      "default": "opacity.disabled"
+      "description": "Deprecated: use command/input/wrapper/icon (OD-243). Disabled opacity of the command.",
+      "default": "opacity.disabled",
+      "replaced_by": "command/input/wrapper/icon"
     },
     {
       "id": "command/input/radius",
@@ -7020,6 +7187,12 @@
       "component": "command",
       "description": "Thickness of the separator of the command: the weight of every line.",
       "default": "border-width.default"
+    },
+    {
+      "id": "command/input/wrapper/icon",
+      "component": "command",
+      "description": "The search icon of the command: quiet, the muted text color.",
+      "default": "color.text.muted"
     },
     {
       "id": "context-menu/sub/trigger/radius",
@@ -8372,10 +8545,17 @@
       "default": "color.border.focus"
     },
     {
-      "id": "input-group/focus-ring",
+      "id": "input-group/focus-ring/highlight",
       "component": "input-group",
-      "description": "Focus ring of the input group.",
+      "description": "Focus ring of the input group when the keyboard is in it: the keyboard-focus rule, at full strength.",
       "default": "color.border.focus"
+    },
+    {
+      "id": "input-group/focus-ring/@",
+      "component": "input-group",
+      "description": "Deprecated: use input-group/focus-ring/highlight (OD-243). Focus ring of the input group.",
+      "default": "color.border.focus",
+      "replaced_by": "input-group/focus-ring/highlight"
     },
     {
       "id": "input-group/border-invalid",
@@ -8384,118 +8564,244 @@
       "default": "color.status.danger.@"
     },
     {
-      "id": "input-group/focus-ring-invalid",
+      "id": "input-group/focus-ring/invalid",
       "component": "input-group",
-      "description": "Focus ring invalid of the input group.",
-      "default": "color.status.danger.@"
+      "description": "Halo of the input group when invalid: the danger tint.",
+      "default": "color.status.danger.subtle"
+    },
+    {
+      "id": "input-group/addon/gap",
+      "component": "input-group",
+      "description": "Addon gap of the input group.",
+      "default": "space.gap.default"
     },
     {
       "id": "input-group/gap",
       "component": "input-group",
-      "description": "Gap of the input group.",
-      "default": "space.gap.default"
+      "description": "Deprecated: use input-group/addon/gap (OD-243). Gap of the input group.",
+      "default": "space.gap.default",
+      "replaced_by": "input-group/addon/gap"
+    },
+    {
+      "id": "input-group/addon/padding-y",
+      "component": "input-group",
+      "description": "Addon padding-y of the input group.",
+      "default": "component-spacing-map.x2"
     },
     {
       "id": "input-group/padding-y",
       "component": "input-group",
-      "description": "Padding y of the input group.",
-      "default": "component-spacing-map.x2"
+      "description": "Deprecated: use input-group/addon/padding-y (OD-243). Padding y of the input group.",
+      "default": "component-spacing-map.x2",
+      "replaced_by": "input-group/addon/padding-y"
+    },
+    {
+      "id": "input-group/addon/font-size",
+      "component": "input-group",
+      "description": "Addon font-size of the input group.",
+      "default": "type.body.font-size"
     },
     {
       "id": "input-group/font-size",
       "component": "input-group",
-      "description": "Font size of the input group.",
-      "default": "type.body.font-size"
+      "description": "Deprecated: use input-group/addon/font-size (OD-243). Font size of the input group.",
+      "default": "type.body.font-size",
+      "replaced_by": "input-group/addon/font-size"
+    },
+    {
+      "id": "input-group/addon/line-height",
+      "component": "input-group",
+      "description": "Addon line-height of the input group.",
+      "default": "type.body.line-height"
     },
     {
       "id": "input-group/line-height",
       "component": "input-group",
-      "description": "Line height of the input group.",
-      "default": "type.body.line-height"
+      "description": "Deprecated: use input-group/addon/line-height (OD-243). Line height of the input group.",
+      "default": "type.body.line-height",
+      "replaced_by": "input-group/addon/line-height"
+    },
+    {
+      "id": "input-group/addon/font-weight",
+      "component": "input-group",
+      "description": "Addon font-weight of the input group.",
+      "default": "type.label.font-weight"
     },
     {
       "id": "input-group/font-weight",
       "component": "input-group",
-      "description": "Font weight of the input group.",
-      "default": "type.label.font-weight"
+      "description": "Deprecated: use input-group/addon/font-weight (OD-243). Font weight of the input group.",
+      "default": "type.label.font-weight",
+      "replaced_by": "input-group/addon/font-weight"
+    },
+    {
+      "id": "input-group/addon/label",
+      "component": "input-group",
+      "description": "Addon label of the input group.",
+      "default": "color.text.muted"
     },
     {
       "id": "input-group/label",
       "component": "input-group",
-      "description": "Label of the input group.",
-      "default": "color.text.muted"
+      "description": "Deprecated: use input-group/addon/label (OD-243). Label of the input group.",
+      "default": "color.text.muted",
+      "replaced_by": "input-group/addon/label"
+    },
+    {
+      "id": "input-group/addon/disabled-opacity-disabled",
+      "component": "input-group",
+      "description": "Addon disabled-opacity-disabled of the input group.",
+      "default": "opacity.disabled"
     },
     {
       "id": "input-group/disabled-opacity-disabled",
       "component": "input-group",
-      "description": "Disabled opacity disabled of the input group.",
-      "default": "opacity.disabled"
+      "description": "Deprecated: use input-group/addon/disabled-opacity-disabled (OD-243). Disabled opacity disabled of the input group.",
+      "default": "opacity.disabled",
+      "replaced_by": "input-group/addon/disabled-opacity-disabled"
+    },
+    {
+      "id": "input-group/addon/icon-size",
+      "component": "input-group",
+      "description": "Addon icon-size of the input group.",
+      "default": "size.icon"
     },
     {
       "id": "input-group/icon-size",
       "component": "input-group",
-      "description": "Icon size of the input group.",
-      "default": "size.icon"
+      "description": "Deprecated: use input-group/addon/icon-size (OD-243). Icon size of the input group.",
+      "default": "size.icon",
+      "replaced_by": "input-group/addon/icon-size"
+    },
+    {
+      "id": "input-group/addon/inline/start/padding-left",
+      "component": "input-group",
+      "description": "Addon inline start padding-left of the input group.",
+      "default": "space.inset.control-x"
     },
     {
       "id": "input-group/inline/start/padding-left",
       "component": "input-group",
-      "description": "Inline start padding left of the input group.",
+      "description": "Deprecated: use input-group/addon/inline/start/padding-left (OD-243). Inline start padding left of the input group.",
+      "default": "space.inset.control-x",
+      "replaced_by": "input-group/addon/inline/start/padding-left"
+    },
+    {
+      "id": "input-group/addon/inline/end/padding-right",
+      "component": "input-group",
+      "description": "Addon inline end padding-right of the input group.",
       "default": "space.inset.control-x"
     },
     {
       "id": "input-group/inline/end/padding-right",
       "component": "input-group",
-      "description": "Inline end padding right of the input group.",
+      "description": "Deprecated: use input-group/addon/inline/end/padding-right (OD-243). Inline end padding right of the input group.",
+      "default": "space.inset.control-x",
+      "replaced_by": "input-group/addon/inline/end/padding-right"
+    },
+    {
+      "id": "input-group/addon/block/start/padding-x",
+      "component": "input-group",
+      "description": "Addon block start padding-x of the input group.",
       "default": "space.inset.control-x"
     },
     {
       "id": "input-group/block/start/padding-x",
       "component": "input-group",
-      "description": "Block start padding x of the input group.",
+      "description": "Deprecated: use input-group/addon/block/start/padding-x (OD-243). Block start padding x of the input group.",
+      "default": "space.inset.control-x",
+      "replaced_by": "input-group/addon/block/start/padding-x"
+    },
+    {
+      "id": "input-group/addon/block/start/padding-top",
+      "component": "input-group",
+      "description": "Addon block start padding-top of the input group.",
       "default": "space.inset.control-x"
     },
     {
       "id": "input-group/block/start/padding-top",
       "component": "input-group",
-      "description": "Block start padding top of the input group.",
-      "default": "space.inset.control-x"
+      "description": "Deprecated: use input-group/addon/block/start/padding-top (OD-243). Block start padding top of the input group.",
+      "default": "space.inset.control-x",
+      "replaced_by": "input-group/addon/block/start/padding-top"
+    },
+    {
+      "id": "input-group/addon/block/start/padding-top-2",
+      "component": "input-group",
+      "description": "Addon block start padding-top-2 of the input group.",
+      "default": "component-spacing-map.x3"
     },
     {
       "id": "input-group/block/start/padding-top-2",
       "component": "input-group",
-      "description": "Block start padding top 2 of the input group.",
-      "default": "component-spacing-map.x3"
+      "description": "Deprecated: use input-group/addon/block/start/padding-top-2 (OD-243). Block start padding top 2 of the input group.",
+      "default": "component-spacing-map.x3",
+      "replaced_by": "input-group/addon/block/start/padding-top-2"
+    },
+    {
+      "id": "input-group/addon/block/start/padding-bottom",
+      "component": "input-group",
+      "description": "Addon block start padding-bottom of the input group.",
+      "default": "space.inset.control-x"
     },
     {
       "id": "input-group/block/start/padding-bottom",
       "component": "input-group",
-      "description": "Block start padding bottom of the input group.",
+      "description": "Deprecated: use input-group/addon/block/start/padding-bottom (OD-243). Block start padding bottom of the input group.",
+      "default": "space.inset.control-x",
+      "replaced_by": "input-group/addon/block/start/padding-bottom"
+    },
+    {
+      "id": "input-group/addon/block/end/padding-x",
+      "component": "input-group",
+      "description": "Addon block end padding-x of the input group.",
       "default": "space.inset.control-x"
     },
     {
       "id": "input-group/block/end/padding-x",
       "component": "input-group",
-      "description": "Block end padding x of the input group.",
+      "description": "Deprecated: use input-group/addon/block/end/padding-x (OD-243). Block end padding x of the input group.",
+      "default": "space.inset.control-x",
+      "replaced_by": "input-group/addon/block/end/padding-x"
+    },
+    {
+      "id": "input-group/addon/block/end/padding-bottom",
+      "component": "input-group",
+      "description": "Addon block end padding-bottom of the input group.",
       "default": "space.inset.control-x"
     },
     {
       "id": "input-group/block/end/padding-bottom",
       "component": "input-group",
-      "description": "Block end padding bottom of the input group.",
-      "default": "space.inset.control-x"
+      "description": "Deprecated: use input-group/addon/block/end/padding-bottom (OD-243). Block end padding bottom of the input group.",
+      "default": "space.inset.control-x",
+      "replaced_by": "input-group/addon/block/end/padding-bottom"
+    },
+    {
+      "id": "input-group/addon/block/end/padding-bottom-2",
+      "component": "input-group",
+      "description": "Addon block end padding-bottom-2 of the input group.",
+      "default": "component-spacing-map.x3"
     },
     {
       "id": "input-group/block/end/padding-bottom-2",
       "component": "input-group",
-      "description": "Block end padding bottom 2 of the input group.",
-      "default": "component-spacing-map.x3"
+      "description": "Deprecated: use input-group/addon/block/end/padding-bottom-2 (OD-243). Block end padding bottom 2 of the input group.",
+      "default": "component-spacing-map.x3",
+      "replaced_by": "input-group/addon/block/end/padding-bottom-2"
+    },
+    {
+      "id": "input-group/addon/block/end/padding-top",
+      "component": "input-group",
+      "description": "Addon block end padding-top of the input group.",
+      "default": "space.inset.control-x"
     },
     {
       "id": "input-group/block/end/padding-top",
       "component": "input-group",
-      "description": "Block end padding top of the input group.",
-      "default": "space.inset.control-x"
+      "description": "Deprecated: use input-group/addon/block/end/padding-top (OD-243). Block end padding top of the input group.",
+      "default": "space.inset.control-x",
+      "replaced_by": "input-group/addon/block/end/padding-top"
     },
     {
       "id": "input-group/xs/height",
@@ -8552,6 +8858,30 @@
       "default": "space.inset.control-x"
     },
     {
+      "id": "input-group/border-width",
+      "component": "input-group",
+      "description": "Border width of the input group.",
+      "default": "border-width.default"
+    },
+    {
+      "id": "input-group/focus-width",
+      "component": "input-group",
+      "description": "Focus ring width of the input group, like the input's.",
+      "default": "border-width.focus"
+    },
+    {
+      "id": "input-group/focus-offset",
+      "component": "input-group",
+      "description": "Gap between the input group and its focus ring.",
+      "default": "border-width.focus-offset"
+    },
+    {
+      "id": "input-group/focus-ring-offset",
+      "component": "input-group",
+      "description": "The gap behind the input group's focus ring: the page canvas.",
+      "default": "color.surface.canvas"
+    },
+    {
       "id": "input-otp/gap",
       "component": "input-otp",
       "description": "Gap of the input otp.",
@@ -8564,7 +8894,7 @@
       "default": "opacity.disabled"
     },
     {
-      "id": "input-otp/slot/border",
+      "id": "input-otp/slot/border/@",
       "component": "input-otp",
       "description": "Slot border of the input otp.",
       "default": "color.border.strong"
@@ -8594,22 +8924,36 @@
       "default": "color.status.danger.@"
     },
     {
+      "id": "input-otp/slot/border/highlight",
+      "component": "input-otp",
+      "description": "Border of the slot the keyboard is on.",
+      "default": "color.border.focus"
+    },
+    {
       "id": "input-otp/slot/border-2",
       "component": "input-otp",
-      "description": "Slot border 2 of the input otp.",
+      "description": "Deprecated: use input-otp/slot/border/highlight (OD-243). Slot border 2 of the input otp.",
+      "default": "color.border.focus",
+      "replaced_by": "input-otp/slot/border/highlight"
+    },
+    {
+      "id": "input-otp/slot/focus-ring/highlight",
+      "component": "input-otp",
+      "description": "Focus ring of the slot the keyboard is on: full strength.",
       "default": "color.border.focus"
     },
     {
-      "id": "input-otp/slot/focus-ring",
+      "id": "input-otp/slot/focus-ring/@",
       "component": "input-otp",
-      "description": "Slot focus ring of the input otp.",
-      "default": "color.border.focus"
+      "description": "Deprecated: use input-otp/slot/focus-ring/highlight (OD-243). Slot focus ring of the input otp.",
+      "default": "color.border.focus",
+      "replaced_by": "input-otp/slot/focus-ring/highlight"
     },
     {
-      "id": "input-otp/slot/focus-ring-invalid",
+      "id": "input-otp/slot/focus-ring/invalid",
       "component": "input-otp",
-      "description": "Slot focus ring invalid of the input otp.",
-      "default": "color.status.danger.@"
+      "description": "Halo of an invalid slot: the danger tint.",
+      "default": "color.status.danger.subtle"
     },
     {
       "id": "input-otp/height",
@@ -8630,6 +8974,30 @@
       "default": "motion.duration.feedback"
     },
     {
+      "id": "input-otp/slot/border-width",
+      "component": "input-otp",
+      "description": "Border width of an OTP slot.",
+      "default": "border-width.default"
+    },
+    {
+      "id": "input-otp/slot/radius",
+      "component": "input-otp",
+      "description": "Corner of the OTP group's ends: the slots read as one field, with a field's corner.",
+      "default": "radius.control"
+    },
+    {
+      "id": "input-otp/slot/focus-width",
+      "component": "input-otp",
+      "description": "Focus ring width of the active slot, like the input's.",
+      "default": "border-width.focus"
+    },
+    {
+      "id": "input-otp/caret/width",
+      "component": "input-otp",
+      "description": "Width of the fake caret: a line.",
+      "default": "border-width.default"
+    },
+    {
       "id": "input/font-family",
       "component": "input",
       "description": "Font family of the input.",
@@ -8648,16 +9016,30 @@
       "default": "border-width.focus"
     },
     {
+      "id": "input/focus-ring-offset",
+      "component": "input",
+      "description": "The gap behind the input's focus ring: the page canvas.",
+      "default": "color.surface.canvas"
+    },
+    {
       "id": "input/canvas",
       "component": "input",
-      "description": "Canvas of the input.",
-      "default": "color.surface.canvas"
+      "description": "Deprecated: use input/focus-ring-offset (OD-243). Canvas of the input.",
+      "default": "color.surface.canvas",
+      "replaced_by": "input/focus-ring-offset"
+    },
+    {
+      "id": "input/border/invalid",
+      "component": "input",
+      "description": "Input border when invalid.",
+      "default": "color.status.danger.@"
     },
     {
       "id": "input/danger",
       "component": "input",
-      "description": "Danger of the input.",
-      "default": "color.status.danger.@"
+      "description": "Deprecated: use input/border/invalid (OD-243). Danger of the input.",
+      "default": "color.status.danger.@",
+      "replaced_by": "input/border/invalid"
     },
     {
       "id": "input/focus-offset",
@@ -9718,10 +10100,17 @@
       "default": "color.text.muted"
     },
     {
+      "id": "native-select/wrapper/disabled-opacity",
+      "component": "native-select",
+      "description": "The whole select dims when it can't be used.",
+      "default": "opacity.disabled"
+    },
+    {
       "id": "native-select/disabled-opacity",
       "component": "native-select",
-      "description": "Disabled opacity of the native select.",
-      "default": "opacity.disabled"
+      "description": "Deprecated: use native-select/wrapper/disabled-opacity (OD-243). Disabled opacity of the native select.",
+      "default": "opacity.disabled",
+      "replaced_by": "native-select/wrapper/disabled-opacity"
     },
     {
       "id": "native-select/radius",
@@ -9832,10 +10221,10 @@
       "default": "color.status.danger.@"
     },
     {
-      "id": "native-select/focus-ring-invalid",
+      "id": "native-select/focus-ring/invalid",
       "component": "native-select",
-      "description": "Focus ring invalid of the native select.",
-      "default": "color.status.danger.@"
+      "description": "Halo of the native select when invalid: the danger tint.",
+      "default": "color.status.danger.subtle"
     },
     {
       "id": "native-select/icon-size",
@@ -9844,16 +10233,29 @@
       "default": "size.icon"
     },
     {
+      "id": "native-select/icon/label",
+      "component": "native-select",
+      "description": "The chevron of the native select: the muted text color.",
+      "default": "color.text.muted"
+    },
+    {
       "id": "native-select/label-2",
       "component": "native-select",
-      "description": "Label 2 of the native select.",
-      "default": "color.text.muted"
+      "description": "Deprecated: use native-select/icon/label (OD-243). Label 2 of the native select.",
+      "default": "color.text.muted",
+      "replaced_by": "native-select/icon/label"
     },
     {
       "id": "native-select/focus-offset",
       "component": "native-select",
       "description": "Gap between the native select and its focus ring.",
       "default": "border-width.focus-offset"
+    },
+    {
+      "id": "native-select/border-width",
+      "component": "native-select",
+      "description": "Border width of the native select.",
+      "default": "border-width.default"
     },
     {
       "id": "navigation-menu/list/gap",
@@ -12138,10 +12540,10 @@
       "default": "color.status.danger.@"
     },
     {
-      "id": "textarea/focus-ring-invalid",
+      "id": "textarea/focus-ring/invalid",
       "component": "textarea",
-      "description": "Focus ring invalid of the textarea.",
-      "default": "color.status.danger.@"
+      "description": "Halo of the textarea when invalid: the danger tint.",
+      "default": "color.status.danger.subtle"
     },
     {
       "id": "textarea/focus",
@@ -12166,6 +12568,12 @@
       "component": "textarea",
       "description": "Gap between the textarea and its focus ring.",
       "default": "border-width.focus-offset"
+    },
+    {
+      "id": "textarea/border-width",
+      "component": "textarea",
+      "description": "Border width of the textarea.",
+      "default": "border-width.default"
     },
     {
       "id": "toast/gap",
@@ -12481,7 +12889,9 @@
       {
         "id": "color.surface.canvas",
         "intent": "The page background behind everything.",
-        "use_for": ["Page and app background"],
+        "use_for": [
+          "Page and app background"
+        ],
         "not_for": [
           {
             "when": "Cards and panels on the page",
@@ -12492,7 +12902,12 @@
       {
         "id": "color.surface.default",
         "intent": "The base fill for content.",
-        "use_for": ["Cards", "Panels", "Inputs", "Table body"],
+        "use_for": [
+          "Cards",
+          "Panels",
+          "Inputs",
+          "Table body"
+        ],
         "not_for": [
           {
             "when": "The page behind content",
@@ -12507,7 +12922,11 @@
       {
         "id": "color.surface.raised",
         "intent": "Fills that float above content.",
-        "use_for": ["Menus", "Popovers", "Dialogs"],
+        "use_for": [
+          "Menus",
+          "Popovers",
+          "Dialogs"
+        ],
         "not_for": [
           {
             "when": "Cards in the page flow",
@@ -12518,7 +12937,10 @@
       {
         "id": "color.surface.sunken",
         "intent": "A recessed fill, a step below content.",
-        "use_for": ["Table headers", "Wells"],
+        "use_for": [
+          "Table headers",
+          "Wells"
+        ],
         "not_for": [
           {
             "when": "A selected item",
@@ -12553,7 +12975,10 @@
       {
         "id": "color.surface.pressed",
         "intent": "The fill of an item while it is pressed. Where the scheme gives pressed its own value, one step past the highlight; where pressed reuses hover, the highlight's step.",
-        "use_for": ["Pressed menu buttons", "Pressed list items"],
+        "use_for": [
+          "Pressed menu buttons",
+          "Pressed list items"
+        ],
         "not_for": [
           {
             "when": "The item the pointer or the keyboard is on",
@@ -12583,7 +13008,10 @@
       {
         "id": "color.surface.inverse",
         "intent": "A reversed fill for small, short-lived messages.",
-        "use_for": ["Tooltips", "Toasts"],
+        "use_for": [
+          "Tooltips",
+          "Toasts"
+        ],
         "not_for": [
           {
             "when": "Large areas",
@@ -12594,7 +13022,9 @@
       {
         "id": "color.surface.scrim",
         "intent": "The see-through layer behind a modal.",
-        "use_for": ["Behind dialogs and sheets"],
+        "use_for": [
+          "Behind dialogs and sheets"
+        ],
         "not_for": [
           {
             "when": "A solid fill",
@@ -12605,7 +13035,11 @@
       {
         "id": "color.text.primary",
         "intent": "Body text and headings.",
-        "use_for": ["Body text", "Headings", "Tag labels"],
+        "use_for": [
+          "Body text",
+          "Headings",
+          "Tag labels"
+        ],
         "not_for": [
           {
             "when": "Text on the main action",
@@ -12624,7 +13058,11 @@
       {
         "id": "color.text.secondary",
         "intent": "Supporting text.",
-        "use_for": ["Labels", "Descriptions", "Metadata"],
+        "use_for": [
+          "Labels",
+          "Descriptions",
+          "Metadata"
+        ],
         "not_for": [
           {
             "when": "The main content",
@@ -12639,7 +13077,11 @@
       {
         "id": "color.text.muted",
         "intent": "The quietest text.",
-        "use_for": ["Placeholders", "Hints", "Timestamps"],
+        "use_for": [
+          "Placeholders",
+          "Hints",
+          "Timestamps"
+        ],
         "not_for": [
           {
             "when": "Anything people must read to act",
@@ -12658,7 +13100,9 @@
       {
         "id": "color.text.inverse",
         "intent": "Text on an inverse fill.",
-        "use_for": ["Tooltip and toast text"],
+        "use_for": [
+          "Tooltip and toast text"
+        ],
         "not_for": [
           {
             "when": "Text on the page",
@@ -12666,7 +13110,9 @@
           }
         ],
         "pairs": {
-          "on": ["color.surface.inverse"],
+          "on": [
+            "color.surface.inverse"
+          ],
           "contrast": 4.5
         }
       },
@@ -12709,7 +13155,9 @@
       {
         "id": "color.text.info-on-light",
         "intent": "The label on a light info fill, such as its tint in light mode: a fixed color from the light scale (800).",
-        "use_for": ["The info badge"],
+        "use_for": [
+          "The info badge"
+        ],
         "not_for": [
           {
             "when": "Info text on the page",
@@ -12724,7 +13172,9 @@
       {
         "id": "color.text.info-on-dark",
         "intent": "The label on a dark info fill, such as its tint in dark mode: a fixed color from the light scale (100, adjusted so its hue shows).",
-        "use_for": ["The info badge"],
+        "use_for": [
+          "The info badge"
+        ],
         "not_for": [
           {
             "when": "Info text on the page",
@@ -12739,7 +13189,9 @@
       {
         "id": "color.text.success-on-light",
         "intent": "The label on a light success fill, such as its tint in light mode: a fixed color from the light scale (800).",
-        "use_for": ["The success badge"],
+        "use_for": [
+          "The success badge"
+        ],
         "not_for": [
           {
             "when": "Success text on the page",
@@ -12754,7 +13206,9 @@
       {
         "id": "color.text.success-on-dark",
         "intent": "The label on a dark success fill, such as its tint in dark mode: a fixed color from the light scale (100, adjusted so its hue shows).",
-        "use_for": ["The success badge"],
+        "use_for": [
+          "The success badge"
+        ],
         "not_for": [
           {
             "when": "Success text on the page",
@@ -12769,7 +13223,9 @@
       {
         "id": "color.text.warning-on-light",
         "intent": "The label on a light warning fill, such as its tint in light mode: a fixed color from the light scale (800).",
-        "use_for": ["The warning badge"],
+        "use_for": [
+          "The warning badge"
+        ],
         "not_for": [
           {
             "when": "Warning text on the page",
@@ -12784,7 +13240,9 @@
       {
         "id": "color.text.warning-on-dark",
         "intent": "The label on a dark warning fill, such as its tint in dark mode: a fixed color from the light scale (100, adjusted so its hue shows).",
-        "use_for": ["The warning badge"],
+        "use_for": [
+          "The warning badge"
+        ],
         "not_for": [
           {
             "when": "Warning text on the page",
@@ -12799,7 +13257,9 @@
       {
         "id": "color.text.danger-on-light",
         "intent": "The label on a light danger fill, such as its tint in light mode: a fixed color from the light scale (800).",
-        "use_for": ["The danger badge"],
+        "use_for": [
+          "The danger badge"
+        ],
         "not_for": [
           {
             "when": "Danger text on the page",
@@ -12814,7 +13274,9 @@
       {
         "id": "color.text.danger-on-dark",
         "intent": "The label on a dark danger fill, such as its tint in dark mode: a fixed color from the light scale (100, adjusted so its hue shows).",
-        "use_for": ["The danger badge"],
+        "use_for": [
+          "The danger badge"
+        ],
         "not_for": [
           {
             "when": "Danger text on the page",
@@ -12829,7 +13291,9 @@
       {
         "id": "color.text.on-action",
         "intent": "Text and icons on the main action's fill.",
-        "use_for": ["Primary button labels"],
+        "use_for": [
+          "Primary button labels"
+        ],
         "not_for": [
           {
             "when": "Text on the page",
@@ -12837,14 +13301,19 @@
           }
         ],
         "pairs": {
-          "on": ["color.action.primary.@", "color.action.primary.hover"],
+          "on": [
+            "color.action.primary.@",
+            "color.action.primary.hover"
+          ],
           "contrast": 4.5
         }
       },
       {
         "id": "color.text.on-danger",
         "intent": "Text on the danger fill: its tone's main text.",
-        "use_for": ["The danger button label"],
+        "use_for": [
+          "The danger button label"
+        ],
         "not_for": [
           {
             "when": "Text on the main action",
@@ -12852,14 +13321,19 @@
           }
         ],
         "pairs": {
-          "on": ["color.action.danger.@", "color.action.danger.hover"],
+          "on": [
+            "color.action.danger.@",
+            "color.action.danger.hover"
+          ],
           "contrast": 4.5
         }
       },
       {
         "id": "color.text.link",
         "intent": "Links in running text.",
-        "use_for": ["Inline links"],
+        "use_for": [
+          "Inline links"
+        ],
         "not_for": [
           {
             "when": "Buttons",
@@ -12874,7 +13348,11 @@
       {
         "id": "color.border.default",
         "intent": "Quiet edges and dividers. Decorative, so it has no contrast minimum.",
-        "use_for": ["Card edges", "Dividers", "Table rules"],
+        "use_for": [
+          "Card edges",
+          "Dividers",
+          "Table rules"
+        ],
         "not_for": [
           {
             "when": "The edge of a control people must find",
@@ -12904,7 +13382,9 @@
       {
         "id": "color.border.focus",
         "intent": "The focus ring.",
-        "use_for": ["Keyboard focus on any control"],
+        "use_for": [
+          "Keyboard focus on any control"
+        ],
         "not_for": [
           {
             "when": "A selected item",
@@ -12965,14 +13445,19 @@
           }
         ],
         "pairs": {
-          "on": ["color.surface.canvas", "color.surface.default"],
+          "on": [
+            "color.surface.canvas",
+            "color.surface.default"
+          ],
           "contrast": 3
         }
       },
       {
         "id": "color.action.primary.hover",
         "intent": "The main action under the pointer.",
-        "use_for": ["Primary button hover"],
+        "use_for": [
+          "Primary button hover"
+        ],
         "not_for": [
           {
             "when": "The resting state",
@@ -12983,7 +13468,9 @@
       {
         "id": "color.action.secondary.@",
         "intent": "The fill of other actions.",
-        "use_for": ["Secondary buttons"],
+        "use_for": [
+          "Secondary buttons"
+        ],
         "not_for": [
           {
             "when": "The main action",
@@ -12994,7 +13481,9 @@
       {
         "id": "color.action.secondary.hover",
         "intent": "Other actions under the pointer.",
-        "use_for": ["Secondary button hover"],
+        "use_for": [
+          "Secondary button hover"
+        ],
         "not_for": [
           {
             "when": "The resting state",
@@ -13005,7 +13494,9 @@
       {
         "id": "color.action.danger.@",
         "intent": "The fill of a destructive commit: the confirm of a delete.",
-        "use_for": ["The confirm button of a delete or remove"],
+        "use_for": [
+          "The confirm button of a delete or remove"
+        ],
         "not_for": [
           {
             "when": "The first step of a delete",
@@ -13020,7 +13511,9 @@
       {
         "id": "color.action.danger.hover",
         "intent": "The danger fill on hover.",
-        "use_for": ["Hover on the danger button"],
+        "use_for": [
+          "Hover on the danger button"
+        ],
         "not_for": [
           {
             "when": "The resting fill",
@@ -13031,7 +13524,9 @@
       {
         "id": "color.status.info.@",
         "intent": "Neutral news: something changed and no action is needed. The lowest level of the urgency order.",
-        "use_for": ["Status text and icons"],
+        "use_for": [
+          "Status text and icons"
+        ],
         "not_for": [
           {
             "when": "Something needs a check",
@@ -13047,7 +13542,10 @@
           }
         ],
         "pairs": {
-          "on": ["color.surface.canvas", "color.surface.default"],
+          "on": [
+            "color.surface.canvas",
+            "color.surface.default"
+          ],
           "contrast": 4.5
         },
         "order": 1
@@ -13055,7 +13553,10 @@
       {
         "id": "color.status.info.subtle",
         "intent": "The fill behind info status.",
-        "use_for": ["Info badges", "Banners"],
+        "use_for": [
+          "Info badges",
+          "Banners"
+        ],
         "not_for": [
           {
             "when": "Large page areas",
@@ -13066,7 +13567,9 @@
       {
         "id": "color.status.warning.@",
         "intent": "Caution: something may go wrong or needs a check, and it can be fixed.",
-        "use_for": ["Status text and icons"],
+        "use_for": [
+          "Status text and icons"
+        ],
         "not_for": [
           {
             "when": "An error, or an action that cannot be undone",
@@ -13082,7 +13585,10 @@
           }
         ],
         "pairs": {
-          "on": ["color.surface.canvas", "color.surface.default"],
+          "on": [
+            "color.surface.canvas",
+            "color.surface.default"
+          ],
           "contrast": 4.5
         },
         "order": 2
@@ -13090,7 +13596,10 @@
       {
         "id": "color.status.warning.subtle",
         "intent": "The fill behind warning status.",
-        "use_for": ["Warning badges", "Banners"],
+        "use_for": [
+          "Warning badges",
+          "Banners"
+        ],
         "not_for": [
           {
             "when": "Large page areas",
@@ -13101,7 +13610,10 @@
       {
         "id": "color.status.danger.@",
         "intent": "Real risk: errors, failed checks, actions that cannot be undone. The top of the urgency order. Overuse wears it out.",
-        "use_for": ["Error messages and status text", "Icons"],
+        "use_for": [
+          "Error messages and status text",
+          "Icons"
+        ],
         "not_for": [
           {
             "when": "Caution or advice",
@@ -13117,7 +13629,10 @@
           }
         ],
         "pairs": {
-          "on": ["color.surface.canvas", "color.surface.default"],
+          "on": [
+            "color.surface.canvas",
+            "color.surface.default"
+          ],
           "contrast": 4.5
         },
         "order": 3
@@ -13141,7 +13656,9 @@
       {
         "id": "color.status.success.@",
         "intent": "Confirmation that something worked. It sits outside the urgency order.",
-        "use_for": ["Status text and icons"],
+        "use_for": [
+          "Status text and icons"
+        ],
         "not_for": [
           {
             "when": "The main action",
@@ -13157,14 +13674,20 @@
           }
         ],
         "pairs": {
-          "on": ["color.surface.canvas", "color.surface.default"],
+          "on": [
+            "color.surface.canvas",
+            "color.surface.default"
+          ],
           "contrast": 4.5
         }
       },
       {
         "id": "color.status.success.subtle",
         "intent": "The fill behind success status.",
-        "use_for": ["Success badges", "Banners"],
+        "use_for": [
+          "Success badges",
+          "Banners"
+        ],
         "not_for": [
           {
             "when": "Large page areas",
@@ -13175,7 +13698,10 @@
       {
         "id": "color.category.1.@",
         "intent": "Category 1: tells one item or series from another. It carries no meaning.",
-        "use_for": ["Chart series", "Tag dots and icons"],
+        "use_for": [
+          "Chart series",
+          "Tag dots and icons"
+        ],
         "not_for": [
           {
             "when": "Status or risk",
@@ -13187,14 +13713,19 @@
           }
         ],
         "pairs": {
-          "on": ["color.surface.canvas", "color.surface.default"],
+          "on": [
+            "color.surface.canvas",
+            "color.surface.default"
+          ],
           "contrast": 3
         }
       },
       {
         "id": "color.category.1.subtle",
         "intent": "Category 1: the fill of a tag.",
-        "use_for": ["Tag and label fills"],
+        "use_for": [
+          "Tag and label fills"
+        ],
         "not_for": [
           {
             "when": "A status badge",
@@ -13205,7 +13736,10 @@
       {
         "id": "color.category.2.@",
         "intent": "Category 2: tells one item or series from another. It carries no meaning.",
-        "use_for": ["Chart series", "Tag dots and icons"],
+        "use_for": [
+          "Chart series",
+          "Tag dots and icons"
+        ],
         "not_for": [
           {
             "when": "Status or risk",
@@ -13217,14 +13751,19 @@
           }
         ],
         "pairs": {
-          "on": ["color.surface.canvas", "color.surface.default"],
+          "on": [
+            "color.surface.canvas",
+            "color.surface.default"
+          ],
           "contrast": 3
         }
       },
       {
         "id": "color.category.2.subtle",
         "intent": "Category 2: the fill of a tag.",
-        "use_for": ["Tag and label fills"],
+        "use_for": [
+          "Tag and label fills"
+        ],
         "not_for": [
           {
             "when": "A status badge",
@@ -13235,7 +13774,10 @@
       {
         "id": "color.category.3.@",
         "intent": "Category 3: tells one item or series from another. It carries no meaning.",
-        "use_for": ["Chart series", "Tag dots and icons"],
+        "use_for": [
+          "Chart series",
+          "Tag dots and icons"
+        ],
         "not_for": [
           {
             "when": "Status or risk",
@@ -13247,14 +13789,19 @@
           }
         ],
         "pairs": {
-          "on": ["color.surface.canvas", "color.surface.default"],
+          "on": [
+            "color.surface.canvas",
+            "color.surface.default"
+          ],
           "contrast": 3
         }
       },
       {
         "id": "color.category.3.subtle",
         "intent": "Category 3: the fill of a tag.",
-        "use_for": ["Tag and label fills"],
+        "use_for": [
+          "Tag and label fills"
+        ],
         "not_for": [
           {
             "when": "A status badge",
@@ -13265,7 +13812,10 @@
       {
         "id": "color.category.4.@",
         "intent": "Category 4: tells one item or series from another. It carries no meaning.",
-        "use_for": ["Chart series", "Tag dots and icons"],
+        "use_for": [
+          "Chart series",
+          "Tag dots and icons"
+        ],
         "not_for": [
           {
             "when": "Status or risk",
@@ -13277,14 +13827,19 @@
           }
         ],
         "pairs": {
-          "on": ["color.surface.canvas", "color.surface.default"],
+          "on": [
+            "color.surface.canvas",
+            "color.surface.default"
+          ],
           "contrast": 3
         }
       },
       {
         "id": "color.category.4.subtle",
         "intent": "Category 4: the fill of a tag.",
-        "use_for": ["Tag and label fills"],
+        "use_for": [
+          "Tag and label fills"
+        ],
         "not_for": [
           {
             "when": "A status badge",
@@ -13295,7 +13850,10 @@
       {
         "id": "color.category.5.@",
         "intent": "Category 5: tells one item or series from another. It carries no meaning.",
-        "use_for": ["Chart series", "Tag dots and icons"],
+        "use_for": [
+          "Chart series",
+          "Tag dots and icons"
+        ],
         "not_for": [
           {
             "when": "Status or risk",
@@ -13307,14 +13865,19 @@
           }
         ],
         "pairs": {
-          "on": ["color.surface.canvas", "color.surface.default"],
+          "on": [
+            "color.surface.canvas",
+            "color.surface.default"
+          ],
           "contrast": 3
         }
       },
       {
         "id": "color.category.5.subtle",
         "intent": "Category 5: the fill of a tag.",
-        "use_for": ["Tag and label fills"],
+        "use_for": [
+          "Tag and label fills"
+        ],
         "not_for": [
           {
             "when": "A status badge",
@@ -13325,7 +13888,9 @@
       {
         "id": "color.disabled.text",
         "intent": "Text and icons of a control that cannot be used right now.",
-        "use_for": ["Disabled labels and icons"],
+        "use_for": [
+          "Disabled labels and icons"
+        ],
         "not_for": [
           {
             "when": "Quiet text that still works",
@@ -13333,7 +13898,9 @@
           }
         ],
         "pairs": {
-          "on": ["color.disabled.surface"],
+          "on": [
+            "color.disabled.surface"
+          ],
           "contrast": null
         },
         "exempt": "WCAG 1.4.3 does not ask for contrast on controls that cannot be used."
@@ -13341,7 +13908,9 @@
       {
         "id": "color.disabled.surface",
         "intent": "The fill of a control that cannot be used right now.",
-        "use_for": ["Disabled buttons and inputs"],
+        "use_for": [
+          "Disabled buttons and inputs"
+        ],
         "not_for": [
           {
             "when": "A quiet fill that still works",
@@ -13352,7 +13921,9 @@
       {
         "id": "color.disabled.border",
         "intent": "The edge of a control that cannot be used right now.",
-        "use_for": ["Disabled inputs and checkboxes"],
+        "use_for": [
+          "Disabled inputs and checkboxes"
+        ],
         "not_for": [
           {
             "when": "An enabled control",
@@ -13494,47 +14065,81 @@
         },
         {
           "id": "color.surface.inverse",
-          "carries": ["text.primary", "icon", "focus"]
+          "carries": [
+            "text.primary",
+            "icon",
+            "focus"
+          ]
         },
         {
           "id": "color.action.primary.@",
-          "carries": ["text.primary"]
+          "carries": [
+            "text.primary"
+          ]
         },
         {
           "id": "color.action.primary.hover",
-          "carries": ["text.primary"]
+          "carries": [
+            "text.primary"
+          ]
         },
         {
           "id": "color.action.danger.@",
-          "carries": ["text.primary"]
+          "carries": [
+            "text.primary"
+          ]
         },
         {
           "id": "color.action.danger.hover",
-          "carries": ["text.primary"]
+          "carries": [
+            "text.primary"
+          ]
         },
         {
           "id": "color.action.secondary.@",
-          "carries": ["text.primary", "icon"]
+          "carries": [
+            "text.primary",
+            "icon"
+          ]
         },
         {
           "id": "color.action.secondary.hover",
-          "carries": ["text.primary", "icon"]
+          "carries": [
+            "text.primary",
+            "icon"
+          ]
         },
         {
           "id": "color.status.info.subtle",
-          "carries": ["text.primary", "icon", "text.info"]
+          "carries": [
+            "text.primary",
+            "icon",
+            "text.info"
+          ]
         },
         {
           "id": "color.status.warning.subtle",
-          "carries": ["text.primary", "icon", "text.warning"]
+          "carries": [
+            "text.primary",
+            "icon",
+            "text.warning"
+          ]
         },
         {
           "id": "color.status.danger.subtle",
-          "carries": ["text.primary", "icon", "text.danger"]
+          "carries": [
+            "text.primary",
+            "icon",
+            "text.danger"
+          ]
         },
         {
           "id": "color.status.success.subtle",
-          "carries": ["text.primary", "icon", "text.success"]
+          "carries": [
+            "text.primary",
+            "icon",
+            "text.success"
+          ]
         }
       ]
     },
@@ -13635,7 +14240,14 @@
     ],
     "roles": {
       "description": "The families each components.roles option admits. Core is the families every system needs.",
-      "core": ["action", "form", "feedback", "overlay", "layout", "navigation"],
+      "core": [
+        "action",
+        "form",
+        "feedback",
+        "overlay",
+        "layout",
+        "navigation"
+      ],
       "core-data": [
         "action",
         "form",
@@ -13744,7 +14356,9 @@
             }
           ]
         },
-        "situations": ["error-message"],
+        "situations": [
+          "error-message"
+        ],
         "accessibility": [
           {
             "id": "role-alert",
@@ -13779,7 +14393,10 @@
             "why": "Undo after the fact, when the action can be reversed."
           }
         ],
-        "situations": ["destructive-action", "confirm-words"],
+        "situations": [
+          "destructive-action",
+          "confirm-words"
+        ],
         "accessibility": [
           {
             "id": "alertdialog-role",
@@ -13922,7 +14539,10 @@
             }
           ]
         },
-        "situations": ["status-label", "status-shape"],
+        "situations": [
+          "status-label",
+          "status-shape"
+        ],
         "accessibility": [
           {
             "id": "word",
@@ -14228,7 +14848,9 @@
             "why": "A compact row in a list."
           }
         ],
-        "situations": ["card"],
+        "situations": [
+          "card"
+        ],
         "accessibility": [
           {
             "id": "one-link",
@@ -14285,7 +14907,9 @@
             "why": "The numbers as rows; often needed beside the chart."
           }
         ],
-        "situations": ["number-in-table"],
+        "situations": [
+          "number-in-table"
+        ],
         "accessibility": [
           {
             "id": "alternative",
@@ -14525,7 +15149,10 @@
               },
               {
                 "kind": "toggle",
-                "options": ["Compact", "Comfortable"],
+                "options": [
+                  "Compact",
+                  "Comfortable"
+                ],
                 "n": 4
               },
               {
@@ -14557,21 +15184,33 @@
             ],
             "rows": [
               {
-                "cells": ["REC-1042", "Open", "1,240.00"],
+                "cells": [
+                  "REC-1042",
+                  "Open",
+                  "1,240.00"
+                ],
                 "marks": {
                   "row": 9,
                   "cell": 10
                 }
               },
               {
-                "cells": ["REC-1043", "Late", "86.50"],
+                "cells": [
+                  "REC-1043",
+                  "Late",
+                  "86.50"
+                ],
                 "state": "highlight",
                 "marks": {
                   "row": 11
                 }
               },
               {
-                "cells": ["REC-1044", "Paid", "3,905.10"],
+                "cells": [
+                  "REC-1044",
+                  "Paid",
+                  "3,905.10"
+                ],
                 "state": "selected",
                 "checked": true,
                 "marks": {
@@ -14580,7 +15219,11 @@
                 }
               },
               {
-                "cells": ["REC-1045", "Open", "412.00"]
+                "cells": [
+                  "REC-1045",
+                  "Open",
+                  "412.00"
+                ]
               }
             ]
           },
@@ -14589,14 +15232,19 @@
               "id": "toolbar",
               "label": "Toolbar",
               "need": "optional",
-              "roles": ["affordance"],
+              "roles": [
+                "affordance"
+              ],
               "children": [
                 {
                   "n": 1,
                   "id": "search",
                   "label": "Search field",
                   "need": "optional",
-                  "roles": ["affordance", "reach"],
+                  "roles": [
+                    "affordance",
+                    "reach"
+                  ],
                   "tokens": [
                     "component.input.height",
                     "component.input.border.@"
@@ -14607,32 +15255,50 @@
                   "id": "filter",
                   "label": "Filter",
                   "need": "optional",
-                  "roles": ["grouping", "affordance"],
-                  "tokens": ["component.button.secondary.border"]
+                  "roles": [
+                    "grouping",
+                    "affordance"
+                  ],
+                  "tokens": [
+                    "component.button.secondary.border"
+                  ]
                 },
                 {
                   "n": 3,
                   "id": "selection-count",
                   "label": "Selection count",
                   "need": "state",
-                  "roles": ["feedback"],
-                  "tokens": ["component.data-table.label"]
+                  "roles": [
+                    "feedback"
+                  ],
+                  "tokens": [
+                    "component.data-table.label"
+                  ]
                 },
                 {
                   "n": 4,
                   "id": "density",
                   "label": "Density switch",
                   "need": "optional",
-                  "roles": ["readability", "reach"],
-                  "tokens": ["component.toggle-group.radius"]
+                  "roles": [
+                    "readability",
+                    "reach"
+                  ],
+                  "tokens": [
+                    "component.toggle-group.radius"
+                  ]
                 },
                 {
                   "n": 5,
                   "id": "columns",
                   "label": "Columns",
                   "need": "optional",
-                  "roles": ["affordance"],
-                  "tokens": ["component.button.secondary.border"]
+                  "roles": [
+                    "affordance"
+                  ],
+                  "tokens": [
+                    "component.button.secondary.border"
+                  ]
                 }
               ]
             },
@@ -14640,22 +15306,32 @@
               "id": "header",
               "label": "Header",
               "need": "required",
-              "roles": ["hierarchy"],
+              "roles": [
+                "hierarchy"
+              ],
               "children": [
                 {
                   "n": 6,
                   "id": "header-row",
                   "label": "Header row",
                   "need": "required",
-                  "roles": ["hierarchy", "grouping"],
-                  "tokens": ["component.table.header-background"]
+                  "roles": [
+                    "hierarchy",
+                    "grouping"
+                  ],
+                  "tokens": [
+                    "component.table.header-background"
+                  ]
                 },
                 {
                   "n": 7,
                   "id": "header-label",
                   "label": "Header label",
                   "need": "required",
-                  "roles": ["hierarchy", "readability"],
+                  "roles": [
+                    "hierarchy",
+                    "readability"
+                  ],
                   "tokens": [
                     "component.table.head.label",
                     "component.table.head.font-weight"
@@ -14666,8 +15342,13 @@
                   "id": "sort",
                   "label": "Sort control",
                   "need": "optional",
-                  "roles": ["affordance", "feedback"],
-                  "tokens": ["component.data-table.label-hover"]
+                  "roles": [
+                    "affordance",
+                    "feedback"
+                  ],
+                  "tokens": [
+                    "component.data-table.label-hover"
+                  ]
                 }
               ]
             },
@@ -14675,14 +15356,20 @@
               "id": "row",
               "label": "Row",
               "need": "required",
-              "roles": ["readability", "reach"],
+              "roles": [
+                "readability",
+                "reach"
+              ],
               "children": [
                 {
                   "n": 9,
                   "id": "row-line",
                   "label": "Row and its line",
                   "need": "required",
-                  "roles": ["reach", "grouping"],
+                  "roles": [
+                    "reach",
+                    "grouping"
+                  ],
                   "tokens": [
                     "component.table.row-height",
                     "component.table.row-border"
@@ -14693,7 +15380,9 @@
                   "id": "cell",
                   "label": "Cell",
                   "need": "required",
-                  "roles": ["readability"],
+                  "roles": [
+                    "readability"
+                  ],
                   "tokens": [
                     "component.table.label",
                     "component.table.font-size",
@@ -14705,15 +15394,22 @@
                   "id": "highlight-row",
                   "label": "Highlight row",
                   "need": "state",
-                  "roles": ["feedback"],
-                  "tokens": ["component.data-table.row.background.hover"]
+                  "roles": [
+                    "feedback"
+                  ],
+                  "tokens": [
+                    "component.data-table.row.background.hover"
+                  ]
                 },
                 {
                   "n": 12,
                   "id": "selected-row",
                   "label": "Selected row",
                   "need": "state",
-                  "roles": ["meaning", "feedback"],
+                  "roles": [
+                    "meaning",
+                    "feedback"
+                  ],
                   "tokens": [
                     "component.table.row-selected",
                     "component.table.row-selected-edge"
@@ -14724,8 +15420,13 @@
                   "id": "select-box",
                   "label": "Select box",
                   "need": "optional",
-                  "roles": ["affordance", "meaning"],
-                  "tokens": ["component.checkbox.size"]
+                  "roles": [
+                    "affordance",
+                    "meaning"
+                  ],
+                  "tokens": [
+                    "component.checkbox.size"
+                  ]
                 }
               ]
             },
@@ -14734,19 +15435,35 @@
               "label": "Empty state",
               "need": "state",
               "note": "shown by Empty",
-              "roles": ["feedback"],
+              "roles": [
+                "feedback"
+              ],
               "tokens": []
             }
           ],
           "cards": [
             {
               "title": "Toolbar",
-              "parts": [1, 2, 3, 4, 5],
+              "parts": [
+                1,
+                2,
+                3,
+                4,
+                5
+              ],
               "image": {
-                "sections": ["toolbar"]
+                "sections": [
+                  "toolbar"
+                ]
               },
-              "roles": ["affordance", "feedback"],
-              "answers": ["tasks.q2", "content.q2"],
+              "roles": [
+                "affordance",
+                "feedback"
+              ],
+              "answers": [
+                "tasks.q2",
+                "content.q2"
+              ],
               "rules": [],
               "tokens": [
                 "component.input.height",
@@ -14756,12 +15473,25 @@
             },
             {
               "title": "Header",
-              "parts": [6, 7, 8],
+              "parts": [
+                6,
+                7,
+                8
+              ],
               "image": {
-                "sections": ["header"]
+                "sections": [
+                  "header"
+                ]
               },
-              "roles": ["hierarchy", "grouping", "affordance"],
-              "answers": ["content.q1", "typography.roles"],
+              "roles": [
+                "hierarchy",
+                "grouping",
+                "affordance"
+              ],
+              "answers": [
+                "content.q1",
+                "typography.roles"
+              ],
               "rules": [],
               "tokens": [
                 "component.table.header-background",
@@ -14771,13 +15501,27 @@
             },
             {
               "title": "Row",
-              "parts": [9, 10],
+              "parts": [
+                9,
+                10
+              ],
               "image": {
-                "sections": ["row:0"]
+                "sections": [
+                  "row:0"
+                ]
               },
-              "roles": ["readability", "reach"],
-              "answers": ["content.q2", "spacing.values"],
-              "rules": ["table-row", "number-in-table"],
+              "roles": [
+                "readability",
+                "reach"
+              ],
+              "answers": [
+                "content.q2",
+                "spacing.values"
+              ],
+              "rules": [
+                "table-row",
+                "number-in-table"
+              ],
               "tokens": [
                 "component.table.row-height",
                 "component.table.row-border",
@@ -14787,24 +15531,49 @@
             },
             {
               "title": "Highlight row",
-              "parts": [11],
+              "parts": [
+                11
+              ],
               "image": {
-                "sections": ["row:1"]
+                "sections": [
+                  "row:1"
+                ]
               },
-              "roles": ["feedback"],
-              "answers": ["accessibility.roles"],
-              "rules": ["hover-feedback"],
-              "tokens": ["component.data-table.row.background.hover"]
+              "roles": [
+                "feedback"
+              ],
+              "answers": [
+                "accessibility.roles"
+              ],
+              "rules": [
+                "hover-feedback"
+              ],
+              "tokens": [
+                "component.data-table.row.background.hover"
+              ]
             },
             {
               "title": "Selected row",
-              "parts": [12, 13],
+              "parts": [
+                12,
+                13
+              ],
               "image": {
-                "sections": ["row:2"]
+                "sections": [
+                  "row:2"
+                ]
               },
-              "roles": ["meaning", "feedback"],
-              "answers": ["tasks.q1", "accessibility.count"],
-              "rules": ["selected-row"],
+              "roles": [
+                "meaning",
+                "feedback"
+              ],
+              "answers": [
+                "tasks.q1",
+                "accessibility.count"
+              ],
+              "rules": [
+                "selected-row"
+              ],
               "tokens": [
                 "component.table.row-selected",
                 "component.table.row-selected-edge",
@@ -14863,7 +15632,9 @@
             "why": "Confirms something that cannot be undone."
           }
         ],
-        "situations": ["menu-or-dialog"],
+        "situations": [
+          "menu-or-dialog"
+        ],
         "accessibility": [
           {
             "id": "named",
@@ -14944,7 +15715,10 @@
             "why": "The same menu on right-click."
           }
         ],
-        "situations": ["menu-or-dialog", "row-action"],
+        "situations": [
+          "menu-or-dialog",
+          "row-action"
+        ],
         "accessibility": [
           {
             "id": "menu-role",
@@ -14965,8 +15739,12 @@
           "intro": "the menu",
           "drawing": {
             "kind": "menu",
-            "surface": [1],
-            "shadow": [2],
+            "surface": [
+              1
+            ],
+            "shadow": [
+              2
+            ],
             "rows": [
               {
                 "label": "Share with",
@@ -15026,7 +15804,10 @@
                   "id": "surface",
                   "label": "Surface",
                   "need": "required",
-                  "roles": ["containment", "layering"],
+                  "roles": [
+                    "containment",
+                    "layering"
+                  ],
                   "tokens": [
                     "component.overlay.background",
                     "component.dropdown-menu.content.border"
@@ -15037,8 +15818,12 @@
                   "id": "shadow",
                   "label": "Shadow",
                   "need": "required",
-                  "roles": ["layering"],
-                  "tokens": ["component.overlay.shadow"]
+                  "roles": [
+                    "layering"
+                  ],
+                  "tokens": [
+                    "component.overlay.shadow"
+                  ]
                 }
               ]
             },
@@ -15046,30 +15831,45 @@
               "id": "item",
               "label": "Item",
               "need": "required",
-              "roles": ["readability", "reach", "affordance"],
+              "roles": [
+                "readability",
+                "reach",
+                "affordance"
+              ],
               "children": [
                 {
                   "n": 3,
                   "id": "item-label",
                   "label": "Item label",
                   "need": "required",
-                  "roles": ["readability", "hierarchy"],
-                  "tokens": ["component.dropdown-menu.item.font-size"]
+                  "roles": [
+                    "readability",
+                    "hierarchy"
+                  ],
+                  "tokens": [
+                    "component.dropdown-menu.item.font-size"
+                  ]
                 },
                 {
                   "n": 4,
                   "id": "item-icon",
                   "label": "Item icon",
                   "need": "optional",
-                  "roles": ["meaning"],
-                  "tokens": ["component.dropdown-menu.item.icon"]
+                  "roles": [
+                    "meaning"
+                  ],
+                  "tokens": [
+                    "component.dropdown-menu.item.icon"
+                  ]
                 },
                 {
                   "n": 5,
                   "id": "shortcut",
                   "label": "Shortcut",
                   "need": "optional",
-                  "roles": ["hierarchy"],
+                  "roles": [
+                    "hierarchy"
+                  ],
                   "tokens": []
                 },
                 {
@@ -15077,7 +15877,9 @@
                   "id": "submenu-chevron",
                   "label": "Submenu chevron",
                   "need": "optional",
-                  "roles": ["affordance"],
+                  "roles": [
+                    "affordance"
+                  ],
                   "tokens": []
                 },
                 {
@@ -15085,7 +15887,9 @@
                   "id": "highlight-fill",
                   "label": "Highlight fill",
                   "need": "state",
-                  "roles": ["feedback"],
+                  "roles": [
+                    "feedback"
+                  ],
                   "tokens": [
                     "component.dropdown-menu.item.background.highlight"
                   ]
@@ -15095,24 +15899,38 @@
                   "id": "focus-ring",
                   "label": "Focus ring",
                   "need": "state",
-                  "roles": ["focus"],
-                  "tokens": ["color.border.focus", "border-width.focus"]
+                  "roles": [
+                    "focus"
+                  ],
+                  "tokens": [
+                    "color.border.focus",
+                    "border-width.focus"
+                  ]
                 },
                 {
                   "n": 9,
                   "id": "disabled-item",
                   "label": "Disabled item",
                   "need": "state",
-                  "roles": ["feedback"],
-                  "tokens": ["component.dropdown-menu.item.disabled"]
+                  "roles": [
+                    "feedback"
+                  ],
+                  "tokens": [
+                    "component.dropdown-menu.item.disabled"
+                  ]
                 },
                 {
                   "n": 10,
                   "id": "destructive-item",
                   "label": "Destructive item",
                   "need": "optional",
-                  "roles": ["meaning", "emphasis"],
-                  "tokens": ["component.dropdown-menu.item.label.destructive"]
+                  "roles": [
+                    "meaning",
+                    "emphasis"
+                  ],
+                  "tokens": [
+                    "component.dropdown-menu.item.label.destructive"
+                  ]
                 }
               ]
             },
@@ -15121,25 +15939,43 @@
               "id": "separator",
               "label": "Separator",
               "need": "optional",
-              "roles": ["grouping"],
-              "tokens": ["component.dropdown-menu.separator.background"]
+              "roles": [
+                "grouping"
+              ],
+              "tokens": [
+                "component.dropdown-menu.separator.background"
+              ]
             },
             {
               "id": "group-label",
               "label": "Group label",
               "need": "optional",
               "note": "not in this example",
-              "roles": ["hierarchy", "grouping"],
+              "roles": [
+                "hierarchy",
+                "grouping"
+              ],
               "tokens": []
             }
           ],
           "cards": [
             {
               "title": "Surface and shadow",
-              "parts": [1, 2],
-              "roles": ["containment", "layering"],
-              "answers": ["elevation.roles", "elevation.values"],
-              "rules": ["menu-or-dialog"],
+              "parts": [
+                1,
+                2
+              ],
+              "roles": [
+                "containment",
+                "layering"
+              ],
+              "answers": [
+                "elevation.roles",
+                "elevation.values"
+              ],
+              "rules": [
+                "menu-or-dialog"
+              ],
               "tokens": [
                 "component.overlay.background",
                 "component.overlay.shadow"
@@ -15147,7 +15983,11 @@
             },
             {
               "title": "Item",
-              "parts": [3, 4, 5],
+              "parts": [
+                3,
+                4,
+                5
+              ],
               "image": {
                 "row": "Copy",
                 "marks": {
@@ -15156,13 +15996,19 @@
                   "shortcut": 5
                 }
               },
-              "roles": ["readability", "reach", "affordance"],
+              "roles": [
+                "readability",
+                "reach",
+                "affordance"
+              ],
               "answers": [
                 "typography.values",
                 "spacing.values",
                 "accessibility.values"
               ],
-              "rules": ["smallest-target"],
+              "rules": [
+                "smallest-target"
+              ],
               "tokens": [
                 "component.dropdown-menu.item.font-size",
                 "component.dropdown-menu.item.padding-x",
@@ -15171,43 +16017,94 @@
             },
             {
               "title": "Highlight fill",
-              "parts": [7],
-              "roles": ["feedback"],
-              "answers": ["accessibility.roles", "motion.values"],
-              "rules": ["hover-feedback"],
-              "tokens": ["component.dropdown-menu.item.background.highlight"]
+              "parts": [
+                7
+              ],
+              "roles": [
+                "feedback"
+              ],
+              "answers": [
+                "accessibility.roles",
+                "motion.values"
+              ],
+              "rules": [
+                "hover-feedback"
+              ],
+              "tokens": [
+                "component.dropdown-menu.item.background.highlight"
+              ]
             },
             {
               "title": "Focus ring",
-              "parts": [8],
-              "roles": ["focus"],
-              "answers": ["accessibility.definition"],
-              "rules": ["keyboard-focus"],
-              "tokens": ["color.border.focus", "border-width.focus"]
+              "parts": [
+                8
+              ],
+              "roles": [
+                "focus"
+              ],
+              "answers": [
+                "accessibility.definition"
+              ],
+              "rules": [
+                "keyboard-focus"
+              ],
+              "tokens": [
+                "color.border.focus",
+                "border-width.focus"
+              ]
             },
             {
               "title": "Disabled item",
-              "parts": [9],
-              "roles": ["feedback"],
-              "answers": ["accessibility.roles"],
+              "parts": [
+                9
+              ],
+              "roles": [
+                "feedback"
+              ],
+              "answers": [
+                "accessibility.roles"
+              ],
               "rules": [],
-              "tokens": ["component.dropdown-menu.item.disabled"]
+              "tokens": [
+                "component.dropdown-menu.item.disabled"
+              ]
             },
             {
               "title": "Destructive item",
-              "parts": [10],
-              "roles": ["meaning", "emphasis"],
-              "answers": ["accessibility.count"],
-              "rules": ["destructive-action"],
-              "tokens": ["component.dropdown-menu.item.label.destructive"]
+              "parts": [
+                10
+              ],
+              "roles": [
+                "meaning",
+                "emphasis"
+              ],
+              "answers": [
+                "accessibility.count"
+              ],
+              "rules": [
+                "destructive-action"
+              ],
+              "tokens": [
+                "component.dropdown-menu.item.label.destructive"
+              ]
             },
             {
               "title": "Separator",
-              "parts": [11],
-              "roles": ["grouping"],
-              "answers": ["elevation.definition"],
-              "rules": ["between-sections"],
-              "tokens": ["component.dropdown-menu.separator.background"]
+              "parts": [
+                11
+              ],
+              "roles": [
+                "grouping"
+              ],
+              "answers": [
+                "elevation.definition"
+              ],
+              "rules": [
+                "between-sections"
+              ],
+              "tokens": [
+                "component.dropdown-menu.separator.background"
+              ]
             }
           ]
         }
@@ -15245,7 +16142,9 @@
             }
           ]
         },
-        "situations": ["empty-words"],
+        "situations": [
+          "empty-words"
+        ],
         "source": {
           "name": "Open UX",
           "id": "empty_state",
@@ -15288,7 +16187,10 @@
             }
           ]
         },
-        "situations": ["field-label", "error-message"],
+        "situations": [
+          "field-label",
+          "error-message"
+        ],
         "accessibility": [
           {
             "id": "linked",
@@ -15313,7 +16215,10 @@
             "why": "How one control is laid out."
           }
         ],
-        "situations": ["error-message", "error-words"],
+        "situations": [
+          "error-message",
+          "error-words"
+        ],
         "accessibility": [
           {
             "id": "errors",
@@ -15364,7 +16269,9 @@
             "why": "A known list of options."
           }
         ],
-        "situations": ["field-label"],
+        "situations": [
+          "field-label"
+        ],
         "accessibility": [
           {
             "id": "label",
@@ -15543,7 +16450,9 @@
             "why": "The label laid out with hint and error."
           }
         ],
-        "situations": ["field-label"],
+        "situations": [
+          "field-label"
+        ],
         "accessibility": [
           {
             "id": "for",
@@ -15930,7 +16839,9 @@
             "why": "A container, when groups need a boundary."
           }
         ],
-        "situations": ["between-sections"],
+        "situations": [
+          "between-sections"
+        ],
         "source": {
           "name": "Open DS",
           "license": "MIT"
@@ -15953,7 +16864,9 @@
             "why": "The bottom panel for phones."
           }
         ],
-        "situations": ["menu-or-dialog"],
+        "situations": [
+          "menu-or-dialog"
+        ],
         "accessibility": [
           {
             "id": "dialog-semantics",
@@ -16186,7 +17099,11 @@
             "why": "The shape of the numbers."
           }
         ],
-        "situations": ["number-in-table", "table-row", "selected-row"],
+        "situations": [
+          "number-in-table",
+          "table-row",
+          "selected-row"
+        ],
         "accessibility": [
           {
             "id": "headers",
@@ -16249,7 +17166,9 @@
             "why": "One line."
           }
         ],
-        "situations": ["field-label"],
+        "situations": [
+          "field-label"
+        ],
         "accessibility": [
           {
             "id": "label",
@@ -16302,7 +17221,10 @@
             }
           ]
         },
-        "situations": ["success-words", "error-words"],
+        "situations": [
+          "success-words",
+          "error-words"
+        ],
         "accessibility": [
           {
             "id": "live",
@@ -16445,7 +17367,9 @@
             "why": "A richer preview."
           }
         ],
-        "situations": ["icon-alone"],
+        "situations": [
+          "icon-alone"
+        ],
         "accessibility": [
           {
             "id": "describedby",

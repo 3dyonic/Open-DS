@@ -2651,7 +2651,7 @@ export function docsPages(
     };
     const intro = h(
       `<div class="odv-intro">${robot("anatomy", "odv-intro-robot")}<div class="odv-intro-body"><h2 class="odv-intro-t">Look closer, when you want to</h2>`,
-      `<p>This page takes ${attr(spec.intro ?? T)} apart to show how design decisions become the parts you see. You don't need it to use ${attr(spec.intro ?? T)}: <a href="./${name}">its own page</a> has everything you need to build.</p>`,
+      `<p>This page takes ${attr(spec.intro ?? T)} apart to show how design decisions become the parts you see. You don't need it to use ${attr(spec.intro ?? T)}: <a href="../${name}">its own page</a> has everything you need to build.</p>`,
       `<b class="odv-intro-sub">Three easy ways in</b><ul><li>Start with the drawing. Each number is one part, and the legend beside it names it.</li><li>Want to know why a part looks the way it does? Its card follows the decision from the answer about the product, through the rule and the token, to what you see.</li><li>Or start from a job, like Focus or Emphasis, and find every part that does it in the legend.</li></ul>`,
       `<p class="odv-intro-end">Come back whenever a part makes you wonder why.</p></div></div>`,
     );
@@ -2663,6 +2663,8 @@ export function docsPages(
     return (
       fm({
         sidebar_position: i + 1.5,
+        // Served under its component: /components/<name>/anatomy (a slug relative to the folder).
+        slug: `${name}/anatomy`,
         sidebar_label: "Anatomy reference",
         sidebar_class_name: "ods-anatomy",
         hide_table_of_contents: true,
@@ -2704,7 +2706,7 @@ export function docsPages(
       );
     const anatCard = anat
       ? h(
-          `<a class="odv-anatref" href="./${name}-anatomy"><span class="odv-anatref-b"><b>Anatomy reference</b><span>Every part of ${attr(anatSpec.intro)}, the job it does, and the decisions behind it. ${leaves(anatSpec.parts).length} parts.</span></span><span class="odv-anatref-go" aria-hidden="true">→</span></a>`,
+          `<a class="odv-anatref" href="./${name}/anatomy"><span class="odv-anatref-b"><b>Anatomy reference</b><span>Every part of ${attr(anatSpec.intro)}, the job it does, and the decisions behind it. ${leaves(anatSpec.parts).length} parts.</span></span><span class="odv-anatref-go" aria-hidden="true">→</span></a>`,
         )
       : "";
     parts.push(

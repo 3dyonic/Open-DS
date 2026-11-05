@@ -22,7 +22,7 @@ function InputGroup({ className, ...props }: React.ComponentProps<"div">) {
       data-slot="input-group"
       role="group"
       className={cn(
-        "group/input-group relative flex w-full items-center rounded-[var(--input-group-radius)] border border-[color:var(--input-group-border)] shadow-[var(--input-group-shadow)] transition-[color,box-shadow] outline-none",
+        "group/input-group relative flex w-full items-center rounded-[var(--input-group-radius)] border-[length:var(--input-group-border-width)] border-[color:var(--input-group-border)] shadow-[var(--input-group-shadow)] transition-[color,box-shadow] outline-none",
         "h-9 min-w-0 has-[>textarea]:h-auto",
 
         // Variants based on alignment.
@@ -32,10 +32,10 @@ function InputGroup({ className, ...props }: React.ComponentProps<"div">) {
         "has-[>[data-align=block-end]]:h-auto has-[>[data-align=block-end]]:flex-col has-[>[data-align=block-end]]:[&>input]:pt-[var(--input-group-padding-top)]",
 
         // Focus state.
-        "has-[[data-slot=input-group-control]:focus-visible]:border-[color:var(--input-group-border-2)] has-[[data-slot=input-group-control]:focus-visible]:ring-[3px] has-[[data-slot=input-group-control]:focus-visible]:ring-[color:var(--input-group-focus-ring)]/50",
+        "has-[[data-slot=input-group-control]:focus-visible]:border-[color:var(--input-group-border-2)] has-[[data-slot=input-group-control]:focus-visible]:ring-[length:var(--input-group-focus-width)] has-[[data-slot=input-group-control]:focus-visible]:ring-offset-[length:var(--input-group-focus-offset)] has-[[data-slot=input-group-control]:focus-visible]:ring-offset-[color:var(--input-group-focus-ring-offset)] has-[[data-slot=input-group-control]:focus-visible]:ring-[color:var(--input-group-focus-ring-highlight)]",
 
         // Error state.
-        "has-[[data-slot][aria-invalid=true]]:border-[color:var(--input-group-border-invalid)] has-[[data-slot][aria-invalid=true]]:ring-[color:var(--input-group-focus-ring-invalid)]/20",
+        "has-[[data-slot][aria-invalid=true]]:border-[color:var(--input-group-border-invalid)] has-[[data-slot][aria-invalid=true]]:ring-[color:var(--input-group-focus-ring-invalid)]",
 
         className,
       )}
@@ -45,18 +45,18 @@ function InputGroup({ className, ...props }: React.ComponentProps<"div">) {
 }
 
 const inputGroupAddonVariants = cva(
-  "flex h-auto cursor-text items-center justify-center gap-[var(--input-group-gap)] py-[var(--input-group-padding-y)] text-[length:var(--input-group-font-size)]/[var(--input-group-line-height)] [font-weight:var(--input-group-font-weight)] text-[color:var(--input-group-label)] select-none group-data-[disabled=true]/input-group:opacity-[var(--input-group-disabled-opacity-disabled)] [&>kbd]:rounded-[calc(var(--radius)-5px)] [&>svg:not([class*='size-'])]:size-[var(--input-group-icon-size)]",
+  "flex h-auto cursor-text items-center justify-center gap-[var(--input-group-addon-gap)] py-[var(--input-group-addon-padding-y)] text-[length:var(--input-group-addon-font-size)]/[var(--input-group-addon-line-height)] [font-weight:var(--input-group-addon-font-weight)] text-[color:var(--input-group-addon-label)] select-none group-data-[disabled=true]/input-group:opacity-[var(--input-group-addon-disabled-opacity-disabled)] [&>kbd]:rounded-[calc(var(--radius)-5px)] [&>svg:not([class*='size-'])]:size-[var(--input-group-addon-icon-size)]",
   {
     variants: {
       align: {
         "inline-start":
-          "order-first pl-[var(--input-group-inline-start-padding-left)] has-[>button]:ml-[-0.45rem] has-[>kbd]:ml-[-0.35rem]",
+          "order-first pl-[var(--input-group-addon-inline-start-padding-left)] has-[>button]:ml-[-0.45rem] has-[>kbd]:ml-[-0.35rem]",
         "inline-end":
-          "order-last pr-[var(--input-group-inline-end-padding-right)] has-[>button]:mr-[-0.45rem] has-[>kbd]:mr-[-0.35rem]",
+          "order-last pr-[var(--input-group-addon-inline-end-padding-right)] has-[>button]:mr-[-0.45rem] has-[>kbd]:mr-[-0.35rem]",
         "block-start":
-          "order-first w-full justify-start px-[var(--input-group-block-start-padding-x)] pt-[var(--input-group-block-start-padding-top)] group-has-[>input]/input-group:pt-[var(--input-group-block-start-padding-top-2)] [.border-b]:pb-[var(--input-group-block-start-padding-bottom)]",
+          "order-first w-full justify-start px-[var(--input-group-addon-block-start-padding-x)] pt-[var(--input-group-addon-block-start-padding-top)] group-has-[>input]/input-group:pt-[var(--input-group-addon-block-start-padding-top-2)] [.border-b]:pb-[var(--input-group-addon-block-start-padding-bottom)]",
         "block-end":
-          "order-last w-full justify-start px-[var(--input-group-block-end-padding-x)] pb-[var(--input-group-block-end-padding-bottom)] group-has-[>input]/input-group:pb-[var(--input-group-block-end-padding-bottom-2)] [.border-t]:pt-[var(--input-group-block-end-padding-top)]",
+          "order-last w-full justify-start px-[var(--input-group-addon-block-end-padding-x)] pb-[var(--input-group-addon-block-end-padding-bottom)] group-has-[>input]/input-group:pb-[var(--input-group-addon-block-end-padding-bottom-2)] [.border-t]:pt-[var(--input-group-addon-block-end-padding-top)]",
       },
     },
     defaultVariants: {
@@ -88,7 +88,7 @@ function InputGroupAddon({
 }
 
 const inputGroupButtonVariants = cva(
-  "flex items-center gap-[var(--input-group-gap)] text-[length:var(--input-group-font-size)]/[var(--input-group-line-height)] shadow-none",
+  "flex items-center gap-[var(--input-group-addon-gap)] text-[length:var(--input-group-addon-font-size)]/[var(--input-group-addon-line-height)] shadow-none",
   {
     variants: {
       size: {
@@ -126,7 +126,7 @@ function InputGroupText({ className, ...props }: React.ComponentProps<"span">) {
   return (
     <span
       className={cn(
-        "flex items-center gap-[var(--input-group-gap)] text-[length:var(--input-group-font-size)]/[var(--input-group-line-height)] text-[color:var(--input-group-label)] [&_svg]:pointer-events-none [&_svg:not([class*='size-'])]:size-[var(--input-group-icon-size)]",
+        "flex items-center gap-[var(--input-group-addon-gap)] text-[length:var(--input-group-addon-font-size)]/[var(--input-group-addon-line-height)] text-[color:var(--input-group-addon-label)] [&_svg]:pointer-events-none [&_svg:not([class*='size-'])]:size-[var(--input-group-addon-icon-size)]",
         className,
       )}
       {...props}

@@ -936,5 +936,11 @@ html[data-theme="dark"] .ods-row {
   color: var(--ifm-color-emphasis-600);
 }
 
-/* The Anatomy reference sits under its component in the sidebar (OD-229); Docusaurus indents it. */
+/* The Anatomy reference sits under its component in the sidebar (OD-229); Docusaurus indents it. It
+   shows only while the component or its reference is the page you are on, and closes when you leave:
+   the list follows the active page, not a remembered open state, and the category has no caret. */
 .menu__list-item.ods-anatomy > .menu__link { font-size: 0.9em; }
+.menu__list-item.ods-has-anatomy > .menu__list-item-collapsible > .menu__caret,
+.menu__list-item.ods-has-anatomy > .menu__list-item-collapsible > .menu__link--sublist-caret::after { display: none; }
+.menu__list-item.ods-has-anatomy:not(:has(.menu__link--active)) > .menu__list { display: none !important; }
+.menu__list-item.ods-has-anatomy:has(.menu__link--active) > .menu__list { display: block !important; height: auto !important; overflow: visible !important; }

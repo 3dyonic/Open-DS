@@ -62,7 +62,7 @@ function CommandInput({ className, ...props }: React.ComponentProps<typeof Comma
       data-slot="command-input-wrapper"
       className="flex h-9 items-center gap-[var(--command-input-wrapper-gap)] border-b-[length:var(--command-input-wrapper-border-width)] border-[color:var(--command-input-wrapper-border)] px-[var(--command-input-wrapper-padding-x)]"
     >
-      <SearchIcon className="size-[var(--command-icon-size)] shrink-0 opacity-[var(--command-disabled-opacity)]" />
+      <SearchIcon className="size-[var(--command-icon-size)] shrink-0 text-[color:var(--command-input-wrapper-icon)]" />
       <CommandPrimitive.Input
         data-slot="command-input"
         className={cn(

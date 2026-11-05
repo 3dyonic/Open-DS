@@ -322,6 +322,7 @@ html[data-scheme="multi-brand"] [data-brand="aster"] {
   --combobox-chips-padding-x-2: var(--component-spacing-map-x2); /** Chips padding x 2 of the combobox. */
   --combobox-chips-focus-width: var(--border-width-focus); /** Focus ring width of the chips field. */
   --combobox-chips-border-width: var(--border-width-default); /** Border width of the chips field. */
+  --combobox-chips-focus-offset: var(--border-width-focus-offset); /** Gap between the chips field and its focus ring. */
   --combobox-chip-gap: var(--space-gap-tight); /** Chip gap of the combobox. */
   --combobox-chip-padding-x: var(--component-spacing-map-x2); /** Chip padding x of the combobox. */
   --combobox-chip-font-size: var(--type-caption-font-size); /** Chip font size of the combobox. */
@@ -329,7 +330,7 @@ html[data-scheme="multi-brand"] [data-brand="aster"] {
   --combobox-chip-font-weight: var(--type-label-font-weight); /** Chip font weight of the combobox. */
   --combobox-chip-disabled-opacity: var(--opacity-disabled); /** Chip disabled opacity of the combobox. */
   --combobox-chip-remove-pull: var(--component-spacing-map-x1); /** How far the chip's remove button sits into its padding. */
-  --combobox-disabled-opacity: var(--opacity-disabled); /** Disabled opacity of the combobox. */
+  --combobox-disabled-opacity: var(--opacity-disabled); /** Deprecated: use combobox/chip/remove/label (OD-243). Disabled opacity of the combobox. */
   --combobox-input-height: var(--size-control-default); /** Height of the search field in the combobox's list. */
   --combobox-input-margin: var(--component-spacing-map-x1); /** Inset of the search field in the combobox's panel, like a menu panel's padding. */
   --command-padding-x: var(--component-spacing-map-x2); /** Padding x of the command. */
@@ -343,7 +344,7 @@ html[data-scheme="multi-brand"] [data-brand="aster"] {
   --command-input-line-height: var(--type-body-line-height); /** Input line height of the command. */
   --command-input-disabled-opacity-disabled: var(--opacity-disabled); /** Input disabled opacity disabled of the command. */
   --command-icon-size: var(--size-icon); /** Icon size of the command. */
-  --command-disabled-opacity: var(--opacity-disabled); /** Disabled opacity of the command. */
+  --command-disabled-opacity: var(--opacity-disabled); /** Deprecated: use command/input/wrapper/icon (OD-243). Disabled opacity of the command. */
   --command-empty-padding-y: var(--component-spacing-map-x6); /** Empty padding y of the command. */
   --command-empty-font-size: var(--type-body-font-size); /** Empty font size of the command. */
   --command-empty-line-height: var(--type-body-line-height); /** Empty line height of the command. */
@@ -491,23 +492,6 @@ html[data-scheme="multi-brand"] [data-brand="aster"] {
   --input-group-padding-right: var(--component-spacing-map-x2); /** Padding right of the input group. */
   --input-group-padding-bottom: var(--space-inset-control-x); /** Padding bottom of the input group. */
   --input-group-padding-top: var(--space-inset-control-x); /** Padding top of the input group. */
-  --input-group-gap: var(--space-gap-default); /** Gap of the input group. */
-  --input-group-padding-y: var(--component-spacing-map-x2); /** Padding y of the input group. */
-  --input-group-font-size: var(--type-body-font-size); /** Font size of the input group. */
-  --input-group-line-height: var(--type-body-line-height); /** Line height of the input group. */
-  --input-group-font-weight: var(--type-label-font-weight); /** Font weight of the input group. */
-  --input-group-disabled-opacity-disabled: var(--opacity-disabled); /** Disabled opacity disabled of the input group. */
-  --input-group-icon-size: var(--size-icon); /** Icon size of the input group. */
-  --input-group-inline-start-padding-left: var(--space-inset-control-x); /** Inline start padding left of the input group. */
-  --input-group-inline-end-padding-right: var(--space-inset-control-x); /** Inline end padding right of the input group. */
-  --input-group-block-start-padding-x: var(--space-inset-control-x); /** Block start padding x of the input group. */
-  --input-group-block-start-padding-top: var(--space-inset-control-x); /** Block start padding top of the input group. */
-  --input-group-block-start-padding-top-2: var(--component-spacing-map-x3); /** Block start padding top 2 of the input group. */
-  --input-group-block-start-padding-bottom: var(--space-inset-control-x); /** Block start padding bottom of the input group. */
-  --input-group-block-end-padding-x: var(--space-inset-control-x); /** Block end padding x of the input group. */
-  --input-group-block-end-padding-bottom: var(--space-inset-control-x); /** Block end padding bottom of the input group. */
-  --input-group-block-end-padding-bottom-2: var(--component-spacing-map-x3); /** Block end padding bottom 2 of the input group. */
-  --input-group-block-end-padding-top: var(--space-inset-control-x); /** Block end padding top of the input group. */
   --input-group-xs-height: var(--size-control-compact); /** Xs height of the input group. */
   --input-group-xs-gap: var(--space-gap-tight); /** Xs gap of the input group. */
   --input-group-xs-padding-x: var(--component-spacing-map-x2); /** Xs padding x of the input group. */
@@ -516,12 +500,35 @@ html[data-scheme="multi-brand"] [data-brand="aster"] {
   --input-group-sm-padding-x: var(--component-spacing-map-x3); /** Sm padding x of the input group. */
   --input-group-icon-sm-size: var(--size-control-default); /** Icon sm size of the input group. */
   --input-group-control-padding-y: var(--space-inset-control-x); /** Control padding y of the input group. */
+  --input-group-addon-block-end-padding-bottom: var(--space-inset-control-x); /** Addon block end padding-bottom of the input group. */
+  --input-group-addon-block-end-padding-bottom-2: var(--component-spacing-map-x3); /** Addon block end padding-bottom-2 of the input group. */
+  --input-group-addon-block-end-padding-top: var(--space-inset-control-x); /** Addon block end padding-top of the input group. */
+  --input-group-addon-block-end-padding-x: var(--space-inset-control-x); /** Addon block end padding-x of the input group. */
+  --input-group-addon-block-start-padding-bottom: var(--space-inset-control-x); /** Addon block start padding-bottom of the input group. */
+  --input-group-addon-block-start-padding-top: var(--space-inset-control-x); /** Addon block start padding-top of the input group. */
+  --input-group-addon-block-start-padding-top-2: var(--component-spacing-map-x3); /** Addon block start padding-top-2 of the input group. */
+  --input-group-addon-block-start-padding-x: var(--space-inset-control-x); /** Addon block start padding-x of the input group. */
+  --input-group-addon-disabled-opacity-disabled: var(--opacity-disabled); /** Addon disabled-opacity-disabled of the input group. */
+  --input-group-addon-font-size: var(--type-body-font-size); /** Addon font-size of the input group. */
+  --input-group-addon-font-weight: var(--type-label-font-weight); /** Addon font-weight of the input group. */
+  --input-group-addon-gap: var(--space-gap-default); /** Addon gap of the input group. */
+  --input-group-addon-icon-size: var(--size-icon); /** Addon icon-size of the input group. */
+  --input-group-addon-inline-end-padding-right: var(--space-inset-control-x); /** Addon inline end padding-right of the input group. */
+  --input-group-addon-inline-start-padding-left: var(--space-inset-control-x); /** Addon inline start padding-left of the input group. */
+  --input-group-addon-line-height: var(--type-body-line-height); /** Addon line-height of the input group. */
+  --input-group-addon-padding-y: var(--component-spacing-map-x2); /** Addon padding-y of the input group. */
+  --input-group-border-width: var(--border-width-default); /** Border width of the input group. */
+  --input-group-focus-width: var(--border-width-focus); /** Focus ring width of the input group, like the input's. */
+  --input-group-focus-offset: var(--border-width-focus-offset); /** Gap between the input group and its focus ring. */
   --input-otp-gap: var(--space-gap-default); /** Gap of the input otp. */
   --input-otp-disabled-opacity: var(--opacity-disabled); /** Disabled opacity of the input otp. */
   --input-otp-slot-font-size: var(--type-body-font-size); /** Slot font size of the input otp. */
   --input-otp-slot-line-height: var(--type-body-line-height); /** Slot line height of the input otp. */
+  --input-otp-slot-border-width: var(--border-width-default); /** Border width of an OTP slot. */
+  --input-otp-slot-focus-width: var(--border-width-focus); /** Focus ring width of the active slot, like the input's. */
   --input-otp-height: var(--size-icon); /** Height of the input otp. */
   --input-otp-duration: var(--motion-duration-feedback); /** Duration of the input otp. */
+  --input-otp-caret-width: var(--border-width-default); /** Width of the fake caret: a line. */
   --item-font-size: var(--type-body-font-size); /** Font size of the item. */
   --item-line-height: var(--type-body-line-height); /** Line height of the item. */
   --item-duration: var(--motion-duration-feedback); /** Duration of the item. */
@@ -624,7 +631,6 @@ html[data-scheme="multi-brand"] [data-brand="aster"] {
   --message-author-font-weight: var(--type-label-font-weight); /** Author font weight of the message. */
   --message-time-font-size: var(--type-caption-font-size); /** Time font size of the message. */
   --message-time-line-height: var(--type-caption-line-height); /** Time line height of the message. */
-  --native-select-disabled-opacity: var(--opacity-disabled); /** Disabled opacity of the native select. */
   --native-select-padding-x: var(--space-inset-control-x); /** Padding x of the native select. */
   --native-select-padding-y: var(--component-spacing-map-x2); /** Padding y of the native select. */
   --native-select-padding-right: var(--component-spacing-map-x8); /** Padding right of the native select. */
@@ -635,6 +641,8 @@ html[data-scheme="multi-brand"] [data-brand="aster"] {
   --native-select-focus: var(--border-width-focus); /** Focus of the native select. */
   --native-select-icon-size: var(--size-icon); /** Icon size of the native select. */
   --native-select-focus-offset: var(--border-width-focus-offset); /** Gap between the native select and its focus ring. */
+  --native-select-border-width: var(--border-width-default); /** Border width of the native select. */
+  --native-select-wrapper-disabled-opacity: var(--opacity-disabled); /** The whole select dims when it can't be used. */
   --navigation-menu-list-gap: var(--space-gap-tight); /** List gap of the navigation menu. */
   --navigation-menu-duration: var(--motion-duration-feedback); /** Duration of the navigation menu. */
   --navigation-menu-content-padding: var(--component-spacing-map-x1); /** Content padding of the navigation menu, like every panel of options. */
@@ -793,6 +801,7 @@ html[data-scheme="multi-brand"] [data-brand="aster"] {
   --textarea-disabled-opacity-disabled: var(--opacity-disabled); /** Disabled opacity disabled of the textarea. */
   --textarea-focus: var(--border-width-focus); /** Focus of the textarea. */
   --textarea-focus-offset: var(--border-width-focus-offset); /** Gap between the textarea and its focus ring. */
+  --textarea-border-width: var(--border-width-default); /** Border width of the textarea. */
   --toast-gap: var(--space-gap-default); /** Gap of the toast. */
   --toast-padding: var(--space-inset-container); /** Padding of the toast. */
   --toast-border-width: var(--border-width-default); /** Border width of the toast. */
@@ -822,9 +831,9 @@ html[data-scheme="multi-brand"] [data-brand="aster"] {
   --button-focus-ring: var(--color-border-focus); /** Focus ring color on any button. */
   --button-font-family: var(--type-label-font-family); /** Font family of the button. */
   --input-border-focus: var(--color-border-focus); /** Input border when focused. */
+  --input-border-invalid: var(--color-status-danger); /** Input border when invalid. */
   --input-radius: var(--radius-control); /** Input corner radius. */
   --input-font-family: var(--type-body-font-family); /** Font family of the input. */
-  --input-danger: var(--color-status-danger); /** Danger of the input. */
   --control-checked: var(--color-action-primary); /** Fill of a checked checkbox or an on switch. */
   --control-radius: var(--radius-badge); /** Checkbox corner radius. */
   --badge-radius: var(--radius-badge); /** Badge corner radius. */
@@ -922,15 +931,33 @@ html[data-scheme="multi-brand"] [data-brand="aster"] {
   --input-group-radius: var(--radius-control); /** Radius of the input group. */
   --input-group-shadow: var(--elevation-card); /** Shadow of the input group. */
   --input-group-border-2: var(--color-border-focus); /** Border 2 of the input group. */
-  --input-group-focus-ring: var(--color-border-focus); /** Focus ring of the input group. */
+  --input-group-focus-ring-highlight: var(--color-border-focus); /** Focus ring of the input group when the keyboard is in it: the keyboard-focus rule, at full strength. */
   --input-group-border-invalid: var(--color-status-danger); /** Border invalid of the input group. */
   --input-group-focus-ring-invalid: var(--color-status-danger); /** Focus ring invalid of the input group. */
+  --input-group-gap: var(--input-group-addon-gap); /** Deprecated: use component.input-group.addon.gap (OD-243). Gap of the input group. */
+  --input-group-padding-y: var(--input-group-addon-padding-y); /** Deprecated: use component.input-group.addon.padding-y (OD-243). Padding y of the input group. */
+  --input-group-font-size: var(--input-group-addon-font-size); /** Deprecated: use component.input-group.addon.font-size (OD-243). Font size of the input group. */
+  --input-group-line-height: var(--input-group-addon-line-height); /** Deprecated: use component.input-group.addon.line-height (OD-243). Line height of the input group. */
+  --input-group-font-weight: var(--input-group-addon-font-weight); /** Deprecated: use component.input-group.addon.font-weight (OD-243). Font weight of the input group. */
+  --input-group-disabled-opacity-disabled: var(--input-group-addon-disabled-opacity-disabled); /** Deprecated: use component.input-group.addon.disabled-opacity-disabled (OD-243). Disabled opacity disabled of the input group. */
+  --input-group-icon-size: var(--input-group-addon-icon-size); /** Deprecated: use component.input-group.addon.icon-size (OD-243). Icon size of the input group. */
+  --input-group-inline-start-padding-left: var(--input-group-addon-inline-start-padding-left); /** Deprecated: use component.input-group.addon.inline.start.padding-left (OD-243). Inline start padding left of the input group. */
+  --input-group-inline-end-padding-right: var(--input-group-addon-inline-end-padding-right); /** Deprecated: use component.input-group.addon.inline.end.padding-right (OD-243). Inline end padding right of the input group. */
+  --input-group-block-start-padding-x: var(--input-group-addon-block-start-padding-x); /** Deprecated: use component.input-group.addon.block.start.padding-x (OD-243). Block start padding x of the input group. */
+  --input-group-block-start-padding-top: var(--input-group-addon-block-start-padding-top); /** Deprecated: use component.input-group.addon.block.start.padding-top (OD-243). Block start padding top of the input group. */
+  --input-group-block-start-padding-top-2: var(--input-group-addon-block-start-padding-top-2); /** Deprecated: use component.input-group.addon.block.start.padding-top-2 (OD-243). Block start padding top 2 of the input group. */
+  --input-group-block-start-padding-bottom: var(--input-group-addon-block-start-padding-bottom); /** Deprecated: use component.input-group.addon.block.start.padding-bottom (OD-243). Block start padding bottom of the input group. */
+  --input-group-block-end-padding-x: var(--input-group-addon-block-end-padding-x); /** Deprecated: use component.input-group.addon.block.end.padding-x (OD-243). Block end padding x of the input group. */
+  --input-group-block-end-padding-bottom: var(--input-group-addon-block-end-padding-bottom); /** Deprecated: use component.input-group.addon.block.end.padding-bottom (OD-243). Block end padding bottom of the input group. */
+  --input-group-block-end-padding-bottom-2: var(--input-group-addon-block-end-padding-bottom-2); /** Deprecated: use component.input-group.addon.block.end.padding-bottom-2 (OD-243). Block end padding bottom 2 of the input group. */
+  --input-group-block-end-padding-top: var(--input-group-addon-block-end-padding-top); /** Deprecated: use component.input-group.addon.block.end.padding-top (OD-243). Block end padding top of the input group. */
   --input-group-sm-radius: var(--radius-control); /** Sm radius of the input group. */
+  --input-otp-slot-border-highlight: var(--color-border-focus); /** Border of the slot the keyboard is on. */
   --input-otp-slot-shadow: var(--elevation-card); /** Slot shadow of the input otp. */
   --input-otp-slot-border-invalid: var(--color-status-danger); /** Slot border invalid of the input otp. */
-  --input-otp-slot-border-2: var(--color-border-focus); /** Slot border 2 of the input otp. */
-  --input-otp-slot-focus-ring: var(--color-border-focus); /** Slot focus ring of the input otp. */
+  --input-otp-slot-focus-ring-highlight: var(--color-border-focus); /** Focus ring of the slot the keyboard is on: full strength. */
   --input-otp-slot-focus-ring-invalid: var(--color-status-danger); /** Slot focus ring invalid of the input otp. */
+  --input-otp-slot-radius: var(--radius-control); /** Corner of the OTP group's ends: the slots read as one field, with a field's corner. */
   --item-radius: var(--radius-control); /** Radius of the item. */
   --item-border-focus: var(--color-border-focus); /** Border focus of the item. */
   --item-focus-ring-focus: var(--color-border-focus); /** Focus ring focus of the item. */
@@ -955,6 +982,7 @@ html[data-scheme="multi-brand"] [data-brand="aster"] {
   --menubar-sub-content-shadow: var(--elevation-overlay); /** Sub content shadow of the menubar. */
   --message-scroller-radius: var(--radius-control); /** Radius of the message scroller. */
   --message-scroller-focus-ring-focus: var(--color-border-focus); /** Focus ring focus of the message scroller. */
+  --native-select-disabled-opacity: var(--native-select-wrapper-disabled-opacity); /** Deprecated: use component.native-select.wrapper.disabled-opacity (OD-243). Disabled opacity of the native select. */
   --native-select-radius: var(--radius-control); /** Radius of the native select. */
   --native-select-shadow: var(--elevation-card); /** Shadow of the native select. */
   --native-select-background: var(--color-action-primary); /** Background of the native select. */
@@ -1070,11 +1098,15 @@ html[data-scheme="multi-brand"] [data-brand="aster"] {
   --color-disabled-text: #64748B; /** Text and icons of a control that cannot be used right now. */
   --color-disabled-surface: #F1F5F9; /** The fill of a control that cannot be used right now. */
   --color-disabled-border: #E2E8F0; /** The edge of a control that cannot be used right now. */
+  --input-danger: var(--input-border-invalid); /** Deprecated: use component.input.border.invalid (OD-243). Danger of the input. */
   --combobox-chips-focus-ring-focus: var(--combobox-chips-focus-ring-highlight); /** Deprecated: use component.combobox.chips.focus-ring.highlight (OD-243). Chips focus ring focus of the combobox. */
   --context-menu-item-label: var(--context-menu-item-label-destructive); /** Deprecated: use component.context-menu.item.label.destructive (OD-243). Item label of the context menu. */
   --context-menu-item-background-focus-2: var(--context-menu-item-background-destructive-highlight); /** Deprecated: use component.context-menu.item.background.destructive-highlight (OD-243). Item background focus 2 of the context menu. */
   --context-menu-item-label-focus-2: var(--context-menu-item-label-destructive-highlight); /** Deprecated: use component.context-menu.item.label.destructive-highlight (OD-243). Item label focus 2 of the context menu. */
   --dropdown-menu-label: var(--dropdown-menu-item-label-destructive); /** Deprecated: use component.dropdown-menu.item.label.destructive (OD-241). Label of the dropdown menu. */
+  --input-group-focus-ring: var(--input-group-focus-ring-highlight); /** Deprecated: use component.input-group.focus-ring.highlight (OD-243). Focus ring of the input group. */
+  --input-otp-slot-border-2: var(--input-otp-slot-border-highlight); /** Deprecated: use component.input-otp.slot.border.highlight (OD-243). Slot border 2 of the input otp. */
+  --input-otp-slot-focus-ring: var(--input-otp-slot-focus-ring-highlight); /** Deprecated: use component.input-otp.slot.focus-ring.highlight (OD-243). Slot focus ring of the input otp. */
   --menubar-item-label: var(--menubar-item-label-destructive); /** Deprecated: use component.menubar.item.label.destructive (OD-243). Item label of the menubar. */
   --menubar-item-background-focus-2: var(--menubar-item-background-destructive-highlight); /** Deprecated: use component.menubar.item.background.destructive-highlight (OD-243). Item background focus 2 of the menubar. */
   --menubar-item-label-focus-2: var(--menubar-item-label-destructive-highlight); /** Deprecated: use component.menubar.item.label.destructive-highlight (OD-243). Item label focus 2 of the menubar. */
@@ -1103,7 +1135,7 @@ html[data-scheme="multi-brand"] [data-brand="aster"] {
   --input-disabled-background: var(--color-disabled-surface); /** Fill of a disabled input. */
   --input-disabled-border: var(--color-disabled-border); /** Border of a disabled input. */
   --input-disabled-text: var(--color-disabled-text); /** Text in a disabled input. */
-  --input-canvas: var(--color-surface-canvas); /** Canvas of the input. */
+  --input-focus-ring-offset: var(--color-surface-canvas); /** The gap behind the input's focus ring: the page canvas. */
   --control-track: var(--color-border-strong); /** Track of an off switch. */
   --control-thumb: var(--color-surface-default); /** Switch thumb and checkmark color. */
   --badge-neutral-background: var(--color-surface-sunken); /** Neutral badge fill. */
@@ -1185,14 +1217,18 @@ html[data-scheme="multi-brand"] [data-brand="aster"] {
   --combobox-empty-label: var(--color-text-muted); /** Empty label of the combobox. */
   --combobox-separator-background: var(--color-border-default); /** Separator background of the combobox. */
   --combobox-chips-border: var(--color-border-strong); /** Chips border of the combobox. */
+  --combobox-chips-focus-ring-offset: var(--color-surface-canvas); /** The gap behind the chips field's focus ring: the page canvas. */
   --combobox-chip-background: var(--color-surface-sunken); /** Chip background of the combobox. */
   --combobox-chip-label: var(--color-text-primary); /** Chip label of the combobox. */
+  --combobox-chip-remove-label: var(--color-text-muted); /** The chip's remove icon: quiet, the muted text color. */
+  --combobox-chip-remove-label-hover: var(--color-text-primary); /** The chip's remove icon on hover. */
   --combobox-input-border: var(--color-border-default); /** Border of the search field in the combobox's list. */
   --combobox-input-background: var(--color-surface-sunken); /** Background of the search field in the combobox's list: a well. */
   --command-background: var(--color-surface-raised); /** Background of the command. */
   --command-label: var(--color-text-primary); /** Label of the command. */
   --command-label-2: var(--color-text-muted); /** Label 2 of the command. */
   --command-input-wrapper-border: var(--color-border-default); /** The line under the command's search field. */
+  --command-input-wrapper-icon: var(--color-text-muted); /** The search icon of the command: quiet, the muted text color. */
   --command-input-label-placeholder: var(--color-text-muted); /** Input label placeholder of the command. */
   --command-group-label: var(--color-text-primary); /** Group label of the command. */
   --command-group-label-2: var(--color-text-muted); /** Group label 2 of the command. */
@@ -1250,7 +1286,8 @@ html[data-scheme="multi-brand"] [data-brand="aster"] {
   --hover-card-content-label: var(--color-text-primary); /** Content label of the hover card. */
   --hover-card-content-border: var(--color-border-default); /** Content border of the hover card. */
   --input-group-border: var(--color-border-strong); /** Border of the input group. */
-  --input-group-label: var(--color-text-muted); /** Label of the input group. */
+  --input-group-addon-label: var(--color-text-muted); /** Addon label of the input group. */
+  --input-group-focus-ring-offset: var(--color-surface-canvas); /** The gap behind the input group's focus ring: the page canvas. */
   --input-otp-slot-border: var(--color-border-strong); /** Slot border of the input otp. */
   --input-otp-background: var(--color-text-primary); /** Background of the input otp. */
   --item-focus-ring-offset-focus: var(--color-surface-canvas); /** Focus ring offset focus of the item. */
@@ -1297,7 +1334,7 @@ html[data-scheme="multi-brand"] [data-brand="aster"] {
   --native-select-label: var(--color-text-on-action); /** Label of the native select. */
   --native-select-label-placeholder: var(--color-text-muted); /** Label placeholder of the native select. */
   --native-select-focus-ring-offset-focus: var(--color-surface-canvas); /** Focus ring offset focus of the native select. */
-  --native-select-label-2: var(--color-text-muted); /** Label 2 of the native select. */
+  --native-select-icon-label: var(--color-text-muted); /** The chevron of the native select: the muted text color. */
   --navigation-menu-content-background: var(--color-surface-raised); /** Content background of the navigation menu, like every floating panel's. */
   --navigation-menu-content-label: var(--color-text-primary); /** Content text of the navigation menu. */
   --navigation-menu-content-border: var(--color-border-default); /** Content border of the navigation menu. */
@@ -1406,6 +1443,7 @@ html[data-scheme="multi-brand"] [data-brand="aster"] {
   --toggle-outline-label-hover: var(--color-text-primary); /** Outline label hover of the toggle. */
   --toggle-outline-background-hover: var(--color-surface-highlight); /** Outline toggle background under the pointer. */
   --toggle-background-hover: var(--color-surface-highlight); /** Background under the pointer, of the toggle. */
+  --input-canvas: var(--input-focus-ring-offset); /** Deprecated: use component.input.focus-ring-offset (OD-243). Canvas of the input. */
   --tooltip-background: var(--tooltip-content-background); /** Deprecated: use component.tooltip.content.background (OD-243). Tooltip fill. */
   --tooltip-label: var(--tooltip-content-label); /** Deprecated: use component.tooltip.content.label (OD-243). Tooltip text. */
   --combobox-content-focus-ring: var(--combobox-content-border); /** Deprecated: use component.combobox.content.border (OD-243). Content focus ring of the combobox. */
@@ -1420,11 +1458,13 @@ html[data-scheme="multi-brand"] [data-brand="aster"] {
   --dialog-sunken: var(--dialog-close-background-hover); /** Deprecated: use component.dialog.close.background.hover (OD-241). Sunken of the dialog. */
   --dropdown-menu-item-sunken: var(--dropdown-menu-item-background-highlight); /** Deprecated: use component.dropdown-menu.item.background.highlight (OD-241). Item sunken of the dropdown menu. */
   --dropdown-menu-background: var(--dropdown-menu-separator-background); /** Deprecated: use component.dropdown-menu.separator.background (OD-241). Background of the dropdown menu. */
+  --input-group-label: var(--input-group-addon-label); /** Deprecated: use component.input-group.addon.label (OD-243). Label of the input group. */
   --menubar-trigger-background-focus: var(--menubar-trigger-background-highlight); /** Deprecated: use component.menubar.trigger.background.highlight (OD-241). Trigger background focus of the menubar. */
   --menubar-item-background-focus: var(--menubar-item-background-highlight); /** Deprecated: use component.menubar.item.background.highlight (OD-241). Item background focus of the menubar. */
   --menubar-checkbox-item-background-focus: var(--menubar-checkbox-item-background-highlight); /** Deprecated: use component.menubar.checkbox.item.background.highlight (OD-241). Checkbox item background focus of the menubar. */
   --menubar-radio-item-background-focus: var(--menubar-radio-item-background-highlight); /** Deprecated: use component.menubar.radio.item.background.highlight (OD-241). Radio item background focus of the menubar. */
   --menubar-sub-trigger-background-focus: var(--menubar-sub-trigger-background-highlight); /** Deprecated: use component.menubar.sub.trigger.background.highlight (OD-241). Sub trigger background focus of the menubar. */
+  --native-select-label-2: var(--native-select-icon-label); /** Deprecated: use component.native-select.icon.label (OD-243). Label 2 of the native select. */
   --navigation-menu-background: var(--navigation-menu-trigger-background); /** Deprecated: use component.navigation-menu.trigger.background (OD-243). Background of the navigation menu. */
   --navigation-menu-background-hover: var(--navigation-menu-trigger-background-hover); /** Deprecated: use component.navigation-menu.trigger.background.hover (OD-241). Background hover of the navigation menu. */
   --navigation-menu-label-hover: var(--navigation-menu-trigger-label-hover); /** Deprecated: use component.navigation-menu.trigger.label.hover (OD-243). Label hover of the navigation menu. */
@@ -1772,6 +1812,7 @@ html[data-scheme="multi-brand"][data-theme="dark"] [data-brand="aster"],
   --combobox-chips-padding-x-2: var(--component-spacing-map-x2); /** Chips padding x 2 of the combobox. */
   --combobox-chips-focus-width: var(--border-width-focus); /** Focus ring width of the chips field. */
   --combobox-chips-border-width: var(--border-width-default); /** Border width of the chips field. */
+  --combobox-chips-focus-offset: var(--border-width-focus-offset); /** Gap between the chips field and its focus ring. */
   --combobox-chip-gap: var(--space-gap-tight); /** Chip gap of the combobox. */
   --combobox-chip-padding-x: var(--component-spacing-map-x2); /** Chip padding x of the combobox. */
   --combobox-chip-font-size: var(--type-caption-font-size); /** Chip font size of the combobox. */
@@ -1779,7 +1820,7 @@ html[data-scheme="multi-brand"][data-theme="dark"] [data-brand="aster"],
   --combobox-chip-font-weight: var(--type-label-font-weight); /** Chip font weight of the combobox. */
   --combobox-chip-disabled-opacity: var(--opacity-disabled); /** Chip disabled opacity of the combobox. */
   --combobox-chip-remove-pull: var(--component-spacing-map-x1); /** How far the chip's remove button sits into its padding. */
-  --combobox-disabled-opacity: var(--opacity-disabled); /** Disabled opacity of the combobox. */
+  --combobox-disabled-opacity: var(--opacity-disabled); /** Deprecated: use combobox/chip/remove/label (OD-243). Disabled opacity of the combobox. */
   --combobox-input-height: var(--size-control-default); /** Height of the search field in the combobox's list. */
   --combobox-input-margin: var(--component-spacing-map-x1); /** Inset of the search field in the combobox's panel, like a menu panel's padding. */
   --command-padding-x: var(--component-spacing-map-x2); /** Padding x of the command. */
@@ -1793,7 +1834,7 @@ html[data-scheme="multi-brand"][data-theme="dark"] [data-brand="aster"],
   --command-input-line-height: var(--type-body-line-height); /** Input line height of the command. */
   --command-input-disabled-opacity-disabled: var(--opacity-disabled); /** Input disabled opacity disabled of the command. */
   --command-icon-size: var(--size-icon); /** Icon size of the command. */
-  --command-disabled-opacity: var(--opacity-disabled); /** Disabled opacity of the command. */
+  --command-disabled-opacity: var(--opacity-disabled); /** Deprecated: use command/input/wrapper/icon (OD-243). Disabled opacity of the command. */
   --command-empty-padding-y: var(--component-spacing-map-x6); /** Empty padding y of the command. */
   --command-empty-font-size: var(--type-body-font-size); /** Empty font size of the command. */
   --command-empty-line-height: var(--type-body-line-height); /** Empty line height of the command. */
@@ -1941,23 +1982,6 @@ html[data-scheme="multi-brand"][data-theme="dark"] [data-brand="aster"],
   --input-group-padding-right: var(--component-spacing-map-x2); /** Padding right of the input group. */
   --input-group-padding-bottom: var(--space-inset-control-x); /** Padding bottom of the input group. */
   --input-group-padding-top: var(--space-inset-control-x); /** Padding top of the input group. */
-  --input-group-gap: var(--space-gap-default); /** Gap of the input group. */
-  --input-group-padding-y: var(--component-spacing-map-x2); /** Padding y of the input group. */
-  --input-group-font-size: var(--type-body-font-size); /** Font size of the input group. */
-  --input-group-line-height: var(--type-body-line-height); /** Line height of the input group. */
-  --input-group-font-weight: var(--type-label-font-weight); /** Font weight of the input group. */
-  --input-group-disabled-opacity-disabled: var(--opacity-disabled); /** Disabled opacity disabled of the input group. */
-  --input-group-icon-size: var(--size-icon); /** Icon size of the input group. */
-  --input-group-inline-start-padding-left: var(--space-inset-control-x); /** Inline start padding left of the input group. */
-  --input-group-inline-end-padding-right: var(--space-inset-control-x); /** Inline end padding right of the input group. */
-  --input-group-block-start-padding-x: var(--space-inset-control-x); /** Block start padding x of the input group. */
-  --input-group-block-start-padding-top: var(--space-inset-control-x); /** Block start padding top of the input group. */
-  --input-group-block-start-padding-top-2: var(--component-spacing-map-x3); /** Block start padding top 2 of the input group. */
-  --input-group-block-start-padding-bottom: var(--space-inset-control-x); /** Block start padding bottom of the input group. */
-  --input-group-block-end-padding-x: var(--space-inset-control-x); /** Block end padding x of the input group. */
-  --input-group-block-end-padding-bottom: var(--space-inset-control-x); /** Block end padding bottom of the input group. */
-  --input-group-block-end-padding-bottom-2: var(--component-spacing-map-x3); /** Block end padding bottom 2 of the input group. */
-  --input-group-block-end-padding-top: var(--space-inset-control-x); /** Block end padding top of the input group. */
   --input-group-xs-height: var(--size-control-compact); /** Xs height of the input group. */
   --input-group-xs-gap: var(--space-gap-tight); /** Xs gap of the input group. */
   --input-group-xs-padding-x: var(--component-spacing-map-x2); /** Xs padding x of the input group. */
@@ -1966,12 +1990,35 @@ html[data-scheme="multi-brand"][data-theme="dark"] [data-brand="aster"],
   --input-group-sm-padding-x: var(--component-spacing-map-x3); /** Sm padding x of the input group. */
   --input-group-icon-sm-size: var(--size-control-default); /** Icon sm size of the input group. */
   --input-group-control-padding-y: var(--space-inset-control-x); /** Control padding y of the input group. */
+  --input-group-addon-block-end-padding-bottom: var(--space-inset-control-x); /** Addon block end padding-bottom of the input group. */
+  --input-group-addon-block-end-padding-bottom-2: var(--component-spacing-map-x3); /** Addon block end padding-bottom-2 of the input group. */
+  --input-group-addon-block-end-padding-top: var(--space-inset-control-x); /** Addon block end padding-top of the input group. */
+  --input-group-addon-block-end-padding-x: var(--space-inset-control-x); /** Addon block end padding-x of the input group. */
+  --input-group-addon-block-start-padding-bottom: var(--space-inset-control-x); /** Addon block start padding-bottom of the input group. */
+  --input-group-addon-block-start-padding-top: var(--space-inset-control-x); /** Addon block start padding-top of the input group. */
+  --input-group-addon-block-start-padding-top-2: var(--component-spacing-map-x3); /** Addon block start padding-top-2 of the input group. */
+  --input-group-addon-block-start-padding-x: var(--space-inset-control-x); /** Addon block start padding-x of the input group. */
+  --input-group-addon-disabled-opacity-disabled: var(--opacity-disabled); /** Addon disabled-opacity-disabled of the input group. */
+  --input-group-addon-font-size: var(--type-body-font-size); /** Addon font-size of the input group. */
+  --input-group-addon-font-weight: var(--type-label-font-weight); /** Addon font-weight of the input group. */
+  --input-group-addon-gap: var(--space-gap-default); /** Addon gap of the input group. */
+  --input-group-addon-icon-size: var(--size-icon); /** Addon icon-size of the input group. */
+  --input-group-addon-inline-end-padding-right: var(--space-inset-control-x); /** Addon inline end padding-right of the input group. */
+  --input-group-addon-inline-start-padding-left: var(--space-inset-control-x); /** Addon inline start padding-left of the input group. */
+  --input-group-addon-line-height: var(--type-body-line-height); /** Addon line-height of the input group. */
+  --input-group-addon-padding-y: var(--component-spacing-map-x2); /** Addon padding-y of the input group. */
+  --input-group-border-width: var(--border-width-default); /** Border width of the input group. */
+  --input-group-focus-width: var(--border-width-focus); /** Focus ring width of the input group, like the input's. */
+  --input-group-focus-offset: var(--border-width-focus-offset); /** Gap between the input group and its focus ring. */
   --input-otp-gap: var(--space-gap-default); /** Gap of the input otp. */
   --input-otp-disabled-opacity: var(--opacity-disabled); /** Disabled opacity of the input otp. */
   --input-otp-slot-font-size: var(--type-body-font-size); /** Slot font size of the input otp. */
   --input-otp-slot-line-height: var(--type-body-line-height); /** Slot line height of the input otp. */
+  --input-otp-slot-border-width: var(--border-width-default); /** Border width of an OTP slot. */
+  --input-otp-slot-focus-width: var(--border-width-focus); /** Focus ring width of the active slot, like the input's. */
   --input-otp-height: var(--size-icon); /** Height of the input otp. */
   --input-otp-duration: var(--motion-duration-feedback); /** Duration of the input otp. */
+  --input-otp-caret-width: var(--border-width-default); /** Width of the fake caret: a line. */
   --item-font-size: var(--type-body-font-size); /** Font size of the item. */
   --item-line-height: var(--type-body-line-height); /** Line height of the item. */
   --item-duration: var(--motion-duration-feedback); /** Duration of the item. */
@@ -2074,7 +2121,6 @@ html[data-scheme="multi-brand"][data-theme="dark"] [data-brand="aster"],
   --message-author-font-weight: var(--type-label-font-weight); /** Author font weight of the message. */
   --message-time-font-size: var(--type-caption-font-size); /** Time font size of the message. */
   --message-time-line-height: var(--type-caption-line-height); /** Time line height of the message. */
-  --native-select-disabled-opacity: var(--opacity-disabled); /** Disabled opacity of the native select. */
   --native-select-padding-x: var(--space-inset-control-x); /** Padding x of the native select. */
   --native-select-padding-y: var(--component-spacing-map-x2); /** Padding y of the native select. */
   --native-select-padding-right: var(--component-spacing-map-x8); /** Padding right of the native select. */
@@ -2085,6 +2131,8 @@ html[data-scheme="multi-brand"][data-theme="dark"] [data-brand="aster"],
   --native-select-focus: var(--border-width-focus); /** Focus of the native select. */
   --native-select-icon-size: var(--size-icon); /** Icon size of the native select. */
   --native-select-focus-offset: var(--border-width-focus-offset); /** Gap between the native select and its focus ring. */
+  --native-select-border-width: var(--border-width-default); /** Border width of the native select. */
+  --native-select-wrapper-disabled-opacity: var(--opacity-disabled); /** The whole select dims when it can't be used. */
   --navigation-menu-list-gap: var(--space-gap-tight); /** List gap of the navigation menu. */
   --navigation-menu-duration: var(--motion-duration-feedback); /** Duration of the navigation menu. */
   --navigation-menu-content-padding: var(--component-spacing-map-x1); /** Content padding of the navigation menu, like every panel of options. */
@@ -2243,6 +2291,7 @@ html[data-scheme="multi-brand"][data-theme="dark"] [data-brand="aster"],
   --textarea-disabled-opacity-disabled: var(--opacity-disabled); /** Disabled opacity disabled of the textarea. */
   --textarea-focus: var(--border-width-focus); /** Focus of the textarea. */
   --textarea-focus-offset: var(--border-width-focus-offset); /** Gap between the textarea and its focus ring. */
+  --textarea-border-width: var(--border-width-default); /** Border width of the textarea. */
   --toast-gap: var(--space-gap-default); /** Gap of the toast. */
   --toast-padding: var(--space-inset-container); /** Padding of the toast. */
   --toast-border-width: var(--border-width-default); /** Border width of the toast. */
@@ -2272,9 +2321,9 @@ html[data-scheme="multi-brand"][data-theme="dark"] [data-brand="aster"],
   --button-focus-ring: var(--color-border-focus); /** Focus ring color on any button. */
   --button-font-family: var(--type-label-font-family); /** Font family of the button. */
   --input-border-focus: var(--color-border-focus); /** Input border when focused. */
+  --input-border-invalid: var(--color-status-danger); /** Input border when invalid. */
   --input-radius: var(--radius-control); /** Input corner radius. */
   --input-font-family: var(--type-body-font-family); /** Font family of the input. */
-  --input-danger: var(--color-status-danger); /** Danger of the input. */
   --control-checked: var(--color-action-primary); /** Fill of a checked checkbox or an on switch. */
   --control-radius: var(--radius-badge); /** Checkbox corner radius. */
   --badge-radius: var(--radius-badge); /** Badge corner radius. */
@@ -2372,15 +2421,33 @@ html[data-scheme="multi-brand"][data-theme="dark"] [data-brand="aster"],
   --input-group-radius: var(--radius-control); /** Radius of the input group. */
   --input-group-shadow: var(--elevation-card); /** Shadow of the input group. */
   --input-group-border-2: var(--color-border-focus); /** Border 2 of the input group. */
-  --input-group-focus-ring: var(--color-border-focus); /** Focus ring of the input group. */
+  --input-group-focus-ring-highlight: var(--color-border-focus); /** Focus ring of the input group when the keyboard is in it: the keyboard-focus rule, at full strength. */
   --input-group-border-invalid: var(--color-status-danger); /** Border invalid of the input group. */
   --input-group-focus-ring-invalid: var(--color-status-danger); /** Focus ring invalid of the input group. */
+  --input-group-gap: var(--input-group-addon-gap); /** Deprecated: use component.input-group.addon.gap (OD-243). Gap of the input group. */
+  --input-group-padding-y: var(--input-group-addon-padding-y); /** Deprecated: use component.input-group.addon.padding-y (OD-243). Padding y of the input group. */
+  --input-group-font-size: var(--input-group-addon-font-size); /** Deprecated: use component.input-group.addon.font-size (OD-243). Font size of the input group. */
+  --input-group-line-height: var(--input-group-addon-line-height); /** Deprecated: use component.input-group.addon.line-height (OD-243). Line height of the input group. */
+  --input-group-font-weight: var(--input-group-addon-font-weight); /** Deprecated: use component.input-group.addon.font-weight (OD-243). Font weight of the input group. */
+  --input-group-disabled-opacity-disabled: var(--input-group-addon-disabled-opacity-disabled); /** Deprecated: use component.input-group.addon.disabled-opacity-disabled (OD-243). Disabled opacity disabled of the input group. */
+  --input-group-icon-size: var(--input-group-addon-icon-size); /** Deprecated: use component.input-group.addon.icon-size (OD-243). Icon size of the input group. */
+  --input-group-inline-start-padding-left: var(--input-group-addon-inline-start-padding-left); /** Deprecated: use component.input-group.addon.inline.start.padding-left (OD-243). Inline start padding left of the input group. */
+  --input-group-inline-end-padding-right: var(--input-group-addon-inline-end-padding-right); /** Deprecated: use component.input-group.addon.inline.end.padding-right (OD-243). Inline end padding right of the input group. */
+  --input-group-block-start-padding-x: var(--input-group-addon-block-start-padding-x); /** Deprecated: use component.input-group.addon.block.start.padding-x (OD-243). Block start padding x of the input group. */
+  --input-group-block-start-padding-top: var(--input-group-addon-block-start-padding-top); /** Deprecated: use component.input-group.addon.block.start.padding-top (OD-243). Block start padding top of the input group. */
+  --input-group-block-start-padding-top-2: var(--input-group-addon-block-start-padding-top-2); /** Deprecated: use component.input-group.addon.block.start.padding-top-2 (OD-243). Block start padding top 2 of the input group. */
+  --input-group-block-start-padding-bottom: var(--input-group-addon-block-start-padding-bottom); /** Deprecated: use component.input-group.addon.block.start.padding-bottom (OD-243). Block start padding bottom of the input group. */
+  --input-group-block-end-padding-x: var(--input-group-addon-block-end-padding-x); /** Deprecated: use component.input-group.addon.block.end.padding-x (OD-243). Block end padding x of the input group. */
+  --input-group-block-end-padding-bottom: var(--input-group-addon-block-end-padding-bottom); /** Deprecated: use component.input-group.addon.block.end.padding-bottom (OD-243). Block end padding bottom of the input group. */
+  --input-group-block-end-padding-bottom-2: var(--input-group-addon-block-end-padding-bottom-2); /** Deprecated: use component.input-group.addon.block.end.padding-bottom-2 (OD-243). Block end padding bottom 2 of the input group. */
+  --input-group-block-end-padding-top: var(--input-group-addon-block-end-padding-top); /** Deprecated: use component.input-group.addon.block.end.padding-top (OD-243). Block end padding top of the input group. */
   --input-group-sm-radius: var(--radius-control); /** Sm radius of the input group. */
+  --input-otp-slot-border-highlight: var(--color-border-focus); /** Border of the slot the keyboard is on. */
   --input-otp-slot-shadow: var(--elevation-card); /** Slot shadow of the input otp. */
   --input-otp-slot-border-invalid: var(--color-status-danger); /** Slot border invalid of the input otp. */
-  --input-otp-slot-border-2: var(--color-border-focus); /** Slot border 2 of the input otp. */
-  --input-otp-slot-focus-ring: var(--color-border-focus); /** Slot focus ring of the input otp. */
+  --input-otp-slot-focus-ring-highlight: var(--color-border-focus); /** Focus ring of the slot the keyboard is on: full strength. */
   --input-otp-slot-focus-ring-invalid: var(--color-status-danger); /** Slot focus ring invalid of the input otp. */
+  --input-otp-slot-radius: var(--radius-control); /** Corner of the OTP group's ends: the slots read as one field, with a field's corner. */
   --item-radius: var(--radius-control); /** Radius of the item. */
   --item-border-focus: var(--color-border-focus); /** Border focus of the item. */
   --item-focus-ring-focus: var(--color-border-focus); /** Focus ring focus of the item. */
@@ -2405,6 +2472,7 @@ html[data-scheme="multi-brand"][data-theme="dark"] [data-brand="aster"],
   --menubar-sub-content-shadow: var(--elevation-overlay); /** Sub content shadow of the menubar. */
   --message-scroller-radius: var(--radius-control); /** Radius of the message scroller. */
   --message-scroller-focus-ring-focus: var(--color-border-focus); /** Focus ring focus of the message scroller. */
+  --native-select-disabled-opacity: var(--native-select-wrapper-disabled-opacity); /** Deprecated: use component.native-select.wrapper.disabled-opacity (OD-243). Disabled opacity of the native select. */
   --native-select-radius: var(--radius-control); /** Radius of the native select. */
   --native-select-shadow: var(--elevation-card); /** Shadow of the native select. */
   --native-select-background: var(--color-action-primary); /** Background of the native select. */
@@ -2520,11 +2588,15 @@ html[data-scheme="multi-brand"][data-theme="dark"] [data-brand="aster"],
   --color-disabled-text: #CBD5E1; /** Text and icons of a control that cannot be used right now. */
   --color-disabled-surface: #1E293B; /** The fill of a control that cannot be used right now. */
   --color-disabled-border: #334155; /** The edge of a control that cannot be used right now. */
+  --input-danger: var(--input-border-invalid); /** Deprecated: use component.input.border.invalid (OD-243). Danger of the input. */
   --combobox-chips-focus-ring-focus: var(--combobox-chips-focus-ring-highlight); /** Deprecated: use component.combobox.chips.focus-ring.highlight (OD-243). Chips focus ring focus of the combobox. */
   --context-menu-item-label: var(--context-menu-item-label-destructive); /** Deprecated: use component.context-menu.item.label.destructive (OD-243). Item label of the context menu. */
   --context-menu-item-background-focus-2: var(--context-menu-item-background-destructive-highlight); /** Deprecated: use component.context-menu.item.background.destructive-highlight (OD-243). Item background focus 2 of the context menu. */
   --context-menu-item-label-focus-2: var(--context-menu-item-label-destructive-highlight); /** Deprecated: use component.context-menu.item.label.destructive-highlight (OD-243). Item label focus 2 of the context menu. */
   --dropdown-menu-label: var(--dropdown-menu-item-label-destructive); /** Deprecated: use component.dropdown-menu.item.label.destructive (OD-241). Label of the dropdown menu. */
+  --input-group-focus-ring: var(--input-group-focus-ring-highlight); /** Deprecated: use component.input-group.focus-ring.highlight (OD-243). Focus ring of the input group. */
+  --input-otp-slot-border-2: var(--input-otp-slot-border-highlight); /** Deprecated: use component.input-otp.slot.border.highlight (OD-243). Slot border 2 of the input otp. */
+  --input-otp-slot-focus-ring: var(--input-otp-slot-focus-ring-highlight); /** Deprecated: use component.input-otp.slot.focus-ring.highlight (OD-243). Slot focus ring of the input otp. */
   --menubar-item-label: var(--menubar-item-label-destructive); /** Deprecated: use component.menubar.item.label.destructive (OD-243). Item label of the menubar. */
   --menubar-item-background-focus-2: var(--menubar-item-background-destructive-highlight); /** Deprecated: use component.menubar.item.background.destructive-highlight (OD-243). Item background focus 2 of the menubar. */
   --menubar-item-label-focus-2: var(--menubar-item-label-destructive-highlight); /** Deprecated: use component.menubar.item.label.destructive-highlight (OD-243). Item label focus 2 of the menubar. */
@@ -2553,7 +2625,7 @@ html[data-scheme="multi-brand"][data-theme="dark"] [data-brand="aster"],
   --input-disabled-background: var(--color-disabled-surface); /** Fill of a disabled input. */
   --input-disabled-border: var(--color-disabled-border); /** Border of a disabled input. */
   --input-disabled-text: var(--color-disabled-text); /** Text in a disabled input. */
-  --input-canvas: var(--color-surface-canvas); /** Canvas of the input. */
+  --input-focus-ring-offset: var(--color-surface-canvas); /** The gap behind the input's focus ring: the page canvas. */
   --control-track: var(--color-border-strong); /** Track of an off switch. */
   --control-thumb: var(--color-surface-default); /** Switch thumb and checkmark color. */
   --badge-neutral-background: var(--color-surface-sunken); /** Neutral badge fill. */
@@ -2635,14 +2707,18 @@ html[data-scheme="multi-brand"][data-theme="dark"] [data-brand="aster"],
   --combobox-empty-label: var(--color-text-muted); /** Empty label of the combobox. */
   --combobox-separator-background: var(--color-border-default); /** Separator background of the combobox. */
   --combobox-chips-border: var(--color-border-strong); /** Chips border of the combobox. */
+  --combobox-chips-focus-ring-offset: var(--color-surface-canvas); /** The gap behind the chips field's focus ring: the page canvas. */
   --combobox-chip-background: var(--color-surface-sunken); /** Chip background of the combobox. */
   --combobox-chip-label: var(--color-text-primary); /** Chip label of the combobox. */
+  --combobox-chip-remove-label: var(--color-text-muted); /** The chip's remove icon: quiet, the muted text color. */
+  --combobox-chip-remove-label-hover: var(--color-text-primary); /** The chip's remove icon on hover. */
   --combobox-input-border: var(--color-border-default); /** Border of the search field in the combobox's list. */
   --combobox-input-background: var(--color-surface-sunken); /** Background of the search field in the combobox's list: a well. */
   --command-background: var(--color-surface-raised); /** Background of the command. */
   --command-label: var(--color-text-primary); /** Label of the command. */
   --command-label-2: var(--color-text-muted); /** Label 2 of the command. */
   --command-input-wrapper-border: var(--color-border-default); /** The line under the command's search field. */
+  --command-input-wrapper-icon: var(--color-text-muted); /** The search icon of the command: quiet, the muted text color. */
   --command-input-label-placeholder: var(--color-text-muted); /** Input label placeholder of the command. */
   --command-group-label: var(--color-text-primary); /** Group label of the command. */
   --command-group-label-2: var(--color-text-muted); /** Group label 2 of the command. */
@@ -2700,7 +2776,8 @@ html[data-scheme="multi-brand"][data-theme="dark"] [data-brand="aster"],
   --hover-card-content-label: var(--color-text-primary); /** Content label of the hover card. */
   --hover-card-content-border: var(--color-border-default); /** Content border of the hover card. */
   --input-group-border: var(--color-border-strong); /** Border of the input group. */
-  --input-group-label: var(--color-text-muted); /** Label of the input group. */
+  --input-group-addon-label: var(--color-text-muted); /** Addon label of the input group. */
+  --input-group-focus-ring-offset: var(--color-surface-canvas); /** The gap behind the input group's focus ring: the page canvas. */
   --input-otp-slot-border: var(--color-border-strong); /** Slot border of the input otp. */
   --input-otp-background: var(--color-text-primary); /** Background of the input otp. */
   --item-focus-ring-offset-focus: var(--color-surface-canvas); /** Focus ring offset focus of the item. */
@@ -2747,7 +2824,7 @@ html[data-scheme="multi-brand"][data-theme="dark"] [data-brand="aster"],
   --native-select-label: var(--color-text-on-action); /** Label of the native select. */
   --native-select-label-placeholder: var(--color-text-muted); /** Label placeholder of the native select. */
   --native-select-focus-ring-offset-focus: var(--color-surface-canvas); /** Focus ring offset focus of the native select. */
-  --native-select-label-2: var(--color-text-muted); /** Label 2 of the native select. */
+  --native-select-icon-label: var(--color-text-muted); /** The chevron of the native select: the muted text color. */
   --navigation-menu-content-background: var(--color-surface-raised); /** Content background of the navigation menu, like every floating panel's. */
   --navigation-menu-content-label: var(--color-text-primary); /** Content text of the navigation menu. */
   --navigation-menu-content-border: var(--color-border-default); /** Content border of the navigation menu. */
@@ -2856,6 +2933,7 @@ html[data-scheme="multi-brand"][data-theme="dark"] [data-brand="aster"],
   --toggle-outline-label-hover: var(--color-text-primary); /** Outline label hover of the toggle. */
   --toggle-outline-background-hover: var(--color-surface-highlight); /** Outline toggle background under the pointer. */
   --toggle-background-hover: var(--color-surface-highlight); /** Background under the pointer, of the toggle. */
+  --input-canvas: var(--input-focus-ring-offset); /** Deprecated: use component.input.focus-ring-offset (OD-243). Canvas of the input. */
   --tooltip-background: var(--tooltip-content-background); /** Deprecated: use component.tooltip.content.background (OD-243). Tooltip fill. */
   --tooltip-label: var(--tooltip-content-label); /** Deprecated: use component.tooltip.content.label (OD-243). Tooltip text. */
   --combobox-content-focus-ring: var(--combobox-content-border); /** Deprecated: use component.combobox.content.border (OD-243). Content focus ring of the combobox. */
@@ -2870,11 +2948,13 @@ html[data-scheme="multi-brand"][data-theme="dark"] [data-brand="aster"],
   --dialog-sunken: var(--dialog-close-background-hover); /** Deprecated: use component.dialog.close.background.hover (OD-241). Sunken of the dialog. */
   --dropdown-menu-item-sunken: var(--dropdown-menu-item-background-highlight); /** Deprecated: use component.dropdown-menu.item.background.highlight (OD-241). Item sunken of the dropdown menu. */
   --dropdown-menu-background: var(--dropdown-menu-separator-background); /** Deprecated: use component.dropdown-menu.separator.background (OD-241). Background of the dropdown menu. */
+  --input-group-label: var(--input-group-addon-label); /** Deprecated: use component.input-group.addon.label (OD-243). Label of the input group. */
   --menubar-trigger-background-focus: var(--menubar-trigger-background-highlight); /** Deprecated: use component.menubar.trigger.background.highlight (OD-241). Trigger background focus of the menubar. */
   --menubar-item-background-focus: var(--menubar-item-background-highlight); /** Deprecated: use component.menubar.item.background.highlight (OD-241). Item background focus of the menubar. */
   --menubar-checkbox-item-background-focus: var(--menubar-checkbox-item-background-highlight); /** Deprecated: use component.menubar.checkbox.item.background.highlight (OD-241). Checkbox item background focus of the menubar. */
   --menubar-radio-item-background-focus: var(--menubar-radio-item-background-highlight); /** Deprecated: use component.menubar.radio.item.background.highlight (OD-241). Radio item background focus of the menubar. */
   --menubar-sub-trigger-background-focus: var(--menubar-sub-trigger-background-highlight); /** Deprecated: use component.menubar.sub.trigger.background.highlight (OD-241). Sub trigger background focus of the menubar. */
+  --native-select-label-2: var(--native-select-icon-label); /** Deprecated: use component.native-select.icon.label (OD-243). Label 2 of the native select. */
   --navigation-menu-background: var(--navigation-menu-trigger-background); /** Deprecated: use component.navigation-menu.trigger.background (OD-243). Background of the navigation menu. */
   --navigation-menu-background-hover: var(--navigation-menu-trigger-background-hover); /** Deprecated: use component.navigation-menu.trigger.background.hover (OD-241). Background hover of the navigation menu. */
   --navigation-menu-label-hover: var(--navigation-menu-trigger-label-hover); /** Deprecated: use component.navigation-menu.trigger.label.hover (OD-243). Label hover of the navigation menu. */
@@ -3220,6 +3300,7 @@ html[data-scheme="multi-brand"] [data-brand="birch"] {
   --combobox-chips-padding-x-2: var(--component-spacing-map-x2); /** Chips padding x 2 of the combobox. */
   --combobox-chips-focus-width: var(--border-width-focus); /** Focus ring width of the chips field. */
   --combobox-chips-border-width: var(--border-width-default); /** Border width of the chips field. */
+  --combobox-chips-focus-offset: var(--border-width-focus-offset); /** Gap between the chips field and its focus ring. */
   --combobox-chip-gap: var(--space-gap-tight); /** Chip gap of the combobox. */
   --combobox-chip-padding-x: var(--component-spacing-map-x2); /** Chip padding x of the combobox. */
   --combobox-chip-font-size: var(--type-caption-font-size); /** Chip font size of the combobox. */
@@ -3227,7 +3308,7 @@ html[data-scheme="multi-brand"] [data-brand="birch"] {
   --combobox-chip-font-weight: var(--type-label-font-weight); /** Chip font weight of the combobox. */
   --combobox-chip-disabled-opacity: var(--opacity-disabled); /** Chip disabled opacity of the combobox. */
   --combobox-chip-remove-pull: var(--component-spacing-map-x1); /** How far the chip's remove button sits into its padding. */
-  --combobox-disabled-opacity: var(--opacity-disabled); /** Disabled opacity of the combobox. */
+  --combobox-disabled-opacity: var(--opacity-disabled); /** Deprecated: use combobox/chip/remove/label (OD-243). Disabled opacity of the combobox. */
   --combobox-input-height: var(--size-control-default); /** Height of the search field in the combobox's list. */
   --combobox-input-margin: var(--component-spacing-map-x1); /** Inset of the search field in the combobox's panel, like a menu panel's padding. */
   --command-padding-x: var(--component-spacing-map-x2); /** Padding x of the command. */
@@ -3241,7 +3322,7 @@ html[data-scheme="multi-brand"] [data-brand="birch"] {
   --command-input-line-height: var(--type-body-line-height); /** Input line height of the command. */
   --command-input-disabled-opacity-disabled: var(--opacity-disabled); /** Input disabled opacity disabled of the command. */
   --command-icon-size: var(--size-icon); /** Icon size of the command. */
-  --command-disabled-opacity: var(--opacity-disabled); /** Disabled opacity of the command. */
+  --command-disabled-opacity: var(--opacity-disabled); /** Deprecated: use command/input/wrapper/icon (OD-243). Disabled opacity of the command. */
   --command-empty-padding-y: var(--component-spacing-map-x6); /** Empty padding y of the command. */
   --command-empty-font-size: var(--type-body-font-size); /** Empty font size of the command. */
   --command-empty-line-height: var(--type-body-line-height); /** Empty line height of the command. */
@@ -3389,23 +3470,6 @@ html[data-scheme="multi-brand"] [data-brand="birch"] {
   --input-group-padding-right: var(--component-spacing-map-x2); /** Padding right of the input group. */
   --input-group-padding-bottom: var(--space-inset-control-x); /** Padding bottom of the input group. */
   --input-group-padding-top: var(--space-inset-control-x); /** Padding top of the input group. */
-  --input-group-gap: var(--space-gap-default); /** Gap of the input group. */
-  --input-group-padding-y: var(--component-spacing-map-x2); /** Padding y of the input group. */
-  --input-group-font-size: var(--type-body-font-size); /** Font size of the input group. */
-  --input-group-line-height: var(--type-body-line-height); /** Line height of the input group. */
-  --input-group-font-weight: var(--type-label-font-weight); /** Font weight of the input group. */
-  --input-group-disabled-opacity-disabled: var(--opacity-disabled); /** Disabled opacity disabled of the input group. */
-  --input-group-icon-size: var(--size-icon); /** Icon size of the input group. */
-  --input-group-inline-start-padding-left: var(--space-inset-control-x); /** Inline start padding left of the input group. */
-  --input-group-inline-end-padding-right: var(--space-inset-control-x); /** Inline end padding right of the input group. */
-  --input-group-block-start-padding-x: var(--space-inset-control-x); /** Block start padding x of the input group. */
-  --input-group-block-start-padding-top: var(--space-inset-control-x); /** Block start padding top of the input group. */
-  --input-group-block-start-padding-top-2: var(--component-spacing-map-x3); /** Block start padding top 2 of the input group. */
-  --input-group-block-start-padding-bottom: var(--space-inset-control-x); /** Block start padding bottom of the input group. */
-  --input-group-block-end-padding-x: var(--space-inset-control-x); /** Block end padding x of the input group. */
-  --input-group-block-end-padding-bottom: var(--space-inset-control-x); /** Block end padding bottom of the input group. */
-  --input-group-block-end-padding-bottom-2: var(--component-spacing-map-x3); /** Block end padding bottom 2 of the input group. */
-  --input-group-block-end-padding-top: var(--space-inset-control-x); /** Block end padding top of the input group. */
   --input-group-xs-height: var(--size-control-compact); /** Xs height of the input group. */
   --input-group-xs-gap: var(--space-gap-tight); /** Xs gap of the input group. */
   --input-group-xs-padding-x: var(--component-spacing-map-x2); /** Xs padding x of the input group. */
@@ -3414,12 +3478,35 @@ html[data-scheme="multi-brand"] [data-brand="birch"] {
   --input-group-sm-padding-x: var(--component-spacing-map-x3); /** Sm padding x of the input group. */
   --input-group-icon-sm-size: var(--size-control-default); /** Icon sm size of the input group. */
   --input-group-control-padding-y: var(--space-inset-control-x); /** Control padding y of the input group. */
+  --input-group-addon-block-end-padding-bottom: var(--space-inset-control-x); /** Addon block end padding-bottom of the input group. */
+  --input-group-addon-block-end-padding-bottom-2: var(--component-spacing-map-x3); /** Addon block end padding-bottom-2 of the input group. */
+  --input-group-addon-block-end-padding-top: var(--space-inset-control-x); /** Addon block end padding-top of the input group. */
+  --input-group-addon-block-end-padding-x: var(--space-inset-control-x); /** Addon block end padding-x of the input group. */
+  --input-group-addon-block-start-padding-bottom: var(--space-inset-control-x); /** Addon block start padding-bottom of the input group. */
+  --input-group-addon-block-start-padding-top: var(--space-inset-control-x); /** Addon block start padding-top of the input group. */
+  --input-group-addon-block-start-padding-top-2: var(--component-spacing-map-x3); /** Addon block start padding-top-2 of the input group. */
+  --input-group-addon-block-start-padding-x: var(--space-inset-control-x); /** Addon block start padding-x of the input group. */
+  --input-group-addon-disabled-opacity-disabled: var(--opacity-disabled); /** Addon disabled-opacity-disabled of the input group. */
+  --input-group-addon-font-size: var(--type-body-font-size); /** Addon font-size of the input group. */
+  --input-group-addon-font-weight: var(--type-label-font-weight); /** Addon font-weight of the input group. */
+  --input-group-addon-gap: var(--space-gap-default); /** Addon gap of the input group. */
+  --input-group-addon-icon-size: var(--size-icon); /** Addon icon-size of the input group. */
+  --input-group-addon-inline-end-padding-right: var(--space-inset-control-x); /** Addon inline end padding-right of the input group. */
+  --input-group-addon-inline-start-padding-left: var(--space-inset-control-x); /** Addon inline start padding-left of the input group. */
+  --input-group-addon-line-height: var(--type-body-line-height); /** Addon line-height of the input group. */
+  --input-group-addon-padding-y: var(--component-spacing-map-x2); /** Addon padding-y of the input group. */
+  --input-group-border-width: var(--border-width-default); /** Border width of the input group. */
+  --input-group-focus-width: var(--border-width-focus); /** Focus ring width of the input group, like the input's. */
+  --input-group-focus-offset: var(--border-width-focus-offset); /** Gap between the input group and its focus ring. */
   --input-otp-gap: var(--space-gap-default); /** Gap of the input otp. */
   --input-otp-disabled-opacity: var(--opacity-disabled); /** Disabled opacity of the input otp. */
   --input-otp-slot-font-size: var(--type-body-font-size); /** Slot font size of the input otp. */
   --input-otp-slot-line-height: var(--type-body-line-height); /** Slot line height of the input otp. */
+  --input-otp-slot-border-width: var(--border-width-default); /** Border width of an OTP slot. */
+  --input-otp-slot-focus-width: var(--border-width-focus); /** Focus ring width of the active slot, like the input's. */
   --input-otp-height: var(--size-icon); /** Height of the input otp. */
   --input-otp-duration: var(--motion-duration-feedback); /** Duration of the input otp. */
+  --input-otp-caret-width: var(--border-width-default); /** Width of the fake caret: a line. */
   --item-font-size: var(--type-body-font-size); /** Font size of the item. */
   --item-line-height: var(--type-body-line-height); /** Line height of the item. */
   --item-duration: var(--motion-duration-feedback); /** Duration of the item. */
@@ -3522,7 +3609,6 @@ html[data-scheme="multi-brand"] [data-brand="birch"] {
   --message-author-font-weight: var(--type-label-font-weight); /** Author font weight of the message. */
   --message-time-font-size: var(--type-caption-font-size); /** Time font size of the message. */
   --message-time-line-height: var(--type-caption-line-height); /** Time line height of the message. */
-  --native-select-disabled-opacity: var(--opacity-disabled); /** Disabled opacity of the native select. */
   --native-select-padding-x: var(--space-inset-control-x); /** Padding x of the native select. */
   --native-select-padding-y: var(--component-spacing-map-x2); /** Padding y of the native select. */
   --native-select-padding-right: var(--component-spacing-map-x8); /** Padding right of the native select. */
@@ -3533,6 +3619,8 @@ html[data-scheme="multi-brand"] [data-brand="birch"] {
   --native-select-focus: var(--border-width-focus); /** Focus of the native select. */
   --native-select-icon-size: var(--size-icon); /** Icon size of the native select. */
   --native-select-focus-offset: var(--border-width-focus-offset); /** Gap between the native select and its focus ring. */
+  --native-select-border-width: var(--border-width-default); /** Border width of the native select. */
+  --native-select-wrapper-disabled-opacity: var(--opacity-disabled); /** The whole select dims when it can't be used. */
   --navigation-menu-list-gap: var(--space-gap-tight); /** List gap of the navigation menu. */
   --navigation-menu-duration: var(--motion-duration-feedback); /** Duration of the navigation menu. */
   --navigation-menu-content-padding: var(--component-spacing-map-x1); /** Content padding of the navigation menu, like every panel of options. */
@@ -3691,6 +3779,7 @@ html[data-scheme="multi-brand"] [data-brand="birch"] {
   --textarea-disabled-opacity-disabled: var(--opacity-disabled); /** Disabled opacity disabled of the textarea. */
   --textarea-focus: var(--border-width-focus); /** Focus of the textarea. */
   --textarea-focus-offset: var(--border-width-focus-offset); /** Gap between the textarea and its focus ring. */
+  --textarea-border-width: var(--border-width-default); /** Border width of the textarea. */
   --toast-gap: var(--space-gap-default); /** Gap of the toast. */
   --toast-padding: var(--space-inset-container); /** Padding of the toast. */
   --toast-border-width: var(--border-width-default); /** Border width of the toast. */
@@ -3720,9 +3809,9 @@ html[data-scheme="multi-brand"] [data-brand="birch"] {
   --button-focus-ring: var(--color-border-focus); /** Focus ring color on any button. */
   --button-font-family: var(--type-label-font-family); /** Font family of the button. */
   --input-border-focus: var(--color-border-focus); /** Input border when focused. */
+  --input-border-invalid: var(--color-status-danger); /** Input border when invalid. */
   --input-radius: var(--radius-control); /** Input corner radius. */
   --input-font-family: var(--type-body-font-family); /** Font family of the input. */
-  --input-danger: var(--color-status-danger); /** Danger of the input. */
   --control-checked: var(--color-action-primary); /** Fill of a checked checkbox or an on switch. */
   --control-radius: var(--radius-badge); /** Checkbox corner radius. */
   --badge-radius: var(--radius-badge); /** Badge corner radius. */
@@ -3820,15 +3909,33 @@ html[data-scheme="multi-brand"] [data-brand="birch"] {
   --input-group-radius: var(--radius-control); /** Radius of the input group. */
   --input-group-shadow: var(--elevation-card); /** Shadow of the input group. */
   --input-group-border-2: var(--color-border-focus); /** Border 2 of the input group. */
-  --input-group-focus-ring: var(--color-border-focus); /** Focus ring of the input group. */
+  --input-group-focus-ring-highlight: var(--color-border-focus); /** Focus ring of the input group when the keyboard is in it: the keyboard-focus rule, at full strength. */
   --input-group-border-invalid: var(--color-status-danger); /** Border invalid of the input group. */
   --input-group-focus-ring-invalid: var(--color-status-danger); /** Focus ring invalid of the input group. */
+  --input-group-gap: var(--input-group-addon-gap); /** Deprecated: use component.input-group.addon.gap (OD-243). Gap of the input group. */
+  --input-group-padding-y: var(--input-group-addon-padding-y); /** Deprecated: use component.input-group.addon.padding-y (OD-243). Padding y of the input group. */
+  --input-group-font-size: var(--input-group-addon-font-size); /** Deprecated: use component.input-group.addon.font-size (OD-243). Font size of the input group. */
+  --input-group-line-height: var(--input-group-addon-line-height); /** Deprecated: use component.input-group.addon.line-height (OD-243). Line height of the input group. */
+  --input-group-font-weight: var(--input-group-addon-font-weight); /** Deprecated: use component.input-group.addon.font-weight (OD-243). Font weight of the input group. */
+  --input-group-disabled-opacity-disabled: var(--input-group-addon-disabled-opacity-disabled); /** Deprecated: use component.input-group.addon.disabled-opacity-disabled (OD-243). Disabled opacity disabled of the input group. */
+  --input-group-icon-size: var(--input-group-addon-icon-size); /** Deprecated: use component.input-group.addon.icon-size (OD-243). Icon size of the input group. */
+  --input-group-inline-start-padding-left: var(--input-group-addon-inline-start-padding-left); /** Deprecated: use component.input-group.addon.inline.start.padding-left (OD-243). Inline start padding left of the input group. */
+  --input-group-inline-end-padding-right: var(--input-group-addon-inline-end-padding-right); /** Deprecated: use component.input-group.addon.inline.end.padding-right (OD-243). Inline end padding right of the input group. */
+  --input-group-block-start-padding-x: var(--input-group-addon-block-start-padding-x); /** Deprecated: use component.input-group.addon.block.start.padding-x (OD-243). Block start padding x of the input group. */
+  --input-group-block-start-padding-top: var(--input-group-addon-block-start-padding-top); /** Deprecated: use component.input-group.addon.block.start.padding-top (OD-243). Block start padding top of the input group. */
+  --input-group-block-start-padding-top-2: var(--input-group-addon-block-start-padding-top-2); /** Deprecated: use component.input-group.addon.block.start.padding-top-2 (OD-243). Block start padding top 2 of the input group. */
+  --input-group-block-start-padding-bottom: var(--input-group-addon-block-start-padding-bottom); /** Deprecated: use component.input-group.addon.block.start.padding-bottom (OD-243). Block start padding bottom of the input group. */
+  --input-group-block-end-padding-x: var(--input-group-addon-block-end-padding-x); /** Deprecated: use component.input-group.addon.block.end.padding-x (OD-243). Block end padding x of the input group. */
+  --input-group-block-end-padding-bottom: var(--input-group-addon-block-end-padding-bottom); /** Deprecated: use component.input-group.addon.block.end.padding-bottom (OD-243). Block end padding bottom of the input group. */
+  --input-group-block-end-padding-bottom-2: var(--input-group-addon-block-end-padding-bottom-2); /** Deprecated: use component.input-group.addon.block.end.padding-bottom-2 (OD-243). Block end padding bottom 2 of the input group. */
+  --input-group-block-end-padding-top: var(--input-group-addon-block-end-padding-top); /** Deprecated: use component.input-group.addon.block.end.padding-top (OD-243). Block end padding top of the input group. */
   --input-group-sm-radius: var(--radius-control); /** Sm radius of the input group. */
+  --input-otp-slot-border-highlight: var(--color-border-focus); /** Border of the slot the keyboard is on. */
   --input-otp-slot-shadow: var(--elevation-card); /** Slot shadow of the input otp. */
   --input-otp-slot-border-invalid: var(--color-status-danger); /** Slot border invalid of the input otp. */
-  --input-otp-slot-border-2: var(--color-border-focus); /** Slot border 2 of the input otp. */
-  --input-otp-slot-focus-ring: var(--color-border-focus); /** Slot focus ring of the input otp. */
+  --input-otp-slot-focus-ring-highlight: var(--color-border-focus); /** Focus ring of the slot the keyboard is on: full strength. */
   --input-otp-slot-focus-ring-invalid: var(--color-status-danger); /** Slot focus ring invalid of the input otp. */
+  --input-otp-slot-radius: var(--radius-control); /** Corner of the OTP group's ends: the slots read as one field, with a field's corner. */
   --item-radius: var(--radius-control); /** Radius of the item. */
   --item-border-focus: var(--color-border-focus); /** Border focus of the item. */
   --item-focus-ring-focus: var(--color-border-focus); /** Focus ring focus of the item. */
@@ -3853,6 +3960,7 @@ html[data-scheme="multi-brand"] [data-brand="birch"] {
   --menubar-sub-content-shadow: var(--elevation-overlay); /** Sub content shadow of the menubar. */
   --message-scroller-radius: var(--radius-control); /** Radius of the message scroller. */
   --message-scroller-focus-ring-focus: var(--color-border-focus); /** Focus ring focus of the message scroller. */
+  --native-select-disabled-opacity: var(--native-select-wrapper-disabled-opacity); /** Deprecated: use component.native-select.wrapper.disabled-opacity (OD-243). Disabled opacity of the native select. */
   --native-select-radius: var(--radius-control); /** Radius of the native select. */
   --native-select-shadow: var(--elevation-card); /** Shadow of the native select. */
   --native-select-background: var(--color-action-primary); /** Background of the native select. */
@@ -3968,11 +4076,15 @@ html[data-scheme="multi-brand"] [data-brand="birch"] {
   --color-disabled-text: #64748B; /** Text and icons of a control that cannot be used right now. */
   --color-disabled-surface: #F1F5F9; /** The fill of a control that cannot be used right now. */
   --color-disabled-border: #E2E8F0; /** The edge of a control that cannot be used right now. */
+  --input-danger: var(--input-border-invalid); /** Deprecated: use component.input.border.invalid (OD-243). Danger of the input. */
   --combobox-chips-focus-ring-focus: var(--combobox-chips-focus-ring-highlight); /** Deprecated: use component.combobox.chips.focus-ring.highlight (OD-243). Chips focus ring focus of the combobox. */
   --context-menu-item-label: var(--context-menu-item-label-destructive); /** Deprecated: use component.context-menu.item.label.destructive (OD-243). Item label of the context menu. */
   --context-menu-item-background-focus-2: var(--context-menu-item-background-destructive-highlight); /** Deprecated: use component.context-menu.item.background.destructive-highlight (OD-243). Item background focus 2 of the context menu. */
   --context-menu-item-label-focus-2: var(--context-menu-item-label-destructive-highlight); /** Deprecated: use component.context-menu.item.label.destructive-highlight (OD-243). Item label focus 2 of the context menu. */
   --dropdown-menu-label: var(--dropdown-menu-item-label-destructive); /** Deprecated: use component.dropdown-menu.item.label.destructive (OD-241). Label of the dropdown menu. */
+  --input-group-focus-ring: var(--input-group-focus-ring-highlight); /** Deprecated: use component.input-group.focus-ring.highlight (OD-243). Focus ring of the input group. */
+  --input-otp-slot-border-2: var(--input-otp-slot-border-highlight); /** Deprecated: use component.input-otp.slot.border.highlight (OD-243). Slot border 2 of the input otp. */
+  --input-otp-slot-focus-ring: var(--input-otp-slot-focus-ring-highlight); /** Deprecated: use component.input-otp.slot.focus-ring.highlight (OD-243). Slot focus ring of the input otp. */
   --menubar-item-label: var(--menubar-item-label-destructive); /** Deprecated: use component.menubar.item.label.destructive (OD-243). Item label of the menubar. */
   --menubar-item-background-focus-2: var(--menubar-item-background-destructive-highlight); /** Deprecated: use component.menubar.item.background.destructive-highlight (OD-243). Item background focus 2 of the menubar. */
   --menubar-item-label-focus-2: var(--menubar-item-label-destructive-highlight); /** Deprecated: use component.menubar.item.label.destructive-highlight (OD-243). Item label focus 2 of the menubar. */
@@ -4001,7 +4113,7 @@ html[data-scheme="multi-brand"] [data-brand="birch"] {
   --input-disabled-background: var(--color-disabled-surface); /** Fill of a disabled input. */
   --input-disabled-border: var(--color-disabled-border); /** Border of a disabled input. */
   --input-disabled-text: var(--color-disabled-text); /** Text in a disabled input. */
-  --input-canvas: var(--color-surface-canvas); /** Canvas of the input. */
+  --input-focus-ring-offset: var(--color-surface-canvas); /** The gap behind the input's focus ring: the page canvas. */
   --control-track: var(--color-border-strong); /** Track of an off switch. */
   --control-thumb: var(--color-surface-default); /** Switch thumb and checkmark color. */
   --badge-neutral-background: var(--color-surface-sunken); /** Neutral badge fill. */
@@ -4083,14 +4195,18 @@ html[data-scheme="multi-brand"] [data-brand="birch"] {
   --combobox-empty-label: var(--color-text-muted); /** Empty label of the combobox. */
   --combobox-separator-background: var(--color-border-default); /** Separator background of the combobox. */
   --combobox-chips-border: var(--color-border-strong); /** Chips border of the combobox. */
+  --combobox-chips-focus-ring-offset: var(--color-surface-canvas); /** The gap behind the chips field's focus ring: the page canvas. */
   --combobox-chip-background: var(--color-surface-sunken); /** Chip background of the combobox. */
   --combobox-chip-label: var(--color-text-primary); /** Chip label of the combobox. */
+  --combobox-chip-remove-label: var(--color-text-muted); /** The chip's remove icon: quiet, the muted text color. */
+  --combobox-chip-remove-label-hover: var(--color-text-primary); /** The chip's remove icon on hover. */
   --combobox-input-border: var(--color-border-default); /** Border of the search field in the combobox's list. */
   --combobox-input-background: var(--color-surface-sunken); /** Background of the search field in the combobox's list: a well. */
   --command-background: var(--color-surface-raised); /** Background of the command. */
   --command-label: var(--color-text-primary); /** Label of the command. */
   --command-label-2: var(--color-text-muted); /** Label 2 of the command. */
   --command-input-wrapper-border: var(--color-border-default); /** The line under the command's search field. */
+  --command-input-wrapper-icon: var(--color-text-muted); /** The search icon of the command: quiet, the muted text color. */
   --command-input-label-placeholder: var(--color-text-muted); /** Input label placeholder of the command. */
   --command-group-label: var(--color-text-primary); /** Group label of the command. */
   --command-group-label-2: var(--color-text-muted); /** Group label 2 of the command. */
@@ -4148,7 +4264,8 @@ html[data-scheme="multi-brand"] [data-brand="birch"] {
   --hover-card-content-label: var(--color-text-primary); /** Content label of the hover card. */
   --hover-card-content-border: var(--color-border-default); /** Content border of the hover card. */
   --input-group-border: var(--color-border-strong); /** Border of the input group. */
-  --input-group-label: var(--color-text-muted); /** Label of the input group. */
+  --input-group-addon-label: var(--color-text-muted); /** Addon label of the input group. */
+  --input-group-focus-ring-offset: var(--color-surface-canvas); /** The gap behind the input group's focus ring: the page canvas. */
   --input-otp-slot-border: var(--color-border-strong); /** Slot border of the input otp. */
   --input-otp-background: var(--color-text-primary); /** Background of the input otp. */
   --item-focus-ring-offset-focus: var(--color-surface-canvas); /** Focus ring offset focus of the item. */
@@ -4195,7 +4312,7 @@ html[data-scheme="multi-brand"] [data-brand="birch"] {
   --native-select-label: var(--color-text-on-action); /** Label of the native select. */
   --native-select-label-placeholder: var(--color-text-muted); /** Label placeholder of the native select. */
   --native-select-focus-ring-offset-focus: var(--color-surface-canvas); /** Focus ring offset focus of the native select. */
-  --native-select-label-2: var(--color-text-muted); /** Label 2 of the native select. */
+  --native-select-icon-label: var(--color-text-muted); /** The chevron of the native select: the muted text color. */
   --navigation-menu-content-background: var(--color-surface-raised); /** Content background of the navigation menu, like every floating panel's. */
   --navigation-menu-content-label: var(--color-text-primary); /** Content text of the navigation menu. */
   --navigation-menu-content-border: var(--color-border-default); /** Content border of the navigation menu. */
@@ -4304,6 +4421,7 @@ html[data-scheme="multi-brand"] [data-brand="birch"] {
   --toggle-outline-label-hover: var(--color-text-primary); /** Outline label hover of the toggle. */
   --toggle-outline-background-hover: var(--color-surface-highlight); /** Outline toggle background under the pointer. */
   --toggle-background-hover: var(--color-surface-highlight); /** Background under the pointer, of the toggle. */
+  --input-canvas: var(--input-focus-ring-offset); /** Deprecated: use component.input.focus-ring-offset (OD-243). Canvas of the input. */
   --tooltip-background: var(--tooltip-content-background); /** Deprecated: use component.tooltip.content.background (OD-243). Tooltip fill. */
   --tooltip-label: var(--tooltip-content-label); /** Deprecated: use component.tooltip.content.label (OD-243). Tooltip text. */
   --combobox-content-focus-ring: var(--combobox-content-border); /** Deprecated: use component.combobox.content.border (OD-243). Content focus ring of the combobox. */
@@ -4318,11 +4436,13 @@ html[data-scheme="multi-brand"] [data-brand="birch"] {
   --dialog-sunken: var(--dialog-close-background-hover); /** Deprecated: use component.dialog.close.background.hover (OD-241). Sunken of the dialog. */
   --dropdown-menu-item-sunken: var(--dropdown-menu-item-background-highlight); /** Deprecated: use component.dropdown-menu.item.background.highlight (OD-241). Item sunken of the dropdown menu. */
   --dropdown-menu-background: var(--dropdown-menu-separator-background); /** Deprecated: use component.dropdown-menu.separator.background (OD-241). Background of the dropdown menu. */
+  --input-group-label: var(--input-group-addon-label); /** Deprecated: use component.input-group.addon.label (OD-243). Label of the input group. */
   --menubar-trigger-background-focus: var(--menubar-trigger-background-highlight); /** Deprecated: use component.menubar.trigger.background.highlight (OD-241). Trigger background focus of the menubar. */
   --menubar-item-background-focus: var(--menubar-item-background-highlight); /** Deprecated: use component.menubar.item.background.highlight (OD-241). Item background focus of the menubar. */
   --menubar-checkbox-item-background-focus: var(--menubar-checkbox-item-background-highlight); /** Deprecated: use component.menubar.checkbox.item.background.highlight (OD-241). Checkbox item background focus of the menubar. */
   --menubar-radio-item-background-focus: var(--menubar-radio-item-background-highlight); /** Deprecated: use component.menubar.radio.item.background.highlight (OD-241). Radio item background focus of the menubar. */
   --menubar-sub-trigger-background-focus: var(--menubar-sub-trigger-background-highlight); /** Deprecated: use component.menubar.sub.trigger.background.highlight (OD-241). Sub trigger background focus of the menubar. */
+  --native-select-label-2: var(--native-select-icon-label); /** Deprecated: use component.native-select.icon.label (OD-243). Label 2 of the native select. */
   --navigation-menu-background: var(--navigation-menu-trigger-background); /** Deprecated: use component.navigation-menu.trigger.background (OD-243). Background of the navigation menu. */
   --navigation-menu-background-hover: var(--navigation-menu-trigger-background-hover); /** Deprecated: use component.navigation-menu.trigger.background.hover (OD-241). Background hover of the navigation menu. */
   --navigation-menu-label-hover: var(--navigation-menu-trigger-label-hover); /** Deprecated: use component.navigation-menu.trigger.label.hover (OD-243). Label hover of the navigation menu. */
@@ -4669,6 +4789,7 @@ html[data-scheme="multi-brand"][data-theme="dark"] [data-brand="birch"],
   --combobox-chips-padding-x-2: var(--component-spacing-map-x2); /** Chips padding x 2 of the combobox. */
   --combobox-chips-focus-width: var(--border-width-focus); /** Focus ring width of the chips field. */
   --combobox-chips-border-width: var(--border-width-default); /** Border width of the chips field. */
+  --combobox-chips-focus-offset: var(--border-width-focus-offset); /** Gap between the chips field and its focus ring. */
   --combobox-chip-gap: var(--space-gap-tight); /** Chip gap of the combobox. */
   --combobox-chip-padding-x: var(--component-spacing-map-x2); /** Chip padding x of the combobox. */
   --combobox-chip-font-size: var(--type-caption-font-size); /** Chip font size of the combobox. */
@@ -4676,7 +4797,7 @@ html[data-scheme="multi-brand"][data-theme="dark"] [data-brand="birch"],
   --combobox-chip-font-weight: var(--type-label-font-weight); /** Chip font weight of the combobox. */
   --combobox-chip-disabled-opacity: var(--opacity-disabled); /** Chip disabled opacity of the combobox. */
   --combobox-chip-remove-pull: var(--component-spacing-map-x1); /** How far the chip's remove button sits into its padding. */
-  --combobox-disabled-opacity: var(--opacity-disabled); /** Disabled opacity of the combobox. */
+  --combobox-disabled-opacity: var(--opacity-disabled); /** Deprecated: use combobox/chip/remove/label (OD-243). Disabled opacity of the combobox. */
   --combobox-input-height: var(--size-control-default); /** Height of the search field in the combobox's list. */
   --combobox-input-margin: var(--component-spacing-map-x1); /** Inset of the search field in the combobox's panel, like a menu panel's padding. */
   --command-padding-x: var(--component-spacing-map-x2); /** Padding x of the command. */
@@ -4690,7 +4811,7 @@ html[data-scheme="multi-brand"][data-theme="dark"] [data-brand="birch"],
   --command-input-line-height: var(--type-body-line-height); /** Input line height of the command. */
   --command-input-disabled-opacity-disabled: var(--opacity-disabled); /** Input disabled opacity disabled of the command. */
   --command-icon-size: var(--size-icon); /** Icon size of the command. */
-  --command-disabled-opacity: var(--opacity-disabled); /** Disabled opacity of the command. */
+  --command-disabled-opacity: var(--opacity-disabled); /** Deprecated: use command/input/wrapper/icon (OD-243). Disabled opacity of the command. */
   --command-empty-padding-y: var(--component-spacing-map-x6); /** Empty padding y of the command. */
   --command-empty-font-size: var(--type-body-font-size); /** Empty font size of the command. */
   --command-empty-line-height: var(--type-body-line-height); /** Empty line height of the command. */
@@ -4838,23 +4959,6 @@ html[data-scheme="multi-brand"][data-theme="dark"] [data-brand="birch"],
   --input-group-padding-right: var(--component-spacing-map-x2); /** Padding right of the input group. */
   --input-group-padding-bottom: var(--space-inset-control-x); /** Padding bottom of the input group. */
   --input-group-padding-top: var(--space-inset-control-x); /** Padding top of the input group. */
-  --input-group-gap: var(--space-gap-default); /** Gap of the input group. */
-  --input-group-padding-y: var(--component-spacing-map-x2); /** Padding y of the input group. */
-  --input-group-font-size: var(--type-body-font-size); /** Font size of the input group. */
-  --input-group-line-height: var(--type-body-line-height); /** Line height of the input group. */
-  --input-group-font-weight: var(--type-label-font-weight); /** Font weight of the input group. */
-  --input-group-disabled-opacity-disabled: var(--opacity-disabled); /** Disabled opacity disabled of the input group. */
-  --input-group-icon-size: var(--size-icon); /** Icon size of the input group. */
-  --input-group-inline-start-padding-left: var(--space-inset-control-x); /** Inline start padding left of the input group. */
-  --input-group-inline-end-padding-right: var(--space-inset-control-x); /** Inline end padding right of the input group. */
-  --input-group-block-start-padding-x: var(--space-inset-control-x); /** Block start padding x of the input group. */
-  --input-group-block-start-padding-top: var(--space-inset-control-x); /** Block start padding top of the input group. */
-  --input-group-block-start-padding-top-2: var(--component-spacing-map-x3); /** Block start padding top 2 of the input group. */
-  --input-group-block-start-padding-bottom: var(--space-inset-control-x); /** Block start padding bottom of the input group. */
-  --input-group-block-end-padding-x: var(--space-inset-control-x); /** Block end padding x of the input group. */
-  --input-group-block-end-padding-bottom: var(--space-inset-control-x); /** Block end padding bottom of the input group. */
-  --input-group-block-end-padding-bottom-2: var(--component-spacing-map-x3); /** Block end padding bottom 2 of the input group. */
-  --input-group-block-end-padding-top: var(--space-inset-control-x); /** Block end padding top of the input group. */
   --input-group-xs-height: var(--size-control-compact); /** Xs height of the input group. */
   --input-group-xs-gap: var(--space-gap-tight); /** Xs gap of the input group. */
   --input-group-xs-padding-x: var(--component-spacing-map-x2); /** Xs padding x of the input group. */
@@ -4863,12 +4967,35 @@ html[data-scheme="multi-brand"][data-theme="dark"] [data-brand="birch"],
   --input-group-sm-padding-x: var(--component-spacing-map-x3); /** Sm padding x of the input group. */
   --input-group-icon-sm-size: var(--size-control-default); /** Icon sm size of the input group. */
   --input-group-control-padding-y: var(--space-inset-control-x); /** Control padding y of the input group. */
+  --input-group-addon-block-end-padding-bottom: var(--space-inset-control-x); /** Addon block end padding-bottom of the input group. */
+  --input-group-addon-block-end-padding-bottom-2: var(--component-spacing-map-x3); /** Addon block end padding-bottom-2 of the input group. */
+  --input-group-addon-block-end-padding-top: var(--space-inset-control-x); /** Addon block end padding-top of the input group. */
+  --input-group-addon-block-end-padding-x: var(--space-inset-control-x); /** Addon block end padding-x of the input group. */
+  --input-group-addon-block-start-padding-bottom: var(--space-inset-control-x); /** Addon block start padding-bottom of the input group. */
+  --input-group-addon-block-start-padding-top: var(--space-inset-control-x); /** Addon block start padding-top of the input group. */
+  --input-group-addon-block-start-padding-top-2: var(--component-spacing-map-x3); /** Addon block start padding-top-2 of the input group. */
+  --input-group-addon-block-start-padding-x: var(--space-inset-control-x); /** Addon block start padding-x of the input group. */
+  --input-group-addon-disabled-opacity-disabled: var(--opacity-disabled); /** Addon disabled-opacity-disabled of the input group. */
+  --input-group-addon-font-size: var(--type-body-font-size); /** Addon font-size of the input group. */
+  --input-group-addon-font-weight: var(--type-label-font-weight); /** Addon font-weight of the input group. */
+  --input-group-addon-gap: var(--space-gap-default); /** Addon gap of the input group. */
+  --input-group-addon-icon-size: var(--size-icon); /** Addon icon-size of the input group. */
+  --input-group-addon-inline-end-padding-right: var(--space-inset-control-x); /** Addon inline end padding-right of the input group. */
+  --input-group-addon-inline-start-padding-left: var(--space-inset-control-x); /** Addon inline start padding-left of the input group. */
+  --input-group-addon-line-height: var(--type-body-line-height); /** Addon line-height of the input group. */
+  --input-group-addon-padding-y: var(--component-spacing-map-x2); /** Addon padding-y of the input group. */
+  --input-group-border-width: var(--border-width-default); /** Border width of the input group. */
+  --input-group-focus-width: var(--border-width-focus); /** Focus ring width of the input group, like the input's. */
+  --input-group-focus-offset: var(--border-width-focus-offset); /** Gap between the input group and its focus ring. */
   --input-otp-gap: var(--space-gap-default); /** Gap of the input otp. */
   --input-otp-disabled-opacity: var(--opacity-disabled); /** Disabled opacity of the input otp. */
   --input-otp-slot-font-size: var(--type-body-font-size); /** Slot font size of the input otp. */
   --input-otp-slot-line-height: var(--type-body-line-height); /** Slot line height of the input otp. */
+  --input-otp-slot-border-width: var(--border-width-default); /** Border width of an OTP slot. */
+  --input-otp-slot-focus-width: var(--border-width-focus); /** Focus ring width of the active slot, like the input's. */
   --input-otp-height: var(--size-icon); /** Height of the input otp. */
   --input-otp-duration: var(--motion-duration-feedback); /** Duration of the input otp. */
+  --input-otp-caret-width: var(--border-width-default); /** Width of the fake caret: a line. */
   --item-font-size: var(--type-body-font-size); /** Font size of the item. */
   --item-line-height: var(--type-body-line-height); /** Line height of the item. */
   --item-duration: var(--motion-duration-feedback); /** Duration of the item. */
@@ -4971,7 +5098,6 @@ html[data-scheme="multi-brand"][data-theme="dark"] [data-brand="birch"],
   --message-author-font-weight: var(--type-label-font-weight); /** Author font weight of the message. */
   --message-time-font-size: var(--type-caption-font-size); /** Time font size of the message. */
   --message-time-line-height: var(--type-caption-line-height); /** Time line height of the message. */
-  --native-select-disabled-opacity: var(--opacity-disabled); /** Disabled opacity of the native select. */
   --native-select-padding-x: var(--space-inset-control-x); /** Padding x of the native select. */
   --native-select-padding-y: var(--component-spacing-map-x2); /** Padding y of the native select. */
   --native-select-padding-right: var(--component-spacing-map-x8); /** Padding right of the native select. */
@@ -4982,6 +5108,8 @@ html[data-scheme="multi-brand"][data-theme="dark"] [data-brand="birch"],
   --native-select-focus: var(--border-width-focus); /** Focus of the native select. */
   --native-select-icon-size: var(--size-icon); /** Icon size of the native select. */
   --native-select-focus-offset: var(--border-width-focus-offset); /** Gap between the native select and its focus ring. */
+  --native-select-border-width: var(--border-width-default); /** Border width of the native select. */
+  --native-select-wrapper-disabled-opacity: var(--opacity-disabled); /** The whole select dims when it can't be used. */
   --navigation-menu-list-gap: var(--space-gap-tight); /** List gap of the navigation menu. */
   --navigation-menu-duration: var(--motion-duration-feedback); /** Duration of the navigation menu. */
   --navigation-menu-content-padding: var(--component-spacing-map-x1); /** Content padding of the navigation menu, like every panel of options. */
@@ -5140,6 +5268,7 @@ html[data-scheme="multi-brand"][data-theme="dark"] [data-brand="birch"],
   --textarea-disabled-opacity-disabled: var(--opacity-disabled); /** Disabled opacity disabled of the textarea. */
   --textarea-focus: var(--border-width-focus); /** Focus of the textarea. */
   --textarea-focus-offset: var(--border-width-focus-offset); /** Gap between the textarea and its focus ring. */
+  --textarea-border-width: var(--border-width-default); /** Border width of the textarea. */
   --toast-gap: var(--space-gap-default); /** Gap of the toast. */
   --toast-padding: var(--space-inset-container); /** Padding of the toast. */
   --toast-border-width: var(--border-width-default); /** Border width of the toast. */
@@ -5169,9 +5298,9 @@ html[data-scheme="multi-brand"][data-theme="dark"] [data-brand="birch"],
   --button-focus-ring: var(--color-border-focus); /** Focus ring color on any button. */
   --button-font-family: var(--type-label-font-family); /** Font family of the button. */
   --input-border-focus: var(--color-border-focus); /** Input border when focused. */
+  --input-border-invalid: var(--color-status-danger); /** Input border when invalid. */
   --input-radius: var(--radius-control); /** Input corner radius. */
   --input-font-family: var(--type-body-font-family); /** Font family of the input. */
-  --input-danger: var(--color-status-danger); /** Danger of the input. */
   --control-checked: var(--color-action-primary); /** Fill of a checked checkbox or an on switch. */
   --control-radius: var(--radius-badge); /** Checkbox corner radius. */
   --badge-radius: var(--radius-badge); /** Badge corner radius. */
@@ -5269,15 +5398,33 @@ html[data-scheme="multi-brand"][data-theme="dark"] [data-brand="birch"],
   --input-group-radius: var(--radius-control); /** Radius of the input group. */
   --input-group-shadow: var(--elevation-card); /** Shadow of the input group. */
   --input-group-border-2: var(--color-border-focus); /** Border 2 of the input group. */
-  --input-group-focus-ring: var(--color-border-focus); /** Focus ring of the input group. */
+  --input-group-focus-ring-highlight: var(--color-border-focus); /** Focus ring of the input group when the keyboard is in it: the keyboard-focus rule, at full strength. */
   --input-group-border-invalid: var(--color-status-danger); /** Border invalid of the input group. */
   --input-group-focus-ring-invalid: var(--color-status-danger); /** Focus ring invalid of the input group. */
+  --input-group-gap: var(--input-group-addon-gap); /** Deprecated: use component.input-group.addon.gap (OD-243). Gap of the input group. */
+  --input-group-padding-y: var(--input-group-addon-padding-y); /** Deprecated: use component.input-group.addon.padding-y (OD-243). Padding y of the input group. */
+  --input-group-font-size: var(--input-group-addon-font-size); /** Deprecated: use component.input-group.addon.font-size (OD-243). Font size of the input group. */
+  --input-group-line-height: var(--input-group-addon-line-height); /** Deprecated: use component.input-group.addon.line-height (OD-243). Line height of the input group. */
+  --input-group-font-weight: var(--input-group-addon-font-weight); /** Deprecated: use component.input-group.addon.font-weight (OD-243). Font weight of the input group. */
+  --input-group-disabled-opacity-disabled: var(--input-group-addon-disabled-opacity-disabled); /** Deprecated: use component.input-group.addon.disabled-opacity-disabled (OD-243). Disabled opacity disabled of the input group. */
+  --input-group-icon-size: var(--input-group-addon-icon-size); /** Deprecated: use component.input-group.addon.icon-size (OD-243). Icon size of the input group. */
+  --input-group-inline-start-padding-left: var(--input-group-addon-inline-start-padding-left); /** Deprecated: use component.input-group.addon.inline.start.padding-left (OD-243). Inline start padding left of the input group. */
+  --input-group-inline-end-padding-right: var(--input-group-addon-inline-end-padding-right); /** Deprecated: use component.input-group.addon.inline.end.padding-right (OD-243). Inline end padding right of the input group. */
+  --input-group-block-start-padding-x: var(--input-group-addon-block-start-padding-x); /** Deprecated: use component.input-group.addon.block.start.padding-x (OD-243). Block start padding x of the input group. */
+  --input-group-block-start-padding-top: var(--input-group-addon-block-start-padding-top); /** Deprecated: use component.input-group.addon.block.start.padding-top (OD-243). Block start padding top of the input group. */
+  --input-group-block-start-padding-top-2: var(--input-group-addon-block-start-padding-top-2); /** Deprecated: use component.input-group.addon.block.start.padding-top-2 (OD-243). Block start padding top 2 of the input group. */
+  --input-group-block-start-padding-bottom: var(--input-group-addon-block-start-padding-bottom); /** Deprecated: use component.input-group.addon.block.start.padding-bottom (OD-243). Block start padding bottom of the input group. */
+  --input-group-block-end-padding-x: var(--input-group-addon-block-end-padding-x); /** Deprecated: use component.input-group.addon.block.end.padding-x (OD-243). Block end padding x of the input group. */
+  --input-group-block-end-padding-bottom: var(--input-group-addon-block-end-padding-bottom); /** Deprecated: use component.input-group.addon.block.end.padding-bottom (OD-243). Block end padding bottom of the input group. */
+  --input-group-block-end-padding-bottom-2: var(--input-group-addon-block-end-padding-bottom-2); /** Deprecated: use component.input-group.addon.block.end.padding-bottom-2 (OD-243). Block end padding bottom 2 of the input group. */
+  --input-group-block-end-padding-top: var(--input-group-addon-block-end-padding-top); /** Deprecated: use component.input-group.addon.block.end.padding-top (OD-243). Block end padding top of the input group. */
   --input-group-sm-radius: var(--radius-control); /** Sm radius of the input group. */
+  --input-otp-slot-border-highlight: var(--color-border-focus); /** Border of the slot the keyboard is on. */
   --input-otp-slot-shadow: var(--elevation-card); /** Slot shadow of the input otp. */
   --input-otp-slot-border-invalid: var(--color-status-danger); /** Slot border invalid of the input otp. */
-  --input-otp-slot-border-2: var(--color-border-focus); /** Slot border 2 of the input otp. */
-  --input-otp-slot-focus-ring: var(--color-border-focus); /** Slot focus ring of the input otp. */
+  --input-otp-slot-focus-ring-highlight: var(--color-border-focus); /** Focus ring of the slot the keyboard is on: full strength. */
   --input-otp-slot-focus-ring-invalid: var(--color-status-danger); /** Slot focus ring invalid of the input otp. */
+  --input-otp-slot-radius: var(--radius-control); /** Corner of the OTP group's ends: the slots read as one field, with a field's corner. */
   --item-radius: var(--radius-control); /** Radius of the item. */
   --item-border-focus: var(--color-border-focus); /** Border focus of the item. */
   --item-focus-ring-focus: var(--color-border-focus); /** Focus ring focus of the item. */
@@ -5302,6 +5449,7 @@ html[data-scheme="multi-brand"][data-theme="dark"] [data-brand="birch"],
   --menubar-sub-content-shadow: var(--elevation-overlay); /** Sub content shadow of the menubar. */
   --message-scroller-radius: var(--radius-control); /** Radius of the message scroller. */
   --message-scroller-focus-ring-focus: var(--color-border-focus); /** Focus ring focus of the message scroller. */
+  --native-select-disabled-opacity: var(--native-select-wrapper-disabled-opacity); /** Deprecated: use component.native-select.wrapper.disabled-opacity (OD-243). Disabled opacity of the native select. */
   --native-select-radius: var(--radius-control); /** Radius of the native select. */
   --native-select-shadow: var(--elevation-card); /** Shadow of the native select. */
   --native-select-background: var(--color-action-primary); /** Background of the native select. */
@@ -5417,11 +5565,15 @@ html[data-scheme="multi-brand"][data-theme="dark"] [data-brand="birch"],
   --color-disabled-text: #CBD5E1; /** Text and icons of a control that cannot be used right now. */
   --color-disabled-surface: #1E293B; /** The fill of a control that cannot be used right now. */
   --color-disabled-border: #334155; /** The edge of a control that cannot be used right now. */
+  --input-danger: var(--input-border-invalid); /** Deprecated: use component.input.border.invalid (OD-243). Danger of the input. */
   --combobox-chips-focus-ring-focus: var(--combobox-chips-focus-ring-highlight); /** Deprecated: use component.combobox.chips.focus-ring.highlight (OD-243). Chips focus ring focus of the combobox. */
   --context-menu-item-label: var(--context-menu-item-label-destructive); /** Deprecated: use component.context-menu.item.label.destructive (OD-243). Item label of the context menu. */
   --context-menu-item-background-focus-2: var(--context-menu-item-background-destructive-highlight); /** Deprecated: use component.context-menu.item.background.destructive-highlight (OD-243). Item background focus 2 of the context menu. */
   --context-menu-item-label-focus-2: var(--context-menu-item-label-destructive-highlight); /** Deprecated: use component.context-menu.item.label.destructive-highlight (OD-243). Item label focus 2 of the context menu. */
   --dropdown-menu-label: var(--dropdown-menu-item-label-destructive); /** Deprecated: use component.dropdown-menu.item.label.destructive (OD-241). Label of the dropdown menu. */
+  --input-group-focus-ring: var(--input-group-focus-ring-highlight); /** Deprecated: use component.input-group.focus-ring.highlight (OD-243). Focus ring of the input group. */
+  --input-otp-slot-border-2: var(--input-otp-slot-border-highlight); /** Deprecated: use component.input-otp.slot.border.highlight (OD-243). Slot border 2 of the input otp. */
+  --input-otp-slot-focus-ring: var(--input-otp-slot-focus-ring-highlight); /** Deprecated: use component.input-otp.slot.focus-ring.highlight (OD-243). Slot focus ring of the input otp. */
   --menubar-item-label: var(--menubar-item-label-destructive); /** Deprecated: use component.menubar.item.label.destructive (OD-243). Item label of the menubar. */
   --menubar-item-background-focus-2: var(--menubar-item-background-destructive-highlight); /** Deprecated: use component.menubar.item.background.destructive-highlight (OD-243). Item background focus 2 of the menubar. */
   --menubar-item-label-focus-2: var(--menubar-item-label-destructive-highlight); /** Deprecated: use component.menubar.item.label.destructive-highlight (OD-243). Item label focus 2 of the menubar. */
@@ -5450,7 +5602,7 @@ html[data-scheme="multi-brand"][data-theme="dark"] [data-brand="birch"],
   --input-disabled-background: var(--color-disabled-surface); /** Fill of a disabled input. */
   --input-disabled-border: var(--color-disabled-border); /** Border of a disabled input. */
   --input-disabled-text: var(--color-disabled-text); /** Text in a disabled input. */
-  --input-canvas: var(--color-surface-canvas); /** Canvas of the input. */
+  --input-focus-ring-offset: var(--color-surface-canvas); /** The gap behind the input's focus ring: the page canvas. */
   --control-track: var(--color-border-strong); /** Track of an off switch. */
   --control-thumb: var(--color-surface-default); /** Switch thumb and checkmark color. */
   --badge-neutral-background: var(--color-surface-sunken); /** Neutral badge fill. */
@@ -5532,14 +5684,18 @@ html[data-scheme="multi-brand"][data-theme="dark"] [data-brand="birch"],
   --combobox-empty-label: var(--color-text-muted); /** Empty label of the combobox. */
   --combobox-separator-background: var(--color-border-default); /** Separator background of the combobox. */
   --combobox-chips-border: var(--color-border-strong); /** Chips border of the combobox. */
+  --combobox-chips-focus-ring-offset: var(--color-surface-canvas); /** The gap behind the chips field's focus ring: the page canvas. */
   --combobox-chip-background: var(--color-surface-sunken); /** Chip background of the combobox. */
   --combobox-chip-label: var(--color-text-primary); /** Chip label of the combobox. */
+  --combobox-chip-remove-label: var(--color-text-muted); /** The chip's remove icon: quiet, the muted text color. */
+  --combobox-chip-remove-label-hover: var(--color-text-primary); /** The chip's remove icon on hover. */
   --combobox-input-border: var(--color-border-default); /** Border of the search field in the combobox's list. */
   --combobox-input-background: var(--color-surface-sunken); /** Background of the search field in the combobox's list: a well. */
   --command-background: var(--color-surface-raised); /** Background of the command. */
   --command-label: var(--color-text-primary); /** Label of the command. */
   --command-label-2: var(--color-text-muted); /** Label 2 of the command. */
   --command-input-wrapper-border: var(--color-border-default); /** The line under the command's search field. */
+  --command-input-wrapper-icon: var(--color-text-muted); /** The search icon of the command: quiet, the muted text color. */
   --command-input-label-placeholder: var(--color-text-muted); /** Input label placeholder of the command. */
   --command-group-label: var(--color-text-primary); /** Group label of the command. */
   --command-group-label-2: var(--color-text-muted); /** Group label 2 of the command. */
@@ -5597,7 +5753,8 @@ html[data-scheme="multi-brand"][data-theme="dark"] [data-brand="birch"],
   --hover-card-content-label: var(--color-text-primary); /** Content label of the hover card. */
   --hover-card-content-border: var(--color-border-default); /** Content border of the hover card. */
   --input-group-border: var(--color-border-strong); /** Border of the input group. */
-  --input-group-label: var(--color-text-muted); /** Label of the input group. */
+  --input-group-addon-label: var(--color-text-muted); /** Addon label of the input group. */
+  --input-group-focus-ring-offset: var(--color-surface-canvas); /** The gap behind the input group's focus ring: the page canvas. */
   --input-otp-slot-border: var(--color-border-strong); /** Slot border of the input otp. */
   --input-otp-background: var(--color-text-primary); /** Background of the input otp. */
   --item-focus-ring-offset-focus: var(--color-surface-canvas); /** Focus ring offset focus of the item. */
@@ -5644,7 +5801,7 @@ html[data-scheme="multi-brand"][data-theme="dark"] [data-brand="birch"],
   --native-select-label: var(--color-text-on-action); /** Label of the native select. */
   --native-select-label-placeholder: var(--color-text-muted); /** Label placeholder of the native select. */
   --native-select-focus-ring-offset-focus: var(--color-surface-canvas); /** Focus ring offset focus of the native select. */
-  --native-select-label-2: var(--color-text-muted); /** Label 2 of the native select. */
+  --native-select-icon-label: var(--color-text-muted); /** The chevron of the native select: the muted text color. */
   --navigation-menu-content-background: var(--color-surface-raised); /** Content background of the navigation menu, like every floating panel's. */
   --navigation-menu-content-label: var(--color-text-primary); /** Content text of the navigation menu. */
   --navigation-menu-content-border: var(--color-border-default); /** Content border of the navigation menu. */
@@ -5753,6 +5910,7 @@ html[data-scheme="multi-brand"][data-theme="dark"] [data-brand="birch"],
   --toggle-outline-label-hover: var(--color-text-primary); /** Outline label hover of the toggle. */
   --toggle-outline-background-hover: var(--color-surface-highlight); /** Outline toggle background under the pointer. */
   --toggle-background-hover: var(--color-surface-highlight); /** Background under the pointer, of the toggle. */
+  --input-canvas: var(--input-focus-ring-offset); /** Deprecated: use component.input.focus-ring-offset (OD-243). Canvas of the input. */
   --tooltip-background: var(--tooltip-content-background); /** Deprecated: use component.tooltip.content.background (OD-243). Tooltip fill. */
   --tooltip-label: var(--tooltip-content-label); /** Deprecated: use component.tooltip.content.label (OD-243). Tooltip text. */
   --combobox-content-focus-ring: var(--combobox-content-border); /** Deprecated: use component.combobox.content.border (OD-243). Content focus ring of the combobox. */
@@ -5767,11 +5925,13 @@ html[data-scheme="multi-brand"][data-theme="dark"] [data-brand="birch"],
   --dialog-sunken: var(--dialog-close-background-hover); /** Deprecated: use component.dialog.close.background.hover (OD-241). Sunken of the dialog. */
   --dropdown-menu-item-sunken: var(--dropdown-menu-item-background-highlight); /** Deprecated: use component.dropdown-menu.item.background.highlight (OD-241). Item sunken of the dropdown menu. */
   --dropdown-menu-background: var(--dropdown-menu-separator-background); /** Deprecated: use component.dropdown-menu.separator.background (OD-241). Background of the dropdown menu. */
+  --input-group-label: var(--input-group-addon-label); /** Deprecated: use component.input-group.addon.label (OD-243). Label of the input group. */
   --menubar-trigger-background-focus: var(--menubar-trigger-background-highlight); /** Deprecated: use component.menubar.trigger.background.highlight (OD-241). Trigger background focus of the menubar. */
   --menubar-item-background-focus: var(--menubar-item-background-highlight); /** Deprecated: use component.menubar.item.background.highlight (OD-241). Item background focus of the menubar. */
   --menubar-checkbox-item-background-focus: var(--menubar-checkbox-item-background-highlight); /** Deprecated: use component.menubar.checkbox.item.background.highlight (OD-241). Checkbox item background focus of the menubar. */
   --menubar-radio-item-background-focus: var(--menubar-radio-item-background-highlight); /** Deprecated: use component.menubar.radio.item.background.highlight (OD-241). Radio item background focus of the menubar. */
   --menubar-sub-trigger-background-focus: var(--menubar-sub-trigger-background-highlight); /** Deprecated: use component.menubar.sub.trigger.background.highlight (OD-241). Sub trigger background focus of the menubar. */
+  --native-select-label-2: var(--native-select-icon-label); /** Deprecated: use component.native-select.icon.label (OD-243). Label 2 of the native select. */
   --navigation-menu-background: var(--navigation-menu-trigger-background); /** Deprecated: use component.navigation-menu.trigger.background (OD-243). Background of the navigation menu. */
   --navigation-menu-background-hover: var(--navigation-menu-trigger-background-hover); /** Deprecated: use component.navigation-menu.trigger.background.hover (OD-241). Background hover of the navigation menu. */
   --navigation-menu-label-hover: var(--navigation-menu-trigger-label-hover); /** Deprecated: use component.navigation-menu.trigger.label.hover (OD-243). Label hover of the navigation menu. */
@@ -6117,6 +6277,7 @@ html[data-scheme="multi-brand"] [data-brand="coral"] {
   --combobox-chips-padding-x-2: var(--component-spacing-map-x2); /** Chips padding x 2 of the combobox. */
   --combobox-chips-focus-width: var(--border-width-focus); /** Focus ring width of the chips field. */
   --combobox-chips-border-width: var(--border-width-default); /** Border width of the chips field. */
+  --combobox-chips-focus-offset: var(--border-width-focus-offset); /** Gap between the chips field and its focus ring. */
   --combobox-chip-gap: var(--space-gap-tight); /** Chip gap of the combobox. */
   --combobox-chip-padding-x: var(--component-spacing-map-x2); /** Chip padding x of the combobox. */
   --combobox-chip-font-size: var(--type-caption-font-size); /** Chip font size of the combobox. */
@@ -6124,7 +6285,7 @@ html[data-scheme="multi-brand"] [data-brand="coral"] {
   --combobox-chip-font-weight: var(--type-label-font-weight); /** Chip font weight of the combobox. */
   --combobox-chip-disabled-opacity: var(--opacity-disabled); /** Chip disabled opacity of the combobox. */
   --combobox-chip-remove-pull: var(--component-spacing-map-x1); /** How far the chip's remove button sits into its padding. */
-  --combobox-disabled-opacity: var(--opacity-disabled); /** Disabled opacity of the combobox. */
+  --combobox-disabled-opacity: var(--opacity-disabled); /** Deprecated: use combobox/chip/remove/label (OD-243). Disabled opacity of the combobox. */
   --combobox-input-height: var(--size-control-default); /** Height of the search field in the combobox's list. */
   --combobox-input-margin: var(--component-spacing-map-x1); /** Inset of the search field in the combobox's panel, like a menu panel's padding. */
   --command-padding-x: var(--component-spacing-map-x2); /** Padding x of the command. */
@@ -6138,7 +6299,7 @@ html[data-scheme="multi-brand"] [data-brand="coral"] {
   --command-input-line-height: var(--type-body-line-height); /** Input line height of the command. */
   --command-input-disabled-opacity-disabled: var(--opacity-disabled); /** Input disabled opacity disabled of the command. */
   --command-icon-size: var(--size-icon); /** Icon size of the command. */
-  --command-disabled-opacity: var(--opacity-disabled); /** Disabled opacity of the command. */
+  --command-disabled-opacity: var(--opacity-disabled); /** Deprecated: use command/input/wrapper/icon (OD-243). Disabled opacity of the command. */
   --command-empty-padding-y: var(--component-spacing-map-x6); /** Empty padding y of the command. */
   --command-empty-font-size: var(--type-body-font-size); /** Empty font size of the command. */
   --command-empty-line-height: var(--type-body-line-height); /** Empty line height of the command. */
@@ -6286,23 +6447,6 @@ html[data-scheme="multi-brand"] [data-brand="coral"] {
   --input-group-padding-right: var(--component-spacing-map-x2); /** Padding right of the input group. */
   --input-group-padding-bottom: var(--space-inset-control-x); /** Padding bottom of the input group. */
   --input-group-padding-top: var(--space-inset-control-x); /** Padding top of the input group. */
-  --input-group-gap: var(--space-gap-default); /** Gap of the input group. */
-  --input-group-padding-y: var(--component-spacing-map-x2); /** Padding y of the input group. */
-  --input-group-font-size: var(--type-body-font-size); /** Font size of the input group. */
-  --input-group-line-height: var(--type-body-line-height); /** Line height of the input group. */
-  --input-group-font-weight: var(--type-label-font-weight); /** Font weight of the input group. */
-  --input-group-disabled-opacity-disabled: var(--opacity-disabled); /** Disabled opacity disabled of the input group. */
-  --input-group-icon-size: var(--size-icon); /** Icon size of the input group. */
-  --input-group-inline-start-padding-left: var(--space-inset-control-x); /** Inline start padding left of the input group. */
-  --input-group-inline-end-padding-right: var(--space-inset-control-x); /** Inline end padding right of the input group. */
-  --input-group-block-start-padding-x: var(--space-inset-control-x); /** Block start padding x of the input group. */
-  --input-group-block-start-padding-top: var(--space-inset-control-x); /** Block start padding top of the input group. */
-  --input-group-block-start-padding-top-2: var(--component-spacing-map-x3); /** Block start padding top 2 of the input group. */
-  --input-group-block-start-padding-bottom: var(--space-inset-control-x); /** Block start padding bottom of the input group. */
-  --input-group-block-end-padding-x: var(--space-inset-control-x); /** Block end padding x of the input group. */
-  --input-group-block-end-padding-bottom: var(--space-inset-control-x); /** Block end padding bottom of the input group. */
-  --input-group-block-end-padding-bottom-2: var(--component-spacing-map-x3); /** Block end padding bottom 2 of the input group. */
-  --input-group-block-end-padding-top: var(--space-inset-control-x); /** Block end padding top of the input group. */
   --input-group-xs-height: var(--size-control-compact); /** Xs height of the input group. */
   --input-group-xs-gap: var(--space-gap-tight); /** Xs gap of the input group. */
   --input-group-xs-padding-x: var(--component-spacing-map-x2); /** Xs padding x of the input group. */
@@ -6311,12 +6455,35 @@ html[data-scheme="multi-brand"] [data-brand="coral"] {
   --input-group-sm-padding-x: var(--component-spacing-map-x3); /** Sm padding x of the input group. */
   --input-group-icon-sm-size: var(--size-control-default); /** Icon sm size of the input group. */
   --input-group-control-padding-y: var(--space-inset-control-x); /** Control padding y of the input group. */
+  --input-group-addon-block-end-padding-bottom: var(--space-inset-control-x); /** Addon block end padding-bottom of the input group. */
+  --input-group-addon-block-end-padding-bottom-2: var(--component-spacing-map-x3); /** Addon block end padding-bottom-2 of the input group. */
+  --input-group-addon-block-end-padding-top: var(--space-inset-control-x); /** Addon block end padding-top of the input group. */
+  --input-group-addon-block-end-padding-x: var(--space-inset-control-x); /** Addon block end padding-x of the input group. */
+  --input-group-addon-block-start-padding-bottom: var(--space-inset-control-x); /** Addon block start padding-bottom of the input group. */
+  --input-group-addon-block-start-padding-top: var(--space-inset-control-x); /** Addon block start padding-top of the input group. */
+  --input-group-addon-block-start-padding-top-2: var(--component-spacing-map-x3); /** Addon block start padding-top-2 of the input group. */
+  --input-group-addon-block-start-padding-x: var(--space-inset-control-x); /** Addon block start padding-x of the input group. */
+  --input-group-addon-disabled-opacity-disabled: var(--opacity-disabled); /** Addon disabled-opacity-disabled of the input group. */
+  --input-group-addon-font-size: var(--type-body-font-size); /** Addon font-size of the input group. */
+  --input-group-addon-font-weight: var(--type-label-font-weight); /** Addon font-weight of the input group. */
+  --input-group-addon-gap: var(--space-gap-default); /** Addon gap of the input group. */
+  --input-group-addon-icon-size: var(--size-icon); /** Addon icon-size of the input group. */
+  --input-group-addon-inline-end-padding-right: var(--space-inset-control-x); /** Addon inline end padding-right of the input group. */
+  --input-group-addon-inline-start-padding-left: var(--space-inset-control-x); /** Addon inline start padding-left of the input group. */
+  --input-group-addon-line-height: var(--type-body-line-height); /** Addon line-height of the input group. */
+  --input-group-addon-padding-y: var(--component-spacing-map-x2); /** Addon padding-y of the input group. */
+  --input-group-border-width: var(--border-width-default); /** Border width of the input group. */
+  --input-group-focus-width: var(--border-width-focus); /** Focus ring width of the input group, like the input's. */
+  --input-group-focus-offset: var(--border-width-focus-offset); /** Gap between the input group and its focus ring. */
   --input-otp-gap: var(--space-gap-default); /** Gap of the input otp. */
   --input-otp-disabled-opacity: var(--opacity-disabled); /** Disabled opacity of the input otp. */
   --input-otp-slot-font-size: var(--type-body-font-size); /** Slot font size of the input otp. */
   --input-otp-slot-line-height: var(--type-body-line-height); /** Slot line height of the input otp. */
+  --input-otp-slot-border-width: var(--border-width-default); /** Border width of an OTP slot. */
+  --input-otp-slot-focus-width: var(--border-width-focus); /** Focus ring width of the active slot, like the input's. */
   --input-otp-height: var(--size-icon); /** Height of the input otp. */
   --input-otp-duration: var(--motion-duration-feedback); /** Duration of the input otp. */
+  --input-otp-caret-width: var(--border-width-default); /** Width of the fake caret: a line. */
   --item-font-size: var(--type-body-font-size); /** Font size of the item. */
   --item-line-height: var(--type-body-line-height); /** Line height of the item. */
   --item-duration: var(--motion-duration-feedback); /** Duration of the item. */
@@ -6419,7 +6586,6 @@ html[data-scheme="multi-brand"] [data-brand="coral"] {
   --message-author-font-weight: var(--type-label-font-weight); /** Author font weight of the message. */
   --message-time-font-size: var(--type-caption-font-size); /** Time font size of the message. */
   --message-time-line-height: var(--type-caption-line-height); /** Time line height of the message. */
-  --native-select-disabled-opacity: var(--opacity-disabled); /** Disabled opacity of the native select. */
   --native-select-padding-x: var(--space-inset-control-x); /** Padding x of the native select. */
   --native-select-padding-y: var(--component-spacing-map-x2); /** Padding y of the native select. */
   --native-select-padding-right: var(--component-spacing-map-x8); /** Padding right of the native select. */
@@ -6430,6 +6596,8 @@ html[data-scheme="multi-brand"] [data-brand="coral"] {
   --native-select-focus: var(--border-width-focus); /** Focus of the native select. */
   --native-select-icon-size: var(--size-icon); /** Icon size of the native select. */
   --native-select-focus-offset: var(--border-width-focus-offset); /** Gap between the native select and its focus ring. */
+  --native-select-border-width: var(--border-width-default); /** Border width of the native select. */
+  --native-select-wrapper-disabled-opacity: var(--opacity-disabled); /** The whole select dims when it can't be used. */
   --navigation-menu-list-gap: var(--space-gap-tight); /** List gap of the navigation menu. */
   --navigation-menu-duration: var(--motion-duration-feedback); /** Duration of the navigation menu. */
   --navigation-menu-content-padding: var(--component-spacing-map-x1); /** Content padding of the navigation menu, like every panel of options. */
@@ -6588,6 +6756,7 @@ html[data-scheme="multi-brand"] [data-brand="coral"] {
   --textarea-disabled-opacity-disabled: var(--opacity-disabled); /** Disabled opacity disabled of the textarea. */
   --textarea-focus: var(--border-width-focus); /** Focus of the textarea. */
   --textarea-focus-offset: var(--border-width-focus-offset); /** Gap between the textarea and its focus ring. */
+  --textarea-border-width: var(--border-width-default); /** Border width of the textarea. */
   --toast-gap: var(--space-gap-default); /** Gap of the toast. */
   --toast-padding: var(--space-inset-container); /** Padding of the toast. */
   --toast-border-width: var(--border-width-default); /** Border width of the toast. */
@@ -6617,9 +6786,9 @@ html[data-scheme="multi-brand"] [data-brand="coral"] {
   --button-focus-ring: var(--color-border-focus); /** Focus ring color on any button. */
   --button-font-family: var(--type-label-font-family); /** Font family of the button. */
   --input-border-focus: var(--color-border-focus); /** Input border when focused. */
+  --input-border-invalid: var(--color-status-danger); /** Input border when invalid. */
   --input-radius: var(--radius-control); /** Input corner radius. */
   --input-font-family: var(--type-body-font-family); /** Font family of the input. */
-  --input-danger: var(--color-status-danger); /** Danger of the input. */
   --control-checked: var(--color-action-primary); /** Fill of a checked checkbox or an on switch. */
   --control-radius: var(--radius-badge); /** Checkbox corner radius. */
   --badge-radius: var(--radius-badge); /** Badge corner radius. */
@@ -6717,15 +6886,33 @@ html[data-scheme="multi-brand"] [data-brand="coral"] {
   --input-group-radius: var(--radius-control); /** Radius of the input group. */
   --input-group-shadow: var(--elevation-card); /** Shadow of the input group. */
   --input-group-border-2: var(--color-border-focus); /** Border 2 of the input group. */
-  --input-group-focus-ring: var(--color-border-focus); /** Focus ring of the input group. */
+  --input-group-focus-ring-highlight: var(--color-border-focus); /** Focus ring of the input group when the keyboard is in it: the keyboard-focus rule, at full strength. */
   --input-group-border-invalid: var(--color-status-danger); /** Border invalid of the input group. */
   --input-group-focus-ring-invalid: var(--color-status-danger); /** Focus ring invalid of the input group. */
+  --input-group-gap: var(--input-group-addon-gap); /** Deprecated: use component.input-group.addon.gap (OD-243). Gap of the input group. */
+  --input-group-padding-y: var(--input-group-addon-padding-y); /** Deprecated: use component.input-group.addon.padding-y (OD-243). Padding y of the input group. */
+  --input-group-font-size: var(--input-group-addon-font-size); /** Deprecated: use component.input-group.addon.font-size (OD-243). Font size of the input group. */
+  --input-group-line-height: var(--input-group-addon-line-height); /** Deprecated: use component.input-group.addon.line-height (OD-243). Line height of the input group. */
+  --input-group-font-weight: var(--input-group-addon-font-weight); /** Deprecated: use component.input-group.addon.font-weight (OD-243). Font weight of the input group. */
+  --input-group-disabled-opacity-disabled: var(--input-group-addon-disabled-opacity-disabled); /** Deprecated: use component.input-group.addon.disabled-opacity-disabled (OD-243). Disabled opacity disabled of the input group. */
+  --input-group-icon-size: var(--input-group-addon-icon-size); /** Deprecated: use component.input-group.addon.icon-size (OD-243). Icon size of the input group. */
+  --input-group-inline-start-padding-left: var(--input-group-addon-inline-start-padding-left); /** Deprecated: use component.input-group.addon.inline.start.padding-left (OD-243). Inline start padding left of the input group. */
+  --input-group-inline-end-padding-right: var(--input-group-addon-inline-end-padding-right); /** Deprecated: use component.input-group.addon.inline.end.padding-right (OD-243). Inline end padding right of the input group. */
+  --input-group-block-start-padding-x: var(--input-group-addon-block-start-padding-x); /** Deprecated: use component.input-group.addon.block.start.padding-x (OD-243). Block start padding x of the input group. */
+  --input-group-block-start-padding-top: var(--input-group-addon-block-start-padding-top); /** Deprecated: use component.input-group.addon.block.start.padding-top (OD-243). Block start padding top of the input group. */
+  --input-group-block-start-padding-top-2: var(--input-group-addon-block-start-padding-top-2); /** Deprecated: use component.input-group.addon.block.start.padding-top-2 (OD-243). Block start padding top 2 of the input group. */
+  --input-group-block-start-padding-bottom: var(--input-group-addon-block-start-padding-bottom); /** Deprecated: use component.input-group.addon.block.start.padding-bottom (OD-243). Block start padding bottom of the input group. */
+  --input-group-block-end-padding-x: var(--input-group-addon-block-end-padding-x); /** Deprecated: use component.input-group.addon.block.end.padding-x (OD-243). Block end padding x of the input group. */
+  --input-group-block-end-padding-bottom: var(--input-group-addon-block-end-padding-bottom); /** Deprecated: use component.input-group.addon.block.end.padding-bottom (OD-243). Block end padding bottom of the input group. */
+  --input-group-block-end-padding-bottom-2: var(--input-group-addon-block-end-padding-bottom-2); /** Deprecated: use component.input-group.addon.block.end.padding-bottom-2 (OD-243). Block end padding bottom 2 of the input group. */
+  --input-group-block-end-padding-top: var(--input-group-addon-block-end-padding-top); /** Deprecated: use component.input-group.addon.block.end.padding-top (OD-243). Block end padding top of the input group. */
   --input-group-sm-radius: var(--radius-control); /** Sm radius of the input group. */
+  --input-otp-slot-border-highlight: var(--color-border-focus); /** Border of the slot the keyboard is on. */
   --input-otp-slot-shadow: var(--elevation-card); /** Slot shadow of the input otp. */
   --input-otp-slot-border-invalid: var(--color-status-danger); /** Slot border invalid of the input otp. */
-  --input-otp-slot-border-2: var(--color-border-focus); /** Slot border 2 of the input otp. */
-  --input-otp-slot-focus-ring: var(--color-border-focus); /** Slot focus ring of the input otp. */
+  --input-otp-slot-focus-ring-highlight: var(--color-border-focus); /** Focus ring of the slot the keyboard is on: full strength. */
   --input-otp-slot-focus-ring-invalid: var(--color-status-danger); /** Slot focus ring invalid of the input otp. */
+  --input-otp-slot-radius: var(--radius-control); /** Corner of the OTP group's ends: the slots read as one field, with a field's corner. */
   --item-radius: var(--radius-control); /** Radius of the item. */
   --item-border-focus: var(--color-border-focus); /** Border focus of the item. */
   --item-focus-ring-focus: var(--color-border-focus); /** Focus ring focus of the item. */
@@ -6750,6 +6937,7 @@ html[data-scheme="multi-brand"] [data-brand="coral"] {
   --menubar-sub-content-shadow: var(--elevation-overlay); /** Sub content shadow of the menubar. */
   --message-scroller-radius: var(--radius-control); /** Radius of the message scroller. */
   --message-scroller-focus-ring-focus: var(--color-border-focus); /** Focus ring focus of the message scroller. */
+  --native-select-disabled-opacity: var(--native-select-wrapper-disabled-opacity); /** Deprecated: use component.native-select.wrapper.disabled-opacity (OD-243). Disabled opacity of the native select. */
   --native-select-radius: var(--radius-control); /** Radius of the native select. */
   --native-select-shadow: var(--elevation-card); /** Shadow of the native select. */
   --native-select-background: var(--color-action-primary); /** Background of the native select. */
@@ -6865,11 +7053,15 @@ html[data-scheme="multi-brand"] [data-brand="coral"] {
   --color-disabled-text: #64748B; /** Text and icons of a control that cannot be used right now. */
   --color-disabled-surface: #F1F5F9; /** The fill of a control that cannot be used right now. */
   --color-disabled-border: #E2E8F0; /** The edge of a control that cannot be used right now. */
+  --input-danger: var(--input-border-invalid); /** Deprecated: use component.input.border.invalid (OD-243). Danger of the input. */
   --combobox-chips-focus-ring-focus: var(--combobox-chips-focus-ring-highlight); /** Deprecated: use component.combobox.chips.focus-ring.highlight (OD-243). Chips focus ring focus of the combobox. */
   --context-menu-item-label: var(--context-menu-item-label-destructive); /** Deprecated: use component.context-menu.item.label.destructive (OD-243). Item label of the context menu. */
   --context-menu-item-background-focus-2: var(--context-menu-item-background-destructive-highlight); /** Deprecated: use component.context-menu.item.background.destructive-highlight (OD-243). Item background focus 2 of the context menu. */
   --context-menu-item-label-focus-2: var(--context-menu-item-label-destructive-highlight); /** Deprecated: use component.context-menu.item.label.destructive-highlight (OD-243). Item label focus 2 of the context menu. */
   --dropdown-menu-label: var(--dropdown-menu-item-label-destructive); /** Deprecated: use component.dropdown-menu.item.label.destructive (OD-241). Label of the dropdown menu. */
+  --input-group-focus-ring: var(--input-group-focus-ring-highlight); /** Deprecated: use component.input-group.focus-ring.highlight (OD-243). Focus ring of the input group. */
+  --input-otp-slot-border-2: var(--input-otp-slot-border-highlight); /** Deprecated: use component.input-otp.slot.border.highlight (OD-243). Slot border 2 of the input otp. */
+  --input-otp-slot-focus-ring: var(--input-otp-slot-focus-ring-highlight); /** Deprecated: use component.input-otp.slot.focus-ring.highlight (OD-243). Slot focus ring of the input otp. */
   --menubar-item-label: var(--menubar-item-label-destructive); /** Deprecated: use component.menubar.item.label.destructive (OD-243). Item label of the menubar. */
   --menubar-item-background-focus-2: var(--menubar-item-background-destructive-highlight); /** Deprecated: use component.menubar.item.background.destructive-highlight (OD-243). Item background focus 2 of the menubar. */
   --menubar-item-label-focus-2: var(--menubar-item-label-destructive-highlight); /** Deprecated: use component.menubar.item.label.destructive-highlight (OD-243). Item label focus 2 of the menubar. */
@@ -6898,7 +7090,7 @@ html[data-scheme="multi-brand"] [data-brand="coral"] {
   --input-disabled-background: var(--color-disabled-surface); /** Fill of a disabled input. */
   --input-disabled-border: var(--color-disabled-border); /** Border of a disabled input. */
   --input-disabled-text: var(--color-disabled-text); /** Text in a disabled input. */
-  --input-canvas: var(--color-surface-canvas); /** Canvas of the input. */
+  --input-focus-ring-offset: var(--color-surface-canvas); /** The gap behind the input's focus ring: the page canvas. */
   --control-track: var(--color-border-strong); /** Track of an off switch. */
   --control-thumb: var(--color-surface-default); /** Switch thumb and checkmark color. */
   --badge-neutral-background: var(--color-surface-sunken); /** Neutral badge fill. */
@@ -6980,14 +7172,18 @@ html[data-scheme="multi-brand"] [data-brand="coral"] {
   --combobox-empty-label: var(--color-text-muted); /** Empty label of the combobox. */
   --combobox-separator-background: var(--color-border-default); /** Separator background of the combobox. */
   --combobox-chips-border: var(--color-border-strong); /** Chips border of the combobox. */
+  --combobox-chips-focus-ring-offset: var(--color-surface-canvas); /** The gap behind the chips field's focus ring: the page canvas. */
   --combobox-chip-background: var(--color-surface-sunken); /** Chip background of the combobox. */
   --combobox-chip-label: var(--color-text-primary); /** Chip label of the combobox. */
+  --combobox-chip-remove-label: var(--color-text-muted); /** The chip's remove icon: quiet, the muted text color. */
+  --combobox-chip-remove-label-hover: var(--color-text-primary); /** The chip's remove icon on hover. */
   --combobox-input-border: var(--color-border-default); /** Border of the search field in the combobox's list. */
   --combobox-input-background: var(--color-surface-sunken); /** Background of the search field in the combobox's list: a well. */
   --command-background: var(--color-surface-raised); /** Background of the command. */
   --command-label: var(--color-text-primary); /** Label of the command. */
   --command-label-2: var(--color-text-muted); /** Label 2 of the command. */
   --command-input-wrapper-border: var(--color-border-default); /** The line under the command's search field. */
+  --command-input-wrapper-icon: var(--color-text-muted); /** The search icon of the command: quiet, the muted text color. */
   --command-input-label-placeholder: var(--color-text-muted); /** Input label placeholder of the command. */
   --command-group-label: var(--color-text-primary); /** Group label of the command. */
   --command-group-label-2: var(--color-text-muted); /** Group label 2 of the command. */
@@ -7045,7 +7241,8 @@ html[data-scheme="multi-brand"] [data-brand="coral"] {
   --hover-card-content-label: var(--color-text-primary); /** Content label of the hover card. */
   --hover-card-content-border: var(--color-border-default); /** Content border of the hover card. */
   --input-group-border: var(--color-border-strong); /** Border of the input group. */
-  --input-group-label: var(--color-text-muted); /** Label of the input group. */
+  --input-group-addon-label: var(--color-text-muted); /** Addon label of the input group. */
+  --input-group-focus-ring-offset: var(--color-surface-canvas); /** The gap behind the input group's focus ring: the page canvas. */
   --input-otp-slot-border: var(--color-border-strong); /** Slot border of the input otp. */
   --input-otp-background: var(--color-text-primary); /** Background of the input otp. */
   --item-focus-ring-offset-focus: var(--color-surface-canvas); /** Focus ring offset focus of the item. */
@@ -7092,7 +7289,7 @@ html[data-scheme="multi-brand"] [data-brand="coral"] {
   --native-select-label: var(--color-text-on-action); /** Label of the native select. */
   --native-select-label-placeholder: var(--color-text-muted); /** Label placeholder of the native select. */
   --native-select-focus-ring-offset-focus: var(--color-surface-canvas); /** Focus ring offset focus of the native select. */
-  --native-select-label-2: var(--color-text-muted); /** Label 2 of the native select. */
+  --native-select-icon-label: var(--color-text-muted); /** The chevron of the native select: the muted text color. */
   --navigation-menu-content-background: var(--color-surface-raised); /** Content background of the navigation menu, like every floating panel's. */
   --navigation-menu-content-label: var(--color-text-primary); /** Content text of the navigation menu. */
   --navigation-menu-content-border: var(--color-border-default); /** Content border of the navigation menu. */
@@ -7201,6 +7398,7 @@ html[data-scheme="multi-brand"] [data-brand="coral"] {
   --toggle-outline-label-hover: var(--color-text-primary); /** Outline label hover of the toggle. */
   --toggle-outline-background-hover: var(--color-surface-highlight); /** Outline toggle background under the pointer. */
   --toggle-background-hover: var(--color-surface-highlight); /** Background under the pointer, of the toggle. */
+  --input-canvas: var(--input-focus-ring-offset); /** Deprecated: use component.input.focus-ring-offset (OD-243). Canvas of the input. */
   --tooltip-background: var(--tooltip-content-background); /** Deprecated: use component.tooltip.content.background (OD-243). Tooltip fill. */
   --tooltip-label: var(--tooltip-content-label); /** Deprecated: use component.tooltip.content.label (OD-243). Tooltip text. */
   --combobox-content-focus-ring: var(--combobox-content-border); /** Deprecated: use component.combobox.content.border (OD-243). Content focus ring of the combobox. */
@@ -7215,11 +7413,13 @@ html[data-scheme="multi-brand"] [data-brand="coral"] {
   --dialog-sunken: var(--dialog-close-background-hover); /** Deprecated: use component.dialog.close.background.hover (OD-241). Sunken of the dialog. */
   --dropdown-menu-item-sunken: var(--dropdown-menu-item-background-highlight); /** Deprecated: use component.dropdown-menu.item.background.highlight (OD-241). Item sunken of the dropdown menu. */
   --dropdown-menu-background: var(--dropdown-menu-separator-background); /** Deprecated: use component.dropdown-menu.separator.background (OD-241). Background of the dropdown menu. */
+  --input-group-label: var(--input-group-addon-label); /** Deprecated: use component.input-group.addon.label (OD-243). Label of the input group. */
   --menubar-trigger-background-focus: var(--menubar-trigger-background-highlight); /** Deprecated: use component.menubar.trigger.background.highlight (OD-241). Trigger background focus of the menubar. */
   --menubar-item-background-focus: var(--menubar-item-background-highlight); /** Deprecated: use component.menubar.item.background.highlight (OD-241). Item background focus of the menubar. */
   --menubar-checkbox-item-background-focus: var(--menubar-checkbox-item-background-highlight); /** Deprecated: use component.menubar.checkbox.item.background.highlight (OD-241). Checkbox item background focus of the menubar. */
   --menubar-radio-item-background-focus: var(--menubar-radio-item-background-highlight); /** Deprecated: use component.menubar.radio.item.background.highlight (OD-241). Radio item background focus of the menubar. */
   --menubar-sub-trigger-background-focus: var(--menubar-sub-trigger-background-highlight); /** Deprecated: use component.menubar.sub.trigger.background.highlight (OD-241). Sub trigger background focus of the menubar. */
+  --native-select-label-2: var(--native-select-icon-label); /** Deprecated: use component.native-select.icon.label (OD-243). Label 2 of the native select. */
   --navigation-menu-background: var(--navigation-menu-trigger-background); /** Deprecated: use component.navigation-menu.trigger.background (OD-243). Background of the navigation menu. */
   --navigation-menu-background-hover: var(--navigation-menu-trigger-background-hover); /** Deprecated: use component.navigation-menu.trigger.background.hover (OD-241). Background hover of the navigation menu. */
   --navigation-menu-label-hover: var(--navigation-menu-trigger-label-hover); /** Deprecated: use component.navigation-menu.trigger.label.hover (OD-243). Label hover of the navigation menu. */
@@ -7566,6 +7766,7 @@ html[data-scheme="multi-brand"][data-theme="dark"] [data-brand="coral"],
   --combobox-chips-padding-x-2: var(--component-spacing-map-x2); /** Chips padding x 2 of the combobox. */
   --combobox-chips-focus-width: var(--border-width-focus); /** Focus ring width of the chips field. */
   --combobox-chips-border-width: var(--border-width-default); /** Border width of the chips field. */
+  --combobox-chips-focus-offset: var(--border-width-focus-offset); /** Gap between the chips field and its focus ring. */
   --combobox-chip-gap: var(--space-gap-tight); /** Chip gap of the combobox. */
   --combobox-chip-padding-x: var(--component-spacing-map-x2); /** Chip padding x of the combobox. */
   --combobox-chip-font-size: var(--type-caption-font-size); /** Chip font size of the combobox. */
@@ -7573,7 +7774,7 @@ html[data-scheme="multi-brand"][data-theme="dark"] [data-brand="coral"],
   --combobox-chip-font-weight: var(--type-label-font-weight); /** Chip font weight of the combobox. */
   --combobox-chip-disabled-opacity: var(--opacity-disabled); /** Chip disabled opacity of the combobox. */
   --combobox-chip-remove-pull: var(--component-spacing-map-x1); /** How far the chip's remove button sits into its padding. */
-  --combobox-disabled-opacity: var(--opacity-disabled); /** Disabled opacity of the combobox. */
+  --combobox-disabled-opacity: var(--opacity-disabled); /** Deprecated: use combobox/chip/remove/label (OD-243). Disabled opacity of the combobox. */
   --combobox-input-height: var(--size-control-default); /** Height of the search field in the combobox's list. */
   --combobox-input-margin: var(--component-spacing-map-x1); /** Inset of the search field in the combobox's panel, like a menu panel's padding. */
   --command-padding-x: var(--component-spacing-map-x2); /** Padding x of the command. */
@@ -7587,7 +7788,7 @@ html[data-scheme="multi-brand"][data-theme="dark"] [data-brand="coral"],
   --command-input-line-height: var(--type-body-line-height); /** Input line height of the command. */
   --command-input-disabled-opacity-disabled: var(--opacity-disabled); /** Input disabled opacity disabled of the command. */
   --command-icon-size: var(--size-icon); /** Icon size of the command. */
-  --command-disabled-opacity: var(--opacity-disabled); /** Disabled opacity of the command. */
+  --command-disabled-opacity: var(--opacity-disabled); /** Deprecated: use command/input/wrapper/icon (OD-243). Disabled opacity of the command. */
   --command-empty-padding-y: var(--component-spacing-map-x6); /** Empty padding y of the command. */
   --command-empty-font-size: var(--type-body-font-size); /** Empty font size of the command. */
   --command-empty-line-height: var(--type-body-line-height); /** Empty line height of the command. */
@@ -7735,23 +7936,6 @@ html[data-scheme="multi-brand"][data-theme="dark"] [data-brand="coral"],
   --input-group-padding-right: var(--component-spacing-map-x2); /** Padding right of the input group. */
   --input-group-padding-bottom: var(--space-inset-control-x); /** Padding bottom of the input group. */
   --input-group-padding-top: var(--space-inset-control-x); /** Padding top of the input group. */
-  --input-group-gap: var(--space-gap-default); /** Gap of the input group. */
-  --input-group-padding-y: var(--component-spacing-map-x2); /** Padding y of the input group. */
-  --input-group-font-size: var(--type-body-font-size); /** Font size of the input group. */
-  --input-group-line-height: var(--type-body-line-height); /** Line height of the input group. */
-  --input-group-font-weight: var(--type-label-font-weight); /** Font weight of the input group. */
-  --input-group-disabled-opacity-disabled: var(--opacity-disabled); /** Disabled opacity disabled of the input group. */
-  --input-group-icon-size: var(--size-icon); /** Icon size of the input group. */
-  --input-group-inline-start-padding-left: var(--space-inset-control-x); /** Inline start padding left of the input group. */
-  --input-group-inline-end-padding-right: var(--space-inset-control-x); /** Inline end padding right of the input group. */
-  --input-group-block-start-padding-x: var(--space-inset-control-x); /** Block start padding x of the input group. */
-  --input-group-block-start-padding-top: var(--space-inset-control-x); /** Block start padding top of the input group. */
-  --input-group-block-start-padding-top-2: var(--component-spacing-map-x3); /** Block start padding top 2 of the input group. */
-  --input-group-block-start-padding-bottom: var(--space-inset-control-x); /** Block start padding bottom of the input group. */
-  --input-group-block-end-padding-x: var(--space-inset-control-x); /** Block end padding x of the input group. */
-  --input-group-block-end-padding-bottom: var(--space-inset-control-x); /** Block end padding bottom of the input group. */
-  --input-group-block-end-padding-bottom-2: var(--component-spacing-map-x3); /** Block end padding bottom 2 of the input group. */
-  --input-group-block-end-padding-top: var(--space-inset-control-x); /** Block end padding top of the input group. */
   --input-group-xs-height: var(--size-control-compact); /** Xs height of the input group. */
   --input-group-xs-gap: var(--space-gap-tight); /** Xs gap of the input group. */
   --input-group-xs-padding-x: var(--component-spacing-map-x2); /** Xs padding x of the input group. */
@@ -7760,12 +7944,35 @@ html[data-scheme="multi-brand"][data-theme="dark"] [data-brand="coral"],
   --input-group-sm-padding-x: var(--component-spacing-map-x3); /** Sm padding x of the input group. */
   --input-group-icon-sm-size: var(--size-control-default); /** Icon sm size of the input group. */
   --input-group-control-padding-y: var(--space-inset-control-x); /** Control padding y of the input group. */
+  --input-group-addon-block-end-padding-bottom: var(--space-inset-control-x); /** Addon block end padding-bottom of the input group. */
+  --input-group-addon-block-end-padding-bottom-2: var(--component-spacing-map-x3); /** Addon block end padding-bottom-2 of the input group. */
+  --input-group-addon-block-end-padding-top: var(--space-inset-control-x); /** Addon block end padding-top of the input group. */
+  --input-group-addon-block-end-padding-x: var(--space-inset-control-x); /** Addon block end padding-x of the input group. */
+  --input-group-addon-block-start-padding-bottom: var(--space-inset-control-x); /** Addon block start padding-bottom of the input group. */
+  --input-group-addon-block-start-padding-top: var(--space-inset-control-x); /** Addon block start padding-top of the input group. */
+  --input-group-addon-block-start-padding-top-2: var(--component-spacing-map-x3); /** Addon block start padding-top-2 of the input group. */
+  --input-group-addon-block-start-padding-x: var(--space-inset-control-x); /** Addon block start padding-x of the input group. */
+  --input-group-addon-disabled-opacity-disabled: var(--opacity-disabled); /** Addon disabled-opacity-disabled of the input group. */
+  --input-group-addon-font-size: var(--type-body-font-size); /** Addon font-size of the input group. */
+  --input-group-addon-font-weight: var(--type-label-font-weight); /** Addon font-weight of the input group. */
+  --input-group-addon-gap: var(--space-gap-default); /** Addon gap of the input group. */
+  --input-group-addon-icon-size: var(--size-icon); /** Addon icon-size of the input group. */
+  --input-group-addon-inline-end-padding-right: var(--space-inset-control-x); /** Addon inline end padding-right of the input group. */
+  --input-group-addon-inline-start-padding-left: var(--space-inset-control-x); /** Addon inline start padding-left of the input group. */
+  --input-group-addon-line-height: var(--type-body-line-height); /** Addon line-height of the input group. */
+  --input-group-addon-padding-y: var(--component-spacing-map-x2); /** Addon padding-y of the input group. */
+  --input-group-border-width: var(--border-width-default); /** Border width of the input group. */
+  --input-group-focus-width: var(--border-width-focus); /** Focus ring width of the input group, like the input's. */
+  --input-group-focus-offset: var(--border-width-focus-offset); /** Gap between the input group and its focus ring. */
   --input-otp-gap: var(--space-gap-default); /** Gap of the input otp. */
   --input-otp-disabled-opacity: var(--opacity-disabled); /** Disabled opacity of the input otp. */
   --input-otp-slot-font-size: var(--type-body-font-size); /** Slot font size of the input otp. */
   --input-otp-slot-line-height: var(--type-body-line-height); /** Slot line height of the input otp. */
+  --input-otp-slot-border-width: var(--border-width-default); /** Border width of an OTP slot. */
+  --input-otp-slot-focus-width: var(--border-width-focus); /** Focus ring width of the active slot, like the input's. */
   --input-otp-height: var(--size-icon); /** Height of the input otp. */
   --input-otp-duration: var(--motion-duration-feedback); /** Duration of the input otp. */
+  --input-otp-caret-width: var(--border-width-default); /** Width of the fake caret: a line. */
   --item-font-size: var(--type-body-font-size); /** Font size of the item. */
   --item-line-height: var(--type-body-line-height); /** Line height of the item. */
   --item-duration: var(--motion-duration-feedback); /** Duration of the item. */
@@ -7868,7 +8075,6 @@ html[data-scheme="multi-brand"][data-theme="dark"] [data-brand="coral"],
   --message-author-font-weight: var(--type-label-font-weight); /** Author font weight of the message. */
   --message-time-font-size: var(--type-caption-font-size); /** Time font size of the message. */
   --message-time-line-height: var(--type-caption-line-height); /** Time line height of the message. */
-  --native-select-disabled-opacity: var(--opacity-disabled); /** Disabled opacity of the native select. */
   --native-select-padding-x: var(--space-inset-control-x); /** Padding x of the native select. */
   --native-select-padding-y: var(--component-spacing-map-x2); /** Padding y of the native select. */
   --native-select-padding-right: var(--component-spacing-map-x8); /** Padding right of the native select. */
@@ -7879,6 +8085,8 @@ html[data-scheme="multi-brand"][data-theme="dark"] [data-brand="coral"],
   --native-select-focus: var(--border-width-focus); /** Focus of the native select. */
   --native-select-icon-size: var(--size-icon); /** Icon size of the native select. */
   --native-select-focus-offset: var(--border-width-focus-offset); /** Gap between the native select and its focus ring. */
+  --native-select-border-width: var(--border-width-default); /** Border width of the native select. */
+  --native-select-wrapper-disabled-opacity: var(--opacity-disabled); /** The whole select dims when it can't be used. */
   --navigation-menu-list-gap: var(--space-gap-tight); /** List gap of the navigation menu. */
   --navigation-menu-duration: var(--motion-duration-feedback); /** Duration of the navigation menu. */
   --navigation-menu-content-padding: var(--component-spacing-map-x1); /** Content padding of the navigation menu, like every panel of options. */
@@ -8037,6 +8245,7 @@ html[data-scheme="multi-brand"][data-theme="dark"] [data-brand="coral"],
   --textarea-disabled-opacity-disabled: var(--opacity-disabled); /** Disabled opacity disabled of the textarea. */
   --textarea-focus: var(--border-width-focus); /** Focus of the textarea. */
   --textarea-focus-offset: var(--border-width-focus-offset); /** Gap between the textarea and its focus ring. */
+  --textarea-border-width: var(--border-width-default); /** Border width of the textarea. */
   --toast-gap: var(--space-gap-default); /** Gap of the toast. */
   --toast-padding: var(--space-inset-container); /** Padding of the toast. */
   --toast-border-width: var(--border-width-default); /** Border width of the toast. */
@@ -8066,9 +8275,9 @@ html[data-scheme="multi-brand"][data-theme="dark"] [data-brand="coral"],
   --button-focus-ring: var(--color-border-focus); /** Focus ring color on any button. */
   --button-font-family: var(--type-label-font-family); /** Font family of the button. */
   --input-border-focus: var(--color-border-focus); /** Input border when focused. */
+  --input-border-invalid: var(--color-status-danger); /** Input border when invalid. */
   --input-radius: var(--radius-control); /** Input corner radius. */
   --input-font-family: var(--type-body-font-family); /** Font family of the input. */
-  --input-danger: var(--color-status-danger); /** Danger of the input. */
   --control-checked: var(--color-action-primary); /** Fill of a checked checkbox or an on switch. */
   --control-radius: var(--radius-badge); /** Checkbox corner radius. */
   --badge-radius: var(--radius-badge); /** Badge corner radius. */
@@ -8166,15 +8375,33 @@ html[data-scheme="multi-brand"][data-theme="dark"] [data-brand="coral"],
   --input-group-radius: var(--radius-control); /** Radius of the input group. */
   --input-group-shadow: var(--elevation-card); /** Shadow of the input group. */
   --input-group-border-2: var(--color-border-focus); /** Border 2 of the input group. */
-  --input-group-focus-ring: var(--color-border-focus); /** Focus ring of the input group. */
+  --input-group-focus-ring-highlight: var(--color-border-focus); /** Focus ring of the input group when the keyboard is in it: the keyboard-focus rule, at full strength. */
   --input-group-border-invalid: var(--color-status-danger); /** Border invalid of the input group. */
   --input-group-focus-ring-invalid: var(--color-status-danger); /** Focus ring invalid of the input group. */
+  --input-group-gap: var(--input-group-addon-gap); /** Deprecated: use component.input-group.addon.gap (OD-243). Gap of the input group. */
+  --input-group-padding-y: var(--input-group-addon-padding-y); /** Deprecated: use component.input-group.addon.padding-y (OD-243). Padding y of the input group. */
+  --input-group-font-size: var(--input-group-addon-font-size); /** Deprecated: use component.input-group.addon.font-size (OD-243). Font size of the input group. */
+  --input-group-line-height: var(--input-group-addon-line-height); /** Deprecated: use component.input-group.addon.line-height (OD-243). Line height of the input group. */
+  --input-group-font-weight: var(--input-group-addon-font-weight); /** Deprecated: use component.input-group.addon.font-weight (OD-243). Font weight of the input group. */
+  --input-group-disabled-opacity-disabled: var(--input-group-addon-disabled-opacity-disabled); /** Deprecated: use component.input-group.addon.disabled-opacity-disabled (OD-243). Disabled opacity disabled of the input group. */
+  --input-group-icon-size: var(--input-group-addon-icon-size); /** Deprecated: use component.input-group.addon.icon-size (OD-243). Icon size of the input group. */
+  --input-group-inline-start-padding-left: var(--input-group-addon-inline-start-padding-left); /** Deprecated: use component.input-group.addon.inline.start.padding-left (OD-243). Inline start padding left of the input group. */
+  --input-group-inline-end-padding-right: var(--input-group-addon-inline-end-padding-right); /** Deprecated: use component.input-group.addon.inline.end.padding-right (OD-243). Inline end padding right of the input group. */
+  --input-group-block-start-padding-x: var(--input-group-addon-block-start-padding-x); /** Deprecated: use component.input-group.addon.block.start.padding-x (OD-243). Block start padding x of the input group. */
+  --input-group-block-start-padding-top: var(--input-group-addon-block-start-padding-top); /** Deprecated: use component.input-group.addon.block.start.padding-top (OD-243). Block start padding top of the input group. */
+  --input-group-block-start-padding-top-2: var(--input-group-addon-block-start-padding-top-2); /** Deprecated: use component.input-group.addon.block.start.padding-top-2 (OD-243). Block start padding top 2 of the input group. */
+  --input-group-block-start-padding-bottom: var(--input-group-addon-block-start-padding-bottom); /** Deprecated: use component.input-group.addon.block.start.padding-bottom (OD-243). Block start padding bottom of the input group. */
+  --input-group-block-end-padding-x: var(--input-group-addon-block-end-padding-x); /** Deprecated: use component.input-group.addon.block.end.padding-x (OD-243). Block end padding x of the input group. */
+  --input-group-block-end-padding-bottom: var(--input-group-addon-block-end-padding-bottom); /** Deprecated: use component.input-group.addon.block.end.padding-bottom (OD-243). Block end padding bottom of the input group. */
+  --input-group-block-end-padding-bottom-2: var(--input-group-addon-block-end-padding-bottom-2); /** Deprecated: use component.input-group.addon.block.end.padding-bottom-2 (OD-243). Block end padding bottom 2 of the input group. */
+  --input-group-block-end-padding-top: var(--input-group-addon-block-end-padding-top); /** Deprecated: use component.input-group.addon.block.end.padding-top (OD-243). Block end padding top of the input group. */
   --input-group-sm-radius: var(--radius-control); /** Sm radius of the input group. */
+  --input-otp-slot-border-highlight: var(--color-border-focus); /** Border of the slot the keyboard is on. */
   --input-otp-slot-shadow: var(--elevation-card); /** Slot shadow of the input otp. */
   --input-otp-slot-border-invalid: var(--color-status-danger); /** Slot border invalid of the input otp. */
-  --input-otp-slot-border-2: var(--color-border-focus); /** Slot border 2 of the input otp. */
-  --input-otp-slot-focus-ring: var(--color-border-focus); /** Slot focus ring of the input otp. */
+  --input-otp-slot-focus-ring-highlight: var(--color-border-focus); /** Focus ring of the slot the keyboard is on: full strength. */
   --input-otp-slot-focus-ring-invalid: var(--color-status-danger); /** Slot focus ring invalid of the input otp. */
+  --input-otp-slot-radius: var(--radius-control); /** Corner of the OTP group's ends: the slots read as one field, with a field's corner. */
   --item-radius: var(--radius-control); /** Radius of the item. */
   --item-border-focus: var(--color-border-focus); /** Border focus of the item. */
   --item-focus-ring-focus: var(--color-border-focus); /** Focus ring focus of the item. */
@@ -8199,6 +8426,7 @@ html[data-scheme="multi-brand"][data-theme="dark"] [data-brand="coral"],
   --menubar-sub-content-shadow: var(--elevation-overlay); /** Sub content shadow of the menubar. */
   --message-scroller-radius: var(--radius-control); /** Radius of the message scroller. */
   --message-scroller-focus-ring-focus: var(--color-border-focus); /** Focus ring focus of the message scroller. */
+  --native-select-disabled-opacity: var(--native-select-wrapper-disabled-opacity); /** Deprecated: use component.native-select.wrapper.disabled-opacity (OD-243). Disabled opacity of the native select. */
   --native-select-radius: var(--radius-control); /** Radius of the native select. */
   --native-select-shadow: var(--elevation-card); /** Shadow of the native select. */
   --native-select-background: var(--color-action-primary); /** Background of the native select. */
@@ -8314,11 +8542,15 @@ html[data-scheme="multi-brand"][data-theme="dark"] [data-brand="coral"],
   --color-disabled-text: #CBD5E1; /** Text and icons of a control that cannot be used right now. */
   --color-disabled-surface: #1E293B; /** The fill of a control that cannot be used right now. */
   --color-disabled-border: #334155; /** The edge of a control that cannot be used right now. */
+  --input-danger: var(--input-border-invalid); /** Deprecated: use component.input.border.invalid (OD-243). Danger of the input. */
   --combobox-chips-focus-ring-focus: var(--combobox-chips-focus-ring-highlight); /** Deprecated: use component.combobox.chips.focus-ring.highlight (OD-243). Chips focus ring focus of the combobox. */
   --context-menu-item-label: var(--context-menu-item-label-destructive); /** Deprecated: use component.context-menu.item.label.destructive (OD-243). Item label of the context menu. */
   --context-menu-item-background-focus-2: var(--context-menu-item-background-destructive-highlight); /** Deprecated: use component.context-menu.item.background.destructive-highlight (OD-243). Item background focus 2 of the context menu. */
   --context-menu-item-label-focus-2: var(--context-menu-item-label-destructive-highlight); /** Deprecated: use component.context-menu.item.label.destructive-highlight (OD-243). Item label focus 2 of the context menu. */
   --dropdown-menu-label: var(--dropdown-menu-item-label-destructive); /** Deprecated: use component.dropdown-menu.item.label.destructive (OD-241). Label of the dropdown menu. */
+  --input-group-focus-ring: var(--input-group-focus-ring-highlight); /** Deprecated: use component.input-group.focus-ring.highlight (OD-243). Focus ring of the input group. */
+  --input-otp-slot-border-2: var(--input-otp-slot-border-highlight); /** Deprecated: use component.input-otp.slot.border.highlight (OD-243). Slot border 2 of the input otp. */
+  --input-otp-slot-focus-ring: var(--input-otp-slot-focus-ring-highlight); /** Deprecated: use component.input-otp.slot.focus-ring.highlight (OD-243). Slot focus ring of the input otp. */
   --menubar-item-label: var(--menubar-item-label-destructive); /** Deprecated: use component.menubar.item.label.destructive (OD-243). Item label of the menubar. */
   --menubar-item-background-focus-2: var(--menubar-item-background-destructive-highlight); /** Deprecated: use component.menubar.item.background.destructive-highlight (OD-243). Item background focus 2 of the menubar. */
   --menubar-item-label-focus-2: var(--menubar-item-label-destructive-highlight); /** Deprecated: use component.menubar.item.label.destructive-highlight (OD-243). Item label focus 2 of the menubar. */
@@ -8347,7 +8579,7 @@ html[data-scheme="multi-brand"][data-theme="dark"] [data-brand="coral"],
   --input-disabled-background: var(--color-disabled-surface); /** Fill of a disabled input. */
   --input-disabled-border: var(--color-disabled-border); /** Border of a disabled input. */
   --input-disabled-text: var(--color-disabled-text); /** Text in a disabled input. */
-  --input-canvas: var(--color-surface-canvas); /** Canvas of the input. */
+  --input-focus-ring-offset: var(--color-surface-canvas); /** The gap behind the input's focus ring: the page canvas. */
   --control-track: var(--color-border-strong); /** Track of an off switch. */
   --control-thumb: var(--color-surface-default); /** Switch thumb and checkmark color. */
   --badge-neutral-background: var(--color-surface-sunken); /** Neutral badge fill. */
@@ -8429,14 +8661,18 @@ html[data-scheme="multi-brand"][data-theme="dark"] [data-brand="coral"],
   --combobox-empty-label: var(--color-text-muted); /** Empty label of the combobox. */
   --combobox-separator-background: var(--color-border-default); /** Separator background of the combobox. */
   --combobox-chips-border: var(--color-border-strong); /** Chips border of the combobox. */
+  --combobox-chips-focus-ring-offset: var(--color-surface-canvas); /** The gap behind the chips field's focus ring: the page canvas. */
   --combobox-chip-background: var(--color-surface-sunken); /** Chip background of the combobox. */
   --combobox-chip-label: var(--color-text-primary); /** Chip label of the combobox. */
+  --combobox-chip-remove-label: var(--color-text-muted); /** The chip's remove icon: quiet, the muted text color. */
+  --combobox-chip-remove-label-hover: var(--color-text-primary); /** The chip's remove icon on hover. */
   --combobox-input-border: var(--color-border-default); /** Border of the search field in the combobox's list. */
   --combobox-input-background: var(--color-surface-sunken); /** Background of the search field in the combobox's list: a well. */
   --command-background: var(--color-surface-raised); /** Background of the command. */
   --command-label: var(--color-text-primary); /** Label of the command. */
   --command-label-2: var(--color-text-muted); /** Label 2 of the command. */
   --command-input-wrapper-border: var(--color-border-default); /** The line under the command's search field. */
+  --command-input-wrapper-icon: var(--color-text-muted); /** The search icon of the command: quiet, the muted text color. */
   --command-input-label-placeholder: var(--color-text-muted); /** Input label placeholder of the command. */
   --command-group-label: var(--color-text-primary); /** Group label of the command. */
   --command-group-label-2: var(--color-text-muted); /** Group label 2 of the command. */
@@ -8494,7 +8730,8 @@ html[data-scheme="multi-brand"][data-theme="dark"] [data-brand="coral"],
   --hover-card-content-label: var(--color-text-primary); /** Content label of the hover card. */
   --hover-card-content-border: var(--color-border-default); /** Content border of the hover card. */
   --input-group-border: var(--color-border-strong); /** Border of the input group. */
-  --input-group-label: var(--color-text-muted); /** Label of the input group. */
+  --input-group-addon-label: var(--color-text-muted); /** Addon label of the input group. */
+  --input-group-focus-ring-offset: var(--color-surface-canvas); /** The gap behind the input group's focus ring: the page canvas. */
   --input-otp-slot-border: var(--color-border-strong); /** Slot border of the input otp. */
   --input-otp-background: var(--color-text-primary); /** Background of the input otp. */
   --item-focus-ring-offset-focus: var(--color-surface-canvas); /** Focus ring offset focus of the item. */
@@ -8541,7 +8778,7 @@ html[data-scheme="multi-brand"][data-theme="dark"] [data-brand="coral"],
   --native-select-label: var(--color-text-on-action); /** Label of the native select. */
   --native-select-label-placeholder: var(--color-text-muted); /** Label placeholder of the native select. */
   --native-select-focus-ring-offset-focus: var(--color-surface-canvas); /** Focus ring offset focus of the native select. */
-  --native-select-label-2: var(--color-text-muted); /** Label 2 of the native select. */
+  --native-select-icon-label: var(--color-text-muted); /** The chevron of the native select: the muted text color. */
   --navigation-menu-content-background: var(--color-surface-raised); /** Content background of the navigation menu, like every floating panel's. */
   --navigation-menu-content-label: var(--color-text-primary); /** Content text of the navigation menu. */
   --navigation-menu-content-border: var(--color-border-default); /** Content border of the navigation menu. */
@@ -8650,6 +8887,7 @@ html[data-scheme="multi-brand"][data-theme="dark"] [data-brand="coral"],
   --toggle-outline-label-hover: var(--color-text-primary); /** Outline label hover of the toggle. */
   --toggle-outline-background-hover: var(--color-surface-highlight); /** Outline toggle background under the pointer. */
   --toggle-background-hover: var(--color-surface-highlight); /** Background under the pointer, of the toggle. */
+  --input-canvas: var(--input-focus-ring-offset); /** Deprecated: use component.input.focus-ring-offset (OD-243). Canvas of the input. */
   --tooltip-background: var(--tooltip-content-background); /** Deprecated: use component.tooltip.content.background (OD-243). Tooltip fill. */
   --tooltip-label: var(--tooltip-content-label); /** Deprecated: use component.tooltip.content.label (OD-243). Tooltip text. */
   --combobox-content-focus-ring: var(--combobox-content-border); /** Deprecated: use component.combobox.content.border (OD-243). Content focus ring of the combobox. */
@@ -8664,11 +8902,13 @@ html[data-scheme="multi-brand"][data-theme="dark"] [data-brand="coral"],
   --dialog-sunken: var(--dialog-close-background-hover); /** Deprecated: use component.dialog.close.background.hover (OD-241). Sunken of the dialog. */
   --dropdown-menu-item-sunken: var(--dropdown-menu-item-background-highlight); /** Deprecated: use component.dropdown-menu.item.background.highlight (OD-241). Item sunken of the dropdown menu. */
   --dropdown-menu-background: var(--dropdown-menu-separator-background); /** Deprecated: use component.dropdown-menu.separator.background (OD-241). Background of the dropdown menu. */
+  --input-group-label: var(--input-group-addon-label); /** Deprecated: use component.input-group.addon.label (OD-243). Label of the input group. */
   --menubar-trigger-background-focus: var(--menubar-trigger-background-highlight); /** Deprecated: use component.menubar.trigger.background.highlight (OD-241). Trigger background focus of the menubar. */
   --menubar-item-background-focus: var(--menubar-item-background-highlight); /** Deprecated: use component.menubar.item.background.highlight (OD-241). Item background focus of the menubar. */
   --menubar-checkbox-item-background-focus: var(--menubar-checkbox-item-background-highlight); /** Deprecated: use component.menubar.checkbox.item.background.highlight (OD-241). Checkbox item background focus of the menubar. */
   --menubar-radio-item-background-focus: var(--menubar-radio-item-background-highlight); /** Deprecated: use component.menubar.radio.item.background.highlight (OD-241). Radio item background focus of the menubar. */
   --menubar-sub-trigger-background-focus: var(--menubar-sub-trigger-background-highlight); /** Deprecated: use component.menubar.sub.trigger.background.highlight (OD-241). Sub trigger background focus of the menubar. */
+  --native-select-label-2: var(--native-select-icon-label); /** Deprecated: use component.native-select.icon.label (OD-243). Label 2 of the native select. */
   --navigation-menu-background: var(--navigation-menu-trigger-background); /** Deprecated: use component.navigation-menu.trigger.background (OD-243). Background of the navigation menu. */
   --navigation-menu-background-hover: var(--navigation-menu-trigger-background-hover); /** Deprecated: use component.navigation-menu.trigger.background.hover (OD-241). Background hover of the navigation menu. */
   --navigation-menu-label-hover: var(--navigation-menu-trigger-label-hover); /** Deprecated: use component.navigation-menu.trigger.label.hover (OD-243). Label hover of the navigation menu. */

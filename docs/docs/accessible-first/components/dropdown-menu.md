@@ -27,7 +27,7 @@ Instead:
 - [Select](./select.md): Choosing a value.
 - [Context menu](./context-menu.md): The same menu on right-click.
 
-<a class="odv-anatref" href="./dropdown-menu-anatomy"><span class="odv-anatref-b"><b>Anatomy reference</b><span>Every part of the menu, the job it does, and the decisions behind it. 12 parts.</span></span><span class="odv-anatref-go" aria-hidden="true">→</span></a>
+<a class="odv-anatref" href="./dropdown-menu/anatomy"><span class="odv-anatref-b"><b>Anatomy reference</b><span>Every part of the menu, the job it does, and the decisions behind it. 12 parts.</span></span><span class="odv-anatref-go" aria-hidden="true">→</span></a>
 
 ## How Accessible first uses it
 

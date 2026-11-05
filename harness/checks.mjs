@@ -1030,7 +1030,8 @@ export const CHECKS = {
       const gaps = [];
       for (const f of c.walk("ui/src/components", (x) => x.endsWith(".tsx")))
         for (const cls of c.read(f).match(/"[^"\n]*"/g) ?? []) {
-          const draws = /(focus-visible|has-focus|focus):ring-(?!0\b|offset)/.test(cls);
+          // A ring drawn on focus, on focus inside (focus-within), or through has-[…:focus-visible].
+          const draws = /(focus-visible\]?|focus-within|has-focus|focus):ring-(?!0\b|offset)/.test(cls);
           if (draws && !/ring-offset-\[length:var\(--[a-z0-9-]+-focus-offset\)\]/.test(cls))
             gaps.push(`${f}: a focus ring with no gap, or a gap not read from its focus-offset key`);
         }

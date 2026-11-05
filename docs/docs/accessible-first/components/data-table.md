@@ -27,7 +27,7 @@ Instead:
 - [Table](./table.md): A few rows, no tools.
 - [Card](./card.md): Items to browse, not compare.
 
-<a class="odv-anatref" href="./data-table-anatomy"><span class="odv-anatref-b"><b>Anatomy reference</b><span>Every part of the data table, the job it does, and the decisions behind it. 13 parts.</span></span><span class="odv-anatref-go" aria-hidden="true">→</span></a>
+<a class="odv-anatref" href="./data-table/anatomy"><span class="odv-anatref-b"><b>Anatomy reference</b><span>Every part of the data table, the job it does, and the decisions behind it. 13 parts.</span></span><span class="odv-anatref-go" aria-hidden="true">→</span></a>
 
 ## How Accessible first uses it
 
