@@ -92,7 +92,7 @@ const RULE_WORDS = {
   open: /\bopen\b|expanded/i,
   pressed: /press/i,
   highlight: /highlight/i,
-  hover: /hover|under the pointer/i,
+  hover: /hover|pointer/i,
 };
 // A Tailwind utility → the property it paints.
 const PROPERTY = [
@@ -257,7 +257,9 @@ export function componentGaps(scheme, g, roots) {
       // Collect the jobs of each color semantic on fills, for kind 4.
       if (/^color\./.test(t.aliases))
         for (const u of uses.filter((x) => x.property === "background" && x.state !== "disabled")) {
-          const job = u.state ?? "rest";
+          // States the semantic's own rule covers are one job: surface.highlight's rule covers the
+          // pointer (hover) and the keyboard (highlight); surface.selected's covers selected and current.
+          const job = u.state && RULE_WORDS[u.state].test(rule.get(t.aliases) ?? "") ? "its rule" : (u.state ?? "rest");
           const j = jobs.get(t.aliases) ?? new Map();
           j.set(job, [...new Set([...(j.get(job) ?? []), t.token])]);
           jobs.set(t.aliases, j);
