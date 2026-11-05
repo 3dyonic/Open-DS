@@ -3289,6 +3289,7 @@
         "context-menu/sub/trigger/padding-y",
         "context-menu/sub/trigger/font-size",
         "context-menu/sub/trigger/line-height",
+        "context-menu/sub/trigger/background/highlight",
         "context-menu/sub/trigger/background-focus",
         "context-menu/sub/trigger/label-focus",
         "context-menu/sub/trigger/padding-left",
@@ -3312,6 +3313,7 @@
         "context-menu/item/padding-y",
         "context-menu/item/font-size",
         "context-menu/item/line-height",
+        "context-menu/item/background/highlight",
         "context-menu/item/background-focus",
         "context-menu/item/label-focus",
         "context-menu/item/disabled-opacity-disabled",
@@ -3328,6 +3330,7 @@
         "context-menu/checkbox/item/padding-left",
         "context-menu/checkbox/item/font-size",
         "context-menu/checkbox/item/line-height",
+        "context-menu/checkbox/item/background/highlight",
         "context-menu/checkbox/item/background-focus",
         "context-menu/checkbox/item/label-focus",
         "context-menu/checkbox/item/disabled-opacity-disabled",
@@ -3340,6 +3343,7 @@
         "context-menu/radio/item/padding-left",
         "context-menu/radio/item/font-size",
         "context-menu/radio/item/line-height",
+        "context-menu/radio/item/background/highlight",
         "context-menu/radio/item/background-focus",
         "context-menu/radio/item/label-focus",
         "context-menu/radio/item/disabled-opacity-disabled",
@@ -3431,10 +3435,13 @@
         "dropdown-menu/item/padding-x",
         "dropdown-menu/item/radius",
         "dropdown-menu/item/font-size",
+        "dropdown-menu/item/background/highlight",
         "dropdown-menu/item/sunken",
         "dropdown-menu/item/disabled",
         "dropdown-menu/item/icon",
+        "dropdown-menu/item/label/destructive",
         "dropdown-menu/label",
+        "dropdown-menu/separator/background",
         "dropdown-menu/background"
       ]
     },
@@ -3686,6 +3693,7 @@
         "menubar/trigger/font-size",
         "menubar/trigger/line-height",
         "menubar/trigger/font-weight",
+        "menubar/trigger/background/highlight",
         "menubar/trigger/background-focus",
         "menubar/trigger/label-focus",
         "menubar/trigger/background-open",
@@ -3701,6 +3709,7 @@
         "menubar/item/padding-y",
         "menubar/item/font-size",
         "menubar/item/line-height",
+        "menubar/item/background/highlight",
         "menubar/item/background-focus",
         "menubar/item/label-focus",
         "menubar/item/disabled-opacity-disabled",
@@ -3717,6 +3726,7 @@
         "menubar/checkbox/item/padding-left",
         "menubar/checkbox/item/font-size",
         "menubar/checkbox/item/line-height",
+        "menubar/checkbox/item/background/highlight",
         "menubar/checkbox/item/background-focus",
         "menubar/checkbox/item/label-focus",
         "menubar/checkbox/item/disabled-opacity-disabled",
@@ -3729,6 +3739,7 @@
         "menubar/radio/item/padding-left",
         "menubar/radio/item/font-size",
         "menubar/radio/item/line-height",
+        "menubar/radio/item/background/highlight",
         "menubar/radio/item/background-focus",
         "menubar/radio/item/label-focus",
         "menubar/radio/item/disabled-opacity-disabled",
@@ -3748,6 +3759,7 @@
         "menubar/sub/trigger/padding-y",
         "menubar/sub/trigger/font-size",
         "menubar/sub/trigger/line-height",
+        "menubar/sub/trigger/background/highlight",
         "menubar/sub/trigger/background-focus",
         "menubar/sub/trigger/label-focus",
         "menubar/sub/trigger/padding-left",
@@ -3829,6 +3841,7 @@
         "navigation-menu/font-weight",
         "navigation-menu/background-hover",
         "navigation-menu/label-hover",
+        "navigation-menu/trigger/background/highlight",
         "navigation-menu/background-focus",
         "navigation-menu/label-focus",
         "navigation-menu/disabled-opacity-disabled",
@@ -3854,11 +3867,14 @@
         "navigation-menu/link/padding",
         "navigation-menu/link/font-size",
         "navigation-menu/link/line-height",
+        "navigation-menu/link/background/hover",
         "navigation-menu/link/background-hover",
         "navigation-menu/link/label-hover",
+        "navigation-menu/link/background/highlight",
         "navigation-menu/link/background-focus",
         "navigation-menu/link/label-focus",
-        "navigation-menu/link/background",
+        "navigation-menu/link/background/current",
+        "navigation-menu/link/background/@",
         "navigation-menu/link/focus",
         "navigation-menu/link/selected",
         "navigation-menu/link/label",
@@ -3970,6 +3986,7 @@
         "select/item/padding-right",
         "select/item/radius",
         "select/item/font-size",
+        "select/item/background/highlight",
         "select/item/sunken",
         "select/item/disabled"
       ]
@@ -6647,10 +6664,17 @@
       "default": "type.body.line-height"
     },
     {
+      "id": "context-menu/sub/trigger/background/highlight",
+      "component": "context-menu",
+      "description": "Submenu trigger background when highlighted, by the pointer or the keyboard, of the context menu.",
+      "default": "color.surface.highlight"
+    },
+    {
       "id": "context-menu/sub/trigger/background-focus",
       "component": "context-menu",
-      "description": "Sub trigger background focus of the context menu.",
-      "default": "color.surface.sunken"
+      "description": "Deprecated: use context-menu/sub/trigger/background/highlight (OD-241). Sub trigger background focus of the context menu.",
+      "default": "color.surface.sunken",
+      "replaced_by": "context-menu/sub/trigger/background/highlight"
     },
     {
       "id": "context-menu/sub/trigger/label-focus",
@@ -6785,10 +6809,17 @@
       "default": "type.body.line-height"
     },
     {
+      "id": "context-menu/item/background/highlight",
+      "component": "context-menu",
+      "description": "Item background when highlighted, by the pointer or the keyboard, of the context menu.",
+      "default": "color.surface.highlight"
+    },
+    {
       "id": "context-menu/item/background-focus",
       "component": "context-menu",
-      "description": "Item background focus of the context menu.",
-      "default": "color.surface.sunken"
+      "description": "Deprecated: use context-menu/item/background/highlight (OD-241). Item background focus of the context menu.",
+      "default": "color.surface.sunken",
+      "replaced_by": "context-menu/item/background/highlight"
     },
     {
       "id": "context-menu/item/label-focus",
@@ -6881,10 +6912,17 @@
       "default": "type.body.line-height"
     },
     {
+      "id": "context-menu/checkbox/item/background/highlight",
+      "component": "context-menu",
+      "description": "Checkbox item background when highlighted, by the pointer or the keyboard, of the context menu.",
+      "default": "color.surface.highlight"
+    },
+    {
       "id": "context-menu/checkbox/item/background-focus",
       "component": "context-menu",
-      "description": "Checkbox item background focus of the context menu.",
-      "default": "color.surface.sunken"
+      "description": "Deprecated: use context-menu/checkbox/item/background/highlight (OD-241). Checkbox item background focus of the context menu.",
+      "default": "color.surface.sunken",
+      "replaced_by": "context-menu/checkbox/item/background/highlight"
     },
     {
       "id": "context-menu/checkbox/item/label-focus",
@@ -6953,10 +6991,17 @@
       "default": "type.body.line-height"
     },
     {
+      "id": "context-menu/radio/item/background/highlight",
+      "component": "context-menu",
+      "description": "Radio item background when highlighted, by the pointer or the keyboard, of the context menu.",
+      "default": "color.surface.highlight"
+    },
+    {
       "id": "context-menu/radio/item/background-focus",
       "component": "context-menu",
-      "description": "Radio item background focus of the context menu.",
-      "default": "color.surface.sunken"
+      "description": "Deprecated: use context-menu/radio/item/background/highlight (OD-241). Radio item background focus of the context menu.",
+      "default": "color.surface.sunken",
+      "replaced_by": "context-menu/radio/item/background/highlight"
     },
     {
       "id": "context-menu/radio/item/label-focus",
@@ -7337,10 +7382,17 @@
       "default": "type.body.font-size"
     },
     {
+      "id": "dropdown-menu/item/background/highlight",
+      "component": "dropdown-menu",
+      "description": "Item background when highlighted, by the pointer or the keyboard, of the dropdown menu.",
+      "default": "color.surface.highlight"
+    },
+    {
       "id": "dropdown-menu/item/sunken",
       "component": "dropdown-menu",
-      "description": "Item sunken of the dropdown menu.",
-      "default": "color.surface.sunken"
+      "description": "Deprecated: use dropdown-menu/item/background/highlight (OD-241). Item sunken of the dropdown menu.",
+      "default": "color.surface.sunken",
+      "replaced_by": "dropdown-menu/item/background/highlight"
     },
     {
       "id": "dropdown-menu/item/disabled",
@@ -7355,16 +7407,30 @@
       "default": "size.icon"
     },
     {
+      "id": "dropdown-menu/item/label/destructive",
+      "component": "dropdown-menu",
+      "description": "Item label when destructive, of the dropdown menu.",
+      "default": "color.status.danger.@"
+    },
+    {
       "id": "dropdown-menu/label",
       "component": "dropdown-menu",
-      "description": "Label of the dropdown menu.",
-      "default": "color.status.danger.@"
+      "description": "Deprecated: use dropdown-menu/item/label/destructive (OD-241). Label of the dropdown menu.",
+      "default": "color.status.danger.@",
+      "replaced_by": "dropdown-menu/item/label/destructive"
+    },
+    {
+      "id": "dropdown-menu/separator/background",
+      "component": "dropdown-menu",
+      "description": "Separator line of the dropdown menu.",
+      "default": "color.border.default"
     },
     {
       "id": "dropdown-menu/background",
       "component": "dropdown-menu",
-      "description": "Background of the dropdown menu.",
-      "default": "color.border.default"
+      "description": "Deprecated: use dropdown-menu/separator/background (OD-241). Background of the dropdown menu.",
+      "default": "color.border.default",
+      "replaced_by": "dropdown-menu/separator/background"
     },
     {
       "id": "empty/gap",
@@ -8501,10 +8567,17 @@
       "default": "type.label.font-weight"
     },
     {
+      "id": "menubar/trigger/background/highlight",
+      "component": "menubar",
+      "description": "Trigger background when highlighted, by the pointer or the keyboard, of the menubar.",
+      "default": "color.surface.highlight"
+    },
+    {
       "id": "menubar/trigger/background-focus",
       "component": "menubar",
-      "description": "Trigger background focus of the menubar.",
-      "default": "color.surface.sunken"
+      "description": "Deprecated: use menubar/trigger/background/highlight (OD-241). Trigger background focus of the menubar.",
+      "default": "color.surface.sunken",
+      "replaced_by": "menubar/trigger/background/highlight"
     },
     {
       "id": "menubar/trigger/label-focus",
@@ -8591,10 +8664,17 @@
       "default": "type.body.line-height"
     },
     {
+      "id": "menubar/item/background/highlight",
+      "component": "menubar",
+      "description": "Item background when highlighted, by the pointer or the keyboard, of the menubar.",
+      "default": "color.surface.highlight"
+    },
+    {
       "id": "menubar/item/background-focus",
       "component": "menubar",
-      "description": "Item background focus of the menubar.",
-      "default": "color.surface.sunken"
+      "description": "Deprecated: use menubar/item/background/highlight (OD-241). Item background focus of the menubar.",
+      "default": "color.surface.sunken",
+      "replaced_by": "menubar/item/background/highlight"
     },
     {
       "id": "menubar/item/label-focus",
@@ -8687,10 +8767,17 @@
       "default": "type.body.line-height"
     },
     {
+      "id": "menubar/checkbox/item/background/highlight",
+      "component": "menubar",
+      "description": "Checkbox item background when highlighted, by the pointer or the keyboard, of the menubar.",
+      "default": "color.surface.highlight"
+    },
+    {
       "id": "menubar/checkbox/item/background-focus",
       "component": "menubar",
-      "description": "Checkbox item background focus of the menubar.",
-      "default": "color.surface.sunken"
+      "description": "Deprecated: use menubar/checkbox/item/background/highlight (OD-241). Checkbox item background focus of the menubar.",
+      "default": "color.surface.sunken",
+      "replaced_by": "menubar/checkbox/item/background/highlight"
     },
     {
       "id": "menubar/checkbox/item/label-focus",
@@ -8759,10 +8846,17 @@
       "default": "type.body.line-height"
     },
     {
+      "id": "menubar/radio/item/background/highlight",
+      "component": "menubar",
+      "description": "Radio item background when highlighted, by the pointer or the keyboard, of the menubar.",
+      "default": "color.surface.highlight"
+    },
+    {
       "id": "menubar/radio/item/background-focus",
       "component": "menubar",
-      "description": "Radio item background focus of the menubar.",
-      "default": "color.surface.sunken"
+      "description": "Deprecated: use menubar/radio/item/background/highlight (OD-241). Radio item background focus of the menubar.",
+      "default": "color.surface.sunken",
+      "replaced_by": "menubar/radio/item/background/highlight"
     },
     {
       "id": "menubar/radio/item/label-focus",
@@ -8873,10 +8967,17 @@
       "default": "type.body.line-height"
     },
     {
+      "id": "menubar/sub/trigger/background/highlight",
+      "component": "menubar",
+      "description": "Submenu trigger background when highlighted, by the pointer or the keyboard, of the menubar.",
+      "default": "color.surface.highlight"
+    },
+    {
       "id": "menubar/sub/trigger/background-focus",
       "component": "menubar",
-      "description": "Sub trigger background focus of the menubar.",
-      "default": "color.surface.sunken"
+      "description": "Deprecated: use menubar/sub/trigger/background/highlight (OD-241). Sub trigger background focus of the menubar.",
+      "default": "color.surface.sunken",
+      "replaced_by": "menubar/sub/trigger/background/highlight"
     },
     {
       "id": "menubar/sub/trigger/label-focus",
@@ -9215,10 +9316,17 @@
       "default": "color.text.primary"
     },
     {
+      "id": "navigation-menu/trigger/background/highlight",
+      "component": "navigation-menu",
+      "description": "Trigger background when highlighted, by the pointer or the keyboard, of the navigation menu.",
+      "default": "color.surface.highlight"
+    },
+    {
       "id": "navigation-menu/background-focus",
       "component": "navigation-menu",
-      "description": "Background focus of the navigation menu.",
-      "default": "color.surface.sunken"
+      "description": "Deprecated: use navigation-menu/trigger/background/highlight (OD-241). Background focus of the navigation menu.",
+      "default": "color.surface.sunken",
+      "replaced_by": "navigation-menu/trigger/background/highlight"
     },
     {
       "id": "navigation-menu/label-focus",
@@ -9365,10 +9473,17 @@
       "default": "type.body.line-height"
     },
     {
+      "id": "navigation-menu/link/background/hover",
+      "component": "navigation-menu",
+      "description": "Link background under the pointer, of the navigation menu.",
+      "default": "color.surface.highlight"
+    },
+    {
       "id": "navigation-menu/link/background-hover",
       "component": "navigation-menu",
-      "description": "Link background hover of the navigation menu.",
-      "default": "color.surface.sunken"
+      "description": "Deprecated: use navigation-menu/link/background/hover (OD-241). Link background hover of the navigation menu.",
+      "default": "color.surface.sunken",
+      "replaced_by": "navigation-menu/link/background/hover"
     },
     {
       "id": "navigation-menu/link/label-hover",
@@ -9377,10 +9492,17 @@
       "default": "color.text.primary"
     },
     {
+      "id": "navigation-menu/link/background/highlight",
+      "component": "navigation-menu",
+      "description": "Link background when highlighted by the keyboard, of the navigation menu.",
+      "default": "color.surface.highlight"
+    },
+    {
       "id": "navigation-menu/link/background-focus",
       "component": "navigation-menu",
-      "description": "Link background focus of the navigation menu.",
-      "default": "color.surface.sunken"
+      "description": "Deprecated: use navigation-menu/link/background/highlight (OD-241). Link background focus of the navigation menu.",
+      "default": "color.surface.sunken",
+      "replaced_by": "navigation-menu/link/background/highlight"
     },
     {
       "id": "navigation-menu/link/label-focus",
@@ -9389,10 +9511,17 @@
       "default": "color.text.primary"
     },
     {
-      "id": "navigation-menu/link/background",
+      "id": "navigation-menu/link/background/current",
       "component": "navigation-menu",
-      "description": "Link background of the navigation menu.",
-      "default": "color.surface.sunken"
+      "description": "Background of the link to the current page, of the navigation menu.",
+      "default": "color.surface.selected"
+    },
+    {
+      "id": "navigation-menu/link/background/@",
+      "component": "navigation-menu",
+      "description": "Deprecated: use navigation-menu/link/background/current (OD-241). Link background of the navigation menu.",
+      "default": "color.surface.sunken",
+      "replaced_by": "navigation-menu/link/background/current"
     },
     {
       "id": "navigation-menu/link/focus",
@@ -9809,10 +9938,17 @@
       "default": "type.body.font-size"
     },
     {
+      "id": "select/item/background/highlight",
+      "component": "select",
+      "description": "Item background when highlighted, by the pointer or the keyboard, of the select.",
+      "default": "color.surface.highlight"
+    },
+    {
       "id": "select/item/sunken",
       "component": "select",
-      "description": "Item sunken of the select.",
-      "default": "color.surface.sunken"
+      "description": "Deprecated: use select/item/background/highlight (OD-241). Item sunken of the select.",
+      "default": "color.surface.sunken",
+      "replaced_by": "select/item/background/highlight"
     },
     {
       "id": "select/item/disabled",
@@ -11370,6 +11506,25 @@
           {
             "when": "A selected item",
             "use": "color.surface.selected"
+          },
+          {
+            "when": "An item the pointer or the keyboard is on",
+            "use": "color.surface.highlight"
+          }
+        ]
+      },
+      {
+        "id": "color.surface.highlight",
+        "intent": "The fill of the item the pointer or the keyboard is on. A state shows on the item's background, one step from the surface it sits on: darker in light, lighter in dark.",
+        "use_for": ["Highlighted menu items", "Highlighted options"],
+        "not_for": [
+          {
+            "when": "Table headers and wells",
+            "use": "color.surface.sunken"
+          },
+          {
+            "when": "A selected or current item",
+            "use": "color.surface.selected"
           }
         ]
       },
@@ -12251,6 +12406,18 @@
         },
         {
           "id": "color.surface.sunken",
+          "carries": [
+            "text.primary",
+            "text.secondary",
+            "text.muted",
+            "link",
+            "icon",
+            "border",
+            "focus"
+          ]
+        },
+        {
+          "id": "color.surface.highlight",
           "carries": [
             "text.primary",
             "text.secondary",

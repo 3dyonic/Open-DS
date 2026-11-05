@@ -150,6 +150,9 @@ export function aliasChain(index, path) {
       index.byPath.has(`theme.${r.replace(/^theme\./, "")}`)
     )
       r = `theme.${r.replace(/^theme\./, "")}`;
+    // A component key that aliases another (a deprecated key, OD-241) names it without "component.",
+    // as the build sees the tree.
+    else if (!index.byPath.has(r) && index.byPath.has(`component.${r}`)) r = `component.${r}`;
     if (!r.startsWith("theme.")) hops.push(r);
     p = r;
   }

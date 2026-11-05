@@ -54,17 +54,19 @@ const TICKET = {
 
 // Tailwind variant → state. Variants that are not a state (dark:, sm:, data-[side=…], group-…) are
 // ignored. A disabled variant wins over the others: a disabled control does not change on hover.
+// The first state in this order wins.
 const STATES = [
   ["disabled", /^(disabled|aria-disabled|data-\[disabled(?:=true)?\]|group-data-\[disabled(?:=true)?\]|peer-disabled)$/],
   ["destructive", /variant=destructive|data-\[tone=danger\]/],
   ["invalid", /^aria-invalid$|data-\[invalid/],
+  // An interaction wins over a lasting state: data-[active=true]:hover: paints a current item on hover.
+  ["pressed", /^active$|data-\[pressed/],
+  ["highlight", /^(focus|focus-visible|focus-within)$|data-\[highlighted\]/],
+  ["hover", /^hover$/],
   ["current", /^data-\[active=true\]$|^aria-current|data-\[state=active\]/],
   ["selected", /^aria-selected|data-\[selected(?:=true)?\]/],
   ["checked", /data-\[state=(checked|on)\]|^aria-checked|data-\[checked/],
   ["open", /data-\[state=open\]|^aria-expanded/],
-  ["pressed", /^active$|data-\[pressed/],
-  ["highlight", /^(focus|focus-visible|focus-within)$|data-\[highlighted\]/],
-  ["hover", /^hover$/],
 ];
 // Words in a key that name each state.
 const STATE_WORDS = {

@@ -1147,6 +1147,11 @@
           "type": "string",
           "description": "What the token is for."
         },
+        "$deprecated": {
+          "type": "string",
+          "minLength": 1,
+          "description": "DTCG: this token is kept as an alias for one minor release. Says what to use instead."
+        },
         "$extensions": {
           "type": "object",
           "additionalProperties": false,
@@ -1157,6 +1162,17 @@
               "additionalProperties": false,
               "description": "On a fill in a theme: its tone, which decides the text on it (OD-222, OD-227). On a component key: the fill it sits on, so the build picks its text by that fill's tone (OD-223).",
               "properties": {
+                "why": {
+                  "type": "string",
+                  "minLength": 1,
+                  "description": "On a theme pick: why this step carries the semantic's rule in this brand and mode (OD-241, OD-243)."
+                },
+                "because": {
+                  "type": "array",
+                  "minItems": 1,
+                  "items": { "type": "string", "pattern": "^[a-z]+\\.[a-z]+$" },
+                  "description": "On a theme pick: the answers the step follows from."
+                },
                 "tone": {
                   "enum": ["light", "dark"],
                   "description": "Light: the text on it is color.text.on-light. Dark: color.text.on-dark."

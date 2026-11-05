@@ -843,7 +843,7 @@ html[data-scheme="brand-expressive"] {
   --dialog-font-family: var(--type-heading-font-family); /** Font family of the dialog. */
   --drawer-overlay-background: var(--color-surface-scrim); /** Overlay background of the drawer. */
   --dropdown-menu-item-radius: var(--radius-badge); /** Item radius of the dropdown menu. */
-  --dropdown-menu-label: var(--color-status-danger); /** Label of the dropdown menu. */
+  --dropdown-menu-item-label-destructive: var(--color-status-danger); /** Item label when destructive, of the dropdown menu. */
   --empty-radius: var(--radius-container); /** Radius of the empty. */
   --empty-icon-radius: var(--radius-container); /** Icon radius of the empty. */
   --empty-description-label-2: var(--color-action-primary); /** Description label 2 of the empty. */
@@ -977,6 +977,7 @@ html[data-scheme="brand-expressive"] {
   --color-surface-default: #FFFFFF; /** The base fill for content. */
   --color-surface-raised: #FFFFFF; /** Fills that float above content. */
   --color-surface-sunken: #FCEFE6; /** A recessed fill, a step below content. */
+  --color-surface-highlight: #FCEFE6; /** The fill of the item the pointer or the keyboard is on. A state shows on the item's background, one step from the surface it sits on: darker in light, lighter in dark. */
   --color-surface-inverse: #1F1411; /** A reversed fill for small, short-lived messages. */
   --color-text-primary: #1F1411; /** Body text and headings. */
   --color-text-secondary: #4D3A33; /** Supporting text. */
@@ -993,6 +994,7 @@ html[data-scheme="brand-expressive"] {
   --color-disabled-text: #8A6F63; /** Text and icons of a control that cannot be used right now. */
   --color-disabled-surface: #FCEFE6; /** The fill of a control that cannot be used right now. */
   --color-disabled-border: #F2DCCF; /** The edge of a control that cannot be used right now. */
+  --dropdown-menu-label: var(--dropdown-menu-item-label-destructive); /** Deprecated: use component.dropdown-menu.item.label.destructive (OD-241). Label of the dropdown menu. */
   --button-primary-label: var(--color-text-on-action); /** Primary button label color. */
   --button-secondary-background: var(--color-action-secondary); /** Secondary button fill. */
   --button-secondary-background-hover: var(--color-action-secondary-hover); /** Secondary button fill on hover. */
@@ -1140,8 +1142,8 @@ html[data-scheme="brand-expressive"] {
   --drawer-description-label: var(--color-text-muted); /** Description label of the drawer. */
   --dropdown-menu-content-label: var(--color-text-primary); /** Content label of the dropdown menu. */
   --dropdown-menu-content-border: var(--color-border-default); /** Content border of the dropdown menu. */
-  --dropdown-menu-item-sunken: var(--color-surface-sunken); /** Item sunken of the dropdown menu. */
-  --dropdown-menu-background: var(--color-border-default); /** Background of the dropdown menu. */
+  --dropdown-menu-item-background-highlight: var(--color-surface-highlight); /** Item background when highlighted, by the pointer or the keyboard, of the dropdown menu. */
+  --dropdown-menu-separator-background: var(--color-border-default); /** Separator line of the dropdown menu. */
   --empty-icon-background: var(--color-surface-sunken); /** Icon background of the empty. */
   --empty-icon-label: var(--color-text-primary); /** Icon label of the empty. */
   --empty-description-label: var(--color-text-muted); /** Description label of the empty. */
@@ -1301,6 +1303,8 @@ html[data-scheme="brand-expressive"] {
   --toggle-outline-border: var(--color-border-strong); /** Outline border of the toggle. */
   --toggle-outline-background-hover: var(--color-surface-sunken); /** Outline background hover of the toggle. */
   --toggle-outline-label-hover: var(--color-text-primary); /** Outline label hover of the toggle. */
+  --dropdown-menu-item-sunken: var(--dropdown-menu-item-background-highlight); /** Deprecated: use component.dropdown-menu.item.background.highlight (OD-241). Item sunken of the dropdown menu. */
+  --dropdown-menu-background: var(--dropdown-menu-separator-background); /** Deprecated: use component.dropdown-menu.separator.background (OD-241). Background of the dropdown menu. */
 }
 
 html[data-scheme="brand-expressive"][data-theme="dark"] {
@@ -2146,7 +2150,7 @@ html[data-scheme="brand-expressive"][data-theme="dark"] {
   --dialog-font-family: var(--type-heading-font-family); /** Font family of the dialog. */
   --drawer-overlay-background: var(--color-surface-scrim); /** Overlay background of the drawer. */
   --dropdown-menu-item-radius: var(--radius-badge); /** Item radius of the dropdown menu. */
-  --dropdown-menu-label: var(--color-status-danger); /** Label of the dropdown menu. */
+  --dropdown-menu-item-label-destructive: var(--color-status-danger); /** Item label when destructive, of the dropdown menu. */
   --empty-radius: var(--radius-container); /** Radius of the empty. */
   --empty-icon-radius: var(--radius-container); /** Icon radius of the empty. */
   --empty-description-label-2: var(--color-action-primary); /** Description label 2 of the empty. */
@@ -2280,6 +2284,7 @@ html[data-scheme="brand-expressive"][data-theme="dark"] {
   --color-surface-default: #1F1411; /** The base fill for content. */
   --color-surface-raised: #1F1411; /** Fills that float above content. */
   --color-surface-sunken: #33241F; /** A recessed fill, a step below content. */
+  --color-surface-highlight: #33241F; /** The fill of the item the pointer or the keyboard is on. A state shows on the item's background, one step from the surface it sits on: darker in light, lighter in dark. */
   --color-surface-inverse: #FFF8F3; /** A reversed fill for small, short-lived messages. */
   --color-text-primary: #FFF8F3; /** Body text and headings. */
   --color-text-secondary: #E2C4B3; /** Supporting text. */
@@ -2296,6 +2301,7 @@ html[data-scheme="brand-expressive"][data-theme="dark"] {
   --color-disabled-text: #E2C4B3; /** Text and icons of a control that cannot be used right now. */
   --color-disabled-surface: #33241F; /** The fill of a control that cannot be used right now. */
   --color-disabled-border: #4D3A33; /** The edge of a control that cannot be used right now. */
+  --dropdown-menu-label: var(--dropdown-menu-item-label-destructive); /** Deprecated: use component.dropdown-menu.item.label.destructive (OD-241). Label of the dropdown menu. */
   --button-primary-label: var(--color-text-on-action); /** Primary button label color. */
   --button-secondary-background: var(--color-action-secondary); /** Secondary button fill. */
   --button-secondary-background-hover: var(--color-action-secondary-hover); /** Secondary button fill on hover. */
@@ -2443,8 +2449,8 @@ html[data-scheme="brand-expressive"][data-theme="dark"] {
   --drawer-description-label: var(--color-text-muted); /** Description label of the drawer. */
   --dropdown-menu-content-label: var(--color-text-primary); /** Content label of the dropdown menu. */
   --dropdown-menu-content-border: var(--color-border-default); /** Content border of the dropdown menu. */
-  --dropdown-menu-item-sunken: var(--color-surface-sunken); /** Item sunken of the dropdown menu. */
-  --dropdown-menu-background: var(--color-border-default); /** Background of the dropdown menu. */
+  --dropdown-menu-item-background-highlight: var(--color-surface-highlight); /** Item background when highlighted, by the pointer or the keyboard, of the dropdown menu. */
+  --dropdown-menu-separator-background: var(--color-border-default); /** Separator line of the dropdown menu. */
   --empty-icon-background: var(--color-surface-sunken); /** Icon background of the empty. */
   --empty-icon-label: var(--color-text-primary); /** Icon label of the empty. */
   --empty-description-label: var(--color-text-muted); /** Description label of the empty. */
@@ -2604,6 +2610,8 @@ html[data-scheme="brand-expressive"][data-theme="dark"] {
   --toggle-outline-border: var(--color-border-strong); /** Outline border of the toggle. */
   --toggle-outline-background-hover: var(--color-surface-sunken); /** Outline background hover of the toggle. */
   --toggle-outline-label-hover: var(--color-text-primary); /** Outline label hover of the toggle. */
+  --dropdown-menu-item-sunken: var(--dropdown-menu-item-background-highlight); /** Deprecated: use component.dropdown-menu.item.background.highlight (OD-241). Item sunken of the dropdown menu. */
+  --dropdown-menu-background: var(--dropdown-menu-separator-background); /** Deprecated: use component.dropdown-menu.separator.background (OD-241). Background of the dropdown menu. */
 }
 html[data-scheme="brand-expressive"] {
   --ifm-color-primary: var(--color-action-primary);

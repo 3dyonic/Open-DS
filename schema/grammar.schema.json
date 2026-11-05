@@ -245,6 +245,11 @@
             "type": "string",
             "description": "The semantic token path the key points to by default.",
             "examples": ["color.action.primary"]
+          },
+          "replaced_by": {
+            "type": "string",
+            "pattern": "^[a-z-]+(/([a-z0-9-]+|@))+$",
+            "description": "A deprecated key: the key that replaces it. It stays one minor release as an alias of that key (OD-241)."
           }
         }
       }

@@ -3241,6 +3241,20 @@
                     }
                   }
                 },
+                "highlight": {
+                  "$type": "color",
+                  "$value": "{color.neutral.100}",
+                  "$extensions": {
+                    "open-ds": {
+                      "tone": "light",
+                      "why": "neutral.100, two steps darker than the surfaces it sits on (neutral.0), so the item under the pointer or the keyboard reads as a band without lifting off the page. It skips neutral.50, the page canvas, so a menu item never matches the page behind it.",
+                      "because": [
+                        "accessibility.roles",
+                        "color.definition"
+                      ]
+                    }
+                  }
+                },
                 "selected": {
                   "$type": "color",
                   "$value": "{color.violet.light.100}",
@@ -3601,6 +3615,20 @@
                   "$extensions": {
                     "open-ds": {
                       "tone": "dark"
+                    }
+                  }
+                },
+                "highlight": {
+                  "$type": "color",
+                  "$value": "{color.neutral.100}",
+                  "$extensions": {
+                    "open-ds": {
+                      "tone": "dark",
+                      "why": "neutral.100, one step lighter than the surfaces it sits on (neutral.50), so the item under the pointer or the keyboard reads as a band on the menu and on cards.",
+                      "because": [
+                        "accessibility.roles",
+                        "color.definition"
+                      ]
                     }
                   }
                 },
@@ -4230,6 +4258,11 @@
             "$type": "color",
             "$description": "Table headers and wells.",
             "$value": "{theme.color.surface.sunken}"
+          },
+          "highlight": {
+            "$type": "color",
+            "$description": "The item the pointer or the keyboard is on.",
+            "$value": "{theme.color.surface.highlight}"
           },
           "selected": {
             "$type": "color",
@@ -6551,8 +6584,9 @@
               "$description": "Sub trigger line height of the context menu."
             },
             "background-focus": {
-              "$value": "{color.surface.sunken}",
-              "$description": "Sub trigger background focus of the context menu."
+              "$value": "{context-menu.sub.trigger.background.highlight}",
+              "$description": "Deprecated: use component.context-menu.sub.trigger.background.highlight (OD-241). Sub trigger background focus of the context menu.",
+              "$deprecated": "Use component.context-menu.sub.trigger.background.highlight. Removed in the next minor release."
             },
             "label-focus": {
               "$value": "{color.text.primary}",
@@ -6577,6 +6611,12 @@
             "label": {
               "$value": "{color.text.muted}",
               "$description": "Sub trigger label of the context menu."
+            },
+            "background": {
+              "highlight": {
+                "$value": "{color.surface.highlight}",
+                "$description": "Submenu trigger background when highlighted, by the pointer or the keyboard, of the context menu."
+              }
             }
           },
           "content": {
@@ -6650,8 +6690,9 @@
             "$description": "Item line height of the context menu."
           },
           "background-focus": {
-            "$value": "{color.surface.sunken}",
-            "$description": "Item background focus of the context menu."
+            "$value": "{context-menu.item.background.highlight}",
+            "$description": "Deprecated: use component.context-menu.item.background.highlight (OD-241). Item background focus of the context menu.",
+            "$deprecated": "Use component.context-menu.item.background.highlight. Removed in the next minor release."
           },
           "label-focus": {
             "$value": "{color.text.primary}",
@@ -6684,6 +6725,12 @@
           "label-2": {
             "$value": "{color.text.muted}",
             "$description": "Item label 2 of the context menu."
+          },
+          "background": {
+            "highlight": {
+              "$value": "{color.surface.highlight}",
+              "$description": "Item background when highlighted, by the pointer or the keyboard, of the context menu."
+            }
           }
         },
         "checkbox": {
@@ -6717,8 +6764,9 @@
               "$description": "Checkbox item line height of the context menu."
             },
             "background-focus": {
-              "$value": "{color.surface.sunken}",
-              "$description": "Checkbox item background focus of the context menu."
+              "$value": "{context-menu.checkbox.item.background.highlight}",
+              "$description": "Deprecated: use component.context-menu.checkbox.item.background.highlight (OD-241). Checkbox item background focus of the context menu.",
+              "$deprecated": "Use component.context-menu.checkbox.item.background.highlight. Removed in the next minor release."
             },
             "label-focus": {
               "$value": "{color.text.primary}",
@@ -6731,6 +6779,12 @@
             "icon-size": {
               "$value": "{size.icon}",
               "$description": "Checkbox item icon size of the context menu."
+            },
+            "background": {
+              "highlight": {
+                "$value": "{color.surface.highlight}",
+                "$description": "Checkbox item background when highlighted, by the pointer or the keyboard, of the context menu."
+              }
             }
           }
         },
@@ -6769,8 +6823,9 @@
               "$description": "Radio item line height of the context menu."
             },
             "background-focus": {
-              "$value": "{color.surface.sunken}",
-              "$description": "Radio item background focus of the context menu."
+              "$value": "{context-menu.radio.item.background.highlight}",
+              "$description": "Deprecated: use component.context-menu.radio.item.background.highlight (OD-241). Radio item background focus of the context menu.",
+              "$deprecated": "Use component.context-menu.radio.item.background.highlight. Removed in the next minor release."
             },
             "label-focus": {
               "$value": "{color.text.primary}",
@@ -6783,6 +6838,12 @@
             "icon-size": {
               "$value": "{size.icon}",
               "$description": "Radio item icon size of the context menu."
+            },
+            "background": {
+              "highlight": {
+                "$value": "{color.surface.highlight}",
+                "$description": "Radio item background when highlighted, by the pointer or the keyboard, of the context menu."
+              }
             }
           }
         },
@@ -7060,8 +7121,9 @@
             "$description": "Item font size of the dropdown menu."
           },
           "sunken": {
-            "$value": "{color.surface.sunken}",
-            "$description": "Item sunken of the dropdown menu."
+            "$value": "{dropdown-menu.item.background.highlight}",
+            "$description": "Deprecated: use component.dropdown-menu.item.background.highlight (OD-241). Item sunken of the dropdown menu.",
+            "$deprecated": "Use component.dropdown-menu.item.background.highlight. Removed in the next minor release."
           },
           "disabled": {
             "$value": "{opacity.disabled}",
@@ -7070,15 +7132,35 @@
           "icon": {
             "$value": "{size.icon}",
             "$description": "Item icon of the dropdown menu."
+          },
+          "background": {
+            "highlight": {
+              "$value": "{color.surface.highlight}",
+              "$description": "Item background when highlighted, by the pointer or the keyboard, of the dropdown menu."
+            }
+          },
+          "label": {
+            "destructive": {
+              "$value": "{color.status.danger.@}",
+              "$description": "Item label when destructive, of the dropdown menu."
+            }
           }
         },
         "label": {
-          "$value": "{color.status.danger.@}",
-          "$description": "Label of the dropdown menu."
+          "$value": "{dropdown-menu.item.label.destructive}",
+          "$description": "Deprecated: use component.dropdown-menu.item.label.destructive (OD-241). Label of the dropdown menu.",
+          "$deprecated": "Use component.dropdown-menu.item.label.destructive. Removed in the next minor release."
         },
         "background": {
-          "$value": "{color.border.default}",
-          "$description": "Background of the dropdown menu."
+          "$value": "{dropdown-menu.separator.background}",
+          "$description": "Deprecated: use component.dropdown-menu.separator.background (OD-241). Background of the dropdown menu.",
+          "$deprecated": "Use component.dropdown-menu.separator.background. Removed in the next minor release."
+        },
+        "separator": {
+          "background": {
+            "$value": "{color.border.default}",
+            "$description": "Separator line of the dropdown menu."
+          }
         }
       },
       "empty": {
@@ -7926,8 +8008,9 @@
             "$description": "Trigger font weight of the menubar."
           },
           "background-focus": {
-            "$value": "{color.surface.sunken}",
-            "$description": "Trigger background focus of the menubar."
+            "$value": "{menubar.trigger.background.highlight}",
+            "$description": "Deprecated: use component.menubar.trigger.background.highlight (OD-241). Trigger background focus of the menubar.",
+            "$deprecated": "Use component.menubar.trigger.background.highlight. Removed in the next minor release."
           },
           "label-focus": {
             "$value": "{color.text.primary}",
@@ -7940,6 +8023,12 @@
           "label-open": {
             "$value": "{color.text.primary}",
             "$description": "Trigger label open of the menubar."
+          },
+          "background": {
+            "highlight": {
+              "$value": "{color.surface.highlight}",
+              "$description": "Trigger background when highlighted, by the pointer or the keyboard, of the menubar."
+            }
           }
         },
         "content": {
@@ -7990,8 +8079,9 @@
             "$description": "Item line height of the menubar."
           },
           "background-focus": {
-            "$value": "{color.surface.sunken}",
-            "$description": "Item background focus of the menubar."
+            "$value": "{menubar.item.background.highlight}",
+            "$description": "Deprecated: use component.menubar.item.background.highlight (OD-241). Item background focus of the menubar.",
+            "$deprecated": "Use component.menubar.item.background.highlight. Removed in the next minor release."
           },
           "label-focus": {
             "$value": "{color.text.primary}",
@@ -8024,6 +8114,12 @@
           "label-2": {
             "$value": "{color.text.muted}",
             "$description": "Item label 2 of the menubar."
+          },
+          "background": {
+            "highlight": {
+              "$value": "{color.surface.highlight}",
+              "$description": "Item background when highlighted, by the pointer or the keyboard, of the menubar."
+            }
           }
         },
         "checkbox": {
@@ -8057,8 +8153,9 @@
               "$description": "Checkbox item line height of the menubar."
             },
             "background-focus": {
-              "$value": "{color.surface.sunken}",
-              "$description": "Checkbox item background focus of the menubar."
+              "$value": "{menubar.checkbox.item.background.highlight}",
+              "$description": "Deprecated: use component.menubar.checkbox.item.background.highlight (OD-241). Checkbox item background focus of the menubar.",
+              "$deprecated": "Use component.menubar.checkbox.item.background.highlight. Removed in the next minor release."
             },
             "label-focus": {
               "$value": "{color.text.primary}",
@@ -8071,6 +8168,12 @@
             "icon-size": {
               "$value": "{size.icon}",
               "$description": "Checkbox item icon size of the menubar."
+            },
+            "background": {
+              "highlight": {
+                "$value": "{color.surface.highlight}",
+                "$description": "Checkbox item background when highlighted, by the pointer or the keyboard, of the menubar."
+              }
             }
           }
         },
@@ -8109,8 +8212,9 @@
               "$description": "Radio item line height of the menubar."
             },
             "background-focus": {
-              "$value": "{color.surface.sunken}",
-              "$description": "Radio item background focus of the menubar."
+              "$value": "{menubar.radio.item.background.highlight}",
+              "$description": "Deprecated: use component.menubar.radio.item.background.highlight (OD-241). Radio item background focus of the menubar.",
+              "$deprecated": "Use component.menubar.radio.item.background.highlight. Removed in the next minor release."
             },
             "label-focus": {
               "$value": "{color.text.primary}",
@@ -8123,6 +8227,12 @@
             "icon-size": {
               "$value": "{size.icon}",
               "$description": "Radio item icon size of the menubar."
+            },
+            "background": {
+              "highlight": {
+                "$value": "{color.surface.highlight}",
+                "$description": "Radio item background when highlighted, by the pointer or the keyboard, of the menubar."
+              }
             }
           }
         },
@@ -8195,8 +8305,9 @@
               "$description": "Sub trigger line height of the menubar."
             },
             "background-focus": {
-              "$value": "{color.surface.sunken}",
-              "$description": "Sub trigger background focus of the menubar."
+              "$value": "{menubar.sub.trigger.background.highlight}",
+              "$description": "Deprecated: use component.menubar.sub.trigger.background.highlight (OD-241). Sub trigger background focus of the menubar.",
+              "$deprecated": "Use component.menubar.sub.trigger.background.highlight. Removed in the next minor release."
             },
             "label-focus": {
               "$value": "{color.text.primary}",
@@ -8213,6 +8324,12 @@
             "label-open": {
               "$value": "{color.text.primary}",
               "$description": "Sub trigger label open of the menubar."
+            },
+            "background": {
+              "highlight": {
+                "$value": "{color.surface.highlight}",
+                "$description": "Submenu trigger background when highlighted, by the pointer or the keyboard, of the menubar."
+              }
             }
           },
           "content": {
@@ -8441,8 +8558,9 @@
           "$description": "Label hover of the navigation menu."
         },
         "background-focus": {
-          "$value": "{color.surface.sunken}",
-          "$description": "Background focus of the navigation menu."
+          "$value": "{navigation-menu.trigger.background.highlight}",
+          "$description": "Deprecated: use component.navigation-menu.trigger.background.highlight (OD-241). Background focus of the navigation menu.",
+          "$deprecated": "Use component.navigation-menu.trigger.background.highlight. Removed in the next minor release."
         },
         "label-focus": {
           "$value": "{color.text.primary}",
@@ -8546,24 +8664,41 @@
             "$description": "Link line height of the navigation menu."
           },
           "background-hover": {
-            "$value": "{color.surface.sunken}",
-            "$description": "Link background hover of the navigation menu."
+            "$value": "{navigation-menu.link.background.hover}",
+            "$description": "Deprecated: use component.navigation-menu.link.background.hover (OD-241). Link background hover of the navigation menu.",
+            "$deprecated": "Use component.navigation-menu.link.background.hover. Removed in the next minor release."
           },
           "label-hover": {
             "$value": "{color.text.primary}",
             "$description": "Link label hover of the navigation menu."
           },
           "background-focus": {
-            "$value": "{color.surface.sunken}",
-            "$description": "Link background focus of the navigation menu."
+            "$value": "{navigation-menu.link.background.highlight}",
+            "$description": "Deprecated: use component.navigation-menu.link.background.highlight (OD-241). Link background focus of the navigation menu.",
+            "$deprecated": "Use component.navigation-menu.link.background.highlight. Removed in the next minor release."
           },
           "label-focus": {
             "$value": "{color.text.primary}",
             "$description": "Link label focus of the navigation menu."
           },
           "background": {
-            "$value": "{color.surface.sunken}",
-            "$description": "Link background of the navigation menu."
+            "@": {
+              "$value": "{navigation-menu.link.background.current}",
+              "$description": "Deprecated: use component.navigation-menu.link.background.current (OD-241). Link background of the navigation menu.",
+              "$deprecated": "Use component.navigation-menu.link.background.current. Removed in the next minor release."
+            },
+            "hover": {
+              "$value": "{color.surface.highlight}",
+              "$description": "Link background under the pointer, of the navigation menu."
+            },
+            "highlight": {
+              "$value": "{color.surface.highlight}",
+              "$description": "Link background when highlighted by the keyboard, of the navigation menu."
+            },
+            "current": {
+              "$value": "{color.surface.selected}",
+              "$description": "Background of the link to the current page, of the navigation menu."
+            }
           },
           "focus": {
             "$value": "{border-width.focus}",
@@ -8601,6 +8736,14 @@
         "shadow-2": {
           "$value": "{elevation.overlay}",
           "$description": "Shadow 2 of the navigation menu."
+        },
+        "trigger": {
+          "background": {
+            "highlight": {
+              "$value": "{color.surface.highlight}",
+              "$description": "Trigger background when highlighted, by the pointer or the keyboard, of the navigation menu."
+            }
+          }
         }
       },
       "pagination": {
@@ -8882,12 +9025,19 @@
             "$description": "Item font size of the select."
           },
           "sunken": {
-            "$value": "{color.surface.sunken}",
-            "$description": "Item sunken of the select."
+            "$value": "{select.item.background.highlight}",
+            "$description": "Deprecated: use component.select.item.background.highlight (OD-241). Item sunken of the select.",
+            "$deprecated": "Use component.select.item.background.highlight. Removed in the next minor release."
           },
           "disabled": {
             "$value": "{opacity.disabled}",
             "$description": "Item disabled of the select."
+          },
+          "background": {
+            "highlight": {
+              "$value": "{color.surface.highlight}",
+              "$description": "Item background when highlighted, by the pointer or the keyboard, of the select."
+            }
           }
         }
       },

@@ -47,7 +47,7 @@ function MenubarTrigger({ className, ...props }: React.ComponentProps<typeof Men
     <MenubarPrimitive.Trigger
       data-slot="menubar-trigger"
       className={cn(
-        "flex items-center rounded-[var(--menubar-trigger-radius)] px-[var(--menubar-trigger-padding-x)] py-[var(--menubar-trigger-padding-y)] text-[length:var(--menubar-trigger-font-size)]/[var(--menubar-trigger-line-height)] [font-weight:var(--menubar-trigger-font-weight)] outline-hidden select-none focus:bg-[color:var(--menubar-trigger-background-focus)] focus:text-[color:var(--menubar-trigger-label-focus)] data-[state=open]:bg-[color:var(--menubar-trigger-background-open)] data-[state=open]:text-[color:var(--menubar-trigger-label-open)]",
+        "flex items-center rounded-[var(--menubar-trigger-radius)] px-[var(--menubar-trigger-padding-x)] py-[var(--menubar-trigger-padding-y)] text-[length:var(--menubar-trigger-font-size)]/[var(--menubar-trigger-line-height)] [font-weight:var(--menubar-trigger-font-weight)] outline-hidden select-none focus:bg-[color:var(--menubar-trigger-background-highlight)] focus:text-[color:var(--menubar-trigger-label-focus)] data-[state=open]:bg-[color:var(--menubar-trigger-background-open)] data-[state=open]:text-[color:var(--menubar-trigger-label-open)]",
         className,
       )}
       {...props}
@@ -91,7 +91,7 @@ function MenubarItem({
       data-inset={inset}
       data-variant={variant}
       className={cn(
-        "relative flex cursor-default items-center gap-[var(--menubar-item-gap)] rounded-[var(--menubar-item-radius)] px-[var(--menubar-item-padding-x)] py-[var(--menubar-item-padding-y)] text-[length:var(--menubar-item-font-size)]/[var(--menubar-item-line-height)] outline-hidden select-none focus:bg-[color:var(--menubar-item-background-focus)] focus:text-[color:var(--menubar-item-label-focus)] data-[disabled]:pointer-events-none data-[disabled]:opacity-[var(--menubar-item-disabled-opacity-disabled)] data-[inset]:pl-[var(--menubar-item-padding-left)] data-[variant=destructive]:text-[color:var(--menubar-item-label)] data-[variant=destructive]:focus:bg-[color:var(--menubar-item-background-focus-2)]/10 data-[variant=destructive]:focus:text-[color:var(--menubar-item-label-focus-2)] [&_svg]:pointer-events-none [&_svg]:shrink-0 [&_svg:not([class*='size-'])]:size-[var(--menubar-item-icon-size)] [&_svg:not([class*='text-'])]:text-[color:var(--menubar-item-label-2)]",
+        "relative flex cursor-default items-center gap-[var(--menubar-item-gap)] rounded-[var(--menubar-item-radius)] px-[var(--menubar-item-padding-x)] py-[var(--menubar-item-padding-y)] text-[length:var(--menubar-item-font-size)]/[var(--menubar-item-line-height)] outline-hidden select-none focus:bg-[color:var(--menubar-item-background-highlight)] focus:text-[color:var(--menubar-item-label-focus)] data-[disabled]:pointer-events-none data-[disabled]:opacity-[var(--menubar-item-disabled-opacity-disabled)] data-[inset]:pl-[var(--menubar-item-padding-left)] data-[variant=destructive]:text-[color:var(--menubar-item-label)] data-[variant=destructive]:focus:bg-[color:var(--menubar-item-background-focus-2)]/10 data-[variant=destructive]:focus:text-[color:var(--menubar-item-label-focus-2)] [&_svg]:pointer-events-none [&_svg]:shrink-0 [&_svg:not([class*='size-'])]:size-[var(--menubar-item-icon-size)] [&_svg:not([class*='text-'])]:text-[color:var(--menubar-item-label-2)]",
         className,
       )}
       {...props}
@@ -109,7 +109,7 @@ function MenubarCheckboxItem({
     <MenubarPrimitive.CheckboxItem
       data-slot="menubar-checkbox-item"
       className={cn(
-        "relative flex cursor-default items-center gap-[var(--menubar-checkbox-item-gap)] rounded-[var(--menubar-checkbox-item-radius)] py-[var(--menubar-checkbox-item-padding-y)] pr-[var(--menubar-checkbox-item-padding-right)] pl-[var(--menubar-checkbox-item-padding-left)] text-[length:var(--menubar-checkbox-item-font-size)]/[var(--menubar-checkbox-item-line-height)] outline-hidden select-none focus:bg-[color:var(--menubar-checkbox-item-background-focus)] focus:text-[color:var(--menubar-checkbox-item-label-focus)] data-[disabled]:pointer-events-none data-[disabled]:opacity-[var(--menubar-checkbox-item-disabled-opacity-disabled)] [&_svg]:pointer-events-none [&_svg]:shrink-0 [&_svg:not([class*='size-'])]:size-[var(--menubar-checkbox-item-icon-size)]",
+        "relative flex cursor-default items-center gap-[var(--menubar-checkbox-item-gap)] rounded-[var(--menubar-checkbox-item-radius)] py-[var(--menubar-checkbox-item-padding-y)] pr-[var(--menubar-checkbox-item-padding-right)] pl-[var(--menubar-checkbox-item-padding-left)] text-[length:var(--menubar-checkbox-item-font-size)]/[var(--menubar-checkbox-item-line-height)] outline-hidden select-none focus:bg-[color:var(--menubar-checkbox-item-background-highlight)] focus:text-[color:var(--menubar-checkbox-item-label-focus)] data-[disabled]:pointer-events-none data-[disabled]:opacity-[var(--menubar-checkbox-item-disabled-opacity-disabled)] [&_svg]:pointer-events-none [&_svg]:shrink-0 [&_svg:not([class*='size-'])]:size-[var(--menubar-checkbox-item-icon-size)]",
         className,
       )}
       checked={checked}
@@ -130,7 +130,7 @@ function MenubarRadioItem({ className, children, ...props }: React.ComponentProp
     <MenubarPrimitive.RadioItem
       data-slot="menubar-radio-item"
       className={cn(
-        "relative flex cursor-default items-center gap-[var(--menubar-radio-item-gap)] rounded-[var(--menubar-radio-item-radius)] py-[var(--menubar-radio-item-padding-y)] pr-[var(--menubar-radio-item-padding-right)] pl-[var(--menubar-radio-item-padding-left)] text-[length:var(--menubar-radio-item-font-size)]/[var(--menubar-radio-item-line-height)] outline-hidden select-none focus:bg-[color:var(--menubar-radio-item-background-focus)] focus:text-[color:var(--menubar-radio-item-label-focus)] data-[disabled]:pointer-events-none data-[disabled]:opacity-[var(--menubar-radio-item-disabled-opacity-disabled)] [&_svg]:pointer-events-none [&_svg]:shrink-0 [&_svg:not([class*='size-'])]:size-[var(--menubar-radio-item-icon-size)]",
+        "relative flex cursor-default items-center gap-[var(--menubar-radio-item-gap)] rounded-[var(--menubar-radio-item-radius)] py-[var(--menubar-radio-item-padding-y)] pr-[var(--menubar-radio-item-padding-right)] pl-[var(--menubar-radio-item-padding-left)] text-[length:var(--menubar-radio-item-font-size)]/[var(--menubar-radio-item-line-height)] outline-hidden select-none focus:bg-[color:var(--menubar-radio-item-background-highlight)] focus:text-[color:var(--menubar-radio-item-label-focus)] data-[disabled]:pointer-events-none data-[disabled]:opacity-[var(--menubar-radio-item-disabled-opacity-disabled)] [&_svg]:pointer-events-none [&_svg]:shrink-0 [&_svg:not([class*='size-'])]:size-[var(--menubar-radio-item-icon-size)]",
         className,
       )}
       {...props}
@@ -201,7 +201,7 @@ function MenubarSubTrigger({
       data-slot="menubar-sub-trigger"
       data-inset={inset}
       className={cn(
-        "flex cursor-default items-center rounded-[var(--menubar-sub-trigger-radius)] px-[var(--menubar-sub-trigger-padding-x)] py-[var(--menubar-sub-trigger-padding-y)] text-[length:var(--menubar-sub-trigger-font-size)]/[var(--menubar-sub-trigger-line-height)] outline-none select-none focus:bg-[color:var(--menubar-sub-trigger-background-focus)] focus:text-[color:var(--menubar-sub-trigger-label-focus)] data-[inset]:pl-[var(--menubar-sub-trigger-padding-left)] data-[state=open]:bg-[color:var(--menubar-sub-trigger-background-open)] data-[state=open]:text-[color:var(--menubar-sub-trigger-label-open)]",
+        "flex cursor-default items-center rounded-[var(--menubar-sub-trigger-radius)] px-[var(--menubar-sub-trigger-padding-x)] py-[var(--menubar-sub-trigger-padding-y)] text-[length:var(--menubar-sub-trigger-font-size)]/[var(--menubar-sub-trigger-line-height)] outline-none select-none focus:bg-[color:var(--menubar-sub-trigger-background-highlight)] focus:text-[color:var(--menubar-sub-trigger-label-focus)] data-[inset]:pl-[var(--menubar-sub-trigger-padding-left)] data-[state=open]:bg-[color:var(--menubar-sub-trigger-background-open)] data-[state=open]:text-[color:var(--menubar-sub-trigger-label-open)]",
         className,
       )}
       {...props}

@@ -43,9 +43,9 @@ export function DropdownMenuItem({
       data-slot="dropdown-menu-item"
       className={cn(
         "flex cursor-default select-none items-center gap-[var(--dropdown-menu-item-gap)] px-[var(--dropdown-menu-item-padding-x)] min-h-[var(--overlay-item-height)] rounded-[var(--dropdown-menu-item-radius)]",
-        "text-[length:var(--dropdown-menu-item-font-size)] outline-none focus:bg-[var(--dropdown-menu-item-sunken)] data-[disabled]:opacity-[var(--dropdown-menu-item-disabled)]",
+        "text-[length:var(--dropdown-menu-item-font-size)] outline-none focus:bg-[var(--dropdown-menu-item-background-highlight)] data-[disabled]:opacity-[var(--dropdown-menu-item-disabled)]",
         "[&_svg]:size-[var(--dropdown-menu-item-icon)]",
-        tone === "danger" && "text-[var(--dropdown-menu-label)]",
+        tone === "danger" && "text-[var(--dropdown-menu-item-label-destructive)]",
         className,
       )}
       {...props}
@@ -55,6 +55,6 @@ export function DropdownMenuItem({
 
 export function DropdownMenuSeparator({ className, ...props }: React.ComponentProps<typeof MenuPrimitive.Separator>) {
   return (
-    <MenuPrimitive.Separator className={cn("my-1 h-px bg-[var(--dropdown-menu-background)]", className)} {...props} />
+    <MenuPrimitive.Separator className={cn("my-1 h-px bg-[var(--dropdown-menu-separator-background)]", className)} {...props} />
   );
 }

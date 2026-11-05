@@ -572,7 +572,9 @@ export const CHECKS = {
       };
       // The floors are the lightest pairs the light themes already ship: a fill at 1.08:1, a 1px line at 1.15:1.
       const MEETS = [
-        { key: "color.surface.sunken", job: "hover fill", min: 1.08, on: ["color.surface.default", "color.surface.raised"] },
+        // OD-241: the state fill is color.surface.highlight; sunken is depth only, a well on content.
+        { key: "color.surface.highlight", job: "highlight fill", min: 1.08, on: ["color.surface.default", "color.surface.raised"] },
+        { key: "color.surface.sunken", job: "well", min: 1.08, on: ["color.surface.default"] },
         {
           key: "color.border.default",
           job: "divider",
