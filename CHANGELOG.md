@@ -4,6 +4,33 @@ All notable changes to this project are documented in this file.
 
 The format is based on Keep a Changelog, and this project uses semantic versioning.
 
+## [0.3.0] - 2026-11-05
+
+### Added
+
+- An Anatomy page for every component, in every scheme (OD-229): the parts people see, numbered on a drawing, and how each decision reaches each part, from the answer through the rule to the token and the value. `get_anatomy` (MCP) and `open-ds anatomy` give agents the same reference.
+- The Open DS anatomy Figma plugin, attached to every release as `open-ds-anatomy-plugin.zip`. It draws each component's anatomy in a scheme's anatomy file, bound to that scheme's Figma kit, lists what the kit is missing, and exports the images the docs show. Dense data's drawings are in; the other schemes show Dense data's drawings, and say so, until their own are exported.
+- `radius.option`: an option's corner is its panel's corner less the panel's padding, so options nest in menus and lists (OD-246).
+- The typeface is a decision, with its question, considerations and an answer in every scheme (OD-245).
+- Every theme pick says why (OD-241).
+
+### Changed
+
+- Components read keys that name their parts, so one decision changes one part (OD-243). Floating panels (menus, lists, popovers, dialogs) read one overlay decision for their corner, elevation and border. The gap ledger falls from 56 gaps to 9 in Dense data.
+- Hand-faded colors are gone: a destructive highlight or an invalid halo reads the danger tint instead of a faded red.
+- The alert dialog reads the dialog's panel decisions; descriptions read the secondary text color; selected surfaces read the selected tint; the menubar is the control height (it was 1rem).
+- Accessible first's danger color and dark-mode secondary and muted text follow its 7:1 contrast floor.
+- The shadcn bridge follows: `--accent` and `--sidebar-accent` read `surface.highlight`, `--radius-sm` reads `radius.option`.
+- The docs build in seconds instead of minutes.
+
+### Deprecated
+
+- Component keys whose job moved to a key that names the part. Each keeps its value and its CSS variable until the next minor release and says what replaces it (`get_component` lists them, with `replaced_by`).
+
+### Upgrading a created project
+
+- Run `npm run tokens` to write the new variables. Code that reads a deprecated key keeps working; move it to the key named in `replaced_by` before the next minor release.
+
 ## [0.2.1] - 2026-11-05
 
 ### Added
