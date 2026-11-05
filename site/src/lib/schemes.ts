@@ -90,11 +90,16 @@ export interface Scheme {
 
 export const grammar = (): Grammar => read<Grammar>("grammar.json");
 
-export const schemeIds = (): string[] =>
-  readdirSync(dir)
+/** Every scheme id, in the grammar's scheme_order (the same order as the CLI, docs and Storybook). */
+export const schemeIds = (): string[] => {
+  const order =
+    read<{ scheme_order?: { order: string[] } }>("grammar.json").scheme_order?.order ?? [];
+  const rank = (id: string) => (order.includes(id) ? order.indexOf(id) : order.length);
+  return readdirSync(dir)
     .filter((f) => f.endsWith(".json") && f !== "grammar.json")
     .map((f) => f.replace(/\.json$/, ""))
-    .sort();
+    .sort((a, b) => rank(a) - rank(b) || a.localeCompare(b));
+};
 
 /** The components every scheme ships, from ui/src/components. */
 export const uiComponents = (): string[] =>

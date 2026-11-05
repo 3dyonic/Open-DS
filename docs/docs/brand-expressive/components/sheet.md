@@ -29,7 +29,7 @@ Instead:
 
 ## How Brand expressive uses it
 
-<div class="odv-grid two"><div class="odv-dd"><div class="stage"><div class="odv-eyebrow">A menu or dialog</div><div style="margin-top:6px"><b style="color:var(--color-status-success)">Use</b> elevation.overlay and a dimmed page</div><div><b style="color:var(--color-status-danger)">Not</b> No shadow</div></div><div class="cap">Strong depth for floating things.</div></div></div>
+<div class="odv-grid two"><div class="odv-dd"><div class="stage"><div class="odv-eyebrow">A menu or dialog</div><div style="margin-top:6px"><b style="color:var(--color-status-success)">Use</b> elevation.overlay and a dimmed page</div><div><b style="color:var(--color-status-danger)">Not</b> No shadow</div></div><div class="cap">Strong depth shows a menu or dialog sits above vivid sections. Without a shadow it blends into the color blocks.</div></div></div>
 
 ## Words
 

@@ -13,7 +13,7 @@ hide_table_of_contents: true
 
 ## Why it looks like this
 
-Every decision follows from an answer. These are the answers its components and rules cite most.
+Every decision follows from an answer. These are the answers its components and rules cite most. Follow them all in the [Decision reference](decision-reference).
 
 <div class="odv-grid"><div class="odv-card"><div class="odv-eyebrow">What is the smallest target?</div><q>Touch size</q><p>Visitors come from social posts on phones.</p><span class="odv-ans">accessibility.values</span></div><div class="odv-card"><div class="odv-eyebrow">Which outcome matters most?</div><q>Engagement</q><p>Engagement and sign-ups.</p><span class="odv-ans">outcomes.q1</span></div><div class="odv-card"><div class="odv-eyebrow">How many tones does it use?</div><q>One per moment</q><p>Playful in headlines, plain in errors.</p><span class="odv-ans">voice.count</span></div></div>
 
@@ -35,49 +35,4 @@ Every decision follows from an answer. These are the answers its components and 
 
 ## Every answer
 
-Every decision in this system follows from these answers.
-
-### Business and product
-
-- **What does the product do for the business?** Sells and converts. A launch site that must win attention and sign-ups.
-- **How many brands or products share the system?** One. One brand, loudly.
-
-### People and work context
-
-- **Who uses it most?** Customers who choose us. New customers deciding if they care. Because: What does the product do for the business? Sells and converts.
-- **What accessibility level do we commit to?** AA. AA, even when loud. Because: Who uses it most? Customers who choose us.
-
-### Content and data
-
-- **What is the main content?** Images and campaigns. Images, campaigns and short punchy copy. Because: What does the product do for the business? Sells and converts.
-- **How much is on one screen?** One idea at a time. One big idea per section. Because: What is the main content? Images and campaigns.
-
-### Tasks and flows
-
-- **What is the main task?** Browse and explore. People browse and explore the story. Because: What is the main content? Images and campaigns.
-- **How often do people repeat actions?** Rarely. One action: sign up. Because: What does the product do for the business? Sells and converts.
-
-### Human factors
-
-- **What must the interface protect?** Delight. Delight is the point. Because: What does the product do for the business? Sells and converts.
-- **How do people recall the interface?** They see it fresh each time. Every visit should feel fresh. Because: Who uses it most? Customers who choose us.
-
-### Outcomes
-
-- **Which outcome matters most?** Engagement. Engagement and sign-ups. Because: What does the product do for the business? Sells and converts.
-- **What is a costly mistake?** Looking off-brand. A bland page is the costly mistake. Because: What does the product do for the business? Sells and converts.
-
-### Brand
-
-- **What should the brand feel like?** Bold. Bold and confident. Because: What does the product do for the business? Sells and converts.
-- **How visible is the brand in the interface?** Loud. The brand is loud everywhere. Because: What should the brand feel like? Bold.
-
-### Use scenarios
-
-- **Where do people use it?** On the move. Visitors come from social posts on their phones. Because: Who uses it most? Customers who choose us.
-- **How long is one visit?** A few minutes. A visit lasts a few minutes at most. Because: Which outcome matters most? Engagement.
-
-### Team and delivery
-
-- **Who maintains the system?** An agency. An agency runs campaigns.
-- **How fast does it change?** Every campaign. Every campaign changes the look a little. Because: Who maintains the system? An agency.
+All 78 answers, and the design decisions each one made: [Decision reference](decision-reference).

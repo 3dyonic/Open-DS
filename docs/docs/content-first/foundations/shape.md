@@ -48,5 +48,5 @@ The raw values these tokens end at are on [Primitives › Shape](../primitives/s
 
 | Situation | Use | Not | Why |
 | --- | --- | --- | --- |
-| Corners of buttons and inputs | radius.control (rounded) | Sharp corners | Rounded corners feel friendly. |
+| Corners of buttons and inputs | radius.control (rounded) | Sharp corners | Rounded corners match the warm reading tone. Sharp corners feel technical next to long text. |
 | Shape of a status badge | radius.badge (pill) | A rectangle | Pills sit softly next to text. |

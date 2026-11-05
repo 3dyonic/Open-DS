@@ -1,0 +1,120 @@
+{
+  "doc": "decision-reference",
+  "groups": [
+    {
+      "title": "Reasons",
+      "items": [
+        {
+          "id": "business",
+          "title": "Business and product",
+          "count": 7
+        },
+        {
+          "id": "people",
+          "title": "People and work context",
+          "count": 15
+        },
+        {
+          "id": "content",
+          "title": "Content and data",
+          "count": 45
+        },
+        {
+          "id": "tasks",
+          "title": "Tasks and flows",
+          "count": 30
+        },
+        {
+          "id": "human",
+          "title": "Human factors",
+          "count": 9
+        },
+        {
+          "id": "outcomes",
+          "title": "Outcomes",
+          "count": 14
+        },
+        {
+          "id": "brand",
+          "title": "Brand",
+          "count": 7
+        },
+        {
+          "id": "scenarios",
+          "title": "Use scenarios",
+          "count": 4
+        },
+        {
+          "id": "team",
+          "title": "Team and delivery",
+          "count": 8
+        }
+      ]
+    },
+    {
+      "title": "Scopes",
+      "items": [
+        {
+          "id": "typography",
+          "title": "Typography",
+          "count": 2
+        },
+        {
+          "id": "color",
+          "title": "Color",
+          "count": 2
+        },
+        {
+          "id": "spacing",
+          "title": "Spacing",
+          "count": 5
+        },
+        {
+          "id": "shape",
+          "title": "Shape",
+          "count": 3
+        },
+        {
+          "id": "elevation",
+          "title": "Elevation",
+          "count": 7
+        },
+        {
+          "id": "motion",
+          "title": "Motion",
+          "count": 5
+        },
+        {
+          "id": "iconography",
+          "title": "Iconography",
+          "count": 5
+        },
+        {
+          "id": "theming",
+          "title": "Theming",
+          "count": 2
+        },
+        {
+          "id": "accessibility",
+          "title": "Accessibility",
+          "count": 13
+        },
+        {
+          "id": "naming",
+          "title": "Naming",
+          "count": 1
+        },
+        {
+          "id": "voice",
+          "title": "Voice and tone",
+          "count": 13
+        },
+        {
+          "id": "components",
+          "title": "Components",
+          "count": 1
+        }
+      ]
+    }
+  ]
+}

@@ -30,7 +30,7 @@ Instead:
 
 ## How Brand expressive uses it
 
-<div class="odv-grid two"><div class="odv-dd"><div class="stage"><div class="odv-eyebrow">A menu or dialog</div><div style="margin-top:6px"><b style="color:var(--color-status-success)">Use</b> elevation.overlay and a dimmed page</div><div><b style="color:var(--color-status-danger)">Not</b> No shadow</div></div><div class="cap">Strong depth for floating things.</div></div><div class="odv-dd"><div class="stage"><div class="odv-eyebrow">An action on one row or item</div><div style="margin-top:6px"><b style="color:var(--color-status-success)">Use</b> Button ghost with a word</div><div><b style="color:var(--color-status-danger)">Not</b> An icon alone</div></div><div class="cap">A word keeps it clear.</div></div></div>
+<div class="odv-grid two"><div class="odv-dd"><div class="stage"><div class="odv-eyebrow">A menu or dialog</div><div style="margin-top:6px"><b style="color:var(--color-status-success)">Use</b> elevation.overlay and a dimmed page</div><div><b style="color:var(--color-status-danger)">Not</b> No shadow</div></div><div class="cap">Strong depth shows a menu or dialog sits above vivid sections. Without a shadow it blends into the color blocks.</div></div><div class="odv-dd"><div class="stage"><div class="odv-eyebrow">An action on one row or item</div><div style="margin-top:6px"><b style="color:var(--color-status-success)">Use</b> Button ghost with a word</div><div><b style="color:var(--color-status-danger)">Not</b> An icon alone</div></div><div class="cap">Visitors come rarely, so they never learn an icon. A word says what will happen.</div></div></div>
 
 ## Words
 

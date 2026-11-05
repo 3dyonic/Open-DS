@@ -2620,7 +2620,7 @@ html[data-scheme="accessible-first"] {
   --ifm-heading-color: var(--color-text-primary);
   --ifm-link-color: var(--color-text-link);
   --ifm-menu-color: var(--color-text-secondary);
-  --ifm-menu-color-active: var(--color-text-link);
+  --ifm-menu-color-active: var(--ods-text-on-selected);
   --ifm-menu-color-background-active: var(--color-surface-selected);
   --ifm-menu-color-background-hover: var(--color-surface-sunken);
   --ifm-code-background: var(--color-surface-sunken);
@@ -2679,6 +2679,8 @@ html[data-scheme="accessible-first"] {
   --ifm-color-info-contrast-background: var(--color-surface-selected);
   --ifm-color-info-contrast-foreground: var(--color-text-primary);
 }
+html[data-scheme="accessible-first"] { --ods-text-on-selected: var(--color-text-on-light); --ods-text-on-info-subtle: var(--color-text-info-on-light); --ods-text-on-success-subtle: var(--color-text-success-on-light); --ods-text-on-warning-subtle: var(--color-text-warning-on-light); --ods-text-on-danger-subtle: var(--color-text-danger-on-light); }
+html[data-scheme="accessible-first"][data-theme="dark"] { --ods-text-on-selected: var(--color-text-on-dark); --ods-text-on-info-subtle: var(--color-text-info-on-dark); --ods-text-on-success-subtle: var(--color-text-success-on-dark); --ods-text-on-warning-subtle: var(--color-text-warning-on-dark); --ods-text-on-danger-subtle: var(--color-text-danger-on-dark); }
 html[data-scheme="accessible-first"] .navbar__logo img { content: url("/logo-accessible-first.svg"); }
 html[data-scheme="accessible-first"] .theme-doc-sidebar-container .menu::after { background-image: url("/robots/accessible-first.webp"); }
 html[data-scheme="accessible-first"][data-theme="dark"] .theme-doc-sidebar-container .menu::after { background-image: url("/robots/accessible-first-dark.webp"); }

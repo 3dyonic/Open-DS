@@ -43,4 +43,4 @@ The raw values these tokens end at are on [Primitives › Motion](../primitives/
 | Situation | Use | Not | Why |
 | --- | --- | --- | --- |
 | Hover and press feedback | motion.duration.feedback (fast) | No transition | Fast feedback confirms the pointer without slowing experts. |
-| Someone asked for less motion | No motion | A shorter version of the motion | When people ask for less motion, nothing moves. |
+| Someone asked for less motion | No motion | A shorter version of the motion | A shorter motion still moves. When people ask for less motion, nothing moves. |

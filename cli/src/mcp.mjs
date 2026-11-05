@@ -9,6 +9,7 @@
 
 import { scales } from "./scale-map.mjs";
 import { spacingGuide } from "./spacing-map.mjs";
+import { decisionReference } from "./decisions.mjs";
 import { tokenIndex, aliasChain } from "./lands.mjs";
 import { mkdtempSync, readFileSync, rmSync } from "node:fs";
 import { createServer as createHttpServer } from "node:http";
@@ -59,7 +60,7 @@ const INSTRUCTIONS = `Open DS: design systems as answered questions. Every schem
 Choose: describe the product to fit_scheme, compare the top ones with compare_schemes, then plan_create (a new design system project) or plan_init (an existing app). They return the exact npx command; run it yourself.
 Build: call get_context build first, or get_context file=<path> for the file you edit. Before a component or variant, call get_component; before a token, find_token or when_to_use; to see which color step a token uses and which steps are free, get_scales; before you write any spacing, get_component_spacing_map. Before you finish, run check_ui on the files you changed and fix each finding.
 Write: get_context write holds the voice; get_scheme returns any part of a scheme in full. Check each label or message with check_copy. Change: call plan_change before you change an answer or a primitive. Review: run check_ui, then the review prompt.
-Explain any decision with why; get_answer shows one answer with every option, and what_moves shows what follows from an answer. The prompts open-ds-choose, open-ds-build, open-ds-write, open-ds-change and open-ds-review hold the step-by-step skills.
+Explain any decision with why; get_answer shows one answer with every option and what it decided; get_decision_reference lists every answer, why, what it came from and the answers, rules and variants it decided; what_moves shows what follows from an answer. The prompts open-ds-choose, open-ds-build, open-ds-write, open-ds-change and open-ds-review hold the step-by-step skills.
 The questions and answers are a starting point, not a standard.
 
 ${READ_ONCE}`;
@@ -228,7 +229,50 @@ export function createMcpServer({ roots = assetRoots() } = {}) {
           text: qs[b]?.text,
           answer: qs[b] ? label(s, b) : undefined,
         })),
+        // What this answer decided directly (OD-239): later answers, usage rules, component variants.
+        decided: decisionReference(s, g)
+          .sections.flatMap((x) => x.questions)
+          .find((q) => q.id === question_id)?.decided,
       });
+    },
+  );
+
+  // The decision reference (OD-239): the same data as the docs page Decision reference.
+  server.registerTool(
+    "get_decision_reference",
+    {
+      title: "Decision reference",
+      description:
+        "Every question a scheme answers, by section (reasons, then scopes), with the answer, why, the earlier answers it came from (because) and every design decision that cites it directly: the later answers, the usage rules and the component variants, each with a plain sentence and the docs page that goes deeper. The same data as the docs page Decision reference. Narrow it with section or question_id.",
+      inputSchema: {
+        scheme_id: SchemeId,
+        section: z
+          .string()
+          .optional()
+          .describe("A section id, for example content or spacing."),
+        question_id: z
+          .string()
+          .optional()
+          .describe("A question id, for example content.q1 or spacing.values."),
+      },
+      annotations: { readOnlyHint: true },
+    },
+    async ({ scheme_id, section, question_id }) => {
+      const ref = decisionReference(scheme(scheme_id), g);
+      let sections = ref.sections;
+      if (section) sections = sections.filter((x) => x.id === section);
+      if (question_id)
+        sections = sections
+          .map((x) => ({
+            ...x,
+            questions: x.questions.filter((q) => q.id === question_id),
+          }))
+          .filter((x) => x.questions.length);
+      if (!sections.length)
+        throw new Error(
+          `Nothing matches${section ? ` section "${section}"` : ""}${question_id ? ` question "${question_id}"` : ""}. Sections: ${ref.sections.map((x) => x.id).join(", ")}.`,
+        );
+      return json({ ...ref, sections });
     },
   );
 

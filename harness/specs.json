@@ -135,9 +135,19 @@
         "cli/src/docs.mjs page builder",
         "docs/ builds every scheme, each in its own fonts and colors (OD-207)",
         "open-ds init --docs and MCP deploy docs=true",
-        "Open DS pages moved to guide/"
+        "Open DS pages moved to guide/",
+        "the docs use no native select: the scheme and brand pickers are a listbox in the scheme's tokens",
+        "schemes are listed in one order everywhere, the grammar's scheme_order, with its reason"
       ],
-      "checks": ["docs-sections", "llm-docs-frontmatter", "docs-build", "cli-commands", "mcp-tests"]
+      "checks": [
+        "docs-sections",
+        "llm-docs-frontmatter",
+        "docs-build",
+        "cli-commands",
+        "mcp-tests",
+        "docs-no-native-select",
+        "scheme-order"
+      ]
     },
     {
       "id": "OD-127",
@@ -431,7 +441,8 @@
         "a known shortfall waits on its fill with the ticket that fixes it, and the check names it",
         "every focus ring keeps a 2px gap in the canvas color from its control",
         "a selected or current item shows an edge beside its fill, so selection is never color alone",
-        "a danger fill, with its own label, for the confirm of a delete; primary and danger stay clearly apart in every brand and mode"
+        "a danger fill, with its own label, for the confirm of a delete; primary and danger stay clearly apart in every brand and mode",
+        "our own docs CSS follows the same rule: on a selected row, an action, a status or the inverse surface, text is on-light or on-dark by the fill's tone, never the link color"
       ],
       "checks": [
         "options-used",
@@ -441,7 +452,8 @@
         "selection-not-color-alone",
         "danger-apart",
         "docs-build",
-        "storybook-renders"
+        "storybook-renders",
+        "docs-css-tone"
       ]
     },
     {

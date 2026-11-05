@@ -28,6 +28,7 @@ const TOOLS = [
   "get_component",
   "get_component_spacing_map",
   "get_context",
+  "get_decision_reference",
   "get_inventory",
   "get_key",
   "get_scales",
@@ -499,4 +500,36 @@ test("get_scales returns a hue's steps and the tokens on them", async () => {
       x.tokens.some((t) => t.token === "action.primary"),
     ),
   );
+});
+
+test("the decision reference: every answer with what it decided, the same as the docs page (OD-239)", async () => {
+  const c = await connect();
+  const ref = await call(c, "get_decision_reference", {
+    scheme_id: "dense-data",
+  });
+  assert.equal(ref.answers, 78);
+  const q = ref.sections
+    .flatMap((s) => s.questions)
+    .find((x) => x.id === "content.q1");
+  assert.equal(q.answer, "Numbers and records");
+  assert.ok(q.because.length);
+  assert.ok(
+    q.decided.answers.length &&
+      q.decided.rules.length &&
+      q.decided.variants.length,
+  );
+  assert.match(q.decided.rules[0].text, /^For a status, use /);
+  const one = await call(c, "get_decision_reference", {
+    scheme_id: "dense-data",
+    question_id: "spacing.values",
+  });
+  assert.deepEqual(
+    one.sections.map((s) => s.id),
+    ["spacing"],
+  );
+  const answer = await call(c, "get_answer", {
+    scheme_id: "dense-data",
+    question_id: "content.q2",
+  });
+  assert.ok(answer.decided.rules.length);
 });

@@ -3,6 +3,7 @@ import type * as Preset from "@docusaurus/preset-classic";
 import { readFileSync } from "node:fs";
 import { themes as prismThemes } from "prism-react-renderer";
 import { consentScript } from "../scripts/consent.mjs";
+import { decisionMenu } from "./src/decisionMenu";
 
 // The repo's docs: every Open DS scheme in one site (OD-207), the way the repo Storybook shows every
 // scheme. scripts/generate.mjs writes docs/<scheme>/ for each one, its tokens scoped to its own pages
@@ -48,7 +49,7 @@ const config: Config = {
     [
       "classic",
       {
-        docs: { routeBasePath: "/", sidebarPath: "./sidebars.ts" },
+        docs: { routeBasePath: "/", sidebarPath: "./sidebars.ts", sidebarItemsGenerator: decisionMenu(BASE) },
         blog: false,
         theme: { customCss: "./src/css/custom.css" },
       } satisfies Preset.Options,

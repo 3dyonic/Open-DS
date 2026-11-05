@@ -1706,7 +1706,7 @@
       "situation": "number-in-table",
       "use": "type.body",
       "not": "A mono font",
-      "why": "Numbers read like text in every brand.",
+      "why": "Prices sit in sentences and offers, not in columns to compare, so a mono font adds nothing in any brand.",
       "because": [
         "content.q1"
       ]
@@ -1752,7 +1752,7 @@
       "situation": "link",
       "use": "color.text.link (from the brand)",
       "not": "A fixed blue",
-      "why": "Links follow the brand.",
+      "why": "Links take the brand's color, so they look native in each brand. A fixed blue would clash with some brands.",
       "because": [
         "theming.definition"
       ]
@@ -1784,7 +1784,7 @@
       "situation": "between-sections",
       "use": "space.gap.section and cards",
       "not": "Lines",
-      "why": "Cards group offers in every brand.",
+      "why": "Cards hold each offer together, so customers compare offers as units in every brand. Lines would split an offer apart.",
       "because": [
         "elevation.definition"
       ]
@@ -1793,7 +1793,7 @@
       "situation": "table-row",
       "use": "size.row (comfortable)",
       "not": "A compact row",
-      "why": "Comfortable rows in every brand.",
+      "why": "Customers browse on phones, and compact rows are hard to tap in any brand.",
       "because": [
         "spacing.values"
       ]
@@ -1830,7 +1830,7 @@
       "situation": "menu-or-dialog",
       "use": "elevation.overlay and a dimmed page",
       "not": "No shadow",
-      "why": "Same overlay in every brand.",
+      "why": "The shadow shows a menu or dialog floats above the page. Without it, it blends into the cards.",
       "because": [
         "elevation.lands"
       ]
@@ -1839,7 +1839,7 @@
       "situation": "hover-feedback",
       "use": "motion.duration.feedback (moderate)",
       "not": "Brand-specific motion",
-      "why": "Motion is shared across brands.",
+      "why": "Motion is shared, so one component library behaves the same in every brand.",
       "because": [
         "motion.values"
       ]
@@ -1848,7 +1848,7 @@
       "situation": "reduced-motion",
       "use": "Reduced motion",
       "not": "Full motion",
-      "why": "Motion is reduced, not removed.",
+      "why": "Motion is reduced, not removed: a fade keeps the change visible, and nothing slides.",
       "because": [
         "motion.roles"
       ]
@@ -1902,7 +1902,7 @@
       "situation": "commit-action",
       "use": "Button primary, one per view",
       "not": "Two primaries",
-      "why": "One clear action per view.",
+      "why": "One clear action per view. Two primaries split attention.",
       "because": [
         "outcomes.q1"
       ],
@@ -1918,7 +1918,7 @@
       "situation": "alternative-action",
       "use": "Button secondary",
       "not": "A second primary",
-      "why": "The alternative steps back.",
+      "why": "The alternative steps back, so the one primary stays clear. A second primary would compete with it.",
       "because": [
         "color.count"
       ],

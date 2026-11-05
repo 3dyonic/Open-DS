@@ -5,6 +5,7 @@
 ## Pages
 
 - [Multi-brand](/)
+- [Decision reference](/decision-reference)
 - [Voice and tone](/voice)
 - [Foundations](/foundations/index)
 - [Typography](/foundations/typography)

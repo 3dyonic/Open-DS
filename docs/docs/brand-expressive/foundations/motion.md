@@ -44,5 +44,5 @@ The raw values these tokens end at are on [Primitives › Motion](../primitives/
 
 | Situation | Use | Not | Why |
 | --- | --- | --- | --- |
-| Hover and press feedback | motion.duration.feedback (fast) | An instant change | Fast feedback, on the brand's spring. |
-| Someone asked for less motion | Reduced motion | Full motion | Motion is reduced when asked. |
+| Hover and press feedback | motion.duration.feedback (fast) | An instant change | Fast feedback, on the brand's spring. An instant change drops the brand's motion. |
+| Someone asked for less motion | Reduced motion | Full motion | Motion is part of the brand, so it shrinks to a fade instead of vanishing. Full motion is never forced on people who asked for less. |

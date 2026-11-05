@@ -161,7 +161,7 @@ The raw values these tokens end at are on [Primitives › Color](../primitives/c
 | An error message | color.status.danger, an icon and a sentence next to the field | Color alone | People must know what went wrong and where. |
 | A link | color.text.link, underlined | Color only | Underline works without color perception. |
 | A status | Badge with an icon and a word | Color alone | Status must survive no color and a screen reader. |
-| The action that completes the task | Button primary, one per page | Two primaries | One clear next step. |
+| The action that completes the task | Button primary, one per page | Two primaries | One clear next step. Two primaries make people stop and compare, which adds effort. |
 | An alternative or cancel | Button secondary | A text link | Every action looks like a button people can find. |
 | Delete or remove | Button secondary, then a confirm page with Button danger | Button primary | A confirm step prevents a costly error. |
 

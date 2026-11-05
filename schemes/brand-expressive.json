@@ -1648,7 +1648,7 @@
       "situation": "number-in-table",
       "use": "type.body",
       "not": "A mono font",
-      "why": "Tables are rare; keep the brand voice.",
+      "why": "Tables are rare and never compared column by column, so mono digits add nothing. The brand font keeps the voice.",
       "because": [
         "content.q1"
       ]
@@ -1735,7 +1735,7 @@
       "situation": "table-row",
       "use": "size.row (comfortable)",
       "not": "A compact row",
-      "why": "Rare tables stay airy.",
+      "why": "Tables are rare and short, so there is no need to fit many rows. Comfortable rows keep the brand's airy rhythm.",
       "because": [
         "spacing.values"
       ]
@@ -1744,7 +1744,7 @@
       "situation": "control-corner",
       "use": "radius.control (pill)",
       "not": "Sharp corners",
-      "why": "Pills feel playful.",
+      "why": "Pills match the brand's round, playful shapes. Sharp corners would feel corporate.",
       "because": [
         "shape.values"
       ]
@@ -1772,7 +1772,7 @@
       "situation": "menu-or-dialog",
       "use": "elevation.overlay and a dimmed page",
       "not": "No shadow",
-      "why": "Strong depth for floating things.",
+      "why": "Strong depth shows a menu or dialog sits above vivid sections. Without a shadow it blends into the color blocks.",
       "because": [
         "elevation.values"
       ]
@@ -1781,7 +1781,7 @@
       "situation": "hover-feedback",
       "use": "motion.duration.feedback (fast)",
       "not": "An instant change",
-      "why": "Fast feedback, on the brand's spring.",
+      "why": "Fast feedback, on the brand's spring. An instant change drops the brand's motion.",
       "because": [
         "motion.roles",
         "motion.values"
@@ -1791,7 +1791,7 @@
       "situation": "reduced-motion",
       "use": "Reduced motion",
       "not": "Full motion",
-      "why": "Motion is reduced when asked.",
+      "why": "Motion is part of the brand, so it shrinks to a fade instead of vanishing. Full motion is never forced on people who asked for less.",
       "because": [
         "motion.roles"
       ]
@@ -1835,7 +1835,7 @@
       "situation": "smallest-target",
       "use": "size.control.default (touch)",
       "not": "A compact control",
-      "why": "Phones first.",
+      "why": "Most visitors arrive on phones, and a compact control is too small for a thumb.",
       "because": [
         "accessibility.values"
       ]
@@ -1902,7 +1902,7 @@
       "situation": "row-action",
       "use": "Button ghost with a word",
       "not": "An icon alone",
-      "why": "A word keeps it clear.",
+      "why": "Visitors come rarely, so they never learn an icon. A word says what will happen.",
       "because": [
         "iconography.roles"
       ],

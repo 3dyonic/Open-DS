@@ -5,6 +5,7 @@
 ## Pages
 
 - [Accessible first](/)
+- [Decision reference](/decision-reference)
 - [Voice and tone](/voice)
 - [Foundations](/foundations/index)
 - [Typography](/foundations/typography)

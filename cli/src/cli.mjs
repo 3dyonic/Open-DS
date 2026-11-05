@@ -52,6 +52,9 @@ const HELP = `open-ds: deploy an Open DS scheme as a full design system.
                                        which tokens land on each color step, by lane
   open-ds spacing <scheme>             the spacing roles and the component spacing map,
                                        with the rule (also: component-spacing-map)
+  open-ds decisions <scheme> [<question-id>]
+                                       every answer, why, what it came from, and the answers,
+                                       rules and variants it decided (the Decision reference)
   open-ds token <scheme> <words>       the tokens and component keys that fit an intent
   open-ds fit <words>                  rank the schemes against a product description
   open-ds create <dir> --scheme <id> [--brand <id>]
@@ -65,7 +68,7 @@ const HELP = `open-ds: deploy an Open DS scheme as a full design system.
                                        the Open DS MCP server: stdio for a local agent, or
                                        Streamable HTTP at /mcp (read-only, no authentication yet)
 
-Add --json to list, show, why, when, context, component, scales, spacing, check, copy, change, token and fit for machine-readable output.`;
+Add --json to list, show, why, when, context, component, scales, spacing, decisions, check, copy, change, token and fit for machine-readable output.`;
 
 function flag(args, name, fallback) {
   const i = args.indexOf(name);
@@ -383,6 +386,32 @@ export async function run(argv) {
           `${rule.title}\n  Use: ${rule.use}\n  Not: ${rule.not}\n  Why: ${rule.why}`,
         ),
       );
+      return 0;
+    }
+    // The decision reference (OD-239): the same data as the docs page and get_decision_reference.
+    if (cmd === "decisions") {
+      const { decisionReference, decisionText } =
+        await import("./decisions.mjs");
+      const s = loadScheme(args[0] ?? "");
+      const ref = decisionReference(s, grammar());
+      const only = args[1] && !args[1].startsWith("--") ? args[1] : null;
+      if (
+        only &&
+        !ref.sections.some((x) => x.questions.some((q) => q.id === only))
+      )
+        throw new Error(`Unknown question "${only}" in ${s.name}.`);
+      const data = only
+        ? {
+            ...ref,
+            sections: ref.sections
+              .map((x) => ({
+                ...x,
+                questions: x.questions.filter((q) => q.id === only),
+              }))
+              .filter((x) => x.questions.length),
+          }
+        : ref;
+      out(data, () => console.log(decisionText(data)));
       return 0;
     }
     // The spacing a scheme decides (OD-235): its roles and its component spacing map, with the rule.

@@ -162,7 +162,7 @@ The raw values these tokens end at are on [Primitives › Color](../primitives/c
 | A link | color.text.link | color.action.primary | Links and buttons look different, so people know which one navigates. |
 | A status | Badge with a subtle fill, an icon and a word | A full-strength fill | Subtle fills let many statuses share one table. |
 | The action that completes the task | Button primary, one per view | Two primaries side by side | One primary makes the committing action obvious. |
-| An alternative or cancel | Button secondary | Button ghost | Cancel must be easy to find next to the primary. |
+| An alternative or cancel | Button secondary | Button ghost | A ghost button has no edge, so next to a filled primary it reads as plain text and cancel gets lost. Secondary keeps a visible border, so people find it at once. |
 | Delete or remove | Button secondary, then confirm in a dialog with Button danger | Button primary as the first step | Deleting is rare and costly; a confirm step catches mistakes. |
 
 ## Status urgency

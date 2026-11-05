@@ -328,7 +328,7 @@ code {
   padding: 0 var(--badge-padding-x);
   border-radius: var(--badge-radius);
   background: var(--color-surface-selected);
-  color: var(--color-text-link);
+  color: var(--ods-text-on-selected, var(--ifm-font-color-base));
   font-family: var(--type-label-font-family);
   font-size: var(--type-caption-font-size);
   font-weight: var(--type-label-font-weight);

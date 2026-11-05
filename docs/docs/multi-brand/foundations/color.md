@@ -383,10 +383,10 @@ The raw values these tokens end at are on [Primitives › Color](../primitives/c
 | --- | --- | --- | --- |
 | A selected row or item | color.surface.selected (from the brand) | A fixed blue | Selection follows the brand color. |
 | An error message | color.status.danger and a sentence | The brand color | Status colors are shared, never branded. |
-| A link | color.text.link (from the brand) | A fixed blue | Links follow the brand. |
+| A link | color.text.link (from the brand) | A fixed blue | Links take the brand's color, so they look native in each brand. A fixed blue would clash with some brands. |
 | A status | Badge with a word | A brand color as status | Brand hues vary, so meaning needs a word. |
-| The action that completes the task | Button primary, one per view | Two primaries | One clear action per view. |
-| An alternative or cancel | Button secondary | A second primary | The alternative steps back. |
+| The action that completes the task | Button primary, one per view | Two primaries | One clear action per view. Two primaries split attention. |
+| An alternative or cancel | Button secondary | A second primary | The alternative steps back, so the one primary stays clear. A second primary would compete with it. |
 | Delete or remove | Button secondary, then confirm with Button danger | Button primary | Confirm before destroying data. |
 
 ## Status urgency

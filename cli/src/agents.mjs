@@ -6,6 +6,7 @@ import { questions } from "./schemes.mjs";
 
 const COMMANDS = [
   "open-ds why <scheme> <question-id | component-key>",
+  "open-ds decisions <scheme> [question-id]",
   "open-ds when <scheme> <situation-id | words>",
   "open-ds context <scheme> <task | component | key | token | situation>",
   "open-ds add <component>",
@@ -214,6 +215,7 @@ export function agentsCore(scheme, g, { brand, components }) {
     "- `npx open-ds check .`: check the UI and that context/ matches the scheme.",
     `- \`npx open-ds context ${scheme.id} <component | token | task> [--section <name>]\`, or \`--file <path>\`.`,
     `- \`npx open-ds why ${scheme.id} <question | key>\`: the reason behind an answer.`,
+    `- \`npx open-ds decisions ${scheme.id} [question]\`: everything an answer decided, the same as the docs page Decision reference.`,
     "",
   ].join("\n");
 }

@@ -13,7 +13,7 @@ hide_table_of_contents: true
 
 ## Why it looks like this
 
-Every decision follows from an answer. These are the answers its components and rules cite most.
+Every decision follows from an answer. These are the answers its components and rules cite most. Follow them all in the [Decision reference](decision-reference).
 
 <div class="odv-grid"><div class="odv-card"><div class="odv-eyebrow">What accessibility level do we commit to?</div><q>AAA</q><p>AAA where it applies; nobody is left out.</p><span class="odv-ans">people.q2</span></div><div class="odv-card"><div class="odv-eyebrow">What is the smallest target?</div><q>Large</q><p>Large targets for tremor and touch.</p><span class="odv-ans">accessibility.values</span></div><div class="odv-card"><div class="odv-eyebrow">How many signals carry each meaning?</div><q>Three: color, icon and word</q><p>Never color alone.</p><span class="odv-ans">accessibility.count</span></div></div>
 
@@ -35,49 +35,4 @@ Every decision follows from an answer. These are the answers its components and 
 
 ## Every answer
 
-Every decision in this system follows from these answers.
-
-### Business and product
-
-- **What does the product do for the business?** Serves the public. A public service everyone must be able to use.
-- **How many brands or products share the system?** One. One service, one brand.
-
-### People and work context
-
-- **Who uses it most?** Everyone, including people with disabilities. Everyone, including people with low vision, motor and cognitive needs. Because: What does the product do for the business? Serves the public.
-- **What accessibility level do we commit to?** AAA. AAA where it applies; nobody is left out. Because: Who uses it most? Everyone, including people with disabilities.
-
-### Content and data
-
-- **What is the main content?** Forms and tasks. Most screens are forms and steps. Because: What does the product do for the business? Serves the public.
-- **How much is on one screen?** One idea at a time. One question per screen lowers effort. Because: Who uses it most? Everyone, including people with disabilities.
-
-### Tasks and flows
-
-- **What is the main task?** Complete a form. People must finish the form. Because: What is the main content? Forms and tasks.
-- **How often do people repeat actions?** Rarely. People do this once or twice a year. Because: What does the product do for the business? Serves the public.
-
-### Human factors
-
-- **What must the interface protect?** Low effort to understand. Low effort to understand each step. Because: Who uses it most? Everyone, including people with disabilities.
-- **How do people recall the interface?** They see it fresh each time. Nobody remembers the interface from last time. Because: How often do people repeat actions? Rarely.
-
-### Outcomes
-
-- **Which outcome matters most?** Completion without errors. Completion without errors is the measure. Because: What is the main task? Complete a form.
-- **What is a costly mistake?** A task that fails. A failed form can cost someone a benefit. Because: What is the main task? Complete a form.
-
-### Brand
-
-- **What should the brand feel like?** Calm and clear. Calm and clear, never clever. Because: What must the interface protect? Low effort to understand.
-- **How visible is the brand in the interface?** Quiet. The brand stays out of the way. Because: What must the interface protect? Low effort to understand.
-
-### Use scenarios
-
-- **Where do people use it?** Anywhere, on any device. Public services are used on any device, with any assistive technology. Because: Who uses it most? Everyone, including people with disabilities.
-- **How long is one visit?** One sitting. An application is finished in one sitting, or saved and resumed. Because: What is the main task? Complete a form.
-
-### Team and delivery
-
-- **Who maintains the system?** A platform team. A platform team serves many services.
-- **How fast does it change?** Rarely. Changes are rare and tested.
+All 78 answers, and the design decisions each one made: [Decision reference](decision-reference).

@@ -43,4 +43,4 @@ The raw values these tokens end at are on [Primitives › Motion](../primitives/
 | Situation | Use | Not | Why |
 | --- | --- | --- | --- |
 | Hover and press feedback | motion.duration.feedback (moderate) | Fast flicker | Moderate speed is easy to follow. |
-| Someone asked for less motion | No motion | Reduced motion | When people ask for less motion, nothing moves. |
+| Someone asked for less motion | No motion | Reduced motion | A shorter motion still moves. When people ask for less motion, nothing moves. |

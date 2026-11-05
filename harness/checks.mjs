@@ -554,6 +554,111 @@ export const CHECKS = {
         : ok(`the component spacing map in ${SCHEMES.length} schemes matches its rule`);
     },
   },
+  "scheme-order": {
+    requires: ["schemes/grammar.json", "storybook/src/scheme-context.tsx", "site/src/lib/home.ts"],
+    run: (c) => {
+      // One order everywhere: the grammar's scheme_order. The CLI, MCP, docs and website sort by it in
+      // code; Storybook's toolbar and the website's home list are written by hand, so check them.
+      const order = c.json("schemes", "grammar.json").scheme_order?.order ?? [];
+      const ids = readdirSync(c.p("schemes"))
+        .filter((f) => f.endsWith(".json") && f !== "grammar.json")
+        .map((f) => f.replace(/\.json$/, ""));
+      const gaps = [];
+      for (const id of ids) if (!order.includes(id)) gaps.push(`scheme_order leaves out ${id}`);
+      for (const id of order) if (!ids.includes(id)) gaps.push(`scheme_order names ${id}, which is not a scheme`);
+      const inOrder = (list) => list.every((id, i) => i === 0 || order.indexOf(list[i - 1]) <= order.indexOf(id));
+      const toolbar = [
+        ...new Set(
+          [...c.read("storybook/src/scheme-context.tsx").matchAll(/value: "([a-z-]+?)(?:--[a-z]+)?"/g)].map(
+            (m) => m[1],
+          ),
+        ),
+      ];
+      if (!inOrder(toolbar)) gaps.push(`Storybook's toolbar lists ${toolbar.join(", ")}`);
+      const home = JSON.parse(c.read("site/src/lib/home.ts").match(/HOME_SCHEMES = (\[[^\]]*\])/)?.[1] ?? "[]");
+      if (!inOrder(home)) gaps.push(`the website's home lists ${home.join(", ")}`);
+      return gaps.length ? bad(gaps.join("; ")) : ok(`one order everywhere: ${order.join(", ")}`);
+    },
+  },
+
+  "docs-css-tone": {
+    requires: ["schemes/grammar.json", "docs/src/css/custom.css", "docs/src/css/visual.css"],
+    run: (c) => {
+      // OD-222, in our own CSS: text on a fill follows the fill's tone. The grammar's tone rule keeps
+      // color.text.* (link, secondary, primary) for the page's own surfaces; on any other fill (a
+      // selected row, an action, a status, the inverse surface) the text is on-light or on-dark by the
+      // fill's tone. A link-colored label on the selected fill passed contrast and still read as mush.
+      const g = c.json("schemes", "grammar.json");
+      const page = new Set([
+        "color.surface.canvas",
+        "color.surface.default",
+        "color.surface.raised",
+        "color.surface.sunken",
+      ]);
+      const css = (id) => `--${id.replace(/\.@$/, "").replaceAll(".", "-")}`;
+      const fills = (g.semantics.tones?.fills ?? [])
+        .map((f) => f.id)
+        .filter((id) => !page.has(id))
+        .map(css);
+      // Allowed text on a toned fill: the tone pairs, the per-fill names, and the docs' variable that
+      // the generator sets from the tone (--ods-text-on-selected).
+      const allowed =
+        /^(inherit|currentColor|var\(--(ods-text-on-[a-z-]+|color-text-on-[a-z-]+|color-text-[a-z]+-on-(light|dark)|color-text-inverse)\b)/;
+      const files = [
+        "docs/src/css/custom.css",
+        "docs/src/css/visual.css",
+        "cli/templates/project/docs/src/css/custom.css",
+        "cli/templates/project/docs/src/css/visual.css",
+      ].filter((f) => c.has(f));
+      const gaps = [];
+      let rules = 0;
+      for (const f of files) {
+        const text = c.read(f);
+        for (const m of text.matchAll(/([^{}]+)\{([^{}]*)\}/g)) {
+          const bg = m[2].match(/(?:^|;|\s)background(?:-color)?:\s*([^;]+);/)?.[1] ?? "";
+          if (!fills.some((v) => bg.includes(`var(${v})`) || bg.includes(`var(${v},`))) continue;
+          rules++;
+          const color = m[2].match(/(?:^|;|\s)color:\s*([^;]+);/)?.[1]?.trim();
+          if (color && !allowed.test(color)) {
+            const line = text.slice(0, m.index).split("\n").length;
+            const sel = m[1]
+              .replace(/\/\*[\s\S]*?\*\//g, "")
+              .trim()
+              .replace(/\s+/g, " ");
+            gaps.push(`${f}:${line} ${sel}: ${color} on ${bg.trim()}`);
+          }
+        }
+      }
+      return gaps.length
+        ? bad(
+            `text that ignores its fill's tone: ${gaps.slice(0, 6).join("; ")}${gaps.length > 6 ? ` and ${gaps.length - 6} more` : ""}`,
+          )
+        : ok(`${rules} rules paint a toned fill in the docs CSS; each one's text follows the tone`);
+    },
+  },
+
+  "docs-no-native-select": {
+    requires: ["docs/src"],
+    run: (c) => {
+      // Open DS decision (2026-11-05): our own sites use no native select. It opens the operating
+      // system's menu and the browser's focus ring, so the docs would stop wearing the scheme.
+      const gaps = [];
+      const walk = (dir) => {
+        for (const e of readdirSync(c.p(dir), { withFileTypes: true })) {
+          const rel = `${dir}/${e.name}`;
+          if (e.isDirectory()) walk(rel);
+          else if (/\.(tsx|jsx|ts|js|mdx|md|html)$/.test(e.name) && /<select[\s>]/.test(c.read(rel))) gaps.push(rel);
+        }
+      };
+      for (const d of ["docs/src", "cli/templates/project/docs/src", "site/src"]) if (c.has(d)) walk(d);
+      return gaps.length
+        ? bad(
+            `a native <select> in ${gaps.join(", ")}: use the picker (docs/src/theme/NavbarItem/SchemeSwitcher.tsx, site/src/components/picker.tsx)`,
+          )
+        : ok("no native select in the docs, the created project's docs or the website");
+    },
+  },
+
   "spacing-on-grid": {
     run: async (c) => {
       // OD-235: every spacing a scheme decides is a multiple of 4px and at most 64px; the hairline (2px)

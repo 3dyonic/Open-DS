@@ -152,6 +152,6 @@ The raw values these tokens end at are on [Primitives › Type](../primitives/ty
 | Situation | Use | Not | Why |
 | --- | --- | --- | --- |
 | Page title | type.title in the brand font | A brand-specific style | Roles stay shared; only the brand font changes. |
-| A number in a table | type.body | A mono font | Numbers read like text in every brand. |
+| A number in a table | type.body | A mono font | Prices sit in sentences and offers, not in columns to compare, so a mono font adds nothing in any brand. |
 | Paragraph or help text | type.body | type.caption | Regular body size suits every brand. |
 | Field label or column header | type.label | type.caption | Labels stay readable in every brand. |
