@@ -10,10 +10,21 @@ import { join } from "node:path";
 
 const ROOT = new URL("../..", import.meta.url).pathname;
 const read = (p) => JSON.parse(readFileSync(ROOT + p, "utf8"));
-export const RECIPES = { menu: "menu", table: "table" };
+export const RECIPES = { menu: "menu", table: "table", tree: "tree" };
 /** The components with a parts layer the renderer has a recipe for. */
 export function drawable() {
-  return read("schemes/grammar.json").catalogue.items.filter((i) => RECIPES[i.anatomy?.drawing?.kind]).map((i) => i.id);
+  return read("schemes/grammar.json").catalogue.items.filter((i) => RECIPES[layer(i)?.drawing?.kind]).map((i) => i.id);
+}
+// A parts layer: the grammar's, or one being drafted in ANATOMY_LAYERS (anatomy-<component>.json).
+function layer(item) {
+  const dir = process.env.ANATOMY_LAYERS;
+  if (dir) {
+    try {
+      const j = JSON.parse(readFileSync(join(dir, `anatomy-${item.id}.json`), "utf8"));
+      return j.anatomy ?? j;
+    } catch {}
+  }
+  return item.anatomy;
 }
 /** The library name of a scheme's published Figma kit. */
 export const kitLibrary = (s) => `Open DS · ${s.name} · Figma kit`;
@@ -22,8 +33,8 @@ export function anatomySpec(component, schemeId = "dense-data") {
 const g = read("schemes/grammar.json");
 const s = read(`schemes/${schemeId}.json`);
 const item = g.catalogue.items.find((i) => i.id === component);
-if (!item?.anatomy) throw new Error(`${component} has no parts layer.`);
-const spec = item.anatomy;
+const spec = item && layer(item);
+if (!spec) throw new Error(`${component} has no parts layer.`);
 const recipe = RECIPES[spec.drawing?.kind];
 if (!recipe) throw new Error(`${component}: no recipe for drawing kind ${spec.drawing?.kind} yet.`);
 
@@ -98,6 +109,29 @@ function icon(name) {
 }
 
 const K = (k) => `component.${component}.${k}`;
+// The tree recipe's bindings: every token a node names, by the property that reads it.
+const COLOR = new Set(["fill", "stroke", "color"]);
+function treeNodes(sp) {
+  const all = [];
+  const walk = (d) => { all.push(d); if (d.ring) all.push({ ...d.ring, __ring: true }); (d.children ?? []).forEach(walk); };
+  walk(sp.drawing.stage);
+  for (const c of sp.cards) if (c.image?.tree) walk(c.image.tree);
+  return all;
+}
+function treeBindings(sp) {
+  const out = { canvas: bind("color.surface.canvas", "color"), font: bind("type.body.font-family", "font"), __ink: bind("color.text.primary", "color") };
+  const WORDS = new Set(["t", "id", "name", "text", "icon", "layout", "align", "justify", "at", "weight", "strokeAlign", "sides", "abs", "children", "ring", "n", "grow", "clip", "__ring"]);
+  for (const d of treeNodes(sp))
+    for (const [k, raw] of Object.entries(d)) {
+      if (WORDS.has(k)) continue;
+      for (const v of [].concat(raw)) {
+        if (typeof v !== "string" || v === "fill" || v === "hug") continue;
+        const kind = COLOR.has(k) ? "color" : k === "shadow" ? "shadow" : k === "font" ? "font" : "number";
+        if (!out[v]) out[v] = bind(v, kind);
+      }
+    }
+  return out;
+}
 const B = {
   menu: {
     panelFill: bind("component.overlay.background", "color"),
@@ -172,6 +206,7 @@ const B = {
     canvas: bind("color.surface.canvas", "color"),
     font: bind("type.body.font-family", "font"),
   },
+  tree: recipe === "tree" ? treeBindings(spec) : null,
 }[recipe];
 // A binding that resolves to nothing is a mistake in this file, not a gap in the kit.
 for (const [role, b] of Object.entries(B)) if (b.value === null || b.value === undefined || Number.isNaN(b.value)) throw new Error(`${component}: ${role} (${b.path}) resolves to no value.`);
@@ -179,7 +214,15 @@ for (const [role, b] of Object.entries(B)) if (b.value === null || b.value === u
 const flat = (l) => l.flatMap((p) => [p, ...(p.children ? flat(p.children) : [])]);
 const iconNames = recipe === "menu"
   ? [...spec.drawing.rows.map((r) => r.icon).filter(Boolean), "chevron-right"]
-  : [...spec.drawing.toolbar.map((t) => t.icon).filter(Boolean), "search", "arrow-up-down", "check"];
+  : recipe === "tree"
+    ? treeNodes(spec).filter((d) => d.t === "icon").map((d) => d.icon)
+    : [...spec.drawing.toolbar.map((t) => t.icon).filter(Boolean), "search", "arrow-up-down", "check"];
+if (recipe === "tree") {
+  // Every numbered part is shown somewhere: on the stage or on its card's own drawing.
+  const shown = new Set(treeNodes(spec).flatMap((d) => [].concat(d.n ?? [], d.ring?.n ?? [])));
+  const missing = flat(spec.parts).filter((p) => p.n && !shown.has(p.n)).map((p) => `${p.n} ${p.label}`);
+  if (missing.length) throw new Error(`${component}: the drawing shows no part ${missing.join(", ")}.`);
+}
 const icons = Object.fromEntries([...new Set(iconNames)].map((n) => [n, icon(n)]));
 return {
   component,

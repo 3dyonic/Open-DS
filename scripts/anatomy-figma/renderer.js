@@ -2,6 +2,17 @@
 // one frame per card on the page "Anatomy / <component>", binds every drawn property to the first kit
 // variable in its chain, and reports what it bound and what fell back to the scheme's value (missing in
 // the kit). It reads the published kit's variables and never edits the kit. loadKit reads them once.
+// Plugins have no figma.createAutoLayout (the Figma MCP adds it), so the renderer brings its own.
+function createAutoLayout(dir, props) {
+  if (dir && typeof dir === "object") { props = dir; dir = "HORIZONTAL"; }
+  const f = figma.createFrame();
+  f.fills = [];
+  f.layoutMode = dir || "HORIZONTAL";
+  f.primaryAxisSizingMode = "AUTO";
+  f.counterAxisSizingMode = "AUTO";
+  if (props) for (const [k, v] of Object.entries(props)) f[k] = v;
+  return f;
+}
 async function loadKit(library) {
   const vars = new Map();
   for (const c of await figma.teamLibrary.getAvailableLibraryVariableCollectionsAsync())
@@ -99,7 +110,7 @@ const CORNERS = ["topLeftRadius", "topRightRadius", "bottomLeftRadius", "bottomR
 const SIDES = ["strokeTopWeight", "strokeBottomWeight", "strokeLeftWeight", "strokeRightWeight"];
 function menu(rows, show, whole) {
   const marks = [];
-  const panel = figma.createAutoLayout("VERTICAL", { name: "Menu" });
+  const panel = createAutoLayout("VERTICAL", { name: "Menu" });
   num(panel, "paddingTop", "panelPadding"); num(panel, "paddingBottom", "panelPadding");
   num(panel, "paddingLeft", "panelPadding"); num(panel, "paddingRight", "panelPadding");
   for (const c of ["topLeftRadius", "topRightRadius", "bottomLeftRadius", "bottomRightRadius"]) num(panel, c, "panelRadius");
@@ -112,7 +123,7 @@ function menu(rows, show, whole) {
   panel.counterAxisSizingMode = "FIXED";
   for (const r of rows) {
     if (r.separator) {
-      const wrap = figma.createAutoLayout("VERTICAL", { name: "Separator" });
+      const wrap = createAutoLayout("VERTICAL", { name: "Separator" });
       num(wrap, "paddingTop", "sepMargin"); num(wrap, "paddingBottom", "sepMargin");
       wrap.fills = [];
       const line = figma.createRectangle();
@@ -127,7 +138,7 @@ function menu(rows, show, whole) {
       if (r.marks?.row) marks.push([r.marks.row, line, "right"]);
       continue;
     }
-    const row = figma.createAutoLayout("HORIZONTAL", { name: `Item · ${r.label}` });
+    const row = createAutoLayout("HORIZONTAL", { name: `Item · ${r.label}` });
     row.counterAxisAlignItems = "CENTER";
     num(row, "minHeight", "itemHeight");
     num(row, "paddingLeft", "itemPaddingX"); num(row, "paddingRight", "itemPaddingX");
@@ -185,7 +196,7 @@ function cellText(chars, numeric, colorRole = "cellLabel", sizeRole = "cellSize"
 }
 function trow(cells, opts, marks, headMarks) {
   const head = opts.head;
-  const r = figma.createAutoLayout("HORIZONTAL", { name: head ? "Header row" : `Row · ${cells[0]}` });
+  const r = createAutoLayout("HORIZONTAL", { name: head ? "Header row" : `Row · ${cells[0]}` });
   r.counterAxisAlignItems = "CENTER";
   num(r, "minHeight", "rowHeight");
   r.fills = head ? [paint("headFill")] : opts.state === "highlight" ? [paint("highlight")] : opts.state === "selected" ? [paint("selected")] : [];
@@ -193,13 +204,13 @@ function trow(cells, opts, marks, headMarks) {
   if (opts.state === "selected") {
     r.effects = [{ type: "INNER_SHADOW", color: { ...V.edge.value, a: 1 }, offset: { x: V.edgeWidth.value || 2, y: 0 }, radius: 0, spread: 0, visible: true, blendMode: "NORMAL" }];
   }
-  const chk = figma.createAutoLayout("HORIZONTAL", { name: "Check cell" });
+  const chk = createAutoLayout("HORIZONTAL", { name: "Check cell" });
   num(chk, "paddingLeft", "cellPaddingX"); num(chk, "paddingRight", "cellPaddingX"); chk.fills = [];
   const b = box(!!opts.checked); chk.appendChild(b); r.appendChild(chk);
   if (marks?.check) marks.push_([marks.check, b, "top"]);
   if (head && headMarks?.check) headMarks.push_([headMarks.check, b, "top"]);
   SPEC.drawing.columns.forEach((col, k) => {
-    const c = figma.createAutoLayout("HORIZONTAL", { name: `Cell · ${col.label}` });
+    const c = createAutoLayout("HORIZONTAL", { name: `Cell · ${col.label}` });
     c.counterAxisAlignItems = "CENTER"; c.itemSpacing = 4; c.fills = [];
     if (col.numeric) c.primaryAxisAlignItems = "MAX";
     num(c, "paddingLeft", "cellPaddingX"); num(c, "paddingRight", "cellPaddingX");
@@ -217,12 +228,12 @@ function trow(cells, opts, marks, headMarks) {
   return r;
 }
 function toolbar(out) {
-  const bar = figma.createAutoLayout("HORIZONTAL", { name: "Toolbar" });
+  const bar = createAutoLayout("HORIZONTAL", { name: "Toolbar" });
   bar.counterAxisAlignItems = "CENTER"; bar.itemSpacing = 8; bar.fills = [];
   for (const t of SPEC.drawing.toolbar) {
     let n;
     if (t.kind === "search") {
-      n = figma.createAutoLayout("HORIZONTAL", { name: "Search field" });
+      n = createAutoLayout("HORIZONTAL", { name: "Search field" });
       n.counterAxisAlignItems = "CENTER"; n.itemSpacing = 6;
       num(n, "minHeight", "inputHeight"); num(n, "paddingLeft", "inputPaddingX"); num(n, "paddingRight", "inputPaddingX");
       for (const c of CORNERS) num(n, c, "inputRadius");
@@ -230,7 +241,7 @@ function toolbar(out) {
       n.appendChild(svg("search", "iconSize", "inputPlaceholder"));
       n.appendChild(cellText(t.label, false, "inputPlaceholder", "inputFontSize"));
     } else if (t.kind === "button") {
-      n = figma.createAutoLayout("HORIZONTAL", { name: `Button · ${t.label}` });
+      n = createAutoLayout("HORIZONTAL", { name: `Button · ${t.label}` });
       n.counterAxisAlignItems = "CENTER"; n.itemSpacing = 6;
       num(n, "minHeight", "btnHeight"); num(n, "paddingLeft", "btnPaddingX"); num(n, "paddingRight", "btnPaddingX");
       for (const c of CORNERS) num(n, c, "btnRadius");
@@ -240,11 +251,11 @@ function toolbar(out) {
     } else if (t.kind === "count") {
       n = cellText(t.label, false, "count", "cellSize");
     } else {
-      n = figma.createAutoLayout("HORIZONTAL", { name: "Density switch" });
+      n = createAutoLayout("HORIZONTAL", { name: "Density switch" });
       n.fills = []; n.strokes = [paint("btnBorder")]; n.strokeWeight = 1;
       for (const c of CORNERS) num(n, c, "toggleRadius");
       t.options.forEach((o, k) => {
-        const seg = figma.createAutoLayout("HORIZONTAL", { name: o });
+        const seg = createAutoLayout("HORIZONTAL", { name: o });
         seg.counterAxisAlignItems = "CENTER"; num(seg, "minHeight", "btnHeight"); num(seg, "paddingLeft", "btnPaddingX"); num(seg, "paddingRight", "btnPaddingX");
         seg.fills = k === 0 ? [paint("toggleOn")] : [];
         seg.appendChild(cellText(o, false, "btnLabel", "btnFontSize"));
@@ -258,13 +269,13 @@ function toolbar(out) {
 }
 function table(sections, show) {
   const marks = []; marks.push_ = (m) => marks.push(m);
-  const wrap = figma.createAutoLayout("VERTICAL", { name: "Data table" });
+  const wrap = createAutoLayout("VERTICAL", { name: "Data table" });
   num(wrap, "itemSpacing", "gap"); wrap.fills = [];
   if (sections.includes("toolbar")) wrap.appendChild(toolbar(marks));
   const head = sections.includes("table") || sections.includes("header");
   const picked = sections.includes("table") ? SPEC.drawing.rows : sections.filter((x) => x.startsWith("row:")).map((x) => SPEC.drawing.rows[+x.split(":")[1]]);
   if (head || picked.length) {
-    const fr = figma.createAutoLayout("VERTICAL", { name: "Table" });
+    const fr = createAutoLayout("VERTICAL", { name: "Table" });
     fr.resize(560, 10); fr.primaryAxisSizingMode = "AUTO"; fr.counterAxisSizingMode = "FIXED";
     fr.fills = [paint("frameFill")]; fr.strokes = [paint("frameBorder")];
     for (const w of SIDES) num(fr, w, "frameBorderWidth");
@@ -281,6 +292,117 @@ function table(sections, show) {
   }
   return { node: wrap, marks: marks.filter(([n]) => !show || show.has(n)) };
 }
+
+// The tree recipe: any component, drawn from a tree of nodes in its parts layer. Every look a node has
+// names a token (a key into SPEC.bind) or is a plain number; n numbers the part the node shows.
+const setN = (node, prop, ref) => {
+  if (ref === undefined || ref === null) return;
+  if (typeof ref === "number") {
+    if (prop === "height") node.resize(node.width, Math.max(ref, 0.01));
+    else if (prop === "width") node.resize(Math.max(ref, 0.01), node.height);
+    else node[prop] = ref;
+  } else num(node, prop, ref);
+};
+const SIDE = { top: "strokeTopWeight", bottom: "strokeBottomWeight", left: "strokeLeftWeight", right: "strokeRightWeight" };
+function tnode(d, out, show) {
+  let node;
+  if (d.t === "text") {
+    const t = figma.createText();
+    t.fontName = d.font ? fontOf(d.font, d.weight) : d.weight === "bold" ? BOLD : FONT;
+    t.characters = String(d.text ?? "");
+    setN(t, "fontSize", d.size ?? 14);
+    t.fills = [d.color ? paint(d.color) : paint("__ink")];
+    if (d.align === "end") t.textAlignHorizontal = "RIGHT";
+    if (d.align === "center") t.textAlignHorizontal = "CENTER";
+    node = t;
+  } else if (d.t === "icon") {
+    node = figma.createNodeFromSvg(SPEC.icons[d.icon]);
+    node.name = `icon/${d.icon}`;
+    const sz = typeof d.size === "number" ? d.size : V[d.size]?.value || 16;
+    node.resize(sz, sz);
+    for (const vec of node.findAll((x) => "strokes" in x && x.strokes.length)) vec.strokes = [d.color ? paint(d.color) : paint("__ink")];
+  } else {
+    const auto = d.t !== "rect" && d.t !== "ellipse" && d.layout !== "none";
+    node = d.t === "ellipse" ? figma.createEllipse() : auto ? createAutoLayout(d.layout === "col" ? "VERTICAL" : "HORIZONTAL") : d.t === "rect" ? figma.createRectangle() : figma.createFrame();
+    if (!auto && node.type === "FRAME") node.resize(10, 10);
+    node.fills = d.fill ? [paint(d.fill, d.fillOpacity)] : [];
+    if (auto) {
+      node.counterAxisAlignItems = { center: "CENTER", end: "MAX", start: "MIN", baseline: "BASELINE" }[d.align ?? "center"] ?? "CENTER";
+      if (d.justify) node.primaryAxisAlignItems = { center: "CENTER", end: "MAX", between: "SPACE_BETWEEN", start: "MIN" }[d.justify];
+      setN(node, "itemSpacing", d.gap);
+      const [py, px] = Array.isArray(d.pad) ? d.pad : [d.pad, d.pad];
+      setN(node, "paddingTop", d.padY ?? py); setN(node, "paddingBottom", d.padY ?? py);
+      setN(node, "paddingLeft", d.padX ?? px); setN(node, "paddingRight", d.padX ?? px);
+      setN(node, "minHeight", d.minH); setN(node, "minWidth", d.minW);
+    }
+    if (d.radius !== undefined) for (const c of CORNERS) setN(node, node.type === "ELLIPSE" ? "cornerRadius" : c, d.radius);
+    if (d.stroke) {
+      node.strokes = [paint(d.stroke)];
+      node.strokeAlign = d.strokeAlign === "outside" ? "OUTSIDE" : d.strokeAlign === "center" ? "CENTER" : "INSIDE";
+      const sides = d.sides ?? ["top", "bottom", "left", "right"];
+      if (node.type === "ELLIPSE") setN(node, "strokeWeight", d.strokeW ?? 1);
+      else for (const [k, prop] of Object.entries(SIDE)) sides.includes(k) ? setN(node, prop, d.strokeW ?? 1) : (node[prop] = 0);
+    }
+    if (d.shadow) node.effects = shadow(V[d.shadow]?.value);
+    if (d.clip) node.clipsContent = true;
+    for (const c of d.children ?? []) {
+      const k = tnode(c, out, show);
+      node.appendChild(k);
+      if (c.abs) { k.layoutPositioning = "ABSOLUTE"; k.x = c.abs[0]; k.y = c.abs[1]; }
+    }
+  }
+  node.name = d.name ?? d.id ?? node.name;
+  if (d.w !== undefined && d.w !== "fill" && d.w !== "hug") setN(node, "width", d.w);
+  if (d.h !== undefined && d.h !== "fill" && d.h !== "hug") setN(node, "height", d.h);
+  if (d.opacity !== undefined) setN(node, "opacity", d.opacity);
+  // A focus ring: a frame around the node, its offset as padding, its width and color as the stroke.
+  if (d.ring) {
+    const r = createAutoLayout("HORIZONTAL", { name: "Focus ring" });
+    r.fills = [];
+    for (const k of ["paddingTop", "paddingBottom", "paddingLeft", "paddingRight"]) setN(r, k, d.ring.offset ?? 2);
+    r.strokes = [paint(d.ring.color)];
+    r.strokeAlign = "INSIDE";
+    for (const prop of Object.values(SIDE)) setN(r, prop, d.ring.width ?? 2);
+    if (d.ring.radius !== undefined) for (const c of CORNERS) setN(r, c, d.ring.radius);
+    r.appendChild(node);
+    for (const m of [].concat(d.ring.n ?? [])) out.push([m, r, "right"]);
+    node = r;
+  }
+  for (const m of [].concat(d.n ?? [])) out.push([m, node, d.at ?? "top"]);
+  node.__d = d;
+  return node;
+}
+// Fill and hug apply once a node sits in its parent; one pass after the tree is built.
+function sizeTree(node) {
+  const d = node.__d;
+  if (d && node.parent && node.parent.layoutMode && node.parent.layoutMode !== "NONE" && node.layoutPositioning !== "ABSOLUTE") {
+    if (d.w === "fill") node.layoutSizingHorizontal = "FILL";
+    if (d.h === "fill") node.layoutSizingVertical = "FILL";
+    if (d.grow) node.layoutGrow = 1;
+  }
+  if ("children" in node) for (const c of node.children) sizeTree(c);
+}
+const fonts = new Map();
+const fontOf = (ref, weight) => {
+  const k = ref + "|" + (weight ?? "");
+  return fonts.get(k) ?? (weight === "bold" ? BOLD : FONT);
+};
+async function loadTreeFonts(d) {
+  if (d.font && !fonts.has(d.font + "|" + (d.weight ?? ""))) {
+    const fam = String(V[d.font]?.value ?? "").split(",")[0].replace(/["']/g, "").trim();
+    const st = (await figma.listAvailableFontsAsync()).filter((f) => f.fontName.family === fam).map((f) => f.fontName.style);
+    const style = d.weight === "bold" ? st.find((x) => /semi ?bold/i.test(x)) ?? st.find((x) => /bold/i.test(x)) : st.find((x) => /^regular$/i.test(x));
+    if (st.length) { const f = { family: fam, style: style ?? st[0] }; await figma.loadFontAsync(f); fonts.set(d.font + "|" + (d.weight ?? ""), f); }
+  }
+  for (const c of d.children ?? []) await loadTreeFonts(c);
+}
+function treeDraw(root, show) {
+  const marks = [];
+  const node = tnode(root, marks, show);
+  sizeTree(node);
+  return { node, marks: marks.filter(([n]) => !show || show.has(n)) };
+}
+
 function plate(name, built, w) {
   const f = figma.createFrame();
   f.name = name;
@@ -328,7 +450,9 @@ if (!page) { page = figma.createPage(); page.name = pageName; }
 await figma.setCurrentPageAsync(page);
 for (const c of [...page.children]) c.remove();
 const all = new Set(SPEC.parts.map((p) => p.n));
+if (SPEC.recipe === "tree") { await loadTreeFonts(SPEC.drawing.stage); for (const c of SPEC.cards) if (c.image?.tree) await loadTreeFonts(c.image.tree); }
 const draw = (c, show) => {
+  if (SPEC.recipe === "tree") return treeDraw(c?.image?.tree ?? SPEC.drawing.stage, show);
   if (SPEC.recipe === "table") return table(c ? c.image?.sections ?? [] : ["toolbar", "table"], show);
   if (!c) return menu(SPEC.drawing.rows, null, true);
   const rows = c.image?.row
