@@ -6,10 +6,24 @@
 import { anatomySpec, renderer } from "./build.mjs";
 
 let id = 0;
+// The node properties the renderer may set (all are Figma's own).
+const FIGMA_PROPS = new Set(("name x y fills strokes effects opacity cornerRadius topLeftRadius topRightRadius bottomLeftRadius bottomRightRadius " +
+  "strokeWeight strokeTopWeight strokeBottomWeight strokeLeftWeight strokeRightWeight strokeAlign dashPattern clipsContent " +
+  "layoutMode primaryAxisSizingMode counterAxisSizingMode primaryAxisAlignItems counterAxisAlignItems itemSpacing " +
+  "paddingTop paddingBottom paddingLeft paddingRight minHeight minWidth layoutGrow layoutPositioning layoutSizingHorizontal layoutSizingVertical " +
+  "fontName fontSize characters textAlignHorizontal textAlignVertical lineHeight textAutoResize").split(" "));
 class Node {
   constructor(type) {
     Object.assign(this, { id: `0:${++id}`, type, name: type, children: [], parent: null, x: 0, y: 0, width: 100, height: 100 });
     Object.assign(this, { fills: [], strokes: [], effects: [], bound: {}, layoutMode: "NONE" });
+    // Like Figma's nodes, these take only the properties Figma has: setting any other throws.
+    return new Proxy(this, {
+      set(t, k, v) {
+        if (typeof k === "string" && !(k in t) && !FIGMA_PROPS.has(k)) throw new TypeError(`object is not extensible (${t.name}.${k})`);
+        t[k] = v;
+        return true;
+      },
+    });
   }
   resize(w, h) {
     if (!(w > 0 && h > 0)) throw new Error(`${this.name}: resize(${w}, ${h})`);

@@ -306,6 +306,9 @@ const setN = (node, prop, ref) => {
 const SIDE = { top: "strokeTopWeight", bottom: "strokeBottomWeight", left: "strokeLeftWeight", right: "strokeRightWeight" };
 // A weight is "bold" or a weight token (600 and up draws the semibold face).
 const isBold = (w) => w === "bold" || (w && w !== "regular" && Number(V[w]?.value) >= 600);
+// Figma nodes take no properties of their own, so what the tree said about each node is kept here.
+const META = new Map();
+const RINGFILL = new Set();
 function tnode(d, out, show) {
   let node;
   if (d.t === "text") {
@@ -345,7 +348,7 @@ function tnode(d, out, show) {
     }
     // corners limits the radius, e.g. ["tl", "tr"] for a panel that opens from the bottom.
     const CN = { tl: "topLeftRadius", tr: "topRightRadius", bl: "bottomLeftRadius", br: "bottomRightRadius" };
-    if (d.radius !== undefined) for (const [k, c] of Object.entries(CN)) if (!d.corners || d.corners.includes(k)) setN(node, node.type === "ELLIPSE" ? "cornerRadius" : c, d.radius);
+    if (d.radius !== undefined) for (const [k, c] of Object.entries(CN)) if (node.type !== "ELLIPSE" && (!d.corners || d.corners.includes(k))) setN(node, c, d.radius);
     if (d.stroke) {
       node.strokes = [paint(d.stroke)];
       node.strokeAlign = d.strokeAlign === "outside" ? "OUTSIDE" : d.strokeAlign === "center" ? "CENTER" : "INSIDE";
@@ -379,20 +382,20 @@ function tnode(d, out, show) {
     r.appendChild(node);
     for (const m of [].concat(d.ring.n ?? [])) out.push([m, r, "right"]);
     // A ring around a part that stretches: the ring stretches, and the part fills the ring.
-    r.__d = { w: d.w === "fill" ? "fill" : undefined, grow: d.grow };
-    if (d.w === "fill") { r.counterAxisAlignItems = "CENTER"; node.__ringFill = true; }
+    META.set(r, { w: d.w === "fill" ? "fill" : undefined, grow: d.grow });
+    if (d.w === "fill") { r.counterAxisAlignItems = "CENTER"; RINGFILL.add(node); }
     node = r;
   }
   for (const m of [].concat(d.n ?? [])) out.push([m, node, d.at ?? "top"]);
   // marks: more numbers on this node, each at its own place, e.g. [[1, "corner"], [3, "shadow"]].
   for (const [m, at] of d.marks ?? []) out.push([m, node, at ?? "top"]);
-  node.__d = d;
+  if (!META.has(node)) META.set(node, d);
   return node;
 }
 // Fill and hug apply once a node sits in its parent; one pass after the tree is built.
 function sizeTree(node) {
-  const d = node.__d;
-  if (node.__ringFill && node.parent) node.layoutGrow = 1;
+  const d = META.get(node);
+  if (RINGFILL.has(node) && node.parent) node.layoutGrow = 1;
   if (d && node.parent && node.parent.layoutMode && node.parent.layoutMode !== "NONE" && node.layoutPositioning !== "ABSOLUTE") {
     if (d.w === "fill") node.layoutSizingHorizontal = "FILL";
     if (d.h === "fill") node.layoutSizingVertical = "FILL";
