@@ -2055,6 +2055,7 @@ tr.odv-for td {
 .odv-am-parts { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 32px; align-items: start; }
 @media (max-width: 996px) { .odv-am-parts { grid-template-columns: minmax(0, 1fr); } }
 .odv-am-stage { margin: 0; padding: 48px 24px 16px; border: 1px solid var(--color-border-default); border-radius: var(--radius-container, 8px); background: var(--color-surface-canvas); display: flex; flex-direction: column; align-items: center; gap: 40px; }
+.odv-am-stage > .odv-at { overflow-x: auto; padding: 12px 14px 14px 0; }
 .odv-am-stage figcaption { align-self: stretch; color: var(--color-text-secondary); font-size: 12px; }
 .odv-am-menu { position: relative; min-width: 260px; padding: var(--dropdown-menu-content-padding); border: var(--dropdown-menu-content-border-width) solid var(--dropdown-menu-content-border); border-radius: var(--overlay-radius); background: var(--overlay-background); box-shadow: var(--overlay-shadow); color: var(--dropdown-menu-content-label); }
 .odv-am-menu.part { box-shadow: none; min-width: 240px; }
@@ -2100,9 +2101,8 @@ tr.odv-for td {
 .odv-am-lines { margin-top: 4px; display: grid; gap: 2px; color: var(--color-text-secondary); font-size: 13px; }
 .odv-am-lines b { color: var(--color-text-primary); margin-right: 6px; }
 /* Anatomy reference: the table drawing (OD-229), from the table's and the data table's own variables. */
-.odv-am-parts.stacked { grid-template-columns: minmax(0, 1fr); }
 .odv-am-img.wide { padding: 20px 16px; }
-.odv-at { display: flex; flex-direction: column; gap: 12px; width: 100%; max-width: 640px; color: var(--table-label); font-size: var(--table-font-size); }
+.odv-at { display: flex; flex-direction: column; gap: 12px; width: 100%; max-width: 640px; min-width: 0; color: var(--table-label); font-size: var(--table-font-size); }
 .odv-at-bar { display: flex; flex-wrap: wrap; align-items: center; gap: var(--data-table-gap-2); }
 .odv-at-input { display: inline-flex; align-items: center; gap: 6px; height: var(--input-height); padding: 0 var(--input-padding-x); min-width: 160px; border: var(--input-border-width) solid var(--input-border); border-radius: var(--input-radius); background: var(--input-background); color: var(--input-placeholder); }
 .odv-at-btn { display: inline-flex; align-items: center; gap: 6px; height: var(--input-height); padding: 0 10px; border: var(--button-secondary-border-width) solid var(--button-secondary-border); border-radius: var(--radius-control); background: var(--button-secondary-background); color: var(--button-secondary-label); }

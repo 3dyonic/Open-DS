@@ -2583,7 +2583,7 @@ export function docsPages(
     );
     const roles = `<div class="odv-am-rolelist">${(g.anatomy?.roles ?? []).map((r) => `<span class="odv-am-role big"><b>${attr(r.label)}</b> ${attr(r.ask)}</span>`).join("")}</div>`;
     const partsBlock = h(
-      `<div class="odv-am-parts${spec.drawing.kind === "table" ? " stacked" : ""}"><figure class="odv-am-stage">${spec.drawing.kind === "table" ? `${tableDrawing(["toolbar", "table"], allNums)}${tableDrawing(["empty"], allNums)}` : drawing(spec.drawing.rows, allNums, true)}<figcaption>${spec.drawing.kind === "table" ? tableCaption : caption}</figcaption></figure>`,
+      `<div class="odv-am-parts"><figure class="odv-am-stage">${spec.drawing.kind === "table" ? `${tableDrawing(["toolbar", "table"], allNums)}${tableDrawing(["empty"], allNums)}` : drawing(spec.drawing.rows, allNums, true)}<figcaption>${spec.drawing.kind === "table" ? tableCaption : caption}</figcaption></figure>`,
       `<div class="odv-am-legend"><p class="odv-am-legend-t">Legend: every part and its roles. The numbers match the drawing; a part without one isn't in this example.</p><p class="odv-am-legend-k">${byTag} Its value changes by scheme. The part is the same in every scheme.</p><ul>${legend(spec.parts)}</ul></div></div>`,
     );
     return (
