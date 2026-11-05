@@ -936,5 +936,5 @@ html[data-theme="dark"] .ods-row {
   color: var(--ifm-color-emphasis-600);
 }
 
-/* The Anatomy reference sits under its component in the sidebar (OD-229). */
-.menu__list-item.ods-anatomy > .menu__link { padding-left: 1.75rem; font-size: 0.9em; color: var(--color-text-secondary); }
+/* The Anatomy reference sits under its component in the sidebar (OD-229); Docusaurus indents it. */
+.menu__list-item.ods-anatomy > .menu__link { font-size: 0.9em; }

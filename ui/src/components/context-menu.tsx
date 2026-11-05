@@ -186,7 +186,10 @@ function ContextMenuSeparator({ className, ...props }: React.ComponentProps<type
   return (
     <ContextMenuPrimitive.Separator
       data-slot="context-menu-separator"
-      className={cn("-mx-1 my-1 h-px bg-[color:var(--context-menu-separator-background)]", className)}
+      className={cn(
+        "-mx-[var(--context-menu-content-padding)] my-[var(--context-menu-separator-margin-y)] h-[var(--context-menu-separator-thickness)] bg-[color:var(--context-menu-separator-background)]",
+        className,
+      )}
       {...props}
     />
   );

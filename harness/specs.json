@@ -482,6 +482,7 @@
       "checks": [
         "answers-consider",
         "picks-cite-answers",
+        "floating-panels-agree",
         "schemes-answer-every-question",
         "gaps-only-go-down"
       ]

@@ -58,8 +58,8 @@ function MenubarTrigger({ className, ...props }: React.ComponentProps<typeof Men
 function MenubarContent({
   className,
   align = "start",
-  alignOffset = -4,
-  sideOffset = 8,
+  alignOffset = 0, // lines up with the bar through its padding key (OD-243)
+  sideOffset = 0, // the gap is overlay/offset, a margin on the side it opens to (OD-243)
   ...props
 }: React.ComponentProps<typeof MenubarPrimitive.Content>) {
   return (
@@ -70,7 +70,7 @@ function MenubarContent({
         alignOffset={alignOffset}
         sideOffset={sideOffset}
         className={cn(
-          "z-50 min-w-[12rem] origin-(--radix-menubar-content-transform-origin) overflow-hidden rounded-[var(--menubar-content-radius)] border-[length:var(--menubar-content-border-width)] border-[color:var(--menubar-content-border)] bg-[color:var(--menubar-content-background)] p-[var(--menubar-content-padding)] text-[color:var(--menubar-content-label)] shadow-[var(--menubar-content-shadow)] data-[side=bottom]:slide-in-from-top-2 data-[side=left]:slide-in-from-right-2 data-[side=right]:slide-in-from-left-2 data-[side=top]:slide-in-from-bottom-2 data-[state=open]:animate-in data-[state=open]:fade-in-0 data-[state=open]:zoom-in-95 duration-[var(--transition-panels-duration)]",
+          "data-[side=bottom]:mt-[var(--overlay-offset)] data-[side=top]:mb-[var(--overlay-offset)] data-[side=left]:mr-[var(--overlay-offset)] data-[side=right]:ml-[var(--overlay-offset)] data-[align=start]:-ml-[var(--menubar-content-align-pull)] z-50 min-w-[12rem] origin-(--radix-menubar-content-transform-origin) overflow-hidden rounded-[var(--menubar-content-radius)] border-[length:var(--menubar-content-border-width)] border-[color:var(--menubar-content-border)] bg-[color:var(--menubar-content-background)] p-[var(--menubar-content-padding)] text-[color:var(--menubar-content-label)] shadow-[var(--menubar-content-shadow)] data-[side=bottom]:slide-in-from-top-2 data-[side=left]:slide-in-from-right-2 data-[side=right]:slide-in-from-left-2 data-[side=top]:slide-in-from-bottom-2 data-[state=open]:animate-in data-[state=open]:fade-in-0 data-[state=open]:zoom-in-95 duration-[var(--transition-panels-duration)]",
           className,
         )}
         {...props}
@@ -167,7 +167,10 @@ function MenubarSeparator({ className, ...props }: React.ComponentProps<typeof M
   return (
     <MenubarPrimitive.Separator
       data-slot="menubar-separator"
-      className={cn("-mx-1 my-1 h-px bg-[color:var(--menubar-separator-background)]", className)}
+      className={cn(
+        "-mx-[var(--menubar-content-padding)] my-[var(--menubar-separator-margin-y)] h-[var(--menubar-separator-thickness)] bg-[color:var(--menubar-separator-background)]",
+        className,
+      )}
       {...props}
     />
   );

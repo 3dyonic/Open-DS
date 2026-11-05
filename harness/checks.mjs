@@ -651,6 +651,49 @@ export const CHECKS = {
         : ok(`${n} considerations met in words, across ${qs.length} question in ${SCHEMES.length} schemes`);
     },
   },
+  "floating-panels-agree": {
+    requires: ["schemes/grammar.json", "ui/src/components"],
+    run: (c) => {
+      // OD-243: a panel that floats over the page (a menu, a list, a popover, a dialog) is one kind of
+      // surface, so it reads one decision: the overlay corner, the overlay elevation and a border of
+      // its own. shadcn decided each one apart, and they drifted (control corners, card shadows). A
+      // sheet or a drawer sits on an edge, and a tooltip is a label: they decide their own.
+      const g = c.json("schemes", "grammar.json");
+      const floats = c
+        .walk("ui/src/components", (x) => x.endsWith(".tsx"))
+        .filter((f) => /Portal|Viewport/.test(c.read(f)))
+        .map((f) =>
+          f
+            .split("/")
+            .pop()
+            .replace(/\.tsx$/, ""),
+        )
+        .filter((x) => !["sheet", "drawer", "tooltip"].includes(x));
+      const want = { radius: "radius.container", shadow: "elevation.overlay" };
+      const gaps = [];
+      let n = 0;
+      for (const comp of floats) {
+        const keys = g.component_keys.filter(
+          (e) => !e.replaced_by && new RegExp(`^${comp}/(content|sub/content|viewport|popup)/`).test(e.id),
+        );
+        const panels = [...new Set(keys.map((e) => e.id.replace(/\/[^/]+$/, "")))];
+        for (const p of panels) {
+          if (!keys.some((e) => e.id === `${p}/radius`)) continue; // not a surface of its own
+          n++;
+          for (const [prop, sem] of Object.entries(want)) {
+            const e = keys.find((x) => x.id === `${p}/${prop}`);
+            if (e && e.default !== sem) gaps.push(`${p}/${prop} reads ${e.default}, not ${sem}`);
+          }
+          if (!keys.some((e) => e.id === `${p}/border`)) gaps.push(`${p} has no border key of its own`);
+        }
+      }
+      return gaps.length
+        ? bad(`${gaps.length}: ${gaps.slice(0, 8).join("; ")}`)
+        : ok(
+            `${n} floating panels in ${floats.length} components read the overlay corner, elevation and a border of their own`,
+          );
+    },
+  },
   "picks-cite-answers": {
     requires: SCHEMES.map((s) => `schemes/${s}.json`),
     run: (c) => {

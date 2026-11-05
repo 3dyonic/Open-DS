@@ -412,6 +412,7 @@ test("get_gaps and get_component: where the decision trace breaks (OD-243)", asy
       "reads-the-system",
       "nested-corner",
       "fades-a-color",
+      "decided-in-code",
       "skips-a-component",
       "pick-without-reason",
     ],

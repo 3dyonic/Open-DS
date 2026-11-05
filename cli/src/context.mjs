@@ -149,8 +149,9 @@ export function context(
       scheme: scheme.id,
       guidance: guidanceFor(g, id),
       values: valuesFor(schemeId, id, roots),
+      // A deprecated key (replaced_by) is kept only so old code works: never offer it to an agent.
       read_by: g.component_keys
-        .filter((k) => k.default === id)
+        .filter((k) => k.default === id && !k.replaced_by)
         .map((k) => k.id),
     };
 

@@ -14,7 +14,7 @@ export const DropdownMenuGroup = MenuPrimitive.Group;
 
 export function DropdownMenuContent({
   className,
-  sideOffset = 4,
+  sideOffset = 0, // the gap is overlay/offset, a margin on the side it opens to (OD-243)
   ...props
 }: React.ComponentProps<typeof MenuPrimitive.Content>) {
   return (
@@ -23,7 +23,7 @@ export function DropdownMenuContent({
         data-slot="dropdown-menu-content"
         sideOffset={sideOffset}
         className={cn(
-          "z-50 min-w-[10rem] p-[var(--dropdown-menu-content-padding)] rounded-[var(--overlay-radius)] bg-[var(--overlay-background)] text-[var(--dropdown-menu-content-label)]",
+          "data-[side=bottom]:mt-[var(--overlay-offset)] data-[side=top]:mb-[var(--overlay-offset)] data-[side=left]:mr-[var(--overlay-offset)] data-[side=right]:ml-[var(--overlay-offset)] z-50 min-w-[10rem] p-[var(--dropdown-menu-content-padding)] rounded-[var(--overlay-radius)] bg-[var(--overlay-background)] text-[var(--dropdown-menu-content-label)]",
           "[box-shadow:var(--overlay-shadow)] border-[length:var(--dropdown-menu-content-border-width)] border-[var(--dropdown-menu-content-border)]",
           className,
         )}
@@ -56,7 +56,10 @@ export function DropdownMenuItem({
 export function DropdownMenuSeparator({ className, ...props }: React.ComponentProps<typeof MenuPrimitive.Separator>) {
   return (
     <MenuPrimitive.Separator
-      className={cn("my-1 h-px bg-[var(--dropdown-menu-separator-background)]", className)}
+      className={cn(
+        "my-[var(--dropdown-menu-separator-margin-y)] h-[var(--dropdown-menu-separator-thickness)] bg-[var(--dropdown-menu-separator-background)]",
+        className,
+      )}
       {...props}
     />
   );

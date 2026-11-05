@@ -88,7 +88,7 @@ function ComboboxInput({
 function ComboboxContent({
   className,
   side = "bottom",
-  sideOffset = 6,
+  sideOffset = 0, // the gap is overlay/offset, a margin on the side it opens to (OD-243)
   align = "start",
   alignOffset = 0,
   anchor,
@@ -109,7 +109,7 @@ function ComboboxContent({
           data-slot="combobox-content"
           data-chips={!!anchor}
           className={cn(
-            "group/combobox-content relative max-h-96 w-(--anchor-width) max-w-(--available-width) min-w-[calc(var(--anchor-width)+--spacing(7))] origin-(--transform-origin) overflow-hidden rounded-[var(--combobox-content-radius)] bg-[color:var(--combobox-content-background)] text-[color:var(--combobox-content-label)] shadow-[var(--combobox-content-shadow)] border-[length:var(--combobox-content-border-width)] border-[color:var(--combobox-content-border)] data-[chips=true]:min-w-(--anchor-width) data-[side=bottom]:slide-in-from-top-2 data-[side=left]:slide-in-from-right-2 data-[side=right]:slide-in-from-left-2 data-[side=top]:slide-in-from-bottom-2 *:data-[slot=input-group]:m-1 *:data-[slot=input-group]:mb-0 *:data-[slot=input-group]:h-[var(--combobox-input-height)] *:data-[slot=input-group]:border-[color:var(--combobox-input-border)] *:data-[slot=input-group]:bg-[color:var(--combobox-input-background)] *:data-[slot=input-group]:shadow-none data-open:animate-in data-open:fade-in-0 data-open:zoom-in-95 data-closed:animate-out data-closed:fade-out-0 data-closed:zoom-out-95 duration-[var(--transition-panels-duration)]",
+            "data-[side=bottom]:mt-[var(--overlay-offset)] data-[side=top]:mb-[var(--overlay-offset)] data-[side=left]:mr-[var(--overlay-offset)] data-[side=right]:ml-[var(--overlay-offset)] group/combobox-content relative max-h-96 w-(--anchor-width) max-w-(--available-width) min-w-[calc(var(--anchor-width)+--spacing(7))] origin-(--transform-origin) overflow-hidden rounded-[var(--combobox-content-radius)] bg-[color:var(--combobox-content-background)] text-[color:var(--combobox-content-label)] shadow-[var(--combobox-content-shadow)] border-[length:var(--combobox-content-border-width)] border-[color:var(--combobox-content-border)] data-[chips=true]:min-w-(--anchor-width) data-[side=bottom]:slide-in-from-top-2 data-[side=left]:slide-in-from-right-2 data-[side=right]:slide-in-from-left-2 data-[side=top]:slide-in-from-bottom-2 *:data-[slot=input-group]:m-[var(--combobox-input-margin)] *:data-[slot=input-group]:mb-0 *:data-[slot=input-group]:h-[var(--combobox-input-height)] *:data-[slot=input-group]:border-[color:var(--combobox-input-border)] *:data-[slot=input-group]:bg-[color:var(--combobox-input-background)] *:data-[slot=input-group]:shadow-none data-open:animate-in data-open:fade-in-0 data-open:zoom-in-95 data-closed:animate-out data-closed:fade-out-0 data-closed:zoom-out-95 duration-[var(--transition-panels-duration)]",
             className,
           )}
           {...props}
@@ -193,7 +193,10 @@ function ComboboxSeparator({ className, ...props }: ComboboxPrimitive.Separator.
   return (
     <ComboboxPrimitive.Separator
       data-slot="combobox-separator"
-      className={cn("-mx-1 my-1 h-px bg-[color:var(--combobox-separator-background)]", className)}
+      className={cn(
+        "-mx-[var(--combobox-list-padding)] my-[var(--combobox-separator-margin-y)] h-[var(--combobox-separator-thickness)] bg-[color:var(--combobox-separator-background)]",
+        className,
+      )}
       {...props}
     />
   );
@@ -236,7 +239,7 @@ function ComboboxChip({
       {showRemove && (
         <ComboboxPrimitive.ChipRemove
           render={<Button variant="ghost" size="icon" />}
-          className="-ml-1 opacity-[var(--combobox-disabled-opacity)] hover:opacity-100"
+          className="-ml-[var(--combobox-chip-remove-pull)] opacity-[var(--combobox-disabled-opacity)] hover:opacity-100"
           data-slot="combobox-chip-remove"
         >
           <XIcon className="pointer-events-none" />

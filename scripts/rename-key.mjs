@@ -6,7 +6,7 @@
 //
 // Ids are grammar key ids (dropdown-menu/item/sunken). It edits the grammar, every scheme and the
 // component's source. Run the tokens and docs builds after.
-import { readFileSync, writeFileSync } from "node:fs";
+import { existsSync, readFileSync, writeFileSync } from "node:fs";
 
 const ROOT = new URL("..", import.meta.url).pathname;
 const SCHEMES = ["dense-data", "content-first", "accessible-first", "brand-expressive", "multi-brand"];
@@ -15,8 +15,10 @@ const opt = (name) => { const i = args.indexOf(`--${name}`); return i < 0 ? null
 const to = opt("to");
 const description = opt("description");
 const ticket = opt("ticket") ?? "OD-241";
-const [oldId, newId] = args;
-if (!oldId || !newId) throw new Error("Usage: rename-key.mjs <old-id> <new-id> [--to <semantic>] [--description <text>]");
+const [oldId, newId0] = args;
+// A new id that already names a group (trigger/background when trigger/background/hover exists) is
+// that group's base, @: the same CSS variable, and the group keeps its keys.
+if (!oldId || !newId0) throw new Error("Usage: rename-key.mjs <old-id> <new-id> [--to <semantic>] [--description <text>]");
 const read = (p) => readFileSync(ROOT + p, "utf8");
 const write = (p, o) => writeFileSync(ROOT + p, `${JSON.stringify(o, null, 2)}\n`);
 const segs = (id) => id.split("/");
@@ -28,6 +30,7 @@ const ref = (id) => segs(id).join(".");
 // Grammar: the new key beside the old, which now says what replaces it.
 const g = JSON.parse(read("schemes/grammar.json"));
 const entries = g.component_keys;
+const newId = entries.some((e) => e.id.startsWith(`${newId0}/`) && !e.id.endsWith("/@")) ? `${newId0}/@` : newId0;
 const entry = entries.find((e) => e.id === oldId);
 if (!entry) throw new Error(`No key ${oldId} in the grammar.`);
 if (entries.some((e) => e.id === newId)) throw new Error(`${newId} exists already.`);
@@ -110,7 +113,9 @@ for (const id of SCHEMES) {
 }
 
 // Source: the component reads the new CSS variable.
-const file = `ui/src/components/${comp.id}.tsx`;
+// A key filed under a shared recipe (overlay) lives in the component its id names (tooltip/…).
+const own = `ui/src/components/${comp.id}.tsx`;
+const file = existsSync(ROOT + own) ? own : `ui/src/components/${segs(oldId)[0]}.tsx`;
 const src = read(file);
 const n = src.split(`var(${cssVar(oldId)})`).length - 1;
 if (!n) throw new Error(`${file} does not read var(${cssVar(oldId)}).`);

@@ -27,6 +27,8 @@ Instead:
 - [Table](./table.md): A few rows, no tools.
 - [Card](./card.md): Items to browse, not compare.
 
+<a class="odv-anatref" href="./data-table-anatomy"><span class="odv-anatref-b"><b>Anatomy reference</b><span>Every part of the data table, the job it does, and the decisions behind it. 13 parts.</span></span><span class="odv-anatref-go" aria-hidden="true">→</span></a>
+
 ## How Content first uses it
 
 <div class="odv-grid two"><div class="odv-dd"><div class="stage"><div class="odv-eyebrow">A number in a table</div><div style="margin-top:6px"><b style="color:var(--color-status-success)">Use</b> type.body</div><div><b style="color:var(--color-status-danger)">Not</b> A mono font</div></div><div class="cap">Tables are rare and read row by row, so digits never need to line up in columns. A mono font would break the reading voice.</div></div><div class="odv-dd"><div class="stage"><div class="odv-eyebrow">A selected row or item</div><div style="margin-top:6px"><b style="color:var(--color-status-success)">Use</b> color.surface.selected</div><div><b style="color:var(--color-status-danger)">Not</b> Bold text only</div></div><div class="cap">A tint shows the choice clearly on warm paper.</div></div><div class="odv-dd"><div class="stage"><div class="odv-eyebrow">Table row height</div><div style="margin-top:6px"><b style="color:var(--color-status-success)">Use</b> size.row (comfortable)</div><div><b style="color:var(--color-status-danger)">Not</b> A compact row</div></div><div class="cap">Rows are read, not scanned.</div></div><div class="odv-dd"><div class="stage"><div class="odv-eyebrow">An action on one row or item</div><div style="margin-top:6px"><b style="color:var(--color-status-success)">Use</b> Button ghost with a word</div><div><b style="color:var(--color-status-danger)">Not</b> An icon on its own</div></div><div class="cap">Occasional visitors need the word.</div></div></div>
@@ -57,10 +59,6 @@ See [Voice and tone](../voice.md) for the whole voice.
 Test before you ship:
 
 - [ ] It stays a real table with headers; sorting and selection are announced. undefined
-
-## Look closer
-
-<div class="odv-anat-link"><a href="./data-table-anatomy">Anatomy reference →</a><span>Each part of Data table, and how the design decisions reach it: the answer, the rule, the token and the value you see.</span></div>
 
 ## Use it in code
 

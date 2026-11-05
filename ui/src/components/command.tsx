@@ -60,7 +60,7 @@ function CommandInput({ className, ...props }: React.ComponentProps<typeof Comma
   return (
     <div
       data-slot="command-input-wrapper"
-      className="flex h-9 items-center gap-[var(--command-input-wrapper-gap)] border-b px-[var(--command-input-wrapper-padding-x)]"
+      className="flex h-9 items-center gap-[var(--command-input-wrapper-gap)] border-b-[length:var(--command-input-wrapper-border-width)] border-[color:var(--command-input-wrapper-border)] px-[var(--command-input-wrapper-padding-x)]"
     >
       <SearchIcon className="size-[var(--command-icon-size)] shrink-0 opacity-[var(--command-disabled-opacity)]" />
       <CommandPrimitive.Input
@@ -112,7 +112,10 @@ function CommandSeparator({ className, ...props }: React.ComponentProps<typeof C
   return (
     <CommandPrimitive.Separator
       data-slot="command-separator"
-      className={cn("-mx-1 h-px bg-[color:var(--command-separator-background)]", className)}
+      className={cn(
+        "-mx-[var(--command-group-padding)] h-[var(--command-separator-thickness)] bg-[color:var(--command-separator-background)]",
+        className,
+      )}
       {...props}
     />
   );
@@ -123,7 +126,7 @@ function CommandItem({ className, ...props }: React.ComponentProps<typeof Comman
     <CommandPrimitive.Item
       data-slot="command-item"
       className={cn(
-        "relative flex cursor-default items-center gap-[var(--command-item-gap)] rounded-[var(--command-item-radius)] px-[var(--command-item-padding-x)] py-[var(--command-item-padding-y)] text-[length:var(--command-item-font-size)]/[var(--command-item-line-height)] outline-hidden select-none data-[disabled=true]:pointer-events-none data-[disabled=true]:opacity-[var(--command-item-disabled-opacity-disabled)] data-[selected=true]:bg-[color:var(--command-item-background-highlight)] data-[selected=true]:text-[color:var(--command-item-label-selected)] [&_svg]:pointer-events-none [&_svg]:shrink-0 [&_svg:not([class*='size-'])]:size-[var(--command-item-icon-size)] [&_svg:not([class*='text-'])]:text-[color:var(--command-item-label)]",
+        "relative flex cursor-default items-center gap-[var(--command-item-gap)] rounded-[var(--command-item-radius)] px-[var(--command-item-padding-x)] py-[var(--command-item-padding-y)] text-[length:var(--command-item-font-size)]/[var(--command-item-line-height)] outline-hidden select-none data-[disabled=true]:pointer-events-none data-[disabled=true]:opacity-[var(--command-item-disabled-opacity-disabled)] data-[selected=true]:bg-[color:var(--command-item-background-highlight)] data-[selected=true]:text-[color:var(--command-item-label-highlight)] [&_svg]:pointer-events-none [&_svg]:shrink-0 [&_svg:not([class*='size-'])]:size-[var(--command-item-icon-size)] [&_svg:not([class*='text-'])]:text-[color:var(--command-item-label)]",
         className,
       )}
       {...props}

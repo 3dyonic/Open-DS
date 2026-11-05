@@ -5123,7 +5123,7 @@
         "badge": {
           "$type": "dimension",
           "$value": "{theme.radius.badge}",
-          "$description": "Corner of badges, chips and checkboxes."
+          "$description": "Corner of badges, chips, tooltips and checkboxes: small labels and marks."
         },
         "option": {
           "$type": "dimension",
@@ -6380,16 +6380,22 @@
         "item-height": {
           "$value": "{size.control.default}",
           "$description": "Height of a menu item."
+        },
+        "offset": {
+          "$value": "{space.gap.tight}",
+          "$description": "The gap between a trigger and the panel it opens: the same for every floating panel."
         }
       },
       "tooltip": {
         "background": {
-          "$value": "{color.surface.inverse}",
-          "$description": "Tooltip fill."
+          "$value": "{tooltip.content.background}",
+          "$description": "Deprecated: use component.tooltip.content.background (OD-243). Tooltip fill.",
+          "$deprecated": "Use component.tooltip.content.background. Removed in the next minor release."
         },
         "label": {
-          "$value": "{color.text.inverse}",
-          "$description": "Tooltip text."
+          "$value": "{tooltip.content.label}",
+          "$description": "Deprecated: use component.tooltip.content.label (OD-243). Tooltip text.",
+          "$deprecated": "Use component.tooltip.content.label. Removed in the next minor release."
         },
         "content": {
           "radius": {
@@ -6411,6 +6417,14 @@
           "font-family": {
             "$value": "{type.caption.font-family}",
             "$description": "Content font family of the tooltip."
+          },
+          "background": {
+            "$value": "{color.surface.inverse}",
+            "$description": "Content background of the tooltip."
+          },
+          "label": {
+            "$value": "{color.text.inverse}",
+            "$description": "Content text of the tooltip."
           }
         }
       },
@@ -6535,6 +6549,14 @@
           "shadow": {
             "$value": "{elevation.overlay}",
             "$description": "Content shadow of the alert dialog."
+          },
+          "border": {
+            "$value": "{color.border.default}",
+            "$description": "Content border of the alert dialog, like every floating panel's."
+          },
+          "border-width": {
+            "$value": "{border-width.default}",
+            "$description": "Content border width of the alert dialog."
           }
         },
         "header": {
@@ -7456,6 +7478,14 @@
           "background": {
             "$value": "{color.border.default}",
             "$description": "Separator background of the combobox."
+          },
+          "margin-y": {
+            "$value": "{component-spacing-map.x1}",
+            "$description": "Space above and below the separator of the combobox."
+          },
+          "thickness": {
+            "$value": "{border-width.default}",
+            "$description": "Thickness of the separator of the combobox: the weight of every line."
           }
         },
         "chips": {
@@ -7563,6 +7593,12 @@
           "disabled-opacity": {
             "$value": "{opacity.disabled}",
             "$description": "Chip disabled opacity of the combobox."
+          },
+          "remove": {
+            "pull": {
+              "$value": "{component-spacing-map.x1}",
+              "$description": "How far the chip's remove button sits into its padding."
+            }
           }
         },
         "disabled-opacity": {
@@ -7581,6 +7617,10 @@
           "height": {
             "$value": "{size.control.default}",
             "$description": "Height of the search field in the combobox's list."
+          },
+          "margin": {
+            "$value": "{component-spacing-map.x1}",
+            "$description": "Inset of the search field in the combobox's panel, like a menu panel's padding."
           }
         }
       },
@@ -7622,6 +7662,14 @@
             "padding-x": {
               "$value": "{component-spacing-map.x3}",
               "$description": "Input wrapper padding x of the command."
+            },
+            "border": {
+              "$value": "{color.border.default}",
+              "$description": "The line under the command's search field."
+            },
+            "border-width": {
+              "$value": "{border-width.default}",
+              "$description": "Width of the line under the command's search field."
             }
           },
           "radius": {
@@ -7709,6 +7757,10 @@
           "background": {
             "$value": "{color.border.default}",
             "$description": "Separator background of the command."
+          },
+          "thickness": {
+            "$value": "{border-width.default}",
+            "$description": "Thickness of the separator of the command: the weight of every line."
           }
         },
         "item": {
@@ -7746,16 +7798,23 @@
             "$deprecated": "Use component.command.item.background.highlight. Removed in the next minor release."
           },
           "label-selected": {
-            "$value": "{color.text.primary}",
-            "$description": "Item label selected of the command."
+            "$value": "{command.item.label.highlight}",
+            "$description": "Deprecated: use component.command.item.label.highlight (OD-243). Item label selected of the command.",
+            "$deprecated": "Use component.command.item.label.highlight. Removed in the next minor release."
           },
           "icon-size": {
             "$value": "{size.icon}",
             "$description": "Item icon size of the command."
           },
           "label": {
-            "$value": "{color.text.muted}",
-            "$description": "Item label of the command."
+            "@": {
+              "$value": "{color.text.muted}",
+              "$description": "Item label of the command."
+            },
+            "highlight": {
+              "$value": "{color.text.primary}",
+              "$description": "Item label when highlighted, by the pointer or the keyboard, of the command."
+            }
           },
           "background": {
             "highlight": {
@@ -8133,6 +8192,14 @@
           "background": {
             "$value": "{color.border.default}",
             "$description": "Separator background of the context menu."
+          },
+          "margin-y": {
+            "$value": "{component-spacing-map.x1}",
+            "$description": "Space above and below the separator of the context menu."
+          },
+          "thickness": {
+            "$value": "{border-width.default}",
+            "$description": "Thickness of the separator of the context menu: the weight of every line."
           }
         },
         "shortcut": {
@@ -8444,6 +8511,14 @@
           "background": {
             "$value": "{color.border.default}",
             "$description": "Separator line of the dropdown menu."
+          },
+          "margin-y": {
+            "$value": "{component-spacing-map.x1}",
+            "$description": "Space above and below the separator of the dropdown menu."
+          },
+          "thickness": {
+            "$value": "{border-width.default}",
+            "$description": "Thickness of the separator of the dropdown menu: the weight of every line."
           }
         }
       },
@@ -8730,8 +8805,8 @@
       "hover-card": {
         "content": {
           "radius": {
-            "$value": "{radius.control}",
-            "$description": "Content radius of the hover card."
+            "$value": "{radius.container}",
+            "$description": "Content corner of the hover card, like every floating panel's."
           },
           "background": {
             "$value": "{color.surface.raised}",
@@ -8748,6 +8823,14 @@
           "shadow": {
             "$value": "{elevation.overlay}",
             "$description": "Content shadow of the hover card."
+          },
+          "border": {
+            "$value": "{color.border.default}",
+            "$description": "Content border of the hover card."
+          },
+          "border-width": {
+            "$value": "{border-width.default}",
+            "$description": "Content border width of the hover card."
           }
         }
       },
@@ -9349,6 +9432,10 @@
           "border-width": {
             "$value": "{border-width.default}",
             "$description": "Border width of the menubar content."
+          },
+          "align-pull": {
+            "$value": "{component-spacing-map.x1}",
+            "$description": "Lines the menubar's panel up with the bar: the bar's padding step."
           }
         },
         "item": {
@@ -9581,6 +9668,14 @@
           "background": {
             "$value": "{color.border.default}",
             "$description": "Separator background of the menubar."
+          },
+          "margin-y": {
+            "$value": "{component-spacing-map.x1}",
+            "$description": "Space above and below the separator of the menubar."
+          },
+          "thickness": {
+            "$value": "{border-width.default}",
+            "$description": "Thickness of the separator of the menubar: the weight of every line."
           }
         },
         "shortcut": {
@@ -9861,32 +9956,39 @@
           }
         },
         "radius": {
-          "$value": "{radius.control}",
-          "$description": "Radius of the navigation menu."
+          "$value": "{navigation-menu.trigger.radius}",
+          "$description": "Deprecated: use component.navigation-menu.trigger.radius (OD-243). Radius of the navigation menu.",
+          "$deprecated": "Use component.navigation-menu.trigger.radius. Removed in the next minor release."
         },
         "background": {
-          "$value": "{color.surface.canvas}",
-          "$description": "Background of the navigation menu."
+          "$value": "{navigation-menu.trigger.background.@}",
+          "$description": "Deprecated: use component.navigation-menu.trigger.background (OD-243). Background of the navigation menu.",
+          "$deprecated": "Use component.navigation-menu.trigger.background. Removed in the next minor release."
         },
         "padding-x": {
-          "$value": "{space.inset.container}",
-          "$description": "Padding x of the navigation menu."
+          "$value": "{navigation-menu.trigger.padding-x}",
+          "$description": "Deprecated: use component.navigation-menu.trigger.padding-x (OD-243). Padding x of the navigation menu.",
+          "$deprecated": "Use component.navigation-menu.trigger.padding-x. Removed in the next minor release."
         },
         "padding-y": {
-          "$value": "{component-spacing-map.x2}",
-          "$description": "Padding y of the navigation menu."
+          "$value": "{navigation-menu.trigger.padding-y}",
+          "$description": "Deprecated: use component.navigation-menu.trigger.padding-y (OD-243). Padding y of the navigation menu.",
+          "$deprecated": "Use component.navigation-menu.trigger.padding-y. Removed in the next minor release."
         },
         "font-size": {
-          "$value": "{type.body.font-size}",
-          "$description": "Font size of the navigation menu."
+          "$value": "{navigation-menu.trigger.font-size}",
+          "$description": "Deprecated: use component.navigation-menu.trigger.font-size (OD-243). Font size of the navigation menu.",
+          "$deprecated": "Use component.navigation-menu.trigger.font-size. Removed in the next minor release."
         },
         "line-height": {
-          "$value": "{type.body.line-height}",
-          "$description": "Line height of the navigation menu."
+          "$value": "{navigation-menu.trigger.line-height}",
+          "$description": "Deprecated: use component.navigation-menu.trigger.line-height (OD-243). Line height of the navigation menu.",
+          "$deprecated": "Use component.navigation-menu.trigger.line-height. Removed in the next minor release."
         },
         "font-weight": {
-          "$value": "{type.label.font-weight}",
-          "$description": "Font weight of the navigation menu."
+          "$value": "{navigation-menu.trigger.font-weight}",
+          "$description": "Deprecated: use component.navigation-menu.trigger.font-weight (OD-243). Font weight of the navigation menu.",
+          "$deprecated": "Use component.navigation-menu.trigger.font-weight. Removed in the next minor release."
         },
         "background-hover": {
           "$value": "{navigation-menu.trigger.background.hover}",
@@ -9894,8 +9996,9 @@
           "$deprecated": "Use component.navigation-menu.trigger.background.hover. Removed in the next minor release."
         },
         "label-hover": {
-          "$value": "{color.text.primary}",
-          "$description": "Label hover of the navigation menu."
+          "$value": "{navigation-menu.trigger.label.hover}",
+          "$description": "Deprecated: use component.navigation-menu.trigger.label.hover (OD-243). Label hover of the navigation menu.",
+          "$deprecated": "Use component.navigation-menu.trigger.label.hover. Removed in the next minor release."
         },
         "background-focus": {
           "$value": "{navigation-menu.trigger.background.highlight}",
@@ -9903,12 +10006,14 @@
           "$deprecated": "Use component.navigation-menu.trigger.background.highlight. Removed in the next minor release."
         },
         "label-focus": {
-          "$value": "{color.text.primary}",
-          "$description": "Label focus of the navigation menu."
+          "$value": "{navigation-menu.trigger.label.highlight}",
+          "$description": "Deprecated: use component.navigation-menu.trigger.label.highlight (OD-243). Label focus of the navigation menu.",
+          "$deprecated": "Use component.navigation-menu.trigger.label.highlight. Removed in the next minor release."
         },
         "disabled-opacity-disabled": {
-          "$value": "{opacity.disabled}",
-          "$description": "Disabled opacity disabled of the navigation menu."
+          "$value": "{navigation-menu.trigger.disabled-opacity}",
+          "$description": "Deprecated: use component.navigation-menu.trigger.disabled-opacity (OD-243). Disabled opacity disabled of the navigation menu.",
+          "$deprecated": "Use component.navigation-menu.trigger.disabled-opacity. Removed in the next minor release."
         },
         "background-open": {
           "$value": "{navigation-menu.trigger.background.open}",
@@ -9916,8 +10021,9 @@
           "$deprecated": "Use component.navigation-menu.trigger.background.open. Removed in the next minor release."
         },
         "label-open": {
-          "$value": "{color.text.primary}",
-          "$description": "Label open of the navigation menu."
+          "$value": "{navigation-menu.trigger.label.open}",
+          "$description": "Deprecated: use component.navigation-menu.trigger.label.open (OD-243). Label open of the navigation menu.",
+          "$deprecated": "Use component.navigation-menu.trigger.label.open. Removed in the next minor release."
         },
         "background-open-hover": {
           "$value": "{navigation-menu.trigger.background.open-hover}",
@@ -9930,16 +10036,19 @@
           "$deprecated": "Use component.navigation-menu.trigger.background.open-highlight. Removed in the next minor release."
         },
         "focus": {
-          "$value": "{border-width.focus}",
-          "$description": "Focus of the navigation menu."
+          "$value": "{navigation-menu.trigger.focus-width}",
+          "$description": "Deprecated: use component.navigation-menu.trigger.focus-width (OD-243). Focus of the navigation menu.",
+          "$deprecated": "Use component.navigation-menu.trigger.focus-width. Removed in the next minor release."
         },
         "focus-ring-focus": {
-          "$value": "{color.border.focus}",
-          "$description": "Focus ring focus of the navigation menu."
+          "$value": "{navigation-menu.trigger.focus-ring}",
+          "$description": "Deprecated: use component.navigation-menu.trigger.focus-ring (OD-243). Focus ring focus of the navigation menu.",
+          "$deprecated": "Use component.navigation-menu.trigger.focus-ring. Removed in the next minor release."
         },
         "focus-ring-offset-focus": {
-          "$value": "{color.surface.canvas}",
-          "$description": "Focus ring offset focus of the navigation menu."
+          "$value": "{navigation-menu.trigger.focus-ring-offset}",
+          "$description": "Deprecated: use component.navigation-menu.trigger.focus-ring-offset (OD-243). Focus ring offset focus of the navigation menu.",
+          "$deprecated": "Use component.navigation-menu.trigger.focus-ring-offset. Removed in the next minor release."
         },
         "duration": {
           "$value": "{motion.duration.feedback}",
@@ -9947,30 +10056,57 @@
         },
         "content": {
           "padding": {
-            "$value": "{component-spacing-map.x2}",
-            "$description": "Content padding of the navigation menu."
+            "$value": "{component-spacing-map.x1}",
+            "$description": "Content padding of the navigation menu, like every panel of options."
           },
           "padding-right": {
             "$value": "{component-spacing-map.x3}",
             "$description": "Content padding right of the navigation menu."
+          },
+          "background": {
+            "$value": "{color.surface.raised}",
+            "$description": "Content background of the navigation menu, like every floating panel's."
+          },
+          "label": {
+            "$value": "{color.text.primary}",
+            "$description": "Content text of the navigation menu."
+          },
+          "shadow": {
+            "$value": "{elevation.overlay}",
+            "$description": "Content shadow of the navigation menu: it floats, like a menu."
+          },
+          "radius": {
+            "$value": "{radius.container}",
+            "$description": "Content corner of the navigation menu, like every floating panel's."
+          },
+          "border": {
+            "$value": "{color.border.default}",
+            "$description": "Content border of the navigation menu."
+          },
+          "border-width": {
+            "$value": "{border-width.default}",
+            "$description": "Content border width of the navigation menu."
           }
         },
         "background-2": {
-          "$value": "{color.surface.raised}",
-          "$description": "Background 2 of the navigation menu."
+          "$value": "{navigation-menu.content.background}",
+          "$description": "Deprecated: use component.navigation-menu.content.background (OD-243). Background 2 of the navigation menu.",
+          "$deprecated": "Use component.navigation-menu.content.background. Removed in the next minor release."
         },
         "label": {
-          "$value": "{color.text.primary}",
-          "$description": "Label of the navigation menu."
+          "$value": "{navigation-menu.content.label}",
+          "$description": "Deprecated: use component.navigation-menu.content.label (OD-243). Label of the navigation menu.",
+          "$deprecated": "Use component.navigation-menu.content.label. Removed in the next minor release."
         },
         "shadow": {
-          "$value": "{elevation.card}",
-          "$description": "Shadow of the navigation menu."
+          "$value": "{navigation-menu.content.shadow}",
+          "$description": "Deprecated: use component.navigation-menu.content.shadow (OD-243). Shadow of the navigation menu.",
+          "$deprecated": "Use component.navigation-menu.content.shadow. Removed in the next minor release."
         },
         "viewport": {
           "radius": {
-            "$value": "{radius.control}",
-            "$description": "Viewport radius of the navigation menu."
+            "$value": "{radius.container}",
+            "$description": "Viewport corner of the navigation menu, like every floating panel's."
           },
           "background": {
             "$value": "{color.surface.raised}",
@@ -9981,8 +10117,16 @@
             "$description": "Viewport label of the navigation menu."
           },
           "shadow": {
-            "$value": "{elevation.card}",
-            "$description": "Viewport shadow of the navigation menu."
+            "$value": "{elevation.overlay}",
+            "$description": "Viewport shadow of the navigation menu: it floats, like a menu."
+          },
+          "border": {
+            "$value": "{color.border.default}",
+            "$description": "Viewport border of the navigation menu."
+          },
+          "border-width": {
+            "$value": "{border-width.default}",
+            "$description": "Viewport border width of the navigation menu."
           }
         },
         "link": {
@@ -9991,8 +10135,8 @@
             "$description": "Link gap of the navigation menu."
           },
           "radius": {
-            "$value": "{radius.badge}",
-            "$description": "Link radius of the navigation menu."
+            "$value": "{radius.option}",
+            "$description": "Link corner: an option in the panel, nested in its corner."
           },
           "padding": {
             "$value": "{component-spacing-map.x2}",
@@ -10039,16 +10183,25 @@
             }
           },
           "focus": {
-            "$value": "{border-width.focus}",
-            "$description": "Link focus of the navigation menu."
+            "$value": "{navigation-menu.link.focus-width}",
+            "$description": "Deprecated: use component.navigation-menu.link.focus-width (OD-243). Link focus of the navigation menu.",
+            "$deprecated": "Use component.navigation-menu.link.focus-width. Removed in the next minor release."
           },
           "selected": {
-            "$value": "{color.border.selected}",
-            "$description": "Link selected of the navigation menu."
+            "$value": "{navigation-menu.link.edge.current}",
+            "$description": "Deprecated: use component.navigation-menu.link.edge.current (OD-243). Link selected of the navigation menu.",
+            "$deprecated": "Use component.navigation-menu.link.edge.current. Removed in the next minor release."
           },
           "label": {
-            "$value": "{color.text.primary}",
-            "$description": "Link label of the navigation menu."
+            "current": {
+              "$value": "{color.text.primary}",
+              "$description": "Link label when current, of the navigation menu."
+            },
+            "@": {
+              "$value": "{navigation-menu.link.label.current}",
+              "$description": "Deprecated: use component.navigation-menu.link.label.current (OD-243). Link label of the navigation menu.",
+              "$deprecated": "Use component.navigation-menu.link.label.current. Removed in the next minor release."
+            }
           },
           "icon-size": {
             "$value": "{size.icon}",
@@ -10069,18 +10222,40 @@
           "focus-offset": {
             "$value": "{border-width.focus-offset}",
             "$description": "Gap between the navigation menu link and its focus ring."
+          },
+          "edge": {
+            "current": {
+              "$value": "{color.border.selected}",
+              "$description": "The edge of the current link, so current is never color alone."
+            }
+          },
+          "focus-width": {
+            "$value": "{border-width.focus}",
+            "$description": "Link focus ring width, of the navigation menu."
+          },
+          "edge-width": {
+            "current": {
+              "$value": "{border-width.focus}",
+              "$description": "Width of the current link's edge."
+            }
           }
         },
         "background-3": {
-          "$value": "{color.border.default}",
-          "$description": "Background 3 of the navigation menu."
+          "$value": "{navigation-menu.indicator.background}",
+          "$description": "Deprecated: use component.navigation-menu.indicator.background (OD-243). Background 3 of the navigation menu.",
+          "$deprecated": "Use component.navigation-menu.indicator.background. Removed in the next minor release."
         },
         "shadow-2": {
-          "$value": "{elevation.overlay}",
-          "$description": "Shadow 2 of the navigation menu."
+          "$value": "{navigation-menu.indicator.shadow}",
+          "$description": "Deprecated: use component.navigation-menu.indicator.shadow (OD-243). Shadow 2 of the navigation menu.",
+          "$deprecated": "Use component.navigation-menu.indicator.shadow. Removed in the next minor release."
         },
         "trigger": {
           "background": {
+            "@": {
+              "$value": "{color.surface.canvas}",
+              "$description": "Trigger background of the navigation menu."
+            },
             "highlight": {
               "$value": "{color.surface.highlight}",
               "$description": "Trigger background when highlighted, by the pointer or the keyboard, of the navigation menu."
@@ -10105,6 +10280,74 @@
           "focus-offset": {
             "$value": "{border-width.focus-offset}",
             "$description": "Gap between the navigation menu trigger and its focus ring."
+          },
+          "padding-x": {
+            "$value": "{space.inset.container}",
+            "$description": "Trigger padding x of the navigation menu."
+          },
+          "padding-y": {
+            "$value": "{component-spacing-map.x2}",
+            "$description": "Trigger padding y of the navigation menu."
+          },
+          "font-size": {
+            "$value": "{type.body.font-size}",
+            "$description": "Trigger font size of the navigation menu."
+          },
+          "line-height": {
+            "$value": "{type.body.line-height}",
+            "$description": "Trigger line height of the navigation menu."
+          },
+          "font-weight": {
+            "$value": "{type.label.font-weight}",
+            "$description": "Trigger font weight of the navigation menu."
+          },
+          "label": {
+            "hover": {
+              "$value": "{color.text.primary}",
+              "$description": "Trigger label on hover, of the navigation menu."
+            },
+            "highlight": {
+              "$value": "{color.text.primary}",
+              "$description": "Trigger label when highlighted by the keyboard, of the navigation menu."
+            },
+            "open": {
+              "$value": "{color.text.primary}",
+              "$description": "Trigger label when its panel is open, of the navigation menu."
+            }
+          },
+          "disabled-opacity": {
+            "$value": "{opacity.disabled}",
+            "$description": "Trigger opacity when disabled, of the navigation menu."
+          },
+          "focus-width": {
+            "$value": "{border-width.focus}",
+            "$description": "Trigger focus ring width, of the navigation menu."
+          },
+          "focus-ring": {
+            "$value": "{color.border.focus}",
+            "$description": "Trigger focus ring, of the navigation menu."
+          },
+          "focus-ring-offset": {
+            "$value": "{color.surface.canvas}",
+            "$description": "The gap behind the trigger's focus ring: the page canvas."
+          },
+          "radius": {
+            "$value": "{radius.control}",
+            "$description": "Trigger corner of the navigation menu."
+          },
+          "icon-gap": {
+            "$value": "{space.gap.tight}",
+            "$description": "Gap between the trigger label and its chevron: an icon and its label."
+          }
+        },
+        "indicator": {
+          "background": {
+            "$value": "{color.border.default}",
+            "$description": "The indicator arrow's fill, of the navigation menu."
+          },
+          "shadow": {
+            "$value": "{elevation.overlay}",
+            "$description": "The indicator arrow's shadow, of the navigation menu."
           }
         }
       },
@@ -10139,8 +10382,8 @@
       "popover": {
         "content": {
           "radius": {
-            "$value": "{radius.control}",
-            "$description": "Content radius of the popover."
+            "$value": "{radius.container}",
+            "$description": "Content corner of the popover, like every floating panel's."
           },
           "background": {
             "$value": "{color.surface.raised}",
@@ -10157,6 +10400,14 @@
           "shadow": {
             "$value": "{elevation.overlay}",
             "$description": "Content shadow of the popover."
+          },
+          "border": {
+            "$value": "{color.border.default}",
+            "$description": "Content border of the popover."
+          },
+          "border-width": {
+            "$value": "{border-width.default}",
+            "$description": "Content border width of the popover."
           }
         },
         "header": {

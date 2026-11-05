@@ -2999,8 +2999,11 @@
         "overlay/shadow",
         "overlay/scrim",
         "overlay/item-height",
+        "tooltip/content/background",
         "tooltip/background",
-        "tooltip/label"
+        "tooltip/content/label",
+        "tooltip/label",
+        "overlay/offset"
       ]
     },
     {
@@ -3052,7 +3055,9 @@
         "alert-dialog/description/label",
         "alert-dialog/media/radius",
         "alert-dialog/media/background",
-        "alert-dialog/media/size"
+        "alert-dialog/media/size",
+        "alert-dialog/content/border",
+        "alert-dialog/content/border-width"
       ]
     },
     {
@@ -3342,7 +3347,11 @@
         "combobox/disabled-opacity",
         "combobox/content/border-width",
         "combobox/chips/focus-width",
-        "combobox/chips/border-width"
+        "combobox/chips/border-width",
+        "combobox/separator/margin-y",
+        "combobox/separator/thickness",
+        "combobox/input/margin",
+        "combobox/chip/remove/pull"
       ]
     },
     {
@@ -3387,12 +3396,16 @@
         "command/item/disabled-opacity-disabled",
         "command/item/background/highlight",
         "command/item/background-selected",
+        "command/item/label/highlight",
         "command/item/label-selected",
         "command/item/icon-size",
-        "command/item/label",
+        "command/item/label/@",
         "command/shortcut/font-size",
         "command/shortcut/line-height",
-        "command/shortcut/label"
+        "command/shortcut/label",
+        "command/input/wrapper/border",
+        "command/input/wrapper/border-width",
+        "command/separator/thickness"
       ]
     },
     {
@@ -3480,7 +3493,9 @@
         "context-menu/content/border",
         "context-menu/content/border-width",
         "context-menu/sub/content/border",
-        "context-menu/sub/content/border-width"
+        "context-menu/sub/content/border-width",
+        "context-menu/separator/margin-y",
+        "context-menu/separator/thickness"
       ]
     },
     {
@@ -3569,7 +3584,9 @@
         "dropdown-menu/item/label/destructive",
         "dropdown-menu/label",
         "dropdown-menu/separator/background",
-        "dropdown-menu/background"
+        "dropdown-menu/background",
+        "dropdown-menu/separator/margin-y",
+        "dropdown-menu/separator/thickness"
       ]
     },
     {
@@ -3658,7 +3675,9 @@
         "hover-card/content/background",
         "hover-card/content/padding",
         "hover-card/content/label",
-        "hover-card/content/shadow"
+        "hover-card/content/shadow",
+        "hover-card/content/border",
+        "hover-card/content/border-width"
       ]
     },
     {
@@ -3907,7 +3926,10 @@
         "menubar/sub/content/border",
         "menubar/sub/content/border-width",
         "menubar/border",
-        "menubar/border-width"
+        "menubar/border-width",
+        "menubar/separator/margin-y",
+        "menubar/separator/thickness",
+        "menubar/content/align-pull"
       ]
     },
     {
@@ -3971,35 +3993,52 @@
       "description": "The navigation menu component.",
       "keys": [
         "navigation-menu/list/gap",
+        "navigation-menu/trigger/radius",
         "navigation-menu/radius",
+        "navigation-menu/trigger/background/@",
         "navigation-menu/background",
+        "navigation-menu/trigger/padding-x",
         "navigation-menu/padding-x",
+        "navigation-menu/trigger/padding-y",
         "navigation-menu/padding-y",
+        "navigation-menu/trigger/font-size",
         "navigation-menu/font-size",
+        "navigation-menu/trigger/line-height",
         "navigation-menu/line-height",
+        "navigation-menu/trigger/font-weight",
         "navigation-menu/font-weight",
         "navigation-menu/trigger/background/hover",
         "navigation-menu/background-hover",
+        "navigation-menu/trigger/label/hover",
         "navigation-menu/label-hover",
         "navigation-menu/trigger/background/highlight",
         "navigation-menu/background-focus",
+        "navigation-menu/trigger/label/highlight",
         "navigation-menu/label-focus",
+        "navigation-menu/trigger/disabled-opacity",
         "navigation-menu/disabled-opacity-disabled",
         "navigation-menu/trigger/background/open",
         "navigation-menu/background-open",
+        "navigation-menu/trigger/label/open",
         "navigation-menu/label-open",
         "navigation-menu/trigger/background/open-hover",
         "navigation-menu/background-open-hover",
         "navigation-menu/trigger/background/open-highlight",
         "navigation-menu/background-open-focus",
+        "navigation-menu/trigger/focus-width",
         "navigation-menu/focus",
+        "navigation-menu/trigger/focus-ring",
         "navigation-menu/focus-ring-focus",
+        "navigation-menu/trigger/focus-ring-offset",
         "navigation-menu/focus-ring-offset-focus",
         "navigation-menu/duration",
         "navigation-menu/content/padding",
         "navigation-menu/content/padding-right",
+        "navigation-menu/content/background",
         "navigation-menu/background-2",
+        "navigation-menu/content/label",
         "navigation-menu/label",
+        "navigation-menu/content/shadow",
         "navigation-menu/shadow",
         "navigation-menu/viewport/radius",
         "navigation-menu/viewport/background",
@@ -4017,17 +4056,29 @@
         "navigation-menu/link/label-focus",
         "navigation-menu/link/background/current",
         "navigation-menu/link/background/@",
+        "navigation-menu/link/focus-width",
         "navigation-menu/link/focus",
+        "navigation-menu/link/edge/current",
         "navigation-menu/link/selected",
-        "navigation-menu/link/label",
+        "navigation-menu/link/label/current",
+        "navigation-menu/link/label/@",
         "navigation-menu/link/icon-size",
         "navigation-menu/link/label-2",
         "navigation-menu/link/focus-ring-focus",
         "navigation-menu/link/focus-ring-offset-focus",
+        "navigation-menu/indicator/background",
         "navigation-menu/background-3",
+        "navigation-menu/indicator/shadow",
         "navigation-menu/shadow-2",
         "navigation-menu/trigger/focus-offset",
-        "navigation-menu/link/focus-offset"
+        "navigation-menu/link/focus-offset",
+        "navigation-menu/content/radius",
+        "navigation-menu/link/edge-width/current",
+        "navigation-menu/content/border",
+        "navigation-menu/content/border-width",
+        "navigation-menu/viewport/border",
+        "navigation-menu/viewport/border-width",
+        "navigation-menu/trigger/icon-gap"
       ]
     },
     {
@@ -4055,7 +4106,9 @@
         "popover/header/font-size",
         "popover/header/line-height",
         "popover/title/font-weight",
-        "popover/description/label"
+        "popover/description/label",
+        "popover/content/border",
+        "popover/content/border-width"
       ]
     },
     {
@@ -4885,16 +4938,36 @@
       "default": "size.control.default"
     },
     {
+      "id": "tooltip/content/background",
+      "component": "overlay",
+      "description": "Content background of the tooltip.",
+      "default": "color.surface.inverse"
+    },
+    {
       "id": "tooltip/background",
       "component": "overlay",
-      "description": "Tooltip fill.",
-      "default": "color.surface.inverse"
+      "description": "Deprecated: use tooltip/content/background (OD-243). Tooltip fill.",
+      "default": "color.surface.inverse",
+      "replaced_by": "tooltip/content/background"
+    },
+    {
+      "id": "tooltip/content/label",
+      "component": "overlay",
+      "description": "Content text of the tooltip.",
+      "default": "color.text.inverse"
     },
     {
       "id": "tooltip/label",
       "component": "overlay",
-      "description": "Tooltip text.",
-      "default": "color.text.inverse"
+      "description": "Deprecated: use tooltip/content/label (OD-243). Tooltip text.",
+      "default": "color.text.inverse",
+      "replaced_by": "tooltip/content/label"
+    },
+    {
+      "id": "overlay/offset",
+      "component": "overlay",
+      "description": "The gap between a trigger and the panel it opens: the same for every floating panel.",
+      "default": "space.gap.tight"
     },
     {
       "id": "transition/duration",
@@ -5123,6 +5196,18 @@
       "component": "alert-dialog",
       "description": "Media size of the alert dialog.",
       "default": "size.control.default"
+    },
+    {
+      "id": "alert-dialog/content/border",
+      "component": "alert-dialog",
+      "description": "Content border of the alert dialog, like every floating panel's.",
+      "default": "color.border.default"
+    },
+    {
+      "id": "alert-dialog/content/border-width",
+      "component": "alert-dialog",
+      "description": "Content border width of the alert dialog.",
+      "default": "border-width.default"
     },
     {
       "id": "alert/gap-y",
@@ -6623,6 +6708,30 @@
       "default": "border-width.default"
     },
     {
+      "id": "combobox/separator/margin-y",
+      "component": "combobox",
+      "description": "Space above and below the separator of the combobox.",
+      "default": "component-spacing-map.x1"
+    },
+    {
+      "id": "combobox/separator/thickness",
+      "component": "combobox",
+      "description": "Thickness of the separator of the combobox: the weight of every line.",
+      "default": "border-width.default"
+    },
+    {
+      "id": "combobox/input/margin",
+      "component": "combobox",
+      "description": "Inset of the search field in the combobox's panel, like a menu panel's padding.",
+      "default": "component-spacing-map.x1"
+    },
+    {
+      "id": "combobox/chip/remove/pull",
+      "component": "combobox",
+      "description": "How far the chip's remove button sits into its padding.",
+      "default": "component-spacing-map.x1"
+    },
+    {
       "id": "command/radius",
       "component": "command",
       "description": "Radius of the command.",
@@ -6852,10 +6961,17 @@
       "replaced_by": "command/item/background/highlight"
     },
     {
+      "id": "command/item/label/highlight",
+      "component": "command",
+      "description": "Item label when highlighted, by the pointer or the keyboard, of the command.",
+      "default": "color.text.primary"
+    },
+    {
       "id": "command/item/label-selected",
       "component": "command",
-      "description": "Item label selected of the command.",
-      "default": "color.text.primary"
+      "description": "Deprecated: use command/item/label/highlight (OD-243). Item label selected of the command.",
+      "default": "color.text.primary",
+      "replaced_by": "command/item/label/highlight"
     },
     {
       "id": "command/item/icon-size",
@@ -6864,7 +6980,7 @@
       "default": "size.icon"
     },
     {
-      "id": "command/item/label",
+      "id": "command/item/label/@",
       "component": "command",
       "description": "Item label of the command.",
       "default": "color.text.muted"
@@ -6886,6 +7002,24 @@
       "component": "command",
       "description": "Shortcut label of the command.",
       "default": "color.text.muted"
+    },
+    {
+      "id": "command/input/wrapper/border",
+      "component": "command",
+      "description": "The line under the command's search field.",
+      "default": "color.border.default"
+    },
+    {
+      "id": "command/input/wrapper/border-width",
+      "component": "command",
+      "description": "Width of the line under the command's search field.",
+      "default": "border-width.default"
+    },
+    {
+      "id": "command/separator/thickness",
+      "component": "command",
+      "description": "Thickness of the separator of the command: the weight of every line.",
+      "default": "border-width.default"
     },
     {
       "id": "context-menu/sub/trigger/radius",
@@ -7387,6 +7521,18 @@
       "default": "border-width.default"
     },
     {
+      "id": "context-menu/separator/margin-y",
+      "component": "context-menu",
+      "description": "Space above and below the separator of the context menu.",
+      "default": "component-spacing-map.x1"
+    },
+    {
+      "id": "context-menu/separator/thickness",
+      "component": "context-menu",
+      "description": "Thickness of the separator of the context menu: the weight of every line.",
+      "default": "border-width.default"
+    },
+    {
       "id": "data-table/gap",
       "component": "data-table",
       "description": "Gap of the data table.",
@@ -7764,6 +7910,18 @@
       "replaced_by": "dropdown-menu/separator/background"
     },
     {
+      "id": "dropdown-menu/separator/margin-y",
+      "component": "dropdown-menu",
+      "description": "Space above and below the separator of the dropdown menu.",
+      "default": "component-spacing-map.x1"
+    },
+    {
+      "id": "dropdown-menu/separator/thickness",
+      "component": "dropdown-menu",
+      "description": "Thickness of the separator of the dropdown menu: the weight of every line.",
+      "default": "border-width.default"
+    },
+    {
       "id": "empty/gap",
       "component": "empty",
       "description": "Gap of the empty.",
@@ -8126,8 +8284,8 @@
     {
       "id": "hover-card/content/radius",
       "component": "hover-card",
-      "description": "Content radius of the hover card.",
-      "default": "radius.control"
+      "description": "Content corner of the hover card, like every floating panel's.",
+      "default": "radius.container"
     },
     {
       "id": "hover-card/content/background",
@@ -8152,6 +8310,18 @@
       "component": "hover-card",
       "description": "Content shadow of the hover card.",
       "default": "elevation.overlay"
+    },
+    {
+      "id": "hover-card/content/border",
+      "component": "hover-card",
+      "description": "Content border of the hover card.",
+      "default": "color.border.default"
+    },
+    {
+      "id": "hover-card/content/border-width",
+      "component": "hover-card",
+      "description": "Content border width of the hover card.",
+      "default": "border-width.default"
     },
     {
       "id": "input-group/radius",
@@ -9440,6 +9610,24 @@
       "default": "border-width.default"
     },
     {
+      "id": "menubar/separator/margin-y",
+      "component": "menubar",
+      "description": "Space above and below the separator of the menubar.",
+      "default": "component-spacing-map.x1"
+    },
+    {
+      "id": "menubar/separator/thickness",
+      "component": "menubar",
+      "description": "Thickness of the separator of the menubar: the weight of every line.",
+      "default": "border-width.default"
+    },
+    {
+      "id": "menubar/content/align-pull",
+      "component": "menubar",
+      "description": "Lines the menubar's panel up with the bar: the bar's padding step.",
+      "default": "component-spacing-map.x1"
+    },
+    {
       "id": "message-scroller/gap",
       "component": "message-scroller",
       "description": "Gap of the message scroller.",
@@ -9674,46 +9862,95 @@
       "default": "space.gap.tight"
     },
     {
+      "id": "navigation-menu/trigger/radius",
+      "component": "navigation-menu",
+      "description": "Trigger corner of the navigation menu.",
+      "default": "radius.control"
+    },
+    {
       "id": "navigation-menu/radius",
       "component": "navigation-menu",
-      "description": "Radius of the navigation menu.",
-      "default": "radius.control"
+      "description": "Deprecated: use navigation-menu/trigger/radius (OD-243). Radius of the navigation menu.",
+      "default": "radius.control",
+      "replaced_by": "navigation-menu/trigger/radius"
+    },
+    {
+      "id": "navigation-menu/trigger/background/@",
+      "component": "navigation-menu",
+      "description": "Trigger background of the navigation menu.",
+      "default": "color.surface.canvas"
     },
     {
       "id": "navigation-menu/background",
       "component": "navigation-menu",
-      "description": "Background of the navigation menu.",
-      "default": "color.surface.canvas"
+      "description": "Deprecated: use navigation-menu/trigger/background/@ (OD-243). Background of the navigation menu.",
+      "default": "color.surface.canvas",
+      "replaced_by": "navigation-menu/trigger/background/@"
+    },
+    {
+      "id": "navigation-menu/trigger/padding-x",
+      "component": "navigation-menu",
+      "description": "Trigger padding x of the navigation menu.",
+      "default": "space.inset.container"
     },
     {
       "id": "navigation-menu/padding-x",
       "component": "navigation-menu",
-      "description": "Padding x of the navigation menu.",
-      "default": "space.inset.container"
+      "description": "Deprecated: use navigation-menu/trigger/padding-x (OD-243). Padding x of the navigation menu.",
+      "default": "space.inset.container",
+      "replaced_by": "navigation-menu/trigger/padding-x"
+    },
+    {
+      "id": "navigation-menu/trigger/padding-y",
+      "component": "navigation-menu",
+      "description": "Trigger padding y of the navigation menu.",
+      "default": "component-spacing-map.x2"
     },
     {
       "id": "navigation-menu/padding-y",
       "component": "navigation-menu",
-      "description": "Padding y of the navigation menu.",
-      "default": "component-spacing-map.x2"
+      "description": "Deprecated: use navigation-menu/trigger/padding-y (OD-243). Padding y of the navigation menu.",
+      "default": "component-spacing-map.x2",
+      "replaced_by": "navigation-menu/trigger/padding-y"
+    },
+    {
+      "id": "navigation-menu/trigger/font-size",
+      "component": "navigation-menu",
+      "description": "Trigger font size of the navigation menu.",
+      "default": "type.body.font-size"
     },
     {
       "id": "navigation-menu/font-size",
       "component": "navigation-menu",
-      "description": "Font size of the navigation menu.",
-      "default": "type.body.font-size"
+      "description": "Deprecated: use navigation-menu/trigger/font-size (OD-243). Font size of the navigation menu.",
+      "default": "type.body.font-size",
+      "replaced_by": "navigation-menu/trigger/font-size"
+    },
+    {
+      "id": "navigation-menu/trigger/line-height",
+      "component": "navigation-menu",
+      "description": "Trigger line height of the navigation menu.",
+      "default": "type.body.line-height"
     },
     {
       "id": "navigation-menu/line-height",
       "component": "navigation-menu",
-      "description": "Line height of the navigation menu.",
-      "default": "type.body.line-height"
+      "description": "Deprecated: use navigation-menu/trigger/line-height (OD-243). Line height of the navigation menu.",
+      "default": "type.body.line-height",
+      "replaced_by": "navigation-menu/trigger/line-height"
+    },
+    {
+      "id": "navigation-menu/trigger/font-weight",
+      "component": "navigation-menu",
+      "description": "Trigger font weight of the navigation menu.",
+      "default": "type.label.font-weight"
     },
     {
       "id": "navigation-menu/font-weight",
       "component": "navigation-menu",
-      "description": "Font weight of the navigation menu.",
-      "default": "type.label.font-weight"
+      "description": "Deprecated: use navigation-menu/trigger/font-weight (OD-243). Font weight of the navigation menu.",
+      "default": "type.label.font-weight",
+      "replaced_by": "navigation-menu/trigger/font-weight"
     },
     {
       "id": "navigation-menu/trigger/background/hover",
@@ -9729,10 +9966,17 @@
       "replaced_by": "navigation-menu/trigger/background/hover"
     },
     {
+      "id": "navigation-menu/trigger/label/hover",
+      "component": "navigation-menu",
+      "description": "Trigger label on hover, of the navigation menu.",
+      "default": "color.text.primary"
+    },
+    {
       "id": "navigation-menu/label-hover",
       "component": "navigation-menu",
-      "description": "Label hover of the navigation menu.",
-      "default": "color.text.primary"
+      "description": "Deprecated: use navigation-menu/trigger/label/hover (OD-243). Label hover of the navigation menu.",
+      "default": "color.text.primary",
+      "replaced_by": "navigation-menu/trigger/label/hover"
     },
     {
       "id": "navigation-menu/trigger/background/highlight",
@@ -9748,16 +9992,30 @@
       "replaced_by": "navigation-menu/trigger/background/highlight"
     },
     {
+      "id": "navigation-menu/trigger/label/highlight",
+      "component": "navigation-menu",
+      "description": "Trigger label when highlighted by the keyboard, of the navigation menu.",
+      "default": "color.text.primary"
+    },
+    {
       "id": "navigation-menu/label-focus",
       "component": "navigation-menu",
-      "description": "Label focus of the navigation menu.",
-      "default": "color.text.primary"
+      "description": "Deprecated: use navigation-menu/trigger/label/highlight (OD-243). Label focus of the navigation menu.",
+      "default": "color.text.primary",
+      "replaced_by": "navigation-menu/trigger/label/highlight"
+    },
+    {
+      "id": "navigation-menu/trigger/disabled-opacity",
+      "component": "navigation-menu",
+      "description": "Trigger opacity when disabled, of the navigation menu.",
+      "default": "opacity.disabled"
     },
     {
       "id": "navigation-menu/disabled-opacity-disabled",
       "component": "navigation-menu",
-      "description": "Disabled opacity disabled of the navigation menu.",
-      "default": "opacity.disabled"
+      "description": "Deprecated: use navigation-menu/trigger/disabled-opacity (OD-243). Disabled opacity disabled of the navigation menu.",
+      "default": "opacity.disabled",
+      "replaced_by": "navigation-menu/trigger/disabled-opacity"
     },
     {
       "id": "navigation-menu/trigger/background/open",
@@ -9773,10 +10031,17 @@
       "replaced_by": "navigation-menu/trigger/background/open"
     },
     {
+      "id": "navigation-menu/trigger/label/open",
+      "component": "navigation-menu",
+      "description": "Trigger label when its panel is open, of the navigation menu.",
+      "default": "color.text.primary"
+    },
+    {
       "id": "navigation-menu/label-open",
       "component": "navigation-menu",
-      "description": "Label open of the navigation menu.",
-      "default": "color.text.primary"
+      "description": "Deprecated: use navigation-menu/trigger/label/open (OD-243). Label open of the navigation menu.",
+      "default": "color.text.primary",
+      "replaced_by": "navigation-menu/trigger/label/open"
     },
     {
       "id": "navigation-menu/trigger/background/open-hover",
@@ -9805,22 +10070,43 @@
       "replaced_by": "navigation-menu/trigger/background/open-highlight"
     },
     {
+      "id": "navigation-menu/trigger/focus-width",
+      "component": "navigation-menu",
+      "description": "Trigger focus ring width, of the navigation menu.",
+      "default": "border-width.focus"
+    },
+    {
       "id": "navigation-menu/focus",
       "component": "navigation-menu",
-      "description": "Focus of the navigation menu.",
-      "default": "border-width.focus"
+      "description": "Deprecated: use navigation-menu/trigger/focus-width (OD-243). Focus of the navigation menu.",
+      "default": "border-width.focus",
+      "replaced_by": "navigation-menu/trigger/focus-width"
+    },
+    {
+      "id": "navigation-menu/trigger/focus-ring",
+      "component": "navigation-menu",
+      "description": "Trigger focus ring, of the navigation menu.",
+      "default": "color.border.focus"
     },
     {
       "id": "navigation-menu/focus-ring-focus",
       "component": "navigation-menu",
-      "description": "Focus ring focus of the navigation menu.",
-      "default": "color.border.focus"
+      "description": "Deprecated: use navigation-menu/trigger/focus-ring (OD-243). Focus ring focus of the navigation menu.",
+      "default": "color.border.focus",
+      "replaced_by": "navigation-menu/trigger/focus-ring"
+    },
+    {
+      "id": "navigation-menu/trigger/focus-ring-offset",
+      "component": "navigation-menu",
+      "description": "The gap behind the trigger's focus ring: the page canvas.",
+      "default": "color.surface.canvas"
     },
     {
       "id": "navigation-menu/focus-ring-offset-focus",
       "component": "navigation-menu",
-      "description": "Focus ring offset focus of the navigation menu.",
-      "default": "color.surface.canvas"
+      "description": "Deprecated: use navigation-menu/trigger/focus-ring-offset (OD-243). Focus ring offset focus of the navigation menu.",
+      "default": "color.surface.canvas",
+      "replaced_by": "navigation-menu/trigger/focus-ring-offset"
     },
     {
       "id": "navigation-menu/duration",
@@ -9831,8 +10117,8 @@
     {
       "id": "navigation-menu/content/padding",
       "component": "navigation-menu",
-      "description": "Content padding of the navigation menu.",
-      "default": "component-spacing-map.x2"
+      "description": "Content padding of the navigation menu, like every panel of options.",
+      "default": "component-spacing-map.x1"
     },
     {
       "id": "navigation-menu/content/padding-right",
@@ -9841,28 +10127,49 @@
       "default": "component-spacing-map.x3"
     },
     {
+      "id": "navigation-menu/content/background",
+      "component": "navigation-menu",
+      "description": "Content background of the navigation menu, like every floating panel's.",
+      "default": "color.surface.raised"
+    },
+    {
       "id": "navigation-menu/background-2",
       "component": "navigation-menu",
-      "description": "Background 2 of the navigation menu.",
-      "default": "color.surface.raised"
+      "description": "Deprecated: use navigation-menu/content/background (OD-243). Background 2 of the navigation menu.",
+      "default": "color.surface.raised",
+      "replaced_by": "navigation-menu/content/background"
+    },
+    {
+      "id": "navigation-menu/content/label",
+      "component": "navigation-menu",
+      "description": "Content text of the navigation menu.",
+      "default": "color.text.primary"
     },
     {
       "id": "navigation-menu/label",
       "component": "navigation-menu",
-      "description": "Label of the navigation menu.",
-      "default": "color.text.primary"
+      "description": "Deprecated: use navigation-menu/content/label (OD-243). Label of the navigation menu.",
+      "default": "color.text.primary",
+      "replaced_by": "navigation-menu/content/label"
+    },
+    {
+      "id": "navigation-menu/content/shadow",
+      "component": "navigation-menu",
+      "description": "Content shadow of the navigation menu: it floats, like a menu.",
+      "default": "elevation.overlay"
     },
     {
       "id": "navigation-menu/shadow",
       "component": "navigation-menu",
-      "description": "Shadow of the navigation menu.",
-      "default": "elevation.card"
+      "description": "Deprecated: use navigation-menu/content/shadow (OD-243). Shadow of the navigation menu.",
+      "default": "elevation.card",
+      "replaced_by": "navigation-menu/content/shadow"
     },
     {
       "id": "navigation-menu/viewport/radius",
       "component": "navigation-menu",
-      "description": "Viewport radius of the navigation menu.",
-      "default": "radius.control"
+      "description": "Viewport corner of the navigation menu, like every floating panel's.",
+      "default": "radius.container"
     },
     {
       "id": "navigation-menu/viewport/background",
@@ -9879,8 +10186,8 @@
     {
       "id": "navigation-menu/viewport/shadow",
       "component": "navigation-menu",
-      "description": "Viewport shadow of the navigation menu.",
-      "default": "elevation.card"
+      "description": "Viewport shadow of the navigation menu: it floats, like a menu.",
+      "default": "elevation.overlay"
     },
     {
       "id": "navigation-menu/link/gap",
@@ -9891,8 +10198,8 @@
     {
       "id": "navigation-menu/link/radius",
       "component": "navigation-menu",
-      "description": "Link radius of the navigation menu.",
-      "default": "radius.badge"
+      "description": "Link corner: an option in the panel, nested in its corner.",
+      "default": "radius.option"
     },
     {
       "id": "navigation-menu/link/padding",
@@ -9957,22 +10264,43 @@
       "replaced_by": "navigation-menu/link/background/current"
     },
     {
+      "id": "navigation-menu/link/focus-width",
+      "component": "navigation-menu",
+      "description": "Link focus ring width, of the navigation menu.",
+      "default": "border-width.focus"
+    },
+    {
       "id": "navigation-menu/link/focus",
       "component": "navigation-menu",
-      "description": "Link focus of the navigation menu.",
-      "default": "border-width.focus"
+      "description": "Deprecated: use navigation-menu/link/focus-width (OD-243). Link focus of the navigation menu.",
+      "default": "border-width.focus",
+      "replaced_by": "navigation-menu/link/focus-width"
+    },
+    {
+      "id": "navigation-menu/link/edge/current",
+      "component": "navigation-menu",
+      "description": "The edge of the current link, so current is never color alone.",
+      "default": "color.border.selected"
     },
     {
       "id": "navigation-menu/link/selected",
       "component": "navigation-menu",
-      "description": "Link selected of the navigation menu.",
-      "default": "color.border.selected"
+      "description": "Deprecated: use navigation-menu/link/edge/current (OD-243). Link selected of the navigation menu.",
+      "default": "color.border.selected",
+      "replaced_by": "navigation-menu/link/edge/current"
     },
     {
-      "id": "navigation-menu/link/label",
+      "id": "navigation-menu/link/label/current",
       "component": "navigation-menu",
-      "description": "Link label of the navigation menu.",
+      "description": "Link label when current, of the navigation menu.",
       "default": "color.text.primary"
+    },
+    {
+      "id": "navigation-menu/link/label/@",
+      "component": "navigation-menu",
+      "description": "Deprecated: use navigation-menu/link/label/current (OD-243). Link label of the navigation menu.",
+      "default": "color.text.primary",
+      "replaced_by": "navigation-menu/link/label/current"
     },
     {
       "id": "navigation-menu/link/icon-size",
@@ -9999,16 +10327,30 @@
       "default": "color.surface.canvas"
     },
     {
+      "id": "navigation-menu/indicator/background",
+      "component": "navigation-menu",
+      "description": "The indicator arrow's fill, of the navigation menu.",
+      "default": "color.border.default"
+    },
+    {
       "id": "navigation-menu/background-3",
       "component": "navigation-menu",
-      "description": "Background 3 of the navigation menu.",
-      "default": "color.border.default"
+      "description": "Deprecated: use navigation-menu/indicator/background (OD-243). Background 3 of the navigation menu.",
+      "default": "color.border.default",
+      "replaced_by": "navigation-menu/indicator/background"
+    },
+    {
+      "id": "navigation-menu/indicator/shadow",
+      "component": "navigation-menu",
+      "description": "The indicator arrow's shadow, of the navigation menu.",
+      "default": "elevation.overlay"
     },
     {
       "id": "navigation-menu/shadow-2",
       "component": "navigation-menu",
-      "description": "Shadow 2 of the navigation menu.",
-      "default": "elevation.overlay"
+      "description": "Deprecated: use navigation-menu/indicator/shadow (OD-243). Shadow 2 of the navigation menu.",
+      "default": "elevation.overlay",
+      "replaced_by": "navigation-menu/indicator/shadow"
     },
     {
       "id": "navigation-menu/trigger/focus-offset",
@@ -10021,6 +10363,48 @@
       "component": "navigation-menu",
       "description": "Gap between the navigation menu link and its focus ring.",
       "default": "border-width.focus-offset"
+    },
+    {
+      "id": "navigation-menu/content/radius",
+      "component": "navigation-menu",
+      "description": "Content corner of the navigation menu, like every floating panel's.",
+      "default": "radius.container"
+    },
+    {
+      "id": "navigation-menu/link/edge-width/current",
+      "component": "navigation-menu",
+      "description": "Width of the current link's edge.",
+      "default": "border-width.focus"
+    },
+    {
+      "id": "navigation-menu/content/border",
+      "component": "navigation-menu",
+      "description": "Content border of the navigation menu.",
+      "default": "color.border.default"
+    },
+    {
+      "id": "navigation-menu/content/border-width",
+      "component": "navigation-menu",
+      "description": "Content border width of the navigation menu.",
+      "default": "border-width.default"
+    },
+    {
+      "id": "navigation-menu/viewport/border",
+      "component": "navigation-menu",
+      "description": "Viewport border of the navigation menu.",
+      "default": "color.border.default"
+    },
+    {
+      "id": "navigation-menu/viewport/border-width",
+      "component": "navigation-menu",
+      "description": "Viewport border width of the navigation menu.",
+      "default": "border-width.default"
+    },
+    {
+      "id": "navigation-menu/trigger/icon-gap",
+      "component": "navigation-menu",
+      "description": "Gap between the trigger label and its chevron: an icon and its label.",
+      "default": "space.gap.tight"
     },
     {
       "id": "pagination/content/gap",
@@ -10061,8 +10445,8 @@
     {
       "id": "popover/content/radius",
       "component": "popover",
-      "description": "Content radius of the popover.",
-      "default": "radius.control"
+      "description": "Content corner of the popover, like every floating panel's.",
+      "default": "radius.container"
     },
     {
       "id": "popover/content/background",
@@ -10117,6 +10501,18 @@
       "component": "popover",
       "description": "Description label of the popover.",
       "default": "color.text.muted"
+    },
+    {
+      "id": "popover/content/border",
+      "component": "popover",
+      "description": "Content border of the popover.",
+      "default": "color.border.default"
+    },
+    {
+      "id": "popover/content/border-width",
+      "component": "popover",
+      "description": "Content border width of the popover.",
+      "default": "border-width.default"
     },
     {
       "id": "progress/radius",

@@ -568,7 +568,12 @@ function colorGuidance(g) {
       .filter((k) => k.id.startsWith("color.surface."))
       .map(
         (k) =>
-          `| <span class="odv-surface-swatch" style="background:var(--${cssId(k.id)})"></span> **${esc(k.id.split(".").pop().replace(/^./, (c) => c.toUpperCase()))}** | ${esc(k.intent)} | ${esc((k.use_for ?? []).join(", "))} | ${k.not_for.map((n) => `${esc(n.when)}: \`${n.use}\``).join("<br />") || "—"} |`,
+          `| <span class="odv-surface-swatch" style="background:var(--${cssId(k.id)})"></span> **${esc(
+            k.id
+              .split(".")
+              .pop()
+              .replace(/^./, (c) => c.toUpperCase()),
+          )}** | ${esc(k.intent)} | ${esc((k.use_for ?? []).join(", "))} | ${k.not_for.map((n) => `${esc(n.when)}: \`${n.use}\``).join("<br />") || "—"} |`,
       )
       .join("\n") +
     `\n\n## What each color is for\n\n| Token | What it is for | Not for |\n| --- | --- | --- |\n` +
@@ -707,7 +712,8 @@ export function docsPages(
     const tones = g.semantics?.tones;
     if (!tones) return "";
     const fills = tones.fills.map((f) => f.id);
-    const own = /^color\.surface\.(canvas|default|raised|sunken|highlight|pressed|selected)$/;
+    const own =
+      /^color\.surface\.(canvas|default|raised|sunken|highlight|pressed|selected)$/;
     const panel = (b, m) => {
       const th = scheme.tokens.brands[b].theme;
       const byFill = {};
@@ -1195,7 +1201,10 @@ export function docsPages(
           (gr) =>
             `<div class="odv-dgroup"><div class="odv-dgroup-t">${he(gr)}</div><ul class="odv-tree">${q.considers
               .filter((k) => k.group === gr)
-              .map((k) => `<li><span class="odv-dec-what"><b>${he(k.label)}.</b> ${he(a[k.id] ?? "Not answered yet.")}</span></li>`)
+              .map(
+                (k) =>
+                  `<li><span class="odv-dec-what"><b>${he(k.label)}.</b> ${he(a[k.id] ?? "Not answered yet.")}</span></li>`,
+              )
               .join("")}</ul></div>`,
         )
         .join("")}</li>`;
@@ -2423,7 +2432,10 @@ export function docsPages(
   const BRUSH =
     '<svg viewBox="0 0 24 24" width="11" height="11" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m11 10 3 3"/><path d="M6.5 21A3.5 3.5 0 1 0 3 17.5a2.62 2.62 0 0 1-.708 1.792A1 1 0 0 0 3 21z"/><path d="M9.969 17.031 21.378 5.624a1 1 0 0 0-3.002-3.002L6.967 14.031"/></svg>';
   const byTag = `<span class="odv-byscheme" title="Its value changes by scheme. The part is the same in every scheme.">${BRUSH}By scheme</span>`;
-  const partName = (p) => (p === "root" ? "The component" : p.replace(/-/g, " ").replace(/^./, (c) => c.toUpperCase()));
+  const partName = (p) =>
+    p === "root"
+      ? "The component"
+      : p.replace(/-/g, " ").replace(/^./, (c) => c.toUpperCase());
   function anatomyPage(name, i) {
     // The Anatomy reference (OD-229), as the approved Figma page lays it out: a calm intro, the roles
     // a part can play, the drawing with a number on each part beside its legend, then one card per
@@ -2436,39 +2448,53 @@ export function docsPages(
     // One engine with open-ds anatomy and get_anatomy: the cards' answers, rules and tokens come from it.
     const ref = anatomyReference(scheme, g, roots, name);
     const refCard = Object.fromEntries(ref.cards.map((c) => [c.title, c]));
-    const roleOf = Object.fromEntries((g.anatomy?.roles ?? []).map((r) => [r.id, r]));
+    const roleOf = Object.fromEntries(
+      (g.anatomy?.roles ?? []).map((r) => [r.id, r]),
+    );
     const trace = (p) => tokenTrace(scheme, g, roots, p);
     const traces = new Map();
-    const tr = (p) => (traces.has(p) ? traces.get(p) : (traces.set(p, trace(p)), traces.get(p)));
+    const tr = (p) =>
+      traces.has(p) ? traces.get(p) : (traces.set(p, trace(p)), traces.get(p));
     const flat = (list) => list.flatMap((x) => [x, ...flat(x.children ?? [])]);
     const parts = flat(spec.parts);
     const changes = (part) => (part.tokens ?? []).some((t) => tr(t)?.by_scheme);
     const num = (n, cls = "") => `<i class="odv-am-n${cls}">${n}</i>`;
-    const chip = (id) => `<span class="odv-am-role" title="${attr(roleOf[id]?.ask ?? "")}">${attr(roleOf[id]?.label ?? id)}</span>`;
+    const chip = (id) =>
+      `<span class="odv-am-role" title="${attr(roleOf[id]?.ask ?? "")}">${attr(roleOf[id]?.label ?? id)}</span>`;
     const ICON = {
-      share: '<circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/><line x1="8.59" x2="15.42" y1="13.51" y2="17.49"/><line x1="15.41" x2="8.59" y1="6.51" y2="10.49"/>',
+      share:
+        '<circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/><line x1="8.59" x2="15.42" y1="13.51" y2="17.49"/><line x1="15.41" x2="8.59" y1="6.51" y2="10.49"/>',
       copy: '<rect width="14" height="14" x="8" y="8" rx="2" ry="2"/><path d="M4 16c-1.1 0-2-.9-2-2V4c0-1.1.9-2 2-2h10c1.1 0 2 .9 2 2"/>',
-      clipboard: '<rect width="8" height="4" x="8" y="2" rx="1" ry="1"/><path d="M16 4h2a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h2"/>',
-      trash: '<path d="M10 11v6"/><path d="M14 11v6"/><path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6"/><path d="M3 6h18"/><path d="M8 6V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"/>',
+      clipboard:
+        '<rect width="8" height="4" x="8" y="2" rx="1" ry="1"/><path d="M16 4h2a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h2"/>',
+      trash:
+        '<path d="M10 11v6"/><path d="M14 11v6"/><path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6"/><path d="M3 6h18"/><path d="M8 6V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"/>',
       chevron: '<path d="m9 18 6-6-6-6"/>',
       filter: '<path d="M2 5h20"/><path d="M6 12h12"/><path d="M9 19h6"/>',
-      columns: '<rect width="18" height="18" x="3" y="3" rx="2"/><path d="M9 3v18"/><path d="M15 3v18"/>',
+      columns:
+        '<rect width="18" height="18" x="3" y="3" rx="2"/><path d="M9 3v18"/><path d="M15 3v18"/>',
       search: '<path d="m21 21-4.34-4.34"/><circle cx="11" cy="11" r="8"/>',
       sort: '<path d="m21 16-4 4-4-4"/><path d="M17 20V4"/><path d="m3 8 4-4 4 4"/><path d="M7 4v16"/>',
     };
-    const icon = (k) => `<svg class="odv-am-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">${ICON[k] ?? ""}</svg>`;
+    const icon = (k) =>
+      `<svg class="odv-am-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">${ICON[k] ?? ""}</svg>`;
     // The drawing, from the scheme's own component variables: what you see is what the scheme decides.
     const drawing = (rows, show, whole) => {
       const m = (n) => (show.has(n) ? num(n) : "");
       const body = rows
         .map((r) => {
-          if (r.separator) return `<div class="odv-am-sep">${r.marks?.row && show.has(r.marks.row) ? `<span class="odv-am-at sepn">${num(r.marks.row)}</span>` : ""}</div>`;
+          if (r.separator)
+            return `<div class="odv-am-sep">${r.marks?.row && show.has(r.marks.row) ? `<span class="odv-am-at sepn">${num(r.marks.row)}</span>` : ""}</div>`;
           const k = r.marks ?? {};
-          const cls = [r.state && `is-${r.state}`, r.tone && `is-${r.tone}`].filter(Boolean).join(" ");
+          const cls = [r.state && `is-${r.state}`, r.tone && `is-${r.tone}`]
+            .filter(Boolean)
+            .join(" ");
           return `<div class="odv-am-row ${cls}">${k.focus && show.has(k.focus) ? `<span class="odv-am-at top">${m(k.focus)}</span>` : ""}${k.icon ? m(k.icon) : ""}${icon(r.icon)}<span class="odv-am-label">${attr(r.label)}${k.label ? m(k.label) : ""}</span><span class="odv-am-fill"></span>${r.shortcut ? `<span class="odv-am-key">${attr(r.shortcut)}${k.shortcut ? m(k.shortcut) : ""}</span>` : ""}${r.chevron ? `${k.chevron ? m(k.chevron) : ""}${icon("chevron")}` : ""}${k.row ? m(k.row) : ""}${k.separator && show.has(k.separator) ? `<span class="odv-am-at bottom">${m(k.separator)}</span>` : ""}</div>`;
         })
         .join("");
-      const corner = whole ? `${spec.drawing.surface.map((n) => (show.has(n) ? `<span class="odv-am-at corner">${num(n)}</span>` : "")).join("")}${spec.drawing.shadow.map((n) => (show.has(n) ? `<span class="odv-am-at shadow">${num(n)}</span>` : "")).join("")}` : "";
+      const corner = whole
+        ? `${spec.drawing.surface.map((n) => (show.has(n) ? `<span class="odv-am-at corner">${num(n)}</span>` : "")).join("")}${spec.drawing.shadow.map((n) => (show.has(n) ? `<span class="odv-am-at shadow">${num(n)}</span>` : "")).join("")}`
+        : "";
       return `<div class="odv-am-menu${whole ? "" : " part"}">${body}${corner}</div>`;
     };
     // A table, from the table's and the data table's own variables: toolbar, frame, header, rows. The
@@ -2489,39 +2515,61 @@ export function docsPages(
                   : `<span class="odv-at-toggle">${t.options.map((o, k) => `<span${k ? "" : ' class="on"'}>${attr(o)}</span>`).join("")}</span>${m(t.n)}`,
           )
           .join("")}</div>`;
-      const box = (on) => `<span class="odv-at-box${on ? " on" : ""}">${on ? '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>' : ""}</span>`;
+      const box = (on) =>
+        `<span class="odv-at-box${on ? " on" : ""}">${on ? '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>' : ""}</span>`;
       const head = () =>
         `<tr class="odv-at-head"><th class="chk">${box(false)}${m(d.header.check)}</th>${d.columns
-          .map((c, k) => `<th class="${c.numeric ? "num" : ""}">${attr(c.label)}${k === 0 ? m(d.header.label) : ""}${c.sort ? icon("sort") : ""}${k === 0 && c.sort ? m(d.header.sort) : ""}</th>`)
+          .map(
+            (c, k) =>
+              `<th class="${c.numeric ? "num" : ""}">${attr(c.label)}${k === 0 ? m(d.header.label) : ""}${c.sort ? icon("sort") : ""}${k === 0 && c.sort ? m(d.header.sort) : ""}</th>`,
+          )
           .join("")}<th class="end">${m(d.header.row)}</th></tr>`;
       // The select box is numbered on the header when the header is drawn, else on its own row.
       const row = (r, withHead) =>
         `<tr class="odv-at-row${r.state ? ` is-${r.state}` : ""}"><td class="chk">${box(r.checked)}${withHead ? "" : m(r.marks?.check)}</td>${r.cells
-          .map((c, k) => `<td class="${d.columns[k]?.numeric ? "num" : ""}">${attr(c)}${k === 0 ? m(r.marks?.cell) : ""}${d.columns[k]?.numeric ? m(r.marks?.number) : ""}</td>`)
+          .map(
+            (c, k) =>
+              `<td class="${d.columns[k]?.numeric ? "num" : ""}">${attr(c)}${k === 0 ? m(r.marks?.cell) : ""}${d.columns[k]?.numeric ? m(r.marks?.number) : ""}</td>`,
+          )
           .join("")}<td class="end">${m(r.marks?.row)}</td></tr>`;
       const frame = (rows, withHead) =>
         `<div class="odv-at-frame">${withHead === "corner" || sections.includes("frame") ? `<span class="odv-am-at corner">${m(d.frame)}</span>` : ""}<table class="odv-at-table">${withHead ? `<thead>${head()}</thead>` : ""}<tbody>${rows.map((r) => row(r, withHead)).join("")}</tbody></table></div>`;
       for (const sec of sections) {
         if (sec === "toolbar") out.push(bar());
-        else if (sec === "frame" || sec === "table") out.push(frame(d.rows, sec === "table" ? "corner" : true));
+        else if (sec === "frame" || sec === "table")
+          out.push(frame(d.rows, sec === "table" ? "corner" : true));
       }
       const head2 = sections.includes("header");
-      const picked = sections.filter((x) => x.startsWith("row:")).map((x) => d.rows[+x.split(":")[1]]);
+      const picked = sections
+        .filter((x) => x.startsWith("row:"))
+        .map((x) => d.rows[+x.split(":")[1]]);
       if (head2 || picked.length) out.push(frame(picked, head2));
       return `<div class="odv-at">${out.join("")}</div>`;
     };
     const allNums = new Set(parts.filter((p) => p.n).map((p) => p.n));
     const rowsFor = (nums) => {
       const r = spec.drawing.rows;
-      const has = (row) => Object.values(row.marks ?? {}).some((n) => nums.has(n));
+      const has = (row) =>
+        Object.values(row.marks ?? {}).some((n) => nums.has(n));
       if (nums.has(1) || nums.has(2)) return { rows: r, whole: true };
       // The row that holds most of the card's parts (Copy holds the icon, label and shortcut).
-      const hits = (row) => Object.values(row.marks ?? {}).filter((n) => nums.has(n)).length;
-      const best = Math.max(0, ...r.map((row) => (row.separator ? 0 : hits(row))));
-      const i = best ? r.findIndex((row) => !row.separator && hits(row) === best) : -1;
+      const hits = (row) =>
+        Object.values(row.marks ?? {}).filter((n) => nums.has(n)).length;
+      const best = Math.max(
+        0,
+        ...r.map((row) => (row.separator ? 0 : hits(row))),
+      );
+      const i = best
+        ? r.findIndex((row) => !row.separator && hits(row) === best)
+        : -1;
       // A separator is drawn with the rows on either side of it.
-      const sep = r.findIndex((row) => row.separator && Object.values(row.marks ?? {}).some((n) => nums.has(n)));
-      if (sep >= 0) return { rows: r.slice(Math.max(0, sep - 1), sep + 2), whole: false };
+      const sep = r.findIndex(
+        (row) =>
+          row.separator &&
+          Object.values(row.marks ?? {}).some((n) => nums.has(n)),
+      );
+      if (sep >= 0)
+        return { rows: r.slice(Math.max(0, sep - 1), sep + 2), whole: false };
       return { rows: i >= 0 ? [r[i]] : [], whole: false };
     };
     const px = (v) => (/rem$/.test(v) ? `${parseFloat(v) * 16}px` : v);
@@ -2538,7 +2586,13 @@ export function docsPages(
       return `<li class="odv-am-lrow d${depth}">${p.n ? num(p.n) : `<i class="odv-am-n none"></i>`}<span class="odv-am-glyph">${glyph}</span><b>${attr(p.label)}</b><span class="odv-am-need">${attr(need)}</span>${changes(p) ? byTag : ""}<span class="odv-am-roles">${(p.roles ?? []).map(chip).join("")}</span></li>`;
     };
     const legend = (list, depth = 0) =>
-      list.map((p, k) => legendRow(p, depth, k === list.length - 1) + (p.children ? legend(p.children, depth + 1) : "")).join("");
+      list
+        .map(
+          (p, k) =>
+            legendRow(p, depth, k === list.length - 1) +
+            (p.children ? legend(p.children, depth + 1) : ""),
+        )
+        .join("");
     const answerStep = (a) =>
       `<li><b class="odv-am-lbl">Answer</b><div class="odv-am-main">${attr(a.scope ? `${a.scope} · ` : "")}${attr(a.text)} → ${attr(a.answer)}</div><div class="odv-am-why">${attr(a.why)}</div></li>`;
     const ruleStep = (u) =>
@@ -2546,11 +2600,16 @@ export function docsPages(
     const tokenStep = (t) => {
       if (!t) return "";
       const said = (x) => attr(x.why ?? x.pick);
-      const dark = t.dark.value !== t.light.value ? ` · dark ${attr(t.dark.value)}` : "";
+      const dark =
+        t.dark.value !== t.light.value ? ` · dark ${attr(t.dark.value)}` : "";
       const lines = [
         `<div><b>Pick</b> ${said(t.light)}</div>`,
-        t.dark.value !== t.light.value || t.dark.why !== t.light.why ? `<div><b>Dark</b> ${said(t.dark)}</div>` : "",
-        t.shares.length ? `<div><b>Shares the step with</b> ${t.shares.map((x) => attr(x.replace(/^color\./, ""))).join(", ")}. Changing this pick moves only what reads ${attr(t.semantic)}.</div>` : "",
+        t.dark.value !== t.light.value || t.dark.why !== t.light.why
+          ? `<div><b>Dark</b> ${said(t.dark)}</div>`
+          : "",
+        t.shares.length
+          ? `<div><b>Shares the step with</b> ${t.shares.map((x) => attr(x.replace(/^color\./, ""))).join(", ")}. Changing this pick moves only what reads ${attr(t.semantic)}.</div>`
+          : "",
       ].join("");
       return `<li><b class="odv-am-lbl">Token</b><div class="odv-am-chain"><code>${attr(t.semantic)}</code>${t.key ? `<span>→</span><code>${attr(t.key.replace(`${name}.`, ""))}</code>` : `<span class="odv-am-nokey">no key of its own yet</span>`}<span class="odv-am-val">${attr(t.light.value)}${dark}</span>${t.by_scheme ? byTag : ""}</div>${t.rule ? `<div class="odv-am-why">${attr(t.rule)}</div>` : ""}<div class="odv-am-lines">${lines}</div></li>`;
     };
@@ -2559,17 +2618,31 @@ export function docsPages(
       // A card can name its own image: one row, with the card's numbers placed on it.
       if (spec.drawing.kind === "table") {
         const d = refCard[c.title];
-        const steps = [...d.answers.map(answerStep), ...d.rules.map(ruleStep), ...d.tokens.map(tokenStep)].filter(Boolean);
+        const steps = [
+          ...d.answers.map(answerStep),
+          ...d.rules.map(ruleStep),
+          ...d.tokens.map(tokenStep),
+        ].filter(Boolean);
         return h(
           `<section class="odv-am-card" id="part-${c.parts.join("-")}"><div class="odv-am-img wide">${tableDrawing(c.image?.sections ?? [], nums)}</div><div class="odv-am-body">`,
           `<header>${c.parts.map((n) => num(n)).join("")}<b>${attr(c.title)}</b>${c.roles.map(chip).join("")}</header>`,
           `<ul class="odv-am-tree">${steps.join("")}</ul></div></section>`,
         );
       }
-      const own = c.image && spec.drawing.rows.find((r) => r.label === c.image.row);
-      const { rows, whole } = own ? { rows: [{ ...own, state: undefined, marks: c.image.marks }], whole: false } : rowsFor(nums);
+      const own =
+        c.image && spec.drawing.rows.find((r) => r.label === c.image.row);
+      const { rows, whole } = own
+        ? {
+            rows: [{ ...own, state: undefined, marks: c.image.marks }],
+            whole: false,
+          }
+        : rowsFor(nums);
       const d = refCard[c.title];
-      const steps = [...d.answers.map(answerStep), ...d.rules.map(ruleStep), ...d.tokens.map(tokenStep)].filter(Boolean);
+      const steps = [
+        ...d.answers.map(answerStep),
+        ...d.rules.map(ruleStep),
+        ...d.tokens.map(tokenStep),
+      ].filter(Boolean);
       return h(
         `<section class="odv-am-card" id="part-${c.parts.join("-")}"><div class="odv-am-img">${drawing(rows, nums, whole)}</div><div class="odv-am-body">`,
         `<header>${c.parts.map((n) => num(n)).join("")}<b>${attr(c.title)}</b>${c.roles.map(chip).join("")}</header>`,
@@ -2617,6 +2690,23 @@ export function docsPages(
     const guide = componentGuide(scheme.id, name, roots, g);
     const r = guide?.reference ?? {};
     const parts = [];
+    // OD-229: the Anatomy reference follows the approved Figma page. Only a component whose catalogue
+    // entry describes its parts (the parts layer) gets one. Its card sits after the variants.
+    const anat = anatomyPage(name, i);
+    const anatSpec = g.catalogue.items.find((x) => x.id === name)?.anatomy;
+    const leaves = (list) =>
+      list.flatMap((p) =>
+        p.children
+          ? leaves(p.children)
+          : /^shown by/.test(p.note ?? "")
+            ? []
+            : [p],
+      );
+    const anatCard = anat
+      ? h(
+          `<a class="odv-anatref" href="./${name}-anatomy"><span class="odv-anatref-b"><b>Anatomy reference</b><span>Every part of ${attr(anatSpec.intro)}, the job it does, and the decisions behind it. ${leaves(anatSpec.parts).length} parts.</span></span><span class="odv-anatref-go" aria-hidden="true">→</span></a>`,
+        )
+      : "";
     parts.push(
       `# ${title(name)}\n\n${esc(r.overview ?? componentIntro(roots.ui, name))}\n\n` +
         // Left out or in, the page is the same (OD-192, OD-211): a left-out component is designed in
@@ -2697,6 +2787,7 @@ export function docsPages(
             .join("\n\n"),
       );
     const rules = guide?.rules ?? [];
+    if (anatCard) parts.push(anatCard);
     if (rules.length)
       parts.push(
         `## How ${esc(scheme.name)} uses it\n\n` +
@@ -2792,13 +2883,6 @@ export function docsPages(
           (a11y.length
             ? `Test before you ship:\n\n${a11y.map((x) => `- [ ] ${esc(x.overview)} ${esc(x.apply_when)}`).join("\n")}`
             : ""),
-      );
-    // OD-229: the Anatomy reference follows the approved Figma page. Only a component whose catalogue
-    // entry describes its parts (the parts layer) gets one; the token-only draft is gone.
-    const anat = anatomyPage(name, i);
-    if (anat)
-      parts.push(
-        `## Look closer\n\n${h(`<div class="odv-anat-link"><a href="./${name}-anatomy">Anatomy reference →</a><span>Each part of ${attr(title(name))}, and how the design decisions reach it: the answer, the rule, the token and the value you see.</span></div>`)}`,
       );
     parts.push(
       `## Use it in code\n\n\`\`\`bash\nnpx open-ds add ${name}\n\`\`\`\n\n` +

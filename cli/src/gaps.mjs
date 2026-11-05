@@ -60,6 +60,11 @@ export const GAP_KINDS = [
     why: "An opacity modifier (/10, /50) makes a new color inside the component. No semantic carries it, so no scheme decides it, no contrast check sees it, and a change to the color it fades moves it blindly.",
   },
   {
+    id: "decided-in-code",
+    title: "A spacing, line or offset is decided in code",
+    why: "A margin, a hairline or an offset prop written as a number is a decision only the component can see. The gap between a trigger and its menu was 4, 6 or 8px, depending on the component; a separator stayed 1px in schemes whose lines are 2px.",
+  },
+  {
     id: "skips-a-component",
     title: "A component draws what a catalogue component is for",
     why: "When a component draws its own empty state, it skips the Empty pattern and its rule (why it is empty and the one action that fills it), so the decision behind Empty never reaches it.",
@@ -82,7 +87,10 @@ const TICKET = {
 // ignored. A disabled variant wins over the others: a disabled control does not change on hover.
 // The first state in this order wins.
 const STATES = [
-  ["disabled", /^(disabled|aria-disabled|data-\[disabled(?:=true)?\]|group-data-\[disabled(?:=true)?\]|peer-disabled)$/],
+  [
+    "disabled",
+    /^(disabled|aria-disabled|data-\[disabled(?:=true)?\]|group-data-\[disabled(?:=true)?\]|peer-disabled)$/,
+  ],
   ["destructive", /variant=destructive|data-\[tone=danger\]/],
   ["invalid", /^aria-invalid$|data-\[invalid/],
   // An interaction wins over a lasting state: data-[active=true]:hover: paints a current item on hover.
@@ -146,7 +154,10 @@ const words = (key) => key.split(/[.\-]/);
 /** Where each CSS variable is used in a component's source: the part (data-slot), the property and the state. */
 export function usages(src, comp, cssVar) {
   const esc = cssVar.replace(/[-]/g, "\\-");
-  const re = new RegExp(`([^\\s"'\`{}()]*?)(?:\\[(?:color:|length:)?)?var\\(${esc}\\)`, "g");
+  const re = new RegExp(
+    `([^\\s"'\`{}()]*?)(?:\\[(?:color:|length:)?)?var\\(${esc}\\)`,
+    "g",
+  );
   const out = [];
   for (const m of src.matchAll(re)) {
     const cls = m[1];
@@ -163,12 +174,18 @@ export function usages(src, comp, cssVar) {
       const hit = STATES.find(([, r]) => r.test(v));
       if (!hit) continue;
       // The first matching state in STATES order wins (disabled before hover, current before hover).
-      if (!state || STATES.findIndex(([n]) => n === hit[0]) < STATES.findIndex(([n]) => n === state)) state = hit[0];
+      if (
+        !state ||
+        STATES.findIndex(([n]) => n === hit[0]) <
+          STATES.findIndex(([n]) => n === state)
+      )
+        state = hit[0];
     }
     // A state set in code, not a variant: tone === "danger" && "text-[…]".
     if (!state) {
       const line = src.slice(src.lastIndexOf("\n", m.index) + 1, m.index);
-      if (/(tone|variant)\s*===\s*["'](danger|destructive)["']/.test(line)) state = "destructive";
+      if (/(tone|variant)\s*===\s*["'](danger|destructive)["']/.test(line))
+        state = "destructive";
     }
     // A variant that reaches into a child (*:data-[slot=input-group]:, [&_[data-slot=x]]:) paints
     // that child, not the element the class is written on.
@@ -176,9 +193,18 @@ export function usages(src, comp, cssVar) {
       // Only a selector that reaches down: *:data-[slot=x], **:data-[slot=x], [&_[data-slot=x]] or
       // [&>[data-slot=x]]. An ancestor context ([[data-slot=tooltip-content]_&]) or a bare
       // data-[slot=x] (a condition on the element itself) still paints this part.
-      .map((v, k) => (/^\*{1,2}$/.test(variants[k - 1] ?? "") ? v.match(/^data-\[slot=([a-z0-9-]+)\]$/) : v.match(/^\[&[_>]\[data-slot=([a-z0-9-]+)\]\]$/))?.[1])
+      .map(
+        (v, k) =>
+          (/^\*{1,2}$/.test(variants[k - 1] ?? "")
+            ? v.match(/^data-\[slot=([a-z0-9-]+)\]$/)
+            : v.match(/^\[&[_>]\[data-slot=([a-z0-9-]+)\]\]$/))?.[1],
+      )
       .find(Boolean);
-    const part = child ? (child === comp ? "root" : child.replace(new RegExp(`^${comp}-`), "")) : partAt(src, m.index, comp);
+    const part = child
+      ? child === comp
+        ? "root"
+        : child.replace(new RegExp(`^${comp}-`), "")
+      : partAt(src, m.index, comp);
     out.push({ part, property, state, cls });
   }
   return out;
@@ -187,7 +213,8 @@ export function usages(src, comp, cssVar) {
 // The data-slot of the element whose className holds the position. A class written in a const
 // (cva, a string) outside the element is traced to the element that uses the const.
 function partAt(src, at, comp) {
-  const slotIn = (from, to) => src.slice(from, to).match(/data-slot="([a-z0-9-]+)"/)?.[1];
+  const slotIn = (from, to) =>
+    src.slice(from, to).match(/data-slot="([a-z0-9-]+)"/)?.[1];
   const elementAround = (pos) => {
     const before = src.slice(0, pos);
     const open = Math.max(before.lastIndexOf("<"), 0);
@@ -200,7 +227,9 @@ function partAt(src, at, comp) {
     // No data-slot: a primitive's part names itself (<MenuPrimitive.Separator> is the separator).
     const tag = src.slice(open).match(/^<([A-Za-z][\w.]*)/)?.[1] ?? "";
     const sub = tag.includes(".") ? tag.split(".").pop() : null;
-    return sub ? `${comp}-${sub.replace(/([a-z])([A-Z])/g, "$1-$2").toLowerCase()}` : null;
+    return sub
+      ? `${comp}-${sub.replace(/([a-z])([A-Z])/g, "$1-$2").toLowerCase()}`
+      : null;
   };
   let slot = elementAround(at);
   if (!slot) {
@@ -217,7 +246,9 @@ function partAt(src, at, comp) {
 /** A component that speaks of no results or no data, and doesn't use the Empty component. */
 export const drawsOwnEmpty = (src, comp) =>
   comp !== "empty" &&
-  /\b(noResults|noData|emptyText)\s*:\s*["'`]|No results|Nothing (here|found)/.test(src) &&
+  /\b(noResults|noData|emptyText)\s*:\s*["'`]|No results|Nothing (here|found)/.test(
+    src,
+  ) &&
   !/from "\.\/empty"/.test(src);
 
 /** The gaps in the code's component layer: kinds 1 to 5. The same in every scheme, so read in one. */
@@ -232,9 +263,19 @@ export function componentGaps(scheme, g, roots) {
 function componentGapsNow(scheme, g, roots) {
   const comps = builtComponents(roots);
   const catalogue = new Set(g.catalogue.items.map((i) => i.id));
-  const rule = new Map(g.semantics.keys.map((k) => [k.id.replace(/\.@$/, ""), `${k.intent ?? ""} ${(k.use_for ?? []).join(", ")}`]));
+  const rule = new Map(
+    g.semantics.keys.map((k) => [
+      k.id.replace(/\.@$/, ""),
+      `${k.intent ?? ""} ${(k.use_for ?? []).join(", ")}`,
+    ]),
+  );
   const rulesFor = (state, property) =>
-    [...rule].filter(([id, text]) => FAMILY[property]?.test(id) && RULE_WORDS[state].test(text)).map(([id]) => id);
+    [...rule]
+      .filter(
+        ([id, text]) =>
+          FAMILY[property]?.test(id) && RULE_WORDS[state].test(text),
+      )
+      .map(([id]) => id);
   const gaps = [];
   const jobs = new Map(); // semantic → job → [keys]
   const unwritten = new Map(); // "state property" → [keys]
@@ -251,11 +292,28 @@ function componentGapsNow(scheme, g, roots) {
     // The same detection as the docs' "From the system" rows.
     const sysSeen = new Set();
     for (const cls of src.match(/[!\w:[\]=&>*()+.,'"\/-]+/g) ?? []) {
-      const util = cls.split(":").pop().replace(/^!/, "").replace(/\/\d+$/, "");
-      const color = util.match(/^(bg|text|border(?:-[tblrxy])?|ring-offset|ring|outline|fill|stroke|divide|placeholder|caret|accent|decoration)-([a-z0-9-]+)$/);
-      const scale = util.match(/^(rounded(?:-[tblrse]{1,2})?|shadow|text)-(xs|sm|md|lg|xl|base)$/);
-      const scaleVar = scale && `--${scale[1].startsWith("rounded") ? "radius" : scale[1]}-${scale[2]}`;
-      const hit = color && SHADCN[color[2]] ? `--${color[2]}` : /^border(-[tblrxy])?$/.test(util) ? "--border" : scaleVar && SHADCN_SCALE[scaleVar] ? scaleVar : null;
+      const util = cls
+        .split(":")
+        .pop()
+        .replace(/^!/, "")
+        .replace(/\/\d+$/, "");
+      const color = util.match(
+        /^(bg|text|border(?:-[tblrxy])?|ring-offset|ring|outline|fill|stroke|divide|placeholder|caret|accent|decoration)-([a-z0-9-]+)$/,
+      );
+      const scale = util.match(
+        /^(rounded(?:-[tblrse]{1,2})?|shadow|text)-(xs|sm|md|lg|xl|base)$/,
+      );
+      const scaleVar =
+        scale &&
+        `--${scale[1].startsWith("rounded") ? "radius" : scale[1]}-${scale[2]}`;
+      const hit =
+        color && SHADCN[color[2]]
+          ? `--${color[2]}`
+          : /^border(-[tblrxy])?$/.test(util)
+            ? "--border"
+            : scaleVar && SHADCN_SCALE[scaleVar]
+              ? scaleVar
+              : null;
       if (!hit || sysSeen.has(`${util}|${hit}`)) continue;
       sysSeen.add(`${util}|${hit}`);
       gaps.push({
@@ -268,7 +326,9 @@ function componentGapsNow(scheme, g, roots) {
     // A color faded by hand: a key or a named color with an opacity modifier (bg-[var(--x)]/10,
     // bg-black/50). The tint is then decided in the component, where no scheme can see or change it.
     const fadeSeen = new Set();
-    for (const m of src.matchAll(/\b(bg|text|border|ring|fill|stroke|outline|divide)-(?:\[(?:color:)?var\((--[a-z0-9-]+)\)\]|(black|white|transparent|current))\/(\d+)\b/g)) {
+    for (const m of src.matchAll(
+      /\b(bg|text|border|ring|fill|stroke|outline|divide)-(?:\[(?:color:)?var\((--[a-z0-9-]+)\)\]|(black|white|transparent|current))\/(\d+)\b/g,
+    )) {
       const what = m[2] ?? m[3];
       if (fadeSeen.has(`${m[1]}|${what}|${m[4]}`)) continue;
       fadeSeen.add(`${m[1]}|${what}|${m[4]}`);
@@ -279,6 +339,34 @@ function componentGapsNow(scheme, g, roots) {
         says: `${comp} fades ${m[2] ? `var(${m[2]})` : m[3]} to ${m[4]}% by hand (${m[0]}); the tint has no semantic, so no scheme decides it.`,
       });
     }
+    // A spacing or a line weight decided in code: a margin (mt-1.5, -mx-1), a hairline (h-px) or a
+    // Radix offset prop (sideOffset = 4). Each is a decision no scheme reaches; read it through a key.
+    const codeSeen = new Set();
+    const literal = [
+      ...[
+        ...src.matchAll(
+          /(?:^|[\s"'`:])(-?(?:m|mx|my|mt|mb|ml|mr|ms|me)-(?!0\b)[\d.]+|space-[xy]-(?!0\b)[\d.]+)(?=[\s"'`]|$)/gm,
+        ),
+      ].map((m) => [m[1], "spacing"]),
+      ...[
+        ...src.matchAll(
+          /(?:^|[\s"'`:])((?:h|w)-(?:px|\[\d+px\]))(?=[\s"'`]|$)/gm,
+        ),
+      ].map((m) => [m[1], "line weight"]),
+      ...[
+        ...src.matchAll(/\b((?:side|align)Offset\s*=\s*\{?-?[1-9]\d*\}?)/g),
+      ].map((m) => [m[1].replace(/\s+/g, " "), "offset"]),
+    ];
+    for (const [lit, what] of literal) {
+      if (codeSeen.has(lit)) continue;
+      codeSeen.add(lit);
+      gaps.push({
+        kind: "decided-in-code",
+        component: comp,
+        key: lit,
+        says: `${comp} sets a ${what} in code (${lit}); no scheme decides it, so it can't follow the decision it belongs to.`,
+      });
+    }
     // An empty state drawn by hand: the labels speak of no results or no data, and Empty isn't used.
     if (drawsOwnEmpty(src, comp))
       gaps.push({
@@ -287,24 +375,51 @@ function componentGapsNow(scheme, g, roots) {
         says: `${comp} draws its own empty state; the Empty component (why it is empty and the one action that fills it) is not used.`,
       });
     // Nested corners: an option's corner against its container's corner less the padding between them.
-    const px = (v) => (typeof v !== "string" ? null : /rem$/.test(v) ? parseFloat(v) * 16 : /px$/.test(v) ? parseFloat(v) : null);
+    const px = (v) =>
+      typeof v !== "string"
+        ? null
+        : /rem$/.test(v)
+          ? parseFloat(v) * 16
+          : /px$/.test(v)
+            ? parseFloat(v)
+            : null;
     const byPart = new Map();
     for (const t of api.filter((x) => x.own))
       for (const u of usages(src, comp, t.css)) {
         const e = byPart.get(u.part) ?? {};
         if (u.property === "radius" && !e.radius) e.radius = t;
         // The padding that nests an option is on every side (p-), not one axis (px-, a heading's).
-        if (u.property === "padding" && /(^|:)p-$/.test(u.cls) && !e.padding) e.padding = t;
+        if (u.property === "padding" && /(^|:)p-$/.test(u.cls) && !e.padding)
+          e.padding = t;
         byPart.set(u.part, e);
       }
     // A panel that holds options (a menu, a list) or a bar that holds triggers (the menubar, a tab list).
-    const container = [...byPart].find(([p, e]) => /content|list|popup|menu$|^root$/.test(p) && e.radius && e.padding && [...byPart].some(([q, f]) => q !== p && f.radius && (/item|option/.test(q) || (/trigger/.test(q) && /^root$|list$/.test(p)))));
+    const container = [...byPart].find(
+      ([p, e]) =>
+        /content|list|popup|menu$|^root$/.test(p) &&
+        e.radius &&
+        e.padding &&
+        [...byPart].some(
+          ([q, f]) =>
+            q !== p &&
+            f.radius &&
+            (/item|option/.test(q) ||
+              (/trigger/.test(q) && /^root$|list$/.test(p))),
+        ),
+    );
     if (container) {
       const val = (t) => px(Object.values(t.values)[0]?.value);
       const outer = val(container[1].radius);
       const pad = val(container[1].padding);
       for (const [p, e] of byPart)
-        if ((/item|option/.test(p) || (/trigger/.test(p) && /^root$|list$/.test(container[0]))) && p !== container[0] && e.radius && outer != null && pad != null) {
+        if (
+          (/item|option/.test(p) ||
+            (/trigger/.test(p) && /^root$|list$/.test(container[0]))) &&
+          p !== container[0] &&
+          e.radius &&
+          outer != null &&
+          pad != null
+        ) {
           const inner = val(e.radius);
           const want = Math.max(0, outer - pad);
           if (inner != null && Math.abs(inner - want) > 0.5)
@@ -326,8 +441,14 @@ function componentGapsNow(scheme, g, roots) {
       const uses = usages(src, comp, t.css);
       const base = { component: comp, key: t.token, aliases: t.aliases };
       // 1. The key does not name its part.
-      const parts = [...new Set(uses.map((u) => u.part).filter((p) => p !== "root"))];
-      if (!recipe && parts.length && !parts.some((p) => words(p).some((w) => kw.includes(w))))
+      const parts = [
+        ...new Set(uses.map((u) => u.part).filter((p) => p !== "root")),
+      ];
+      if (
+        !recipe &&
+        parts.length &&
+        !parts.some((p) => words(p).some((w) => kw.includes(w)))
+      )
         gaps.push({
           ...base,
           kind: "key-hides-part",
@@ -351,7 +472,10 @@ function componentGapsNow(scheme, g, roots) {
           if (!covers.length) {
             const k = `${u.state} ${u.property}`;
             unwritten.set(k, [...(unwritten.get(k) ?? []), t.token]);
-          } else if (!covers.includes(t.aliases) && !RULE_WORDS[u.state].test(rule.get(t.aliases) ?? ""))
+          } else if (
+            !covers.includes(t.aliases) &&
+            !RULE_WORDS[u.state].test(rule.get(t.aliases) ?? "")
+          )
             gaps.push({
               ...base,
               kind: "wrong-semantic",
@@ -366,23 +490,47 @@ function componentGapsNow(scheme, g, roots) {
       const role = t.aliases.match(/^(radius|size)\.([a-z-]+)$/)?.[2];
       // A role whose written rule names this component is not borrowed: radius.badge is "Corner of
       // badges and checkboxes", so the checkbox reads its own rule.
-      const roleRule = role ? t.aliases.split(".").reduce((n, k) => n?.[k], scheme.tokens.semantic)?.$description ?? "" : "";
+      const roleRule = role
+        ? (t.aliases.split(".").reduce((n, k) => n?.[k], scheme.tokens.semantic)
+            ?.$description ?? "")
+        : "";
       // "menu items" names the items of every menu (dropdown-menu, context-menu): the component's last
       // word and the part.
       const part = key.split(".").find((w) => w === "item" || w === "items");
       const named =
-        new RegExp(`\\b${comp.replace(/-/g, "[ -]")}(e?s)?\\b`, "i").test(roleRule) ||
-        (part && new RegExp(`\\b${comp.split("-").pop()} items\\b`, "i").test(roleRule)) ||
+        new RegExp(`\\b${comp.replace(/-/g, "[ -]")}(e?s)?\\b`, "i").test(
+          roleRule,
+        ) ||
+        (part &&
+          new RegExp(`\\b${comp.split("-").pop()} items\\b`, "i").test(
+            roleRule,
+          )) ||
         // A rule that names the part itself ("badges, chips and checkboxes" for a combobox chip).
-        key.split(".").some((w) => w.length > 2 && !/^(radius|size|background|border|label)$/.test(w) && new RegExp(`\\b${w}s?\\b`, "i").test(roleRule));
-      if (role && catalogue.has(role) && role !== comp && !comp.startsWith(role) && !named)
+        key
+          .split(".")
+          .some(
+            (w) =>
+              w.length > 2 &&
+              !/^(radius|size|background|border|label)$/.test(w) &&
+              new RegExp(`\\b${w}s?\\b`, "i").test(roleRule),
+          );
+      if (
+        role &&
+        catalogue.has(role) &&
+        role !== comp &&
+        !comp.startsWith(role) &&
+        !named
+      )
         gaps.push({
           ...base,
           kind: "wrong-semantic",
           says: `${t.token} borrows ${t.aliases}, the ${role}'s role, so a change to the ${role} moves the ${comp} too.`,
         });
       // 3. A surface used as text: text on a fill pairs by the fill's tone (OD-222).
-      if (/^color\.surface\./.test(t.aliases) && uses.some((u) => u.property === "text" || u.property === "icon"))
+      if (
+        /^color\.surface\./.test(t.aliases) &&
+        uses.some((u) => u.property === "text" || u.property === "icon")
+      )
         gaps.push({
           ...base,
           kind: "wrong-semantic",
@@ -398,11 +546,16 @@ function componentGapsNow(scheme, g, roots) {
         });
       // Collect the jobs of each color semantic on fills, for kind 4.
       if (/^color\./.test(t.aliases))
-        for (const u of uses.filter((x) => x.property === "background" && x.state !== "disabled")) {
+        for (const u of uses.filter(
+          (x) => x.property === "background" && x.state !== "disabled",
+        )) {
           // States the semantic's own rule covers are one job: surface.highlight's rule covers the
           // pointer (hover) and the keyboard (highlight); surface.selected's covers selected and current.
           // Its own rule's states are the semantic's job, the same as its use at rest.
-          const job = !u.state || RULE_WORDS[u.state].test(rule.get(t.aliases) ?? "") ? "its job" : u.state;
+          const job =
+            !u.state || RULE_WORDS[u.state].test(rule.get(t.aliases) ?? "")
+              ? "its job"
+              : u.state;
           const j = jobs.get(t.aliases) ?? new Map();
           j.set(job, [...new Set([...(j.get(job) ?? []), t.token])]);
           jobs.set(t.aliases, j);
@@ -412,7 +565,9 @@ function componentGapsNow(scheme, g, roots) {
   // 4. One semantic carries two jobs on fills.
   for (const [sem, j] of jobs) {
     if (j.size < 2) continue;
-    const list = [...j].map(([job, keys]) => `${job} (${keys.length})`).join(", ");
+    const list = [...j]
+      .map(([job, keys]) => `${job} (${keys.length})`)
+      .join(", ");
     gaps.push({
       kind: "two-jobs",
       semantic: sem,
@@ -447,7 +602,9 @@ export function pickGaps(scheme) {
       ? []
       : "$value" in o
         ? [[p.join("."), o]]
-        : Object.entries(o).flatMap(([k, v]) => (k[0] === "$" ? [] : leaves(v, [...p, k])));
+        : Object.entries(o).flatMap(([k, v]) =>
+            k[0] === "$" ? [] : leaves(v, [...p, k]),
+          );
   for (const [brand, def] of Object.entries(scheme.tokens.brands))
     for (const mode of ["base", "light", "dark"])
       for (const [path, node] of leaves(def.theme?.[mode] ?? {})) {
@@ -470,8 +627,13 @@ export function pickGaps(scheme) {
 export function gapLedger(scheme, g, roots, { component = null } = {}) {
   const gaps = component
     ? componentLedger(scheme, g, roots, component)
-    : [...componentGaps(scheme, g, roots), ...pickGaps(scheme)].map((x) => ({ ...x, ticket: TICKET[x.kind] ?? null }));
-  const counts = Object.fromEntries(GAP_KINDS.map((k) => [k.id, gaps.filter((x) => x.kind === k.id).length]));
+    : [...componentGaps(scheme, g, roots), ...pickGaps(scheme)].map((x) => ({
+        ...x,
+        ticket: TICKET[x.kind] ?? null,
+      }));
+  const counts = Object.fromEntries(
+    GAP_KINDS.map((k) => [k.id, gaps.filter((x) => x.kind === k.id).length]),
+  );
   return { scheme: scheme.id, component, kinds: GAP_KINDS, counts, gaps };
 }
 
@@ -480,7 +642,14 @@ export function componentLedger(scheme, g, roots, component) {
   const all = componentGaps(scheme, g, roots);
   const mine = (k) => k?.startsWith(`component.${component}.`);
   return all
-    .filter((x) => x.component === component || Object.values(x.jobs ?? {}).flat().some(mine) || x.keys?.some(mine))
+    .filter(
+      (x) =>
+        x.component === component ||
+        Object.values(x.jobs ?? {})
+          .flat()
+          .some(mine) ||
+        x.keys?.some(mine),
+    )
     .map((x) => ({ ...x, ticket: TICKET[x.kind] ?? null }));
 }
 
@@ -495,9 +664,13 @@ export function gapText(ledger, { limit = 12 } = {}) {
     const list = ledger.gaps.filter((x) => x.kind === k.id);
     if (!list.length) continue;
     const ticket = list[0].ticket;
-    lines.push(`${k.title}: ${list.length}${ticket ? ` (${ticket})` : ""}`, `  Why it matters: ${k.why}`);
+    lines.push(
+      `${k.title}: ${list.length}${ticket ? ` (${ticket})` : ""}`,
+      `  Why it matters: ${k.why}`,
+    );
     for (const x of list.slice(0, limit)) lines.push(`  - ${x.says}`);
-    if (list.length > limit) lines.push(`  …and ${list.length - limit} more. Add --json for all.`);
+    if (list.length > limit)
+      lines.push(`  …and ${list.length - limit} more. Add --json for all.`);
     lines.push("");
   }
   if (!ledger.gaps.length) lines.push("No gaps.");

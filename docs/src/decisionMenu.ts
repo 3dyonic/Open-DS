@@ -11,9 +11,52 @@ type Item = { type: string; id?: string; label?: string; items?: Item[]; [k: str
 const esc = (s: string) =>
   s.replaceAll("&", "&amp;").replaceAll("<", "&lt;").replaceAll(">", "&gt;").replaceAll('"', "&quot;");
 
+// Anatomy reference (OD-229): a component's anatomy page sits under the component, not beside it. The
+// component's page becomes a category whose one item is its Anatomy reference, so the sub-item shows,
+// indented, only when you navigate to that component.
+function nestAnatomy(list: Item[], titles: Map<string, string>): Item[] {
+  const anatomy = new Map(
+    list
+      .filter((it) => it.type === "doc" && it.id?.endsWith("-anatomy"))
+      .map((it) => [it.id!.slice(0, -"-anatomy".length), it]),
+  );
+  return list
+    .filter(
+      (it) =>
+        !(
+          it.type === "doc" &&
+          it.id?.endsWith("-anatomy") &&
+          list.some((x) => x.id === it.id!.slice(0, -"-anatomy".length))
+        ),
+    )
+    .map((it) => {
+      const sub = it.type === "doc" && it.id ? anatomy.get(it.id) : undefined;
+      if (sub)
+        return {
+          type: "category",
+          label: it.label ?? titles.get(it.id!) ?? it.id,
+          link: { type: "doc", id: it.id },
+          collapsible: true,
+          collapsed: true,
+          className: ["ods-has-anatomy", it.className].filter(Boolean).join(" "),
+          items: [{ ...sub, label: "Anatomy reference", className: "ods-anatomy" }],
+        };
+      return it.items ? { ...it, items: nestAnatomy(it.items, titles) } : it;
+    });
+}
+
 export function decisionMenu(baseUrl: string) {
   return async ({ defaultSidebarItemsGenerator, ...args }: any): Promise<any> => {
-    const items: Item[] = await defaultSidebarItemsGenerator(args);
+    const items: Item[] = nestAnatomy(
+      await defaultSidebarItemsGenerator(args),
+      // A doc item carries no label of its own; the category takes the page title.
+      new Map(
+        (args.docs ?? []).map((d: { id: string; title: string; frontMatter?: { sidebar_label?: string } }) => [
+          d.id,
+          d.frontMatter?.sidebar_label ?? d.title,
+        ]),
+      ),
+    );
     const dir: string = args.item.dirName;
     const file = join(args.version.contentPath, dir, "_decision-menu.json");
     if (!existsSync(file)) return items;

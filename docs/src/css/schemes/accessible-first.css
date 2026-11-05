@@ -98,7 +98,7 @@ html[data-scheme="accessible-first"] {
   --color-category-4: #8A5600; /** Category 4: tells one item or series from another. It carries no meaning. */
   --color-category-4-subtle: #FEE8CF; /** Category 4: the fill of a tag. */
   --radius-control: 0.375rem; /** Corner of buttons and inputs. */
-  --radius-badge: 0.25rem; /** Corner of badges, chips and checkboxes. */
+  --radius-badge: 0.25rem; /** Corner of badges, chips, tooltips and checkboxes: small labels and marks. */
   --radius-option: 0.25rem; /** Corner of options in menus and lists: the panel's corner less its padding, so the corners nest. */
   --radius-container: 0.5rem; /** Corner of cards, menus and dialogs. */
   --type-display-font-family: "Atkinson Hyperlegible", Verdana, sans-serif;
@@ -159,6 +159,7 @@ html[data-scheme="accessible-first"] {
   --tabs-focus: var(--border-width-focus); /** Focus of the tabs. */
   --tabs-content-padding-top: var(--space-gap-default); /** Content padding top of the tabs. */
   --overlay-item-height: var(--size-control-default); /** Height of a menu item. */
+  --overlay-offset: var(--space-gap-tight); /** The gap between a trigger and the panel it opens: the same for every floating panel. */
   --tooltip-content-padding-x: var(--space-gap-default); /** Content padding x of the tooltip. */
   --tooltip-content-padding-y: var(--component-spacing-map-x1); /** Content padding y of the tooltip. */
   --tooltip-content-font-size: var(--type-caption-font-size); /** Content font size of the tooltip. */
@@ -178,6 +179,7 @@ html[data-scheme="accessible-first"] {
   --accordion-focus-offset: var(--border-width-focus-offset); /** Gap between the accordion and its focus ring. */
   --alert-dialog-content-gap: var(--space-gap-group); /** Content gap of the alert dialog. */
   --alert-dialog-content-padding: var(--component-spacing-map-x6); /** Content padding of the alert dialog. */
+  --alert-dialog-content-border-width: var(--border-width-default); /** Content border width of the alert dialog. */
   --alert-dialog-header-gap: var(--component-spacing-map-x2); /** Header gap of the alert dialog. */
   --alert-dialog-header-gap-x: var(--space-gap-section); /** Header gap x of the alert dialog. */
   --alert-dialog-footer-gap: var(--space-gap-default); /** Footer gap of the alert dialog. */
@@ -306,6 +308,8 @@ html[data-scheme="accessible-first"] {
   --combobox-empty-padding-y: var(--component-spacing-map-x2); /** Empty padding y of the combobox. */
   --combobox-empty-font-size: var(--type-body-font-size); /** Empty font size of the combobox. */
   --combobox-empty-line-height: var(--type-body-line-height); /** Empty line height of the combobox. */
+  --combobox-separator-margin-y: var(--component-spacing-map-x1); /** Space above and below the separator of the combobox. */
+  --combobox-separator-thickness: var(--border-width-default); /** Thickness of the separator of the combobox: the weight of every line. */
   --combobox-chips-gap: var(--component-spacing-map-x2); /** Chips gap of the combobox. */
   --combobox-chips-padding-x: var(--component-spacing-map-x3); /** Chips padding x of the combobox. */
   --combobox-chips-padding-y: var(--component-spacing-map-x2); /** Chips padding y of the combobox. */
@@ -320,13 +324,16 @@ html[data-scheme="accessible-first"] {
   --combobox-chip-line-height: var(--type-caption-line-height); /** Chip line height of the combobox. */
   --combobox-chip-font-weight: var(--type-label-font-weight); /** Chip font weight of the combobox. */
   --combobox-chip-disabled-opacity: var(--opacity-disabled); /** Chip disabled opacity of the combobox. */
+  --combobox-chip-remove-pull: var(--component-spacing-map-x1); /** How far the chip's remove button sits into its padding. */
   --combobox-disabled-opacity: var(--opacity-disabled); /** Disabled opacity of the combobox. */
   --combobox-input-height: var(--size-control-default); /** Height of the search field in the combobox's list. */
+  --combobox-input-margin: var(--component-spacing-map-x1); /** Inset of the search field in the combobox's panel, like a menu panel's padding. */
   --command-padding-x: var(--component-spacing-map-x2); /** Padding x of the command. */
   --command-font-weight: var(--type-label-font-weight); /** Font weight of the command. */
   --command-padding-y: var(--component-spacing-map-x3); /** Padding y of the command. */
   --command-input-wrapper-gap: var(--space-gap-default); /** Input wrapper gap of the command. */
   --command-input-wrapper-padding-x: var(--component-spacing-map-x3); /** Input wrapper padding x of the command. */
+  --command-input-wrapper-border-width: var(--border-width-default); /** Width of the line under the command's search field. */
   --command-input-padding-y: var(--component-spacing-map-x3); /** Input padding y of the command. */
   --command-input-font-size: var(--type-body-font-size); /** Input font size of the command. */
   --command-input-line-height: var(--type-body-line-height); /** Input line height of the command. */
@@ -342,6 +349,7 @@ html[data-scheme="accessible-first"] {
   --command-group-font-size: var(--type-caption-font-size); /** Group font size of the command. */
   --command-group-line-height: var(--type-caption-line-height); /** Group line height of the command. */
   --command-group-font-weight: var(--type-label-font-weight); /** Group font weight of the command. */
+  --command-separator-thickness: var(--border-width-default); /** Thickness of the separator of the command: the weight of every line. */
   --command-item-gap: var(--space-gap-default); /** Item gap of the command. */
   --command-item-padding-x: var(--component-spacing-map-x2); /** Item padding x of the command. */
   --command-item-padding-y: var(--component-spacing-map-x2); /** Item padding y of the command. */
@@ -392,6 +400,8 @@ html[data-scheme="accessible-first"] {
   --context-menu-label-line-height: var(--type-body-line-height); /** Label line height of the context menu. */
   --context-menu-label-font-weight: var(--type-label-font-weight); /** Label font weight of the context menu. */
   --context-menu-label-padding-left: var(--component-spacing-map-x8); /** Label padding left of the context menu. */
+  --context-menu-separator-margin-y: var(--component-spacing-map-x1); /** Space above and below the separator of the context menu. */
+  --context-menu-separator-thickness: var(--border-width-default); /** Thickness of the separator of the context menu: the weight of every line. */
   --context-menu-shortcut-font-size: var(--type-caption-font-size); /** Shortcut font size of the context menu. */
   --context-menu-shortcut-line-height: var(--type-caption-line-height); /** Shortcut line height of the context menu. */
   --data-table-gap: var(--space-gap-tight); /** Gap of the data table. */
@@ -427,6 +437,8 @@ html[data-scheme="accessible-first"] {
   --dropdown-menu-item-font-size: var(--type-body-font-size); /** Item font size of the dropdown menu. */
   --dropdown-menu-item-disabled: var(--opacity-disabled); /** Item disabled of the dropdown menu. */
   --dropdown-menu-item-icon: var(--size-icon); /** Item icon of the dropdown menu. */
+  --dropdown-menu-separator-margin-y: var(--component-spacing-map-x1); /** Space above and below the separator of the dropdown menu. */
+  --dropdown-menu-separator-thickness: var(--border-width-default); /** Thickness of the separator of the dropdown menu: the weight of every line. */
   --empty-gap: var(--space-gap-section); /** Gap of the empty. */
   --empty-padding: var(--component-spacing-map-x6); /** Padding of the empty. */
   --empty-padding-2: var(--component-spacing-map-x12); /** Padding 2 of the empty. */
@@ -470,6 +482,7 @@ html[data-scheme="accessible-first"] {
   --form-message-font-size: var(--type-body-font-size); /** Message font size of the form. */
   --form-message-line-height: var(--type-body-line-height); /** Message line height of the form. */
   --hover-card-content-padding: var(--space-inset-container); /** Content padding of the hover card. */
+  --hover-card-content-border-width: var(--border-width-default); /** Content border width of the hover card. */
   --input-group-padding-left: var(--component-spacing-map-x2); /** Padding left of the input group. */
   --input-group-padding-right: var(--component-spacing-map-x2); /** Padding right of the input group. */
   --input-group-padding-bottom: var(--space-inset-control-x); /** Padding bottom of the input group. */
@@ -551,6 +564,7 @@ html[data-scheme="accessible-first"] {
   --menubar-trigger-font-weight: var(--type-label-font-weight); /** Trigger font weight of the menubar. */
   --menubar-content-padding: var(--component-spacing-map-x1); /** Content padding of the menubar. */
   --menubar-content-border-width: var(--border-width-default); /** Border width of the menubar content. */
+  --menubar-content-align-pull: var(--component-spacing-map-x1); /** Lines the menubar's panel up with the bar: the bar's padding step. */
   --menubar-item-gap: var(--space-gap-default); /** Item gap of the menubar. */
   --menubar-item-padding-x: var(--component-spacing-map-x2); /** Item padding x of the menubar. */
   --menubar-item-padding-y: var(--component-spacing-map-x2); /** Item padding y of the menubar. */
@@ -582,6 +596,8 @@ html[data-scheme="accessible-first"] {
   --menubar-label-line-height: var(--type-body-line-height); /** Label line height of the menubar. */
   --menubar-label-font-weight: var(--type-label-font-weight); /** Label font weight of the menubar. */
   --menubar-label-padding-left: var(--component-spacing-map-x8); /** Label padding left of the menubar. */
+  --menubar-separator-margin-y: var(--component-spacing-map-x1); /** Space above and below the separator of the menubar. */
+  --menubar-separator-thickness: var(--border-width-default); /** Thickness of the separator of the menubar: the weight of every line. */
   --menubar-shortcut-font-size: var(--type-caption-font-size); /** Shortcut font size of the menubar. */
   --menubar-shortcut-line-height: var(--type-caption-line-height); /** Shortcut line height of the menubar. */
   --menubar-sub-trigger-padding-x: var(--component-spacing-map-x2); /** Sub trigger padding x of the menubar. */
@@ -616,24 +632,28 @@ html[data-scheme="accessible-first"] {
   --native-select-icon-size: var(--size-icon); /** Icon size of the native select. */
   --native-select-focus-offset: var(--border-width-focus-offset); /** Gap between the native select and its focus ring. */
   --navigation-menu-list-gap: var(--space-gap-tight); /** List gap of the navigation menu. */
-  --navigation-menu-padding-x: var(--space-inset-container); /** Padding x of the navigation menu. */
-  --navigation-menu-padding-y: var(--component-spacing-map-x2); /** Padding y of the navigation menu. */
-  --navigation-menu-font-size: var(--type-body-font-size); /** Font size of the navigation menu. */
-  --navigation-menu-line-height: var(--type-body-line-height); /** Line height of the navigation menu. */
-  --navigation-menu-font-weight: var(--type-label-font-weight); /** Font weight of the navigation menu. */
-  --navigation-menu-disabled-opacity-disabled: var(--opacity-disabled); /** Disabled opacity disabled of the navigation menu. */
-  --navigation-menu-focus: var(--border-width-focus); /** Focus of the navigation menu. */
   --navigation-menu-duration: var(--motion-duration-feedback); /** Duration of the navigation menu. */
-  --navigation-menu-content-padding: var(--component-spacing-map-x2); /** Content padding of the navigation menu. */
+  --navigation-menu-content-padding: var(--component-spacing-map-x1); /** Content padding of the navigation menu, like every panel of options. */
   --navigation-menu-content-padding-right: var(--component-spacing-map-x3); /** Content padding right of the navigation menu. */
+  --navigation-menu-content-border-width: var(--border-width-default); /** Content border width of the navigation menu. */
+  --navigation-menu-viewport-border-width: var(--border-width-default); /** Viewport border width of the navigation menu. */
   --navigation-menu-link-gap: var(--space-gap-tight); /** Link gap of the navigation menu. */
   --navigation-menu-link-padding: var(--component-spacing-map-x2); /** Link padding of the navigation menu. */
   --navigation-menu-link-font-size: var(--type-body-font-size); /** Link font size of the navigation menu. */
   --navigation-menu-link-line-height: var(--type-body-line-height); /** Link line height of the navigation menu. */
-  --navigation-menu-link-focus: var(--border-width-focus); /** Link focus of the navigation menu. */
   --navigation-menu-link-icon-size: var(--size-icon); /** Link icon size of the navigation menu. */
   --navigation-menu-link-focus-offset: var(--border-width-focus-offset); /** Gap between the navigation menu link and its focus ring. */
+  --navigation-menu-link-focus-width: var(--border-width-focus); /** Link focus ring width, of the navigation menu. */
+  --navigation-menu-link-edge-width-current: var(--border-width-focus); /** Width of the current link's edge. */
   --navigation-menu-trigger-focus-offset: var(--border-width-focus-offset); /** Gap between the navigation menu trigger and its focus ring. */
+  --navigation-menu-trigger-padding-x: var(--space-inset-container); /** Trigger padding x of the navigation menu. */
+  --navigation-menu-trigger-padding-y: var(--component-spacing-map-x2); /** Trigger padding y of the navigation menu. */
+  --navigation-menu-trigger-font-size: var(--type-body-font-size); /** Trigger font size of the navigation menu. */
+  --navigation-menu-trigger-line-height: var(--type-body-line-height); /** Trigger line height of the navigation menu. */
+  --navigation-menu-trigger-font-weight: var(--type-label-font-weight); /** Trigger font weight of the navigation menu. */
+  --navigation-menu-trigger-disabled-opacity: var(--opacity-disabled); /** Trigger opacity when disabled, of the navigation menu. */
+  --navigation-menu-trigger-focus-width: var(--border-width-focus); /** Trigger focus ring width, of the navigation menu. */
+  --navigation-menu-trigger-icon-gap: var(--space-gap-tight); /** Gap between the trigger label and its chevron: an icon and its label. */
   --pagination-content-gap: var(--space-gap-tight); /** Content gap of the pagination. */
   --pagination-gap: var(--space-gap-tight); /** Gap of the pagination. */
   --pagination-padding-x: var(--component-spacing-map-x3); /** Padding x of the pagination. */
@@ -641,6 +661,7 @@ html[data-scheme="accessible-first"] {
   --pagination-padding-right: var(--component-spacing-map-x3); /** Padding right of the pagination. */
   --pagination-icon-size: var(--size-icon); /** Icon size of the pagination. */
   --popover-content-padding: var(--space-inset-container); /** Content padding of the popover. */
+  --popover-content-border-width: var(--border-width-default); /** Content border width of the popover. */
   --popover-header-gap: var(--space-gap-tight); /** Header gap of the popover. */
   --popover-header-font-size: var(--type-body-font-size); /** Header font size of the popover. */
   --popover-header-line-height: var(--type-body-line-height); /** Header line height of the popover. */
@@ -892,7 +913,7 @@ html[data-scheme="accessible-first"] {
   --field-error-label: var(--color-status-danger); /** Error label of the field. */
   --form-label-label: var(--color-status-danger); /** Label label of the form. */
   --form-message-label: var(--color-status-danger); /** Message label of the form. */
-  --hover-card-content-radius: var(--radius-control); /** Content radius of the hover card. */
+  --hover-card-content-radius: var(--radius-container); /** Content corner of the hover card, like every floating panel's. */
   --hover-card-content-shadow: var(--elevation-overlay); /** Content shadow of the hover card. */
   --input-group-radius: var(--radius-control); /** Radius of the input group. */
   --input-group-shadow: var(--elevation-card); /** Shadow of the input group. */
@@ -937,17 +958,26 @@ html[data-scheme="accessible-first"] {
   --native-select-focus-ring-focus: var(--color-border-focus); /** Focus ring focus of the native select. */
   --native-select-border-invalid: var(--color-status-danger); /** Border invalid of the native select. */
   --native-select-focus-ring-invalid: var(--color-status-danger); /** Focus ring invalid of the native select. */
-  --navigation-menu-radius: var(--radius-control); /** Radius of the navigation menu. */
-  --navigation-menu-focus-ring-focus: var(--color-border-focus); /** Focus ring focus of the navigation menu. */
-  --navigation-menu-shadow: var(--elevation-card); /** Shadow of the navigation menu. */
-  --navigation-menu-viewport-radius: var(--radius-control); /** Viewport radius of the navigation menu. */
-  --navigation-menu-viewport-shadow: var(--elevation-card); /** Viewport shadow of the navigation menu. */
-  --navigation-menu-link-radius: var(--radius-badge); /** Link radius of the navigation menu. */
+  --navigation-menu-padding-x: var(--navigation-menu-trigger-padding-x); /** Deprecated: use component.navigation-menu.trigger.padding-x (OD-243). Padding x of the navigation menu. */
+  --navigation-menu-padding-y: var(--navigation-menu-trigger-padding-y); /** Deprecated: use component.navigation-menu.trigger.padding-y (OD-243). Padding y of the navigation menu. */
+  --navigation-menu-font-size: var(--navigation-menu-trigger-font-size); /** Deprecated: use component.navigation-menu.trigger.font-size (OD-243). Font size of the navigation menu. */
+  --navigation-menu-line-height: var(--navigation-menu-trigger-line-height); /** Deprecated: use component.navigation-menu.trigger.line-height (OD-243). Line height of the navigation menu. */
+  --navigation-menu-font-weight: var(--navigation-menu-trigger-font-weight); /** Deprecated: use component.navigation-menu.trigger.font-weight (OD-243). Font weight of the navigation menu. */
+  --navigation-menu-disabled-opacity-disabled: var(--navigation-menu-trigger-disabled-opacity); /** Deprecated: use component.navigation-menu.trigger.disabled-opacity (OD-243). Disabled opacity disabled of the navigation menu. */
+  --navigation-menu-focus: var(--navigation-menu-trigger-focus-width); /** Deprecated: use component.navigation-menu.trigger.focus-width (OD-243). Focus of the navigation menu. */
+  --navigation-menu-content-shadow: var(--elevation-overlay); /** Content shadow of the navigation menu: it floats, like a menu. */
+  --navigation-menu-content-radius: var(--radius-container); /** Content corner of the navigation menu, like every floating panel's. */
+  --navigation-menu-viewport-radius: var(--radius-container); /** Viewport corner of the navigation menu, like every floating panel's. */
+  --navigation-menu-viewport-shadow: var(--elevation-overlay); /** Viewport shadow of the navigation menu: it floats, like a menu. */
+  --navigation-menu-link-radius: var(--radius-option); /** Link corner: an option in the panel, nested in its corner. */
   --navigation-menu-link-background-current: var(--color-surface-selected); /** Background of the link to the current page, of the navigation menu. */
-  --navigation-menu-link-selected: var(--color-border-selected); /** Link selected of the navigation menu. */
+  --navigation-menu-link-focus: var(--navigation-menu-link-focus-width); /** Deprecated: use component.navigation-menu.link.focus-width (OD-243). Link focus of the navigation menu. */
   --navigation-menu-link-focus-ring-focus: var(--color-border-focus); /** Link focus ring focus of the navigation menu. */
-  --navigation-menu-shadow-2: var(--elevation-overlay); /** Shadow 2 of the navigation menu. */
-  --popover-content-radius: var(--radius-control); /** Content radius of the popover. */
+  --navigation-menu-link-edge-current: var(--color-border-selected); /** The edge of the current link, so current is never color alone. */
+  --navigation-menu-trigger-focus-ring: var(--color-border-focus); /** Trigger focus ring, of the navigation menu. */
+  --navigation-menu-trigger-radius: var(--radius-control); /** Trigger corner of the navigation menu. */
+  --navigation-menu-indicator-shadow: var(--elevation-overlay); /** The indicator arrow's shadow, of the navigation menu. */
+  --popover-content-radius: var(--radius-container); /** Content corner of the popover, like every floating panel's. */
   --popover-content-shadow: var(--elevation-overlay); /** Content shadow of the popover. */
   --progress-background: var(--color-action-primary); /** Background of the progress. */
   --progress-indicator-background: var(--color-action-primary); /** Indicator background of the progress. */
@@ -1046,7 +1076,12 @@ html[data-scheme="accessible-first"] {
   --menubar-item-label: var(--menubar-item-label-destructive); /** Deprecated: use component.menubar.item.label.destructive (OD-243). Item label of the menubar. */
   --menubar-item-background-focus-2: var(--menubar-item-background-destructive-highlight); /** Deprecated: use component.menubar.item.background.destructive-highlight (OD-243). Item background focus 2 of the menubar. */
   --menubar-item-label-focus-2: var(--menubar-item-label-destructive-highlight); /** Deprecated: use component.menubar.item.label.destructive-highlight (OD-243). Item label focus 2 of the menubar. */
+  --navigation-menu-radius: var(--navigation-menu-trigger-radius); /** Deprecated: use component.navigation-menu.trigger.radius (OD-243). Radius of the navigation menu. */
+  --navigation-menu-focus-ring-focus: var(--navigation-menu-trigger-focus-ring); /** Deprecated: use component.navigation-menu.trigger.focus-ring (OD-243). Focus ring focus of the navigation menu. */
+  --navigation-menu-shadow: var(--navigation-menu-content-shadow); /** Deprecated: use component.navigation-menu.content.shadow (OD-243). Shadow of the navigation menu. */
   --navigation-menu-link-background: var(--navigation-menu-link-background-current); /** Deprecated: use component.navigation-menu.link.background.current (OD-241). Link background of the navigation menu. */
+  --navigation-menu-link-selected: var(--navigation-menu-link-edge-current); /** Deprecated: use component.navigation-menu.link.edge.current (OD-243). Link selected of the navigation menu. */
+  --navigation-menu-shadow-2: var(--navigation-menu-indicator-shadow); /** Deprecated: use component.navigation-menu.indicator.shadow (OD-243). Shadow 2 of the navigation menu. */
   --sidebar-background-2: var(--sidebar-menu-button-background-current); /** Deprecated: use component.sidebar.menu-button.background.current (OD-241). Background 2 of the sidebar. */
   --button-primary-label: var(--color-text-on-action); /** Primary button label color. */
   --button-secondary-background: var(--color-action-secondary); /** Secondary button fill. */
@@ -1084,13 +1119,14 @@ html[data-scheme="accessible-first"] {
   --tabs-list-border: var(--color-border-default); /** List border of the tabs. */
   --tabs-canvas: var(--color-surface-canvas); /** Canvas of the tabs. */
   --overlay-background: var(--color-surface-raised); /** Fill of a dialog, menu or toast. */
-  --tooltip-background: var(--color-surface-inverse); /** Tooltip fill. */
-  --tooltip-label: var(--color-text-inverse); /** Tooltip text. */
+  --tooltip-content-background: var(--color-surface-inverse); /** Content background of the tooltip. */
+  --tooltip-content-label: var(--color-text-inverse); /** Content text of the tooltip. */
   --accordion-divider: var(--color-border-default); /** The line between items. */
   --accordion-trigger-label: var(--color-text-primary); /** The trigger's text color. */
   --accordion-trigger-focus-ring-offset-focus: var(--color-surface-canvas); /** Trigger focus ring offset focus of the accordion. */
   --accordion-icon: var(--color-text-muted); /** The chevron's color. */
   --alert-dialog-content-background: var(--color-surface-canvas); /** Content background of the alert dialog. */
+  --alert-dialog-content-border: var(--color-border-default); /** Content border of the alert dialog, like every floating panel's. */
   --alert-dialog-description-label: var(--color-text-muted); /** Description label of the alert dialog. */
   --alert-dialog-media-background: var(--color-surface-sunken); /** Media background of the alert dialog. */
   --alert-default-background: var(--color-surface-default); /** Default background of the alert. */
@@ -1154,12 +1190,13 @@ html[data-scheme="accessible-first"] {
   --command-background: var(--color-surface-raised); /** Background of the command. */
   --command-label: var(--color-text-primary); /** Label of the command. */
   --command-label-2: var(--color-text-muted); /** Label 2 of the command. */
+  --command-input-wrapper-border: var(--color-border-default); /** The line under the command's search field. */
   --command-input-label-placeholder: var(--color-text-muted); /** Input label placeholder of the command. */
   --command-group-label: var(--color-text-primary); /** Group label of the command. */
   --command-group-label-2: var(--color-text-muted); /** Group label 2 of the command. */
   --command-separator-background: var(--color-border-default); /** Separator background of the command. */
-  --command-item-label-selected: var(--color-text-primary); /** Item label selected of the command. */
   --command-item-label: var(--color-text-muted); /** Item label of the command. */
+  --command-item-label-highlight: var(--color-text-primary); /** Item label when highlighted, by the pointer or the keyboard, of the command. */
   --command-item-background-highlight: var(--color-surface-highlight); /** Item background when highlighted, by the pointer or the keyboard, of the command menu. */
   --command-shortcut-label: var(--color-text-muted); /** Shortcut label of the command. */
   --context-menu-sub-trigger-label-focus: var(--color-text-primary); /** Sub trigger label focus of the context menu. */
@@ -1209,6 +1246,7 @@ html[data-scheme="accessible-first"] {
   --form-description-label: var(--color-text-muted); /** Description label of the form. */
   --hover-card-content-background: var(--color-surface-raised); /** Content background of the hover card. */
   --hover-card-content-label: var(--color-text-primary); /** Content label of the hover card. */
+  --hover-card-content-border: var(--color-border-default); /** Content border of the hover card. */
   --input-group-border: var(--color-border-strong); /** Border of the input group. */
   --input-group-label: var(--color-text-muted); /** Label of the input group. */
   --input-otp-slot-border: var(--color-border-strong); /** Slot border of the input otp. */
@@ -1258,30 +1296,33 @@ html[data-scheme="accessible-first"] {
   --native-select-label-placeholder: var(--color-text-muted); /** Label placeholder of the native select. */
   --native-select-focus-ring-offset-focus: var(--color-surface-canvas); /** Focus ring offset focus of the native select. */
   --native-select-label-2: var(--color-text-muted); /** Label 2 of the native select. */
-  --navigation-menu-background: var(--color-surface-canvas); /** Background of the navigation menu. */
-  --navigation-menu-label-hover: var(--color-text-primary); /** Label hover of the navigation menu. */
-  --navigation-menu-label-focus: var(--color-text-primary); /** Label focus of the navigation menu. */
-  --navigation-menu-label-open: var(--color-text-primary); /** Label open of the navigation menu. */
-  --navigation-menu-focus-ring-offset-focus: var(--color-surface-canvas); /** Focus ring offset focus of the navigation menu. */
-  --navigation-menu-background-2: var(--color-surface-raised); /** Background 2 of the navigation menu. */
-  --navigation-menu-label: var(--color-text-primary); /** Label of the navigation menu. */
+  --navigation-menu-content-background: var(--color-surface-raised); /** Content background of the navigation menu, like every floating panel's. */
+  --navigation-menu-content-label: var(--color-text-primary); /** Content text of the navigation menu. */
+  --navigation-menu-content-border: var(--color-border-default); /** Content border of the navigation menu. */
   --navigation-menu-viewport-background: var(--color-surface-raised); /** Viewport background of the navigation menu. */
   --navigation-menu-viewport-label: var(--color-text-primary); /** Viewport label of the navigation menu. */
+  --navigation-menu-viewport-border: var(--color-border-default); /** Viewport border of the navigation menu. */
   --navigation-menu-link-label-hover: var(--color-text-primary); /** Link label hover of the navigation menu. */
   --navigation-menu-link-label-focus: var(--color-text-primary); /** Link label focus of the navigation menu. */
   --navigation-menu-link-background-hover: var(--color-surface-highlight); /** Link background under the pointer, of the navigation menu. */
   --navigation-menu-link-background-highlight: var(--color-surface-highlight); /** Link background when highlighted by the keyboard, of the navigation menu. */
-  --navigation-menu-link-label: var(--color-text-primary); /** Link label of the navigation menu. */
+  --navigation-menu-link-label-current: var(--color-text-primary); /** Link label when current, of the navigation menu. */
   --navigation-menu-link-label-2: var(--color-text-muted); /** Link label 2 of the navigation menu. */
   --navigation-menu-link-focus-ring-offset-focus: var(--color-surface-canvas); /** Link focus ring offset focus of the navigation menu. */
-  --navigation-menu-background-3: var(--color-border-default); /** Background 3 of the navigation menu. */
+  --navigation-menu-trigger-background: var(--color-surface-canvas); /** Trigger background of the navigation menu. */
   --navigation-menu-trigger-background-highlight: var(--color-surface-highlight); /** Trigger background when highlighted, by the pointer or the keyboard, of the navigation menu. */
   --navigation-menu-trigger-background-hover: var(--color-surface-highlight); /** Trigger background under the pointer, of the navigation menu. */
   --navigation-menu-trigger-background-open: var(--color-surface-highlight); /** Trigger background while its menu is open, of the navigation menu. */
   --navigation-menu-trigger-background-open-highlight: var(--color-surface-highlight); /** Trigger background while its menu is open and the keyboard is on it, of the navigation menu. */
   --navigation-menu-trigger-background-open-hover: var(--color-surface-highlight); /** Trigger background while its menu is open and the pointer is on it, of the navigation menu. */
+  --navigation-menu-trigger-label-hover: var(--color-text-primary); /** Trigger label on hover, of the navigation menu. */
+  --navigation-menu-trigger-label-highlight: var(--color-text-primary); /** Trigger label when highlighted by the keyboard, of the navigation menu. */
+  --navigation-menu-trigger-label-open: var(--color-text-primary); /** Trigger label when its panel is open, of the navigation menu. */
+  --navigation-menu-trigger-focus-ring-offset: var(--color-surface-canvas); /** The gap behind the trigger's focus ring: the page canvas. */
+  --navigation-menu-indicator-background: var(--color-border-default); /** The indicator arrow's fill, of the navigation menu. */
   --popover-content-background: var(--color-surface-raised); /** Content background of the popover. */
   --popover-content-label: var(--color-text-primary); /** Content label of the popover. */
+  --popover-content-border: var(--color-border-default); /** Content border of the popover. */
   --popover-description-label: var(--color-text-muted); /** Description label of the popover. */
   --radio-group-item-border: var(--color-border-strong); /** Item border of the radio group. */
   --radio-group-item-focus-ring-offset-focus: var(--color-surface-canvas); /** Item focus ring offset focus of the radio group. */
@@ -1363,9 +1404,12 @@ html[data-scheme="accessible-first"] {
   --toggle-outline-label-hover: var(--color-text-primary); /** Outline label hover of the toggle. */
   --toggle-outline-background-hover: var(--color-surface-highlight); /** Outline toggle background under the pointer. */
   --toggle-background-hover: var(--color-surface-highlight); /** Background under the pointer, of the toggle. */
+  --tooltip-background: var(--tooltip-content-background); /** Deprecated: use component.tooltip.content.background (OD-243). Tooltip fill. */
+  --tooltip-label: var(--tooltip-content-label); /** Deprecated: use component.tooltip.content.label (OD-243). Tooltip text. */
   --combobox-content-focus-ring: var(--combobox-content-border); /** Deprecated: use component.combobox.content.border (OD-243). Content focus ring of the combobox. */
   --combobox-content-background-2: var(--combobox-input-background); /** Deprecated: use component.combobox.input.background (OD-243). Content background 2 of the combobox. */
   --command-item-background-selected: var(--command-item-background-highlight); /** Deprecated: use component.command.item.background.highlight (OD-241). Item background selected of the command. */
+  --command-item-label-selected: var(--command-item-label-highlight); /** Deprecated: use component.command.item.label.highlight (OD-243). Item label selected of the command. */
   --context-menu-sub-trigger-background-focus: var(--context-menu-sub-trigger-background-highlight); /** Deprecated: use component.context-menu.sub.trigger.background.highlight (OD-241). Sub trigger background focus of the context menu. */
   --context-menu-item-background-focus: var(--context-menu-item-background-highlight); /** Deprecated: use component.context-menu.item.background.highlight (OD-241). Item background focus of the context menu. */
   --context-menu-checkbox-item-background-focus: var(--context-menu-checkbox-item-background-highlight); /** Deprecated: use component.context-menu.checkbox.item.background.highlight (OD-241). Checkbox item background focus of the context menu. */
@@ -1379,12 +1423,21 @@ html[data-scheme="accessible-first"] {
   --menubar-checkbox-item-background-focus: var(--menubar-checkbox-item-background-highlight); /** Deprecated: use component.menubar.checkbox.item.background.highlight (OD-241). Checkbox item background focus of the menubar. */
   --menubar-radio-item-background-focus: var(--menubar-radio-item-background-highlight); /** Deprecated: use component.menubar.radio.item.background.highlight (OD-241). Radio item background focus of the menubar. */
   --menubar-sub-trigger-background-focus: var(--menubar-sub-trigger-background-highlight); /** Deprecated: use component.menubar.sub.trigger.background.highlight (OD-241). Sub trigger background focus of the menubar. */
+  --navigation-menu-background: var(--navigation-menu-trigger-background); /** Deprecated: use component.navigation-menu.trigger.background (OD-243). Background of the navigation menu. */
   --navigation-menu-background-hover: var(--navigation-menu-trigger-background-hover); /** Deprecated: use component.navigation-menu.trigger.background.hover (OD-241). Background hover of the navigation menu. */
+  --navigation-menu-label-hover: var(--navigation-menu-trigger-label-hover); /** Deprecated: use component.navigation-menu.trigger.label.hover (OD-243). Label hover of the navigation menu. */
   --navigation-menu-background-focus: var(--navigation-menu-trigger-background-highlight); /** Deprecated: use component.navigation-menu.trigger.background.highlight (OD-241). Background focus of the navigation menu. */
+  --navigation-menu-label-focus: var(--navigation-menu-trigger-label-highlight); /** Deprecated: use component.navigation-menu.trigger.label.highlight (OD-243). Label focus of the navigation menu. */
   --navigation-menu-background-open: var(--navigation-menu-trigger-background-open); /** Deprecated: use component.navigation-menu.trigger.background.open (OD-241). Background open of the navigation menu. */
+  --navigation-menu-label-open: var(--navigation-menu-trigger-label-open); /** Deprecated: use component.navigation-menu.trigger.label.open (OD-243). Label open of the navigation menu. */
   --navigation-menu-background-open-hover: var(--navigation-menu-trigger-background-open-hover); /** Deprecated: use component.navigation-menu.trigger.background.open-hover (OD-241). Background open hover of the navigation menu. */
   --navigation-menu-background-open-focus: var(--navigation-menu-trigger-background-open-highlight); /** Deprecated: use component.navigation-menu.trigger.background.open-highlight (OD-241). Background open focus of the navigation menu. */
+  --navigation-menu-focus-ring-offset-focus: var(--navigation-menu-trigger-focus-ring-offset); /** Deprecated: use component.navigation-menu.trigger.focus-ring-offset (OD-243). Focus ring offset focus of the navigation menu. */
+  --navigation-menu-background-2: var(--navigation-menu-content-background); /** Deprecated: use component.navigation-menu.content.background (OD-243). Background 2 of the navigation menu. */
+  --navigation-menu-label: var(--navigation-menu-content-label); /** Deprecated: use component.navigation-menu.content.label (OD-243). Label of the navigation menu. */
   --navigation-menu-link-background-focus: var(--navigation-menu-link-background-highlight); /** Deprecated: use component.navigation-menu.link.background.highlight (OD-241). Link background focus of the navigation menu. */
+  --navigation-menu-link-label: var(--navigation-menu-link-label-current); /** Deprecated: use component.navigation-menu.link.label.current (OD-243). Link label of the navigation menu. */
+  --navigation-menu-background-3: var(--navigation-menu-indicator-background); /** Deprecated: use component.navigation-menu.indicator.background (OD-243). Background 3 of the navigation menu. */
   --select-canvas: var(--select-trigger-focus-ring-offset); /** Deprecated: use component.select.trigger.focus-ring-offset (OD-243). Canvas of the select. */
   --select-item-sunken: var(--select-item-background-highlight); /** Deprecated: use component.select.item.background.highlight (OD-241). Item sunken of the select. */
   --sidebar-rail-background-hover: var(--sidebar-rail-line-hover); /** Deprecated: use component.sidebar.rail.line.hover (OD-241). Rail background hover of the sidebar. */
@@ -1492,7 +1545,7 @@ html[data-scheme="accessible-first"][data-theme="dark"] {
   --color-category-4: #F2B84B; /** Category 4: tells one item or series from another. It carries no meaning. */
   --color-category-4-subtle: #372500; /** Category 4: the fill of a tag. */
   --radius-control: 0.375rem; /** Corner of buttons and inputs. */
-  --radius-badge: 0.25rem; /** Corner of badges, chips and checkboxes. */
+  --radius-badge: 0.25rem; /** Corner of badges, chips, tooltips and checkboxes: small labels and marks. */
   --radius-option: 0.25rem; /** Corner of options in menus and lists: the panel's corner less its padding, so the corners nest. */
   --radius-container: 0.5rem; /** Corner of cards, menus and dialogs. */
   --type-display-font-family: "Atkinson Hyperlegible", Verdana, sans-serif;
@@ -1553,6 +1606,7 @@ html[data-scheme="accessible-first"][data-theme="dark"] {
   --tabs-focus: var(--border-width-focus); /** Focus of the tabs. */
   --tabs-content-padding-top: var(--space-gap-default); /** Content padding top of the tabs. */
   --overlay-item-height: var(--size-control-default); /** Height of a menu item. */
+  --overlay-offset: var(--space-gap-tight); /** The gap between a trigger and the panel it opens: the same for every floating panel. */
   --tooltip-content-padding-x: var(--space-gap-default); /** Content padding x of the tooltip. */
   --tooltip-content-padding-y: var(--component-spacing-map-x1); /** Content padding y of the tooltip. */
   --tooltip-content-font-size: var(--type-caption-font-size); /** Content font size of the tooltip. */
@@ -1572,6 +1626,7 @@ html[data-scheme="accessible-first"][data-theme="dark"] {
   --accordion-focus-offset: var(--border-width-focus-offset); /** Gap between the accordion and its focus ring. */
   --alert-dialog-content-gap: var(--space-gap-group); /** Content gap of the alert dialog. */
   --alert-dialog-content-padding: var(--component-spacing-map-x6); /** Content padding of the alert dialog. */
+  --alert-dialog-content-border-width: var(--border-width-default); /** Content border width of the alert dialog. */
   --alert-dialog-header-gap: var(--component-spacing-map-x2); /** Header gap of the alert dialog. */
   --alert-dialog-header-gap-x: var(--space-gap-section); /** Header gap x of the alert dialog. */
   --alert-dialog-footer-gap: var(--space-gap-default); /** Footer gap of the alert dialog. */
@@ -1700,6 +1755,8 @@ html[data-scheme="accessible-first"][data-theme="dark"] {
   --combobox-empty-padding-y: var(--component-spacing-map-x2); /** Empty padding y of the combobox. */
   --combobox-empty-font-size: var(--type-body-font-size); /** Empty font size of the combobox. */
   --combobox-empty-line-height: var(--type-body-line-height); /** Empty line height of the combobox. */
+  --combobox-separator-margin-y: var(--component-spacing-map-x1); /** Space above and below the separator of the combobox. */
+  --combobox-separator-thickness: var(--border-width-default); /** Thickness of the separator of the combobox: the weight of every line. */
   --combobox-chips-gap: var(--component-spacing-map-x2); /** Chips gap of the combobox. */
   --combobox-chips-padding-x: var(--component-spacing-map-x3); /** Chips padding x of the combobox. */
   --combobox-chips-padding-y: var(--component-spacing-map-x2); /** Chips padding y of the combobox. */
@@ -1714,13 +1771,16 @@ html[data-scheme="accessible-first"][data-theme="dark"] {
   --combobox-chip-line-height: var(--type-caption-line-height); /** Chip line height of the combobox. */
   --combobox-chip-font-weight: var(--type-label-font-weight); /** Chip font weight of the combobox. */
   --combobox-chip-disabled-opacity: var(--opacity-disabled); /** Chip disabled opacity of the combobox. */
+  --combobox-chip-remove-pull: var(--component-spacing-map-x1); /** How far the chip's remove button sits into its padding. */
   --combobox-disabled-opacity: var(--opacity-disabled); /** Disabled opacity of the combobox. */
   --combobox-input-height: var(--size-control-default); /** Height of the search field in the combobox's list. */
+  --combobox-input-margin: var(--component-spacing-map-x1); /** Inset of the search field in the combobox's panel, like a menu panel's padding. */
   --command-padding-x: var(--component-spacing-map-x2); /** Padding x of the command. */
   --command-font-weight: var(--type-label-font-weight); /** Font weight of the command. */
   --command-padding-y: var(--component-spacing-map-x3); /** Padding y of the command. */
   --command-input-wrapper-gap: var(--space-gap-default); /** Input wrapper gap of the command. */
   --command-input-wrapper-padding-x: var(--component-spacing-map-x3); /** Input wrapper padding x of the command. */
+  --command-input-wrapper-border-width: var(--border-width-default); /** Width of the line under the command's search field. */
   --command-input-padding-y: var(--component-spacing-map-x3); /** Input padding y of the command. */
   --command-input-font-size: var(--type-body-font-size); /** Input font size of the command. */
   --command-input-line-height: var(--type-body-line-height); /** Input line height of the command. */
@@ -1736,6 +1796,7 @@ html[data-scheme="accessible-first"][data-theme="dark"] {
   --command-group-font-size: var(--type-caption-font-size); /** Group font size of the command. */
   --command-group-line-height: var(--type-caption-line-height); /** Group line height of the command. */
   --command-group-font-weight: var(--type-label-font-weight); /** Group font weight of the command. */
+  --command-separator-thickness: var(--border-width-default); /** Thickness of the separator of the command: the weight of every line. */
   --command-item-gap: var(--space-gap-default); /** Item gap of the command. */
   --command-item-padding-x: var(--component-spacing-map-x2); /** Item padding x of the command. */
   --command-item-padding-y: var(--component-spacing-map-x2); /** Item padding y of the command. */
@@ -1786,6 +1847,8 @@ html[data-scheme="accessible-first"][data-theme="dark"] {
   --context-menu-label-line-height: var(--type-body-line-height); /** Label line height of the context menu. */
   --context-menu-label-font-weight: var(--type-label-font-weight); /** Label font weight of the context menu. */
   --context-menu-label-padding-left: var(--component-spacing-map-x8); /** Label padding left of the context menu. */
+  --context-menu-separator-margin-y: var(--component-spacing-map-x1); /** Space above and below the separator of the context menu. */
+  --context-menu-separator-thickness: var(--border-width-default); /** Thickness of the separator of the context menu: the weight of every line. */
   --context-menu-shortcut-font-size: var(--type-caption-font-size); /** Shortcut font size of the context menu. */
   --context-menu-shortcut-line-height: var(--type-caption-line-height); /** Shortcut line height of the context menu. */
   --data-table-gap: var(--space-gap-tight); /** Gap of the data table. */
@@ -1821,6 +1884,8 @@ html[data-scheme="accessible-first"][data-theme="dark"] {
   --dropdown-menu-item-font-size: var(--type-body-font-size); /** Item font size of the dropdown menu. */
   --dropdown-menu-item-disabled: var(--opacity-disabled); /** Item disabled of the dropdown menu. */
   --dropdown-menu-item-icon: var(--size-icon); /** Item icon of the dropdown menu. */
+  --dropdown-menu-separator-margin-y: var(--component-spacing-map-x1); /** Space above and below the separator of the dropdown menu. */
+  --dropdown-menu-separator-thickness: var(--border-width-default); /** Thickness of the separator of the dropdown menu: the weight of every line. */
   --empty-gap: var(--space-gap-section); /** Gap of the empty. */
   --empty-padding: var(--component-spacing-map-x6); /** Padding of the empty. */
   --empty-padding-2: var(--component-spacing-map-x12); /** Padding 2 of the empty. */
@@ -1864,6 +1929,7 @@ html[data-scheme="accessible-first"][data-theme="dark"] {
   --form-message-font-size: var(--type-body-font-size); /** Message font size of the form. */
   --form-message-line-height: var(--type-body-line-height); /** Message line height of the form. */
   --hover-card-content-padding: var(--space-inset-container); /** Content padding of the hover card. */
+  --hover-card-content-border-width: var(--border-width-default); /** Content border width of the hover card. */
   --input-group-padding-left: var(--component-spacing-map-x2); /** Padding left of the input group. */
   --input-group-padding-right: var(--component-spacing-map-x2); /** Padding right of the input group. */
   --input-group-padding-bottom: var(--space-inset-control-x); /** Padding bottom of the input group. */
@@ -1945,6 +2011,7 @@ html[data-scheme="accessible-first"][data-theme="dark"] {
   --menubar-trigger-font-weight: var(--type-label-font-weight); /** Trigger font weight of the menubar. */
   --menubar-content-padding: var(--component-spacing-map-x1); /** Content padding of the menubar. */
   --menubar-content-border-width: var(--border-width-default); /** Border width of the menubar content. */
+  --menubar-content-align-pull: var(--component-spacing-map-x1); /** Lines the menubar's panel up with the bar: the bar's padding step. */
   --menubar-item-gap: var(--space-gap-default); /** Item gap of the menubar. */
   --menubar-item-padding-x: var(--component-spacing-map-x2); /** Item padding x of the menubar. */
   --menubar-item-padding-y: var(--component-spacing-map-x2); /** Item padding y of the menubar. */
@@ -1976,6 +2043,8 @@ html[data-scheme="accessible-first"][data-theme="dark"] {
   --menubar-label-line-height: var(--type-body-line-height); /** Label line height of the menubar. */
   --menubar-label-font-weight: var(--type-label-font-weight); /** Label font weight of the menubar. */
   --menubar-label-padding-left: var(--component-spacing-map-x8); /** Label padding left of the menubar. */
+  --menubar-separator-margin-y: var(--component-spacing-map-x1); /** Space above and below the separator of the menubar. */
+  --menubar-separator-thickness: var(--border-width-default); /** Thickness of the separator of the menubar: the weight of every line. */
   --menubar-shortcut-font-size: var(--type-caption-font-size); /** Shortcut font size of the menubar. */
   --menubar-shortcut-line-height: var(--type-caption-line-height); /** Shortcut line height of the menubar. */
   --menubar-sub-trigger-padding-x: var(--component-spacing-map-x2); /** Sub trigger padding x of the menubar. */
@@ -2010,24 +2079,28 @@ html[data-scheme="accessible-first"][data-theme="dark"] {
   --native-select-icon-size: var(--size-icon); /** Icon size of the native select. */
   --native-select-focus-offset: var(--border-width-focus-offset); /** Gap between the native select and its focus ring. */
   --navigation-menu-list-gap: var(--space-gap-tight); /** List gap of the navigation menu. */
-  --navigation-menu-padding-x: var(--space-inset-container); /** Padding x of the navigation menu. */
-  --navigation-menu-padding-y: var(--component-spacing-map-x2); /** Padding y of the navigation menu. */
-  --navigation-menu-font-size: var(--type-body-font-size); /** Font size of the navigation menu. */
-  --navigation-menu-line-height: var(--type-body-line-height); /** Line height of the navigation menu. */
-  --navigation-menu-font-weight: var(--type-label-font-weight); /** Font weight of the navigation menu. */
-  --navigation-menu-disabled-opacity-disabled: var(--opacity-disabled); /** Disabled opacity disabled of the navigation menu. */
-  --navigation-menu-focus: var(--border-width-focus); /** Focus of the navigation menu. */
   --navigation-menu-duration: var(--motion-duration-feedback); /** Duration of the navigation menu. */
-  --navigation-menu-content-padding: var(--component-spacing-map-x2); /** Content padding of the navigation menu. */
+  --navigation-menu-content-padding: var(--component-spacing-map-x1); /** Content padding of the navigation menu, like every panel of options. */
   --navigation-menu-content-padding-right: var(--component-spacing-map-x3); /** Content padding right of the navigation menu. */
+  --navigation-menu-content-border-width: var(--border-width-default); /** Content border width of the navigation menu. */
+  --navigation-menu-viewport-border-width: var(--border-width-default); /** Viewport border width of the navigation menu. */
   --navigation-menu-link-gap: var(--space-gap-tight); /** Link gap of the navigation menu. */
   --navigation-menu-link-padding: var(--component-spacing-map-x2); /** Link padding of the navigation menu. */
   --navigation-menu-link-font-size: var(--type-body-font-size); /** Link font size of the navigation menu. */
   --navigation-menu-link-line-height: var(--type-body-line-height); /** Link line height of the navigation menu. */
-  --navigation-menu-link-focus: var(--border-width-focus); /** Link focus of the navigation menu. */
   --navigation-menu-link-icon-size: var(--size-icon); /** Link icon size of the navigation menu. */
   --navigation-menu-link-focus-offset: var(--border-width-focus-offset); /** Gap between the navigation menu link and its focus ring. */
+  --navigation-menu-link-focus-width: var(--border-width-focus); /** Link focus ring width, of the navigation menu. */
+  --navigation-menu-link-edge-width-current: var(--border-width-focus); /** Width of the current link's edge. */
   --navigation-menu-trigger-focus-offset: var(--border-width-focus-offset); /** Gap between the navigation menu trigger and its focus ring. */
+  --navigation-menu-trigger-padding-x: var(--space-inset-container); /** Trigger padding x of the navigation menu. */
+  --navigation-menu-trigger-padding-y: var(--component-spacing-map-x2); /** Trigger padding y of the navigation menu. */
+  --navigation-menu-trigger-font-size: var(--type-body-font-size); /** Trigger font size of the navigation menu. */
+  --navigation-menu-trigger-line-height: var(--type-body-line-height); /** Trigger line height of the navigation menu. */
+  --navigation-menu-trigger-font-weight: var(--type-label-font-weight); /** Trigger font weight of the navigation menu. */
+  --navigation-menu-trigger-disabled-opacity: var(--opacity-disabled); /** Trigger opacity when disabled, of the navigation menu. */
+  --navigation-menu-trigger-focus-width: var(--border-width-focus); /** Trigger focus ring width, of the navigation menu. */
+  --navigation-menu-trigger-icon-gap: var(--space-gap-tight); /** Gap between the trigger label and its chevron: an icon and its label. */
   --pagination-content-gap: var(--space-gap-tight); /** Content gap of the pagination. */
   --pagination-gap: var(--space-gap-tight); /** Gap of the pagination. */
   --pagination-padding-x: var(--component-spacing-map-x3); /** Padding x of the pagination. */
@@ -2035,6 +2108,7 @@ html[data-scheme="accessible-first"][data-theme="dark"] {
   --pagination-padding-right: var(--component-spacing-map-x3); /** Padding right of the pagination. */
   --pagination-icon-size: var(--size-icon); /** Icon size of the pagination. */
   --popover-content-padding: var(--space-inset-container); /** Content padding of the popover. */
+  --popover-content-border-width: var(--border-width-default); /** Content border width of the popover. */
   --popover-header-gap: var(--space-gap-tight); /** Header gap of the popover. */
   --popover-header-font-size: var(--type-body-font-size); /** Header font size of the popover. */
   --popover-header-line-height: var(--type-body-line-height); /** Header line height of the popover. */
@@ -2286,7 +2360,7 @@ html[data-scheme="accessible-first"][data-theme="dark"] {
   --field-error-label: var(--color-status-danger); /** Error label of the field. */
   --form-label-label: var(--color-status-danger); /** Label label of the form. */
   --form-message-label: var(--color-status-danger); /** Message label of the form. */
-  --hover-card-content-radius: var(--radius-control); /** Content radius of the hover card. */
+  --hover-card-content-radius: var(--radius-container); /** Content corner of the hover card, like every floating panel's. */
   --hover-card-content-shadow: var(--elevation-overlay); /** Content shadow of the hover card. */
   --input-group-radius: var(--radius-control); /** Radius of the input group. */
   --input-group-shadow: var(--elevation-card); /** Shadow of the input group. */
@@ -2331,17 +2405,26 @@ html[data-scheme="accessible-first"][data-theme="dark"] {
   --native-select-focus-ring-focus: var(--color-border-focus); /** Focus ring focus of the native select. */
   --native-select-border-invalid: var(--color-status-danger); /** Border invalid of the native select. */
   --native-select-focus-ring-invalid: var(--color-status-danger); /** Focus ring invalid of the native select. */
-  --navigation-menu-radius: var(--radius-control); /** Radius of the navigation menu. */
-  --navigation-menu-focus-ring-focus: var(--color-border-focus); /** Focus ring focus of the navigation menu. */
-  --navigation-menu-shadow: var(--elevation-card); /** Shadow of the navigation menu. */
-  --navigation-menu-viewport-radius: var(--radius-control); /** Viewport radius of the navigation menu. */
-  --navigation-menu-viewport-shadow: var(--elevation-card); /** Viewport shadow of the navigation menu. */
-  --navigation-menu-link-radius: var(--radius-badge); /** Link radius of the navigation menu. */
+  --navigation-menu-padding-x: var(--navigation-menu-trigger-padding-x); /** Deprecated: use component.navigation-menu.trigger.padding-x (OD-243). Padding x of the navigation menu. */
+  --navigation-menu-padding-y: var(--navigation-menu-trigger-padding-y); /** Deprecated: use component.navigation-menu.trigger.padding-y (OD-243). Padding y of the navigation menu. */
+  --navigation-menu-font-size: var(--navigation-menu-trigger-font-size); /** Deprecated: use component.navigation-menu.trigger.font-size (OD-243). Font size of the navigation menu. */
+  --navigation-menu-line-height: var(--navigation-menu-trigger-line-height); /** Deprecated: use component.navigation-menu.trigger.line-height (OD-243). Line height of the navigation menu. */
+  --navigation-menu-font-weight: var(--navigation-menu-trigger-font-weight); /** Deprecated: use component.navigation-menu.trigger.font-weight (OD-243). Font weight of the navigation menu. */
+  --navigation-menu-disabled-opacity-disabled: var(--navigation-menu-trigger-disabled-opacity); /** Deprecated: use component.navigation-menu.trigger.disabled-opacity (OD-243). Disabled opacity disabled of the navigation menu. */
+  --navigation-menu-focus: var(--navigation-menu-trigger-focus-width); /** Deprecated: use component.navigation-menu.trigger.focus-width (OD-243). Focus of the navigation menu. */
+  --navigation-menu-content-shadow: var(--elevation-overlay); /** Content shadow of the navigation menu: it floats, like a menu. */
+  --navigation-menu-content-radius: var(--radius-container); /** Content corner of the navigation menu, like every floating panel's. */
+  --navigation-menu-viewport-radius: var(--radius-container); /** Viewport corner of the navigation menu, like every floating panel's. */
+  --navigation-menu-viewport-shadow: var(--elevation-overlay); /** Viewport shadow of the navigation menu: it floats, like a menu. */
+  --navigation-menu-link-radius: var(--radius-option); /** Link corner: an option in the panel, nested in its corner. */
   --navigation-menu-link-background-current: var(--color-surface-selected); /** Background of the link to the current page, of the navigation menu. */
-  --navigation-menu-link-selected: var(--color-border-selected); /** Link selected of the navigation menu. */
+  --navigation-menu-link-focus: var(--navigation-menu-link-focus-width); /** Deprecated: use component.navigation-menu.link.focus-width (OD-243). Link focus of the navigation menu. */
   --navigation-menu-link-focus-ring-focus: var(--color-border-focus); /** Link focus ring focus of the navigation menu. */
-  --navigation-menu-shadow-2: var(--elevation-overlay); /** Shadow 2 of the navigation menu. */
-  --popover-content-radius: var(--radius-control); /** Content radius of the popover. */
+  --navigation-menu-link-edge-current: var(--color-border-selected); /** The edge of the current link, so current is never color alone. */
+  --navigation-menu-trigger-focus-ring: var(--color-border-focus); /** Trigger focus ring, of the navigation menu. */
+  --navigation-menu-trigger-radius: var(--radius-control); /** Trigger corner of the navigation menu. */
+  --navigation-menu-indicator-shadow: var(--elevation-overlay); /** The indicator arrow's shadow, of the navigation menu. */
+  --popover-content-radius: var(--radius-container); /** Content corner of the popover, like every floating panel's. */
   --popover-content-shadow: var(--elevation-overlay); /** Content shadow of the popover. */
   --progress-background: var(--color-action-primary); /** Background of the progress. */
   --progress-indicator-background: var(--color-action-primary); /** Indicator background of the progress. */
@@ -2440,7 +2523,12 @@ html[data-scheme="accessible-first"][data-theme="dark"] {
   --menubar-item-label: var(--menubar-item-label-destructive); /** Deprecated: use component.menubar.item.label.destructive (OD-243). Item label of the menubar. */
   --menubar-item-background-focus-2: var(--menubar-item-background-destructive-highlight); /** Deprecated: use component.menubar.item.background.destructive-highlight (OD-243). Item background focus 2 of the menubar. */
   --menubar-item-label-focus-2: var(--menubar-item-label-destructive-highlight); /** Deprecated: use component.menubar.item.label.destructive-highlight (OD-243). Item label focus 2 of the menubar. */
+  --navigation-menu-radius: var(--navigation-menu-trigger-radius); /** Deprecated: use component.navigation-menu.trigger.radius (OD-243). Radius of the navigation menu. */
+  --navigation-menu-focus-ring-focus: var(--navigation-menu-trigger-focus-ring); /** Deprecated: use component.navigation-menu.trigger.focus-ring (OD-243). Focus ring focus of the navigation menu. */
+  --navigation-menu-shadow: var(--navigation-menu-content-shadow); /** Deprecated: use component.navigation-menu.content.shadow (OD-243). Shadow of the navigation menu. */
   --navigation-menu-link-background: var(--navigation-menu-link-background-current); /** Deprecated: use component.navigation-menu.link.background.current (OD-241). Link background of the navigation menu. */
+  --navigation-menu-link-selected: var(--navigation-menu-link-edge-current); /** Deprecated: use component.navigation-menu.link.edge.current (OD-243). Link selected of the navigation menu. */
+  --navigation-menu-shadow-2: var(--navigation-menu-indicator-shadow); /** Deprecated: use component.navigation-menu.indicator.shadow (OD-243). Shadow 2 of the navigation menu. */
   --sidebar-background-2: var(--sidebar-menu-button-background-current); /** Deprecated: use component.sidebar.menu-button.background.current (OD-241). Background 2 of the sidebar. */
   --button-primary-label: var(--color-text-on-action); /** Primary button label color. */
   --button-secondary-background: var(--color-action-secondary); /** Secondary button fill. */
@@ -2478,13 +2566,14 @@ html[data-scheme="accessible-first"][data-theme="dark"] {
   --tabs-list-border: var(--color-border-default); /** List border of the tabs. */
   --tabs-canvas: var(--color-surface-canvas); /** Canvas of the tabs. */
   --overlay-background: var(--color-surface-raised); /** Fill of a dialog, menu or toast. */
-  --tooltip-background: var(--color-surface-inverse); /** Tooltip fill. */
-  --tooltip-label: var(--color-text-inverse); /** Tooltip text. */
+  --tooltip-content-background: var(--color-surface-inverse); /** Content background of the tooltip. */
+  --tooltip-content-label: var(--color-text-inverse); /** Content text of the tooltip. */
   --accordion-divider: var(--color-border-default); /** The line between items. */
   --accordion-trigger-label: var(--color-text-primary); /** The trigger's text color. */
   --accordion-trigger-focus-ring-offset-focus: var(--color-surface-canvas); /** Trigger focus ring offset focus of the accordion. */
   --accordion-icon: var(--color-text-muted); /** The chevron's color. */
   --alert-dialog-content-background: var(--color-surface-canvas); /** Content background of the alert dialog. */
+  --alert-dialog-content-border: var(--color-border-default); /** Content border of the alert dialog, like every floating panel's. */
   --alert-dialog-description-label: var(--color-text-muted); /** Description label of the alert dialog. */
   --alert-dialog-media-background: var(--color-surface-sunken); /** Media background of the alert dialog. */
   --alert-default-background: var(--color-surface-default); /** Default background of the alert. */
@@ -2548,12 +2637,13 @@ html[data-scheme="accessible-first"][data-theme="dark"] {
   --command-background: var(--color-surface-raised); /** Background of the command. */
   --command-label: var(--color-text-primary); /** Label of the command. */
   --command-label-2: var(--color-text-muted); /** Label 2 of the command. */
+  --command-input-wrapper-border: var(--color-border-default); /** The line under the command's search field. */
   --command-input-label-placeholder: var(--color-text-muted); /** Input label placeholder of the command. */
   --command-group-label: var(--color-text-primary); /** Group label of the command. */
   --command-group-label-2: var(--color-text-muted); /** Group label 2 of the command. */
   --command-separator-background: var(--color-border-default); /** Separator background of the command. */
-  --command-item-label-selected: var(--color-text-primary); /** Item label selected of the command. */
   --command-item-label: var(--color-text-muted); /** Item label of the command. */
+  --command-item-label-highlight: var(--color-text-primary); /** Item label when highlighted, by the pointer or the keyboard, of the command. */
   --command-item-background-highlight: var(--color-surface-highlight); /** Item background when highlighted, by the pointer or the keyboard, of the command menu. */
   --command-shortcut-label: var(--color-text-muted); /** Shortcut label of the command. */
   --context-menu-sub-trigger-label-focus: var(--color-text-primary); /** Sub trigger label focus of the context menu. */
@@ -2603,6 +2693,7 @@ html[data-scheme="accessible-first"][data-theme="dark"] {
   --form-description-label: var(--color-text-muted); /** Description label of the form. */
   --hover-card-content-background: var(--color-surface-raised); /** Content background of the hover card. */
   --hover-card-content-label: var(--color-text-primary); /** Content label of the hover card. */
+  --hover-card-content-border: var(--color-border-default); /** Content border of the hover card. */
   --input-group-border: var(--color-border-strong); /** Border of the input group. */
   --input-group-label: var(--color-text-muted); /** Label of the input group. */
   --input-otp-slot-border: var(--color-border-strong); /** Slot border of the input otp. */
@@ -2652,30 +2743,33 @@ html[data-scheme="accessible-first"][data-theme="dark"] {
   --native-select-label-placeholder: var(--color-text-muted); /** Label placeholder of the native select. */
   --native-select-focus-ring-offset-focus: var(--color-surface-canvas); /** Focus ring offset focus of the native select. */
   --native-select-label-2: var(--color-text-muted); /** Label 2 of the native select. */
-  --navigation-menu-background: var(--color-surface-canvas); /** Background of the navigation menu. */
-  --navigation-menu-label-hover: var(--color-text-primary); /** Label hover of the navigation menu. */
-  --navigation-menu-label-focus: var(--color-text-primary); /** Label focus of the navigation menu. */
-  --navigation-menu-label-open: var(--color-text-primary); /** Label open of the navigation menu. */
-  --navigation-menu-focus-ring-offset-focus: var(--color-surface-canvas); /** Focus ring offset focus of the navigation menu. */
-  --navigation-menu-background-2: var(--color-surface-raised); /** Background 2 of the navigation menu. */
-  --navigation-menu-label: var(--color-text-primary); /** Label of the navigation menu. */
+  --navigation-menu-content-background: var(--color-surface-raised); /** Content background of the navigation menu, like every floating panel's. */
+  --navigation-menu-content-label: var(--color-text-primary); /** Content text of the navigation menu. */
+  --navigation-menu-content-border: var(--color-border-default); /** Content border of the navigation menu. */
   --navigation-menu-viewport-background: var(--color-surface-raised); /** Viewport background of the navigation menu. */
   --navigation-menu-viewport-label: var(--color-text-primary); /** Viewport label of the navigation menu. */
+  --navigation-menu-viewport-border: var(--color-border-default); /** Viewport border of the navigation menu. */
   --navigation-menu-link-label-hover: var(--color-text-primary); /** Link label hover of the navigation menu. */
   --navigation-menu-link-label-focus: var(--color-text-primary); /** Link label focus of the navigation menu. */
   --navigation-menu-link-background-hover: var(--color-surface-highlight); /** Link background under the pointer, of the navigation menu. */
   --navigation-menu-link-background-highlight: var(--color-surface-highlight); /** Link background when highlighted by the keyboard, of the navigation menu. */
-  --navigation-menu-link-label: var(--color-text-primary); /** Link label of the navigation menu. */
+  --navigation-menu-link-label-current: var(--color-text-primary); /** Link label when current, of the navigation menu. */
   --navigation-menu-link-label-2: var(--color-text-muted); /** Link label 2 of the navigation menu. */
   --navigation-menu-link-focus-ring-offset-focus: var(--color-surface-canvas); /** Link focus ring offset focus of the navigation menu. */
-  --navigation-menu-background-3: var(--color-border-default); /** Background 3 of the navigation menu. */
+  --navigation-menu-trigger-background: var(--color-surface-canvas); /** Trigger background of the navigation menu. */
   --navigation-menu-trigger-background-highlight: var(--color-surface-highlight); /** Trigger background when highlighted, by the pointer or the keyboard, of the navigation menu. */
   --navigation-menu-trigger-background-hover: var(--color-surface-highlight); /** Trigger background under the pointer, of the navigation menu. */
   --navigation-menu-trigger-background-open: var(--color-surface-highlight); /** Trigger background while its menu is open, of the navigation menu. */
   --navigation-menu-trigger-background-open-highlight: var(--color-surface-highlight); /** Trigger background while its menu is open and the keyboard is on it, of the navigation menu. */
   --navigation-menu-trigger-background-open-hover: var(--color-surface-highlight); /** Trigger background while its menu is open and the pointer is on it, of the navigation menu. */
+  --navigation-menu-trigger-label-hover: var(--color-text-primary); /** Trigger label on hover, of the navigation menu. */
+  --navigation-menu-trigger-label-highlight: var(--color-text-primary); /** Trigger label when highlighted by the keyboard, of the navigation menu. */
+  --navigation-menu-trigger-label-open: var(--color-text-primary); /** Trigger label when its panel is open, of the navigation menu. */
+  --navigation-menu-trigger-focus-ring-offset: var(--color-surface-canvas); /** The gap behind the trigger's focus ring: the page canvas. */
+  --navigation-menu-indicator-background: var(--color-border-default); /** The indicator arrow's fill, of the navigation menu. */
   --popover-content-background: var(--color-surface-raised); /** Content background of the popover. */
   --popover-content-label: var(--color-text-primary); /** Content label of the popover. */
+  --popover-content-border: var(--color-border-default); /** Content border of the popover. */
   --popover-description-label: var(--color-text-muted); /** Description label of the popover. */
   --radio-group-item-border: var(--color-border-strong); /** Item border of the radio group. */
   --radio-group-item-focus-ring-offset-focus: var(--color-surface-canvas); /** Item focus ring offset focus of the radio group. */
@@ -2757,9 +2851,12 @@ html[data-scheme="accessible-first"][data-theme="dark"] {
   --toggle-outline-label-hover: var(--color-text-primary); /** Outline label hover of the toggle. */
   --toggle-outline-background-hover: var(--color-surface-highlight); /** Outline toggle background under the pointer. */
   --toggle-background-hover: var(--color-surface-highlight); /** Background under the pointer, of the toggle. */
+  --tooltip-background: var(--tooltip-content-background); /** Deprecated: use component.tooltip.content.background (OD-243). Tooltip fill. */
+  --tooltip-label: var(--tooltip-content-label); /** Deprecated: use component.tooltip.content.label (OD-243). Tooltip text. */
   --combobox-content-focus-ring: var(--combobox-content-border); /** Deprecated: use component.combobox.content.border (OD-243). Content focus ring of the combobox. */
   --combobox-content-background-2: var(--combobox-input-background); /** Deprecated: use component.combobox.input.background (OD-243). Content background 2 of the combobox. */
   --command-item-background-selected: var(--command-item-background-highlight); /** Deprecated: use component.command.item.background.highlight (OD-241). Item background selected of the command. */
+  --command-item-label-selected: var(--command-item-label-highlight); /** Deprecated: use component.command.item.label.highlight (OD-243). Item label selected of the command. */
   --context-menu-sub-trigger-background-focus: var(--context-menu-sub-trigger-background-highlight); /** Deprecated: use component.context-menu.sub.trigger.background.highlight (OD-241). Sub trigger background focus of the context menu. */
   --context-menu-item-background-focus: var(--context-menu-item-background-highlight); /** Deprecated: use component.context-menu.item.background.highlight (OD-241). Item background focus of the context menu. */
   --context-menu-checkbox-item-background-focus: var(--context-menu-checkbox-item-background-highlight); /** Deprecated: use component.context-menu.checkbox.item.background.highlight (OD-241). Checkbox item background focus of the context menu. */
@@ -2773,12 +2870,21 @@ html[data-scheme="accessible-first"][data-theme="dark"] {
   --menubar-checkbox-item-background-focus: var(--menubar-checkbox-item-background-highlight); /** Deprecated: use component.menubar.checkbox.item.background.highlight (OD-241). Checkbox item background focus of the menubar. */
   --menubar-radio-item-background-focus: var(--menubar-radio-item-background-highlight); /** Deprecated: use component.menubar.radio.item.background.highlight (OD-241). Radio item background focus of the menubar. */
   --menubar-sub-trigger-background-focus: var(--menubar-sub-trigger-background-highlight); /** Deprecated: use component.menubar.sub.trigger.background.highlight (OD-241). Sub trigger background focus of the menubar. */
+  --navigation-menu-background: var(--navigation-menu-trigger-background); /** Deprecated: use component.navigation-menu.trigger.background (OD-243). Background of the navigation menu. */
   --navigation-menu-background-hover: var(--navigation-menu-trigger-background-hover); /** Deprecated: use component.navigation-menu.trigger.background.hover (OD-241). Background hover of the navigation menu. */
+  --navigation-menu-label-hover: var(--navigation-menu-trigger-label-hover); /** Deprecated: use component.navigation-menu.trigger.label.hover (OD-243). Label hover of the navigation menu. */
   --navigation-menu-background-focus: var(--navigation-menu-trigger-background-highlight); /** Deprecated: use component.navigation-menu.trigger.background.highlight (OD-241). Background focus of the navigation menu. */
+  --navigation-menu-label-focus: var(--navigation-menu-trigger-label-highlight); /** Deprecated: use component.navigation-menu.trigger.label.highlight (OD-243). Label focus of the navigation menu. */
   --navigation-menu-background-open: var(--navigation-menu-trigger-background-open); /** Deprecated: use component.navigation-menu.trigger.background.open (OD-241). Background open of the navigation menu. */
+  --navigation-menu-label-open: var(--navigation-menu-trigger-label-open); /** Deprecated: use component.navigation-menu.trigger.label.open (OD-243). Label open of the navigation menu. */
   --navigation-menu-background-open-hover: var(--navigation-menu-trigger-background-open-hover); /** Deprecated: use component.navigation-menu.trigger.background.open-hover (OD-241). Background open hover of the navigation menu. */
   --navigation-menu-background-open-focus: var(--navigation-menu-trigger-background-open-highlight); /** Deprecated: use component.navigation-menu.trigger.background.open-highlight (OD-241). Background open focus of the navigation menu. */
+  --navigation-menu-focus-ring-offset-focus: var(--navigation-menu-trigger-focus-ring-offset); /** Deprecated: use component.navigation-menu.trigger.focus-ring-offset (OD-243). Focus ring offset focus of the navigation menu. */
+  --navigation-menu-background-2: var(--navigation-menu-content-background); /** Deprecated: use component.navigation-menu.content.background (OD-243). Background 2 of the navigation menu. */
+  --navigation-menu-label: var(--navigation-menu-content-label); /** Deprecated: use component.navigation-menu.content.label (OD-243). Label of the navigation menu. */
   --navigation-menu-link-background-focus: var(--navigation-menu-link-background-highlight); /** Deprecated: use component.navigation-menu.link.background.highlight (OD-241). Link background focus of the navigation menu. */
+  --navigation-menu-link-label: var(--navigation-menu-link-label-current); /** Deprecated: use component.navigation-menu.link.label.current (OD-243). Link label of the navigation menu. */
+  --navigation-menu-background-3: var(--navigation-menu-indicator-background); /** Deprecated: use component.navigation-menu.indicator.background (OD-243). Background 3 of the navigation menu. */
   --select-canvas: var(--select-trigger-focus-ring-offset); /** Deprecated: use component.select.trigger.focus-ring-offset (OD-243). Canvas of the select. */
   --select-item-sunken: var(--select-item-background-highlight); /** Deprecated: use component.select.item.background.highlight (OD-241). Item sunken of the select. */
   --sidebar-rail-background-hover: var(--sidebar-rail-line-hover); /** Deprecated: use component.sidebar.rail.line.hover (OD-241). Rail background hover of the sidebar. */
