@@ -41,4 +41,12 @@ Each part follows a chain: an answer about the product, the rule it set, the tok
 
 ## For agents
 
-The same anatomy reaches agents: `get_anatomy` returns each part with its roles, required or optional, the tokens it reads and the cascade behind them; `open-ds anatomy content-first dropdown-menu` prints it.
+Agents get this same anatomy, with every part, its roles, whether it is required, the tokens it reads and the decisions behind them. There are two ways in.
+
+**From an AI agent:** connect the Open DS MCP server and call the `get_anatomy` tool with this scheme and `dropdown-menu`.
+
+**From a terminal:** run this command.
+
+```bash
+npx open-ds anatomy content-first dropdown-menu
+```

@@ -2545,7 +2545,7 @@ export function docsPages(
         `## Design roles\n\nEach part does a job for the person. These are the jobs, as questions the part answers.\n\n${roles}`,
         `## The parts\n\n${partsBlock}`,
         `## How the decisions reach each part\n\nEach part follows a chain: an answer about the product, the rule it set, the token that carries it, and the value you see. The numbers match the drawing.\n\n${spec.cards.map(card).join("\n\n")}`,
-        `## For agents\n\nThe same anatomy reaches agents: \`get_anatomy\` returns each part with its roles, required or optional, the tokens it reads and the cascade behind them; \`open-ds anatomy ${scheme.id} ${name}\` prints it.`,
+        `## For agents\n\nAgents get this same anatomy, with every part, its roles, whether it is required, the tokens it reads and the decisions behind them. There are two ways in.\n\n**From an AI agent:** connect the Open DS MCP server and call the \`get_anatomy\` tool with this scheme and \`${name}\`.\n\n**From a terminal:** run this command.\n\n\`\`\`bash\nnpx open-ds anatomy ${scheme.id} ${name}\n\`\`\``,
       ].join("\n\n") +
       "\n"
     );
