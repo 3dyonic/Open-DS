@@ -86,7 +86,10 @@ figma.ui.onmessage = async (msg) => {
     for (const [i, [id, file, node]] of frames.entries()) {
       figma.ui.postMessage({ type: "progress", text: "Exporting " + (i + 1) + " of " + frames.length });
       const n = await figma.getNodeByIdAsync(node);
-      const bytes = await n.exportAsync({ format: "PNG", constraint: { type: "SCALE", value: 2 } });
+      // A card is cropped to its parts and shown wide in the docs, so it is drawn larger: about 1200
+      // pixels across, from 2x to 6x. The stage stays at 2x.
+      const scale = file === "stage" ? 2 : Math.min(6, Math.max(2, Math.round(1200 / n.width)));
+      const bytes = await n.exportAsync({ format: "PNG", constraint: { type: "SCALE", value: scale } });
       figma.ui.postMessage({ type: "image", path: msg.scheme + "/" + id + "/" + file + ".png", bytes });
     }
     figma.ui.postMessage({ type: "done", components: msg.components.length, missing });

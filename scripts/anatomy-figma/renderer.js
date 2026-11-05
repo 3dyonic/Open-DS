@@ -31,7 +31,7 @@ async function loadKit(library) {
   return vars;
 }
 async function renderAnatomy(SPEC, vars) {
-const report = { bound: {}, fallback: {} };
+const report = { bound: {}, fallback: {}, crops: [] };
 const imported = new Map();
 async function kitVar(role) {
   const b = SPEC.bind[role];
@@ -441,7 +441,7 @@ function treeDraw(root, show) {
   return { node, marks: marks.filter(([n]) => !show || show.has(n)) };
 }
 
-function plate(name, built, w) {
+function plate(name, built, w, crop = false) {
   const f = figma.createFrame();
   f.name = name;
   f.fills = [paint("canvas")];
@@ -452,6 +452,7 @@ function plate(name, built, w) {
   f.resize(Math.max(w, built.node.width + 80), built.node.height + 64);
   const origin = f.absoluteTransform;
   const placed = [];
+  const badges = [];
   for (const [n, node, where] of built.marks) {
     const bb = node.absoluteBoundingBox, fb = f.absoluteBoundingBox;
     const x = bb.x - fb.x, y = bb.y - fb.y;
@@ -476,8 +477,29 @@ function plate(name, built, w) {
     while (placed.some(([px, py]) => Math.abs(px - pos[0]) < 18 && Math.abs(py - pos[1]) < 18)) pos[0] += 20;
     placed.push([pos[0], pos[1]]);
     badge.x = pos[0]; badge.y = pos[1];
+    badges.push(badge);
   }
   void origin;
+  // A card is about its own parts (OD-248): it shows the box around its numbered parts and their
+  // numbers, with a margin, not the whole stage. Nothing inside is scaled, so every binding to the kit
+  // stays; the export draws the card at a larger scale, so the part fills the card in the docs.
+  if (crop && built.marks.length) {
+    const fb = f.absoluteBoundingBox;
+    const boxes = [...built.marks.map(([, node]) => node.absoluteBoundingBox), ...badges.map((b) => b.absoluteBoundingBox)];
+    let x0 = Math.min(...boxes.map((b) => b.x)) - fb.x, y0 = Math.min(...boxes.map((b) => b.y)) - fb.y;
+    let x1 = Math.max(...boxes.map((b) => b.x + b.width)) - fb.x, y1 = Math.max(...boxes.map((b) => b.y + b.height)) - fb.y;
+    const M = 24, MIN_W = 220, MIN_H = 120;
+    const [bx0, by0, bx1, by1] = [x0, y0, x1, y1];
+    x0 -= M; y0 -= M; x1 += M; y1 += M;
+    // Not smaller than a readable card, centered on the parts; never larger than the stage drawn.
+    if (x1 - x0 < MIN_W) { const c = (x0 + x1) / 2; x0 = c - MIN_W / 2; x1 = c + MIN_W / 2; }
+    if (y1 - y0 < MIN_H) { const c = (y0 + y1) / 2; y0 = c - MIN_H / 2; y1 = c + MIN_H / 2; }
+    x0 = Math.max(0, x0); y0 = Math.max(0, y0); x1 = Math.min(f.width, x1); y1 = Math.min(f.height, y1);
+    report.crops.push({ frame: f.name, focus: [bx1 - bx0, by1 - by0] });
+    for (const k of f.children) { k.x -= x0; k.y -= y0; }
+    f.resize(Math.max(1, x1 - x0), Math.max(1, y1 - y0));
+    f.clipsContent = true;
+  }
   return f;
 }
 
@@ -505,11 +527,11 @@ stage.x = 0; stage.y = 0;
 const ids = { page: page.id, stage: stage.id, cards: [] };
 let x = stage.width + 64;
 SPEC.cards.forEach((c, i) => {
-  const f = plate(`${SPEC.component}/${SPEC.scheme}/card-${i + 1}`, draw(c, new Set(c.parts)), 280);
+  const f = plate(`${SPEC.component}/${SPEC.scheme}/card-${i + 1}`, draw(c, new Set(c.parts)), 280, true);
   f.x = x; f.y = 0;
   x += f.width + 32;
   ids.cards.push(f.id);
 });
 void all;
-return { ids, bound: report.bound, fallback: report.fallback };
+return { ids, bound: report.bound, fallback: report.fallback, crops: report.crops };
 }
