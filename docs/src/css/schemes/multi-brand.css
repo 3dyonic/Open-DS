@@ -2283,7 +2283,7 @@ html[data-scheme="multi-brand"][data-theme="dark"] [data-brand="aster"],
   --toggle-outline-shadow: var(--elevation-card); /** Outline shadow of the toggle. */
   --color-surface-canvas: #020617; /** The page background behind everything. */
   --color-surface-default: #0F172A; /** The base fill for content. */
-  --color-surface-raised: #1E293B; /** Fills that float above content. */
+  --color-surface-raised: #0F172A; /** Fills that float above content. */
   --color-surface-sunken: #1E293B; /** A recessed fill, a step below content. */
   --color-surface-inverse: #F8FAFC; /** A reversed fill for small, short-lived messages. */
   --color-text-primary: #F8FAFC; /** Body text and headings. */
@@ -2292,7 +2292,7 @@ html[data-scheme="multi-brand"][data-theme="dark"] [data-brand="aster"],
   --color-text-inverse: #0F172A; /** Text on an inverse fill. */
   --color-text-on-action: #0F172A; /** Text and icons on the main action's fill. */
   --color-text-on-danger: #0F172A; /** Text on the danger fill: its tone's main text. */
-  --color-border-default: #1E293B; /** Quiet edges and dividers. Decorative, so it has no contrast minimum. */
+  --color-border-default: #334155; /** Quiet edges and dividers. Decorative, so it has no contrast minimum. */
   --color-border-strong: #96A3B5; /** The edge of a control people must find. */
   --color-action-secondary: #0F172A; /** The fill of other actions. */
   --color-action-secondary-hover: #1E293B; /** Other actions under the pointer. */
@@ -4890,7 +4890,7 @@ html[data-scheme="multi-brand"][data-theme="dark"] [data-brand="birch"],
   --toggle-outline-shadow: var(--elevation-card); /** Outline shadow of the toggle. */
   --color-surface-canvas: #020617; /** The page background behind everything. */
   --color-surface-default: #0F172A; /** The base fill for content. */
-  --color-surface-raised: #1E293B; /** Fills that float above content. */
+  --color-surface-raised: #0F172A; /** Fills that float above content. */
   --color-surface-sunken: #1E293B; /** A recessed fill, a step below content. */
   --color-surface-inverse: #F8FAFC; /** A reversed fill for small, short-lived messages. */
   --color-text-primary: #F8FAFC; /** Body text and headings. */
@@ -4899,7 +4899,7 @@ html[data-scheme="multi-brand"][data-theme="dark"] [data-brand="birch"],
   --color-text-inverse: #0F172A; /** Text on an inverse fill. */
   --color-text-on-action: #0F172A; /** Text and icons on the main action's fill. */
   --color-text-on-danger: #0F172A; /** Text on the danger fill: its tone's main text. */
-  --color-border-default: #1E293B; /** Quiet edges and dividers. Decorative, so it has no contrast minimum. */
+  --color-border-default: #334155; /** Quiet edges and dividers. Decorative, so it has no contrast minimum. */
   --color-border-strong: #96A3B5; /** The edge of a control people must find. */
   --color-action-secondary: #0F172A; /** The fill of other actions. */
   --color-action-secondary-hover: #1E293B; /** Other actions under the pointer. */
@@ -7497,7 +7497,7 @@ html[data-scheme="multi-brand"][data-theme="dark"] [data-brand="coral"],
   --toggle-outline-shadow: var(--elevation-card); /** Outline shadow of the toggle. */
   --color-surface-canvas: #020617; /** The page background behind everything. */
   --color-surface-default: #0F172A; /** The base fill for content. */
-  --color-surface-raised: #1E293B; /** Fills that float above content. */
+  --color-surface-raised: #0F172A; /** Fills that float above content. */
   --color-surface-sunken: #1E293B; /** A recessed fill, a step below content. */
   --color-surface-inverse: #F8FAFC; /** A reversed fill for small, short-lived messages. */
   --color-text-primary: #F8FAFC; /** Body text and headings. */
@@ -7506,7 +7506,7 @@ html[data-scheme="multi-brand"][data-theme="dark"] [data-brand="coral"],
   --color-text-inverse: #0F172A; /** Text on an inverse fill. */
   --color-text-on-action: #0F172A; /** Text and icons on the main action's fill. */
   --color-text-on-danger: #0F172A; /** Text on the danger fill: its tone's main text. */
-  --color-border-default: #1E293B; /** Quiet edges and dividers. Decorative, so it has no contrast minimum. */
+  --color-border-default: #334155; /** Quiet edges and dividers. Decorative, so it has no contrast minimum. */
   --color-border-strong: #96A3B5; /** The edge of a control people must find. */
   --color-action-secondary: #0F172A; /** The fill of other actions. */
   --color-action-secondary-hover: #1E293B; /** Other actions under the pointer. */

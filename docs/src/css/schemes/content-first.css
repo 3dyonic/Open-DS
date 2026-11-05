@@ -2276,7 +2276,7 @@ html[data-scheme="content-first"][data-theme="dark"] {
   --toggle-outline-shadow: var(--elevation-card); /** Outline shadow of the toggle. */
   --color-surface-canvas: #14110D; /** The page background behind everything. */
   --color-surface-default: #1F1B16; /** The base fill for content. */
-  --color-surface-raised: #2E2A24; /** Fills that float above content. */
+  --color-surface-raised: #1F1B16; /** Fills that float above content. */
   --color-surface-sunken: #2E2A24; /** A recessed fill, a step below content. */
   --color-surface-inverse: #FFFDF8; /** A reversed fill for small, short-lived messages. */
   --color-text-primary: #FFFDF8; /** Body text and headings. */
@@ -2285,7 +2285,7 @@ html[data-scheme="content-first"][data-theme="dark"] {
   --color-text-inverse: #1F1B16; /** Text on an inverse fill. */
   --color-text-on-action: #1F1B16; /** Text and icons on the main action's fill. */
   --color-text-on-danger: #1F1B16; /** Text on the danger fill: its tone's main text. */
-  --color-border-default: #2E2A24; /** Quiet edges and dividers. Decorative, so it has no contrast minimum. */
+  --color-border-default: #4A4339; /** Quiet edges and dividers. Decorative, so it has no contrast minimum. */
   --color-border-strong: #A39A8B; /** The edge of a control people must find. */
   --color-action-secondary: #1F1B16; /** The fill of other actions. */
   --color-action-secondary-hover: #2E2A24; /** Other actions under the pointer. */
