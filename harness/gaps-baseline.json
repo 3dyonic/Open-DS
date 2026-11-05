@@ -7,6 +7,10 @@
       "wrong-semantic": 26,
       "two-jobs": 3,
       "rule-not-written": 9,
+      "borrows-a-key": 14,
+      "reads-the-system": 44,
+      "nested-corner": 0,
+      "skips-a-component": 0,
       "pick-without-reason": 0
     },
     "content-first": {
@@ -15,6 +19,10 @@
       "wrong-semantic": 26,
       "two-jobs": 3,
       "rule-not-written": 9,
+      "borrows-a-key": 14,
+      "reads-the-system": 44,
+      "nested-corner": 8,
+      "skips-a-component": 0,
       "pick-without-reason": 0
     },
     "accessible-first": {
@@ -23,6 +31,10 @@
       "wrong-semantic": 26,
       "two-jobs": 3,
       "rule-not-written": 9,
+      "borrows-a-key": 14,
+      "reads-the-system": 44,
+      "nested-corner": 6,
+      "skips-a-component": 0,
       "pick-without-reason": 0
     },
     "brand-expressive": {
@@ -31,6 +43,10 @@
       "wrong-semantic": 26,
       "two-jobs": 3,
       "rule-not-written": 9,
+      "borrows-a-key": 14,
+      "reads-the-system": 44,
+      "nested-corner": 8,
+      "skips-a-component": 0,
       "pick-without-reason": 0
     },
     "multi-brand": {
@@ -39,6 +55,10 @@
       "wrong-semantic": 26,
       "two-jobs": 3,
       "rule-not-written": 9,
+      "borrows-a-key": 14,
+      "reads-the-system": 44,
+      "nested-corner": 6,
+      "skips-a-component": 0,
       "pick-without-reason": 0
     }
   }

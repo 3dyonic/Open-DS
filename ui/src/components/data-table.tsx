@@ -28,6 +28,7 @@ import * as React from "react";
 import { cn } from "../lib/utils";
 import { Button } from "./button";
 import { Checkbox } from "./checkbox";
+import { Empty, EmptyContent, EmptyHeader, EmptyTitle } from "./empty";
 import { Input } from "./input";
 import { Popover, PopoverContent, PopoverTrigger } from "./popover";
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "./table";
@@ -56,7 +57,11 @@ export interface DataTableLabels {
   compact: string;
   comfortable: string;
   selected: (count: number) => string;
+  /** Shown when the search or the filters hide every row, beside the action that clears them. */
   noResults: string;
+  clearFilters: string;
+  /** Shown when there is no data at all, unless the table is given its own empty state. */
+  noData: string;
   previous: string;
   next: string;
   page: (index: number, count: number) => string;
@@ -71,7 +76,9 @@ const LABELS: DataTableLabels = {
   compact: "Compact",
   comfortable: "Comfortable",
   selected: (n) => `${n} selected`,
-  noResults: "No results.",
+  noResults: "No records match your search or filters.",
+  clearFilters: "Clear filters",
+  noData: "No records yet.",
   previous: "Previous",
   next: "Next",
   page: (i, n) => `Page ${i} of ${n}`,
@@ -88,6 +95,9 @@ export interface DataTableProps<TData> {
   bulkActions?: (rows: TData[]) => React.ReactNode;
   labels?: Partial<DataTableLabels>;
   className?: string;
+  /** The empty state when there is no data at all: why it is empty and the one action that fills it
+   * (OD-229, the empty-words rule). Without it, the table says there are no records yet. */
+  empty?: React.ReactNode;
 }
 
 /** A checkbox column for row selection. Put it first. */
@@ -190,6 +200,7 @@ export function DataTable<TData>({
   pageSize = 10,
   bulkActions,
   labels = {},
+  empty,
   className,
 }: DataTableProps<TData>) {
   const l = { ...LABELS, ...labels };
@@ -324,11 +335,36 @@ export function DataTable<TData>({
               ))
             ) : (
               <TableRow>
-                <TableCell
-                  colSpan={table.getVisibleLeafColumns().length}
-                  className="text-center text-[color:var(--data-table-label)]"
-                >
-                  {l.noResults}
+                {/* The empty state is the Empty pattern, not a muted row (OD-229): why it is empty and the
+                    one action that fills it. Filters that hide every row are cleared from here. */}
+                <TableCell colSpan={table.getVisibleLeafColumns().length}>
+                  {search || filters.length ? (
+                    <Empty>
+                      <EmptyHeader>
+                        <EmptyTitle>{l.noResults}</EmptyTitle>
+                      </EmptyHeader>
+                      <EmptyContent>
+                        <Button
+                          variant="secondary"
+                          size="compact"
+                          onClick={() => {
+                            setSearch("");
+                            setFilters([]);
+                          }}
+                        >
+                          {l.clearFilters}
+                        </Button>
+                      </EmptyContent>
+                    </Empty>
+                  ) : (
+                    (empty ?? (
+                      <Empty>
+                        <EmptyHeader>
+                          <EmptyTitle>{l.noData}</EmptyTitle>
+                        </EmptyHeader>
+                      </Empty>
+                    ))
+                  )}
                 </TableCell>
               </TableRow>
             )}

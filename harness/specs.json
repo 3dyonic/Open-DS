@@ -461,7 +461,8 @@
       "title": "Gap ledger: every broken link in the decision trace, counted",
       "in": [
         "the ledger is generated from the code and the schemes: each gap has a kind, its component, part, state or semantic, and the ticket that fixes it where one exists",
-        "kinds: a key that does not name its part or state, a link to the wrong or a borrowed semantic, one semantic with two jobs, a rule components follow that no semantic states, a theme pick with no reason",
+        "kinds: a key that does not name its part or state, a link to the wrong or a borrowed semantic, one semantic with two jobs, a rule components follow that no semantic states, a component reading another component's key, a component reading the system directly, an option's corner that isn't its container's less the padding, a component drawing what a catalogue component is for, a theme pick with no reason",
+        "each kind has a test that pins a known case, so a detector that goes blind fails instead of reporting zero",
         "open-ds gaps, get_gaps and get_component give the gaps to people and agents, so an agent says where the scheme has no answer instead of inventing one",
         "the harness counts gaps per scheme and kind, and each count may only go down"
       ],

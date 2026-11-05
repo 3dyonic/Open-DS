@@ -6,7 +6,7 @@ import type { Samples } from "../src/samples";
 
 const meta = {
   parameters: {
-    openDs: { component: "data-table", situations: ["number-in-table", "table-row", "selected-row", "row-action"] },
+    openDs: { component: "data-table", situations: ["number-in-table", "table-row", "selected-row", "row-action", "empty-words"] },
   },
   title: "Components/Data table",
   component: DataTable,
@@ -87,6 +87,20 @@ export const Examples: Story = {
             />
           </div>
         );
+      }}
+    </Show>
+  ),
+};
+
+// The empty state is the Empty pattern (OD-229): with no data, the table's own empty state or its
+// default words; when the search or the filters hide every row, the one action that clears them.
+export const EmptyState: Story = {
+  name: "Empty state",
+  render: () => (
+    <Show component="data-table">
+      {(s) => {
+        const t = tableOf(s);
+        return <DataTable columns={t.columns} data={[]} facets={t.facets} />;
       }}
     </Show>
   ),

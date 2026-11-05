@@ -10,6 +10,7 @@ import { readFileSync } from "node:fs";
 import { join } from "node:path";
 import { componentApi } from "./lands.mjs";
 import { builtComponents } from "./components.mjs";
+import { SHADCN, SHADCN_SCALE } from "./shadcn.mjs";
 
 /** The kinds of gap, in the order of the trace. */
 export const GAP_KINDS = [
@@ -37,6 +38,26 @@ export const GAP_KINDS = [
     id: "rule-not-written",
     title: "The rule is not written",
     why: "Components show this state, but no semantic's rule says how. The decision is in use and nobody can read it.",
+  },
+  {
+    id: "borrows-a-key",
+    title: "A component reads another component's key",
+    why: "Another component's key carries that component's decision. Read here, a change to the card or the table moves this part too, and this part has no key of its own to tune.",
+  },
+  {
+    id: "reads-the-system",
+    title: "A component reads the system directly",
+    why: "A bare utility (border, ring, bg-muted) reads a system variable, not a key of the component. Its part follows every other part that reads the same variable, and the trace can't say which part a decision reaches.",
+  },
+  {
+    id: "nested-corner",
+    title: "An option's corner is not its container's corner less the padding",
+    why: "Corners inside corners stay concentric: inner = outer - the padding between them. A pill option in a rounded menu, or a square one in a round one, reads as two shapes fighting.",
+  },
+  {
+    id: "skips-a-component",
+    title: "A component draws what a catalogue component is for",
+    why: "When a component draws its own empty state, it skips the Empty pattern and its rule (why it is empty and the one action that fills it), so the decision behind Empty never reaches it.",
   },
   {
     id: "pick-without-reason",
@@ -104,6 +125,7 @@ const PROPERTY = [
   [/^(ring|ring-offset)-/, "focus-ring"],
   [/^(fill|stroke)-/, "icon"],
   [/^rounded/, "radius"],
+  [/^(p|px|py|pt|pb|pl|pr)-$/, "padding"],
   [/^shadow/, "shadow"],
 ];
 // Which semantic families can carry a rule for each painted property.
@@ -178,6 +200,12 @@ function partAt(src, at, comp) {
   return slot === comp ? "root" : slot.replace(new RegExp(`^${comp}-`), "");
 }
 
+/** A component that speaks of no results or no data, and doesn't use the Empty component. */
+export const drawsOwnEmpty = (src, comp) =>
+  comp !== "empty" &&
+  /\b(noResults|noData|emptyText)\s*:\s*["'`]|No results|Nothing (here|found)/.test(src) &&
+  !/from "\.\/empty"/.test(src);
+
 /** The gaps in the code's component layer: kinds 1 to 5. The same in every scheme, so read in one. */
 // The component layer's gaps, once per scheme and asset root: every component page asks for them.
 const gapMemo = new Map();
@@ -203,7 +231,63 @@ function componentGapsNow(scheme, g, roots) {
     } catch {
       continue;
     }
-    for (const t of componentApi(scheme, comp, roots)) {
+    const api = componentApi(scheme, comp, roots);
+    // A system variable read without a key of the component's own: a shadcn color utility (bg-muted),
+    // a bare border (its width, and its color from --border), or a scale utility (rounded-md, text-sm).
+    // The same detection as the docs' "From the system" rows.
+    const sysSeen = new Set();
+    for (const cls of src.match(/[!\w:[\]=&>*()+.,'"\/-]+/g) ?? []) {
+      const util = cls.split(":").pop().replace(/^!/, "").replace(/\/\d+$/, "");
+      const color = util.match(/^(bg|text|border(?:-[tblrxy])?|ring-offset|ring|outline|fill|stroke|divide|placeholder|caret|accent|decoration)-([a-z0-9-]+)$/);
+      const scale = util.match(/^(rounded(?:-[tblrse]{1,2})?|shadow|text)-(xs|sm|md|lg|xl|base)$/);
+      const scaleVar = scale && `--${scale[1].startsWith("rounded") ? "radius" : scale[1]}-${scale[2]}`;
+      const hit = color && SHADCN[color[2]] ? `--${color[2]}` : /^border(-[tblrxy])?$/.test(util) ? "--border" : scaleVar && SHADCN_SCALE[scaleVar] ? scaleVar : null;
+      if (!hit || sysSeen.has(`${util}|${hit}`)) continue;
+      sysSeen.add(`${util}|${hit}`);
+      gaps.push({
+        kind: "reads-the-system",
+        component: comp,
+        key: hit,
+        says: `${comp} uses \`${util}\`, which reads ${hit} from the system, not a key of its own.`,
+      });
+    }
+    // An empty state drawn by hand: the labels speak of no results or no data, and Empty isn't used.
+    if (drawsOwnEmpty(src, comp))
+      gaps.push({
+        kind: "skips-a-component",
+        component: comp,
+        says: `${comp} draws its own empty state; the Empty component (why it is empty and the one action that fills it) is not used.`,
+      });
+    // Nested corners: an option's corner against its container's corner less the padding between them.
+    const px = (v) => (typeof v !== "string" ? null : /rem$/.test(v) ? parseFloat(v) * 16 : /px$/.test(v) ? parseFloat(v) : null);
+    const byPart = new Map();
+    for (const t of api.filter((x) => x.own))
+      for (const u of usages(src, comp, t.css)) {
+        const e = byPart.get(u.part) ?? {};
+        if (u.property === "radius" && !e.radius) e.radius = t;
+        if (u.property === "padding" && !e.padding) e.padding = t;
+        byPart.set(u.part, e);
+      }
+    const container = [...byPart].find(([p, e]) => /content|list|popup|menu$/.test(p) && e.radius && e.padding);
+    if (container) {
+      const val = (t) => px(Object.values(t.values)[0]?.value);
+      const outer = val(container[1].radius);
+      const pad = val(container[1].padding);
+      for (const [p, e] of byPart)
+        if (/item|option/.test(p) && e.radius && outer != null && pad != null) {
+          const inner = val(e.radius);
+          const want = Math.max(0, outer - pad);
+          if (inner != null && Math.abs(inner - want) > 0.5)
+            gaps.push({
+              kind: "nested-corner",
+              component: comp,
+              key: e.radius.token,
+              part: p,
+              says: `${comp}'s ${p} corner is ${inner >= 999 ? "a pill" : `${inner}px`}; inside a ${outer}px ${container[0]} with ${pad}px padding it should be ${want}px.`,
+            });
+        }
+    }
+    for (const t of api) {
       if (!t.own || !t.aliases) continue;
       const key = t.token.replace(`component.${comp}.`, "");
       // component.overlay.* and other shared recipes name their own parts; their key is the recipe's.
@@ -271,6 +355,14 @@ function componentGapsNow(scheme, g, roots) {
           ...base,
           kind: "wrong-semantic",
           says: `${t.token} paints text or an icon with ${t.aliases}, a fill. Text on a fill pairs by the fill's tone: on-light or on-dark.`,
+        });
+      // A key of another catalogue component (component.card.radius in the data table): borrowed.
+      const owner = t.token.split(".")[1];
+      if (owner !== comp && catalogue.has(owner))
+        gaps.push({
+          ...base,
+          kind: "borrows-a-key",
+          says: `${comp} reads ${t.token}, the ${owner}'s key, for ${[...new Set(uses.map((u) => `its ${u.part === "root" ? comp : u.part} ${u.property ?? "value"}`))].join(" and ") || "a part"}.`,
         });
       // Collect the jobs of each color semantic on fills, for kind 4.
       if (/^color\./.test(t.aliases))

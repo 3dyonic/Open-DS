@@ -402,7 +402,18 @@ test("get_gaps and get_component: where the decision trace breaks (OD-243)", asy
   const all = await call(c, "get_gaps", { scheme_id: "dense-data" });
   assert.deepEqual(
     all.kinds.map((k) => k.id),
-    ["key-hides-part", "key-hides-state", "wrong-semantic", "two-jobs", "rule-not-written", "pick-without-reason"],
+    [
+      "key-hides-part",
+      "key-hides-state",
+      "wrong-semantic",
+      "two-jobs",
+      "rule-not-written",
+      "borrows-a-key",
+      "reads-the-system",
+      "nested-corner",
+      "skips-a-component",
+      "pick-without-reason",
+    ],
   );
   for (const k of all.kinds) assert.equal(all.counts[k.id], all.gaps.filter((x) => x.kind === k.id).length);
   // OD-241 fixed the menu: its keys name their part and state, and link the semantic whose rule covers them.
