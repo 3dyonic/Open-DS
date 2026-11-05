@@ -70,7 +70,7 @@ function Calendar({
           defaultClassNames.dropdowns,
         ),
         dropdown_root: cn(
-          "relative rounded-[var(--calendar-radius)] border border-[color:var(--calendar-border)] shadow-[var(--calendar-shadow)] has-focus:border-[color:var(--calendar-border-2)] has-focus:ring-[length:var(--calendar-focus)] has-focus:ring-[color:var(--calendar-focus-ring)] has-focus:ring-offset-2 has-focus:ring-offset-[color:var(--calendar-focus-ring-offset)]",
+          "relative rounded-[var(--calendar-radius)] border border-[color:var(--calendar-border)] shadow-[var(--calendar-shadow)] has-focus:border-[color:var(--calendar-border-2)] has-focus:ring-[length:var(--calendar-focus)] has-focus:ring-[color:var(--calendar-focus-ring)] has-focus:ring-offset-[length:var(--calendar-focus-offset)] has-focus:ring-offset-[color:var(--calendar-focus-ring-offset)]",
           defaultClassNames.dropdown_root,
         ),
         dropdown: cn("absolute inset-0 bg-[color:var(--calendar-background-2)] opacity-0", defaultClassNames.dropdown),

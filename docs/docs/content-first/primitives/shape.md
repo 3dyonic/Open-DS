@@ -24,4 +24,4 @@ description: "Shape primitives in Content first."
 | Primitive | Value | Sample | Used by |
 | --- | --- | --- | --- |
 | `border-width.1` | 1px | <span class="ods-line" style="height:1px"></span> | `border-width.default` (semantic) |
-| `border-width.2` | 2px | <span class="ods-line" style="height:2px"></span> | `border-width.focus` (semantic) |
+| `border-width.2` | 2px | <span class="ods-line" style="height:2px"></span> | `border-width.focus` (semantic)<br />`border-width.focus-offset` (semantic) |

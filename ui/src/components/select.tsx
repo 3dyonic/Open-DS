@@ -18,10 +18,10 @@ export function SelectTrigger({ className, children, ...props }: React.Component
     <SelectPrimitive.Trigger
       data-slot="select-trigger"
       className={cn(
-        "flex w-full items-center justify-between gap-[var(--select-trigger-gap)] h-[var(--input-height)] px-[var(--input-padding-x)] rounded-[var(--input-radius)]",
-        "bg-[var(--input-background)] text-[var(--input-text)] text-[length:var(--input-font-size)] [font-family:var(--select-trigger-font-family)]",
-        "border-[length:var(--select-trigger-border-width)] border-[var(--input-border)] data-[placeholder]:text-[var(--input-placeholder)]",
-        "outline-none focus-visible:ring-[length:var(--select-focus)] focus-visible:ring-[color:var(--input-border-focus)] focus-visible:ring-offset-2 focus-visible:ring-offset-[color:var(--select-canvas)]",
+        "flex w-full items-center justify-between gap-[var(--select-trigger-gap)] h-[var(--select-trigger-height)] px-[var(--select-trigger-padding-x)] rounded-[var(--select-trigger-radius)]",
+        "bg-[var(--select-trigger-background)] text-[var(--select-trigger-text)] text-[length:var(--select-trigger-font-size)] [font-family:var(--select-trigger-font-family)]",
+        "border-[length:var(--select-trigger-border-width)] border-[var(--select-trigger-border)] data-[placeholder]:text-[var(--select-trigger-placeholder)]",
+        "outline-none focus-visible:ring-[length:var(--select-trigger-focus-width)] focus-visible:ring-[color:var(--select-trigger-border-focus)] focus-visible:ring-offset-[length:var(--select-trigger-focus-offset)] focus-visible:ring-offset-[color:var(--select-trigger-focus-ring-offset)]",
         className,
       )}
       {...props}

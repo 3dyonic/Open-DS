@@ -55,6 +55,11 @@ export const GAP_KINDS = [
     why: "Corners inside corners stay concentric: inner = outer - the padding between them. A pill option in a rounded menu, or a square one in a round one, reads as two shapes fighting.",
   },
   {
+    id: "fades-a-color",
+    title: "A color is faded by hand",
+    why: "An opacity modifier (/10, /50) makes a new color inside the component. No semantic carries it, so no scheme decides it, no contrast check sees it, and a change to the color it fades moves it blindly.",
+  },
+  {
     id: "skips-a-component",
     title: "A component draws what a catalogue component is for",
     why: "When a component draws its own empty state, it skips the Empty pattern and its rule (why it is empty and the one action that fills it), so the decision behind Empty never reaches it.",
@@ -165,7 +170,16 @@ export function usages(src, comp, cssVar) {
       const line = src.slice(src.lastIndexOf("\n", m.index) + 1, m.index);
       if (/(tone|variant)\s*===\s*["'](danger|destructive)["']/.test(line)) state = "destructive";
     }
-    out.push({ part: partAt(src, m.index, comp), property, state, cls });
+    // A variant that reaches into a child (*:data-[slot=input-group]:, [&_[data-slot=x]]:) paints
+    // that child, not the element the class is written on.
+    const child = variants
+      // Only a selector that reaches down: *:data-[slot=x], **:data-[slot=x], [&_[data-slot=x]] or
+      // [&>[data-slot=x]]. An ancestor context ([[data-slot=tooltip-content]_&]) or a bare
+      // data-[slot=x] (a condition on the element itself) still paints this part.
+      .map((v, k) => (/^\*{1,2}$/.test(variants[k - 1] ?? "") ? v.match(/^data-\[slot=([a-z0-9-]+)\]$/) : v.match(/^\[&[_>]\[data-slot=([a-z0-9-]+)\]\]$/))?.[1])
+      .find(Boolean);
+    const part = child ? (child === comp ? "root" : child.replace(new RegExp(`^${comp}-`), "")) : partAt(src, m.index, comp);
+    out.push({ part, property, state, cls });
   }
   return out;
 }
@@ -251,6 +265,20 @@ function componentGapsNow(scheme, g, roots) {
         says: `${comp} uses \`${util}\`, which reads ${hit} from the system, not a key of its own.`,
       });
     }
+    // A color faded by hand: a key or a named color with an opacity modifier (bg-[var(--x)]/10,
+    // bg-black/50). The tint is then decided in the component, where no scheme can see or change it.
+    const fadeSeen = new Set();
+    for (const m of src.matchAll(/\b(bg|text|border|ring|fill|stroke|outline|divide)-(?:\[(?:color:)?var\((--[a-z0-9-]+)\)\]|(black|white|transparent|current))\/(\d+)\b/g)) {
+      const what = m[2] ?? m[3];
+      if (fadeSeen.has(`${m[1]}|${what}|${m[4]}`)) continue;
+      fadeSeen.add(`${m[1]}|${what}|${m[4]}`);
+      gaps.push({
+        kind: "fades-a-color",
+        component: comp,
+        key: what,
+        says: `${comp} fades ${m[2] ? `var(${m[2]})` : m[3]} to ${m[4]}% by hand (${m[0]}); the tint has no semantic, so no scheme decides it.`,
+      });
+    }
     // An empty state drawn by hand: the labels speak of no results or no data, and Empty isn't used.
     if (drawsOwnEmpty(src, comp))
       gaps.push({
@@ -265,16 +293,18 @@ function componentGapsNow(scheme, g, roots) {
       for (const u of usages(src, comp, t.css)) {
         const e = byPart.get(u.part) ?? {};
         if (u.property === "radius" && !e.radius) e.radius = t;
-        if (u.property === "padding" && !e.padding) e.padding = t;
+        // The padding that nests an option is on every side (p-), not one axis (px-, a heading's).
+        if (u.property === "padding" && /(^|:)p-$/.test(u.cls) && !e.padding) e.padding = t;
         byPart.set(u.part, e);
       }
-    const container = [...byPart].find(([p, e]) => /content|list|popup|menu$/.test(p) && e.radius && e.padding);
+    // A panel that holds options (a menu, a list) or a bar that holds triggers (the menubar, a tab list).
+    const container = [...byPart].find(([p, e]) => /content|list|popup|menu$|^root$/.test(p) && e.radius && e.padding && [...byPart].some(([q, f]) => q !== p && f.radius && (/item|option/.test(q) || (/trigger/.test(q) && /^root$|list$/.test(p)))));
     if (container) {
       const val = (t) => px(Object.values(t.values)[0]?.value);
       const outer = val(container[1].radius);
       const pad = val(container[1].padding);
       for (const [p, e] of byPart)
-        if (/item|option/.test(p) && e.radius && outer != null && pad != null) {
+        if ((/item|option/.test(p) || (/trigger/.test(p) && /^root$|list$/.test(container[0]))) && p !== container[0] && e.radius && outer != null && pad != null) {
           const inner = val(e.radius);
           const want = Math.max(0, outer - pad);
           if (inner != null && Math.abs(inner - want) > 0.5)
@@ -342,7 +372,9 @@ function componentGapsNow(scheme, g, roots) {
       const part = key.split(".").find((w) => w === "item" || w === "items");
       const named =
         new RegExp(`\\b${comp.replace(/-/g, "[ -]")}(e?s)?\\b`, "i").test(roleRule) ||
-        (part && new RegExp(`\\b${comp.split("-").pop()} items\\b`, "i").test(roleRule));
+        (part && new RegExp(`\\b${comp.split("-").pop()} items\\b`, "i").test(roleRule)) ||
+        // A rule that names the part itself ("badges, chips and checkboxes" for a combobox chip).
+        key.split(".").some((w) => w.length > 2 && !/^(radius|size|background|border|label)$/.test(w) && new RegExp(`\\b${w}s?\\b`, "i").test(roleRule));
       if (role && catalogue.has(role) && role !== comp && !comp.startsWith(role) && !named)
         gaps.push({
           ...base,

@@ -9617,7 +9617,7 @@
         "badge": {
           "$type": "dimension",
           "$value": "{theme.radius.badge}",
-          "$description": "Corner of badges and checkboxes."
+          "$description": "Corner of badges, chips and checkboxes."
         },
         "option": {
           "$type": "dimension",
@@ -9645,6 +9645,11 @@
           "$type": "dimension",
           "$value": "{border-width.2}",
           "$description": "The focus ring."
+        },
+        "focus-offset": {
+          "$type": "dimension",
+          "$value": "{border-width.2}",
+          "$description": "The gap between a control and its focus ring, so the ring never touches the control and reads on any fill."
         }
       },
       "type": {
@@ -10428,6 +10433,10 @@
             "$value": "{size.control.large}",
             "$description": "Large height of the button."
           }
+        },
+        "focus-offset": {
+          "$value": "{border-width.focus-offset}",
+          "$description": "Gap between the button and its focus ring."
         }
       },
       "input": {
@@ -10502,6 +10511,10 @@
         "danger": {
           "$value": "{color.status.danger.@}",
           "$description": "Danger of the input."
+        },
+        "focus-offset": {
+          "$value": "{border-width.focus-offset}",
+          "$description": "Gap between the input and its focus ring."
         }
       },
       "control": {
@@ -10815,6 +10828,10 @@
           "font-weight": {
             "$value": "{type.label.font-weight}",
             "$description": "Trigger font weight of the tabs."
+          },
+          "focus-offset": {
+            "$value": "{border-width.focus-offset}",
+            "$description": "Gap between the tabs trigger and its focus ring."
           }
         },
         "focus": {
@@ -10974,6 +10991,10 @@
             "$value": "{space.inset.container}",
             "$description": "Space below the content."
           }
+        },
+        "focus-offset": {
+          "$value": "{border-width.focus-offset}",
+          "$description": "Gap between the accordion and its focus ring."
         }
       },
       "alert-dialog": {
@@ -11220,6 +11241,10 @@
         "line-height-2": {
           "$value": "{type.caption.line-height}",
           "$description": "Line height 2 of the attachment."
+        },
+        "focus-offset": {
+          "$value": "{border-width.focus-offset}",
+          "$description": "Gap between the attachment and its focus ring."
         }
       },
       "avatar": {
@@ -11608,6 +11633,10 @@
         "line-height-2": {
           "$value": "{type.caption.line-height}",
           "$description": "Line height 2 of the calendar."
+        },
+        "focus-offset": {
+          "$value": "{border-width.focus-offset}",
+          "$description": "Gap between the calendar and its focus ring."
         }
       },
       "carousel": {
@@ -11740,6 +11769,10 @@
         "canvas": {
           "$value": "{color.surface.canvas}",
           "$description": "Canvas of the checkbox."
+        },
+        "focus-offset": {
+          "$value": "{border-width.focus-offset}",
+          "$description": "Gap between the checkbox and its focus ring."
         }
       },
       "combobox": {
@@ -11777,20 +11810,27 @@
             "$description": "Content shadow of the combobox."
           },
           "focus-ring": {
-            "$value": "{color.text.primary}",
-            "$description": "Content focus ring of the combobox."
+            "$value": "{combobox.content.border}",
+            "$description": "Deprecated: use component.combobox.content.border (OD-243). Content focus ring of the combobox.",
+            "$deprecated": "Use component.combobox.content.border. Removed in the next minor release."
           },
           "height": {
-            "$value": "{size.control.default}",
-            "$description": "Content height of the combobox."
-          },
-          "border": {
-            "$value": "{color.border.strong}",
-            "$description": "Content border of the combobox."
+            "$value": "{combobox.input.height}",
+            "$description": "Deprecated: use component.combobox.input.height (OD-243). Content height of the combobox.",
+            "$deprecated": "Use component.combobox.input.height. Removed in the next minor release."
           },
           "background-2": {
-            "$value": "{color.border.strong}",
-            "$description": "Content background 2 of the combobox."
+            "$value": "{combobox.input.background}",
+            "$description": "Deprecated: use component.combobox.input.background (OD-243). Content background 2 of the combobox.",
+            "$deprecated": "Use component.combobox.input.background. Removed in the next minor release."
+          },
+          "border-width": {
+            "$value": "{border-width.default}",
+            "$description": "Content border width of the combobox."
+          },
+          "border": {
+            "$value": "{color.border.default}",
+            "$description": "Content border of the combobox, like every menu's."
           }
         },
         "list": {
@@ -11945,8 +11985,9 @@
             "$description": "Chips border focus of the combobox."
           },
           "focus-ring-focus": {
-            "$value": "{color.border.focus}",
-            "$description": "Chips focus ring focus of the combobox."
+            "$value": "{combobox.chips.focus-ring.highlight}",
+            "$description": "Deprecated: use component.combobox.chips.focus-ring.highlight (OD-243). Chips focus ring focus of the combobox.",
+            "$deprecated": "Use component.combobox.chips.focus-ring.highlight. Removed in the next minor release."
           },
           "border-invalid": {
             "$value": "{color.status.danger.@}",
@@ -11959,6 +12000,20 @@
           "padding-x-2": {
             "$value": "{component-spacing-map.x2}",
             "$description": "Chips padding x 2 of the combobox."
+          },
+          "focus-ring": {
+            "highlight": {
+              "$value": "{color.border.focus}",
+              "$description": "Focus ring of the chips field when the keyboard is in it: the keyboard-focus rule, at full strength."
+            }
+          },
+          "focus-width": {
+            "$value": "{border-width.focus}",
+            "$description": "Focus ring width of the chips field."
+          },
+          "border-width": {
+            "$value": "{border-width.default}",
+            "$description": "Border width of the chips field."
           }
         },
         "chip": {
@@ -12002,6 +12057,20 @@
         "disabled-opacity": {
           "$value": "{opacity.disabled}",
           "$description": "Disabled opacity of the combobox."
+        },
+        "input": {
+          "border": {
+            "$value": "{color.border.default}",
+            "$description": "Border of the search field in the combobox's list."
+          },
+          "background": {
+            "$value": "{color.surface.sunken}",
+            "$description": "Background of the search field in the combobox's list: a well."
+          },
+          "height": {
+            "$value": "{size.control.default}",
+            "$description": "Height of the search field in the combobox's list."
+          }
         }
       },
       "command": {
@@ -12278,6 +12347,14 @@
             "shadow": {
               "$value": "{elevation.overlay}",
               "$description": "Sub content shadow of the context menu."
+            },
+            "border": {
+              "$value": "{color.border.default}",
+              "$description": "Border of the context menu submenu."
+            },
+            "border-width": {
+              "$value": "{border-width.default}",
+              "$description": "Border width of the context menu submenu."
             }
           }
         },
@@ -12301,6 +12378,14 @@
           "shadow": {
             "$value": "{elevation.overlay}",
             "$description": "Content shadow of the context menu."
+          },
+          "border": {
+            "$value": "{color.border.default}",
+            "$description": "Border of the context menu content."
+          },
+          "border-width": {
+            "$value": "{border-width.default}",
+            "$description": "Border width of the context menu content."
           }
         },
         "item": {
@@ -12346,16 +12431,29 @@
             "$description": "Item padding left of the context menu."
           },
           "label": {
-            "$value": "{color.status.danger.@}",
-            "$description": "Item label of the context menu."
+            "destructive": {
+              "$value": "{color.status.danger.@}",
+              "$description": "Item label when destructive, of the context menu."
+            },
+            "@": {
+              "$value": "{context-menu.item.label.destructive}",
+              "$description": "Deprecated: use component.context-menu.item.label.destructive (OD-243). Item label of the context menu.",
+              "$deprecated": "Use component.context-menu.item.label.destructive. Removed in the next minor release."
+            },
+            "destructive-highlight": {
+              "$value": "{color.status.danger.@}",
+              "$description": "Item label of a destructive item when highlighted, of the context menu."
+            }
           },
           "background-focus-2": {
-            "$value": "{color.status.danger.@}",
-            "$description": "Item background focus 2 of the context menu."
+            "$value": "{context-menu.item.background.destructive-highlight}",
+            "$description": "Deprecated: use component.context-menu.item.background.destructive-highlight (OD-243). Item background focus 2 of the context menu.",
+            "$deprecated": "Use component.context-menu.item.background.destructive-highlight. Removed in the next minor release."
           },
           "label-focus-2": {
-            "$value": "{color.status.danger.@}",
-            "$description": "Item label focus 2 of the context menu."
+            "$value": "{context-menu.item.label.destructive-highlight}",
+            "$description": "Deprecated: use component.context-menu.item.label.destructive-highlight (OD-243). Item label focus 2 of the context menu.",
+            "$deprecated": "Use component.context-menu.item.label.destructive-highlight. Removed in the next minor release."
           },
           "icon-size": {
             "$value": "{size.icon}",
@@ -12369,6 +12467,10 @@
             "highlight": {
               "$value": "{color.surface.highlight}",
               "$description": "Item background when highlighted, by the pointer or the keyboard, of the context menu."
+            },
+            "destructive-highlight": {
+              "$value": "{color.status.danger.subtle}",
+              "$description": "Item background of a destructive item when highlighted, of the context menu."
             }
           }
         },
@@ -13536,6 +13638,10 @@
             "$value": "{color.surface.highlight}",
             "$description": "Background under the pointer, of a linked item."
           }
+        },
+        "focus-offset": {
+          "$value": "{border-width.focus-offset}",
+          "$description": "Gap between the item and its focus ring."
         }
       },
       "kbd": {
@@ -13640,8 +13746,8 @@
           "$description": "Gap of the menubar."
         },
         "radius": {
-          "$value": "{radius.control}",
-          "$description": "Radius of the menubar."
+          "$value": "{radius.container}",
+          "$description": "Corner of the menubar: a panel that holds its triggers."
         },
         "background": {
           "$value": "{color.surface.canvas}",
@@ -13657,8 +13763,8 @@
         },
         "trigger": {
           "radius": {
-            "$value": "{radius.badge}",
-            "$description": "Trigger radius of the menubar."
+            "$value": "{radius.option}",
+            "$description": "Corner of a menubar trigger: an option in the bar, nested in its corner."
           },
           "padding-x": {
             "$value": "{component-spacing-map.x2}",
@@ -13724,6 +13830,14 @@
           "shadow": {
             "$value": "{elevation.overlay}",
             "$description": "Content shadow of the menubar."
+          },
+          "border": {
+            "$value": "{color.border.default}",
+            "$description": "Border of the menubar content."
+          },
+          "border-width": {
+            "$value": "{border-width.default}",
+            "$description": "Border width of the menubar content."
           }
         },
         "item": {
@@ -13769,16 +13883,29 @@
             "$description": "Item padding left of the menubar."
           },
           "label": {
-            "$value": "{color.status.danger.@}",
-            "$description": "Item label of the menubar."
+            "destructive": {
+              "$value": "{color.status.danger.@}",
+              "$description": "Item label when destructive, of the menubar."
+            },
+            "@": {
+              "$value": "{menubar.item.label.destructive}",
+              "$description": "Deprecated: use component.menubar.item.label.destructive (OD-243). Item label of the menubar.",
+              "$deprecated": "Use component.menubar.item.label.destructive. Removed in the next minor release."
+            },
+            "destructive-highlight": {
+              "$value": "{color.status.danger.@}",
+              "$description": "Item label of a destructive item when highlighted, of the menubar."
+            }
           },
           "background-focus-2": {
-            "$value": "{color.status.danger.@}",
-            "$description": "Item background focus 2 of the menubar."
+            "$value": "{menubar.item.background.destructive-highlight}",
+            "$description": "Deprecated: use component.menubar.item.background.destructive-highlight (OD-243). Item background focus 2 of the menubar.",
+            "$deprecated": "Use component.menubar.item.background.destructive-highlight. Removed in the next minor release."
           },
           "label-focus-2": {
-            "$value": "{color.status.danger.@}",
-            "$description": "Item label focus 2 of the menubar."
+            "$value": "{menubar.item.label.destructive-highlight}",
+            "$description": "Deprecated: use component.menubar.item.label.destructive-highlight (OD-243). Item label focus 2 of the menubar.",
+            "$deprecated": "Use component.menubar.item.label.destructive-highlight. Removed in the next minor release."
           },
           "icon-size": {
             "$value": "{size.icon}",
@@ -13792,6 +13919,10 @@
             "highlight": {
               "$value": "{color.surface.highlight}",
               "$description": "Item background when highlighted, by the pointer or the keyboard, of the menubar."
+            },
+            "destructive-highlight": {
+              "$value": "{color.status.danger.subtle}",
+              "$description": "Item background of a destructive item when highlighted, of the menubar."
             }
           }
         },
@@ -14025,12 +14156,28 @@
             "shadow": {
               "$value": "{elevation.overlay}",
               "$description": "Sub content shadow of the menubar."
+            },
+            "border": {
+              "$value": "{color.border.default}",
+              "$description": "Border of the menubar submenu."
+            },
+            "border-width": {
+              "$value": "{border-width.default}",
+              "$description": "Border width of the menubar submenu."
             }
           }
         },
         "height": {
           "$value": "{size.icon}",
           "$description": "Height of the menubar."
+        },
+        "border": {
+          "$value": "{color.border.default}",
+          "$description": "Border of the menubar."
+        },
+        "border-width": {
+          "$value": "{border-width.default}",
+          "$description": "Border width of the menubar."
         }
       },
       "message-scroller": {
@@ -14053,6 +14200,10 @@
         "focus-ring-offset-focus": {
           "$value": "{color.surface.canvas}",
           "$description": "Focus ring offset focus of the message scroller."
+        },
+        "focus-offset": {
+          "$value": "{border-width.focus-offset}",
+          "$description": "Gap between the message scroller and its focus ring."
         }
       },
       "message": {
@@ -14185,6 +14336,10 @@
         "label-2": {
           "$value": "{color.text.muted}",
           "$description": "Label 2 of the native select."
+        },
+        "focus-offset": {
+          "$value": "{border-width.focus-offset}",
+          "$description": "Gap between the native select and its focus ring."
         }
       },
       "navigation-menu": {
@@ -14399,6 +14554,10 @@
           "focus-ring-offset-focus": {
             "$value": "{color.surface.canvas}",
             "$description": "Link focus ring offset focus of the navigation menu."
+          },
+          "focus-offset": {
+            "$value": "{border-width.focus-offset}",
+            "$description": "Gap between the navigation menu link and its focus ring."
           }
         },
         "background-3": {
@@ -14431,6 +14590,10 @@
               "$value": "{color.surface.highlight}",
               "$description": "Trigger background while its menu is open and the pointer is on it, of the navigation menu."
             }
+          },
+          "focus-offset": {
+            "$value": "{border-width.focus-offset}",
+            "$description": "Gap between the navigation menu trigger and its focus ring."
           }
         }
       },
@@ -14581,6 +14744,10 @@
           "focus-ring-offset-focus": {
             "$value": "{color.surface.canvas}",
             "$description": "Item focus ring offset focus of the radio group."
+          },
+          "focus-offset": {
+            "$value": "{border-width.focus-offset}",
+            "$description": "Gap between the radio group item and its focus ring."
           }
         },
         "icon": {
@@ -14618,6 +14785,10 @@
         "background": {
           "$value": "{color.border.default}",
           "$description": "Background of the resizable."
+        },
+        "focus-offset": {
+          "$value": "{border-width.focus-offset}",
+          "$description": "Gap between the resizable and its focus ring."
         }
       },
       "scroll-area": {
@@ -14633,6 +14804,10 @@
           "focus-ring-offset-focus": {
             "$value": "{color.surface.canvas}",
             "$description": "Viewport focus ring offset focus of the scroll area."
+          },
+          "focus-offset": {
+            "$value": "{border-width.focus-offset}",
+            "$description": "Gap between the scroll area viewport and its focus ring."
           }
         },
         "thumb": {
@@ -14659,15 +14834,67 @@
           "border-width": {
             "$value": "{border-width.default}",
             "$description": "Trigger border width of the select."
+          },
+          "background": {
+            "$value": "{color.surface.default}",
+            "$description": "Background of the select's trigger, like a text field's."
+          },
+          "border": {
+            "@": {
+              "$value": "{color.border.strong}",
+              "$description": "Border of the select's trigger, like a text field's."
+            },
+            "focus": {
+              "$value": "{color.border.focus}",
+              "$description": "Focus ring of the select's trigger, like a text field's."
+            }
+          },
+          "font-size": {
+            "$value": "{type.body.font-size}",
+            "$description": "Text size of the select's trigger, like a text field's."
+          },
+          "height": {
+            "$value": "{size.control.default}",
+            "$description": "Height of the select's trigger, like a text field's."
+          },
+          "padding-x": {
+            "$value": "{space.inset.control-x}",
+            "$description": "Side padding of the select's trigger, like a text field's."
+          },
+          "placeholder": {
+            "$value": "{color.text.muted}",
+            "$description": "Placeholder text of the select's trigger, like a text field's."
+          },
+          "radius": {
+            "$value": "{radius.control}",
+            "$description": "Corner of the select's trigger, like a text field's."
+          },
+          "text": {
+            "$value": "{color.text.primary}",
+            "$description": "Text of the select's trigger, like a text field's."
+          },
+          "focus-ring-offset": {
+            "$value": "{color.surface.canvas}",
+            "$description": "The gap behind the select trigger's focus ring: the page canvas."
+          },
+          "focus-width": {
+            "$value": "{border-width.focus}",
+            "$description": "Focus ring width of the select's trigger."
+          },
+          "focus-offset": {
+            "$value": "{border-width.focus-offset}",
+            "$description": "Gap between the select trigger and its focus ring."
           }
         },
         "focus": {
-          "$value": "{border-width.focus}",
-          "$description": "Focus of the select."
+          "$value": "{select.trigger.focus-width}",
+          "$description": "Deprecated: use component.select.trigger.focus-width (OD-243). Focus of the select.",
+          "$deprecated": "Use component.select.trigger.focus-width. Removed in the next minor release."
         },
         "canvas": {
-          "$value": "{color.surface.canvas}",
-          "$description": "Canvas of the select."
+          "$value": "{select.trigger.focus-ring-offset}",
+          "$description": "Deprecated: use component.select.trigger.focus-ring-offset (OD-243). Canvas of the select.",
+          "$deprecated": "Use component.select.trigger.focus-ring-offset. Removed in the next minor release."
         },
         "size": {
           "$value": "{size.icon}",
@@ -14822,6 +15049,12 @@
           "label": {
             "$value": "{color.text.muted}",
             "$description": "Description label of the sheet."
+          }
+        },
+        "close": {
+          "focus-offset": {
+            "$value": "{border-width.focus-offset}",
+            "$description": "Gap between the sheet close and its focus ring."
           }
         }
       },
@@ -15410,6 +15643,10 @@
               "$value": "{color.surface.pressed}",
               "$description": "Menu button background while pressed, of the sidebar."
             }
+          },
+          "focus-offset": {
+            "$value": "{border-width.focus-offset}",
+            "$description": "Gap between the sidebar menu button and its focus ring."
           }
         }
       },
@@ -15480,6 +15717,10 @@
           "focus-ring-offset-focus": {
             "$value": "{color.surface.canvas}",
             "$description": "Thumb focus ring offset focus of the slider."
+          },
+          "focus-offset": {
+            "$value": "{border-width.focus-offset}",
+            "$description": "Gap between the slider thumb and its focus ring."
           }
         }
       },
@@ -15525,6 +15766,10 @@
         "icon": {
           "$value": "{size.icon}",
           "$description": "Icon of the switch."
+        },
+        "focus-offset": {
+          "$value": "{border-width.focus-offset}",
+          "$description": "Gap between the switch and its focus ring."
         }
       },
       "textarea": {
@@ -15587,6 +15832,10 @@
         "focus-ring-offset-focus": {
           "$value": "{color.surface.canvas}",
           "$description": "Focus ring offset focus of the textarea."
+        },
+        "focus-offset": {
+          "$value": "{border-width.focus-offset}",
+          "$description": "Gap between the textarea and its focus ring."
         }
       },
       "toast": {
@@ -15781,6 +16030,10 @@
             "$value": "{color.surface.selected}",
             "$description": "Background when on, of the toggle."
           }
+        },
+        "focus-offset": {
+          "$value": "{border-width.focus-offset}",
+          "$description": "Gap between the toggle and its focus ring."
         }
       }
     },

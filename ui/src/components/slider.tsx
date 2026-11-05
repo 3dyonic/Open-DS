@@ -55,7 +55,7 @@ function Slider({
         <SliderPrimitive.Thumb
           data-slot="slider-thumb"
           key={index}
-          className="block size-[var(--slider-thumb-icon-size)] shrink-0 rounded-[var(--slider-thumb-radius)] border border-[color:var(--slider-thumb-border)] bg-white shadow-[var(--slider-thumb-shadow)] ring-[color:var(--slider-thumb-focus-ring)]/50 transition-[color,box-shadow] hover:ring-4 focus-visible:outline-hidden disabled:pointer-events-none disabled:opacity-[var(--slider-thumb-disabled-opacity-disabled)] focus-visible:ring-[length:var(--slider-thumb-focus)] focus-visible:ring-[color:var(--slider-thumb-focus-ring-focus)] focus-visible:ring-offset-2 focus-visible:ring-offset-[color:var(--slider-thumb-focus-ring-offset-focus)]"
+          className="block size-[var(--slider-thumb-icon-size)] shrink-0 rounded-[var(--slider-thumb-radius)] border border-[color:var(--slider-thumb-border)] bg-white shadow-[var(--slider-thumb-shadow)] ring-[color:var(--slider-thumb-focus-ring)]/50 transition-[color,box-shadow] hover:ring-4 focus-visible:outline-hidden disabled:pointer-events-none disabled:opacity-[var(--slider-thumb-disabled-opacity-disabled)] focus-visible:ring-[length:var(--slider-thumb-focus)] focus-visible:ring-[color:var(--slider-thumb-focus-ring-focus)] focus-visible:ring-offset-[length:var(--slider-thumb-focus-offset)] focus-visible:ring-offset-[color:var(--slider-thumb-focus-ring-offset-focus)]"
         />
       ))}
     </SliderPrimitive.Root>

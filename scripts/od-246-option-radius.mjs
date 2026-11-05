@@ -36,7 +36,7 @@ const PANELS = [
 const PANEL_PADDING = "component-spacing-map.x1"; // every option panel's padding (grammar defaults)
 const DESC = {
   option: "Corner of options in menus and lists: the panel's corner less its padding, so the corners nest.",
-  badge: "Corner of badges and checkboxes.",
+  badge: "Corner of badges, chips and checkboxes.",
   container: "Corner of cards, menus and dialogs.",
 };
 

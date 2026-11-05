@@ -18,7 +18,7 @@ function Menubar({ className, ...props }: React.ComponentProps<typeof MenubarPri
     <MenubarPrimitive.Root
       data-slot="menubar"
       className={cn(
-        "flex h-9 items-center gap-[var(--menubar-gap)] rounded-[var(--menubar-radius)] border bg-[color:var(--menubar-background)] p-[var(--menubar-padding)] shadow-[var(--menubar-shadow)]",
+        "flex h-9 items-center gap-[var(--menubar-gap)] rounded-[var(--menubar-radius)] border-[length:var(--menubar-border-width)] border-[color:var(--menubar-border)] bg-[color:var(--menubar-background)] p-[var(--menubar-padding)] shadow-[var(--menubar-shadow)]",
         className,
       )}
       {...props}
@@ -70,7 +70,7 @@ function MenubarContent({
         alignOffset={alignOffset}
         sideOffset={sideOffset}
         className={cn(
-          "z-50 min-w-[12rem] origin-(--radix-menubar-content-transform-origin) overflow-hidden rounded-[var(--menubar-content-radius)] border bg-[color:var(--menubar-content-background)] p-[var(--menubar-content-padding)] text-[color:var(--menubar-content-label)] shadow-[var(--menubar-content-shadow)] data-[side=bottom]:slide-in-from-top-2 data-[side=left]:slide-in-from-right-2 data-[side=right]:slide-in-from-left-2 data-[side=top]:slide-in-from-bottom-2 data-[state=open]:animate-in data-[state=open]:fade-in-0 data-[state=open]:zoom-in-95 duration-[var(--transition-panels-duration)]",
+          "z-50 min-w-[12rem] origin-(--radix-menubar-content-transform-origin) overflow-hidden rounded-[var(--menubar-content-radius)] border-[length:var(--menubar-content-border-width)] border-[color:var(--menubar-content-border)] bg-[color:var(--menubar-content-background)] p-[var(--menubar-content-padding)] text-[color:var(--menubar-content-label)] shadow-[var(--menubar-content-shadow)] data-[side=bottom]:slide-in-from-top-2 data-[side=left]:slide-in-from-right-2 data-[side=right]:slide-in-from-left-2 data-[side=top]:slide-in-from-bottom-2 data-[state=open]:animate-in data-[state=open]:fade-in-0 data-[state=open]:zoom-in-95 duration-[var(--transition-panels-duration)]",
           className,
         )}
         {...props}
@@ -91,7 +91,7 @@ function MenubarItem({
       data-inset={inset}
       data-variant={variant}
       className={cn(
-        "relative flex cursor-default items-center gap-[var(--menubar-item-gap)] rounded-[var(--menubar-item-radius)] px-[var(--menubar-item-padding-x)] py-[var(--menubar-item-padding-y)] text-[length:var(--menubar-item-font-size)]/[var(--menubar-item-line-height)] outline-hidden select-none focus:bg-[color:var(--menubar-item-background-highlight)] focus:text-[color:var(--menubar-item-label-focus)] data-[disabled]:pointer-events-none data-[disabled]:opacity-[var(--menubar-item-disabled-opacity-disabled)] data-[inset]:pl-[var(--menubar-item-padding-left)] data-[variant=destructive]:text-[color:var(--menubar-item-label)] data-[variant=destructive]:focus:bg-[color:var(--menubar-item-background-focus-2)]/10 data-[variant=destructive]:focus:text-[color:var(--menubar-item-label-focus-2)] [&_svg]:pointer-events-none [&_svg]:shrink-0 [&_svg:not([class*='size-'])]:size-[var(--menubar-item-icon-size)] [&_svg:not([class*='text-'])]:text-[color:var(--menubar-item-label-2)]",
+        "relative flex cursor-default items-center gap-[var(--menubar-item-gap)] rounded-[var(--menubar-item-radius)] px-[var(--menubar-item-padding-x)] py-[var(--menubar-item-padding-y)] text-[length:var(--menubar-item-font-size)]/[var(--menubar-item-line-height)] outline-hidden select-none focus:bg-[color:var(--menubar-item-background-highlight)] focus:text-[color:var(--menubar-item-label-focus)] data-[disabled]:pointer-events-none data-[disabled]:opacity-[var(--menubar-item-disabled-opacity-disabled)] data-[inset]:pl-[var(--menubar-item-padding-left)] data-[variant=destructive]:text-[color:var(--menubar-item-label-destructive)] data-[variant=destructive]:focus:bg-[color:var(--menubar-item-background-destructive-highlight)] data-[variant=destructive]:focus:text-[color:var(--menubar-item-label-destructive-highlight)] [&_svg]:pointer-events-none [&_svg]:shrink-0 [&_svg:not([class*='size-'])]:size-[var(--menubar-item-icon-size)] [&_svg:not([class*='text-'])]:text-[color:var(--menubar-item-label-2)]",
         className,
       )}
       {...props}
@@ -217,7 +217,7 @@ function MenubarSubContent({ className, ...props }: React.ComponentProps<typeof 
     <MenubarPrimitive.SubContent
       data-slot="menubar-sub-content"
       className={cn(
-        "z-50 min-w-[8rem] origin-(--radix-menubar-content-transform-origin) overflow-hidden rounded-[var(--menubar-sub-content-radius)] border bg-[color:var(--menubar-sub-content-background)] p-[var(--menubar-sub-content-padding)] text-[color:var(--menubar-sub-content-label)] shadow-[var(--menubar-sub-content-shadow)] data-[side=bottom]:slide-in-from-top-2 data-[side=left]:slide-in-from-right-2 data-[side=right]:slide-in-from-left-2 data-[side=top]:slide-in-from-bottom-2 data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=closed]:zoom-out-95 data-[state=open]:animate-in data-[state=open]:fade-in-0 data-[state=open]:zoom-in-95 duration-[var(--transition-panels-duration)]",
+        "z-50 min-w-[8rem] origin-(--radix-menubar-content-transform-origin) overflow-hidden rounded-[var(--menubar-sub-content-radius)] border-[length:var(--menubar-sub-content-border-width)] border-[color:var(--menubar-sub-content-border)] bg-[color:var(--menubar-sub-content-background)] p-[var(--menubar-sub-content-padding)] text-[color:var(--menubar-sub-content-label)] shadow-[var(--menubar-sub-content-shadow)] data-[side=bottom]:slide-in-from-top-2 data-[side=left]:slide-in-from-right-2 data-[side=right]:slide-in-from-left-2 data-[side=top]:slide-in-from-bottom-2 data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=closed]:zoom-out-95 data-[state=open]:animate-in data-[state=open]:fade-in-0 data-[state=open]:zoom-in-95 duration-[var(--transition-panels-duration)]",
         className,
       )}
       {...props}

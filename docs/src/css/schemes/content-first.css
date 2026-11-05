@@ -16,6 +16,7 @@ html[data-scheme="content-first"] {
   --radius-round: 9999px; /** Fully round: avatars and dots. */
   --border-width-default: 1px; /** Every border. */
   --border-width-focus: 2px; /** The focus ring. */
+  --border-width-focus-offset: 2px; /** The gap between a control and its focus ring, so the ring never touches the control and reads on any fill. */
   --opacity-disabled: 0.4; /** Disabled controls. */
   --type-display-font-size: 2.75rem;
   --type-display-line-height: 1.15;
@@ -97,7 +98,7 @@ html[data-scheme="content-first"] {
   --color-category-4: #8A5600; /** Category 4: tells one item or series from another. It carries no meaning. */
   --color-category-4-subtle: #FEE8CF; /** Category 4: the fill of a tag. */
   --radius-control: 0.5rem; /** Corner of buttons and inputs. */
-  --radius-badge: 9999px; /** Corner of badges and checkboxes. */
+  --radius-badge: 9999px; /** Corner of badges, chips and checkboxes. */
   --radius-option: 0.5rem; /** Corner of options in menus and lists: the panel's corner less its padding, so the corners nest. */
   --radius-container: 0.75rem; /** Corner of cards, menus and dialogs. */
   --type-display-font-family: "Source Serif 4", Georgia, serif;
@@ -120,11 +121,13 @@ html[data-scheme="content-first"] {
   --button-compact-height: var(--size-control-compact); /** Compact height of the button. */
   --button-compact-padding-x: var(--space-inset-cell-x); /** Compact padding x of the button. */
   --button-large-height: var(--size-control-large); /** Large height of the button. */
+  --button-focus-offset: var(--border-width-focus-offset); /** Gap between the button and its focus ring. */
   --input-height: var(--size-control-default); /** Input height. */
   --input-padding-x: var(--space-inset-control-x); /** Horizontal padding inside an input. */
   --input-font-size: var(--type-body-font-size); /** Typed text size. */
   --input-border-width: var(--border-width-default); /** Border width of the input. */
   --input-focus: var(--border-width-focus); /** Focus of the input. */
+  --input-focus-offset: var(--border-width-focus-offset); /** Gap between the input and its focus ring. */
   --badge-padding-x: var(--space-gap-tight); /** Horizontal padding inside a badge. */
   --badge-font-size: var(--type-caption-font-size); /** Badge label size. */
   --badge-gap: var(--space-gap-tight); /** Gap of the badge. */
@@ -152,6 +155,7 @@ html[data-scheme="content-first"] {
   --tabs-trigger-height: var(--size-control-default); /** Trigger height of the tabs. */
   --tabs-trigger-font-size: var(--type-label-font-size); /** Trigger font size of the tabs. */
   --tabs-trigger-font-weight: var(--type-label-font-weight); /** Trigger font weight of the tabs. */
+  --tabs-trigger-focus-offset: var(--border-width-focus-offset); /** Gap between the tabs trigger and its focus ring. */
   --tabs-focus: var(--border-width-focus); /** Focus of the tabs. */
   --tabs-content-padding-top: var(--space-gap-default); /** Content padding top of the tabs. */
   --overlay-item-height: var(--size-control-default); /** Height of a menu item. */
@@ -171,6 +175,7 @@ html[data-scheme="content-first"] {
   --accordion-icon-duration: var(--motion-duration-feedback); /** How fast the chevron turns. */
   --accordion-content-font-size: var(--type-body-font-size); /** The content's text size. */
   --accordion-content-padding-bottom: var(--space-inset-container); /** Space below the content. */
+  --accordion-focus-offset: var(--border-width-focus-offset); /** Gap between the accordion and its focus ring. */
   --alert-dialog-content-gap: var(--space-gap-group); /** Content gap of the alert dialog. */
   --alert-dialog-content-padding: var(--component-spacing-map-x6); /** Content padding of the alert dialog. */
   --alert-dialog-header-gap: var(--component-spacing-map-x2); /** Header gap of the alert dialog. */
@@ -204,6 +209,7 @@ html[data-scheme="content-first"] {
   --attachment-font-weight: var(--type-label-font-weight); /** Font weight of the attachment. */
   --attachment-font-size-2: var(--type-caption-font-size); /** Font size 2 of the attachment. */
   --attachment-line-height-2: var(--type-caption-line-height); /** Line height 2 of the attachment. */
+  --attachment-focus-offset: var(--border-width-focus-offset); /** Gap between the attachment and its focus ring. */
   --avatar-size: var(--size-control-default); /** Size of the avatar. */
   --avatar-radius: var(--radius-round); /** Radius of the avatar. */
   --avatar-fallback-radius: var(--radius-round); /** Fallback radius of the avatar. */
@@ -255,6 +261,7 @@ html[data-scheme="content-first"] {
   --calendar-icon-size: var(--size-icon); /** Icon size of the calendar. */
   --calendar-font-size-2: var(--type-caption-font-size); /** Font size 2 of the calendar. */
   --calendar-line-height-2: var(--type-caption-line-height); /** Line height 2 of the calendar. */
+  --calendar-focus-offset: var(--border-width-focus-offset); /** Gap between the calendar and its focus ring. */
   --carousel-item-padding-left: var(--component-spacing-map-x4); /** Item padding left of the carousel. */
   --carousel-item-padding-top: var(--component-spacing-map-x4); /** Item padding top of the carousel. */
   --carousel-previous-size: var(--size-control-default); /** Previous size of the carousel. */
@@ -275,9 +282,10 @@ html[data-scheme="content-first"] {
   --checkbox-border-width: var(--border-width-default); /** Border width of the checkbox. */
   --checkbox-focus: var(--border-width-focus); /** Focus of the checkbox. */
   --checkbox-disabled: var(--opacity-disabled); /** Disabled of the checkbox. */
+  --checkbox-focus-offset: var(--border-width-focus-offset); /** Gap between the checkbox and its focus ring. */
   --combobox-trigger-icon-size: var(--size-icon); /** Trigger icon size of the combobox. */
   --combobox-trigger-icon-icon-size: var(--size-icon); /** Trigger icon icon size of the combobox. */
-  --combobox-content-height: var(--size-control-default); /** Content height of the combobox. */
+  --combobox-content-border-width: var(--border-width-default); /** Content border width of the combobox. */
   --combobox-list-padding: var(--component-spacing-map-x1); /** List padding of the combobox. */
   --combobox-item-gap: var(--space-gap-default); /** Item gap of the combobox. */
   --combobox-item-padding-y: var(--component-spacing-map-x2); /** Item padding y of the combobox. */
@@ -304,6 +312,8 @@ html[data-scheme="content-first"] {
   --combobox-chips-font-size: var(--type-body-font-size); /** Chips font size of the combobox. */
   --combobox-chips-line-height: var(--type-body-line-height); /** Chips line height of the combobox. */
   --combobox-chips-padding-x-2: var(--component-spacing-map-x2); /** Chips padding x 2 of the combobox. */
+  --combobox-chips-focus-width: var(--border-width-focus); /** Focus ring width of the chips field. */
+  --combobox-chips-border-width: var(--border-width-default); /** Border width of the chips field. */
   --combobox-chip-gap: var(--space-gap-tight); /** Chip gap of the combobox. */
   --combobox-chip-padding-x: var(--component-spacing-map-x2); /** Chip padding x of the combobox. */
   --combobox-chip-font-size: var(--type-caption-font-size); /** Chip font size of the combobox. */
@@ -311,6 +321,7 @@ html[data-scheme="content-first"] {
   --combobox-chip-font-weight: var(--type-label-font-weight); /** Chip font weight of the combobox. */
   --combobox-chip-disabled-opacity: var(--opacity-disabled); /** Chip disabled opacity of the combobox. */
   --combobox-disabled-opacity: var(--opacity-disabled); /** Disabled opacity of the combobox. */
+  --combobox-input-height: var(--size-control-default); /** Height of the search field in the combobox's list. */
   --command-padding-x: var(--component-spacing-map-x2); /** Padding x of the command. */
   --command-font-weight: var(--type-label-font-weight); /** Font weight of the command. */
   --command-padding-y: var(--component-spacing-map-x3); /** Padding y of the command. */
@@ -347,7 +358,9 @@ html[data-scheme="content-first"] {
   --context-menu-sub-trigger-padding-left: var(--component-spacing-map-x8); /** Sub trigger padding left of the context menu. */
   --context-menu-sub-trigger-icon-size: var(--size-icon); /** Sub trigger icon size of the context menu. */
   --context-menu-sub-content-padding: var(--component-spacing-map-x1); /** Sub content padding of the context menu. */
+  --context-menu-sub-content-border-width: var(--border-width-default); /** Border width of the context menu submenu. */
   --context-menu-content-padding: var(--component-spacing-map-x1); /** Content padding of the context menu. */
+  --context-menu-content-border-width: var(--border-width-default); /** Border width of the context menu content. */
   --context-menu-item-gap: var(--space-gap-default); /** Item gap of the context menu. */
   --context-menu-item-padding-x: var(--component-spacing-map-x2); /** Item padding x of the context menu. */
   --context-menu-item-padding-y: var(--component-spacing-map-x2); /** Item padding y of the context menu. */
@@ -515,6 +528,7 @@ html[data-scheme="content-first"] {
   --item-actions-gap: var(--space-gap-default); /** Actions gap of the item. */
   --item-header-gap: var(--space-gap-default); /** Header gap of the item. */
   --item-footer-gap: var(--space-gap-default); /** Footer gap of the item. */
+  --item-focus-offset: var(--border-width-focus-offset); /** Gap between the item and its focus ring. */
   --kbd-gap: var(--space-gap-tight); /** Gap of the kbd. */
   --kbd-padding-x: var(--component-spacing-map-x1); /** Padding x of the kbd. */
   --kbd-font-size: var(--type-caption-font-size); /** Font size of the kbd. */
@@ -536,6 +550,7 @@ html[data-scheme="content-first"] {
   --menubar-trigger-line-height: var(--type-body-line-height); /** Trigger line height of the menubar. */
   --menubar-trigger-font-weight: var(--type-label-font-weight); /** Trigger font weight of the menubar. */
   --menubar-content-padding: var(--component-spacing-map-x1); /** Content padding of the menubar. */
+  --menubar-content-border-width: var(--border-width-default); /** Border width of the menubar content. */
   --menubar-item-gap: var(--space-gap-default); /** Item gap of the menubar. */
   --menubar-item-padding-x: var(--component-spacing-map-x2); /** Item padding x of the menubar. */
   --menubar-item-padding-y: var(--component-spacing-map-x2); /** Item padding y of the menubar. */
@@ -575,9 +590,12 @@ html[data-scheme="content-first"] {
   --menubar-sub-trigger-line-height: var(--type-body-line-height); /** Sub trigger line height of the menubar. */
   --menubar-sub-trigger-padding-left: var(--component-spacing-map-x8); /** Sub trigger padding left of the menubar. */
   --menubar-sub-content-padding: var(--component-spacing-map-x1); /** Sub content padding of the menubar. */
+  --menubar-sub-content-border-width: var(--border-width-default); /** Border width of the menubar submenu. */
   --menubar-height: var(--size-icon); /** Height of the menubar. */
+  --menubar-border-width: var(--border-width-default); /** Border width of the menubar. */
   --message-scroller-gap: var(--space-gap-group); /** Gap of the message scroller. */
   --message-scroller-focus: var(--border-width-focus); /** Focus of the message scroller. */
+  --message-scroller-focus-offset: var(--border-width-focus-offset); /** Gap between the message scroller and its focus ring. */
   --message-gap: var(--component-spacing-map-x3); /** Gap of the message. */
   --message-font-size: var(--type-body-font-size); /** Font size of the message. */
   --message-line-height: var(--type-body-line-height); /** Line height of the message. */
@@ -596,6 +614,7 @@ html[data-scheme="content-first"] {
   --native-select-padding-y-2: var(--component-spacing-map-x1); /** Padding y 2 of the native select. */
   --native-select-focus: var(--border-width-focus); /** Focus of the native select. */
   --native-select-icon-size: var(--size-icon); /** Icon size of the native select. */
+  --native-select-focus-offset: var(--border-width-focus-offset); /** Gap between the native select and its focus ring. */
   --navigation-menu-list-gap: var(--space-gap-tight); /** List gap of the navigation menu. */
   --navigation-menu-padding-x: var(--space-inset-container); /** Padding x of the navigation menu. */
   --navigation-menu-padding-y: var(--component-spacing-map-x2); /** Padding y of the navigation menu. */
@@ -613,6 +632,8 @@ html[data-scheme="content-first"] {
   --navigation-menu-link-line-height: var(--type-body-line-height); /** Link line height of the navigation menu. */
   --navigation-menu-link-focus: var(--border-width-focus); /** Link focus of the navigation menu. */
   --navigation-menu-link-icon-size: var(--size-icon); /** Link icon size of the navigation menu. */
+  --navigation-menu-link-focus-offset: var(--border-width-focus-offset); /** Gap between the navigation menu link and its focus ring. */
+  --navigation-menu-trigger-focus-offset: var(--border-width-focus-offset); /** Gap between the navigation menu trigger and its focus ring. */
   --pagination-content-gap: var(--space-gap-tight); /** Content gap of the pagination. */
   --pagination-gap: var(--space-gap-tight); /** Gap of the pagination. */
   --pagination-padding-x: var(--component-spacing-map-x3); /** Padding x of the pagination. */
@@ -630,13 +651,20 @@ html[data-scheme="content-first"] {
   --radio-group-item-radius: var(--radius-round); /** Item radius of the radio group. */
   --radio-group-item-disabled-opacity-disabled: var(--opacity-disabled); /** Item disabled opacity disabled of the radio group. */
   --radio-group-item-focus: var(--border-width-focus); /** Item focus of the radio group. */
+  --radio-group-item-focus-offset: var(--border-width-focus-offset); /** Gap between the radio group item and its focus ring. */
   --resizable-handle-focus: var(--border-width-focus); /** Handle focus of the resizable. */
   --resizable-height: var(--size-icon); /** Height of the resizable. */
+  --resizable-focus-offset: var(--border-width-focus-offset); /** Gap between the resizable and its focus ring. */
   --scroll-area-viewport-focus: var(--border-width-focus); /** Viewport focus of the scroll area. */
+  --scroll-area-viewport-focus-offset: var(--border-width-focus-offset); /** Gap between the scroll area viewport and its focus ring. */
   --scroll-area-thumb-radius: var(--radius-round); /** Thumb radius of the scroll area. */
   --select-trigger-gap: var(--space-gap-default); /** Trigger gap of the select. */
   --select-trigger-border-width: var(--border-width-default); /** Trigger border width of the select. */
-  --select-focus: var(--border-width-focus); /** Focus of the select. */
+  --select-trigger-font-size: var(--type-body-font-size); /** Text size of the select's trigger, like a text field's. */
+  --select-trigger-height: var(--size-control-default); /** Height of the select's trigger, like a text field's. */
+  --select-trigger-padding-x: var(--space-inset-control-x); /** Side padding of the select's trigger, like a text field's. */
+  --select-trigger-focus-width: var(--border-width-focus); /** Focus ring width of the select's trigger. */
+  --select-trigger-focus-offset: var(--border-width-focus-offset); /** Gap between the select trigger and its focus ring. */
   --select-size: var(--size-icon); /** Size of the select. */
   --select-content-padding: var(--component-spacing-map-x1); /** Content padding of the select. */
   --select-content-border-width: var(--border-width-default); /** Content border width of the select. */
@@ -655,6 +683,7 @@ html[data-scheme="content-first"] {
   --sheet-title-font-weight: var(--type-title-font-weight); /** Title font weight of the sheet. */
   --sheet-description-font-size: var(--type-body-font-size); /** Description font size of the sheet. */
   --sheet-description-line-height: var(--type-body-line-height); /** Description line height of the sheet. */
+  --sheet-close-focus-offset: var(--border-width-focus-offset); /** Gap between the sheet close and its focus ring. */
   --sidebar-gap-duration: var(--motion-duration-feedback); /** Gap duration of the sidebar. */
   --sidebar-gap: var(--space-gap-default); /** Gap of the sidebar. */
   --sidebar-container-duration: var(--motion-duration-feedback); /** Container duration of the sidebar. */
@@ -714,12 +743,14 @@ html[data-scheme="content-first"] {
   --sidebar-height: var(--size-icon); /** Height of the sidebar. */
   --sidebar-font-size-2: var(--type-caption-font-size); /** Font size 2 of the sidebar. */
   --sidebar-line-height-2: var(--type-caption-line-height); /** Line height 2 of the sidebar. */
+  --sidebar-menu-button-focus-offset: var(--border-width-focus-offset); /** Gap between the sidebar menu button and its focus ring. */
   --slider-disabled-opacity-disabled: var(--opacity-disabled); /** Disabled opacity disabled of the slider. */
   --slider-track-radius: var(--radius-round); /** Track radius of the slider. */
   --slider-thumb-icon-size: var(--size-icon); /** Thumb icon size of the slider. */
   --slider-thumb-radius: var(--radius-round); /** Thumb radius of the slider. */
   --slider-thumb-disabled-opacity-disabled: var(--opacity-disabled); /** Thumb disabled opacity disabled of the slider. */
   --slider-thumb-focus: var(--border-width-focus); /** Thumb focus of the slider. */
+  --slider-thumb-focus-offset: var(--border-width-focus-offset); /** Gap between the slider thumb and its focus ring. */
   --spinner-icon-size: var(--size-icon); /** Icon size of the spinner. */
   --switch-height: var(--size-icon); /** Height of the switch. */
   --switch-width: var(--size-icon); /** Width of the switch. */
@@ -729,12 +760,14 @@ html[data-scheme="content-first"] {
   --switch-disabled: var(--opacity-disabled); /** Disabled of the switch. */
   --switch-size: var(--size-icon); /** Size of the switch. */
   --switch-icon: var(--size-icon); /** Icon of the switch. */
+  --switch-focus-offset: var(--border-width-focus-offset); /** Gap between the switch and its focus ring. */
   --textarea-padding-x: var(--space-inset-control-x); /** Padding x of the textarea. */
   --textarea-padding-y: var(--component-spacing-map-x2); /** Padding y of the textarea. */
   --textarea-font-size: var(--type-body-font-size); /** Font size of the textarea. */
   --textarea-line-height: var(--type-body-line-height); /** Line height of the textarea. */
   --textarea-disabled-opacity-disabled: var(--opacity-disabled); /** Disabled opacity disabled of the textarea. */
   --textarea-focus: var(--border-width-focus); /** Focus of the textarea. */
+  --textarea-focus-offset: var(--border-width-focus-offset); /** Gap between the textarea and its focus ring. */
   --toast-gap: var(--space-gap-default); /** Gap of the toast. */
   --toast-padding: var(--space-inset-container); /** Padding of the toast. */
   --toast-border-width: var(--border-width-default); /** Border width of the toast. */
@@ -754,6 +787,7 @@ html[data-scheme="content-first"] {
   --toggle-sm-height: var(--size-control-default); /** Sm height of the toggle. */
   --toggle-sm-padding-x: var(--component-spacing-map-x2); /** Sm padding x of the toggle. */
   --toggle-lg-padding-x: var(--component-spacing-map-x3); /** Lg padding x of the toggle. */
+  --toggle-focus-offset: var(--border-width-focus-offset); /** Gap between the toggle and its focus ring. */
   --button-primary-background: var(--color-action-primary); /** Primary button fill. */
   --button-primary-background-hover: var(--color-action-primary-hover); /** Primary button fill on hover. */
   --button-danger-background: var(--color-action-danger); /** Danger button fill. */
@@ -817,13 +851,14 @@ html[data-scheme="content-first"] {
   --chart-shadow: var(--elevation-overlay); /** Shadow of the chart. */
   --combobox-content-radius: var(--radius-container); /** Content radius of the combobox. */
   --combobox-content-shadow: var(--elevation-overlay); /** Content shadow of the combobox. */
+  --combobox-content-height: var(--combobox-input-height); /** Deprecated: use component.combobox.input.height (OD-243). Content height of the combobox. */
   --combobox-item-radius: var(--radius-option); /** Item radius of the combobox. */
   --combobox-chips-radius: var(--radius-control); /** Chips radius of the combobox. */
   --combobox-chips-shadow: var(--elevation-card); /** Chips shadow of the combobox. */
   --combobox-chips-border-focus: var(--color-border-focus); /** Chips border focus of the combobox. */
-  --combobox-chips-focus-ring-focus: var(--color-border-focus); /** Chips focus ring focus of the combobox. */
   --combobox-chips-border-invalid: var(--color-status-danger); /** Chips border invalid of the combobox. */
   --combobox-chips-focus-ring-invalid: var(--color-status-danger); /** Chips focus ring invalid of the combobox. */
+  --combobox-chips-focus-ring-highlight: var(--color-border-focus); /** Focus ring of the chips field when the keyboard is in it: the keyboard-focus rule, at full strength. */
   --combobox-chip-radius: var(--radius-badge); /** Chip radius of the combobox. */
   --command-radius: var(--radius-control); /** Radius of the command. */
   --command-input-radius: var(--radius-control); /** Input radius of the command. */
@@ -834,9 +869,9 @@ html[data-scheme="content-first"] {
   --context-menu-content-radius: var(--radius-container); /** Content radius of the context menu. */
   --context-menu-content-shadow: var(--elevation-overlay); /** Content shadow of the context menu. */
   --context-menu-item-radius: var(--radius-option); /** Item radius of the context menu. */
-  --context-menu-item-label: var(--color-status-danger); /** Item label of the context menu. */
-  --context-menu-item-background-focus-2: var(--color-status-danger); /** Item background focus 2 of the context menu. */
-  --context-menu-item-label-focus-2: var(--color-status-danger); /** Item label focus 2 of the context menu. */
+  --context-menu-item-label-destructive: var(--color-status-danger); /** Item label when destructive, of the context menu. */
+  --context-menu-item-label-destructive-highlight: var(--color-status-danger); /** Item label of a destructive item when highlighted, of the context menu. */
+  --context-menu-item-background-destructive-highlight: var(--color-status-danger-subtle); /** Item background of a destructive item when highlighted, of the context menu. */
   --context-menu-checkbox-item-radius: var(--radius-option); /** Checkbox item radius of the context menu. */
   --context-menu-radio-item-radius: var(--radius-option); /** Radio item radius of the context menu. */
   --data-table-radius: var(--radius-badge); /** Radius of the data table. */
@@ -879,15 +914,15 @@ html[data-scheme="content-first"] {
   --item-description-label-2: var(--color-action-primary); /** Description label 2 of the item. */
   --kbd-radius: var(--radius-badge); /** Radius of the kbd. */
   --label-font-family: var(--type-label-font-family); /** Font family of the label. */
-  --menubar-radius: var(--radius-control); /** Radius of the menubar. */
+  --menubar-radius: var(--radius-container); /** Corner of the menubar: a panel that holds its triggers. */
   --menubar-shadow: var(--elevation-card); /** Shadow of the menubar. */
-  --menubar-trigger-radius: var(--radius-badge); /** Trigger radius of the menubar. */
+  --menubar-trigger-radius: var(--radius-option); /** Corner of a menubar trigger: an option in the bar, nested in its corner. */
   --menubar-content-radius: var(--radius-container); /** Content radius of the menubar. */
   --menubar-content-shadow: var(--elevation-overlay); /** Content shadow of the menubar. */
   --menubar-item-radius: var(--radius-option); /** Item radius of the menubar. */
-  --menubar-item-label: var(--color-status-danger); /** Item label of the menubar. */
-  --menubar-item-background-focus-2: var(--color-status-danger); /** Item background focus 2 of the menubar. */
-  --menubar-item-label-focus-2: var(--color-status-danger); /** Item label focus 2 of the menubar. */
+  --menubar-item-label-destructive: var(--color-status-danger); /** Item label when destructive, of the menubar. */
+  --menubar-item-label-destructive-highlight: var(--color-status-danger); /** Item label of a destructive item when highlighted, of the menubar. */
+  --menubar-item-background-destructive-highlight: var(--color-status-danger-subtle); /** Item background of a destructive item when highlighted, of the menubar. */
   --menubar-checkbox-item-radius: var(--radius-option); /** Checkbox item radius of the menubar. */
   --menubar-radio-item-radius: var(--radius-option); /** Radio item radius of the menubar. */
   --menubar-sub-trigger-radius: var(--radius-option); /** Sub trigger radius of the menubar. */
@@ -927,6 +962,9 @@ html[data-scheme="content-first"] {
   --resizable-radius: var(--radius-badge); /** Radius of the resizable. */
   --scroll-area-viewport-focus-ring-focus: var(--color-border-focus); /** Viewport focus ring focus of the scroll area. */
   --select-trigger-font-family: var(--type-body-font-family); /** Trigger font family of the select. */
+  --select-trigger-border-focus: var(--color-border-focus); /** Focus ring of the select's trigger, like a text field's. */
+  --select-trigger-radius: var(--radius-control); /** Corner of the select's trigger, like a text field's. */
+  --select-focus: var(--select-trigger-focus-width); /** Deprecated: use component.select.trigger.focus-width (OD-243). Focus of the select. */
   --select-item-radius: var(--radius-option); /** Item radius of the select. */
   --sheet-overlay-background: var(--color-surface-scrim); /** Overlay background of the sheet. */
   --sheet-content-shadow: var(--elevation-overlay); /** Content shadow of the sheet. */
@@ -1000,7 +1038,14 @@ html[data-scheme="content-first"] {
   --color-disabled-text: #7A7062; /** Text and icons of a control that cannot be used right now. */
   --color-disabled-surface: #F6F2EA; /** The fill of a control that cannot be used right now. */
   --color-disabled-border: #E4DDD0; /** The edge of a control that cannot be used right now. */
+  --combobox-chips-focus-ring-focus: var(--combobox-chips-focus-ring-highlight); /** Deprecated: use component.combobox.chips.focus-ring.highlight (OD-243). Chips focus ring focus of the combobox. */
+  --context-menu-item-label: var(--context-menu-item-label-destructive); /** Deprecated: use component.context-menu.item.label.destructive (OD-243). Item label of the context menu. */
+  --context-menu-item-background-focus-2: var(--context-menu-item-background-destructive-highlight); /** Deprecated: use component.context-menu.item.background.destructive-highlight (OD-243). Item background focus 2 of the context menu. */
+  --context-menu-item-label-focus-2: var(--context-menu-item-label-destructive-highlight); /** Deprecated: use component.context-menu.item.label.destructive-highlight (OD-243). Item label focus 2 of the context menu. */
   --dropdown-menu-label: var(--dropdown-menu-item-label-destructive); /** Deprecated: use component.dropdown-menu.item.label.destructive (OD-241). Label of the dropdown menu. */
+  --menubar-item-label: var(--menubar-item-label-destructive); /** Deprecated: use component.menubar.item.label.destructive (OD-243). Item label of the menubar. */
+  --menubar-item-background-focus-2: var(--menubar-item-background-destructive-highlight); /** Deprecated: use component.menubar.item.background.destructive-highlight (OD-243). Item background focus 2 of the menubar. */
+  --menubar-item-label-focus-2: var(--menubar-item-label-destructive-highlight); /** Deprecated: use component.menubar.item.label.destructive-highlight (OD-243). Item label focus 2 of the menubar. */
   --navigation-menu-link-background: var(--navigation-menu-link-background-current); /** Deprecated: use component.navigation-menu.link.background.current (OD-241). Link background of the navigation menu. */
   --sidebar-background-2: var(--sidebar-menu-button-background-current); /** Deprecated: use component.sidebar.menu-button.background.current (OD-241). Background 2 of the sidebar. */
   --button-primary-label: var(--color-text-on-action); /** Primary button label color. */
@@ -1095,9 +1140,7 @@ html[data-scheme="content-first"] {
   --combobox-trigger-icon-label: var(--color-text-muted); /** Trigger icon label of the combobox. */
   --combobox-content-background: var(--color-surface-raised); /** Content background of the combobox. */
   --combobox-content-label: var(--color-text-primary); /** Content label of the combobox. */
-  --combobox-content-focus-ring: var(--color-text-primary); /** Content focus ring of the combobox. */
-  --combobox-content-border: var(--color-border-strong); /** Content border of the combobox. */
-  --combobox-content-background-2: var(--color-border-strong); /** Content background 2 of the combobox. */
+  --combobox-content-border: var(--color-border-default); /** Content border of the combobox, like every menu's. */
   --combobox-item-background: var(--color-surface-sunken); /** Item background of the combobox. */
   --combobox-item-label: var(--color-text-primary); /** Item label of the combobox. */
   --combobox-label-label: var(--color-text-muted); /** Label label of the combobox. */
@@ -1106,6 +1149,8 @@ html[data-scheme="content-first"] {
   --combobox-chips-border: var(--color-border-strong); /** Chips border of the combobox. */
   --combobox-chip-background: var(--color-surface-sunken); /** Chip background of the combobox. */
   --combobox-chip-label: var(--color-text-primary); /** Chip label of the combobox. */
+  --combobox-input-border: var(--color-border-default); /** Border of the search field in the combobox's list. */
+  --combobox-input-background: var(--color-surface-sunken); /** Background of the search field in the combobox's list: a well. */
   --command-background: var(--color-surface-raised); /** Background of the command. */
   --command-label: var(--color-text-primary); /** Label of the command. */
   --command-label-2: var(--color-text-muted); /** Label 2 of the command. */
@@ -1124,8 +1169,10 @@ html[data-scheme="content-first"] {
   --context-menu-sub-trigger-background-open: var(--color-surface-highlight); /** Submenu trigger background while its submenu is open, of the context menu. */
   --context-menu-sub-content-background: var(--color-surface-raised); /** Sub content background of the context menu. */
   --context-menu-sub-content-label: var(--color-text-primary); /** Sub content label of the context menu. */
+  --context-menu-sub-content-border: var(--color-border-default); /** Border of the context menu submenu. */
   --context-menu-content-background: var(--color-surface-raised); /** Content background of the context menu. */
   --context-menu-content-label: var(--color-text-primary); /** Content label of the context menu. */
+  --context-menu-content-border: var(--color-border-default); /** Border of the context menu content. */
   --context-menu-item-label-focus: var(--color-text-primary); /** Item label focus of the context menu. */
   --context-menu-item-label-2: var(--color-text-muted); /** Item label 2 of the context menu. */
   --context-menu-item-background-highlight: var(--color-surface-highlight); /** Item background when highlighted, by the pointer or the keyboard, of the context menu. */
@@ -1186,6 +1233,7 @@ html[data-scheme="content-first"] {
   --menubar-trigger-background-open: var(--color-surface-highlight); /** Trigger background while its menu is open, of the menubar. */
   --menubar-content-background: var(--color-surface-raised); /** Content background of the menubar. */
   --menubar-content-label: var(--color-text-primary); /** Content label of the menubar. */
+  --menubar-content-border: var(--color-border-default); /** Border of the menubar content. */
   --menubar-item-label-focus: var(--color-text-primary); /** Item label focus of the menubar. */
   --menubar-item-label-2: var(--color-text-muted); /** Item label 2 of the menubar. */
   --menubar-item-background-highlight: var(--color-surface-highlight); /** Item background when highlighted, by the pointer or the keyboard, of the menubar. */
@@ -1201,6 +1249,8 @@ html[data-scheme="content-first"] {
   --menubar-sub-trigger-background-open: var(--color-surface-highlight); /** Submenu trigger background while its submenu is open, of the menubar. */
   --menubar-sub-content-background: var(--color-surface-raised); /** Sub content background of the menubar. */
   --menubar-sub-content-label: var(--color-text-primary); /** Sub content label of the menubar. */
+  --menubar-sub-content-border: var(--color-border-default); /** Border of the menubar submenu. */
+  --menubar-border: var(--color-border-default); /** Border of the menubar. */
   --message-scroller-focus-ring-offset-focus: var(--color-surface-canvas); /** Focus ring offset focus of the message scroller. */
   --message-time-label: var(--color-text-muted); /** Time label of the message. */
   --native-select-border: var(--color-border-strong); /** Border of the native select. */
@@ -1240,7 +1290,11 @@ html[data-scheme="content-first"] {
   --resizable-background: var(--color-border-default); /** Background of the resizable. */
   --scroll-area-viewport-focus-ring-offset-focus: var(--color-surface-canvas); /** Viewport focus ring offset focus of the scroll area. */
   --scroll-area-thumb-background: var(--color-border-default); /** Thumb background of the scroll area. */
-  --select-canvas: var(--color-surface-canvas); /** Canvas of the select. */
+  --select-trigger-background: var(--color-surface-default); /** Background of the select's trigger, like a text field's. */
+  --select-trigger-border: var(--color-border-strong); /** Border of the select's trigger, like a text field's. */
+  --select-trigger-placeholder: var(--color-text-muted); /** Placeholder text of the select's trigger, like a text field's. */
+  --select-trigger-text: var(--color-text-primary); /** Text of the select's trigger, like a text field's. */
+  --select-trigger-focus-ring-offset: var(--color-surface-canvas); /** The gap behind the select trigger's focus ring: the page canvas. */
   --select-content-label: var(--color-text-primary); /** Content label of the select. */
   --select-content-border: var(--color-border-default); /** Content border of the select. */
   --select-item-background-highlight: var(--color-surface-highlight); /** Item background when highlighted, by the pointer or the keyboard, of the select. */
@@ -1309,6 +1363,8 @@ html[data-scheme="content-first"] {
   --toggle-outline-label-hover: var(--color-text-primary); /** Outline label hover of the toggle. */
   --toggle-outline-background-hover: var(--color-surface-highlight); /** Outline toggle background under the pointer. */
   --toggle-background-hover: var(--color-surface-highlight); /** Background under the pointer, of the toggle. */
+  --combobox-content-focus-ring: var(--combobox-content-border); /** Deprecated: use component.combobox.content.border (OD-243). Content focus ring of the combobox. */
+  --combobox-content-background-2: var(--combobox-input-background); /** Deprecated: use component.combobox.input.background (OD-243). Content background 2 of the combobox. */
   --command-item-background-selected: var(--command-item-background-highlight); /** Deprecated: use component.command.item.background.highlight (OD-241). Item background selected of the command. */
   --context-menu-sub-trigger-background-focus: var(--context-menu-sub-trigger-background-highlight); /** Deprecated: use component.context-menu.sub.trigger.background.highlight (OD-241). Sub trigger background focus of the context menu. */
   --context-menu-item-background-focus: var(--context-menu-item-background-highlight); /** Deprecated: use component.context-menu.item.background.highlight (OD-241). Item background focus of the context menu. */
@@ -1329,6 +1385,7 @@ html[data-scheme="content-first"] {
   --navigation-menu-background-open-hover: var(--navigation-menu-trigger-background-open-hover); /** Deprecated: use component.navigation-menu.trigger.background.open-hover (OD-241). Background open hover of the navigation menu. */
   --navigation-menu-background-open-focus: var(--navigation-menu-trigger-background-open-highlight); /** Deprecated: use component.navigation-menu.trigger.background.open-highlight (OD-241). Background open focus of the navigation menu. */
   --navigation-menu-link-background-focus: var(--navigation-menu-link-background-highlight); /** Deprecated: use component.navigation-menu.link.background.highlight (OD-241). Link background focus of the navigation menu. */
+  --select-canvas: var(--select-trigger-focus-ring-offset); /** Deprecated: use component.select.trigger.focus-ring-offset (OD-243). Canvas of the select. */
   --select-item-sunken: var(--select-item-background-highlight); /** Deprecated: use component.select.item.background.highlight (OD-241). Item sunken of the select. */
   --sidebar-rail-background-hover: var(--sidebar-rail-line-hover); /** Deprecated: use component.sidebar.rail.line.hover (OD-241). Rail background hover of the sidebar. */
   --sidebar-background-hover: var(--sidebar-rail-background-hover); /** Deprecated: use component.sidebar.rail.background.hover (OD-241). Background hover of the sidebar. */
@@ -1353,6 +1410,7 @@ html[data-scheme="content-first"][data-theme="dark"] {
   --radius-round: 9999px; /** Fully round: avatars and dots. */
   --border-width-default: 1px; /** Every border. */
   --border-width-focus: 2px; /** The focus ring. */
+  --border-width-focus-offset: 2px; /** The gap between a control and its focus ring, so the ring never touches the control and reads on any fill. */
   --opacity-disabled: 0.4; /** Disabled controls. */
   --type-display-font-size: 2.75rem;
   --type-display-line-height: 1.15;
@@ -1434,7 +1492,7 @@ html[data-scheme="content-first"][data-theme="dark"] {
   --color-category-4: #F2B84B; /** Category 4: tells one item or series from another. It carries no meaning. */
   --color-category-4-subtle: #402B00; /** Category 4: the fill of a tag. */
   --radius-control: 0.5rem; /** Corner of buttons and inputs. */
-  --radius-badge: 9999px; /** Corner of badges and checkboxes. */
+  --radius-badge: 9999px; /** Corner of badges, chips and checkboxes. */
   --radius-option: 0.5rem; /** Corner of options in menus and lists: the panel's corner less its padding, so the corners nest. */
   --radius-container: 0.75rem; /** Corner of cards, menus and dialogs. */
   --type-display-font-family: "Source Serif 4", Georgia, serif;
@@ -1457,11 +1515,13 @@ html[data-scheme="content-first"][data-theme="dark"] {
   --button-compact-height: var(--size-control-compact); /** Compact height of the button. */
   --button-compact-padding-x: var(--space-inset-cell-x); /** Compact padding x of the button. */
   --button-large-height: var(--size-control-large); /** Large height of the button. */
+  --button-focus-offset: var(--border-width-focus-offset); /** Gap between the button and its focus ring. */
   --input-height: var(--size-control-default); /** Input height. */
   --input-padding-x: var(--space-inset-control-x); /** Horizontal padding inside an input. */
   --input-font-size: var(--type-body-font-size); /** Typed text size. */
   --input-border-width: var(--border-width-default); /** Border width of the input. */
   --input-focus: var(--border-width-focus); /** Focus of the input. */
+  --input-focus-offset: var(--border-width-focus-offset); /** Gap between the input and its focus ring. */
   --badge-padding-x: var(--space-gap-tight); /** Horizontal padding inside a badge. */
   --badge-font-size: var(--type-caption-font-size); /** Badge label size. */
   --badge-gap: var(--space-gap-tight); /** Gap of the badge. */
@@ -1489,6 +1549,7 @@ html[data-scheme="content-first"][data-theme="dark"] {
   --tabs-trigger-height: var(--size-control-default); /** Trigger height of the tabs. */
   --tabs-trigger-font-size: var(--type-label-font-size); /** Trigger font size of the tabs. */
   --tabs-trigger-font-weight: var(--type-label-font-weight); /** Trigger font weight of the tabs. */
+  --tabs-trigger-focus-offset: var(--border-width-focus-offset); /** Gap between the tabs trigger and its focus ring. */
   --tabs-focus: var(--border-width-focus); /** Focus of the tabs. */
   --tabs-content-padding-top: var(--space-gap-default); /** Content padding top of the tabs. */
   --overlay-item-height: var(--size-control-default); /** Height of a menu item. */
@@ -1508,6 +1569,7 @@ html[data-scheme="content-first"][data-theme="dark"] {
   --accordion-icon-duration: var(--motion-duration-feedback); /** How fast the chevron turns. */
   --accordion-content-font-size: var(--type-body-font-size); /** The content's text size. */
   --accordion-content-padding-bottom: var(--space-inset-container); /** Space below the content. */
+  --accordion-focus-offset: var(--border-width-focus-offset); /** Gap between the accordion and its focus ring. */
   --alert-dialog-content-gap: var(--space-gap-group); /** Content gap of the alert dialog. */
   --alert-dialog-content-padding: var(--component-spacing-map-x6); /** Content padding of the alert dialog. */
   --alert-dialog-header-gap: var(--component-spacing-map-x2); /** Header gap of the alert dialog. */
@@ -1541,6 +1603,7 @@ html[data-scheme="content-first"][data-theme="dark"] {
   --attachment-font-weight: var(--type-label-font-weight); /** Font weight of the attachment. */
   --attachment-font-size-2: var(--type-caption-font-size); /** Font size 2 of the attachment. */
   --attachment-line-height-2: var(--type-caption-line-height); /** Line height 2 of the attachment. */
+  --attachment-focus-offset: var(--border-width-focus-offset); /** Gap between the attachment and its focus ring. */
   --avatar-size: var(--size-control-default); /** Size of the avatar. */
   --avatar-radius: var(--radius-round); /** Radius of the avatar. */
   --avatar-fallback-radius: var(--radius-round); /** Fallback radius of the avatar. */
@@ -1592,6 +1655,7 @@ html[data-scheme="content-first"][data-theme="dark"] {
   --calendar-icon-size: var(--size-icon); /** Icon size of the calendar. */
   --calendar-font-size-2: var(--type-caption-font-size); /** Font size 2 of the calendar. */
   --calendar-line-height-2: var(--type-caption-line-height); /** Line height 2 of the calendar. */
+  --calendar-focus-offset: var(--border-width-focus-offset); /** Gap between the calendar and its focus ring. */
   --carousel-item-padding-left: var(--component-spacing-map-x4); /** Item padding left of the carousel. */
   --carousel-item-padding-top: var(--component-spacing-map-x4); /** Item padding top of the carousel. */
   --carousel-previous-size: var(--size-control-default); /** Previous size of the carousel. */
@@ -1612,9 +1676,10 @@ html[data-scheme="content-first"][data-theme="dark"] {
   --checkbox-border-width: var(--border-width-default); /** Border width of the checkbox. */
   --checkbox-focus: var(--border-width-focus); /** Focus of the checkbox. */
   --checkbox-disabled: var(--opacity-disabled); /** Disabled of the checkbox. */
+  --checkbox-focus-offset: var(--border-width-focus-offset); /** Gap between the checkbox and its focus ring. */
   --combobox-trigger-icon-size: var(--size-icon); /** Trigger icon size of the combobox. */
   --combobox-trigger-icon-icon-size: var(--size-icon); /** Trigger icon icon size of the combobox. */
-  --combobox-content-height: var(--size-control-default); /** Content height of the combobox. */
+  --combobox-content-border-width: var(--border-width-default); /** Content border width of the combobox. */
   --combobox-list-padding: var(--component-spacing-map-x1); /** List padding of the combobox. */
   --combobox-item-gap: var(--space-gap-default); /** Item gap of the combobox. */
   --combobox-item-padding-y: var(--component-spacing-map-x2); /** Item padding y of the combobox. */
@@ -1641,6 +1706,8 @@ html[data-scheme="content-first"][data-theme="dark"] {
   --combobox-chips-font-size: var(--type-body-font-size); /** Chips font size of the combobox. */
   --combobox-chips-line-height: var(--type-body-line-height); /** Chips line height of the combobox. */
   --combobox-chips-padding-x-2: var(--component-spacing-map-x2); /** Chips padding x 2 of the combobox. */
+  --combobox-chips-focus-width: var(--border-width-focus); /** Focus ring width of the chips field. */
+  --combobox-chips-border-width: var(--border-width-default); /** Border width of the chips field. */
   --combobox-chip-gap: var(--space-gap-tight); /** Chip gap of the combobox. */
   --combobox-chip-padding-x: var(--component-spacing-map-x2); /** Chip padding x of the combobox. */
   --combobox-chip-font-size: var(--type-caption-font-size); /** Chip font size of the combobox. */
@@ -1648,6 +1715,7 @@ html[data-scheme="content-first"][data-theme="dark"] {
   --combobox-chip-font-weight: var(--type-label-font-weight); /** Chip font weight of the combobox. */
   --combobox-chip-disabled-opacity: var(--opacity-disabled); /** Chip disabled opacity of the combobox. */
   --combobox-disabled-opacity: var(--opacity-disabled); /** Disabled opacity of the combobox. */
+  --combobox-input-height: var(--size-control-default); /** Height of the search field in the combobox's list. */
   --command-padding-x: var(--component-spacing-map-x2); /** Padding x of the command. */
   --command-font-weight: var(--type-label-font-weight); /** Font weight of the command. */
   --command-padding-y: var(--component-spacing-map-x3); /** Padding y of the command. */
@@ -1684,7 +1752,9 @@ html[data-scheme="content-first"][data-theme="dark"] {
   --context-menu-sub-trigger-padding-left: var(--component-spacing-map-x8); /** Sub trigger padding left of the context menu. */
   --context-menu-sub-trigger-icon-size: var(--size-icon); /** Sub trigger icon size of the context menu. */
   --context-menu-sub-content-padding: var(--component-spacing-map-x1); /** Sub content padding of the context menu. */
+  --context-menu-sub-content-border-width: var(--border-width-default); /** Border width of the context menu submenu. */
   --context-menu-content-padding: var(--component-spacing-map-x1); /** Content padding of the context menu. */
+  --context-menu-content-border-width: var(--border-width-default); /** Border width of the context menu content. */
   --context-menu-item-gap: var(--space-gap-default); /** Item gap of the context menu. */
   --context-menu-item-padding-x: var(--component-spacing-map-x2); /** Item padding x of the context menu. */
   --context-menu-item-padding-y: var(--component-spacing-map-x2); /** Item padding y of the context menu. */
@@ -1852,6 +1922,7 @@ html[data-scheme="content-first"][data-theme="dark"] {
   --item-actions-gap: var(--space-gap-default); /** Actions gap of the item. */
   --item-header-gap: var(--space-gap-default); /** Header gap of the item. */
   --item-footer-gap: var(--space-gap-default); /** Footer gap of the item. */
+  --item-focus-offset: var(--border-width-focus-offset); /** Gap between the item and its focus ring. */
   --kbd-gap: var(--space-gap-tight); /** Gap of the kbd. */
   --kbd-padding-x: var(--component-spacing-map-x1); /** Padding x of the kbd. */
   --kbd-font-size: var(--type-caption-font-size); /** Font size of the kbd. */
@@ -1873,6 +1944,7 @@ html[data-scheme="content-first"][data-theme="dark"] {
   --menubar-trigger-line-height: var(--type-body-line-height); /** Trigger line height of the menubar. */
   --menubar-trigger-font-weight: var(--type-label-font-weight); /** Trigger font weight of the menubar. */
   --menubar-content-padding: var(--component-spacing-map-x1); /** Content padding of the menubar. */
+  --menubar-content-border-width: var(--border-width-default); /** Border width of the menubar content. */
   --menubar-item-gap: var(--space-gap-default); /** Item gap of the menubar. */
   --menubar-item-padding-x: var(--component-spacing-map-x2); /** Item padding x of the menubar. */
   --menubar-item-padding-y: var(--component-spacing-map-x2); /** Item padding y of the menubar. */
@@ -1912,9 +1984,12 @@ html[data-scheme="content-first"][data-theme="dark"] {
   --menubar-sub-trigger-line-height: var(--type-body-line-height); /** Sub trigger line height of the menubar. */
   --menubar-sub-trigger-padding-left: var(--component-spacing-map-x8); /** Sub trigger padding left of the menubar. */
   --menubar-sub-content-padding: var(--component-spacing-map-x1); /** Sub content padding of the menubar. */
+  --menubar-sub-content-border-width: var(--border-width-default); /** Border width of the menubar submenu. */
   --menubar-height: var(--size-icon); /** Height of the menubar. */
+  --menubar-border-width: var(--border-width-default); /** Border width of the menubar. */
   --message-scroller-gap: var(--space-gap-group); /** Gap of the message scroller. */
   --message-scroller-focus: var(--border-width-focus); /** Focus of the message scroller. */
+  --message-scroller-focus-offset: var(--border-width-focus-offset); /** Gap between the message scroller and its focus ring. */
   --message-gap: var(--component-spacing-map-x3); /** Gap of the message. */
   --message-font-size: var(--type-body-font-size); /** Font size of the message. */
   --message-line-height: var(--type-body-line-height); /** Line height of the message. */
@@ -1933,6 +2008,7 @@ html[data-scheme="content-first"][data-theme="dark"] {
   --native-select-padding-y-2: var(--component-spacing-map-x1); /** Padding y 2 of the native select. */
   --native-select-focus: var(--border-width-focus); /** Focus of the native select. */
   --native-select-icon-size: var(--size-icon); /** Icon size of the native select. */
+  --native-select-focus-offset: var(--border-width-focus-offset); /** Gap between the native select and its focus ring. */
   --navigation-menu-list-gap: var(--space-gap-tight); /** List gap of the navigation menu. */
   --navigation-menu-padding-x: var(--space-inset-container); /** Padding x of the navigation menu. */
   --navigation-menu-padding-y: var(--component-spacing-map-x2); /** Padding y of the navigation menu. */
@@ -1950,6 +2026,8 @@ html[data-scheme="content-first"][data-theme="dark"] {
   --navigation-menu-link-line-height: var(--type-body-line-height); /** Link line height of the navigation menu. */
   --navigation-menu-link-focus: var(--border-width-focus); /** Link focus of the navigation menu. */
   --navigation-menu-link-icon-size: var(--size-icon); /** Link icon size of the navigation menu. */
+  --navigation-menu-link-focus-offset: var(--border-width-focus-offset); /** Gap between the navigation menu link and its focus ring. */
+  --navigation-menu-trigger-focus-offset: var(--border-width-focus-offset); /** Gap between the navigation menu trigger and its focus ring. */
   --pagination-content-gap: var(--space-gap-tight); /** Content gap of the pagination. */
   --pagination-gap: var(--space-gap-tight); /** Gap of the pagination. */
   --pagination-padding-x: var(--component-spacing-map-x3); /** Padding x of the pagination. */
@@ -1967,13 +2045,20 @@ html[data-scheme="content-first"][data-theme="dark"] {
   --radio-group-item-radius: var(--radius-round); /** Item radius of the radio group. */
   --radio-group-item-disabled-opacity-disabled: var(--opacity-disabled); /** Item disabled opacity disabled of the radio group. */
   --radio-group-item-focus: var(--border-width-focus); /** Item focus of the radio group. */
+  --radio-group-item-focus-offset: var(--border-width-focus-offset); /** Gap between the radio group item and its focus ring. */
   --resizable-handle-focus: var(--border-width-focus); /** Handle focus of the resizable. */
   --resizable-height: var(--size-icon); /** Height of the resizable. */
+  --resizable-focus-offset: var(--border-width-focus-offset); /** Gap between the resizable and its focus ring. */
   --scroll-area-viewport-focus: var(--border-width-focus); /** Viewport focus of the scroll area. */
+  --scroll-area-viewport-focus-offset: var(--border-width-focus-offset); /** Gap between the scroll area viewport and its focus ring. */
   --scroll-area-thumb-radius: var(--radius-round); /** Thumb radius of the scroll area. */
   --select-trigger-gap: var(--space-gap-default); /** Trigger gap of the select. */
   --select-trigger-border-width: var(--border-width-default); /** Trigger border width of the select. */
-  --select-focus: var(--border-width-focus); /** Focus of the select. */
+  --select-trigger-font-size: var(--type-body-font-size); /** Text size of the select's trigger, like a text field's. */
+  --select-trigger-height: var(--size-control-default); /** Height of the select's trigger, like a text field's. */
+  --select-trigger-padding-x: var(--space-inset-control-x); /** Side padding of the select's trigger, like a text field's. */
+  --select-trigger-focus-width: var(--border-width-focus); /** Focus ring width of the select's trigger. */
+  --select-trigger-focus-offset: var(--border-width-focus-offset); /** Gap between the select trigger and its focus ring. */
   --select-size: var(--size-icon); /** Size of the select. */
   --select-content-padding: var(--component-spacing-map-x1); /** Content padding of the select. */
   --select-content-border-width: var(--border-width-default); /** Content border width of the select. */
@@ -1992,6 +2077,7 @@ html[data-scheme="content-first"][data-theme="dark"] {
   --sheet-title-font-weight: var(--type-title-font-weight); /** Title font weight of the sheet. */
   --sheet-description-font-size: var(--type-body-font-size); /** Description font size of the sheet. */
   --sheet-description-line-height: var(--type-body-line-height); /** Description line height of the sheet. */
+  --sheet-close-focus-offset: var(--border-width-focus-offset); /** Gap between the sheet close and its focus ring. */
   --sidebar-gap-duration: var(--motion-duration-feedback); /** Gap duration of the sidebar. */
   --sidebar-gap: var(--space-gap-default); /** Gap of the sidebar. */
   --sidebar-container-duration: var(--motion-duration-feedback); /** Container duration of the sidebar. */
@@ -2051,12 +2137,14 @@ html[data-scheme="content-first"][data-theme="dark"] {
   --sidebar-height: var(--size-icon); /** Height of the sidebar. */
   --sidebar-font-size-2: var(--type-caption-font-size); /** Font size 2 of the sidebar. */
   --sidebar-line-height-2: var(--type-caption-line-height); /** Line height 2 of the sidebar. */
+  --sidebar-menu-button-focus-offset: var(--border-width-focus-offset); /** Gap between the sidebar menu button and its focus ring. */
   --slider-disabled-opacity-disabled: var(--opacity-disabled); /** Disabled opacity disabled of the slider. */
   --slider-track-radius: var(--radius-round); /** Track radius of the slider. */
   --slider-thumb-icon-size: var(--size-icon); /** Thumb icon size of the slider. */
   --slider-thumb-radius: var(--radius-round); /** Thumb radius of the slider. */
   --slider-thumb-disabled-opacity-disabled: var(--opacity-disabled); /** Thumb disabled opacity disabled of the slider. */
   --slider-thumb-focus: var(--border-width-focus); /** Thumb focus of the slider. */
+  --slider-thumb-focus-offset: var(--border-width-focus-offset); /** Gap between the slider thumb and its focus ring. */
   --spinner-icon-size: var(--size-icon); /** Icon size of the spinner. */
   --switch-height: var(--size-icon); /** Height of the switch. */
   --switch-width: var(--size-icon); /** Width of the switch. */
@@ -2066,12 +2154,14 @@ html[data-scheme="content-first"][data-theme="dark"] {
   --switch-disabled: var(--opacity-disabled); /** Disabled of the switch. */
   --switch-size: var(--size-icon); /** Size of the switch. */
   --switch-icon: var(--size-icon); /** Icon of the switch. */
+  --switch-focus-offset: var(--border-width-focus-offset); /** Gap between the switch and its focus ring. */
   --textarea-padding-x: var(--space-inset-control-x); /** Padding x of the textarea. */
   --textarea-padding-y: var(--component-spacing-map-x2); /** Padding y of the textarea. */
   --textarea-font-size: var(--type-body-font-size); /** Font size of the textarea. */
   --textarea-line-height: var(--type-body-line-height); /** Line height of the textarea. */
   --textarea-disabled-opacity-disabled: var(--opacity-disabled); /** Disabled opacity disabled of the textarea. */
   --textarea-focus: var(--border-width-focus); /** Focus of the textarea. */
+  --textarea-focus-offset: var(--border-width-focus-offset); /** Gap between the textarea and its focus ring. */
   --toast-gap: var(--space-gap-default); /** Gap of the toast. */
   --toast-padding: var(--space-inset-container); /** Padding of the toast. */
   --toast-border-width: var(--border-width-default); /** Border width of the toast. */
@@ -2091,6 +2181,7 @@ html[data-scheme="content-first"][data-theme="dark"] {
   --toggle-sm-height: var(--size-control-default); /** Sm height of the toggle. */
   --toggle-sm-padding-x: var(--component-spacing-map-x2); /** Sm padding x of the toggle. */
   --toggle-lg-padding-x: var(--component-spacing-map-x3); /** Lg padding x of the toggle. */
+  --toggle-focus-offset: var(--border-width-focus-offset); /** Gap between the toggle and its focus ring. */
   --button-primary-background: var(--color-action-primary); /** Primary button fill. */
   --button-primary-background-hover: var(--color-action-primary-hover); /** Primary button fill on hover. */
   --button-danger-background: var(--color-action-danger); /** Danger button fill. */
@@ -2154,13 +2245,14 @@ html[data-scheme="content-first"][data-theme="dark"] {
   --chart-shadow: var(--elevation-overlay); /** Shadow of the chart. */
   --combobox-content-radius: var(--radius-container); /** Content radius of the combobox. */
   --combobox-content-shadow: var(--elevation-overlay); /** Content shadow of the combobox. */
+  --combobox-content-height: var(--combobox-input-height); /** Deprecated: use component.combobox.input.height (OD-243). Content height of the combobox. */
   --combobox-item-radius: var(--radius-option); /** Item radius of the combobox. */
   --combobox-chips-radius: var(--radius-control); /** Chips radius of the combobox. */
   --combobox-chips-shadow: var(--elevation-card); /** Chips shadow of the combobox. */
   --combobox-chips-border-focus: var(--color-border-focus); /** Chips border focus of the combobox. */
-  --combobox-chips-focus-ring-focus: var(--color-border-focus); /** Chips focus ring focus of the combobox. */
   --combobox-chips-border-invalid: var(--color-status-danger); /** Chips border invalid of the combobox. */
   --combobox-chips-focus-ring-invalid: var(--color-status-danger); /** Chips focus ring invalid of the combobox. */
+  --combobox-chips-focus-ring-highlight: var(--color-border-focus); /** Focus ring of the chips field when the keyboard is in it: the keyboard-focus rule, at full strength. */
   --combobox-chip-radius: var(--radius-badge); /** Chip radius of the combobox. */
   --command-radius: var(--radius-control); /** Radius of the command. */
   --command-input-radius: var(--radius-control); /** Input radius of the command. */
@@ -2171,9 +2263,9 @@ html[data-scheme="content-first"][data-theme="dark"] {
   --context-menu-content-radius: var(--radius-container); /** Content radius of the context menu. */
   --context-menu-content-shadow: var(--elevation-overlay); /** Content shadow of the context menu. */
   --context-menu-item-radius: var(--radius-option); /** Item radius of the context menu. */
-  --context-menu-item-label: var(--color-status-danger); /** Item label of the context menu. */
-  --context-menu-item-background-focus-2: var(--color-status-danger); /** Item background focus 2 of the context menu. */
-  --context-menu-item-label-focus-2: var(--color-status-danger); /** Item label focus 2 of the context menu. */
+  --context-menu-item-label-destructive: var(--color-status-danger); /** Item label when destructive, of the context menu. */
+  --context-menu-item-label-destructive-highlight: var(--color-status-danger); /** Item label of a destructive item when highlighted, of the context menu. */
+  --context-menu-item-background-destructive-highlight: var(--color-status-danger-subtle); /** Item background of a destructive item when highlighted, of the context menu. */
   --context-menu-checkbox-item-radius: var(--radius-option); /** Checkbox item radius of the context menu. */
   --context-menu-radio-item-radius: var(--radius-option); /** Radio item radius of the context menu. */
   --data-table-radius: var(--radius-badge); /** Radius of the data table. */
@@ -2216,15 +2308,15 @@ html[data-scheme="content-first"][data-theme="dark"] {
   --item-description-label-2: var(--color-action-primary); /** Description label 2 of the item. */
   --kbd-radius: var(--radius-badge); /** Radius of the kbd. */
   --label-font-family: var(--type-label-font-family); /** Font family of the label. */
-  --menubar-radius: var(--radius-control); /** Radius of the menubar. */
+  --menubar-radius: var(--radius-container); /** Corner of the menubar: a panel that holds its triggers. */
   --menubar-shadow: var(--elevation-card); /** Shadow of the menubar. */
-  --menubar-trigger-radius: var(--radius-badge); /** Trigger radius of the menubar. */
+  --menubar-trigger-radius: var(--radius-option); /** Corner of a menubar trigger: an option in the bar, nested in its corner. */
   --menubar-content-radius: var(--radius-container); /** Content radius of the menubar. */
   --menubar-content-shadow: var(--elevation-overlay); /** Content shadow of the menubar. */
   --menubar-item-radius: var(--radius-option); /** Item radius of the menubar. */
-  --menubar-item-label: var(--color-status-danger); /** Item label of the menubar. */
-  --menubar-item-background-focus-2: var(--color-status-danger); /** Item background focus 2 of the menubar. */
-  --menubar-item-label-focus-2: var(--color-status-danger); /** Item label focus 2 of the menubar. */
+  --menubar-item-label-destructive: var(--color-status-danger); /** Item label when destructive, of the menubar. */
+  --menubar-item-label-destructive-highlight: var(--color-status-danger); /** Item label of a destructive item when highlighted, of the menubar. */
+  --menubar-item-background-destructive-highlight: var(--color-status-danger-subtle); /** Item background of a destructive item when highlighted, of the menubar. */
   --menubar-checkbox-item-radius: var(--radius-option); /** Checkbox item radius of the menubar. */
   --menubar-radio-item-radius: var(--radius-option); /** Radio item radius of the menubar. */
   --menubar-sub-trigger-radius: var(--radius-option); /** Sub trigger radius of the menubar. */
@@ -2264,6 +2356,9 @@ html[data-scheme="content-first"][data-theme="dark"] {
   --resizable-radius: var(--radius-badge); /** Radius of the resizable. */
   --scroll-area-viewport-focus-ring-focus: var(--color-border-focus); /** Viewport focus ring focus of the scroll area. */
   --select-trigger-font-family: var(--type-body-font-family); /** Trigger font family of the select. */
+  --select-trigger-border-focus: var(--color-border-focus); /** Focus ring of the select's trigger, like a text field's. */
+  --select-trigger-radius: var(--radius-control); /** Corner of the select's trigger, like a text field's. */
+  --select-focus: var(--select-trigger-focus-width); /** Deprecated: use component.select.trigger.focus-width (OD-243). Focus of the select. */
   --select-item-radius: var(--radius-option); /** Item radius of the select. */
   --sheet-overlay-background: var(--color-surface-scrim); /** Overlay background of the sheet. */
   --sheet-content-shadow: var(--elevation-overlay); /** Content shadow of the sheet. */
@@ -2337,7 +2432,14 @@ html[data-scheme="content-first"][data-theme="dark"] {
   --color-disabled-text: #CFC6B6; /** Text and icons of a control that cannot be used right now. */
   --color-disabled-surface: #2E2A24; /** The fill of a control that cannot be used right now. */
   --color-disabled-border: #4A4339; /** The edge of a control that cannot be used right now. */
+  --combobox-chips-focus-ring-focus: var(--combobox-chips-focus-ring-highlight); /** Deprecated: use component.combobox.chips.focus-ring.highlight (OD-243). Chips focus ring focus of the combobox. */
+  --context-menu-item-label: var(--context-menu-item-label-destructive); /** Deprecated: use component.context-menu.item.label.destructive (OD-243). Item label of the context menu. */
+  --context-menu-item-background-focus-2: var(--context-menu-item-background-destructive-highlight); /** Deprecated: use component.context-menu.item.background.destructive-highlight (OD-243). Item background focus 2 of the context menu. */
+  --context-menu-item-label-focus-2: var(--context-menu-item-label-destructive-highlight); /** Deprecated: use component.context-menu.item.label.destructive-highlight (OD-243). Item label focus 2 of the context menu. */
   --dropdown-menu-label: var(--dropdown-menu-item-label-destructive); /** Deprecated: use component.dropdown-menu.item.label.destructive (OD-241). Label of the dropdown menu. */
+  --menubar-item-label: var(--menubar-item-label-destructive); /** Deprecated: use component.menubar.item.label.destructive (OD-243). Item label of the menubar. */
+  --menubar-item-background-focus-2: var(--menubar-item-background-destructive-highlight); /** Deprecated: use component.menubar.item.background.destructive-highlight (OD-243). Item background focus 2 of the menubar. */
+  --menubar-item-label-focus-2: var(--menubar-item-label-destructive-highlight); /** Deprecated: use component.menubar.item.label.destructive-highlight (OD-243). Item label focus 2 of the menubar. */
   --navigation-menu-link-background: var(--navigation-menu-link-background-current); /** Deprecated: use component.navigation-menu.link.background.current (OD-241). Link background of the navigation menu. */
   --sidebar-background-2: var(--sidebar-menu-button-background-current); /** Deprecated: use component.sidebar.menu-button.background.current (OD-241). Background 2 of the sidebar. */
   --button-primary-label: var(--color-text-on-action); /** Primary button label color. */
@@ -2432,9 +2534,7 @@ html[data-scheme="content-first"][data-theme="dark"] {
   --combobox-trigger-icon-label: var(--color-text-muted); /** Trigger icon label of the combobox. */
   --combobox-content-background: var(--color-surface-raised); /** Content background of the combobox. */
   --combobox-content-label: var(--color-text-primary); /** Content label of the combobox. */
-  --combobox-content-focus-ring: var(--color-text-primary); /** Content focus ring of the combobox. */
-  --combobox-content-border: var(--color-border-strong); /** Content border of the combobox. */
-  --combobox-content-background-2: var(--color-border-strong); /** Content background 2 of the combobox. */
+  --combobox-content-border: var(--color-border-default); /** Content border of the combobox, like every menu's. */
   --combobox-item-background: var(--color-surface-sunken); /** Item background of the combobox. */
   --combobox-item-label: var(--color-text-primary); /** Item label of the combobox. */
   --combobox-label-label: var(--color-text-muted); /** Label label of the combobox. */
@@ -2443,6 +2543,8 @@ html[data-scheme="content-first"][data-theme="dark"] {
   --combobox-chips-border: var(--color-border-strong); /** Chips border of the combobox. */
   --combobox-chip-background: var(--color-surface-sunken); /** Chip background of the combobox. */
   --combobox-chip-label: var(--color-text-primary); /** Chip label of the combobox. */
+  --combobox-input-border: var(--color-border-default); /** Border of the search field in the combobox's list. */
+  --combobox-input-background: var(--color-surface-sunken); /** Background of the search field in the combobox's list: a well. */
   --command-background: var(--color-surface-raised); /** Background of the command. */
   --command-label: var(--color-text-primary); /** Label of the command. */
   --command-label-2: var(--color-text-muted); /** Label 2 of the command. */
@@ -2461,8 +2563,10 @@ html[data-scheme="content-first"][data-theme="dark"] {
   --context-menu-sub-trigger-background-open: var(--color-surface-highlight); /** Submenu trigger background while its submenu is open, of the context menu. */
   --context-menu-sub-content-background: var(--color-surface-raised); /** Sub content background of the context menu. */
   --context-menu-sub-content-label: var(--color-text-primary); /** Sub content label of the context menu. */
+  --context-menu-sub-content-border: var(--color-border-default); /** Border of the context menu submenu. */
   --context-menu-content-background: var(--color-surface-raised); /** Content background of the context menu. */
   --context-menu-content-label: var(--color-text-primary); /** Content label of the context menu. */
+  --context-menu-content-border: var(--color-border-default); /** Border of the context menu content. */
   --context-menu-item-label-focus: var(--color-text-primary); /** Item label focus of the context menu. */
   --context-menu-item-label-2: var(--color-text-muted); /** Item label 2 of the context menu. */
   --context-menu-item-background-highlight: var(--color-surface-highlight); /** Item background when highlighted, by the pointer or the keyboard, of the context menu. */
@@ -2523,6 +2627,7 @@ html[data-scheme="content-first"][data-theme="dark"] {
   --menubar-trigger-background-open: var(--color-surface-highlight); /** Trigger background while its menu is open, of the menubar. */
   --menubar-content-background: var(--color-surface-raised); /** Content background of the menubar. */
   --menubar-content-label: var(--color-text-primary); /** Content label of the menubar. */
+  --menubar-content-border: var(--color-border-default); /** Border of the menubar content. */
   --menubar-item-label-focus: var(--color-text-primary); /** Item label focus of the menubar. */
   --menubar-item-label-2: var(--color-text-muted); /** Item label 2 of the menubar. */
   --menubar-item-background-highlight: var(--color-surface-highlight); /** Item background when highlighted, by the pointer or the keyboard, of the menubar. */
@@ -2538,6 +2643,8 @@ html[data-scheme="content-first"][data-theme="dark"] {
   --menubar-sub-trigger-background-open: var(--color-surface-highlight); /** Submenu trigger background while its submenu is open, of the menubar. */
   --menubar-sub-content-background: var(--color-surface-raised); /** Sub content background of the menubar. */
   --menubar-sub-content-label: var(--color-text-primary); /** Sub content label of the menubar. */
+  --menubar-sub-content-border: var(--color-border-default); /** Border of the menubar submenu. */
+  --menubar-border: var(--color-border-default); /** Border of the menubar. */
   --message-scroller-focus-ring-offset-focus: var(--color-surface-canvas); /** Focus ring offset focus of the message scroller. */
   --message-time-label: var(--color-text-muted); /** Time label of the message. */
   --native-select-border: var(--color-border-strong); /** Border of the native select. */
@@ -2577,7 +2684,11 @@ html[data-scheme="content-first"][data-theme="dark"] {
   --resizable-background: var(--color-border-default); /** Background of the resizable. */
   --scroll-area-viewport-focus-ring-offset-focus: var(--color-surface-canvas); /** Viewport focus ring offset focus of the scroll area. */
   --scroll-area-thumb-background: var(--color-border-default); /** Thumb background of the scroll area. */
-  --select-canvas: var(--color-surface-canvas); /** Canvas of the select. */
+  --select-trigger-background: var(--color-surface-default); /** Background of the select's trigger, like a text field's. */
+  --select-trigger-border: var(--color-border-strong); /** Border of the select's trigger, like a text field's. */
+  --select-trigger-placeholder: var(--color-text-muted); /** Placeholder text of the select's trigger, like a text field's. */
+  --select-trigger-text: var(--color-text-primary); /** Text of the select's trigger, like a text field's. */
+  --select-trigger-focus-ring-offset: var(--color-surface-canvas); /** The gap behind the select trigger's focus ring: the page canvas. */
   --select-content-label: var(--color-text-primary); /** Content label of the select. */
   --select-content-border: var(--color-border-default); /** Content border of the select. */
   --select-item-background-highlight: var(--color-surface-highlight); /** Item background when highlighted, by the pointer or the keyboard, of the select. */
@@ -2646,6 +2757,8 @@ html[data-scheme="content-first"][data-theme="dark"] {
   --toggle-outline-label-hover: var(--color-text-primary); /** Outline label hover of the toggle. */
   --toggle-outline-background-hover: var(--color-surface-highlight); /** Outline toggle background under the pointer. */
   --toggle-background-hover: var(--color-surface-highlight); /** Background under the pointer, of the toggle. */
+  --combobox-content-focus-ring: var(--combobox-content-border); /** Deprecated: use component.combobox.content.border (OD-243). Content focus ring of the combobox. */
+  --combobox-content-background-2: var(--combobox-input-background); /** Deprecated: use component.combobox.input.background (OD-243). Content background 2 of the combobox. */
   --command-item-background-selected: var(--command-item-background-highlight); /** Deprecated: use component.command.item.background.highlight (OD-241). Item background selected of the command. */
   --context-menu-sub-trigger-background-focus: var(--context-menu-sub-trigger-background-highlight); /** Deprecated: use component.context-menu.sub.trigger.background.highlight (OD-241). Sub trigger background focus of the context menu. */
   --context-menu-item-background-focus: var(--context-menu-item-background-highlight); /** Deprecated: use component.context-menu.item.background.highlight (OD-241). Item background focus of the context menu. */
@@ -2666,6 +2779,7 @@ html[data-scheme="content-first"][data-theme="dark"] {
   --navigation-menu-background-open-hover: var(--navigation-menu-trigger-background-open-hover); /** Deprecated: use component.navigation-menu.trigger.background.open-hover (OD-241). Background open hover of the navigation menu. */
   --navigation-menu-background-open-focus: var(--navigation-menu-trigger-background-open-highlight); /** Deprecated: use component.navigation-menu.trigger.background.open-highlight (OD-241). Background open focus of the navigation menu. */
   --navigation-menu-link-background-focus: var(--navigation-menu-link-background-highlight); /** Deprecated: use component.navigation-menu.link.background.highlight (OD-241). Link background focus of the navigation menu. */
+  --select-canvas: var(--select-trigger-focus-ring-offset); /** Deprecated: use component.select.trigger.focus-ring-offset (OD-243). Canvas of the select. */
   --select-item-sunken: var(--select-item-background-highlight); /** Deprecated: use component.select.item.background.highlight (OD-241). Item sunken of the select. */
   --sidebar-rail-background-hover: var(--sidebar-rail-line-hover); /** Deprecated: use component.sidebar.rail.line.hover (OD-241). Rail background hover of the sidebar. */
   --sidebar-background-hover: var(--sidebar-rail-background-hover); /** Deprecated: use component.sidebar.rail.background.hover (OD-241). Background hover of the sidebar. */

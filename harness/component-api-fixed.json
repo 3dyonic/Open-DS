@@ -53,6 +53,11 @@
     "sidebar: h-5 (1.25rem) has no semantic with the same value; nearest size.control.default is 2rem",
     "slider: h-1.5 (0.375rem) has no semantic with the same value; nearest size.control.default is 2rem",
     "toggle: h-9 (2.25rem) has no semantic with the same value; nearest size.control.default is 2rem",
-    "toggle: h-10 (2.5rem) has no semantic with the same value; nearest size.control.default is 2rem"
+    "toggle: h-10 (2.5rem) has no semantic with the same value; nearest size.control.default is 2rem",
+    "avatar: ring-2 (the ring that separates stacked avatars) has no semantic yet; fixed in its OD-243 batch",
+    "calendar: ring-[3px] (the focused day ring) reads no border-width.focus yet; fixed in its OD-243 batch",
+    "input-group: ring-[3px] (the focus ring) reads no border-width.focus yet; fixed in its OD-243 batch",
+    "input-otp: ring-[3px] (the active slot ring) reads no border-width.focus yet; fixed in its OD-243 batch",
+    "slider: ring-4 (the thumb focus ring) reads no border-width.focus yet; fixed in its OD-243 batch"
   ]
 }

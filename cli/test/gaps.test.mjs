@@ -34,3 +34,26 @@ test("skips-a-component: an empty state drawn by hand, not the Empty component",
   assert.equal(drawsOwnEmpty(`import { Empty } from "./empty";\n${own}`, "data-table"), false);
   assert.equal(drawsOwnEmpty(own, "empty"), false);
 });
+
+test("nested-corner: a trigger in a bar nests like an option in a menu", () => {
+  // The menubar before OD-246: a pill trigger in Content first's rounded bar.
+  const pill = structuredClone(loadScheme("content-first", roots));
+  pill.id = "content-first-pill-trigger";
+  pill.tokens.component.menubar.trigger.radius.$value = "{radius.badge}";
+  assert.ok(componentGaps(pill, g, roots).some((x) => x.kind === "nested-corner" && x.component === "menubar" && x.part === "trigger"));
+});
+
+test("fades-a-color: an opacity modifier on a key or a named color", () => {
+  // A color faded by hand. The known case: the calendar's focus ring at 50%.
+  assert.ok(gaps("dense-data").some((x) => x.kind === "fades-a-color" && x.component === "calendar"));
+  // Fixed in OD-243: the menus' destructive highlight reads the danger tint, unfaded.
+  for (const c of ["context-menu", "menubar", "combobox"])
+    assert.ok(!gaps("dense-data").some((x) => x.kind === "fades-a-color" && x.component === c), c);
+});
+
+test("a class that reaches into a child paints the child, and has-[…] does not", async () => {
+  const { usages } = await import("../src/gaps.mjs");
+  const src = `<div data-slot="combobox-content" className="*:data-[slot=input-group]:h-[var(--x)] has-data-[slot=combobox-chip]:px-[var(--y)]" />`;
+  assert.equal(usages(src, "combobox", "--x")[0].part, "input-group");
+  assert.equal(usages(src, "combobox", "--y")[0].part, "content");
+});

@@ -982,14 +982,18 @@ export const CHECKS = {
     requires: ["ui/src/components"],
     run: (c) => {
       // OD-222: the focus ring is the accent, often the color of the fill it surrounds, so every ring
-      // keeps a 2px gap in the canvas color between it and the control.
+      // keeps a gap in the canvas color between it and the control. OD-243: the gap is a decision,
+      // border-width.focus-offset, read through the component's own focus-offset key.
       const gaps = [];
       for (const f of c.walk("ui/src/components", (x) => x.endsWith(".tsx")))
         for (const cls of c.read(f).match(/"[^"\n]*"/g) ?? []) {
           const draws = /(focus-visible|has-focus|focus):ring-(?!0\b|offset)/.test(cls);
-          if (draws && !/ring-offset-2\b/.test(cls)) gaps.push(`${f}: a focus ring with no gap`);
+          if (draws && !/ring-offset-\[length:var\(--[a-z0-9-]+-focus-offset\)\]/.test(cls))
+            gaps.push(`${f}: a focus ring with no gap, or a gap not read from its focus-offset key`);
         }
-      return gaps.length ? bad(gaps.slice(0, 6).join("; ")) : ok("every focus ring keeps a 2px gap from its control");
+      return gaps.length
+        ? bad(gaps.slice(0, 6).join("; "))
+        : ok("every focus ring keeps its gap from the control, read from border-width.focus-offset");
     },
   },
 
@@ -1432,6 +1436,13 @@ export const CHECKS = {
           if (/-0$/.test(m[1])) continue;
           if (!fixed.has(`${comp}: ${m[1]}`)) gaps.push(`${comp} has a fixed ${m[1]} that is not listed`);
         }
+        // OD-243: a focus ring's width and gap are decisions (border-width.focus, .focus-offset). shadcn
+        // wrote them by hand (ring-2, ring-[3px], ring-offset-2); none may come back unlisted.
+        for (const m of src.matchAll(
+          /(?:^|[\s"'`:])((?:ring|ring-offset|outline|outline-offset)-(?:[1-9]\d*|\[\d+px\]))(?=[\s"'`]|$)/gm,
+        ))
+          if (!fixed.has(`${comp}: ${m[1]}`))
+            gaps.push(`${comp} has a hand-written ${m[1]}; read border-width.focus or .focus-offset through a key`);
       }
       return gaps.length
         ? bad([...new Set(gaps)].slice(0, 8).join("; "))

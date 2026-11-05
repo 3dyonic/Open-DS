@@ -84,7 +84,7 @@ const SHADCN = {
 // shadcn's radius, shadow and text classes, mapped onto the scheme's tokens. Written to build/shadcn.css.
 const SHADCN_SCALE = {
   "--radius-xs": "var(--radius-badge)",
-  "--radius-sm": "var(--radius-badge)",
+  "--radius-sm": "var(--radius-option)", // shadcn's menu and select items: options (OD-246)
   "--radius-md": "var(--radius-control)",
   "--radius-lg": "var(--radius-container)",
   "--radius-xl": "var(--radius-container)",

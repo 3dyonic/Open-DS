@@ -16,7 +16,7 @@ export function Checkbox({ className, ...props }: React.ComponentProps<typeof Ch
         "peer size-[var(--checkbox-size)] shrink-0 rounded-[var(--control-radius)] bg-[var(--input-background)]",
         "border-[length:var(--checkbox-border-width)] border-[var(--control-track)]",
         "data-[state=checked]:bg-[var(--control-checked)] data-[state=checked]:border-[var(--control-checked)] data-[state=checked]:text-[var(--control-thumb)]",
-        "outline-none focus-visible:ring-[length:var(--checkbox-focus)] focus-visible:ring-[color:var(--button-focus-ring)] disabled:opacity-[var(--checkbox-disabled)] focus-visible:ring-offset-2 focus-visible:ring-offset-[color:var(--checkbox-canvas)]",
+        "outline-none focus-visible:ring-[length:var(--checkbox-focus)] focus-visible:ring-[color:var(--button-focus-ring)] disabled:opacity-[var(--checkbox-disabled)] focus-visible:ring-offset-[length:var(--checkbox-focus-offset)] focus-visible:ring-offset-[color:var(--checkbox-canvas)]",
         className,
       )}
       {...props}

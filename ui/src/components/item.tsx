@@ -23,7 +23,7 @@ function ItemSeparator({ className, ...props }: React.ComponentProps<typeof Sepa
 }
 
 const itemVariants = cva(
-  "group/item flex flex-wrap items-center rounded-[var(--item-radius)] border border-transparent text-[length:var(--item-font-size)]/[var(--item-line-height)] outline-none transition-colors duration-[var(--item-duration)] focus-visible:border-[color:var(--item-border-focus)] [a]:transition-colors [a]:hover:bg-[color:var(--item-background-hover)]/50 focus-visible:ring-[length:var(--item-focus)] focus-visible:ring-[color:var(--item-focus-ring-focus)] focus-visible:ring-offset-2 focus-visible:ring-offset-[color:var(--item-focus-ring-offset-focus)]",
+  "group/item flex flex-wrap items-center rounded-[var(--item-radius)] border border-transparent text-[length:var(--item-font-size)]/[var(--item-line-height)] outline-none transition-colors duration-[var(--item-duration)] focus-visible:border-[color:var(--item-border-focus)] [a]:transition-colors [a]:hover:bg-[color:var(--item-background-hover)]/50 focus-visible:ring-[length:var(--item-focus)] focus-visible:ring-[color:var(--item-focus-ring-focus)] focus-visible:ring-offset-[length:var(--item-focus-offset)] focus-visible:ring-offset-[color:var(--item-focus-ring-offset-focus)]",
   {
     variants: {
       variant: {
