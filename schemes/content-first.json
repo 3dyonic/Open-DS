@@ -1691,7 +1691,7 @@
       "situation": "number-in-table",
       "use": "type.body",
       "not": "A mono font",
-      "why": "Tables are rare and read row by row.",
+      "why": "Tables are rare and read row by row, so digits never need to line up in columns. A mono font would break the reading voice.",
       "because": [
         "tasks.q1"
       ]
@@ -1745,7 +1745,7 @@
       "situation": "status-label",
       "use": "Badge pill with a word",
       "not": "An icon alone",
-      "why": "Status is rare; a word is clear.",
+      "why": "Status is rare, so readers never learn an icon for it. A word is clear the first time.",
       "because": [
         "accessibility.count"
       ],
@@ -1786,7 +1786,7 @@
       "situation": "control-corner",
       "use": "radius.control (rounded)",
       "not": "Sharp corners",
-      "why": "Rounded corners feel friendly.",
+      "why": "Rounded corners match the warm reading tone. Sharp corners feel technical next to long text.",
       "because": [
         "shape.values"
       ]
@@ -1822,7 +1822,7 @@
       "situation": "hover-feedback",
       "use": "motion.duration.feedback (moderate)",
       "not": "A fast flash",
-      "why": "Moderate speed feels calm.",
+      "why": "Moderate speed feels calm in a slow reading flow. A fast flash feels jumpy.",
       "because": [
         "motion.values"
       ]
@@ -1831,7 +1831,7 @@
       "situation": "reduced-motion",
       "use": "No motion",
       "not": "Reduced motion",
-      "why": "When people ask for less motion, nothing moves.",
+      "why": "A shorter motion still moves. When people ask for less motion, nothing moves.",
       "because": [
         "motion.roles"
       ]
@@ -1884,7 +1884,7 @@
       "situation": "commit-action",
       "use": "Button primary, one per section",
       "not": "Two primaries side by side",
-      "why": "One clear action per section.",
+      "why": "One clear action per section. Two primaries make the reader choose before they have read.",
       "because": [
         "tasks.q2"
       ],

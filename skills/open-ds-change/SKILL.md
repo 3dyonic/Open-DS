@@ -7,6 +7,7 @@ tools:
   - get_key
   - plan_change
   - get_component
+  - get_decision_reference
 ---
 
 # Change the design system
@@ -34,7 +35,7 @@ Each layer of the system feeds the next. A change at the right layer moves only 
 5. For a raw option, change the primitive that the semantic token points to.
 6. Before any change, call `plan_change`, or run `open-ds change <scheme> <question-id> <option>`.
 7. For a primitive, plan with the token path and the new value. Fix each pair that would fail contrast.
-8. For a decision, read what the plan returns: the answers that follow, the variant decisions and the rules.
+8. For a decision, read what the plan returns: the answers that follow, the variant decisions and the rules. `get_decision_reference` with the question id shows what the answer decided directly, each with its why.
 9. Check each variant decision it lists with `get_component`. Update the decisions that no longer fit.
 10. Write the new reason for each answer you change.
 11. Rebuild the tokens with `npm run tokens`.

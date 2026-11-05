@@ -154,7 +154,7 @@ Themes: light, dark
 
 ### Usage rules
 
-- Page title (page-title): use type.title; not type.display; A clear, consistent title on every page.
+- Page title (page-title): use type.title; not type.display; The same title size on every page tells people where they are. The display size changes from page to page and pushes the content down.
 - A number in a table (number-in-table): use type.body; not A small or mono font; Every number must be readable at large size.
 - Paragraph or help text (paragraph): use type.body, short sentences; not type.caption; Large text and short lines lower effort.
 - Field label or column header (field-label): use type.label, above the field, always visible; not A placeholder as the label; Labels must stay visible while typing.
@@ -170,12 +170,12 @@ Themes: light, dark
 - A card on the page (card): use A strong border, no shadow; not A shadow; Shadows are hard to see; borders are not.
 - A menu or dialog (menu-or-dialog): use A strong border and a dimmed page; not A shadow only; The dimmed page makes the dialog obvious.
 - Hover and press feedback (hover-feedback): use motion.duration.feedback (moderate); not Fast flicker; Moderate speed is easy to follow.
-- Someone asked for less motion (reduced-motion): use No motion; not Reduced motion; When people ask for less motion, nothing moves.
+- Someone asked for less motion (reduced-motion): use No motion; not Reduced motion; A shorter motion still moves. When people ask for less motion, nothing moves.
 - An icon with no label (icon-alone): use Not used: always add a word; not An icon button; Icons alone are guesswork.
 - Someone switches to dark (dark-mode): use The dark semantic mode, or high contrast; not One mode only; People pick the mode they can read.
 - Keyboard focus (keyboard-focus): use button/focus-ring at border-width.focus, with an offset; not A thin or faint outline; Focus must be seen by everyone.
 - The smallest clickable thing (smallest-target): use size.control.default (large); not Touch-minimum size; Large targets help people with motor needs.
-- The action that completes the task (commit-action): use Button primary, one per page; not Two primaries; One clear next step.
+- The action that completes the task (commit-action): use Button primary, one per page; not Two primaries; One clear next step. Two primaries make people stop and compare, which adds effort.
 - An alternative or cancel (alternative-action): use Button secondary; not A text link; Every action looks like a button people can find.
 - Delete or remove (destructive-action): use Button secondary, then a confirm page with Button danger; not Button primary; A confirm step prevents a costly error.
 - An action on one row or item (row-action): use Button secondary with a word; not An icon on its own; A word says what will happen.
@@ -294,7 +294,7 @@ Themes: light, dark
 ### Usage rules
 
 - Page title (page-title): use type.display; not type.title; The display role carries the brand in every hero.
-- A number in a table (number-in-table): use type.body; not A mono font; Tables are rare; keep the brand voice.
+- A number in a table (number-in-table): use type.body; not A mono font; Tables are rare and never compared column by column, so mono digits add nothing. The brand font keeps the voice.
 - Paragraph or help text (paragraph): use type.body, short; not Long paragraphs; Short copy keeps the energy.
 - Field label or column header (field-label): use type.label; not type.caption; Labels stay readable on vivid color.
 - A selected row or item (selected-row): use color.surface.selected (brand tint); not Grey; Selection carries the brand.
@@ -303,21 +303,21 @@ Themes: light, dark
 - A status (status-label): use Badge pill with a word; not Color alone; A word keeps meaning on vivid backgrounds.
 - Items that belong together (related-items): use space.gap.default; not space.gap.tight; Air keeps big type readable.
 - Between page sections (between-sections): use space.gap.section and a color block; not A thin line; Big space and color make each section a moment.
-- Table row height (table-row): use size.row (comfortable); not A compact row; Rare tables stay airy.
-- Corners of buttons and inputs (control-corner): use radius.control (pill); not Sharp corners; Pills feel playful.
+- Table row height (table-row): use size.row (comfortable); not A compact row; Tables are rare and short, so there is no need to fit many rows. Comfortable rows keep the brand's airy rhythm.
+- Corners of buttons and inputs (control-corner): use radius.control (pill); not Sharp corners; Pills match the brand's round, playful shapes. Sharp corners would feel corporate.
 - Shape of a status badge (status-shape): use radius.badge (pill); not A rectangle; Pills match the controls.
 - A card on the page (card): use elevation.card (pronounced); not A flat card; Cards float to feel tactile.
-- A menu or dialog (menu-or-dialog): use elevation.overlay and a dimmed page; not No shadow; Strong depth for floating things.
-- Hover and press feedback (hover-feedback): use motion.duration.feedback (fast); not An instant change; Fast feedback, on the brand's spring.
-- Someone asked for less motion (reduced-motion): use Reduced motion; not Full motion; Motion is reduced when asked.
+- A menu or dialog (menu-or-dialog): use elevation.overlay and a dimmed page; not No shadow; Strong depth shows a menu or dialog sits above vivid sections. Without a shadow it blends into the color blocks.
+- Hover and press feedback (hover-feedback): use motion.duration.feedback (fast); not An instant change; Fast feedback, on the brand's spring. An instant change drops the brand's motion.
+- Someone asked for less motion (reduced-motion): use Reduced motion; not Full motion; Motion is part of the brand, so it shrinks to a fade instead of vanishing. Full motion is never forced on people who asked for less.
 - An icon with no label (icon-alone): use Not used: always add a word; not An icon button with a hover hint; On phones, hover hints never show; a word says what will happen.
 - Someone switches to dark (dark-mode): use The dark semantic mode; not A separate campaign palette; Dark ships as standard; campaigns change values, not structure.
 - Keyboard focus (keyboard-focus): use button/focus-ring at border-width.focus; not Removing the outline; Focus must show on vivid color.
-- The smallest clickable thing (smallest-target): use size.control.default (touch); not A compact control; Phones first.
+- The smallest clickable thing (smallest-target): use size.control.default (touch); not A compact control; Most visitors arrive on phones, and a compact control is too small for a thumb.
 - The action that completes the task (commit-action): use Button primary, large, one per section; not Two primaries; One loud call to action per section.
 - An alternative or cancel (alternative-action): use Button ghost; not A second primary; The alternative must not compete.
 - Delete or remove (destructive-action): use Button secondary, then confirm with Button danger; not Button primary; Confirm before destroying data.
-- An action on one row or item (row-action): use Button ghost with a word; not An icon alone; A word keeps it clear.
+- An action on one row or item (row-action): use Button ghost with a word; not An icon alone; Visitors come rarely, so they never learn an icon. A word says what will happen.
 - A value with no token (missing-token): use The closest semantic token, then ask for a new one; not A raw value in the component; The next campaign changes primitives; raw values would stay behind.
 - A button label (button-label): use A short verb that moves: Join, Try, Go; not "Learn more"; Big moments need verbs with energy. Example: "Join the drop"
 - The words of an error (error-words): use Plain first, a light touch after; not A joke before the fix; Playful copy must never hide what went wrong. Example: "That email doesn't look right. Check it and try again."
@@ -433,27 +433,27 @@ Themes: light, dark
 ### Usage rules
 
 - Page title (page-title): use type.title; not type.display (landing only); Display is kept for the landing moment; article titles stay calm.
-- A number in a table (number-in-table): use type.body; not A mono font; Tables are rare and read row by row.
+- A number in a table (number-in-table): use type.body; not A mono font; Tables are rare and read row by row, so digits never need to line up in columns. A mono font would break the reading voice.
 - Paragraph or help text (paragraph): use type.body, at most 65 characters a line; not type.caption; A large size and short lines make long text easy on the eyes.
 - Field label or column header (field-label): use type.label; not type.caption; Caption is too faint for a label people must read.
 - A selected row or item (selected-row): use color.surface.selected; not Bold text only; A tint shows the choice clearly on warm paper.
 - An error message (error-message): use color.status.danger and a plain sentence; not Color alone; The sentence says what to fix; color only draws the eye.
 - A link (link): use color.text.link, underlined; not Color without underline; Readers expect links to be underlined inside text.
-- A status (status-label): use Badge pill with a word; not An icon alone; Status is rare; a word is clear.
+- A status (status-label): use Badge pill with a word; not An icon alone; Status is rare, so readers never learn an icon for it. A word is clear the first time.
 - Items that belong together (related-items): use space.gap.default; not space.gap.tight; Text needs air even inside a group.
 - Between page sections (between-sections): use space.gap.section, no line; not A divider line; Space alone separates sections; lines add noise.
 - Table row height (table-row): use size.row (comfortable); not A compact row; Rows are read, not scanned.
-- Corners of buttons and inputs (control-corner): use radius.control (rounded); not Sharp corners; Rounded corners feel friendly.
+- Corners of buttons and inputs (control-corner): use radius.control (rounded); not Sharp corners; Rounded corners match the warm reading tone. Sharp corners feel technical next to long text.
 - Shape of a status badge (status-shape): use radius.badge (pill); not A rectangle; Pills sit softly next to text.
 - A card on the page (card): use A border, no shadow; not A strong shadow; Cards stay flat on the page; shadows are for floating things.
 - A menu or dialog (menu-or-dialog): use elevation.overlay and a dimmed page; not No shadow; The dimmed page focuses the reader on the dialog.
-- Hover and press feedback (hover-feedback): use motion.duration.feedback (moderate); not A fast flash; Moderate speed feels calm.
-- Someone asked for less motion (reduced-motion): use No motion; not Reduced motion; When people ask for less motion, nothing moves.
+- Hover and press feedback (hover-feedback): use motion.duration.feedback (moderate); not A fast flash; Moderate speed feels calm in a slow reading flow. A fast flash feels jumpy.
+- Someone asked for less motion (reduced-motion): use No motion; not Reduced motion; A shorter motion still moves. When people ask for less motion, nothing moves.
 - An icon with no label (icon-alone): use Not used: always add a word; not An icon button; Occasional visitors do not know icons.
 - Someone switches to dark (dark-mode): use The dark semantic mode; not Inverting images; Only semantic colors change; the reading layout stays.
 - Keyboard focus (keyboard-focus): use button/focus-ring at border-width.focus; not Removing the outline; Keyboard users must always see where they are.
 - The smallest clickable thing (smallest-target): use size.control.default (touch); not A compact control; Many readers are on phones.
-- The action that completes the task (commit-action): use Button primary, one per section; not Two primaries side by side; One clear action per section.
+- The action that completes the task (commit-action): use Button primary, one per section; not Two primaries side by side; One clear action per section. Two primaries make the reader choose before they have read.
 - An alternative or cancel (alternative-action): use Button ghost as a text link; not A second boxed button; A link feels lighter and does not compete.
 - Delete or remove (destructive-action): use Button secondary with the full verb, then confirm with Button danger; not Button primary; Naming the verb and confirming prevents a mistake.
 - An action on one row or item (row-action): use Button ghost with a word; not An icon on its own; Occasional visitors need the word.
@@ -573,7 +573,7 @@ Themes: light, dark
 
 - Page title (page-title): use type.title; not type.display; Titles stay small so the table starts higher on the screen.
 - A number in a table (number-in-table): use type.data; not type.body; Mono digits line up in columns, so values compare at a glance.
-- Paragraph or help text (paragraph): use type.body; not type.label; Help text is read in passing; body size keeps it quick.
+- Paragraph or help text (paragraph): use type.body; not type.label; Help text is a sentence read in passing. Body size reads quickly; the label style is made for short names, not sentences.
 - Field label or column header (field-label): use type.label; not type.heading; Headers repeat on every column; a heavy style would compete with the data.
 - A selected row or item (selected-row): use color.surface.selected; not color.action.primary as a fill; A light tint shows selection without hiding the data.
 - An error message (error-message): use color.status.danger with an icon; not color.status.warning; Red always means fix this, and the icon says it without color.
@@ -587,13 +587,13 @@ Themes: light, dark
 - A card on the page (card): use A hairline border, no shadow; not A shadow; On a busy grid, lines separate. Shadows blur the edges.
 - A menu or dialog (menu-or-dialog): use elevation.overlay and a dimmed page for dialogs; not A border only; Floating things need a shadow so they read as on top.
 - Hover and press feedback (hover-feedback): use motion.duration.feedback (fast); not No transition; Fast feedback confirms the pointer without slowing experts.
-- Someone asked for less motion (reduced-motion): use No motion; not A shorter version of the motion; When people ask for less motion, nothing moves.
+- Someone asked for less motion (reduced-motion): use No motion; not A shorter version of the motion; A shorter motion still moves. When people ask for less motion, nothing moves.
 - An icon with no label (icon-alone): use Icon button with a tooltip; not A bare icon; Experts learn icons; the tooltip covers the first uses.
 - Someone switches to dark (dark-mode): use The dark semantic mode; not A second palette in components; Only semantic colors change, so layout never moves.
 - Keyboard focus (keyboard-focus): use button/focus-ring at border-width.focus; not Removing the outline; Keyboard users must always see where they are.
 - The smallest clickable thing (smallest-target): use size.control.compact; not Anything smaller; Compact still fits a mouse. Touch is not this product's input.
 - The action that completes the task (commit-action): use Button primary, one per view; not Two primaries side by side; One primary makes the committing action obvious.
-- An alternative or cancel (alternative-action): use Button secondary; not Button ghost; Cancel must be easy to find next to the primary.
+- An alternative or cancel (alternative-action): use Button secondary; not Button ghost; A ghost button has no edge, so next to a filled primary it reads as plain text and cancel gets lost. Secondary keeps a visible border, so people find it at once.
 - Delete or remove (destructive-action): use Button secondary, then confirm in a dialog with Button danger; not Button primary as the first step; Deleting is rare and costly; a confirm step catches mistakes.
 - An action on one row or item (row-action): use Icon button, ghost, compact; not Button secondary in every row; Rows repeat dozens of times; a quiet icon keeps the table readable.
 - A value with no token (missing-token): use The closest semantic token, then ask for a new one; not A raw value in the component; Raw values break dark mode and the next redesign.
@@ -711,28 +711,28 @@ Themes: aster-light, aster-dark, birch-light, birch-dark, coral-light, coral-dar
 ### Usage rules
 
 - Page title (page-title): use type.title in the brand font; not A brand-specific style; Roles stay shared; only the brand font changes.
-- A number in a table (number-in-table): use type.body; not A mono font; Numbers read like text in every brand.
+- A number in a table (number-in-table): use type.body; not A mono font; Prices sit in sentences and offers, not in columns to compare, so a mono font adds nothing in any brand.
 - Paragraph or help text (paragraph): use type.body; not type.caption; Regular body size suits every brand.
 - Field label or column header (field-label): use type.label; not type.caption; Labels stay readable in every brand.
 - A selected row or item (selected-row): use color.surface.selected (from the brand); not A fixed blue; Selection follows the brand color.
 - An error message (error-message): use color.status.danger and a sentence; not The brand color; Status colors are shared, never branded.
-- A link (link): use color.text.link (from the brand); not A fixed blue; Links follow the brand.
+- A link (link): use color.text.link (from the brand); not A fixed blue; Links take the brand's color, so they look native in each brand. A fixed blue would clash with some brands.
 - A status (status-label): use Badge with a word; not A brand color as status; Brand hues vary, so meaning needs a word.
 - Items that belong together (related-items): use space.gap.default; not Brand-specific spacing; Spacing is shared across brands.
-- Between page sections (between-sections): use space.gap.section and cards; not Lines; Cards group offers in every brand.
-- Table row height (table-row): use size.row (comfortable); not A compact row; Comfortable rows in every brand.
+- Between page sections (between-sections): use space.gap.section and cards; not Lines; Cards hold each offer together, so customers compare offers as units in every brand. Lines would split an offer apart.
+- Table row height (table-row): use size.row (comfortable); not A compact row; Customers browse on phones, and compact rows are hard to tap in any brand.
 - Corners of buttons and inputs (control-corner): use radius.control (set by the brand); not A hard-coded radius; Each brand sets its own corner through the theme.
 - Shape of a status badge (status-shape): use radius.badge (set by the brand); not A hard-coded shape; The brand sets the badge shape.
 - A card on the page (card): use elevation.card; not A border only; Cards lift slightly to group offers.
-- A menu or dialog (menu-or-dialog): use elevation.overlay and a dimmed page; not No shadow; Same overlay in every brand.
-- Hover and press feedback (hover-feedback): use motion.duration.feedback (moderate); not Brand-specific motion; Motion is shared across brands.
-- Someone asked for less motion (reduced-motion): use Reduced motion; not Full motion; Motion is reduced, not removed.
+- A menu or dialog (menu-or-dialog): use elevation.overlay and a dimmed page; not No shadow; The shadow shows a menu or dialog floats above the page. Without it, it blends into the cards.
+- Hover and press feedback (hover-feedback): use motion.duration.feedback (moderate); not Brand-specific motion; Motion is shared, so one component library behaves the same in every brand.
+- Someone asked for less motion (reduced-motion): use Reduced motion; not Full motion; Motion is reduced, not removed: a fade keeps the change visible, and nothing slides.
 - An icon with no label (icon-alone): use Not used: always add a word; a popover explains a fee; not An icon button with a hover hint; On touch screens hover hints never show; a word says what will happen.
 - Someone switches to dark (dark-mode): use The dark mode of the active brand; not One dark theme for all brands; Every brand ships light and dark.
 - Keyboard focus (keyboard-focus): use button/focus-ring (from the brand); not Removing the outline; Focus follows the brand but always shows.
 - The smallest clickable thing (smallest-target): use size.control.default (touch); not A compact control; Customers are often on phones.
-- The action that completes the task (commit-action): use Button primary, one per view; not Two primaries; One clear action per view.
-- An alternative or cancel (alternative-action): use Button secondary; not A second primary; The alternative steps back.
+- The action that completes the task (commit-action): use Button primary, one per view; not Two primaries; One clear action per view. Two primaries split attention.
+- An alternative or cancel (alternative-action): use Button secondary; not A second primary; The alternative steps back, so the one primary stays clear. A second primary would compete with it.
 - Delete or remove (destructive-action): use Button secondary, then confirm with Button danger; not Button primary; Confirm before destroying data.
 - An action on one row or item (row-action): use Button ghost with a word; not An icon alone; A word says what will happen.
 - A value with no token (missing-token): use The closest semantic token, then ask for a new one; not A raw value or a brand primitive in the component; A raw value shows the same in every brand, so it breaks the theme.

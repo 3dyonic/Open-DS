@@ -71,7 +71,7 @@ The raw values these tokens end at are on [Primitives › Type](../primitives/ty
 
 | Situation | Use | Not | Why |
 | --- | --- | --- | --- |
-| Page title | type.title | type.display | A clear, consistent title on every page. |
+| Page title | type.title | type.display | The same title size on every page tells people where they are. The display size changes from page to page and pushes the content down. |
 | A number in a table | type.body | A small or mono font | Every number must be readable at large size. |
 | Paragraph or help text | type.body, short sentences | type.caption | Large text and short lines lower effort. |
 | Field label or column header | type.label, above the field, always visible | A placeholder as the label | Labels must stay visible while typing. |

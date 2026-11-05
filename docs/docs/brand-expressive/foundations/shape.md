@@ -48,5 +48,5 @@ The raw values these tokens end at are on [Primitives › Shape](../primitives/s
 
 | Situation | Use | Not | Why |
 | --- | --- | --- | --- |
-| Corners of buttons and inputs | radius.control (pill) | Sharp corners | Pills feel playful. |
+| Corners of buttons and inputs | radius.control (pill) | Sharp corners | Pills match the brand's round, playful shapes. Sharp corners would feel corporate. |
 | Shape of a status badge | radius.badge (pill) | A rectangle | Pills match the controls. |

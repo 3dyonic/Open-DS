@@ -13,6 +13,8 @@ export type Scheme = {
   answers: number;
   themes: number;
   primary: string;
+  /** The primary in the dark mode, for a swatch shown on a dark page. */
+  primaryDark: string;
   corners: string;
   font: string;
   motion: string;

@@ -50,6 +50,7 @@ body {
 .breadcrumbs__item--active .breadcrumbs__link {
   background: var(--color-surface-selected);
   border-radius: var(--radius-control);
+  color: var(--ods-text-on-selected, var(--ifm-font-color-base));
 }
 .navbar {
   border-bottom: var(--border-width-default) solid var(--color-border-default);
@@ -328,7 +329,7 @@ code {
   padding: 0 var(--badge-padding-x);
   border-radius: var(--badge-radius);
   background: var(--color-surface-selected);
-  color: var(--color-text-link);
+  color: var(--ods-text-on-selected, var(--ifm-font-color-base));
   font-family: var(--type-label-font-family);
   font-size: var(--type-caption-font-size);
   font-weight: var(--type-label-font-weight);
@@ -344,20 +345,143 @@ code {
   align-items: center;
   padding: 0 var(--ifm-navbar-item-padding-horizontal);
 }
-.ods-switcher label {
+/* The scheme and brand pickers: a listbox from the scheme's tokens, never a native select. */
+.ods-picker {
+  position: relative;
   display: flex;
   gap: 0.375rem;
   align-items: center;
+}
+.ods-picker-label {
   font-size: var(--type-label-font-size, 0.875rem);
   color: var(--ifm-font-color-secondary);
 }
-.ods-switcher select {
+.ods-picker-trigger {
+  appearance: none;
+  margin: 0;
   font: inherit;
+  font-size: var(--type-label-font-size, 0.875rem);
   color: var(--ifm-font-color-base);
   background: var(--ifm-background-surface-color);
-  border: 1px solid var(--color-border-default, var(--ifm-color-emphasis-300));
+  border: 1px solid var(--color-border-strong, var(--ifm-color-emphasis-500));
   border-radius: var(--radius-control, 0.25rem);
   padding: 0.25rem 0.5rem;
+  min-width: 9rem;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  cursor: pointer;
+  transition: background var(--motion-duration-feedback, 120ms);
+}
+.ods-picker-trigger:hover {
+  background: var(--color-surface-sunken, var(--ifm-color-emphasis-100));
+}
+.ods-picker-trigger:focus-visible,
+.ods-picker-list:focus-visible {
+  outline: var(--border-width-focus, 2px) solid var(--color-border-focus, var(--ifm-color-primary));
+  outline-offset: 2px;
+}
+.ods-picker-chev,
+.ods-picker-check {
+  width: 14px;
+  height: 14px;
+  flex: none;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 2;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+.ods-picker-chev {
+  margin-left: auto;
+  color: var(--ifm-font-color-secondary);
+}
+.ods-picker-dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  flex: none;
+  background: var(--dot);
+}
+[data-theme="dark"] .ods-picker-dot {
+  background: var(--dot-dark);
+}
+.ods-picker-list {
+  position: absolute;
+  top: calc(100% + 6px);
+  right: 0;
+  z-index: 300;
+  margin: 0;
+  padding: 4px;
+  list-style: none;
+  min-width: 100%;
+  background: var(--color-surface-raised, var(--ifm-background-surface-color));
+  border: 1px solid var(--color-border-default, var(--ifm-color-emphasis-300));
+  border-radius: var(--radius-control, 0.25rem);
+  box-shadow: var(--elevation-overlay, 0 8px 24px rgb(0 0 0 / 16%));
+}
+.ods-picker-list--wide {
+  width: 22rem;
+  max-width: calc(100vw - 2rem);
+}
+.ods-picker-opt {
+  display: grid;
+  grid-template-columns: auto 1fr auto;
+  gap: 2px 0.625rem;
+  align-items: center;
+  padding: 0.5rem 0.625rem;
+  border-radius: var(--radius-control, 0.25rem);
+  cursor: pointer;
+  color: var(--ifm-font-color-base);
+}
+.ods-picker-opt b {
+  grid-column: 2;
+  font-weight: 400;
+  white-space: nowrap;
+  font-size: var(--type-label-font-size, 0.875rem);
+}
+.ods-picker-opt small {
+  grid-column: 2;
+  font-size: 0.75rem;
+  line-height: 1.4;
+  color: var(--ifm-font-color-secondary);
+}
+.ods-picker-check {
+  grid-column: 3;
+  grid-row: 1;
+  visibility: hidden;
+}
+.ods-picker-opt.is-active {
+  background: var(--color-surface-sunken, var(--ifm-color-emphasis-100));
+}
+/* Selected: the selected fill and its edge, so selection is never color alone, and text from the
+   fill's tone (--ods-text-on-selected, generated per scheme and mode). Never the link color on it. */
+.ods-picker-opt[aria-selected="true"] {
+  background: var(--color-surface-selected, var(--ifm-color-emphasis-100));
+  box-shadow: inset 2px 0 0 var(--color-border-selected, var(--ifm-color-primary));
+  color: var(--ods-text-on-selected, var(--ifm-font-color-base));
+}
+.ods-picker-opt[aria-selected="true"] b {
+  font-weight: 600;
+}
+.ods-picker-opt[aria-selected="true"] small,
+.ods-picker-opt[aria-selected="true"] .ods-picker-check {
+  color: inherit;
+}
+.ods-picker-opt[aria-selected="true"] .ods-picker-check {
+  visibility: visible;
+}
+.ods-picker-list:focus-visible .ods-picker-opt.is-active {
+  box-shadow: inset 0 0 0 1px var(--color-border-focus, var(--ifm-color-primary));
+}
+.ods-switcher--mobile .ods-picker-list {
+  position: static;
+  margin-top: 6px;
+  width: 100%;
+}
+.ods-switcher--mobile .ods-picker {
+  flex-wrap: wrap;
+  width: 100%;
 }
 .ods-switcher--mobile {
   padding: 0.5rem var(--ifm-menu-link-padding-horizontal);
@@ -538,6 +662,13 @@ html:not([data-scheme])[data-theme="dark"] .navbar__logo img {
   border-radius: 1rem;
   overflow: hidden;
   background: var(--ifm-background-surface-color);
+}
+/* A scheme's color follows the page: its light-mode primary on paper, its dark-mode primary at night. */
+.ods-row {
+  --c: var(--c-light);
+}
+html[data-theme="dark"] .ods-row {
+  --c: var(--c-dark);
 }
 .ods-row {
   position: relative;
@@ -723,7 +854,7 @@ html:not([data-scheme])[data-theme="dark"] .navbar__logo img {
   .navbar__item {
     --ifm-navbar-item-padding-horizontal: 0.5rem;
   }
-  .ods-switcher label > span {
+  .ods-picker-label {
     position: absolute;
     width: 1px;
     height: 1px;
@@ -737,7 +868,7 @@ html:not([data-scheme])[data-theme="dark"] .navbar__logo img {
   margin-left: auto;
   padding: 0 0.375rem;
   font: 500 0.625rem/1.6 var(--type-data-font-family, ui-monospace, monospace);
-  color: var(--color-status-warning);
+  color: var(--ods-text-on-warning-subtle, var(--color-status-warning));
   background: var(--color-status-warning-subtle);
   border-radius: var(--radius-badge);
 }

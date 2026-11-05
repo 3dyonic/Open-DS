@@ -72,5 +72,5 @@ The raw values these tokens end at are on [Primitives › Motion](../primitives/
 
 | Situation | Use | Not | Why |
 | --- | --- | --- | --- |
-| Hover and press feedback | motion.duration.feedback (moderate) | Brand-specific motion | Motion is shared across brands. |
-| Someone asked for less motion | Reduced motion | Full motion | Motion is reduced, not removed. |
+| Hover and press feedback | motion.duration.feedback (moderate) | Brand-specific motion | Motion is shared, so one component library behaves the same in every brand. |
+| Someone asked for less motion | Reduced motion | Full motion | Motion is reduced, not removed: a fade keeps the change visible, and nothing slides. |

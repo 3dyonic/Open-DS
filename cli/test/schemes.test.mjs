@@ -29,12 +29,12 @@ const cli = (...args) =>
   execFileSync("node", [bin, ...args], { encoding: "utf8" });
 const temp = () => mkdtempSync(join(tmpdir(), "open-ds-scheme-"));
 
-test("list shows the five schemes", () => {
+test("list shows the five schemes, in the grammar's scheme_order", () => {
   assert.deepEqual(schemeIds(), [
+    "dense-data",
+    "content-first",
     "accessible-first",
     "brand-expressive",
-    "content-first",
-    "dense-data",
     "multi-brand",
   ]);
   const out = JSON.parse(cli("list", "--json"));

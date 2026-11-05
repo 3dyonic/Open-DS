@@ -39,4 +39,4 @@ The raw values these tokens end at are on [Primitives › all kinds](../primitiv
 | Situation | Use | Not | Why |
 | --- | --- | --- | --- |
 | An icon with no label | Not used: always add a word | An icon button with a hover hint | On phones, hover hints never show; a word says what will happen. |
-| An action on one row or item | Button ghost with a word | An icon alone | A word keeps it clear. |
+| An action on one row or item | Button ghost with a word | An icon alone | Visitors come rarely, so they never learn an icon. A word says what will happen. |

@@ -112,5 +112,5 @@ Between things and on the page, use a role instead: `*-tight` (8px), `*-default`
 | Situation | Use | Not | Why |
 | --- | --- | --- | --- |
 | Items that belong together | space.gap.default | Brand-specific spacing | Spacing is shared across brands. |
-| Between page sections | space.gap.section and cards | Lines | Cards group offers in every brand. |
-| Table row height | size.row (comfortable) | A compact row | Comfortable rows in every brand. |
+| Between page sections | space.gap.section and cards | Lines | Cards hold each offer together, so customers compare offers as units in every brand. Lines would split an offer apart. |
+| Table row height | size.row (comfortable) | A compact row | Customers browse on phones, and compact rows are hard to tap in any brand. |

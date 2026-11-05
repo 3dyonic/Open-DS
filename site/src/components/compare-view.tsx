@@ -2,6 +2,7 @@
 // Compare two schemes (Figma 128:900): every question where they differ, with each because.
 import { useState } from "react";
 import type { AnswerBook } from "@/lib/answers";
+import { Picker } from "./picker";
 
 export function CompareView({ book }: { book: AnswerBook }) {
   const [a, setA] = useState(book.schemes.find((s) => s.id === "dense-data")!.id);
@@ -75,37 +76,21 @@ export function CompareView({ book }: { book: AnswerBook }) {
   return (
     <div className="flex flex-col gap-8">
       <div className="flex flex-wrap items-center gap-3">
-        <label className="sr-only" htmlFor="cmp-a">
-          First scheme
-        </label>
-        <select
-          id="cmp-a"
+        <Picker
+          label="First scheme"
           value={a}
-          onChange={(e) => setA(e.target.value)}
+          onChange={setA}
+          options={book.schemes.map((s) => ({ id: s.id, label: s.name }))}
           className={`${select} border-ink bg-ink text-paper`}
-        >
-          {book.schemes.map((s) => (
-            <option key={s.id} value={s.id}>
-              {s.name}
-            </option>
-          ))}
-        </select>
+        />
         <span className="text-muted">vs</span>
-        <label className="sr-only" htmlFor="cmp-b">
-          Second scheme
-        </label>
-        <select
-          id="cmp-b"
+        <Picker
+          label="Second scheme"
           value={b}
-          onChange={(e) => setB(e.target.value)}
+          onChange={setB}
+          options={book.schemes.map((s) => ({ id: s.id, label: s.name }))}
           className={`${select} border-ink bg-white`}
-        >
-          {book.schemes.map((s) => (
-            <option key={s.id} value={s.id}>
-              {s.name}
-            </option>
-          ))}
-        </select>
+        />
         <span className="font-mono text-[12px] text-muted">
           {differ.length} differences · {same.length} answers the same
         </span>

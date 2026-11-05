@@ -160,8 +160,8 @@ The raw values these tokens end at are on [Primitives › Color](../primitives/c
 | A selected row or item | color.surface.selected | Bold text only | A tint shows the choice clearly on warm paper. |
 | An error message | color.status.danger and a plain sentence | Color alone | The sentence says what to fix; color only draws the eye. |
 | A link | color.text.link, underlined | Color without underline | Readers expect links to be underlined inside text. |
-| A status | Badge pill with a word | An icon alone | Status is rare; a word is clear. |
-| The action that completes the task | Button primary, one per section | Two primaries side by side | One clear action per section. |
+| A status | Badge pill with a word | An icon alone | Status is rare, so readers never learn an icon for it. A word is clear the first time. |
+| The action that completes the task | Button primary, one per section | Two primaries side by side | One clear action per section. Two primaries make the reader choose before they have read. |
 | An alternative or cancel | Button ghost as a text link | A second boxed button | A link feels lighter and does not compete. |
 | Delete or remove | Button secondary with the full verb, then confirm with Button danger | Button primary | Naming the verb and confirming prevents a mistake. |
 

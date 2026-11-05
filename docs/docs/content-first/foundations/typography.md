@@ -72,6 +72,6 @@ The raw values these tokens end at are on [Primitives › Type](../primitives/ty
 | Situation | Use | Not | Why |
 | --- | --- | --- | --- |
 | Page title | type.title | type.display (landing only) | Display is kept for the landing moment; article titles stay calm. |
-| A number in a table | type.body | A mono font | Tables are rare and read row by row. |
+| A number in a table | type.body | A mono font | Tables are rare and read row by row, so digits never need to line up in columns. A mono font would break the reading voice. |
 | Paragraph or help text | type.body, at most 65 characters a line | type.caption | A large size and short lines make long text easy on the eyes. |
 | Field label or column header | type.label | type.caption | Caption is too faint for a label people must read. |

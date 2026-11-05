@@ -13,7 +13,7 @@ hide_table_of_contents: true
 
 ## Why it looks like this
 
-Every decision follows from an answer. These are the answers its components and rules cite most.
+Every decision follows from an answer. These are the answers its components and rules cite most. Follow them all in the [Decision reference](decision-reference).
 
 <div class="odv-grid"><div class="odv-card"><div class="odv-eyebrow">How do people recall the interface?</div><q>They see it fresh each time</q><p>Visitors see the interface fresh each time.</p><span class="odv-ans">human.q2</span></div><div class="odv-card"><div class="odv-eyebrow">How does it sound?</div><q>Conversational</q><p>Talk to one reader, like a good editor.</p><span class="odv-ans">voice.values</span></div><div class="odv-card"><div class="odv-eyebrow">How many signals carry each meaning?</div><q>Two: color and word</q><p>Status is rare; color and a word are enough.</p><span class="odv-ans">accessibility.count</span></div></div>
 
@@ -35,49 +35,4 @@ Every decision follows from an answer. These are the answers its components and 
 
 ## Every answer
 
-Every decision in this system follows from these answers.
-
-### Business and product
-
-- **What does the product do for the business?** Informs and publishes. The product publishes articles and guides.
-- **How many brands or products share the system?** One. One publication, one brand.
-
-### People and work context
-
-- **Who uses it most?** Occasional visitors. Most readers arrive from search and visit now and then. Because: What does the product do for the business? Informs and publishes.
-- **What accessibility level do we commit to?** AA. AA is the commitment for a public site. Because: Who uses it most? Occasional visitors.
-
-### Content and data
-
-- **What is the main content?** Long-form text. The content is long-form text. Because: What does the product do for the business? Informs and publishes.
-- **How much is on one screen?** One idea at a time. One idea per screen keeps reading calm. Because: What is the main content? Long-form text.
-
-### Tasks and flows
-
-- **What is the main task?** Read start to end. People read from start to end. Because: What is the main content? Long-form text.
-- **How often do people repeat actions?** Rarely. Actions are rare: subscribe, share, save. Because: What is the main task? Read start to end.
-
-### Human factors
-
-- **What must the interface protect?** Attention on the content. Attention belongs to the text. Because: What is the main task? Read start to end.
-- **How do people recall the interface?** They see it fresh each time. Visitors see the interface fresh each time. Because: Who uses it most? Occasional visitors.
-
-### Outcomes
-
-- **Which outcome matters most?** Reading comfort. Comfortable reading is the measure. Because: What is the main task? Read start to end.
-- **What is a costly mistake?** Losing your place. Losing your place in an article breaks the read. Because: What is the main task? Read start to end.
-
-### Brand
-
-- **What should the brand feel like?** Warm. Warm and considered, like a good magazine. Because: What does the product do for the business? Informs and publishes.
-- **How visible is the brand in the interface?** Present. The brand shows in type, not in color. Because: What should the brand feel like? Warm.
-
-### Use scenarios
-
-- **Where do people use it?** Anywhere, on any device. Readers arrive on phones and laptops alike. Because: Who uses it most? Occasional visitors.
-- **How long is one visit?** One sitting. A guide is read in one sitting. Because: What is the main content? Long-form text.
-
-### Team and delivery
-
-- **Who maintains the system?** A small team. A small editorial team.
-- **How fast does it change?** Rarely. The design changes rarely.
+All 78 answers, and the design decisions each one made: [Decision reference](decision-reference).

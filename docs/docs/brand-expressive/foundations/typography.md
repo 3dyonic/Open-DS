@@ -72,6 +72,6 @@ The raw values these tokens end at are on [Primitives › Type](../primitives/ty
 | Situation | Use | Not | Why |
 | --- | --- | --- | --- |
 | Page title | type.display | type.title | The display role carries the brand in every hero. |
-| A number in a table | type.body | A mono font | Tables are rare; keep the brand voice. |
+| A number in a table | type.body | A mono font | Tables are rare and never compared column by column, so mono digits add nothing. The brand font keeps the voice. |
 | Paragraph or help text | type.body, short | Long paragraphs | Short copy keeps the energy. |
 | Field label or column header | type.label | type.caption | Labels stay readable on vivid color. |

@@ -2,6 +2,7 @@
 // The key request form. Posts JSON to /api/key-requests on the same host (open-ds-ops checks it again).
 import Link from "next/link";
 import { useState } from "react";
+import { Picker } from "./picker";
 
 const CLIENTS = [
   "Claude Code",
@@ -52,6 +53,7 @@ export function KeyRequestForm() {
   const [errors, setErrors] = useState<Errors>({});
   const [state, setState] = useState<"idle" | "sending" | "done" | "failed">("idle");
   const [message, setMessage] = useState("");
+  const [teamSize, setTeamSize] = useState("");
 
   async function submit(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
@@ -230,20 +232,17 @@ export function KeyRequestForm() {
       </fieldset>
 
       <Field name="team_size" label="Team size" hint="Optional" error={err("team_size")}>
-        <select
+        <Picker
           id="team_size"
           name="team_size"
-          defaultValue=""
+          full
+          value={teamSize}
+          onChange={setTeamSize}
+          placeholder="Choose"
+          options={TEAM_SIZES.map((t) => ({ id: t, label: t }))}
           className={input}
           {...aria("team_size")}
-        >
-          <option value="">Choose</option>
-          {TEAM_SIZES.map((t) => (
-            <option key={t} value={t}>
-              {t}
-            </option>
-          ))}
-        </select>
+        />
       </Field>
 
       {/* People never see or fill this; bots often do. */}

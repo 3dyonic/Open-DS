@@ -73,5 +73,5 @@ The raw values these tokens end at are on [Primitives › Type](../primitives/ty
 | --- | --- | --- | --- |
 | Page title | type.title | type.display | Titles stay small so the table starts higher on the screen. |
 | A number in a table | type.data | type.body | Mono digits line up in columns, so values compare at a glance. |
-| Paragraph or help text | type.body | type.label | Help text is read in passing; body size keeps it quick. |
+| Paragraph or help text | type.body | type.label | Help text is a sentence read in passing. Body size reads quickly; the label style is made for short names, not sentences. |
 | Field label or column header | type.label | type.heading | Headers repeat on every column; a heavy style would compete with the data. |

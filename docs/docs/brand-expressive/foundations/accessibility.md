@@ -47,4 +47,4 @@ The raw values these tokens end at are on [Primitives › all kinds](../primitiv
 | Situation | Use | Not | Why |
 | --- | --- | --- | --- |
 | Keyboard focus | button/focus-ring at border-width.focus | Removing the outline | Focus must show on vivid color. |
-| The smallest clickable thing | size.control.default (touch) | A compact control | Phones first. |
+| The smallest clickable thing | size.control.default (touch) | A compact control | Most visitors arrive on phones, and a compact control is too small for a thumb. |
