@@ -68,7 +68,12 @@ figma.ui.onmessage = async (msg) => {
   try {
     figma.ui.postMessage({ type: "progress", text: "Reading " + scheme.library });
     const kit = await loadKit(scheme.library);
-    if (!kit.size) throw new Error("This file has no variables from " + scheme.library + ". Enable the library in Assets, then run again.");
+    if (!kit.size) {
+      const seen = await kitLibraries();
+      throw new Error("No variables from " + scheme.library + " reach this file. " + (seen.length
+        ? "The variable libraries it can see: " + seen.join("; ") + ". If the kit is not among them, its variables were not published: publish the kit with its variables, then run again."
+        : "It can see no variable libraries at all: the kit's variables were not published, or the library is not enabled here. Publish the kit with its variables (Assets, Publish), then run again."));
+    }
     for (const [i, id] of msg.components.entries()) {
       current = id;
       figma.ui.postMessage({ type: "progress", text: (i + 1) + " of " + msg.components.length + ": " + id });

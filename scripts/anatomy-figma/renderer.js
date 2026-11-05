@@ -13,11 +13,21 @@ function createAutoLayout(dir, props) {
   if (props) for (const [k, v] of Object.entries(props)) f[k] = v;
   return f;
 }
+// The kit's variables. The library is found by its name; if the published file's name differs a little
+// (spacing, dots, case), by the scheme's name and "kit". kitLibraries lists what the file can see.
+const norm = (x) => String(x).toLowerCase().replace(/[^a-z0-9]+/g, " ").trim();
+async function kitLibraries() {
+  return [...new Set((await figma.teamLibrary.getAvailableLibraryVariableCollectionsAsync()).map((c) => c.libraryName))];
+}
 async function loadKit(library) {
   const vars = new Map();
-  for (const c of await figma.teamLibrary.getAvailableLibraryVariableCollectionsAsync())
-    if (c.libraryName === library)
-      for (const v of await figma.teamLibrary.getVariablesInLibraryCollectionAsync(c.key)) vars.set(`${c.name}/${v.name}`, v.key);
+  const all = await figma.teamLibrary.getAvailableLibraryVariableCollectionsAsync();
+  const scheme = norm(library).replace(/^open ds /, "").replace(/ figma kit$/, "");
+  let mine = all.filter((c) => c.libraryName === library);
+  if (!mine.length) mine = all.filter((c) => norm(c.libraryName) === norm(library));
+  if (!mine.length) mine = all.filter((c) => norm(c.libraryName).includes(scheme) && norm(c.libraryName).includes("kit"));
+  for (const c of mine)
+    for (const v of await figma.teamLibrary.getVariablesInLibraryCollectionAsync(c.key)) vars.set(`${c.name}/${v.name}`, v.key);
   return vars;
 }
 async function renderAnatomy(SPEC, vars) {

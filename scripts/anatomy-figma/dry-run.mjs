@@ -113,7 +113,11 @@ export async function dryRun(component, scheme = "dense-data") {
       n.appendChild(Object.assign(new Node("VECTOR"), { strokes: [{}] }));
       return n;
     },
-    listAvailableFontsAsync: async () => ["Regular", "SemiBold", "Bold"].flatMap((style) => ["IBM Plex Sans", "IBM Plex Mono", "Inter", "Atkinson Hyperlegible", "Source Serif 4"].map((family) => ({ fontName: { family, style } }))),
+    // Every family the scheme names is taken to be installed, with Inter: the dry run checks the drawing.
+    listAvailableFontsAsync: async () => {
+      const named = Object.values(SPEC.bind).filter((b) => b.kind === "font").map((b) => String(b.value).split(",")[0].replace(/["']/g, "").trim());
+      return ["Regular", "SemiBold", "Bold"].flatMap((style) => [...new Set(["Inter", ...named])].map((family) => ({ fontName: { family, style } })));
+    },
     loadFontAsync: async () => {},
     teamLibrary: {
       getAvailableLibraryVariableCollectionsAsync: async () => [{ libraryName: SPEC.library, name: "all", key: "k" }],
