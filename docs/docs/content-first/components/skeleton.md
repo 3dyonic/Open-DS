@@ -28,6 +28,8 @@ Instead:
 - [Spinner](./spinner.md): A wait with no layout.
 - [Empty](./empty.md): Loaded, with nothing to show.
 
+<a class="odv-anatref" href="./skeleton/anatomy"><span class="odv-anatref-b"><b>Anatomy reference</b><span>Every part of the skeleton, the job it does, and the decisions behind it. 2 parts.</span></span><span class="odv-anatref-go" aria-hidden="true">→</span></a>
+
 ## Words
 
 - Write to one person: "you", not "users".

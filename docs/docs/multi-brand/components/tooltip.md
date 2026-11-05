@@ -27,6 +27,8 @@ Instead:
 - [Popover](./popover.md): Opens on click and works on touch.
 - [Hover card](./hover-card.md): A richer preview.
 
+<a class="odv-anatref" href="./tooltip/anatomy"><span class="odv-anatref-b"><b>Anatomy reference</b><span>Every part of the tooltip, the job it does, and the decisions behind it. 3 parts.</span></span><span class="odv-anatref-go" aria-hidden="true">→</span></a>
+
 ## How Multi-brand uses it
 
 <div class="odv-grid two"><div class="odv-dd"><div class="stage"><div class="odv-eyebrow">An icon with no label</div><div style="margin-top:6px"><b style="color:var(--color-status-success)">Use</b> Not used: always add a word; a popover explains a fee</div><div><b style="color:var(--color-status-danger)">Not</b> An icon button with a hover hint</div></div><div class="cap">On touch screens hover hints never show; a word says what will happen.</div></div></div>

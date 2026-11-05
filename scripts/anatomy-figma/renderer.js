@@ -339,14 +339,17 @@ function tnode(d, out, show) {
       if (d.justify) node.primaryAxisAlignItems = { center: "CENTER", end: "MAX", between: "SPACE_BETWEEN", start: "MIN" }[d.justify];
       setN(node, "itemSpacing", d.gap);
       const [py, px] = Array.isArray(d.pad) ? d.pad : [d.pad, d.pad];
-      setN(node, "paddingTop", d.padY ?? py); setN(node, "paddingBottom", d.padY ?? py);
-      setN(node, "paddingLeft", d.padX ?? px); setN(node, "paddingRight", d.padX ?? px);
+      setN(node, "paddingTop", d.padT ?? d.padY ?? py); setN(node, "paddingBottom", d.padB ?? d.padY ?? py);
+      setN(node, "paddingLeft", d.padL ?? d.padX ?? px); setN(node, "paddingRight", d.padR ?? d.padX ?? px);
       setN(node, "minHeight", d.minH); setN(node, "minWidth", d.minW);
     }
-    if (d.radius !== undefined) for (const c of CORNERS) setN(node, node.type === "ELLIPSE" ? "cornerRadius" : c, d.radius);
+    // corners limits the radius, e.g. ["tl", "tr"] for a panel that opens from the bottom.
+    const CN = { tl: "topLeftRadius", tr: "topRightRadius", bl: "bottomLeftRadius", br: "bottomRightRadius" };
+    if (d.radius !== undefined) for (const [k, c] of Object.entries(CN)) if (!d.corners || d.corners.includes(k)) setN(node, node.type === "ELLIPSE" ? "cornerRadius" : c, d.radius);
     if (d.stroke) {
       node.strokes = [paint(d.stroke)];
       node.strokeAlign = d.strokeAlign === "outside" ? "OUTSIDE" : d.strokeAlign === "center" ? "CENTER" : "INSIDE";
+      if (d.dash) node.dashPattern = d.dash;
       const sides = d.sides ?? ["top", "bottom", "left", "right"];
       if (node.type === "ELLIPSE") setN(node, "strokeWeight", d.strokeW ?? 1);
       else for (const [k, prop] of Object.entries(SIDE)) sides.includes(k) ? setN(node, prop, d.strokeW ?? 1) : (node[prop] = 0);
@@ -366,7 +369,8 @@ function tnode(d, out, show) {
   // A focus ring: a frame around the node, its offset as padding, its width and color as the stroke.
   if (d.ring) {
     const r = createAutoLayout("HORIZONTAL", { name: "Focus ring" });
-    r.fills = [];
+    // The gap between the node and the ring shows the offset color, when the decision names one.
+    r.fills = d.ring.fill ? [paint(d.ring.fill)] : [];
     for (const k of ["paddingTop", "paddingBottom", "paddingLeft", "paddingRight"]) setN(r, k, d.ring.offset ?? 2);
     r.strokes = [paint(d.ring.color)];
     r.strokeAlign = "INSIDE";
@@ -374,15 +378,21 @@ function tnode(d, out, show) {
     if (d.ring.radius !== undefined) for (const c of CORNERS) setN(r, c, d.ring.radius);
     r.appendChild(node);
     for (const m of [].concat(d.ring.n ?? [])) out.push([m, r, "right"]);
+    // A ring around a part that stretches: the ring stretches, and the part fills the ring.
+    r.__d = { w: d.w === "fill" ? "fill" : undefined, grow: d.grow };
+    if (d.w === "fill") { r.counterAxisAlignItems = "CENTER"; node.__ringFill = true; }
     node = r;
   }
   for (const m of [].concat(d.n ?? [])) out.push([m, node, d.at ?? "top"]);
+  // marks: more numbers on this node, each at its own place, e.g. [[1, "corner"], [3, "shadow"]].
+  for (const [m, at] of d.marks ?? []) out.push([m, node, at ?? "top"]);
   node.__d = d;
   return node;
 }
 // Fill and hug apply once a node sits in its parent; one pass after the tree is built.
 function sizeTree(node) {
   const d = node.__d;
+  if (node.__ringFill && node.parent) node.layoutGrow = 1;
   if (d && node.parent && node.parent.layoutMode && node.parent.layoutMode !== "NONE" && node.layoutPositioning !== "ABSOLUTE") {
     if (d.w === "fill") node.layoutSizingHorizontal = "FILL";
     if (d.h === "fill") node.layoutSizingVertical = "FILL";

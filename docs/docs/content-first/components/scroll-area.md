@@ -27,6 +27,8 @@ Instead:
 
 - [Message scroller](./message-scroller.md): A conversation that keeps the newest in view.
 
+<a class="odv-anatref" href="./scroll-area/anatomy"><span class="odv-anatref-b"><b>Anatomy reference</b><span>Every part of the scroll area, the job it does, and the decisions behind it. 4 parts.</span></span><span class="odv-anatref-go" aria-hidden="true">→</span></a>
+
 ## Words
 
 - Write to one person: "you", not "users".

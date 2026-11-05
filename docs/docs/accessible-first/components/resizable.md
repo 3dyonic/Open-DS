@@ -26,6 +26,8 @@ Instead:
 
 - [Sidebar](./sidebar.md): Fixed app navigation.
 
+<a class="odv-anatref" href="./resizable/anatomy"><span class="odv-anatref-b"><b>Anatomy reference</b><span>Every part of the resizable panels, the job it does, and the decisions behind it. 4 parts.</span></span><span class="odv-anatref-go" aria-hidden="true">→</span></a>
+
 ## Words
 
 - Use common words. Explain any term you must use.

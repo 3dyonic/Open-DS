@@ -26,6 +26,8 @@ Instead:
 
 - [Message](./message.md): Something someone said.
 
+<a class="odv-anatref" href="./marker/anatomy"><span class="odv-anatref-b"><b>Anatomy reference</b><span>Every part of the marker, the job it does, and the decisions behind it. 2 parts.</span></span><span class="odv-anatref-go" aria-hidden="true">→</span></a>
+
 ## Words
 
 - Write to one person: "you", not "users".

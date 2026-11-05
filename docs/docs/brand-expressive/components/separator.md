@@ -27,6 +27,8 @@ Instead:
 
 - [Card](./card.md): A container, when groups need a boundary.
 
+<a class="odv-anatref" href="./separator/anatomy"><span class="odv-anatref-b"><b>Anatomy reference</b><span>Every part of the separator, the job it does, and the decisions behind it. 1 parts.</span></span><span class="odv-anatref-go" aria-hidden="true">→</span></a>
+
 ## How Brand expressive uses it
 
 <div class="odv-grid two"><div class="odv-dd"><div class="stage"><div class="odv-eyebrow">Between page sections</div><div style="margin-top:6px"><b style="color:var(--color-status-success)">Use</b> space.gap.section and a color block</div><div><b style="color:var(--color-status-danger)">Not</b> A thin line</div></div><div class="cap">Big space and color make each section a moment.</div></div></div>

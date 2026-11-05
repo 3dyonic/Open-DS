@@ -29,6 +29,8 @@ Instead:
 - [Collapsible](./collapsible.md): A single section, not a stack.
 - [Dialog](./dialog.md): A blocking decision.
 
+<a class="odv-anatref" href="./accordion/anatomy"><span class="odv-anatref-b"><b>Anatomy reference</b><span>Every part of the accordion, the job it does, and the decisions behind it. 7 parts.</span></span><span class="odv-anatref-go" aria-hidden="true">→</span></a>
+
 ## Words
 
 - Lead with the object, then the state: "Alert 2041 contained."

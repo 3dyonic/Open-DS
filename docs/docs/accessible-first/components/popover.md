@@ -27,6 +27,8 @@ Instead:
 - [Tooltip](./tooltip.md): A one-line hint on hover.
 - [Dialog](./dialog.md): A blocking task.
 
+<a class="odv-anatref" href="./popover/anatomy"><span class="odv-anatref-b"><b>Anatomy reference</b><span>Every part of the popover, the job it does, and the decisions behind it. 6 parts.</span></span><span class="odv-anatref-go" aria-hidden="true">→</span></a>
+
 ## Words
 
 - Use common words. Explain any term you must use.

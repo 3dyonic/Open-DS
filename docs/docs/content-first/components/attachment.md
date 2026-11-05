@@ -26,6 +26,8 @@ Instead:
 
 - [Message](./message.md): The message the file belongs to.
 
+<a class="odv-anatref" href="./attachment/anatomy"><span class="odv-anatref-b"><b>Anatomy reference</b><span>Every part of the attachment, the job it does, and the decisions behind it. 6 parts.</span></span><span class="odv-anatref-go" aria-hidden="true">→</span></a>
+
 ## Words
 
 - Write to one person: "you", not "users".

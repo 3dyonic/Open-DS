@@ -63,6 +63,7 @@ figma.ui.onmessage = async (msg) => {
   if (msg.type !== "run") return;
   const scheme = DATA[msg.scheme];
   const missing = {};
+  const frames = [];
   let current = "start";
   try {
     figma.ui.postMessage({ type: "progress", text: "Reading " + scheme.library });
@@ -73,6 +74,15 @@ figma.ui.onmessage = async (msg) => {
       figma.ui.postMessage({ type: "progress", text: (i + 1) + " of " + msg.components.length + ": " + id });
       const r = await renderAnatomy(scheme.components[id], kit);
       for (const [role, why] of Object.entries(r.fallback)) missing[id + " · " + role] = why;
+      frames.push([id, "stage", r.ids.stage], ...r.ids.cards.map((c, i) => [id, "card-" + (i + 1), c]));
+    }
+    // The images the docs show: every frame as a PNG at 2x, zipped by the UI as
+    // <scheme>/<component>/<frame>.png, to unpack into docs/static/anatomy.
+    for (const [i, [id, file, node]] of frames.entries()) {
+      figma.ui.postMessage({ type: "progress", text: "Exporting " + (i + 1) + " of " + frames.length });
+      const n = await figma.getNodeByIdAsync(node);
+      const bytes = await n.exportAsync({ format: "PNG", constraint: { type: "SCALE", value: 2 } });
+      figma.ui.postMessage({ type: "image", path: msg.scheme + "/" + id + "/" + file + ".png", bytes });
     }
     figma.ui.postMessage({ type: "done", components: msg.components.length, missing });
   } catch (e) {
@@ -87,16 +97,34 @@ figma.ui.onmessage = async (msg) => {
     `<style>body{font:13px Inter,system-ui,sans-serif;margin:16px;color:#16140f}select,button{width:100%;height:32px;margin-top:8px;font:inherit}button{background:#16140f;color:#f6f2e9;border:0;border-radius:4px;font-weight:600}p{color:#645e50}#list{max-height:120px;overflow:auto;margin-top:8px}label{display:block}pre{white-space:pre-wrap;font-size:11px;color:#645e50;max-height:120px;overflow:auto}</style>
 <b>Open DS anatomy</b>
 <p>Draws the Anatomy reference pages of the scheme in this file, bound to its kit's variables. Running it again redraws them.</p>
-<select id="scheme"></select><div id="list"></div><button id="run">Draw the anatomy pages</button><p id="status"></p><pre id="missing"></pre>
+<select id="scheme"></select><div id="list"></div><button id="run">Draw the anatomy pages</button><p id="status"></p><a id="zip" hidden>Download the images (unzip into docs/static/anatomy)</a><pre id="missing"></pre>
 <script>
 let S = {};
+let files = [];
+// A zip with stored (uncompressed) entries: the PNGs are compressed already.
+const crcT = Array.from({ length: 256 }, (_, n) => { let c = n; for (let k = 0; k < 8; k++) c = c & 1 ? 0xedb88320 ^ (c >>> 1) : c >>> 1; return c >>> 0; });
+const crc = (b) => { let c = 0xffffffff; for (const x of b) c = crcT[(c ^ x) & 255] ^ (c >>> 8); return (c ^ 0xffffffff) >>> 0; };
+function zip(list) {
+  const parts = [], dir = []; let off = 0;
+  const le = (n, k) => { const a = new Uint8Array(k); for (let i = 0; i < k; i++) a[i] = (n >>> (8 * i)) & 255; return a; };
+  for (const [path, data] of list) {
+    const name = new TextEncoder().encode(path), c = crc(data);
+    const head = [le(0x04034b50, 4), le(20, 2), le(0, 2), le(0, 2), le(0, 4), le(c, 4), le(data.length, 4), le(data.length, 4), le(name.length, 2), le(0, 2), name];
+    dir.push([le(0x02014b50, 4), le(20, 2), le(20, 2), le(0, 2), le(0, 2), le(0, 4), le(c, 4), le(data.length, 4), le(data.length, 4), le(name.length, 2), le(0, 2), le(0, 2), le(0, 2), le(0, 2), le(0, 4), le(off, 4), name]);
+    for (const h of head) { parts.push(h); off += h.length; }
+    parts.push(data); off += data.length;
+  }
+  const d = dir.flat(); const size = d.reduce((a, x) => a + x.length, 0);
+  return new Blob([...parts, ...d, le(0x06054b50, 4), le(0, 2), le(0, 2), le(list.length, 2), le(list.length, 2), le(size, 4), le(off, 4), le(0, 2)], { type: "application/zip" });
+}
 const list = () => { const d = document.getElementById("list"); d.innerHTML = ""; for (const c of S[document.getElementById("scheme").value].components) d.insertAdjacentHTML("beforeend", '<label><input type="checkbox" checked value="' + c + '"> ' + c + "</label>"); };
 onmessage = (e) => { const m = e.data.pluginMessage;
   if (m.type === "init") { S = m.schemes; const s = document.getElementById("scheme"); for (const [id, v] of Object.entries(m.schemes)) s.add(new Option(v.name, id, false, id === m.guess)); s.onchange = list; list(); }
   if (m.type === "progress") document.getElementById("status").textContent = m.text;
-  if (m.type === "done") { const k = Object.entries(m.missing); document.getElementById("status").textContent = "Drew " + m.components + " components. " + (k.length ? k.length + " values are not in the kit yet; they use the scheme's value:" : "Every value is bound to the kit."); document.getElementById("missing").textContent = k.map(([a, b]) => a + ": " + b).join("\\n"); }
+  if (m.type === "image") files.push([m.path, m.bytes]);
+  if (m.type === "done") { const a = document.getElementById("zip"); a.href = URL.createObjectURL(zip(files)); a.download = "open-ds-anatomy-" + document.getElementById("scheme").value + ".zip"; a.hidden = false; const k = Object.entries(m.missing); document.getElementById("status").textContent = "Drew " + m.components + " components. " + (k.length ? k.length + " values are not in the kit yet; they use the scheme's value:" : "Every value is bound to the kit."); document.getElementById("missing").textContent = k.map(([a, b]) => a + ": " + b).join("\\n"); }
 };
-document.getElementById("run").onclick = () => parent.postMessage({ pluginMessage: { type: "run", scheme: document.getElementById("scheme").value, components: [...document.querySelectorAll("#list input:checked")].map((x) => x.value) } }, "*");
+document.getElementById("run").onclick = () => (files = [], document.getElementById("zip").hidden = true, parent.postMessage({ pluginMessage: { type: "run", scheme: document.getElementById("scheme").value, components: [...document.querySelectorAll("#list input:checked")].map((x) => x.value) } }, "*"));
 </script>
 `,
   );

@@ -2451,13 +2451,19 @@ export function docsPages(
     // Figma assets (OD-229): the drawings are frames in Figma, drawn from this scheme's tokens and
     // exported into docs/static/anatomy/<scheme>/<component>/. Each image links back to its frame, so
     // the drawing is seen and changed in Figma.
-    const asset = spec.drawing?.kind === "asset";
+    // A tree drawing (OD-229) is drawn in Figma by the Open DS anatomy plugin, bound to the scheme's kit,
+    // and its frames are exported to the same place. Until they are, the page says so in their place.
+    const tree = spec.drawing?.kind === "tree";
+    const asset = spec.drawing?.kind === "asset" || tree;
+    const exported = (file) => existsSync(join(roots.ui, "..", "docs", "static", "anatomy", scheme.id, name, `${file}.png`));
     const figmaLink = (node) =>
       node && spec.drawing.figma?.file
         ? `<a class="odv-am-figma" href="https://www.figma.com/design/${spec.drawing.figma.file}/?node-id=${node.replace(":", "-")}">Open in Figma</a>`
         : "";
     const assetImg = (file, node, alt) =>
-      `<span class="odv-am-assetbox"><img class="odv-am-asset" src="/anatomy/${scheme.id}/${name}/${file}.png" alt="${attr(alt)}" loading="lazy"/>${figmaLink(node)}</span>`;
+      tree && !exported(file)
+        ? `<span class="odv-am-assetbox odv-am-pending">Drawn in Figma by the Open DS anatomy plugin; the image is not exported yet.</span>`
+        : `<span class="odv-am-assetbox"><img class="odv-am-asset" src="/anatomy/${scheme.id}/${name}/${file}.png" alt="${attr(alt)}" loading="lazy"/>${figmaLink(node)}</span>`;
     const roleOf = Object.fromEntries(
       (g.anatomy?.roles ?? []).map((r) => [r.id, r]),
     );

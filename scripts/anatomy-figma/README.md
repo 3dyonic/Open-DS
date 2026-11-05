@@ -28,14 +28,15 @@ A NODE:
 | `t` | `frame` (auto layout), `text`, `icon`, `rect`, `ellipse` |
 | `name` | layer name (what the part is) |
 | `n` | the part number this node shows (or a list); `at`: `top` (default), `right`, `corner`, `shadow` |
+| `marks` | more numbers on the same node, each with its place: `[[1, "corner"], [3, "shadow"]]` |
 | `layout` | frames: `row` (default), `col`, `none` (children placed with `abs: [x, y]`) |
-| `gap`, `pad`, `padX`, `padY`, `minH`, `minW` | spacing; `pad` may be `[y, x]` |
+| `gap`, `pad`, `padX`, `padY`, `padT`, `padB`, `padL`, `padR`, `minH`, `minW` | spacing; `pad` may be `[y, x]`; one side wins over the axis |
 | `w`, `h` | a size, or `fill` (stretch in the parent), or `hug` |
 | `grow` | `true`: take the free space along the parent's direction |
 | `align` | cross axis: `center` (default), `start`, `end`; `justify`: `start`, `center`, `end`, `between` |
-| `fill`, `stroke`, `strokeW`, `sides` | colors and border; `sides` limits the border, e.g. `["bottom"]` |
-| `radius`, `shadow`, `opacity`, `clip` | corner, elevation token, opacity, clip children |
-| `ring` | focus ring around the node: `{ "color", "width", "offset", "radius", "n" }` |
+| `fill`, `stroke`, `strokeW`, `sides`, `dash` | colors and border; `sides` limits the border, e.g. `["bottom"]`; `dash`: `[4, 2]` |
+| `radius`, `corners`, `shadow`, `opacity`, `clip` | corner (`corners` limits it: `["tl", "tr"]`), elevation token, opacity, clip children |
+| `ring` | focus ring around the node: `{ "color", "width", "offset", "radius", "fill", "n" }`; `fill` is the gap's color; a ringed node with `w: "fill"` stretches with its ring |
 | `text`, `size`, `color`, `weight`, `lh`, `font`, `align` | text nodes; `weight` is a weight token or `"bold"`; `lh` a line-height token |
 | `icon`, `size`, `color` | icon nodes: a Lucide icon name (as in `lucide-react`, kebab case) |
 | `children` | the nodes inside |

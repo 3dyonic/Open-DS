@@ -27,6 +27,8 @@ Instead:
 
 - [Command](./command.md): Where shortcuts are often listed.
 
+<a class="odv-anatref" href="./kbd/anatomy"><span class="odv-anatref-b"><b>Anatomy reference</b><span>Every part of the keyboard key, the job it does, and the decisions behind it. 3 parts.</span></span><span class="odv-anatref-go" aria-hidden="true">→</span></a>
+
 ## Words
 
 - Lead with the object, then the state: "Alert 2041 contained."

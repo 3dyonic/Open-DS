@@ -27,6 +27,8 @@ Instead:
 
 - [Skeleton](./skeleton.md): The placeholder shown while the media loads.
 
+<a class="odv-anatref" href="./aspect-ratio/anatomy"><span class="odv-anatref-b"><b>Anatomy reference</b><span>Every part of the aspect ratio, the job it does, and the decisions behind it. 2 parts.</span></span><span class="odv-anatref-go" aria-hidden="true">→</span></a>
+
 ## Words
 
 - Use common words. Explain any term you must use.

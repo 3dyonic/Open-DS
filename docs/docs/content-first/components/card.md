@@ -28,6 +28,8 @@ Instead:
 - [Table](./table.md): Records compared across rows.
 - [Item](./item.md): A compact row in a list.
 
+<a class="odv-anatref" href="./card/anatomy"><span class="odv-anatref-b"><b>Anatomy reference</b><span>Every part of the card, the job it does, and the decisions behind it. 7 parts.</span></span><span class="odv-anatref-go" aria-hidden="true">→</span></a>
+
 ## How Content first uses it
 
 <div class="odv-grid two"><div class="odv-dd"><div class="stage"><div class="odv-eyebrow">A card on the page</div><div style="margin-top:6px"><b style="color:var(--color-status-success)">Use</b> A border, no shadow</div><div><b style="color:var(--color-status-danger)">Not</b> A strong shadow</div></div><div class="cap">Cards stay flat on the page; shadows are for floating things.</div></div></div>

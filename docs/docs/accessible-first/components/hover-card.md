@@ -27,6 +27,8 @@ Instead:
 - [Popover](./popover.md): Opens on click, works on touch.
 - [Tooltip](./tooltip.md): A one-line hint.
 
+<a class="odv-anatref" href="./hover-card/anatomy"><span class="odv-anatref-b"><b>Anatomy reference</b><span>Every part of the hover card, the job it does, and the decisions behind it. 6 parts.</span></span><span class="odv-anatref-go" aria-hidden="true">→</span></a>
+
 ## Words
 
 - Use common words. Explain any term you must use.

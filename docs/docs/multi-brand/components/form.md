@@ -27,6 +27,8 @@ Instead:
 
 - [Field](./field.md): How one control is laid out.
 
+<a class="odv-anatref" href="./form/anatomy"><span class="odv-anatref-b"><b>Anatomy reference</b><span>Every part of the form field, the job it does, and the decisions behind it. 4 parts.</span></span><span class="odv-anatref-go" aria-hidden="true">→</span></a>
+
 ## How Multi-brand uses it
 
 <div class="odv-grid two"><div class="odv-dd"><div class="stage"><div class="odv-eyebrow">An error message</div><div style="margin-top:6px"><b style="color:var(--color-status-success)">Use</b> color.status.danger and a sentence</div><div><b style="color:var(--color-status-danger)">Not</b> The brand color</div></div><div class="cap">Status colors are shared, never branded.</div></div><div class="odv-dd"><div class="stage"><div class="odv-eyebrow">The words of an error</div><div style="margin-top:6px"><b style="color:var(--color-status-success)">Use</b> Shared across brands: plain and specific</div><div><b style="color:var(--color-status-danger)">Not</b> Brand tone in errors</div></div><div class="cap">Errors read the same in every brand, so support can help anyone. Example: “Your card was declined. Try another card or contact your bank.”</div></div></div>

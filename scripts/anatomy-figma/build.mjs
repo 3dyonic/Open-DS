@@ -120,7 +120,7 @@ function treeNodes(sp) {
 }
 function treeBindings(sp) {
   const out = { canvas: bind("color.surface.canvas", "color"), font: bind("type.body.font-family", "font"), __ink: bind("color.text.primary", "color") };
-  const WORDS = new Set(["t", "id", "name", "text", "icon", "layout", "align", "justify", "at", "strokeAlign", "sides", "abs", "children", "ring", "n", "grow", "clip", "__ring"]);
+  const WORDS = new Set(["t", "id", "name", "text", "icon", "layout", "align", "justify", "at", "strokeAlign", "sides", "abs", "dash", "corners", "marks", "children", "ring", "n", "grow", "clip", "__ring"]);
   for (const d of treeNodes(sp))
     for (const [k, raw] of Object.entries(d)) {
       if (WORDS.has(k)) continue;
@@ -219,7 +219,7 @@ const iconNames = recipe === "menu"
     : [...spec.drawing.toolbar.map((t) => t.icon).filter(Boolean), "search", "arrow-up-down", "check"];
 if (recipe === "tree") {
   // Every numbered part is shown somewhere: on the stage or on its card's own drawing.
-  const shown = new Set(treeNodes(spec).flatMap((d) => [].concat(d.n ?? [], d.ring?.n ?? [])));
+  const shown = new Set(treeNodes(spec).flatMap((d) => [].concat(d.n ?? [], d.ring?.n ?? [], (d.marks ?? []).map((m) => m[0]))));
   const missing = flat(spec.parts).filter((p) => p.n && !shown.has(p.n)).map((p) => `${p.n} ${p.label}`);
   if (missing.length) throw new Error(`${component}: the drawing shows no part ${missing.join(", ")}.`);
 }
