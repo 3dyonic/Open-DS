@@ -28,6 +28,8 @@ Instead:
 - [Date picker](./date-picker.md): A calendar opened from a field, in a popover.
 - [Input](./input.md): A known date typed in.
 
+<a class="odv-anatref" href="./calendar/anatomy"><span class="odv-anatref-b"><b>Anatomy reference</b><span>Every part of the calendar, the job it does, and the decisions behind it. 12 parts.</span></span><span class="odv-anatref-go" aria-hidden="true">→</span></a>
+
 ## Words
 
 - Use common words. Explain any term you must use.

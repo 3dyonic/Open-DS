@@ -28,6 +28,8 @@ Instead:
 - [Accordion](./accordion.md): Stacked sections people can open together.
 - [Navigation menu](./navigation-menu.md): Other pages.
 
+<a class="odv-anatref" href="./tabs/anatomy"><span class="odv-anatref-b"><b>Anatomy reference</b><span>Every part of the tabs, the job it does, and the decisions behind it. 5 parts.</span></span><span class="odv-anatref-go" aria-hidden="true">→</span></a>
+
 ## Words
 
 - Write to one person: "you", not "users".

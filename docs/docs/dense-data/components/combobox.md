@@ -28,6 +28,8 @@ Instead:
 - [Select](./select.md): A compact closed list without typing.
 - [Command](./command.md): A search-first menu of actions.
 
+<a class="odv-anatref" href="./combobox/anatomy"><span class="odv-anatref-b"><b>Anatomy reference</b><span>Every part of the combobox, the job it does, and the decisions behind it. 11 parts.</span></span><span class="odv-anatref-go" aria-hidden="true">→</span></a>
+
 ## Words
 
 - Lead with the object, then the state: "Alert 2041 contained."

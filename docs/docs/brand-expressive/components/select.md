@@ -28,6 +28,8 @@ Instead:
 - [Combobox](./combobox.md): Type to find in a long list.
 - [Native select](./native-select.md): The system picker.
 
+<a class="odv-anatref" href="./select/anatomy"><span class="odv-anatref-b"><b>Anatomy reference</b><span>Every part of the select, the job it does, and the decisions behind it. 11 parts.</span></span><span class="odv-anatref-go" aria-hidden="true">→</span></a>
+
 ## Words
 
 - Headlines are short and bold. Three to six words.

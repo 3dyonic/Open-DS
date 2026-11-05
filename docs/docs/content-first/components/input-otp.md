@@ -26,6 +26,8 @@ Instead:
 
 - [Input](./input.md): Any other short value.
 
+<a class="odv-anatref" href="./input-otp/anatomy"><span class="odv-anatref-b"><b>Anatomy reference</b><span>Every part of the code input, the job it does, and the decisions behind it. 7 parts.</span></span><span class="odv-anatref-go" aria-hidden="true">→</span></a>
+
 ## Words
 
 - Write to one person: "you", not "users".

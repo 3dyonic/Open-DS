@@ -20,6 +20,12 @@ class Node {
     return new Proxy(this, {
       set(t, k, v) {
         if (typeof k === "string" && !(k in t) && !FIGMA_PROPS.has(k)) throw new TypeError(`object is not extensible (${t.name}.${k})`);
+        // Figma: baseline alignment only in a row.
+        if (k === "counterAxisAlignItems" && v === "BASELINE" && t.layoutMode !== "HORIZONTAL")
+          throw new Error(`counterAxisAlignItems BASELINE needs a horizontal layout (${t.name})`);
+        // Figma: absolute positioning only inside auto layout.
+        if (k === "layoutPositioning" && v === "ABSOLUTE" && (!t.parent || t.parent.layoutMode === "NONE"))
+          throw new Error(`in set_layoutPositioning: Can only set layoutPositioning = ABSOLUTE if the parent node has layoutMode !== NONE (${t.name})`);
         t[k] = v;
         return true;
       },

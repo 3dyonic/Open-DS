@@ -27,6 +27,8 @@ Instead:
 
 - [Table](./table.md): The numbers as rows; often needed beside the chart.
 
+<a class="odv-anatref" href="./chart/anatomy"><span class="odv-anatref-b"><b>Anatomy reference</b><span>Every part of the chart, the job it does, and the decisions behind it. 7 parts.</span></span><span class="odv-anatref-go" aria-hidden="true">→</span></a>
+
 ## How Dense data uses it
 
 <div class="odv-grid two"><div class="odv-dd"><div class="stage"><div class="odv-eyebrow">A number in a table</div><div style="margin-top:6px"><b style="color:var(--color-status-success)">Use</b> type.data</div><div><b style="color:var(--color-status-danger)">Not</b> type.body</div></div><div class="cap">Mono digits line up in columns, so values compare at a glance.</div></div></div>

@@ -28,6 +28,8 @@ Instead:
 - [Data table](./data-table.md): Many records with search, filters and paging.
 - [Chart](./chart.md): The shape of the numbers.
 
+<a class="odv-anatref" href="./table/anatomy"><span class="odv-anatref-b"><b>Anatomy reference</b><span>Every part of the table, the job it does, and the decisions behind it. 5 parts.</span></span><span class="odv-anatref-go" aria-hidden="true">→</span></a>
+
 ## How Dense data uses it
 
 <div class="odv-grid two"><div class="odv-dd"><div class="stage"><div class="odv-eyebrow">A number in a table</div><div style="margin-top:6px"><b style="color:var(--color-status-success)">Use</b> type.data</div><div><b style="color:var(--color-status-danger)">Not</b> type.body</div></div><div class="cap">Mono digits line up in columns, so values compare at a glance.</div></div><div class="odv-dd"><div class="stage"><div class="odv-eyebrow">A selected row or item</div><div style="margin-top:6px"><b style="color:var(--color-status-success)">Use</b> color.surface.selected</div><div><b style="color:var(--color-status-danger)">Not</b> color.action.primary as a fill</div></div><div class="cap">A light tint shows selection without hiding the data.</div></div><div class="odv-dd"><div class="stage"><div class="odv-eyebrow">Table row height</div><div style="margin-top:6px"><b style="color:var(--color-status-success)">Use</b> size.row (compact)</div><div><b style="color:var(--color-status-danger)">Not</b> The comfortable row</div></div><div class="cap">Compact rows show more records without scrolling.</div></div></div>

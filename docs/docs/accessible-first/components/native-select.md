@@ -28,6 +28,8 @@ Instead:
 - [Select](./select.md): A custom menu with richer options.
 - [Radio group](./radio-group.md): A short list shown at once.
 
+<a class="odv-anatref" href="./native-select/anatomy"><span class="odv-anatref-b"><b>Anatomy reference</b><span>Every part of the native select, the job it does, and the decisions behind it. 7 parts.</span></span><span class="odv-anatref-go" aria-hidden="true">→</span></a>
+
 ## Words
 
 - Use common words. Explain any term you must use.

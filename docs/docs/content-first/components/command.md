@@ -27,6 +27,8 @@ Instead:
 - [Dropdown menu](./dropdown-menu.md): A short menu from a button.
 - [Combobox](./combobox.md): Picking a value for a field.
 
+<a class="odv-anatref" href="./command/anatomy"><span class="odv-anatref-b"><b>Anatomy reference</b><span>Every part of the command menu, the job it does, and the decisions behind it. 11 parts.</span></span><span class="odv-anatref-go" aria-hidden="true">→</span></a>
+
 ## Words
 
 - Write to one person: "you", not "users".

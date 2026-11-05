@@ -39,6 +39,8 @@ What each variant is for in any design system, then what Content first decided a
 
 <section class="odv-variant off"><header><code>block-end</code><span class="odv-axisname">align</span><span class="odv-pill">Not used in Content first</span></header><div class="odv-vbody"><div class="odv-vstage"><span class="odv-wait">Start Storybook to see it live</span><iframe src="http://localhost:6006/iframe.html?id=components-input-group--playground&viewMode=story&globals=scheme:content-first;mode:light&args=align:block-end" title="Input group block-end" loading="lazy" tabindex="-1"></iframe></div><div class="odv-vinfo"><div class="odv-topic"><h4>What it is for</h4><p>An addon row below the text, inside the field.</p><div class="odv-when"><div><span class="y">✓</span>A counter or actions under a larger input.</div><div><span class="n">✕</span>Single-line fields in a toolbar.</div></div></div><div class="odv-topic"><h4>In Content first</h4><p class="odv-decision">Search is one line, and forms are rare and short.</p></div><div class="odv-topic"><h4>Because</h4><div class="odv-chips"><a class="odv-achip" href="#why-tasks-q2"><span>How often do people repeat actions?</span><b>Rarely</b> · <code>tasks.q2</code></a></div></div></div></div></section>
 
+<a class="odv-anatref" href="./input-group/anatomy"><span class="odv-anatref-b"><b>Anatomy reference</b><span>Every part of the input group, the job it does, and the decisions behind it. 6 parts.</span></span><span class="odv-anatref-go" aria-hidden="true">→</span></a>
+
 ## Why it works this way
 
 Input group looks the way it does because of 3 answers about this product. Each card is one answer, in three steps: the answer, what it decided for Input group, and what would move if it changed.

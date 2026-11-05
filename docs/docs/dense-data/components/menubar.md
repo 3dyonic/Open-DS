@@ -28,6 +28,8 @@ Instead:
 - [Navigation menu](./navigation-menu.md): Site navigation, not commands.
 - [Dropdown menu](./dropdown-menu.md): One menu from one button.
 
+<a class="odv-anatref" href="./menubar/anatomy"><span class="odv-anatref-b"><b>Anatomy reference</b><span>Every part of the menubar, the job it does, and the decisions behind it. 13 parts.</span></span><span class="odv-anatref-go" aria-hidden="true">→</span></a>
+
 ## Words
 
 - Lead with the object, then the state: "Alert 2041 contained."

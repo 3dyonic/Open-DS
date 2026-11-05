@@ -28,6 +28,8 @@ Instead:
 - [Radio group](./radio-group.md): An answer in a form.
 - [Button group](./button-group.md): Actions, not a pressed choice.
 
+<a class="odv-anatref" href="./toggle-group/anatomy"><span class="odv-anatref-b"><b>Anatomy reference</b><span>Every part of the toggle group, the job it does, and the decisions behind it. 3 parts.</span></span><span class="odv-anatref-go" aria-hidden="true">→</span></a>
+
 ## Words
 
 - Shared structure: object, state, next step.

@@ -4,7 +4,7 @@ import { test } from "node:test";
 import { Client } from "@modelcontextprotocol/sdk/client/index.js";
 import { InMemoryTransport } from "@modelcontextprotocol/sdk/inMemory.js";
 import { createMcpServer, runHttp } from "../src/mcp.mjs";
-import { loadScheme } from "../src/schemes.mjs";
+import { grammar, loadScheme } from "../src/schemes.mjs";
 
 async function connect() {
   const [a, b] = InMemoryTransport.createLinkedPair();
@@ -448,9 +448,10 @@ test("get_anatomy: the parts people see and how each decision reaches them (OD-2
   // get_component only points at it.
   const comp = await call(c, "get_component", { scheme_id: "dense-data", component: "dropdown-menu" });
   assert.deepEqual(comp.anatomy, { parts_layer: true, see: "get_anatomy dropdown-menu" });
-  // A component without a parts layer says so.
+  // Every component in the catalogue has its parts layer now (OD-229).
   const btn = await call(c, "get_anatomy", { scheme_id: "dense-data", component: "button" });
-  assert.equal(btn.parts_layer, false);
+  assert.equal(btn.parts_layer, true);
+  assert.deepEqual(grammar().catalogue.items.filter((i) => !i.anatomy).map((i) => i.id), []);
 });
 
 test("get_component on a left-out component: what to use instead and the answers behind it (OD-212)", async () => {

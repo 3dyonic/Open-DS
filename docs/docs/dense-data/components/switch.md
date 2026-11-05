@@ -28,6 +28,8 @@ Instead:
 - [Checkbox](./checkbox.md): Waits for the form.
 - [Toggle](./toggle.md): A pressed button in a toolbar.
 
+<a class="odv-anatref" href="./switch/anatomy"><span class="odv-anatref-b"><b>Anatomy reference</b><span>Every part of the switch, the job it does, and the decisions behind it. 6 parts.</span></span><span class="odv-anatref-go" aria-hidden="true">→</span></a>
+
 ## Words
 
 - Lead with the object, then the state: "Alert 2041 contained."

@@ -29,6 +29,8 @@ Instead:
 - [Switch](./switch.md): Applies at once.
 - [Select](./select.md): Many options in a compact list.
 
+<a class="odv-anatref" href="./checkbox/anatomy"><span class="odv-anatref-b"><b>Anatomy reference</b><span>Every part of the checkbox, the job it does, and the decisions behind it. 5 parts.</span></span><span class="odv-anatref-go" aria-hidden="true">→</span></a>
+
 ## Words
 
 - Write to one person: "you", not "users".

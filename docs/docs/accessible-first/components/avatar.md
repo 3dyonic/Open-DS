@@ -27,6 +27,8 @@ Instead:
 
 - [Badge](./badge.md): A status or count, not a person.
 
+<a class="odv-anatref" href="./avatar/anatomy"><span class="odv-anatref-b"><b>Anatomy reference</b><span>Every part of the avatar, the job it does, and the decisions behind it. 8 parts.</span></span><span class="odv-anatref-go" aria-hidden="true">→</span></a>
+
 ## Words
 
 - Use common words. Explain any term you must use.

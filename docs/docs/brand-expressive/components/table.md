@@ -28,6 +28,8 @@ Instead:
 - [Data table](./data-table.md): Many records with search, filters and paging.
 - [Chart](./chart.md): The shape of the numbers.
 
+<a class="odv-anatref" href="./table/anatomy"><span class="odv-anatref-b"><b>Anatomy reference</b><span>Every part of the table, the job it does, and the decisions behind it. 5 parts.</span></span><span class="odv-anatref-go" aria-hidden="true">→</span></a>
+
 ## How Brand expressive uses it
 
 <div class="odv-grid two"><div class="odv-dd"><div class="stage"><div class="odv-eyebrow">A number in a table</div><div style="margin-top:6px"><b style="color:var(--color-status-success)">Use</b> type.body</div><div><b style="color:var(--color-status-danger)">Not</b> A mono font</div></div><div class="cap">Tables are rare and never compared column by column, so mono digits add nothing. The brand font keeps the voice.</div></div><div class="odv-dd"><div class="stage"><div class="odv-eyebrow">A selected row or item</div><div style="margin-top:6px"><b style="color:var(--color-status-success)">Use</b> color.surface.selected (brand tint)</div><div><b style="color:var(--color-status-danger)">Not</b> Grey</div></div><div class="cap">Selection carries the brand.</div></div><div class="odv-dd"><div class="stage"><div class="odv-eyebrow">Table row height</div><div style="margin-top:6px"><b style="color:var(--color-status-success)">Use</b> size.row (comfortable)</div><div><b style="color:var(--color-status-danger)">Not</b> A compact row</div></div><div class="cap">Tables are rare and short, so there is no need to fit many rows. Comfortable rows keep the brand's airy rhythm.</div></div></div>

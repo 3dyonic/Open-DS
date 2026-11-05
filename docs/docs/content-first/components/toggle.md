@@ -42,6 +42,8 @@ What each variant is for in any design system, then what Content first decided a
 
 <section class="odv-variant"><header><code>lg</code><span class="odv-axisname">size</span><span class="odv-pill">Not decided yet</span></header><div class="odv-vbody"><div class="odv-vstage"><span class="odv-wait">Start Storybook to see it live</span><iframe src="http://localhost:6006/iframe.html?id=components-toggle--playground&viewMode=story&globals=scheme:content-first;mode:light&args=size:lg" title="Toggle lg" loading="lazy" tabindex="-1"></iframe></div><div class="odv-vinfo"><div class="odv-topic"><h4>What it is for</h4><p>A larger toggle.</p><div class="odv-when"><div><span class="y">✓</span>A few toggles that need to be easy to hit.</div><div><span class="n">✕</span>Dense toolbars.</div></div></div><div class="odv-topic"><h4>In Content first</h4><p class="odv-decision">Not decided yet.</p></div></div></div></section>
 
+<a class="odv-anatref" href="./toggle/anatomy"><span class="odv-anatref-b"><b>Anatomy reference</b><span>Every part of the toggle, the job it does, and the decisions behind it. 6 parts.</span></span><span class="odv-anatref-go" aria-hidden="true">→</span></a>
+
 ## Words
 
 - Write to one person: "you", not "users".

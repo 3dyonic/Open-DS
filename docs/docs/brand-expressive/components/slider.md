@@ -28,6 +28,8 @@ Instead:
 - [Input](./input.md): An exact number.
 - [Radio group](./radio-group.md): A few named choices.
 
+<a class="odv-anatref" href="./slider/anatomy"><span class="odv-anatref-b"><b>Anatomy reference</b><span>Every part of the slider, the job it does, and the decisions behind it. 5 parts.</span></span><span class="odv-anatref-go" aria-hidden="true">→</span></a>
+
 ## Words
 
 - Headlines are short and bold. Three to six words.

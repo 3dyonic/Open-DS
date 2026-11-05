@@ -26,6 +26,8 @@ Instead:
 
 - [Message](./message.md): One message with its author and time, without the bubble shape.
 
+<a class="odv-anatref" href="./bubble/anatomy"><span class="odv-anatref-b"><b>Anatomy reference</b><span>Every part of the bubble, the job it does, and the decisions behind it. 4 parts.</span></span><span class="odv-anatref-go" aria-hidden="true">→</span></a>
+
 ## Words
 
 - Write to one person: "you", not "users".

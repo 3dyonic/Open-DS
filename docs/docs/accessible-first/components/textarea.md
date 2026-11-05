@@ -27,6 +27,8 @@ Instead:
 
 - [Input](./input.md): One line.
 
+<a class="odv-anatref" href="./textarea/anatomy"><span class="odv-anatref-b"><b>Anatomy reference</b><span>Every part of the textarea, the job it does, and the decisions behind it. 5 parts.</span></span><span class="odv-anatref-go" aria-hidden="true">→</span></a>
+
 ## How Accessible first uses it
 
 <div class="odv-grid two"><div class="odv-dd"><div class="stage"><div class="odv-eyebrow">Field label or column header</div><div style="margin-top:6px"><b style="color:var(--color-status-success)">Use</b> type.label, above the field, always visible</div><div><b style="color:var(--color-status-danger)">Not</b> A placeholder as the label</div></div><div class="cap">Labels must stay visible while typing.</div></div></div>

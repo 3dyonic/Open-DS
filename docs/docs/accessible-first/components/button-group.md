@@ -28,6 +28,8 @@ Instead:
 - [Toggle group](./toggle-group.md): The choice stays pressed.
 - [Dropdown menu](./dropdown-menu.md): More actions than fit in a row.
 
+<a class="odv-anatref" href="./button-group/anatomy"><span class="odv-anatref-b"><b>Anatomy reference</b><span>Every part of the button group, the job it does, and the decisions behind it. 3 parts.</span></span><span class="odv-anatref-go" aria-hidden="true">→</span></a>
+
 ## Words
 
 - Use common words. Explain any term you must use.

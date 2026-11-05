@@ -26,6 +26,8 @@ Instead:
 
 - [Dropdown menu](./dropdown-menu.md): The same actions from a visible button.
 
+<a class="odv-anatref" href="./context-menu/anatomy"><span class="odv-anatref-b"><b>Anatomy reference</b><span>Every part of the context menu, the job it does, and the decisions behind it. 12 parts.</span></span><span class="odv-anatref-go" aria-hidden="true">→</span></a>
+
 ## Words
 
 - Write to one person: "you", not "users".

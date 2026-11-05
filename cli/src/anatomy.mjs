@@ -150,6 +150,7 @@ export function anatomy(scheme, g, roots, comp) {
  * or a semantic (color.border.focus). The semantic and its rule, the value in light and dark, the theme
  * pick and its reason in each mode, what else picks the same step, and whether the value changes
  * between schemes. The Anatomy reference's cards read it. */
+const idsMemo = new Map();
 export function tokenTrace(scheme, g, roots, path) {
   const brand = Object.keys(scheme.tokens.brands)[0];
   const theme = scheme.tokens.brands[brand].theme;
@@ -175,8 +176,10 @@ export function tokenTrace(scheme, g, roots, path) {
   const pl = pickOf("light");
   const pd = pickOf("dark");
   const seen = { light: new Set(), dark: new Set() };
-  for (const id of schemeIds(roots)) {
-    const k = `${roots.schemes ?? roots.ui}|${id}`;
+  const where = roots.schemes ?? roots.ui;
+  if (!idsMemo.has(where)) idsMemo.set(where, schemeIds(roots));
+  for (const id of idsMemo.get(where)) {
+    const k = `${where}|${id}`;
     const s = schemeMemo.get(k) ?? loadScheme(id, roots);
     schemeMemo.set(k, s);
     seen.light.add(JSON.stringify(chainOf(s, "light").value));

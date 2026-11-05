@@ -55,8 +55,13 @@ const num = (node, prop, role) => {
   if (v) node.setBoundVariable(prop, v);
 };
 // Fonts: the scheme's body family, its regular and semibold faces.
-const family = String(V.font.value ?? "Inter").split(",")[0].replace(/["']/g, "").trim();
-const faces = (await figma.listAvailableFontsAsync()).filter((f) => f.fontName.family === family).map((f) => f.fontName.style);
+// The scheme's family when this computer has it; otherwise Inter, and the report says so.
+const ALL_FONTS = await figma.listAvailableFontsAsync();
+const wanted = String(V.font.value ?? "Inter").split(",")[0].replace(/["']/g, "").trim();
+const hasFamily = (f) => ALL_FONTS.some((x) => x.fontName.family === f);
+const family = hasFamily(wanted) ? wanted : "Inter";
+if (family !== wanted) report.fallback.font = `${wanted} is not installed here; drawn in Inter`;
+const faces = ALL_FONTS.filter((f) => f.fontName.family === family).map((f) => f.fontName.style);
 const FONT = { family, style: faces.find((x) => /^regular$/i.test(x)) ?? faces[0] ?? "Regular" };
 const BOLD = { family, style: faces.find((x) => /semi ?bold/i.test(x)) ?? faces.find((x) => /bold/i.test(x)) ?? FONT.style };
 await Promise.all([figma.loadFontAsync(FONT), figma.loadFontAsync(BOLD)]);
@@ -338,7 +343,7 @@ function tnode(d, out, show) {
     if (!auto && node.type === "FRAME") node.resize(10, 10);
     node.fills = d.fill ? [paint(d.fill, d.fillOpacity)] : [];
     if (auto) {
-      node.counterAxisAlignItems = { center: "CENTER", end: "MAX", start: "MIN", baseline: "BASELINE" }[d.align ?? "center"] ?? "CENTER";
+      node.counterAxisAlignItems = { center: "CENTER", end: "MAX", start: "MIN", baseline: d.layout === "col" ? "MIN" : "BASELINE" }[d.align ?? "center"] ?? "CENTER";
       if (d.justify) node.primaryAxisAlignItems = { center: "CENTER", end: "MAX", between: "SPACE_BETWEEN", start: "MIN" }[d.justify];
       setN(node, "itemSpacing", d.gap);
       const [py, px] = Array.isArray(d.pad) ? d.pad : [d.pad, d.pad];
@@ -362,7 +367,8 @@ function tnode(d, out, show) {
     for (const c of d.children ?? []) {
       const k = tnode(c, out, show);
       node.appendChild(k);
-      if (c.abs) { k.layoutPositioning = "ABSOLUTE"; k.x = c.abs[0]; k.y = c.abs[1]; }
+      // Placed by x and y: inside auto layout it steps out of the flow; a plain frame places it as is.
+      if (c.abs) { if (node.layoutMode && node.layoutMode !== "NONE") k.layoutPositioning = "ABSOLUTE"; k.x = c.abs[0]; k.y = c.abs[1]; }
     }
   }
   node.name = d.name ?? d.id ?? node.name;

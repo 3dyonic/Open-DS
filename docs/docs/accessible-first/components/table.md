@@ -28,6 +28,8 @@ Instead:
 - [Data table](./data-table.md): Many records with search, filters and paging.
 - [Chart](./chart.md): The shape of the numbers.
 
+<a class="odv-anatref" href="./table/anatomy"><span class="odv-anatref-b"><b>Anatomy reference</b><span>Every part of the table, the job it does, and the decisions behind it. 5 parts.</span></span><span class="odv-anatref-go" aria-hidden="true">→</span></a>
+
 ## How Accessible first uses it
 
 <div class="odv-grid two"><div class="odv-dd"><div class="stage"><div class="odv-eyebrow">A number in a table</div><div style="margin-top:6px"><b style="color:var(--color-status-success)">Use</b> type.body</div><div><b style="color:var(--color-status-danger)">Not</b> A small or mono font</div></div><div class="cap">Every number must be readable at large size.</div></div><div class="odv-dd"><div class="stage"><div class="odv-eyebrow">A selected row or item</div><div style="margin-top:6px"><b style="color:var(--color-status-success)">Use</b> color.surface.selected and a check icon</div><div><b style="color:var(--color-status-danger)">Not</b> Color alone</div></div><div class="cap">Selection never relies on color alone.</div></div><div class="odv-dd"><div class="stage"><div class="odv-eyebrow">Table row height</div><div style="margin-top:6px"><b style="color:var(--color-status-success)">Use</b> size.row (large)</div><div><b style="color:var(--color-status-danger)">Not</b> A compact row</div></div><div class="cap">Large rows are easy to read and tap.</div></div></div>

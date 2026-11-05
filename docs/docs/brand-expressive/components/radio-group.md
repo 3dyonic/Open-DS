@@ -28,6 +28,8 @@ Instead:
 - [Checkbox](./checkbox.md): More than one may be true.
 - [Select](./select.md): The list is long.
 
+<a class="odv-anatref" href="./radio-group/anatomy"><span class="odv-anatref-b"><b>Anatomy reference</b><span>Every part of the radio group, the job it does, and the decisions behind it. 6 parts.</span></span><span class="odv-anatref-go" aria-hidden="true">→</span></a>
+
 ## Words
 
 - Headlines are short and bold. Three to six words.

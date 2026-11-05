@@ -28,6 +28,8 @@ Instead:
 - [Sidebar](./sidebar.md): App navigation that stays open.
 - [Tabs](./tabs.md): Views of one thing.
 
+<a class="odv-anatref" href="./navigation-menu/anatomy"><span class="odv-anatref-b"><b>Anatomy reference</b><span>Every part of the navigation menu, the job it does, and the decisions behind it. 11 parts.</span></span><span class="odv-anatref-go" aria-hidden="true">→</span></a>
+
 ## Words
 
 - Headlines are short and bold. Three to six words.

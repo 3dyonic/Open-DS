@@ -43,6 +43,8 @@ What each variant is for in any design system, then what Multi-brand decided and
 
 <section class="odv-variant off"><header><code>lg</code><span class="odv-axisname">size</span><span class="odv-pill">Not used in Multi-brand</span></header><div class="odv-vbody"><div class="odv-vstage"><span class="odv-wait">Start Storybook to see it live</span><iframe src="http://localhost:6006/iframe.html?id=components-toggle--playground&viewMode=story&globals=scheme:multi-brand--aster;mode:light&args=size:lg" title="Toggle lg" loading="lazy" tabindex="-1"></iframe></div><div class="odv-vinfo"><div class="odv-topic"><h4>What it is for</h4><p>A larger toggle.</p><div class="odv-when"><div><span class="y">✓</span>A few toggles that need to be easy to hit.</div><div><span class="n">✕</span>Dense toolbars.</div></div></div><div class="odv-topic"><h4>In Multi-brand</h4><p class="odv-decision">One density across brands.</p></div><div class="odv-topic"><h4>Because</h4><div class="odv-chips"><a class="odv-achip" href="#why-spacing-count"><span>How many densities exist?</span><b>One</b> · <code>spacing.count</code></a></div></div></div></div></section>
 
+<a class="odv-anatref" href="./toggle/anatomy"><span class="odv-anatref-b"><b>Anatomy reference</b><span>Every part of the toggle, the job it does, and the decisions behind it. 6 parts.</span></span><span class="odv-anatref-go" aria-hidden="true">→</span></a>
+
 ## Why it works this way
 
 Toggle looks the way it does because of 5 answers about this product. Each card is one answer, in three steps: the answer, what it decided for Toggle, and what would move if it changed.

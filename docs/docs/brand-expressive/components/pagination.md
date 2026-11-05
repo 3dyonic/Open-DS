@@ -28,6 +28,8 @@ Instead:
 - [Progress](./progress.md): Steps of a task.
 - [Table](./table.md): The rows being paged.
 
+<a class="odv-anatref" href="./pagination/anatomy"><span class="odv-anatref-b"><b>Anatomy reference</b><span>Every part of the pagination, the job it does, and the decisions behind it. 6 parts.</span></span><span class="odv-anatref-go" aria-hidden="true">→</span></a>
+
 ## Words
 
 - Headlines are short and bold. Three to six words.
