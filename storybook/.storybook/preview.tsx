@@ -3,6 +3,7 @@
 import type { Decorator, Preview } from "@storybook/react-vite";
 import { useEffect } from "react";
 import { themes } from "storybook/theming";
+import { AnatomyMarks, parseAnatomy } from "../src/anatomy-marks";
 import { SchemeContext, THEMES } from "../src/scheme-context";
 import "../src/storybook.css";
 import { brandCss } from "./brand";
@@ -22,6 +23,8 @@ const withScheme: Decorator = (Story, context) => {
   const [chosen, brand] = String(context.globals.scheme ?? "dense-data").split("--");
   const scheme = KNOWN.has(chosen) ? chosen : "dense-data";
   const mode = context.globals.mode === "dark" ? "dark" : "light";
+  // The Anatomy reference's live drawing (OD-229): numbers on the parts, from the parts layer.
+  const anatomy = parseAnatomy(context.globals.anatomy, context.globals.anatomyparts);
   // Dialogs, menus, selects and tooltips render in a portal on <body>, outside the wrapper.
   // Setting the scheme on <html> as well gives them the same tokens.
   useEffect(() => {
@@ -41,6 +44,7 @@ const withScheme: Decorator = (Story, context) => {
         className={`${mode === "dark" ? "dark " : ""}${context.viewMode === "docs" ? "" : "min-h-screen "}p-8 ${mode === "dark" ? "bg-[var(--color-surface-canvas)]" : "bg-white"} text-[var(--color-text-primary)] [font-family:var(--type-body-font-family)]`}
       >
         <Story />
+        {anatomy && <AnatomyMarks component={anatomy.component} only={anatomy.only} />}
       </div>
     </SchemeContext.Provider>
   );
@@ -53,6 +57,9 @@ const preview: Preview = {
       description: "Open DS scheme (and brand)",
       toolbar: { title: "Scheme", icon: "paintbrush", dynamicTitle: true, items: THEMES },
     },
+    // Set only from a URL (globals=anatomy:<component>;anatomyparts:<n>-<n>), by the docs' Anatomy reference.
+    anatomy: { description: "Anatomy reference: number the parts" },
+    anatomyparts: { description: "Anatomy reference: only these parts" },
     mode: {
       description: "Light or dark",
       toolbar: {
