@@ -168,9 +168,8 @@ export default function SchemeSwitcher({ mobile }: { mobile?: boolean }) {
     <div className={`ods-switcher${mobile ? " ods-switcher--mobile" : ""}`}>
       <Picker
         label="Scheme"
-        wide
         value={current?.id ?? ""}
-        options={schemes.map((s) => ({ id: s.id, label: s.name, hint: s.summary, color: s.primary, colorDark: s.primaryDark }))}
+        options={schemes.map((s) => ({ id: s.id, label: s.name }))}
         onPick={(id) => history.push(withBaseUrl(`/${id}/${rest}`))}
       />
       {brands.length > 0 && (

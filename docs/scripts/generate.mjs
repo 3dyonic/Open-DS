@@ -48,7 +48,7 @@ const INFIMA = {
   "--ifm-heading-color": "color-text-primary",
   "--ifm-link-color": "color-text-link",
   "--ifm-menu-color": "color-text-secondary",
-  "--ifm-menu-color-active": "color-text-link",
+  "--ifm-menu-color-active": "ods-text-on-selected",
   "--ifm-menu-color-background-active": "color-surface-selected",
   "--ifm-menu-color-background-hover": "color-surface-sunken",
   "--ifm-code-background": "color-surface-sunken",
@@ -125,6 +125,30 @@ const logo = (t) =>
       ),
   ).join("")}</svg>\n`;
 
+/**
+ * Text for the docs' own toned fills (OD-222): on the selected fill, on-light or on-dark by its
+ * tone; on a status-subtle fill, that status's on-light or on-dark text. Per scheme, brand and mode.
+ */
+function onSelected(scheme, scope) {
+  const brands = Object.entries(scheme.tokens.brands ?? {});
+  const tone = (node) => node?.$extensions?.["open-ds"]?.tone;
+  return brands
+    .flatMap(([b, def]) =>
+      ["light", "dark"].map((mode) => {
+        const c = def.theme?.[mode]?.color ?? {};
+        const vars = [];
+        if (tone(c.surface?.selected)) vars.push(`--ods-text-on-selected: var(--color-text-on-${tone(c.surface.selected)});`);
+        for (const st of ["info", "success", "warning", "danger"])
+          if (tone(c.status?.[st]?.subtle))
+            vars.push(`--ods-text-on-${st}-subtle: var(--color-text-${st}-on-${tone(c.status[st].subtle)});`);
+        if (!vars.length) return "";
+        const sel = `${scope}${brands.length > 1 ? `[data-brand="${b}"]` : ""}${mode === "dark" ? '[data-theme="dark"]' : ""}`;
+        return `${sel} { ${vars.join(" ")} }\n`;
+      }),
+    )
+    .join("");
+}
+
 const files = {};
 const index = [];
 for (const id of ids) {
@@ -153,6 +177,10 @@ for (const id of ids) {
     `${scope} {\n${Object.entries(INFIMA)
       .map(([k, v]) => `  ${k}: var(--${v});`)
       .join("\n")}\n}\n` +
+    // OD-222: text on a fill follows the fill's tone. The docs' own selected rows (the pickers, the
+    // menus) read --ods-text-on-selected: on-light or on-dark, from the tone this scheme gives
+    // color.surface.selected in each mode and brand.
+    onSelected(scheme, scope) +
     `${scope} .navbar__logo img { content: url("/logo-${id}.svg"); }\n` +
     // OD-209: the scheme's robot, small and quiet at the foot of its sidebar.
     `${scope} .theme-doc-sidebar-container .menu::after { background-image: url("/robots/${id}.webp"); }\n` +

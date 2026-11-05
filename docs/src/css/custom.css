@@ -50,6 +50,7 @@ body {
 .breadcrumbs__item--active .breadcrumbs__link {
   background: var(--color-surface-selected);
   border-radius: var(--radius-control);
+  color: var(--ods-text-on-selected, var(--ifm-font-color-base));
 }
 .navbar {
   border-bottom: var(--border-width-default) solid var(--color-border-default);
@@ -328,7 +329,7 @@ code {
   padding: 0 var(--badge-padding-x);
   border-radius: var(--badge-radius);
   background: var(--color-surface-selected);
-  color: var(--color-text-link);
+  color: var(--ods-text-on-selected, var(--ifm-font-color-base));
   font-family: var(--type-label-font-family);
   font-size: var(--type-caption-font-size);
   font-weight: var(--type-label-font-weight);
@@ -435,7 +436,8 @@ code {
 }
 .ods-picker-opt b {
   grid-column: 2;
-  font-weight: 600;
+  font-weight: 400;
+  white-space: nowrap;
   font-size: var(--type-label-font-size, 0.875rem);
 }
 .ods-picker-opt small {
@@ -448,16 +450,23 @@ code {
   grid-column: 3;
   grid-row: 1;
   visibility: hidden;
-  color: var(--ifm-link-color);
 }
 .ods-picker-opt.is-active {
   background: var(--color-surface-sunken, var(--ifm-color-emphasis-100));
 }
+/* Selected: the selected fill and its edge, so selection is never color alone, and text from the
+   fill's tone (--ods-text-on-selected, generated per scheme and mode). Never the link color on it. */
 .ods-picker-opt[aria-selected="true"] {
   background: var(--color-surface-selected, var(--ifm-color-emphasis-100));
+  box-shadow: inset 2px 0 0 var(--color-border-selected, var(--ifm-color-primary));
+  color: var(--ods-text-on-selected, var(--ifm-font-color-base));
 }
 .ods-picker-opt[aria-selected="true"] b {
-  color: var(--ifm-link-color);
+  font-weight: 600;
+}
+.ods-picker-opt[aria-selected="true"] small,
+.ods-picker-opt[aria-selected="true"] .ods-picker-check {
+  color: inherit;
 }
 .ods-picker-opt[aria-selected="true"] .ods-picker-check {
   visibility: visible;
@@ -859,7 +868,7 @@ html[data-theme="dark"] .ods-row {
   margin-left: auto;
   padding: 0 0.375rem;
   font: 500 0.625rem/1.6 var(--type-data-font-family, ui-monospace, monospace);
-  color: var(--color-status-warning);
+  color: var(--ods-text-on-warning-subtle, var(--color-status-warning));
   background: var(--color-status-warning-subtle);
   border-radius: var(--radius-badge);
 }

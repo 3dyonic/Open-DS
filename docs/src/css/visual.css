@@ -104,19 +104,19 @@
 }
 .odv-t-success {
   background: var(--color-status-success-subtle);
-  color: var(--color-status-success);
+  color: var(--ods-text-on-success-subtle, var(--color-status-success));
 }
 .odv-t-warning {
   background: var(--color-status-warning-subtle);
-  color: var(--color-status-warning);
+  color: var(--ods-text-on-warning-subtle, var(--color-status-warning));
 }
 .odv-t-danger {
   background: var(--color-status-danger-subtle);
-  color: var(--color-status-danger);
+  color: var(--ods-text-on-danger-subtle, var(--color-status-danger));
 }
 .odv-t-info {
   background: var(--color-status-info-subtle);
-  color: var(--color-status-info);
+  color: var(--ods-text-on-info-subtle, var(--color-status-info));
 }
 .odv-t-neutral {
   background: var(--color-surface-sunken);
@@ -210,7 +210,7 @@
   padding: 1px 7px;
   border-radius: var(--radius-control);
   background: var(--color-surface-selected, var(--color-surface-sunken));
-  color: var(--color-text-link);
+  color: var(--ods-text-on-selected, var(--ifm-font-color-base));
   margin-top: 8px;
 }
 .odv-tile {
@@ -378,7 +378,7 @@
   padding: 1px 6px;
   border-radius: var(--radius-control);
   background: var(--color-status-success-subtle);
-  color: var(--color-status-success);
+  color: var(--ods-text-on-success-subtle, var(--color-status-success));
   white-space: nowrap;
 }
 
@@ -515,7 +515,7 @@
 }
 .odv-pill.used {
   background: var(--color-status-success-subtle);
-  color: var(--color-status-success);
+  color: var(--ods-text-on-success-subtle, var(--color-status-success));
 }
 .odv-vbody {
   display: grid;
@@ -669,7 +669,7 @@
   align-items: center;
   justify-content: center;
   background: var(--color-surface-selected);
-  color: var(--color-text-link);
+  color: var(--ods-text-on-selected, var(--ifm-font-color-base));
 }
 .odv-answer {
   font-size: calc(var(--type-body-font-size) * 1.2);
@@ -823,7 +823,7 @@ a.odv-icard:hover {
   text-align: left;
   font-size: var(--type-label-font-size);
   font-weight: 600;
-  color: var(--color-action-primary);
+  color: var(--ods-text-on-selected, var(--ifm-font-color-base));
   background: var(--color-surface-selected);
   border-radius: var(--radius-control);
   padding: 2px 8px;
@@ -989,14 +989,14 @@ a.odv-icard:hover {
   justify-self: start;
   margin-top: 4px;
   font: 500 var(--type-caption-font-size) var(--type-data-font-family);
-  color: var(--color-action-primary);
+  color: var(--ods-text-on-selected, var(--ifm-font-color-base));
   background: var(--color-surface-selected);
   border-radius: var(--radius-badge);
   padding: 1px 6px;
 }
 /* OD-211: a left-out component looks like any other; only its badge differs. */
 .odv-pill-out {
-  color: var(--color-status-warning);
+  color: var(--ods-text-on-warning-subtle, var(--color-status-warning));
   background: var(--color-status-warning-subtle);
 }
 .odv-compstatus {
@@ -1387,7 +1387,7 @@ a.odv-icard:hover {
 }
 .odv-chain span.tok {
   font-weight: 600;
-  color: var(--color-action-primary);
+  color: var(--ods-text-on-selected, var(--ifm-font-color-base));
   background: var(--color-surface-selected, var(--color-surface-sunken));
 }
 .odv-chain i {
@@ -1832,7 +1832,7 @@ tr.odv-for td {
   padding: 2px 6px;
   border-radius: 4px;
   background: var(--color-surface-selected);
-  color: var(--color-text-link);
+  color: var(--ods-text-on-selected, var(--ifm-font-color-base));
 }
 .odv-api-tok .tok.own {
   font-weight: 600;
@@ -1990,7 +1990,7 @@ tr.odv-for td {
 .odv-tree-root > li { padding-left: 0; }
 .odv-starts { padding: 16px 20px; border: 1px solid var(--ifm-color-emphasis-300); border-radius: 12px; background: var(--ifm-background-surface-color); }
 .odv-tq { color: var(--ifm-color-emphasis-700); }
-.odv-apill { display: inline-block; font-family: inherit; background: var(--color-surface-selected, var(--ifm-color-emphasis-100)); color: var(--color-text-link, var(--ifm-color-primary)); font-weight: 600; padding: 1px 10px; border-radius: 999px; }
+.odv-apill { display: inline-block; font-family: inherit; background: var(--color-surface-selected, var(--ifm-color-emphasis-100)); color: var(--ods-text-on-selected, var(--ifm-font-color-base)); font-weight: 600; padding: 1px 10px; border-radius: 999px; }
 .odv-lbl, .odv-dgroup-t { align-items: center; gap: 6px; font-size: 12px; font-weight: 700; color: var(--ifm-font-color-base); }
 .odv-dgroup-t { display: flex; }
 .odv-kind-icon { flex: none; color: var(--ifm-color-emphasis-700); }
