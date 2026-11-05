@@ -2448,6 +2448,16 @@ export function docsPages(
     // One engine with open-ds anatomy and get_anatomy: the cards' answers, rules and tokens come from it.
     const ref = anatomyReference(scheme, g, roots, name);
     const refCard = Object.fromEntries(ref.cards.map((c) => [c.title, c]));
+    // Figma assets (OD-229): the drawings are frames in Figma, drawn from this scheme's tokens and
+    // exported into docs/static/anatomy/<scheme>/<component>/. Each image links back to its frame, so
+    // the drawing is seen and changed in Figma.
+    const asset = spec.drawing?.kind === "asset";
+    const figmaLink = (node) =>
+      node && spec.drawing.figma?.file
+        ? `<a class="odv-am-figma" href="https://www.figma.com/design/${spec.drawing.figma.file}/?node-id=${node.replace(":", "-")}">Open in Figma</a>`
+        : "";
+    const assetImg = (file, node, alt) =>
+      `<span class="odv-am-assetbox"><img class="odv-am-asset" src="/anatomy/${scheme.id}/${name}/${file}.png" alt="${attr(alt)}" loading="lazy"/>${figmaLink(node)}</span>`;
     const roleOf = Object.fromEntries(
       (g.anatomy?.roles ?? []).map((r) => [r.id, r]),
     );
@@ -2616,7 +2626,7 @@ export function docsPages(
     const card = (c) => {
       const nums = new Set(c.parts);
       // A card can name its own image: one row, with the card's numbers placed on it.
-      if (spec.drawing.kind === "table") {
+      if (asset || spec.drawing.kind === "table") {
         const d = refCard[c.title];
         const steps = [
           ...d.answers.map(answerStep),
@@ -2624,7 +2634,7 @@ export function docsPages(
           ...d.tokens.map(tokenStep),
         ].filter(Boolean);
         return h(
-          `<section class="odv-am-card" id="part-${c.parts.join("-")}"><div class="odv-am-img wide">${tableDrawing(c.image?.sections ?? [], nums)}</div><div class="odv-am-body">`,
+          `<section class="odv-am-card" id="part-${c.parts.join("-")}"><div class="odv-am-img wide">${asset ? assetImg(`card-${spec.cards.indexOf(c) + 1}`, c.figma?.[scheme.id], `${c.title}: ${c.parts.join(", ")}`) : tableDrawing(c.image?.sections ?? [], nums)}</div><div class="odv-am-body">`,
           `<header>${c.parts.map((n) => num(n)).join("")}<b>${attr(c.title)}</b>${c.roles.map(chip).join("")}</header>`,
           `<ul class="odv-am-tree">${steps.join("")}</ul></div></section>`,
         );
@@ -2657,7 +2667,7 @@ export function docsPages(
     );
     const roles = `<div class="odv-am-rolelist">${(g.anatomy?.roles ?? []).map((r) => `<span class="odv-am-role big"><b>${attr(r.label)}</b> ${attr(r.ask)}</span>`).join("")}</div>`;
     const partsBlock = h(
-      `<div class="odv-am-parts"><figure class="odv-am-stage">${spec.drawing.kind === "table" ? `${tableDrawing(["toolbar", "table"], allNums)}` : drawing(spec.drawing.rows, allNums, true)}<figcaption>${spec.drawing.kind === "table" ? tableCaption : caption}</figcaption></figure>`,
+      `<div class="odv-am-parts"><figure class="odv-am-stage">${asset ? assetImg("stage", spec.drawing.figma?.stage?.[scheme.id], `${T}, every part numbered`) : spec.drawing.kind === "table" ? `${tableDrawing(["toolbar", "table"], allNums)}` : drawing(spec.drawing.rows, allNums, true)}<figcaption>${asset ? `${attr(scheme.name)}, light, drawn in Figma from the scheme's tokens.` : spec.drawing.kind === "table" ? tableCaption : caption}</figcaption></figure>`,
       `<div class="odv-am-legend"><p class="odv-am-legend-t">Legend: every part and its roles. The numbers match the drawing; a part without one isn't in this example.</p><p class="odv-am-legend-k">${byTag} Its value changes by scheme. The part is the same in every scheme.</p><ul>${legend(spec.parts)}</ul></div></div>`,
     );
     return (

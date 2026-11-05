@@ -651,6 +651,36 @@ export const CHECKS = {
         : ok(`${n} considerations met in words, across ${qs.length} question in ${SCHEMES.length} schemes`);
     },
   },
+  "anatomy-assets": {
+    requires: ["schemes/grammar.json"],
+    run: (c) => {
+      // OD-229: an Anatomy reference drawn as Figma assets ships every image it shows, for every
+      // scheme: the stage and one per card, each exported from a frame whose node id the parts layer
+      // records, so the drawing can be opened and changed in Figma.
+      const g = c.json("schemes", "grammar.json");
+      const gaps = [];
+      let n = 0;
+      for (const item of g.catalogue.items.filter((i) => i.anatomy?.drawing?.kind === "asset")) {
+        const a = item.anatomy;
+        if (!a.drawing.figma?.file) gaps.push(`${item.id}: no Figma file`);
+        for (const s of SCHEMES) {
+          const want = [
+            ["stage", a.drawing.figma?.stage?.[s]],
+            ...a.cards.map((card, i) => [`card-${i + 1}`, card.figma?.[s]]),
+          ];
+          for (const [file, node] of want) {
+            n++;
+            if (!node) gaps.push(`${item.id}/${s}/${file}: no Figma node`);
+            if (!existsSync(c.p(`docs/static/anatomy/${s}/${item.id}/${file}.png`)))
+              gaps.push(`${item.id}/${s}/${file}.png is missing`);
+          }
+        }
+      }
+      return gaps.length
+        ? bad(`${gaps.length}: ${gaps.slice(0, 6).join("; ")}`)
+        : ok(`${n} anatomy images, each exported from a Figma frame, in ${SCHEMES.length} schemes`);
+    },
+  },
   "floating-panels-agree": {
     requires: ["schemes/grammar.json", "ui/src/components"],
     run: (c) => {

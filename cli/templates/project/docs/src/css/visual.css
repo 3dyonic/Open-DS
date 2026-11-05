@@ -2134,3 +2134,8 @@ tr.odv-for td {
 .odv-anatref-b b { font-weight: 600; color: var(--color-text-primary); }
 .odv-anatref-b span { color: var(--color-text-secondary); font-size: 0.9em; }
 .odv-anatref-go { color: var(--color-action-primary); font-size: 1.1em; }
+
+/* Anatomy drawings as Figma assets (OD-229): the exported frame, and a link back to it in Figma. */
+.odv-am-assetbox { display: grid; gap: 6px; justify-items: start; }
+.odv-am-asset { display: block; max-width: 100%; height: auto; border-radius: var(--radius-container); }
+.odv-am-figma { font-size: 0.8em; color: var(--color-text-secondary); }
