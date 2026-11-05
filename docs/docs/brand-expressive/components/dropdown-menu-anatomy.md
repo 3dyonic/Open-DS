@@ -41,4 +41,4 @@ Each part follows a chain: an answer about the product, the rule it set, the tok
 
 ## For agents
 
-The same anatomy reaches agents: `get_component` returns each part with its roles, required or optional, the tokens it reads and the cascade behind them; `open-ds component brand-expressive dropdown-menu` prints it.
+The same anatomy reaches agents: `get_anatomy` returns each part with its roles, required or optional, the tokens it reads and the cascade behind them; `open-ds anatomy brand-expressive dropdown-menu` prints it.

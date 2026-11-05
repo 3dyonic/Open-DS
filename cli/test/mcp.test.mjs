@@ -24,6 +24,7 @@ const TOOLS = [
   "compare_schemes",
   "find_token",
   "fit_scheme",
+  "get_anatomy",
   "get_answer",
   "get_component",
   "get_component_spacing_map",
@@ -417,6 +418,26 @@ test("get_gaps and get_component: where the decision trace breaks (OD-243)", asy
   assert.equal(comp.gaps.length, menu.gaps.length);
   const bad = await c.callTool({ name: "get_gaps", arguments: { scheme_id: "dense-data", component: "nope" } });
   assert.ok(bad.isError);
+});
+
+test("get_anatomy: the parts people see and how each decision reaches them (OD-229)", async () => {
+  const c = await connect();
+  const menu = await call(c, "get_anatomy", { scheme_id: "dense-data", component: "dropdown-menu" });
+  assert.equal(menu.parts_layer, true);
+  const flat = (l) => l.flatMap((p) => [p, ...flat(p.children ?? [])]);
+  const parts = flat(menu.parts);
+  assert.equal(parts.filter((p) => p.n).length, 11);
+  assert.ok(parts.find((p) => p.id === "shortcut").no_token_yet);
+  const hl = menu.cards.find((k) => k.title === "Highlight fill");
+  assert.equal(hl.tokens[0].semantic, "color.surface.highlight");
+  assert.match(hl.tokens[0].light.why, /neutral\.100/);
+  assert.ok(hl.answers.some((a) => a.question === "accessibility.roles"));
+  // get_component only points at it.
+  const comp = await call(c, "get_component", { scheme_id: "dense-data", component: "dropdown-menu" });
+  assert.deepEqual(comp.anatomy, { parts_layer: true, see: "get_anatomy dropdown-menu" });
+  // A component without a parts layer says so.
+  const btn = await call(c, "get_anatomy", { scheme_id: "dense-data", component: "button" });
+  assert.equal(btn.parts_layer, false);
 });
 
 test("get_component on a left-out component: what to use instead and the answers behind it (OD-212)", async () => {

@@ -8,6 +8,7 @@
 // No authentication yet: the hosted server will add a key (OD-145).
 
 import { GAP_KINDS, gapLedger } from "./gaps.mjs";
+import { anatomyReference } from "./anatomy.mjs";
 import { scales } from "./scale-map.mjs";
 import { spacingGuide } from "./spacing-map.mjs";
 import { decisionReference } from "./decisions.mjs";
@@ -59,7 +60,7 @@ const VERSION = JSON.parse(
 // carry too (OD-205).
 const INSTRUCTIONS = `Open DS: design systems as answered questions. Every scheme answers the same questions and gives the reason for each answer; tokens, components, usage rules and voice follow from them.
 Choose: describe the product to fit_scheme, compare the top ones with compare_schemes, then plan_create (a new design system project) or plan_init (an existing app). They return the exact npx command; run it yourself.
-Build: call get_context build first, or get_context file=<path> for the file you edit. Before a component or variant, call get_component (its gaps say where the scheme has no answer yet; get_gaps lists them for a whole scheme); before a token, find_token or when_to_use; to see which color step a token uses and which steps are free, get_scales; before you write any spacing, get_component_spacing_map. Before you finish, run check_ui on the files you changed and fix each finding.
+Build: call get_context build first, or get_context file=<path> for the file you edit. Before a component or variant, call get_component (its gaps say where the scheme has no answer yet; get_gaps lists them for a whole scheme); to explain why a part looks the way it does, or before you change a part, get_anatomy; before a token, find_token or when_to_use; to see which color step a token uses and which steps are free, get_scales; before you write any spacing, get_component_spacing_map. Before you finish, run check_ui on the files you changed and fix each finding.
 Write: get_context write holds the voice; get_scheme returns any part of a scheme in full. Check each label or message with check_copy. Change: call plan_change before you change an answer or a primitive. Review: run check_ui, then the review prompt.
 Explain any decision with why; get_answer shows one answer with every option and what it decided; get_decision_reference lists every answer, why, what it came from and the answers, rules and variants it decided; what_moves shows what follows from an answer. The prompts open-ds-choose, open-ds-build, open-ds-write, open-ds-change and open-ds-review hold the step-by-step skills.
 The questions and answers are a starting point, not a standard.
@@ -557,6 +558,28 @@ export function createMcpServer({ roots = assetRoots() } = {}) {
           `"${component}" is not in the catalogue. Components: ${g.catalogue.items.map((i) => i.id).join(", ")}.`,
         );
       return json(out);
+    },
+  );
+
+  server.registerTool(
+    "get_anatomy",
+    {
+      title: "Anatomy",
+      description:
+        "One component taken apart in one scheme: every part people see, with its number, whether it is required, optional or a state, the jobs it does for a person (roles such as Readability, Focus, Feedback) and whether its value changes by scheme; then, for each part, how the decisions reach it: the answers about the product, the rules they set, and each token from its semantic and rule to the theme pick, that pick's reason in light and dark, and what else picks the same step. Read this to explain why a part looks the way it does, or before you change a part, so you change the decision, not just the value. A component without a parts layer returns its code's parts and says so.",
+      inputSchema: {
+        scheme_id: SchemeId,
+        component: z.string().describe("A catalogue component id, for example dropdown-menu."),
+      },
+      annotations: { readOnlyHint: true },
+    },
+    async ({ scheme_id, component }) => {
+      const s = scheme(scheme_id);
+      if (!g.catalogue.items.some((i) => i.id === component))
+        throw new Error(`"${component}" is not in the catalogue. Components: ${g.catalogue.items.map((i) => i.id).join(", ")}.`);
+      const ref = anatomyReference(s, g, roots, component);
+      if (!ref) throw new Error(`"${component}" has no built component to take apart.`);
+      return json(ref);
     },
   );
 

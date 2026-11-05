@@ -13,7 +13,7 @@ import { LANES, follow, laneOf, scaleMap } from "./scale-map.mjs";
 import { aliasChain, tokenIndex } from "./lands.mjs";
 import { spacingGuide } from "./spacing-map.mjs";
 import { componentGuide, followers } from "./component.mjs";
-import { anatomy, tokenTrace } from "./anatomy.mjs";
+import { anatomy, anatomyReference, tokenTrace } from "./anatomy.mjs";
 
 // Which component keys each shipped component reads.
 const KEY_GROUP = {
@@ -2433,6 +2433,9 @@ export function docsPages(
     const spec = g.catalogue.items.find((x) => x.id === name)?.anatomy;
     if (!spec) return null;
     const T = title(name);
+    // One engine with open-ds anatomy and get_anatomy: the cards' answers, rules and tokens come from it.
+    const ref = anatomyReference(scheme, g, roots, name);
+    const refCard = Object.fromEntries(ref.cards.map((c) => [c.title, c]));
     const roleOf = Object.fromEntries((g.anatomy?.roles ?? []).map((r) => [r.id, r]));
     const trace = (p) => tokenTrace(scheme, g, roots, p);
     const traces = new Map();
@@ -2488,20 +2491,11 @@ export function docsPages(
     };
     const legend = (list, depth = 0) =>
       list.map((p, k) => legendRow(p, depth, k === list.length - 1) + (p.children ? legend(p.children, depth + 1) : "")).join("");
-    const answerStep = (q) => {
-      const a = answer(q);
-      if (!a) return "";
-      const sc = g.scopes.find((x) => q.startsWith(`${x.id}.`));
-      return `<li><b class="odv-am-lbl">Answer</b><div class="odv-am-main">${attr(sc ? `${sc.title} · ` : "")}${attr(qText(q))} → ${attr(label(q))}</div><div class="odv-am-why">${attr(a.why)}</div></li>`;
-    };
-    const ruleStep = (sid) => {
-      const u = scheme.usage.find((x) => x.situation === sid);
-      if (!u) return "";
-      const sit = sits[sid];
-      return `<li><b class="odv-am-lbl">Rule</b><div class="odv-am-main">For ${attr(lower(sit?.title ?? sid))}, use ${attr(u.use)}.${u.not ? ` Don't use ${attr(lower(u.not))}.` : ""}</div><div class="odv-am-why">${attr(u.why ?? "")}</div></li>`;
-    };
-    const tokenStep = (p) => {
-      const t = tr(p);
+    const answerStep = (a) =>
+      `<li><b class="odv-am-lbl">Answer</b><div class="odv-am-main">${attr(a.scope ? `${a.scope} · ` : "")}${attr(a.text)} → ${attr(a.answer)}</div><div class="odv-am-why">${attr(a.why)}</div></li>`;
+    const ruleStep = (u) =>
+      `<li><b class="odv-am-lbl">Rule</b><div class="odv-am-main">For ${attr(lower(u.title))}, use ${attr(u.use)}.${u.not ? ` Don't use ${attr(lower(u.not))}.` : ""}</div><div class="odv-am-why">${attr(u.why ?? "")}</div></li>`;
+    const tokenStep = (t) => {
       if (!t) return "";
       const said = (x) => attr(x.why ?? x.pick);
       const dark = t.dark.value !== t.light.value ? ` · dark ${attr(t.dark.value)}` : "";
@@ -2517,7 +2511,8 @@ export function docsPages(
       // A card can name its own image: one row, with the card's numbers placed on it.
       const own = c.image && spec.drawing.rows.find((r) => r.label === c.image.row);
       const { rows, whole } = own ? { rows: [{ ...own, state: undefined, marks: c.image.marks }], whole: false } : rowsFor(nums);
-      const steps = [...c.answers.map(answerStep), ...c.rules.map(ruleStep), ...c.tokens.map(tokenStep)].filter(Boolean);
+      const d = refCard[c.title];
+      const steps = [...d.answers.map(answerStep), ...d.rules.map(ruleStep), ...d.tokens.map(tokenStep)].filter(Boolean);
       return h(
         `<section class="odv-am-card" id="part-${c.parts.join("-")}"><div class="odv-am-img">${drawing(rows, nums, whole)}</div><div class="odv-am-body">`,
         `<header>${c.parts.map((n) => num(n)).join("")}<b>${attr(c.title)}</b>${c.roles.map(chip).join("")}</header>`,
@@ -2550,7 +2545,7 @@ export function docsPages(
         `## Design roles\n\nEach part does a job for the person. These are the jobs, as questions the part answers.\n\n${roles}`,
         `## The parts\n\n${partsBlock}`,
         `## How the decisions reach each part\n\nEach part follows a chain: an answer about the product, the rule it set, the token that carries it, and the value you see. The numbers match the drawing.\n\n${spec.cards.map(card).join("\n\n")}`,
-        `## For agents\n\nThe same anatomy reaches agents: \`get_component\` returns each part with its roles, required or optional, the tokens it reads and the cascade behind them; \`open-ds component ${scheme.id} ${name}\` prints it.`,
+        `## For agents\n\nThe same anatomy reaches agents: \`get_anatomy\` returns each part with its roles, required or optional, the tokens it reads and the cascade behind them; \`open-ds anatomy ${scheme.id} ${name}\` prints it.`,
       ].join("\n\n") +
       "\n"
     );

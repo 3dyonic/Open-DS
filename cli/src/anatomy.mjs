@@ -193,3 +193,97 @@ export function tokenTrace(scheme, g, roots, path) {
     by_scheme: seen.light.size > 1 || seen.dark.size > 1,
   };
 }
+
+/** The Anatomy reference of one component in one scheme (OD-229): one engine for the docs page,
+ * open-ds anatomy and the MCP's get_anatomy. With a parts layer in the catalogue: the roles, every part
+ * (its number, need, roles, and whether its value changes by scheme), and the cards that follow each
+ * decision from the answer through the rule to the token. Without one: the parts the code's data-slots
+ * name, with their tokens, and a note that the parts layer isn't written yet. */
+export function anatomyReference(scheme, g, roots, comp) {
+  const spec = g.catalogue.items.find((x) => x.id === comp)?.anatomy;
+  if (!spec) {
+    const a = anatomy(scheme, g, roots, comp);
+    return a && { ...a, parts_layer: false, note: "No parts layer yet: these parts are the code's data-slots, not the parts people see." };
+  }
+  const roles = g.anatomy?.roles ?? [];
+  const questions = new Map([...g.reasons, ...g.scopes].flatMap((s) => s.questions.map((q) => [q.id, { q, scope: s }])));
+  const sits = Object.fromEntries(g.situations.map((s) => [s.id, s]));
+  const traces = new Map();
+  const tr = (p) => (traces.has(p) ? traces.get(p) : (traces.set(p, tokenTrace(scheme, g, roots, p)), traces.get(p)));
+  const answerOf = (id) => {
+    const a = scheme.answers.find((x) => x.question === id);
+    const hit = questions.get(id);
+    if (!a || !hit) return null;
+    const opt = hit.q.options.find((o) => o.id === a.option);
+    return { question: id, scope: hit.scope.kind === "scope" ? hit.scope.title : null, text: hit.q.text, answer: opt?.label ?? a.option, why: a.why };
+  };
+  const ruleOf = (id) => {
+    const u = scheme.usage.find((x) => x.situation === id);
+    return u && { situation: id, title: sits[id]?.title ?? id, use: u.use, not: u.not ?? null, why: u.why ?? null };
+  };
+  const part = (p) => {
+    const tokens = (p.tokens ?? []).map(tr).filter(Boolean);
+    return {
+      ...(p.n && { n: p.n }),
+      id: p.id,
+      label: p.label,
+      need: p.need,
+      ...(p.note && { note: p.note }),
+      no_token_yet: Boolean(p.n) && !(p.tokens ?? []).length,
+      roles: p.roles ?? [],
+      by_scheme: tokens.some((t) => t.by_scheme),
+      tokens: p.tokens ?? [],
+      ...(p.children && { children: p.children.map(part) }),
+    };
+  };
+  return {
+    component: comp,
+    scheme: scheme.id,
+    parts_layer: true,
+    roles,
+    drawing: spec.drawing,
+    image: Object.fromEntries((spec.cards ?? []).filter((c) => c.image).map((c) => [c.title, c.image])),
+    parts: spec.parts.map(part),
+    cards: spec.cards.map((c) => ({
+      title: c.title,
+      parts: c.parts,
+      roles: c.roles,
+      ...(c.image && { image: c.image }),
+      answers: c.answers.map(answerOf).filter(Boolean),
+      rules: c.rules.map(ruleOf).filter(Boolean),
+      tokens: c.tokens.map(tr).filter(Boolean),
+    })),
+  };
+}
+
+/** The reference as plain text, for open-ds anatomy. */
+export function anatomyText(ref) {
+  if (!ref) return "No anatomy.";
+  const lines = [`${ref.component} in ${ref.scheme}: anatomy reference.`];
+  if (!ref.parts_layer) {
+    lines.push(ref.note, "");
+    for (const p of ref.parts) lines.push(`  ${p.part}${p.by_scheme ? "  (by scheme)" : ""}: ${p.tokens.map((t) => t.semantic).join(", ")}`);
+    return lines.join("\n");
+  }
+  const roleOf = Object.fromEntries(ref.roles.map((r) => [r.id, r.label]));
+  const walk = (list, d = 0) => {
+    for (const p of list) {
+      lines.push(`${"  ".repeat(d + 1)}${p.n ? `${p.n}. ` : ""}${p.label} (${p.need}${p.note ? `, ${p.note}` : ""}${p.no_token_yet ? ", no token yet" : ""})${p.by_scheme ? " [by scheme]" : ""}  ${p.roles.map((r) => roleOf[r]).join(", ")}`);
+      if (p.children) walk(p.children, d + 1);
+    }
+  };
+  lines.push("", "Parts:");
+  walk(ref.parts);
+  for (const c of ref.cards) {
+    lines.push("", `${c.parts.join(", ")}. ${c.title} (${c.roles.map((r) => roleOf[r]).join(", ")})`);
+    for (const a of c.answers) lines.push(`  Answer: ${a.scope ? `${a.scope} · ` : ""}${a.text} → ${a.answer}. ${a.why}`);
+    for (const u of c.rules) lines.push(`  Rule: ${u.title}: use ${u.use}.${u.not ? ` Not ${u.not}.` : ""} ${u.why ?? ""}`.trimEnd());
+    for (const t of c.tokens) {
+      lines.push(`  Token: ${t.semantic}${t.key ? ` → ${t.key}` : ""}  ${t.light.value}${t.dark.value !== t.light.value ? ` · dark ${t.dark.value}` : ""}${t.by_scheme ? " [by scheme]" : ""}`);
+      if (t.light.why) lines.push(`    Pick: ${t.light.why}`);
+      if (t.dark.why && t.dark.why !== t.light.why) lines.push(`    Dark: ${t.dark.why}`);
+      if (t.shares.length) lines.push(`    Shares the step with: ${t.shares.join(", ")}`);
+    }
+  }
+  return lines.join("\n");
+}

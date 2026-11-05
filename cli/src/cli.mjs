@@ -55,6 +55,8 @@ const HELP = `open-ds: deploy an Open DS scheme as a full design system.
   open-ds decisions <scheme> [<question-id>]
                                        every answer, why, what it came from, and the answers,
                                        rules and variants it decided (the Decision reference)
+  open-ds anatomy <scheme> <component> each part people see, its roles, and how the decisions reach
+                                       it: answer, rule, token, pick and its reason (the Anatomy reference)
   open-ds gaps <scheme> [<component>] where the decision trace breaks, by kind: keys that hide their
                                        part or state, wrong or borrowed links, a semantic with two
                                        jobs, rules not written, picks with no reason (the gap ledger)
@@ -71,7 +73,7 @@ const HELP = `open-ds: deploy an Open DS scheme as a full design system.
                                        the Open DS MCP server: stdio for a local agent, or
                                        Streamable HTTP at /mcp (read-only, no authentication yet)
 
-Add --json to list, show, why, when, context, component, scales, spacing, decisions, gaps, check, copy, change, token and fit for machine-readable output.`;
+Add --json to list, show, why, when, context, component, scales, spacing, decisions, gaps, anatomy, check, copy, change, token and fit for machine-readable output.`;
 
 function flag(args, name, fallback) {
   const i = args.indexOf(name);
@@ -415,6 +417,19 @@ export async function run(argv) {
           }
         : ref;
       out(data, () => console.log(decisionText(data)));
+      return 0;
+    }
+    // The Anatomy reference (OD-229): one engine with the docs page and get_anatomy.
+    if (cmd === "anatomy") {
+      const { anatomyReference, anatomyText } = await import("./anatomy.mjs");
+      const s = loadScheme(args[0] ?? "");
+      const comp = args[1];
+      const roots = assetRoots();
+      const g = grammar(roots);
+      if (!comp || !g.catalogue.items.some((i) => i.id === comp))
+        throw new Error(`Give a catalogue component: open-ds anatomy ${s.id} <component>.`);
+      const ref = anatomyReference(s, g, roots, comp);
+      out(ref, () => console.log(anatomyText(ref)));
       return 0;
     }
     // The gap ledger (OD-243): every place where the decision trace breaks, generated.

@@ -6,7 +6,6 @@
 import { assetRoots, grammar, loadScheme } from "./schemes.mjs";
 import { componentApi } from "./lands.mjs";
 import { componentLedger } from "./gaps.mjs";
-import { anatomy } from "./anatomy.mjs";
 
 /** The reference and this scheme's decisions for one catalogue component, or null if there is none. */
 export function componentGuide(
@@ -91,8 +90,12 @@ export function componentGuide(
     // Its gaps (OD-243): where its decision trace breaks. Where a gap stands, the scheme has no answer
     // yet; say so instead of inventing one.
     gaps: componentLedger(scheme, g, roots, id),
-    // Its anatomy (OD-229): each part, the tokens it reads, and the chain from each decision to its value.
-    anatomy: anatomy(scheme, g, roots, id),
+    // Its anatomy is its own tool (OD-229): get_anatomy, or open-ds anatomy. Here only whether the
+    // parts people see are described yet.
+    anatomy: {
+      parts_layer: Boolean(item.anatomy),
+      see: `get_anatomy ${id}`,
+    },
   };
 }
 
@@ -164,14 +167,7 @@ export function componentText(guide) {
       );
     }
   }
-  if (guide.anatomy?.parts?.length) {
-    lines.push("", `Anatomy: ${guide.anatomy.parts.length} parts, ${guide.anatomy.by_scheme} change their value by scheme.`);
-    for (const p of guide.anatomy.parts) {
-      lines.push(`  ${p.part}${p.by_scheme ? "  (by scheme)" : ""}`);
-      for (const t of p.tokens)
-        lines.push(`    ${t.semantic} → ${t.key}  ${t.light.value}${t.dark.value !== t.light.value ? ` · dark ${t.dark.value}` : ""}`, ...(t.light.why ? [`      Why: ${t.light.why}`] : []));
-    }
-  }
+  lines.push("", `Anatomy: open-ds anatomy ${guide.scheme} ${guide.component}${guide.anatomy?.parts_layer ? "" : " (its parts layer isn't written yet)"}.`);
   if (guide.gaps?.length) {
     lines.push("", `Gaps (${guide.gaps.length}): where the decision trace breaks. No answer here yet.`);
     for (const x of guide.gaps) lines.push(`  [${x.kind}] ${x.says}${x.ticket ? ` (${x.ticket})` : ""}`);
