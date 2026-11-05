@@ -49,10 +49,6 @@ Test before you ship:
 
 - [ ] Screen readers hear one field with a label, and pasting the whole code works. undefined
 
-## Look closer
-
-<div class="odv-anat-link"><a href="./input-otp-anatomy">Anatomy reference →</a><span>Each part of Input otp, and how the design decisions reach it: the answer, the rule, the token and the value you see.</span></div>
-
 ## Use it in code
 
 ```bash

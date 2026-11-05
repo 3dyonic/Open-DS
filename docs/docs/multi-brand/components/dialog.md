@@ -62,10 +62,6 @@ Test before you ship:
 - [ ] It is a dialog with a title; the page behind is hidden from screen readers. undefined
 - [ ] Focus moves in when it opens and back to the trigger when it closes. undefined
 
-## Look closer
-
-<div class="odv-anat-link"><a href="./dialog-anatomy">Anatomy reference →</a><span>Each part of Dialog, and how the design decisions reach it: the answer, the rule, the token and the value you see.</span></div>
-
 ## Use it in code
 
 ```bash

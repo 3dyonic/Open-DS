@@ -59,10 +59,6 @@ Test before you ship:
 
 - [ ] It describes its trigger and also shows on keyboard focus. undefined
 
-## Look closer
-
-<div class="odv-anat-link"><a href="./tooltip-anatomy">Anatomy reference →</a><span>Each part of Tooltip, and how the design decisions reach it: the answer, the rule, the token and the value you see.</span></div>
-
 ## Use it in code
 
 ```bash

@@ -74,10 +74,6 @@ Test before you ship:
 - [ ] It is announced politely without taking focus, and stays long enough to read. undefined
 - [ ] Nothing people must act on lives only in a toast. undefined
 
-## Look closer
-
-<div class="odv-anat-link"><a href="./toast-anatomy">Anatomy reference →</a><span>Each part of Toast, and how the design decisions reach it: the answer, the rule, the token and the value you see.</span></div>
-
 ## Use it in code
 
 ```bash

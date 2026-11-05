@@ -59,10 +59,6 @@ Test before you ship:
 
 - [ ] It stays a real table with headers; sorting and selection are announced. undefined
 
-## Look closer
-
-<div class="odv-anat-link"><a href="./data-table-anatomy">Anatomy reference →</a><span>Each part of Data table, and how the design decisions reach it: the answer, the rule, the token and the value you see.</span></div>
-
 ## Use it in code
 
 ```bash

@@ -2425,6 +2425,7 @@ export function docsPages(
   const byTag = `<span class="odv-byscheme" title="Its value changes by scheme. The part is the same in every scheme.">${BRUSH}By scheme</span>`;
   const partName = (p) => (p === "root" ? "The component" : p.replace(/-/g, " ").replace(/^./, (c) => c.toUpperCase()));
   function anatomyPage(name, i) {
+    if (!g.catalogue.items.find((x) => x.id === name)?.anatomy) return null;
     const a = anatomy(scheme, g, roots, name);
     if (!a || !a.parts.length) return null;
     const T = title(name);
@@ -2667,6 +2668,8 @@ export function docsPages(
             ? `Test before you ship:\n\n${a11y.map((x) => `- [ ] ${esc(x.overview)} ${esc(x.apply_when)}`).join("\n")}`
             : ""),
       );
+    // OD-229: the Anatomy reference follows the approved Figma page. Only a component whose catalogue
+    // entry describes its parts (the parts layer) gets one; the token-only draft is gone.
     const anat = anatomyPage(name, i);
     if (anat)
       parts.push(

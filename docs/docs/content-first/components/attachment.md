@@ -49,10 +49,6 @@ Test before you ship:
 
 - [ ] The link names the file and its type and size, not just Download. undefined
 
-## Look closer
-
-<div class="odv-anat-link"><a href="./attachment-anatomy">Anatomy reference →</a><span>Each part of Attachment, and how the design decisions reach it: the answer, the rule, the token and the value you see.</span></div>
-
 ## Use it in code
 
 ```bash

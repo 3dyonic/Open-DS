@@ -50,10 +50,6 @@ Test before you ship:
 
 - [ ] The region says it is loading; the shapes themselves are hidden from screen readers. undefined
 
-## Look closer
-
-<div class="odv-anat-link"><a href="./skeleton-anatomy">Anatomy reference →</a><span>Each part of Skeleton, and how the design decisions reach it: the answer, the rule, the token and the value you see.</span></div>
-
 ## Use it in code
 
 ```bash

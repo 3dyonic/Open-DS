@@ -55,10 +55,6 @@ Test before you ship:
 
 - [ ] It is a group with a name; each toggle says whether it is pressed. undefined
 
-## Look closer
-
-<div class="odv-anat-link"><a href="./toggle-group-anatomy">Anatomy reference →</a><span>Each part of Toggle group, and how the design decisions reach it: the answer, the rule, the token and the value you see.</span></div>
-
 ## Use it in code
 
 ```bash

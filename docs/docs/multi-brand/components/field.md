@@ -74,10 +74,6 @@ Test before you ship:
 
 - [ ] The label, hint and error are linked to the control, so they are read with it. undefined
 
-## Look closer
-
-<div class="odv-anat-link"><a href="./field-anatomy">Anatomy reference →</a><span>Each part of Field, and how the design decisions reach it: the answer, the rule, the token and the value you see.</span></div>
-
 ## Use it in code
 
 ```bash

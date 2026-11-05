@@ -51,10 +51,6 @@ Test before you ship:
 
 - [ ] The current page is marked; previous and next have names. undefined
 
-## Look closer
-
-<div class="odv-anat-link"><a href="./pagination-anatomy">Anatomy reference →</a><span>Each part of Pagination, and how the design decisions reach it: the answer, the rule, the token and the value you see.</span></div>
-
 ## Use it in code
 
 ```bash

@@ -51,10 +51,6 @@ Test before you ship:
 
 - [ ] It is a navigation landmark, and the current page is marked as current. undefined
 
-## Look closer
-
-<div class="odv-anat-link"><a href="./breadcrumb-anatomy">Anatomy reference →</a><span>Each part of Breadcrumb, and how the design decisions reach it: the answer, the rule, the token and the value you see.</span></div>
-
 ## Use it in code
 
 ```bash

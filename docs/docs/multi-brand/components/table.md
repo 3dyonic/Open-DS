@@ -55,10 +55,6 @@ Test before you ship:
 
 - [ ] It has a caption and header cells, so each cell is read with its header. undefined
 
-## Look closer
-
-<div class="odv-anat-link"><a href="./table-anatomy">Anatomy reference →</a><span>Each part of Table, and how the design decisions reach it: the answer, the rule, the token and the value you see.</span></div>
-
 ## Use it in code
 
 ```bash

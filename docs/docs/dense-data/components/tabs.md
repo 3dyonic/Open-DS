@@ -55,10 +55,6 @@ Test before you ship:
 
 - [ ] It is a tablist; the selected tab owns its panel. undefined
 
-## Look closer
-
-<div class="odv-anat-link"><a href="./tabs-anatomy">Anatomy reference →</a><span>Each part of Tabs, and how the design decisions reach it: the answer, the rule, the token and the value you see.</span></div>
-
 ## Use it in code
 
 ```bash

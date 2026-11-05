@@ -83,10 +83,6 @@ Test before you ship:
 
 - [ ] The status is a word; color and icon add to it, never replace it. undefined
 
-## Look closer
-
-<div class="odv-anat-link"><a href="./badge-anatomy">Anatomy reference →</a><span>Each part of Badge, and how the design decisions reach it: the answer, the rule, the token and the value you see.</span></div>
-
 ## Use it in code
 
 ```bash

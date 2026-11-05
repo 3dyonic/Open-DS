@@ -77,10 +77,6 @@ Test before you ship:
 
 - [ ] It is a navigation landmark; the current section is marked; collapsing keeps names for icons. undefined
 
-## Look closer
-
-<div class="odv-anat-link"><a href="./sidebar-anatomy">Anatomy reference →</a><span>Each part of Sidebar, and how the design decisions reach it: the answer, the rule, the token and the value you see.</span></div>
-
 ## Use it in code
 
 ```bash

@@ -69,10 +69,6 @@ The labels components use, from the voice tokens:
 
 See [Voice and tone](../voice.md) for the whole voice.
 
-## Look closer
-
-<div class="odv-anat-link"><a href="./empty-anatomy">Anatomy reference →</a><span>Each part of Empty, and how the design decisions reach it: the answer, the rule, the token and the value you see.</span></div>
-
 ## Use it in code
 
 ```bash

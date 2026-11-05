@@ -531,7 +531,12 @@ test("the decision reference: every answer with what it decided, the same as the
   const ref = await call(c, "get_decision_reference", {
     scheme_id: "dense-data",
   });
-  assert.equal(ref.answers, 78);
+  // 79: brand.q3, the typeface, joined the reasons (OD-245).
+  assert.equal(ref.answers, 79);
+  const face = ref.sections.flatMap((s) => s.questions).find((x) => x.id === "brand.q3");
+  assert.equal(face.considers.length, 11);
+  assert.ok(face.considers.every((k) => k.how));
+  assert.ok(face.decided.picks.some((d) => d.token === "type.data.font-family"));
   const q = ref.sections
     .flatMap((s) => s.questions)
     .find((x) => x.id === "content.q1");
