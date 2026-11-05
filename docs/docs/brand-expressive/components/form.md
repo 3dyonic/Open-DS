@@ -54,6 +54,10 @@ Test before you ship:
 
 - [ ] Errors are announced, linked to their fields, and the first one gets focus on submit. undefined
 
+## Look closer
+
+<div class="odv-anat-link"><a href="./form-anatomy">Anatomy reference →</a><span>Each part of Form, and how the design decisions reach it: the answer, the rule, the token and the value you see.</span></div>
+
 ## Use it in code
 
 ```bash

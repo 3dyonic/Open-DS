@@ -55,6 +55,10 @@ Test before you ship:
 
 - [ ] One inner link or button names the destination; the rest is not one big link. undefined
 
+## Look closer
+
+<div class="odv-anat-link"><a href="./card-anatomy">Anatomy reference →</a><span>Each part of Card, and how the design decisions reach it: the answer, the rule, the token and the value you see.</span></div>
+
 ## Use it in code
 
 ```bash

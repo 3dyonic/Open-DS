@@ -44,7 +44,7 @@ What each variant is for in any design system, then what Brand expressive decide
 
 Empty looks the way it does because of 4 answers about this product. Each card is one answer, in three steps: the answer, what it decided for Empty, and what would move if it changed.
 
-<section class="odv-trail" id="why-content-q1"><div class="odv-trail-head"><b>What is the main content?</b><code>content.q1</code></div><div class="odv-steps"><div class="odv-step-col"><h5><i>1</i>The answer</h5><div class="odv-answer">Images and campaigns</div><p>Images, campaigns and short punchy copy.</p></div><div class="odv-step-col"><h5><i>2</i>So Empty</h5><ul><li><span class="y">✓</span><span>uses <b>default</b>: A campaign image or illustration beside the playful words and a clear next step.</span></li></ul><div class="odv-also"><small>It also shapes</small> <code>Badge: info</code> <code>Input group: block-start</code> <code>Input group: block-end</code></div></div><div class="odv-step-col change"><h5><i>3</i>If it changed</h5><div class="odv-big">1</div><small>Empty decision would reopen</small><p>and 10 answers that follow from it: <b>One idea at a time</b>, <b>Browse and explore</b>, <b>Regular</b>, and 7 more.</p></div></div></section>
+<section class="odv-trail" id="why-content-q1"><div class="odv-trail-head"><b>What is the main content?</b><code>content.q1</code></div><div class="odv-steps"><div class="odv-step-col"><h5><i>1</i>The answer</h5><div class="odv-answer">Images and campaigns</div><p>Images, campaigns and short punchy copy.</p></div><div class="odv-step-col"><h5><i>2</i>So Empty</h5><ul><li><span class="y">✓</span><span>uses <b>default</b>: A campaign image or illustration beside the playful words and a clear next step.</span></li></ul><div class="odv-also"><small>It also shapes</small> <code>Badge: info</code> <code>Input group: block-start</code> <code>Input group: block-end</code></div></div><div class="odv-step-col change"><h5><i>3</i>If it changed</h5><div class="odv-big">1</div><small>Empty decision would reopen</small><p>and 11 answers that follow from it: <b>One idea at a time</b>, <b>Browse and explore</b>, <b>A display face for brand moments, with a sans for text</b>, and 8 more.</p></div></div></section>
 
 <section class="odv-trail" id="why-human-q1"><div class="odv-trail-head"><b>What must the interface protect?</b><code>human.q1</code></div><div class="odv-steps"><div class="odv-step-col"><h5><i>1</i>The answer</h5><div class="odv-answer">Delight</div><p>Delight is the point.</p></div><div class="odv-step-col"><h5><i>2</i>So Empty</h5><ul><li><span class="y">✓</span><span>uses <b>default</b>: A campaign image or illustration beside the playful words and a clear next step.</span></li></ul></div><div class="odv-step-col change"><h5><i>3</i>If it changed</h5><div class="odv-big">1</div><small>Empty decision would reopen</small><p>and 1 answer that follow from it: <b>Fast</b>.</p></div></div></section>
 
@@ -68,6 +68,10 @@ The labels components use, from the voice tokens:
 - `content.action.empty-action`: Explore the drop
 
 See [Voice and tone](../voice.md) for the whole voice.
+
+## Look closer
+
+<div class="odv-anat-link"><a href="./empty-anatomy">Anatomy reference →</a><span>Each part of Empty, and how the design decisions reach it: the answer, the rule, the token and the value you see.</span></div>
 
 ## Use it in code
 

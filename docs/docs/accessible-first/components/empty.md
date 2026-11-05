@@ -46,7 +46,7 @@ Empty looks the way it does because of 4 answers about this product. Each card i
 
 <section class="odv-trail" id="why-brand-q2"><div class="odv-trail-head"><b>How visible is the brand in the interface?</b><code>brand.q2</code></div><div class="odv-steps"><div class="odv-step-col"><h5><i>1</i>The answer</h5><div class="odv-answer">Quiet</div><p>The brand stays out of the way.</p></div><div class="odv-step-col"><h5><i>2</i>So Empty</h5><ul><li><span class="n">–</span><span>does not use <b>default</b>: The brand stays out of the way: words say what will appear and how to start.</span></li></ul></div><div class="odv-step-col change"><h5><i>3</i>If it changed</h5><div class="odv-big">1</div><small>Empty decision would reopen</small><p>No other answer follows from it.</p></div></div></section>
 
-<section class="odv-trail" id="why-human-q1"><div class="odv-trail-head"><b>What must the interface protect?</b><code>human.q1</code></div><div class="odv-steps"><div class="odv-step-col"><h5><i>1</i>The answer</h5><div class="odv-answer">Low effort to understand</div><p>Low effort to understand each step.</p></div><div class="odv-step-col"><h5><i>2</i>So Empty</h5><ul><li><span class="n">–</span><span>does not use <b>default</b>: The brand stays out of the way: words say what will appear and how to start.</span></li></ul><div class="odv-also"><small>It also shapes</small> <code>Alert: default</code></div></div><div class="odv-step-col change"><h5><i>3</i>If it changed</h5><div class="odv-big">2</div><small>Empty decisions would reopen</small><p>and 15 answers that follow from it: <b>Calm and clear</b>, <b>Quiet</b>, <b>Core: heading, body, label</b>, and 12 more.</p></div></div></section>
+<section class="odv-trail" id="why-human-q1"><div class="odv-trail-head"><b>What must the interface protect?</b><code>human.q1</code></div><div class="odv-steps"><div class="odv-step-col"><h5><i>1</i>The answer</h5><div class="odv-answer">Low effort to understand</div><p>Low effort to understand each step.</p></div><div class="odv-step-col"><h5><i>2</i>So Empty</h5><ul><li><span class="n">–</span><span>does not use <b>default</b>: The brand stays out of the way: words say what will appear and how to start.</span></li></ul><div class="odv-also"><small>It also shapes</small> <code>Alert: default</code></div></div><div class="odv-step-col change"><h5><i>3</i>If it changed</h5><div class="odv-big">2</div><small>Empty decisions would reopen</small><p>and 16 answers that follow from it: <b>Calm and clear</b>, <b>Quiet</b>, <b>One face drawn for legibility</b>, and 13 more.</p></div></div></section>
 
 <section class="odv-trail" id="why-iconography-definition"><div class="odv-trail-head"><b>What icon style?</b><code>iconography.definition</code></div><div class="odv-steps"><div class="odv-step-col"><h5><i>1</i>The answer</h5><div class="odv-answer">Filled</div><p>Filled icons stay visible at low vision.</p></div><div class="odv-step-col"><h5><i>2</i>So Empty</h5><ul><li><span class="y">✓</span><span>uses <b>icon</b>: A filled icon in a tile, beside words that say what will appear here and how to start.</span></li></ul></div><div class="odv-step-col change"><h5><i>3</i>If it changed</h5><div class="odv-big">1</div><small>Empty decision would reopen</small><p>No other answer follows from it.</p></div></div></section>
 
@@ -68,6 +68,10 @@ The labels components use, from the voice tokens:
 - `content.action.empty-action`: Start a new application
 
 See [Voice and tone](../voice.md) for the whole voice.
+
+## Look closer
+
+<div class="odv-anat-link"><a href="./empty-anatomy">Anatomy reference →</a><span>Each part of Empty, and how the design decisions reach it: the answer, the rule, the token and the value you see.</span></div>
 
 ## Use it in code
 

@@ -79,6 +79,10 @@ Test before you ship:
 - [ ] An error that appears after an action is announced (role alert); a standing note is not. undefined
 - [ ] The tone also shows as an icon and words, never color alone. undefined
 
+## Look closer
+
+<div class="odv-anat-link"><a href="./alert-anatomy">Anatomy reference →</a><span>Each part of Alert, and how the design decisions reach it: the answer, the rule, the token and the value you see.</span></div>
+
 ## Use it in code
 
 ```bash

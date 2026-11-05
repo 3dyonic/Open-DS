@@ -55,6 +55,10 @@ Test before you ship:
 
 - [ ] A visible label, never a placeholder as the only label. undefined
 
+## Look closer
+
+<div class="odv-anat-link"><a href="./input-anatomy">Anatomy reference →</a><span>Each part of Input, and how the design decisions reach it: the answer, the rule, the token and the value you see.</span></div>
+
 ## Use it in code
 
 ```bash

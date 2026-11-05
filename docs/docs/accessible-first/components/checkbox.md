@@ -56,6 +56,10 @@ Test before you ship:
 
 - [ ] Each checkbox has a visible label that is part of the hit area. undefined
 
+## Look closer
+
+<div class="odv-anat-link"><a href="./checkbox-anatomy">Anatomy reference →</a><span>Each part of Checkbox, and how the design decisions reach it: the answer, the rule, the token and the value you see.</span></div>
+
 ## Use it in code
 
 ```bash

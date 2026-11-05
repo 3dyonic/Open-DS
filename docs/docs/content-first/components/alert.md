@@ -45,7 +45,7 @@ What each variant is for in any design system, then what Content first decided a
 
 Alert looks the way it does because of 3 answers about this product. Each card is one answer, in three steps: the answer, what it decided for Alert, and what would move if it changed.
 
-<section class="odv-trail" id="why-content-q1"><div class="odv-trail-head"><b>What is the main content?</b><code>content.q1</code></div><div class="odv-steps"><div class="odv-step-col"><h5><i>1</i>The answer</h5><div class="odv-answer">Long-form text</div><p>The content is long-form text.</p></div><div class="odv-step-col"><h5><i>2</i>So Alert</h5><ul><li><span class="y">✓</span><span>uses <b>default</b>: A note or a warning inside an article.</span></li></ul></div><div class="odv-step-col change"><h5><i>3</i>If it changed</h5><div class="odv-big">2</div><small>Alert decisions would reopen</small><p>and 38 answers that follow from it: <b>One idea at a time</b>, <b>Read start to end</b>, <b>Rarely</b>, and 35 more.</p></div></div></section>
+<section class="odv-trail" id="why-content-q1"><div class="odv-trail-head"><b>What is the main content?</b><code>content.q1</code></div><div class="odv-steps"><div class="odv-step-col"><h5><i>1</i>The answer</h5><div class="odv-answer">Long-form text</div><p>The content is long-form text.</p></div><div class="odv-step-col"><h5><i>2</i>So Alert</h5><ul><li><span class="y">✓</span><span>uses <b>default</b>: A note or a warning inside an article.</span></li></ul></div><div class="odv-step-col change"><h5><i>3</i>If it changed</h5><div class="odv-big">2</div><small>Alert decisions would reopen</small><p>and 39 answers that follow from it: <b>One idea at a time</b>, <b>Read start to end</b>, <b>Rarely</b>, and 36 more.</p></div></div></section>
 
 <section class="odv-trail" id="why-accessibility-count"><div class="odv-trail-head"><b>How many signals carry each meaning?</b><code>accessibility.count</code></div><div class="odv-steps"><div class="odv-step-col"><h5><i>1</i>The answer</h5><div class="odv-answer">Two: color and word</div><p>Status is rare; color and a word are enough.</p></div><div class="odv-step-col"><h5><i>2</i>So Alert</h5><ul><li><span class="y">✓</span><span>uses <b>destructive</b>: A failed save or sign-up: calm, take the blame, offer the way forward.</span></li></ul><div class="odv-also"><small>It also shapes</small> <code>Badge: neutral</code> <code>Badge: info</code> <code>Badge: success</code> <code>Badge: warning</code> <code>Badge: danger</code></div></div><div class="odv-step-col change"><h5><i>3</i>If it changed</h5><div class="odv-big">1</div><small>Alert decision would reopen</small><p>No other answer follows from it.</p></div></div></section>
 
@@ -74,6 +74,10 @@ Test before you ship:
 
 - [ ] An error that appears after an action is announced (role alert); a standing note is not. undefined
 - [ ] The tone also shows as an icon and words, never color alone. undefined
+
+## Look closer
+
+<div class="odv-anat-link"><a href="./alert-anatomy">Anatomy reference →</a><span>Each part of Alert, and how the design decisions reach it: the answer, the rule, the token and the value you see.</span></div>
 
 ## Use it in code
 

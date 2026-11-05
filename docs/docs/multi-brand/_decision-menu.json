@@ -7,7 +7,7 @@
         {
           "id": "business",
           "title": "Business and product",
-          "count": 34
+          "count": 35
         },
         {
           "id": "people",
@@ -37,7 +37,7 @@
         {
           "id": "brand",
           "title": "Brand",
-          "count": 10
+          "count": 19
         },
         {
           "id": "scenarios",
@@ -62,7 +62,7 @@
         {
           "id": "color",
           "title": "Color",
-          "count": 2
+          "count": 90
         },
         {
           "id": "spacing",
@@ -72,12 +72,12 @@
         {
           "id": "shape",
           "title": "Shape",
-          "count": 3
+          "count": 9
         },
         {
           "id": "elevation",
           "title": "Elevation",
-          "count": 7
+          "count": 27
         },
         {
           "id": "motion",
@@ -97,7 +97,7 @@
         {
           "id": "accessibility",
           "title": "Accessibility",
-          "count": 19
+          "count": 109
         },
         {
           "id": "naming",

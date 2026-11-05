@@ -51,6 +51,10 @@ Test before you ship:
 
 - [ ] The button says the chosen date, not just Pick a date. undefined
 
+## Look closer
+
+<div class="odv-anat-link"><a href="./date-picker-anatomy">Anatomy reference →</a><span>Each part of Date picker, and how the design decisions reach it: the answer, the rule, the token and the value you see.</span></div>
+
 ## Use it in code
 
 ```bash

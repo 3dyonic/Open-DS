@@ -50,6 +50,10 @@ Test before you ship:
 
 - [ ] The person's name is in text nearby or in the image's alternative text; initials alone are not a name. undefined
 
+## Look closer
+
+<div class="odv-anat-link"><a href="./avatar-anatomy">Anatomy reference →</a><span>Each part of Avatar, and how the design decisions reach it: the answer, the rule, the token and the value you see.</span></div>
+
 ## Use it in code
 
 ```bash

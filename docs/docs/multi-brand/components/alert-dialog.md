@@ -61,6 +61,10 @@ Test before you ship:
 - [ ] It is an alertdialog with a title and a description that names the consequence. undefined
 - [ ] Focus starts on the safe choice, never on the destructive one. undefined
 
+## Look closer
+
+<div class="odv-anat-link"><a href="./alert-dialog-anatomy">Anatomy reference →</a><span>Each part of Alert dialog, and how the design decisions reach it: the answer, the rule, the token and the value you see.</span></div>
+
 ## Use it in code
 
 ```bash

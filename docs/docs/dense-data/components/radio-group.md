@@ -55,6 +55,10 @@ Test before you ship:
 
 - [ ] The options are a group with a question as its name. undefined
 
+## Look closer
+
+<div class="odv-anat-link"><a href="./radio-group-anatomy">Anatomy reference →</a><span>Each part of Radio group, and how the design decisions reach it: the answer, the rule, the token and the value you see.</span></div>
+
 ## Use it in code
 
 ```bash

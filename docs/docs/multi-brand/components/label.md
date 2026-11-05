@@ -54,6 +54,10 @@ Test before you ship:
 
 - [ ] The label is linked to its control and makes the hit area larger. undefined
 
+## Look closer
+
+<div class="odv-anat-link"><a href="./label-anatomy">Anatomy reference →</a><span>Each part of Label, and how the design decisions reach it: the answer, the rule, the token and the value you see.</span></div>
+
 ## Use it in code
 
 ```bash

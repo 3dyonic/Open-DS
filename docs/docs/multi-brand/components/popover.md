@@ -55,6 +55,10 @@ Test before you ship:
 
 - [ ] The trigger says it opens a panel and whether it is open. undefined
 
+## Look closer
+
+<div class="odv-anat-link"><a href="./popover-anatomy">Anatomy reference →</a><span>Each part of Popover, and how the design decisions reach it: the answer, the rule, the token and the value you see.</span></div>
+
 ## Use it in code
 
 ```bash

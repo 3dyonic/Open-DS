@@ -55,6 +55,10 @@ Test before you ship:
 
 - [ ] It is a combobox; the open state and the active option are announced. undefined
 
+## Look closer
+
+<div class="odv-anat-link"><a href="./combobox-anatomy">Anatomy reference →</a><span>Each part of Combobox, and how the design decisions reach it: the answer, the rule, the token and the value you see.</span></div>
+
 ## Use it in code
 
 ```bash

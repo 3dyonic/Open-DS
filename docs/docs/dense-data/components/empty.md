@@ -44,7 +44,7 @@ What each variant is for in any design system, then what Dense data decided and 
 
 Empty looks the way it does because of 4 answers about this product. Each card is one answer, in three steps: the answer, what it decided for Empty, and what would move if it changed.
 
-<section class="odv-trail" id="why-content-q1"><div class="odv-trail-head"><b>What is the main content?</b><code>content.q1</code></div><div class="odv-steps"><div class="odv-step-col"><h5><i>1</i>The answer</h5><div class="odv-answer">Numbers and records</div><p>Most of the screen is numbers and records.</p></div><div class="odv-step-col"><h5><i>2</i>So Empty</h5><ul><li><span class="n">–</span><span>does not use <b>default</b>: No pictures: an empty table needs the reason and the one action that fills it.</span></li></ul><div class="odv-also"><small>It also shapes</small> <code>Badge: neutral</code> <code>Badge: info</code> <code>Badge: success</code> <code>Badge: warning</code> <code>Badge: danger</code> <code>Sidebar: default</code> <code>Sidebar: outline</code> <code>Item: default</code> <code>Item: outline</code> <code>Toggle: default</code> <code>Toggle: outline</code></div></div><div class="odv-step-col change"><h5><i>3</i>If it changed</h5><div class="odv-big">2</div><small>Empty decisions would reopen</small><p>and 44 answers that follow from it: <b>A lot</b>, <b>Scan and compare</b>, <b>People keep their place</b>, and 41 more.</p></div></div></section>
+<section class="odv-trail" id="why-content-q1"><div class="odv-trail-head"><b>What is the main content?</b><code>content.q1</code></div><div class="odv-steps"><div class="odv-step-col"><h5><i>1</i>The answer</h5><div class="odv-answer">Numbers and records</div><p>Most of the screen is numbers and records.</p></div><div class="odv-step-col"><h5><i>2</i>So Empty</h5><ul><li><span class="n">–</span><span>does not use <b>default</b>: No pictures: an empty table needs the reason and the one action that fills it.</span></li></ul><div class="odv-also"><small>It also shapes</small> <code>Badge: neutral</code> <code>Badge: info</code> <code>Badge: success</code> <code>Badge: warning</code> <code>Badge: danger</code> <code>Sidebar: default</code> <code>Sidebar: outline</code> <code>Item: default</code> <code>Item: outline</code> <code>Toggle: default</code> <code>Toggle: outline</code></div></div><div class="odv-step-col change"><h5><i>3</i>If it changed</h5><div class="odv-big">2</div><small>Empty decisions would reopen</small><p>and 45 answers that follow from it: <b>A lot</b>, <b>Scan and compare</b>, <b>People keep their place</b>, and 42 more.</p></div></div></section>
 
 <section class="odv-trail" id="why-voice-lands"><div class="odv-trail-head"><b>Where do the words matter most?</b><code>voice.lands</code></div><div class="odv-steps"><div class="odv-step-col"><h5><i>1</i>The answer</h5><div class="odv-answer">Errors and empty states</div><p>Errors and empty tables are where words decide the next action.</p></div><div class="odv-step-col"><h5><i>2</i>So Empty</h5><ul><li><span class="n">–</span><span>does not use <b>default</b>: No pictures: an empty table needs the reason and the one action that fills it.</span></li></ul><div class="odv-also"><small>It also shapes</small> <code>Toast: danger</code></div></div><div class="odv-step-col change"><h5><i>3</i>If it changed</h5><div class="odv-big">1</div><small>Empty decision would reopen</small><p>No other answer follows from it.</p></div></div></section>
 
@@ -68,6 +68,10 @@ The labels components use, from the voice tokens:
 - `content.action.empty-action`: Change filters
 
 See [Voice and tone](../voice.md) for the whole voice.
+
+## Look closer
+
+<div class="odv-anat-link"><a href="./empty-anatomy">Anatomy reference →</a><span>Each part of Empty, and how the design decisions reach it: the answer, the rule, the token and the value you see.</span></div>
 
 ## Use it in code
 

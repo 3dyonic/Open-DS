@@ -89,6 +89,7 @@ Themes: light, dark
 - outcomes.q2 What is a costly mistake? A task that fails. A failed form can cost someone a benefit. (because tasks.q1)
 - brand.q1 What should the brand feel like? Calm and clear. Calm and clear, never clever. (because human.q1)
 - brand.q2 How visible is the brand in the interface? Quiet. The brand stays out of the way. (because human.q1)
+- brand.q3 Which typefaces carry the product, and why? One face drawn for legibility. Atkinson Hyperlegible for everything: it was drawn so letters can't be mistaken, and nobody is left out. (because brand.q1, people.q2, content.q1)
 - scenarios.q1 Where do people use it? Anywhere, on any device. Public services are used on any device, with any assistive technology. (because people.q1)
 - scenarios.q2 How long is one visit? One sitting. An application is finished in one sitting, or saved and resumed. (because tasks.q1)
 - team.q1 Who maintains the system? A platform team. A platform team serves many services.
@@ -228,6 +229,7 @@ Themes: light, dark
 - outcomes.q2 What is a costly mistake? Looking off-brand. A bland page is the costly mistake. (because business.q1)
 - brand.q1 What should the brand feel like? Bold. Bold and confident. (because business.q1)
 - brand.q2 How visible is the brand in the interface? Loud. The brand is loud everywhere. (because brand.q1)
+- brand.q3 Which typefaces carry the product, and why? A display face for brand moments, with a sans for text. Bricolage Grotesque for display and headings, DM Sans for text: loud where the brand speaks, easy where people read. (because brand.q1, brand.q2, content.q1)
 - scenarios.q1 Where do people use it? On the move. Visitors come from social posts on their phones. (because people.q1)
 - scenarios.q2 How long is one visit? A few minutes. A visit lasts a few minutes at most. (because outcomes.q1)
 - team.q1 Who maintains the system? An agency. An agency runs campaigns.
@@ -367,6 +369,7 @@ Themes: light, dark
 - outcomes.q2 What is a costly mistake? Losing your place. Losing your place in an article breaks the read. (because tasks.q1)
 - brand.q1 What should the brand feel like? Warm. Warm and considered, like a good magazine. (because business.q1)
 - brand.q2 How visible is the brand in the interface? Present. The brand shows in type, not in color. (because brand.q1)
+- brand.q3 Which typefaces carry the product, and why? A reading serif, with a sans for the interface. Source Serif 4 for reading and headings, Inter for labels and captions: a good magazine's text with a quiet interface. (because brand.q1, brand.q2, content.q1)
 - scenarios.q1 Where do people use it? Anywhere, on any device. Readers arrive on phones and laptops alike. (because people.q1)
 - scenarios.q2 How long is one visit? One sitting. A guide is read in one sitting. (because content.q1)
 - team.q1 Who maintains the system? A small team. A small editorial team.
@@ -506,6 +509,7 @@ Themes: light, dark
 - outcomes.q2 What is a costly mistake? Acting on the wrong record. Acting on the wrong row is the costly error. (because tasks.q1)
 - brand.q1 What should the brand feel like? Precise. The interface must feel exact and trustworthy. (because content.q1)
 - brand.q2 How visible is the brand in the interface? Quiet. The data is the hero; the brand steps back. (because content.q2)
+- brand.q3 Which typefaces carry the product, and why? A neutral grotesque, with a monospace for data. IBM Plex Sans for every text role and IBM Plex Mono for data: exact and quiet, so the numbers stay the hero. (because brand.q1, brand.q2, content.q1)
 - scenarios.q1 Where do people use it? At a desk. Experts work at a desk with a mouse and keyboard. (because people.q1)
 - scenarios.q2 How long is one visit? All day. The tool stays open for the whole shift. (because tasks.q2)
 - team.q1 Who maintains the system? A small team. A small team keeps the system right.
@@ -645,6 +649,7 @@ Themes: aster-light, aster-dark, birch-light, birch-dark, coral-light, coral-dar
 - outcomes.q2 What is a costly mistake? Looking off-brand. A page that looks like the wrong brand loses trust. (because business.q2)
 - brand.q1 What should the brand feel like? Neutral and adaptable. A neutral base each brand can color. (because business.q2)
 - brand.q2 How visible is the brand in the interface? Present. Each brand is clearly present. (because business.q2)
+- brand.q3 Which typefaces carry the product, and why? Each brand brings its own face, on one shared scale. Each brand brings its own face, Inter, Plus Jakarta Sans or Poppins, on one shared type scale, so brands differ and the system stays one. (because business.q2, brand.q1, brand.q2)
 - scenarios.q1 Where do people use it? Anywhere, on any device. Customers sign up on phones and manage plans on laptops. (because people.q1)
 - scenarios.q2 How long is one visit? A few minutes. Most visits are a few minutes: sign up, check, change. (because tasks.q1)
 - team.q1 Who maintains the system? A platform team. A platform team serves three product teams. (because business.q2)

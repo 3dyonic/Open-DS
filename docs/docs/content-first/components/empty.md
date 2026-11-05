@@ -46,7 +46,7 @@ Empty looks the way it does because of 4 answers about this product. Each card i
 
 <section class="odv-trail" id="why-human-q1"><div class="odv-trail-head"><b>What must the interface protect?</b><code>human.q1</code></div><div class="odv-steps"><div class="odv-step-col"><h5><i>1</i>The answer</h5><div class="odv-answer">Attention on the content</div><p>Attention belongs to the text.</p></div><div class="odv-step-col"><h5><i>2</i>So Empty</h5><ul><li><span class="n">–</span><span>does not use <b>default</b>: Attention belongs to the text: the invitation is in words, not a picture.</span></li></ul><div class="odv-also"><small>It also shapes</small> <code>Button: large</code> <code>Field: horizontal</code> <code>Item: muted</code></div></div><div class="odv-step-col change"><h5><i>3</i>If it changed</h5><div class="odv-big">2</div><small>Empty decisions would reopen</small><p>and 8 answers that follow from it: <b>Surface, text, action and status</b>, <b>Only what floats</b>, <b>One</b>, and 5 more.</p></div></div></section>
 
-<section class="odv-trail" id="why-brand-q2"><div class="odv-trail-head"><b>How visible is the brand in the interface?</b><code>brand.q2</code></div><div class="odv-steps"><div class="odv-step-col"><h5><i>1</i>The answer</h5><div class="odv-answer">Present</div><p>The brand shows in type, not in color.</p></div><div class="odv-step-col"><h5><i>2</i>So Empty</h5><ul><li><span class="n">–</span><span>does not use <b>default</b>: Attention belongs to the text: the invitation is in words, not a picture.</span></li></ul></div><div class="odv-step-col change"><h5><i>3</i>If it changed</h5><div class="odv-big">1</div><small>Empty decision would reopen</small><p>and 1 answer that follow from it: <b>Only when the meaning changes</b>.</p></div></div></section>
+<section class="odv-trail" id="why-brand-q2"><div class="odv-trail-head"><b>How visible is the brand in the interface?</b><code>brand.q2</code></div><div class="odv-steps"><div class="odv-step-col"><h5><i>1</i>The answer</h5><div class="odv-answer">Present</div><p>The brand shows in type, not in color.</p></div><div class="odv-step-col"><h5><i>2</i>So Empty</h5><ul><li><span class="n">–</span><span>does not use <b>default</b>: Attention belongs to the text: the invitation is in words, not a picture.</span></li></ul></div><div class="odv-step-col change"><h5><i>3</i>If it changed</h5><div class="odv-big">1</div><small>Empty decision would reopen</small><p>and 2 answers that follow from it: <b>A reading serif, with a sans for the interface</b>, <b>Only when the meaning changes</b>.</p></div></div></section>
 
 <section class="odv-trail" id="why-iconography-definition"><div class="odv-trail-head"><b>What icon style?</b><code>iconography.definition</code></div><div class="odv-steps"><div class="odv-step-col"><h5><i>1</i>The answer</h5><div class="odv-answer">Outline</div><p>Outline icons stay quiet beside text.</p></div><div class="odv-step-col"><h5><i>2</i>So Empty</h5><ul><li><span class="y">✓</span><span>uses <b>icon</b>: A quiet outline icon in a small tile, above a warm invitation to save an article.</span></li></ul></div><div class="odv-step-col change"><h5><i>3</i>If it changed</h5><div class="odv-big">1</div><small>Empty decision would reopen</small><p>No other answer follows from it.</p></div></div></section>
 
@@ -68,6 +68,10 @@ The labels components use, from the voice tokens:
 - `content.action.empty-action`: Browse guides
 
 See [Voice and tone](../voice.md) for the whole voice.
+
+## Look closer
+
+<div class="odv-anat-link"><a href="./empty-anatomy">Anatomy reference →</a><span>Each part of Empty, and how the design decisions reach it: the answer, the rule, the token and the value you see.</span></div>
 
 ## Use it in code
 

@@ -173,6 +173,22 @@ Status colors go up in urgency: info, then warning, then danger. Pick the level 
 
 `color.status.info.@` → `color.status.warning.@` → `color.status.danger.@`
 
+## Surfaces: when, and for what effect
+
+A surface tells people where they are in depth, or which item they are on. Each one has a job; using the wrong one breaks the reading order.
+
+| Surface | Its job | Use it for | Not for |
+| --- | --- | --- | --- |
+| <span class="odv-surface-swatch" style="background:var(--color-surface-canvas)"></span> **Canvas** | The page background behind everything. | Page and app background | Cards and panels on the page: `color.surface.default` |
+| <span class="odv-surface-swatch" style="background:var(--color-surface-default)"></span> **Default** | The base fill for content. | Cards, Panels, Inputs, Table body | The page behind content: `color.surface.canvas`<br />Menus and popovers above content: `color.surface.raised` |
+| <span class="odv-surface-swatch" style="background:var(--color-surface-raised)"></span> **Raised** | Fills that float above content. | Menus, Popovers, Dialogs | Cards in the page flow: `color.surface.default` |
+| <span class="odv-surface-swatch" style="background:var(--color-surface-sunken)"></span> **Sunken** | A recessed fill, a step below content. | Table headers, Wells | A selected item: `color.surface.selected`<br />An item the pointer or the keyboard is on: `color.surface.highlight` |
+| <span class="odv-surface-swatch" style="background:var(--color-surface-highlight)"></span> **Highlight** | The fill of the item the pointer or the keyboard is on, or whose submenu is open. A state shows on the item's background, one step from the surface it sits on: darker in light, lighter in dark. | Highlighted menu items, Highlighted options, Hover rows, Open submenu triggers | Table headers and wells: `color.surface.sunken`<br />A selected or current item: `color.surface.selected` |
+| <span class="odv-surface-swatch" style="background:var(--color-surface-pressed)"></span> **Pressed** | The fill of an item while it is pressed. Where the scheme gives pressed its own value, one step past the highlight; where pressed reuses hover, the highlight's step. | Pressed menu buttons, Pressed list items | The item the pointer or the keyboard is on: `color.surface.highlight` |
+| <span class="odv-surface-swatch" style="background:var(--color-surface-selected)"></span> **Selected** | The fill of a selected or current item, or a toggle that is on. | Selected rows, Current menu item, Toggles that are on | Hover: `color.surface.sunken`<br />The main action: `color.action.primary.@` |
+| <span class="odv-surface-swatch" style="background:var(--color-surface-inverse)"></span> **Inverse** | A reversed fill for small, short-lived messages. | Tooltips, Toasts | Large areas: `color.surface.default` |
+| <span class="odv-surface-swatch" style="background:var(--color-surface-scrim)"></span> **Scrim** | The see-through layer behind a modal. | Behind dialogs and sheets | A solid fill: `color.surface.raised` |
+
 ## What each color is for
 
 | Token | What it is for | Not for |

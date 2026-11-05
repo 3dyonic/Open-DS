@@ -113,6 +113,10 @@ Test before you ship:
 - [ ] A button that opens something exposes open or closed. The press reveals a menu, panel or more content.
 - [ ] The hit area stays usable, including at a small size. Touch, pointer, or a compact toolbar button.
 
+## Look closer
+
+<div class="odv-anat-link"><a href="./button-anatomy">Anatomy reference →</a><span>Each part of Button, and how the design decisions reach it: the answer, the rule, the token and the value you see.</span></div>
+
 ## Use it in code
 
 ```bash
