@@ -2746,7 +2746,7 @@
         "button/danger/background/@",
         "button/danger/background/hover",
         "button/danger/label",
-        "button/ghost/background-hover",
+        "button/ghost/background/hover",
         "button/ghost/label",
         "button/height",
         "button/padding-x",
@@ -2980,12 +2980,12 @@
       "keys": [
         "attachment/gap",
         "attachment/radius",
-        "attachment/background",
+        "attachment/background/@",
         "attachment/padding-x",
         "attachment/padding-y",
         "attachment/font-size",
         "attachment/line-height",
-        "attachment/background-hover",
+        "attachment/background/hover",
         "attachment/focus",
         "attachment/focus-ring-focus",
         "attachment/focus-ring-offset-focus",
@@ -3271,6 +3271,7 @@
         "command/item/font-size",
         "command/item/line-height",
         "command/item/disabled-opacity-disabled",
+        "command/item/background/highlight",
         "command/item/background-selected",
         "command/item/label-selected",
         "command/item/icon-size",
@@ -3293,7 +3294,7 @@
         "context-menu/sub/trigger/background-focus",
         "context-menu/sub/trigger/label-focus",
         "context-menu/sub/trigger/padding-left",
-        "context-menu/sub/trigger/background-open",
+        "context-menu/sub/trigger/background/open",
         "context-menu/sub/trigger/label-open",
         "context-menu/sub/trigger/icon-size",
         "context-menu/sub/trigger/label",
@@ -3372,6 +3373,7 @@
         "data-table/radius",
         "data-table/padding-x",
         "data-table/padding-y",
+        "data-table/row/background/hover",
         "data-table/background-hover",
         "data-table/label"
       ]
@@ -3393,6 +3395,7 @@
         "dialog/radius",
         "dialog/padding",
         "dialog/label",
+        "dialog/close/background/hover",
         "dialog/sunken",
         "dialog/size",
         "dialog/gap",
@@ -3606,7 +3609,7 @@
         "item/line-height",
         "item/duration",
         "item/border-focus",
-        "item/background-hover",
+        "item/background/hover",
         "item/focus",
         "item/focus-ring-focus",
         "item/focus-ring-offset-focus",
@@ -3696,7 +3699,7 @@
         "menubar/trigger/background/highlight",
         "menubar/trigger/background-focus",
         "menubar/trigger/label-focus",
-        "menubar/trigger/background-open",
+        "menubar/trigger/background/open",
         "menubar/trigger/label-open",
         "menubar/content/radius",
         "menubar/content/background",
@@ -3763,7 +3766,7 @@
         "menubar/sub/trigger/background-focus",
         "menubar/sub/trigger/label-focus",
         "menubar/sub/trigger/padding-left",
-        "menubar/sub/trigger/background-open",
+        "menubar/sub/trigger/background/open",
         "menubar/sub/trigger/label-open",
         "menubar/height",
         "menubar/sub/content/radius",
@@ -3839,15 +3842,19 @@
         "navigation-menu/font-size",
         "navigation-menu/line-height",
         "navigation-menu/font-weight",
+        "navigation-menu/trigger/background/hover",
         "navigation-menu/background-hover",
         "navigation-menu/label-hover",
         "navigation-menu/trigger/background/highlight",
         "navigation-menu/background-focus",
         "navigation-menu/label-focus",
         "navigation-menu/disabled-opacity-disabled",
+        "navigation-menu/trigger/background/open",
         "navigation-menu/background-open",
         "navigation-menu/label-open",
+        "navigation-menu/trigger/background/open-hover",
         "navigation-menu/background-open-hover",
+        "navigation-menu/trigger/background/open-highlight",
         "navigation-menu/background-open-focus",
         "navigation-menu/focus",
         "navigation-menu/focus-ring-focus",
@@ -3868,7 +3875,6 @@
         "navigation-menu/link/font-size",
         "navigation-menu/link/line-height",
         "navigation-menu/link/background/hover",
-        "navigation-menu/link/background-hover",
         "navigation-menu/link/label-hover",
         "navigation-menu/link/background/highlight",
         "navigation-menu/link/background-focus",
@@ -4035,7 +4041,9 @@
         "sidebar/inner/radius",
         "sidebar/inner/border",
         "sidebar/inner/shadow",
+        "sidebar/rail/line/hover",
         "sidebar/rail/background-hover",
+        "sidebar/rail/background/hover",
         "sidebar/background-hover",
         "sidebar/inset/background",
         "sidebar/inset/radius",
@@ -4065,7 +4073,7 @@
         "sidebar/group/action/radius",
         "sidebar/group/action/label",
         "sidebar/group/action/focus-ring",
-        "sidebar/group/action/background-hover",
+        "sidebar/group/action/background/hover",
         "sidebar/group/action/label-hover",
         "sidebar/group/action/icon-size",
         "sidebar/group/action/focus",
@@ -4081,11 +4089,14 @@
         "sidebar/focus-ring",
         "sidebar/padding-right",
         "sidebar/size",
+        "sidebar/menu-button/background/hover",
         "sidebar/background-hover-2",
         "sidebar/label-hover",
+        "sidebar/menu-button/background/pressed",
         "sidebar/background-active",
         "sidebar/label-active",
         "sidebar/disabled-opacity-disabled",
+        "sidebar/menu-button/background/current",
         "sidebar/background-2",
         "sidebar/font-weight",
         "sidebar/focus",
@@ -4095,10 +4106,10 @@
         "sidebar/icon-size",
         "sidebar/focus-ring-focus",
         "sidebar/focus-ring-offset-focus",
-        "sidebar/default/background-hover",
+        "sidebar/default/background/hover",
         "sidebar/default/label-hover",
-        "sidebar/outline/background",
-        "sidebar/outline/background-hover",
+        "sidebar/outline/background/@",
+        "sidebar/outline/background/hover",
         "sidebar/outline/label-hover",
         "sidebar/default/height",
         "sidebar/default/font-size",
@@ -4110,7 +4121,7 @@
         "sidebar/menu/action/radius",
         "sidebar/menu/action/label",
         "sidebar/menu/action/focus-ring",
-        "sidebar/menu/action/background-hover",
+        "sidebar/menu/action/background/hover",
         "sidebar/menu/action/label-hover",
         "sidebar/menu/action/icon-size",
         "sidebar/menu/action/focus",
@@ -4136,8 +4147,9 @@
         "sidebar/menu/sub/button/padding-x",
         "sidebar/menu/sub/button/label",
         "sidebar/menu/sub/button/focus-ring",
-        "sidebar/menu/sub/button/background-hover",
+        "sidebar/menu/sub/button/background/hover",
         "sidebar/menu/sub/button/label-hover",
+        "sidebar/menu/sub/button/background/pressed",
         "sidebar/menu/sub/button/background-active",
         "sidebar/menu/sub/button/label-active",
         "sidebar/menu/sub/button/disabled-opacity-disabled",
@@ -4252,13 +4264,13 @@
         "toggle/font-size",
         "toggle/line-height",
         "toggle/font-weight",
-        "toggle/background-hover",
+        "toggle/background/hover",
         "toggle/label-hover",
         "toggle/border-focus",
         "toggle/disabled-opacity-disabled",
         "toggle/border-invalid",
         "toggle/focus-ring-invalid",
-        "toggle/background-on",
+        "toggle/background/on",
         "toggle/label-on",
         "toggle/icon-size",
         "toggle/focus",
@@ -4266,7 +4278,7 @@
         "toggle/focus-ring-offset-focus",
         "toggle/outline/border",
         "toggle/outline/shadow",
-        "toggle/outline/background-hover",
+        "toggle/outline/background/hover",
         "toggle/outline/label-hover",
         "toggle/default/padding-x",
         "toggle/sm/height",
@@ -4348,10 +4360,10 @@
       "default": "color.text.on-danger"
     },
     {
-      "id": "button/ghost/background-hover",
+      "id": "button/ghost/background/hover",
       "component": "button",
-      "description": "Ghost button fill on hover.",
-      "default": "color.surface.sunken"
+      "description": "Ghost button background under the pointer.",
+      "default": "color.surface.highlight"
     },
     {
       "id": "button/ghost/label",
@@ -5062,7 +5074,7 @@
       "default": "radius.control"
     },
     {
-      "id": "attachment/background",
+      "id": "attachment/background/@",
       "component": "attachment",
       "description": "Background of the attachment.",
       "default": "color.surface.canvas"
@@ -5092,10 +5104,10 @@
       "default": "type.body.line-height"
     },
     {
-      "id": "attachment/background-hover",
+      "id": "attachment/background/hover",
       "component": "attachment",
-      "description": "Background hover of the attachment.",
-      "default": "color.surface.sunken"
+      "description": "Background under the pointer, of the attachment.",
+      "default": "color.surface.highlight"
     },
     {
       "id": "attachment/focus",
@@ -6592,10 +6604,17 @@
       "default": "opacity.disabled"
     },
     {
+      "id": "command/item/background/highlight",
+      "component": "command",
+      "description": "Item background when highlighted, by the pointer or the keyboard, of the command menu.",
+      "default": "color.surface.highlight"
+    },
+    {
       "id": "command/item/background-selected",
       "component": "command",
-      "description": "Item background selected of the command.",
-      "default": "color.surface.sunken"
+      "description": "Deprecated: use command/item/background/highlight (OD-241). Item background selected of the command.",
+      "default": "color.surface.sunken",
+      "replaced_by": "command/item/background/highlight"
     },
     {
       "id": "command/item/label-selected",
@@ -6689,10 +6708,10 @@
       "default": "component-spacing-map.x8"
     },
     {
-      "id": "context-menu/sub/trigger/background-open",
+      "id": "context-menu/sub/trigger/background/open",
       "component": "context-menu",
-      "description": "Sub trigger background open of the context menu.",
-      "default": "color.surface.sunken"
+      "description": "Submenu trigger background while its submenu is open, of the context menu.",
+      "default": "color.surface.highlight"
     },
     {
       "id": "context-menu/sub/trigger/label-open",
@@ -7130,10 +7149,17 @@
       "default": "component-spacing-map.x1"
     },
     {
+      "id": "data-table/row/background/hover",
+      "component": "data-table",
+      "description": "Row background under the pointer, of the data table.",
+      "default": "color.surface.highlight"
+    },
+    {
       "id": "data-table/background-hover",
       "component": "data-table",
-      "description": "Background hover of the data table.",
-      "default": "color.surface.sunken"
+      "description": "Deprecated: use data-table/row/background/hover (OD-241). Background hover of the data table.",
+      "default": "color.surface.sunken",
+      "replaced_by": "data-table/row/background/hover"
     },
     {
       "id": "data-table/label",
@@ -7202,10 +7228,17 @@
       "default": "color.text.secondary"
     },
     {
+      "id": "dialog/close/background/hover",
+      "component": "dialog",
+      "description": "Close button background under the pointer, of the dialog.",
+      "default": "color.surface.highlight"
+    },
+    {
       "id": "dialog/sunken",
       "component": "dialog",
-      "description": "Sunken of the dialog.",
-      "default": "color.surface.sunken"
+      "description": "Deprecated: use dialog/close/background/hover (OD-241). Sunken of the dialog.",
+      "default": "color.surface.sunken",
+      "replaced_by": "dialog/close/background/hover"
     },
     {
       "id": "dialog/size",
@@ -8189,10 +8222,10 @@
       "default": "color.border.focus"
     },
     {
-      "id": "item/background-hover",
+      "id": "item/background/hover",
       "component": "item",
-      "description": "Background hover of the item.",
-      "default": "color.surface.sunken"
+      "description": "Background under the pointer, of a linked item.",
+      "default": "color.surface.highlight"
     },
     {
       "id": "item/focus",
@@ -8586,10 +8619,10 @@
       "default": "color.text.primary"
     },
     {
-      "id": "menubar/trigger/background-open",
+      "id": "menubar/trigger/background/open",
       "component": "menubar",
-      "description": "Trigger background open of the menubar.",
-      "default": "color.surface.sunken"
+      "description": "Trigger background while its menu is open, of the menubar.",
+      "default": "color.surface.highlight"
     },
     {
       "id": "menubar/trigger/label-open",
@@ -8992,10 +9025,10 @@
       "default": "component-spacing-map.x8"
     },
     {
-      "id": "menubar/sub/trigger/background-open",
+      "id": "menubar/sub/trigger/background/open",
       "component": "menubar",
-      "description": "Sub trigger background open of the menubar.",
-      "default": "color.surface.sunken"
+      "description": "Submenu trigger background while its submenu is open, of the menubar.",
+      "default": "color.surface.highlight"
     },
     {
       "id": "menubar/sub/trigger/label-open",
@@ -9304,10 +9337,17 @@
       "default": "type.label.font-weight"
     },
     {
+      "id": "navigation-menu/trigger/background/hover",
+      "component": "navigation-menu",
+      "description": "Trigger background under the pointer, of the navigation menu.",
+      "default": "color.surface.highlight"
+    },
+    {
       "id": "navigation-menu/background-hover",
       "component": "navigation-menu",
-      "description": "Background hover of the navigation menu.",
-      "default": "color.surface.sunken"
+      "description": "Deprecated: use navigation-menu/trigger/background/hover (OD-241). Background hover of the navigation menu.",
+      "default": "color.surface.sunken",
+      "replaced_by": "navigation-menu/trigger/background/hover"
     },
     {
       "id": "navigation-menu/label-hover",
@@ -9341,10 +9381,17 @@
       "default": "opacity.disabled"
     },
     {
+      "id": "navigation-menu/trigger/background/open",
+      "component": "navigation-menu",
+      "description": "Trigger background while its menu is open, of the navigation menu.",
+      "default": "color.surface.highlight"
+    },
+    {
       "id": "navigation-menu/background-open",
       "component": "navigation-menu",
-      "description": "Background open of the navigation menu.",
-      "default": "color.surface.sunken"
+      "description": "Deprecated: use navigation-menu/trigger/background/open (OD-241). Background open of the navigation menu.",
+      "default": "color.surface.sunken",
+      "replaced_by": "navigation-menu/trigger/background/open"
     },
     {
       "id": "navigation-menu/label-open",
@@ -9353,16 +9400,30 @@
       "default": "color.text.primary"
     },
     {
+      "id": "navigation-menu/trigger/background/open-hover",
+      "component": "navigation-menu",
+      "description": "Trigger background while its menu is open and the pointer is on it, of the navigation menu.",
+      "default": "color.surface.highlight"
+    },
+    {
       "id": "navigation-menu/background-open-hover",
       "component": "navigation-menu",
-      "description": "Background open hover of the navigation menu.",
-      "default": "color.surface.sunken"
+      "description": "Deprecated: use navigation-menu/trigger/background/open-hover (OD-241). Background open hover of the navigation menu.",
+      "default": "color.surface.sunken",
+      "replaced_by": "navigation-menu/trigger/background/open-hover"
+    },
+    {
+      "id": "navigation-menu/trigger/background/open-highlight",
+      "component": "navigation-menu",
+      "description": "Trigger background while its menu is open and the keyboard is on it, of the navigation menu.",
+      "default": "color.surface.highlight"
     },
     {
       "id": "navigation-menu/background-open-focus",
       "component": "navigation-menu",
-      "description": "Background open focus of the navigation menu.",
-      "default": "color.surface.sunken"
+      "description": "Deprecated: use navigation-menu/trigger/background/open-highlight (OD-241). Background open focus of the navigation menu.",
+      "default": "color.surface.sunken",
+      "replaced_by": "navigation-menu/trigger/background/open-highlight"
     },
     {
       "id": "navigation-menu/focus",
@@ -9477,13 +9538,6 @@
       "component": "navigation-menu",
       "description": "Link background under the pointer, of the navigation menu.",
       "default": "color.surface.highlight"
-    },
-    {
-      "id": "navigation-menu/link/background-hover",
-      "component": "navigation-menu",
-      "description": "Deprecated: use navigation-menu/link/background/hover (OD-241). Link background hover of the navigation menu.",
-      "default": "color.surface.sunken",
-      "replaced_by": "navigation-menu/link/background/hover"
     },
     {
       "id": "navigation-menu/link/label-hover",
@@ -10137,16 +10191,30 @@
       "default": "elevation.card"
     },
     {
+      "id": "sidebar/rail/line/hover",
+      "component": "sidebar",
+      "description": "Rail line under the pointer, of the sidebar: the edge of a control people must find.",
+      "default": "color.border.strong"
+    },
+    {
       "id": "sidebar/rail/background-hover",
       "component": "sidebar",
-      "description": "Rail background hover of the sidebar.",
-      "default": "color.border.default"
+      "description": "Deprecated: use sidebar/rail/line/hover (OD-241). Rail background hover of the sidebar.",
+      "default": "color.border.default",
+      "replaced_by": "sidebar/rail/line/hover"
+    },
+    {
+      "id": "sidebar/rail/background/hover",
+      "component": "sidebar",
+      "description": "Rail background under the pointer, when the sidebar is off canvas.",
+      "default": "color.surface.highlight"
     },
     {
       "id": "sidebar/background-hover",
       "component": "sidebar",
-      "description": "Background hover of the sidebar.",
-      "default": "color.surface.default"
+      "description": "Deprecated: use sidebar/rail/background/hover (OD-241). Background hover of the sidebar.",
+      "default": "color.surface.default",
+      "replaced_by": "sidebar/rail/background/hover"
     },
     {
       "id": "sidebar/inset/background",
@@ -10317,10 +10385,10 @@
       "default": "color.border.focus"
     },
     {
-      "id": "sidebar/group/action/background-hover",
+      "id": "sidebar/group/action/background/hover",
       "component": "sidebar",
-      "description": "Group action background hover of the sidebar.",
-      "default": "color.surface.sunken"
+      "description": "Group action background under the pointer, of the sidebar.",
+      "default": "color.surface.highlight"
     },
     {
       "id": "sidebar/group/action/label-hover",
@@ -10413,10 +10481,17 @@
       "default": "size.control.default"
     },
     {
+      "id": "sidebar/menu-button/background/hover",
+      "component": "sidebar",
+      "description": "Menu button background under the pointer, of the sidebar.",
+      "default": "color.surface.highlight"
+    },
+    {
       "id": "sidebar/background-hover-2",
       "component": "sidebar",
-      "description": "Background hover 2 of the sidebar.",
-      "default": "color.surface.sunken"
+      "description": "Deprecated: use sidebar/menu-button/background/hover (OD-241). Background hover 2 of the sidebar.",
+      "default": "color.surface.sunken",
+      "replaced_by": "sidebar/menu-button/background/hover"
     },
     {
       "id": "sidebar/label-hover",
@@ -10425,10 +10500,17 @@
       "default": "color.text.primary"
     },
     {
+      "id": "sidebar/menu-button/background/pressed",
+      "component": "sidebar",
+      "description": "Menu button background while pressed, of the sidebar.",
+      "default": "color.surface.pressed"
+    },
+    {
       "id": "sidebar/background-active",
       "component": "sidebar",
-      "description": "Background active of the sidebar.",
-      "default": "color.surface.sunken"
+      "description": "Deprecated: use sidebar/menu-button/background/pressed (OD-241). Background active of the sidebar.",
+      "default": "color.surface.sunken",
+      "replaced_by": "sidebar/menu-button/background/pressed"
     },
     {
       "id": "sidebar/label-active",
@@ -10443,10 +10525,17 @@
       "default": "opacity.disabled"
     },
     {
+      "id": "sidebar/menu-button/background/current",
+      "component": "sidebar",
+      "description": "Background of the menu button for the current page, of the sidebar.",
+      "default": "color.surface.selected"
+    },
+    {
       "id": "sidebar/background-2",
       "component": "sidebar",
-      "description": "Background 2 of the sidebar.",
-      "default": "color.surface.sunken"
+      "description": "Deprecated: use sidebar/menu-button/background/current (OD-241). Background 2 of the sidebar.",
+      "default": "color.surface.sunken",
+      "replaced_by": "sidebar/menu-button/background/current"
     },
     {
       "id": "sidebar/font-weight",
@@ -10497,10 +10586,10 @@
       "default": "color.surface.canvas"
     },
     {
-      "id": "sidebar/default/background-hover",
+      "id": "sidebar/default/background/hover",
       "component": "sidebar",
-      "description": "Default background hover of the sidebar.",
-      "default": "color.surface.sunken"
+      "description": "Default menu button background under the pointer, of the sidebar.",
+      "default": "color.surface.highlight"
     },
     {
       "id": "sidebar/default/label-hover",
@@ -10509,16 +10598,16 @@
       "default": "color.text.primary"
     },
     {
-      "id": "sidebar/outline/background",
+      "id": "sidebar/outline/background/@",
       "component": "sidebar",
       "description": "Outline background of the sidebar.",
       "default": "color.surface.canvas"
     },
     {
-      "id": "sidebar/outline/background-hover",
+      "id": "sidebar/outline/background/hover",
       "component": "sidebar",
-      "description": "Outline background hover of the sidebar.",
-      "default": "color.surface.sunken"
+      "description": "Outline menu button background under the pointer, of the sidebar.",
+      "default": "color.surface.highlight"
     },
     {
       "id": "sidebar/outline/label-hover",
@@ -10587,10 +10676,10 @@
       "default": "color.border.focus"
     },
     {
-      "id": "sidebar/menu/action/background-hover",
+      "id": "sidebar/menu/action/background/hover",
       "component": "sidebar",
-      "description": "Menu action background hover of the sidebar.",
-      "default": "color.surface.sunken"
+      "description": "Menu action background under the pointer, of the sidebar.",
+      "default": "color.surface.highlight"
     },
     {
       "id": "sidebar/menu/action/label-hover",
@@ -10743,10 +10832,10 @@
       "default": "color.border.focus"
     },
     {
-      "id": "sidebar/menu/sub/button/background-hover",
+      "id": "sidebar/menu/sub/button/background/hover",
       "component": "sidebar",
-      "description": "Menu sub button background hover of the sidebar.",
-      "default": "color.surface.sunken"
+      "description": "Submenu button background under the pointer, of the sidebar.",
+      "default": "color.surface.highlight"
     },
     {
       "id": "sidebar/menu/sub/button/label-hover",
@@ -10755,10 +10844,17 @@
       "default": "color.text.primary"
     },
     {
+      "id": "sidebar/menu/sub/button/background/pressed",
+      "component": "sidebar",
+      "description": "Submenu button background while pressed, of the sidebar.",
+      "default": "color.surface.pressed"
+    },
+    {
       "id": "sidebar/menu/sub/button/background-active",
       "component": "sidebar",
-      "description": "Menu sub button background active of the sidebar.",
-      "default": "color.surface.sunken"
+      "description": "Deprecated: use sidebar/menu/sub/button/background/pressed (OD-241). Menu sub button background active of the sidebar.",
+      "default": "color.surface.sunken",
+      "replaced_by": "sidebar/menu/sub/button/background/pressed"
     },
     {
       "id": "sidebar/menu/sub/button/label-active",
@@ -11289,10 +11385,10 @@
       "default": "type.label.font-weight"
     },
     {
-      "id": "toggle/background-hover",
+      "id": "toggle/background/hover",
       "component": "toggle",
-      "description": "Background hover of the toggle.",
-      "default": "color.surface.sunken"
+      "description": "Background under the pointer, of the toggle.",
+      "default": "color.surface.highlight"
     },
     {
       "id": "toggle/label-hover",
@@ -11325,10 +11421,10 @@
       "default": "color.status.danger.@"
     },
     {
-      "id": "toggle/background-on",
+      "id": "toggle/background/on",
       "component": "toggle",
-      "description": "Background on of the toggle.",
-      "default": "color.surface.sunken"
+      "description": "Background when on, of the toggle.",
+      "default": "color.surface.selected"
     },
     {
       "id": "toggle/label-on",
@@ -11373,10 +11469,10 @@
       "default": "elevation.card"
     },
     {
-      "id": "toggle/outline/background-hover",
+      "id": "toggle/outline/background/hover",
       "component": "toggle",
-      "description": "Outline background hover of the toggle.",
-      "default": "color.surface.sunken"
+      "description": "Outline toggle background under the pointer.",
+      "default": "color.surface.highlight"
     },
     {
       "id": "toggle/outline/label-hover",
@@ -11501,7 +11597,7 @@
       {
         "id": "color.surface.sunken",
         "intent": "A recessed fill, a step below content.",
-        "use_for": ["Table headers", "Wells", "Hover rows"],
+        "use_for": ["Table headers", "Wells"],
         "not_for": [
           {
             "when": "A selected item",
@@ -11515,8 +11611,13 @@
       },
       {
         "id": "color.surface.highlight",
-        "intent": "The fill of the item the pointer or the keyboard is on. A state shows on the item's background, one step from the surface it sits on: darker in light, lighter in dark.",
-        "use_for": ["Highlighted menu items", "Highlighted options"],
+        "intent": "The fill of the item the pointer or the keyboard is on, or whose submenu is open. A state shows on the item's background, one step from the surface it sits on: darker in light, lighter in dark.",
+        "use_for": [
+          "Highlighted menu items",
+          "Highlighted options",
+          "Hover rows",
+          "Open submenu triggers"
+        ],
         "not_for": [
           {
             "when": "Table headers and wells",
@@ -11529,9 +11630,24 @@
         ]
       },
       {
+        "id": "color.surface.pressed",
+        "intent": "The fill of an item while it is pressed. Where the scheme gives pressed its own value, one step past the highlight; where pressed reuses hover, the highlight's step.",
+        "use_for": ["Pressed menu buttons", "Pressed list items"],
+        "not_for": [
+          {
+            "when": "The item the pointer or the keyboard is on",
+            "use": "color.surface.highlight"
+          }
+        ]
+      },
+      {
         "id": "color.surface.selected",
-        "intent": "The fill of a selected or current item.",
-        "use_for": ["Selected rows", "Current menu item"],
+        "intent": "The fill of a selected or current item, or a toggle that is on.",
+        "use_for": [
+          "Selected rows",
+          "Current menu item",
+          "Toggles that are on"
+        ],
         "not_for": [
           {
             "when": "Hover",
@@ -12423,6 +12539,16 @@
             "text.secondary",
             "text.muted",
             "link",
+            "icon",
+            "border",
+            "focus"
+          ]
+        },
+        {
+          "id": "color.surface.pressed",
+          "carries": [
+            "text.primary",
+            "text.secondary",
             "icon",
             "border",
             "focus"

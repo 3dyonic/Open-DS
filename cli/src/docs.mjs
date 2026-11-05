@@ -696,7 +696,7 @@ export function docsPages(
     const tones = g.semantics?.tones;
     if (!tones) return "";
     const fills = tones.fills.map((f) => f.id);
-    const own = /^color\.surface\.(canvas|default|raised|sunken|selected)$/;
+    const own = /^color\.surface\.(canvas|default|raised|sunken|highlight|pressed|selected)$/;
     const panel = (b, m) => {
       const th = scheme.tokens.brands[b].theme;
       const byFill = {};

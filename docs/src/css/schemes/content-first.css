@@ -61,7 +61,7 @@ html[data-scheme="content-first"] {
   --color-neutral-800: #2E2A24;
   --color-neutral-900: #1F1B16;
   --color-neutral-950: #14110D;
-  --color-surface-selected: #E0E9F5; /** The fill of a selected or current item. */
+  --color-surface-selected: #E0E9F5; /** The fill of a selected or current item, or a toggle that is on. */
   --color-surface-scrim: #0000008C; /** The see-through layer behind a modal. */
   --color-text-link: #122948; /** Links in running text. */
   --color-text-on-light: #1F1B16; /** Text on any fill whose tone is light, in either mode: the light mode's body text. */
@@ -97,7 +97,7 @@ html[data-scheme="content-first"] {
   --color-category-4: #8A5600; /** Category 4: tells one item or series from another. It carries no meaning. */
   --color-category-4-subtle: #FEE8CF; /** Category 4: the fill of a tag. */
   --radius-control: 0.5rem; /** Corner of buttons and inputs. */
-  --radius-badge: 9999px; /** Corner of badges and checkboxes. */
+  --radius-badge: 9999px; /** Corner of badges, checkboxes and menu items. */
   --radius-container: 0.75rem; /** Corner of cards, menus and dialogs. */
   --type-display-font-family: "Source Serif 4", Georgia, serif;
   --type-title-font-family: "Source Serif 4", Georgia, serif;
@@ -951,6 +951,7 @@ html[data-scheme="content-first"] {
   --sidebar-focus-ring: var(--color-border-focus); /** Focus ring of the sidebar. */
   --sidebar-selected: var(--color-border-selected); /** Selected of the sidebar. */
   --sidebar-focus-ring-focus: var(--color-border-focus); /** Focus ring focus of the sidebar. */
+  --sidebar-menu-button-background-current: var(--color-surface-selected); /** Background of the menu button for the current page, of the sidebar. */
   --skeleton-radius: var(--radius-control); /** Radius of the skeleton. */
   --slider-range-background: var(--color-action-primary); /** Range background of the slider. */
   --slider-thumb-border: var(--color-action-primary); /** Thumb border of the slider. */
@@ -973,11 +974,13 @@ html[data-scheme="content-first"] {
   --toggle-focus-ring-invalid: var(--color-status-danger); /** Focus ring invalid of the toggle. */
   --toggle-focus-ring-focus: var(--color-border-focus); /** Focus ring focus of the toggle. */
   --toggle-outline-shadow: var(--elevation-card); /** Outline shadow of the toggle. */
+  --toggle-background-on: var(--color-surface-selected); /** Background when on, of the toggle. */
   --color-surface-canvas: #FFFDF8; /** The page background behind everything. */
   --color-surface-default: #FFFFFF; /** The base fill for content. */
   --color-surface-raised: #FFFFFF; /** Fills that float above content. */
   --color-surface-sunken: #F6F2EA; /** A recessed fill, a step below content. */
-  --color-surface-highlight: #F6F2EA; /** The fill of the item the pointer or the keyboard is on. A state shows on the item's background, one step from the surface it sits on: darker in light, lighter in dark. */
+  --color-surface-highlight: #F6F2EA; /** The fill of the item the pointer or the keyboard is on, or whose submenu is open. A state shows on the item's background, one step from the surface it sits on: darker in light, lighter in dark. */
+  --color-surface-pressed: #E4DDD0; /** The fill of an item while it is pressed. Where the scheme gives pressed its own value, one step past the highlight; where pressed reuses hover, the highlight's step. */
   --color-surface-inverse: #1F1B16; /** A reversed fill for small, short-lived messages. */
   --color-text-primary: #1F1B16; /** Body text and headings. */
   --color-text-secondary: #4A4339; /** Supporting text. */
@@ -996,13 +999,14 @@ html[data-scheme="content-first"] {
   --color-disabled-border: #E4DDD0; /** The edge of a control that cannot be used right now. */
   --dropdown-menu-label: var(--dropdown-menu-item-label-destructive); /** Deprecated: use component.dropdown-menu.item.label.destructive (OD-241). Label of the dropdown menu. */
   --navigation-menu-link-background: var(--navigation-menu-link-background-current); /** Deprecated: use component.navigation-menu.link.background.current (OD-241). Link background of the navigation menu. */
+  --sidebar-background-2: var(--sidebar-menu-button-background-current); /** Deprecated: use component.sidebar.menu-button.background.current (OD-241). Background 2 of the sidebar. */
   --button-primary-label: var(--color-text-on-action); /** Primary button label color. */
   --button-secondary-background: var(--color-action-secondary); /** Secondary button fill. */
   --button-secondary-background-hover: var(--color-action-secondary-hover); /** Secondary button fill on hover. */
   --button-secondary-label: var(--color-text-primary); /** Secondary button label color. */
   --button-secondary-border: var(--color-border-strong); /** Secondary button border. */
   --button-danger-label: var(--color-text-on-danger); /** Danger button label color. */
-  --button-ghost-background-hover: var(--color-surface-sunken); /** Ghost button fill on hover. */
+  --button-ghost-background-hover: var(--color-surface-highlight); /** Ghost button background under the pointer. */
   --button-disabled-background: var(--color-disabled-surface); /** Fill of a disabled button. */
   --button-disabled-label: var(--color-disabled-text); /** Label of a disabled button. */
   --button-disabled-border: var(--color-disabled-border); /** Border of a disabled secondary button. */
@@ -1046,7 +1050,7 @@ html[data-scheme="content-first"] {
   --alert-destructive-background: var(--color-surface-default); /** Destructive background of the alert. */
   --alert-description-label: var(--color-text-muted); /** Description label of the alert. */
   --attachment-background: var(--color-surface-canvas); /** Background of the attachment. */
-  --attachment-background-hover: var(--color-surface-sunken); /** Background hover of the attachment. */
+  --attachment-background-hover: var(--color-surface-highlight); /** Background under the pointer, of the attachment. */
   --attachment-focus-ring-offset-focus: var(--color-surface-canvas); /** Focus ring offset focus of the attachment. */
   --attachment-background-2: var(--color-surface-sunken); /** Background 2 of the attachment. */
   --attachment-label: var(--color-text-muted); /** Label of the attachment. */
@@ -1106,15 +1110,15 @@ html[data-scheme="content-first"] {
   --command-group-label: var(--color-text-primary); /** Group label of the command. */
   --command-group-label-2: var(--color-text-muted); /** Group label 2 of the command. */
   --command-separator-background: var(--color-border-default); /** Separator background of the command. */
-  --command-item-background-selected: var(--color-surface-sunken); /** Item background selected of the command. */
   --command-item-label-selected: var(--color-text-primary); /** Item label selected of the command. */
   --command-item-label: var(--color-text-muted); /** Item label of the command. */
+  --command-item-background-highlight: var(--color-surface-highlight); /** Item background when highlighted, by the pointer or the keyboard, of the command menu. */
   --command-shortcut-label: var(--color-text-muted); /** Shortcut label of the command. */
   --context-menu-sub-trigger-label-focus: var(--color-text-primary); /** Sub trigger label focus of the context menu. */
-  --context-menu-sub-trigger-background-open: var(--color-surface-sunken); /** Sub trigger background open of the context menu. */
   --context-menu-sub-trigger-label-open: var(--color-text-primary); /** Sub trigger label open of the context menu. */
   --context-menu-sub-trigger-label: var(--color-text-muted); /** Sub trigger label of the context menu. */
   --context-menu-sub-trigger-background-highlight: var(--color-surface-highlight); /** Submenu trigger background when highlighted, by the pointer or the keyboard, of the context menu. */
+  --context-menu-sub-trigger-background-open: var(--color-surface-highlight); /** Submenu trigger background while its submenu is open, of the context menu. */
   --context-menu-sub-content-background: var(--color-surface-raised); /** Sub content background of the context menu. */
   --context-menu-sub-content-label: var(--color-text-primary); /** Sub content label of the context menu. */
   --context-menu-content-background: var(--color-surface-raised); /** Content background of the context menu. */
@@ -1130,13 +1134,13 @@ html[data-scheme="content-first"] {
   --context-menu-separator-background: var(--color-border-default); /** Separator background of the context menu. */
   --context-menu-shortcut-label: var(--color-text-muted); /** Shortcut label of the context menu. */
   --data-table-label-hover: var(--color-text-primary); /** Label hover of the data table. */
-  --data-table-background-hover: var(--color-surface-sunken); /** Background hover of the data table. */
   --data-table-label: var(--color-text-muted); /** Label of the data table. */
+  --data-table-row-background-hover: var(--color-surface-highlight); /** Row background under the pointer, of the data table. */
   --date-picker-label: var(--color-text-muted); /** Label of the date picker. */
   --dialog-content-label: var(--color-text-primary); /** Content label of the dialog. */
   --dialog-border: var(--color-border-default); /** Border of the dialog. */
   --dialog-label: var(--color-text-secondary); /** Label of the dialog. */
-  --dialog-sunken: var(--color-surface-sunken); /** Sunken of the dialog. */
+  --dialog-close-background-hover: var(--color-surface-highlight); /** Close button background under the pointer, of the dialog. */
   --drawer-content-background: var(--color-surface-canvas); /** Content background of the drawer. */
   --drawer-background: var(--color-surface-sunken); /** Background of the drawer. */
   --drawer-title-label: var(--color-text-primary); /** Title label of the drawer. */
@@ -1158,12 +1162,12 @@ html[data-scheme="content-first"] {
   --input-group-label: var(--color-text-muted); /** Label of the input group. */
   --input-otp-slot-border: var(--color-border-strong); /** Slot border of the input otp. */
   --input-otp-background: var(--color-text-primary); /** Background of the input otp. */
-  --item-background-hover: var(--color-surface-sunken); /** Background hover of the item. */
   --item-focus-ring-offset-focus: var(--color-surface-canvas); /** Focus ring offset focus of the item. */
   --item-outline-border: var(--color-border-default); /** Outline border of the item. */
   --item-muted-background: var(--color-surface-sunken); /** Muted background of the item. */
   --item-icon-background: var(--color-surface-sunken); /** Icon background of the item. */
   --item-description-label: var(--color-text-muted); /** Description label of the item. */
+  --item-background-hover: var(--color-surface-highlight); /** Background under the pointer, of a linked item. */
   --kbd-background: var(--color-surface-sunken); /** Background of the kbd. */
   --kbd-label: var(--color-text-muted); /** Label of the kbd. */
   --kbd-background-2: var(--color-surface-canvas); /** Background 2 of the kbd. */
@@ -1173,9 +1177,9 @@ html[data-scheme="content-first"] {
   --marker-background: var(--color-border-default); /** Background of the marker. */
   --menubar-background: var(--color-surface-canvas); /** Background of the menubar. */
   --menubar-trigger-label-focus: var(--color-text-primary); /** Trigger label focus of the menubar. */
-  --menubar-trigger-background-open: var(--color-surface-sunken); /** Trigger background open of the menubar. */
   --menubar-trigger-label-open: var(--color-text-primary); /** Trigger label open of the menubar. */
   --menubar-trigger-background-highlight: var(--color-surface-highlight); /** Trigger background when highlighted, by the pointer or the keyboard, of the menubar. */
+  --menubar-trigger-background-open: var(--color-surface-highlight); /** Trigger background while its menu is open, of the menubar. */
   --menubar-content-background: var(--color-surface-raised); /** Content background of the menubar. */
   --menubar-content-label: var(--color-text-primary); /** Content label of the menubar. */
   --menubar-item-label-focus: var(--color-text-primary); /** Item label focus of the menubar. */
@@ -1188,9 +1192,9 @@ html[data-scheme="content-first"] {
   --menubar-separator-background: var(--color-border-default); /** Separator background of the menubar. */
   --menubar-shortcut-label: var(--color-text-muted); /** Shortcut label of the menubar. */
   --menubar-sub-trigger-label-focus: var(--color-text-primary); /** Sub trigger label focus of the menubar. */
-  --menubar-sub-trigger-background-open: var(--color-surface-sunken); /** Sub trigger background open of the menubar. */
   --menubar-sub-trigger-label-open: var(--color-text-primary); /** Sub trigger label open of the menubar. */
   --menubar-sub-trigger-background-highlight: var(--color-surface-highlight); /** Submenu trigger background when highlighted, by the pointer or the keyboard, of the menubar. */
+  --menubar-sub-trigger-background-open: var(--color-surface-highlight); /** Submenu trigger background while its submenu is open, of the menubar. */
   --menubar-sub-content-background: var(--color-surface-raised); /** Sub content background of the menubar. */
   --menubar-sub-content-label: var(--color-text-primary); /** Sub content label of the menubar. */
   --message-scroller-focus-ring-offset-focus: var(--color-surface-canvas); /** Focus ring offset focus of the message scroller. */
@@ -1201,13 +1205,9 @@ html[data-scheme="content-first"] {
   --native-select-focus-ring-offset-focus: var(--color-surface-canvas); /** Focus ring offset focus of the native select. */
   --native-select-label-2: var(--color-text-muted); /** Label 2 of the native select. */
   --navigation-menu-background: var(--color-surface-canvas); /** Background of the navigation menu. */
-  --navigation-menu-background-hover: var(--color-surface-sunken); /** Background hover of the navigation menu. */
   --navigation-menu-label-hover: var(--color-text-primary); /** Label hover of the navigation menu. */
   --navigation-menu-label-focus: var(--color-text-primary); /** Label focus of the navigation menu. */
-  --navigation-menu-background-open: var(--color-surface-sunken); /** Background open of the navigation menu. */
   --navigation-menu-label-open: var(--color-text-primary); /** Label open of the navigation menu. */
-  --navigation-menu-background-open-hover: var(--color-surface-sunken); /** Background open hover of the navigation menu. */
-  --navigation-menu-background-open-focus: var(--color-surface-sunken); /** Background open focus of the navigation menu. */
   --navigation-menu-focus-ring-offset-focus: var(--color-surface-canvas); /** Focus ring offset focus of the navigation menu. */
   --navigation-menu-background-2: var(--color-surface-raised); /** Background 2 of the navigation menu. */
   --navigation-menu-label: var(--color-text-primary); /** Label of the navigation menu. */
@@ -1222,6 +1222,10 @@ html[data-scheme="content-first"] {
   --navigation-menu-link-focus-ring-offset-focus: var(--color-surface-canvas); /** Link focus ring offset focus of the navigation menu. */
   --navigation-menu-background-3: var(--color-border-default); /** Background 3 of the navigation menu. */
   --navigation-menu-trigger-background-highlight: var(--color-surface-highlight); /** Trigger background when highlighted, by the pointer or the keyboard, of the navigation menu. */
+  --navigation-menu-trigger-background-hover: var(--color-surface-highlight); /** Trigger background under the pointer, of the navigation menu. */
+  --navigation-menu-trigger-background-open: var(--color-surface-highlight); /** Trigger background while its menu is open, of the navigation menu. */
+  --navigation-menu-trigger-background-open-highlight: var(--color-surface-highlight); /** Trigger background while its menu is open and the keyboard is on it, of the navigation menu. */
+  --navigation-menu-trigger-background-open-hover: var(--color-surface-highlight); /** Trigger background while its menu is open and the pointer is on it, of the navigation menu. */
   --popover-content-background: var(--color-surface-raised); /** Content background of the popover. */
   --popover-content-label: var(--color-text-primary); /** Content label of the popover. */
   --popover-description-label: var(--color-text-muted); /** Description label of the popover. */
@@ -1247,42 +1251,41 @@ html[data-scheme="content-first"] {
   --sidebar-label: var(--color-text-primary); /** Label of the sidebar. */
   --sidebar-inner-background: var(--color-surface-default); /** Inner background of the sidebar. */
   --sidebar-inner-border: var(--color-border-default); /** Inner border of the sidebar. */
-  --sidebar-rail-background-hover: var(--color-border-default); /** Rail background hover of the sidebar. */
-  --sidebar-background-hover: var(--color-surface-default); /** Background hover of the sidebar. */
+  --sidebar-rail-background-hover: var(--color-surface-highlight); /** Rail background under the pointer, when the sidebar is off canvas. */
+  --sidebar-rail-line-hover: var(--color-border-strong); /** Rail line under the pointer, of the sidebar: the edge of a control people must find. */
   --sidebar-inset-background: var(--color-surface-canvas); /** Inset background of the sidebar. */
   --sidebar-input-background: var(--color-surface-canvas); /** Input background of the sidebar. */
   --sidebar-separator-background: var(--color-border-default); /** Separator background of the sidebar. */
   --sidebar-group-label-label: var(--color-text-primary); /** Group label label of the sidebar. */
   --sidebar-group-label-focus-ring-offset-focus: var(--color-surface-canvas); /** Group label focus ring offset focus of the sidebar. */
   --sidebar-group-action-label: var(--color-text-primary); /** Group action label of the sidebar. */
-  --sidebar-group-action-background-hover: var(--color-surface-sunken); /** Group action background hover of the sidebar. */
   --sidebar-group-action-label-hover: var(--color-text-primary); /** Group action label hover of the sidebar. */
   --sidebar-group-action-focus-ring-offset-focus: var(--color-surface-canvas); /** Group action focus ring offset focus of the sidebar. */
+  --sidebar-group-action-background-hover: var(--color-surface-highlight); /** Group action background under the pointer, of the sidebar. */
   --sidebar-menu-action-label: var(--color-text-primary); /** Menu action label of the sidebar. */
-  --sidebar-menu-action-background-hover: var(--color-surface-sunken); /** Menu action background hover of the sidebar. */
   --sidebar-menu-action-label-hover: var(--color-text-primary); /** Menu action label hover of the sidebar. */
   --sidebar-menu-action-focus-ring-offset-focus: var(--color-surface-canvas); /** Menu action focus ring offset focus of the sidebar. */
+  --sidebar-menu-action-background-hover: var(--color-surface-highlight); /** Menu action background under the pointer, of the sidebar. */
   --sidebar-menu-badge-label: var(--color-text-primary); /** Menu badge label of the sidebar. */
   --sidebar-menu-sub-border: var(--color-border-default); /** Menu sub border of the sidebar. */
   --sidebar-menu-sub-button-label: var(--color-text-primary); /** Menu sub button label of the sidebar. */
-  --sidebar-menu-sub-button-background-hover: var(--color-surface-sunken); /** Menu sub button background hover of the sidebar. */
   --sidebar-menu-sub-button-label-hover: var(--color-text-primary); /** Menu sub button label hover of the sidebar. */
-  --sidebar-menu-sub-button-background-active: var(--color-surface-sunken); /** Menu sub button background active of the sidebar. */
   --sidebar-menu-sub-button-label-active: var(--color-text-primary); /** Menu sub button label active of the sidebar. */
   --sidebar-menu-sub-button-focus-ring-offset-focus: var(--color-surface-canvas); /** Menu sub button focus ring offset focus of the sidebar. */
-  --sidebar-background-hover-2: var(--color-surface-sunken); /** Background hover 2 of the sidebar. */
+  --sidebar-menu-sub-button-background-hover: var(--color-surface-highlight); /** Submenu button background under the pointer, of the sidebar. */
+  --sidebar-menu-sub-button-background-pressed: var(--color-surface-pressed); /** Submenu button background while pressed, of the sidebar. */
   --sidebar-label-hover: var(--color-text-primary); /** Label hover of the sidebar. */
-  --sidebar-background-active: var(--color-surface-sunken); /** Background active of the sidebar. */
   --sidebar-label-active: var(--color-text-primary); /** Label active of the sidebar. */
-  --sidebar-background-2: var(--color-surface-sunken); /** Background 2 of the sidebar. */
   --sidebar-background-open-hover: var(--color-surface-sunken); /** Background open hover of the sidebar. */
   --sidebar-label-open-hover: var(--color-text-primary); /** Label open hover of the sidebar. */
   --sidebar-focus-ring-offset-focus: var(--color-surface-canvas); /** Focus ring offset focus of the sidebar. */
-  --sidebar-default-background-hover: var(--color-surface-sunken); /** Default background hover of the sidebar. */
   --sidebar-default-label-hover: var(--color-text-primary); /** Default label hover of the sidebar. */
+  --sidebar-default-background-hover: var(--color-surface-highlight); /** Default menu button background under the pointer, of the sidebar. */
   --sidebar-outline-background: var(--color-surface-canvas); /** Outline background of the sidebar. */
-  --sidebar-outline-background-hover: var(--color-surface-sunken); /** Outline background hover of the sidebar. */
+  --sidebar-outline-background-hover: var(--color-surface-highlight); /** Outline menu button background under the pointer, of the sidebar. */
   --sidebar-outline-label-hover: var(--color-text-primary); /** Outline label hover of the sidebar. */
+  --sidebar-menu-button-background-hover: var(--color-surface-highlight); /** Menu button background under the pointer, of the sidebar. */
+  --sidebar-menu-button-background-pressed: var(--color-surface-pressed); /** Menu button background while pressed, of the sidebar. */
   --skeleton-background: var(--color-surface-sunken); /** Background of the skeleton. */
   --slider-track-background: var(--color-surface-sunken); /** Track background of the slider. */
   --slider-thumb-focus-ring-offset-focus: var(--color-surface-canvas); /** Thumb focus ring offset focus of the slider. */
@@ -1295,18 +1298,20 @@ html[data-scheme="content-first"] {
   --toast-success-border: var(--color-border-default); /** Success border of the toast. */
   --toast-danger-border: var(--color-border-default); /** Danger border of the toast. */
   --toast-label-2: var(--color-text-secondary); /** Label 2 of the toast. */
-  --toggle-background-hover: var(--color-surface-sunken); /** Background hover of the toggle. */
   --toggle-label-hover: var(--color-text-muted); /** Label hover of the toggle. */
-  --toggle-background-on: var(--color-surface-sunken); /** Background on of the toggle. */
   --toggle-label-on: var(--color-text-primary); /** Label on of the toggle. */
   --toggle-focus-ring-offset-focus: var(--color-surface-canvas); /** Focus ring offset focus of the toggle. */
   --toggle-outline-border: var(--color-border-strong); /** Outline border of the toggle. */
-  --toggle-outline-background-hover: var(--color-surface-sunken); /** Outline background hover of the toggle. */
   --toggle-outline-label-hover: var(--color-text-primary); /** Outline label hover of the toggle. */
+  --toggle-outline-background-hover: var(--color-surface-highlight); /** Outline toggle background under the pointer. */
+  --toggle-background-hover: var(--color-surface-highlight); /** Background under the pointer, of the toggle. */
+  --command-item-background-selected: var(--command-item-background-highlight); /** Deprecated: use component.command.item.background.highlight (OD-241). Item background selected of the command. */
   --context-menu-sub-trigger-background-focus: var(--context-menu-sub-trigger-background-highlight); /** Deprecated: use component.context-menu.sub.trigger.background.highlight (OD-241). Sub trigger background focus of the context menu. */
   --context-menu-item-background-focus: var(--context-menu-item-background-highlight); /** Deprecated: use component.context-menu.item.background.highlight (OD-241). Item background focus of the context menu. */
   --context-menu-checkbox-item-background-focus: var(--context-menu-checkbox-item-background-highlight); /** Deprecated: use component.context-menu.checkbox.item.background.highlight (OD-241). Checkbox item background focus of the context menu. */
   --context-menu-radio-item-background-focus: var(--context-menu-radio-item-background-highlight); /** Deprecated: use component.context-menu.radio.item.background.highlight (OD-241). Radio item background focus of the context menu. */
+  --data-table-background-hover: var(--data-table-row-background-hover); /** Deprecated: use component.data-table.row.background.hover (OD-241). Background hover of the data table. */
+  --dialog-sunken: var(--dialog-close-background-hover); /** Deprecated: use component.dialog.close.background.hover (OD-241). Sunken of the dialog. */
   --dropdown-menu-item-sunken: var(--dropdown-menu-item-background-highlight); /** Deprecated: use component.dropdown-menu.item.background.highlight (OD-241). Item sunken of the dropdown menu. */
   --dropdown-menu-background: var(--dropdown-menu-separator-background); /** Deprecated: use component.dropdown-menu.separator.background (OD-241). Background of the dropdown menu. */
   --menubar-trigger-background-focus: var(--menubar-trigger-background-highlight); /** Deprecated: use component.menubar.trigger.background.highlight (OD-241). Trigger background focus of the menubar. */
@@ -1314,10 +1319,18 @@ html[data-scheme="content-first"] {
   --menubar-checkbox-item-background-focus: var(--menubar-checkbox-item-background-highlight); /** Deprecated: use component.menubar.checkbox.item.background.highlight (OD-241). Checkbox item background focus of the menubar. */
   --menubar-radio-item-background-focus: var(--menubar-radio-item-background-highlight); /** Deprecated: use component.menubar.radio.item.background.highlight (OD-241). Radio item background focus of the menubar. */
   --menubar-sub-trigger-background-focus: var(--menubar-sub-trigger-background-highlight); /** Deprecated: use component.menubar.sub.trigger.background.highlight (OD-241). Sub trigger background focus of the menubar. */
+  --navigation-menu-background-hover: var(--navigation-menu-trigger-background-hover); /** Deprecated: use component.navigation-menu.trigger.background.hover (OD-241). Background hover of the navigation menu. */
   --navigation-menu-background-focus: var(--navigation-menu-trigger-background-highlight); /** Deprecated: use component.navigation-menu.trigger.background.highlight (OD-241). Background focus of the navigation menu. */
-  --navigation-menu-link-background-hover: var(--navigation-menu-link-background-hover); /** Deprecated: use component.navigation-menu.link.background.hover (OD-241). Link background hover of the navigation menu. */
+  --navigation-menu-background-open: var(--navigation-menu-trigger-background-open); /** Deprecated: use component.navigation-menu.trigger.background.open (OD-241). Background open of the navigation menu. */
+  --navigation-menu-background-open-hover: var(--navigation-menu-trigger-background-open-hover); /** Deprecated: use component.navigation-menu.trigger.background.open-hover (OD-241). Background open hover of the navigation menu. */
+  --navigation-menu-background-open-focus: var(--navigation-menu-trigger-background-open-highlight); /** Deprecated: use component.navigation-menu.trigger.background.open-highlight (OD-241). Background open focus of the navigation menu. */
   --navigation-menu-link-background-focus: var(--navigation-menu-link-background-highlight); /** Deprecated: use component.navigation-menu.link.background.highlight (OD-241). Link background focus of the navigation menu. */
   --select-item-sunken: var(--select-item-background-highlight); /** Deprecated: use component.select.item.background.highlight (OD-241). Item sunken of the select. */
+  --sidebar-rail-background-hover: var(--sidebar-rail-line-hover); /** Deprecated: use component.sidebar.rail.line.hover (OD-241). Rail background hover of the sidebar. */
+  --sidebar-background-hover: var(--sidebar-rail-background-hover); /** Deprecated: use component.sidebar.rail.background.hover (OD-241). Background hover of the sidebar. */
+  --sidebar-menu-sub-button-background-active: var(--sidebar-menu-sub-button-background-pressed); /** Deprecated: use component.sidebar.menu.sub.button.background.pressed (OD-241). Menu sub button background active of the sidebar. */
+  --sidebar-background-hover-2: var(--sidebar-menu-button-background-hover); /** Deprecated: use component.sidebar.menu-button.background.hover (OD-241). Background hover 2 of the sidebar. */
+  --sidebar-background-active: var(--sidebar-menu-button-background-pressed); /** Deprecated: use component.sidebar.menu-button.background.pressed (OD-241). Background active of the sidebar. */
 }
 
 html[data-scheme="content-first"][data-theme="dark"] {
@@ -1381,7 +1394,7 @@ html[data-scheme="content-first"][data-theme="dark"] {
   --color-neutral-800: #F6F2EA;
   --color-neutral-900: #FFFDF8;
   --color-neutral-950: #FFFFFF;
-  --color-surface-selected: #202B3B; /** The fill of a selected or current item. */
+  --color-surface-selected: #202B3B; /** The fill of a selected or current item, or a toggle that is on. */
   --color-surface-scrim: #000000B3; /** The see-through layer behind a modal. */
   --color-text-link: #ACBDD5; /** Links in running text. */
   --color-text-on-light: #1F1B16; /** Text on any fill whose tone is light, in either mode: the light mode's body text. */
@@ -1417,7 +1430,7 @@ html[data-scheme="content-first"][data-theme="dark"] {
   --color-category-4: #F2B84B; /** Category 4: tells one item or series from another. It carries no meaning. */
   --color-category-4-subtle: #402B00; /** Category 4: the fill of a tag. */
   --radius-control: 0.5rem; /** Corner of buttons and inputs. */
-  --radius-badge: 9999px; /** Corner of badges and checkboxes. */
+  --radius-badge: 9999px; /** Corner of badges, checkboxes and menu items. */
   --radius-container: 0.75rem; /** Corner of cards, menus and dialogs. */
   --type-display-font-family: "Source Serif 4", Georgia, serif;
   --type-title-font-family: "Source Serif 4", Georgia, serif;
@@ -2271,6 +2284,7 @@ html[data-scheme="content-first"][data-theme="dark"] {
   --sidebar-focus-ring: var(--color-border-focus); /** Focus ring of the sidebar. */
   --sidebar-selected: var(--color-border-selected); /** Selected of the sidebar. */
   --sidebar-focus-ring-focus: var(--color-border-focus); /** Focus ring focus of the sidebar. */
+  --sidebar-menu-button-background-current: var(--color-surface-selected); /** Background of the menu button for the current page, of the sidebar. */
   --skeleton-radius: var(--radius-control); /** Radius of the skeleton. */
   --slider-range-background: var(--color-action-primary); /** Range background of the slider. */
   --slider-thumb-border: var(--color-action-primary); /** Thumb border of the slider. */
@@ -2293,11 +2307,13 @@ html[data-scheme="content-first"][data-theme="dark"] {
   --toggle-focus-ring-invalid: var(--color-status-danger); /** Focus ring invalid of the toggle. */
   --toggle-focus-ring-focus: var(--color-border-focus); /** Focus ring focus of the toggle. */
   --toggle-outline-shadow: var(--elevation-card); /** Outline shadow of the toggle. */
+  --toggle-background-on: var(--color-surface-selected); /** Background when on, of the toggle. */
   --color-surface-canvas: #14110D; /** The page background behind everything. */
   --color-surface-default: #1F1B16; /** The base fill for content. */
   --color-surface-raised: #1F1B16; /** Fills that float above content. */
   --color-surface-sunken: #2E2A24; /** A recessed fill, a step below content. */
-  --color-surface-highlight: #2E2A24; /** The fill of the item the pointer or the keyboard is on. A state shows on the item's background, one step from the surface it sits on: darker in light, lighter in dark. */
+  --color-surface-highlight: #2E2A24; /** The fill of the item the pointer or the keyboard is on, or whose submenu is open. A state shows on the item's background, one step from the surface it sits on: darker in light, lighter in dark. */
+  --color-surface-pressed: #4A4339; /** The fill of an item while it is pressed. Where the scheme gives pressed its own value, one step past the highlight; where pressed reuses hover, the highlight's step. */
   --color-surface-inverse: #FFFDF8; /** A reversed fill for small, short-lived messages. */
   --color-text-primary: #FFFDF8; /** Body text and headings. */
   --color-text-secondary: #CFC6B6; /** Supporting text. */
@@ -2316,13 +2332,14 @@ html[data-scheme="content-first"][data-theme="dark"] {
   --color-disabled-border: #4A4339; /** The edge of a control that cannot be used right now. */
   --dropdown-menu-label: var(--dropdown-menu-item-label-destructive); /** Deprecated: use component.dropdown-menu.item.label.destructive (OD-241). Label of the dropdown menu. */
   --navigation-menu-link-background: var(--navigation-menu-link-background-current); /** Deprecated: use component.navigation-menu.link.background.current (OD-241). Link background of the navigation menu. */
+  --sidebar-background-2: var(--sidebar-menu-button-background-current); /** Deprecated: use component.sidebar.menu-button.background.current (OD-241). Background 2 of the sidebar. */
   --button-primary-label: var(--color-text-on-action); /** Primary button label color. */
   --button-secondary-background: var(--color-action-secondary); /** Secondary button fill. */
   --button-secondary-background-hover: var(--color-action-secondary-hover); /** Secondary button fill on hover. */
   --button-secondary-label: var(--color-text-primary); /** Secondary button label color. */
   --button-secondary-border: var(--color-border-strong); /** Secondary button border. */
   --button-danger-label: var(--color-text-on-danger); /** Danger button label color. */
-  --button-ghost-background-hover: var(--color-surface-sunken); /** Ghost button fill on hover. */
+  --button-ghost-background-hover: var(--color-surface-highlight); /** Ghost button background under the pointer. */
   --button-disabled-background: var(--color-disabled-surface); /** Fill of a disabled button. */
   --button-disabled-label: var(--color-disabled-text); /** Label of a disabled button. */
   --button-disabled-border: var(--color-disabled-border); /** Border of a disabled secondary button. */
@@ -2366,7 +2383,7 @@ html[data-scheme="content-first"][data-theme="dark"] {
   --alert-destructive-background: var(--color-surface-default); /** Destructive background of the alert. */
   --alert-description-label: var(--color-text-muted); /** Description label of the alert. */
   --attachment-background: var(--color-surface-canvas); /** Background of the attachment. */
-  --attachment-background-hover: var(--color-surface-sunken); /** Background hover of the attachment. */
+  --attachment-background-hover: var(--color-surface-highlight); /** Background under the pointer, of the attachment. */
   --attachment-focus-ring-offset-focus: var(--color-surface-canvas); /** Focus ring offset focus of the attachment. */
   --attachment-background-2: var(--color-surface-sunken); /** Background 2 of the attachment. */
   --attachment-label: var(--color-text-muted); /** Label of the attachment. */
@@ -2426,15 +2443,15 @@ html[data-scheme="content-first"][data-theme="dark"] {
   --command-group-label: var(--color-text-primary); /** Group label of the command. */
   --command-group-label-2: var(--color-text-muted); /** Group label 2 of the command. */
   --command-separator-background: var(--color-border-default); /** Separator background of the command. */
-  --command-item-background-selected: var(--color-surface-sunken); /** Item background selected of the command. */
   --command-item-label-selected: var(--color-text-primary); /** Item label selected of the command. */
   --command-item-label: var(--color-text-muted); /** Item label of the command. */
+  --command-item-background-highlight: var(--color-surface-highlight); /** Item background when highlighted, by the pointer or the keyboard, of the command menu. */
   --command-shortcut-label: var(--color-text-muted); /** Shortcut label of the command. */
   --context-menu-sub-trigger-label-focus: var(--color-text-primary); /** Sub trigger label focus of the context menu. */
-  --context-menu-sub-trigger-background-open: var(--color-surface-sunken); /** Sub trigger background open of the context menu. */
   --context-menu-sub-trigger-label-open: var(--color-text-primary); /** Sub trigger label open of the context menu. */
   --context-menu-sub-trigger-label: var(--color-text-muted); /** Sub trigger label of the context menu. */
   --context-menu-sub-trigger-background-highlight: var(--color-surface-highlight); /** Submenu trigger background when highlighted, by the pointer or the keyboard, of the context menu. */
+  --context-menu-sub-trigger-background-open: var(--color-surface-highlight); /** Submenu trigger background while its submenu is open, of the context menu. */
   --context-menu-sub-content-background: var(--color-surface-raised); /** Sub content background of the context menu. */
   --context-menu-sub-content-label: var(--color-text-primary); /** Sub content label of the context menu. */
   --context-menu-content-background: var(--color-surface-raised); /** Content background of the context menu. */
@@ -2450,13 +2467,13 @@ html[data-scheme="content-first"][data-theme="dark"] {
   --context-menu-separator-background: var(--color-border-default); /** Separator background of the context menu. */
   --context-menu-shortcut-label: var(--color-text-muted); /** Shortcut label of the context menu. */
   --data-table-label-hover: var(--color-text-primary); /** Label hover of the data table. */
-  --data-table-background-hover: var(--color-surface-sunken); /** Background hover of the data table. */
   --data-table-label: var(--color-text-muted); /** Label of the data table. */
+  --data-table-row-background-hover: var(--color-surface-highlight); /** Row background under the pointer, of the data table. */
   --date-picker-label: var(--color-text-muted); /** Label of the date picker. */
   --dialog-content-label: var(--color-text-primary); /** Content label of the dialog. */
   --dialog-border: var(--color-border-default); /** Border of the dialog. */
   --dialog-label: var(--color-text-secondary); /** Label of the dialog. */
-  --dialog-sunken: var(--color-surface-sunken); /** Sunken of the dialog. */
+  --dialog-close-background-hover: var(--color-surface-highlight); /** Close button background under the pointer, of the dialog. */
   --drawer-content-background: var(--color-surface-canvas); /** Content background of the drawer. */
   --drawer-background: var(--color-surface-sunken); /** Background of the drawer. */
   --drawer-title-label: var(--color-text-primary); /** Title label of the drawer. */
@@ -2478,12 +2495,12 @@ html[data-scheme="content-first"][data-theme="dark"] {
   --input-group-label: var(--color-text-muted); /** Label of the input group. */
   --input-otp-slot-border: var(--color-border-strong); /** Slot border of the input otp. */
   --input-otp-background: var(--color-text-primary); /** Background of the input otp. */
-  --item-background-hover: var(--color-surface-sunken); /** Background hover of the item. */
   --item-focus-ring-offset-focus: var(--color-surface-canvas); /** Focus ring offset focus of the item. */
   --item-outline-border: var(--color-border-default); /** Outline border of the item. */
   --item-muted-background: var(--color-surface-sunken); /** Muted background of the item. */
   --item-icon-background: var(--color-surface-sunken); /** Icon background of the item. */
   --item-description-label: var(--color-text-muted); /** Description label of the item. */
+  --item-background-hover: var(--color-surface-highlight); /** Background under the pointer, of a linked item. */
   --kbd-background: var(--color-surface-sunken); /** Background of the kbd. */
   --kbd-label: var(--color-text-muted); /** Label of the kbd. */
   --kbd-background-2: var(--color-surface-canvas); /** Background 2 of the kbd. */
@@ -2493,9 +2510,9 @@ html[data-scheme="content-first"][data-theme="dark"] {
   --marker-background: var(--color-border-default); /** Background of the marker. */
   --menubar-background: var(--color-surface-canvas); /** Background of the menubar. */
   --menubar-trigger-label-focus: var(--color-text-primary); /** Trigger label focus of the menubar. */
-  --menubar-trigger-background-open: var(--color-surface-sunken); /** Trigger background open of the menubar. */
   --menubar-trigger-label-open: var(--color-text-primary); /** Trigger label open of the menubar. */
   --menubar-trigger-background-highlight: var(--color-surface-highlight); /** Trigger background when highlighted, by the pointer or the keyboard, of the menubar. */
+  --menubar-trigger-background-open: var(--color-surface-highlight); /** Trigger background while its menu is open, of the menubar. */
   --menubar-content-background: var(--color-surface-raised); /** Content background of the menubar. */
   --menubar-content-label: var(--color-text-primary); /** Content label of the menubar. */
   --menubar-item-label-focus: var(--color-text-primary); /** Item label focus of the menubar. */
@@ -2508,9 +2525,9 @@ html[data-scheme="content-first"][data-theme="dark"] {
   --menubar-separator-background: var(--color-border-default); /** Separator background of the menubar. */
   --menubar-shortcut-label: var(--color-text-muted); /** Shortcut label of the menubar. */
   --menubar-sub-trigger-label-focus: var(--color-text-primary); /** Sub trigger label focus of the menubar. */
-  --menubar-sub-trigger-background-open: var(--color-surface-sunken); /** Sub trigger background open of the menubar. */
   --menubar-sub-trigger-label-open: var(--color-text-primary); /** Sub trigger label open of the menubar. */
   --menubar-sub-trigger-background-highlight: var(--color-surface-highlight); /** Submenu trigger background when highlighted, by the pointer or the keyboard, of the menubar. */
+  --menubar-sub-trigger-background-open: var(--color-surface-highlight); /** Submenu trigger background while its submenu is open, of the menubar. */
   --menubar-sub-content-background: var(--color-surface-raised); /** Sub content background of the menubar. */
   --menubar-sub-content-label: var(--color-text-primary); /** Sub content label of the menubar. */
   --message-scroller-focus-ring-offset-focus: var(--color-surface-canvas); /** Focus ring offset focus of the message scroller. */
@@ -2521,13 +2538,9 @@ html[data-scheme="content-first"][data-theme="dark"] {
   --native-select-focus-ring-offset-focus: var(--color-surface-canvas); /** Focus ring offset focus of the native select. */
   --native-select-label-2: var(--color-text-muted); /** Label 2 of the native select. */
   --navigation-menu-background: var(--color-surface-canvas); /** Background of the navigation menu. */
-  --navigation-menu-background-hover: var(--color-surface-sunken); /** Background hover of the navigation menu. */
   --navigation-menu-label-hover: var(--color-text-primary); /** Label hover of the navigation menu. */
   --navigation-menu-label-focus: var(--color-text-primary); /** Label focus of the navigation menu. */
-  --navigation-menu-background-open: var(--color-surface-sunken); /** Background open of the navigation menu. */
   --navigation-menu-label-open: var(--color-text-primary); /** Label open of the navigation menu. */
-  --navigation-menu-background-open-hover: var(--color-surface-sunken); /** Background open hover of the navigation menu. */
-  --navigation-menu-background-open-focus: var(--color-surface-sunken); /** Background open focus of the navigation menu. */
   --navigation-menu-focus-ring-offset-focus: var(--color-surface-canvas); /** Focus ring offset focus of the navigation menu. */
   --navigation-menu-background-2: var(--color-surface-raised); /** Background 2 of the navigation menu. */
   --navigation-menu-label: var(--color-text-primary); /** Label of the navigation menu. */
@@ -2542,6 +2555,10 @@ html[data-scheme="content-first"][data-theme="dark"] {
   --navigation-menu-link-focus-ring-offset-focus: var(--color-surface-canvas); /** Link focus ring offset focus of the navigation menu. */
   --navigation-menu-background-3: var(--color-border-default); /** Background 3 of the navigation menu. */
   --navigation-menu-trigger-background-highlight: var(--color-surface-highlight); /** Trigger background when highlighted, by the pointer or the keyboard, of the navigation menu. */
+  --navigation-menu-trigger-background-hover: var(--color-surface-highlight); /** Trigger background under the pointer, of the navigation menu. */
+  --navigation-menu-trigger-background-open: var(--color-surface-highlight); /** Trigger background while its menu is open, of the navigation menu. */
+  --navigation-menu-trigger-background-open-highlight: var(--color-surface-highlight); /** Trigger background while its menu is open and the keyboard is on it, of the navigation menu. */
+  --navigation-menu-trigger-background-open-hover: var(--color-surface-highlight); /** Trigger background while its menu is open and the pointer is on it, of the navigation menu. */
   --popover-content-background: var(--color-surface-raised); /** Content background of the popover. */
   --popover-content-label: var(--color-text-primary); /** Content label of the popover. */
   --popover-description-label: var(--color-text-muted); /** Description label of the popover. */
@@ -2567,42 +2584,41 @@ html[data-scheme="content-first"][data-theme="dark"] {
   --sidebar-label: var(--color-text-primary); /** Label of the sidebar. */
   --sidebar-inner-background: var(--color-surface-default); /** Inner background of the sidebar. */
   --sidebar-inner-border: var(--color-border-default); /** Inner border of the sidebar. */
-  --sidebar-rail-background-hover: var(--color-border-default); /** Rail background hover of the sidebar. */
-  --sidebar-background-hover: var(--color-surface-default); /** Background hover of the sidebar. */
+  --sidebar-rail-background-hover: var(--color-surface-highlight); /** Rail background under the pointer, when the sidebar is off canvas. */
+  --sidebar-rail-line-hover: var(--color-border-strong); /** Rail line under the pointer, of the sidebar: the edge of a control people must find. */
   --sidebar-inset-background: var(--color-surface-canvas); /** Inset background of the sidebar. */
   --sidebar-input-background: var(--color-surface-canvas); /** Input background of the sidebar. */
   --sidebar-separator-background: var(--color-border-default); /** Separator background of the sidebar. */
   --sidebar-group-label-label: var(--color-text-primary); /** Group label label of the sidebar. */
   --sidebar-group-label-focus-ring-offset-focus: var(--color-surface-canvas); /** Group label focus ring offset focus of the sidebar. */
   --sidebar-group-action-label: var(--color-text-primary); /** Group action label of the sidebar. */
-  --sidebar-group-action-background-hover: var(--color-surface-sunken); /** Group action background hover of the sidebar. */
   --sidebar-group-action-label-hover: var(--color-text-primary); /** Group action label hover of the sidebar. */
   --sidebar-group-action-focus-ring-offset-focus: var(--color-surface-canvas); /** Group action focus ring offset focus of the sidebar. */
+  --sidebar-group-action-background-hover: var(--color-surface-highlight); /** Group action background under the pointer, of the sidebar. */
   --sidebar-menu-action-label: var(--color-text-primary); /** Menu action label of the sidebar. */
-  --sidebar-menu-action-background-hover: var(--color-surface-sunken); /** Menu action background hover of the sidebar. */
   --sidebar-menu-action-label-hover: var(--color-text-primary); /** Menu action label hover of the sidebar. */
   --sidebar-menu-action-focus-ring-offset-focus: var(--color-surface-canvas); /** Menu action focus ring offset focus of the sidebar. */
+  --sidebar-menu-action-background-hover: var(--color-surface-highlight); /** Menu action background under the pointer, of the sidebar. */
   --sidebar-menu-badge-label: var(--color-text-primary); /** Menu badge label of the sidebar. */
   --sidebar-menu-sub-border: var(--color-border-default); /** Menu sub border of the sidebar. */
   --sidebar-menu-sub-button-label: var(--color-text-primary); /** Menu sub button label of the sidebar. */
-  --sidebar-menu-sub-button-background-hover: var(--color-surface-sunken); /** Menu sub button background hover of the sidebar. */
   --sidebar-menu-sub-button-label-hover: var(--color-text-primary); /** Menu sub button label hover of the sidebar. */
-  --sidebar-menu-sub-button-background-active: var(--color-surface-sunken); /** Menu sub button background active of the sidebar. */
   --sidebar-menu-sub-button-label-active: var(--color-text-primary); /** Menu sub button label active of the sidebar. */
   --sidebar-menu-sub-button-focus-ring-offset-focus: var(--color-surface-canvas); /** Menu sub button focus ring offset focus of the sidebar. */
-  --sidebar-background-hover-2: var(--color-surface-sunken); /** Background hover 2 of the sidebar. */
+  --sidebar-menu-sub-button-background-hover: var(--color-surface-highlight); /** Submenu button background under the pointer, of the sidebar. */
+  --sidebar-menu-sub-button-background-pressed: var(--color-surface-pressed); /** Submenu button background while pressed, of the sidebar. */
   --sidebar-label-hover: var(--color-text-primary); /** Label hover of the sidebar. */
-  --sidebar-background-active: var(--color-surface-sunken); /** Background active of the sidebar. */
   --sidebar-label-active: var(--color-text-primary); /** Label active of the sidebar. */
-  --sidebar-background-2: var(--color-surface-sunken); /** Background 2 of the sidebar. */
   --sidebar-background-open-hover: var(--color-surface-sunken); /** Background open hover of the sidebar. */
   --sidebar-label-open-hover: var(--color-text-primary); /** Label open hover of the sidebar. */
   --sidebar-focus-ring-offset-focus: var(--color-surface-canvas); /** Focus ring offset focus of the sidebar. */
-  --sidebar-default-background-hover: var(--color-surface-sunken); /** Default background hover of the sidebar. */
   --sidebar-default-label-hover: var(--color-text-primary); /** Default label hover of the sidebar. */
+  --sidebar-default-background-hover: var(--color-surface-highlight); /** Default menu button background under the pointer, of the sidebar. */
   --sidebar-outline-background: var(--color-surface-canvas); /** Outline background of the sidebar. */
-  --sidebar-outline-background-hover: var(--color-surface-sunken); /** Outline background hover of the sidebar. */
+  --sidebar-outline-background-hover: var(--color-surface-highlight); /** Outline menu button background under the pointer, of the sidebar. */
   --sidebar-outline-label-hover: var(--color-text-primary); /** Outline label hover of the sidebar. */
+  --sidebar-menu-button-background-hover: var(--color-surface-highlight); /** Menu button background under the pointer, of the sidebar. */
+  --sidebar-menu-button-background-pressed: var(--color-surface-pressed); /** Menu button background while pressed, of the sidebar. */
   --skeleton-background: var(--color-surface-sunken); /** Background of the skeleton. */
   --slider-track-background: var(--color-surface-sunken); /** Track background of the slider. */
   --slider-thumb-focus-ring-offset-focus: var(--color-surface-canvas); /** Thumb focus ring offset focus of the slider. */
@@ -2615,18 +2631,20 @@ html[data-scheme="content-first"][data-theme="dark"] {
   --toast-success-border: var(--color-border-default); /** Success border of the toast. */
   --toast-danger-border: var(--color-border-default); /** Danger border of the toast. */
   --toast-label-2: var(--color-text-secondary); /** Label 2 of the toast. */
-  --toggle-background-hover: var(--color-surface-sunken); /** Background hover of the toggle. */
   --toggle-label-hover: var(--color-text-muted); /** Label hover of the toggle. */
-  --toggle-background-on: var(--color-surface-sunken); /** Background on of the toggle. */
   --toggle-label-on: var(--color-text-primary); /** Label on of the toggle. */
   --toggle-focus-ring-offset-focus: var(--color-surface-canvas); /** Focus ring offset focus of the toggle. */
   --toggle-outline-border: var(--color-border-strong); /** Outline border of the toggle. */
-  --toggle-outline-background-hover: var(--color-surface-sunken); /** Outline background hover of the toggle. */
   --toggle-outline-label-hover: var(--color-text-primary); /** Outline label hover of the toggle. */
+  --toggle-outline-background-hover: var(--color-surface-highlight); /** Outline toggle background under the pointer. */
+  --toggle-background-hover: var(--color-surface-highlight); /** Background under the pointer, of the toggle. */
+  --command-item-background-selected: var(--command-item-background-highlight); /** Deprecated: use component.command.item.background.highlight (OD-241). Item background selected of the command. */
   --context-menu-sub-trigger-background-focus: var(--context-menu-sub-trigger-background-highlight); /** Deprecated: use component.context-menu.sub.trigger.background.highlight (OD-241). Sub trigger background focus of the context menu. */
   --context-menu-item-background-focus: var(--context-menu-item-background-highlight); /** Deprecated: use component.context-menu.item.background.highlight (OD-241). Item background focus of the context menu. */
   --context-menu-checkbox-item-background-focus: var(--context-menu-checkbox-item-background-highlight); /** Deprecated: use component.context-menu.checkbox.item.background.highlight (OD-241). Checkbox item background focus of the context menu. */
   --context-menu-radio-item-background-focus: var(--context-menu-radio-item-background-highlight); /** Deprecated: use component.context-menu.radio.item.background.highlight (OD-241). Radio item background focus of the context menu. */
+  --data-table-background-hover: var(--data-table-row-background-hover); /** Deprecated: use component.data-table.row.background.hover (OD-241). Background hover of the data table. */
+  --dialog-sunken: var(--dialog-close-background-hover); /** Deprecated: use component.dialog.close.background.hover (OD-241). Sunken of the dialog. */
   --dropdown-menu-item-sunken: var(--dropdown-menu-item-background-highlight); /** Deprecated: use component.dropdown-menu.item.background.highlight (OD-241). Item sunken of the dropdown menu. */
   --dropdown-menu-background: var(--dropdown-menu-separator-background); /** Deprecated: use component.dropdown-menu.separator.background (OD-241). Background of the dropdown menu. */
   --menubar-trigger-background-focus: var(--menubar-trigger-background-highlight); /** Deprecated: use component.menubar.trigger.background.highlight (OD-241). Trigger background focus of the menubar. */
@@ -2634,10 +2652,18 @@ html[data-scheme="content-first"][data-theme="dark"] {
   --menubar-checkbox-item-background-focus: var(--menubar-checkbox-item-background-highlight); /** Deprecated: use component.menubar.checkbox.item.background.highlight (OD-241). Checkbox item background focus of the menubar. */
   --menubar-radio-item-background-focus: var(--menubar-radio-item-background-highlight); /** Deprecated: use component.menubar.radio.item.background.highlight (OD-241). Radio item background focus of the menubar. */
   --menubar-sub-trigger-background-focus: var(--menubar-sub-trigger-background-highlight); /** Deprecated: use component.menubar.sub.trigger.background.highlight (OD-241). Sub trigger background focus of the menubar. */
+  --navigation-menu-background-hover: var(--navigation-menu-trigger-background-hover); /** Deprecated: use component.navigation-menu.trigger.background.hover (OD-241). Background hover of the navigation menu. */
   --navigation-menu-background-focus: var(--navigation-menu-trigger-background-highlight); /** Deprecated: use component.navigation-menu.trigger.background.highlight (OD-241). Background focus of the navigation menu. */
-  --navigation-menu-link-background-hover: var(--navigation-menu-link-background-hover); /** Deprecated: use component.navigation-menu.link.background.hover (OD-241). Link background hover of the navigation menu. */
+  --navigation-menu-background-open: var(--navigation-menu-trigger-background-open); /** Deprecated: use component.navigation-menu.trigger.background.open (OD-241). Background open of the navigation menu. */
+  --navigation-menu-background-open-hover: var(--navigation-menu-trigger-background-open-hover); /** Deprecated: use component.navigation-menu.trigger.background.open-hover (OD-241). Background open hover of the navigation menu. */
+  --navigation-menu-background-open-focus: var(--navigation-menu-trigger-background-open-highlight); /** Deprecated: use component.navigation-menu.trigger.background.open-highlight (OD-241). Background open focus of the navigation menu. */
   --navigation-menu-link-background-focus: var(--navigation-menu-link-background-highlight); /** Deprecated: use component.navigation-menu.link.background.highlight (OD-241). Link background focus of the navigation menu. */
   --select-item-sunken: var(--select-item-background-highlight); /** Deprecated: use component.select.item.background.highlight (OD-241). Item sunken of the select. */
+  --sidebar-rail-background-hover: var(--sidebar-rail-line-hover); /** Deprecated: use component.sidebar.rail.line.hover (OD-241). Rail background hover of the sidebar. */
+  --sidebar-background-hover: var(--sidebar-rail-background-hover); /** Deprecated: use component.sidebar.rail.background.hover (OD-241). Background hover of the sidebar. */
+  --sidebar-menu-sub-button-background-active: var(--sidebar-menu-sub-button-background-pressed); /** Deprecated: use component.sidebar.menu.sub.button.background.pressed (OD-241). Menu sub button background active of the sidebar. */
+  --sidebar-background-hover-2: var(--sidebar-menu-button-background-hover); /** Deprecated: use component.sidebar.menu-button.background.hover (OD-241). Background hover 2 of the sidebar. */
+  --sidebar-background-active: var(--sidebar-menu-button-background-pressed); /** Deprecated: use component.sidebar.menu-button.background.pressed (OD-241). Background active of the sidebar. */
 }
 html[data-scheme="content-first"] {
   --ifm-color-primary: var(--color-action-primary);
@@ -2658,7 +2684,7 @@ html[data-scheme="content-first"] {
   --ifm-menu-color: var(--color-text-secondary);
   --ifm-menu-color-active: var(--ods-text-on-selected);
   --ifm-menu-color-background-active: var(--color-surface-selected);
-  --ifm-menu-color-background-hover: var(--color-surface-sunken);
+  --ifm-menu-color-background-hover: var(--color-surface-highlight);
   --ifm-code-background: var(--color-surface-sunken);
   --ifm-table-border-color: var(--color-border-default);
   --ifm-table-stripe-background: var(--color-surface-sunken);

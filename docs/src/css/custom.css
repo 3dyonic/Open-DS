@@ -374,7 +374,7 @@ code {
   transition: background var(--motion-duration-feedback, 120ms);
 }
 .ods-picker-trigger:hover {
-  background: var(--color-surface-sunken, var(--ifm-color-emphasis-100));
+  background: var(--color-surface-highlight, var(--ifm-color-emphasis-100));
 }
 .ods-picker-trigger:focus-visible,
 .ods-picker-list:focus-visible {
@@ -452,7 +452,7 @@ code {
   visibility: hidden;
 }
 .ods-picker-opt.is-active {
-  background: var(--color-surface-sunken, var(--ifm-color-emphasis-100));
+  background: var(--color-surface-highlight, var(--ifm-color-emphasis-100));
 }
 /* Selected: the selected fill and its edge, so selection is never color alone, and text from the
    fill's tone (--ods-text-on-selected, generated per scheme and mode). Never the link color on it. */

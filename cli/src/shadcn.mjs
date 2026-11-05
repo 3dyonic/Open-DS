@@ -16,7 +16,8 @@ export const SHADCN = {
   "secondary-foreground": "color-text-primary",
   muted: "color-surface-sunken",
   "muted-foreground": "color-text-muted",
-  accent: "color-surface-sunken",
+  // accent is shadcn's hover and highlight fill: the state semantic, not the depth one (OD-241).
+  accent: "color-surface-highlight",
   "accent-foreground": "color-text-primary",
   destructive: "color-status-danger",
   border: "color-border-default",
@@ -28,7 +29,7 @@ export const SHADCN = {
   "sidebar-foreground": "color-text-primary",
   "sidebar-primary": "color-action-primary",
   "sidebar-primary-foreground": "color-text-on-action",
-  "sidebar-accent": "color-surface-sunken",
+  "sidebar-accent": "color-surface-highlight",
   "sidebar-accent-foreground": "color-text-primary",
   "sidebar-border": "color-border-default",
   "sidebar-ring": "color-border-focus",

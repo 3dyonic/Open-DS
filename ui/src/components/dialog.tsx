@@ -29,7 +29,7 @@ export function DialogContent({ className, children, ...props }: React.Component
         {...props}
       >
         {children}
-        <DialogPrimitive.Close className="absolute right-3 top-3 rounded-[var(--dialog-radius)] p-[var(--dialog-padding)] text-[var(--dialog-label)] hover:bg-[var(--dialog-sunken)]">
+        <DialogPrimitive.Close className="absolute right-3 top-3 rounded-[var(--dialog-radius)] p-[var(--dialog-padding)] text-[var(--dialog-label)] hover:bg-[var(--dialog-close-background-hover)]">
           <X className="size-[var(--dialog-size)]" />
           <span className="sr-only">Close</span>
         </DialogPrimitive.Close>

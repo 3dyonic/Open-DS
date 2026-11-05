@@ -34,12 +34,33 @@ if (entries.some((e) => e.id === newId)) throw new Error(`${newId} exists alread
 const comp = g.components.find((c) => c.keys.includes(oldId));
 comp.keys.splice(comp.keys.indexOf(oldId), 0, newId);
 const semantic = to ?? entry.default;
+// A key on the new path that is a token, not a group (button/ghost/background when the new key is
+// button/ghost/background/hover), becomes that group's base, @: the same CSS variable, a new id.
+const np0 = segs(newId);
+const bases = [];
+for (let i = 1; i < np0.length; i++) {
+  const id = np0.slice(0, i).join("/");
+  if (id === oldId) continue;
+  const e = entries.find((x) => x.id === id);
+  if (!e) continue;
+  bases.push(id);
+  e.id = `${id}/@`;
+  const c = g.components.find((x) => x.keys.includes(id));
+  c.keys[c.keys.indexOf(id)] = `${id}/@`;
+}
 entries.splice(entries.indexOf(entry), 0, {
   id: newId,
   component: entry.component,
   description: description ?? entry.description,
   default: semantic,
 });
+// The same CSS variable (background-hover → background/hover): the public surface does not change,
+// so no alias is kept. An alias would define the variable as itself.
+const sameVar = cssVar(oldId) === cssVar(newId);
+if (sameVar) {
+  entries.splice(entries.indexOf(entry), 1);
+  comp.keys.splice(comp.keys.indexOf(oldId), 1);
+}
 entry.replaced_by = newId;
 if (newId.startsWith(`${oldId}/`)) {
   // The old key becomes the base of the new group: its id gains /@ (the same CSS variable).
@@ -60,6 +81,11 @@ for (const id of SCHEMES) {
   const was = parent?.[op.at(-1)];
   if (!was?.$value) throw new Error(`${id}: no token at ${oldId}.`);
   const np = segs(newId);
+  for (const id of bases) {
+    const p = segs(id);
+    const up = at(tree, p.slice(0, -1));
+    up[p.at(-1)] = { "@": up[p.at(-1)] };
+  }
   // The new key sits under the old one (link/background → link/background/current): the old token
   // becomes the group's base, @, which ships the same CSS variable.
   const under = newId.startsWith(`${oldId}/`);
@@ -70,6 +96,10 @@ for (const id of SCHEMES) {
     $description: description ?? was.$description,
     ...(was.$extensions && { $extensions: was.$extensions }),
   };
+  if (sameVar) {
+    delete parent[op.at(-1)];
+    continue;
+  }
   const home = under ? parent[op.at(-1)] : parent;
   home[under ? "@" : op.at(-1)] = {
     $value: `{${ref(newId)}}`,

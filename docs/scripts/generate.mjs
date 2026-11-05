@@ -46,7 +46,7 @@ const INFIMA = {
   "--ifm-menu-color": "color-text-secondary",
   "--ifm-menu-color-active": "ods-text-on-selected",
   "--ifm-menu-color-background-active": "color-surface-selected",
-  "--ifm-menu-color-background-hover": "color-surface-sunken",
+  "--ifm-menu-color-background-hover": "color-surface-highlight",
   "--ifm-code-background": "color-surface-sunken",
   "--ifm-table-border-color": "color-border-default",
   "--ifm-table-stripe-background": "color-surface-sunken",

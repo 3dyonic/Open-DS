@@ -88,7 +88,7 @@ const RULE_WORDS = {
   invalid: /invalid|error/i,
   current: /current/i,
   selected: /selected/i,
-  checked: /checked/i,
+  checked: /checked|(is|are) on\b/i,
   open: /\bopen\b|expanded/i,
   pressed: /press/i,
   highlight: /highlight/i,
@@ -128,6 +128,11 @@ export function usages(src, comp, cssVar) {
     const property = PROPERTY.find(([r]) => r.test(util))?.[1] ?? null;
     let state = null;
     for (const v of variants) {
+      // cmdk marks the option the pointer or the keyboard is on data-[selected=true]: a highlight there.
+      if (comp === "command" && v === "data-[selected=true]") {
+        state = "highlight";
+        continue;
+      }
       const hit = STATES.find(([, r]) => r.test(v));
       if (!hit) continue;
       // The first matching state in STATES order wins (disabled before hover, current before hover).

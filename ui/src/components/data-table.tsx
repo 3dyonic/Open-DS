@@ -168,7 +168,7 @@ function FacetFilter<TData>({
             .sort(([a], [b]) => String(a).localeCompare(String(b)))
             .map(([value, count]) => (
               <li key={String(value)}>
-                <label className="flex cursor-pointer items-center gap-[var(--data-table-gap-2)] rounded-[var(--data-table-radius)] px-[var(--data-table-padding-x)] py-[var(--data-table-padding-y)] hover:bg-[color:var(--data-table-background-hover)]">
+                <label className="flex cursor-pointer items-center gap-[var(--data-table-gap-2)] rounded-[var(--data-table-radius)] px-[var(--data-table-padding-x)] py-[var(--data-table-padding-y)] hover:bg-[color:var(--data-table-row-background-hover)]">
                   <Checkbox checked={chosen.has(String(value))} onCheckedChange={() => toggle(String(value))} />
                   <span className="flex-1">{String(value)}</span>
                   <span className="text-[color:var(--data-table-label)] tabular-nums">{count}</span>
@@ -274,7 +274,7 @@ export function DataTable<TData>({
                   .filter((c) => c.getCanHide())
                   .map((c) => (
                     <li key={c.id}>
-                      <label className="flex cursor-pointer items-center gap-[var(--data-table-gap-2)] rounded-[var(--data-table-radius)] px-[var(--data-table-padding-x)] py-[var(--data-table-padding-y)] hover:bg-[color:var(--data-table-background-hover)]">
+                      <label className="flex cursor-pointer items-center gap-[var(--data-table-gap-2)] rounded-[var(--data-table-radius)] px-[var(--data-table-padding-x)] py-[var(--data-table-padding-y)] hover:bg-[color:var(--data-table-row-background-hover)]">
                         <Checkbox checked={c.getIsVisible()} onCheckedChange={(v) => c.toggleVisibility(!!v)} />
                         {c.columnDef.meta?.label ?? c.id}
                       </label>

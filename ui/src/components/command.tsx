@@ -123,7 +123,7 @@ function CommandItem({ className, ...props }: React.ComponentProps<typeof Comman
     <CommandPrimitive.Item
       data-slot="command-item"
       className={cn(
-        "relative flex cursor-default items-center gap-[var(--command-item-gap)] rounded-[var(--command-item-radius)] px-[var(--command-item-padding-x)] py-[var(--command-item-padding-y)] text-[length:var(--command-item-font-size)]/[var(--command-item-line-height)] outline-hidden select-none data-[disabled=true]:pointer-events-none data-[disabled=true]:opacity-[var(--command-item-disabled-opacity-disabled)] data-[selected=true]:bg-[color:var(--command-item-background-selected)] data-[selected=true]:text-[color:var(--command-item-label-selected)] [&_svg]:pointer-events-none [&_svg]:shrink-0 [&_svg:not([class*='size-'])]:size-[var(--command-item-icon-size)] [&_svg:not([class*='text-'])]:text-[color:var(--command-item-label)]",
+        "relative flex cursor-default items-center gap-[var(--command-item-gap)] rounded-[var(--command-item-radius)] px-[var(--command-item-padding-x)] py-[var(--command-item-padding-y)] text-[length:var(--command-item-font-size)]/[var(--command-item-line-height)] outline-hidden select-none data-[disabled=true]:pointer-events-none data-[disabled=true]:opacity-[var(--command-item-disabled-opacity-disabled)] data-[selected=true]:bg-[color:var(--command-item-background-highlight)] data-[selected=true]:text-[color:var(--command-item-label-selected)] [&_svg]:pointer-events-none [&_svg]:shrink-0 [&_svg:not([class*='size-'])]:size-[var(--command-item-icon-size)] [&_svg:not([class*='text-'])]:text-[color:var(--command-item-label)]",
         className,
       )}
       {...props}

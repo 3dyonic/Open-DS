@@ -682,6 +682,8 @@ export const CHECKS = {
         "color.surface.default",
         "color.surface.raised",
         "color.surface.sunken",
+        "color.surface.highlight",
+        "color.surface.pressed",
       ]);
       const css = (id) => `--${id.replace(/\.@$/, "").replaceAll(".", "-")}`;
       const fills = (g.semantics.tones?.fills ?? [])

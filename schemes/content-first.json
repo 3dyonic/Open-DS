@@ -2931,15 +2931,45 @@
             "radius": {
               "control": {
                 "$type": "dimension",
-                "$value": "{radius.8}"
+                "$value": "{radius.8}",
+                "$extensions": {
+                  "open-ds": {
+                    "why": "radius.8: Rounded corners feel friendly.",
+                    "because": [
+                      "shape.roles",
+                      "shape.values"
+                    ],
+                    "generated": true
+                  }
+                }
               },
               "badge": {
                 "$type": "dimension",
-                "$value": "{radius.999}"
+                "$value": "{radius.999}",
+                "$extensions": {
+                  "open-ds": {
+                    "why": "radius.999: Rounded corners feel friendly.",
+                    "because": [
+                      "shape.roles",
+                      "shape.values"
+                    ],
+                    "generated": true
+                  }
+                }
               },
               "container": {
                 "$type": "dimension",
-                "$value": "{radius.12}"
+                "$value": "{radius.12}",
+                "$extensions": {
+                  "open-ds": {
+                    "why": "radius.12: Rounded corners feel friendly.",
+                    "because": [
+                      "shape.roles",
+                      "shape.values"
+                    ],
+                    "generated": true
+                  }
+                }
               }
             },
             "type": {
@@ -2991,52 +3021,150 @@
                 "on-light": {
                   "$type": "color",
                   "$value": "{color.stone.light.900}",
-                  "$description": "Text on any light fill, in either mode: the light mode's body text."
+                  "$description": "Text on any light fill, in either mode: the light mode's body text.",
+                  "$extensions": {
+                    "open-ds": {
+                      "why": "stone.light.900: the text for every light fill, 17.12:1 on surface.default, above the 4.5:1 floor.",
+                      "because": [
+                        "accessibility.definition"
+                      ],
+                      "generated": true
+                    }
+                  }
                 },
                 "on-dark": {
                   "$type": "color",
                   "$value": "{color.stone.light.0}",
-                  "$description": "Text on any dark fill, in either mode: white."
+                  "$description": "Text on any dark fill, in either mode: white.",
+                  "$extensions": {
+                    "open-ds": {
+                      "why": "stone.light.0: the text for every dark fill, 11.5:1 on action.primary, above the 4.5:1 floor.",
+                      "because": [
+                        "accessibility.definition"
+                      ],
+                      "generated": true
+                    }
+                  }
                 },
                 "info-on-light": {
                   "$type": "color",
                   "$value": "{color.blue.light.800}",
-                  "$description": "info text on a light info fill, in either mode."
+                  "$description": "info text on a light info fill, in either mode.",
+                  "$extensions": {
+                    "open-ds": {
+                      "why": "blue.light.800: info text on its own tint, 12.97:1 on status.info.subtle, above the 4.5:1 floor.",
+                      "because": [
+                        "accessibility.definition",
+                        "accessibility.count"
+                      ],
+                      "generated": true
+                    }
+                  }
                 },
                 "info-on-dark": {
                   "$type": "color",
                   "$value": "{color.blue.light.100}",
-                  "$description": "info text on a dark info fill, in either mode."
+                  "$description": "info text on a dark info fill, in either mode.",
+                  "$extensions": {
+                    "open-ds": {
+                      "why": "blue.light.100: info text on its own tint, 10.8:1 on status.info.subtle, above the 4.5:1 floor.",
+                      "because": [
+                        "accessibility.definition",
+                        "accessibility.count"
+                      ],
+                      "generated": true
+                    }
+                  }
                 },
                 "success-on-light": {
                   "$type": "color",
                   "$value": "{color.green.light.800}",
-                  "$description": "success text on a light success fill, in either mode."
+                  "$description": "success text on a light success fill, in either mode.",
+                  "$extensions": {
+                    "open-ds": {
+                      "why": "green.light.800: success text on its own tint, 10.79:1 on status.success.subtle, above the 4.5:1 floor.",
+                      "because": [
+                        "accessibility.definition",
+                        "accessibility.count"
+                      ],
+                      "generated": true
+                    }
+                  }
                 },
                 "success-on-dark": {
                   "$type": "color",
                   "$value": "{color.green.light.100}",
-                  "$description": "success text on a dark success fill, in either mode."
+                  "$description": "success text on a dark success fill, in either mode.",
+                  "$extensions": {
+                    "open-ds": {
+                      "why": "green.light.100: success text on its own tint, 12.03:1 on status.success.subtle, above the 4.5:1 floor.",
+                      "because": [
+                        "accessibility.definition",
+                        "accessibility.count"
+                      ],
+                      "generated": true
+                    }
+                  }
                 },
                 "warning-on-light": {
                   "$type": "color",
                   "$value": "{color.amber.light.800}",
-                  "$description": "warning text on a light warning fill, in either mode."
+                  "$description": "warning text on a light warning fill, in either mode.",
+                  "$extensions": {
+                    "open-ds": {
+                      "why": "amber.light.800: warning text on its own tint, 11.09:1 on status.warning.subtle, above the 4.5:1 floor.",
+                      "because": [
+                        "accessibility.definition",
+                        "accessibility.count"
+                      ],
+                      "generated": true
+                    }
+                  }
                 },
                 "warning-on-dark": {
                   "$type": "color",
                   "$value": "{color.amber.light.100}",
-                  "$description": "warning text on a dark warning fill, in either mode."
+                  "$description": "warning text on a dark warning fill, in either mode.",
+                  "$extensions": {
+                    "open-ds": {
+                      "why": "amber.light.100: warning text on its own tint, 11.29:1 on status.warning.subtle, above the 4.5:1 floor.",
+                      "because": [
+                        "accessibility.definition",
+                        "accessibility.count"
+                      ],
+                      "generated": true
+                    }
+                  }
                 },
                 "danger-on-light": {
                   "$type": "color",
                   "$value": "{color.red.light.800}",
-                  "$description": "danger text on a light danger fill, in either mode."
+                  "$description": "danger text on a light danger fill, in either mode.",
+                  "$extensions": {
+                    "open-ds": {
+                      "why": "red.light.800: danger text on its own tint, 9.9:1 on status.danger.subtle, above the 4.5:1 floor.",
+                      "because": [
+                        "accessibility.definition",
+                        "accessibility.count"
+                      ],
+                      "generated": true
+                    }
+                  }
                 },
                 "danger-on-dark": {
                   "$type": "color",
                   "$value": "{color.red.light.100}",
-                  "$description": "danger text on a dark danger fill, in either mode."
+                  "$description": "danger text on a dark danger fill, in either mode.",
+                  "$extensions": {
+                    "open-ds": {
+                      "why": "red.light.100: danger text on its own tint, 11.21:1 on status.danger.subtle, above the 4.5:1 floor.",
+                      "because": [
+                        "accessibility.definition",
+                        "accessibility.count"
+                      ],
+                      "generated": true
+                    }
+                  }
                 }
               }
             }
@@ -3046,51 +3174,159 @@
               "neutral": {
                 "0": {
                   "$type": "color",
-                  "$value": "{color.stone.light.0}"
+                  "$value": "{color.stone.light.0}",
+                  "$extensions": {
+                    "open-ds": {
+                      "why": "stone.light.0: the scheme's neutral is stone. Warm paper neutrals and one ink ramp.",
+                      "because": [
+                        "color.definition"
+                      ],
+                      "generated": true
+                    }
+                  }
                 },
                 "50": {
                   "$type": "color",
-                  "$value": "{color.stone.light.50}"
+                  "$value": "{color.stone.light.50}",
+                  "$extensions": {
+                    "open-ds": {
+                      "why": "stone.light.50: the scheme's neutral is stone. Warm paper neutrals and one ink ramp.",
+                      "because": [
+                        "color.definition"
+                      ],
+                      "generated": true
+                    }
+                  }
                 },
                 "100": {
                   "$type": "color",
-                  "$value": "{color.stone.light.100}"
+                  "$value": "{color.stone.light.100}",
+                  "$extensions": {
+                    "open-ds": {
+                      "why": "stone.light.100: the scheme's neutral is stone. Warm paper neutrals and one ink ramp.",
+                      "because": [
+                        "color.definition"
+                      ],
+                      "generated": true
+                    }
+                  }
                 },
                 "200": {
                   "$type": "color",
-                  "$value": "{color.stone.light.200}"
+                  "$value": "{color.stone.light.200}",
+                  "$extensions": {
+                    "open-ds": {
+                      "why": "stone.light.200: the scheme's neutral is stone. Warm paper neutrals and one ink ramp.",
+                      "because": [
+                        "color.definition"
+                      ],
+                      "generated": true
+                    }
+                  }
                 },
                 "300": {
                   "$type": "color",
-                  "$value": "{color.stone.light.300}"
+                  "$value": "{color.stone.light.300}",
+                  "$extensions": {
+                    "open-ds": {
+                      "why": "stone.light.300: the scheme's neutral is stone. Warm paper neutrals and one ink ramp.",
+                      "because": [
+                        "color.definition"
+                      ],
+                      "generated": true
+                    }
+                  }
                 },
                 "400": {
                   "$type": "color",
-                  "$value": "{color.stone.light.400}"
+                  "$value": "{color.stone.light.400}",
+                  "$extensions": {
+                    "open-ds": {
+                      "why": "stone.light.400: the scheme's neutral is stone. Warm paper neutrals and one ink ramp.",
+                      "because": [
+                        "color.definition"
+                      ],
+                      "generated": true
+                    }
+                  }
                 },
                 "500": {
                   "$type": "color",
-                  "$value": "{color.stone.light.500}"
+                  "$value": "{color.stone.light.500}",
+                  "$extensions": {
+                    "open-ds": {
+                      "why": "stone.light.500: the scheme's neutral is stone. Warm paper neutrals and one ink ramp.",
+                      "because": [
+                        "color.definition"
+                      ],
+                      "generated": true
+                    }
+                  }
                 },
                 "600": {
                   "$type": "color",
-                  "$value": "{color.stone.light.600}"
+                  "$value": "{color.stone.light.600}",
+                  "$extensions": {
+                    "open-ds": {
+                      "why": "stone.light.600: the scheme's neutral is stone. Warm paper neutrals and one ink ramp.",
+                      "because": [
+                        "color.definition"
+                      ],
+                      "generated": true
+                    }
+                  }
                 },
                 "700": {
                   "$type": "color",
-                  "$value": "{color.stone.light.700}"
+                  "$value": "{color.stone.light.700}",
+                  "$extensions": {
+                    "open-ds": {
+                      "why": "stone.light.700: the scheme's neutral is stone. Warm paper neutrals and one ink ramp.",
+                      "because": [
+                        "color.definition"
+                      ],
+                      "generated": true
+                    }
+                  }
                 },
                 "800": {
                   "$type": "color",
-                  "$value": "{color.stone.light.800}"
+                  "$value": "{color.stone.light.800}",
+                  "$extensions": {
+                    "open-ds": {
+                      "why": "stone.light.800: the scheme's neutral is stone. Warm paper neutrals and one ink ramp.",
+                      "because": [
+                        "color.definition"
+                      ],
+                      "generated": true
+                    }
+                  }
                 },
                 "900": {
                   "$type": "color",
-                  "$value": "{color.stone.light.900}"
+                  "$value": "{color.stone.light.900}",
+                  "$extensions": {
+                    "open-ds": {
+                      "why": "stone.light.900: the scheme's neutral is stone. Warm paper neutrals and one ink ramp.",
+                      "because": [
+                        "color.definition"
+                      ],
+                      "generated": true
+                    }
+                  }
                 },
                 "950": {
                   "$type": "color",
-                  "$value": "{color.stone.light.950}"
+                  "$value": "{color.stone.light.950}",
+                  "$extensions": {
+                    "open-ds": {
+                      "why": "stone.light.950: the scheme's neutral is stone. Warm paper neutrals and one ink ramp.",
+                      "because": [
+                        "color.definition"
+                      ],
+                      "generated": true
+                    }
+                  }
                 }
               },
               "surface": {
@@ -3099,7 +3335,13 @@
                   "$value": "{color.neutral.50}",
                   "$extensions": {
                     "open-ds": {
-                      "tone": "light"
+                      "tone": "light",
+                      "why": "neutral.50, under content: 1.02:1 from surface.default, so cards and panels stand forward.",
+                      "because": [
+                        "elevation.definition",
+                        "color.definition"
+                      ],
+                      "generated": true
                     }
                   }
                 },
@@ -3108,7 +3350,12 @@
                   "$value": "{color.neutral.0}",
                   "$extensions": {
                     "open-ds": {
-                      "tone": "light"
+                      "tone": "light",
+                      "why": "neutral.0: the base for content; body text reads 17.12:1 on it, above the 4.5:1 floor.",
+                      "because": [
+                        "accessibility.definition"
+                      ],
+                      "generated": true
                     }
                   }
                 },
@@ -3132,7 +3379,13 @@
                   "$value": "{color.neutral.100}",
                   "$extensions": {
                     "open-ds": {
-                      "tone": "light"
+                      "tone": "light",
+                      "why": "neutral.100, a step below content (1.12:1 on surface.default), so table headers and wells read as recessed.",
+                      "because": [
+                        "elevation.definition",
+                        "color.definition"
+                      ],
+                      "generated": true
                     }
                   }
                 },
@@ -3150,12 +3403,32 @@
                     }
                   }
                 },
+                "pressed": {
+                  "$type": "color",
+                  "$value": "{color.neutral.200}",
+                  "$extensions": {
+                    "open-ds": {
+                      "tone": "light",
+                      "why": "neutral.200, one step past the highlight (neutral.100), so a press reads as its own change under the finger: pressed gets its own value for touch.",
+                      "because": [
+                        "accessibility.roles",
+                        "color.definition"
+                      ]
+                    }
+                  }
+                },
                 "selected": {
                   "$type": "color",
                   "$value": "{color.navy.light.100}",
                   "$extensions": {
                     "open-ds": {
-                      "tone": "light"
+                      "tone": "light",
+                      "why": "navy.light.100: a tint of the brand, 1.22:1 from content, always beside its edge (border.selected), so selection is never color alone.",
+                      "because": [
+                        "color.definition",
+                        "accessibility.count"
+                      ],
+                      "generated": true
                     }
                   }
                 },
@@ -3164,13 +3437,27 @@
                   "$value": "{color.neutral.900}",
                   "$extensions": {
                     "open-ds": {
-                      "tone": "dark"
+                      "tone": "dark",
+                      "why": "neutral.900: the reverse of content for short messages; its text reads, 17.12:1 on surface.inverse, above the 4.5:1 floor.",
+                      "because": [
+                        "accessibility.definition"
+                      ],
+                      "generated": true
                     }
                   }
                 },
                 "scrim": {
                   "$type": "color",
-                  "$value": "{color.black.light.scrim}"
+                  "$value": "{color.black.light.scrim}",
+                  "$extensions": {
+                    "open-ds": {
+                      "why": "black.light.scrim: a see-through layer that dims the page behind a modal, so the dialog is the one thing to act on.",
+                      "because": [
+                        "elevation.roles"
+                      ],
+                      "generated": true
+                    }
+                  }
                 }
               },
               "text": {
@@ -3179,7 +3466,7 @@
                   "$value": "{color.neutral.900}",
                   "$extensions": {
                     "open-ds": {
-                      "why": "neutral.900: the strongest text step, 17.12:1 on content, above the 4.5:1 floor.",
+                      "why": "neutral.900: the strongest text step, 17.12:1 on surface.default, above the 4.5:1 floor.",
                       "because": [
                         "accessibility.definition"
                       ],
@@ -3189,27 +3476,81 @@
                 },
                 "secondary": {
                   "$type": "color",
-                  "$value": "{color.neutral.700}"
+                  "$value": "{color.neutral.700}",
+                  "$extensions": {
+                    "open-ds": {
+                      "why": "neutral.700: supporting text, 9.75:1 on surface.default, above the 4.5:1 floor.",
+                      "because": [
+                        "accessibility.definition"
+                      ],
+                      "generated": true
+                    }
+                  }
                 },
                 "muted": {
                   "$type": "color",
-                  "$value": "{color.neutral.600}"
+                  "$value": "{color.neutral.600}",
+                  "$extensions": {
+                    "open-ds": {
+                      "why": "neutral.600: the quietest text that still reads, 6.9:1 on surface.default, above the 4.5:1 floor.",
+                      "because": [
+                        "accessibility.definition"
+                      ],
+                      "generated": true
+                    }
+                  }
                 },
                 "inverse": {
                   "$type": "color",
-                  "$value": "{color.text.on-dark}"
+                  "$value": "{color.text.on-dark}",
+                  "$extensions": {
+                    "open-ds": {
+                      "why": "text.on-dark: the text its fill's tone picks, 17.12:1 on surface.inverse, above the 4.5:1 floor.",
+                      "because": [
+                        "accessibility.definition"
+                      ],
+                      "generated": true
+                    }
+                  }
                 },
                 "on-action": {
                   "$type": "color",
-                  "$value": "{color.text.on-dark}"
+                  "$value": "{color.text.on-dark}",
+                  "$extensions": {
+                    "open-ds": {
+                      "why": "text.on-dark: the text its fill's tone picks, 11.5:1 on action.primary, above the 4.5:1 floor.",
+                      "because": [
+                        "accessibility.definition"
+                      ],
+                      "generated": true
+                    }
+                  }
                 },
                 "link": {
                   "$type": "color",
-                  "$value": "{color.navy.light.700}"
+                  "$value": "{color.navy.light.700}",
+                  "$extensions": {
+                    "open-ds": {
+                      "why": "navy.light.700: a link, set apart by its hue, 14.62:1 on surface.default, above the 4.5:1 floor.",
+                      "because": [
+                        "accessibility.definition"
+                      ],
+                      "generated": true
+                    }
+                  }
                 },
                 "on-danger": {
                   "$type": "color",
-                  "$value": "{color.text.on-dark}"
+                  "$value": "{color.text.on-dark}",
+                  "$extensions": {
+                    "open-ds": {
+                      "why": "text.on-dark: the text its fill's tone picks, 5.63:1 on action.danger, above the 4.5:1 floor.",
+                      "because": [
+                        "accessibility.definition"
+                      ],
+                      "generated": true
+                    }
+                  }
                 }
               },
               "border": {
@@ -3229,14 +3570,23 @@
                 },
                 "strong": {
                   "$type": "color",
-                  "$value": "{color.neutral.500}"
+                  "$value": "{color.neutral.500}",
+                  "$extensions": {
+                    "open-ds": {
+                      "why": "neutral.500: the edge of a control people must find, 4.86:1 on surface.default, above the 3:1 floor.",
+                      "because": [
+                        "accessibility.definition"
+                      ],
+                      "generated": true
+                    }
+                  }
                 },
                 "focus": {
                   "$type": "color",
                   "$value": "{color.navy.light.600}",
                   "$extensions": {
                     "open-ds": {
-                      "why": "navy.light.600: the ring keeps 11.5:1 on content, over the 3:1 a focus ring needs, so the keyboard's place is never lost.",
+                      "why": "navy.light.600: the focus ring, so the keyboard's place is never lost, 11.5:1 on surface.default, above the 3:1 floor.",
                       "because": [
                         "accessibility.definition",
                         "color.definition"
@@ -3247,7 +3597,16 @@
                 },
                 "selected": {
                   "$type": "color",
-                  "$value": "{color.navy.light.600}"
+                  "$value": "{color.navy.light.600}",
+                  "$extensions": {
+                    "open-ds": {
+                      "why": "navy.light.600: the edge beside a selected fill, so selection is never color alone, 11.5:1 on surface.default, above the 3:1 floor.",
+                      "because": [
+                        "accessibility.definition"
+                      ],
+                      "generated": true
+                    }
+                  }
                 }
               },
               "action": {
@@ -3257,7 +3616,13 @@
                     "$value": "{color.navy.light.600}",
                     "$extensions": {
                       "open-ds": {
-                        "tone": "dark"
+                        "tone": "dark",
+                        "why": "navy.light.600: the primary action's fill; its label reads, 11.5:1, above the 4.5:1 floor.",
+                        "because": [
+                          "accessibility.definition",
+                          "color.count"
+                        ],
+                        "generated": true
                       }
                     }
                   },
@@ -3266,7 +3631,13 @@
                     "$value": "{color.navy.light.700}",
                     "$extensions": {
                       "open-ds": {
-                        "tone": "dark"
+                        "tone": "dark",
+                        "why": "navy.light.700: one step from the primary action (navy.light.600), so the pointer shows; its label still reads 14.62:1, above the 4.5:1 floor.",
+                        "because": [
+                          "accessibility.roles",
+                          "accessibility.definition"
+                        ],
+                        "generated": true
                       }
                     }
                   }
@@ -3277,7 +3648,13 @@
                     "$value": "{color.neutral.0}",
                     "$extensions": {
                       "open-ds": {
-                        "tone": "light"
+                        "tone": "light",
+                        "why": "neutral.0: the secondary action's fill; its label reads, 17.12:1, above the 4.5:1 floor.",
+                        "because": [
+                          "accessibility.definition",
+                          "color.count"
+                        ],
+                        "generated": true
                       }
                     }
                   },
@@ -3286,7 +3663,13 @@
                     "$value": "{color.neutral.100}",
                     "$extensions": {
                       "open-ds": {
-                        "tone": "light"
+                        "tone": "light",
+                        "why": "neutral.100: one step from the secondary action (neutral.0), so the pointer shows; its label still reads 15.33:1, above the 4.5:1 floor.",
+                        "because": [
+                          "accessibility.roles",
+                          "accessibility.definition"
+                        ],
+                        "generated": true
                       }
                     }
                   }
@@ -3297,7 +3680,13 @@
                     "$value": "{color.red.light.600}",
                     "$extensions": {
                       "open-ds": {
-                        "tone": "dark"
+                        "tone": "dark",
+                        "why": "red.light.600: the danger action's fill; its label reads, 5.63:1, above the 4.5:1 floor.",
+                        "because": [
+                          "accessibility.definition",
+                          "color.count"
+                        ],
+                        "generated": true
                       }
                     }
                   },
@@ -3306,7 +3695,13 @@
                     "$value": "{color.red.light.700}",
                     "$extensions": {
                       "open-ds": {
-                        "tone": "dark"
+                        "tone": "dark",
+                        "why": "red.light.700: one step from the danger action (red.light.600), so the pointer shows; its label still reads 8.55:1, above the 4.5:1 floor.",
+                        "because": [
+                          "accessibility.roles",
+                          "accessibility.definition"
+                        ],
+                        "generated": true
                       }
                     },
                     "$description": "The same as the fill until whole ramps (OD-223) add the step between."
@@ -3317,14 +3712,30 @@
                 "info": {
                   "@": {
                     "$type": "color",
-                    "$value": "{color.blue.light.600}"
+                    "$value": "{color.blue.light.600}",
+                    "$extensions": {
+                      "open-ds": {
+                        "why": "blue.light.600: info reads as text and icons, 10.11:1 on surface.default, above the 4.5:1 floor.",
+                        "because": [
+                          "accessibility.definition",
+                          "color.lands"
+                        ],
+                        "generated": true
+                      }
+                    }
                   },
                   "subtle": {
                     "$type": "color",
                     "$value": "{color.blue.light.100}",
                     "$extensions": {
                       "open-ds": {
-                        "tone": "light"
+                        "tone": "light",
+                        "why": "blue.light.100: a quiet tint behind info; its text, 12.97:1, above the 4.5:1 floor.",
+                        "because": [
+                          "accessibility.count",
+                          "color.lands"
+                        ],
+                        "generated": true
                       }
                     }
                   }
@@ -3332,14 +3743,30 @@
                 "success": {
                   "@": {
                     "$type": "color",
-                    "$value": "{color.green.light.600}"
+                    "$value": "{color.green.light.600}",
+                    "$extensions": {
+                      "open-ds": {
+                        "why": "green.light.600: success reads as text and icons, 5.38:1 on surface.default, above the 4.5:1 floor.",
+                        "because": [
+                          "accessibility.definition",
+                          "color.lands"
+                        ],
+                        "generated": true
+                      }
+                    }
                   },
                   "subtle": {
                     "$type": "color",
                     "$value": "{color.green.light.100}",
                     "$extensions": {
                       "open-ds": {
-                        "tone": "light"
+                        "tone": "light",
+                        "why": "green.light.100: a quiet tint behind success; its text, 10.79:1, above the 4.5:1 floor.",
+                        "because": [
+                          "accessibility.count",
+                          "color.lands"
+                        ],
+                        "generated": true
                       }
                     }
                   }
@@ -3347,14 +3774,30 @@
                 "warning": {
                   "@": {
                     "$type": "color",
-                    "$value": "{color.amber.light.600}"
+                    "$value": "{color.amber.light.600}",
+                    "$extensions": {
+                      "open-ds": {
+                        "why": "amber.light.600: warning reads as text and icons, 6.16:1 on surface.default, above the 4.5:1 floor.",
+                        "because": [
+                          "accessibility.definition",
+                          "color.lands"
+                        ],
+                        "generated": true
+                      }
+                    }
                   },
                   "subtle": {
                     "$type": "color",
                     "$value": "{color.amber.light.100}",
                     "$extensions": {
                       "open-ds": {
-                        "tone": "light"
+                        "tone": "light",
+                        "why": "amber.light.100: a quiet tint behind warning; its text, 11.09:1, above the 4.5:1 floor.",
+                        "because": [
+                          "accessibility.count",
+                          "color.lands"
+                        ],
+                        "generated": true
                       }
                     }
                   }
@@ -3365,7 +3808,7 @@
                     "$value": "{color.red.light.600}",
                     "$extensions": {
                       "open-ds": {
-                        "why": "red.light.600: real risk reads as text, 5.63:1 on content, above the 4.5:1 floor.",
+                        "why": "red.light.600: danger reads as text and icons, 5.63:1 on surface.default, above the 4.5:1 floor.",
                         "because": [
                           "accessibility.definition",
                           "color.lands"
@@ -3379,7 +3822,13 @@
                     "$value": "{color.red.light.100}",
                     "$extensions": {
                       "open-ds": {
-                        "tone": "light"
+                        "tone": "light",
+                        "why": "red.light.100: a quiet tint behind danger; its text, 9.9:1, above the 4.5:1 floor.",
+                        "because": [
+                          "accessibility.count",
+                          "color.lands"
+                        ],
+                        "generated": true
                       }
                     }
                   }
@@ -3389,77 +3838,219 @@
                 "1": {
                   "@": {
                     "$type": "color",
-                    "$value": "{color.navy.light.600}"
+                    "$value": "{color.navy.light.600}",
+                    "$extensions": {
+                      "open-ds": {
+                        "why": "navy.light.600: a series color: a distinct hue with no meaning, for tags and chart marks, 11.5:1 on surface.default, above the 3:1 floor.",
+                        "because": [
+                          "color.count",
+                          "color.lands"
+                        ],
+                        "generated": true
+                      }
+                    }
                   },
                   "subtle": {
                     "$type": "color",
-                    "$value": "{color.navy.light.100}"
+                    "$value": "{color.navy.light.100}",
+                    "$extensions": {
+                      "open-ds": {
+                        "why": "navy.light.100: a tag's tint; text on it reads, 13.98:1, above the 4.5:1 floor.",
+                        "because": [
+                          "color.count"
+                        ],
+                        "generated": true
+                      }
+                    }
                   }
                 },
                 "2": {
                   "@": {
                     "$type": "color",
-                    "$value": "{color.blue.light.600}"
+                    "$value": "{color.blue.light.600}",
+                    "$extensions": {
+                      "open-ds": {
+                        "why": "blue.light.600: a series color: a distinct hue with no meaning, for tags and chart marks, 10.11:1 on surface.default, above the 3:1 floor.",
+                        "because": [
+                          "color.count",
+                          "color.lands"
+                        ],
+                        "generated": true
+                      }
+                    }
                   },
                   "subtle": {
                     "$type": "color",
-                    "$value": "{color.blue.light.100}"
+                    "$value": "{color.blue.light.100}",
+                    "$extensions": {
+                      "open-ds": {
+                        "why": "blue.light.100: a tag's tint; text on it reads, 13.3:1, above the 4.5:1 floor.",
+                        "because": [
+                          "color.count"
+                        ],
+                        "generated": true
+                      }
+                    }
                   }
                 },
                 "3": {
                   "@": {
                     "$type": "color",
-                    "$value": "{color.green.light.600}"
+                    "$value": "{color.green.light.600}",
+                    "$extensions": {
+                      "open-ds": {
+                        "why": "green.light.600: a series color: a distinct hue with no meaning, for tags and chart marks, 5.38:1 on surface.default, above the 3:1 floor.",
+                        "because": [
+                          "color.count",
+                          "color.lands"
+                        ],
+                        "generated": true
+                      }
+                    }
                   },
                   "subtle": {
                     "$type": "color",
-                    "$value": "{color.green.light.100}"
+                    "$value": "{color.green.light.100}",
+                    "$extensions": {
+                      "open-ds": {
+                        "why": "green.light.100: a tag's tint; text on it reads, 14.99:1, above the 4.5:1 floor.",
+                        "because": [
+                          "color.count"
+                        ],
+                        "generated": true
+                      }
+                    }
                   }
                 },
                 "4": {
                   "@": {
                     "$type": "color",
-                    "$value": "{color.amber.light.600}"
+                    "$value": "{color.amber.light.600}",
+                    "$extensions": {
+                      "open-ds": {
+                        "why": "amber.light.600: a series color: a distinct hue with no meaning, for tags and chart marks, 6.16:1 on surface.default, above the 3:1 floor.",
+                        "because": [
+                          "color.count",
+                          "color.lands"
+                        ],
+                        "generated": true
+                      }
+                    }
                   },
                   "subtle": {
                     "$type": "color",
-                    "$value": "{color.amber.light.100}"
+                    "$value": "{color.amber.light.100}",
+                    "$extensions": {
+                      "open-ds": {
+                        "why": "amber.light.100: a tag's tint; text on it reads, 14.4:1, above the 4.5:1 floor.",
+                        "because": [
+                          "color.count"
+                        ],
+                        "generated": true
+                      }
+                    }
                   }
                 },
                 "5": {
                   "@": {
                     "$type": "color",
-                    "$value": "{color.neutral.500}"
+                    "$value": "{color.neutral.500}",
+                    "$extensions": {
+                      "open-ds": {
+                        "why": "neutral.500: a series color: a distinct hue with no meaning, for tags and chart marks, 4.86:1 on surface.default, above the 3:1 floor.",
+                        "because": [
+                          "color.count",
+                          "color.lands"
+                        ],
+                        "generated": true
+                      }
+                    }
                   },
                   "subtle": {
                     "$type": "color",
-                    "$value": "{color.neutral.100}"
+                    "$value": "{color.neutral.100}",
+                    "$extensions": {
+                      "open-ds": {
+                        "why": "neutral.100: a tag's tint; text on it reads, 15.33:1, above the 4.5:1 floor.",
+                        "because": [
+                          "color.count"
+                        ],
+                        "generated": true
+                      }
+                    }
                   }
                 }
               },
               "disabled": {
                 "text": {
                   "$type": "color",
-                  "$value": "{color.neutral.500}"
+                  "$value": "{color.neutral.500}",
+                  "$extensions": {
+                    "open-ds": {
+                      "why": "neutral.500: 4.86:1 on surface.default, under the floor on purpose, so the control reads as unavailable. Disabled text has no contrast minimum.",
+                      "because": [
+                        "accessibility.roles"
+                      ],
+                      "generated": true
+                    }
+                  }
                 },
                 "surface": {
                   "$type": "color",
-                  "$value": "{color.neutral.100}"
+                  "$value": "{color.neutral.100}",
+                  "$extensions": {
+                    "open-ds": {
+                      "why": "neutral.100: the surface of a control that cannot be used, flat and quiet, so it never reads as an action.",
+                      "because": [
+                        "accessibility.roles"
+                      ],
+                      "generated": true
+                    }
+                  }
                 },
                 "border": {
                   "$type": "color",
-                  "$value": "{color.neutral.200}"
+                  "$value": "{color.neutral.200}",
+                  "$extensions": {
+                    "open-ds": {
+                      "why": "neutral.200: the border of a control that cannot be used, flat and quiet, so it never reads as an action.",
+                      "because": [
+                        "accessibility.roles"
+                      ],
+                      "generated": true
+                    }
+                  }
                 }
               }
             },
             "elevation": {
               "card": {
                 "$type": "shadow",
-                "$value": "{shadow.none}"
+                "$value": "{shadow.none}",
+                "$extensions": {
+                  "open-ds": {
+                    "why": "shadow.none: Only menus and dialogs float.",
+                    "because": [
+                      "elevation.roles",
+                      "elevation.values"
+                    ],
+                    "generated": true
+                  }
+                }
               },
               "overlay": {
                 "$type": "shadow",
-                "$value": "{shadow.overlay}"
+                "$value": "{shadow.overlay}",
+                "$extensions": {
+                  "open-ds": {
+                    "why": "shadow.overlay: Soft shadows suit warm paper.",
+                    "because": [
+                      "elevation.roles",
+                      "elevation.values"
+                    ],
+                    "generated": true
+                  }
+                }
               }
             }
           },
@@ -3468,51 +4059,159 @@
               "neutral": {
                 "0": {
                   "$type": "color",
-                  "$value": "{color.stone.dark.0}"
+                  "$value": "{color.stone.dark.0}",
+                  "$extensions": {
+                    "open-ds": {
+                      "why": "stone.dark.0: the scheme's neutral is stone. Warm paper neutrals and one ink ramp.",
+                      "because": [
+                        "color.definition"
+                      ],
+                      "generated": true
+                    }
+                  }
                 },
                 "50": {
                   "$type": "color",
-                  "$value": "{color.stone.dark.50}"
+                  "$value": "{color.stone.dark.50}",
+                  "$extensions": {
+                    "open-ds": {
+                      "why": "stone.dark.50: the scheme's neutral is stone. Warm paper neutrals and one ink ramp.",
+                      "because": [
+                        "color.definition"
+                      ],
+                      "generated": true
+                    }
+                  }
                 },
                 "100": {
                   "$type": "color",
-                  "$value": "{color.stone.dark.100}"
+                  "$value": "{color.stone.dark.100}",
+                  "$extensions": {
+                    "open-ds": {
+                      "why": "stone.dark.100: the scheme's neutral is stone. Warm paper neutrals and one ink ramp.",
+                      "because": [
+                        "color.definition"
+                      ],
+                      "generated": true
+                    }
+                  }
                 },
                 "200": {
                   "$type": "color",
-                  "$value": "{color.stone.dark.200}"
+                  "$value": "{color.stone.dark.200}",
+                  "$extensions": {
+                    "open-ds": {
+                      "why": "stone.dark.200: the scheme's neutral is stone. Warm paper neutrals and one ink ramp.",
+                      "because": [
+                        "color.definition"
+                      ],
+                      "generated": true
+                    }
+                  }
                 },
                 "300": {
                   "$type": "color",
-                  "$value": "{color.stone.dark.300}"
+                  "$value": "{color.stone.dark.300}",
+                  "$extensions": {
+                    "open-ds": {
+                      "why": "stone.dark.300: the scheme's neutral is stone. Warm paper neutrals and one ink ramp.",
+                      "because": [
+                        "color.definition"
+                      ],
+                      "generated": true
+                    }
+                  }
                 },
                 "400": {
                   "$type": "color",
-                  "$value": "{color.stone.dark.400}"
+                  "$value": "{color.stone.dark.400}",
+                  "$extensions": {
+                    "open-ds": {
+                      "why": "stone.dark.400: the scheme's neutral is stone. Warm paper neutrals and one ink ramp.",
+                      "because": [
+                        "color.definition"
+                      ],
+                      "generated": true
+                    }
+                  }
                 },
                 "500": {
                   "$type": "color",
-                  "$value": "{color.stone.dark.500}"
+                  "$value": "{color.stone.dark.500}",
+                  "$extensions": {
+                    "open-ds": {
+                      "why": "stone.dark.500: the scheme's neutral is stone. Warm paper neutrals and one ink ramp.",
+                      "because": [
+                        "color.definition"
+                      ],
+                      "generated": true
+                    }
+                  }
                 },
                 "600": {
                   "$type": "color",
-                  "$value": "{color.stone.dark.600}"
+                  "$value": "{color.stone.dark.600}",
+                  "$extensions": {
+                    "open-ds": {
+                      "why": "stone.dark.600: the scheme's neutral is stone. Warm paper neutrals and one ink ramp.",
+                      "because": [
+                        "color.definition"
+                      ],
+                      "generated": true
+                    }
+                  }
                 },
                 "700": {
                   "$type": "color",
-                  "$value": "{color.stone.dark.700}"
+                  "$value": "{color.stone.dark.700}",
+                  "$extensions": {
+                    "open-ds": {
+                      "why": "stone.dark.700: the scheme's neutral is stone. Warm paper neutrals and one ink ramp.",
+                      "because": [
+                        "color.definition"
+                      ],
+                      "generated": true
+                    }
+                  }
                 },
                 "800": {
                   "$type": "color",
-                  "$value": "{color.stone.dark.800}"
+                  "$value": "{color.stone.dark.800}",
+                  "$extensions": {
+                    "open-ds": {
+                      "why": "stone.dark.800: the scheme's neutral is stone. Warm paper neutrals and one ink ramp.",
+                      "because": [
+                        "color.definition"
+                      ],
+                      "generated": true
+                    }
+                  }
                 },
                 "900": {
                   "$type": "color",
-                  "$value": "{color.stone.dark.900}"
+                  "$value": "{color.stone.dark.900}",
+                  "$extensions": {
+                    "open-ds": {
+                      "why": "stone.dark.900: the scheme's neutral is stone. Warm paper neutrals and one ink ramp.",
+                      "because": [
+                        "color.definition"
+                      ],
+                      "generated": true
+                    }
+                  }
                 },
                 "950": {
                   "$type": "color",
-                  "$value": "{color.stone.dark.950}"
+                  "$value": "{color.stone.dark.950}",
+                  "$extensions": {
+                    "open-ds": {
+                      "why": "stone.dark.950: the scheme's neutral is stone. Warm paper neutrals and one ink ramp.",
+                      "because": [
+                        "color.definition"
+                      ],
+                      "generated": true
+                    }
+                  }
                 }
               },
               "surface": {
@@ -3521,7 +4220,13 @@
                   "$value": "{color.neutral.0}",
                   "$extensions": {
                     "open-ds": {
-                      "tone": "dark"
+                      "tone": "dark",
+                      "why": "neutral.0, under content: 1.1:1 from surface.default, so cards and panels stand forward.",
+                      "because": [
+                        "elevation.definition",
+                        "color.definition"
+                      ],
+                      "generated": true
                     }
                   }
                 },
@@ -3530,7 +4235,12 @@
                   "$value": "{color.neutral.50}",
                   "$extensions": {
                     "open-ds": {
-                      "tone": "dark"
+                      "tone": "dark",
+                      "why": "neutral.50: the base for content; body text reads 16.84:1 on it, above the 4.5:1 floor.",
+                      "because": [
+                        "accessibility.definition"
+                      ],
+                      "generated": true
                     }
                   }
                 },
@@ -3554,7 +4264,13 @@
                   "$value": "{color.neutral.100}",
                   "$extensions": {
                     "open-ds": {
-                      "tone": "dark"
+                      "tone": "dark",
+                      "why": "neutral.100, a step below content (1.2:1 on surface.default), so table headers and wells read as recessed.",
+                      "because": [
+                        "elevation.definition",
+                        "color.definition"
+                      ],
+                      "generated": true
                     }
                   }
                 },
@@ -3572,12 +4288,32 @@
                     }
                   }
                 },
+                "pressed": {
+                  "$type": "color",
+                  "$value": "{color.neutral.200}",
+                  "$extensions": {
+                    "open-ds": {
+                      "tone": "dark",
+                      "why": "neutral.200, one step past the highlight (neutral.100), so a press reads as its own change under the finger: pressed gets its own value for touch.",
+                      "because": [
+                        "accessibility.roles",
+                        "color.definition"
+                      ]
+                    }
+                  }
+                },
                 "selected": {
                   "$type": "color",
                   "$value": "{color.navy.dark.100}",
                   "$extensions": {
                     "open-ds": {
-                      "tone": "dark"
+                      "tone": "dark",
+                      "why": "navy.dark.100: a tint of the brand, 1.2:1 from content, always beside its edge (border.selected), so selection is never color alone.",
+                      "because": [
+                        "color.definition",
+                        "accessibility.count"
+                      ],
+                      "generated": true
                     }
                   }
                 },
@@ -3586,13 +4322,27 @@
                   "$value": "{color.neutral.900}",
                   "$extensions": {
                     "open-ds": {
-                      "tone": "light"
+                      "tone": "light",
+                      "why": "neutral.900: the reverse of content for short messages; its text reads, 16.84:1 on surface.inverse, above the 4.5:1 floor.",
+                      "because": [
+                        "accessibility.definition"
+                      ],
+                      "generated": true
                     }
                   }
                 },
                 "scrim": {
                   "$type": "color",
-                  "$value": "{color.black.dark.scrim}"
+                  "$value": "{color.black.dark.scrim}",
+                  "$extensions": {
+                    "open-ds": {
+                      "why": "black.dark.scrim: a see-through layer that dims the page behind a modal, so the dialog is the one thing to act on.",
+                      "because": [
+                        "elevation.roles"
+                      ],
+                      "generated": true
+                    }
+                  }
                 }
               },
               "text": {
@@ -3601,7 +4351,7 @@
                   "$value": "{color.neutral.900}",
                   "$extensions": {
                     "open-ds": {
-                      "why": "neutral.900: the strongest text step, 16.84:1 on content, above the 4.5:1 floor.",
+                      "why": "neutral.900: the strongest text step, 16.84:1 on surface.default, above the 4.5:1 floor.",
                       "because": [
                         "accessibility.definition"
                       ],
@@ -3611,27 +4361,81 @@
                 },
                 "secondary": {
                   "$type": "color",
-                  "$value": "{color.neutral.500}"
+                  "$value": "{color.neutral.500}",
+                  "$extensions": {
+                    "open-ds": {
+                      "why": "neutral.500: supporting text, 10.11:1 on surface.default, above the 4.5:1 floor.",
+                      "because": [
+                        "accessibility.definition"
+                      ],
+                      "generated": true
+                    }
+                  }
                 },
                 "muted": {
                   "$type": "color",
-                  "$value": "{color.neutral.400}"
+                  "$value": "{color.neutral.400}",
+                  "$extensions": {
+                    "open-ds": {
+                      "why": "neutral.400: the quietest text that still reads, 6.16:1 on surface.default, above the 4.5:1 floor.",
+                      "because": [
+                        "accessibility.definition"
+                      ],
+                      "generated": true
+                    }
+                  }
                 },
                 "inverse": {
                   "$type": "color",
-                  "$value": "{color.text.on-light}"
+                  "$value": "{color.text.on-light}",
+                  "$extensions": {
+                    "open-ds": {
+                      "why": "text.on-light: the text its fill's tone picks, 16.84:1 on surface.inverse, above the 4.5:1 floor.",
+                      "because": [
+                        "accessibility.definition"
+                      ],
+                      "generated": true
+                    }
+                  }
                 },
                 "on-action": {
                   "$type": "color",
-                  "$value": "{color.text.on-light}"
+                  "$value": "{color.text.on-light}",
+                  "$extensions": {
+                    "open-ds": {
+                      "why": "text.on-light: the text its fill's tone picks, 6.86:1 on action.primary, above the 4.5:1 floor.",
+                      "because": [
+                        "accessibility.definition"
+                      ],
+                      "generated": true
+                    }
+                  }
                 },
                 "link": {
                   "$type": "color",
-                  "$value": "{color.navy.dark.700}"
+                  "$value": "{color.navy.dark.700}",
+                  "$extensions": {
+                    "open-ds": {
+                      "why": "navy.dark.700: a link, set apart by its hue, 8.96:1 on surface.default, above the 4.5:1 floor.",
+                      "because": [
+                        "accessibility.definition"
+                      ],
+                      "generated": true
+                    }
+                  }
                 },
                 "on-danger": {
                   "$type": "color",
-                  "$value": "{color.text.on-light}"
+                  "$value": "{color.text.on-light}",
+                  "$extensions": {
+                    "open-ds": {
+                      "why": "text.on-light: the text its fill's tone picks, 7.21:1 on action.danger, above the 4.5:1 floor.",
+                      "because": [
+                        "accessibility.definition"
+                      ],
+                      "generated": true
+                    }
+                  }
                 }
               },
               "border": {
@@ -3651,14 +4455,23 @@
                 },
                 "strong": {
                   "$type": "color",
-                  "$value": "{color.neutral.400}"
+                  "$value": "{color.neutral.400}",
+                  "$extensions": {
+                    "open-ds": {
+                      "why": "neutral.400: the edge of a control people must find, 6.16:1 on surface.default, above the 3:1 floor.",
+                      "because": [
+                        "accessibility.definition"
+                      ],
+                      "generated": true
+                    }
+                  }
                 },
                 "focus": {
                   "$type": "color",
                   "$value": "{color.navy.dark.600}",
                   "$extensions": {
                     "open-ds": {
-                      "why": "navy.dark.600: the ring keeps 6.86:1 on content, over the 3:1 a focus ring needs, so the keyboard's place is never lost.",
+                      "why": "navy.dark.600: the focus ring, so the keyboard's place is never lost, 6.86:1 on surface.default, above the 3:1 floor.",
                       "because": [
                         "accessibility.definition",
                         "color.definition"
@@ -3669,7 +4482,16 @@
                 },
                 "selected": {
                   "$type": "color",
-                  "$value": "{color.navy.dark.600}"
+                  "$value": "{color.navy.dark.600}",
+                  "$extensions": {
+                    "open-ds": {
+                      "why": "navy.dark.600: the edge beside a selected fill, so selection is never color alone, 6.86:1 on surface.default, above the 3:1 floor.",
+                      "because": [
+                        "accessibility.definition"
+                      ],
+                      "generated": true
+                    }
+                  }
                 }
               },
               "action": {
@@ -3679,7 +4501,13 @@
                     "$value": "{color.navy.dark.600}",
                     "$extensions": {
                       "open-ds": {
-                        "tone": "light"
+                        "tone": "light",
+                        "why": "navy.dark.600: the primary action's fill; its label reads, 6.86:1, above the 4.5:1 floor.",
+                        "because": [
+                          "accessibility.definition",
+                          "color.count"
+                        ],
+                        "generated": true
                       }
                     }
                   },
@@ -3688,7 +4516,13 @@
                     "$value": "{color.navy.dark.700}",
                     "$extensions": {
                       "open-ds": {
-                        "tone": "light"
+                        "tone": "light",
+                        "why": "navy.dark.700: one step from the primary action (navy.dark.600), so the pointer shows; its label still reads 8.96:1, above the 4.5:1 floor.",
+                        "because": [
+                          "accessibility.roles",
+                          "accessibility.definition"
+                        ],
+                        "generated": true
                       }
                     }
                   }
@@ -3699,7 +4533,13 @@
                     "$value": "{color.neutral.50}",
                     "$extensions": {
                       "open-ds": {
-                        "tone": "dark"
+                        "tone": "dark",
+                        "why": "neutral.50: the secondary action's fill; its label reads, 16.84:1, above the 4.5:1 floor.",
+                        "because": [
+                          "accessibility.definition",
+                          "color.count"
+                        ],
+                        "generated": true
                       }
                     }
                   },
@@ -3708,7 +4548,13 @@
                     "$value": "{color.neutral.100}",
                     "$extensions": {
                       "open-ds": {
-                        "tone": "dark"
+                        "tone": "dark",
+                        "why": "neutral.100: one step from the secondary action (neutral.50), so the pointer shows; its label still reads 14.03:1, above the 4.5:1 floor.",
+                        "because": [
+                          "accessibility.roles",
+                          "accessibility.definition"
+                        ],
+                        "generated": true
                       }
                     }
                   }
@@ -3719,7 +4565,13 @@
                     "$value": "{color.red.dark.600}",
                     "$extensions": {
                       "open-ds": {
-                        "tone": "light"
+                        "tone": "light",
+                        "why": "red.dark.600: the danger action's fill; its label reads, 7.21:1, above the 4.5:1 floor.",
+                        "because": [
+                          "accessibility.definition",
+                          "color.count"
+                        ],
+                        "generated": true
                       }
                     }
                   },
@@ -3728,7 +4580,13 @@
                     "$value": "{color.red.dark.700}",
                     "$extensions": {
                       "open-ds": {
-                        "tone": "light"
+                        "tone": "light",
+                        "why": "red.dark.700: one step from the danger action (red.dark.600), so the pointer shows; its label still reads 9.22:1, above the 4.5:1 floor.",
+                        "because": [
+                          "accessibility.roles",
+                          "accessibility.definition"
+                        ],
+                        "generated": true
                       }
                     },
                     "$description": "The same as the fill until whole ramps (OD-223) add the step between."
@@ -3739,14 +4597,30 @@
                 "info": {
                   "@": {
                     "$type": "color",
-                    "$value": "{color.blue.dark.600}"
+                    "$value": "{color.blue.dark.600}",
+                    "$extensions": {
+                      "open-ds": {
+                        "why": "blue.dark.600: info reads as text and icons, 8.12:1 on surface.default, above the 4.5:1 floor.",
+                        "because": [
+                          "accessibility.definition",
+                          "color.lands"
+                        ],
+                        "generated": true
+                      }
+                    }
                   },
                   "subtle": {
                     "$type": "color",
                     "$value": "{color.blue.dark.100}",
                     "$extensions": {
                       "open-ds": {
-                        "tone": "dark"
+                        "tone": "dark",
+                        "why": "blue.dark.100: a quiet tint behind info; its text, 10.8:1, above the 4.5:1 floor.",
+                        "because": [
+                          "accessibility.count",
+                          "color.lands"
+                        ],
+                        "generated": true
                       }
                     }
                   }
@@ -3754,14 +4628,30 @@
                 "success": {
                   "@": {
                     "$type": "color",
-                    "$value": "{color.green.dark.600}"
+                    "$value": "{color.green.dark.600}",
+                    "$extensions": {
+                      "open-ds": {
+                        "why": "green.dark.600: success reads as text and icons, 7.74:1 on surface.default, above the 4.5:1 floor.",
+                        "because": [
+                          "accessibility.definition",
+                          "color.lands"
+                        ],
+                        "generated": true
+                      }
+                    }
                   },
                   "subtle": {
                     "$type": "color",
                     "$value": "{color.green.dark.100}",
                     "$extensions": {
                       "open-ds": {
-                        "tone": "dark"
+                        "tone": "dark",
+                        "why": "green.dark.100: a quiet tint behind success; its text, 12.03:1, above the 4.5:1 floor.",
+                        "because": [
+                          "accessibility.count",
+                          "color.lands"
+                        ],
+                        "generated": true
                       }
                     }
                   }
@@ -3769,14 +4659,30 @@
                 "warning": {
                   "@": {
                     "$type": "color",
-                    "$value": "{color.amber.dark.600}"
+                    "$value": "{color.amber.dark.600}",
+                    "$extensions": {
+                      "open-ds": {
+                        "why": "amber.dark.600: warning reads as text and icons, 9.57:1 on surface.default, above the 4.5:1 floor.",
+                        "because": [
+                          "accessibility.definition",
+                          "color.lands"
+                        ],
+                        "generated": true
+                      }
+                    }
                   },
                   "subtle": {
                     "$type": "color",
                     "$value": "{color.amber.dark.100}",
                     "$extensions": {
                       "open-ds": {
-                        "tone": "dark"
+                        "tone": "dark",
+                        "why": "amber.dark.100: a quiet tint behind warning; its text, 11.29:1, above the 4.5:1 floor.",
+                        "because": [
+                          "accessibility.count",
+                          "color.lands"
+                        ],
+                        "generated": true
                       }
                     }
                   }
@@ -3787,7 +4693,7 @@
                     "$value": "{color.red.dark.600}",
                     "$extensions": {
                       "open-ds": {
-                        "why": "red.dark.600: real risk reads as text, 7.21:1 on content, above the 4.5:1 floor.",
+                        "why": "red.dark.600: danger reads as text and icons, 7.21:1 on surface.default, above the 4.5:1 floor.",
                         "because": [
                           "accessibility.definition",
                           "color.lands"
@@ -3801,7 +4707,13 @@
                     "$value": "{color.red.dark.100}",
                     "$extensions": {
                       "open-ds": {
-                        "tone": "dark"
+                        "tone": "dark",
+                        "why": "red.dark.100: a quiet tint behind danger; its text, 11.21:1, above the 4.5:1 floor.",
+                        "because": [
+                          "accessibility.count",
+                          "color.lands"
+                        ],
+                        "generated": true
                       }
                     }
                   }
@@ -3811,77 +4723,219 @@
                 "1": {
                   "@": {
                     "$type": "color",
-                    "$value": "{color.navy.dark.600}"
+                    "$value": "{color.navy.dark.600}",
+                    "$extensions": {
+                      "open-ds": {
+                        "why": "navy.dark.600: a series color: a distinct hue with no meaning, for tags and chart marks, 6.86:1 on surface.default, above the 3:1 floor.",
+                        "because": [
+                          "color.count",
+                          "color.lands"
+                        ],
+                        "generated": true
+                      }
+                    }
                   },
                   "subtle": {
                     "$type": "color",
-                    "$value": "{color.navy.dark.100}"
+                    "$value": "{color.navy.dark.100}",
+                    "$extensions": {
+                      "open-ds": {
+                        "why": "navy.dark.100: a tag's tint; text on it reads, 14.05:1, above the 4.5:1 floor.",
+                        "because": [
+                          "color.count"
+                        ],
+                        "generated": true
+                      }
+                    }
                   }
                 },
                 "2": {
                   "@": {
                     "$type": "color",
-                    "$value": "{color.blue.dark.600}"
+                    "$value": "{color.blue.dark.600}",
+                    "$extensions": {
+                      "open-ds": {
+                        "why": "blue.dark.600: a series color: a distinct hue with no meaning, for tags and chart marks, 8.12:1 on surface.default, above the 3:1 floor.",
+                        "because": [
+                          "color.count",
+                          "color.lands"
+                        ],
+                        "generated": true
+                      }
+                    }
                   },
                   "subtle": {
                     "$type": "color",
-                    "$value": "{color.blue.dark.100}"
+                    "$value": "{color.blue.dark.100}",
+                    "$extensions": {
+                      "open-ds": {
+                        "why": "blue.dark.100: a tag's tint; text on it reads, 13.68:1, above the 4.5:1 floor.",
+                        "because": [
+                          "color.count"
+                        ],
+                        "generated": true
+                      }
+                    }
                   }
                 },
                 "3": {
                   "@": {
                     "$type": "color",
-                    "$value": "{color.green.dark.600}"
+                    "$value": "{color.green.dark.600}",
+                    "$extensions": {
+                      "open-ds": {
+                        "why": "green.dark.600: a series color: a distinct hue with no meaning, for tags and chart marks, 7.74:1 on surface.default, above the 3:1 floor.",
+                        "because": [
+                          "color.count",
+                          "color.lands"
+                        ],
+                        "generated": true
+                      }
+                    }
                   },
                   "subtle": {
                     "$type": "color",
-                    "$value": "{color.green.dark.100}"
+                    "$value": "{color.green.dark.100}",
+                    "$extensions": {
+                      "open-ds": {
+                        "why": "green.dark.100: a tag's tint; text on it reads, 13.52:1, above the 4.5:1 floor.",
+                        "because": [
+                          "color.count"
+                        ],
+                        "generated": true
+                      }
+                    }
                   }
                 },
                 "4": {
                   "@": {
                     "$type": "color",
-                    "$value": "{color.amber.dark.600}"
+                    "$value": "{color.amber.dark.600}",
+                    "$extensions": {
+                      "open-ds": {
+                        "why": "amber.dark.600: a series color: a distinct hue with no meaning, for tags and chart marks, 9.57:1 on surface.default, above the 3:1 floor.",
+                        "because": [
+                          "color.count",
+                          "color.lands"
+                        ],
+                        "generated": true
+                      }
+                    }
                   },
                   "subtle": {
                     "$type": "color",
-                    "$value": "{color.amber.dark.100}"
+                    "$value": "{color.amber.dark.100}",
+                    "$extensions": {
+                      "open-ds": {
+                        "why": "amber.dark.100: a tag's tint; text on it reads, 13.21:1, above the 4.5:1 floor.",
+                        "because": [
+                          "color.count"
+                        ],
+                        "generated": true
+                      }
+                    }
                   }
                 },
                 "5": {
                   "@": {
                     "$type": "color",
-                    "$value": "{color.neutral.700}"
+                    "$value": "{color.neutral.700}",
+                    "$extensions": {
+                      "open-ds": {
+                        "why": "neutral.700: a series color: a distinct hue with no meaning, for tags and chart marks, 12.68:1 on surface.default, above the 3:1 floor.",
+                        "because": [
+                          "color.count",
+                          "color.lands"
+                        ],
+                        "generated": true
+                      }
+                    }
                   },
                   "subtle": {
                     "$type": "color",
-                    "$value": "{color.neutral.100}"
+                    "$value": "{color.neutral.100}",
+                    "$extensions": {
+                      "open-ds": {
+                        "why": "neutral.100: a tag's tint; text on it reads, 14.03:1, above the 4.5:1 floor.",
+                        "because": [
+                          "color.count"
+                        ],
+                        "generated": true
+                      }
+                    }
                   }
                 }
               },
               "disabled": {
                 "text": {
                   "$type": "color",
-                  "$value": "{color.neutral.500}"
+                  "$value": "{color.neutral.500}",
+                  "$extensions": {
+                    "open-ds": {
+                      "why": "neutral.500: 10.11:1 on surface.default, under the floor on purpose, so the control reads as unavailable. Disabled text has no contrast minimum.",
+                      "because": [
+                        "accessibility.roles"
+                      ],
+                      "generated": true
+                    }
+                  }
                 },
                 "surface": {
                   "$type": "color",
-                  "$value": "{color.neutral.100}"
+                  "$value": "{color.neutral.100}",
+                  "$extensions": {
+                    "open-ds": {
+                      "why": "neutral.100: the surface of a control that cannot be used, flat and quiet, so it never reads as an action.",
+                      "because": [
+                        "accessibility.roles"
+                      ],
+                      "generated": true
+                    }
+                  }
                 },
                 "border": {
                   "$type": "color",
-                  "$value": "{color.neutral.200}"
+                  "$value": "{color.neutral.200}",
+                  "$extensions": {
+                    "open-ds": {
+                      "why": "neutral.200: the border of a control that cannot be used, flat and quiet, so it never reads as an action.",
+                      "because": [
+                        "accessibility.roles"
+                      ],
+                      "generated": true
+                    }
+                  }
                 }
               }
             },
             "elevation": {
               "card": {
                 "$type": "shadow",
-                "$value": "{shadow.none}"
+                "$value": "{shadow.none}",
+                "$extensions": {
+                  "open-ds": {
+                    "why": "shadow.none: Only menus and dialogs float.",
+                    "because": [
+                      "elevation.roles",
+                      "elevation.values"
+                    ],
+                    "generated": true
+                  }
+                }
               },
               "overlay": {
                 "$type": "shadow",
-                "$value": "{shadow.overlay-dark}"
+                "$value": "{shadow.overlay-dark}",
+                "$extensions": {
+                  "open-ds": {
+                    "why": "shadow.overlay-dark: Soft shadows suit warm paper.",
+                    "because": [
+                      "elevation.roles",
+                      "elevation.values"
+                    ],
+                    "generated": true
+                  }
+                }
               }
             }
           },
@@ -4242,6 +5296,11 @@
             "$type": "color",
             "$description": "The item the pointer or the keyboard is on.",
             "$value": "{theme.color.surface.highlight}"
+          },
+          "pressed": {
+            "$type": "color",
+            "$description": "The item while it is pressed.",
+            "$value": "{theme.color.surface.pressed}"
           },
           "selected": {
             "$type": "color",
@@ -4695,13 +5754,15 @@
           }
         },
         "ghost": {
-          "background-hover": {
-            "$value": "{color.surface.sunken}",
-            "$description": "Ghost button fill on hover."
-          },
           "label": {
             "$value": "{color.text.link}",
             "$description": "Ghost button label color."
+          },
+          "background": {
+            "hover": {
+              "$value": "{color.surface.highlight}",
+              "$description": "Ghost button background under the pointer."
+            }
           }
         },
         "height": {
@@ -5501,8 +6562,14 @@
           "$description": "Radius of the attachment."
         },
         "background": {
-          "$value": "{color.surface.canvas}",
-          "$description": "Background of the attachment."
+          "@": {
+            "$value": "{color.surface.canvas}",
+            "$description": "Background of the attachment."
+          },
+          "hover": {
+            "$value": "{color.surface.highlight}",
+            "$description": "Background under the pointer, of the attachment."
+          }
         },
         "padding-x": {
           "$value": "{component-spacing-map.x3}",
@@ -5519,10 +6586,6 @@
         "line-height": {
           "$value": "{type.body.line-height}",
           "$description": "Line height of the attachment."
-        },
-        "background-hover": {
-          "$value": "{color.surface.sunken}",
-          "$description": "Background hover of the attachment."
         },
         "focus": {
           "$value": "{border-width.focus}",
@@ -6508,8 +7571,9 @@
             "$description": "Item disabled opacity disabled of the command."
           },
           "background-selected": {
-            "$value": "{color.surface.sunken}",
-            "$description": "Item background selected of the command."
+            "$value": "{command.item.background.highlight}",
+            "$description": "Deprecated: use component.command.item.background.highlight (OD-241). Item background selected of the command.",
+            "$deprecated": "Use component.command.item.background.highlight. Removed in the next minor release."
           },
           "label-selected": {
             "$value": "{color.text.primary}",
@@ -6522,6 +7586,12 @@
           "label": {
             "$value": "{color.text.muted}",
             "$description": "Item label of the command."
+          },
+          "background": {
+            "highlight": {
+              "$value": "{color.surface.highlight}",
+              "$description": "Item background when highlighted, by the pointer or the keyboard, of the command menu."
+            }
           }
         },
         "shortcut": {
@@ -6575,10 +7645,6 @@
               "$value": "{component-spacing-map.x8}",
               "$description": "Sub trigger padding left of the context menu."
             },
-            "background-open": {
-              "$value": "{color.surface.sunken}",
-              "$description": "Sub trigger background open of the context menu."
-            },
             "label-open": {
               "$value": "{color.text.primary}",
               "$description": "Sub trigger label open of the context menu."
@@ -6595,6 +7661,10 @@
               "highlight": {
                 "$value": "{color.surface.highlight}",
                 "$description": "Submenu trigger background when highlighted, by the pointer or the keyboard, of the context menu."
+              },
+              "open": {
+                "$value": "{color.surface.highlight}",
+                "$description": "Submenu trigger background while its submenu is open, of the context menu."
               }
             }
           },
@@ -6907,12 +7977,21 @@
           "$description": "Padding y of the data table."
         },
         "background-hover": {
-          "$value": "{color.surface.sunken}",
-          "$description": "Background hover of the data table."
+          "$value": "{data-table.row.background.hover}",
+          "$description": "Deprecated: use component.data-table.row.background.hover (OD-241). Background hover of the data table.",
+          "$deprecated": "Use component.data-table.row.background.hover. Removed in the next minor release."
         },
         "label": {
           "$value": "{color.text.muted}",
           "$description": "Label of the data table."
+        },
+        "row": {
+          "background": {
+            "hover": {
+              "$value": "{color.surface.highlight}",
+              "$description": "Row background under the pointer, of the data table."
+            }
+          }
         }
       },
       "date-picker": {
@@ -6961,8 +8040,9 @@
           "$description": "Label of the dialog."
         },
         "sunken": {
-          "$value": "{color.surface.sunken}",
-          "$description": "Sunken of the dialog."
+          "$value": "{dialog.close.background.hover}",
+          "$description": "Deprecated: use component.dialog.close.background.hover (OD-241). Sunken of the dialog.",
+          "$deprecated": "Use component.dialog.close.background.hover. Removed in the next minor release."
         },
         "size": {
           "$value": "{size.icon}",
@@ -6991,6 +8071,14 @@
         "font-size-2": {
           "$value": "{type.body.font-size}",
           "$description": "Font size 2 of the dialog."
+        },
+        "close": {
+          "background": {
+            "hover": {
+              "$value": "{color.surface.highlight}",
+              "$description": "Close button background under the pointer, of the dialog."
+            }
+          }
         }
       },
       "drawer": {
@@ -7699,10 +8787,6 @@
           "$value": "{color.border.focus}",
           "$description": "Border focus of the item."
         },
-        "background-hover": {
-          "$value": "{color.surface.sunken}",
-          "$description": "Background hover of the item."
-        },
         "focus": {
           "$value": "{border-width.focus}",
           "$description": "Focus of the item."
@@ -7841,6 +8925,12 @@
           "gap": {
             "$value": "{space.gap.default}",
             "$description": "Footer gap of the item."
+          }
+        },
+        "background": {
+          "hover": {
+            "$value": "{color.surface.highlight}",
+            "$description": "Background under the pointer, of a linked item."
           }
         }
       },
@@ -7995,10 +9085,6 @@
             "$value": "{color.text.primary}",
             "$description": "Trigger label focus of the menubar."
           },
-          "background-open": {
-            "$value": "{color.surface.sunken}",
-            "$description": "Trigger background open of the menubar."
-          },
           "label-open": {
             "$value": "{color.text.primary}",
             "$description": "Trigger label open of the menubar."
@@ -8007,6 +9093,10 @@
             "highlight": {
               "$value": "{color.surface.highlight}",
               "$description": "Trigger background when highlighted, by the pointer or the keyboard, of the menubar."
+            },
+            "open": {
+              "$value": "{color.surface.highlight}",
+              "$description": "Trigger background while its menu is open, of the menubar."
             }
           }
         },
@@ -8296,10 +9386,6 @@
               "$value": "{component-spacing-map.x8}",
               "$description": "Sub trigger padding left of the menubar."
             },
-            "background-open": {
-              "$value": "{color.surface.sunken}",
-              "$description": "Sub trigger background open of the menubar."
-            },
             "label-open": {
               "$value": "{color.text.primary}",
               "$description": "Sub trigger label open of the menubar."
@@ -8308,6 +9394,10 @@
               "highlight": {
                 "$value": "{color.surface.highlight}",
                 "$description": "Submenu trigger background when highlighted, by the pointer or the keyboard, of the menubar."
+              },
+              "open": {
+                "$value": "{color.surface.highlight}",
+                "$description": "Submenu trigger background while its submenu is open, of the menubar."
               }
             }
           },
@@ -8529,8 +9619,9 @@
           "$description": "Font weight of the navigation menu."
         },
         "background-hover": {
-          "$value": "{color.surface.sunken}",
-          "$description": "Background hover of the navigation menu."
+          "$value": "{navigation-menu.trigger.background.hover}",
+          "$description": "Deprecated: use component.navigation-menu.trigger.background.hover (OD-241). Background hover of the navigation menu.",
+          "$deprecated": "Use component.navigation-menu.trigger.background.hover. Removed in the next minor release."
         },
         "label-hover": {
           "$value": "{color.text.primary}",
@@ -8550,20 +9641,23 @@
           "$description": "Disabled opacity disabled of the navigation menu."
         },
         "background-open": {
-          "$value": "{color.surface.sunken}",
-          "$description": "Background open of the navigation menu."
+          "$value": "{navigation-menu.trigger.background.open}",
+          "$description": "Deprecated: use component.navigation-menu.trigger.background.open (OD-241). Background open of the navigation menu.",
+          "$deprecated": "Use component.navigation-menu.trigger.background.open. Removed in the next minor release."
         },
         "label-open": {
           "$value": "{color.text.primary}",
           "$description": "Label open of the navigation menu."
         },
         "background-open-hover": {
-          "$value": "{color.surface.sunken}",
-          "$description": "Background open hover of the navigation menu."
+          "$value": "{navigation-menu.trigger.background.open-hover}",
+          "$description": "Deprecated: use component.navigation-menu.trigger.background.open-hover (OD-241). Background open hover of the navigation menu.",
+          "$deprecated": "Use component.navigation-menu.trigger.background.open-hover. Removed in the next minor release."
         },
         "background-open-focus": {
-          "$value": "{color.surface.sunken}",
-          "$description": "Background open focus of the navigation menu."
+          "$value": "{navigation-menu.trigger.background.open-highlight}",
+          "$description": "Deprecated: use component.navigation-menu.trigger.background.open-highlight (OD-241). Background open focus of the navigation menu.",
+          "$deprecated": "Use component.navigation-menu.trigger.background.open-highlight. Removed in the next minor release."
         },
         "focus": {
           "$value": "{border-width.focus}",
@@ -8642,11 +9736,6 @@
             "$value": "{type.body.line-height}",
             "$description": "Link line height of the navigation menu."
           },
-          "background-hover": {
-            "$value": "{navigation-menu.link.background.hover}",
-            "$description": "Deprecated: use component.navigation-menu.link.background.hover (OD-241). Link background hover of the navigation menu.",
-            "$deprecated": "Use component.navigation-menu.link.background.hover. Removed in the next minor release."
-          },
           "label-hover": {
             "$value": "{color.text.primary}",
             "$description": "Link label hover of the navigation menu."
@@ -8721,6 +9810,22 @@
             "highlight": {
               "$value": "{color.surface.highlight}",
               "$description": "Trigger background when highlighted, by the pointer or the keyboard, of the navigation menu."
+            },
+            "hover": {
+              "$value": "{color.surface.highlight}",
+              "$description": "Trigger background under the pointer, of the navigation menu."
+            },
+            "open": {
+              "$value": "{color.surface.highlight}",
+              "$description": "Trigger background while its menu is open, of the navigation menu."
+            },
+            "open-highlight": {
+              "$value": "{color.surface.highlight}",
+              "$description": "Trigger background while its menu is open and the keyboard is on it, of the navigation menu."
+            },
+            "open-hover": {
+              "$value": "{color.surface.highlight}",
+              "$description": "Trigger background while its menu is open and the pointer is on it, of the navigation menu."
             }
           }
         }
@@ -9171,13 +10276,27 @@
         },
         "rail": {
           "background-hover": {
-            "$value": "{color.border.default}",
-            "$description": "Rail background hover of the sidebar."
+            "$value": "{sidebar.rail.line.hover}",
+            "$description": "Deprecated: use component.sidebar.rail.line.hover (OD-241). Rail background hover of the sidebar.",
+            "$deprecated": "Use component.sidebar.rail.line.hover. Removed in the next minor release."
+          },
+          "background": {
+            "hover": {
+              "$value": "{color.surface.highlight}",
+              "$description": "Rail background under the pointer, when the sidebar is off canvas."
+            }
+          },
+          "line": {
+            "hover": {
+              "$value": "{color.border.strong}",
+              "$description": "Rail line under the pointer, of the sidebar: the edge of a control people must find."
+            }
           }
         },
         "background-hover": {
-          "$value": "{color.surface.default}",
-          "$description": "Background hover of the sidebar."
+          "$value": "{sidebar.rail.background.hover}",
+          "$description": "Deprecated: use component.sidebar.rail.background.hover (OD-241). Background hover of the sidebar.",
+          "$deprecated": "Use component.sidebar.rail.background.hover. Removed in the next minor release."
         },
         "inset": {
           "background": {
@@ -9307,10 +10426,6 @@
               "$value": "{color.border.focus}",
               "$description": "Group action focus ring of the sidebar."
             },
-            "background-hover": {
-              "$value": "{color.surface.sunken}",
-              "$description": "Group action background hover of the sidebar."
-            },
             "label-hover": {
               "$value": "{color.text.primary}",
               "$description": "Group action label hover of the sidebar."
@@ -9330,6 +10445,12 @@
             "focus-ring-offset-focus": {
               "$value": "{color.surface.canvas}",
               "$description": "Group action focus ring offset focus of the sidebar."
+            },
+            "background": {
+              "hover": {
+                "$value": "{color.surface.highlight}",
+                "$description": "Group action background under the pointer, of the sidebar."
+              }
             }
           },
           "content": {
@@ -9361,10 +10482,6 @@
               "$value": "{color.border.focus}",
               "$description": "Menu action focus ring of the sidebar."
             },
-            "background-hover": {
-              "$value": "{color.surface.sunken}",
-              "$description": "Menu action background hover of the sidebar."
-            },
             "label-hover": {
               "$value": "{color.text.primary}",
               "$description": "Menu action label hover of the sidebar."
@@ -9384,6 +10501,12 @@
             "focus-ring-offset-focus": {
               "$value": "{color.surface.canvas}",
               "$description": "Menu action focus ring offset focus of the sidebar."
+            },
+            "background": {
+              "hover": {
+                "$value": "{color.surface.highlight}",
+                "$description": "Menu action background under the pointer, of the sidebar."
+              }
             }
           },
           "badge": {
@@ -9468,17 +10591,14 @@
                 "$value": "{color.border.focus}",
                 "$description": "Menu sub button focus ring of the sidebar."
               },
-              "background-hover": {
-                "$value": "{color.surface.sunken}",
-                "$description": "Menu sub button background hover of the sidebar."
-              },
               "label-hover": {
                 "$value": "{color.text.primary}",
                 "$description": "Menu sub button label hover of the sidebar."
               },
               "background-active": {
-                "$value": "{color.surface.sunken}",
-                "$description": "Menu sub button background active of the sidebar."
+                "$value": "{sidebar.menu.sub.button.background.pressed}",
+                "$description": "Deprecated: use component.sidebar.menu.sub.button.background.pressed (OD-241). Menu sub button background active of the sidebar.",
+                "$deprecated": "Use component.sidebar.menu.sub.button.background.pressed. Removed in the next minor release."
               },
               "label-active": {
                 "$value": "{color.text.primary}",
@@ -9503,6 +10623,16 @@
               "focus-ring-offset-focus": {
                 "$value": "{color.surface.canvas}",
                 "$description": "Menu sub button focus ring offset focus of the sidebar."
+              },
+              "background": {
+                "hover": {
+                  "$value": "{color.surface.highlight}",
+                  "$description": "Submenu button background under the pointer, of the sidebar."
+                },
+                "pressed": {
+                  "$value": "{color.surface.pressed}",
+                  "$description": "Submenu button background while pressed, of the sidebar."
+                }
               }
             }
           }
@@ -9532,16 +10662,18 @@
           "$description": "Size of the sidebar."
         },
         "background-hover-2": {
-          "$value": "{color.surface.sunken}",
-          "$description": "Background hover 2 of the sidebar."
+          "$value": "{sidebar.menu-button.background.hover}",
+          "$description": "Deprecated: use component.sidebar.menu-button.background.hover (OD-241). Background hover 2 of the sidebar.",
+          "$deprecated": "Use component.sidebar.menu-button.background.hover. Removed in the next minor release."
         },
         "label-hover": {
           "$value": "{color.text.primary}",
           "$description": "Label hover of the sidebar."
         },
         "background-active": {
-          "$value": "{color.surface.sunken}",
-          "$description": "Background active of the sidebar."
+          "$value": "{sidebar.menu-button.background.pressed}",
+          "$description": "Deprecated: use component.sidebar.menu-button.background.pressed (OD-241). Background active of the sidebar.",
+          "$deprecated": "Use component.sidebar.menu-button.background.pressed. Removed in the next minor release."
         },
         "label-active": {
           "$value": "{color.text.primary}",
@@ -9552,8 +10684,9 @@
           "$description": "Disabled opacity disabled of the sidebar."
         },
         "background-2": {
-          "$value": "{color.surface.sunken}",
-          "$description": "Background 2 of the sidebar."
+          "$value": "{sidebar.menu-button.background.current}",
+          "$description": "Deprecated: use component.sidebar.menu-button.background.current (OD-241). Background 2 of the sidebar.",
+          "$deprecated": "Use component.sidebar.menu-button.background.current. Removed in the next minor release."
         },
         "font-weight": {
           "$value": "{type.label.font-weight}",
@@ -9588,10 +10721,6 @@
           "$description": "Focus ring offset focus of the sidebar."
         },
         "default": {
-          "background-hover": {
-            "$value": "{color.surface.sunken}",
-            "$description": "Default background hover of the sidebar."
-          },
           "label-hover": {
             "$value": "{color.text.primary}",
             "$description": "Default label hover of the sidebar."
@@ -9607,16 +10736,24 @@
           "line-height": {
             "$value": "{type.body.line-height}",
             "$description": "Default line height of the sidebar."
+          },
+          "background": {
+            "hover": {
+              "$value": "{color.surface.highlight}",
+              "$description": "Default menu button background under the pointer, of the sidebar."
+            }
           }
         },
         "outline": {
           "background": {
-            "$value": "{color.surface.canvas}",
-            "$description": "Outline background of the sidebar."
-          },
-          "background-hover": {
-            "$value": "{color.surface.sunken}",
-            "$description": "Outline background hover of the sidebar."
+            "@": {
+              "$value": "{color.surface.canvas}",
+              "$description": "Outline background of the sidebar."
+            },
+            "hover": {
+              "$value": "{color.surface.highlight}",
+              "$description": "Outline menu button background under the pointer, of the sidebar."
+            }
           },
           "label-hover": {
             "$value": "{color.text.primary}",
@@ -9654,6 +10791,22 @@
         "line-height-2": {
           "$value": "{type.caption.line-height}",
           "$description": "Line height 2 of the sidebar."
+        },
+        "menu-button": {
+          "background": {
+            "hover": {
+              "$value": "{color.surface.highlight}",
+              "$description": "Menu button background under the pointer, of the sidebar."
+            },
+            "current": {
+              "$value": "{color.surface.selected}",
+              "$description": "Background of the menu button for the current page, of the sidebar."
+            },
+            "pressed": {
+              "$value": "{color.surface.pressed}",
+              "$description": "Menu button background while pressed, of the sidebar."
+            }
+          }
         }
       },
       "skeleton": {
@@ -9933,10 +11086,6 @@
           "$value": "{type.label.font-weight}",
           "$description": "Font weight of the toggle."
         },
-        "background-hover": {
-          "$value": "{color.surface.sunken}",
-          "$description": "Background hover of the toggle."
-        },
         "label-hover": {
           "$value": "{color.text.muted}",
           "$description": "Label hover of the toggle."
@@ -9956,10 +11105,6 @@
         "focus-ring-invalid": {
           "$value": "{color.status.danger.@}",
           "$description": "Focus ring invalid of the toggle."
-        },
-        "background-on": {
-          "$value": "{color.surface.sunken}",
-          "$description": "Background on of the toggle."
         },
         "label-on": {
           "$value": "{color.text.primary}",
@@ -9990,13 +11135,15 @@
             "$value": "{elevation.card}",
             "$description": "Outline shadow of the toggle."
           },
-          "background-hover": {
-            "$value": "{color.surface.sunken}",
-            "$description": "Outline background hover of the toggle."
-          },
           "label-hover": {
             "$value": "{color.text.primary}",
             "$description": "Outline label hover of the toggle."
+          },
+          "background": {
+            "hover": {
+              "$value": "{color.surface.highlight}",
+              "$description": "Outline toggle background under the pointer."
+            }
           }
         },
         "default": {
@@ -10019,6 +11166,16 @@
           "padding-x": {
             "$value": "{component-spacing-map.x3}",
             "$description": "Lg padding x of the toggle."
+          }
+        },
+        "background": {
+          "hover": {
+            "$value": "{color.surface.highlight}",
+            "$description": "Background under the pointer, of the toggle."
+          },
+          "on": {
+            "$value": "{color.surface.selected}",
+            "$description": "Background when on, of the toggle."
           }
         }
       }
