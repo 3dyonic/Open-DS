@@ -120,12 +120,12 @@ function treeNodes(sp) {
 }
 function treeBindings(sp) {
   const out = { canvas: bind("color.surface.canvas", "color"), font: bind("type.body.font-family", "font"), __ink: bind("color.text.primary", "color") };
-  const WORDS = new Set(["t", "id", "name", "text", "icon", "layout", "align", "justify", "at", "weight", "strokeAlign", "sides", "abs", "children", "ring", "n", "grow", "clip", "__ring"]);
+  const WORDS = new Set(["t", "id", "name", "text", "icon", "layout", "align", "justify", "at", "strokeAlign", "sides", "abs", "children", "ring", "n", "grow", "clip", "__ring"]);
   for (const d of treeNodes(sp))
     for (const [k, raw] of Object.entries(d)) {
       if (WORDS.has(k)) continue;
       for (const v of [].concat(raw)) {
-        if (typeof v !== "string" || v === "fill" || v === "hug") continue;
+        if (typeof v !== "string" || v === "fill" || v === "hug" || (k === "weight" && (v === "bold" || v === "regular"))) continue;
         const kind = COLOR.has(k) ? "color" : k === "shadow" ? "shadow" : k === "font" ? "font" : "number";
         if (!out[v]) out[v] = bind(v, kind);
       }

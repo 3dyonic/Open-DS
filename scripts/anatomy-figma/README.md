@@ -36,7 +36,7 @@ A NODE:
 | `fill`, `stroke`, `strokeW`, `sides` | colors and border; `sides` limits the border, e.g. `["bottom"]` |
 | `radius`, `shadow`, `opacity`, `clip` | corner, elevation token, opacity, clip children |
 | `ring` | focus ring around the node: `{ "color", "width", "offset", "radius", "n" }` |
-| `text`, `size`, `color`, `weight`, `font`, `align` | text nodes; `weight: "bold"` |
+| `text`, `size`, `color`, `weight`, `lh`, `font`, `align` | text nodes; `weight` is a weight token or `"bold"`; `lh` a line-height token |
 | `icon`, `size`, `color` | icon nodes: a Lucide icon name (as in `lucide-react`, kebab case) |
 | `children` | the nodes inside |
 

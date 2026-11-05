@@ -304,13 +304,21 @@ const setN = (node, prop, ref) => {
   } else num(node, prop, ref);
 };
 const SIDE = { top: "strokeTopWeight", bottom: "strokeBottomWeight", left: "strokeLeftWeight", right: "strokeRightWeight" };
+// A weight is "bold" or a weight token (600 and up draws the semibold face).
+const isBold = (w) => w === "bold" || (w && w !== "regular" && Number(V[w]?.value) >= 600);
 function tnode(d, out, show) {
   let node;
   if (d.t === "text") {
     const t = figma.createText();
-    t.fontName = d.font ? fontOf(d.font, d.weight) : d.weight === "bold" ? BOLD : FONT;
+    t.fontName = d.font ? fontOf(d.font, isBold(d.weight) ? "bold" : "") : isBold(d.weight) ? BOLD : FONT;
     t.characters = String(d.text ?? "");
     setN(t, "fontSize", d.size ?? 14);
+    // Line height: a ratio token (1.5) is a percent; a length is pixels and binds to the kit.
+    if (d.lh !== undefined) {
+      const lh = typeof d.lh === "number" ? d.lh : V[d.lh]?.value;
+      if (typeof lh === "number") t.lineHeight = lh < 4 ? { unit: "PERCENT", value: lh * 100 } : { unit: "PIXELS", value: lh };
+      if (typeof d.lh === "string" && V[d.lh]?.v && !(lh < 4)) t.setBoundVariable("lineHeight", V[d.lh].v);
+    }
     t.fills = [d.color ? paint(d.color) : paint("__ink")];
     if (d.align === "end") t.textAlignHorizontal = "RIGHT";
     if (d.align === "center") t.textAlignHorizontal = "CENTER";
@@ -388,11 +396,12 @@ const fontOf = (ref, weight) => {
   return fonts.get(k) ?? (weight === "bold" ? BOLD : FONT);
 };
 async function loadTreeFonts(d) {
-  if (d.font && !fonts.has(d.font + "|" + (d.weight ?? ""))) {
+  const wk = isBold(d.weight) ? "bold" : "";
+  if (d.font && !fonts.has(d.font + "|" + wk)) {
     const fam = String(V[d.font]?.value ?? "").split(",")[0].replace(/["']/g, "").trim();
     const st = (await figma.listAvailableFontsAsync()).filter((f) => f.fontName.family === fam).map((f) => f.fontName.style);
-    const style = d.weight === "bold" ? st.find((x) => /semi ?bold/i.test(x)) ?? st.find((x) => /bold/i.test(x)) : st.find((x) => /^regular$/i.test(x));
-    if (st.length) { const f = { family: fam, style: style ?? st[0] }; await figma.loadFontAsync(f); fonts.set(d.font + "|" + (d.weight ?? ""), f); }
+    const style = wk ? st.find((x) => /semi ?bold/i.test(x)) ?? st.find((x) => /bold/i.test(x)) : st.find((x) => /^regular$/i.test(x));
+    if (st.length) { const f = { family: fam, style: style ?? st[0] }; await figma.loadFontAsync(f); fonts.set(d.font + "|" + wk, f); }
   }
   for (const c of d.children ?? []) await loadTreeFonts(c);
 }
