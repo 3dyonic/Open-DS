@@ -29,7 +29,7 @@ Instead:
 
 ## How Multi-brand uses it
 
-<div class="odv-grid two"><div class="odv-dd"><div class="stage"><div class="odv-eyebrow">Between page sections</div><div style="margin-top:6px"><b style="color:var(--color-status-success)">Use</b> space.gap.section and cards</div><div><b style="color:var(--color-status-danger)">Not</b> Lines</div></div><div class="cap">Cards group offers in every brand.</div></div></div>
+<div class="odv-grid two"><div class="odv-dd"><div class="stage"><div class="odv-eyebrow">Between page sections</div><div style="margin-top:6px"><b style="color:var(--color-status-success)">Use</b> space.gap.section and cards</div><div><b style="color:var(--color-status-danger)">Not</b> Lines</div></div><div class="cap">Cards hold each offer together, so customers compare offers as units in every brand. Lines would split an offer apart.</div></div></div>
 
 ## Words
 

@@ -1797,7 +1797,7 @@
       "situation": "paragraph",
       "use": "type.body",
       "not": "type.label",
-      "why": "Help text is read in passing; body size keeps it quick.",
+      "why": "Help text is a sentence read in passing. Body size reads quickly; the label style is made for short names, not sentences.",
       "because": [
         "outcomes.q1"
       ]
@@ -1932,7 +1932,7 @@
       "situation": "reduced-motion",
       "use": "No motion",
       "not": "A shorter version of the motion",
-      "why": "When people ask for less motion, nothing moves.",
+      "why": "A shorter motion still moves. When people ask for less motion, nothing moves.",
       "because": [
         "motion.roles"
       ]
@@ -2011,7 +2011,7 @@
       "situation": "alternative-action",
       "use": "Button secondary",
       "not": "Button ghost",
-      "why": "Cancel must be easy to find next to the primary.",
+      "why": "A ghost button has no edge, so next to a filled primary it reads as plain text and cancel gets lost. Secondary keeps a visible border, so people find it at once.",
       "because": [
         "human.q2"
       ],

@@ -42,5 +42,5 @@ The raw values these tokens end at are on [Primitives › Motion](../primitives/
 
 | Situation | Use | Not | Why |
 | --- | --- | --- | --- |
-| Hover and press feedback | motion.duration.feedback (moderate) | A fast flash | Moderate speed feels calm. |
-| Someone asked for less motion | No motion | Reduced motion | When people ask for less motion, nothing moves. |
+| Hover and press feedback | motion.duration.feedback (moderate) | A fast flash | Moderate speed feels calm in a slow reading flow. A fast flash feels jumpy. |
+| Someone asked for less motion | No motion | Reduced motion | A shorter motion still moves. When people ask for less motion, nothing moves. |

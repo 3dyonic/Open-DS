@@ -29,7 +29,7 @@ Instead:
 
 ## How Brand expressive uses it
 
-<div class="odv-grid two"><div class="odv-dd"><div class="stage"><div class="odv-eyebrow">A number in a table</div><div style="margin-top:6px"><b style="color:var(--color-status-success)">Use</b> type.body</div><div><b style="color:var(--color-status-danger)">Not</b> A mono font</div></div><div class="cap">Tables are rare; keep the brand voice.</div></div></div>
+<div class="odv-grid two"><div class="odv-dd"><div class="stage"><div class="odv-eyebrow">A number in a table</div><div style="margin-top:6px"><b style="color:var(--color-status-success)">Use</b> type.body</div><div><b style="color:var(--color-status-danger)">Not</b> A mono font</div></div><div class="cap">Tables are rare and never compared column by column, so mono digits add nothing. The brand font keeps the voice.</div></div></div>
 
 ## Words
 

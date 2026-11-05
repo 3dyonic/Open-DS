@@ -2566,6 +2566,7 @@
       "id": "related-items",
       "scope": "spacing",
       "title": "Items that belong together",
+      "lead": "For items that belong together",
       "description": "A label and its value, or controls in one toolbar."
     },
     {
@@ -2584,12 +2585,14 @@
       "id": "control-corner",
       "scope": "shape",
       "title": "Corners of buttons and inputs",
+      "lead": "For the corners of buttons and inputs",
       "description": "The corner shape of interactive controls."
     },
     {
       "id": "status-shape",
       "scope": "shape",
       "title": "Shape of a status badge",
+      "lead": "For the shape of a status badge",
       "description": "The outline of a status label."
     },
     {
@@ -2608,12 +2611,14 @@
       "id": "hover-feedback",
       "scope": "motion",
       "title": "Hover and press feedback",
+      "lead": "For hover and press feedback",
       "description": "The response when a pointer or finger touches a control."
     },
     {
       "id": "reduced-motion",
       "scope": "motion",
       "title": "Someone asked for less motion",
+      "lead": "When someone asks for less motion",
       "description": "The operating system setting for reduced motion is on."
     },
     {
@@ -2626,12 +2631,14 @@
       "id": "dark-mode",
       "scope": "theming",
       "title": "Someone switches to dark",
+      "lead": "When someone switches to dark",
       "description": "The user or the system turns dark mode on."
     },
     {
       "id": "keyboard-focus",
       "scope": "accessibility",
       "title": "Keyboard focus",
+      "lead": "For keyboard focus",
       "description": "The control that keyboard input goes to."
     },
     {
@@ -2710,6 +2717,7 @@
       "id": "missing-component",
       "scope": "components",
       "title": "No component in the inventory fits",
+      "lead": "When no component in the inventory fits",
       "description": "You need a component this design system does not carry."
     }
   ],

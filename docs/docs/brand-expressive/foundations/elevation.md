@@ -41,4 +41,4 @@ The raw values these tokens end at are on [Primitives › Effects](../primitives
 | Situation | Use | Not | Why |
 | --- | --- | --- | --- |
 | A card on the page | elevation.card (pronounced) | A flat card | Cards float to feel tactile. |
-| A menu or dialog | elevation.overlay and a dimmed page | No shadow | Strong depth for floating things. |
+| A menu or dialog | elevation.overlay and a dimmed page | No shadow | Strong depth shows a menu or dialog sits above vivid sections. Without a shadow it blends into the color blocks. |

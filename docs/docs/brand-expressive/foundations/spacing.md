@@ -73,4 +73,4 @@ Between things and on the page, use a role instead: `*-tight` (8px), `*-default`
 | --- | --- | --- | --- |
 | Items that belong together | space.gap.default | space.gap.tight | Air keeps big type readable. |
 | Between page sections | space.gap.section and a color block | A thin line | Big space and color make each section a moment. |
-| Table row height | size.row (comfortable) | A compact row | Rare tables stay airy. |
+| Table row height | size.row (comfortable) | A compact row | Tables are rare and short, so there is no need to fit many rows. Comfortable rows keep the brand's airy rhythm. |

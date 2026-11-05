@@ -1649,7 +1649,7 @@
       "situation": "page-title",
       "use": "type.title",
       "not": "type.display",
-      "why": "A clear, consistent title on every page.",
+      "why": "The same title size on every page tells people where they are. The display size changes from page to page and pushes the content down.",
       "because": [
         "human.q1"
       ]
@@ -1795,7 +1795,7 @@
       "situation": "reduced-motion",
       "use": "No motion",
       "not": "Reduced motion",
-      "why": "When people ask for less motion, nothing moves.",
+      "why": "A shorter motion still moves. When people ask for less motion, nothing moves.",
       "because": [
         "motion.roles"
       ]
@@ -1847,7 +1847,7 @@
       "situation": "commit-action",
       "use": "Button primary, one per page",
       "not": "Two primaries",
-      "why": "One clear next step.",
+      "why": "One clear next step. Two primaries make people stop and compare, which adds effort.",
       "because": [
         "color.count"
       ],

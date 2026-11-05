@@ -69,4 +69,4 @@ The raw values these tokens end at are on [Primitives › Effects](../primitives
 | Situation | Use | Not | Why |
 | --- | --- | --- | --- |
 | A card on the page | elevation.card | A border only | Cards lift slightly to group offers. |
-| A menu or dialog | elevation.overlay and a dimmed page | No shadow | Same overlay in every brand. |
+| A menu or dialog | elevation.overlay and a dimmed page | No shadow | The shadow shows a menu or dialog floats above the page. Without it, it blends into the cards. |

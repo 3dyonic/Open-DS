@@ -30,7 +30,7 @@ Instead:
 
 ## How Multi-brand uses it
 
-<div class="odv-grid two"><div class="odv-dd"><div class="stage"><div class="odv-eyebrow">A menu or dialog</div><div style="margin-top:6px"><b style="color:var(--color-status-success)">Use</b> elevation.overlay and a dimmed page</div><div><b style="color:var(--color-status-danger)">Not</b> No shadow</div></div><div class="cap">Same overlay in every brand.</div></div></div>
+<div class="odv-grid two"><div class="odv-dd"><div class="stage"><div class="odv-eyebrow">A menu or dialog</div><div style="margin-top:6px"><b style="color:var(--color-status-success)">Use</b> elevation.overlay and a dimmed page</div><div><b style="color:var(--color-status-danger)">Not</b> No shadow</div></div><div class="cap">The shadow shows a menu or dialog floats above the page. Without it, it blends into the cards.</div></div></div>
 
 ## Words
 

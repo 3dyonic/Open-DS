@@ -44,7 +44,7 @@ What each variant is for in any design system, then what Content first decided a
 
 ## How Content first uses it
 
-<div class="odv-grid two"><div class="odv-dd"><div class="stage"><div class="odv-eyebrow">A status</div><div style="margin-top:6px"><b style="color:var(--color-status-success)">Use</b> Badge pill with a word</div><div><b style="color:var(--color-status-danger)">Not</b> An icon alone</div></div><div class="cap">Status is rare; a word is clear.</div></div><div class="odv-dd"><div class="stage"><div class="odv-eyebrow">Shape of a status badge</div><div style="margin-top:6px"><b style="color:var(--color-status-success)">Use</b> radius.badge (pill)</div><div><b style="color:var(--color-status-danger)">Not</b> A rectangle</div></div><div class="cap">Pills sit softly next to text.</div></div></div>
+<div class="odv-grid two"><div class="odv-dd"><div class="stage"><div class="odv-eyebrow">A status</div><div style="margin-top:6px"><b style="color:var(--color-status-success)">Use</b> Badge pill with a word</div><div><b style="color:var(--color-status-danger)">Not</b> An icon alone</div></div><div class="cap">Status is rare, so readers never learn an icon for it. A word is clear the first time.</div></div><div class="odv-dd"><div class="stage"><div class="odv-eyebrow">Shape of a status badge</div><div style="margin-top:6px"><b style="color:var(--color-status-success)">Use</b> radius.badge (pill)</div><div><b style="color:var(--color-status-danger)">Not</b> A rectangle</div></div><div class="cap">Pills sit softly next to text.</div></div></div>
 
 ## Why it works this way
 

@@ -21,19 +21,22 @@ export const sentence = (s) => (stop(s) ? `${stop(s)}.` : "");
 export const lower = lc;
 const title = (id) => id[0].toUpperCase() + id.slice(1).replace(/-/g, " ");
 
-// "For a status, use badge with a subtle fill. Don't use a full-strength fill." A situation that
+// "For a status, use badge with a subtle fill. Don't use a full-strength fill. {why}" Every rule
+// says why, so a choice over its alternative is never left unexplained. A situation that
 // opens with a preposition reads on its own: "Between page sections, use …".
 function ruleText(sit, u) {
   const t = stop(sit.title);
-  const lead =
-    /^(between|in|on|at|inside|outside|under|above|below|near|with|within|across|around|after|before|during|for)\b/i.test(
-      t,
-    )
+  // The grammar gives the opening when "For a {title}" does not read (OD-239).
+  const lead = sit.lead
+    ? sit.lead
+    : /^(between|in|on|at|inside|outside|under|above|below|near|with|within|across|around|after|before|during|for)\b/i.test(
+          t,
+        )
       ? t
       : /^(a|an|the)\b/i.test(t)
         ? `For ${lc(t)}`
         : `For a ${lc(t)}`;
-  return `${lead}, use ${sentence(lc(u.use))}${u.not ? ` Don't use ${sentence(lc(u.not))}` : ""}`;
+  return `${lead}, use ${sentence(lc(u.use))}${u.not ? ` Don't use ${sentence(lc(u.not))}` : ""}${u.why ? ` ${sentence(u.why)}` : ""}`;
 }
 
 export function decisionReference(scheme, g) {
@@ -71,6 +74,7 @@ export function decisionReference(scheme, g) {
         situation: u.situation,
         use: u.use,
         not: u.not ?? null,
+        why: u.why ?? null,
         text: ruleText(sit, u),
         page: `foundations/${sit.scope}`,
         page_title: title(sit.scope),
