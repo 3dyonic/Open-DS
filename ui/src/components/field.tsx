@@ -39,7 +39,7 @@ function FieldLegend({
       data-slot="field-legend"
       data-variant={variant}
       className={cn(
-        "mb-3 [font-weight:var(--field-legend-font-weight)]",
+        "mb-[var(--field-legend-margin-bottom)] [font-weight:var(--field-legend-font-weight)]",
         "data-[variant=legend]:text-[length:var(--field-legend-font-size)]/[var(--field-legend-line-height)]",
         "data-[variant=label]:text-[length:var(--field-legend-font-size)]/[var(--field-legend-line-height)]",
         className,
@@ -118,8 +118,8 @@ function FieldLabel({ className, ...props }: React.ComponentProps<typeof Label>)
       data-slot="field-label"
       className={cn(
         "group/field-label peer/field-label flex w-fit gap-[var(--field-label-gap)] leading-snug group-data-[disabled=true]/field:opacity-[var(--field-label-disabled-opacity-disabled)]",
-        "has-[>[data-slot=field]]:w-full has-[>[data-slot=field]]:flex-col has-[>[data-slot=field]]:rounded-[var(--field-label-radius)] has-[>[data-slot=field]]:border [&>*]:data-[slot=field]:p-[var(--field-label-padding)]",
-        "has-data-[state=checked]:border-[color:var(--field-border-checked)] has-data-[state=checked]:bg-[color:var(--field-background-checked)]/5",
+        "has-[>[data-slot=field]]:w-full has-[>[data-slot=field]]:flex-col has-[>[data-slot=field]]:rounded-[var(--field-label-radius)] has-[>[data-slot=field]]:border-[length:var(--field-label-border-width)] has-[>[data-slot=field]]:border-[color:var(--field-label-border)] [&>*]:data-[slot=field]:p-[var(--field-label-padding)]",
+        "has-data-[state=checked]:border-[color:var(--field-label-border-checked)] has-data-[state=checked]:bg-[color:var(--field-label-background-checked)]",
         className,
       )}
       {...props}
@@ -146,7 +146,7 @@ function FieldDescription({ className, ...props }: React.ComponentProps<"p">) {
       data-slot="field-description"
       className={cn(
         "text-[length:var(--field-description-font-size)]/[var(--field-description-line-height)] leading-normal [font-weight:var(--field-description-font-weight)] text-[color:var(--field-description-label)] group-has-[[data-orientation=horizontal]]/field:text-balance",
-        "last:mt-0 nth-last-2:-mt-1 [[data-variant=legend]+&]:-mt-1.5",
+        "last:mt-0 nth-last-2:-mt-[var(--field-description-margin-top)] [[data-variant=legend]+&]:-mt-[var(--field-description-legend-margin-top)]",
         "[&>a]:underline [&>a]:underline-offset-4 [&>a:hover]:text-[color:var(--field-description-label-2)]",
         className,
       )}
@@ -167,7 +167,7 @@ function FieldSeparator({
       data-slot="field-separator"
       data-content={!!children}
       className={cn(
-        "relative -my-2 h-5 text-[length:var(--field-separator-font-size)]/[var(--field-separator-line-height)] group-data-[variant=outline]/field-group:-mb-2",
+        "relative -my-[var(--field-separator-margin-y)] h-5 text-[length:var(--field-separator-font-size)]/[var(--field-separator-line-height)] group-data-[variant=outline]/field-group:-mb-[var(--field-separator-margin-y)]",
         className,
       )}
       {...props}
@@ -175,7 +175,7 @@ function FieldSeparator({
       <Separator className="absolute inset-0 top-1/2" />
       {children && (
         <span
-          className="relative mx-auto block w-fit bg-[color:var(--field-background)] px-[var(--field-padding-x)] text-[color:var(--field-label)]"
+          className="relative mx-auto block w-fit bg-[color:var(--field-separator-content-background)] px-[var(--field-separator-content-padding-x)] text-[color:var(--field-separator-content-label)]"
           data-slot="field-separator-content"
         >
           {children}
@@ -209,7 +209,7 @@ function FieldError({
     }
 
     return (
-      <ul className="ml-4 flex list-disc flex-col gap-[var(--field-gap-2)]">
+      <ul className="ml-[var(--field-error-indent)] flex list-disc flex-col gap-[var(--field-gap-2)]">
         {uniqueErrors.map((error, index) => error?.message && <li key={index}>{error.message}</li>)}
       </ul>
     );

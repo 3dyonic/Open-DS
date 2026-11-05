@@ -4,7 +4,7 @@ import { test } from "node:test";
 import { Client } from "@modelcontextprotocol/sdk/client/index.js";
 import { InMemoryTransport } from "@modelcontextprotocol/sdk/inMemory.js";
 import { createMcpServer, runHttp } from "../src/mcp.mjs";
-import { loadScheme } from "../src/schemes.mjs";
+import { grammar, loadScheme } from "../src/schemes.mjs";
 
 async function connect() {
   const [a, b] = InMemoryTransport.createLinkedPair();
@@ -24,11 +24,13 @@ const TOOLS = [
   "compare_schemes",
   "find_token",
   "fit_scheme",
+  "get_anatomy",
   "get_answer",
   "get_component",
   "get_component_spacing_map",
   "get_context",
   "get_decision_reference",
+  "get_gaps",
   "get_inventory",
   "get_key",
   "get_scales",
@@ -395,6 +397,63 @@ test("get_component: the reference next to each scheme's decisions (OD-185)", as
   assert.ok(bad.isError);
 });
 
+test("get_gaps and get_component: where the decision trace breaks (OD-243)", async () => {
+  const c = await connect();
+  const all = await call(c, "get_gaps", { scheme_id: "dense-data" });
+  assert.deepEqual(
+    all.kinds.map((k) => k.id),
+    [
+      "key-hides-part",
+      "key-hides-state",
+      "wrong-semantic",
+      "two-jobs",
+      "rule-not-written",
+      "borrows-a-key",
+      "reads-the-system",
+      "nested-corner",
+      "fades-a-color",
+      "decided-in-code",
+      "skips-a-component",
+      "pick-without-reason",
+    ],
+  );
+  for (const k of all.kinds) assert.equal(all.counts[k.id], all.gaps.filter((x) => x.kind === k.id).length);
+  // OD-241 fixed the menu: its keys name their part and state, and link the semantic whose rule covers them.
+  const menu = await call(c, "get_gaps", { scheme_id: "dense-data", component: "dropdown-menu" });
+  assert.equal(menu.gaps.filter((x) => x.component === "dropdown-menu").length, 0);
+  // A shared gap still names the components it touches: border.default also paints the sidebar rail.
+  for (const x of menu.gaps) assert.ok(x.kind === "two-jobs" || x.kind === "rule-not-written");
+  // A filter by kind returns only that kind.
+  const wrong = await call(c, "get_gaps", { scheme_id: "dense-data", kind: "wrong-semantic" });
+  assert.ok(wrong.gaps.length > 0 && wrong.gaps.every((x) => x.kind === "wrong-semantic"));
+  // get_component carries the same gaps, so an agent sees them before it builds.
+  const comp = await call(c, "get_component", { scheme_id: "dense-data", component: "dropdown-menu" });
+  assert.equal(comp.gaps.length, menu.gaps.length);
+  const bad = await c.callTool({ name: "get_gaps", arguments: { scheme_id: "dense-data", component: "nope" } });
+  assert.ok(bad.isError);
+});
+
+test("get_anatomy: the parts people see and how each decision reaches them (OD-229)", async () => {
+  const c = await connect();
+  const menu = await call(c, "get_anatomy", { scheme_id: "dense-data", component: "dropdown-menu" });
+  assert.equal(menu.parts_layer, true);
+  const flat = (l) => l.flatMap((p) => [p, ...flat(p.children ?? [])]);
+  const parts = flat(menu.parts);
+  assert.equal(parts.filter((p) => p.n).length, 11);
+  assert.ok(parts.find((p) => p.id === "shortcut").no_token_yet);
+  const hl = menu.cards.find((k) => k.title === "Highlight fill");
+  assert.equal(hl.tokens[0].semantic, "color.surface.highlight");
+  assert.match(hl.tokens[0].light.why, /neutral\.100/);
+  assert.ok(hl.answers.some((a) => a.question === "accessibility.roles"));
+  // get_component only points at it.
+  const comp = await call(c, "get_component", { scheme_id: "dense-data", component: "dropdown-menu" });
+  assert.deepEqual(comp.anatomy, { parts_layer: true, see: "get_anatomy dropdown-menu" });
+  // Every component in the catalogue has its parts layer now (OD-229).
+  const btn = await call(c, "get_anatomy", { scheme_id: "dense-data", component: "button" });
+  assert.equal(btn.parts_layer, true);
+  assert.deepEqual(grammar().catalogue.items.filter((i) => !i.anatomy).map((i) => i.id), []);
+});
+
 test("get_component on a left-out component: what to use instead and the answers behind it (OD-212)", async () => {
   const c = await connect();
   const s = loadScheme("dense-data");
@@ -507,7 +566,12 @@ test("the decision reference: every answer with what it decided, the same as the
   const ref = await call(c, "get_decision_reference", {
     scheme_id: "dense-data",
   });
-  assert.equal(ref.answers, 78);
+  // 79: brand.q3, the typeface, joined the reasons (OD-245).
+  assert.equal(ref.answers, 79);
+  const face = ref.sections.flatMap((s) => s.questions).find((x) => x.id === "brand.q3");
+  assert.equal(face.considers.length, 11);
+  assert.ok(face.considers.every((k) => k.how));
+  assert.ok(face.decided.picks.some((d) => d.token === "type.data.font-family"));
   const q = ref.sections
     .flatMap((s) => s.questions)
     .find((x) => x.id === "content.q1");

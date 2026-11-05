@@ -27,6 +27,8 @@ Instead:
 
 - [Accordion](./accordion.md): A stack of sections.
 
+<a class="odv-anatref" href="./collapsible/anatomy"><span class="odv-anatref-b"><b>Anatomy reference</b><span>Every part of the collapsible, the job it does, and the decisions behind it. 1 parts.</span></span><span class="odv-anatref-go" aria-hidden="true">→</span></a>
+
 ## Words
 
 - Headlines are short and bold. Three to six words.

@@ -7,6 +7,8 @@
 // and the files it writes; the agent runs it. The five skills are served as prompts.
 // No authentication yet: the hosted server will add a key (OD-145).
 
+import { GAP_KINDS, gapLedger } from "./gaps.mjs";
+import { anatomyReference } from "./anatomy.mjs";
 import { scales } from "./scale-map.mjs";
 import { spacingGuide } from "./spacing-map.mjs";
 import { decisionReference } from "./decisions.mjs";
@@ -58,7 +60,7 @@ const VERSION = JSON.parse(
 // carry too (OD-205).
 const INSTRUCTIONS = `Open DS: design systems as answered questions. Every scheme answers the same questions and gives the reason for each answer; tokens, components, usage rules and voice follow from them.
 Choose: describe the product to fit_scheme, compare the top ones with compare_schemes, then plan_create (a new design system project) or plan_init (an existing app). They return the exact npx command; run it yourself.
-Build: call get_context build first, or get_context file=<path> for the file you edit. Before a component or variant, call get_component; before a token, find_token or when_to_use; to see which color step a token uses and which steps are free, get_scales; before you write any spacing, get_component_spacing_map. Before you finish, run check_ui on the files you changed and fix each finding.
+Build: call get_context build first, or get_context file=<path> for the file you edit. Before a component or variant, call get_component (its gaps say where the scheme has no answer yet; get_gaps lists them for a whole scheme); to explain why a part looks the way it does, or before you change a part, get_anatomy; before a token, find_token or when_to_use; to see which color step a token uses and which steps are free, get_scales; before you write any spacing, get_component_spacing_map. Before you finish, run check_ui on the files you changed and fix each finding.
 Write: get_context write holds the voice; get_scheme returns any part of a scheme in full. Check each label or message with check_copy. Change: call plan_change before you change an answer or a primitive. Review: run check_ui, then the review prompt.
 Explain any decision with why; get_answer shows one answer with every option and what it decided; get_decision_reference lists every answer, why, what it came from and the answers, rules and variants it decided; what_moves shows what follows from an answer. The prompts open-ds-choose, open-ds-build, open-ds-write, open-ds-change and open-ds-review hold the step-by-step skills.
 The questions and answers are a starting point, not a standard.
@@ -537,7 +539,7 @@ export function createMcpServer({ roots = assetRoots() } = {}) {
     {
       title: "Component",
       description:
-        "One component in one scheme: the reference (what the component and each of its variants are for, the same in every design system, and what to use instead) next to this scheme's decisions (whether it carries the component and why, how it uses each variant or that it does not, and its usage rules), and its token API: every token it reads, the semantic each aliases, its CSS variable, and its value in every theme. Read this before you build with a component, pick a variant, or override one of its tokens.",
+        "One component in one scheme: the reference (what the component and each of its variants are for, the same in every design system, and what to use instead) next to this scheme's decisions (whether it carries the component and why, how it uses each variant or that it does not, and its usage rules), and its token API: every token it reads, the semantic each aliases, its CSS variable, and its value in every theme, and its gaps: where its decision trace breaks. Where a gap stands, the scheme has no answer yet: say so, and do not invent one. Read this before you build with a component, pick a variant, or override one of its tokens.",
       inputSchema: {
         scheme_id: SchemeId,
         component: z
@@ -556,6 +558,53 @@ export function createMcpServer({ roots = assetRoots() } = {}) {
           `"${component}" is not in the catalogue. Components: ${g.catalogue.items.map((i) => i.id).join(", ")}.`,
         );
       return json(out);
+    },
+  );
+
+  server.registerTool(
+    "get_anatomy",
+    {
+      title: "Anatomy",
+      description:
+        "One component taken apart in one scheme: every part people see, with its number, whether it is required, optional or a state, the jobs it does for a person (roles such as Readability, Focus, Feedback) and whether its value changes by scheme; then, for each part, how the decisions reach it: the answers about the product, the rules they set, and each token from its semantic and rule to the theme pick, that pick's reason in light and dark, and what else picks the same step. Read this to explain why a part looks the way it does, or before you change a part, so you change the decision, not just the value. A component without a parts layer returns its code's parts and says so.",
+      inputSchema: {
+        scheme_id: SchemeId,
+        component: z.string().describe("A catalogue component id, for example dropdown-menu."),
+      },
+      annotations: { readOnlyHint: true },
+    },
+    async ({ scheme_id, component }) => {
+      const s = scheme(scheme_id);
+      if (!g.catalogue.items.some((i) => i.id === component))
+        throw new Error(`"${component}" is not in the catalogue. Components: ${g.catalogue.items.map((i) => i.id).join(", ")}.`);
+      const ref = anatomyReference(s, g, roots, component);
+      if (!ref) throw new Error(`"${component}" has no built component to take apart.`);
+      return json(ref);
+    },
+  );
+
+  server.registerTool(
+    "get_gaps",
+    {
+      title: "Gaps",
+      description:
+        "The gap ledger of one scheme, or one component in it: every place where the decision trace (part, property, state, semantic, rule, pick, value) breaks. Kinds: a key that does not name its part or state, a link to the wrong or a borrowed semantic, one semantic with two jobs, a rule components follow that no semantic states, and a theme pick with no reason. Each gap says what is wrong, and the ticket that fixes it where one exists. Where a gap stands, the scheme has no answer: say so instead of inventing one.",
+      inputSchema: {
+        scheme_id: SchemeId,
+        component: z.string().optional().describe("A catalogue component id, for example dropdown-menu. Leave out for the whole scheme."),
+        kind: z
+          .enum(GAP_KINDS.map((k) => k.id))
+          .optional()
+          .describe("Only this kind of gap."),
+      },
+      annotations: { readOnlyHint: true },
+    },
+    async ({ scheme_id, component, kind }) => {
+      const s = scheme(scheme_id);
+      if (component && !g.catalogue.items.some((i) => i.id === component))
+        throw new Error(`"${component}" is not in the catalogue. Components: ${g.catalogue.items.map((i) => i.id).join(", ")}.`);
+      const ledger = gapLedger(s, g, roots, { component: component ?? null });
+      return json(kind ? { ...ledger, gaps: ledger.gaps.filter((x) => x.kind === kind) } : ledger);
     },
   );
 

@@ -9,8 +9,10 @@ import {
   AlertDialogDescription,
   AlertDialogAction,
   AlertDialogCancel,
+  AlertDialogMedia,
   Button,
 } from "@open-ds/ui";
+import { AlertTriangle } from "lucide-react";
 import { Show } from "../src/samples";
 
 const meta = {
@@ -50,6 +52,9 @@ export const Examples: Story = {
           </AlertDialogTrigger>
           <AlertDialogContent>
             <AlertDialogHeader>
+              <AlertDialogMedia>
+                <AlertTriangle />
+              </AlertDialogMedia>
               <AlertDialogTitle>{s.confirm?.title ?? s.actions.secondary}</AlertDialogTitle>
               <AlertDialogDescription>{s.confirm?.body ?? ""}</AlertDialogDescription>
             </AlertDialogHeader>

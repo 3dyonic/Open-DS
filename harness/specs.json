@@ -457,6 +457,38 @@
       ]
     },
     {
+      "id": "OD-243",
+      "title": "Gap ledger: every broken link in the decision trace, counted",
+      "in": [
+        "the ledger is generated from the code and the schemes: each gap has a kind, its component, part, state or semantic, and the ticket that fixes it where one exists",
+        "kinds: a key that does not name its part or state, a link to the wrong or a borrowed semantic, one semantic with two jobs, a rule components follow that no semantic states, a component reading another component's key, a component reading the system directly, an option's corner that isn't its container's less the padding, a component drawing what a catalogue component is for, a theme pick with no reason",
+        "each kind has a test that pins a known case, so a detector that goes blind fails instead of reporting zero",
+        "open-ds gaps, get_gaps and get_component give the gaps to people and agents, so an agent says where the scheme has no answer instead of inventing one",
+        "the harness counts gaps per scheme and kind, and each count may only go down"
+      ],
+      "checks": [
+        "gaps-only-go-down",
+        "harness-self-test"
+      ]
+    },
+    {
+      "id": "OD-245",
+      "title": "The typeface is a decision: a question, its considerations, and an answer in every scheme",
+      "in": [
+        "brand.q3 asks which typefaces carry the product and why, and lists what the answer must weigh: readability, legibility, scalability, numerals, scripts, recognition, familiarity, personality, performance, licensing, fallback",
+        "every scheme answers it and says how its faces meet each consideration",
+        "every font pick quotes the answer, so no font pick is left without a reason"
+      ],
+      "checks": [
+        "answers-consider",
+        "picks-cite-answers",
+        "floating-panels-agree",
+        "anatomy-assets",
+        "schemes-answer-every-question",
+        "gaps-only-go-down"
+      ]
+    },
+    {
       "id": "OD-221",
       "title": "Line heights: ratios in every scheme, one step per job, steps at least 0.2 apart",
       "in": [

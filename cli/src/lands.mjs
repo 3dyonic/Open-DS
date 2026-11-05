@@ -18,7 +18,18 @@ const SCALE = /\b(rounded|shadow|text)-(xs|sm|md|lg|xl|base|2xl)\b/g;
  * Every token of a scheme by its CSS name, and by its path, with the theme under "theme.". With a brand
  * and mode, the theme is that brand's base and mode only, so references resolve as in that theme.
  */
+// One index per token tree and theme: building it reads every token, and the docs, the gap ledger and
+// the anatomy traces ask for the same one thousands of times. A tree is not changed after it is
+// indexed; code that edits a scheme loads it again (structuredClone gives a new tree).
+const INDEX = new WeakMap();
 export function tokenIndex(scheme, { brand, mode } = {}) {
+  const k = `${brand ?? ""}|${mode ?? ""}`;
+  let byTree = INDEX.get(scheme.tokens);
+  if (!byTree) INDEX.set(scheme.tokens, (byTree = new Map()));
+  if (!byTree.has(k)) byTree.set(k, buildIndex(scheme, { brand, mode }));
+  return byTree.get(k);
+}
+function buildIndex(scheme, { brand, mode }) {
   const t = scheme.tokens;
   const byPath = new Map();
   const add = (tree, prefix = []) => {
@@ -150,6 +161,9 @@ export function aliasChain(index, path) {
       index.byPath.has(`theme.${r.replace(/^theme\./, "")}`)
     )
       r = `theme.${r.replace(/^theme\./, "")}`;
+    // A component key that aliases another (a deprecated key, OD-241) names it without "component.",
+    // as the build sees the tree.
+    else if (!index.byPath.has(r) && index.byPath.has(`component.${r}`)) r = `component.${r}`;
     if (!r.startsWith("theme.")) hops.push(r);
     p = r;
   }

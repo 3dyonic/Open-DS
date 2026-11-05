@@ -50,7 +50,7 @@ export function TableHead({ className, ...props }: React.ThHTMLAttributes<HTMLTa
     <th
       data-slot="table-head"
       className={cn(
-        "px-[var(--table-cell-padding-x)] text-left align-middle text-[var(--table-head-label)]",
+        "px-[var(--table-head-padding-x)] text-left align-middle text-[var(--table-head-label)]",
         "[font-family:var(--table-head-font-family)] text-[length:var(--table-head-font-size)] [font-weight:var(--table-head-font-weight)]",
         className,
       )}

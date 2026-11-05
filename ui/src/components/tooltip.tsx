@@ -14,7 +14,7 @@ export const TooltipTrigger = TooltipPrimitive.Trigger;
 
 export function TooltipContent({
   className,
-  sideOffset = 6,
+  sideOffset = 0, // the gap is overlay/offset, a margin on the side it opens to (OD-243)
   ...props
 }: React.ComponentProps<typeof TooltipPrimitive.Content>) {
   return (
@@ -23,7 +23,9 @@ export function TooltipContent({
         data-slot="tooltip-content"
         sideOffset={sideOffset}
         className={cn(
-          "z-50 rounded-[var(--tooltip-content-radius)] bg-[var(--tooltip-background)] text-[var(--tooltip-label)] px-[var(--tooltip-content-padding-x)] py-[var(--tooltip-content-padding-y)]",
+          "data-[side=bottom]:mt-[var(--overlay-offset)] data-[side=top]:mb-[var(--overlay-offset)] data-[side=left]:mr-[var(--overlay-offset)] data-[side=right]:ml-[var(--overlay-offset)] z-50 rounded-[var(--tooltip-content-radius)] bg-[var(--tooltip-content-background)] text-[var(--tooltip-content-label)] px-[var(--tooltip-content-padding-x)] py-[var(--tooltip-content-padding-y)]",
+          // It fades at the panel speed, like every floating panel; no slide or zoom distance is decided yet.
+          "data-[state=delayed-open]:animate-in data-[state=delayed-open]:fade-in-0 data-[state=instant-open]:animate-in data-[state=instant-open]:fade-in-0 data-[state=closed]:animate-out data-[state=closed]:fade-out-0 duration-[var(--tooltip-content-duration)]",
           "text-[length:var(--tooltip-content-font-size)] [font-family:var(--tooltip-content-font-family)]",
           className,
         )}

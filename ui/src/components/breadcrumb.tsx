@@ -20,7 +20,7 @@ function BreadcrumbList({ className, ...props }: React.ComponentProps<"ol">) {
     <ol
       data-slot="breadcrumb-list"
       className={cn(
-        "flex flex-wrap items-center gap-[var(--breadcrumb-list-gap)] text-[length:var(--breadcrumb-list-font-size)]/[var(--breadcrumb-list-line-height)] break-words text-[color:var(--breadcrumb-list-label)] sm:gap-[var(--breadcrumb-list-gap-2)]",
+        "flex flex-wrap items-center gap-[var(--breadcrumb-list-gap)] text-[length:var(--breadcrumb-list-font-size)]/[var(--breadcrumb-list-line-height)] break-words text-[color:var(--breadcrumb-list-label)] sm:gap-[var(--breadcrumb-list-wide-gap)]",
         className,
       )}
       {...props}
@@ -50,7 +50,11 @@ function BreadcrumbLink({
   return (
     <Comp
       data-slot="breadcrumb-link"
-      className={cn("transition-colors hover:text-[color:var(--breadcrumb-link-label-hover)]", className)}
+      className={cn(
+        "transition-colors duration-[var(--breadcrumb-link-duration)] ease-[var(--breadcrumb-link-easing)] hover:text-[color:var(--breadcrumb-link-label-hover)]",
+        "outline-none focus-visible:ring-[length:var(--breadcrumb-link-focus-width)] focus-visible:ring-[color:var(--breadcrumb-link-focus-ring-focus)] focus-visible:ring-offset-[length:var(--breadcrumb-link-focus-offset)] focus-visible:ring-offset-[color:var(--breadcrumb-link-focus-ring-offset-focus)]",
+        className,
+      )}
       {...props}
     />
   );
@@ -78,7 +82,7 @@ function BreadcrumbSeparator({ children, className, ...props }: React.ComponentP
       data-slot="breadcrumb-separator"
       role="presentation"
       aria-hidden="true"
-      className={cn("[&>svg]:size-3.5", className)}
+      className={cn("[&>svg]:size-[var(--breadcrumb-separator-icon-size)]", className)}
       {...props}
     >
       {children ?? <ChevronRight />}
@@ -95,7 +99,7 @@ function BreadcrumbEllipsis({ className, ...props }: React.ComponentProps<"span"
       className={cn("flex size-9 items-center justify-center", className)}
       {...props}
     >
-      <MoreHorizontal className="size-[var(--breadcrumb-icon-size)]" />
+      <MoreHorizontal className="size-[var(--breadcrumb-ellipsis-icon-size)]" />
       <span className="sr-only">More</span>
     </span>
   );

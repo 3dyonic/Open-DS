@@ -28,6 +28,7 @@ import * as React from "react";
 import { cn } from "../lib/utils";
 import { Button } from "./button";
 import { Checkbox } from "./checkbox";
+import { Empty, EmptyContent, EmptyHeader, EmptyTitle } from "./empty";
 import { Input } from "./input";
 import { Popover, PopoverContent, PopoverTrigger } from "./popover";
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "./table";
@@ -56,7 +57,11 @@ export interface DataTableLabels {
   compact: string;
   comfortable: string;
   selected: (count: number) => string;
+  /** Shown when the search or the filters hide every row, beside the action that clears them. */
   noResults: string;
+  clearFilters: string;
+  /** Shown when there is no data at all, unless the table is given its own empty state. */
+  noData: string;
   previous: string;
   next: string;
   page: (index: number, count: number) => string;
@@ -71,7 +76,9 @@ const LABELS: DataTableLabels = {
   compact: "Compact",
   comfortable: "Comfortable",
   selected: (n) => `${n} selected`,
-  noResults: "No results.",
+  noResults: "No records match your search or filters.",
+  clearFilters: "Clear filters",
+  noData: "No records yet.",
   previous: "Previous",
   next: "Next",
   page: (i, n) => `Page ${i} of ${n}`,
@@ -88,6 +95,9 @@ export interface DataTableProps<TData> {
   bulkActions?: (rows: TData[]) => React.ReactNode;
   labels?: Partial<DataTableLabels>;
   className?: string;
+  /** The empty state when there is no data at all: why it is empty and the one action that fills it
+   * (OD-229, the empty-words rule). Without it, the table says there are no records yet. */
+  empty?: React.ReactNode;
 }
 
 /** A checkbox column for row selection. Put it first. */
@@ -168,7 +178,7 @@ function FacetFilter<TData>({
             .sort(([a], [b]) => String(a).localeCompare(String(b)))
             .map(([value, count]) => (
               <li key={String(value)}>
-                <label className="flex cursor-pointer items-center gap-[var(--data-table-gap-2)] rounded-[var(--data-table-radius)] px-[var(--data-table-padding-x)] py-[var(--data-table-padding-y)] hover:bg-[color:var(--data-table-background-hover)]">
+                <label className="flex cursor-pointer items-center gap-[var(--data-table-gap-2)] rounded-[var(--data-table-radius)] px-[var(--data-table-padding-x)] py-[var(--data-table-padding-y)] hover:bg-[color:var(--data-table-row-background-hover)]">
                   <Checkbox checked={chosen.has(String(value))} onCheckedChange={() => toggle(String(value))} />
                   <span className="flex-1">{String(value)}</span>
                   <span className="text-[color:var(--data-table-label)] tabular-nums">{count}</span>
@@ -190,6 +200,7 @@ export function DataTable<TData>({
   pageSize = 10,
   bulkActions,
   labels = {},
+  empty,
   className,
 }: DataTableProps<TData>) {
   const l = { ...LABELS, ...labels };
@@ -274,7 +285,7 @@ export function DataTable<TData>({
                   .filter((c) => c.getCanHide())
                   .map((c) => (
                     <li key={c.id}>
-                      <label className="flex cursor-pointer items-center gap-[var(--data-table-gap-2)] rounded-[var(--data-table-radius)] px-[var(--data-table-padding-x)] py-[var(--data-table-padding-y)] hover:bg-[color:var(--data-table-background-hover)]">
+                      <label className="flex cursor-pointer items-center gap-[var(--data-table-gap-2)] rounded-[var(--data-table-radius)] px-[var(--data-table-padding-x)] py-[var(--data-table-padding-y)] hover:bg-[color:var(--data-table-row-background-hover)]">
                         <Checkbox checked={c.getIsVisible()} onCheckedChange={(v) => c.toggleVisibility(!!v)} />
                         {c.columnDef.meta?.label ?? c.id}
                       </label>
@@ -286,7 +297,7 @@ export function DataTable<TData>({
         </div>
       </div>
 
-      <div className="max-h-[32rem] overflow-auto rounded-[var(--card-radius)] border border-[var(--table-row-border)]">
+      <div className="max-h-[32rem] overflow-auto rounded-[var(--data-table-container-radius)] border-[length:var(--data-table-container-border-width)] border-[color:var(--data-table-container-border)]">
         <Table>
           <TableHeader className="sticky top-0 z-10">
             {table.getHeaderGroups().map((group) => (
@@ -324,11 +335,36 @@ export function DataTable<TData>({
               ))
             ) : (
               <TableRow>
-                <TableCell
-                  colSpan={table.getVisibleLeafColumns().length}
-                  className="text-center text-[color:var(--data-table-label)]"
-                >
-                  {l.noResults}
+                {/* The empty state is the Empty pattern, not a muted row (OD-229): why it is empty and the
+                    one action that fills it. Filters that hide every row are cleared from here. */}
+                <TableCell colSpan={table.getVisibleLeafColumns().length}>
+                  {search || filters.length ? (
+                    <Empty>
+                      <EmptyHeader>
+                        <EmptyTitle>{l.noResults}</EmptyTitle>
+                      </EmptyHeader>
+                      <EmptyContent>
+                        <Button
+                          variant="secondary"
+                          size="compact"
+                          onClick={() => {
+                            setSearch("");
+                            setFilters([]);
+                          }}
+                        >
+                          {l.clearFilters}
+                        </Button>
+                      </EmptyContent>
+                    </Empty>
+                  ) : (
+                    (empty ?? (
+                      <Empty>
+                        <EmptyHeader>
+                          <EmptyTitle>{l.noData}</EmptyTitle>
+                        </EmptyHeader>
+                      </Empty>
+                    ))
+                  )}
                 </TableCell>
               </TableRow>
             )}

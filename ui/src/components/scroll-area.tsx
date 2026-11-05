@@ -17,7 +17,7 @@ function ScrollArea({ className, children, ...props }: React.ComponentProps<type
     <ScrollAreaPrimitive.Root data-slot="scroll-area" className={cn("relative", className)} {...props}>
       <ScrollAreaPrimitive.Viewport
         data-slot="scroll-area-viewport"
-        className="size-full rounded-[inherit] transition-[color,box-shadow] outline-none focus-visible:ring-[length:var(--scroll-area-viewport-focus)] focus-visible:ring-[color:var(--scroll-area-viewport-focus-ring-focus)] focus-visible:ring-offset-2 focus-visible:ring-offset-[color:var(--scroll-area-viewport-focus-ring-offset-focus)]"
+        className="size-full rounded-[inherit] transition-[color,box-shadow] outline-none focus-visible:ring-[length:var(--scroll-area-viewport-focus)] focus-visible:ring-[color:var(--scroll-area-viewport-focus-ring-focus)] focus-visible:ring-offset-[length:var(--scroll-area-viewport-focus-offset)] focus-visible:ring-offset-[color:var(--scroll-area-viewport-focus-ring-offset-focus)]"
       >
         {children}
       </ScrollAreaPrimitive.Viewport>
@@ -38,8 +38,8 @@ function ScrollBar({
       orientation={orientation}
       className={cn(
         "flex touch-none p-px transition-colors select-none",
-        orientation === "vertical" && "h-full w-2.5 border-l border-l-transparent",
-        orientation === "horizontal" && "h-2.5 flex-col border-t border-t-transparent",
+        orientation === "vertical" && "h-full w-2.5 border-l-[length:var(--scroll-area-scrollbar-border-width)] border-l-transparent",
+        orientation === "horizontal" && "h-2.5 flex-col border-t-[length:var(--scroll-area-scrollbar-border-width)] border-t-transparent",
         className,
       )}
       {...props}

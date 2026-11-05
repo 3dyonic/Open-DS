@@ -16,7 +16,8 @@ export const SHADCN = {
   "secondary-foreground": "color-text-primary",
   muted: "color-surface-sunken",
   "muted-foreground": "color-text-muted",
-  accent: "color-surface-sunken",
+  // accent is shadcn's hover and highlight fill: the state semantic, not the depth one (OD-241).
+  accent: "color-surface-highlight",
   "accent-foreground": "color-text-primary",
   destructive: "color-status-danger",
   border: "color-border-default",
@@ -28,7 +29,7 @@ export const SHADCN = {
   "sidebar-foreground": "color-text-primary",
   "sidebar-primary": "color-action-primary",
   "sidebar-primary-foreground": "color-text-on-action",
-  "sidebar-accent": "color-surface-sunken",
+  "sidebar-accent": "color-surface-highlight",
   "sidebar-accent-foreground": "color-text-primary",
   "sidebar-border": "color-border-default",
   "sidebar-ring": "color-border-focus",
@@ -44,7 +45,7 @@ export const SHADCN = {
 // which apps and Storybook load and the Open DS site does not, so the site keeps its own scale.
 export const SHADCN_SCALE = {
   "--radius-xs": "var(--radius-badge)",
-  "--radius-sm": "var(--radius-badge)",
+  "--radius-sm": "var(--radius-option)", // shadcn's menu and select items: options (OD-246)
   "--radius-md": "var(--radius-control)",
   "--radius-lg": "var(--radius-container)",
   "--radius-xl": "var(--radius-container)",

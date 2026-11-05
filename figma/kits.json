@@ -7,5 +7,6 @@
     "content-first": "https://www.figma.com/design/r0vVNFHYC6aX1FQ2K381ks",
     "multi-brand": "https://www.figma.com/design/Dgqcx7utJcnGmy1uHDAtAC"
   },
-  "plugin": "The Open DS kits Figma plugin is generated, not committed: pnpm figma-kit all writes figma/plugin, and every GitHub release has open-ds-kits-plugin.zip attached. In Figma desktop: Plugins, Development, Import plugin from manifest, pick plugin/manifest.json, then run it in a kit file."
+  "plugin": "The Open DS kits Figma plugin is generated, not committed: pnpm figma-kit all writes figma/plugin, and every GitHub release has open-ds-kits-plugin.zip attached. In Figma desktop: Plugins, Development, Import plugin from manifest, pick plugin/manifest.json, then run it in a kit file.",
+  "anatomy_plugin": "The Open DS anatomy Figma plugin is generated the same way: pnpm figma-anatomy all writes figma/anatomy-plugin, and every GitHub release has open-ds-anatomy-plugin.zip attached. In Figma desktop: Plugins, Development, Import plugin from manifest, pick anatomy-plugin/manifest.json, then run it in a scheme's anatomy file that has the scheme's kit library enabled. It draws one Anatomy page per component, bound to the kit's variables, and lists the values the kit does not have yet."
 }

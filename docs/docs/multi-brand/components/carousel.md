@@ -27,6 +27,8 @@ Instead:
 
 - [Card](./card.md): A grid shows every item at once.
 
+<a class="odv-anatref" href="./carousel/anatomy"><span class="odv-anatref-b"><b>Anatomy reference</b><span>Every part of the carousel, the job it does, and the decisions behind it. 4 parts.</span></span><span class="odv-anatref-go" aria-hidden="true">→</span></a>
+
 ## Words
 
 - Shared structure: object, state, next step.

@@ -28,6 +28,8 @@ Instead:
 - [Table](./table.md): Records compared across rows.
 - [Item](./item.md): A compact row in a list.
 
+<a class="odv-anatref" href="./card/anatomy"><span class="odv-anatref-b"><b>Anatomy reference</b><span>Every part of the card, the job it does, and the decisions behind it. 7 parts.</span></span><span class="odv-anatref-go" aria-hidden="true">→</span></a>
+
 ## How Dense data uses it
 
 <div class="odv-grid two"><div class="odv-dd"><div class="stage"><div class="odv-eyebrow">A card on the page</div><div style="margin-top:6px"><b style="color:var(--color-status-success)">Use</b> A hairline border, no shadow</div><div><b style="color:var(--color-status-danger)">Not</b> A shadow</div></div><div class="cap">On a busy grid, lines separate. Shadows blur the edges.</div></div></div>

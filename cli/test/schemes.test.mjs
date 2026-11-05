@@ -284,11 +284,17 @@ test("docs pages cover every scope and component, for every scheme", async () =>
           (p) =>
             p.startsWith("components/") &&
             p.endsWith(".md") &&
+            !p.endsWith("-anatomy.md") &&
             p !== "components/inventory.md",
         )
         .sort(),
       expected.map((c) => `components/${c}.md`).sort(),
     );
+    // An Anatomy reference only beside a component page, for a component whose parts are described (OD-229).
+    for (const p of Object.keys(pages).filter((x) => x.endsWith("-anatomy.md"))) {
+      assert.ok(pages[p.replace(/-anatomy\.md$/, ".md")], `${id}: ${p} has no component page`);
+      assert.match(pages[p], /## The parts/);
+    }
     assert.match(
       docsLlms(loadScheme(id, roots), pages),
       /- \[Voice and tone\]\(\/voice\)/,

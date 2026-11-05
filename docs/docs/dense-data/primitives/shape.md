@@ -14,7 +14,7 @@ description: "Shape primitives in Dense data."
 
 | Primitive | Value | Sample | Used by |
 | --- | --- | --- | --- |
-| `radius.0` | 0rem (0px) | <span class="ods-tile" style="border-radius:0rem"></span> | `radius.badge` (every mode) |
+| `radius.0` | 0rem (0px) | <span class="ods-tile" style="border-radius:0rem"></span> | `radius.badge` (every mode)<br />`radius.option` (every mode) |
 | `radius.2` | 0.125rem (2px) | <span class="ods-tile" style="border-radius:0.125rem"></span> | `radius.control` (every mode) |
 | `radius.4` | 0.25rem (4px) | <span class="ods-tile" style="border-radius:0.25rem"></span> | `radius.container` (every mode) |
 | `radius.full` | 9999px | <span class="ods-tile" style="border-radius:9999px"></span> | `radius.round` (semantic) |
@@ -24,4 +24,4 @@ description: "Shape primitives in Dense data."
 | Primitive | Value | Sample | Used by |
 | --- | --- | --- | --- |
 | `border-width.1` | 1px | <span class="ods-line" style="height:1px"></span> | `border-width.default` (semantic) |
-| `border-width.2` | 2px | <span class="ods-line" style="height:2px"></span> | `border-width.focus` (semantic) |
+| `border-width.2` | 2px | <span class="ods-line" style="height:2px"></span> | `border-width.focus` (semantic)<br />`border-width.focus-offset` (semantic) |

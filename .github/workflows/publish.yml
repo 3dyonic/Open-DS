@@ -153,11 +153,19 @@ jobs:
         run: |
           node scripts/figma-kit.mjs all
           (cd figma && zip -qr ../open-ds-kits-plugin.zip plugin)
-      - name: Keep the plugin with this run
+      # The anatomy plugin (OD-229), built the same way: it draws the Anatomy reference pages in a
+      # scheme's anatomy file, bound to that scheme's kit.
+      - name: Build the Figma anatomy plugin
+        run: |
+          node scripts/figma-anatomy.mjs all
+          (cd figma && zip -qr ../open-ds-anatomy-plugin.zip anatomy-plugin)
+      - name: Keep the plugins with this run
         uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02 # v4.6.2
         with:
-          name: open-ds-kits-plugin
-          path: open-ds-kits-plugin.zip
+          name: open-ds-figma-plugins
+          path: |
+            open-ds-kits-plugin.zip
+            open-ds-anatomy-plugin.zip
       # On a merge to master: the tag and the release, made after the packages are published, so a
       # release page always means the packages are out. A release made with GITHUB_TOKEN starts no
       # second run of this workflow.
@@ -172,8 +180,8 @@ jobs:
           gh release create "$tag" --target "$GITHUB_SHA" --title "open-ds $VERSION" --generate-notes \
             || gh release create "$tag" --target "$GITHUB_SHA" --title "open-ds $VERSION" \
                  --notes "open-ds $VERSION. See the merged pull requests for what changed."
-      - name: Attach the plugin to the release
+      - name: Attach the plugins to the release
         if: github.event_name != 'workflow_dispatch'
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        run: gh release upload "${RELEASE_TAG:-v$VERSION}" open-ds-kits-plugin.zip --clobber
+        run: gh release upload "${RELEASE_TAG:-v$VERSION}" open-ds-kits-plugin.zip open-ds-anatomy-plugin.zip --clobber

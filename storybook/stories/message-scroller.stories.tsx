@@ -30,7 +30,7 @@ export const Examples: Story = {
         s.conversation && (
           <MessageScroller
             aria-label={s.conversation.title}
-            className="max-h-64 max-w-xl border p-[var(--space-inset-container)]"
+            className="max-h-64 max-w-xl border-[length:var(--border-width-default)] border-[color:var(--color-border-default)] p-[var(--space-inset-container)]"
           >
             <Marker>{s.conversation.marker}</Marker>
             {s.conversation.messages.map((m) => (

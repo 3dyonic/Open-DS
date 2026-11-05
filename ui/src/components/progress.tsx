@@ -17,7 +17,7 @@ function Progress({ className, value, ...props }: React.ComponentProps<typeof Pr
     <ProgressPrimitive.Root
       data-slot="progress"
       className={cn(
-        "relative h-2 w-full overflow-hidden rounded-[var(--progress-radius)] bg-[color:var(--progress-background)]/20",
+        "relative h-2 w-full overflow-hidden rounded-[var(--progress-radius)] bg-[color:var(--progress-background)]",
         className,
       )}
       {...props}
