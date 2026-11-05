@@ -179,7 +179,15 @@ function partAt(src, at, comp) {
 }
 
 /** The gaps in the code's component layer: kinds 1 to 5. The same in every scheme, so read in one. */
+// The component layer's gaps, once per scheme and asset root: every component page asks for them.
+const gapMemo = new Map();
 export function componentGaps(scheme, g, roots) {
+  const key = `${roots.ui}|${scheme.id}`;
+  if (!gapMemo.has(key)) gapMemo.set(key, componentGapsNow(scheme, g, roots));
+  return gapMemo.get(key);
+}
+
+function componentGapsNow(scheme, g, roots) {
   const comps = builtComponents(roots);
   const catalogue = new Set(g.catalogue.items.map((i) => i.id));
   const rule = new Map(g.semantics.keys.map((k) => [k.id.replace(/\.@$/, ""), `${k.intent ?? ""} ${(k.use_for ?? []).join(", ")}`]));
