@@ -41,12 +41,7 @@ Each part follows a chain: an answer about the product, the rule it set, the tok
 
 ## For agents
 
-Agents get this same anatomy, with every part, its roles, whether it is required, the tokens it reads and the decisions behind them. There are two ways in.
+Agents get this same anatomy: every part, its roles, whether it is required, the tokens it reads and the decisions behind them.
 
-**From an AI agent:** connect the Open DS MCP server and call the `get_anatomy` tool with this scheme and `dropdown-menu`.
-
-**From a terminal:** run this command.
-
-```bash
-npx open-ds anatomy dense-data dropdown-menu
-```
+- **From an AI agent:** call the `get_anatomy` tool on the Open DS MCP server, with this scheme and `dropdown-menu`.
+- **From a terminal:** `npx open-ds anatomy dense-data dropdown-menu`
