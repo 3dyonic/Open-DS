@@ -658,6 +658,7 @@
         "command",
         "context-menu",
         "date-picker",
+        "dialog",
         "drawer",
         "dropdown-menu",
         "empty",
@@ -1307,6 +1308,8 @@
         "command",
         "context-menu",
         "data-table",
+        "dialog",
+        "drawer",
         "dropdown-menu",
         "empty",
         "field",
@@ -1455,6 +1458,8 @@
         "chart",
         "combobox",
         "context-menu",
+        "dialog",
+        "drawer",
         "dropdown-menu",
         "hover-card",
         "input-group",
@@ -1733,6 +1738,7 @@
         "combobox",
         "command",
         "context-menu",
+        "dialog",
         "dropdown-menu",
         "input-group",
         "input-otp",
@@ -1744,6 +1750,7 @@
         "radio-group",
         "resizable",
         "select",
+        "sheet",
         "sidebar",
         "slider",
         "spinner",
@@ -2032,6 +2039,7 @@
         "combobox",
         "command",
         "context-menu",
+        "dialog",
         "dropdown-menu",
         "field",
         "input",
@@ -2046,6 +2054,7 @@
         "resizable",
         "scroll-area",
         "select",
+        "sheet",
         "sidebar",
         "slider",
         "switch",
@@ -3151,7 +3160,10 @@
         "alert-dialog/media/background",
         "alert-dialog/media/size",
         "alert-dialog/content/border",
-        "alert-dialog/content/border-width"
+        "alert-dialog/content/border-width",
+        "alert-dialog/content/label",
+        "alert-dialog/title/font-family",
+        "alert-dialog/media/margin-bottom"
       ]
     },
     {
@@ -3645,20 +3657,43 @@
         "dialog/content/gap",
         "dialog/content/padding",
         "dialog/content/label",
+        "dialog/content/border-width",
         "dialog/border-width",
+        "dialog/content/border",
         "dialog/border",
+        "dialog/close/radius",
         "dialog/radius",
+        "dialog/close/padding",
         "dialog/padding",
+        "dialog/description/label",
         "dialog/label",
         "dialog/close/background/hover",
         "dialog/sunken",
+        "dialog/close/icon-size",
         "dialog/size",
+        "dialog/header/gap",
         "dialog/gap",
+        "dialog/footer/gap",
         "dialog/gap-2",
+        "dialog/title/font-family",
         "dialog/font-family",
+        "dialog/title/font-size",
         "dialog/font-size",
+        "dialog/title/font-weight",
         "dialog/font-weight",
-        "dialog/font-size-2"
+        "dialog/description/font-size",
+        "dialog/font-size-2",
+        "dialog/content/radius",
+        "dialog/content/shadow",
+        "dialog/content/background",
+        "dialog/overlay/background",
+        "dialog/title/line-height",
+        "dialog/description/line-height",
+        "dialog/close/label",
+        "dialog/close/focus-ring/width",
+        "dialog/close/focus-ring/color",
+        "dialog/close/focus-ring/offset-color",
+        "dialog/close/focus-offset"
       ]
     },
     {
@@ -3667,7 +3702,9 @@
       "keys": [
         "drawer/overlay/background",
         "drawer/content/background",
+        "drawer/handle/radius",
         "drawer/radius",
+        "drawer/handle/background",
         "drawer/background",
         "drawer/header/gap",
         "drawer/header/padding",
@@ -3678,7 +3715,15 @@
         "drawer/title/label",
         "drawer/description/font-size",
         "drawer/description/line-height",
-        "drawer/description/label"
+        "drawer/description/label",
+        "drawer/handle/margin-top",
+        "drawer/content/radius",
+        "drawer/content/border",
+        "drawer/content/border-width",
+        "drawer/content/shadow",
+        "drawer/title/font-family",
+        "drawer/title/font-size",
+        "drawer/title/line-height"
       ]
     },
     {
@@ -4379,11 +4424,17 @@
         "sheet/content/gap",
         "sheet/content/background",
         "sheet/content/shadow",
+        "sheet/close/radius",
         "sheet/radius",
+        "sheet/close/focus-ring/offset-color",
         "sheet/focus-ring-offset",
+        "sheet/close/focus-ring/width",
         "sheet/focus",
+        "sheet/close/focus-ring/color",
         "sheet/focus-ring-focus",
+        "sheet/close/background/hover",
         "sheet/background-open",
+        "sheet/close/icon-size",
         "sheet/icon-size",
         "sheet/header/gap",
         "sheet/header/padding",
@@ -4394,7 +4445,14 @@
         "sheet/description/font-size",
         "sheet/description/line-height",
         "sheet/description/label",
-        "sheet/close/focus-offset"
+        "sheet/close/focus-offset",
+        "sheet/close/label",
+        "sheet/close/padding",
+        "sheet/content/border",
+        "sheet/content/border-width",
+        "sheet/title/font-family",
+        "sheet/title/font-size",
+        "sheet/title/line-height"
       ]
     },
     {
@@ -4406,6 +4464,7 @@
         "sidebar/label",
         "sidebar/gap/duration",
         "sidebar/container/duration",
+        "sidebar/menu-button/padding",
         "sidebar/padding",
         "sidebar/inner/background",
         "sidebar/inner/radius",
@@ -4453,11 +4512,16 @@
         "sidebar/group/content/line-height",
         "sidebar/menu/gap",
         "sidebar/gap",
+        "sidebar/menu-button/radius",
         "sidebar/radius",
+        "sidebar/menu-button/font-size",
         "sidebar/font-size",
+        "sidebar/menu-button/line-height",
         "sidebar/line-height",
         "sidebar/focus-ring",
+        "sidebar/menu-button/padding-right",
         "sidebar/padding-right",
+        "sidebar/menu-button/collapsed-size",
         "sidebar/size",
         "sidebar/menu-button/background/hover",
         "sidebar/background-hover-2",
@@ -4465,28 +4529,45 @@
         "sidebar/menu-button/background/pressed",
         "sidebar/background-active",
         "sidebar/label-active",
+        "sidebar/menu-button/opacity/disabled",
         "sidebar/disabled-opacity-disabled",
         "sidebar/menu-button/background/current",
         "sidebar/background-2",
+        "sidebar/menu-button/font-weight/current",
         "sidebar/font-weight",
+        "sidebar/menu-button/focus-width",
         "sidebar/focus",
+        "sidebar/menu-button/edge/current",
         "sidebar/selected",
+        "sidebar/menu-button/background/open-hover",
         "sidebar/background-open-hover",
         "sidebar/label-open-hover",
+        "sidebar/menu-button/icon-size",
         "sidebar/icon-size",
+        "sidebar/menu-button/focus-ring",
         "sidebar/focus-ring-focus",
+        "sidebar/menu-button/focus-ring-offset",
         "sidebar/focus-ring-offset-focus",
         "sidebar/default/background/hover",
         "sidebar/default/label-hover",
+        "sidebar/menu-button/outline/background/@",
         "sidebar/outline/background/@",
+        "sidebar/menu-button/outline/background/hover",
         "sidebar/outline/background/hover",
         "sidebar/outline/label-hover",
+        "sidebar/menu-button/default/height",
         "sidebar/default/height",
+        "sidebar/menu-button/default/font-size",
         "sidebar/default/font-size",
+        "sidebar/menu-button/default/line-height",
         "sidebar/default/line-height",
+        "sidebar/menu-button/sm/font-size",
         "sidebar/sm/font-size",
+        "sidebar/menu-button/sm/line-height",
         "sidebar/sm/line-height",
+        "sidebar/menu-button/lg/font-size",
         "sidebar/lg/font-size",
+        "sidebar/menu-button/lg/line-height",
         "sidebar/lg/line-height",
         "sidebar/menu/action/radius",
         "sidebar/menu/action/label",
@@ -4507,6 +4588,7 @@
         "sidebar/menu/skeleton/gap",
         "sidebar/menu/skeleton/radius",
         "sidebar/menu/skeleton/padding-x",
+        "sidebar/menu/skeleton/text-height",
         "sidebar/height",
         "sidebar/menu/sub/gap",
         "sidebar/menu/sub/border",
@@ -4527,9 +4609,33 @@
         "sidebar/menu/sub/button/focus",
         "sidebar/menu/sub/button/focus-ring-focus",
         "sidebar/menu/sub/button/focus-ring-offset-focus",
+        "sidebar/menu/sub/button/sm/font-size",
         "sidebar/font-size-2",
+        "sidebar/menu/sub/button/sm/line-height",
         "sidebar/line-height-2",
-        "sidebar/menu-button/focus-offset"
+        "sidebar/menu-button/focus-offset",
+        "sidebar/container/padding",
+        "sidebar/container/border",
+        "sidebar/container/border-width",
+        "sidebar/inner/border-width",
+        "sidebar/menu/sub/border-width",
+        "sidebar/inset/margin",
+        "sidebar/separator/margin-x",
+        "sidebar/rail/line-width",
+        "sidebar/menu-button/edge-width/current",
+        "sidebar/menu/sub/button/background/current",
+        "sidebar/menu/sub/button/edge/current",
+        "sidebar/menu/sub/button/edge-width/current",
+        "sidebar/menu/sub/button/md/font-size",
+        "sidebar/menu/sub/button/md/line-height",
+        "sidebar/menu/sub/button/focus-offset",
+        "sidebar/group/label/focus-offset",
+        "sidebar/group/action/focus-offset",
+        "sidebar/menu/action/focus-offset",
+        "sidebar/menu-button/gap",
+        "sidebar/menu-button/outline/border/@",
+        "sidebar/menu-button/outline/border/hover",
+        "sidebar/menu-button/outline/border-width"
       ]
     },
     {
@@ -5320,14 +5426,14 @@
     {
       "id": "alert-dialog/content/background",
       "component": "alert-dialog",
-      "description": "Content background of the alert dialog.",
-      "default": "color.surface.canvas"
+      "description": "Fill of the alert dialog panel: a fill that floats above content.",
+      "default": "color.surface.raised"
     },
     {
       "id": "alert-dialog/content/padding",
       "component": "alert-dialog",
-      "description": "Content padding of the alert dialog.",
-      "default": "component-spacing-map.x6"
+      "description": "Padding inside the alert dialog panel: the padding inside cards and dialogs.",
+      "default": "space.inset.container"
     },
     {
       "id": "alert-dialog/content/shadow",
@@ -5368,8 +5474,8 @@
     {
       "id": "alert-dialog/title/font-weight",
       "component": "alert-dialog",
-      "description": "Title font weight of the alert dialog.",
-      "default": "type.title.font-weight"
+      "description": "Weight of the alert dialog title: a heading.",
+      "default": "type.heading.font-weight"
     },
     {
       "id": "alert-dialog/description/font-size",
@@ -5386,8 +5492,8 @@
     {
       "id": "alert-dialog/description/label",
       "component": "alert-dialog",
-      "description": "Description label of the alert dialog.",
-      "default": "color.text.muted"
+      "description": "Color of the alert dialog description: supporting text.",
+      "default": "color.text.secondary"
     },
     {
       "id": "alert-dialog/media/radius",
@@ -5418,6 +5524,24 @@
       "component": "alert-dialog",
       "description": "Content border width of the alert dialog.",
       "default": "border-width.default"
+    },
+    {
+      "id": "alert-dialog/content/label",
+      "component": "alert-dialog",
+      "description": "Text color in the alert dialog panel: main text.",
+      "default": "color.text.primary"
+    },
+    {
+      "id": "alert-dialog/title/font-family",
+      "component": "alert-dialog",
+      "description": "Typeface of the alert dialog title: a heading.",
+      "default": "type.heading.font-family"
+    },
+    {
+      "id": "alert-dialog/media/margin-bottom",
+      "component": "alert-dialog",
+      "description": "Extra gap below the alert dialog media, on top of the header gap.",
+      "default": "component-spacing-map.x2"
     },
     {
       "id": "alert/gap-y",
@@ -7976,34 +8100,69 @@
       "default": "color.text.primary"
     },
     {
+      "id": "dialog/content/border-width",
+      "component": "dialog",
+      "description": "Width of the dialog panel's edge.",
+      "default": "border-width.default"
+    },
+    {
       "id": "dialog/border-width",
       "component": "dialog",
-      "description": "Border width of the dialog.",
-      "default": "border-width.default"
+      "description": "Deprecated: use dialog/content/border-width (OD-243). Border width of the dialog.",
+      "default": "border-width.default",
+      "replaced_by": "dialog/content/border-width"
+    },
+    {
+      "id": "dialog/content/border",
+      "component": "dialog",
+      "description": "Edge of the dialog panel: a floating panel has a border of its own.",
+      "default": "color.border.default"
     },
     {
       "id": "dialog/border",
       "component": "dialog",
-      "description": "Border of the dialog.",
-      "default": "color.border.default"
+      "description": "Deprecated: use dialog/content/border (OD-243). Border of the dialog.",
+      "default": "color.border.default",
+      "replaced_by": "dialog/content/border"
+    },
+    {
+      "id": "dialog/close/radius",
+      "component": "dialog",
+      "description": "Corner of the dialog close button: a button's corner.",
+      "default": "radius.control"
     },
     {
       "id": "dialog/radius",
       "component": "dialog",
-      "description": "Radius of the dialog.",
-      "default": "radius.badge"
+      "description": "Deprecated: use dialog/close/radius (OD-243). Radius of the dialog.",
+      "default": "radius.badge",
+      "replaced_by": "dialog/close/radius"
+    },
+    {
+      "id": "dialog/close/padding",
+      "component": "dialog",
+      "description": "Padding around the dialog close icon.",
+      "default": "component-spacing-map.x1"
     },
     {
       "id": "dialog/padding",
       "component": "dialog",
-      "description": "Padding of the dialog.",
-      "default": "component-spacing-map.x1"
+      "description": "Deprecated: use dialog/close/padding (OD-243). Padding of the dialog.",
+      "default": "component-spacing-map.x1",
+      "replaced_by": "dialog/close/padding"
+    },
+    {
+      "id": "dialog/description/label",
+      "component": "dialog",
+      "description": "Color of the dialog description: supporting text.",
+      "default": "color.text.secondary"
     },
     {
       "id": "dialog/label",
       "component": "dialog",
-      "description": "Label of the dialog.",
-      "default": "color.text.secondary"
+      "description": "Deprecated: use dialog/description/label (OD-243). Label of the dialog.",
+      "default": "color.text.secondary",
+      "replaced_by": "dialog/description/label"
     },
     {
       "id": "dialog/close/background/hover",
@@ -8019,46 +8178,161 @@
       "replaced_by": "dialog/close/background/hover"
     },
     {
+      "id": "dialog/close/icon-size",
+      "component": "dialog",
+      "description": "Size of the dialog close icon: an icon next to text.",
+      "default": "size.icon"
+    },
+    {
       "id": "dialog/size",
       "component": "dialog",
-      "description": "Size of the dialog.",
-      "default": "size.icon"
+      "description": "Deprecated: use dialog/close/icon-size (OD-243). Size of the dialog.",
+      "default": "size.icon",
+      "replaced_by": "dialog/close/icon-size"
+    },
+    {
+      "id": "dialog/header/gap",
+      "component": "dialog",
+      "description": "Gap between the dialog title and its description.",
+      "default": "space.gap.tight"
     },
     {
       "id": "dialog/gap",
       "component": "dialog",
-      "description": "Gap of the dialog.",
-      "default": "space.gap.tight"
+      "description": "Deprecated: use dialog/header/gap (OD-243). Gap of the dialog.",
+      "default": "space.gap.tight",
+      "replaced_by": "dialog/header/gap"
+    },
+    {
+      "id": "dialog/footer/gap",
+      "component": "dialog",
+      "description": "Gap between the dialog footer's buttons.",
+      "default": "space.gap.default"
     },
     {
       "id": "dialog/gap-2",
       "component": "dialog",
-      "description": "Gap 2 of the dialog.",
-      "default": "space.gap.default"
+      "description": "Deprecated: use dialog/footer/gap (OD-243). Gap 2 of the dialog.",
+      "default": "space.gap.default",
+      "replaced_by": "dialog/footer/gap"
+    },
+    {
+      "id": "dialog/title/font-family",
+      "component": "dialog",
+      "description": "Typeface of the dialog title: a heading.",
+      "default": "type.heading.font-family"
     },
     {
       "id": "dialog/font-family",
       "component": "dialog",
-      "description": "Font family of the dialog.",
-      "default": "type.heading.font-family"
+      "description": "Deprecated: use dialog/title/font-family (OD-243). Font family of the dialog.",
+      "default": "type.heading.font-family",
+      "replaced_by": "dialog/title/font-family"
+    },
+    {
+      "id": "dialog/title/font-size",
+      "component": "dialog",
+      "description": "Size of the dialog title: a heading.",
+      "default": "type.heading.font-size"
     },
     {
       "id": "dialog/font-size",
       "component": "dialog",
-      "description": "Font size of the dialog.",
-      "default": "type.heading.font-size"
+      "description": "Deprecated: use dialog/title/font-size (OD-243). Font size of the dialog.",
+      "default": "type.heading.font-size",
+      "replaced_by": "dialog/title/font-size"
+    },
+    {
+      "id": "dialog/title/font-weight",
+      "component": "dialog",
+      "description": "Weight of the dialog title: a heading.",
+      "default": "type.heading.font-weight"
     },
     {
       "id": "dialog/font-weight",
       "component": "dialog",
-      "description": "Font weight of the dialog.",
-      "default": "type.heading.font-weight"
+      "description": "Deprecated: use dialog/title/font-weight (OD-243). Font weight of the dialog.",
+      "default": "type.heading.font-weight",
+      "replaced_by": "dialog/title/font-weight"
+    },
+    {
+      "id": "dialog/description/font-size",
+      "component": "dialog",
+      "description": "Size of the dialog description: body text.",
+      "default": "type.body.font-size"
     },
     {
       "id": "dialog/font-size-2",
       "component": "dialog",
-      "description": "Font size 2 of the dialog.",
-      "default": "type.body.font-size"
+      "description": "Deprecated: use dialog/description/font-size (OD-243). Font size 2 of the dialog.",
+      "default": "type.body.font-size",
+      "replaced_by": "dialog/description/font-size"
+    },
+    {
+      "id": "dialog/content/radius",
+      "component": "dialog",
+      "description": "Corner of the dialog panel: a floating panel takes the container corner, like menus and popovers.",
+      "default": "radius.container"
+    },
+    {
+      "id": "dialog/content/shadow",
+      "component": "dialog",
+      "description": "Shadow of the dialog panel: it floats over the page.",
+      "default": "elevation.overlay"
+    },
+    {
+      "id": "dialog/content/background",
+      "component": "dialog",
+      "description": "Fill of the dialog panel: a fill that floats above content.",
+      "default": "color.surface.raised"
+    },
+    {
+      "id": "dialog/overlay/background",
+      "component": "dialog",
+      "description": "The scrim behind the dialog: the see-through layer behind a modal.",
+      "default": "color.surface.scrim"
+    },
+    {
+      "id": "dialog/title/line-height",
+      "component": "dialog",
+      "description": "Line height of the dialog title: a heading.",
+      "default": "type.heading.line-height"
+    },
+    {
+      "id": "dialog/description/line-height",
+      "component": "dialog",
+      "description": "Line height of the dialog description: body text.",
+      "default": "type.body.line-height"
+    },
+    {
+      "id": "dialog/close/label",
+      "component": "dialog",
+      "description": "Color of the dialog close icon: supporting, not the main action.",
+      "default": "color.text.secondary"
+    },
+    {
+      "id": "dialog/close/focus-ring/width",
+      "component": "dialog",
+      "description": "Width of the focus ring on the dialog close button.",
+      "default": "border-width.focus"
+    },
+    {
+      "id": "dialog/close/focus-ring/color",
+      "component": "dialog",
+      "description": "Color of the focus ring on the dialog close button, at full strength.",
+      "default": "color.border.focus"
+    },
+    {
+      "id": "dialog/close/focus-ring/offset-color",
+      "component": "dialog",
+      "description": "Color of the gap between the dialog close button and its focus ring.",
+      "default": "color.surface.canvas"
+    },
+    {
+      "id": "dialog/close/focus-offset",
+      "component": "dialog",
+      "description": "Gap between the dialog close button and its focus ring.",
+      "default": "border-width.focus-offset"
     },
     {
       "id": "drawer/overlay/background",
@@ -8073,16 +8347,30 @@
       "default": "color.surface.canvas"
     },
     {
+      "id": "drawer/handle/radius",
+      "component": "drawer",
+      "description": "Corner of the drawer handle: fully round.",
+      "default": "radius.round"
+    },
+    {
       "id": "drawer/radius",
       "component": "drawer",
-      "description": "Radius of the drawer.",
-      "default": "radius.round"
+      "description": "Deprecated: use drawer/handle/radius (OD-243). Radius of the drawer.",
+      "default": "radius.round",
+      "replaced_by": "drawer/handle/radius"
+    },
+    {
+      "id": "drawer/handle/background",
+      "component": "drawer",
+      "description": "Fill of the drawer handle: a recessed fill.",
+      "default": "color.surface.sunken"
     },
     {
       "id": "drawer/background",
       "component": "drawer",
-      "description": "Background of the drawer.",
-      "default": "color.surface.sunken"
+      "description": "Deprecated: use drawer/handle/background (OD-243). Background of the drawer.",
+      "default": "color.surface.sunken",
+      "replaced_by": "drawer/handle/background"
     },
     {
       "id": "drawer/header/gap",
@@ -8117,8 +8405,8 @@
     {
       "id": "drawer/title/font-weight",
       "component": "drawer",
-      "description": "Title font weight of the drawer.",
-      "default": "type.title.font-weight"
+      "description": "Weight of the drawer title: a heading.",
+      "default": "type.heading.font-weight"
     },
     {
       "id": "drawer/title/label",
@@ -8141,8 +8429,56 @@
     {
       "id": "drawer/description/label",
       "component": "drawer",
-      "description": "Description label of the drawer.",
-      "default": "color.text.muted"
+      "description": "Color of the drawer description: supporting text.",
+      "default": "color.text.secondary"
+    },
+    {
+      "id": "drawer/handle/margin-top",
+      "component": "drawer",
+      "description": "Gap between the drawer panel's edge and its handle: the panel's inset.",
+      "default": "space.inset.container"
+    },
+    {
+      "id": "drawer/content/radius",
+      "component": "drawer",
+      "description": "Corner of the drawer panel on the side away from the screen edge: a container corner.",
+      "default": "radius.container"
+    },
+    {
+      "id": "drawer/content/border",
+      "component": "drawer",
+      "description": "Edge of the drawer panel, on the side that faces the page.",
+      "default": "color.border.default"
+    },
+    {
+      "id": "drawer/content/border-width",
+      "component": "drawer",
+      "description": "Width of the drawer panel's edge.",
+      "default": "border-width.default"
+    },
+    {
+      "id": "drawer/content/shadow",
+      "component": "drawer",
+      "description": "Shadow of the drawer panel: it sits over the page, like the sheet.",
+      "default": "elevation.overlay"
+    },
+    {
+      "id": "drawer/title/font-family",
+      "component": "drawer",
+      "description": "Typeface of the drawer title: a heading.",
+      "default": "type.heading.font-family"
+    },
+    {
+      "id": "drawer/title/font-size",
+      "component": "drawer",
+      "description": "Size of the drawer title: a heading.",
+      "default": "type.heading.font-size"
+    },
+    {
+      "id": "drawer/title/line-height",
+      "component": "drawer",
+      "description": "Line height of the drawer title: a heading.",
+      "default": "type.heading.line-height"
     },
     {
       "id": "dropdown-menu/content/padding",
@@ -11567,40 +11903,82 @@
       "default": "elevation.overlay"
     },
     {
+      "id": "sheet/close/radius",
+      "component": "sheet",
+      "description": "Corner of the sheet close button: a button's corner.",
+      "default": "radius.control"
+    },
+    {
       "id": "sheet/radius",
       "component": "sheet",
-      "description": "Radius of the sheet.",
-      "default": "radius.badge"
+      "description": "Deprecated: use sheet/close/radius (OD-243). Radius of the sheet.",
+      "default": "radius.badge",
+      "replaced_by": "sheet/close/radius"
+    },
+    {
+      "id": "sheet/close/focus-ring/offset-color",
+      "component": "sheet",
+      "description": "Color of the gap between the sheet close button and its focus ring.",
+      "default": "color.surface.canvas"
     },
     {
       "id": "sheet/focus-ring-offset",
       "component": "sheet",
-      "description": "Focus ring offset of the sheet.",
-      "default": "color.surface.canvas"
+      "description": "Deprecated: use sheet/close/focus-ring/offset-color (OD-243). Focus ring offset of the sheet.",
+      "default": "color.surface.canvas",
+      "replaced_by": "sheet/close/focus-ring/offset-color"
+    },
+    {
+      "id": "sheet/close/focus-ring/width",
+      "component": "sheet",
+      "description": "Width of the focus ring on the sheet close button.",
+      "default": "border-width.focus"
     },
     {
       "id": "sheet/focus",
       "component": "sheet",
-      "description": "Focus of the sheet.",
-      "default": "border-width.focus"
+      "description": "Deprecated: use sheet/close/focus-ring/width (OD-243). Focus of the sheet.",
+      "default": "border-width.focus",
+      "replaced_by": "sheet/close/focus-ring/width"
+    },
+    {
+      "id": "sheet/close/focus-ring/color",
+      "component": "sheet",
+      "description": "Color of the focus ring on the sheet close button, at full strength.",
+      "default": "color.border.focus"
     },
     {
       "id": "sheet/focus-ring-focus",
       "component": "sheet",
-      "description": "Focus ring focus of the sheet.",
-      "default": "color.border.focus"
+      "description": "Deprecated: use sheet/close/focus-ring/color (OD-243). Focus ring focus of the sheet.",
+      "default": "color.border.focus",
+      "replaced_by": "sheet/close/focus-ring/color"
+    },
+    {
+      "id": "sheet/close/background/hover",
+      "component": "sheet",
+      "description": "Close button background under the pointer, of the sheet.",
+      "default": "color.surface.highlight"
     },
     {
       "id": "sheet/background-open",
       "component": "sheet",
-      "description": "Background open of the sheet.",
-      "default": "color.action.secondary.@"
+      "description": "Deprecated: use sheet/close/background/hover (OD-243). Background open of the sheet.",
+      "default": "color.action.secondary.@",
+      "replaced_by": "sheet/close/background/hover"
+    },
+    {
+      "id": "sheet/close/icon-size",
+      "component": "sheet",
+      "description": "Size of the sheet close icon: an icon next to text.",
+      "default": "size.icon"
     },
     {
       "id": "sheet/icon-size",
       "component": "sheet",
-      "description": "Icon size of the sheet.",
-      "default": "size.icon"
+      "description": "Deprecated: use sheet/close/icon-size (OD-243). Icon size of the sheet.",
+      "default": "size.icon",
+      "replaced_by": "sheet/close/icon-size"
     },
     {
       "id": "sheet/header/gap",
@@ -11629,8 +12007,8 @@
     {
       "id": "sheet/title/font-weight",
       "component": "sheet",
-      "description": "Title font weight of the sheet.",
-      "default": "type.title.font-weight"
+      "description": "Weight of the sheet title: a heading.",
+      "default": "type.heading.font-weight"
     },
     {
       "id": "sheet/title/label",
@@ -11653,14 +12031,56 @@
     {
       "id": "sheet/description/label",
       "component": "sheet",
-      "description": "Description label of the sheet.",
-      "default": "color.text.muted"
+      "description": "Color of the sheet description: supporting text.",
+      "default": "color.text.secondary"
     },
     {
       "id": "sheet/close/focus-offset",
       "component": "sheet",
       "description": "Gap between the sheet close and its focus ring.",
       "default": "border-width.focus-offset"
+    },
+    {
+      "id": "sheet/close/label",
+      "component": "sheet",
+      "description": "Color of the sheet close icon: supporting, not the main action.",
+      "default": "color.text.secondary"
+    },
+    {
+      "id": "sheet/close/padding",
+      "component": "sheet",
+      "description": "Padding around the sheet close icon.",
+      "default": "component-spacing-map.x1"
+    },
+    {
+      "id": "sheet/content/border",
+      "component": "sheet",
+      "description": "Edge of the sheet panel, on the side that faces the page.",
+      "default": "color.border.default"
+    },
+    {
+      "id": "sheet/content/border-width",
+      "component": "sheet",
+      "description": "Width of the sheet panel's edge.",
+      "default": "border-width.default"
+    },
+    {
+      "id": "sheet/title/font-family",
+      "component": "sheet",
+      "description": "Typeface of the sheet title: a heading.",
+      "default": "type.heading.font-family"
+    },
+    {
+      "id": "sheet/title/font-size",
+      "component": "sheet",
+      "description": "Size of the sheet title: a heading.",
+      "default": "type.heading.font-size"
+    },
+    {
+      "id": "sheet/title/line-height",
+      "component": "sheet",
+      "description": "Line height of the sheet title: a heading.",
+      "default": "type.heading.line-height"
     },
     {
       "id": "sidebar/wrapper/background",
@@ -11693,10 +12113,17 @@
       "default": "motion.duration.feedback"
     },
     {
+      "id": "sidebar/menu-button/padding",
+      "component": "sidebar",
+      "description": "Padding of the menu button, of the sidebar.",
+      "default": "component-spacing-map.x2"
+    },
+    {
       "id": "sidebar/padding",
       "component": "sidebar",
-      "description": "Padding of the sidebar.",
-      "default": "component-spacing-map.x2"
+      "description": "Deprecated: use sidebar/menu-button/padding (OD-243). Padding of the sidebar.",
+      "default": "component-spacing-map.x2",
+      "replaced_by": "sidebar/menu-button/padding"
     },
     {
       "id": "sidebar/inner/background",
@@ -11859,8 +12286,8 @@
     {
       "id": "sidebar/group/label/label",
       "component": "sidebar",
-      "description": "Group label label of the sidebar.",
-      "default": "color.text.primary"
+      "description": "Text of a sidebar group label: supporting text, quieter than the items it heads.",
+      "default": "color.text.secondary"
     },
     {
       "id": "sidebar/group/label/focus-ring",
@@ -11925,8 +12352,9 @@
     {
       "id": "sidebar/group/action/label-hover",
       "component": "sidebar",
-      "description": "Group action label hover of the sidebar.",
-      "default": "color.text.primary"
+      "description": "Deprecated: use sidebar/group/action/label (OD-243). Group action label hover of the sidebar.",
+      "default": "color.text.primary",
+      "replaced_by": "sidebar/group/action/label"
     },
     {
       "id": "sidebar/group/action/icon-size",
@@ -11977,40 +12405,76 @@
       "default": "space.gap.default"
     },
     {
+      "id": "sidebar/menu-button/radius",
+      "component": "sidebar",
+      "description": "Corner of the menu button, of the sidebar.",
+      "default": "radius.control"
+    },
+    {
       "id": "sidebar/radius",
       "component": "sidebar",
-      "description": "Radius of the sidebar.",
-      "default": "radius.control"
+      "description": "Deprecated: use sidebar/menu-button/radius (OD-243). Radius of the sidebar.",
+      "default": "radius.control",
+      "replaced_by": "sidebar/menu-button/radius"
+    },
+    {
+      "id": "sidebar/menu-button/font-size",
+      "component": "sidebar",
+      "description": "Font size of the menu button, of the sidebar.",
+      "default": "type.body.font-size"
     },
     {
       "id": "sidebar/font-size",
       "component": "sidebar",
-      "description": "Font size of the sidebar.",
-      "default": "type.body.font-size"
+      "description": "Deprecated: use sidebar/menu-button/font-size (OD-243). Font size of the sidebar.",
+      "default": "type.body.font-size",
+      "replaced_by": "sidebar/menu-button/font-size"
+    },
+    {
+      "id": "sidebar/menu-button/line-height",
+      "component": "sidebar",
+      "description": "Line height of the menu button, of the sidebar.",
+      "default": "type.body.line-height"
     },
     {
       "id": "sidebar/line-height",
       "component": "sidebar",
-      "description": "Line height of the sidebar.",
-      "default": "type.body.line-height"
+      "description": "Deprecated: use sidebar/menu-button/line-height (OD-243). Line height of the sidebar.",
+      "default": "type.body.line-height",
+      "replaced_by": "sidebar/menu-button/line-height"
     },
     {
       "id": "sidebar/focus-ring",
       "component": "sidebar",
-      "description": "Focus ring of the sidebar.",
-      "default": "color.border.focus"
+      "description": "Deprecated: use sidebar/menu-button/focus-ring (OD-243). Focus ring of the sidebar.",
+      "default": "color.border.focus",
+      "replaced_by": "sidebar/menu-button/focus-ring"
+    },
+    {
+      "id": "sidebar/menu-button/padding-right",
+      "component": "sidebar",
+      "description": "Right padding of a menu button that has a menu action, so the label clears the action.",
+      "default": "component-spacing-map.x8"
     },
     {
       "id": "sidebar/padding-right",
       "component": "sidebar",
-      "description": "Padding right of the sidebar.",
-      "default": "component-spacing-map.x8"
+      "description": "Deprecated: use sidebar/menu-button/padding-right (OD-243). Padding right of the sidebar.",
+      "default": "component-spacing-map.x8",
+      "replaced_by": "sidebar/menu-button/padding-right"
+    },
+    {
+      "id": "sidebar/menu-button/collapsed-size",
+      "component": "sidebar",
+      "description": "Width and height of a menu button when the sidebar is collapsed to icons.",
+      "default": "size.control.default"
     },
     {
       "id": "sidebar/size",
       "component": "sidebar",
-      "description": "Size of the sidebar.",
-      "default": "size.control.default"
+      "description": "Deprecated: use sidebar/menu-button/collapsed-size (OD-243). Size of the sidebar.",
+      "default": "size.control.default",
+      "replaced_by": "sidebar/menu-button/collapsed-size"
     },
     {
       "id": "sidebar/menu-button/background/hover",
@@ -12028,8 +12492,9 @@
     {
       "id": "sidebar/label-hover",
       "component": "sidebar",
-      "description": "Label hover of the sidebar.",
-      "default": "color.text.primary"
+      "description": "Deprecated: use sidebar/label (OD-243). Label hover of the sidebar.",
+      "default": "color.text.primary",
+      "replaced_by": "sidebar/label"
     },
     {
       "id": "sidebar/menu-button/background/pressed",
@@ -12047,14 +12512,22 @@
     {
       "id": "sidebar/label-active",
       "component": "sidebar",
-      "description": "Label active of the sidebar.",
-      "default": "color.text.primary"
+      "description": "Deprecated: use sidebar/label (OD-243). Label active of the sidebar.",
+      "default": "color.text.primary",
+      "replaced_by": "sidebar/label"
+    },
+    {
+      "id": "sidebar/menu-button/opacity/disabled",
+      "component": "sidebar",
+      "description": "Opacity of a menu button that cannot be used, of the sidebar.",
+      "default": "opacity.disabled"
     },
     {
       "id": "sidebar/disabled-opacity-disabled",
       "component": "sidebar",
-      "description": "Disabled opacity disabled of the sidebar.",
-      "default": "opacity.disabled"
+      "description": "Deprecated: use sidebar/menu-button/opacity/disabled (OD-243). Disabled opacity disabled of the sidebar.",
+      "default": "opacity.disabled",
+      "replaced_by": "sidebar/menu-button/opacity/disabled"
     },
     {
       "id": "sidebar/menu-button/background/current",
@@ -12070,124 +12543,240 @@
       "replaced_by": "sidebar/menu-button/background/current"
     },
     {
+      "id": "sidebar/menu-button/font-weight/current",
+      "component": "sidebar",
+      "description": "Font weight of the menu button for the current page, of the sidebar.",
+      "default": "type.label.font-weight"
+    },
+    {
       "id": "sidebar/font-weight",
       "component": "sidebar",
-      "description": "Font weight of the sidebar.",
-      "default": "type.label.font-weight"
+      "description": "Deprecated: use sidebar/menu-button/font-weight/current (OD-243). Font weight of the sidebar.",
+      "default": "type.label.font-weight",
+      "replaced_by": "sidebar/menu-button/font-weight/current"
+    },
+    {
+      "id": "sidebar/menu-button/focus-width",
+      "component": "sidebar",
+      "description": "Width of the menu button's keyboard focus ring, of the sidebar.",
+      "default": "border-width.focus"
     },
     {
       "id": "sidebar/focus",
       "component": "sidebar",
-      "description": "Focus of the sidebar.",
-      "default": "border-width.focus"
+      "description": "Deprecated: use sidebar/menu-button/focus-width (OD-243). Focus of the sidebar.",
+      "default": "border-width.focus",
+      "replaced_by": "sidebar/menu-button/focus-width"
+    },
+    {
+      "id": "sidebar/menu-button/edge/current",
+      "component": "sidebar",
+      "description": "Edge that marks the menu button for the current page, beside its fill, so the current page is never color alone.",
+      "default": "color.border.selected"
     },
     {
       "id": "sidebar/selected",
       "component": "sidebar",
-      "description": "Selected of the sidebar.",
-      "default": "color.border.selected"
+      "description": "Deprecated: use sidebar/menu-button/edge/current (OD-243). Selected of the sidebar.",
+      "default": "color.border.selected",
+      "replaced_by": "sidebar/menu-button/edge/current"
+    },
+    {
+      "id": "sidebar/menu-button/background/open-hover",
+      "component": "sidebar",
+      "description": "Background of a menu button whose submenu is open, under the pointer: the highlight, whose rule covers open submenu triggers.",
+      "default": "color.surface.highlight"
     },
     {
       "id": "sidebar/background-open-hover",
       "component": "sidebar",
-      "description": "Background open hover of the sidebar.",
-      "default": "color.surface.sunken"
+      "description": "Deprecated: use sidebar/menu-button/background/open-hover (OD-243). Background open hover of the sidebar.",
+      "default": "color.surface.sunken",
+      "replaced_by": "sidebar/menu-button/background/open-hover"
     },
     {
       "id": "sidebar/label-open-hover",
       "component": "sidebar",
-      "description": "Label open hover of the sidebar.",
-      "default": "color.text.primary"
+      "description": "Deprecated: use sidebar/label (OD-243). Label open hover of the sidebar.",
+      "default": "color.text.primary",
+      "replaced_by": "sidebar/label"
+    },
+    {
+      "id": "sidebar/menu-button/icon-size",
+      "component": "sidebar",
+      "description": "Icon size in a menu button, of the sidebar.",
+      "default": "size.icon"
     },
     {
       "id": "sidebar/icon-size",
       "component": "sidebar",
-      "description": "Icon size of the sidebar.",
-      "default": "size.icon"
+      "description": "Deprecated: use sidebar/menu-button/icon-size (OD-243). Icon size of the sidebar.",
+      "default": "size.icon",
+      "replaced_by": "sidebar/menu-button/icon-size"
+    },
+    {
+      "id": "sidebar/menu-button/focus-ring",
+      "component": "sidebar",
+      "description": "Color of the menu button's keyboard focus ring, at full strength, of the sidebar.",
+      "default": "color.border.focus"
     },
     {
       "id": "sidebar/focus-ring-focus",
       "component": "sidebar",
-      "description": "Focus ring focus of the sidebar.",
-      "default": "color.border.focus"
+      "description": "Deprecated: use sidebar/menu-button/focus-ring (OD-243). Focus ring focus of the sidebar.",
+      "default": "color.border.focus",
+      "replaced_by": "sidebar/menu-button/focus-ring"
+    },
+    {
+      "id": "sidebar/menu-button/focus-ring-offset",
+      "component": "sidebar",
+      "description": "Color of the gap between the menu button and its focus ring: the page canvas.",
+      "default": "color.surface.canvas"
     },
     {
       "id": "sidebar/focus-ring-offset-focus",
       "component": "sidebar",
-      "description": "Focus ring offset focus of the sidebar.",
-      "default": "color.surface.canvas"
+      "description": "Deprecated: use sidebar/menu-button/focus-ring-offset (OD-243). Focus ring offset focus of the sidebar.",
+      "default": "color.surface.canvas",
+      "replaced_by": "sidebar/menu-button/focus-ring-offset"
     },
     {
       "id": "sidebar/default/background/hover",
       "component": "sidebar",
-      "description": "Default menu button background under the pointer, of the sidebar.",
-      "default": "color.surface.highlight"
+      "description": "Deprecated: use sidebar/menu-button/background/hover (OD-243). Default menu button background under the pointer, of the sidebar.",
+      "default": "color.surface.highlight",
+      "replaced_by": "sidebar/menu-button/background/hover"
     },
     {
       "id": "sidebar/default/label-hover",
       "component": "sidebar",
-      "description": "Default label hover of the sidebar.",
-      "default": "color.text.primary"
+      "description": "Deprecated: use sidebar/label (OD-243). Default label hover of the sidebar.",
+      "default": "color.text.primary",
+      "replaced_by": "sidebar/label"
+    },
+    {
+      "id": "sidebar/menu-button/outline/background/@",
+      "component": "sidebar",
+      "description": "Background of an outline menu button, of the sidebar.",
+      "default": "color.surface.canvas"
     },
     {
       "id": "sidebar/outline/background/@",
       "component": "sidebar",
-      "description": "Outline background of the sidebar.",
-      "default": "color.surface.canvas"
+      "description": "Deprecated: use sidebar/menu-button/outline/background/@ (OD-243). Outline background of the sidebar.",
+      "default": "color.surface.canvas",
+      "replaced_by": "sidebar/menu-button/outline/background/@"
+    },
+    {
+      "id": "sidebar/menu-button/outline/background/hover",
+      "component": "sidebar",
+      "description": "Background of an outline menu button under the pointer, of the sidebar.",
+      "default": "color.surface.highlight"
     },
     {
       "id": "sidebar/outline/background/hover",
       "component": "sidebar",
-      "description": "Outline menu button background under the pointer, of the sidebar.",
-      "default": "color.surface.highlight"
+      "description": "Deprecated: use sidebar/menu-button/outline/background/hover (OD-243). Outline menu button background under the pointer, of the sidebar.",
+      "default": "color.surface.highlight",
+      "replaced_by": "sidebar/menu-button/outline/background/hover"
     },
     {
       "id": "sidebar/outline/label-hover",
       "component": "sidebar",
-      "description": "Outline label hover of the sidebar.",
-      "default": "color.text.primary"
+      "description": "Deprecated: use sidebar/label (OD-243). Outline label hover of the sidebar.",
+      "default": "color.text.primary",
+      "replaced_by": "sidebar/label"
+    },
+    {
+      "id": "sidebar/menu-button/default/height",
+      "component": "sidebar",
+      "description": "Height of a default-size menu button, of the sidebar.",
+      "default": "size.control.default"
     },
     {
       "id": "sidebar/default/height",
       "component": "sidebar",
-      "description": "Default height of the sidebar.",
-      "default": "size.control.default"
+      "description": "Deprecated: use sidebar/menu-button/default/height (OD-243). Default height of the sidebar.",
+      "default": "size.control.default",
+      "replaced_by": "sidebar/menu-button/default/height"
+    },
+    {
+      "id": "sidebar/menu-button/default/font-size",
+      "component": "sidebar",
+      "description": "Font size of a default-size menu button, of the sidebar.",
+      "default": "type.body.font-size"
     },
     {
       "id": "sidebar/default/font-size",
       "component": "sidebar",
-      "description": "Default font size of the sidebar.",
-      "default": "type.body.font-size"
+      "description": "Deprecated: use sidebar/menu-button/default/font-size (OD-243). Default font size of the sidebar.",
+      "default": "type.body.font-size",
+      "replaced_by": "sidebar/menu-button/default/font-size"
+    },
+    {
+      "id": "sidebar/menu-button/default/line-height",
+      "component": "sidebar",
+      "description": "Line height of a default-size menu button, of the sidebar.",
+      "default": "type.body.line-height"
     },
     {
       "id": "sidebar/default/line-height",
       "component": "sidebar",
-      "description": "Default line height of the sidebar.",
-      "default": "type.body.line-height"
+      "description": "Deprecated: use sidebar/menu-button/default/line-height (OD-243). Default line height of the sidebar.",
+      "default": "type.body.line-height",
+      "replaced_by": "sidebar/menu-button/default/line-height"
+    },
+    {
+      "id": "sidebar/menu-button/sm/font-size",
+      "component": "sidebar",
+      "description": "Font size of a small menu button, of the sidebar.",
+      "default": "type.caption.font-size"
     },
     {
       "id": "sidebar/sm/font-size",
       "component": "sidebar",
-      "description": "Sm font size of the sidebar.",
-      "default": "type.caption.font-size"
+      "description": "Deprecated: use sidebar/menu-button/sm/font-size (OD-243). Sm font size of the sidebar.",
+      "default": "type.caption.font-size",
+      "replaced_by": "sidebar/menu-button/sm/font-size"
+    },
+    {
+      "id": "sidebar/menu-button/sm/line-height",
+      "component": "sidebar",
+      "description": "Line height of a small menu button, of the sidebar.",
+      "default": "type.caption.line-height"
     },
     {
       "id": "sidebar/sm/line-height",
       "component": "sidebar",
-      "description": "Sm line height of the sidebar.",
-      "default": "type.caption.line-height"
+      "description": "Deprecated: use sidebar/menu-button/sm/line-height (OD-243). Sm line height of the sidebar.",
+      "default": "type.caption.line-height",
+      "replaced_by": "sidebar/menu-button/sm/line-height"
+    },
+    {
+      "id": "sidebar/menu-button/lg/font-size",
+      "component": "sidebar",
+      "description": "Font size of a large menu button, of the sidebar.",
+      "default": "type.body.font-size"
     },
     {
       "id": "sidebar/lg/font-size",
       "component": "sidebar",
-      "description": "Lg font size of the sidebar.",
-      "default": "type.body.font-size"
+      "description": "Deprecated: use sidebar/menu-button/lg/font-size (OD-243). Lg font size of the sidebar.",
+      "default": "type.body.font-size",
+      "replaced_by": "sidebar/menu-button/lg/font-size"
+    },
+    {
+      "id": "sidebar/menu-button/lg/line-height",
+      "component": "sidebar",
+      "description": "Line height of a large menu button, of the sidebar.",
+      "default": "type.body.line-height"
     },
     {
       "id": "sidebar/lg/line-height",
       "component": "sidebar",
-      "description": "Lg line height of the sidebar.",
-      "default": "type.body.line-height"
+      "description": "Deprecated: use sidebar/menu-button/lg/line-height (OD-243). Lg line height of the sidebar.",
+      "default": "type.body.line-height",
+      "replaced_by": "sidebar/menu-button/lg/line-height"
     },
     {
       "id": "sidebar/menu/action/radius",
@@ -12216,8 +12805,9 @@
     {
       "id": "sidebar/menu/action/label-hover",
       "component": "sidebar",
-      "description": "Menu action label hover of the sidebar.",
-      "default": "color.text.primary"
+      "description": "Deprecated: use sidebar/menu/action/label (OD-243). Menu action label hover of the sidebar.",
+      "default": "color.text.primary",
+      "replaced_by": "sidebar/menu/action/label"
     },
     {
       "id": "sidebar/menu/action/icon-size",
@@ -12304,10 +12894,17 @@
       "default": "component-spacing-map.x2"
     },
     {
+      "id": "sidebar/menu/skeleton/text-height",
+      "component": "sidebar",
+      "description": "Height of the text bar of a menu skeleton, of the sidebar.",
+      "default": "size.icon"
+    },
+    {
       "id": "sidebar/height",
       "component": "sidebar",
-      "description": "Height of the sidebar.",
-      "default": "size.icon"
+      "description": "Deprecated: use sidebar/menu/skeleton/text-height (OD-243). Height of the sidebar.",
+      "default": "size.icon",
+      "replaced_by": "sidebar/menu/skeleton/text-height"
     },
     {
       "id": "sidebar/menu/sub/gap",
@@ -12372,8 +12969,9 @@
     {
       "id": "sidebar/menu/sub/button/label-hover",
       "component": "sidebar",
-      "description": "Menu sub button label hover of the sidebar.",
-      "default": "color.text.primary"
+      "description": "Deprecated: use sidebar/menu/sub/button/label (OD-243). Menu sub button label hover of the sidebar.",
+      "default": "color.text.primary",
+      "replaced_by": "sidebar/menu/sub/button/label"
     },
     {
       "id": "sidebar/menu/sub/button/background/pressed",
@@ -12391,8 +12989,9 @@
     {
       "id": "sidebar/menu/sub/button/label-active",
       "component": "sidebar",
-      "description": "Menu sub button label active of the sidebar.",
-      "default": "color.text.primary"
+      "description": "Deprecated: use sidebar/menu/sub/button/label (OD-243). Menu sub button label active of the sidebar.",
+      "default": "color.text.primary",
+      "replaced_by": "sidebar/menu/sub/button/label"
     },
     {
       "id": "sidebar/menu/sub/button/disabled-opacity-disabled",
@@ -12425,22 +13024,168 @@
       "default": "color.surface.canvas"
     },
     {
+      "id": "sidebar/menu/sub/button/sm/font-size",
+      "component": "sidebar",
+      "description": "Font size of a small submenu button, of the sidebar.",
+      "default": "type.caption.font-size"
+    },
+    {
       "id": "sidebar/font-size-2",
       "component": "sidebar",
-      "description": "Font size 2 of the sidebar.",
-      "default": "type.caption.font-size"
+      "description": "Deprecated: use sidebar/menu/sub/button/sm/font-size (OD-243). Font size 2 of the sidebar.",
+      "default": "type.caption.font-size",
+      "replaced_by": "sidebar/menu/sub/button/sm/font-size"
+    },
+    {
+      "id": "sidebar/menu/sub/button/sm/line-height",
+      "component": "sidebar",
+      "description": "Line height of a small submenu button, of the sidebar.",
+      "default": "type.caption.line-height"
     },
     {
       "id": "sidebar/line-height-2",
       "component": "sidebar",
-      "description": "Line height 2 of the sidebar.",
-      "default": "type.caption.line-height"
+      "description": "Deprecated: use sidebar/menu/sub/button/sm/line-height (OD-243). Line height 2 of the sidebar.",
+      "default": "type.caption.line-height",
+      "replaced_by": "sidebar/menu/sub/button/sm/line-height"
     },
     {
       "id": "sidebar/menu-button/focus-offset",
       "component": "sidebar",
       "description": "Gap between the sidebar menu button and its focus ring.",
       "default": "border-width.focus-offset"
+    },
+    {
+      "id": "sidebar/container/padding",
+      "component": "sidebar",
+      "description": "Space between the screen edge and a floating or inset sidebar panel.",
+      "default": "component-spacing-map.x2"
+    },
+    {
+      "id": "sidebar/container/border",
+      "component": "sidebar",
+      "description": "Edge between the sidebar and the page, on the side that faces the page.",
+      "default": "color.border.default"
+    },
+    {
+      "id": "sidebar/container/border-width",
+      "component": "sidebar",
+      "description": "Width of the edge between the sidebar and the page.",
+      "default": "border-width.default"
+    },
+    {
+      "id": "sidebar/inner/border-width",
+      "component": "sidebar",
+      "description": "Width of the edge of a floating sidebar panel.",
+      "default": "border-width.default"
+    },
+    {
+      "id": "sidebar/menu/sub/border-width",
+      "component": "sidebar",
+      "description": "Width of the line that ties a submenu to its parent menu button.",
+      "default": "border-width.default"
+    },
+    {
+      "id": "sidebar/inset/margin",
+      "component": "sidebar",
+      "description": "Space around the inset main area, the same step as the inset sidebar's padding so both panels sit on one grid.",
+      "default": "component-spacing-map.x2"
+    },
+    {
+      "id": "sidebar/separator/margin-x",
+      "component": "sidebar",
+      "description": "Space at each end of a sidebar separator, so it lines up with the group padding.",
+      "default": "component-spacing-map.x2"
+    },
+    {
+      "id": "sidebar/rail/line-width",
+      "component": "sidebar",
+      "description": "Width of the line the rail shows on the sidebar edge under the pointer: a border.",
+      "default": "border-width.default"
+    },
+    {
+      "id": "sidebar/menu-button/edge-width/current",
+      "component": "sidebar",
+      "description": "Width of the edge that marks the menu button for the current page, beside its fill, so the current page is never color alone.",
+      "default": "border-width.focus"
+    },
+    {
+      "id": "sidebar/menu/sub/button/background/current",
+      "component": "sidebar",
+      "description": "Background of the submenu button for the current page, of the sidebar.",
+      "default": "color.surface.selected"
+    },
+    {
+      "id": "sidebar/menu/sub/button/edge/current",
+      "component": "sidebar",
+      "description": "Edge that marks the submenu button for the current page, beside its fill, so the current page is never color alone.",
+      "default": "color.border.selected"
+    },
+    {
+      "id": "sidebar/menu/sub/button/edge-width/current",
+      "component": "sidebar",
+      "description": "Width of the edge that marks the submenu button for the current page.",
+      "default": "border-width.focus"
+    },
+    {
+      "id": "sidebar/menu/sub/button/md/font-size",
+      "component": "sidebar",
+      "description": "Font size of a medium submenu button, of the sidebar.",
+      "default": "type.body.font-size"
+    },
+    {
+      "id": "sidebar/menu/sub/button/md/line-height",
+      "component": "sidebar",
+      "description": "Line height of a medium submenu button, of the sidebar.",
+      "default": "type.body.line-height"
+    },
+    {
+      "id": "sidebar/menu/sub/button/focus-offset",
+      "component": "sidebar",
+      "description": "Gap between the sidebar submenu button and its focus ring.",
+      "default": "border-width.focus-offset"
+    },
+    {
+      "id": "sidebar/group/label/focus-offset",
+      "component": "sidebar",
+      "description": "Gap between the sidebar group label and its focus ring.",
+      "default": "border-width.focus-offset"
+    },
+    {
+      "id": "sidebar/group/action/focus-offset",
+      "component": "sidebar",
+      "description": "Gap between the sidebar group action and its focus ring.",
+      "default": "border-width.focus-offset"
+    },
+    {
+      "id": "sidebar/menu/action/focus-offset",
+      "component": "sidebar",
+      "description": "Gap between the sidebar menu action and its focus ring.",
+      "default": "border-width.focus-offset"
+    },
+    {
+      "id": "sidebar/menu-button/gap",
+      "component": "sidebar",
+      "description": "Gap between the icon and the label of a menu button, of the sidebar.",
+      "default": "space.gap.default"
+    },
+    {
+      "id": "sidebar/menu-button/outline/border/@",
+      "component": "sidebar",
+      "description": "Edge of an outline menu button, of the sidebar.",
+      "default": "color.border.default"
+    },
+    {
+      "id": "sidebar/menu-button/outline/border/hover",
+      "component": "sidebar",
+      "description": "Edge of an outline menu button under the pointer: it takes the highlight fill, so the item reads as one shape.",
+      "default": "color.surface.highlight"
+    },
+    {
+      "id": "sidebar/menu-button/outline/border-width",
+      "component": "sidebar",
+      "description": "Width of the edge of an outline menu button, of the sidebar.",
+      "default": "border-width.default"
     },
     {
       "id": "skeleton/radius",
@@ -13611,7 +14356,8 @@
         "use_for": [
           "Input borders",
           "Checkbox borders",
-          "Secondary button borders"
+          "Secondary button borders",
+          "An edge under the pointer, like the sidebar rail line"
         ],
         "not_for": [
           {
@@ -13646,7 +14392,8 @@
         "intent": "The edge that marks a selected item, beside its fill, so selection is never color alone.",
         "use_for": [
           "A selected table row",
-          "The current item in a sidebar or menu"
+          "The current item in a sidebar or menu",
+          "A choice that is checked or on, beside its fill"
         ],
         "not_for": [
           {
@@ -15369,6 +16116,399 @@
         "source": {
           "name": "Open DS",
           "license": "MIT"
+        },
+        "anatomy": {
+          "intro": "the alert dialog",
+          "drawing": {
+            "kind": "tree",
+            "stage": {
+              "t": "frame",
+              "name": "Scrim",
+              "fill": "component.alert-dialog.overlay.background",
+              "pad": [
+                48,
+                40
+              ],
+              "n": 1,
+              "at": "corner",
+              "children": [
+                {
+                  "t": "frame",
+                  "name": "Panel",
+                  "layout": "col",
+                  "align": "start",
+                  "w": 440,
+                  "fill": "component.alert-dialog.content.background",
+                  "stroke": "component.alert-dialog.content.border",
+                  "strokeW": "component.alert-dialog.content.border-width",
+                  "radius": "component.alert-dialog.content.radius",
+                  "shadow": "component.alert-dialog.content.shadow",
+                  "pad": "component.alert-dialog.content.padding",
+                  "gap": "component.alert-dialog.content.gap",
+                  "n": 2,
+                  "at": "shadow",
+                  "children": [
+                    {
+                      "t": "frame",
+                      "name": "Header",
+                      "align": "start",
+                      "gap": "component.alert-dialog.header.gap-x",
+                      "n": 3,
+                      "at": "right",
+                      "children": [
+                        {
+                          "t": "frame",
+                          "name": "Media",
+                          "w": 64,
+                          "h": 64,
+                          "justify": "center",
+                          "fill": "component.alert-dialog.media.background",
+                          "radius": "component.alert-dialog.media.radius",
+                          "n": 4,
+                          "at": "corner",
+                          "children": [
+                            {
+                              "t": "icon",
+                              "icon": "trash-2",
+                              "size": "component.alert-dialog.media.size",
+                              "color": "color.status.danger"
+                            }
+                          ]
+                        },
+                        {
+                          "t": "frame",
+                          "name": "Text",
+                          "layout": "col",
+                          "align": "start",
+                          "gap": "component.alert-dialog.header.gap",
+                          "children": [
+                            {
+                              "t": "text",
+                              "text": "Delete this project?",
+                              "size": "component.alert-dialog.title.font-size",
+                              "color": "component.alert-dialog.content.label",
+                              "font": "component.alert-dialog.title.font-family",
+                              "weight": "bold",
+                              "n": 5
+                            },
+                            {
+                              "t": "text",
+                              "text": "Q3 Forecast and its 12 reports will be",
+                              "size": "component.alert-dialog.description.font-size",
+                              "color": "component.alert-dialog.description.label",
+                              "n": 6
+                            },
+                            {
+                              "t": "text",
+                              "text": "deleted. You can't undo this.",
+                              "size": "component.alert-dialog.description.font-size",
+                              "color": "component.alert-dialog.description.label"
+                            }
+                          ]
+                        }
+                      ]
+                    },
+                    {
+                      "t": "frame",
+                      "name": "Footer",
+                      "w": "fill",
+                      "justify": "end",
+                      "gap": "component.alert-dialog.footer.gap",
+                      "n": 7,
+                      "children": [
+                        {
+                          "t": "frame",
+                          "name": "Button · secondary",
+                          "h": "component.button.height",
+                          "padX": "component.button.padding-x",
+                          "radius": "component.button.radius",
+                          "justify": "center",
+                          "fill": "component.button.secondary.background",
+                          "stroke": "component.button.secondary.border",
+                          "strokeW": "component.button.secondary.border-width",
+                          "children": [
+                            {
+                              "t": "text",
+                              "text": "Cancel",
+                              "size": "component.button.font-size",
+                              "color": "component.button.secondary.label",
+                              "weight": "bold",
+                              "font": "component.button.font-family"
+                            }
+                          ]
+                        },
+                        {
+                          "t": "frame",
+                          "name": "Button · danger",
+                          "h": "component.button.height",
+                          "padX": "component.button.padding-x",
+                          "radius": "component.button.radius",
+                          "justify": "center",
+                          "fill": "component.button.danger.background",
+                          "children": [
+                            {
+                              "t": "text",
+                              "text": "Delete",
+                              "size": "component.button.font-size",
+                              "color": "component.button.danger.label",
+                              "weight": "bold",
+                              "font": "component.button.font-family"
+                            }
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            }
+          },
+          "parts": [
+            {
+              "n": 1,
+              "id": "scrim",
+              "label": "Scrim",
+              "need": "required",
+              "roles": [
+                "layering"
+              ],
+              "tokens": [
+                "component.alert-dialog.overlay.background"
+              ]
+            },
+            {
+              "n": 2,
+              "id": "panel",
+              "label": "Panel",
+              "need": "required",
+              "roles": [
+                "containment",
+                "layering"
+              ],
+              "tokens": [
+                "component.alert-dialog.content.background",
+                "component.alert-dialog.content.border",
+                "component.alert-dialog.content.radius",
+                "component.alert-dialog.content.shadow"
+              ]
+            },
+            {
+              "n": 3,
+              "id": "header",
+              "label": "Header",
+              "need": "required",
+              "roles": [
+                "grouping",
+                "hierarchy"
+              ],
+              "tokens": [
+                "component.alert-dialog.header.gap",
+                "component.alert-dialog.header.gap-x"
+              ],
+              "children": [
+                {
+                  "n": 4,
+                  "id": "media",
+                  "label": "Media",
+                  "need": "optional",
+                  "roles": [
+                    "meaning",
+                    "emphasis"
+                  ],
+                  "tokens": [
+                    "component.alert-dialog.media.background",
+                    "component.alert-dialog.media.radius",
+                    "component.alert-dialog.media.size"
+                  ]
+                },
+                {
+                  "n": 5,
+                  "id": "title",
+                  "label": "Title",
+                  "need": "required",
+                  "roles": [
+                    "hierarchy",
+                    "readability"
+                  ],
+                  "tokens": [
+                    "component.alert-dialog.title.font-family",
+                    "component.alert-dialog.title.font-size",
+                    "component.alert-dialog.title.font-weight"
+                  ]
+                },
+                {
+                  "n": 6,
+                  "id": "description",
+                  "label": "Description",
+                  "need": "optional",
+                  "roles": [
+                    "readability"
+                  ],
+                  "tokens": [
+                    "component.alert-dialog.description.font-size",
+                    "component.alert-dialog.description.label"
+                  ]
+                }
+              ]
+            },
+            {
+              "n": 7,
+              "id": "footer",
+              "label": "Footer",
+              "need": "required",
+              "roles": [
+                "grouping"
+              ],
+              "tokens": [
+                "component.alert-dialog.footer.gap"
+              ],
+              "children": [
+                {
+                  "id": "cancel",
+                  "label": "Cancel",
+                  "need": "required",
+                  "note": "shown by Button",
+                  "roles": [
+                    "affordance"
+                  ],
+                  "tokens": []
+                },
+                {
+                  "id": "action",
+                  "label": "Action",
+                  "need": "required",
+                  "note": "shown by Button",
+                  "roles": [
+                    "affordance",
+                    "emphasis",
+                    "meaning"
+                  ],
+                  "tokens": []
+                }
+              ]
+            }
+          ],
+          "cards": [
+            {
+              "title": "Panel and scrim",
+              "parts": [
+                1,
+                2
+              ],
+              "roles": [
+                "containment",
+                "layering"
+              ],
+              "answers": [
+                "elevation.roles",
+                "elevation.values",
+                "shape.values"
+              ],
+              "rules": [
+                "menu-or-dialog"
+              ],
+              "tokens": [
+                "component.alert-dialog.overlay.background",
+                "component.alert-dialog.content.background",
+                "component.alert-dialog.content.shadow",
+                "component.alert-dialog.content.radius",
+                "component.alert-dialog.content.border"
+              ]
+            },
+            {
+              "title": "Room inside the panel",
+              "parts": [
+                2
+              ],
+              "roles": [
+                "containment",
+                "grouping"
+              ],
+              "answers": [
+                "spacing.values"
+              ],
+              "rules": [
+                "related-items"
+              ],
+              "tokens": [
+                "component.alert-dialog.content.padding",
+                "component.alert-dialog.content.gap"
+              ]
+            },
+            {
+              "title": "Media",
+              "parts": [
+                4
+              ],
+              "roles": [
+                "meaning",
+                "emphasis"
+              ],
+              "answers": [
+                "iconography.values",
+                "shape.values"
+              ],
+              "rules": [
+                "destructive-action"
+              ],
+              "tokens": [
+                "component.alert-dialog.media.background",
+                "component.alert-dialog.media.radius",
+                "component.alert-dialog.media.size",
+                "component.alert-dialog.media.margin-bottom"
+              ]
+            },
+            {
+              "title": "The question",
+              "parts": [
+                3,
+                5,
+                6
+              ],
+              "roles": [
+                "hierarchy",
+                "readability"
+              ],
+              "answers": [
+                "typography.roles",
+                "typography.values",
+                "color.roles",
+                "content.q2"
+              ],
+              "rules": [
+                "confirm-words",
+                "paragraph"
+              ],
+              "tokens": [
+                "component.alert-dialog.title.font-family",
+                "component.alert-dialog.title.font-size",
+                "component.alert-dialog.title.font-weight",
+                "component.alert-dialog.description.font-size",
+                "component.alert-dialog.description.label",
+                "component.alert-dialog.header.gap"
+              ]
+            },
+            {
+              "title": "Footer",
+              "parts": [
+                7
+              ],
+              "roles": [
+                "grouping"
+              ],
+              "answers": [
+                "spacing.values"
+              ],
+              "rules": [
+                "commit-action",
+                "alternative-action",
+                "destructive-action"
+              ],
+              "tokens": [
+                "component.alert-dialog.footer.gap"
+              ]
+            }
+          ]
         }
       },
       {
@@ -18403,6 +19543,582 @@
           "id": "modal",
           "license": "MIT",
           "url": "https://github.com/3dyonic/open-ux/blob/main/catalog/components/modal.json"
+        },
+        "anatomy": {
+          "intro": "the dialog",
+          "drawing": {
+            "kind": "tree",
+            "stage": {
+              "t": "frame",
+              "name": "Scrim",
+              "fill": "component.dialog.overlay.background",
+              "pad": [
+                48,
+                40
+              ],
+              "n": 1,
+              "at": "corner",
+              "children": [
+                {
+                  "t": "frame",
+                  "name": "Panel",
+                  "layout": "col",
+                  "align": "start",
+                  "w": 400,
+                  "fill": "component.dialog.content.background",
+                  "stroke": "component.dialog.content.border",
+                  "strokeW": "component.dialog.content.border-width",
+                  "radius": "component.dialog.content.radius",
+                  "shadow": "component.dialog.content.shadow",
+                  "pad": "component.dialog.content.padding",
+                  "gap": "component.dialog.content.gap",
+                  "n": 2,
+                  "at": "shadow",
+                  "children": [
+                    {
+                      "t": "frame",
+                      "name": "Header",
+                      "layout": "col",
+                      "align": "start",
+                      "gap": "component.dialog.header.gap",
+                      "n": 3,
+                      "at": "right",
+                      "children": [
+                        {
+                          "t": "text",
+                          "text": "Edit profile",
+                          "size": "component.dialog.title.font-size",
+                          "color": "component.dialog.content.label",
+                          "font": "component.dialog.title.font-family",
+                          "weight": "bold",
+                          "n": 4
+                        },
+                        {
+                          "t": "text",
+                          "text": "Change your name and email, then save.",
+                          "size": "component.dialog.description.font-size",
+                          "color": "component.dialog.description.label",
+                          "n": 5
+                        }
+                      ]
+                    },
+                    {
+                      "t": "frame",
+                      "name": "Field · Name",
+                      "layout": "col",
+                      "align": "start",
+                      "w": "fill",
+                      "gap": "component.label.gap",
+                      "children": [
+                        {
+                          "t": "text",
+                          "text": "Name",
+                          "size": "component.label.font-size",
+                          "color": "component.label.label",
+                          "weight": "bold"
+                        },
+                        {
+                          "t": "frame",
+                          "name": "Input",
+                          "w": "fill",
+                          "h": "component.input.height",
+                          "padX": "component.input.padding-x",
+                          "radius": "component.input.radius",
+                          "fill": "component.input.background",
+                          "stroke": "component.input.border",
+                          "strokeW": "component.input.border-width",
+                          "children": [
+                            {
+                              "t": "text",
+                              "text": "Dana Whitfield",
+                              "size": "component.input.font-size",
+                              "color": "component.input.text"
+                            }
+                          ]
+                        }
+                      ]
+                    },
+                    {
+                      "t": "frame",
+                      "name": "Field · Email",
+                      "layout": "col",
+                      "align": "start",
+                      "w": "fill",
+                      "gap": "component.label.gap",
+                      "children": [
+                        {
+                          "t": "text",
+                          "text": "Email",
+                          "size": "component.label.font-size",
+                          "color": "component.label.label",
+                          "weight": "bold"
+                        },
+                        {
+                          "t": "frame",
+                          "name": "Input",
+                          "w": "fill",
+                          "h": "component.input.height",
+                          "padX": "component.input.padding-x",
+                          "radius": "component.input.radius",
+                          "fill": "component.input.background",
+                          "stroke": "component.input.border",
+                          "strokeW": "component.input.border-width",
+                          "children": [
+                            {
+                              "t": "text",
+                              "text": "dana@northwind.com",
+                              "size": "component.input.font-size",
+                              "color": "component.input.text"
+                            }
+                          ]
+                        }
+                      ]
+                    },
+                    {
+                      "t": "frame",
+                      "name": "Footer",
+                      "w": "fill",
+                      "justify": "end",
+                      "gap": "component.dialog.footer.gap",
+                      "n": 6,
+                      "children": [
+                        {
+                          "t": "frame",
+                          "name": "Button · secondary",
+                          "h": "component.button.height",
+                          "padX": "component.button.padding-x",
+                          "radius": "component.button.radius",
+                          "justify": "center",
+                          "fill": "component.button.secondary.background",
+                          "stroke": "component.button.secondary.border",
+                          "strokeW": "component.button.secondary.border-width",
+                          "children": [
+                            {
+                              "t": "text",
+                              "text": "Cancel",
+                              "size": "component.button.font-size",
+                              "color": "component.button.secondary.label",
+                              "weight": "bold",
+                              "font": "component.button.font-family"
+                            }
+                          ]
+                        },
+                        {
+                          "t": "frame",
+                          "name": "Button · primary",
+                          "h": "component.button.height",
+                          "padX": "component.button.padding-x",
+                          "radius": "component.button.radius",
+                          "justify": "center",
+                          "fill": "component.button.primary.background",
+                          "children": [
+                            {
+                              "t": "text",
+                              "text": "Save changes",
+                              "size": "component.button.font-size",
+                              "color": "component.button.primary.label",
+                              "weight": "bold",
+                              "font": "component.button.font-family"
+                            }
+                          ]
+                        }
+                      ]
+                    },
+                    {
+                      "t": "frame",
+                      "name": "Close",
+                      "radius": "component.dialog.close.radius",
+                      "pad": "component.dialog.close.padding",
+                      "n": 7,
+                      "children": [
+                        {
+                          "t": "icon",
+                          "icon": "x",
+                          "size": "component.dialog.close.icon-size",
+                          "color": "component.dialog.close.label"
+                        }
+                      ],
+                      "abs": [
+                        360,
+                        12
+                      ]
+                    }
+                  ]
+                }
+              ]
+            }
+          },
+          "parts": [
+            {
+              "n": 1,
+              "id": "scrim",
+              "label": "Scrim",
+              "need": "required",
+              "roles": [
+                "layering"
+              ],
+              "tokens": [
+                "component.dialog.overlay.background"
+              ]
+            },
+            {
+              "n": 2,
+              "id": "panel",
+              "label": "Panel",
+              "need": "required",
+              "roles": [
+                "containment",
+                "layering"
+              ],
+              "tokens": [
+                "component.dialog.content.background",
+                "component.dialog.content.border",
+                "component.dialog.content.radius",
+                "component.dialog.content.shadow"
+              ]
+            },
+            {
+              "n": 3,
+              "id": "header",
+              "label": "Header",
+              "need": "required",
+              "roles": [
+                "grouping",
+                "hierarchy"
+              ],
+              "tokens": [
+                "component.dialog.header.gap"
+              ],
+              "children": [
+                {
+                  "n": 4,
+                  "id": "title",
+                  "label": "Title",
+                  "need": "required",
+                  "roles": [
+                    "hierarchy",
+                    "readability"
+                  ],
+                  "tokens": [
+                    "component.dialog.title.font-family",
+                    "component.dialog.title.font-size",
+                    "component.dialog.title.font-weight"
+                  ]
+                },
+                {
+                  "n": 5,
+                  "id": "description",
+                  "label": "Description",
+                  "need": "optional",
+                  "roles": [
+                    "readability"
+                  ],
+                  "tokens": [
+                    "component.dialog.description.font-size",
+                    "component.dialog.description.label"
+                  ]
+                }
+              ]
+            },
+            {
+              "n": 6,
+              "id": "footer",
+              "label": "Footer",
+              "need": "optional",
+              "roles": [
+                "grouping"
+              ],
+              "tokens": [
+                "component.dialog.footer.gap"
+              ]
+            },
+            {
+              "id": "actions",
+              "label": "Actions",
+              "need": "optional",
+              "note": "shown by Button",
+              "roles": [
+                "affordance",
+                "emphasis"
+              ],
+              "tokens": []
+            },
+            {
+              "n": 7,
+              "id": "close",
+              "label": "Close button",
+              "need": "required",
+              "roles": [
+                "affordance",
+                "reach"
+              ],
+              "tokens": [
+                "component.dialog.close.label",
+                "component.dialog.close.radius",
+                "component.dialog.close.icon-size"
+              ]
+            },
+            {
+              "id": "close-hover",
+              "label": "Close hover fill",
+              "need": "state",
+              "roles": [
+                "feedback"
+              ],
+              "tokens": [
+                "component.dialog.close.background.hover"
+              ],
+              "n": 8
+            },
+            {
+              "id": "close-focus-ring",
+              "label": "Close focus ring",
+              "need": "state",
+              "roles": [
+                "focus"
+              ],
+              "tokens": [
+                "component.dialog.close.focus-ring.width",
+                "component.dialog.close.focus-ring.color",
+                "component.dialog.close.focus-offset"
+              ],
+              "n": 9
+            }
+          ],
+          "cards": [
+            {
+              "title": "Panel and scrim",
+              "parts": [
+                1,
+                2
+              ],
+              "roles": [
+                "containment",
+                "layering"
+              ],
+              "answers": [
+                "elevation.roles",
+                "elevation.values",
+                "shape.values"
+              ],
+              "rules": [
+                "menu-or-dialog"
+              ],
+              "tokens": [
+                "component.dialog.overlay.background",
+                "component.dialog.content.background",
+                "component.dialog.content.shadow",
+                "component.dialog.content.radius",
+                "component.dialog.content.border"
+              ]
+            },
+            {
+              "title": "Room inside the panel",
+              "parts": [
+                2
+              ],
+              "roles": [
+                "containment",
+                "grouping"
+              ],
+              "answers": [
+                "spacing.values"
+              ],
+              "rules": [
+                "related-items"
+              ],
+              "tokens": [
+                "component.dialog.content.padding",
+                "component.dialog.content.gap"
+              ]
+            },
+            {
+              "title": "Title and description",
+              "parts": [
+                3,
+                4,
+                5
+              ],
+              "roles": [
+                "hierarchy",
+                "readability"
+              ],
+              "answers": [
+                "typography.roles",
+                "typography.values",
+                "color.roles"
+              ],
+              "rules": [
+                "paragraph",
+                "related-items"
+              ],
+              "tokens": [
+                "component.dialog.title.font-family",
+                "component.dialog.title.font-size",
+                "component.dialog.title.font-weight",
+                "component.dialog.description.font-size",
+                "component.dialog.description.label",
+                "component.dialog.header.gap"
+              ]
+            },
+            {
+              "title": "Footer",
+              "parts": [
+                6
+              ],
+              "roles": [
+                "grouping"
+              ],
+              "answers": [
+                "spacing.values"
+              ],
+              "rules": [
+                "commit-action",
+                "alternative-action",
+                "destructive-action"
+              ],
+              "tokens": [
+                "component.dialog.footer.gap"
+              ]
+            },
+            {
+              "title": "Close button",
+              "parts": [
+                7,
+                8,
+                9
+              ],
+              "roles": [
+                "affordance",
+                "reach",
+                "feedback",
+                "focus"
+              ],
+              "answers": [
+                "shape.values",
+                "iconography.values",
+                "accessibility.roles"
+              ],
+              "rules": [
+                "icon-alone",
+                "hover-feedback",
+                "keyboard-focus"
+              ],
+              "tokens": [
+                "component.dialog.close.radius",
+                "component.dialog.close.icon-size",
+                "component.dialog.close.label",
+                "component.dialog.close.background.hover",
+                "component.dialog.close.focus-ring.color",
+                "component.dialog.close.focus-ring.width",
+                "component.dialog.close.focus-offset"
+              ],
+              "image": {
+                "tree": {
+                  "t": "frame",
+                  "name": "Close button states",
+                  "gap": "space.gap.section",
+                  "align": "end",
+                  "children": [
+                    {
+                      "t": "frame",
+                      "name": "Rest",
+                      "layout": "col",
+                      "gap": "space.gap.tight",
+                      "children": [
+                        {
+                          "t": "frame",
+                          "name": "Close · rest",
+                          "radius": "component.dialog.close.radius",
+                          "pad": "component.dialog.close.padding",
+                          "n": 7,
+                          "children": [
+                            {
+                              "t": "icon",
+                              "icon": "x",
+                              "size": "component.dialog.close.icon-size",
+                              "color": "component.dialog.close.label"
+                            }
+                          ]
+                        },
+                        {
+                          "t": "text",
+                          "text": "Rest",
+                          "size": "type.caption.font-size",
+                          "color": "color.text.muted"
+                        }
+                      ]
+                    },
+                    {
+                      "t": "frame",
+                      "name": "Hover",
+                      "layout": "col",
+                      "gap": "space.gap.tight",
+                      "children": [
+                        {
+                          "t": "frame",
+                          "name": "Close · hover",
+                          "radius": "component.dialog.close.radius",
+                          "pad": "component.dialog.close.padding",
+                          "fill": "component.dialog.close.background.hover",
+                          "n": 8,
+                          "children": [
+                            {
+                              "t": "icon",
+                              "icon": "x",
+                              "size": "component.dialog.close.icon-size",
+                              "color": "component.dialog.close.label"
+                            }
+                          ]
+                        },
+                        {
+                          "t": "text",
+                          "text": "Hover",
+                          "size": "type.caption.font-size",
+                          "color": "color.text.muted"
+                        }
+                      ]
+                    },
+                    {
+                      "t": "frame",
+                      "name": "Focus",
+                      "layout": "col",
+                      "gap": "space.gap.tight",
+                      "children": [
+                        {
+                          "t": "frame",
+                          "name": "Close · focus",
+                          "radius": "component.dialog.close.radius",
+                          "pad": "component.dialog.close.padding",
+                          "children": [
+                            {
+                              "t": "icon",
+                              "icon": "x",
+                              "size": "component.dialog.close.icon-size",
+                              "color": "component.dialog.close.label"
+                            }
+                          ],
+                          "ring": {
+                            "color": "component.dialog.close.focus-ring.color",
+                            "width": "component.dialog.close.focus-ring.width",
+                            "offset": "component.dialog.close.focus-offset",
+                            "radius": "component.dialog.close.radius",
+                            "n": 9
+                          }
+                        },
+                        {
+                          "t": "text",
+                          "text": "Focus",
+                          "size": "type.caption.font-size",
+                          "color": "color.text.muted"
+                        }
+                      ]
+                    }
+                  ]
+                }
+              }
+            }
+          ]
         }
       },
       {
@@ -18439,6 +20155,380 @@
           "id": "drawer",
           "license": "MIT",
           "url": "https://github.com/3dyonic/open-ux/blob/main/catalog/components/drawer.json"
+        },
+        "anatomy": {
+          "intro": "the drawer",
+          "drawing": {
+            "kind": "tree",
+            "stage": {
+              "t": "frame",
+              "name": "Scrim",
+              "layout": "col",
+              "justify": "end",
+              "w": 420,
+              "fill": "component.drawer.overlay.background",
+              "n": 1,
+              "at": "corner",
+              "children": [
+                {
+                  "t": "rect",
+                  "name": "Page behind",
+                  "w": 420,
+                  "h": 72
+                },
+                {
+                  "t": "frame",
+                  "name": "Panel",
+                  "layout": "col",
+                  "w": "fill",
+                  "fill": "component.drawer.content.background",
+                  "stroke": "component.drawer.content.border",
+                  "strokeW": "component.drawer.content.border-width",
+                  "sides": [
+                    "top"
+                  ],
+                  "radius": "component.drawer.content.radius",
+                  "shadow": "component.drawer.content.shadow",
+                  "n": 2,
+                  "at": "shadow",
+                  "children": [
+                    {
+                      "t": "frame",
+                      "name": "Handle row",
+                      "layout": "col",
+                      "children": [
+                        {
+                          "t": "rect",
+                          "name": "Handle margin",
+                          "w": 1,
+                          "h": "component.drawer.handle.margin-top"
+                        },
+                        {
+                          "t": "rect",
+                          "name": "Handle",
+                          "w": 100,
+                          "h": 8,
+                          "fill": "component.drawer.handle.background",
+                          "radius": "component.drawer.handle.radius",
+                          "n": 3
+                        }
+                      ]
+                    },
+                    {
+                      "t": "frame",
+                      "name": "Header",
+                      "layout": "col",
+                      "w": "fill",
+                      "gap": "component.drawer.header.gap",
+                      "pad": "component.drawer.header.padding",
+                      "n": 4,
+                      "at": "right",
+                      "children": [
+                        {
+                          "t": "text",
+                          "text": "Move goal",
+                          "size": "component.drawer.title.font-size",
+                          "color": "component.drawer.title.label",
+                          "font": "component.drawer.title.font-family",
+                          "weight": "bold",
+                          "n": 5
+                        },
+                        {
+                          "t": "text",
+                          "text": "Set your daily activity goal.",
+                          "size": "component.drawer.description.font-size",
+                          "color": "component.drawer.description.label",
+                          "n": 6
+                        }
+                      ]
+                    },
+                    {
+                      "t": "frame",
+                      "name": "Footer",
+                      "layout": "col",
+                      "w": "fill",
+                      "gap": "component.drawer.footer.gap",
+                      "pad": "component.drawer.footer.padding",
+                      "n": 7,
+                      "at": "right",
+                      "children": [
+                        {
+                          "t": "frame",
+                          "name": "Button · primary",
+                          "h": "component.button.height",
+                          "padX": "component.button.padding-x",
+                          "radius": "component.button.radius",
+                          "justify": "center",
+                          "fill": "component.button.primary.background",
+                          "w": "fill",
+                          "children": [
+                            {
+                              "t": "text",
+                              "text": "Submit",
+                              "size": "component.button.font-size",
+                              "color": "component.button.primary.label",
+                              "weight": "bold",
+                              "font": "component.button.font-family"
+                            }
+                          ]
+                        },
+                        {
+                          "t": "frame",
+                          "name": "Button · secondary",
+                          "h": "component.button.height",
+                          "padX": "component.button.padding-x",
+                          "radius": "component.button.radius",
+                          "justify": "center",
+                          "fill": "component.button.secondary.background",
+                          "stroke": "component.button.secondary.border",
+                          "strokeW": "component.button.secondary.border-width",
+                          "w": "fill",
+                          "children": [
+                            {
+                              "t": "text",
+                              "text": "Cancel",
+                              "size": "component.button.font-size",
+                              "color": "component.button.secondary.label",
+                              "weight": "bold",
+                              "font": "component.button.font-family"
+                            }
+                          ]
+                        }
+                      ]
+                    }
+                  ],
+                  "corners": [
+                    "tl",
+                    "tr"
+                  ]
+                }
+              ]
+            }
+          },
+          "parts": [
+            {
+              "id": "trigger",
+              "label": "Trigger",
+              "need": "required",
+              "note": "shown by Button",
+              "roles": [
+                "affordance"
+              ],
+              "tokens": []
+            },
+            {
+              "n": 1,
+              "id": "scrim",
+              "label": "Scrim",
+              "need": "required",
+              "roles": [
+                "layering"
+              ],
+              "tokens": [
+                "component.drawer.overlay.background"
+              ]
+            },
+            {
+              "n": 2,
+              "id": "panel",
+              "label": "Panel",
+              "need": "required",
+              "roles": [
+                "containment",
+                "layering"
+              ],
+              "tokens": [
+                "component.drawer.content.background",
+                "component.drawer.content.border",
+                "component.drawer.content.radius",
+                "component.drawer.content.shadow"
+              ]
+            },
+            {
+              "n": 3,
+              "id": "handle",
+              "label": "Handle",
+              "need": "optional",
+              "roles": [
+                "affordance"
+              ],
+              "tokens": [
+                "component.drawer.handle.background",
+                "component.drawer.handle.radius",
+                "component.drawer.handle.margin-top"
+              ]
+            },
+            {
+              "n": 4,
+              "id": "header",
+              "label": "Header",
+              "need": "required",
+              "roles": [
+                "grouping",
+                "hierarchy"
+              ],
+              "tokens": [
+                "component.drawer.header.gap",
+                "component.drawer.header.padding"
+              ],
+              "children": [
+                {
+                  "n": 5,
+                  "id": "title",
+                  "label": "Title",
+                  "need": "required",
+                  "roles": [
+                    "hierarchy",
+                    "readability"
+                  ],
+                  "tokens": [
+                    "component.drawer.title.font-family",
+                    "component.drawer.title.font-size",
+                    "component.drawer.title.font-weight",
+                    "component.drawer.title.label"
+                  ]
+                },
+                {
+                  "n": 6,
+                  "id": "description",
+                  "label": "Description",
+                  "need": "optional",
+                  "roles": [
+                    "readability"
+                  ],
+                  "tokens": [
+                    "component.drawer.description.font-size",
+                    "component.drawer.description.label"
+                  ]
+                }
+              ]
+            },
+            {
+              "n": 7,
+              "id": "footer",
+              "label": "Footer",
+              "need": "optional",
+              "roles": [
+                "grouping",
+                "reach"
+              ],
+              "tokens": [
+                "component.drawer.footer.gap",
+                "component.drawer.footer.padding"
+              ],
+              "children": [
+                {
+                  "id": "actions",
+                  "label": "Actions",
+                  "need": "optional",
+                  "note": "shown by Button",
+                  "roles": [
+                    "affordance",
+                    "emphasis"
+                  ],
+                  "tokens": []
+                }
+              ]
+            }
+          ],
+          "cards": [
+            {
+              "title": "Panel and scrim",
+              "parts": [
+                1,
+                2
+              ],
+              "roles": [
+                "containment",
+                "layering"
+              ],
+              "answers": [
+                "elevation.roles",
+                "elevation.values",
+                "shape.values"
+              ],
+              "rules": [
+                "menu-or-dialog"
+              ],
+              "tokens": [
+                "component.drawer.overlay.background",
+                "component.drawer.content.background",
+                "component.drawer.content.shadow",
+                "component.drawer.content.radius",
+                "component.drawer.content.border"
+              ]
+            },
+            {
+              "title": "Handle",
+              "parts": [
+                3
+              ],
+              "roles": [
+                "affordance"
+              ],
+              "answers": [
+                "shape.values",
+                "spacing.values"
+              ],
+              "rules": [],
+              "tokens": [
+                "component.drawer.handle.background",
+                "component.drawer.handle.radius",
+                "component.drawer.handle.margin-top"
+              ]
+            },
+            {
+              "title": "Title and description",
+              "parts": [
+                4,
+                5,
+                6
+              ],
+              "roles": [
+                "hierarchy",
+                "readability"
+              ],
+              "answers": [
+                "typography.roles",
+                "typography.values",
+                "color.roles"
+              ],
+              "rules": [
+                "paragraph",
+                "related-items"
+              ],
+              "tokens": [
+                "component.drawer.title.font-family",
+                "component.drawer.title.font-size",
+                "component.drawer.title.font-weight",
+                "component.drawer.description.font-size",
+                "component.drawer.description.label",
+                "component.drawer.header.gap",
+                "component.drawer.header.padding"
+              ]
+            },
+            {
+              "title": "Footer",
+              "parts": [
+                7
+              ],
+              "roles": [
+                "grouping",
+                "reach"
+              ],
+              "answers": [
+                "spacing.values"
+              ],
+              "rules": [
+                "commit-action",
+                "alternative-action"
+              ],
+              "tokens": [
+                "component.drawer.footer.gap",
+                "component.drawer.footer.padding"
+              ]
+            }
+          ]
         }
       },
       {
@@ -22935,6 +25025,612 @@
           "id": "drawer",
           "license": "MIT",
           "url": "https://github.com/3dyonic/open-ux/blob/main/catalog/components/drawer.json"
+        },
+        "anatomy": {
+          "intro": "the sheet",
+          "drawing": {
+            "kind": "tree",
+            "stage": {
+              "t": "frame",
+              "name": "Scrim",
+              "justify": "end",
+              "align": "start",
+              "w": 520,
+              "fill": "component.sheet.overlay.background",
+              "n": 1,
+              "at": "corner",
+              "children": [
+                {
+                  "t": "frame",
+                  "name": "Panel",
+                  "layout": "col",
+                  "align": "start",
+                  "w": 300,
+                  "fill": "component.sheet.content.background",
+                  "stroke": "component.sheet.content.border",
+                  "strokeW": "component.sheet.content.border-width",
+                  "sides": [
+                    "left"
+                  ],
+                  "shadow": "component.sheet.content.shadow",
+                  "gap": "component.sheet.content.gap",
+                  "n": 2,
+                  "at": "shadow",
+                  "children": [
+                    {
+                      "t": "frame",
+                      "name": "Header",
+                      "layout": "col",
+                      "align": "start",
+                      "w": "fill",
+                      "gap": "component.sheet.header.gap",
+                      "pad": "component.sheet.header.padding",
+                      "n": 3,
+                      "children": [
+                        {
+                          "t": "text",
+                          "text": "Filter orders",
+                          "size": "component.sheet.title.font-size",
+                          "color": "component.sheet.title.label",
+                          "font": "component.sheet.title.font-family",
+                          "weight": "bold",
+                          "n": 4
+                        },
+                        {
+                          "t": "text",
+                          "text": "Narrow the list, then apply.",
+                          "size": "component.sheet.description.font-size",
+                          "color": "component.sheet.description.label",
+                          "n": 5
+                        }
+                      ]
+                    },
+                    {
+                      "t": "frame",
+                      "name": "Body",
+                      "layout": "col",
+                      "w": "fill",
+                      "padX": "component.sheet.header.padding",
+                      "gap": "space.gap.group",
+                      "children": [
+                        {
+                          "t": "frame",
+                          "name": "Field · Status",
+                          "layout": "col",
+                          "align": "start",
+                          "w": "fill",
+                          "gap": "component.label.gap",
+                          "children": [
+                            {
+                              "t": "text",
+                              "text": "Status",
+                              "size": "component.label.font-size",
+                              "color": "component.label.label",
+                              "weight": "bold"
+                            },
+                            {
+                              "t": "frame",
+                              "name": "Input",
+                              "w": "fill",
+                              "h": "component.input.height",
+                              "padX": "component.input.padding-x",
+                              "radius": "component.input.radius",
+                              "fill": "component.input.background",
+                              "stroke": "component.input.border",
+                              "strokeW": "component.input.border-width",
+                              "children": [
+                                {
+                                  "t": "text",
+                                  "text": "Shipped",
+                                  "size": "component.input.font-size",
+                                  "color": "component.input.text"
+                                }
+                              ]
+                            }
+                          ]
+                        },
+                        {
+                          "t": "frame",
+                          "name": "Field · Region",
+                          "layout": "col",
+                          "align": "start",
+                          "w": "fill",
+                          "gap": "component.label.gap",
+                          "children": [
+                            {
+                              "t": "text",
+                              "text": "Region",
+                              "size": "component.label.font-size",
+                              "color": "component.label.label",
+                              "weight": "bold"
+                            },
+                            {
+                              "t": "frame",
+                              "name": "Input",
+                              "w": "fill",
+                              "h": "component.input.height",
+                              "padX": "component.input.padding-x",
+                              "radius": "component.input.radius",
+                              "fill": "component.input.background",
+                              "stroke": "component.input.border",
+                              "strokeW": "component.input.border-width",
+                              "children": [
+                                {
+                                  "t": "text",
+                                  "text": "West",
+                                  "size": "component.input.font-size",
+                                  "color": "component.input.text"
+                                }
+                              ]
+                            }
+                          ]
+                        }
+                      ]
+                    },
+                    {
+                      "t": "frame",
+                      "name": "Footer",
+                      "layout": "col",
+                      "w": "fill",
+                      "gap": "component.sheet.footer.gap",
+                      "pad": "component.sheet.footer.padding",
+                      "n": 6,
+                      "at": "right",
+                      "children": [
+                        {
+                          "t": "frame",
+                          "name": "Button · primary",
+                          "h": "component.button.height",
+                          "padX": "component.button.padding-x",
+                          "radius": "component.button.radius",
+                          "justify": "center",
+                          "fill": "component.button.primary.background",
+                          "w": "fill",
+                          "children": [
+                            {
+                              "t": "text",
+                              "text": "Apply filters",
+                              "size": "component.button.font-size",
+                              "color": "component.button.primary.label",
+                              "weight": "bold",
+                              "font": "component.button.font-family"
+                            }
+                          ]
+                        },
+                        {
+                          "t": "frame",
+                          "name": "Button · secondary",
+                          "h": "component.button.height",
+                          "padX": "component.button.padding-x",
+                          "radius": "component.button.radius",
+                          "justify": "center",
+                          "fill": "component.button.secondary.background",
+                          "stroke": "component.button.secondary.border",
+                          "strokeW": "component.button.secondary.border-width",
+                          "w": "fill",
+                          "children": [
+                            {
+                              "t": "text",
+                              "text": "Clear",
+                              "size": "component.button.font-size",
+                              "color": "component.button.secondary.label",
+                              "weight": "bold",
+                              "font": "component.button.font-family"
+                            }
+                          ]
+                        }
+                      ]
+                    },
+                    {
+                      "t": "frame",
+                      "name": "Close",
+                      "radius": "component.sheet.close.radius",
+                      "pad": "component.sheet.close.padding",
+                      "n": 7,
+                      "children": [
+                        {
+                          "t": "icon",
+                          "icon": "x",
+                          "size": "component.sheet.close.icon-size",
+                          "color": "component.sheet.close.label"
+                        }
+                      ],
+                      "abs": [
+                        260,
+                        16
+                      ]
+                    }
+                  ]
+                }
+              ]
+            }
+          },
+          "parts": [
+            {
+              "id": "trigger",
+              "label": "Trigger",
+              "need": "required",
+              "note": "shown by Button",
+              "roles": [
+                "affordance"
+              ],
+              "tokens": []
+            },
+            {
+              "n": 1,
+              "id": "scrim",
+              "label": "Scrim",
+              "need": "required",
+              "roles": [
+                "layering"
+              ],
+              "tokens": [
+                "component.sheet.overlay.background"
+              ]
+            },
+            {
+              "n": 2,
+              "id": "panel",
+              "label": "Panel",
+              "need": "required",
+              "roles": [
+                "containment",
+                "layering"
+              ],
+              "tokens": [
+                "component.sheet.content.background",
+                "component.sheet.content.border",
+                "component.sheet.content.shadow"
+              ]
+            },
+            {
+              "n": 3,
+              "id": "header",
+              "label": "Header",
+              "need": "required",
+              "roles": [
+                "grouping",
+                "hierarchy"
+              ],
+              "tokens": [
+                "component.sheet.header.gap",
+                "component.sheet.header.padding"
+              ],
+              "children": [
+                {
+                  "n": 4,
+                  "id": "title",
+                  "label": "Title",
+                  "need": "required",
+                  "roles": [
+                    "hierarchy",
+                    "readability"
+                  ],
+                  "tokens": [
+                    "component.sheet.title.font-family",
+                    "component.sheet.title.font-size",
+                    "component.sheet.title.font-weight",
+                    "component.sheet.title.label"
+                  ]
+                },
+                {
+                  "n": 5,
+                  "id": "description",
+                  "label": "Description",
+                  "need": "optional",
+                  "roles": [
+                    "readability"
+                  ],
+                  "tokens": [
+                    "component.sheet.description.font-size",
+                    "component.sheet.description.label"
+                  ]
+                }
+              ]
+            },
+            {
+              "id": "footer",
+              "label": "Footer",
+              "need": "optional",
+              "roles": [
+                "grouping"
+              ],
+              "tokens": [
+                "component.sheet.footer.gap",
+                "component.sheet.footer.padding"
+              ],
+              "n": 6,
+              "children": [
+                {
+                  "id": "actions",
+                  "label": "Actions",
+                  "need": "optional",
+                  "note": "shown by Button",
+                  "roles": [
+                    "affordance",
+                    "emphasis"
+                  ],
+                  "tokens": []
+                }
+              ]
+            },
+            {
+              "n": 7,
+              "id": "close",
+              "label": "Close button",
+              "need": "optional",
+              "roles": [
+                "affordance",
+                "reach"
+              ],
+              "tokens": [
+                "component.sheet.close.label",
+                "component.sheet.close.radius",
+                "component.sheet.close.icon-size"
+              ]
+            },
+            {
+              "id": "close-hover",
+              "label": "Close hover fill",
+              "need": "state",
+              "roles": [
+                "feedback"
+              ],
+              "tokens": [
+                "component.sheet.close.background.hover"
+              ],
+              "n": 8
+            },
+            {
+              "id": "close-focus-ring",
+              "label": "Close focus ring",
+              "need": "state",
+              "roles": [
+                "focus"
+              ],
+              "tokens": [
+                "component.sheet.close.focus-ring.width",
+                "component.sheet.close.focus-ring.color",
+                "component.sheet.close.focus-offset"
+              ],
+              "n": 9
+            }
+          ],
+          "cards": [
+            {
+              "title": "Panel and scrim",
+              "parts": [
+                1,
+                2
+              ],
+              "roles": [
+                "containment",
+                "layering"
+              ],
+              "answers": [
+                "elevation.roles",
+                "elevation.values"
+              ],
+              "rules": [
+                "menu-or-dialog"
+              ],
+              "tokens": [
+                "component.sheet.overlay.background",
+                "component.sheet.content.background",
+                "component.sheet.content.shadow",
+                "component.sheet.content.border"
+              ]
+            },
+            {
+              "title": "Room inside the panel",
+              "parts": [
+                2,
+                3,
+                6
+              ],
+              "roles": [
+                "containment",
+                "grouping"
+              ],
+              "answers": [
+                "spacing.values"
+              ],
+              "rules": [
+                "related-items"
+              ],
+              "tokens": [
+                "component.sheet.content.gap",
+                "component.sheet.header.padding",
+                "component.sheet.footer.padding"
+              ]
+            },
+            {
+              "title": "Title and description",
+              "parts": [
+                4,
+                5
+              ],
+              "roles": [
+                "hierarchy",
+                "readability"
+              ],
+              "answers": [
+                "typography.roles",
+                "typography.values",
+                "color.roles"
+              ],
+              "rules": [
+                "paragraph"
+              ],
+              "tokens": [
+                "component.sheet.title.font-family",
+                "component.sheet.title.font-size",
+                "component.sheet.title.font-weight",
+                "component.sheet.title.label",
+                "component.sheet.description.font-size",
+                "component.sheet.description.label",
+                "component.sheet.header.gap"
+              ]
+            },
+            {
+              "title": "Footer",
+              "parts": [
+                6
+              ],
+              "roles": [
+                "grouping",
+                "reach"
+              ],
+              "answers": [
+                "spacing.values"
+              ],
+              "rules": [
+                "commit-action",
+                "alternative-action"
+              ],
+              "tokens": [
+                "component.sheet.footer.gap",
+                "component.sheet.footer.padding"
+              ]
+            },
+            {
+              "title": "Close button",
+              "parts": [
+                7,
+                8,
+                9
+              ],
+              "roles": [
+                "affordance",
+                "reach",
+                "feedback",
+                "focus"
+              ],
+              "answers": [
+                "shape.values",
+                "iconography.values",
+                "accessibility.roles"
+              ],
+              "rules": [
+                "icon-alone",
+                "hover-feedback",
+                "keyboard-focus"
+              ],
+              "tokens": [
+                "component.sheet.close.radius",
+                "component.sheet.close.icon-size",
+                "component.sheet.close.label",
+                "component.sheet.close.background.hover",
+                "component.sheet.close.focus-ring.color",
+                "component.sheet.close.focus-ring.width",
+                "component.sheet.close.focus-offset"
+              ],
+              "image": {
+                "tree": {
+                  "t": "frame",
+                  "name": "Close button states",
+                  "gap": "space.gap.section",
+                  "align": "end",
+                  "children": [
+                    {
+                      "t": "frame",
+                      "name": "Rest",
+                      "layout": "col",
+                      "gap": "space.gap.tight",
+                      "children": [
+                        {
+                          "t": "frame",
+                          "name": "Close · rest",
+                          "radius": "component.sheet.close.radius",
+                          "pad": "component.sheet.close.padding",
+                          "n": 7,
+                          "children": [
+                            {
+                              "t": "icon",
+                              "icon": "x",
+                              "size": "component.sheet.close.icon-size",
+                              "color": "component.sheet.close.label"
+                            }
+                          ]
+                        },
+                        {
+                          "t": "text",
+                          "text": "Rest",
+                          "size": "type.caption.font-size",
+                          "color": "color.text.muted"
+                        }
+                      ]
+                    },
+                    {
+                      "t": "frame",
+                      "name": "Hover",
+                      "layout": "col",
+                      "gap": "space.gap.tight",
+                      "children": [
+                        {
+                          "t": "frame",
+                          "name": "Close · hover",
+                          "radius": "component.sheet.close.radius",
+                          "pad": "component.sheet.close.padding",
+                          "fill": "component.sheet.close.background.hover",
+                          "n": 8,
+                          "children": [
+                            {
+                              "t": "icon",
+                              "icon": "x",
+                              "size": "component.sheet.close.icon-size",
+                              "color": "component.sheet.close.label"
+                            }
+                          ]
+                        },
+                        {
+                          "t": "text",
+                          "text": "Hover",
+                          "size": "type.caption.font-size",
+                          "color": "color.text.muted"
+                        }
+                      ]
+                    },
+                    {
+                      "t": "frame",
+                      "name": "Focus",
+                      "layout": "col",
+                      "gap": "space.gap.tight",
+                      "children": [
+                        {
+                          "t": "frame",
+                          "name": "Close · focus",
+                          "radius": "component.sheet.close.radius",
+                          "pad": "component.sheet.close.padding",
+                          "children": [
+                            {
+                              "t": "icon",
+                              "icon": "x",
+                              "size": "component.sheet.close.icon-size",
+                              "color": "component.sheet.close.label"
+                            }
+                          ],
+                          "ring": {
+                            "color": "component.sheet.close.focus-ring.color",
+                            "width": "component.sheet.close.focus-ring.width",
+                            "offset": "component.sheet.close.focus-offset",
+                            "radius": "component.sheet.close.radius",
+                            "n": 9
+                          }
+                        },
+                        {
+                          "t": "text",
+                          "text": "Focus",
+                          "size": "type.caption.font-size",
+                          "color": "color.text.muted"
+                        }
+                      ]
+                    }
+                  ]
+                }
+              }
+            }
+          ]
         }
       },
       {
@@ -22999,6 +25695,908 @@
         "source": {
           "name": "Open DS",
           "license": "MIT"
+        },
+        "anatomy": {
+          "intro": "the sidebar",
+          "drawing": {
+            "kind": "tree",
+            "stage": {
+              "t": "frame",
+              "name": "Sidebar",
+              "layout": "col",
+              "align": "start",
+              "w": 240,
+              "fill": "component.sidebar.background",
+              "stroke": "component.sidebar.container.border",
+              "strokeW": "component.sidebar.container.border-width",
+              "sides": [
+                "right"
+              ],
+              "pad": "component.sidebar.group.padding",
+              "gap": "component.sidebar.content.gap",
+              "children": [
+                {
+                  "t": "frame",
+                  "name": "Group · Workspace",
+                  "layout": "col",
+                  "align": "start",
+                  "children": [
+                    {
+                      "t": "frame",
+                      "name": "Group label",
+                      "h": "component.sidebar.group.label.height",
+                      "padX": "component.sidebar.group.label.padding-x",
+                      "children": [
+                        {
+                          "t": "text",
+                          "text": "Workspace",
+                          "size": "component.sidebar.group.label.font-size",
+                          "weight": "bold",
+                          "color": "component.sidebar.group.label.label"
+                        }
+                      ],
+                      "n": 2
+                    },
+                    {
+                      "t": "frame",
+                      "name": "Menu",
+                      "layout": "col",
+                      "gap": "component.sidebar.menu.gap",
+                      "w": 208,
+                      "children": [
+                        {
+                          "t": "frame",
+                          "name": "Menu button · Dashboard",
+                          "w": "fill",
+                          "h": "component.sidebar.menu-button.default.height",
+                          "pad": "component.sidebar.menu-button.padding",
+                          "gap": "component.sidebar.menu-button.gap",
+                          "radius": "component.sidebar.menu-button.radius",
+                          "children": [
+                            {
+                              "t": "icon",
+                              "icon": "layout-dashboard",
+                              "size": "component.sidebar.menu-button.icon-size",
+                              "color": "component.sidebar.label"
+                            },
+                            {
+                              "t": "text",
+                              "text": "Dashboard",
+                              "size": "component.sidebar.menu-button.font-size",
+                              "color": "component.sidebar.label",
+                              "weight": "bold"
+                            }
+                          ],
+                          "fill": "component.sidebar.menu-button.background.current",
+                          "stroke": "component.sidebar.menu-button.edge.current",
+                          "strokeW": "component.sidebar.menu-button.edge-width.current",
+                          "sides": [
+                            "left"
+                          ],
+                          "n": [
+                            3,
+                            4
+                          ]
+                        },
+                        {
+                          "t": "frame",
+                          "name": "Menu button · Invoices",
+                          "w": "fill",
+                          "h": "component.sidebar.menu-button.default.height",
+                          "pad": "component.sidebar.menu-button.padding",
+                          "gap": "component.sidebar.menu-button.gap",
+                          "radius": "component.sidebar.menu-button.radius",
+                          "children": [
+                            {
+                              "t": "icon",
+                              "icon": "receipt",
+                              "size": "component.sidebar.menu-button.icon-size",
+                              "color": "component.sidebar.label"
+                            },
+                            {
+                              "t": "text",
+                              "text": "Invoices",
+                              "size": "component.sidebar.menu-button.font-size",
+                              "color": "component.sidebar.label"
+                            }
+                          ]
+                        },
+                        {
+                          "t": "frame",
+                          "name": "Menu button · Customers",
+                          "w": "fill",
+                          "h": "component.sidebar.menu-button.default.height",
+                          "pad": "component.sidebar.menu-button.padding",
+                          "gap": "component.sidebar.menu-button.gap",
+                          "radius": "component.sidebar.menu-button.radius",
+                          "children": [
+                            {
+                              "t": "icon",
+                              "icon": "users",
+                              "size": "component.sidebar.menu-button.icon-size",
+                              "color": "component.sidebar.label"
+                            },
+                            {
+                              "t": "text",
+                              "text": "Customers",
+                              "size": "component.sidebar.menu-button.font-size",
+                              "color": "component.sidebar.label"
+                            }
+                          ]
+                        },
+                        {
+                          "t": "frame",
+                          "name": "Menu button · Reports",
+                          "w": "fill",
+                          "h": "component.sidebar.menu-button.default.height",
+                          "pad": "component.sidebar.menu-button.padding",
+                          "gap": "component.sidebar.menu-button.gap",
+                          "radius": "component.sidebar.menu-button.radius",
+                          "children": [
+                            {
+                              "t": "icon",
+                              "icon": "chart-column",
+                              "size": "component.sidebar.menu-button.icon-size",
+                              "color": "component.sidebar.label"
+                            },
+                            {
+                              "t": "text",
+                              "text": "Reports",
+                              "size": "component.sidebar.menu-button.font-size",
+                              "color": "component.sidebar.label"
+                            }
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "t": "frame",
+                  "name": "Group · Settings",
+                  "layout": "col",
+                  "align": "start",
+                  "children": [
+                    {
+                      "t": "frame",
+                      "name": "Group label",
+                      "h": "component.sidebar.group.label.height",
+                      "padX": "component.sidebar.group.label.padding-x",
+                      "children": [
+                        {
+                          "t": "text",
+                          "text": "Settings",
+                          "size": "component.sidebar.group.label.font-size",
+                          "weight": "bold",
+                          "color": "component.sidebar.group.label.label"
+                        }
+                      ]
+                    },
+                    {
+                      "t": "frame",
+                      "name": "Menu",
+                      "layout": "col",
+                      "gap": "component.sidebar.menu.gap",
+                      "w": 208,
+                      "children": [
+                        {
+                          "t": "frame",
+                          "name": "Menu button · Team",
+                          "w": "fill",
+                          "h": "component.sidebar.menu-button.default.height",
+                          "pad": "component.sidebar.menu-button.padding",
+                          "gap": "component.sidebar.menu-button.gap",
+                          "radius": "component.sidebar.menu-button.radius",
+                          "children": [
+                            {
+                              "t": "icon",
+                              "icon": "user-cog",
+                              "size": "component.sidebar.menu-button.icon-size",
+                              "color": "component.sidebar.label"
+                            },
+                            {
+                              "t": "text",
+                              "text": "Team",
+                              "size": "component.sidebar.menu-button.font-size",
+                              "color": "component.sidebar.label"
+                            }
+                          ]
+                        },
+                        {
+                          "t": "frame",
+                          "name": "Menu button · Billing",
+                          "w": "fill",
+                          "h": "component.sidebar.menu-button.default.height",
+                          "pad": "component.sidebar.menu-button.padding",
+                          "gap": "component.sidebar.menu-button.gap",
+                          "radius": "component.sidebar.menu-button.radius",
+                          "children": [
+                            {
+                              "t": "icon",
+                              "icon": "credit-card",
+                              "size": "component.sidebar.menu-button.icon-size",
+                              "color": "component.sidebar.label"
+                            },
+                            {
+                              "t": "text",
+                              "text": "Billing",
+                              "size": "component.sidebar.menu-button.font-size",
+                              "color": "component.sidebar.label"
+                            }
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ],
+              "n": 1
+            }
+          },
+          "parts": [
+            {
+              "n": 1,
+              "id": "panel",
+              "label": "Panel",
+              "need": "required",
+              "roles": [
+                "containment"
+              ],
+              "tokens": [
+                "component.sidebar.background",
+                "component.sidebar.label"
+              ]
+            },
+            {
+              "id": "group",
+              "label": "Group",
+              "need": "required",
+              "roles": [
+                "grouping"
+              ],
+              "children": [
+                {
+                  "n": 2,
+                  "id": "group-label",
+                  "label": "Group label",
+                  "need": "optional",
+                  "roles": [
+                    "hierarchy",
+                    "readability"
+                  ],
+                  "tokens": [
+                    "component.sidebar.group.label.label",
+                    "component.sidebar.group.label.font-size",
+                    "component.sidebar.group.label.font-weight",
+                    "component.sidebar.group.label.height"
+                  ]
+                },
+                {
+                  "id": "menu",
+                  "label": "Menu",
+                  "need": "required",
+                  "roles": [
+                    "grouping"
+                  ],
+                  "children": [
+                    {
+                      "n": 3,
+                      "id": "menu-button",
+                      "label": "Menu button",
+                      "need": "required",
+                      "roles": [
+                        "affordance",
+                        "reach",
+                        "readability"
+                      ],
+                      "tokens": [
+                        "component.sidebar.menu-button.default.height",
+                        "component.sidebar.menu-button.padding",
+                        "component.sidebar.menu-button.gap",
+                        "component.sidebar.menu-button.font-size",
+                        "component.sidebar.menu-button.icon-size",
+                        "component.sidebar.menu-button.radius"
+                      ]
+                    },
+                    {
+                      "n": 4,
+                      "id": "current",
+                      "label": "Current item",
+                      "need": "state",
+                      "roles": [
+                        "meaning",
+                        "emphasis"
+                      ],
+                      "tokens": [
+                        "component.sidebar.menu-button.background.current",
+                        "component.sidebar.menu-button.edge.current",
+                        "component.sidebar.menu-button.edge-width.current",
+                        "component.sidebar.menu-button.font-weight.current"
+                      ]
+                    },
+                    {
+                      "n": 5,
+                      "id": "hover-fill",
+                      "label": "Hover and pressed fill",
+                      "need": "state",
+                      "roles": [
+                        "feedback"
+                      ],
+                      "tokens": [
+                        "component.sidebar.menu-button.background.hover",
+                        "component.sidebar.menu-button.background.pressed"
+                      ]
+                    },
+                    {
+                      "n": 6,
+                      "id": "focus-ring",
+                      "label": "Focus ring",
+                      "need": "state",
+                      "roles": [
+                        "focus"
+                      ],
+                      "tokens": [
+                        "component.sidebar.menu-button.focus-ring",
+                        "component.sidebar.menu-button.focus-width",
+                        "component.sidebar.menu-button.focus-offset",
+                        "component.sidebar.menu-button.focus-ring-offset"
+                      ]
+                    },
+                    {
+                      "n": 7,
+                      "id": "disabled",
+                      "label": "Disabled button",
+                      "need": "state",
+                      "roles": [
+                        "feedback"
+                      ],
+                      "tokens": [
+                        "component.sidebar.menu-button.opacity.disabled"
+                      ]
+                    }
+                  ]
+                }
+              ]
+            }
+          ],
+          "cards": [
+            {
+              "title": "Panel",
+              "parts": [
+                1
+              ],
+              "roles": [
+                "containment"
+              ],
+              "answers": [
+                "elevation.definition",
+                "color.roles"
+              ],
+              "rules": [],
+              "tokens": [
+                "component.sidebar.background",
+                "component.sidebar.label"
+              ]
+            },
+            {
+              "title": "Group label",
+              "parts": [
+                2
+              ],
+              "roles": [
+                "hierarchy",
+                "readability"
+              ],
+              "answers": [
+                "typography.roles",
+                "color.roles"
+              ],
+              "rules": [],
+              "tokens": [
+                "component.sidebar.group.label.label",
+                "component.sidebar.group.label.font-size",
+                "component.sidebar.group.label.font-weight"
+              ]
+            },
+            {
+              "title": "Menu button",
+              "parts": [
+                3
+              ],
+              "roles": [
+                "affordance",
+                "reach",
+                "readability"
+              ],
+              "answers": [
+                "spacing.values",
+                "accessibility.values",
+                "typography.values",
+                "shape.values"
+              ],
+              "rules": [
+                "smallest-target",
+                "link",
+                "control-corner"
+              ],
+              "tokens": [
+                "component.sidebar.menu-button.default.height",
+                "component.sidebar.menu-button.padding",
+                "component.sidebar.menu-button.font-size",
+                "component.sidebar.menu-button.radius"
+              ]
+            },
+            {
+              "title": "Current item",
+              "parts": [
+                4
+              ],
+              "roles": [
+                "meaning",
+                "emphasis"
+              ],
+              "answers": [
+                "accessibility.roles",
+                "accessibility.count"
+              ],
+              "rules": [
+                "selected-row"
+              ],
+              "tokens": [
+                "component.sidebar.menu-button.background.current",
+                "component.sidebar.menu-button.edge.current",
+                "component.sidebar.menu-button.edge-width.current"
+              ]
+            },
+            {
+              "title": "Hover and pressed fill",
+              "parts": [
+                5
+              ],
+              "roles": [
+                "feedback"
+              ],
+              "answers": [
+                "accessibility.roles"
+              ],
+              "rules": [
+                "hover-feedback"
+              ],
+              "tokens": [
+                "component.sidebar.menu-button.background.hover",
+                "component.sidebar.menu-button.background.pressed"
+              ],
+              "image": {
+                "tree": {
+                  "t": "frame",
+                  "name": "Sidebar",
+                  "layout": "col",
+                  "align": "start",
+                  "w": 240,
+                  "fill": "component.sidebar.background",
+                  "stroke": "component.sidebar.container.border",
+                  "strokeW": "component.sidebar.container.border-width",
+                  "sides": [
+                    "right"
+                  ],
+                  "pad": "component.sidebar.group.padding",
+                  "gap": "component.sidebar.content.gap",
+                  "children": [
+                    {
+                      "t": "frame",
+                      "name": "Group · Workspace",
+                      "layout": "col",
+                      "align": "start",
+                      "children": [
+                        {
+                          "t": "frame",
+                          "name": "Group label",
+                          "h": "component.sidebar.group.label.height",
+                          "padX": "component.sidebar.group.label.padding-x",
+                          "children": [
+                            {
+                              "t": "text",
+                              "text": "Workspace",
+                              "size": "component.sidebar.group.label.font-size",
+                              "weight": "bold",
+                              "color": "component.sidebar.group.label.label"
+                            }
+                          ]
+                        },
+                        {
+                          "t": "frame",
+                          "name": "Menu",
+                          "layout": "col",
+                          "gap": "component.sidebar.menu.gap",
+                          "w": 208,
+                          "children": [
+                            {
+                              "t": "frame",
+                              "name": "Menu button · Dashboard",
+                              "w": "fill",
+                              "h": "component.sidebar.menu-button.default.height",
+                              "pad": "component.sidebar.menu-button.padding",
+                              "gap": "component.sidebar.menu-button.gap",
+                              "radius": "component.sidebar.menu-button.radius",
+                              "children": [
+                                {
+                                  "t": "icon",
+                                  "icon": "layout-dashboard",
+                                  "size": "component.sidebar.menu-button.icon-size",
+                                  "color": "component.sidebar.label"
+                                },
+                                {
+                                  "t": "text",
+                                  "text": "Dashboard",
+                                  "size": "component.sidebar.menu-button.font-size",
+                                  "color": "component.sidebar.label",
+                                  "weight": "bold"
+                                }
+                              ],
+                              "fill": "component.sidebar.menu-button.background.current",
+                              "stroke": "component.sidebar.menu-button.edge.current",
+                              "strokeW": "component.sidebar.menu-button.edge-width.current",
+                              "sides": [
+                                "left"
+                              ]
+                            },
+                            {
+                              "t": "frame",
+                              "name": "Menu button · hover",
+                              "w": "fill",
+                              "h": "component.sidebar.menu-button.default.height",
+                              "pad": "component.sidebar.menu-button.padding",
+                              "gap": "component.sidebar.menu-button.gap",
+                              "radius": "component.sidebar.menu-button.radius",
+                              "children": [
+                                {
+                                  "t": "icon",
+                                  "icon": "receipt",
+                                  "size": "component.sidebar.menu-button.icon-size",
+                                  "color": "component.sidebar.label"
+                                },
+                                {
+                                  "t": "text",
+                                  "text": "Invoices",
+                                  "size": "component.sidebar.menu-button.font-size",
+                                  "color": "component.sidebar.label"
+                                }
+                              ],
+                              "fill": "component.sidebar.menu-button.background.hover",
+                              "n": 5
+                            },
+                            {
+                              "t": "frame",
+                              "name": "Menu button · pressed",
+                              "w": "fill",
+                              "h": "component.sidebar.menu-button.default.height",
+                              "pad": "component.sidebar.menu-button.padding",
+                              "gap": "component.sidebar.menu-button.gap",
+                              "radius": "component.sidebar.menu-button.radius",
+                              "children": [
+                                {
+                                  "t": "icon",
+                                  "icon": "users",
+                                  "size": "component.sidebar.menu-button.icon-size",
+                                  "color": "component.sidebar.label"
+                                },
+                                {
+                                  "t": "text",
+                                  "text": "Customers",
+                                  "size": "component.sidebar.menu-button.font-size",
+                                  "color": "component.sidebar.label"
+                                }
+                              ],
+                              "fill": "component.sidebar.menu-button.background.pressed"
+                            }
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                }
+              }
+            },
+            {
+              "title": "Focus ring",
+              "parts": [
+                6
+              ],
+              "roles": [
+                "focus"
+              ],
+              "answers": [
+                "accessibility.definition"
+              ],
+              "rules": [
+                "keyboard-focus"
+              ],
+              "tokens": [
+                "component.sidebar.menu-button.focus-ring",
+                "component.sidebar.menu-button.focus-width",
+                "component.sidebar.menu-button.focus-offset"
+              ],
+              "image": {
+                "tree": {
+                  "t": "frame",
+                  "name": "Sidebar",
+                  "layout": "col",
+                  "align": "start",
+                  "w": 240,
+                  "fill": "component.sidebar.background",
+                  "stroke": "component.sidebar.container.border",
+                  "strokeW": "component.sidebar.container.border-width",
+                  "sides": [
+                    "right"
+                  ],
+                  "pad": "component.sidebar.group.padding",
+                  "gap": "component.sidebar.content.gap",
+                  "children": [
+                    {
+                      "t": "frame",
+                      "name": "Group · Workspace",
+                      "layout": "col",
+                      "align": "start",
+                      "children": [
+                        {
+                          "t": "frame",
+                          "name": "Group label",
+                          "h": "component.sidebar.group.label.height",
+                          "padX": "component.sidebar.group.label.padding-x",
+                          "children": [
+                            {
+                              "t": "text",
+                              "text": "Workspace",
+                              "size": "component.sidebar.group.label.font-size",
+                              "weight": "bold",
+                              "color": "component.sidebar.group.label.label"
+                            }
+                          ]
+                        },
+                        {
+                          "t": "frame",
+                          "name": "Menu",
+                          "layout": "col",
+                          "gap": "component.sidebar.menu.gap",
+                          "w": 208,
+                          "children": [
+                            {
+                              "t": "frame",
+                              "name": "Menu button · Dashboard",
+                              "w": "fill",
+                              "h": "component.sidebar.menu-button.default.height",
+                              "pad": "component.sidebar.menu-button.padding",
+                              "gap": "component.sidebar.menu-button.gap",
+                              "radius": "component.sidebar.menu-button.radius",
+                              "children": [
+                                {
+                                  "t": "icon",
+                                  "icon": "layout-dashboard",
+                                  "size": "component.sidebar.menu-button.icon-size",
+                                  "color": "component.sidebar.label"
+                                },
+                                {
+                                  "t": "text",
+                                  "text": "Dashboard",
+                                  "size": "component.sidebar.menu-button.font-size",
+                                  "color": "component.sidebar.label",
+                                  "weight": "bold"
+                                }
+                              ],
+                              "fill": "component.sidebar.menu-button.background.current",
+                              "stroke": "component.sidebar.menu-button.edge.current",
+                              "strokeW": "component.sidebar.menu-button.edge-width.current",
+                              "sides": [
+                                "left"
+                              ]
+                            },
+                            {
+                              "t": "frame",
+                              "name": "Menu button · focused",
+                              "w": 200,
+                              "h": "component.sidebar.menu-button.default.height",
+                              "pad": "component.sidebar.menu-button.padding",
+                              "gap": "component.sidebar.menu-button.gap",
+                              "radius": "component.sidebar.menu-button.radius",
+                              "children": [
+                                {
+                                  "t": "icon",
+                                  "icon": "receipt",
+                                  "size": "component.sidebar.menu-button.icon-size",
+                                  "color": "component.sidebar.label"
+                                },
+                                {
+                                  "t": "text",
+                                  "text": "Invoices",
+                                  "size": "component.sidebar.menu-button.font-size",
+                                  "color": "component.sidebar.label"
+                                }
+                              ],
+                              "ring": {
+                                "color": "component.sidebar.menu-button.focus-ring",
+                                "width": "component.sidebar.menu-button.focus-width",
+                                "offset": "component.sidebar.menu-button.focus-offset",
+                                "radius": "component.sidebar.menu-button.radius",
+                                "n": 6
+                              }
+                            },
+                            {
+                              "t": "frame",
+                              "name": "Menu button · Customers",
+                              "w": "fill",
+                              "h": "component.sidebar.menu-button.default.height",
+                              "pad": "component.sidebar.menu-button.padding",
+                              "gap": "component.sidebar.menu-button.gap",
+                              "radius": "component.sidebar.menu-button.radius",
+                              "children": [
+                                {
+                                  "t": "icon",
+                                  "icon": "users",
+                                  "size": "component.sidebar.menu-button.icon-size",
+                                  "color": "component.sidebar.label"
+                                },
+                                {
+                                  "t": "text",
+                                  "text": "Customers",
+                                  "size": "component.sidebar.menu-button.font-size",
+                                  "color": "component.sidebar.label"
+                                }
+                              ]
+                            }
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                }
+              }
+            },
+            {
+              "title": "Disabled button",
+              "parts": [
+                7
+              ],
+              "roles": [
+                "feedback"
+              ],
+              "answers": [
+                "accessibility.roles"
+              ],
+              "rules": [],
+              "tokens": [
+                "component.sidebar.menu-button.opacity.disabled"
+              ],
+              "image": {
+                "tree": {
+                  "t": "frame",
+                  "name": "Sidebar",
+                  "layout": "col",
+                  "align": "start",
+                  "w": 240,
+                  "fill": "component.sidebar.background",
+                  "stroke": "component.sidebar.container.border",
+                  "strokeW": "component.sidebar.container.border-width",
+                  "sides": [
+                    "right"
+                  ],
+                  "pad": "component.sidebar.group.padding",
+                  "gap": "component.sidebar.content.gap",
+                  "children": [
+                    {
+                      "t": "frame",
+                      "name": "Group · Workspace",
+                      "layout": "col",
+                      "align": "start",
+                      "children": [
+                        {
+                          "t": "frame",
+                          "name": "Group label",
+                          "h": "component.sidebar.group.label.height",
+                          "padX": "component.sidebar.group.label.padding-x",
+                          "children": [
+                            {
+                              "t": "text",
+                              "text": "Workspace",
+                              "size": "component.sidebar.group.label.font-size",
+                              "weight": "bold",
+                              "color": "component.sidebar.group.label.label"
+                            }
+                          ]
+                        },
+                        {
+                          "t": "frame",
+                          "name": "Menu",
+                          "layout": "col",
+                          "gap": "component.sidebar.menu.gap",
+                          "w": 208,
+                          "children": [
+                            {
+                              "t": "frame",
+                              "name": "Menu button · Dashboard",
+                              "w": "fill",
+                              "h": "component.sidebar.menu-button.default.height",
+                              "pad": "component.sidebar.menu-button.padding",
+                              "gap": "component.sidebar.menu-button.gap",
+                              "radius": "component.sidebar.menu-button.radius",
+                              "children": [
+                                {
+                                  "t": "icon",
+                                  "icon": "layout-dashboard",
+                                  "size": "component.sidebar.menu-button.icon-size",
+                                  "color": "component.sidebar.label"
+                                },
+                                {
+                                  "t": "text",
+                                  "text": "Dashboard",
+                                  "size": "component.sidebar.menu-button.font-size",
+                                  "color": "component.sidebar.label",
+                                  "weight": "bold"
+                                }
+                              ],
+                              "fill": "component.sidebar.menu-button.background.current",
+                              "stroke": "component.sidebar.menu-button.edge.current",
+                              "strokeW": "component.sidebar.menu-button.edge-width.current",
+                              "sides": [
+                                "left"
+                              ]
+                            },
+                            {
+                              "t": "frame",
+                              "name": "Menu button · Invoices",
+                              "w": "fill",
+                              "h": "component.sidebar.menu-button.default.height",
+                              "pad": "component.sidebar.menu-button.padding",
+                              "gap": "component.sidebar.menu-button.gap",
+                              "radius": "component.sidebar.menu-button.radius",
+                              "children": [
+                                {
+                                  "t": "icon",
+                                  "icon": "receipt",
+                                  "size": "component.sidebar.menu-button.icon-size",
+                                  "color": "component.sidebar.label"
+                                },
+                                {
+                                  "t": "text",
+                                  "text": "Invoices",
+                                  "size": "component.sidebar.menu-button.font-size",
+                                  "color": "component.sidebar.label"
+                                }
+                              ]
+                            },
+                            {
+                              "t": "frame",
+                              "name": "Menu button · disabled",
+                              "w": "fill",
+                              "h": "component.sidebar.menu-button.default.height",
+                              "pad": "component.sidebar.menu-button.padding",
+                              "gap": "component.sidebar.menu-button.gap",
+                              "radius": "component.sidebar.menu-button.radius",
+                              "children": [
+                                {
+                                  "t": "icon",
+                                  "icon": "archive",
+                                  "size": "component.sidebar.menu-button.icon-size",
+                                  "color": "component.sidebar.label"
+                                },
+                                {
+                                  "t": "text",
+                                  "text": "Archive",
+                                  "size": "component.sidebar.menu-button.font-size",
+                                  "color": "component.sidebar.label"
+                                }
+                              ],
+                              "opacity": "component.sidebar.menu-button.opacity.disabled",
+                              "n": 7
+                            }
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                }
+              }
+            }
+          ]
         }
       },
       {

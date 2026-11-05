@@ -125,7 +125,8 @@ const RULE_WORDS = {
   checked: /checked|(is|are) on\b/i,
   open: /\bopen\b|expanded/i,
   pressed: /press/i,
-  highlight: /highlight/i,
+  // A highlight comes from the pointer or keyboard focus (focus-visible): a focus rule covers it.
+  highlight: /highlight|keyboard focus|focus ring/i,
   hover: /hover|pointer/i,
 };
 // A Tailwind utility → the property it paints.
@@ -221,7 +222,13 @@ export function usages(src, comp, cssVar) {
         ? "root"
         : child.replace(new RegExp(`^${comp}-`), "")
       : partAt(src, m.index, comp);
-    out.push({ part, property, state, cls });
+    // A line drawn on a pseudo-element (after:w-[2px] after:bg-…) is a border, not a fill.
+    const line =
+      property === "background" &&
+      variants.some((v) => v === "after" || v === "before")
+        ? "border"
+        : property;
+    out.push({ part, property: line, state, cls });
   }
   return out;
 }

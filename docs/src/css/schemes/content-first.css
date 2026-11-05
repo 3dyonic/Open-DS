@@ -179,17 +179,18 @@ html[data-scheme="content-first"] {
   --accordion-content-padding-bottom: var(--space-inset-container); /** Space below the content. */
   --accordion-item-divider-width: var(--border-width-default); /** The width of the line between items. */
   --alert-dialog-content-gap: var(--space-gap-group); /** Content gap of the alert dialog. */
-  --alert-dialog-content-padding: var(--component-spacing-map-x6); /** Content padding of the alert dialog. */
+  --alert-dialog-content-padding: var(--space-inset-container); /** Padding inside the alert dialog panel: the padding inside cards and dialogs. */
   --alert-dialog-content-border-width: var(--border-width-default); /** Content border width of the alert dialog. */
   --alert-dialog-header-gap: var(--component-spacing-map-x2); /** Header gap of the alert dialog. */
   --alert-dialog-header-gap-x: var(--space-gap-section); /** Header gap x of the alert dialog. */
   --alert-dialog-footer-gap: var(--space-gap-default); /** Footer gap of the alert dialog. */
   --alert-dialog-title-font-size: var(--type-heading-font-size); /** Title font size of the alert dialog. */
   --alert-dialog-title-line-height: var(--type-heading-line-height); /** Title line height of the alert dialog. */
-  --alert-dialog-title-font-weight: var(--type-title-font-weight); /** Title font weight of the alert dialog. */
+  --alert-dialog-title-font-weight: var(--type-heading-font-weight); /** Weight of the alert dialog title: a heading. */
   --alert-dialog-description-font-size: var(--type-body-font-size); /** Description font size of the alert dialog. */
   --alert-dialog-description-line-height: var(--type-body-line-height); /** Description line height of the alert dialog. */
   --alert-dialog-media-size: var(--size-control-default); /** Media size of the alert dialog. */
+  --alert-dialog-media-margin-bottom: var(--component-spacing-map-x2); /** Extra gap below the alert dialog media, on top of the header gap. */
   --alert-gap-y: var(--component-spacing-map-hairline); /** Gap y of the alert. */
   --alert-padding-x: var(--space-inset-container); /** Padding x of the alert. */
   --alert-padding-y: var(--component-spacing-map-x3); /** Padding y of the alert. */
@@ -417,23 +418,31 @@ html[data-scheme="content-first"] {
   --date-picker-font-weight: var(--type-body-font-weight); /** Font weight of the date picker. */
   --dialog-content-gap: var(--space-gap-group); /** Content gap of the dialog. */
   --dialog-content-padding: var(--space-inset-container); /** Content padding of the dialog. */
-  --dialog-border-width: var(--border-width-default); /** Border width of the dialog. */
-  --dialog-padding: var(--component-spacing-map-x1); /** Padding of the dialog. */
-  --dialog-size: var(--size-icon); /** Size of the dialog. */
-  --dialog-gap: var(--space-gap-tight); /** Gap of the dialog. */
-  --dialog-gap-2: var(--space-gap-default); /** Gap 2 of the dialog. */
-  --dialog-font-size: var(--type-heading-font-size); /** Font size of the dialog. */
-  --dialog-font-weight: var(--type-heading-font-weight); /** Font weight of the dialog. */
-  --dialog-font-size-2: var(--type-body-font-size); /** Font size 2 of the dialog. */
-  --drawer-radius: var(--radius-round); /** Radius of the drawer. */
+  --dialog-content-border-width: var(--border-width-default); /** Width of the dialog panel's edge. */
+  --dialog-close-padding: var(--component-spacing-map-x1); /** Padding around the dialog close icon. */
+  --dialog-close-icon-size: var(--size-icon); /** Size of the dialog close icon: an icon next to text. */
+  --dialog-close-focus-ring-width: var(--border-width-focus); /** Width of the focus ring on the dialog close button. */
+  --dialog-close-focus-offset: var(--border-width-focus-offset); /** Gap between the dialog close button and its focus ring. */
+  --dialog-title-font-size: var(--type-heading-font-size); /** Size of the dialog title: a heading. */
+  --dialog-title-font-weight: var(--type-heading-font-weight); /** Weight of the dialog title: a heading. */
+  --dialog-title-line-height: var(--type-heading-line-height); /** Line height of the dialog title: a heading. */
+  --dialog-description-font-size: var(--type-body-font-size); /** Size of the dialog description: body text. */
+  --dialog-description-line-height: var(--type-body-line-height); /** Line height of the dialog description: body text. */
+  --dialog-header-gap: var(--space-gap-tight); /** Gap between the dialog title and its description. */
+  --dialog-footer-gap: var(--space-gap-default); /** Gap between the dialog footer's buttons. */
+  --drawer-content-border-width: var(--border-width-default); /** Width of the drawer panel's edge. */
   --drawer-header-gap: var(--component-spacing-map-hairline); /** Header gap of the drawer. */
   --drawer-header-padding: var(--space-inset-container); /** Header padding of the drawer. */
   --drawer-header-gap-2: var(--component-spacing-map-x2); /** Header gap 2 of the drawer. */
   --drawer-footer-gap: var(--space-gap-default); /** Footer gap of the drawer. */
   --drawer-footer-padding: var(--space-inset-container); /** Footer padding of the drawer. */
-  --drawer-title-font-weight: var(--type-title-font-weight); /** Title font weight of the drawer. */
+  --drawer-title-font-weight: var(--type-heading-font-weight); /** Weight of the drawer title: a heading. */
+  --drawer-title-font-size: var(--type-heading-font-size); /** Size of the drawer title: a heading. */
+  --drawer-title-line-height: var(--type-heading-line-height); /** Line height of the drawer title: a heading. */
   --drawer-description-font-size: var(--type-body-font-size); /** Description font size of the drawer. */
   --drawer-description-line-height: var(--type-body-line-height); /** Description line height of the drawer. */
+  --drawer-handle-radius: var(--radius-round); /** Corner of the drawer handle: fully round. */
+  --drawer-handle-margin-top: var(--space-inset-container); /** Gap between the drawer panel's edge and its handle: the panel's inset. */
   --dropdown-menu-content-padding: var(--component-spacing-map-x1); /** Content padding of the dropdown menu. */
   --dropdown-menu-content-border-width: var(--border-width-default); /** Content border width of the dropdown menu. */
   --dropdown-menu-item-gap: var(--space-gap-default); /** Item gap of the dropdown menu. */
@@ -712,25 +721,34 @@ html[data-scheme="content-first"] {
   --select-item-disabled: var(--opacity-disabled); /** Item disabled of the select. */
   --separator-thickness: var(--border-width-default); /** Thickness of the separator: the weight of every line. */
   --sheet-content-gap: var(--space-gap-group); /** Content gap of the sheet. */
-  --sheet-focus: var(--border-width-focus); /** Focus of the sheet. */
-  --sheet-icon-size: var(--size-icon); /** Icon size of the sheet. */
+  --sheet-content-border-width: var(--border-width-default); /** Width of the sheet panel's edge. */
   --sheet-header-gap: var(--component-spacing-map-x2); /** Header gap of the sheet. */
   --sheet-header-padding: var(--space-inset-container); /** Header padding of the sheet. */
   --sheet-footer-gap: var(--space-gap-default); /** Footer gap of the sheet. */
   --sheet-footer-padding: var(--space-inset-container); /** Footer padding of the sheet. */
-  --sheet-title-font-weight: var(--type-title-font-weight); /** Title font weight of the sheet. */
+  --sheet-title-font-weight: var(--type-heading-font-weight); /** Weight of the sheet title: a heading. */
+  --sheet-title-font-size: var(--type-heading-font-size); /** Size of the sheet title: a heading. */
+  --sheet-title-line-height: var(--type-heading-line-height); /** Line height of the sheet title: a heading. */
   --sheet-description-font-size: var(--type-body-font-size); /** Description font size of the sheet. */
   --sheet-description-line-height: var(--type-body-line-height); /** Description line height of the sheet. */
   --sheet-close-focus-offset: var(--border-width-focus-offset); /** Gap between the sheet close and its focus ring. */
+  --sheet-close-focus-ring-width: var(--border-width-focus); /** Width of the focus ring on the sheet close button. */
+  --sheet-close-icon-size: var(--size-icon); /** Size of the sheet close icon: an icon next to text. */
+  --sheet-close-padding: var(--component-spacing-map-x1); /** Padding around the sheet close icon. */
   --sidebar-gap-duration: var(--motion-duration-feedback); /** Gap duration of the sidebar. */
   --sidebar-gap: var(--space-gap-default); /** Gap of the sidebar. */
   --sidebar-container-duration: var(--motion-duration-feedback); /** Container duration of the sidebar. */
-  --sidebar-padding: var(--component-spacing-map-x2); /** Padding of the sidebar. */
+  --sidebar-container-padding: var(--component-spacing-map-x2); /** Space between the screen edge and a floating or inset sidebar panel. */
+  --sidebar-container-border-width: var(--border-width-default); /** Width of the edge between the sidebar and the page. */
+  --sidebar-inner-border-width: var(--border-width-default); /** Width of the edge of a floating sidebar panel. */
+  --sidebar-rail-line-width: var(--border-width-default); /** Width of the line the rail shows on the sidebar edge under the pointer: a border. */
+  --sidebar-inset-margin: var(--component-spacing-map-x2); /** Space around the inset main area, the same step as the inset sidebar's padding so both panels sit on one grid. */
   --sidebar-input-height: var(--size-control-default); /** Input height of the sidebar. */
   --sidebar-header-gap: var(--space-gap-default); /** Header gap of the sidebar. */
   --sidebar-header-padding: var(--component-spacing-map-x2); /** Header padding of the sidebar. */
   --sidebar-footer-gap: var(--space-gap-default); /** Footer gap of the sidebar. */
   --sidebar-footer-padding: var(--component-spacing-map-x2); /** Footer padding of the sidebar. */
+  --sidebar-separator-margin-x: var(--component-spacing-map-x2); /** Space at each end of a sidebar separator, so it lines up with the group padding. */
   --sidebar-content-gap: var(--space-gap-default); /** Content gap of the sidebar. */
   --sidebar-group-padding: var(--component-spacing-map-x2); /** Group padding of the sidebar. */
   --sidebar-group-label-height: var(--size-control-default); /** Group label height of the sidebar. */
@@ -741,13 +759,16 @@ html[data-scheme="content-first"] {
   --sidebar-group-label-duration: var(--motion-duration-feedback); /** Group label duration of the sidebar. */
   --sidebar-group-label-icon-size: var(--size-icon); /** Group label icon size of the sidebar. */
   --sidebar-group-label-focus: var(--border-width-focus); /** Group label focus of the sidebar. */
+  --sidebar-group-label-focus-offset: var(--border-width-focus-offset); /** Gap between the sidebar group label and its focus ring. */
   --sidebar-group-action-icon-size: var(--size-icon); /** Group action icon size of the sidebar. */
   --sidebar-group-action-focus: var(--border-width-focus); /** Group action focus of the sidebar. */
+  --sidebar-group-action-focus-offset: var(--border-width-focus-offset); /** Gap between the sidebar group action and its focus ring. */
   --sidebar-group-content-font-size: var(--type-body-font-size); /** Group content font size of the sidebar. */
   --sidebar-group-content-line-height: var(--type-body-line-height); /** Group content line height of the sidebar. */
   --sidebar-menu-gap: var(--space-gap-tight); /** Menu gap of the sidebar. */
   --sidebar-menu-action-icon-size: var(--size-icon); /** Menu action icon size of the sidebar. */
   --sidebar-menu-action-focus: var(--border-width-focus); /** Menu action focus of the sidebar. */
+  --sidebar-menu-action-focus-offset: var(--border-width-focus-offset); /** Gap between the sidebar menu action and its focus ring. */
   --sidebar-menu-badge-padding-x: var(--component-spacing-map-x1); /** Menu badge padding x of the sidebar. */
   --sidebar-menu-badge-font-size: var(--type-caption-font-size); /** Menu badge font size of the sidebar. */
   --sidebar-menu-badge-line-height: var(--type-caption-line-height); /** Menu badge line height of the sidebar. */
@@ -755,6 +776,7 @@ html[data-scheme="content-first"] {
   --sidebar-menu-skeleton-height: var(--size-control-default); /** Menu skeleton height of the sidebar. */
   --sidebar-menu-skeleton-gap: var(--space-gap-default); /** Menu skeleton gap of the sidebar. */
   --sidebar-menu-skeleton-padding-x: var(--component-spacing-map-x2); /** Menu skeleton padding x of the sidebar. */
+  --sidebar-menu-skeleton-text-height: var(--size-icon); /** Height of the text bar of a menu skeleton, of the sidebar. */
   --sidebar-menu-sub-gap: var(--space-gap-tight); /** Menu sub gap of the sidebar. */
   --sidebar-menu-sub-padding-x: var(--component-spacing-map-x3); /** Menu sub padding x of the sidebar. */
   --sidebar-menu-sub-padding-y: var(--component-spacing-map-hairline); /** Menu sub padding y of the sidebar. */
@@ -763,25 +785,33 @@ html[data-scheme="content-first"] {
   --sidebar-menu-sub-button-disabled-opacity-disabled: var(--opacity-disabled); /** Menu sub button disabled opacity disabled of the sidebar. */
   --sidebar-menu-sub-button-icon-size: var(--size-icon); /** Menu sub button icon size of the sidebar. */
   --sidebar-menu-sub-button-focus: var(--border-width-focus); /** Menu sub button focus of the sidebar. */
-  --sidebar-font-size: var(--type-body-font-size); /** Font size of the sidebar. */
-  --sidebar-line-height: var(--type-body-line-height); /** Line height of the sidebar. */
-  --sidebar-padding-right: var(--component-spacing-map-x8); /** Padding right of the sidebar. */
-  --sidebar-size: var(--size-control-default); /** Size of the sidebar. */
-  --sidebar-disabled-opacity-disabled: var(--opacity-disabled); /** Disabled opacity disabled of the sidebar. */
-  --sidebar-font-weight: var(--type-label-font-weight); /** Font weight of the sidebar. */
-  --sidebar-focus: var(--border-width-focus); /** Focus of the sidebar. */
-  --sidebar-icon-size: var(--size-icon); /** Icon size of the sidebar. */
-  --sidebar-default-height: var(--size-control-default); /** Default height of the sidebar. */
-  --sidebar-default-font-size: var(--type-body-font-size); /** Default font size of the sidebar. */
-  --sidebar-default-line-height: var(--type-body-line-height); /** Default line height of the sidebar. */
-  --sidebar-sm-font-size: var(--type-caption-font-size); /** Sm font size of the sidebar. */
-  --sidebar-sm-line-height: var(--type-caption-line-height); /** Sm line height of the sidebar. */
-  --sidebar-lg-font-size: var(--type-body-font-size); /** Lg font size of the sidebar. */
-  --sidebar-lg-line-height: var(--type-body-line-height); /** Lg line height of the sidebar. */
-  --sidebar-height: var(--size-icon); /** Height of the sidebar. */
-  --sidebar-font-size-2: var(--type-caption-font-size); /** Font size 2 of the sidebar. */
-  --sidebar-line-height-2: var(--type-caption-line-height); /** Line height 2 of the sidebar. */
+  --sidebar-menu-sub-button-edge-width-current: var(--border-width-focus); /** Width of the edge that marks the submenu button for the current page. */
+  --sidebar-menu-sub-button-md-font-size: var(--type-body-font-size); /** Font size of a medium submenu button, of the sidebar. */
+  --sidebar-menu-sub-button-md-line-height: var(--type-body-line-height); /** Line height of a medium submenu button, of the sidebar. */
+  --sidebar-menu-sub-button-focus-offset: var(--border-width-focus-offset); /** Gap between the sidebar submenu button and its focus ring. */
+  --sidebar-menu-sub-button-sm-font-size: var(--type-caption-font-size); /** Font size of a small submenu button, of the sidebar. */
+  --sidebar-menu-sub-button-sm-line-height: var(--type-caption-line-height); /** Line height of a small submenu button, of the sidebar. */
+  --sidebar-menu-sub-border-width: var(--border-width-default); /** Width of the line that ties a submenu to its parent menu button. */
   --sidebar-menu-button-focus-offset: var(--border-width-focus-offset); /** Gap between the sidebar menu button and its focus ring. */
+  --sidebar-menu-button-edge-width-current: var(--border-width-focus); /** Width of the edge that marks the menu button for the current page, beside its fill, so the current page is never color alone. */
+  --sidebar-menu-button-default-height: var(--size-control-default); /** Height of a default-size menu button, of the sidebar. */
+  --sidebar-menu-button-default-font-size: var(--type-body-font-size); /** Font size of a default-size menu button, of the sidebar. */
+  --sidebar-menu-button-default-line-height: var(--type-body-line-height); /** Line height of a default-size menu button, of the sidebar. */
+  --sidebar-menu-button-sm-font-size: var(--type-caption-font-size); /** Font size of a small menu button, of the sidebar. */
+  --sidebar-menu-button-sm-line-height: var(--type-caption-line-height); /** Line height of a small menu button, of the sidebar. */
+  --sidebar-menu-button-lg-font-size: var(--type-body-font-size); /** Font size of a large menu button, of the sidebar. */
+  --sidebar-menu-button-lg-line-height: var(--type-body-line-height); /** Line height of a large menu button, of the sidebar. */
+  --sidebar-menu-button-opacity-disabled: var(--opacity-disabled); /** Opacity of a menu button that cannot be used, of the sidebar. */
+  --sidebar-menu-button-focus-width: var(--border-width-focus); /** Width of the menu button's keyboard focus ring, of the sidebar. */
+  --sidebar-menu-button-font-size: var(--type-body-font-size); /** Font size of the menu button, of the sidebar. */
+  --sidebar-menu-button-line-height: var(--type-body-line-height); /** Line height of the menu button, of the sidebar. */
+  --sidebar-menu-button-font-weight-current: var(--type-label-font-weight); /** Font weight of the menu button for the current page, of the sidebar. */
+  --sidebar-menu-button-icon-size: var(--size-icon); /** Icon size in a menu button, of the sidebar. */
+  --sidebar-menu-button-outline-border-width: var(--border-width-default); /** Width of the edge of an outline menu button, of the sidebar. */
+  --sidebar-menu-button-padding: var(--component-spacing-map-x2); /** Padding of the menu button, of the sidebar. */
+  --sidebar-menu-button-padding-right: var(--component-spacing-map-x8); /** Right padding of a menu button that has a menu action, so the label clears the action. */
+  --sidebar-menu-button-collapsed-size: var(--size-control-default); /** Width and height of a menu button when the sidebar is collapsed to icons. */
+  --sidebar-menu-button-gap: var(--space-gap-default); /** Gap between the icon and the label of a menu button, of the sidebar. */
   --slider-disabled-opacity-disabled: var(--opacity-disabled); /** Disabled opacity disabled of the slider. */
   --slider-track-radius: var(--radius-round); /** Track radius of the slider. */
   --slider-thumb-icon-size: var(--size-icon); /** Thumb icon size of the slider. */
@@ -873,6 +903,7 @@ html[data-scheme="content-first"] {
   --alert-dialog-overlay-background: var(--color-surface-scrim); /** Overlay background of the alert dialog. */
   --alert-dialog-content-radius: var(--radius-container); /** Content radius of the alert dialog. */
   --alert-dialog-content-shadow: var(--elevation-overlay); /** Content shadow of the alert dialog. */
+  --alert-dialog-title-font-family: var(--type-heading-font-family); /** Typeface of the alert dialog title: a heading. */
   --alert-dialog-media-radius: var(--radius-control); /** Media radius of the alert dialog. */
   --alert-radius: var(--radius-container); /** Radius of the alert. */
   --alert-destructive-label: var(--color-status-danger); /** Destructive label of the alert. */
@@ -924,9 +955,25 @@ html[data-scheme="content-first"] {
   --context-menu-radio-item-radius: var(--radius-option); /** Radio item radius of the context menu. */
   --data-table-radius: var(--radius-badge); /** Radius of the data table. */
   --data-table-container-radius: var(--radius-container); /** Corner of the table frame, of the data table. */
-  --dialog-radius: var(--radius-badge); /** Radius of the dialog. */
-  --dialog-font-family: var(--type-heading-font-family); /** Font family of the dialog. */
+  --dialog-content-radius: var(--radius-container); /** Corner of the dialog panel: a floating panel takes the container corner, like menus and popovers. */
+  --dialog-content-shadow: var(--elevation-overlay); /** Shadow of the dialog panel: it floats over the page. */
+  --dialog-border-width: var(--dialog-content-border-width); /** Deprecated: use component.dialog.content.border-width (OD-243). Border width of the dialog. */
+  --dialog-padding: var(--dialog-close-padding); /** Deprecated: use component.dialog.close.padding (OD-243). Padding of the dialog. */
+  --dialog-size: var(--dialog-close-icon-size); /** Deprecated: use component.dialog.close.icon-size (OD-243). Size of the dialog. */
+  --dialog-gap: var(--dialog-header-gap); /** Deprecated: use component.dialog.header.gap (OD-243). Gap of the dialog. */
+  --dialog-gap-2: var(--dialog-footer-gap); /** Deprecated: use component.dialog.footer.gap (OD-243). Gap 2 of the dialog. */
+  --dialog-font-size: var(--dialog-title-font-size); /** Deprecated: use component.dialog.title.font-size (OD-243). Font size of the dialog. */
+  --dialog-font-weight: var(--dialog-title-font-weight); /** Deprecated: use component.dialog.title.font-weight (OD-243). Font weight of the dialog. */
+  --dialog-font-size-2: var(--dialog-description-font-size); /** Deprecated: use component.dialog.description.font-size (OD-243). Font size 2 of the dialog. */
+  --dialog-close-radius: var(--radius-control); /** Corner of the dialog close button: a button's corner. */
+  --dialog-close-focus-ring-color: var(--color-border-focus); /** Color of the focus ring on the dialog close button, at full strength. */
+  --dialog-overlay-background: var(--color-surface-scrim); /** The scrim behind the dialog: the see-through layer behind a modal. */
+  --dialog-title-font-family: var(--type-heading-font-family); /** Typeface of the dialog title: a heading. */
   --drawer-overlay-background: var(--color-surface-scrim); /** Overlay background of the drawer. */
+  --drawer-content-radius: var(--radius-container); /** Corner of the drawer panel on the side away from the screen edge: a container corner. */
+  --drawer-content-shadow: var(--elevation-overlay); /** Shadow of the drawer panel: it sits over the page, like the sheet. */
+  --drawer-radius: var(--drawer-handle-radius); /** Deprecated: use component.drawer.handle.radius (OD-243). Radius of the drawer. */
+  --drawer-title-font-family: var(--type-heading-font-family); /** Typeface of the drawer title: a heading. */
   --dropdown-menu-item-radius: var(--radius-option); /** Item radius of the dropdown menu. */
   --dropdown-menu-item-label-destructive: var(--color-status-danger); /** Item label when destructive, of the dropdown menu. */
   --empty-radius: var(--radius-container); /** Radius of the empty. */
@@ -1045,8 +1092,12 @@ html[data-scheme="content-first"] {
   --select-item-radius: var(--radius-option); /** Item radius of the select. */
   --sheet-overlay-background: var(--color-surface-scrim); /** Overlay background of the sheet. */
   --sheet-content-shadow: var(--elevation-overlay); /** Content shadow of the sheet. */
-  --sheet-radius: var(--radius-badge); /** Radius of the sheet. */
-  --sheet-focus-ring-focus: var(--color-border-focus); /** Focus ring focus of the sheet. */
+  --sheet-focus: var(--sheet-close-focus-ring-width); /** Deprecated: use component.sheet.close.focus-ring.width (OD-243). Focus of the sheet. */
+  --sheet-icon-size: var(--sheet-close-icon-size); /** Deprecated: use component.sheet.close.icon-size (OD-243). Icon size of the sheet. */
+  --sheet-title-font-family: var(--type-heading-font-family); /** Typeface of the sheet title: a heading. */
+  --sheet-close-radius: var(--radius-control); /** Corner of the sheet close button: a button's corner. */
+  --sheet-close-focus-ring-color: var(--color-border-focus); /** Color of the focus ring on the sheet close button, at full strength. */
+  --sidebar-padding: var(--sidebar-menu-button-padding); /** Deprecated: use component.sidebar.menu-button.padding (OD-243). Padding of the sidebar. */
   --sidebar-inner-radius: var(--radius-container); /** Inner radius of the sidebar. */
   --sidebar-inner-shadow: var(--elevation-card); /** Inner shadow of the sidebar. */
   --sidebar-inset-radius: var(--radius-container); /** Inset radius of the sidebar. */
@@ -1065,11 +1116,31 @@ html[data-scheme="content-first"] {
   --sidebar-menu-sub-button-radius: var(--radius-control); /** Menu sub button radius of the sidebar. */
   --sidebar-menu-sub-button-focus-ring: var(--color-border-focus); /** Menu sub button focus ring of the sidebar. */
   --sidebar-menu-sub-button-focus-ring-focus: var(--color-border-focus); /** Menu sub button focus ring focus of the sidebar. */
-  --sidebar-radius: var(--radius-control); /** Radius of the sidebar. */
-  --sidebar-focus-ring: var(--color-border-focus); /** Focus ring of the sidebar. */
-  --sidebar-selected: var(--color-border-selected); /** Selected of the sidebar. */
-  --sidebar-focus-ring-focus: var(--color-border-focus); /** Focus ring focus of the sidebar. */
+  --sidebar-menu-sub-button-background-current: var(--color-surface-selected); /** Background of the submenu button for the current page, of the sidebar. */
+  --sidebar-menu-sub-button-edge-current: var(--color-border-selected); /** Edge that marks the submenu button for the current page, beside its fill, so the current page is never color alone. */
+  --sidebar-font-size: var(--sidebar-menu-button-font-size); /** Deprecated: use component.sidebar.menu-button.font-size (OD-243). Font size of the sidebar. */
+  --sidebar-line-height: var(--sidebar-menu-button-line-height); /** Deprecated: use component.sidebar.menu-button.line-height (OD-243). Line height of the sidebar. */
+  --sidebar-focus-ring: var(--color-border-focus); /** Deprecated: use sidebar/menu-button/focus-ring (OD-243). Focus ring of the sidebar. */
+  --sidebar-padding-right: var(--sidebar-menu-button-padding-right); /** Deprecated: use component.sidebar.menu-button.padding-right (OD-243). Padding right of the sidebar. */
+  --sidebar-size: var(--sidebar-menu-button-collapsed-size); /** Deprecated: use component.sidebar.menu-button.collapsed-size (OD-243). Size of the sidebar. */
+  --sidebar-disabled-opacity-disabled: var(--sidebar-menu-button-opacity-disabled); /** Deprecated: use component.sidebar.menu-button.opacity.disabled (OD-243). Disabled opacity disabled of the sidebar. */
+  --sidebar-font-weight: var(--sidebar-menu-button-font-weight-current); /** Deprecated: use component.sidebar.menu-button.font-weight.current (OD-243). Font weight of the sidebar. */
+  --sidebar-focus: var(--sidebar-menu-button-focus-width); /** Deprecated: use component.sidebar.menu-button.focus-width (OD-243). Focus of the sidebar. */
+  --sidebar-icon-size: var(--sidebar-menu-button-icon-size); /** Deprecated: use component.sidebar.menu-button.icon-size (OD-243). Icon size of the sidebar. */
+  --sidebar-default-height: var(--sidebar-menu-button-default-height); /** Deprecated: use component.sidebar.menu-button.default.height (OD-243). Default height of the sidebar. */
+  --sidebar-default-font-size: var(--sidebar-menu-button-default-font-size); /** Deprecated: use component.sidebar.menu-button.default.font-size (OD-243). Default font size of the sidebar. */
+  --sidebar-default-line-height: var(--sidebar-menu-button-default-line-height); /** Deprecated: use component.sidebar.menu-button.default.line-height (OD-243). Default line height of the sidebar. */
+  --sidebar-sm-font-size: var(--sidebar-menu-button-sm-font-size); /** Deprecated: use component.sidebar.menu-button.sm.font-size (OD-243). Sm font size of the sidebar. */
+  --sidebar-sm-line-height: var(--sidebar-menu-button-sm-line-height); /** Deprecated: use component.sidebar.menu-button.sm.line-height (OD-243). Sm line height of the sidebar. */
+  --sidebar-lg-font-size: var(--sidebar-menu-button-lg-font-size); /** Deprecated: use component.sidebar.menu-button.lg.font-size (OD-243). Lg font size of the sidebar. */
+  --sidebar-lg-line-height: var(--sidebar-menu-button-lg-line-height); /** Deprecated: use component.sidebar.menu-button.lg.line-height (OD-243). Lg line height of the sidebar. */
+  --sidebar-height: var(--sidebar-menu-skeleton-text-height); /** Deprecated: use component.sidebar.menu.skeleton.text-height (OD-243). Height of the sidebar. */
+  --sidebar-font-size-2: var(--sidebar-menu-sub-button-sm-font-size); /** Deprecated: use component.sidebar.menu.sub.button.sm.font-size (OD-243). Font size 2 of the sidebar. */
+  --sidebar-line-height-2: var(--sidebar-menu-sub-button-sm-line-height); /** Deprecated: use component.sidebar.menu.sub.button.sm.line-height (OD-243). Line height 2 of the sidebar. */
   --sidebar-menu-button-background-current: var(--color-surface-selected); /** Background of the menu button for the current page, of the sidebar. */
+  --sidebar-menu-button-focus-ring: var(--color-border-focus); /** Color of the menu button's keyboard focus ring, at full strength, of the sidebar. */
+  --sidebar-menu-button-radius: var(--radius-control); /** Corner of the menu button, of the sidebar. */
+  --sidebar-menu-button-edge-current: var(--color-border-selected); /** Edge that marks the menu button for the current page, beside its fill, so the current page is never color alone. */
   --skeleton-radius: var(--radius-control); /** Radius of the skeleton. */
   --slider-range-background: var(--color-action-primary); /** Range background of the slider. */
   --slider-thumb-border: var(--color-action-primary); /** Thumb border of the slider. */
@@ -1122,6 +1193,8 @@ html[data-scheme="content-first"] {
   --context-menu-item-label: var(--context-menu-item-label-destructive); /** Deprecated: use component.context-menu.item.label.destructive (OD-243). Item label of the context menu. */
   --context-menu-item-background-focus-2: var(--context-menu-item-background-destructive-highlight); /** Deprecated: use component.context-menu.item.background.destructive-highlight (OD-243). Item background focus 2 of the context menu. */
   --context-menu-item-label-focus-2: var(--context-menu-item-label-destructive-highlight); /** Deprecated: use component.context-menu.item.label.destructive-highlight (OD-243). Item label focus 2 of the context menu. */
+  --dialog-radius: var(--dialog-close-radius); /** Deprecated: use component.dialog.close.radius (OD-243). Radius of the dialog. */
+  --dialog-font-family: var(--dialog-title-font-family); /** Deprecated: use component.dialog.title.font-family (OD-243). Font family of the dialog. */
   --dropdown-menu-label: var(--dropdown-menu-item-label-destructive); /** Deprecated: use component.dropdown-menu.item.label.destructive (OD-241). Label of the dropdown menu. */
   --input-group-focus-ring: var(--input-group-focus-ring-highlight); /** Deprecated: use component.input-group.focus-ring.highlight (OD-243). Focus ring of the input group. */
   --input-otp-slot-border-2: var(--input-otp-slot-border-highlight); /** Deprecated: use component.input-otp.slot.border.highlight (OD-243). Slot border 2 of the input otp. */
@@ -1136,7 +1209,12 @@ html[data-scheme="content-first"] {
   --navigation-menu-link-selected: var(--navigation-menu-link-edge-current); /** Deprecated: use component.navigation-menu.link.edge.current (OD-243). Link selected of the navigation menu. */
   --navigation-menu-shadow-2: var(--navigation-menu-indicator-shadow); /** Deprecated: use component.navigation-menu.indicator.shadow (OD-243). Shadow 2 of the navigation menu. */
   --resizable-radius: var(--resizable-grip-radius); /** Deprecated: use component.resizable.grip.radius (OD-243). Radius of the resizable. */
+  --sheet-radius: var(--sheet-close-radius); /** Deprecated: use component.sheet.close.radius (OD-243). Radius of the sheet. */
+  --sheet-focus-ring-focus: var(--sheet-close-focus-ring-color); /** Deprecated: use component.sheet.close.focus-ring.color (OD-243). Focus ring focus of the sheet. */
+  --sidebar-radius: var(--sidebar-menu-button-radius); /** Deprecated: use component.sidebar.menu-button.radius (OD-243). Radius of the sidebar. */
   --sidebar-background-2: var(--sidebar-menu-button-background-current); /** Deprecated: use component.sidebar.menu-button.background.current (OD-241). Background 2 of the sidebar. */
+  --sidebar-selected: var(--sidebar-menu-button-edge-current); /** Deprecated: use component.sidebar.menu-button.edge.current (OD-243). Selected of the sidebar. */
+  --sidebar-focus-ring-focus: var(--sidebar-menu-button-focus-ring); /** Deprecated: use component.sidebar.menu-button.focus-ring (OD-243). Focus ring focus of the sidebar. */
   --button-primary-label: var(--color-text-on-action); /** Primary button label color. */
   --button-secondary-background: var(--color-action-secondary); /** Secondary button fill. */
   --button-secondary-background-hover: var(--color-action-secondary-hover); /** Secondary button fill on hover. */
@@ -1179,9 +1257,10 @@ html[data-scheme="content-first"] {
   --accordion-trigger-focus-ring-offset-focus: var(--color-surface-canvas); /** Trigger focus ring offset focus of the accordion. */
   --accordion-icon: var(--color-text-muted); /** The chevron's color. */
   --accordion-item-divider: var(--color-border-default); /** The line between items, on each item's bottom edge. */
-  --alert-dialog-content-background: var(--color-surface-canvas); /** Content background of the alert dialog. */
+  --alert-dialog-content-background: var(--color-surface-raised); /** Fill of the alert dialog panel: a fill that floats above content. */
   --alert-dialog-content-border: var(--color-border-default); /** Content border of the alert dialog, like every floating panel's. */
-  --alert-dialog-description-label: var(--color-text-muted); /** Description label of the alert dialog. */
+  --alert-dialog-content-label: var(--color-text-primary); /** Text color in the alert dialog panel: main text. */
+  --alert-dialog-description-label: var(--color-text-secondary); /** Color of the alert dialog description: supporting text. */
   --alert-dialog-media-background: var(--color-surface-sunken); /** Media background of the alert dialog. */
   --alert-default-background: var(--color-surface-default); /** Default background of the alert. */
   --alert-default-label: var(--color-text-primary); /** Default label of the alert. */
@@ -1287,13 +1366,17 @@ html[data-scheme="content-first"] {
   --data-table-container-border: var(--color-border-default); /** Edge of the table frame, of the data table. */
   --date-picker-label: var(--color-text-muted); /** Label of the date picker. */
   --dialog-content-label: var(--color-text-primary); /** Content label of the dialog. */
-  --dialog-border: var(--color-border-default); /** Border of the dialog. */
-  --dialog-label: var(--color-text-secondary); /** Label of the dialog. */
+  --dialog-content-border: var(--color-border-default); /** Edge of the dialog panel: a floating panel has a border of its own. */
+  --dialog-content-background: var(--color-surface-raised); /** Fill of the dialog panel: a fill that floats above content. */
   --dialog-close-background-hover: var(--color-surface-highlight); /** Close button background under the pointer, of the dialog. */
+  --dialog-close-label: var(--color-text-secondary); /** Color of the dialog close icon: supporting, not the main action. */
+  --dialog-close-focus-ring-offset-color: var(--color-surface-canvas); /** Color of the gap between the dialog close button and its focus ring. */
+  --dialog-description-label: var(--color-text-secondary); /** Color of the dialog description: supporting text. */
   --drawer-content-background: var(--color-surface-canvas); /** Content background of the drawer. */
-  --drawer-background: var(--color-surface-sunken); /** Background of the drawer. */
+  --drawer-content-border: var(--color-border-default); /** Edge of the drawer panel, on the side that faces the page. */
   --drawer-title-label: var(--color-text-primary); /** Title label of the drawer. */
-  --drawer-description-label: var(--color-text-muted); /** Description label of the drawer. */
+  --drawer-description-label: var(--color-text-secondary); /** Color of the drawer description: supporting text. */
+  --drawer-handle-background: var(--color-surface-sunken); /** Fill of the drawer handle: a recessed fill. */
   --dropdown-menu-content-label: var(--color-text-primary); /** Content label of the dropdown menu. */
   --dropdown-menu-content-border: var(--color-border-default); /** Content border of the dropdown menu. */
   --dropdown-menu-item-background-highlight: var(--color-surface-highlight); /** Item background when highlighted, by the pointer or the keyboard, of the dropdown menu. */
@@ -1404,13 +1487,16 @@ html[data-scheme="content-first"] {
   --select-item-background-highlight: var(--color-surface-highlight); /** Item background when highlighted, by the pointer or the keyboard, of the select. */
   --separator-background: var(--color-border-default); /** Background of the separator. */
   --sheet-content-background: var(--color-surface-canvas); /** Content background of the sheet. */
-  --sheet-focus-ring-offset: var(--color-surface-canvas); /** Focus ring offset of the sheet. */
-  --sheet-background-open: var(--color-action-secondary); /** Background open of the sheet. */
+  --sheet-content-border: var(--color-border-default); /** Edge of the sheet panel, on the side that faces the page. */
   --sheet-title-label: var(--color-text-primary); /** Title label of the sheet. */
-  --sheet-description-label: var(--color-text-muted); /** Description label of the sheet. */
+  --sheet-description-label: var(--color-text-secondary); /** Color of the sheet description: supporting text. */
+  --sheet-close-focus-ring-offset-color: var(--color-surface-canvas); /** Color of the gap between the sheet close button and its focus ring. */
+  --sheet-close-background-hover: var(--color-surface-highlight); /** Close button background under the pointer, of the sheet. */
+  --sheet-close-label: var(--color-text-secondary); /** Color of the sheet close icon: supporting, not the main action. */
   --sidebar-wrapper-background: var(--color-surface-default); /** Wrapper background of the sidebar. */
   --sidebar-background: var(--color-surface-default); /** Background of the sidebar. */
   --sidebar-label: var(--color-text-primary); /** Label of the sidebar. */
+  --sidebar-container-border: var(--color-border-default); /** Edge between the sidebar and the page, on the side that faces the page. */
   --sidebar-inner-background: var(--color-surface-default); /** Inner background of the sidebar. */
   --sidebar-inner-border: var(--color-border-default); /** Inner border of the sidebar. */
   --sidebar-rail-background-hover: var(--color-surface-highlight); /** Rail background under the pointer, when the sidebar is off canvas. */
@@ -1418,36 +1504,38 @@ html[data-scheme="content-first"] {
   --sidebar-inset-background: var(--color-surface-canvas); /** Inset background of the sidebar. */
   --sidebar-input-background: var(--color-surface-canvas); /** Input background of the sidebar. */
   --sidebar-separator-background: var(--color-border-default); /** Separator background of the sidebar. */
-  --sidebar-group-label-label: var(--color-text-primary); /** Group label label of the sidebar. */
+  --sidebar-group-label-label: var(--color-text-secondary); /** Text of a sidebar group label: supporting text, quieter than the items it heads. */
   --sidebar-group-label-focus-ring-offset-focus: var(--color-surface-canvas); /** Group label focus ring offset focus of the sidebar. */
   --sidebar-group-action-label: var(--color-text-primary); /** Group action label of the sidebar. */
-  --sidebar-group-action-label-hover: var(--color-text-primary); /** Group action label hover of the sidebar. */
+  --sidebar-group-action-label-hover: var(--color-text-primary); /** Deprecated: use sidebar/group/action/label (OD-243). Group action label hover of the sidebar. */
   --sidebar-group-action-focus-ring-offset-focus: var(--color-surface-canvas); /** Group action focus ring offset focus of the sidebar. */
   --sidebar-group-action-background-hover: var(--color-surface-highlight); /** Group action background under the pointer, of the sidebar. */
   --sidebar-menu-action-label: var(--color-text-primary); /** Menu action label of the sidebar. */
-  --sidebar-menu-action-label-hover: var(--color-text-primary); /** Menu action label hover of the sidebar. */
+  --sidebar-menu-action-label-hover: var(--color-text-primary); /** Deprecated: use sidebar/menu/action/label (OD-243). Menu action label hover of the sidebar. */
   --sidebar-menu-action-focus-ring-offset-focus: var(--color-surface-canvas); /** Menu action focus ring offset focus of the sidebar. */
   --sidebar-menu-action-background-hover: var(--color-surface-highlight); /** Menu action background under the pointer, of the sidebar. */
   --sidebar-menu-badge-label: var(--color-text-primary); /** Menu badge label of the sidebar. */
   --sidebar-menu-sub-border: var(--color-border-default); /** Menu sub border of the sidebar. */
   --sidebar-menu-sub-button-label: var(--color-text-primary); /** Menu sub button label of the sidebar. */
-  --sidebar-menu-sub-button-label-hover: var(--color-text-primary); /** Menu sub button label hover of the sidebar. */
-  --sidebar-menu-sub-button-label-active: var(--color-text-primary); /** Menu sub button label active of the sidebar. */
+  --sidebar-menu-sub-button-label-hover: var(--color-text-primary); /** Deprecated: use sidebar/menu/sub/button/label (OD-243). Menu sub button label hover of the sidebar. */
+  --sidebar-menu-sub-button-label-active: var(--color-text-primary); /** Deprecated: use sidebar/menu/sub/button/label (OD-243). Menu sub button label active of the sidebar. */
   --sidebar-menu-sub-button-focus-ring-offset-focus: var(--color-surface-canvas); /** Menu sub button focus ring offset focus of the sidebar. */
   --sidebar-menu-sub-button-background-hover: var(--color-surface-highlight); /** Submenu button background under the pointer, of the sidebar. */
   --sidebar-menu-sub-button-background-pressed: var(--color-surface-pressed); /** Submenu button background while pressed, of the sidebar. */
-  --sidebar-label-hover: var(--color-text-primary); /** Label hover of the sidebar. */
-  --sidebar-label-active: var(--color-text-primary); /** Label active of the sidebar. */
-  --sidebar-background-open-hover: var(--color-surface-sunken); /** Background open hover of the sidebar. */
-  --sidebar-label-open-hover: var(--color-text-primary); /** Label open hover of the sidebar. */
-  --sidebar-focus-ring-offset-focus: var(--color-surface-canvas); /** Focus ring offset focus of the sidebar. */
-  --sidebar-default-label-hover: var(--color-text-primary); /** Default label hover of the sidebar. */
-  --sidebar-default-background-hover: var(--color-surface-highlight); /** Default menu button background under the pointer, of the sidebar. */
-  --sidebar-outline-background: var(--color-surface-canvas); /** Outline background of the sidebar. */
-  --sidebar-outline-background-hover: var(--color-surface-highlight); /** Outline menu button background under the pointer, of the sidebar. */
-  --sidebar-outline-label-hover: var(--color-text-primary); /** Outline label hover of the sidebar. */
+  --sidebar-label-hover: var(--color-text-primary); /** Deprecated: use sidebar/label (OD-243). Label hover of the sidebar. */
+  --sidebar-label-active: var(--color-text-primary); /** Deprecated: use sidebar/label (OD-243). Label active of the sidebar. */
+  --sidebar-label-open-hover: var(--color-text-primary); /** Deprecated: use sidebar/label (OD-243). Label open hover of the sidebar. */
+  --sidebar-default-label-hover: var(--color-text-primary); /** Deprecated: use sidebar/label (OD-243). Default label hover of the sidebar. */
+  --sidebar-default-background-hover: var(--color-surface-highlight); /** Deprecated: use sidebar/menu-button/background/hover (OD-243). Default menu button background under the pointer, of the sidebar. */
+  --sidebar-outline-label-hover: var(--color-text-primary); /** Deprecated: use sidebar/label (OD-243). Outline label hover of the sidebar. */
   --sidebar-menu-button-background-hover: var(--color-surface-highlight); /** Menu button background under the pointer, of the sidebar. */
   --sidebar-menu-button-background-pressed: var(--color-surface-pressed); /** Menu button background while pressed, of the sidebar. */
+  --sidebar-menu-button-background-open-hover: var(--color-surface-highlight); /** Background of a menu button whose submenu is open, under the pointer: the highlight, whose rule covers open submenu triggers. */
+  --sidebar-menu-button-focus-ring-offset: var(--color-surface-canvas); /** Color of the gap between the menu button and its focus ring: the page canvas. */
+  --sidebar-menu-button-outline-background-hover: var(--color-surface-highlight); /** Background of an outline menu button under the pointer, of the sidebar. */
+  --sidebar-menu-button-outline-background: var(--color-surface-canvas); /** Background of an outline menu button, of the sidebar. */
+  --sidebar-menu-button-outline-border: var(--color-border-default); /** Edge of an outline menu button, of the sidebar. */
+  --sidebar-menu-button-outline-border-hover: var(--color-surface-highlight); /** Edge of an outline menu button under the pointer: it takes the highlight fill, so the item reads as one shape. */
   --skeleton-background: var(--color-surface-sunken); /** Background of the skeleton. */
   --slider-track-background: var(--color-surface-sunken); /** Track background of the slider. */
   --slider-thumb-focus-ring-offset-focus: var(--color-surface-canvas); /** Thumb focus ring offset focus of the slider. */
@@ -1482,7 +1570,10 @@ html[data-scheme="content-first"] {
   --context-menu-checkbox-item-background-focus: var(--context-menu-checkbox-item-background-highlight); /** Deprecated: use component.context-menu.checkbox.item.background.highlight (OD-241). Checkbox item background focus of the context menu. */
   --context-menu-radio-item-background-focus: var(--context-menu-radio-item-background-highlight); /** Deprecated: use component.context-menu.radio.item.background.highlight (OD-241). Radio item background focus of the context menu. */
   --data-table-background-hover: var(--data-table-row-background-hover); /** Deprecated: use component.data-table.row.background.hover (OD-241). Background hover of the data table. */
+  --dialog-border: var(--dialog-content-border); /** Deprecated: use component.dialog.content.border (OD-243). Border of the dialog. */
+  --dialog-label: var(--dialog-description-label); /** Deprecated: use component.dialog.description.label (OD-243). Label of the dialog. */
   --dialog-sunken: var(--dialog-close-background-hover); /** Deprecated: use component.dialog.close.background.hover (OD-241). Sunken of the dialog. */
+  --drawer-background: var(--drawer-handle-background); /** Deprecated: use component.drawer.handle.background (OD-243). Background of the drawer. */
   --dropdown-menu-item-sunken: var(--dropdown-menu-item-background-highlight); /** Deprecated: use component.dropdown-menu.item.background.highlight (OD-241). Item sunken of the dropdown menu. */
   --dropdown-menu-background: var(--dropdown-menu-separator-background); /** Deprecated: use component.dropdown-menu.separator.background (OD-241). Background of the dropdown menu. */
   --input-group-label: var(--input-group-addon-label); /** Deprecated: use component.input-group.addon.label (OD-243). Label of the input group. */
@@ -1513,11 +1604,17 @@ html[data-scheme="content-first"] {
   --resizable-background: var(--resizable-grip-background); /** Deprecated: use component.resizable.grip.background (OD-243). Background of the resizable. */
   --select-canvas: var(--select-trigger-focus-ring-offset); /** Deprecated: use component.select.trigger.focus-ring-offset (OD-243). Canvas of the select. */
   --select-item-sunken: var(--select-item-background-highlight); /** Deprecated: use component.select.item.background.highlight (OD-241). Item sunken of the select. */
+  --sheet-focus-ring-offset: var(--sheet-close-focus-ring-offset-color); /** Deprecated: use component.sheet.close.focus-ring.offset-color (OD-243). Focus ring offset of the sheet. */
+  --sheet-background-open: var(--sheet-close-background-hover); /** Deprecated: use component.sheet.close.background.hover (OD-243). Background open of the sheet. */
   --sidebar-rail-background-hover: var(--sidebar-rail-line-hover); /** Deprecated: use component.sidebar.rail.line.hover (OD-241). Rail background hover of the sidebar. */
   --sidebar-background-hover: var(--sidebar-rail-background-hover); /** Deprecated: use component.sidebar.rail.background.hover (OD-241). Background hover of the sidebar. */
   --sidebar-menu-sub-button-background-active: var(--sidebar-menu-sub-button-background-pressed); /** Deprecated: use component.sidebar.menu.sub.button.background.pressed (OD-241). Menu sub button background active of the sidebar. */
   --sidebar-background-hover-2: var(--sidebar-menu-button-background-hover); /** Deprecated: use component.sidebar.menu-button.background.hover (OD-241). Background hover 2 of the sidebar. */
   --sidebar-background-active: var(--sidebar-menu-button-background-pressed); /** Deprecated: use component.sidebar.menu-button.background.pressed (OD-241). Background active of the sidebar. */
+  --sidebar-background-open-hover: var(--sidebar-menu-button-background-open-hover); /** Deprecated: use component.sidebar.menu-button.background.open-hover (OD-243). Background open hover of the sidebar. */
+  --sidebar-focus-ring-offset-focus: var(--sidebar-menu-button-focus-ring-offset); /** Deprecated: use component.sidebar.menu-button.focus-ring-offset (OD-243). Focus ring offset focus of the sidebar. */
+  --sidebar-outline-background: var(--sidebar-menu-button-outline-background); /** Deprecated: use component.sidebar.menu-button.outline.background.@ (OD-243). Outline background of the sidebar. */
+  --sidebar-outline-background-hover: var(--sidebar-menu-button-outline-background-hover); /** Deprecated: use component.sidebar.menu-button.outline.background.hover (OD-243). Outline menu button background under the pointer, of the sidebar. */
 }
 
 html[data-scheme="content-first"][data-theme="dark"] {
@@ -1699,17 +1796,18 @@ html[data-scheme="content-first"][data-theme="dark"] {
   --accordion-content-padding-bottom: var(--space-inset-container); /** Space below the content. */
   --accordion-item-divider-width: var(--border-width-default); /** The width of the line between items. */
   --alert-dialog-content-gap: var(--space-gap-group); /** Content gap of the alert dialog. */
-  --alert-dialog-content-padding: var(--component-spacing-map-x6); /** Content padding of the alert dialog. */
+  --alert-dialog-content-padding: var(--space-inset-container); /** Padding inside the alert dialog panel: the padding inside cards and dialogs. */
   --alert-dialog-content-border-width: var(--border-width-default); /** Content border width of the alert dialog. */
   --alert-dialog-header-gap: var(--component-spacing-map-x2); /** Header gap of the alert dialog. */
   --alert-dialog-header-gap-x: var(--space-gap-section); /** Header gap x of the alert dialog. */
   --alert-dialog-footer-gap: var(--space-gap-default); /** Footer gap of the alert dialog. */
   --alert-dialog-title-font-size: var(--type-heading-font-size); /** Title font size of the alert dialog. */
   --alert-dialog-title-line-height: var(--type-heading-line-height); /** Title line height of the alert dialog. */
-  --alert-dialog-title-font-weight: var(--type-title-font-weight); /** Title font weight of the alert dialog. */
+  --alert-dialog-title-font-weight: var(--type-heading-font-weight); /** Weight of the alert dialog title: a heading. */
   --alert-dialog-description-font-size: var(--type-body-font-size); /** Description font size of the alert dialog. */
   --alert-dialog-description-line-height: var(--type-body-line-height); /** Description line height of the alert dialog. */
   --alert-dialog-media-size: var(--size-control-default); /** Media size of the alert dialog. */
+  --alert-dialog-media-margin-bottom: var(--component-spacing-map-x2); /** Extra gap below the alert dialog media, on top of the header gap. */
   --alert-gap-y: var(--component-spacing-map-hairline); /** Gap y of the alert. */
   --alert-padding-x: var(--space-inset-container); /** Padding x of the alert. */
   --alert-padding-y: var(--component-spacing-map-x3); /** Padding y of the alert. */
@@ -1937,23 +2035,31 @@ html[data-scheme="content-first"][data-theme="dark"] {
   --date-picker-font-weight: var(--type-body-font-weight); /** Font weight of the date picker. */
   --dialog-content-gap: var(--space-gap-group); /** Content gap of the dialog. */
   --dialog-content-padding: var(--space-inset-container); /** Content padding of the dialog. */
-  --dialog-border-width: var(--border-width-default); /** Border width of the dialog. */
-  --dialog-padding: var(--component-spacing-map-x1); /** Padding of the dialog. */
-  --dialog-size: var(--size-icon); /** Size of the dialog. */
-  --dialog-gap: var(--space-gap-tight); /** Gap of the dialog. */
-  --dialog-gap-2: var(--space-gap-default); /** Gap 2 of the dialog. */
-  --dialog-font-size: var(--type-heading-font-size); /** Font size of the dialog. */
-  --dialog-font-weight: var(--type-heading-font-weight); /** Font weight of the dialog. */
-  --dialog-font-size-2: var(--type-body-font-size); /** Font size 2 of the dialog. */
-  --drawer-radius: var(--radius-round); /** Radius of the drawer. */
+  --dialog-content-border-width: var(--border-width-default); /** Width of the dialog panel's edge. */
+  --dialog-close-padding: var(--component-spacing-map-x1); /** Padding around the dialog close icon. */
+  --dialog-close-icon-size: var(--size-icon); /** Size of the dialog close icon: an icon next to text. */
+  --dialog-close-focus-ring-width: var(--border-width-focus); /** Width of the focus ring on the dialog close button. */
+  --dialog-close-focus-offset: var(--border-width-focus-offset); /** Gap between the dialog close button and its focus ring. */
+  --dialog-title-font-size: var(--type-heading-font-size); /** Size of the dialog title: a heading. */
+  --dialog-title-font-weight: var(--type-heading-font-weight); /** Weight of the dialog title: a heading. */
+  --dialog-title-line-height: var(--type-heading-line-height); /** Line height of the dialog title: a heading. */
+  --dialog-description-font-size: var(--type-body-font-size); /** Size of the dialog description: body text. */
+  --dialog-description-line-height: var(--type-body-line-height); /** Line height of the dialog description: body text. */
+  --dialog-header-gap: var(--space-gap-tight); /** Gap between the dialog title and its description. */
+  --dialog-footer-gap: var(--space-gap-default); /** Gap between the dialog footer's buttons. */
+  --drawer-content-border-width: var(--border-width-default); /** Width of the drawer panel's edge. */
   --drawer-header-gap: var(--component-spacing-map-hairline); /** Header gap of the drawer. */
   --drawer-header-padding: var(--space-inset-container); /** Header padding of the drawer. */
   --drawer-header-gap-2: var(--component-spacing-map-x2); /** Header gap 2 of the drawer. */
   --drawer-footer-gap: var(--space-gap-default); /** Footer gap of the drawer. */
   --drawer-footer-padding: var(--space-inset-container); /** Footer padding of the drawer. */
-  --drawer-title-font-weight: var(--type-title-font-weight); /** Title font weight of the drawer. */
+  --drawer-title-font-weight: var(--type-heading-font-weight); /** Weight of the drawer title: a heading. */
+  --drawer-title-font-size: var(--type-heading-font-size); /** Size of the drawer title: a heading. */
+  --drawer-title-line-height: var(--type-heading-line-height); /** Line height of the drawer title: a heading. */
   --drawer-description-font-size: var(--type-body-font-size); /** Description font size of the drawer. */
   --drawer-description-line-height: var(--type-body-line-height); /** Description line height of the drawer. */
+  --drawer-handle-radius: var(--radius-round); /** Corner of the drawer handle: fully round. */
+  --drawer-handle-margin-top: var(--space-inset-container); /** Gap between the drawer panel's edge and its handle: the panel's inset. */
   --dropdown-menu-content-padding: var(--component-spacing-map-x1); /** Content padding of the dropdown menu. */
   --dropdown-menu-content-border-width: var(--border-width-default); /** Content border width of the dropdown menu. */
   --dropdown-menu-item-gap: var(--space-gap-default); /** Item gap of the dropdown menu. */
@@ -2232,25 +2338,34 @@ html[data-scheme="content-first"][data-theme="dark"] {
   --select-item-disabled: var(--opacity-disabled); /** Item disabled of the select. */
   --separator-thickness: var(--border-width-default); /** Thickness of the separator: the weight of every line. */
   --sheet-content-gap: var(--space-gap-group); /** Content gap of the sheet. */
-  --sheet-focus: var(--border-width-focus); /** Focus of the sheet. */
-  --sheet-icon-size: var(--size-icon); /** Icon size of the sheet. */
+  --sheet-content-border-width: var(--border-width-default); /** Width of the sheet panel's edge. */
   --sheet-header-gap: var(--component-spacing-map-x2); /** Header gap of the sheet. */
   --sheet-header-padding: var(--space-inset-container); /** Header padding of the sheet. */
   --sheet-footer-gap: var(--space-gap-default); /** Footer gap of the sheet. */
   --sheet-footer-padding: var(--space-inset-container); /** Footer padding of the sheet. */
-  --sheet-title-font-weight: var(--type-title-font-weight); /** Title font weight of the sheet. */
+  --sheet-title-font-weight: var(--type-heading-font-weight); /** Weight of the sheet title: a heading. */
+  --sheet-title-font-size: var(--type-heading-font-size); /** Size of the sheet title: a heading. */
+  --sheet-title-line-height: var(--type-heading-line-height); /** Line height of the sheet title: a heading. */
   --sheet-description-font-size: var(--type-body-font-size); /** Description font size of the sheet. */
   --sheet-description-line-height: var(--type-body-line-height); /** Description line height of the sheet. */
   --sheet-close-focus-offset: var(--border-width-focus-offset); /** Gap between the sheet close and its focus ring. */
+  --sheet-close-focus-ring-width: var(--border-width-focus); /** Width of the focus ring on the sheet close button. */
+  --sheet-close-icon-size: var(--size-icon); /** Size of the sheet close icon: an icon next to text. */
+  --sheet-close-padding: var(--component-spacing-map-x1); /** Padding around the sheet close icon. */
   --sidebar-gap-duration: var(--motion-duration-feedback); /** Gap duration of the sidebar. */
   --sidebar-gap: var(--space-gap-default); /** Gap of the sidebar. */
   --sidebar-container-duration: var(--motion-duration-feedback); /** Container duration of the sidebar. */
-  --sidebar-padding: var(--component-spacing-map-x2); /** Padding of the sidebar. */
+  --sidebar-container-padding: var(--component-spacing-map-x2); /** Space between the screen edge and a floating or inset sidebar panel. */
+  --sidebar-container-border-width: var(--border-width-default); /** Width of the edge between the sidebar and the page. */
+  --sidebar-inner-border-width: var(--border-width-default); /** Width of the edge of a floating sidebar panel. */
+  --sidebar-rail-line-width: var(--border-width-default); /** Width of the line the rail shows on the sidebar edge under the pointer: a border. */
+  --sidebar-inset-margin: var(--component-spacing-map-x2); /** Space around the inset main area, the same step as the inset sidebar's padding so both panels sit on one grid. */
   --sidebar-input-height: var(--size-control-default); /** Input height of the sidebar. */
   --sidebar-header-gap: var(--space-gap-default); /** Header gap of the sidebar. */
   --sidebar-header-padding: var(--component-spacing-map-x2); /** Header padding of the sidebar. */
   --sidebar-footer-gap: var(--space-gap-default); /** Footer gap of the sidebar. */
   --sidebar-footer-padding: var(--component-spacing-map-x2); /** Footer padding of the sidebar. */
+  --sidebar-separator-margin-x: var(--component-spacing-map-x2); /** Space at each end of a sidebar separator, so it lines up with the group padding. */
   --sidebar-content-gap: var(--space-gap-default); /** Content gap of the sidebar. */
   --sidebar-group-padding: var(--component-spacing-map-x2); /** Group padding of the sidebar. */
   --sidebar-group-label-height: var(--size-control-default); /** Group label height of the sidebar. */
@@ -2261,13 +2376,16 @@ html[data-scheme="content-first"][data-theme="dark"] {
   --sidebar-group-label-duration: var(--motion-duration-feedback); /** Group label duration of the sidebar. */
   --sidebar-group-label-icon-size: var(--size-icon); /** Group label icon size of the sidebar. */
   --sidebar-group-label-focus: var(--border-width-focus); /** Group label focus of the sidebar. */
+  --sidebar-group-label-focus-offset: var(--border-width-focus-offset); /** Gap between the sidebar group label and its focus ring. */
   --sidebar-group-action-icon-size: var(--size-icon); /** Group action icon size of the sidebar. */
   --sidebar-group-action-focus: var(--border-width-focus); /** Group action focus of the sidebar. */
+  --sidebar-group-action-focus-offset: var(--border-width-focus-offset); /** Gap between the sidebar group action and its focus ring. */
   --sidebar-group-content-font-size: var(--type-body-font-size); /** Group content font size of the sidebar. */
   --sidebar-group-content-line-height: var(--type-body-line-height); /** Group content line height of the sidebar. */
   --sidebar-menu-gap: var(--space-gap-tight); /** Menu gap of the sidebar. */
   --sidebar-menu-action-icon-size: var(--size-icon); /** Menu action icon size of the sidebar. */
   --sidebar-menu-action-focus: var(--border-width-focus); /** Menu action focus of the sidebar. */
+  --sidebar-menu-action-focus-offset: var(--border-width-focus-offset); /** Gap between the sidebar menu action and its focus ring. */
   --sidebar-menu-badge-padding-x: var(--component-spacing-map-x1); /** Menu badge padding x of the sidebar. */
   --sidebar-menu-badge-font-size: var(--type-caption-font-size); /** Menu badge font size of the sidebar. */
   --sidebar-menu-badge-line-height: var(--type-caption-line-height); /** Menu badge line height of the sidebar. */
@@ -2275,6 +2393,7 @@ html[data-scheme="content-first"][data-theme="dark"] {
   --sidebar-menu-skeleton-height: var(--size-control-default); /** Menu skeleton height of the sidebar. */
   --sidebar-menu-skeleton-gap: var(--space-gap-default); /** Menu skeleton gap of the sidebar. */
   --sidebar-menu-skeleton-padding-x: var(--component-spacing-map-x2); /** Menu skeleton padding x of the sidebar. */
+  --sidebar-menu-skeleton-text-height: var(--size-icon); /** Height of the text bar of a menu skeleton, of the sidebar. */
   --sidebar-menu-sub-gap: var(--space-gap-tight); /** Menu sub gap of the sidebar. */
   --sidebar-menu-sub-padding-x: var(--component-spacing-map-x3); /** Menu sub padding x of the sidebar. */
   --sidebar-menu-sub-padding-y: var(--component-spacing-map-hairline); /** Menu sub padding y of the sidebar. */
@@ -2283,25 +2402,33 @@ html[data-scheme="content-first"][data-theme="dark"] {
   --sidebar-menu-sub-button-disabled-opacity-disabled: var(--opacity-disabled); /** Menu sub button disabled opacity disabled of the sidebar. */
   --sidebar-menu-sub-button-icon-size: var(--size-icon); /** Menu sub button icon size of the sidebar. */
   --sidebar-menu-sub-button-focus: var(--border-width-focus); /** Menu sub button focus of the sidebar. */
-  --sidebar-font-size: var(--type-body-font-size); /** Font size of the sidebar. */
-  --sidebar-line-height: var(--type-body-line-height); /** Line height of the sidebar. */
-  --sidebar-padding-right: var(--component-spacing-map-x8); /** Padding right of the sidebar. */
-  --sidebar-size: var(--size-control-default); /** Size of the sidebar. */
-  --sidebar-disabled-opacity-disabled: var(--opacity-disabled); /** Disabled opacity disabled of the sidebar. */
-  --sidebar-font-weight: var(--type-label-font-weight); /** Font weight of the sidebar. */
-  --sidebar-focus: var(--border-width-focus); /** Focus of the sidebar. */
-  --sidebar-icon-size: var(--size-icon); /** Icon size of the sidebar. */
-  --sidebar-default-height: var(--size-control-default); /** Default height of the sidebar. */
-  --sidebar-default-font-size: var(--type-body-font-size); /** Default font size of the sidebar. */
-  --sidebar-default-line-height: var(--type-body-line-height); /** Default line height of the sidebar. */
-  --sidebar-sm-font-size: var(--type-caption-font-size); /** Sm font size of the sidebar. */
-  --sidebar-sm-line-height: var(--type-caption-line-height); /** Sm line height of the sidebar. */
-  --sidebar-lg-font-size: var(--type-body-font-size); /** Lg font size of the sidebar. */
-  --sidebar-lg-line-height: var(--type-body-line-height); /** Lg line height of the sidebar. */
-  --sidebar-height: var(--size-icon); /** Height of the sidebar. */
-  --sidebar-font-size-2: var(--type-caption-font-size); /** Font size 2 of the sidebar. */
-  --sidebar-line-height-2: var(--type-caption-line-height); /** Line height 2 of the sidebar. */
+  --sidebar-menu-sub-button-edge-width-current: var(--border-width-focus); /** Width of the edge that marks the submenu button for the current page. */
+  --sidebar-menu-sub-button-md-font-size: var(--type-body-font-size); /** Font size of a medium submenu button, of the sidebar. */
+  --sidebar-menu-sub-button-md-line-height: var(--type-body-line-height); /** Line height of a medium submenu button, of the sidebar. */
+  --sidebar-menu-sub-button-focus-offset: var(--border-width-focus-offset); /** Gap between the sidebar submenu button and its focus ring. */
+  --sidebar-menu-sub-button-sm-font-size: var(--type-caption-font-size); /** Font size of a small submenu button, of the sidebar. */
+  --sidebar-menu-sub-button-sm-line-height: var(--type-caption-line-height); /** Line height of a small submenu button, of the sidebar. */
+  --sidebar-menu-sub-border-width: var(--border-width-default); /** Width of the line that ties a submenu to its parent menu button. */
   --sidebar-menu-button-focus-offset: var(--border-width-focus-offset); /** Gap between the sidebar menu button and its focus ring. */
+  --sidebar-menu-button-edge-width-current: var(--border-width-focus); /** Width of the edge that marks the menu button for the current page, beside its fill, so the current page is never color alone. */
+  --sidebar-menu-button-default-height: var(--size-control-default); /** Height of a default-size menu button, of the sidebar. */
+  --sidebar-menu-button-default-font-size: var(--type-body-font-size); /** Font size of a default-size menu button, of the sidebar. */
+  --sidebar-menu-button-default-line-height: var(--type-body-line-height); /** Line height of a default-size menu button, of the sidebar. */
+  --sidebar-menu-button-sm-font-size: var(--type-caption-font-size); /** Font size of a small menu button, of the sidebar. */
+  --sidebar-menu-button-sm-line-height: var(--type-caption-line-height); /** Line height of a small menu button, of the sidebar. */
+  --sidebar-menu-button-lg-font-size: var(--type-body-font-size); /** Font size of a large menu button, of the sidebar. */
+  --sidebar-menu-button-lg-line-height: var(--type-body-line-height); /** Line height of a large menu button, of the sidebar. */
+  --sidebar-menu-button-opacity-disabled: var(--opacity-disabled); /** Opacity of a menu button that cannot be used, of the sidebar. */
+  --sidebar-menu-button-focus-width: var(--border-width-focus); /** Width of the menu button's keyboard focus ring, of the sidebar. */
+  --sidebar-menu-button-font-size: var(--type-body-font-size); /** Font size of the menu button, of the sidebar. */
+  --sidebar-menu-button-line-height: var(--type-body-line-height); /** Line height of the menu button, of the sidebar. */
+  --sidebar-menu-button-font-weight-current: var(--type-label-font-weight); /** Font weight of the menu button for the current page, of the sidebar. */
+  --sidebar-menu-button-icon-size: var(--size-icon); /** Icon size in a menu button, of the sidebar. */
+  --sidebar-menu-button-outline-border-width: var(--border-width-default); /** Width of the edge of an outline menu button, of the sidebar. */
+  --sidebar-menu-button-padding: var(--component-spacing-map-x2); /** Padding of the menu button, of the sidebar. */
+  --sidebar-menu-button-padding-right: var(--component-spacing-map-x8); /** Right padding of a menu button that has a menu action, so the label clears the action. */
+  --sidebar-menu-button-collapsed-size: var(--size-control-default); /** Width and height of a menu button when the sidebar is collapsed to icons. */
+  --sidebar-menu-button-gap: var(--space-gap-default); /** Gap between the icon and the label of a menu button, of the sidebar. */
   --slider-disabled-opacity-disabled: var(--opacity-disabled); /** Disabled opacity disabled of the slider. */
   --slider-track-radius: var(--radius-round); /** Track radius of the slider. */
   --slider-thumb-icon-size: var(--size-icon); /** Thumb icon size of the slider. */
@@ -2393,6 +2520,7 @@ html[data-scheme="content-first"][data-theme="dark"] {
   --alert-dialog-overlay-background: var(--color-surface-scrim); /** Overlay background of the alert dialog. */
   --alert-dialog-content-radius: var(--radius-container); /** Content radius of the alert dialog. */
   --alert-dialog-content-shadow: var(--elevation-overlay); /** Content shadow of the alert dialog. */
+  --alert-dialog-title-font-family: var(--type-heading-font-family); /** Typeface of the alert dialog title: a heading. */
   --alert-dialog-media-radius: var(--radius-control); /** Media radius of the alert dialog. */
   --alert-radius: var(--radius-container); /** Radius of the alert. */
   --alert-destructive-label: var(--color-status-danger); /** Destructive label of the alert. */
@@ -2444,9 +2572,25 @@ html[data-scheme="content-first"][data-theme="dark"] {
   --context-menu-radio-item-radius: var(--radius-option); /** Radio item radius of the context menu. */
   --data-table-radius: var(--radius-badge); /** Radius of the data table. */
   --data-table-container-radius: var(--radius-container); /** Corner of the table frame, of the data table. */
-  --dialog-radius: var(--radius-badge); /** Radius of the dialog. */
-  --dialog-font-family: var(--type-heading-font-family); /** Font family of the dialog. */
+  --dialog-content-radius: var(--radius-container); /** Corner of the dialog panel: a floating panel takes the container corner, like menus and popovers. */
+  --dialog-content-shadow: var(--elevation-overlay); /** Shadow of the dialog panel: it floats over the page. */
+  --dialog-border-width: var(--dialog-content-border-width); /** Deprecated: use component.dialog.content.border-width (OD-243). Border width of the dialog. */
+  --dialog-padding: var(--dialog-close-padding); /** Deprecated: use component.dialog.close.padding (OD-243). Padding of the dialog. */
+  --dialog-size: var(--dialog-close-icon-size); /** Deprecated: use component.dialog.close.icon-size (OD-243). Size of the dialog. */
+  --dialog-gap: var(--dialog-header-gap); /** Deprecated: use component.dialog.header.gap (OD-243). Gap of the dialog. */
+  --dialog-gap-2: var(--dialog-footer-gap); /** Deprecated: use component.dialog.footer.gap (OD-243). Gap 2 of the dialog. */
+  --dialog-font-size: var(--dialog-title-font-size); /** Deprecated: use component.dialog.title.font-size (OD-243). Font size of the dialog. */
+  --dialog-font-weight: var(--dialog-title-font-weight); /** Deprecated: use component.dialog.title.font-weight (OD-243). Font weight of the dialog. */
+  --dialog-font-size-2: var(--dialog-description-font-size); /** Deprecated: use component.dialog.description.font-size (OD-243). Font size 2 of the dialog. */
+  --dialog-close-radius: var(--radius-control); /** Corner of the dialog close button: a button's corner. */
+  --dialog-close-focus-ring-color: var(--color-border-focus); /** Color of the focus ring on the dialog close button, at full strength. */
+  --dialog-overlay-background: var(--color-surface-scrim); /** The scrim behind the dialog: the see-through layer behind a modal. */
+  --dialog-title-font-family: var(--type-heading-font-family); /** Typeface of the dialog title: a heading. */
   --drawer-overlay-background: var(--color-surface-scrim); /** Overlay background of the drawer. */
+  --drawer-content-radius: var(--radius-container); /** Corner of the drawer panel on the side away from the screen edge: a container corner. */
+  --drawer-content-shadow: var(--elevation-overlay); /** Shadow of the drawer panel: it sits over the page, like the sheet. */
+  --drawer-radius: var(--drawer-handle-radius); /** Deprecated: use component.drawer.handle.radius (OD-243). Radius of the drawer. */
+  --drawer-title-font-family: var(--type-heading-font-family); /** Typeface of the drawer title: a heading. */
   --dropdown-menu-item-radius: var(--radius-option); /** Item radius of the dropdown menu. */
   --dropdown-menu-item-label-destructive: var(--color-status-danger); /** Item label when destructive, of the dropdown menu. */
   --empty-radius: var(--radius-container); /** Radius of the empty. */
@@ -2565,8 +2709,12 @@ html[data-scheme="content-first"][data-theme="dark"] {
   --select-item-radius: var(--radius-option); /** Item radius of the select. */
   --sheet-overlay-background: var(--color-surface-scrim); /** Overlay background of the sheet. */
   --sheet-content-shadow: var(--elevation-overlay); /** Content shadow of the sheet. */
-  --sheet-radius: var(--radius-badge); /** Radius of the sheet. */
-  --sheet-focus-ring-focus: var(--color-border-focus); /** Focus ring focus of the sheet. */
+  --sheet-focus: var(--sheet-close-focus-ring-width); /** Deprecated: use component.sheet.close.focus-ring.width (OD-243). Focus of the sheet. */
+  --sheet-icon-size: var(--sheet-close-icon-size); /** Deprecated: use component.sheet.close.icon-size (OD-243). Icon size of the sheet. */
+  --sheet-title-font-family: var(--type-heading-font-family); /** Typeface of the sheet title: a heading. */
+  --sheet-close-radius: var(--radius-control); /** Corner of the sheet close button: a button's corner. */
+  --sheet-close-focus-ring-color: var(--color-border-focus); /** Color of the focus ring on the sheet close button, at full strength. */
+  --sidebar-padding: var(--sidebar-menu-button-padding); /** Deprecated: use component.sidebar.menu-button.padding (OD-243). Padding of the sidebar. */
   --sidebar-inner-radius: var(--radius-container); /** Inner radius of the sidebar. */
   --sidebar-inner-shadow: var(--elevation-card); /** Inner shadow of the sidebar. */
   --sidebar-inset-radius: var(--radius-container); /** Inset radius of the sidebar. */
@@ -2585,11 +2733,31 @@ html[data-scheme="content-first"][data-theme="dark"] {
   --sidebar-menu-sub-button-radius: var(--radius-control); /** Menu sub button radius of the sidebar. */
   --sidebar-menu-sub-button-focus-ring: var(--color-border-focus); /** Menu sub button focus ring of the sidebar. */
   --sidebar-menu-sub-button-focus-ring-focus: var(--color-border-focus); /** Menu sub button focus ring focus of the sidebar. */
-  --sidebar-radius: var(--radius-control); /** Radius of the sidebar. */
-  --sidebar-focus-ring: var(--color-border-focus); /** Focus ring of the sidebar. */
-  --sidebar-selected: var(--color-border-selected); /** Selected of the sidebar. */
-  --sidebar-focus-ring-focus: var(--color-border-focus); /** Focus ring focus of the sidebar. */
+  --sidebar-menu-sub-button-background-current: var(--color-surface-selected); /** Background of the submenu button for the current page, of the sidebar. */
+  --sidebar-menu-sub-button-edge-current: var(--color-border-selected); /** Edge that marks the submenu button for the current page, beside its fill, so the current page is never color alone. */
+  --sidebar-font-size: var(--sidebar-menu-button-font-size); /** Deprecated: use component.sidebar.menu-button.font-size (OD-243). Font size of the sidebar. */
+  --sidebar-line-height: var(--sidebar-menu-button-line-height); /** Deprecated: use component.sidebar.menu-button.line-height (OD-243). Line height of the sidebar. */
+  --sidebar-focus-ring: var(--color-border-focus); /** Deprecated: use sidebar/menu-button/focus-ring (OD-243). Focus ring of the sidebar. */
+  --sidebar-padding-right: var(--sidebar-menu-button-padding-right); /** Deprecated: use component.sidebar.menu-button.padding-right (OD-243). Padding right of the sidebar. */
+  --sidebar-size: var(--sidebar-menu-button-collapsed-size); /** Deprecated: use component.sidebar.menu-button.collapsed-size (OD-243). Size of the sidebar. */
+  --sidebar-disabled-opacity-disabled: var(--sidebar-menu-button-opacity-disabled); /** Deprecated: use component.sidebar.menu-button.opacity.disabled (OD-243). Disabled opacity disabled of the sidebar. */
+  --sidebar-font-weight: var(--sidebar-menu-button-font-weight-current); /** Deprecated: use component.sidebar.menu-button.font-weight.current (OD-243). Font weight of the sidebar. */
+  --sidebar-focus: var(--sidebar-menu-button-focus-width); /** Deprecated: use component.sidebar.menu-button.focus-width (OD-243). Focus of the sidebar. */
+  --sidebar-icon-size: var(--sidebar-menu-button-icon-size); /** Deprecated: use component.sidebar.menu-button.icon-size (OD-243). Icon size of the sidebar. */
+  --sidebar-default-height: var(--sidebar-menu-button-default-height); /** Deprecated: use component.sidebar.menu-button.default.height (OD-243). Default height of the sidebar. */
+  --sidebar-default-font-size: var(--sidebar-menu-button-default-font-size); /** Deprecated: use component.sidebar.menu-button.default.font-size (OD-243). Default font size of the sidebar. */
+  --sidebar-default-line-height: var(--sidebar-menu-button-default-line-height); /** Deprecated: use component.sidebar.menu-button.default.line-height (OD-243). Default line height of the sidebar. */
+  --sidebar-sm-font-size: var(--sidebar-menu-button-sm-font-size); /** Deprecated: use component.sidebar.menu-button.sm.font-size (OD-243). Sm font size of the sidebar. */
+  --sidebar-sm-line-height: var(--sidebar-menu-button-sm-line-height); /** Deprecated: use component.sidebar.menu-button.sm.line-height (OD-243). Sm line height of the sidebar. */
+  --sidebar-lg-font-size: var(--sidebar-menu-button-lg-font-size); /** Deprecated: use component.sidebar.menu-button.lg.font-size (OD-243). Lg font size of the sidebar. */
+  --sidebar-lg-line-height: var(--sidebar-menu-button-lg-line-height); /** Deprecated: use component.sidebar.menu-button.lg.line-height (OD-243). Lg line height of the sidebar. */
+  --sidebar-height: var(--sidebar-menu-skeleton-text-height); /** Deprecated: use component.sidebar.menu.skeleton.text-height (OD-243). Height of the sidebar. */
+  --sidebar-font-size-2: var(--sidebar-menu-sub-button-sm-font-size); /** Deprecated: use component.sidebar.menu.sub.button.sm.font-size (OD-243). Font size 2 of the sidebar. */
+  --sidebar-line-height-2: var(--sidebar-menu-sub-button-sm-line-height); /** Deprecated: use component.sidebar.menu.sub.button.sm.line-height (OD-243). Line height 2 of the sidebar. */
   --sidebar-menu-button-background-current: var(--color-surface-selected); /** Background of the menu button for the current page, of the sidebar. */
+  --sidebar-menu-button-focus-ring: var(--color-border-focus); /** Color of the menu button's keyboard focus ring, at full strength, of the sidebar. */
+  --sidebar-menu-button-radius: var(--radius-control); /** Corner of the menu button, of the sidebar. */
+  --sidebar-menu-button-edge-current: var(--color-border-selected); /** Edge that marks the menu button for the current page, beside its fill, so the current page is never color alone. */
   --skeleton-radius: var(--radius-control); /** Radius of the skeleton. */
   --slider-range-background: var(--color-action-primary); /** Range background of the slider. */
   --slider-thumb-border: var(--color-action-primary); /** Thumb border of the slider. */
@@ -2642,6 +2810,8 @@ html[data-scheme="content-first"][data-theme="dark"] {
   --context-menu-item-label: var(--context-menu-item-label-destructive); /** Deprecated: use component.context-menu.item.label.destructive (OD-243). Item label of the context menu. */
   --context-menu-item-background-focus-2: var(--context-menu-item-background-destructive-highlight); /** Deprecated: use component.context-menu.item.background.destructive-highlight (OD-243). Item background focus 2 of the context menu. */
   --context-menu-item-label-focus-2: var(--context-menu-item-label-destructive-highlight); /** Deprecated: use component.context-menu.item.label.destructive-highlight (OD-243). Item label focus 2 of the context menu. */
+  --dialog-radius: var(--dialog-close-radius); /** Deprecated: use component.dialog.close.radius (OD-243). Radius of the dialog. */
+  --dialog-font-family: var(--dialog-title-font-family); /** Deprecated: use component.dialog.title.font-family (OD-243). Font family of the dialog. */
   --dropdown-menu-label: var(--dropdown-menu-item-label-destructive); /** Deprecated: use component.dropdown-menu.item.label.destructive (OD-241). Label of the dropdown menu. */
   --input-group-focus-ring: var(--input-group-focus-ring-highlight); /** Deprecated: use component.input-group.focus-ring.highlight (OD-243). Focus ring of the input group. */
   --input-otp-slot-border-2: var(--input-otp-slot-border-highlight); /** Deprecated: use component.input-otp.slot.border.highlight (OD-243). Slot border 2 of the input otp. */
@@ -2656,7 +2826,12 @@ html[data-scheme="content-first"][data-theme="dark"] {
   --navigation-menu-link-selected: var(--navigation-menu-link-edge-current); /** Deprecated: use component.navigation-menu.link.edge.current (OD-243). Link selected of the navigation menu. */
   --navigation-menu-shadow-2: var(--navigation-menu-indicator-shadow); /** Deprecated: use component.navigation-menu.indicator.shadow (OD-243). Shadow 2 of the navigation menu. */
   --resizable-radius: var(--resizable-grip-radius); /** Deprecated: use component.resizable.grip.radius (OD-243). Radius of the resizable. */
+  --sheet-radius: var(--sheet-close-radius); /** Deprecated: use component.sheet.close.radius (OD-243). Radius of the sheet. */
+  --sheet-focus-ring-focus: var(--sheet-close-focus-ring-color); /** Deprecated: use component.sheet.close.focus-ring.color (OD-243). Focus ring focus of the sheet. */
+  --sidebar-radius: var(--sidebar-menu-button-radius); /** Deprecated: use component.sidebar.menu-button.radius (OD-243). Radius of the sidebar. */
   --sidebar-background-2: var(--sidebar-menu-button-background-current); /** Deprecated: use component.sidebar.menu-button.background.current (OD-241). Background 2 of the sidebar. */
+  --sidebar-selected: var(--sidebar-menu-button-edge-current); /** Deprecated: use component.sidebar.menu-button.edge.current (OD-243). Selected of the sidebar. */
+  --sidebar-focus-ring-focus: var(--sidebar-menu-button-focus-ring); /** Deprecated: use component.sidebar.menu-button.focus-ring (OD-243). Focus ring focus of the sidebar. */
   --button-primary-label: var(--color-text-on-action); /** Primary button label color. */
   --button-secondary-background: var(--color-action-secondary); /** Secondary button fill. */
   --button-secondary-background-hover: var(--color-action-secondary-hover); /** Secondary button fill on hover. */
@@ -2699,9 +2874,10 @@ html[data-scheme="content-first"][data-theme="dark"] {
   --accordion-trigger-focus-ring-offset-focus: var(--color-surface-canvas); /** Trigger focus ring offset focus of the accordion. */
   --accordion-icon: var(--color-text-muted); /** The chevron's color. */
   --accordion-item-divider: var(--color-border-default); /** The line between items, on each item's bottom edge. */
-  --alert-dialog-content-background: var(--color-surface-canvas); /** Content background of the alert dialog. */
+  --alert-dialog-content-background: var(--color-surface-raised); /** Fill of the alert dialog panel: a fill that floats above content. */
   --alert-dialog-content-border: var(--color-border-default); /** Content border of the alert dialog, like every floating panel's. */
-  --alert-dialog-description-label: var(--color-text-muted); /** Description label of the alert dialog. */
+  --alert-dialog-content-label: var(--color-text-primary); /** Text color in the alert dialog panel: main text. */
+  --alert-dialog-description-label: var(--color-text-secondary); /** Color of the alert dialog description: supporting text. */
   --alert-dialog-media-background: var(--color-surface-sunken); /** Media background of the alert dialog. */
   --alert-default-background: var(--color-surface-default); /** Default background of the alert. */
   --alert-default-label: var(--color-text-primary); /** Default label of the alert. */
@@ -2807,13 +2983,17 @@ html[data-scheme="content-first"][data-theme="dark"] {
   --data-table-container-border: var(--color-border-default); /** Edge of the table frame, of the data table. */
   --date-picker-label: var(--color-text-muted); /** Label of the date picker. */
   --dialog-content-label: var(--color-text-primary); /** Content label of the dialog. */
-  --dialog-border: var(--color-border-default); /** Border of the dialog. */
-  --dialog-label: var(--color-text-secondary); /** Label of the dialog. */
+  --dialog-content-border: var(--color-border-default); /** Edge of the dialog panel: a floating panel has a border of its own. */
+  --dialog-content-background: var(--color-surface-raised); /** Fill of the dialog panel: a fill that floats above content. */
   --dialog-close-background-hover: var(--color-surface-highlight); /** Close button background under the pointer, of the dialog. */
+  --dialog-close-label: var(--color-text-secondary); /** Color of the dialog close icon: supporting, not the main action. */
+  --dialog-close-focus-ring-offset-color: var(--color-surface-canvas); /** Color of the gap between the dialog close button and its focus ring. */
+  --dialog-description-label: var(--color-text-secondary); /** Color of the dialog description: supporting text. */
   --drawer-content-background: var(--color-surface-canvas); /** Content background of the drawer. */
-  --drawer-background: var(--color-surface-sunken); /** Background of the drawer. */
+  --drawer-content-border: var(--color-border-default); /** Edge of the drawer panel, on the side that faces the page. */
   --drawer-title-label: var(--color-text-primary); /** Title label of the drawer. */
-  --drawer-description-label: var(--color-text-muted); /** Description label of the drawer. */
+  --drawer-description-label: var(--color-text-secondary); /** Color of the drawer description: supporting text. */
+  --drawer-handle-background: var(--color-surface-sunken); /** Fill of the drawer handle: a recessed fill. */
   --dropdown-menu-content-label: var(--color-text-primary); /** Content label of the dropdown menu. */
   --dropdown-menu-content-border: var(--color-border-default); /** Content border of the dropdown menu. */
   --dropdown-menu-item-background-highlight: var(--color-surface-highlight); /** Item background when highlighted, by the pointer or the keyboard, of the dropdown menu. */
@@ -2924,13 +3104,16 @@ html[data-scheme="content-first"][data-theme="dark"] {
   --select-item-background-highlight: var(--color-surface-highlight); /** Item background when highlighted, by the pointer or the keyboard, of the select. */
   --separator-background: var(--color-border-default); /** Background of the separator. */
   --sheet-content-background: var(--color-surface-canvas); /** Content background of the sheet. */
-  --sheet-focus-ring-offset: var(--color-surface-canvas); /** Focus ring offset of the sheet. */
-  --sheet-background-open: var(--color-action-secondary); /** Background open of the sheet. */
+  --sheet-content-border: var(--color-border-default); /** Edge of the sheet panel, on the side that faces the page. */
   --sheet-title-label: var(--color-text-primary); /** Title label of the sheet. */
-  --sheet-description-label: var(--color-text-muted); /** Description label of the sheet. */
+  --sheet-description-label: var(--color-text-secondary); /** Color of the sheet description: supporting text. */
+  --sheet-close-focus-ring-offset-color: var(--color-surface-canvas); /** Color of the gap between the sheet close button and its focus ring. */
+  --sheet-close-background-hover: var(--color-surface-highlight); /** Close button background under the pointer, of the sheet. */
+  --sheet-close-label: var(--color-text-secondary); /** Color of the sheet close icon: supporting, not the main action. */
   --sidebar-wrapper-background: var(--color-surface-default); /** Wrapper background of the sidebar. */
   --sidebar-background: var(--color-surface-default); /** Background of the sidebar. */
   --sidebar-label: var(--color-text-primary); /** Label of the sidebar. */
+  --sidebar-container-border: var(--color-border-default); /** Edge between the sidebar and the page, on the side that faces the page. */
   --sidebar-inner-background: var(--color-surface-default); /** Inner background of the sidebar. */
   --sidebar-inner-border: var(--color-border-default); /** Inner border of the sidebar. */
   --sidebar-rail-background-hover: var(--color-surface-highlight); /** Rail background under the pointer, when the sidebar is off canvas. */
@@ -2938,36 +3121,38 @@ html[data-scheme="content-first"][data-theme="dark"] {
   --sidebar-inset-background: var(--color-surface-canvas); /** Inset background of the sidebar. */
   --sidebar-input-background: var(--color-surface-canvas); /** Input background of the sidebar. */
   --sidebar-separator-background: var(--color-border-default); /** Separator background of the sidebar. */
-  --sidebar-group-label-label: var(--color-text-primary); /** Group label label of the sidebar. */
+  --sidebar-group-label-label: var(--color-text-secondary); /** Text of a sidebar group label: supporting text, quieter than the items it heads. */
   --sidebar-group-label-focus-ring-offset-focus: var(--color-surface-canvas); /** Group label focus ring offset focus of the sidebar. */
   --sidebar-group-action-label: var(--color-text-primary); /** Group action label of the sidebar. */
-  --sidebar-group-action-label-hover: var(--color-text-primary); /** Group action label hover of the sidebar. */
+  --sidebar-group-action-label-hover: var(--color-text-primary); /** Deprecated: use sidebar/group/action/label (OD-243). Group action label hover of the sidebar. */
   --sidebar-group-action-focus-ring-offset-focus: var(--color-surface-canvas); /** Group action focus ring offset focus of the sidebar. */
   --sidebar-group-action-background-hover: var(--color-surface-highlight); /** Group action background under the pointer, of the sidebar. */
   --sidebar-menu-action-label: var(--color-text-primary); /** Menu action label of the sidebar. */
-  --sidebar-menu-action-label-hover: var(--color-text-primary); /** Menu action label hover of the sidebar. */
+  --sidebar-menu-action-label-hover: var(--color-text-primary); /** Deprecated: use sidebar/menu/action/label (OD-243). Menu action label hover of the sidebar. */
   --sidebar-menu-action-focus-ring-offset-focus: var(--color-surface-canvas); /** Menu action focus ring offset focus of the sidebar. */
   --sidebar-menu-action-background-hover: var(--color-surface-highlight); /** Menu action background under the pointer, of the sidebar. */
   --sidebar-menu-badge-label: var(--color-text-primary); /** Menu badge label of the sidebar. */
   --sidebar-menu-sub-border: var(--color-border-default); /** Menu sub border of the sidebar. */
   --sidebar-menu-sub-button-label: var(--color-text-primary); /** Menu sub button label of the sidebar. */
-  --sidebar-menu-sub-button-label-hover: var(--color-text-primary); /** Menu sub button label hover of the sidebar. */
-  --sidebar-menu-sub-button-label-active: var(--color-text-primary); /** Menu sub button label active of the sidebar. */
+  --sidebar-menu-sub-button-label-hover: var(--color-text-primary); /** Deprecated: use sidebar/menu/sub/button/label (OD-243). Menu sub button label hover of the sidebar. */
+  --sidebar-menu-sub-button-label-active: var(--color-text-primary); /** Deprecated: use sidebar/menu/sub/button/label (OD-243). Menu sub button label active of the sidebar. */
   --sidebar-menu-sub-button-focus-ring-offset-focus: var(--color-surface-canvas); /** Menu sub button focus ring offset focus of the sidebar. */
   --sidebar-menu-sub-button-background-hover: var(--color-surface-highlight); /** Submenu button background under the pointer, of the sidebar. */
   --sidebar-menu-sub-button-background-pressed: var(--color-surface-pressed); /** Submenu button background while pressed, of the sidebar. */
-  --sidebar-label-hover: var(--color-text-primary); /** Label hover of the sidebar. */
-  --sidebar-label-active: var(--color-text-primary); /** Label active of the sidebar. */
-  --sidebar-background-open-hover: var(--color-surface-sunken); /** Background open hover of the sidebar. */
-  --sidebar-label-open-hover: var(--color-text-primary); /** Label open hover of the sidebar. */
-  --sidebar-focus-ring-offset-focus: var(--color-surface-canvas); /** Focus ring offset focus of the sidebar. */
-  --sidebar-default-label-hover: var(--color-text-primary); /** Default label hover of the sidebar. */
-  --sidebar-default-background-hover: var(--color-surface-highlight); /** Default menu button background under the pointer, of the sidebar. */
-  --sidebar-outline-background: var(--color-surface-canvas); /** Outline background of the sidebar. */
-  --sidebar-outline-background-hover: var(--color-surface-highlight); /** Outline menu button background under the pointer, of the sidebar. */
-  --sidebar-outline-label-hover: var(--color-text-primary); /** Outline label hover of the sidebar. */
+  --sidebar-label-hover: var(--color-text-primary); /** Deprecated: use sidebar/label (OD-243). Label hover of the sidebar. */
+  --sidebar-label-active: var(--color-text-primary); /** Deprecated: use sidebar/label (OD-243). Label active of the sidebar. */
+  --sidebar-label-open-hover: var(--color-text-primary); /** Deprecated: use sidebar/label (OD-243). Label open hover of the sidebar. */
+  --sidebar-default-label-hover: var(--color-text-primary); /** Deprecated: use sidebar/label (OD-243). Default label hover of the sidebar. */
+  --sidebar-default-background-hover: var(--color-surface-highlight); /** Deprecated: use sidebar/menu-button/background/hover (OD-243). Default menu button background under the pointer, of the sidebar. */
+  --sidebar-outline-label-hover: var(--color-text-primary); /** Deprecated: use sidebar/label (OD-243). Outline label hover of the sidebar. */
   --sidebar-menu-button-background-hover: var(--color-surface-highlight); /** Menu button background under the pointer, of the sidebar. */
   --sidebar-menu-button-background-pressed: var(--color-surface-pressed); /** Menu button background while pressed, of the sidebar. */
+  --sidebar-menu-button-background-open-hover: var(--color-surface-highlight); /** Background of a menu button whose submenu is open, under the pointer: the highlight, whose rule covers open submenu triggers. */
+  --sidebar-menu-button-focus-ring-offset: var(--color-surface-canvas); /** Color of the gap between the menu button and its focus ring: the page canvas. */
+  --sidebar-menu-button-outline-background-hover: var(--color-surface-highlight); /** Background of an outline menu button under the pointer, of the sidebar. */
+  --sidebar-menu-button-outline-background: var(--color-surface-canvas); /** Background of an outline menu button, of the sidebar. */
+  --sidebar-menu-button-outline-border: var(--color-border-default); /** Edge of an outline menu button, of the sidebar. */
+  --sidebar-menu-button-outline-border-hover: var(--color-surface-highlight); /** Edge of an outline menu button under the pointer: it takes the highlight fill, so the item reads as one shape. */
   --skeleton-background: var(--color-surface-sunken); /** Background of the skeleton. */
   --slider-track-background: var(--color-surface-sunken); /** Track background of the slider. */
   --slider-thumb-focus-ring-offset-focus: var(--color-surface-canvas); /** Thumb focus ring offset focus of the slider. */
@@ -3002,7 +3187,10 @@ html[data-scheme="content-first"][data-theme="dark"] {
   --context-menu-checkbox-item-background-focus: var(--context-menu-checkbox-item-background-highlight); /** Deprecated: use component.context-menu.checkbox.item.background.highlight (OD-241). Checkbox item background focus of the context menu. */
   --context-menu-radio-item-background-focus: var(--context-menu-radio-item-background-highlight); /** Deprecated: use component.context-menu.radio.item.background.highlight (OD-241). Radio item background focus of the context menu. */
   --data-table-background-hover: var(--data-table-row-background-hover); /** Deprecated: use component.data-table.row.background.hover (OD-241). Background hover of the data table. */
+  --dialog-border: var(--dialog-content-border); /** Deprecated: use component.dialog.content.border (OD-243). Border of the dialog. */
+  --dialog-label: var(--dialog-description-label); /** Deprecated: use component.dialog.description.label (OD-243). Label of the dialog. */
   --dialog-sunken: var(--dialog-close-background-hover); /** Deprecated: use component.dialog.close.background.hover (OD-241). Sunken of the dialog. */
+  --drawer-background: var(--drawer-handle-background); /** Deprecated: use component.drawer.handle.background (OD-243). Background of the drawer. */
   --dropdown-menu-item-sunken: var(--dropdown-menu-item-background-highlight); /** Deprecated: use component.dropdown-menu.item.background.highlight (OD-241). Item sunken of the dropdown menu. */
   --dropdown-menu-background: var(--dropdown-menu-separator-background); /** Deprecated: use component.dropdown-menu.separator.background (OD-241). Background of the dropdown menu. */
   --input-group-label: var(--input-group-addon-label); /** Deprecated: use component.input-group.addon.label (OD-243). Label of the input group. */
@@ -3033,11 +3221,17 @@ html[data-scheme="content-first"][data-theme="dark"] {
   --resizable-background: var(--resizable-grip-background); /** Deprecated: use component.resizable.grip.background (OD-243). Background of the resizable. */
   --select-canvas: var(--select-trigger-focus-ring-offset); /** Deprecated: use component.select.trigger.focus-ring-offset (OD-243). Canvas of the select. */
   --select-item-sunken: var(--select-item-background-highlight); /** Deprecated: use component.select.item.background.highlight (OD-241). Item sunken of the select. */
+  --sheet-focus-ring-offset: var(--sheet-close-focus-ring-offset-color); /** Deprecated: use component.sheet.close.focus-ring.offset-color (OD-243). Focus ring offset of the sheet. */
+  --sheet-background-open: var(--sheet-close-background-hover); /** Deprecated: use component.sheet.close.background.hover (OD-243). Background open of the sheet. */
   --sidebar-rail-background-hover: var(--sidebar-rail-line-hover); /** Deprecated: use component.sidebar.rail.line.hover (OD-241). Rail background hover of the sidebar. */
   --sidebar-background-hover: var(--sidebar-rail-background-hover); /** Deprecated: use component.sidebar.rail.background.hover (OD-241). Background hover of the sidebar. */
   --sidebar-menu-sub-button-background-active: var(--sidebar-menu-sub-button-background-pressed); /** Deprecated: use component.sidebar.menu.sub.button.background.pressed (OD-241). Menu sub button background active of the sidebar. */
   --sidebar-background-hover-2: var(--sidebar-menu-button-background-hover); /** Deprecated: use component.sidebar.menu-button.background.hover (OD-241). Background hover 2 of the sidebar. */
   --sidebar-background-active: var(--sidebar-menu-button-background-pressed); /** Deprecated: use component.sidebar.menu-button.background.pressed (OD-241). Background active of the sidebar. */
+  --sidebar-background-open-hover: var(--sidebar-menu-button-background-open-hover); /** Deprecated: use component.sidebar.menu-button.background.open-hover (OD-243). Background open hover of the sidebar. */
+  --sidebar-focus-ring-offset-focus: var(--sidebar-menu-button-focus-ring-offset); /** Deprecated: use component.sidebar.menu-button.focus-ring-offset (OD-243). Focus ring offset focus of the sidebar. */
+  --sidebar-outline-background: var(--sidebar-menu-button-outline-background); /** Deprecated: use component.sidebar.menu-button.outline.background.@ (OD-243). Outline background of the sidebar. */
+  --sidebar-outline-background-hover: var(--sidebar-menu-button-outline-background-hover); /** Deprecated: use component.sidebar.menu-button.outline.background.hover (OD-243). Outline menu button background under the pointer, of the sidebar. */
 }
 html[data-scheme="content-first"] {
   --ifm-color-primary: var(--color-action-primary);

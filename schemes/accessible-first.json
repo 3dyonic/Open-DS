@@ -6536,12 +6536,12 @@
             "$description": "Content radius of the alert dialog."
           },
           "background": {
-            "$value": "{color.surface.canvas}",
-            "$description": "Content background of the alert dialog."
+            "$value": "{color.surface.raised}",
+            "$description": "Fill of the alert dialog panel: a fill that floats above content."
           },
           "padding": {
-            "$value": "{component-spacing-map.x6}",
-            "$description": "Content padding of the alert dialog."
+            "$value": "{space.inset.container}",
+            "$description": "Padding inside the alert dialog panel: the padding inside cards and dialogs."
           },
           "shadow": {
             "$value": "{elevation.overlay}",
@@ -6554,6 +6554,10 @@
           "border-width": {
             "$value": "{border-width.default}",
             "$description": "Content border width of the alert dialog."
+          },
+          "label": {
+            "$value": "{color.text.primary}",
+            "$description": "Text color in the alert dialog panel: main text."
           }
         },
         "header": {
@@ -6582,8 +6586,12 @@
             "$description": "Title line height of the alert dialog."
           },
           "font-weight": {
-            "$value": "{type.title.font-weight}",
-            "$description": "Title font weight of the alert dialog."
+            "$value": "{type.heading.font-weight}",
+            "$description": "Weight of the alert dialog title: a heading."
+          },
+          "font-family": {
+            "$value": "{type.heading.font-family}",
+            "$description": "Typeface of the alert dialog title: a heading."
           }
         },
         "description": {
@@ -6596,8 +6604,8 @@
             "$description": "Description line height of the alert dialog."
           },
           "label": {
-            "$value": "{color.text.muted}",
-            "$description": "Description label of the alert dialog."
+            "$value": "{color.text.secondary}",
+            "$description": "Color of the alert dialog description: supporting text."
           }
         },
         "media": {
@@ -6612,6 +6620,10 @@
           "size": {
             "$value": "{size.control.default}",
             "$description": "Media size of the alert dialog."
+          },
+          "margin-bottom": {
+            "$value": "{component-spacing-map.x2}",
+            "$description": "Extra gap below the alert dialog media, on top of the header gap."
           }
         }
       },
@@ -8394,27 +8406,52 @@
           "label": {
             "$value": "{color.text.primary}",
             "$description": "Content label of the dialog."
+          },
+          "border": {
+            "$value": "{color.border.default}",
+            "$description": "Edge of the dialog panel: a floating panel has a border of its own."
+          },
+          "border-width": {
+            "$value": "{border-width.default}",
+            "$description": "Width of the dialog panel's edge."
+          },
+          "radius": {
+            "$value": "{radius.container}",
+            "$description": "Corner of the dialog panel: a floating panel takes the container corner, like menus and popovers."
+          },
+          "shadow": {
+            "$value": "{elevation.overlay}",
+            "$description": "Shadow of the dialog panel: it floats over the page."
+          },
+          "background": {
+            "$value": "{color.surface.raised}",
+            "$description": "Fill of the dialog panel: a fill that floats above content."
           }
         },
         "border-width": {
-          "$value": "{border-width.default}",
-          "$description": "Border width of the dialog."
+          "$value": "{dialog.content.border-width}",
+          "$description": "Deprecated: use component.dialog.content.border-width (OD-243). Border width of the dialog.",
+          "$deprecated": "Use component.dialog.content.border-width. Removed in the next minor release."
         },
         "border": {
-          "$value": "{color.border.default}",
-          "$description": "Border of the dialog."
+          "$value": "{dialog.content.border}",
+          "$description": "Deprecated: use component.dialog.content.border (OD-243). Border of the dialog.",
+          "$deprecated": "Use component.dialog.content.border. Removed in the next minor release."
         },
         "radius": {
-          "$value": "{radius.badge}",
-          "$description": "Radius of the dialog."
+          "$value": "{dialog.close.radius}",
+          "$description": "Deprecated: use component.dialog.close.radius (OD-243). Radius of the dialog.",
+          "$deprecated": "Use component.dialog.close.radius. Removed in the next minor release."
         },
         "padding": {
-          "$value": "{component-spacing-map.x1}",
-          "$description": "Padding of the dialog."
+          "$value": "{dialog.close.padding}",
+          "$description": "Deprecated: use component.dialog.close.padding (OD-243). Padding of the dialog.",
+          "$deprecated": "Use component.dialog.close.padding. Removed in the next minor release."
         },
         "label": {
-          "$value": "{color.text.secondary}",
-          "$description": "Label of the dialog."
+          "$value": "{dialog.description.label}",
+          "$description": "Deprecated: use component.dialog.description.label (OD-243). Label of the dialog.",
+          "$deprecated": "Use component.dialog.description.label. Removed in the next minor release."
         },
         "sunken": {
           "$value": "{dialog.close.background.hover}",
@@ -8422,32 +8459,39 @@
           "$deprecated": "Use component.dialog.close.background.hover. Removed in the next minor release."
         },
         "size": {
-          "$value": "{size.icon}",
-          "$description": "Size of the dialog."
+          "$value": "{dialog.close.icon-size}",
+          "$description": "Deprecated: use component.dialog.close.icon-size (OD-243). Size of the dialog.",
+          "$deprecated": "Use component.dialog.close.icon-size. Removed in the next minor release."
         },
         "gap": {
-          "$value": "{space.gap.tight}",
-          "$description": "Gap of the dialog."
+          "$value": "{dialog.header.gap}",
+          "$description": "Deprecated: use component.dialog.header.gap (OD-243). Gap of the dialog.",
+          "$deprecated": "Use component.dialog.header.gap. Removed in the next minor release."
         },
         "gap-2": {
-          "$value": "{space.gap.default}",
-          "$description": "Gap 2 of the dialog."
+          "$value": "{dialog.footer.gap}",
+          "$description": "Deprecated: use component.dialog.footer.gap (OD-243). Gap 2 of the dialog.",
+          "$deprecated": "Use component.dialog.footer.gap. Removed in the next minor release."
         },
         "font-family": {
-          "$value": "{type.heading.font-family}",
-          "$description": "Font family of the dialog."
+          "$value": "{dialog.title.font-family}",
+          "$description": "Deprecated: use component.dialog.title.font-family (OD-243). Font family of the dialog.",
+          "$deprecated": "Use component.dialog.title.font-family. Removed in the next minor release."
         },
         "font-size": {
-          "$value": "{type.heading.font-size}",
-          "$description": "Font size of the dialog."
+          "$value": "{dialog.title.font-size}",
+          "$description": "Deprecated: use component.dialog.title.font-size (OD-243). Font size of the dialog.",
+          "$deprecated": "Use component.dialog.title.font-size. Removed in the next minor release."
         },
         "font-weight": {
-          "$value": "{type.heading.font-weight}",
-          "$description": "Font weight of the dialog."
+          "$value": "{dialog.title.font-weight}",
+          "$description": "Deprecated: use component.dialog.title.font-weight (OD-243). Font weight of the dialog.",
+          "$deprecated": "Use component.dialog.title.font-weight. Removed in the next minor release."
         },
         "font-size-2": {
-          "$value": "{type.body.font-size}",
-          "$description": "Font size 2 of the dialog."
+          "$value": "{dialog.description.font-size}",
+          "$description": "Deprecated: use component.dialog.description.font-size (OD-243). Font size 2 of the dialog.",
+          "$deprecated": "Use component.dialog.description.font-size. Removed in the next minor release."
         },
         "close": {
           "background": {
@@ -8455,6 +8499,90 @@
               "$value": "{color.surface.highlight}",
               "$description": "Close button background under the pointer, of the dialog."
             }
+          },
+          "label": {
+            "$value": "{color.text.secondary}",
+            "$description": "Color of the dialog close icon: supporting, not the main action."
+          },
+          "radius": {
+            "$value": "{radius.control}",
+            "$description": "Corner of the dialog close button: a button's corner."
+          },
+          "padding": {
+            "$value": "{component-spacing-map.x1}",
+            "$description": "Padding around the dialog close icon."
+          },
+          "icon-size": {
+            "$value": "{size.icon}",
+            "$description": "Size of the dialog close icon: an icon next to text."
+          },
+          "focus-ring": {
+            "width": {
+              "$value": "{border-width.focus}",
+              "$description": "Width of the focus ring on the dialog close button."
+            },
+            "color": {
+              "$value": "{color.border.focus}",
+              "$description": "Color of the focus ring on the dialog close button, at full strength."
+            },
+            "offset-color": {
+              "$value": "{color.surface.canvas}",
+              "$description": "Color of the gap between the dialog close button and its focus ring."
+            }
+          },
+          "focus-offset": {
+            "$value": "{border-width.focus-offset}",
+            "$description": "Gap between the dialog close button and its focus ring."
+          }
+        },
+        "overlay": {
+          "background": {
+            "$value": "{color.surface.scrim}",
+            "$description": "The scrim behind the dialog: the see-through layer behind a modal."
+          }
+        },
+        "title": {
+          "font-family": {
+            "$value": "{type.heading.font-family}",
+            "$description": "Typeface of the dialog title: a heading."
+          },
+          "font-size": {
+            "$value": "{type.heading.font-size}",
+            "$description": "Size of the dialog title: a heading."
+          },
+          "font-weight": {
+            "$value": "{type.heading.font-weight}",
+            "$description": "Weight of the dialog title: a heading."
+          },
+          "line-height": {
+            "$value": "{type.heading.line-height}",
+            "$description": "Line height of the dialog title: a heading."
+          }
+        },
+        "description": {
+          "font-size": {
+            "$value": "{type.body.font-size}",
+            "$description": "Size of the dialog description: body text."
+          },
+          "line-height": {
+            "$value": "{type.body.line-height}",
+            "$description": "Line height of the dialog description: body text."
+          },
+          "label": {
+            "$value": "{color.text.secondary}",
+            "$description": "Color of the dialog description: supporting text."
+          }
+        },
+        "header": {
+          "gap": {
+            "$value": "{space.gap.tight}",
+            "$description": "Gap between the dialog title and its description."
+          }
+        },
+        "footer": {
+          "gap": {
+            "$value": "{space.gap.default}",
+            "$description": "Gap between the dialog footer's buttons."
           }
         }
       },
@@ -8469,15 +8597,33 @@
           "background": {
             "$value": "{color.surface.canvas}",
             "$description": "Content background of the drawer."
+          },
+          "radius": {
+            "$value": "{radius.container}",
+            "$description": "Corner of the drawer panel on the side away from the screen edge: a container corner."
+          },
+          "border": {
+            "$value": "{color.border.default}",
+            "$description": "Edge of the drawer panel, on the side that faces the page."
+          },
+          "border-width": {
+            "$value": "{border-width.default}",
+            "$description": "Width of the drawer panel's edge."
+          },
+          "shadow": {
+            "$value": "{elevation.overlay}",
+            "$description": "Shadow of the drawer panel: it sits over the page, like the sheet."
           }
         },
         "radius": {
-          "$value": "{radius.round}",
-          "$description": "Radius of the drawer."
+          "$value": "{drawer.handle.radius}",
+          "$description": "Deprecated: use component.drawer.handle.radius (OD-243). Radius of the drawer.",
+          "$deprecated": "Use component.drawer.handle.radius. Removed in the next minor release."
         },
         "background": {
-          "$value": "{color.surface.sunken}",
-          "$description": "Background of the drawer."
+          "$value": "{drawer.handle.background}",
+          "$description": "Deprecated: use component.drawer.handle.background (OD-243). Background of the drawer.",
+          "$deprecated": "Use component.drawer.handle.background. Removed in the next minor release."
         },
         "header": {
           "gap": {
@@ -8505,12 +8651,24 @@
         },
         "title": {
           "font-weight": {
-            "$value": "{type.title.font-weight}",
-            "$description": "Title font weight of the drawer."
+            "$value": "{type.heading.font-weight}",
+            "$description": "Weight of the drawer title: a heading."
           },
           "label": {
             "$value": "{color.text.primary}",
             "$description": "Title label of the drawer."
+          },
+          "font-family": {
+            "$value": "{type.heading.font-family}",
+            "$description": "Typeface of the drawer title: a heading."
+          },
+          "font-size": {
+            "$value": "{type.heading.font-size}",
+            "$description": "Size of the drawer title: a heading."
+          },
+          "line-height": {
+            "$value": "{type.heading.line-height}",
+            "$description": "Line height of the drawer title: a heading."
           }
         },
         "description": {
@@ -8523,8 +8681,22 @@
             "$description": "Description line height of the drawer."
           },
           "label": {
-            "$value": "{color.text.muted}",
-            "$description": "Description label of the drawer."
+            "$value": "{color.text.secondary}",
+            "$description": "Color of the drawer description: supporting text."
+          }
+        },
+        "handle": {
+          "radius": {
+            "$value": "{radius.round}",
+            "$description": "Corner of the drawer handle: fully round."
+          },
+          "background": {
+            "$value": "{color.surface.sunken}",
+            "$description": "Fill of the drawer handle: a recessed fill."
+          },
+          "margin-top": {
+            "$value": "{space.inset.container}",
+            "$description": "Gap between the drawer panel's edge and its handle: the panel's inset."
           }
         }
       },
@@ -11079,31 +11251,45 @@
           "shadow": {
             "$value": "{elevation.overlay}",
             "$description": "Content shadow of the sheet."
+          },
+          "border": {
+            "$value": "{color.border.default}",
+            "$description": "Edge of the sheet panel, on the side that faces the page."
+          },
+          "border-width": {
+            "$value": "{border-width.default}",
+            "$description": "Width of the sheet panel's edge."
           }
         },
         "radius": {
-          "$value": "{radius.badge}",
-          "$description": "Radius of the sheet."
+          "$value": "{sheet.close.radius}",
+          "$description": "Deprecated: use component.sheet.close.radius (OD-243). Radius of the sheet.",
+          "$deprecated": "Use component.sheet.close.radius. Removed in the next minor release."
         },
         "focus-ring-offset": {
-          "$value": "{color.surface.canvas}",
-          "$description": "Focus ring offset of the sheet."
+          "$value": "{sheet.close.focus-ring.offset-color}",
+          "$description": "Deprecated: use component.sheet.close.focus-ring.offset-color (OD-243). Focus ring offset of the sheet.",
+          "$deprecated": "Use component.sheet.close.focus-ring.offset-color. Removed in the next minor release."
         },
         "focus": {
-          "$value": "{border-width.focus}",
-          "$description": "Focus of the sheet."
+          "$value": "{sheet.close.focus-ring.width}",
+          "$description": "Deprecated: use component.sheet.close.focus-ring.width (OD-243). Focus of the sheet.",
+          "$deprecated": "Use component.sheet.close.focus-ring.width. Removed in the next minor release."
         },
         "focus-ring-focus": {
-          "$value": "{color.border.focus}",
-          "$description": "Focus ring focus of the sheet."
+          "$value": "{sheet.close.focus-ring.color}",
+          "$description": "Deprecated: use component.sheet.close.focus-ring.color (OD-243). Focus ring focus of the sheet.",
+          "$deprecated": "Use component.sheet.close.focus-ring.color. Removed in the next minor release."
         },
         "background-open": {
-          "$value": "{color.action.secondary.@}",
-          "$description": "Background open of the sheet."
+          "$value": "{sheet.close.background.hover}",
+          "$description": "Deprecated: use component.sheet.close.background.hover (OD-243). Background open of the sheet.",
+          "$deprecated": "Use component.sheet.close.background.hover. Removed in the next minor release."
         },
         "icon-size": {
-          "$value": "{size.icon}",
-          "$description": "Icon size of the sheet."
+          "$value": "{sheet.close.icon-size}",
+          "$description": "Deprecated: use component.sheet.close.icon-size (OD-243). Icon size of the sheet.",
+          "$deprecated": "Use component.sheet.close.icon-size. Removed in the next minor release."
         },
         "header": {
           "gap": {
@@ -11127,12 +11313,24 @@
         },
         "title": {
           "font-weight": {
-            "$value": "{type.title.font-weight}",
-            "$description": "Title font weight of the sheet."
+            "$value": "{type.heading.font-weight}",
+            "$description": "Weight of the sheet title: a heading."
           },
           "label": {
             "$value": "{color.text.primary}",
             "$description": "Title label of the sheet."
+          },
+          "font-family": {
+            "$value": "{type.heading.font-family}",
+            "$description": "Typeface of the sheet title: a heading."
+          },
+          "font-size": {
+            "$value": "{type.heading.font-size}",
+            "$description": "Size of the sheet title: a heading."
+          },
+          "line-height": {
+            "$value": "{type.heading.line-height}",
+            "$description": "Line height of the sheet title: a heading."
           }
         },
         "description": {
@@ -11145,14 +11343,50 @@
             "$description": "Description line height of the sheet."
           },
           "label": {
-            "$value": "{color.text.muted}",
-            "$description": "Description label of the sheet."
+            "$value": "{color.text.secondary}",
+            "$description": "Color of the sheet description: supporting text."
           }
         },
         "close": {
           "focus-offset": {
             "$value": "{border-width.focus-offset}",
             "$description": "Gap between the sheet close and its focus ring."
+          },
+          "radius": {
+            "$value": "{radius.control}",
+            "$description": "Corner of the sheet close button: a button's corner."
+          },
+          "focus-ring": {
+            "width": {
+              "$value": "{border-width.focus}",
+              "$description": "Width of the focus ring on the sheet close button."
+            },
+            "color": {
+              "$value": "{color.border.focus}",
+              "$description": "Color of the focus ring on the sheet close button, at full strength."
+            },
+            "offset-color": {
+              "$value": "{color.surface.canvas}",
+              "$description": "Color of the gap between the sheet close button and its focus ring."
+            }
+          },
+          "background": {
+            "hover": {
+              "$value": "{color.surface.highlight}",
+              "$description": "Close button background under the pointer, of the sheet."
+            }
+          },
+          "icon-size": {
+            "$value": "{size.icon}",
+            "$description": "Size of the sheet close icon: an icon next to text."
+          },
+          "label": {
+            "$value": "{color.text.secondary}",
+            "$description": "Color of the sheet close icon: supporting, not the main action."
+          },
+          "padding": {
+            "$value": "{component-spacing-map.x1}",
+            "$description": "Padding around the sheet close icon."
           }
         }
       },
@@ -11185,11 +11419,24 @@
           "duration": {
             "$value": "{motion.duration.feedback}",
             "$description": "Container duration of the sidebar."
+          },
+          "padding": {
+            "$value": "{component-spacing-map.x2}",
+            "$description": "Space between the screen edge and a floating or inset sidebar panel."
+          },
+          "border": {
+            "$value": "{color.border.default}",
+            "$description": "Edge between the sidebar and the page, on the side that faces the page."
+          },
+          "border-width": {
+            "$value": "{border-width.default}",
+            "$description": "Width of the edge between the sidebar and the page."
           }
         },
         "padding": {
-          "$value": "{component-spacing-map.x2}",
-          "$description": "Padding of the sidebar."
+          "$value": "{sidebar.menu-button.padding}",
+          "$description": "Deprecated: use component.sidebar.menu-button.padding (OD-243). Padding of the sidebar.",
+          "$deprecated": "Use component.sidebar.menu-button.padding. Removed in the next minor release."
         },
         "inner": {
           "background": {
@@ -11207,6 +11454,10 @@
           "shadow": {
             "$value": "{elevation.card}",
             "$description": "Inner shadow of the sidebar."
+          },
+          "border-width": {
+            "$value": "{border-width.default}",
+            "$description": "Width of the edge of a floating sidebar panel."
           }
         },
         "rail": {
@@ -11226,6 +11477,10 @@
               "$value": "{color.border.strong}",
               "$description": "Rail line under the pointer, of the sidebar: the edge of a control people must find."
             }
+          },
+          "line-width": {
+            "$value": "{border-width.default}",
+            "$description": "Width of the line the rail shows on the sidebar edge under the pointer: a border."
           }
         },
         "background-hover": {
@@ -11245,6 +11500,10 @@
           "shadow": {
             "$value": "{elevation.card}",
             "$description": "Inset shadow of the sidebar."
+          },
+          "margin": {
+            "$value": "{component-spacing-map.x2}",
+            "$description": "Space around the inset main area, the same step as the inset sidebar's padding so both panels sit on one grid."
           }
         },
         "input": {
@@ -11281,6 +11540,10 @@
           "background": {
             "$value": "{color.border.default}",
             "$description": "Separator background of the sidebar."
+          },
+          "margin-x": {
+            "$value": "{component-spacing-map.x2}",
+            "$description": "Space at each end of a sidebar separator, so it lines up with the group padding."
           }
         },
         "content": {
@@ -11320,8 +11583,8 @@
               "$description": "Group label font weight of the sidebar."
             },
             "label": {
-              "$value": "{color.text.primary}",
-              "$description": "Group label label of the sidebar."
+              "$value": "{color.text.secondary}",
+              "$description": "Text of a sidebar group label: supporting text, quieter than the items it heads."
             },
             "focus-ring": {
               "$value": "{color.border.focus}",
@@ -11346,6 +11609,10 @@
             "focus-ring-offset-focus": {
               "$value": "{color.surface.canvas}",
               "$description": "Group label focus ring offset focus of the sidebar."
+            },
+            "focus-offset": {
+              "$value": "{border-width.focus-offset}",
+              "$description": "Gap between the sidebar group label and its focus ring."
             }
           },
           "action": {
@@ -11363,7 +11630,8 @@
             },
             "label-hover": {
               "$value": "{color.text.primary}",
-              "$description": "Group action label hover of the sidebar."
+              "$description": "Deprecated: use sidebar/group/action/label (OD-243). Group action label hover of the sidebar.",
+              "$deprecated": "Use component.sidebar.group.action.label. Removed in the next minor release."
             },
             "icon-size": {
               "$value": "{size.icon}",
@@ -11386,6 +11654,10 @@
                 "$value": "{color.surface.highlight}",
                 "$description": "Group action background under the pointer, of the sidebar."
               }
+            },
+            "focus-offset": {
+              "$value": "{border-width.focus-offset}",
+              "$description": "Gap between the sidebar group action and its focus ring."
             }
           },
           "content": {
@@ -11419,7 +11691,8 @@
             },
             "label-hover": {
               "$value": "{color.text.primary}",
-              "$description": "Menu action label hover of the sidebar."
+              "$description": "Deprecated: use sidebar/menu/action/label (OD-243). Menu action label hover of the sidebar.",
+              "$deprecated": "Use component.sidebar.menu.action.label. Removed in the next minor release."
             },
             "icon-size": {
               "$value": "{size.icon}",
@@ -11442,6 +11715,10 @@
                 "$value": "{color.surface.highlight}",
                 "$description": "Menu action background under the pointer, of the sidebar."
               }
+            },
+            "focus-offset": {
+              "$value": "{border-width.focus-offset}",
+              "$description": "Gap between the sidebar menu action and its focus ring."
             }
           },
           "badge": {
@@ -11486,6 +11763,10 @@
             "padding-x": {
               "$value": "{component-spacing-map.x2}",
               "$description": "Menu skeleton padding x of the sidebar."
+            },
+            "text-height": {
+              "$value": "{size.icon}",
+              "$description": "Height of the text bar of a menu skeleton, of the sidebar."
             }
           },
           "sub": {
@@ -11528,7 +11809,8 @@
               },
               "label-hover": {
                 "$value": "{color.text.primary}",
-                "$description": "Menu sub button label hover of the sidebar."
+                "$description": "Deprecated: use sidebar/menu/sub/button/label (OD-243). Menu sub button label hover of the sidebar.",
+                "$deprecated": "Use component.sidebar.menu.sub.button.label. Removed in the next minor release."
               },
               "background-active": {
                 "$value": "{sidebar.menu.sub.button.background.pressed}",
@@ -11537,7 +11819,8 @@
               },
               "label-active": {
                 "$value": "{color.text.primary}",
-                "$description": "Menu sub button label active of the sidebar."
+                "$description": "Deprecated: use sidebar/menu/sub/button/label (OD-243). Menu sub button label active of the sidebar.",
+                "$deprecated": "Use component.sidebar.menu.sub.button.label. Removed in the next minor release."
               },
               "disabled-opacity-disabled": {
                 "$value": "{opacity.disabled}",
@@ -11567,34 +11850,84 @@
                 "pressed": {
                   "$value": "{color.surface.pressed}",
                   "$description": "Submenu button background while pressed, of the sidebar."
+                },
+                "current": {
+                  "$value": "{color.surface.selected}",
+                  "$description": "Background of the submenu button for the current page, of the sidebar."
+                }
+              },
+              "edge": {
+                "current": {
+                  "$value": "{color.border.selected}",
+                  "$description": "Edge that marks the submenu button for the current page, beside its fill, so the current page is never color alone."
+                }
+              },
+              "edge-width": {
+                "current": {
+                  "$value": "{border-width.focus}",
+                  "$description": "Width of the edge that marks the submenu button for the current page."
+                }
+              },
+              "md": {
+                "font-size": {
+                  "$value": "{type.body.font-size}",
+                  "$description": "Font size of a medium submenu button, of the sidebar."
+                },
+                "line-height": {
+                  "$value": "{type.body.line-height}",
+                  "$description": "Line height of a medium submenu button, of the sidebar."
+                }
+              },
+              "focus-offset": {
+                "$value": "{border-width.focus-offset}",
+                "$description": "Gap between the sidebar submenu button and its focus ring."
+              },
+              "sm": {
+                "font-size": {
+                  "$value": "{type.caption.font-size}",
+                  "$description": "Font size of a small submenu button, of the sidebar."
+                },
+                "line-height": {
+                  "$value": "{type.caption.line-height}",
+                  "$description": "Line height of a small submenu button, of the sidebar."
                 }
               }
+            },
+            "border-width": {
+              "$value": "{border-width.default}",
+              "$description": "Width of the line that ties a submenu to its parent menu button."
             }
           }
         },
         "radius": {
-          "$value": "{radius.control}",
-          "$description": "Radius of the sidebar."
+          "$value": "{sidebar.menu-button.radius}",
+          "$description": "Deprecated: use component.sidebar.menu-button.radius (OD-243). Radius of the sidebar.",
+          "$deprecated": "Use component.sidebar.menu-button.radius. Removed in the next minor release."
         },
         "font-size": {
-          "$value": "{type.body.font-size}",
-          "$description": "Font size of the sidebar."
+          "$value": "{sidebar.menu-button.font-size}",
+          "$description": "Deprecated: use component.sidebar.menu-button.font-size (OD-243). Font size of the sidebar.",
+          "$deprecated": "Use component.sidebar.menu-button.font-size. Removed in the next minor release."
         },
         "line-height": {
-          "$value": "{type.body.line-height}",
-          "$description": "Line height of the sidebar."
+          "$value": "{sidebar.menu-button.line-height}",
+          "$description": "Deprecated: use component.sidebar.menu-button.line-height (OD-243). Line height of the sidebar.",
+          "$deprecated": "Use component.sidebar.menu-button.line-height. Removed in the next minor release."
         },
         "focus-ring": {
           "$value": "{color.border.focus}",
-          "$description": "Focus ring of the sidebar."
+          "$description": "Deprecated: use sidebar/menu-button/focus-ring (OD-243). Focus ring of the sidebar.",
+          "$deprecated": "Use component.sidebar.menu-button.focus-ring. Removed in the next minor release."
         },
         "padding-right": {
-          "$value": "{component-spacing-map.x8}",
-          "$description": "Padding right of the sidebar."
+          "$value": "{sidebar.menu-button.padding-right}",
+          "$description": "Deprecated: use component.sidebar.menu-button.padding-right (OD-243). Padding right of the sidebar.",
+          "$deprecated": "Use component.sidebar.menu-button.padding-right. Removed in the next minor release."
         },
         "size": {
-          "$value": "{size.control.default}",
-          "$description": "Size of the sidebar."
+          "$value": "{sidebar.menu-button.collapsed-size}",
+          "$description": "Deprecated: use component.sidebar.menu-button.collapsed-size (OD-243). Size of the sidebar.",
+          "$deprecated": "Use component.sidebar.menu-button.collapsed-size. Removed in the next minor release."
         },
         "background-hover-2": {
           "$value": "{sidebar.menu-button.background.hover}",
@@ -11603,7 +11936,8 @@
         },
         "label-hover": {
           "$value": "{color.text.primary}",
-          "$description": "Label hover of the sidebar."
+          "$description": "Deprecated: use sidebar/label (OD-243). Label hover of the sidebar.",
+          "$deprecated": "Use component.sidebar.label. Removed in the next minor release."
         },
         "background-active": {
           "$value": "{sidebar.menu-button.background.pressed}",
@@ -11612,11 +11946,13 @@
         },
         "label-active": {
           "$value": "{color.text.primary}",
-          "$description": "Label active of the sidebar."
+          "$description": "Deprecated: use sidebar/label (OD-243). Label active of the sidebar.",
+          "$deprecated": "Use component.sidebar.label. Removed in the next minor release."
         },
         "disabled-opacity-disabled": {
-          "$value": "{opacity.disabled}",
-          "$description": "Disabled opacity disabled of the sidebar."
+          "$value": "{sidebar.menu-button.opacity.disabled}",
+          "$description": "Deprecated: use component.sidebar.menu-button.opacity.disabled (OD-243). Disabled opacity disabled of the sidebar.",
+          "$deprecated": "Use component.sidebar.menu-button.opacity.disabled. Removed in the next minor release."
         },
         "background-2": {
           "$value": "{sidebar.menu-button.background.current}",
@@ -11624,108 +11960,131 @@
           "$deprecated": "Use component.sidebar.menu-button.background.current. Removed in the next minor release."
         },
         "font-weight": {
-          "$value": "{type.label.font-weight}",
-          "$description": "Font weight of the sidebar."
+          "$value": "{sidebar.menu-button.font-weight.current}",
+          "$description": "Deprecated: use component.sidebar.menu-button.font-weight.current (OD-243). Font weight of the sidebar.",
+          "$deprecated": "Use component.sidebar.menu-button.font-weight.current. Removed in the next minor release."
         },
         "focus": {
-          "$value": "{border-width.focus}",
-          "$description": "Focus of the sidebar."
+          "$value": "{sidebar.menu-button.focus-width}",
+          "$description": "Deprecated: use component.sidebar.menu-button.focus-width (OD-243). Focus of the sidebar.",
+          "$deprecated": "Use component.sidebar.menu-button.focus-width. Removed in the next minor release."
         },
         "selected": {
-          "$value": "{color.border.selected}",
-          "$description": "Selected of the sidebar."
+          "$value": "{sidebar.menu-button.edge.current}",
+          "$description": "Deprecated: use component.sidebar.menu-button.edge.current (OD-243). Selected of the sidebar.",
+          "$deprecated": "Use component.sidebar.menu-button.edge.current. Removed in the next minor release."
         },
         "background-open-hover": {
-          "$value": "{color.surface.sunken}",
-          "$description": "Background open hover of the sidebar."
+          "$value": "{sidebar.menu-button.background.open-hover}",
+          "$description": "Deprecated: use component.sidebar.menu-button.background.open-hover (OD-243). Background open hover of the sidebar.",
+          "$deprecated": "Use component.sidebar.menu-button.background.open-hover. Removed in the next minor release."
         },
         "label-open-hover": {
           "$value": "{color.text.primary}",
-          "$description": "Label open hover of the sidebar."
+          "$description": "Deprecated: use sidebar/label (OD-243). Label open hover of the sidebar.",
+          "$deprecated": "Use component.sidebar.label. Removed in the next minor release."
         },
         "icon-size": {
-          "$value": "{size.icon}",
-          "$description": "Icon size of the sidebar."
+          "$value": "{sidebar.menu-button.icon-size}",
+          "$description": "Deprecated: use component.sidebar.menu-button.icon-size (OD-243). Icon size of the sidebar.",
+          "$deprecated": "Use component.sidebar.menu-button.icon-size. Removed in the next minor release."
         },
         "focus-ring-focus": {
-          "$value": "{color.border.focus}",
-          "$description": "Focus ring focus of the sidebar."
+          "$value": "{sidebar.menu-button.focus-ring}",
+          "$description": "Deprecated: use component.sidebar.menu-button.focus-ring (OD-243). Focus ring focus of the sidebar.",
+          "$deprecated": "Use component.sidebar.menu-button.focus-ring. Removed in the next minor release."
         },
         "focus-ring-offset-focus": {
-          "$value": "{color.surface.canvas}",
-          "$description": "Focus ring offset focus of the sidebar."
+          "$value": "{sidebar.menu-button.focus-ring-offset}",
+          "$description": "Deprecated: use component.sidebar.menu-button.focus-ring-offset (OD-243). Focus ring offset focus of the sidebar.",
+          "$deprecated": "Use component.sidebar.menu-button.focus-ring-offset. Removed in the next minor release."
         },
         "default": {
           "label-hover": {
             "$value": "{color.text.primary}",
-            "$description": "Default label hover of the sidebar."
+            "$description": "Deprecated: use sidebar/label (OD-243). Default label hover of the sidebar.",
+            "$deprecated": "Use component.sidebar.label. Removed in the next minor release."
           },
           "height": {
-            "$value": "{size.control.default}",
-            "$description": "Default height of the sidebar."
+            "$value": "{sidebar.menu-button.default.height}",
+            "$description": "Deprecated: use component.sidebar.menu-button.default.height (OD-243). Default height of the sidebar.",
+            "$deprecated": "Use component.sidebar.menu-button.default.height. Removed in the next minor release."
           },
           "font-size": {
-            "$value": "{type.body.font-size}",
-            "$description": "Default font size of the sidebar."
+            "$value": "{sidebar.menu-button.default.font-size}",
+            "$description": "Deprecated: use component.sidebar.menu-button.default.font-size (OD-243). Default font size of the sidebar.",
+            "$deprecated": "Use component.sidebar.menu-button.default.font-size. Removed in the next minor release."
           },
           "line-height": {
-            "$value": "{type.body.line-height}",
-            "$description": "Default line height of the sidebar."
+            "$value": "{sidebar.menu-button.default.line-height}",
+            "$description": "Deprecated: use component.sidebar.menu-button.default.line-height (OD-243). Default line height of the sidebar.",
+            "$deprecated": "Use component.sidebar.menu-button.default.line-height. Removed in the next minor release."
           },
           "background": {
             "hover": {
               "$value": "{color.surface.highlight}",
-              "$description": "Default menu button background under the pointer, of the sidebar."
+              "$description": "Deprecated: use sidebar/menu-button/background/hover (OD-243). Default menu button background under the pointer, of the sidebar.",
+              "$deprecated": "Use component.sidebar.menu-button.background.hover. Removed in the next minor release."
             }
           }
         },
         "outline": {
           "background": {
             "@": {
-              "$value": "{color.surface.canvas}",
-              "$description": "Outline background of the sidebar."
+              "$value": "{sidebar.menu-button.outline.background.@}",
+              "$description": "Deprecated: use component.sidebar.menu-button.outline.background.@ (OD-243). Outline background of the sidebar.",
+              "$deprecated": "Use component.sidebar.menu-button.outline.background.@. Removed in the next minor release."
             },
             "hover": {
-              "$value": "{color.surface.highlight}",
-              "$description": "Outline menu button background under the pointer, of the sidebar."
+              "$value": "{sidebar.menu-button.outline.background.hover}",
+              "$description": "Deprecated: use component.sidebar.menu-button.outline.background.hover (OD-243). Outline menu button background under the pointer, of the sidebar.",
+              "$deprecated": "Use component.sidebar.menu-button.outline.background.hover. Removed in the next minor release."
             }
           },
           "label-hover": {
             "$value": "{color.text.primary}",
-            "$description": "Outline label hover of the sidebar."
+            "$description": "Deprecated: use sidebar/label (OD-243). Outline label hover of the sidebar.",
+            "$deprecated": "Use component.sidebar.label. Removed in the next minor release."
           }
         },
         "sm": {
           "font-size": {
-            "$value": "{type.caption.font-size}",
-            "$description": "Sm font size of the sidebar."
+            "$value": "{sidebar.menu-button.sm.font-size}",
+            "$description": "Deprecated: use component.sidebar.menu-button.sm.font-size (OD-243). Sm font size of the sidebar.",
+            "$deprecated": "Use component.sidebar.menu-button.sm.font-size. Removed in the next minor release."
           },
           "line-height": {
-            "$value": "{type.caption.line-height}",
-            "$description": "Sm line height of the sidebar."
+            "$value": "{sidebar.menu-button.sm.line-height}",
+            "$description": "Deprecated: use component.sidebar.menu-button.sm.line-height (OD-243). Sm line height of the sidebar.",
+            "$deprecated": "Use component.sidebar.menu-button.sm.line-height. Removed in the next minor release."
           }
         },
         "lg": {
           "font-size": {
-            "$value": "{type.body.font-size}",
-            "$description": "Lg font size of the sidebar."
+            "$value": "{sidebar.menu-button.lg.font-size}",
+            "$description": "Deprecated: use component.sidebar.menu-button.lg.font-size (OD-243). Lg font size of the sidebar.",
+            "$deprecated": "Use component.sidebar.menu-button.lg.font-size. Removed in the next minor release."
           },
           "line-height": {
-            "$value": "{type.body.line-height}",
-            "$description": "Lg line height of the sidebar."
+            "$value": "{sidebar.menu-button.lg.line-height}",
+            "$description": "Deprecated: use component.sidebar.menu-button.lg.line-height (OD-243). Lg line height of the sidebar.",
+            "$deprecated": "Use component.sidebar.menu-button.lg.line-height. Removed in the next minor release."
           }
         },
         "height": {
-          "$value": "{size.icon}",
-          "$description": "Height of the sidebar."
+          "$value": "{sidebar.menu.skeleton.text-height}",
+          "$description": "Deprecated: use component.sidebar.menu.skeleton.text-height (OD-243). Height of the sidebar.",
+          "$deprecated": "Use component.sidebar.menu.skeleton.text-height. Removed in the next minor release."
         },
         "font-size-2": {
-          "$value": "{type.caption.font-size}",
-          "$description": "Font size 2 of the sidebar."
+          "$value": "{sidebar.menu.sub.button.sm.font-size}",
+          "$description": "Deprecated: use component.sidebar.menu.sub.button.sm.font-size (OD-243). Font size 2 of the sidebar.",
+          "$deprecated": "Use component.sidebar.menu.sub.button.sm.font-size. Removed in the next minor release."
         },
         "line-height-2": {
-          "$value": "{type.caption.line-height}",
-          "$description": "Line height 2 of the sidebar."
+          "$value": "{sidebar.menu.sub.button.sm.line-height}",
+          "$description": "Deprecated: use component.sidebar.menu.sub.button.sm.line-height (OD-243). Line height 2 of the sidebar.",
+          "$deprecated": "Use component.sidebar.menu.sub.button.sm.line-height. Removed in the next minor release."
         },
         "menu-button": {
           "background": {
@@ -11740,11 +12099,143 @@
             "pressed": {
               "$value": "{color.surface.pressed}",
               "$description": "Menu button background while pressed, of the sidebar."
+            },
+            "open-hover": {
+              "$value": "{color.surface.highlight}",
+              "$description": "Background of a menu button whose submenu is open, under the pointer: the highlight, whose rule covers open submenu triggers."
             }
           },
           "focus-offset": {
             "$value": "{border-width.focus-offset}",
             "$description": "Gap between the sidebar menu button and its focus ring."
+          },
+          "edge-width": {
+            "current": {
+              "$value": "{border-width.focus}",
+              "$description": "Width of the edge that marks the menu button for the current page, beside its fill, so the current page is never color alone."
+            }
+          },
+          "default": {
+            "height": {
+              "$value": "{size.control.default}",
+              "$description": "Height of a default-size menu button, of the sidebar."
+            },
+            "font-size": {
+              "$value": "{type.body.font-size}",
+              "$description": "Font size of a default-size menu button, of the sidebar."
+            },
+            "line-height": {
+              "$value": "{type.body.line-height}",
+              "$description": "Line height of a default-size menu button, of the sidebar."
+            }
+          },
+          "sm": {
+            "font-size": {
+              "$value": "{type.caption.font-size}",
+              "$description": "Font size of a small menu button, of the sidebar."
+            },
+            "line-height": {
+              "$value": "{type.caption.line-height}",
+              "$description": "Line height of a small menu button, of the sidebar."
+            }
+          },
+          "lg": {
+            "font-size": {
+              "$value": "{type.body.font-size}",
+              "$description": "Font size of a large menu button, of the sidebar."
+            },
+            "line-height": {
+              "$value": "{type.body.line-height}",
+              "$description": "Line height of a large menu button, of the sidebar."
+            }
+          },
+          "opacity": {
+            "disabled": {
+              "$value": "{opacity.disabled}",
+              "$description": "Opacity of a menu button that cannot be used, of the sidebar."
+            }
+          },
+          "focus-width": {
+            "$value": "{border-width.focus}",
+            "$description": "Width of the menu button's keyboard focus ring, of the sidebar."
+          },
+          "focus-ring": {
+            "$value": "{color.border.focus}",
+            "$description": "Color of the menu button's keyboard focus ring, at full strength, of the sidebar."
+          },
+          "focus-ring-offset": {
+            "$value": "{color.surface.canvas}",
+            "$description": "Color of the gap between the menu button and its focus ring: the page canvas."
+          },
+          "font-size": {
+            "$value": "{type.body.font-size}",
+            "$description": "Font size of the menu button, of the sidebar."
+          },
+          "line-height": {
+            "$value": "{type.body.line-height}",
+            "$description": "Line height of the menu button, of the sidebar."
+          },
+          "font-weight": {
+            "current": {
+              "$value": "{type.label.font-weight}",
+              "$description": "Font weight of the menu button for the current page, of the sidebar."
+            }
+          },
+          "icon-size": {
+            "$value": "{size.icon}",
+            "$description": "Icon size in a menu button, of the sidebar."
+          },
+          "outline": {
+            "background": {
+              "hover": {
+                "$value": "{color.surface.highlight}",
+                "$description": "Background of an outline menu button under the pointer, of the sidebar."
+              },
+              "@": {
+                "$value": "{color.surface.canvas}",
+                "$description": "Background of an outline menu button, of the sidebar."
+              }
+            },
+            "border": {
+              "@": {
+                "$value": "{color.border.default}",
+                "$description": "Edge of an outline menu button, of the sidebar."
+              },
+              "hover": {
+                "$value": "{color.surface.highlight}",
+                "$description": "Edge of an outline menu button under the pointer: it takes the highlight fill, so the item reads as one shape."
+              }
+            },
+            "border-width": {
+              "$value": "{border-width.default}",
+              "$description": "Width of the edge of an outline menu button, of the sidebar."
+            }
+          },
+          "padding": {
+            "$value": "{component-spacing-map.x2}",
+            "$description": "Padding of the menu button, of the sidebar."
+          },
+          "padding-right": {
+            "$value": "{component-spacing-map.x8}",
+            "$description": "Right padding of a menu button that has a menu action, so the label clears the action."
+          },
+          "radius": {
+            "$value": "{radius.control}",
+            "$description": "Corner of the menu button, of the sidebar."
+          },
+          "edge": {
+            "current": {
+              "$value": "{color.border.selected}",
+              "$description": "Edge that marks the menu button for the current page, beside its fill, so the current page is never color alone."
+            }
+          },
+          "collapsed-size": {
+            "$value": "{size.control.default}",
+            "$description": "Width and height of a menu button when the sidebar is collapsed to icons."
+          },
+          "gap": {
+            "$value": "{space.gap.default}",
+            "$description": "Gap between the icon and the label of a menu button, of the sidebar."
           }
         }
       },
