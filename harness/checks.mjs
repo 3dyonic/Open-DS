@@ -614,6 +614,32 @@ export const CHECKS = {
         : ok(`${pairs} hover fills and dividers are visible where they meet; the lowest is ${lowest.toFixed(2)}:1`);
     },
   },
+  "gaps-only-go-down": {
+    requires: ["schemes/grammar.json", "cli/src/gaps.mjs", "harness/gaps-baseline.json"],
+    run: async (c) => {
+      // OD-243: the gap ledger is the measured baseline of where the decision trace breaks. Each count,
+      // per scheme and kind, may only go down. A fix lowers the baseline in the same change (node
+      // scripts/gaps.mjs --baseline), so every drop is on record; a new gap fails here.
+      const { gapCounts } = await import(pathToFileURL(c.p("scripts/gaps.mjs")).href);
+      const base = c.json("harness", "gaps-baseline.json").counts;
+      const now = gapCounts();
+      const rose = [];
+      const fell = [];
+      let total = 0;
+      for (const [s, kinds] of Object.entries(now))
+        for (const [k, n] of Object.entries(kinds)) {
+          total += n;
+          const was = base[s]?.[k];
+          if (was === undefined) rose.push(`${s} ${k}: ${n}, not in the baseline`);
+          else if (n > was) rose.push(`${s} ${k}: ${was} → ${n}`);
+          else if (n < was) fell.push(`${s} ${k}: ${was} → ${n}`);
+        }
+      if (rose.length) return bad(`new gaps: ${rose.slice(0, 6).join("; ")}. open-ds gaps <scheme> lists them.`);
+      if (fell.length)
+        return bad(`gaps fell (good): ${fell.slice(0, 6).join("; ")}. Record it: node scripts/gaps.mjs --baseline.`);
+      return ok(`${total} gaps across ${Object.keys(now).length} schemes, none new; each count may only go down`);
+    },
+  },
   "scheme-order": {
     requires: ["schemes/grammar.json", "storybook/src/scheme-context.tsx", "site/src/lib/home.ts"],
     run: (c) => {

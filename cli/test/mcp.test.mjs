@@ -29,6 +29,7 @@ const TOOLS = [
   "get_component_spacing_map",
   "get_context",
   "get_decision_reference",
+  "get_gaps",
   "get_inventory",
   "get_key",
   "get_scales",
@@ -392,6 +393,30 @@ test("get_component: the reference next to each scheme's decisions (OD-185)", as
     name: "get_component",
     arguments: { scheme_id: "dense-data", component: "nope" },
   });
+  assert.ok(bad.isError);
+});
+
+test("get_gaps and get_component: where the decision trace breaks (OD-243)", async () => {
+  const c = await connect();
+  const all = await call(c, "get_gaps", { scheme_id: "dense-data" });
+  assert.deepEqual(
+    all.kinds.map((k) => k.id),
+    ["key-hides-part", "key-hides-state", "wrong-semantic", "two-jobs", "rule-not-written", "pick-without-reason"],
+  );
+  for (const k of all.kinds) assert.equal(all.counts[k.id], all.gaps.filter((x) => x.kind === k.id).length);
+  // The menu's highlight borrows the depth token: the key hides the state, and sunken carries many jobs.
+  const menu = await call(c, "get_gaps", { scheme_id: "dense-data", component: "dropdown-menu" });
+  assert.ok(menu.gaps.some((x) => x.kind === "key-hides-state" && x.key === "component.dropdown-menu.item.sunken" && x.state === "highlight"));
+  assert.ok(menu.gaps.some((x) => x.kind === "key-hides-part" && x.key === "component.dropdown-menu.background" && x.part === "separator"));
+  assert.ok(menu.gaps.some((x) => x.kind === "two-jobs" && x.semantic === "color.surface.sunken"));
+  // A written rule the code breaks: the grammar says a current item uses color.surface.selected.
+  const side = await call(c, "get_gaps", { scheme_id: "dense-data", component: "sidebar", kind: "wrong-semantic" });
+  assert.ok(side.gaps.some((x) => x.state === "current" && x.should?.includes("color.surface.selected")));
+  assert.ok(side.gaps.every((x) => x.kind === "wrong-semantic"));
+  // get_component carries the same gaps, so an agent sees them before it builds.
+  const comp = await call(c, "get_component", { scheme_id: "dense-data", component: "dropdown-menu" });
+  assert.equal(comp.gaps.length, menu.gaps.length);
+  const bad = await c.callTool({ name: "get_gaps", arguments: { scheme_id: "dense-data", component: "nope" } });
   assert.ok(bad.isError);
 });
 

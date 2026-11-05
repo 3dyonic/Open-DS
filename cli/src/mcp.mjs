@@ -7,6 +7,7 @@
 // and the files it writes; the agent runs it. The five skills are served as prompts.
 // No authentication yet: the hosted server will add a key (OD-145).
 
+import { GAP_KINDS, gapLedger } from "./gaps.mjs";
 import { scales } from "./scale-map.mjs";
 import { spacingGuide } from "./spacing-map.mjs";
 import { decisionReference } from "./decisions.mjs";
@@ -537,7 +538,7 @@ export function createMcpServer({ roots = assetRoots() } = {}) {
     {
       title: "Component",
       description:
-        "One component in one scheme: the reference (what the component and each of its variants are for, the same in every design system, and what to use instead) next to this scheme's decisions (whether it carries the component and why, how it uses each variant or that it does not, and its usage rules), and its token API: every token it reads, the semantic each aliases, its CSS variable, and its value in every theme. Read this before you build with a component, pick a variant, or override one of its tokens.",
+        "One component in one scheme: the reference (what the component and each of its variants are for, the same in every design system, and what to use instead) next to this scheme's decisions (whether it carries the component and why, how it uses each variant or that it does not, and its usage rules), and its token API: every token it reads, the semantic each aliases, its CSS variable, and its value in every theme, and its gaps: where its decision trace breaks. Where a gap stands, the scheme has no answer yet: say so, and do not invent one. Read this before you build with a component, pick a variant, or override one of its tokens.",
       inputSchema: {
         scheme_id: SchemeId,
         component: z
@@ -556,6 +557,31 @@ export function createMcpServer({ roots = assetRoots() } = {}) {
           `"${component}" is not in the catalogue. Components: ${g.catalogue.items.map((i) => i.id).join(", ")}.`,
         );
       return json(out);
+    },
+  );
+
+  server.registerTool(
+    "get_gaps",
+    {
+      title: "Gaps",
+      description:
+        "The gap ledger of one scheme, or one component in it: every place where the decision trace (part, property, state, semantic, rule, pick, value) breaks. Kinds: a key that does not name its part or state, a link to the wrong or a borrowed semantic, one semantic with two jobs, a rule components follow that no semantic states, and a theme pick with no reason. Each gap says what is wrong, and the ticket that fixes it where one exists. Where a gap stands, the scheme has no answer: say so instead of inventing one.",
+      inputSchema: {
+        scheme_id: SchemeId,
+        component: z.string().optional().describe("A catalogue component id, for example dropdown-menu. Leave out for the whole scheme."),
+        kind: z
+          .enum(GAP_KINDS.map((k) => k.id))
+          .optional()
+          .describe("Only this kind of gap."),
+      },
+      annotations: { readOnlyHint: true },
+    },
+    async ({ scheme_id, component, kind }) => {
+      const s = scheme(scheme_id);
+      if (component && !g.catalogue.items.some((i) => i.id === component))
+        throw new Error(`"${component}" is not in the catalogue. Components: ${g.catalogue.items.map((i) => i.id).join(", ")}.`);
+      const ledger = gapLedger(s, g, roots, { component: component ?? null });
+      return json(kind ? { ...ledger, gaps: ledger.gaps.filter((x) => x.kind === kind) } : ledger);
     },
   );
 

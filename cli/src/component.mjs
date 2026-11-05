@@ -5,6 +5,7 @@
 
 import { assetRoots, grammar, loadScheme } from "./schemes.mjs";
 import { componentApi } from "./lands.mjs";
+import { componentLedger } from "./gaps.mjs";
 
 /** The reference and this scheme's decisions for one catalogue component, or null if there is none. */
 export function componentGuide(
@@ -86,6 +87,9 @@ export function componentGuide(
     rules,
     // Its token API (OD-234): every token it reads, what each aliases, and its value in every theme.
     tokens: componentApi(scheme, id, roots),
+    // Its gaps (OD-243): where its decision trace breaks. Where a gap stands, the scheme has no answer
+    // yet; say so instead of inventing one.
+    gaps: componentLedger(scheme, g, roots, id),
   };
 }
 
@@ -156,6 +160,10 @@ export function componentText(guide) {
         `      ${vals.join(" | ")}`,
       );
     }
+  }
+  if (guide.gaps?.length) {
+    lines.push("", `Gaps (${guide.gaps.length}): where the decision trace breaks. No answer here yet.`);
+    for (const x of guide.gaps) lines.push(`  [${x.kind}] ${x.says}${x.ticket ? ` (${x.ticket})` : ""}`);
   }
   if (r.source)
     lines.push(

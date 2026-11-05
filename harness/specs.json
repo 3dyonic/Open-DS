@@ -457,6 +457,20 @@
       ]
     },
     {
+      "id": "OD-243",
+      "title": "Gap ledger: every broken link in the decision trace, counted",
+      "in": [
+        "the ledger is generated from the code and the schemes: each gap has a kind, its component, part, state or semantic, and the ticket that fixes it where one exists",
+        "kinds: a key that does not name its part or state, a link to the wrong or a borrowed semantic, one semantic with two jobs, a rule components follow that no semantic states, a theme pick with no reason",
+        "open-ds gaps, get_gaps and get_component give the gaps to people and agents, so an agent says where the scheme has no answer instead of inventing one",
+        "the harness counts gaps per scheme and kind, and each count may only go down"
+      ],
+      "checks": [
+        "gaps-only-go-down",
+        "harness-self-test"
+      ]
+    },
+    {
       "id": "OD-221",
       "title": "Line heights: ratios in every scheme, one step per job, steps at least 0.2 apart",
       "in": [
