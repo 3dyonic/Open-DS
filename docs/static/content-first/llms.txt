@@ -52,6 +52,7 @@
 - [Date picker](/components/date-picker)
 - [Dialog](/components/dialog)
 - [Drawer](/components/drawer)
+- [Anatomy reference](/components/dropdown-menu-anatomy)
 - [Dropdown menu](/components/dropdown-menu)
 - [Empty](/components/empty)
 - [Field](/components/field)

@@ -59,6 +59,10 @@ Test before you ship:
 
 - [ ] The trigger says it opens a menu and whether it is open. undefined
 
+## Look closer
+
+<div class="odv-anat-link"><a href="./dropdown-menu-anatomy">Anatomy reference →</a><span>Each part of Dropdown menu, and how the design decisions reach it: the answer, the rule, the token and the value you see.</span></div>
+
 ## Use it in code
 
 ```bash

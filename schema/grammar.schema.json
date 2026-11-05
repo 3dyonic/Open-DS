@@ -36,7 +36,10 @@
       "properties": {
         "order": {
           "type": "array",
-          "items": { "type": "string", "pattern": "^[a-z0-9-]+$" },
+          "items": {
+            "type": "string",
+            "pattern": "^[a-z0-9-]+$"
+          },
           "uniqueItems": true,
           "description": "Scheme ids, first to last."
         },
@@ -792,6 +795,10 @@
                     "description": "Where the source record lives."
                   }
                 }
+              },
+              "anatomy": {
+                "type": "object",
+                "description": "The component's parts (OD-229): the drawing, every part with its roles, and the cards that follow each decision to its part. Its Anatomy reference page is generated from it."
               }
             }
           }
@@ -876,6 +883,37 @@
           }
         }
       }
+    },
+    "anatomy": {
+      "type": "object",
+      "description": "The parts layer (OD-229): the roles a part can play, as the questions they answer.",
+      "required": ["description", "roles"],
+      "properties": {
+        "description": {
+          "type": "string",
+          "minLength": 1
+        },
+        "roles": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": ["id", "label", "ask"],
+            "properties": {
+              "id": {
+                "type": "string",
+                "pattern": "^[a-z-]+$"
+              },
+              "label": {
+                "type": "string"
+              },
+              "ask": {
+                "type": "string"
+              }
+            }
+          }
+        }
+      }
     }
   },
   "$defs": {
@@ -918,13 +956,19 @@
             "additionalProperties": false,
             "required": ["id", "group", "label", "ask"],
             "properties": {
-              "id": { "type": "string", "pattern": "^[a-z-]+$" },
+              "id": {
+                "type": "string",
+                "pattern": "^[a-z-]+$"
+              },
               "group": {
                 "type": "string",
                 "minLength": 1,
                 "description": "The family it belongs to, for reading it in groups."
               },
-              "label": { "type": "string", "minLength": 1 },
+              "label": {
+                "type": "string",
+                "minLength": 1
+              },
               "ask": {
                 "type": "string",
                 "minLength": 1,

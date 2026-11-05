@@ -13823,6 +13823,256 @@
         "source": {
           "name": "Open DS",
           "license": "MIT"
+        },
+        "anatomy": {
+          "intro": "the menu",
+          "drawing": {
+            "kind": "menu",
+            "surface": [1],
+            "shadow": [2],
+            "rows": [
+              {
+                "label": "Share with",
+                "icon": "share",
+                "chevron": true,
+                "state": "focus",
+                "marks": {
+                  "focus": 8,
+                  "label": 3,
+                  "chevron": 6
+                }
+              },
+              {
+                "label": "Copy",
+                "icon": "copy",
+                "shortcut": "⌘C",
+                "state": "highlight",
+                "marks": {
+                  "icon": 4,
+                  "shortcut": 5,
+                  "row": 7
+                }
+              },
+              {
+                "label": "Paste special",
+                "icon": "clipboard",
+                "shortcut": "⌘⇧V",
+                "state": "disabled",
+                "marks": {
+                  "row": 9
+                }
+              },
+              {
+                "separator": true,
+                "marks": {
+                  "row": 11
+                }
+              },
+              {
+                "label": "Delete",
+                "icon": "trash",
+                "tone": "danger",
+                "marks": {
+                  "row": 10
+                }
+              }
+            ]
+          },
+          "parts": [
+            {
+              "id": "menu",
+              "label": "Menu",
+              "need": "required",
+              "children": [
+                {
+                  "n": 1,
+                  "id": "surface",
+                  "label": "Surface",
+                  "need": "required",
+                  "roles": ["containment", "layering"],
+                  "tokens": [
+                    "component.overlay.background",
+                    "component.dropdown-menu.content.border"
+                  ]
+                },
+                {
+                  "n": 2,
+                  "id": "shadow",
+                  "label": "Shadow",
+                  "need": "required",
+                  "roles": ["layering"],
+                  "tokens": ["component.overlay.shadow"]
+                }
+              ]
+            },
+            {
+              "id": "item",
+              "label": "Item",
+              "need": "required",
+              "roles": ["readability", "reach", "affordance"],
+              "children": [
+                {
+                  "n": 3,
+                  "id": "item-label",
+                  "label": "Item label",
+                  "need": "required",
+                  "roles": ["readability", "hierarchy"],
+                  "tokens": ["component.dropdown-menu.item.font-size"]
+                },
+                {
+                  "n": 4,
+                  "id": "item-icon",
+                  "label": "Item icon",
+                  "need": "optional",
+                  "roles": ["meaning"],
+                  "tokens": ["component.dropdown-menu.item.icon"]
+                },
+                {
+                  "n": 5,
+                  "id": "shortcut",
+                  "label": "Shortcut",
+                  "need": "optional",
+                  "roles": ["hierarchy"],
+                  "tokens": []
+                },
+                {
+                  "n": 6,
+                  "id": "submenu-chevron",
+                  "label": "Submenu chevron",
+                  "need": "optional",
+                  "roles": ["affordance"],
+                  "tokens": []
+                },
+                {
+                  "n": 7,
+                  "id": "highlight-fill",
+                  "label": "Highlight fill",
+                  "need": "state",
+                  "roles": ["feedback"],
+                  "tokens": [
+                    "component.dropdown-menu.item.background.highlight"
+                  ]
+                },
+                {
+                  "n": 8,
+                  "id": "focus-ring",
+                  "label": "Focus ring",
+                  "need": "state",
+                  "roles": ["focus"],
+                  "tokens": ["color.border.focus", "border-width.focus"]
+                },
+                {
+                  "n": 9,
+                  "id": "disabled-item",
+                  "label": "Disabled item",
+                  "need": "state",
+                  "roles": ["feedback"],
+                  "tokens": ["component.dropdown-menu.item.disabled"]
+                },
+                {
+                  "n": 10,
+                  "id": "destructive-item",
+                  "label": "Destructive item",
+                  "need": "optional",
+                  "roles": ["meaning", "emphasis"],
+                  "tokens": ["component.dropdown-menu.item.label.destructive"]
+                }
+              ]
+            },
+            {
+              "n": 11,
+              "id": "separator",
+              "label": "Separator",
+              "need": "optional",
+              "roles": ["grouping"],
+              "tokens": ["component.dropdown-menu.separator.background"]
+            },
+            {
+              "id": "group-label",
+              "label": "Group label",
+              "need": "optional",
+              "note": "not in this example",
+              "roles": ["hierarchy", "grouping"],
+              "tokens": []
+            }
+          ],
+          "cards": [
+            {
+              "title": "Surface and shadow",
+              "parts": [1, 2],
+              "roles": ["containment", "layering"],
+              "answers": ["elevation.roles", "elevation.values"],
+              "rules": ["menu-or-dialog"],
+              "tokens": [
+                "component.overlay.background",
+                "component.overlay.shadow"
+              ]
+            },
+            {
+              "title": "Item",
+              "parts": [3, 4, 5],
+              "image": {
+                "row": "Copy",
+                "marks": {
+                  "icon": 4,
+                  "label": 3,
+                  "shortcut": 5
+                }
+              },
+              "roles": ["readability", "reach", "affordance"],
+              "answers": [
+                "typography.values",
+                "spacing.values",
+                "accessibility.values"
+              ],
+              "rules": ["smallest-target"],
+              "tokens": [
+                "component.dropdown-menu.item.font-size",
+                "component.dropdown-menu.item.padding-x",
+                "component.overlay.item-height"
+              ]
+            },
+            {
+              "title": "Highlight fill",
+              "parts": [7],
+              "roles": ["feedback"],
+              "answers": ["accessibility.roles", "motion.values"],
+              "rules": ["hover-feedback"],
+              "tokens": ["component.dropdown-menu.item.background.highlight"]
+            },
+            {
+              "title": "Focus ring",
+              "parts": [8],
+              "roles": ["focus"],
+              "answers": ["accessibility.definition"],
+              "rules": ["keyboard-focus"],
+              "tokens": ["color.border.focus", "border-width.focus"]
+            },
+            {
+              "title": "Disabled item",
+              "parts": [9],
+              "roles": ["feedback"],
+              "answers": ["accessibility.roles"],
+              "rules": [],
+              "tokens": ["component.dropdown-menu.item.disabled"]
+            },
+            {
+              "title": "Destructive item",
+              "parts": [10],
+              "roles": ["meaning", "emphasis"],
+              "answers": ["accessibility.count"],
+              "rules": ["destructive-action"],
+              "tokens": ["component.dropdown-menu.item.label.destructive"]
+            },
+            {
+              "title": "Separator",
+              "parts": [11],
+              "roles": ["grouping"],
+              "answers": ["elevation.definition"],
+              "rules": ["between-sections"],
+              "tokens": ["component.dropdown-menu.separator.background"]
+            }
+          ]
         }
       },
       {
@@ -15077,6 +15327,66 @@
           "license": "MIT",
           "url": "https://github.com/3dyonic/open-ux/blob/main/catalog/components/tooltip.json"
         }
+      }
+    ]
+  },
+  "anatomy": {
+    "description": "The parts layer (OD-229): the jobs a part does for a person, as the questions it answers. A catalogue component that describes its parts gets an Anatomy reference page.",
+    "roles": [
+      {
+        "id": "containment",
+        "label": "Containment",
+        "ask": "What holds this?"
+      },
+      {
+        "id": "layering",
+        "label": "Layering",
+        "ask": "What sits on top?"
+      },
+      {
+        "id": "hierarchy",
+        "label": "Hierarchy",
+        "ask": "What do you read first?"
+      },
+      {
+        "id": "readability",
+        "label": "Readability",
+        "ask": "Can you read it?"
+      },
+      {
+        "id": "emphasis",
+        "label": "Emphasis",
+        "ask": "Where does the eye go?"
+      },
+      {
+        "id": "meaning",
+        "label": "Meaning",
+        "ask": "What state is it in?"
+      },
+      {
+        "id": "affordance",
+        "label": "Affordance",
+        "ask": "Can you act on it?"
+      },
+      {
+        "id": "feedback",
+        "label": "Feedback",
+        "ask": "Did it respond?"
+      },
+      {
+        "id": "focus",
+        "label": "Focus",
+        "ask": "Where is the keyboard?"
+      },
+      {
+        "id": "grouping",
+        "label": "Grouping",
+        "ask": "What belongs together?"
+      },
+      {
+        "id": "reach",
+        "label": "Reach",
+        "ask": "Can you hit it?"
       }
     ]
   }

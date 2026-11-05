@@ -13,7 +13,7 @@ import { LANES, follow, laneOf, scaleMap } from "./scale-map.mjs";
 import { aliasChain, tokenIndex } from "./lands.mjs";
 import { spacingGuide } from "./spacing-map.mjs";
 import { componentGuide, followers } from "./component.mjs";
-import { anatomy } from "./anatomy.mjs";
+import { anatomy, tokenTrace } from "./anatomy.mjs";
 
 // Which component keys each shipped component reads.
 const KEY_GROUP = {
@@ -2425,64 +2425,137 @@ export function docsPages(
   const byTag = `<span class="odv-byscheme" title="Its value changes by scheme. The part is the same in every scheme.">${BRUSH}By scheme</span>`;
   const partName = (p) => (p === "root" ? "The component" : p.replace(/-/g, " ").replace(/^./, (c) => c.toUpperCase()));
   function anatomyPage(name, i) {
-    if (!g.catalogue.items.find((x) => x.id === name)?.anatomy) return null;
-    const a = anatomy(scheme, g, roots, name);
-    if (!a || !a.parts.length) return null;
+    // The Anatomy reference (OD-229), as the approved Figma page lays it out: a calm intro, the roles
+    // a part can play, the drawing with a number on each part beside its legend, then one card per
+    // group of parts that follows each decision from the answer through the rule to the token and the
+    // value you see. The parts come from the catalogue's parts layer; the words and values from the
+    // scheme, so every scheme gets its own page.
+    const spec = g.catalogue.items.find((x) => x.id === name)?.anatomy;
+    if (!spec) return null;
     const T = title(name);
-    const row = (t) => {
-      const lines = [];
-      if (t.rule) lines.push(`<div><b>Rule</b> ${attr(t.rule)}</div>`);
-      // A reason starts with its pick ("neutral.200: …"); show the pick alone only when there is no reason.
-      const said = (x) => (x.why ? attr(x.why) : attr(x.pick));
-      lines.push(`<div><b>Pick</b> ${said(t.light)}</div>`);
-      if (t.dark.value && t.dark.value !== t.light.value) lines.push(`<div><b>Dark</b> ${said(t.dark)}</div>`);
-      if (t.shares.length)
-        lines.push(`<div><b>Shares the step with</b> ${t.shares.map((x) => `<code>${attr(x)}</code>`).join(" ")}. Changing this pick moves only what reads <code>${attr(t.semantic)}</code>.</div>`);
-      if (t.set_by.length)
-        lines.push(`<div><b>Set by</b> ${t.set_by.map((x) => `${attr(x.text)} → ${attr(x.answer)}`).join("; ")}</div>`);
-      const dark = t.dark.value && t.dark.value !== t.light.value ? ` · dark ${attr(t.dark.value)}` : "";
+    const roleOf = Object.fromEntries((g.anatomy?.roles ?? []).map((r) => [r.id, r]));
+    const trace = (p) => tokenTrace(scheme, g, roots, p);
+    const traces = new Map();
+    const tr = (p) => (traces.has(p) ? traces.get(p) : (traces.set(p, trace(p)), traces.get(p)));
+    const flat = (list) => list.flatMap((x) => [x, ...flat(x.children ?? [])]);
+    const parts = flat(spec.parts);
+    const changes = (part) => (part.tokens ?? []).some((t) => tr(t)?.by_scheme);
+    const num = (n, cls = "") => `<i class="odv-am-n${cls}">${n}</i>`;
+    const chip = (id) => `<span class="odv-am-role" title="${attr(roleOf[id]?.ask ?? "")}">${attr(roleOf[id]?.label ?? id)}</span>`;
+    const ICON = {
+      share: '<circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/><line x1="8.59" x2="15.42" y1="13.51" y2="17.49"/><line x1="15.41" x2="8.59" y1="6.51" y2="10.49"/>',
+      copy: '<rect width="14" height="14" x="8" y="8" rx="2" ry="2"/><path d="M4 16c-1.1 0-2-.9-2-2V4c0-1.1.9-2 2-2h10c1.1 0 2 .9 2 2"/>',
+      clipboard: '<rect width="8" height="4" x="8" y="2" rx="1" ry="1"/><path d="M16 4h2a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h2"/>',
+      trash: '<path d="M10 11v6"/><path d="M14 11v6"/><path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6"/><path d="M3 6h18"/><path d="M8 6V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"/>',
+      chevron: '<path d="m9 18 6-6-6-6"/>',
+    };
+    const icon = (k) => `<svg class="odv-am-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">${ICON[k] ?? ""}</svg>`;
+    // The drawing, from the scheme's own component variables: what you see is what the scheme decides.
+    const drawing = (rows, show, whole) => {
+      const m = (n) => (show.has(n) ? num(n) : "");
+      const body = rows
+        .map((r) => {
+          if (r.separator) return `<div class="odv-am-sep">${r.marks?.row && show.has(r.marks.row) ? `<span class="odv-am-at sepn">${num(r.marks.row)}</span>` : ""}</div>`;
+          const k = r.marks ?? {};
+          const cls = [r.state && `is-${r.state}`, r.tone && `is-${r.tone}`].filter(Boolean).join(" ");
+          return `<div class="odv-am-row ${cls}">${k.focus && show.has(k.focus) ? `<span class="odv-am-at top">${m(k.focus)}</span>` : ""}${k.icon ? m(k.icon) : ""}${icon(r.icon)}<span class="odv-am-label">${attr(r.label)}${k.label ? m(k.label) : ""}</span><span class="odv-am-fill"></span>${r.shortcut ? `<span class="odv-am-key">${attr(r.shortcut)}${k.shortcut ? m(k.shortcut) : ""}</span>` : ""}${r.chevron ? `${k.chevron ? m(k.chevron) : ""}${icon("chevron")}` : ""}${k.row ? m(k.row) : ""}${k.separator && show.has(k.separator) ? `<span class="odv-am-at bottom">${m(k.separator)}</span>` : ""}</div>`;
+        })
+        .join("");
+      const corner = whole ? `${spec.drawing.surface.map((n) => (show.has(n) ? `<span class="odv-am-at corner">${num(n)}</span>` : "")).join("")}${spec.drawing.shadow.map((n) => (show.has(n) ? `<span class="odv-am-at shadow">${num(n)}</span>` : "")).join("")}` : "";
+      return `<div class="odv-am-menu${whole ? "" : " part"}">${body}${corner}</div>`;
+    };
+    const allNums = new Set(parts.filter((p) => p.n).map((p) => p.n));
+    const rowsFor = (nums) => {
+      const r = spec.drawing.rows;
+      const has = (row) => Object.values(row.marks ?? {}).some((n) => nums.has(n));
+      if (nums.has(1) || nums.has(2)) return { rows: r, whole: true };
+      // The row that holds most of the card's parts (Copy holds the icon, label and shortcut).
+      const hits = (row) => Object.values(row.marks ?? {}).filter((n) => nums.has(n)).length;
+      const best = Math.max(0, ...r.map((row) => (row.separator ? 0 : hits(row))));
+      const i = best ? r.findIndex((row) => !row.separator && hits(row) === best) : -1;
+      // A separator is drawn with the rows on either side of it.
+      const sep = r.findIndex((row) => row.separator && Object.values(row.marks ?? {}).some((n) => nums.has(n)));
+      if (sep >= 0) return { rows: r.slice(Math.max(0, sep - 1), sep + 2), whole: false };
+      return { rows: i >= 0 ? [r[i]] : [], whole: false };
+    };
+    const D = tr("component.overlay.item-height");
+    const px = (v) => (/rem$/.test(v) ? `${parseFloat(v) * 16}px` : v);
+    const caption = `${attr(scheme.name)}, light, drawn from the scheme's tokens: ${px(D?.light.value ?? "")} items, ${px(tr("component.dropdown-menu.item.padding-x")?.light.value ?? "")} side padding, ${px(tr("component.dropdown-menu.item.font-size")?.light.value ?? "")} text, a ${px(tr("component.overlay.radius")?.light.value ?? "")} corner and its shadow.`;
+    const legendRow = (p, depth, last) => {
+      const glyph = depth ? (last ? "└" : "├") : "";
+      const need = `${p.need}${p.note ? ` · ${p.note}` : ""}${p.n && !(p.tokens ?? []).length && p.need !== "required" ? " · no token yet" : ""}`;
+      return `<li class="odv-am-lrow d${depth}">${p.n ? num(p.n) : `<i class="odv-am-n none"></i>`}<span class="odv-am-glyph">${glyph}</span><b>${attr(p.label)}</b><span class="odv-am-need">${attr(need)}</span>${changes(p) ? byTag : ""}<span class="odv-am-roles">${(p.roles ?? []).map(chip).join("")}</span></li>`;
+    };
+    const legend = (list, depth = 0) =>
+      list.map((p, k) => legendRow(p, depth, k === list.length - 1) + (p.children ? legend(p.children, depth + 1) : "")).join("");
+    const answerStep = (q) => {
+      const a = answer(q);
+      if (!a) return "";
+      const sc = g.scopes.find((x) => q.startsWith(`${x.id}.`));
+      return `<li><b class="odv-am-lbl">Answer</b><div class="odv-am-main">${attr(sc ? `${sc.title} · ` : "")}${attr(qText(q))} → ${attr(label(q))}</div><div class="odv-am-why">${attr(a.why)}</div></li>`;
+    };
+    const ruleStep = (sid) => {
+      const u = scheme.usage.find((x) => x.situation === sid);
+      if (!u) return "";
+      const sit = sits[sid];
+      return `<li><b class="odv-am-lbl">Rule</b><div class="odv-am-main">For ${attr(lower(sit?.title ?? sid))}, use ${attr(u.use)}.${u.not ? ` Don't use ${attr(lower(u.not))}.` : ""}</div><div class="odv-am-why">${attr(u.why ?? "")}</div></li>`;
+    };
+    const tokenStep = (p) => {
+      const t = tr(p);
+      if (!t) return "";
+      const said = (x) => attr(x.why ?? x.pick);
+      const dark = t.dark.value !== t.light.value ? ` · dark ${attr(t.dark.value)}` : "";
+      const lines = [
+        `<div><b>Pick</b> ${said(t.light)}</div>`,
+        t.dark.value !== t.light.value || t.dark.why !== t.light.why ? `<div><b>Dark</b> ${said(t.dark)}</div>` : "",
+        t.shares.length ? `<div><b>Shares the step with</b> ${t.shares.map((x) => attr(x.replace(/^color\./, ""))).join(", ")}. Changing this pick moves only what reads ${attr(t.semantic)}.</div>` : "",
+      ].join("");
+      return `<li><b class="odv-am-lbl">Token</b><div class="odv-am-chain"><code>${attr(t.semantic)}</code>${t.key ? `<span>→</span><code>${attr(t.key.replace(`${name}.`, ""))}</code>` : `<span class="odv-am-nokey">no key of its own yet</span>`}<span class="odv-am-val">${attr(t.light.value)}${dark}</span>${t.by_scheme ? byTag : ""}</div>${t.rule ? `<div class="odv-am-why">${attr(t.rule)}</div>` : ""}<div class="odv-am-lines">${lines}</div></li>`;
+    };
+    const card = (c) => {
+      const nums = new Set(c.parts);
+      // A card can name its own image: one row, with the card's numbers placed on it.
+      const own = c.image && spec.drawing.rows.find((r) => r.label === c.image.row);
+      const { rows, whole } = own ? { rows: [{ ...own, state: undefined, marks: c.image.marks }], whole: false } : rowsFor(nums);
+      const steps = [...c.answers.map(answerStep), ...c.rules.map(ruleStep), ...c.tokens.map(tokenStep)].filter(Boolean);
       return h(
-        `<li class="odv-anat-token"><div class="odv-anat-chain"><code>${attr(t.semantic)}</code><span>→</span><code>${attr(t.key)}</code><span class="odv-anat-val">${attr(t.light.value)}${dark}</span>${t.by_scheme ? byTag : ""}${t.states.length ? `<span class="odv-anat-state">${attr(t.states.join(", "))}</span>` : ""}</div>`,
-        `<div class="odv-anat-lines">${lines.join("")}</div></li>`,
+        `<section class="odv-am-card" id="part-${c.parts.join("-")}"><div class="odv-am-img">${drawing(rows, nums, whole)}</div><div class="odv-am-body">`,
+        `<header>${c.parts.map((n) => num(n)).join("")}<b>${attr(c.title)}</b>${c.roles.map(chip).join("")}</header>`,
+        `<ul class="odv-am-tree">${steps.join("")}</ul></div></section>`,
       );
     };
     const intro = h(
       `<div class="odv-intro">${robot("anatomy", "odv-intro-robot")}<div class="odv-intro-body"><h2 class="odv-intro-t">Look closer, when you want to</h2>`,
-      `<p>This page takes ${attr(T)} apart to show how design decisions become the parts you see. You don't need it to use ${attr(T)}: <a href="./${name}">its own page</a> has everything you need to build.</p>`,
-      `<b class="odv-intro-sub">Three easy ways in</b><ul><li>Start with the parts. Each one lists the tokens it reads.</li><li>Want to know why a part looks the way it does? Its card follows the decision from the answer about the product, through the rule and the token, to what you see.</li><li>Look for ${byTag}: that part's value changes from scheme to scheme. The part itself is the same in every one.</li></ul>`,
+      `<p>This page takes ${attr(spec.intro ?? T)} apart to show how design decisions become the parts you see. You don't need it to use ${attr(spec.intro ?? T)}: <a href="./${name}">its own page</a> has everything you need to build.</p>`,
+      `<b class="odv-intro-sub">Three easy ways in</b><ul><li>Start with the drawing. Each number is one part, and the legend beside it names it.</li><li>Want to know why a part looks the way it does? Its card follows the decision from the answer about the product, through the rule and the token, to what you see.</li><li>Or start from a job, like Focus or Emphasis, and find every part that does it in the legend.</li></ul>`,
       `<p class="odv-intro-end">Come back whenever a part makes you wonder why.</p></div></div>`,
     );
-    const list = h(
-      `<table class="odv-anat-parts"><thead><tr><th>Part</th><th>Tokens it reads</th><th>States</th><th></th></tr></thead><tbody>`,
-      a.parts.map((p) => `<tr><td><a href="#part-${p.part}">${attr(partName(p.part))}</a></td><td>${p.tokens.length}</td><td>${attr(p.states.join(", ") || "at rest")}</td><td>${p.by_scheme ? byTag : ""}</td></tr>`),
-      `</tbody></table>`,
+    const roles = `<div class="odv-am-rolelist">${(g.anatomy?.roles ?? []).map((r) => `<span class="odv-am-role big"><b>${attr(r.label)}</b> ${attr(r.ask)}</span>`).join("")}</div>`;
+    const partsBlock = h(
+      `<div class="odv-am-parts"><figure class="odv-am-stage">${drawing(spec.drawing.rows, allNums, true)}<figcaption>${caption}</figcaption></figure>`,
+      `<div class="odv-am-legend"><p class="odv-am-legend-t">Legend: every part and its roles. The numbers match the drawing; a part without one isn't in this example.</p><p class="odv-am-legend-k">${byTag} Its value changes by scheme. The part is the same in every scheme.</p><ul>${legend(spec.parts)}</ul></div></div>`,
     );
-    const cards = a.parts
-      .map((p) =>
-        h(
-          `<section class="odv-anat-card" id="part-${p.part}"><header><b>${attr(partName(p.part))}</b>${p.by_scheme ? byTag : ""}</header>`,
-          `<ul class="odv-anat-tokens">${p.tokens.map(row).join("")}</ul></section>`,
-        ),
-      )
-      .join("\n\n");
     return (
       fm({
         sidebar_position: i + 1.5,
-        sidebar_label: "Anatomy",
+        sidebar_label: "Anatomy reference",
         sidebar_class_name: "ods-anatomy",
-        title: `${T}: anatomy reference`,
+        hide_table_of_contents: true,
+        title: "Anatomy reference",
         description: `How the design decisions reach each part of ${T} in ${scheme.name}.`,
       }) +
       NOTE +
       [
         intro,
-        `## The parts\n\n${a.parts.length} part${a.parts.length === 1 ? "" : "s"}, from the code's data-slots. ${a.by_scheme} of them change their value by scheme.\n\n${list}`,
-        `## How the decisions reach each part\n\n${cards}`,
-        `## For agents\n\nThe same anatomy reaches agents: \`get_component\` returns it, part by part, and \`open-ds component ${scheme.id} ${name}\` prints it.`,
+        `## Design roles\n\nEach part does a job for the person. These are the jobs, as questions the part answers.\n\n${roles}`,
+        `## The parts\n\n${partsBlock}`,
+        `## How the decisions reach each part\n\nEach part follows a chain: an answer about the product, the rule it set, the token that carries it, and the value you see. The numbers match the drawing.\n\n${spec.cards.map(card).join("\n\n")}`,
+        `## For agents\n\nThe same anatomy reaches agents: \`get_component\` returns each part with its roles, required or optional, the tokens it reads and the cascade behind them; \`open-ds component ${scheme.id} ${name}\` prints it.`,
       ].join("\n\n") +
       "\n"
     );
   }
+
   const contentWords = Object.entries(scheme.tokens.content?.action ?? {})
     .filter(([k]) => !k.startsWith("$"))
     .map(([k, v]) => `- \`content.action.${k}\`: ${esc(v.$value)}`);

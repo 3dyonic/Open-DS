@@ -145,3 +145,51 @@ export function anatomy(scheme, g, roots, comp) {
     by_scheme: list.filter((p) => p.by_scheme).length,
   };
 }
+
+/** One token's chain, for any path: a component key (component.dropdown-menu.item.background.highlight)
+ * or a semantic (color.border.focus). The semantic and its rule, the value in light and dark, the theme
+ * pick and its reason in each mode, what else picks the same step, and whether the value changes
+ * between schemes. The Anatomy reference's cards read it. */
+export function tokenTrace(scheme, g, roots, path) {
+  const brand = Object.keys(scheme.tokens.brands)[0];
+  const theme = scheme.tokens.brands[brand].theme;
+  const ix = (s, mode) => tokenIndex(s, { brand: Object.keys(s.tokens.brands)[0], mode });
+  const chainOf = (s, mode) => aliasChain(ix(s, mode), path);
+  const light = chainOf(scheme, "light");
+  const dark = chainOf(scheme, "dark");
+  if (light.value == null) return null;
+  const isKey = path.startsWith("component.");
+  const semantic = isKey ? (light.hops[0] ?? path).replace(/\.@$/, "") : path;
+  const rule = g.semantics.keys.find((k) => k.id.replace(/\.@$/, "") === semantic)?.intent ?? null;
+  const pickOf = (mode) => {
+    const node =
+      leaves(theme[mode] ?? {}).find(([p]) => p.replace(/\.@$/, "") === semantic)?.[1] ??
+      leaves(theme.base ?? {}).find(([p]) => p.replace(/\.@$/, "") === semantic)?.[1];
+    if (!node) return { pick: name(mode === "light" ? light.hops.at(-1) ?? light.end : dark.hops.at(-1) ?? dark.end), why: null, shares: [] };
+    const od = node.$extensions?.["open-ds"] ?? {};
+    const shares = leaves(theme[mode] ?? {})
+      .filter(([p, n]) => n.$value === node.$value && p.replace(/\.@$/, "") !== semantic && !/^color\.neutral\./.test(p))
+      .map(([p]) => p.replace(/\.@$/, ""));
+    return { pick: name(node.$value), why: od.why ?? null, because: od.because ?? [], shares };
+  };
+  const pl = pickOf("light");
+  const pd = pickOf("dark");
+  const seen = { light: new Set(), dark: new Set() };
+  for (const id of schemeIds(roots)) {
+    const k = `${roots.schemes ?? roots.ui}|${id}`;
+    const s = schemeMemo.get(k) ?? loadScheme(id, roots);
+    schemeMemo.set(k, s);
+    seen.light.add(JSON.stringify(chainOf(s, "light").value));
+    seen.dark.add(JSON.stringify(chainOf(s, "dark").value));
+  }
+  return {
+    path,
+    key: isKey ? path.replace(/^component\./, "") : null,
+    semantic,
+    rule,
+    light: { value: shown(light.value), pick: pl.pick, why: pl.why },
+    dark: { value: shown(dark.value), pick: pd.pick, why: pd.why },
+    shares: pl.shares,
+    by_scheme: seen.light.size > 1 || seen.dark.size > 1,
+  };
+}

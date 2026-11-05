@@ -2045,3 +2045,57 @@ tr.odv-for td {
 .odv-anat-lines { margin-top: 6px; display: grid; gap: 3px; color: var(--color-text-secondary); font-size: 0.88em; }
 .odv-anat-lines b { color: var(--color-text-primary); margin-right: 6px; }
 .odv-surface-swatch { display: inline-block; width: 22px; height: 14px; margin-right: 6px; vertical-align: -2px; border: 1px solid var(--color-border-default); border-radius: 3px; }
+/* Anatomy reference (OD-229), after the approved Figma page: drawing + legend, then one card per part. */
+.odv-am-rolelist { display: flex; flex-wrap: wrap; gap: 8px; }
+.odv-am-role { display: inline-flex; align-items: center; padding: 1px 8px; border: 1px solid var(--color-border-default); border-radius: 999px; color: var(--color-text-secondary); font-size: 12px; line-height: 18px; white-space: nowrap; }
+.odv-am-role.big { padding: 4px 12px; gap: 6px; font-size: 13px; }
+.odv-am-role.big b { color: var(--color-text-primary); }
+.odv-am-n { display: inline-flex; align-items: center; justify-content: center; flex: none; min-width: 18px; height: 18px; padding: 0 4px; margin: 0 4px; border-radius: 9px; background: var(--color-action-primary); color: var(--color-text-on-action); font: 600 11px/1 var(--type-label-font-family, sans-serif); font-style: normal; }
+.odv-am-n.none { background: none; }
+.odv-am-parts { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 32px; align-items: start; }
+@media (max-width: 996px) { .odv-am-parts { grid-template-columns: minmax(0, 1fr); } }
+.odv-am-stage { margin: 0; padding: 48px 24px 16px; border: 1px solid var(--color-border-default); border-radius: var(--radius-container, 8px); background: var(--color-surface-canvas); display: flex; flex-direction: column; align-items: center; gap: 40px; }
+.odv-am-stage figcaption { align-self: stretch; color: var(--color-text-secondary); font-size: 12px; }
+.odv-am-menu { position: relative; min-width: 260px; padding: var(--dropdown-menu-content-padding); border: var(--dropdown-menu-content-border-width) solid var(--dropdown-menu-content-border); border-radius: var(--overlay-radius); background: var(--overlay-background); box-shadow: var(--overlay-shadow); color: var(--dropdown-menu-content-label); }
+.odv-am-menu.part { box-shadow: none; min-width: 240px; }
+.odv-am-row { position: relative; display: flex; align-items: center; gap: var(--dropdown-menu-item-gap); min-height: var(--overlay-item-height); padding: 0 var(--dropdown-menu-item-padding-x); border-radius: var(--dropdown-menu-item-radius); font-size: var(--dropdown-menu-item-font-size); }
+.odv-am-row.is-highlight { background: var(--dropdown-menu-item-background-highlight); }
+.odv-am-row.is-focus { outline: var(--border-width-focus, 2px) solid var(--color-border-focus); outline-offset: -2px; }
+.odv-am-row.is-disabled { opacity: var(--dropdown-menu-item-disabled); }
+.odv-am-row.is-danger { color: var(--dropdown-menu-item-label-destructive); }
+.odv-am-icon { width: var(--dropdown-menu-item-icon); height: var(--dropdown-menu-item-icon); flex: none; }
+.odv-am-label { display: inline-flex; align-items: center; }
+.odv-am-fill { flex: 1; }
+.odv-am-key { display: inline-flex; align-items: center; color: var(--color-text-muted); font-size: 0.85em; }
+.odv-am-sep { position: relative; height: 1px; margin: 4px 0; background: var(--dropdown-menu-separator-background); }
+.odv-am-at.sepn { right: -14px; top: -9px; }
+.odv-am-at { position: absolute; }
+.odv-am-at.top { top: -11px; left: 50%; }
+.odv-am-at.bottom { bottom: -12px; left: 50%; }
+.odv-am-at.corner { bottom: -11px; left: 18px; }
+.odv-am-at.shadow { bottom: -22px; right: -10px; }
+.odv-am-legend ul { list-style: none; margin: 0; padding: 0; }
+.odv-am-legend-t { margin: 0 0 4px; font-weight: 600; font-size: 13px; }
+.odv-am-legend-k { margin: 0 0 12px; display: flex; gap: 8px; align-items: center; color: var(--color-text-secondary); font-size: 12px; }
+.odv-am-lrow { display: flex; align-items: center; gap: 6px; padding: 6px 0; flex-wrap: wrap; }
+.odv-am-lrow.d1 { padding-left: 20px; }
+.odv-am-lrow.d2 { padding-left: 40px; }
+.odv-am-glyph { color: var(--color-text-muted); font-family: var(--type-data-font-family, monospace); }
+.odv-am-need { color: var(--color-text-secondary); font-size: 12px; }
+.odv-am-roles { margin-left: auto; display: inline-flex; gap: 6px; flex-wrap: wrap; }
+.odv-am-card { display: grid; grid-template-columns: 300px minmax(0, 1fr); gap: 24px; margin: 0 0 16px; padding: 18px 20px; border: 1px solid var(--color-border-default); border-radius: var(--radius-container, 8px); background: var(--color-surface-default); }
+@media (max-width: 996px) { .odv-am-card { grid-template-columns: minmax(0, 1fr); } }
+.odv-am-img { align-self: start; padding: 32px 16px; border-radius: 6px; background: var(--color-surface-canvas); display: flex; justify-content: center; overflow: hidden; }
+.odv-am-body { min-width: 0; }
+.odv-am-body > header { display: flex; align-items: center; flex-wrap: wrap; gap: 6px; margin-bottom: 8px; }
+.odv-am-body > header b { margin-right: 6px; }
+.odv-am-tree { list-style: none; margin: 0; padding: 0 0 0 14px; border-left: 1px solid var(--color-border-strong); display: grid; gap: 12px; }
+.odv-am-lbl { display: block; font-size: 12px; color: var(--color-text-secondary); }
+.odv-am-main { color: var(--color-text-primary); }
+.odv-am-why { color: var(--color-text-secondary); font-size: 13px; }
+.odv-am-chain { display: flex; flex-wrap: wrap; align-items: center; gap: 6px; }
+.odv-am-chain > span { color: var(--color-text-muted); }
+.odv-am-val { color: var(--color-text-secondary); font-family: var(--type-data-font-family, monospace); font-size: 0.85em; }
+.odv-am-nokey { font-size: 12px; }
+.odv-am-lines { margin-top: 4px; display: grid; gap: 2px; color: var(--color-text-secondary); font-size: 13px; }
+.odv-am-lines b { color: var(--color-text-primary); margin-right: 6px; }
