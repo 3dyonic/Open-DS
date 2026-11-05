@@ -7,6 +7,7 @@ tools:
   - get_context
   - check_ui
   - why
+  - get_decision_reference
 ---
 
 # Open DS
@@ -51,7 +52,8 @@ The MCP server serves the same five skills as prompts.
 12. Write no raw colors, sizes or spacing.
 13. To change a look, change its component key, for example `--button-radius`. Do not edit the component.
 14. To explain a decision, call `why` or run `open-ds why <scheme> <id>`. Quote the answer and its reason.
-15. Before you finish, call `check_ui` or run `open-ds check`. Fix each finding.
+15. To see everything one answer decided, call `get_decision_reference` with its question id, or run `open-ds decisions <scheme> <id>`.
+16. Before you finish, call `check_ui` or run `open-ds check`. Fix each finding.
 
 ## Done
 

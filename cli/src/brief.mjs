@@ -426,7 +426,7 @@ function shortTask(t, g) {
   if (t.target === "change") {
     lines.push("", t.how_to_read ?? "", "");
     lines.push(
-      `${plural(t.answers.length, "answer")}. Ask why <question> before you change one, then plan_change.`,
+      `${plural(t.answers.length, "answer")}. Ask why <question> before you change one, and get_decision_reference <question> for every answer, rule and variant it decided; then plan_change.`,
       "Before a token or answer change, plan_change shows what moves and the contrast it keeps.",
     );
     const scopes = [...new Set(t.answers.map((a) => a.question.split(".")[0]))];
