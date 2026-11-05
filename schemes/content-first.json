@@ -9524,8 +9524,19 @@
           "$description": "Label of the marker."
         },
         "background": {
-          "$value": "{color.border.default}",
-          "$description": "Background of the marker."
+          "$value": "{marker.line.background}",
+          "$description": "Deprecated: use component.marker.line.background (OD-243). Background of the marker.",
+          "$deprecated": "Use component.marker.line.background. Removed in the next minor release."
+        },
+        "line": {
+          "thickness": {
+            "$value": "{border-width.default}",
+            "$description": "Thickness of the marker's lines: the weight of every line."
+          },
+          "background": {
+            "$value": "{color.border.default}",
+            "$description": "Color of the marker's lines: a quiet divider."
+          }
         }
       },
       "menubar": {
@@ -10746,23 +10757,52 @@
           "focus-ring-offset-focus": {
             "$value": "{color.surface.canvas}",
             "$description": "Handle focus ring offset focus of the resizable."
+          },
+          "thickness": {
+            "$value": "{border-width.default}",
+            "$description": "Thickness of the resizable handle's line between panels: the weight of every line."
           }
         },
         "height": {
-          "$value": "{size.icon}",
-          "$description": "Height of the resizable."
+          "$value": "{resizable.grip.height}",
+          "$description": "Deprecated: use component.resizable.grip.height (OD-243). Height of the resizable.",
+          "$deprecated": "Use component.resizable.grip.height. Removed in the next minor release."
         },
         "radius": {
-          "$value": "{radius.badge}",
-          "$description": "Radius of the resizable."
+          "$value": "{resizable.grip.radius}",
+          "$description": "Deprecated: use component.resizable.grip.radius (OD-243). Radius of the resizable.",
+          "$deprecated": "Use component.resizable.grip.radius. Removed in the next minor release."
         },
         "background": {
-          "$value": "{color.border.default}",
-          "$description": "Background of the resizable."
+          "$value": "{resizable.grip.background}",
+          "$description": "Deprecated: use component.resizable.grip.background (OD-243). Background of the resizable.",
+          "$deprecated": "Use component.resizable.grip.background. Removed in the next minor release."
         },
         "focus-offset": {
           "$value": "{border-width.focus-offset}",
           "$description": "Gap between the resizable and its focus ring."
+        },
+        "grip": {
+          "border-width": {
+            "$value": "{border-width.default}",
+            "$description": "Border width of the resizable grip, like every border."
+          },
+          "border": {
+            "$value": "{color.border.default}",
+            "$description": "Border of the resizable grip: a quiet edge on the line it sits on."
+          },
+          "radius": {
+            "$value": "{radius.control}",
+            "$description": "Corner of the resizable grip, the part people drag: a control's corner."
+          },
+          "height": {
+            "$value": "{size.icon}",
+            "$description": "Height of the resizable grip."
+          },
+          "background": {
+            "$value": "{color.border.default}",
+            "$description": "Fill of the resizable grip: the line's color, so the grip reads as part of the line."
+          }
         }
       },
       "scroll-area": {
@@ -10792,6 +10832,12 @@
           "background": {
             "$value": "{color.border.default}",
             "$description": "Thumb background of the scroll area."
+          }
+        },
+        "scrollbar": {
+          "border-width": {
+            "$value": "{border-width.default}",
+            "$description": "Width of the scrollbar's clear edge toward the content, the weight of every line, so the thumb sits off the edge."
           }
         }
       },
@@ -10934,6 +10980,10 @@
         "background": {
           "$value": "{color.border.default}",
           "$description": "Background of the separator."
+        },
+        "thickness": {
+          "$value": "{border-width.default}",
+          "$description": "Thickness of the separator: the weight of every line."
         }
       },
       "sheet": {

@@ -18,9 +18,9 @@ function Marker({ className, children, ...props }: React.ComponentProps<"div">) 
       )}
       {...props}
     >
-      <span aria-hidden className="h-px flex-1 bg-[color:var(--marker-background)]" />
-      <span>{children}</span>
-      <span aria-hidden className="h-px flex-1 bg-[color:var(--marker-background)]" />
+      <span aria-hidden data-slot="marker-line" className="h-[var(--marker-line-thickness)] flex-1 bg-[color:var(--marker-line-background)]" />
+      <span data-slot="marker-label">{children}</span>
+      <span aria-hidden data-slot="marker-line" className="h-[var(--marker-line-thickness)] flex-1 bg-[color:var(--marker-line-background)]" />
     </div>
   );
 }

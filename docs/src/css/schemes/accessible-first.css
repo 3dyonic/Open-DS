@@ -562,6 +562,7 @@ html[data-scheme="accessible-first"] {
   --marker-gap: var(--component-spacing-map-x3); /** Gap of the marker. */
   --marker-font-size: var(--type-caption-font-size); /** Font size of the marker. */
   --marker-line-height: var(--type-caption-line-height); /** Line height of the marker. */
+  --marker-line-thickness: var(--border-width-default); /** Thickness of the marker's lines: the weight of every line. */
   --menubar-gap: var(--space-gap-tight); /** Gap of the menubar. */
   --menubar-padding: var(--component-spacing-map-x1); /** Padding of the menubar. */
   --menubar-trigger-padding-x: var(--component-spacing-map-x2); /** Trigger padding x of the menubar. */
@@ -682,11 +683,14 @@ html[data-scheme="accessible-first"] {
   --radio-group-item-focus: var(--border-width-focus); /** Item focus of the radio group. */
   --radio-group-item-focus-offset: var(--border-width-focus-offset); /** Gap between the radio group item and its focus ring. */
   --resizable-handle-focus: var(--border-width-focus); /** Handle focus of the resizable. */
-  --resizable-height: var(--size-icon); /** Height of the resizable. */
+  --resizable-handle-thickness: var(--border-width-default); /** Thickness of the resizable handle's line between panels: the weight of every line. */
   --resizable-focus-offset: var(--border-width-focus-offset); /** Gap between the resizable and its focus ring. */
+  --resizable-grip-border-width: var(--border-width-default); /** Border width of the resizable grip, like every border. */
+  --resizable-grip-height: var(--size-icon); /** Height of the resizable grip. */
   --scroll-area-viewport-focus: var(--border-width-focus); /** Viewport focus of the scroll area. */
   --scroll-area-viewport-focus-offset: var(--border-width-focus-offset); /** Gap between the scroll area viewport and its focus ring. */
   --scroll-area-thumb-radius: var(--radius-round); /** Thumb radius of the scroll area. */
+  --scroll-area-scrollbar-border-width: var(--border-width-default); /** Width of the scrollbar's clear edge toward the content, the weight of every line, so the thumb sits off the edge. */
   --select-trigger-gap: var(--space-gap-default); /** Trigger gap of the select. */
   --select-trigger-border-width: var(--border-width-default); /** Trigger border width of the select. */
   --select-trigger-font-size: var(--type-body-font-size); /** Text size of the select's trigger, like a text field's. */
@@ -702,6 +706,7 @@ html[data-scheme="accessible-first"] {
   --select-item-padding-right: var(--component-spacing-map-x8); /** Item padding right of the select. */
   --select-item-font-size: var(--type-body-font-size); /** Item font size of the select. */
   --select-item-disabled: var(--opacity-disabled); /** Item disabled of the select. */
+  --separator-thickness: var(--border-width-default); /** Thickness of the separator: the weight of every line. */
   --sheet-content-gap: var(--space-gap-group); /** Content gap of the sheet. */
   --sheet-focus: var(--border-width-focus); /** Focus of the sheet. */
   --sheet-icon-size: var(--size-icon); /** Icon size of the sheet. */
@@ -1017,7 +1022,8 @@ html[data-scheme="accessible-first"] {
   --radio-group-item-focus-ring-focus: var(--color-border-focus); /** Item focus ring focus of the radio group. */
   --radio-group-icon: var(--color-action-primary); /** Icon of the radio group. */
   --resizable-handle-focus-ring-focus: var(--color-border-focus); /** Handle focus ring focus of the resizable. */
-  --resizable-radius: var(--radius-badge); /** Radius of the resizable. */
+  --resizable-height: var(--resizable-grip-height); /** Deprecated: use component.resizable.grip.height (OD-243). Height of the resizable. */
+  --resizable-grip-radius: var(--radius-control); /** Corner of the resizable grip, the part people drag: a control's corner. */
   --scroll-area-viewport-focus-ring-focus: var(--color-border-focus); /** Viewport focus ring focus of the scroll area. */
   --select-trigger-font-family: var(--type-body-font-family); /** Trigger font family of the select. */
   --select-trigger-border-focus: var(--color-border-focus); /** Focus ring of the select's trigger, like a text field's. */
@@ -1114,6 +1120,7 @@ html[data-scheme="accessible-first"] {
   --navigation-menu-link-background: var(--navigation-menu-link-background-current); /** Deprecated: use component.navigation-menu.link.background.current (OD-241). Link background of the navigation menu. */
   --navigation-menu-link-selected: var(--navigation-menu-link-edge-current); /** Deprecated: use component.navigation-menu.link.edge.current (OD-243). Link selected of the navigation menu. */
   --navigation-menu-shadow-2: var(--navigation-menu-indicator-shadow); /** Deprecated: use component.navigation-menu.indicator.shadow (OD-243). Shadow 2 of the navigation menu. */
+  --resizable-radius: var(--resizable-grip-radius); /** Deprecated: use component.resizable.grip.radius (OD-243). Radius of the resizable. */
   --sidebar-background-2: var(--sidebar-menu-button-background-current); /** Deprecated: use component.sidebar.menu-button.background.current (OD-241). Background 2 of the sidebar. */
   --button-primary-label: var(--color-text-on-action); /** Primary button label color. */
   --button-secondary-background: var(--color-action-secondary); /** Secondary button fill. */
@@ -1300,7 +1307,7 @@ html[data-scheme="accessible-first"] {
   --kbd-label-2: var(--color-surface-canvas); /** Label 2 of the kbd. */
   --label-label: var(--color-text-primary); /** Label of the label. */
   --marker-label: var(--color-text-muted); /** Label of the marker. */
-  --marker-background: var(--color-border-default); /** Background of the marker. */
+  --marker-line-background: var(--color-border-default); /** Color of the marker's lines: a quiet divider. */
   --menubar-background: var(--color-surface-canvas); /** Background of the menubar. */
   --menubar-trigger-label-focus: var(--color-text-primary); /** Trigger label focus of the menubar. */
   --menubar-trigger-label-open: var(--color-text-primary); /** Trigger label open of the menubar. */
@@ -1365,7 +1372,8 @@ html[data-scheme="accessible-first"] {
   --radio-group-item-focus-ring-offset-focus: var(--color-surface-canvas); /** Item focus ring offset focus of the radio group. */
   --resizable-handle-background: var(--color-border-default); /** Handle background of the resizable. */
   --resizable-handle-focus-ring-offset-focus: var(--color-surface-canvas); /** Handle focus ring offset focus of the resizable. */
-  --resizable-background: var(--color-border-default); /** Background of the resizable. */
+  --resizable-grip-border: var(--color-border-default); /** Border of the resizable grip: a quiet edge on the line it sits on. */
+  --resizable-grip-background: var(--color-border-default); /** Fill of the resizable grip: the line's color, so the grip reads as part of the line. */
   --scroll-area-viewport-focus-ring-offset-focus: var(--color-surface-canvas); /** Viewport focus ring offset focus of the scroll area. */
   --scroll-area-thumb-background: var(--color-border-default); /** Thumb background of the scroll area. */
   --select-trigger-background: var(--color-surface-default); /** Background of the select's trigger, like a text field's. */
@@ -1457,6 +1465,7 @@ html[data-scheme="accessible-first"] {
   --dropdown-menu-item-sunken: var(--dropdown-menu-item-background-highlight); /** Deprecated: use component.dropdown-menu.item.background.highlight (OD-241). Item sunken of the dropdown menu. */
   --dropdown-menu-background: var(--dropdown-menu-separator-background); /** Deprecated: use component.dropdown-menu.separator.background (OD-241). Background of the dropdown menu. */
   --input-group-label: var(--input-group-addon-label); /** Deprecated: use component.input-group.addon.label (OD-243). Label of the input group. */
+  --marker-background: var(--marker-line-background); /** Deprecated: use component.marker.line.background (OD-243). Background of the marker. */
   --menubar-trigger-background-focus: var(--menubar-trigger-background-highlight); /** Deprecated: use component.menubar.trigger.background.highlight (OD-241). Trigger background focus of the menubar. */
   --menubar-item-background-focus: var(--menubar-item-background-highlight); /** Deprecated: use component.menubar.item.background.highlight (OD-241). Item background focus of the menubar. */
   --menubar-checkbox-item-background-focus: var(--menubar-checkbox-item-background-highlight); /** Deprecated: use component.menubar.checkbox.item.background.highlight (OD-241). Checkbox item background focus of the menubar. */
@@ -1478,6 +1487,7 @@ html[data-scheme="accessible-first"] {
   --navigation-menu-link-background-focus: var(--navigation-menu-link-background-highlight); /** Deprecated: use component.navigation-menu.link.background.highlight (OD-241). Link background focus of the navigation menu. */
   --navigation-menu-link-label: var(--navigation-menu-link-label-current); /** Deprecated: use component.navigation-menu.link.label.current (OD-243). Link label of the navigation menu. */
   --navigation-menu-background-3: var(--navigation-menu-indicator-background); /** Deprecated: use component.navigation-menu.indicator.background (OD-243). Background 3 of the navigation menu. */
+  --resizable-background: var(--resizable-grip-background); /** Deprecated: use component.resizable.grip.background (OD-243). Background of the resizable. */
   --select-canvas: var(--select-trigger-focus-ring-offset); /** Deprecated: use component.select.trigger.focus-ring-offset (OD-243). Canvas of the select. */
   --select-item-sunken: var(--select-item-background-highlight); /** Deprecated: use component.select.item.background.highlight (OD-241). Item sunken of the select. */
   --sidebar-rail-background-hover: var(--sidebar-rail-line-hover); /** Deprecated: use component.sidebar.rail.line.hover (OD-241). Rail background hover of the sidebar. */
@@ -2049,6 +2059,7 @@ html[data-scheme="accessible-first"][data-theme="dark"] {
   --marker-gap: var(--component-spacing-map-x3); /** Gap of the marker. */
   --marker-font-size: var(--type-caption-font-size); /** Font size of the marker. */
   --marker-line-height: var(--type-caption-line-height); /** Line height of the marker. */
+  --marker-line-thickness: var(--border-width-default); /** Thickness of the marker's lines: the weight of every line. */
   --menubar-gap: var(--space-gap-tight); /** Gap of the menubar. */
   --menubar-padding: var(--component-spacing-map-x1); /** Padding of the menubar. */
   --menubar-trigger-padding-x: var(--component-spacing-map-x2); /** Trigger padding x of the menubar. */
@@ -2169,11 +2180,14 @@ html[data-scheme="accessible-first"][data-theme="dark"] {
   --radio-group-item-focus: var(--border-width-focus); /** Item focus of the radio group. */
   --radio-group-item-focus-offset: var(--border-width-focus-offset); /** Gap between the radio group item and its focus ring. */
   --resizable-handle-focus: var(--border-width-focus); /** Handle focus of the resizable. */
-  --resizable-height: var(--size-icon); /** Height of the resizable. */
+  --resizable-handle-thickness: var(--border-width-default); /** Thickness of the resizable handle's line between panels: the weight of every line. */
   --resizable-focus-offset: var(--border-width-focus-offset); /** Gap between the resizable and its focus ring. */
+  --resizable-grip-border-width: var(--border-width-default); /** Border width of the resizable grip, like every border. */
+  --resizable-grip-height: var(--size-icon); /** Height of the resizable grip. */
   --scroll-area-viewport-focus: var(--border-width-focus); /** Viewport focus of the scroll area. */
   --scroll-area-viewport-focus-offset: var(--border-width-focus-offset); /** Gap between the scroll area viewport and its focus ring. */
   --scroll-area-thumb-radius: var(--radius-round); /** Thumb radius of the scroll area. */
+  --scroll-area-scrollbar-border-width: var(--border-width-default); /** Width of the scrollbar's clear edge toward the content, the weight of every line, so the thumb sits off the edge. */
   --select-trigger-gap: var(--space-gap-default); /** Trigger gap of the select. */
   --select-trigger-border-width: var(--border-width-default); /** Trigger border width of the select. */
   --select-trigger-font-size: var(--type-body-font-size); /** Text size of the select's trigger, like a text field's. */
@@ -2189,6 +2203,7 @@ html[data-scheme="accessible-first"][data-theme="dark"] {
   --select-item-padding-right: var(--component-spacing-map-x8); /** Item padding right of the select. */
   --select-item-font-size: var(--type-body-font-size); /** Item font size of the select. */
   --select-item-disabled: var(--opacity-disabled); /** Item disabled of the select. */
+  --separator-thickness: var(--border-width-default); /** Thickness of the separator: the weight of every line. */
   --sheet-content-gap: var(--space-gap-group); /** Content gap of the sheet. */
   --sheet-focus: var(--border-width-focus); /** Focus of the sheet. */
   --sheet-icon-size: var(--size-icon); /** Icon size of the sheet. */
@@ -2504,7 +2519,8 @@ html[data-scheme="accessible-first"][data-theme="dark"] {
   --radio-group-item-focus-ring-focus: var(--color-border-focus); /** Item focus ring focus of the radio group. */
   --radio-group-icon: var(--color-action-primary); /** Icon of the radio group. */
   --resizable-handle-focus-ring-focus: var(--color-border-focus); /** Handle focus ring focus of the resizable. */
-  --resizable-radius: var(--radius-badge); /** Radius of the resizable. */
+  --resizable-height: var(--resizable-grip-height); /** Deprecated: use component.resizable.grip.height (OD-243). Height of the resizable. */
+  --resizable-grip-radius: var(--radius-control); /** Corner of the resizable grip, the part people drag: a control's corner. */
   --scroll-area-viewport-focus-ring-focus: var(--color-border-focus); /** Viewport focus ring focus of the scroll area. */
   --select-trigger-font-family: var(--type-body-font-family); /** Trigger font family of the select. */
   --select-trigger-border-focus: var(--color-border-focus); /** Focus ring of the select's trigger, like a text field's. */
@@ -2601,6 +2617,7 @@ html[data-scheme="accessible-first"][data-theme="dark"] {
   --navigation-menu-link-background: var(--navigation-menu-link-background-current); /** Deprecated: use component.navigation-menu.link.background.current (OD-241). Link background of the navigation menu. */
   --navigation-menu-link-selected: var(--navigation-menu-link-edge-current); /** Deprecated: use component.navigation-menu.link.edge.current (OD-243). Link selected of the navigation menu. */
   --navigation-menu-shadow-2: var(--navigation-menu-indicator-shadow); /** Deprecated: use component.navigation-menu.indicator.shadow (OD-243). Shadow 2 of the navigation menu. */
+  --resizable-radius: var(--resizable-grip-radius); /** Deprecated: use component.resizable.grip.radius (OD-243). Radius of the resizable. */
   --sidebar-background-2: var(--sidebar-menu-button-background-current); /** Deprecated: use component.sidebar.menu-button.background.current (OD-241). Background 2 of the sidebar. */
   --button-primary-label: var(--color-text-on-action); /** Primary button label color. */
   --button-secondary-background: var(--color-action-secondary); /** Secondary button fill. */
@@ -2787,7 +2804,7 @@ html[data-scheme="accessible-first"][data-theme="dark"] {
   --kbd-label-2: var(--color-surface-canvas); /** Label 2 of the kbd. */
   --label-label: var(--color-text-primary); /** Label of the label. */
   --marker-label: var(--color-text-muted); /** Label of the marker. */
-  --marker-background: var(--color-border-default); /** Background of the marker. */
+  --marker-line-background: var(--color-border-default); /** Color of the marker's lines: a quiet divider. */
   --menubar-background: var(--color-surface-canvas); /** Background of the menubar. */
   --menubar-trigger-label-focus: var(--color-text-primary); /** Trigger label focus of the menubar. */
   --menubar-trigger-label-open: var(--color-text-primary); /** Trigger label open of the menubar. */
@@ -2852,7 +2869,8 @@ html[data-scheme="accessible-first"][data-theme="dark"] {
   --radio-group-item-focus-ring-offset-focus: var(--color-surface-canvas); /** Item focus ring offset focus of the radio group. */
   --resizable-handle-background: var(--color-border-default); /** Handle background of the resizable. */
   --resizable-handle-focus-ring-offset-focus: var(--color-surface-canvas); /** Handle focus ring offset focus of the resizable. */
-  --resizable-background: var(--color-border-default); /** Background of the resizable. */
+  --resizable-grip-border: var(--color-border-default); /** Border of the resizable grip: a quiet edge on the line it sits on. */
+  --resizable-grip-background: var(--color-border-default); /** Fill of the resizable grip: the line's color, so the grip reads as part of the line. */
   --scroll-area-viewport-focus-ring-offset-focus: var(--color-surface-canvas); /** Viewport focus ring offset focus of the scroll area. */
   --scroll-area-thumb-background: var(--color-border-default); /** Thumb background of the scroll area. */
   --select-trigger-background: var(--color-surface-default); /** Background of the select's trigger, like a text field's. */
@@ -2944,6 +2962,7 @@ html[data-scheme="accessible-first"][data-theme="dark"] {
   --dropdown-menu-item-sunken: var(--dropdown-menu-item-background-highlight); /** Deprecated: use component.dropdown-menu.item.background.highlight (OD-241). Item sunken of the dropdown menu. */
   --dropdown-menu-background: var(--dropdown-menu-separator-background); /** Deprecated: use component.dropdown-menu.separator.background (OD-241). Background of the dropdown menu. */
   --input-group-label: var(--input-group-addon-label); /** Deprecated: use component.input-group.addon.label (OD-243). Label of the input group. */
+  --marker-background: var(--marker-line-background); /** Deprecated: use component.marker.line.background (OD-243). Background of the marker. */
   --menubar-trigger-background-focus: var(--menubar-trigger-background-highlight); /** Deprecated: use component.menubar.trigger.background.highlight (OD-241). Trigger background focus of the menubar. */
   --menubar-item-background-focus: var(--menubar-item-background-highlight); /** Deprecated: use component.menubar.item.background.highlight (OD-241). Item background focus of the menubar. */
   --menubar-checkbox-item-background-focus: var(--menubar-checkbox-item-background-highlight); /** Deprecated: use component.menubar.checkbox.item.background.highlight (OD-241). Checkbox item background focus of the menubar. */
@@ -2965,6 +2984,7 @@ html[data-scheme="accessible-first"][data-theme="dark"] {
   --navigation-menu-link-background-focus: var(--navigation-menu-link-background-highlight); /** Deprecated: use component.navigation-menu.link.background.highlight (OD-241). Link background focus of the navigation menu. */
   --navigation-menu-link-label: var(--navigation-menu-link-label-current); /** Deprecated: use component.navigation-menu.link.label.current (OD-243). Link label of the navigation menu. */
   --navigation-menu-background-3: var(--navigation-menu-indicator-background); /** Deprecated: use component.navigation-menu.indicator.background (OD-243). Background 3 of the navigation menu. */
+  --resizable-background: var(--resizable-grip-background); /** Deprecated: use component.resizable.grip.background (OD-243). Background of the resizable. */
   --select-canvas: var(--select-trigger-focus-ring-offset); /** Deprecated: use component.select.trigger.focus-ring-offset (OD-243). Canvas of the select. */
   --select-item-sunken: var(--select-item-background-highlight); /** Deprecated: use component.select.item.background.highlight (OD-241). Item sunken of the select. */
   --sidebar-rail-background-hover: var(--sidebar-rail-line-hover); /** Deprecated: use component.sidebar.rail.line.hover (OD-241). Rail background hover of the sidebar. */

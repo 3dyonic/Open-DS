@@ -1319,6 +1319,7 @@
         "input-otp",
         "item",
         "kbd",
+        "marker",
         "menubar",
         "message-scroller",
         "native-select",
@@ -1329,6 +1330,7 @@
         "resizable",
         "scroll-area",
         "select",
+        "separator",
         "sheet",
         "sidebar",
         "skeleton",
@@ -3952,7 +3954,9 @@
         "marker/font-size",
         "marker/line-height",
         "marker/label",
-        "marker/background"
+        "marker/line/background",
+        "marker/background",
+        "marker/line/thickness"
       ]
     },
     {
@@ -4282,10 +4286,16 @@
         "resizable/handle/focus",
         "resizable/handle/focus-ring-focus",
         "resizable/handle/focus-ring-offset-focus",
+        "resizable/grip/height",
         "resizable/height",
+        "resizable/grip/radius",
         "resizable/radius",
+        "resizable/grip/background",
         "resizable/background",
-        "resizable/focus-offset"
+        "resizable/focus-offset",
+        "resizable/handle/thickness",
+        "resizable/grip/border-width",
+        "resizable/grip/border"
       ]
     },
     {
@@ -4297,7 +4307,8 @@
         "scroll-area/viewport/focus-ring-offset-focus",
         "scroll-area/thumb/radius",
         "scroll-area/thumb/background",
-        "scroll-area/viewport/focus-offset"
+        "scroll-area/viewport/focus-offset",
+        "scroll-area/scrollbar/border-width"
       ]
     },
     {
@@ -4340,7 +4351,8 @@
       "id": "separator",
       "description": "The separator component.",
       "keys": [
-        "separator/background"
+        "separator/background",
+        "separator/thickness"
       ]
     },
     {
@@ -9390,10 +9402,23 @@
       "default": "color.text.muted"
     },
     {
+      "id": "marker/line/background",
+      "component": "marker",
+      "description": "Color of the marker's lines: a quiet divider.",
+      "default": "color.border.default"
+    },
+    {
       "id": "marker/background",
       "component": "marker",
-      "description": "Background of the marker.",
-      "default": "color.border.default"
+      "description": "Deprecated: use marker/line/background (OD-243). Background of the marker.",
+      "default": "color.border.default",
+      "replaced_by": "marker/line/background"
+    },
+    {
+      "id": "marker/line/thickness",
+      "component": "marker",
+      "description": "Thickness of the marker's lines: the weight of every line.",
+      "default": "border-width.default"
     },
     {
       "id": "menubar/gap",
@@ -11049,28 +11074,67 @@
       "default": "color.surface.canvas"
     },
     {
+      "id": "resizable/grip/height",
+      "component": "resizable",
+      "description": "Height of the resizable grip.",
+      "default": "size.icon"
+    },
+    {
       "id": "resizable/height",
       "component": "resizable",
-      "description": "Height of the resizable.",
-      "default": "size.icon"
+      "description": "Deprecated: use resizable/grip/height (OD-243). Height of the resizable.",
+      "default": "size.icon",
+      "replaced_by": "resizable/grip/height"
+    },
+    {
+      "id": "resizable/grip/radius",
+      "component": "resizable",
+      "description": "Corner of the resizable grip, the part people drag: a control's corner.",
+      "default": "radius.control"
     },
     {
       "id": "resizable/radius",
       "component": "resizable",
-      "description": "Radius of the resizable.",
-      "default": "radius.badge"
+      "description": "Deprecated: use resizable/grip/radius (OD-243). Radius of the resizable.",
+      "default": "radius.badge",
+      "replaced_by": "resizable/grip/radius"
+    },
+    {
+      "id": "resizable/grip/background",
+      "component": "resizable",
+      "description": "Fill of the resizable grip: the line's color, so the grip reads as part of the line.",
+      "default": "color.border.default"
     },
     {
       "id": "resizable/background",
       "component": "resizable",
-      "description": "Background of the resizable.",
-      "default": "color.border.default"
+      "description": "Deprecated: use resizable/grip/background (OD-243). Background of the resizable.",
+      "default": "color.border.default",
+      "replaced_by": "resizable/grip/background"
     },
     {
       "id": "resizable/focus-offset",
       "component": "resizable",
       "description": "Gap between the resizable and its focus ring.",
       "default": "border-width.focus-offset"
+    },
+    {
+      "id": "resizable/handle/thickness",
+      "component": "resizable",
+      "description": "Thickness of the resizable handle's line between panels: the weight of every line.",
+      "default": "border-width.default"
+    },
+    {
+      "id": "resizable/grip/border-width",
+      "component": "resizable",
+      "description": "Border width of the resizable grip, like every border.",
+      "default": "border-width.default"
+    },
+    {
+      "id": "resizable/grip/border",
+      "component": "resizable",
+      "description": "Border of the resizable grip: a quiet edge on the line it sits on.",
+      "default": "color.border.default"
     },
     {
       "id": "scroll-area/viewport/focus",
@@ -11107,6 +11171,12 @@
       "component": "scroll-area",
       "description": "Gap between the scroll area viewport and its focus ring.",
       "default": "border-width.focus-offset"
+    },
+    {
+      "id": "scroll-area/scrollbar/border-width",
+      "component": "scroll-area",
+      "description": "Width of the scrollbar's clear edge toward the content, the weight of every line, so the thumb sits off the edge.",
+      "default": "border-width.default"
     },
     {
       "id": "select/trigger/gap",
@@ -11296,6 +11366,12 @@
       "component": "separator",
       "description": "Background of the separator.",
       "default": "color.border.default"
+    },
+    {
+      "id": "separator/thickness",
+      "component": "separator",
+      "description": "Thickness of the separator: the weight of every line.",
+      "default": "border-width.default"
     },
     {
       "id": "sheet/overlay/background",
