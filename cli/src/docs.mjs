@@ -2,6 +2,7 @@
 // Docusaurus. The docs site (docs/) and `open-ds init --docs` both use this, so a team that takes
 // a scheme gets the same pages Open DS builds.
 
+import { decisionReference, lower, sentence } from "./decisions.mjs";
 import { cssName, flatTokens, semanticView, themeTokens } from "./tokens.mjs";
 import { existsSync, readFileSync, readdirSync } from "node:fs";
 import { join } from "node:path";
@@ -1032,7 +1033,7 @@ export function docsPages(
       `<div class="odv-facts"><div><b>${(scheme.inventory?.in ?? []).length}</b><span>components</span></div><div><b>${primCount}</b><span>primitives</span></div><div><b>${scheme.themes.length}</b><span>themes</span></div></div>`,
       `</div>${heroSample}</div>`,
     ) +
-    `\n\n## Why it looks like this\n\nEvery decision follows from an answer. These are the answers its components and rules cite most. Follow them all in [How it was decided](decided).\n\n` +
+    `\n\n## Why it looks like this\n\nEvery decision follows from an answer. These are the answers its components and rules cite most. Follow them all in the [Decision reference](decision-reference).\n\n` +
     h(
       `<div class="odv-grid">`,
       top.map(
@@ -1053,12 +1054,14 @@ export function docsPages(
     `\n\n## Who it is for\n\n` +
     `- **Use it for:** ${scheme.ai.use_when}\n- **Not for:** ${scheme.ai.avoid_when}\n- **Products like:** ${scheme.ai.example_products.join(", ")}\n- **Themes:** ${scheme.themes.map((t) => t.id).join(", ")}\n\n` +
     `## Use scenarios\n\n${scheme.scenarios.map((s) => `- ${s.text}`).join("\n")}\n\n` +
-    `## Every answer\n\nAll ${scheme.answers.length} answers, and the design decisions each one made: [How it was decided](decided).\n`;
+    `## Every answer\n\nAll ${scheme.answers.length} answers, and the design decisions each one made: [Decision reference](decision-reference).\n`;
 
-  // How it was decided (OD-239): the way in from the questions to the design. Each question, its
-  // answer, the design decisions it made (a rule, a component variant, a later answer, a foundation's
-  // values) and the page that goes deeper. Generated from the answers, their because links, the usage
-  // rules and the components' variants. No comparison with other schemes.
+  // Decision reference (OD-239): the way in from the questions to the design. Each question, its
+  // answer, why, the earlier answers it came from, and every design decision it made: a later
+  // answer, a usage rule or a component variant, each linked to the page that goes deeper. Generated
+  // from the answers, their because links, the usage rules and the components' variants. No
+  // comparison with other schemes. Its section menu sits in the left sidebar
+  // (_decision-menu.json, read by src/decisionMenu.ts) and opens only on this page.
   {
     const he = (x) =>
       String(x ?? "")
@@ -1072,171 +1075,196 @@ export function docsPages(
     ].filter((r) => (r.questions ?? []).length);
     const secOf = {};
     for (const r of sections) for (const q of r.questions) secOf[q.id] = r;
-    const inv = new Set((scheme.inventory?.in ?? []).map((c) => c.id));
-    const title = (id) => id[0].toUpperCase() + id.slice(1).replace(/-/g, " ");
-    // every decision, by the answer it cites
+    // The data comes from decisions.mjs, the same reference get_decision_reference returns.
+    const lc = lower;
+    const ref = decisionReference(scheme, g);
+    const lineOf = {};
+    for (const sec of ref.sections)
+      for (const q of sec.questions)
+        for (const b of q.because) lineOf[b.question] = b.line;
     const made = {};
-    const add = (q, d) => (made[q] ??= []).push(d);
-    for (const u of scheme.usage)
-      for (const q of u.because ?? [])
-        add(q, {
-          kind: "Rule",
-          text: `${sits[u.situation].title}: ${u.use}`,
-          small: u.not ? `Not ${u.not}.` : "",
-          href: `foundations/${sits[u.situation].scope}`,
-          go: title(sits[u.situation].scope),
-        });
-    for (const c of scheme.inventory?.in ?? [])
-      for (const [axis, opts] of Object.entries(c.variants ?? {}))
-        for (const [v, d] of Object.entries(opts))
-          for (const q of d.because ?? [])
-            add(q, {
-              kind: "Variant",
-              text: `${title(c.id)} ${axis} ${v}${d.not_used ? ": not used" : ""}`,
-              small: d.use ?? d.why ?? "",
-              href: inv.has(c.id) ? `components/${c.id}` : null,
-              go: title(c.id),
-            });
-    for (const a of scheme.answers)
-      for (const q of a.because ?? []) {
-        const sec = secOf[a.question];
-        add(q, {
-          kind: "Answer",
-          text: `${sec.scope ? `${sec.title}: ` : ""}${qs[a.question].text} ${label(a.question)}`,
-          small: "",
-          href: sec.scope
-            ? `foundations/${sec.scope}`
-            : `#${a.question.replace(/\./g, "-")}`,
-          go: sec.scope ? sec.title : "Below",
-          answer: a.question,
-        });
-      }
+    for (const sec of ref.sections)
+      for (const q of sec.questions)
+        made[q.id] = [
+          ...q.decided.answers.map((d) => ({
+            kind: "Answer",
+            text: d.text,
+            href: d.page ?? `#${d.section}`,
+            go: d.page_title,
+          })),
+          ...q.decided.rules.map((d) => ({
+            kind: "Rule",
+            text: d.text,
+            href: d.page,
+            go: d.page_title,
+          })),
+          ...q.decided.variants.map((d) => ({
+            kind: "Variant",
+            text: d.text,
+            href: d.page,
+            go: d.page_title,
+          })),
+        ];
     const n = (q) => (made[q] ?? []).length;
-    const decisionRow = (d) =>
-      `<div class="odv-dec"><span class="odv-dec-what"><span class="odv-kind">${d.kind}</span>${he(d.text)}${d.small ? `<small>${he(d.small)}</small>` : ""}</span>${d.href ? `<a class="odv-go" href="${d.href}">${he(d.go)} →</a>` : "<span></span>"}</div>`;
-    const decisions = (q, limit) => {
-      const all = made[q] ?? [];
-      const list = limit ? all.slice(0, limit) : all;
-      return all.length
-        ? `<div class="odv-decs">${list.map(decisionRow).join("")}${limit && all.length > limit ? `<div class="odv-more">And ${all.length - limit} more: <a href="#${secOf[q].id}">${he(secOf[q].title)}</a>, below.</div>` : ""}</div>`
-        : "";
-    };
-    const pill = (q) => `<span class="odv-pill">${he(label(q))}</span>`;
-    const cameFrom = (q) =>
-      answer(q).because.length
-        ? `Because: ${answer(q)
-            .because.map((b) => he(label(b)))
-            .join(", ")}.`
-        : "The first answer: nothing comes before it.";
-    // Where it starts: the answer cited most, the answers before it in steps, then the foundation
-    // answers it led to, with the values their tokens take.
-    const top = scheme.answers
-      .map((a) => a.question)
-      .filter((q) => !secOf[q].scope)
-      .sort((a, b) => n(b) - n(a) || a.localeCompare(b))[0];
-    const depth = {};
-    const dep = (q) =>
-      (depth[q] ??= answer(q).because.length
-        ? 1 + Math.max(...answer(q).because.map(dep))
-        : 0);
-    const before = new Set();
-    const up = (q) =>
-      answer(q).because.forEach((b) => {
-        if (!before.has(b)) {
-          before.add(b);
-          up(b);
-        }
-      });
-    up(top);
-    const steps = [];
-    for (const q of [...before, top]) (steps[dep(q)] ??= []).push(q);
-    const after = (made[top] ?? [])
-      .filter(
-        (d) => d.answer && secOf[d.answer].scope && /\.values$/.test(d.answer),
-      )
-      .map((d) => d.answer);
-    const ix = tokenIndex(scheme);
-    const valuesOf = (scope) =>
-      (g.scopes.find((x) => x.id === scope)?.owns ?? [])
-        .flatMap((o) =>
-          flatTokens(scheme.tokens.semantic)
-            .map(([p]) => p)
-            .filter((p) => p === o || p.startsWith(`${o}.`)),
-        )
-        .slice(0, 3)
-        .map((p) => {
-          const c = aliasChain(ix, p);
-          return `<div class="odv-dec"><span class="odv-dec-what"><span class="tok">${p}</span> <span class="odv-ptok">${c.hops.at(-1) ?? ""}</span><span class="odv-kvsep">:</span><span class="odv-raw">${he(c.value)}</span></span><a class="odv-go" href="foundations/${scope}">${he(title(scope))} →</a></div>`;
-        })
-        .join("");
-    const node = (q, opts = {}) => {
-      const sec = secOf[q];
-      return `<div class="odv-node"><div class="odv-sec">${he(sec.title)}</div><div class="odv-q">${he(qs[q].text)}</div>${pill(q)}<div class="odv-why">${he(answer(q).why)}</div><div class="odv-meta">${cameFrom(q)}${opts.count ? ` ${n(q)} decisions cite it, the most of any answer.` : ""}</div>${opts.values ? `<div class="odv-decs">${valuesOf(sec.scope)}</div>` : decisions(q, opts.limit)}</div>`;
-    };
-    const chain = [
-      ...steps
-        .filter(Boolean)
-        .map((qsAt) =>
-          qsAt.map((q) =>
-            node(q, q === top ? { count: true, limit: 5 } : { limit: 0 }),
-          ),
+    const total = (r) => r.questions.reduce((t, q) => t + n(q.id), 0);
+    // One icon per group title, the Lucide icons the Figma design uses.
+    const svg = (paths) =>
+      `<svg class="odv-kind-icon" width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.33" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">${paths}</svg>`;
+    const KINDS = [
+      [
+        "Answer",
+        "Answers it led to",
+        svg(
+          '<path d="M5.26665 13.3333C6.53903 13.986 8.0027 14.1628 9.3939 13.8318C10.7851 13.5009 12.0123 12.6839 12.8545 11.5281C13.6966 10.3723 14.0983 8.9538 13.987 7.5281C13.8758 6.1024 13.259 4.7633 12.2479 3.75212C11.2367 2.74093 9.89757 2.12416 8.47187 2.01293C7.04617 1.90171 5.62763 2.30335 4.47186 3.14549C3.31609 3.98762 2.49911 5.21486 2.16813 6.60607C1.83715 7.99727 2.01394 9.46094 2.66665 10.7333L1.33331 14.6667L5.26665 13.3333Z"/>',
         ),
-      ...(after.length ? [after.map((q) => node(q, { values: true }))] : []),
+      ],
+      [
+        "Rule",
+        "Rules it sets",
+        svg(
+          '<path d="M10.6667 10.6667L12.6667 5.33334L14.6667 10.6667C14.0867 11.1 13.3867 11.3333 12.6667 11.3333C11.9467 11.3333 11.2467 11.1 10.6667 10.6667Z"/><path d="M1.33331 10.6667L3.33331 5.33334L5.33331 10.6667C4.75331 11.1 4.05331 11.3333 3.33331 11.3333C2.61331 11.3333 1.91331 11.1 1.33331 10.6667Z"/><path d="M4.66669 14H11.3334"/><path d="M8 2V14"/><path d="M2 4.66668H3.33333C4.66667 4.66668 6.66667 4.00001 8 3.33334C9.33333 4.00001 11.3333 4.66668 12.6667 4.66668H14"/>',
+        ),
+      ],
+      [
+        "Variant",
+        "Variants it picks",
+        svg(
+          '<path d="M10.3574 7.52867C10.2324 7.65369 10.1622 7.82322 10.1622 8C10.1622 8.17678 10.2324 8.34632 10.3574 8.47133L11.9414 10.056C12.0664 10.181 12.2359 10.2512 12.4127 10.2512C12.5895 10.2512 12.759 10.181 12.884 10.056L14.4687 8.47133C14.5937 8.34632 14.6639 8.17678 14.6639 8C14.6639 7.82322 14.5937 7.65369 14.4687 7.52867L12.884 5.944C12.759 5.81902 12.5895 5.74881 12.4127 5.74881C12.2359 5.74881 12.0664 5.81902 11.9414 5.944L10.3574 7.52867Z"/><path d="M1.53131 7.52867C1.40633 7.65369 1.33612 7.82322 1.33612 8C1.33612 8.17678 1.40633 8.34632 1.53131 8.47133L3.11598 10.056C3.241 10.181 3.41054 10.2512 3.58731 10.2512C3.76409 10.2512 3.93363 10.181 4.05864 10.056L5.64331 8.47133C5.76829 8.34632 5.8385 8.17678 5.8385 8C5.8385 7.82322 5.76829 7.65369 5.64331 7.52867L4.05864 5.944C3.93363 5.81902 3.76409 5.74881 3.58731 5.74881C3.41054 5.74881 3.241 5.81902 3.11598 5.944L1.53131 7.52867Z"/><path d="M5.944 11.9413C5.88201 12.0032 5.83284 12.0768 5.79929 12.1577C5.76574 12.2386 5.74847 12.3254 5.74847 12.413C5.74847 12.5006 5.76574 12.5874 5.79929 12.6683C5.83284 12.7492 5.88201 12.8227 5.944 12.8847L7.52867 14.4687C7.65368 14.5936 7.82322 14.6639 8 14.6639C8.17677 14.6639 8.34631 14.5936 8.47133 14.4687L10.056 12.8847C10.118 12.8227 10.1672 12.7492 10.2007 12.6683C10.2343 12.5874 10.2515 12.5006 10.2515 12.413C10.2515 12.3254 10.2343 12.2386 10.2007 12.1577C10.1672 12.0768 10.118 12.0032 10.056 11.9413L8.47133 10.3573C8.34631 10.2324 8.17677 10.1621 8 10.1621C7.82322 10.1621 7.65368 10.2324 7.52867 10.3573L5.944 11.9413Z"/><path d="M5.94397 3.11601C5.81899 3.24103 5.74878 3.41057 5.74878 3.58734C5.74878 3.76412 5.81899 3.93366 5.94397 4.05868L7.52864 5.64268C7.65366 5.76766 7.82319 5.83787 7.99997 5.83787C8.17675 5.83787 8.34628 5.76766 8.4713 5.64268L10.056 4.05868C10.181 3.93366 10.2512 3.76412 10.2512 3.58734C10.2512 3.41057 10.181 3.24103 10.056 3.11601L8.4713 1.53134C8.34628 1.40636 8.17675 1.33615 7.99997 1.33615C7.82319 1.33615 7.65366 1.40636 7.52864 1.53134L5.94397 3.11601Z"/>',
+        ),
+      ],
     ];
-    const chainHtml = `<div class="odv-chain">${chain
-      .map(
-        (row, i) =>
-          `<div class="odv-step"><span class="odv-num">${i + 1}</span><div class="odv-row">${row.join("")}</div></div>`,
-      )
-      .join("")}</div>`;
-    // the side menu, like the questions pages: the sections with the decisions each made
-    const navGroup = (grp) =>
-      `<p>${grp}</p>` +
-      sections
-        .filter((r) => r.group === grp)
-        .map(
-          (r) =>
-            `<a href="#${r.id}">${he(r.title)}<span>${r.questions.reduce((t, q) => t + n(q.id), 0)}</span></a>`,
+    const pill = (q) => `<span class="odv-apill">${he(label(q))}</span>`;
+    const lbl = (t) => `<b class="odv-lbl">${he(t)}</b>`;
+    const item = (d) =>
+      `<li><span class="odv-dec-what">${he(d.text)}</span>${d.href && d.go ? `<a class="odv-go" href="${d.href}">${he(d.go)} →</a>` : ""}</li>`;
+    const decided = (q, r) => {
+      const all = made[q] ?? [];
+      if (!all.length)
+        return r.scope
+          ? `<li>${lbl("What it decided")}<p class="odv-why">It sets the values of the ${he(r.title.toLowerCase())} tokens: <a href="foundations/${r.scope}">${he(r.title)} →</a></p></li>`
+          : "";
+      return `<li>${lbl(`What it decided (${all.length})`)}${KINDS.map(
+        ([k, t, icon]) => {
+          const list = all.filter((d) => d.kind === k);
+          return list.length
+            ? `<div class="odv-dgroup"><div class="odv-dgroup-t">${icon}${he(t)} (${list.length})</div><ul class="odv-tree">${list.map(item).join("")}</ul></div>`
+            : "";
+        },
+      ).join("")}</li>`;
+    };
+    const because = (q) => {
+      const b = answer(q).because ?? [];
+      return `<li>${lbl("Because of")}${
+        b.length
+          ? `<ul class="odv-tree">${b.map((x) => `<li>${he(lineOf[x])}</li>`).join("")}</ul>`
+          : `<p class="odv-why">Nothing before it. It's one of the first answers.</p>`
+      }</li>`;
+    };
+    const qa = (q, r) =>
+      `<div class="odv-qa" id="${he(q.id.replace(/\./g, "-"))}"><div class="odv-q">${he(q.text)}</div><ul class="odv-tree odv-tree-root"><li>${pill(q.id)}<ul class="odv-tree">` +
+      `<li>${lbl("Why")}<p class="odv-why">${he(sentence(answer(q.id).why))}</p></li>${because(q.id)}${decided(q.id, r)}</ul></li></ul></div>`;
+    // Where it starts: a simple process tree. The first answers (nothing before them), each later
+    // answer under the first answer it came from, and at the leaves the foundation values they set.
+    const reasons = scheme.answers
+      .map((a) => a.question)
+      .filter((q) => !secOf[q].scope);
+    const kids = {};
+    for (const q of reasons) {
+      const p = (answer(q).because ?? []).find((b) => reasons.includes(b));
+      if (p) (kids[p] ??= []).push(q);
+    }
+    const ix = tokenIndex(scheme);
+    const firstValue = (scope) => {
+      const owns = g.scopes.find((x) => x.id === scope)?.owns ?? [];
+      const all = flatTokens(scheme.tokens.semantic)
+        .map(([k]) => k)
+        .filter((k) => owns.some((o) => k === o || k.startsWith(`${o}.`)));
+      // A number reads best in one line: a body value first, then any size, then the first token.
+      const sized = all.filter((k) =>
+        /^-?[\d.]/.test(String(aliasChain(ix, k).value)),
+      );
+      const p = sized.find((k) => /\.body\./.test(k)) ?? sized[0] ?? all[0];
+      if (!p) return "";
+      const c = aliasChain(ix, p);
+      return ` <span class="odv-chip">${he(p)}</span>${c.hops.at(-1) ? ` <span class="odv-chip">${he(c.hops.at(-1))}</span>` : ""}<span class="odv-tq">:</span> <span class="odv-raw">${he(c.value)}</span>`;
+    };
+    const leaves = (q) =>
+      scheme.answers
+        .filter(
+          (a) =>
+            secOf[a.question].scope &&
+            /\.values$/.test(a.question) &&
+            (a.because ?? [])[0] === q,
         )
-        .join("");
-    const nav = `<nav class="odv-qnav" aria-label="Sections"><a href="#where-it-starts">Where it starts</a>${navGroup("Reasons")}${navGroup("Scopes")}</nav>`;
+        .map(
+          (a) =>
+            `<li>${pill(a.question)} <span class="odv-tq">${he(secOf[a.question].title.toLowerCase())} →</span>${firstValue(secOf[a.question].scope)}</li>`,
+        );
+    const branch = (q) => {
+      const also = (answer(q).because ?? []).slice(1);
+      const under = [...(kids[q] ?? []).map(branch), ...leaves(q)];
+      return `<li>${pill(q)} <span class="odv-tq">${he(qs[q].text)}</span>${also.length ? `<span class="odv-tq">, also because</span> <b>${also.map((b) => he(label(b))).join(", ")}</b>` : ""}${under.length ? `<ul class="odv-tree">${under.join("")}</ul>` : ""}</li>`;
+    };
+    const roots = reasons.filter(
+      (q) => !(answer(q).because ?? []).some((b) => reasons.includes(b)),
+    );
+    const tree = `<ul class="odv-tree odv-tree-root odv-starts">${roots.map(branch).join("")}</ul>`;
+    // Every question: one fold per section, one open at a time (src/clientModules/scales.ts).
     const every = ["Reasons", "Scopes"]
       .map(
         (grp) =>
           `<h3 class="odv-grp">${grp}</h3>` +
           sections
             .filter((r) => r.group === grp)
-            .map((r) => {
-              const total = r.questions.reduce((t, q) => t + n(q.id), 0);
-              return `<details class="odv-qsec" id="${r.id}"><summary>${he(r.title)}<span>${r.questions.length} answers · ${total} decisions</span></summary>${r.questions
-                .map(
-                  (q) =>
-                    `<div class="odv-qa" id="${q.id.replace(/\./g, "-")}"><div class="odv-q">${he(q.text)}</div>${pill(q.id)}<div class="odv-why">${he(answer(q.id).why)} ${cameFrom(q.id)}</div>${decisions(q.id) || (r.scope ? `<div class="odv-more">It sets the values of the ${he(r.title.toLowerCase())} tokens: <a href="foundations/${r.scope}">${he(r.title)}</a>.</div>` : "")}</div>`,
-                )
-                .join("")}</details>`;
-            })
+            .map(
+              (r) =>
+                `<section class="odv-qsec" id="${he(r.id)}"><button type="button" class="odv-qsec-h" aria-expanded="false" aria-controls="${he(r.id)}-body"><span class="odv-qsec-t">${he(r.title)}</span><span class="odv-qsec-n">${r.questions.length} answers, ${total(r)} decision${total(r) === 1 ? "" : "s"}${r.scope ? ", and the values of its tokens" : ""}</span></button><div class="odv-qsec-b" id="${he(r.id)}-body" hidden>${r.questions.map((q) => qa(q, r)).join("")}</div></section>`,
+            )
             .join(""),
       )
       .join("");
-    pages["decided.md"] =
+    const has = (q) => qs[q] && answer(q);
+    const example =
+      has("spacing.values") && has("voice.values")
+        ? ` For example, why ${he(scheme.name)}'s spacing is ${he(lc(label("spacing.values")))}, or why its voice is ${he(lc(label("voice.values")))}.`
+        : "";
+    const intro = `<div class="odv-intro">${robot(scheme.id, "odv-intro-robot")}<div class="odv-intro-body"><h2 class="odv-intro-t">No need to read it all</h2><p>This page keeps every decision behind ${he(scheme.name)} in one place: ${scheme.answers.length} answers and what each one shaped. It's a reference, not a reading list. Most days you only need one answer.</p><b class="odv-intro-sub">Three easy ways in</b><ul><li>Take a minute with <a href="#where-it-starts">Where it starts</a>. It shows the few first answers the rest grow from.</li><li>Open one section when you wonder why.${example}</li><li>Come in from a component page. Each one links here, to the answers that shaped it.</li></ul><p class="odv-intro-end">Everything else can wait until you need it.</p></div></div>`;
+    const flow = `<ol class="odv-flow">${["Question", "Answer", "Why, and what it came from", "Design values", "In the UI"].map((s) => `<li>${s}</li>`).join("")}</ol>`;
+    pages["decision-reference.md"] =
       fm({
         sidebar_position: 1.5,
-        title: "How it was decided",
+        title: "Decision reference",
         description: `${scheme.name}: each question, its answer, and the design decisions it made.`,
         hide_table_of_contents: true,
       }) +
       NOTE +
-      `# How it was decided\n\n` +
+      `# Decision reference\n\n` +
       h(
-        `<div class="odv-decided"><div class="odv-decided-main">`,
-        `<p class="odv-lede">${he(scheme.name)} is ${scheme.answers.length} answers to the questions every scheme answers. Each answer made design decisions: a rule, a component variant, a foundation's values, or a later answer. Follow any decision to its page for the detail.</p>`,
-        `<h2 id="where-it-starts">Where it starts</h2><p>The path the most decisions come from. Each step's answer led to the next.</p>`,
-        chainHtml,
-        `<h2 id="every-question">Every question</h2><p>All ${scheme.answers.length}, by section, in the order every scheme answers them. The menu jumps to a section; its number is how many decisions that section made.</p>`,
+        `<div class="odv-decided">`,
+        intro,
+        flow,
+        `<h2 id="where-it-starts">Where it starts</h2><p>The first answers lead to the rest. Each branch is an answer that follows from the one above it.</p>`,
+        tree,
+        `<h2 id="every-question">Every question</h2><p>All ${scheme.answers.length}, by section, in the order every scheme answers them. Each answer shows why, what it came from, and every design decision it made. The menu in the sidebar opens a section; its number is how many decisions that section made.</p>`,
         every,
-        `</div>${nav}</div>`,
+        `</div>`,
       ) +
       "\n";
+    // The section menu for the left sidebar, under Decision reference.
+    pages["_decision-menu.json"] =
+      JSON.stringify(
+        {
+          doc: "decision-reference",
+          groups: ["Reasons", "Scopes"].map((grp) => ({
+            title: grp,
+            items: sections
+              .filter((r) => r.group === grp)
+              .map((r) => ({ id: r.id, title: r.title, count: total(r) })),
+          })),
+        },
+        null,
+        2,
+      ) + "\n";
   }
 
   // Voice and tone

@@ -70,34 +70,51 @@ export function onRouteDidUpdate() {
   setTimeout(arrive, 120);
 }
 
-// How it was decided (OD-239): a link to a section or a question opens its fold, and the side menu
-// marks the section in view.
+// Decision reference (OD-239): one section open at a time. A link to a section or a question opens
+// its section, and the section menu in the left sidebar marks the open one.
+function setOpen(sec: Element | null, open: boolean) {
+  const btn = sec?.querySelector<HTMLButtonElement>(":scope > .odv-qsec-h");
+  const body = sec?.querySelector<HTMLElement>(":scope > .odv-qsec-b");
+  if (!btn || !body) return;
+  btn.setAttribute("aria-expanded", String(open));
+  body.hidden = !open;
+}
+
+function openOnly(sec: Element | null) {
+  for (const o of document.querySelectorAll(".odv-qsec")) setOpen(o, o === sec);
+  markMenu();
+}
+
 function openFor(hash: string) {
   const el = hash ? document.getElementById(decodeURIComponent(hash.slice(1))) : null;
-  const fold = el?.closest("details") ?? (el instanceof HTMLDetailsElement ? el : null);
-  if (fold) fold.open = true;
+  const sec = el?.closest(".odv-qsec");
+  if (sec) openOnly(sec);
   if (el) requestAnimationFrame(() => el.scrollIntoView({ block: "start" }));
 }
 
 function markMenu() {
-  const nav = document.querySelector(".odv-qnav");
-  if (!nav) return;
-  const ids = [...nav.querySelectorAll<HTMLAnchorElement>("a")].map((a) => a.hash.slice(1));
-  let current = ids[0];
-  for (const id of ids) {
-    const el = document.getElementById(id);
-    if (el && el.getBoundingClientRect().top < 140) current = id;
-  }
-  for (const a of nav.querySelectorAll<HTMLAnchorElement>("a"))
-    a.classList.toggle("on", a.hash.slice(1) === current);
+  const open = document.querySelector('.odv-qsec-h[aria-expanded="true"]')?.parentElement?.id ?? "";
+  for (const a of document.querySelectorAll<HTMLAnchorElement>(".odv-dmenu-a"))
+    a.classList.toggle("on", a.dataset.section === open);
 }
 
 if (typeof window !== "undefined") {
   document.addEventListener("click", (e) => {
-    const a = (e.target as Element).closest<HTMLAnchorElement>('a[href^="#"]');
-    if (a && document.querySelector(".odv-decided")) openFor(a.hash);
+    const t = e.target as Element;
+    const head = t.closest(".odv-qsec-h");
+    if (head) {
+      const sec = head.parentElement;
+      openOnly(head.getAttribute("aria-expanded") === "true" ? null : sec);
+      return;
+    }
+    const a = t.closest<HTMLAnchorElement>("a[href*='#']");
+    if (!a || !document.querySelector(".odv-decided") || a.pathname !== location.pathname) return;
+    if (a.classList.contains("odv-dmenu-a")) {
+      e.preventDefault();
+      history.pushState(null, "", a.hash);
+    }
+    openFor(a.hash);
   });
-  window.addEventListener("scroll", markMenu, { passive: true });
   window.addEventListener("hashchange", () => openFor(location.hash));
 }
 

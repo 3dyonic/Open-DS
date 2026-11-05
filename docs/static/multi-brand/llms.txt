@@ -5,7 +5,7 @@
 ## Pages
 
 - [Multi-brand](/)
-- [How it was decided](/decided)
+- [Decision reference](/decision-reference)
 - [Voice and tone](/voice)
 - [Foundations](/foundations/index)
 - [Typography](/foundations/typography)

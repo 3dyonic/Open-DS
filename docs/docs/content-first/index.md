@@ -13,7 +13,7 @@ hide_table_of_contents: true
 
 ## Why it looks like this
 
-Every decision follows from an answer. These are the answers its components and rules cite most. Follow them all in [How it was decided](decided).
+Every decision follows from an answer. These are the answers its components and rules cite most. Follow them all in the [Decision reference](decision-reference).
 
 <div class="odv-grid"><div class="odv-card"><div class="odv-eyebrow">How do people recall the interface?</div><q>They see it fresh each time</q><p>Visitors see the interface fresh each time.</p><span class="odv-ans">human.q2</span></div><div class="odv-card"><div class="odv-eyebrow">How does it sound?</div><q>Conversational</q><p>Talk to one reader, like a good editor.</p><span class="odv-ans">voice.values</span></div><div class="odv-card"><div class="odv-eyebrow">How many signals carry each meaning?</div><q>Two: color and word</q><p>Status is rare; color and a word are enough.</p><span class="odv-ans">accessibility.count</span></div></div>
 
@@ -35,4 +35,4 @@ Every decision follows from an answer. These are the answers its components and 
 
 ## Every answer
 
-All 78 answers, and the design decisions each one made: [How it was decided](decided).
+All 78 answers, and the design decisions each one made: [Decision reference](decision-reference).
