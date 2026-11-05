@@ -1,23 +1,29 @@
-// The anatomy generator (OD-229): builds a component's Anatomy reference drawings in Figma from its
-// parts layer, bound to the published kit's variables. This side, in Node, writes one self-contained
-// Plugin API script: the spec (parts, cards, rows, and for every drawn property the chain of kit
-// variables to bind, from the component key down to its semantic, with our token value last) plus the
-// renderer. Run the script with use_figma in the anatomy file; it only reads the kit.
+// The anatomy generator (OD-229): a component's Anatomy reference drawings, from its parts layer, bound
+// to the published kit's variables. anatomySpec(component, scheme) is the data the renderer draws: the
+// parts, cards, drawing, and for every drawn property the chain of kit variables to bind (component key
+// down to its semantic) with our token value last. scripts/figma-anatomy.mjs puts every component's
+// data and the renderer in the Open DS anatomy plugin; run here, it prints one use_figma script.
 //
 //   node scripts/anatomy-figma/build.mjs <component> [scheme] > /tmp/anatomy-<component>.js
 import { readFileSync, readdirSync } from "node:fs";
 import { join } from "node:path";
 
 const ROOT = new URL("../..", import.meta.url).pathname;
-const [component, schemeId = "dense-data"] = process.argv.slice(2);
-if (!component) throw new Error("Usage: build.mjs <component> [scheme]");
 const read = (p) => JSON.parse(readFileSync(ROOT + p, "utf8"));
+export const RECIPES = { menu: "menu", table: "table" };
+/** The components with a parts layer the renderer has a recipe for. */
+export function drawable() {
+  return read("schemes/grammar.json").catalogue.items.filter((i) => RECIPES[i.anatomy?.drawing?.kind]).map((i) => i.id);
+}
+/** The library name of a scheme's published Figma kit. */
+export const kitLibrary = (s) => `Open DS · ${s.name} · Figma kit`;
+
+export function anatomySpec(component, schemeId = "dense-data") {
 const g = read("schemes/grammar.json");
 const s = read(`schemes/${schemeId}.json`);
 const item = g.catalogue.items.find((i) => i.id === component);
 if (!item?.anatomy) throw new Error(`${component} has no parts layer.`);
 const spec = item.anatomy;
-const RECIPES = { menu: "menu" };
 const recipe = RECIPES[spec.drawing?.kind];
 if (!recipe) throw new Error(`${component}: no recipe for drawing kind ${spec.drawing?.kind} yet.`);
 
@@ -80,13 +86,16 @@ function bind(path, kind) {
 
 // Lucide icons, from the package the components use.
 const lucide = readdirSync(join(ROOT, "node_modules/.pnpm")).find((d) => d.startsWith("lucide-react@"));
-const icon = (name) => {
-  const src = readFileSync(join(ROOT, "node_modules/.pnpm", lucide, "node_modules/lucide-react/dist/esm/icons", `${name}.mjs`), "utf8");
+function icon(name) {
+  let src = readFileSync(join(ROOT, "node_modules/.pnpm", lucide, "node_modules/lucide-react/dist/esm/icons", `${name}.mjs`), "utf8");
+  // A renamed icon is an alias file: follow it (filter → funnel).
+  const alias = !/__icon(?:Data|Node) =/.test(src) && src.match(/from '\.\/([a-z0-9-]+)\.mjs'/)?.[1];
+  if (alias) return icon(alias);
   const data = Function(`return ${src.match(/const __icon(?:Data|Node) = ([\s\S]*?);\n/)[1]}`)();
   const node = Array.isArray(data) ? data : data.node;
   const body = node.map(([tag, attrs]) => `<${tag} ${Object.entries(attrs).filter(([k]) => k !== "key").map(([k, v]) => `${k}="${v}"`).join(" ")}/>`).join("");
   return `<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#000000" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">${body}</svg>`;
-};
+}
 
 const K = (k) => `component.${component}.${k}`;
 const B = {
@@ -117,16 +126,65 @@ const B = {
     canvas: bind("color.surface.canvas", "color"),
     font: bind("type.body.font-family", "font"),
   },
+  table: {
+    frameFill: bind("color.surface.default", "color"),
+    frameBorder: bind(K("container.border"), "color"),
+    frameBorderWidth: bind(K("container.border-width"), "number"),
+    frameRadius: bind(K("container.radius"), "number"),
+    gap: bind(K("gap"), "number"),
+    inputHeight: bind("component.input.height", "number"),
+    inputBorder: bind("component.input.border", "color"),
+    inputRadius: bind("component.input.radius", "number"),
+    inputFill: bind("component.input.background", "color"),
+    inputPlaceholder: bind("component.input.placeholder", "color"),
+    inputPaddingX: bind("component.input.padding-x", "number"),
+    inputFontSize: bind("component.input.font-size", "number"),
+    btnFill: bind("component.button.secondary.background", "color"),
+    btnBorder: bind("component.button.secondary.border", "color"),
+    btnLabel: bind("component.button.secondary.label", "color"),
+    btnRadius: bind("component.button.radius", "number"),
+    btnHeight: bind("component.button.height", "number"),
+    btnPaddingX: bind("component.button.padding-x", "number"),
+    btnFontSize: bind("component.button.font-size", "number"),
+    toggleRadius: bind("component.toggle-group.radius", "number"),
+    toggleOn: bind("component.toggle.background.on", "color"),
+    count: bind(K("label"), "color"),
+    headFill: bind("component.table.header-background", "color"),
+    headLabel: bind("component.table.head.label", "color"),
+    headSize: bind("component.table.head.font-size", "number"),
+    sortIcon: bind(K("label"), "color"),
+    rowHeight: bind("component.table.row-height", "number"),
+    rowBorder: bind("component.table.row-border", "color"),
+    cellLabel: bind("component.table.label", "color"),
+    cellSize: bind("component.table.font-size", "number"),
+    cellPaddingX: bind("component.table.cell-padding-x", "number"),
+    dataFont: bind("component.table.cell.font-family", "font"),
+    highlight: bind(K("row.background.hover"), "color"),
+    selected: bind("component.table.row-selected", "color"),
+    edge: bind("component.table.row-selected-edge", "color"),
+    edgeWidth: bind("component.table.row.focus", "number"),
+    boxSize: bind("component.checkbox.size", "number"),
+    boxRadius: bind("component.control.radius", "number"),
+    boxBorder: bind("color.border.strong", "color"),
+    boxChecked: bind("component.control.checked", "color"),
+    boxMark: bind("color.text.on-action", "color"),
+    iconSize: bind("size.icon", "number"),
+    canvas: bind("color.surface.canvas", "color"),
+    font: bind("type.body.font-family", "font"),
+  },
 }[recipe];
+// A binding that resolves to nothing is a mistake in this file, not a gap in the kit.
+for (const [role, b] of Object.entries(B)) if (b.value === null || b.value === undefined || Number.isNaN(b.value)) throw new Error(`${component}: ${role} (${b.path}) resolves to no value.`);
 
 const flat = (l) => l.flatMap((p) => [p, ...(p.children ? flat(p.children) : [])]);
-const icons = Object.fromEntries(
-  [...new Set([...spec.drawing.rows.map((r) => r.icon).filter(Boolean), "chevron-right"])].map((n) => [n, icon(n)]),
-);
-const SPEC = {
+const iconNames = recipe === "menu"
+  ? [...spec.drawing.rows.map((r) => r.icon).filter(Boolean), "chevron-right"]
+  : [...spec.drawing.toolbar.map((t) => t.icon).filter(Boolean), "search", "arrow-up-down", "check"];
+const icons = Object.fromEntries([...new Set(iconNames)].map((n) => [n, icon(n)]));
+return {
   component,
   scheme: schemeId,
-  library: "Open DS · Dense data · Figma kit",
+  library: kitLibrary(s),
   recipe,
   drawing: spec.drawing,
   parts: flat(spec.parts).filter((p) => p.n).map((p) => ({ n: p.n, label: p.label })),
@@ -134,5 +192,13 @@ const SPEC = {
   bind: B,
   icons,
 };
-const renderer = readFileSync(new URL("./renderer.js", import.meta.url), "utf8");
-process.stdout.write(`const SPEC = ${JSON.stringify(SPEC)};\n${renderer}`);
+}
+
+export const renderer = () => readFileSync(new URL("./renderer.js", import.meta.url), "utf8");
+
+if (import.meta.url === `file://${process.argv[1]}`) {
+  const [component, schemeId = "dense-data"] = process.argv.slice(2);
+  if (!component) throw new Error("Usage: build.mjs <component> [scheme]");
+  const SPEC = anatomySpec(component, schemeId);
+  process.stdout.write(`const SPEC = ${JSON.stringify(SPEC)};\n${renderer()}\nreturn await renderAnatomy(SPEC, await loadKit(SPEC.library));\n`);
+}

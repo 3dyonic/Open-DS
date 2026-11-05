@@ -30,6 +30,7 @@ e2e/app/dist/
 figma/kits/
 figma/kits-small/
 figma/plugin/
+figma/anatomy-plugin/
 
 # Agent worktrees (parallel work, merged through scripts/apply-ops.mjs)
 .claude/worktrees/

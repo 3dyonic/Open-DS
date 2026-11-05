@@ -1,12 +1,16 @@
-// The anatomy generator's renderer (OD-229), run by use_figma with SPEC from build.mjs. It reads the
-// published kit's variables (never edits the kit), draws the component's stage and one frame per card
-// on the page "Anatomy / <component>", binds every drawn property to the first kit variable in its
-// chain, and reports what it bound and what fell back to the scheme's value (missing in the kit).
-const report = { bound: {}, fallback: {}, created: [] };
-const vars = new Map();
-for (const c of await figma.teamLibrary.getAvailableLibraryVariableCollectionsAsync())
-  if (c.libraryName === SPEC.library)
-    for (const v of await figma.teamLibrary.getVariablesInLibraryCollectionAsync(c.key)) vars.set(`${c.name}/${v.name}`, v.key);
+// The anatomy generator's renderer (OD-229). renderAnatomy(SPEC, kit) draws one component's stage and
+// one frame per card on the page "Anatomy / <component>", binds every drawn property to the first kit
+// variable in its chain, and reports what it bound and what fell back to the scheme's value (missing in
+// the kit). It reads the published kit's variables and never edits the kit. loadKit reads them once.
+async function loadKit(library) {
+  const vars = new Map();
+  for (const c of await figma.teamLibrary.getAvailableLibraryVariableCollectionsAsync())
+    if (c.libraryName === library)
+      for (const v of await figma.teamLibrary.getVariablesInLibraryCollectionAsync(c.key)) vars.set(`${c.name}/${v.name}`, v.key);
+  return vars;
+}
+async function renderAnatomy(SPEC, vars) {
+const report = { bound: {}, fallback: {} };
 const imported = new Map();
 async function kitVar(role) {
   const b = SPEC.bind[role];
@@ -45,6 +49,13 @@ const faces = (await figma.listAvailableFontsAsync()).filter((f) => f.fontName.f
 const FONT = { family, style: faces.find((x) => /^regular$/i.test(x)) ?? faces[0] ?? "Regular" };
 const BOLD = { family, style: faces.find((x) => /semi ?bold/i.test(x)) ?? faces.find((x) => /bold/i.test(x)) ?? FONT.style };
 await Promise.all([figma.loadFontAsync(FONT), figma.loadFontAsync(BOLD)]);
+// The data font (tables): its regular face, if the scheme names one Figma has.
+let DATA = FONT;
+if (V.dataFont) {
+  const fam = String(V.dataFont.value ?? "").split(",")[0].replace(/["']/g, "").trim();
+  const df = (await figma.listAvailableFontsAsync()).filter((f) => f.fontName.family === fam).map((f) => f.fontName.style);
+  if (df.length) { DATA = { family: fam, style: df.find((x) => /^regular$/i.test(x)) ?? df[0] }; await figma.loadFontAsync(DATA); }
+}
 const text = (chars, sizeRole, colorRole, opacity) => {
   const t = figma.createText();
   t.fontName = FONT;
@@ -84,6 +95,8 @@ const shadow = (css) => {
 };
 
 // The menu recipe: a panel of rows, each row the parts it has; a mark records which node a number sits on.
+const CORNERS = ["topLeftRadius", "topRightRadius", "bottomLeftRadius", "bottomRightRadius"];
+const SIDES = ["strokeTopWeight", "strokeBottomWeight", "strokeLeftWeight", "strokeRightWeight"];
 function menu(rows, show, whole) {
   const marks = [];
   const panel = figma.createAutoLayout("VERTICAL", { name: "Menu" });
@@ -145,6 +158,129 @@ function menu(rows, show, whole) {
 }
 
 // A frame on the scheme's canvas holding a drawing, with the numbers placed on it (the template's badges).
+
+// The table recipe: a toolbar, then a framed table (header row, rows); sections pick what a card shows.
+const box = (checked, sizeRole = "boxSize") => {
+  const b = figma.createFrame();
+  b.name = checked ? "Select box · checked" : "Select box";
+  const sz = V[sizeRole].value || 16;
+  b.resize(sz, sz);
+  num(b, "width", sizeRole); num(b, "height", sizeRole);
+  for (const c of CORNERS) num(b, c, "boxRadius");
+  if (checked) {
+    b.fills = [paint("boxChecked")];
+    const m = svg("check", "boxSize", "boxMark");
+    m.resize(sz * 0.75, sz * 0.75); b.appendChild(m); m.x = sz * 0.125; m.y = sz * 0.125;
+  } else { b.fills = []; b.strokes = [paint("boxBorder")]; b.strokeWeight = 1; }
+  return b;
+};
+function cellText(chars, numeric, colorRole = "cellLabel", sizeRole = "cellSize") {
+  const t = figma.createText();
+  t.fontName = numeric ? DATA : FONT;
+  t.characters = chars;
+  num(t, "fontSize", sizeRole);
+  t.fills = [paint(colorRole)];
+  if (numeric) t.textAlignHorizontal = "RIGHT";
+  return t;
+}
+function trow(cells, opts, marks, headMarks) {
+  const head = opts.head;
+  const r = figma.createAutoLayout("HORIZONTAL", { name: head ? "Header row" : `Row · ${cells[0]}` });
+  r.counterAxisAlignItems = "CENTER";
+  num(r, "minHeight", "rowHeight");
+  r.fills = head ? [paint("headFill")] : opts.state === "highlight" ? [paint("highlight")] : opts.state === "selected" ? [paint("selected")] : [];
+  r.strokes = [paint("rowBorder")]; r.strokeTopWeight = 0; r.strokeLeftWeight = 0; r.strokeRightWeight = 0; r.strokeBottomWeight = 1;
+  if (opts.state === "selected") {
+    r.effects = [{ type: "INNER_SHADOW", color: { ...V.edge.value, a: 1 }, offset: { x: V.edgeWidth.value || 2, y: 0 }, radius: 0, spread: 0, visible: true, blendMode: "NORMAL" }];
+  }
+  const chk = figma.createAutoLayout("HORIZONTAL", { name: "Check cell" });
+  num(chk, "paddingLeft", "cellPaddingX"); num(chk, "paddingRight", "cellPaddingX"); chk.fills = [];
+  const b = box(!!opts.checked); chk.appendChild(b); r.appendChild(chk);
+  if (marks?.check) marks.push_([marks.check, b, "top"]);
+  if (head && headMarks?.check) headMarks.push_([headMarks.check, b, "top"]);
+  SPEC.drawing.columns.forEach((col, k) => {
+    const c = figma.createAutoLayout("HORIZONTAL", { name: `Cell · ${col.label}` });
+    c.counterAxisAlignItems = "CENTER"; c.itemSpacing = 4; c.fills = [];
+    if (col.numeric) c.primaryAxisAlignItems = "MAX";
+    num(c, "paddingLeft", "cellPaddingX"); num(c, "paddingRight", "cellPaddingX");
+    const t = head ? cellText(col.label, false, "headLabel", "headSize") : cellText(cells[k], col.numeric);
+    if (head) t.fontName = BOLD;
+    c.appendChild(t);
+    if (head && col.sort) { const i = svg("arrow-up-down", "iconSize", "sortIcon"); c.appendChild(i); if (k === 0 && headMarks?.sort) headMarks.push_([headMarks.sort, i, "top"]); }
+    if (head && k === 0 && headMarks?.label) headMarks.push_([headMarks.label, t, "top"]);
+    if (!head && k === 0 && marks?.cell) marks.push_([marks.cell, t, "top"]);
+    r.appendChild(c);
+    c.layoutGrow = 1;
+  });
+  if (head && headMarks?.row) headMarks.push_([headMarks.row, r, "right"]);
+  if (!head && marks?.row) marks.push_([marks.row, r, "right"]);
+  return r;
+}
+function toolbar(out) {
+  const bar = figma.createAutoLayout("HORIZONTAL", { name: "Toolbar" });
+  bar.counterAxisAlignItems = "CENTER"; bar.itemSpacing = 8; bar.fills = [];
+  for (const t of SPEC.drawing.toolbar) {
+    let n;
+    if (t.kind === "search") {
+      n = figma.createAutoLayout("HORIZONTAL", { name: "Search field" });
+      n.counterAxisAlignItems = "CENTER"; n.itemSpacing = 6;
+      num(n, "minHeight", "inputHeight"); num(n, "paddingLeft", "inputPaddingX"); num(n, "paddingRight", "inputPaddingX");
+      for (const c of CORNERS) num(n, c, "inputRadius");
+      n.fills = [paint("inputFill")]; n.strokes = [paint("inputBorder")]; n.strokeWeight = 1;
+      n.appendChild(svg("search", "iconSize", "inputPlaceholder"));
+      n.appendChild(cellText(t.label, false, "inputPlaceholder", "inputFontSize"));
+    } else if (t.kind === "button") {
+      n = figma.createAutoLayout("HORIZONTAL", { name: `Button · ${t.label}` });
+      n.counterAxisAlignItems = "CENTER"; n.itemSpacing = 6;
+      num(n, "minHeight", "btnHeight"); num(n, "paddingLeft", "btnPaddingX"); num(n, "paddingRight", "btnPaddingX");
+      for (const c of CORNERS) num(n, c, "btnRadius");
+      n.fills = [paint("btnFill")]; n.strokes = [paint("btnBorder")]; n.strokeWeight = 1;
+      if (t.icon) n.appendChild(svg(t.icon, "iconSize", "btnLabel"));
+      n.appendChild(cellText(t.label, false, "btnLabel", "btnFontSize"));
+    } else if (t.kind === "count") {
+      n = cellText(t.label, false, "count", "cellSize");
+    } else {
+      n = figma.createAutoLayout("HORIZONTAL", { name: "Density switch" });
+      n.fills = []; n.strokes = [paint("btnBorder")]; n.strokeWeight = 1;
+      for (const c of CORNERS) num(n, c, "toggleRadius");
+      t.options.forEach((o, k) => {
+        const seg = figma.createAutoLayout("HORIZONTAL", { name: o });
+        seg.counterAxisAlignItems = "CENTER"; num(seg, "minHeight", "btnHeight"); num(seg, "paddingLeft", "btnPaddingX"); num(seg, "paddingRight", "btnPaddingX");
+        seg.fills = k === 0 ? [paint("toggleOn")] : [];
+        seg.appendChild(cellText(o, false, "btnLabel", "btnFontSize"));
+        n.appendChild(seg);
+      });
+    }
+    bar.appendChild(n);
+    out.push_([t.n, n, "top"]);
+  }
+  return bar;
+}
+function table(sections, show) {
+  const marks = []; marks.push_ = (m) => marks.push(m);
+  const wrap = figma.createAutoLayout("VERTICAL", { name: "Data table" });
+  num(wrap, "itemSpacing", "gap"); wrap.fills = [];
+  if (sections.includes("toolbar")) wrap.appendChild(toolbar(marks));
+  const head = sections.includes("table") || sections.includes("header");
+  const picked = sections.includes("table") ? SPEC.drawing.rows : sections.filter((x) => x.startsWith("row:")).map((x) => SPEC.drawing.rows[+x.split(":")[1]]);
+  if (head || picked.length) {
+    const fr = figma.createAutoLayout("VERTICAL", { name: "Table" });
+    fr.resize(560, 10); fr.primaryAxisSizingMode = "AUTO"; fr.counterAxisSizingMode = "FIXED";
+    fr.fills = [paint("frameFill")]; fr.strokes = [paint("frameBorder")];
+    for (const w of SIDES) num(fr, w, "frameBorderWidth");
+    for (const c of CORNERS) num(fr, c, "frameRadius");
+    fr.clipsContent = true;
+    if (head) { const h = trow([], { head: true }, null, Object.assign({ push_: (m) => marks.push(m) }, SPEC.drawing.header)); fr.appendChild(h); h.layoutSizingHorizontal = "FILL"; }
+    for (const rw of picked) {
+      // The select box is numbered on the header when the header is drawn, else on its own row.
+      const m = Object.assign({ push_: (x) => marks.push(x) }, rw.marks ?? {}, head ? { check: undefined } : {});
+      const r = trow(rw.cells, { state: rw.state, checked: rw.checked }, m);
+      fr.appendChild(r); r.layoutSizingHorizontal = "FILL";
+    }
+    wrap.appendChild(fr);
+  }
+  return { node: wrap, marks: marks.filter(([n]) => !show || show.has(n)) };
+}
 function plate(name, built, w) {
   const f = figma.createFrame();
   f.name = name;
@@ -155,6 +291,7 @@ function plate(name, built, w) {
   built.node.x = 40; built.node.y = 32;
   f.resize(Math.max(w, built.node.width + 80), built.node.height + 64);
   const origin = f.absoluteTransform;
+  const placed = [];
   for (const [n, node, where] of built.marks) {
     const bb = node.absoluteBoundingBox, fb = f.absoluteBoundingBox;
     const x = bb.x - fb.x, y = bb.y - fb.y;
@@ -176,6 +313,8 @@ function plate(name, built, w) {
     t.resize(16, 16);
     badge.appendChild(t);
     f.appendChild(badge);
+    while (placed.some(([px, py]) => Math.abs(px - pos[0]) < 18 && Math.abs(py - pos[1]) < 18)) pos[0] += 20;
+    placed.push([pos[0], pos[1]]);
     badge.x = pos[0]; badge.y = pos[1];
   }
   void origin;
@@ -189,22 +328,26 @@ if (!page) { page = figma.createPage(); page.name = pageName; }
 await figma.setCurrentPageAsync(page);
 for (const c of [...page.children]) c.remove();
 const all = new Set(SPEC.parts.map((p) => p.n));
-const stage = plate(`${SPEC.component}/${SPEC.scheme}/stage`, menu(SPEC.drawing.rows, null, true), 360);
-stage.x = 0; stage.y = 0;
-const ids = { page: page.id, stage: stage.id, cards: [] };
-let x = stage.width + 64;
-SPEC.cards.forEach((c, i) => {
-  const show = new Set(c.parts);
+const draw = (c, show) => {
+  if (SPEC.recipe === "table") return table(c ? c.image?.sections ?? [] : ["toolbar", "table"], show);
+  if (!c) return menu(SPEC.drawing.rows, null, true);
   const rows = c.image?.row
     ? [{ ...SPEC.drawing.rows.find((r) => r.label === c.image.row), state: undefined, marks: c.image.marks }]
     : c.parts.some((n) => (SPEC.drawing.surface ?? []).includes(n) || (SPEC.drawing.shadow ?? []).includes(n))
       ? SPEC.drawing.rows
       : SPEC.drawing.rows.filter((r) => Object.values(r.marks ?? {}).some((n) => show.has(n)));
-  const whole = rows === SPEC.drawing.rows;
-  const f = plate(`${SPEC.component}/${SPEC.scheme}/card-${i + 1}`, menu(rows, show, whole), 280);
+  return menu(rows, show, rows === SPEC.drawing.rows);
+};
+const stage = plate(`${SPEC.component}/${SPEC.scheme}/stage`, draw(null, null), 360);
+stage.x = 0; stage.y = 0;
+const ids = { page: page.id, stage: stage.id, cards: [] };
+let x = stage.width + 64;
+SPEC.cards.forEach((c, i) => {
+  const f = plate(`${SPEC.component}/${SPEC.scheme}/card-${i + 1}`, draw(c, new Set(c.parts)), 280);
   f.x = x; f.y = 0;
   x += f.width + 32;
   ids.cards.push(f.id);
 });
 void all;
 return { ids, bound: report.bound, fallback: report.fallback };
+}
