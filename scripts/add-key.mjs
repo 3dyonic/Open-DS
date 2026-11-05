@@ -4,7 +4,7 @@
 //   node scripts/add-key.mjs <id> --to <semantic> --description "<text>"
 //
 // It edits the grammar and every scheme. The component's source then reads var(--<id with - for />).
-import { readFileSync, writeFileSync } from "node:fs";
+import { appendFileSync, readFileSync, writeFileSync } from "node:fs";
 
 const ROOT = new URL("..", import.meta.url).pathname;
 const SCHEMES = ["dense-data", "content-first", "accessible-first", "brand-expressive", "multi-brand"];
@@ -36,4 +36,5 @@ for (const s of SCHEMES) {
   n[path.at(-1)] = { $value: `{${to}}`, $description: description };
   write(`schemes/${s}.json`, sc);
 }
+if (process.env.OPS_LOG) appendFileSync(process.env.OPS_LOG, `${JSON.stringify({ op: "add", id, to, description })}\n`);
 console.log(`${id} → ${to}: grammar and ${SCHEMES.length} schemes. Read it as var(--${id.split("/").filter((x) => x !== "@").join("-")}).`);

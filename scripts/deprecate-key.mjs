@@ -3,7 +3,7 @@
 // Use rename-key.mjs instead when the new key does the same job (it aliases the old to the new).
 //
 //   node scripts/deprecate-key.mjs <old-id> --by <new-id> [--ticket OD-243]
-import { readFileSync, writeFileSync } from "node:fs";
+import { appendFileSync, readFileSync, writeFileSync } from "node:fs";
 
 const ROOT = new URL("..", import.meta.url).pathname;
 const SCHEMES = ["dense-data", "content-first", "accessible-first", "brand-expressive", "multi-brand"];
@@ -31,4 +31,5 @@ for (const s of SCHEMES) {
   n.$deprecated = `Use component.${by.replaceAll("/", ".")}. Removed in the next minor release.`;
   write(`schemes/${s}.json`, sc);
 }
+if (process.env.OPS_LOG) appendFileSync(process.env.OPS_LOG, `${JSON.stringify({ op: "deprecate", id, by })}\n`);
 console.log(`${id}: deprecated, replaced by ${by}; it keeps its own value until the next minor release.`);

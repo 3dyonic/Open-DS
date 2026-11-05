@@ -4,7 +4,7 @@
 //   node scripts/link-key.mjs <id> --to <semantic> [--description "<text>"]
 //
 // Ids are grammar key ids (menubar/trigger/radius). Run the tokens and docs builds after.
-import { readFileSync, writeFileSync } from "node:fs";
+import { appendFileSync, readFileSync, writeFileSync } from "node:fs";
 
 const ROOT = new URL("..", import.meta.url).pathname;
 const SCHEMES = ["dense-data", "content-first", "accessible-first", "brand-expressive", "multi-brand"];
@@ -34,4 +34,5 @@ for (const s of SCHEMES) {
   if (description) n.$description = description;
   write(`schemes/${s}.json`, sc);
 }
+if (process.env.OPS_LOG) appendFileSync(process.env.OPS_LOG, `${JSON.stringify({ op: "link", id, to, ...(description && { description }) })}\n`);
 console.log(`${id}: ${from} → ${to}, grammar and ${SCHEMES.length} schemes.`);

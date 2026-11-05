@@ -6,7 +6,7 @@
 //
 // Ids are grammar key ids (dropdown-menu/item/sunken). It edits the grammar, every scheme and the
 // component's source. Run the tokens and docs builds after.
-import { existsSync, readFileSync, writeFileSync } from "node:fs";
+import { appendFileSync, existsSync, readFileSync, writeFileSync } from "node:fs";
 
 const ROOT = new URL("..", import.meta.url).pathname;
 const SCHEMES = ["dense-data", "content-first", "accessible-first", "brand-expressive", "multi-brand"];
@@ -15,6 +15,7 @@ const opt = (name) => { const i = args.indexOf(`--${name}`); return i < 0 ? null
 const to = opt("to");
 const description = opt("description");
 const ticket = opt("ticket") ?? "OD-241";
+const noSource = args.includes("--no-source") && args.splice(args.indexOf("--no-source"), 1);
 const [oldId, newId0] = args;
 // A new id that already names a group (trigger/background when trigger/background/hover exists) is
 // that group's base, @: the same CSS variable, and the group keeps its keys.
@@ -112,6 +113,11 @@ for (const id of SCHEMES) {
   write(`schemes/${id}.json`, s);
 }
 
+if (process.env.OPS_LOG) appendFileSync(process.env.OPS_LOG, `${JSON.stringify({ op: "rename", from: oldId, id: newId0, ...(to && { to }), ...(description && { description }) })}\n`);
+if (noSource) {
+  console.log(`${oldId} → ${newId}: grammar and ${SCHEMES.length} schemes (source left as it is).`);
+  process.exit(0);
+}
 // Source: the component reads the new CSS variable.
 // A key filed under a shared recipe (overlay) lives in the component its id names (tooltip/…).
 const own = `ui/src/components/${comp.id}.tsx`;
