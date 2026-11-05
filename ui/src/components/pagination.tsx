@@ -67,7 +67,7 @@ function PaginationPrevious({ className, ...props }: React.ComponentProps<typeof
       aria-label="Go to previous page"
       size="default"
       className={cn(
-        "gap-[var(--pagination-gap)] px-[var(--pagination-padding-x)] sm:pl-[var(--pagination-padding-left)]",
+        "gap-[var(--pagination-link-gap)] px-[var(--pagination-link-padding-x)] sm:pl-[var(--pagination-previous-padding-left)]",
         className,
       )}
       {...props}
@@ -84,7 +84,7 @@ function PaginationNext({ className, ...props }: React.ComponentProps<typeof Pag
       aria-label="Go to next page"
       size="default"
       className={cn(
-        "gap-[var(--pagination-gap)] px-[var(--pagination-padding-x)] sm:pr-[var(--pagination-padding-right)]",
+        "gap-[var(--pagination-link-gap)] px-[var(--pagination-link-padding-x)] sm:pr-[var(--pagination-next-padding-right)]",
         className,
       )}
       {...props}
@@ -103,7 +103,7 @@ function PaginationEllipsis({ className, ...props }: React.ComponentProps<"span"
       className={cn("flex size-9 items-center justify-center", className)}
       {...props}
     >
-      <MoreHorizontalIcon className="size-[var(--pagination-icon-size)]" />
+      <MoreHorizontalIcon className="size-[var(--pagination-ellipsis-icon-size)]" />
       <span className="sr-only">More pages</span>
     </span>
   );

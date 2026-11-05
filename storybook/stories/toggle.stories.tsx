@@ -15,6 +15,14 @@ export const Playground: Story = {};
 
 export const Examples: Story = {
   render: () => (
-    <Show component="toggle">{(s) => <Toggle aria-label={s.actions.secondary}>{s.actions.secondary}</Toggle>}</Show>
+    <Show component="toggle">
+      {(s) => (
+        <div className="flex flex-wrap items-center gap-[var(--space-gap-default)]">
+          {/* Filter toggles: one off, one on, so the on state (its fill and edge) shows. */}
+          <Toggle>{s.statuses[0].label}</Toggle>
+          <Toggle defaultPressed>{s.statuses[1].label}</Toggle>
+        </div>
+      )}
+    </Show>
   ),
 };

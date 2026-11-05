@@ -22,7 +22,7 @@ export const buttonVariants = cva(
     "h-[var(--button-height)] px-[var(--button-padding-x)] rounded-[var(--button-radius)]",
     "text-[length:var(--button-font-size)] [font-weight:var(--button-font-weight)] [font-family:var(--button-font-family)]",
     "transition-colors duration-[var(--transition-duration)] ease-[var(--transition-easing)]",
-    "outline-none focus-visible:ring-[length:var(--button-focus)] focus-visible:ring-[color:var(--button-focus-ring)] focus-visible:ring-offset-[length:var(--button-focus-offset)] focus-visible:ring-offset-[color:var(--button-canvas)]",
+    "outline-none focus-visible:ring-[length:var(--button-focus)] focus-visible:ring-[color:var(--button-focus-ring)] focus-visible:ring-offset-[length:var(--button-focus-offset)] focus-visible:ring-offset-[color:var(--button-focus-ring-offset)]",
     "disabled:pointer-events-none disabled:bg-[var(--button-disabled-background)] disabled:text-[var(--button-disabled-label)] disabled:border-[var(--button-disabled-border)]",
     "aria-disabled:cursor-not-allowed aria-disabled:bg-[var(--button-disabled-background)] aria-disabled:text-[var(--button-disabled-label)] aria-disabled:border-[var(--button-disabled-border)] aria-disabled:hover:bg-[var(--button-disabled-background)]",
     "[&_svg]:size-[var(--button-icon-size)] [&_svg]:shrink-0",

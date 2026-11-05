@@ -50,6 +50,32 @@ export const Examples: Story = {
               ))}
             </SelectContent>
           </Select>
+          <Label htmlFor="choice-bad">{s.select!.label}</Label>
+          <Select defaultValue={s.select!.value}>
+            <SelectTrigger id="choice-bad" aria-invalid>
+              <SelectValue />
+            </SelectTrigger>
+            <SelectContent>
+              {s.select!.options.map((o) => (
+                <SelectItem key={o} value={o}>
+                  {o}
+                </SelectItem>
+              ))}
+            </SelectContent>
+          </Select>
+          <Label htmlFor="choice-off">{s.select!.label}</Label>
+          <Select defaultValue={s.select!.value} disabled>
+            <SelectTrigger id="choice-off">
+              <SelectValue />
+            </SelectTrigger>
+            <SelectContent>
+              {s.select!.options.map((o) => (
+                <SelectItem key={o} value={o}>
+                  {o}
+                </SelectItem>
+              ))}
+            </SelectContent>
+          </Select>
         </div>
       )}
     </Show>

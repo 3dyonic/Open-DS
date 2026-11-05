@@ -8,6 +8,26 @@ import { componentGaps, drawsOwnEmpty } from "../src/gaps.mjs";
 const roots = assetRoots();
 const g = grammar(roots);
 const gaps = (id) => componentGaps(loadScheme(id, roots), g, roots);
+// A copy of the components with one file changed, to pin a case the components no longer have.
+async function fixture(file, change) {
+  const { cpSync, mkdtempSync, readFileSync, writeFileSync } = await import("node:fs");
+  const { tmpdir } = await import("node:os");
+  const { join } = await import("node:path");
+  const ui = join(mkdtempSync(join(tmpdir(), "od-gaps-")), "src");
+  cpSync(roots.ui, ui, { recursive: true });
+  const f = join(ui, "components", file);
+  const before = readFileSync(f, "utf8");
+  const after = change(before);
+  assert.notEqual(after, before, `the fixture changes ${file}`);
+  writeFileSync(f, after);
+  return { ui };
+}
+// A scheme under its own id, so the gap cache does not answer for the real one.
+const fakeScheme = (tag) => {
+  const s = structuredClone(loadScheme("dense-data", roots));
+  s.id = `dense-data-${tag}`;
+  return s;
+};
 
 test("nested-corner: a pill option inside a rounded menu, and not where corners are concentric", () => {
   // The known case, as it was before radius.option (OD-246): Content first's menu item on the pill.
@@ -35,9 +55,13 @@ test("nested-corner: a pill option inside a rounded menu, and not where corners 
     );
 });
 
-test("borrows-a-key: a component that reads another component's own key", () => {
+test("borrows-a-key: a component that reads another component's own key", async () => {
+  // A fixture: the checkbox given back the button's focus ring, as it read before OD-243.
+  const { ui } = await fixture("checkbox.tsx", (src) =>
+    src.replace("var(--checkbox-focus-ring)", "var(--button-focus-ring)"),
+  );
   assert.ok(
-    gaps("dense-data").some(
+    componentGaps(fakeScheme("borrow"), g, { ...roots, ui }).some(
       (x) =>
         x.kind === "borrows-a-key" &&
         x.component === "checkbox" &&
@@ -104,10 +128,13 @@ test("nested-corner: a trigger in a bar nests like an option in a menu", () => {
   );
 });
 
-test("fades-a-color: an opacity modifier on a key or a named color", () => {
-  // A color faded by hand. The known case: the calendar's focus ring at 50%.
+test("fades-a-color: an opacity modifier on a key or a named color", async () => {
+  // A fixture: the calendar's focus ring faded to 50% by hand, as it was before OD-243.
+  const { ui } = await fixture("calendar.tsx", (src) =>
+    src.replace("var(--calendar-focus-ring)]", "var(--calendar-focus-ring)]/50"),
+  );
   assert.ok(
-    gaps("dense-data").some(
+    componentGaps(fakeScheme("fade"), g, { ...roots, ui }).some(
       (x) => x.kind === "fades-a-color" && x.component === "calendar",
     ),
   );

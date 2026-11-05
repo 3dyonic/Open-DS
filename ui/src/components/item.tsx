@@ -23,13 +23,13 @@ function ItemSeparator({ className, ...props }: React.ComponentProps<typeof Sepa
 }
 
 const itemVariants = cva(
-  "group/item flex flex-wrap items-center rounded-[var(--item-radius)] border border-transparent text-[length:var(--item-font-size)]/[var(--item-line-height)] outline-none transition-colors duration-[var(--item-duration)] focus-visible:border-[color:var(--item-border-focus)] [a]:transition-colors [a]:hover:bg-[color:var(--item-background-hover)]/50 focus-visible:ring-[length:var(--item-focus)] focus-visible:ring-[color:var(--item-focus-ring-focus)] focus-visible:ring-offset-[length:var(--item-focus-offset)] focus-visible:ring-offset-[color:var(--item-focus-ring-offset-focus)]",
+  "group/item flex flex-wrap items-center rounded-[var(--item-radius)] border-[length:var(--item-border-width)] border-transparent text-[length:var(--item-font-size)]/[var(--item-line-height)] outline-none transition-colors duration-[var(--item-duration)] focus-visible:border-[color:var(--item-border-focus)] [a]:transition-colors [a]:hover:bg-[color:var(--item-background-hover)] focus-visible:ring-[length:var(--item-focus)] focus-visible:ring-[color:var(--item-focus-ring-focus)] focus-visible:ring-offset-[length:var(--item-focus-offset)] focus-visible:ring-offset-[color:var(--item-focus-ring-offset-focus)]",
   {
     variants: {
       variant: {
         default: "bg-transparent",
         outline: "border-[color:var(--item-outline-border)]",
-        muted: "bg-[color:var(--item-muted-background)]/50",
+        muted: "bg-[color:var(--item-muted-background)]",
       },
       size: {
         default: "gap-[var(--item-default-gap)] p-[var(--item-default-padding)]",
@@ -60,13 +60,13 @@ function Item({
 }
 
 const itemMediaVariants = cva(
-  "flex shrink-0 items-center justify-center gap-[var(--item-gap)] group-has-[[data-slot=item-description]]/item:translate-y-0.5 group-has-[[data-slot=item-description]]/item:self-start [&_svg]:pointer-events-none",
+  "flex shrink-0 items-center justify-center gap-[var(--item-media-gap)] group-has-[[data-slot=item-description]]/item:translate-y-0.5 group-has-[[data-slot=item-description]]/item:self-start [&_svg]:pointer-events-none",
   {
     variants: {
       variant: {
         default: "bg-transparent",
-        icon: "size-[var(--item-icon-size)] rounded-[var(--item-icon-radius)] border bg-[color:var(--item-icon-background)] [&_svg:not([class*='size-'])]:size-[var(--item-icon-icon-size)]",
-        image: "size-10 overflow-hidden rounded-[var(--item-image-radius)] [&_img]:size-full [&_img]:object-cover",
+        icon: "size-[var(--item-media-icon-size)] rounded-[var(--item-media-icon-radius)] border-[length:var(--item-media-icon-border-width)] border-[color:var(--item-media-icon-border)] bg-[color:var(--item-media-icon-background)] [&_svg:not([class*='size-'])]:size-[var(--item-media-icon-icon-size)]",
+        image: "size-10 overflow-hidden rounded-[var(--item-media-image-radius)] [&_img]:size-full [&_img]:object-cover",
       },
     },
     defaultVariants: { variant: "default" },

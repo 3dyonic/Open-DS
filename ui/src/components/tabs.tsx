@@ -27,10 +27,12 @@ export function TabsTrigger({ className, ...props }: React.ComponentProps<typeof
     <TabsPrimitive.Trigger
       data-slot="tabs-trigger"
       className={cn(
-        "-mb-px inline-flex h-[var(--tabs-trigger-height)] items-center border-b-2 border-transparent text-[var(--tabs-label)]",
+        // The edge sits on the list's line: the trigger reaches down by the line's own width.
+        "-mb-[var(--tabs-list-border-width)] inline-flex h-[var(--tabs-trigger-height)] items-center px-[var(--tabs-trigger-padding-x)] border-b-[length:var(--tabs-trigger-edge-width)] border-transparent text-[var(--tabs-trigger-label)]",
         "[font-family:var(--tabs-trigger-font-family)] text-[length:var(--tabs-trigger-font-size)] [font-weight:var(--tabs-trigger-font-weight)]",
-        "data-[state=active]:border-[var(--tabs-indicator)] data-[state=active]:text-[var(--tabs-label-active)]",
-        "outline-none focus-visible:ring-[length:var(--tabs-focus)] focus-visible:ring-[color:var(--button-focus-ring)] focus-visible:ring-offset-[length:var(--tabs-trigger-focus-offset)] focus-visible:ring-offset-[color:var(--tabs-canvas)]",
+        // The current tab: the selected fill and an edge, so it is never shown by color alone.
+        "data-[state=active]:bg-[var(--tabs-trigger-background-current)] data-[state=active]:border-[var(--tabs-trigger-edge-current)]",
+        "outline-none focus-visible:ring-[length:var(--tabs-trigger-focus-width)] focus-visible:ring-[color:var(--tabs-trigger-focus-ring)] focus-visible:ring-offset-[length:var(--tabs-trigger-focus-offset)] focus-visible:ring-offset-[color:var(--tabs-trigger-focus-ring-offset)]",
         className,
       )}
       {...props}

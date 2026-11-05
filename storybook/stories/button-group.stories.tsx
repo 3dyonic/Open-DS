@@ -1,5 +1,6 @@
 import type { Meta, StoryObj } from "@storybook/react-vite";
-import { Button, ButtonGroup } from "@open-ds/ui";
+import { Button, ButtonGroup, ButtonGroupSeparator, ButtonGroupText } from "@open-ds/ui";
+import { ChevronDown } from "lucide-react";
 import { Show } from "../src/samples";
 
 const meta = {
@@ -28,6 +29,19 @@ export const Examples: Story = {
           <ButtonGroup aria-label={s.screen}>
             <Button variant="secondary">{s.actions.secondary}</Button>
             <Button variant="secondary">{s.actions.primary}</Button>
+          </ButtonGroup>
+          {/* A split action: the main action and its options, apart by a separator. */}
+          <ButtonGroup aria-label={s.actions.primary}>
+            <Button>{s.actions.primary}</Button>
+            <ButtonGroupSeparator />
+            <Button size="icon" aria-label={s.menu?.trigger ?? "More actions"}>
+              <ChevronDown />
+            </Button>
+          </ButtonGroup>
+          {/* A text part names what the buttons beside it act on. */}
+          <ButtonGroup aria-label={s.screen}>
+            <ButtonGroupText>{s.screen}</ButtonGroupText>
+            <Button variant="secondary">{s.actions.secondary}</Button>
           </ButtonGroup>
           {s.menu && (
             <ButtonGroup aria-label={s.menu.trigger} orientation="vertical">

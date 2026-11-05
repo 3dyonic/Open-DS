@@ -10415,8 +10415,9 @@
           "$description": "Focus of the button."
         },
         "canvas": {
-          "$value": "{color.surface.canvas}",
-          "$description": "Canvas of the button."
+          "$value": "{button.focus-ring-offset}",
+          "$description": "Deprecated: use component.button.focus-ring-offset (OD-243). Canvas of the button.",
+          "$deprecated": "Use component.button.focus-ring-offset. Removed in the next minor release."
         },
         "compact": {
           "height": {
@@ -10437,6 +10438,10 @@
         "focus-offset": {
           "$value": "{border-width.focus-offset}",
           "$description": "Gap between the button and its focus ring."
+        },
+        "focus-ring-offset": {
+          "$value": "{color.surface.canvas}",
+          "$description": "Color of the gap between a button and its focus ring: the canvas, so the ring reads on any fill."
         }
       },
       "input": {
@@ -10525,24 +10530,36 @@
         "focus-ring-offset": {
           "$value": "{color.surface.canvas}",
           "$description": "The gap behind the input's focus ring: the page canvas."
+        },
+        "duration": {
+          "$value": "{motion.duration.feedback}",
+          "$description": "How fast the input changes state: the feedback speed."
+        },
+        "easing": {
+          "$value": "{motion.easing.standard}",
+          "$description": "Easing of the input's state changes: the feedback easing."
         }
       },
       "control": {
         "checked": {
           "$value": "{color.action.primary.@}",
-          "$description": "Fill of a checked checkbox or an on switch."
+          "$description": "Deprecated: use checkbox/background/checked (OD-243). Fill of a checked checkbox or an on switch.",
+          "$deprecated": "Use component.checkbox.background.checked. Removed in the next minor release."
         },
         "track": {
           "$value": "{color.border.strong}",
-          "$description": "Track of an off switch."
+          "$description": "Deprecated: use switch/track/background/@ (OD-243). Track of an off switch.",
+          "$deprecated": "Use component.switch.track.background.@. Removed in the next minor release."
         },
         "thumb": {
           "$value": "{color.surface.default}",
-          "$description": "Switch thumb and checkmark color."
+          "$description": "Deprecated: use switch/thumb/background (OD-243). Switch thumb and checkmark color.",
+          "$deprecated": "Use component.switch.thumb.background. Removed in the next minor release."
         },
         "radius": {
           "$value": "{radius.badge}",
-          "$description": "Checkbox corner radius."
+          "$description": "Deprecated: use checkbox/radius (OD-243). Checkbox corner radius.",
+          "$deprecated": "Use component.checkbox.radius. Removed in the next minor release."
         }
       },
       "badge": {
@@ -10784,6 +10801,10 @@
           "font-weight": {
             "$value": "{type.label.font-weight}",
             "$description": "Head font weight of the table."
+          },
+          "padding-x": {
+            "$value": "{space.inset.cell-x}",
+            "$description": "Horizontal padding inside a header cell: a table cell's inset, so headers line up with their columns."
           }
         },
         "cell": {
@@ -10795,23 +10816,26 @@
       },
       "tabs": {
         "indicator": {
-          "$value": "{color.action.primary.@}",
-          "$description": "Active tab indicator."
+          "$value": "{tabs.trigger.edge.current}",
+          "$description": "Deprecated: use component.tabs.trigger.edge.current (OD-243). Active tab indicator.",
+          "$deprecated": "Use component.tabs.trigger.edge.current. Removed in the next minor release."
         },
         "label": {
           "@": {
-            "$value": "{color.text.secondary}",
-            "$description": "Inactive tab label."
+            "$value": "{tabs.trigger.label}",
+            "$description": "Deprecated: use component.tabs.trigger.label (OD-243). Inactive tab label.",
+            "$deprecated": "Use component.tabs.trigger.label. Removed in the next minor release."
           },
           "active": {
             "$value": "{color.text.primary}",
-            "$description": "Active tab label."
+            "$description": "Deprecated: use tabs/trigger/label (OD-243). Active tab label.",
+            "$deprecated": "Use component.tabs.trigger.label. Removed in the next minor release."
           }
         },
         "list": {
           "gap": {
-            "$value": "{space.gap.group}",
-            "$description": "List gap of the tabs."
+            "$value": "{space.gap.tight}",
+            "$description": "Gap between the tab triggers in the list. The triggers carry their own padding, so the gap is the tight step between related controls."
           },
           "border-width": {
             "$value": "{border-width.default}",
@@ -10842,15 +10866,53 @@
           "focus-offset": {
             "$value": "{border-width.focus-offset}",
             "$description": "Gap between the tabs trigger and its focus ring."
+          },
+          "label": {
+            "$value": "{color.text.primary}",
+            "$description": "Label of a tab trigger, at rest and when current. The current tab shows on its fill and its edge, not on its text."
+          },
+          "edge": {
+            "current": {
+              "$value": "{color.border.selected}",
+              "$description": "Edge under the current tab, beside its fill, so the current tab is never shown by color alone."
+            }
+          },
+          "edge-width": {
+            "$value": "{border-width.default}",
+            "$description": "Width of the edge under each tab trigger: clear at rest, the selected edge on the current tab. It is a border, so it follows the scheme's border width."
+          },
+          "background": {
+            "current": {
+              "$value": "{color.surface.selected}",
+              "$description": "Fill of the current tab trigger: the selected and current decision."
+            }
+          },
+          "padding-x": {
+            "$value": "{space.inset.control-x}",
+            "$description": "Horizontal padding inside a tab trigger, so the current tab's fill holds its label like a control."
+          },
+          "focus-width": {
+            "$value": "{border-width.focus}",
+            "$description": "Width of the focus ring on a tab trigger."
+          },
+          "focus-ring-offset": {
+            "$value": "{color.surface.canvas}",
+            "$description": "Color of the gap between a tab trigger and its focus ring: the canvas, so the ring reads on any fill."
+          },
+          "focus-ring": {
+            "$value": "{color.border.focus}",
+            "$description": "Focus ring color of a tab trigger, at full strength."
           }
         },
         "focus": {
-          "$value": "{border-width.focus}",
-          "$description": "Focus of the tabs."
+          "$value": "{tabs.trigger.focus-width}",
+          "$description": "Deprecated: use component.tabs.trigger.focus-width (OD-243). Focus of the tabs.",
+          "$deprecated": "Use component.tabs.trigger.focus-width. Removed in the next minor release."
         },
         "canvas": {
-          "$value": "{color.surface.canvas}",
-          "$description": "Canvas of the tabs."
+          "$value": "{tabs.trigger.focus-ring-offset}",
+          "$description": "Deprecated: use component.tabs.trigger.focus-ring-offset (OD-243). Canvas of the tabs.",
+          "$deprecated": "Use component.tabs.trigger.focus-ring-offset. Removed in the next minor release."
         },
         "content": {
           "padding-top": {
@@ -10902,8 +10964,8 @@
             "$description": "Content radius of the tooltip."
           },
           "padding-x": {
-            "$value": "{space.gap.default}",
-            "$description": "Content padding x of the tooltip."
+            "$value": "{component-spacing-map.x2}",
+            "$description": "Content padding x of the tooltip: a step of the component spacing map, held still like its padding y, so the hint stays a small label in every scheme."
           },
           "padding-y": {
             "$value": "{component-spacing-map.x1}",
@@ -10924,6 +10986,10 @@
           "label": {
             "$value": "{color.text.inverse}",
             "$description": "Content text of the tooltip."
+          },
+          "duration": {
+            "$value": "{motion.duration.panels}",
+            "$description": "How long the tooltip takes to appear and go: the panel speed, like every floating panel."
           }
         }
       },
@@ -11433,12 +11499,24 @@
             "$description": "Fallback label of the avatar."
           },
           "font-size-2": {
-            "$value": "{type.caption.font-size}",
-            "$description": "Fallback font size 2 of the avatar."
+            "$value": "{avatar.fallback.sm.font-size}",
+            "$description": "Deprecated: use component.avatar.fallback.sm.font-size (OD-243). Fallback font size 2 of the avatar.",
+            "$deprecated": "Use component.avatar.fallback.sm.font-size. Removed in the next minor release."
           },
           "line-height-2": {
-            "$value": "{type.caption.line-height}",
-            "$description": "Fallback line height 2 of the avatar."
+            "$value": "{avatar.fallback.sm.line-height}",
+            "$description": "Deprecated: use component.avatar.fallback.sm.line-height (OD-243). Fallback line height 2 of the avatar.",
+            "$deprecated": "Use component.avatar.fallback.sm.line-height. Removed in the next minor release."
+          },
+          "sm": {
+            "font-size": {
+              "$value": "{type.caption.font-size}",
+              "$description": "Font size of the fallback initials in a small avatar."
+            },
+            "line-height": {
+              "$value": "{type.caption.line-height}",
+              "$description": "Line height of the fallback initials in a small avatar."
+            }
           }
         },
         "badge": {
@@ -11455,14 +11533,24 @@
             "$description": "Badge label of the avatar."
           },
           "focus-ring": {
+            "$value": "{avatar.badge.ring}",
+            "$description": "Deprecated: use component.avatar.badge.ring (OD-243). Badge focus ring of the avatar.",
+            "$deprecated": "Use component.avatar.badge.ring. Removed in the next minor release."
+          },
+          "ring": {
             "$value": "{color.surface.canvas}",
-            "$description": "Badge focus ring of the avatar."
+            "$description": "Color of the ring that cuts the status badge out of the avatar: the page background, so the badge reads as a separate mark. Not a focus ring."
+          },
+          "ring-width": {
+            "$value": "{border-width.default}",
+            "$description": "Width of the ring that cuts the status badge out of the avatar: a border, so it follows the scheme's border weight."
           }
         },
         "group": {
           "focus-ring": {
-            "$value": "{color.surface.canvas}",
-            "$description": "Group focus ring of the avatar."
+            "$value": "{avatar.group.ring}",
+            "$description": "Deprecated: use component.avatar.group.ring (OD-243). Group focus ring of the avatar.",
+            "$deprecated": "Use component.avatar.group.ring. Removed in the next minor release."
           },
           "count": {
             "size": {
@@ -11490,13 +11578,34 @@
               "$description": "Group count label of the avatar."
             },
             "focus-ring": {
-              "$value": "{color.surface.canvas}",
-              "$description": "Group count focus ring of the avatar."
+              "$value": "{avatar.group.count.ring}",
+              "$description": "Deprecated: use component.avatar.group.count.ring (OD-243). Group count focus ring of the avatar.",
+              "$deprecated": "Use component.avatar.group.count.ring. Removed in the next minor release."
             },
             "icon-size": {
               "$value": "{size.icon}",
               "$description": "Group count icon size of the avatar."
+            },
+            "ring": {
+              "$value": "{color.surface.canvas}",
+              "$description": "Color of the ring around the group count, which cuts it out of the avatar beneath: the page background. Not a focus ring."
+            },
+            "ring-width": {
+              "$value": "{border-width.default}",
+              "$description": "Width of the ring around the group count: a border, so it follows the scheme's border weight."
             }
+          },
+          "ring": {
+            "$value": "{color.surface.canvas}",
+            "$description": "Color of the ring around each avatar in a group, which cuts it out of the one beneath: the page background. Not a focus ring."
+          },
+          "ring-width": {
+            "$value": "{border-width.default}",
+            "$description": "Width of the ring around each avatar in a group: a border, so it follows the scheme's border weight."
+          },
+          "overlap": {
+            "$value": "{component-spacing-map.x2}",
+            "$description": "How far each avatar in a group slides under the one before it: a step of the component spacing map."
           }
         }
       },
@@ -11519,8 +11628,15 @@
             "$description": "List label of the breadcrumb."
           },
           "gap-2": {
-            "$value": "{component-spacing-map.x3}",
-            "$description": "List gap 2 of the breadcrumb."
+            "$value": "{breadcrumb.list.wide.gap}",
+            "$description": "Deprecated: use component.breadcrumb.list.wide.gap (OD-243). List gap 2 of the breadcrumb.",
+            "$deprecated": "Use component.breadcrumb.list.wide.gap. Removed in the next minor release."
+          },
+          "wide": {
+            "gap": {
+              "$value": "{component-spacing-map.x3}",
+              "$description": "Gap between the steps of the breadcrumb list on screens from the small breakpoint up."
+            }
           }
         },
         "item": {
@@ -11533,6 +11649,30 @@
           "label-hover": {
             "$value": "{color.text.primary}",
             "$description": "Link label hover of the breadcrumb."
+          },
+          "duration": {
+            "$value": "{motion.duration.feedback}",
+            "$description": "How long the link's color takes to change on hover: a feedback transition."
+          },
+          "easing": {
+            "$value": "{motion.easing.standard}",
+            "$description": "Easing of the link's color change on hover: a feedback transition."
+          },
+          "focus-ring-focus": {
+            "$value": "{color.border.focus}",
+            "$description": "Color of the breadcrumb link's focus ring, at full strength."
+          },
+          "focus-width": {
+            "$value": "{border-width.focus}",
+            "$description": "Width of the breadcrumb link's focus ring."
+          },
+          "focus-ring-offset-focus": {
+            "$value": "{color.surface.canvas}",
+            "$description": "Color of the gap between the breadcrumb link and its focus ring: the page background."
+          },
+          "focus-offset": {
+            "$value": "{border-width.focus-offset}",
+            "$description": "Gap between the breadcrumb link and its focus ring."
           }
         },
         "page": {
@@ -11546,29 +11686,46 @@
           }
         },
         "icon-size": {
-          "$value": "{size.icon}",
-          "$description": "Icon size of the breadcrumb."
+          "$value": "{breadcrumb.ellipsis.icon-size}",
+          "$description": "Deprecated: use component.breadcrumb.ellipsis.icon-size (OD-243). Icon size of the breadcrumb.",
+          "$deprecated": "Use component.breadcrumb.ellipsis.icon-size. Removed in the next minor release."
+        },
+        "ellipsis": {
+          "icon-size": {
+            "$value": "{size.icon}",
+            "$description": "Size of the ellipsis icon that stands for the hidden steps of the breadcrumb."
+          }
+        },
+        "separator": {
+          "icon-size": {
+            "$value": "{size.icon}",
+            "$description": "Size of the chevron between the steps of the breadcrumb: an icon next to text."
+          }
         }
       },
       "bubble": {
         "them": {
           "background": {
-            "$value": "{color.surface.sunken}",
-            "$description": "Them background of the bubble."
+            "$value": "{bubble.body.them.background}",
+            "$description": "Deprecated: use component.bubble.body.them.background (OD-243). Them background of the bubble.",
+            "$deprecated": "Use component.bubble.body.them.background. Removed in the next minor release."
           },
           "label": {
-            "$value": "{color.text.primary}",
-            "$description": "Them label of the bubble."
+            "$value": "{bubble.body.them.label}",
+            "$description": "Deprecated: use component.bubble.body.them.label (OD-243). Them label of the bubble.",
+            "$deprecated": "Use component.bubble.body.them.label. Removed in the next minor release."
           }
         },
         "me": {
           "background": {
-            "$value": "{color.action.primary.@}",
-            "$description": "Me background of the bubble."
+            "$value": "{bubble.body.me.background}",
+            "$description": "Deprecated: use component.bubble.body.me.background (OD-243). Me background of the bubble.",
+            "$deprecated": "Use component.bubble.body.me.background. Removed in the next minor release."
           },
           "label": {
-            "$value": "{color.text.on-action}",
-            "$description": "Me label of the bubble."
+            "$value": "{bubble.body.me.label}",
+            "$description": "Deprecated: use component.bubble.body.me.label (OD-243). Me label of the bubble.",
+            "$deprecated": "Use component.bubble.body.me.label. Removed in the next minor release."
           }
         },
         "gap": {
@@ -11576,16 +11733,19 @@
           "$description": "Gap of the bubble."
         },
         "font-size": {
-          "$value": "{type.caption.font-size}",
-          "$description": "Font size of the bubble."
+          "$value": "{bubble.byline.font-size}",
+          "$description": "Deprecated: use component.bubble.byline.font-size (OD-243). Font size of the bubble.",
+          "$deprecated": "Use component.bubble.byline.font-size. Removed in the next minor release."
         },
         "line-height": {
-          "$value": "{type.caption.line-height}",
-          "$description": "Line height of the bubble."
+          "$value": "{bubble.byline.line-height}",
+          "$description": "Deprecated: use component.bubble.byline.line-height (OD-243). Line height of the bubble.",
+          "$deprecated": "Use component.bubble.byline.line-height. Removed in the next minor release."
         },
         "label": {
-          "$value": "{color.text.muted}",
-          "$description": "Label of the bubble."
+          "$value": "{bubble.byline.label}",
+          "$description": "Deprecated: use component.bubble.byline.label (OD-243). Label of the bubble.",
+          "$deprecated": "Use component.bubble.byline.label. Removed in the next minor release."
         },
         "body": {
           "radius": {
@@ -11607,6 +11767,40 @@
           "line-height": {
             "$value": "{type.body.line-height}",
             "$description": "Body line height of the bubble."
+          },
+          "them": {
+            "background": {
+              "$value": "{color.surface.sunken}",
+              "$description": "Fill of the body of a message someone else sent."
+            },
+            "label": {
+              "$value": "{color.text.primary}",
+              "$description": "Text of the body of a message someone else sent."
+            }
+          },
+          "me": {
+            "background": {
+              "$value": "{color.action.primary.@}",
+              "$description": "Fill of the body of a message the viewer sent."
+            },
+            "label": {
+              "$value": "{color.text.on-action}",
+              "$description": "Text of the body of a message the viewer sent, on its fill."
+            }
+          }
+        },
+        "byline": {
+          "font-size": {
+            "$value": "{type.caption.font-size}",
+            "$description": "Size of the byline: who sent the message and when."
+          },
+          "line-height": {
+            "$value": "{type.caption.line-height}",
+            "$description": "Line height of the byline: who sent the message and when."
+          },
+          "label": {
+            "$value": "{color.text.muted}",
+            "$description": "Color of the byline: who sent the message and when."
           }
         }
       },
@@ -11647,6 +11841,14 @@
           "icon-size": {
             "$value": "{size.icon}",
             "$description": "Text icon size of the button group."
+          },
+          "border-width": {
+            "$value": "{border-width.default}",
+            "$description": "Border width of the text part of a button group."
+          },
+          "border": {
+            "$value": "{color.border.default}",
+            "$description": "Border color of the text part of a button group: a quiet edge, since the text is a label, not a control."
           }
         },
         "separator": {
@@ -11746,40 +11948,48 @@
           "$description": "Font weight 2 of the calendar."
         },
         "background-3": {
-          "$value": "{color.surface.sunken}",
-          "$description": "Background 3 of the calendar."
+          "$value": "{calendar.day.range.background}",
+          "$description": "Deprecated: use component.calendar.day.range.background (OD-243). Background 3 of the calendar.",
+          "$deprecated": "Use component.calendar.day.range.background. Removed in the next minor release."
         },
         "label-2": {
-          "$value": "{color.text.primary}",
-          "$description": "Label 2 of the calendar."
+          "$value": "{calendar.day.range.label}",
+          "$description": "Deprecated: use component.calendar.day.range.label (OD-243). Label 2 of the calendar.",
+          "$deprecated": "Use component.calendar.day.range.label. Removed in the next minor release."
         },
         "label-selected": {
           "$value": "{color.text.muted}",
-          "$description": "Label selected of the calendar."
+          "$description": "Deprecated: use calendar/day/selected/label (OD-243). Label selected of the calendar.",
+          "$deprecated": "Use component.calendar.day.selected.label. Removed in the next minor release."
         },
         "disabled-opacity": {
-          "$value": "{opacity.disabled}",
-          "$description": "Disabled opacity of the calendar."
+          "$value": "{calendar.day.disabled-opacity}",
+          "$description": "Deprecated: use component.calendar.day.disabled-opacity (OD-243). Disabled opacity of the calendar.",
+          "$deprecated": "Use component.calendar.day.disabled-opacity. Removed in the next minor release."
         },
         "icon-size": {
           "$value": "{size.icon}",
           "$description": "Icon size of the calendar."
         },
         "background-4": {
-          "$value": "{color.action.primary.@}",
-          "$description": "Background 4 of the calendar."
+          "$value": "{calendar.day.range-ends.background}",
+          "$description": "Deprecated: use component.calendar.day.range-ends.background (OD-243). Background 4 of the calendar.",
+          "$deprecated": "Use component.calendar.day.range-ends.background. Removed in the next minor release."
         },
         "label-3": {
-          "$value": "{color.text.on-action}",
-          "$description": "Label 3 of the calendar."
+          "$value": "{calendar.day.range-ends.label}",
+          "$description": "Deprecated: use component.calendar.day.range-ends.label (OD-243). Label 3 of the calendar.",
+          "$deprecated": "Use component.calendar.day.range-ends.label. Removed in the next minor release."
         },
         "background-selected": {
-          "$value": "{color.action.primary.@}",
-          "$description": "Background selected of the calendar."
+          "$value": "{calendar.day.selected.background}",
+          "$description": "Deprecated: use component.calendar.day.selected.background (OD-243). Background selected of the calendar.",
+          "$deprecated": "Use component.calendar.day.selected.background. Removed in the next minor release."
         },
         "label-selected-2": {
-          "$value": "{color.text.on-action}",
-          "$description": "Label selected 2 of the calendar."
+          "$value": "{calendar.day.selected.label}",
+          "$description": "Deprecated: use component.calendar.day.selected.label (OD-243). Label selected 2 of the calendar.",
+          "$deprecated": "Use component.calendar.day.selected.label. Removed in the next minor release."
         },
         "font-size-2": {
           "$value": "{type.caption.font-size}",
@@ -11792,6 +12002,64 @@
         "focus-offset": {
           "$value": "{border-width.focus-offset}",
           "$description": "Gap between the calendar and its focus ring."
+        },
+        "day": {
+          "range": {
+            "background": {
+              "$value": "{color.surface.selected}",
+              "$description": "Fill of the days inside a selected range, and the band behind its first and last day: a selected item's fill."
+            },
+            "label": {
+              "$value": "{color.text.primary}",
+              "$description": "Label of a day inside a selected range: body text on the selected fill."
+            }
+          },
+          "range-ends": {
+            "background": {
+              "$value": "{color.action.primary.@}",
+              "$description": "Fill of the first and last day of a selected range: the main action's fill."
+            },
+            "label": {
+              "$value": "{color.text.on-action}",
+              "$description": "Label of the first and last day of a selected range: text on the main action's fill."
+            }
+          },
+          "selected": {
+            "background": {
+              "$value": "{color.action.primary.@}",
+              "$description": "Fill of a selected day: the main action's fill."
+            },
+            "label": {
+              "$value": "{color.text.on-action}",
+              "$description": "Label of a selected day: text on the main action's fill."
+            }
+          },
+          "disabled-opacity": {
+            "$value": "{opacity.disabled}",
+            "$description": "How faint a day that cannot be picked is."
+          },
+          "today": {
+            "background": {
+              "$value": "{color.surface.selected}",
+              "$description": "Fill of today, the current day: the selected fill, whose rule covers the current item."
+            },
+            "label": {
+              "$value": "{color.text.primary}",
+              "$description": "Label of today: body text on the selected fill."
+            }
+          }
+        },
+        "week": {
+          "margin-top": {
+            "$value": "{component-spacing-map.x2}",
+            "$description": "Space above each week row of the calendar."
+          }
+        },
+        "dropdown": {
+          "border-width": {
+            "$value": "{border-width.default}",
+            "$description": "Width of the border around the month and year dropdowns of the calendar."
+          }
         }
       },
       "carousel": {
@@ -11836,16 +12104,19 @@
           "$description": "Line height of the chart."
         },
         "icon": {
-          "$value": "{color.text.muted}",
-          "$description": "Icon of the chart."
+          "$value": "{chart.axis.label}",
+          "$description": "Deprecated: use component.chart.axis.label (OD-243). Icon of the chart.",
+          "$deprecated": "Use component.chart.axis.label. Removed in the next minor release."
         },
         "icon-2": {
-          "$value": "{color.border.default}",
-          "$description": "Icon 2 of the chart."
+          "$value": "{chart.grid.line}",
+          "$description": "Deprecated: use component.chart.grid.line (OD-243). Icon 2 of the chart.",
+          "$deprecated": "Use component.chart.grid.line. Removed in the next minor release."
         },
         "icon-3": {
-          "$value": "{color.surface.sunken}",
-          "$description": "Icon 3 of the chart."
+          "$value": "{chart.track.fill}",
+          "$description": "Deprecated: use component.chart.track.fill (OD-243). Icon 3 of the chart.",
+          "$deprecated": "Use component.chart.track.fill. Removed in the next minor release."
         },
         "font-weight": {
           "$value": "{type.label.font-weight}",
@@ -11856,28 +12127,34 @@
           "$description": "Gap of the chart."
         },
         "radius": {
-          "$value": "{radius.container}",
-          "$description": "Radius of the chart."
+          "$value": "{chart.tooltip.radius}",
+          "$description": "Deprecated: use component.chart.tooltip.radius (OD-243). Radius of the chart.",
+          "$deprecated": "Use component.chart.tooltip.radius. Removed in the next minor release."
         },
         "border": {
-          "$value": "{color.border.default}",
-          "$description": "Border of the chart."
+          "$value": "{chart.tooltip.border}",
+          "$description": "Deprecated: use component.chart.tooltip.border (OD-243). Border of the chart.",
+          "$deprecated": "Use component.chart.tooltip.border. Removed in the next minor release."
         },
         "background": {
-          "$value": "{color.surface.canvas}",
-          "$description": "Background of the chart."
+          "$value": "{chart.tooltip.background}",
+          "$description": "Deprecated: use component.chart.tooltip.background (OD-243). Background of the chart.",
+          "$deprecated": "Use component.chart.tooltip.background. Removed in the next minor release."
         },
         "padding-x": {
-          "$value": "{component-spacing-map.x3}",
-          "$description": "Padding x of the chart."
+          "$value": "{chart.tooltip.padding-x}",
+          "$description": "Deprecated: use component.chart.tooltip.padding-x (OD-243). Padding x of the chart.",
+          "$deprecated": "Use component.chart.tooltip.padding-x. Removed in the next minor release."
         },
         "padding-y": {
-          "$value": "{component-spacing-map.x2}",
-          "$description": "Padding y of the chart."
+          "$value": "{chart.tooltip.padding-y}",
+          "$description": "Deprecated: use component.chart.tooltip.padding-y (OD-243). Padding y of the chart.",
+          "$deprecated": "Use component.chart.tooltip.padding-y. Removed in the next minor release."
         },
         "shadow": {
-          "$value": "{elevation.overlay}",
-          "$description": "Shadow of the chart."
+          "$value": "{chart.tooltip.shadow}",
+          "$description": "Deprecated: use component.chart.tooltip.shadow (OD-243). Shadow of the chart.",
+          "$deprecated": "Use component.chart.tooltip.shadow. Removed in the next minor release."
         },
         "gap-2": {
           "$value": "{space.gap.default}",
@@ -11892,16 +12169,103 @@
           "$description": "Label 2 of the chart."
         },
         "gap-3": {
-          "$value": "{space.gap.group}",
-          "$description": "Gap 3 of the chart."
+          "$value": "{chart.legend.gap}",
+          "$description": "Deprecated: use component.chart.legend.gap (OD-243). Gap 3 of the chart.",
+          "$deprecated": "Use component.chart.legend.gap. Removed in the next minor release."
         },
         "padding-bottom": {
-          "$value": "{component-spacing-map.x3}",
-          "$description": "Padding bottom of the chart."
+          "$value": "{chart.legend.padding-bottom}",
+          "$description": "Deprecated: use component.chart.legend.padding-bottom (OD-243). Padding bottom of the chart.",
+          "$deprecated": "Use component.chart.legend.padding-bottom. Removed in the next minor release."
         },
         "padding-top": {
-          "$value": "{component-spacing-map.x3}",
-          "$description": "Padding top of the chart."
+          "$value": "{chart.legend.padding-top}",
+          "$description": "Deprecated: use component.chart.legend.padding-top (OD-243). Padding top of the chart.",
+          "$deprecated": "Use component.chart.legend.padding-top. Removed in the next minor release."
+        },
+        "grid": {
+          "line": {
+            "$value": "{color.border.default}",
+            "$description": "Lines the chart draws to read values against: the grid, the polar grid and reference lines. Quiet dividers, at full strength."
+          }
+        },
+        "track": {
+          "fill": {
+            "$value": "{color.surface.sunken}",
+            "$description": "Fill of a radial bar's track: a recessed well behind the bar."
+          }
+        },
+        "cursor": {
+          "fill": {
+            "$value": "{color.surface.highlight}",
+            "$description": "Fill of the band behind the bar the pointer is on: the highlight, whose rule covers what the pointer is on."
+          },
+          "line": {
+            "$value": "{color.border.default}",
+            "$description": "The line that marks where the pointer is on a line or area chart."
+          }
+        },
+        "axis": {
+          "label": {
+            "$value": "{color.text.muted}",
+            "$description": "Labels of the axis ticks: the quietest text."
+          }
+        },
+        "tooltip": {
+          "border": {
+            "$value": "{color.border.default}",
+            "$description": "Border of the chart's tooltip: a quiet edge, at full strength."
+          },
+          "border-width": {
+            "$value": "{border-width.default}",
+            "$description": "Width of the border of the chart's tooltip."
+          },
+          "radius": {
+            "$value": "{radius.container}",
+            "$description": "Corner of the chart's tooltip."
+          },
+          "background": {
+            "$value": "{color.surface.canvas}",
+            "$description": "Fill of the chart's tooltip."
+          },
+          "padding-x": {
+            "$value": "{component-spacing-map.x3}",
+            "$description": "Side padding of the chart's tooltip."
+          },
+          "padding-y": {
+            "$value": "{component-spacing-map.x2}",
+            "$description": "Top and bottom padding of the chart's tooltip."
+          },
+          "shadow": {
+            "$value": "{elevation.overlay}",
+            "$description": "Shadow of the chart's tooltip: it floats over the chart."
+          },
+          "gap": {
+            "$value": "{component-spacing-map.x2}",
+            "$description": "Gap between the rows of the chart's tooltip."
+          },
+          "font-size": {
+            "$value": "{type.caption.font-size}",
+            "$description": "Text size of the chart's tooltip."
+          },
+          "line-height": {
+            "$value": "{type.caption.line-height}",
+            "$description": "Line height of the chart's tooltip."
+          }
+        },
+        "legend": {
+          "gap": {
+            "$value": "{space.gap.group}",
+            "$description": "Gap between the items of the chart's legend."
+          },
+          "padding-bottom": {
+            "$value": "{component-spacing-map.x3}",
+            "$description": "Space under the chart's legend when it sits on top."
+          },
+          "padding-top": {
+            "$value": "{component-spacing-map.x3}",
+            "$description": "Space above the chart's legend when it sits at the bottom."
+          }
         }
       },
       "checkbox": {
@@ -11922,12 +12286,45 @@
           "$description": "Disabled of the checkbox."
         },
         "canvas": {
-          "$value": "{color.surface.canvas}",
-          "$description": "Canvas of the checkbox."
+          "$value": "{checkbox.focus-ring-offset}",
+          "$description": "Deprecated: use component.checkbox.focus-ring-offset (OD-243). Canvas of the checkbox.",
+          "$deprecated": "Use component.checkbox.focus-ring-offset. Removed in the next minor release."
         },
         "focus-offset": {
           "$value": "{border-width.focus-offset}",
           "$description": "Gap between the checkbox and its focus ring."
+        },
+        "focus-ring": {
+          "$value": "{color.border.focus}",
+          "$description": "Color of the checkbox's focus ring: the focus ring at full strength."
+        },
+        "focus-ring-offset": {
+          "$value": "{color.surface.canvas}",
+          "$description": "Color of the gap between the checkbox and its focus ring: the page background, so the ring reads on any fill."
+        },
+        "background": {
+          "@": {
+            "$value": "{color.surface.default}",
+            "$description": "Fill of an unchecked checkbox: the base fill, as inputs have."
+          },
+          "checked": {
+            "$value": "{color.action.primary.@}",
+            "$description": "Fill of a checked checkbox: the rule for checked controls. The check mark says checked, so it is never color alone."
+          }
+        },
+        "border": {
+          "$value": "{color.border.strong}",
+          "$description": "Edge of an unchecked checkbox: the edge of a control people must find."
+        },
+        "indicator": {
+          "icon": {
+            "$value": "{color.text.on-action}",
+            "$description": "Color of the check mark: an icon on the checked fill, which is the main action's fill."
+          }
+        },
+        "radius": {
+          "$value": "{radius.badge}",
+          "$description": "Corner of the checkbox: the rule for badges and checkboxes."
         }
       },
       "combobox": {
@@ -12024,12 +12421,26 @@
             "$description": "Item line height of the combobox."
           },
           "background": {
-            "$value": "{color.surface.sunken}",
-            "$description": "Item background of the combobox."
+            "highlight": {
+              "$value": "{color.surface.highlight}",
+              "$description": "Fill of the combobox item the pointer or the keyboard is on."
+            },
+            "@": {
+              "$value": "{combobox.item.background.highlight}",
+              "$description": "Deprecated: use component.combobox.item.background.highlight (OD-243). Item background of the combobox.",
+              "$deprecated": "Use component.combobox.item.background.highlight. Removed in the next minor release."
+            }
           },
           "label": {
-            "$value": "{color.text.primary}",
-            "$description": "Item label of the combobox."
+            "highlight": {
+              "$value": "{color.text.primary}",
+              "$description": "Text of the combobox item the pointer or the keyboard is on."
+            },
+            "@": {
+              "$value": "{combobox.item.label.highlight}",
+              "$description": "Deprecated: use component.combobox.item.label.highlight (OD-243). Item label of the combobox.",
+              "$deprecated": "Use component.combobox.item.label.highlight. Removed in the next minor release."
+            }
           },
           "disabled-opacity-disabled": {
             "$value": "{opacity.disabled}",
@@ -12185,6 +12596,12 @@
           "focus-ring-offset": {
             "$value": "{color.surface.canvas}",
             "$description": "The gap behind the chips field's focus ring: the page canvas."
+          },
+          "halo-width": {
+            "invalid": {
+              "$value": "{border-width.default}",
+              "$description": "Width of the danger halo around an invalid chips field at rest: a border line, not the focus ring, so focus still reads stronger."
+            }
           }
         },
         "chip": {
@@ -12265,8 +12682,8 @@
       },
       "command": {
         "radius": {
-          "$value": "{radius.control}",
-          "$description": "Radius of the command."
+          "$value": "{radius.container}",
+          "$description": "Corner of the command panel: a menu panel, so it reads the container corner like the other floating panels."
         },
         "background": {
           "$value": "{color.surface.raised}",
@@ -12313,6 +12730,10 @@
             "icon": {
               "$value": "{color.text.muted}",
               "$description": "The search icon of the command: quiet, the muted text color."
+            },
+            "height": {
+              "$value": "{size.control.default}",
+              "$description": "Height of the command search field: the height of a control, as every field has."
             }
           },
           "radius": {
@@ -12452,8 +12873,9 @@
           },
           "label": {
             "@": {
-              "$value": "{color.text.muted}",
-              "$description": "Item label of the command."
+              "$value": "{command.item.icon}",
+              "$description": "Deprecated: use component.command.item.icon (OD-243). Item label of the command.",
+              "$deprecated": "Use component.command.item.icon. Removed in the next minor release."
             },
             "highlight": {
               "$value": "{color.text.primary}",
@@ -12465,6 +12887,10 @@
               "$value": "{color.surface.highlight}",
               "$description": "Item background when highlighted, by the pointer or the keyboard, of the command menu."
             }
+          },
+          "icon": {
+            "$value": "{color.text.muted}",
+            "$description": "Color of an icon in a command item: muted, so the icon supports the item's text."
           }
         },
         "shortcut": {
@@ -12527,8 +12953,9 @@
               "$description": "Sub trigger icon size of the context menu."
             },
             "label": {
-              "$value": "{color.text.muted}",
-              "$description": "Sub trigger label of the context menu."
+              "$value": "{context-menu.sub.trigger.icon}",
+              "$description": "Deprecated: use component.context-menu.sub.trigger.icon (OD-243). Sub trigger label of the context menu.",
+              "$deprecated": "Use component.context-menu.sub.trigger.icon. Removed in the next minor release."
             },
             "background": {
               "highlight": {
@@ -12539,6 +12966,10 @@
                 "$value": "{color.surface.highlight}",
                 "$description": "Submenu trigger background while its submenu is open, of the context menu."
               }
+            },
+            "icon": {
+              "$value": "{color.text.muted}",
+              "$description": "Color of the icons in a context menu sub-trigger, its chevron among them: muted."
             }
           },
           "content": {
@@ -12674,8 +13105,9 @@
             "$description": "Item icon size of the context menu."
           },
           "label-2": {
-            "$value": "{color.text.muted}",
-            "$description": "Item label 2 of the context menu."
+            "$value": "{context-menu.item.icon}",
+            "$description": "Deprecated: use component.context-menu.item.icon (OD-243). Item label 2 of the context menu.",
+            "$deprecated": "Use component.context-menu.item.icon. Removed in the next minor release."
           },
           "background": {
             "highlight": {
@@ -12686,6 +13118,10 @@
               "$value": "{color.status.danger.subtle}",
               "$description": "Item background of a destructive item when highlighted, of the context menu."
             }
+          },
+          "icon": {
+            "$value": "{color.text.muted}",
+            "$description": "Color of an icon in a context menu item: muted, so the icon supports the item's text."
           }
         },
         "checkbox": {
@@ -13433,6 +13869,10 @@
           "line-height": {
             "$value": "{type.body.line-height}",
             "$description": "Legend line height of the field."
+          },
+          "margin-bottom": {
+            "$value": "{component-spacing-map.x3}",
+            "$description": "Space below the field set's legend, before its description or first field."
           }
         },
         "group": {
@@ -13495,15 +13935,37 @@
           "@": {
             "$value": "{color.text.muted}",
             "$description": "Label of the field."
+          },
+          "border": {
+            "checked": {
+              "$value": "{color.border.selected}",
+              "$description": "Border of a choice card (a field label that holds a field) when its checkbox or radio is checked: the edge that marks the choice beside its fill, so it is never color alone."
+            },
+            "@": {
+              "$value": "{color.border.default}",
+              "$description": "Border color of a choice card (a field label that holds a field) at rest: a quiet edge; the checkbox or radio inside carries the strong one."
+            }
+          },
+          "background": {
+            "checked": {
+              "$value": "{color.surface.selected}",
+              "$description": "Fill of a choice card (a field label that holds a field) when its checkbox or radio is checked: the selected fill, a toggle that is on."
+            }
+          },
+          "border-width": {
+            "$value": "{border-width.default}",
+            "$description": "Border width of a choice card (a field label that holds a field): the hairline the scheme draws edges with."
           }
         },
         "border-checked": {
           "$value": "{color.action.primary.@}",
-          "$description": "Border checked of the field."
+          "$description": "Deprecated: use field/label/border/checked (OD-243). Border checked of the field.",
+          "$deprecated": "Use component.field.label.border.checked. Removed in the next minor release."
         },
         "background-checked": {
           "$value": "{color.action.primary.@}",
-          "$description": "Background checked of the field."
+          "$description": "Deprecated: use field/label/background/checked (OD-243). Background checked of the field.",
+          "$deprecated": "Use component.field.label.background.checked. Removed in the next minor release."
         },
         "description": {
           "font-size": {
@@ -13525,6 +13987,14 @@
           "label-2": {
             "$value": "{color.action.primary.@}",
             "$description": "Description label 2 of the field."
+          },
+          "margin-top": {
+            "$value": "{component-spacing-map.x1}",
+            "$description": "How far a description followed by one more part pulls up toward the part above it, so a hint sits closer to what it describes than the field gap."
+          },
+          "legend-margin-top": {
+            "$value": "{component-spacing-map.x1}",
+            "$description": "How far a description right after a legend pulls up toward the legend, so the legend and its description read as one heading."
           }
         },
         "separator": {
@@ -13535,15 +14005,21 @@
           "line-height": {
             "$value": "{type.body.line-height}",
             "$description": "Separator line height of the field."
+          },
+          "margin-y": {
+            "$value": "{component-spacing-map.x2}",
+            "$description": "How far the field separator pulls into the gaps above and below it, so a separator between fields does not double the group gap."
           }
         },
         "background": {
-          "$value": "{color.surface.canvas}",
-          "$description": "Background of the field."
+          "$value": "{field.separator-content.background}",
+          "$description": "Deprecated: use component.field.separator-content.background (OD-243). Background of the field.",
+          "$deprecated": "Use component.field.separator-content.background. Removed in the next minor release."
         },
         "padding-x": {
-          "$value": "{component-spacing-map.x2}",
-          "$description": "Padding x of the field."
+          "$value": "{field.separator-content.padding-x}",
+          "$description": "Deprecated: use component.field.separator-content.padding-x (OD-243). Padding x of the field.",
+          "$deprecated": "Use component.field.separator-content.padding-x. Removed in the next minor release."
         },
         "gap-2": {
           "$value": "{space.gap.tight}",
@@ -13565,6 +14041,24 @@
           "label": {
             "$value": "{color.status.danger.@}",
             "$description": "Error label of the field."
+          },
+          "indent": {
+            "$value": "{component-spacing-map.x4}",
+            "$description": "Indent of the list of errors when a field has more than one, so the bullets sit inside the field's edge."
+          }
+        },
+        "separator-content": {
+          "background": {
+            "$value": "{color.surface.canvas}",
+            "$description": "Background of the field separator's content: the words on the line mask the line with the page behind them."
+          },
+          "padding-x": {
+            "$value": "{component-spacing-map.x2}",
+            "$description": "Padding x of the field separator's content: the space between the words and the line on each side."
+          },
+          "label": {
+            "$value": "{color.text.muted}",
+            "$description": "Text color of the field separator's content: the quiet words on the line (Or continue with)."
           }
         }
       },
@@ -13639,6 +14133,10 @@
           "border-width": {
             "$value": "{border-width.default}",
             "$description": "Content border width of the hover card."
+          },
+          "duration": {
+            "$value": "{motion.duration.panels}",
+            "$description": "How long the hover card takes to open and close: the panel speed, like every floating panel."
           }
         }
       },
@@ -13648,12 +14146,19 @@
           "$description": "Radius of the input group."
         },
         "border": {
-          "$value": "{color.border.strong}",
-          "$description": "Border of the input group."
+          "@": {
+            "$value": "{color.border.strong}",
+            "$description": "Border of the input group."
+          },
+          "focus": {
+            "$value": "{color.border.focus}",
+            "$description": "Border of the input group when the keyboard is in its control."
+          }
         },
         "shadow": {
           "$value": "{elevation.card}",
-          "$description": "Shadow of the input group."
+          "$description": "Deprecated: use input-group/border/@ (OD-243). Shadow of the input group.",
+          "$deprecated": "Use component.input-group.border.@. Removed in the next minor release."
         },
         "padding-left": {
           "$value": "{component-spacing-map.x2}",
@@ -13664,16 +14169,17 @@
           "$description": "Padding right of the input group."
         },
         "padding-bottom": {
-          "$value": "{space.inset.control-x}",
-          "$description": "Padding bottom of the input group."
+          "$value": "{component-spacing-map.x3}",
+          "$description": "Space below the input when an addon sits under it: a vertical step of the component spacing map."
         },
         "padding-top": {
-          "$value": "{space.inset.control-x}",
-          "$description": "Padding top of the input group."
+          "$value": "{component-spacing-map.x3}",
+          "$description": "Space above the input when an addon sits over it: a vertical step of the component spacing map."
         },
         "border-2": {
-          "$value": "{color.border.focus}",
-          "$description": "Border 2 of the input group."
+          "$value": "{input-group.border.focus}",
+          "$description": "Deprecated: use component.input-group.border.focus (OD-243). Border 2 of the input group.",
+          "$deprecated": "Use component.input-group.border.focus. Removed in the next minor release."
         },
         "focus-ring": {
           "highlight": {
@@ -13808,6 +14314,14 @@
           "padding-x": {
             "$value": "{component-spacing-map.x2}",
             "$description": "Xs padding x of the input group."
+          },
+          "radius": {
+            "$value": "{radius.option}",
+            "$description": "Corner of a small button inside the field: the outer corner less its inset, so the corners nest."
+          },
+          "icon-size": {
+            "$value": "{size.icon}",
+            "$description": "Icon size in a small button inside the field."
           }
         },
         "sm": {
@@ -13834,28 +14348,38 @@
               "$value": "{size.control.default}",
               "$description": "Icon sm size of the input group."
             }
+          },
+          "xs": {
+            "size": {
+              "$value": "{size.control.compact}",
+              "$description": "Width and height of a small icon button inside the field: the compact control height."
+            },
+            "radius": {
+              "$value": "{radius.option}",
+              "$description": "Corner of a small icon button inside the field: the outer corner less its inset, so the corners nest."
+            }
           }
         },
         "control": {
           "padding-y": {
-            "$value": "{space.inset.control-x}",
-            "$description": "Control padding y of the input group."
+            "$value": "{component-spacing-map.x3}",
+            "$description": "Vertical padding of a textarea inside the input group: a vertical step of the component spacing map."
           }
         },
         "addon": {
           "block": {
             "end": {
               "padding-bottom": {
-                "$value": "{space.inset.control-x}",
-                "$description": "Addon block end padding-bottom of the input group."
+                "$value": "{component-spacing-map.x3}",
+                "$description": "Space below an addon that sits under the control: a vertical step of the component spacing map."
               },
               "padding-bottom-2": {
                 "$value": "{component-spacing-map.x3}",
                 "$description": "Addon block end padding-bottom-2 of the input group."
               },
               "padding-top": {
-                "$value": "{space.inset.control-x}",
-                "$description": "Addon block end padding-top of the input group."
+                "$value": "{component-spacing-map.x3}",
+                "$description": "Space above an addon under the control, when a divider comes before it: a vertical step of the component spacing map."
               },
               "padding-x": {
                 "$value": "{space.inset.control-x}",
@@ -13864,12 +14388,12 @@
             },
             "start": {
               "padding-bottom": {
-                "$value": "{space.inset.control-x}",
-                "$description": "Addon block start padding-bottom of the input group."
+                "$value": "{component-spacing-map.x3}",
+                "$description": "Space below an addon over the control, when a divider follows it: a vertical step of the component spacing map."
               },
               "padding-top": {
-                "$value": "{space.inset.control-x}",
-                "$description": "Addon block start padding-top of the input group."
+                "$value": "{component-spacing-map.x3}",
+                "$description": "Space above an addon that sits over the control: a vertical step of the component spacing map."
               },
               "padding-top-2": {
                 "$value": "{component-spacing-map.x3}",
@@ -13883,7 +14407,8 @@
           },
           "disabled-opacity-disabled": {
             "$value": "{opacity.disabled}",
-            "$description": "Addon disabled-opacity-disabled of the input group."
+            "$description": "Deprecated: use input-group/addon/disabled/label (OD-243). Addon disabled-opacity-disabled of the input group.",
+            "$deprecated": "Use component.input-group.addon.disabled.label. Removed in the next minor release."
           },
           "font-size": {
             "$value": "{type.body.font-size}",
@@ -13926,6 +14451,28 @@
           "padding-y": {
             "$value": "{component-spacing-map.x2}",
             "$description": "Addon padding-y of the input group."
+          },
+          "button": {
+            "inset": {
+              "$value": "{component-spacing-map.x1}",
+              "$description": "Space between the field's edge and a button in an addon: a fixed tight step, so the button sits close to the edge and its corner nests inside the field's."
+            }
+          },
+          "kbd": {
+            "inset": {
+              "$value": "{component-spacing-map.x1}",
+              "$description": "Space between the field's edge and a key cap in an addon: a fixed tight step."
+            },
+            "radius": {
+              "$value": "{radius.option}",
+              "$description": "Corner of a key cap in an addon: the outer corner less its inset, so the corners nest."
+            }
+          },
+          "disabled": {
+            "label": {
+              "$value": "{color.disabled.text}",
+              "$description": "Addon text and icons when the input group is disabled."
+            }
           }
         },
         "border-width": {
@@ -13943,6 +14490,32 @@
         "focus-ring-offset": {
           "$value": "{color.surface.canvas}",
           "$description": "The gap behind the input group's focus ring: the page canvas."
+        },
+        "height": {
+          "$value": "{size.control.default}",
+          "$description": "Height of the input group: the field height, like the input's, so an input inside it fits."
+        },
+        "duration": {
+          "$value": "{motion.duration.feedback}",
+          "$description": "How fast the input group changes state: the feedback speed."
+        },
+        "easing": {
+          "$value": "{motion.easing.standard}",
+          "$description": "Easing of the input group's state changes: the feedback easing."
+        },
+        "background": {
+          "$value": "{color.surface.default}",
+          "$description": "Input group fill, like the input's."
+        },
+        "disabled": {
+          "background": {
+            "$value": "{color.disabled.surface}",
+            "$description": "Fill of the input group when its control is disabled."
+          },
+          "border": {
+            "$value": "{color.disabled.border}",
+            "$description": "Border of the input group when its control is disabled."
+          }
         }
       },
       "input-otp": {
@@ -13952,7 +14525,8 @@
         },
         "disabled-opacity": {
           "$value": "{opacity.disabled}",
-          "$description": "Disabled opacity of the input otp."
+          "$description": "Deprecated: use input-otp/slot/disabled/text (OD-243). Disabled opacity of the input otp.",
+          "$deprecated": "Use component.input-otp.slot.disabled.text. Removed in the next minor release."
         },
         "slot": {
           "border": {
@@ -13975,7 +14549,8 @@
           },
           "shadow": {
             "$value": "{elevation.card}",
-            "$description": "Slot shadow of the input otp."
+            "$description": "Deprecated: use input-otp/slot/border/@ (OD-243). Slot shadow of the input otp.",
+            "$deprecated": "Use component.input-otp.slot.border.@. Removed in the next minor release."
           },
           "border-invalid": {
             "$value": "{color.status.danger.@}",
@@ -14012,24 +14587,83 @@
           "focus-width": {
             "$value": "{border-width.focus}",
             "$description": "Focus ring width of the active slot, like the input's."
+          },
+          "size": {
+            "$value": "{size.control.default}",
+            "$description": "Width and height of an OTP slot: a square at the field height."
+          },
+          "focus-offset": {
+            "$value": "{border-width.focus-offset}",
+            "$description": "Gap between the active slot and its focus ring."
+          },
+          "focus-ring-offset": {
+            "$value": "{color.surface.canvas}",
+            "$description": "The gap behind the active slot's focus ring: the page canvas."
+          },
+          "duration": {
+            "$value": "{motion.duration.feedback}",
+            "$description": "How fast an OTP slot changes state: the feedback speed."
+          },
+          "easing": {
+            "$value": "{motion.easing.standard}",
+            "$description": "Easing of an OTP slot's state changes: the feedback easing."
+          },
+          "background": {
+            "$value": "{color.surface.default}",
+            "$description": "OTP slot fill, like the input's."
+          },
+          "disabled": {
+            "background": {
+              "$value": "{color.disabled.surface}",
+              "$description": "Fill of a slot when the code field is disabled."
+            },
+            "border": {
+              "$value": "{color.disabled.border}",
+              "$description": "Border of a slot when the code field is disabled."
+            },
+            "text": {
+              "$value": "{color.disabled.text}",
+              "$description": "Digit in a slot when the code field is disabled."
+            }
           }
         },
         "height": {
-          "$value": "{size.icon}",
-          "$description": "Height of the input otp."
+          "$value": "{input-otp.caret.height}",
+          "$description": "Deprecated: use component.input-otp.caret.height (OD-243). Height of the input otp.",
+          "$deprecated": "Use component.input-otp.caret.height. Removed in the next minor release."
         },
         "background": {
-          "$value": "{color.text.primary}",
-          "$description": "Background of the input otp."
+          "$value": "{input-otp.caret.background}",
+          "$description": "Deprecated: use component.input-otp.caret.background (OD-243). Background of the input otp.",
+          "$deprecated": "Use component.input-otp.caret.background. Removed in the next minor release."
         },
         "duration": {
-          "$value": "{motion.duration.feedback}",
-          "$description": "Duration of the input otp."
+          "$value": "{input-otp.caret.duration}",
+          "$description": "Deprecated: use component.input-otp.caret.duration (OD-243). Duration of the input otp.",
+          "$deprecated": "Use component.input-otp.caret.duration. Removed in the next minor release."
         },
         "caret": {
           "width": {
             "$value": "{border-width.default}",
             "$description": "Width of the fake caret: a line."
+          },
+          "height": {
+            "$value": "{size.icon}",
+            "$description": "Height of the fake caret: the size of an icon next to text."
+          },
+          "background": {
+            "$value": "{color.text.primary}",
+            "$description": "Fill of the fake caret: the text color."
+          },
+          "duration": {
+            "$value": "{motion.duration.feedback}",
+            "$description": "How fast the fake caret blinks."
+          }
+        },
+        "separator": {
+          "icon-size": {
+            "$value": "{size.icon}",
+            "$description": "Size of the dash between slot groups: an icon next to text."
           }
         }
       },
@@ -14103,31 +14737,37 @@
           }
         },
         "gap": {
-          "$value": "{space.gap.default}",
-          "$description": "Gap of the item."
+          "$value": "{item.media.gap}",
+          "$description": "Deprecated: use component.item.media.gap (OD-243). Gap of the item.",
+          "$deprecated": "Use component.item.media.gap. Removed in the next minor release."
         },
         "icon": {
           "size": {
-            "$value": "{size.control.default}",
-            "$description": "Icon size of the item."
+            "$value": "{item.media.icon.size}",
+            "$description": "Deprecated: use component.item.media.icon.size (OD-243). Icon size of the item.",
+            "$deprecated": "Use component.item.media.icon.size. Removed in the next minor release."
           },
           "radius": {
-            "$value": "{radius.badge}",
-            "$description": "Icon radius of the item."
+            "$value": "{item.media.icon.radius}",
+            "$description": "Deprecated: use component.item.media.icon.radius (OD-243). Icon radius of the item.",
+            "$deprecated": "Use component.item.media.icon.radius. Removed in the next minor release."
           },
           "background": {
-            "$value": "{color.surface.sunken}",
-            "$description": "Icon background of the item."
+            "$value": "{item.media.icon.background}",
+            "$description": "Deprecated: use component.item.media.icon.background (OD-243). Icon background of the item.",
+            "$deprecated": "Use component.item.media.icon.background. Removed in the next minor release."
           },
           "icon-size": {
-            "$value": "{size.icon}",
-            "$description": "Icon icon size of the item."
+            "$value": "{item.media.icon.icon-size}",
+            "$description": "Deprecated: use component.item.media.icon.icon-size (OD-243). Icon icon size of the item.",
+            "$deprecated": "Use component.item.media.icon.icon-size. Removed in the next minor release."
           }
         },
         "image": {
           "radius": {
-            "$value": "{radius.badge}",
-            "$description": "Image radius of the item."
+            "$value": "{item.media.image.radius}",
+            "$description": "Deprecated: use component.item.media.image.radius (OD-243). Image radius of the item.",
+            "$deprecated": "Use component.item.media.image.radius. Removed in the next minor release."
           }
         },
         "content": {
@@ -14203,6 +14843,48 @@
         "focus-offset": {
           "$value": "{border-width.focus-offset}",
           "$description": "Gap between the item and its focus ring."
+        },
+        "media": {
+          "gap": {
+            "$value": "{space.gap.default}",
+            "$description": "Gap between the things inside the item's media (an icon and a badge, or stacked avatars)."
+          },
+          "icon": {
+            "size": {
+              "$value": "{size.control.default}",
+              "$description": "Size of the item's icon media: a tile the size of a control, so it lines up with the actions in the row."
+            },
+            "radius": {
+              "$value": "{radius.control}",
+              "$description": "Corner of the item's icon media: a control-sized tile in a row of controls takes the control corner, so the tile and the buttons beside it read as one family."
+            },
+            "background": {
+              "$value": "{color.surface.sunken}",
+              "$description": "Fill of the item's icon media: a recessed well that holds the icon."
+            },
+            "icon-size": {
+              "$value": "{size.icon}",
+              "$description": "Size of the icon inside the item's icon media."
+            },
+            "border-width": {
+              "$value": "{border-width.default}",
+              "$description": "Border width of the item's icon media: the hairline the scheme draws edges with."
+            },
+            "border": {
+              "$value": "{color.border.default}",
+              "$description": "Border color of the item's icon media: a quiet, decorative edge around the well."
+            }
+          },
+          "image": {
+            "radius": {
+              "$value": "{radius.control}",
+              "$description": "Corner of the item's image media: a thumbnail in a row of controls takes the control corner, the same as the icon tile."
+            }
+          }
+        },
+        "border-width": {
+          "$value": "{border-width.default}",
+          "$description": "Border width of the item: transparent by default, so every variant has the same box; the outline variant colors it."
         }
       },
       "kbd": {
@@ -14500,8 +15182,9 @@
             "$description": "Item icon size of the menubar."
           },
           "label-2": {
-            "$value": "{color.text.muted}",
-            "$description": "Item label 2 of the menubar."
+            "$value": "{menubar.item.icon}",
+            "$description": "Deprecated: use component.menubar.item.icon (OD-243). Item label 2 of the menubar.",
+            "$deprecated": "Use component.menubar.item.icon. Removed in the next minor release."
           },
           "background": {
             "highlight": {
@@ -14512,6 +15195,10 @@
               "$value": "{color.status.danger.subtle}",
               "$description": "Item background of a destructive item when highlighted, of the menubar."
             }
+          },
+          "icon": {
+            "$value": "{color.text.muted}",
+            "$description": "Color of an icon in a menubar item: muted, so the icon supports the item's text."
           }
         },
         "checkbox": {
@@ -14730,6 +15417,10 @@
                 "$value": "{color.surface.highlight}",
                 "$description": "Submenu trigger background while its submenu is open, of the menubar."
               }
+            },
+            "icon-size": {
+              "$value": "{size.icon}",
+              "$description": "Size of the chevron on a menubar sub-trigger: an icon next to text."
             }
           },
           "content": {
@@ -14764,8 +15455,8 @@
           }
         },
         "height": {
-          "$value": "{size.icon}",
-          "$description": "Height of the menubar."
+          "$value": "{size.control.default}",
+          "$description": "Height of the menubar: the height of a control, so the bar lines up with the buttons and fields beside it."
         },
         "border": {
           "$value": "{color.border.default}",
@@ -14782,8 +15473,8 @@
           "$description": "Gap of the message scroller."
         },
         "radius": {
-          "$value": "{radius.control}",
-          "$description": "Radius of the message scroller."
+          "$value": "{radius.container}",
+          "$description": "Corner of the message scroller: the region that holds a conversation is a container, not a control."
         },
         "focus": {
           "$value": "{border-width.focus}",
@@ -14816,12 +15507,14 @@
           "$description": "Line height of the message."
         },
         "gap-2": {
-          "$value": "{space.gap.tight}",
-          "$description": "Gap 2 of the message."
+          "$value": "{message.content.gap}",
+          "$description": "Deprecated: use component.message.content.gap (OD-243). Gap 2 of the message.",
+          "$deprecated": "Use component.message.content.gap. Removed in the next minor release."
         },
         "gap-x": {
-          "$value": "{space.gap.default}",
-          "$description": "Gap x of the message."
+          "$value": "{message.header.gap}",
+          "$description": "Deprecated: use component.message.header.gap (OD-243). Gap x of the message.",
+          "$deprecated": "Use component.message.header.gap. Removed in the next minor release."
         },
         "author": {
           "font-weight": {
@@ -14841,6 +15534,18 @@
           "label": {
             "$value": "{color.text.muted}",
             "$description": "Time label of the message."
+          }
+        },
+        "content": {
+          "gap": {
+            "$value": "{space.gap.tight}",
+            "$description": "Gap between the header (author and time) and the body."
+          }
+        },
+        "header": {
+          "gap": {
+            "$value": "{space.gap.default}",
+            "$description": "Gap between the author and the time in the header."
           }
         }
       },
@@ -14880,15 +15585,18 @@
         },
         "shadow": {
           "$value": "{elevation.card}",
-          "$description": "Shadow of the native select."
+          "$description": "Deprecated: use native-select/border (OD-243). Shadow of the native select.",
+          "$deprecated": "Use component.native-select.border. Removed in the next minor release."
         },
         "background": {
-          "$value": "{color.action.primary.@}",
-          "$description": "Background of the native select."
+          "$value": "{native-select.selection.background}",
+          "$description": "Deprecated: use component.native-select.selection.background (OD-243). Background of the native select.",
+          "$deprecated": "Use component.native-select.selection.background. Removed in the next minor release."
         },
         "label": {
-          "$value": "{color.text.on-action}",
-          "$description": "Label of the native select."
+          "$value": "{native-select.selection.label}",
+          "$description": "Deprecated: use component.native-select.selection.label (OD-243). Label of the native select.",
+          "$deprecated": "Use component.native-select.selection.label. Removed in the next minor release."
         },
         "label-placeholder": {
           "$value": "{color.text.muted}",
@@ -14896,11 +15604,12 @@
         },
         "height": {
           "$value": "{size.control.default}",
-          "$description": "Height of the native select."
+          "$description": "Height of the native select: the field height, like the input's."
         },
         "padding-y-2": {
-          "$value": "{component-spacing-map.x1}",
-          "$description": "Padding y 2 of the native select."
+          "$value": "{native-select.sm.padding-y}",
+          "$description": "Deprecated: use component.native-select.sm.padding-y (OD-243). Padding y 2 of the native select.",
+          "$deprecated": "Use component.native-select.sm.padding-y. Removed in the next minor release."
         },
         "border-focus": {
           "$value": "{color.border.focus}",
@@ -14947,12 +15656,69 @@
           "label": {
             "$value": "{color.text.muted}",
             "$description": "The chevron of the native select: the muted text color."
+          },
+          "inset": {
+            "$value": "{space.inset.control-x}",
+            "$description": "Space between the chevron and the select's end: the control's horizontal padding."
+          },
+          "disabled": {
+            "$value": "{color.disabled.text}",
+            "$description": "The chevron of a disabled native select."
           }
         },
         "wrapper": {
           "disabled-opacity": {
             "$value": "{opacity.disabled}",
-            "$description": "The whole select dims when it can't be used."
+            "$description": "Deprecated: use native-select/disabled/text (OD-243). The whole select dims when it can't be used.",
+            "$deprecated": "Use component.native-select.disabled.text. Removed in the next minor release."
+          }
+        },
+        "sm": {
+          "height": {
+            "$value": "{size.control.compact}",
+            "$description": "Height of the small native select: the compact control height."
+          },
+          "padding-y": {
+            "$value": "{component-spacing-map.x1}",
+            "$description": "Vertical padding of the small native select."
+          }
+        },
+        "selection": {
+          "background": {
+            "$value": "{color.action.primary.@}",
+            "$description": "Fill of selected text in the native select."
+          },
+          "label": {
+            "$value": "{color.text.on-action}",
+            "$description": "Selected text in the native select."
+          }
+        },
+        "duration": {
+          "$value": "{motion.duration.feedback}",
+          "$description": "How fast the native select changes state: the feedback speed."
+        },
+        "easing": {
+          "$value": "{motion.easing.standard}",
+          "$description": "Easing of the native select's state changes: the feedback easing."
+        },
+        "field": {
+          "background": {
+            "$value": "{color.surface.default}",
+            "$description": "Native select fill, like the input's."
+          }
+        },
+        "disabled": {
+          "background": {
+            "$value": "{color.disabled.surface}",
+            "$description": "Fill of a disabled native select."
+          },
+          "border": {
+            "$value": "{color.disabled.border}",
+            "$description": "Border of a disabled native select."
+          },
+          "text": {
+            "$value": "{color.disabled.text}",
+            "$description": "Text in a disabled native select."
           }
         }
       },
@@ -15216,8 +15982,9 @@
             "$description": "Link icon size of the navigation menu."
           },
           "label-2": {
-            "$value": "{color.text.muted}",
-            "$description": "Link label 2 of the navigation menu."
+            "$value": "{navigation-menu.link.icon}",
+            "$description": "Deprecated: use component.navigation-menu.link.icon (OD-243). Link label 2 of the navigation menu.",
+            "$deprecated": "Use component.navigation-menu.link.icon. Removed in the next minor release."
           },
           "focus-ring-focus": {
             "$value": "{color.border.focus}",
@@ -15246,6 +16013,10 @@
               "$value": "{border-width.focus}",
               "$description": "Width of the current link's edge."
             }
+          },
+          "icon": {
+            "$value": "{color.text.muted}",
+            "$description": "Color of an icon in a navigation link: muted, so the icon supports the link's text."
           }
         },
         "background-3": {
@@ -15367,24 +16138,57 @@
           }
         },
         "gap": {
-          "$value": "{space.gap.tight}",
-          "$description": "Gap of the pagination."
+          "$value": "{pagination.link.gap}",
+          "$description": "Deprecated: use component.pagination.link.gap (OD-243). Gap of the pagination.",
+          "$deprecated": "Use component.pagination.link.gap. Removed in the next minor release."
         },
         "padding-x": {
-          "$value": "{component-spacing-map.x3}",
-          "$description": "Padding x of the pagination."
+          "$value": "{pagination.link.padding-x}",
+          "$description": "Deprecated: use component.pagination.link.padding-x (OD-243). Padding x of the pagination.",
+          "$deprecated": "Use component.pagination.link.padding-x. Removed in the next minor release."
         },
         "padding-left": {
-          "$value": "{component-spacing-map.x3}",
-          "$description": "Padding left of the pagination."
+          "$value": "{pagination.previous.padding-left}",
+          "$description": "Deprecated: use component.pagination.previous.padding-left (OD-243). Padding left of the pagination.",
+          "$deprecated": "Use component.pagination.previous.padding-left. Removed in the next minor release."
         },
         "padding-right": {
-          "$value": "{component-spacing-map.x3}",
-          "$description": "Padding right of the pagination."
+          "$value": "{pagination.next.padding-right}",
+          "$description": "Deprecated: use component.pagination.next.padding-right (OD-243). Padding right of the pagination.",
+          "$deprecated": "Use component.pagination.next.padding-right. Removed in the next minor release."
         },
         "icon-size": {
-          "$value": "{size.icon}",
-          "$description": "Icon size of the pagination."
+          "$value": "{pagination.ellipsis.icon-size}",
+          "$description": "Deprecated: use component.pagination.ellipsis.icon-size (OD-243). Icon size of the pagination.",
+          "$deprecated": "Use component.pagination.ellipsis.icon-size. Removed in the next minor release."
+        },
+        "ellipsis": {
+          "icon-size": {
+            "$value": "{size.icon}",
+            "$description": "Size of the ellipsis icon that stands for the pages not shown."
+          }
+        },
+        "link": {
+          "gap": {
+            "$value": "{space.gap.tight}",
+            "$description": "Gap between the chevron and the word in the Previous and Next links."
+          },
+          "padding-x": {
+            "$value": "{component-spacing-map.x3}",
+            "$description": "Horizontal padding of the Previous and Next links."
+          }
+        },
+        "previous": {
+          "padding-left": {
+            "$value": "{component-spacing-map.x3}",
+            "$description": "Left padding of the Previous link, on its chevron side, from the small breakpoint up."
+          }
+        },
+        "next": {
+          "padding-right": {
+            "$value": "{component-spacing-map.x3}",
+            "$description": "Right padding of the Next link, on its chevron side, from the small breakpoint up."
+          }
         }
       },
       "popover": {
@@ -15416,6 +16220,10 @@
           "border-width": {
             "$value": "{border-width.default}",
             "$description": "Content border width of the popover."
+          },
+          "duration": {
+            "$value": "{motion.duration.panels}",
+            "$description": "How long the popover takes to open and close: the panel speed, like every floating panel."
           }
         },
         "header": {
@@ -15451,8 +16259,8 @@
           "$description": "Radius of the progress."
         },
         "background": {
-          "$value": "{color.action.primary.@}",
-          "$description": "Background of the progress."
+          "$value": "{color.surface.sunken}",
+          "$description": "Track of the progress bar: a recessed fill, a step below content, as the slider's track is. The indicator carries the value."
         },
         "indicator": {
           "background": {
@@ -15500,8 +16308,8 @@
             "$description": "Item border invalid of the radio group."
           },
           "focus-ring-invalid": {
-            "$value": "{color.status.danger.@}",
-            "$description": "Item focus ring invalid of the radio group."
+            "$value": "{color.status.danger.subtle}",
+            "$description": "Halo around an invalid radio: the rule for the halo around an invalid field, at full strength, never a faded danger color."
           },
           "focus": {
             "$value": "{border-width.focus}",
@@ -15518,6 +16326,10 @@
           "focus-offset": {
             "$value": "{border-width.focus-offset}",
             "$description": "Gap between the radio group item and its focus ring."
+          },
+          "border-width": {
+            "$value": "{border-width.default}",
+            "$description": "Width of the radio's edge: every border's width."
           }
         },
         "icon": {
@@ -15652,6 +16464,10 @@
             "focus": {
               "$value": "{color.border.focus}",
               "$description": "Focus ring of the select's trigger, like a text field's."
+            },
+            "invalid": {
+              "$value": "{color.status.danger.@}",
+              "$description": "Border of the select trigger when invalid, as the input's."
             }
           },
           "font-size": {
@@ -15689,6 +16505,24 @@
           "focus-offset": {
             "$value": "{border-width.focus-offset}",
             "$description": "Gap between the select trigger and its focus ring."
+          },
+          "icon": {
+            "$value": "{color.text.muted}",
+            "$description": "Color of the chevron on the select trigger: muted, so it supports the value."
+          },
+          "disabled": {
+            "background": {
+              "$value": "{color.disabled.surface}",
+              "$description": "Fill of a disabled select trigger, as a disabled input's."
+            },
+            "border": {
+              "$value": "{color.disabled.border}",
+              "$description": "Border of a disabled select trigger, as a disabled input's."
+            },
+            "text": {
+              "$value": "{color.disabled.text}",
+              "$description": "Text of a disabled select trigger, as a disabled input's."
+            }
           }
         },
         "focus": {
@@ -15729,8 +16563,8 @@
             "$description": "Item gap of the select."
           },
           "padding-left": {
-            "$value": "{space.inset.cell-x}",
-            "$description": "Item padding left of the select."
+            "$value": "{component-spacing-map.x2}",
+            "$description": "Left padding of a select option: the menu item inset, as in the other menus."
           },
           "padding-right": {
             "$value": "{component-spacing-map.x8}",
@@ -16828,7 +17662,8 @@
           },
           "focus-ring": {
             "$value": "{color.border.focus}",
-            "$description": "Thumb focus ring of the slider."
+            "$description": "Deprecated: use slider/thumb/focus-ring-focus (OD-243). Thumb focus ring of the slider.",
+            "$deprecated": "Use component.slider.thumb.focus-ring-focus. Removed in the next minor release."
           },
           "disabled-opacity-disabled": {
             "$value": "{opacity.disabled}",
@@ -16849,6 +17684,14 @@
           "focus-offset": {
             "$value": "{border-width.focus-offset}",
             "$description": "Gap between the slider thumb and its focus ring."
+          },
+          "border-width": {
+            "$value": "{border-width.default}",
+            "$description": "Width of the slider thumb's edge: every border's width."
+          },
+          "background": {
+            "$value": "{color.surface.default}",
+            "$description": "Fill of the slider's thumb: the base fill, as the switch's thumb has, so the thumb stands out on the track and the range."
           }
         }
       },
@@ -16884,20 +17727,61 @@
           "$description": "Disabled of the switch."
         },
         "canvas": {
-          "$value": "{color.surface.canvas}",
-          "$description": "Canvas of the switch."
+          "$value": "{switch.focus-ring-offset}",
+          "$description": "Deprecated: use component.switch.focus-ring-offset (OD-243). Canvas of the switch.",
+          "$deprecated": "Use component.switch.focus-ring-offset. Removed in the next minor release."
         },
         "size": {
-          "$value": "{size.icon}",
-          "$description": "Size of the switch."
+          "$value": "{switch.thumb.size}",
+          "$description": "Deprecated: use component.switch.thumb.size (OD-243). Size of the switch.",
+          "$deprecated": "Use component.switch.thumb.size. Removed in the next minor release."
         },
         "icon": {
-          "$value": "{size.icon}",
-          "$description": "Icon of the switch."
+          "$value": "{switch.thumb.travel}",
+          "$description": "Deprecated: use component.switch.thumb.travel (OD-243). Icon of the switch.",
+          "$deprecated": "Use component.switch.thumb.travel. Removed in the next minor release."
         },
         "focus-offset": {
           "$value": "{border-width.focus-offset}",
           "$description": "Gap between the switch and its focus ring."
+        },
+        "focus-ring": {
+          "$value": "{color.border.focus}",
+          "$description": "Color of the switch's focus ring: the focus ring at full strength."
+        },
+        "focus-ring-offset": {
+          "$value": "{color.surface.canvas}",
+          "$description": "Color of the gap between the switch and its focus ring: the page background, so the ring reads on any fill."
+        },
+        "thumb": {
+          "size": {
+            "$value": "{size.icon}",
+            "$description": "Size of the switch's thumb."
+          },
+          "travel": {
+            "$value": "{size.icon}",
+            "$description": "How far the thumb moves when the switch turns on: one thumb's width."
+          },
+          "radius": {
+            "$value": "{radius.round}",
+            "$description": "Corner of the switch's thumb: round, as the track is."
+          },
+          "background": {
+            "$value": "{color.surface.default}",
+            "$description": "Fill of the switch's thumb: the base fill, so the thumb stands out on the track, off or on."
+          }
+        },
+        "track": {
+          "background": {
+            "@": {
+              "$value": "{color.border.strong}",
+              "$description": "Fill of the switch's track when off: the tone of the edge of a control people must find, so the off track meets the 3:1 a control needs."
+            },
+            "checked": {
+              "$value": "{color.action.primary.@}",
+              "$description": "Fill of the switch's track when on: the rule for checked controls. The thumb's side says on, so it is never color alone."
+            }
+          }
         }
       },
       "textarea": {
@@ -16927,7 +17811,8 @@
         },
         "shadow": {
           "$value": "{elevation.card}",
-          "$description": "Shadow of the textarea."
+          "$description": "Deprecated: use textarea/border (OD-243). Shadow of the textarea.",
+          "$deprecated": "Use component.textarea.border. Removed in the next minor release."
         },
         "label-placeholder": {
           "$value": "{color.text.muted}",
@@ -16939,7 +17824,8 @@
         },
         "disabled-opacity-disabled": {
           "$value": "{opacity.disabled}",
-          "$description": "Disabled opacity disabled of the textarea."
+          "$description": "Deprecated: use textarea/disabled/text (OD-243). Disabled opacity disabled of the textarea.",
+          "$deprecated": "Use component.textarea.disabled.text. Removed in the next minor release."
         },
         "border-invalid": {
           "$value": "{color.status.danger.@}",
@@ -16968,6 +17854,36 @@
         "border-width": {
           "$value": "{border-width.default}",
           "$description": "Border width of the textarea."
+        },
+        "min-height": {
+          "$value": "{size.control.default}",
+          "$description": "The least height of the textarea: one field's height; it grows with its text."
+        },
+        "duration": {
+          "$value": "{motion.duration.feedback}",
+          "$description": "How fast the textarea changes state: the feedback speed."
+        },
+        "easing": {
+          "$value": "{motion.easing.standard}",
+          "$description": "Easing of the textarea's state changes: the feedback easing."
+        },
+        "background": {
+          "$value": "{color.surface.default}",
+          "$description": "Textarea fill, like the input's."
+        },
+        "disabled": {
+          "background": {
+            "$value": "{color.disabled.surface}",
+            "$description": "Fill of a disabled textarea."
+          },
+          "border": {
+            "$value": "{color.disabled.border}",
+            "$description": "Border of a disabled textarea."
+          },
+          "text": {
+            "$value": "{color.disabled.text}",
+            "$description": "Text in a disabled textarea."
+          }
         }
       },
       "toast": {
@@ -16999,8 +17915,13 @@
             "$description": "Success border of the toast."
           },
           "border-2": {
+            "$value": "{toast.success.edge}",
+            "$description": "Deprecated: use component.toast.success.edge (OD-243). Success border 2 of the toast.",
+            "$deprecated": "Use component.toast.success.edge. Removed in the next minor release."
+          },
+          "edge": {
             "$value": "{color.status.success.@}",
-            "$description": "Success border 2 of the toast."
+            "$description": "Color of the edge that marks a success toast, beside its border."
           }
         },
         "danger": {
@@ -17009,29 +17930,77 @@
             "$description": "Danger border of the toast."
           },
           "border-2": {
+            "$value": "{toast.danger.edge}",
+            "$description": "Deprecated: use component.toast.danger.edge (OD-243). Danger border 2 of the toast.",
+            "$deprecated": "Use component.toast.danger.edge. Removed in the next minor release."
+          },
+          "edge": {
             "$value": "{color.status.danger.@}",
-            "$description": "Danger border 2 of the toast."
+            "$description": "Color of the edge that marks a danger toast, beside its border."
           }
         },
         "gap-2": {
-          "$value": "{space.gap.tight}",
-          "$description": "Gap 2 of the toast."
+          "$value": "{toast.content.gap}",
+          "$description": "Deprecated: use component.toast.content.gap (OD-243). Gap 2 of the toast.",
+          "$deprecated": "Use component.toast.content.gap. Removed in the next minor release."
         },
         "font-weight": {
-          "$value": "{type.label.font-weight}",
-          "$description": "Font weight of the toast."
+          "$value": "{toast.title.font-weight}",
+          "$description": "Deprecated: use component.toast.title.font-weight (OD-243). Font weight of the toast.",
+          "$deprecated": "Use component.toast.title.font-weight. Removed in the next minor release."
         },
         "font-size": {
-          "$value": "{type.body.font-size}",
-          "$description": "Font size of the toast."
+          "$value": "{toast.title.font-size}",
+          "$description": "Deprecated: use component.toast.title.font-size (OD-243). Font size of the toast.",
+          "$deprecated": "Use component.toast.title.font-size. Removed in the next minor release."
         },
         "label-2": {
-          "$value": "{color.text.secondary}",
-          "$description": "Label 2 of the toast."
+          "$value": "{toast.description.label}",
+          "$description": "Deprecated: use component.toast.description.label (OD-243). Label 2 of the toast.",
+          "$deprecated": "Use component.toast.description.label. Removed in the next minor release."
         },
         "font-size-2": {
-          "$value": "{type.caption.font-size}",
-          "$description": "Font size 2 of the toast."
+          "$value": "{toast.description.font-size}",
+          "$description": "Deprecated: use component.toast.description.font-size (OD-243). Font size 2 of the toast.",
+          "$deprecated": "Use component.toast.description.font-size. Removed in the next minor release."
+        },
+        "title": {
+          "font-weight": {
+            "$value": "{type.label.font-weight}",
+            "$description": "Weight of the toast's title."
+          },
+          "font-size": {
+            "$value": "{type.body.font-size}",
+            "$description": "Size of the toast's title."
+          }
+        },
+        "description": {
+          "label": {
+            "$value": "{color.text.secondary}",
+            "$description": "Color of the toast's description, under the title."
+          },
+          "font-size": {
+            "$value": "{type.caption.font-size}",
+            "$description": "Size of the toast's description, under the title."
+          }
+        },
+        "content": {
+          "gap": {
+            "$value": "{space.gap.tight}",
+            "$description": "Gap between the title and the description."
+          }
+        },
+        "background": {
+          "$value": "{color.surface.raised}",
+          "$description": "Fill of the toast, like every floating panel's: surface.raised (menus, dialogs, toasts)."
+        },
+        "radius": {
+          "$value": "{radius.container}",
+          "$description": "Corner of the toast, like every floating panel's."
+        },
+        "shadow": {
+          "$value": "{elevation.overlay}",
+          "$description": "Shadow of the toast, like every floating panel's."
         }
       },
       "toggle-group": {
@@ -17047,6 +18016,14 @@
           "padding-x": {
             "$value": "{space.inset.control-x}",
             "$description": "Item padding x of the toggle group."
+          },
+          "radius": {
+            "$value": "{radius.control}",
+            "$description": "Outer corners of the first and last item of a joined toggle group: the toggle's own corner, so the joined group reads as one control."
+          },
+          "border-width": {
+            "$value": "{border-width.default}",
+            "$description": "Left border width of the first item of a joined outline toggle group, where the items between drop theirs."
           }
         }
       },
@@ -17073,11 +18050,13 @@
         },
         "label-hover": {
           "$value": "{color.text.muted}",
-          "$description": "Label hover of the toggle."
+          "$description": "Deprecated: use toggle/label (OD-243). Label hover of the toggle.",
+          "$deprecated": "Use component.toggle.label. Removed in the next minor release."
         },
         "border-focus": {
           "$value": "{color.border.focus}",
-          "$description": "Border focus of the toggle."
+          "$description": "Deprecated: use toggle/focus-ring-focus (OD-243). Border focus of the toggle.",
+          "$deprecated": "Use component.toggle.focus-ring-focus. Removed in the next minor release."
         },
         "disabled-opacity-disabled": {
           "$value": "{opacity.disabled}",
@@ -17089,11 +18068,13 @@
         },
         "focus-ring-invalid": {
           "$value": "{color.status.danger.@}",
-          "$description": "Focus ring invalid of the toggle."
+          "$description": "Deprecated: use toggle/border-invalid (OD-243). Focus ring invalid of the toggle.",
+          "$deprecated": "Use component.toggle.border-invalid. Removed in the next minor release."
         },
         "label-on": {
           "$value": "{color.text.primary}",
-          "$description": "Label on of the toggle."
+          "$description": "Deprecated: use toggle/label (OD-243). Label on of the toggle.",
+          "$deprecated": "Use component.toggle.label. Removed in the next minor release."
         },
         "icon-size": {
           "$value": "{size.icon}",
@@ -17122,13 +18103,18 @@
           },
           "label-hover": {
             "$value": "{color.text.primary}",
-            "$description": "Outline label hover of the toggle."
+            "$description": "Deprecated: use toggle/label (OD-243). Outline label hover of the toggle.",
+            "$deprecated": "Use component.toggle.label. Removed in the next minor release."
           },
           "background": {
             "hover": {
               "$value": "{color.surface.highlight}",
               "$description": "Outline toggle background under the pointer."
             }
+          },
+          "border-width": {
+            "$value": "{border-width.default}",
+            "$description": "Border width of the outline toggle."
           }
         },
         "default": {
@@ -17166,6 +18152,22 @@
         "focus-offset": {
           "$value": "{border-width.focus-offset}",
           "$description": "Gap between the toggle and its focus ring."
+        },
+        "label": {
+          "$value": "{color.text.primary}",
+          "$description": "Label of the toggle, at rest, under the pointer and when on. The state shows on the fill and the edge, not on the text."
+        },
+        "edge": {
+          "on": {
+            "$value": "{color.border.selected}",
+            "$description": "Edge of a toggle that is on, beside its selected fill, so on is never shown by color alone."
+          }
+        },
+        "edge-width": {
+          "on": {
+            "$value": "{border-width.default}",
+            "$description": "Width of the edge of a toggle that is on. It is a border, so it follows the scheme's border width."
+          }
         }
       }
     },

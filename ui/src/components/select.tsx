@@ -22,13 +22,14 @@ export function SelectTrigger({ className, children, ...props }: React.Component
         "bg-[var(--select-trigger-background)] text-[var(--select-trigger-text)] text-[length:var(--select-trigger-font-size)] [font-family:var(--select-trigger-font-family)]",
         "border-[length:var(--select-trigger-border-width)] border-[var(--select-trigger-border)] data-[placeholder]:text-[var(--select-trigger-placeholder)]",
         "outline-none focus-visible:ring-[length:var(--select-trigger-focus-width)] focus-visible:ring-[color:var(--select-trigger-border-focus)] focus-visible:ring-offset-[length:var(--select-trigger-focus-offset)] focus-visible:ring-offset-[color:var(--select-trigger-focus-ring-offset)]",
+        "aria-invalid:border-[var(--select-trigger-border-invalid)] disabled:bg-[var(--select-trigger-disabled-background)] disabled:border-[var(--select-trigger-disabled-border)] disabled:text-[var(--select-trigger-disabled-text)]",
         className,
       )}
       {...props}
     >
       {children}
       <SelectPrimitive.Icon asChild>
-        <ChevronDown className="size-[var(--select-size)] opacity-70" />
+        <ChevronDown className="size-[var(--select-size)] text-[var(--select-trigger-icon)]" />
       </SelectPrimitive.Icon>
     </SelectPrimitive.Trigger>
   );
@@ -38,6 +39,7 @@ export function SelectContent({
   className,
   children,
   position = "popper",
+  sideOffset = 0, // the gap is overlay/offset, a margin on the side it opens to (OD-243)
   ...props
 }: React.ComponentProps<typeof SelectPrimitive.Content>) {
   return (
@@ -45,10 +47,11 @@ export function SelectContent({
       <SelectPrimitive.Content
         data-slot="select-content"
         position={position}
+        sideOffset={position === "popper" ? sideOffset : undefined}
         className={cn(
-          "z-50 min-w-[8rem] overflow-hidden p-[var(--select-content-padding)] rounded-[var(--overlay-radius)] bg-[var(--overlay-background)] text-[var(--select-content-label)]",
+          "data-[side=bottom]:mt-[var(--overlay-offset)] data-[side=top]:mb-[var(--overlay-offset)] data-[side=left]:mr-[var(--overlay-offset)] data-[side=right]:ml-[var(--overlay-offset)] z-50 min-w-[8rem] overflow-hidden p-[var(--select-content-padding)] rounded-[var(--overlay-radius)] bg-[var(--overlay-background)] text-[var(--select-content-label)]",
           "[box-shadow:var(--overlay-shadow)] border-[length:var(--select-content-border-width)] border-[var(--select-content-border)]",
-          position === "popper" && "w-[var(--radix-select-trigger-width)] translate-y-1",
+          position === "popper" && "w-[var(--radix-select-trigger-width)]",
           className,
         )}
         {...props}

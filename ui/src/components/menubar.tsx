@@ -18,7 +18,7 @@ function Menubar({ className, ...props }: React.ComponentProps<typeof MenubarPri
     <MenubarPrimitive.Root
       data-slot="menubar"
       className={cn(
-        "flex h-9 items-center gap-[var(--menubar-gap)] rounded-[var(--menubar-radius)] border-[length:var(--menubar-border-width)] border-[color:var(--menubar-border)] bg-[color:var(--menubar-background)] p-[var(--menubar-padding)] shadow-[var(--menubar-shadow)]",
+        "flex min-h-[var(--menubar-height)] items-center gap-[var(--menubar-gap)] rounded-[var(--menubar-radius)] border-[length:var(--menubar-border-width)] border-[color:var(--menubar-border)] bg-[color:var(--menubar-background)] p-[var(--menubar-padding)] shadow-[var(--menubar-shadow)]",
         className,
       )}
       {...props}
@@ -91,7 +91,7 @@ function MenubarItem({
       data-inset={inset}
       data-variant={variant}
       className={cn(
-        "relative flex cursor-default items-center gap-[var(--menubar-item-gap)] rounded-[var(--menubar-item-radius)] px-[var(--menubar-item-padding-x)] py-[var(--menubar-item-padding-y)] text-[length:var(--menubar-item-font-size)]/[var(--menubar-item-line-height)] outline-hidden select-none focus:bg-[color:var(--menubar-item-background-highlight)] focus:text-[color:var(--menubar-item-label-focus)] data-[disabled]:pointer-events-none data-[disabled]:opacity-[var(--menubar-item-disabled-opacity-disabled)] data-[inset]:pl-[var(--menubar-item-padding-left)] data-[variant=destructive]:text-[color:var(--menubar-item-label-destructive)] data-[variant=destructive]:focus:bg-[color:var(--menubar-item-background-destructive-highlight)] data-[variant=destructive]:focus:text-[color:var(--menubar-item-label-destructive-highlight)] [&_svg]:pointer-events-none [&_svg]:shrink-0 [&_svg:not([class*='size-'])]:size-[var(--menubar-item-icon-size)] [&_svg:not([class*='text-'])]:text-[color:var(--menubar-item-label-2)]",
+        "relative flex cursor-default items-center gap-[var(--menubar-item-gap)] rounded-[var(--menubar-item-radius)] px-[var(--menubar-item-padding-x)] py-[var(--menubar-item-padding-y)] text-[length:var(--menubar-item-font-size)]/[var(--menubar-item-line-height)] outline-hidden select-none focus:bg-[color:var(--menubar-item-background-highlight)] focus:text-[color:var(--menubar-item-label-focus)] data-[disabled]:pointer-events-none data-[disabled]:opacity-[var(--menubar-item-disabled-opacity-disabled)] data-[inset]:pl-[var(--menubar-item-padding-left)] data-[variant=destructive]:text-[color:var(--menubar-item-label-destructive)] data-[variant=destructive]:focus:bg-[color:var(--menubar-item-background-destructive-highlight)] data-[variant=destructive]:focus:text-[color:var(--menubar-item-label-destructive-highlight)] [&_svg]:pointer-events-none [&_svg]:shrink-0 [&_svg:not([class*='size-'])]:size-[var(--menubar-item-icon-size)] [&_svg:not([class*='text-'])]:text-[color:var(--menubar-item-icon)]",
         className,
       )}
       {...props}
@@ -210,7 +210,7 @@ function MenubarSubTrigger({
       {...props}
     >
       {children}
-      <ChevronRightIcon className="ml-auto h-[var(--menubar-height)] w-4" />
+      <ChevronRightIcon className="ml-auto size-[var(--menubar-sub-trigger-icon-size)]" />
     </MenubarPrimitive.SubTrigger>
   );
 }
