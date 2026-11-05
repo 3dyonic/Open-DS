@@ -400,8 +400,10 @@ code {
   height: 10px;
   border-radius: 50%;
   flex: none;
-  /* A dark scheme color (Content first's navy) stays visible on a dark surface. */
-  box-shadow: 0 0 0 1px var(--color-border-strong, var(--ifm-color-emphasis-500));
+  background: var(--dot);
+}
+[data-theme="dark"] .ods-picker-dot {
+  background: var(--dot-dark);
 }
 .ods-picker-list {
   position: absolute;
@@ -651,6 +653,13 @@ html:not([data-scheme])[data-theme="dark"] .navbar__logo img {
   border-radius: 1rem;
   overflow: hidden;
   background: var(--ifm-background-surface-color);
+}
+/* A scheme's color follows the page: its light-mode primary on paper, its dark-mode primary at night. */
+.ods-row {
+  --c: var(--c-light);
+}
+html[data-theme="dark"] .ods-row {
+  --c: var(--c-dark);
 }
 .ods-row {
   position: relative;

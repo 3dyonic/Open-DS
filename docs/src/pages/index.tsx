@@ -36,7 +36,7 @@ function Row({ s }: { s: Scheme }) {
     }
   };
   return (
-    <article className="ods-row" style={{ "--c": s.primary } as React.CSSProperties}>
+    <article className="ods-row" style={{ "--c-light": s.primary, "--c-dark": s.primaryDark } as React.CSSProperties}>
       <Link className="ods-row-art" to={`/${s.id}/`} aria-label={`${s.name} docs`}>
         <Robot id={s.id} />
       </Link>

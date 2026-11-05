@@ -10,7 +10,17 @@ import { useScheme } from "../../components/scheme";
 // No native select (Open DS decision, 2026-11-05): a native select opens the operating system's menu
 // and the browser's focus ring, so the docs would stop wearing the scheme they document. This is a
 // listbox built from the scheme's own tokens.
-type Option = { id: string; label: string; hint?: string; color?: string };
+type Option = { id: string; label: string; hint?: string; color?: string; colorDark?: string };
+
+// A scheme's color: its light-mode primary on a light page, its dark-mode primary on a dark one.
+function Dot({ light, dark }: { light: string; dark?: string }) {
+  return (
+    <span
+      className="ods-picker-dot"
+      style={{ "--dot": light, "--dot-dark": dark ?? light } as React.CSSProperties}
+    />
+  );
+}
 
 function Picker({
   label,
@@ -92,7 +102,7 @@ function Picker({
         onClick={() => (open ? setOpen(false) : show())}
         onKeyDown={onTriggerKey}
       >
-        {current?.color && <span className="ods-picker-dot" style={{ background: current.color }} />}
+        {current?.color && <Dot light={current.color} dark={current.colorDark} />}
         <span id={`${id}-value`}>{current?.label ?? `Pick a ${label.toLowerCase()}`}</span>
         <svg className="ods-picker-chev" viewBox="0 0 24 24" aria-hidden="true">
           <path d="m6 9 6 6 6-6" />
@@ -118,7 +128,7 @@ function Picker({
               onMouseEnter={() => setActive(i)}
               onClick={() => pick(i)}
             >
-              {o.color && <span className="ods-picker-dot" style={{ background: o.color }} />}
+              {o.color && <Dot light={o.color} dark={o.colorDark} />}
               <b>{o.label}</b>
               <svg className="ods-picker-check" viewBox="0 0 24 24" aria-hidden="true">
                 <path d="M20 6 9 17l-5-5" />
@@ -160,7 +170,7 @@ export default function SchemeSwitcher({ mobile }: { mobile?: boolean }) {
         label="Scheme"
         wide
         value={current?.id ?? ""}
-        options={schemes.map((s) => ({ id: s.id, label: s.name, hint: s.summary, color: s.primary }))}
+        options={schemes.map((s) => ({ id: s.id, label: s.name, hint: s.summary, color: s.primary, colorDark: s.primaryDark }))}
         onPick={(id) => history.push(withBaseUrl(`/${id}/${rest}`))}
       />
       {brands.length > 0 && (

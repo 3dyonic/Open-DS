@@ -175,6 +175,9 @@ for (const id of ids) {
   // What the home page shows per scheme (OD-209): its answers, read from its built tokens.
   const light = readFileSync(join(roots.tokens, id, "tokens.css"), "utf8");
   const token = (name) => light.match(new RegExp(`--${name}:\\s*([^;]+);`))?.[1].trim() ?? null;
+  // The dark mode's values sit in the .dark block of the same file.
+  const dark = light.slice(light.indexOf(".dark {"));
+  const darkToken = (name) => dark.match(new RegExp(`--${name}:\\s*([^;]+);`))?.[1].trim() ?? null;
   const brandIds = Object.keys(scheme.tokens.brands ?? {});
   index.push({
     id,
@@ -188,6 +191,7 @@ for (const id of ids) {
     answers: scheme.answers.length,
     themes: scheme.themes.length,
     primary: token("color-action-primary"),
+    primaryDark: darkToken("color-action-primary"),
     corners: token("radius-control"),
     font: token("type-display-font-family"),
     motion: token("motion-duration-feedback"),
