@@ -4,6 +4,16 @@
   "version": "0.1.0",
   "status": "draft",
   "description": "The Open DS grammar: a finite set of questions a design system must answer. Reasons come first (business, people, content, tasks, human factors, outcomes, brand, use scenarios, team). Scopes follow, from typography to voice and tone. Every scope answers the same five method questions (roles, how many, how defined, values, lands in) and has the same parts: the tokens it owns, the components it lands in and its situations. Each scheme answers every question, and each answer says why and which earlier answers it follows from. Situations are the moments where people need to know what to use; each scheme answers them too. Component keys are the shared component API every scheme fills.",
+  "scheme_order": {
+    "order": [
+      "dense-data",
+      "content-first",
+      "accessible-first",
+      "brand-expressive",
+      "multi-brand"
+    ],
+    "why": "The first three are shaped by what people do: scan and compare, read, finish the task. The last two are shaped by the brand: one loud brand, then many brands as themes, the most involved. Dense data comes first; it is the default everywhere."
+  },
   "ai": {
     "use_when": "You need the list of questions behind a design system, or the meaning of a question id such as typography.definition or a situation id such as number-in-table.",
     "how_to_read": "Reasons are answered first. A scope answer lists in 'because' the answers that pulled it. Scope question ids are <scope>.<method>, so typography.values and voice.values answer the same kind of question. Tokens follow from the answers. Components read only component keys. Written text in a scheme (voice, scenarios) lists in 'follows' the answers it was written from."

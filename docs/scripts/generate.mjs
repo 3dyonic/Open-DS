@@ -18,12 +18,8 @@ const check = process.argv.includes("--check");
 const BASE = process.env.DOCS_BASE_URL ?? "/";
 const roots = assetRoots();
 const g = grammar(roots);
-// The order the switcher lists them in: the same as the repo Storybook's toolbar.
-const ORDER = ["dense-data", "content-first", "accessible-first", "brand-expressive", "multi-brand"];
-const ids = [
-  ...ORDER.filter((id) => schemeIds(roots).includes(id)),
-  ...schemeIds(roots).filter((id) => !ORDER.includes(id)),
-];
+// The order every list uses, from the grammar (scheme_order): CLI, MCP, docs, Storybook, website.
+const ids = schemeIds(roots);
 for (const id of ids)
   if (!existsSync(join(roots.tokens, id, "tokens.css"))) {
     console.error(`Tokens for ${id} are not built. Run: pnpm --dir tokens build`);

@@ -40,11 +40,14 @@ export function grammar(roots = assetRoots()) {
   return readJson(join(roots.schemes, "grammar.json"));
 }
 
+/** Every scheme id, in the grammar's scheme_order; a scheme it does not list comes last, by id. */
 export function schemeIds(roots = assetRoots()) {
+  const order = grammar(roots).scheme_order?.order ?? [];
+  const rank = (id) => (order.includes(id) ? order.indexOf(id) : order.length);
   return readdirSync(roots.schemes)
     .filter((f) => f.endsWith(".json") && f !== "grammar.json")
     .map((f) => f.replace(/\.json$/, ""))
-    .sort();
+    .sort((a, b) => rank(a) - rank(b) || a.localeCompare(b));
 }
 
 export function loadScheme(id, roots = assetRoots()) {

@@ -554,6 +554,33 @@ export const CHECKS = {
         : ok(`the component spacing map in ${SCHEMES.length} schemes matches its rule`);
     },
   },
+  "scheme-order": {
+    requires: ["schemes/grammar.json", "storybook/src/scheme-context.tsx", "site/src/lib/home.ts"],
+    run: (c) => {
+      // One order everywhere: the grammar's scheme_order. The CLI, MCP, docs and website sort by it in
+      // code; Storybook's toolbar and the website's home list are written by hand, so check them.
+      const order = c.json("schemes", "grammar.json").scheme_order?.order ?? [];
+      const ids = readdirSync(c.p("schemes"))
+        .filter((f) => f.endsWith(".json") && f !== "grammar.json")
+        .map((f) => f.replace(/\.json$/, ""));
+      const gaps = [];
+      for (const id of ids) if (!order.includes(id)) gaps.push(`scheme_order leaves out ${id}`);
+      for (const id of order) if (!ids.includes(id)) gaps.push(`scheme_order names ${id}, which is not a scheme`);
+      const inOrder = (list) => list.every((id, i) => i === 0 || order.indexOf(list[i - 1]) <= order.indexOf(id));
+      const toolbar = [
+        ...new Set(
+          [...c.read("storybook/src/scheme-context.tsx").matchAll(/value: "([a-z-]+?)(?:--[a-z]+)?"/g)].map(
+            (m) => m[1],
+          ),
+        ),
+      ];
+      if (!inOrder(toolbar)) gaps.push(`Storybook's toolbar lists ${toolbar.join(", ")}`);
+      const home = JSON.parse(c.read("site/src/lib/home.ts").match(/HOME_SCHEMES = (\[[^\]]*\])/)?.[1] ?? "[]");
+      if (!inOrder(home)) gaps.push(`the website's home lists ${home.join(", ")}`);
+      return gaps.length ? bad(gaps.join("; ")) : ok(`one order everywhere: ${order.join(", ")}`);
+    },
+  },
+
   "docs-css-tone": {
     requires: ["schemes/grammar.json", "docs/src/css/custom.css", "docs/src/css/visual.css"],
     run: (c) => {

@@ -136,7 +136,8 @@
         "docs/ builds every scheme, each in its own fonts and colors (OD-207)",
         "open-ds init --docs and MCP deploy docs=true",
         "Open DS pages moved to guide/",
-        "the docs use no native select: the scheme and brand pickers are a listbox in the scheme's tokens"
+        "the docs use no native select: the scheme and brand pickers are a listbox in the scheme's tokens",
+        "schemes are listed in one order everywhere, the grammar's scheme_order, with its reason"
       ],
       "checks": [
         "docs-sections",
@@ -144,7 +145,8 @@
         "docs-build",
         "cli-commands",
         "mcp-tests",
-        "docs-no-native-select"
+        "docs-no-native-select",
+        "scheme-order"
       ]
     },
     {

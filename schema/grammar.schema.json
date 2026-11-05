@@ -28,6 +28,25 @@
       "type": "string",
       "description": "Relative path to this schema."
     },
+    "scheme_order": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["order", "why"],
+      "description": "The order schemes are listed in everywhere: the CLI, the MCP server, the docs, Storybook and the website. A scheme missing from the list comes after it, by id.",
+      "properties": {
+        "order": {
+          "type": "array",
+          "items": { "type": "string", "pattern": "^[a-z0-9-]+$" },
+          "uniqueItems": true,
+          "description": "Scheme ids, first to last."
+        },
+        "why": {
+          "type": "string",
+          "minLength": 1,
+          "description": "Why this order, in one or two sentences."
+        }
+      }
+    },
     "id": {
       "const": "open-ds-grammar",
       "description": "Fixed id of the grammar."
