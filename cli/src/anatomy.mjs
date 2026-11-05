@@ -81,7 +81,7 @@ export function anatomy(scheme, g, roots, comp) {
   // Same step: every theme pick in this mode with the same value, so a reader sees what a change moves.
   const sharing = (mode, path, value) =>
     leaves(theme[mode] ?? {})
-      .filter(([p, n]) => n.$value === value && p !== path && !/^color\.neutral\./.test(p))
+      .filter(([p, n]) => n.$value === value && p.replace(/\.@$/, "") !== path && !/^color\.neutral\./.test(p))
       .map(([p]) => p.replace(/\.@$/, ""));
   const pickOf = (mode, semantic) => {
     const node = leaves(theme[mode] ?? {}).find(([p]) => p.replace(/\.@$/, "") === semantic)?.[1] ??
