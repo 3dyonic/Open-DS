@@ -80,7 +80,10 @@ server.listen(0, async () => {
         failed.push({ id: s.id, problem: `primary is ${st.primary}, not ${primary(s.id)}` });
       // Switch to the next scheme from the navbar; the page must stay the button page.
       const next = schemes[(i + 1) % schemes.length].id;
-      await page.selectOption('.navbar select[aria-label="Scheme"]', next);
+      // The switcher is a listbox, not a native select (OD-240): open it and pick the scheme by name.
+      const nextName = schemes[(i + 1) % schemes.length].name;
+      await page.click('.navbar .ods-picker:has(.ods-picker-label:text-is("Scheme")) .ods-picker-trigger');
+      await page.click(`.navbar [role="option"]:has-text("${nextName}")`);
       await page
         .waitForFunction((n) => document.documentElement.dataset.scheme === n, next, { timeout: 5000 })
         .catch(() => {});
