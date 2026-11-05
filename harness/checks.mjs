@@ -554,6 +554,66 @@ export const CHECKS = {
         : ok(`the component spacing map in ${SCHEMES.length} schemes matches its rule`);
     },
   },
+  "visible-where-it-meets": {
+    requires: ["schemes/grammar.json", ...SCHEMES.map((s) => `schemes/${s}.json`)],
+    run: (c) => {
+      // OD-242: decorative means no contrast floor, not invisible. In dark, every scheme once picked one
+      // neutral step for the menu, its hover and its divider, so both read 1.00:1 and no check asked.
+      // Each hover fill and default edge needs a minimum difference from every surface it sits on.
+      const lum = (hex) => {
+        const [r, gr, b] = [1, 3, 5]
+          .map((i) => parseInt(hex.slice(i, i + 2), 16) / 255)
+          .map((v) => (v <= 0.04045 ? v / 12.92 : ((v + 0.055) / 1.055) ** 2.4));
+        return 0.2126 * r + 0.7152 * gr + 0.0722 * b;
+      };
+      const ratio = (a, b) => {
+        const [x, y] = [lum(a), lum(b)].sort((m, n) => n - m);
+        return (x + 0.05) / (y + 0.05);
+      };
+      // The floors are the lightest pairs the light themes already ship: a fill at 1.08:1, a 1px line at 1.15:1.
+      const MEETS = [
+        { key: "color.surface.sunken", job: "hover fill", min: 1.08, on: ["color.surface.default", "color.surface.raised"] },
+        {
+          key: "color.border.default",
+          job: "divider",
+          min: 1.15,
+          on: ["color.surface.canvas", "color.surface.default", "color.surface.raised"],
+        },
+      ];
+      const gaps = [];
+      let pairs = 0;
+      let lowest = Infinity;
+      for (const s of SCHEMES) {
+        const t = c.json("schemes", `${s}.json`).tokens;
+        for (const brand of Object.keys(t.brands))
+          for (const mode of ["light", "dark"]) {
+            const all = flatten(themeTokens({ id: s, tokens: t }, brand, mode));
+            const hex = (p) => {
+              const v = resolve(all, p).value;
+              return typeof v === "string" && /^#[0-9a-f]{6}$/i.test(v) ? v : null;
+            };
+            for (const m of MEETS)
+              for (const on of m.on) {
+                const [a, b] = [hex(m.key), hex(on)];
+                if (!a || !b) {
+                  gaps.push(`${s}/${brand}/${mode}: ${m.key} or ${on} has no color`);
+                  continue;
+                }
+                pairs++;
+                const r = ratio(a, b);
+                lowest = Math.min(lowest, r);
+                if (r < m.min)
+                  gaps.push(
+                    `${s}/${brand}/${mode}: the ${m.job} ${m.key} on ${on} is ${r.toFixed(2)}:1, needs ${m.min}:1`,
+                  );
+              }
+          }
+      }
+      return gaps.length
+        ? bad(`${gaps.length} problems: ${gaps.slice(0, 5).join("; ")}`)
+        : ok(`${pairs} hover fills and dividers are visible where they meet; the lowest is ${lowest.toFixed(2)}:1`);
+    },
+  },
   "scheme-order": {
     requires: ["schemes/grammar.json", "storybook/src/scheme-context.tsx", "site/src/lib/home.ts"],
     run: (c) => {

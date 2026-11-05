@@ -3422,7 +3422,7 @@
                 },
                 "raised": {
                   "$type": "color",
-                  "$value": "{color.neutral.100}",
+                  "$value": "{color.neutral.50}",
                   "$extensions": {
                     "open-ds": {
                       "tone": "dark"
@@ -3494,7 +3494,7 @@
               "border": {
                 "default": {
                   "$type": "color",
-                  "$value": "{color.neutral.100}"
+                  "$value": "{color.neutral.200}"
                 },
                 "strong": {
                   "$type": "color",
