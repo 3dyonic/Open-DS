@@ -235,7 +235,11 @@ export function componentGaps(scheme, g, roots) {
       }
       // 3. Borrowed: another component's role (radius.badge in a menu).
       const role = t.aliases.match(/^(radius|size)\.([a-z-]+)$/)?.[2];
-      if (role && catalogue.has(role) && role !== comp && !comp.startsWith(role))
+      // A role whose written rule names this component is not borrowed: radius.badge is "Corner of
+      // badges and checkboxes", so the checkbox reads its own rule.
+      const roleRule = role ? t.aliases.split(".").reduce((n, k) => n?.[k], scheme.tokens.semantic)?.$description ?? "" : "";
+      const named = new RegExp(`\\b${comp.replace(/-/g, "[ -]")}(e?s)?\\b`, "i").test(roleRule);
+      if (role && catalogue.has(role) && role !== comp && !comp.startsWith(role) && !named)
         gaps.push({
           ...base,
           kind: "wrong-semantic",

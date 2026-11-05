@@ -4,7 +4,7 @@
     "dense-data": {
       "key-hides-part": 119,
       "key-hides-state": 32,
-      "wrong-semantic": 38,
+      "wrong-semantic": 37,
       "two-jobs": 5,
       "rule-not-written": 12,
       "pick-without-reason": 138
@@ -12,7 +12,7 @@
     "content-first": {
       "key-hides-part": 119,
       "key-hides-state": 32,
-      "wrong-semantic": 38,
+      "wrong-semantic": 37,
       "two-jobs": 5,
       "rule-not-written": 12,
       "pick-without-reason": 138
@@ -20,7 +20,7 @@
     "accessible-first": {
       "key-hides-part": 119,
       "key-hides-state": 32,
-      "wrong-semantic": 38,
+      "wrong-semantic": 37,
       "two-jobs": 5,
       "rule-not-written": 12,
       "pick-without-reason": 138
@@ -28,7 +28,7 @@
     "brand-expressive": {
       "key-hides-part": 119,
       "key-hides-state": 32,
-      "wrong-semantic": 38,
+      "wrong-semantic": 37,
       "two-jobs": 5,
       "rule-not-written": 12,
       "pick-without-reason": 138
@@ -36,7 +36,7 @@
     "multi-brand": {
       "key-hides-part": 119,
       "key-hides-state": 32,
-      "wrong-semantic": 38,
+      "wrong-semantic": 37,
       "two-jobs": 5,
       "rule-not-written": 12,
       "pick-without-reason": 414
