@@ -5321,8 +5321,9 @@
     {
       "id": "overlay/scrim",
       "component": "overlay",
-      "description": "Color that dims the page behind a dialog.",
-      "default": "color.surface.scrim"
+      "description": "Deprecated: use dialog/overlay/background (OD-243). Color that dims the page behind a dialog.",
+      "default": "color.surface.scrim",
+      "replaced_by": "dialog/overlay/background"
     },
     {
       "id": "overlay/item-height",
@@ -9477,8 +9478,9 @@
     {
       "id": "field/label",
       "component": "field",
-      "description": "Label of the field.",
-      "default": "color.text.muted"
+      "description": "Deprecated: use label/label (OD-243). Label of the field.",
+      "default": "color.text.muted",
+      "replaced_by": "label/label"
     },
     {
       "id": "field/gap-2",
@@ -13504,8 +13506,9 @@
     {
       "id": "sidebar/gap",
       "component": "sidebar",
-      "description": "Gap of the sidebar.",
-      "default": "space.gap.default"
+      "description": "Deprecated: use sidebar/content/gap (OD-243). Gap of the sidebar.",
+      "default": "space.gap.default",
+      "replaced_by": "sidebar/content/gap"
     },
     {
       "id": "sidebar/menu-button/radius",

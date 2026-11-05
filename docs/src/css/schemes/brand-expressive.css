@@ -789,7 +789,7 @@ html[data-scheme="brand-expressive"] {
   --sheet-close-icon-size: var(--size-icon); /** Size of the sheet close icon: an icon next to text. */
   --sheet-close-padding: var(--component-spacing-map-x1); /** Padding around the sheet close icon. */
   --sidebar-gap-duration: var(--motion-duration-feedback); /** Gap duration of the sidebar. */
-  --sidebar-gap: var(--space-gap-default); /** Gap of the sidebar. */
+  --sidebar-gap: var(--space-gap-default); /** Deprecated: use sidebar/content/gap (OD-243). Gap of the sidebar. */
   --sidebar-container-duration: var(--motion-duration-feedback); /** Container duration of the sidebar. */
   --sidebar-container-padding: var(--component-spacing-map-x2); /** Space between the screen edge and a floating or inset sidebar panel. */
   --sidebar-container-border-width: var(--border-width-default); /** Width of the edge between the sidebar and the page. */
@@ -956,7 +956,7 @@ html[data-scheme="brand-expressive"] {
   --tabs-focus: var(--tabs-trigger-focus-width); /** Deprecated: use component.tabs.trigger.focus-width (OD-243). Focus of the tabs. */
   --overlay-radius: var(--radius-container); /** Corner radius of overlays. */
   --overlay-shadow: var(--elevation-overlay); /** Shadow of overlays. */
-  --overlay-scrim: var(--color-surface-scrim); /** Color that dims the page behind a dialog. */
+  --overlay-scrim: var(--color-surface-scrim); /** Deprecated: use dialog/overlay/background (OD-243). Color that dims the page behind a dialog. */
   --tooltip-content-radius: var(--radius-badge); /** Content radius of the tooltip. */
   --tooltip-content-font-family: var(--type-caption-font-family); /** Content font family of the tooltip. */
   --accordion-trigger-radius: var(--radius-control); /** The trigger's corner, seen on focus. */
@@ -1517,7 +1517,7 @@ html[data-scheme="brand-expressive"] {
   --empty-icon-background: var(--color-surface-sunken); /** Icon background of the empty. */
   --empty-icon-label: var(--color-text-primary); /** Icon label of the empty. */
   --empty-description-label: var(--color-text-muted); /** Description label of the empty. */
-  --field-label: var(--color-text-muted); /** Label of the field. */
+  --field-label: var(--color-text-muted); /** Deprecated: use label/label (OD-243). Label of the field. */
   --field-label-border: var(--color-border-default); /** Border color of a choice card (a field label that holds a field) at rest: a quiet edge; the checkbox or radio inside carries the strong one. */
   --field-description-label: var(--color-text-muted); /** Description label of the field. */
   --field-separator-content-background: var(--color-surface-canvas); /** Background of the field separator's content: the words on the line mask the line with the page behind them. */
@@ -2602,7 +2602,7 @@ html[data-scheme="brand-expressive"][data-theme="dark"] {
   --sheet-close-icon-size: var(--size-icon); /** Size of the sheet close icon: an icon next to text. */
   --sheet-close-padding: var(--component-spacing-map-x1); /** Padding around the sheet close icon. */
   --sidebar-gap-duration: var(--motion-duration-feedback); /** Gap duration of the sidebar. */
-  --sidebar-gap: var(--space-gap-default); /** Gap of the sidebar. */
+  --sidebar-gap: var(--space-gap-default); /** Deprecated: use sidebar/content/gap (OD-243). Gap of the sidebar. */
   --sidebar-container-duration: var(--motion-duration-feedback); /** Container duration of the sidebar. */
   --sidebar-container-padding: var(--component-spacing-map-x2); /** Space between the screen edge and a floating or inset sidebar panel. */
   --sidebar-container-border-width: var(--border-width-default); /** Width of the edge between the sidebar and the page. */
@@ -2769,7 +2769,7 @@ html[data-scheme="brand-expressive"][data-theme="dark"] {
   --tabs-focus: var(--tabs-trigger-focus-width); /** Deprecated: use component.tabs.trigger.focus-width (OD-243). Focus of the tabs. */
   --overlay-radius: var(--radius-container); /** Corner radius of overlays. */
   --overlay-shadow: var(--elevation-overlay); /** Shadow of overlays. */
-  --overlay-scrim: var(--color-surface-scrim); /** Color that dims the page behind a dialog. */
+  --overlay-scrim: var(--color-surface-scrim); /** Deprecated: use dialog/overlay/background (OD-243). Color that dims the page behind a dialog. */
   --tooltip-content-radius: var(--radius-badge); /** Content radius of the tooltip. */
   --tooltip-content-font-family: var(--type-caption-font-family); /** Content font family of the tooltip. */
   --accordion-trigger-radius: var(--radius-control); /** The trigger's corner, seen on focus. */
@@ -3330,7 +3330,7 @@ html[data-scheme="brand-expressive"][data-theme="dark"] {
   --empty-icon-background: var(--color-surface-sunken); /** Icon background of the empty. */
   --empty-icon-label: var(--color-text-primary); /** Icon label of the empty. */
   --empty-description-label: var(--color-text-muted); /** Description label of the empty. */
-  --field-label: var(--color-text-muted); /** Label of the field. */
+  --field-label: var(--color-text-muted); /** Deprecated: use label/label (OD-243). Label of the field. */
   --field-label-border: var(--color-border-default); /** Border color of a choice card (a field label that holds a field) at rest: a quiet edge; the checkbox or radio inside carries the strong one. */
   --field-description-label: var(--color-text-muted); /** Description label of the field. */
   --field-separator-content-background: var(--color-surface-canvas); /** Background of the field separator's content: the words on the line mask the line with the page behind them. */

@@ -20,13 +20,19 @@ const g = read("schemes/grammar.json");
 const e = g.component_keys.find((x) => x.id === id);
 if (!e) throw new Error(`No key ${id}.`);
 if (!g.component_keys.some((x) => x.id === by)) throw new Error(`No key ${by}; add it first.`);
+// A key that is also a group's base (sidebar/gap with sidebar/gap/duration) keeps its value under @.
+const tokenAt = (sc) => {
+  const n = id.split("/").reduce((o, k) => o?.[k], sc.tokens.component);
+  return n?.$value !== undefined ? n : n?.["@"]?.$value !== undefined ? n["@"] : null;
+};
+// Every scheme is checked before anything is written, so a failure leaves no half-deprecated key.
+const schemes = SCHEMES.map((s) => [s, read(`schemes/${s}.json`)]);
+for (const [s, sc] of schemes) if (!tokenAt(sc)) throw new Error(`${s}: no token at ${id}`);
 e.replaced_by = by;
 if (!e.description.startsWith("Deprecated")) e.description = `Deprecated: use ${by} (${ticket}). ${e.description}`;
 write("schemes/grammar.json", g);
-for (const s of SCHEMES) {
-  const sc = read(`schemes/${s}.json`);
-  const n = id.split("/").reduce((o, k) => o?.[k], sc.tokens.component);
-  if (!n?.$value) throw new Error(`${s}: no token at ${id}`);
+for (const [s, sc] of schemes) {
+  const n = tokenAt(sc);
   n.$description = e.description;
   n.$deprecated = `Use component.${by.replaceAll("/", ".")}. Removed in the next minor release.`;
   write(`schemes/${s}.json`, sc);

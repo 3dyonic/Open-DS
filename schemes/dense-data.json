@@ -6561,7 +6561,8 @@
         },
         "scrim": {
           "$value": "{color.surface.scrim}",
-          "$description": "Color that dims the page behind a dialog."
+          "$description": "Deprecated: use dialog/overlay/background (OD-243). Color that dims the page behind a dialog.",
+          "$deprecated": "Use component.dialog.overlay.background. Removed in the next minor release."
         },
         "item-height": {
           "$value": "{size.control.default}",
@@ -9559,7 +9560,8 @@
           },
           "@": {
             "$value": "{color.text.muted}",
-            "$description": "Label of the field."
+            "$description": "Deprecated: use label/label (OD-243). Label of the field.",
+            "$deprecated": "Use component.label.label. Removed in the next minor release."
           },
           "border": {
             "checked": {
@@ -12410,7 +12412,8 @@
           },
           "@": {
             "$value": "{space.gap.default}",
-            "$description": "Gap of the sidebar."
+            "$description": "Deprecated: use sidebar/content/gap (OD-243). Gap of the sidebar.",
+            "$deprecated": "Use component.sidebar.content.gap. Removed in the next minor release."
           }
         },
         "container": {
