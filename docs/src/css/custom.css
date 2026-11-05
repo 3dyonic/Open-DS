@@ -430,6 +430,7 @@ code {
   gap: 2px 0.625rem;
   align-items: center;
   padding: 0.5rem 0.625rem;
+  position: relative;
   border-radius: var(--radius-control, 0.25rem);
   cursor: pointer;
   color: var(--ifm-font-color-base);
@@ -458,8 +459,19 @@ code {
    fill's tone (--ods-text-on-selected, generated per scheme and mode). Never the link color on it. */
 .ods-picker-opt[aria-selected="true"] {
   background: var(--color-surface-selected, var(--ifm-color-emphasis-100));
-  box-shadow: inset 2px 0 0 var(--color-border-selected, var(--ifm-color-primary));
   color: var(--ods-text-on-selected, var(--ifm-font-color-base));
+}
+/* The selected edge is its own bar, so it stays straight whatever the corner (an inset shadow curls
+   into a crescent on a pill). Selection is never color alone. */
+.ods-picker-opt[aria-selected="true"]::before {
+  content: "";
+  position: absolute;
+  left: 3px;
+  top: 25%;
+  bottom: 25%;
+  width: 2px;
+  border-radius: 1px;
+  background: var(--color-border-selected, var(--ifm-color-primary));
 }
 .ods-picker-opt[aria-selected="true"] b {
   font-weight: 600;

@@ -389,6 +389,7 @@ html[data-scheme="multi-brand"] [data-brand="aster"] {
   --data-table-gap-2: var(--space-gap-default); /** Gap 2 of the data table. */
   --data-table-padding-x: var(--component-spacing-map-x2); /** Padding x of the data table. */
   --data-table-padding-y: var(--component-spacing-map-x1); /** Padding y of the data table. */
+  --data-table-container-border-width: var(--border-width-default); /** Width of the table frame's edge, of the data table. */
   --date-picker-font-weight: var(--type-body-font-weight); /** Font weight of the date picker. */
   --dialog-content-gap: var(--space-gap-group); /** Content gap of the dialog. */
   --dialog-content-padding: var(--space-inset-container); /** Content padding of the dialog. */
@@ -842,6 +843,7 @@ html[data-scheme="multi-brand"] [data-brand="aster"] {
   --context-menu-checkbox-item-radius: var(--radius-badge); /** Checkbox item radius of the context menu. */
   --context-menu-radio-item-radius: var(--radius-badge); /** Radio item radius of the context menu. */
   --data-table-radius: var(--radius-badge); /** Radius of the data table. */
+  --data-table-container-radius: var(--radius-container); /** Corner of the table frame, of the data table. */
   --dialog-radius: var(--radius-badge); /** Radius of the dialog. */
   --dialog-font-family: var(--type-heading-font-family); /** Font family of the dialog. */
   --drawer-overlay-background: var(--color-surface-scrim); /** Overlay background of the drawer. */
@@ -1138,6 +1140,7 @@ html[data-scheme="multi-brand"] [data-brand="aster"] {
   --data-table-label-hover: var(--color-text-primary); /** Label hover of the data table. */
   --data-table-label: var(--color-text-muted); /** Label of the data table. */
   --data-table-row-background-hover: var(--color-surface-highlight); /** Row background under the pointer, of the data table. */
+  --data-table-container-border: var(--color-border-default); /** Edge of the table frame, of the data table. */
   --date-picker-label: var(--color-text-muted); /** Label of the date picker. */
   --dialog-content-label: var(--color-text-primary); /** Content label of the dialog. */
   --dialog-border: var(--color-border-default); /** Border of the dialog. */
@@ -1725,6 +1728,7 @@ html[data-scheme="multi-brand"][data-theme="dark"] [data-brand="aster"],
   --data-table-gap-2: var(--space-gap-default); /** Gap 2 of the data table. */
   --data-table-padding-x: var(--component-spacing-map-x2); /** Padding x of the data table. */
   --data-table-padding-y: var(--component-spacing-map-x1); /** Padding y of the data table. */
+  --data-table-container-border-width: var(--border-width-default); /** Width of the table frame's edge, of the data table. */
   --date-picker-font-weight: var(--type-body-font-weight); /** Font weight of the date picker. */
   --dialog-content-gap: var(--space-gap-group); /** Content gap of the dialog. */
   --dialog-content-padding: var(--space-inset-container); /** Content padding of the dialog. */
@@ -2178,6 +2182,7 @@ html[data-scheme="multi-brand"][data-theme="dark"] [data-brand="aster"],
   --context-menu-checkbox-item-radius: var(--radius-badge); /** Checkbox item radius of the context menu. */
   --context-menu-radio-item-radius: var(--radius-badge); /** Radio item radius of the context menu. */
   --data-table-radius: var(--radius-badge); /** Radius of the data table. */
+  --data-table-container-radius: var(--radius-container); /** Corner of the table frame, of the data table. */
   --dialog-radius: var(--radius-badge); /** Radius of the dialog. */
   --dialog-font-family: var(--type-heading-font-family); /** Font family of the dialog. */
   --drawer-overlay-background: var(--color-surface-scrim); /** Overlay background of the drawer. */
@@ -2474,6 +2479,7 @@ html[data-scheme="multi-brand"][data-theme="dark"] [data-brand="aster"],
   --data-table-label-hover: var(--color-text-primary); /** Label hover of the data table. */
   --data-table-label: var(--color-text-muted); /** Label of the data table. */
   --data-table-row-background-hover: var(--color-surface-highlight); /** Row background under the pointer, of the data table. */
+  --data-table-container-border: var(--color-border-default); /** Edge of the table frame, of the data table. */
   --date-picker-label: var(--color-text-muted); /** Label of the date picker. */
   --dialog-content-label: var(--color-text-primary); /** Content label of the dialog. */
   --dialog-border: var(--color-border-default); /** Border of the dialog. */
@@ -3059,6 +3065,7 @@ html[data-scheme="multi-brand"] [data-brand="birch"] {
   --data-table-gap-2: var(--space-gap-default); /** Gap 2 of the data table. */
   --data-table-padding-x: var(--component-spacing-map-x2); /** Padding x of the data table. */
   --data-table-padding-y: var(--component-spacing-map-x1); /** Padding y of the data table. */
+  --data-table-container-border-width: var(--border-width-default); /** Width of the table frame's edge, of the data table. */
   --date-picker-font-weight: var(--type-body-font-weight); /** Font weight of the date picker. */
   --dialog-content-gap: var(--space-gap-group); /** Content gap of the dialog. */
   --dialog-content-padding: var(--space-inset-container); /** Content padding of the dialog. */
@@ -3512,6 +3519,7 @@ html[data-scheme="multi-brand"] [data-brand="birch"] {
   --context-menu-checkbox-item-radius: var(--radius-badge); /** Checkbox item radius of the context menu. */
   --context-menu-radio-item-radius: var(--radius-badge); /** Radio item radius of the context menu. */
   --data-table-radius: var(--radius-badge); /** Radius of the data table. */
+  --data-table-container-radius: var(--radius-container); /** Corner of the table frame, of the data table. */
   --dialog-radius: var(--radius-badge); /** Radius of the dialog. */
   --dialog-font-family: var(--type-heading-font-family); /** Font family of the dialog. */
   --drawer-overlay-background: var(--color-surface-scrim); /** Overlay background of the drawer. */
@@ -3808,6 +3816,7 @@ html[data-scheme="multi-brand"] [data-brand="birch"] {
   --data-table-label-hover: var(--color-text-primary); /** Label hover of the data table. */
   --data-table-label: var(--color-text-muted); /** Label of the data table. */
   --data-table-row-background-hover: var(--color-surface-highlight); /** Row background under the pointer, of the data table. */
+  --data-table-container-border: var(--color-border-default); /** Edge of the table frame, of the data table. */
   --date-picker-label: var(--color-text-muted); /** Label of the date picker. */
   --dialog-content-label: var(--color-text-primary); /** Content label of the dialog. */
   --dialog-border: var(--color-border-default); /** Border of the dialog. */
@@ -4394,6 +4403,7 @@ html[data-scheme="multi-brand"][data-theme="dark"] [data-brand="birch"],
   --data-table-gap-2: var(--space-gap-default); /** Gap 2 of the data table. */
   --data-table-padding-x: var(--component-spacing-map-x2); /** Padding x of the data table. */
   --data-table-padding-y: var(--component-spacing-map-x1); /** Padding y of the data table. */
+  --data-table-container-border-width: var(--border-width-default); /** Width of the table frame's edge, of the data table. */
   --date-picker-font-weight: var(--type-body-font-weight); /** Font weight of the date picker. */
   --dialog-content-gap: var(--space-gap-group); /** Content gap of the dialog. */
   --dialog-content-padding: var(--space-inset-container); /** Content padding of the dialog. */
@@ -4847,6 +4857,7 @@ html[data-scheme="multi-brand"][data-theme="dark"] [data-brand="birch"],
   --context-menu-checkbox-item-radius: var(--radius-badge); /** Checkbox item radius of the context menu. */
   --context-menu-radio-item-radius: var(--radius-badge); /** Radio item radius of the context menu. */
   --data-table-radius: var(--radius-badge); /** Radius of the data table. */
+  --data-table-container-radius: var(--radius-container); /** Corner of the table frame, of the data table. */
   --dialog-radius: var(--radius-badge); /** Radius of the dialog. */
   --dialog-font-family: var(--type-heading-font-family); /** Font family of the dialog. */
   --drawer-overlay-background: var(--color-surface-scrim); /** Overlay background of the drawer. */
@@ -5143,6 +5154,7 @@ html[data-scheme="multi-brand"][data-theme="dark"] [data-brand="birch"],
   --data-table-label-hover: var(--color-text-primary); /** Label hover of the data table. */
   --data-table-label: var(--color-text-muted); /** Label of the data table. */
   --data-table-row-background-hover: var(--color-surface-highlight); /** Row background under the pointer, of the data table. */
+  --data-table-container-border: var(--color-border-default); /** Edge of the table frame, of the data table. */
   --date-picker-label: var(--color-text-muted); /** Label of the date picker. */
   --dialog-content-label: var(--color-text-primary); /** Content label of the dialog. */
   --dialog-border: var(--color-border-default); /** Border of the dialog. */
@@ -5728,6 +5740,7 @@ html[data-scheme="multi-brand"] [data-brand="coral"] {
   --data-table-gap-2: var(--space-gap-default); /** Gap 2 of the data table. */
   --data-table-padding-x: var(--component-spacing-map-x2); /** Padding x of the data table. */
   --data-table-padding-y: var(--component-spacing-map-x1); /** Padding y of the data table. */
+  --data-table-container-border-width: var(--border-width-default); /** Width of the table frame's edge, of the data table. */
   --date-picker-font-weight: var(--type-body-font-weight); /** Font weight of the date picker. */
   --dialog-content-gap: var(--space-gap-group); /** Content gap of the dialog. */
   --dialog-content-padding: var(--space-inset-container); /** Content padding of the dialog. */
@@ -6181,6 +6194,7 @@ html[data-scheme="multi-brand"] [data-brand="coral"] {
   --context-menu-checkbox-item-radius: var(--radius-badge); /** Checkbox item radius of the context menu. */
   --context-menu-radio-item-radius: var(--radius-badge); /** Radio item radius of the context menu. */
   --data-table-radius: var(--radius-badge); /** Radius of the data table. */
+  --data-table-container-radius: var(--radius-container); /** Corner of the table frame, of the data table. */
   --dialog-radius: var(--radius-badge); /** Radius of the dialog. */
   --dialog-font-family: var(--type-heading-font-family); /** Font family of the dialog. */
   --drawer-overlay-background: var(--color-surface-scrim); /** Overlay background of the drawer. */
@@ -6477,6 +6491,7 @@ html[data-scheme="multi-brand"] [data-brand="coral"] {
   --data-table-label-hover: var(--color-text-primary); /** Label hover of the data table. */
   --data-table-label: var(--color-text-muted); /** Label of the data table. */
   --data-table-row-background-hover: var(--color-surface-highlight); /** Row background under the pointer, of the data table. */
+  --data-table-container-border: var(--color-border-default); /** Edge of the table frame, of the data table. */
   --date-picker-label: var(--color-text-muted); /** Label of the date picker. */
   --dialog-content-label: var(--color-text-primary); /** Content label of the dialog. */
   --dialog-border: var(--color-border-default); /** Border of the dialog. */
@@ -7063,6 +7078,7 @@ html[data-scheme="multi-brand"][data-theme="dark"] [data-brand="coral"],
   --data-table-gap-2: var(--space-gap-default); /** Gap 2 of the data table. */
   --data-table-padding-x: var(--component-spacing-map-x2); /** Padding x of the data table. */
   --data-table-padding-y: var(--component-spacing-map-x1); /** Padding y of the data table. */
+  --data-table-container-border-width: var(--border-width-default); /** Width of the table frame's edge, of the data table. */
   --date-picker-font-weight: var(--type-body-font-weight); /** Font weight of the date picker. */
   --dialog-content-gap: var(--space-gap-group); /** Content gap of the dialog. */
   --dialog-content-padding: var(--space-inset-container); /** Content padding of the dialog. */
@@ -7516,6 +7532,7 @@ html[data-scheme="multi-brand"][data-theme="dark"] [data-brand="coral"],
   --context-menu-checkbox-item-radius: var(--radius-badge); /** Checkbox item radius of the context menu. */
   --context-menu-radio-item-radius: var(--radius-badge); /** Radio item radius of the context menu. */
   --data-table-radius: var(--radius-badge); /** Radius of the data table. */
+  --data-table-container-radius: var(--radius-container); /** Corner of the table frame, of the data table. */
   --dialog-radius: var(--radius-badge); /** Radius of the dialog. */
   --dialog-font-family: var(--type-heading-font-family); /** Font family of the dialog. */
   --drawer-overlay-background: var(--color-surface-scrim); /** Overlay background of the drawer. */
@@ -7812,6 +7829,7 @@ html[data-scheme="multi-brand"][data-theme="dark"] [data-brand="coral"],
   --data-table-label-hover: var(--color-text-primary); /** Label hover of the data table. */
   --data-table-label: var(--color-text-muted); /** Label of the data table. */
   --data-table-row-background-hover: var(--color-surface-highlight); /** Row background under the pointer, of the data table. */
+  --data-table-container-border: var(--color-border-default); /** Edge of the table frame, of the data table. */
   --date-picker-label: var(--color-text-muted); /** Label of the date picker. */
   --dialog-content-label: var(--color-text-primary); /** Content label of the dialog. */
   --dialog-border: var(--color-border-default); /** Border of the dialog. */

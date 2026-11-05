@@ -286,7 +286,7 @@ export function DataTable<TData>({
         </div>
       </div>
 
-      <div className="max-h-[32rem] overflow-auto rounded-[var(--card-radius)] border border-[var(--table-row-border)]">
+      <div className="max-h-[32rem] overflow-auto rounded-[var(--data-table-container-radius)] border-[length:var(--data-table-container-border-width)] border-[color:var(--data-table-container-border)]">
         <Table>
           <TableHeader className="sticky top-0 z-10">
             {table.getHeaderGroups().map((group) => (

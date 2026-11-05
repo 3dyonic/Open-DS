@@ -12538,6 +12538,20 @@
               "$description": "Row background under the pointer, of the data table."
             }
           }
+        },
+        "container": {
+          "border": {
+            "$value": "{color.border.default}",
+            "$description": "Edge of the table frame, of the data table."
+          },
+          "border-width": {
+            "$value": "{border-width.default}",
+            "$description": "Width of the table frame's edge, of the data table."
+          },
+          "radius": {
+            "$value": "{radius.container}",
+            "$description": "Corner of the table frame, of the data table."
+          }
         }
       },
       "date-picker": {

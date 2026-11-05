@@ -2451,6 +2451,10 @@ export function docsPages(
       clipboard: '<rect width="8" height="4" x="8" y="2" rx="1" ry="1"/><path d="M16 4h2a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h2"/>',
       trash: '<path d="M10 11v6"/><path d="M14 11v6"/><path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6"/><path d="M3 6h18"/><path d="M8 6V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"/>',
       chevron: '<path d="m9 18 6-6-6-6"/>',
+      filter: '<path d="M2 5h20"/><path d="M6 12h12"/><path d="M9 19h6"/>',
+      columns: '<rect width="18" height="18" x="3" y="3" rx="2"/><path d="M9 3v18"/><path d="M15 3v18"/>',
+      search: '<path d="m21 21-4.34-4.34"/><circle cx="11" cy="11" r="8"/>',
+      sort: '<path d="m21 16-4 4-4-4"/><path d="M17 20V4"/><path d="m3 8 4-4 4 4"/><path d="M7 4v16"/>',
     };
     const icon = (k) => `<svg class="odv-am-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">${ICON[k] ?? ""}</svg>`;
     // The drawing, from the scheme's own component variables: what you see is what the scheme decides.
@@ -2467,6 +2471,44 @@ export function docsPages(
       const corner = whole ? `${spec.drawing.surface.map((n) => (show.has(n) ? `<span class="odv-am-at corner">${num(n)}</span>` : "")).join("")}${spec.drawing.shadow.map((n) => (show.has(n) ? `<span class="odv-am-at shadow">${num(n)}</span>` : "")).join("")}` : "";
       return `<div class="odv-am-menu${whole ? "" : " part"}">${body}${corner}</div>`;
     };
+    // A table, from the table's and the data table's own variables: toolbar, frame, header, rows, empty.
+    const tableDrawing = (sections, show) => {
+      const d = spec.drawing;
+      const m = (n) => (n && show.has(n) ? num(n) : "");
+      const out = [];
+      const bar = () =>
+        `<div class="odv-at-bar">${d.toolbar
+          .map((t) =>
+            t.kind === "search"
+              ? `<span class="odv-at-input">${icon("search")}<span>${attr(t.label)}</span></span>${m(t.n)}`
+              : t.kind === "button"
+                ? `<span class="odv-at-btn">${icon(t.icon)}${attr(t.label)}</span>${m(t.n)}`
+                : t.kind === "count"
+                  ? `<span class="odv-at-count">${attr(t.label)}</span>${m(t.n)}`
+                  : `<span class="odv-at-toggle">${t.options.map((o, k) => `<span${k ? "" : ' class="on"'}>${attr(o)}</span>`).join("")}</span>${m(t.n)}`,
+          )
+          .join("")}</div>`;
+      const box = (on) => `<span class="odv-at-box${on ? " on" : ""}">${on ? '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>' : ""}</span>`;
+      const head = () =>
+        `<tr class="odv-at-head"><th class="chk">${box(false)}${m(d.header.check)}</th>${d.columns
+          .map((c, k) => `<th class="${c.numeric ? "num" : ""}">${attr(c.label)}${k === 0 ? m(d.header.label) : ""}${c.sort ? icon("sort") : ""}${k === 0 && c.sort ? m(d.header.sort) : ""}</th>`)
+          .join("")}<th class="end">${m(d.header.row)}</th></tr>`;
+      const row = (r) =>
+        `<tr class="odv-at-row${r.state ? ` is-${r.state}` : ""}"><td class="chk">${box(r.checked)}</td>${r.cells
+          .map((c, k) => `<td class="${d.columns[k]?.numeric ? "num" : ""}">${attr(c)}${k === 0 ? m(r.marks?.cell) : ""}${d.columns[k]?.numeric ? m(r.marks?.number) : ""}</td>`)
+          .join("")}<td class="end">${m(r.marks?.row)}</td></tr>`;
+      const frame = (rows, withHead) =>
+        `<div class="odv-at-frame">${withHead === "corner" || sections.includes("frame") ? `<span class="odv-am-at corner">${m(d.frame)}</span>` : ""}<table class="odv-at-table">${withHead ? `<thead>${head()}</thead>` : ""}<tbody>${rows.map(row).join("")}</tbody></table></div>`;
+      for (const sec of sections) {
+        if (sec === "toolbar") out.push(bar());
+        else if (sec === "frame" || sec === "table") out.push(frame(d.rows, sec === "table" ? "corner" : true));
+        else if (sec === "empty") out.push(`<div class="odv-at-frame"><table class="odv-at-table"><tbody><tr class="odv-at-row"><td class="odv-at-empty" colspan="${d.columns.length + 2}">${attr(d.empty.label)}${m(d.empty.n)}</td></tr></tbody></table></div>`);
+      }
+      const head2 = sections.includes("header");
+      const picked = sections.filter((x) => x.startsWith("row:")).map((x) => d.rows[+x.split(":")[1]]);
+      if (head2 || picked.length) out.push(frame(picked, head2));
+      return `<div class="odv-at">${out.join("")}</div>`;
+    };
     const allNums = new Set(parts.filter((p) => p.n).map((p) => p.n));
     const rowsFor = (nums) => {
       const r = spec.drawing.rows;
@@ -2481,8 +2523,13 @@ export function docsPages(
       if (sep >= 0) return { rows: r.slice(Math.max(0, sep - 1), sep + 2), whole: false };
       return { rows: i >= 0 ? [r[i]] : [], whole: false };
     };
-    const D = tr("component.overlay.item-height");
     const px = (v) => (/rem$/.test(v) ? `${parseFloat(v) * 16}px` : v);
+    const tableCaption = (() => {
+      if (spec.drawing.kind !== "table") return "";
+      const v = (p) => px(tr(p)?.light.value ?? "");
+      return `${attr(scheme.name)}, light, drawn from the scheme's tokens: ${v("component.table.row-height")} rows, ${v("component.table.cell-padding-x")} cell padding, ${v("component.table.font-size")} text and a ${v("component.data-table.container.radius")} frame corner.`;
+    })();
+    const D = tr("component.overlay.item-height");
     const caption = `${attr(scheme.name)}, light, drawn from the scheme's tokens: ${px(D?.light.value ?? "")} items, ${px(tr("component.dropdown-menu.item.padding-x")?.light.value ?? "")} side padding, ${px(tr("component.dropdown-menu.item.font-size")?.light.value ?? "")} text, a ${px(tr("component.overlay.radius")?.light.value ?? "")} corner and its shadow.`;
     const legendRow = (p, depth, last) => {
       const glyph = depth ? (last ? "└" : "├") : "";
@@ -2509,6 +2556,15 @@ export function docsPages(
     const card = (c) => {
       const nums = new Set(c.parts);
       // A card can name its own image: one row, with the card's numbers placed on it.
+      if (spec.drawing.kind === "table") {
+        const d = refCard[c.title];
+        const steps = [...d.answers.map(answerStep), ...d.rules.map(ruleStep), ...d.tokens.map(tokenStep)].filter(Boolean);
+        return h(
+          `<section class="odv-am-card" id="part-${c.parts.join("-")}"><div class="odv-am-img wide">${tableDrawing(c.image?.sections ?? [], nums)}</div><div class="odv-am-body">`,
+          `<header>${c.parts.map((n) => num(n)).join("")}<b>${attr(c.title)}</b>${c.roles.map(chip).join("")}</header>`,
+          `<ul class="odv-am-tree">${steps.join("")}</ul></div></section>`,
+        );
+      }
       const own = c.image && spec.drawing.rows.find((r) => r.label === c.image.row);
       const { rows, whole } = own ? { rows: [{ ...own, state: undefined, marks: c.image.marks }], whole: false } : rowsFor(nums);
       const d = refCard[c.title];
@@ -2527,7 +2583,7 @@ export function docsPages(
     );
     const roles = `<div class="odv-am-rolelist">${(g.anatomy?.roles ?? []).map((r) => `<span class="odv-am-role big"><b>${attr(r.label)}</b> ${attr(r.ask)}</span>`).join("")}</div>`;
     const partsBlock = h(
-      `<div class="odv-am-parts"><figure class="odv-am-stage">${drawing(spec.drawing.rows, allNums, true)}<figcaption>${caption}</figcaption></figure>`,
+      `<div class="odv-am-parts${spec.drawing.kind === "table" ? " stacked" : ""}"><figure class="odv-am-stage">${spec.drawing.kind === "table" ? `${tableDrawing(["toolbar", "table"], allNums)}${tableDrawing(["empty"], allNums)}` : drawing(spec.drawing.rows, allNums, true)}<figcaption>${spec.drawing.kind === "table" ? tableCaption : caption}</figcaption></figure>`,
       `<div class="odv-am-legend"><p class="odv-am-legend-t">Legend: every part and its roles. The numbers match the drawing; a part without one isn't in this example.</p><p class="odv-am-legend-k">${byTag} Its value changes by scheme. The part is the same in every scheme.</p><ul>${legend(spec.parts)}</ul></div></div>`,
     );
     return (

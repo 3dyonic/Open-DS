@@ -48,6 +48,7 @@
 - [Combobox](/components/combobox)
 - [Command](/components/command)
 - [Context menu](/components/context-menu)
+- [Anatomy reference](/components/data-table-anatomy)
 - [Data table](/components/data-table)
 - [Date picker](/components/date-picker)
 - [Dialog](/components/dialog)
