@@ -48,6 +48,12 @@ class Node {
     if (!v) throw new Error(`${this.name}: bind ${prop} to nothing`);
     this.bound[prop] = v.name;
   }
+  resizeWithoutConstraints(w, h) {
+    this.resize(w, h);
+  }
+  findOne(f) {
+    return this.findAll(f)[0] ?? null;
+  }
   findAll(f) {
     const out = [];
     const walk = (n) => n.children.forEach((c) => { if (f(c)) out.push(c); walk(c); });
@@ -92,18 +98,21 @@ function layout(n) {
   if (n.counterAxisSizingMode === "AUTO") row ? (n.height = Math.max(cross + pad("paddingTop") + pad("paddingBottom"), n.minHeight || 0)) : (n.width = cross + pad("paddingLeft") + pad("paddingRight"));
 }
 
-export async function dryRun(component, scheme = "dense-data") {
+// shared: pass the same object to several runs to draw them into one document (as one anatomy file
+// holding every scheme).
+export async function dryRun(component, scheme = "dense-data", shared = null) {
   const SPEC = anatomySpec(component, scheme);
-  const pages = [];
+  const pages = shared ? (shared.pages ??= []) : [];
   const page = () => Object.assign(new Node("PAGE"), { name: "Page 1" });
   const root = { name: "dense-data-Anatomy", children: pages };
-  pages.push(page());
+  if (!pages.length) pages.push(page());
   const figma = {
     root,
     currentPage: pages[0],
     createPage: () => { const p = page(); pages.push(p); return p; },
     setCurrentPageAsync: async (p) => { figma.currentPage = p; },
     createFrame: () => { const f = new Node("FRAME"); figma.currentPage.appendChild(f); return f; },
+    createSection: () => { const f = new Node("SECTION"); figma.currentPage.appendChild(f); return f; },
     createRectangle: () => new Node("RECTANGLE"),
     createEllipse: () => new Node("ELLIPSE"),
     createText: () => new Node("TEXT"),
@@ -140,7 +149,11 @@ export async function dryRun(component, scheme = "dense-data") {
   const result = await run(figma, SPEC, layout);
   // Checks: every number placed once per frame, none on top of another.
   const problems = [];
-  const drawn = pages.find((p) => p.name === `Anatomy / ${component}`);
+  const compPage = pages.find((p) => p.name === `Anatomy / ${component}`);
+  // The scheme's frames sit in its section on the component's page.
+  const section = compPage.children.find((c) => c.type === "SECTION" && c.name === scheme);
+  if (!section) throw new Error(`no section ${scheme} on the page`);
+  const drawn = section;
   for (const f of drawn.children) {
     const badges = f.children.filter((c) => c.name.startsWith("Number "));
     const seen = new Set();
