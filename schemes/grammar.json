@@ -24918,7 +24918,7 @@
                           "children": [
                             {
                               "t": "text",
-                              "text": "dana@northwind.com",
+                              "text": "dana@example.com",
                               "size": "component.input.font-size",
                               "color": "component.input.text"
                             }
@@ -26277,7 +26277,7 @@
                       "children": [
                         {
                           "t": "text",
-                          "text": "ada@acme.com",
+                          "text": "ada@example.com",
                           "size": "component.input.font-size",
                           "color": "component.input.text",
                           "name": "Value",
@@ -26749,7 +26749,7 @@
                         {
                           "t": "text",
                           "name": "Placeholder",
-                          "text": "name@company.com",
+                          "text": "name@example.com",
                           "size": "component.input.font-size",
                           "font": "component.input.font-family",
                           "color": "component.input.placeholder"
@@ -27239,7 +27239,7 @@
                     {
                       "t": "text",
                       "name": "Placeholder",
-                      "text": "name@company.com",
+                      "text": "name@example.com",
                       "size": "component.input.font-size",
                       "font": "component.input.font-family",
                       "color": "component.input.placeholder"
@@ -29370,7 +29370,7 @@
                         {
                           "t": "text",
                           "name": "Placeholder",
-                          "text": "name@company.com",
+                          "text": "name@example.com",
                           "size": "component.input.font-size",
                           "font": "component.input.font-family",
                           "color": "component.input.placeholder"
