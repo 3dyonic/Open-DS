@@ -57,6 +57,12 @@ const at = (tree, path) => {
   if (n && !("$value" in n) && n["@"]) n = n["@"];
   return n?.$value !== undefined ? n : null;
 };
+// A path whose token is a group's base (button.secondary.background, with .hover beside it): the kit
+// names that variable <path>/default.
+const isBase = (tree, path) => {
+  const n = path.split(".").reduce((o, k) => o?.[k], tree);
+  return Boolean(n && !("$value" in n) && n["@"]);
+};
 function chain(path) {
   const steps = [];
   let p = path.replace(/^component\./, "");
@@ -65,7 +71,8 @@ function chain(path) {
     const hit = first ? [["component", at(s.tokens.component, p)]] : tiers.map(([t, tree]) => [t, at(tree, p)]);
     const found = hit.find(([, n]) => n) ?? (!first ? [["component", at(s.tokens.component, p)]] : null);
     if (!found?.[1]) break;
-    steps.push({ tier: found[0], path: p });
+    const tree = found[0] === "component" ? s.tokens.component : found[0] === "semantic" ? s.tokens.semantic : null;
+    steps.push({ tier: found[0], path: tree && isBase(tree, p) ? `${p}.@` : p });
     const v = found[1].$value;
     const ref = typeof v === "string" && v.match(/^\{(.+)\}$/)?.[1];
     if (!ref) return { steps, value: v };
@@ -77,7 +84,7 @@ function chain(path) {
 // Kit variable names: Component/<key id>, Semantic/<path with / and @ as default>.
 const kitName = ({ tier, path }) =>
   tier === "component"
-    ? `Component/${path.replaceAll(".", "/").replace(/\/@$/, "")}`
+    ? `Component/${path.replaceAll(".", "/").replace(/\/@$/, "/default")}`
     : tier === "semantic"
       ? `Semantic/${path.replaceAll(".", "/").replace(/\/@$/, "/default")}`
       : null;
@@ -208,6 +215,8 @@ const B = {
   },
   tree: recipe === "tree" ? treeBindings(spec) : null,
 }[recipe];
+// The card's margin around its parts: the padding the scheme puts inside a card (OD-248).
+B.plateMargin = bind("space.inset.container", "number");
 // A binding that resolves to nothing is a mistake in this file, not a gap in the kit.
 for (const [role, b] of Object.entries(B)) if (b.value === null || b.value === undefined || Number.isNaN(b.value)) throw new Error(`${component}: ${role} (${b.path}) resolves to no value.`);
 
@@ -217,6 +226,12 @@ const iconNames = recipe === "menu"
   : recipe === "tree"
     ? treeNodes(spec).filter((d) => d.t === "icon").map((d) => d.icon)
     : [...spec.drawing.toolbar.map((t) => t.icon).filter(Boolean), "search", "arrow-up-down", "check"];
+// A card's context (image.context) names other parts it is framed with: real parts, not its own.
+for (const c of spec.cards) {
+  const nums = new Set(flat(spec.parts).map((p) => p.n).filter(Boolean));
+  for (const n of c.image?.context ?? [])
+    if (!nums.has(n) || c.parts.includes(n)) throw new Error(`${component}: card ${c.title}: context ${n} is ${nums.has(n) ? "its own part" : "not a part"}.`);
+}
 if (recipe === "tree") {
   // Every numbered part is shown somewhere: on the stage or on its card's own drawing.
   const shown = new Set(treeNodes(spec).flatMap((d) => [].concat(d.n ?? [], d.ring?.n ?? [], (d.marks ?? []).map((m) => m[0]))));

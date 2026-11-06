@@ -31,7 +31,7 @@ async function loadKit(library) {
   return vars;
 }
 async function renderAnatomy(SPEC, vars) {
-const report = { bound: {}, fallback: {} };
+const report = { bound: {}, fallback: {}, crops: [] };
 const imported = new Map();
 async function kitVar(role) {
   const b = SPEC.bind[role];
@@ -42,7 +42,8 @@ async function kitVar(role) {
     report.bound[role] = n;
     return imported.get(key);
   }
-  report.fallback[role] = `${b.path} (kit has none of: ${b.kit.join(", ") || "-"})`;
+  // Shadows are effect styles in the kits, not variables: drawn from the scheme's value, not missing.
+  if (b.kind !== "shadow") report.fallback[role] = `${b.path} (kit has none of: ${b.kit.join(", ") || "-"})`;
   return null;
 }
 const V = {};
@@ -180,7 +181,7 @@ function menu(rows, show, whole) {
     for (const [k, n] of Object.entries(r.marks ?? {})) if (["row", "focus"].includes(k)) marks.push([n, row, "right"]);
   }
   if (whole) { for (const n of SPEC.drawing.surface ?? []) marks.push([n, panel, "corner"]); for (const n of SPEC.drawing.shadow ?? []) marks.push([n, panel, "shadow"]); }
-  return { node: panel, marks: marks.filter(([n]) => !show || show.has(n)) };
+  return { node: panel, marks: marks.filter(([n]) => !show || show.has(n)), all: marks };
 }
 
 // A frame on the scheme's canvas holding a drawing, with the numbers placed on it (the template's badges).
@@ -305,7 +306,7 @@ function table(sections, show) {
     }
     wrap.appendChild(fr);
   }
-  return { node: wrap, marks: marks.filter(([n]) => !show || show.has(n)) };
+  return { node: wrap, marks: marks.filter(([n]) => !show || show.has(n)), all: marks };
 }
 
 // The tree recipe: any component, drawn from a tree of nodes in its parts layer. Every look a node has
@@ -438,10 +439,11 @@ function treeDraw(root, show) {
   const marks = [];
   const node = tnode(root, marks, show);
   sizeTree(node);
-  return { node, marks: marks.filter(([n]) => !show || show.has(n)) };
+  return { node, marks: marks.filter(([n]) => !show || show.has(n)), all: marks };
 }
 
-function plate(name, built, w) {
+// crop: false for the stage; for a card, { context: [part numbers framed with it, not numbered] }.
+function plate(name, built, w, crop = false) {
   const f = figma.createFrame();
   f.name = name;
   f.fills = [paint("canvas")];
@@ -452,6 +454,7 @@ function plate(name, built, w) {
   f.resize(Math.max(w, built.node.width + 80), built.node.height + 64);
   const origin = f.absoluteTransform;
   const placed = [];
+  const badges = [];
   for (const [n, node, where] of built.marks) {
     const bb = node.absoluteBoundingBox, fb = f.absoluteBoundingBox;
     const x = bb.x - fb.x, y = bb.y - fb.y;
@@ -476,8 +479,35 @@ function plate(name, built, w) {
     while (placed.some(([px, py]) => Math.abs(px - pos[0]) < 18 && Math.abs(py - pos[1]) < 18)) pos[0] += 20;
     placed.push([pos[0], pos[1]]);
     badge.x = pos[0]; badge.y = pos[1];
+    badges.push(badge);
   }
   void origin;
+  // A card is about its own parts (OD-248): it shows the box around its numbered parts and their
+  // numbers, with a margin, not the whole stage. Nothing inside is scaled, so every binding to the kit
+  // stays; the export draws the card at a larger scale, so the part fills the card in the docs.
+  if (crop && built.marks.length) {
+    const fb = f.absoluteBoundingBox;
+    // The card's own parts, their numbers, and the parts it names as context (image.context): framed
+    // with it, not numbered.
+    const context = (built.all ?? []).filter(([n]) => crop.context.includes(n)).map(([, node]) => node);
+    const boxes = [...built.marks.map(([, node]) => node), ...context, ...badges].map((x) => x.absoluteBoundingBox);
+    let x0 = Math.min(...boxes.map((b) => b.x)) - fb.x, y0 = Math.min(...boxes.map((b) => b.y)) - fb.y;
+    let x1 = Math.max(...boxes.map((b) => b.x + b.width)) - fb.x, y1 = Math.max(...boxes.map((b) => b.y + b.height)) - fb.y;
+    // The margin is the padding the scheme puts inside a card (space.inset.container): the image is a
+    // card, so it breathes as the scheme's cards do (16px in Dense data, 32px in Brand expressive). The minimum keeps a one-line part (a separator, a caret) a readable card:
+    // room for its number and the margin on each side.
+    const M = V.plateMargin.value, MIN_W = 220, MIN_H = 120;
+    const [bx0, by0, bx1, by1] = [x0, y0, x1, y1];
+    x0 -= M; y0 -= M; x1 += M; y1 += M;
+    // Not smaller than a readable card, centered on the parts; never larger than the stage drawn.
+    if (x1 - x0 < MIN_W) { const c = (x0 + x1) / 2; x0 = c - MIN_W / 2; x1 = c + MIN_W / 2; }
+    if (y1 - y0 < MIN_H) { const c = (y0 + y1) / 2; y0 = c - MIN_H / 2; y1 = c + MIN_H / 2; }
+    x0 = Math.max(0, x0); y0 = Math.max(0, y0); x1 = Math.min(f.width, x1); y1 = Math.min(f.height, y1);
+    report.crops.push({ frame: f.name, focus: [bx1 - bx0, by1 - by0], margin: M, min: [MIN_W, MIN_H] });
+    for (const k of f.children) { k.x -= x0; k.y -= y0; }
+    f.resize(Math.max(1, x1 - x0), Math.max(1, y1 - y0));
+    f.clipsContent = true;
+  }
   return f;
 }
 
@@ -486,7 +516,11 @@ const pageName = `Anatomy / ${SPEC.component}`;
 let page = figma.root.children.find((p) => p.name === pageName);
 if (!page) { page = figma.createPage(); page.name = pageName; }
 await figma.setCurrentPageAsync(page);
-for (const c of [...page.children]) c.remove();
+// One page per component holds every scheme: one section per scheme, stacked in scheme order. A run
+// replaces only its own scheme's section (and loose frames of that scheme from the old layout).
+const ORDER = ["dense-data", "content-first", "accessible-first", "brand-expressive", "multi-brand"];
+for (const c of [...page.children])
+  if ((c.type === "SECTION" && c.name === SPEC.scheme) || c.name.startsWith(`${SPEC.component}/${SPEC.scheme}/`)) c.remove();
 const all = new Set(SPEC.parts.map((p) => p.n));
 if (SPEC.recipe === "tree") { await loadTreeFonts(SPEC.drawing.stage); for (const c of SPEC.cards) if (c.image?.tree) await loadTreeFonts(c.image.tree); }
 const draw = (c, show) => {
@@ -504,12 +538,28 @@ const stage = plate(`${SPEC.component}/${SPEC.scheme}/stage`, draw(null, null), 
 stage.x = 0; stage.y = 0;
 const ids = { page: page.id, stage: stage.id, cards: [] };
 let x = stage.width + 64;
+const cardFrames = [];
 SPEC.cards.forEach((c, i) => {
-  const f = plate(`${SPEC.component}/${SPEC.scheme}/card-${i + 1}`, draw(c, new Set(c.parts)), 280);
+  const f = plate(`${SPEC.component}/${SPEC.scheme}/card-${i + 1}`, draw(c, new Set(c.parts)), 280, { context: c.image?.context ?? [] });
   f.x = x; f.y = 0;
   x += f.width + 32;
   ids.cards.push(f.id);
+  cardFrames.push(f);
 });
 void all;
-return { ids, bound: report.bound, fallback: report.fallback };
+// Gather this scheme's frames in its section, then stack the sections in scheme order.
+const PAD = 48, GAP = 160;
+const section = figma.createSection();
+section.name = SPEC.scheme;
+const frames = [stage, ...cardFrames];
+for (const f of frames) section.appendChild(f);
+const w = Math.max(...frames.map((f) => f.x + f.width)), h = Math.max(...frames.map((f) => f.y + f.height));
+for (const f of frames) { f.x += PAD; f.y += PAD; }
+section.resizeWithoutConstraints(w + 2 * PAD, h + 2 * PAD);
+const sections = page.children.filter((c) => c.type === "SECTION").sort((a, b) => (ORDER.indexOf(a.name) + 99) % 99 - (ORDER.indexOf(b.name) + 99) % 99);
+let top = 0;
+for (const sct of sections) { sct.x = 0; sct.y = top; top += sct.height + GAP; }
+// Loose frames from the old layout (other schemes, drawn before sections) go below.
+for (const c of page.children) if (c.type !== "SECTION") { c.y = top; top += c.height + GAP; }
+return { ids, bound: report.bound, fallback: report.fallback, crops: report.crops };
 }

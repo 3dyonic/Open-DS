@@ -2138,4 +2138,8 @@ tr.odv-for td {
 /* Anatomy drawings as Figma assets (OD-229): the exported frame, and a link back to it in Figma. */
 .odv-am-assetbox { display: grid; gap: 6px; justify-items: start; }
 .odv-am-asset { display: block; max-width: 100%; height: auto; border-radius: var(--radius-container); }
+/* A card's image is cropped to its own parts (OD-248): it fills the card, up to a height that keeps the
+   card's text beside it in view. */
+.odv-am-img.wide .odv-am-assetbox { justify-items: stretch; width: 100%; }
+.odv-am-img.wide .odv-am-asset { width: 100%; max-height: 320px; object-fit: contain; }
 .odv-am-figma { font-size: 0.8em; color: var(--color-text-secondary); }
