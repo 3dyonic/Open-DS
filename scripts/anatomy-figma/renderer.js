@@ -42,7 +42,8 @@ async function kitVar(role) {
     report.bound[role] = n;
     return imported.get(key);
   }
-  report.fallback[role] = `${b.path} (kit has none of: ${b.kit.join(", ") || "-"})`;
+  // Shadows are effect styles in the kits, not variables: drawn from the scheme's value, not missing.
+  if (b.kind !== "shadow") report.fallback[role] = `${b.path} (kit has none of: ${b.kit.join(", ") || "-"})`;
   return null;
 }
 const V = {};
