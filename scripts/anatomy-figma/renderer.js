@@ -516,7 +516,11 @@ const pageName = `Anatomy / ${SPEC.component}`;
 let page = figma.root.children.find((p) => p.name === pageName);
 if (!page) { page = figma.createPage(); page.name = pageName; }
 await figma.setCurrentPageAsync(page);
-for (const c of [...page.children]) c.remove();
+// One page per component holds every scheme: one section per scheme, stacked in scheme order. A run
+// replaces only its own scheme's section (and loose frames of that scheme from the old layout).
+const ORDER = ["dense-data", "content-first", "accessible-first", "brand-expressive", "multi-brand"];
+for (const c of [...page.children])
+  if ((c.type === "SECTION" && c.name === SPEC.scheme) || c.name.startsWith(`${SPEC.component}/${SPEC.scheme}/`)) c.remove();
 const all = new Set(SPEC.parts.map((p) => p.n));
 if (SPEC.recipe === "tree") { await loadTreeFonts(SPEC.drawing.stage); for (const c of SPEC.cards) if (c.image?.tree) await loadTreeFonts(c.image.tree); }
 const draw = (c, show) => {
@@ -534,12 +538,28 @@ const stage = plate(`${SPEC.component}/${SPEC.scheme}/stage`, draw(null, null), 
 stage.x = 0; stage.y = 0;
 const ids = { page: page.id, stage: stage.id, cards: [] };
 let x = stage.width + 64;
+const cardFrames = [];
 SPEC.cards.forEach((c, i) => {
   const f = plate(`${SPEC.component}/${SPEC.scheme}/card-${i + 1}`, draw(c, new Set(c.parts)), 280, { context: c.image?.context ?? [] });
   f.x = x; f.y = 0;
   x += f.width + 32;
   ids.cards.push(f.id);
+  cardFrames.push(f);
 });
 void all;
+// Gather this scheme's frames in its section, then stack the sections in scheme order.
+const PAD = 48, GAP = 160;
+const section = figma.createSection();
+section.name = SPEC.scheme;
+const frames = [stage, ...cardFrames];
+for (const f of frames) section.appendChild(f);
+const w = Math.max(...frames.map((f) => f.x + f.width)), h = Math.max(...frames.map((f) => f.y + f.height));
+for (const f of frames) { f.x += PAD; f.y += PAD; }
+section.resizeWithoutConstraints(w + 2 * PAD, h + 2 * PAD);
+const sections = page.children.filter((c) => c.type === "SECTION").sort((a, b) => (ORDER.indexOf(a.name) + 99) % 99 - (ORDER.indexOf(b.name) + 99) % 99);
+let top = 0;
+for (const sct of sections) { sct.x = 0; sct.y = top; top += sct.height + GAP; }
+// Loose frames from the old layout (other schemes, drawn before sections) go below.
+for (const c of page.children) if (c.type !== "SECTION") { c.y = top; top += c.height + GAP; }
 return { ids, bound: report.bound, fallback: report.fallback, crops: report.crops };
 }
