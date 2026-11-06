@@ -57,6 +57,12 @@ const at = (tree, path) => {
   if (n && !("$value" in n) && n["@"]) n = n["@"];
   return n?.$value !== undefined ? n : null;
 };
+// A path whose token is a group's base (button.secondary.background, with .hover beside it): the kit
+// names that variable <path>/default.
+const isBase = (tree, path) => {
+  const n = path.split(".").reduce((o, k) => o?.[k], tree);
+  return Boolean(n && !("$value" in n) && n["@"]);
+};
 function chain(path) {
   const steps = [];
   let p = path.replace(/^component\./, "");
@@ -65,7 +71,8 @@ function chain(path) {
     const hit = first ? [["component", at(s.tokens.component, p)]] : tiers.map(([t, tree]) => [t, at(tree, p)]);
     const found = hit.find(([, n]) => n) ?? (!first ? [["component", at(s.tokens.component, p)]] : null);
     if (!found?.[1]) break;
-    steps.push({ tier: found[0], path: p });
+    const tree = found[0] === "component" ? s.tokens.component : found[0] === "semantic" ? s.tokens.semantic : null;
+    steps.push({ tier: found[0], path: tree && isBase(tree, p) ? `${p}.@` : p });
     const v = found[1].$value;
     const ref = typeof v === "string" && v.match(/^\{(.+)\}$/)?.[1];
     if (!ref) return { steps, value: v };
@@ -77,7 +84,7 @@ function chain(path) {
 // Kit variable names: Component/<key id>, Semantic/<path with / and @ as default>.
 const kitName = ({ tier, path }) =>
   tier === "component"
-    ? `Component/${path.replaceAll(".", "/").replace(/\/@$/, "")}`
+    ? `Component/${path.replaceAll(".", "/").replace(/\/@$/, "/default")}`
     : tier === "semantic"
       ? `Semantic/${path.replaceAll(".", "/").replace(/\/@$/, "/default")}`
       : null;
