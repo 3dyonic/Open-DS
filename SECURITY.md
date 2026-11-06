@@ -4,7 +4,7 @@
 
 Report it privately through [GitHub private vulnerability reporting](https://github.com/3dyonic/Open-DS/security/advisories/new). Do not open a public issue for a vulnerability, a leaked secret or credential, or a way to break a check on purpose.
 
-When the fix is out, the advisory is published and you are credited, unless you ask not to be.
+You get an answer within 7 days. When the fix is out, the advisory is published and you are credited, unless you ask not to be.
 
 ## Supported versions
 
