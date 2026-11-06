@@ -49,6 +49,24 @@ const config: Config = {
   favicon: "logo.svg",
   onBrokenLinks: "throw",
   markdown: { format: "detect", hooks: { onBrokenMarkdownLinks: "throw" } },
+  // Docusaurus Faster (OD-250): Rspack, SWC and Lightning CSS in place of webpack, Babel and Terser,
+  // and each MDX page compiled once for the client and the server. The ~800 generated pages ran
+  // the webpack build out of memory. Static pages render on the main thread: worker threads were
+  // slower here and used more memory, and they need a v4 flag. The v4 flags stay off, and git
+  // history is read the way it was before (no last-update dates are shown).
+  future: {
+    faster: {
+      swcJsLoader: true,
+      swcJsMinimizer: true,
+      swcHtmlMinimizer: true,
+      lightningCssMinimizer: true,
+      mdxCrossCompilerCache: true,
+      rspackBundler: true,
+      rspackPersistentCache: true,
+      ssgWorkerThreads: false,
+      gitEagerVcs: false,
+    },
+  },
   i18n: { defaultLocale: "en", locales: ["en"] },
   customFields: { schemes, storybook: STORYBOOK },
   // Sets the scheme (and the multi-brand brand) on <html> before the first paint, so a page never
