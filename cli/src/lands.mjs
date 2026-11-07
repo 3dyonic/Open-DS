@@ -144,6 +144,20 @@ export function landsIn(schemes, grammar, roots) {
 }
 
 /**
+ * The index path a reference names ({color.neutral.900} inside a theme is theme.color.neutral.900).
+ * A name the index does not hold comes back as written.
+ */
+export function refPath(index, ref) {
+  if (index.byPath.has(ref)) return ref;
+  const inTheme = `theme.${ref.replace(/^theme\./, "")}`;
+  if (index.byPath.has(inTheme)) return inTheme;
+  // A component key that aliases another (a deprecated key, OD-241) names it without "component.",
+  // as the build sees the tree.
+  if (index.byPath.has(`component.${ref}`)) return `component.${ref}`;
+  return ref;
+}
+
+/**
  * A token's alias chain in one brand and mode, as a reader sees it: the named tokens it passes through
  * (the theme's internal hops left out), the neutral step if it goes through one, and the value it ends at.
  * { hops: [path, …], value }
@@ -155,15 +169,7 @@ export function aliasChain(index, path) {
     const v = index.byPath.get(p)?.$value;
     const m = typeof v === "string" && v.match(/^\{([^}]+)\}$/);
     if (!m) return { hops, value: v ?? null, end: p };
-    let r = m[1];
-    if (
-      !index.byPath.has(r) &&
-      index.byPath.has(`theme.${r.replace(/^theme\./, "")}`)
-    )
-      r = `theme.${r.replace(/^theme\./, "")}`;
-    // A component key that aliases another (a deprecated key, OD-241) names it without "component.",
-    // as the build sees the tree.
-    else if (!index.byPath.has(r) && index.byPath.has(`component.${r}`)) r = `component.${r}`;
+    const r = refPath(index, m[1]);
     if (!r.startsWith("theme.")) hops.push(r);
     p = r;
   }

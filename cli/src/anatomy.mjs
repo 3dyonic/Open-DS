@@ -17,7 +17,7 @@ const leaves = (o, p = []) =>
       ? [[p.join("."), o]]
       : Object.entries(o).flatMap(([k, v]) => (k[0] === "$" ? [] : leaves(v, [...p, k])));
 const name = (ref) => String(ref ?? "").replace(/^\{(color\.)?|\}$/g, "");
-const shown = (v) =>
+export const shown = (v) =>
   v == null
     ? ""
     : typeof v === "object"
@@ -28,7 +28,7 @@ const shown = (v) =>
 
 // Which scope owns a semantic's family (type.* is typography, space.* spacing), for the answers that
 // set a token with no theme pick.
-function ownerScope(g, semantic) {
+export function ownerScope(g, semantic) {
   const head = semantic.split(".")[0];
   return [...g.scopes].find((s) => (s.owns ?? []).some((o) => o === head || semantic.startsWith(`${o}.`)));
 }
