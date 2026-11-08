@@ -28,7 +28,7 @@ export const shown = (v) =>
 
 // Which scope owns a semantic's family (type.* is typography, space.* spacing), for the answers that
 // set a token with no theme pick.
-export function ownerScope(g, semantic) {
+function ownerScope(g, semantic) {
   const head = semantic.split(".")[0];
   return [...g.scopes].find((s) => (s.owns ?? []).some((o) => o === head || semantic.startsWith(`${o}.`)));
 }

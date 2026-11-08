@@ -24,79 +24,49 @@
   margin-bottom: var(--space-gap-tight);
 }
 
-.search {
-  position: relative;
-  flex: 1 1 20rem;
-  max-width: 36rem;
+.picker {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-gap-default);
 }
-
-.input {
-  width: 100%;
+/* The docs' listbox picker (src/components/Picker.tsx), sized as a field here: label above, and the
+   label always shows, where the navbar hides it on narrow windows. */
+.pick {
+  flex-direction: column;
+  align-items: stretch;
+  gap: 0;
+  min-width: 12rem;
+}
+.pick :global(.ods-picker-label) {
+  position: static;
+  width: auto;
+  height: auto;
+  overflow: visible;
+  clip: auto;
+  font-weight: var(--type-label-font-weight);
+  line-height: var(--type-label-line-height);
+  color: var(--color-text-primary);
+  margin-bottom: var(--space-gap-tight);
+}
+.pick :global(.ods-picker-trigger) {
   min-height: var(--input-height, 2.75rem);
   padding-inline: var(--space-inset-control-x);
-  font: inherit;
+  font-size: inherit;
   color: var(--color-text-primary);
   background: var(--color-surface-default);
   border: var(--border-width-default) solid var(--color-border-strong);
-  border-radius: var(--radius-control);
 }
-.input::placeholder {
-  color: var(--color-text-muted);
+.pick :global(.ods-picker-trigger:disabled) {
+  cursor: default;
+  color: var(--color-disabled-text);
+  background: var(--color-disabled-surface);
+  border-color: var(--color-disabled-border);
 }
-.input:focus-visible,
-.toggleButton:focus-visible,
-.node:focus-visible,
-.example:focus-visible,
-.linkButton:focus-visible {
-  outline: var(--border-width-focus) solid var(--color-border-focus);
-  outline-offset: var(--border-width-focus-offset);
-}
-
-.results {
-  position: absolute;
-  z-index: 10;
-  inset-inline: 0;
-  top: calc(100% + var(--space-gap-tight));
-  background: var(--color-surface-raised);
-  border: var(--border-width-default) solid var(--color-border-default);
-  border-radius: var(--radius-container);
-  box-shadow: var(--elevation-overlay);
-  padding: var(--space-gap-tight);
-}
-.list {
-  list-style: none;
-  margin: 0;
-  padding: 0;
+.pick :global(.ods-picker-list) {
+  left: 0;
+  right: auto;
   max-height: 22rem;
   overflow-y: auto;
-}
-.option {
-  display: flex;
-  justify-content: space-between;
-  gap: var(--space-gap-default);
-  padding: var(--space-gap-tight) var(--space-inset-control-x);
-  border-radius: var(--radius-option);
-  cursor: pointer;
-  color: var(--color-text-primary);
-  margin: 0;
-}
-.optionActive {
-  background: var(--color-surface-selected);
-  color: var(--ods-text-on-selected, var(--color-text-primary));
-}
-.optionLabel {
-  overflow-wrap: anywhere;
-}
-.optionTier {
-  flex: none;
-  font-size: var(--type-caption-font-size);
-  color: inherit;
-  opacity: 0.8;
-}
-.resultNote {
-  margin: var(--space-gap-tight) var(--space-inset-control-x) 0;
-  font-size: var(--type-caption-font-size);
-  color: var(--color-text-secondary);
 }
 
 .toggle {
@@ -145,37 +115,6 @@
   background: var(--color-surface-sunken);
   border-radius: var(--radius-container);
 }
-.examplesLabel {
-  margin-bottom: var(--space-gap-tight);
-}
-.examples {
-  display: flex;
-  flex-wrap: wrap;
-  gap: var(--space-gap-tight);
-  list-style: none;
-  padding: 0;
-  margin: 0;
-}
-.examples li {
-  margin: 0;
-}
-.example {
-  display: inline-flex;
-  gap: var(--space-gap-tight);
-  align-items: baseline;
-  min-height: var(--input-height, 2.75rem);
-  padding-inline: var(--space-inset-control-x);
-  font: inherit;
-  color: var(--color-text-primary);
-  background: var(--color-surface-default);
-  border: var(--border-width-default) solid var(--color-border-strong);
-  border-radius: var(--radius-control);
-  cursor: pointer;
-}
-.example:hover {
-  background: var(--color-surface-highlight);
-}
-
 .summary {
   padding: var(--space-gap-default) var(--space-inset-container);
   background: var(--color-surface-sunken);
@@ -253,6 +192,26 @@
   max-width: 1rem;
   max-height: 1rem;
 }
+.expandPanel {
+  display: flex;
+  gap: var(--space-gap-tight);
+  margin-bottom: 3.5rem;
+}
+.panelButton {
+  min-height: 2rem;
+  padding-inline: var(--space-inset-control-x);
+  font: inherit;
+  font-size: var(--type-caption-font-size);
+  color: var(--color-text-primary);
+  background: var(--color-surface-default);
+  border: var(--border-width-default) solid var(--color-border-default);
+  border-radius: var(--radius-control);
+  box-shadow: var(--elevation-card);
+  cursor: pointer;
+}
+.panelButton:hover {
+  background: var(--color-surface-highlight);
+}
 .controls {
   border: var(--border-width-default) solid var(--color-border-default);
   border-radius: var(--radius-control);
@@ -260,12 +219,18 @@
   box-shadow: var(--elevation-card);
 }
 
-.columnHead {
+.columnHead,
+.groupHead {
   font-size: var(--type-label-font-size);
   font-weight: var(--type-label-font-weight);
   color: var(--color-text-primary);
   padding-bottom: var(--space-gap-tight);
   border-bottom: var(--border-width-focus) solid var(--color-border-strong);
+}
+.groupHead {
+  font-weight: var(--type-body-font-weight);
+  color: var(--color-text-secondary);
+  border-bottom-width: var(--border-width-default);
 }
 .count {
   color: var(--color-text-secondary);
@@ -295,22 +260,70 @@
 .node:hover {
   background: var(--color-surface-highlight);
 }
-.tier-decision {
+div.node {
+  cursor: default;
+}
+div.node:hover {
+  background: var(--color-surface-default);
+}
+.role-primitive,
+div.role-primitive:hover {
   background: var(--color-surface-raised);
-  border-style: dashed;
 }
-.tier-component {
-  border-width: var(--border-width-focus);
-}
-.focus,
-.focus:hover {
+.role-focus,
+div.role-focus:hover {
   background: var(--color-surface-selected);
   color: var(--ods-text-on-selected, var(--color-text-primary));
   border: var(--border-width-focus) solid var(--color-border-selected);
 }
+.nodeTop {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-gap-tight);
+  max-width: 100%;
+}
 .nodeLabel,
 .nodeValue {
   flex: none;
+}
+.nodeTop .nodeLabel {
+  flex: 1 1 auto;
+  min-width: 0;
+}
+.nodePick {
+  padding: 0;
+  font: inherit;
+  text-align: start;
+  color: var(--color-text-link);
+  background: none;
+  border: 0;
+  text-decoration: underline;
+  cursor: pointer;
+}
+.toggleCount {
+  flex: none;
+  min-width: 2.75rem;
+  min-height: 2rem;
+  padding-inline: var(--space-gap-tight);
+  font: inherit;
+  font-size: var(--type-caption-font-size);
+  font-weight: var(--type-label-font-weight);
+  color: var(--color-text-primary);
+  background: var(--color-surface-default);
+  border: var(--border-width-default) solid var(--color-border-strong);
+  border-radius: var(--radius-control);
+  cursor: pointer;
+}
+.toggleCount:hover {
+  background: var(--color-surface-highlight);
+}
+.group,
+div.group:hover {
+  background: var(--color-surface-sunken);
+}
+.group .nodeLabel {
+  white-space: normal;
 }
 .nodeLabel {
   font-size: var(--type-label-font-size);
@@ -336,6 +349,44 @@
   overflow: hidden;
   text-overflow: ellipsis;
 }
+.measure,
+.listMeasure {
+  display: flex;
+  flex-direction: column;
+  gap: 0.125rem;
+  margin-top: var(--space-gap-tight);
+  font-size: var(--type-caption-font-size);
+  line-height: 1.25;
+}
+.listMeasure {
+  margin-block: var(--space-gap-tight) var(--space-gap-default);
+}
+.picked {
+  font-size: var(--type-caption-font-size);
+  line-height: 1.25;
+  color: var(--color-text-secondary);
+}
+.role-focus .picked {
+  color: inherit;
+}
+.measureLine {
+  display: flex;
+  flex-wrap: wrap;
+  column-gap: var(--space-gap-tight);
+  align-items: baseline;
+}
+.met,
+.missed {
+  flex: none;
+  min-width: 2.25em;
+  font-weight: var(--type-label-font-weight);
+}
+.missed {
+  color: var(--color-text-secondary);
+}
+.rule {
+  color: var(--color-text-secondary);
+}
 .swatch {
   flex: none;
   width: 1rem;
@@ -344,12 +395,8 @@
   border: var(--border-width-default) solid var(--color-border-strong);
 }
 
-.edgeReference :global(.react-flow__edge-path) {
+.edge :global(.react-flow__edge-path) {
   stroke: var(--color-border-strong);
-}
-.edgeDecision :global(.react-flow__edge-path) {
-  stroke: var(--color-action-primary);
-  stroke-dasharray: 6 4;
 }
 
 .legend {
@@ -361,19 +408,19 @@
   color: var(--color-text-secondary);
   margin: 0;
 }
-.legendReference,
-.legendDecision {
+.legendLine {
   display: inline-block;
   width: 2rem;
-  border-top: 2px solid var(--color-border-strong);
-}
-.legendDecision {
-  border-top: 2px dashed var(--color-action-primary);
+  border-top: var(--border-width-default) solid var(--color-border-strong);
 }
 
 .asList summary {
   cursor: pointer;
   font-weight: var(--type-label-font-weight);
+}
+.listNote {
+  margin: var(--space-gap-tight) 0 0;
+  color: var(--color-text-secondary);
 }
 .listTier {
   font-size: var(--type-label-font-size);

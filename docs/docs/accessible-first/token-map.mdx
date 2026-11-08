@@ -1,7 +1,7 @@
 ---
 sidebar_position: 5.5
 title: "Token map"
-description: "Accessible first: trace a decision, a token or a component through every tier."
+description: "Accessible first: trace a semantic token to its primitive and to the component tokens that read it."
 hide_table_of_contents: true
 ---
 
@@ -9,6 +9,6 @@ hide_table_of_contents: true
 
 import TokenMap from "@site/src/components/TokenMap";
 
-Pick a decision, a token or a component. The map shows where its value comes from and what reads it. Each column is one tier, from the decision on the left to the component on the right.
+Pick a semantic token. On the left, the map shows the primitive it takes its value from, and what that value measures. On the right, it shows the semantics and the component tokens that read it, grouped by component.
 
 <TokenMap scheme="accessible-first" files={{"default":"/token-map/accessible-first.json"}} />
