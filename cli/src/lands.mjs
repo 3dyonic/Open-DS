@@ -95,7 +95,8 @@ export function readsOfSource(src, index) {
   return seen;
 }
 
-const owns = (path, o) => {
+/** Whether a scope's owns entry (a token path or family) covers a token path. */
+export const owns = (path, o) => {
   const p = path.replace(/^theme\./, "");
   return (
     path === o ||

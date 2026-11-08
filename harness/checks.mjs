@@ -781,6 +781,37 @@ export const CHECKS = {
       return ok(`${total} gaps across ${Object.keys(now).length} schemes, none new; each count may only go down`);
     },
   },
+  "decisions-cover-values": {
+    requires: ["schemes/grammar.json", "cli/src/coverage.mjs", "harness/coverage-baseline.json"],
+    run: async (c) => {
+      // OD-273: every semantic value rests on a decision, through a theme pick or a usage rule that
+      // cites an answer. The count of values with none, per scheme, may only go down.
+      const { coverageOfSchemes } = await import(pathToFileURL(c.p("scripts/coverage.mjs")).href);
+      const base = c.json("harness", "coverage-baseline.json").counts;
+      const rose = [];
+      const fell = [];
+      const lines = [];
+      for (const cov of coverageOfSchemes()) {
+        const n = cov.unlinked.length;
+        const was = base[cov.scheme];
+        if (was === undefined) rose.push(`${cov.scheme} has ${n}, and the baseline does not list it`);
+        else if (n > was) rose.push(`${cov.scheme} went from ${was} to ${n}`);
+        else if (n < was) fell.push(`${cov.scheme} went from ${was} to ${n}`);
+        const first = cov.unlinked.slice(0, 4).map((u) => u.token);
+        lines.push(`${cov.scheme} ${n} of ${cov.total} (first: ${first.join(", ") || "none"})`);
+      }
+      const counts = `Values with no decision: ${lines.join("; ")}`;
+      if (rose.length)
+        return bad(
+          `more values rest on no decision: ${rose.join("; ")}. Cite an answer in the pick or a usage rule; node scripts/coverage.mjs lists them. ${counts}.`,
+        );
+      if (fell.length)
+        return ok(
+          `fewer values rest on no decision (good): ${fell.join("; ")}. Lower the baseline: node scripts/coverage.mjs --baseline. ${counts}.`,
+        );
+      return ok(`${counts}. Each count may only go down.`);
+    },
+  },
   "scheme-order": {
     requires: ["schemes/grammar.json", "storybook/src/scheme-context.tsx", "site/src/lib/home.ts"],
     run: (c) => {
