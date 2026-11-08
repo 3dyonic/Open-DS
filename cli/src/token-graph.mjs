@@ -2,15 +2,15 @@
 // through the semantics to the component tokens. An edge points the way a value flows: from the token
 // a value comes from to the token that reads it. The brand theme is not a tier: a semantic whose value
 // goes through the theme reads the primitive (or semantic) the theme picks, and says so (theme: true).
-// The docs' Token map page draws a focused trace of it from one semantic token.
+// The docs' Token map page navigates it from the grammar's scopes to the primitives, the semantics
+// that read them and the component tokens that read those (token-trace.mjs).
 //
 // Resolution is lands.mjs's (tokenIndex, refPath, aliasChain), so the map, the Anatomy reference and
 // the agents' component API never disagree.
 import { shown } from "./anatomy.mjs";
 import { aliasChain, refPath, tokenIndex } from "./lands.mjs";
+import { grammar as readGrammar, questions } from "./schemes.mjs";
 import { flatTokens } from "./tokens.mjs";
-
-export { trace } from "./token-trace.mjs";
 
 /** The tiers, left to right, as the map lays them out. */
 export const TIERS = ["primitive", "semantic", "component-key"];
@@ -69,13 +69,47 @@ function throughTheme(index, path, seen = new Set()) {
   return refsIn(index.byPath.get(path)?.$value).flatMap((r) => throughTheme(index, refPath(index, r), seen));
 }
 
+// The open-ds extension of a token: its why, the grammar questions it follows (because) and its tone.
+const extOf = (token) => token?.$extensions?.["open-ds"] ?? {};
+
+/**
+ * The answers a semantic token's pick records, as { question, answer } in plain words: the grammar
+ * questions its own because and its theme picks' because name, each with the option the scheme
+ * chose. A question the scheme does not answer is left out.
+ */
+function answersOf({ index, path, scheme, asked }) {
+  const token = index.byPath.get(path);
+  const picks = refsIn(token?.$value)
+    .map((r) => refPath(index, r))
+    .filter(isTheme)
+    .map((p) => index.byPath.get(p));
+  const ids = [...new Set([token, ...picks].flatMap((t) => extOf(t).because ?? []))];
+  return ids.flatMap((id) => {
+    const q = asked[id];
+    const chosen = scheme.answers?.find((a) => a.question === id);
+    const option = q?.options?.find((o) => o.id === chosen?.option);
+    return q && option ? [{ question: q.text, answer: option.label }] : [];
+  });
+}
+
+// The tone a theme pick records for a fill ("light" or "dark"): the text that sits on it follows it.
+function toneOf(index, path) {
+  const pick = refsIn(index.byPath.get(path)?.$value)
+    .map((r) => refPath(index, r))
+    .find(isTheme);
+  return pick ? (extOf(index.byPath.get(pick)).tone ?? null) : null;
+}
+
 /**
  * The graph of one scheme in one brand and mode. { nodes: [{ id, tier, label, value, type,
- * description, theme? }], edges: [{ from, to }] }. An edge runs from the token a value comes from to
- * its reader. theme marks a token whose value goes through the brand theme.
+ * description, theme?, answers?, tone? }], edges: [{ from, to }] }. An edge runs from the token a
+ * value comes from to its reader. theme marks a token whose value goes through the brand theme.
+ * description is the token's own $description. A semantic token holds answers, the grammar answers
+ * its pick records ([{ question, answer }]), and tone, the tone its fill records, when it has one.
  */
-export function tokenGraph({ scheme, brand, mode }) {
+export function tokenGraph({ scheme, brand, mode, grammar = readGrammar() }) {
   const index = tokenIndex(scheme, { brand, mode });
+  const asked = questions(grammar);
   const primitives = new Set(flatTokens(scheme.tokens.primitive).map(([p]) => p));
   const nodes = new Map();
   const edges = [];
@@ -86,16 +120,20 @@ export function tokenGraph({ scheme, brand, mode }) {
     const value = resolvedValue(index, path);
     const end = aliasChain(index, path).end;
     const type = token.$type ?? index.byPath.get(end)?.$type ?? (COLOR.test(value) ? "color" : null);
-    const why = token.$extensions?.["open-ds"]?.why;
     const refs = refsIn(token.$value).map((r) => refPath(index, r));
+    const tier = tierOf(path, primitives);
+    const answers = tier === "semantic" ? answersOf({ index, path, scheme, asked }) : [];
+    const tone = tier === "semantic" ? toneOf(index, path) : null;
     nodes.set(path, {
       id: path,
-      tier: tierOf(path, primitives),
+      tier,
       label: labelOf(path),
       value,
       type,
-      description: why ?? token.$description ?? null,
+      description: token.$description ?? null,
       ...(refs.some(isTheme) && { theme: true }),
+      ...(answers.length && { answers }),
+      ...(tone && { tone }),
     });
     for (const from of refs.flatMap((r) => throughTheme(index, r))) {
       const key = `${from}>${path}`;
@@ -114,16 +152,20 @@ export function tokenGraph({ scheme, brand, mode }) {
 
 /**
  * The map file for one scheme: each brand asked for (every brand by default) in light and dark, keyed
- * "<brand>/<mode>". The docs generator writes it under static/token-map/.
+ * "<brand>/<mode>", and the grammar's scopes that own tokens ([{ id, title, owns }]), in the
+ * grammar's order. The docs generator writes it under static/token-map/.
  */
-export function tokenMap({ scheme, brands = Object.keys(scheme.tokens.brands) }) {
+export function tokenMap({ scheme, brands = Object.keys(scheme.tokens.brands), grammar = readGrammar() }) {
   const graphs = {};
   for (const brand of brands)
-    for (const mode of ["light", "dark"]) graphs[`${brand}/${mode}`] = tokenGraph({ scheme, brand, mode });
+    for (const mode of ["light", "dark"]) graphs[`${brand}/${mode}`] = tokenGraph({ scheme, brand, mode, grammar });
   return {
     scheme: scheme.id,
     name: scheme.name,
     tiers: TIERS.map((id) => ({ id, label: TIER_LABELS[id] })),
+    scopes: grammar.scopes
+      .filter((s) => (s.owns ?? []).length)
+      .map((s) => ({ id: s.id, title: s.title, owns: s.owns })),
     brands,
     graphs,
   };

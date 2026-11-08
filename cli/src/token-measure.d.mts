@@ -16,3 +16,20 @@ export function measure(
   token: { id: string; value: string | null; type?: string | null },
   context?: { backgrounds?: { id: string; value: string | null }[] },
 ): MeasureLine[];
+export const BACKGROUND_LABELS: Record<string, string>;
+export function contrasts(
+  value: string | null,
+  backgrounds: { id: string; value: string | null }[],
+): { label: string; ratio: number }[];
+export const NEEDS: { text: number; "non-text": number };
+export interface Job {
+  kind: "text" | "fill" | "non-text";
+  needs: number;
+  /** "backgrounds", or the text token a fill carries. */
+  against: string;
+}
+export function jobOf(id: string, context?: { tone?: string | null; has?: (id: string) => boolean }): Job | null;
+export function jobCheck(
+  token: { id: string; value: string | null; tone?: string | null },
+  context?: { backgrounds?: { id: string; value: string | null }[]; valueOf?: (id: string) => string | null | undefined },
+): { met: boolean; text: string; rule: string } | null;

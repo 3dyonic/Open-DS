@@ -2,7 +2,16 @@
 // ring thickness, computed from a primitive's value.
 import { test } from "node:test";
 import assert from "node:assert/strict";
-import { contrastRatio, measure, parseHex, ratioText, toPx } from "../src/token-measure.mjs";
+import {
+  contrastRatio,
+  contrasts,
+  jobCheck,
+  jobOf,
+  measure,
+  parseHex,
+  ratioText,
+  toPx,
+} from "../src/token-measure.mjs";
 
 const met = (lines) => Object.fromEntries(lines.filter((l) => l.met !== undefined).map((l) => [l.text, l.met]));
 
@@ -88,4 +97,69 @@ test("every other kind shows its value only", () => {
 test("a value it cannot measure says so", () => {
   assert.match(measure({ id: "color.x", value: "oklch(0.5 0.1 200)" })[0].text, /not a hex color/);
   assert.match(measure({ id: "size.x", value: "calc(1rem + 2px)" })[0].text, /not in px or rem/);
+});
+
+const BACKGROUNDS = [
+  { id: "color.surface.default", value: "#FFFFFF" },
+  { id: "color.surface.canvas", value: "#F7F7F7" },
+  { id: "color.surface.raised", value: "#FFFFFF" },
+  { id: "color.surface.sunken", value: "#EDEDED" },
+];
+
+test("a color lists its contrast on each background, one entry per background value", () => {
+  assert.deepEqual(
+    contrasts("#0B4FC0", BACKGROUNDS).map((c) => [c.label, ratioText(c.ratio)]),
+    [
+      ["surface and raised", "7.26"],
+      ["page", "6.77"],
+      ["sunken", "6.20"],
+    ],
+  );
+  assert.deepEqual(contrasts("rgb(0 0 0)", BACKGROUNDS), []);
+});
+
+test("a decision's job comes from its name: text, a fill and its text, or a part of the interface", () => {
+  const has = (id) => ["color.text.on-action", "color.text.on-danger", "color.text.on-light"].includes(id);
+  assert.deepEqual(jobOf("color.text.primary"), { kind: "text", needs: 4.5, against: "backgrounds" });
+  assert.deepEqual(jobOf("color.border.focus"), { kind: "non-text", needs: 3, against: "backgrounds" });
+  assert.deepEqual(jobOf("color.category.1.@"), { kind: "non-text", needs: 3, against: "backgrounds" });
+  assert.equal(jobOf("color.category.1.subtle"), null);
+  assert.deepEqual(jobOf("color.action.primary.@", { has }), { kind: "fill", needs: 4.5, against: "color.text.on-action" });
+  assert.deepEqual(jobOf("color.action.primary.hover", { has }).against, "color.text.on-action");
+  assert.deepEqual(jobOf("color.action.danger.@", { has }).against, "color.text.on-danger");
+  // A fill with no text of its own name carries the text of its tone.
+  assert.deepEqual(jobOf("color.action.secondary.@", { has, tone: "light" }).against, "color.text.on-light");
+  assert.equal(jobOf("color.action.secondary.@", { has }), null);
+  // A status color is a fill when the scheme has text for it, else it is text itself.
+  assert.deepEqual(jobOf("color.status.danger.@", { has }).against, "color.text.on-danger");
+  assert.deepEqual(jobOf("color.status.info.@", { has }), { kind: "text", needs: 4.5, against: "backgrounds" });
+  // Text that sits on a fill is checked from the fill; other kinds have no job here.
+  for (const id of ["color.text.on-action", "color.text.info-on-light", "color.text.inverse", "color.surface.default", "size.control.default"])
+    assert.equal(jobOf(id, { has }), null, id);
+});
+
+test("the check line measures the job: the lowest background, or the text on the fill", () => {
+  const values = { "color.text.on-action": "#FFFFFF" };
+  const valueOf = (id) => values[id] ?? null;
+  assert.deepEqual(jobCheck({ id: "color.border.focus", value: "#0B4FC0" }, { backgrounds: BACKGROUNDS, valueOf }), {
+    met: true,
+    text: "✓ 6.20:1 or more on the backgrounds, needs 3:1",
+    rule: "WCAG 1.4.11 Non-text Contrast",
+  });
+  assert.deepEqual(jobCheck({ id: "color.border.default", value: "#D6D6D6" }, { backgrounds: BACKGROUNDS, valueOf }), {
+    met: false,
+    text: "✗ 1.24:1 on sunken, needs 3:1",
+    rule: "WCAG 1.4.11 Non-text Contrast",
+  });
+  assert.equal(
+    jobCheck({ id: "color.text.secondary", value: "#767676" }, { backgrounds: BACKGROUNDS, valueOf }).text,
+    "✗ 3.88:1 on sunken, needs 4.5:1",
+  );
+  assert.deepEqual(jobCheck({ id: "color.action.primary.@", value: "#0B4FC0" }, { backgrounds: BACKGROUNDS, valueOf }), {
+    met: true,
+    text: "✓ color.text.on-action on it: 7.26:1, needs 4.5:1",
+    rule: "WCAG 1.4.3 Contrast (Minimum)",
+  });
+  assert.equal(jobCheck({ id: "color.surface.default", value: "#FFFFFF" }, { backgrounds: BACKGROUNDS, valueOf }), null);
+  assert.equal(jobCheck({ id: "color.border.focus", value: "oklch(0.5 0.1 250)" }, { backgrounds: BACKGROUNDS, valueOf }), null);
 });

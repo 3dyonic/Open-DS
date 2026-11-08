@@ -137,3 +137,88 @@ export function measure({ id, value, type }, { backgrounds = [] } = {}) {
   if (family === "border-width") return lengthLines(value, FOCUS_RING_LEVELS);
   return [];
 }
+
+/** Plain names for the scheme's backgrounds, for the contrast numbers. */
+export const BACKGROUND_LABELS = {
+  "color.surface.default": "surface",
+  "color.surface.canvas": "page",
+  "color.surface.raised": "raised",
+  "color.surface.sunken": "sunken",
+};
+
+/**
+ * A color's contrast on each of the scheme's backgrounds, as [{ label, ratio }] in the order given.
+ * Backgrounds with the same value share one entry ("surface and raised"). Empty when the color or
+ * every background is not a hex color.
+ */
+export function contrasts(value, backgrounds) {
+  const byValue = new Map();
+  for (const b of backgrounds) {
+    const ratio = contrastRatio(value, b.value);
+    if (ratio == null) continue;
+    const key = String(b.value).toLowerCase();
+    if (!byValue.has(key)) byValue.set(key, { labels: [], ratio });
+    byValue.get(key).labels.push(BACKGROUND_LABELS[b.id] ?? b.id);
+  }
+  return [...byValue.values()].map((v) => ({ label: v.labels.join(" and "), ratio: v.ratio }));
+}
+
+/** The contrast a job needs: text 4.5:1 (WCAG 1.4.3), parts of the interface 3:1 (WCAG 1.4.11). */
+export const NEEDS = { text: 4.5, "non-text": 3 };
+
+/**
+ * The job a semantic color token does, for its check line, from its name. Text (color.text.*, and a
+ * status color with no text of its own to sit on it) needs 4.5:1 on the backgrounds. A fill
+ * (color.action.*, a status color with its own on-text) needs its text to reach 4.5:1 on it: pair
+ * is the first of the text tokens it can carry that has (has(id)) says the scheme holds: on-<name>,
+ * on-action for the primary action, then on-<tone>. A border or a category color needs 3:1 on the
+ * backgrounds. Null for any other token, and for text that sits on a fill (its fill's check covers it).
+ */
+export function jobOf(id, { tone = null, has = () => false } = {}) {
+  const [family, group, name = "", part] = id.replace(/\.@$/, "").split(".");
+  if (family !== "color") return null;
+  const text = { kind: "text", needs: NEEDS.text, against: "backgrounds" };
+  const fill = (candidates) => {
+    const pair = candidates.find((c) => c && has(c));
+    return pair ? { kind: "fill", needs: NEEDS.text, against: pair } : null;
+  };
+  if (group === "text") return /^on-|-on-(light|dark)$|^inverse$/.test(name) ? null : text;
+  if (group === "border") return { kind: "non-text", needs: NEEDS["non-text"], against: "backgrounds" };
+  if (group === "category") return part ? null : { kind: "non-text", needs: NEEDS["non-text"], against: "backgrounds" };
+  if (group === "action")
+    return fill([
+      `color.text.on-${name}`,
+      name === "primary" && "color.text.on-action",
+      tone && `color.text.on-${tone}`,
+    ]);
+  if (group === "status" && !part) return fill([`color.text.on-${name}`]) ?? text;
+  return null;
+}
+
+/**
+ * The check line of a semantic color token's job (jobOf): { met, text, rule }, or null when it has
+ * no job or the colors are not hex. valueOf(id) gives a token's value in the same mode; backgrounds
+ * is [{ id, value }].
+ */
+export function jobCheck({ id, value, tone = null }, { backgrounds = [], valueOf = () => null } = {}) {
+  const job = jobOf(id, { tone, has: (t) => valueOf(t) != null });
+  if (!job) return null;
+  const needs = `needs ${job.needs}:1`;
+  if (job.kind === "fill") {
+    const ratio = contrastRatio(valueOf(job.against), value);
+    if (ratio == null) return null;
+    const met = ratio >= job.needs;
+    const name = job.against.replace(/\.@$/, "");
+    return { met, text: `${met ? "✓" : "✗"} ${name} on it: ${ratioText(ratio)}:1, ${needs}`, rule: RULES.text };
+  }
+  const on = contrasts(value, backgrounds);
+  if (!on.length) return null;
+  const low = on.reduce((a, b) => (b.ratio < a.ratio ? b : a));
+  const met = low.ratio >= job.needs;
+  const text = met
+    ? `✓ ${ratioText(low.ratio)}:1 or more on the backgrounds, ${needs}`
+    : `✗ ${ratioText(low.ratio)}:1 on ${low.label}, ${needs}`;
+  return { met, text, rule: RULES[job.kind] };
+}
+
+const RULES = { text: "WCAG 1.4.3 Contrast (Minimum)", "non-text": "WCAG 1.4.11 Non-text Contrast" };

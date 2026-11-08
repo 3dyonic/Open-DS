@@ -1,7 +1,7 @@
 ---
 sidebar_position: 5.5
 title: "Token map"
-description: "Accessible first: trace a semantic token to its primitive and to the component tokens that read it."
+description: "Accessible first: open a primitive to see the decisions that read it and the components that show it."
 hide_table_of_contents: true
 ---
 
@@ -9,6 +9,6 @@ hide_table_of_contents: true
 
 import TokenMap from "@site/src/components/TokenMap";
 
-Pick a semantic token. On the left, the map shows the primitive it takes its value from, and what that value measures. On the right, it shows the semantics and the component tokens that read it, grouped by component.
+The primitives are this scheme's words, and each semantic token is a decision that reads one. Open a scope, then a value. The map shows what the value measures, the decisions that read it and the components where you see each decision.
 
 <TokenMap scheme="accessible-first" files={{"default":"/token-map/accessible-first.json"}} />

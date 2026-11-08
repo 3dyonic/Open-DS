@@ -1,70 +1,54 @@
-// The trace's layout: one column per role of the trace (cli/src/token-trace.mjs), left to right, each
-// stacked from the top. The component token column holds one box per component, with its tokens
-// under it when it is expanded, split over groupColumns side by side so a long list fits the canvas.
-// Heights are the boxes' measured heights once the page has drawn them, else an estimate.
-export const NODE_WIDTH = 264;
-export const PRIMITIVE_WIDTH = 360;
-export const NODE_HEIGHT = 64;
-export const COLUMN_HEAD = 48;
-const COLUMN_GAP = 96;
-const ROW_GAP = 12;
-const GROUP_GAP = 32;
+// The token map's layout: one column per level, left to right, so every line runs in the gap between
+// two columns and never through a box. Each column after the first is centered on the open box of the
+// column before it, and never starts above the column heads. Heights are the boxes' measured heights
+// once the page has drawn them, else an estimate.
+export type Level = "scope" | "scale" | "step" | "word" | "group" | "decision" | "where" | "start" | "readers";
 
-export type Column = { role: string; ids: string[]; groups?: { id: string; ids: string[] }[] };
+export const WIDTHS: Record<Level, number> = {
+  scope: 168,
+  scale: 144,
+  step: 128,
+  word: 248,
+  group: 152,
+  decision: 288,
+  where: 224,
+  start: 288,
+  readers: 288,
+};
+// The heads sit at the top; the boxes start low enough to leave the selected box's toolbar room.
+export const COLUMN_HEAD = 84;
+const COLUMN_GAP = 64;
+const ROW_GAP = 10;
+
+export type LayoutColumn = { level: Level; ids: string[]; open: string | null };
 export type Placed = { id: string; x: number; y: number; width: number };
-export type Head = { key: string; label: string; x: number; y: number; width: number };
+export type Head = { level: Level; x: number; width: number };
 
-export const widthOf = (role: string) => (role === "primitive" ? PRIMITIVE_WIDTH : NODE_WIDTH);
-
-export function layout({
-  columns,
-  heightOf,
-  labelOf,
-  groupColumns = 1,
-}: {
-  columns: Column[];
-  heightOf: (id: string) => number;
-  labelOf: (role: string) => string;
-  groupColumns?: number;
-}): { placed: Placed[]; heads: Head[]; bottom: number; right: number } {
+export function layout({ columns, heightOf }: { columns: LayoutColumn[]; heightOf: (id: string) => number }): {
+  placed: Placed[];
+  heads: Head[];
+  bottom: number;
+  right: number;
+} {
   const placed: Placed[] = [];
   const heads: Head[] = [];
   let x = 0;
-  let bottom = 0;
-  let right = 0;
+  let bottom = COLUMN_HEAD;
+  let openCenter: number | null = null;
   for (const column of columns) {
-    const width = widthOf(column.role);
-    const stack = (ids: string[], left: number) => {
-      let y = COLUMN_HEAD;
-      for (const id of ids) {
-        placed.push({ id, x: left, y, width });
-        y += heightOf(id) + ROW_GAP;
-      }
-      bottom = Math.max(bottom, y);
-    };
-    let span = width;
-    if (column.groups) {
-      // Each group with its tokens stays whole; the groups fill the side-by-side columns in order,
-      // each about the same height.
-      const blocks = column.groups.map((g) => [g.id, ...g.ids]);
-      const tall = (ids: string[]) => ids.reduce((sum, id) => sum + heightOf(id) + ROW_GAP, 0);
-      const share = blocks.reduce((sum, b) => sum + tall(b), 0) / Math.max(1, groupColumns);
-      const parts: string[][] = [[]];
-      let filled = 0;
-      for (const block of blocks) {
-        if (filled > 0 && filled + tall(block) / 2 > share && parts.length < groupColumns) {
-          parts.push([]);
-          filled = 0;
-        }
-        parts[parts.length - 1].push(...block);
-        filled += tall(block);
-      }
-      parts.forEach((ids, i) => stack(ids, x + i * (width + GROUP_GAP)));
-      span = parts.length * width + (parts.length - 1) * GROUP_GAP;
-    } else stack(column.ids, x);
-    heads.push({ key: `${column.role}:${x}`, label: labelOf(column.role), x, y: 0, width: span });
-    right = x + span;
-    x += span + COLUMN_GAP;
+    const width = WIDTHS[column.level];
+    const total = column.ids.reduce((sum, id) => sum + heightOf(id), 0) + ROW_GAP * Math.max(0, column.ids.length - 1);
+    let y = openCenter == null ? COLUMN_HEAD : Math.max(COLUMN_HEAD, openCenter - total / 2);
+    openCenter = null;
+    for (const id of column.ids) {
+      const h = heightOf(id);
+      placed.push({ id, x, y, width });
+      if (id === column.open) openCenter = y + h / 2;
+      y += h + ROW_GAP;
+    }
+    bottom = Math.max(bottom, y - ROW_GAP);
+    heads.push({ level: column.level, x, width });
+    x += width + COLUMN_GAP;
   }
-  return { placed, heads, bottom, right };
+  return { placed, heads, bottom, right: x - COLUMN_GAP };
 }
