@@ -2,8 +2,8 @@
 // through the semantics to the component tokens. An edge points the way a value flows: from the token
 // a value comes from to the token that reads it. The brand theme is not a tier: a semantic whose value
 // goes through the theme reads the primitive (or semantic) the theme picks, and says so (theme: true).
-// The docs' Token map page navigates it from the grammar's scopes to the primitives, the semantics
-// that read them and the component tokens that read those (token-trace.mjs).
+// The docs' Token map page reads the colors in it: a color value, the semantic tokens that read it
+// and the component tokens that read those (color-map.mjs).
 //
 // Resolution is lands.mjs's (tokenIndex, refPath, aliasChain), so the map, the Anatomy reference and
 // the agents' component API never disagree.
@@ -88,8 +88,31 @@ function answersOf({ index, path, scheme, asked }) {
     const q = asked[id];
     const chosen = scheme.answers?.find((a) => a.question === id);
     const option = q?.options?.find((o) => o.id === chosen?.option);
-    return q && option ? [{ question: q.text, answer: option.label }] : [];
+    return q && option ? [{ id, question: q.text, answer: option.label }] : [];
   });
+}
+
+/**
+ * Every answer the scheme gives, keyed by question id, in plain words: { group, question, answer,
+ * why, because }. because lists the question ids the answer follows from (a chain of reasons ends at
+ * an answer with none). The Token map draws a decision's chain of reasons from it.
+ */
+export function reasonsOf(scheme, grammar = readGrammar()) {
+  const asked = questions(grammar);
+  const out = {};
+  for (const a of scheme.answers ?? []) {
+    const q = asked[a.question];
+    const option = q?.options?.find((o) => o.id === a.option);
+    if (!q || !option) continue;
+    out[a.question] = {
+      group: q.groupTitle,
+      question: q.text,
+      answer: option.label,
+      why: a.why ?? null,
+      because: (a.because ?? []).filter((id) => asked[id]),
+    };
+  }
+  return out;
 }
 
 // The tone a theme pick records for a fill ("light" or "dark"): the text that sits on it follows it.
@@ -168,5 +191,6 @@ export function tokenMap({ scheme, brands = Object.keys(scheme.tokens.brands), g
       .map((s) => ({ id: s.id, title: s.title, owns: s.owns })),
     brands,
     graphs,
+    reasons: reasonsOf(scheme, grammar),
   };
 }
