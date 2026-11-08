@@ -101,7 +101,7 @@ Themes: light, dark
 - typography.lands Where does type do the most work? Forms and labels. Type matters most in form labels and hints. (because content.q1)
 - color.roles Which color roles does it need? Surface, text, action and status. Few color roles, each with one clear meaning. (because human.q1)
 - color.count How many emphasis levels do actions need? Two. Primary and secondary only; fewer choices, fewer errors. (because human.q1)
-- color.definition How is the palette defined? Neutrals and one brand ramp. True neutrals and one strong blue, checked for contrast. (because people.q2)
+- color.definition How is the palette defined? Neutrals and one brand ramp. True neutrals and blue 600 as the brand: the familiar web color of links and focus, AAA with white text, and clear to color-blind users. (because people.q2, people.q1, color.lands)
 - color.values How saturated is the palette? Balanced. Strong but not loud color. (because brand.q1)
 - color.lands Where does color carry meaning first? Links and actions. Links and actions must be found by everyone. (because outcomes.q1)
 - spacing.roles Which spacing roles does it need? Gaps, insets and row heights. Large rows matter for touch and zoom. (because people.q1)

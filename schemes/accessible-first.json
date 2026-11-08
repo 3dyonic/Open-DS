@@ -1239,9 +1239,11 @@
     {
       "question": "color.definition",
       "option": "neutral-brand",
-      "why": "True neutrals and one strong blue, checked for contrast.",
+      "why": "True neutrals and blue 600 as the brand: the familiar web color of links and focus, AAA with white text, and clear to color-blind users.",
       "because": [
-        "people.q2"
+        "people.q2",
+        "people.q1",
+        "color.lands"
       ]
     },
     {

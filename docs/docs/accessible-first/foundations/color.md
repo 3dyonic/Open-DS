@@ -73,7 +73,7 @@ Each status label always gets the same color, with its dot, so color is never th
 | --- | --- | --- |
 | Which color roles does it need? | Surface, text, action and status | Few color roles, each with one clear meaning. |
 | How many emphasis levels do actions need? | Two | Primary and secondary only; fewer choices, fewer errors. |
-| How is the palette defined? | Neutrals and one brand ramp | True neutrals and one strong blue, checked for contrast. |
+| How is the palette defined? | Neutrals and one brand ramp | True neutrals and blue 600 as the brand: the familiar web color of links and focus, AAA with white text, and clear to color-blind users. |
 | How saturated is the palette? | Balanced | Strong but not loud color. |
 | Where does color carry meaning first? | Links and actions | Links and actions must be found by everyone. |
 
