@@ -469,8 +469,10 @@ function TraceView({
     if (!drawn.length || drawn.some((n) => !n.measured?.height)) return;
     const next = Object.fromEntries(drawn.map((n) => [n.id, Math.ceil(n.measured.height!)]));
     if (Object.entries(next).some(([id, h]) => heights[id] !== h)) {
-      setHeights((old) => ({ ...old, ...next }));
-      return;
+      // Lay out again on the next frame, not inside the browser's resize pass: a new layout moves and
+      // resizes boxes, and doing that in the same frame makes the browser report a ResizeObserver loop.
+      const frame = requestAnimationFrame(() => setHeights((old) => ({ ...old, ...next })));
+      return () => cancelAnimationFrame(frame);
     }
     // The layout holds the real heights: frame every box that shows.
     const t = setTimeout(() => flow.fitView({ padding: FIT_PADDING, maxZoom: 1, minZoom: 0.2, duration: 0 }), 0);
