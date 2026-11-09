@@ -1,0 +1,282 @@
+{
+ "card-grid": {
+  "scopes/how-it-looks": {
+   "cards": [
+    {
+     "title": "Typography",
+     "answer": {
+      "label": "Values",
+      "text": "Regular"
+     },
+     "text": "Regular body; the display does the shouting.",
+     "href": "./typography",
+     "robot": {
+      "day": "/robots/scopes/typography.webp",
+      "night": "/robots/scopes/typography-dark.webp"
+     },
+     "samples": [
+      {
+       "kind": "size",
+       "value": "var(--type-title-font-size)"
+      },
+      {
+       "kind": "size",
+       "value": "var(--type-body-font-size)"
+      },
+      {
+       "kind": "size",
+       "value": "var(--type-caption-font-size)"
+      }
+     ]
+    },
+    {
+     "title": "Color",
+     "answer": {
+      "label": "Values",
+      "text": "Vivid"
+     },
+     "text": "Vivid color is the brand.",
+     "href": "./color",
+     "robot": {
+      "day": "/robots/swatch.webp",
+      "night": "/robots/swatch-dark.webp"
+     },
+     "samples": [
+      {
+       "kind": "color",
+       "value": "var(--color-action-primary)"
+      },
+      {
+       "kind": "color",
+       "value": "var(--color-text-primary)"
+      },
+      {
+       "kind": "color",
+       "value": "var(--color-text-secondary)"
+      },
+      {
+       "kind": "color",
+       "value": "var(--color-border-default)"
+      },
+      {
+       "kind": "color",
+       "value": "var(--color-status-danger)"
+      },
+      {
+       "kind": "color",
+       "value": "var(--color-status-success)"
+      }
+     ]
+    },
+    {
+     "title": "Shape",
+     "answer": {
+      "label": "Values",
+      "text": "Pill"
+     },
+     "text": "Pill controls feel playful.",
+     "href": "./shape",
+     "robot": {
+      "day": "/robots/scopes/shape.webp",
+      "night": "/robots/scopes/shape-dark.webp"
+     },
+     "samples": [
+      {
+       "kind": "radius",
+       "value": "var(--radius-badge)"
+      },
+      {
+       "kind": "radius",
+       "value": "var(--radius-option)"
+      },
+      {
+       "kind": "radius",
+       "value": "var(--radius-control)"
+      },
+      {
+       "kind": "radius",
+       "value": "var(--radius-container)"
+      }
+     ]
+    },
+    {
+     "title": "Elevation",
+     "answer": {
+      "label": "Values",
+      "text": "Pronounced"
+     },
+     "text": "Pronounced shadows add depth.",
+     "href": "./elevation",
+     "robot": {
+      "day": "/robots/scopes/elevation.webp",
+      "night": "/robots/scopes/elevation-dark.webp"
+     },
+     "samples": [
+      {
+       "kind": "shadow",
+       "value": "var(--elevation-card)"
+      },
+      {
+       "kind": "shadow",
+       "value": "var(--elevation-overlay)"
+      }
+     ]
+    }
+   ]
+  },
+  "scopes/how-it-feels-to-use": {
+   "cards": [
+    {
+     "title": "Spacing",
+     "answer": {
+      "label": "Values",
+      "text": "Spacious"
+     },
+     "text": "Big space makes big moments.",
+     "href": "./spacing",
+     "robot": {
+      "day": "/robots/measure.webp",
+      "night": "/robots/measure-dark.webp"
+     },
+     "samples": [
+      {
+       "kind": "bar",
+       "value": "var(--space-gap-tight)"
+      },
+      {
+       "kind": "bar",
+       "value": "var(--space-gap-default)"
+      },
+      {
+       "kind": "bar",
+       "value": "var(--space-gap-group)"
+      },
+      {
+       "kind": "bar",
+       "value": "var(--space-gap-section)"
+      }
+     ]
+    },
+    {
+     "title": "Motion",
+     "answer": {
+      "label": "Values",
+      "text": "Fast"
+     },
+     "text": "Feedback stays fast; the personality shows in panels and hero moments, which move slower on a spring.",
+     "href": "./motion",
+     "robot": {
+      "day": "/robots/scopes/motion.webp",
+      "night": "/robots/scopes/motion-dark.webp"
+     }
+    },
+    {
+     "title": "Iconography",
+     "answer": {
+      "label": "Values",
+      "text": "Larger than the text"
+     },
+     "text": "Larger icons hold their own next to big type.",
+     "href": "./iconography",
+     "robot": {
+      "day": "/robots/scopes/iconography.webp",
+      "night": "/robots/scopes/iconography-dark.webp"
+     },
+     "samples": [
+      {
+       "kind": "text",
+       "value": "⚠︎ Remove"
+      }
+     ]
+    },
+    {
+     "title": "Accessibility",
+     "answer": {
+      "label": "Values",
+      "text": "Touch size"
+     },
+     "text": "Visitors come from social posts on phones.",
+     "href": "./accessibility",
+     "robot": {
+      "day": "/robots/scopes/accessibility.webp",
+      "night": "/robots/scopes/accessibility-dark.webp"
+     }
+    }
+   ]
+  },
+  "scopes/where-it-runs-and-how-it-speaks": {
+   "cards": [
+    {
+     "title": "Theming",
+     "answer": {
+      "label": "Values",
+      "text": "Light and dark"
+     },
+     "text": "Light and dark ship as standard.",
+     "href": "./theming",
+     "robot": {
+      "day": "/robots/scopes/theming.webp",
+      "night": "/robots/scopes/theming-dark.webp"
+     }
+    },
+    {
+     "title": "Naming",
+     "answer": {
+      "label": "Values",
+      "text": "Lowercase words in paths"
+     },
+     "text": "Lowercase paths read the same everywhere.",
+     "href": "./naming",
+     "robot": {
+      "day": "/robots/scopes/naming.webp",
+      "night": "/robots/scopes/naming-dark.webp"
+     },
+     "samples": [
+      {
+       "kind": "code",
+       "value": "button/primary/background"
+      }
+     ]
+    },
+    {
+     "title": "Voice and tone",
+     "answer": {
+      "label": "Values",
+      "text": "Playful"
+     },
+     "text": "Big words, few of them.",
+     "href": "./voice",
+     "robot": {
+      "day": "/robots/scopes/voice.webp",
+      "night": "/robots/scopes/voice-dark.webp"
+     },
+     "samples": [
+      {
+       "kind": "text",
+       "value": "Go"
+      }
+     ]
+    },
+    {
+     "title": "Components",
+     "answer": {
+      "label": "Values",
+      "text": "Also for emphasis and size"
+     },
+     "text": "Variants for emphasis and size let each campaign look a little different.",
+     "href": "./components",
+     "robot": {
+      "day": "/robots/shelf.webp",
+      "night": "/robots/shelf-dark.webp"
+     },
+     "samples": [
+      {
+       "kind": "text",
+       "value": "47 of 62 in the catalogue"
+      }
+     ]
+    }
+   ]
+  }
+ }
+}

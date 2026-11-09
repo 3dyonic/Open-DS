@@ -102,5 +102,1169 @@
     }
    ]
   }
+ },
+ "surface-stack": {
+  "default": {
+   "themes": [
+    {
+     "theme": "light",
+     "canvas": "#F7F8FA",
+     "surface": "#FFFFFF",
+     "sunken": "#EEF1F5",
+     "text": "#161B23",
+     "border": "#DDE2EA"
+    },
+    {
+     "theme": "dark",
+     "canvas": "#0D1117",
+     "surface": "#161B23",
+     "sunken": "#262D38",
+     "text": "#F7F8FA",
+     "border": "#3D4655"
+    }
+   ]
+  }
+ },
+ "pairs-chart": {
+  "default": {
+   "modes": [
+    {
+     "mode": "light",
+     "page": {
+      "canvas": "#F7F8FA",
+      "text": "#161B23",
+      "muted": "#535D6D",
+      "edge": "#DDE2EA"
+     },
+     "groups": [
+      {
+       "title": "The page's own surfaces",
+       "note": "The page's own text sits on them: primary, secondary, muted and links.",
+       "fills": [
+        {
+         "fill": "surface.canvas",
+         "primitive": "slate.light.50",
+         "hex": "#F7F8FA",
+         "pairs": [
+          {
+           "text": "text.primary",
+           "primitive": "slate.light.900",
+           "hex": "#161B23",
+           "contrast": 16.26,
+           "floor": 4.5
+          },
+          {
+           "text": "text.secondary",
+           "primitive": "slate.light.700",
+           "hex": "#3D4655",
+           "contrast": 8.96,
+           "floor": 4.5
+          },
+          {
+           "text": "text.muted",
+           "primitive": "slate.light.600",
+           "hex": "#535D6D",
+           "contrast": 6.27,
+           "floor": 4.5
+          },
+          {
+           "text": "text.on-light",
+           "primitive": "slate.light.900",
+           "hex": "#161B23",
+           "contrast": 16.26,
+           "floor": 4.5
+          },
+          {
+           "text": "text.link",
+           "primitive": "violet.light.700",
+           "hex": "#3729AA",
+           "contrast": 9.59,
+           "floor": 4.5
+          }
+         ]
+        },
+        {
+         "fill": "surface.default",
+         "primitive": "slate.light.0",
+         "hex": "#FFFFFF",
+         "pairs": [
+          {
+           "text": "text.primary",
+           "primitive": "slate.light.900",
+           "hex": "#161B23",
+           "contrast": 17.28,
+           "floor": 4.5
+          },
+          {
+           "text": "text.secondary",
+           "primitive": "slate.light.700",
+           "hex": "#3D4655",
+           "contrast": 9.52,
+           "floor": 4.5
+          },
+          {
+           "text": "text.muted",
+           "primitive": "slate.light.600",
+           "hex": "#535D6D",
+           "contrast": 6.66,
+           "floor": 4.5
+          },
+          {
+           "text": "text.on-light",
+           "primitive": "slate.light.900",
+           "hex": "#161B23",
+           "contrast": 17.28,
+           "floor": 4.5
+          },
+          {
+           "text": "text.link",
+           "primitive": "violet.light.700",
+           "hex": "#3729AA",
+           "contrast": 10.19,
+           "floor": 4.5
+          }
+         ]
+        },
+        {
+         "fill": "surface.raised",
+         "primitive": "slate.light.0",
+         "hex": "#FFFFFF",
+         "pairs": [
+          {
+           "text": "text.primary",
+           "primitive": "slate.light.900",
+           "hex": "#161B23",
+           "contrast": 17.28,
+           "floor": 4.5
+          },
+          {
+           "text": "text.secondary",
+           "primitive": "slate.light.700",
+           "hex": "#3D4655",
+           "contrast": 9.52,
+           "floor": 4.5
+          },
+          {
+           "text": "text.muted",
+           "primitive": "slate.light.600",
+           "hex": "#535D6D",
+           "contrast": 6.66,
+           "floor": 4.5
+          },
+          {
+           "text": "text.on-light",
+           "primitive": "slate.light.900",
+           "hex": "#161B23",
+           "contrast": 17.28,
+           "floor": 4.5
+          },
+          {
+           "text": "text.link",
+           "primitive": "violet.light.700",
+           "hex": "#3729AA",
+           "contrast": 10.19,
+           "floor": 4.5
+          }
+         ]
+        },
+        {
+         "fill": "surface.sunken",
+         "primitive": "slate.light.100",
+         "hex": "#EEF1F5",
+         "pairs": [
+          {
+           "text": "text.primary",
+           "primitive": "slate.light.900",
+           "hex": "#161B23",
+           "contrast": 15.25,
+           "floor": 4.5
+          },
+          {
+           "text": "text.secondary",
+           "primitive": "slate.light.700",
+           "hex": "#3D4655",
+           "contrast": 8.4,
+           "floor": 4.5
+          },
+          {
+           "text": "text.muted",
+           "primitive": "slate.light.600",
+           "hex": "#535D6D",
+           "contrast": 5.88,
+           "floor": 4.5
+          },
+          {
+           "text": "text.on-light",
+           "primitive": "slate.light.900",
+           "hex": "#161B23",
+           "contrast": 15.25,
+           "floor": 4.5
+          },
+          {
+           "text": "text.link",
+           "primitive": "violet.light.700",
+           "hex": "#3729AA",
+           "contrast": 9,
+           "floor": 4.5
+          }
+         ]
+        },
+        {
+         "fill": "surface.highlight",
+         "primitive": "slate.light.100",
+         "hex": "#EEF1F5",
+         "pairs": [
+          {
+           "text": "text.primary",
+           "primitive": "slate.light.900",
+           "hex": "#161B23",
+           "contrast": 15.25,
+           "floor": 4.5
+          },
+          {
+           "text": "text.secondary",
+           "primitive": "slate.light.700",
+           "hex": "#3D4655",
+           "contrast": 8.4,
+           "floor": 4.5
+          },
+          {
+           "text": "text.muted",
+           "primitive": "slate.light.600",
+           "hex": "#535D6D",
+           "contrast": 5.88,
+           "floor": 4.5
+          },
+          {
+           "text": "text.on-light",
+           "primitive": "slate.light.900",
+           "hex": "#161B23",
+           "contrast": 15.25,
+           "floor": 4.5
+          },
+          {
+           "text": "text.link",
+           "primitive": "violet.light.700",
+           "hex": "#3729AA",
+           "contrast": 9,
+           "floor": 4.5
+          }
+         ]
+        },
+        {
+         "fill": "surface.pressed",
+         "primitive": "slate.light.100",
+         "hex": "#EEF1F5",
+         "pairs": [
+          {
+           "text": "text.primary",
+           "primitive": "slate.light.900",
+           "hex": "#161B23",
+           "contrast": 15.25,
+           "floor": 4.5
+          },
+          {
+           "text": "text.secondary",
+           "primitive": "slate.light.700",
+           "hex": "#3D4655",
+           "contrast": 8.4,
+           "floor": 4.5
+          },
+          {
+           "text": "text.on-light",
+           "primitive": "slate.light.900",
+           "hex": "#161B23",
+           "contrast": 15.25,
+           "floor": 4.5
+          }
+         ]
+        },
+        {
+         "fill": "surface.selected",
+         "primitive": "violet.light.100",
+         "hex": "#E8ECFF",
+         "pairs": [
+          {
+           "text": "text.primary",
+           "primitive": "slate.light.900",
+           "hex": "#161B23",
+           "contrast": 14.71,
+           "floor": 4.5
+          },
+          {
+           "text": "text.secondary",
+           "primitive": "slate.light.700",
+           "hex": "#3D4655",
+           "contrast": 8.1,
+           "floor": 4.5
+          },
+          {
+           "text": "text.muted",
+           "primitive": "slate.light.600",
+           "hex": "#535D6D",
+           "contrast": 5.67,
+           "floor": 4.5
+          },
+          {
+           "text": "text.on-light",
+           "primitive": "slate.light.900",
+           "hex": "#161B23",
+           "contrast": 14.71,
+           "floor": 4.5
+          },
+          {
+           "text": "text.link",
+           "primitive": "violet.light.700",
+           "hex": "#3729AA",
+           "contrast": 8.68,
+           "floor": 4.5
+          }
+         ]
+        }
+       ]
+      },
+      {
+       "title": "Light fills",
+       "note": "Their tone is light, so the text on them is text.on-light, or a status's -on-light text.",
+       "fills": [
+        {
+         "fill": "action.secondary",
+         "primitive": "slate.light.0",
+         "hex": "#FFFFFF",
+         "pairs": [
+          {
+           "text": "text.primary",
+           "primitive": "slate.light.900",
+           "hex": "#161B23",
+           "contrast": 17.28,
+           "floor": 4.5
+          },
+          {
+           "text": "text.on-light",
+           "primitive": "slate.light.900",
+           "hex": "#161B23",
+           "contrast": 17.28,
+           "floor": 4.5
+          }
+         ]
+        },
+        {
+         "fill": "action.secondary.hover",
+         "primitive": "slate.light.100",
+         "hex": "#EEF1F5",
+         "pairs": [
+          {
+           "text": "text.primary",
+           "primitive": "slate.light.900",
+           "hex": "#161B23",
+           "contrast": 15.25,
+           "floor": 4.5
+          },
+          {
+           "text": "text.on-light",
+           "primitive": "slate.light.900",
+           "hex": "#161B23",
+           "contrast": 15.25,
+           "floor": 4.5
+          }
+         ]
+        },
+        {
+         "fill": "status.info.subtle",
+         "primitive": "blue.light.100",
+         "hex": "#D3E4FF",
+         "pairs": [
+          {
+           "text": "text.primary",
+           "primitive": "slate.light.900",
+           "hex": "#161B23",
+           "contrast": 13.42,
+           "floor": 4.5
+          },
+          {
+           "text": "text.on-light",
+           "primitive": "slate.light.900",
+           "hex": "#161B23",
+           "contrast": 13.42,
+           "floor": 4.5
+          },
+          {
+           "text": "text.info-on-light",
+           "primitive": "blue.light.800",
+           "hex": "#001A4E",
+           "contrast": 12.97,
+           "floor": 4.5
+          }
+         ]
+        },
+        {
+         "fill": "status.warning.subtle",
+         "primitive": "amber.light.100",
+         "hex": "#FEE8CF",
+         "pairs": [
+          {
+           "text": "text.primary",
+           "primitive": "slate.light.900",
+           "hex": "#161B23",
+           "contrast": 14.53,
+           "floor": 4.5
+          },
+          {
+           "text": "text.on-light",
+           "primitive": "slate.light.900",
+           "hex": "#161B23",
+           "contrast": 14.53,
+           "floor": 4.5
+          },
+          {
+           "text": "text.warning-on-light",
+           "primitive": "amber.light.800",
+           "hex": "#462A02",
+           "contrast": 11.09,
+           "floor": 4.5
+          }
+         ]
+        },
+        {
+         "fill": "status.danger.subtle",
+         "primitive": "red.light.100",
+         "hex": "#FFDBD8",
+         "pairs": [
+          {
+           "text": "text.primary",
+           "primitive": "slate.light.900",
+           "hex": "#161B23",
+           "contrast": 13.48,
+           "floor": 4.5
+          },
+          {
+           "text": "text.on-light",
+           "primitive": "slate.light.900",
+           "hex": "#161B23",
+           "contrast": 13.48,
+           "floor": 4.5
+          },
+          {
+           "text": "text.danger-on-light",
+           "primitive": "red.light.800",
+           "hex": "#6D0008",
+           "contrast": 9.9,
+           "floor": 4.5
+          }
+         ]
+        },
+        {
+         "fill": "status.success.subtle",
+         "primitive": "green.light.100",
+         "hex": "#DBF7DF",
+         "pairs": [
+          {
+           "text": "text.primary",
+           "primitive": "slate.light.900",
+           "hex": "#161B23",
+           "contrast": 15.13,
+           "floor": 4.5
+          },
+          {
+           "text": "text.on-light",
+           "primitive": "slate.light.900",
+           "hex": "#161B23",
+           "contrast": 15.13,
+           "floor": 4.5
+          },
+          {
+           "text": "text.success-on-light",
+           "primitive": "green.light.800",
+           "hex": "#023E17",
+           "contrast": 10.79,
+           "floor": 4.5
+          }
+         ]
+        }
+       ]
+      },
+      {
+       "title": "Dark fills",
+       "note": "Their tone is dark, so the text on them is text.on-dark, or a status's -on-dark text.",
+       "fills": [
+        {
+         "fill": "surface.inverse",
+         "primitive": "slate.light.900",
+         "hex": "#161B23",
+         "pairs": [
+          {
+           "text": "text.inverse",
+           "primitive": "slate.light.0",
+           "hex": "#FFFFFF",
+           "contrast": 17.28,
+           "floor": 4.5
+          },
+          {
+           "text": "text.on-dark",
+           "primitive": "slate.light.0",
+           "hex": "#FFFFFF",
+           "contrast": 17.28,
+           "floor": 4.5
+          }
+         ]
+        },
+        {
+         "fill": "action.primary",
+         "primitive": "violet.light.600",
+         "hex": "#4B3FD9",
+         "pairs": [
+          {
+           "text": "text.on-dark",
+           "primitive": "slate.light.0",
+           "hex": "#FFFFFF",
+           "contrast": 6.97,
+           "floor": 4.5
+          },
+          {
+           "text": "text.on-action",
+           "primitive": "slate.light.0",
+           "hex": "#FFFFFF",
+           "contrast": 6.97,
+           "floor": 4.5
+          }
+         ]
+        },
+        {
+         "fill": "action.primary.hover",
+         "primitive": "violet.light.700",
+         "hex": "#3729AA",
+         "pairs": [
+          {
+           "text": "text.on-dark",
+           "primitive": "slate.light.0",
+           "hex": "#FFFFFF",
+           "contrast": 10.19,
+           "floor": 4.5
+          },
+          {
+           "text": "text.on-action",
+           "primitive": "slate.light.0",
+           "hex": "#FFFFFF",
+           "contrast": 10.19,
+           "floor": 4.5
+          }
+         ]
+        },
+        {
+         "fill": "action.danger",
+         "primitive": "red.light.600",
+         "hex": "#C42B2B",
+         "pairs": [
+          {
+           "text": "text.on-dark",
+           "primitive": "slate.light.0",
+           "hex": "#FFFFFF",
+           "contrast": 5.63,
+           "floor": 4.5
+          },
+          {
+           "text": "text.on-danger",
+           "primitive": "slate.light.0",
+           "hex": "#FFFFFF",
+           "contrast": 5.63,
+           "floor": 4.5
+          }
+         ]
+        },
+        {
+         "fill": "action.danger.hover",
+         "primitive": "red.light.700",
+         "hex": "#981519",
+         "pairs": [
+          {
+           "text": "text.on-dark",
+           "primitive": "slate.light.0",
+           "hex": "#FFFFFF",
+           "contrast": 8.55,
+           "floor": 4.5
+          },
+          {
+           "text": "text.on-danger",
+           "primitive": "slate.light.0",
+           "hex": "#FFFFFF",
+           "contrast": 8.55,
+           "floor": 4.5
+          }
+         ]
+        }
+       ]
+      }
+     ]
+    },
+    {
+     "mode": "dark",
+     "page": {
+      "canvas": "#0D1117",
+      "text": "#F7F8FA",
+      "muted": "#969FAD",
+      "edge": "#3D4655"
+     },
+     "groups": [
+      {
+       "title": "The page's own surfaces",
+       "note": "The page's own text sits on them: primary, secondary, muted and links.",
+       "fills": [
+        {
+         "fill": "surface.canvas",
+         "primitive": "slate.dark.0",
+         "hex": "#0D1117",
+         "pairs": [
+          {
+           "text": "text.primary",
+           "primitive": "slate.dark.900",
+           "hex": "#F7F8FA",
+           "contrast": 17.81,
+           "floor": 4.5
+          },
+          {
+           "text": "text.secondary",
+           "primitive": "slate.dark.500",
+           "hex": "#C4CBD6",
+           "contrast": 11.59,
+           "floor": 4.5
+          },
+          {
+           "text": "text.muted",
+           "primitive": "slate.dark.400",
+           "hex": "#969FAD",
+           "contrast": 7.08,
+           "floor": 4.5
+          },
+          {
+           "text": "text.on-dark",
+           "primitive": "slate.light.0",
+           "hex": "#FFFFFF",
+           "contrast": 18.92,
+           "floor": 4.5
+          },
+          {
+           "text": "text.link",
+           "primitive": "violet.dark.700",
+           "hex": "#BEBBFB",
+           "contrast": 10.54,
+           "floor": 4.5
+          }
+         ]
+        },
+        {
+         "fill": "surface.default",
+         "primitive": "slate.dark.50",
+         "hex": "#161B23",
+         "pairs": [
+          {
+           "text": "text.primary",
+           "primitive": "slate.dark.900",
+           "hex": "#F7F8FA",
+           "contrast": 16.26,
+           "floor": 4.5
+          },
+          {
+           "text": "text.secondary",
+           "primitive": "slate.dark.500",
+           "hex": "#C4CBD6",
+           "contrast": 10.58,
+           "floor": 4.5
+          },
+          {
+           "text": "text.muted",
+           "primitive": "slate.dark.400",
+           "hex": "#969FAD",
+           "contrast": 6.47,
+           "floor": 4.5
+          },
+          {
+           "text": "text.on-dark",
+           "primitive": "slate.light.0",
+           "hex": "#FFFFFF",
+           "contrast": 17.28,
+           "floor": 4.5
+          },
+          {
+           "text": "text.link",
+           "primitive": "violet.dark.700",
+           "hex": "#BEBBFB",
+           "contrast": 9.62,
+           "floor": 4.5
+          }
+         ]
+        },
+        {
+         "fill": "surface.raised",
+         "primitive": "slate.dark.50",
+         "hex": "#161B23",
+         "pairs": [
+          {
+           "text": "text.primary",
+           "primitive": "slate.dark.900",
+           "hex": "#F7F8FA",
+           "contrast": 16.26,
+           "floor": 4.5
+          },
+          {
+           "text": "text.secondary",
+           "primitive": "slate.dark.500",
+           "hex": "#C4CBD6",
+           "contrast": 10.58,
+           "floor": 4.5
+          },
+          {
+           "text": "text.muted",
+           "primitive": "slate.dark.400",
+           "hex": "#969FAD",
+           "contrast": 6.47,
+           "floor": 4.5
+          },
+          {
+           "text": "text.on-dark",
+           "primitive": "slate.light.0",
+           "hex": "#FFFFFF",
+           "contrast": 17.28,
+           "floor": 4.5
+          },
+          {
+           "text": "text.link",
+           "primitive": "violet.dark.700",
+           "hex": "#BEBBFB",
+           "contrast": 9.62,
+           "floor": 4.5
+          }
+         ]
+        },
+        {
+         "fill": "surface.sunken",
+         "primitive": "slate.dark.100",
+         "hex": "#262D38",
+         "pairs": [
+          {
+           "text": "text.primary",
+           "primitive": "slate.dark.900",
+           "hex": "#F7F8FA",
+           "contrast": 13.05,
+           "floor": 4.5
+          },
+          {
+           "text": "text.secondary",
+           "primitive": "slate.dark.500",
+           "hex": "#C4CBD6",
+           "contrast": 8.49,
+           "floor": 4.5
+          },
+          {
+           "text": "text.muted",
+           "primitive": "slate.dark.400",
+           "hex": "#969FAD",
+           "contrast": 5.19,
+           "floor": 4.5
+          },
+          {
+           "text": "text.on-dark",
+           "primitive": "slate.light.0",
+           "hex": "#FFFFFF",
+           "contrast": 13.86,
+           "floor": 4.5
+          },
+          {
+           "text": "text.link",
+           "primitive": "violet.dark.700",
+           "hex": "#BEBBFB",
+           "contrast": 7.72,
+           "floor": 4.5
+          }
+         ]
+        },
+        {
+         "fill": "surface.highlight",
+         "primitive": "slate.dark.100",
+         "hex": "#262D38",
+         "pairs": [
+          {
+           "text": "text.primary",
+           "primitive": "slate.dark.900",
+           "hex": "#F7F8FA",
+           "contrast": 13.05,
+           "floor": 4.5
+          },
+          {
+           "text": "text.secondary",
+           "primitive": "slate.dark.500",
+           "hex": "#C4CBD6",
+           "contrast": 8.49,
+           "floor": 4.5
+          },
+          {
+           "text": "text.muted",
+           "primitive": "slate.dark.400",
+           "hex": "#969FAD",
+           "contrast": 5.19,
+           "floor": 4.5
+          },
+          {
+           "text": "text.on-dark",
+           "primitive": "slate.light.0",
+           "hex": "#FFFFFF",
+           "contrast": 13.86,
+           "floor": 4.5
+          },
+          {
+           "text": "text.link",
+           "primitive": "violet.dark.700",
+           "hex": "#BEBBFB",
+           "contrast": 7.72,
+           "floor": 4.5
+          }
+         ]
+        },
+        {
+         "fill": "surface.pressed",
+         "primitive": "slate.dark.100",
+         "hex": "#262D38",
+         "pairs": [
+          {
+           "text": "text.primary",
+           "primitive": "slate.dark.900",
+           "hex": "#F7F8FA",
+           "contrast": 13.05,
+           "floor": 4.5
+          },
+          {
+           "text": "text.secondary",
+           "primitive": "slate.dark.500",
+           "hex": "#C4CBD6",
+           "contrast": 8.49,
+           "floor": 4.5
+          },
+          {
+           "text": "text.on-dark",
+           "primitive": "slate.light.0",
+           "hex": "#FFFFFF",
+           "contrast": 13.86,
+           "floor": 4.5
+          }
+         ]
+        },
+        {
+         "fill": "surface.selected",
+         "primitive": "violet.dark.100",
+         "hex": "#2A244F",
+         "pairs": [
+          {
+           "text": "text.primary",
+           "primitive": "slate.dark.900",
+           "hex": "#F7F8FA",
+           "contrast": 13.5,
+           "floor": 4.5
+          },
+          {
+           "text": "text.secondary",
+           "primitive": "slate.dark.500",
+           "hex": "#C4CBD6",
+           "contrast": 8.79,
+           "floor": 4.5
+          },
+          {
+           "text": "text.muted",
+           "primitive": "slate.dark.400",
+           "hex": "#969FAD",
+           "contrast": 5.37,
+           "floor": 4.5
+          },
+          {
+           "text": "text.on-dark",
+           "primitive": "slate.light.0",
+           "hex": "#FFFFFF",
+           "contrast": 14.35,
+           "floor": 4.5
+          },
+          {
+           "text": "text.link",
+           "primitive": "violet.dark.700",
+           "hex": "#BEBBFB",
+           "contrast": 7.99,
+           "floor": 4.5
+          }
+         ]
+        }
+       ]
+      },
+      {
+       "title": "Light fills",
+       "note": "Their tone is light, so the text on them is text.on-light, or a status's -on-light text.",
+       "fills": [
+        {
+         "fill": "surface.inverse",
+         "primitive": "slate.dark.900",
+         "hex": "#F7F8FA",
+         "pairs": [
+          {
+           "text": "text.inverse",
+           "primitive": "slate.light.900",
+           "hex": "#161B23",
+           "contrast": 16.26,
+           "floor": 4.5
+          },
+          {
+           "text": "text.on-light",
+           "primitive": "slate.light.900",
+           "hex": "#161B23",
+           "contrast": 16.26,
+           "floor": 4.5
+          }
+         ]
+        },
+        {
+         "fill": "action.primary",
+         "primitive": "violet.dark.600",
+         "hex": "#A9A3F6",
+         "pairs": [
+          {
+           "text": "text.on-light",
+           "primitive": "slate.light.900",
+           "hex": "#161B23",
+           "contrast": 7.62,
+           "floor": 4.5
+          },
+          {
+           "text": "text.on-action",
+           "primitive": "slate.light.900",
+           "hex": "#161B23",
+           "contrast": 7.62,
+           "floor": 4.5
+          }
+         ]
+        },
+        {
+         "fill": "action.primary.hover",
+         "primitive": "violet.dark.700",
+         "hex": "#BEBBFB",
+         "pairs": [
+          {
+           "text": "text.on-light",
+           "primitive": "slate.light.900",
+           "hex": "#161B23",
+           "contrast": 9.62,
+           "floor": 4.5
+          },
+          {
+           "text": "text.on-action",
+           "primitive": "slate.light.900",
+           "hex": "#161B23",
+           "contrast": 9.62,
+           "floor": 4.5
+          }
+         ]
+        },
+        {
+         "fill": "action.danger",
+         "primitive": "red.dark.600",
+         "hex": "#F28B8B",
+         "pairs": [
+          {
+           "text": "text.on-light",
+           "primitive": "slate.light.900",
+           "hex": "#161B23",
+           "contrast": 7.28,
+           "floor": 4.5
+          },
+          {
+           "text": "text.on-danger",
+           "primitive": "slate.light.900",
+           "hex": "#161B23",
+           "contrast": 7.28,
+           "floor": 4.5
+          }
+         ]
+        },
+        {
+         "fill": "action.danger.hover",
+         "primitive": "red.dark.700",
+         "hex": "#FAA9A8",
+         "pairs": [
+          {
+           "text": "text.on-light",
+           "primitive": "slate.light.900",
+           "hex": "#161B23",
+           "contrast": 9.3,
+           "floor": 4.5
+          },
+          {
+           "text": "text.on-danger",
+           "primitive": "slate.light.900",
+           "hex": "#161B23",
+           "contrast": 9.3,
+           "floor": 4.5
+          }
+         ]
+        }
+       ]
+      },
+      {
+       "title": "Dark fills",
+       "note": "Their tone is dark, so the text on them is text.on-dark, or a status's -on-dark text.",
+       "fills": [
+        {
+         "fill": "action.secondary",
+         "primitive": "slate.dark.50",
+         "hex": "#161B23",
+         "pairs": [
+          {
+           "text": "text.primary",
+           "primitive": "slate.dark.900",
+           "hex": "#F7F8FA",
+           "contrast": 16.26,
+           "floor": 4.5
+          },
+          {
+           "text": "text.on-dark",
+           "primitive": "slate.light.0",
+           "hex": "#FFFFFF",
+           "contrast": 17.28,
+           "floor": 4.5
+          }
+         ]
+        },
+        {
+         "fill": "action.secondary.hover",
+         "primitive": "slate.dark.100",
+         "hex": "#262D38",
+         "pairs": [
+          {
+           "text": "text.primary",
+           "primitive": "slate.dark.900",
+           "hex": "#F7F8FA",
+           "contrast": 13.05,
+           "floor": 4.5
+          },
+          {
+           "text": "text.on-dark",
+           "primitive": "slate.light.0",
+           "hex": "#FFFFFF",
+           "contrast": 13.86,
+           "floor": 4.5
+          }
+         ]
+        },
+        {
+         "fill": "status.info.subtle",
+         "primitive": "blue.dark.100",
+         "hex": "#162C4F",
+         "pairs": [
+          {
+           "text": "text.primary",
+           "primitive": "slate.dark.900",
+           "hex": "#F7F8FA",
+           "contrast": 13.11,
+           "floor": 4.5
+          },
+          {
+           "text": "text.on-dark",
+           "primitive": "slate.light.0",
+           "hex": "#FFFFFF",
+           "contrast": 13.93,
+           "floor": 4.5
+          },
+          {
+           "text": "text.info-on-dark",
+           "primitive": "blue.light.100",
+           "hex": "#D3E4FF",
+           "contrast": 10.82,
+           "floor": 4.5
+          }
+         ]
+        },
+        {
+         "fill": "status.warning.subtle",
+         "primitive": "amber.dark.100",
+         "hex": "#3F2B02",
+         "pairs": [
+          {
+           "text": "text.primary",
+           "primitive": "slate.dark.900",
+           "hex": "#F7F8FA",
+           "contrast": 12.69,
+           "floor": 4.5
+          },
+          {
+           "text": "text.on-dark",
+           "primitive": "slate.light.0",
+           "hex": "#FFFFFF",
+           "contrast": 13.48,
+           "floor": 4.5
+          },
+          {
+           "text": "text.warning-on-dark",
+           "primitive": "amber.light.100",
+           "hex": "#FEE8CF",
+           "contrast": 11.34,
+           "floor": 4.5
+          }
+         ]
+        },
+        {
+         "fill": "status.danger.subtle",
+         "primitive": "red.dark.100",
+         "hex": "#4C171A",
+         "pairs": [
+          {
+           "text": "text.primary",
+           "primitive": "slate.dark.900",
+           "hex": "#F7F8FA",
+           "contrast": 13.68,
+           "floor": 4.5
+          },
+          {
+           "text": "text.on-dark",
+           "primitive": "slate.light.0",
+           "hex": "#FFFFFF",
+           "contrast": 14.54,
+           "floor": 4.5
+          },
+          {
+           "text": "text.danger-on-dark",
+           "primitive": "red.light.100",
+           "hex": "#FFDBD8",
+           "contrast": 11.33,
+           "floor": 4.5
+          }
+         ]
+        },
+        {
+         "fill": "status.success.subtle",
+         "primitive": "green.dark.100",
+         "hex": "#01351A",
+         "pairs": [
+          {
+           "text": "text.primary",
+           "primitive": "slate.dark.900",
+           "hex": "#F7F8FA",
+           "contrast": 12.96,
+           "floor": 4.5
+          },
+          {
+           "text": "text.on-dark",
+           "primitive": "slate.light.0",
+           "hex": "#FFFFFF",
+           "contrast": 13.77,
+           "floor": 4.5
+          },
+          {
+           "text": "text.success-on-dark",
+           "primitive": "green.light.100",
+           "hex": "#DBF7DF",
+           "contrast": 12.05,
+           "floor": 4.5
+          }
+         ]
+        }
+       ]
+      }
+     ]
+    }
+   ]
+  }
  }
 }

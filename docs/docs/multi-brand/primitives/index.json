@@ -1,0 +1,216 @@
+{
+ "card-grid": {
+  "primitives/color": {
+   "cards": [
+    {
+     "title": "Color",
+     "text": "180 primitives · 66 in use",
+     "href": "./color",
+     "robot": {
+      "day": "/robots/swatch.webp",
+      "night": "/robots/swatch-dark.webp"
+     },
+     "samples": [
+      {
+       "kind": "color",
+       "value": "#4B5A6F"
+      },
+      {
+       "kind": "color",
+       "value": "#0F766E"
+      },
+      {
+       "kind": "color",
+       "value": "#6D28D9"
+      },
+      {
+       "kind": "color",
+       "value": "#C2410C"
+      },
+      {
+       "kind": "color",
+       "value": "#1F7A3A"
+      },
+      {
+       "kind": "color",
+       "value": "#8A5600"
+      },
+      {
+       "kind": "color",
+       "value": "#C42B2B"
+      },
+      {
+       "kind": "color",
+       "value": "#0000008C"
+      }
+     ],
+     "meter": {
+      "value": 66,
+      "max": 180,
+      "label": "66 of 180 in use"
+     }
+    }
+   ]
+  },
+  "primitives/space-and-shape": {
+   "cards": [
+    {
+     "title": "Space and size",
+     "text": "14 primitives · 14 in use",
+     "href": "./space-and-size",
+     "robot": {
+      "day": "/robots/measure.webp",
+      "night": "/robots/measure-dark.webp"
+     },
+     "samples": [
+      {
+       "kind": "bar",
+       "value": "2px"
+      },
+      {
+       "kind": "bar",
+       "value": "4px"
+      },
+      {
+       "kind": "bar",
+       "value": "8px"
+      },
+      {
+       "kind": "bar",
+       "value": "12px"
+      },
+      {
+       "kind": "bar",
+       "value": "16px"
+      },
+      {
+       "kind": "bar",
+       "value": "20px"
+      },
+      {
+       "kind": "bar",
+       "value": "24px"
+      }
+     ],
+     "meter": {
+      "value": 14,
+      "max": 14,
+      "label": "14 of 14 in use"
+     }
+    },
+    {
+     "title": "Shape",
+     "text": "9 primitives · 9 in use",
+     "href": "./shape",
+     "robot": {
+      "day": "/robots/scopes/shape.webp",
+      "night": "/robots/scopes/shape-dark.webp"
+     },
+     "samples": [
+      {
+       "kind": "radius",
+       "value": "0.25rem"
+      },
+      {
+       "kind": "radius",
+       "value": "0.5rem"
+      },
+      {
+       "kind": "radius",
+       "value": "0.75rem"
+      },
+      {
+       "kind": "radius",
+       "value": "1rem"
+      }
+     ],
+     "meter": {
+      "value": 9,
+      "max": 9,
+      "label": "9 of 9 in use"
+     }
+    }
+   ]
+  },
+  "primitives/type-motion-and-effects": {
+   "cards": [
+    {
+     "title": "Type",
+     "text": "15 primitives · 15 in use",
+     "href": "./type",
+     "robot": {
+      "day": "/robots/scopes/typography.webp",
+      "night": "/robots/scopes/typography-dark.webp"
+     },
+     "samples": [
+      {
+       "kind": "font",
+       "value": "Inter, system-ui, sans-serif"
+      },
+      {
+       "kind": "font",
+       "value": "'Plus Jakarta Sans', system-ui, sans-serif"
+      },
+      {
+       "kind": "text",
+       "value": "Inter · Plus Jakarta Sans"
+      }
+     ],
+     "meter": {
+      "value": 15,
+      "max": 15,
+      "label": "15 of 15 in use"
+     }
+    },
+    {
+     "title": "Motion",
+     "text": "3 primitives · 3 in use",
+     "href": "./motion",
+     "robot": {
+      "day": "/robots/scopes/motion.webp",
+      "night": "/robots/scopes/motion-dark.webp"
+     },
+     "samples": [
+      {
+       "kind": "text",
+       "value": "200ms · 320ms"
+      }
+     ],
+     "meter": {
+      "value": 3,
+      "max": 3,
+      "label": "3 of 3 in use"
+     }
+    },
+    {
+     "title": "Effects",
+     "text": "5 primitives · 5 in use",
+     "href": "./effects",
+     "robot": {
+      "day": "/robots/scopes/elevation.webp",
+      "night": "/robots/scopes/elevation-dark.webp"
+     },
+     "samples": [
+      {
+       "kind": "shadow",
+       "value": "0px 2px 8px 0px #0F172A14"
+      },
+      {
+       "kind": "shadow",
+       "value": "0px 12px 32px 0px #0F172A29"
+      },
+      {
+       "kind": "shadow",
+       "value": "0px 2px 8px 0px #00000066"
+      }
+     ],
+     "meter": {
+      "value": 5,
+      "max": 5,
+      "label": "5 of 5 in use"
+     }
+    }
+   ]
+  }
+ }
+}

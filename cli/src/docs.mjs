@@ -398,8 +398,7 @@ function spacingMap(scheme, g) {
     chain: aliasChain,
     hints: g.scopes.find((x) => x.id === "spacing")?.hints ?? [],
   });
-  const val = (r) =>
-    `<span class="odv-ptok">${r.primitive}</span><span class="odv-kvsep">:</span><span class="odv-raw">${r.px}px</span>`;
+  const val = (r) => `\`${r.primitive}\`: ${r.px}px`;
   return (
     `\n\n## The component spacing map\n\n` +
     `Inside a component, spacing is a step of this map. Each step is 4px × its multiplier × the scheme's rhythm, rounded to a multiple of 4px, at most 64px. In ${scheme.name} the rhythm is ${sg.rhythm}. ${esc(sg.why)}\n\n` +
@@ -408,7 +407,7 @@ function spacingMap(scheme, g) {
     sg.steps
       .map(
         (x) =>
-          `| ${x.step}${x.fixed ? " (holds still)" : ""} | ${x.multiplier ? `×${x.multiplier}` : "fixed"} | \`*-map-${x.step}\` | <span class="tok">${x.token}</span> ${val(x)} |`,
+          `| ${x.step}${x.fixed ? " (holds still)" : ""} | ${x.multiplier ? `×${x.multiplier}` : "fixed"} | \`*-map-${x.step}\` | \`${x.token}\` ${val(x)} |`,
       )
       .join("\n") +
     `\n\nBetween things and on the page, use a role instead: ` +
@@ -584,7 +583,7 @@ function colorGuidance(g) {
       .filter((k) => k.id.startsWith("color.surface."))
       .map(
         (k) =>
-          `| <span class="odv-surface-swatch" style="background:var(--${cssId(k.id)})"></span> **${esc(
+          `| :sample{kind="dot" value="var(--${cssId(k.id)})"} **${esc(
             k.id
               .split(".")
               .pop()
@@ -630,6 +629,14 @@ export function docsPages(
   // without the pictures, so the package stays small.
   // An Intro composite's robot (OD-284): named in the directive, drawn in the repo docs only.
   const introRobot = (name) => (robots ? `robot="${name}" ` : "");
+  // A robot's day and night pictures, as data for a card (OD-284).
+  const robotPics = (name) =>
+    robots
+      ? {
+          day: `${base}robots/${name}.webp`,
+          night: `${base}robots/${name}-dark.webp`,
+        }
+      : undefined;
   const robot = (name, cls = "") =>
     robots
       ? `<span class="odv-robot ${cls}"><img class="odv-robot-day" src="${base}robots/${name}.webp" alt="" loading="lazy"/><img class="odv-robot-night" src="${base}robots/${name}-dark.webp" alt="" loading="lazy"/></span>`
@@ -729,10 +736,6 @@ export function docsPages(
     colorBrands.length === 1
       ? fn(colorBrands[0])
       : colorBrands.map((b) => brandSet(b, fn(b))).join("\n\n");
-  const panelStyle = (b, m) =>
-    `background:${at(b, m, "color.surface.canvas")?.hex};color:${at(b, m, "color.text.primary")?.hex};--odv-muted:${at(b, m, "color.text.muted")?.hex};--odv-edge:${at(b, m, "color.border.default")?.hex}`;
-  const tabs = (modes) =>
-    `<div class="odv-scale-tabs" role="tablist">${modes.map((m, i) => `<button type="button" role="tab" data-mode="${m}" aria-selected="${i === 0}">${cap(m)} theme</button>`).join("")}</div>`;
   const cap = (x) => x.charAt(0).toUpperCase() + x.slice(1);
   const pairsPicture = () => {
     const tones = g.semantics?.tones;
@@ -740,50 +743,83 @@ export function docsPages(
     const fills = tones.fills.map((f) => f.id);
     const own =
       /^color\.surface\.(canvas|default|raised|sunken|highlight|pressed|selected)$/;
-    const panel = (b, m) => {
+    // One mode's pairs as facts (OD-284): each fill, its primitive and value, and every text that may
+    // sit on it with the contrast it keeps and its floor. PairsChart draws them.
+    const mode = (b, m) => {
       const th = scheme.tokens.brands[b].theme;
       const byFill = {};
       for (const p of pairsIn(g, scheme, b, m))
         if (p.key.startsWith("color.text.")) (byFill[p.on] ??= []).push(p);
       const pageTone = toneOf(th, m, "color.surface.canvas")?.tone;
-      const tile = (fill) => {
+      const fillOf = (fill) => {
         const bg = at(b, m, fill);
-        if (!bg) return "";
-        const lines = (byFill[fill] ?? [])
-          .map((p) => {
-            const t = at(b, m, p.key);
-            if (!t) return "";
-            const cr = contrast(t.hex, bg.hex);
-            return `<div class="odv-pr"><span class="odv-pr-aa" style="color:${t.hex}">Aa</span><span class="odv-pr-k" style="color:${t.hex}">${short(p.key)}<small>${t.prim}</small></span><span class="odv-pr-c${cr >= p.contrast ? "" : " no"}" style="color:${t.hex}">${cr.toFixed(1)}:1</span></div>`;
-          })
-          .join("");
-        const first = (byFill[fill] ?? [])[0];
-        return `<div class="odv-tile" style="background:${bg.hex}"><p class="odv-tile-h" style="color:${first ? at(b, m, first.key)?.hex : "inherit"}">${short(fill)}<small>${bg.prim}</small></p>${lines}</div>`;
+        if (!bg) return null;
+        return {
+          fill: short(fill),
+          primitive: bg.prim,
+          hex: bg.hex,
+          pairs: (byFill[fill] ?? [])
+            .map((p) => {
+              const t = at(b, m, p.key);
+              return t
+                ? {
+                    text: short(p.key),
+                    primitive: t.prim,
+                    hex: t.hex,
+                    contrast: Number(contrast(t.hex, bg.hex).toFixed(2)),
+                    floor: p.contrast,
+                  }
+                : null;
+            })
+            .filter(Boolean),
+        };
       };
-      const group = (title, note, list) =>
-        list.length
-          ? `<div class="odv-pgroup"><p class="odv-lane-h">${title}</p><p class="odv-pgroup-n">${note}</p><div class="odv-tiles">${list.map(tile).join("")}</div></div>`
-          : "";
       const ownFills = fills.filter(
         (f) => own.test(f) && toneOf(th, m, f)?.tone === pageTone,
       );
       const rest = fills.filter((f) => !ownFills.includes(f));
-      return `<div class="odv-scale-p" data-mode="${m}" role="tabpanel" style="${panelStyle(b, m)}">${group("The page's own surfaces", "The page's own text sits on them: primary, secondary, muted and links.", ownFills)}${group(
-        "Light fills",
-        "Their tone is light, so the text on them is <code>text.on-light</code>, or a status's <code>-on-light</code> text.",
-        rest.filter((f) => toneOf(th, m, f)?.tone === "light"),
-      )}${group(
-        "Dark fills",
-        "Their tone is dark, so the text on them is <code>text.on-dark</code>, or a status's <code>-on-dark</code> text.",
-        rest.filter((f) => toneOf(th, m, f)?.tone === "dark"),
-      )}</div>`;
+      const groups = [
+        [
+          "The page's own surfaces",
+          "The page's own text sits on them: primary, secondary, muted and links.",
+          ownFills,
+        ],
+        [
+          "Light fills",
+          "Their tone is light, so the text on them is text.on-light, or a status's -on-light text.",
+          rest.filter((f) => toneOf(th, m, f)?.tone === "light"),
+        ],
+        [
+          "Dark fills",
+          "Their tone is dark, so the text on them is text.on-dark, or a status's -on-dark text.",
+          rest.filter((f) => toneOf(th, m, f)?.tone === "dark"),
+        ],
+      ]
+        .map(([title, note, list]) => ({
+          title,
+          note,
+          fills: list.map(fillOf).filter(Boolean),
+        }))
+        .filter((x) => x.fills.length);
+      return {
+        mode: m,
+        page: {
+          canvas: at(b, m, "color.surface.canvas")?.hex,
+          text: at(b, m, "color.text.primary")?.hex,
+          muted: at(b, m, "color.text.muted")?.hex,
+          edge: at(b, m, "color.border.default")?.hex,
+        },
+        groups,
+      };
     };
     return (
       `\n## Pairs at a glance\n\nWhich text may sit on which fill, and the contrast it keeps there. Each fill is shown in its own color, with every text that may sit on it. Fills are grouped by their tone in each mode: light fills take \`color.text.on-light\`, dark fills take \`color.text.on-dark\`. The harness checks every pair.\n\n` +
-      forBrands(
-        (b) =>
-          `<div class="odv-scale" data-scale>${tabs(["light", "dark"])}${["light", "dark"].map((m) => panel(b, m)).join("")}</div>`,
-      ) +
+      forBrands((b) => {
+        (compositeData["pairs-chart"] ??= {})[b] = {
+          modes: ["light", "dark"].map((m) => mode(b, m)),
+        };
+        return `::pairs-chart{id="${b}"}`;
+      }) +
       "\n"
     );
   };
@@ -802,6 +838,7 @@ export function docsPages(
           }))
           .filter((x) => x.l && x.d);
         const flips = rows.filter((x) => x.l.tone !== x.d.tone).length;
+        // A fill's tone in one mode: a sample of the fill with the text its tone picks, and the tone.
         const chip = (m, t, id) => {
           const bg = at(b, m, id);
           const fg = at(
@@ -809,9 +846,18 @@ export function docsPages(
             m,
             t.tone === "light" ? "color.text.on-light" : "color.text.on-dark",
           );
-          return `<span class="odv-tchip" style="background:${bg?.hex};color:${fg?.hex}"><b>Aa</b>${t.tone}${t.waits ? ` · waits for ${attr(t.waits.for)}` : ""}</span>`;
+          return `${draw("tone", bg?.hex ?? "", ` ink="${fg?.hex ?? ""}"`)} ${t.tone}${t.waits ? ` · waits for ${esc(t.waits.for)}` : ""}`;
         };
-        return `<p class="odv-tsum">${flips === rows.length ? `Every fill changes tone between light and dark mode.` : `${flips} of ${rows.length} fills change tone between light and dark mode.`}</p><div class="odv-trows"><div class="odv-trow odv-trow-h"><span>Fill</span><span>Light mode</span><span>Dark mode</span></div>${rows.map((x) => `<div class="odv-trow"><code>${short(x.id)}</code>${chip("light", x.l, x.id)}${chip("dark", x.d, x.id)}</div>`).join("")}</div>`;
+        return (
+          `${flips === rows.length ? `Every fill changes tone between light and dark mode.` : `${flips} of ${rows.length} fills change tone between light and dark mode.`}\n\n` +
+          `| Fill | Light mode | Dark mode |\n| --- | --- | --- |\n` +
+          rows
+            .map(
+              (x) =>
+                `| \`${short(x.id)}\` | ${chip("light", x.l, x.id)} | ${chip("dark", x.d, x.id)} |`,
+            )
+            .join("\n")
+        );
       }) +
       "\n"
     );
@@ -841,220 +887,157 @@ export function docsPages(
     .slice(0, 3)
     .map(([q]) => q);
   const primCount = leaves(primitiveTree, "").length;
-  const tableHtml = smp.table
-    ? h(
-        `<div class="odv-app"><div class="odv-app-bar"><b>${attr(smp.table.caption)}</b>`,
-        smp.actions
-          ? `<span class="odv-btn secondary">${attr(smp.actions.secondary)}</span><span class="odv-btn primary">${attr(smp.actions.primary)}</span>`
-          : "",
-        `</div><div class="odv-scroll"><table><thead><tr>`,
-        smp.table.columns.map(
-          (c) => `<th${c.numeric ? ' class="num"' : ""}>${attr(c.label)}</th>`,
-        ),
-        `</tr></thead><tbody>`,
-        smp.table.rows
-          .slice(0, 6)
-          .map(
-            (r) =>
-              `<tr>${r.cells.map((c, i) => `<td${smp.table.columns[i]?.numeric ? ' class="num"' : ""}>${attr(c)}</td>`).join("")}<td>${badgeHtml(r.status, meaning[r.status])}</td></tr>`,
-          ),
-        `</tbody></table></div></div>`,
-      )
-    : "";
-  // The hero shows the scheme's own sample screen (OD-209): a table where the scheme carries one,
-  // otherwise its sample card, in its voice, with its status, actions and figures.
+  // The hero's sample screen (OD-209, OD-284): the scheme's own sample content as data, drawn by the
+  // SampleScreen composite from its real components. Which screen fits comes from the scheme's answer to
+  // the main task (tasks.q1) and its brands: compare shows the table, read an article opening, complete a
+  // form step (or the same card in every brand), explore a launch sign-up.
+  const statusOf = (label) => ({
+    text: label,
+    tone: STATUS_CLASS[meaning[label]] ?? "neutral",
+  });
   const carriesTable = (scheme.inventory?.in ?? []).some(
     (c) => c.id === "table" || c.id === "data-table",
   );
-  const cardHtml = smp.card
-    ? h(
-        `<div class="odv-app odv-app-card"><div class="odv-app-bar"><b>${attr(smp.screen ?? "")}</b></div>`,
-        `<div class="odv-samplecard">`,
-        `<div class="odv-samplecard-head"><b>${attr(smp.card.title)}</b>${smp.card.status ? badgeHtml(smp.card.status, meaning[smp.card.status]) : ""}</div>`,
-        smp.card.description ? `<p>${attr(smp.card.description)}</p>` : "",
-        `<div class="odv-samplecard-act">`,
-        smp.card.primary
-          ? `<span class="odv-btn primary">${attr(smp.card.primary)}</span>`
-          : "",
-        smp.card.secondary
-          ? `<span class="odv-btn secondary">${attr(smp.card.secondary)}</span>`
-          : "",
-        `</div></div>`,
-        smp.metrics?.length
-          ? h(
-              `<div class="odv-samplemetrics">`,
-              smp.metrics
-                .slice(0, 4)
-                .map(
-                  (m) =>
-                    `<div><b>${attr(m.value)}</b><span>${attr(m.label)}</span></div>`,
-                ),
-              `</div>`,
-            )
-          : "",
-        `</div>`,
-      )
-    : "";
-  // Which preview fits comes from the scheme's own answer to the main task (tasks.q1) and its
-  // brands: compare shows the table, read an article opening, complete a form step (or the same card
-  // in every brand), explore a launch sign-up. Every word is the scheme's sample content.
   const task = answer("tasks.q1")?.option;
   const brandsOf = Object.keys(scheme.tokens.brands ?? {});
-  const fieldHtml = (f) =>
-    f
-      ? h(
-          `<label class="odv-samplefield"><span class="odv-samplefield-label">${attr(f.label)}</span>`,
-          f.hint
-            ? `<span class="odv-samplefield-hint">${attr(f.hint)}</span>`
-            : "",
-          `<span class="odv-samplefield-input">${attr(f.placeholder ?? "")}</span></label>`,
-        )
-      : "";
+  const tableScreen = smp.table && {
+    table: {
+      caption: smp.table.caption,
+      columns: smp.table.columns.map((c) => ({
+        label: c.label,
+        ...(c.numeric && { numeric: true }),
+      })),
+      rows: smp.table.rows
+        .slice(0, 6)
+        .map((r) => ({ cells: r.cells, status: statusOf(r.status) })),
+    },
+    ...(smp.actions && {
+      actions: {
+        primary: smp.actions.primary,
+        secondary: smp.actions.secondary,
+      },
+    }),
+  };
+  const card = smp.card ?? {};
+  const cardScreen = smp.card && {
+    screen: smp.screen,
+    title: card.title,
+    ...(card.status && { status: statusOf(card.status) }),
+    ...(card.description && { description: card.description }),
+    ...(smp.metrics?.length && {
+      metrics: smp.metrics
+        .slice(0, 4)
+        .map((m) => ({ value: m.value, label: m.label })),
+    }),
+    actions: { primary: card.primary, secondary: card.secondary },
+  };
+  const field = smp.field && {
+    label: smp.field.label,
+    hint: smp.field.hint,
+    placeholder: smp.field.placeholder,
+  };
   const previews = {
     read: () =>
-      smp.card &&
-      h(
-        `<div class="odv-preview odv-preview-read">`,
-        `<span class="odv-eyebrow">${attr(smp.card.description ?? "")}</span>`,
-        `<span class="odv-preview-headline">${attr(smp.card.title)}</span>`,
-        smp.tabs?.[0]?.content ? `<p>${attr(smp.tabs[0].content)}</p>` : "",
-        `<div class="odv-samplecard-act">`,
-        smp.card.primary
-          ? `<span class="odv-btn primary">${attr(smp.card.primary)}</span>`
-          : "",
-        smp.card.secondary
-          ? `<span class="odv-btn secondary">${attr(smp.card.secondary)}</span>`
-          : "",
-        `</div></div>`,
-      ),
+      smp.card && {
+        eyebrow: card.description,
+        title: card.title,
+        ...(smp.tabs?.[0]?.content && { body: smp.tabs[0].content }),
+        actions: { primary: card.primary, secondary: card.secondary },
+      },
     complete: () =>
-      brandList.length > 1
-        ? smp.card &&
-          h(
-            `<div class="odv-preview odv-preview-brands">`,
-            brandList.map((b) =>
-              h(
-                `<div class="odv-samplecard" data-brand="${attr(b)}">`,
-                `<span class="odv-eyebrow">${attr(scheme.tokens.brands[b]?.label ?? b)}</span>`,
-                `<div class="odv-samplecard-head"><b>${attr(smp.card.title)}</b>${smp.card.status ? badgeHtml(smp.card.status, meaning[smp.card.status]) : ""}</div>`,
-                smp.card.description
-                  ? `<p>${attr(smp.card.description)}</p>`
-                  : "",
-                smp.card.primary
-                  ? `<div class="odv-samplecard-act"><span class="odv-btn primary">${attr(smp.card.primary)}</span></div>`
-                  : "",
-                `</div>`,
-              ),
-            ),
-            `</div>`,
-          )
-        : smp.card &&
-          h(
-            `<div class="odv-app odv-preview-step"><div class="odv-app-bar"><b>${attr(smp.screen ?? "")}</b></div><div class="odv-preview-body">`,
-            `<span class="odv-eyebrow">${attr(smp.card.title)}</span>`,
-            fieldHtml(smp.field),
-            `<div class="odv-samplecard-act">`,
-            smp.card.primary
-              ? `<span class="odv-btn primary">${attr(smp.card.primary)}</span>`
-              : "",
-            `</div>`,
-            smp.card.secondary
-              ? `<span class="odv-preview-link">${attr(smp.card.secondary)}</span>`
-              : "",
-            `</div></div>`,
-          ),
-    explore: () =>
-      h(
-        `<div class="odv-preview odv-preview-launch">`,
-        `<span class="odv-preview-headline">${attr(smp.screen ?? "")}</span>`,
-        smp.metrics?.length
-          ? h(
-              `<div class="odv-preview-count">`,
-              smp.metrics
-                .slice(0, 2)
-                .map(
-                  (m) =>
-                    `<div><b>${attr(m.value)}</b><span>${attr(m.label)}</span></div>`,
-                ),
-              `</div>`,
-            )
-          : "",
-        fieldHtml(smp.field),
-        smp.actions?.primary
-          ? `<div class="odv-samplecard-act"><span class="odv-btn primary">${attr(smp.actions.primary)}</span></div>`
-          : "",
-        `</div>`,
-      ),
+      smp.card &&
+      (brandList.length > 1
+        ? {
+            brands: brandList.map((b) => scheme.tokens.brands[b]?.label ?? b),
+            title: card.title,
+            ...(card.status && { status: statusOf(card.status) }),
+            ...(card.description && { description: card.description }),
+            actions: { primary: card.primary },
+          }
+        : {
+            screen: smp.screen,
+            eyebrow: card.title,
+            ...(field && { field }),
+            actions: { primary: card.primary, link: card.secondary },
+          }),
+    explore: () => ({
+      title: smp.screen,
+      ...(smp.metrics?.length && {
+        metrics: smp.metrics
+          .slice(0, 2)
+          .map((m) => ({ value: m.value, label: m.label })),
+      }),
+      ...(field && { field }),
+      ...(smp.actions?.primary && {
+        actions: { primary: smp.actions.primary },
+      }),
+    }),
   };
   const heroSample =
-    (task === "compare" || carriesTable) && tableHtml
-      ? tableHtml
-      : previews[task]?.() || cardHtml || tableHtml;
+    (task === "compare" || carriesTable) && tableScreen
+      ? tableScreen
+      : previews[task]?.() || cardScreen || tableScreen;
   const firstRamp = leaves(primitiveTree, "")
     .filter((x) => x.path.startsWith(".color.") && /^#/.test(String(x.ref)))
     .slice(0, 12);
+  // The tiles into every section (OD-284: CardGrid cards, each with a few samples).
   const tiles = [
-    [
-      "primitives/index.md",
-      "Primitives",
-      `All ${primCount} raw values, and the tokens that point to each.`,
-      `<span class="odv-strip">${firstRamp.map((x) => `<span style="background:${x.ref}"></span>`).join("")}</span>`,
-    ],
-    [
-      "foundations/index.md",
-      "Foundations",
-      "Color, type, spacing, shape and motion, each with the answer behind it.",
-      h(
-        [
+    {
+      href: "primitives/",
+      title: "Primitives",
+      text: `All ${primCount} raw values, and the tokens that point to each.`,
+      samples: firstRamp.map((x) => ({ kind: "color", value: String(x.ref) })),
+    },
+    {
+      href: "foundations/",
+      title: "Foundations",
+      text: "Color, type, spacing, shape and motion, each with the answer behind it.",
+      samples: [
+        ...[
           "color.action.primary",
           "color.status.success",
           "color.status.warning",
           "color.status.danger",
           "color.status.info",
           "color.text.primary",
-        ].map(
-          (p) =>
-            `<span class="odv-dot" style="background:${cssVar(p)}"></span>`,
-        ),
-        `<span class="odv-aa">Aa</span>`,
-      ),
-    ],
-    [
-      "components/inventory.md",
-      "Components",
-      `${(scheme.inventory?.in ?? []).length} components, each with when to use it and how ${attr(scheme.name)} decided.`,
-      h(
-        smp.actions
-          ? `<span class="odv-btn primary">${attr(smp.actions.primary)}</span>`
-          : "",
-        (smp.statuses ?? [])[2]
-          ? badgeHtml(smp.statuses[2].label, smp.statuses[2].meaning)
-          : "",
-      ),
-    ],
-    [
-      "voice.md",
-      "Voice and tone",
-      attr(scheme.voice?.summary?.text ?? ""),
-      `<span style="font-weight:600">${attr(scheme.voice?.principles?.[0]?.text ?? "")}</span>`,
-    ],
-    [
-      "themes.md",
-      "Themes",
-      `${scheme.themes.length} themes. Only semantic tokens change; components never do.`,
-      scheme.themes
-        .map(
-          (th) =>
-            `<span class="odv-dot" style="width:34px;height:34px;background:${value(th, "color.surface.canvas", "")}" title="${attr(th.id)}"></span>`,
-        )
-        .join(""),
-    ],
-    [
-      "agents.md",
-      "For agents",
-      "AGENTS.md, the skill and the MCP: an AI builds the way the system would.",
-      `<code>open-ds why ${scheme.id} button</code>`,
-    ],
+        ].map((p) => ({ kind: "color", value: cssVar(p) })),
+        { kind: "text", value: "Aa" },
+      ],
+    },
+    {
+      href: "components/inventory",
+      title: "Components",
+      text: `${(scheme.inventory?.in ?? []).length} components, each with when to use it and how ${scheme.name} decided.`,
+      samples: [
+        ...(smp.actions ? [{ kind: "text", value: smp.actions.primary }] : []),
+        ...((smp.statuses ?? [])[2]
+          ? [{ kind: "text", value: smp.statuses[2].label }]
+          : []),
+      ],
+    },
+    {
+      href: "voice",
+      title: "Voice and tone",
+      text: scheme.voice?.summary?.text ?? "",
+      samples: [
+        { kind: "text", value: scheme.voice?.principles?.[0]?.text ?? "" },
+      ],
+    },
+    {
+      href: "themes",
+      title: "Themes",
+      text: `${scheme.themes.length} themes. Only semantic tokens change; components never do.`,
+      samples: scheme.themes.map((th) => ({
+        kind: "color",
+        value: value(th, "color.surface.canvas", ""),
+      })),
+    },
+    {
+      href: "agents",
+      title: "For agents",
+      text: "AGENTS.md, the skill and the MCP: an AI builds the way the system would.",
+      samples: [{ kind: "code", value: `open-ds why ${scheme.id} button` }],
+    },
   ];
   pages["index.md"] =
     fm({
@@ -1066,16 +1049,15 @@ export function docsPages(
       hide_table_of_contents: true,
     }) +
     NOTE +
-    h(
-      `<div class="odv-hero"><div>`,
-      robot(scheme.id, "odv-hero-robot"),
-      `<div class="odv-eyebrow">Design system · built from ${scheme.answers.length} answered questions</div>`,
-      `<h1>${attr(scheme.name)}</h1><p class="odv-lede">${attr(scheme.summary)}</p>`,
-      // The scheme's entry point has one way forward; Storybook is on every component page.
-      `<div class="odv-cta"><a class="odv-btn primary" href="foundations/">Explore the foundations</a></div>`,
-      `<div class="odv-facts"><div><b>${(scheme.inventory?.in ?? []).length}</b><span>components</span></div><div><b>${primCount}</b><span>primitives</span></div><div><b>${scheme.themes.length}</b><span>themes</span></div></div>`,
-      `</div>${heroSample}</div>`,
-    ) +
+    // The opening (OD-284): the scheme's name and summary in Markdown inside a Hero, then its sample screen.
+    `:::hero{${introRobot(scheme.id)}eyebrow="Design system · built from ${scheme.answers.length} answered questions" action="Explore the foundations" href="foundations/" stats="${(scheme.inventory?.in ?? []).length} components|${primCount} primitives|${scheme.themes.length} themes"}\n` +
+    `# ${esc(scheme.name)}\n\n${esc(scheme.summary)}\n:::` +
+    (heroSample
+      ? `\n\n${(() => {
+          (compositeData["sample-screen"] ??= {}).home = heroSample;
+          return `::sample-screen{id="home"}`;
+        })()}`
+      : "") +
     `\n\n## Why it looks like this\n\nEvery decision follows from an answer. These are the answers its components and rules cite most. Follow them all in the [Decision reference](decision-reference).\n\n` +
     cardGrid(
       "home/answers",
@@ -1087,14 +1069,7 @@ export function docsPages(
       })),
     ) +
     `\n\n## Explore the system\n\n` +
-    h(
-      `<div class="odv-grid">`,
-      tiles.map(
-        ([href, name, text, art]) =>
-          `<a class="odv-card odv-tile" href="${href.replace(/\.md$/, "").replace(/index$/, "")}"><div class="art">${art}</div><div class="body"><b>${name}</b><span>${text}</span></div></a>`,
-      ),
-      `</div>`,
-    ) +
+    cardGrid("home/sections", tiles) +
     `\n\n## Who it is for\n\n` +
     `- **Use it for:** ${scheme.ai.use_when}\n- **Not for:** ${scheme.ai.avoid_when}\n- **Products like:** ${scheme.ai.example_products.join(", ")}\n- **Themes:** ${scheme.themes.map((t) => t.id).join(", ")}\n\n` +
     `## Use scenarios\n\n${scheme.scenarios.map((s) => `- ${s.text}`).join("\n")}\n\n` +
@@ -1411,20 +1386,59 @@ export function docsPages(
     spacing: "measure",
     components: "shelf",
   };
-  const scopeRobot = (id) => robot(SCOPE_ROBOT[id] ?? `scopes/${id}`);
+  const scopeRobot = (id) => robotPics(SCOPE_ROBOT[id] ?? `scopes/${id}`);
+  // Each scope card's few samples, as kind and value (OD-284); a scope with no value to draw shows a line.
+  const vars = (list, kind) =>
+    list.map((v) => ({ kind, value: `var(--${v})` }));
   const scopeSpecimen = {
-    typography: `<div class="odv-spec"><span style="font-size:var(--type-title-font-size);font-family:var(--type-display-font-family)">Aa</span><span style="font-size:var(--type-body-font-size)">Aa</span><span style="font-size:var(--type-caption-font-size)">Aa</span></div>`,
-    color: `<div class="odv-spec">${["color-action-primary", "color-text-primary", "color-text-secondary", "color-border-default", "color-status-danger", "color-status-success"].map((v) => `<i class="odv-sw" style="background:var(--${v})"></i>`).join("")}</div>`,
-    spacing: `<div class="odv-spec odv-spec-bars">${["space-gap-tight", "space-gap-default", "space-gap-group", "space-gap-section"].map((v) => `<i style="width:var(--${v})"></i>`).join("")}</div>`,
-    shape: `<div class="odv-spec">${["radius-badge", "radius-option", "radius-control", "radius-container"].map((v) => `<i class="odv-shape" style="border-radius:var(--${v})"></i>`).join("")}</div>`,
-    elevation: `<div class="odv-spec">${["elevation-card", "elevation-overlay"].map((v) => `<i class="odv-lift" style="box-shadow:var(--${v})"></i>`).join("")}</div>`,
-    motion: `<div class="odv-spec"><i class="odv-dot"></i></div>`,
-    iconography: `<div class="odv-spec"><span class="odv-iconlabel">&#9888;&#xFE0E; ${attr(scheme.tokens.content?.action?.destroy?.$value ?? "Delete")}</span></div>`,
-    theming: `<div class="odv-spec"><i class="odv-mode odv-mode-light"></i><i class="odv-mode odv-mode-dark"></i></div>`,
-    accessibility: `<div class="odv-spec"><i class="odv-target"></i></div>`,
-    naming: `<div class="odv-spec"><code>button/primary/background</code></div>`,
-    voice: `<div class="odv-spec"><span class="odv-quote">${attr(scheme.tokens.content?.action?.commit?.$value ?? "Save")}</span></div>`,
-    components: `<div class="odv-spec"><b class="odv-count">${(scheme.inventory?.in ?? []).length}</b><span>of ${g.catalogue?.items?.length ?? 0} in the catalogue</span></div>`,
+    typography: vars(
+      ["type-title-font-size", "type-body-font-size", "type-caption-font-size"],
+      "size",
+    ),
+    color: vars(
+      [
+        "color-action-primary",
+        "color-text-primary",
+        "color-text-secondary",
+        "color-border-default",
+        "color-status-danger",
+        "color-status-success",
+      ],
+      "color",
+    ),
+    spacing: vars(
+      [
+        "space-gap-tight",
+        "space-gap-default",
+        "space-gap-group",
+        "space-gap-section",
+      ],
+      "bar",
+    ),
+    shape: vars(
+      ["radius-badge", "radius-option", "radius-control", "radius-container"],
+      "radius",
+    ),
+    elevation: vars(["elevation-card", "elevation-overlay"], "shadow"),
+    iconography: [
+      {
+        kind: "text",
+        value: `⚠︎ ${scheme.tokens.content?.action?.destroy?.$value ?? "Delete"}`,
+      },
+    ],
+    naming: [{ kind: "code", value: "button/primary/background" }],
+    voice: [
+      {
+        kind: "text",
+        value: scheme.tokens.content?.action?.commit?.$value ?? "Save",
+      },
+    ],
+    components: [
+      {
+        kind: "text",
+        value: `${(scheme.inventory?.in ?? []).length} of ${g.catalogue?.items?.length ?? 0} in the catalogue`,
+      },
+    ],
   };
   const SCOPE_GROUPS = [
     ["How it looks", ["typography", "color", "shape", "elevation"]],
@@ -1441,18 +1455,17 @@ export function docsPages(
   const rest = g.scopes.filter((sc) => !grouped.has(sc.id)).map((sc) => sc.id);
   const scopeCard = (id) => {
     const sc = g.scopes.find((x) => x.id === id);
-    if (!sc) return "";
+    if (!sc) return null;
     const q =
       sc.questions.find((x) => x.method === "values") ?? sc.questions[3];
-    return h(
-      `<a class="odv-scard" href="./${sc.id}">`,
-      robots ? `<span class="odv-scard-art">${scopeRobot(sc.id)}</span>` : "",
-      `<span class="odv-scard-body"><span class="odv-scard-title">${attr(sc.title)}</span>`,
-      `<span class="odv-scard-ans"><small>Values</small>${attr(label(q.id))}</span>`,
-      `<span class="odv-scard-why">${attr(answer(q.id).why)}</span>`,
-      scopeSpecimen[sc.id] ?? "",
-      `</span></a>`,
-    );
+    return {
+      title: sc.title,
+      answer: { label: "Values", text: label(q.id) },
+      text: answer(q.id).why,
+      href: `./${sc.id}`,
+      ...(robots && { robot: scopeRobot(sc.id) }),
+      ...(scopeSpecimen[sc.id] && { samples: scopeSpecimen[sc.id] }),
+    };
   };
   pages["foundations/index.md"] =
     fm({
@@ -1466,7 +1479,10 @@ export function docsPages(
       .map(
         ([title, ids]) =>
           `## ${title}\n\n` +
-          h(`<div class="odv-scards">`, ids.map(scopeCard), `</div>`),
+          cardGrid(
+            `scopes/${cssId(title)}`,
+            ids.map(scopeCard).filter(Boolean),
+          ),
       )
       .join("\n\n") +
     "\n";
@@ -1484,20 +1500,14 @@ export function docsPages(
     const hex = (th, p) =>
       String(value(th, p, "")).match(/#[0-9a-f]{6,8}/i)?.[0] ?? "";
     const stack = (th) => {
-      const [cv, df, sk, tx, bd] = [
+      const [canvas, surface, sunken, text, border] = [
         "color.surface.canvas",
         "color.surface.default",
         "color.surface.sunken",
         "color.text.primary",
         "color.border.default",
       ].map((p) => hex(th, p));
-      return h(
-        `<div class="odv-stack" style="background:${cv};color:${tx};border-color:${bd}">`,
-        `<div style="inset:12px 12px auto 12px;border:0;background:none"><b>${attr(th.id)}</b></div>`,
-        `<div style="inset:44px 16px 16px 16px;background:${df};border-color:${bd}"><b>Default</b><code>surface.default</code></div>`,
-        `<div style="inset:104px 44px 36px 44px;background:${sk};border-color:${bd}"><b>Sunken</b><code>surface.sunken</code></div>`,
-        `</div>`,
-      );
+      return { theme: th.id, canvas, surface, sunken, text, border };
     };
     const sts = (smp.statuses ?? []).filter(
       (x, j, all) =>
@@ -1514,13 +1524,13 @@ export function docsPages(
         }),
       ) +
       `\n\n## Surfaces\n\nThe canvas, then the surfaces content sits on, in ${scheme.themes.map((th) => th.id).join(" and ")}.\n\n` +
-      perBrand((F, D) =>
-        h(
-          `<div class="odv-grid two">`,
-          [F, D].filter(Boolean).map(stack),
-          `</div>`,
-        ),
-      ) +
+      perBrand((F, D) => {
+        const id = F.brand ?? "all";
+        (compositeData["surface-stack"] ??= {})[id] = {
+          themes: [F, D].filter(Boolean).map(stack),
+        };
+        return `::surface-stack{id="${id}"}`;
+      }) +
       (sts.length
         ? `\n\n## Status colors in use\n\nEach status label always gets the same color, with its dot, so color is never the only cue. The ratio is the status color on its subtle fill, computed from the tokens.\n\n` +
           perBrand((F, D) =>
@@ -1648,7 +1658,7 @@ export function docsPages(
           ? (follow(scheme.tokens, b, th.mode, p) ??
             follow(scheme.tokens, b, th.mode, `${p}.@`))
           : null;
-        if (!f) return `<code>${attr(value(th, p, ""))}</code>`;
+        if (!f) return `\`${value(th, p, "")}\``;
         const hx = String(
           f.prim.split(".").reduce((n, k) => n && n[k], scheme.tokens.primitive)
             ?.$value ?? "",
@@ -1907,6 +1917,7 @@ export function docsPages(
     const m = String(v).match(/^([\d.]+)(rem|px)$/);
     return m ? Number(m[1]) * (m[2] === "rem" ? 16 : 1) : NaN;
   };
+  // Each primitive card's few samples, as kind and value (OD-284).
   const primSpecimen = (k) => {
     const used = k.list.filter((x) => usedBy[x.path]);
     const pick = used.length ? used : k.list;
@@ -1922,73 +1933,73 @@ export function docsPages(
         if (!best || Math.abs(step - 600) < Math.abs(best.step - 600))
           hues[hue] = { ...x, step };
       }
-      const sws = Object.values(hues);
-      return `<div class="odv-spec">${sws
+      return Object.values(hues)
         .slice(0, 8)
-        .map(
-          (x) =>
-            `<i class="odv-sw" style="background:${x.ref}" title="${attr(x.path)}"></i>`,
-        )
-        .join("")}</div>`;
+        .map((x) => ({ kind: "color", value: String(x.ref) }));
     }
-    if (k.id === "space-and-size") {
-      const px = [...new Set(pick.map((x) => rem(x.ref)).filter((n) => n > 0))]
+    if (k.id === "space-and-size")
+      return [...new Set(pick.map((x) => rem(x.ref)).filter((n) => n > 0))]
         .sort((a, b) => a - b)
-        .slice(0, 7);
-      const top = Math.max(...px);
-      return `<div class="odv-spec odv-spec-cols">${px.map((n) => `<i style="height:${Math.max(3, Math.round((n / top) * 30))}px" title="${n}px"></i>`).join("")}</div>`;
-    }
-    if (k.id === "shape") {
-      const rs = [
+        .slice(0, 7)
+        .map((n) => ({ kind: "bar", value: `${n}px` }));
+    if (k.id === "shape")
+      return [
         ...new Set(
           pick
             .filter((x) => x.path.startsWith("radius."))
             .map((x) => String(x.ref))
             .filter((v) => rem(v) < 999),
         ),
-      ].slice(0, 4);
-      return `<div class="odv-spec">${rs.map((v) => `<i class="odv-shape" style="border-radius:${v}" title="${attr(v)}"></i>`).join("")}</div>`;
-    }
+      ]
+        .slice(0, 4)
+        .map((v) => ({ kind: "radius", value: v }));
     if (k.id === "type") {
       const fams = pick
         .filter((x) => x.path.startsWith("font.family."))
         .slice(0, 2);
-      return `<div class="odv-spec">${fams
-        .map(
-          (x) =>
-            `<span class="odv-aa" style="font-family:${attr(cssValue(x.ref))}" title="${attr(x.path)}">Aa</span>`,
-        )
-        .join(
-          "",
-        )}<span class="odv-spec-note">${fams.map((x) => attr(String(cssValue(x.ref)).split(",")[0].replaceAll('"', ""))).join(" · ")}</span></div>`;
+      return [
+        ...fams.map((x) => ({
+          kind: "font",
+          value: String(cssValue(x.ref)).replace(/"/g, "'"),
+        })),
+        {
+          kind: "text",
+          value: fams
+            .map((x) =>
+              String(cssValue(x.ref)).split(",")[0].replaceAll('"', ""),
+            )
+            .join(" · "),
+        },
+      ];
     }
     if (k.id === "motion") {
       const ds = pick
         .filter((x) => x.path.startsWith("duration."))
         .map((x) => String(x.ref));
-      return `<div class="odv-spec"><i class="odv-dot"></i><span class="odv-spec-note">${ds.slice(0, 3).map(attr).join(" · ")}</span></div>`;
+      return [{ kind: "text", value: ds.slice(0, 3).join(" · ") }];
     }
-    if (k.id === "effects") {
-      const sh = pick
+    if (k.id === "effects")
+      return pick
         .filter((x) => x.path.startsWith("shadow.") && !/none/.test(x.path))
-        .slice(0, 3);
-      return `<div class="odv-spec odv-spec-lift">${sh.map((x) => `<i class="odv-lift" style="box-shadow:${attr(cssValue(x.ref))}" title="${attr(x.path)}"></i>`).join("")}</div>`;
-    }
-    return "";
+        .slice(0, 3)
+        .map((x) => ({ kind: "shadow", value: String(cssValue(x.ref)) }));
+    return [];
   };
   const primCard = (k) => {
     const n = k.list.filter((x) => usedBy[x.path]).length;
-    return h(
-      `<a class="odv-scard" href="./${k.id}">`,
-      robots
-        ? `<span class="odv-scard-art">${robot(PRIM_ROBOT[k.id] ?? PRIM_ROBOT.other)}</span>`
-        : "",
-      `<span class="odv-scard-body"><span class="odv-scard-title">${attr(k.title)}</span>`,
-      primSpecimen(k),
-      `<span class="odv-scard-why">${k.list.length} primitives · ${n} in use</span>`,
-      `<span class="odv-meter" role="img" aria-label="${n} of ${k.list.length} in use"><i style="width:${Math.round((n / k.list.length) * 100)}%"></i></span>`,
-      `</span></a>`,
-    );
+    const samples = primSpecimen(k);
+    return {
+      title: k.title,
+      text: `${k.list.length} primitives · ${n} in use`,
+      href: `./${k.id}`,
+      ...(robots && { robot: robotPics(PRIM_ROBOT[k.id] ?? PRIM_ROBOT.other) }),
+      ...(samples.length && { samples }),
+      meter: {
+        value: n,
+        max: k.list.length,
+        label: `${n} of ${k.list.length} in use`,
+      },
+    };
   };
   const primGrouped = new Set(PRIM_GROUPS.flatMap(([, ids]) => ids));
   const primRest = kinds.filter((k) => !primGrouped.has(k.id)).map((k) => k.id);
@@ -2010,7 +2021,7 @@ export function docsPages(
           .filter(Boolean);
         return cards.length
           ? `## ${t}\n\n` +
-              h(`<div class="odv-scards">`, cards.map(primCard), `</div>`)
+              cardGrid(`primitives/${cssId(t)}`, cards.map(primCard))
           : "";
       })
       .filter(Boolean)
@@ -3111,6 +3122,9 @@ export function docsPages(
     "anatomy-drawing": "id",
     "color-scale": "id",
     "mode-preview": "id",
+    "pairs-chart": "id",
+    "surface-stack": "id",
+    "sample-screen": "id",
   };
   for (const [p, text] of Object.entries(pages)) {
     if (!p.endsWith(".md")) continue;

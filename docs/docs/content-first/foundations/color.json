@@ -82,5 +82,1169 @@
     }
    ]
   }
+ },
+ "surface-stack": {
+  "default": {
+   "themes": [
+    {
+     "theme": "light",
+     "canvas": "#FFFDF8",
+     "surface": "#FFFFFF",
+     "sunken": "#F6F2EA",
+     "text": "#1F1B16",
+     "border": "#E4DDD0"
+    },
+    {
+     "theme": "dark",
+     "canvas": "#14110D",
+     "surface": "#1F1B16",
+     "sunken": "#2E2A24",
+     "text": "#FFFDF8",
+     "border": "#4A4339"
+    }
+   ]
+  }
+ },
+ "pairs-chart": {
+  "default": {
+   "modes": [
+    {
+     "mode": "light",
+     "page": {
+      "canvas": "#FFFDF8",
+      "text": "#1F1B16",
+      "muted": "#61594D",
+      "edge": "#E4DDD0"
+     },
+     "groups": [
+      {
+       "title": "The page's own surfaces",
+       "note": "The page's own text sits on them: primary, secondary, muted and links.",
+       "fills": [
+        {
+         "fill": "surface.canvas",
+         "primitive": "stone.light.50",
+         "hex": "#FFFDF8",
+         "pairs": [
+          {
+           "text": "text.primary",
+           "primitive": "stone.light.900",
+           "hex": "#1F1B16",
+           "contrast": 16.84,
+           "floor": 4.5
+          },
+          {
+           "text": "text.secondary",
+           "primitive": "stone.light.700",
+           "hex": "#4A4339",
+           "contrast": 9.59,
+           "floor": 4.5
+          },
+          {
+           "text": "text.muted",
+           "primitive": "stone.light.600",
+           "hex": "#61594D",
+           "contrast": 6.79,
+           "floor": 4.5
+          },
+          {
+           "text": "text.on-light",
+           "primitive": "stone.light.900",
+           "hex": "#1F1B16",
+           "contrast": 16.84,
+           "floor": 4.5
+          },
+          {
+           "text": "text.link",
+           "primitive": "navy.light.700",
+           "hex": "#122948",
+           "contrast": 14.38,
+           "floor": 4.5
+          }
+         ]
+        },
+        {
+         "fill": "surface.default",
+         "primitive": "stone.light.0",
+         "hex": "#FFFFFF",
+         "pairs": [
+          {
+           "text": "text.primary",
+           "primitive": "stone.light.900",
+           "hex": "#1F1B16",
+           "contrast": 17.12,
+           "floor": 4.5
+          },
+          {
+           "text": "text.secondary",
+           "primitive": "stone.light.700",
+           "hex": "#4A4339",
+           "contrast": 9.75,
+           "floor": 4.5
+          },
+          {
+           "text": "text.muted",
+           "primitive": "stone.light.600",
+           "hex": "#61594D",
+           "contrast": 6.9,
+           "floor": 4.5
+          },
+          {
+           "text": "text.on-light",
+           "primitive": "stone.light.900",
+           "hex": "#1F1B16",
+           "contrast": 17.12,
+           "floor": 4.5
+          },
+          {
+           "text": "text.link",
+           "primitive": "navy.light.700",
+           "hex": "#122948",
+           "contrast": 14.62,
+           "floor": 4.5
+          }
+         ]
+        },
+        {
+         "fill": "surface.raised",
+         "primitive": "stone.light.0",
+         "hex": "#FFFFFF",
+         "pairs": [
+          {
+           "text": "text.primary",
+           "primitive": "stone.light.900",
+           "hex": "#1F1B16",
+           "contrast": 17.12,
+           "floor": 4.5
+          },
+          {
+           "text": "text.secondary",
+           "primitive": "stone.light.700",
+           "hex": "#4A4339",
+           "contrast": 9.75,
+           "floor": 4.5
+          },
+          {
+           "text": "text.muted",
+           "primitive": "stone.light.600",
+           "hex": "#61594D",
+           "contrast": 6.9,
+           "floor": 4.5
+          },
+          {
+           "text": "text.on-light",
+           "primitive": "stone.light.900",
+           "hex": "#1F1B16",
+           "contrast": 17.12,
+           "floor": 4.5
+          },
+          {
+           "text": "text.link",
+           "primitive": "navy.light.700",
+           "hex": "#122948",
+           "contrast": 14.62,
+           "floor": 4.5
+          }
+         ]
+        },
+        {
+         "fill": "surface.sunken",
+         "primitive": "stone.light.100",
+         "hex": "#F6F2EA",
+         "pairs": [
+          {
+           "text": "text.primary",
+           "primitive": "stone.light.900",
+           "hex": "#1F1B16",
+           "contrast": 15.33,
+           "floor": 4.5
+          },
+          {
+           "text": "text.secondary",
+           "primitive": "stone.light.700",
+           "hex": "#4A4339",
+           "contrast": 8.74,
+           "floor": 4.5
+          },
+          {
+           "text": "text.muted",
+           "primitive": "stone.light.600",
+           "hex": "#61594D",
+           "contrast": 6.18,
+           "floor": 4.5
+          },
+          {
+           "text": "text.on-light",
+           "primitive": "stone.light.900",
+           "hex": "#1F1B16",
+           "contrast": 15.33,
+           "floor": 4.5
+          },
+          {
+           "text": "text.link",
+           "primitive": "navy.light.700",
+           "hex": "#122948",
+           "contrast": 13.09,
+           "floor": 4.5
+          }
+         ]
+        },
+        {
+         "fill": "surface.highlight",
+         "primitive": "stone.light.100",
+         "hex": "#F6F2EA",
+         "pairs": [
+          {
+           "text": "text.primary",
+           "primitive": "stone.light.900",
+           "hex": "#1F1B16",
+           "contrast": 15.33,
+           "floor": 4.5
+          },
+          {
+           "text": "text.secondary",
+           "primitive": "stone.light.700",
+           "hex": "#4A4339",
+           "contrast": 8.74,
+           "floor": 4.5
+          },
+          {
+           "text": "text.muted",
+           "primitive": "stone.light.600",
+           "hex": "#61594D",
+           "contrast": 6.18,
+           "floor": 4.5
+          },
+          {
+           "text": "text.on-light",
+           "primitive": "stone.light.900",
+           "hex": "#1F1B16",
+           "contrast": 15.33,
+           "floor": 4.5
+          },
+          {
+           "text": "text.link",
+           "primitive": "navy.light.700",
+           "hex": "#122948",
+           "contrast": 13.09,
+           "floor": 4.5
+          }
+         ]
+        },
+        {
+         "fill": "surface.pressed",
+         "primitive": "stone.light.200",
+         "hex": "#E4DDD0",
+         "pairs": [
+          {
+           "text": "text.primary",
+           "primitive": "stone.light.900",
+           "hex": "#1F1B16",
+           "contrast": 12.68,
+           "floor": 4.5
+          },
+          {
+           "text": "text.secondary",
+           "primitive": "stone.light.700",
+           "hex": "#4A4339",
+           "contrast": 7.22,
+           "floor": 4.5
+          },
+          {
+           "text": "text.on-light",
+           "primitive": "stone.light.900",
+           "hex": "#1F1B16",
+           "contrast": 12.68,
+           "floor": 4.5
+          }
+         ]
+        },
+        {
+         "fill": "surface.selected",
+         "primitive": "navy.light.100",
+         "hex": "#E0E9F5",
+         "pairs": [
+          {
+           "text": "text.primary",
+           "primitive": "stone.light.900",
+           "hex": "#1F1B16",
+           "contrast": 13.98,
+           "floor": 4.5
+          },
+          {
+           "text": "text.secondary",
+           "primitive": "stone.light.700",
+           "hex": "#4A4339",
+           "contrast": 7.96,
+           "floor": 4.5
+          },
+          {
+           "text": "text.muted",
+           "primitive": "stone.light.600",
+           "hex": "#61594D",
+           "contrast": 5.63,
+           "floor": 4.5
+          },
+          {
+           "text": "text.on-light",
+           "primitive": "stone.light.900",
+           "hex": "#1F1B16",
+           "contrast": 13.98,
+           "floor": 4.5
+          },
+          {
+           "text": "text.link",
+           "primitive": "navy.light.700",
+           "hex": "#122948",
+           "contrast": 11.93,
+           "floor": 4.5
+          }
+         ]
+        }
+       ]
+      },
+      {
+       "title": "Light fills",
+       "note": "Their tone is light, so the text on them is text.on-light, or a status's -on-light text.",
+       "fills": [
+        {
+         "fill": "action.secondary",
+         "primitive": "stone.light.0",
+         "hex": "#FFFFFF",
+         "pairs": [
+          {
+           "text": "text.primary",
+           "primitive": "stone.light.900",
+           "hex": "#1F1B16",
+           "contrast": 17.12,
+           "floor": 4.5
+          },
+          {
+           "text": "text.on-light",
+           "primitive": "stone.light.900",
+           "hex": "#1F1B16",
+           "contrast": 17.12,
+           "floor": 4.5
+          }
+         ]
+        },
+        {
+         "fill": "action.secondary.hover",
+         "primitive": "stone.light.100",
+         "hex": "#F6F2EA",
+         "pairs": [
+          {
+           "text": "text.primary",
+           "primitive": "stone.light.900",
+           "hex": "#1F1B16",
+           "contrast": 15.33,
+           "floor": 4.5
+          },
+          {
+           "text": "text.on-light",
+           "primitive": "stone.light.900",
+           "hex": "#1F1B16",
+           "contrast": 15.33,
+           "floor": 4.5
+          }
+         ]
+        },
+        {
+         "fill": "status.info.subtle",
+         "primitive": "blue.light.100",
+         "hex": "#D3E4FF",
+         "pairs": [
+          {
+           "text": "text.primary",
+           "primitive": "stone.light.900",
+           "hex": "#1F1B16",
+           "contrast": 13.3,
+           "floor": 4.5
+          },
+          {
+           "text": "text.on-light",
+           "primitive": "stone.light.900",
+           "hex": "#1F1B16",
+           "contrast": 13.3,
+           "floor": 4.5
+          },
+          {
+           "text": "text.info-on-light",
+           "primitive": "blue.light.800",
+           "hex": "#001A4E",
+           "contrast": 12.97,
+           "floor": 4.5
+          }
+         ]
+        },
+        {
+         "fill": "status.warning.subtle",
+         "primitive": "amber.light.100",
+         "hex": "#FEE8CF",
+         "pairs": [
+          {
+           "text": "text.primary",
+           "primitive": "stone.light.900",
+           "hex": "#1F1B16",
+           "contrast": 14.4,
+           "floor": 4.5
+          },
+          {
+           "text": "text.on-light",
+           "primitive": "stone.light.900",
+           "hex": "#1F1B16",
+           "contrast": 14.4,
+           "floor": 4.5
+          },
+          {
+           "text": "text.warning-on-light",
+           "primitive": "amber.light.800",
+           "hex": "#462A02",
+           "contrast": 11.09,
+           "floor": 4.5
+          }
+         ]
+        },
+        {
+         "fill": "status.danger.subtle",
+         "primitive": "red.light.100",
+         "hex": "#FFDBD8",
+         "pairs": [
+          {
+           "text": "text.primary",
+           "primitive": "stone.light.900",
+           "hex": "#1F1B16",
+           "contrast": 13.35,
+           "floor": 4.5
+          },
+          {
+           "text": "text.on-light",
+           "primitive": "stone.light.900",
+           "hex": "#1F1B16",
+           "contrast": 13.35,
+           "floor": 4.5
+          },
+          {
+           "text": "text.danger-on-light",
+           "primitive": "red.light.800",
+           "hex": "#6D0008",
+           "contrast": 9.9,
+           "floor": 4.5
+          }
+         ]
+        },
+        {
+         "fill": "status.success.subtle",
+         "primitive": "green.light.100",
+         "hex": "#DBF7DF",
+         "pairs": [
+          {
+           "text": "text.primary",
+           "primitive": "stone.light.900",
+           "hex": "#1F1B16",
+           "contrast": 14.99,
+           "floor": 4.5
+          },
+          {
+           "text": "text.on-light",
+           "primitive": "stone.light.900",
+           "hex": "#1F1B16",
+           "contrast": 14.99,
+           "floor": 4.5
+          },
+          {
+           "text": "text.success-on-light",
+           "primitive": "green.light.800",
+           "hex": "#023E17",
+           "contrast": 10.79,
+           "floor": 4.5
+          }
+         ]
+        }
+       ]
+      },
+      {
+       "title": "Dark fills",
+       "note": "Their tone is dark, so the text on them is text.on-dark, or a status's -on-dark text.",
+       "fills": [
+        {
+         "fill": "surface.inverse",
+         "primitive": "stone.light.900",
+         "hex": "#1F1B16",
+         "pairs": [
+          {
+           "text": "text.inverse",
+           "primitive": "stone.light.0",
+           "hex": "#FFFFFF",
+           "contrast": 17.12,
+           "floor": 4.5
+          },
+          {
+           "text": "text.on-dark",
+           "primitive": "stone.light.0",
+           "hex": "#FFFFFF",
+           "contrast": 17.12,
+           "floor": 4.5
+          }
+         ]
+        },
+        {
+         "fill": "action.primary",
+         "primitive": "navy.light.600",
+         "hex": "#1E3A5F",
+         "pairs": [
+          {
+           "text": "text.on-dark",
+           "primitive": "stone.light.0",
+           "hex": "#FFFFFF",
+           "contrast": 11.5,
+           "floor": 4.5
+          },
+          {
+           "text": "text.on-action",
+           "primitive": "stone.light.0",
+           "hex": "#FFFFFF",
+           "contrast": 11.5,
+           "floor": 4.5
+          }
+         ]
+        },
+        {
+         "fill": "action.primary.hover",
+         "primitive": "navy.light.700",
+         "hex": "#122948",
+         "pairs": [
+          {
+           "text": "text.on-dark",
+           "primitive": "stone.light.0",
+           "hex": "#FFFFFF",
+           "contrast": 14.62,
+           "floor": 4.5
+          },
+          {
+           "text": "text.on-action",
+           "primitive": "stone.light.0",
+           "hex": "#FFFFFF",
+           "contrast": 14.62,
+           "floor": 4.5
+          }
+         ]
+        },
+        {
+         "fill": "action.danger",
+         "primitive": "red.light.600",
+         "hex": "#C42B2B",
+         "pairs": [
+          {
+           "text": "text.on-dark",
+           "primitive": "stone.light.0",
+           "hex": "#FFFFFF",
+           "contrast": 5.63,
+           "floor": 4.5
+          },
+          {
+           "text": "text.on-danger",
+           "primitive": "stone.light.0",
+           "hex": "#FFFFFF",
+           "contrast": 5.63,
+           "floor": 4.5
+          }
+         ]
+        },
+        {
+         "fill": "action.danger.hover",
+         "primitive": "red.light.700",
+         "hex": "#981519",
+         "pairs": [
+          {
+           "text": "text.on-dark",
+           "primitive": "stone.light.0",
+           "hex": "#FFFFFF",
+           "contrast": 8.55,
+           "floor": 4.5
+          },
+          {
+           "text": "text.on-danger",
+           "primitive": "stone.light.0",
+           "hex": "#FFFFFF",
+           "contrast": 8.55,
+           "floor": 4.5
+          }
+         ]
+        }
+       ]
+      }
+     ]
+    },
+    {
+     "mode": "dark",
+     "page": {
+      "canvas": "#14110D",
+      "text": "#FFFDF8",
+      "muted": "#A39A8B",
+      "edge": "#4A4339"
+     },
+     "groups": [
+      {
+       "title": "The page's own surfaces",
+       "note": "The page's own text sits on them: primary, secondary, muted and links.",
+       "fills": [
+        {
+         "fill": "surface.canvas",
+         "primitive": "stone.dark.0",
+         "hex": "#14110D",
+         "pairs": [
+          {
+           "text": "text.primary",
+           "primitive": "stone.dark.900",
+           "hex": "#FFFDF8",
+           "contrast": 18.51,
+           "floor": 4.5
+          },
+          {
+           "text": "text.secondary",
+           "primitive": "stone.dark.500",
+           "hex": "#CFC6B6",
+           "contrast": 11.12,
+           "floor": 4.5
+          },
+          {
+           "text": "text.muted",
+           "primitive": "stone.dark.400",
+           "hex": "#A39A8B",
+           "contrast": 6.77,
+           "floor": 4.5
+          },
+          {
+           "text": "text.on-dark",
+           "primitive": "stone.light.0",
+           "hex": "#FFFFFF",
+           "contrast": 18.82,
+           "floor": 4.5
+          },
+          {
+           "text": "text.link",
+           "primitive": "navy.dark.700",
+           "hex": "#ACBDD5",
+           "contrast": 9.85,
+           "floor": 4.5
+          }
+         ]
+        },
+        {
+         "fill": "surface.default",
+         "primitive": "stone.dark.50",
+         "hex": "#1F1B16",
+         "pairs": [
+          {
+           "text": "text.primary",
+           "primitive": "stone.dark.900",
+           "hex": "#FFFDF8",
+           "contrast": 16.84,
+           "floor": 4.5
+          },
+          {
+           "text": "text.secondary",
+           "primitive": "stone.dark.500",
+           "hex": "#CFC6B6",
+           "contrast": 10.11,
+           "floor": 4.5
+          },
+          {
+           "text": "text.muted",
+           "primitive": "stone.dark.400",
+           "hex": "#A39A8B",
+           "contrast": 6.16,
+           "floor": 4.5
+          },
+          {
+           "text": "text.on-dark",
+           "primitive": "stone.light.0",
+           "hex": "#FFFFFF",
+           "contrast": 17.12,
+           "floor": 4.5
+          },
+          {
+           "text": "text.link",
+           "primitive": "navy.dark.700",
+           "hex": "#ACBDD5",
+           "contrast": 8.96,
+           "floor": 4.5
+          }
+         ]
+        },
+        {
+         "fill": "surface.raised",
+         "primitive": "stone.dark.50",
+         "hex": "#1F1B16",
+         "pairs": [
+          {
+           "text": "text.primary",
+           "primitive": "stone.dark.900",
+           "hex": "#FFFDF8",
+           "contrast": 16.84,
+           "floor": 4.5
+          },
+          {
+           "text": "text.secondary",
+           "primitive": "stone.dark.500",
+           "hex": "#CFC6B6",
+           "contrast": 10.11,
+           "floor": 4.5
+          },
+          {
+           "text": "text.muted",
+           "primitive": "stone.dark.400",
+           "hex": "#A39A8B",
+           "contrast": 6.16,
+           "floor": 4.5
+          },
+          {
+           "text": "text.on-dark",
+           "primitive": "stone.light.0",
+           "hex": "#FFFFFF",
+           "contrast": 17.12,
+           "floor": 4.5
+          },
+          {
+           "text": "text.link",
+           "primitive": "navy.dark.700",
+           "hex": "#ACBDD5",
+           "contrast": 8.96,
+           "floor": 4.5
+          }
+         ]
+        },
+        {
+         "fill": "surface.sunken",
+         "primitive": "stone.dark.100",
+         "hex": "#2E2A24",
+         "pairs": [
+          {
+           "text": "text.primary",
+           "primitive": "stone.dark.900",
+           "hex": "#FFFDF8",
+           "contrast": 14.03,
+           "floor": 4.5
+          },
+          {
+           "text": "text.secondary",
+           "primitive": "stone.dark.500",
+           "hex": "#CFC6B6",
+           "contrast": 8.42,
+           "floor": 4.5
+          },
+          {
+           "text": "text.muted",
+           "primitive": "stone.dark.400",
+           "hex": "#A39A8B",
+           "contrast": 5.13,
+           "floor": 4.5
+          },
+          {
+           "text": "text.on-dark",
+           "primitive": "stone.light.0",
+           "hex": "#FFFFFF",
+           "contrast": 14.26,
+           "floor": 4.5
+          },
+          {
+           "text": "text.link",
+           "primitive": "navy.dark.700",
+           "hex": "#ACBDD5",
+           "contrast": 7.46,
+           "floor": 4.5
+          }
+         ]
+        },
+        {
+         "fill": "surface.highlight",
+         "primitive": "stone.dark.100",
+         "hex": "#2E2A24",
+         "pairs": [
+          {
+           "text": "text.primary",
+           "primitive": "stone.dark.900",
+           "hex": "#FFFDF8",
+           "contrast": 14.03,
+           "floor": 4.5
+          },
+          {
+           "text": "text.secondary",
+           "primitive": "stone.dark.500",
+           "hex": "#CFC6B6",
+           "contrast": 8.42,
+           "floor": 4.5
+          },
+          {
+           "text": "text.muted",
+           "primitive": "stone.dark.400",
+           "hex": "#A39A8B",
+           "contrast": 5.13,
+           "floor": 4.5
+          },
+          {
+           "text": "text.on-dark",
+           "primitive": "stone.light.0",
+           "hex": "#FFFFFF",
+           "contrast": 14.26,
+           "floor": 4.5
+          },
+          {
+           "text": "text.link",
+           "primitive": "navy.dark.700",
+           "hex": "#ACBDD5",
+           "contrast": 7.46,
+           "floor": 4.5
+          }
+         ]
+        },
+        {
+         "fill": "surface.pressed",
+         "primitive": "stone.dark.200",
+         "hex": "#4A4339",
+         "pairs": [
+          {
+           "text": "text.primary",
+           "primitive": "stone.dark.900",
+           "hex": "#FFFDF8",
+           "contrast": 9.59,
+           "floor": 4.5
+          },
+          {
+           "text": "text.secondary",
+           "primitive": "stone.dark.500",
+           "hex": "#CFC6B6",
+           "contrast": 5.76,
+           "floor": 4.5
+          },
+          {
+           "text": "text.on-dark",
+           "primitive": "stone.light.0",
+           "hex": "#FFFFFF",
+           "contrast": 9.75,
+           "floor": 4.5
+          }
+         ]
+        },
+        {
+         "fill": "surface.selected",
+         "primitive": "navy.dark.100",
+         "hex": "#202B3B",
+         "pairs": [
+          {
+           "text": "text.primary",
+           "primitive": "stone.dark.900",
+           "hex": "#FFFDF8",
+           "contrast": 14.05,
+           "floor": 4.5
+          },
+          {
+           "text": "text.secondary",
+           "primitive": "stone.dark.500",
+           "hex": "#CFC6B6",
+           "contrast": 8.44,
+           "floor": 4.5
+          },
+          {
+           "text": "text.muted",
+           "primitive": "stone.dark.400",
+           "hex": "#A39A8B",
+           "contrast": 5.14,
+           "floor": 4.5
+          },
+          {
+           "text": "text.on-dark",
+           "primitive": "stone.light.0",
+           "hex": "#FFFFFF",
+           "contrast": 14.28,
+           "floor": 4.5
+          },
+          {
+           "text": "text.link",
+           "primitive": "navy.dark.700",
+           "hex": "#ACBDD5",
+           "contrast": 7.48,
+           "floor": 4.5
+          }
+         ]
+        }
+       ]
+      },
+      {
+       "title": "Light fills",
+       "note": "Their tone is light, so the text on them is text.on-light, or a status's -on-light text.",
+       "fills": [
+        {
+         "fill": "surface.inverse",
+         "primitive": "stone.dark.900",
+         "hex": "#FFFDF8",
+         "pairs": [
+          {
+           "text": "text.inverse",
+           "primitive": "stone.light.900",
+           "hex": "#1F1B16",
+           "contrast": 16.84,
+           "floor": 4.5
+          },
+          {
+           "text": "text.on-light",
+           "primitive": "stone.light.900",
+           "hex": "#1F1B16",
+           "contrast": 16.84,
+           "floor": 4.5
+          }
+         ]
+        },
+        {
+         "fill": "action.primary",
+         "primitive": "navy.dark.600",
+         "hex": "#8FA6C4",
+         "pairs": [
+          {
+           "text": "text.on-light",
+           "primitive": "stone.light.900",
+           "hex": "#1F1B16",
+           "contrast": 6.86,
+           "floor": 4.5
+          },
+          {
+           "text": "text.on-action",
+           "primitive": "stone.light.900",
+           "hex": "#1F1B16",
+           "contrast": 6.86,
+           "floor": 4.5
+          }
+         ]
+        },
+        {
+         "fill": "action.primary.hover",
+         "primitive": "navy.dark.700",
+         "hex": "#ACBDD5",
+         "pairs": [
+          {
+           "text": "text.on-light",
+           "primitive": "stone.light.900",
+           "hex": "#1F1B16",
+           "contrast": 8.96,
+           "floor": 4.5
+          },
+          {
+           "text": "text.on-action",
+           "primitive": "stone.light.900",
+           "hex": "#1F1B16",
+           "contrast": 8.96,
+           "floor": 4.5
+          }
+         ]
+        },
+        {
+         "fill": "action.danger",
+         "primitive": "red.dark.600",
+         "hex": "#F28B8B",
+         "pairs": [
+          {
+           "text": "text.on-light",
+           "primitive": "stone.light.900",
+           "hex": "#1F1B16",
+           "contrast": 7.21,
+           "floor": 4.5
+          },
+          {
+           "text": "text.on-danger",
+           "primitive": "stone.light.900",
+           "hex": "#1F1B16",
+           "contrast": 7.21,
+           "floor": 4.5
+          }
+         ]
+        },
+        {
+         "fill": "action.danger.hover",
+         "primitive": "red.dark.700",
+         "hex": "#FAA9A8",
+         "pairs": [
+          {
+           "text": "text.on-light",
+           "primitive": "stone.light.900",
+           "hex": "#1F1B16",
+           "contrast": 9.22,
+           "floor": 4.5
+          },
+          {
+           "text": "text.on-danger",
+           "primitive": "stone.light.900",
+           "hex": "#1F1B16",
+           "contrast": 9.22,
+           "floor": 4.5
+          }
+         ]
+        }
+       ]
+      },
+      {
+       "title": "Dark fills",
+       "note": "Their tone is dark, so the text on them is text.on-dark, or a status's -on-dark text.",
+       "fills": [
+        {
+         "fill": "action.secondary",
+         "primitive": "stone.dark.50",
+         "hex": "#1F1B16",
+         "pairs": [
+          {
+           "text": "text.primary",
+           "primitive": "stone.dark.900",
+           "hex": "#FFFDF8",
+           "contrast": 16.84,
+           "floor": 4.5
+          },
+          {
+           "text": "text.on-dark",
+           "primitive": "stone.light.0",
+           "hex": "#FFFFFF",
+           "contrast": 17.12,
+           "floor": 4.5
+          }
+         ]
+        },
+        {
+         "fill": "action.secondary.hover",
+         "primitive": "stone.dark.100",
+         "hex": "#2E2A24",
+         "pairs": [
+          {
+           "text": "text.primary",
+           "primitive": "stone.dark.900",
+           "hex": "#FFFDF8",
+           "contrast": 14.03,
+           "floor": 4.5
+          },
+          {
+           "text": "text.on-dark",
+           "primitive": "stone.light.0",
+           "hex": "#FFFFFF",
+           "contrast": 14.26,
+           "floor": 4.5
+          }
+         ]
+        },
+        {
+         "fill": "status.info.subtle",
+         "primitive": "blue.dark.100",
+         "hex": "#172C4F",
+         "pairs": [
+          {
+           "text": "text.primary",
+           "primitive": "stone.dark.900",
+           "hex": "#FFFDF8",
+           "contrast": 13.68,
+           "floor": 4.5
+          },
+          {
+           "text": "text.on-dark",
+           "primitive": "stone.light.0",
+           "hex": "#FFFFFF",
+           "contrast": 13.91,
+           "floor": 4.5
+          },
+          {
+           "text": "text.info-on-dark",
+           "primitive": "blue.light.100",
+           "hex": "#D3E4FF",
+           "contrast": 10.8,
+           "floor": 4.5
+          }
+         ]
+        },
+        {
+         "fill": "status.warning.subtle",
+         "primitive": "amber.dark.100",
+         "hex": "#402B00",
+         "pairs": [
+          {
+           "text": "text.primary",
+           "primitive": "stone.dark.900",
+           "hex": "#FFFDF8",
+           "contrast": 13.21,
+           "floor": 4.5
+          },
+          {
+           "text": "text.on-dark",
+           "primitive": "stone.light.0",
+           "hex": "#FFFFFF",
+           "contrast": 13.43,
+           "floor": 4.5
+          },
+          {
+           "text": "text.warning-on-dark",
+           "primitive": "amber.light.100",
+           "hex": "#FEE8CF",
+           "contrast": 11.29,
+           "floor": 4.5
+          }
+         ]
+        },
+        {
+         "fill": "status.danger.subtle",
+         "primitive": "red.dark.100",
+         "hex": "#4D181A",
+         "pairs": [
+          {
+           "text": "text.primary",
+           "primitive": "stone.dark.900",
+           "hex": "#FFFDF8",
+           "contrast": 14.14,
+           "floor": 4.5
+          },
+          {
+           "text": "text.on-dark",
+           "primitive": "stone.light.0",
+           "hex": "#FFFFFF",
+           "contrast": 14.37,
+           "floor": 4.5
+          },
+          {
+           "text": "text.danger-on-dark",
+           "primitive": "red.light.100",
+           "hex": "#FFDBD8",
+           "contrast": 11.21,
+           "floor": 4.5
+          }
+         ]
+        },
+        {
+         "fill": "status.success.subtle",
+         "primitive": "green.dark.100",
+         "hex": "#02351B",
+         "pairs": [
+          {
+           "text": "text.primary",
+           "primitive": "stone.dark.900",
+           "hex": "#FFFDF8",
+           "contrast": 13.52,
+           "floor": 4.5
+          },
+          {
+           "text": "text.on-dark",
+           "primitive": "stone.light.0",
+           "hex": "#FFFFFF",
+           "contrast": 13.75,
+           "floor": 4.5
+          },
+          {
+           "text": "text.success-on-dark",
+           "primitive": "green.light.100",
+           "hex": "#DBF7DF",
+           "contrast": 12.03,
+           "floor": 4.5
+          }
+         ]
+        }
+       ]
+      }
+     ]
+    }
+   ]
+  }
  }
 }

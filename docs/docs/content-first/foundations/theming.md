@@ -102,13 +102,13 @@ Content first has **2 modes** and **1 brand**. A mode swaps the colors; corners 
 
 | Job | Light | Dark |
 | --- | --- | --- |
-| `card` | <code>0px 0px 0px 0px #00000000</code> | <code>0px 0px 0px 0px #00000000</code> |
+| `card` | `0px 0px 0px 0px #00000000` | `0px 0px 0px 0px #00000000` |
 
 **Overlay · 1**
 
 | Job | Light | Dark |
 | --- | --- | --- |
-| `overlay` | <code>0px 12px 32px 0px #1F1B1629</code> | <code>0px 12px 32px 0px #00000080</code> |
+| `overlay` | `0px 12px 32px 0px #1F1B1629` | `0px 12px 32px 0px #00000080` |
 
 ### What stays the same in every mode
 

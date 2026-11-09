@@ -103,13 +103,13 @@ Multi-brand has **2 modes** and **3 brands**. A mode swaps the colors; corners a
 
 | Job | Light | Dark |
 | --- | --- | --- |
-| `card` | <code>0px 2px 8px 0px #0F172A14</code> | <code>0px 2px 8px 0px #00000066</code> |
+| `card` | `0px 2px 8px 0px #0F172A14` | `0px 2px 8px 0px #00000066` |
 
 **Overlay · 1**
 
 | Job | Light | Dark |
 | --- | --- | --- |
-| `overlay` | <code>0px 12px 32px 0px #0F172A29</code> | <code>0px 12px 32px 0px #00000080</code> |
+| `overlay` | `0px 12px 32px 0px #0F172A29` | `0px 12px 32px 0px #00000080` |
 
 ### What stays the same in every mode
 
@@ -211,13 +211,13 @@ Multi-brand has **2 modes** and **3 brands**. A mode swaps the colors; corners a
 
 | Job | Light | Dark |
 | --- | --- | --- |
-| `card` | <code>0px 2px 8px 0px #0F172A14</code> | <code>0px 2px 8px 0px #00000066</code> |
+| `card` | `0px 2px 8px 0px #0F172A14` | `0px 2px 8px 0px #00000066` |
 
 **Overlay · 1**
 
 | Job | Light | Dark |
 | --- | --- | --- |
-| `overlay` | <code>0px 12px 32px 0px #0F172A29</code> | <code>0px 12px 32px 0px #00000080</code> |
+| `overlay` | `0px 12px 32px 0px #0F172A29` | `0px 12px 32px 0px #00000080` |
 
 ### What stays the same in every mode
 
@@ -319,13 +319,13 @@ Multi-brand has **2 modes** and **3 brands**. A mode swaps the colors; corners a
 
 | Job | Light | Dark |
 | --- | --- | --- |
-| `card` | <code>0px 2px 8px 0px #0F172A14</code> | <code>0px 2px 8px 0px #00000066</code> |
+| `card` | `0px 2px 8px 0px #0F172A14` | `0px 2px 8px 0px #00000066` |
 
 **Overlay · 1**
 
 | Job | Light | Dark |
 | --- | --- | --- |
-| `overlay` | <code>0px 12px 32px 0px #0F172A29</code> | <code>0px 12px 32px 0px #00000080</code> |
+| `overlay` | `0px 12px 32px 0px #0F172A29` | `0px 12px 32px 0px #00000080` |
 
 ### What stays the same in every mode
 

@@ -18,6 +18,10 @@ const COMPOSITES = {
   "card-grid": "CardGrid",
   preview: "Preview",
   intro: "Intro",
+  hero: "Hero",
+  "sample-screen": "SampleScreen",
+  "surface-stack": "SurfaceStack",
+  "pairs-chart": "PairsChart",
   specimen: "Specimen",
   panel: "Panel",
   grid: "Grid",
@@ -38,6 +42,9 @@ const DATA_KEY = {
   "anatomy-drawing": "id",
   "color-scale": "id",
   "mode-preview": "id",
+  "pairs-chart": "id",
+  "surface-stack": "id",
+  "sample-screen": "id",
 };
 
 // One read per data file and version: a rebuild after the generator runs reads the new data.

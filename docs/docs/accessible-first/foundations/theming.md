@@ -102,13 +102,13 @@ Accessible first has **2 modes** and **1 brand**. A mode swaps the colors; corne
 
 | Job | Light | Dark |
 | --- | --- | --- |
-| `card` | <code>0px 0px 0px 0px #00000000</code> | <code>0px 0px 0px 0px #00000000</code> |
+| `card` | `0px 0px 0px 0px #00000000` | `0px 0px 0px 0px #00000000` |
 
 **Overlay · 1**
 
 | Job | Light | Dark |
 | --- | --- | --- |
-| `overlay` | <code>0px 0px 0px 0px #00000000</code> | <code>0px 0px 0px 0px #00000000</code> |
+| `overlay` | `0px 0px 0px 0px #00000000` | `0px 0px 0px 0px #00000000` |
 
 ### What stays the same in every mode
 

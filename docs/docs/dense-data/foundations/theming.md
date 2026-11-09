@@ -102,13 +102,13 @@ Dense data has **2 modes** and **1 brand**. A mode swaps the colors; corners and
 
 | Job | Light | Dark |
 | --- | --- | --- |
-| `card` | <code>0px 0px 0px 0px #00000000</code> | <code>0px 0px 0px 0px #00000000</code> |
+| `card` | `0px 0px 0px 0px #00000000` | `0px 0px 0px 0px #00000000` |
 
 **Overlay · 1**
 
 | Job | Light | Dark |
 | --- | --- | --- |
-| `overlay` | <code>0px 8px 24px 0px #0D111729</code> | <code>0px 8px 24px 0px #00000080</code> |
+| `overlay` | `0px 8px 24px 0px #0D111729` | `0px 8px 24px 0px #00000080` |
 
 ### What stays the same in every mode
 

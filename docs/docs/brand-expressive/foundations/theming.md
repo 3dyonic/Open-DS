@@ -102,13 +102,13 @@ Brand expressive has **2 modes** and **1 brand**. A mode swaps the colors; corne
 
 | Job | Light | Dark |
 | --- | --- | --- |
-| `card` | <code>0px 12px 32px 0px #1F141124</code> | <code>0px 12px 32px 0px #00000080</code> |
+| `card` | `0px 12px 32px 0px #1F141124` | `0px 12px 32px 0px #00000080` |
 
 **Overlay · 1**
 
 | Job | Light | Dark |
 | --- | --- | --- |
-| `overlay` | <code>0px 24px 48px 0px #1F141133</code> | <code>0px 24px 48px 0px #00000099</code> |
+| `overlay` | `0px 24px 48px 0px #1F141133` | `0px 24px 48px 0px #00000099` |
 
 ### What stays the same in every mode
 

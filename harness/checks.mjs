@@ -2439,8 +2439,9 @@ export const CHECKS = {
       const text = Object.values(
         docsPages(loadScheme("dense-data", roots), grammar(roots), roots, { all: true, robots: true, base: "/docs/" }),
       ).join("\n");
-      if (/src="\/robots\//.test(text) || !text.includes('src="/docs/robots/'))
-        gaps.push("robot pictures ignore the base URL");
+      // Robot pictures in the pages' data (OD-284) carry the base URL; a directive names its robot and
+      // the docs resolve it with the base URL when the page renders.
+      if (/"\/robots\//.test(text) || !text.includes('"/docs/robots/')) gaps.push("robot pictures ignore the base URL");
       if (!/<DocsLink \/>\s*$/.test(read("storybook/.storybook/component-docs.mdx")))
         gaps.push("Storybook's component page does not end with the docs link");
       const blocks = read("storybook/src/docs-blocks.tsx");
@@ -2589,10 +2590,10 @@ export const CHECKS = {
         // OD-182: the docs lead with visuals. The home shows a product screen and the answers, the
         // color page shows its colors in use, component pages show each variant live.
         const visual = [
-          ["index.md", "odv-hero"],
-          ["index.md", "odv-tile"],
+          ["index.md", ":::hero{"],
+          ["index.md", '::card-grid{id="home/sections"}'],
           ["foundations/color.md", '::specimen{id="color/key/'],
-          ["foundations/color.md", "odv-stack"],
+          ["foundations/color.md", "::surface-stack{"],
           ["primitives/color.md", "::color-scale{"],
           ["components/button.md", ":::panel{"],
           ["components/button.md", "::reason-chain{"],

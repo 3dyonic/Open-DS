@@ -1,4 +1,98 @@
 {
+ "sample-screen": {
+  "home": {
+   "table": {
+    "caption": "Drop 03 line-up",
+    "columns": [
+     {
+      "label": "Piece"
+     },
+     {
+      "label": "Color"
+     },
+     {
+      "label": "Left",
+      "numeric": true
+     },
+     {
+      "label": "Status"
+     }
+    ],
+    "rows": [
+     {
+      "cells": [
+       "Night runner jacket",
+       "Ink",
+       "40"
+      ],
+      "status": {
+       "text": "Almost gone",
+       "tone": "warning"
+      }
+     },
+     {
+      "cells": [
+       "Trail shell",
+       "Volt",
+       "220"
+      ],
+      "status": {
+       "text": "New",
+       "tone": "neutral"
+      }
+     },
+     {
+      "cells": [
+       "Studio hoodie",
+       "Chalk",
+       "180"
+      ],
+      "status": {
+       "text": "On the list",
+       "tone": "success"
+      }
+     },
+     {
+      "cells": [
+       "Drift cap",
+       "Ember",
+       "35"
+      ],
+      "status": {
+       "text": "Almost gone",
+       "tone": "warning"
+      }
+     },
+     {
+      "cells": [
+       "Loop tee",
+       "Chalk",
+       "300"
+      ],
+      "status": {
+       "text": "New",
+       "tone": "neutral"
+      }
+     },
+     {
+      "cells": [
+       "Cargo short",
+       "Ember",
+       "150"
+      ],
+      "status": {
+       "text": "On the list",
+       "tone": "success"
+      }
+     }
+    ]
+   },
+   "actions": {
+    "primary": "Join the drop",
+    "secondary": "See the line-up"
+   }
+  }
+ },
  "card-grid": {
   "home/answers": {
    "cards": [
@@ -19,6 +113,152 @@
      "title": "One per moment",
      "text": "Playful in headlines, plain in errors.",
      "code": "voice.count"
+    }
+   ]
+  },
+  "home/sections": {
+   "cards": [
+    {
+     "href": "primitives/",
+     "title": "Primitives",
+     "text": "All 179 raw values, and the tokens that point to each.",
+     "samples": [
+      {
+       "kind": "color",
+       "value": "#FFFFFF"
+      },
+      {
+       "kind": "color",
+       "value": "#FFF8F3"
+      },
+      {
+       "kind": "color",
+       "value": "#FCEFE6"
+      },
+      {
+       "kind": "color",
+       "value": "#F2DCCF"
+      },
+      {
+       "kind": "color",
+       "value": "#E2C4B3"
+      },
+      {
+       "kind": "color",
+       "value": "#B5988A"
+      },
+      {
+       "kind": "color",
+       "value": "#8A6F63"
+      },
+      {
+       "kind": "color",
+       "value": "#6B544A"
+      },
+      {
+       "kind": "color",
+       "value": "#4D3A33"
+      },
+      {
+       "kind": "color",
+       "value": "#33241F"
+      },
+      {
+       "kind": "color",
+       "value": "#1F1411"
+      },
+      {
+       "kind": "color",
+       "value": "#120B09"
+      }
+     ]
+    },
+    {
+     "href": "foundations/",
+     "title": "Foundations",
+     "text": "Color, type, spacing, shape and motion, each with the answer behind it.",
+     "samples": [
+      {
+       "kind": "color",
+       "value": "var(--color-action-primary)"
+      },
+      {
+       "kind": "color",
+       "value": "var(--color-status-success)"
+      },
+      {
+       "kind": "color",
+       "value": "var(--color-status-warning)"
+      },
+      {
+       "kind": "color",
+       "value": "var(--color-status-danger)"
+      },
+      {
+       "kind": "color",
+       "value": "var(--color-status-info)"
+      },
+      {
+       "kind": "color",
+       "value": "var(--color-text-primary)"
+      },
+      {
+       "kind": "text",
+       "value": "Aa"
+      }
+     ]
+    },
+    {
+     "href": "components/inventory",
+     "title": "Components",
+     "text": "47 components, each with when to use it and how Brand expressive decided.",
+     "samples": [
+      {
+       "kind": "text",
+       "value": "Join the drop"
+      },
+      {
+       "kind": "text",
+       "value": "Almost gone"
+      }
+     ]
+    },
+    {
+     "href": "voice",
+     "title": "Voice and tone",
+     "text": "Playful and short. Big words, few of them.",
+     "samples": [
+      {
+       "kind": "text",
+       "value": "Headlines are short and bold. Three to six words."
+      }
+     ]
+    },
+    {
+     "href": "themes",
+     "title": "Themes",
+     "text": "2 themes. Only semantic tokens change; components never do.",
+     "samples": [
+      {
+       "kind": "color",
+       "value": "#FFF8F3"
+      },
+      {
+       "kind": "color",
+       "value": "#120B09"
+      }
+     ]
+    },
+    {
+     "href": "agents",
+     "title": "For agents",
+     "text": "AGENTS.md, the skill and the MCP: an AI builds the way the system would.",
+     "samples": [
+      {
+       "kind": "code",
+       "value": "open-ds why brand-expressive button"
+      }
+     ]
     }
    ]
   }

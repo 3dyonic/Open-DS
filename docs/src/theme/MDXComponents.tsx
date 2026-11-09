@@ -5,17 +5,21 @@ import useBaseUrl from "@docusaurus/useBaseUrl";
 import AnatomyDrawing from "@open-ds/doc-composites/AnatomyDrawing";
 import BrandSet from "@open-ds/doc-composites/BrandSet";
 import CardGrid from "@open-ds/doc-composites/CardGrid";
+import Hero from "@open-ds/doc-composites/Hero";
 import Intro from "@open-ds/doc-composites/Intro";
 import ColorScale from "@open-ds/doc-composites/ColorScale";
 import Fold from "@open-ds/doc-composites/Fold";
 import Grid from "@open-ds/doc-composites/Grid";
 import Label from "@open-ds/doc-composites/Label";
 import ModePreview from "@open-ds/doc-composites/ModePreview";
+import PairsChart from "@open-ds/doc-composites/PairsChart";
 import Panel from "@open-ds/doc-composites/Panel";
 import Preview from "@open-ds/doc-composites/Preview";
 import ReasonChain from "@open-ds/doc-composites/ReasonChain";
+import SampleScreen from "@open-ds/doc-composites/SampleScreen";
 import Sample from "@open-ds/doc-composites/Sample";
 import Specimen from "@open-ds/doc-composites/Specimen";
+import SurfaceStack from "@open-ds/doc-composites/SurfaceStack";
 import TokenTable from "@open-ds/doc-composites/TokenTable";
 
 // The pages link to sections by id: a "Because" chip opens the answer card below it (#why-...).
@@ -53,6 +57,13 @@ function LinkedFold(props: React.ComponentProps<typeof Fold>) {
   return <Fold {...props} />;
 }
 
+// The home page's hero names its robot too.
+function RobotHero({ robot, ...props }: Omit<React.ComponentProps<typeof Hero>, "robot"> & { robot?: string }) {
+  const day = useBaseUrl(`/robots/${robot}.webp`);
+  const night = useBaseUrl(`/robots/${robot}-dark.webp`);
+  return <Hero {...props} robot={robot ? { day, night } : undefined} />;
+}
+
 // The composites the pages' directives name (src/remark/composites.mjs).
 export default {
   ...MDXComponents,
@@ -61,15 +72,19 @@ export default {
   BrandSet,
   CardGrid,
   ModePreview,
+  PairsChart,
   Sample,
+  SampleScreen,
   ColorScale,
   Fold: LinkedFold,
   Grid,
   Panel: LinkedPanel,
+  Hero: RobotHero,
   Intro: RobotIntro,
   Label,
   Preview,
   ReasonChain: LinkedReasonChain,
   Specimen,
+  SurfaceStack,
   TokenTable,
 };

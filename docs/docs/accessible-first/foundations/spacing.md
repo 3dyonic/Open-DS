@@ -53,14 +53,14 @@ Steps that hold still stay at 4px × their multiplier in every scheme. The hairl
 
 | Step | Multiplier | Utility | Token and value |
 | --- | --- | --- | --- |
-| hairline (holds still) | fixed | `*-map-hairline` | <span class="tok">component-spacing-map.hairline</span> <span class="odv-ptok">space.2</span><span class="odv-kvsep">:</span><span class="odv-raw">2px</span> |
-| x1 (holds still) | ×1 | `*-map-x1` | <span class="tok">component-spacing-map.x1</span> <span class="odv-ptok">space.4</span><span class="odv-kvsep">:</span><span class="odv-raw">4px</span> |
-| x2 (holds still) | ×2 | `*-map-x2` | <span class="tok">component-spacing-map.x2</span> <span class="odv-ptok">space.8</span><span class="odv-kvsep">:</span><span class="odv-raw">8px</span> |
-| x3 | ×3 | `*-map-x3` | <span class="tok">component-spacing-map.x3</span> <span class="odv-ptok">space.20</span><span class="odv-kvsep">:</span><span class="odv-raw">20px</span> |
-| x4 | ×4 | `*-map-x4` | <span class="tok">component-spacing-map.x4</span> <span class="odv-ptok">space.28</span><span class="odv-kvsep">:</span><span class="odv-raw">28px</span> |
-| x6 | ×6 | `*-map-x6` | <span class="tok">component-spacing-map.x6</span> <span class="odv-ptok">space.44</span><span class="odv-kvsep">:</span><span class="odv-raw">44px</span> |
-| x8 | ×8 | `*-map-x8` | <span class="tok">component-spacing-map.x8</span> <span class="odv-ptok">space.56</span><span class="odv-kvsep">:</span><span class="odv-raw">56px</span> |
-| x12 | ×12 | `*-map-x12` | <span class="tok">component-spacing-map.x12</span> <span class="odv-ptok">space.64</span><span class="odv-kvsep">:</span><span class="odv-raw">64px</span> |
+| hairline (holds still) | fixed | `*-map-hairline` | `component-spacing-map.hairline` `space.2`: 2px |
+| x1 (holds still) | ×1 | `*-map-x1` | `component-spacing-map.x1` `space.4`: 4px |
+| x2 (holds still) | ×2 | `*-map-x2` | `component-spacing-map.x2` `space.8`: 8px |
+| x3 | ×3 | `*-map-x3` | `component-spacing-map.x3` `space.20`: 20px |
+| x4 | ×4 | `*-map-x4` | `component-spacing-map.x4` `space.28`: 28px |
+| x6 | ×6 | `*-map-x6` | `component-spacing-map.x6` `space.44`: 44px |
+| x8 | ×8 | `*-map-x8` | `component-spacing-map.x8` `space.56`: 56px |
+| x12 | ×12 | `*-map-x12` | `component-spacing-map.x12` `space.64`: 64px |
 
 Between things and on the page, use a role instead: `*-tight` (12px), `*-default` (16px), `*-group` (32px), `*-section` (48px), `*-control` (24px), `*-container` (24px), `*-cell` (16px). A spacing is never a number.
 
