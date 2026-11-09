@@ -1335,23 +1335,33 @@ export function docsPages(
       "radius",
     ),
     elevation: vars(["elevation-card", "elevation-overlay"], "shadow"),
+    motion: vars(["motion-duration-feedback"], "duration"),
+    accessibility: vars(["size-control-default"], "target"),
+    // The page's canvas in each mode the scheme ships.
+    theming: [...new Set(scheme.themes.map((th) => th.mode))].map((mode) => ({
+      kind: "mode",
+      value: String(
+        value(scheme.themes.find((th) => th.mode === mode), "color.surface.canvas", ""),
+      ),
+    })),
     iconography: [
       {
-        kind: "text",
-        value: `⚠︎ ${scheme.tokens.content?.action?.destroy?.$value ?? "Delete"}`,
+        kind: "icon-label",
+        value: scheme.tokens.content?.action?.destroy?.$value ?? "Delete",
       },
     ],
     naming: [{ kind: "code", value: "button/primary/background" }],
     voice: [
       {
-        kind: "text",
+        kind: "quote",
         value: scheme.tokens.content?.action?.commit?.$value ?? "Save",
       },
     ],
     components: [
       {
-        kind: "text",
-        value: `${(scheme.inventory?.in ?? []).length} of ${g.catalogue?.items?.length ?? 0} in the catalogue`,
+        kind: "count",
+        value: String((scheme.inventory?.in ?? []).length),
+        note: `of ${g.catalogue?.items?.length ?? 0} in the catalogue`,
       },
     ],
   };
@@ -1833,7 +1843,7 @@ export function docsPages(
       return [...new Set(pick.map((x) => rem(x.ref)).filter((n) => n > 0))]
         .sort((a, b) => a - b)
         .slice(0, 7)
-        .map((n) => ({ kind: "bar", value: `${n}px` }));
+        .map((n) => ({ kind: "column", value: `${n}px` }));
     if (k.id === "shape")
       return [
         ...new Set(
@@ -1868,7 +1878,7 @@ export function docsPages(
       const ds = pick
         .filter((x) => x.path.startsWith("duration."))
         .map((x) => String(x.ref));
-      return ds.length ? [{ kind: "duration", value: ds[0] }] : [];
+      return ds.length ? [{ kind: "duration", value: ds[0], note: ds[0] }] : [];
     }
     if (k.id === "effects")
       return pick

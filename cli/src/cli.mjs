@@ -12,7 +12,7 @@ import { dirname, join, resolve } from "node:path";
 import { agentsMd, skillSection } from "./agents.mjs";
 import { componentsFor, packagesFor, withImports } from "./components.mjs";
 import { createProject } from "./create.mjs";
-import { compositeComponents, docSiteFiles } from "./doc-site.mjs";
+import { compositeComponents, compositePackages, docSiteFiles } from "./doc-site.mjs";
 import { docsLlms, docsPages } from "./docs.mjs";
 import {
   assetRoots,
@@ -178,7 +178,10 @@ export function deploy(
   const written = docs
     ? withImports([...new Set([...components, ...compositeComponents(roots)])], roots)
     : components;
-  const packages = packagesFor(written, roots);
+  const packages = {
+    ...packagesFor(written, roots),
+    ...(docs && compositePackages(roots)),
+  };
   for (const name of written)
     write(
       dir,

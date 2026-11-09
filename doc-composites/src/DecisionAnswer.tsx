@@ -1,13 +1,14 @@
 /**
  * DecisionAnswer: one answer of a scheme under its question: why, what it weighs, what it came from
  * and every design decision it made, as a tree. Built from the scheme's Badge (through Label), used
- * through its props only; the connector lines and the kind icons are drawings. The data follows
+ * through its props only; the kind icons are lucide-react, as in the components; the connector lines are a drawing. The data follows
  * doc-composites/schemas/decision-answer.schema.json; the page holds the question as a heading, then
  * one line: ::decision-answer{id="people-q1"}
  */
 import * as React from "react";
 import Label from "./Label";
 import { Tree, Twig } from "./tree";
+import { Brush, Component, MessageCircle, Scale } from "lucide-react";
 
 type Link = { label: string; href: string };
 export type DecisionAnswerData = {
@@ -21,30 +22,8 @@ export type DecisionAnswerData = {
   };
 };
 
-// Lucide icons (MIT), drawn at 16px: message-circle, scale, component, brush.
-const ICONS: Record<string, React.ReactNode> = {
-  answers: <path d="M5.27 13.33A6 6 0 1 0 2.67 10.73L1.33 14.67Z" />,
-  rules: (
-    <>
-      <path d="m10.67 10.67 2-5.34 2 5.34a3.3 3.3 0 0 1-4 0Z" />
-      <path d="m1.33 10.67 2-5.34 2 5.34a3.3 3.3 0 0 1-4 0Z" />
-      <path d="M4.67 14h6.66M8 2v12M2 4.67h1.33C4.67 4.67 6.67 4 8 3.33c1.33.67 3.33 1.34 4.67 1.34H14" />
-    </>
-  ),
-  variants: (
-    <>
-      <path d="m10.36 7.53 1.58-1.59a.67.67 0 0 1 .94 0l1.59 1.59a.67.67 0 0 1 0 .94l-1.59 1.59a.67.67 0 0 1-.94 0l-1.58-1.59a.67.67 0 0 1 0-.94Z" />
-      <path d="m1.53 7.53 1.59-1.59a.67.67 0 0 1 .94 0l1.58 1.59a.67.67 0 0 1 0 .94l-1.58 1.59a.67.67 0 0 1-.94 0L1.53 8.47a.67.67 0 0 1 0-.94Z" />
-      <path d="m5.94 11.94 1.59-1.58a.67.67 0 0 1 .94 0l1.59 1.58a.67.67 0 0 1 0 .94l-1.59 1.59a.67.67 0 0 1-.94 0l-1.59-1.59a.67.67 0 0 1 0-.94Z" />
-      <path d="m5.94 3.12 1.59-1.59a.67.67 0 0 1 .94 0l1.59 1.59a.67.67 0 0 1 0 .94L8.47 5.64a.67.67 0 0 1-.94 0L5.94 4.06a.67.67 0 0 1 0-.94Z" />
-    </>
-  ),
-  picks: (
-    <g transform="scale(0.6667)">
-      <path d="m11 10 3 3M6.5 21A3.5 3.5 0 1 0 3 17.5a2.62 2.62 0 0 1-.71 1.79A1 1 0 0 0 3 21zM9.97 17.03 21.38 5.62a1 1 0 0 0-3-3L6.97 14.03" />
-    </g>
-  ),
-};
+// One icon per kind of decision, from lucide-react, the icons the scheme's components use.
+const ICONS = { answers: MessageCircle, rules: Scale, variants: Component, picks: Brush };
 const TITLES = {
   answers: "Answers it led to",
   rules: "Rules it sets",
@@ -124,9 +103,7 @@ export default function DecisionAnswer({ data }: { data: DecisionAnswerData }) {
               {data.decided.groups.map((g) => (
                 <Twig key={g.kind}>
                   <span className={`inline-flex items-center gap-[var(--space-gap-tight)] ${head}`}>
-                    <svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" strokeWidth="1.33" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
-                      {ICONS[g.kind]}
-                    </svg>
+                    {React.createElement(ICONS[g.kind], { "aria-hidden": true, className: "size-4 shrink-0" })}
                     {TITLES[g.kind]} ({g.items.length})
                   </span>
                   <Tree>

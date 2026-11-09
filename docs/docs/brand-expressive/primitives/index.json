@@ -60,31 +60,31 @@
      },
      "samples": [
       {
-       "kind": "bar",
+       "kind": "column",
        "value": "2px"
       },
       {
-       "kind": "bar",
+       "kind": "column",
        "value": "4px"
       },
       {
-       "kind": "bar",
+       "kind": "column",
        "value": "8px"
       },
       {
-       "kind": "bar",
+       "kind": "column",
        "value": "16px"
       },
       {
-       "kind": "bar",
+       "kind": "column",
        "value": "20px"
       },
       {
-       "kind": "bar",
+       "kind": "column",
        "value": "24px"
       },
       {
-       "kind": "bar",
+       "kind": "column",
        "value": "28px"
       }
      ],
@@ -161,7 +161,8 @@
      "samples": [
       {
        "kind": "duration",
-       "value": "120ms"
+       "value": "120ms",
+       "note": "120ms"
       }
      ],
      "meter": {

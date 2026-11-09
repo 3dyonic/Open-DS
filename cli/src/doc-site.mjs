@@ -5,6 +5,7 @@
 
 import { readdirSync, readFileSync } from "node:fs";
 import { join } from "node:path";
+import { PACKAGES } from "./components.mjs";
 
 const UI_IMPORT = /from "@open-ds\/ui\/components\/([a-z-]+)"/g;
 
@@ -15,6 +16,16 @@ export function compositeComponents(roots) {
     for (const [, name] of readFileSync(join(roots.composites, f), "utf8").matchAll(UI_IMPORT))
       names.add(name);
   return [...names].sort();
+}
+
+/** The npm packages the composites import themselves, such as lucide-react for icons, with versions. */
+export function compositePackages(roots) {
+  const used = new Set();
+  for (const f of readdirSync(roots.composites)) {
+    const src = readFileSync(join(roots.composites, f), "utf8");
+    for (const pkg of Object.keys(PACKAGES)) if (src.includes(`from "${pkg}"`)) used.add(pkg);
+  }
+  return Object.fromEntries([...used].sort().map((p) => [p, PACKAGES[p]]));
 }
 
 /**

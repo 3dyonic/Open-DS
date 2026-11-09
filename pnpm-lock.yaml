@@ -30,6 +30,9 @@ importers:
       '@open-ds/ui':
         specifier: workspace:*
         version: link:../ui
+      lucide-react:
+        specifier: ^1.65.0
+        version: 1.65.0(@types/react@19.3.0)(react@19.3.1)
     devDependencies:
       '@types/react':
         specifier: 19.3.0

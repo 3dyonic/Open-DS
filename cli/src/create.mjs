@@ -17,7 +17,7 @@ import { fileURLToPath } from "node:url";
 import { agentsMd, skillSection } from "./agents.mjs";
 import { booklets } from "./brief.mjs";
 import { componentsFor, packagesFor, withImports } from "./components.mjs";
-import { compositeComponents, docSiteFiles } from "./doc-site.mjs";
+import { compositeComponents, compositePackages, docSiteFiles } from "./doc-site.mjs";
 import { docsLlms, docsPages } from "./docs.mjs";
 import { assetRoots, focusedSkills, grammar, loadScheme } from "./schemes.mjs";
 
@@ -401,6 +401,7 @@ export function createProject(
         react: "^19.1.1",
         "react-dom": "^19.1.1",
         ...packagesFor(written, roots),
+        ...compositePackages(roots),
       },
       devDependencies: { "open-ds": openDs, ...DEV_DEPENDENCIES },
       // Docusaurus's dev server pulls sockjs, whose latest release still asks for uuid@8, so every

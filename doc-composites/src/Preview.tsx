@@ -22,8 +22,10 @@ export type PreviewData = {
   links?: { text: string; href: string }[];
 };
 
-// The frame shows only when its address answers. Where Storybook is not served (a local docs build
-// without it), the address answers with the docs' own 404 page; the reader sees what to start instead.
+// The frame shows only when Storybook answers at its address. Where Storybook is not served, the docs
+// answer instead: the built site with its 404 page, the dev server with a page and a 200. So a frame on
+// the docs' own host must hold Storybook's root element. A frame on another host can't be read; it shows
+// when that host answers at all.
 function Frame({
   src,
   title,
@@ -36,8 +38,13 @@ function Frame({
   const [state, setState] = React.useState<"checking" | "live" | "missing">("checking");
   React.useEffect(() => {
     let on = true;
-    fetch(src, { method: "HEAD" })
-      .then((r) => on && setState(r.ok ? "live" : "missing"))
+    const url = new URL(src, window.location.href);
+    const check =
+      url.origin === window.location.origin
+        ? fetch(url).then(async (r) => r.ok && (await r.text()).includes("storybook-root"))
+        : fetch(url, { mode: "no-cors" }).then(() => true);
+    check
+      .then((live) => on && setState(live ? "live" : "missing"))
       .catch(() => on && setState("missing"));
     return () => {
       on = false;

@@ -168,7 +168,13 @@
      "robot": {
       "day": "/robots/scopes/motion.webp",
       "night": "/robots/scopes/motion-dark.webp"
-     }
+     },
+     "samples": [
+      {
+       "kind": "duration",
+       "value": "var(--motion-duration-feedback)"
+      }
+     ]
     },
     {
      "title": "Iconography",
@@ -184,8 +190,8 @@
      },
      "samples": [
       {
-       "kind": "text",
-       "value": "⚠︎ Remove"
+       "kind": "icon-label",
+       "value": "Remove"
       }
      ]
     },
@@ -200,7 +206,13 @@
      "robot": {
       "day": "/robots/scopes/accessibility.webp",
       "night": "/robots/scopes/accessibility-dark.webp"
-     }
+     },
+     "samples": [
+      {
+       "kind": "target",
+       "value": "var(--size-control-default)"
+      }
+     ]
     }
    ]
   },
@@ -217,7 +229,17 @@
      "robot": {
       "day": "/robots/scopes/theming.webp",
       "night": "/robots/scopes/theming-dark.webp"
-     }
+     },
+     "samples": [
+      {
+       "kind": "mode",
+       "value": "#FFFDF8"
+      },
+      {
+       "kind": "mode",
+       "value": "#14110D"
+      }
+     ]
     },
     {
      "title": "Naming",
@@ -252,7 +274,7 @@
      },
      "samples": [
       {
-       "kind": "text",
+       "kind": "quote",
        "value": "Save"
       }
      ]
@@ -271,8 +293,9 @@
      },
      "samples": [
       {
-       "kind": "text",
-       "value": "36 of 62 in the catalogue"
+       "kind": "count",
+       "value": "36",
+       "note": "of 62 in the catalogue"
       }
      ]
     }
